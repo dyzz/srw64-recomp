@@ -586,6 +586,10 @@ int main(int argc, char** argv) {
                 std::fprintf(stderr, "SRW64_SAVE_EXPORT %s\n", srw64::app::export_save(options).string().c_str());
                 return 0;
             }
+            if (options.rom.empty() && !options.import_save.empty()) {
+                std::fprintf(stderr, "SRW64_SAVE_IMPORT %s\n", srw64::app::import_save(options).c_str());
+                return 0;
+            }
             srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
                 native_rom_variants[0].save_file, srw64::rules::version, {}};
             for (const auto& rule : srw64::rules::catalog)

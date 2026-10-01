@@ -74,6 +74,9 @@ void parser_and_paths() {
     reject({"--export-format","ares"});
     reject({"--export-save","x.sra","--export-format","pj64"});
     reject({"--export-save","x.sra","--rom","y"});
+    const std::vector<std::string_view> importing={"--import-save","card.srm"};
+    check(parse_options(importing).import_save.is_absolute() && parse_options(importing).rom.empty(),"import alone needs no ROM");
+    reject({"--import-save","x.sra","--mute"});
     reject({"--rom","--content","y"});
     std::map<std::string,std::string> env;
     const auto get=[&](const char* key){return env[key];};
@@ -164,6 +167,15 @@ void sessions() {
         check(session.commit_save(temp.path/"new.bin"),"new game not published");
         check(read_text(options.user_dir/"saves/cartridge.sram",32768)==card('n'),"new game card not published");
         check(read_text(options.user_dir/"saves/slots/003.rec",0x1F00)==old_save.substr(0x10,0x1F00),"new game lost the old slot");
+    }
+    {
+        // --import-save alone: the card comes in without a game, never while one runs.
+        Options only;only.user_dir=temp.path/"importer";only.import_save=temp.path/"new.bin";
+        atomic_write(temp.path/"new.bin",card('i'));
+        check(import_save(only).starts_with("big-endian"),"import alone");
+        check(read_text(only.user_dir/"saves/cartridge.sram",32768)==card('i'),"import alone did not publish");
+        Options playing;playing.user_dir=only.user_dir;Session running(playing);
+        rejects([&]{import_save(only);},"import alone beside a running game");
     }
     // Before saves/ the latest card was the last session's save.bin.
     Options legacy;legacy.user_dir=temp.path/"older player";

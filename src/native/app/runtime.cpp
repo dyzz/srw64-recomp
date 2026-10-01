@@ -56,8 +56,10 @@ std::string usage() {
            "       [--language LOCALE] [--rules original|fixed|all] [--resolution-scale 1..8]\n"
            "       [--new-game | --import-save SAVE] [--mute]\n"
            "       srw64-gfx-host --play --export-save FILE [--export-format FORMAT] [--user-dir DIR]\n"
+           "       srw64-gfx-host --play --import-save SAVE [--user-dir DIR]\n"
            "--import-save takes a 32 KiB SRAM (ares .ram, Project64/mupen64plus .sra) or a\n"
-           "RetroArch .srm; the old card's slots are kept as extended slots.\n"
+           "RetroArch .srm; the old card's slots are kept as extended slots. Without --rom it\n"
+           "only imports and starts nothing.\n"
            "--export-save writes the card as ares, project64, mupen64plus or retroarch\n"
            "(by default from the extension: .ram/.sav ares, .sra project64, .srm retroarch).\n"
            "Without --content, imports the matching ROM into a versioned local cache.\n"
@@ -109,6 +111,14 @@ Options parse_options(std::span<const std::string_view> args) {
         if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
         return options;
     }
+    // --import-save alone takes the card in and starts nothing.
+    if (options.rom.empty() && !options.import_save.empty()) {
+        if (!options.content.empty() || options.new_game || !options.language.empty() || options.rules || options.resolution_scale || options.mute)
+            throw std::runtime_error("--import-save without --rom only takes --user-dir");
+        options.import_save=fs::absolute(options.import_save);
+        if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
+        return options;
+    }
     if (options.rom.empty()) throw std::runtime_error("--rom is required");
     if (options.new_game && !options.import_save.empty()) throw std::runtime_error("Choose --new-game or --import-save, not both");
     options.rom=fs::absolute(options.rom);
@@ -118,6 +128,15 @@ Options parse_options(std::span<const std::string_view> args) {
     return options;
 }
 
+std::string import_save(const Options& options) {
+    const auto root=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir);
+    fs::create_directories(root);
+    UserLock lock(root);
+    const auto imported=SaveLibrary(root/"saves").import_cartridge(options.import_save);
+    std::string kept;
+    for (const auto n:imported.kept) kept+=(kept.empty()?"":",")+std::to_string(n);
+    return std::string(sram::name(imported.detected.order))+(imported.detected.retroarch?" retroarch":"")+" kept_slots="+(kept.empty()?"none":kept);
+}
 fs::path export_save(const Options& options) {
     std::optional<sram::Format> format=sram::format_for(options.export_save.extension().string());
     for (const auto known:{sram::Format::ares,sram::Format::project64,sram::Format::mupen64plus,sram::Format::retroarch})
@@ -253,10 +272,10 @@ void clear_runtime_environment() {
     }
 }
 
-struct Session::Lock {
+struct UserLock::Handle {
 #ifdef _WIN32
     HANDLE handle=INVALID_HANDLE_VALUE;
-    explicit Lock(const fs::path& path) {
+    explicit Handle(const fs::path& path) {
         handle=CreateFileW(path.c_str(),GENERIC_READ|GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE,
                            nullptr,OPEN_ALWAYS,FILE_ATTRIBUTE_NORMAL,nullptr);
         if (handle==INVALID_HANDLE_VALUE) throw std::runtime_error("Cannot open play lock");
@@ -266,21 +285,23 @@ struct Session::Lock {
             throw std::runtime_error("Another game is using this user directory (or locking failed)");
         }
     }
-    ~Lock() { if(handle!=INVALID_HANDLE_VALUE){OVERLAPPED offset{};UnlockFileEx(handle,0,1,0,&offset);CloseHandle(handle);} }
+    ~Handle() { if(handle!=INVALID_HANDLE_VALUE){OVERLAPPED offset{};UnlockFileEx(handle,0,1,0,&offset);CloseHandle(handle);} }
 #else
     int fd=-1;
-    explicit Lock(const fs::path& path) {
+    explicit Handle(const fs::path& path) {
         fd=open(path.c_str(),O_RDWR|O_CREAT|O_CLOEXEC,0600);
         if (fd<0) throw std::runtime_error("Cannot open play lock");
         if (flock(fd,LOCK_EX|LOCK_NB)!=0) { close(fd);fd=-1;throw std::runtime_error("Another game is using this user directory (or locking failed)"); }
     }
-    ~Lock() { if(fd>=0)close(fd); }
+    ~Handle() { if(fd>=0)close(fd); }
 #endif
 };
+UserLock::UserLock(const fs::path& user_dir):handle(std::make_unique<Handle>(user_dir/"active.lock")) {}
+UserLock::~UserLock()=default;
 Session::Session(const Options& options) {
     root=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir);
     fs::create_directories(root);
-    lock=std::make_unique<Lock>(root/"active.lock");
+    lock=std::make_unique<UserLock>(root);
     // The card lives in saves/ (save_library.hpp); sessions/ keeps each run's copy.
     SaveLibrary saves(root/"saves");
     std::optional<fs::path> source;
