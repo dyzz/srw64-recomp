@@ -72,6 +72,14 @@ def prepare(fetch: bool = False) -> dict:
     source = source.replace(swap_format, b"#ifdef __ANDROID__\n"
                             b"    static constexpr plume::RenderFormat SwapChainFormat = plume::RenderFormat::R8G8B8A8_UNORM;\n"
                             b"#else\n" + swap_format + b"\n#endif")
+    # The UI draws through an 8x MSAA copy of the screen it resolves every frame; on a
+    # phone GPU at 2670x1200 that dominates the present (docs/design/android-port.md).
+    msaa = b"        const plume::RenderSampleCounts desired_sample_count = plume::RenderSampleCount::COUNT_8;"
+    if source.count(msaa) != 1:
+        raise RuntimeError("Pinned renderer sample count no longer matches")
+    source = source.replace(msaa, b"#ifdef __ANDROID__\n"
+                            b"        const plume::RenderSampleCounts desired_sample_count = plume::RenderSampleCount::COUNT_1;\n"
+                            b"#else\n" + msaa + b"\n#endif")
     write_changed(OUTPUT / "ui_renderer.h", header.encode())
     write_changed(OUTPUT / "ui_renderer.cpp", source)
     report = {"schema": "srw64.frontend-adapter.v1", "commit": lock["commit"],
