@@ -18,8 +18,7 @@ args = sys.argv[1:]
 aspect = args[args.index("--aspect") + 1] if "--aspect" in args else "auto"
 save = ROOT / "build/recomp/save-recovery-check/intermission-cold-1.source.sram"
 binary = ROOT / "build/recomp/gfx-build/srw64-gfx-host"
-s = Session.launch(language="zh-Hans", images="hd", save=str(save), diagnostics="light",
-                   binary=str(binary) if binary.exists() else None, env={"SRW64_ASPECT": aspect})
+s = Session.launch(language="zh-Hans", images="hd", save=str(save), binary=str(binary) if binary.exists() else None, env={"SRW64_ASPECT": aspect})
 print("RUN", s.run, flush=True)
 
 

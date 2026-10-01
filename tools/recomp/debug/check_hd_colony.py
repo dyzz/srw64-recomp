@@ -18,8 +18,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime',type=Path,required=True)
     args=parser.parse_args()
-    session=Session.launch(language='zh-Hans',images='hd',diagnostics='light',
-        binary=str(ROOT/'build/recomp/gfx-build/srw64-gfx-host'),
+    session=Session.launch(language='zh-Hans',images='hd',binary=str(ROOT/'build/recomp/gfx-build/srw64-gfx-host'),
         mini_stage=str(ROOT/'config/recomp/mini-stages/map87-colony-view.json'),
         env={'SRW64_HD_MAPS':str(args.runtime.resolve())})
     print('RUN',session.run,flush=True)

@@ -120,7 +120,7 @@
 ```sh
 .venv/bin/python tools/models/build_native_models.py
 SRW64_NATIVE_MODELS=build/recomp/native-models/assets .venv/bin/python tools/recomp/debug/srw64ctl.py \
-  launch --mini-stage config/recomp/mini-stages/worldmap-models.json --images hd --diagnostics light
+  launch --mini-stage config/recomp/mini-stages/worldmap-models.json --images hd
 ```
 
 2026-09-24 实机结果：

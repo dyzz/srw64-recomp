@@ -480,6 +480,14 @@ void gpu_init() {
         {gpu::Slot::sampler, {.linear = true, .mipmaps = true, .repeat_u = true}}});
 }
 
+bool repeats_across(const uint8_t* rdram, const SceneDraw& draw) {
+    SceneId id;
+    if (draw.quads || draw.dl_end <= draw.dl_begin || !identify(rdram, draw, id) || id.scene != 686) return false;
+    for (uint32_t p = draw.dl_begin; p + 8 <= draw.dl_end; p += 8)
+        if (word(rdram, p) == kTagW0) return false;   // an HD frame drew them, already across (rewrite)
+    return true;
+}
+
 // Which of its part's two vertex sets a quad was drawn from: 0 the part as the frame has
 // it, 1 the mirrored set 8009761C takes for the other side (64 bytes on; scenes of vertex
 // mode 0 only), -1 when the vertices belong to no part of the frame. The texture

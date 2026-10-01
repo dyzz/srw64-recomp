@@ -6,7 +6,6 @@
 #include "game_adapter/default_names.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/display_list_snapshots.hpp"
-#include "diagnostics.hpp"
 #include "modal_input.hpp"
 #include <cassert>
 #include <iostream>
@@ -20,10 +19,6 @@ int main() {
     assert(modal.filter(0,false,true)==0 && modal.pending()); // Physical F7 still held.
     assert(modal.filter(0,false,false)==0 && !modal.pending());
     assert(modal.filter(0x8000,false,false)==0x8000); // Only a fresh press returns to the game.
-    unsetenv("SRW64_DIAGNOSTICS");assert(srw64_full_diagnostics());
-    setenv("SRW64_DIAGNOSTICS","light",1);assert(!srw64_full_diagnostics());
-    setenv("SRW64_DIAGNOSTICS","full",1);assert(srw64_full_diagnostics());
-    unsetenv("SRW64_DIAGNOSTICS");
     srw64::presentation::DisplayListSnapshots<int> pending;
     // Both game buffers are ready before the render thread takes the first.
     pending.publish(120,180,std::make_shared<const int>(1));

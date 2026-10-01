@@ -22,7 +22,7 @@ parser.add_argument('--reuse-build', action='store_true')
 parser.add_argument('--pages', type=int, default=2, help='pages to read with A before skipping')
 parser.add_argument('--skips', type=int, default=2, help='skips in a row, each on the next dialogue read')
 args = parser.parse_args()
-s = Session.launch(language='zh-Hans', reuse_build=args.reuse_build, diagnostics='light')
+s = Session.launch(language='zh-Hans', reuse_build=args.reuse_build)
 print('RUN', s.run, flush=True)
 checks = []
 

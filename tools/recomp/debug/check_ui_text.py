@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--language', default='zh-Hans', choices=sorted(EXPECT))
 args = parser.parse_args()
 expect = EXPECT[args.language]
-s = Session.launch(language=args.language, images='hd', diagnostics='light', mini_stage='config/recomp/mini-stages/battle-ui.json')
+s = Session.launch(language=args.language, images='hd', mini_stage='config/recomp/mini-stages/battle-ui.json')
 print('RUN', s.run, flush=True)
 checks = []
 

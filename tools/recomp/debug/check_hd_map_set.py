@@ -53,8 +53,7 @@ def main():
         stage['events'][0]['commands'][3]['args']=[meta['width']//32,meta['height']//32]
         stagepath=evidence/'stage.json'
         stagepath.write_text(json.dumps(stage,indent=2)+'\n')
-        session=Session.launch(language='zh-Hans',images='hd',diagnostics='light',
-            binary=str(binary),mini_stage=str(stagepath),env={'SRW64_HD_MAPS':str(runtime)})
+        session=Session.launch(language='zh-Hans',images='hd',binary=str(binary),mini_stage=str(stagepath),env={'SRW64_HD_MAPS':str(runtime)})
         print('RUN',number,session.run,flush=True)
         captures=[]
         try:

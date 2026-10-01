@@ -20,8 +20,7 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--language', default='zh-Hans', choices=('ja', 'zh-Hans', 'en'))
 parser.add_argument('--skip-karaoke', action='store_true')
 args = parser.parse_args()
-s = Session.launch(language=args.language, images='hd', diagnostics='light',
-                   save='build/recomp/save-recovery-check/intermission-cold-1.source.sram')
+s = Session.launch(language=args.language, images='hd', save='build/recomp/save-recovery-check/intermission-cold-1.source.sram')
 print('RUN', s.run, flush=True)
 checks = []
 

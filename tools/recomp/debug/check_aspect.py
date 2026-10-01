@@ -33,8 +33,7 @@ every = float(sys.argv[sys.argv.index("--every") + 1]) if "--every" in sys.argv 
 count = int(sys.argv[sys.argv.index("--count") + 1]) if "--count" in sys.argv else 15
 battle = sys.argv[sys.argv.index("--battle") + 1] if "--battle" in sys.argv else None
 binary = os.environ.get("SRW64_HOST_BINARY") or str(ROOT / "build/recomp/gfx-build/srw64-gfx-host")
-s = Session.launch(language="zh-Hans", images="hd", diagnostics="light",
-                   binary=binary if Path(binary).exists() else None,
+s = Session.launch(language="zh-Hans", images="hd", binary=binary if Path(binary).exists() else None,
                    mini_stage=battle or str(ROOT / f"config/recomp/mini-stages/{'battle-ui' if stage == 'intro' else stage}.json"),
                    env={"SRW64_ASPECT": fixed} if fixed else None)
 print("RUN", s.run, flush=True)

@@ -1,7 +1,6 @@
 #include "native_dialogue.hpp"
 #include "battle_hud.hpp"
 #include "native_name_entry.hpp"
-#include "diagnostics.hpp"
 #include "game_hooks.hpp"
 #include "script_skip.hpp"
 #include "state_probe.hpp"
@@ -317,12 +316,6 @@ void refund_notice(const uint8_t* ram,uint16_t unit,uint32_t amount) {
     }
     notices::post("refund",text);
 }
-void state_report() {
-    if(!srw64_full_diagnostics())return;
-    const auto state=state_snapshot();
-    std::ofstream(output/"dialogue-state.tmp")<<state.dump(2)<<'\n';
-    std::filesystem::rename(output/"dialogue-state.tmp",output/"dialogue-state.json");
-}
 // Layer every locale's text files over the profile's catalog and swap them in.
 // The report lists each problem; broken entries fall back to the layer below.
 // Returns the entries loaded per locale and the problems in all of them.
@@ -436,7 +429,6 @@ void service_locale(uint8_t* ram) {
         }
         language_status.completed=language_status.request;
     }
-    state_report();
 }
 // The reader takes this frame's keys. The log gets each press and release of
 // fast-forward and each page the reader turns, with what was held.
@@ -452,13 +444,13 @@ void read_keys() {
 bool step(uint8_t* ram,recomp_context* ctx) {
     std::lock_guard lock(mutex);
     service_locale(ram);refresh(ram,true);
-    if(observe) {state_report();return false;}
+    if(observe)return false;
     if(settings::owns_input() && reader.active) {
         const auto now=srw64_current_vi();reader.page_started+=now-reader.tick;reader.tick=now;
-        auto_toggle=false;state_report();return true;
+        auto_toggle=false;return true;
     }
     if(!reader.active) {
-        auto_toggle=false;read_keys();state_report();return false;
+        auto_toggle=false;read_keys();return false;
     }
     const auto old_font=reader.font_size,old_speed=reader.speed;
     const bool was_history=reader.history_open,was_skip=reader.skipping;
@@ -521,7 +513,6 @@ bool step(uint8_t* ram,recomp_context* ctx) {
     if(confirm==Confirm::end)record("guest_confirm",{{"event",reader.event},{"page",reader.page},{"skip",reader.skipping},
         {"stops",reader.stops.size()}});
     refresh(ram,true);
-    state_report();
     return true;
 }
 void loaded(uint8_t*,unsigned slot) {

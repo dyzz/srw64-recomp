@@ -50,8 +50,7 @@ print(len(chosen), "classes,", len(todo), "to go", flush=True)
 (OUT / "chosen.json").write_text(json.dumps(chosen, indent=1))
 
 def session_run(batch):
-    s = Session.launch(language="zh-Hans", images="hd", diagnostics="light",
-                       binary=str(ROOT / "build/recomp/gfx-build/srw64-gfx-host"),
+    s = Session.launch(language="zh-Hans", images="hd", binary=str(ROOT / "build/recomp/gfx-build/srw64-gfx-host"),
                        mini_stage=str(ROOT / "config/recomp/mini-stages/battle-ui.json"))
     st = lambda: s.client.call("status")
     try:

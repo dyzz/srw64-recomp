@@ -42,7 +42,7 @@
 | 目录 | 内容 |
 | --- | --- |
 | `tools/recomp/toolchain/` | 工具链与代码生成：`bootstrap.py`、`analyze_layout.py`、`scan_functions.py`、`generate_cpu.py`、符号与变体审计、`prepare_rt64.py`、`prepare_runtime_lifecycle.py` |
-| `tools/recomp/run/` | 启动与驱动宿主：`play_native.py`、`run_host_probe.py`、`control_host.py`、`step_host.py`、输入编译与验证公共代码 |
+| `tools/recomp/run/` | 启动与驱动宿主：`play_native.py`、`run_host_probe.py`、`control_host.py`、输入编译与验证公共代码 |
 | `tools/recomp/verify/` | 有界实机验证：图片模式、阅读指示、共享界面、关窗；语言、对白与姓名页的实机检查在 `tools/recomp/debug/`（`check_localization.py`、`check_dialogue.py`、`check_fast_release.py`、`check_name_entry_ui_switch.py`） |
 | `tools/recomp/script_lab/` | 脚本注入、迷你关卡、场景脚本阅读与按指令切音频 |
 | `tools/recomp/gameplay/` | 改造规则文件与受控存档编辑 |

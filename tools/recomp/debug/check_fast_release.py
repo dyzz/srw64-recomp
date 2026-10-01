@@ -27,7 +27,7 @@ TAP_MS = 200                           # about 12 VI: over one step, under the h
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--reuse-build', action='store_true')
 args = parser.parse_args()
-s = Session.launch(language='zh-Hans', reuse_build=args.reuse_build, diagnostics='light')
+s = Session.launch(language='zh-Hans', reuse_build=args.reuse_build)
 print('RUN', s.run, flush=True)
 checks = []
 

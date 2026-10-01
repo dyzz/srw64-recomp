@@ -1,7 +1,6 @@
 // Thin present-hook adapter. Upload/pipeline/draw code is shared by Metal, Vulkan
 // and D3D12; only target inspection differs, and completion goes through the host.
 #include "dialogue_raster.hpp"
-#include "diagnostics.hpp"
 #include "game_frame.hpp"
 #include "presentation/pixel_compositor.hpp"
 #ifdef __APPLE__
@@ -39,7 +38,6 @@ void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuf
     // The present hook always draws into RT64's swapchain framebuffer, which is
     // B8G8R8A8 without MSAA (rt64_application.cpp); Plume has no format query.
     auto format = plume::RenderFormat::B8G8R8A8_UNORM;
-    const char* surface = "Plume (swapchain)";
 #ifdef __APPLE__
     if (metal) {
         const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);
@@ -50,7 +48,6 @@ void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuf
             throw std::runtime_error("Unvalidated native UI color target");
         auto* command = static_cast<plume::MetalCommandList*>(list);
         command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
-        surface = "Plume (Metal surface)";
     }
 #endif
     // Preserve the existing workload/cache identity and CPU raster behavior.
@@ -68,29 +65,12 @@ void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuf
         // completes. A later cache replacement cannot free a recorded upload.
         srw64_after_gpu(list, [next](bool) { (void)next; });
         image = std::move(next); cached_key = key.str();
-        // The scene reports its portable CPU text backend.
-        raster.report["presentation"] = surface;
-        raster.report["compositor"] = "Plume";
-        if (srw64_full_diagnostics()) std::ofstream(output/"dialogue-raster.json") << raster.report.dump(2) << '\n';
     }
     const auto retained = compositor->draw(*list,*framebuffer,format,image);
     srw64_after_gpu(list, [retained](bool completed) {
         (void)retained;
         if (!completed) std::fputs("SRW64_DIALOGUE_GPU_FAILED\n",stderr);
     });
-    if (!srw64_full_diagnostics()) return;
-    json state = {{"schema","srw64.native-dialogue-present.v1"},{"workload",workload},{"native_vi",frame->vi},
-        {"locale",localization::catalog().locale},{"catalog",localization::catalog().revision},
-        {"history_open",frame->history_open},{"auto_read",frame->auto_read},{"speed",frame->speed},{"skipping",frame->skipping},
-        {"reading_event",frame->reading_event},{"advance",{{"visible",frame->advance.visible},
-            {"permille",frame->advance.permille},{"waiting",frame->advance.waiting},{"paused",frame->advance.paused}}},
-        {"boxes",json::array()},{"compositor","Plume"}};
-    const auto* focus = frame->focused_box(); state["focused_slot"] = focus ? json(focus->slot) : json(nullptr);
-    for (const auto& b : frame->boxes) if (b.visible) state["boxes"].push_back({{"event",b.event},{"text_id",b.text_id},{"segment",b.segment},
-        {"active",b.active},{"speaker",utf8(b.speaker)},{"text",utf8(b.layout.text)},
-        {"page",b.page},{"pages",b.layout.pages.size()},{"revealed_utf16",b.revealed}});
-    std::ofstream(output/"dialogue-present.tmp") << state.dump(2) << '\n';
-    std::filesystem::rename(output/"dialogue-present.tmp",output/"dialogue-present.json");
 }
 void gpu_shutdown() {
     // The host must wait for submitted work before destroying its RenderDevice.

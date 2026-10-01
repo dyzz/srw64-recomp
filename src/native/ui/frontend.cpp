@@ -23,6 +23,7 @@
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
 #include "game_frame.hpp"
+#include "frame_rate.hpp"
 #include "steam_deck.hpp"
 #include "rule_fixes.hpp"
 #include "notices.hpp"
@@ -219,6 +220,7 @@ button:hover,button:focus {border-color: #9be4f7;} button.on {background-color: 
 .pad button:focus {border-color: #ffd75e; background-color: #2c4a63;}
 button:disabled {opacity: 0.45;} .row {display: flex;}
 .card {width: 28%;} img {width: 86dp; height: 86dp; margin: 8dp;}
+#fps {position: absolute; right: 6dp; top: 6dp; padding: 1dp 6dp; font-size: 12dp; color: #e6f6ff; background-color: #000000a8;}
 #notices {width: 86%; margin: 8dp auto; text-align: center;} .banner {padding: 12dp; background-color: #122131ed; border: 1dp #9be4f7; margin-bottom: 6dp;}
 
 .set-shade {position:absolute; left:0; top:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center; background-color:#040712b8;}
@@ -723,7 +725,7 @@ void settings_sync() {
         for(unsigned i=0;i<std::size(settings_pages);++i)if(saved==settings_pages[i])settings_page=i;
     }
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::show_fps())+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -763,6 +765,7 @@ void settings_sync() {
         body+=settings_choice("settings_intermission_ui","intermission-ui",{"native","original"},settings::native_intermission_ui()?"native":"original");
         body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
         body+=settings_choice("settings_title_ui","title-ui",{"native","original"},settings::native_title_ui()?"native":"original");
+        body+=settings_choice("settings_fps","fps",{"off","on"},settings::show_fps()?"on":"off");
     } else if(page=="rules") {
         std::string presets;
         for(const auto& preset:rules::presets)presets+=button("preset:"+std::string(preset.key),label(std::string(preset.key)));
@@ -2200,6 +2203,7 @@ void choose(const std::string& id) {
         if(id.starts_with("intermission-ui:"))settings::set_native_intermission_ui(id=="intermission-ui:native");
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
+        if(id.starts_with("fps:"))settings::set_show_fps(id=="fps:on");
         if(id.starts_with("autosave")) {
             auto c=save_store::settings();
             if(id.starts_with("autosave:"))c.autosave=id=="autosave:on";
@@ -2258,6 +2262,26 @@ void battle_buttons(uint32_t pressed) {
         auto* focus=context->GetFocusElement();
         choose(focus && focus->GetId().starts_with("battle-")?focus->GetId():"battle-confirm");
     }
+}
+// The frame-rate readout (settings show_fps): the game's frames per second and the longest
+// frame over the last half second (frame_rate.hpp), in the top right corner.
+Rml::ElementDocument* fps_doc{};
+std::string fps_stamp;
+struct {double at=-1;uint64_t lists=0;std::string text;} fps_window;
+void fps_sync() {
+    if(!settings::show_fps()){document_close(fps_doc);fps_stamp.clear();fps_window.at=-1;return;}
+    const double now=system.GetElapsedTime();
+    const uint64_t lists=frame_rate::lists.load();
+    if(fps_window.at<0){fps_window={now,lists,""};frame_rate::longest_us.exchange(0);}
+    else if(now-fps_window.at>=0.5) {
+        const double fps=double(lists-fps_window.lists)/(now-fps_window.at);
+        const unsigned longest=unsigned(std::lround(frame_rate::longest_us.exchange(0)/1000.0));
+        char text[64];std::snprintf(text,sizeof text,"%.0f FPS · %u ms",fps,longest);
+        fps_window={now,lists,text};
+    }
+    const std::string stamp=fps_window.text+frame_stamp();
+    if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false);}
+    if(fps_doc)fps_doc->PullToFront();
 }
 void notices_sync() {
     const double now=system.GetElapsedTime();
@@ -2452,7 +2476,7 @@ void sync() {
     if(app_menu::take_reload_request())srw64::dialogue::request_reload();
     if(app_menu::take_fullscreen_request())toggle_fullscreen();
     if(const int n=app_menu::take_scale_request())scale_window(n);
-    settings_sync();notices_sync();context->Update();input.update_rectangle();
+    settings_sync();notices_sync();fps_sync();context->Update();input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
     battle_page::window_claim_input(battle_request.value("visible",false) || (battle_page::owns_input() && held()));

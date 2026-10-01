@@ -16,7 +16,6 @@
 #include "funcs.h"
 #include "recomp_overlays.inl"
 #include "rom_variants.hpp"
-#include "diagnostics.hpp"
 #include "script_inject.hpp"
 #include "mini_stage.hpp"
 #include "rule_fixes.hpp"
@@ -84,8 +83,8 @@ std::atomic_bool control_quit{};
 
 class RecordingRenderer final : public ultramodern::renderer::RendererContext {
 public:
-    explicit RecordingRenderer(uint8_t* rdram, std::unique_ptr<ultramodern::renderer::RendererContext> renderer = {})
-        : memory(rdram), renderer(std::move(renderer)) {
+    explicit RecordingRenderer(uint8_t*, std::unique_ptr<ultramodern::renderer::RendererContext> renderer = {})
+        : renderer(std::move(renderer)) {
         setup_result = this->renderer ? this->renderer->get_setup_result() : ultramodern::renderer::SetupResult::Success;
         chosen_api = this->renderer ? this->renderer->get_chosen_api() : ultramodern::renderer::GraphicsApi::Auto;
     }
@@ -100,14 +99,6 @@ public:
                          (unsigned long long)count, (uint32_t)task->t.ucode,
                          (uint32_t)task->t.data_ptr, task->t.data_size);
         }
-        if (srw64_full_diagnostics() && (count == 1 || count % 120 == 0)) {
-            std::vector<uint8_t> bytes(0x800000);
-            for (size_t i = 0; i < bytes.size(); ++i) bytes[i] = memory[i ^ 3];
-            std::ofstream snapshot(output_dir / "latest-gfx-rdram.bin", std::ios::binary);
-            snapshot.write((const char*)bytes.data(), bytes.size());
-            std::ofstream description(output_dir / "latest-gfx-task.bin", std::ios::binary);
-            description.write((const char*)task, sizeof(*task));
-        }
     }
     void send_dummy_workload(uint32_t address) override { if (renderer) renderer->send_dummy_workload(address); }
     void update_screen() override { if (renderer) renderer->update_screen(); }
@@ -115,7 +106,6 @@ public:
     uint32_t get_display_framerate() const override { return 60; }
     float get_resolution_scale() const override { return 1.0f; }
 private:
-    uint8_t* memory;
     std::unique_ptr<ultramodern::renderer::RendererContext> renderer;
 };
 
@@ -448,6 +438,10 @@ static int run_host(int argc, char** argv) {
     };
     srw64_game_hooks.scene_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool quads) {
         srw64::sprites::rewrite(ram, {begin, end, slot, sub, quads});
+    };
+    srw64_game_hooks.scene_sides = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub) {
+        return srw64::frame::wide && float(srw64::frame::picture_width) > srw64::frame::kWidth + 0.5f &&
+               srw64::sprites::repeats_across(ram, {begin, end, slot, sub, false});
     };
     srw64::sprites::set_text(srw64::sprite_text::describe);
     srw64::ui_text::configure(output_dir);

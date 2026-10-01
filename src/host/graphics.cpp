@@ -4,12 +4,12 @@
 #include "mini_stage.hpp"
 #include "debug_protocol.hpp"
 #include "audio.hpp"
-#include "diagnostics.hpp"
 #include "window_test_control.hpp"
 #include "input_mode.hpp"
 #include "input_bindings.hpp"
 #include "steam_deck.hpp"
 #include "game_frame.hpp"
+#include "frame_rate.hpp"
 #include "wide_map.hpp"
 #include "native_marker.hpp"
 #include "native_map.hpp"
@@ -175,15 +175,15 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     const std::string clock_name = capture_clock;
     const int image_mode = srw64::presentation::image_mode.current();
     const uint64_t workload = RT64::GetRenderHookWorkloadId();
-    // Opt-in temporal QA. Sample every completed frame, not only the one-in-60
-    // screenshots used by ordinary probes, so a single bad present is visible.
+    // Opt-in temporal QA: sample every completed frame, so a single bad present is visible;
+    // a frame that changes sharply is also saved whole.
     static const uint64_t trace_begin = std::getenv("SRW64_FRAME_TRACE_FROM") ? std::stoull(std::getenv("SRW64_FRAME_TRACE_FROM")) : UINT64_MAX;
     static const uint64_t trace_end = std::getenv("SRW64_FRAME_TRACE_TO") ? std::stoull(std::getenv("SRW64_FRAME_TRACE_TO")) : 0;
     const bool trace = vi >= trace_begin && vi <= trace_end;
-    const bool screenshot = srw64_full_diagnostics() && (frame == 1 || frame % 60 == 0);
-    // A debug-interface screenshot request takes this present, diagnostics or not.
+    // A debug-interface screenshot request takes this present; a recording takes every one.
     const auto debug_shot = srw64::debug::screenshots().take();
-    if (!screenshot && !trace && !debug_shot) return;
+    const bool recording = srw64::debug::recording().active();
+    if (!trace && !debug_shot && !recording) return;
     nlohmann::json dialogue_trace=nullptr;
 #ifdef SRW64_NATIVE_DIALOGUE
     if(trace)if(auto snapshot=srw64::dialogue::presented_frame(workload)) {
@@ -243,7 +243,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     }
     const bool interactive = std::getenv("SRW64_INTERACTIVE") && std::string(std::getenv("SRW64_INTERACTIVE")) == "1";
     const auto path = capture_directory / (interactive ? "present-latest.png" : "present-" + std::to_string(frame) + ".png");
-    srw64_after_gpu(list, [buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, screenshot, dialogue_trace, debug_shot](bool completed) {
+    srw64_after_gpu(list, [buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, dialogue_trace, debug_shot, recording](bool completed) {
         if (!completed) {
             fprintf(stderr, "SRW64_CAPTURE_GPU_FAILED\n");
             if (debug_shot) srw64::debug::screenshots().finish(debug_shot->id, {{"error", "GPU capture failed"}});
@@ -278,6 +278,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
                 {"dialogue",dialogue_trace}}).dump()<<'\n';events.flush();
             previous=std::move(sample);
         }
+        if (recording) srw64::debug::recording().add(rgba.data(), width, height);
         if (debug_shot) {
             const bool written = stbi_write_png(debug_shot->path.string().c_str(), width, height, 4, rgba.data(), width * 4);
             srw64::debug::screenshots().finish(debug_shot->id, written
@@ -285,7 +286,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
                                   {"width", width}, {"height", height}, {"image_mode", image_mode}})
                 : nlohmann::json({{"error", "cannot write " + debug_shot->path.string()}}));
         }
-        if(!screenshot && !anomaly)return;
+        if(!anomaly)return;
         if (!stbi_write_png(path.string().c_str(), width, height, 4, rgba.data(), width * 4)) std::abort();
         auto metadata_path = path;
         metadata_path.replace_extension("json");
@@ -480,22 +481,24 @@ public:
     bool update_config(const ultramodern::renderer::GraphicsConfig&, const ultramodern::renderer::GraphicsConfig&) override { return false; }
     void enable_instant_present() override {}
     void send_dl(const OSTask* task) override {
+        srw64::frame_rate::list_sent();
         apply_images();
         apply_aspect();
         app->state->rsp->reset();
         app->interpreter->loadUCodeGBI(task->t.ucode & 0x3FFFFFF, task->t.ucode_data & 0x3FFFFFF, true);
         // What this frame fills of the picture, from its draws (wide_map::Shape).
         const auto shape=srw64::wide_map::take_shape();
-        if (aspect_width > srw64::frame::kWidth) {
-            // A picture wider than 4:3 keeps the original's rectangles centred until a
-            // scene places them wider (wide_map.cpp); a rectangle as wide as the screen
-            // stretches across the picture (RT64's own rule): fades, dimming, flashes and
-            // letterbox bars, never pictures (the game draws those in tiles). 3D widens:
-            // the world map, the title's and the prologue's lines, the battle's ground,
-            // units and effects. The same as gEXEnable at the head of the display list;
-            // RT64 clears it with every workload.
-            app->state->enableExtendedGBI(RT64_EXTENDED_OPCODE);
-        }
+        // A picture wider than 4:3 keeps the original's rectangles centred until a scene
+        // places them wider (wide_map.cpp); a rectangle as wide as the screen stretches
+        // across the picture (RT64's own rule): fades, dimming, flashes and letterbox bars,
+        // never pictures (the game draws those in tiles). 3D widens: the world map, the
+        // title's and the prologue's lines, the battle's ground, units and effects. The
+        // same as gEXEnable at the head of the display list; RT64 clears it with every
+        // workload. Always on, 4:3 too: the game thread wrote this list for the picture
+        // as it was then, and a window just made 4:3 must still read its extended commands
+        // as such (read as F3DEX2, a 16-byte one splits in two and its offset word can be a
+        // G_BRANCH_Z into nothing). F3DEX2 has no opcode 0x64 of its own.
+        app->state->enableExtendedGBI(RT64_EXTENDED_OPCODE);
         const uint32_t start=task->t.data_ptr & 0x3FFFFFF;
         bool native_text=false;
 #ifdef SRW64_NATIVE_DIALOGUE

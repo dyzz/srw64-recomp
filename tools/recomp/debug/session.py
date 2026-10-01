@@ -109,7 +109,7 @@ class Session:
     def launch(cls, language: str | None = None, images: str | None = None, rules=None, save: str | None = None,
                mini_stage: str | None = None, reuse_build: bool = False, audio: bool = False, binary: str | None = None,
                resolution_scale: int | None = None,
-               timeout: float = 900.0, env: dict | None = None, diagnostics: str = "full",
+               timeout: float = 900.0, env: dict | None = None,
                detach: bool = False, dump_textures: bool = False) -> "Session":
         """Build if needed and start a session; returns once the host listens.
 
@@ -120,7 +120,7 @@ class Session:
         DEBUG_DIR.mkdir(parents=True, exist_ok=True)
         run = DEBUG_DIR / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
         command = [sys.executable, str(ROOT / "tools/recomp/run/run_host_probe.py"), "--graphics", "--interactive",
-                   "--diagnostics", diagnostics, "--profile", str(PROFILE), "--output", str(run)]
+                   "--profile", str(PROFILE), "--output", str(run)]
         if language:
             command += ["--language", language]
         if images:
@@ -229,6 +229,46 @@ class Session:
             return True
         except HostError:
             return False
+
+    def record(self, seconds: float, path: str | Path | None = None, width: int = 960, fps: int = 30) -> dict:
+        """An MP4 of the next `seconds` of play, as presented (the host reads every present
+        back, scaled to `width`). Frames go on a steady `fps` timeline: each tick shows the
+        latest present by then, so a stalled stretch plays as a held frame. Needs ffmpeg."""
+        started = self.client.call("record.start", width=width)
+        try:
+            time.sleep(seconds)
+        finally:
+            result = self.client.call("record.stop")
+        directory = Path(started["directory"])
+        target = Path(path) if path else directory.with_suffix(".mp4")
+        w, h, count = result["width"], result["height"], result["frames"]
+        times = [float(line) for line in Path(result["times_path"]).read_text().split()][:count]
+        if not times:
+            raise HostError("no frames were presented while recording")
+        size = w * h * 3
+        command = ["ffmpeg", "-loglevel", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{w}x{h}",
+                   "-r", str(fps), "-i", "-", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", str(target)]
+        encoder = subprocess.Popen(command, stdin=subprocess.PIPE)
+        with open(result["frames_path"], "rb") as frames:
+            shown, frame = -1, b""
+            for tick in range(int(times[-1] * fps) + 1):
+                wanted = shown
+                while wanted + 1 < len(times) and times[wanted + 1] <= tick / fps:
+                    wanted += 1
+                if wanted != shown and wanted >= 0:
+                    frames.seek(wanted * size)
+                    frame, shown = frames.read(size), wanted
+                if frame:
+                    encoder.stdin.write(frame)
+        encoder.stdin.close()
+        if encoder.wait() != 0:
+            raise HostError(f"ffmpeg could not encode {target}")
+        for name in ("frames_path", "times_path"):
+            Path(result[name]).unlink(missing_ok=True)
+        directory.rmdir()
+        gaps = [b - a for a, b in zip(times, times[1:])]
+        return {"path": str(target), "seconds": round(times[-1], 2), "presents": count, "size": [w, h], "fps": fps,
+                "longest_gap_ms": round(max(gaps) * 1000) if gaps else None}
 
     def quit(self, timeout: float = 30.0) -> dict:
         try:
