@@ -15,6 +15,8 @@ bool enabled;
 std::filesystem::path output;
 std::mutex audio_mutex;
 SDL_AudioDeviceID device;
+// No output device (a PC with nothing to play on, a server): the game runs on without sound.
+bool silent{};
 uint32_t rate;
 uint64_t queued_samples{}, max_queued_frames{}, captured_samples{};
 uint64_t queue_calls{}, latency_recoveries{}, max_feedback_frames{};
@@ -39,7 +41,7 @@ bool srw64_audio_enabled() { return enabled; }
 void srw64_audio_frequency(uint32_t frequency) {
     if (!enabled) return;
     std::lock_guard lock(audio_mutex);
-    if (device && rate == frequency) return;
+    if ((device || silent) && rate == frequency) return;
     if (device) SDL_CloseAudioDevice(device);
     SDL_AudioSpec wanted{}, obtained{};
     wanted.freq = frequency;
@@ -47,17 +49,24 @@ void srw64_audio_frequency(uint32_t frequency) {
     wanted.channels = 2;
     wanted.samples = 512;
     device = SDL_OpenAudioDevice(nullptr, 0, &wanted, &obtained, 0);
-    if (!device || obtained.freq != (int)frequency || obtained.format != AUDIO_S16SYS || obtained.channels != 2) {
+    if (!device) {
+        fprintf(stderr, "SRW64_AUDIO_SILENT no output device: %s\n", SDL_GetError());
+        silent = true;
+        rate = frequency;
+        return;
+    }
+    if (obtained.freq != (int)frequency || obtained.format != AUDIO_S16SYS || obtained.channels != 2) {
         fprintf(stderr, "SRW64_AUDIO_DEVICE_FAILED %s\n", SDL_GetError());
         std::abort();
     }
+    silent = false;
     rate = frequency;
     SDL_PauseAudioDevice(device, 0);
     fprintf(stderr, "SRW64_AUDIO_DEVICE rate=%u channels=2 format=S16SYS\n", rate);
 }
 
 void srw64_queue_audio(int16_t* samples, size_t count) {
-    if (!enabled) return;
+    if (!enabled || silent) return;
     std::lock_guard lock(audio_mutex);
     if (!device || count % 2 || count > 0x1FFFC) {
         fprintf(stderr, "SRW64_AUDIO_INVALID_DMA samples=%zu rate=%u\n", count, rate);
