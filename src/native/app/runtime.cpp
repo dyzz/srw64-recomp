@@ -229,6 +229,15 @@ fs::path executable_path() {
 #endif
 }
 fs::path bundled_resource(const std::string& name) {
+#ifdef __ANDROID__
+    // No program file beside its resources: the app unpacks them from the APK and names
+    // the folder (tools/release/android, SRW64Activity).
+    if (const char* root=std::getenv("SRW64_RESOURCE_DIR"); root && *root) {
+        std::error_code error;
+        const auto candidate=utf8_path(root)/name;
+        return fs::exists(candidate,error)?candidate:fs::path{};
+    }
+#endif
     const auto executable=executable_path();
     if(executable.empty())return {};
     std::error_code error;
@@ -263,6 +272,8 @@ void clear_runtime_environment() {
         if (value.starts_with("SRW64_")) keys.push_back(value.substr(0,value.find('=')));
     }
 #endif
+    // Set by the Android app for bundled_resource, not a development probe.
+    std::erase(keys,std::string("SRW64_RESOURCE_DIR"));
     for (const auto& key:keys) {
 #ifdef _WIN32
         if (_putenv_s(key.c_str(),"")!=0) throw std::runtime_error("Cannot clear environment");

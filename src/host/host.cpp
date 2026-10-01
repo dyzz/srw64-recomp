@@ -510,7 +510,7 @@ static int run_host(int argc, char** argv) {
     return dl_count > 0 && audio_tasks > 0 ? 0 : 3;
 }
 
-#ifdef __linux__
+#if defined(__linux__) && !defined(__ANDROID__)
 // A crash leaves its stack on stderr (the session's native.log), for reports from
 // Linux and the Steam Deck: addresses resolve with addr2line on the unstripped build.
 #include <execinfo.h>
@@ -530,9 +530,40 @@ void crash_backtrace(int signal) {
 }
 #endif
 
+#ifdef __ANDROID__
+// Android drops stdout and stderr, where the host and RT64 report: forward both to logcat.
+#include <android/log.h>
+#include <thread>
+#include <unistd.h>
+namespace {
+void forward_output_to_logcat() {
+    int pipes[2];
+    if (pipe(pipes) != 0) return;
+    setvbuf(stdout, nullptr, _IOLBF, 0);
+    setvbuf(stderr, nullptr, _IONBF, 0);
+    dup2(pipes[1], STDOUT_FILENO);
+    dup2(pipes[1], STDERR_FILENO);
+    std::thread([fd = pipes[0]] {
+        char buffer[4096];
+        std::string line;
+        for (ssize_t n; (n = read(fd, buffer, sizeof(buffer))) > 0;) {
+            line.append(buffer, size_t(n));
+            for (size_t end; (end = line.find('\n')) != std::string::npos; line.erase(0, end + 1))
+                __android_log_write(ANDROID_LOG_INFO, "SRW64", line.substr(0, end).c_str());
+        }
+    }).detach();
+}
+}
+#endif
+
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
-#ifdef __linux__
+#ifdef __ANDROID__
+    forward_output_to_logcat();
+#endif
+#if defined(__linux__) && !defined(__ANDROID__)
+    // Android: bionic has backtrace() only from API 33, and debuggerd's tombstone needs
+    // its own handlers, so crashes go to logcat as tombstones.
     for (int signal : {SIGSEGV, SIGBUS, SIGILL, SIGFPE, SIGABRT}) std::signal(signal, crash_backtrace);
 #endif
 #if defined(__APPLE__) && defined(SRW64_WITH_RT64)

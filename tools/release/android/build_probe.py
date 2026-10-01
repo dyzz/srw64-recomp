@@ -72,12 +72,12 @@ def native(build: Path, source: dict[str, Path]) -> list[Path]:
     return [stripped / library.name for library in libraries]
 
 
-def java(build: Path, sdl3: Path, android_jar: Path, tools: Path) -> Path:
+def java(build: Path, sdl3: Path, android_jar: Path, tools: Path, own: Path = HERE / 'java') -> Path:
     classes, dex = build / 'classes', build / 'dex'
     for directory in (classes, dex):
         shutil.rmtree(directory, ignore_errors=True)
         directory.mkdir(parents=True)
-    files = sorted((sdl3 / 'android-project/app/src/main/java').rglob('*.java')) + sorted((HERE / 'java').rglob('*.java'))
+    files = sorted((sdl3 / 'android-project/app/src/main/java').rglob('*.java')) + sorted(own.rglob('*.java'))
     javac = Path(subprocess.run(['/usr/libexec/java_home', '-v', '17'], capture_output=True, text=True, check=True).stdout.strip()) / 'bin/javac'
     run(javac, '-nowarn', '-Xlint:none', '-source', '11', '-target', '11', '-encoding', 'UTF-8',
         '-classpath', android_jar, '-d', classes, *files)
@@ -86,12 +86,13 @@ def java(build: Path, sdl3: Path, android_jar: Path, tools: Path) -> Path:
     return dex / 'classes.dex'
 
 
-def package(build: Path, libraries: list[Path], dex: Path, android_jar: Path, tools: Path) -> Path:
+def package(build: Path, libraries: list[Path], dex: Path, android_jar: Path, tools: Path, app: Path = HERE,
+            assets: Path | None = None, name: str = 'srw64-android-probe') -> Path:
     compiled = build / 'res.zip'
-    run(tools / 'aapt2', 'compile', '--dir', HERE / 'res', '-o', compiled)
+    run(tools / 'aapt2', 'compile', '--dir', app / 'res', '-o', compiled)
     linked = build / 'linked.apk'
-    run(tools / 'aapt2', 'link', '-o', linked, '-I', android_jar, '--manifest', HERE / 'AndroidManifest.xml',
-        '--min-sdk-version', MIN_SDK, '--target-sdk-version', TARGET_SDK, compiled)
+    run(tools / 'aapt2', 'link', '-o', linked, '-I', android_jar, '--manifest', app / 'AndroidManifest.xml',
+        '--min-sdk-version', MIN_SDK, '--target-sdk-version', TARGET_SDK, *(['-A', assets] if assets else []), compiled)
     unaligned = build / 'unaligned.apk'
     with zipfile.ZipFile(linked) as source, zipfile.ZipFile(unaligned, 'w') as target:
         for item in source.infolist():
@@ -107,7 +108,7 @@ def package(build: Path, libraries: list[Path], dex: Path, android_jar: Path, to
         run('keytool', '-genkeypair', '-keystore', keystore, '-storepass', 'android', '-keypass', 'android',
             '-alias', 'probe', '-keyalg', 'RSA', '-keysize', '2048', '-validity', '10000',
             '-dname', 'CN=SRW64 probe')
-    apk = build / 'srw64-android-probe.apk'
+    apk = build / f'{name}.apk'
     run(tools / 'apksigner', 'sign', '--ks', keystore, '--ks-pass', 'pass:android', '--out', apk, aligned)
     return apk
 
