@@ -1,6 +1,10 @@
 package org.srw64.game;
 
+import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.system.ErrnoException;
 import android.system.Os;
 
@@ -22,10 +26,32 @@ public class SRW64Activity extends SDLActivity {
             home.mkdirs();
             Os.setenv("HOME", home.getPath(), true);
             Os.setenv("TMPDIR", getCacheDir().getPath(), true);
+            // Development: `am start ... --ez debug true` opens the debug interface
+            // (src/host/debug_server.cpp, tools/release/android/attach.py).
+            if (getIntent().getBooleanExtra("debug", false)) Os.setenv("SRW64_DEBUG", "1", true);
         } catch (ErrnoException error) {
             throw new RuntimeException(error);
         }
         super.onCreate(state);
+    }
+
+    // Immersive: no status or navigation bar over the game; a swipe shows them for a moment.
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            WindowInsetsController controller = getWindow().getInsetsController();
+            if (controller != null) {
+                controller.hide(WindowInsets.Type.systemBars());
+                controller.setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+            }
+        }
+    }
+
+    // Landscape only: SDL lets a resizable window take any orientation, overriding the manifest.
+    @Override
+    public void setOrientationBis(int w, int h, boolean resizable, String hint) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
     }
 
     @Override

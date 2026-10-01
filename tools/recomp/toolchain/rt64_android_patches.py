@@ -122,6 +122,22 @@ namespace RT64 {
 #   else
         swapChainDesc.format = RenderFormat::B8G8R8A8_UNORM;
 #   endif'''),
+    # The Video Interface pipelines draw the game into the swap chain: they must match its
+    # R8G8B8A8 there, or Mali draws through an incompatible render pass (validation layer:
+    # VUID-vkCmdDraw-renderPass-02684) and the picture keeps stale blocks.
+    ('src/render/rt64_shader_library.cpp', '''            pipelineDesc.renderTargetFormat[0] = RenderFormat::B8G8R8A8_UNORM; // TODO: Use whatever format the swap chain was created with.''', '''#       ifdef __ANDROID__
+            pipelineDesc.renderTargetFormat[0] = RenderFormat::R8G8B8A8_UNORM;
+#       else
+            pipelineDesc.renderTargetFormat[0] = RenderFormat::B8G8R8A8_UNORM; // TODO: Use whatever format the swap chain was created with.
+#       endif'''),
+    # Mali exposes two queues in its one family, and Plume spreads RT64's workers over both.
+    # They then run at once, and RT64's waits between them do not cover that: the opening's
+    # framebuffer effects sample stale blocks (the validation layer, which serializes
+    # submissions, hides it). One queue, as the desktop GPUs effectively give, draws right.
+    ('src/contrib/plume/plume_vulkan.cpp', '''                queueCreateInfo.queueCount = std::min(queueFamilyProperties[i].queueCount, MaxQueuesPerFamilyCount);''', '''                queueCreateInfo.queueCount = std::min(queueFamilyProperties[i].queueCount, MaxQueuesPerFamilyCount);
+#           ifdef __ANDROID__
+                queueCreateInfo.queueCount = 1;
+#           endif'''),
     # Dual-source blending (SRC1_ALPHA) is missing on Mali GPUs, which still accept the
     # pipeline and draw white. With RT64_SINGLE_SOURCE_BLEND (on for Android) the pixel
     # shader has one output: a blended draw writes its blend factor into alpha in place

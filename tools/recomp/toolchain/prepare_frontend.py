@@ -55,7 +55,7 @@ def prepare(fetch: bool = False) -> dict:
     renderer = SOURCE / "recompui/src/renderer"
     header = (renderer / "ui_renderer.h").read_text()
     # The implementation only needs RmlUi and Plume. Avoid pulling the launcher's
-    # mod/config/input headers through its umbrella header. No renderer edits.
+    # mod/config/input headers through its umbrella header.
     before = '#include "recompui.h"'
     if header.count(before) != 1:
         raise RuntimeError("Pinned renderer header adapter no longer matches")
@@ -64,6 +64,14 @@ def prepare(fetch: bool = False) -> dict:
     header = header.replace(before, '#include <string>\n#include <vector>\n#include "common/rt64_plume.h"\n'
                             '#ifdef interface\n#undef interface\n#endif\n#include <RmlUi/Core.h>')
     source = (renderer / "ui_renderer.cpp").read_bytes()
+    # Android swap chains are R8G8B8A8 (tools/recomp/toolchain/rt64_android_patches.py); the
+    # renderer's pipelines must match the render pass it draws into.
+    swap_format = b"    static constexpr plume::RenderFormat SwapChainFormat = plume::RenderFormat::B8G8R8A8_UNORM;"
+    if source.count(swap_format) != 1:
+        raise RuntimeError("Pinned renderer swap chain format no longer matches")
+    source = source.replace(swap_format, b"#ifdef __ANDROID__\n"
+                            b"    static constexpr plume::RenderFormat SwapChainFormat = plume::RenderFormat::R8G8B8A8_UNORM;\n"
+                            b"#else\n" + swap_format + b"\n#endif")
     write_changed(OUTPUT / "ui_renderer.h", header.encode())
     write_changed(OUTPUT / "ui_renderer.cpp", source)
     report = {"schema": "srw64.frontend-adapter.v1", "commit": lock["commit"],

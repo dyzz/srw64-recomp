@@ -206,7 +206,11 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     const uint32_t width = framebuffer->getWidth(), height = framebuffer->getHeight();
     const uint32_t row_pixels = (width + 63) & ~63U;
     auto buffer = std::shared_ptr<RenderBuffer>(capture_device->createBuffer(RenderBufferDesc::ReadbackBuffer((uint64_t)row_pixels * 4 * height)));
+#ifdef __ANDROID__
+    bool bgra = false;  // the swap chain is R8G8B8A8 there (rt64_android_patches.py)
+#else
     bool bgra = true;
+#endif
 #ifdef __APPLE__
     if (metal_backend) {
     const auto* metal_framebuffer = static_cast<const plume::MetalFramebuffer*>(framebuffer);
@@ -237,7 +241,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
             return;
         }
         list->barriers(RenderBarrierStage::COPY, RenderTextureBarrier(texture, RenderTextureLayout::COPY_SOURCE));
-        list->copyTextureRegion(RenderTextureCopyLocation::PlacedFootprint(buffer.get(), RenderFormat::B8G8R8A8_UNORM, width, height, 1, row_pixels),
+        list->copyTextureRegion(RenderTextureCopyLocation::PlacedFootprint(buffer.get(), bgra ? RenderFormat::B8G8R8A8_UNORM : RenderFormat::R8G8B8A8_UNORM, width, height, 1, row_pixels),
                                 RenderTextureCopyLocation::Subresource(texture));
         list->barriers(RenderBarrierStage::GRAPHICS, RenderTextureBarrier(texture, RenderTextureLayout::COLOR_WRITE));
     }
@@ -704,11 +708,8 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     // menu, F11 or the settings page for full screen, frontend.cpp).
     const bool deck = srw64::on_steam_deck();
     if (deck) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
-#ifdef __ANDROID__
-    constexpr bool fills_screen = true;  // immersive: no status or navigation bar over the game
-#else
+    // Android: the activity hides the system bars itself (SRW64Activity).
     const bool fills_screen = deck;
-#endif
     // A Steam Deck's 1280 x 800 is the reference (game_frame.hpp); the Deck fills its screen.
     window = SDL_CreateWindow("SRW64 native graphics probe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                               1280, 800, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |

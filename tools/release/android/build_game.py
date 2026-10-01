@@ -91,6 +91,8 @@ def main() -> int:
     parser.add_argument('--install', action='store_true', help='adb install the APK')
     parser.add_argument('--run', action='store_true', help='start it and follow its log')
     parser.add_argument('--no-prepare', action='store_true', help='keep local RT64 experiments (skip prepare_rt64.py)')
+    parser.add_argument('--validation', type=Path, metavar='SO',
+                        help="Khronos libVkLayer_khronos_validation.so (arm64) to ship; Plume enables it (the host builds without NDEBUG)")
     args = parser.parse_args()
     prefix = ROOT / 'build/android/deps/prefix'
     if not (prefix / 'lib/libicuuc.a').exists():
@@ -99,6 +101,8 @@ def main() -> int:
     tools = latest(SDK / 'build-tools')
     android_jar = latest(SDK / 'platforms') / 'android.jar'
     libraries = native(args.build, source, prefix, host_file_to_c(args.build.parent), not args.no_prepare)
+    if args.validation:
+        libraries.append(args.validation.resolve(strict=True))
     dex = java(args.build, source['sdl3'], android_jar, tools, APP / 'java')
     assets = stage_assets(args.build, prefix)
     apk = package(args.build, libraries, dex, android_jar, tools, APP, assets, 'srw64-android')

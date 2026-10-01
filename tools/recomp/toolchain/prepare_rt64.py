@@ -24,8 +24,10 @@ def patch(checkout: Path, relative: str, old: str | None = None, new: str | None
     original = subprocess.check_output(["git", "show", f"HEAD:{relative}"], cwd=checkout).decode()
     if old is not None and original.count(old) != 1:
         raise RuntimeError(f"patch context differs in {relative}")
+    # Android patches name Plume's files from the RT64 checkout (src/contrib/plume/...).
+    android_key = f"src/contrib/plume/{relative}" if checkout.name == "plume" else relative
     steps = [*([(old, new)] if old is not None else []), *NATIVE_MODEL_PATCHES.get(relative, []), *additional,
-             *ANDROID_PATCHES.get(relative, [])]
+             *ANDROID_PATCHES.get(android_key, [])]
     expected = original
     # A checkout patched by an earlier revision of these lists holds some of the
     # patches, in order: accept any such subset, nothing else.
@@ -374,7 +376,7 @@ def main() -> int:
                           ('#include "rt64_workload_queue.h"\n',
                            '#include "rt64_workload_queue.h"\n\n#include <cmath>\n\n#include "../include/rt64_extended_gbi.h"\n')]))
     recorded = {r['path'] for r in records}
-    for relative in [*NATIVE_MODEL_PATCHES, *ANDROID_PATCHES]:
+    for relative in [*NATIVE_MODEL_PATCHES, *(r for r in ANDROID_PATCHES if not r.startswith("src/contrib/plume/"))]:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:
             recorded.add(str((checkout/relative).relative_to(ROOT)))
             records.append(patch(checkout, relative))
