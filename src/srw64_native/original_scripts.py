@@ -239,7 +239,7 @@ def decode_operand(role: str, value: int, resolver: Resolver) -> dict:
         elif role == "actor_or_any":
             out.update(resolver.actor(value))
         else:
-            out["meaning"] = f"变量 {value} 须为 3" if 100 <= value <= 115 else f"变量 {value}（触发器不检查此范围）"
+            out["meaning"] = f"变量 {value} 为 3 时不触发" if 100 <= value <= 115 else f"变量 {value}（触发器不检查此范围）"
     elif role == "side_or_any":
         out["meaning"] = SIDE_NAMES.get(value, f"未知阶段 {value}")
     elif role == "turn":
