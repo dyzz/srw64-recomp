@@ -4,10 +4,6 @@
 #include "slant_decorator.hpp"
 #include "name_page.hpp"
 #include "text_input.hpp"
-#ifdef interface
-// Windows' objbase.h defines interface as struct; RecompFrontend names a parameter so.
-#undef interface
-#endif
 #include "ui_renderer.h"
 #include "RmlUi_Platform_SDL.h"
 #include "native_dialogue.hpp"
