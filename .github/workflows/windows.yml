@@ -60,8 +60,11 @@ jobs:
         env:
           KEY: ${{ secrets.CI_ARTIFACT_KEY }}
         run: |
-          # The patched upstream sources go too (without their .git), so the Windows job
-          # builds exactly what was prepared here.
+          # The patched upstream sources go too (without their .git, each revision kept in
+          # .srw64-revision), so the Windows job builds exactly what was prepared here.
+          find build/recomp/upstream -name .git -prune | while read -r g; do
+            d=$(dirname "$g"); git -C "$d" rev-parse HEAD > "$d/.srw64-revision"
+          done
           tar -czf "$RUNNER_TEMP/generated.tgz" --exclude=.git \
             build/recomp/cpu-bound build/recomp/audio-probe build/fonts build/recomp/upstream
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY \
@@ -108,7 +111,8 @@ jobs:
           .venv\Scripts\python -m pip install -q -e . -r requirements.lock
 
       - name: vcpkg cache
-        uses: actions/cache@v4
+        id: vcpkg-cache
+        uses: actions/cache/restore@v4
         with:
           path: vcpkg-cache
           key: vcpkg-x64-windows-freetype-harfbuzz-icu-v1
@@ -117,6 +121,13 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force vcpkg-cache | Out-Null
           & "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe" install freetype harfbuzz icu --triplet x64-windows
+
+      # Saved right away: ICU takes a quarter of an hour, and later steps may fail.
+      - if: steps.vcpkg-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: vcpkg-cache
+          key: vcpkg-x64-windows-freetype-harfbuzz-icu-v1
 
       - name: MSVC environment
         shell: pwsh

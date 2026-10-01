@@ -17,6 +17,15 @@ def git(*args: str, cwd: Path = SOURCE) -> str:
     return subprocess.check_output(["git", *args], cwd=cwd, text=True).strip()
 
 
+def exported(directory: Path) -> bool:
+    """A copy without its .git, carrying its revision in .srw64-revision (the Windows CI job)."""
+    return not (directory / ".git").exists() and (directory / ".srw64-revision").is_file()
+
+
+def revision(directory: Path) -> str:
+    return (directory / ".srw64-revision").read_text().strip() if exported(directory) else git("rev-parse", "HEAD", cwd=directory)
+
+
 def write_changed(path: Path, data: bytes) -> None:
     if not path.exists() or path.read_bytes() != data:
         path.write_bytes(data)
@@ -32,15 +41,15 @@ def prepare(fetch: bool = False) -> dict:
         SOURCE.parent.mkdir(parents=True, exist_ok=True)
         subprocess.run(["git", "clone", "--no-checkout", lock["url"], str(SOURCE)], check=True)
         git("checkout", "--detach", lock["commit"])
-    if git("rev-parse", "HEAD") != lock["commit"]:
+    if revision(SOURCE) != lock["commit"]:
         raise RuntimeError("Frontend checkout differs from lock; existing checkout left untouched")
     if fetch:
         git("submodule", "update", "--init", "recompui/lib/RmlUi")
     rml = SOURCE / "recompui/lib/RmlUi"
-    if git("rev-parse", "HEAD", cwd=rml) != lock["rmlui_commit"]:
+    if revision(rml) != lock["rmlui_commit"]:
         raise RuntimeError("RmlUi checkout differs from lock")
     for directory in (SOURCE, rml):
-        if git("status", "--porcelain", cwd=directory):
+        if not exported(directory) and git("status", "--porcelain", cwd=directory):
             raise RuntimeError(f"Dirty upstream checkout: {directory}")
     OUTPUT.mkdir(parents=True, exist_ok=True)
     renderer = SOURCE / "recompui/src/renderer"

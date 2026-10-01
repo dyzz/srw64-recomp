@@ -39,11 +39,13 @@
 #include <future>
 #include <memory>
 #include <mutex>
+#include <thread>
+#ifndef _WIN32
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/un.h>
-#include <thread>
 #include <unistd.h>
+#endif
 
 extern uint8_t* srw64_rdram;  // host.cpp
 
@@ -350,6 +352,7 @@ std::string handle(const std::string& line) {
     catch(const std::exception& error){return failure(call.id,ServerError,error.what());}
 }
 
+#ifndef _WIN32
 void serve(int client) {
     std::string buffer;
     char chunk[4096];
@@ -374,6 +377,7 @@ void serve(int client) {
 }
 
 void remove_socket(){if(!socket_path.empty())::unlink(socket_path.c_str());}
+#endif
 }
 
 bool enabled(){return running;}
@@ -382,6 +386,12 @@ void start(const std::filesystem::path& directory,json host) {
     const char* flag=std::getenv("SRW64_DEBUG");
     if(!flag || std::string(flag)!="1")return;
     output=directory;host_info=std::move(host);
+#ifdef _WIN32
+    // The Unix socket becomes loopback TCP on Windows (docs/design/three-platform-port.md,
+    // X3 item 8); until then the interface is off there.
+    std::fprintf(stderr,"SRW64_DEBUG unavailable on Windows yet\n");
+    return;
+#else
     socket_path=directory/"debug.sock";
     sockaddr_un address{};
     address.sun_family=AF_UNIX;
@@ -406,6 +416,7 @@ void start(const std::filesystem::path& directory,json host) {
     std::ofstream(directory/"debug.json")<<json({{"schema","srw64.debug-endpoint.v1"},{"socket",socket_path.string()},
         {"pid",getpid()},{"protocol","JSON-RPC 2.0, one message per line"}}).dump(2)<<'\n';
     std::fprintf(stderr,"SRW64_DEBUG socket=%s\n",socket_path.c_str());
+#endif
 }
 
 void service_main() {

@@ -97,7 +97,7 @@ bool hd_enabled() {
 // Premultiplied RGBA with a box-filtered mip chain (any size; odd edges clamp).
 void decode(Asset& asset) {
     int w = 0, h = 0, n = 0;
-    uint8_t* pixels = stbi_load(asset.file.c_str(), &w, &h, &n, 4);
+    uint8_t* pixels = stbi_load(asset.file.string().c_str(), &w, &h, &n, 4);
     if (!pixels) throw std::runtime_error("Cannot read HD background " + asset.file.string());
     if (w != asset.width || h != asset.height) { stbi_image_free(pixels); throw std::runtime_error("HD background size differs from the manifest: " + asset.file.string()); }
     std::vector<uint8_t> level(pixels, pixels + size_t(w) * h * 4);
