@@ -8,6 +8,7 @@
 #include <filesystem>
 #include <fstream>
 #include <memory>
+#include <optional>
 #include <vector>
 
 #include "librecomp/game.hpp"
@@ -52,6 +53,7 @@
 #include "focus_lines.hpp"
 #include "swap_page.hpp"
 #include "save_page.hpp"
+#include "save_store.hpp"
 #include "title_page.hpp"
 #include "move_jump.hpp"
 #include "enemy_cycle.hpp"
@@ -66,6 +68,7 @@ namespace {
 std::atomic<uint64_t> vi_count{}, dl_count{}, audio_tasks{}, audio_samples{};
 std::atomic<uint32_t> frequency{};
 std::filesystem::path output_dir;
+std::optional<std::filesystem::path> initial_sram;  // the card the run started from
 uint64_t max_vis = 600;
 std::vector<size_t> loaded_sections;
 std::vector<uint16_t> input_buttons;
@@ -333,6 +336,7 @@ static int run_host(int argc, char** argv) {
         std::filesystem::create_directories(saves);
         if (!std::filesystem::copy_file(argv[5], saves / variant->save_file)) fail("initial SRAM copy failed");
         std::fprintf(stderr, "SRW64_INITIAL_SRAM copied=32768\n");
+        initial_sram = saves / variant->save_file;
     }
     recomp::register_config_path(output_dir / "runtime-data");
     recomp::overlays::register_overlays({section_table, num_sections, num_sections},
@@ -455,6 +459,8 @@ static int run_host(int argc, char** argv) {
     srw64::parts_page::configure(output_dir);
     srw64::ability_page::configure(output_dir);
     srw64::swap_page::configure(output_dir);
+    srw64::save_store::configure(output_dir, initial_sram);
+    if (srw64::save_store::enabled()) srw64_game_hooks.sram_transfer = srw64::save_store::transfer;
     srw64::save_page::configure(output_dir);
     srw64::title_page::configure(output_dir);
     srw64::move_jump::configure(output_dir);
@@ -574,6 +580,10 @@ int main(int argc, char** argv) {
             std::vector<std::string_view> args;
             for (int i = 2; i < argc; ++i) args.emplace_back(argv[i]);
             const auto options = srw64::app::parse_options(args);
+            if (!options.export_save.empty()) {
+                std::fprintf(stderr, "SRW64_SAVE_EXPORT %s\n", srw64::app::export_save(options).string().c_str());
+                return 0;
+            }
             srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
                 native_rom_variants[0].save_file, srw64::rules::version, {}};
             for (const auto& rule : srw64::rules::catalog)

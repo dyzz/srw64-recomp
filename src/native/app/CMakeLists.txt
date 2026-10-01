@@ -1,4 +1,4 @@
-add_library(srw64_app STATIC runtime.cpp desktop.cpp)
+add_library(srw64_app STATIC runtime.cpp desktop.cpp sram.cpp save_library.cpp)
 target_compile_features(srw64_app PUBLIC cxx_std_20)
 target_include_directories(srw64_app PUBLIC "${CMAKE_CURRENT_LIST_DIR}/..")
 if(MSVC)

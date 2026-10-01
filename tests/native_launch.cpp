@@ -1,5 +1,6 @@
 #include "app/launch.hpp"
 #include "app/sha256.hpp"
+#include "app/sram.hpp"
 #include "json/json.hpp"
 #include <chrono>
 #include <cstdlib>
@@ -10,6 +11,8 @@ using json=nlohmann::json;
 namespace {
 unsigned checks{};
 void check(bool value,const char* message){++checks;if(!value)throw std::runtime_error(message);}
+// A formatted card, as the game leaves SRAM after its first boot.
+const std::string formatted_card=[]{std::string bytes(32768,'\0');std::copy(sram::magic.begin(),sram::magic.end(),bytes.begin());return bytes;}();
 template<class F> void rejects(F f,const char* message){++checks;try{f();}catch(const std::exception&){return;}throw std::runtime_error(message);}
 std::string env(const char* key){const auto* value=std::getenv(key);return value?value:"";}
 json load(const fs::path& path){return json::parse(read_text(path,32*1024*1024));}
@@ -75,7 +78,7 @@ void relocated_boot_and_resume() {
         const auto output=fs::path(argv[2]);
         check(!fs::exists(output),"probe output existed before host startup");
         fs::create_directories(output/"runtime-data/saves");
-        atomic_write(output/"runtime-data/saves"/f.game.save_file,std::string(32768,'a'));
+        atomic_write(output/"runtime-data/saves"/f.game.save_file,formatted_card);
         // Simulate changing language and rules through the current native UI.
         atomic_write(env("SRW64_PRESENTATION_SETTINGS"),json({{"schema","srw64.presentation-settings.v1"},{"locale","ja"}}).dump());
         atomic_write(env("SRW64_RULE_SETTINGS"),json({{"schema","srw64.rule-settings.v1"},{"rules_version",1},{"fixes",json::array()}}).dump());
@@ -86,7 +89,7 @@ void relocated_boot_and_resume() {
     f.options.language.clear();
     check(run_standalone(f.options,f.game,[&](int argc,char** argv){
         check(argc==6,"resume did not stage SRAM");
-        check(read_text(argv[5],32768)==std::string(32768,'a'),"resume SRAM changed");
+        check(read_text(argv[5],32768)==formatted_card,"resume SRAM changed");
         check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")=="ja","saved locale ignored");
         check(env("SRW64_RULE_FIXES").empty(),"explicit saved original rules became defaults");
         return 7; // A failed host must not publish an apparently successful session.

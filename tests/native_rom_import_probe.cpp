@@ -4,11 +4,14 @@
 #include "app/rom_import_codec.hpp"
 #include "app/portrait_png.hpp"
 #include "app/sha256.hpp"
+#include "app/sram.hpp"
 #include "json/json.hpp"
 #include <iostream>
 using namespace srw64::app;
 using json=nlohmann::json;
 static fs::path path(const char* p){return fs::path(std::u8string(reinterpret_cast<const char8_t*>(p)));}
+// A formatted card, as the game leaves SRAM after its first boot.
+static std::string card(){std::string bytes(32768,'s');std::copy(sram::magic.begin(),sram::magic.end(),bytes.begin());return bytes;}
 int main(int argc,char** argv){try {
     if(argc==3 && std::string(argv[1])=="metadata") {atomic_write(path(argv[2]),embedded_import_spec());return 0;}
     if(argc==5 && std::string(argv[1])=="lz") {
@@ -40,8 +43,8 @@ int main(int argc,char** argv){try {
         result={{"argc",n},{"texts",data.at("source_entries").size()},{"locale",data.at("config").at("locale")},
                 {"portraits",data.at("name_entry_assets").at("portraits").size()}};
         const auto save=path(a[2])/"runtime-data/saves/test.bin";fs::create_directories(save.parent_path());
-        if(n==6 && read_text(path(a[5]),32768)!=std::string(32768,'s'))throw std::runtime_error("Resume did not preserve SRAM");
-        atomic_write(save,std::string(32768,'s'));return 0;
+        if(n==6 && read_text(path(a[5]),32768)!=card())throw std::runtime_error("Resume did not preserve SRAM");
+        atomic_write(save,card());return 0;
     },[&](const fs::path& input,const fs::path& cache,const std::string& digest){
         bool rejected=false;try{Session second(options);}catch(const std::exception&){rejected=true;}
         if(!rejected)throw std::runtime_error("Importer ran without holding the play lock");

@@ -680,6 +680,13 @@ void load_0008F4B0_func_801D24C8(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.ability_step && srw64_game_hooks.ability_step(rdram, ctx, 15, srw64_original_ability_pilot_step)) return;
     srw64_original_ability_pilot_step(rdram, ctx);
 }
+// Every SRAM transfer (docs/design/save-slots-autosave.md §1.1): extended slots are
+// answered by the save store, cartridge writes are followed by it.
+void resident_func_80090E5C(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.sram_transfer &&
+        srw64_game_hooks.sram_transfer(rdram, uint8_t(ctx->r4), uint32_t(ctx->r5), uint32_t(ctx->r6), uint32_t(ctx->r7))) return;
+    srw64_original_sram_transfer(rdram, ctx);
+}
 // データセーブ (save_page.cpp): the medium choice and the slot page, built without
 // drawing; the page runs the state machine and calls the original write routines.
 void load_0008F4B0_func_801CEA30(uint8_t* rdram, recomp_context* ctx) {

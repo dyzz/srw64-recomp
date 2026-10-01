@@ -145,6 +145,7 @@
 | [三平台移植计划](design/three-platform-port.md) | Windows／Linux（含 Steam Deck）／macOS 的后端与编译器选择、移植阻塞项审计、X0–X4 阶段与验收、构建步骤分工 |
 | [宽屏画面](design/deck-16x10.md) | 以 Steam Deck 1280×800 为基准、随屏幕 4:3–16:9：RT64 按画面宽度渲染加扩展指令、宿主绘制层映射、两侧清黑、各场景做法、战术地图放宽的改动点、阶段、实机验收与未知项 |
 | [战斗演出渲染机制](design/battle-animation-rendering.md) | 战斗演出怎样画出来：背景、3D 地面与模型、机体精灵、特效、cut-in 与遮框；HD 路线（机体姿势、烘焙光照城市、实时水面）与实机验收 |
+| [多存档栏与自动存档](design/save-slots-autosave.md) | 原版 SRAM 布局与校验、卡带文件与模拟器互通、扩展栏和自动存档改道原版 SRAM 传输、导入导出与格式识别、阶段与待核实项 |
 | [Steam Deck 键位与按键图标](design/steam-deck-controls.md) | 默认手柄模板下的全部键位、标题与场间的设置入口、设置界面分页改版、待定键位、自绘图标字体方案与验证计划 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |

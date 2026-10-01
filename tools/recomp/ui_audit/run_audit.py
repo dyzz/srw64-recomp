@@ -150,6 +150,13 @@ def fixtures(text):
             if slot.get('used'):
                 slot.update(title=stages[0], funds=9999999, turns=999, episode=60, level=99)
         add('save-slots-long', {'save_page': slots})
+        # Extended slots (save_store.hpp): the cartridge label and page number on page 1,
+        # slots 98-99 on the last page, loading from the title.
+        first = at(states['save']['slots'])
+        add('save-slots-pages', {'save_page': {**first, 'count': 99, 'page': 0, 'pages': 50, 'context': 'title'}})
+        last = at(slots)
+        last['slots'] = [{**slot, 'index': 97 + i, 'number': 98 + i} for i, slot in enumerate(last['slots'])]
+        add('save-slots-last-page', {'save_page': {**last, 'cursor': 97, 'count': 99, 'page': 49, 'pages': 50}})
         add('load-choice', {'save_page': {**at(states['save']['choice']), 'context': 'title'}})
         # のりかえ, 能力, 強化パーツ: recorded rows, then seven rows of the longest names.
         for name, state in states['swap'].items():

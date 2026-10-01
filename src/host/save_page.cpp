@@ -5,11 +5,13 @@
 #include "native_name_entry.hpp"
 #include "localization/catalog.hpp"
 #include "game_hooks.hpp"
+#include "save_store.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
 #include <algorithm>
 #include <atomic>
 #include <fstream>
+#include <map>
 #include <mutex>
 
 uint64_t srw64_current_vi();
@@ -31,7 +33,6 @@ constexpr unsigned wait_frames=30;
 // +0x10 episode, +0x11 title, +0x12 turns, +0x14 funds); the Controller Pak status
 // D_801DD116 (80094168; 2 and up is a message), the はい／いいえ cursor D_801DDA08.
 constexpr uint32_t slots=0x801DD118,slot_size=0x18,pak_status=0x801DD116,window_cursor=0x801DDA08,pak_control=0x8015F508;
-constexpr unsigned slot_count=2;
 constexpr uint32_t read_slots=0x80085CD4,write_sram=0x80092678,write_pak=0x80093FD4,pak_check=0x80094168,pak_removed=0x8009412C,pak_poll=0x800906A0,pak_repair=0x80090844;
 // Protagonist portraits D_801DC680: resource 0x51C+class with palette 0x520+class — the
 // name-entry faces 25+class of the profile (アークライト, セレイン, ブラッド, マナミ).
@@ -115,12 +116,59 @@ void relocalize(const uint8_t* ram) {
     labels(ram);
 }
 
+// --- The slot list (save_store.hpp) ------------------------------------------------------
+// The cartridge's two slots, then extended slots 3..99, two to a page in the original's
+// layout; a save also offers the next free slot. `cursor_at` indexes `numbers`; the
+// game's own cursor only ever holds 0 or 1.
+std::vector<unsigned> numbers{1,2};
+std::map<unsigned,json> extended_headers;
+unsigned cursor_at{};
+json slot_json(const uint8_t* ram,unsigned n,uint32_t headers);
+// After 80085CD4 filled `table` with the cartridge's headers: the extended slots' headers,
+// read by the same routine through the store's window, then the cartridge's again.
+void list_slots(uint8_t* ram,recomp_context* ctx,uint32_t table,bool saving) {
+    numbers={1,2};extended_headers.clear();
+    if(!save_store::enabled())return;
+    auto extended=save_store::extended();
+    for(size_t i=0;i<extended.size();i+=2) {
+        const unsigned a=extended[i],b=i+1<extended.size()?extended[i+1]:a;
+        save_store::Window first(0,a),second(1,b);
+        call(ram,ctx,read_slots,0,table);
+        extended_headers[a]=slot_json(ram,0,table);extended_headers[b]=slot_json(ram,1,table);
+    }
+    if(!extended.empty())call(ram,ctx,read_slots,0,table);
+    if(saving)if(const auto free=save_store::next_free())extended.push_back(*free);
+    std::sort(extended.begin(),extended.end());
+    numbers.insert(numbers.end(),extended.begin(),extended.end());
+    cursor_at=std::min<unsigned>(cursor_at,unsigned(numbers.size())-1);
+}
+unsigned number_at(){return numbers.at(cursor_at);}
+bool slot_used(const uint8_t* ram,uint32_t table,unsigned number) {
+    if(number<=2)return read(ram,table+(number-1)*slot_size,1)!=0;
+    const auto found=extended_headers.find(number);
+    return found!=extended_headers.end() && found->second.value("used",false);
+}
+// The page's part of the list: the two slots on the cursor's page, each with its number.
+void page_slots(json& page,const uint8_t* ram,uint32_t table,bool headers=true) {
+    const unsigned first=cursor_at/2*2;
+    page["cursor"]=cursor_at;page["count"]=numbers.size();page["page"]=first/2;page["pages"]=(numbers.size()+1)/2;
+    page["slots"]=json::array();
+    for(unsigned at=first;at<first+2 && at<numbers.size();++at) {
+        const unsigned number=numbers[at];
+        json s=number>2?(extended_headers.contains(number)?extended_headers.at(number):json{{"used",false}})
+                       :headers?slot_json(ram,number-1,table):json{{"used",false}};
+        s["index"]=at;s["number"]=number;
+        page["slots"].push_back(std::move(s));
+    }
+}
+
 // --- Medium choice (1) ---------------------------------------------------------------
 
 json choice_json(const uint8_t* ram) {
     return {{"screen","choice"},{"cursor",std::min<unsigned>(read(ram,medium,2),1)},{"waiting",read(ram,message_shown,4)!=0}};
 }
 bool choice_build(uint8_t* ram,recomp_context* ctx) {
+    save_store::disarm();
     call(ram,ctx,resident_func_80085B94,0,1);
     write32(ram,message_shown,0);write32(ram,mode,0);
     std::lock_guard lock(mutex);
@@ -143,7 +191,7 @@ bool choice_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_co
         lock.unlock();sound(ram,ctx,sound_move);return false;
     }
     if(action=="choose") {
-        write32(ram,message_shown,1);write32(ram,mode,wait_frames);
+        write32(ram,message_shown,1);write32(ram,mode,wait_frames);cursor_at=0;
         republish(choice_json(ram));record("choose",{{"medium",read(ram,medium,2)}});
         lock.unlock();sound(ram,ctx,sound_confirm);return true;
     }
@@ -159,7 +207,7 @@ bool choice_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_co
 
 // --- Slots (9) -----------------------------------------------------------------------
 
-json slot_json(const uint8_t* ram,unsigned n,uint32_t headers=slots) {
+json slot_json(const uint8_t* ram,unsigned n,uint32_t headers) {
     const uint32_t rec=headers+n*slot_size;
     json s={{"index",n},{"used",read(ram,rec,1)!=0}};
     if(!s["used"].get<bool>())return s;
@@ -200,9 +248,9 @@ json message_json(const uint8_t* ram,unsigned status) {
 }
 json slots_json(const uint8_t* ram) {
     const unsigned m=read(ram,mode,4),status=read(ram,pak_status,1);
-    json page={{"screen","slots"},{"medium",std::min<unsigned>(read(ram,medium,2),1)},{"cursor",std::min<unsigned>(read(ram,slot_cursor,2),slot_count-1)},{"mode",m},
-        {"window_cursor",std::min<unsigned>(read(ram,window_cursor,2),1)},{"status",status},{"slots",json::array()}};
-    for(unsigned n=0;n<slot_count;++n)page["slots"].push_back(slot_json(ram,n));
+    json page={{"screen","slots"},{"medium",std::min<unsigned>(read(ram,medium,2),1)},{"mode",m},
+        {"window_cursor",std::min<unsigned>(read(ram,window_cursor,2),1)},{"status",status}};
+    page_slots(page,ram,slots);
     if(m==2)page["message"]=message_json(ram,status);
     return page;
 }
@@ -217,23 +265,31 @@ bool slots_build(uint8_t* ram,recomp_context* ctx) {
         if(status>=2){write32(ram,mode,2);message=true;}
     }
     if(!message)call(ram,ctx,read_slots,m,slots);
+    if(m){numbers={1,2};extended_headers.clear();cursor_at=std::min(cursor_at,1u);}
+    else list_slots(ram,ctx,slots,true);
     std::lock_guard lock(mutex);
     open(slots_json(ram),ram);
     call(ram,ctx,resident_func_80099814,4,2,0);
     return true;
 }
 // The original A path: SRAM or Controller Pak write, then the screen again or the
-// message when the pak status is non-zero.
-void write_slot(uint8_t* ram,recomp_context* ctx,unsigned slot) {
+// message when the pak status is non-zero. An extended slot is the game's slot 1 seen
+// through the store.
+void write_slot(uint8_t* ram,recomp_context* ctx,unsigned number) {
+    const unsigned slot=number>2?0:number-1;
     write8(ram,pak_status,0);
-    if(read(ram,medium,2)==0)call(ram,ctx,write_sram,slot);
+    if(read(ram,medium,2)==0) {
+        std::optional<save_store::Window> extended;
+        if(number>2)extended.emplace(0,number);
+        call(ram,ctx,write_sram,slot);
+    }
     else {
         const unsigned status=call(ram,ctx,pak_check,0);
         write8(ram,pak_status,uint8_t(status));
         if(status<2)call(ram,ctx,write_pak,slot);
     }
     const unsigned status=read(ram,pak_status,1);
-    record("write",{{"slot",slot},{"medium",read(ram,medium,2)},{"status",status}});
+    record("write",{{"slot",number},{"medium",read(ram,medium,2)},{"status",status}});
     if(status==0)fade_out(ram,ctx,9);
     else write32(ram,mode,2);
 }
@@ -251,18 +307,18 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
     }
     if(pending.empty())return true;
     const auto action=std::move(pending);pending.clear();
-    const unsigned cursor=read(ram,slot_cursor,2);
+    const unsigned number=number_at();
     if(state==0) {
         if(action.starts_with("move:")) {
             const unsigned index=unsigned(std::atoi(action.c_str()+5));
-            if(index>=slot_count || index==cursor)return true;
-            write16(ram,slot_cursor,uint16_t(index));republish(slots_json(ram));
+            if(index>=numbers.size() || index==cursor_at)return true;
+            cursor_at=index;write16(ram,slot_cursor,uint16_t(number_at()>2?0:number_at()-1));republish(slots_json(ram));
             lock.unlock();sound(ram,ctx,sound_move);return true;
         }
         if(action=="choose") {
             sound(ram,ctx,sound_confirm);
-            if(read(ram,slots+cursor*slot_size,1)){write32(ram,mode,1);write16(ram,window_cursor,0);record("window-open",{{"slot",cursor}});}
-            else write_slot(ram,ctx,cursor);
+            if(slot_used(ram,slots,number)){write32(ram,mode,1);write16(ram,window_cursor,0);record("window-open",{{"slot",number}});}
+            else write_slot(ram,ctx,number);
             republish(slots_json(ram));return true;
         }
         if(action=="back"){sound(ram,ctx,sound_cancel);fade_out(ram,ctx,1);record("back");return true;}
@@ -275,7 +331,7 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
             write16(ram,window_cursor,uint16_t(index));republish(slots_json(ram));
             lock.unlock();sound(ram,ctx,sound_move);return true;
         }
-        if(action=="choose" && read(ram,window_cursor,2)==0){sound(ram,ctx,sound_confirm);write_slot(ram,ctx,cursor);republish(slots_json(ram));return true;}
+        if(action=="choose" && read(ram,window_cursor,2)==0){sound(ram,ctx,sound_confirm);write_slot(ram,ctx,number);republish(slots_json(ram));return true;}
         if(action=="choose" || action=="cancel"){sound(ram,ctx,action=="choose"?sound_confirm:sound_cancel);write32(ram,mode,0);republish(slots_json(ram));record("window-close");return true;}
         return true;
     }
@@ -327,9 +383,9 @@ json title_choice_json(const uint8_t* ram) {
 }
 json title_slots_json(const uint8_t* ram) {
     const unsigned sub=read(ram,t_sub,1),m=sub==0xE?2:sub==0xA?1:0;
-    json page={{"screen","slots"},{"medium",std::min<unsigned>(read(ram,t_medium,1),1)},{"cursor",std::min<unsigned>(read(ram,t_slot,1),slot_count-1)},{"mode",m},
-        {"window_cursor",std::min<unsigned>(read(ram,t_window,1),1)},{"status",title_status},{"slots",json::array()}};
-    for(unsigned n=0;n<slot_count;++n)page["slots"].push_back(title_headers?slot_json(ram,n,t_slots):json{{"index",n},{"used",false}});
+    json page={{"screen","slots"},{"medium",std::min<unsigned>(read(ram,t_medium,1),1)},{"mode",m},
+        {"window_cursor",std::min<unsigned>(read(ram,t_window,1),1)},{"status",title_status}};
+    page_slots(page,ram,t_slots,title_headers);
     if(m==2)page["message"]=title_message_json(ram,title_status);
     return page;
 }
@@ -344,8 +400,11 @@ bool title_build(uint8_t* ram,recomp_context* ctx,unsigned screen) {
         }
         case srw64_title_slots: {
             if(title_screens_original())return false;
+            save_store::disarm();
             call(ram,ctx,read_slots,read(ram,t_medium,1),t_slots);
-            write8(ram,t_slot,0);
+            write8(ram,t_slot,0);cursor_at=0;
+            if(read(ram,t_medium,1)){numbers={1,2};extended_headers.clear();}
+            else list_slots(ram,ctx,t_slots,false);
             std::lock_guard lock(mutex);
             title_headers=true;title_status=0;title_open(title_slots_json(ram),ram);
             return true;
@@ -402,18 +461,17 @@ bool title_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)
         }
         case srw64_title_slots: {
             if(title_pak_removed(ram,ctx))return true;
-            const unsigned cursor=read(ram,t_slot,1);
             if(action.starts_with("move:")) {
                 const unsigned index=index_of(action);
-                if(index>=slot_count || index==cursor)return true;
-                write8(ram,t_slot,uint8_t(index));republish(title_slots_json(ram));
+                if(index>=numbers.size() || index==cursor_at)return true;
+                cursor_at=index;write8(ram,t_slot,uint8_t(number_at()>2?0:number_at()-1));republish(title_slots_json(ram));
                 lock.unlock();sound(ram,ctx,sound_move);return true;
             }
             if(action=="choose") {
-                if(!read(ram,t_slots+cursor*slot_size,1)){lock.unlock();sound(ram,ctx,sound_buzzer);return true;}
+                if(!slot_used(ram,t_slots,number_at())){lock.unlock();sound(ram,ctx,sound_buzzer);return true;}
                 sound(ram,ctx,sound_confirm);
                 write8(ram,t_window,0);write8(ram,t_sub,0xA);
-                republish(title_slots_json(ram));record("window-open",{{"slot",cursor}});
+                republish(title_slots_json(ram));record("window-open",{{"slot",number_at()}});
                 return true;
             }
             if(action=="back"){lock.unlock();feed(ram,ctx,original,button_b);lock.lock();record("back");}
@@ -430,7 +488,9 @@ bool title_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)
             if(action=="choose" && read(ram,t_window,1)==0) {
                 // はい: the original sets the load mode (0x12 + slot, 0x14 + slot for the
                 // Controller Pak) and fades out; the intermission overlay loads the save.
-                record("load",{{"slot",read(ram,t_slot,1)},{"medium",read(ram,t_medium,1)}});
+                // An extended slot loads as the game's slot 1, through the store.
+                if(number_at()>2){save_store::arm_load(number_at());write8(ram,t_slot,0);}
+                record("load",{{"slot",number_at()},{"medium",read(ram,t_medium,1)}});
                 lock.unlock();feed(ram,ctx,original,0x8000);
                 return true;
             }
@@ -456,6 +516,7 @@ void title_frame(uint8_t* ram) {
     const unsigned major=read(ram,t_major,1),sub=read(ram,t_sub,1);
     // Back at the ring (0xD) or any other title state: the page closes.
     if(major!=7 || sub==0xD){hide("left");title=false;}
+    if(major==7 && sub==0xD)save_store::disarm();
 }
 
 bool build(uint8_t* ram,recomp_context* ctx,unsigned screen) {

@@ -1,9 +1,11 @@
 #include "runtime.hpp"
+#include "save_library.hpp"
 #include "sha256.hpp"
 #include <algorithm>
 #include <array>
 #include <charconv>
 #include <chrono>
+#include <cstdio>
 #include <cstdlib>
 #include <fstream>
 #include <random>
@@ -35,10 +37,6 @@ std::string token() {
     text<<std::hex<<std::chrono::system_clock::now().time_since_epoch().count()<<'-'<<std::random_device{}();
     return text.str();
 }
-bool safe_token(std::string_view value) {
-    return !value.empty() && value.size()<=80 &&
-        std::all_of(value.begin(),value.end(),[](char c){return (c>='0'&&c<='9')||(c>='a'&&c<='f')||c=='-';});
-}
 void require_save(const fs::path& path) {
     if (!fs::is_regular_file(path) || fs::is_symlink(path) || fs::file_size(path)!=32768)
         throw std::runtime_error("SRAM must be a regular 32 KiB file: "+path.string());
@@ -56,7 +54,12 @@ void replace_file(const fs::path& source,const fs::path& destination) {
 std::string usage() {
     return "Usage: srw64-gfx-host --play --rom ROM [--content CONTENT_DIR] [--user-dir DIR]\n"
            "       [--language LOCALE] [--rules original|fixed|all] [--resolution-scale 1..8]\n"
-           "       [--new-game | --import-save SRAM] [--mute]\n"
+           "       [--new-game | --import-save SAVE] [--mute]\n"
+           "       srw64-gfx-host --play --export-save FILE [--export-format FORMAT] [--user-dir DIR]\n"
+           "--import-save takes a 32 KiB SRAM (ares .ram, Project64/mupen64plus .sra) or a\n"
+           "RetroArch .srm; the old card's slots are kept as extended slots.\n"
+           "--export-save writes the card as ares, project64, mupen64plus or retroarch\n"
+           "(by default from the extension: .ram/.sav ares, .sra project64, .srm retroarch).\n"
            "Without --content, imports the matching ROM into a versioned local cache.\n"
            "--content keeps the developer-only prepared-content path.\n"
            "This entry never runs Python, Git, CMake, Ninja or the recompilers.\n";
@@ -79,6 +82,12 @@ Options parse_options(std::span<const std::string_view> args) {
             else if (key=="--content") options.content=utf8_path(value);
             else if (key=="--user-dir") options.user_dir=utf8_path(value);
             else if (key=="--import-save") options.import_save=utf8_path(value);
+            else if (key=="--export-save") options.export_save=utf8_path(value);
+            else if (key=="--export-format") {
+                if (value!="ares" && value!="project64" && value!="mupen64plus" && value!="retroarch")
+                    throw std::runtime_error("Unknown save format: "+value);
+                options.export_format=value;
+            }
             else if (key=="--language") options.language=value;
             else if (key=="--rules") {
                 if (value!="original" && value!="fixed" && value!="all")
@@ -91,6 +100,15 @@ Options parse_options(std::span<const std::string_view> args) {
             } else throw std::runtime_error("Unknown option: "+std::string(key));
         }
     }
+    if (!options.export_format.empty() && options.export_save.empty()) throw std::runtime_error("--export-format needs --export-save");
+    if (!options.export_save.empty()) {
+        if (!options.rom.empty() || !options.content.empty() || options.new_game || !options.import_save.empty() ||
+            !options.language.empty() || options.rules || options.resolution_scale || options.mute)
+            throw std::runtime_error("--export-save only takes --export-format and --user-dir");
+        options.export_save=fs::absolute(options.export_save);
+        if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
+        return options;
+    }
     if (options.rom.empty()) throw std::runtime_error("--rom is required");
     if (options.new_game && !options.import_save.empty()) throw std::runtime_error("Choose --new-game or --import-save, not both");
     options.rom=fs::absolute(options.rom);
@@ -100,6 +118,14 @@ Options parse_options(std::span<const std::string_view> args) {
     return options;
 }
 
+fs::path export_save(const Options& options) {
+    std::optional<sram::Format> format=sram::format_for(options.export_save.extension().string());
+    for (const auto known:{sram::Format::ares,sram::Format::project64,sram::Format::mupen64plus,sram::Format::retroarch})
+        if (options.export_format==sram::name(known)) format=known;
+    if (!format) throw std::runtime_error("Name the emulator with --export-format: the extension does not say");
+    // Reading needs no lock: the card is only ever replaced by a rename.
+    return SaveLibrary((options.user_dir.empty()?default_user_dir():options.user_dir)/"saves").export_cartridge(options.export_save,*format);
+}
 fs::path default_user_dir(Platform platform,const EnvironmentLookup& lookup) {
     if (platform==Platform::Windows) {
         const auto local=lookup("LOCALAPPDATA");
@@ -255,21 +281,22 @@ Session::Session(const Options& options) {
     root=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir);
     fs::create_directories(root);
     lock=std::make_unique<Lock>(root/"active.lock");
+    // The card lives in saves/ (save_library.hpp); sessions/ keeps each run's copy.
+    SaveLibrary saves(root/"saves");
     std::optional<fs::path> source;
     std::string source_hash;
-    if (!options.import_save.empty()) { require_save(options.import_save);source=options.import_save;source_hash=sha256_file(*source); }
-    else if (!options.new_game && fs::exists(root/"last-session.txt")) {
-        auto previous=read_text(root/"last-session.txt",128);
-        if (!previous.empty() && previous.back()=='\n') previous.pop_back();
-        if (!safe_token(previous)) throw std::runtime_error("Invalid last-session pointer; use --import-save to recover explicitly");
-        const auto old=root/"sessions"/previous;
-        if (fs::is_symlink(old)) throw std::runtime_error("Refusing a symlinked save session");
-        source=old/"save.bin";require_save(*source);
-        auto expected=read_text(old/"save.sha256",65);
-        if (!expected.empty() && expected.back()=='\n')expected.pop_back();
-        source_hash=sha256_file(*source);
-        if (source_hash!=expected) throw std::runtime_error("Save integrity check failed; use --import-save to recover explicitly");
+    if (!options.import_save.empty()) {
+        const auto imported=saves.import_cartridge(options.import_save);
+        std::fprintf(stderr,"SRW64_SAVE_IMPORT %s%s kept_slots=%zu\n",std::string(sram::name(imported.detected.order)).c_str(),
+                     imported.detected.retroarch?" retroarch":"",imported.kept.size());
+    } else {
+        try { saves.migrate_sessions(root); }
+        catch (...) { if (!options.new_game) throw; }  // A new game does not need the old card.
     }
+    // A new game starts from a blank card, which the host publishes as soon as the game
+    // formats it: the old card's slots become extended slots first.
+    if (options.new_game) saves.keep_cartridge_slots({});
+    if (!options.new_game && saves.read_cartridge()) { source=saves.cartridge();source_hash=sha256_file(*source); }
     fs::create_directories(root/"sessions");
     for (unsigned attempt=0;attempt<16;++attempt) {
         id=token();directory=root/"sessions"/id;
@@ -289,11 +316,16 @@ bool Session::commit_save(const fs::path& host_save) {
     if (published) throw std::runtime_error("Session already committed");
     if (!fs::exists(host_save)) return false;
     require_save(host_save);
+    const auto bytes=read_text(host_save,32768);
+    const std::span card{reinterpret_cast<const uint8_t*>(bytes.data()),bytes.size()};
+    if (!sram::problems(card).empty()) throw std::runtime_error("The host wrote an unusable save: "+host_save.string());
+    Sha256 digest;digest.update(card);
+    const auto expected=digest.finish();
     const auto save=directory/"save.bin";
-    const auto expected=sha256_file(host_save);
     fs::copy_file(host_save,save);
     require_save(save);
     if (sha256_file(save)!=expected) throw std::runtime_error("Host save changed before publication");
+    SaveLibrary(root/"saves").publish_cartridge(card);
     atomic_write(directory/"save.sha256",sha256_file(save)+"\n");
     atomic_write(root/"last-session.txt",id+"\n");
     published=true;
