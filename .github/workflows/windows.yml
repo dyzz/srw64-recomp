@@ -1,0 +1,74 @@
+# Windows x64 build (docs/design/three-platform-port.md, X3).
+#
+# The game code is recompiled from the ROM, which never enters this public repository:
+# the generate job reads it from the private dyzz/srw64-ci-inputs through a read-only
+# deploy key (secret CI_INPUTS_DEPLOY_KEY). What it generates is passed to the Windows
+# job encrypted with CI_ARTIFACT_KEY (artifacts of a public repository can be downloaded
+# by anyone) and kept for a day. Only the built program is uploaded in the clear, the
+# same as a release download. No log may print ROM bytes or generated sources.
+name: windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [windows-port]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ROM from the private inputs
+        env:
+          DEPLOY_KEY: ${{ secrets.CI_INPUTS_DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/ci_inputs && chmod 600 ~/.ssh/ci_inputs
+          ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/ci_inputs -o IdentitiesOnly=yes" \
+            git clone -q --depth 1 git@github.com:dyzz/srw64-ci-inputs.git "$RUNNER_TEMP/inputs"
+          rm -f ~/.ssh/ci_inputs
+          (cd "$RUNNER_TEMP/inputs" && sha256sum -c --quiet rom.z64.sha256)
+          cp "$RUNNER_TEMP/inputs/rom.z64" rom.z64
+          rm -rf "$RUNNER_TEMP/inputs"
+
+      - name: Tools
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ninja-build clang lld
+          python3 --version; clang --version | head -1; cmake --version | head -1
+
+      - name: Generate (make up to the CPU code)
+        run: |
+          make bootstrap recomp-bootstrap recomp-layout recomp-scan recomp-cpu
+          export PYTHONPATH=$PWD/src:$PWD/tools
+          .venv/bin/python tools/recomp/toolchain/prepare_rt64.py
+          .venv/bin/python tools/recomp/toolchain/prepare_frontend.py --fetch
+          build/recomp/tool-build/RSPRecomp config/recomp/audio-probe.toml
+          .venv/bin/python tools/content/prepare_fonts.py
+          du -sh build/recomp/cpu-bound build/recomp/audio-probe build/fonts
+
+      - name: Encrypt the generated inputs
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          tar -czf "$RUNNER_TEMP/generated.tgz" build/recomp/cpu-bound build/recomp/audio-probe build/fonts
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY \
+            -in "$RUNNER_TEMP/generated.tgz" -out generated.tgz.enc
+          rm "$RUNNER_TEMP/generated.tgz" rom.z64
+          ls -l generated.tgz.enc
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: generated-encrypted
+          path: generated.tgz.enc
+          retention-days: 1
+          if-no-files-found: error
