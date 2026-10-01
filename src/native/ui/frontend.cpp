@@ -1575,7 +1575,7 @@ void swap_sync() {
 void save_sync() {
     const auto next=save_page::state();save_request=next;
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+funds_editing;
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
     if(save_doc && save_stamp==stamp)return;
     document_close(save_doc);save_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
@@ -1657,8 +1657,7 @@ void save_sync() {
                 else if(const auto one=episode.find(' ');one!=std::string::npos)episode.replace(one,1,count);
                 else episode+=count;
                 const std::string title=s.value("title",std::string())+" "+label_of("clear");
-                const std::string aside=kind=="slot"?s.value("note",std::string()):time;
-                if(!aside.empty())rows+=at(70,20,escape(aside),"im-right im-dim",fit(aside,134),136);
+                if(kind!="slot")rows+=at(70,20,escape(time),"im-right im-dim",fit(time,134),136);
                 rows+=at(3,20,"<span class='im-dim'>"+escape(episode.substr(0,episode.find(count)))+"</span>"+escape(count)+"<span class='im-dim'>"+escape(episode.substr(episode.find(count)+count.size()))+"</span>","",fit(episode,60))+
                     at(2,37,escape(title),"",fit(title,204),204)+
                     at(3,54,escape(label_of("turns")),"im-dim",fit(label_of("turns"),54))+at(58,54,number(s.value("turns",json())),"im-right",0,24)+
@@ -1685,25 +1684,14 @@ void save_sync() {
             body+="<div class='im-shade'></div>"+box(29,77,291,179,lines,9.f,"save-pak-message");
         }
         const bool loading=next.value("context",std::string())=="title";
-        const auto& tools=next.value("tools",json::object());
-        const bool note=tools.value("note",false),erase=tools.value("delete",false);
-        if(funds_editing=="save-note") {
-            // The note box over the cursor's slot, filled with the note it has.
-            const float y0=69+80*float(cursor%2);
-            std::string current;
-            for(const auto& s:slots)if(s.value("index",0u)==cursor)current=s.value("note",std::string());
-            body+="<input type='text' id='save-note-input' class='im-funds-input' maxlength='40' value='"+escape(current)+"' style='position:absolute; left:"+px(157)+"; top:"+px(y0+21)+
-                "; width:"+px(138)+"; height:"+px(16)+"; line-height:"+px(16)+"; font-size:"+px(9)+";'/>";
-            body+=hint("save_note_hint");
-        } else body+=hint(mode==1 || mode==3?"save_confirm_hint":mode==2?"save_message_hint":
-                   loading?(note?"title_load_hint_tools":erase?"title_load_hint_delete":count>2?"title_load_hint_pages":"title_load_hint"):
-                   note?"save_slots_hint_tools":count>2?"save_slots_hint_pages":"save_slots_hint");
+        // R deletes a slot 3+ or an autosave; the hint says so where it can.
+        const bool erase=next.value("tools",json::object()).value("delete",false);
+        body+=hint(mode==1 || mode==3?"save_confirm_hint":mode==2?"save_message_hint":
+                   loading?(erase?"title_load_hint_delete":count>2?"title_load_hint_pages":"title_load_hint"):
+                   erase?"save_slots_hint_delete":count>2?"save_slots_hint_pages":"save_slots_hint");
     }
     body+="</div>";
     save_doc=document(body,true);save_doc->SetClass("modal",false);
-    if(funds_editing=="save-note")if(auto* field=dynamic_cast<Rml::ElementFormControlInput*>(save_doc->GetElementById("save-note-input"))) {
-        context->Update();field->Focus();field->SetSelectionRange(0,int(field->GetValue().size()));
-    }
 }
 
 // Title screen pages (title_page.cpp): オプション (layout 0x5A) and the サウンドセレクト /
@@ -2101,7 +2089,7 @@ void battle_sync() {
 void choose(const std::string& id) {
     if(id=="mini-enter"){mini_stage::hotkey();return;}
     if(id=="intermission-funds" || id=="upgrade-funds"){funds_editing=id.substr(0,id.size()-6);return;}
-    if(id.ends_with("-funds-input") || id=="save-note-input")return;
+    if(id.ends_with("-funds-input"))return;
     funds_editing.clear();
     if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
     if(id=="settings-open"){settings_open=true;settings_release.hold();input.clear();return;}
@@ -2456,8 +2444,7 @@ void sync() {
         else if(!settings_open && (names::request().visible || link_request.visible || shown(intermission_request) || shown(upgrade_request) || shown(parts_request) || shown(ability_request) || shown(swap_request) || shown(save_request) || shown(title_request)))
             pad_keys(pad_now,pad_pressed);
     }
-    if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)) ||
-       (funds_editing=="save-note" && !save_page::state().value("visible",false)))funds_editing.clear();
+    if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_view"),
                       language->ui("menu_fullscreen"),language->ui("menu_window_scale")},window_menu_state());
@@ -2526,21 +2513,7 @@ bool dispatch(SDL_Event& event) {
         }
         return true;
     }
-    if(funds_editing=="save-note" && !settings_open){
-        // A slot's note, typed as it is; Enter keeps it, Esc leaves it as it was.
-        // The box appears with the next rebuild: the key that opened it may still be coming up.
-        auto* field=save_doc?dynamic_cast<Rml::ElementFormControlInput*>(save_doc->GetElementById("save-note-input")):nullptr;
-        if(!save_request.value("visible",false)){funds_editing.clear();return true;}
-        if(!field)return true;
-        if(event.type==SDL_KEYDOWN && !event.key.repeat){
-            const auto k=event.key.keysym.sym;
-            if((k==SDLK_RETURN || k==SDLK_KP_ENTER) && input.accepts_submit()){
-                save_page::answer(save_request.at("serial").get<uint64_t>(),"note:"+std::string(field->GetValue()));
-                funds_editing.clear();return true;
-            }
-            if(k==SDLK_ESCAPE){funds_editing.clear();return true;}
-        }
-    } else if(!funds_editing.empty() && !settings_open){
+    if(!funds_editing.empty() && !settings_open){
         auto* doc=funds_editing=="intermission"?intermission_doc:upgrade_doc;
         auto* field=doc?dynamic_cast<Rml::ElementFormControlInput*>(doc->GetElementById(funds_editing+"-funds-input")):nullptr;
         const bool page_up=funds_editing=="intermission"?intermission_request.value("visible",false):upgrade_request.value("visible",false);
@@ -2651,11 +2624,9 @@ bool dispatch(SDL_Event& event) {
             }
             const unsigned at=save_request.value(mode==1 || mode==3?"window_cursor":"cursor",0u);
             if((mode==1 || mode==3) && (k==SDLK_UP || k==SDLK_DOWN)){save_page::answer(serial,"move:"+std::to_string(at^1));return true;}
-            // L writes a note on a slot 3+, R deletes it or an autosave.
-            const auto& tools=save_request.value("tools",json::object());
-            if(screen=="slots" && mode==0 && !event.key.repeat) {
-                if(k==SDLK_q && tools.value("note",false)){funds_editing="save-note";return true;}
-                if(k==SDLK_e && tools.value("delete",false)){save_page::answer(serial,"delete");return true;}
+            // R deletes a slot 3+ or an autosave.
+            if(screen=="slots" && mode==0 && !event.key.repeat && k==SDLK_e && save_request.value("tools",json::object()).value("delete",false)){
+                save_page::answer(serial,"delete");return true;
             }
             // The slot list: up and down run through every slot, left and right turn the page.
             const unsigned count=std::max(1u,save_request.value("count",2u)),pages=(count+1)/2;

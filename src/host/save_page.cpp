@@ -170,7 +170,6 @@ void list_slots(uint8_t* ram,recomp_context* ctx,uint32_t table,bool saving) {
         headers[key(a)]=slot_json(ram,0,table);headers[key(b)]=slot_json(ram,1,table);
     }
     if(!slot_records.empty())call(ram,ctx,read_slots,0,table);
-    for(const auto& e:entries)if(e.number>2)headers[key(e)]["note"]=save_store::note(e.number);
     cursor_at=std::min<unsigned>(cursor_at,unsigned(entries.size())-1);
 }
 const Entry& entry_at(){return entries.at(cursor_at);}
@@ -185,7 +184,7 @@ uint8_t game_slot(const Entry& e){return uint8_t(e.number==2?1:0);}
 void page_slots(json& page,const uint8_t* ram,uint32_t table,bool cartridge=true) {
     const unsigned first=cursor_at/2*2;
     page["cursor"]=cursor_at;page["count"]=entries.size();page["page"]=first/2;page["pages"]=(entries.size()+1)/2;
-    page["tools"]={{"delete",entries[cursor_at].deletable()},{"note",entries[cursor_at].number>2}};
+    page["tools"]={{"delete",entries[cursor_at].deletable()}};
     if(deleting){page["mode"]=3;page["window_cursor"]=delete_cursor;}
     page["slots"]=json::array();
     for(unsigned at=first;at<first+2 && at<entries.size();++at) {
@@ -217,15 +216,6 @@ bool delete_action(const std::string& action,uint8_t* ram,recomp_context* ctx,ui
         list_slots(ram,ctx,table,saving);
     } else sound(ram,ctx,sound_cancel);
     deleting=false;refresh=true;
-    return true;
-}
-// L on a slot 3+: the page sends the note the player typed.
-bool note_action(const std::string& action) {
-    if(!action.starts_with("note:") || entries[cursor_at].number<=2)return false;
-    const auto e=entries[cursor_at];
-    save_store::set_note(e.number,action.substr(5,120));
-    headers[key(e)]["note"]=save_store::note(e.number);
-    record("note",{{"slot",e.number}});
     return true;
 }
 
@@ -383,7 +373,7 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
     const Entry e=entry_at();
     if(state==0) {
         bool refresh=false;
-        if(delete_action(action,ram,ctx,slots,true,refresh) || note_action(action)) {
+        if(delete_action(action,ram,ctx,slots,true,refresh)) {
             write16(ram,slot_cursor,game_slot(entry_at()));republish(slots_json(ram));return true;
         }
         if(deleting)return true;
@@ -539,7 +529,7 @@ bool title_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)
         case srw64_title_slots: {
             if(title_pak_removed(ram,ctx))return true;
             bool refresh=false;
-            if(delete_action(action,ram,ctx,t_slots,false,refresh) || note_action(action)) {
+            if(delete_action(action,ram,ctx,t_slots,false,refresh)) {
                 write8(ram,t_slot,game_slot(entry_at()));republish(title_slots_json(ram));return true;
             }
             if(deleting)return true;
