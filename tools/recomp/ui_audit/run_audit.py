@@ -157,19 +157,19 @@ def fixtures(text):
         last = at(slots)
         last['slots'] = [{**slot, 'index': 97 + i, 'number': 98 + i} for i, slot in enumerate(last['slots'])]
         add('save-slots-last-page', {'save_page': {**last, 'cursor': 97, 'count': 99, 'page': 49, 'pages': 50}})
-        # Autosaves on the title's ロード (an intermission one, a turn one), a slot's note, the delete window.
+        # Autosaves on the title's ロード (an intermission one, a turn one), slots 3+, the delete window.
         autos = at(slots)
         used = autos['slots'][0]
         autos['slots'] = [{**used, 'index': 4, 'number': 0, 'kind': 'intermission', 'time': '2026-10-01T23:59:00'},
                           {'used': True, 'index': 5, 'number': 0, 'kind': 'turn', 'time': '2026-10-01T23:59:59', 'name': used.get('name'),
                            'title': stages[0], 'map_turn': 99, 'funds': 9999999}]
-        autos.update(cursor=5, count=6, page=2, pages=3, context='title', tools={'delete': True, 'note': False})
+        autos.update(cursor=5, count=6, page=2, pages=3, context='title', tools={'delete': True})
         add('load-autosaves', {'save_page': autos})
-        noted = at(slots)
-        noted['slots'] = [{**slot, 'index': 2 + i, 'number': 3 + i, 'note': 'ボス戦の前・増援に注意'} for i, slot in enumerate(noted['slots'])]
-        noted.update(cursor=2, count=5, page=1, pages=3, tools={'delete': True, 'note': True})
-        add('save-slots-note', {'save_page': noted})
-        add('save-slots-delete', {'save_page': {**noted, 'mode': 3, 'window_cursor': 1}})
+        extended = at(slots)
+        extended['slots'] = [{**slot, 'index': 2 + i, 'number': 3 + i} for i, slot in enumerate(extended['slots'])]
+        extended.update(cursor=2, count=5, page=1, pages=3, tools={'delete': True})
+        add('save-slots-extended', {'save_page': extended})
+        add('save-slots-delete', {'save_page': {**extended, 'mode': 3, 'window_cursor': 1}})
         add('load-choice', {'save_page': {**at(states['save']['choice']), 'context': 'title'}})
         # のりかえ, 能力, 強化パーツ: recorded rows, then seven rows of the longest names.
         for name, state in states['swap'].items():
