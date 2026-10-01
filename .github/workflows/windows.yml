@@ -93,9 +93,10 @@ jobs:
         env:
           KEY: ${{ secrets.CI_ARTIFACT_KEY }}
         run: |
-          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:KEY -in generated.tgz.enc -out "$RUNNER_TEMP/generated.tgz"
-          tar -xzf "$RUNNER_TEMP/generated.tgz"
-          rm generated.tgz.enc "$RUNNER_TEMP/generated.tgz"
+          # A relative name: Git's tar reads "D:\..." as a remote host.
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:KEY -in generated.tgz.enc -out generated.tgz
+          tar -xzf generated.tgz
+          rm generated.tgz.enc generated.tgz
 
       - uses: actions/setup-python@v5
         with:
