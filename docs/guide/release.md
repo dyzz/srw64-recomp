@@ -56,8 +56,8 @@ gh run download <运行号> --repo dyzz/srw64-recomp -n SRW64-linux-x64-encrypte
 openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass file:$HOME/.config/srw64/ci-artifact-key -in SRW64-linux-x64.tar.gz.enc -out SRW64-linux-x64.tar.gz
 ```
 
-Windows 包同样下载 `SRW64-windows-x64-encrypted`，解开后是 `SRW64-windows-x64` 文件夹，压成 zip 再附上。CI 上没有 HD 素材，所以 Linux 包不带 Steam 封面图
-（`add-to-steam.sh` 照常加入游戏）；要带封面就在本机用 `tools/release/linux/build.sh` 构建。
+Windows 包同样下载 `SRW64-windows-x64-encrypted`，解开后是 `SRW64-windows-x64` 文件夹，压成 zip 再附上。Steam 封面图在仓库的 `tools/release/linux/steam-art/`
+（`steam_art.py` 由 HD 标题图生成，改了标题图再重新生成并提交），CI 构建的 Linux 包也带封面。
 
 Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检出里的 `build_linux.py`），Windows 包只由 Actions 构建，
 用 `--attach` 交给同一次 `build_release.py`，与 Mac 包和 HD 包放进同一个发布：

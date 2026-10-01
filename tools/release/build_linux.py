@@ -224,15 +224,13 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
         shutil.copyfile(recipe / script, stage / script)
         (stage / script).chmod(0o755)
     shutil.copyfile(recipe / 'README.txt', stage / 'README.txt')
-    # add-to-steam.sh: the Steam library entry, named in the game's language, with artwork
-    # made from the HD title images. Without those sources the game is added without art.
+    # add-to-steam.sh: the Steam library entry, named in the game's language, with the
+    # artwork in tools/release/linux/steam-art (made by steam_art.py from the HD title
+    # images, kept in the repository so a build without the HD sources has it too).
     (stage / 'steam').mkdir()
     shutil.copyfile(recipe / 'add_to_steam.py', stage / 'steam/add_to_steam.py')
-    scenes = json.loads((ROOT / 'content/art/stage1-hd.json').read_text(encoding='utf-8'))['scene_images']['path']
-    if (ROOT / scenes / 'title-logo.png').is_file():
-        run([WORK / 'venv/bin/python', recipe / 'steam_art.py', '--output', stage / 'steam'])
-    else:
-        print(f'No Steam artwork: {ROOT / scenes} is not here', flush=True)
+    for art in sorted((recipe / 'steam-art').glob('*.png')):
+        shutil.copyfile(art, stage / 'steam' / art.name)
     archive = WORK / f'{name}.tar.gz'
     with tarfile.open(archive, 'w:gz') as tar:
         tar.add(stage, arcname=name)
