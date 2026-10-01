@@ -15,7 +15,7 @@ namespace fs = std::filesystem;
 //   imports/             each card an import replaced
 //   auto/inter-NNNNNN.rec, auto/turn-NNNNNN.sus  autosaves (slot / suspend format),
 //                        numbered in one sequence so the newest is the highest
-//   trash/               deleted slots and autosaves, with their .json notes
+//   trash/               deleted slots and autosaves, with the .json beside them
 //   import/, export/     files the player drops in for the game, and the game's exports
 // Every file is replaced atomically. The caller holds the user directory's lock.
 class SaveLibrary {

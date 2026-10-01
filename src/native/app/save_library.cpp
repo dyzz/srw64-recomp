@@ -100,8 +100,8 @@ void SaveLibrary::write_record(const fs::path& path,std::span<const uint8_t> rec
 fs::path SaveLibrary::trash(const fs::path& record) {
     const auto target=unused_stamped(root/"trash","-"+record.filename().string());
     fs::create_directories(target.parent_path());
-    auto note=record;note.replace_extension(".json");
-    if(fs::exists(note)){auto moved=target;moved.replace_extension(".json");fs::rename(note,moved);}
+    auto beside=record;beside.replace_extension(".json");
+    if(fs::exists(beside)){auto moved=target;moved.replace_extension(".json");fs::rename(beside,moved);}
     fs::rename(record,target);
     return target;
 }
@@ -136,8 +136,8 @@ void SaveLibrary::prune_autosaves(AutoKind kind,unsigned keep) {
     unsigned seen=0;
     for(const auto& save:autosaves()) {
         if(save.kind!=kind || ++seen<=keep)continue;
-        auto note=save.record;note.replace_extension(".json");
-        std::error_code ignored;fs::remove(note,ignored);fs::remove(save.record);
+        auto beside=save.record;beside.replace_extension(".json");
+        std::error_code ignored;fs::remove(beside,ignored);fs::remove(save.record);
     }
 }
 unsigned SaveLibrary::keep(std::span<const uint8_t> record) {

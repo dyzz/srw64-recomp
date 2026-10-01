@@ -79,7 +79,7 @@
 - 第二轮：先把 `003.rec` 的资金改成 123456 并重算校验和，标题读取列表里栏 3 显示 123456，读档后场间菜单的资金是 123456，日志里有栏 3 的 `slot-read`，卡带文件不变。
 - 截图：`build/recomp/save-slots-check/<时间>/`。没有存档库的 `check_save.py`（16 项）与 `check_title_menus.py --skip-karaoke`（16 项）同样通过。
 
-自动存档、删除与备注（2026-10-01）：标题 ロード 列表在扩展栏后列出自动存档（`kind` 为 `intermission`／`turn`，带 `time`；回合存档的标题、回合、资金、名字从记录 +0x26C 的进度块读出，没有等级与头像）；页面状态多了 `tools`（光标所在项能否删除、写备注）和 mode 3（删除确认）。按键 L 写备注、R 删除，提示改用 `*_hint_tools`／`title_load_hint_delete`。做法与验证见[设计文档](../design/save-slots-autosave.md) §8。
+自动存档与删除（2026-10-01）：标题 ロード 列表在扩展栏后列出自动存档（`kind` 为 `intermission`／`turn`，带 `time`；回合存档的标题、回合、资金、名字从记录 +0x26C 的进度块读出，没有等级与头像）；页面状态多了 `tools`（光标所在项能否删除）和 mode 3（删除确认）。按键 R 删除，提示改用 `save_slots_hint_delete`／`title_load_hint_delete`。没有栏备注功能。做法与验证见[设计文档](../design/save-slots-autosave.md) §8。
 
 ## 5. 未验证
 

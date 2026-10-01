@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify autosaves, deleting and notes in the running game (docs/design/save-slots-autosave.md S3/S4).
+"""Verify autosaves and deleting in the running game (docs/design/save-slots-autosave.md S3/S4).
 
 A fresh save library under build/recomp/save-slots-check/<time>/saves, its card the
 first-episode save, in four runs:
@@ -11,7 +11,7 @@ first-episode save, in four runs:
 3. The title's ロード lists the three autosaves newest first; the turn one goes through
    コンティニュー back to the map at the same turn, its random numbers put back.
 4. The sortie autosave loads into the intermission with its funds; a save into slot 3
-   gets a note typed with L; R deletes the entered autosave to trash/."""
+   can be deleted; R deletes the oldest autosave to trash/."""
 import argparse
 import hashlib
 import json
@@ -184,12 +184,12 @@ check('same-turn', int.from_bytes(r.memory(0x8010F5EA, 2), 'big') == saved_turn 
 r.shot('turn-loaded.png')
 r.quit()
 
-# --- 4. Loading the sortie autosave; a note; deleting ------------------------------------
+# --- 4. Loading the sortie autosave; slot 3; deleting ------------------------------------
 r = Run()
 p = r.title_load()
 p = r.move_to(3)
 check('sortie-is-next', p['slots'][1].get('time') == sortie_about['time'], p)
-check('sortie-entry', p['slots'][1]['kind'] == 'intermission' and p['tools'] == {'delete': True, 'note': False}, p)
+check('sortie-entry', p['slots'][1]['kind'] == 'intermission' and p['tools'] == {'delete': True}, p)
 r.keys('z', pause=.6)
 r.wait_page('slots', mode=1, timeout=5)
 r.keys('z', pause=3)
@@ -198,7 +198,7 @@ im = r.status()['intermission_page']
 check('sortie-loaded', im['funds'] == sortie_about['funds'], {'intermission': im.get('funds'), 'about': sortie_about['funds']})
 reads = [e for e in r.events('save-store-events.jsonl') if e['kind'] == 'record-read' and e['record'] == autos('inter')[-1].name]
 check('sortie-read', bool(reads), reads)
-# Save into slot 3 and give it a note.
+# Save into slot 3: R would delete it.
 r.s.client.call('ui.click', text='intermission:0')
 r.wait_page('choice')
 r.keys('z', pause=.3)
@@ -206,14 +206,11 @@ p = r.wait_page('slots', timeout=10)
 p = r.move_to(2)
 r.keys('z', pause=2.5)
 p = r.wait_page('slots', cursor=2, timeout=10)
-check('slot-3', p['slots'][0]['used'] and p['tools'] == {'delete': True, 'note': True}, p)
-r.keys('q', pause=.6)
-r.s.client.call('ui.type', text='ボス戦の前')
-time.sleep(.3)
-r.keys('return', pause=.8)
-note = json.loads((library / 'slots/003.json').read_text()) if (library / 'slots/003.json').exists() else {}
-check('note', note.get('note') == 'ボス戦の前' and r.page()['slots'][0].get('note') == 'ボス戦の前', note)
-r.shot('note.png')
+check('slot-3', p['slots'][0]['used'] and p['tools'] == {'delete': True}, p)
+r.keys('q', pause=.8)   # L does nothing here: no notes
+check('no-notes', r.page()['mode'] == 0 and not (library / 'slots/003.json').exists()
+      and 'save-note-input' not in json.dumps(r.s.client.call('ui.tree')), r.page())
+r.shot('slot-3.png')
 r.quit()
 # R on the oldest autosave, はい: it goes to trash/.
 r = Run()

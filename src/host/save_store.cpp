@@ -164,20 +164,6 @@ bool autosave(bool turn,unsigned keep,json& about,const std::function<void(const
         return false;
     }
 }
-std::string note(unsigned number) {
-    std::lock_guard lock(mutex);
-    if(!library)return {};
-    return read_json(sidecar(library->slot_path(number))).value("note",std::string());
-}
-void set_note(unsigned number,const std::string& text) {
-    std::lock_guard lock(mutex);
-    if(!library)return;
-    const auto path=sidecar(library->slot_path(number));
-    auto about=read_json(path);
-    if(text.empty())about.erase("note");else about["note"]=text;
-    try{write_json(path,about);record("note",{{"slot",number}});}
-    catch(const std::exception& error){record("note-error",{{"slot",number},{"error",error.what()}});}
-}
 bool trash(const fs::path& path) {
     std::lock_guard lock(mutex);
     if(!library || !fs::exists(path))return false;
