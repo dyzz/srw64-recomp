@@ -107,7 +107,8 @@ class Session:
 
     @classmethod
     def launch(cls, language: str | None = None, images: str | None = None, rules=None, save: str | None = None,
-               mini_stage: str | None = None, reuse_build: bool = False, audio: bool = False, binary: str | None = None,
+               mini_stage: str | None = None, campaign: str | None = None,
+               reuse_build: bool = False, audio: bool = False, binary: str | None = None,
                resolution_scale: int | None = None,
                timeout: float = 900.0, env: dict | None = None,
                detach: bool = False, dump_textures: bool = False) -> "Session":
@@ -149,6 +150,16 @@ class Session:
             image = run.parent / (run.name + ".mini-stage.json")
             image.write_text(json.dumps(compile_stage(json.loads(Path(mini_stage).read_text())), ensure_ascii=False) + "\n")
             environment["SRW64_MINI_STAGE"] = str(image)
+        environment.pop("SRW64_CAMPAIGN", None)
+        if campaign:
+            # A campaign source (srw64.campaign.v1) compiled here; it plays from its
+            # own save library in the run, as the launcher's --campaign does.
+            sys.path.insert(0, str(ROOT / "tools"))
+            from recomp.script_lab.mini_stage import compile_campaign
+            image = run.parent / (run.name + ".campaign.json")
+            image.write_text(json.dumps(compile_campaign(Path(campaign)), ensure_ascii=False) + "\n")
+            environment["SRW64_CAMPAIGN"] = str(image)
+            environment["SRW64_SAVE_LIBRARY"] = str(run / "campaign-saves")
         environment.pop("SRW64_DEBUG_OWNER_FD", None)
         owner = lease = None
         if not detach:
@@ -183,7 +194,7 @@ class Session:
         while time.monotonic() < end:
             state = self.client.call("status")
             if not state.get("mini_stage", {}).get("available"):
-                raise HostError("Launch with mini_stage before entering it")
+                raise HostError("Launch with mini_stage or campaign before entering it")
             if state["intro"].get("title_major") == 3:
                 break
             self.client.call("keys", press="return", hold_ms=100)

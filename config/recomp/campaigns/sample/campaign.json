@@ -1,0 +1,18 @@
+{
+  "schema": "srw64.campaign.v1",
+  "id": "srw64.sample",
+  "name": "Sample campaign",
+  "version": "1",
+  "note": "C1 check of docs/design/custom-campaign.md: three stages on original maps and original text. Each stage wins on turn 1 by itself (3D4A), so the chain, the intermission between stages, saving and loading, and the branch run without battles. prologue -> crossroads -> (choice 18402) ending-a or ending-b, which end the game with 3D71.",
+  "start": "prologue",
+  "stages": {
+    "prologue": {"scene": 1, "file": "stages/prologue.json",
+                 "title": {"ja": "序章　旅立ち", "zh-Hans": "序章　启程", "en": "Prologue: Setting Out"}},
+    "crossroads": {"scene": 2, "file": "stages/crossroads.json",
+                   "title": {"ja": "第2話　分かれ道", "zh-Hans": "第2话　岔路", "en": "Crossroads"}},
+    "ending-a": {"scene": 3, "file": "stages/ending-a.json",
+                 "title": {"ja": "最終話A　進む道", "zh-Hans": "最终话A　前进", "en": "Finale A: Onward"}},
+    "ending-b": {"scene": 4, "file": "stages/ending-b.json",
+                 "title": {"ja": "最終話B　待つ道", "zh-Hans": "最终话B　等待", "en": "Finale B: Waiting"}}
+  }
+}
