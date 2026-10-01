@@ -164,7 +164,7 @@ p = r.wait_page('slots', cursor=1, timeout=10)
 card = (library / 'cartridge.sram').read_bytes()
 check('cartridge-published', p['serial'] != serial and p['slots'][1]['used'] and intact(card[SLOT_OFFSETS[1]:SLOT_OFFSETS[1] + SLOT_SIZE])
       and (library / 'cartridge.sram.prev').exists(), p)
-check('store-log', any(json.loads(line)['kind'] == 'slot-write' for line in (r.s.run / 'save-store-events.jsonl').read_text().splitlines()),
+check('store-log', any(json.loads(line)['kind'] == 'record-write' for line in (r.s.run / 'save-store-events.jsonl').read_text().splitlines()),
       {'log': str(r.s.run / 'save-store-events.jsonl')})
 print('EXIT', r.s.quit().get('exit_code'), flush=True)
 
@@ -192,7 +192,7 @@ for _ in range(8):
 r.s.wait(intermission_page=True, timeout=30)
 im = r.status()['intermission_page']
 check('loaded-funds', im.get('funds') == 123456, im)
-check('load-log', any(json.loads(line)['kind'] == 'slot-read' and json.loads(line)['slot'] == 3
+check('load-log', any(json.loads(line)['kind'] == 'record-read' and json.loads(line)['record'] == '003.rec'
                       for line in (r.s.run / 'save-store-events.jsonl').read_text().splitlines()), {})
 r.shot('loaded-slot-3.png')
 print('EXIT', r.s.quit().get('exit_code'), flush=True)

@@ -16,6 +16,7 @@
 #include "ability_page.hpp"
 #include "swap_page.hpp"
 #include "save_page.hpp"
+#include "save_store.hpp"
 #include "title_page.hpp"
 #include "settings_window.hpp"
 #include "debug_ui.hpp"
@@ -39,6 +40,16 @@ json get(const std::string& page){auto it=states.find(page);return it==states.en
 #define PAGE(ns) namespace srw64::ns { json state(){return fixture::get(#ns);} void answer(uint64_t,const std::string&){} \
     bool owns_input(){return false;} void window_claim_input(bool){} }
 PAGE(battle_page) PAGE(intermission_page) PAGE(upgrade_page) PAGE(parts_page) PAGE(ability_page) PAGE(swap_page) PAGE(save_page) PAGE(title_page)
+// The セーブ settings page: the library is on, with the fixture's import folder.
+namespace srw64::save_store {
+Settings value;
+bool enabled(){return true;}
+fs::path library_directory(){return "/Users/player/Library/Application Support/SRW64Recomp/saves";}
+Settings settings(){return value;} void set_settings(const Settings& v){value=v;}
+json import_candidates(){return fixture::get("save_store").value("import",json::array());}
+std::optional<unsigned> import_slot(const std::string&,unsigned,bool,std::string&){return 3u;}
+std::vector<fs::path> export_all(std::string&){return {};}
+}
 namespace srw64::link_page {
 Request request() {
     Request r;const auto s=fixture::get("link_page");r.visible=s.value("visible",false);r.serial=1;

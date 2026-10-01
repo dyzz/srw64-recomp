@@ -94,6 +94,15 @@ struct SRW64GameHooks {
     // SRAM transfers through 80090E5C (direction 1 write / 0 read, cartridge address, RDRAM
     // buffer, length); true: the host answered it and the original does not run (save_store.hpp).
     bool (*sram_transfer)(uint8_t*, unsigned direction, uint32_t cart, uint32_t buffer, uint32_t length){};
+    // Autosaves (autosave.cpp): the intermission entered (801D8F74; 0 after a map, 1-2 a
+    // load), each menu frame after its step (801CE19C), the tactical map's idle frame
+    // before anything else (801C8B04), a map restored (800936A0; true from the suspend
+    // area) and the random numbers seeded (800821B0).
+    void (*intermission_enter)(uint8_t*, unsigned how){};
+    void (*intermission_after_step)(uint8_t*, recomp_context*){};
+    void (*turn_idle)(uint8_t*, recomp_context*){};
+    void (*tactical_restored)(uint8_t*, bool from_sram){};
+    void (*rng_seeded)(uint8_t*){};
     // データセーブ: screens 1 (medium choice) and 9 (slots, overwrite window, pak messages).
     bool (*save_build)(uint8_t*, recomp_context*, unsigned screen){};
     bool (*save_step)(uint8_t*, recomp_context*, unsigned screen, void (*step)(uint8_t*, recomp_context*)){};

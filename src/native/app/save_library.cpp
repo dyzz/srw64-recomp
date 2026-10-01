@@ -86,13 +86,59 @@ sram::Bytes SaveLibrary::read_slot(unsigned number) const {
     return record;
 }
 void SaveLibrary::write_slot(unsigned number,std::span<const uint8_t> record) {
-    if(record.size()!=sram::slot_size || !sram::used(record) || !sram::intact(record))
-        throw std::runtime_error("Refusing an empty or damaged slot record");
-    write_bytes(slot_path(number),record);
+    write_record(slot_path(number),record,sram::slot_size);
 }
 unsigned SaveLibrary::next_free_slot() const {
     for(unsigned n=first_slot;n<=last_slot;++n)if(!fs::exists(slot_path(n)))return n;
     throw std::runtime_error("All extended slots 3-99 are in use");
+}
+void SaveLibrary::write_record(const fs::path& path,std::span<const uint8_t> record,size_t size) {
+    if(record.size()!=size || !sram::used(record) || !sram::intact(record))
+        throw std::runtime_error("Refusing an empty or damaged record for "+path.string());
+    write_bytes(path,record);
+}
+fs::path SaveLibrary::trash(const fs::path& record) {
+    const auto target=unused_stamped(root/"trash","-"+record.filename().string());
+    fs::create_directories(target.parent_path());
+    auto note=record;note.replace_extension(".json");
+    if(fs::exists(note)){auto moved=target;moved.replace_extension(".json");fs::rename(note,moved);}
+    fs::rename(record,target);
+    return target;
+}
+namespace {
+constexpr std::pair<const char*,const char*> auto_names[]={{"inter-",".rec"},{"turn-",".sus"}};
+}
+std::vector<SaveLibrary::AutoSave> SaveLibrary::autosaves() const {
+    std::vector<AutoSave> found;
+    if(!fs::is_directory(root/"auto"))return found;
+    for(const auto& entry:fs::directory_iterator(root/"auto")) {
+        const auto name=entry.path().filename().string();
+        for(unsigned kind=0;kind<2;++kind) {
+            const auto& [prefix,suffix]=auto_names[kind];
+            const std::string_view head(prefix),tail(suffix);
+            if(name.size()!=head.size()+6+tail.size() || !name.starts_with(head) || !name.ends_with(tail))continue;
+            const auto digits=name.substr(head.size(),6);
+            if(!std::all_of(digits.begin(),digits.end(),[](char c){return c>='0' && c<='9';}))continue;
+            found.push_back({AutoKind(kind),unsigned(std::stoul(digits)),entry.path()});
+        }
+    }
+    std::sort(found.begin(),found.end(),[](const AutoSave& a,const AutoSave& b){return a.sequence>b.sequence;});
+    return found;
+}
+fs::path SaveLibrary::next_autosave(AutoKind kind) const {
+    const auto saved=autosaves();
+    const unsigned next=saved.empty()?1:saved.front().sequence+1;
+    if(next>999999)throw std::runtime_error("Autosave numbers are used up");
+    char name[32];std::snprintf(name,sizeof name,"%s%06u%s",auto_names[unsigned(kind)].first,next,auto_names[unsigned(kind)].second);
+    return root/"auto"/name;
+}
+void SaveLibrary::prune_autosaves(AutoKind kind,unsigned keep) {
+    unsigned seen=0;
+    for(const auto& save:autosaves()) {
+        if(save.kind!=kind || ++seen<=keep)continue;
+        auto note=save.record;note.replace_extension(".json");
+        std::error_code ignored;fs::remove(note,ignored);fs::remove(save.record);
+    }
 }
 unsigned SaveLibrary::keep(std::span<const uint8_t> record) {
     for(const auto n:slots()) {
@@ -134,13 +180,23 @@ SaveLibrary::Imported SaveLibrary::import_cartridge(const fs::path& file) {
     publish_cartridge(card);
     return result;
 }
-unsigned SaveLibrary::import_slot(const fs::path& file,unsigned index) {
-    const auto card=sram::to_cartridge(read_bytes(file,sram::retroarch_size));
+unsigned SaveLibrary::import_slot(const fs::path& file,unsigned index,bool repair) {
+    auto card=sram::to_cartridge(read_bytes(file,sram::retroarch_size));
     if(!sram::formatted(card))throw std::runtime_error("No SRW64V3 header: "+file.string());
-    const auto record=sram::slot(card,index);
+    const auto record=sram::slot(std::span<uint8_t>(card),index);
     if(!sram::used(record))throw std::runtime_error("Slot "+std::to_string(index+1)+" is empty in "+file.string());
-    if(!sram::intact(record))throw std::runtime_error("Slot "+std::to_string(index+1)+" fails its checksum in "+file.string());
+    if(!sram::intact(record)) {
+        if(!repair)throw std::runtime_error("Slot "+std::to_string(index+1)+" fails its checksum in "+file.string());
+        record[1]=sram::checksum(record);
+    }
     return keep(record);
+}
+SaveLibrary::Scan SaveLibrary::scan(const fs::path& file) {
+    const auto bytes=read_bytes(file,sram::retroarch_size);
+    const auto card=sram::to_cartridge(bytes);
+    if(!sram::formatted(card))throw std::runtime_error("No SRW64V3 header: "+file.string());
+    const auto state=[](std::span<const uint8_t> record){return Scan::Record{sram::used(record),sram::used(record) && sram::intact(record)};};
+    return {*sram::detect(bytes),{state(sram::slot(card,0)),state(sram::slot(card,1))},state(sram::suspend(card))};
 }
 fs::path SaveLibrary::export_cartridge(const fs::path& destination,sram::Format format) const {
     const auto card=read_cartridge();

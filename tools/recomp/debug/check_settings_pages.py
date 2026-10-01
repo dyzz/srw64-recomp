@@ -14,7 +14,7 @@ import time
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from recomp.debug.session import Session, run_keys
 
-PAGES = ("general", "interface", "rules", "controls", "about")
+PAGES = ("general", "interface", "rules", "saves", "controls", "about")
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--reuse-build', action='store_true')
 args = parser.parse_args()
@@ -180,12 +180,13 @@ check('reopens-on-saved-page', lambda: shown_page() == 'rules' and saved('settin
 
 # The controller: hints follow it, L1/R1 turn, B closes, View opens.
 pad('r1')
-check('r1-turns', lambda: shown_page() == 'controls', lambda: {'page': shown_page()})
+check('r1-turns', lambda: shown_page() == 'saves', lambda: {'page': shown_page()})
 check('pad-hints', lambda: any('L1 / R1 切换分类' in row.get('text', '') for row in nodes()))
-shot('settings-pad-controls-960.png')
+shot('settings-pad-saves-960.png')
 pad('l1')
 pad('l1')
-# Controls has nothing to choose, so the focus sat on the tabs and stays there.
+# A debug run has no save library, so 存档 has nothing to choose: the focus sat on the
+# tabs and stays there.
 check('l1-turns-back', lambda: shown_page() == 'interface' and focused() == 'settings-page:interface', lambda: {'page': shown_page(), 'focus': focused()})
 pad('down')
 pad('down')

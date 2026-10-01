@@ -54,6 +54,7 @@
 #include "swap_page.hpp"
 #include "save_page.hpp"
 #include "save_store.hpp"
+#include "autosave.hpp"
 #include "title_page.hpp"
 #include "move_jump.hpp"
 #include "enemy_cycle.hpp"
@@ -461,6 +462,7 @@ static int run_host(int argc, char** argv) {
     srw64::swap_page::configure(output_dir);
     srw64::save_store::configure(output_dir, initial_sram);
     if (srw64::save_store::enabled()) srw64_game_hooks.sram_transfer = srw64::save_store::transfer;
+    srw64::autosave::configure(output_dir);
     srw64::save_page::configure(output_dir);
     srw64::title_page::configure(output_dir);
     srw64::move_jump::configure(output_dir);
