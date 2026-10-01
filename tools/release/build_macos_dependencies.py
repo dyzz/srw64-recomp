@@ -40,7 +40,16 @@ def source(name: str, entry: dict, directory: Path) -> Path:
     if not destination.exists():
         with tempfile.TemporaryDirectory(dir=directory, prefix=f'.{name}-') as temp:
             with tarfile.open(archive) as payload:
-                payload.extractall(temp, filter='data')
+                if hasattr(tarfile, 'data_filter'):
+                    payload.extractall(temp, filter='data')
+                else:
+                    # Python before 3.11.4 (Ubuntu 22.04's 3.11, the Linux build container) has
+                    # no extraction filters: refuse members that would land outside temp.
+                    for member in payload.getmembers():
+                        parts = Path(member.name).parts
+                        if Path(member.name).is_absolute() or '..' in parts or member.isdev():
+                            raise ValueError(f'Unsafe member {member.name!r} in {archive}')
+                    payload.extractall(temp)
             Path(temp).rename(destination)
         stamp.write_text(entry['sha256'] + '\n')
     roots = list(destination.iterdir())
