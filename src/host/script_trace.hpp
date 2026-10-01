@@ -1,5 +1,6 @@
 #pragma once
 #include "guest_memory.hpp"
+#include "platform_compat.hpp"
 #include <array>
 #include <cstdint>
 #include <cstdio>
