@@ -2417,9 +2417,17 @@ void sync() {
     // A dp is a point, fewer when the window is under 960 x 720 points, so the pages always
     // have that much room; the player's Interface size then enlarges it, as far as the
     // window keeps 800 x 540 dp (a Steam Deck's 1280 x 800: Large 1.25, Largest 1.48).
-    const float points_w=float(pixels_w)/pixel_ratio,points_h=float(pixels_h)/pixel_ratio;
+#ifdef __ANDROID__
+    // An SDL point is a screen pixel there: lay out in Android's density-independent pixels
+    // (160 per inch) instead, 3 screen pixels on the Seeker's 480 dpi.
+    float ddpi=0;
+    const float layout_ratio=SDL_GetDisplayDPI(0,&ddpi,nullptr,nullptr)==0 && ddpi>0?ddpi/160.f:pixel_ratio;
+#else
+    const float layout_ratio=pixel_ratio;
+#endif
+    const float points_w=float(pixels_w)/layout_ratio,points_h=float(pixels_h)/layout_ratio;
     const float fit=std::min({1.f,points_w/960.f,points_h/720.f});
-    ui_density=pixel_ratio*std::min(fit*settings::ui_scale(settings::ui_size()),std::max(fit,std::min(points_w/800.f,points_h/540.f)));
+    ui_density=layout_ratio*std::min(fit*settings::ui_scale(settings::ui_size()),std::max(fit,std::min(points_w/800.f,points_h/540.f)));
     context->SetDimensions({pixels_w,pixels_h});context->SetDensityIndependentPixelRatio(ui_density);input.set_scale(pixel_ratio);
     const auto language=localization::snapshot();localization::Scope scope(language);
     auto request=names::request();
