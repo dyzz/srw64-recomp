@@ -53,7 +53,13 @@ input::Bindings load_bindings(const nlohmann::json& saved) {
     return bindings;
 }
 std::atomic<BattleUi> battle{BattleUi::Native};
-std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true},fps_shown{false};
+#ifdef __ANDROID__
+// Android is being tuned on the phone (docs/design/android-port.md): the readout starts on.
+constexpr bool fps_default=true;
+#else
+constexpr bool fps_default=false;
+#endif
+std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true},fps_shown{fps_default};
 std::atomic<int> size_choice{-1};  // UiSize, or -1 until the player chooses
 void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},

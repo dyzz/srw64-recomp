@@ -339,6 +339,12 @@ public:
         core.window.view = handle.view;
 #elif defined(_WIN32)
         core.window = handle.window;
+#elif defined(__ANDROID__)
+        // ultramodern hands over the SDL window; Plume wants its ANativeWindow.
+        SDL_SysWMinfo info{};
+        SDL_VERSION(&info.version);
+        if (!SDL_GetWindowWMInfo(handle, &info) || info.subsystem != SDL_SYSWM_ANDROID) std::abort();
+        core.window = info.info.android.window;
 #else
         core.window = handle;
 #endif
@@ -400,6 +406,14 @@ public:
         // 4x MSAA; SRW64_MSAA=0/2/4/8 for comparisons. RT64 falls back when the device
         // lacks the sample count; native draws follow the scene target's sample count.
         app->userConfig.antialiasing = RT64::UserConfiguration::Antialiasing::MSAA4X;
+#ifdef __ANDROID__
+        // A phone GPU (docs/design/android-port.md): no MSAA, 8-bit colour targets (RT64
+        // picks 16-bit when device memory exceeds 512 MB, which shared memory always does)
+        // and no idle compute work to keep the GPU clock up.
+        app->userConfig.antialiasing = RT64::UserConfiguration::Antialiasing::None;
+        app->userConfig.internalColorFormat = RT64::UserConfiguration::InternalColorFormat::Standard;
+        app->userConfig.idleWorkActive = false;
+#endif
         if (const char* msaa = std::getenv("SRW64_MSAA")) {
             const std::string value = msaa;
             app->userConfig.antialiasing = value == "0" ? RT64::UserConfiguration::Antialiasing::None
@@ -480,9 +494,32 @@ public:
     bool valid() override { return app != nullptr; }
     bool update_config(const ultramodern::renderer::GraphicsConfig&, const ultramodern::renderer::GraphicsConfig&) override { return false; }
     void enable_instant_present() override {}
+#ifdef __ANDROID__
+    // Where a frame's time goes on the phone (docs/design/android-port.md): logged every
+    // 60 display lists while the port is tuned.
+    struct Timing {
+        using clock = std::chrono::steady_clock;
+        clock::time_point last{};
+        double gap = 0, images = 0, lists = 0, screen = 0, gap_max = 0, lists_max = 0;
+        unsigned count = 0, screens = 0;
+        static double ms(clock::time_point a, clock::time_point b) { return std::chrono::duration<double, std::milli>(b - a).count(); }
+    } timing;
+#endif
     void send_dl(const OSTask* task) override {
         srw64::frame_rate::list_sent();
+#ifdef __ANDROID__
+        const auto t0 = Timing::clock::now();
+        if (timing.last != Timing::clock::time_point{}) {
+            const double gap = Timing::ms(timing.last, t0);
+            timing.gap += gap;
+            timing.gap_max = std::max(timing.gap_max, gap);
+        }
+        timing.last = t0;
+#endif
         apply_images();
+#ifdef __ANDROID__
+        const auto t1 = Timing::clock::now();
+#endif
         apply_aspect();
         app->state->rsp->reset();
         app->interpreter->loadUCodeGBI(task->t.ucode & 0x3FFFFFF, task->t.ucode_data & 0x3FFFFFF, true);
@@ -510,7 +547,22 @@ public:
 #endif
         srw64::wide_map::queue_shape(app->state->workloadId+1,shape);
         // The native dialogue submits an edited copy of the display list.
+#ifdef __ANDROID__
+        const auto t2 = Timing::clock::now();
+#endif
         app->processDisplayLists(native_text ? display_copy.data() : app->core.RDRAM, start, 0, true);
+#ifdef __ANDROID__
+        const auto t3 = Timing::clock::now();
+        timing.images += Timing::ms(t0, t1);
+        timing.lists += Timing::ms(t2, t3);
+        timing.lists_max = std::max(timing.lists_max, Timing::ms(t2, t3));
+        if (++timing.count == 60) {
+            fprintf(stderr, "SRW64_TIMING lists=60 gap=%.1f/%.1f images=%.1f process=%.1f/%.1f screens=%u screen=%.1f ms (mean/max)\n",
+                    timing.gap / 59, timing.gap_max, timing.images / 60, timing.lists / 60, timing.lists_max,
+                    timing.screens, timing.screens ? timing.screen / timing.screens : 0.0);
+            timing = Timing{.last = timing.last};
+        }
+#endif
         srw64::wide_map::queue_shape(app->state->workloadId,shape);
 #ifdef SRW64_NATIVE_DIALOGUE
         srw64::dialogue::queue_frame(app->state->workloadId,native_frame);
@@ -519,7 +571,16 @@ public:
         audit_worldmap();
     }
     void send_dummy_workload(uint32_t) override {}
-    void update_screen() override { app->updateScreen(); }
+    void update_screen() override {
+#ifdef __ANDROID__
+        const auto t0 = Timing::clock::now();
+        app->updateScreen();
+        timing.screen += Timing::ms(t0, Timing::clock::now());
+        ++timing.screens;
+#else
+        app->updateScreen();
+#endif
+    }
     void shutdown() override { if (app) app->end(); }
     uint32_t get_display_framerate() const override { return 60; }
     float get_resolution_scale() const override { return 1.0f; }
@@ -643,10 +704,15 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     // menu, F11 or the settings page for full screen, frontend.cpp).
     const bool deck = srw64::on_steam_deck();
     if (deck) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
+#ifdef __ANDROID__
+    constexpr bool fills_screen = true;  // immersive: no status or navigation bar over the game
+#else
+    const bool fills_screen = deck;
+#endif
     // A Steam Deck's 1280 x 800 is the reference (game_frame.hpp); the Deck fills its screen.
     window = SDL_CreateWindow("SRW64 native graphics probe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                               1280, 800, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
-                              (deck ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
+                              (fills_screen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
                               (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0));
     if (!window) {
         fprintf(stderr, "SRW64_WINDOW_FAILED %s\n", SDL_GetError());

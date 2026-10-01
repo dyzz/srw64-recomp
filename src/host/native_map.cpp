@@ -29,6 +29,9 @@ uint64_t srw64_current_vi();
 
 namespace srw64::hdmap {
 namespace {
+// std::atomic_ref, which the NDK's libc++ (r28) lacks: the same atomic access as builtins.
+uint64_t load_atomic(const uint64_t& value) { return __atomic_load_n(&value, __ATOMIC_SEQ_CST); }
+void store_atomic(uint64_t& value, uint64_t next) { __atomic_store_n(&value, next, __ATOMIC_SEQ_CST); }
 using json = nlohmann::json;
 using Palette = std::array<uint32_t, 256>;   // RGBA8, R in the low byte
 
@@ -54,7 +57,7 @@ struct Asset {
     enum class State { waiting, queued, decoded, ready } state = State::waiting;
     std::vector<uint8_t> base, index;        // RGBA8 and one index per pixel, at width*scale
     std::vector<std::vector<uint8_t>> base_levels;   // base with its mip chain, from the decoder thread
-    uint64_t last_draw = 0;                  // draw_clock when last used (std::atomic_ref)
+    uint64_t last_draw = 0;                  // draw_clock when last used (load_atomic/store_atomic)
     std::unique_ptr<gpu::Texture> base_texture, index_texture;
     std::unique_ptr<plume::RenderDescriptorSet> textures;
     std::vector<std::array<int, 2>> colonies;
@@ -296,7 +299,7 @@ void evict_stale(size_t keep) {
     for (size_t i = 0; i < assets.size(); ++i) {
         Asset& old = assets[i];
         if (i == keep || !old.lazy || old.state != Asset::State::ready) continue;
-        if (now - std::atomic_ref<uint64_t>(old.last_draw).load() < evict_after) continue;
+        if (now - load_atomic(old.last_draw) < evict_after) continue;
         struct Held { std::unique_ptr<gpu::Texture> base, index; std::unique_ptr<plume::RenderDescriptorSet> set; };
         gpu::retire(std::make_shared<Held>(Held{std::move(old.base_texture), std::move(old.index_texture), std::move(old.textures)}));
         old.state = Asset::State::waiting;
@@ -448,7 +451,7 @@ void rewrite(uint8_t* rdram, const MapDraw& draw) {
         }
         if (lazy.state == Asset::State::decoded) make_textures(lazy);
         if (lazy.state != Asset::State::ready) return;
-        std::atomic_ref<uint64_t>(lazy.last_draw).store(++draw_clock);
+        store_atomic(lazy.last_draw, ++draw_clock);
     }
     const Asset& asset = assets[size_t(asset_index)];
     // Walk the commands the drawer wrote: remember its TLUT source and every
@@ -565,7 +568,7 @@ void rewrite_panel(uint8_t* rdram, const PanelDraw& draw) {
         ++panel_unmarked;
         return;
     }
-    std::atomic_ref<uint64_t>(assets[size_t(current_map)].last_draw).store(++draw_clock);
+    store_atomic(assets[size_t(current_map)].last_draw, ++draw_clock);
     Draw record;
     record.asset = current_map;
     record.colony_frame = rdram[(0x80178C6D & 0x1FFFFFFF) ^ 3] & 7;
