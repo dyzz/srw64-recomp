@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Prepare the dialogue and UI fonts: HarmonyOS Sans from the official archive.
+"""Prepare the dialogue and UI fonts: HarmonyOS Sans, the symbol and prompt fonts.
 
-The licence allows shipping HarmonyOS Sans with the game but not distributing
-the font separately or modified, so the repository holds only
-content/fonts/harmonyos-sans.json. This tool checks the official archive and
-each extracted file against it and writes the fonts, the symbol font and both
-licences into one directory, which the host reads through SRW64_FONT_DIR and
-the app bundle ships in Contents/Resources/fonts."""
+The licence lets HarmonyOS Sans be redistributed unmodified with software (not on
+its own, not modified), so the repository carries the official files, licence
+included, in content/fonts next to content/fonts/harmonyos-sans.json. This tool
+checks each file against that manifest (or extracts it from the official archive
+when the repository copy is absent) and writes the fonts, the symbol font and the
+licences into one directory, which the host reads through SRW64_FONT_DIR and the
+app bundle ships in Contents/Resources/fonts."""
 import argparse
 import hashlib
 import json
@@ -45,8 +46,20 @@ def prepared(output: Path) -> bool:
                for name in manifest["bundled"])
 
 
-def prepare(archive: Path = ARCHIVE, output: Path = OUTPUT) -> Path:
+def prepare(archive: Path = ARCHIVE, output: Path = OUTPUT, repository: Path = MANIFEST.parent) -> Path:
     manifest = json.loads(MANIFEST.read_text())
+    if all((repository / name).is_file() for name in manifest["files"]):
+        output.mkdir(parents=True, exist_ok=True)
+        for path in stale(output, manifest):
+            path.unlink()
+        for name, row in manifest["files"].items():
+            content = (repository / name).read_bytes()
+            if sha256(content) != row["sha256"]:
+                raise SystemExit(f"{repository / name} is not the official file (SHA-256 mismatch)")
+            (output / name).write_bytes(content)
+        for name in manifest["bundled"]:
+            shutil.copyfile(MANIFEST.parent / name, output / name)
+        return output
     if not archive.is_file():
         raise SystemExit(f"HarmonyOS Sans {manifest['version']} is missing: download the official archive from\n  {manifest['url']}\n"
                          f"and put it at {archive} (SHA-256 {manifest['archive_sha256']}), then run this tool again.")

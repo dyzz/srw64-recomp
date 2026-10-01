@@ -1,4 +1,4 @@
-"""Packaged fonts: the manifest, and preparation from the official archive."""
+"""Packaged fonts: the manifest, the repository copies, and preparation."""
 import importlib.util
 import json
 import tempfile
@@ -22,27 +22,34 @@ class FontPackageTests(unittest.TestCase):
                                                   "LICENSE-HarmonyOS-Sans.txt"})
         for row in manifest["files"].values():
             self.assertRegex(row["sha256"], r"^[0-9a-f]{64}$")
-        # The licence forbids distributing the fonts on their own: none in the repository.
-        self.assertFalse(list((ROOT / "content/fonts").glob("HarmonyOS*")))
+        # The licence allows redistributing them unmodified with the software: the
+        # repository carries the official files, byte for byte.
+        for name, row in manifest["files"].items():
+            self.assertEqual(FONTS.sha256((ROOT / "content/fonts" / name).read_bytes()), row["sha256"], name)
 
     def test_missing_archive_says_where_to_get_it(self):
         with tempfile.TemporaryDirectory() as tmp:
             with self.assertRaises(SystemExit) as caught:
-                FONTS.prepare(Path(tmp) / "missing.zip", Path(tmp) / "out")
+                FONTS.prepare(Path(tmp) / "missing.zip", Path(tmp) / "out", Path(tmp) / "no-copies")
             self.assertIn("developer.huawei.com", str(caught.exception))
             self.assertFalse(FONTS.prepared(Path(tmp) / "out"))
+
+    def test_prepare_takes_the_repository_copies(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = FONTS.prepare(Path(tmp) / "missing.zip", Path(tmp) / "fonts")
+            self.assertTrue(FONTS.prepared(out))
 
     @unittest.skipUnless(FONTS.ARCHIVE.is_file() and (ROOT / "content/fonts/SRW64Symbols.ttf").is_file(),
                          "Official HarmonyOS Sans archive required")
     def test_prepare_extracts_checked_files(self):
         with tempfile.TemporaryDirectory() as tmp:
-            out = FONTS.prepare(FONTS.ARCHIVE, Path(tmp) / "fonts")
+            out = FONTS.prepare(FONTS.ARCHIVE, Path(tmp) / "fonts", Path(tmp) / "no-copies")
             self.assertTrue(FONTS.prepared(out))
             (out / "HarmonyOS_Sans_SC.ttf").write_bytes(b"tampered")
             self.assertFalse(FONTS.prepared(out))
             # A file of an older package counts as unprepared and is removed on the next run.
             (out / "HarmonyOS_Sans_SC_Regular.ttf").write_bytes(b"1.0")
-            FONTS.prepare(FONTS.ARCHIVE, out)
+            FONTS.prepare(FONTS.ARCHIVE, out, Path(tmp) / "no-copies")
             self.assertFalse((out / "HarmonyOS_Sans_SC_Regular.ttf").exists())
             self.assertTrue(FONTS.prepared(out))
 
