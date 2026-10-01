@@ -125,6 +125,8 @@ NATIVE_HOOKS = {
     # native page's answers (intermission_page.cpp).
     "load_0008F4B0_func_801CDFB0": "srw64_original_intermission_menu_build",
     "load_0008F4B0_func_801CE19C": "srw64_original_intermission_menu_step",
+    # Entering the intermission (autosave.cpp).
+    "load_0008F4B0_func_801D8F74": "srw64_original_intermission_enter",
     # 強化パーツ screens 7 / 18 / 19 (parts_page.cpp).
     "load_0008F4B0_func_801D4A00": "srw64_original_parts_list_open",
     "load_0008F4B0_func_801D4A98": "srw64_original_parts_list_step",

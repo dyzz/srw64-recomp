@@ -167,6 +167,41 @@ void library() {
     write(saves.cartridge(),broken);
     rejects([&]{saves.read_cartridge();},"damaged card read");
 
+    // Autosaves: one sequence for both kinds, newest first, pruned per kind with notes.
+    SaveLibrary autos(temp.path/"autos");
+    using Kind=SaveLibrary::AutoKind;
+    const auto slot_record=sram::slot(std::span<const uint8_t>(first),0);
+    const auto suspend_record=sram::suspend(std::span<const uint8_t>(card(0x46,0,true)));
+    for(unsigned n=0;n<4;++n) {
+        const auto path=autos.next_autosave(n%2?Kind::turn:Kind::intermission);
+        if(n%2)SaveLibrary::write_record(path,suspend_record,sram::suspend_size);
+        else SaveLibrary::write_record(path,slot_record,sram::slot_size);
+        auto note=path;note.replace_extension(".json");atomic_write(note,"{}");
+    }
+    auto saved=autos.autosaves();
+    check(saved.size()==4 && saved[0].sequence==4 && saved[0].kind==Kind::turn && saved[3].sequence==1 &&
+          saved[0].record.filename()=="turn-000004.sus" && saved[3].record.filename()=="inter-000001.rec","autosave list");
+    autos.prune_autosaves(Kind::intermission,1);
+    saved=autos.autosaves();
+    check(saved.size()==3 && !fs::exists(temp.path/"autos/auto/inter-000001.rec") && !fs::exists(temp.path/"autos/auto/inter-000001.json")
+          && fs::exists(temp.path/"autos/auto/inter-000003.rec"),"autosave pruning");
+    check(autos.next_autosave(Kind::intermission).filename()=="inter-000005.rec","autosave numbering");
+    rejects([&]{SaveLibrary::write_record(temp.path/"x.sus",slot_record,sram::suspend_size);},"short suspend record");
+    // Deleting moves the record and its note to trash/.
+    const auto moved=autos.trash(saved[0].record);
+    check(!fs::exists(saved[0].record) && fs::exists(moved) && moved.parent_path().filename()=="trash" &&
+          fs::exists(fs::path(moved).replace_extension(".json")),"trash");
+    // One damaged slot: refused, then taken in with its sum redone; scan reports both slots.
+    auto mixed=card(0x47,0);
+    auto other=sram::slot(std::span<uint8_t>(mixed),1);std::copy(slot_record.begin(),slot_record.end(),other.begin());
+    other[0x300]^=1;
+    write(temp.path/"mixed.sra",sram::from_cartridge(mixed,sram::Format::project64));
+    const auto scanned=SaveLibrary::scan(temp.path/"mixed.sra");
+    check(scanned.detected.order==sram::Order::word && scanned.slots[0].intact && scanned.slots[1].used && !scanned.slots[1].intact && !scanned.suspend.used,"scan");
+    rejects([&]{autos.import_slot(temp.path/"mixed.sra",1);},"damaged slot imported without repair");
+    const auto repaired=autos.import_slot(temp.path/"mixed.sra",1,true);
+    check(sram::intact(autos.read_slot(repaired)),"repaired slot");
+
     // Slots 3..99, then full.
     SaveLibrary many(temp.path/"many");
     const auto record=sram::slot(std::span<const uint8_t>(first),0);

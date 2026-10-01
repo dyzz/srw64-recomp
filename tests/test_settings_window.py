@@ -43,7 +43,7 @@ class SettingsWindowTests(unittest.TestCase):
         # its column: a Chinese or Japanese sentence is one run.
         panel = 800 * 0.88 - 52 - 2
         row = panel - 8 - 12 - 24
-        tab = (panel - 4 * 6) / 5 - 20
+        tab = (panel - (len(SETTINGS_PAGES) - 1) * 6) / len(SETTINGS_PAGES) - 20
         runs = lambda text: text.split(" ")
         choices = {"settings_images": ("original", "hd"), "settings_battle_ui": ("native", "original"),
                    "settings_ui_size": ("standard", "large", "largest"),

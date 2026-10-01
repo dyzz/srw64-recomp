@@ -112,6 +112,7 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
 void resident_func_800821B0(uint8_t* ram,recomp_context* ctx) {
     const uint32_t seed=ctx->r4;srw64_original_rng_seed(ram,ctx);
     srw64::state_probe::rng("seed",seed,ram);
+    if(srw64_game_hooks.rng_seeded)srw64_game_hooks.rng_seeded(ram);
 }
 void resident_func_800822D8(uint8_t* ram,recomp_context* ctx) {
     srw64_original_rng_next(ram,ctx);srw64::state_probe::rng("next",ctx->r2,ram);
@@ -127,7 +128,9 @@ void resident_func_800927A4(uint8_t* ram,recomp_context* ctx) {
     srw64_original_intermission_restore(ram,ctx);srw64::state_probe::capture(ram,"intermission-restored");
 }
 void resident_func_800936A0(uint8_t* ram,recomp_context* ctx) {
+    const bool from_sram=uint8_t(ctx->r4)!=0;
     srw64_original_tactical_restore(ram,ctx);srw64::state_probe::capture(ram,"tactical-restored");
+    if(srw64_game_hooks.tactical_restored)srw64_game_hooks.tactical_restored(ram,from_sram);
 }
 void load_000A7EC0_func_801C517C(uint8_t* rdram,recomp_context* ctx) {
     // 3D5E: switch to mode 6, the 部隊名 page. The caller (800A1050) completes the
@@ -228,6 +231,7 @@ void load_000AB160_func_801CBB04(uint8_t* rdram, recomp_context* ctx) {
     if (!srw64_game_hooks.move_select || !srw64_game_hooks.move_select(rdram, ctx)) srw64_original_move_select(rdram, ctx);
 }
 void load_000AB160_func_801C8B04(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.turn_idle) srw64_game_hooks.turn_idle(rdram, ctx);
     if (!srw64_game_hooks.map_idle || !srw64_game_hooks.map_idle(rdram, ctx)) srw64_original_map_idle(rdram, ctx);
 }
 void load_000AB160_func_801E4760(uint8_t* rdram, recomp_context* ctx) {
@@ -830,8 +834,14 @@ void load_0008F4B0_func_801CDFB0(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_intermission_menu_build(rdram, ctx);
 }
 void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.intermission_step && srw64_game_hooks.intermission_step(rdram, ctx)) return;
-    srw64_original_intermission_menu_step(rdram, ctx);
+    if (!srw64_game_hooks.intermission_step || !srw64_game_hooks.intermission_step(rdram, ctx))
+        srw64_original_intermission_menu_step(rdram, ctx);
+    if (srw64_game_hooks.intermission_after_step) srw64_game_hooks.intermission_after_step(rdram, ctx);
+}
+// Entering the intermission: 0 after a map or a story scene, 1-2 loading slot 1-2.
+void load_0008F4B0_func_801D8F74(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.intermission_enter) srw64_game_hooks.intermission_enter(rdram, uint8_t(ctx->r4));
+    srw64_original_intermission_enter(rdram, ctx);
 }
 void load_0008F4B0_func_801D70FC(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.link_step && srw64_game_hooks.link_step(rdram, ctx)) return;

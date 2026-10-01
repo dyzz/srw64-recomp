@@ -6,6 +6,7 @@
 #include "localization/catalog.hpp"
 #include "game_hooks.hpp"
 #include "save_store.hpp"
+#include "autosave.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
 #include <algorithm>
@@ -40,7 +41,7 @@ constexpr unsigned portrait_face=25;
 constexpr uint16_t text_rom=0xFD9,text_pak=0xFDA,text_save_to=0xFDC,text_checking=0xFDD,text_slot=0xFDE,text_level=0xFE1,text_episode=0xFD7,text_clear=0xFE0,
     text_turns=0x101B,text_funds=0x1019,text_overwrite=0xFE3,text_ask=0xFE4,text_yes=0xFE5,text_no=0xFE6,text_titles=0x119;
 constexpr uint16_t glyph_blank=0x1549;
-constexpr unsigned sound_move=0xB9,sound_confirm=0xB7,sound_cancel=0xB8;
+constexpr unsigned sound_move=0xB9,sound_confirm=0xB7,sound_cancel=0xB8,sound_buzzer=0xBA;
 constexpr uint16_t button_b=0x4000;
 
 std::mutex mutex;
@@ -118,48 +119,114 @@ void relocalize(const uint8_t* ram) {
 
 // --- The slot list (save_store.hpp) ------------------------------------------------------
 // The cartridge's two slots, then extended slots 3..99, two to a page in the original's
-// layout; a save also offers the next free slot. `cursor_at` indexes `numbers`; the
-// game's own cursor only ever holds 0 or 1.
-std::vector<unsigned> numbers{1,2};
-std::map<unsigned,json> extended_headers;
+// layout; a save also offers the next free slot, the title's ロード lists the autosaves
+// after them, newest first. `cursor_at` indexes `entries`; the game's own cursor only
+// ever holds 0 or 1.
+struct Entry {
+    unsigned number{};                       // 1..99, or 0 for an autosave
+    std::optional<save_store::AutoSave> autosave;
+    std::filesystem::path record() const{return autosave?autosave->record:number>2?save_store::slot_path(number):std::filesystem::path();}
+    bool deletable() const{return autosave || number>2;}
+};
+std::vector<Entry> entries{{1},{2}};
+std::map<std::string,json> headers;          // extended slots and autosaves, by key()
 unsigned cursor_at{};
+bool deleting{};                             // the delete window over the list
+unsigned delete_cursor{1};                   // 0 はい, 1 いいえ
+std::string key(const Entry& e){return e.autosave?"auto:"+std::to_string(e.autosave->sequence):"slot:"+std::to_string(e.number);}
 json slot_json(const uint8_t* ram,unsigned n,uint32_t headers);
-// After 80085CD4 filled `table` with the cartridge's headers: the extended slots' headers,
-// read by the same routine through the store's window, then the cartridge's again.
+std::string name_of(const std::vector<uint16_t>& raw);
+// A turn autosave keeps the suspend format, which 80085CD4 does not read: its progress
+// block at +0x26C (as the slot's at +0x48) has the turn, the title, the funds and the names.
+json turn_json(const uint8_t* ram,const save_store::AutoSave& save) {
+    std::vector<uint8_t> record(0x3AE0);
+    if(std::ifstream file(save.record,std::ios::binary);file)file.read(reinterpret_cast<char*>(record.data()),std::streamsize(record.size()));
+    constexpr size_t at=0x26C;
+    const auto u16=[&](size_t i){return unsigned(record[i]<<8|record[i+1]);};
+    std::vector<uint16_t> codes;
+    for(unsigned i=0;i<6;++i)codes.push_back(uint16_t(u16(at+0x50+2*i)));
+    return {{"used",(record[0]&0x80)!=0},{"name",name_of(codes)},{"title",text(ram,uint16_t(text_titles+record[at+9]))},
+            {"map_turn",u16(at+2)+1},{"funds",u16(at+0xC)<<16|u16(at+0xE)}};
+}
+// After 80085CD4 filled `table` with the cartridge's headers: the other slot records'
+// headers, read by the same routine through the store's window, then the cartridge's again.
 void list_slots(uint8_t* ram,recomp_context* ctx,uint32_t table,bool saving) {
-    numbers={1,2};extended_headers.clear();
+    entries={{1},{2}};headers.clear();deleting=false;
     if(!save_store::enabled())return;
     auto extended=save_store::extended();
-    for(size_t i=0;i<extended.size();i+=2) {
-        const unsigned a=extended[i],b=i+1<extended.size()?extended[i+1]:a;
-        save_store::Window first(0,a),second(1,b);
-        call(ram,ctx,read_slots,0,table);
-        extended_headers[a]=slot_json(ram,0,table);extended_headers[b]=slot_json(ram,1,table);
-    }
-    if(!extended.empty())call(ram,ctx,read_slots,0,table);
     if(saving)if(const auto free=save_store::next_free())extended.push_back(*free);
     std::sort(extended.begin(),extended.end());
-    numbers.insert(numbers.end(),extended.begin(),extended.end());
-    cursor_at=std::min<unsigned>(cursor_at,unsigned(numbers.size())-1);
+    for(const auto n:extended)entries.push_back({n});
+    if(!saving)for(auto& save:save_store::autosaves())entries.push_back({0,std::move(save)});
+    std::vector<const Entry*> slot_records;
+    for(const auto& e:entries) {
+        if(e.autosave && e.autosave->turn)headers[key(e)]=turn_json(ram,*e.autosave);
+        else if(e.number!=1 && e.number!=2)slot_records.push_back(&e);
+    }
+    for(size_t i=0;i<slot_records.size();i+=2) {
+        const Entry& a=*slot_records[i];const Entry& b=*slot_records[i+1<slot_records.size()?i+1:i];
+        save_store::Window first(0,a.record()),second(1,b.record());
+        call(ram,ctx,read_slots,0,table);
+        headers[key(a)]=slot_json(ram,0,table);headers[key(b)]=slot_json(ram,1,table);
+    }
+    if(!slot_records.empty())call(ram,ctx,read_slots,0,table);
+    for(const auto& e:entries)if(e.number>2)headers[key(e)]["note"]=save_store::note(e.number);
+    cursor_at=std::min<unsigned>(cursor_at,unsigned(entries.size())-1);
 }
-unsigned number_at(){return numbers.at(cursor_at);}
-bool slot_used(const uint8_t* ram,uint32_t table,unsigned number) {
-    if(number<=2)return read(ram,table+(number-1)*slot_size,1)!=0;
-    const auto found=extended_headers.find(number);
-    return found!=extended_headers.end() && found->second.value("used",false);
+const Entry& entry_at(){return entries.at(cursor_at);}
+bool slot_used(const uint8_t* ram,uint32_t table,const Entry& e) {
+    if(e.number==1 || e.number==2)return read(ram,table+(e.number-1)*slot_size,1)!=0;
+    const auto found=headers.find(key(e));
+    return found!=headers.end() && found->second.value("used",false);
 }
-// The page's part of the list: the two slots on the cursor's page, each with its number.
-void page_slots(json& page,const uint8_t* ram,uint32_t table,bool headers=true) {
+// The game's cursor for an entry: its own slot, or slot 1 standing for the record.
+uint8_t game_slot(const Entry& e){return uint8_t(e.number==2?1:0);}
+// The page's part of the list: the two entries on the cursor's page.
+void page_slots(json& page,const uint8_t* ram,uint32_t table,bool cartridge=true) {
     const unsigned first=cursor_at/2*2;
-    page["cursor"]=cursor_at;page["count"]=numbers.size();page["page"]=first/2;page["pages"]=(numbers.size()+1)/2;
+    page["cursor"]=cursor_at;page["count"]=entries.size();page["page"]=first/2;page["pages"]=(entries.size()+1)/2;
+    page["tools"]={{"delete",entries[cursor_at].deletable()},{"note",entries[cursor_at].number>2}};
+    if(deleting){page["mode"]=3;page["window_cursor"]=delete_cursor;}
     page["slots"]=json::array();
-    for(unsigned at=first;at<first+2 && at<numbers.size();++at) {
-        const unsigned number=numbers[at];
-        json s=number>2?(extended_headers.contains(number)?extended_headers.at(number):json{{"used",false}})
-                       :headers?slot_json(ram,number-1,table):json{{"used",false}};
-        s["index"]=at;s["number"]=number;
+    for(unsigned at=first;at<first+2 && at<entries.size();++at) {
+        const auto& e=entries[at];
+        json s=e.number==1 || e.number==2?(cartridge?slot_json(ram,e.number-1,table):json{{"used",false}})
+              :headers.contains(key(e))?headers.at(key(e)):json{{"used",false}};
+        s["index"]=at;s["number"]=e.number;
+        if(e.autosave){s["kind"]=e.autosave->turn?"turn":"intermission";s["time"]=e.autosave->about.value("time",std::string());}
+        else s["kind"]="slot";
         page["slots"].push_back(std::move(s));
     }
+}
+// R on a slot 3+ or an autosave opens the delete window; はい moves it to trash/.
+bool delete_action(const std::string& action,uint8_t* ram,recomp_context* ctx,uint32_t table,bool saving,bool& refresh) {
+    // The title's page steps every frame, also with nothing pressed: the window stays.
+    if(action.empty())return deleting;
+    if(!deleting) {
+        if(action!="delete" || !entries[cursor_at].deletable() || !slot_used(ram,table,entries[cursor_at]))return false;
+        deleting=true;delete_cursor=1;refresh=true;sound(ram,ctx,sound_confirm);
+        record("delete-window",{{"entry",key(entries[cursor_at])}});
+        return true;
+    }
+    if(action.starts_with("move:")){delete_cursor=unsigned(std::atoi(action.c_str()+5))&1;refresh=true;sound(ram,ctx,sound_move);return true;}
+    if(action=="choose" && delete_cursor==0) {
+        const auto e=entries[cursor_at];
+        const bool moved=save_store::trash(e.record());
+        record("delete",{{"entry",key(e)},{"moved",moved}});
+        sound(ram,ctx,moved?sound_confirm:sound_buzzer);
+        list_slots(ram,ctx,table,saving);
+    } else sound(ram,ctx,sound_cancel);
+    deleting=false;refresh=true;
+    return true;
+}
+// L on a slot 3+: the page sends the note the player typed.
+bool note_action(const std::string& action) {
+    if(!action.starts_with("note:") || entries[cursor_at].number<=2)return false;
+    const auto e=entries[cursor_at];
+    save_store::set_note(e.number,action.substr(5,120));
+    headers[key(e)]["note"]=save_store::note(e.number);
+    record("note",{{"slot",e.number}});
+    return true;
 }
 
 // --- Medium choice (1) ---------------------------------------------------------------
@@ -207,18 +274,24 @@ bool choice_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_co
 
 // --- Slots (9) -----------------------------------------------------------------------
 
+// Six name glyph codes up to 0xFFFF, blanks trimmed. The header keeps the protagonist's
+// nickname; a default shows in the reading language.
+std::string name_of(const std::vector<uint16_t>& raw) {
+    std::vector<uint16_t> codes;
+    for(const auto code:raw){if(code==0xFFFF)break;codes.push_back(code);}
+    while(!codes.empty() && codes.back()==glyph_blank)codes.pop_back();
+    std::u16string name;
+    for(const auto code:codes){const auto glyph=names::decode_glyphs({code});name+=glyph.empty()?u"?":glyph;}
+    return names::default_names().display(names::Field::Nick,dialogue::utf8(name),localization::catalog().locale);
+}
 json slot_json(const uint8_t* ram,unsigned n,uint32_t headers) {
     const uint32_t rec=headers+n*slot_size;
     json s={{"index",n},{"used",read(ram,rec,1)!=0}};
     if(!s["used"].get<bool>())return s;
     std::vector<uint16_t> codes;
-    for(unsigned i=0;i<6;++i){const auto code=uint16_t(read(ram,rec+2+2*i,2));if(code==0xFFFF)break;codes.push_back(code);}
-    while(!codes.empty() && codes.back()==glyph_blank)codes.pop_back();
-    std::u16string name;
-    for(const auto code:codes){const auto glyph=names::decode_glyphs({code});name+=glyph.empty()?u"?":glyph;}
+    for(unsigned i=0;i<6;++i)codes.push_back(uint16_t(read(ram,rec+2+2*i,2)));
     const unsigned protagonist=read(ram,rec+0xE,1);
-    // The header keeps the protagonist's nickname; a default shows in the reading language.
-    s["name"]=names::default_names().display(names::Field::Nick,dialogue::utf8(name),localization::catalog().locale);
+    s["name"]=name_of(codes);
     s["protagonist"]=protagonist;
     s["level"]=read(ram,rec+0xF,1);s["episode"]=read(ram,rec+0x10,1);s["title"]=text(ram,uint16_t(text_titles+read(ram,rec+0x11,1)));
     s["turns"]=read(ram,rec+0x12,2);s["funds"]=read(ram,rec+0x14,4);
@@ -265,7 +338,7 @@ bool slots_build(uint8_t* ram,recomp_context* ctx) {
         if(status>=2){write32(ram,mode,2);message=true;}
     }
     if(!message)call(ram,ctx,read_slots,m,slots);
-    if(m){numbers={1,2};extended_headers.clear();cursor_at=std::min(cursor_at,1u);}
+    if(m){entries={{1},{2}};headers.clear();deleting=false;cursor_at=std::min(cursor_at,1u);}
     else list_slots(ram,ctx,slots,true);
     std::lock_guard lock(mutex);
     open(slots_json(ram),ram);
@@ -275,12 +348,12 @@ bool slots_build(uint8_t* ram,recomp_context* ctx) {
 // The original A path: SRAM or Controller Pak write, then the screen again or the
 // message when the pak status is non-zero. An extended slot is the game's slot 1 seen
 // through the store.
-void write_slot(uint8_t* ram,recomp_context* ctx,unsigned number) {
-    const unsigned slot=number>2?0:number-1;
+void write_slot(uint8_t* ram,recomp_context* ctx,const Entry& e) {
+    const unsigned slot=game_slot(e),number=e.number;
     write8(ram,pak_status,0);
     if(read(ram,medium,2)==0) {
         std::optional<save_store::Window> extended;
-        if(number>2)extended.emplace(0,number);
+        if(number>2)extended.emplace(0,e.record());
         call(ram,ctx,write_sram,slot);
     }
     else {
@@ -307,18 +380,23 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
     }
     if(pending.empty())return true;
     const auto action=std::move(pending);pending.clear();
-    const unsigned number=number_at();
+    const Entry e=entry_at();
     if(state==0) {
+        bool refresh=false;
+        if(delete_action(action,ram,ctx,slots,true,refresh) || note_action(action)) {
+            write16(ram,slot_cursor,game_slot(entry_at()));republish(slots_json(ram));return true;
+        }
+        if(deleting)return true;
         if(action.starts_with("move:")) {
             const unsigned index=unsigned(std::atoi(action.c_str()+5));
-            if(index>=numbers.size() || index==cursor_at)return true;
-            cursor_at=index;write16(ram,slot_cursor,uint16_t(number_at()>2?0:number_at()-1));republish(slots_json(ram));
+            if(index>=entries.size() || index==cursor_at)return true;
+            cursor_at=index;write16(ram,slot_cursor,game_slot(entry_at()));republish(slots_json(ram));
             lock.unlock();sound(ram,ctx,sound_move);return true;
         }
         if(action=="choose") {
             sound(ram,ctx,sound_confirm);
-            if(slot_used(ram,slots,number)){write32(ram,mode,1);write16(ram,window_cursor,0);record("window-open",{{"slot",number}});}
-            else write_slot(ram,ctx,number);
+            if(slot_used(ram,slots,e)){write32(ram,mode,1);write16(ram,window_cursor,0);record("window-open",{{"slot",e.number}});}
+            else write_slot(ram,ctx,e);
             republish(slots_json(ram));return true;
         }
         if(action=="back"){sound(ram,ctx,sound_cancel);fade_out(ram,ctx,1);record("back");return true;}
@@ -331,7 +409,7 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
             write16(ram,window_cursor,uint16_t(index));republish(slots_json(ram));
             lock.unlock();sound(ram,ctx,sound_move);return true;
         }
-        if(action=="choose" && read(ram,window_cursor,2)==0){sound(ram,ctx,sound_confirm);write_slot(ram,ctx,number);republish(slots_json(ram));return true;}
+        if(action=="choose" && read(ram,window_cursor,2)==0){sound(ram,ctx,sound_confirm);write_slot(ram,ctx,e);republish(slots_json(ram));return true;}
         if(action=="choose" || action=="cancel"){sound(ram,ctx,action=="choose"?sound_confirm:sound_cancel);write32(ram,mode,0);republish(slots_json(ram));record("window-close");return true;}
         return true;
     }
@@ -357,7 +435,6 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
 // countdown D_801CC368 is a half word.
 constexpr uint32_t t_major=0x801CC3A6,t_sub=0x801CC3A7,t_medium=0x801CC359,t_slot=0x801CC358,t_window=0x801CC150,
     t_pak=0x801CC37C,t_wait=0x801CC368,t_slots=0x801CC158,t_release=0x801C4850;
-constexpr unsigned sound_buzzer=0xBA;
 int title_status{};        // the Controller Pak status the message shows (801C7C90's argument)
 bool title_headers{};      // slot headers read: the Pak paths show the message over empty slots
 bool title_screens_original() {
@@ -403,7 +480,7 @@ bool title_build(uint8_t* ram,recomp_context* ctx,unsigned screen) {
             save_store::disarm();
             call(ram,ctx,read_slots,read(ram,t_medium,1),t_slots);
             write8(ram,t_slot,0);cursor_at=0;
-            if(read(ram,t_medium,1)){numbers={1,2};extended_headers.clear();}
+            if(read(ram,t_medium,1)){entries={{1},{2}};headers.clear();deleting=false;}
             else list_slots(ram,ctx,t_slots,false);
             std::lock_guard lock(mutex);
             title_headers=true;title_status=0;title_open(title_slots_json(ram),ram);
@@ -461,17 +538,22 @@ bool title_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)
         }
         case srw64_title_slots: {
             if(title_pak_removed(ram,ctx))return true;
+            bool refresh=false;
+            if(delete_action(action,ram,ctx,t_slots,false,refresh) || note_action(action)) {
+                write8(ram,t_slot,game_slot(entry_at()));republish(title_slots_json(ram));return true;
+            }
+            if(deleting)return true;
             if(action.starts_with("move:")) {
                 const unsigned index=index_of(action);
-                if(index>=numbers.size() || index==cursor_at)return true;
-                cursor_at=index;write8(ram,t_slot,uint8_t(number_at()>2?0:number_at()-1));republish(title_slots_json(ram));
+                if(index>=entries.size() || index==cursor_at)return true;
+                cursor_at=index;write8(ram,t_slot,game_slot(entry_at()));republish(title_slots_json(ram));
                 lock.unlock();sound(ram,ctx,sound_move);return true;
             }
             if(action=="choose") {
-                if(!slot_used(ram,t_slots,number_at())){lock.unlock();sound(ram,ctx,sound_buzzer);return true;}
+                if(!slot_used(ram,t_slots,entry_at())){lock.unlock();sound(ram,ctx,sound_buzzer);return true;}
                 sound(ram,ctx,sound_confirm);
                 write8(ram,t_window,0);write8(ram,t_sub,0xA);
-                republish(title_slots_json(ram));record("window-open",{{"slot",number_at()}});
+                republish(title_slots_json(ram));record("window-open",{{"entry",key(entry_at())}});
                 return true;
             }
             if(action=="back"){lock.unlock();feed(ram,ctx,original,button_b);lock.lock();record("back");}
@@ -488,9 +570,18 @@ bool title_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)
             if(action=="choose" && read(ram,t_window,1)==0) {
                 // はい: the original sets the load mode (0x12 + slot, 0x14 + slot for the
                 // Controller Pak) and fades out; the intermission overlay loads the save.
-                // An extended slot loads as the game's slot 1, through the store.
-                if(number_at()>2){save_store::arm_load(number_at());write8(ram,t_slot,0);}
-                record("load",{{"slot",number_at()},{"medium",read(ram,t_medium,1)}});
+                // A slot 3+ or an intermission autosave loads as the game's slot 1, through
+                // the store. A turn autosave goes through コンティニュー: major state 6, whose
+                // 801C6D1C reads the suspend area to check it, then mode 0x11 restores the
+                // map from it. The page closes as the title leaves major state 7.
+                const Entry e=entry_at();
+                record("load",{{"entry",key(e)},{"medium",read(ram,t_medium,1)}});
+                if(e.autosave && e.autosave->turn) {
+                    save_store::arm_suspend(e.record());autosave::prepare_turn_load(e.record());
+                    write8(ram,t_major,6);write8(ram,t_sub,0);
+                    return true;
+                }
+                if(e.number!=1 && e.number!=2){save_store::arm_load(e.record());write8(ram,t_slot,0);}
                 lock.unlock();feed(ram,ctx,original,0x8000);
                 return true;
             }
