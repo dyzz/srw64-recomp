@@ -84,3 +84,5 @@ CMakeCache.txt
 .vscode/
 *.swp
 *~
+# Steam library artwork for the Linux package (tools/release/linux/steam_art.py makes it).
+!/tools/release/linux/steam-art/*.png

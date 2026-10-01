@@ -55,7 +55,7 @@ SDL3 运行时才加载 X11/Wayland、PipeWire/PulseAudio/ALSA，Vulkan 由 plum
 3. 等 `userdata/<用户>/config/shortcuts.vdf`（二进制 KeyValues）里出现启动 `srw64.sh` 的快捷方式，读出它的 appid。新版 Steam 的 appid 是随机的，不能事先算；
 4. 把 `steam/` 里的封面复制到 `userdata/<用户>/config/grid/`：`<appid>p.png` 竖版 600×900、`<appid>.png` 横版 920×430、`<appid>_hero.png` 顶部横幅、`<appid>_logo.png`、`<appid>_icon.png`。
 
-已在库里时只刷新封面。封面由打包时的 `tools/release/linux/steam_art.py` 生成：HD 包的标题 logo（`content/art/stage1-hd.json` 的 `scene_images`）叠在标题火焰上，配 “SRW64 Recomp” 字样，各语言同一套；构建机没有这些素材时包里没有封面，脚本照样添加游戏。
+已在库里时只刷新封面。封面是仓库里的 `tools/release/linux/steam-art/*.png`，打包时原样拷进去，所以 GitHub Actions 上构建的包也有封面。它们由 `tools/release/linux/steam_art.py` 生成：HD 包的标题 logo（`content/art/stage1-hd.json` 的 `scene_images`）叠在标题火焰上，配 “SRW64 Recomp” 字样，各语言同一套；标题图变了就在本机重跑 `steam_art.py --output tools/release/linux/steam-art` 再提交。
 
 ## 验证记录
 
