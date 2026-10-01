@@ -137,8 +137,10 @@ def main() -> None:
     checkout = ROOT / "build/recomp/upstream/N64ModernRuntime"
     lock = json.loads((ROOT / "config/recomp/toolchain.json").read_text())["sources"]["N64ModernRuntime"]["commit"]
     # A copy without its .git (the Windows CI job) carries the revision in .srw64-revision.
+    # Its files are then the pinned ones as checked out, nothing here having edited them.
     marker = checkout / ".srw64-revision"
-    revision = (marker.read_text().strip() if not (checkout / ".git").exists() and marker.is_file()
+    exported = not (checkout / ".git").exists() and marker.is_file()
+    revision = (marker.read_text().strip() if exported
                 else subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=checkout, text=True).strip())
     if revision != lock:
         raise RuntimeError("Runtime lifecycle source revision differs")
@@ -151,7 +153,8 @@ def main() -> None:
     for relative in ("ultramodern/src/timer.cpp", "ultramodern/src/threads.cpp",
                      "ultramodern/src/mesgqueue.cpp", "ultramodern/src/scheduling.cpp",
                      "librecomp/src/recomp.cpp"):
-        source = subprocess.check_output(["git", "show", f"HEAD:{relative}"], cwd=checkout, text=True)
+        source = ((checkout / relative).read_text() if exported
+                  else subprocess.check_output(["git", "show", f"HEAD:{relative}"], cwd=checkout, text=True))
         if (checkout / relative).read_text() != source:
             raise RuntimeError("Runtime lifecycle input has local changes")
         if relative.endswith("timer.cpp"):
