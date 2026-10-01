@@ -69,7 +69,9 @@ def main() -> int:
     for repository, allowed in ((checkout, {"CMakeLists.txt", "src/contrib/plume",
                                            "src/tools/spirv_cross_msl/CMakeLists.txt",
                                            "src/hle/rt64_present_queue.cpp", "src/rhi/rt64_render_hooks.h",
-                                           "src/rhi/rt64_render_hooks.cpp", "src/gui/rt64_file_dialog.cpp"} | set(NATIVE_MODEL_PATCHES)),
+                                           "src/rhi/rt64_render_hooks.cpp", "src/gui/rt64_file_dialog.cpp",
+                                           "src/hle/rt64_framebuffer_manager.cpp", "src/hle/rt64_workload_queue.cpp"}
+                                           | set(NATIVE_MODEL_PATCHES)),
                                 (plume, {"plume_metal.cpp", "plume_vulkan.cpp", "plume_apple.h", "plume_apple.mm"})):
         changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=repository, text=True).splitlines())
         if changed - allowed:
@@ -280,6 +282,95 @@ def main() -> int:
                          "    static bool nfdReady = false;\n\n"
                          "    void FileDialog::initialize() {\n        nfdReady = (NFD_Init() == NFD_OKAY);\n    }\n\n"
                          "    void FileDialog::finish() {\n        if (nfdReady) {\n            NFD_Quit();\n        }\n\n        nfdReady = false;\n    }"))
+    # Framebuffer copies drawn back by texture rectangles at a fractional scale (any picture
+    # wider than 4:3; docs/design/deck-16x10.md). The game's afterimage (80083744) draws the
+    # last frame back every frame in 64 x 16 rectangles, each loaded as 68 x 17 texels. RT64
+    # samples a copy at its own scale (its rounded width over its 68 texels, 4.794 at 16:10)
+    # but the rectangle's 64 texels cover 307 or 308 pixels (both edges rounded): up to a
+    # pixel of drift per tile, fed back each frame, smears whole columns (the BANPRESTO logo's
+    # centre). 1) A copy spans the pixels a rectangle over the same tile covers: both edges
+    # rounded, not the left edge and the width separately.
+    records.append(patch(checkout, "src/hle/rt64_framebuffer_manager.cpp",
+                         "        const uint32_t tileWidth = std::clamp<long>(lround((fbTile.right - fbTile.left) * resolutionScale.x), 1L, RenderTarget::MaxDimension);\n"
+                         "        const uint32_t tileHeight = std::clamp<long>(lround((fbTile.bottom - fbTile.top) * resolutionScale.y), 1L, RenderTarget::MaxDimension);\n",
+                         "        const long scaledLeft = lround(fbTile.left * resolutionScale.x);\n"
+                         "        const long scaledTop = lround(fbTile.top * resolutionScale.y);\n"
+                         "        const uint32_t tileWidth = std::clamp<long>(lround(fbTile.right * resolutionScale.x) - scaledLeft, 1L, RenderTarget::MaxDimension);\n"
+                         "        const uint32_t tileHeight = std::clamp<long>(lround(fbTile.bottom * resolutionScale.y) - scaledTop, 1L, RenderTarget::MaxDimension);\n",
+                         [("        tileCopy.left = std::clamp<long>(lround(fbTile.left * resolutionScale.x), 0, RenderTarget::MaxDimension);\n"
+                           "        tileCopy.top = std::clamp<long>(lround(fbTile.top * resolutionScale.y), 0, RenderTarget::MaxDimension);\n",
+                           "        tileCopy.left = std::clamp<long>(scaledLeft, 0, RenderTarget::MaxDimension);\n"
+                           "        tileCopy.top = std::clamp<long>(scaledTop, 0, RenderTarget::MaxDimension);\n")]))
+    # 2) A 1:1 texture rectangle stretched across the picture samples its copies at its own
+    # scale, the pixels it covers over its texels, so a copy drawn back where it was taken
+    # lands pixel for pixel, as at 4:3. Collected per framebuffer pair (each has its scale),
+    # applied to the GPU tiles before they upload.
+    rect_scale_collect = '''                    framebufferRenderer->addFramebuffer(drawParams);
+
+                    for (uint32_t j = 0; j < fbPair.projectionCount; j++) {
+                        const Projection &proj = fbPair.projections[j];
+                        if (proj.type != Projection::Type::Rectangle) {
+                            continue;
+                        }
+
+                        for (uint32_t d = 0; d < proj.gameCallCount; d++) {
+                            const DrawCall &call = proj.gameCalls[d].callDesc;
+                            if (call.rect.isNull() || !call.identityRectScale() || (call.rectAspect == G_EX_ASPECT_ADJUST) ||
+                                (call.rectLeftOrigin != G_EX_ORIGIN_NONE) || (call.rectRightOrigin != G_EX_ORIGIN_NONE))
+                            {
+                                continue;
+                            }
+
+                            // The same rounding as convertViewportRect.
+                            const int32_t left = call.rect.left(true), right = call.rect.right(true);
+                            const int32_t top = call.rect.top(true), bottom = call.rect.bottom(true);
+                            if ((right <= left) || (bottom <= top)) {
+                                continue;
+                            }
+
+                            const float origin = float(nativeColorWidth) / 2;
+                            const float scaleX = fixedResScale[0], scaleY = fixedResScale[1];
+                            const float pixelsX = std::round((origin + (left - origin)) * scaleX), pixelsRight = std::round((origin + (right - origin)) * scaleX);
+                            const float pixelsY = std::round(top * scaleY), pixelsBottom = std::round(bottom * scaleY);
+                            for (uint32_t t = 0; t < call.tileCount; t++) {
+                                if (workload.drawData.callTiles[call.tileIndex + t].tileCopyUsed) {
+                                    copyRectScales.push_back({ call.tileIndex + t, (pixelsRight - pixelsX) / float(right - left), (pixelsBottom - pixelsY) / float(bottom - top) });
+                                }
+                            }
+                        }
+                    }'''
+    rect_scale_apply = '''                    workload.drawData.gpuTiles.data(), &fbManager, ext.textureCache, workload.submissionFrame);
+
+                for (const CopyRectScale &rectScale : copyRectScales) {
+                    interop::GPUTile &gpuTile = workload.drawData.gpuTiles[rectScale.tile];
+                    const auto it = fbManager.tileCopies.find(workload.drawData.callTiles[rectScale.tile].tmemHashOrID);
+
+                    // Only a copy at the picture's scale, not one reinterpreted to another texel size.
+                    if (!gpuTile.flags.fromCopy || (it == fbManager.tileCopies.end()) ||
+                        (std::abs(float(gpuTile.tcScale.x) / rectScale.x - 1.0f) > 0.05f) || (std::abs(float(gpuTile.tcScale.y) / rectScale.y - 1.0f) > 0.05f))
+                    {
+                        continue;
+                    }
+
+                    gpuTile.tcScale.x = rectScale.x;
+                    gpuTile.tcScale.y = rectScale.y;
+                    gpuTile.ulScale.x = it->second.ulScaleS ? rectScale.x : 1.0f;
+                    gpuTile.ulScale.y = it->second.ulScaleT ? rectScale.y : 1.0f;
+                }'''
+    records.append(patch(checkout, "src/hle/rt64_workload_queue.cpp",
+                         "            scratchFbChangePool.reset();\n",
+                         "            struct CopyRectScale {\n"
+                         "                uint32_t tile;\n"
+                         "                float x, y;\n"
+                         "            };\n\n"
+                         "            thread_local std::vector<CopyRectScale> copyRectScales;\n"
+                         "            copyRectScales.clear();\n"
+                         "            scratchFbChangePool.reset();\n",
+                         [("                    framebufferRenderer->addFramebuffer(drawParams);", rect_scale_collect),
+                          ("                    workload.drawData.gpuTiles.data(), &fbManager, ext.textureCache, workload.submissionFrame);",
+                           rect_scale_apply),
+                          ('#include "rt64_workload_queue.h"\n',
+                           '#include "rt64_workload_queue.h"\n\n#include <cmath>\n\n#include "../include/rt64_extended_gbi.h"\n')]))
     recorded = {r['path'] for r in records}
     for relative in NATIVE_MODEL_PATCHES:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:
