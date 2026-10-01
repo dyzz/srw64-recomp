@@ -138,6 +138,77 @@ namespace RT64 {
 #           ifdef __ANDROID__
                 queueCreateInfo.queueCount = 1;
 #           endif'''),
+    # The opening and the title make about 70 textures a frame from the previous picture,
+    # each a TMEM texture and an RGBA decode target; creating them costs the Mali driver
+    # about 0.2 ms apiece, 30 ms a frame. Evicted TMEM textures go back to a pool by size
+    # once the cache's lock count shows the GPU is done with them (where RT64 deletes
+    # them), and new ones come from it.
+    ('src/render/rt64_texture_cache.h', '''        uint32_t lockCounter;
+        bool developerMode;''', '''        uint32_t lockCounter;
+        bool developerMode;
+#   ifdef __ANDROID__
+        std::mutex texturePoolMutex;
+        std::unordered_map<uint64_t, std::vector<std::unique_ptr<RenderTexture>>> texturePool;
+        std::unique_ptr<RenderTexture> takePooledTexture(uint64_t key);
+        void recycleTexture(Texture *texture);
+#   endif'''),
+    ('src/render/rt64_texture_cache.cpp', '''                    newTexture->tmem = copyWorker->device->createTexture(RenderTextureDesc::Texture1D(std::max(uint32_t(upload.bytesTMEM.size()), 1U), 1, newTexture->format));''', '''#               ifdef __ANDROID__
+                    newTexture->tmem = takePooledTexture(std::max(uint64_t(upload.bytesTMEM.size()), uint64_t(1)));
+                    if (newTexture->tmem == nullptr)
+#               endif
+                    newTexture->tmem = copyWorker->device->createTexture(RenderTextureDesc::Texture1D(std::max(uint32_t(upload.bytesTMEM.size()), 1U), 1, newTexture->format));'''),
+    ('src/render/rt64_texture_cache.cpp', '''                        dstTexture->texture = directWorker->device->createTexture(RenderTextureDesc::Texture2D(upload.width, upload.height, 1, dstTexture->format, RenderTextureFlag::STORAGE | RenderTextureFlag::UNORDERED_ACCESS));''', '''#                   ifdef __ANDROID__
+                        dstTexture->texture = takePooledTexture((uint64_t(1) << 63) | (uint64_t(upload.width) << 32) | upload.height);
+                        if (dstTexture->texture == nullptr)
+#                   endif
+                        dstTexture->texture = directWorker->device->createTexture(RenderTextureDesc::Texture2D(upload.width, upload.height, 1, dstTexture->format, RenderTextureFlag::STORAGE | RenderTextureFlag::UNORDERED_ACCESS));'''),
+    ('src/render/rt64_texture_cache.cpp', '''            // Delete evicted textures from texture map.
+            for (Texture *texture : textureMap.evictedTextures) {
+                delete texture;
+            }''', '''            // Delete evicted textures from texture map.
+            for (Texture *texture : textureMap.evictedTextures) {
+#           ifdef __ANDROID__
+                recycleTexture(texture);
+#           endif
+                delete texture;
+            }'''),
+    ('src/render/rt64_texture_cache.cpp', '''    void TextureCache::incrementLock() {''', '''#ifdef __ANDROID__
+    // Pool keys: a TMEM texture by its byte size; a decode target (bit 63) by width and height.
+    std::unique_ptr<RenderTexture> TextureCache::takePooledTexture(uint64_t key) {
+        std::unique_lock lock(texturePoolMutex);
+        auto it = texturePool.find(key);
+        if ((it == texturePool.end()) || it->second.empty()) {
+            return nullptr;
+        }
+
+        std::unique_ptr<RenderTexture> texture = std::move(it->second.back());
+        it->second.pop_back();
+        return texture;
+    }
+
+    void TextureCache::recycleTexture(Texture *texture) {
+        // Only the cache's own TMEM textures: replacements are loaded from files.
+        if ((texture == nullptr) || (texture->tmem == nullptr)) {
+            return;
+        }
+
+        const size_t PoolLimitPerKey = 256;
+        std::unique_lock lock(texturePoolMutex);
+        auto &tmemPool = texturePool[std::max(uint64_t(texture->bytesTMEM.size()), uint64_t(1))];
+        if (tmemPool.size() < PoolLimitPerKey) {
+            tmemPool.emplace_back(std::move(texture->tmem));
+        }
+
+        if (texture->decodeTMEM && (texture->texture != nullptr)) {
+            auto &decodePool = texturePool[(uint64_t(1) << 63) | (uint64_t(texture->width) << 32) | texture->height];
+            if (decodePool.size() < PoolLimitPerKey) {
+                decodePool.emplace_back(std::move(texture->texture));
+            }
+        }
+    }
+#endif
+
+    void TextureCache::incrementLock() {'''),
     # Dual-source blending (SRC1_ALPHA) is missing on Mali GPUs, which still accept the
     # pipeline and draw white. With RT64_SINGLE_SOURCE_BLEND (on for Android) the pixel
     # shader has one output: a blended draw writes its blend factor into alpha in place
