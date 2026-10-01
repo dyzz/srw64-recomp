@@ -37,6 +37,7 @@
 #include <deque>
 #include <fstream>
 #include <functional>
+#include <cstddef>
 #include <future>
 #include <memory>
 #include <mutex>
@@ -388,7 +389,11 @@ void serve(int client) {
     ::close(client);
 }
 
-void remove_socket(){if(!socket_path.empty())::unlink(socket_path.c_str());}
+void remove_socket(){
+#ifndef __ANDROID__
+    if(!socket_path.empty())::unlink(socket_path.c_str());
+#endif
+}
 #endif
 }
 
@@ -404,17 +409,31 @@ void start(const std::filesystem::path& directory,json host) {
     std::fprintf(stderr,"SRW64_DEBUG unavailable on Windows yet\n");
     return;
 #else
-    socket_path=directory/"debug.sock";
     sockaddr_un address{};
     address.sun_family=AF_UNIX;
+#ifdef __ANDROID__
+    // The app's files are out of adb's reach: an abstract socket, which
+    // `adb forward tcp:0 localabstract:srw64-debug` reaches (tools/release/android/attach.py).
+    constexpr char name[]="srw64-debug";
+    std::memcpy(address.sun_path+1,name,sizeof name-1);
+    const socklen_t length=socklen_t(offsetof(sockaddr_un,sun_path)+1+sizeof name-1);
+    socket_path="@srw64-debug";
+#else
+    socket_path=directory/"debug.sock";
     if(socket_path.string().size()>=sizeof address.sun_path)throw std::runtime_error("debug socket path is too long: "+socket_path.string());
     std::strncpy(address.sun_path,socket_path.c_str(),sizeof address.sun_path-1);
+    const socklen_t length=sizeof address;
+#endif
     const int listener=::socket(AF_UNIX,SOCK_STREAM,0);
     if(listener<0)throw std::runtime_error("debug socket: "+std::string(std::strerror(errno)));
+#ifndef __ANDROID__
     ::unlink(socket_path.c_str());
-    if(::bind(listener,reinterpret_cast<sockaddr*>(&address),sizeof address)!=0 || ::listen(listener,4)!=0)
+#endif
+    if(::bind(listener,reinterpret_cast<sockaddr*>(&address),length)!=0 || ::listen(listener,4)!=0)
         throw std::runtime_error("debug socket: "+std::string(std::strerror(errno)));
+#ifndef __ANDROID__
     ::chmod(socket_path.c_str(),0600);
+#endif
     std::signal(SIGPIPE,SIG_IGN);
     std::atexit(remove_socket);
     running=true;

@@ -36,8 +36,13 @@ void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuf
     if (!compositor) throw std::runtime_error("Dialogue compositor is not initialized");
     localization::Scope locale(frame->catalog);
     // The present hook always draws into RT64's swapchain framebuffer, which is
-    // B8G8R8A8 without MSAA (rt64_application.cpp); Plume has no format query.
+    // B8G8R8A8 without MSAA (rt64_application.cpp), R8G8B8A8 on Android
+    // (rt64_android_patches.py); Plume has no format query.
+#ifdef __ANDROID__
+    auto format = plume::RenderFormat::R8G8B8A8_UNORM;
+#else
     auto format = plume::RenderFormat::B8G8R8A8_UNORM;
+#endif
 #ifdef __APPLE__
     if (metal) {
         const auto* fb = static_cast<const plume::MetalFramebuffer*>(framebuffer);

@@ -274,6 +274,10 @@ void clear_runtime_environment() {
 #endif
     // Set by the Android app for bundled_resource, not a development probe.
     std::erase(keys,std::string("SRW64_RESOURCE_DIR"));
+#ifdef __ANDROID__
+    // The debug interface: the app sets it only when launched with --ez debug true.
+    std::erase(keys,std::string("SRW64_DEBUG"));
+#endif
     for (const auto& key:keys) {
 #ifdef _WIN32
         if (_putenv_s(key.c_str(),"")!=0) throw std::runtime_error("Cannot clear environment");
