@@ -80,6 +80,7 @@ void set_ui_size(UiSize v){size_value=v;} UiSize ui_size(){return size_value;}
 float ui_scale(UiSize s){return s==UiSize::Largest?1.5f:s==UiSize::Large?1.25f:1.f;}
 const char* ui_size_name(UiSize s){return s==UiSize::Largest?"largest":s==UiSize::Large?"large":"standard";}
 void set_wide_picture(bool v){wide=v;} bool wide_picture(){return wide;}
+bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
 }
 namespace srw64::app_menu {
 void update(const Labels&,const WindowState&){} bool available(){return false;} bool activate_settings(){return false;}

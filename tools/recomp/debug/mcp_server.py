@@ -53,6 +53,10 @@ TOOLS = [
     {"name": "srw64_buttons", "description": "N64 controller buttons directly, below the keyboard layer (a b z start up down left right l r c_up c_down c_left c_right), held for vis frames.",
      "inputSchema": {"type": "object", "required": ["buttons"], "properties": {
          "buttons": {"type": "string", "description": "e.g. \"r+start\""}, "vis": {"type": "integer", "minimum": 1, "maximum": 600}}}},
+    {"name": "srw64_record", "description": "Record the next seconds of play as an MP4 (every present, scaled to width, on a steady 30 fps timeline) and return its path, the presents seen and the longest gap between two. Play continues meanwhile; send input from another call if needed.",
+     "inputSchema": {"type": "object", "properties": {
+         "seconds": {"type": "number", "description": "1 to 120"},
+         "width": {"type": "integer", "description": "video width in pixels (default 960)"}}, "required": ["seconds"]}},
     {"name": "srw64_screenshot", "description": "Capture the next presented frame with the native overlays (name page) drawn on top, or render another window such as the settings panel.",
      "inputSchema": {"type": "object", "properties": {"window": WINDOW, "overlays": {"type": "boolean"}}}},
     {"name": "srw64_ui_tree", "description": "Visible native windows and their views: class, frame (points, top-left origin), text, enabled, focused.",
@@ -112,6 +116,11 @@ class Server:
         if name == "srw64_launch":
             self.session = Session.launch(**{k: args[k] for k in ("language", "images", "rules", "save", "mini_stage", "reuse_build") if k in args})
             return text({"run": str(self.session.run), "status": self.session.client.call("status")})
+        if name == "srw64_record":
+            seconds = float(args["seconds"])
+            if not 1 <= seconds <= 120:
+                raise HostError("seconds must be 1 to 120")
+            return text(self.need().record(seconds, width=int(args.get("width", 960))))
         if name == "srw64_attach":
             self.session = Session.attach(args.get("run"))
             return text({"run": str(self.session.run), "status": self.session.client.call("status")})

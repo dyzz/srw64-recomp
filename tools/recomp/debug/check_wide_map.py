@@ -30,7 +30,7 @@ if map_number:
 else:
     stage_path = ROOT / "config/recomp/mini-stages/battle-ui.json"
 binary = os.environ.get("SRW64_HOST_BINARY") or str(ROOT / "build/recomp/gfx-build/srw64-gfx-host")
-s = Session.launch(language="zh-Hans", images="hd", diagnostics="light", binary=binary if Path(binary).exists() else None,
+s = Session.launch(language="zh-Hans", images="hd", binary=binary if Path(binary).exists() else None,
                    mini_stage=str(stage_path), env={"SRW64_ASPECT": aspect})
 print("RUN", s.run, flush=True)
 states = {}

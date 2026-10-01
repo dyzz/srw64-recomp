@@ -38,6 +38,9 @@ struct SRW64GameHooks {
     // 80096CD8 (sprite modes 11-13, texture rectangles) or 8009761C (modes 14-16, quads) wrote
     // [begin, end) for one scene frame of slot/sub.
     void (*scene_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool quads){};
+    // After scene_drawn for 80096CD8: draw it again a period to each side (the title's
+    // flames across a picture wider than 4:3).
+    bool (*scene_sides)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
     // A render node's function (a sprite drawer with slot/sub, or a callback with slot ~0u) is
     // about to write at the display list cursor `cursor` (a Gfx**). True: the host appended
     // commands placing the draw in the widened map view (wide_map.hpp) and map_space_end

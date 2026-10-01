@@ -58,7 +58,7 @@ macOS 按设置标题调用时实际执行系统菜单项，规则标题仍保�
 
 ```sh
 SRW64_DEBUG=1 .venv/bin/python tools/recomp/run/run_host_probe.py \
-  --graphics --interactive --diagnostics light \
+  --graphics --interactive \
   --profile config/recomp/profiles/play-profile.json --language zh-Hans \
   --images original --output build/recomp/shared-game-test
 # 在另一终端运行：

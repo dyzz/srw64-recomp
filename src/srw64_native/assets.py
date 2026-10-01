@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -80,10 +81,22 @@ def whole_images(root: Path, spec: dict, index_name: str, schema: str, what: str
     return index, files
 
 
-def copy_whole_images(index: dict, files: list, output: Path, folder: str, runtime_name: str) -> None:
+def place(source: Path, target: Path, link: bool) -> None:
+    """source at target: a hard link when link (development runs: the same volume, no
+    space or time spent, and nothing writes the files), else or failing that a copy."""
+    if link:
+        try:
+            os.link(source, target)
+            return
+        except OSError:
+            pass
+    shutil.copyfile(source, target)
+
+
+def copy_whole_images(index: dict, files: list, output: Path, folder: str, runtime_name: str, link: bool = False) -> None:
     (output / folder).mkdir()
     for path, row in files:
-        shutil.copyfile(path, output / folder / row["file"])
+        place(path, output / folder / row["file"], link)
     runtime = {**index, "images": [{**row, "file": f"{folder}/{row['file']}"} for _, row in files]}
     (output / runtime_name).write_text(json.dumps(runtime, indent=2) + "\n")
 
@@ -109,7 +122,8 @@ def tactical_maps(root: Path, spec: dict) -> tuple[Path, dict, list]:
 
 def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = False) -> dict:
     """maps_in_place: point the runtime at the tactical map pack where it is instead of
-    copying its gigabyte (development profiles; bundles copy)."""
+    copying its gigabyte, and hard-link the other pictures (development profiles; bundles
+    copy)."""
     if manifest.get("schema") != "srw64.art-pack.v1" or manifest.get("locale") != "neutral":
         raise ValueError("Image toggle accepts only a language-neutral art pack")
     source = inside(root, manifest["source"]["path"])
@@ -177,19 +191,19 @@ def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = 
     # No output is written until every input has passed validation.
     output.mkdir(parents=True, exist_ok=False)
     for path, name in files:
-        shutil.copyfile(path, output / name)
+        place(path, output / name, maps_in_place)
     if portrait_index is not None:
-        copy_whole_images(portrait_index, portrait_files, output, "portraits", "srw64-portraits-hd.json")
+        copy_whole_images(portrait_index, portrait_files, output, "portraits", "srw64-portraits-hd.json", maps_in_place)
     if unit_index is not None:
-        copy_whole_images(unit_index, unit_files, output, "units", "srw64-units-hd.json")
+        copy_whole_images(unit_index, unit_files, output, "units", "srw64-units-hd.json", maps_in_place)
     if extra_index is not None:
-        copy_whole_images(extra_index, extra_files, output, "unit-extras", "srw64-unit-extras-hd.json")
+        copy_whole_images(extra_index, extra_files, output, "unit-extras", "srw64-unit-extras-hd.json", maps_in_place)
     if background_index is not None:
-        copy_whole_images(background_index, background_files, output, "backgrounds", "srw64-backgrounds-hd.json")
+        copy_whole_images(background_index, background_files, output, "backgrounds", "srw64-backgrounds-hd.json", maps_in_place)
     if scene_index is not None:
         (output / "scene-images").mkdir()
         for path, row in scene_files:
-            shutil.copyfile(path, output / "scene-images" / row["file"])
+            place(path, output / "scene-images" / row["file"], maps_in_place)
         runtime = {**scene_index, "images": [{**row, "file": f"scene-images/{row['file']}"} for _, row in scene_files]}
         (output / "srw64-scene-images.json").write_text(json.dumps(runtime, indent=2) + "\n")
     (output / "rt64.json").write_text(json.dumps({"configuration": database["configuration"], "textures": textures}, indent=2) + "\n")

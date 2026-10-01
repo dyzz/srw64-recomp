@@ -56,6 +56,10 @@ void gpu_init();
 void shutdown();
 // Game thread, right after the original drawer returned.
 void rewrite(uint8_t* rdram, const SceneDraw& draw);
+// After rewrite: the title's flames (scene 686) still drawn by the original's tiles (no HD
+// frame took them): they repeat every 256 pixels, and a picture wider than 4:3 draws them
+// again a period to each side (docs/design/deck-16x10.md).
+bool repeats_across(const uint8_t* rdram, const SceneDraw& draw);
 // Mode 9 scenes (800945D4: 16x16 cells of a type-6 grid scene), game thread: when the
 // text describer names the scene (battle HUD banners and badges), its cells go and the
 // text is drawn centred on them. Other scenes are left alone.

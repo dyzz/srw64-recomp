@@ -172,7 +172,7 @@ int run_standalone(const Options& options,const GameIdentity& game,const HostMai
     // Do not inherit development probes, scripted inputs or another ROM variant.
     clear_runtime_environment();
     for(const auto& [key,value]:std::map<std::string,std::string>{
-        {"SRW64_INTERACTIVE","1"},{"SRW64_DIAGNOSTICS","light"},{"SRW64_ROM_VARIANT","jp"},
+        {"SRW64_INTERACTIVE","1"},{"SRW64_ROM_VARIANT","jp"},
         {"SRW64_AUDIO_OUTPUT",options.mute?"0":"1"},{"SRW64_NATIVE_NAME_ENTRY","1"},
         {"SRW64_DIALOGUE_DATA",dialogue.string()},{"SRW64_PRESENTATION_SETTINGS",language_file.string()},
         // The player's key and controller bindings (input_bindings.hpp), beside the language.

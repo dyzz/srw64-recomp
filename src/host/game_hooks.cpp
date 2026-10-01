@@ -298,9 +298,22 @@ void resident_func_80096CD8(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
     const uint32_t slot = ctx->r5, sub = ctx->r6;
     const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
+    const recomp_context call = *ctx;
     srw64_original_scene_rect_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
     if (srw64_game_hooks.scene_drawn) srw64_game_hooks.scene_drawn(rdram, begin, end, slot, sub, false);
+    // The title's flames in the original's tiles repeat every 256 pixels (half their
+    // 512-wide atlas): a copy a period to each side fills a wider picture.
+    if (srw64_game_hooks.scene_sides && srw64_game_hooks.scene_sides(rdram, begin, end, slot, sub)) {
+        srw64::wide_map::open_sides(rdram, cursor);
+        for (const float offset : {-256.f, 256.f}) {
+            srw64::wide_map::offset_rects(rdram, cursor, offset);
+            recomp_context copy = call;
+            srw64_original_scene_rect_draw(rdram, &copy);
+        }
+        srw64::wide_map::offset_rects(rdram, cursor, 0);
+        srw64::wide_map::close_sides(rdram, cursor);
+    }
 }
 void resident_func_8009761C(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;

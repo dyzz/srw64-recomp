@@ -29,7 +29,7 @@ REGIONS = {
 
 
 def run(mode):
-    s = Session.launch(language='zh-Hans', reuse_build=(mode == 'skip'), diagnostics='light')
+    s = Session.launch(language='zh-Hans', reuse_build=(mode == 'skip'))
     print(mode, 'RUN', s.run, flush=True)
 
     def call(method, **params):

@@ -85,13 +85,11 @@ def main() -> int:
     parser.add_argument("--save-from", type=Path, help="copy an existing 32 KiB SRAM into the new isolated run")
     parser.add_argument("--save-sha256", help="require this previously recorded digest for --save-from")
     parser.add_argument("--interactive", action="store_true", help="keyboard play until the window closes; no automatic VI timeout or input script")
-    parser.add_argument("--diagnostics", choices=("light", "full"), help="interactive default: light (no periodic GPU/8 MiB RAM captures); bounded probes default: full")
     args = parser.parse_args()
     if args.build_only and (args.profile or args.input or args.save_from or args.interactive or args.reuse_build_from):
         parser.error("--build-only only builds; it takes no run options")
     if not args.build_only and args.output is None:
         parser.error("--output is required")
-    diagnostics = args.diagnostics or ("light" if args.interactive else "full")
     profile = None
     if args.profile:
         if not args.graphics or args.variant != "jp" or args.font_pack or args.native_marker:
@@ -311,7 +309,6 @@ def main() -> int:
         report["audio_capture_window"] = {"from_vi": os.environ.get("SRW64_AUDIO_CAPTURE_FROM"),
                                           "to_vi": os.environ.get("SRW64_AUDIO_CAPTURE_TO")}
     report["native_name_entry"] = {"enabled": bool(prepared_profile) and not args.original_name_entry}
-    report["diagnostics"] = diagnostics
     report["script_trace_enabled"] = os.environ.get("SRW64_SCRIPT_TRACE") == "1"
     report["script_move_probe"] = os.environ.get("SRW64_SCRIPT_MOVE_PROBE")
     report["script_inject_enabled"] = os.environ.get("SRW64_SCRIPT_INJECT") == "1"
@@ -327,7 +324,7 @@ def main() -> int:
     report["font_pack"] = {"path": str(args.font_pack), "manifest_sha256": digest(args.font_pack / "rt64.json")} if args.font_pack else None
     if args.audio:
         report["evidence_scope"] = "native-RT64-Metal-GPU-readback-and-SDL-audio-device"
-    if args.graphics and diagnostics == "light":
+    if args.graphics:
         report["evidence_scope"] = "native-RT64-Metal-execution-without-periodic-GPU-capture"
     log_path = output.parent / (output.name + ".native.log")
     if args.graphics:
@@ -335,7 +332,6 @@ def main() -> int:
     started = time.monotonic()
     environment = {**os.environ, "SRW64_AUDIO_OUTPUT": "1" if args.audio else "0",
                    "SRW64_NATIVE_NAME_ENTRY": "0" if args.original_name_entry else "1",
-                   "SRW64_DIAGNOSTICS": diagnostics,
                    "SRW64_ROM_VARIANT": args.variant,
                    "SRW64_INTERACTIVE": "1" if args.interactive else "0",
                    "SRW64_NATIVE_RESOLUTION": "1" if args.native_resolution else "0",
@@ -427,7 +423,7 @@ def main() -> int:
                                  "metadata": json.loads(path.with_suffix(".json").read_text()) if path.with_suffix(".json").exists() else None}
                                 for path in sorted(output.glob("present-*.png"))]
             report["status"] = "native-graphics-frames-captured" if report["frames"] else "native-no-GPU-frame-captured"
-            if not report["frames"] and diagnostics == "light":
+            if not report["frames"]:
                 report["status"] = "native-graphics-run-completed"
         if returncode == 0 and report.get("counters", {}).get("vis", 0) < args.vis:
             report["status"] = "native-run-ended-by-control" if report.get("counters", {}).get("control_quit") else "native-run-ended-before-VI-limit"

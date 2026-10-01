@@ -27,6 +27,8 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "refund_notice", "dialogue_text_status", "dialogue_reload", "font_credit"}
 # The macOS View menu (src/host/macos/app_menu.hpp).
 UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale"}
+# The frame-rate readout (settings show_fps).
+UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps_note"}
 # The 部隊名 each language shows while the stored name is the original マーチウィンド
 # (docs/native/fixed-unit-name.md; the name cannot be changed).
 UI_KEYS |= {"unit_default_name"}

@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[3]
 def main():
     keys_path = ROOT / (sys.argv[1] if len(sys.argv) > 1 else 'assets/hd-ai/unit-icons/v2/pack-keys.json')
     keys = {k['hash']: k for k in json.loads(keys_path.read_text())['keys']}
-    s = Session.launch(language='zh-Hans', images='hd', diagnostics='light', dump_textures=True,
+    s = Session.launch(language='zh-Hans', images='hd', dump_textures=True,
                        mini_stage=str(ROOT / 'config/recomp/mini-stages/move-jump.json'))
     print('RUN', s.run, flush=True)
     checks = []

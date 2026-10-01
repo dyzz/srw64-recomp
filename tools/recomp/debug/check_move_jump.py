@@ -16,8 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from recomp.debug.session import Session
 
 ROOT = Path(__file__).resolve().parents[3]
-s = Session.launch(language='zh-Hans', images='hd', diagnostics='light',
-                   mini_stage=str(ROOT / 'config/recomp/mini-stages/move-jump.json'))
+s = Session.launch(language='zh-Hans', images='hd', mini_stage=str(ROOT / 'config/recomp/mini-stages/move-jump.json'))
 print('RUN', s.run, flush=True)
 checks = []
 

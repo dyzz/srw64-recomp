@@ -49,6 +49,10 @@ void set_native_title_ui(bool native);
 // as aspect, "auto" or "4:3"; applies from the next frame.
 bool wide_picture();
 void set_wide_picture(bool wide);
+// A small readout of the game's frames per second and the longest frame in a corner
+// (frame_rate.hpp, frontend.cpp). Off by default; saved as show_fps.
+bool show_fps();
+void set_show_fps(bool show);
 // The size of the interface drawn in dp (the settings window, the pre-battle page, the
 // title's settings button, notices) and of the dialogue's bottom bar: Standard, Large or
 // Largest, 1, 1.25 or 1.5 times, as far as the window has room (frontend.cpp sync). Saved

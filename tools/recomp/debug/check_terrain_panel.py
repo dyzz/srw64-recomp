@@ -19,7 +19,7 @@ binary = os.environ.get("SRW64_HOST_BINARY")
 # Optional argument: another mini stage (e.g. map87-colony-view); then the window is opened
 # where the stage leaves the cursor and shot twice, to see the colony overlay animate in it.
 stage = sys.argv[1] if len(sys.argv) > 1 else "move-jump"
-s = Session.launch(language="zh-Hans", images="hd", diagnostics="light", binary=binary if binary and Path(binary).exists() else None,
+s = Session.launch(language="zh-Hans", images="hd", binary=binary if binary and Path(binary).exists() else None,
                    mini_stage=str(ROOT / f"config/recomp/mini-stages/{stage}.json"))
 print("RUN", s.run, flush=True)
 

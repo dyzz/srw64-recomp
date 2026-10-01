@@ -24,6 +24,7 @@
 #include "rule_fixes.hpp"
 #include "settings_window.hpp"
 #include "game_frame.hpp"
+#include "frame_rate.hpp"
 #include "wide_map.hpp"
 #include "notices.hpp"
 #include "guest_memory.hpp"
@@ -168,6 +169,7 @@ json status(const json& params) {
         {"image_mode",{{"current",presentation::image_mode.current()},{"requested",presentation::image_mode.requested()},
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"aspect",settings::wide_picture()?"auto":"4:3"},{"picture_width",frame::picture_width.load()},
+        {"frame_lists",frame_rate::lists.load()},
         {"wide_map",{{"extra",wide_map::extra()},{"shown",wide_map::map_shown()},{"placed",wide_map::placed_draws()},{"map_width",wide_map::map_width_seen()},{"scroll_x",wide_map::scroll_seen()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
@@ -307,6 +309,16 @@ json dispatch(const std::string& method,const json& params) {
         return {{"vi",srw64_current_vi()}};
     }
     if(method=="screenshot")return screenshot(params);
+    if(method=="record.start") {
+        const auto directory=output/("record-"+std::to_string(srw64_current_vi()));
+        if(!recording().start(directory,params.value("width",960u)))throw RpcError(ServerError,"already recording, or cannot write "+directory.string());
+        return {{"directory",directory.string()},{"vi",srw64_current_vi()}};
+    }
+    if(method=="record.stop") {
+        auto result=recording().stop();
+        if(result.contains("error"))throw RpcError(ServerError,result["error"].get<std::string>());
+        return result;
+    }
     if(method=="ui.tree")return on_window([&]{return debug_ui::tree(params);});
     if(method=="ui.click")return on_window([&]{return debug_ui::click(params);});
     if(method=="ui.key")return on_window([&]{return debug_ui::key(params);});
@@ -338,7 +350,7 @@ json dispatch(const std::string& method,const json& params) {
         return {{"address",address},{"size",hex.size()/2},{"vi",srw64_current_vi()}};
     }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
-    if(method=="methods")return {"status","keys","pad","buttons","screenshot","ui.tree","ui.click","ui.key","ui.type",
+    if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
                                  "menu","settings","window","wait_vi","mini_stage.load","memory.read","memory.write","quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }

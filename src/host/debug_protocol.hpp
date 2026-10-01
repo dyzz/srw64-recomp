@@ -1,5 +1,6 @@
 #pragma once
 #include "json/json.hpp"
+#include <algorithm>
 #include <array>
 #include <atomic>
 #include <cctype>
@@ -8,6 +9,7 @@
 #include <cstdint>
 #include <deque>
 #include <filesystem>
+#include <fstream>
 #include <mutex>
 #include <optional>
 #include <stdexcept>
@@ -132,6 +134,67 @@ private:
     nlohmann::json result;
 };
 inline Screenshots& screenshots(){static Screenshots value;return value;}
+
+// A recording of every present, for a video of a stretch of play (debug methods record.start
+// and record.stop; session.py turns it into an MP4). Each present is read back, scaled down to
+// `width` (2 x 2 averaged samples) and appended to a raw RGB file, its time to a second file.
+class Recording {
+public:
+    // Debug thread. False when one is already running or the files cannot be opened.
+    bool start(const std::filesystem::path& directory,uint32_t width) {
+        std::lock_guard lock(mutex);
+        if(on)return false;
+        std::filesystem::create_directories(directory);
+        frames_path=directory/"frames.rgb";times_path=directory/"frames.times";
+        frames.open(frames_path,std::ios::binary|std::ios::trunc);times.open(times_path,std::ios::trunc);
+        if(!frames || !times)return false;
+        out_width=std::max<uint32_t>(64,width&~1u);out_height=0;count=0;
+        began=std::chrono::steady_clock::now();on=true;
+        return true;
+    }
+    // Debug thread: stops it and says what was written.
+    nlohmann::json stop() {
+        std::lock_guard lock(mutex);
+        if(!on)return {{"error","not recording"}};
+        on=false;frames.close();times.close();
+        return {{"frames",count},{"width",out_width},{"height",out_height},
+                {"seconds",std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count()},
+                {"frames_path",frames_path.string()},{"times_path",times_path.string()}};
+    }
+    // Render thread, once per present: whether to read this one back.
+    bool active() const {return on.load();}
+    // GPU completion handler: one present, RGBA w x h.
+    void add(const uint8_t* rgba,uint32_t w,uint32_t h) {
+        std::lock_guard lock(mutex);
+        if(!on || !w || !h)return;
+        const uint32_t ow=std::min(out_width,w&~1u);
+        const uint32_t oh=std::max<uint32_t>(2,uint32_t(uint64_t(h)*ow/w)&~1u);
+        if(!out_height){out_width=ow;out_height=oh;}
+        if(ow!=out_width || oh!=out_height)return;   // the window changed size: the rest is dropped
+        std::vector<uint8_t> row(size_t(ow)*3);
+        for(uint32_t y=0;y<oh;++y) {
+            const uint32_t sy=uint32_t(uint64_t(y)*h/oh),sy2=std::min(h-1,sy+1);
+            for(uint32_t x=0;x<ow;++x) {
+                const uint32_t sx=uint32_t(uint64_t(x)*w/ow),sx2=std::min(w-1,sx+1);
+                for(unsigned c=0;c<3;++c)
+                    row[x*3+c]=uint8_t((unsigned(rgba[(uint64_t(sy)*w+sx)*4+c])+rgba[(uint64_t(sy)*w+sx2)*4+c]+
+                                        rgba[(uint64_t(sy2)*w+sx)*4+c]+rgba[(uint64_t(sy2)*w+sx2)*4+c]+2)/4);
+            }
+            frames.write(reinterpret_cast<const char*>(row.data()),std::streamsize(row.size()));
+        }
+        times<<std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count()<<'\n';
+        ++count;
+    }
+private:
+    std::mutex mutex;
+    std::atomic_bool on{false};
+    std::ofstream frames,times;
+    std::filesystem::path frames_path,times_path;
+    uint32_t out_width=960,out_height=0;
+    uint64_t count=0;
+    std::chrono::steady_clock::time_point began;
+};
+inline Recording& recording(){static Recording value;return value;}
 
 // JSON-RPC 2.0, one request or response per line.
 enum ErrorCode : int {ParseError=-32700,InvalidRequest=-32600,MethodNotFound=-32601,InvalidParams=-32602,ServerError=-32000};
