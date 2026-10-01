@@ -28,7 +28,7 @@
 | 全部文本的分类导出，剧情与战斗台词的中英机翻（DeepSeek）、审校、台词文件与后续阶段 | [全文本地化规划](design/translation-plan.md) |
 | 对白框怎样多显示字、少翻页：字体、字号、整条连排与翻页位置 | [对白排版](design/dialogue-typesetting.md) |
 | 首发与后续功能范围 | [内置 MOD 路线图](design/mod-roadmap.md) |
-| 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) → [三平台移植计划](design/three-platform-port.md) |
+| 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) → [三平台移植计划](design/three-platform-port.md) → [安卓移植方案](design/android-port.md) |
 
 ## 使用与开发（guide/）
 
@@ -143,6 +143,7 @@
 | [跨平台发布计划 / P0](design/cross-platform-release-plan.md) | 原生启动、独立存档、平台迁移顺序与发布验收；P0 历史记录 |
 | [原生 ROM 首次导入 / P1](design/native-rom-importer.md) | 内嵌元数据、C++ 文本与头像导入、版本化缓存及 Python 对照测试 |
 | [三平台移植计划](design/three-platform-port.md) | Windows／Linux（含 Steam Deck）／macOS 的后端与编译器选择、移植阻塞项审计、X0–X4 阶段与验收、构建步骤分工 |
+| [安卓移植方案](design/android-port.md) | 调研：社区 N64Recomp 安卓移植先例、固定版本 RT64／plume／运行库的安卓缺口与 GPU 门槛、ROM 派生代码与侧载分发、宿主改动清单（构建、入口、生命周期与存档、触屏与手机界面）、A0–A4 阶段与待定事项 |
 | [宽屏画面](design/deck-16x10.md) | 以 Steam Deck 1280×800 为基准、随屏幕 4:3–16:9：RT64 按画面宽度渲染加扩展指令、宿主绘制层映射、两侧清黑、各场景做法、战术地图放宽的改动点、阶段、实机验收与未知项 |
 | [战斗演出渲染机制](design/battle-animation-rendering.md) | 战斗演出怎样画出来：背景、3D 地面与模型、机体精灵、特效、cut-in 与遮框；HD 路线（机体姿势、烘焙光照城市、实时水面）与实机验收 |
 | [多存档栏与自动存档](design/save-slots-autosave.md) | 原版 SRAM 布局与校验、卡带文件与模拟器互通、扩展栏和自动存档改道原版 SRAM 传输、导入导出与格式识别、阶段与待核实项 |
