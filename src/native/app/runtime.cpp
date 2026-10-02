@@ -2,6 +2,7 @@
 #include "save_library.hpp"
 #include "sha256.hpp"
 #include <algorithm>
+#include <cctype>
 #include <array>
 #include <charconv>
 #include <chrono>
@@ -54,7 +55,7 @@ void replace_file(const fs::path& source,const fs::path& destination) {
 std::string usage() {
     return "Usage: srw64-gfx-host --play --rom ROM [--content CONTENT_DIR] [--user-dir DIR]\n"
            "       [--language LOCALE] [--rules original|fixed|all] [--resolution-scale 1..8]\n"
-           "       [--new-game | --import-save SAVE] [--mute]\n"
+           "       [--new-game | --import-save SAVE] [--mute] [--campaign CAMPAIGN.json]\n"
            "       srw64-gfx-host --play --export-save FILE [--export-format FORMAT] [--user-dir DIR]\n"
            "       srw64-gfx-host --play --import-save SAVE [--user-dir DIR]\n"
            "--import-save takes a 32 KiB SRAM (ares .ram, Project64/mupen64plus .sra) or a\n"
@@ -64,6 +65,8 @@ std::string usage() {
            "(by default from the extension: .ram/.sav ares, .sra project64, .srm retroarch).\n"
            "Without --content, imports the matching ROM into a versioned local cache.\n"
            "--content keeps the developer-only prepared-content path.\n"
+           "--campaign plays a compiled custom campaign (mini_stage.py campaign) with its own\n"
+           "saves in DIR/campaigns/<id>/saves.\n"
            "This entry never runs Python, Git, CMake, Ninja or the recompilers.\n";
 }
 Options parse_options(std::span<const std::string_view> args) {
@@ -85,6 +88,7 @@ Options parse_options(std::span<const std::string_view> args) {
             else if (key=="--user-dir") options.user_dir=utf8_path(value);
             else if (key=="--import-save") options.import_save=utf8_path(value);
             else if (key=="--export-save") options.export_save=utf8_path(value);
+            else if (key=="--campaign") options.campaign=utf8_path(value);
             else if (key=="--export-format") {
                 if (value!="ares" && value!="project64" && value!="mupen64plus" && value!="retroarch")
                     throw std::runtime_error("Unknown save format: "+value);
@@ -105,7 +109,7 @@ Options parse_options(std::span<const std::string_view> args) {
     if (!options.export_format.empty() && options.export_save.empty()) throw std::runtime_error("--export-format needs --export-save");
     if (!options.export_save.empty()) {
         if (!options.rom.empty() || !options.content.empty() || options.new_game || !options.import_save.empty() ||
-            !options.language.empty() || options.rules || options.resolution_scale || options.mute)
+            !options.language.empty() || options.rules || options.resolution_scale || options.mute || !options.campaign.empty())
             throw std::runtime_error("--export-save only takes --export-format and --user-dir");
         options.export_save=fs::absolute(options.export_save);
         if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
@@ -113,7 +117,8 @@ Options parse_options(std::span<const std::string_view> args) {
     }
     // --import-save alone takes the card in and starts nothing.
     if (options.rom.empty() && !options.import_save.empty()) {
-        if (!options.content.empty() || options.new_game || !options.language.empty() || options.rules || options.resolution_scale || options.mute)
+        if (!options.content.empty() || options.new_game || !options.language.empty() || options.rules || options.resolution_scale || options.mute ||
+            !options.campaign.empty())
             throw std::runtime_error("--import-save without --rom only takes --user-dir");
         options.import_save=fs::absolute(options.import_save);
         if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
@@ -121,7 +126,9 @@ Options parse_options(std::span<const std::string_view> args) {
     }
     if (options.rom.empty()) throw std::runtime_error("--rom is required");
     if (options.new_game && !options.import_save.empty()) throw std::runtime_error("Choose --new-game or --import-save, not both");
+    if (!options.campaign.empty() && !options.import_save.empty()) throw std::runtime_error("A campaign keeps its own saves; --import-save is for the main game");
     options.rom=fs::absolute(options.rom);
+    if (!options.campaign.empty()) options.campaign=fs::absolute(options.campaign);
     if (!options.content.empty()) options.content=fs::absolute(options.content);
     if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
     if (!options.import_save.empty()) options.import_save=fs::absolute(options.import_save);
@@ -198,6 +205,10 @@ std::string read_text(const fs::path& path,size_t limit) {
     std::string data((std::istreambuf_iterator<char>(file)),{});
     if (!file || data.size()>limit) throw std::runtime_error("Cannot read file: "+path.string());
     return data;
+}
+bool valid_campaign_id(const std::string& id) {
+    return !id.empty() && id.size()<=64 && id!="." && id!=".." &&
+        std::all_of(id.begin(),id.end(),[](char c){return std::isalnum(static_cast<unsigned char>(c)) || c=='.' || c=='_' || c=='-';});
 }
 void atomic_write(const fs::path& path,std::string_view text) {
     // Append an ASCII suffix to the native path, without converting a Windows
@@ -317,15 +328,20 @@ Session::Session(const Options& options) {
     root=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir);
     fs::create_directories(root);
     lock=std::make_unique<UserLock>(root);
-    // The card lives in saves/ (save_library.hpp); sessions/ keeps each run's copy.
-    SaveLibrary saves(root/"saves");
+    // The card lives in saves/ (save_library.hpp); sessions/ keeps each run's copy. A
+    // campaign's saves name scenes its stages borrow, so they live apart from the game's.
+    if (!options.campaign.empty() && !valid_campaign_id(options.campaign_id))
+        throw std::runtime_error("A campaign id is 1-64 letters, digits, '.', '_' or '-'");
+    saves_root=options.campaign.empty()?root/"saves":root/"campaigns"/options.campaign_id/"saves";
+    fs::create_directories(saves_root);
+    SaveLibrary saves(saves_root);
     std::optional<fs::path> source;
     std::string source_hash;
     if (!options.import_save.empty()) {
         const auto imported=saves.import_cartridge(options.import_save);
         std::fprintf(stderr,"SRW64_SAVE_IMPORT %s%s kept_slots=%zu\n",std::string(sram::name(imported.detected.order)).c_str(),
                      imported.detected.retroarch?" retroarch":"",imported.kept.size());
-    } else {
+    } else if (options.campaign.empty()) {   // old sessions hold the main game's card
         try { saves.migrate_sessions(root); }
         catch (...) { if (!options.new_game) throw; }  // A new game does not need the old card.
     }
@@ -361,7 +377,7 @@ bool Session::commit_save(const fs::path& host_save) {
     fs::copy_file(host_save,save);
     require_save(save);
     if (sha256_file(save)!=expected) throw std::runtime_error("Host save changed before publication");
-    SaveLibrary(root/"saves").publish_cartridge(card);
+    SaveLibrary(saves_root).publish_cartridge(card);
     atomic_write(directory/"save.sha256",sha256_file(save)+"\n");
     atomic_write(root/"last-session.txt",id+"\n");
     published=true;

@@ -1,0 +1,68 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "sample-crossroads",
+  "note": "Scene 2's map (19) and enemies (groups 0, 1); マナミ and 万丈, already in the roster since the prologue, come in through added groups 6 and 7 at the scene's own player positions. Turn 1 wins; the ending asks 18402 (いきますよ／もう少し考えさせてください) and goes to ending-a (scene 3) or ending-b (scene 4).",
+  "map": 19,
+  "deployments_from": "base:stage_auxiliary:001e449c",
+  "deployments": [
+    {"template": "base:stage_deployments:001e43b8", "group": 6, "x": 14, "y": 14, "note": "マナミ / スイームルグ"},
+    {"template": "base:stage_deployments:001e43d4", "group": 7, "x": 19, "y": 12, "note": "万丈 / ダイターン3"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D32", "args": [0]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D3E", "args": [17506]},
+        {"op": "3D3E", "args": [17507]},
+        {"op": "3D3B", "args": [0]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D3A", "args": [27]},
+        {"op": "3D45", "args": [6]},
+        {"op": "3D45", "args": [7]},
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1-player-start",
+      "type": 0,
+      "header": [0, 1, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D4A"}
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3D32", "args": [1]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D3E", "args": [18401]},
+        {"op": "3D44", "args": [0, 2, 18402], "note": "いきますよ／もう少し考えさせてください"},
+        {"op": "3E10"},
+        {"op": "3D47"},
+        {"op": "3D4B", "args": [3], "note": "first option: ending-a"},
+        {"op": "3E1D"},
+        {"op": "3E11"},
+        {"op": "3D47"},
+        {"op": "3D4B", "args": [4], "note": "second option: ending-b"},
+        {"op": "3E1D"}
+      ]
+    }
+  ]
+}

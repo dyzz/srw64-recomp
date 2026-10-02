@@ -7,6 +7,7 @@
 #include "presentation_settings.hpp"
 #include "notices.hpp"
 #include "upgrade_refund.hpp"
+#include "campaign.hpp"
 #include "input_mode.hpp"
 #include "text/button_prompts.hpp"
 #include "game_adapter/dialogue_source.hpp"
@@ -55,6 +56,7 @@ std::filesystem::path text_bundled, text_overrides;
 // @intro:<resource> text pages by locale, in catalog form; Japanese from their '>' lines.
 std::mutex page_mutex;
 std::map<std::string,std::map<std::string,std::string>> page_texts;
+json last_text_summary=json::object();   // the last load_text: entries and files per locale, problems
 std::atomic_bool reload_requested{};
 
 uint8_t byte(const uint8_t* ram,uint32_t p) { return ram[p^3]; }
@@ -352,6 +354,7 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
     }
     record("dialogue_text",{{"bundled",text_bundled.string()},{"overrides",text_overrides.string()},{"locales",summary},
         {"problems",listed.size()>20?json(std::vector<json>(listed.begin(),listed.begin()+20)):listed}});
+    {std::lock_guard lock(page_mutex);last_text_summary={{"locales",summary},{"problems",problems.size()}};}
     return {entries,problems.size()};
 }
 // The banner counts the reading language's entries; problems in any language.
@@ -743,6 +746,8 @@ bool reader_owns(unsigned label_slot,double x,double y) {
     return false;
 }
 bool reader_configured(){return enabled;}
+std::filesystem::path text_overrides_dir(){return text_overrides;}
+nlohmann::json text_summary(){std::lock_guard lock(page_mutex);return last_text_summary;}
 std::string page_text(const std::string& locale,unsigned resource) {
     std::lock_guard lock(page_mutex);
     const auto language=page_texts.find(locale);
@@ -751,7 +756,17 @@ std::string page_text(const std::string& locale,unsigned resource) {
     return found==language->second.end()?std::string():found->second;
 }
 std::string ui_text(const uint8_t* ram,uint16_t id) {
+    // Chapter titles are record 281 + scene everywhere (title card, intermission,
+    // save list); a campaign's stage names the scene it borrows.
+    if(id>=281 && id<281+256)
+        if(auto title=campaign::title(id-281u,localization::snapshot()->locale))return *title;
     auto text=record_text(ram,localization::catalog(),id);
     return text.empty() && !localization::catalog().resolve(localization::TextKey::base(0,id))?std::to_string(id):text;
+}
+}
+
+namespace srw64::campaign {
+std::string notice(const std::string& key,uint32_t scene) {
+    return dialogue::filled(localization::catalog().ui(key),"{n}",std::to_string(scene));
 }
 }

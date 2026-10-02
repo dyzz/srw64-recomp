@@ -68,6 +68,10 @@ void parser_and_paths() {
     reject({"--rom","x","--content","y","--mute","--mute"});
     reject({"--rom","x","--content","y","--unknown","z"});
     reject({"--rom","x","--content","y","--new-game","--import-save","z"});
+    const std::vector<std::string_view> campaign={"--rom","x","--campaign","sample.json"};
+    check(parse_options(campaign).campaign.is_absolute(),"campaign path depends on later cwd");
+    reject({"--rom","x","--campaign","c.json","--import-save","z"});
+    reject({"--export-save","x.sra","--campaign","c.json"});
     const std::vector<std::string_view> exporting={"--export-save","card.srm","--user-dir","u"};
     const auto export_options=parse_options(exporting);
     check(export_options.export_save.is_absolute() && export_options.rom.empty(),"export needs no ROM");

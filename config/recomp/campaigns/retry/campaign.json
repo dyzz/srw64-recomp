@@ -1,0 +1,12 @@
+{
+  "schema": "srw64.campaign.v1",
+  "id": "srw64.retry",
+  "name": "Retry check",
+  "version": "1",
+  "note": "One stage on scene 5 for check_campaign_retry.py: the turn-1 event asks 18402 (いきますよ／もう少し考えさせてください); the first option is a game over (3D4C), the second a win (3D4A) that ends with 3D71. A game over must re-register this stage, not the original scene 5. Original maps, text and units only.",
+  "start": "stand",
+  "stages": {
+    "stand": {"scene": 5, "file": "stages/stand.json",
+              "title": {"ja": "再挑戦", "zh-Hans": "再次挑战", "en": "Try Again"}}
+  }
+}

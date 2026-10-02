@@ -2,9 +2,18 @@
 #include <cassert>
 #include <cstdlib>
 #include <filesystem>
+#include <functional>
 #include <vector>
 static uint64_t current_vi=100;
 uint64_t srw64_current_vi(){return current_vi;}
+// Notices: counted, so a campaign's unmapped scene can be checked.
+static unsigned notices_posted=0;
+namespace srw64::notices {
+void post(const std::string&,const std::string&){++notices_posted;}
+}
+namespace srw64::campaign {
+std::string notice(const std::string& key,uint32_t){return key;}
+}
 // Intro adapter stubs: the test drives the title state and records skip requests.
 static int major_state=-1;static unsigned skip_requests=0;
 namespace srw64::intro {
@@ -32,6 +41,9 @@ int main(int argc,char** argv) {
     // Registration: buffers, pointer table and the deployment base argument.
     const auto path=dir/"image.json";std::ofstream(path)<<image.dump();
     setenv("SRW64_MINI_STAGE",path.c_str(),1);
+    // The main-menu part below drives the New Game path (START held over four polls),
+    // which direct entry, now the default, bypasses.
+    setenv("SRW64_MINI_STAGE_DIRECT","0",1);
     configure(dir);
     assert(state().image);
     std::vector<uint8_t> ram(0x800000);
@@ -119,6 +131,42 @@ int main(int argc,char** argv) {
     current_vi=1050;assert(finished());                    // grace elapsed
     assert(!finished());                                   // fires once, not every VI
     unsetenv("SRW64_MINI_STAGE_EXIT_AFTER");unsetenv("SRW64_MINI_STAGE_EXIT_GRACE");
+
+    // A campaign: each registration takes the stage of the scene being registered,
+    // with that stage's map; a scene no stage borrows keeps the original.
+    auto stage2=image;stage2["map"]=19;stage2["name"]="two";
+    nlohmann::json campaign={{"schema","srw64.campaign-image.v1"},{"id","t"},{"start_scene",1},{"stages",nlohmann::json::array({
+        {{"key","one"},{"scene",1},{"title",{{"ja","一"},{"zh-Hans","壱"}}},{"image",image}},
+        {{"key","two"},{"scene",2},{"title","二"},{"image",stage2}}})}};
+    const auto campaign_path=dir/"campaign.json";std::ofstream(campaign_path)<<campaign.dump();
+    setenv("SRW64_CAMPAIGN",campaign_path.c_str(),1);
+    state().stages.clear();state().bound.reset();state().applied=0;state().direct_done=false;
+    configure(dir);
+    assert(state().stages.size()==2 && state().image && state().image->name=="t" && srw64::campaign::active());
+    assert(srw64::campaign::title(1,"zh-Hans")=="壱" && srw64::campaign::title(1,"en")=="一" && srw64::campaign::title(2,"en")=="二");
+    assert(!srw64::campaign::title(3,"ja"));
+    // Direct entry starts at the campaign's start scene; after the first registration
+    // the episode count goes back to 0 so the first clear reads 第1話.
+    state().image->slot=7;direct_scene(ram.data());
+    assert(read(ram.data(),0x8010F5F0,1)==1 && read(ram.data(),0x8010F5EF,1)==1);
+    state().direct_done=true;register_hook(ram.data(),&ctx);
+    assert(state().active && *state().bound==1 && state().image->name=="t" && read(ram.data(),0x8010F5EF,1)==0);
+    put(0x8010F5EE,5,1);map_hook(ram.data());assert(read(ram.data(),0x8010F5EE,1)==20);
+    put(0x8010F5EF,1,1);put(0x8010F5F0,2,1);register_hook(ram.data(),&ctx);
+    assert(state().active && *state().bound==2 && state().image->name=="two" && read(ram.data(),0x8010F5EF,1)==1);
+    put(0x8010F5EE,5,1);map_hook(ram.data());assert(read(ram.data(),0x8010F5EE,1)==19);
+    put(0x8010F5F0,9,1);register_hook(ram.data(),&ctx);
+    assert(!state().active && notices_posted==1);
+    put(0x8010F5EE,5,1);map_hook(ram.data());assert(read(ram.data(),0x8010F5EE,1)==5);
+    // A scene the game treats specially, a scene two stages share, a missing start.
+    for(auto change:std::vector<std::function<void(nlohmann::json&)>>{
+            [](nlohmann::json& c){c["stages"][1]["scene"]=132;},[](nlohmann::json& c){c["stages"][1]["scene"]=1;},
+            [](nlohmann::json& c){c["stages"][1]["scene"]=115;},[](nlohmann::json& c){c["start_scene"]=5;}}) {
+        auto bad=campaign;change(bad);bool threw=false;
+        try{parse_campaign(bad);}catch(const std::runtime_error&){threw=true;}
+        assert(threw);
+    }
+    unsetenv("SRW64_CAMPAIGN");srw64::campaign::set(std::nullopt);
 
     std::ifstream log(dir/"mini-stage-events.jsonl");std::string line;unsigned armed=0,entered=0,skipped=0;
     while(std::getline(log,line)){armed+=line.find("\"armed\"")!=std::string::npos;entered+=line.find("\"entered\"")!=std::string::npos;skipped+=line.find("\"skipped\"")!=std::string::npos;}

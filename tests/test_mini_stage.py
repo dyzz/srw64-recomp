@@ -5,7 +5,8 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
-from recomp.script_lab.mini_stage import AUX_BLOCK, EVENT_BLOCK, SCHEMA, compile_stage, encode_record, report  # noqa: E402
+from recomp.script_lab.mini_stage import (AUX_BLOCK, CAMPAIGN_SCHEMA, EVENT_BLOCK, SCHEMA, borrowable,  # noqa: E402
+                                          compile_campaign, compile_stage, encode_record, next_scenes, report)
 
 RECORDS = ROOT / "assets/original-data/records/stage_auxiliary.jsonl"
 
@@ -124,6 +125,45 @@ class ShippedStagesTests(unittest.TestCase):
                 # the opening event is the only one a bounded run always runs.
                 opening = [e for e in image["events"] if e["type"] == 12]
                 self.assertEqual(len(opening), 1, "a stage needs exactly one opening event")
+
+
+class CampaignTests(unittest.TestCase):
+    SAMPLE = ROOT / "config/recomp/campaigns/sample/campaign.json"
+
+    def write(self, directory: Path, stages: dict, start: str) -> Path:
+        stage = {"schema": SCHEMA, "events": [{"type": 12, "commands": [{"op": "3D48"}]},
+                                              {"type": 14, "commands": [{"op": "3D4B", "args": [2]}]}]}
+        (directory / "stage.json").write_text(json.dumps(stage))
+        path = directory / "campaign.json"
+        path.write_text(json.dumps({"schema": CAMPAIGN_SCHEMA, "id": "t", "start": start,
+                                    "stages": {k: {"scene": s, "file": "stage.json"} for k, s in stages.items()}}))
+        return path
+
+    @unittest.skipUnless(RECORDS.exists(), "original data not extracted")
+    def test_the_sample_compiles_with_every_stage_on_its_own_scene(self):
+        image = compile_campaign(self.SAMPLE)
+        self.assertEqual(image["schema"], "srw64.campaign-image.v1")
+        self.assertEqual(image["start_scene"], 1)
+        self.assertEqual([(s["key"], s["scene"], s["image"]["slot"]) for s in image["stages"]],
+                         [("prologue", 1, 1), ("crossroads", 2, 2), ("ending-a", 3, 3), ("ending-b", 4, 4)])
+        self.assertEqual([next_scenes(s["image"]) for s in image["stages"]], [[2], [3, 4], [], []])
+        self.assertEqual(image["stages"][1]["title"]["zh-Hans"], "第2话　岔路")
+
+    def test_scenes_the_game_treats_specially_cannot_be_borrowed(self):
+        self.assertTrue(borrowable(1) and borrowable(142))
+        for scene in (38, 104, 109, 122, 132, 143, 255):
+            with self.subTest(scene=scene):
+                self.assertFalse(borrowable(scene))
+
+    def test_a_campaign_rejects_shared_scenes_and_exits_outside_itself(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as temp:
+            directory = Path(temp)
+            self.assertEqual(compile_campaign(self.write(directory, {"a": 1, "b": 2}, "a"))["start_scene"], 1)
+            for stages, start in (({"a": 1, "b": 1}, "a"), ({"a": 1, "b": 132}, "a"), ({"a": 1}, "missing"),
+                                  ({"a": 1, "b": 3}, "a")):   # 3D4B 2 leads outside {1, 3}
+                with self.subTest(stages=stages, start=start), self.assertRaises(ValueError):
+                    compile_campaign(self.write(directory, stages, start))
 
 
 if __name__ == "__main__":

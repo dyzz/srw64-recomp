@@ -87,6 +87,22 @@ void configure(const fs::path& directory,const std::optional<fs::path>& initial)
     log.open(directory/"save-store-events.jsonl");
     record("open",{{"library",root},{"initial",initial.has_value()},{"extended",library->slots()}});
 }
+fs::path main_library(){const char* root=std::getenv("SRW64_SAVE_LIBRARY");return root && *root?fs::path(root):fs::path();}
+void switch_library(const fs::path& root) {
+    std::lock_guard lock(mutex);
+    library.emplace(root);
+    // The card as this library last published it; a new library starts blank, as the
+    // game will format it.
+    card.fill(0);
+    if(std::ifstream file(library->cartridge(),std::ios::binary);file)file.read(reinterpret_cast<char*>(card.data()),std::streamsize(card.size()));
+    window={};suspend_window.reset();armed.reset();armed_suspend_record.reset();
+    const auto saved=read_json(library->directory()/"settings.json");
+    choices.autosave=saved.value("autosave",true);
+    choices.intermission=std::clamp(saved.value("autosave_intermission",3u),1u,20u);
+    choices.turn=std::clamp(saved.value("autosave_turn",5u),1u,20u);
+    record("switch",{{"library",root.string()},{"card",sram::problems(card).empty()},{"extended",library->slots()}});
+}
+fs::path cartridge_path(){std::lock_guard lock(mutex);return library?library->cartridge():fs::path();}
 bool enabled(){return library.has_value();}
 fs::path library_directory(){return library?library->directory():fs::path();}
 bool transfer(uint8_t* ram,unsigned direction,uint32_t cart,uint32_t buffer,uint32_t length) {

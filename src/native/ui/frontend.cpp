@@ -20,6 +20,8 @@
 #include "save_store.hpp"
 #include "title_page.hpp"
 #include "mini_stage.hpp"
+#include "campaign_library.hpp"
+#include "campaign_switch.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
 #include "game_frame.hpp"
@@ -64,6 +66,11 @@ std::map<std::string,std::array<int,5>> art_bounds;  // opaque bounds and file w
 std::vector<Rml::byte> font, chinese_font, english_font, symbol_font, prompt_font;
 std::map<std::string,std::string> images;
 std::atomic_bool settings_open{}, physical_held{};
+// The settings window opened from the title's MOD entry is the MOD manager: its own pages
+// (campaigns, art, dialogue, music) instead of the settings'; closing it ends that.
+std::atomic_bool mod_open{};
+constexpr const char* mod_pages[]={"campaigns","art","dialogue","audio"};
+unsigned mod_page{};
 // The last input was a controller: hints use the "_pad" labels (Steam Deck).
 bool pad_mode{};
 // The mouse is in use: hover highlights show only then, not under a pointer left resting
@@ -378,7 +385,17 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bh-bar {position:absolute; background-color:#ff0000;} .bh-bar div {height:100%; background-color:#00ff00;}
 .bh-item {position:absolute; display:block; box-sizing:border-box; margin:0; border:0; border-radius:0; background-color:transparent; color:#ffffff; font-weight:bold; text-align:left; white-space:nowrap; overflow:hidden;}
 .bh-item:hover {border:0;} body.pointer .bh-item:hover {background-color:#00ff0040;} .bh-item:focus,body.pointer .bh-item:focus {border:0; background-color:#00ff0080;}
-.home-entry {position:absolute; right:14dp; bottom:12dp; margin:0; padding:5dp 14dp; font-size:13dp; pointer-events:auto; background-color:#0c122cd0; border-color:#3fd0ff;}
+.home-entry {position:absolute; left:14dp; top:12dp; margin:0; padding:5dp 14dp; font-size:13dp; pointer-events:auto; background-color:#0c122cd0; border-color:#3fd0ff;}
+/* MOD lettered like the title ring's items (sprite_text menu_style; size, outline and
+   shadow are set in game pixels by home_sync): the dim grey-blue of an unchosen item, no
+   box; light blue when pointed at or chosen, as the ring's current item is. */
+button.home-mod {position:absolute; right:6vw; bottom:6vh; margin:0; padding:0 1vh; line-height:1.2;
+    background-color:transparent; border-width:0; border-radius:0; color:#6c768d; pointer-events:auto;}
+button.home-mod:hover, button.home-mod:focus, .pad button.home-mod:focus {color:#c4dcff; background-color:transparent; border-width:0;}
+/* The title's corners: settings top left, the frame-rate readout top right, the version
+   bottom left, MOD bottom right. */
+.home-version {position:absolute; left:14dp; bottom:10dp; font-size:13dp; color:#ffffffb0; pointer-events:none; font-effect:outline(1dp #000000c0);}
+.dlc-meta {color:#a4b0d2; font-size:13dp; margin-top:2dp;}
 .bp-hints {text-align:center; font-size:15dp; color:#a4b0d2; height:21dp; white-space:nowrap; overflow:hidden;}
 .narrow .bp-hints {font-size:16dp; height:22dp;}
 .bp-hints span {margin:0 10dp;} .bp-hints b {color:#ffd75e; font-weight:normal;}
@@ -714,10 +731,93 @@ void settings_focus_row(Rml::Element* row,int direction) {
 // The page's first setting, or the tab bar on a page with nothing to choose.
 void settings_focus_first() {
     const auto rows=settings_rows();
+    // Row 0 is the tab bar, except in the DLC view, which has none.
     if(!rows.empty())settings_focus_row(rows[rows.size()>1?1:0],0);
 }
+// Installed campaigns, read once: they do not change while the game runs.
+const std::vector<campaign_library::Entry>& installed_campaigns() {
+    static const auto entries=campaign_library::list();
+    return entries;
+}
+// A campaign is entered or left on the title's ring menu only, where nothing unsaved is
+// lost and a stage can be loaded (mini_stage::load_file).
+bool on_title(){return intro::title_major()==3;}
+// The MOD manager (docs/design/custom-campaign.md §8): additional scenarios, art, dialogue
+// and languages, music and voices, one page each, in the settings window's frame.
+std::string mod_campaigns_page() {
+    const auto locale=localization::catalog().locale;
+    const bool switchable=campaign_switch::available() && on_title();
+    std::string body="<p>"+label("dlc_note")+"</p>";
+    const auto current=campaign::info();
+    if(current)
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("mod_playing")+" "+escape(campaign_library::text(current->name,locale))+
+            "</div><div class='set-seg'>"+button("dlc-leave",label("dlc_leave"),false,!switchable)+"</div></div></div>";
+    const auto& entries=installed_campaigns();
+    if(entries.empty())body+="<p>"+label("dlc_empty")+"</p>";
+    for(size_t i=0;i<entries.size();++i) {
+        const auto& entry=entries[i];
+        const bool playing=current && current->id==entry.id;
+        std::string meta=with_number("dlc_stages",unsigned(entry.stages));
+        if(!entry.version.empty())meta+="  ·  v"+escape(entry.version);
+        if(!entry.author.empty())meta+="  ·  "+escape(entry.author);
+        meta+="  ·  "+label(entry.saves?"dlc_saves":"dlc_new");
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(campaign_library::text(entry.name,locale))+"</div><div class='set-seg'>"+
+            button("dlc-enter:"+std::to_string(i),label(playing?"mod_current":"dlc_enter"),false,playing || !switchable)+"</div></div>";
+        if(const auto description=campaign_library::text(entry.description,locale);!description.empty())body+="<p>"+escape(description)+"</p>";
+        body+="<p class='dlc-meta'>"+meta+"</p></div>";
+    }
+    if(!switchable && campaign_switch::available())body+="<p class='dlc-meta'>"+label("mod_title_only")+"</p>";
+    return body;
+}
+std::string mod_art_page() {
+    std::string body=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
+    const char* art=std::getenv("SRW64_ART_PACK");
+    if(art && *art)body+="<p>"+label("mod_art_installed")+"</p><p class='set-path'>"+escape(std::filesystem::path(art).parent_path().string())+"</p>";
+    else body+="<p>"+label("mod_art_missing")+"</p>";
+    return body+"<p class='dlc-meta'>"+label("mod_art_note")+"</p>";
+}
+std::string mod_dialogue_page() {
+    const auto folder=dialogue::text_overrides_dir();
+    std::string body=settings_row("mod_dialogue_reload",button("mod-dialogue-reload",label("dialogue_reload")),
+        folder.empty()?std::string():"<p class='set-path'>"+escape(folder.string())+"</p>");
+    const auto summary=dialogue::text_summary();
+    if(summary.contains("locales"))for(const auto& [locale,row]:summary.at("locales").items()) {
+        auto line=localization::catalog().ui("mod_dialogue_locale");
+        for(const auto& [token,value]:{std::pair{"{l}",localization::display_name(locale)},std::pair{"{n}",std::to_string(row.value("entries",0u))},
+                                       std::pair{"{f}",std::to_string(row.value("files",0u))},std::pair{"{k}",std::to_string(row.value("problems",0u))}})
+            if(const auto at=line.find(token);at!=std::string::npos)line.replace(at,std::string_view(token).size(),value);
+        body+="<p class='dlc-meta'>"+escape(line)+"</p>";
+    }
+    return body+"<p class='dlc-meta'>"+label("mod_dialogue_note")+"</p>";
+}
+std::string mod_panel() {
+    std::string body="<div class='set-shade'><div class='set-panel'><h1>"+label("mod_title")+"</h1><div class='set-tabs nav'>";
+    for(unsigned i=0;i<std::size(mod_pages);++i)body+=button("mod-page:"+std::string(mod_pages[i]),label("mod_page_"+std::string(mod_pages[i])),i==mod_page,false,"set-tab");
+    body+="</div><div id='set-body' class='set-body'>";
+    const std::string page=mod_pages[mod_page];
+    if(page=="campaigns")body+=mod_campaigns_page();
+    else if(page=="art")body+=mod_art_page();
+    else if(page=="dialogue")body+=mod_dialogue_page();
+    else body+="<p>"+label("mod_audio_note")+"</p>";
+    body+="</div><div class='set-foot'><div class='set-hint'>"+label("mod_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+    return body;
+}
 void settings_sync() {
-    if(!settings_open){document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(!settings_open){mod_open=false;document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(mod_open) {
+        const auto stamp="mod"+std::to_string(mod_page)+localization::catalog().locale+window_stamp()+std::to_string(on_title())+
+            std::to_string(presentation::image_mode.requested())+std::to_string(presentation::image_mode.enabled())+dialogue::text_summary().dump();
+        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+        auto* focused=context->GetFocusElement();
+        const std::string focus_id=!settings_focus.empty()?settings_focus:settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        settings_doc=document(mod_panel(),true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc->UpdateDocument();
+        auto* focus=focus_id.empty() || focus_id=="first"?nullptr:settings_doc->GetElementById(focus_id);
+        if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));}
+        else if(focus_id=="first" || !pointer_mode)settings_focus_first();
+        return;
+    }
     if(settings_built<0) {
         // Opening: the page the window was last left on.
         const auto saved=settings::settings_page();
@@ -748,6 +848,8 @@ void settings_sync() {
         std::string locales;
         for(const auto& [locale,catalog]:localization::registered())locales+=button("locale:"+locale,escape(localization::display_name(locale)),locale==localization::catalog().locale,settings::owns_input());
         body+=settings_row("settings_language",locales);
+        // The MOD manager, for a controller, which cannot reach the title's button.
+        body+=settings_row("mod_row",button("mod-open",label("mod_open")));
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
         body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
         // A handheld plays full screen and has no window to size.
@@ -807,6 +909,13 @@ void settings_show(unsigned page,const std::string& focus) {
 // L1/R1, Q/E and the page keys: the next or previous page, wrapping round. The focus
 // stays on the tab bar if it was there, else moves to the new page's first setting.
 void settings_turn(int step) {
+    if(mod_open) {   // the MOD manager turns its own pages
+        const unsigned count=std::size(mod_pages);
+        mod_page=(mod_page+count+step)%count;
+        auto* focus=context->GetFocusElement();
+        settings_focus=focus && focus->IsClassSet("set-tab")?"mod-page:"+std::string(mod_pages[mod_page]):"first";
+        return;
+    }
     const unsigned count=std::size(settings_pages),page=(settings_page+count+step)%count;
     auto* focus=context->GetFocusElement();
     settings_show(page,focus && focus->IsClassSet("set-tab")?"settings-page:"+std::string(settings_pages[page]):"first");
@@ -1904,20 +2013,34 @@ void mini_sync() {
     const auto stamp=state.dump()+localization::catalog().locale;
     if(mini_doc && stamp==mini_stamp)return;
     document_close(mini_doc);mini_stamp=stamp;
-    std::string body="<div style='position:absolute; bottom:32dp; left:25%; width:50%; text-align:center;'>";
-    body+=entering?"<h2>"+label("mini_entering")+"</h2>":button("mini-enter",label("mini_enter"));
-    body+="<p>"+escape(state.value("name",std::string{}))+"</p></div>";
-    mini_doc=document(body,true);if(!entering)mini_doc->SetClass("modal",false);
+    // Only this box takes the pointer while the entry waits: the page beneath stays open to
+    // clicks, such as the title's DLC and settings entries. Entering covers the screen.
+    std::string body="<div style='position:absolute; bottom:32dp; left:25%; width:50%; text-align:center; pointer-events:auto;'>";
+    // A campaign (DLC) starts from here: its name, not a mini stage's file name.
+    const auto info=campaign::info();
+    body+=entering?"<h2>"+label("mini_entering")+"</h2>":button("mini-enter",label(info?"dlc_start":"mini_enter"));
+    body+="<p>"+escape(info?campaign_library::text(info->name,localization::catalog().locale):state.value("name",std::string{}))+"</p></div>";
+    mini_doc=document(body,entering);
 }
 // PRESS START and the ring menu (title 主状態 2 and 3): the settings window's entry, for
 // players with no menu bar. A controller shows the View button; a tap or click opens it.
+// Beside it, the additional scenarios (DLC): installed campaigns in the main game, the
+// way back to it in a campaign (campaign_library.hpp).
 void home_sync() {
     const int major=intro::title_major();
-    if((major!=2 && major!=3) || settings_open || (!pad_mode && app_menu::available())){document_close(home_doc);home_stamp.clear();return;}
-    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"");
+    const bool settings_entry=pad_mode || !app_menu::available();
+    if((major!=2 && major!=3) || settings_open){document_close(home_doc);home_stamp.clear();return;}
+    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+frame_stamp();
     if(home_doc && stamp==home_stamp)return;
     document_close(home_doc);home_stamp=stamp;
-    home_doc=document("<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>",false);
+    // MOD bottom right, lettered like the ring (menu_style: 14 game pixels, a 1-pixel
+    // outline, a 0.8-pixel shadow); the settings entry top left.
+    const float u=frame::scale(pixels_w,pixels_h);
+    const auto px=[&](float v){return std::to_string(std::max(1,int(v*u+0.5f)))+"px";};
+    std::string body="<button id='mod-open' class='home-mod' style='font-size:"+px(14)+"; font-effect:outline("+px(1)+" #0a0d17), shadow("+
+        px(.8f)+" "+px(.8f)+" #00000073);'>"+label("mod_open")+"</button><div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
+    if(settings_entry)body+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
+    home_doc=document(body,false);
 }
 // The HD original (battle_ui "hd"): the original screen redrawn in its own 320x240
 // coordinates, like the intermission pages. Two panels (window layout 0x45, frame 1196;
@@ -2096,6 +2219,33 @@ void choose(const std::string& id) {
     funds_editing.clear();
     if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
     if(id=="settings-open"){settings_open=true;settings_release.hold();input.clear();return;}
+    // The MOD manager. Its campaign page switches campaign (or back to the main game) on the
+    // title screen: a switch asks the launcher for the next start and closes the game as
+    // the window would.
+    if(id=="mod-open"){mod_open=true;settings_open=true;settings_focus="first";settings_release.hold();input.clear();return;}
+    if(mod_open && id.starts_with("mod-page:")) {
+        for(unsigned i=0;i<std::size(mod_pages);++i)if(id.substr(9)==mod_pages[i]){mod_page=i;settings_focus=id;}
+        return;
+    }
+    if(mod_open && id=="mod-dialogue-reload"){dialogue::request_reload();settings_focus=id;return;}
+    // Entering or leaving swaps the game's saves for the campaign's (campaign_switch.hpp)
+    // and closes the manager on the title, where the campaign starts.
+    const auto switched=[&](const std::function<void()>& change,const std::string& notice) {
+        if(!campaign_switch::available() || !on_title())return;
+        try{change();settings_open=false;notices::post("campaign",notice);}
+        catch(const std::exception& error){notices::post("campaign",error.what());}
+    };
+    if(id=="dlc-leave" && mod_open && campaign::active()){switched(campaign_switch::leave,localization::catalog().ui("dlc_left"));return;}
+    if(id.starts_with("dlc-enter:") && mod_open) {
+        const auto index=std::stoul(id.substr(10));
+        if(index<installed_campaigns().size()) {
+            const auto& entry=installed_campaigns()[index];
+            auto notice=localization::catalog().ui("dlc_entered");
+            if(const auto at=notice.find("{name}");at!=std::string::npos)notice.replace(at,6,campaign_library::text(entry.name,localization::catalog().locale));
+            switched([&]{campaign_switch::enter(entry);},notice);
+        }
+        return;
+    }
     // The Controls page (controls_page): a capture, restore.
     if(id.starts_with("controls-bind:")){start_capture(id.substr(14));settings_focus=id;return;}
     if(id=="controls-cancel"){capture.queue.clear();return;}

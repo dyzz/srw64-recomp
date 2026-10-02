@@ -2,6 +2,8 @@
 #include "link_battler.hpp"
 #include "game_hooks.hpp"
 #include "presentation_settings.hpp"
+#include "campaign.hpp"
+#include "notices.hpp"
 #include "funcs.h"
 #include <atomic>
 #include <fstream>
@@ -43,6 +45,14 @@ bool begin(uint8_t* ram) {
     const auto status=link::status(ram);
     current={++serial,true,status.joined,status.scheduled,portraits,portraits_hd};
     waiting=true;answered=confirmed=closed=false;chosen=0;owning=true;
+    if(campaign::active()) {
+        // A Link Battler stage would move the next scene (801D9F80) out of the
+        // campaign, so the screen goes straight back as if cancelled.
+        current.visible=false;answered=true;owning=false;
+        notices::post("campaign",campaign::notice("campaign_link_blocked"));
+        record("blocked",ram);
+        return true;
+    }
     record("open",ram);
     return true;
 }

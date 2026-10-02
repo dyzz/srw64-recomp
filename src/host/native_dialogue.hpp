@@ -100,6 +100,10 @@ struct LocaleStatus {uint64_t request{},completed{};std::string locale,error;};
 LocaleStatus locale_status();
 // Read the dialogue text files again at the next game step (F5, app menu).
 void request_reload();
+// The player's dialogue text folder (beside the shipped files, which it overrides) and the
+// last reading of them: {"locales": {locale: {entries, files, problems}}, "problems": n}.
+std::filesystem::path text_overrides_dir();
+nlohmann::json text_summary();
 uint16_t input(uint16_t);
 void overlay_loaded(uint32_t rom);
 std::shared_ptr<const Frame> take_frame(uint32_t start, uint32_t size, std::vector<uint8_t>& display, const uint8_t* ram);

@@ -1,6 +1,7 @@
 #include "sprite_text.hpp"
 #include "native_dialogue.hpp"
 #include "story_cards.hpp"
+#include "campaign.hpp"
 #include "localization/catalog.hpp"
 #include "text/game_fonts.hpp"
 #include "text/portable_text.hpp"
@@ -373,8 +374,9 @@ bool describe(const uint8_t* rdram, const sprites::SceneId& id, TextJob& job) {
             job_for(job, card_style(24), locale, label, "chapter-number");
             return true;
         }
-        if (number) {
-            // The two 第１話 placeholder cards: the stage's own title record.
+        if (number || campaign::title(rdram[kStageScene ^ 3], locale)) {
+            // The two 第１話 placeholder cards: the stage's own title record. A
+            // campaign stage's title replaces whichever card its scene shows.
             record = uint16_t(281 + rdram[kStageScene ^ 3]);
         } else {
             for (const auto& card : story_cards::cards)

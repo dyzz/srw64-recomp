@@ -177,6 +177,54 @@ def compile_stage(document: dict, spec: dict | None = None) -> dict:
             "scope": "Per-scene event and deployment buffers at registration, plus optional one-time unit resources at initial map idle; ROM and other scenes are untouched."}
 
 
+CAMPAIGN_SCHEMA = "srw64.campaign.v1"
+CAMPAIGN_IMAGE_SCHEMA = "srw64.campaign-image.v1"
+# Scenes a campaign stage must not borrow (src/host/campaign.hpp): the "（前）" scenes
+# and 132 shorten the intermission menu (D_801DC6D4), 109-122 are Link Battler stages.
+SHORTENED_SCENES = {38, 48, 68, 73, 79, 81, 83, 86, 88, 93, 95, 96, 104, 132}
+
+
+def borrowable(scene: int) -> bool:
+    return 0 <= scene <= 142 and not 109 <= scene <= 122 and scene not in SHORTENED_SCENES
+
+
+def next_scenes(image: dict) -> list[int]:
+    """The 3D4B targets in a compiled stage's events (500 returns to the saved scene)."""
+    return [row["operands"][0] for event in image["events"] for row in event["listing"]
+            if row.get("opcode") == "3D4B" and row.get("operands")]
+
+
+def compile_campaign(path: Path) -> dict:
+    """Every stage of a campaign (docs/design/custom-campaign.md) compiled, keyed by the scene it borrows."""
+    document = json.loads(path.read_text())
+    if document.get("schema") != CAMPAIGN_SCHEMA:
+        raise ValueError("Unsupported campaign schema")
+    stages = document.get("stages") or {}
+    if document.get("start") not in stages:
+        raise ValueError("start must name one of the stages")
+    spec = layout()
+    compiled, scenes = [], {}
+    for key, stage in stages.items():
+        scene = int(stage["scene"])
+        if not borrowable(scene):
+            raise ValueError(f"Stage {key}: scene {scene} cannot be borrowed")
+        if scene in scenes:
+            raise ValueError(f"Stages {scenes[scene]} and {key} both borrow scene {scene}")
+        scenes[scene] = key
+        source = json.loads((path.parent / stage["file"]).read_text())
+        source["slot"] = scene
+        image = compile_stage(source, spec)
+        compiled.append({"key": key, "scene": scene, "title": stage.get("title"), "image": image})
+    for stage in compiled:
+        for target in next_scenes(stage["image"]):
+            if target != 500 and target not in scenes:
+                raise ValueError(f"Stage {stage['key']}: 3D4B {target} leads outside the campaign")
+    return {"schema": CAMPAIGN_IMAGE_SCHEMA, "id": document["id"], "name": document.get("name", document["id"]),
+            "description": document.get("description"), "author": str(document.get("author", "")),
+            "version": str(document.get("version", "")), "start_scene": int(stages[document["start"]]["scene"]),
+            "stages": compiled}
+
+
 def host_events(run: Path) -> list[dict]:
     path = run / "mini-stage-events.jsonl"
     return [json.loads(l) for l in path.read_text().splitlines() if l.strip()] if path.exists() else []
@@ -216,11 +264,20 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     c = sub.add_parser("compile"); c.add_argument("stage", type=Path); c.add_argument("--out", type=Path, required=True)
+    g = sub.add_parser("campaign"); g.add_argument("campaign", type=Path); g.add_argument("--out", type=Path, required=True)
     r = sub.add_parser("report"); r.add_argument("run", type=Path); r.add_argument("--image", type=Path, required=True)
     args = parser.parse_args()
     if args.command == "report":
         result = report(args.run, json.loads(args.image.read_text()))
         print(json.dumps([{k: e[k] for k in ("name", "type", "fired", "first_vi", "last_vi", "commands_declared", "commands_executed", "commands_not_executed")} for e in result["events"]], ensure_ascii=False, indent=1))
+        return 0
+    if args.command == "campaign":
+        image = compile_campaign(args.campaign)
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        args.out.write_text(json.dumps(image, ensure_ascii=False) + "\n")
+        print(json.dumps({"id": image["id"], "start_scene": image["start_scene"],
+                          "stages": [(s["key"], s["scene"], next_scenes(s["image"])) for s in image["stages"]],
+                          "out": str(args.out)}, ensure_ascii=False))
         return 0
     if args.command == "compile":
         image = compile_stage(json.loads(args.stage.read_text()))

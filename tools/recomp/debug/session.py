@@ -115,7 +115,8 @@ class Session:
 
     @classmethod
     def launch(cls, language: str | None = None, images: str | None = None, rules=None, save: str | None = None,
-               mini_stage: str | None = None, reuse_build: bool = False, audio: bool = False, binary: str | None = None,
+               mini_stage: str | None = None, campaign: str | None = None, campaigns: bool = False,
+               reuse_build: bool = False, audio: bool = False, binary: str | None = None,
                resolution_scale: int | None = None,
                timeout: float = 900.0, env: dict | None = None,
                detach: bool = False, dump_textures: bool = False) -> "Session":
@@ -157,6 +158,33 @@ class Session:
             image = run.parent / (run.name + ".mini-stage.json")
             image.write_text(json.dumps(compile_stage(json.loads(Path(mini_stage).read_text())), ensure_ascii=False) + "\n")
             environment["SRW64_MINI_STAGE"] = str(image)
+        environment.pop("SRW64_CAMPAIGN", None)
+        if campaign:
+            # A campaign source (srw64.campaign.v1) compiled here; it plays from its
+            # own save library in the run, as the launcher's --campaign does.
+            sys.path.insert(0, str(ROOT / "tools"))
+            from recomp.script_lab.mini_stage import compile_campaign
+            image = run.parent / (run.name + ".campaign.json")
+            image.write_text(json.dumps(compile_campaign(Path(campaign)), ensure_ascii=False) + "\n")
+            environment["SRW64_CAMPAIGN"] = str(image)
+            environment["SRW64_SAVE_LIBRARY"] = str(run / "campaign-saves")
+        for key in ("SRW64_CAMPAIGN_DIRS", "SRW64_CAMPAIGN_SAVES"):
+            environment.pop(key, None)
+        if campaigns:
+            # The MOD manager's extra scenarios, as the launcher offers them: every campaign
+            # under config/recomp/campaigns compiled beside the run, a save library for the
+            # main game (switching needs one to come back to) and one folder per campaign.
+            sys.path.insert(0, str(ROOT / "tools"))
+            from recomp.script_lab.mini_stage import compile_campaign
+            installed = run.parent / (run.name + ".campaigns")
+            for source in sorted((ROOT / "config/recomp/campaigns").glob("*/campaign.json")):
+                image = compile_campaign(source)
+                (installed / image["id"]).mkdir(parents=True, exist_ok=True)
+                (installed / image["id"] / "campaign.json").write_text(json.dumps(image, ensure_ascii=False) + "\n")
+            environment["SRW64_CAMPAIGN_DIRS"] = str(installed)
+            environment["SRW64_CAMPAIGN_SAVES"] = str(run.parent / (run.name + ".campaign-saves"))
+            if not campaign:
+                environment["SRW64_SAVE_LIBRARY"] = str(run.parent / (run.name + ".saves"))
         environment.pop("SRW64_DEBUG_OWNER_FD", None)
         owner = lease = None
         if not detach:
@@ -191,7 +219,7 @@ class Session:
         while time.monotonic() < end:
             state = self.client.call("status")
             if not state.get("mini_stage", {}).get("available"):
-                raise HostError("Launch with mini_stage before entering it")
+                raise HostError("Launch with mini_stage or campaign before entering it")
             if state["intro"].get("title_major") == 3:
                 break
             self.client.call("keys", press="return", hold_ms=100)
