@@ -149,7 +149,8 @@ void exercise(RenderDevice& device, const PixelShaders& shaders, uint32_t w, uin
     auto compositor = std::make_unique<PixelCompositor>(device, shaders);
     auto first = pattern(w,h,1), second = pattern(w,h,2);
     const auto alternate = f == RenderFormat::B8G8R8A8_UNORM ? RenderFormat::R8G8B8A8_UNORM : RenderFormat::B8G8R8A8_UNORM;
-    Draw a(device,*queue,w,h,f), b(device,*queue,w,h,alternate), c(device,*queue,w,h,f);
+    Draw a(device,*queue,w,h,f), b(device,*queue,w,h,alternate), c(device,*queue,w,h,f),
+         d(device,*queue,w,h,f), e(device,*queue,w,h,f);
     auto old_image = compositor->upload(*a.list, first);
     for (const auto bad : {RenderFormat::UNKNOWN, RenderFormat::R16G16B16A16_FLOAT, RenderFormat::BC7_UNORM_SRGB})
         rejects([&] { compositor->draw(*a.list, *a.framebuffer, bad, old_image); });
@@ -175,13 +176,31 @@ void exercise(RenderDevice& device, const PixelShaders& shaders, uint32_t w, uin
     c.retained.push_back(compositor->draw(*c.list,*c.framebuffer,f,old_image)); c.blend(first);
     c.retained.push_back(compositor->draw(*c.list,*c.framebuffer,f,new_image)); c.blend(second);
     c.finish();
+    // A kept canvas: filled whole, then a patch at an offset in a later list; the
+    // second draw shows the patch inside and the first picture around it.
+    auto canvas = compositor->canvas(w, h);
+    rejects([&] { compositor->update(*d.list, canvas, 1, 0, first); });
+    d.retained.push_back(compositor->update(*d.list, canvas, 0, 0, first));
+    d.retained.push_back(compositor->draw(*d.list,*d.framebuffer,f,canvas)); d.blend(first);
+    d.finish();
+    const uint32_t px = w / 3, py = h / 3, pw = std::max(1U, w / 2), ph = std::max(1U, h / 2);
+    Bgra8Surface patch(pw, ph), composite = first;
+    for (uint32_t y = 0; y < ph; ++y) {
+        const auto* row = &second.pixels[(size_t(py + y) * w + px) * 4];
+        std::copy_n(row, size_t(pw) * 4, &patch.pixels[size_t(y) * pw * 4]);
+        std::copy_n(row, size_t(pw) * 4, &composite.pixels[(size_t(py + y) * w + px) * 4]);
+    }
+    e.retained.push_back(compositor->update(*e.list, canvas, px, py, patch));
+    e.retained.push_back(compositor->draw(*e.list,*e.framebuffer,f,canvas)); e.blend(composite);
+    e.finish();
+    canvas.reset();
     const std::weak_ptr<const void> old_ticket = a.retained.front(), new_ticket = b.retained.front();
     old_image.reset(); new_image.reset(); compositor.reset();
     check(!old_ticket.expired() && !new_ticket.expired(), "Resources released before completion");
-    const RenderCommandList* lists[] = {a.list.get(),b.list.get(),c.list.get()};
-    queue->executeCommandLists(lists,3,nullptr,0,nullptr,0,fence.get());
+    const RenderCommandList* lists[] = {a.list.get(),b.list.get(),c.list.get(),d.list.get(),e.list.get()};
+    queue->executeCommandLists(lists,5,nullptr,0,nullptr,0,fence.get());
     queue->waitForCommandFence(fence.get());
-    a.verify(); b.verify(); c.verify();
+    a.verify(); b.verify(); c.verify(); d.verify(); e.verify();
     check(old_ticket.expired() && new_ticket.expired(), "Completed image resources leaked");
 }
 }
@@ -205,7 +224,7 @@ int main() {
         for (auto dimensions : {std::pair{1U,1U},std::pair{3U,5U},std::pair{65U,17U},std::pair{321U,241U},std::pair{800U,600U},std::pair{1100U,760U}})
             for (auto format : {RenderFormat::B8G8R8A8_UNORM, RenderFormat::R8G8B8A8_UNORM})
                 exercise(*device,shaders,dimensions.first,dimensions.second,format);
-        std::cout << "pixel compositor: " << checks << " checks; 36 offscreen readbacks passed\n";
+        std::cout << "pixel compositor: " << checks << " checks; 60 offscreen readbacks passed\n";
         device.reset(); api.reset();
 #if defined(__APPLE__)
         pool->release();

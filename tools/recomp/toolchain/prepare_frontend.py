@@ -74,12 +74,16 @@ def prepare(fetch: bool = False) -> dict:
                             b"#else\n" + swap_format + b"\n#endif")
     # The UI draws through an 8x MSAA copy of the screen it resolves every frame; on a
     # phone GPU at 2670x1200 that dominates the present (docs/design/android-port.md).
+    # Elsewhere 4x: the UI's only non-axis-aligned edges are the slants, and 8x doubled
+    # the window-sized target (265 MB at 4K) for no visible difference.
     msaa = b"        const plume::RenderSampleCounts desired_sample_count = plume::RenderSampleCount::COUNT_8;"
     if source.count(msaa) != 1:
         raise RuntimeError("Pinned renderer sample count no longer matches")
     source = source.replace(msaa, b"#ifdef __ANDROID__\n"
                             b"        const plume::RenderSampleCounts desired_sample_count = plume::RenderSampleCount::COUNT_1;\n"
-                            b"#else\n" + msaa + b"\n#endif")
+                            b"#else\n"
+                            b"        const plume::RenderSampleCounts desired_sample_count = plume::RenderSampleCount::COUNT_4;\n"
+                            b"#endif")
     write_changed(OUTPUT / "ui_renderer.h", header.encode())
     write_changed(OUTPUT / "ui_renderer.cpp", source)
     report = {"schema": "srw64.frontend-adapter.v1", "commit": lock["commit"],
