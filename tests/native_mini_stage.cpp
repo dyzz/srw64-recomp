@@ -11,6 +11,9 @@ static unsigned notices_posted=0;
 namespace srw64::notices {
 void post(const std::string&,const std::string&){++notices_posted;}
 }
+namespace srw64::campaign {
+std::string notice(const std::string& key,uint32_t){return key;}
+}
 // Intro adapter stubs: the test drives the title state and records skip requests.
 static int major_state=-1;static unsigned skip_requests=0;
 namespace srw64::intro {

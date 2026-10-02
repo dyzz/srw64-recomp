@@ -209,7 +209,7 @@ inline void register_hook(uint8_t* ram,recomp_context* ctx) {
         if(found==s.stages.end()) {
             s.active=false;
             log({{"action","unmapped"},{"scene",scene},{"mode",mode}});
-            notices::post("campaign","campaign: scene "+std::to_string(scene)+" is not one of its stages; the original stage loads");
+            notices::post("campaign",campaign::notice("campaign_scene_unmapped",scene));
             return;
         }
         s.image=found->second;s.bound=scene;

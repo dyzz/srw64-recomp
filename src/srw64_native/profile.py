@@ -25,6 +25,8 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "settings_intermission_ui", "settings_intermission_ui_native", "settings_intermission_ui_original", "settings_intermission_ui_note",
             "settings_name_entry_ui", "settings_name_entry_ui_native", "settings_name_entry_ui_original", "settings_name_entry_ui_note",
             "refund_notice", "dialogue_text_status", "dialogue_reload", "font_credit"}
+# Custom campaign notices (src/host/link_page.cpp, src/host/mini_stage.hpp).
+UI_KEYS |= {"campaign_link_blocked", "campaign_scene_unmapped"}
 # The macOS View menu (src/host/macos/app_menu.hpp).
 UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale"}
 # The frame-rate readout (settings show_fps).

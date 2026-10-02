@@ -390,6 +390,8 @@
     "funds_edit_hint_pad": "スクリーンキーボードで資金の数字を入力   ·   {A} 反映   ·   {B} キャンセル",
     "dialogue_text_status": "台詞テキスト：{n} 件を読み込み、エラー {k} 件（詳細は dialogue-report.txt）",
     "dialogue_reload": "台詞を再読み込み",
+    "campaign_link_blocked": "カスタムキャンペーン中はリンクを使えません",
+    "campaign_scene_unmapped": "シーン {n} はこのキャンペーンにないため、元のステージを読み込みました",
     "menu_view": "表示",
     "menu_fullscreen": "フルスクリーン",
     "menu_window_scale": "ウインドウサイズ {n}×",

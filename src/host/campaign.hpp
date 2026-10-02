@@ -40,6 +40,10 @@ inline std::optional<std::string> title(uint32_t scene,const std::string& locale
     return std::nullopt;
 }
 
+// A notice in the current language (UI key; {n} is the scene). native_dialogue.cpp,
+// which holds the catalog.
+std::string notice(const std::string& key,uint32_t scene=0);
+
 // Scenes a stage must not borrow: the 13 "（前）" scenes and 132 shorten the
 // intermission menu (D_801DC6D4) and 109-122 are the Link Battler stages (D_801DCABC).
 inline bool borrowable(uint32_t scene) {

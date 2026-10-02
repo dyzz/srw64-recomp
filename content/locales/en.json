@@ -390,6 +390,8 @@
     "funds_edit_hint_pad": "Type a new funds figure on the on-screen keyboard   ·   {A}: Apply   ·   {B}: Cancel",
     "dialogue_text_status": "Dialogue text: {n} entries loaded, {k} errors (see dialogue-report.txt)",
     "dialogue_reload": "Reload Dialogue Text",
+    "campaign_link_blocked": "Link is not available in a custom campaign",
+    "campaign_scene_unmapped": "Scene {n} is not part of this campaign; the original stage was loaded",
     "menu_view": "View",
     "menu_fullscreen": "Full Screen",
     "menu_window_scale": "Window Size {n}×",
