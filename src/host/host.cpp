@@ -530,6 +530,18 @@ void crash_backtrace(int signal) {
 }
 #endif
 
+#if defined(SRW64_WITH_RT64)
+// The title switched campaign (campaign_library.hpp): the saves are committed, so start
+// the program again on the one asked for; nothing usable asked leaves the exit as it is.
+void relaunch_for_campaign(const srw64::app::Options& options) {
+    const auto user_dir = options.user_dir.empty() ? srw64::app::default_user_dir() : options.user_dir;
+    const auto campaign = srw64::app::take_campaign_switch(user_dir);
+    if (!campaign) return;
+    std::fprintf(stderr, "SRW64_CAMPAIGN_SWITCH %s\n", campaign->empty() ? "main game" : campaign->string().c_str());
+    srw64::app::relaunch(srw64::app::switch_arguments(options, *campaign));
+}
+#endif
+
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
 #ifdef __linux__
@@ -553,13 +565,17 @@ int main(int argc, char** argv) {
             native_rom_variants[0].save_file, srw64::rules::version, {}};
         for (const auto& rule : srw64::rules::catalog)
             game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
-        return srw64::app::run_desktop({}, game.rom_sha256, ui,
+        std::optional<srw64::app::Options> played;
+        const int result = srw64::app::run_desktop({}, game.rom_sha256, ui,
             [&](const srw64::app::Options& options, const srw64::app::DesktopReady& ready) {
+                played = options;
                 return srw64::app::run_standalone(options, game, [&](int count, char** values) {
                     ready(); // The standalone Session owns the lock until run_host returns.
                     return run_host(count, values);
                 });
             }, choose_another);
+        if (result == srw64::app::switch_campaign_exit && played) relaunch_for_campaign(*played);
+        return result;
     }
 #endif
     if (argc == 2 && std::string_view(argv[1]) == "--help") {
@@ -588,7 +604,9 @@ int main(int argc, char** argv) {
                 native_rom_variants[0].save_file, srw64::rules::version, {}};
             for (const auto& rule : srw64::rules::catalog)
                 game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
-            return srw64::app::run_standalone(options, game, run_host);
+            const int result = srw64::app::run_standalone(options, game, run_host);
+            if (result == srw64::app::switch_campaign_exit) relaunch_for_campaign(options);
+            return result;
         } catch (const std::exception& error) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
             return 2;

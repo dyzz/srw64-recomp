@@ -1,7 +1,11 @@
 {
   "schema": "srw64.campaign.v1",
   "id": "srw64.sample",
-  "name": "Sample campaign",
+  "name": {"ja": "サンプルキャンペーン", "zh-Hans": "示例战役", "en": "Sample Campaign"},
+  "description": {"ja": "原作のマップと台詞だけで組んだ四話の試作。二話目の選択で結末が分かれる。",
+                  "zh-Hans": "只用原版地图和台词拼成的四关试作，第二关的选择决定结局。",
+                  "en": "A four-stage test built from the original maps and lines; a choice in stage two decides the ending."},
+  "author": "SRW64",
   "version": "1",
   "note": "C1 check of docs/design/custom-campaign.md: three stages on original maps and original text. Each stage wins on turn 1 by itself (3D4A), so the chain, the intermission between stages, saving and loading, and the branch run without battles. prologue -> crossroads -> (choice 18402) ending-a or ending-b, which end the game with 3D71.",
   "start": "prologue",

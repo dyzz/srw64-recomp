@@ -37,6 +37,20 @@ fs::path content_path(const fs::path& root, const std::string& relative);
 std::string read_text(const fs::path& path, size_t limit);
 // A campaign id names its save directory: 1-64 letters, digits, '.', '_' or '-'.
 bool valid_campaign_id(const std::string& id);
+// Changing campaign from the title (campaign_library.hpp) restarts the program, like
+// changing discs: the host writes the request to this file in the user directory and
+// quits, run_standalone commits the saves and returns switch_campaign_exit, and the
+// caller relaunches with the campaign it names (none: the main game).
+inline constexpr int switch_campaign_exit=75;
+#ifdef _WIN32
+inline constexpr char campaign_dir_separator=';';
+#else
+inline constexpr char campaign_dir_separator=':';
+#endif
+inline fs::path campaign_switch_file(const fs::path& user_dir){return user_dir/"campaign-switch.json";}
+// Replaces this process with the program again, given these arguments (after the program
+// name); throws only when that fails.
+[[noreturn]] void relaunch(const std::vector<std::string>& arguments);
 void atomic_write(const fs::path& path, std::string_view text);
 // A file or directory shipped with the program: Contents/Resources/<name> in a
 // macOS bundle, else <name> beside the executable; empty when there is none.

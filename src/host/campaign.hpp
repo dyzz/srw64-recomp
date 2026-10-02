@@ -13,7 +13,8 @@
 // the campaign's identity and chapter titles; mini_stage.hpp holds the stage images.
 namespace srw64::campaign {
 struct Info {
-    std::string id, name, version;
+    std::string id, version;
+    nlohmann::json name;                           // a string or {locale: string}
     uint32_t start{};                              // scene of the first stage
     std::map<uint32_t,nlohmann::json> titles;      // scene -> title, a string or {locale: string}
     std::map<uint32_t,std::string> keys;           // scene -> stage key, for logs
