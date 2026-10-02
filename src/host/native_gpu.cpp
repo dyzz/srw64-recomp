@@ -393,7 +393,10 @@ bool Program::begin(RenderCommandList* list, RenderFramebuffer* framebuffer, con
         found = pipelines.emplace(key, require(context->device->createGraphicsPipeline(desc), "HD layer pipeline failed")).first;
     }
     const uint32_t params[4] = {data, flags, 0, 0};
-    list->setFramebuffer(framebuffer);
+    // The hook's framebuffer is the one RT64 has bound (switchToDepthWrite just before);
+    // setting it again would end RT64's render pass and start another for every draw, a
+    // full store and load of the picture on a tiler. Draws reopen the pass after a copy.
+    (void)framebuffer;
     list->setGraphicsPipelineLayout(layout.get());
     list->setPipeline(found->second.get());
     list->setGraphicsDescriptorSet(context->data_set.get(), 0);
