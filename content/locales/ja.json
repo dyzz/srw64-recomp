@@ -432,6 +432,8 @@
     "library_no_stats": "戦闘には参加しない人物。",
     "library_no_weapons": "武器なし。",
     "library_work_other": "その他",
+    "library_double_move": "2回行動",
+    "library_spirit_note": "灰色の数字は消費精神ポイント（全員共通）、金色は習得レベル。",
     "library_row": "Library · 図鑑",
     "library_row_note": "全機体・全人物の資料：能力、武器、精神コマンド、特殊技能",
     "menu_view": "表示",

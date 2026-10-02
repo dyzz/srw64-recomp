@@ -32,8 +32,13 @@ constexpr uint32_t weapons_at=0x74E90,weapon_size=0x10,weapon_count=1329;
 // Pilots: actor -> s16 base record (800A6398, 16 bytes: +1..+6 melee, ranged, evade, hit,
 // reaction, skill; +7..+A terrain; +C SP; +F skill bits) and the same index into the
 // skill thresholds (800A6340, three groups of ten, nine read); actor -> s16 spirit record
-// (800A63E0, six (level, command) pairs). Negative maps have none.
+// (800A63E0, six (level, command) pairs). Negative maps have none. The base record's +E
+// is the level of two actions a turn: 800A6238 sets the pilot's +34 to 2 from that level
+// on, 1 below it, and the map takes one from +35 per action. 0 on sub-pilots and fairies.
 constexpr uint32_t stats_map=resident(0x800CA9C4),spirits_map=resident(0x800CA6F4);
+// SP costs: one u8 per command for everyone (D_80217F70, ROM 100AD0; 801E195C takes it
+// from the caster's SP).
+constexpr uint32_t spirit_costs=0x100AD0;
 constexpr uint32_t pilot_stats_at=0x7A1A0,pilot_stats_size=0x10,thresholds_at=0x7B1B0,thresholds_size=30,spirits_at=0x7CFB0,spirits_size=12;
 constexpr unsigned actor_count=361,mapped_actors=360;
 constexpr uint32_t move_icons=overlay(0x801DC8F0),ability_table=overlay(0x801DC8FC);
@@ -158,6 +163,7 @@ json pilot(unsigned actor,int stats,int spirits) {
         const uint32_t at=pilot_stats_at+uint32_t(stats)*pilot_stats_size;
         p["stats"]={{"melee",u8(at+1)},{"ranged",u8(at+2)},{"evade",u8(at+3)},{"hit",u8(at+4)},{"reaction",u8(at+5)},{"skill",u8(at+6)},{"sp",u8(at+0xC)}};
         p["terrain"]=terrain(at+7);
+        if(u8(at+0xE))p["double_move"]=u8(at+0xE);
         // Level L of a skill comes with the L-th smallest of its group's nonzero thresholds
         // (800A80F0 counts those at or below the pilot's level). Actor 284's index 256
         // reads past the table into the spirit records, as the game does.
@@ -182,7 +188,7 @@ json pilot(unsigned actor,int stats,int spirits) {
         json list=json::array();
         for(unsigned n=0;n<6;++n) {
             const uint32_t at=spirits_at+uint32_t(spirits)*spirits_size+n*2;
-            if(const unsigned level=u8(at);level && level<100 && u8(at+1)<30)list.push_back({{"name",text(uint16_t(text_spirits+u8(at+1)))},{"level",level}});
+            if(const unsigned level=u8(at);level && level<100 && u8(at+1)<30)list.push_back({{"name",text(uint16_t(text_spirits+u8(at+1)))},{"level",level},{"cost",u8(spirit_costs+u8(at+1))}});
         }
         p["spirits"]=list;
     }

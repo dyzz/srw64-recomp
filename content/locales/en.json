@@ -432,6 +432,8 @@
     "library_no_stats": "Does not fight.",
     "library_no_weapons": "No weapons.",
     "library_work_other": "Other",
+    "library_double_move": "Two actions",
+    "library_spirit_note": "Grey: SP cost, the same for everyone. Gold: the level it is learned at.",
     "library_row": "Library",
     "library_row_note": "Every unit and character: stats, weapons, spirit commands and skills",
     "menu_view": "View",
