@@ -431,6 +431,7 @@
     "library_growth_note": "Stats at level 1; the green figures are the gain per level.",
     "library_no_stats": "Does not fight.",
     "library_no_weapons": "No weapons.",
+    "library_work_other": "Other",
     "library_row": "Library",
     "library_row_note": "Every unit and character: stats, weapons, spirit commands and skills",
     "menu_view": "View",

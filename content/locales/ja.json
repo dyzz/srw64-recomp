@@ -431,6 +431,7 @@
     "library_growth_note": "レベル1の能力値。緑の数字はレベルアップごとの成長。",
     "library_no_stats": "戦闘には参加しない人物。",
     "library_no_weapons": "武器なし。",
+    "library_work_other": "その他",
     "library_row": "Library · 図鑑",
     "library_row_note": "全機体・全人物の資料：能力、武器、精神コマンド、特殊技能",
     "menu_view": "表示",

@@ -306,6 +306,8 @@ button.lib-item {display:block; width:100%; box-sizing:border-box; margin:0; pad
 button.lib-item.on {color:#ffffff; background-color:#23506a; border-color:#3fd0ff;}
 button.lib-item:focus, .pad button.lib-item:focus {color:#ffd75e; border-color:#ffd75e;}
 body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.pointer button.lib-item:hover {background-color:#3fd0ff26;}
+.lib-group {margin:10dp 0 2dp; padding:2dp 10dp; font-size:12dp; font-weight:bold; color:#3fd0ff; border-bottom:1dp #3fd0ff59; white-space:nowrap; overflow:hidden;}
+.lib-group.first {margin-top:0;}
 .lib-detail {flex:1 1 0; min-width:0; overflow-y:auto; padding-right:8dp;}
 .lib-detail h2 {margin:14dp 0 6dp; padding-bottom:3dp; font-size:14dp; color:#3fd0ff; border-bottom:1dp #3fd0ff59;}
 .lib-head {display:flex; gap:16dp;}
@@ -876,15 +878,22 @@ std::string library_terrain(const json& L,const std::string& letters) {
     for(unsigned n=0;n<4 && n<letters.size();++n)value+=(n?"  ":"")+L.value(keys[n],std::string())+letters.substr(n,1);
     return value;
 }
+// The work (and a unit's model number) under the name.
+std::string library_work(const json& entry,const std::string& before) {
+    std::string line=before;
+    for(const char* key:{"work_name","model"})if(entry.contains(key))line+=(line.empty()?"":"  ·  ")+entry.at(key).get<std::string>();
+    if(!entry.contains("work_name"))line+=(line.empty()?"":"  ·  ")+localization::catalog().ui("library_work_other");
+    return "<div class='lib-sub'>"+escape(line)+"</div>";
+}
 std::string library_unit(const json& u,const json& L,const json& W) {
     const auto l=[&](const char* key){return L.value(key,std::string());};
     std::string types;
     for(const auto& t:u.at("types"))types+=(types.empty()?"":"・")+t.get<std::string>();
-    std::string body="<div class='lib-head'><div class='lib-art'>"+library_art(u,140)+"</div><div class='lib-title'><div class='lib-name fit'>"+escape(u.value("name",std::string()))+"</div>"
-        "<div class='lib-sub'>"+escape(l("type"))+"  "+escape(types)+"</div><div class='lib-stats'>"+
+    std::string body="<div class='lib-head'><div class='lib-art'>"+library_art(u,140)+"</div><div class='lib-title'><div class='lib-name fit'>"+escape(u.value("name",std::string()))+"</div>"+
+        library_work(u,"")+"<div class='lib-stats'>"+
         library_stat(l("hp"),library_number(u["hp"]))+library_stat(l("en"),library_number(u["en"]))+library_stat(l("move"),library_number(u["move"]))+
         library_stat(l("mobility"),library_number(u["mobility"]))+library_stat(l("armor"),library_number(u["armor"]))+library_stat(l("limit"),library_number(u["limit"]))+
-        library_stat(l("size"),u.value("size",std::string()))+library_stat(l("repair"),library_number(u["repair"]))+"</div>"+
+        library_stat(l("size"),u.value("size",std::string()))+library_stat(l("repair"),library_number(u["repair"]))+library_stat(l("type"),types)+"</div>"+
         "<div class='lib-sub' style='margin-top:6dp;'>"+escape(l("terrain"))+"   "+escape(library_terrain(L,u.value("terrain",std::string())))+"</div></div></div>";
     body+="<h2>"+escape(l("abilities"))+"</h2><div class='lib-chips'>";
     for(const auto& a:u.at("abilities"))body+="<span>"+escape(a.get<std::string>())+"</span>";
@@ -912,8 +921,8 @@ std::string library_unit(const json& u,const json& L,const json& W) {
 }
 std::string library_pilot(const json& p,const json& L) {
     const auto l=[&](const char* key){return L.value(key,std::string());};
-    std::string body="<div class='lib-head'><div class='lib-art'>"+library_art(p,140)+"</div><div class='lib-title'><div class='lib-name fit'>"+escape(p.value("name",std::string()))+"</div>"
-        "<div class='lib-sub'>"+(p.value("full_name",std::string())==p.value("name",std::string())?std::string():escape(p.value("full_name",std::string())))+"</div>";
+    std::string body="<div class='lib-head'><div class='lib-art'>"+library_art(p,140)+"</div><div class='lib-title'><div class='lib-name fit'>"+escape(p.value("name",std::string()))+"</div>"+
+        library_work(p,p.value("full_name",std::string())==p.value("name",std::string())?std::string():p.value("full_name",std::string()));
     if(!p.contains("stats"))return body+"</div></div><p class='lib-note'>"+label("library_no_stats")+"</p>";
     const auto& s=p.at("stats");
     body+="<div class='lib-stats'>"+library_stat(l("melee"),library_number(s["melee"]),"+1")+library_stat(l("ranged"),library_number(s["ranged"]),"+1")+
@@ -923,6 +932,7 @@ std::string library_pilot(const json& p,const json& L) {
         "<p class='lib-note'>"+label("library_growth_note")+"</p></div></div>";
     body+="<h2>"+escape(l("spirits"))+"</h2><div class='lib-chips'>";
     for(const auto& sp:p.value("spirits",json::array()))body+="<span>"+escape(sp.value("name",std::string()))+"<span>Lv"+std::to_string(sp.value("level",0u))+"</span></span>";
+    if(p.value("spirits",json::array()).empty())body+="<p class='lib-note'>-</p>";
     body+="</div>";
     const auto& skills=p.value("skills",json::array());
     if(!skills.empty()) {
@@ -949,7 +959,15 @@ std::string library_panel() {
         body+=button("lib-tab:"+std::to_string(i),label("library_tab_"+std::string(tabs[i]))+"  ("+std::to_string(library::contents().at(tabs[i]).size())+")",i==library_tab,false,"set-tab");
     body+="</div><div class='lib-main'><div id='lib-list' class='lib-list'>";
     const auto& entries=library_entries();
-    for(size_t i=0;i<entries.size();++i)body+=button("lib-item:"+std::to_string(i),escape(entries[i].value("name",std::string())),i==library_index[library_tab],false,"lib-item");
+    // A heading over each work's entries.
+    int work=-2;
+    for(size_t i=0;i<entries.size();++i) {
+        if(const int next=entries[i].value("work",-1);next!=work) {
+            body+="<div class='lib-group"+std::string(work==-2?" first":"")+"'>"+escape(next<0?localization::catalog().ui("library_work_other"):entries[i].value("work_name",std::string()))+"</div>";
+            work=next;
+        }
+        body+=button("lib-item:"+std::to_string(i),escape(entries[i].value("name",std::string())),i==library_index[library_tab],false,"lib-item");
+    }
     body+="</div><div id='lib-detail' class='lib-detail'>"+library_detail()+"</div></div>"
         "<div class='set-foot'><div class='set-hint'>"+label("library_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
     return body;
@@ -965,7 +983,12 @@ void library_select(unsigned index,bool focus=true) {
     library_index[library_tab]=index;
     if(auto* item=settings_doc->GetElementById("lib-item:"+std::to_string(index))) {
         item->SetClass("on",true);
-        if(focus){item->Focus();item->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));}
+        if(focus) {
+            item->Focus();
+            // A work's first entry brings its heading into view too.
+            if(auto* heading=item->GetPreviousSibling();heading && heading->IsClassSet("lib-group"))heading->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
+            item->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
+        }
     }
     if(!changed)return;
     if(auto* detail=settings_doc->GetElementById("lib-detail")){detail->SetInnerRML(library_detail());detail->SetScrollTop(0);}
@@ -3166,6 +3189,11 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     // The guest cover is workload keyed. Do not put a newly-opened page over an
     // older game workload that preceded interception of the guest name grid.
     if(names::request().visible && !name_cover)return false;
+    // No page shown: skip the renderer, whose start and end clear, resolve and copy a
+    // window-sized MSAA target, and leave the next lock_ui free of this GPU frame.
+    bool shown=false;
+    for(int i=0;i<context->GetNumDocuments() && !shown;++i)shown=context->GetDocument(i)->IsVisible();
+    if(!shown)return false;
     renderer->start(list,pixels_w,pixels_h);list->setFramebuffer(framebuffer);
     list->setViewports(plume::RenderViewport{0,0,float(pixels_w),float(pixels_h)});context->Render();renderer->end(list,framebuffer);
     in_flight=true;return true;
