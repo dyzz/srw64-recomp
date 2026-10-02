@@ -428,7 +428,7 @@
     "library_tab_pilots": "Characters",
     "library_hint": "{L} / {R} Units / Characters   ·   {KeyUp}{KeyDown} Select   ·   {KeyLeft}{KeyRight} Scroll details   ·   {Esc} / {B} Close",
     "library_hint_pad": "{L} / {R} Units / Characters   ·   {DUpDown} Select   ·   {DLeftRight} Scroll details   ·   {B} Close",
-    "library_growth_note": "Stats at level 1; the green figures are the gain per level.",
+    "library_growth_note": "White: level 1. Blue: level 99. Everyone gains the same each level.",
     "library_no_stats": "Does not fight.",
     "library_no_weapons": "No weapons.",
     "library_work_other": "Other",
