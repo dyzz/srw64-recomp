@@ -9,9 +9,11 @@
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
+#include <optional>
 #include <random>
 #include <stdexcept>
 #include <system_error>
+#include <vector>
 #ifdef _WIN32
 #ifndef NOMINMAX
 #define NOMINMAX
@@ -37,6 +39,45 @@ std::string token() {
     std::ostringstream text;
     text<<std::hex<<std::chrono::system_clock::now().time_since_epoch().count()<<'-'<<std::random_device{}();
     return text.str();
+}
+// The runtime's copy of the ROM in a run's data (recomp::register_config_path), about 32 MB.
+void remove_rom_copies(const fs::path& run) {
+    std::error_code error;
+    for (fs::directory_iterator file(run/"runtime-data",error),end;!error && file!=end;file.increment(error))
+        if (file->path().extension()==".z64" && file->is_regular_file(error) && !file->is_symlink(error))
+            fs::remove(file->path(),error);
+}
+// A session directory's name: token(), the creation time in hex, '-', a random number.
+std::optional<uint64_t> session_time(const std::string& name) {
+    const auto dash=name.find('-');
+    if (dash==0 || dash==std::string::npos || name.size()>80 ||
+        !std::all_of(name.begin(),name.end(),[](char c){return std::isxdigit(uint8_t(c)) || c=='-';})) return {};
+    uint64_t value=0;
+    const auto [end,error]=std::from_chars(name.data(),name.data()+dash,value,16);
+    if (error!=std::errc() || end!=name.data()+dash) return {};
+    return value;
+}
+// Each run leaves its session (logs, the card it started from, the runtime's ROM copy):
+// only the latest few stay, and the one last-session.txt names (the card from before
+// saves/, which migrate_sessions reads). The ones kept lose their ROM copies.
+void prune_sessions(const fs::path& user_dir, const fs::path& current) {
+    constexpr size_t keep=3;
+    std::string pointed;
+    try { pointed=read_text(user_dir/"last-session.txt",128); } catch (const std::exception&) {}
+    while (!pointed.empty() && (pointed.back()=='\n' || pointed.back()=='\r')) pointed.pop_back();
+    std::vector<std::pair<uint64_t,fs::path>> older;
+    std::error_code error;
+    for (fs::directory_iterator entry(user_dir/"sessions",error),end;!error && entry!=end;entry.increment(error)) {
+        const auto time=session_time(entry->path().filename().string());
+        if (!time || entry->path()==current || entry->is_symlink(error) || !entry->is_directory(error)) continue;
+        older.emplace_back(*time,entry->path());
+    }
+    std::sort(older.begin(),older.end(),[](const auto& a,const auto& b){return a.first>b.first;});
+    for (size_t i=0;i<older.size();++i) {
+        const auto& path=older[i].second;
+        if (i<keep || path.filename()==pointed) remove_rom_copies(path/"run");
+        else fs::remove_all(path,error);
+    }
 }
 void require_save(const fs::path& path) {
     if (!fs::is_regular_file(path) || fs::is_symlink(path) || fs::file_size(path)!=32768)
@@ -356,6 +397,7 @@ Session::Session(const Options& options) {
         directory.clear();
     }
     if (directory.empty()) throw std::runtime_error("Cannot allocate a unique play session");
+    prune_sessions(root,directory);   // under the user lock: no other game uses them
     if (source) {
         initial=directory/"initial.bin";
         fs::copy_file(*source,*initial);
@@ -364,6 +406,7 @@ Session::Session(const Options& options) {
     }
 }
 Session::~Session()=default;
+void Session::release_run() const { remove_rom_copies(output_dir()); }
 bool Session::commit_save(const fs::path& host_save) {
     if (published) throw std::runtime_error("Session already committed");
     if (!fs::exists(host_save)) return false;

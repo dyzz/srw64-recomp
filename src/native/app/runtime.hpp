@@ -79,6 +79,9 @@ public:
     const fs::path& session_dir() const { return directory; }
     fs::path output_dir() const { return directory/"run"; }
     const std::optional<fs::path>& initial_save() const { return initial; }
+    // After the host returns: drops what the run no longer needs (the runtime's ROM copy).
+    // Older sessions are pruned when the next one starts.
+    void release_run() const;
     // Call only after the host has joined its worker threads and returned success.
     // No save means no change to the latest committed session, including --new-game.
     // The card is published to saves/cartridge.sram (save_library.hpp).

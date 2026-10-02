@@ -216,6 +216,40 @@ void sessions() {
     options.new_game=true;Session unlocked(options);
     check(!unlocked.initial_save(),"stale file prevented new game");
 }
+// Older sessions are pruned when one starts: the latest three and the one last-session.txt
+// names stay, without the runtime's ROM copies; anything not named like a session stays.
+void pruning() {
+    Temporary temp;
+    Options options;options.user_dir=temp.path/"player";
+    const auto sessions=options.user_dir/"sessions";
+    std::vector<std::string> names;
+    for(int i=1;i<=6;++i) {
+        char name[32];std::snprintf(name,sizeof name,"%x-%d",0x18f00000+i,7-i);  // creation order
+        names.push_back(name);
+        fs::create_directories(sessions/name/"run/runtime-data/saves");
+        atomic_write(sessions/name/"run/runtime-data/srw64-jp-rev0.z64","rom");
+        atomic_write(sessions/name/"run/runtime-data/saves/srw64-jp-rev0.bin","card");
+    }
+    fs::create_directories(sessions/"notes");
+    fs::create_directories(options.user_dir/"saves");
+    atomic_write(options.user_dir/"saves/cartridge.sram",card('p'));
+    atomic_write(options.user_dir/"last-session.txt",names[0]+"\n");
+    {
+        Session session(options);
+        for(const int i:{0,3,4,5}) {
+            check(fs::is_directory(sessions/names[i]),"a kept session was removed");
+            check(!fs::exists(sessions/names[i]/"run/runtime-data/srw64-jp-rev0.z64"),"a kept session kept its ROM copy");
+            check(fs::exists(sessions/names[i]/"run/runtime-data/saves/srw64-jp-rev0.bin"),"a kept session lost its card");
+        }
+        for(const int i:{1,2})check(!fs::exists(sessions/names[i]),"an old session was not pruned");
+        check(fs::is_directory(sessions/"notes"),"a directory not named like a session was removed");
+        check(fs::is_directory(session.session_dir()),"the new session was pruned");
+        fs::create_directories(session.output_dir()/"runtime-data");
+        atomic_write(session.output_dir()/"runtime-data/srw64-jp-rev0.z64","rom");
+        session.release_run();
+        check(!fs::exists(session.output_dir()/"runtime-data/srw64-jp-rev0.z64"),"the run kept its ROM copy");
+    }
+}
 void environment() {
     set_environment("SRW64_DEBUG","1");set_environment("SRW64_SCRIPT_INJECT","1");
     set_environment("SRW64_TEST_FUTURE_SWITCH","yes");set_environment("SRW_APP_TEST_UNRELATED","keep");
@@ -227,6 +261,6 @@ void environment() {
 }
 }
 int main() {
-    try { hashing();parser_and_paths();sessions();environment();std::cout<<checks<<" checks passed\n";return 0; }
+    try { hashing();parser_and_paths();sessions();pruning();environment();std::cout<<checks<<" checks passed\n";return 0; }
     catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}
 }
