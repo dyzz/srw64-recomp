@@ -3,6 +3,8 @@
 #include "script_inject.hpp"
 #include "native_intro.hpp"
 #include "state_probe.hpp"
+#include "campaign.hpp"
+#include "notices.hpp"
 #include "json/json.hpp"
 #include <filesystem>
 #include <fstream>
@@ -19,6 +21,10 @@
 // and rebuilds the pointer table the registration walks. The map index chosen by
 // 80209D6C is replaced afterwards when the image names one. ROM, catalog and the
 // other scenes are untouched; without SRW64_MINI_STAGE nothing runs.
+//
+// A campaign (SRW64_CAMPAIGN, docs/design/custom-campaign.md) is a set of images,
+// one per borrowed scene: each registration takes the image of the scene being
+// registered, so 3D4B chains stages and Continue, retries and loads find theirs.
 namespace srw64::mini_stage {
 using script_trace::read;
 using guest::write8;
@@ -35,7 +41,8 @@ struct Image {
 struct State {
     std::mutex mutex;
     std::filesystem::path directory;
-    std::optional<Image> image;
+    std::optional<Image> image;      // the stage image in use (a campaign's: the last registered)
+    std::map<uint32_t,Image> stages; // a campaign's images by the scene each borrows
     std::optional<uint32_t> bound;   // scene index the image is bound to
     bool ready{};
     std::string waiting_reason;
@@ -70,8 +77,15 @@ inline bool quick_start() {
 }
 inline nlohmann::json snapshot() {
     auto& s=state();std::lock_guard lock(s.mutex);
-    return {{"available",bool(s.image)},{"name",s.image?s.image->name:""},{"entering",s.armed},
+    nlohmann::json result={{"available",bool(s.image)},{"name",s.image?s.image->name:""},{"entering",s.armed},
         {"active",s.active},{"ready",s.ready},{"waiting_reason",s.waiting_reason},{"applied",s.applied}};
+    if(const auto info=campaign::info()) {
+        nlohmann::json scenes=nlohmann::json::array();
+        for(const auto& [scene,key]:info->keys)scenes.push_back({{"scene",scene},{"stage",key}});
+        result["campaign"]={{"id",info->id},{"name",info->name},{"version",info->version},{"start",info->start},{"stages",scenes},
+            {"scene",s.bound?nlohmann::json(*s.bound):nlohmann::json()}};
+    }
+    return result;
 }
 
 inline void log(const nlohmann::json& fields) {
@@ -120,12 +134,49 @@ inline Image parse(const nlohmann::json& document) {
     return image;
 }
 
+// A compiled campaign (srw64.campaign-image.v1, mini_stage.py campaign): every
+// stage's image and the scene it borrows. Throws on a scene no stage may borrow.
+inline std::pair<campaign::Info,std::map<uint32_t,Image>> parse_campaign(const nlohmann::json& document) {
+    if(document.value("schema","")!="srw64.campaign-image.v1")throw std::runtime_error("campaign: unsupported schema");
+    campaign::Info info;
+    info.id=document.at("id").get<std::string>();info.name=document.value("name",nlohmann::json(info.id));info.version=document.value("version","");
+    info.start=document.at("start_scene").get<uint32_t>();
+    std::map<uint32_t,Image> stages;
+    for(const auto& stage:document.at("stages")) {
+        const uint32_t scene=stage.at("scene").get<uint32_t>();
+        if(!campaign::borrowable(scene))throw std::runtime_error("campaign: scene "+std::to_string(scene)+" cannot be borrowed");
+        if(stages.count(scene))throw std::runtime_error("campaign: two stages borrow scene "+std::to_string(scene));
+        auto image=parse(stage.at("image"));
+        image.slot=scene;
+        stages.emplace(scene,std::move(image));
+        info.keys[scene]=stage.at("key").get<std::string>();
+        if(stage.contains("title") && !stage.at("title").is_null())info.titles[scene]=stage.at("title");
+    }
+    if(!stages.count(info.start))throw std::runtime_error("campaign: no stage borrows the start scene");
+    return {std::move(info),std::move(stages)};
+}
+// Caller holds the state lock.
+inline void use_campaign(State& s,campaign::Info info,std::map<uint32_t,Image> stages) {
+    s.stages=std::move(stages);
+    s.image=s.stages.at(info.start);
+    campaign::set(std::move(info));
+}
+
 inline void configure(const std::filesystem::path& directory) {
     const char* path=std::getenv("SRW64_MINI_STAGE");
     auto& s=state();
     std::lock_guard lock(s.mutex);
     s.directory=directory; // runtime loads (load_file) log here as well
     if(const char* direct=std::getenv("SRW64_MINI_STAGE_DIRECT"))s.direct=std::string_view(direct)!="0";
+    if(const char* campaign_path=std::getenv("SRW64_CAMPAIGN");campaign_path && *campaign_path) {
+        std::ifstream file(campaign_path);
+        if(!file)throw std::runtime_error(std::string("campaign image unreadable: ")+campaign_path);
+        nlohmann::json document;file>>document;
+        auto [info,stages]=parse_campaign(document);
+        log({{"action","campaign-loaded"},{"path",campaign_path},{"id",info.id},{"stages",stages.size()},{"start",info.start}});
+        use_campaign(s,std::move(info),std::move(stages));
+        return;
+    }
     if(!path || !*path)return;
     std::ifstream file(path);
     if(!file)throw std::runtime_error(std::string("mini stage image unreadable: ")+path);
@@ -151,6 +202,18 @@ inline void register_hook(uint8_t* ram,recomp_context* ctx) {
     std::lock_guard lock(s.mutex);
     if(!s.image)return;
     const uint32_t scene=read(ram,0x8010F5F0,1), mode=uint32_t(ctx->r4), table=uint32_t(ctx->r6), original_aux=uint32_t(ctx->r7);
+    if(!s.stages.empty()) {
+        // A campaign: the scene names the stage. A scene no stage borrows loads the
+        // original, which means a 3D4B points outside the campaign; say so.
+        const auto found=s.stages.find(scene);
+        if(found==s.stages.end()) {
+            s.active=false;
+            log({{"action","unmapped"},{"scene",scene},{"mode",mode}});
+            notices::post("campaign",campaign::notice("campaign_scene_unmapped",scene));
+            return;
+        }
+        s.image=found->second;s.bound=scene;
+    }
     if(!s.bound)s.bound=s.image->slot?*s.image->slot:scene;
     if(scene!=*s.bound){s.active=false;log({{"action","skipped"},{"scene",scene},{"bound",*s.bound},{"mode",mode}});return;}
     const auto& image=*s.image;
@@ -159,8 +222,12 @@ inline void register_hook(uint8_t* ram,recomp_context* ctx) {
     for(size_t i=0;i<image.pointers.size();++i)write32(ram,table+uint32_t(i*4),image.pointers[i]);
     write32(ram,table+uint32_t(image.pointers.size()*4),0xFFFFFFFF);
     ctx->r7=int32_t(aux_block); // deployment base the registration stores at engine+0
+    // Direct entry set the episode count to 1 only so 801C2B9C would take the scene as
+    // given; it has done so by now. A campaign starts from 0 as New Game does, so its
+    // first clear (3D4A adds one) reads 第1話 in the intermission and the saves.
+    if(!s.stages.empty() && s.direct_done && !s.applied && read(ram,0x8010F5EF,1)==1)write8(ram,0x8010F5EF,0);
     s.active=true;s.ready=false;++s.applied;
-    log({{"action","applied"},{"scene",scene},{"mode",mode},{"pointer_table",table},{"original_aux",original_aux},
+    log({{"action","applied"},{"scene",scene},{"stage",s.image->name},{"mode",mode},{"pointer_table",table},{"original_aux",original_aux},
          {"events",image.pointers.size()},{"event_bytes",image.events.size()},{"aux_bytes",image.aux.size()},{"applied",s.applied}});
 }
 
@@ -249,7 +316,8 @@ inline bool take_direct_entry() {
 inline void direct_scene(uint8_t* ram) {
     auto& s=state();
     std::lock_guard lock(s.mutex);
-    const uint32_t scene=s.image->slot?*s.image->slot:0;
+    const auto info=campaign::info();
+    const uint32_t scene=info?info->start:s.image->slot?*s.image->slot:0;
     write8(ram,0x8010F5F0,uint8_t(scene));write8(ram,0x8010F5EF,1);
     log({{"action","direct-entry"},{"scene",scene}});
 }
@@ -259,7 +327,9 @@ inline void direct_scene(uint8_t* ram) {
 // source (srw64.mini-stage.v1) goes through SRW64_MINI_STAGE_COMPILER first,
 // the launcher's shell-quoted "python mini_stage.py" prefix. Throws with a
 // message fit for a notice.
-inline std::string load_file(const std::filesystem::path& file) {
+// With enter=false the stage is only made ready: the title then offers it (a campaign
+// from the MOD manager waits for 開始 or a save to be loaded).
+inline std::string load_file(const std::filesystem::path& file,bool enter=true) {
     if(srw64::intro::title_major()!=3)throw std::runtime_error("mini stage: open stage files from the title menu");
     const auto read_json=[](const std::filesystem::path& path) {
         std::ifstream input(path);
@@ -268,7 +338,8 @@ inline std::string load_file(const std::filesystem::path& file) {
     };
     auto document=read_json(file);
     static unsigned loads=0;
-    if(document.value("schema","")=="srw64.mini-stage.v1") {
+    const auto schema=document.value("schema","");
+    if(schema=="srw64.mini-stage.v1" || schema=="srw64.campaign.v1") {
         const char* compiler=std::getenv("SRW64_MINI_STAGE_COMPILER");
         if(!compiler || !*compiler)throw std::runtime_error("mini stage: a stage source needs SRW64_MINI_STAGE_COMPILER; compile it with mini_stage.py first");
         const auto quote=[](const std::string& text){std::string out="'";for(char c:text){if(c=='\'')out+="'\\''";else out+=c;}return out+"'";};
@@ -276,19 +347,37 @@ inline std::string load_file(const std::filesystem::path& file) {
         {auto& s=state();std::lock_guard lock(s.mutex);directory=s.directory;}
         if(directory.empty())directory=std::filesystem::temp_directory_path();
         const auto image=directory/("runtime-mini-stage-"+std::to_string(++loads)+".json");
-        const auto command=std::string(compiler)+" compile "+quote(file.string())+" --out "+quote(image.string())+" > "+quote((directory/"runtime-mini-stage-compile.log").string())+" 2>&1";
+        const auto command=std::string(compiler)+(schema=="srw64.campaign.v1"?" campaign ":" compile ")+quote(file.string())+" --out "+quote(image.string())+" > "+quote((directory/"runtime-mini-stage-compile.log").string())+" 2>&1";
         if(std::system(command.c_str())!=0)throw std::runtime_error("mini stage: compile failed, see runtime-mini-stage-compile.log");
         document=read_json(image);
     }
-    auto parsed=parse(document);
     auto& s=state();
-    std::lock_guard lock(s.mutex);
-    s.image=std::move(parsed);
+    std::unique_lock lock(s.mutex,std::defer_lock);
+    if(document.value("schema","")=="srw64.campaign-image.v1") {
+        auto [info,stages]=parse_campaign(document);
+        lock.lock();
+        use_campaign(s,std::move(info),std::move(stages));
+    } else {
+        auto parsed=parse(document);
+        lock.lock();
+        s.stages.clear();campaign::set(std::nullopt);
+        s.image=std::move(parsed);
+    }
     s.bound.reset();s.active=s.ready=false;s.waiting_reason.clear();s.applied=0;
     s.armed=s.in_sequence=s.direct_done=false;s.skips=s.start_samples=0;
-    s.hotkey_vi=srw64_current_vi();
+    s.hotkey_vi=enter?srw64_current_vi():0;
     log({{"action","loaded"},{"source","runtime"},{"path",file.string()},{"name",s.image->name},{"events",s.image->pointers.size()}});
     return s.image->name;
+}
+
+// Back to the main game from a campaign (campaign_switch.cpp): no stage is substituted.
+inline void clear_campaign() {
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    s.stages.clear();s.image.reset();campaign::set(std::nullopt);
+    s.bound.reset();s.active=s.ready=false;s.waiting_reason.clear();s.applied=0;
+    s.armed=s.in_sequence=s.direct_done=false;s.skips=s.start_samples=0;s.hotkey_vi=0;
+    log({{"action","campaign-cleared"}});
 }
 
 // Hotkey (window thread): remembered until the VI thread sees the main menu.

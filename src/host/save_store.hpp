@@ -18,6 +18,13 @@ namespace fs=std::filesystem;
 void configure(const fs::path& directory,const std::optional<fs::path>& initial);
 bool enabled();
 fs::path library_directory();
+// The library the program started with (SRW64_SAVE_LIBRARY): the main game's.
+fs::path main_library();
+// A custom campaign keeps its own library (docs/design/custom-campaign.md §8): from now
+// on slots, autosaves and the published card are `root`'s, starting from its card.
+void switch_library(const fs::path& root);
+// The library's card file (cartridge.sram), empty without a library.
+fs::path cartridge_path();
 // 80090E5C (game thread): true when the store answered the transfer itself.
 bool transfer(uint8_t* ram,unsigned direction,uint32_t cart,uint32_t buffer,uint32_t length);
 // While it lives, the game's slot `index` (0/1) is the slot record `record`.

@@ -1,0 +1,59 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "sample-ending-b",
+  "note": "Scene 4's map (21) and enemies (group 1); マナミ and 万丈 come in through groups 6 and 7 at the positions of the scene's own group 2. Turn 1 wins; the ending event plays the ending (3D71).",
+  "map": 21,
+  "deployments_from": "base:stage_auxiliary:001e4a38",
+  "deployments": [
+    {"template": "base:stage_deployments:001e43b8", "group": 6, "x": 26, "y": 7, "note": "マナミ / スイームルグ"},
+    {"template": "base:stage_deployments:001e43d4", "group": 7, "x": 25, "y": 8, "note": "万丈 / ダイターン3"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D32", "args": [0]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D3E", "args": [17684]},
+        {"op": "3D3B", "args": [0]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D3A", "args": [27]},
+        {"op": "3D45", "args": [6]},
+        {"op": "3D45", "args": [7]},
+        {"op": "3D48"}
+      ]
+    },
+    {
+      "name": "turn-1-player-start",
+      "type": 0,
+      "header": [0, 1, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D4A"}
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3D32", "args": [1]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D3E", "args": [17685]},
+        {"op": "3D47"},
+        {"op": "3D71", "note": "the game's ending, on the world map"}
+      ]
+    }
+  ]
+}

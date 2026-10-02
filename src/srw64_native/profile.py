@@ -25,6 +25,14 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "settings_intermission_ui", "settings_intermission_ui_native", "settings_intermission_ui_original", "settings_intermission_ui_note",
             "settings_name_entry_ui", "settings_name_entry_ui_native", "settings_name_entry_ui_original", "settings_name_entry_ui_note",
             "refund_notice", "dialogue_text_status", "dialogue_reload", "font_credit"}
+# Custom campaign notices (src/host/link_page.cpp, src/host/mini_stage.hpp).
+UI_KEYS |= {"campaign_link_blocked", "campaign_scene_unmapped"}
+# The MOD manager and its extra scenarios (DLC) page (src/native/ui/frontend.cpp).
+UI_KEYS |= {"dlc_leave", "dlc_start", "dlc_note", "dlc_empty", "dlc_enter", "dlc_stages", "dlc_saves", "dlc_new", "dlc_entered", "dlc_left",
+            "mod_open", "mod_title", "mod_page_campaigns", "mod_page_art", "mod_page_dialogue", "mod_page_audio", "mod_hint",
+            "mod_playing", "mod_current", "mod_title_only", "mod_art_installed", "mod_art_missing", "mod_art_note",
+            "mod_dialogue_reload", "mod_dialogue_reload_note", "mod_dialogue_locale", "mod_dialogue_note", "mod_audio_note",
+            "mod_row", "mod_row_note"}
 # The macOS View menu (src/host/macos/app_menu.hpp).
 UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale"}
 # The frame-rate readout (settings show_fps).

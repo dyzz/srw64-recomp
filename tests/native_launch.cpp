@@ -187,7 +187,30 @@ void installed_hd() {
     fs::remove(hd/"hd.json");
     rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"an incomplete HD pack was accepted");
 }
+// Custom campaigns (campaign_switch.hpp): the main game offers the installed ones and where
+// each keeps its saves; a start in one (--campaign) plays from its own library.
+void campaigns() {
+    Fixture f;
+    check(run_standalone(f.options,f.game,[&](int,char**) {
+        check(fs::path(env("SRW64_SAVE_LIBRARY"))==f.options.user_dir/"saves","main game's saves");
+        check(fs::path(env("SRW64_CAMPAIGN_SAVES"))==f.options.user_dir/"campaigns","campaign saves root");
+        check(env("SRW64_CAMPAIGN_DIRS").starts_with((f.options.user_dir/"campaigns").string()),"installed campaigns not offered");
+        check(env("SRW64_CAMPAIGN").empty(),"a campaign without --campaign");
+        return 0;
+    })==0,"main game launch failed");
+    const auto image=f.root/"sample.json";
+    atomic_write(image,json({{"schema","srw64.campaign-image.v1"},{"id","srw64.sample"},{"stages",json::array()}}).dump());
+    f.options.campaign=image;
+    check(run_standalone(f.options,f.game,[&](int,char**) {
+        check(env("SRW64_CAMPAIGN")==image.string(),"campaign not passed to the host");
+        check(fs::path(env("SRW64_SAVE_LIBRARY"))==f.options.user_dir/"campaigns"/"srw64.sample"/"saves","campaign saves not apart");
+        return 0;
+    })==0,"campaign launch failed");
+    atomic_write(f.root/"bad.json",json({{"schema","srw64.campaign-image.v1"},{"id","../escape"}}).dump());
+    f.options.campaign=f.root/"bad.json";
+    rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"a campaign id with a path was accepted");
 }
-int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();
+}
+int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
     std::cout<<checks<<" bootstrap checks passed\n";return 0;}
 catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}}
