@@ -41,8 +41,8 @@ void verify_raster(const Frame& frame,uint32_t width,uint32_t height) {
 }
 // Patches applied to a kept canvas give exactly the full raster, and nothing is drawn
 // outside the reported extent. Returns the patched area.
-size_t verify_incremental(IncrementalRaster& raster,srw64::presentation::Bgra8Surface& canvas,const Frame& frame) {
-    const auto update=raster.update(frame,canvas.width,canvas.height,320,"test");
+size_t verify_incremental(IncrementalRaster& raster,srw64::presentation::Bgra8Surface& canvas,const Frame& frame,double picture=320) {
+    const auto update=raster.update(frame,canvas.width,canvas.height,picture,"test");
     size_t area=0;
     for(const auto& patch:update.patches) {
         check(patch.pixels.width==patch.rect.width() && patch.pixels.height==patch.rect.height(),"patch size");
@@ -51,7 +51,7 @@ size_t verify_incremental(IncrementalRaster& raster,srw64::presentation::Bgra8Su
                 canvas.pixels.begin()+(size_t(patch.rect.top+row)*canvas.width+patch.rect.left)*4);
         area+=size_t(patch.rect.width())*patch.rect.height();
     }
-    const auto full=rasterize_frame(frame,canvas.width,canvas.height);
+    const auto full=rasterize_frame(frame,canvas.width,canvas.height,picture);
     check(canvas.pixels==full.image.pixels,"incremental raster differs from a full raster");
     for(uint32_t y=0;y<canvas.height;++y)for(uint32_t x=0;x<canvas.width;++x) {
         const bool inside=int(x)>=update.drawn.left && int(x)<update.drawn.right && int(y)>=update.drawn.top && int(y)<update.drawn.bottom;
@@ -111,6 +111,28 @@ void incremental() {
     check(std::all_of(canvas.pixels.begin(),canvas.pixels.end(),[](auto b){return b==0;}),"a full cover left pixels");
     frame.cover.clear();
     check(verify_incremental(raster,canvas,frame)>0,"lifting the cover did not repaint");
+    // Spans under a pixel wide, left behind after a wipe, cover nothing, not even the
+    // margin left of the picture, where a widened battle quote box reaches.
+    top.shift_x=-90;verify_incremental(raster,canvas,frame);
+    const auto uncovered=canvas.pixels;
+    frame.cover.assign(240,{0.f,.75f});
+    verify_incremental(raster,canvas,frame);
+    check(canvas.pixels==uncovered,"a sub-pixel span covered something");
+    frame.cover.clear();
+    // A widened picture (384): the idle task's [0, 1) and [319, 320) lines sit at the
+    // picture's edges, a pixel and a fifth wide (wide_map::wipe_end), and a quote box past
+    // the 4:3 picture keeps its text.
+    verify_incremental(raster,canvas,frame,384);
+    const auto wide_uncovered=canvas.pixels;
+    frame.cover.assign(240,{0.f,1.f});
+    for(size_t y=1;y<240;y+=2)frame.cover[y]={319.f,320.f};
+    verify_incremental(raster,canvas,frame,384);
+    {
+        const double scale=std::min(canvas.width/384.0,canvas.height/240.0),edge=(canvas.width-384*scale)/2;
+        for(uint32_t y=0;y<canvas.height;++y)for(uint32_t x=uint32_t(edge+2*scale);x<uint32_t(canvas.width-edge-2*scale);++x)
+            for(unsigned c=0;c<4;++c){const size_t i=(size_t(y)*canvas.width+x)*4+c;check(canvas.pixels[i]==wide_uncovered[i],"idle wipe lines covered more than the picture's edge columns");}
+    }
+    frame.cover.clear();top.shift_x=0;verify_incremental(raster,canvas,frame);
     check(std::any_of(canvas.pixels.begin(),canvas.pixels.end(),[](auto b){return b!=0;}),"the picture did not come back");
     frame.boxes={};
     check(verify_incremental(raster,canvas,frame)>0,"hiding everything left the old picture");

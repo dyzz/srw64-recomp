@@ -230,15 +230,27 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
         }
     }
     // Last, the transition's black lines take away whatever lies under them, as they do
-    // the game's own text. A span from the picture's edge reaches the window's edge.
+    // the game's own text, placed as the game's are: whole original pixels (the task
+    // truncates), and on a widened picture wide_map::wipe_end's mapping, a line from x <= 1
+    // starting at the picture's left edge, one to x >= 319 ending at its right edge, the
+    // rest scaled to its width. Idle, the task still draws [0, 1) and [319, 320).
+    constexpr double original_width=320;
+    const double wide=picture_width>original_width+0.5?picture_width:original_width;
+    const double left_edge=ox-(wide-original_width)/2*scale,factor=wide/original_width;
+    const auto place=[&](int x,bool right) {
+        if(wide==original_width)return ox+x*scale;
+        if(!right && x<=1)return left_edge;
+        if(right && x>=original_width-1)return left_edge+wide*scale;
+        return left_edge+x*factor*scale;
+    };
     for(size_t y=0;y<frame.cover.size() && y<240;) {
         const auto [left,right]=frame.cover[y];
         size_t next=y+1;
         while(next<frame.cover.size() && next<240 && frame.cover[next]==frame.cover[y])++next;
-        if(right>left) {
-            const int x0=std::isfinite(left)?int(left):0,x1=std::isfinite(right)?int(right):320;
-            const PixelRect bounds{x0<=0?0:int(std::lround(ox+x0*scale)),int(std::lround(oy+y*scale)),
-                x1>=320?int(width):int(std::lround(ox+x1*scale)),int(std::lround(oy+next*scale))};
+        const int x0=std::isfinite(left)?int(std::clamp(left,0.f,320.f)):0,x1=std::isfinite(right)?int(std::clamp(right,0.f,320.f)):0;
+        if(x1>x0) {
+            const PixelRect bounds{int(std::lround(place(x0,false))),int(std::lround(oy+y*scale)),
+                int(std::lround(place(x1,true))),int(std::lround(oy+next*scale))};
             paint.add("cover",bounds,[bounds](presentation::Bgra8Surface& image,const PixelRect& region) {
                 const auto area=bounds&region;
                 for(int py=area.top;py<area.bottom;++py)
