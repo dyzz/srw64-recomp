@@ -425,6 +425,12 @@ public:
                 : value == "8" ? RT64::UserConfiguration::Antialiasing::MSAA8X
                 : RT64::UserConfiguration::Antialiasing::MSAA4X;
         }
+        // For comparisons with the Android settings: SRW64_COLOR_FORMAT=standard (8-bit) or high.
+        if (const char* color = std::getenv("SRW64_COLOR_FORMAT")) {
+            const std::string value = color;
+            if (value == "standard") app->userConfig.internalColorFormat = RT64::UserConfiguration::InternalColorFormat::Standard;
+            else if (value == "high") app->userConfig.internalColorFormat = RT64::UserConfiguration::InternalColorFormat::High;
+        }
         fprintf(stderr, "SRW64_MSAA samples=%u\n", app->userConfig.msaaSampleCount());
         app->userConfig.developerMode = false;
         const auto result = app->setup(0);

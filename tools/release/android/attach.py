@@ -7,7 +7,7 @@ adb forwards a local port to it. This writes build/recomp/debug/android-<time>/d
 and makes it the current run, so srw64ctl.py and Session.attach() reach the phone.
 Screenshots: `adb exec-out screencap -p` (the host's own path is on the phone).
 
-  tools/release/android/attach.py [--save SRAM] [--no-start] [-- extra host arguments]
+  tools/release/android/attach.py [--save SRAM] [--env SRW64_KEY=VALUE] [--no-start] [-- extra host arguments]
 """
 from __future__ import annotations
 
@@ -32,6 +32,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--save", type=Path, help="32 KiB card to place as the player's cartridge.sram first")
     parser.add_argument("--no-start", action="store_true", help="attach to a game already started with --ez debug true")
+    parser.add_argument("--env", action="append", default=[], metavar="SRW64_KEY=VALUE",
+                        help="development variable for the host (repeatable)")
     parser.add_argument("extra", nargs="*", help="host arguments after --")
     args = parser.parse_args()
     if not args.no_start:
@@ -45,6 +47,8 @@ def main() -> int:
         command = ["shell", "am", "start", "-n", f"{PACKAGE}/.SetupActivity", "--ez", "debug", "true"]
         if args.extra:
             command += ["--esa", "args", ",".join(args.extra)]
+        if args.env:
+            command += ["--esa", "env", ",".join(args.env)]
         adb(*command)
     port = adb("forward", "tcp:0", "localabstract:srw64-debug").strip()
     run = DEBUG_DIR / ("android-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"))

@@ -275,8 +275,8 @@ void clear_runtime_environment() {
     // Set by the Android app for bundled_resource, not a development probe.
     std::erase(keys,std::string("SRW64_RESOURCE_DIR"));
 #ifdef __ANDROID__
-    // The debug interface: the app sets it only when launched with --ez debug true.
-    std::erase(keys,std::string("SRW64_DEBUG"));
+    // A development launch (--ez debug true) keeps the variables it set (--esa env).
+    if (std::getenv("SRW64_DEBUG")) return;
 #endif
     for (const auto& key:keys) {
 #ifdef _WIN32

@@ -52,6 +52,7 @@ public class SetupActivity extends Activity {
             // Development: `adb shell am start ... --esa args a,b` passes extra host arguments.
             if (getIntent().hasExtra("args")) game.putExtra("args", getIntent().getStringArrayExtra("args"));
             if (getIntent().hasExtra("debug")) game.putExtra("debug", getIntent().getBooleanExtra("debug", false));
+            if (getIntent().hasExtra("env")) game.putExtra("env", getIntent().getStringArrayExtra("env"));
             startActivity(game);
             finish();
             return;

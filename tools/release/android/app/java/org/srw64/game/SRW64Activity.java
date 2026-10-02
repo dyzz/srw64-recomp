@@ -28,7 +28,18 @@ public class SRW64Activity extends SDLActivity {
             Os.setenv("TMPDIR", getCacheDir().getPath(), true);
             // Development: `am start ... --ez debug true` opens the debug interface
             // (src/host/debug_server.cpp, tools/release/android/attach.py).
-            if (getIntent().getBooleanExtra("debug", false)) Os.setenv("SRW64_DEBUG", "1", true);
+            if (getIntent().getBooleanExtra("debug", false)) {
+                Os.setenv("SRW64_DEBUG", "1", true);
+                // With it, `--esa env KEY=VALUE,...` sets development variables (SRW64_* only).
+                String[] variables = getIntent().getStringArrayExtra("env");
+                if (variables != null) {
+                    for (String variable : variables) {
+                        int equals = variable.indexOf('=');
+                        if (equals > 0 && variable.startsWith("SRW64_"))
+                            Os.setenv(variable.substring(0, equals), variable.substring(equals + 1), true);
+                    }
+                }
+            }
         } catch (ErrnoException error) {
             throw new RuntimeException(error);
         }
