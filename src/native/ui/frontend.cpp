@@ -329,27 +329,28 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 /* Both pages: the art square and the side beside it */
 .lx-hero {display:flex; gap:16dp;}
 .lx-side {flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:6dp;}
-.lx-name {display:flex; align-items:baseline; gap:12dp;}
+.lx-name {display:flex; align-items:baseline; flex-wrap:wrap; gap:4dp 10dp;}
+.lx-name .gold {margin-left:auto; padding:2dp 10dp; font-size:13dp; font-weight:bold; color:#0b1230; background-color:#ffd75e; white-space:nowrap;}
 .lx-name .sub {font-size:14dp; color:#c8d4ee; white-space:nowrap;}
-.lx-tags {display:flex; flex-wrap:wrap; gap:5dp;}
-.lx-tags span {padding:2dp 9dp; font-size:12dp; color:#c8d4ee; border:1dp #3fd0ff59; white-space:nowrap;}
-.lx-tags span.on {color:#e8eefc; background-color:#152436;}
-.lx-tags span.gold {color:#0b1230; font-weight:bold; background-color:#ffd75e; border-color:#ffd75e;}
-.lx-tags span.ally {color:#9ff0c8; border-color:#5fd08a80;} .lx-tags span.enemy {color:#ffb0a6; border-color:#ff6b5a80;} .lx-tags span.role {color:#ffe9a8; border-color:#ffd75e80;}
-.lx-love {display:flex; flex-wrap:wrap; align-items:center; gap:6dp 10dp;}
+.lx-tags {display:flex; flex-wrap:wrap; align-items:center; gap:5dp 8dp;}
+.lx-tags > span {padding:2dp 9dp; font-size:12dp; color:#c8d4ee; border:1dp #3fd0ff59; white-space:nowrap;}
+.lx-tags > span.on {color:#e8eefc; background-color:#152436;}
+.lx-name .tag {padding:1dp 8dp; font-size:12dp; border:1dp #3fd0ff59; white-space:nowrap;}
+.lx-name .tag.ally {color:#9ff0c8; border-color:#5fd08a80;} .lx-name .tag.enemy {color:#ffb0a6; border-color:#ff6b5a80;} .lx-name .tag.role {color:#ffe9a8; border-color:#ffd75e80;}
+.lx-love {display:flex; flex-wrap:wrap; align-items:center; gap:6dp 10dp; width:100%;}
 .lx-love .k {font-size:12dp; color:#a4b0d2;}
-.lx-love .who {display:flex; align-items:center; gap:6dp; padding:2dp 8dp 2dp 2dp; font-size:13dp; border:1dp #3fd0ff59;}
-.lx-love .face {width:30dp; height:30dp; display:flex; align-items:center; justify-content:center; background-color:#060a1c; overflow:hidden;}
+.lx-love .who {display:flex; align-items:center; gap:6dp; padding:1dp 8dp 1dp 1dp; font-size:13dp; border:1dp #3fd0ff59;}
+.lx-love .face {width:26dp; height:26dp; display:flex; align-items:center; justify-content:center; background-color:#060a1c; overflow:hidden;}
 .lx-love .face img {margin:0;}
 .lx-love .dir {font-size:10dp; padding:0 5dp; color:#ffc2dd; border:1dp #ffc2dd80;}
 .lx-love .dir.both {color:#2a1426; background-color:#ffc2dd; border-color:#ffc2dd;}
-.lx-legend {margin:0;}
 .lx-stats {display:flex; flex-wrap:wrap; row-gap:5dp;}
-.lx-stat {width:25%; box-sizing:border-box; padding-right:16dp;}
+.lx-stat {width:25%; box-sizing:border-box; padding-right:12dp;}
 .lx-stats.three .lx-stat {width:33.3%;}
 .lx-stat .k {display:block; font-size:12dp; color:#a4b0d2;}
 .lx-stat .row {display:flex; align-items:baseline;}
-.lx-stat .a {font-size:17dp; font-weight:bold;} .lx-stat .to {font-size:11dp; color:#5d6890; margin:0 4dp;} .lx-stat .b {font-size:15dp; font-weight:bold; color:#8fe4ff;}
+.lx-stat .a {font-size:16dp; font-weight:bold;} .lx-stat .to {font-size:10dp; color:#5d6890; margin:0 3dp;} .lx-stat .b {font-size:14dp; font-weight:bold; color:#8fe4ff;}
+.lx-stat.legend .k {font-size:9dp; line-height:1.2; white-space:normal; color:#8f9bbd;} .lx-stat.legend .a {font-size:12dp;} .lx-stat.legend .b {font-size:12dp;}
 .lx-stat .bar {display:flex; height:5dp; margin-top:3dp; background-color:#1a2448;}
 .lx-stat .bar .p1 {height:5dp; background-color:#e8eefc;} .lx-stat .bar .p2 {height:5dp; background-color:#3fd0ff;}
 .lx-stats.unit .lx-stat .bar .p1 {background-color:#3fd0ff;}
@@ -378,16 +379,16 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .lu-legend .item {display:flex; align-items:center; gap:5dp;}
 /* Characters: spirit cards and skill tracks */
 .lx-spirits {display:flex; gap:6dp;}
-.lx-spirits .card {flex:1 1 0; min-width:0; padding:6dp 10dp; background-color:#152436; border:1dp #3fd0ff59;}
-.lx-spirits .n {font-size:15dp; font-weight:bold; white-space:nowrap; overflow:hidden;}
+.lx-spirits .card {flex:1 1 0; min-width:0; padding:3dp 8dp; background-color:#152436; border:1dp #3fd0ff59;}
+.lx-spirits .n {font-size:14dp; font-weight:bold; white-space:nowrap; overflow:hidden;}
 .lx-spirits .row {display:flex; font-size:11dp;} .lx-spirits .lv {flex:1 1 0; color:#ffd75e;} .lx-spirits .cost {color:#8f9bbd;}
-.lx-track {display:flex; align-items:center; gap:12dp; height:32dp;}
+.lx-track {display:flex; align-items:center; gap:12dp; height:28dp;}
 .lx-track .k {width:120dp; flex-shrink:0; font-size:12dp; font-weight:bold; white-space:nowrap; overflow:hidden;}
-.lx-track .line {flex:1 1 0; position:relative; height:32dp; margin-right:10dp;}
-.lx-track .rail {position:absolute; left:0; right:0; top:9dp; height:2dp; background-color:#2c3a66;}
-.lx-track .mark {position:absolute; top:0; width:0; height:32dp;}
-.lx-track .tick {position:absolute; left:-1dp; top:3dp; width:3dp; height:14dp; background-color:#ffd75e;}
-.lx-track .lv {position:absolute; left:-14dp; top:18dp; width:28dp; text-align:center; font-size:10dp; color:#ffd75e;}
+.lx-track .line {flex:1 1 0; position:relative; height:28dp; margin-right:10dp;}
+.lx-track .rail {position:absolute; left:0; right:0; top:7dp; height:2dp; background-color:#2c3a66;}
+.lx-track .mark {position:absolute; top:0; width:0; height:28dp;}
+.lx-track .tick {position:absolute; left:-1dp; top:2dp; width:3dp; height:12dp; background-color:#ffd75e;}
+.lx-track .lv {position:absolute; left:-14dp; top:15dp; width:28dp; text-align:center; font-size:10dp; color:#ffd75e;}
 
 .bp-dim {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#070a1655;}
 .bp-tint {position:absolute; top:0; width:35%; height:100%;}
@@ -954,10 +955,10 @@ std::string library_work(const json& entry) {
 const char* library_type_names[]={"","Ⅰ","Ⅱ","Ⅲ","Ⅳ"};
 std::string library_type_tag(unsigned type){return "<span class='lu-type t"+std::to_string(type)+"'>"+library_type_names[type]+"</span>";}
 // The two pages share one layout (docs/native/library.md): the art in a large square on
-// the left; beside it the work (and a unit's model), the name (and a character's full
-// name), the tags with a gold one first (a unit's upgrade cap, a character's two-action
-// level), the stats as bars and the terrain; then the page's own sections.
-std::string library_hero(const json& entry,const std::string& sub,const std::string& badge,const json& L,const std::string& tags,const std::string& stats) {
+// the left with the terrain under it; beside it the work (and a unit's model), the name
+// (and a character's full name) with a gold tag at its right (a unit's upgrade cap, a
+// character's two-action level), the tags and the stats as bars; then the page's own sections.
+std::string library_hero(const json& entry,const std::string& sub,const std::string& badge,const json& L,const std::string& tags,const std::string& stats,const std::string& name_tags="") {
     // The square takes about 30 % of the details' width, 150-220 dp: 164 on a Steam Deck at
     // the Largest size (865 dp across), 220 on a larger screen. The panel is 96 % of the
     // window up to 1180 dp less its padding; the list 210 dp and the gaps take 246.
@@ -967,8 +968,8 @@ std::string library_hero(const json& entry,const std::string& sub,const std::str
     // The terrain sits under the square, which leaves the side shorter.
     return "<div class='lx-hero'><div class='lx-left' style='width:"+box+"dp;'><div class='lib-art lx-art' style='width:"+box+"dp; height:"+box+"dp;'>"+library_art(entry,side-12)+"</div>"+
         library_tiles(L,entry.value("terrain",std::string()))+"</div><div class='lx-side'><div class='lib-sub'>"+library_work(entry)+"</div>"
-        "<div class='lx-name'><span class='lib-name fit'>"+escape(entry.value("name",std::string()))+"</span>"+(sub.empty()?std::string():"<span class='sub'>"+escape(sub)+"</span>")+"</div>"
-        "<div class='lx-tags'><span class='gold'>"+badge+"</span>"+tags+"</div>"+stats+"</div></div>";
+        "<div class='lx-name'><span class='lib-name fit'>"+escape(entry.value("name",std::string()))+"</span>"+(sub.empty()?std::string():"<span class='sub'>"+escape(sub)+"</span>")+
+        name_tags+"<span class='gold'>"+badge+"</span></div>"+(tags.empty()?std::string():"<div class='lx-tags'>"+tags+"</div>")+stats+"</div></div>";
 }
 // A stat tile: the value, an optional level-99 value, and a bar (one or two parts).
 std::string library_tile(const std::string& key,const std::string& value,const std::string& high,float first,float second) {
@@ -1043,17 +1044,19 @@ std::string library_pilot(const json& p,const json& L) {
     // Sub-pilots and fairies: the original's pilot page prints their stats as --- (pilot +4
     // & 0xC0); so does this one, with no two-action level. SP and spirits still count.
     const bool role=p.contains("role"),stats=p.contains("stats");
-    std::string tags;
-    if(p.contains("enemy"))tags+="<span class='"+std::string(p.value("enemy",false)?"enemy":"ally")+"'>"+label(p.value("enemy",false)?"library_enemy":"library_ally")+"</span>";
-    if(role)tags+="<span class='role'>"+label(p.value("role",std::string())=="fairy"?"library_fairy":"library_sub_pilot")+"</span>";
-    std::string extra;
+    // The side and role sit on the name's row; the 恋爱補正 partners take the tags' row.
+    std::string side;
+    if(p.contains("enemy"))side+="<span class='tag "+std::string(p.value("enemy",false)?"enemy":"ally")+"'>"+label(p.value("enemy",false)?"library_enemy":"library_ally")+"</span>";
+    if(role)side+="<span class='tag role'>"+label(p.value("role",std::string())=="fairy"?"library_fairy":"library_sub_pilot")+"</span>";
+    std::string love;
     if(p.contains("love")) {
-        extra+="<div class='lx-love'><span class='k'>"+label("library_love")+"</span>";
+        love+="<div class='lx-love'><span class='k'>"+label("library_love")+"</span>";
         for(const auto& partner:p.at("love"))
-            extra+="<div class='who'><div class='face'>"+library_art(partner,34)+"</div><span>"+escape(partner.value("name",std::string()))+"</span><span class='dir"+
+            love+="<div class='who'><div class='face'>"+library_art(partner,28)+"</div><span>"+escape(partner.value("name",std::string()))+"</span><span class='dir"+
                 std::string(partner.value("mutual",false)?" both":"")+"'>"+label(partner.value("mutual",false)?"library_love_mutual":"library_love_one_way")+"</span></div>";
-        extra+="</div>";
+        love+="</div>";
     }
+    std::string extra;
     if(!stats)extra+="<p class='lib-note'>"+label("library_no_stats")+"</p>";
     else {
         // Level 1 and level 99: every pilot gains the same each level (800A6238, rerun by the
@@ -1064,11 +1067,12 @@ std::string library_pilot(const json& p,const json& L) {
             if(role && std::string_view(key)!="sp")return library_tile(l(key),"–","",0,0);
             return library_tile(l(key),std::to_string(v),std::to_string(v+98*gain),v/3.4f,98*gain/3.4f);
         };
-        extra+="<p class='lib-note lx-legend'>"+label("library_growth_note")+"</p><div class='lx-stats three'>"+stat("melee",1)+stat("ranged",1)+stat("skill",1)+stat("reaction",1)+
-            stat("hit",2)+stat("evade",2)+stat("sp",2)+"</div>";
+        // Four to a row; the eighth cell says which figure is which level.
+        extra+="<div class='lx-stats'>"+stat("melee",1)+stat("ranged",1)+stat("skill",1)+stat("reaction",1)+stat("hit",2)+stat("evade",2)+stat("sp",2)+
+            "<div class='lx-stat legend'><span class='k'>"+label("library_growth_note")+"</span><div class='row'><span class='a'>Lv1</span><span class='to'>→</span><span class='b'>Lv99</span></div></div></div>";
     }
     const std::string badge=label("library_double_move")+" "+(p.contains("double_move") && !role?"Lv"+library_number(p["double_move"]):std::string("–"));
-    std::string body=library_hero(p,full!=name?full:std::string(),badge,L,tags,extra);
+    std::string body=library_hero(p,full!=name?full:std::string(),badge,L,love,extra,side);
     if(!stats)return body;
     body+=library_section(l("spirits"),label("library_spirit_note"))+"<div class='lx-spirits'>";
     for(const auto& sp:p.value("spirits",json::array()))
