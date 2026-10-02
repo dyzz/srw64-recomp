@@ -30,6 +30,9 @@ namespace srw64::dialogue {
 namespace {
 using json=nlohmann::json;
 constexpr uint32_t body_base=0xFBAB0, name_base=0x15CB00, stride=0x218;
+// The screen transition (80099814): its task handle, zero when none runs (80099750), and
+// the per-line float spans its task 80099508 fills black each frame.
+constexpr uint32_t transition_task=0x15E9C0, transition_left=0x15E9C8, transition_right=0x15ED88;
 std::recursive_mutex mutex;
 std::atomic<uint16_t> raw_buttons{};
 std::atomic_bool auto_toggle{};              // an L2 press, for the next reading step
@@ -547,6 +550,18 @@ void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
         frame->history_controls_text=text::expand_prompts(localization::catalog().ui(frame->pad_hints?"history_controls_pad":"history_controls"),context);
     }
     frame->history=reader.history;frame->history_offset=reader.history_offset;
+    // A wipe or fade covers the game's own text with black lines; this frame's are read
+    // after the transition task has drawn them, so the overlay goes black the same way.
+    if(word(ram,transition_task)) {
+        frame->cover.resize(240);
+        bool any=false;
+        for(uint32_t y=0;y<240;++y) {
+            const uint32_t l=word(ram,transition_left+y*4),r=word(ram,transition_right+y*4);
+            std::memcpy(&frame->cover[y].first,&l,4);std::memcpy(&frame->cover[y].second,&r,4);
+            any|=frame->cover[y].second>frame->cover[y].first;
+        }
+        if(!any)frame->cover.clear();
+    }
     drawings.publish(begin,end,frame);
 }
 }

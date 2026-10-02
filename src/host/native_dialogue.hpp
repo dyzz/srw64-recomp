@@ -77,6 +77,9 @@ struct Frame {
     // Battle quotes: the translation replaces the drawn text, the original keeps
     // its own pacing, so there are no reading controls to show.
     bool display_only{};
+    // The screen transition's black spans, [left, right) in original pixels for each of
+    // the 240 lines (task 80099508 fills them over everything); empty when none runs.
+    std::vector<std::pair<float,float>> cover;
     size_t history_offset{};
     std::array<Box,2> boxes;
     std::deque<Entry> history;
