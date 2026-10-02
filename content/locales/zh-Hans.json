@@ -432,6 +432,8 @@
     "library_no_stats": "不上场战斗的人物。",
     "library_no_weapons": "没有武器。",
     "library_work_other": "其他",
+    "library_double_move": "二回行动",
+    "library_spirit_note": "灰色数字是消耗的精神点数，所有人相同；金色是习得等级。",
     "library_row": "Library · 图鉴",
     "library_row_note": "全部机体与人物的资料：能力、武器、精神指令、特殊技能",
     "menu_view": "显示",

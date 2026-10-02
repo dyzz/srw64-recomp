@@ -323,6 +323,7 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .lib-stat .g {width:24dp; color:#5fd08a; font-size:11dp; text-align:right;}
 .lib-chips span {display:inline-block; margin:0 6dp 6dp 0; padding:2dp 8dp; font-size:13dp; color:#e8eefc; background-color:#152436; border:1dp #3fd0ff59;}
 .lib-chips span span {display:inline; margin:0 0 0 6dp; padding:0; border-width:0; background-color:transparent; color:#ffd75e;}
+.lib-chips span span.cost {color:#8f9bbd; font-size:11dp;}
 .lib-wrow {display:flex; align-items:center; padding:3dp 0; font-size:13dp; border-bottom:1dp #3fd0ff1f;}
 .lib-wrow.head {color:#a4b0d2; font-size:11dp;}
 .lib-wrow .n {flex:1 1 0; min-width:0; white-space:nowrap; overflow:hidden;}
@@ -927,12 +928,15 @@ std::string library_pilot(const json& p,const json& L) {
     const auto& s=p.at("stats");
     body+="<div class='lib-stats'>"+library_stat(l("melee"),library_number(s["melee"]),"+1")+library_stat(l("ranged"),library_number(s["ranged"]),"+1")+
         library_stat(l("skill"),library_number(s["skill"]),"+1")+library_stat(l("reaction"),library_number(s["reaction"]),"+1")+
-        library_stat(l("hit"),library_number(s["hit"]),"+2")+library_stat(l("evade"),library_number(s["evade"]),"+2")+library_stat(l("sp"),library_number(s["sp"]),"+2")+"</div>"
+        library_stat(l("hit"),library_number(s["hit"]),"+2")+library_stat(l("evade"),library_number(s["evade"]),"+2")+library_stat(l("sp"),library_number(s["sp"]),"+2")+
+        library_stat(localization::catalog().ui("library_double_move"),p.contains("double_move")?"Lv"+library_number(p["double_move"]):std::string("-"))+"</div>"
         "<div class='lib-sub' style='margin-top:6dp;'>"+escape(l("terrain"))+"   "+escape(library_terrain(L,p.value("terrain",std::string())))+"</div>"
         "<p class='lib-note'>"+label("library_growth_note")+"</p></div></div>";
     body+="<h2>"+escape(l("spirits"))+"</h2><div class='lib-chips'>";
-    for(const auto& sp:p.value("spirits",json::array()))body+="<span>"+escape(sp.value("name",std::string()))+"<span>Lv"+std::to_string(sp.value("level",0u))+"</span></span>";
+    for(const auto& sp:p.value("spirits",json::array()))
+        body+="<span>"+escape(sp.value("name",std::string()))+"<span class='cost'>"+std::to_string(sp.value("cost",0u))+"</span><span>Lv"+std::to_string(sp.value("level",0u))+"</span></span>";
     if(p.value("spirits",json::array()).empty())body+="<p class='lib-note'>-</p>";
+    else body+="<p class='lib-note'>"+label("library_spirit_note")+"</p>";
     body+="</div>";
     const auto& skills=p.value("skills",json::array());
     if(!skills.empty()) {
