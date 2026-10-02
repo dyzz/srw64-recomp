@@ -30,8 +30,9 @@ namespace srw64::dialogue {
 namespace {
 using json=nlohmann::json;
 constexpr uint32_t body_base=0xFBAB0, name_base=0x15CB00, stride=0x218;
-// The screen transition (80099814): its task handle, zero when none runs (80099750), and
-// the per-line float spans its task 80099508 fills black each frame.
+// The screen transition (80099814): its task handle (zero only before the first one; the
+// task then stays, drawing [0, 1) and [319, 320) when idle), and the per-line float spans
+// its task 80099508 fills black each frame.
 constexpr uint32_t transition_task=0x15E9C0, transition_left=0x15E9C8, transition_right=0x15ED88;
 std::recursive_mutex mutex;
 std::atomic<uint16_t> raw_buttons{};
