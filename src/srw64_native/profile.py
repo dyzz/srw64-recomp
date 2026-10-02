@@ -35,7 +35,7 @@ UI_KEYS |= {"dlc_leave", "dlc_start", "dlc_note", "dlc_empty", "dlc_enter", "dlc
             "mod_row", "mod_row_note"}
 # The title's Library (src/native/ui/frontend.cpp, src/host/library.cpp).
 UI_KEYS |= {"library_open", "library_title", "library_tab_units", "library_tab_pilots", "library_hint", "library_hint_pad",
-            "library_growth_note", "library_no_stats", "library_no_weapons", "library_row", "library_row_note"}
+            "library_growth_note", "library_no_stats", "library_no_weapons", "library_work_other", "library_row", "library_row_note"}
 # The macOS View menu (src/host/macos/app_menu.hpp).
 UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale"}
 # The frame-rate readout (settings show_fps).

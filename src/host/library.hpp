@@ -11,7 +11,9 @@
 namespace srw64::library {
 // Window thread, inside the reading language's localization scope. Built on first use
 // and again when the language changes. {"units": [...], "pilots": [...], "labels": {},
-// "weapon_labels": {}}; both lists in ROM order, records identical to an earlier one
-// of the same name left out, and a name that still repeats numbered "(2)", "(3)".
+// "weapon_labels": {}}. Records identical to an earlier one of the same name are left
+// out. Both lists are grouped by work ("work" 0-24, -1 その他; "work_name", a unit's
+// "model") in the order of the original's unreachable character / robot lists, and a
+// name that still repeats within a work is numbered "(2)", "(3)" in that order.
 const nlohmann::json& contents();
 }

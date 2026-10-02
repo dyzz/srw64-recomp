@@ -47,6 +47,23 @@ constexpr uint16_t text_people=487,text_people_full=495;
 // The skills a pilot's +F bits name (ability_page.cpp, 801C9xxx): the first group's
 // one name by priority 04, 08, 10, 20, 40; 切り払い and S防御 count the other two.
 // Level L of a skill is the text record base + L.
+// The works (作品): the original's unreachable キャラクターリスト / ロボットリスト (title
+// overlay load_0010DA50, ROM 10DA50 at 801C4500; 801C8AF8 and 801C930C build them) give
+// each listed character {u16 actor, s16 work, u16 flag} and unit {u16 unit, s16 work,
+// s16 model}, in the lists' order. The work's title is text 60 + work, a unit's model
+// number 110 + model (-1 none). Duplicate records name their main one in the "seen"
+// alias tables (80091574 / 80091670: u16 pairs, duplicate then main).
+constexpr uint32_t title_overlay(uint32_t vram){return vram-0x801C4500+0x10DA50;}
+constexpr uint32_t character_list=title_overlay(0x801CB3A0),robot_list=title_overlay(0x801CB964),actor_aliases=resident(0x800C6A08),unit_aliases=resident(0x800C6A8C);
+constexpr unsigned character_rows=246,robot_rows=316,actor_alias_count=33,unit_alias_count=22,work_count=25;
+constexpr uint16_t text_works=60,text_models=110;
+// Records neither list nor an alias reaches, by their names and places in the ROM's
+// blocks. 真・ゲッター1/2/3 (177-179) the list files under オリジナル; they belong with
+// ゲッターロボ. Anyone else (AI, ゲリラ, ???...) goes under その他.
+constexpr std::pair<uint16_t,int8_t> unit_works[]={{5,8},{29,8},{361,8},{362,8},{211,24},{214,24},{267,10},{347,20},{348,20},{349,20},{350,20},
+    {354,13},{355,13},{356,13},{360,13},{357,14},{358,14},{359,14},{177,13},{178,13},{179,13}};
+constexpr std::pair<uint16_t,int8_t> actor_works[]={{19,8},{159,24},{211,22},{288,9},{289,9},{305,9},{306,9},{307,9},{308,9},{290,9},{355,9},
+    {291,20},{292,4},{309,4},{310,4},{314,4},{293,5},{311,5},{312,5},{294,23},{295,12},{296,22},{297,22},{298,21},{299,8}};
 struct Skill {uint8_t bit;uint16_t base;unsigned group;};
 constexpr Skill skills[]={{0x04,0x433,0},{0x08,0x40F,0},{0x10,0x418,0},{0x20,0x421,0},{0x40,0x42A,0},{0x01,0x43C,1},{0x02,0x406,2}};
 
@@ -171,15 +188,56 @@ json pilot(unsigned actor,int stats,int spirits) {
     }
     return p;
 }
+// Each entry's work, model and place in the original list: the list itself, else its
+// alias's main record, else a listed record of the same name, else the table above.
+struct Listed {int work=-1;int model=-1;unsigned place=~0u;};
+void assign_works(json& list,const char* id_key,uint32_t table,unsigned rows,bool models,uint32_t aliases,unsigned alias_count,
+                  std::span<const std::pair<uint16_t,int8_t>> fixed) {
+    std::map<unsigned,Listed> listed;
+    for(unsigned n=0;n<rows;++n) {
+        const uint32_t at=table+n*6;
+        listed.emplace(u16(at),Listed{s16(at+2),models?s16(at+4):-1,n});
+    }
+    std::map<unsigned,unsigned> alias;
+    for(unsigned n=0;n<alias_count;++n)alias[u16(aliases+n*4)]=u16(aliases+n*4+2);   // the last pair wins, as in the game
+    std::map<std::string,Listed> by_name;
+    for(const auto& e:list)if(const auto found=listed.find(e.at(id_key).get<unsigned>());found!=listed.end())by_name.emplace(e.at("name").get<std::string>(),found->second);
+    for(auto& e:list) {
+        const unsigned id=e.at(id_key).get<unsigned>();
+        Listed work;
+        if(const auto found=listed.find(id);found!=listed.end())work=found->second;
+        else if(const auto main=alias.find(id);main!=alias.end() && listed.contains(main->second))work=listed.at(main->second);
+        else if(const auto same=by_name.find(e.at("name").get<std::string>());same!=by_name.end())work=same->second;
+        for(const auto& [fixed_id,fixed_work]:fixed)if(fixed_id==id)work.work=fixed_work;
+        if(work.work<0 || work.work>=int(work_count))work.work=-1;
+        e["work"]=work.work;e["place"]=work.place;
+        if(work.work>=0)e["work_name"]=text(uint16_t(text_works+work.work));
+        if(work.model>=0)e["model"]=text(uint16_t(text_models+work.model));
+    }
+    // Works in the order the original list first shows them, その他 last; within a work the
+    // list's order, then the ROM's.
+    std::map<int,unsigned> rank;
+    for(unsigned n=0;n<rows;++n)rank.emplace(s16(table+n*6+2),n);
+    std::vector<std::pair<std::pair<unsigned,unsigned>,json>> keyed;
+    for(size_t n=0;n<list.size();++n) {
+        const int work=list[n].at("work").get<int>();
+        unsigned work_rank=work<0?~0u:rank.contains(work)?rank.at(work):rows;
+        keyed.push_back({{work_rank,list[n].at("place").get<unsigned>()},std::move(list[n])});
+        keyed.back().second.erase("place");
+    }
+    std::stable_sort(keyed.begin(),keyed.end(),[](const auto& a,const auto& b){return a.first<b.first;});
+    list=json::array();
+    for(auto& [key,e]:keyed)list.push_back(std::move(e));
+}
 // Later records equal to an earlier one of the same name (a unit's stats and weapons, a
-// pilot's records) are dropped; a name still shared is numbered from its second entry.
+// pilot's records) are dropped; a name still shared within a work is numbered from its
+// second entry (two works' 大作 are two people).
 void number_repeats(json& list) {
     std::map<std::string,unsigned> seen,total;
-    for(const auto& e:list)++total[e.at("name").get<std::string>()];
-    for(auto& e:list) {
-        const auto name=e.at("name").get<std::string>();
-        if(total[name]>1)if(const unsigned n=++seen[name];n>1)e["name"]=name+" ("+std::to_string(n)+")";
-    }
+    const auto key=[](const json& e){return std::to_string(e.at("work").get<int>())+'\0'+e.at("name").get<std::string>();};
+    for(const auto& e:list)++total[key(e)];
+    for(auto& e:list)
+        if(total[key(e)]>1)if(const unsigned n=++seen[key(e)];n>1)e["name"]=e.at("name").get<std::string>()+" ("+std::to_string(n)+")";
 }
 json build() {
     rom=recomp::get_rom();
@@ -203,6 +261,9 @@ json build() {
         if(spirits>=0)key+=bytes(spirits_at+uint32_t(spirits)*spirits_size,spirits_size);
         if(kept.emplace(key,true).second)pilots.push_back(std::move(p));
     }
+    // Grouped first, so a repeated name is numbered in the order the page shows it.
+    assign_works(units,"id",robot_list,robot_rows,true,unit_aliases,unit_alias_count,unit_works);
+    assign_works(pilots,"actor",character_list,character_rows,false,actor_aliases,actor_alias_count,actor_works);
     number_repeats(units);number_repeats(pilots);
     json labels;
     const std::pair<const char*,uint16_t> keys[]={{"hp",0xFE7},{"en",0xFE8},{"mobility",0xFE9},{"armor",0xFEA},{"limit",0xFEB},{"size",0x1003},
