@@ -28,7 +28,7 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
 # Custom campaign notices (src/host/link_page.cpp, src/host/mini_stage.hpp).
 UI_KEYS |= {"campaign_link_blocked", "campaign_scene_unmapped"}
 # The MOD manager and its extra scenarios (DLC) page (src/native/ui/frontend.cpp).
-UI_KEYS |= {"dlc_leave", "dlc_start", "dlc_note", "dlc_empty", "dlc_enter", "dlc_stages", "dlc_saves", "dlc_new", "dlc_switching",
+UI_KEYS |= {"dlc_leave", "dlc_start", "dlc_note", "dlc_empty", "dlc_enter", "dlc_stages", "dlc_saves", "dlc_new", "dlc_entered", "dlc_left",
             "mod_open", "mod_title", "mod_page_campaigns", "mod_page_art", "mod_page_dialogue", "mod_page_audio", "mod_hint",
             "mod_playing", "mod_current", "mod_title_only", "mod_art_installed", "mod_art_missing", "mod_art_note",
             "mod_dialogue_reload", "mod_dialogue_reload_note", "mod_dialogue_locale", "mod_dialogue_note", "mod_audio_note",

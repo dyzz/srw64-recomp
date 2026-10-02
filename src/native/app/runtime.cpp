@@ -17,7 +17,6 @@
 #define NOMINMAX
 #endif
 #include <windows.h>
-#include <process.h>
 #else
 #include <cerrno>
 #include <fcntl.h>
@@ -239,30 +238,6 @@ fs::path executable_path() {
     std::error_code error;auto path=fs::read_symlink("/proc/self/exe",error);
     return error?fs::path{}:path;
 #endif
-}
-void relaunch(const std::vector<std::string>& arguments) {
-    const auto program=executable_path();
-    if(program.empty())throw std::runtime_error("Cannot find this program to start it again");
-    std::fflush(nullptr);
-#ifdef _WIN32
-    std::vector<std::wstring> wide{program.wstring()};
-    for(const auto& argument:arguments)wide.push_back(utf8_path(argument).wstring());
-    // _wexecv starts the new process and ends this one; quote what has spaces.
-    std::vector<std::wstring> quoted;
-    for(const auto& argument:wide)quoted.push_back(argument.find(L' ')==std::wstring::npos?argument:L"\""+argument+L"\"");
-    std::vector<const wchar_t*> quoted_argv;
-    for(const auto& argument:quoted)quoted_argv.push_back(argument.c_str());
-    quoted_argv.push_back(nullptr);
-    _wexecv(program.c_str(),quoted_argv.data());
-#else
-    std::vector<std::string> all{program.string()};
-    all.insert(all.end(),arguments.begin(),arguments.end());
-    std::vector<char*> argv;
-    for(auto& argument:all)argv.push_back(argument.data());
-    argv.push_back(nullptr);
-    execv(program.c_str(),argv.data());
-#endif
-    throw std::runtime_error("Cannot start this program again");
 }
 fs::path bundled_resource(const std::string& name) {
     const auto executable=executable_path();

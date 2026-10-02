@@ -21,6 +21,7 @@
 #include "title_page.hpp"
 #include "mini_stage.hpp"
 #include "campaign_library.hpp"
+#include "campaign_switch.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
 #include "game_frame.hpp"
@@ -735,17 +736,17 @@ void settings_focus_first() {
 }
 // Installed campaigns, read once: they do not change while the game runs.
 const std::vector<campaign_library::Entry>& installed_campaigns() {
-    static const auto entries=campaign_library::switching()?campaign_library::list():std::vector<campaign_library::Entry>{};
+    static const auto entries=campaign_library::list();
     return entries;
 }
-// Switching campaign restarts the game, so it is offered on the title screen only, where
-// nothing unsaved is lost.
-bool on_title(){const int major=intro::title_major();return major==2 || major==3;}
+// A campaign is entered or left on the title's ring menu only, where nothing unsaved is
+// lost and a stage can be loaded (mini_stage::load_file).
+bool on_title(){return intro::title_major()==3;}
 // The MOD manager (docs/design/custom-campaign.md §8): additional scenarios, art, dialogue
 // and languages, music and voices, one page each, in the settings window's frame.
 std::string mod_campaigns_page() {
     const auto locale=localization::catalog().locale;
-    const bool switchable=campaign_library::switching() && on_title();
+    const bool switchable=campaign_switch::available() && on_title();
     std::string body="<p>"+label("dlc_note")+"</p>";
     const auto current=campaign::info();
     if(current)
@@ -765,7 +766,7 @@ std::string mod_campaigns_page() {
         if(const auto description=campaign_library::text(entry.description,locale);!description.empty())body+="<p>"+escape(description)+"</p>";
         body+="<p class='dlc-meta'>"+meta+"</p></div>";
     }
-    if(!switchable && campaign_library::switching())body+="<p class='dlc-meta'>"+label("mod_title_only")+"</p>";
+    if(!switchable && campaign_switch::available())body+="<p class='dlc-meta'>"+label("mod_title_only")+"</p>";
     return body;
 }
 std::string mod_art_page() {
@@ -2227,15 +2228,22 @@ void choose(const std::string& id) {
         return;
     }
     if(mod_open && id=="mod-dialogue-reload"){dialogue::request_reload();settings_focus=id;return;}
-    const auto switch_to=[&](const std::filesystem::path& campaign) {
-        if(!campaign_library::switching() || !on_title())return;
-        try{campaign_library::request(campaign);settings_open=false;notices::post("campaign",localization::catalog().ui("dlc_switching"));debug_ui::close_game_window();}
+    // Entering or leaving swaps the game's saves for the campaign's (campaign_switch.hpp)
+    // and closes the manager on the title, where the campaign starts.
+    const auto switched=[&](const std::function<void()>& change,const std::string& notice) {
+        if(!campaign_switch::available() || !on_title())return;
+        try{change();settings_open=false;notices::post("campaign",notice);}
         catch(const std::exception& error){notices::post("campaign",error.what());}
     };
-    if(id=="dlc-leave" && mod_open && campaign::active()){switch_to({});return;}
+    if(id=="dlc-leave" && mod_open && campaign::active()){switched(campaign_switch::leave,localization::catalog().ui("dlc_left"));return;}
     if(id.starts_with("dlc-enter:") && mod_open) {
         const auto index=std::stoul(id.substr(10));
-        if(index<installed_campaigns().size())switch_to(installed_campaigns()[index].path);
+        if(index<installed_campaigns().size()) {
+            const auto& entry=installed_campaigns()[index];
+            auto notice=localization::catalog().ui("dlc_entered");
+            if(const auto at=notice.find("{name}");at!=std::string::npos)notice.replace(at,6,campaign_library::text(entry.name,localization::catalog().locale));
+            switched([&]{campaign_switch::enter(entry);},notice);
+        }
         return;
     }
     // The Controls page (controls_page): a capture, restore.
