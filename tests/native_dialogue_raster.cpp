@@ -95,6 +95,23 @@ void incremental() {
     frame.bar_scale=1.4;verify_incremental(raster,canvas,frame);
     bottom.visible=false;verify_incremental(raster,canvas,frame);
     bottom.visible=true;frame.font_size=18;verify_incremental(raster,canvas,frame);
+    // A transition's black lines take the text away under them, partly, then wholly.
+    frame.cover.assign(240,{0.f,0.f});
+    for(size_t y=0;y<240;y+=3)frame.cover[y]={0.f,320.f};
+    for(size_t y=150;y<200;++y)frame.cover[y]={100.f,250.f};
+    verify_incremental(raster,canvas,frame);
+    {
+        const double scale=std::min(canvas.width/320.0,canvas.height/240.0),oy=(canvas.height-240*scale)/2;
+        const int row=int(std::lround(oy+3*scale))+1;  // line 3, inside its band
+        check(std::all_of(canvas.pixels.begin()+size_t(row)*canvas.width*4,canvas.pixels.begin()+size_t(row+1)*canvas.width*4,
+            [](auto b){return b==0;}),"a covered line kept pixels");
+    }
+    frame.cover.assign(240,{0.f,320.f});
+    verify_incremental(raster,canvas,frame);
+    check(std::all_of(canvas.pixels.begin(),canvas.pixels.end(),[](auto b){return b==0;}),"a full cover left pixels");
+    frame.cover.clear();
+    check(verify_incremental(raster,canvas,frame)>0,"lifting the cover did not repaint");
+    check(std::any_of(canvas.pixels.begin(),canvas.pixels.end(),[](auto b){return b!=0;}),"the picture did not come back");
     frame.boxes={};
     check(verify_incremental(raster,canvas,frame)>0,"hiding everything left the old picture");
     check(std::all_of(canvas.pixels.begin(),canvas.pixels.end(),[](auto b){return b==0;}),"empty frame left pixels");

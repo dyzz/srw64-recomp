@@ -229,6 +229,26 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
             y+=12.5;
         }
     }
+    // Last, the transition's black lines take away whatever lies under them, as they do
+    // the game's own text. A span from the picture's edge reaches the window's edge.
+    for(size_t y=0;y<frame.cover.size() && y<240;) {
+        const auto [left,right]=frame.cover[y];
+        size_t next=y+1;
+        while(next<frame.cover.size() && next<240 && frame.cover[next]==frame.cover[y])++next;
+        if(right>left) {
+            const int x0=std::isfinite(left)?int(left):0,x1=std::isfinite(right)?int(right):320;
+            const PixelRect bounds{x0<=0?0:int(std::lround(ox+x0*scale)),int(std::lround(oy+y*scale)),
+                x1>=320?int(width):int(std::lround(ox+x1*scale)),int(std::lround(oy+next*scale))};
+            paint.add("cover",bounds,[bounds](presentation::Bgra8Surface& image,const PixelRect& region) {
+                const auto area=bounds&region;
+                for(int py=area.top;py<area.bottom;++py)
+                    std::fill_n(image.pixels.begin()+(size_t(py-region.top)*image.width+(area.left-region.left))*4,
+                        size_t(area.width())*4,uint8_t(0));
+            });
+            paint.blocks.push_back({{"role","transition_cover"},{"lines",{y,next}},{"bounds",{bounds.left,bounds.top,bounds.right,bounds.bottom}}});
+        }
+        y=next;
+    }
     json report={{"schema","srw64.native-dialogue-raster.v1"},{"font",text::game_font_path().filename().string()},{"locale",localization::catalog().locale},
         {"renderer","FreeType + HarfBuzz + ICU"},{"native_vi",frame.vi},
         {"drawable",{width,height}},{"logical_font_size",frame.font_size},{"blocks",paint.blocks}};
