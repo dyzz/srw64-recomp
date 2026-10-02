@@ -49,7 +49,7 @@ bool begin(uint8_t* ram) {
         // A Link Battler stage would move the next scene (801D9F80) out of the
         // campaign, so the screen goes straight back as if cancelled.
         current.visible=false;answered=true;owning=false;
-        notices::post("campaign","リンク is not available in a campaign");
+        notices::post("campaign",campaign::notice("campaign_link_blocked"));
         record("blocked",ram);
         return true;
     }

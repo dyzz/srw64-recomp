@@ -390,6 +390,8 @@
     "funds_edit_hint_pad": "用屏幕键盘输入新的资金数字   ·   {A} 写入   ·   {B} 取消",
     "dialogue_text_status": "台词文本：已载入 {n} 条，{k} 处错误（详见 dialogue-report.txt）",
     "dialogue_reload": "重新载入台词",
+    "campaign_link_blocked": "自定义战役中不能使用联动",
+    "campaign_scene_unmapped": "场景 {n} 不属于这个战役，载入的是原版关卡",
     "menu_view": "显示",
     "menu_fullscreen": "全屏",
     "menu_window_scale": "窗口大小 {n}×",

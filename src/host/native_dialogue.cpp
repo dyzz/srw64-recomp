@@ -760,3 +760,9 @@ std::string ui_text(const uint8_t* ram,uint16_t id) {
     return text.empty() && !localization::catalog().resolve(localization::TextKey::base(0,id))?std::to_string(id):text;
 }
 }
+
+namespace srw64::campaign {
+std::string notice(const std::string& key,uint32_t scene) {
+    return dialogue::filled(localization::catalog().ui(key),"{n}",std::to_string(scene));
+}
+}
