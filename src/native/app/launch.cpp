@@ -227,6 +227,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     std::fprintf(stderr,"SRW64_PLAY_SESSION %s\n",session.session_dir().string().c_str());
     const int result=host(static_cast<int>(arguments.size()),argv.data());
     const bool committed=result==0 && session.commit_save(session.output_dir()/"runtime-data/saves"/game.save_file);
+    session.release_run();
     report["status"]=result==0?"complete":"host-failed";report["exit_code"]=result;report["save_committed"]=committed;
     atomic_write(session.session_dir()/"launch.json",report.dump(2)+"\n");
     return result;
