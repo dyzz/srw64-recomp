@@ -160,12 +160,12 @@ class Session:
             image.write_text(json.dumps(compile_campaign(Path(campaign)), ensure_ascii=False) + "\n")
             environment["SRW64_CAMPAIGN"] = str(image)
             environment["SRW64_SAVE_LIBRARY"] = str(run / "campaign-saves")
-        for key in ("SRW64_CAMPAIGN_DIRS", "SRW64_CAMPAIGN_SAVES", "SRW64_CAMPAIGN_SWITCH"):
+        for key in ("SRW64_CAMPAIGN_DIRS", "SRW64_CAMPAIGN_SAVES"):
             environment.pop(key, None)
         if campaigns:
-            # The title's extra scenarios, as the launcher offers them: every campaign under
-            # config/recomp/campaigns compiled beside the run, and the file a switch is
-            # asked for in (the launcher would then restart; a debug run just quits).
+            # The MOD manager's extra scenarios, as the launcher offers them: every campaign
+            # under config/recomp/campaigns compiled beside the run, a save library for the
+            # main game (switching needs one to come back to) and one folder per campaign.
             sys.path.insert(0, str(ROOT / "tools"))
             from recomp.script_lab.mini_stage import compile_campaign
             installed = run.parent / (run.name + ".campaigns")
@@ -175,7 +175,8 @@ class Session:
                 (installed / image["id"] / "campaign.json").write_text(json.dumps(image, ensure_ascii=False) + "\n")
             environment["SRW64_CAMPAIGN_DIRS"] = str(installed)
             environment["SRW64_CAMPAIGN_SAVES"] = str(run.parent / (run.name + ".campaign-saves"))
-            environment["SRW64_CAMPAIGN_SWITCH"] = str(run.parent / (run.name + ".campaign-switch.json"))
+            if not campaign:
+                environment["SRW64_SAVE_LIBRARY"] = str(run.parent / (run.name + ".saves"))
         environment.pop("SRW64_DEBUG_OWNER_FD", None)
         owner = lease = None
         if not detach:

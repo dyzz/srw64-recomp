@@ -327,7 +327,9 @@ inline void direct_scene(uint8_t* ram) {
 // source (srw64.mini-stage.v1) goes through SRW64_MINI_STAGE_COMPILER first,
 // the launcher's shell-quoted "python mini_stage.py" prefix. Throws with a
 // message fit for a notice.
-inline std::string load_file(const std::filesystem::path& file) {
+// With enter=false the stage is only made ready: the title then offers it (a campaign
+// from the MOD manager waits for 開始 or a save to be loaded).
+inline std::string load_file(const std::filesystem::path& file,bool enter=true) {
     if(srw64::intro::title_major()!=3)throw std::runtime_error("mini stage: open stage files from the title menu");
     const auto read_json=[](const std::filesystem::path& path) {
         std::ifstream input(path);
@@ -363,9 +365,19 @@ inline std::string load_file(const std::filesystem::path& file) {
     }
     s.bound.reset();s.active=s.ready=false;s.waiting_reason.clear();s.applied=0;
     s.armed=s.in_sequence=s.direct_done=false;s.skips=s.start_samples=0;
-    s.hotkey_vi=srw64_current_vi();
+    s.hotkey_vi=enter?srw64_current_vi():0;
     log({{"action","loaded"},{"source","runtime"},{"path",file.string()},{"name",s.image->name},{"events",s.image->pointers.size()}});
     return s.image->name;
+}
+
+// Back to the main game from a campaign (campaign_switch.cpp): no stage is substituted.
+inline void clear_campaign() {
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    s.stages.clear();s.image.reset();campaign::set(std::nullopt);
+    s.bound.reset();s.active=s.ready=false;s.waiting_reason.clear();s.applied=0;
+    s.armed=s.in_sequence=s.direct_done=false;s.skips=s.start_samples=0;s.hotkey_vi=0;
+    log({{"action","campaign-cleared"}});
 }
 
 // Hotkey (window thread): remembered until the VI thread sees the main menu.

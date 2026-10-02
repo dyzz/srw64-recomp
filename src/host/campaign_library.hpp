@@ -2,6 +2,7 @@
 #include "campaign.hpp"
 #include "json/json.hpp"
 #include <algorithm>
+#include <cctype>
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
@@ -9,12 +10,11 @@
 #include <string>
 #include <vector>
 
-// Installed custom campaigns, offered as additional scenarios (DLC) on the title screen
-// (docs/design/custom-campaign.md). Each is a compiled campaign at <dir>/<id>/campaign.json
-// in one of SRW64_CAMPAIGN_DIRS (the user's campaigns folder first, then the bundled
-// ones); a campaign plays from its own saves, so changing campaign restarts the program
-// like changing discs: the title screen writes SRW64_CAMPAIGN_SWITCH and the game quits,
-// and the launcher starts again with --campaign, or without it for the main game.
+// Installed custom campaigns, offered as additional scenarios (DLC) in the title's MOD
+// manager (docs/design/custom-campaign.md §8). Each is a compiled campaign at
+// <dir>/<id>/campaign.json in one of SRW64_CAMPAIGN_DIRS (the user's campaigns folder
+// first, then the bundled ones); each plays from its own saves, in
+// SRW64_CAMPAIGN_SAVES/<id>/saves (campaign_switch.hpp).
 namespace srw64::campaign_library {
 namespace fs=std::filesystem;
 struct Entry {
@@ -85,14 +85,9 @@ inline std::vector<Entry> list() {
     return entries;
 }
 
-// The launcher listens for a switch; debug runs without one show no DLC entry.
-inline bool switching(){const char* p=std::getenv("SRW64_CAMPAIGN_SWITCH");return p && *p;}
-
-// Asks the launcher to start the given campaign next (empty: the main game). The caller
-// then closes the game, which saves and quits as usual.
-inline void request(const fs::path& campaign) {
-    const char* path=std::getenv("SRW64_CAMPAIGN_SWITCH");
-    if(!path || !*path)throw std::runtime_error("campaign switching needs SRW64_CAMPAIGN_SWITCH");
-    std::ofstream(path)<<nlohmann::json{{"schema","srw64.campaign-switch.v1"},{"campaign",campaign.string()}}.dump()<<'\n';
+// An id names the campaign's save folder: 1-64 letters, digits, '.', '_' or '-'.
+inline bool valid_id(const std::string& id) {
+    return !id.empty() && id.size()<=64 && id!="." && id!=".." &&
+        std::all_of(id.begin(),id.end(),[](char c){return std::isalnum(static_cast<unsigned char>(c)) || c=='.' || c=='_' || c=='-';});
 }
 }
