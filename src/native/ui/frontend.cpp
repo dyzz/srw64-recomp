@@ -320,7 +320,7 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .lib-stat {width:33.3%; box-sizing:border-box; display:flex; padding:3dp 12dp 3dp 0; font-size:14dp; border-bottom:1dp #3fd0ff1f;}
 .lib-stat .k {flex:1 1 0; min-width:0; color:#a4b0d2; white-space:nowrap;}
 .lib-stat .v {color:#e8eefc; font-weight:bold; text-align:right; white-space:nowrap;}
-.lib-stat .g {width:24dp; color:#5fd08a; font-size:11dp; text-align:right;}
+.lib-stat .g {width:44dp; color:#8fe4ff; text-align:right; white-space:nowrap;}
 .lib-chips span {display:inline-block; margin:0 6dp 6dp 0; padding:2dp 8dp; font-size:13dp; color:#e8eefc; background-color:#152436; border:1dp #3fd0ff59;}
 .lib-chips span span {display:inline; margin:0 0 0 6dp; padding:0; border-width:0; background-color:transparent; color:#ffd75e;}
 .lib-chips span span.cost {color:#8f9bbd; font-size:11dp;}
@@ -926,9 +926,10 @@ std::string library_pilot(const json& p,const json& L) {
         library_work(p,p.value("full_name",std::string())==p.value("name",std::string())?std::string():p.value("full_name",std::string()));
     if(!p.contains("stats"))return body+"</div></div><p class='lib-note'>"+label("library_no_stats")+"</p>";
     const auto& s=p.at("stats");
-    body+="<div class='lib-stats'>"+library_stat(l("melee"),library_number(s["melee"]),"+1")+library_stat(l("ranged"),library_number(s["ranged"]),"+1")+
-        library_stat(l("skill"),library_number(s["skill"]),"+1")+library_stat(l("reaction"),library_number(s["reaction"]),"+1")+
-        library_stat(l("hit"),library_number(s["hit"]),"+2")+library_stat(l("evade"),library_number(s["evade"]),"+2")+library_stat(l("sp"),library_number(s["sp"]),"+2")+
+    // Level 1 and level 99: every pilot gains the same each level (800A6238, rerun by the
+    // level-up at 801FC4EC): +1 melee, ranged, skill and reaction, +2 hit, evade and SP.
+    const auto stat=[&](const char* key,unsigned gain){const unsigned v=s.value(key,0u);return library_stat(l(key),std::to_string(v),std::to_string(v+98*gain));};
+    body+="<div class='lib-stats'>"+stat("melee",1)+stat("ranged",1)+stat("skill",1)+stat("reaction",1)+stat("hit",2)+stat("evade",2)+stat("sp",2)+
         library_stat(localization::catalog().ui("library_double_move"),p.contains("double_move")?"Lv"+library_number(p["double_move"]):std::string("-"))+"</div>"
         "<div class='lib-sub' style='margin-top:6dp;'>"+escape(l("terrain"))+"   "+escape(library_terrain(L,p.value("terrain",std::string())))+"</div>"
         "<p class='lib-note'>"+label("library_growth_note")+"</p></div></div>";
