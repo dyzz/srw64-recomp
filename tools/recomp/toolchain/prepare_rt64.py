@@ -217,6 +217,50 @@ def main() -> int:
                         "            std::shared_ptr<CocoaWindowLifetime> windowLifetime = lifetime;\n"
                         "            dispatch_async(dispatch_get_main_queue(), ^{\n" + lifetime_check(" " * 16) +
                         "                NSWindow *nsWindow")
+    # Widened draws reach RT64 with scissors that start at x = -1 (the battle's sky and
+    # effects). Vulkan forbids negative offsets: MoltenVK and the Mali driver then drop the
+    # draw, nothing covers the previous frame, and the battle smears. Clamp to the origin.
+    vulkan_scissor = ("    void VulkanCommandList::setScissors(const RenderRect *scissorRects, uint32_t count) {",
+                      "    static VkRect2D toClampedScissor(const RenderRect &rect) {\n"
+                      "        const int32_t left = std::max(rect.left, 0), top = std::max(rect.top, 0);\n"
+                      "        return VkRect2D{ VkOffset2D{ left, top }, VkExtent2D{ uint32_t(std::max(rect.right - left, 0)), uint32_t(std::max(rect.bottom - top, 0)) } };\n"
+                      "    }\n\n"
+                      "    void VulkanCommandList::setScissors(const RenderRect *scissorRects, uint32_t count) {")
+    vulkan_scissors = ("                scissorVector.emplace_back(VkRect2D{ VkOffset2D{ scissorRects[i].left, scissorRects[i].top }, VkExtent2D{ uint32_t(scissorRects[i].right - scissorRects[i].left), uint32_t(scissorRects[i].bottom - scissorRects[i].top) } });",
+                       "                scissorVector.emplace_back(toClampedScissor(scissorRects[i]));")
+    vulkan_scissor_one = ("            VkRect2D scissor = VkRect2D{ VkOffset2D{ scissorRects[0].left, scissorRects[0].top }, VkExtent2D{ uint32_t(scissorRects[0].right - scissorRects[0].left), uint32_t(scissorRects[0].bottom - scissorRects[0].top) } };",
+                          "            VkRect2D scissor = toClampedScissor(scissorRects[0]);")
+    # Render passes declare no dependencies, so nothing orders a pass's attachment loads
+    # after an earlier pass's stores: a tiler (the Mali GPUs) can load tiles that are not
+    # stored yet, and a quad blended over the previous pass reads garbage (the battle HUD's
+    # digits). Both creation sites get the same pair, which keeps them compatible.
+    vulkan_dependencies = ("    // VulkanBuffer\n",
+        "    static const VkPipelineStageFlags renderPassStages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT |\n"
+        "        VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT | VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT;\n"
+        "    static const VkAccessFlags renderPassWrites = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT | VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT;\n"
+        "    static const VkAccessFlags renderPassAccesses = renderPassWrites | VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT;\n"
+        "    static const VkSubpassDependency renderPassDependencies[] = {\n"
+        "        { VK_SUBPASS_EXTERNAL, 0, renderPassStages, renderPassStages, renderPassWrites, renderPassAccesses, VK_DEPENDENCY_BY_REGION_BIT },\n"
+        "        { 0, VK_SUBPASS_EXTERNAL, renderPassStages, renderPassStages, renderPassWrites, renderPassAccesses, VK_DEPENDENCY_BY_REGION_BIT },\n"
+        "    };\n\n"
+        "    // VulkanBuffer\n")
+    dependencies_in = "        passInfo.pDependencies = renderPassDependencies;\n        passInfo.dependencyCount = uint32_t(std::size(renderPassDependencies));\n"
+    vulkan_pipeline_pass = ("        passInfo.pAttachments = !attachments.empty() ? attachments.data() : nullptr;\n"
+                            "        passInfo.attachmentCount = uint32_t(attachments.size());\n"
+                            "        passInfo.pSubpasses = &subpass;\n"
+                            "        passInfo.subpassCount = 1;\n",
+                            "        passInfo.pAttachments = !attachments.empty() ? attachments.data() : nullptr;\n"
+                            "        passInfo.attachmentCount = uint32_t(attachments.size());\n"
+                            "        passInfo.pSubpasses = &subpass;\n"
+                            "        passInfo.subpassCount = 1;\n" + dependencies_in)
+    vulkan_framebuffer_pass = ("        passInfo.pAttachments = attachments.data();\n"
+                               "        passInfo.attachmentCount = uint32_t(attachments.size());\n"
+                               "        passInfo.pSubpasses = &subpass;\n"
+                               "        passInfo.subpassCount = 1;\n",
+                               "        passInfo.pAttachments = attachments.data();\n"
+                               "        passInfo.attachmentCount = uint32_t(attachments.size());\n"
+                               "        passInfo.pSubpasses = &subpass;\n"
+                               "        passInfo.subpassCount = 1;\n" + dependencies_in)
     records = [patch(checkout, "CMakeLists.txt", old_cmake, new_cmake),
                patch(checkout, "src/tools/spirv_cross_msl/CMakeLists.txt",
                      "set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)",
@@ -228,7 +272,8 @@ def main() -> int:
                patch(plume, "plume_vulkan.cpp",
                      "        createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;",
                      "        createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;",
-                     [(old_copy, new_copy)])]
+                     [(old_copy, new_copy), vulkan_scissor, vulkan_scissors, vulkan_scissor_one,
+                      vulkan_dependencies, vulkan_pipeline_pass, vulkan_framebuffer_pass])]
     # Match a native text snapshot to the workload actually being presented.
     # The draw callback must never read live guest RDRAM or the latest CPU frame.
     # After the present queue's own fence wait, report that the command list the
