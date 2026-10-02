@@ -384,10 +384,16 @@ body.pointer .set-foot button:hover {background-color:#8fe4ff;}
 .bh-bar {position:absolute; background-color:#ff0000;} .bh-bar div {height:100%; background-color:#00ff00;}
 .bh-item {position:absolute; display:block; box-sizing:border-box; margin:0; border:0; border-radius:0; background-color:transparent; color:#ffffff; font-weight:bold; text-align:left; white-space:nowrap; overflow:hidden;}
 .bh-item:hover {border:0;} body.pointer .bh-item:hover {background-color:#00ff0040;} .bh-item:focus,body.pointer .bh-item:focus {border:0; background-color:#00ff0080;}
-.home-entry {position:absolute; right:14dp; bottom:12dp; margin:0; padding:5dp 14dp; font-size:13dp; pointer-events:auto; background-color:#0c122cd0; border-color:#3fd0ff;}
-.home-entries {position:absolute; right:14dp; bottom:12dp; text-align:right; pointer-events:none;}
-.home-entries .home-entry {position:relative; right:auto; bottom:auto; display:inline-block; margin-left:8dp;}
-.home-entries .home-dlc {border-color:#ffd75e; color:#ffe9a8;}
+.home-entry {position:absolute; left:14dp; top:12dp; margin:0; padding:5dp 14dp; font-size:13dp; pointer-events:auto; background-color:#0c122cd0; border-color:#3fd0ff;}
+/* MOD lettered like the title ring's items (sprite_text menu_style; size, outline and
+   shadow are set in game pixels by home_sync): the dim grey-blue of an unchosen item, no
+   box; light blue when pointed at or chosen, as the ring's current item is. */
+button.home-mod {position:absolute; right:6vw; bottom:6vh; margin:0; padding:0 1vh; line-height:1.2;
+    background-color:transparent; border-width:0; border-radius:0; color:#6c768d; pointer-events:auto;}
+button.home-mod:hover, button.home-mod:focus, .pad button.home-mod:focus {color:#c4dcff; background-color:transparent; border-width:0;}
+/* The title's corners: settings top left, the frame-rate readout top right, the version
+   bottom left, MOD bottom right. */
+.home-version {position:absolute; left:14dp; bottom:10dp; font-size:13dp; color:#ffffffb0; pointer-events:none; font-effect:outline(1dp #000000c0);}
 .dlc-meta {color:#a4b0d2; font-size:13dp; margin-top:2dp;}
 .bp-hints {text-align:center; font-size:15dp; color:#a4b0d2; height:21dp; white-space:nowrap; overflow:hidden;}
 .narrow .bp-hints {font-size:16dp; height:22dp;}
@@ -2023,12 +2029,17 @@ void home_sync() {
     const int major=intro::title_major();
     const bool settings_entry=pad_mode || !app_menu::available();
     if((major!=2 && major!=3) || settings_open){document_close(home_doc);home_stamp.clear();return;}
-    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"");
+    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+frame_stamp();
     if(home_doc && stamp==home_stamp)return;
     document_close(home_doc);home_stamp=stamp;
-    std::string body="<div class='home-entries'><button id='mod-open' class='home-entry home-dlc'>"+label("mod_open")+"</button>";
+    // MOD bottom right, lettered like the ring (menu_style: 14 game pixels, a 1-pixel
+    // outline, a 0.8-pixel shadow); the settings entry top left.
+    const float u=frame::scale(pixels_w,pixels_h);
+    const auto px=[&](float v){return std::to_string(std::max(1,int(v*u+0.5f)))+"px";};
+    std::string body="<button id='mod-open' class='home-mod' style='font-size:"+px(14)+"; font-effect:outline("+px(1)+" #0a0d17), shadow("+
+        px(.8f)+" "+px(.8f)+" #00000073);'>"+label("mod_open")+"</button><div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
     if(settings_entry)body+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
-    home_doc=document(body+"</div>",false);
+    home_doc=document(body,false);
 }
 // The HD original (battle_ui "hd"): the original screen redrawn in its own 320x240
 // coordinates, like the intermission pages. Two panels (window layout 0x45, frame 1196;
