@@ -69,6 +69,19 @@ constexpr std::pair<uint16_t,int8_t> unit_works[]={{5,8},{29,8},{361,8},{362,8},
     {354,13},{355,13},{356,13},{360,13},{357,14},{358,14},{359,14},{177,13},{178,13},{179,13}};
 constexpr std::pair<uint16_t,int8_t> actor_works[]={{19,8},{159,24},{211,22},{288,9},{289,9},{305,9},{306,9},{307,9},{308,9},{290,9},{355,9},
     {291,20},{292,4},{309,4},{310,4},{314,4},{293,5},{311,5},{312,5},{294,23},{295,12},{296,22},{297,22},{298,21},{299,8}};
+// Upgrades (docs/gameplay/upgrade-limits.md): a unit's cap (+20) bounds its five stats and
+// every weapon; a weapon's type (+E, 0 none) picks its row of per-level power increments
+// (resident D_800CA590, 5 rows x 15 u16). Weapons a full upgrade unlocks: the upgrade
+// screen's s16 (unit, upgraded, unlocked) rows (801D0AE4, D_801DC87C), 999 ends; the
+// unlocked one is already in the unit's list with the locked bit (+F 0x04) set. +F 0x02
+// marks a combination attack.
+constexpr uint32_t weapon_increments=resident(0x800CA590),unlock_table=overlay(0x801DC87C);
+constexpr unsigned upgrade_levels=15;
+// What each step costs, types 1-4 (the upgrade screen's u32 x 15 tables, upgrade_rules.hpp).
+constexpr uint32_t weapon_prices[]={overlay(0x801DC7BC),overlay(0x801DC77C),overlay(0x801DC73C),overlay(0x801DC6FC)};
+// 恋爱補正 (801F4C64): 47 rows of 8 bytes, +2 the holder, +4 / +6 partners (-1 none).
+constexpr uint32_t love_table=0x1012B4;
+constexpr unsigned love_rows=47;
 struct Skill {uint8_t bit;uint16_t base;unsigned group;};
 constexpr Skill skills[]={{0x04,0x433,0},{0x08,0x40F,0},{0x10,0x418,0},{0x20,0x421,0},{0x40,0x42A,0},{0x01,0x43C,1},{0x02,0x406,2}};
 
@@ -105,12 +118,18 @@ void add_art(json& entry,const char* group,unsigned key) {
     if(art.contains(group) && art.at(group).contains(std::to_string(key)))entry["art"]=art.at(group).at(std::to_string(key));
 }
 
-json weapon(unsigned number) {
+json weapon(unsigned number,unsigned cap) {
     const uint32_t at=weapons_at+number*weapon_size;
     json w={{"number",number},{"name",text(uint16_t(text_weapon_menu+number))},{"power",u8(at+1)*100},{"range_min",u8(at+2)},{"range_max",u8(at+3)},
         {"hit",s8(at+4)},{"en",u8(at+6)},{"morale",u8(at+7)},{"terrain",terrain(at+9)},{"critical",s8(at+0xD)}};
     if(s8(at+5)>=0)w["ammo"]=s8(at+5);
     if(u8(at+8)>=2)w["skill_name"]=text(uint16_t(u8(at+8)));
+    if(const unsigned type=u8(at+0xE);type && type<5) {
+        unsigned power=u8(at+1)*100;
+        for(unsigned n=0;n<std::min(cap,upgrade_levels);++n)power+=u16(weapon_increments+(type*upgrade_levels+n)*2);
+        w["type"]=type;w["full"]=power;
+    }
+    if(u8(at+0xF)&0x02)w["combo"]=true;
     upgrade_page::weapon_markers(w,text(uint16_t(text_weapon_pure+number)));
     return w;
 }
@@ -146,11 +165,17 @@ json unit(unsigned id,const std::vector<unsigned>& numbers) {
         abilities.push_back(name);
     }
     json weapons=json::array();
-    for(const unsigned number:numbers)weapons.push_back(weapon(number));
+    for(const unsigned number:numbers) {
+        auto w=weapon(number,u8(at+0x20));
+        for(uint32_t row=unlock_table;s16(row)!=999 && row<rom.size();row+=6)
+            if(u16(row)==id && u16(row+4)==number)w["unlock"]=text(uint16_t(text_weapon_pure+u16(row+2)));
+        weapons.push_back(std::move(w));
+    }
     json u={{"id",id},{"name",text(uint16_t(text_unit_names+id))},{"hp",u16(at)},{"en",u16(at+2)},{"move",u8(at+6)},{"mobility",u16(at+8)},{"armor",u16(at+0xA)},
         {"limit",u16(at+0xC)},{"repair",u16(at+0x14)},{"size",text(uint16_t(text_sizes+size))},{"types",types},{"terrain",terrain(at+0xE)},
         {"abilities",abilities},{"weapons",weapons}};
     if(equipment&2)u["shield"]=text(text_shield_yes);
+    u["cap"]=u8(at+0x20);u["slots"]=u8(at+0x19);
     add_art(u,"units",id);
     return u;
 }
@@ -163,6 +188,10 @@ json pilot(unsigned actor,int stats,int spirits) {
         const uint32_t at=pilot_stats_at+uint32_t(stats)*pilot_stats_size;
         p["stats"]={{"melee",u8(at+1)},{"ranged",u8(at+2)},{"evade",u8(at+3)},{"hit",u8(at+4)},{"reaction",u8(at+5)},{"skill",u8(at+6)},{"sp",u8(at+0xC)}};
         p["terrain"]=terrain(at+7);
+        // +0 (pilot +4): 0x80 a sub-pilot, whose stats the ability page prints as ---;
+        // 0x40 too on the fairies.
+        if(u8(at)&0x40)p["role"]="fairy";
+        else if(u8(at)&0x80)p["role"]="sub";
         if(u8(at+0xE))p["double_move"]=u8(at+0xE);
         // Level L of a skill comes with the L-th smallest of its group's nonzero thresholds
         // (800A80F0 counts those at or below the pilot's level). Actor 284's index 256
@@ -196,13 +225,14 @@ json pilot(unsigned actor,int stats,int spirits) {
 }
 // Each entry's work, model and place in the original list: the list itself, else its
 // alias's main record, else a listed record of the same name, else the table above.
-struct Listed {int work=-1;int model=-1;unsigned place=~0u;};
+struct Listed {int work=-1;int model=-1;unsigned place=~0u;int flag=-1;};
 void assign_works(json& list,const char* id_key,uint32_t table,unsigned rows,bool models,uint32_t aliases,unsigned alias_count,
                   std::span<const std::pair<uint16_t,int8_t>> fixed) {
     std::map<unsigned,Listed> listed;
     for(unsigned n=0;n<rows;++n) {
         const uint32_t at=table+n*6;
-        listed.emplace(u16(at),Listed{s16(at+2),models?s16(at+4):-1,n});
+        // The character list's third field is 1 for those who first appear on the enemy side.
+        listed.emplace(u16(at),Listed{s16(at+2),models?s16(at+4):-1,n,models?-1:int(u16(at+4))});
     }
     std::map<unsigned,unsigned> alias;
     for(unsigned n=0;n<alias_count;++n)alias[u16(aliases+n*4)]=u16(aliases+n*4+2);   // the last pair wins, as in the game
@@ -219,6 +249,7 @@ void assign_works(json& list,const char* id_key,uint32_t table,unsigned rows,boo
         e["work"]=work.work;e["place"]=work.place;
         if(work.work>=0)e["work_name"]=text(uint16_t(text_works+work.work));
         if(work.model>=0)e["model"]=text(uint16_t(text_models+work.model));
+        if(work.flag>=0)e["enemy"]=work.flag==1;
     }
     // Works in the order the original list first shows them, その他 last; within a work the
     // list's order, then the ROM's.
@@ -267,6 +298,35 @@ json build() {
         if(spirits>=0)key+=bytes(spirits_at+uint32_t(spirits)*spirits_size,spirits_size);
         if(kept.emplace(key,true).second)pilots.push_back(std::move(p));
     }
+    // 恋爱補正 partners (801F4C64 compares both partner fields). A holder or partner may be a
+    // duplicate record standing for its main one (the alias table). Mutual when the partner
+    // holds a row naming this character too; one-way otherwise (only this one gains).
+    std::map<unsigned,unsigned> alias;
+    for(unsigned n=0;n<actor_alias_count;++n)alias[u16(actor_aliases+n*4)]=u16(actor_aliases+n*4+2);
+    const auto main_of=[&](unsigned actor){return alias.contains(actor)?alias.at(actor):actor;};
+    const auto short_name=[](unsigned actor){return text(uint16_t(actor>=first_person && actor<first_person+people?text_people+actor-first_person:text_pilot_names+actor));};
+    const auto partners_of=[&](unsigned actor) {
+        std::vector<unsigned> out;
+        for(unsigned row=0;row<love_rows;++row) {
+            const int holder=s16(love_table+row*8+2);
+            if(holder<0 || main_of(unsigned(holder))!=main_of(actor))continue;
+            for(const uint32_t field:{4u,6u})
+                if(const int partner=s16(love_table+row*8+field);partner>=0 && std::find(out.begin(),out.end(),unsigned(partner))==out.end())out.push_back(unsigned(partner));
+        }
+        return out;
+    };
+    for(auto& p:pilots) {
+        const unsigned actor=p.at("actor").get<unsigned>();
+        json partners=json::array();
+        for(const unsigned partner:partners_of(actor)) {
+            bool mutual=false;
+            for(const unsigned back:partners_of(partner))mutual|=main_of(back)==main_of(actor);
+            json entry={{"actor",partner},{"name",short_name(partner)},{"mutual",mutual}};
+            add_art(entry,"portraits",partner);
+            partners.push_back(std::move(entry));
+        }
+        if(!partners.empty())p["love"]=partners;
+    }
     // Grouped first, so a repeated name is numbered in the order the page shows it.
     assign_works(units,"id",robot_list,robot_rows,true,unit_aliases,unit_alias_count,unit_works);
     assign_works(pilots,"actor",character_list,character_rows,false,actor_aliases,actor_alias_count,actor_works);
@@ -277,7 +337,14 @@ json build() {
         {"sp",0x100B},{"melee",0x100C},{"evade",0x100D},{"reaction",0x100E},{"ranged",0x1023},{"hit",0xFF4},{"skill",0x100F},{"spirits",0x1010},{"skills",0x1011},
         {"level",0xFE1}};
     for(const auto& [key,id]:keys)labels[key]=text(id);
-    return {{"units",units},{"pilots",pilots},{"labels",labels},{"weapon_labels",upgrade_page::weapon_labels_json(srw64_rdram)}};
+    // Each upgrade type's power and price per step, for the page's legend.
+    json types=json::array();
+    for(unsigned type=1;type<=4;++type) {
+        json power=json::array(),price=json::array();
+        for(unsigned n=0;n<upgrade_levels;++n){power.push_back(u16(weapon_increments+(type*upgrade_levels+n)*2));price.push_back(u32(weapon_prices[type-1]+n*4));}
+        types.push_back({{"power",power},{"price",price}});
+    }
+    return {{"units",units},{"pilots",pilots},{"labels",labels},{"upgrade_types",types},{"weapon_labels",upgrade_page::weapon_labels_json(srw64_rdram)}};
 }
 }
 
