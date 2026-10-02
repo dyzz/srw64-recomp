@@ -20,27 +20,40 @@ import subprocess
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_probe import ROOT, SDK, MIN_SDK, latest, run, sources, java, package  # noqa: E402
+from build_probe import ROOT, SDK, MIN_SDK, ARCHIVES, latest, cmake_bin, ndk, llvm, run, sources, java, package  # noqa: E402
 
 APP = Path(__file__).resolve().parent / 'app'
 GAME = Path(__file__).resolve().parent / 'game'
 PACKAGE, ACTIVITY = 'org.srw64.game', 'org.srw64.game.SetupActivity'
 
 
-def native(build: Path, source: dict[str, Path], prefix: Path, file_to_c: Path, prepare: bool = True) -> list[Path]:
-    ndk = latest(SDK / 'ndk')
-    cmake_bin = latest(SDK / 'cmake') / 'bin'
+def native(build: Path, source: dict[str, Path], prefix: Path, file_to_c: Path, prepare: bool = True,
+           quiet_game_code: bool = False) -> list[Path]:
+    ndk_root = ndk()
+    cmake = cmake_bin()
     if prepare:
         run(sys.executable, ROOT / 'tools/recomp/toolchain/prepare_rt64.py', stdout=subprocess.DEVNULL)
-    run(cmake_bin / 'cmake', '-S', GAME, '-B', build, '-G', 'Ninja',
-        f'-DCMAKE_MAKE_PROGRAM={cmake_bin / "ninja"}',
-        f'-DCMAKE_TOOLCHAIN_FILE={ndk / "build/cmake/android.toolchain.cmake"}',
+    run(cmake / 'cmake', '-S', GAME, '-B', build, '-G', 'Ninja',
+        f'-DCMAKE_MAKE_PROGRAM={cmake / "ninja"}',
+        f'-DCMAKE_TOOLCHAIN_FILE={ndk_root / "build/cmake/android.toolchain.cmake"}',
         '-DANDROID_ABI=arm64-v8a', f'-DANDROID_PLATFORM=android-{MIN_SDK}', '-DCMAKE_BUILD_TYPE=RelWithDebInfo',
         f'-DSRW64_SDL3_SOURCE={source["sdl3"]}', f'-DSRW64_SDL2_COMPAT_SOURCE={source["sdl2-compat"]}',
         f'-DSRW64_ANDROID_PREFIX={prefix}', f'-DRT64_FILE_TO_C={file_to_c}', f'-DPython3_EXECUTABLE={sys.executable}')
-    run(cmake_bin / 'cmake', '--build', build, '--target', 'srw64-gfx-host', 'SDL3-shared', '-j', str(os.cpu_count() or 8))
+    jobs = str(os.cpu_count() or 8)
+    if quiet_game_code:
+        # The code generated from the ROM stays out of the log (a public CI log): its
+        # compiler output goes to a file, and only the error count is shown.
+        log = build / 'game-code-build.log'
+        with log.open('w') as output:
+            failed = subprocess.run([str(cmake / 'cmake'), '--build', str(build), '--target', 'srw64_cpu', '-j', jobs],
+                                    stdout=output, stderr=subprocess.STDOUT).returncode
+        if failed:
+            errors = sum(line.count('error:') for line in log.read_text(errors='replace').splitlines())
+            raise SystemExit(f'srw64_cpu failed: {errors} errors (output kept out of the log)')
+        log.unlink()
+    run(cmake / 'cmake', '--build', build, '--target', 'srw64-gfx-host', 'SDL3-shared', '-j', jobs)
     libraries = [build / 'sdl3/libSDL3.so', build / 'sdl2-compat/libSDL2.so', build / 'host/libmain.so']
-    strip = ndk / 'toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip'
+    strip = llvm(ndk_root) / 'bin/llvm-strip'
     stripped = build / 'stripped'
     stripped.mkdir(exist_ok=True)
     for library in libraries:
@@ -76,7 +89,7 @@ def stage_assets(build: Path, deps: Path) -> Path:
         shutil.copyfile(path, target)
     licenses = resources / 'licenses'
     licenses.mkdir()
-    archives = Path(os.environ.get('SRW64_MAIN_TREE', ROOT)) / 'build/macos-deps/sources'
+    archives = ARCHIVES
     for name, pattern in (('sdl3', 'LICENSE.txt'), ('sdl2-compat', 'LICENSE.txt'), ('freetype', 'LICENSE.TXT'),
                           ('harfbuzz', 'COPYING'), ('icu', 'LICENSE')):
         found = sorted((archives / name).glob(f'*/{pattern}'))
@@ -91,6 +104,8 @@ def main() -> int:
     parser.add_argument('--install', action='store_true', help='adb install the APK')
     parser.add_argument('--run', action='store_true', help='start it and follow its log')
     parser.add_argument('--no-prepare', action='store_true', help='keep local RT64 experiments (skip prepare_rt64.py)')
+    parser.add_argument('--quiet-game-code', action='store_true',
+                        help='keep the generated game code\'s compiler output out of the log (CI)')
     parser.add_argument('--validation', type=Path, metavar='SO',
                         help="Khronos libVkLayer_khronos_validation.so (arm64) to ship; Plume enables it (the host builds without NDEBUG)")
     args = parser.parse_args()
@@ -100,7 +115,8 @@ def main() -> int:
     source = sources()
     tools = latest(SDK / 'build-tools')
     android_jar = latest(SDK / 'platforms') / 'android.jar'
-    libraries = native(args.build, source, prefix, host_file_to_c(args.build.parent), not args.no_prepare)
+    libraries = native(args.build, source, prefix, host_file_to_c(args.build.parent), not args.no_prepare,
+                       args.quiet_game_code)
     if args.validation:
         libraries.append(args.validation.resolve(strict=True))
     dex = java(args.build, source['sdl3'], android_jar, tools, APP / 'java')
