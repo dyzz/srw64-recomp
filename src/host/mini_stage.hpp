@@ -139,7 +139,7 @@ inline Image parse(const nlohmann::json& document) {
 inline std::pair<campaign::Info,std::map<uint32_t,Image>> parse_campaign(const nlohmann::json& document) {
     if(document.value("schema","")!="srw64.campaign-image.v1")throw std::runtime_error("campaign: unsupported schema");
     campaign::Info info;
-    info.id=document.at("id").get<std::string>();info.name=document.value("name",info.id);info.version=document.value("version","");
+    info.id=document.at("id").get<std::string>();info.name=document.value("name",nlohmann::json(info.id));info.version=document.value("version","");
     info.start=document.at("start_scene").get<uint32_t>();
     std::map<uint32_t,Image> stages;
     for(const auto& stage:document.at("stages")) {

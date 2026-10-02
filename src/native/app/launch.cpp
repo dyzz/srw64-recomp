@@ -49,6 +49,27 @@ static std::string read_campaign_id(const fs::path& campaign) {
     return id;
 }
 
+std::optional<fs::path> take_campaign_switch(const fs::path& user_dir) {
+    const auto file=campaign_switch_file(user_dir);
+    if(!fs::is_regular_file(file))return std::nullopt;
+    const auto document=json::parse(read_text(file,65536),nullptr,false);
+    std::error_code ignored;fs::remove(file,ignored);
+    if(document.is_discarded() || document.value("schema","")!="srw64.campaign-switch.v1" || !document.contains("campaign") ||
+       !document.at("campaign").is_string())return std::nullopt;
+    return fs::path(document.at("campaign").get<std::string>());
+}
+std::vector<std::string> switch_arguments(const Options& options,const fs::path& campaign) {
+    std::vector<std::string> arguments{"--play","--rom",options.rom.string(),
+        "--user-dir",(options.user_dir.empty()?default_user_dir():options.user_dir).string()};
+    // Language and rules are not passed on: the game keeps the ones chosen since (in
+    // presentation.json and rules.json), which the first start's options would undo.
+    if(!options.content.empty())arguments.insert(arguments.end(),{"--content",options.content.string()});
+    if(options.resolution_scale)arguments.insert(arguments.end(),{"--resolution-scale",std::to_string(options.resolution_scale)});
+    if(options.mute)arguments.push_back("--mute");
+    if(!campaign.empty())arguments.insert(arguments.end(),{"--campaign",campaign.string()});
+    return arguments;
+}
+
 int run_standalone(const Options& requested,const GameIdentity& game,const HostMain& host,const ContentImporter& importer) {
     Options options=requested;
     if(!options.campaign.empty())options.campaign_id=read_campaign_id(options.campaign);
@@ -203,6 +224,15 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         set_environment(key,value);
     // A custom campaign: its stages replace the scenes they borrow (mini_stage.hpp).
     if(!options.campaign.empty())set_environment("SRW64_CAMPAIGN",options.campaign.string());
+    // The title's extra scenarios (campaign_library.hpp): the player's campaigns, then the
+    // bundled ones; each one's saves; and the file a switch is asked for in.
+    std::string campaign_dirs=(session.user_dir()/"campaigns").string();
+    if(const auto bundled=bundled_resource("campaigns");!bundled.empty())campaign_dirs+=campaign_dir_separator+bundled.string();
+    set_environment("SRW64_CAMPAIGN_DIRS",campaign_dirs);
+    set_environment("SRW64_CAMPAIGN_SAVES",(session.user_dir()/"campaigns").string());
+    const auto switch_file=campaign_switch_file(session.user_dir());
+    std::error_code stale;fs::remove(switch_file,stale);
+    set_environment("SRW64_CAMPAIGN_SWITCH",switch_file.string());
     if(hd_art) {
         set_environment("SRW64_ART_PACK",(hd/"art").string());
         // The golden beacon replaces the dashed ring only with both model packs loaded.
@@ -222,7 +252,11 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     const int result=host(static_cast<int>(arguments.size()),argv.data());
     const bool committed=result==0 && session.commit_save(session.output_dir()/"runtime-data/saves"/game.save_file);
     report["status"]=result==0?"complete":"host-failed";report["exit_code"]=result;report["save_committed"]=committed;
+    // The title asked for another campaign (or the main game): the saves are in, so the
+    // caller starts the program again with it (relaunch).
+    const bool switching=result==0 && fs::is_regular_file(switch_file);
+    if(switching)report["campaign_switch"]=read_json(switch_file,65536);
     atomic_write(session.session_dir()/"launch.json",report.dump(2)+"\n");
-    return result;
+    return switching?switch_campaign_exit:result;
 }
 }

@@ -220,6 +220,7 @@ def compile_campaign(path: Path) -> dict:
             if target != 500 and target not in scenes:
                 raise ValueError(f"Stage {stage['key']}: 3D4B {target} leads outside the campaign")
     return {"schema": CAMPAIGN_IMAGE_SCHEMA, "id": document["id"], "name": document.get("name", document["id"]),
+            "description": document.get("description"), "author": str(document.get("author", "")),
             "version": str(document.get("version", "")), "start_scene": int(stages[document["start"]]["scene"]),
             "stages": compiled}
 

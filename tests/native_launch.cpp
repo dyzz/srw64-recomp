@@ -187,7 +187,40 @@ void installed_hd() {
     fs::remove(hd/"hd.json");
     rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"an incomplete HD pack was accepted");
 }
+// The title's DLC entry (campaign_library.hpp): a campaign plays from its own saves, and a
+// switch asked for by the host makes run_standalone return switch_campaign_exit with the
+// request left for take_campaign_switch.
+void campaign_switch() {
+    Fixture f;
+    const auto image=f.root/"sample.json";
+    atomic_write(image,json({{"schema","srw64.campaign-image.v1"},{"id","srw64.sample"},{"stages",json::array()}}).dump());
+    f.options.campaign=image;
+    check(run_standalone(f.options,f.game,[&](int,char**) {
+        check(env("SRW64_CAMPAIGN")==image.string(),"campaign not passed to the host");
+        check(fs::path(env("SRW64_SAVE_LIBRARY"))==f.options.user_dir/"campaigns"/"srw64.sample"/"saves","campaign saves not apart");
+        check(fs::path(env("SRW64_CAMPAIGN_SAVES"))==f.options.user_dir/"campaigns","campaign saves root");
+        check(env("SRW64_CAMPAIGN_DIRS").starts_with((f.options.user_dir/"campaigns").string()),"installed campaigns not offered");
+        check(fs::path(env("SRW64_CAMPAIGN_SWITCH"))==campaign_switch_file(f.options.user_dir),"switch file");
+        atomic_write(env("SRW64_CAMPAIGN_SWITCH"),json({{"schema","srw64.campaign-switch.v1"},{"campaign",""}}).dump());
+        return 0;
+    })==switch_campaign_exit,"a switch did not end with switch_campaign_exit");
+    const auto back=take_campaign_switch(f.options.user_dir);
+    check(back && back->empty() && !fs::exists(campaign_switch_file(f.options.user_dir)),"switch to the main game not taken");
+    check(!take_campaign_switch(f.options.user_dir),"a taken switch was read twice");
+    const auto arguments=switch_arguments(f.options,image);
+    check(arguments.size()>=4 && arguments[0]=="--play" && arguments[arguments.size()-2]=="--campaign" && arguments.back()==image.string(),
+          "relaunch arguments do not name the campaign");
+    check(std::find(arguments.begin(),arguments.end(),"--language")==arguments.end(),"relaunch would undo the chosen language");
+    // Without a request the launch ends as the host did; a stale request from an earlier
+    // run is cleared first.
+    atomic_write(campaign_switch_file(f.options.user_dir),"{}");
+    f.options.campaign.clear();f.options.campaign_id.clear();
+    check(run_standalone(f.options,f.game,[](int,char**){return 0;})==0,"a stale switch request was taken");
+    atomic_write(f.root/"bad.json",json({{"schema","srw64.campaign-image.v1"},{"id","../escape"}}).dump());
+    f.options.campaign=f.root/"bad.json";
+    rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"a campaign id with a path was accepted");
 }
-int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();
+}
+int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaign_switch();
     std::cout<<checks<<" bootstrap checks passed\n";return 0;}
 catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}}

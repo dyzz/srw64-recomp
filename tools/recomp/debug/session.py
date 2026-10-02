@@ -107,7 +107,7 @@ class Session:
 
     @classmethod
     def launch(cls, language: str | None = None, images: str | None = None, rules=None, save: str | None = None,
-               mini_stage: str | None = None, campaign: str | None = None,
+               mini_stage: str | None = None, campaign: str | None = None, campaigns: bool = False,
                reuse_build: bool = False, audio: bool = False, binary: str | None = None,
                resolution_scale: int | None = None,
                timeout: float = 900.0, env: dict | None = None,
@@ -160,6 +160,22 @@ class Session:
             image.write_text(json.dumps(compile_campaign(Path(campaign)), ensure_ascii=False) + "\n")
             environment["SRW64_CAMPAIGN"] = str(image)
             environment["SRW64_SAVE_LIBRARY"] = str(run / "campaign-saves")
+        for key in ("SRW64_CAMPAIGN_DIRS", "SRW64_CAMPAIGN_SAVES", "SRW64_CAMPAIGN_SWITCH"):
+            environment.pop(key, None)
+        if campaigns:
+            # The title's extra scenarios, as the launcher offers them: every campaign under
+            # config/recomp/campaigns compiled beside the run, and the file a switch is
+            # asked for in (the launcher would then restart; a debug run just quits).
+            sys.path.insert(0, str(ROOT / "tools"))
+            from recomp.script_lab.mini_stage import compile_campaign
+            installed = run.parent / (run.name + ".campaigns")
+            for source in sorted((ROOT / "config/recomp/campaigns").glob("*/campaign.json")):
+                image = compile_campaign(source)
+                (installed / image["id"]).mkdir(parents=True, exist_ok=True)
+                (installed / image["id"] / "campaign.json").write_text(json.dumps(image, ensure_ascii=False) + "\n")
+            environment["SRW64_CAMPAIGN_DIRS"] = str(installed)
+            environment["SRW64_CAMPAIGN_SAVES"] = str(run.parent / (run.name + ".campaign-saves"))
+            environment["SRW64_CAMPAIGN_SWITCH"] = str(run.parent / (run.name + ".campaign-switch.json"))
         environment.pop("SRW64_DEBUG_OWNER_FD", None)
         owner = lease = None
         if not detach:
