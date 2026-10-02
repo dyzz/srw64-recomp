@@ -25,6 +25,10 @@ MAIN_TREE = Path(os.environ.get('SRW64_MAIN_TREE', ROOT))
 SDK = Path(os.environ.get('ANDROID_HOME', Path.home() / 'Library/Android/sdk'))
 PACKAGE, ACTIVITY = 'org.srw64.probe', 'org.srw64.probe.ProbeActivity'
 MIN_SDK, TARGET_SDK = 28, 35
+NDK_VERSION = '28.2.13676358'   # sdkmanager "ndk;28.2.13676358"
+CMAKE_VERSION = '3.31.6'        # sdkmanager "cmake;3.31.6"
+sys.path.insert(0, str(ROOT / 'tools/release'))
+from build_macos_dependencies import source  # noqa: E402  the pinned archives, checked
 
 
 def latest(directory: Path) -> Path:
@@ -34,37 +38,63 @@ def latest(directory: Path) -> Path:
     return versions[-1]
 
 
+def ndk() -> Path:
+    pinned = SDK / 'ndk' / NDK_VERSION
+    if not pinned.is_dir():
+        raise SystemExit(f'Install the pinned NDK: sdkmanager "ndk;{NDK_VERSION}"')
+    return pinned
+
+
+def cmake_bin() -> Path:
+    pinned = SDK / 'cmake' / CMAKE_VERSION / 'bin'
+    if not pinned.is_dir():
+        raise SystemExit(f'Install the pinned CMake: sdkmanager "cmake;{CMAKE_VERSION}"')
+    return pinned
+
+
+def llvm(ndk_root: Path) -> Path:
+    """The NDK's toolchain for this machine (darwin-x86_64 or linux-x86_64)."""
+    hosts = [p for p in (ndk_root / 'toolchains/llvm/prebuilt').iterdir() if p.is_dir()]
+    if len(hosts) != 1:
+        raise SystemExit(f'Expected one host toolchain in {ndk_root}')
+    return hosts[0]
+
+
+def javac() -> Path:
+    if os.environ.get('JAVA_HOME'):
+        return Path(os.environ['JAVA_HOME']) / 'bin/javac'
+    return Path(subprocess.run(['/usr/libexec/java_home', '-v', '17'], capture_output=True, text=True, check=True).stdout.strip()) / 'bin/javac'
+
+
 def run(*command, **kwargs):
     print('+', ' '.join(str(c) for c in command), flush=True)
     return subprocess.run([str(c) for c in command], check=True, **kwargs)
 
 
-def sources() -> dict[str, Path]:
+ARCHIVES = MAIN_TREE / 'build/macos-deps/sources'   # the archive cache macOS and Linux share
+
+
+def sources(names=('sdl3', 'sdl2-compat')) -> dict[str, Path]:
+    """The pinned sources (config/recomp/macos-dependencies.json), fetched and checked once."""
     lock = json.loads((ROOT / 'config/recomp/macos-dependencies.json').read_text())['sources']
-    cache = MAIN_TREE / 'build/macos-deps/sources'
-    found = {}
-    for name in ('sdl3', 'sdl2-compat'):
-        stamp = cache / f'{name}.sha256'
-        if not stamp.exists() or stamp.read_text().strip() != lock[name]['sha256']:
-            raise SystemExit(f'{name}: unpack the pinned source first (tools/release/build_macos_dependencies.py)')
-        roots = list((cache / name).iterdir())
-        found[name] = roots[0]
+    ARCHIVES.mkdir(parents=True, exist_ok=True)
+    found = {name: source(name, lock[name], ARCHIVES) for name in names}
     found['plume'] = MAIN_TREE / 'build/recomp/upstream/RT64/src/contrib/plume'
     return found
 
 
 def native(build: Path, source: dict[str, Path]) -> list[Path]:
-    ndk = latest(SDK / 'ndk')
-    cmake_bin = latest(SDK / 'cmake') / 'bin'
-    run(cmake_bin / 'cmake', '-S', HERE, '-B', build, '-G', 'Ninja',
-        f'-DCMAKE_MAKE_PROGRAM={cmake_bin / "ninja"}',
-        f'-DCMAKE_TOOLCHAIN_FILE={ndk / "build/cmake/android.toolchain.cmake"}',
+    ndk_root = ndk()
+    cmake = cmake_bin()
+    run(cmake / 'cmake', '-S', HERE, '-B', build, '-G', 'Ninja',
+        f'-DCMAKE_MAKE_PROGRAM={cmake / "ninja"}',
+        f'-DCMAKE_TOOLCHAIN_FILE={ndk_root / "build/cmake/android.toolchain.cmake"}',
         '-DANDROID_ABI=arm64-v8a', f'-DANDROID_PLATFORM=android-{MIN_SDK}', '-DCMAKE_BUILD_TYPE=RelWithDebInfo',
         f'-DSRW64_SDL3_SOURCE={source["sdl3"]}', f'-DSRW64_SDL2_COMPAT_SOURCE={source["sdl2-compat"]}',
         f'-DSRW64_PLUME_SOURCE={source["plume"]}')
-    run(cmake_bin / 'cmake', '--build', build, '-j', str(os.cpu_count() or 8))
+    run(cmake / 'cmake', '--build', build, '-j', str(os.cpu_count() or 8))
     libraries = [build / 'sdl3/libSDL3.so', build / 'sdl2-compat/libSDL2.so', build / 'libmain.so']
-    strip = ndk / 'toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip'
+    strip = llvm(ndk_root) / 'bin/llvm-strip'
     stripped = build / 'stripped'
     stripped.mkdir(exist_ok=True)
     for library in libraries:
@@ -78,8 +108,7 @@ def java(build: Path, sdl3: Path, android_jar: Path, tools: Path, own: Path = HE
         shutil.rmtree(directory, ignore_errors=True)
         directory.mkdir(parents=True)
     files = sorted((sdl3 / 'android-project/app/src/main/java').rglob('*.java')) + sorted(own.rglob('*.java'))
-    javac = Path(subprocess.run(['/usr/libexec/java_home', '-v', '17'], capture_output=True, text=True, check=True).stdout.strip()) / 'bin/javac'
-    run(javac, '-nowarn', '-Xlint:none', '-source', '11', '-target', '11', '-encoding', 'UTF-8',
+    run(javac(), '-nowarn', '-Xlint:none', '-source', '11', '-target', '11', '-encoding', 'UTF-8',
         '-classpath', android_jar, '-d', classes, *files)
     run(tools / 'd8', '--release', '--min-api', MIN_SDK, '--lib', android_jar, '--output', dex,
         *sorted(classes.rglob('*.class')))
@@ -103,13 +132,25 @@ def package(build: Path, libraries: list[Path], dex: Path, android_jar: Path, to
             target.write(library, f'lib/arm64-v8a/{library.name}', compress_type=zipfile.ZIP_STORED)
     aligned = build / 'aligned.apk'
     run(tools / 'zipalign', '-f', '-P', '16', '4', unaligned, aligned)
-    keystore = build.parent / 'probe-debug.keystore'
-    if not keystore.exists():
-        run('keytool', '-genkeypair', '-keystore', keystore, '-storepass', 'android', '-keypass', 'android',
-            '-alias', 'probe', '-keyalg', 'RSA', '-keysize', '2048', '-validity', '10000',
-            '-dname', 'CN=SRW64 probe')
+    # The release key lets a build install over any other (and keep the player's files):
+    # SRW64_ANDROID_KEYSTORE with its password in SRW64_ANDROID_KEYSTORE_PASSWORD (CI), or
+    # ~/.config/srw64/android-release.keystore with the password in the .password file
+    # beside it. Without one, a key kept under build/android.
+    local = Path.home() / '.config/srw64/android-release.keystore'
+    if os.environ.get('SRW64_ANDROID_KEYSTORE'):
+        keystore, password = Path(os.environ['SRW64_ANDROID_KEYSTORE']), 'env:SRW64_ANDROID_KEYSTORE_PASSWORD'
+    elif local.is_file():
+        keystore, password = local, f'file:{local.with_suffix(".password")}'
+    else:
+        keystore, password = None, 'pass:android'
+    if keystore is None:
+        keystore = build.parent / 'probe-debug.keystore'
+        if not keystore.exists():
+            run('keytool', '-genkeypair', '-keystore', keystore, '-storepass', 'android', '-keypass', 'android',
+                '-alias', 'probe', '-keyalg', 'RSA', '-keysize', '2048', '-validity', '10000',
+                '-dname', 'CN=SRW64 probe')
     apk = build / f'{name}.apk'
-    run(tools / 'apksigner', 'sign', '--ks', keystore, '--ks-pass', 'pass:android', '--out', apk, aligned)
+    run(tools / 'apksigner', 'sign', '--ks', keystore, '--ks-pass', password, '--out', apk, aligned)
     return apk
 
 

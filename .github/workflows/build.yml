@@ -1,5 +1,6 @@
-# Windows x64 and Linux x64 (Steam Deck) builds (docs/design/three-platform-port.md; the
-# macOS app and the HD pack are built on the Mac by tools/release/build_release.py).
+# Windows x64, Linux x64 (Steam Deck) and Android arm64 builds (docs/design/three-platform-port.md,
+# docs/design/android-port.md; the macOS app and the HD pack are built on the Mac by
+# tools/release/build_release.py).
 #
 # The game code is recompiled from the ROM, which never enters this public repository:
 # the generate job reads it from the private dyzz/srw64-ci-inputs through a read-only
@@ -11,6 +12,11 @@ name: build
 
 on:
   workflow_dispatch:
+    inputs:
+      android_only:
+        description: Build only the Android package (testing a branch)
+        type: boolean
+        default: false
   push:
     branches: [main]
     tags: ["v*"]
@@ -84,6 +90,7 @@ jobs:
 
   windows:
     needs: generate
+    if: ${{ !inputs.android_only }}
     runs-on: windows-2022
     env:
       VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}\vcpkg-cache
@@ -194,6 +201,7 @@ jobs:
 
   linux:
     needs: generate
+    if: ${{ !inputs.android_only }}
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -240,4 +248,99 @@ jobs:
         with:
           name: SRW64-linux-x64-encrypted
           path: SRW64-linux-x64.tar.gz.enc
+          retention-days: 7
+
+  android:
+    needs: generate
+    runs-on: ubuntu-24.04
+    env:
+      SRW64_ANDROID_NDK: "28.2.13676358"
+      SRW64_ANDROID_CMAKE: "3.31.6"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: generated-encrypted
+
+      - name: Decrypt the generated inputs
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:KEY -in generated.tgz.enc -out generated.tgz
+          tar -xzf generated.tgz
+          rm generated.tgz.enc generated.tgz
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tools
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q clang
+          python -m venv .venv
+          .venv/bin/python -m pip install -q -e . -r requirements.lock
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install \
+            "ndk;$SRW64_ANDROID_NDK" "cmake;$SRW64_ANDROID_CMAKE" "build-tools;36.0.0" "platforms;android-36" > /dev/null
+          ls "$ANDROID_HOME/ndk" "$ANDROID_HOME/cmake"
+
+      # FreeType, HarfBuzz and ICU for Android (and the build machine's ICU for its data
+      # tools), and the pinned source archives.
+      - name: Dependency cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/android/deps
+            build/macos-deps/sources
+          key: android-deps-${{ hashFiles('config/recomp/macos-dependencies.json', 'tools/release/android/build_dependencies.py') }}-v1
+
+      - name: FreeType, HarfBuzz, ICU (static, arm64)
+        run: .venv/bin/python tools/release/android/build_dependencies.py --jobs 4 > deps-build.log 2>&1 || (tail -40 deps-build.log; exit 1)
+
+      # Signed with the release key when the repository has it, so a CI package installs
+      # over a local build (and keeps the saves); otherwise with a key made for this run.
+      - name: Release key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            printf '%s' "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
+            echo "SRW64_ANDROID_KEYSTORE=$RUNNER_TEMP/release.keystore" >> "$GITHUB_ENV"
+          else
+            echo "::warning::No ANDROID_KEYSTORE_BASE64 secret: the package is signed with a throwaway key"
+          fi
+
+      - name: Build the APK
+        env:
+          SRW64_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          .venv/bin/python tools/release/android/build_game.py --no-prepare --quiet-game-code
+          apk=build/android/game/srw64-android.apk
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 "$apk" > /dev/null
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs "$apk" | head -3
+          unzip -l "$apk" | grep -E "lib/arm64-v8a/|classes.dex"
+          rev=$(git rev-parse --short HEAD)
+          mv "$apk" "SRW64-android-arm64-$rev.apk"
+
+      # The package carries the recompiled game, like the other platforms' downloads; it
+      # stays encrypted until a release is public.
+      - name: Encrypt the package
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          apk=$(ls SRW64-android-arm64-*.apk)
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in "$apk" -out SRW64-android-arm64.apk.enc
+          rm "$apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SRW64-android-arm64-encrypted
+          path: SRW64-android-arm64.apk.enc
           retention-days: 7
