@@ -22,4 +22,7 @@ uint16_t input(uint16_t buttons);
 // list) and the 14 weapon column labels, as the weapon screens show them.
 nlohmann::json weapon_row_json(const uint8_t* ram,uint32_t unit,unsigned index);
 nlohmann::json weapon_labels_json(const uint8_t* ram);
+// Splits a row's menu "name" (格／射 + pure name + P／B／MAP) into "display_name" and
+// "markers", given the weapon's pure name; also used by the title's Library.
+void weapon_markers(nlohmann::json& row,const std::string& pure);
 }
