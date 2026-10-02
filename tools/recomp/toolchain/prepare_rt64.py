@@ -70,7 +70,8 @@ def main() -> int:
                                            "src/tools/spirv_cross_msl/CMakeLists.txt",
                                            "src/hle/rt64_present_queue.cpp", "src/rhi/rt64_render_hooks.h",
                                            "src/rhi/rt64_render_hooks.cpp", "src/gui/rt64_file_dialog.cpp",
-                                           "src/hle/rt64_framebuffer_manager.cpp", "src/hle/rt64_workload_queue.cpp"}
+                                           "src/hle/rt64_framebuffer_manager.cpp", "src/hle/rt64_workload_queue.cpp",
+                                           "src/hle/rt64_rdp.cpp"}
                                            | set(NATIVE_MODEL_PATCHES)),
                                 (plume, {"plume_metal.cpp", "plume_vulkan.cpp", "plume_apple.h", "plume_apple.mm"})):
         changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=repository, text=True).splitlines())
@@ -371,6 +372,24 @@ def main() -> int:
                            rect_scale_apply),
                           ('#include "rt64_workload_queue.h"\n',
                            '#include "rt64_workload_queue.h"\n\n#include <cmath>\n\n#include "../include/rt64_extended_gbi.h"\n')]))
+    # The scissor fix (rect.fixRectLR: a rectangle's right edge within a pixel of the
+    # scissor's moves onto it) compared raw numbers whatever their origins. The widened
+    # tactical map (src/host/wide_map.cpp) draws its tiles from the picture's left edge
+    # under a scissor whose right edge counts from the picture's right: at 16:9 the view
+    # starts a quarter pixel in, the tile ending at 320 (1281) met the scissor's 1279 and
+    # lost its last column, a black line through the map. The fix now applies to a
+    # rectangle in the game's own coordinates (as at 4:3) or one counted from the
+    # scissor's origin, both edges compared where they land.
+    records.append(patch(checkout, "src/hle/rt64_rdp.cpp",
+                         "            if ((abs(scissorRect.lrx - lrx) <= 4) && (ulx < scissorRect.lrx)) {\n"
+                         "                lrx = scissorRect.lrx;\n"
+                         "            }\n",
+                         "            const uint16_t scissorRightOrigin = extended.scissorRightOriginStack[scissorStackSize - 1];\n"
+                         "            const int32_t movedLrx = movedFromOrigin(lrx, extAlignment.rightOrigin);\n"
+                         "            const bool sameOrigin = (extAlignment.rightOrigin == G_EX_ORIGIN_NONE) || (extAlignment.rightOrigin == scissorRightOrigin);\n"
+                         "            if (sameOrigin && (abs(scissorRect.lrx - movedLrx) <= 4) && (movedFromOrigin(ulx, extAlignment.leftOrigin) < scissorRect.lrx)) {\n"
+                         "                lrx += scissorRect.lrx - movedLrx;\n"
+                         "            }\n"))
     recorded = {r['path'] for r in records}
     for relative in NATIVE_MODEL_PATCHES:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:

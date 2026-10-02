@@ -1,0 +1,4640 @@
+{
+ "schema_version": 1,
+ "source_policy": {
+  "authority": "ROM, stage scripts and code analysis: docs/gameplay/battle-formulas.md, rule-fixes.md, upgrade-inheritance.md, upgrade-limits.md, link-battler.md",
+  "compared_with": "https://akurasu.net/wiki/Super_Robot_Wars/64 (differences are marked {≠} / {+}; {?} = not yet verified in play)"
+ },
+ "tabs": [
+  {
+   "id": "spirits",
+   "label": "Spirit Commands",
+   "intro": "SP costs come from the game data (cost table at ROM 0x100AD0, ordered by Spirit Command ID), and each effect is verified in code: a command can be cast as long as SP is at least the cost; “until next turn” means it's cleared for everyone when the next turn begins, so an effect used in the player phase lasts through the whole enemy phase. Compared with Akurasu, the descriptions of Trust, Faith, Resupply, Accel, Valor/Soul, Cover and Taunt differ, and many conditions Akurasu doesn't list are added.",
+   "blocks": [
+    {
+     "type": "table",
+     "title": "Spirit Command list",
+     "columns": [
+      "Name",
+      "SP cost",
+      "Target",
+      "Duration",
+      "Effect"
+     ],
+     "rows": [
+      [
+       "Self-Destruct",
+       "1",
+       "Self",
+       "Instant",
+       "Destroys yourself, dealing damage equal to your current HP to every unit adjacent up, down, left or right (including allies), ignoring armor, terrain and barriers; units in Stealth take no damage, Libra takes only 10; unusable with no adjacent units {+}"
+      ],
+      [
+       "Scan",
+       "1",
+       "1 enemy",
+       "Instant",
+       "View the target's status; usable only on enemies you have not yet fought or used Scan on, and the status stays visible afterward {+}"
+      ],
+      [
+       "Accel",
+       "10",
+       "Self",
+       "Next move {≠}",
+       "Move +3; kept as long as you don't move, not cleared at turn change"
+      ],
+      [
+       "Mercy",
+       "10",
+       "Self",
+       "One battle",
+       "If the target has 20 HP or more and your Skill is strictly higher than theirs, the attack won't destroy them, leaving 10 HP; also works on counterattacks {+}"
+      ],
+      [
+       "Focus",
+       "15",
+       "Self",
+       "Until next turn",
+       "Hit and evasion rates +30%"
+      ],
+      [
+       "Flash",
+       "15",
+       "Self",
+       "Until one evade {+}",
+       "Completely evades one enemy attack; Flash takes priority when it meets Bullseye; stays until you're attacked, even across turns"
+      ],
+      [
+       "Vigor",
+       "20",
+       "Self",
+       "Instant",
+       "Restores 30% of own max HP (rounded down); can't be used at full HP"
+      ],
+      [
+       "Gain",
+       "20",
+       "Self",
+       "One battle",
+       "Experience ×2 from the next battle"
+      ],
+      [
+       "Bullseye",
+       "25",
+       "Self",
+       "Until next turn",
+       "100% hit rate, ignoring the target's Afterimage and Parry; if the target used Flash, Flash takes priority; Dummy can still block it {+}"
+      ],
+      [
+       "Trust",
+       "30",
+       "1 ally (self allowed) {+}",
+       "Instant",
+       "Restores 30% of the chosen unit's max HP (rounded down) {≠}"
+      ],
+      [
+       "Wall",
+       "30",
+       "Self",
+       "Until next turn",
+       "Doubles own armor (doubled armor goes into the damage formula) {+}"
+      ],
+      [
+       "Cover",
+       "35",
+       "1 ally (not self)",
+       "Until attacked once {≠}",
+       "The next time the chosen ally is attacked, you fight in its place, at any range; does not cover an ally that used Flash; ends if you are shot down or either unit boards, combines or uses Separate; no turn limit"
+      ],
+      [
+       "Taunt",
+       "35",
+       "1 enemy",
+       "Until it wears off {≠}",
+       "Makes the chosen enemy target only you, at any range; it lasts until you are shot down, or either side boards, combines or Separates, with no turn limit; some bosses and elites are immune to Taunt {+}"
+      ],
+      [
+       "Valor",
+       "40",
+       "Self",
+       "One battle {≠}",
+       "Damage ×2 in the next battle (counterattacks included); can't be used while Valor or Soul is active"
+      ],
+      [
+       "Spirit",
+       "40",
+       "Self",
+       "Instant",
+       "All pilots of the unit get Will +10 (max 150)"
+      ],
+      [
+       "Guts",
+       "40",
+       "Self",
+       "Instant",
+       "Fully restores own HP; unusable at full HP"
+      ],
+      [
+       "Fortune",
+       "45",
+       "Self",
+       "One battle",
+       "Funds ×2 from the next battle (multiplied with the kill bonus; at most 65,535 per unit destroyed)"
+      ],
+      [
+       "Daunt",
+       "50",
+       "1 enemy",
+       "Instant",
+       "Target enemy unit's pilots all get Will −10, down to a minimum of 50; the target's main pilot must have Will 51 or higher {+}"
+      ],
+      [
+       "Soul",
+       "60",
+       "Self",
+       "One battle {≠}",
+       "Damage ×3 in the next battle (counterattacks included); doesn't stack with Valor — an active Valor is cancelled on use (the SP spent on Valor is wasted) {+}"
+      ],
+      [
+       "Stealth",
+       "60",
+       "Self",
+       "Until next turn",
+       "Can't be attacked by enemies, and targets can't counter its attacks; self-destructs can't hurt it either {+}"
+      ],
+      [
+       "Zeal",
+       "60",
+       "Self",
+       "Instant",
+       "+1 action remaining this turn; used before acting, you can act twice this turn"
+      ],
+      [
+       "Resupply",
+       "65",
+       "1 ally (not self)",
+       "Instant",
+       "Fully restores the target unit's EN and all ammo, at any range; Will is unchanged {≠}"
+      ],
+      [
+       "Rouse",
+       "70",
+       "1 ally (self allowed) {+}",
+       "Instant",
+       "Target unit's pilots all get Will +10 (max 150)"
+      ],
+      [
+       "Disrupt",
+       "70",
+       "All enemies",
+       "Until next turn",
+       "Halves the hit rate of every enemy on the map (third parties included), on counterattacks too; Bullseye and Flash are unaffected"
+      ],
+      [
+       "Faith",
+       "70",
+       "All allies {≠}",
+       "Instant",
+       "All ally units on the map with HP not full (including self) recover 50% of max HP"
+      ],
+      [
+       "Love",
+       "90",
+       "All allies",
+       "Instant",
+       "All ally units on the map (including self) fully recover HP"
+      ],
+      [
+       "Enable",
+       "90",
+       "1 ally (not self)",
+       "Instant",
+       "Lets 1 unit that has already acted this turn act again"
+      ],
+      [
+       "Miracle",
+       "100",
+       "Self",
+       "Instant",
+       "The in-game description is “????”; it actually triggers Guts, Spirit ×3, Accel, Bullseye, Flash, Soul and Fortune in turn, skipping any already active; costs only 100 SP"
+      ],
+      [
+       "Prayer",
+       "100",
+       "1 ally (not self)",
+       "Instant",
+       "Each pilot on the target unit recovers 50 SP (up to the maximum)"
+      ],
+      [
+       "Revive",
+       "120",
+       "1 ally",
+       "Instant",
+       "Choose 1 destroyed ally unit to Revive beside you: HP, EN, ammo and SP fully restored, Will back to 100 (+5 per equipped Shuffle Crest), spirit effects cleared, and it can act this turn {+}"
+      ]
+     ],
+     "notes": [
+      "“Duration” follows when the code clears the effect: Accel clears after the next move; Focus, Wall, Bullseye, Disrupt and Stealth clear for everyone when the turn count increases (the next turn); Valor, Soul, Fortune, Gain and Mercy clear after one battle ends, for both attacker and defender; Flash and Cover clear after triggering; Taunt lasts until a cancel condition occurs",
+      "Status-type Spirit Commands are recorded on the unit's main pilot, and ones used by sub-pilots also apply to the whole unit; the three pilots of a Getter-type unit share one set of statuses {+}",
+      "When a Spirit Command changes Will, it is capped at 150 and floored at 50 {+}",
+      "Points where Akurasu disagrees with the code: Trust (Akurasu: restores 2000), Faith (Akurasu: restores half HP to one ally), Resupply (Akurasu: target's Will −10; the Will drop actually comes from the unit command “Resupply” — the Spirit Command Resupply doesn't lower it), Accel (Akurasu: lasts 1 turn), Valor/Soul (Akurasu: one attack), Cover and Taunt (Akurasu: one battle) {≠}",
+      "The enemy AI never uses Spirit Commands on its own; any Spirit Command effects on enemies come from story commands and cost no SP {+}",
+      "The game data also has an unnamed Spirit Command no. 31 that nobody can learn: cost 1, own Will +30; never used in normal play {+}"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Who learns it",
+     "columns": [
+      "Spirits",
+      "Allies who learn it",
+      "Earliest learn level",
+      "Representative pilots (level learned)"
+     ],
+     "rows": [
+      [
+       "Self-Destruct",
+       "6",
+       "1",
+       "Quatre 1, Naida 1, Heero 1, Boss 1, Trowa 1, Duo 1"
+      ],
+      [
+       "Scan",
+       "12",
+       "1",
+       "Dr. Hazuki* 1, Kirika 1, Kosuke* 1, Hilde 1, Keiko* 1, Henken 1, Roanne 1, Elle 1, etc."
+      ],
+      [
+       "Accel",
+       "35",
+       "1",
+       "Master Asia 1, Quattro 1, Kou 1, Zechs* 1, Milliardo* 1, Show 1, Eiji 1, Garalia 3, etc."
+      ],
+      [
+       "Mercy",
+       "8",
+       "1",
+       "Noin 1, Amuro 6, Ryo 7, Cecily* 7, Seabook* 17, Uchuta* 19, Chizuru* 23, Juzo* 24"
+      ],
+      [
+       "Focus",
+       "38",
+       "1",
+       "George 1, Chara* 1, Aina 1, Rosamia 1, Sai Saici 1, Kyral* 3, Chibodee 3, Ple-Two 3, etc."
+      ],
+      [
+       "Flash",
+       "72",
+       "1",
+       "Banjo 1, Master Asia 1, Kenji 1, Hikaru 1, Ehrlich 1, Selain 1, Heero 1, Rose 1, etc."
+      ],
+      [
+       "Vigor",
+       "20",
+       "1",
+       "Garalia 1, Maria 1, Gale 1, Shingo* 1, Alan 1, Aboly* 1, Ryoma 1, Jun 2, etc."
+      ],
+      [
+       "Gain",
+       "23",
+       "1",
+       "Brad 1, Jun 1, Roberto* 1, Emma 1, Emary* 1, Daisaku Kusama 1, Ark 1, Shiro 2, etc."
+      ],
+      [
+       "Bullseye",
+       "38",
+       "1",
+       "Banjo 1, Master Asia 1, Juzo* 1, Uchuta* 1, Bright 1, Takeru* 1, Rain 1, Zechs* 2, etc."
+      ],
+      [
+       "Trust",
+       "28",
+       "1",
+       "Treize* 1, Gale 1, Sayaka 6, Keiko* 8, Iino 9, Fa 9, Kayra 11, Elle 12, etc."
+      ],
+      [
+       "Wall",
+       "17",
+       "1",
+       "Duke 1, Musashi 1, Argo 1, Koji 2, Tetsuya 2, Aisha 8, Emary* 8, Daisaku Kusama 8, etc."
+      ],
+      [
+       "Cover",
+       "12",
+       "1",
+       "Four 1, Rish 1, Erika 1, Noin 7, Keiko* 18, Trowa 18, Kirika 19, Henken 27, etc."
+      ],
+      [
+       "Taunt",
+       "13",
+       "1",
+       "Aisha 1, Wufei 2, Gato 2, Hyoma* 9, Beecha 17, Juzo* 19, Ple-Two 19, Boss 20, etc."
+      ],
+      [
+       "Valor",
+       "74",
+       "1",
+       "Banjo 1, Master Asia 1, Wufei 1, Ryo 1, Schwarz 1, Gato 1, Quatre 1, Kamille 1, etc."
+      ],
+      [
+       "Spirit",
+       "33",
+       "1",
+       "Banjo 1, Master Asia 1, Ryo 1, Shinobu 1, Sara 1, Masato 1, Wufei 3, Musashi 7, etc."
+      ],
+      [
+       "Guts",
+       "17",
+       "1",
+       "Banjo 1, Master Asia 1, Shinobu 1, Judau 1, Musashi 1, Boss 1, Koji 1, Kappei* 1, etc."
+      ],
+      [
+       "Fortune",
+       "17",
+       "1",
+       "Quatre 1, Sayaka 1, Manami 1, Judau 9, Bright 10, Zechs* 11, Milliardo* 11, Roux 12, etc."
+      ],
+      [
+       "Daunt",
+       "5",
+       "2",
+       "Emary* 2, Boss 5, Mashymre* 19, Howard* 32, Rish 33"
+      ],
+      [
+       "Soul",
+       "35",
+       "28",
+       "Amuro 28, Kamille 29, Quattro 30, Judau 30, Haman* 32, Garalia 33, Cecily* 33, Eiji 33, etc."
+      ],
+      [
+       "Stealth",
+       "8",
+       "1",
+       "Kyral* 1, Duo 2, Schwarz 7, Silky 12, Roanne 13, Kirika 25, Iino 30, Masato 35"
+      ],
+      [
+       "Zeal",
+       "17",
+       "16",
+       "Treize* 16, Haman* 20, Quattro 22, Kamille 22, Judau 23, Ciela 25, Quess 25, Seabook* 25, etc."
+      ],
+      [
+       "Resupply",
+       "10",
+       "25",
+       "Emary* 25, Henken 32, Ciela 33, Maria 40, Rain 41, Roanne 41, Iino 42, Dr. Hazuki* 42, etc."
+      ],
+      [
+       "Rouse",
+       "22",
+       "18",
+       "Rain 18, Rose 18, Hikaru 23, Iino 24, Kenji 25, Elle 30, Aina 31, Marvel 31, etc."
+      ],
+      [
+       "Disrupt",
+       "14",
+       "1",
+       "Silky 1, Ple-Two 1, Schwarz 9, Roux 22, Uchuta* 23, Trowa 24, Mondo 25, Ginrei 27, etc."
+      ],
+      [
+       "Faith",
+       "17",
+       "14",
+       "Boss 14, Iino 16, Zechs* 17, Milliardo* 17, Duke 18, Shingo* 19, Beecha 27, Hyoma* 27, etc."
+      ],
+      [
+       "Love",
+       "24",
+       "1",
+       "Masato 1, Mashymre* 3, Rain 9, Noin 20, Four 21, Marvel 24, Emary* 28, Elle 28, etc."
+      ],
+      [
+       "Enable",
+       "4",
+       "30",
+       "Erika 30, Keiko* 31, Hikaru 38, Elle 40"
+      ],
+      [
+       "Miracle",
+       "3",
+       "38",
+       "Beecha 38, Four 50, Takeru* 61"
+      ],
+      [
+       "Prayer",
+       "5",
+       "38",
+       "Ciela 38, Kirika 41, Ginrei 42, Rain 45, Cecily* 50"
+      ],
+      [
+       "Revive",
+       "3",
+       "41",
+       "Keiko* 41, Hikaru 44, Aina 45"
+      ]
+     ],
+     "notes": [
+      "Counted from the ROM Spirit Command learn table (6 Spirit Commands per pilot, each learned when the pilot reaches the listed level); “Ally” = pilots the script registers to the team or that deploy on your side, counting pilots with the same name and table once {+}",
+      "Pilots marked * aren't added by the script's team-composition command but deploy directly on the player side (mostly GB link and whole-team merges; some appear on the player side only in the deployment records of a stage or two, e.g. Haman, Kyral, Mashymre — whether they're controllable is unverified) {?}",
+      "See the next table for every pilot's spirit list; the complete data, including enemy pilots, is in the analysis file pilot-spirits.json"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Player pilot Spirit Command table",
+     "columns": [
+      "Pilot",
+      "Spirit 1",
+      "Spirit 2",
+      "Spirit 3",
+      "Spirit 4",
+      "Spirit 5",
+      "Spirit 6"
+     ],
+     "rows": [
+      [
+       "Schwarz",
+       "Valor 1",
+       "Flash 4",
+       "Stealth 7",
+       "Disrupt 9",
+       "Spirit 12",
+       "Rouse 32"
+      ],
+      [
+       "Domon",
+       "Valor 1",
+       "Flash 2",
+       "Spirit 10",
+       "Accel 21",
+       "Focus 26",
+       "Love 48"
+      ],
+      [
+       "Rain",
+       "Bullseye 1",
+       "Love 9",
+       "Rouse 18",
+       "Valor 22",
+       "Resupply 41",
+       "Prayer 45"
+      ],
+      [
+       "Argo",
+       "Wall 1",
+       "Focus 4",
+       "Valor 10",
+       "Spirit 18",
+       "Trust 25",
+       "Faith 43"
+      ],
+      [
+       "Allenby",
+       "Guts 1",
+       "Valor 2",
+       "Flash 12",
+       "Bullseye 32",
+       "Spirit 34",
+       "Taunt 40"
+      ],
+      [
+       "Kyral*",
+       "Stealth 1",
+       "Focus 3",
+       "Flash 8",
+       "Accel 14",
+       "Valor 27",
+       "Rouse 42"
+      ],
+      [
+       "Sai Saici",
+       "Focus 1",
+       "Valor 5",
+       "Vigor 9",
+       "Flash 13",
+       "Spirit 24",
+       "Faith 44"
+      ],
+      [
+       "George",
+       "Focus 1",
+       "Flash 8",
+       "Valor 12",
+       "Spirit 25",
+       "Cover 35",
+       "Faith 45"
+      ],
+      [
+       "Chibodee",
+       "Valor 1",
+       "Focus 3",
+       "Gain 8",
+       "Spirit 17",
+       "Guts 23",
+       "Taunt 40"
+      ],
+      [
+       "Master Asia",
+       "Valor 1",
+       "Bullseye 1",
+       "Flash 1",
+       "Spirit 1",
+       "Accel 1",
+       "Guts 1"
+      ],
+      [
+       "Ark",
+       "Gain 1",
+       "Focus 3",
+       "Flash 7",
+       "Accel 11",
+       "Valor 13",
+       "Soul 40"
+      ],
+      [
+       "Selain",
+       "Flash 1",
+       "Accel 3",
+       "Valor 7",
+       "Focus 11",
+       "Disrupt 30",
+       "Soul 40"
+      ],
+      [
+       "Brad",
+       "Gain 1",
+       "Flash 3",
+       "Bullseye 7",
+       "Valor 11",
+       "Spirit 16",
+       "Soul 40"
+      ],
+      [
+       "Manami",
+       "Fortune 1",
+       "Flash 3",
+       "Bullseye 7",
+       "Valor 11",
+       "Spirit 16",
+       "Soul 40"
+      ],
+      [
+       "Ehrlich",
+       "Flash 1",
+       "Focus 4",
+       "Accel 8",
+       "Valor 12",
+       "Love 33",
+       "Soul 41"
+      ],
+      [
+       "Rish",
+       "Cover 1",
+       "Guts 4",
+       "Valor 8",
+       "Flash 12",
+       "Daunt 33",
+       "Soul 41"
+      ],
+      [
+       "Kurtz",
+       "Valor 1",
+       "Bullseye 4",
+       "Flash 8",
+       "Guts 12",
+       "Spirit 17",
+       "Soul 41"
+      ],
+      [
+       "Aisha",
+       "Taunt 1",
+       "Accel 4",
+       "Wall 8",
+       "Gain 12",
+       "Disrupt 33",
+       "Faith 41"
+      ],
+      [
+       "Amuro",
+       "Flash 1",
+       "Valor 4",
+       "Mercy 6",
+       "Focus 9",
+       "Accel 16",
+       "Soul 28"
+      ],
+      [
+       "Emary*",
+       "Gain 1",
+       "Daunt 2",
+       "Wall 8",
+       "Resupply 25",
+       "Love 28",
+       "Cover 33"
+      ],
+      [
+       "Kamille",
+       "Valor 1",
+       "Vigor 4",
+       "Flash 5",
+       "Focus 6",
+       "Zeal 22",
+       "Soul 29"
+      ],
+      [
+       "Quattro",
+       "Accel 1",
+       "Valor 3",
+       "Flash 5",
+       "Focus 7",
+       "Zeal 22",
+       "Soul 30"
+      ],
+      [
+       "Kou",
+       "Accel 1",
+       "Focus 7",
+       "Valor 10",
+       "Gain 12",
+       "Flash 14",
+       "Soul 42"
+      ],
+      [
+       "Seabook*",
+       "Flash 2",
+       "Valor 4",
+       "Mercy 17",
+       "Trust 21",
+       "Zeal 25",
+       "Soul 33"
+      ],
+      [
+       "Judau",
+       "Guts 1",
+       "Valor 4",
+       "Flash 6",
+       "Fortune 9",
+       "Zeal 23",
+       "Soul 30"
+      ],
+      [
+       "Shiro",
+       "Gain 2",
+       "Bullseye 4",
+       "Valor 13",
+       "Flash 19",
+       "Trust 25",
+       "Love 33"
+      ],
+      [
+       "Fa",
+       "Focus 7",
+       "Trust 9",
+       "Flash 11",
+       "Fortune 16",
+       "Rouse 33",
+       "Love 37"
+      ],
+      [
+       "Bright",
+       "Bullseye 1",
+       "Fortune 10",
+       "Vigor 18",
+       "Accel 22",
+       "Trust 25",
+       "Love 36"
+      ],
+      [
+       "Henken",
+       "Scan 1",
+       "Focus 6",
+       "Accel 9",
+       "Valor 13",
+       "Cover 27",
+       "Resupply 32"
+      ],
+      [
+       "Roux",
+       "Scan 1",
+       "Flash 6",
+       "Valor 10",
+       "Fortune 12",
+       "Disrupt 22",
+       "Soul 38"
+      ],
+      [
+       "Aina",
+       "Focus 1",
+       "Flash 8",
+       "Valor 13",
+       "Rouse 31",
+       "Love 35",
+       "Revive 45"
+      ],
+      [
+       "Gato",
+       "Valor 1",
+       "Taunt 2",
+       "Flash 4",
+       "Focus 9",
+       "Fortune 20",
+       "Soul 45"
+      ],
+      [
+       "Emma",
+       "Gain 1",
+       "Focus 9",
+       "Flash 15",
+       "Valor 17",
+       "Love 38",
+       "Rouse 42"
+      ],
+      [
+       "Four",
+       "Cover 1",
+       "Flash 2",
+       "Focus 4",
+       "Love 21",
+       "Soul 39",
+       "Miracle 50"
+      ],
+      [
+       "Ple-Two",
+       "Disrupt 1",
+       "Focus 3",
+       "Flash 9",
+       "Valor 10",
+       "Taunt 19",
+       "Soul 38"
+      ],
+      [
+       "Mashymre*",
+       "Guts 1",
+       "Valor 2",
+       "Love 3",
+       "Flash 10",
+       "Daunt 19",
+       "Soul 41"
+      ],
+      [
+       "Rosamia",
+       "Focus 1",
+       "Flash 4",
+       "Wall 26",
+       "Disrupt 31",
+       "Soul 39",
+       "Rouse 48"
+      ],
+      [
+       "Haman*",
+       "Flash 4",
+       "Focus 7",
+       "Valor 7",
+       "Wall 19",
+       "Zeal 20",
+       "Soul 32"
+      ],
+      [
+       "Hilde",
+       "Scan 1",
+       "Focus 8",
+       "Gain 14",
+       "Valor 23",
+       "Trust 33",
+       "Rouse 42"
+      ],
+      [
+       "Quatre",
+       "Fortune 1",
+       "Self-Destruct 1",
+       "Valor 1",
+       "Flash 4",
+       "Trust 27",
+       "Soul 40"
+      ],
+      [
+       "Wufei",
+       "Valor 1",
+       "Taunt 2",
+       "Spirit 3",
+       "Flash 4",
+       "Wall 18",
+       "Soul 41"
+      ],
+      [
+       "Duo",
+       "Self-Destruct 1",
+       "Valor 1",
+       "Stealth 2",
+       "Flash 4",
+       "Faith 27",
+       "Soul 39"
+      ],
+      [
+       "Trowa",
+       "Self-Destruct 1",
+       "Valor 1",
+       "Flash 4",
+       "Cover 18",
+       "Disrupt 24",
+       "Soul 40"
+      ],
+      [
+       "Heero",
+       "Flash 1",
+       "Self-Destruct 1",
+       "Valor 4",
+       "Focus 12",
+       "Accel 23",
+       "Soul 35"
+      ],
+      [
+       "Milliardo*",
+       "Accel 1",
+       "Bullseye 2",
+       "Flash 6",
+       "Valor 9",
+       "Fortune 11",
+       "Faith 17"
+      ],
+      [
+       "Zechs*",
+       "Accel 1",
+       "Bullseye 2",
+       "Flash 6",
+       "Valor 9",
+       "Fortune 11",
+       "Faith 17"
+      ],
+      [
+       "Treize*",
+       "Trust 1",
+       "Bullseye 3",
+       "Vigor 5",
+       "Flash 10",
+       "Valor 12",
+       "Zeal 16"
+      ],
+      [
+       "Jun",
+       "Gain 1",
+       "Vigor 2",
+       "Valor 9",
+       "Bullseye 14",
+       "Flash 19",
+       "Rouse 37"
+      ],
+      [
+       "Tetsuya",
+       "Guts 1",
+       "Wall 2",
+       "Gain 3",
+       "Valor 5",
+       "Bullseye 12",
+       "Accel 26"
+      ],
+      [
+       "Duke",
+       "Wall 1",
+       "Focus 3",
+       "Bullseye 11",
+       "Faith 18",
+       "Valor 21",
+       "Love 38"
+      ],
+      [
+       "Maria",
+       "Vigor 1",
+       "Flash 7",
+       "Fortune 13",
+       "Valor 19",
+       "Bullseye 24",
+       "Resupply 40"
+      ],
+      [
+       "Hikaru",
+       "Flash 1",
+       "Bullseye 8",
+       "Gain 14",
+       "Rouse 23",
+       "Enable 38",
+       "Revive 44"
+      ],
+      [
+       "Kirika",
+       "Scan 1",
+       "Flash 14",
+       "Cover 19",
+       "Stealth 25",
+       "Faith 34",
+       "Prayer 41"
+      ],
+      [
+       "Naida",
+       "Self-Destruct 1",
+       "Accel 4",
+       "Flash 12",
+       "Trust 28",
+       "Rouse 38",
+       "Love 40"
+      ],
+      [
+       "Musashi",
+       "Wall 1",
+       "Guts 1",
+       "Valor 5",
+       "Spirit 7",
+       "Bullseye 10",
+       "Accel 13"
+      ],
+      [
+       "Ryoma",
+       "Vigor 1",
+       "Gain 4",
+       "Valor 7",
+       "Bullseye 10",
+       "Faith 31",
+       "Zeal 39"
+      ],
+      [
+       "Shingo*",
+       "Vigor 1",
+       "Bullseye 7",
+       "Valor 9",
+       "Gain 15",
+       "Faith 19",
+       "Focus 20"
+      ],
+      [
+       "Kenji",
+       "Flash 1",
+       "Bullseye 5",
+       "Gain 11",
+       "Wall 19",
+       "Rouse 25",
+       "Soul 39"
+      ],
+      [
+       "Takeru*",
+       "Bullseye 1",
+       "Flash 4",
+       "Valor 7",
+       "Spirit 16",
+       "Love 34",
+       "Miracle 61"
+      ],
+      [
+       "Rose",
+       "Flash 1",
+       "Bullseye 7",
+       "Rouse 18",
+       "Trust 27",
+       "Zeal 34",
+       "Love 39"
+      ],
+      [
+       "Hyoma*",
+       "Guts 1",
+       "Taunt 9",
+       "Valor 12",
+       "Bullseye 14",
+       "Faith 27",
+       "Zeal 30"
+      ],
+      [
+       "Daisaku Nishikawa*",
+       "Guts 1",
+       "Gain 6",
+       "Spirit 9",
+       "Wall 15",
+       "Valor 17",
+       "Bullseye 19"
+      ],
+      [
+       "Chizuru*",
+       "Flash 9",
+       "Trust 18",
+       "Fortune 19",
+       "Mercy 23",
+       "Love 37",
+       "Resupply 49"
+      ],
+      [
+       "Kosuke*",
+       "Scan 1",
+       "Focus 4",
+       "Gain 8",
+       "Vigor 12",
+       "Trust 21",
+       "Disrupt 31"
+      ],
+      [
+       "Juzo*",
+       "Bullseye 1",
+       "Flash 7",
+       "Focus 15",
+       "Accel 16",
+       "Taunt 19",
+       "Mercy 24"
+      ],
+      [
+       "Uchuta*",
+       "Bullseye 1",
+       "Flash 6",
+       "Accel 13",
+       "Mercy 19",
+       "Disrupt 23",
+       "Faith 34"
+      ],
+      [
+       "Kappei*",
+       "Guts 1",
+       "Valor 5",
+       "Spirit 11",
+       "Wall 16",
+       "Taunt 25",
+       "Zeal 36"
+      ],
+      [
+       "Keiko*",
+       "Scan 1",
+       "Trust 8",
+       "Cover 18",
+       "Enable 31",
+       "Love 38",
+       "Revive 41"
+      ],
+      [
+       "Ginrei",
+       "Flash 1",
+       "Bullseye 7",
+       "Spirit 14",
+       "Disrupt 27",
+       "Soul 36",
+       "Prayer 42"
+      ],
+      [
+       "Daisaku Kusama",
+       "Gain 1",
+       "Wall 8",
+       "Bullseye 13",
+       "Flash 21",
+       "Spirit 27",
+       "Valor 34"
+      ],
+      [
+       "Banjo",
+       "Bullseye 1",
+       "Guts 1",
+       "Spirit 1",
+       "Flash 1",
+       "Valor 1",
+       "Soul 45"
+      ],
+      [
+       "Alan",
+       "Vigor 1",
+       "Accel 6",
+       "Focus 11",
+       "Guts 17",
+       "Bullseye 22",
+       "Spirit 31"
+      ],
+      [
+       "Sara",
+       "Spirit 1",
+       "Valor 1",
+       "Bullseye 19",
+       "Wall 21",
+       "Love 32",
+       "Rouse 37"
+      ],
+      [
+       "Ryo",
+       "Spirit 1",
+       "Valor 1",
+       "Mercy 7",
+       "Gain 10",
+       "Trust 15",
+       "Zeal 26"
+      ],
+      [
+       "Masato",
+       "Love 1",
+       "Spirit 1",
+       "Valor 1",
+       "Scan 12",
+       "Fortune 27",
+       "Stealth 35"
+      ],
+      [
+       "Shinobu",
+       "Guts 1",
+       "Spirit 1",
+       "Valor 1",
+       "Flash 13",
+       "Accel 20",
+       "Taunt 22"
+      ],
+      [
+       "Elle",
+       "Trust 12",
+       "Bullseye 26",
+       "Love 28",
+       "Rouse 31",
+       "Cover 32",
+       "Enable 40"
+      ],
+      [
+       "Ciela",
+       "Flash 2",
+       "Focus 4",
+       "Trust 21",
+       "Zeal 25",
+       "Resupply 33",
+       "Prayer 38"
+      ],
+      [
+       "Show",
+       "Accel 1",
+       "Flash 5",
+       "Valor 7",
+       "Focus 9",
+       "Spirit 30",
+       "Soul 39"
+      ],
+      [
+       "Silky",
+       "Disrupt 1",
+       "Stealth 12",
+       "Fortune 18",
+       "Trust 22",
+       "Spirit 32",
+       "Zeal 42"
+      ],
+      [
+       "Marvel",
+       "Flash 2",
+       "Gain 8",
+       "Valor 12",
+       "Love 24",
+       "Rouse 31",
+       "Spirit 36"
+      ],
+      [
+       "Garalia",
+       "Vigor 1",
+       "Accel 3",
+       "Flash 7",
+       "Valor 12",
+       "Soul 33",
+       "Spirit 36"
+      ],
+      [
+       "Tod*",
+       "Flash 1",
+       "Gain 2",
+       "Valor 4",
+       "Vigor 9",
+       "Spirit 34",
+       "Soul 35"
+      ],
+      [
+       "Boss",
+       "Guts 1",
+       "Self-Destruct 1",
+       "Daunt 5",
+       "Faith 14",
+       "Valor 17",
+       "Taunt 20"
+      ],
+      [
+       "Koji",
+       "Guts 1",
+       "Wall 2",
+       "Valor 6",
+       "Bullseye 13",
+       "Accel 27",
+       "Zeal 52"
+      ],
+      [
+       "Sayaka",
+       "Fortune 1",
+       "Trust 6",
+       "Flash 12",
+       "Bullseye 15",
+       "Valor 23",
+       "Rouse 34"
+      ],
+      [
+       "Erika",
+       "Cover 1",
+       "Vigor 8",
+       "Bullseye 9",
+       "Spirit 17",
+       "Disrupt 28",
+       "Enable 30"
+      ],
+      [
+       "Eiji",
+       "Accel 1",
+       "Flash 3",
+       "Bullseye 5",
+       "Valor 7",
+       "Zeal 28",
+       "Soul 33"
+      ],
+      [
+       "Simone",
+       "Scan 1",
+       "Vigor 3",
+       "Focus 6",
+       "Accel 9",
+       "Trust 26",
+       "Rouse 32"
+      ],
+      [
+       "David",
+       "Valor 1",
+       "Focus 7",
+       "Vigor 12",
+       "Accel 18",
+       "Spirit 24",
+       "Faith 35"
+      ],
+      [
+       "Gale",
+       "Vigor 1",
+       "Trust 1",
+       "Bullseye 9",
+       "Flash 18",
+       "Zeal 29",
+       "Soul 34"
+      ],
+      [
+       "Cecily*",
+       "Flash 2",
+       "Mercy 7",
+       "Trust 20",
+       "Soul 33",
+       "Rouse 42",
+       "Prayer 50"
+      ],
+      [
+       "Beecha",
+       "Flash 9",
+       "Valor 10",
+       "Taunt 17",
+       "Faith 27",
+       "Love 33",
+       "Miracle 38"
+      ],
+      [
+       "Iino",
+       "Trust 9",
+       "Focus 14",
+       "Faith 16",
+       "Rouse 24",
+       "Stealth 30",
+       "Resupply 42"
+      ],
+      [
+       "Elle",
+       "Scan 1",
+       "Flash 9",
+       "Trust 12",
+       "Valor 18",
+       "Fortune 29",
+       "Rouse 30"
+      ],
+      [
+       "Mondo",
+       "Scan 1",
+       "Accel 4",
+       "Flash 7",
+       "Valor 10",
+       "Disrupt 25",
+       "Love 32"
+      ],
+      [
+       "Aboly*",
+       "Vigor 1",
+       "Focus 4",
+       "Accel 8",
+       "Bullseye 13",
+       "Flash 18",
+       "Trust 22"
+      ],
+      [
+       "Roberto*",
+       "Gain 1",
+       "Vigor 5",
+       "Valor 9",
+       "Focus 15",
+       "Accel 17",
+       "Spirit 20"
+      ],
+      [
+       "Kayra",
+       "Valor 8",
+       "Flash 10",
+       "Trust 11",
+       "Spirit 15",
+       "Accel 20",
+       "Gain 21"
+      ],
+      [
+       "Chara*",
+       "Focus 1",
+       "Vigor 3",
+       "Flash 11",
+       "Fortune 24",
+       "Taunt 32",
+       "Soul 41"
+      ],
+      [
+       "Howard*",
+       "Vigor 4",
+       "Accel 7",
+       "Wall 16",
+       "Trust 21",
+       "Daunt 32",
+       "Resupply 44"
+      ],
+      [
+       "Dr. Hazuki*",
+       "Scan 1",
+       "Accel 14",
+       "Fortune 18",
+       "Trust 22",
+       "Rouse 36",
+       "Resupply 42"
+      ],
+      [
+       "Noin",
+       "Mercy 1",
+       "Cover 7",
+       "Trust 12",
+       "Flash 15",
+       "Valor 18",
+       "Love 20"
+      ],
+      [
+       "Roanne",
+       "Scan 1",
+       "Focus 6",
+       "Stealth 13",
+       "Flash 21",
+       "Disrupt 35",
+       "Resupply 41"
+      ],
+      [
+       "Quess",
+       "Flash 3",
+       "Valor 9",
+       "Accel 16",
+       "Wall 22",
+       "Zeal 25",
+       "Cover 30"
+      ]
+     ],
+     "notes": [
+      "Numbers in cells are the pilot level at which it is learned",
+      "Compared with Akurasu's pilot data: 92 of 113 pilots match exactly; the 21 that differ are listed below {≠}"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Differences from Akurasu's pilot data",
+     "items": [
+      "Rish: game data: Guts 4, Valor 8, Flash 12, Daunt 33, Soul 41; Akurasu: Guts 3, Valor 11, Flash 11, Gain 16, Soul 40 {≠}",
+      "Jun: game data has Rouse 37; Akurasu lists Rouse 39 {≠}",
+      "Hikaru: game data has Enable 38; Akurasu lists Enable 36 {≠}",
+      "Kosuke: game data has Trust 21; Akurasu lists Trust 12 {≠}",
+      "Mika: game data: Cover 14; Akurasu: Self-Destruct 14 {≠}",
+      "Akira: game data has Daunt 33; Akurasu lists Gain 33 {≠}",
+      "Kou: game data has Flash 14, Soul 42; Akurasu lists Flash 12, Soul 41 {≠}",
+      "Iino: game data: Trust 9; Akurasu: Trust 1 {≠}",
+      "Mashymre: game data has Daunt 19; Akurasu lists Gain 19 {≠}",
+      "Ple-Two: game data: Focus 3; Akurasu: Bullseye 3 {≠}",
+      "Henken: game data: Focus 6; Akurasu: Focus 8 {≠}",
+      "Quess: game data: Flash 3; Akurasu: Flash 1 {≠}",
+      "Heero: game data: Focus 12; Akurasu: Bullseye 12 {≠}",
+      "Trowa: game data: Flash 4; Akurasu: Flash 1 {≠}",
+      "Howard: game data has Daunt 32; Akurasu lists Gain 32 {≠}",
+      "Schwarz: game data: Stealth 7; Akurasu: Cover 7 {≠}",
+      "Simone: game data: Vigor 3; Akurasu: Guts 3 {≠}",
+      "Garalia: game data: Flash 7; Akurasu: Flash 3 {≠}",
+      "Ciela: game data: Flash 2; Akurasu: Flash 1 {≠}",
+      "Remy: game data: Daunt 21; Akurasu: Gain 21 {≠}",
+      "Killy: game data: Accel 4; Akurasu: Accel 1 {≠}",
+      "5 of Akurasu's “Gain” entries are actually Daunt in the game data (Akira, Mashymre, Howard, Remy, Rish); Daunt's ID, its cost of 50 and its effect are all confirmed in code"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Details verified in code",
+     "items": [
+      "Flash takes priority over Bullseye: the hit check first looks at whether the defender has Flash — if so, it's 0% outright — and only then at the attacker's Bullseye",
+      "Bullseye sets hit rate straight to 100%, unaffected even by the halving when the defender picks the “Evasion” command; it also skips the Afterimage and Parry checks, but Dummy, barriers such as Aura Barrier and I-Field, and Shield still apply {+}{≠}",
+      "Focus is symmetric: +30 hit when attacking, −30 to the attacker's hit when attacked",
+      "Disrupt marks every enemy; marked enemies have their hit rate halved when attacking and countering, stacking with the halving from the “Evasion” command (down to 1/4 at most)",
+      "Wall counts the defender's armor at 2× in the damage formula; it doesn't halve damage",
+      "Soul (×3) and Valor (×2) don't stack; with both active Soul applies; no criticals while either is active",
+      "Mercy compares both sides' Skill and requires yours to be strictly higher; it has no effect if the target has under 20 HP, so the target may be shot down {+}",
+      "HP restored is max HP × the rate, fractions dropped",
+      "The hit roll is 1–99, so 99% and 100% hit rates have the same effect in practice"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pilot-skills",
+   "label": "Pilot skills",
+   "intro": "All skill values come from ROM tables and battle code. In the original, several skills' code does not match their descriptions; this port's “Gameplay adjustments” turn these fixes on by default, and you can switch each one off on the “Rules” page of the settings to restore original behavior.",
+   "blocks": [
+    {
+     "type": "table",
+     "title": "Skill effects: original and this port",
+     "columns": [
+      "Skills",
+      "Effect",
+      "Original behavior",
+      "This port's default"
+     ],
+     "rows": [
+      [
+       "NT / Enhanced",
+       "Hit and evasion rise with level; can use NT-only weapons; Funnel-type range increases",
+       "Hit and evasion at L1–L9: +10, 14, 18, 21, 24, 26, 28, 29, 30; Funnel, Fin Funnels, Mother Funnel and Reflector Bit need L1 to use, the MAP versions need L4; at L7 and L8 the 11 Funnel-type weapons get +1 max range, at L9 +2; Reflector Bit gets no range bonus {+}{+}",
+       "Same as the original"
+      ],
+      [
+       "Aura Battler",
+       "Raises evade and Aura Barrier; L1 enables Aura Slash, L3 enables Hyper Aura Slash and other weapons",
+       "Regardless of level, always −32 to the enemy's hit when attacked (even at skill level 0, before it shows on the status page); no modifier when attacking; Hyper Aura weapons get no power bonus; the Aura Barrier threshold rises with level (see “Unit Status”)",
+       "Evasion by level: L1 +10 … L9 +30 (same curve as NT); the power of Hyper Aura Slash, Hyper Aura Cannon, Hyper Aura Shot Arm and Twin Aura Attack gets a level bonus: L3 +600, L4 +800, L5 +1000, L6 +1200, L7 +1300, L8 +1400, L9 +1500 (the normal Aura Slash doesn't)"
+      ],
+      [
+       "ESP",
+       "Raises hit and evade (the description also mentions attack power)",
+       "Regardless of level: +64 hit when attacking, −64 to the enemy's hit when attacked; the attack power bonus doesn't exist at all in the original code",
+       "Hit and evasion by level: L1 +10 … L9 +30; the attack power bonus is still not implemented"
+      ],
+      [
+       "Potential",
+       "The lower the HP, the higher the hit, evasion and critical rates",
+       "All bands shift one step earlier: there is already a bonus at 90%+ HP (L9 +10), and the top band is reached below 20% HP; hit, evade and critical get the same value, up to +90 at L9",
+       "No bonus at full HP (90%+); the top band only below 10% HP; hit and evade bonuses are halved (up to +45 at L9), critical unchanged (up to +90)"
+      ],
+      [
+       "Parry",
+       "When the unit carries a sword-type weapon, blocks an attack completely by chance",
+       "Player side level÷16 (actually 57% at L9), enemy side level÷32 (actually 29% at L9); works only on weapons marked “parryable”: Missile, Torpedo, grenades and other solid-ammo weapons, plus about two thirds of Melee weapons; Beam weapons, vulcan-type shooting, and some Melee finishers such as Sekiha Tenkyoken and Burning Finger cannot be parried; does not trigger when the attacker uses Bullseye {≠}",
+       "Same as the original"
+      ],
+      [
+       "Shield",
+       "When the unit carries a shield, halves damage by chance",
+       "Chance is the same as Parry (player ÷16, enemy ÷32, regardless of the incoming weapon); halved damage is rounded down to a multiple of 10, minimum 10; does not trigger on damage under 20; Bullseye cannot bypass it; not checked once Aura Barrier is broken through {≠}",
+       "Same as the original"
+      ],
+      [
+       "Super Mode / Meikyo Shisui / Berserk",
+       "At Will 130 or higher, activates automatically when the specified pilot is in the specified Gundam",
+       "Domon, Argo, Sai Saici, George, Chibodee (only while on your side) and Master Asia, each in his own Gundam, switch to S/H mode at Will ≥130: max HP / EN +200/+50 (current values rise proportionally), mobility +10, limit +10, unit and weapon land, sea and space ratings become A (air unchanged), all pilot stats +10 and all pilot terrain ratings A, and their signature finishers gain attack power by pilot level (see the table below); the Burning Gundam H also gains God Shadow. An enemy Allenby in the Noble Gundam goes into Berserker mode, with only the unit bonuses. Once triggered it isn't cancelled by Will dropping — only when the unit is shot down {≠}{+}{+}{+}",
+       "Same as the original"
+      ],
+      [
+       "Double move (W)",
+       "Can act twice each turn",
+       "Gained when the pilot reaches the level set for each (see the pilot table below); the unit info on the map shows W while two actions remain this turn",
+       "Same as the original"
+      ],
+      [
+       "Kill-count funds bonus",
+       "The more kills your pilot has, the more funds you get for destroying enemies",
+       "20–39 kills ×1.1, then +0.1 per 20 kills, ×2.0 from 200 kills; then multiplied with Fortune (up to ×4); at most 65,535 per unit destroyed; enemies don't get this bonus; experience isn't affected by kill count {≠}{+}",
+       "Same as the original"
+      ],
+      [
+       "Limit (unit stat)",
+       "Cap on hit/evasion plus mobility",
+       "Battle calculation never reads Limit at all: on the status screen an excess only changes color, and Limit upgrades, Limit-raising parts, and the Limit boosts from V-MAX and Super Mode have no effect in battle",
+       "The attacker's “hit + Mobility” and the defender's “evade + Mobility” are each capped at their unit's Limit; a high-level pilot in a low-grade unit loses noticeable hit and evade, which is what makes Limit upgrades and parts worthwhile"
+      ]
+     ],
+     "notes": [
+      "Both sides use the same rules: enemy ESP, Holy Warrior and Potential pilots are also calculated by this port's defaults",
+      "Critical rate = attacker's Skill − defender's Skill + weapon critical modifier, at least 1%; enemy attacks are further ÷4 and get no Potential bonus, so enemies almost never land criticals",
+      "Potential “halving” is backed only by community sources and unused data, weaker evidence than the other items; it can be turned off on its own if you don't like it",
+      "How skill level works: each pilot skill has 9 learn levels, and the skill level equals how many of them the pilot's current level has reached; NT, Enhanced, Holy Warrior, ESP and Potential share one level",
+      "EXP = (enemy pilot base EXP + enemy unit EXP) × level-difference factor (×3.4 when the enemy is 8+ levels higher, ×0.01 when 6+ levels lower); ÷10 without a kill, minimum 1; Gain ×2 {+}"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Super Mode / Meikyo Shisui attack power bonus",
+     "columns": [
+      "Pilot level",
+      "Power"
+     ],
+     "rows": [
+      [
+       "1–40",
+       "+0"
+      ],
+      [
+       "41–44",
+       "+100"
+      ],
+      [
+       "45–48",
+       "+200"
+      ],
+      [
+       "49–52",
+       "+350"
+      ],
+      [
+       "53–56",
+       "+500"
+      ],
+      [
+       "57–60",
+       "+700"
+      ],
+      [
+       "61–64",
+       "+900"
+      ],
+      [
+       "65–68",
+       "+1100"
+      ],
+      [
+       "69–72",
+       "+1400"
+      ],
+      [
+       "73–76",
+       "+1700"
+      ],
+      [
+       "77–79",
+       "+2000{≠}"
+      ],
+      [
+       "80–99",
+       "+2500{≠}"
+      ]
+     ],
+     "notes": [
+      "Applies only to 10 exclusive finishers: Shining Finger Sword, Burning Field Dash, Chokyu Hao Den'eidan, Erupting Burning Slash, Erupting Burning Finger, Sekiha Tenkyoken, Burning Machine Gun Punch, Rose Hurricane, Shin Ryusei Kochoken, Gaia Crusher {+}",
+      "When triggered, these weapons' power is rewritten to base attack + the value in this table, ignoring upgrade levels; of the 10, only Shining Finger Sword can be upgraded {+}",
+      "The enemy Allenby (Berserk) does not get this bonus; level 80 falls in the +2500 band (Akurasu lists 80 in the +2000 band) {≠}"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Weapons restricted by skill, mode and level",
+     "columns": [
+      "Condition",
+      "Weapon"
+     ],
+     "rows": [
+      [
+       "NT / Enhanced L1",
+       "Funnel, Fin Funnels, Mother Funnel, Reflector Bit"
+      ],
+      [
+       "NT / Enhanced L4",
+       "Funnel MAP, Fin Funnels MAP"
+      ],
+      [
+       "Holy Warrior L1",
+       "Aura Slash"
+      ],
+      [
+       "Holy Warrior L3",
+       "Hyper Aura Slash, Hyper Aura Cannon, Hyper Aura Shot Arm, Twin Aura Attack"
+      ],
+      [
+       "While Meikyo Shisui is active",
+       "Burning Field Dash, Chokyu Hao Den'eidan, Erupting Burning Slash, Erupting Burning Finger, Sekiha Tenkyoken"
+      ],
+      [
+       "While Super Mode is active",
+       "Shining Finger Sword, Burning Machine Gun Punch, Rose Hurricane, Shin Ryusei Kochoken, Gaia Crusher"
+      ],
+      [
+       "Pilot Lv10/15/20/25/30/35/45",
+       "Bakufu Musodan / Ryuo Sogeki / Shinso Rekkyaku / Shishiko Reppa / Ten'o Shohazan / Tenma Shoha, Hoo Koha, Shorai Tenryu Mametsujin / Shin Tenma Shoha"
+      ]
+     ],
+     "notes": [
+      "None of the above conditions are listed on Akurasu {+}"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Player pilot skill table",
+     "columns": [
+      "Pilot",
+      "Skills",
+      "Parry",
+      "Shield",
+      "Double move level"
+     ],
+     "rows": [
+      [
+       "Schwarz",
+       "—",
+       "1·1·1·24·39·42·43·46·50",
+       "—",
+       "46"
+      ],
+      [
+       "Domon",
+       "—",
+       "1·9·24·32·40·53·57",
+       "—",
+       "45"
+      ],
+      [
+       "Rain",
+       "—",
+       "—",
+       "1·30·48·52",
+       "46"
+      ],
+      [
+       "Argo",
+       "—",
+       "—",
+       "—",
+       "46"
+      ],
+      [
+       "Allenby",
+       "Potential 1·18·36·54·60",
+       "1·5·16·25·42·48",
+       "—",
+       "46"
+      ],
+      [
+       "Kyral*",
+       "—",
+       "1·1·13·25·40·43·48",
+       "—",
+       "48"
+      ],
+      [
+       "Sai Saici",
+       "—",
+       "1·9·24·33·41·46",
+       "—",
+       "46"
+      ],
+      [
+       "George",
+       "—",
+       "1·8·22·30·40·48·55·56",
+       "1·10·22·30",
+       "46"
+      ],
+      [
+       "Chibodee",
+       "—",
+       "—",
+       "1·12·24·32",
+       "46"
+      ],
+      [
+       "Master Asia",
+       "—",
+       "1·1·1·1·1·19·32·40·48",
+       "—",
+       "43"
+      ],
+      [
+       "Ark",
+       "NT 5·12·21·29·34·45·52",
+       "2·10·19·30·36·48",
+       "—",
+       "39"
+      ],
+      [
+       "Selain",
+       "NT 5·12·21·29·34·45·52",
+       "2·10·19·30·36·48",
+       "—",
+       "39"
+      ],
+      [
+       "Brad",
+       "Potential 5·12·21·29·34·45·52",
+       "—",
+       "—",
+       "49"
+      ],
+      [
+       "Manami",
+       "Potential 5·12·21·29·34·45·52",
+       "6·12·19·26·34·39·52·60",
+       "—",
+       "49"
+      ],
+      [
+       "Ehrlich",
+       "NT 9·15·26·34·42·49·59",
+       "2·17·24·35·47·57",
+       "—",
+       "39"
+      ],
+      [
+       "Rish",
+       "NT 9·15·26·34·42·49·59",
+       "2·17·24·35·47·57",
+       "—",
+       "39"
+      ],
+      [
+       "Kurtz",
+       "Potential 9·15·26·34·42·49·59",
+       "—",
+       "—",
+       "49"
+      ],
+      [
+       "Aisha",
+       "Potential 9·15·26·34·42·49·59",
+       "—",
+       "—",
+       "49"
+      ],
+      [
+       "Amuro",
+       "NT 1·1·1·1·13·22·36·48·59",
+       "1·1·1·12·23·29·42·47",
+       "1·1·20·30·40·48·56",
+       "30"
+      ],
+      [
+       "Emary*",
+       "—",
+       "—",
+       "—",
+       "70"
+      ],
+      [
+       "Kamille",
+       "NT 1·1·1·1·17·24·39·51·65",
+       "1·1·1·13·29·35·47·58",
+       "1·1·22·33·44·52·60",
+       "31"
+      ],
+      [
+       "Quattro",
+       "NT 1·1·1·1·18·26·41·53·60",
+       "1·1·1·1·20·31·48·50",
+       "1·1·1·18·32·49·58",
+       "31"
+      ],
+      [
+       "Kou",
+       "—",
+       "10·18·27·39·46·53·59·66",
+       "4·6·16·25·32·44·50·52·53",
+       "49"
+      ],
+      [
+       "Seabook*",
+       "NT 1·1·1·14·23·35·44·51·62",
+       "1·1·1·16·36·45",
+       "1·1·19·28·39·48·56·58·60",
+       "31"
+      ],
+      [
+       "Judau",
+       "NT 1·1·1·12·20·33·42·58·62",
+       "1·1·1·15·24·31·47",
+       "1·1·19·28·36·44",
+       "31"
+      ],
+      [
+       "Shiro",
+       "—",
+       "5·10·22·28·39·47·58",
+       "8·16·23·31·33·37·40·46·55",
+       "50"
+      ],
+      [
+       "Fa",
+       "NT 20·32·40·53",
+       "—",
+       "13·24·38·49",
+       "45"
+      ],
+      [
+       "Bright",
+       "—",
+       "—",
+       "—",
+       "67"
+      ],
+      [
+       "Henken",
+       "—",
+       "—",
+       "—",
+       "68"
+      ],
+      [
+       "Roux",
+       "NT 4·19·26·37·42·46·52",
+       "2·19·34·45",
+       "12·24·35·48",
+       "43"
+      ],
+      [
+       "Aina",
+       "—",
+       "—",
+       "—",
+       "50"
+      ],
+      [
+       "Gato",
+       "—",
+       "1·1·16·27·36·45·54·57",
+       "1·1·1·19·32·41·52·54·60",
+       "48"
+      ],
+      [
+       "Emma",
+       "—",
+       "17·28·39·42",
+       "1·4·12·19·30·37·46·59",
+       "50"
+      ],
+      [
+       "Four",
+       "Enhanced 1·3·7·16·24·30·42·52",
+       "1·10·21·38·46",
+       "1·1·1·32·41·49·57",
+       "32"
+      ],
+      [
+       "Ple-Two",
+       "Enhanced 1·1·1·12·23·33·41·52·65",
+       "1·30·42",
+       "1",
+       "32"
+      ],
+      [
+       "Mashymre*",
+       "Enhanced 35·39·42·46·49·52·56·61",
+       "1·11·28·37·45·59",
+       "1·12·27·32·45·48·52",
+       "35"
+      ],
+      [
+       "Rosamia",
+       "Enhanced 1·3·7·16·25·31·43·55",
+       "1·4·11·17·34",
+       "1·1·1·33·43·51·60",
+       "33"
+      ],
+      [
+       "Haman*",
+       "NT 1·1·1·1·15·22·39·49·52",
+       "1·1·1·1·22·34·52·67·70",
+       "1·1·1·19·37·55·60",
+       "31"
+      ],
+      [
+       "Hilde Schbeiker",
+       "—",
+       "3·14·26·31·44",
+       "—",
+       "45"
+      ],
+      [
+       "Quatre",
+       "—",
+       "1·1·1·16·30·42",
+       "1·1·15·23·29·31·37·45",
+       "40"
+      ],
+      [
+       "Wufei",
+       "—",
+       "1·1·1·19·36·45·48·54·59",
+       "1·1·15·23·39",
+       "40"
+      ],
+      [
+       "Duo",
+       "—",
+       "1·1·1·17·31·36·45·51·59",
+       "1·1·16·25·38",
+       "40"
+      ],
+      [
+       "Trowa",
+       "—",
+       "1·1·1·15·31·41·47·60",
+       "1·1·16·24·38·42·44",
+       "40"
+      ],
+      [
+       "Heero",
+       "—",
+       "1·1·1·15·29·37",
+       "1·1·18·20·26·30·32·39",
+       "39"
+      ],
+      [
+       "Milliardo*",
+       "—",
+       "1·10·18·24·35·44·55",
+       "1·15·24·29·34·42·54",
+       "39"
+      ],
+      [
+       "Zechs*",
+       "—",
+       "1·10·18·24·35·44·55",
+       "1·15·24·29·34·42·54",
+       "39"
+      ],
+      [
+       "Treize*",
+       "—",
+       "1·10·18·24·35·44·55",
+       "1·15·24·29·34·42·54",
+       "43"
+      ],
+      [
+       "Jun",
+       "—",
+       "—",
+       "—",
+       "57"
+      ],
+      [
+       "Tetsuya",
+       "Potential 1·1·1·18·37·55·64",
+       "23·41·53",
+       "—",
+       "56"
+      ],
+      [
+       "Duke",
+       "Potential 1·1·1·14·28·42·56·62",
+       "22·40·52",
+       "—",
+       "55"
+      ],
+      [
+       "Maria",
+       "ESP 1·1·15·26·34·46·57",
+       "—",
+       "—",
+       "53"
+      ],
+      [
+       "Hikaru",
+       "—",
+       "—",
+       "—",
+       "56"
+      ],
+      [
+       "Kirika",
+       "—",
+       "—",
+       "—",
+       "55"
+      ],
+      [
+       "Naida",
+       "—",
+       "—",
+       "—",
+       "56"
+      ],
+      [
+       "Musashi",
+       "Potential 1·1·1·14·28·42·54·69",
+       "—",
+       "—",
+       "60"
+      ],
+      [
+       "Ryoma",
+       "Potential 1·1·1·12·26·40·58·62",
+       "—",
+       "—",
+       "55"
+      ],
+      [
+       "Shingo*",
+       "—",
+       "16·28·39",
+       "—",
+       "55"
+      ],
+      [
+       "Kenji",
+       "—",
+       "—",
+       "—",
+       "48"
+      ],
+      [
+       "Takeru*",
+       "ESP 1·6·10·14·25·33·45·56·61",
+       "12·22·32·42·52",
+       "—",
+       "52"
+      ],
+      [
+       "Rose",
+       "ESP 1·1·15·26·34·46·57",
+       "—",
+       "—",
+       "53"
+      ],
+      [
+       "Hyoma*",
+       "Potential 1·1·1·17·35·43·54",
+       "28·34·46",
+       "—",
+       "55"
+      ],
+      [
+       "Daisaku Nishikawa*",
+       "Potential 1·1·27·33·43",
+       "—",
+       "—",
+       "58"
+      ],
+      [
+       "Chizuru*",
+       "—",
+       "—",
+       "—",
+       "53"
+      ],
+      [
+       "Kosuke*",
+       "—",
+       "—",
+       "—",
+       "53"
+      ],
+      [
+       "Juzo*",
+       "—",
+       "—",
+       "—",
+       "55"
+      ],
+      [
+       "Uchuta*",
+       "—",
+       "—",
+       "—",
+       "55"
+      ],
+      [
+       "Kappei*",
+       "Potential 1·1·1·11·23·35·47·58·60",
+       "—",
+       "—",
+       "53"
+      ],
+      [
+       "Keiko*",
+       "—",
+       "—",
+       "—",
+       "55"
+      ],
+      [
+       "Ginrei",
+       "ESP 1·1·12·21·32·41·54",
+       "—",
+       "—",
+       "50"
+      ],
+      [
+       "Daisaku Kusama",
+       "Potential 10·21·32·43·48·54·56",
+       "—",
+       "—",
+       "58"
+      ],
+      [
+       "Banjo",
+       "Potential 1·1·1·1·17·35·42·51",
+       "1·1·1·1·32·47·59·60",
+       "1·1·1·1·29·35·49·55·67",
+       "54"
+      ],
+      [
+       "Alan",
+       "Potential 1·1·19·39·48·58",
+       "L0",
+       "—",
+       "48"
+      ],
+      [
+       "Sara",
+       "—",
+       "—",
+       "—",
+       "54"
+      ],
+      [
+       "Ryo",
+       "—",
+       "—",
+       "—",
+       "53"
+      ],
+      [
+       "Masato",
+       "—",
+       "—",
+       "—",
+       "54"
+      ],
+      [
+       "Shinobu",
+       "Potential 1·1·15·29·36·40·55",
+       "9·16·28",
+       "—",
+       "54"
+      ],
+      [
+       "Elle",
+       "—",
+       "—",
+       "—",
+       "54"
+      ],
+      [
+       "Ciela",
+       "—",
+       "—",
+       "—",
+       "52"
+      ],
+      [
+       "Show",
+       "Holy Warrior 1·1·1·14·25·33·41·54·59",
+       "1·16·27·38·46·54·59·64",
+       "—",
+       "47"
+      ],
+      [
+       "Silky",
+       "—",
+       "—",
+       "—",
+       "1 (always)"
+      ],
+      [
+       "Marvel",
+       "Holy Warrior 1·12·24·36·43·54·65",
+       "1·22·33·40·43·57·63",
+       "—",
+       "48"
+      ],
+      [
+       "Garalia",
+       "Holy Warrior 7·17·29·38·43·54·61",
+       "1·13·23·27·36·41·49·54",
+       "—",
+       "49"
+      ],
+      [
+       "Tod*",
+       "Holy Warrior 1·11·23·35·41·52·60",
+       "1·11·20·24·34·39·47·58",
+       "—",
+       "48"
+      ],
+      [
+       "Boss",
+       "Potential 15·29·45·58·69",
+       "—",
+       "—",
+       "71"
+      ],
+      [
+       "Koji",
+       "Potential 1·1·1·10·21·30·41·52·61",
+       "30·38",
+       "—",
+       "56"
+      ],
+      [
+       "Sayaka",
+       "—",
+       "—",
+       "—",
+       "54"
+      ],
+      [
+       "Erika",
+       "—",
+       "—",
+       "—",
+       "57"
+      ],
+      [
+       "Eiji",
+       "—",
+       "—",
+       "—",
+       "46"
+      ],
+      [
+       "Simone",
+       "—",
+       "—",
+       "—",
+       "49"
+      ],
+      [
+       "David",
+       "—",
+       "—",
+       "—",
+       "48"
+      ],
+      [
+       "Gale",
+       "—",
+       "—",
+       "—",
+       "45"
+      ],
+      [
+       "Cecily*",
+       "NT 1·1·1·10·27·39·49·54",
+       "1·4·18·35·48·59",
+       "6·12·26·38·46",
+       "32"
+      ],
+      [
+       "Beecha",
+       "NT 1·20·31·35·41·43",
+       "13·27·48",
+       "1·19·37·43·49·52",
+       "48"
+      ],
+      [
+       "Iino",
+       "NT 12·29·34·45",
+       "25",
+       "7·32·35·38·46·59",
+       "50"
+      ],
+      [
+       "Elle",
+       "NT 1·17·32·37·41·45·56",
+       "6·27·44",
+       "10·21·31·35·39",
+       "48"
+      ],
+      [
+       "Mondo",
+       "NT 4·23·33·42·45",
+       "1·8·19·22·37·40·52·61",
+       "L0",
+       "50"
+      ],
+      [
+       "Aboly*",
+       "—",
+       "1·10·20·30·42·49·55",
+       "1·7·11·17·26·32·40·49",
+       "53"
+      ],
+      [
+       "Roberto*",
+       "—",
+       "1·19·24·32·41·50·56",
+       "1·8·12·18·25·33·39·48",
+       "53"
+      ],
+      [
+       "Kayra",
+       "—",
+       "1·6·9·18·22·38·48·50",
+       "5·8·16·24·28·33·41·52",
+       "50"
+      ],
+      [
+       "Chara*",
+       "Enhanced 36·40·43·47·50·53·57·62",
+       "1·5·12·18·35",
+       "1·1·1·34·44·52·61",
+       "35"
+      ],
+      [
+       "Howard*",
+       "—",
+       "—",
+       "—",
+       "72"
+      ],
+      [
+       "Dr. Hazuki*",
+       "—",
+       "—",
+       "—",
+       "70"
+      ],
+      [
+       "Hilde Schbeiker",
+       "—",
+       "3·14·31·44",
+       "—",
+       "45"
+      ],
+      [
+       "Noin",
+       "—",
+       "1·12·29·42",
+       "—",
+       "42"
+      ],
+      [
+       "Roanne",
+       "—",
+       "—",
+       "—",
+       "48"
+      ],
+      [
+       "Quess {?}",
+       "NT 1·4·5·7·9·11·12·18·23",
+       "1·2·5·10·11·12·21·22·32",
+       "1·4·7·9·18·25·25·26·48",
+       "31"
+      ]
+     ],
+     "notes": [
+      "The numbers are the pilot levels at which L1, L2… are reached, e.g. “NT 1·1·1·1·13·22·36·48·59” = NT L4 from the start, L5 at level 13 … L9 at level 59; “—” = no such skill",
+      "Characters whose double move level is “1 (always)” are sub-pilot-type characters who act twice from level 1; * means the same as on the Spirit Commands page",
+      "Discrepancies with Akurasu's pilot data: Duke's Parry L1 is at level 22 (Akurasu: level 1); Banjo's Potential L5–L8 at 17·35·42·51 (Akurasu: 32·47·59·60); Quattro's Shield at 1·1·1·18·32·49·58 (Akurasu: 1·1·1·32·41·49·57); Akurasu swaps the Parry tables of Hilde and Noin; Kou / Emma / Roberto / Iino / Ple / Zechs / Treize / Rasid / Allenby / Rain each differ by 1 level; Kayra's Parry L7 is 48 (Akurasu mistakenly has 82); the double move levels Rish 39, Maria 53, Naida 56, Roanne 48 and Keiko 55 differ from Akurasu {≠}",
+      "Mondo's Parry table has two numbers at the end (1, 22), so under the counting rule he starts at Parry L1; his Shield has the skill flag but no learn level, so it never shows on the status screen {+}",
+      "The Quess who joins your side (character 284) reads past the end of the ability table, so her skill levels come from spirit table data: NT reaches L9 at level 23, and Parry and Shield also rise much earlier (the enemy Quess, character 55, is normal); the table lists what is actually read, not yet verified in play {+}{?}",
+      "Hilde has two records: character 86 gets Parry at 3·14·26·31·44, character 266 lacks the level-26 step {+}"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "How to switch Gameplay adjustments on and off",
+     "items": [
+      "Open the settings in game and go to the “Rules” page: the “Corrections” group is on by default, the “Difficulty” group off by default",
+      "There are three presets: Restore defaults (corrections on, difficulty off), All off (original rules), All on",
+      "Changes take effect immediately, applying from the next battle resolution; the save format is unchanged, so you can switch rules on existing progress",
+      "7 fixes in total: ESP, Holy Warrior evasion, Limit, Potential tiers, Potential halving, swap weapon carry-over, Hyper Aura Slash power",
+      "There are 5 Difficulty options: boss dummies halved, boss dummies none, upgrade cap, departure refund, parts carry over"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mech-abilities",
+   "label": "Unit Status",
+   "intro": "Barrier abilities work very differently: Aura Barrier is “nothing unless pierced,” the I-Field types are “flat reduction, stackable,” and all of them work only against Beam shooting weapons and cost EN. Values and units come from ROM and battle code; the units listed after “Enemy” appear only on the enemy side.",
+   "blocks": [
+    {
+     "type": "table",
+     "title": "Unit ability list",
+     "columns": [
+      "Status",
+      "Effect",
+      "Notes",
+      "Units that have it"
+     ],
+     "rows": [
+      [
+       "Beam Coat",
+       "Beam shooting damage −1000",
+       "Subtractive; can be added to I-Field and Planet Defensor; works only against Beam ranged weapons such as the Beam Rifle and Mega Particle Cannon — the Beam Saber, Funnel, Getter Beam, Photon Beam etc. don't count; the defender must have 5 EN left (after deducting the counter weapon's EN when countering), and each activation costs 5 EN; choosing “Defense” doubles the reduction; if the reduction is not less than the damage, damage becomes 0 {≠}{+}{+}{+}",
+       "G-Fortress, ZZ Gundam, Gundam Deathscythe, Gundam Deathscythe Hell, Giant Robo; enemy: Deathscythe Hell Custom, Uranus; also gained while V-MAX is active or when equipping the Anti-Beam Coating"
+      ],
+      [
+       "I-Field",
+       "Beam shooting damage −2000",
+       "Same as Beam Coat",
+       "GP03 Dendrobium, Nu Gundam, Neue Ziel, MP Nu Gundam F; enemy: Alpha Azieru, Quin Mantha, Psyco Gundam, Psyco Gundam Mk-II, Big Zam; also gained when equipping the I-Field Barrier"
+      ],
+      [
+       "Planet Defensor",
+       "Beam shooting damage −2000",
+       "Same as Beam Coat",
+       "Mercurius; enemy: Virgo, Virgo II"
+      ],
+      [
+       "Aura Barrier",
+       "Beam shooting damage at or below the threshold is nullified; above it, the full damage goes through",
+       "Threshold = 3000 + the main pilot's Holy Warrior level bonus (see table below), 4500 at L9, doubled when choosing “Defense”; works only on Beam shooting weapons; needs 5 EN and spends 5 when blocking; when pierced there is no reduction at all, and the I-Field types and Shield are no longer checked {+}{≠}{+}{+}",
+       "Wing Caliber, Gran-Garan, Goraon, Sirbine, Zwauth, Dunbine, Billbine, Botune, Bastole; enemy: Will-Wips, Gallaba, Spriggan, Zwarth, Drumlo, Vierres, Wryneck, Leprechaun, Hyper Gallaba, Hyper Zwarth, Hyper Wryneck, Hyper Leprechaun"
+      ],
+      [
+       "Afterimage",
+       "At Will 130 or higher, evades completely 50% of the time",
+       "Fixed chance, independent of level and Skill, costs no EN; no effect when the attacker uses Bullseye",
+       "Shadow Gundam, Dragon Gundam, Dragon Gundam S, F91, Ginrei Robo TYPE2, Wing Caliber, Sirbine, Zwauth, Dunbine, Billbine, Botune, Bastole, New Layzner, Layzner; enemy: Gallaba, Zwarth, Drumlo, Vierres, Wryneck, Leprechaun, Hyper Gallaba, Hyper Zwarth, Hyper Wryneck, Hyper Leprechaun"
+      ],
+      [
+       "Mach Special",
+       "Same as Afterimage",
+       "Same as Afterimage",
+       "Getter Liger"
+      ],
+      [
+       "Shin Mach Special",
+       "Same as Afterimage",
+       "Same as Afterimage",
+       "Shin Getter-2"
+      ],
+      [
+       "God Shadow",
+       "Same as Afterimage",
+       "Same as Afterimage; also gained when the Burning Gundam enters Meikyo Shisui (Burning Gundam H) {+}",
+       "Burning Gundam H, Burning Gundam"
+      ],
+      [
+       "Getter Vision",
+       "Same as Afterimage",
+       "Same as Afterimage (not listed on Akurasu) {+}",
+       "Getter-2"
+      ],
+      [
+       "Hyper Jammer",
+       "Same as Afterimage",
+       "Same as Afterimage",
+       "Gundam Deathscythe, Gundam Deathscythe Hell; enemy: Deathscythe Hell Custom"
+      ],
+      [
+       "Phantom Step",
+       "Same as Afterimage",
+       "Same as Afterimage",
+       "Earthgain, Virose, Super Earthgain"
+      ],
+      [
+       "HP Regen",
+       "Recovers 10% or 20% of max HP at the start of each turn",
+       "The rate depends on the unit; resolved for every unit on the map, friend and foe, at the start of each turn, not just the player phase; fractions dropped, capped at the maximum {≠}",
+       "10%: Shin Getter-1, Shin Getter-2, Shin Getter-3, Sirbine, Zwauth; enemy: Dark Gundam, Dark Axis, Dragonosaurus; 20%: enemy only: Dark Gundam, Valdiscuse, Avieslelm, JClaps"
+      ],
+      [
+       "V-MAX",
+       "Activates automatically at Will 130",
+       "Move +1, Mobility +20, Limit +100, and gains Beam Coat; enemies trigger it too; once active it doesn't end when Will drops, only when shot down {+}",
+       "New Layzner, Layzner; enemy: Gasshalan, Zakarl"
+      ],
+      [
+       "V-MAX Red Power",
+       "Activates while V-MAX is active and Will is 140",
+       "Zakarl only; replaces the V-MAX bonus: Move +2, Mobility +40, Limit +200, and gains Beam Coat {≠}",
+       "Enemy only: Zakarl"
+      ],
+      [
+       "Mothership",
+       "Units it can carry",
+       "Units aboard recover 25% of max HP and EN at the start of each turn; on the first check the pilot loses 10 Will (minimum 50) {+}{+}",
+       "Argama, Audhumla, Albion, Nahel Argama, Ra Cailum, La Vie en Rose, Peacemillion, Gandor, Gran-Garan, Goraon, Sudori"
+      ],
+      [
+       "Repair device / Resupply Device",
+       "Can repair or Resupply adjacent allies",
+       "The ability bit only decides targeting; repair amount not yet analyzed; the unit command “Resupply” fully restores EN and ammo and gives the target pilot Will −10 (minimum 50) {?}",
+       "Repair: Medea, Methuss, Methuss (MA), Methuss Kai, Methuss Kai (MA), La Vie en Rose, Venus A, Battle Marine, Aphrodite A, Diana A; Resupply: La Vie en Rose, Cosmo Crusher, Boss Borot"
+      ],
+      [
+       "Transform / combine / Separate",
+       "Can use the corresponding command",
+       "The ability bit only decides the status-screen display; which forms are actually available is decided by each unit's commands",
+       "Transform: 60 units, combine: 27, Separate: 11 (counting each form)"
+      ],
+      [
+       "Sword / shield (for Parry and Shield)",
+       "A unit needs a sword to Parry and a shield to use Shield",
+       "Not shown on the status screen; the data is at byte 0x18 of the unit record {+}",
+       "147 units with swords, 61 with shields"
+      ]
+     ],
+     "notes": [
+      "At the start of each turn every unit on the map recovers 5 EN automatically {+}",
+      "The parts “Anti-Beam Coating” and “I-Field Barrier” give the unit the matching ability; they do not stack if the unit already has it {+}",
+      "Beam shooting weapons = the 225 weapons flagged “Beam” in the weapon data, all of them shooting weapons",
+      "“Units held” are split into ally/enemy by script registration and deployment records; Transform and combined forms are counted together; units with the same name are listed once"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Aura Barrier threshold",
+     "columns": [
+      "Holy Warrior level",
+      "Bonus",
+      "Threshold"
+     ],
+     "rows": [
+      [
+       "0",
+       "0",
+       "3000"
+      ],
+      [
+       "1",
+       "200",
+       "3200"
+      ],
+      [
+       "2",
+       "400",
+       "3400"
+      ],
+      [
+       "3",
+       "600",
+       "3600"
+      ],
+      [
+       "4",
+       "800",
+       "3800"
+      ],
+      [
+       "5",
+       "1000",
+       "4000"
+      ],
+      [
+       "6",
+       "1200",
+       "4200"
+      ],
+      [
+       "7",
+       "1300",
+       "4300"
+      ],
+      [
+       "8",
+       "1400",
+       "4400"
+      ],
+      [
+       "9",
+       "1500",
+       "4500"
+      ]
+     ],
+     "notes": [
+      "The strategy guide prints +200…+1000, but the game actually uses this table; this port keeps the original values",
+      "The threshold doubles when the defender picks “Defense”; based on the main pilot's Holy Warrior level, 3000 without Holy Warrior {+}"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Check order after a hit",
+     "items": [
+      "Each attack first rolls to hit; only attacks that would hit go through these checks in order: Afterimage-type → Parry → Dummy → Barrier → Shield, stopping as soon as any one succeeds",
+      "So the Afterimage and Parry chances shown on screen are conditional probabilities “given a hit”",
+      "When the attacker uses Bullseye, Afterimage and Parry are skipped; Dummy, barriers and Shield are checked as usual {≠}",
+      "Barriers are checked only when the attacker uses a Beam shooting weapon and the defender has enough EN; once Aura Barrier is broken through, the I-Field types and Shield are no longer checked {+}",
+      "Damage is 0 when fully blocked by a barrier; otherwise minimum damage is 10"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Dummy (enemy bosses only)",
+     "items": [
+      "Some bosses have a number of Dummies: an attack that should hit is taken by the Dummy instead, the attack has no effect, and the count drops by 1; no roll, always works",
+      "Dummy is not used up when an attack is evaded or stopped by Afterimage or Parry; Dummy blocks attacks even when the attacker uses Bullseye {≠}",
+      "The game doesn't show the remaining count, and it doesn't recover between turns",
+      "In the original there are 42 deployment records with Dummy, all belonging to Haman, Char, Scirocco, Glemy, Milliardo, Gyunei, Gato and Le Cain, with 2, 3, 5 or 7 uses depending on the stage",
+      "Difficulty “Boss dummies: halved” changes 2/3/5/7 to 1/1/2/3; “Boss dummies: none” sets them to zero, and with both checked “none” wins; both off by default, and the new rule applies the next time a unit spawns",
+      "In the original, when Wufei appears as an enemy, his kill count from your side is used as his Dummy count; this port fixes that unconditionally, and he no longer has Dummy"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parts",
+   "label": "Parts",
+   "intro": "Part effects are from ROM and code analysis: when abilities are recalculated, each equipped part adds its bonus, matching the bonus table on the intermission screen and the in-game descriptions. Note that the original's “Limit” takes no part in battle calculation; only with this port's Limit correction on by default do Limit-raising parts actually do anything.",
+   "blocks": [
+    {
+     "type": "table",
+     "title": "Parts list",
+     "columns": [
+      "Parts",
+      "Effect",
+      "Notes"
+     ],
+     "rows": [
+      [
+       "Booster",
+       "Move +1",
+       ""
+      ],
+      [
+       "Mega Booster",
+       "Move +2",
+       ""
+      ],
+      [
+       "Apogee Motor",
+       "Move +1, Mobility +5",
+       ""
+      ],
+      [
+       "Magnetic Coating",
+       "Mobility +10, Limit +10",
+       ""
+      ],
+      [
+       "Bio-Sensor",
+       "Mobility +15, Limit +20",
+       ""
+      ],
+      [
+       "Psycoframe",
+       "Mobility +20, Limit +30",
+       ""
+      ],
+      [
+       "Haro",
+       "Move +2, Mobility +25, Limit +40, Range +1",
+       "The range bonus follows the same rule as High-Fidelity Radar; equipped together with a radar, it stacks per item {+}{?}"
+      ],
+      [
+       "High-Fidelity Radar",
+       "Range +1 for MAP weapons and all weapons other than range-1 ones",
+       "Adds max range only; equipping 2, or equipping it together with Haro, stacks per item {+}{?}"
+      ],
+      [
+       "Chobham Armor",
+       "HP +500, armor +150",
+       ""
+      ],
+      [
+       "Hybrid Armor",
+       "HP +800, armor +200",
+       ""
+      ],
+      [
+       "Super Alloy Z",
+       "HP +1000, armor +300",
+       ""
+      ],
+      [
+       "Super Alloy New Z",
+       "HP +1500, armor +400",
+       ""
+      ],
+      [
+       "Shuffle Crest",
+       "Will is 105 on deployment",
+       "+5 Will per one equipped; with 2 equipped you deploy at Will 110; it applies again when swapping units {?}"
+      ],
+      [
+       "Minovsky Craft",
+       "Unit can fly; terrain rating becomes Air A",
+       "All weapons except Gaia Crusher also get A air terrain rating {+}"
+      ],
+      [
+       "Anti-Beam Coating",
+       "Gains the “Beam Coat” ability",
+       "Beam shooting damage −1000, see “Unit Status”; doesn't stack if the unit already has it"
+      ],
+      [
+       "I-Field Barrier",
+       "Gains the “I-Field” ability",
+       "Beam shooting damage −2000, see “Unit Status”; doesn't stack if the unit already has it"
+      ],
+      [
+       "Propellant Tank",
+       "Restores 200 EN and refills ammo; single use",
+       "Can't exceed max EN; removed from inventory after use"
+      ],
+      [
+       "Repair Kit",
+       "Restores 2000 HP; single use",
+       "Can't exceed max HP; removed from inventory after use"
+      ],
+      [
+       "Bonus +10000",
+       "Funds +10,000 on pickup",
+       "Not added to inventory; carried only by 4 enemy bosses, see below {+}"
+      ],
+      [
+       "Bonus +100000",
+       "Funds +100,000 on pickup",
+       "No enemy carries it in the original, so it can't actually be obtained {+}"
+      ]
+     ],
+     "notes": [
+      "You can hold at most 9 of each part; with 9 already, destroying an enemy carrying the same part gives nothing {+}{?}",
+      "Enemies carrying Bonus +10000: Marquis Janus (Demonica) in “Town of Betrayal”, “The Bloodstained Road”, “Those Eyes Reflect No Future”, “Enter! Super Electromagnetic Robo”, “Distant Peace” and “What We Fight For”; Quinze (Libra) in “In a World of Endless Strife (Part 1)”; Bask (Dogosse Giar) in “The Man Back from Jupiter”; Emperor Muge (Muge Zorbados Castle) in “The Last Roar” and “A Distant Gamble” {+}"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Parts on unit swaps",
+     "items": [
+      "In the original, a swap (including the stage where the new unit is auto-deployed right after) returns all of the old unit's parts to storage; the parts aren't lost, they just can't be re-equipped until the next intermission",
+      "Difficulty “Parts carry over” (off by default): on a unit swap, the old unit's parts go straight onto the new unit in their original order, and any that don't fit go to storage",
+      "The five Customs (Wing Zero, Sandrock, Deathscythe Hell, Heavyarms, Altron) and Shin Getter have only 1 part slot, while the previous units had 2, so each of these changes leaves one part in storage",
+      "Before and after the transformation Dancouga is the same unit upgraded in place; the original also removes its parts"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "love",
+   "label": "Love bonus",
+   "intro": "Pairings come from the Love bonus table in ROM, with activation conditions from battle-code analysis. A pilot with the bonus deals +30% damage and takes −30% damage while the partner is within 2 squares (horizontal, vertical or diagonal, at most one square between).",
+   "blocks": [
+    {
+     "type": "table",
+     "title": "Pairings",
+     "columns": [
+      "Series",
+      "Two-way",
+      "One-way (the former gets the bonus)"
+     ],
+     "rows": [
+      [
+       "Aura Battler Dunbine",
+       "Show ↔ Marvel",
+       ""
+      ],
+      [
+       "Blue Comet SPT Layzner",
+       "David ↔ Simone",
+       ""
+      ],
+      [
+       "Original",
+       "",
+       "Rish → Selain"
+      ],
+      [
+       "Mazinger Z",
+       "Koji ↔ Sayaka (no effect in Super stages 2–6); Koji ↔ Maria",
+       "Boss → Sayaka; Boss → Jun"
+      ],
+      [
+       "UFO Robot Grendizer",
+       "Duke ↔ Hikaru; Duke ↔ Naida",
+       ""
+      ],
+      [
+       "The 08th MS Team",
+       "Shiro ↔ Aina",
+       ""
+      ],
+      [
+       "Mobile Suit Zeta Gundam",
+       "Kamille ↔ Fa; Kamille ↔ Four",
+       ""
+      ],
+      [
+       "Mobile Suit Gundam ZZ",
+       "Judau ↔ Roux",
+       "Beecha → Elle; Elle → Judau; Emary → Bright"
+      ],
+      [
+       "Mobile Suit Gundam F91",
+       "Seabook ↔ Cecily",
+       ""
+      ],
+      [
+       "Mobile Fighter G Gundam",
+       "Domon ↔ Rain",
+       "Allenby → Domon"
+      ],
+      [
+       "Mobile Suit Gundam Wing",
+       "Duo ↔ Hilde; Zechs (Milliardo)↔ Noin",
+       ""
+      ],
+      [
+       "Mobile Suit Gundam Wing",
+       "Treize ↔ Lady {+}",
+       ""
+      ],
+      [
+       "Six God Combination God Mars",
+       "Takeru ↔ Rose",
+       ""
+      ],
+      [
+       "Dancouga: Super Beast Machine God",
+       "Shinobu ↔ Sara",
+       ""
+      ],
+      [
+       "Super Electromagnetic Robot Combattler V",
+       "Hyoma ↔ Chizuru",
+       ""
+      ]
+     ],
+     "notes": [
+      "The table above covers all 47 rows of the ROM's love bonus table: the table registers rows as “holder ← partner”, so two-way pairs take two rows; Zechs/Milliardo has 3 character IDs and Lady has 2, and Shiro and Aina are each registered twice, so there are more rows than pairs",
+      "Koji ↔ Maria and Duke ↔ Naida are both two-way: each table row has two partner columns, and the code checks both (an older version of this page listed them as one-way, which was a misreading)",
+      "In Super stages 2–6 (“Koji's Fury: Mazinger Rises!” through “Fearless! Le Cain's Challenge”), Koji and Sayaka get no bonus at all as holders, not even with Maria beside them; normal from stage 7 on",
+      "Treize ↔ Lady, not listed by Akurasu {+}"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Rules",
+     "items": [
+      "Holder attacking → damage +30%; holder being attacked → damage taken −30%; hit rate unaffected",
+      "With multiple partners the bonus does not stack; at most ±30%",
+      "Effective only for ally pilots; the partner must also be an ally unit on the map",
+      "The partner must be within 2 squares of the holder: horizontal plus vertical distance of 2 or less (diagonally adjacent counts); it does not need to be on the current screen {?}",
+      "The bonus applies after damage is calculated, before the Valor / Soul / critical multipliers"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "upgrades",
+   "label": "Upgrades and inheritance",
+   "intro": "SRW64's upgrade cap depends on the unit (6–15 levels): strong units get fewer, weak and mass-production units more. The increase and price of each level are the same for every unit and depend only on which level you're at. Values on this page come from the ROM's upgrade increment table, price table and unit data, recomputed cell by cell against the code; swap carry-over and story-granted levels come from parsing the carry-over table and the scripts.",
+   "blocks": [
+    {
+     "type": "table",
+     "title": "Unit stats: gain per level",
+     "columns": [
+      "Item",
+      "Per level, levels 1–5",
+      "Per level, levels 6–15"
+     ],
+     "rows": [
+      [
+       "HP",
+       "+200",
+       "+200"
+      ],
+      [
+       "EN",
+       "+10",
+       "+20"
+      ],
+      [
+       "Mobility",
+       "+5",
+       "+10"
+      ],
+      [
+       "Armor",
+       "+100",
+       "+150"
+      ],
+      [
+       "Limit",
+       "+10",
+       "+20"
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Unit stats: cumulative gain when fully upgraded",
+     "columns": [
+      "Cap",
+      "HP",
+      "EN",
+      "Mobility",
+      "Armor",
+      "Limit"
+     ],
+     "rows": [
+      [
+       "6",
+       "+1200",
+       "+70",
+       "+35",
+       "+650",
+       "+70"
+      ],
+      [
+       "7",
+       "+1400",
+       "+90",
+       "+45",
+       "+800",
+       "+90"
+      ],
+      [
+       "8",
+       "+1600",
+       "+110",
+       "+55",
+       "+950",
+       "+110"
+      ],
+      [
+       "9",
+       "+1800",
+       "+130",
+       "+65",
+       "+1100",
+       "+130"
+      ],
+      [
+       "10",
+       "+2000",
+       "+150",
+       "+75",
+       "+1250",
+       "+150"
+      ],
+      [
+       "11",
+       "+2200",
+       "+170",
+       "+85",
+       "+1400",
+       "+170"
+      ],
+      [
+       "12",
+       "+2400",
+       "+190",
+       "+95",
+       "+1550",
+       "+190"
+      ],
+      [
+       "13",
+       "+2600",
+       "+210",
+       "+105",
+       "+1700",
+       "+210"
+      ],
+      [
+       "15",
+       "+3000",
+       "+250",
+       "+125",
+       "+2000",
+       "+250"
+      ]
+     ],
+     "notes": [
+      "Fully upgraded, a cap-15 unit has +80 more mobility and +1200 more armor than a cap-7 unit"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Unit stats: cost per level",
+     "columns": [
+      "Level reached",
+      "HP",
+      "EN",
+      "Mobility",
+      "Armor",
+      "Limit"
+     ],
+     "rows": [
+      [
+       "1",
+       "2,000",
+       "1,000",
+       "5,000",
+       "3,000",
+       "1,000"
+      ],
+      [
+       "2",
+       "4,000",
+       "1,500",
+       "8,000",
+       "5,000",
+       "1,500"
+      ],
+      [
+       "3",
+       "6,000",
+       "1,500",
+       "10,000",
+       "8,000",
+       "1,500"
+      ],
+      [
+       "4",
+       "8,000",
+       "2,000",
+       "12,000",
+       "10,000",
+       "2,000"
+      ],
+      [
+       "5",
+       "10,000",
+       "2,000",
+       "15,000",
+       "15,000",
+       "2,000"
+      ],
+      [
+       "6",
+       "12,000",
+       "3,000",
+       "20,000",
+       "20,000",
+       "3,000"
+      ],
+      [
+       "7",
+       "14,000",
+       "3,000",
+       "25,000",
+       "25,000",
+       "3,000"
+      ],
+      [
+       "8",
+       "16,000",
+       "4,000",
+       "30,000",
+       "30,000",
+       "4,000"
+      ],
+      [
+       "9",
+       "18,000",
+       "4,000",
+       "35,000",
+       "35,000",
+       "4,000"
+      ],
+      [
+       "10",
+       "20,000",
+       "5,000",
+       "40,000",
+       "40,000",
+       "5,000"
+      ],
+      [
+       "11",
+       "22,000",
+       "5,000",
+       "45,000",
+       "45,000",
+       "5,000"
+      ],
+      [
+       "12",
+       "24,000",
+       "6,000",
+       "50,000",
+       "50,000",
+       "6,000"
+      ],
+      [
+       "13",
+       "26,000",
+       "6,000",
+       "55,000",
+       "55,000",
+       "6,000"
+      ],
+      [
+       "14",
+       "28,000",
+       "7,000",
+       "60,000",
+       "60,000",
+       "7,000"
+      ],
+      [
+       "15",
+       "30,000",
+       "7,000",
+       "65,000",
+       "65,000",
+       "7,000"
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Unit stats: total full-upgrade cost",
+     "columns": [
+      "Cap",
+      "HP",
+      "EN",
+      "Mobility",
+      "Armor",
+      "Limit",
+      "Total"
+     ],
+     "rows": [
+      [
+       "6",
+       "42,000",
+       "11,000",
+       "70,000",
+       "61,000",
+       "11,000",
+       "195,000"
+      ],
+      [
+       "7",
+       "56,000",
+       "14,000",
+       "95,000",
+       "86,000",
+       "14,000",
+       "265,000"
+      ],
+      [
+       "8",
+       "72,000",
+       "18,000",
+       "125,000",
+       "116,000",
+       "18,000",
+       "349,000"
+      ],
+      [
+       "9",
+       "90,000",
+       "22,000",
+       "160,000",
+       "151,000",
+       "22,000",
+       "445,000"
+      ],
+      [
+       "10",
+       "110,000",
+       "27,000",
+       "200,000",
+       "191,000",
+       "27,000",
+       "555,000"
+      ],
+      [
+       "11",
+       "132,000",
+       "32,000",
+       "245,000",
+       "236,000",
+       "32,000",
+       "677,000"
+      ],
+      [
+       "12",
+       "156,000",
+       "38,000",
+       "295,000",
+       "286,000",
+       "38,000",
+       "813,000"
+      ],
+      [
+       "13",
+       "182,000",
+       "44,000",
+       "350,000",
+       "341,000",
+       "44,000",
+       "961,000"
+      ],
+      [
+       "15",
+       "240,000",
+       "58,000",
+       "475,000",
+       "466,000",
+       "58,000",
+       "1,297,000"
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Upgrade Weapons",
+     "columns": [
+      "Type",
+      "Power per level, levels 1–15",
+      "Cost of level n"
+     ],
+     "rows": [
+      [
+       "1",
+       "100,100,150,150,200,200,200,200,200,250,250,250,250,250,300",
+       "5,000 × n"
+      ],
+      [
+       "2",
+       "100,100,150,150,150,150,200,200,200,200,250,250,250,250,300",
+       "4,000 × n"
+      ],
+      [
+       "3",
+       "Same as type 2",
+       "3,000 × n"
+      ],
+      [
+       "4",
+       "100,100,150,150,150,150,150,150,200,200,200,200,200,200,300",
+       "2,000 × n"
+      ]
+     ],
+     "notes": [
+      "“Type” is an internal classification not shown in the interface: most weapons are type 1 or 2, the Vulcan, Anti-Air Gun and the like are type 4, and only 3 weapons are type 3",
+      "Combination attacks, repair devices, Resupply Device and some G Gundam finishers can't be upgraded individually"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Weapon upgrades: cumulative when fully upgraded",
+     "columns": [
+      "Cap",
+      "Type 1",
+      "Type 2",
+      "Type 3",
+      "Type 4"
+     ],
+     "rows": [
+      [
+       "6",
+       "+900／105,000",
+       "+800／84,000",
+       "+800／63,000",
+       "+800／42,000"
+      ],
+      [
+       "7",
+       "+1100／140,000",
+       "+1000／112,000",
+       "+1000／84,000",
+       "+950／56,000"
+      ],
+      [
+       "8",
+       "+1300／180,000",
+       "+1200／144,000",
+       "+1200／108,000",
+       "+1100／72,000"
+      ],
+      [
+       "9",
+       "+1500／225,000",
+       "+1400／180,000",
+       "+1400／135,000",
+       "+1300／90,000"
+      ],
+      [
+       "10",
+       "+1750／275,000",
+       "+1600／220,000",
+       "+1600／165,000",
+       "+1500／110,000"
+      ],
+      [
+       "11",
+       "+2000／330,000",
+       "+1850／264,000",
+       "+1850／198,000",
+       "+1700／132,000"
+      ],
+      [
+       "12",
+       "+2250／390,000",
+       "+2100／312,000",
+       "+2100／234,000",
+       "+1900／156,000"
+      ],
+      [
+       "13",
+       "+2500／455,000",
+       "+2350／364,000",
+       "+2350／273,000",
+       "+2100／182,000"
+      ],
+      [
+       "15",
+       "+3050／600,000",
+       "+2900／480,000",
+       "+2900／360,000",
+       "+2600／240,000"
+      ]
+     ],
+     "notes": [
+      "Format is “cumulative power / cumulative cost”; weapons and the five unit stats share one upgrade cap, so look up the row by the unit's cap"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Upgrade caps of commonly used player units",
+     "columns": [
+      "Cap",
+      "Unit"
+     ],
+     "rows": [
+      [
+       "6",
+       "Gundam Sandrock (the only one in the game)"
+      ],
+      [
+       "7",
+       "Nu Gundam, MP Nu Gundam F, Wing Gundam, Wing Zero, Wing Zero Custom, Gundam Deathscythe, Gundam Deathscythe Hell, Deathscythe Hell Custom, Gundam Heavyarms, Gundam Heavyarms Kai, Heavyarms Custom, Shenlong Gundam, Altron Gundam, Altron Custom, Gundam Sandrock Kai, Sandrock Custom, Gundam Epyon, Getter-1, Getter Dragon, Shin Getter-1, Daitarn 3, Godmars"
+      ],
+      [
+       "8",
+       "Zambird, Zambull, Zambase, Zambo-Ace, Zambot 3"
+      ],
+      [
+       "9",
+       "Burning Gundam, Shining Gundam, Gundam Maxter, Gundam Rose, Dragon Gundam, Bolt Gundam, ZZ Gundam, Gundam Mk-III, Hyaku-Shiki, FA Hyaku-Shiki Kai, Qubeley Mk-II, Jagd Doga, Tallgeese III, Dancouga, Grendizer, Spazer, Layzner, New Layzner, Sirbine, Billbine, Zwauth, Ashcleef, Razgreez"
+      ],
+      [
+       "10",
+       "Combattler V, Eagle Fighter, Big Moth, Land Cougar, Land Liger"
+      ],
+      [
+       "11",
+       "Zeta Gundam, Super Gundam, Dijeh SE-R, Methuss Kai, Re-GZ (BWS), MP Nu Gundam I, GP03 Dendrobium, Neue Ziel, Tallgeese, Peacemillion, Great Mazinger, MP Great Mazinger, Shadow Gundam, Noble Gundam, Rising Gundam, Zeron, Virose, Super Earthgain, Sweemurg S, Buldy, Baybull"
+      ],
+      [
+       "12",
+       "Mazinger Z (unique in the whole game; the JS version is 13)"
+      ],
+      [
+       "13",
+       "Argama, Nahel Argama, Ra Cailum, Albion, Audhumla, La Vie en Rose, Gran-Garan, Goraon, Gundam Mk-II, Mazinger Z (JS), Venus A, Double Spazer, Drill Spazer, Marine Spazer, Giant Robo, Black Wing, Dunbine, Bastole, Greimkaiser, Gaia, Taurus, Norouz, Sigroon"
+      ],
+      [
+       "15",
+       "Gundam, Guncannon, Guntank, Jegan, Schuzrum-Dias, Gundam Ez8, G-Defenser, Diana A, Boss Borot, Minerva X, Botune, Doll, Cosmo Crusher, Ginrei Robo, Elbulls, Shuttle"
+      ]
+     ],
+     "notes": [
+      "Caps aren't necessarily the same within a combination/Transform group: Gundam Mk-II 13 vs Super Gundam 11, the four Dancouga units 10 vs Dancouga 9, the Spazer series 13 vs Grendizer 9, Gaia 13 vs Godmars 7",
+      "Once the Gundam Mk-II is upgraded to level 12 or 13, the Super Gundam's level exceeds its own cap: stats are still calculated at level 13, it just can't be upgraded further"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "What else the cap determines",
+     "items": [
+      "The five stats and every weapon of the unit share the same cap",
+      "When all five stats of each of the five W units are fully upgraded, it automatically becomes its custom version (only the five stats count, not weapons)",
+      "Some weapons unlock extra weapons when fully upgraded; see the “Extra weapons” page",
+      "Sale price of sellable mass-produced units = base price + 20,000 × the fraction of upgrade levels done out of the total upgradable",
+      "Each upgrade level in the save has only 4 bits, so 15 levels is the format's own cap"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Upgrade inheritance on unit swaps",
+     "columns": [
+      "Original unit",
+      "New unit",
+      "Timing",
+      "Inheritance"
+     ],
+     "rows": [
+      [
+       "Mazinger Z",
+       "Mazinger Z (JS)",
+       "Start of stage 10 “Break the Vile Trap!” on Super; Real gets the Mazinger Z (JS) directly in stage 12 “Destiny Astray”, with no swap",
+       "The five stats and all 6 weapons carry over; Drill Missile, Southern Cross Knife, Scrander Cutter and Iron Cutter start from level 0"
+      ],
+      [
+       "Aphrodite A",
+       "Diana A",
+       "Same as above; on the Real side you get the Diana A directly in stage 12",
+       "The five stats plus Missile and Melee carry over; Scarlet Beam starts from level 0"
+      ],
+      [
+       "Albion",
+       "Argama",
+       "OZ route: end of stage 21 “A New Path”; Independence Army and Complete Pacifism routes: start of stage 22 “The Battle of Ryozanpaku”",
+       "The five stats and 4 weapons carry over; the Argama's Anti-Air Laser and Hyper Mega Particle Cannon start from level 0"
+      ],
+      [
+       "Argama",
+       "Nahel Argama",
+       "OZ route: start of stage 34 / Complete Pacifism route (with Treize): end of stage 33 / Independence Army route: start of stage 37",
+       "Upgrades to the Anti-Air Gun (inherited from the Albion's Anti-Air Laser) don't carry over; the other 5 weapons do"
+      ],
+      [
+       "Nahel Argama",
+       "Ra Cailum",
+       "Start of stage 52 “Terror! Dark Axis Activates! (Part 1)”",
+       "The five stats and weapons carry over"
+      ],
+      [
+       "Methuss",
+       "Methuss Kai",
+       "End of stage 34 “Mars and Marg” on the Independence Army route (the OZ and Complete Pacifism routes don't have this swap)",
+       "The five stats and weapons carry over"
+      ],
+      [
+       "Hyaku-Shiki",
+       "FA Hyaku-Shiki Kai",
+       "OZ route: start of stage 34 “Envoy from Axis” (on the Complete Pacifism route it's still the Hyaku-Shiki after merging into OZ with Treize)",
+       "Upgrades to 60mm Vulcan and Clay Bazooka don't carry over; Missile, Beam Cannon and Mega Particle Cannon start from 0"
+      ],
+      [
+       "Getter-1 / 2 / 3",
+       "Getter Dragon / Liger / Poseidon",
+       "OZ route stage 27 / Complete Pacifism route stage 23 / Independence Army route stage 23, at the start",
+       "Upgrades to Getter Arm, Drill Storm and Drill Punch don't carry over; Shine Spark, Getter Cyclone, Liger Missile and Chain Attack start from 0"
+      ],
+      [
+       "Getter Dragon / Liger / Poseidon",
+       "Shin Getter-1 / 2 / 3",
+       "OZ route stage 41 “Fist of Despair and Sorrow (Part 1)” / Independence Army route stage 42 “A Battle Without Victors”, at the start",
+       "Upgrades to Spin Cutter, Getter Cyclone and Chain Attack don't carry over; Mirage Drill and Drill Tempest start from 0"
+      ],
+      [
+       "Layzner",
+       "New Layzner",
+       "OZ and Independence Army routes: end of stage 30; Complete Pacifism route: start of stage 31",
+       "In the original, Flamethrower and Grenade Launcher upgrades don't carry over (missing from the table; fixed by default in this port); V-MAX MAP starts from level 0"
+      ],
+      [
+       "Shining Gundam",
+       "Burning Gundam",
+       "OZ and Independence Army routes: when all enemies are wiped out in stage 30; Complete Pacifism route: mid-stage in stage 32",
+       "The five stats carry over; Vulcan, Beam Sword → Burning Slash and Shining Strike → Burning Strike carry over; upgrades to Shining Shot, Shining Finger and Shining Finger Sword don't carry over; Machine Cannon and Burning Slash Typhoon start from level 0"
+      ],
+      [
+       "Earthgain",
+       "Super Earthgain",
+       "Never entered “Time to Settle It”: end of stage 31 on the OZ route, stage 32 on the Independence Army route; entered “Time to Settle It” but did not recruit Kurtz: start of the next stage (stage 33 on the OZ route, stage 34 on the Independence Army route); recruited Kurtz: no swap; Complete Pacifism route: end of stage 27 (always swaps)",
+       "Upgrades to Garo Sogeki and Roga don't carry over; Rasetsujin and Bakufu Musodan start from level 0"
+      ],
+      [
+       "Sweemurg",
+       "Sweemurg S",
+       "If Aisha was recruited: end of stage 31 on the Independence Army route, end of stage 33 on the OZ route; if not: start of stage 32 on the Independence Army route, start of stage 33 on the OZ route; end of stage 31 on the Complete Pacifism route",
+       "The five stats and weapons carry over; Twin Missile, Beam Cannon, Bloody Howling and Spiral Sword MAP start from level 0"
+      ],
+      [
+       "Soldifar",
+       "Ashcleef",
+       "Start of stage 37 (OZ route, Independence Army route)",
+       "The five stats and weapons carry over; Splash Breaker and Splash Breaker MAP start from level 0"
+      ],
+      [
+       "Svanheld",
+       "Razgreez",
+       "End of stage 31 “Its Name Is Epyon” on the Independence Army route; end of stage 36 on the Complete Pacifism route (solo branch); start of stage 37 on the OZ route",
+       "Upgrades to the Grenade Launcher don't carry over; Missile Pod, Anti-Ship Missile, Linear Cannon and Focused Charged Particle Cannon MAP start from 0"
+      ],
+      [
+       "Qubeley Mk-II (black, Ple)",
+       "Qubeley Mk-II (red, Ple-Two)",
+       "After choosing to stay on Earth at the end of stage 50, a second choice appears if both Ple and Ple-Two are on the team; pick “Make it Ple-Two's red”",
+       "The five stats and weapons carry over (the Funnel MAP unlock carries over too); the black one is deleted"
+      ],
+      [
+       "Super Beast Machine God",
+       "Super Beast Machine God",
+       "OZ route: end of stage 21; Independence Army and Complete Pacifism routes: start of stage 22",
+       "The same unit upgrades in place, keeping all five stats and weapons; parts equipped on each form go back to storage"
+      ],
+      [
+       "Gundam Sandrock",
+       "Gundam Sandrock Kai",
+       "Complete Pacifism route only: end of stage 32, “Return to the Battlefield” (Quatre returns in stage 28 with the Gundam Sandrock at 3 levels)",
+       "The five stats plus Vulcan, Homing Missile, Heat Shotel and Shield Flash carry over; Cross Crusher upgrades don't carry over; Beam Machine Gun starts from level 0. For the OZ route and Independence Army route, see “Lost upgrades”"
+      ],
+      [
+       "Wing Zero, Gundam Sandrock Kai, Gundam Deathscythe Hell, Gundam Heavyarms Kai, Altron Gundam",
+       "Their respective Customs",
+       "Changes automatically once all five stats are fully upgraded",
+       "The five stats stay fully upgraded; weapons carry over per the table below"
+      ]
+     ],
+     "notes": [
+      "Inheritance happens only if the old unit is still on the team at that moment (regardless of who pilots it); after a swap the old unit is always deleted",
+      "The five stat levels carry over as a block, synced across Transform and combined forms; weapons carry over one by one per the game's mapping table, and weapons with no entry start from level 0; repair devices and combination attacks can't be upgraded anyway and are unaffected",
+      "Upgrade caps are not inherited; the new unit uses its own cap",
+      "The game's swap table also has Gundam Deathscythe → Gundam Deathscythe Hell, Gundam Heavyarms → Gundam Heavyarms Kai and Shenlong Gundam → Altron Gundam, but the story always deletes the old unit along with its pilot first, so these three swaps never actually inherit"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "The W units switch to their custom versions (Endless Waltz versions)",
+     "columns": [
+      "Original unit",
+      "Custom version",
+      "Removed weapons",
+      "New weapon"
+     ],
+     "rows": [
+      [
+       "Wing Zero",
+       "Wing Zero Custom",
+       "None",
+       "None (all 5 inherited; Twin Buster Rifle 2 MAP is usable right after the refit)"
+      ],
+      [
+       "Altron Gundam",
+       "Altron Custom",
+       "Beam Cannon",
+       "None (in the original Dragon Fire does not inherit upgrades; see below)"
+      ],
+      [
+       "Gundam Deathscythe Hell",
+       "Deathscythe Hell Custom",
+       "Buster Shield",
+       "Twin Beam Scythe becomes the Beam Scissors; upgrades carry over"
+      ],
+      [
+       "Gundam Sandrock Kai",
+       "Sandrock Custom",
+       "Homing Missile, Shield Flash, Beam Machine Gun",
+       "Cross Crusher (from 0 levels)"
+      ],
+      [
+       "Gundam Heavyarms Kai",
+       "Heavyarms Custom",
+       "Army Knife",
+       "None (Full Barrage MAP is usable right after the refit; upgrades are inherited)"
+      ]
+     ],
+     "notes": [
+      "Refit condition: after you confirm an upgrade of the five stats on the upgrade screen, the refit happens at once if all five are at the original cap (7 for all five of these units); weapon levels don't matter, and it happens even without a pilot",
+      "The five stats are still fully upgraded after the change; each weapon keeps its previous level",
+      "The Altron Custom's Dragon Fire didn't carry over upgrades in the original (missing from the table); this port fixes it by default"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Why upgrades are really lost",
+     "columns": [
+      "Unit",
+      "Where upgrades are lost",
+      "What happens next",
+      "Reason"
+     ],
+     "rows": [
+      [
+       "Medea → Audhumla",
+       "Start of stage 7 “Blade of Anguish” on Real",
+       "—",
+       "This pair is not in the game's inheritance table; Super has no Medea"
+      ],
+      [
+       "Audhumla → Albion",
+       "End of stage 11 “From Between Sea and Land”",
+       "—",
+       "Same as above"
+      ],
+      [
+       "Gaia → Godmars",
+       "End of OZ route stage 29, Independence Army route stage 34 and Complete Pacifism route stage 33 (both branches)",
+       "Gaia joins in stage 28 on the OZ route, stage 32 on the Independence Army route, and stage 31 on the Complete Pacifism route",
+       "The Gaia is deleted on combining; its upgrade levels aren't copied"
+      ],
+      [
+       "Gundam Sandrock (Quatre)",
+       "OZ route: start of stage 21; Independence Army and Complete Pacifism routes: end of stage 22",
+       "OZ route: returns mid-stage in stage 33 as the Gundam Sandrock Kai (0 levels); Independence Army route: start of stage 36 (3 levels); Complete Pacifism route: returns at the start of stage 28 as the Gundam Sandrock (3 levels), fully carried over at the stage 32 swap",
+       "The story deletes the character and the unit together when they leave"
+      ],
+      [
+       "Gundam Deathscythe (Duo)",
+       "Same as above",
+       "Gundam Deathscythe Hell: OZ route mid-stage 34 (5 levels); Independence Army route mid-stage 28 (3 levels); Complete Pacifism route (with Treize) mid-stage 34 (3 levels); Complete Pacifism route (going it alone) start of stage 35 (0 levels)",
+       "Same as above"
+      ],
+      [
+       "Wing Gundam (Heero)",
+       "Same as above",
+       "Wing Zero: OZ route stage 36 mid-stage (0 levels); Independence Army route stage 36 start (3 levels); Complete Pacifism route (with Treize) stage 35 mid-stage (3 levels); Complete Pacifism route (fighting alone) stage 35 start (0 levels)",
+       "Same as above. The Gundam Epyon that Heero uses in OZ route stages 31–33 is handed to Zechs with its upgrades, so nothing is lost"
+      ],
+      [
+       "Gundam Heavyarms (Trowa)",
+       "Same as above",
+       "Gundam Heavyarms Kai (3 levels): OZ route end of stage 45; Independence Army route start of stage 42",
+       "Same as above"
+      ],
+      [
+       "Shenlong Gundam (Wufei)",
+       "Choosing OZ at the end of stage 20 “Operation Daybreak”; end of stage 22 on the Independence Army and Complete Pacifism routes",
+       "Altron Gundam (3 levels): OZ route end of stage 45; Independence Army route end of stage 45",
+       "Same as above"
+      ],
+      [
+       "Shadow Gundam (Schwarz)",
+       "Start of stage 30 on the Independence Army route; start of stage 30 on the OZ route; end of stage 23 on the Complete Pacifism route",
+       "OZ route: rejoins mid-stage in stage 38 (0 levels), and leaves again if Ryoma isn't on the map at the start of stage 42",
+       "Same as above, with upgrades reset to zero"
+      ],
+      [
+       "Ra Cailum (Henken)",
+       "Start of stage 52",
+       "On the stay-on-Earth path, Henken gets a new Ra Cailum in stage 51",
+       "Henken leaves along with his ship; the Ra Cailum that Bright switches to is a new unit that inherits from the Nahel Argama"
+      ],
+      [
+       "Gundam Epyon (Zechs)",
+       "OZ route: if you choose the Tallgeese III rebuild at the end of stage 47 “Haman's Shadow”",
+       "Tallgeese III starts from 0 levels",
+       "The Gundam Epyon is scrapped, and the carry-over table has no entry for this pair; choosing to keep the Gundam Epyon has no effect"
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Upgrade levels given by the story",
+     "columns": [
+      "Stage",
+      "Unit",
+      "Levels",
+      "Condition"
+     ],
+     "rows": [
+      [
+       "End of stage 3 “Time Has Passed” on Real",
+       "Gundam Ez8",
+       "1",
+       "Shiro joins"
+      ],
+      [
+       "End of stage 6 “The Magnificent Le Cain” on Real",
+       "Guntank, Guncannon, Gundam",
+       "1 each",
+       "Each of the units you saved"
+      ],
+      [
+       "Start of stage 9 “Soldiers of Sorrow” (Real)",
+       "Jegan",
+       "1",
+       "Emma joins"
+      ],
+      [
+       "Start of stage 10 “Hong Kong City of Sorrow” on Real",
+       "Doll (Simone)",
+       "3",
+       "—"
+      ],
+      [
+       "End of stage 11 “From Between Sea and Land” (Super)",
+       "Gundam Ez8",
+       "3",
+       "Shiro joins"
+      ],
+      [
+       "Start of stage 22 on the Independence Army and Complete Pacifism routes",
+       "Buldy, Baybull",
+       "3 each",
+       "—"
+      ],
+      [
+       "End of stage 22 on the Independence Army and Complete Pacifism routes (Real)",
+       "Greimkaiser",
+       "3",
+       "Gale joins"
+      ],
+      [
+       "End of stage 28 on the Independence Army route",
+       "Gundam Deathscythe Hell",
+       "3",
+       "When it didn't join by deployment mid-stage"
+      ],
+      [
+       "Start of stage 36 on the Independence Army route",
+       "Wing Zero, Gundam Sandrock Kai",
+       "3 each",
+       "—"
+      ],
+      [
+       "Complete Pacifism route stage 27, “What We Fight For”, end of stage",
+       "Minerva X",
+       "5",
+       "Minerva X joins"
+      ],
+      [
+       "Complete Pacifism route stage 28, “The Sanc Kingdom Falls”, start of stage",
+       "Gundam Sandrock",
+       "3",
+       "—"
+      ],
+      [
+       "Complete Pacifism route stage 30, “Charge! Destroy the Mobile Fortress! (Part 2)”, end of stage",
+       "MP Great Mazinger",
+       "3",
+       "—"
+      ],
+      [
+       "Complete Pacifism route (with Treize) stage 35, “Brothers”, start of stage",
+       "Gundam Epyon (Zechs)",
+       "3",
+       "—"
+      ],
+      [
+       "OZ route: start of stage 22 “For a United Earth Sphere”",
+       "Buldy, Baybull",
+       "3 each",
+       "—"
+      ],
+      [
+       "OZ route (Romefeller side): end of stage 26 “The Moon Is Hell!”",
+       "GP02A Physalis",
+       "3",
+       "Gato joins"
+      ],
+      [
+       "OZ route: start of stage 27 (Selain)",
+       "Sigroon",
+       "3",
+       "Rish joins"
+      ],
+      [
+       "OZ route stage 28 (base held: at the start; base lost: at the end, Real)",
+       "Greimkaiser",
+       "4",
+       "Gale joins"
+      ],
+      [
+       "OZ route stage 31 “Order to Eliminate Treize”, when all enemies are wiped out",
+       "Gundam Epyon (Heero)",
+       "3",
+       "—"
+      ],
+      [
+       "End of “Together from Here On” (Ark branch)",
+       "Norouz",
+       "4",
+       "Ehrlich joins"
+      ],
+      [
+       "End of “Time to Settle It” (Brad branch)",
+       "Virose",
+       "3",
+       "Kurtz joins"
+      ],
+      [
+       "OZ route: end of stage 37 / Independence Army route: end of stage 40",
+       "Zeron",
+       "3",
+       "Rose joins"
+      ],
+      [
+       "Start of stage 42 on the Independence Army route",
+       "Gundam Heavyarms Kai",
+       "3",
+       "—"
+      ],
+      [
+       "End of stage 45 on the Independence Army route",
+       "Altron Gundam",
+       "3",
+       "—"
+      ],
+      [
+       "OZ route: end of stage 45 “A Future of Life and Death”",
+       "Altron Gundam, Gundam Heavyarms Kai",
+       "3 each",
+       "—"
+      ],
+      [
+       "End of stage 51 “Char's Rebellion”",
+       "Neue Ziel",
+       "3",
+       "Neue Ziel joins"
+      ],
+      [
+       "End of stage 54 “Screaming Space”",
+       "Jagd Doga",
+       "6",
+       "Quess joins"
+      ]
+     ],
+     "notes": [
+      "The gift sets the five stats and all weapons to the same level (up to the unit's cap), overwriting existing levels",
+      "Units that join through deployment also carry the upgrade levels in their deployment record; for the W series see the “Lost upgrades” table"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Related optional rules",
+     "items": [
+      "Fix “Machine swap: carry over three weapons the table misses” (on by default): adds the Flamethrower and Grenade Launcher for Layzner → New Layzner and the Dragon Fire for Altron Gundam → Custom; it takes effect only at the moment of the swap — turning it off later doesn't undo it, and turning it on doesn't backfill swaps that already happened {?}",
+      "Difficulty “Upgrade cap” (off by default): every unit can be upgraded to 15 on the upgrade screen, with cells beyond the original cap shown as ● (upgraded) / ☆ (not upgraded); Custom refits, extra weapon unlocks, sale prices, story-gifted levels and swap inheritance still use the original cap; levels already raised are kept if you turn it off, but can't be raised further",
+      "Difficulty “Departure refund” (off by default): when the story removes a unit from the team (leaving, the old unit deleted after a swap, the Godmars combination), the upgrade funds spent on it are refunded at current prices, with a notice at the top of the screen and in the dialogue log; selling and battlefield exits are not refunded; levels inherited by a new unit and story-gifted levels are not refunded, but levels a unit brings when it joins are",
+      "For how parts are handled in unit swaps, see the “Parts” page"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "extra-weapons",
+   "label": "Extra weapons",
+   "intro": "Some weapons unlock new weapons when upgraded to the unit's cap; the Earthgain, Virose and Super Earthgain attacks unlock with pilot level; and a batch of finishers unlocks through the story. Unlock tables, weapon values and use conditions all come from ROM and code analysis; story unlock timing comes from script analysis.",
+   "blocks": [
+    {
+     "type": "table",
+     "title": "Weapons unlocked by full upgrade",
+     "columns": [
+      "Unit",
+      "Fully upgraded weapon",
+      "Unlocked weapons",
+      "Unlocked weapon power / range",
+      "MAP",
+      "Hits allies",
+      "Full upgrade cost",
+      "Per Akurasu"
+     ],
+     "rows": [
+      [
+       "Nu Gundam",
+       "Fin Funnels",
+       "Fin Funnels MAP",
+       "2000／1–4",
+       "Yes",
+       "No",
+       "140,000",
+       "140,000"
+      ],
+      [
+       "MP Nu Gundam F",
+       "Fin Funnels",
+       "Fin Funnels MAP",
+       "2000／1–4",
+       "Yes",
+       "No",
+       "140,000",
+       "140,000"
+      ],
+      [
+       "Qubeley Mk-II (two units, black and red)",
+       "Funnel",
+       "Funnel MAP",
+       "1900／1–4",
+       "Yes",
+       "No",
+       "225,000",
+       "225,000"
+      ],
+      [
+       "Jagd Doga",
+       "Funnel",
+       "Funnel MAP",
+       "1900／1–4",
+       "Yes",
+       "No",
+       "225,000",
+       "120,000{≠}"
+      ],
+      [
+       "Geymalk",
+       "Mother Funnel",
+       "Funnel MAP",
+       "1900／1–4",
+       "Yes",
+       "No",
+       "225,000",
+       "225,000"
+      ],
+      [
+       "Mazinger Z (JS)",
+       "Rocket Punch",
+       "Big Wheel Rocket Punch",
+       "3200／1–6",
+       "No",
+       "—",
+       "364,000",
+       "364,000"
+      ],
+      [
+       "Mazinger Z (JS)",
+       "Breast Fire",
+       "Breast Fire MAP",
+       "2900／1–4",
+       "Yes",
+       "Yes",
+       "455,000",
+       "455,000"
+      ],
+      [
+       "Minerva X",
+       "Breast Fire",
+       "Breast Fire MAP",
+       "2900／1–4",
+       "Yes",
+       "Yes",
+       "600,000",
+       "525,000{≠}"
+      ],
+      [
+       "Great Mazinger",
+       "Breast Burn",
+       "Breast Burn MAP",
+       "2400／1–4",
+       "Yes",
+       "Yes",
+       "330,000",
+       "330,000"
+      ],
+      [
+       "MP Great Mazinger",
+       "Breast Burn",
+       "Breast Burn MAP",
+       "2400／1–4",
+       "Yes",
+       "Yes",
+       "330,000",
+       "300,000{≠}"
+      ],
+      [
+       "Wing Zero (including bird mode)",
+       "Twin Buster Rifle MAP",
+       "Twin Buster Rifle 2 MAP",
+       "2500／1–4",
+       "Yes",
+       "Yes",
+       "140,000",
+       "110,000{≠}"
+      ],
+      [
+       "Gundam Heavyarms Kai",
+       "Double Gatling Gun",
+       "Full Barrage MAP",
+       "4700／1–3",
+       "Yes",
+       "Yes",
+       "112,000",
+       "88,000{≠}"
+      ],
+      [
+       "Giant Robo",
+       "Rocket Missile",
+       "Full Barrage MAP",
+       "4800／1–3",
+       "Yes",
+       "Yes",
+       "455,000",
+       "455,000"
+      ],
+      [
+       "GoShogun",
+       "Go Flasher",
+       "Go Flasher MAP",
+       "2800／1–5",
+       "Yes",
+       "Yes",
+       "225,000",
+       "225,000"
+      ],
+      [
+       "Gundam Mk-II",
+       "Diffuse Bazooka",
+       "Diffuse Bazooka MAP",
+       "1400／3–5",
+       "Yes",
+       "Yes",
+       "364,000",
+       "364,000"
+      ],
+      [
+       "Super Gundam",
+       "Diffuse Bazooka",
+       "Diffuse Bazooka MAP",
+       "1400／3–5",
+       "Yes",
+       "Yes",
+       "264,000",
+       "Not listed {+}"
+      ]
+     ],
+     "notes": [
+      "The unlock table comes from game data (the upgrade screen's full-upgrade unlock table, 18 entries): when a weapon's level exactly reaches the unit's upgrade cap, the corresponding weapon on the same unit unlocks. “Full upgrade cost” = cost per level × (1 + 2 + … + unit upgrade cap), with the per-level cost by weapon upgrade type: 5,000 for type 1, 4,000 for type 2",
+      "Five differences from Akurasu: Jagd Doga (120,000), MP Great Mazinger (300,000), Twin Buster Rifle MAP (110,000) and Gundam Heavyarms Kai (88,000) can't be reproduced with any type or cap; the Minerva X's 525,000 corresponds to treating cap 15 as 14 {≠}",
+      "The Gundam Mk-II and the Super Gundam share this Diffuse Bazooka: it unlocks once upgraded to level 11 (the Super Gundam's cap) in Super Gundam form {?}",
+      "The Twin Buster Rifle 2 MAP and Full Barrage MAP built into the Wing Zero Custom and Heavyarms Custom are not locked in the game data; they're usable as soon as you change to the Custom",
+      "After firing Full Barrage MAP (Gundam Heavyarms Kai, Heavyarms Custom, Giant Robo), every ammo-limited weapon on that unit (itself included) drops to 0 ammo; EN weapons are unaffected",
+      "“Friendly fire”: each MAP weapon has an ally-recognition flag, and flagged ones remove squares with allies on them from the area. In the whole game only Funnel MAP, Fin Funnels MAP, Splash Breaker MAP, Spiral Sword MAP and Mandala Circle Nirvana have this flag; all other MAP weapons hit every unit within range {+}",
+      "MAP ranges (facing up): Breast Fire / Breast Burn MAP is a 12-square fan within 4 squares ahead; Full Barrage MAP is 7 squares within 3 ahead; Go Flasher MAP is a 35-square fan within 5 ahead; Diffuse Bazooka MAP is a 9-square fan 3–5 squares ahead; Funnel MAP picks a center square within range 1–4 and hits a radius-2 diamond (13 squares), Fin Funnels MAP radius 3 (25 squares) {+}",
+      "With “Upgrade cap” on, the added weapon still unlocks at the level of the original cap"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Attacks unlocked by level",
+     "columns": [
+      "Unit",
+      "Attack",
+      "Type",
+      "Power",
+      "Range",
+      "EN",
+      "Will",
+      "Pilot level"
+     ],
+     "rows": [
+      [
+       "Earthgain (Brad)",
+       "Ryuo Sogeki",
+       "Melee",
+       "2000",
+       "1",
+       "—",
+       "—",
+       "15"
+      ],
+      [
+       "Earthgain (Brad)",
+       "Shishiko Reppa",
+       "Melee",
+       "2400",
+       "1",
+       "20",
+       "—",
+       "25"
+      ],
+      [
+       "Earthgain (Brad)",
+       "Tenma Shoha",
+       "Melee",
+       "4200",
+       "1",
+       "60",
+       "130",
+       "35"
+      ],
+      [
+       "Earthgain (Brad)",
+       "Shin Tenma Shoha",
+       "MAP",
+       "3200{≠}",
+       "1–5",
+       "80",
+       "110",
+       "45"
+      ],
+      [
+       "Virose (Kurtz)",
+       "Bakufu Musodan",
+       "Melee",
+       "2000",
+       "1",
+       "—",
+       "—",
+       "10"
+      ],
+      [
+       "Virose (Kurtz)",
+       "Shinso Rekkyaku",
+       "Melee",
+       "2400",
+       "1",
+       "20",
+       "—",
+       "20"
+      ],
+      [
+       "Virose (Kurtz)",
+       "Ten'o Shohazan",
+       "Melee",
+       "4200",
+       "1",
+       "60",
+       "130",
+       "30"
+      ],
+      [
+       "Earthgain + Virose",
+       "Shorai Tenryu Mametsujin (combination attack)",
+       "Melee",
+       "6720 (average of the two attacks ×1.6)",
+       "1",
+       "80",
+       "130",
+       "35 for both"
+      ],
+      [
+       "Super Earthgain (Brad)",
+       "Bakufu Musodan",
+       "Melee",
+       "2200",
+       "1",
+       "—",
+       "—",
+       "10"
+      ],
+      [
+       "Super Earthgain (Brad)",
+       "Ryuo Sogeki",
+       "Melee",
+       "2200",
+       "1",
+       "—",
+       "—",
+       "15"
+      ],
+      [
+       "Super Earthgain (Brad)",
+       "Shishiko Reppa",
+       "Melee",
+       "2600",
+       "1",
+       "20",
+       "—",
+       "25"
+      ],
+      [
+       "Super Earthgain (Brad)",
+       "Hoo Koha",
+       "Melee",
+       "4500",
+       "1",
+       "60",
+       "130",
+       "35"
+      ],
+      [
+       "Super Earthgain (Brad)",
+       "Shin Tenma Shoha",
+       "MAP",
+       "3500",
+       "1–5",
+       "80",
+       "110",
+       "45"
+      ]
+     ],
+     "notes": [
+      "Until the level is reached, these attacks don't appear in the weapon list: only Brad and Kurtz unlock them; each appears at the next check (after a battle, on the intermission screen, at pilot registration) once the pilot reaches level 10/15/20/25/30/35/45, and stays from then on",
+      "Attack, range, EN and Will per game data (no upgrades); Earthgain's Shin Tenma Shoha is 3200 in game data, while Akurasu lists 3500 (that is the Super Earthgain value) {≠}",
+      "Shin Tenma Shoha is a MAP weapon that can hit allies",
+      "Shorai Tenryu Mametsujin is a combination attack: both pilots must be level 35 or higher, and its attack power follows the upgrades of both component attacks; it only works between the Earthgain and the Virose, so once Brad switches to the Super Earthgain it's no longer available {+}",
+      "The game data also has Super Earthgain versions of Shinso Rekkyaku and Ten'o Shohazan, but no unit is equipped with them"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Story-unlocked weapons",
+     "columns": [
+      "Unit",
+      "Weapon",
+      "Unlock timing"
+     ],
+     "rows": [
+      [
+       "Gundam Maxter, Gundam Rose, Dragon Gundam, Bolt Gundam",
+       "Burning Machine Gun Punch, Rose Hurricane, Shin Ryusei Kochoken, Gaia Crusher",
+       "Start of stage 30 “Meikyo Shisui” on the Independence Army route and stage 30 “A Heart Within the Fist” on the OZ route; on the Complete Pacifism route, stage 32 “Return to the Battlefield” when the enemy is wiped out or on the turn 15 player phase (when the four Shuffle Alliance members appear)"
+      ],
+      [
+       "Combattler V",
+       "Twin Lancer, V Laser, Big Blast Divider, Grand Dasher",
+       "Start of stage 39 “Desperate Breakthrough (Part 1)” on the Independence Army route and stage 39 “Cusco Absolute Defense Line (Part 1)” on the OZ route"
+      ],
+      [
+       "Super Beast Machine God",
+       "Dancou Kougaken",
+       "At the end of stage 38 “All-Out Attack on the Cyber Beast Force Base” on the Independence Army route and stage 38 “An Unseen Tomorrow” on the OZ route"
+      ],
+      [
+       "Burning Gundam",
+       "Sekiha Tenkyoken",
+       "Independence Army route: if you chose to go with Domon in stage 38, at the end of stage 38A “Death Match! Showdown on Lantau Island (Part 1)”; with the other two options, at the start of stage 39 “Desperate Breakthrough (Part 1)”. OZ route: at the end of stage 41 “Fist of Despair and Sorrow (Part 1)”"
+      ]
+     ],
+     "notes": [
+      "Before unlocking, these weapons aren't in the weapon list; the Complete Pacifism route merges into the OZ or Independence Army route at stage 37 and afterward unlocks them as that route does",
+      "The script also has a command that unlocks Double Burning Finger (at the end of Independence Army route stage 32, “Earth Sphere in Chaos”, if Allenby has joined), but combination attacks are re-evaluated by the program every time the weapon list is built, so this command has no actual effect; see the “Combination attacks” page {+}"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Weapon use conditions",
+     "columns": [
+      "Condition",
+      "Weapon"
+     ],
+     "rows": [
+      [
+       "NT or Enhanced L1 or higher",
+       "Funnel, Fin Funnels, Mother Funnel, Reflector Bit"
+      ],
+      [
+       "NT or Enhanced L4 or higher",
+       "Funnel MAP, Fin Funnels MAP"
+      ],
+      [
+       "Holy Warrior L1+",
+       "Aura Slash"
+      ],
+      [
+       "Holy Warrior L3+",
+       "Hyper Aura Slash, Hyper Aura Shot Arm, Hyper Aura Cannon, Twin Aura Attack"
+      ],
+      [
+       "Pilot level",
+       "Attacks of the Earthgain, Virose and Super Earthgain, plus Shorai Tenryu Mametsujin (see the table above)"
+      ],
+      [
+       "Super Mode (entered automatically by Domon, Argo, Sai Saici, George and Chibodee at Will 130 or higher; the unit becomes Burning Gundam H / Shining Gundam S / the respective S forms)",
+       "Burning Field Dash, Chokyu Hao Den'eidan, Erupting Burning Slash, Erupting Burning Finger, Sekiha Tenkyoken, Shining Finger Sword, and the finishers of the four Shuffle Alliance units"
+      ]
+     ],
+     "notes": [
+      "Weapons whose conditions aren't met still appear in the weapon list but cannot be selected",
+      "The Mandala Gundam's Mandala Circle Nirvana is player-only; the enemy Mandala Gundam can't use it"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "combo",
+   "label": "Combination attacks",
+   "intro": "Participation conditions, multipliers and values all come from the ROM's combination attack data and check code. A combination attack appears in the weapon list only when every participant meets its Will and EN requirements and they are connected on the map (diagonal adjacency counts; with three or more units, the group just needs to be connected as a whole, not every pair adjacent), and any participant can launch it. Attack power = the average of the current attack power (including upgrades) of each participating unit's corresponding component attack × multiplier, rounded down. Each participant pays the combination attack's EN once; no ammo is used.",
+   "blocks": [
+    {
+     "type": "table",
+     "title": "Mazinger series",
+     "columns": [
+      "Participating units",
+      "Attack",
+      "Component attacks",
+      "Power",
+      "Range",
+      "Will",
+      "EN"
+     ],
+     "rows": [
+      [
+       "Mazinger Z (JS) + Getter-1 / Getter Dragon",
+       "Twin Beam",
+       "Breast Fire + Getter Beam",
+       "Average ×1.5 (3375/3600)",
+       "1",
+       "—",
+       "60{≠}"
+      ],
+      [
+       "Mazinger Z (JS) + Great Mazinger",
+       "Double Mazinger Blade",
+       "Rocket Punch + Mazinger Blade",
+       "Average ×1.5 (2175)",
+       "1",
+       "—",
+       "—"
+      ],
+      [
+       "Mazinger Z (JS) + Great Mazinger",
+       "Double Burning Fire",
+       "Breast Fire + Breast Burn",
+       "Average ×1.5 (3600)",
+       "1",
+       "—",
+       "60"
+      ],
+      [
+       "Mazinger Z (JS) + Minerva X",
+       "Double Burning Fire",
+       "Breast Fire×2",
+       "Average ×1.5 (3300)",
+       "1",
+       "—",
+       "60"
+      ],
+      [
+       "Great Mazinger + MP Great Mazinger",
+       "Double Burning Fire",
+       "Breast Burn×2",
+       "Average ×1.5 (3750)",
+       "1",
+       "—",
+       "60"
+      ],
+      [
+       "Great Mazinger / MP Great Mazinger + Grendizer",
+       "Double Lightning Buster",
+       "Thunder Break + Space Thunder",
+       "Average ×1.5 (4500)",
+       "1",
+       "—",
+       "80"
+      ],
+      [
+       "Mazinger Z (JS) + Great Mazinger + Grendizer",
+       "Triple Mazinger Punch",
+       "Iron Cutter + Drill Pressure Punch + Screw Crusher Punch",
+       "Average ×1.6 (3360)",
+       "1–3",
+       "—",
+       "—"
+      ],
+      [
+       "Mazinger Z (JS) + Great Mazinger + Grendizer",
+       "Mazinger Tornado",
+       "Breast Fire + Breast Burn + Anti-Gravity Storm",
+       "Average ×1.6 (3893)",
+       "1",
+       "—",
+       "80"
+      ],
+      [
+       "Mazinger Z (JS) + Great Mazinger + Grendizer + Shin Getter-1",
+       "Final Dynamic Special",
+       "Breast Fire + Breast Burn + Anti-Gravity Storm + Stoner Sunshine {≠}",
+       "Average ×1.7 (4845)",
+       "1",
+       "—",
+       "80"
+      ]
+     ],
+     "notes": [
+      "The Mazinger Z (JS), Great Mazinger, MP Great Mazinger and Minerva X don't have to be piloted by Koji and Tetsuya; the participating pilots must be one of the following pairs (who sits in which unit doesn't matter): Koji with Tetsuya, Maria, Boss or Sayaka; Tetsuya with Jun or Boss; Jun with Boss or Sayaka; Sayaka with Boss; Maria with Hikaru (the Tetsuya + Boss and Sayaka + Jun pairs aren't listed on Akurasu) {+}",
+      "Twin Beam: Mazinger Z (JS) piloted by Koji or Tetsuya, Getter piloted by Ryoma; only available in Getter-1 / Getter Dragon form {+}",
+      "Double Lightning Buster: the Grendizer must be piloted by Duke, and the Great Mazinger / MP Great Mazinger by Maria, Naida, Koji, Tetsuya or Hikaru {+}",
+      "Triple Mazinger Punch, Mazinger Tornado: one of the combinations above plus Duke (Grendizer); Final Dynamic Special: also plus Ryoma (Shin Getter-1) {+}",
+      "The Grendizer must be in its base form (not combined with the Spazer) to take part",
+      "In Final Dynamic Special, the Shin Getter-1's component attack is Stoner Sunshine; Akurasu says Getter Beam {≠}",
+      "Twin Beam's EN is 60 in the game data; Akurasu says 80 {≠}",
+      "Values in parentheses are each attack's power with no upgrades"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "G Gundam",
+     "columns": [
+      "Participating units",
+      "Attack",
+      "Component attacks",
+      "Power",
+      "Range",
+      "Will",
+      "EN"
+     ],
+     "rows": [
+      [
+       "Burning Gundam H + Noble Gundam",
+       "Double Burning Finger",
+       "Erupting Burning Finger + Beam Ribbon",
+       "Average ×1.6 (4400)",
+       "1",
+       "130",
+       "60{≠}"
+      ],
+      [
+       "Burning Gundam H + Rising Gundam",
+       "Sekiha Love Love Tenkyoken",
+       "Sekiha Tenkyoken + Rising Arrow",
+       "Average ×1.6 (4800)",
+       "1",
+       "130",
+       "80"
+      ],
+      [
+       "Burning Gundam H + Gundam Maxter S + Gundam Rose S + Dragon Gundam S + Bolt Gundam S",
+       "Shuffle Alliance Fist",
+       "Sekiha Tenkyoken + Burning Machine Gun Punch + Rose Hurricane + Shin Ryusei Kochoken + Gaia Crusher",
+       "Average ×1.9 (6080)",
+       "1",
+       "130",
+       "100"
+      ]
+     ],
+     "notes": [
+      "Burning Gundam H and the S forms: your Domon, Argo, Sai Saici, George and Chibodee transform automatically on reaching 130 Will (checked after battle); your Allenby doesn't transform, and the Noble Gundam is exactly the form Double Burning Finger requires {+}",
+      "Double Burning Finger and Shuffle Alliance Fist need no story unlock: they appear once the participants are present and the conditions are met, the same on every route {+}",
+      "Sekiha Love Love Tenkyoken also requires Burning Gundam's Sekiha Tenkyoken to have been unlocked by the story: on the Independence Army route, if you go with Domon in stage 38, at the end of stage 38A “Death Match! Showdown on Lantau Island (Part 1)”; with the other two options, at the start of stage 39 “Desperate Breakthrough (Part 1)”; on the OZ route, at the end of stage 41 “Fist of Despair and Sorrow (Part 1)” {≠}",
+      "Double Burning Finger's EN is 60 in the game data; Akurasu says 80 {≠}"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Other allies",
+     "columns": [
+      "Participating units",
+      "Attack",
+      "Component attacks",
+      "Power",
+      "Range",
+      "Will",
+      "EN"
+     ],
+     "rows": [
+      [
+       "Any 2 of the Dunbine, Billbine and Sirbine",
+       "Twin Aura Attack",
+       "Hyper Aura Slash×2",
+       "Average ×1.6 (3840/4000)",
+       "1",
+       "130",
+       "40"
+      ],
+      [
+       "Earthgain + Virose",
+       "Shorai Tenryu Mametsujin",
+       "Tenma Shoha + Ten'o Shohazan",
+       "Average ×1.6 (6720)",
+       "1",
+       "130",
+       "80"
+      ],
+      [
+       "Daitarn 3 + Zambot 3",
+       "Space Combination Attack",
+       "Sun Attack + Moon Attack",
+       "Average ×1.6 (5680)",
+       "1",
+       "120",
+       "60"
+      ]
+     ],
+     "notes": [
+      "Twin Aura Attack: both pilots need Holy Warrior L3 or higher, and it must be Show paired with Marvel, Tod or Garalia; the Billbine can only take part in its Billbine form (not Wing Caliber). The “Hyper Aura Slash power” fix this port enables by default also applies to this attack {+}",
+      "Shorai Tenryu Mametsujin requires both pilots to be level 35 or higher (whoever is piloting); unavailable once Brad switches to the Super Earthgain",
+      "Space Combination Attack has no pilot restriction; Zambot 3 can only join via GB link, see the “GB link” page"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Enemy",
+     "columns": [
+      "Participating units (pilots)",
+      "Attack",
+      "Component attacks",
+      "Power",
+      "Range",
+      "Will",
+      "EN"
+     ],
+     "rows": [
+      [
+       "Dreissen (Gaia, Ortega, Mash)",
+       "Jet Stream Attack",
+       "Beam Tomahawk×3",
+       "Average ×1.5 (2400)",
+       "1–3",
+       "—",
+       "30"
+      ],
+      [
+       "Hambrabi (Yazan, Ramsus, Dunkel)",
+       "Spider Web",
+       "Sea Snake×3",
+       "Average ×1.5 (2550)",
+       "1–3",
+       "—",
+       "30"
+      ],
+      [
+       "Ga-Zowmn (Pampa, Beanne, Wyme)",
+       "Gaza Storm",
+       "Hyper Knuckle Buster×3",
+       "Average ×1.5 (2700)",
+       "1–3",
+       "—",
+       "30"
+      ],
+      [
+       "Jamru Fin (Dale, Deune, Danny)",
+       "3D",
+       "High Mega Cannon×3",
+       "Average ×1.5 (3000)",
+       "1–3",
+       "—",
+       "30"
+      ]
+     ],
+     "notes": [
+      "All three pilots must be on the map and in the units before the brackets",
+      "Jet Stream Attack has a weapon terrain rating of “-” against airborne targets (0% damage); Gaza Storm and 3D are “-” against underwater targets {+}",
+      "“3D” is what Akurasu calls the 3D Solid Attack; in-game the attack name shows only “3D”"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "link",
+   "label": "GB link",
+   "intro": "The original needs the 64GB Pak connected to the GB game Super Robot Wars Link Battler for F91, GoShogun and Zambot 3 to join. This port needs no cartridge: just check the series on the intermission screen. Unlock conditions, link stages and join levels all come from analysis of the ROM, scripts and code.",
+   "blocks": [
+    {
+     "type": "table",
+     "title": "Recruitable series",
+     "columns": [
+      "Series",
+      "Unit",
+      "Pilot",
+      "Original GB save condition"
+     ],
+     "rows": [
+      [
+       "Mobile Suit Gundam F91",
+       "F91, Vigna-Ghina",
+       "Seabook, Cecily",
+       "Have an F91-series unit, or have Seabook / Cecily"
+      ],
+      [
+       "Sengoku Majin GoShogun",
+       "GoShogun",
+       "Shingo, Killy, Remy",
+       "Have the GoShogun, or have Shingo"
+      ],
+      [
+       "Invincible Super Man Zambot 3",
+       "Zambot 3 (can Separate into the Zambird, Zambull and Zambase; the Zambird can transform into the Zambo-Ace)",
+       "Kappei, Uchuta, Keiko",
+       "Have the Zambot 3, or have Kappei"
+      ]
+     ],
+     "notes": [
+      "Meeting any one condition brings in all of that series' characters and units; nothing more joins if you already have a unit from that series"
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Link stage",
+     "columns": [
+      "Joining series",
+      "Link stage"
+     ],
+     "rows": [
+      [
+       "F91",
+       "F91 Launches"
+      ],
+      [
+       "GoShogun",
+       "GoShogun, Launch!"
+      ],
+      [
+       "Zambot 3",
+       "Zambot 3 Appears!"
+      ],
+      [
+       "F91 + GoShogun",
+       "Rendezvous"
+      ],
+      [
+       "F91 + Zambot 3",
+       "Rendezvous"
+      ],
+      [
+       "GoShogun + Zambot 3",
+       "Two Great Powers"
+      ],
+      [
+       "All three series",
+       "New Comrades"
+      ]
+     ],
+     "notes": [
+      "Each Link stage has a ground and a space version, chosen by whether the originally scheduled next stage is in space"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "How Link works in this port",
+     "items": [
+      "Pick “Link” in the intermission menu to open the Link page: three series cards; check the series to add, then “Next: Link”",
+      "Card states: joined (grayed out, can't be selected again), scheduled (the next stage is already the link stage; the checkbox is locked), available",
+      "Then the original “GB Link” screen opens as usual; press B to return to the intermission menu",
+      "The matching link stage is inserted before the next battle, with the newly joining characters on your side; afterwards you return to the originally scheduled next stage",
+      "Link stage defeat condition: the game is over if a newly joined character is destroyed",
+      "The original link pulls the experience of pilots shared by both games up to the higher of the two; this port's virtual cartridge mirrors your own pilots directly, so nobody's level changes"
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Other",
+     "items": [
+      "After a Link, some later stages have extra dialogue for these characters",
+      "Once Zambot 3 joins, it can use the combination attack “Space Combination Attack” with the Daitarn 3",
+      "After a Link, the title screen's Sound Test gains “F91ガンダム出撃”, “行けザンボット3” and “ゴーショーグン発進せよ”, and Karaoke gains two songs for the Zambot 3 and GoShogun; the condition is that these units have been on the team, not the Link itself {+}",
+      "A newly joined pilot's level = team average level + 1 (Cecily gets the average); the average is taken over the 15 highest-level pilots on the team who are assigned to units, rounded down, capped at 95 and at stages cleared + 40 {+}{?}"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -3164,9 +3164,9 @@
         "handler_vram": "0x800A22CC",
         "operand_words": 2,
         "kind": "statement",
-        "name": "ACC = !(名册[角色 A]+5 < 名册[角色 B]+5)",
-        "semantic_confidence": "structure-confirmed",
-        "basis": "800A32C0 取名册 D_80172F40 条目 +5 的字节；字段含义未确认。",
+        "name": "ACC = !(等级[角色 A] < 等级[角色 B])",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A32C0／800A32EC 在三张驾驶员表里按角色号找第一条，取 +5 的字节，即等级（2026-10-01，docs/gameplay/hidden-elements.md 2.4）。",
         "operands": [
           {
             "name": "角色 A",
@@ -3260,9 +3260,9 @@
         "handler_vram": "0x800A228C",
         "operand_words": 1,
         "kind": "statement",
-        "name": "ACC = 名册[角色]+0x14",
-        "semantic_confidence": "structure-confirmed",
-        "basis": "800A3294 取名册条目 +0x14 的 s16；字段含义未确认。",
+        "name": "ACC = 击坠数[角色]",
+        "semantic_confidence": "code-confirmed",
+        "basis": "800A3294 取名册条目 +0x14 的 s16，即击坠数：击坠资金加成 801F66C8 也按 +0x14 分档（2026-10-01，docs/gameplay/hidden-elements.md 2.4）。",
         "operands": [
           {
             "name": "角色",
@@ -3632,7 +3632,7 @@
           {
             "name": "门槛变量",
             "role": "gate_flag",
-            "note": "100–115 时须为 3；0 为无门槛"
+            "note": "100–115 时变量等于 3 则不触发（8009DE7C 每关开始把 100–114 置 3，脚本写 0 才启用）；其他编号不检查；0 为无门槛"
           },
           {
             "name": "角色",
@@ -3750,9 +3750,9 @@
         "status_code": "0x2000",
         "header": [
           {
-            "name": "最早回合",
+            "name": "最晚回合",
             "role": "turn",
-            "note": "当前回合 ≥ 该值"
+            "note": "当前回合（0 起算）≤ 该值才触发；8009E834 在该值 < 当前回合时返回"
           },
           {
             "name": "阶段",
@@ -3797,7 +3797,7 @@
           {
             "name": "门槛变量",
             "role": "gate_flag",
-            "note": "100–115 时须为 3"
+            "note": "100–115 时变量等于 3 则不触发（8009DE7C 每关开始把 100–114 置 3，脚本写 0 才启用）；其他编号不检查"
           }
         ],
         "handler_vram": "0x8009E8B4",
@@ -3834,34 +3834,34 @@
         "confidence": "structure-confirmed"
       },
       "9": {
-        "name": "游戏指定索引触发（0x992，阶段 6）",
+        "name": "说服（0x992，阶段 6）",
         "group": 9,
         "polled": "阶段 0/1/2/6",
         "status_code": "0x2000",
         "header": [
           {
-            "name": "保留",
-            "role": "raw",
-            "note": ""
+            "name": "说服者",
+            "role": "actor",
+            "note": "800A4634 按登记顺序找第一个未执行、门槛满足、双方上下左右相邻的槽，写入 engine+0x992"
           },
           {
-            "name": "保留",
-            "role": "raw",
-            "note": ""
+            "name": "对象",
+            "role": "actor",
+            "note": "对象属于哪个阵营都可以"
           },
           {
-            "name": "保留",
+            "name": "门槛变量",
             "role": "raw",
-            "note": ""
+            "note": "0xFFF8（−8）为无门槛；否则 变量 == 门槛值 时「説得」才出现。跨关的多步说服靠它串联"
           },
           {
-            "name": "保留",
+            "name": "门槛值",
             "role": "raw",
             "note": ""
           }
         ],
         "handler_vram": "0x8009EC3C",
-        "confidence": "structure-confirmed"
+        "confidence": "code-confirmed"
       },
       "10": {
         "name": "登记但不轮询",

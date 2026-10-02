@@ -70,7 +70,7 @@ def trigger_summary(trigger: dict) -> str:
     if kind in (4, 5):
         return f"{field_text(fields['角色 A'])} 与 {field_text(fields['角色 B'])} 交战（{'战斗后' if kind == 4 else '战斗前'}）"
     if kind == 6:
-        return f"敌方全灭（第 {fields['最早回合']['value']} 回合起 · {field_text(fields['阶段'])}）"
+        return f"敌方全灭（画面第 {fields['最晚回合']['value'] + 1} 回合以内 · {field_text(fields['阶段'])}）"
     if kind == 7:
         side = "第三方" if fields["阵营选择"]["value"] == 2 else "敌方"
         gate = fields["门槛变量"]
