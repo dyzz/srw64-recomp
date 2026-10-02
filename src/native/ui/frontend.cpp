@@ -299,8 +299,15 @@ body.pointer button.set-toggle:focus {background-color:transparent;} body.pointe
 body.pointer button.set-toggle:hover {background-color:#3fd0ff1a;}
 body.pointer .set-foot button:focus {background-color:#3fd0ff; border-color:#3fd0ff;}
 body.pointer .set-foot button:hover {background-color:#8fe4ff;}
+.set-panel.lib-panel {width:96%; height:94%; max-width:1180dp; max-height:760dp; padding:10dp 18dp 8dp;}
+.lib-top {display:flex; align-items:center; gap:18dp; margin-bottom:8dp;}
+.lib-top h1 {margin:0; font-size:20dp; letter-spacing:1dp; white-space:nowrap;}
+.lib-top .set-tabs {flex:1 1 0; margin:0;}
+.lib-top .set-tabs button {height:30dp; line-height:28dp; font-size:14dp;}
+.lib-panel .set-foot {margin-top:6dp; padding-top:6dp;}
+.lib-panel .set-foot button {padding:4dp 16dp;}
 .lib-main {flex:1 1 0; min-height:0; display:flex; gap:16dp;}
-.lib-list {width:24%; flex-shrink:0; overflow-y:auto; padding-right:6dp; border-right:1dp #3fd0ff40;}
+.lib-list {width:210dp; flex-shrink:0; overflow-y:auto; padding-right:6dp; border-right:1dp #3fd0ff40;}
 button.lib-item {display:flex; align-items:center; gap:8dp; width:100%; box-sizing:border-box; margin:0; padding:5dp 8dp; text-align:left; white-space:nowrap; overflow:hidden; font-size:14dp;
     color:#c8d4ee; background-color:transparent; border-width:0 0 0 3dp; border-color:transparent; border-radius:0;}
 button.lib-item .n {flex:1 1 0; min-width:0; overflow:hidden;}
@@ -315,14 +322,13 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .lib-detail {flex:1 1 0; min-width:0; overflow-y:auto; padding-right:8dp;}
 .lib-art {flex-shrink:0; display:flex; align-items:center; justify-content:center; background-color:#060a1c; border:1dp #3fd0ff59;}
 .lib-art img {margin:0;}
-.lib-name {font-size:30dp; font-weight:bold; color:#ffffff; white-space:nowrap; line-height:1.15;}
+.lib-name {font-size:26dp; font-weight:bold; color:#ffffff; white-space:nowrap; line-height:1.15;}
 .lib-sub {font-size:13dp; color:#a4b0d2; white-space:nowrap;}
 .lib-detail p.lib-note {font-size:12dp; color:#a4b0d2; margin:6dp 0 0;}
 .none {color:#5d6890;}
 /* Both pages: the art square and the side beside it */
-.lx-hero {display:flex; gap:20dp;}
-.lx-art {width:244dp; height:244dp;}
-.lx-side {flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:8dp;}
+.lx-hero {display:flex; gap:16dp;}
+.lx-side {flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:6dp;}
 .lx-name {display:flex; align-items:baseline; gap:12dp;}
 .lx-name .sub {font-size:14dp; color:#c8d4ee; white-space:nowrap;}
 .lx-tags {display:flex; flex-wrap:wrap; gap:5dp;}
@@ -338,7 +344,7 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .lx-love .dir {font-size:10dp; padding:0 5dp; color:#ffc2dd; border:1dp #ffc2dd80;}
 .lx-love .dir.both {color:#2a1426; background-color:#ffc2dd; border-color:#ffc2dd;}
 .lx-legend {margin:0;}
-.lx-stats {display:flex; flex-wrap:wrap; row-gap:7dp;}
+.lx-stats {display:flex; flex-wrap:wrap; row-gap:5dp;}
 .lx-stat {width:25%; box-sizing:border-box; padding-right:16dp;}
 .lx-stats.three .lx-stat {width:33.3%;}
 .lx-stat .k {display:block; font-size:12dp; color:#a4b0d2;}
@@ -346,23 +352,25 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .lx-stat .a {font-size:17dp; font-weight:bold;} .lx-stat .to {font-size:11dp; color:#5d6890; margin:0 4dp;} .lx-stat .b {font-size:15dp; font-weight:bold; color:#8fe4ff;}
 .lx-stat .bar {display:flex; height:5dp; margin-top:3dp; background-color:#1a2448;}
 .lx-stat .bar .p1 {height:5dp; background-color:#e8eefc;} .lx-stat .bar .p2 {height:5dp; background-color:#3fd0ff;}
-.lx-stats.three .lx-stat .bar .p1 {background-color:#3fd0ff;}
-.lx-terrain {display:flex; align-items:center; gap:4dp; margin-top:2dp;}
+.lx-stats.unit .lx-stat .bar .p1 {background-color:#3fd0ff;}
+.lx-left {flex-shrink:0; display:flex; flex-direction:column; gap:8dp;}
+.lx-terrain {display:flex; align-items:center; gap:4dp;}
 .lx-terrain .k {font-size:12dp; color:#a4b0d2; margin-right:4dp;}
 .lx-terrain .t {width:32dp; height:32dp; display:flex; flex-direction:column; align-items:center; justify-content:center; background-color:#1a2448; border:1dp #3fd0ff59; font-size:9dp; color:#a4b0d2;}
 .lx-terrain .t .r {font-size:14dp; font-weight:bold; color:#c8d4ee; line-height:1;}
 .lx-terrain .t.a {background-color:#3fd0ff; border-color:#3fd0ff; color:#0b1230;} .lx-terrain .t.a .r {color:#0b1230;}
 .lx-terrain .t.none {border-color:#2c3a66;} .lx-terrain .t.none .r {color:#5d6890;}
-.lx-head {margin:16dp 0 6dp; padding-bottom:4dp; font-size:13dp; font-weight:bold; color:#3fd0ff; border-bottom:1dp #3fd0ff59;}
+.lx-head {margin:12dp 0 5dp; padding-bottom:4dp; font-size:13dp; font-weight:bold; color:#3fd0ff; border-bottom:1dp #3fd0ff59;}
 .lx-head span {margin-left:10dp; font-size:11dp; font-weight:normal; color:#8f9bbd;}
 /* Units: the weapon table */
 .lib-wrow {display:flex; align-items:center; padding:4dp 0; font-size:13dp; border-bottom:1dp #3fd0ff1f;}
 .lib-wrow.head {color:#a4b0d2; font-size:11dp; padding:0 0 5dp;}
-.lib-wrow .n {flex:1 1 0; min-width:0; white-space:nowrap; overflow:hidden;}
-.lib-wrow .c {width:44dp; flex-shrink:0; text-align:right; white-space:nowrap;}
-.lib-wrow .c.big {width:52dp; font-size:15dp; font-weight:bold;}
-.lib-wrow .c.full {color:#8fe4ff;} .lib-wrow .c.ty {width:38dp;}
-.lu-flag {margin-left:5dp; padding:0 5dp; font-size:10dp; font-weight:bold; color:#e8eefc; background-color:#2c3a66;}
+.lib-wrow .n {flex:1 1 0; min-width:0; overflow:hidden; line-height:1.5;}
+.lib-wrow .n .name {white-space:nowrap;}
+.lib-wrow .c {width:40dp; flex-shrink:0; text-align:right; white-space:nowrap;}
+.lib-wrow .c.big {width:48dp; font-size:15dp; font-weight:bold;}
+.lib-wrow .c.full {color:#8fe4ff;} .lib-wrow .c.ty {width:34dp;}
+.lu-flag {display:inline-block; white-space:nowrap; margin-left:2dp; padding:0 5dp; font-size:10dp; font-weight:bold; color:#e8eefc; background-color:#2c3a66;}
 .lu-flag.unlock {color:#0b1230; background-color:#ffd75e;}
 .lu-type {display:inline-block; width:22dp; height:16dp; line-height:16dp; text-align:center; font-size:11dp; font-weight:bold; color:#0b1230;}
 .lu-type.t1 {background-color:#3fd0ff;} .lu-type.t2 {background-color:#5fd08a;} .lu-type.t3 {background-color:#c49bff;} .lu-type.t4 {background-color:#ffb46b;}
@@ -950,9 +958,17 @@ std::string library_type_tag(unsigned type){return "<span class='lu-type t"+std:
 // name), the tags with a gold one first (a unit's upgrade cap, a character's two-action
 // level), the stats as bars and the terrain; then the page's own sections.
 std::string library_hero(const json& entry,const std::string& sub,const std::string& badge,const json& L,const std::string& tags,const std::string& stats) {
-    return "<div class='lx-hero'><div class='lib-art lx-art'>"+library_art(entry,232)+"</div><div class='lx-side'><div class='lib-sub'>"+library_work(entry)+"</div>"
+    // The square takes about 30 % of the details' width, 150-220 dp: 164 on a Steam Deck at
+    // the Largest size (865 dp across), 220 on a larger screen. The panel is 96 % of the
+    // window up to 1180 dp less its padding; the list 210 dp and the gaps take 246.
+    const float window=float(pixels_w)/std::max(.1f,ui_density),panel=std::min(window*.96f,1180.f)-36;
+    const float side=std::clamp((panel-246)*.30f,150.f,220.f);
+    const auto box=std::to_string(int(side));
+    // The terrain sits under the square, which leaves the side shorter.
+    return "<div class='lx-hero'><div class='lx-left' style='width:"+box+"dp;'><div class='lib-art lx-art' style='width:"+box+"dp; height:"+box+"dp;'>"+library_art(entry,side-12)+"</div>"+
+        library_tiles(L,entry.value("terrain",std::string()))+"</div><div class='lx-side'><div class='lib-sub'>"+library_work(entry)+"</div>"
         "<div class='lx-name'><span class='lib-name fit'>"+escape(entry.value("name",std::string()))+"</span>"+(sub.empty()?std::string():"<span class='sub'>"+escape(sub)+"</span>")+"</div>"
-        "<div class='lx-tags'><span class='gold'>"+badge+"</span>"+tags+"</div>"+stats+library_tiles(L,entry.value("terrain",std::string()))+"</div></div>";
+        "<div class='lx-tags'><span class='gold'>"+badge+"</span>"+tags+"</div>"+stats+"</div></div>";
 }
 // A stat tile: the value, an optional level-99 value, and a bar (one or two parts).
 std::string library_tile(const std::string& key,const std::string& value,const std::string& high,float first,float second) {
@@ -977,7 +993,7 @@ std::string library_unit(const json& u,const json& L,const json& W,const json& t
     const auto stat=[&](const char* key,const char* field,float scale){return library_tile(l(key),library_number(u[field]),"",u.value(field,0.f)/scale*100,0);};
     const std::string badge=label("library_cap")+" "+library_with("library_cap_value",std::to_string(cap));
     std::string body=library_hero(u,"",badge,L,tags,
-        "<div class='lx-stats three'>"+stat("hp","hp",22000)+stat("en","en",300)+stat("move","move",10)+stat("mobility","mobility",130)+stat("armor","armor",2300)+stat("limit","limit",380)+"</div>");
+        "<div class='lx-stats three unit'>"+stat("hp","hp",22000)+stat("en","en",300)+stat("move","move",10)+stat("mobility","mobility",130)+stat("armor","armor",2300)+stat("limit","limit",380)+"</div>");
     const auto w=[&](const char* key){return escape(W.value(key,std::string()));};
     const json icons=W.value("icons",json::object());
     const auto& weapons=u.at("weapons");
@@ -991,11 +1007,13 @@ std::string library_unit(const json& u,const json& L,const json& W,const json& t
     for(const auto& r:weapons) {
         std::string before,after;
         for(const auto& m:r.value("markers",json::array()))(m=="格" || m=="射"?before:after)+=library_marker(m.get<std::string>(),icons);
-        if(r.contains("unlock"))after+="<span class='lu-flag unlock'>"+label("library_unlock")+"</span>";
-        if(r.value("combo",false))after+="<span class='lu-flag'>"+label("library_combo")+"</span>";
+        // The tags may wrap under the name in a narrow table (a Steam Deck at the Largest size).
+        std::string flags;
+        if(r.contains("unlock"))flags+=" <span class='lu-flag unlock'>"+label("library_unlock")+"</span>";
+        if(r.value("combo",false))flags+=" <span class='lu-flag'>"+label("library_combo")+"</span>";
         const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u),type=r.value("type",0u);
         if(type)present.insert(type);
-        body+="<div class='lib-wrow'><span class='n'>"+before+escape(r.value("display_name",r.value("name",std::string())))+after+"</span>"
+        body+="<div class='lib-wrow'><span class='n'><span class='name'>"+before+escape(r.value("display_name",r.value("name",std::string())))+after+"</span>"+flags+"</span>"
             "<span class='c big'>"+library_number(r["power"])+"</span><span class='c big full'>"+(type?library_number(r["full"]):std::string(none))+"</span>"
             "<span class='c ty'>"+(type?library_type_tag(type):std::string(none))+"</span>"
             "<span class='c'>"+(a==b?std::to_string(a):std::to_string(a)+"–"+std::to_string(b))+"</span><span class='c'>"+library_signed(r["hit"])+"</span><span class='c'>"+library_signed(r["critical"])+"</span>"
@@ -1046,7 +1064,7 @@ std::string library_pilot(const json& p,const json& L) {
             if(role && std::string_view(key)!="sp")return library_tile(l(key),"–","",0,0);
             return library_tile(l(key),std::to_string(v),std::to_string(v+98*gain),v/3.4f,98*gain/3.4f);
         };
-        extra+="<p class='lib-note lx-legend'>"+label("library_growth_note")+"</p><div class='lx-stats'>"+stat("melee",1)+stat("ranged",1)+stat("skill",1)+stat("reaction",1)+
+        extra+="<p class='lib-note lx-legend'>"+label("library_growth_note")+"</p><div class='lx-stats three'>"+stat("melee",1)+stat("ranged",1)+stat("skill",1)+stat("reaction",1)+
             stat("hit",2)+stat("evade",2)+stat("sp",2)+"</div>";
     }
     const std::string badge=label("library_double_move")+" "+(p.contains("double_move") && !role?"Lv"+library_number(p["double_move"]):std::string("–"));
@@ -1085,11 +1103,13 @@ std::string library_detail() {
     return library_tab?library_pilot(entry,all.at("labels")):library_unit(entry,all.at("labels"),all.at("weapon_labels"),all.at("upgrade_types"));
 }
 std::string library_panel() {
-    std::string body="<div class='set-shade'><div class='set-panel'><h1>"+label("library_title")+"</h1><div class='set-tabs nav'>";
+    // Laid out for a Steam Deck at the Largest size (865 x 540 dp): nearly the whole window,
+    // the title and tabs on one row, a fixed-width list.
+    std::string body="<div class='set-shade'><div class='set-panel lib-panel'><div class='lib-top'><h1>"+label("library_title")+"</h1><div class='set-tabs nav'>";
     const char* tabs[]={"units","pilots"};
     for(unsigned i=0;i<2;++i)
         body+=button("lib-tab:"+std::to_string(i),label("library_tab_"+std::string(tabs[i]))+"  ("+std::to_string(library::contents().at(tabs[i]).size())+")",i==library_tab,false,"set-tab");
-    body+="</div><div class='lib-main'><div id='lib-list' class='lib-list'>";
+    body+="</div></div><div class='lib-main'><div id='lib-list' class='lib-list'>";
     const auto& entries=library_entries();
     // A heading over each work's entries.
     int work=-2;
@@ -1100,8 +1120,8 @@ std::string library_panel() {
         }
         // Units carry their model number; characters who first appear as enemies a red dot.
         const auto& e=entries[i];
-        std::string text=library_tab?"<span class='dot"+std::string(e.value("enemy",false)?" enemy":"")+"'></span><span class='n'>"+escape(e.value("name",std::string()))+"</span>"
-                                    :"<span class='n'>"+escape(e.value("name",std::string()))+"</span>"+(e.contains("model")?"<span class='m'>"+escape(e.at("model").get<std::string>())+"</span>":std::string());
+        std::string text=library_tab?"<span class='dot"+std::string(e.value("enemy",false)?" enemy":"")+"'></span><span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"
+                                    :"<span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"+(e.contains("model")?"<span class='m'>"+escape(e.at("model").get<std::string>())+"</span>":std::string());
         body+=button("lib-item:"+std::to_string(i),text,i==library_index[library_tab],false,"lib-item");
     }
     body+="</div><div id='lib-detail' class='lib-detail'>"+library_detail()+"</div></div>"
@@ -1150,7 +1170,7 @@ void library_move(int dy,int dx) {
 void settings_sync() {
     if(!settings_open){mod_open=false;library_open=false;document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
     if(library_open) {
-        const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode);
+        const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
         document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
         settings_doc=document(library_panel(),true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
