@@ -71,8 +71,11 @@ int main() {
     // Older one-language probes remain usable without a cycle manifest.
     auto single=japanese;initialize(single);assert(next_locale("ja")=="ja");
     assert(srw64::game_adapter::standard_dialogue_key(42).value=="base:t00_00042");
-    assert(!srw64::game_adapter::dialogue_font_image(0xFD4800FB,0x000501F8,0x00FC0000));
+    // Both font resources: glyphs from 0x597 on are drawn from the 504x252 continuation.
+    assert(srw64::game_adapter::dialogue_font_image(0xFD4800FB,0x000501F8,0x00FC0000));
     assert(srw64::game_adapter::dialogue_font_image(0xFD4800FB,0x000501F8,0x01F80000));
+    assert(!srw64::game_adapter::dialogue_font_image(0xFD4800FB,0x000501F8,0x00FC0001));
+    assert(!srw64::game_adapter::dialogue_font_image(0xFD4800FB,0x00050100,0x00FC0000));
     srw64::presentation::ImageMode mode;
     mode.toggle();assert(!mode.enabled());
     mode.configure(false);mode.acknowledge(false);

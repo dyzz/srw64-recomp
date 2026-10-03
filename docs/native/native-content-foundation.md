@@ -113,6 +113,6 @@ Python 校验、C++ TextKey/回退/模式请求测试和实际 Core Text 排版�
 - `build/recomp/profile-check/live-zh-3/`：7848 VI 正常退出；`live-ja-3/`：8064 VI 正常退出。两次均从新游戏运行至 `base:t00_17412` 的 segment 1。
 - 每种语言实际截取原图→高清→原图→高清四帧。头像 ROI `[48,45,330,335]` 有 70680 个像素发生变化，地图 ROI `[0,0,100,45]` 有 4500 个像素变化；两个区域切回原图及高清均逐像素一致。对白事件、owner、页码、揭示进度与内容在切图期间保持不变。
 - 两种语言均确认 57 张世界地图纹理在 RT64 实际缓存中达到 512×512、UV 缩放 8 倍；原生水滴分别绘制 1398 / 1608 次。人工检查完成的 GPU 截图，确认中文/日文、原图/高清和现代模型同时生效。
-- 已确认绘制中的字库为运行时 504×504 图集；原始 ROM 资源 1 的 504×252 文件头不能直接作为绘制绑定的判断条件。适配层按实际图集识别。
+- 已确认绘制中的字库为运行时 504×504 图集；原始 ROM 资源 1 的 504×252 文件头不能直接作为绘制绑定的判断条件。适配层按实际图集识别。（2026-10-03 更正：字形号 ≥ 0x597 的生僻汉字确实从资源 1 的 504×252 图绘制，适配层两张都认，见 [portable-text.md](portable-text.md)。）
 
 汇总证据：[acceptance.json](../../build/recomp/profile-check/acceptance.json)。截图：[中文原图](../../build/recomp/profile-check/live-zh-3/profile-checks/original.png)、[中文高清](../../build/recomp/profile-check/live-zh-3/profile-checks/hd.png)、[日文高清](../../build/recomp/profile-check/live-ja-3/profile-checks/hd.png)。本次未覆盖全游戏、旧中文存档迁移或实体键盘自动化；F6 与测试请求共用同一个应用路径。

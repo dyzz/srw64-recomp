@@ -90,6 +90,25 @@ void incremental() {
     // Hand-off between speakers, pages, history, sizes, a hidden box and back.
     top.active=false;bottom.active=true;frame.reading_event=2;verify_incremental(raster,canvas,frame);
     for(unsigned page=0;page<top.layout.pages.size();++page){top.page=page;top.revealed=top.layout.pages[page].end;verify_incremental(raster,canvas,frame);}
+    // A battle quote laid out again in a wider box: its last character leaves the second
+    // line for the first, partway through the reveal and after it.
+    {
+        srw64::localization::Scope scope(frame.catalog);
+        const auto quote=utf16("“竟敢小看老夫百鬼一族……回头可别后悔”");
+        const auto narrow=typeset(quote,13,150),wide=typeset(quote,13,260);
+        check(narrow.pages[0].lines.size()==2 && wide.pages[0].lines.size()==1,"the quote does not change its wrap");
+        for(const size_t shown:{size_t(9),quote.size()})for(const auto* layout:{&narrow,&wide,&narrow}) {
+            top.layout=*layout;top.width=layout==&wide?260:150;top.page=0;top.revealed=shown;
+            verify_incremental(raster,canvas,frame);
+        }
+        // The next quote in the same box, from another speaker, shorter, then revealed.
+        top.speaker=u"玲";top.event=7;frame.reading_event=7;
+        top.layout=typeset(utf16("“燃烧得通红！”"),13,260);
+        for(size_t shown=0;shown<=top.layout.pages[0].end;++shown){top.revealed=shown;verify_incremental(raster,canvas,frame);}
+        top.speaker=u"阿姆罗";top.event=1;top.width=177;frame.reading_event=2;
+        top.layout=typeset(utf16("日本語、中文 é が。A longer line for pagination, and a second line or more."),13);
+        verify_incremental(raster,canvas,frame);
+    }
     frame.history_open=true;frame.history.emplace_back();frame.history.back().text=u"Refund received";verify_incremental(raster,canvas,frame);
     frame.history_open=false;verify_incremental(raster,canvas,frame);
     frame.bar_scale=1.4;verify_incremental(raster,canvas,frame);
