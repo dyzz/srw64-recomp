@@ -29,8 +29,10 @@ enum class Slot : uint8_t { Primary, Back, Arc2, Arc3, Top1, Top2, Top3, Top4, C
 inline constexpr size_t slot_count = size_t(Slot::Count);
 
 struct Action {
-    uint32_t bits = 0;          // 0: the slot is empty
+    uint32_t bits = 0;          // the keys it holds down
     std::string_view label;     // a UI label key (content/locales/*.json "ui")
+    std::string_view command;   // or a page of ours it opens when let go (frontend.cpp choose())
+    bool filled() const { return bits || !command.empty(); }
     bool operator==(const Action&) const = default;
 };
 
@@ -71,7 +73,8 @@ struct Scene {
 // docs/design/touch-controls.md §3.
 inline Scene scene(SceneId id) {
     Scene s;
-    auto set = [&](Slot slot, uint32_t b, std::string_view label) { s.slots[size_t(slot)] = {b, label}; };
+    auto set = [&](Slot slot, uint32_t b, std::string_view label) { s.slots[size_t(slot)] = {b, label, {}}; };
+    auto open = [&](Slot slot, std::string_view command, std::string_view label) { s.slots[size_t(slot)] = {0, label, command}; };
     const auto settings = [&] { set(Slot::Top1, bits::Option, "touch_settings"); };
     switch (id) {
     case SceneId::Hidden:
@@ -88,13 +91,16 @@ inline Scene scene(SceneId id) {
         set(Slot::Primary, bits::A, "touch_ok"); set(Slot::Back, bits::B, "touch_back");
         settings();
         break;
+    // The title's corner buttons (the Library, MOD) become touch buttons along the top.
     case SceneId::Attract:
         set(Slot::Primary, bits::Start, "touch_start"); settings();
+        open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "mod-open", "mod_open");
         s.tap_primary = true;
         break;
     case SceneId::TitleRing:
         s.stick = Stick::Wide;
         set(Slot::Primary, bits::Start, "touch_ok"); settings();
+        open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "mod-open", "mod_open");
         break;
     case SceneId::Prologue:
         set(Slot::Primary, bits::A, "touch_next_page"); set(Slot::Arc2, bits::R | bits::Start, "touch_skip"); settings();
@@ -104,7 +110,7 @@ inline Scene scene(SceneId id) {
         s.stick = Stick::Hidden;
         set(Slot::Primary, bits::A, "touch_next_line");
         set(Slot::Arc2, bits::R2, "touch_fast"); set(Slot::Arc3, bits::L2, "touch_auto");
-        settings(); set(Slot::Top2, bits::R | bits::Start, "touch_skip");
+        settings(); set(Slot::Top2, bits::R | bits::Start, "touch_skip"); set(Slot::Top3, bits::L, "touch_history");
         s.tap_primary = true;
         break;
     case SceneId::Choice:
@@ -142,7 +148,7 @@ inline Scene scene(SceneId id) {
         set(Slot::Arc2, bits::L, "touch_prev_page"); set(Slot::Arc3, bits::R, "touch_next_page"); settings();
         break;
     case SceneId::BattleScene:
-        set(Slot::Arc2, bits::R2, "touch_skip_battle"); settings();
+        set(Slot::Primary, bits::R2, "touch_skip_battle"); settings();
         break;
     case SceneId::AnyKey:
         set(Slot::Primary, bits::A, "touch_continue"); settings();
@@ -203,7 +209,7 @@ inline Layout layout(float width, float height, float px_per_mm) {
 inline std::optional<Slot> hit(const Layout& layout, const Scene& scene, float x, float y) {
     const float slack = 1.5f * layout.mm;
     for (size_t i = 0; i < slot_count; ++i) {
-        if (!scene.slots[i].bits) continue;
+        if (!scene.slots[i].filled()) continue;
         const auto& p = layout.slots[i];
         const bool inside = p.round ? (x - p.x) * (x - p.x) + (y - p.y) * (y - p.y) <= (p.r + slack) * (p.r + slack)
                                     : std::abs(x - p.x) <= p.w / 2 + slack && std::abs(y - p.y) <= p.h / 2 + slack;
@@ -274,6 +280,7 @@ public:
     bool up(int64_t id) { return held.erase(id) != 0; }
     void clear() { held.clear(); }
     bool owns(int64_t id) const { return held.contains(id); }
+    const Finger* find(int64_t id) const { const auto f = held.find(id); return f == held.end() ? nullptr : &f->second; }
     bool empty() const { return held.empty(); }
     uint32_t buttons() const {
         uint32_t out = 0;

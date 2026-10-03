@@ -36,6 +36,7 @@
 #include "presentation/image_mode.hpp"
 #include "input_mode.hpp"
 #include "touch_pad.hpp"
+#include "touch_scene.hpp"
 #include "presentation/rgba_file.hpp"
 #include "text/button_prompts.hpp"
 #include "stb/stb_image.h"
@@ -2416,11 +2417,14 @@ void mini_sync() {
 // players with no menu bar. A controller shows the View button; a tap or click opens it.
 // Beside it, the additional scenarios (DLC): installed campaigns in the main game, the
 // way back to it in a campaign (campaign_library.hpp).
+bool touch_active();
 void home_sync() {
     const int major=intro::title_major();
     const bool settings_entry=pad_mode || !app_menu::available();
     if((major!=2 && major!=3) || settings_open){document_close(home_doc);home_stamp.clear();return;}
-    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+frame_stamp();
+    // With touch controls the Library, MOD and settings are touch buttons along the top.
+    const bool touch=touch_active();
+    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+(touch?"t":"")+frame_stamp();
     if(home_doc && stamp==home_stamp)return;
     document_close(home_doc);home_stamp=stamp;
     // Library and MOD bottom right, lettered like the ring (menu_style: 14 game pixels, a
@@ -2431,8 +2435,9 @@ void home_sync() {
         return "<button id='"+std::string(id)+"' class='home-mod' style='font-size:"+px(14)+"; font-effect:outline("+px(1)+" #0a0d17), shadow("+
             px(.8f)+" "+px(.8f)+" #00000073);'>"+label(key)+"</button>";
     };
-    std::string body="<div class='home-corner'>"+lettered("library-open","library_open")+lettered("mod-open","mod_open")+"</div><div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
-    if(settings_entry)body+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
+    std::string body=(touch?std::string():"<div class='home-corner'>"+lettered("library-open","library_open")+lettered("mod-open","mod_open")+"</div>")+
+        "<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
+    if(settings_entry && !touch)body+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
     home_doc=document(body,false);
 }
 // The HD original (battle_ui "hd"): the original screen redrawn in its own 320x240
@@ -2877,15 +2882,15 @@ touch_pad::Layout touch_layout() {
     const float mm=SDL_GetDisplayDPI(0,&ddpi,nullptr,nullptr)==0 && ddpi>0?ddpi/25.4f:pixel_ratio*96/25.4f;
     return touch_pad::layout(float(pixels_w),float(pixels_h),mm);
 }
-// The scene: our all-touch windows, our pages, or (until the game's scenes are recognised)
-// everything.
+// The scene: our all-touch windows, our pages, or the game's own.
 touch_pad::SceneId touch_scene_now() {
     if(settings_open || library_open)return touch_pad::SceneId::Hidden;
     if(names::request().visible || link_request.visible || battle_request.value("visible",false) ||
        intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) ||
        ability_request.value("visible",false) || swap_request.value("visible",false) || save_request.value("visible",false) ||
        title_request.value("visible",false))return touch_pad::SceneId::Page;
-    return touch_pad::SceneId::Other;
+    // The game's own scene, as the input callback saw it (touch_scene.hpp).
+    return touch_pad::SceneId(touch_scene::current().load());
 }
 void touch_publish(){touch_held=touch_fingers.buttons()|(touch_back?touch_pad::bits::B:0);}
 // Does the mouse SDL makes from a finger belong to the controls (not to a page under them)?
@@ -2909,6 +2914,12 @@ bool touch_event(const SDL_Event& event) {
         touch_publish();return true;
     case SDL_FINGERUP: {
         const uint32_t before=touch_fingers.buttons();
+        // A button that opens one of our pages does it when let go on it.
+        if(const auto* finger=touch_fingers.find(event.tfinger.fingerId);finger && finger->kind==touch_pad::Fingers::Kind::Button) {
+            const auto& action=touch_pad::scene(touch_scene_id)[finger->slot];
+            if(!action.command.empty() && touch_pad::hit(touch_layout(),touch_pad::scene(touch_scene_id),event.tfinger.x*pixels_w,event.tfinger.y*pixels_h)==finger->slot)
+                choose(std::string(action.command));
+        }
         if(!touch_fingers.up(event.tfinger.fingerId))return false;
         touch_keep(before&~touch_fingers.buttons(),touch_down_at[event.tfinger.fingerId]);
         touch_down_at.erase(event.tfinger.fingerId);
@@ -2995,7 +3006,7 @@ void touch_sync() {
     }
     for(size_t i=0;i<touch_pad::slot_count;++i) {
         const auto& action=scene.slots[i];
-        if(!action.bits)continue;
+        if(!action.filled())continue;
         const auto& place=layout.slots[i];
         const float w=place.round?2*place.r:place.w,h=place.round?2*place.r:place.h;
         const std::string text=label(std::string(action.label));

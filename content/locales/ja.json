@@ -487,7 +487,8 @@
     "touch_prev_target": "前の目標",
     "touch_next_target": "次の目標",
     "touch_skip_battle": "演出スキップ",
-    "touch_continue": "次へ"
+    "touch_continue": "次へ",
+    "touch_history": "ログ"
   },
   "entries": [],
   "display_name": "日本語"
