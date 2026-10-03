@@ -2993,7 +2993,7 @@ void touch_sync() {
         const struct {uint32_t bit;float dx,dy;int turn;} arrows[]={{touch_pad::bits::Up,0,-1,0},{touch_pad::bits::Down,0,1,180},
             {touch_pad::bits::Left,-1,0,270},{touch_pad::bits::Right,1,0,90}};
         for(const auto& a:arrows) {
-            const float ax=cx+a.dx*r*.7f,ay=cy+a.dy*r*.7f,size=3.2f*mm;
+            const float ax=cx+a.dx*r*.7f,ay=cy+a.dy*r*.7f,size=2.8f*mm;
             body+="<div style='position:absolute;left:"+px(ax-size/2)+";top:"+px(ay-size/2)+";width:"+px(size)+";height:"+px(size)+
                   ";font-size:"+px(size*.8f)+";line-height:"+px(size)+";text-align:center;color:"+(held&a.bit?"#ffffff":"#ffffffa0")+
                   ";transform:rotate("+std::to_string(a.turn)+"deg);'>&#x25B2;</div>";
@@ -3001,7 +3001,7 @@ void touch_sync() {
         // The knob follows the thumb, as far as the rim.
         float kx=cx,ky=cy;
         if(stick){const float dx=stick->x-cx,dy=stick->y-cy,d=std::hypot(dx,dy),reach=r*.55f;kx=cx+(d>reach?dx*reach/d:dx);ky=cy+(d>reach?dy*reach/d:dy);}
-        const float k=3.8f*mm;
+        const float k=3.2f*mm;
         body+="<div style='position:absolute;left:"+px(kx-k)+";top:"+px(ky-k)+";width:"+px(2*k)+";height:"+px(2*k)+";border-radius:"+px(k)+";"+face(stick!=nullptr,alpha)+"'></div>";
     }
     for(size_t i=0;i<touch_pad::slot_count;++i) {
@@ -3010,7 +3010,7 @@ void touch_sync() {
         const auto& place=layout.slots[i];
         const float w=place.round?2*place.r:place.w,h=place.round?2*place.r:place.h;
         const std::string text=label(std::string(action.label));
-        const float size=touch_label_size(text,w*(place.round?.72f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?4.6f:3.4f)*mm:2.8f*mm);
+        const float size=touch_label_size(text,w*(place.round?.76f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?3.8f:2.8f)*mm:2.4f*mm);
         body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
               face(touch_fingers.pressed(touch_pad::Slot(i)),1)+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+escape(text)+"</div>";
     }
