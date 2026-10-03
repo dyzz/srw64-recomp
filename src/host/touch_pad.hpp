@@ -210,7 +210,8 @@ inline Layout layout(float width, float height, float px_per_mm) {
     on_arc(180, x, y); circle(Slot::Back, x, y, 5);
     on_arc(130, x, y); circle(Slot::Arc2, x, y, 4.6f);
     on_arc(85, x, y); circle(Slot::Arc3, x, y, 4.6f);
-    bar(Slot::Top1, 9.5f, 5, 15, 5); bar(Slot::Top2, 26.5f, 5, 15, 5);
+    // Settings is everywhere but seldom wanted: small, tucked in the corner (user, 2026-10-03).
+    bar(Slot::Top1, 6.5f, 3.5f, 10, 4); bar(Slot::Top2, 20.5f, 5, 15, 5);
     bar(Slot::Top3, w - 26.5f, 5, 15, 5); bar(Slot::Top4, w - 9.5f, 5, 15, 5);
     out.stick_radius = 8.5f * m;
     out.rest_x = 14.5f * m; out.rest_y = (h - 13) * m;
