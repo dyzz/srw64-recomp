@@ -572,6 +572,10 @@ nlohmann::json state() {
     if(!enabled)return nullptr;
     return state_snapshot();
 }
+bool reading() {
+    std::lock_guard lock(mutex);
+    return enabled && reader.active;
+}
 void configure(const std::filesystem::path& directory) {
     const char* path=std::getenv("SRW64_DIALOGUE_DATA");if(!path)return;
     std::ifstream input(path);json data;input>>data;
