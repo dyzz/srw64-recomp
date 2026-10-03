@@ -10,6 +10,8 @@ namespace srw64::ui {
 void window_init(SDL_Window*, const std::filesystem::path&);
 void update();
 bool event(SDL_Event&);
+// The on-screen controller's buttons (touch_pad.hpp), in srw64_pad_state()'s bits.
+uint32_t touch_buttons();
 void shutdown();
 void render_init(plume::RenderInterface*, plume::RenderDevice*);
 bool draw(plume::RenderCommandList*, plume::RenderFramebuffer*, bool name_cover);

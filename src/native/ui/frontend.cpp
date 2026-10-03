@@ -34,6 +34,7 @@
 #include "modal_input.hpp"
 #include "presentation/image_mode.hpp"
 #include "input_mode.hpp"
+#include "touch_pad.hpp"
 #include "presentation/rgba_file.hpp"
 #include "text/button_prompts.hpp"
 #include "stb/stb_image.h"
@@ -2433,6 +2434,150 @@ void fps_sync() {
     if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false);}
     if(fps_doc)fps_doc->PullToFront();
 }
+// The on-screen controller (touch_pad.hpp) on a phone, or with SRW64_TOUCH_PAD=1 and a
+// mouse anywhere. It shows from the first touch and hides when a controller or the
+// keyboard plays, and while one of our pages is up (they take touches themselves).
+// Android's back key (SDL_ANDROID_TRAP_BACK_BUTTON, graphics.cpp) is B while held.
+bool touch_supported() {
+#ifdef __ANDROID__
+    return true;
+#else
+    static const bool on=std::getenv("SRW64_TOUCH_PAD") && std::string(std::getenv("SRW64_TOUCH_PAD"))=="1";
+    return on;
+#endif
+}
+bool touch_shown=true,touch_pages=false,touch_back=false,touch_mouse_eaten=false;
+touch_pad::Fingers touch_fingers;
+std::atomic<uint32_t> touch_held{0};
+// A press shorter than a frame still reaches the game: what a quick tap or the back key
+// let go stays pressed until 80 ms after it went down.
+constexpr uint64_t touch_min_ms=80;
+std::map<int64_t,uint64_t> touch_down_at;
+uint64_t touch_back_at=0;
+std::atomic<uint32_t> touch_linger{0};
+std::atomic<uint64_t> touch_linger_until{0};
+void touch_keep(uint32_t bits,uint64_t down_at) {
+    const uint64_t until=down_at+touch_min_ms;
+    if(!bits || SDL_GetTicks64()>=until)return;
+    touch_linger|=bits;
+    if(touch_linger_until.load()<until)touch_linger_until=until;
+}
+Rml::ElementDocument* touch_doc{};
+std::string touch_stamp;
+bool touch_active(){return touch_supported() && touch_shown && !touch_pages;}
+void set_pad_mode(bool on);
+// Touch play hints the controller in the on-screen controls' own names (the Steam Deck's
+// A B L1 R1 L2 R2); a real controller's family comes back when it plays.
+bool touch_family=false;
+uint8_t touch_saved_family=0;
+void touch_hints(bool touching) {
+    if(touching) {
+        if(!touch_family){touch_saved_family=input::pad_family;input::pad_family=1;touch_family=true;}
+        set_pad_mode(true);
+    } else if(touch_family){input::pad_family=touch_saved_family;touch_family=false;}
+}
+touch_pad::Layout touch_layout() {
+    float ddpi=0;
+    const float mm=SDL_GetDisplayDPI(0,&ddpi,nullptr,nullptr)==0 && ddpi>0?ddpi/25.4f:pixel_ratio*96/25.4f;
+    return touch_pad::layout(float(pixels_w),float(pixels_h),mm);
+}
+void touch_publish(){touch_held=touch_fingers.buttons()|(touch_back?touch_pad::bits::B:0);}
+// The controller's events; true when the controls took them.
+bool touch_event(const SDL_Event& event) {
+    if(!touch_supported())return false;
+    switch(event.type) {
+    case SDL_FINGERDOWN: {
+        touch_shown=true;touch_hints(true);
+        if(!touch_active() || !touch_fingers.down(touch_layout(),event.tfinger.fingerId,event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
+        touch_down_at[event.tfinger.fingerId]=SDL_GetTicks64();
+        touch_publish();return true;
+    }
+    case SDL_FINGERMOTION:
+        if(!touch_fingers.move(touch_layout(),event.tfinger.fingerId,event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
+        touch_publish();return true;
+    case SDL_FINGERUP: {
+        const uint32_t before=touch_fingers.buttons();
+        if(!touch_fingers.up(event.tfinger.fingerId))return false;
+        touch_keep(before&~touch_fingers.buttons(),touch_down_at[event.tfinger.fingerId]);
+        touch_down_at.erase(event.tfinger.fingerId);
+        touch_publish();return true;
+    }
+    // The mouse SDL makes from the first finger: not for the pages under a control.
+    case SDL_MOUSEBUTTONDOWN:
+        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_active() ||
+           !touch_pad::hit(touch_layout(),event.button.x*pixel_ratio,event.button.y*pixel_ratio))return false;
+        touch_mouse_eaten=true;return true;
+    case SDL_MOUSEMOTION:
+        return event.motion.which==SDL_TOUCH_MOUSEID && touch_mouse_eaten;
+    case SDL_MOUSEBUTTONUP:
+        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_mouse_eaten)return false;
+        touch_mouse_eaten=false;return true;
+    case SDL_KEYDOWN: case SDL_KEYUP:
+        // Through sdl2-compat the back key has no scancode and SDL3's keycode (0x4000011A,
+        // SDL2's SDLK_AC_BACK is 0x4000010E).
+        if(event.key.keysym.scancode==SDL_SCANCODE_AC_BACK || event.key.keysym.sym==SDLK_AC_BACK || event.key.keysym.sym==SDL_Keycode(0x4000011A)) {
+            if(event.type==SDL_KEYDOWN && !event.key.repeat)touch_back_at=SDL_GetTicks64();
+            if(event.type==SDL_KEYUP && touch_back)touch_keep(touch_pad::bits::B,touch_back_at);
+            touch_back=event.type==SDL_KEYDOWN;touch_publish();return true;
+        }
+        if(event.type==SDL_KEYDOWN && event.key.windowID)touch_shown=false;
+        break;
+    case SDL_CONTROLLERBUTTONDOWN:
+        touch_shown=false;break;
+    case SDL_CONTROLLERAXISMOTION:
+        if(std::abs(int(event.caxis.value))>input::axis_threshold)touch_shown=false;
+        break;
+    default:break;
+    }
+    if(!touch_shown){touch_hints(false);if(!touch_fingers.empty()){touch_fingers.clear();touch_publish();}}
+    return false;
+}
+void touch_sync() {
+    touch_pages=settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) ||
+        intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) ||
+        ability_request.value("visible",false) || swap_request.value("visible",false) || save_request.value("visible",false) ||
+        title_request.value("visible",false);
+    if(!touch_active()) {
+        if(!touch_fingers.empty()){touch_fingers.clear();touch_publish();}
+        document_close(touch_doc);touch_stamp.clear();return;
+    }
+    const auto layout=touch_layout();
+    std::string stamp=frame_stamp()+"/"+std::to_string(layout.mm);
+    for(size_t i=0;i<touch_pad::control_count;++i)stamp+=touch_fingers.pressed(touch_pad::Control(i))?'1':'0';
+    const uint32_t held=touch_fingers.buttons();
+    stamp+="/"+std::to_string(held);
+    if(stamp==touch_stamp){if(touch_doc)touch_doc->PullToFront();return;}
+    touch_stamp=stamp;document_close(touch_doc);
+    // Physical sizes: pixels, whatever the interface size.
+    const float mm=layout.mm;
+    const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
+    const auto face=[&](bool down){return std::string("background-color:")+(down?"#ffffff70":"#ffffff2e")+";border-width:"+px(.35f*mm)+
+        ";border-color:#ffffff99;color:#ffffffd8;text-align:center;font-weight:bold;";};
+    std::string body;
+    for(const auto& s:layout.shapes) {
+        const bool down=touch_fingers.pressed(s.control);
+        if(s.control==touch_pad::Control::DPad) {
+            const float r=s.w,arm=8*mm,reach=7.5f*mm;
+            body+="<div style='position:absolute;left:"+px(s.x-r)+";top:"+px(s.y-r)+";width:"+px(2*r)+";height:"+px(2*r)+
+                  ";border-radius:"+px(r)+";background-color:#ffffff1e;border-width:"+px(.35f*mm)+";border-color:#ffffff99;'></div>";
+            const struct {uint32_t bit;float dx,dy;int turn;} arms[]={{touch_pad::bits::Up,0,-1,0},{touch_pad::bits::Down,0,1,180},
+                {touch_pad::bits::Left,-1,0,270},{touch_pad::bits::Right,1,0,90}};
+            for(const auto& a:arms) {
+                const float cx=s.x+a.dx*reach,cy=s.y+a.dy*reach;
+                body+="<div style='position:absolute;left:"+px(cx-arm/2)+";top:"+px(cy-arm/2)+";width:"+px(arm)+";height:"+px(arm)+
+                      ";border-radius:"+px(1.2f*mm)+";"+face(held&a.bit)+"font-size:"+px(3.6f*mm)+";line-height:"+px(arm)+
+                      ";transform:rotate("+std::to_string(a.turn)+"deg);'>&#x25B2;</div>";
+            }
+            continue;
+        }
+        const float left=s.round?s.x-s.w:s.x,top=s.round?s.y-s.w:s.y,w=s.round?2*s.w:s.w,h=s.round?2*s.w:s.h;
+        const float size=s.round?5*mm:(h<6*mm?2.8f*mm:3.6f*mm);
+        body+="<div style='position:absolute;left:"+px(left)+";top:"+px(top)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
+              face(down)+"font-size:"+px(size)+";line-height:"+px(h)+";'>"+std::string(s.label)+"</div>";
+    }
+    touch_doc=document(body,false);
+    touch_doc->PullToFront();
+}
 void notices_sync() {
     const double now=system.GetElapsedTime();
     while(!banners.empty() && banners.front().until<=now)banners.pop_front();
@@ -2634,7 +2779,7 @@ void sync() {
     if(app_menu::take_reload_request())srw64::dialogue::request_reload();
     if(app_menu::take_fullscreen_request())toggle_fullscreen();
     if(const int n=app_menu::take_scale_request())scale_window(n);
-    settings_sync();notices_sync();fps_sync();context->Update();input.update_rectangle();
+    settings_sync();notices_sync();fps_sync();touch_sync();context->Update();input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
     battle_page::window_claim_input(battle_request.value("visible",false) || (battle_page::owns_input() && held()));
@@ -2648,6 +2793,7 @@ void sync() {
 }
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
+    if(touch_event(event))return true;
     if(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_CLOSE)return false;
     // A capture on the Controls page takes the next key or controller input.
     if(!capture.queue.empty() && settings_open && capture_event(event))return true;
@@ -2660,8 +2806,12 @@ bool dispatch(SDL_Event& event) {
     }
     // The keyboard (window keys, not the controller bridge's) and the mouse or touch
     // screen bring the keyboard hints back.
-    if((event.type==SDL_KEYDOWN && event.key.windowID) || event.type==SDL_MOUSEBUTTONDOWN || event.type==SDL_MOUSEWHEEL ||
-       (event.type==SDL_MOUSEMOTION && std::abs(event.motion.xrel)+std::abs(event.motion.yrel)>6))set_pad_mode(false);
+    // The mouse SDL makes from a finger keeps the controller hints (the on-screen controller's).
+    const bool finger_mouse=(event.type==SDL_MOUSEMOTION && event.motion.which==SDL_TOUCH_MOUSEID) ||
+        ((event.type==SDL_MOUSEBUTTONDOWN || event.type==SDL_MOUSEBUTTONUP) && event.button.which==SDL_TOUCH_MOUSEID) ||
+        (event.type==SDL_MOUSEWHEEL && event.wheel.which==SDL_TOUCH_MOUSEID);
+    if((event.type==SDL_KEYDOWN && event.key.windowID) || (!finger_mouse && (event.type==SDL_MOUSEBUTTONDOWN || event.type==SDL_MOUSEWHEEL ||
+       (event.type==SDL_MOUSEMOTION && std::abs(event.motion.xrel)+std::abs(event.motion.yrel)>6))))set_pad_mode(false);
     if(event.type==SDL_MOUSEBUTTONDOWN || event.type==SDL_MOUSEWHEEL || (event.type==SDL_MOUSEMOTION && std::abs(event.motion.xrel)+std::abs(event.motion.yrel)>6))set_pointer_mode(true);
     else if(event.type==SDL_KEYDOWN && event.key.windowID)set_pointer_mode(false);
     if(input.event(event))return true;
@@ -2948,6 +3098,10 @@ void require(){if(!context)throw debug::RpcError(debug::ServerError,"shared UI i
 void window_init(SDL_Window* value,const std::filesystem::path& path){window=value;output=path;system.SetWindow(window);input.defer_sdl(true);}
 void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device);ready=true;}
 void update(){auto lock=lock_ui();if(!ready)return;SDL_GetWindowSizeInPixels(window,&pixels_w,&pixels_h);int w,h;SDL_GetWindowSize(window,&w,&h);pixel_ratio=w?float(pixels_w)/w:1;if(!initialized)initialize();sync();input.flush_sdl();}
+uint32_t touch_buttons() {
+    const uint32_t linger=SDL_GetTicks64()<touch_linger_until.load()?touch_linger.load():(touch_linger=0,0u);
+    return touch_held.load(std::memory_order_relaxed)|linger;
+}
 bool event(SDL_Event& e){auto lock=lock_ui();bool consumed=dispatch(e);if(e.type==SDL_TEXTEDITING_EXT)SDL_free(e.editExt.text);if(context){context->Update();input.flush_sdl();}return consumed;}
 bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,bool name_cover){
     auto lock=lock_ui();if(!context || int(framebuffer->getWidth())!=pixels_w || int(framebuffer->getHeight())!=pixels_h)return false;
