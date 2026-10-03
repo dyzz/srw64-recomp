@@ -7,6 +7,7 @@
 #include "plume_metal.h"
 #endif
 #include <algorithm>
+#include <atomic>
 #include <fstream>
 #include <functional>
 #include <sstream>
@@ -19,13 +20,16 @@ namespace {
 using presentation::PixelCompositor;
 using json = nlohmann::json;
 std::unique_ptr<PixelCompositor> compositor;
-PixelCompositor::Image image;
+// A window-sized texture kept between frames; only what changed is painted and uploaded.
+PixelCompositor::Image canvas;
+uint32_t canvas_width{}, canvas_height{};
+std::atomic<bool> canvas_lost{};  // a list with canvas uploads never ran: repaint it all
+IncrementalRaster raster;
 std::filesystem::path output;
-std::string cached_key;
 bool metal = false;  // Plume's Metal backend: its framebuffer reports its format
 }
 void gpu_init(plume::RenderInterface* rhi, plume::RenderDevice* device, const std::filesystem::path& directory) {
-    image.reset(); cached_key.clear(); output = directory;
+    canvas.reset(); raster.reset(); output = directory;
     metal = rhi->getCapabilities().shaderFormat == plume::RenderShaderFormat::METAL;
     compositor = std::make_unique<PixelCompositor>(*device,
         presentation::embedded_pixel_shaders(rhi->getCapabilities().shaderFormat));
@@ -55,23 +59,25 @@ void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuf
         command->endActiveRenderEncoder(); command->endActiveBlitEncoder();
     }
 #endif
-    // Preserve the existing workload/cache identity and CPU raster behavior.
-    std::ostringstream key;
-    key << localization::catalog().locale << localization::catalog().font << localization::catalog().revision
-        << ',' << framebuffer->getWidth() << ',' << framebuffer->getHeight() << ',' << srw64::frame::width(framebuffer->getWidth(),framebuffer->getHeight()) << ',' << frame->font_size
-        << ',' << frame->speed << frame->auto_read << frame->history_open << frame->history_offset << frame->fast << frame->skipping << frame->pad_hints << int(frame->pad_family) << frame->controls_text << frame->history_controls_text << frame->bar_scale
-        << ',' << frame->reading_event << ',' << frame->advance.visible << frame->advance.waiting << frame->advance.paused << ',' << frame->advance.permille;
-    for (const auto& box : frame->boxes)
-        key << ':' << box.event << ',' << box.visible << box.active << ',' << box.page << ',' << box.revealed << ',' << box.x << ',' << box.y;
-    if (!image || cached_key != key.str()) {
-        auto raster = rasterize_frame(*frame,framebuffer->getWidth(),framebuffer->getHeight(),srw64::frame::width(framebuffer->getWidth(),framebuffer->getHeight()));
-        auto next = compositor->upload(*list,raster.image);
-        // Retain uploads independently of draw success until the command buffer
-        // completes. A later cache replacement cannot free a recorded upload.
-        srw64_after_gpu(list, [next](bool) { (void)next; });
-        image = std::move(next); cached_key = key.str();
+    const uint32_t width = framebuffer->getWidth(), height = framebuffer->getHeight();
+    if (canvas_lost.exchange(false)) raster.reset();
+    if (!canvas || canvas_width != width || canvas_height != height) {
+        // The old canvas stays alive through its in-flight draws' retention.
+        canvas = compositor->canvas(width, height);
+        canvas_width = width; canvas_height = height;
+        raster.reset();
     }
-    const auto retained = compositor->draw(*list,*framebuffer,format,image);
+    std::ostringstream context;
+    context << localization::catalog().locale << ',' << localization::catalog().font << ',' << localization::catalog().revision;
+    auto update = raster.update(*frame, width, height, srw64::frame::width(width, height), context.str());
+    for (const auto& patch : update.patches) {
+        // Keep each upload's staging until the command buffer completes.
+        auto staging = compositor->update(*list, canvas, uint32_t(patch.rect.left), uint32_t(patch.rect.top), patch.pixels);
+        srw64_after_gpu(list, [staging](bool completed) { (void)staging; if (!completed) canvas_lost = true; });
+    }
+    if (update.drawn.empty()) return;
+    const plume::RenderRect scissor(update.drawn.left, update.drawn.top, update.drawn.right, update.drawn.bottom);
+    const auto retained = compositor->draw(*list,*framebuffer,format,canvas,&scissor);
     srw64_after_gpu(list, [retained](bool completed) {
         (void)retained;
         if (!completed) std::fputs("SRW64_DIALOGUE_GPU_FAILED\n",stderr);
@@ -80,6 +86,6 @@ void gpu_draw(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuf
 void gpu_shutdown() {
     // The host must wait for submitted work before destroying its RenderDevice.
     // Completion callbacks own any older images and their shared pipeline state.
-    image.reset(); compositor.reset(); cached_key.clear();
+    canvas.reset(); compositor.reset(); raster.reset();
 }
 }

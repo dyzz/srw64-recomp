@@ -23,10 +23,15 @@ sRGB 转换。颜色混合使用 ONE / ONE_MINUS_SRC_ALPHA，不能再次乘源 
 图像只用于同一有序 graphics queue，依赖上传的 command list 必须先提交；若放弃上传列表，
 相应图像必须丢弃，不能继续当作可用缓存。RenderDevice 的销毁必须晚于所有在途资源。
 
+2026-10-02 起另有常驻画布：`canvas(w, h)` 建一张跨帧保留内容的纹理，`update()` 把一块
+`Bgra8Surface` 上传到画布的 (x, y)，录在同一有序队列上、排在之前对它的绘制之后；返回的
+staging 也要保留到 GPU 完成。`draw()` 可带 scissor，只画图像实际覆盖的部分。画布内容在被上传
+覆盖之前是未定义的。
+
 ## 游戏接线
 
 `src/host/dialogue_plume.cpp` 是宿主的薄适配层，Metal 与 Vulkan 共用：查找匹配 workload 的
-不可变对白帧、使用已有 CPU raster、管理缓存，并经 `srw64_after_gpu` 保留资源引用到 GPU 完成
+不可变对白帧，用 `IncrementalRaster` 只重画变了的矩形并上传到窗口大小的常驻画布，并经 `srw64_after_gpu` 保留资源引用到 GPU 完成
 （Metal 用 command buffer 的 completion handler，其他后端用 RT64 呈现队列 fence 等待之后的
 `RenderHookPresented`）。着色器格式取自 `RenderInterface` 的能力。只有 Metal 上仍查询目标
 attachment 的格式；Vulkan 上目标固定是 RT64 的 B8G8R8A8 交换链（2026-09-25，[Linux 构建](../guide/linux-build.md)）。
@@ -53,7 +58,7 @@ cmake --build build/recomp/gfx-plume-build --target srw64-gfx-host --parallel 6
 `tests/pixel_compositor/` 不链接 SDL、游戏代码或 CoreText；使用合成的不对称像素图，
 比较 GPU 实际绘制、fence 完成和回读后的结果与 CPU 预乘混合公式。覆盖 1×1、3×5、
 65×17、321×241、800×600、1100×760，BGRA/RGBA 目标切换，两层混合及透明／半透明／不透明
-像素，共 36 次回读；允许每通道 1 个量化单位的舍入误差。
+像素，以及常驻画布的整张上传加偏移局部更新，共 60 次回读；允许每通道 1 个量化单位的舍入误差。
 
 测试还会在提交前释放 compositor 和缓存，只保留 completion 引用；绘制旧图像、新图像和
 再次使用旧图像，检查资源提前释放、内容被覆盖以及完成后引用泄漏。无效参数检查继续保留。

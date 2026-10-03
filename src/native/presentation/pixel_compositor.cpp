@@ -87,8 +87,41 @@ PixelCompositor::Image PixelCompositor::upload(RenderCommandList& list, const Bg
     list.barriers(RenderBarrierStage::GRAPHICS, RenderTextureBarrier(result->texture.get(), RenderTextureLayout::SHADER_READ));
     return result;
 }
+PixelCompositor::Image PixelCompositor::canvas(uint32_t width, uint32_t height) {
+    Bgra8Surface::required_bytes(width, height);
+    auto result = std::make_shared<Pixels>();
+    result->owner = state_;
+    result->width = width;
+    result->height = height;
+    result->texture = require(state_->device->createTexture(RenderTextureDesc::Texture2D(width, height, 1, RenderFormat::B8G8R8A8_UNORM)), "Pixel texture allocation failed");
+    result->descriptors = require(state_->device->createDescriptorSet(image_set), "Pixel descriptor allocation failed");
+    result->descriptors->setTexture(0, result->texture.get(), RenderTextureLayout::SHADER_READ);
+    return result;
+}
+PixelCompositor::Retention PixelCompositor::update(RenderCommandList& list, const Image& canvas, uint32_t x, uint32_t y,
+                                                  const Bgra8Surface& surface) {
+    surface.validate();
+    if (!canvas || canvas->owner != state_) throw std::runtime_error("Pixel canvas belongs to a different compositor");
+    if (uint64_t(x) + surface.width > canvas->width || uint64_t(y) + surface.height > canvas->height)
+        throw std::runtime_error("Pixel update outside its canvas");
+    const uint32_t row_pixels = (surface.width + 63U) & ~63U;
+    const size_t pitch = size_t(row_pixels) * 4;
+    std::shared_ptr<RenderBuffer> staging = require(state_->device->createBuffer(RenderBufferDesc::UploadBuffer(pitch * surface.height)),
+        "Pixel staging allocation failed");
+    auto* destination = static_cast<unsigned char*>(staging->map());
+    if (!destination) throw std::runtime_error("Cannot map pixel upload buffer");
+    for (uint32_t row = 0; row < surface.height; ++row)
+        std::memcpy(destination + size_t(row) * pitch, surface.pixels.data() + size_t(row) * surface.row_bytes(), surface.row_bytes());
+    staging->unmap();
+    list.barriers(RenderBarrierStage::COPY, RenderTextureBarrier(canvas->texture.get(), RenderTextureLayout::COPY_DEST));
+    list.copyTextureRegion(RenderTextureCopyLocation::Subresource(canvas->texture.get()),
+        RenderTextureCopyLocation::PlacedFootprint(staging.get(), RenderFormat::B8G8R8A8_UNORM,
+            surface.width, surface.height, 1, row_pixels), x, y, 0);
+    list.barriers(RenderBarrierStage::GRAPHICS, RenderTextureBarrier(canvas->texture.get(), RenderTextureLayout::SHADER_READ));
+    return staging;
+}
 PixelCompositor::Retention PixelCompositor::draw(RenderCommandList& list, RenderFramebuffer& target,
-                                                RenderFormat format, const Image& image) {
+                                                RenderFormat format, const Image& image, const RenderRect* scissor) {
     if (!supported(format)) throw std::runtime_error("Pixel compositor requires BGRA/RGBA8 UNORM, not sRGB/HDR");
     if (!image || image->owner != state_) throw std::runtime_error("Pixel image belongs to a different compositor");
     if (target.getWidth() != image->width || target.getHeight() != image->height)
@@ -99,7 +132,7 @@ PixelCompositor::Retention PixelCompositor::draw(RenderCommandList& list, Render
     list.setPipeline(pipeline);
     list.setGraphicsDescriptorSet(image->descriptors.get(), 0);
     list.setViewports(RenderViewport(0, 0, float(image->width), float(image->height)));
-    list.setScissors(RenderRect(0, 0, int32_t(image->width), int32_t(image->height)));
+    list.setScissors(scissor ? *scissor : RenderRect(0, 0, int32_t(image->width), int32_t(image->height)));
     list.drawInstanced(3, 1, 0, 0);
     return image;
 }

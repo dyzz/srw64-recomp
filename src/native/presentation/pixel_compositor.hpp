@@ -31,13 +31,22 @@ public:
     // discard the Image if the upload list is abandoned. Never edit in-flight data.
     Image upload(plume::RenderCommandList&, const Bgra8Surface&);
 
+    // A texture that keeps its pixels between frames and takes partial uploads; its
+    // contents are undefined until uploads have covered what will be drawn.
+    Image canvas(uint32_t width, uint32_t height);
+    // Records an upload of the surface into the canvas at (x, y), ordered after earlier
+    // draws of it on the same queue. Keep the token until this upload completes.
+    Retention update(plume::RenderCommandList&, const Image& canvas, uint32_t x, uint32_t y, const Bgra8Surface&);
+
     // The target must be a single, non-MSAA BGRA/RGBA8 UNORM color attachment
     // already transitioned to COLOR_WRITE, with exactly the uploaded dimensions.
     // The format is explicit because Plume's public framebuffer has no query.
     // Keep the returned token until GPU completion (or discard without submission).
     // It retains the texture, upload buffer, descriptors, shaders and pipelines,
     // even after the compositor/cache is replaced. Device teardown must wait.
+    // A scissor limits the draw to the part of the target the image covers.
     Retention draw(plume::RenderCommandList&, plume::RenderFramebuffer&,
-                   plume::RenderFormat target_format, const Image&);
+                   plume::RenderFormat target_format, const Image&,
+                   const plume::RenderRect* scissor = nullptr);
 };
 }

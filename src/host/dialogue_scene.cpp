@@ -4,6 +4,8 @@
 #include "text/game_fonts.hpp"
 #include <algorithm>
 #include <cmath>
+#include <cstdio>
+#include <functional>
 #include <stdexcept>
 
 namespace srw64::dialogue {
@@ -17,26 +19,50 @@ Layout layout_text(const std::u16string& value,double size,double width,double h
 // right under it (docs/design/dialogue-typesetting.md §4). The box interior
 // runs from 20 above the guest's text origin to 34 below it.
 constexpr double name_size=10, name_top=-19.5, body_top=-9.5;
+// Text slot byte +3 indexes the palette table filled at 8008C5E4: 0 white (resource 2),
+// 2 dark (resource 4). 8008FD40 sets 2 on the box a story line leaves; battle never does.
+constexpr unsigned dark_palette=2;
+void blend(presentation::Bgra8Surface& image,int x,int y,double r,double g,double b,double alpha) {
+    if(x<0 || y<0 || x>=int(image.width) || y>=int(image.height))return;
+    const unsigned a=unsigned(std::lround(std::clamp(alpha,0.0,1.0)*255)),inv=255-a;
+    auto* p=image.pixels.data()+(size_t(y)*image.width+x)*4;
+    const double color[]={b,g,r,1};
+    for(unsigned c=0;c<4;++c)p[c]=uint8_t(std::min(255U,
+        unsigned(std::lround(color[c]*a))+(p[c]*inv+127)/255));
+}
+std::string exact(double value) {char text[40];return {text,size_t(std::snprintf(text,sizeof text," %a",value))};}
+// One drawing step: what it paints (the key), where (bounds, which hold all its pixels),
+// and how, into a surface that covers REGION of the window.
+struct Op {
+    std::string key;
+    PixelRect bounds;
+    std::function<void(presentation::Bgra8Surface&,const PixelRect& region)> paint;
+};
 struct Painter {
-    presentation::Bgra8Surface& image;
+    uint32_t width,height;
     double scale,ox,oy;
+    std::vector<Op> ops;
     json blocks=json::array();
-    void blend(int x,int y,double r,double g,double b,double alpha) {
-        if(x<0 || y<0 || x>=int(image.width) || y>=int(image.height))return;
-        const unsigned a=unsigned(std::lround(std::clamp(alpha,0.0,1.0)*255)),inv=255-a;
-        auto* p=image.pixels.data()+(size_t(y)*image.width+x)*4;
-        const double color[]={b,g,r,1};
-        for(unsigned c=0;c<4;++c)p[c]=uint8_t(std::min(255U,
-            unsigned(std::lround(color[c]*a))+(p[c]*inv+127)/255));
+    void add(std::string key,PixelRect bounds,std::function<void(presentation::Bgra8Surface&,const PixelRect&)> paint) {
+        bounds=bounds&PixelRect{0,0,int(width),int(height)};
+        if(bounds.empty())return;
+        for(int v:{bounds.left,bounds.top,bounds.right,bounds.bottom})key+=' '+std::to_string(v);
+        ops.push_back({std::move(key),bounds,std::move(paint)});
     }
     void fill(double x,double y,double w,double h,double r,double g,double b,double alpha=1) {
         const double left=ox+x*scale,top=oy+y*scale,right=left+w*scale,bottom=top+h*scale;
-        for(int py=std::max(0,int(std::floor(top)));py<std::min(int(image.height),int(std::ceil(bottom)));++py)
-            for(int px=std::max(0,int(std::floor(left)));px<std::min(int(image.width),int(std::ceil(right)));++px) {
-                const double cover=std::max(0.0,std::min(right,px+1.0)-std::max(left,double(px)))*
-                    std::max(0.0,std::min(bottom,py+1.0)-std::max(top,double(py)));
-                blend(px,py,r,g,b,alpha*cover);
-            }
+        std::string key="fill";
+        for(double v:{left,top,right,bottom,r,g,b,alpha})key+=exact(v);
+        const PixelRect bounds{int(std::floor(left)),int(std::floor(top)),int(std::ceil(right)),int(std::ceil(bottom))};
+        add(std::move(key),bounds,[=](presentation::Bgra8Surface& image,const PixelRect& region) {
+            const auto area=bounds&region;
+            for(int py=area.top;py<area.bottom;++py)
+                for(int px=area.left;px<area.right;++px) {
+                    const double cover=std::max(0.0,std::min(right,px+1.0)-std::max(left,double(px)))*
+                        std::max(0.0,std::min(bottom,py+1.0)-std::max(top,double(py)));
+                    blend(image,px-region.left,py-region.top,r,g,b,alpha*cover);
+                }
+        });
     }
     void panel(double x,double y,double w,double h) {
         fill(x,y,w,h,.015,.035,.065,.96);
@@ -61,7 +87,22 @@ struct Painter {
             draw.first_line=size_t(found-shaped.lines().begin());draw.line_count=1;draw.revealed_utf16=revealed;
             draw.clip=text::TextClip{px,top,width*scale,h*scale};
             draw.color={uint8_t(std::lround(r*255)),uint8_t(std::lround(g*255)),uint8_t(std::lround(b*255)),255};
-            shaped.draw(image,draw);
+            // The line's glyphs stay inside its clip, and within a line height above and
+            // below its own row.
+            const auto& clip=*draw.clip;
+            const double band=shaped.line_height()*scale;
+            const PixelRect bounds=PixelRect{int(std::ceil(clip.x)),int(std::ceil(clip.y)),
+                    int(std::ceil(clip.x+clip.width)),int(std::ceil(clip.y+clip.height))}&
+                PixelRect{int(std::floor(clip.x)),int(std::floor(draw.y-band)),int(std::ceil(clip.x+clip.width)),int(std::ceil(draw.y+2*band))};
+            std::string key="text "+utf8(value.text.substr(line.start,line.end-line.start));
+            for(double v:{found->width,shaped.font_size(),draw.x,draw.y,scale,clip.x,clip.y,clip.width,clip.height,r,g,b})key+=exact(v);
+            key+=' '+std::to_string(std::clamp(revealed,line.start,line.end));
+            add(std::move(key),bounds,[layout=shaped,draw](presentation::Bgra8Surface& image,const PixelRect& region) {
+                auto shifted=draw;
+                shifted.x-=region.left;shifted.y-=region.top;
+                shifted.clip->x-=region.left;shifted.clip->y-=region.top;
+                layout.draw(image,shifted);
+            });
             drawn.push_back({{"start",line.start},{"end",line.end},
                 {"text",utf8(value.text.substr(line.start,line.end-line.start))},
                 {"top",draw.y}});
@@ -100,16 +141,18 @@ struct Painter {
     }
 };
 
-}
-
-RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t height,double picture_width) {
+struct Scene {
+    std::vector<Op> ops;
+    json report;
+};
+Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_width) {
     localization::Scope locale(frame.catalog);
-    RasterizedFrame result{presentation::Bgra8Surface(width,height),{}};
+    presentation::Bgra8Surface::required_bytes(width,height);
     if(!frame.font_size || frame.font_size>256)throw std::runtime_error("Invalid native UI font size");
     if(!(picture_width>=320 && picture_width<=640))throw std::runtime_error("Invalid picture width");
     const double scale=std::min(width/picture_width,height/240.0);
     const double ox=(width-320*scale)/2,oy=(height-240*scale)/2;
-    Painter paint{result.image,scale,ox,oy};
+    Painter paint{width,height,scale,ox,oy};
     const auto* focus=frame.focused_box();
     for(const auto& box:frame.boxes) {
         if(!box.visible || box.layout.pages.empty())continue;
@@ -123,7 +166,10 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
         const double x=box.x+box.shift_x,y=box.y+box.shift_y;
         paint.label(box.speaker,x,y+name_top,name_size,box.width,
             name*105/255,name*191/255,name,"speaker");
-        const double grey=box.active?1:123./255;
+        // Dark text exactly when the original draws it so: the slot's palette byte names
+        // the dark text palette (resource 4) when a story speaker hands over to the other
+        // side. Reading state plays no part; a battle quote stays white to the end.
+        const double grey=box.palette==dark_palette?123./255:1;
         paint.text(box.layout,x,y+body_top,box.width,body_height,page.lines,box.revealed,grey,grey,grey,"body");
         // No page counter: a long translation simply continues on the next A,
         // like the original's own pages.
@@ -183,11 +229,99 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
             y+=12.5;
         }
     }
+    // Last, the transition's black lines take away whatever lies under them, as they do
+    // the game's own text, placed as the game's are: whole original pixels (the task
+    // truncates), and on a widened picture wide_map::wipe_end's mapping, a line from x <= 1
+    // starting at the picture's left edge, one to x >= 319 ending at its right edge, the
+    // rest scaled to its width. Idle, the task still draws [0, 1) and [319, 320).
+    constexpr double original_width=320;
+    const double wide=picture_width>original_width+0.5?picture_width:original_width;
+    const double left_edge=ox-(wide-original_width)/2*scale,factor=wide/original_width;
+    const auto place=[&](int x,bool right) {
+        if(wide==original_width)return ox+x*scale;
+        if(!right && x<=1)return left_edge;
+        if(right && x>=original_width-1)return left_edge+wide*scale;
+        return left_edge+x*factor*scale;
+    };
+    for(size_t y=0;y<frame.cover.size() && y<240;) {
+        const auto [left,right]=frame.cover[y];
+        size_t next=y+1;
+        while(next<frame.cover.size() && next<240 && frame.cover[next]==frame.cover[y])++next;
+        const int x0=std::isfinite(left)?int(std::clamp(left,0.f,320.f)):0,x1=std::isfinite(right)?int(std::clamp(right,0.f,320.f)):0;
+        if(x1>x0) {
+            const PixelRect bounds{int(std::lround(place(x0,false))),int(std::lround(oy+y*scale)),
+                int(std::lround(place(x1,true))),int(std::lround(oy+next*scale))};
+            paint.add("cover",bounds,[bounds](presentation::Bgra8Surface& image,const PixelRect& region) {
+                const auto area=bounds&region;
+                for(int py=area.top;py<area.bottom;++py)
+                    std::fill_n(image.pixels.begin()+(size_t(py-region.top)*image.width+(area.left-region.left))*4,
+                        size_t(area.width())*4,uint8_t(0));
+            });
+            paint.blocks.push_back({{"role","transition_cover"},{"lines",{y,next}},{"bounds",{bounds.left,bounds.top,bounds.right,bounds.bottom}}});
+        }
+        y=next;
+    }
     json report={{"schema","srw64.native-dialogue-raster.v1"},{"font",text::game_font_path().filename().string()},{"locale",localization::catalog().locale},
         {"renderer","FreeType + HarfBuzz + ICU"},{"native_vi",frame.vi},
         {"drawable",{width,height}},{"logical_font_size",frame.font_size},{"blocks",paint.blocks}};
-    result.report=std::move(report);
+    return {std::move(paint.ops),std::move(report)};
+}
+}
+
+PixelRect PixelRect::operator&(const PixelRect& other) const {
+    return {std::max(left,other.left),std::max(top,other.top),std::min(right,other.right),std::min(bottom,other.bottom)};
+}
+PixelRect PixelRect::operator|(const PixelRect& other) const {
+    if(empty())return other;
+    if(other.empty())return *this;
+    return {std::min(left,other.left),std::min(top,other.top),std::max(right,other.right),std::max(bottom,other.bottom)};
+}
+RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t height,double picture_width) {
+    auto scene=build(frame,width,height,picture_width);
+    RasterizedFrame result{presentation::Bgra8Surface(width,height),std::move(scene.report)};
+    const PixelRect all{0,0,int(width),int(height)};
+    for(const auto& op:scene.ops)op.paint(result.image,all);
     result.image.validate();
+    return result;
+}
+IncrementalRaster::Update IncrementalRaster::update(const Frame& frame,uint32_t width,uint32_t height,double picture_width,
+                                                    const std::string& context) {
+    auto scene=build(frame,width,height,picture_width);
+    Update result;
+    std::vector<std::pair<std::string,PixelRect>> drawn;
+    drawn.reserve(scene.ops.size());
+    for(const auto& op:scene.ops){drawn.emplace_back(op.key,op.bounds);result.drawn=result.drawn|op.bounds;}
+    const auto by_key=[](const auto& a,const auto& b){return a.first<b.first;};
+    std::sort(drawn.begin(),drawn.end(),by_key);
+    // What changed: the steps drawn last time and not now, and the other way round
+    // (a key holds its bounds). Everywhere else the last picture is this one.
+    const PixelRect all{0,0,int(width),int(height)};
+    std::vector<PixelRect> dirty;
+    if(!valid_ || context!=context_ || width!=width_ || height!=height_)dirty.push_back(all);
+    else for(auto a=drawn_.begin(),b=drawn.begin();a!=drawn_.end() || b!=drawn.end();) {
+        if(b==drawn.end() || (a!=drawn_.end() && a->first<b->first))dirty.push_back((a++)->second);
+        else if(a==drawn_.end() || b->first<a->first)dirty.push_back((b++)->second);
+        else {++a;++b;}
+    }
+    // Rectangles that overlap or touch are painted once, as one.
+    for(bool merged=true;merged;) {
+        merged=false;
+        for(size_t i=0;i<dirty.size() && !merged;++i)for(size_t j=i+1;j<dirty.size();++j) {
+            const auto &p=dirty[i],&q=dirty[j];
+            if(p.left<=q.right && q.left<=p.right && p.top<=q.bottom && q.top<=p.bottom) {
+                dirty[i]=p|q;dirty.erase(dirty.begin()+j);merged=true;break;
+            }
+        }
+    }
+    if(dirty.size()>8){PixelRect all_dirty;for(const auto& rect:dirty)all_dirty=all_dirty|rect;dirty={all_dirty};}
+    for(const auto& rect:dirty) {
+        const auto area=rect&all;
+        if(area.empty())continue;
+        Patch patch{area,presentation::Bgra8Surface(area.width(),area.height())};
+        for(const auto& op:scene.ops)if(!(op.bounds&area).empty())op.paint(patch.pixels,area);
+        result.patches.push_back(std::move(patch));
+    }
+    valid_=true;context_=context;width_=width;height_=height;drawn_=std::move(drawn);
     return result;
 }
 Layout typeset(const std::u16string& value,double size,double width,double height) {

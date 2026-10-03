@@ -340,6 +340,7 @@ uint32_t weapon_at(const uint8_t* ram,uint32_t unit,unsigned index) {
     const uint32_t list=read(ram,unit+up::unit_weapon_list,4);
     return list+index*up::weapon_size;
 }
+}
 // The menu string is "prefix + pure name + suffix" (weapon_traits.py): 格／射 in
 // front, P／B／MAP behind; the original prints the markers as round icons. Some pure
 // names already end in MAP, then the menu inserts B before it.
@@ -362,6 +363,7 @@ void weapon_markers(json& row,const std::string& pure) {
     }
     row["display_name"]=menu;row["markers"]=json::array();
 }
+namespace {
 json weapon_row(const uint8_t* ram,uint32_t unit,unsigned index) {
     const uint32_t w=weapon_at(ram,unit,index);
     const uint16_t number=uint16_t(read(ram,w+2,2));
