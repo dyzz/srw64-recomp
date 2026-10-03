@@ -31,6 +31,11 @@ constexpr uint32_t kExtended = 0x64000000, kSetScissor = 0x05, kSetRectAlign = 0
 constexpr uint32_t kOriginLeft = 0x000, kOriginRight = 0x400, kOriginNone = 0x800;
 uint32_t pair(int32_t high, int32_t low) { return (uint32_t(high) & 0xFFFF) << 16 | (uint32_t(low) & 0xFFFF); }
 
+// The cut-in frame's static list and its first command (G_TEXTURE off); the widened copy
+// lives in the last 256 bytes of the debug script scratch (script_inject.hpp, 807F0000-807FFFFF),
+// which the game never uses.
+constexpr uint32_t kCutinMask = 0x800C6D00, kCutinHead[2] = {0xD7000000, 0x00000000}, kCutinCopy = 0x807FFF00;
+
 // Half the picture beyond the original's 320, in 10.2 pixels.
 int32_t side4() { return int32_t(std::lround((float(frame::picture_width) - frame::kWidth) * 2)); }
 
@@ -79,6 +84,33 @@ void frame(uint8_t* rdram) {
     const bool wanted_off = frame::wide;
     if (on && wanted_off) for (int i = 0; i < 8; ++i) put(rdram, kBands + 4 * i, kBandsOff[i]);
     if (off && !wanted_off) for (int i = 0; i < 8; ++i) put(rdram, kBands + 4 * i, kBandsOn[i]);
+    // The cut-in's black frame (resident static list 800C6D00, docs/design/battle-animation-
+    // rendering.md §6.3): four FILLRECTs leave a 140 x 120 window; the top and bottom ones
+    // span 0-320 and RT64 widens them, the side ones (0-90, 230-320) do not, so on a wider
+    // picture the battle showed past them. On a wider picture the list branches to a copy
+    // whose side rectangles reach the picture's edges (gEX rect alignment, like the HUD).
+    const bool widened = frame::wide && side4() > 0;
+    const uint32_t head0 = word(rdram, kCutinMask), head1 = word(rdram, kCutinMask + 4);
+    const bool original = head0 == kCutinHead[0] && head1 == kCutinHead[1], branched = head0 == 0xDE010000 && head1 == kCutinCopy;
+    if (widened && (original || branched)) {
+        const int32_t side = side4();
+        const uint32_t list[] = {
+            0xD7000000, 0x00000000, 0xE200001C, 0x00504240, 0xFCFFFFFF, 0xFFFDF6FB, 0xFA000000, 0x000000FF,
+            0xF65000B4, 0x00000000, 0xF65003C0, 0x00000294,                                // top, bottom
+            kExtended | kPushScissor, 0,
+            kExtended | kSetScissor, kOriginLeft << 2 | kOriginRight << 14, pair(0, 0), pair(0, 240 * 4),
+            kExtended | kSetRectAlign, kOriginNone | kOriginNone << 12, pair(-side, 0), pair(0, 0),
+            0xF6168294, 0x000000B4,                                                        // left
+            kExtended | kSetRectAlign, kOriginNone | kOriginNone << 12, pair(0, 0), pair(side, 0),
+            0xF6500294, 0x003980B4,                                                        // right
+            kExtended | kSetRectAlign, kOriginNone | kOriginNone << 12, 0, 0,
+            kExtended | kPopScissor, 0,
+            0xDF000000, 0x00000000};
+        for (size_t i = 0; i < std::size(list); ++i) put(rdram, kCutinCopy + 4 * uint32_t(i), list[i]);
+        if (original) { put(rdram, kCutinMask, 0xDE010000); put(rdram, kCutinMask + 4, kCutinCopy); }
+    } else if (!widened && branched) {
+        put(rdram, kCutinMask, kCutinHead[0]); put(rdram, kCutinMask + 4, kCutinHead[1]);
+    }
 }
 
 void portrait_offset(float x, float& dx, float& dy) {

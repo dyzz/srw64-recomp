@@ -180,6 +180,7 @@ def compress_rt64(art: Path) -> int:
 def compress(art: Path) -> dict:
     return {"backgrounds": compress_backgrounds(art), "portraits": compress_portraits(art),
             "units": compress_units(art), "unit_extras": compress_units(art, "srw64-unit-extras-hd.json"),
+            "battle_sprites": compress_units(art, "srw64-battle-sprites-hd.json"),
             "tactical_maps": compress_tactical_maps(art),
             "rt64_resaved": compress_rt64(art), "jpeg_quality": QUALITY, "jpeg_subsampling": SUBSAMPLING}
 

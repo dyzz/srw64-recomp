@@ -69,7 +69,7 @@ class CompressHdTests(unittest.TestCase):
         compress = load("compress_hd")
         with tempfile.TemporaryDirectory() as tmp:
             art = self.art(Path(tmp))
-            self.assertEqual(compress.compress(art), {"backgrounds": 1, "portraits": 1, "units": 0, "unit_extras": 0, "tactical_maps": 0,
+            self.assertEqual(compress.compress(art), {"backgrounds": 1, "portraits": 1, "units": 0, "unit_extras": 0, "battle_sprites": 0, "tactical_maps": 0,
                                                       "rt64_resaved": 0, "jpeg_quality": 92, "jpeg_subsampling": "4:2:0"})
             row = json.loads((art / "srw64-portraits-hd.json").read_text())["images"][0]
             self.assertEqual((row["file"], row["alpha"]), ("portraits/portrait-9.jpg", "portraits/portrait-9.alpha.png"))

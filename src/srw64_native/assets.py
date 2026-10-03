@@ -73,7 +73,8 @@ def whole_images(root: Path, spec: dict, index_name: str, schema: str, what: str
     if index.get("schema") != schema:
         raise ValueError(f"Unsupported {what.lower()} image set")
     files = []
-    for row in index["images"]:
+    # `scenes`: the battle viewer's scene thumbnails beside the battle sprites.
+    for row in [*index["images"], *index.get("scenes", [])]:
         path = inside(folder, row["file"])
         if sha(path.read_bytes()) != row["sha256"]:
             raise ValueError(f"{what} pixels changed: {row.get('image', row['file'])}")
@@ -97,7 +98,7 @@ def copy_whole_images(index: dict, files: list, output: Path, folder: str, runti
     (output / folder).mkdir()
     for path, row in files:
         place(path, output / folder / row["file"], link)
-    runtime = {**index, "images": [{**row, "file": f"{folder}/{row['file']}"} for _, row in files]}
+    runtime = {**index, **{key: [{**row, "file": f"{folder}/{row['file']}"} for row in index[key]] for key in ("images", "scenes") if key in index}}
     (output / runtime_name).write_text(json.dumps(runtime, indent=2) + "\n")
 
 
@@ -137,14 +138,14 @@ def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = 
         if not re.fullmatch(r"[0-9a-f]{16}", digest) or digest in seen:
             raise ValueError("Invalid or conflicting art texture identity")
         seen.add(digest)
-        if row["kind"] not in ("worldmap", "frame", "space", "icon"):
+        if row["kind"] not in ("worldmap", "frame", "space", "icon", "battle"):
             raise ValueError("Unreviewed/language-dependent image category")
         entry = originals[digest]
         path = inside(source, entry["path"])
         if sha(path.read_bytes()) != row["sha256"]:
             raise ValueError(f"Art pixels changed: {digest}")
         name = f"{digest}{path.suffix}"
-        # RT64 ignores `kind`; it names the texture's family (worldmap, space, frame, icon).
+        # RT64 ignores `kind`; it names the texture's family (worldmap, space, frame, icon, battle).
         textures.append({**entry, "path": name, "kind": row["kind"]})
         files.append((path, name))
     if "worldmap" in manifest:
@@ -166,6 +167,12 @@ def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = 
     if "unit_extras" in manifest:
         extra_index, extra_files = whole_images(root, manifest["unit_extras"], "unit-extras.json",
                                                 "srw64.unit-extra-images.v1", "Unit extra")
+    # Other battle sprites drawn by the same scene-sprite replacement: the cut-ins
+    # (tools/hd_ai/cutin_hd.py).
+    sprite_index, sprite_files = None, []
+    if "battle_sprites" in manifest:
+        sprite_index, sprite_files = whole_images(root, manifest["battle_sprites"], "battle-sprites.json",
+                                                  "srw64.unit-extra-images.v1", "Battle sprite")
     background_index, background_files = None, []
     if "backgrounds" in manifest:
         background_index, background_files = whole_images(root, manifest["backgrounds"], "backgrounds.json",
@@ -198,6 +205,8 @@ def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = 
         copy_whole_images(unit_index, unit_files, output, "units", "srw64-units-hd.json", maps_in_place)
     if extra_index is not None:
         copy_whole_images(extra_index, extra_files, output, "unit-extras", "srw64-unit-extras-hd.json", maps_in_place)
+    if sprite_index is not None:
+        copy_whole_images(sprite_index, sprite_files, output, "battle-sprites", "srw64-battle-sprites-hd.json", maps_in_place)
     if background_index is not None:
         copy_whole_images(background_index, background_files, output, "backgrounds", "srw64-backgrounds-hd.json", maps_in_place)
     if scene_index is not None:
@@ -223,6 +232,6 @@ def compile_art(root: Path, manifest: dict, output: Path, maps_in_place: bool = 
         (output / "srw64-tactical-maps.json").write_text(json.dumps(
             {"schema": "srw64.tactical-maps-runtime.v1", "root": root_name, "maps": len(maps_index["maps"]),
              "colony_frames": len(maps_index["colony_frames"])}, indent=2) + "\n")
-    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "units": len(unit_files), "unit_extras": len(extra_files), "backgrounds": len(background_files), "scene_images": len(scene_files),
+    return {"path": str(output), "count": len(textures), "portraits": len(portrait_files), "units": len(unit_files), "unit_extras": len(extra_files), "battle_sprites": len(sprite_files), "backgrounds": len(background_files), "scene_images": len(scene_files),
             "tactical_maps": len(maps_index["maps"]) if maps_index else 0,
             "manifest_sha256": sha((output / "rt64.json").read_bytes())}

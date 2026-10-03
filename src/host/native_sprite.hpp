@@ -26,6 +26,7 @@ struct SceneId {
     uint16_t scene = 0, atlas = 0, palette = 0;
     uint8_t frame = 0;
     uint16_t colors[16]{};              // the palette's first 16 RGBA5551 entries
+    uint32_t palette_data = 0;          // the palette resource in RDRAM (header, then the colours)
 };
 // Text the host draws for a sprite: premultiplied RGBA, `units` wide and tall in
 // N64 pixels, placed on the original frame by `anchor`.
@@ -44,6 +45,9 @@ struct TextJob {
 // Game thread: the text a sprite shows, or false to leave it to the images.
 using Describe = bool (*)(const uint8_t* rdram, const SceneId&, TextJob&);
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& output);
+// The battle viewer's thumbnail of a scene (its key, battle_viewer::scenes()) from the art
+// pack's battle sprites (tools/hd_ai/cutin_hd.py scenes); empty without one.
+std::string viewer_scene_image(const std::string& key);
 // A scene image the host makes at run time (rom_art.cpp: BANPRESTO, GAME OVER) instead of
 // an art-pack file, drawn the same way and before any file for the same scene. `render`
 // runs on the worker, returns premultiplied RGBA8 (units unused), and runs again when the

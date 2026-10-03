@@ -42,11 +42,26 @@ from srw64_rom.resources import ResourceTable  # noqa: E402
 from srw64_native.battle_graphics import decode_atlas, parse_scene, read_triplets, render_scene  # noqa: E402
 
 K = 8
+PACK_SCALE = 5   # pack pixels per source pixel: battle sprites show at 80-129% of a 4x picture
 HD = ROOT / 'assets/hd-ai/unit-poses/whole-v1'
 OUT = ROOT / 'assets/hd-ai/unit-extras-derived'
 ANALYSIS = ROOT / 'assets/hd-ai/battle-backgrounds/unit-extra-analysis.json'
 METHODS = ('直接复用站姿', '整体换色或发光', '残影或分解特效', '站姿＋飞出的浮游炮')
 FONT = '/System/Library/Fonts/Hiragino Sans GB.ttc'
+# Recolours of a pose (same drawing, colour for colour) that the colour-ratio route
+# smears or miscolours (dark panel lines turned olive, eyes and gems lost): mapped
+# through the colours instead, from the HD pose in the palette named here (None = the
+# pose's own). Not for frames that add parts to the pose; those keep derive_frame.
+# (scene, palette) -> source palette.
+PALETTE_SWAPS = {
+    (2237, 2997): 1935, (2237, 2998): 1935,   # マスターガンダム 酔舞 after-images
+    (2485, 1910): None,                         # ゴッドガンダムH gold
+    (2901, 2994): None,                         # スーパーアースゲイン 爆斧無双断
+    (2928, 2993): None,                         # アヴィエスレルム オメガクラッシュ
+    (2934, 2992): None,                         # ヴァルディスキューズ スピリッツクラッシュ
+    (2862, 2864): None,                         # ヴァイローズ violet
+    (2809, 2770): None,                         # スヴァンヒルド
+}
 
 
 class Rom:
@@ -172,6 +187,41 @@ def brightness_map(source: np.ndarray, target: np.ndarray, hd: np.ndarray) -> np
     return table[lo] * (1 - f) + table[hi] * f
 
 
+def palette_swap(target, t_bounds, pose, p_bounds, hd, k: int = 4):
+    """The HD pose recoloured through the colour pairs: where frame and pose both draw,
+    each pose colour's most common frame colour is its target; each HD colour is matched
+    to its nearest pose colours and takes their targets (plus its own offset from them,
+    scaled by the brightness ratio), weighted by closeness. A soft mask cuts
+    away what the pose draws and the frame does not."""
+    world = (min(t_bounds[0], p_bounds[0]), min(t_bounds[1], p_bounds[1]),
+             max(t_bounds[2], p_bounds[2]), max(t_bounds[3], p_bounds[3]))
+    T, P, H = place(target, t_bounds, world), place(pose, p_bounds, world), place(hd, p_bounds, world, K)
+    both = (T[..., 3] > 0) & (P[..., 3] > 0)
+    pairs = np.concatenate([P[both][:, :3], T[both][:, :3]], 1)
+    keys, counts = np.unique(pairs, axis=0, return_counts=True)
+    order = np.lexsort((-counts, *keys[:, 2::-1].T))      # by pose colour, most common first
+    keys = keys[order]
+    first = np.ones(len(keys), bool)
+    first[1:] = (keys[1:, :3] != keys[:-1, :3]).any(1)
+    source, dest = keys[first, :3], keys[first, 3:]
+    rgb = H[..., :3].reshape(-1, 3)
+    d = ((rgb[:, None, :] - source[None]) ** 2).sum(-1)
+    near = np.argsort(d, 1)[:, :k]
+    w = 1 / (np.take_along_axis(d, near, 1) + 25.0)
+    w /= w.sum(1, keepdims=True)
+    gain = ((dest[near].mean(-1, keepdims=True) + 8) / (source[near].mean(-1, keepdims=True) + 8)).clip(0, 2)
+    mapped = (w[..., None] * (dest[near] + (rgb[:, None, :] - source[near]) * gain)).sum(1)
+    out = H.copy()
+    out[..., :3] = np.clip(mapped, 0, 255).reshape(H.shape[:2] + (3,))
+    cut = (P[..., 3] > 0) & ~(T[..., 3] > 0)              # pose pixels the frame leaves out
+    out[..., 3] = np.minimum(H[..., 3], 255 - smooth(up(cut.astype(np.float32) * 255), 3.0))
+    y, x = (t_bounds[1] - world[1]) * K, (t_bounds[0] - world[0]) * K
+    h, w_ = (t_bounds[3] - t_bounds[1]) * K, (t_bounds[2] - t_bounds[0]) * K
+    stats = {'same': 0, 'recolour': int(both.sum()), 'added': int(((T[..., 3] > 0) & ~both).sum()),
+             'drawn': int((T[..., 3] > 0).sum())}
+    return out[y:y + h, x:x + w_], stats
+
+
 def derive_frame(target, t_bounds, pose, p_bounds, hd, after_image: bool):
     world = (min(t_bounds[0], p_bounds[0]), min(t_bounds[1], p_bounds[1]),
              max(t_bounds[2], p_bounds[2]), max(t_bounds[3], p_bounds[3]))
@@ -229,13 +279,18 @@ def main() -> None:
     for r in rows:
         pose_tr = rom.poses[r['pose']]
         atlas = rom.atlas_of.get(r['scene'], pose_tr[1])
-        hd, used = hd_pose(pose_tr, r['palette'])
+        swap = (r['scene'], r['palette']) in PALETTE_SWAPS
+        source = PALETTE_SWAPS.get((r['scene'], r['palette']))
+        hd, used = hd_pose((pose_tr[0], pose_tr[1], source) if source else pose_tr, r['palette'])
         (pose_frames, p_bounds) = rom.frames(*used)
         pose = pose_frames[0][1]
         frames, t_bounds = rom.frames(r['scene'], atlas, r['palette'])
         out_frames = []
         for f, target in frames:
-            image, stats = derive_frame(target, t_bounds, pose, p_bounds, hd, r['method'] == '残影或分解特效')
+            if swap:
+                image, stats = palette_swap(target, t_bounds, pose, p_bounds, hd)
+            else:
+                image, stats = derive_frame(target, t_bounds, pose, p_bounds, hd, r['method'] == '残影或分解特效')
             name = f"{r['scene']}-{r['palette']}-f{f}.png"
             Image.fromarray(np.clip(image, 0, 255).astype(np.uint8), 'RGBA').save(OUT / name)
             out_frames.append({'frame': f, 'file': name, **stats})
@@ -246,9 +301,16 @@ def main() -> None:
         previews.append((r, frames[0][1], out_frames[0]['file'], mid[1] if len(frames) > 2 else None,
                          out_frames[len(frames) // 2]['file'] if len(frames) > 2 else None))
         print(r['scene'], r['method'], len(out_frames), 'frames', flush=True)
+    if (OUT / 'manifest.json').exists():
+        # a partial run keeps the other items; any run keeps the image_gen redraws
+        # (unit_extra_imagegen.py) that share this folder
+        done = {(m['scene'], m['palette']) for m in manifest}
+        old = json.loads((OUT / 'manifest.json').read_text())['items']
+        manifest = [m for m in old if (args.only or m.get('method') == 'image_gen')
+                    and (m['scene'], m['palette']) not in done] + manifest
     (OUT / 'manifest.json').write_text(json.dumps({'schema': 'srw64.unit-extras-derived.v1', 'items': manifest},
                                                  ensure_ascii=False, indent=1))
-    sheets(previews)
+    sheets(previews, 'compare-only' if args.only else 'compare-v3')
 
 
 def pack() -> None:
@@ -273,30 +335,45 @@ def pack() -> None:
             box = (min(p.x for p in parts), min(p.y for p in parts), max(p.x + p.w for p in parts), max(p.y + p.h for p in parts))
             image = Image.open(OUT / f['file']).convert('RGBA').crop(
                 ((box[0] - x0) * K, (box[1] - y0) * K, (box[2] - x0) * K, (box[3] - y0) * K))
-            # transparent pixels take the nearest drawn colour, so scaling never darkens edges
-            rgba = np.asarray(image).astype(np.float32)
-            if (rgba[..., 3] == 0).any() and (rgba[..., 3] > 0).any():
-                solid = rgba[..., 3] > 0
-                colour = rgba[..., :3] * solid[..., None]
-                weight = solid.astype(np.float32)
-                for radius in (2, 4, 8, 16, 32):
-                    c, w = smooth(colour, radius), smooth(weight, radius)
-                    fill = (weight == 0) & (w > 1e-3)
-                    rgba[fill, :3] = c[fill] / w[fill, None]
-                    colour, weight = np.where(fill[..., None], rgba[..., :3], colour), np.maximum(weight, fill)
-                image = Image.fromarray(np.clip(rgba, 0, 255).round().astype(np.uint8), 'RGBA')
+            image = pack_image(image, K)
             name = '{}-{}-{}-f{}.png'.format(*key)
             image.save(folder / name, optimize=True)
             rows.append({'scene': key[0], 'atlas': key[1], 'palette': key[2], 'frame': key[3], 'file': name,
                          'sha256': hashlib.sha256((folder / name).read_bytes()).hexdigest(),
                          'width': image.width, 'height': image.height, 'method': item['method'], 'unit': item['unit']})
-    index = {'schema': 'srw64.unit-extra-images.v1', 'scale': K,
+    index = {'schema': 'srw64.unit-extra-images.v1', 'scale': PACK_SCALE,
              'recipe': 'derived from the whole HD unit poses (tools/hd_ai/unit_extra_derive.py)', 'images': rows}
     (folder / 'unit-extras.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
     print(len(rows), 'frames packed')
 
 
-def sheets(previews) -> None:
+def pack_image(image: Image.Image, scale: int) -> Image.Image:
+    """A master at `scale` x as the pack stores it: transparent pixels near the outline take
+    the nearest drawn colour (straight-alpha filtering never darkens the edge), farther ones
+    the mean colour, then colour and alpha are resized apart to PACK_SCALE x. Only a few
+    master pixels past the outline are ever sampled (the resize kernel, then the runtime's
+    bilinear filter), so the colour is spread 8 px out, not over the whole field."""
+    rgba = np.asarray(image.convert('RGBA')).astype(np.float32)
+    if (rgba[..., 3] == 0).any() and (rgba[..., 3] > 0).any():
+        solid = rgba[..., 3] > 0
+        rgba[~solid, :3] = rgba[solid, :3].mean(0)
+        colour = rgba[..., :3] * solid[..., None]
+        weight = solid.astype(np.float32)
+        for radius in (2, 4, 8):
+            c, w = smooth(colour, radius), smooth(weight, radius)
+            fill = (weight == 0) & (w > 1e-3)
+            rgba[fill, :3] = c[fill] / w[fill, None]
+            colour, weight = np.where(fill[..., None], rgba[..., :3], colour), np.maximum(weight, fill)
+    image = Image.fromarray(np.clip(rgba, 0, 255).round().astype(np.uint8), 'RGBA')
+    if scale == PACK_SCALE:
+        return image
+    size = (max(1, round(image.width * PACK_SCALE / scale)), max(1, round(image.height * PACK_SCALE / scale)))
+    colour = image.convert('RGB').resize(size, Image.Resampling.LANCZOS)
+    colour.putalpha(image.getchannel('A').resize(size, Image.Resampling.LANCZOS))
+    return colour
+
+
+def sheets(previews, prefix: str) -> None:
     font, small = ImageFont.truetype(FONT, 20), ImageFont.truetype(FONT, 16)
     H = 220
 
@@ -337,7 +414,7 @@ def sheets(previews) -> None:
                 sheet.paste(im, (x, y + 24))
                 d.text((x + 2, y + 26 + H), cap, fill=(190, 200, 215), font=small)
                 x += im.width + 8
-        sheet.save(OUT / f'compare-v3-{n}-{METHODS[n - 1]}.jpg', quality=88)
+        sheet.save(OUT / f'{prefix}-{n}-{METHODS[n - 1]}.jpg', quality=88)
 
 
 if __name__ == '__main__':
