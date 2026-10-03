@@ -127,6 +127,8 @@ if(SRW64_ENABLE_RT64)
     target_sources(srw64-gfx-host PRIVATE ui_text.cpp)
     # The title screen's ロード, オプション and song lists (docs/native/native-title-menus.md).
     target_sources(srw64-gfx-host PRIVATE title_page.cpp)
+    # The battle viewer: one battle animation from the title (docs/design/battle-viewer.md).
+    target_sources(srw64-gfx-host PRIVATE battle_viewer.cpp)
     # Holding R while choosing a move destination: the farthest squares (docs/native/move-jump.md).
     target_sources(srw64-gfx-host PRIVATE move_jump.cpp)
     # L2 / R2 on the idle tactical map: the cursor steps through the enemy units (docs/native/enemy-cycle.md).
