@@ -25,8 +25,9 @@ class DialogueBackendBoundaryTests(unittest.TestCase):
         source = (ROOT / "src/host/dialogue_plume.cpp").read_text(encoding="utf-8")
         for name in ("CoreText/", "CoreGraphics/", "CTTypesetter", "CGContext", "CFString"):
             self.assertNotIn(name, source)
-        self.assertIn("rasterize_frame(*frame,framebuffer->getWidth(),framebuffer->getHeight(),srw64::frame::width(framebuffer->getWidth(),framebuffer->getHeight()))", source)
-        self.assertIn("compositor->upload(*list,raster.image)", source)
+        # Typesetting happens in the CPU raster; the compositor only uploads its patches and draws the canvas.
+        self.assertIn("raster.update(*frame, width, height, srw64::frame::width(width, height), context.str())", source)
+        self.assertIn("compositor->update(*list, canvas,", source)
 
     def test_dialogue_tests_are_outside_renderer_link_group(self):
         source = (ROOT / "src/host/CMakeLists.txt").read_text(encoding="utf-8")
