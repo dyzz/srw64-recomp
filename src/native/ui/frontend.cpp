@@ -2829,10 +2829,10 @@ void fps_sync() {
     if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false);}
     if(fps_doc)fps_doc->PullToFront();
 }
-// The on-screen controller (touch_pad.hpp) on a phone, or with SRW64_TOUCH_PAD=1 and a
-// mouse anywhere. It shows from the first touch and hides when a controller or the
-// keyboard plays, and while one of our pages is up (they take touches themselves).
-// Android's back key (SDL_ANDROID_TRAP_BACK_BUTTON, graphics.cpp) is B while held.
+// Touch controls by scene on a phone (touch_pad.hpp, docs/design/touch-controls.md), or
+// with SRW64_TOUCH_PAD=1 and a mouse anywhere. They show from the first touch and hide when
+// a controller or the keyboard plays. Android's back key (SDL_ANDROID_TRAP_BACK_BUTTON,
+// graphics.cpp) is B while held.
 bool touch_supported() {
 #ifdef __ANDROID__
     return true;
@@ -2841,9 +2841,12 @@ bool touch_supported() {
     return on;
 #endif
 }
-bool touch_shown=true,touch_pages=false,touch_back=false,touch_mouse_eaten=false;
+bool touch_shown=true,touch_back=false,touch_mouse_eaten=false;
+touch_pad::SceneId touch_scene_id=touch_pad::SceneId::Other;
 touch_pad::Fingers touch_fingers;
 std::atomic<uint32_t> touch_held{0};
+Rml::ElementDocument* touch_doc{};
+std::string touch_stamp;
 // A press shorter than a frame still reaches the game: what a quick tap or the back key
 // let go stays pressed until 80 ms after it went down.
 constexpr uint64_t touch_min_ms=80;
@@ -2857,12 +2860,10 @@ void touch_keep(uint32_t bits,uint64_t down_at) {
     touch_linger|=bits;
     if(touch_linger_until.load()<until)touch_linger_until=until;
 }
-Rml::ElementDocument* touch_doc{};
-std::string touch_stamp;
-bool touch_active(){return touch_supported() && touch_shown && !touch_pages;}
+bool touch_active(){return touch_supported() && touch_shown && touch_scene_id!=touch_pad::SceneId::Hidden;}
 void set_pad_mode(bool on);
-// Touch play hints the controller in the on-screen controls' own names (the Steam Deck's
-// A B L1 R1 L2 R2); a real controller's family comes back when it plays.
+// Touch play hints the controller in the Steam Deck's names; a real controller's family
+// comes back when it plays.
 bool touch_family=false;
 uint8_t touch_saved_family=0;
 void touch_hints(bool touching) {
@@ -2876,19 +2877,35 @@ touch_pad::Layout touch_layout() {
     const float mm=SDL_GetDisplayDPI(0,&ddpi,nullptr,nullptr)==0 && ddpi>0?ddpi/25.4f:pixel_ratio*96/25.4f;
     return touch_pad::layout(float(pixels_w),float(pixels_h),mm);
 }
+// The scene: our all-touch windows, our pages, or (until the game's scenes are recognised)
+// everything.
+touch_pad::SceneId touch_scene_now() {
+    if(settings_open || library_open)return touch_pad::SceneId::Hidden;
+    if(names::request().visible || link_request.visible || battle_request.value("visible",false) ||
+       intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) ||
+       ability_request.value("visible",false) || swap_request.value("visible",false) || save_request.value("visible",false) ||
+       title_request.value("visible",false))return touch_pad::SceneId::Page;
+    return touch_pad::SceneId::Other;
+}
 void touch_publish(){touch_held=touch_fingers.buttons()|(touch_back?touch_pad::bits::B:0);}
-// The controller's events; true when the controls took them.
+// Does the mouse SDL makes from a finger belong to the controls (not to a page under them)?
+bool touch_owns_point(float x,float y) {
+    const auto layout=touch_layout();const auto scene=touch_pad::scene(touch_scene_id);
+    return touch_pad::hit(layout,scene,x,y) || touch_pad::in_stick_area(layout,scene,x,y) || scene.tap_primary;
+}
+// The controls' events; true when they took them.
 bool touch_event(const SDL_Event& event) {
     if(!touch_supported())return false;
     switch(event.type) {
     case SDL_FINGERDOWN: {
         touch_shown=true;touch_hints(true);
-        if(!touch_active() || !touch_fingers.down(touch_layout(),event.tfinger.fingerId,event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
+        if(!touch_active() || !touch_fingers.down(touch_layout(),touch_pad::scene(touch_scene_id),event.tfinger.fingerId,
+                                                  event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
         touch_down_at[event.tfinger.fingerId]=SDL_GetTicks64();
         touch_publish();return true;
     }
     case SDL_FINGERMOTION:
-        if(!touch_fingers.move(touch_layout(),event.tfinger.fingerId,event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
+        if(!touch_fingers.move(touch_layout(),touch_pad::scene(touch_scene_id),event.tfinger.fingerId,event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
         touch_publish();return true;
     case SDL_FINGERUP: {
         const uint32_t before=touch_fingers.buttons();
@@ -2897,10 +2914,9 @@ bool touch_event(const SDL_Event& event) {
         touch_down_at.erase(event.tfinger.fingerId);
         touch_publish();return true;
     }
-    // The mouse SDL makes from the first finger: not for the pages under a control.
+    // The mouse SDL makes from the first finger: not for the pages under the controls.
     case SDL_MOUSEBUTTONDOWN:
-        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_active() ||
-           !touch_pad::hit(touch_layout(),event.button.x*pixel_ratio,event.button.y*pixel_ratio))return false;
+        if(event.button.which!=SDL_TOUCH_MOUSEID || !touch_active() || !touch_owns_point(event.button.x*pixel_ratio,event.button.y*pixel_ratio))return false;
         touch_mouse_eaten=true;return true;
     case SDL_MOUSEMOTION:
         return event.motion.which==SDL_TOUCH_MOUSEID && touch_mouse_eaten;
@@ -2927,48 +2943,65 @@ bool touch_event(const SDL_Event& event) {
     if(!touch_shown){touch_hints(false);if(!touch_fingers.empty()){touch_fingers.clear();touch_publish();}}
     return false;
 }
+// A label's size in a button: CJK a whole em, Latin about half, so it fits the width.
+float touch_label_size(const std::string& text,float room,float largest) {
+    float ems=0;
+    for(size_t i=0;i<text.size();){const auto c=uint8_t(text[i]);const int n=c<0x80?1:c<0xE0?2:c<0xF0?3:4;ems+=n==1?.58f:1.f;i+=n;}
+    return std::min(largest,ems>0?room/ems:largest);
+}
 void touch_sync() {
-    touch_pages=settings_open || library_open || names::request().visible || link_request.visible || battle_request.value("visible",false) ||
-        intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) ||
-        ability_request.value("visible",false) || swap_request.value("visible",false) || save_request.value("visible",false) ||
-        title_request.value("visible",false);
+    touch_scene_id=touch_scene_now();
     if(!touch_active()) {
         if(!touch_fingers.empty()){touch_fingers.clear();touch_publish();}
         document_close(touch_doc);touch_stamp.clear();return;
     }
     const auto layout=touch_layout();
-    std::string stamp=frame_stamp()+"/"+std::to_string(layout.mm);
-    for(size_t i=0;i<touch_pad::control_count;++i)stamp+=touch_fingers.pressed(touch_pad::Control(i))?'1':'0';
-    const uint32_t held=touch_fingers.buttons();
-    stamp+="/"+std::to_string(held);
+    const auto scene=touch_pad::scene(touch_scene_id);
+    const auto* stick=touch_fingers.stick();
+    const float mm=layout.mm;
+    const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
+    std::string stamp=frame_stamp()+"/"+std::to_string(mm)+"/"+std::to_string(int(touch_scene_id))+"/"+localization::catalog().locale+"/"+
+        std::to_string(touch_fingers.buttons());
+    for(size_t i=0;i<touch_pad::slot_count;++i)stamp+=touch_fingers.pressed(touch_pad::Slot(i))?'1':'0';
+    if(stick)stamp+="/"+std::to_string(int(stick->cx))+","+std::to_string(int(stick->cy))+","+std::to_string(int(stick->x/mm))+","+std::to_string(int(stick->y/mm));
     if(stamp==touch_stamp){if(touch_doc)touch_doc->PullToFront();return;}
     touch_stamp=stamp;document_close(touch_doc);
     // Physical sizes: pixels, whatever the interface size.
-    const float mm=layout.mm;
-    const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
-    const auto face=[&](bool down){return std::string("background-color:")+(down?"#ffffff70":"#ffffff2e")+";border-width:"+px(.35f*mm)+
-        ";border-color:#ffffff99;color:#ffffffd8;text-align:center;font-weight:bold;";};
+    const auto face=[&](bool down,float alpha){
+        char fill[16];std::snprintf(fill,sizeof fill,"#ffffff%02x",int((down?.44f:.18f)*alpha*255));
+        return std::string("background-color:")+fill+";border-width:"+px(.35f*mm)+";border-color:#ffffff99;color:#ffffffe0;text-align:center;font-weight:bold;";
+    };
     std::string body;
-    for(const auto& s:layout.shapes) {
-        const bool down=touch_fingers.pressed(s.control);
-        if(s.control==touch_pad::Control::DPad) {
-            const float r=s.w,arm=8*mm,reach=7.5f*mm;
-            body+="<div style='position:absolute;left:"+px(s.x-r)+";top:"+px(s.y-r)+";width:"+px(2*r)+";height:"+px(2*r)+
-                  ";border-radius:"+px(r)+";background-color:#ffffff1e;border-width:"+px(.35f*mm)+";border-color:#ffffff99;'></div>";
-            const struct {uint32_t bit;float dx,dy;int turn;} arms[]={{touch_pad::bits::Up,0,-1,0},{touch_pad::bits::Down,0,1,180},
-                {touch_pad::bits::Left,-1,0,270},{touch_pad::bits::Right,1,0,90}};
-            for(const auto& a:arms) {
-                const float cx=s.x+a.dx*reach,cy=s.y+a.dy*reach;
-                body+="<div style='position:absolute;left:"+px(cx-arm/2)+";top:"+px(cy-arm/2)+";width:"+px(arm)+";height:"+px(arm)+
-                      ";border-radius:"+px(1.2f*mm)+";"+face(held&a.bit)+"font-size:"+px(3.6f*mm)+";line-height:"+px(arm)+
-                      ";transform:rotate("+std::to_string(a.turn)+"deg);'>&#x25B2;</div>";
-            }
-            continue;
+    // The stick: under the thumb while held; at rest a faint one in the corner.
+    if(scene.stick==touch_pad::Stick::Wide || scene.stick==touch_pad::Stick::Corner) {
+        const bool corner=scene.stick==touch_pad::Stick::Corner;
+        const float cx=stick?stick->cx:layout.rest_x,cy=stick?stick->cy:layout.rest_y,r=layout.stick_radius;
+        const float alpha=stick||corner?1.f:.6f;
+        body+="<div style='position:absolute;left:"+px(cx-r)+";top:"+px(cy-r)+";width:"+px(2*r)+";height:"+px(2*r)+";border-radius:"+px(r)+";"+face(false,alpha)+"'></div>";
+        const uint32_t held=stick?stick->bits:0;
+        const struct {uint32_t bit;float dx,dy;int turn;} arrows[]={{touch_pad::bits::Up,0,-1,0},{touch_pad::bits::Down,0,1,180},
+            {touch_pad::bits::Left,-1,0,270},{touch_pad::bits::Right,1,0,90}};
+        for(const auto& a:arrows) {
+            const float ax=cx+a.dx*r*.7f,ay=cy+a.dy*r*.7f,size=3.2f*mm;
+            body+="<div style='position:absolute;left:"+px(ax-size/2)+";top:"+px(ay-size/2)+";width:"+px(size)+";height:"+px(size)+
+                  ";font-size:"+px(size*.8f)+";line-height:"+px(size)+";text-align:center;color:"+(held&a.bit?"#ffffff":"#ffffffa0")+
+                  ";transform:rotate("+std::to_string(a.turn)+"deg);'>&#x25B2;</div>";
         }
-        const float left=s.round?s.x-s.w:s.x,top=s.round?s.y-s.w:s.y,w=s.round?2*s.w:s.w,h=s.round?2*s.w:s.h;
-        const float size=s.round?5*mm:(h<6*mm?2.8f*mm:3.6f*mm);
-        body+="<div style='position:absolute;left:"+px(left)+";top:"+px(top)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
-              face(down)+"font-size:"+px(size)+";line-height:"+px(h)+";'>"+std::string(s.label)+"</div>";
+        // The knob follows the thumb, as far as the rim.
+        float kx=cx,ky=cy;
+        if(stick){const float dx=stick->x-cx,dy=stick->y-cy,d=std::hypot(dx,dy),reach=r*.55f;kx=cx+(d>reach?dx*reach/d:dx);ky=cy+(d>reach?dy*reach/d:dy);}
+        const float k=3.8f*mm;
+        body+="<div style='position:absolute;left:"+px(kx-k)+";top:"+px(ky-k)+";width:"+px(2*k)+";height:"+px(2*k)+";border-radius:"+px(k)+";"+face(stick!=nullptr,alpha)+"'></div>";
+    }
+    for(size_t i=0;i<touch_pad::slot_count;++i) {
+        const auto& action=scene.slots[i];
+        if(!action.bits)continue;
+        const auto& place=layout.slots[i];
+        const float w=place.round?2*place.r:place.w,h=place.round?2*place.r:place.h;
+        const std::string text=label(std::string(action.label));
+        const float size=touch_label_size(text,w*(place.round?.72f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?4.6f:3.4f)*mm:2.8f*mm);
+        body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
+              face(touch_fingers.pressed(touch_pad::Slot(i)),1)+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+escape(text)+"</div>";
     }
     touch_doc=document(body,false);
     touch_doc->PullToFront();
@@ -3605,6 +3638,9 @@ nlohmann::json summary(){
     result["input_owners"]={{"battle",battle_page::owns_input()},{"intermission",intermission_page::owns_input()},{"upgrade",upgrade_page::owns_input()},{"parts",parts_page::owns_input()},{"ability",ability_page::owns_input()},{"swap",swap_page::owns_input()},{"names",names::owns_input()},{"link",link_page::owns_input()},{"settings",settings_window::owns_input()},{"locale",settings::owns_input()}};
     if(ui::window)result["active"]=bool(SDL_GetWindowFlags(ui::window)&SDL_WINDOW_INPUT_FOCUS);
     if(ui::context)if(auto* focused=ui::context->GetFocusElement())result["focus"]={{"id",focused->GetId()},{"class",focused->GetTagName()}};
+    // The touch controls (docs/design/touch-controls.md): the scene, whether they show, what they hold.
+    result["touch"]={{"supported",ui::touch_supported()},{"shown",ui::touch_shown},{"active",ui::touch_active()},{"scene",int(ui::touch_scene_id)},
+                     {"buttons",ui::touch_buttons()},{"stick",ui::touch_fingers.stick()!=nullptr}};
     return result;
 }
 nlohmann::json click(const nlohmann::json& p){return ui::click(p);}

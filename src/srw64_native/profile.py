@@ -25,6 +25,8 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "settings_intermission_ui", "settings_intermission_ui_native", "settings_intermission_ui_original", "settings_intermission_ui_note",
             "settings_name_entry_ui", "settings_name_entry_ui_native", "settings_name_entry_ui_original", "settings_name_entry_ui_note",
             "refund_notice", "dialogue_text_status", "dialogue_reload", "font_credit"}
+# The phone's touch controls, one label per function (docs/design/touch-controls.md §5).
+UI_KEYS |= {"touch_settings", "touch_ok", "touch_back", "touch_close", "touch_start", "touch_l1", "touch_r1", "touch_l2", "touch_r2", "touch_next_page", "touch_prev_page", "touch_skip", "touch_next_line", "touch_fast", "touch_auto", "touch_select", "touch_info", "touch_prev_unit", "touch_next_unit", "touch_prev_enemy", "touch_next_enemy", "touch_move_here", "touch_cancel", "touch_farthest", "touch_prev_target", "touch_next_target", "touch_skip_battle", "touch_continue"}
 # Custom campaign notices (src/host/link_page.cpp, src/host/mini_stage.hpp).
 UI_KEYS |= {"campaign_link_blocked", "campaign_scene_unmapped"}
 # The MOD manager and its extra scenarios (DLC) page (src/native/ui/frontend.cpp).
