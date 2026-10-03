@@ -67,10 +67,12 @@ def _line(points: list[tuple[float, float]]) -> tuple[float, float]:
     return slope, mean_q - slope * mean_p
 
 
-def register(generated: Image.Image, source: Image.Image, radius: int = 10, backdrop: tuple = BACKDROP) -> dict:
+def register(generated: Image.Image, source: Image.Image, radius: int = 10, backdrop: tuple = BACKDROP,
+             limits: tuple[float, float, float] = (0.03, 12, 5)) -> dict:
     """Fit x' = ax*x + bx and y' = ay*y + by (runtime px) from source to model output.
 
-    Local shifts of detailed 64 px windows are fitted per axis by least squares.
+    Local shifts of detailed 64 px windows are fitted per axis by least squares. `limits`
+    (scale, offset px, mean residual px) bound what passes without inspection.
     """
     size = (source.width * RUNTIME, source.height * RUNTIME)
     blur = ImageFilter.GaussianBlur(2)
@@ -94,7 +96,7 @@ def register(generated: Image.Image, source: Image.Image, radius: int = 10, back
               'windows': len(samples), 'mean_residual_px': round(residual, 2), 'units': 'runtime px'}
     # Above 3 px the model bent part of the face (flagged for review); above 5
     # it drew something else there.
-    if max(abs(sx), abs(sy)) > 0.03 or max(abs(ox), abs(oy)) > 12 or residual > 5:
+    if max(abs(sx), abs(sy)) > limits[0] or max(abs(ox), abs(oy)) > limits[1] or residual > limits[2]:
         raise RuntimeError(f'portrait registration needs inspection: {report}')
     return report
 
@@ -168,7 +170,7 @@ def _extend_cut_edges(image: Image.Image, original: Image.Image, bg: tuple, dept
 
 
 def matte_portrait(generated: Image.Image, source: Image.Image,
-                   backdrop: tuple = BACKDROP) -> tuple[Image.Image, dict]:
+                   backdrop: tuple = BACKDROP, limits: tuple[float, float, float] = (0.03, 12, 5)) -> tuple[Image.Image, dict]:
     """Return the RGBA master at WORK x the source size and a QA report.
 
     `backdrop` is the colour the source was composited on for the model.
@@ -176,7 +178,7 @@ def matte_portrait(generated: Image.Image, source: Image.Image,
     source = source.convert('RGBA')
     w, h = source.width * WORK, source.height * WORK
     n = w * h
-    fit = register(generated, source, backdrop=backdrop)
+    fit = register(generated, source, backdrop=backdrop, limits=limits)
     image = align(generated, fit, (w, h))
     original = source.getchannel('A').point(lambda v: 255 if v else 0)
     mask = original.resize((w, h), Image.Resampling.BILINEAR).point(lambda v: 255 if v >= 128 else 0)

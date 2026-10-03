@@ -20,7 +20,7 @@ inline bool enabled() {
     static const bool value=[] {const char* p=std::getenv("SRW64_SCRIPT_INJECT");return p && std::string_view(p)=="1";}();
     return value;
 }
-constexpr uint32_t engine=0x8015F950, owner=engine+0x948, scratch=0x807F0000, scratch_size=0x10000;
+constexpr uint32_t engine=0x8015F950, owner=engine+0x948, scratch=0x807F0000, scratch_size=0xFF00;   // the last 256 bytes hold the widened cut-in frame (battle_hud.cpp)
 constexpr uint32_t header_words=5, max_words=scratch_size/2;
 constexpr uint64_t defer_limit=1800; // VIs a queued request may wait for an idle map
 

@@ -10,12 +10,15 @@
 #include "game_frame.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
+#include "app/rom_import_codec.hpp"
+#include "librecomp/game.hpp"
 #include <algorithm>
 #include <array>
 #include <atomic>
 #include <chrono>
 #include <condition_variable>
 #include <cstring>
+#include <cstdlib>
 #include <deque>
 #include <fstream>
 #include <map>
@@ -45,6 +48,11 @@ struct Asset {
     std::string key;
     std::filesystem::path file;              // HD frame image
     std::function<TextImage()> render;       // native text
+    // A palette effect (hit flash, a gold super mode: 80099C88 rewrites the sprite's palette
+    // in place) seen on a whole HD frame: the frame recoloured from the original palette's 16
+    // colours to the ones the game draws with now.
+    bool recolor = false;
+    std::vector<uint16_t> recolor_from, recolor_to;
     enum State { idle, queued, ready, failed } state = idle;
     uint32_t width = 0, height = 0;
     float units[2]{}, origin[2]{};
@@ -95,6 +103,8 @@ std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdSprite{VS,PS}.
 std::atomic<uint64_t> rewritten{}, rendered{}, pending{}, skipped{}, unexpected{}, decoded{}, released{}, failures{};
 std::atomic<uint64_t> text_placed{}, text_waiting{};
 std::mutex log_mutex;
+std::mutex scene_thumb_mutex;
+std::map<std::string, std::string> scene_thumbs;   // the battle viewer's scene thumbnails
 std::set<std::string> logged;
 std::ofstream log;
 std::filesystem::path output;
@@ -154,6 +164,63 @@ void add_mips(Asset& asset) {
     }
 }
 
+// RGBA5551 -> 8-bit RGB.
+std::array<float, 3> rgb5551(uint16_t v) {
+    return {float((v >> 11) & 31) * 255.f / 31.f, float((v >> 6) & 31) * 255.f / 31.f, float((v >> 1) & 31) * 255.f / 31.f};
+}
+// The HD picture through the palette change: each pixel takes the new colours of the four
+// original palette colours nearest it (weighted by closeness), plus its own offset from them
+// scaled by the brightness ratio, as tools/hd_ai/unit_extra_derive.py palette_swap does
+// offline. Transparent palette entries (alpha bit clear) take no part.
+void recolor_pixels(std::vector<uint8_t>& pixels, const std::vector<uint16_t>& from, const std::vector<uint16_t>& to) {
+    // Each distinct opaque original colour once (a 256-colour palette repeats many).
+    std::vector<std::array<float, 3>> src, dst;
+    std::set<std::pair<uint16_t, uint16_t>> seen;
+    for (size_t i = 0; i < from.size() && i < to.size(); ++i)
+        if ((from[i] & 1) && seen.insert({from[i], to[i]}).second) { src.push_back(rgb5551(from[i])); dst.push_back(rgb5551(to[i])); }
+    if (src.empty()) return;
+    const size_t k = std::min<size_t>(4, src.size());
+    std::vector<float> gain(src.size());
+    for (size_t i = 0; i < src.size(); ++i)
+        gain[i] = std::clamp(((dst[i][0] + dst[i][1] + dst[i][2]) / 3 + 8) / ((src[i][0] + src[i][1] + src[i][2]) / 3 + 8), 0.f, 2.f);
+    std::vector<std::pair<float, size_t>> near(src.size());
+    for (size_t p = 0; p + 3 < pixels.size(); p += 4) {
+        if (!pixels[p + 3]) continue;
+        const float c[3] = {float(pixels[p]), float(pixels[p + 1]), float(pixels[p + 2])};
+        for (size_t i = 0; i < src.size(); ++i) {
+            const float d0 = c[0] - src[i][0], d1 = c[1] - src[i][1], d2 = c[2] - src[i][2];
+            near[i] = {d0 * d0 + d1 * d1 + d2 * d2, i};
+        }
+        std::partial_sort(near.begin(), near.begin() + k, near.end());
+        float out[3]{}, total = 0;
+        for (size_t n = 0; n < k; ++n) {
+            const size_t i = near[n].second;
+            const float w = 1.f / (near[n].first + 25.f);
+            total += w;
+            for (int ch = 0; ch < 3; ++ch) out[ch] += w * (dst[i][ch] + (c[ch] - src[i][ch]) * gain[i]);
+        }
+        for (int ch = 0; ch < 3; ++ch) pixels[p + ch] = uint8_t(std::clamp(out[ch] / total + 0.5f, 0.f, 255.f));
+    }
+}
+// A palette resource's colours as the ROM holds them (rom_import resource table; header
+// u16 type, u16 bytes, 4 more, then RGBA5551), at most 256.
+const std::vector<uint16_t>* original_colors(uint16_t palette) {
+    static std::mutex mutex;
+    static std::map<uint16_t, std::unique_ptr<std::vector<uint16_t>>> cache;
+    std::lock_guard lock(mutex);
+    auto& slot = cache[palette];
+    if (!slot) {
+        slot = std::make_unique<std::vector<uint16_t>>();
+        try {
+            if (!recomp::is_rom_loaded()) return nullptr;
+            const auto bytes = srw64::app::rom_import::resource(recomp::get_rom(), 0x00A20BD0, palette).bytes;
+            const size_t count = bytes.size() >= 8 ? std::min<size_t>({256, size_t(bytes[2] << 8 | bytes[3]) / 2, (bytes.size() - 8) / 2}) : 0;
+            for (size_t i = 0; i < count; ++i) slot->push_back(uint16_t(bytes[8 + 2 * i] << 8 | bytes[9 + 2 * i]));
+        } catch (const std::exception&) { slot->clear(); }
+    }
+    return slot->empty() ? nullptr : slot.get();
+}
+
 // Worker thread: decode HD frames and draw text off the game thread.
 void work() {
     for (;;) {
@@ -161,6 +228,8 @@ void work() {
         std::string file_key;
         std::filesystem::path file;
         std::function<TextImage()> render;
+        bool recolor = false;
+        std::vector<uint16_t> from, to;
         {
             std::unique_lock lock(asset_mutex);
             queue_ready.wait(lock, [] { return stopping || !queue.empty(); });
@@ -168,6 +237,8 @@ void work() {
             index = queue.front(); queue.pop_front();
             file = assets[size_t(index)]->file;
             render = assets[size_t(index)]->render;
+            recolor = assets[size_t(index)]->recolor;
+            from = assets[size_t(index)]->recolor_from; to = assets[size_t(index)]->recolor_to;
         }
         std::vector<uint8_t> pixels;
         uint32_t w = 0, h = 0;
@@ -185,6 +256,7 @@ void work() {
                 auto image = presentation::load_rgba(file);
                 w = uint32_t(image.width); h = uint32_t(image.height);
                 pixels = std::move(image.pixels);
+                if (recolor) recolor_pixels(pixels, from, to);
                 for (size_t i = 0; i < pixels.size(); i += 4)
                     for (int c = 0; c < 3; ++c) pixels[i + c] = uint8_t((pixels[i + c] * pixels[i + 3] + 127) / 255);
                 ok = w && h;
@@ -378,6 +450,7 @@ bool identify(const uint8_t* rdram, const SceneDraw& draw, SceneId& id) {
     id.frame = byte(rdram, scene_data + 2 + 2u * step);
     if (id.frame == 0xFF) return false;
     for (int i = 0; i < 16; ++i) id.colors[i] = half(rdram, palette_data + 8 + 2u * i);
+    id.palette_data = palette_data;
     id.slot = draw.slot; id.sub = draw.sub;
     return true;
 }
@@ -441,6 +514,15 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     };
     load_units("srw64-units-hd.json", "srw64.unit-images.v1", false);
     load_units("srw64-unit-extras-hd.json", "srw64.unit-extra-images.v1", true);
+    // Other battle sprites, ordinary actors drawn the same way: the cut-ins (tools/hd_ai/cutin_hd.py).
+    load_units("srw64-battle-sprites-hd.json", "srw64.unit-extra-images.v1", true);
+    if (!art_directory.empty() && std::filesystem::exists(art_directory / "srw64-battle-sprites-hd.json")) {
+        std::ifstream stream(art_directory / "srw64-battle-sprites-hd.json");
+        const json spec = json::parse(stream);
+        std::lock_guard lock(scene_thumb_mutex);
+        for (const auto& row : spec.value("scenes", json::array()))
+            scene_thumbs[row.at("key").get<std::string>()] = (art_directory / row.at("file").get<std::string>()).string();
+    }
     if (installed) return;
     installed = true;
     if (!output.empty()) log.open(output / "scene-sprites.jsonl");
@@ -535,6 +617,35 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
             return;
         }
         record.asset = found->asset;
+        // The game changed the palette in place (a flash, a gold mode): the same frame in
+        // the colours it draws with now, made once per colour set; the original sprite
+        // stands in until it is ready.
+        const auto* colors = original_colors(id.palette);
+        std::vector<uint16_t> live;
+        if (colors) for (size_t i = 0; i < colors->size(); ++i) live.push_back(half(rdram, id.palette_data + 8 + 2u * uint32_t(i)));
+        if (colors && live != *colors) {
+            std::lock_guard lock(asset_mutex);
+            const Asset& base = *assets[size_t(found->asset)];
+            if (!base.render) {
+                uint64_t hash = 1469598103934665603ull;
+                for (const uint16_t c : live) hash = (hash ^ c) * 1099511628211ull;
+                const std::string key = base.key + "|recolor:" + std::to_string(hash);
+                // A palette animation could make a new set every frame: past 256 sets the
+                // original sprite is drawn instead.
+                static unsigned variants = 0;
+                if (const auto at = by_key.find(key); at != by_key.end()) record.asset = at->second;
+                else if (variants >= 256) return;
+                else {
+                    ++variants;
+                    auto variant = std::make_unique<Asset>();
+                    variant->key = key; variant->file = base.file; variant->recolor = true;
+                    variant->recolor_from = *colors;
+                    variant->recolor_to = live;
+                    assets.push_back(std::move(variant));
+                    record.asset = by_key[key] = int(assets.size() - 1);
+                }
+            }
+        }
         record.wrap = found->wrap;
         std::copy(std::begin(found->uv), std::end(found->uv), record.uv);
     }
@@ -651,6 +762,7 @@ void rewrite_grid(uint8_t* rdram, const SceneDraw& draw) {
         !resource(rdram, int16_t(half(rdram, sub + 0xC)), id.atlas, atlas_data) ||
         !resource(rdram, int16_t(half(rdram, sub + 0xE)), id.palette, palette_data)) return;
     for (int i = 0; i < 16; ++i) id.colors[i] = half(rdram, palette_data + 8 + 2u * i);
+    id.palette_data = palette_data;
     id.slot = draw.slot; id.sub = draw.sub;
     TextJob job;
     if (!describe(rdram, id, job)) {
@@ -768,5 +880,10 @@ void shutdown() {
     }
     for (auto& asset : assets) { asset->set.reset(); asset->texture.reset(); }
     program.reset();
+}
+std::string viewer_scene_image(const std::string& key) {
+    std::lock_guard lock(scene_thumb_mutex);
+    const auto found = scene_thumbs.find(key);
+    return found == scene_thumbs.end() ? std::string() : found->second;
 }
 }
