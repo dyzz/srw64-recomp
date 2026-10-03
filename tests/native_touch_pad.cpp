@@ -1,5 +1,6 @@
-// The on-screen controller's layout and fingers (src/host/touch_pad.hpp).
+// Touch controls by scene (src/host/touch_pad.hpp, docs/design/touch-controls.md).
 #include "../src/host/touch_pad.hpp"
+#include "../src/host/touch_scene.hpp"
 #include <cstdio>
 #include <iostream>
 #include <stdexcept>
@@ -14,71 +15,118 @@ void check(bool ok, const std::string& what) {
 }
 // The Solana Seeker held sideways: 2670 x 1200 pixels at about 19.5 per millimetre.
 const float mm = 19.5f, width = 2670.f, height = 1200.f;
-float cx(const Shape& s) { return s.round ? s.x : s.x + s.w / 2; }
-float cy(const Shape& s) { return s.round ? s.y : s.y + s.h / 2; }
 
-void shapes() {
+void places() {
     const auto l = layout(width, height, mm);
-    for (const auto& s : l.shapes) {
-        const float left = s.round ? s.x - s.w : s.x, right = s.round ? s.x + s.w : s.x + s.w;
-        const float top = s.round ? s.y - s.w : s.y, bottom = s.round ? s.y + s.w : s.y + s.h;
-        check(left >= 0 && right <= width && top >= 0 && bottom <= height, "a control leaves the screen");
-        check(hit(l, cx(s), cy(s)) == s.control, "a control's centre does not hit it");
+    for (const auto& p : l.slots) {
+        const float half_w = p.round ? p.r : p.w / 2, half_h = p.round ? p.r : p.h / 2;
+        check(p.x - half_w >= 0 && p.x + half_w <= width && p.y - half_h >= 0 && p.y + half_h <= height, "a slot leaves the screen");
     }
-    // Hit areas never overlap: each control's centre hits only itself above, and the
-    // corners' neighbours are apart.
-    check(l[Control::L2].y < l[Control::L1].y && l[Control::R2].y < l[Control::R1].y, "the 2 buttons are not above the 1 buttons");
-    check(l[Control::DPad].x < width / 2 && l[Control::A].x > width / 2, "D-pad and A on the wrong sides");
-    check(cy(l[Control::Option]) > height * .9f && cx(l[Control::Option]) < width / 2 && cx(l[Control::Start]) > width / 2,
-          "OPTION and START are not at the bottom centre");
-    check(!hit(l, width / 2, height / 2), "the middle of the picture is a control");
-    // Neighbours stay apart: L1 above the D-pad, R1 above A, B beside START.
-    const auto& pad = l[Control::DPad];
-    check(pad.y - pad.w - (l[Control::L1].y + l[Control::L1].h) >= 5 * mm, "the D-pad crowds L1");
-    check(l[Control::A].y - l[Control::A].w - (l[Control::R1].y + l[Control::R1].h) >= 5 * mm, "A crowds R1");
-    check(l[Control::B].x - l[Control::B].w - (l[Control::Start].x + l[Control::Start].w) >= 5 * mm, "B crowds START");
-    check(l[Control::A].w >= 6 * mm && l[Control::DPad].w >= 11 * mm, "controls smaller than a thumb");
+    // No two slots overlap, with room for a thumb between them.
+    for (size_t i = 0; i < slot_count; ++i)
+        for (size_t j = i + 1; j < slot_count; ++j) {
+            const auto &a = l.slots[i], &b = l.slots[j];
+            const float ra = a.round ? a.r : std::max(a.w, a.h) / 2, rb = b.round ? b.r : std::max(b.w, b.h) / 2;
+            const float d = std::hypot(a.x - b.x, a.y - b.y);
+            check(d >= ra + rb + 2 * mm || (!a.round && !b.round && std::abs(a.x - b.x) >= (a.w + b.w) / 2 + 1.5f * mm), "two slots crowd each other");
+        }
+    check(l[Slot::Primary].x > width * .85f && l[Slot::Primary].y > height * .6f, "the primary button is not bottom right");
+    check(l[Slot::Back].x < l[Slot::Primary].x && std::abs(l[Slot::Back].y - l[Slot::Primary].y) < mm, "back is not left of the primary");
+    check(l[Slot::Top1].x < width / 2 && l[Slot::Top1].y < 8 * mm, "settings is not top left");
+    check(l[Slot::Primary].r >= 6 * mm && l[Slot::Arc2].r >= 4.5f * mm, "buttons smaller than a thumb");
 }
 
-void dpad() {
-    const auto l = layout(width, height, mm);
-    const auto& p = l[Control::DPad];
-    check(direction(l, p.x, p.y) == 0, "the D-pad's centre presses a direction");
-    check(direction(l, p.x, p.y - 8 * mm) == bits::Up, "up");
-    check(direction(l, p.x, p.y + 8 * mm) == bits::Down, "down");
-    check(direction(l, p.x - 8 * mm, p.y) == bits::Left, "left");
-    check(direction(l, p.x + 8 * mm, p.y + 3 * mm) == bits::Right, "right, a little low");
+void scenes() {
+    for (size_t i = 0; i < size_t(SceneId::Count); ++i) {
+        const auto s = scene(SceneId(i));
+        // A label for every button, and one slot per action.
+        for (size_t a = 0; a < slot_count; ++a) {
+            check(!s.slots[a].filled() == s.slots[a].label.empty(), "a button without a label, or a label without a button");
+            check(!(s.slots[a].bits && !s.slots[a].command.empty()), "a button both holds keys and opens a page");
+            for (size_t b = a + 1; b < slot_count; ++b)
+                check(!s.slots[a].filled() || s.slots[a] != s.slots[b], "an action twice in one scene");
+        }
+        if (SceneId(i) == SceneId::Hidden) continue;
+        check(s[Slot::Top1].bits == bits::Option || SceneId(i) == SceneId::Hidden, "a scene without the settings button");
+        // Confirming is always the primary slot; going back always the back slot.
+        if (s[Slot::Back].bits) check(s[Slot::Back].bits == bits::B, "the back slot is not B");
+    }
+    check(scene(SceneId::Hidden).stick == Stick::None, "the all-touch windows have a stick");
+    check(scene(SceneId::Page).stick == Stick::Corner && scene(SceneId::Page)[Slot::Primary].bits == bits::A &&
+          scene(SceneId::Page)[Slot::Back].bits == bits::B, "our pages keep the stick, OK and back");
+    check(scene(SceneId::Dialogue).tap_primary && scene(SceneId::Dialogue)[Slot::Primary].bits == bits::A, "dialogue does not page on a tap");
+    check(scene(SceneId::MoveSelect)[Slot::Arc2].bits == bits::R, "farthest is not R");
+    check(scene(SceneId::TitleRing)[Slot::Top4].command == "mod-open" && !scene(SceneId::TitleRing)[Slot::Top4].bits, "the title's MOD button");
+    check(scene(SceneId::BattleScene)[Slot::Primary].bits == bits::R2, "skipping the battle is not the primary button");
 }
 
-void fingers() {
+void stick() {
     const auto l = layout(width, height, mm);
-    const auto& p = l[Control::DPad];
+    const auto wide = scene(SceneId::MapIdle), page = scene(SceneId::Page);
     Fingers f;
-    check(!f.down(l, 1, width / 2, height / 2), "a finger on the picture taken");
-    check(f.down(l, 2, p.x + 8 * mm, p.y), "D-pad finger not taken");
-    check(f.down(l, 3, l[Control::A].x, l[Control::A].y), "A finger not taken");
-    check(f.buttons() == (bits::Right | bits::A), "right and A together");
-    // The thumb slides on the D-pad, and past its edge it keeps the direction.
-    f.move(l, 2, p.x, p.y - 20 * mm);
-    check(f.buttons() == (bits::Up | bits::A), "D-pad slide");
-    // A slides to B; then off every control, still B.
-    f.move(l, 3, l[Control::B].x, l[Control::B].y);
-    check(f.buttons() == (bits::Up | bits::B), "slide from A to B");
-    f.move(l, 3, width / 2, height / 2);
-    check(f.buttons() == (bits::Up | bits::B), "B lost off the controls");
-    check(f.pressed(Control::B) && !f.pressed(Control::A), "pressed controls");
-    check(f.up(3) && !f.up(3), "finger release");
-    check(f.buttons() == bits::Up, "after B lifted");
-    // The host's buttons.
-    check(f.down(l, 4, cx(l[Control::R2]), cy(l[Control::R2])) && (f.buttons() & srw64::input::pad_r2), "R2");
-    check(f.down(l, 5, cx(l[Control::Option]), cy(l[Control::Option])) && (f.buttons() & srw64::input::pad_view), "OPTION");
-    check(f.down(l, 6, cx(l[Control::L1]), cy(l[Control::L1])) && (f.buttons() & bits::L), "L1");
+    // The wide stick centres where the thumb lands, anywhere in the left part.
+    const float x = width * .3f, y = height * .5f;
+    check(f.down(l, wide, 1, x, y) && f.buttons() == 0, "a stick touch pressed a direction");
+    f.move(l, wide, 1, x, y - 6 * mm);
+    check(f.buttons() == bits::Up, "drag up");
+    f.move(l, wide, 1, x - 30 * mm, y + 2 * mm);
+    check(f.buttons() == bits::Left, "drag far left");
+    check(f.stick() && f.stick()->cx == x && f.stick()->cy == y, "the stick's centre moved");
+    f.up(1);
+    // On our pages the stick stays in the corner; the middle of the screen is the page's.
+    check(!f.down(l, page, 2, width * .3f, height * .5f), "a page touch taken by the stick");
+    check(f.down(l, page, 3, l.rest_x + 8 * mm, l.rest_y), "the corner stick missed");
+    check(f.buttons() == bits::Right, "the corner stick's direction is from its fixed centre");
     f.clear();
-    check(f.empty() && f.buttons() == 0, "clear");
+    // Above the stick area along the top, and right of it, nothing (in a scene without taps).
+    check(!f.down(l, wide, 4, width * .5f, height * .5f), "the middle of the map is a control");
+    check(!in_stick_area(l, wide, width * .2f, 5 * mm), "the stick area reaches the top bar");
+}
+
+void buttons() {
+    const auto l = layout(width, height, mm);
+    const auto map = scene(SceneId::MapIdle), dialogue = scene(SceneId::Dialogue);
+    Fingers f;
+    check(f.down(l, map, 1, width * .3f, height * .5f), "stick");
+    f.move(l, map, 1, width * .3f + 8 * mm, height * .5f);
+    check(f.down(l, map, 2, l[Slot::Primary].x, l[Slot::Primary].y), "primary");
+    check(f.buttons() == (bits::Right | bits::A), "stick and primary together");
+    check(f.pressed(Slot::Primary), "primary drawn pressed");
+    // A thumb slides from the primary to the back button.
+    f.move(l, map, 2, l[Slot::Back].x, l[Slot::Back].y);
+    check(f.buttons() == (bits::Right | bits::B), "slide to back");
+    f.up(2);
+    check(f.down(l, map, 3, l[Slot::Top4].x, l[Slot::Top4].y) && (f.buttons() & bits::R2), "next enemy");
+    check(f.down(l, map, 4, l[Slot::Top1].x, l[Slot::Top1].y) && (f.buttons() & bits::Option), "settings");
+    // An empty slot is no button: the map's top left second slot is free.
+    check(!f.down(l, map, 5, l[Slot::Top2].x, l[Slot::Top2].y), "an empty slot took a touch");
+    f.clear();
+    // Dialogue: a tap anywhere outside the controls pages; the stick area still reads back.
+    check(f.down(l, dialogue, 6, width * .6f, height * .4f) && f.buttons() == bits::A, "a tap does not page");
+    f.up(6);
+    check(f.down(l, dialogue, 7, width * .2f, height * .6f) && f.buttons() == 0, "the dialogue's stick area pages");
+    check(f.up(7) && !f.up(7) && f.empty(), "release");
 }
 }
 
+// The game's scenes from its state (touch_scene.hpp).
+void recognition() {
+    using srw64::touch_scene::decide;
+    check(decide(7, 0, 0, 12, false) == SceneId::Attract, "opening");
+    check(decide(7, 0, 0, 3, false) == SceneId::TitleRing, "title ring");
+    check(decide(7, 0, 0, 13, true) == SceneId::Dialogue, "prologue line");
+    check(decide(2, 5, 0, 0, true) == SceneId::BattleScene, "battle lines stay the battle's");
+    check(decide(3, 5, 0, 0, false) == SceneId::MapIdle && decide(0x16, 6, 0, 0, false) == SceneId::MapIdle, "idle map, cursor moving");
+    check(decide(3, 5, 0, 0, true) == SceneId::Dialogue, "a line on the map");
+    check(decide(3, 8, 0, 0, false) == SceneId::MapMenu && decide(3, 0x3A, 0, 0, false) == SceneId::MapMenu, "unit menus");
+    check(decide(3, 0xC, 0, 0, false) == SceneId::MoveSelect && decide(3, 0xC, 7, 0, false) == SceneId::MapMenu, "move select");
+    check(decide(3, 0x17, 0, 0, false) == SceneId::TargetList, "weapons");
+    check(decide(3, 0x30, 0, 0, false) == SceneId::InfoWindow, "information window");
+    check(decide(3, 0x39, 0, 0, false) == SceneId::Other, "an unknown map state shows everything");
+    check(decide(4, 0, 0, 0, false) == SceneId::Other && decide(4, 0, 0, 0, true) == SceneId::Dialogue, "intermission");
+    check(decide(0x20, 0, 0, 0, false) == SceneId::AnyKey, "ending");
+}
 int main() {
-    try { shapes(); dpad(); fingers(); std::cout << checks << " checks passed\n"; return 0; }
+    try { places(); scenes(); stick(); buttons(); recognition(); std::cout << checks << " checks passed\n"; return 0; }
     catch (const std::exception& error) { std::cerr << "FAIL: " << error.what() << "\n"; return 1; }
 }
