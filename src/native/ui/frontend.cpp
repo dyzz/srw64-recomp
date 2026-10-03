@@ -2928,7 +2928,7 @@ bool touch_event(const SDL_Event& event) {
     return false;
 }
 void touch_sync() {
-    touch_pages=settings_open || names::request().visible || link_request.visible || battle_request.value("visible",false) ||
+    touch_pages=settings_open || library_open || names::request().visible || link_request.visible || battle_request.value("visible",false) ||
         intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) ||
         ability_request.value("visible",false) || swap_request.value("visible",false) || save_request.value("visible",false) ||
         title_request.value("visible",false);
