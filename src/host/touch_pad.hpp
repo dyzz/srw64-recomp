@@ -93,16 +93,16 @@ inline Scene scene(SceneId id) {
         set(Slot::Primary, bits::A, "touch_ok"); set(Slot::Back, bits::B, "touch_back");
         settings();
         break;
-    // The title's corner buttons (the Library, MOD) become touch buttons along the top.
+    // The title's corner buttons become touch buttons along the top (MOD hidden for now, see frontend.cpp).
     case SceneId::Attract:
         set(Slot::Primary, bits::Start, "touch_start"); settings();
-        open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "mod-open", "mod_open");
+        open(Slot::Top3, "library-open", "library_open");
         s.tap_primary = true;
         break;
     case SceneId::TitleRing:
         s.stick = Stick::Wide;
         set(Slot::Primary, bits::Start, "touch_ok"); settings();
-        open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "mod-open", "mod_open");
+        open(Slot::Top3, "library-open", "library_open");
         break;
     case SceneId::Prologue:
         set(Slot::Primary, bits::A, "touch_next_page"); set(Slot::Arc2, bits::R | bits::Start, "touch_skip"); settings();
