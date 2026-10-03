@@ -456,6 +456,8 @@
     "library_cap": "Upgrade cap",
     "library_row": "Library",
     "library_row_note": "Every unit and character: stats, weapons, spirit commands and skills",
+    "viewer_row": "Battle Viewer",
+    "viewer_row_note": "Play one battle animation: pick both sides, weapons, the reaction, damage and the scene",
     "menu_view": "View",
     "menu_fullscreen": "Full Screen",
     "menu_window_scale": "Window Size {n}×",

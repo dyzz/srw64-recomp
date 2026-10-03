@@ -56,7 +56,8 @@ void scenes() {
           scene(SceneId::Page)[Slot::Back].bits == bits::B, "our pages keep the stick, OK and back");
     check(scene(SceneId::Dialogue).tap_primary && scene(SceneId::Dialogue)[Slot::Primary].bits == bits::A, "dialogue does not page on a tap");
     check(scene(SceneId::MoveSelect)[Slot::Arc2].bits == bits::R, "farthest is not R");
-    check(scene(SceneId::TitleRing)[Slot::Top3].command == "library-open" && !scene(SceneId::TitleRing)[Slot::Top4].filled(), "the title's Library button, MOD hidden");
+    check(scene(SceneId::TitleRing)[Slot::Top3].command == "library-open" && scene(SceneId::TitleRing)[Slot::Top4].command == "viewer-open" &&
+          !scene(SceneId::TitleRing)[Slot::Top4].bits, "the title's Library and Battle Viewer buttons");
     check(scene(SceneId::BattleScene)[Slot::Primary].bits == bits::R2, "skipping the battle is not the primary button");
 }
 

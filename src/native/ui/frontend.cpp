@@ -2106,6 +2106,7 @@ void settings_sync() {
         // The MOD manager, for a controller, which cannot reach the title's button.
         if(mod_entry_shown)body+=settings_row("mod_row",button("mod-open",label("mod_open")));
         body+=settings_row("library_row",button("library-open",label("library_open")));
+        body+=settings_row("viewer_row",button("viewer-open",label("viewer_open")));
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
         body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
         // A handheld plays full screen and has no window to size.

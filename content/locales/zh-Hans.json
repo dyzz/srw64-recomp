@@ -456,6 +456,8 @@
     "library_cap": "改造上限",
     "library_row": "Library · 图鉴",
     "library_row_note": "全部机体与人物的资料：能力、武器、精神指令、特殊技能",
+    "viewer_row": "战斗鉴赏",
+    "viewer_row_note": "播放一场战斗演出：选双方机体与驾驶员、武器、防御反应、伤害和背景",
     "menu_view": "显示",
     "menu_fullscreen": "全屏",
     "menu_window_scale": "窗口大小 {n}×",
