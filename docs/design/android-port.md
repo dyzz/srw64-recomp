@@ -221,7 +221,7 @@ APK 的 `libmain.so` 必须链接两份由 ROM 生成的代码：`build/recomp/c
   - RmlUi 的图片缓存从不淘汰（`frontend.cpp`），要加 LRU。
   - 20.6 MB 的 HarmonyOS SC 字体，每个 `FontSet` 各读一份，最坏五到十份，要改成共享一份缓冲。
   - 收到 `SDL_APP_LOWMEMORY` 时释放缓存。
-- **诊断级别：** 未设置环境变量时，`src/host/diagnostics.hpp` 默认是完整诊断：定期转储 RDRAM、读回整帧并编码 PNG。安卓入口要像 `launch.cpp` 一样设为 light。
+- **诊断级别：** 原先未设置环境变量时默认是完整诊断（定期转储 RDRAM、读回整帧并编码 PNG）；完整诊断已从宿主删除，安卓入口不用再设置。
 - **刷新率：** 90/120 Hz 的手机上请求 60 Hz，避免帧时间抖动。
 
 ### 6. 输入与界面
