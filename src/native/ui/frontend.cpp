@@ -3049,7 +3049,7 @@ void touch_sync() {
         const float w=place.round?2*place.r:place.w,h=place.round?2*place.r:place.h;
         std::string text=label(std::string(action.label));
         if(action.command=="battle-animation")text+=" "+label(battle_request.value("animation",true)?"battle_on":"battle_off");
-        const float size=touch_label_size(text,w*(place.round?.76f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?3.8f:2.8f)*mm:2.4f*mm);
+        const float size=touch_label_size(text,w*(place.round?.76f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?3.8f:2.8f)*mm:std::min(2.4f*mm,h*.5f));
         body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
               face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+escape(text)+"</div>";
     }
