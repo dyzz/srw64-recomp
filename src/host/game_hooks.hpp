@@ -47,6 +47,11 @@ struct SRW64GameHooks {
     // closes them after it.
     // The frame boundary, after the original's (80085F30): the map view's width for the frame.
     void (*frame_start)(uint8_t*){};
+    // The battle viewer (battle_viewer.hpp): at the frame boundary, true starts the title
+    // demo battle (mode 0x1C) as the title overlay itself does; after 8009C2DC has filled the
+    // demo's participant records, the viewer writes its own choices over them.
+    bool (*viewer_start)(uint8_t*, int* song){};
+    void (*demo_battle_filled)(uint8_t*){};
     bool (*map_space_begin)(uint8_t*, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub){};
     void (*map_space_end)(uint8_t*, int32_t cursor){};
     void (*reset)(uint8_t*){};

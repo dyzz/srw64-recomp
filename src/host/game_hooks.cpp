@@ -96,6 +96,18 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
         srw64::mini_stage::direct_scene(ram);
         call(resident_func_80080188,0xC);call(resident_func_8007F510,0x800801A4,0,1);
     }
+    if(srw64_game_hooks.viewer_start) {
+        // The battle viewer: a song to listen to (or the title's back), or a battle with
+        // its song through the title overlay's own demo start (801CA230..801CA250): mode
+        // 0x1C and the fade; its exit (801CA9CC) then hands the game to the dispatcher.
+        const auto call=[&](void(*function)(uint8_t*,recomp_context*),uint32_t a0=0,uint32_t a1=0,uint32_t a2=0) {
+            auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);c.r4=int32_t(a0);c.r5=int32_t(a1);c.r6=int32_t(a2);function(ram,&c);
+        };
+        int song=-2;   // battle_viewer::no_music
+        const bool battle=srw64_game_hooks.viewer_start(ram,&song);
+        if(song!=-2)call(resident_func_8007E810,uint32_t(song));
+        if(battle){call(resident_func_80080188,0x1C);call(resident_func_80099814,5,1,2);}
+    }
     srw64::mini_stage::service(ram);
     srw64::script_inject::service(ram);
     // State captures bracket each injected script when the state probe is on.
@@ -322,6 +334,10 @@ void resident_func_8009761C(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_scene_quad_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
     if (srw64_game_hooks.scene_drawn) srw64_game_hooks.scene_drawn(rdram, begin, end, slot, sub, true);
+}
+void resident_func_8009C2DC(uint8_t* rdram, recomp_context* ctx) {
+    srw64_original_demo_battle_fill(rdram, ctx);
+    if (srw64_game_hooks.demo_battle_filled) srw64_game_hooks.demo_battle_filled(rdram);
 }
 void resident_func_8008F5C8(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_dialogue_reset(rdram, ctx);

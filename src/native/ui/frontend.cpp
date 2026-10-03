@@ -19,6 +19,8 @@
 #include "save_page.hpp"
 #include "save_store.hpp"
 #include "library.hpp"
+#include "battle_viewer.hpp"
+#include "native_sprite.hpp"
 #include "title_page.hpp"
 #include "mini_stage.hpp"
 #include "campaign_library.hpp"
@@ -331,6 +333,151 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .lib-sub {font-size:13dp; color:#a4b0d2; white-space:nowrap;}
 .lib-detail p.lib-note {font-size:12dp; color:#a4b0d2; margin:6dp 0 0;}
 .none {color:#5d6890;}
+/* The battle viewer (docs/design/battle-viewer.md; the canvas design 2026-10-03): 反 left, 攻 right */
+.set-panel.vw-panel {width:96%; height:94%; max-width:1180dp; max-height:760dp; padding:8dp 14dp 8dp; background-color:#070b1df5;}
+.vw-top {display:flex; align-items:center; gap:12dp; height:28dp; margin-bottom:8dp;}
+.vw-title {height:26dp; line-height:26dp; padding:0 24dp 0 12dp; font-size:16dp; font-weight:bold; letter-spacing:2dp; color:#0b1230; decorator:slant(#ffd75e #ffd75e 0dp 0dp 0dp 12dp 0dp 0dp);}
+.vw-sub {flex:1 1 0; font-size:10dp; letter-spacing:3dp; color:#4f6aa0;}
+.vw-bgm {display:flex; align-items:center; height:28dp; border:1dp #2a3b66; background-color:#0d1430;}
+.vw-bgm .k {font-size:10dp; color:#8f9bbd; padding:0 6dp 0 10dp;}
+.vw-bgm .t {min-width:150dp; text-align:center; font-size:12dp; color:#e8eefc; white-space:nowrap;}
+.vw-body {flex:1 1 0; min-height:0; display:flex; flex-direction:column; gap:6dp;}
+.vw-cards {display:flex; height:150dp;}
+.vw-card {flex:1 1 0; min-width:0; position:relative;}
+.vw-card.def {decorator:slant(#0d1430 #2a3b66 1dp 3dp 0dp 0dp 0dp 20dp); border-top-color:#3fd0ff;}
+.vw-card.att {decorator:slant(#0d1430 #2a3b66 1dp 3dp 0dp 0dp 20dp 0dp);}
+.vw-card .role {position:absolute; top:6dp; font-size:34dp; font-weight:bold; line-height:1;}
+.vw-card.def .role {left:12dp; color:#3fd0ff;} .vw-card.att .role {right:12dp; color:#ffb547;}
+.vw-card .art {position:absolute; left:0; right:0; top:6dp; display:flex; justify-content:center; align-items:center;}
+.vw-card .art img, .vw-card .face img {margin:0;}
+.vw-card.def .art img, .vw-card.def .face img {transform:scaleX(-1);}
+.vw-card .face {position:absolute; bottom:30dp; border:1dp #3fd0ff; background-color:#0c122c; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.vw-card.def .face {right:28dp;} .vw-card.att .face {left:28dp; border-color:#ffb547;}
+.vw-card .foot {position:absolute; bottom:4dp; display:flex; align-items:center; gap:6dp; height:24dp;}
+.vw-card.def .foot {left:12dp; right:26dp;} .vw-card.att .foot {left:26dp; right:12dp;}
+.vw-card .hp {font-size:10dp; color:#8f9bbd;} .vw-card .hpv {font-size:14dp; font-weight:bold; color:#e8eefc;}
+.vw-card .hpv.hurt {color:#ffd75e;} .vw-card .hpv.down {color:#ff6b5a;}
+.vw-card .gap {flex:1 1 0;}
+.vw-card .scene {font-size:11dp; color:#e8eefc; white-space:nowrap;}
+button.vw-arrow {margin:0; width:28dp; height:26dp; padding:0; font-size:16dp; color:#3fd0ff; background-color:transparent; border:0; border-radius:0;}
+button.vw-arrow:focus, .pad button.vw-arrow:focus {color:#0b1230; background-color:#ffd75e;}
+body.pointer button.vw-arrow:focus {color:#3fd0ff; background-color:transparent;} body.pointer button.vw-arrow:hover {background-color:#3fd0ff26;}
+.vw-mid {width:56dp; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+button.vw-swap {width:46dp; height:46dp; margin:0; padding:0; line-height:42dp; text-align:center; font-size:12dp; color:#3fd0ff; background-color:#0c122c; border:2dp #3fd0ff; border-radius:21dp;}
+button.vw-swap:focus {color:#0b1230; background-color:#ffd75e; border-color:#ffd75e;}
+body.pointer button.vw-swap:focus {color:#3fd0ff; background-color:#0c122c; border-color:#3fd0ff;} body.pointer button.vw-swap:hover {background-color:#3fd0ff40;}
+.vw-row {display:flex; gap:0; align-items:stretch;}
+.vw-row .half {flex:1 1 0; min-width:0; display:flex; gap:6dp;}
+.vw-row .gap {width:56dp; flex-shrink:0;}
+button.vw-cell {flex:1 1 0; min-width:0; display:flex; align-items:center; gap:8dp; height:28dp; margin:0; padding:0 10dp; text-align:left; font-size:13dp; color:#e8eefc; background-color:#0d1430; border:1dp #2a3b66; border-radius:0;}
+button.vw-cell .k {flex-shrink:0; width:52dp; font-size:10dp; color:#8f9bbd;}
+button.vw-cell .v {flex:1 1 0; min-width:0; white-space:nowrap; overflow:hidden;}
+button.vw-cell .m {flex-shrink:0; font-size:10dp; color:#8f9bbd; white-space:nowrap;}
+button.vw-cell .t {flex-shrink:0; padding:0 4dp; font-size:10dp; font-weight:bold; color:#0b1230; background-color:#8fd7ff;}
+button.vw-cell .t.melee {background-color:#ffb547;}
+button.vw-cell:focus, .pad button.vw-cell:focus {color:#ffd75e; border-color:#ffd75e;}
+body.pointer button.vw-cell:focus {color:#e8eefc; border-color:#2a3b66;} body.pointer button.vw-cell:hover {border-color:#3fd0ff;}
+.vw-res {flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:5dp; padding:6dp 10dp; background-color:#0c122c; border:1dp #2a3b66; border-top:3dp #3fd0ff;}
+.vw-res.att {border-top-color:#ffb547;}
+.vw-res .head {display:flex; align-items:center; gap:6dp; height:22dp;}
+.vw-res .r {font-size:15dp; font-weight:bold; color:#3fd0ff;} .vw-res.att .r {color:#ffb547;}
+.vw-res .h {font-size:12dp; font-weight:bold;}
+.vw-res .note {flex:1 1 0; min-width:0; text-align:right; font-size:10dp; color:#8f9bbd; white-space:nowrap; overflow:hidden;}
+.vw-res .off {opacity:0.4;}
+.vw-res .set-seg {align-self:flex-start;}
+.vw-res .set-seg button {padding:0 9dp; height:32dp; font-size:13dp; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+.vw-res .set-seg button .s {font-size:8dp; font-weight:normal;}
+.vw-res .set-seg button[disabled] {color:#4f5b80;}
+.vw-dmg {display:flex; align-items:center; gap:6dp;}
+.vw-dmg .k {width:26dp; font-size:10dp; color:#8f9bbd;}
+.vw-num {display:inline-block; width:58dp; height:32dp; line-height:32dp; text-align:center; font-size:15dp; font-weight:bold; color:#ffffff; border-left:1dp #2a3b66; border-right:1dp #2a3b66;}
+.vw-num.down {color:#ff8d80;}
+.vw-head-seg button {height:22dp !important; padding:0 8dp !important; font-size:11dp !important;}
+button.vw-start {margin:0; height:32dp; line-height:32dp; text-align:center; padding:0 34dp 0 38dp; font-size:16dp; font-weight:bold; letter-spacing:3dp; color:#0b1230; border:0; border-radius:0; background-color:transparent; decorator:slant(#ffd75e #ffd75e 0dp 0dp 12dp 0dp 0dp 12dp);}
+button.vw-start:focus {decorator:slant(#ffffff #ffffff 0dp 0dp 12dp 0dp 0dp 12dp);}
+body.pointer button.vw-start:focus {decorator:slant(#ffd75e #ffd75e 0dp 0dp 12dp 0dp 0dp 12dp);} body.pointer button.vw-start:hover {decorator:slant(#ffe48f #ffe48f 0dp 0dp 12dp 0dp 0dp 12dp);}
+.vw-list {flex:1 1 0; min-height:0; width:auto; border-right:0;}
+button.vw-link {margin:0; height:24dp; padding:0 6dp; display:flex; align-items:center; gap:6dp; font-size:11dp; color:#e8eefc; background-color:transparent; border:0; border-bottom:1dp #3fd0ff80; border-radius:0; white-space:nowrap;}
+button.vw-link .k {font-size:10dp; color:#8f9bbd; padding:0;}
+.vw-bgm button.vw-link {justify-content:center;}
+button.vw-link:focus, .pad button.vw-link:focus {color:#0b1230; background-color:#ffd75e;} button.vw-link:focus .k {color:#0b1230;}
+body.pointer button.vw-link:focus {color:#e8eefc; background-color:transparent;} body.pointer button.vw-link:focus .k {color:#8f9bbd;} body.pointer button.vw-link:hover {background-color:#3fd0ff26;}
+/* The pickers (the canvas design of 2026-10-03) */
+.vw-picker .vw-top {margin-bottom:6dp;}
+.vw-role {height:26dp; line-height:26dp; padding:0 22dp 0 10dp; font-size:18dp; font-weight:bold; color:#0b1230; decorator:slant(#ffb547 #ffb547 0dp 0dp 0dp 12dp 0dp 0dp);}
+.vw-role.def {decorator:slant(#3fd0ff #3fd0ff 0dp 0dp 0dp 12dp 0dp 0dp);} .vw-role.song {decorator:slant(#3fd0ff #3fd0ff 0dp 0dp 0dp 12dp 0dp 0dp);}
+.vw-ptitle {font-size:16dp; font-weight:bold; color:#e8eefc; white-space:nowrap;}
+.vw-now {flex:1 1 0; min-width:0; font-size:11dp; color:#8f9bbd; white-space:nowrap;}
+.vw-tabs-row {display:flex; align-items:center; gap:12dp; margin-bottom:8dp;}
+.vw-tabs {display:flex; flex-shrink:0; border:2dp #3fd0ff; background-color:#0c122c;}
+.vw-tabs button {margin:0; height:26dp; padding:0 14dp; display:flex; align-items:center; gap:6dp; font-size:13dp; color:#c8d4ee; background-color:transparent; border:0; border-radius:0; white-space:nowrap;}
+.vw-tabs button .c {font-size:10dp; color:#8f9bbd;}
+.vw-tabs button.on {background-color:#3fd0ff; color:#0b1230; font-weight:bold;} .vw-tabs button.on .c {color:#0b1230;}
+.vw-tabs button:focus {background-color:#ffd75e; color:#0b1230;} .vw-tabs button:focus .c {color:#0b1230;}
+body.pointer .vw-tabs button:focus {background-color:transparent; color:#c8d4ee;} body.pointer .vw-tabs button.on:focus {background-color:#3fd0ff; color:#0b1230;} body.pointer .vw-tabs button:hover {background-color:#3fd0ff40;}
+.vw-tabnote {flex:1 1 0; min-width:0; font-size:11dp; color:#8f9bbd; white-space:nowrap;}
+.vw-pbody {flex:1 1 0; min-height:0; display:flex; gap:12dp;}
+.vw-works {width:150dp; flex-shrink:0; overflow-y:auto; border-right:1dp #2a3b66; padding-right:6dp;}
+.vw-works .h {font-size:10dp; color:#3fd0ff; letter-spacing:2dp; padding:2dp 10dp 6dp;}
+button.vw-work {display:block; width:100%; height:28dp; line-height:28dp; margin:0; padding:0 10dp; text-align:left; font-size:12dp; color:#c8d4ee; background-color:transparent; border:0; border-left:3dp transparent; border-radius:0; white-space:nowrap; overflow:hidden;}
+button.vw-work.on {background-color:#16224a; border-left-color:#3fd0ff; color:#ffffff; font-weight:bold;}
+button.vw-work:focus {color:#ffd75e; border-left-color:#ffd75e;}
+body.pointer button.vw-work:focus {color:#c8d4ee; border-left-color:transparent;} body.pointer button.vw-work.on:focus {color:#ffffff; border-left-color:#3fd0ff;} body.pointer button.vw-work:hover {background-color:#3fd0ff1a;}
+.vw-grid {flex:1 1 0; min-width:0; overflow-y:auto; display:flex; flex-wrap:wrap; align-content:flex-start; gap:8dp;}
+.vw-grid.song {gap:8dp;}
+.vw-song-block {display:flex; flex-direction:column; padding-bottom:2dp; border-top:1dp #2a3b66;}
+.vw-song-group {padding:4dp 4dp 1dp; font-size:10dp; font-weight:bold; letter-spacing:1dp; color:#3fd0ff; white-space:nowrap;}
+.vw-song-block button.vw-song {width:100%;}
+button.vw-pcard {position:relative; box-sizing:border-box; display:flex; flex-direction:column; align-items:stretch; margin:0; padding:0; text-align:left; color:#e8eefc; background-color:#0d1430; border:2dp #2a3b66; border-radius:0;}
+button.vw-pcard.unit {height:136dp;} button.vw-pcard.pilot {height:116dp;}
+button.vw-pcard .img {display:flex; align-items:center; justify-content:center; overflow:hidden; background-color:#070b1d;}
+button.vw-pcard.unit .img {height:88dp;} button.vw-pcard.pilot .img {height:72dp;}
+button.vw-pcard .img img {margin:0;}
+button.vw-pcard .ph {font-size:24dp; font-weight:bold; color:#2a3b66;}
+button.vw-pcard .n {padding:4dp 7dp 0; font-size:12dp; font-weight:bold; white-space:nowrap; overflow:hidden;}
+button.vw-pcard .m {padding:0 7dp 3dp; font-size:9dp; color:#8f9bbd; white-space:nowrap; overflow:hidden;}
+button.vw-pcard .badge {position:absolute; top:3dp; left:3dp; padding:0 5dp; font-size:9dp; line-height:15dp; font-weight:bold; color:#0b1230; background-color:#3fd0ff;}
+button.vw-pcard .badge.cant {color:#e8eefc; background-color:#4f5b80;}
+button.vw-pcard.on {border-color:#ffd75e; background-color:#141d3c;}
+button.vw-pcard:focus {border-color:#ffd75e;}
+body.pointer button.vw-pcard:focus {border-color:#2a3b66;} body.pointer button.vw-pcard.on:focus {border-color:#ffd75e;} body.pointer button.vw-pcard:hover {border-color:#3fd0ff;}
+button.vw-song-auto {display:flex; align-items:center; gap:10dp; height:34dp; margin:0 0 8dp; padding:0 12dp; text-align:left; color:#e8eefc; background-color:#1a1630; border:1dp #ffb54780; border-left:3dp #ffb54780; border-radius:0;}
+button.vw-song-auto .b {padding:1dp 6dp; font-size:10dp; font-weight:bold; color:#0b1230; background-color:#ffb547;}
+button.vw-song-auto .t {font-size:14dp; white-space:nowrap;}
+button.vw-song-auto .who {flex:1 1 0; min-width:0; text-align:right; font-size:10dp; color:#8f9bbd; white-space:nowrap;}
+button.vw-song-auto.on {color:#ffd75e; border-left-color:#ffd75e;}
+button.vw-song-auto:focus {border-color:#ffd75e;}
+body.pointer button.vw-song-auto:focus {border-color:#ffb54780;} body.pointer button.vw-song-auto.on:focus {border-left-color:#ffd75e;}
+button.vw-song {box-sizing:border-box; display:flex; align-items:center; gap:6dp; height:25dp; margin:0; padding:0 8dp; text-align:left; font-size:11dp; color:#e8eefc; background-color:transparent; border:0; border-left:3dp transparent; border-radius:0;}
+button.vw-song .no {width:16dp; flex-shrink:0; font-size:9dp; color:#8f9bbd;}
+button.vw-song .t {flex:1 1 0; min-width:0; white-space:nowrap; overflow:hidden;}
+button.vw-song.on {color:#ffd75e; font-weight:bold; background-color:#23506a; border-left-color:#ffd75e;}
+button.vw-song:focus {background-color:#3fd0ff33;} button.vw-song.on:focus {background-color:#2f6a8a;}
+body.pointer button.vw-song:focus {background-color:transparent;} body.pointer button.vw-song.on:focus {background-color:#23506a;} body.pointer button.vw-song:hover {background-color:#3fd0ff1a;}
+.vw-prev {width:230dp; flex-shrink:0; display:flex; flex-direction:column; gap:7dp;}
+.vw-prev.song {width:210dp;}
+.vw-prev .big {height:176dp; flex-shrink:0; display:flex; align-items:center; justify-content:center; overflow:hidden; background-color:#0d1430; border:1dp #2a3b66; border-top:3dp #ffb547;}
+.vw-prev.def .big {border-top-color:#3fd0ff;}
+.vw-prev .big.scene {height:130dp;}
+.vw-prev .big img {margin:0;}
+.vw-prev .big .ph {font-size:22dp; font-weight:bold; color:#2a3b66;}
+.vw-prev .nm {font-size:19dp; font-weight:bold; color:#ffffff; white-space:nowrap;}
+.vw-prev .sub {font-size:11dp; color:#8f9bbd; white-space:nowrap;}
+.vw-prev .stats {display:flex; gap:6dp;}
+.vw-prev .stat {flex:1 1 0; min-width:0; display:flex; flex-direction:column; padding:5dp 8dp; background-color:#0d1430; border:1dp #2a3b66;}
+.vw-prev .stat .k {font-size:9dp; color:#8f9bbd; white-space:nowrap;}
+.vw-prev .stat .v {font-size:16dp; font-weight:bold; white-space:nowrap;} .vw-prev .stat .v.small {font-size:11dp;}
+.vw-prev .auto {display:flex; gap:8dp; align-items:center; padding:7dp 9dp; font-size:11dp; color:#c8d4ee; background-color:#0c1838; border:1dp #3fd0ff59;}
+.vw-prev .auto .a {flex-shrink:0; font-size:15dp; font-weight:bold; color:#3fd0ff;}
+.vw-prev .auto .t {flex:1 1 0; min-width:0;} .vw-prev .auto .t div {white-space:nowrap;}
+.vw-prev .card {width:100%; box-sizing:border-box; display:flex; flex-direction:column; gap:7dp; padding:12dp; background-color:#0d1430; border:1dp #2a3b66; border-top:3dp #3fd0ff;}
+.vw-prev .k {font-size:10dp; color:#8f9bbd;}
+.vw-prev .note {font-size:10dp; color:#6c789c;} .vw-prev .note div {white-space:nowrap;}
+button.vw-listen {align-self:flex-start; display:flex; align-items:center; gap:8dp; margin:0; height:30dp; padding:0 18dp; font-size:13dp; font-weight:bold; color:#0b1230; background-color:#3fd0ff; border:0; border-radius:0;}
+button.vw-listen .i {font-size:11dp;}
+button.vw-listen.on {background-color:#ffd75e;}
+button.vw-listen:focus {background-color:#ffffff;}
+body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer button.vw-listen.on:focus {background-color:#ffd75e;} body.pointer button.vw-listen:hover {background-color:#8fe4ff;}
 /* Both pages: the art square and the side beside it */
 .lx-hero {display:flex; gap:16dp;}
 .lx-side {flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:6dp;}
@@ -850,6 +997,8 @@ const std::vector<campaign_library::Entry>& installed_campaigns() {
 // A campaign is entered or left on the title's ring menu only, where nothing unsaved is
 // lost and a stage can be loaded (mini_stage::load_file).
 bool on_title(){return intro::title_major()==3;}
+// The title waiting for START or on its ring: where a viewer battle starts and comes back to.
+bool viewer_title(){const auto major=intro::title_major();return major==2 || major==3;}
 // The MOD manager (docs/design/custom-campaign.md §8): additional scenarios, art, dialogue
 // and languages, music and voices, one page each, in the settings window's frame.
 std::string mod_campaigns_page() {
@@ -1180,8 +1329,724 @@ void library_move(int dy,int dx) {
     }
     library_select(unsigned(next));
 }
+// The battle viewer (battle_viewer.hpp, docs/design/battle-viewer.md, the canvas design of
+// 2026-10-03): on the title beside Library and MOD, like the Z special disc's. 反 (the
+// defender, left, facing right) and 攻 (the attacker, right); each side's unit, pilot and
+// weapon, a scene each, a song; below, what each side does when it is hit: the defender's
+// reaction and damage, and with a counter the attacker's. A reaction the original could
+// not show is greyed with the reason (battle-formulas.md: the shield and the sword are
+// unit equipment and pilot skills, a parry needs a parryable weapon, a barrier its kind of
+// weapon). Damage leaves 10 HP unless set. 戦闘開始 plays it through the title demo's own
+// path; the page opens again when the battle is over. A unit, pilot or weapon cell opens
+// a list of its choices in the panel.
+std::atomic_bool viewer_open{};
+struct ViewerSide{unsigned unit=0,pilot=0,weapon=0;};
+std::array<ViewerSide,2> viewer_side{};   // 0 attacks (攻), 1 defends (反)
+// What happens to each side when it is hit: side 1 by the attack, side 0 by the counter.
+struct ViewerHit{unsigned reaction=0;int damage=-1;bool destroy=false;};   // damage -1: leave 10 HP
+std::array<ViewerHit,2> viewer_hit{};
+bool viewer_ready=false,viewer_counter=true;
+std::array<unsigned,2> viewer_scene{12,12};   // harbor, both sides
+int viewer_song=-1;                            // a サウンドセレクト row, -1 keeps the title's
+std::string viewer_picker,viewer_focus;        // "unit:0" etc.; the element to focus next
+// A grid picker's tab (0 what fits, 1 all by work), the all tab's work, and the marked
+// card: an entry, a song row (-1 the attacker's), a scene.
+unsigned viewer_tab=0;
+int viewer_work=-1,viewer_mark=0;
+enum ViewerReaction:unsigned{hit,shield,barrier,dodge,bunshin,parry,reaction_count};
+const char* viewer_reaction_keys[]={"hit","shield","barrier","dodge","bunshin","parry"};
+// Who may fly each unit, and its default pilot (tools/content/battle_viewer_pilots.py: stage
+// deployments, のりかえ categories, the unit's other forms; the default is the pair the
+// stages deploy most), so every pairing has the quotes the game wrote for it; and each
+// pilot's default unit, which a pilot who cannot fly the unit brings.
+struct ViewerCrew{unsigned unit,pilot;std::vector<unsigned> actors;};
+const ViewerCrew viewer_crews[]={
+#include "battle_viewer_pilots.inc"
+};
+struct ViewerHome{unsigned actor,unit;};
+const ViewerHome viewer_homes[]={
+#include "battle_viewer_units.inc"
+};
+const ViewerCrew* viewer_crew(unsigned unit) {
+    for(const auto& c:viewer_crews)if(c.unit==unit)return &c;
+    return nullptr;
+}
+bool viewer_flies(unsigned actor,unsigned unit) {
+    const auto* crew=viewer_crew(unit);
+    return crew && std::find(crew->actors.begin(),crew->actors.end(),actor)!=crew->actors.end();
+}
+unsigned viewer_home(unsigned actor) {
+    for(const auto& h:viewer_homes)if(h.actor==actor)return h.unit;
+    return ~0u;
+}
+const json& viewer_units(){return library::contents().at("units");}
+const json& viewer_pilots(){return library::contents().at("pilots");}
+const json& viewer_unit(unsigned s){return viewer_units()[std::min<size_t>(viewer_side[s].unit,viewer_units().size()-1)];}
+const json& viewer_pilot(unsigned s){return viewer_pilots()[std::min<size_t>(viewer_side[s].pilot,viewer_pilots().size()-1)];}
+// A unit's weapons without the map weapons (a map attack has no battle animation).
+std::vector<const json*> viewer_weapons(unsigned s) {
+    std::vector<const json*> list;
+    for(const auto& w:viewer_unit(s).at("weapons")) {
+        const auto& markers=w.value("markers",json::array());
+        if(std::find(markers.begin(),markers.end(),"MAP")==markers.end())list.push_back(&w);
+    }
+    return list;
+}
+const json* viewer_weapon(unsigned s) {
+    const auto list=viewer_weapons(s);
+    return list.empty()?nullptr:list[std::min<size_t>(viewer_side[s].weapon,list.size()-1)];
+}
+// A new unit's weapon: the attacker's last (the finisher), the defender's strongest.
+void viewer_default_weapon(unsigned s) {
+    const auto list=viewer_weapons(s);
+    viewer_side[s].weapon=0;
+    if(list.empty())return;
+    if(s==0){viewer_side[s].weapon=unsigned(list.size()-1);return;}
+    for(size_t i=0;i<list.size();++i)if(list[i]->value("power",0u)>list[viewer_side[s].weapon]->value("power",0u))viewer_side[s].weapon=unsigned(i);
+}
+// An entry's index by its id ("id" of a unit, "actor" of a pilot), or -1.
+int viewer_index(const json& list,const char* field,unsigned id) {
+    for(size_t i=0;i<list.size();++i)if(list[i].value(field,~0u)==id)return int(i);
+    return -1;
+}
+// A new unit keeps its pilot if they may fly it, else takes its default one; a new pilot
+// keeps the unit if they may fly it, else brings their default unit.
+void viewer_fit_pilot(unsigned s) {
+    const unsigned unit=viewer_unit(s).value("id",0u);
+    const auto* crew=viewer_crew(unit);
+    if(!crew || viewer_flies(viewer_pilot(s).value("actor",~0u),unit))return;
+    if(const int i=viewer_index(viewer_pilots(),"actor",crew->pilot);i>=0)viewer_side[s].pilot=unsigned(i);
+}
+bool viewer_fit_unit(unsigned s) {
+    const unsigned actor=viewer_pilot(s).value("actor",~0u);
+    if(viewer_flies(actor,viewer_unit(s).value("id",0u)))return false;
+    const int i=viewer_index(viewer_units(),"id",viewer_home(actor));
+    if(i<0)return false;
+    viewer_side[s].unit=unsigned(i);
+    return true;
+}
+// The first time: ゴッドガンダム and ドモン against マスターガンダム and 東方不敗.
+void viewer_defaults() {
+    if(viewer_ready || viewer_units().empty() || viewer_pilots().empty())return;
+    viewer_ready=true;
+    const auto find=[](const json& list,const char* field,unsigned id){
+        for(size_t i=0;i<list.size();++i)if(list[i].value(field,~0u)==id)return unsigned(i);
+        return 0u;
+    };
+    viewer_side[0]={find(viewer_units(),"id",1),find(viewer_pilots(),"actor",4),0};
+    viewer_side[1]={find(viewer_units(),"id",28),find(viewer_pilots(),"actor",18),0};
+    viewer_default_weapon(0);viewer_default_weapon(1);
+}
+// Side t hit by the other side's weapon: the locale key of why a reaction cannot be shown,
+// empty when it can (docs/gameplay/battle-formulas.md, the defence order).
+std::string viewer_gate(unsigned t,unsigned reaction) {
+    const auto& unit=viewer_unit(t);
+    const unsigned equipment=unit.value("equipment_bits",0u),abilities=unit.value("ability_bits",0u),skills=viewer_pilot(t).value("skill_bits",0u);
+    const auto* weapon=viewer_weapon(t^1);
+    const unsigned flags=weapon?weapon->value("flags",0u):0;
+    switch(reaction) {
+    case shield:return !(equipment&2)?"viewer_gate_no_shield":!(skills&2)?"viewer_gate_no_skill":"";
+    case barrier:
+        if((abilities&0x4000) && (skills&0x20))return "";               // aura barrier: any weapon
+        if(!(abilities&(0x20|0x200|0x800)))return "viewer_gate_no_barrier";
+        return flags&0x02?"":"viewer_gate_not_beam";                   // I-field, beam coat, planet defensor
+    case bunshin:return abilities&0x163011?"":"viewer_gate_no_bunshin";
+    case parry:return !(equipment&1)?"viewer_gate_no_sword":!(skills&1)?"viewer_gate_no_skill":!(flags&0x08)?"viewer_gate_unparryable":"";
+    default:return "";
+    }
+}
+unsigned viewer_reaction(unsigned t){return viewer_gate(t,viewer_hit[t].reaction).empty()?viewer_hit[t].reaction:unsigned(hit);}
+bool viewer_unhurt(unsigned t){const auto r=viewer_reaction(t);return r==dodge || r==bunshin || r==parry || (t==0 && !viewer_counter);}
+unsigned viewer_hp(unsigned t){return viewer_unit(t).value("hp",1u);}
+unsigned viewer_damage(unsigned t) {
+    if(viewer_unhurt(t))return 0;
+    const unsigned hp=viewer_hp(t);
+    if(viewer_hit[t].destroy)return hp;
+    const int fallback=viewer_reaction(t)==barrier?0:int(hp)-10;
+    return unsigned(std::clamp(viewer_hit[t].damage<0?fallback:viewer_hit[t].damage,0,int(hp)-1));
+}
+// The record's reaction code (§2.2): a barrier is held at 0 damage and broken above it.
+int viewer_code(unsigned t) {
+    const unsigned abilities=viewer_unit(t).value("ability_bits",0u),skills=viewer_pilot(t).value("skill_bits",0u);
+    const bool broken=viewer_damage(t)>0;
+    switch(viewer_reaction(t)) {
+    case shield:return 0x11;
+    case dodge:return 0x16;
+    case parry:return 0x12;
+    case bunshin:
+        for(const auto [bit,code]:std::initializer_list<std::pair<unsigned,int>>{{0x20000,6},{0x1000,7},{0x2000,8},{0x1,9},{0x40000,0xA},{0x100000,0xB},{0x10,0xC}})
+            if(abilities&bit)return code;
+        return 0xC;
+    case barrier:
+        if((abilities&0x4000) && (skills&0x20))return broken?0xF:4;
+        if(abilities&0x20)return broken?0xD:2;
+        if(abilities&0x800)return broken?0x10:5;
+        return broken?0xE:3;
+    default:return -1;
+    }
+}
+json viewer_choice() {
+    json c;
+    for(unsigned s=0;s<2;++s) {
+        json side={{"unit",viewer_unit(s).at("id")},{"pilot",viewer_pilot(s).at("actor")}};
+        if(const auto* w=viewer_weapon(s))side["weapon"]=w->at("number");
+        c[s?"defender":"attacker"]=side;
+    }
+    c["reaction"]=viewer_code(1);c["damage"]=viewer_damage(1);c["destroy"]=viewer_damage(1)>=viewer_hp(1);
+    c["counter"]=viewer_counter && viewer_weapon(1);
+    c["counter_reaction"]=viewer_code(0);c["counter_damage"]=viewer_damage(0);c["counter_destroy"]=viewer_damage(0)>=viewer_hp(0);
+    c["scene"]={viewer_scene[0],viewer_scene[1]};
+    const auto songs=battle_viewer::songs();
+    c["song"]=viewer_song>=0 && viewer_song<int(songs.size())?songs[size_t(viewer_song)].value("song",-1):-1;
+    return c;
+}
+std::string viewer_stamp() {
+    std::string stamp=viewer_picker+"|"+std::to_string(viewer_tab)+","+std::to_string(viewer_work)+","+std::to_string(battle_viewer::listened()>=0)+"|"+std::to_string(viewer_counter)+"|"+std::to_string(viewer_scene[0])+","+std::to_string(viewer_scene[1])+"|"+std::to_string(viewer_song);
+    for(const auto& s:viewer_side)stamp+="|"+std::to_string(s.unit)+","+std::to_string(s.pilot)+","+std::to_string(s.weapon);
+    for(const auto& h:viewer_hit)stamp+="|"+std::to_string(h.reaction)+","+std::to_string(h.damage)+","+std::to_string(h.destroy);
+    return stamp+"|"+std::to_string(battle_viewer::songs().size());
+}
+float viewer_card_height=150;
+std::string viewer_scene_name(unsigned i);
+std::string viewer_attacker_song();
+std::string viewer_card(unsigned s) {
+    const bool def=s==1;
+    const float h=viewer_card_height,art=h-48,face=std::clamp(h*0.36f,52.f,84.f);
+    const unsigned hp=viewer_hp(s),after=hp-viewer_damage(s);
+    std::string body="<div class='vw-card "+std::string(def?"def":"att")+"'><div class='role'>"+label(def?"viewer_defender":"viewer_attacker")+"</div>"
+        "<div class='art' style='height:"+std::to_string(art)+"dp;'>"+library_art(viewer_unit(s),art)+"</div><div class='face' style='width:"+std::to_string(face)+"dp; height:"+
+        std::to_string(face)+"dp;'>"+library_art(viewer_pilot(s),face-2)+"</div><div class='foot'>";
+    const auto hp_line="<span class='hp'>HP</span><span class='hpv'>"+std::to_string(hp)+"</span><span class='hp'>→</span><span class='hpv"+
+        std::string(after==0?" down":after<hp?" hurt":"")+"'>"+std::to_string(after)+"</span>";
+    // The scene: ◀ ▶ step through them, the name opens the scene picker.
+    const auto scene=button("vw-scene:"+std::to_string(s)+":-1","◀",false,false,"vw-arrow")+button("vw-scenes:"+std::to_string(s),"<span>"+viewer_scene_name(viewer_scene[s])+"</span>",false,false,"vw-link scene")+
+        button("vw-scene:"+std::to_string(s)+":1","▶",false,false,"vw-arrow");
+    body+=def?hp_line+"<div class='gap'></div>"+scene:scene+"<div class='gap'></div>"+hp_line;
+    return body+"</div></div>";
+}
+std::string viewer_cell(unsigned s,const std::string& what,const std::string& value,const std::string& more="") {
+    return button("vw-"+what+":"+std::to_string(s),"<span class='k'>"+label("viewer_"+what)+"</span>"+more+"<span class='v fit'>"+value+"</span>",false,false,"vw-cell");
+}
+std::string viewer_weapon_cell(unsigned s) {
+    const auto* w=viewer_weapon(s);
+    if(s==1 && !viewer_counter)return viewer_cell(1,"counter_weapon",label("viewer_counter_off"),"")+"";
+    if(!w)return viewer_cell(s,s?"counter_weapon":"weapon","–");
+    const auto& markers=w->value("markers",json::array());
+    const bool melee=std::find(markers.begin(),markers.end(),"格")!=markers.end();
+    const std::string tag=markers.empty()?std::string():"<span class='t"+std::string(melee?" melee":"")+"'>"+escape(markers.front().get<std::string>())+"</span>";
+    return viewer_cell(s,s?"counter_weapon":"weapon",escape(w->value("display_name",w->value("name",std::string()))),tag);
+}
+std::string viewer_result(unsigned t) {
+    const bool live=t==1 || viewer_counter;
+    std::string body="<div class='vw-res "+std::string(t?"def":"att")+"'><div class='head nav'><span class='r'>"+label(t?"viewer_defender":"viewer_attacker")+"</span><span class='h'>"+
+        label(t?"viewer_hit_by_attack":"viewer_hit_by_counter")+"</span><span class='note'>"+label(!live?"viewer_counter_needed":std::string("viewer_note_")+viewer_reaction_keys[viewer_reaction(t)])+"</span>";
+    if(t==0)body+="<div class='set-seg vw-head-seg'>"+button("vw-counter:0","<span>"+label("viewer_counter_off")+"</span>",!viewer_counter)+button("vw-counter:1","<span>"+label("viewer_counter_on")+"</span>",viewer_counter)+"</div>";
+    body+="</div><div class='set-seg nav vw-react"+std::string(live?"":" off")+"'>";
+    for(unsigned r=0;r<reaction_count;++r) {
+        const auto gate=viewer_gate(t,r);
+        body+=button("vw-react:"+std::to_string(t)+":"+std::to_string(r),"<span>"+label(std::string("viewer_react_")+viewer_reaction_keys[r])+"</span>"+
+            (gate.empty()?std::string():"<span class='s'>"+label(gate)+"</span>"),live && r==viewer_reaction(t),!live || !gate.empty());
+    }
+    const bool still=viewer_unhurt(t);
+    const unsigned damage=viewer_damage(t);
+    const auto step=[&](int by){const auto text=(by>0?"+":"−")+std::to_string(std::abs(by));return button("vw-dmg:"+std::to_string(t)+":"+std::to_string(by),"<span>"+text+"</span>",false,still);};
+    body+="</div><div class='vw-dmg nav"+std::string(live?"":" off")+"'><span class='k'>"+label("viewer_damage")+"</span><div class='set-seg'>"+step(-1000)+step(-100)+
+        "<span class='vw-num"+std::string(damage>=viewer_hp(t)?" down":"")+"'>"+(still?std::string("–"):std::to_string(damage))+"</span>"+step(100)+step(1000)+"</div>"+
+        "<div class='set-seg'>"+button("vw-rest:"+std::to_string(t),"<span>"+label("viewer_rest")+"</span>",false,still)+button("vw-destroy:"+std::to_string(t),"<span>"+label("viewer_destroy")+"</span>",viewer_hit[t].destroy && !still,still)+"</div></div></div>";
+    return body;
+}
+std::string viewer_panel() {
+    // The panel's height in dp (94 % of the window, at most 760); the rows below the cards
+    // take about 270 dp, the cards the rest.
+    viewer_card_height=std::clamp(std::min(760.f,float(pixels_h)/ui_density*0.94f)-270.f,150.f,400.f);
+    const auto songs=battle_viewer::songs();
+    // No song chosen: the attacker's, named from the サウンドセレクト list.
+    std::string song=viewer_song>=0 && viewer_song<int(songs.size())?"<span>"+escape(songs[size_t(viewer_song)].value("text",std::string()))+"</span>":std::string();
+    if(song.empty())song="<span>"+viewer_attacker_song()+"</span><span class='k'>"+label("viewer_song_attacker")+"</span>";
+    std::string body="<div class='set-shade'><div class='set-panel vw-panel'><div class='vw-top nav'><div class='vw-title'>"+label("viewer_title")+"</div><div class='vw-sub'>BATTLE VIEWER</div>"
+        "<div class='vw-bgm'><span class='k'>BGM</span>"+button("vw-song:-1","◀",false,false,"vw-arrow")+button("vw-songs",song,false,false,"vw-link t")+button("vw-song:1","▶",false,false,"vw-arrow")+"</div></div>"
+        "<div id='set-body' class='vw-body'><div class='vw-cards vw-row nav' style='height:"+std::to_string(viewer_card_height)+"dp;'>"+viewer_card(1)+"<div class='vw-mid'>"+button("vw-swap",label("viewer_swap"),false,false,"vw-swap")+"</div>"+viewer_card(0)+"</div>";
+    body+="<div class='vw-row nav'><div class='half'>"+viewer_cell(1,"unit",escape(viewer_unit(1).value("name",std::string())))+"</div><div class='gap'></div><div class='half'>"+
+        viewer_cell(0,"unit",escape(viewer_unit(0).value("name",std::string())))+"</div></div>";
+    body+="<div class='vw-row nav'><div class='half'>"+viewer_cell(1,"pilot",escape(viewer_pilot(1).value("name",std::string())))+"</div><div class='gap'></div><div class='half'>"+
+        viewer_cell(0,"pilot",escape(viewer_pilot(0).value("name",std::string())))+"</div></div>";
+    body+="<div class='vw-row nav'><div class='half'>"+viewer_weapon_cell(1)+"</div><div class='gap'></div><div class='half'>"+viewer_weapon_cell(0)+"</div></div>";
+    body+="<div class='vw-row'>"+viewer_result(1)+"<div class='gap'></div>"+viewer_result(0)+"</div>";
+    body+="</div><div class='set-foot nav'><div class='set-hint'>"+label("viewer_hint")+"</div>"+button("settings-close",label("settings_close"))+button("vw-start",label("viewer_start"),false,false,"vw-start")+"</div></div></div>";
+    return body;
+}
+// The weapon list a weapon cell opens.
+std::string viewer_pick_panel() {
+    const unsigned s=unsigned(std::stoul(viewer_picker.substr(viewer_picker.find(':')+1)));
+    std::string body="<div class='set-shade'><div class='set-panel vw-panel'><div class='lib-top'><h1>"+label(s?"viewer_defender":"viewer_attacker")+" · "+
+        label("viewer_weapon")+"</h1></div><div id='set-body' class='lib-list vw-list'>";
+    const auto weapons=viewer_weapons(s);
+    for(size_t i=0;i<weapons.size();++i) {
+        const auto& w=*weapons[i];
+        std::string tags;
+        if(w.contains("unlock"))tags+="<span class='m'>"+label("library_unlock")+"</span>";
+        if(w.value("combo",false))tags+="<span class='m'>"+label("library_combo")+"</span>";
+        std::string marks;
+        for(const auto& m:w.value("markers",json::array()))marks+=escape(m.get<std::string>());
+        body+=button("vw-pick:"+std::to_string(i),"<span class='n fit'>"+escape(w.value("display_name",w.value("name",std::string())))+"</span><span class='m'>"+marks+"</span>"+tags+"<span class='m'>"+
+            std::to_string(w.value("power",0u))+"</span>",i==viewer_side[s].weapon,false,"lib-item nav");
+    }
+    if(weapons.empty())body+="<p class='lib-note'>"+label("library_no_weapons")+"</p>";
+    body+="</div><div class='set-foot'><div class='set-hint'>"+label("viewer_pick_hint")+"</div>"+button("settings-close",label("viewer_back"))+"</div></div></div>";
+    return body;
+}
+// The pickers of the canvas design (2026-10-03: UnitPicker, PilotPicker, BgmPicker, and one
+// for the scenes in their style). The unit and pilot pickers are grids of cards with two
+// tabs: what fits the other choice (the pilot's units, the unit's pilots) and everything by
+// work. The marked card shows on the right with what choosing it does to the other choice.
+// A card is marked when the keys or the controller reach it or when it is tapped; A, a
+// second tap or 決定 chooses it.
+std::string viewer_kind(){return viewer_picker.substr(0,viewer_picker.find(':'));}
+unsigned viewer_pick_side(){const auto colon=viewer_picker.find(':');return colon==std::string::npos?0u:unsigned(std::stoul(viewer_picker.substr(colon+1)));}
+bool viewer_grid(){return !viewer_picker.empty() && viewer_kind()!="weapon";}
+std::string viewer_name(const json& e){return escape(e.value("name",std::string()));}
+// A template's %1 and %2 (the template already escaped, the values too).
+std::string viewer_fill(std::string text,const std::string& a,const std::string& b=std::string()) {
+    if(const auto at=text.find("%1");at!=std::string::npos)text.replace(at,2,a);
+    if(const auto at=text.find("%2");at!=std::string::npos)text.replace(at,2,b);
+    return text;
+}
+// RmlUi breaks lines only at ASCII spaces (srw64-rmlui-cjk-wrap): a Chinese or Japanese
+// sentence goes one clause a line, each shrunk to fit.
+std::string viewer_lines(const std::string& text) {
+    std::string out,line;
+    for(size_t i=0;i<text.size();) {
+        size_t n=1;
+        const auto c=uint8_t(text[i]);
+        if(c>=0xF0)n=4;else if(c>=0xE0)n=3;else if(c>=0xC0)n=2;
+        const auto glyph=text.substr(i,n);i+=n;line+=glyph;
+        if(glyph=="，" || glyph=="；" || glyph=="：" || glyph=="。" || glyph=="、"){out+="<div class='fit'>"+line+"</div>";line.clear();}
+    }
+    if(!line.empty())out+="<div class='fit'>"+line+"</div>";
+    return out;
+}
+std::string viewer_initial(const std::string& name) {
+    if(name.empty())return {};
+    const auto c=uint8_t(name[0]);
+    return name.substr(0,c>=0xF0?4:c>=0xE0?3:c>=0xC0?2:1);
+}
+// A unit is offered when someone may fly it, a pilot when they fly something.
+bool viewer_offered(bool unit,const json& e) {
+    return unit?viewer_crew(e.value("id",~0u))!=nullptr:viewer_home(e.value("actor",~0u))!=~0u;
+}
+bool viewer_fits(bool unit,unsigned s,const json& e) {
+    return unit?viewer_flies(viewer_pilot(s).value("actor",~0u),e.value("id",~0u)):viewer_flies(e.value("actor",~0u),viewer_unit(s).value("id",~0u));
+}
+// The cards of a tab (indices into the Library's list, one per id); tab 1 with work -2 is
+// every work's.
+std::vector<unsigned> viewer_pick_entries(bool unit,unsigned s,unsigned tab,int work) {
+    const auto& list=unit?viewer_units():viewer_pilots();
+    std::vector<unsigned> out;std::set<unsigned> seen;
+    for(size_t i=0;i<list.size();++i) {
+        const auto& e=list[i];
+        if(!viewer_offered(unit,e) || (tab==0 && !viewer_fits(unit,s,e)) || (tab==1 && work!=-2 && e.value("work",-1)!=work))continue;
+        if(seen.insert(e.value(unit?"id":"actor",~0u)).second)out.push_back(unsigned(i));
+    }
+    return out;
+}
+// The all tab's works: those with a card (every work some unit or pilot of it can be chosen in).
+std::vector<std::pair<int,std::string>> viewer_works(bool unit) {
+    std::vector<std::pair<int,std::string>> out;
+    const auto& list=unit?viewer_units():viewer_pilots();
+    for(const unsigned i:viewer_pick_entries(unit,0,1,-2)) {
+        const auto& e=list[i];
+        const int work=e.value("work",-1);
+        if(std::none_of(out.begin(),out.end(),[&](const auto& w){return w.first==work;}))
+            out.push_back({work,work<0?localization::catalog().ui("library_work_other"):e.value("work_name",std::string())});
+    }
+    return out;
+}
+// The BGM list by work: a song belongs to the work whose pilots and units play it (the
+// pilots' table for those who fly, the units' table and the super modes' songs,
+// battle_viewer.cpp); the songs nobody plays (the map and story music) go last under
+// 其他. In the list's order.
+struct ViewerSongGroup{int work;std::string name;std::vector<size_t> rows;};
+std::vector<ViewerSongGroup> viewer_song_groups() {
+    static std::vector<ViewerSongGroup> cache;
+    static std::string cached;
+    const auto songs=battle_viewer::songs();
+    const auto key=localization::catalog().locale+std::to_string(songs.size());
+    if(key==cached)return cache;
+    std::map<int,std::map<int,int>> votes;   // song -> work -> weight
+    std::map<int,std::string> names;
+    for(const auto& p:viewer_pilots()) {
+        if(!viewer_offered(false,p))continue;   // story-only people (a resistance youth) would mislead
+        const int work=p.value("work",-1),song=battle_viewer::pilot_song(p.value("actor",~0u));
+        if(work>=0 && song>0){votes[song][work]+=2;names[work]=p.value("work_name",std::string());}
+    }
+    for(const auto& u:viewer_units()) {
+        const int work=u.value("work",-1),song=battle_viewer::default_song(u.value("id",~0u),~0u);
+        if(work>=0 && song>0){votes[song][work]+=1;names[work]=u.value("work_name",std::string());}
+    }
+    std::vector<ViewerSongGroup> groups;
+    ViewerSongGroup other{-1,localization::catalog().ui("library_work_other"),{}};
+    for(size_t i=0;i<songs.size();++i) {
+        const auto found=votes.find(songs[i].value("song",-1));
+        if(found==votes.end()){other.rows.push_back(i);continue;}
+        const int work=std::max_element(found->second.begin(),found->second.end(),[](const auto& a,const auto& b){return a.second<b.second;})->first;
+        auto group=std::find_if(groups.begin(),groups.end(),[&](const auto& g){return g.work==work;});
+        if(group==groups.end())group=groups.insert(groups.end(),{work,names[work],{}});
+        group->rows.push_back(i);
+    }
+    if(!other.rows.empty())groups.push_back(std::move(other));
+    cache=std::move(groups);cached=key;
+    return cache;
+}
+// A pilot's skills in a line: each one's first name.
+std::string viewer_skills(const json& p) {
+    std::string out;
+    for(const auto& skill:p.value("skills",json::array())) {
+        const auto& levels=skill.value("levels",json::array());
+        if(levels.empty())continue;
+        if(!out.empty())out+=" · ";
+        out+=levels.front().value("name",std::string());
+    }
+    return out;
+}
+// The song the attacker brings (no song chosen), its row's text.
+std::string viewer_attacker_song() {
+    const int number=battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_pilot(0).value("actor",0u));
+    for(const auto& row:battle_viewer::songs())if(row.value("song",-2)==number)return escape(row.value("text",std::string()));
+    return label("viewer_song_keep");
+}
+int viewer_song_number(int row) {
+    const auto songs=battle_viewer::songs();
+    if(row>=0 && row<int(songs.size()))return songs[size_t(row)].value("song",-1);
+    return battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_pilot(0).value("actor",0u));
+}
+std::string viewer_scene_name(unsigned i) {
+    const auto scenes=battle_viewer::scenes();
+    return label("viewer_scene_"+scenes[std::min<size_t>(i,scenes.size()-1)].get<std::string>());
+}
+std::string viewer_scene_art(unsigned i,float width) {
+    const auto scenes=battle_viewer::scenes();
+    const auto path=srw64::sprites::viewer_scene_image(scenes[std::min<size_t>(i,scenes.size()-1)].get<std::string>());
+    if(path.empty())return {};
+    // The thumbnails are 480-pixel JPEGs: always through the resampler, which decodes them
+    // (RmlUi's own loader does not).
+    return "<img src='"+escape(image(path,std::min(dp_pixels(width),479)))+"' style='width:"+std::to_string(width)+"dp; height:"+std::to_string(width*9/16)+"dp;'/>";
+}
+// Cards share the grid's width: as many columns as fit at the card's least width.
+float viewer_card_width=128;
+void viewer_fit_cards(float least,bool sidebar,float preview) {
+    const float panel=std::min(1180.f,float(pixels_w)/ui_density*0.96f)-30;
+    const float grid=panel-preview-12-(sidebar?169:0)-14;
+    const int cols=std::max(1,int((grid+8)/(least+8)));
+    viewer_card_width=std::floor((grid-8*(cols-1))/cols);
+}
+std::string viewer_card_style(){return "width:"+std::to_string(viewer_card_width)+"dp;";}
+std::string viewer_pick_card(bool unit,unsigned s,unsigned i) {
+    const auto& e=(unit?viewer_units():viewer_pilots())[i];
+    const unsigned current=unit?viewer_side[s].unit:viewer_side[s].pilot;
+    std::string art=library_art(e,unit?84.f:68.f);
+    if(art.empty())art="<span class='ph'>"+escape(viewer_initial(e.value("name",std::string())))+"</span>";
+    std::string body="<div class='img'>"+art+"</div><div class='n fit'>"+viewer_name(e)+"</div><div class='m'>"+
+        escape(unit?e.value("model",std::string()):viewer_skills(e))+"</div>";
+    if(i==current)body+="<span class='badge'>"+label("viewer_badge_now")+"</span>";
+    else if(!viewer_fits(unit,s,e))body+="<span class='badge cant'>"+label(unit?"viewer_badge_new_pilot":"viewer_badge_new_unit")+"</span>";
+    return "<button id='vw-pick:"+std::to_string(i)+"' class='vw-pcard "+(unit?"unit":"pilot")+(int(i)==viewer_mark?" on":"")+"' style='"+viewer_card_style()+"'>"+body+"</button>";
+}
+std::string viewer_stat(const std::string& key,const std::string& value,bool small=false) {
+    return "<div class='stat'><span class='k'>"+key+"</span><span class='v fit"+(small?" small":"")+"'>"+value+"</span></div>";
+}
+// The right side: the marked card large, and what choosing it does.
+std::string viewer_preview() {
+    const auto kind=viewer_kind();
+    const unsigned s=viewer_pick_side();
+    if(kind=="unit" || kind=="pilot") {
+        const bool unit=kind=="unit";
+        const auto& list=unit?viewer_units():viewer_pilots();
+        const auto& e=list[std::clamp<size_t>(size_t(std::max(viewer_mark,0)),0,list.size()-1)];
+        std::string body="<div class='big'>"+library_art(e,unit?176.f:160.f)+"</div><div class='nm fit'>"+viewer_name(e)+"</div><div class='sub fit'>"+
+            escape(unit && e.contains("model")?e.at("model").get<std::string>()+" · ":std::string())+escape(e.value("work_name",std::string()))+"</div><div class='stats'>";
+        std::string effect;
+        if(unit) {
+            const auto* crew=viewer_crew(e.value("id",~0u));
+            body+=viewer_stat("HP",std::to_string(e.value("hp",0u)))+viewer_stat(label("viewer_stat_crew"),std::to_string(crew?crew->actors.size():0));
+            const auto pilot=viewer_name(viewer_pilot(s));
+            if(viewer_fits(true,s,e))effect=viewer_fill(label("viewer_keep_pilot"),pilot);
+            else if(const int i=crew?viewer_index(viewer_pilots(),"actor",crew->pilot):-1;i>=0)effect=viewer_fill(label("viewer_auto_pilot"),pilot,viewer_name(viewer_pilots()[size_t(i)]));
+        } else {
+            const int home=viewer_index(viewer_units(),"id",viewer_home(e.value("actor",~0u)));
+            const auto skills=viewer_skills(e);
+            body+=viewer_stat(label("viewer_stat_skills"),skills.empty()?"–":escape(skills),true)+viewer_stat(label("viewer_stat_home"),home<0?"–":viewer_name(viewer_units()[size_t(home)]),true);
+            const auto unit_name=viewer_name(viewer_unit(s));
+            if(viewer_fits(false,s,e))effect=viewer_fill(label("viewer_keep_unit"),unit_name);
+            else if(home>=0)effect=viewer_fill(label("viewer_auto_unit"),unit_name,viewer_name(viewer_units()[size_t(home)]));
+        }
+        return body+"</div><div class='auto'><span class='a'>→</span><div class='t'>"+viewer_lines(effect)+"</div></div>";
+    }
+    if(kind=="song") {
+        const auto songs=battle_viewer::songs();
+        const bool auto_song=viewer_mark<0 || viewer_mark>=int(songs.size());
+        const bool listening=battle_viewer::listened()>=0;
+        return "<div class='card'><div class='k'>"+label("viewer_song_picked")+"</div><div class='nm fit'>"+(auto_song?viewer_attacker_song():escape(songs[size_t(viewer_mark)].value("text",std::string())))+"</div>"
+            "<div class='sub fit'>"+label(auto_song?"viewer_song_auto_note":"viewer_song_fixed_note")+"</div>"+
+            button("vw-listen","<span class='i'>"+std::string(listening?"■":"▶")+"</span><span>"+label(listening?"viewer_listen_stop":"viewer_listen")+"</span>",listening,false,"vw-listen")+"</div>"
+            "<div class='note'>"+viewer_lines(label("viewer_listen_note"))+"</div>";
+    }
+    const unsigned i=unsigned(std::max(viewer_mark,0));
+    const auto art=viewer_scene_art(i,226);
+    return "<div class='big scene'>"+(art.empty()?"<span class='ph'>"+viewer_scene_name(i)+"</span>":art)+"</div><div class='nm fit'>"+viewer_scene_name(i)+"</div>"+
+        (art.empty()?"<div class='sub fit'>"+label("viewer_scene_no_image")+"</div>":std::string())+"<div class='note'>"+viewer_lines(label("viewer_scene_note"))+"</div>";
+}
+std::string viewer_grid_panel() {
+    const auto kind=viewer_kind();
+    const unsigned s=viewer_pick_side();
+    const bool def=s==1,unit=kind=="unit",people=kind=="unit" || kind=="pilot";
+    std::string now;
+    if(people)now=viewer_fill(label("viewer_now"),viewer_name(viewer_unit(s))+" · "+viewer_name(viewer_pilot(s)));
+    else if(kind=="scene")now=viewer_fill(label("viewer_now"),viewer_scene_name(viewer_scene[s]));
+    else now=viewer_fill(label("viewer_song_list"),std::to_string(battle_viewer::songs().size()));
+    std::string body="<div class='set-shade'><div class='set-panel vw-panel vw-picker'><div class='vw-top'>"+
+        (kind=="song"?std::string("<div class='vw-role song'>BGM</div>"):"<div class='vw-role"+std::string(def?" def":"")+"'>"+label(def?"viewer_defender":"viewer_attacker")+"</div>")+
+        "<div class='vw-ptitle'>"+label("viewer_choose_"+kind)+"</div><div class='vw-now fit'>"+now+"</div></div>";
+    std::string grid;
+    viewer_fit_cards(unit?128:kind=="pilot"?92:kind=="song"?150:124,people && viewer_tab==1,kind=="song"?210:230);
+    if(people) {
+        const auto& other=unit?viewer_pilot(s):viewer_unit(s);
+        const auto fitting=viewer_pick_entries(unit,s,0,-1),all=viewer_pick_entries(unit,s,1,-2);
+        const auto tab=[&](unsigned n,const std::string& text,size_t count){
+            return button("vw-tab:"+std::to_string(n),"<span>"+text+"</span><span class='c'>"+std::to_string(count)+"</span>",viewer_tab==n);
+        };
+        body+="<div class='vw-tabs-row'><div class='vw-tabs'>"+tab(0,viewer_fill(label(unit?"viewer_tab_unit_crew":"viewer_tab_pilot_crew"),viewer_name(other)),fitting.size())+
+            tab(1,label(unit?"viewer_tab_unit_all":"viewer_tab_pilot_all"),all.size())+"</div><div class='vw-tabnote fit'>"+
+            viewer_fill(label(std::string("viewer_note_")+kind+(viewer_tab?"_all":"_crew")),viewer_name(other))+"</div></div>";
+        for(const unsigned i:viewer_tab?viewer_pick_entries(unit,s,1,viewer_work):fitting)grid+=viewer_pick_card(unit,s,i);
+    } else if(kind=="song") {
+        const auto songs=battle_viewer::songs();
+        body+=button("vw-pick:-1","<span class='b'>"+label("viewer_song_attacker")+"</span><span class='t'>"+viewer_attacker_song()+"</span><span class='who fit'>"+
+            viewer_fill(label("viewer_song_attacker_note"),viewer_name(viewer_pilot(0)))+"</span>",viewer_mark<0,false,"vw-song-auto");
+        // A block per work, the blocks in columns.
+        for(const auto& group:viewer_song_groups()) {
+            grid+="<div class='vw-song-block' style='"+viewer_card_style()+"'><div class='vw-song-group fit'>"+escape(group.name)+"</div>";
+            for(const size_t i:group.rows) {
+                char no[8];std::snprintf(no,sizeof no,"%02zu",i+1);
+                grid+=button("vw-pick:"+std::to_string(i),"<span class='no'>"+std::string(no)+"</span><span class='t'>"+escape(songs[i].value("text",std::string()))+"</span>",int(i)==viewer_mark,false,"vw-song");
+            }
+            grid+="</div>";
+        }
+    } else {
+        for(unsigned i=0;i<battle_viewer::scenes().size();++i) {
+            const auto art=viewer_scene_art(i,viewer_card_width-4);
+            grid+="<button id='vw-pick:"+std::to_string(i)+"' class='vw-pcard scene"+(int(i)==viewer_mark?" on":"")+"' style='"+viewer_card_style()+"'><div class='img'>"+
+                (art.empty()?"<span class='ph'>"+viewer_initial(viewer_scene_name(i))+"</span>":art)+"</div><div class='n fit'>"+viewer_scene_name(i)+"</div>"+
+                (i==viewer_scene[s]?"<span class='badge'>"+label("viewer_badge_now")+"</span>":std::string())+"</button>";
+        }
+    }
+    body+="<div class='vw-pbody'>";
+    if(people && viewer_tab==1) {
+        body+="<div class='vw-works'><div class='h'>"+label("viewer_works")+"</div>";
+        for(const auto& [work,name]:viewer_works(unit))body+=button("vw-work:"+std::to_string(work),"<span>"+escape(name)+"</span>",work==viewer_work,false,"vw-work");
+        body+="</div>";
+    }
+    body+="<div id='set-body' class='vw-grid "+kind+"'>"+grid+"</div><div id='vw-preview' class='vw-prev "+kind+(def?" def":"")+"'>"+viewer_preview()+"</div></div>";
+    const char* hint=people?"viewer_grid_hint":kind=="song"?"viewer_song_hint":"viewer_scene_hint";
+    body+="<div class='set-foot'><div class='set-hint'>"+label(hint)+"</div>"+button("settings-close",label("viewer_back"))+button("vw-confirm",label("viewer_confirm"),false,false,"vw-start")+"</div></div></div>";
+    return body;
+}
+void viewer_listen(bool on){battle_viewer::listen_song(on?viewer_song_number(viewer_mark):-1);}
+// Marks a card in place: the mark moves and the right side is drawn again.
+void viewer_mark_card(int index) {
+    if(index==viewer_mark || !settings_doc)return;
+    if(auto* old=settings_doc->GetElementById("vw-pick:"+std::to_string(viewer_mark)))old->SetClass("on",false);
+    viewer_mark=index;
+    if(auto* card=settings_doc->GetElementById("vw-pick:"+std::to_string(index)))card->SetClass("on",true);
+    if(viewer_kind()=="song" && battle_viewer::listened()>=0)viewer_listen(true);   // listening follows the mark
+    if(auto* pane=settings_doc->GetElementById("vw-preview")){pane->SetInnerRML(viewer_preview());settings_doc->UpdateDocument();fit_lines(settings_doc);}
+}
+void viewer_open_picker(const std::string& kind,unsigned s) {
+    viewer_picker=kind+":"+std::to_string(s);
+    viewer_tab=0;
+    viewer_mark=kind=="unit"?int(viewer_side[s].unit):kind=="pilot"?int(viewer_side[s].pilot):kind=="song"?viewer_song:kind=="scene"?int(viewer_scene[s]):int(viewer_side[s].weapon);
+    if(kind=="unit" || kind=="pilot")viewer_work=(kind=="unit"?viewer_unit(s):viewer_pilot(s)).value("work",-1);
+    viewer_focus="vw-pick:"+std::to_string(viewer_mark);
+}
+void viewer_close_picker() {
+    const auto kind=viewer_kind();
+    const auto side=std::to_string(viewer_pick_side());
+    viewer_focus=kind=="song"?std::string("vw-songs"):kind=="scene"?"vw-scenes:"+side:"vw-"+(kind=="weapon" && side=="1"?std::string("counter_weapon"):kind)+":"+side;
+    battle_viewer::listen_song(-1);
+    viewer_picker.clear();
+}
+// 決定 on the marked card: a unit keeps its pilot if they may fly it (else its default
+// pilot), a pilot keeps the unit (else brings their default unit).
+void viewer_pick_confirm() {
+    const auto kind=viewer_kind();
+    const unsigned s=viewer_pick_side();
+    if(kind=="unit" && viewer_mark>=0){viewer_side[s].unit=unsigned(viewer_mark);viewer_fit_pilot(s);viewer_default_weapon(s);viewer_hit={};}
+    else if(kind=="pilot" && viewer_mark>=0){viewer_side[s].pilot=unsigned(viewer_mark);if(viewer_fit_unit(s))viewer_default_weapon(s);viewer_hit={};}
+    else if(kind=="song")viewer_song=viewer_mark;
+    else if(kind=="scene" && viewer_mark>=0)viewer_scene[s]=unsigned(viewer_mark);
+    viewer_close_picker();
+}
+void viewer_choose(const std::string& id) {
+    const auto arg=[&](size_t from){return std::stoi(id.substr(from));};
+    viewer_focus=id;
+    for(const char* kind:{"unit","pilot","weapon","counter_weapon"})
+        if(const std::string prefix=std::string("vw-")+kind+":";id.starts_with(prefix)) {
+            const std::string_view k=kind;
+            if(k=="counter_weapon" && !viewer_counter){viewer_counter=true;return;}
+            viewer_open_picker(k=="counter_weapon"?"weapon":kind,unsigned(arg(prefix.size())));
+            return;
+        }
+    if(id=="vw-songs"){viewer_open_picker("song",0);return;}
+    if(id.starts_with("vw-scenes:")){viewer_open_picker("scene",id.back()=='1');return;}
+    if(id.starts_with("vw-pick:") && !viewer_picker.empty()) {
+        const int i=arg(8);
+        if(viewer_kind()=="weapon"){viewer_side[viewer_pick_side()].weapon=unsigned(i);viewer_close_picker();return;}
+        if(i!=viewer_mark){viewer_mark_card(i);return;}   // a tap marks, the second chooses
+        viewer_pick_confirm();
+        return;
+    }
+    if(id=="vw-confirm" && viewer_grid()){viewer_pick_confirm();return;}
+    if(id.starts_with("vw-tab:")) {
+        viewer_tab=unsigned(arg(7))%2;
+        if(viewer_tab==1 && viewer_mark>=0) {
+            const auto& list=viewer_kind()=="unit"?viewer_units():viewer_pilots();
+            viewer_work=list[std::min<size_t>(size_t(viewer_mark),list.size()-1)].value("work",-1);
+        }
+        viewer_focus="vw-pick:"+std::to_string(viewer_mark);
+        return;
+    }
+    if(id.starts_with("vw-work:")){viewer_work=arg(8);return;}
+    if(id=="vw-listen") {   // C-left keeps the focus on the song
+        if(auto* focus=context->GetFocusElement();focus && !focus->GetId().empty())viewer_focus=focus->GetId();
+        viewer_listen(battle_viewer::listened()<0);
+        return;
+    }
+    if(id=="vw-swap"){std::swap(viewer_side[0],viewer_side[1]);std::swap(viewer_scene[0],viewer_scene[1]);viewer_default_weapon(0);viewer_default_weapon(1);viewer_hit={};return;}
+    if(id.starts_with("vw-react:")){const unsigned t=id[9]=='1';viewer_hit[t]={unsigned(arg(11))%reaction_count,-1,false};return;}
+    if(id.starts_with("vw-dmg:")) {
+        const unsigned t=id[7]=='1';
+        viewer_hit[t].damage=std::clamp(int(viewer_damage(t))+arg(9),0,int(viewer_hp(t))-1);viewer_hit[t].destroy=false;
+        return;
+    }
+    if(id.starts_with("vw-rest:")){const unsigned t=id[8]=='1';viewer_hit[t].damage=-1;viewer_hit[t].destroy=false;return;}
+    if(id.starts_with("vw-destroy:")){const unsigned t=id[11]=='1';viewer_hit[t].destroy=!viewer_hit[t].destroy;return;}
+    if(id.starts_with("vw-counter:")){viewer_counter=id.back()=='1';return;}
+    if(id.starts_with("vw-scene:")) {
+        const unsigned s=id[9]=='1',count=unsigned(battle_viewer::scenes().size());
+        viewer_scene[s]=(viewer_scene[s]+count+unsigned(arg(11)))%count;
+        return;
+    }
+    if(id.starts_with("vw-song:")) {
+        const int count=int(battle_viewer::songs().size())+1;   // -1 keeps the title's song
+        viewer_song=(viewer_song+1+count+arg(8))%count-1;
+        return;
+    }
+    if(id=="vw-start" && viewer_title() && !battle_viewer::busy()) {
+        try{battle_viewer::request({{"choice",viewer_choice()}});}
+        catch(const std::exception& error){notices::post("viewer",error.what());return;}
+        physical_held=held();viewer_open=false;settings_open=false;
+    }
+}
+// Keys and the controller on the page: up and down between rows, keeping the column (the
+// button nearest the focus horizontally), left and right along a row; in a list, left and
+// right jump ten.
+// In a grid picker the keys go to the nearest button that way (cards, tabs, works, the
+// buttons below); reaching a card marks it, reaching a work shows its cards.
+void viewer_pick_move(int dy,int dx) {
+    Rml::ElementList all;settings_doc->QuerySelectorAll(all,"button");
+    std::erase_if(all,[](Rml::Element* b){return b->HasAttribute("disabled");});
+    auto* focus=context->GetFocusElement();
+    if(!focus || std::find(all.begin(),all.end(),focus)==all.end()) {
+        auto* first=settings_doc->GetElementById("vw-pick:"+std::to_string(viewer_mark));
+        if(!first && !all.empty())first=all.front();
+        if(first){first->Focus();first->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));}
+        return;
+    }
+    struct Box{float l,t,r,b;};
+    const auto box=[](Rml::Element* e){
+        const auto at=e->GetAbsoluteOffset(Rml::BoxArea::Border);const auto size=e->GetBox().GetSize(Rml::BoxArea::Border);
+        return Box{at.x,at.y,at.x+size.x,at.y+size.y};
+    };
+    const auto from=box(focus);
+    Rml::Element* best=nullptr;float score=1e9f;
+    for(auto* e:all) {
+        if(e==focus)continue;
+        const auto b=box(e);
+        float along,across;
+        if(dx) {
+            if(dx>0?(b.l+b.r)<=(from.l+from.r)+2:(b.l+b.r)>=(from.l+from.r)-2)continue;
+            along=dx>0?b.l-from.r:from.l-b.r;
+            across=std::max(0.f,std::max(b.t,from.t)-std::min(b.b,from.b));
+            if(across>0)continue;   // left and right stay in the row
+        } else {
+            if(dy>0?(b.t+b.b)<=(from.t+from.b)+2:(b.t+b.b)>=(from.t+from.b)-2)continue;
+            along=dy>0?b.t-from.b:from.t-b.b;
+            across=std::max(0.f,std::max(b.l,from.l)-std::min(b.r,from.r));
+        }
+        const float value=std::max(along,0.f)+across*3;
+        if(value<score){score=value;best=e;}
+    }
+    if(!best)return;
+    best->Focus();best->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
+    const auto id=best->GetId();
+    if(id.starts_with("vw-pick:"))viewer_mark_card(std::stoi(id.substr(8)));
+    else if(id.starts_with("vw-work:"))viewer_choose(id);
+}
+void viewer_move(int dy,int dx) {
+    if(!settings_doc)return;
+    if(viewer_grid()){viewer_pick_move(dy,dx);return;}
+    const auto rows=settings_rows();
+    auto* focus=context->GetFocusElement();
+    int at=-1;
+    for(int i=0;i<int(rows.size()) && at<0;++i)for(auto* e=focus;e;e=e->GetParentNode())if(e==rows[i]){at=i;break;}
+    if(at<0){if(!rows.empty())settings_focus_row(rows[0],0);return;}
+    const auto buttons_of=[](Rml::Element* row){
+        Rml::ElementList list;
+        if(row->GetTagName()=="button")list.push_back(row);else row->QuerySelectorAll(list,"button");
+        std::erase_if(list,[](Rml::Element* b){return b->HasAttribute("disabled");});
+        return list;
+    };
+    if(!viewer_picker.empty() && dx)dy=dx*10,dx=0;
+    if(dx) {
+        const auto buttons=buttons_of(rows[at]);
+        const auto current=std::find(buttons.begin(),buttons.end(),focus);
+        if(current==buttons.end())return;
+        const auto next=current-buttons.begin()+dx;
+        if(next>=0 && next<int(buttons.size()))buttons[next]->Focus();
+        return;
+    }
+    if(!viewer_picker.empty()){const int next=std::clamp(at+dy,0,int(rows.size())-1);if(next!=at)settings_focus_row(rows[next],dy);return;}
+    const auto centre=[](Rml::Element* e){return e->GetAbsoluteLeft()+e->GetBox().GetSize(Rml::BoxArea::Border).x/2;};
+    const float x=focus?centre(focus):0;
+    for(int next=at+dy;next>=0 && next<int(rows.size());next+=dy) {
+        const auto to=buttons_of(rows[next]);
+        if(to.empty())continue;
+        auto* best=*std::min_element(to.begin(),to.end(),[&](Rml::Element* a,Rml::Element* b){return std::abs(centre(a)-x)<std::abs(centre(b)-x);});
+        best->Focus();best->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));
+        return;
+    }
+}
+void viewer_sync() {
+    viewer_defaults();
+    const auto stamp="viewer"+viewer_stamp()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+    if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+    auto* focused=context->GetFocusElement();
+    const std::string focus_id=!viewer_focus.empty()?viewer_focus:settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
+    document_close(settings_doc);settings_stamp=stamp;settings_built=-1;viewer_focus.clear();
+    settings_doc=document(viewer_picker.empty()?viewer_panel():viewer_grid()?viewer_grid_panel():viewer_pick_panel(),true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+    settings_doc->UpdateDocument();fit_lines(settings_doc);
+    auto* focus=focus_id.empty()?nullptr:settings_doc->GetElementById(focus_id);
+    if(focus && focus->HasAttribute("disabled"))focus=nullptr;
+    if(!focus && !pointer_mode) {
+        focus=settings_doc->GetElementById(viewer_picker.empty()?"vw-start":"vw-pick:0");
+        // A grid without the marked card: its first card, marked.
+        if(auto* grid=viewer_grid()?settings_doc->GetElementById("set-body"):nullptr;grid && grid->GetNumChildren())focus=grid->GetChild(0);
+    }
+    if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Center));}
+    if(focus && viewer_grid() && !pointer_mode && focus->GetId().starts_with("vw-pick:"))viewer_mark_card(std::stoi(focus->GetId().substr(8)));
+}
 void settings_sync() {
-    if(!settings_open){mod_open=false;library_open=false;document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(!settings_open){mod_open=false;library_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(viewer_open){viewer_sync();return;}
     if(library_open) {
         const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -1305,6 +2170,10 @@ void library_turn(int step) {
     library_tab=(library_tab+2+step)%2;
 }
 void settings_turn(int step) {
+    if(viewer_open) {
+        if(viewer_grid() && (viewer_kind()=="unit" || viewer_kind()=="pilot"))viewer_choose("vw-tab:"+std::to_string(1-viewer_tab));
+        return;
+    }
     if(library_open){library_turn(step);return;}
     if(mod_open) {   // the MOD manager turns its own pages
         const unsigned count=std::size(mod_pages);
@@ -1321,6 +2190,7 @@ void settings_turn(int step) {
 // tab bar, then each setting), left and right between a row's choices, and on the tab
 // bar left and right turn the page. A page with nothing to choose scrolls instead.
 void settings_move(int dy,int dx) {
+    if(viewer_open){viewer_move(dy,dx);return;}
     if(library_open){library_move(dy,dx);return;}
     if(!settings_doc)return;
     const auto rows=settings_rows();
@@ -2442,7 +3312,7 @@ void home_sync() {
         return "<button id='"+std::string(id)+"' class='home-mod' style='font-size:"+px(14)+"; font-effect:outline("+px(1)+" #0a0d17), shadow("+
             px(.8f)+" "+px(.8f)+" #00000073);'>"+label(key)+"</button>";
     };
-    std::string body=(touch?std::string():"<div class='home-corner'>"+lettered("library-open","library_open")+(mod_entry_shown?lettered("mod-open","mod_open"):std::string())+"</div>")+
+    std::string body=(touch?std::string():"<div class='home-corner'>"+lettered("library-open","library_open")+lettered("viewer-open","viewer_open")+(mod_entry_shown?lettered("mod-open","mod_open"):std::string())+"</div>")+
         "<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
     if(settings_entry && !touch)body+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
     home_doc=document(body,false);
@@ -2647,10 +3517,13 @@ void choose(const std::string& id) {
     // The MOD manager. Its campaign page switches campaign (or back to the main game) on the
     // title screen: a switch asks the launcher for the next start and closes the game as
     // the window would.
-    if(id=="library-open"){library_open=true;mod_open=false;settings_open=true;settings_release.hold();input.clear();return;}
+    if(id=="library-open"){viewer_open=false;library_open=true;mod_open=false;settings_open=true;settings_release.hold();input.clear();return;}
     if(library_open && id.starts_with("lib-tab:")){library_tab=id.back()=='1';library_tab_focus=true;return;}
     if(library_open && id.starts_with("lib-item:")){library_select(unsigned(std::stoul(id.substr(9))),true);return;}
-    if(id=="mod-open"){library_open=false;mod_open=true;settings_open=true;settings_focus="first";settings_release.hold();input.clear();return;}
+    if(id=="viewer-open"){viewer_open=true;library_open=false;mod_open=false;viewer_picker.clear();settings_open=true;settings_release.hold();input.clear();return;}
+    if(viewer_open && id=="settings-close" && !viewer_picker.empty()){viewer_close_picker();return;}   // B in a picker: back to the page
+    if(viewer_open && id.starts_with("vw-")){viewer_choose(id);return;}
+    if(id=="mod-open"){viewer_open=false;library_open=false;mod_open=true;settings_open=true;settings_focus="first";settings_release.hold();input.clear();return;}
     if(mod_open && id.starts_with("mod-page:")) {
         for(unsigned i=0;i<std::size(mod_pages);++i)if(id.substr(9)==mod_pages[i]){mod_page=i;settings_focus=id;}
         return;
@@ -3183,6 +4056,7 @@ void settings_pad(uint32_t now,uint32_t pressed) {
     if(pressed&0x4000){choose("settings-close");return;}
     if(pressed&(0x8000|0x1000)){settings_press();return;}
     if(pressed&(0x0020|0x0010)){settings_turn(pressed&0x0020?-1:1);return;}
+    if((pressed&0x0002) && viewer_open && viewer_kind()=="song"){viewer_choose("vw-listen");return;}   // C-left (the Deck's X)
     uint32_t repeats=0;const uint32_t presses=pad_presses(now,pressed,repeats);
     const int dy=presses&(0x0800|(1u<<16))?-1:presses&(0x0400|(1u<<17))?1:0;
     const int dx=presses&(0x0200|(1u<<18))?-1:presses&(0x0100|(1u<<19))?1:0;
@@ -3260,6 +4134,9 @@ void sync() {
     if(app_menu::take_reload_request())srw64::dialogue::request_reload();
     if(app_menu::take_fullscreen_request())toggle_fullscreen();
     if(const int n=app_menu::take_scale_request())scale_window(n);
+    // A viewer battle back on the title opens the page again with the same choices.
+    if(viewer_title() && battle_viewer::take_returned()){viewer_open=true;library_open=false;mod_open=false;settings_open=true;settings_release.hold();input.clear();}
+    battle_viewer::set_page_open(settings_open && viewer_open);
     settings_sync();notices_sync();fps_sync();touch_sync();context->Update();input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
@@ -3352,6 +4229,7 @@ bool dispatch(SDL_Event& event) {
             if(k==SDLK_ESCAPE || k==SDLK_x){if(!event.key.repeat)choose("settings-close");return true;}
             if(k==SDLK_q || k==SDLK_PAGEUP || (k==SDLK_TAB && ctrl && shift)){if(!event.key.repeat)settings_turn(-1);return true;}
             if(k==SDLK_e || k==SDLK_PAGEDOWN || (k==SDLK_TAB && ctrl)){if(!event.key.repeat)settings_turn(1);return true;}
+            if(k==SDLK_j && viewer_open && viewer_kind()=="song"){if(!event.key.repeat)viewer_choose("vw-listen");return true;}   // C-left
             const int dy=k==SDLK_UP || k==SDLK_w?-1:k==SDLK_DOWN || k==SDLK_s?1:0,dx=k==SDLK_LEFT || k==SDLK_a?-1:k==SDLK_RIGHT || k==SDLK_d?1:0;
             if(dy || dx){settings_move(dy,dx);return true;}
             if(k==SDLK_RETURN || k==SDLK_KP_ENTER || k==SDLK_z || k==SDLK_SPACE){if(!event.key.repeat)settings_press();return true;}

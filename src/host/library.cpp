@@ -120,7 +120,7 @@ void add_art(json& entry,const char* group,unsigned key) {
 
 json weapon(unsigned number,unsigned cap) {
     const uint32_t at=weapons_at+number*weapon_size;
-    json w={{"number",number},{"name",text(uint16_t(text_weapon_menu+number))},{"power",u8(at+1)*100},{"range_min",u8(at+2)},{"range_max",u8(at+3)},
+    json w={{"number",number},{"flags",u8(at)},{"name",text(uint16_t(text_weapon_menu+number))},{"power",u8(at+1)*100},{"range_min",u8(at+2)},{"range_max",u8(at+3)},
         {"hit",s8(at+4)},{"en",u8(at+6)},{"morale",u8(at+7)},{"terrain",terrain(at+9)},{"critical",s8(at+0xD)}};
     if(s8(at+5)>=0)w["ammo"]=s8(at+5);
     if(u8(at+8)>=2)w["skill_name"]=text(uint16_t(u8(at+8)));
@@ -165,7 +165,12 @@ json unit(unsigned id,const std::vector<unsigned>& numbers) {
         abilities.push_back(name);
     }
     json weapons=json::array();
-    for(const unsigned number:numbers) {
+    // The weapons a full upgrade adds (unlock table): one of them (unit 120's 486) is not in
+    // the unit's own list, it joins at the end.
+    std::vector<unsigned> listed=numbers;
+    for(uint32_t row=unlock_table;s16(row)!=999 && row<rom.size();row+=6)
+        if(u16(row)==id && std::find(listed.begin(),listed.end(),u16(row+4))==listed.end() && u16(row+4)<weapon_count)listed.push_back(u16(row+4));
+    for(const unsigned number:listed) {
         auto w=weapon(number,u8(at+0x20));
         for(uint32_t row=unlock_table;s16(row)!=999 && row<rom.size();row+=6)
             if(u16(row)==id && u16(row+4)==number)w["unlock"]=text(uint16_t(text_weapon_pure+u16(row+2)));
@@ -175,6 +180,10 @@ json unit(unsigned id,const std::vector<unsigned>& numbers) {
         {"limit",u16(at+0xC)},{"repair",u16(at+0x14)},{"size",text(uint16_t(text_sizes+size))},{"types",types},{"terrain",terrain(at+0xE)},
         {"abilities",abilities},{"weapons",weapons}};
     if(equipment&2)u["shield"]=text(text_shield_yes);
+    // Raw bits for the battle viewer's reaction rules (docs/gameplay/battle-formulas.md):
+    // equipment 1 a sword, 2 a shield; abilities 0x163011 afterimages, 0x20 / 0x200 / 0x800
+    // / 0x4000 barriers.
+    u["equipment_bits"]=equipment;u["ability_bits"]=flags;
     u["cap"]=u8(at+0x20);u["slots"]=u8(at+0x19);
     add_art(u,"units",id);
     return u;
@@ -198,6 +207,7 @@ json pilot(unsigned actor,int stats,int spirits) {
         // reads past the table into the spirit records, as the game does.
         json learned=json::array();
         const unsigned bits=u8(at+0xF);
+        p["skill_bits"]=bits;   // 1 切り払い, 2 S防御, 0x20 聖戦士 (the battle viewer's rules)
         bool first_group=false;
         for(const auto& skill:skills) {
             if(!(bits&skill.bit) || (skill.group==0 && first_group))continue;

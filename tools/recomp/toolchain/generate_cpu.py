@@ -75,6 +75,9 @@ NATIVE_HOOKS = {
     "resident_func_80095974": "srw64_original_background_draw",
     "resident_func_80096CD8": "srw64_original_scene_rect_draw",
     "resident_func_8009761C": "srw64_original_scene_quad_draw",
+    # The title demo battle's participant records (8009C2DC); the battle viewer rewrites
+    # them after the original fills its defaults (battle_viewer.hpp).
+    "resident_func_8009C2DC": "srw64_original_demo_battle_fill",
     "resident_func_8008F5C8": "srw64_original_dialogue_reset",
     "resident_func_8009EFDC": "srw64_original_script_step",
     # The short skip (script_skip.hpp): a skipped dialogue page reads as finished, and

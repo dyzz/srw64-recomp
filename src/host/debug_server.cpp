@@ -14,6 +14,7 @@
 #include "swap_page.hpp"
 #include "save_page.hpp"
 #include "title_page.hpp"
+#include "battle_viewer.hpp"
 #include "ui_text.hpp"
 #include "move_jump.hpp"
 #include "enemy_cycle.hpp"
@@ -174,7 +175,7 @@ json status(const json& params) {
         {"wide_map",{{"extra",wide_map::extra()},{"shown",wide_map::map_shown()},{"placed",wide_map::placed_draws()},{"map_width",wide_map::map_width_seen()},{"scroll_x",wide_map::scroll_seen()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
-        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"move_jump",move_jump::state()},{"enemy_cycle",enemy_cycle::state()},{"pad_held",pad().load()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
+        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"battle_viewer",battle_viewer::state()},{"move_jump",move_jump::state()},{"enemy_cycle",enemy_cycle::state()},{"pad_held",pad().load()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
                     {"settings_window",settings_window::visible()},{"ui",debug_ui::summary()}};
@@ -350,9 +351,14 @@ json dispatch(const std::string& method,const json& params) {
         for(size_t i=0;i<hex.size();i+=2)guest::write8(srw64_rdram,address+uint32_t(i/2),uint8_t(std::stoul(hex.substr(i,2),nullptr,16)));
         return {{"address",address},{"size",hex.size()/2},{"vi",srw64_current_vi()}};
     }
+    if(method=="viewer.start") {
+        // The battle viewer's prototype (battle_viewer.hpp): raw participant-record writes.
+        try{return battle_viewer::request(params);}
+        catch(const std::exception& error){throw RpcError(InvalidParams,error.what());}
+    }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","settings","window","wait_vi","mini_stage.load","memory.read","memory.write","quit","methods"};
+                                 "menu","settings","window","wait_vi","mini_stage.load","memory.read","memory.write","viewer.start","quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }
 
