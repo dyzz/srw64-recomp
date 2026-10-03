@@ -400,6 +400,10 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .bp-row {display:flex; justify-content:space-between; align-items:stretch;}
 .bp-mid {flex:1 1 0; min-height:0; align-items:center;}
 .bp-side {width:31%; box-sizing:border-box;} .bp-center {width:35.5%; box-sizing:border-box;}
+.battle-page.touch .bp-bottom .bp-side {width:37.5%;} .battle-page.touch .bp-bottom .bp-center {width:24%;}
+.battle-page.touch .bp-pilot-head img {width:64dp; height:64dp;} .battle-page.touch .bp-stat {padding:3dp 5dp;}
+.battle-page.touch .bp-segment div {white-space:nowrap;} .battle-page.touch .bp-segment button {margin:0; padding:5dp 7dp; font-size:12dp;}
+.battle-page.touch .bp-banner {height:110dp;} .battle-page.touch .bp-detail {margin-top:3dp; padding:2dp 12dp;}
 .bp-banner {height:124dp; overflow:hidden; padding:6dp 22dp 6dp 12dp; decorator:slant(#0c122ceb #ff6fa8 2dp 0dp 0dp 0dp 0dp 16dp);}
 .bp-banner.right {padding:6dp 12dp 6dp 22dp; decorator:slant(#0c122ceb #3fd0ff 2dp 0dp 16dp 0dp 0dp 0dp);}
 .bp-phase {display:flex; justify-content:center; align-items:flex-start; padding-top:2dp;}
@@ -2537,6 +2541,8 @@ void battle_hd_buttons(uint32_t pressed) {
     }
     if(pressed&(0x8000|0x1000))choose(menu?items[index]:"battle-confirm");
 }
+bool touch_battle_layout();
+touch_pad::Layout touch_layout();
 void battle_sync() {
     const auto next=battle_page::state();battle_request=next;
     if(!next.value("visible",false)) {
@@ -2550,9 +2556,11 @@ void battle_sync() {
         return;
     }
     document_close(original_doc);original_stamp.clear();
-    const bool hd_original=next.value("style",std::string())=="hd";
+    // With touch the page is laid out for it whatever the style (docs/design/touch-controls.md).
+    const bool touch=touch_battle_layout();
+    const bool hd_original=next.value("style",std::string())=="hd" && !touch;
     // The window and the interface size set the unit pictures' room (ui_density).
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"");
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"")+(touch?"+touch":"");
     if(battle_doc && battle_stamp==stamp)return;
     if(hd_original) {
         // The menu cursor stays where it was when the same encounter redraws.
@@ -2575,26 +2583,41 @@ void battle_sync() {
     // Under 1000 dp wide (a larger interface size on a small screen) the pilots' faces and
     // the buttons' padding shrink, so the figures keep one line.
     const bool narrow=pixels_w/ui_density<1000;
-    std::string body="<div class='bp-dim'></div><div class='bp-tint left'></div><div class='bp-tint right'></div><div class='battle-page"+std::string(narrow?" narrow":"")+"'><div class='bp-row'>";
+    // Touch: the top strip for settings and the animation, the bottom corners for the stick
+    // and the buttons, which take over the page's own (touch_pad.hpp BattlePage).
+    std::string page_style,bottom_style;
+    if(touch) {
+        const float mm=touch_layout().mm;
+        page_style=" style='padding-top:"+std::to_string(int(8*mm))+"px;'";
+        bottom_style=" style='padding-left:"+std::to_string(int(26*mm))+"px; padding-right:"+std::to_string(int(32*mm))+"px;'";
+    }
+    std::string body="<div class='bp-dim'></div><div class='bp-tint left'></div><div class='bp-tint right'></div><div class='battle-page"+std::string(narrow?" narrow":"")+(touch?" touch":"")+"'"+page_style+"><div class='bp-row'>";
     body+=battle_banner(enemy,true,!player_attacks,enemy_response)+"<div class='bp-center bp-phase'><div class='enemy"+std::string(player_attacks?"":" on")+"'>"+label("battle_phase_enemy")+"</div><div class='player"+std::string(player_attacks?" on":"")+"'>"+label("battle_phase_player")+"</div></div>"+battle_banner(player,false,player_attacks,player_response)+"</div>";
     body+="<div id='battle-mid' class='bp-row bp-mid'>"+battle_unit(enemy,true)+battle_clash(enemy,player,player_attacks,player_response,responding)+battle_unit(player,false)+"</div>";
     const auto room=battle_pilot_room(enemy,player,narrow);
-    body+="<div class='bp-row'>"+battle_pilot(enemy,true,room)+"<div class='bp-center battle-actions'><div>"+button("battle-confirm",label("battle_confirm"),false,selecting_spirit)+"</div>";
+    body+="<div class='bp-row bp-bottom'"+bottom_style+">"+battle_pilot(enemy,true,room)+"<div class='bp-center battle-actions'>";
+    if(!touch)body+="<div>"+button("battle-confirm",label("battle_confirm"),false,selecting_spirit)+"</div>";
     if(responding) {
         body+="<div class='bp-segment'><div>"+button("battle-counter",label("battle_counter"),response==0,selecting_spirit);
         body+=button("battle-evade",label("battle_evade"),response==1,selecting_spirit);
         body+=button("battle-defend",label("battle_defend"),response==2,selecting_spirit)+"</div></div>";
     }
-    body+="<div>"+button("battle-weapon",label("battle_change_weapon"),false,selecting_spirit);
-    body+=button("battle-spirits",label("battle_spirits"),false,selecting_spirit);
-    body+=button("battle-animation",label("battle_animation")+" · "+label(next.value("animation",true)?"battle_on":"battle_off"),false,selecting_spirit);
-    if(next.value("can_cancel",false))body+=button("battle-back",label("battle_back"),false,selecting_spirit);
-    body+="</div></div>"+battle_pilot(player,false,room)+"</div><div class='bp-hints'>";
+    if(!touch) {
+        body+="<div>"+button("battle-weapon",label("battle_change_weapon"),false,selecting_spirit);
+        body+=button("battle-spirits",label("battle_spirits"),false,selecting_spirit);
+        body+=button("battle-animation",label("battle_animation")+" · "+label(next.value("animation",true)?"battle_on":"battle_off"),false,selecting_spirit);
+        if(next.value("can_cancel",false))body+=button("battle-back",label("battle_back"),false,selecting_spirit);
+        body+="</div>";
+    }
+    body+="</div>"+battle_pilot(player,false,room)+"</div><div class='bp-hints'>";
     // The bound keys or the controller's buttons (battle_buttons below), as the hints elsewhere.
     const auto hint=[&](const char* token,const std::string& text){body+="<span><b>"+escape(text::expand_prompts(token,prompt_context(pad_mode)))+"</b> "+text+"</span>";};
-    hint("{A}",label("battle_confirm"));hint("{L}",label("battle_change_weapon"));
-    hint("{R}",label("battle_spirits"));hint("{Anim}",label("battle_animation"));
-    if(next.value("can_cancel",false))hint("{B}",label("battle_back"));
+    // With touch the buttons name themselves.
+    if(!touch) {
+        hint("{A}",label("battle_confirm"));hint("{L}",label("battle_change_weapon"));
+        hint("{R}",label("battle_spirits"));hint("{Anim}",label("battle_animation"));
+        if(next.value("can_cancel",false))hint("{B}",label("battle_back"));
+    }
     body+="</div></div>";
     if(selecting_spirit) {
         body+="<div class='spirit-shade'></div><div class='spirit-overlay'><h2>"+label("battle_spirits")+" · "+escape(player.at("unit_name").get<std::string>())+"</h2><p>"+label("battle_spirit_hint")+"</p><div class='spirit-options'>";
@@ -2605,7 +2628,8 @@ void battle_sync() {
         }
         body+="</div><div class='spirit-footer'>"+button("battle-spirit-back",label("battle_spirit_back"))+"</div></div>";
     }
-    battle_doc=document(body,true);battle_doc->SetClass("modal",false);battle_doc->GetElementById(selecting_spirit?"battle-spirit-back":"battle-confirm")->Focus();
+    battle_doc=document(body,true);battle_doc->SetClass("modal",false);
+    if(auto* first=battle_doc->GetElementById(selecting_spirit?"battle-spirit-back":touch?(responding?"battle-counter":""):"battle-confirm"))first->Focus();
     battle_doc->UpdateDocument();battle_fit_units(battle_doc);
 
 }
@@ -2788,9 +2812,19 @@ void choose(const std::string& id) {
 // weapon list, R the spirits, C-down toggles the battle animation.
 void battle_buttons(uint32_t pressed) {
     if(!battle_doc || !battle_request.value("visible",false) || settings_open)return;
-    if(battle_request.value("style",std::string())=="hd"){battle_hd_buttons(pressed);return;}
+    if(battle_request.value("style",std::string())=="hd" && !touch_battle_layout()){battle_hd_buttons(pressed);return;}
     const bool spirits=battle_request.value("spirit_menu",false);
     if(pressed&0x4000){choose("battle-back");return;}
+    // The touch layout: the stick's left and right pick the response; the page's other
+    // buttons are touch buttons now (touch_pad.hpp BattlePage).
+    if(touch_battle_layout() && !spirits && (pressed&(0x0F00|(0xFu<<16)))) {
+        if(battle_request.value("mode",0)==2 && (pressed&(0x0300|(0xCu<<16)))) {
+            static constexpr const char* responses[]={"battle-counter","battle-evade","battle-defend"};
+            const int now=battle_request.value("response",0),step=(pressed&(0x0200|(4u<<16)))?-1:1;
+            choose(responses[std::clamp(now+step,0,2)]);
+        }
+        return;
+    }
     if(!spirits) {
         if(pressed&0x0020){choose("battle-weapon");return;}
         if(pressed&0x0010){choose("battle-spirits");return;}
@@ -2885,7 +2919,9 @@ touch_pad::Layout touch_layout() {
 // The scene: our all-touch windows, our pages, or the game's own.
 touch_pad::SceneId touch_scene_now() {
     if(settings_open || library_open)return touch_pad::SceneId::Hidden;
-    if(names::request().visible || link_request.visible || battle_request.value("visible",false) ||
+    if(battle_request.value("visible",false))
+        return battle_request.value("spirit_menu",false)?touch_pad::SceneId::BattleSpirits:touch_pad::SceneId::BattlePage;
+    if(names::request().visible || link_request.visible ||
        intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) ||
        ability_request.value("visible",false) || swap_request.value("visible",false) || save_request.value("visible",false) ||
        title_request.value("visible",false))return touch_pad::SceneId::Page;
@@ -2893,6 +2929,8 @@ touch_pad::SceneId touch_scene_now() {
     return touch_pad::SceneId(touch_scene::current().load());
 }
 void touch_publish(){touch_held=touch_fingers.buttons()|(touch_back?touch_pad::bits::B:0);}
+// Our pre-battle page lays itself out for touch while the touch controls show.
+bool touch_battle_layout(){return touch_supported() && touch_shown;}
 // Does the mouse SDL makes from a finger belong to the controls (not to a page under them)?
 bool touch_owns_point(float x,float y) {
     const auto layout=touch_layout();const auto scene=touch_pad::scene(touch_scene_id);
@@ -3009,10 +3047,11 @@ void touch_sync() {
         if(!action.filled())continue;
         const auto& place=layout.slots[i];
         const float w=place.round?2*place.r:place.w,h=place.round?2*place.r:place.h;
-        const std::string text=label(std::string(action.label));
+        std::string text=label(std::string(action.label));
+        if(action.command=="battle-animation")text+=" "+label(battle_request.value("animation",true)?"battle_on":"battle_off");
         const float size=touch_label_size(text,w*(place.round?.76f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?3.8f:2.8f)*mm:2.4f*mm);
         body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
-              face(touch_fingers.pressed(touch_pad::Slot(i)),1)+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+escape(text)+"</div>";
+              face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+escape(text)+"</div>";
     }
     touch_doc=document(body,false);
     touch_doc->PullToFront();

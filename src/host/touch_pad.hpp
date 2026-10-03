@@ -60,6 +60,8 @@ enum class SceneId : uint8_t {
     GridList,
     BattleScene,
     AnyKey,       // results, defeat, the ending: continue
+    BattlePage,   // the pre-battle page, laid out for touch: its buttons are these (user, 2026-10-03)
+    BattleSpirits,// its spirit list
     Count
 };
 
@@ -153,6 +155,17 @@ inline Scene scene(SceneId id) {
     case SceneId::AnyKey:
         set(Slot::Primary, bits::A, "touch_continue"); settings();
         s.tap_primary = true;
+        break;
+    // The page's own buttons become these; the corner stick picks the response left and right.
+    case SceneId::BattlePage:
+        s.stick = Stick::Corner;
+        open(Slot::Primary, "battle-confirm", "battle_confirm"); set(Slot::Back, bits::B, "touch_back");
+        open(Slot::Arc2, "battle-weapon", "battle_change_weapon"); open(Slot::Arc3, "battle-spirits", "battle_spirits");
+        settings(); open(Slot::Top4, "battle-animation", "touch_animation");
+        break;
+    case SceneId::BattleSpirits:
+        s.stick = Stick::Corner;
+        set(Slot::Primary, bits::A, "touch_ok"); set(Slot::Back, bits::B, "touch_back"); settings();
         break;
     default:
         break;
