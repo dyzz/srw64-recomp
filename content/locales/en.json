@@ -487,7 +487,8 @@
     "touch_prev_target": "Prev target",
     "touch_next_target": "Next target",
     "touch_skip_battle": "Skip scene",
-    "touch_continue": "Continue"
+    "touch_continue": "Continue",
+    "touch_history": "Log"
   },
   "entries": [
     {

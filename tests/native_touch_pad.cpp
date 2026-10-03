@@ -1,5 +1,6 @@
 // Touch controls by scene (src/host/touch_pad.hpp, docs/design/touch-controls.md).
 #include "../src/host/touch_pad.hpp"
+#include "../src/host/touch_scene.hpp"
 #include <cstdio>
 #include <iostream>
 #include <stdexcept>
@@ -40,9 +41,10 @@ void scenes() {
         const auto s = scene(SceneId(i));
         // A label for every button, and one slot per action.
         for (size_t a = 0; a < slot_count; ++a) {
-            check(!s.slots[a].bits == s.slots[a].label.empty(), "a button without a label, or a label without a button");
+            check(!s.slots[a].filled() == s.slots[a].label.empty(), "a button without a label, or a label without a button");
+            check(!(s.slots[a].bits && !s.slots[a].command.empty()), "a button both holds keys and opens a page");
             for (size_t b = a + 1; b < slot_count; ++b)
-                check(!s.slots[a].bits || s.slots[a] != s.slots[b], "an action twice in one scene");
+                check(!s.slots[a].filled() || s.slots[a] != s.slots[b], "an action twice in one scene");
         }
         if (SceneId(i) == SceneId::Hidden) continue;
         check(s[Slot::Top1].bits == bits::Option || SceneId(i) == SceneId::Hidden, "a scene without the settings button");
@@ -54,6 +56,8 @@ void scenes() {
           scene(SceneId::Page)[Slot::Back].bits == bits::B, "our pages keep the stick, OK and back");
     check(scene(SceneId::Dialogue).tap_primary && scene(SceneId::Dialogue)[Slot::Primary].bits == bits::A, "dialogue does not page on a tap");
     check(scene(SceneId::MoveSelect)[Slot::Arc2].bits == bits::R, "farthest is not R");
+    check(scene(SceneId::TitleRing)[Slot::Top4].command == "mod-open" && !scene(SceneId::TitleRing)[Slot::Top4].bits, "the title's MOD button");
+    check(scene(SceneId::BattleScene)[Slot::Primary].bits == bits::R2, "skipping the battle is not the primary button");
 }
 
 void stick() {
@@ -105,7 +109,24 @@ void buttons() {
 }
 }
 
+// The game's scenes from its state (touch_scene.hpp).
+void recognition() {
+    using srw64::touch_scene::decide;
+    check(decide(7, 0, 0, 12, false) == SceneId::Attract, "opening");
+    check(decide(7, 0, 0, 3, false) == SceneId::TitleRing, "title ring");
+    check(decide(7, 0, 0, 13, true) == SceneId::Dialogue, "prologue line");
+    check(decide(2, 5, 0, 0, true) == SceneId::BattleScene, "battle lines stay the battle's");
+    check(decide(3, 5, 0, 0, false) == SceneId::MapIdle && decide(0x16, 6, 0, 0, false) == SceneId::MapIdle, "idle map, cursor moving");
+    check(decide(3, 5, 0, 0, true) == SceneId::Dialogue, "a line on the map");
+    check(decide(3, 8, 0, 0, false) == SceneId::MapMenu && decide(3, 0x3A, 0, 0, false) == SceneId::MapMenu, "unit menus");
+    check(decide(3, 0xC, 0, 0, false) == SceneId::MoveSelect && decide(3, 0xC, 7, 0, false) == SceneId::MapMenu, "move select");
+    check(decide(3, 0x17, 0, 0, false) == SceneId::TargetList, "weapons");
+    check(decide(3, 0x30, 0, 0, false) == SceneId::InfoWindow, "information window");
+    check(decide(3, 0x39, 0, 0, false) == SceneId::Other, "an unknown map state shows everything");
+    check(decide(4, 0, 0, 0, false) == SceneId::Other && decide(4, 0, 0, 0, true) == SceneId::Dialogue, "intermission");
+    check(decide(0x20, 0, 0, 0, false) == SceneId::AnyKey, "ending");
+}
 int main() {
-    try { places(); scenes(); stick(); buttons(); std::cout << checks << " checks passed\n"; return 0; }
+    try { places(); scenes(); stick(); buttons(); recognition(); std::cout << checks << " checks passed\n"; return 0; }
     catch (const std::exception& error) { std::cerr << "FAIL: " << error.what() << "\n"; return 1; }
 }

@@ -41,6 +41,8 @@
 #include "rom_art.hpp"
 #include "game_hooks.hpp"
 #include "native_intro.hpp"
+#include "touch_scene.hpp"
+#include "guest_memory.hpp"
 #include "native_name_entry.hpp"
 #include "unit_name.hpp"
 #include "link_page.hpp"
@@ -219,6 +221,12 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
     *buttons = srw64::intro::input(*buttons);
     *buttons = srw64::mini_stage::input(*buttons);
     *buttons = srw64::dialogue::input(*buttons);
+    // The scene for the phone's touch controls (touch_scene.hpp).
+    if (srw64_rdram) {
+        using namespace srw64::touch_scene;
+        current() = uint8_t(decide(srw64::guest::read(srw64_rdram, mode_address, 1), srw64::guest::read(srw64_rdram, map_state_address, 1),
+                                   srw64::guest::read(srw64_rdram, map_sub_address, 1), srw64::intro::title_major(), srw64::dialogue::reading()));
+    }
 #endif
     return true;
 }

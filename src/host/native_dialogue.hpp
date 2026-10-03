@@ -115,6 +115,8 @@ std::shared_ptr<const Frame> presented_frame(uint64_t workload);
 // Reader and dialogue boxes as dialogue-state.json holds them, from any thread;
 // null when the native dialogue is not configured.
 nlohmann::json state();
+// A line is up and waiting to be read (the touch controls' dialogue scene, touch_scene.hpp).
+bool reading();
 // The present hook's dialogue compositor, on any Plume backend (dialogue_plume.cpp).
 void gpu_init(plume::RenderInterface*, plume::RenderDevice*, const std::filesystem::path&);
 void gpu_draw(plume::RenderCommandList*, plume::RenderFramebuffer*, uint64_t workload);
