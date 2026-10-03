@@ -488,7 +488,8 @@
     "touch_next_target": "Next target",
     "touch_skip_battle": "Skip scene",
     "touch_continue": "Continue",
-    "touch_history": "Log"
+    "touch_history": "Log",
+    "touch_animation": "Anim"
   },
   "entries": [
     {
