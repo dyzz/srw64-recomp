@@ -183,19 +183,19 @@ void recolor_pixels(std::vector<uint8_t>& pixels, const std::vector<uint16_t>& f
     std::vector<float> gain(src.size());
     for (size_t i = 0; i < src.size(); ++i)
         gain[i] = std::clamp(((dst[i][0] + dst[i][1] + dst[i][2]) / 3 + 8) / ((src[i][0] + src[i][1] + src[i][2]) / 3 + 8), 0.f, 2.f);
-    std::vector<std::pair<float, size_t>> near(src.size());
+    std::vector<std::pair<float, size_t>> nearest(src.size());
     for (size_t p = 0; p + 3 < pixels.size(); p += 4) {
         if (!pixels[p + 3]) continue;
         const float c[3] = {float(pixels[p]), float(pixels[p + 1]), float(pixels[p + 2])};
         for (size_t i = 0; i < src.size(); ++i) {
             const float d0 = c[0] - src[i][0], d1 = c[1] - src[i][1], d2 = c[2] - src[i][2];
-            near[i] = {d0 * d0 + d1 * d1 + d2 * d2, i};
+            nearest[i] = {d0 * d0 + d1 * d1 + d2 * d2, i};
         }
-        std::partial_sort(near.begin(), near.begin() + k, near.end());
+        std::partial_sort(nearest.begin(), nearest.begin() + k, nearest.end());
         float out[3]{}, total = 0;
         for (size_t n = 0; n < k; ++n) {
-            const size_t i = near[n].second;
-            const float w = 1.f / (near[n].first + 25.f);
+            const size_t i = nearest[n].second;
+            const float w = 1.f / (nearest[n].first + 25.f);
             total += w;
             for (int ch = 0; ch < 3; ++ch) out[ch] += w * (dst[i][ch] + (c[ch] - src[i][ch]) * gain[i]);
         }

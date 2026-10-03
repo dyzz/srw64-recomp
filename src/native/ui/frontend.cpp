@@ -1751,8 +1751,8 @@ std::string viewer_pick_card(bool unit,unsigned s,unsigned i) {
     else if(!viewer_fits(unit,s,e))body+="<span class='badge cant'>"+label(unit?"viewer_badge_new_pilot":"viewer_badge_new_unit")+"</span>";
     return "<button id='vw-pick:"+std::to_string(i)+"' class='vw-pcard "+(unit?"unit":"pilot")+(int(i)==viewer_mark?" on":"")+"' style='"+viewer_card_style()+"'>"+body+"</button>";
 }
-std::string viewer_stat(const std::string& key,const std::string& value,bool small=false) {
-    return "<div class='stat'><span class='k'>"+key+"</span><span class='v fit"+(small?" small":"")+"'>"+value+"</span></div>";
+std::string viewer_stat(const std::string& key,const std::string& value,bool compact=false) {
+    return "<div class='stat'><span class='k'>"+key+"</span><span class='v fit"+(compact?" small":"")+"'>"+value+"</span></div>";
 }
 // The right side: the marked card large, and what choosing it does.
 std::string viewer_preview() {
