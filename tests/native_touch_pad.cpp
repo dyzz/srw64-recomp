@@ -32,8 +32,8 @@ void places() {
         }
     check(l[Slot::Primary].x > width * .85f && l[Slot::Primary].y > height * .6f, "the primary button is not bottom right");
     check(l[Slot::Back].x < l[Slot::Primary].x && std::abs(l[Slot::Back].y - l[Slot::Primary].y) < mm, "back is not left of the primary");
-    check(l[Slot::Top1].x < width / 2 && l[Slot::Top1].y < 10 * mm, "settings is not top left");
-    check(l[Slot::Primary].r >= 7.5f * mm && l[Slot::Arc2].r >= 5.5f * mm, "buttons smaller than a thumb");
+    check(l[Slot::Top1].x < width / 2 && l[Slot::Top1].y < 8 * mm, "settings is not top left");
+    check(l[Slot::Primary].r >= 6 * mm && l[Slot::Arc2].r >= 4.5f * mm, "buttons smaller than a thumb");
 }
 
 void scenes() {
@@ -80,7 +80,7 @@ void stick() {
     f.clear();
     // Above the stick area along the top, and right of it, nothing (in a scene without taps).
     check(!f.down(l, wide, 4, width * .5f, height * .5f), "the middle of the map is a control");
-    check(!in_stick_area(l, wide, width * .2f, 6 * mm), "the stick area reaches the top bar");
+    check(!in_stick_area(l, wide, width * .2f, 5 * mm), "the stick area reaches the top bar");
 }
 
 void buttons() {

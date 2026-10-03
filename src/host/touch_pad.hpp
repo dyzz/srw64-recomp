@@ -186,22 +186,23 @@ inline Layout layout(float width, float height, float px_per_mm) {
     const auto circle = [&](Slot s, float x, float y, float r) { out.slots[size_t(s)] = {true, x * m, y * m, r * m, 2 * r * m, 2 * r * m}; };
     const auto bar = [&](Slot s, float x, float y, float bw, float bh) { out.slots[size_t(s)] = {false, x * m, y * m, 0, bw * m, bh * m}; };
     // The primary button and an arc of three around it.
-    const float px = w - 12, py = h - 14, arc = 19;
+    // Sizes after the user's first try (2026-10-03: a little big): 13 mm primary, 9-10 mm others.
+    const float px = w - 10, py = h - 11.5f, arc = 15.5f;
     const float pi = 3.14159265f;
     const auto on_arc = [&](float degrees, float& x, float& y) {
         x = px + arc * std::cos(degrees * pi / 180); y = py - arc * std::sin(degrees * pi / 180);
     };
     float x, y;
-    circle(Slot::Primary, px, py, 8);
-    on_arc(180, x, y); circle(Slot::Back, x, y, 6.5f);
-    on_arc(130, x, y); circle(Slot::Arc2, x, y, 6);
-    on_arc(85, x, y); circle(Slot::Arc3, x, y, 6);
-    bar(Slot::Top1, 11, 6, 18, 6); bar(Slot::Top2, 31, 6, 18, 6);
-    bar(Slot::Top3, w - 31, 6, 18, 6); bar(Slot::Top4, w - 11, 6, 18, 6);
-    out.stick_radius = 10 * m;
-    out.rest_x = 16.5f * m; out.rest_y = (h - 15) * m;
-    out.wide_right = width * .42f; out.wide_top = 12 * m;
-    out.corner_size = 34 * m;
+    circle(Slot::Primary, px, py, 6.5f);
+    on_arc(180, x, y); circle(Slot::Back, x, y, 5);
+    on_arc(130, x, y); circle(Slot::Arc2, x, y, 4.6f);
+    on_arc(85, x, y); circle(Slot::Arc3, x, y, 4.6f);
+    bar(Slot::Top1, 9.5f, 5, 15, 5); bar(Slot::Top2, 26.5f, 5, 15, 5);
+    bar(Slot::Top3, w - 26.5f, 5, 15, 5); bar(Slot::Top4, w - 9.5f, 5, 15, 5);
+    out.stick_radius = 8.5f * m;
+    out.rest_x = 14.5f * m; out.rest_y = (h - 13) * m;
+    out.wide_right = width * .42f; out.wide_top = 10 * m;
+    out.corner_size = 30 * m;
     return out;
 }
 
