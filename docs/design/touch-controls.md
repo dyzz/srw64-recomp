@@ -79,34 +79,40 @@
 
 ## 5. 文字
 
-每个功能名是一条界面词条，三种语言都要有，要加进 `UI_KEYS`：
+每个功能名是一条界面词条，三种语言都有，并登记在 `UI_KEYS`（`src/srw64_native/profile.py`）。中文尽量不超过四个字，让直径 12 mm 的圆按钮放得下；放不下时按宽度自动缩字号。L1、R1、L2、R2 只用在识别不了的画面。
 
 | 键 | 简体中文 | 日本語 | English |
 | --- | --- | --- | --- |
-| `touch_start` | 开始 | スタート | Start |
+| `touch_settings` | 设置 | 設定 | Settings |
 | `touch_ok` | 确定 | 決定 | OK |
 | `touch_back` | 返回 | 戻る | Back |
 | `touch_close` | 关闭 | 閉じる | Close |
+| `touch_start` | 开始 | スタート | Start |
+| `touch_l1` | L1 | L1 | L1 |
+| `touch_r1` | R1 | R1 | R1 |
+| `touch_l2` | L2 | L2 | L2 |
+| `touch_r2` | R2 | R2 | R2 |
+| `touch_next_page` | 下一页 | 次ページ | Next page |
+| `touch_prev_page` | 上一页 | 前ページ | Prev page |
+| `touch_skip` | 跳过 | スキップ | Skip |
 | `touch_next_line` | 下一句 | 次へ | Next |
-| `touch_continue` | 继续 | 次へ | Continue |
 | `touch_fast` | 快进 | 早送り | Fast |
 | `touch_auto` | 自动 | オート | Auto |
-| `touch_skip` | 跳过 | スキップ | Skip |
 | `touch_select` | 选择 | 選択 | Select |
 | `touch_info` | 单位信息 | 情報 | Info |
-| `touch_prev_unit` | 上一个单位 | 前のユニット | Prev unit |
-| `touch_next_unit` | 下一个单位 | 次のユニット | Next unit |
-| `touch_prev_enemy` | 上一个敌人 | 前の敵 | Prev enemy |
-| `touch_next_enemy` | 下一个敌人 | 次の敵 | Next enemy |
-| `touch_move_here` | 移到这里 | ここへ移動 | Move here |
+| `touch_prev_unit` | 上个单位 | 前の味方 | Prev unit |
+| `touch_next_unit` | 下个单位 | 次の味方 | Next unit |
+| `touch_prev_enemy` | 上个敌人 | 前の敵 | Prev enemy |
+| `touch_next_enemy` | 下个敌人 | 次の敵 | Next enemy |
+| `touch_move_here` | 移到这里 | ここへ | Move here |
 | `touch_cancel` | 取消 | キャンセル | Cancel |
 | `touch_farthest` | 最远 | 最遠 | Farthest |
-| `touch_prev_target` / `touch_next_target` | 上一个目标／下一个目标 | 前の目標／次の目標 | Prev / Next target |
-| `touch_prev_page` / `touch_next_page` | 上一页／下一页 | 前のページ／次のページ | Prev / Next page |
+| `touch_prev_target` | 上个目标 | 前の目標 | Prev target |
+| `touch_next_target` | 下个目标 | 次の目標 | Next target |
 | `touch_skip_battle` | 跳过演出 | 演出スキップ | Skip scene |
-| `touch_settings` | 设置 | 設定 | Settings |
+| `touch_continue` | 继续 | 次へ | Continue |
 
-日文、英文是初稿，按专名取舍的规矩（大陆简体、官方英文优先）再过一遍。按钮写不下时自动缩字号（共用的 `.fit` 规则）。
+日文、英文是初稿，按专名取舍的规矩（大陆简体、官方英文优先）再过一遍。
 
 ## 6. 实施顺序
 
@@ -117,6 +123,8 @@
 
 ## 7. 待定
 
-- 方向区在游戏画面上占左侧 42%，会不会和以后“点地图格子移光标”冲突？打算到时让点地图格子只在右侧和中间生效，或者改成双击。
+已定（用户 2026-10-03）：地图上不做点格子移动，光标仍用方向区加「选择」「单位信息」（A、B）。
+
+
 - 对白里的方向区要不要画摇杆。现在的打算是不画，只保留拖动回看。
 - 识别不了的画面落到完整一套时，外观和其他场景差别较大；是否改成只多一个「更多」按钮，展开后再显示其余键。
