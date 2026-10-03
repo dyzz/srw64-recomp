@@ -86,6 +86,8 @@ TOOLS = [
          "title_ui": {"type": "string", "enum": ["native", "original"]}}}},
     {"name": "srw64_mini_stage_load", "description": "Load a mini stage file (compiled image or source definition) at run time and enter it from the title menu, like dropping the file on the window.",
      "inputSchema": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}},
+    {"name": "srw64_viewer_start", "description": "Start one battle animation in the Battle Viewer from the title (docs/design/battle-viewer.md): choice {attacker: {unit, pilot, ...}, defender: {unit, pilot, ...}, scene: [left, right], song} as the viewer page sends it, or raw writes [{side, offset, hex}] into the demo's participant records; optional song. State is in srw64_status (battle_viewer).",
+     "inputSchema": {"type": "object", "properties": {"choice": {"type": "object"}, "writes": {"type": "array", "items": {"type": "object"}}, "song": {"type": "integer"}}}},
     {"name": "srw64_memory", "description": "Read guest RAM as hex (address such as 0x8015F950, size up to 0x10000). A view while the game runs, not a snapshot.",
      "inputSchema": {"type": "object", "required": ["address"], "properties": {"address": {"type": "integer"}, "size": {"type": "integer"}}}},
     {"name": "srw64_memory_write", "description": "Write bytes (hex) into guest RAM at an address, between the game's own writes, for probes such as forcing a battle background. Debug sessions only; at most 4096 bytes.",
@@ -162,6 +164,8 @@ class Server:
             return text(client.call("settings", **args))
         if name == "srw64_mini_stage_load":
             return text(client.call("mini_stage.load", path=args["path"]))
+        if name == "srw64_viewer_start":
+            return text(client.call("viewer.start", **args))
         if name == "srw64_memory":
             return text(client.call("memory.read", address=int(args["address"]), size=int(args.get("size", 4))))
         if name == "srw64_memory_write":
