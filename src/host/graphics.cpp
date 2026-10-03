@@ -699,6 +699,11 @@ std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
 }
 
 ultramodern::renderer::WindowHandle srw64_create_window(void*) {
+#ifdef __ANDROID__
+    // The back key and gesture are B (the on-screen controller, frontend.cpp), not the
+    // system's "leave the activity", which would end the game without its save.
+    SDL_SetHint("SDL_ANDROID_TRAP_BACK_BUTTON", "1");
+#endif
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | (srw64_audio_enabled() ? SDL_INIT_AUDIO : 0)) != 0) {
         fprintf(stderr, "SRW64_SDL_INIT_FAILED %s\n", SDL_GetError());
         std::abort();
@@ -908,6 +913,10 @@ void srw64_update_window(void*) {
             [&](uint8_t b) { return SDL_GameControllerGetButton(pad, SDL_GameControllerButton(b)) != 0; },
             [&](uint8_t a) { return int(SDL_GameControllerGetAxis(pad, SDL_GameControllerAxis(a))); });
     buttons |= srw64::debug::pad().load(std::memory_order_relaxed);
+#ifdef SRW64_NATIVE_DIALOGUE
+    // The on-screen controller on a phone (touch_pad.hpp), as a controller.
+    buttons |= srw64::ui::touch_buttons();
+#endif
     // Controller play hides the pointer; the mouse or touch screen brings it back.
     static int cursor=-1;
     const int wanted=srw64::input::pad_hints ? SDL_DISABLE : SDL_ENABLE;
