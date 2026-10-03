@@ -32,7 +32,7 @@ jobs:
   generate:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: ROM from the private inputs
         env:
@@ -81,7 +81,7 @@ jobs:
           rm "$RUNNER_TEMP/generated.tgz" rom.z64
           ls -l generated.tgz.enc
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: generated-encrypted
           path: generated.tgz.enc
@@ -97,9 +97,9 @@ jobs:
       # Python reads and writes text as UTF-8, not the Windows code page (X3: unspecified encodings).
       PYTHONUTF8: "1"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: generated-encrypted
 
@@ -113,7 +113,7 @@ jobs:
           tar -xzf generated.tgz
           rm generated.tgz.enc generated.tgz
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -124,7 +124,7 @@ jobs:
 
       - name: vcpkg cache
         id: vcpkg-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: vcpkg-cache
           key: vcpkg-x64-windows-freetype-harfbuzz-icu-v1
@@ -136,7 +136,7 @@ jobs:
 
       # Saved right away: ICU takes a quarter of an hour, and later steps may fail.
       - if: steps.vcpkg-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: vcpkg-cache
           key: vcpkg-x64-windows-freetype-harfbuzz-icu-v1
@@ -193,7 +193,7 @@ jobs:
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in package.tgz -out SRW64-windows-x64.tgz.enc
           rm package.tgz
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: SRW64-windows-x64-encrypted
           path: SRW64-windows-x64.tgz.enc
@@ -204,9 +204,9 @@ jobs:
     if: ${{ !inputs.android_only }}
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: generated-encrypted
 
@@ -220,7 +220,7 @@ jobs:
 
       # The runtime libraries built from the pinned sources, and those sources.
       - name: Dependency cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             build/linux-x64/deps
@@ -244,7 +244,7 @@ jobs:
           mv build/linux-x64/*.tar.gz SRW64-linux-x64.tar.gz
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in SRW64-linux-x64.tar.gz -out SRW64-linux-x64.tar.gz.enc
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: SRW64-linux-x64-encrypted
           path: SRW64-linux-x64.tar.gz.enc
@@ -257,9 +257,9 @@ jobs:
       SRW64_ANDROID_NDK: "28.2.13676358"
       SRW64_ANDROID_CMAKE: "3.31.6"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: generated-encrypted
 
@@ -271,12 +271,12 @@ jobs:
           tar -xzf generated.tgz
           rm generated.tgz.enc generated.tgz
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -294,7 +294,7 @@ jobs:
       # FreeType, HarfBuzz and ICU for Android (and the build machine's ICU for its data
       # tools), and the pinned source archives.
       - name: Dependency cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             build/android/deps
@@ -339,7 +339,7 @@ jobs:
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in "$apk" -out SRW64-android-arm64.apk.enc
           rm "$apk"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: SRW64-android-arm64-encrypted
           path: SRW64-android-arm64.apk.enc
