@@ -710,16 +710,16 @@ struct Actions : Rml::EventListener {
 // in proportion, down to 60 % (or its data-fit-min): names and notes whose length the page cannot know.
 void fit_lines(Rml::ElementDocument* doc) {
     Rml::ElementList lines;doc->QuerySelectorAll(lines,".fit");
-    std::map<Rml::Element*,float> first;
     // A flex row gives a shrinking item back some room, so a second look settles it.
     for(int pass=0;pass<3;++pass) {
         bool changed=false;
         for(auto* line:lines) {
             const float room=line->GetClientWidth(),need=line->GetScrollWidth();
             if(room<=0 || need<=room+.5f)continue;
-            const float size=line->GetComputedValues().font_size(),from=first.emplace(line,size).first->second,floor=from*line->GetAttribute<float>("data-fit-min",.6f);
+            // data-fit-from keeps the face it started with, for the layout audit's shrink report and for a
+            // later call on the same page (a redrawn part), whose floor stays relative to that face.
+            const float size=line->GetComputedValues().font_size(),from=line->GetAttribute<float>("data-fit-from",size),floor=from*line->GetAttribute<float>("data-fit-min",.6f);
             if(size<=floor+.01f)continue;
-            // data-fit-from keeps the face it started with, for the layout audit's shrink report.
             line->SetProperty("font-size",std::to_string(std::max(floor,size*room/need))+"px");line->SetAttribute("data-fit-from",from);changed=true;
         }
         if(!changed)break;
@@ -2058,7 +2058,7 @@ void viewer_sync() {
     const std::string focus_id=!viewer_focus.empty()?viewer_focus:settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
     document_close(settings_doc);settings_stamp=stamp;settings_built=-1;viewer_focus.clear();
     settings_doc=document(viewer_picker.empty()?viewer_panel():viewer_grid()?viewer_grid_panel():viewer_pick_panel(),true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
-    settings_doc->UpdateDocument();fit_lines(settings_doc);
+    settings_doc->UpdateDocument();
     auto* focus=focus_id.empty()?nullptr:settings_doc->GetElementById(focus_id);
     if(focus && focus->HasAttribute("disabled"))focus=nullptr;
     if(!focus && !pointer_mode) {
