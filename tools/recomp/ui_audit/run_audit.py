@@ -266,7 +266,42 @@ def fixtures(text):
         for page in ('general', 'interface', 'rules', 'saves', 'controls', 'about'):
             add(f'settings-{page}', imports if page == 'saves' else {}, settings=page)
         add('link', {'link_page': {'visible': True}})
+        # Battle viewer (frontend.cpp viewer_panel), opened from the settings' 一般 page: the
+        # page, then each of its boxes. Library entries (library.cpp fields) with the longest
+        # names: unit 0 (the widest crew in battle_viewer_pilots.inc) against unit 28.
+        add_viewer(add, text, loc, units, pilots, menus)
     return out
+
+
+# The units of one work in the viewer's unit box (any unit battle_viewer_pilots.inc crews).
+VIEWER_UNITS = (0, 2, 3, 4, 5, 6, 7, 28)
+VIEWER_PILOTS = (0, 3, 25, 26, 27, 28, 36, 38, 39, 46, 103, 196, 201, 18)
+
+
+def add_viewer(add, text, loc, units, pilots, menus):
+    r = lambda n: text.record(loc, n)
+    work = text.longest(loc, 60, 84, 1)[0]
+    models = text.longest(loc, 110, 224, 7)
+    families = []   # each skill once (its levels share a name)
+    for name in text.longest(loc, 1031, 1099, 60):
+        base = re.sub(r'\s*L\d+$', '', name)
+        if base not in [f for f, _ in families]:
+            families.append((base, name))
+    weapons = [marked({'name': menus[i]}) for i in range(6)]
+    for i, w in enumerate(weapons):
+        w.update(number=100 + i, power=25500, flags=0x0A if i % 2 else 0x08)
+    weapons[1]['combo'] = True
+    weapons[2]['unlock'] = text.longest(loc, 1370, 2698, 1)[0]
+    weapons.append({**weapons[0], 'markers': ['格', 'MAP'], 'number': 99, 'flags': 0})   # a map weapon: left out of the boxes
+    unit_rows = [{'id': uid, 'name': units[i % 7], 'model': models[i % 7], 'work': 5, 'work_name': work, 'hp': 65535,
+                  'equipment_bits': 3, 'ability_bits': 0x20, 'weapons': weapons} for i, uid in enumerate(VIEWER_UNITS)]
+    pilot_rows = [{'actor': actor, 'name': pilots[i % 7], 'work': 5, 'work_name': work, 'skill_bits': 0x23,
+                   'skills': [{'levels': [{'name': name, 'level': 1}]} for _, name in families[:4]]} for i, actor in enumerate(VIEWER_PILOTS)]
+    pages = {'library': {'units': unit_rows, 'pilots': pilot_rows},
+             'battle_viewer': {'songs': [{'song': n - 232, 'text': r(n)} for n in range(232, 281)], 'default_song': 3}}
+    add('viewer', pages, settings='general', clicks=['viewer-open'])
+    for box in ('unit:0', 'pilot:0', 'weapon:0', 'counter_weapon:1', 'result:0', 'result:1', 'scenes:1', 'songs'):
+        add('viewer-' + box.replace(':', '').replace('_', '-'), pages, settings='general', clicks=['viewer-open', 'vw-' + box])
 
 
 def main():

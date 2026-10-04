@@ -21,9 +21,16 @@
 #include "settings_window.hpp"
 #include "debug_ui.hpp"
 #include "app_menu.hpp"
+#include "battle_viewer.hpp"
+#include "campaign_switch.hpp"
+#include "library.hpp"
+#include "native_dialogue.hpp"
+#include "native_intro.hpp"
+#include "native_sprite.hpp"
 #include <RmlUi/Core.h>
 #include <RmlUi/Core/ElementText.h>
 #include <RmlUi/Core/ElementUtilities.h>
+#include <algorithm>
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -35,6 +42,7 @@ namespace fs=std::filesystem;
 // ---- stand-ins for the game-side modules ------------------------------------------
 namespace fixture {
 std::map<std::string,json> states;
+unsigned generation=0;   // bumped when a fixture's states are put in
 json get(const std::string& page){auto it=states.find(page);return it==states.end()?json{{"visible",false}}:it->second;}
 }
 #define PAGE(ns) namespace srw64::ns { json state(){return fixture::get(#ns);} void answer(uint64_t,const std::string&){} \
@@ -87,8 +95,40 @@ void update(const Labels&,const WindowState&){} bool available(){return false;} 
 bool activate(const std::string&){return false;} bool take_settings_request(){return false;} bool take_reload_request(){return false;}
 bool take_fullscreen_request(){return false;} int take_scale_request(){return 0;} void shutdown(){}
 }
-namespace srw64::dialogue { void request_reload(){} }
-namespace srw64::intro { int title_major(){return 0;} }
+namespace srw64::dialogue {
+void request_reload(){}
+fs::path text_overrides_dir(){return "/Users/player/Library/Application Support/SRW64Recomp/dialogue";}
+json text_summary(){return {{"locales",json::object()},{"problems",0}};}
+}
+// Title 3 (the title screen) when a fixture opens the battle viewer, whose 戦闘開始 needs it.
+namespace srw64::intro { int title_major(){return fixture::states.contains("battle_viewer")?3:0;} bool title_waiting(){return false;} }
+// The Library's units and pilots (library.hpp): the fixture's, else none.
+namespace srw64::library {
+const json& contents() {   // callers keep references across calls: rebuilt only for a new fixture
+    static json value;static unsigned built=~0u;
+    if(built!=fixture::generation) {
+        built=fixture::generation;value=fixture::get("library");
+        for(const char* key:{"units","pilots"})if(!value.contains(key))value[key]=json::array();
+        for(const char* key:{"labels","weapon_labels","upgrade_types"})if(!value.contains(key))value[key]=json::object();
+    }
+    return value;
+}
+}
+// The battle viewer with its scene keys (battle_viewer.cpp scenes_table) and the fixture's songs.
+namespace srw64::battle_viewer {
+json request(const json&){return json::object();}
+json songs(){return fixture::get("battle_viewer").value("songs",json::array());}
+json scenes() {
+    return {"plains","wasteland","rocks","village","mountains","forest","sea","city","sky","ruins","base",
+            "bridge","harbor","snow","desert","cave","moon","space","fortress","other","otherworld"};
+}
+int default_song(unsigned,unsigned){return fixture::get("battle_viewer").value("default_song",-1);}
+int pilot_song(unsigned){return -1;}
+void set_page_open(bool){} void hold_title(bool){} void listen_song(int){} int listened(){return -1;}
+bool take_returned(){return false;} bool busy(){return false;}
+}
+namespace srw64::sprites { std::string viewer_scene_image(const std::string&){return {};} }
+namespace srw64::campaign_switch { bool available(){return false;} void enter(const campaign_library::Entry&){} void leave(){} }
 uint32_t srw64_pad_state(){return 0;}
 uint32_t srw64_keyboard_state(){return 0;}
 std::string srw64_pad_name(){return "Steam Deck Controller";}
@@ -110,9 +150,22 @@ std::string path_of(Rml::Element* e) {
 }
 float right_edge(Rml::Element* e,Rml::BoxArea area){return e->GetAbsoluteOffset(area).x+e->GetBox().GetSize(area).x;}
 // One line of text as drawn: its span, and the nearest ancestor that clips it (a panel).
-struct Drawn {float x0,x1,y0,y1;Rml::Element* clip;Rml::Element* block;std::string text,path;};
+struct Drawn {float x0,x1,y0,y1;Rml::Element* clip;Rml::Element* block;Rml::Element* layer;std::string text,path;};
+// The nearest positioned box with a background (a box opened over the page): it hides what is
+// under it, so its lines cannot collide with the page's.
+Rml::Element* layer_of(Rml::Element* e) {
+    for(;e;e=e->GetParentNode()) {
+        const auto& v=e->GetComputedValues();
+        if((v.position()==Rml::Style::Position::Absolute || v.position()==Rml::Style::Position::Fixed) && v.background_color().alpha>0)return e;
+    }
+    return nullptr;
+}
 Rml::Element* clipper(Rml::Element* e) {
-    for(e=e->GetParentNode();e;e=e->GetParentNode())if(e->GetComputedValues().overflow_x()!=Rml::Style::Overflow::Visible)return e;
+    // Either axis: a list that scrolls (overflow-y: auto) clips its rows on both, as in CSS.
+    for(e=e->GetParentNode();e;e=e->GetParentNode()) {
+        const auto& v=e->GetComputedValues();
+        if(v.overflow_x()!=Rml::Style::Overflow::Visible || v.overflow_y()!=Rml::Style::Overflow::Visible)return e;
+    }
     return nullptr;
 }
 // RmlUi breaks lines only at white space, so a run between spaces wider than its block
@@ -128,7 +181,10 @@ void scan(Rml::Element* e,json& out,float ratio,std::vector<Drawn>& drawn) {
         while(block && inline_box(block) && block->GetParentNode())block=block->GetParentNode();
         const auto space=owner->GetComputedValues().white_space();
         const bool nowrap=space==Rml::Style::WhiteSpace::Nowrap || space==Rml::Style::WhiteSpace::Pre;
-        const float x0=t->GetAbsoluteOffset(Rml::BoxArea::Border).x,width=float(Rml::ElementUtilities::GetStringWidth(t,text));
+        // nowrap (unlike pre) lays a run of spaces out as one: measure the text as drawn.
+        std::string laid=text;
+        if(space==Rml::Style::WhiteSpace::Nowrap)laid.erase(std::unique(laid.begin(),laid.end(),[](char a,char b){return a==' ' && b==' ';}),laid.end());
+        const float x0=t->GetAbsoluteOffset(Rml::BoxArea::Border).x,width=float(Rml::ElementUtilities::GetStringWidth(t,laid));
         if(nowrap) {
             if(const float over=x0+width-right_edge(block,Rml::BoxArea::Padding);over>limit)
                 out.push_back({{"kind","text-past-box"},{"text",text},{"over_dp",over/ratio},{"path",path_of(owner)}});
@@ -142,7 +198,7 @@ void scan(Rml::Element* e,json& out,float ratio,std::vector<Drawn>& drawn) {
             bool transformed=false;   // a squeezed line (transform: scale) is narrower than measured
             for(auto* up=owner;up;up=up->GetParentNode())transformed|=up->GetTransformState()!=nullptr;
             // bh-num: the original's number pool, one glyph per 8-pixel cell as the original lays it.
-            if(!transformed && !owner->IsClassSet("bh-num"))drawn.push_back({x0,x0+width,y0,y0+line,clipper(t),block,text,path_of(owner)});
+            if(!transformed && !owner->IsClassSet("bh-num"))drawn.push_back({x0,x0+width,y0,y0+line,clipper(t),block,layer_of(owner),text,path_of(owner)});
         } else {
             float widest=0;std::string run;
             for(size_t at=0;at<text.size();) {
@@ -183,7 +239,7 @@ void collide(const std::vector<Drawn>& drawn,json& out,float ratio) {
         }
         for(size_t j=i+1;j<drawn.size();++j) {
             const auto& b=drawn[j];
-            if(a.clip!=b.clip || a.block==b.block)continue;   // pieces of one block flow, they cannot collide
+            if(a.clip!=b.clip || a.block==b.block || a.layer!=b.layer)continue;   // pieces of one block flow, they cannot collide
             const float rows=std::min(a.y1,b.y1)-std::max(a.y0,b.y0),cols=std::min(a.x1,b.x1)-std::max(a.x0,b.x0);
             // Glyph edges of neighbouring cells touch by a dp or two; more is a collision.
             if(rows>.5f*std::min(a.y1-a.y0,b.y1-b.y0) && cols>3*ratio)
@@ -245,6 +301,7 @@ int main(int argc,char** argv){try{
             fixture::states.clear();
             const json pages=f.value("pages",json::object());
             for(const auto& [page,state]:pages.items())fixture::states[page]=state;
+            ++fixture::generation;
             srw64::settings::request_locale(f.value("locale","zh-Hans"));
             srw64::settings::battle_value=srw64::settings::battle_ui_from(f.value("battle_ui","native"));
             const auto size=f.value("ui_size","largest");
@@ -252,6 +309,8 @@ int main(int argc,char** argv){try{
             srw64::settings_window::close();frame({});
             if(f.contains("settings")){srw64::settings::page=f.at("settings");srw64::settings_window::open();}
             for(int i=0;i<4;++i)frame({});
+            // Controls clicked by id as a player would (the battle viewer's entry, then a box).
+            for(const auto& id:f.value("clicks",json::array())){srw64::ui::click({{"id",id}});frame({});frame({});}
             frame(output/(name+".png"));
             json issues=json::array(),shrunk=json::array();float ratio=1;
             if(auto* context=Rml::GetContext("game-ui")) {
@@ -270,7 +329,7 @@ int main(int argc,char** argv){try{
             std::cout<<name<<": "<<issues.size()<<" issue(s)\n";
         } catch(const std::exception& e) {
             report.push_back({{"name",name},{"error",e.what()}});std::cout<<name<<": ERROR "<<e.what()<<"\n";
-            fixture::states.clear();try{frame({});}catch(...){}
+            fixture::states.clear();++fixture::generation;try{frame({});}catch(...){}
         }
     }
     std::ofstream(output/"audit.json")<<report.dump(2)<<'\n';
