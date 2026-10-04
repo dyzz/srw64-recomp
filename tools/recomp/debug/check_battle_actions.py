@@ -46,6 +46,14 @@ def main():
             s.client.call('buttons', buttons=value, vis=6)
             time.sleep(.7)
 
+    def pad(*names):
+        for name in names:
+            s.client.call('pad', press=name, hold_ms=80)
+            time.sleep(.3)
+
+    def focused():
+        return (s.client.call('status')['ui']['focus'] or {}).get('id', '')
+
     def check(name, passed):
         checks.append({'check': name, 'passed': bool(passed), 'page': page()})
         (s.run / 'action-checks.json').write_text(json.dumps(checks, ensure_ascii=False, indent=2) + '\n')
@@ -128,6 +136,26 @@ def main():
                   p['defender']['sp'] == 52 and p['defender']['spirits'] & 4)
             check('copilot-sp-unchanged', next(o for o in p['spirit_options'] if o['crew'] == 1)['sp'] == 32)
             click('spirit-back')
+            # Rows on a controller: up from any response reaches 開始; down lands on the chosen one.
+            check('rows-start-focus', focused() == 'battle-confirm')
+            pad('down')
+            check('rows-down-to-response', focused() == 'battle-counter')
+            pad('right', 'right')
+            check('rows-right-along', focused() == 'battle-defend')
+            pad('up')
+            check('rows-up-to-start', focused() == 'battle-confirm')
+            pad('down', 'down', 'up')
+            check('rows-up-from-commands', focused() == 'battle-counter')
+            # X (C-left) swaps evade and defend; the keyboard's J does the same.
+            pad('x')
+            p = wait_page(p['serial'])
+            check('guard-switch-evade', p['response'] == 1 and p['defender']['weapon'] == -1)
+            s.client.call('ui.key', key='j')
+            p = wait_page(p['serial'])
+            check('guard-switch-defend', p['response'] == 2)
+            pad('down')
+            check('rows-down-lands-on-chosen', focused() == 'battle-defend')
+            s.client.call('screenshot', path=str(s.run / 'counter-defend.png'))
         elif pilot == 165 and pilot in pending:
             click('evade')
             p = wait_page(p['serial'])

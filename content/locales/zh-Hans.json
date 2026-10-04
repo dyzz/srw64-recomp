@@ -138,6 +138,7 @@
     "battle_back": "返回选择",
     "battle_change_weapon": "选择武器",
     "battle_evade": "回避",
+    "battle_guard_switch": "回避／防御",
     "battle_defend": "防御",
     "battle_counter": "反击",
     "battle_none": "不反击",

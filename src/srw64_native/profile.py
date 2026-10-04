@@ -106,7 +106,7 @@ UI_KEYS |= {
     "battle_ammo", "battle_animation", "battle_attacker", "battle_back",
     "battle_change_weapon", "battle_confirm", "battle_cost", "battle_counter",
     "battle_crit_mod", "battle_critical", "battle_critical_note", "battle_damage",
-    "battle_damage_note", "battle_defend", "battle_defender", "battle_evade",
+    "battle_damage_note", "battle_defend", "battle_defender", "battle_evade", "battle_guard_switch",
     "battle_hint", "battle_hit", "battle_hit_mod", "battle_modifiers",
     "battle_morale", "battle_none", "battle_off", "battle_on",
     "battle_response", "battle_response_hint", "battle_title", "battle_weapon",

@@ -138,6 +138,7 @@
     "battle_back": "Back to selection",
     "battle_change_weapon": "Select weapon",
     "battle_evade": "Evade",
+    "battle_guard_switch": "Evade/Defend",
     "battle_defend": "Defend",
     "battle_counter": "Counter",
     "battle_none": "No counter",

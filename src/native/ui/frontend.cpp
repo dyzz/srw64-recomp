@@ -99,7 +99,7 @@ bool link_waiting{};
 Rml::ElementDocument *settings_doc{}, *link_doc{}, *notice_doc{};
 std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
-uint64_t battle_request_serial{};   // the encounter the HD original page shows
+uint64_t battle_request_serial{};   // the encounter the battle page shows
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
 json intermission_request,upgrade_request,parts_request,ability_request,swap_request,save_request,title_request;
@@ -699,7 +699,7 @@ void document_close(Rml::ElementDocument*& doc) {
 }
 bool held();
 void choose(const std::string& id);
-void battle_buttons(uint32_t pressed);
+void battle_buttons(uint32_t pressed,bool tab=false);
 struct Actions : Rml::EventListener {
     void ProcessEvent(Rml::Event& event) override {
         for(auto* el=event.GetTargetElement();el;el=el->GetParentNode())
@@ -3470,6 +3470,14 @@ void battle_sync() {
         if(auto* e=battle_doc->GetElementById(kept))e->Focus();
         return;
     }
+    // A redraw of the same encounter (the hints turning to the controller's, the language,
+    // the window) keeps the focused button; a new one, a new response or the spirit list
+    // opening or closing starts again.
+    static bool spirit_menu_before=false;
+    auto* focus=battle_doc && context->GetFocusElement() && context->GetFocusElement()->GetOwnerDocument()==battle_doc?context->GetFocusElement():nullptr;
+    const bool same=battle_request_serial==next.value("serial",uint64_t{}) && spirit_menu_before==next.value("spirit_menu",false);
+    const auto kept=focus && same?focus->GetId():std::string();
+    battle_request_serial=next.value("serial",uint64_t{});spirit_menu_before=next.value("spirit_menu",false);
     document_close(battle_doc);battle_stamp=stamp;
     // Keep our unit on the right, matching the original battle HUD. Direction
     // follows screen position, not attacker/defender role or faction arithmetic.
@@ -3514,7 +3522,9 @@ void battle_sync() {
     // With touch the buttons name themselves.
     if(!touch) {
         hint("{A}",label("battle_confirm"));hint("{L}",label("battle_change_weapon"));
-        hint("{R}",label("battle_spirits"));hint("{Anim}",label("battle_animation"));
+        hint("{R}",label("battle_spirits"));
+        if(responding)hint("{CLeft}",label("battle_guard_switch"));
+        hint("{Anim}",label("battle_animation"));
         if(next.value("can_cancel",false))hint("{B}",label("battle_back"));
     }
     body+="</div></div>";
@@ -3528,7 +3538,8 @@ void battle_sync() {
         body+="</div><div class='spirit-footer'>"+button("battle-spirit-back",label("battle_spirit_back"))+"</div></div>";
     }
     battle_doc=document(body,true);battle_doc->SetClass("modal",false);
-    if(auto* first=battle_doc->GetElementById(selecting_spirit?"battle-spirit-back":touch?(responding?"battle-counter":""):"battle-confirm"))first->Focus();
+    if(auto* first=kept.empty()?nullptr:battle_doc->GetElementById(kept))first->Focus();
+    else if(auto* first=battle_doc->GetElementById(selecting_spirit?"battle-spirit-back":touch?(responding?"battle-counter":""):"battle-confirm"))first->Focus();
     battle_doc->UpdateDocument();battle_fit_units(battle_doc);
 
 }
@@ -3710,9 +3721,10 @@ void choose(const std::string& id) {
 }
 // Newly pressed N64 buttons on the battle page, from the keyboard table in
 // dispatch() or from the controller. One binding for both:
-// pad/stick move the focus, A or START activates it, B goes back, L opens the
-// weapon list, R the spirits, C-down toggles the battle animation.
-void battle_buttons(uint32_t pressed) {
+// pad/stick move the focus by rows (Tab through every control), A or START activates
+// it, B goes back, L opens the weapon list, R the spirits, C-down toggles the battle
+// animation, C-left swaps 回避 and 防御.
+void battle_buttons(uint32_t pressed,bool tab) {
     if(!battle_doc || !battle_request.value("visible",false) || settings_open)return;
     if(battle_request.value("style",std::string())=="hd" && !touch_battle_layout()){battle_hd_buttons(pressed);return;}
     const bool spirits=battle_request.value("spirit_menu",false);
@@ -3731,19 +3743,54 @@ void battle_buttons(uint32_t pressed) {
         if(pressed&0x0020){choose("battle-weapon");return;}
         if(pressed&0x0010){choose("battle-spirits");return;}
         if(pressed&(0x0004|input::pad_animation)){choose("battle-animation");return;}
+        // C-left (the Deck's X) swaps 回避 and 防御 when an enemy attacks, as the modern
+        // games' one-button guard switch; from 反撃 it goes to 回避. It never goes back to
+        // 反撃, which opens the weapon list.
+        if((pressed&0x0002) && battle_request.value("mode",0)==2) {
+            choose(battle_request.value("response",0)==1?"battle-defend":"battle-evade");return;
+        }
     }
     if(pressed&(0x0F00|(0xFu<<16))) {
-        std::vector<Rml::Element*> items;
-        if(spirits) {
-            for(const auto& o:battle_request.at("spirit_options"))if(o.at("enabled").get<bool>())
-                if(auto* e=battle_doc->GetElementById("battle-cast:"+battle_number(o.at("crew"))+":"+battle_number(o.at("slot"))))items.push_back(e);
-            items.push_back(battle_doc->GetElementById("battle-spirit-back"));
-        } else for(const char* id:{"battle-confirm","battle-counter","battle-evade","battle-defend","battle-weapon","battle-spirits","battle-animation","battle-back"})
-            if(auto* e=battle_doc->GetElementById(id))items.push_back(e);
-        auto* focus=context->GetFocusElement();auto it=std::find(items.begin(),items.end(),focus);
-        const int index=it==items.end()?0:int(it-items.begin());
-        const bool reverse=pressed&(0x0800|0x0200|(1u<<16)|(1u<<18));
-        items[(index+(reverse?int(items.size())-1:1))%items.size()]->Focus();return;
+        auto* focus=context->GetFocusElement();
+        if(spirits || tab) {
+            // The spirit list, and Tab anywhere, go through the controls in order.
+            std::vector<Rml::Element*> items;
+            if(spirits) {
+                for(const auto& o:battle_request.at("spirit_options"))if(o.at("enabled").get<bool>())
+                    if(auto* e=battle_doc->GetElementById("battle-cast:"+battle_number(o.at("crew"))+":"+battle_number(o.at("slot"))))items.push_back(e);
+                items.push_back(battle_doc->GetElementById("battle-spirit-back"));
+            } else for(const char* id:{"battle-confirm","battle-counter","battle-evade","battle-defend","battle-weapon","battle-spirits","battle-animation","battle-back"})
+                if(auto* e=battle_doc->GetElementById(id))items.push_back(e);
+            auto it=std::find(items.begin(),items.end(),focus);
+            const int index=it==items.end()?0:int(it-items.begin());
+            const bool reverse=pressed&(0x0800|0x0200|(1u<<16)|(1u<<18));
+            items[(index+(reverse?int(items.size())-1:1))%items.size()]->Focus();return;
+        }
+        // The page's rows: 開始, then 反撃｜回避｜防御 when an enemy attacks, then the other
+        // commands. Up and down change row (up from any response reaches 開始), left and
+        // right move along one. Down into the responses lands on the one chosen.
+        static constexpr const char* response_ids[]={"battle-counter","battle-evade","battle-defend"};
+        std::vector<std::vector<Rml::Element*>> rows;
+        const auto row=[&](std::initializer_list<const char*> ids) {
+            std::vector<Rml::Element*> r;
+            for(const char* id:ids)if(auto* e=battle_doc->GetElementById(id))r.push_back(e);
+            if(!r.empty())rows.push_back(std::move(r));
+        };
+        row({"battle-confirm"});row({"battle-counter","battle-evade","battle-defend"});
+        row({"battle-weapon","battle-spirits","battle-animation","battle-back"});
+        if(rows.empty())return;
+        size_t y=0,x=0;
+        for(size_t r=0;r<rows.size();++r)for(size_t c=0;c<rows[r].size();++c)if(rows[r][c]==focus){y=r;x=c;}
+        const int dy=pressed&(0x0800|(1u<<16))?-1:pressed&(0x0400|(1u<<17))?1:0;
+        const int dx=dy?0:pressed&(0x0200|(1u<<18))?-1:1;
+        if(dy) {
+            if((dy<0 && y==0) || (dy>0 && y+1==rows.size()))return;
+            y+=dy;x=0;
+            if(rows[y][0]->GetId()==response_ids[0])
+                if(auto* chosen=battle_doc->GetElementById(response_ids[std::clamp(battle_request.value("response",0),0,2)]))
+                    x=size_t(std::find(rows[y].begin(),rows[y].end(),chosen)-rows[y].begin())%rows[y].size();
+        } else x=size_t(std::clamp(int(x)+dx,0,int(rows[y].size())-1));
+        rows[y][x]->Focus();return;
     }
     if(pressed&(0x8000|0x1000)) {
         auto* focus=context->GetFocusElement();
@@ -4267,7 +4314,7 @@ bool dispatch(SDL_Event& event) {
         }
     } else if(battle_request.value("visible",false)){
         // The game's own key map, so the page reads like the rest of the game:
-        // Z/Enter = A, X/Esc = B, arrows and WASD = pad and stick, Q/E = L/R, K = C-down.
+        // Z/Enter = A, X/Esc = B, arrows and WASD = pad and stick, Q/E = L/R, K = C-down, J = C-left.
         if(event.type==SDL_KEYDOWN && !event.key.repeat){
             const auto k=event.key.keysym.sym;uint32_t pressed=0;
             if(k==SDLK_z || k==SDLK_RETURN)pressed=0x8000;
@@ -4280,7 +4327,8 @@ bool dispatch(SDL_Event& event) {
             else if(k==SDLK_q)pressed=0x0020;
             else if(k==SDLK_e)pressed=0x0010;
             else if(k==SDLK_k)pressed=0x0004;
-            if(pressed){battle_buttons(pressed);return true;}
+            else if(k==SDLK_j)pressed=0x0002;
+            if(pressed){battle_buttons(pressed,k==SDLK_TAB);return true;}
         }
     } else if(upgrade_request.value("visible",false)){
         if(event.type==SDL_KEYDOWN){
