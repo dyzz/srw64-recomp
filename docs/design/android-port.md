@@ -149,7 +149,7 @@ APK 的 `libmain.so` 必须链接两份由 ROM 生成的代码：`build/recomp/c
 - **崩溃调用栈：** `src/host/host.cpp:511-535` 在 `__linux__` 下用 `execinfo.h`，安卓也定义 `__linux__`。bionic 从 API 33 才有 `backtrace`，而且替换信号处理会挡住系统 debuggerd 的 tombstone。条件改为排除 `__ANDROID__`。
 - **依赖：**
   - FreeType、HarfBuzz、ICU 改为静态链接，因为 APK 放不下 `libicuuc.so.78` 这样带版本号的共享库。
-  - ICU 用数据过滤，只保留断行、双向文本和文字系统数据，约 1–3 MB；全量数据约 30 MB。只有 `src/native/text/portable_text.cpp` 用 ICU，没有用 i18n 库的接口，`cmake/PortableText.cmake` 可以去掉 `ICU::i18n`。
+  - ICU 数据只保留断行规则，0.45 MB；全量数据约 30 MB。双向文本和文字系统的数据本来就编译在 libicuuc 里（2026-10-04 实现，见 [macOS 构建](../native/macos-release.md)「ICU 数据只留断行规则」）。只有 `src/native/text/portable_text.cpp` 用 ICU，没有用 i18n 库的接口，`cmake/PortableText.cmake` 可以去掉 `ICU::i18n`。
   - HarfBuzz 的 pkg-config 回退在交叉编译时会找到构建机的库，安卓上要禁用。
   - SDL 的选择见“待定”。
 - **NDK 与页大小：** 用 NDK r28 及以上，默认按 16 KB 页对齐。

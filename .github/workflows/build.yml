@@ -174,6 +174,20 @@ jobs:
           Copy-Item build/recomp/upstream/RT64/src/contrib/mupen64plus-win32-deps/SDL2-2.26.3/lib/x64/SDL2.dll $out
           Get-ChildItem -Recurse build/recomp/gfx-build -Include dxcompiler.dll,dxil.dll | Select-Object -First 2 | Copy-Item -Destination $out
           Copy-Item "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/bin/*.dll" $out
+          # ICU's data DLL cut to the break rules the game reads (tools/release/icu_data.py): 31.6 MB -> 0.5 MB,
+          # then checked where it ships (tools/release/icu_check.cpp).
+          $icudt = (Get-ChildItem "$out/icudt*.dll" | Select-Object -First 1).FullName
+          .venv/Scripts/python.exe tools/release/icu_data.py trim $icudt icudt.dat
+          .venv/Scripts/python.exe tools/release/icu_data.py c-source icudt.dat icudt.c
+          clang-cl /nologo /LD /O1 /GS- icudt.c "/Fe:$icudt" /link /NOENTRY /NODEFAULTLIB
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          Remove-Item "$out/icudt*.lib", "$out/icudt*.exp", icudt.dat, icudt.c, icudt.obj -ErrorAction SilentlyContinue
+          clang-cl /nologo /EHsc /std:c++17 /O1 "/I$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/include" /Itools/release `
+            tools/release/icu_check.cpp "/Fe:$out/icu_check.exe" "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/lib/icuuc.lib"
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          & "$out/icu_check.exe"
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          Remove-Item "$out/icu_check.exe", "$out/icu_check.lib", "$out/icu_check.exp", icu_check.obj -ErrorAction SilentlyContinue
           Copy-Item -Recurse build/fonts "$out/fonts"
           Copy-Item -Recurse content/dialogue "$out/dialogue"
           Copy-Item tools/release/windows/srw64.cmd $out

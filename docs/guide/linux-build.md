@@ -25,7 +25,7 @@ Apple Silicon 上容器通过 x64 模拟运行，第一次构建（依赖加 RT6
 | 步骤 | 内容 |
 | --- | --- |
 | 输入检查 | 生成代码与 `cpu-bound/report.json` 的摘要一致、RT64 已有呈现完成钩子、RSPRecomp 音频源和字体存在 |
-| 依赖 `deps/prefix` | 用 macOS 那份锁（`config/recomp/macos-dependencies.json`）里的同一批源码包，编译 SDL3、sdl2-compat、FreeType、HarfBuzz、ICU 的共享库。源码包缓存与 macOS 配方共用 `build/macos-deps/sources` |
+| 依赖 `deps/prefix` | 用 macOS 那份锁（`config/recomp/macos-dependencies.json`）里的同一批源码包，编译 SDL3、sdl2-compat、FreeType、HarfBuzz、ICU 的共享库；ICU 数据只留断行规则（[macOS 构建](../native/macos-release.md)「ICU 数据只留断行规则」）。源码包缓存与 macOS 配方共用 `build/macos-deps/sources` |
 | 宿主 `gfx-build` | `src/host` 以 `SRW64_ENABLE_RT64=ON` 构建 `srw64-gfx-host`，编译器 clang，链接器 lld；RT64 的文件对话框走 xdg-desktop-portal（`NFD_PORTAL=ON`），不链接 GTK |
 | 打包 `SRW64-SteamDeck-<版本>-<提交日期>-<提交>.tar.gz`（2026-09-29 起，如 `SRW64-SteamDeck-0.3.1-20260929-eb1cd4a`；有未提交改动时提交号后加 `-dirty`） | `VERSION.txt`（同一名字，装到 `~/Games/SRW64` 后也看得出版本）、程序 `srw64`、`lib/`（上面五个库，RUNPATH 设为 `$ORIGIN`）、`fonts/`、`dialogue/`、`licenses/`、启动脚本 `srw64.sh`、`add-to-steam.sh` 与 `steam/`（见下）、`README.txt` |
 

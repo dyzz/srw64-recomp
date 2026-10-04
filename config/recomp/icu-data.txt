@@ -1,0 +1,20 @@
+# ICU data items the game reads (tools/release/icu_data.py keeps only these).
+# src/native/text/portable_text.cpp breaks graphemes (root) and lines in ja,
+# zh-Hans and en with lb=strict; character, script and bidi properties are
+# compiled into libicuuc. The loose and normal line rules are kept so a change
+# of the lb keyword still finds its rules; the dictionaries (Thai, Lao, Khmer,
+# Burmese, CJK words), word, sentence and title rules are not read.
+# Checked by tests/test_icu_data.py and, against the full data on every line of
+# the game's text, by the comparison in docs/native/macos-release.md.
+brkitr/res_index.res
+brkitr/root.res
+brkitr/ja.res
+brkitr/zh.res
+brkitr/en.res
+brkitr/char.brk
+brkitr/line.brk
+brkitr/line_cj.brk
+brkitr/line_loose.brk
+brkitr/line_loose_cj.brk
+brkitr/line_normal.brk
+brkitr/line_normal_cj.brk

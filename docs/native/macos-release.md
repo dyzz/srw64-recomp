@@ -16,6 +16,26 @@ macOS 14/15 的实际启动与游戏流程仍需在对应系统验收。
 排版和 ICU 分段；关闭 HarfBuzz CoreText、GLib、Graphite2、辅助工具以及 FreeType
 PNG/Brotli/BZip2 等当前 TTF/TTC 文字不使用的依赖。应用包带上 `tools/content/prepare_fonts.py` 准备的字体（HarmonyOS Sans 2.040 原样附许可全文，加符号字体）。
 
+### ICU 数据只留断行规则
+
+ICU 的数据库 `libicudata` 有 31.6 MB（zip 后 12 MB），是应用里最大的一个文件，但游戏只读其中的断行规则：
+唯一调用 ICU 的 `src/native/text/portable_text.cpp` 只做断字素（root）、ja／zh-Hans／en 的 `lb=strict` 断行、
+BCP-47 标签、文字系统和双向文本，后三样的数据编译在 `libicuuc` 里。2026-10-04 起只保留
+`config/recomp/icu-data.txt` 列的 12 项（`brkitr/` 下的索引、root/ja/zh/en 配置、`char.brk` 和各档 `line*.brk`），
+数据降到 0.45 MB；时区、货币、单位、语言名、排序、字符集转换、泰／老／高棉／缅文与中日文分词词典都不带。
+
+- `tools/release/icu_data.py trim` 从完整数据（`.dat`，或带着它的库，如 `icudt78.dll`）取出这些条目，
+  布局与 `icupkg` 一致（同一份输入逐字节相同）。macOS、Linux、Android 的依赖脚本在编 ICU 之前调用
+  `prepare_source()`，把源码里的 `source/data/in/icudt78l.dat` 换成裁剪版（原件留作 `.dat.full`），
+  ICU 照常从它打出数据库（ICU 构建时用 icupkg 解包，`root.res`、`ja.res` 引用的词典和单词／句子规则不在了，
+  所以同时给 `source/data/Makefile.in` 的 icupkg 调用加 `--ignore-deps`，原件留作 `.orig`）；Windows 的 CI 打包时从 vcpkg 的 `icudt78.dll` 取数据，`c-source` 生成 C，
+  用 clang-cl 编成同名 DLL 替换。依赖缓存记下清单摘要（`icu_data.digest()`），清单变了就重编。
+- 验证：用游戏全部台词（日文原文 4.4 万句、中英译文各 5.7 万句，加三语界面词条）分别在完整数据与裁剪数据上
+  断字素、断行、算双向段数和文字系统，结果逐项相同；去掉 `ja.res` 时日文断行变化、去掉 `line_cj.brk` 时打不开断行器，
+  说明比对有效。每次构建由 `tools/release/icu_check.cpp` 在装好的库上复查 15 句样本（期望值来自完整数据，
+  `--print` 重新生成），macOS、Linux 依赖脚本和 Windows CI 都跑；`tests/test_icu_data.py` 测格式与接线。
+- 以后要用别的断法（单词、句子、泰文等）或别的 ICU 数据，先加进清单。
+
 准备好原项目的固定工具链与生成代码后运行：
 
 ```sh

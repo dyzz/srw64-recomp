@@ -18,6 +18,7 @@ import sys
 import tarfile
 import tempfile
 
+import icu_data
 from package_macos import check_deployment, macho_files, run
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -114,8 +115,11 @@ def main() -> None:
                        '-DHB_BUILD_VECTOR=OFF', '-DHB_BUILD_GPU=OFF',
                        f'-DFREETYPE_INCLUDE_DIRS={prefix}/include/freetype2',
                        f'-DFREETYPE_LIBRARY={prefix}/lib/libfreetype.dylib'])
+    # Only the break rules the game reads (tools/release/icu_data.py): 31.6 MB of data -> 0.5 MB.
+    icu_data.prepare_source(sources['icu'])
     icu_build = work / 'icu'
-    icu_build.mkdir(exist_ok=True)
+    shutil.rmtree(icu_build, ignore_errors=True)
+    icu_build.mkdir()
     env.update(CC='/usr/bin/clang', CXX='/usr/bin/clang++',
                CFLAGS=f'-O2 -arch {arch} -mmacosx-version-min={minimum}',
                CXXFLAGS=f'-O2 -arch {arch} -mmacosx-version-min={minimum}',
@@ -131,8 +135,14 @@ def main() -> None:
         linked = run(['otool', '-L', str(library)])
         if '/opt/homebrew/' in linked or '/usr/local/' in linked:
             raise ValueError(f'Unexpected external dependency in {library}:\n{linked}')
+    check = work / 'icu_check'
+    command(['/usr/bin/clang++', '-std=c++17', f'-I{prefix}/include', f'-I{ROOT}/tools/release',
+             str(ROOT / 'tools/release/icu_check.cpp'), f'-L{prefix}/lib', '-licuuc',
+             f'-Wl,-rpath,{prefix}/lib', '-o', str(check)])
+    command([str(check)])
     report = {'schema': 'srw64.macos-runtime-dependencies.v1', 'minimum_macos': minimum,
               'architecture': arch, 'prefix': str(prefix), 'sources': lock['sources'],
+              'icu_data': icu_data.digest(),
               'libraries': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in libraries},
               'verification': 'deployment load commands and linkage; not an old-OS runtime test'}
     (work / 'dependencies.json').write_text(json.dumps(report, indent=2) + '\n')
