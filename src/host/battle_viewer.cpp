@@ -60,7 +60,7 @@ std::mutex mutex;
 std::vector<Write> raw;          // a debug request: the bytes as given
 json choice;                     // a page request: computed when the records are filled
 bool pending=false,armed=false,running=false;
-std::atomic_bool page_open{},returned{};
+std::atomic_bool page_open{},returned{},held{};
 unsigned started=0,filled=0;
 int song=-1;
 // A song the page plays to listen (-1 none), what it asked for last, and the title's own
@@ -158,9 +158,9 @@ bool start(uint8_t* ram,int* music) {
                 list.push_back({{"song",read(ram,sound_table+4*n+2,2)},{"text",dialogue::ui_text(ram,uint16_t(read(ram,sound_table+4*n,2)))}});
             std::lock_guard lock(mutex);songs_cache=std::move(list);
         }
-        // No attract demo while the page is open or a battle waits.
+        // No attract demo or opening story while a page is open or a battle waits.
         bool waiting;{std::lock_guard lock(mutex);waiting=pending;}
-        if(page_open || waiting || returned){write32(ram,title_idle,0);write16(ram,title_story_idle,0);}
+        if(page_open || held || waiting || returned){write32(ram,title_idle,0);write16(ram,title_story_idle,0);}
         // Listening on the BGM list: the song, and the title's back when it stops or the
         // page closes.
         const int wanted=page_open?listen.load():-1;
@@ -246,6 +246,7 @@ json scenes() {
 int default_song(unsigned unit,unsigned actor){return attacker_song(unit,actor);}
 int pilot_song(unsigned actor){return actor<pilot_song_count?int16_t(rom16(pilot_songs+2*actor)):-1;}
 void set_page_open(bool open){page_open=open;}
+void hold_title(bool hold){held=hold;}
 void listen_song(int number){listen=number;}
 int listened(){return listen;}
 bool take_returned(){return returned.exchange(false);}

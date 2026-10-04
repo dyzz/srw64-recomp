@@ -30,6 +30,9 @@ int default_song(unsigned unit,unsigned actor);
 // A character's own battle song (the pilots' table, ROM 0x7D6A0), or -1.
 int pilot_song(unsigned actor);
 void set_page_open(bool open);
+// Any other host page over the title (the Library, MOD, the settings): the title holds
+// still under it too, with no attract demo and no opening story.
+void hold_title(bool hold);
 // Listening on the page's BGM list: a song number plays on the title, -1 puts the title's
 // own song back (also when the page closes or a battle starts).
 void listen_song(int number);

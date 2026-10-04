@@ -306,7 +306,9 @@ body.pointer button.set-toggle:focus {background-color:transparent;} body.pointe
 body.pointer button.set-toggle:hover {background-color:#3fd0ff1a;}
 body.pointer .set-foot button:focus {background-color:#3fd0ff; border-color:#3fd0ff;}
 body.pointer .set-foot button:hover {background-color:#8fe4ff;}
-.set-panel.lib-panel {width:96%; height:94%; max-width:1180dp; max-height:760dp; padding:10dp 18dp 8dp;}
+/* The title's own pages (the Library, the battle viewer) hide the title under them. */
+.set-shade.solid {background-color:#040712;}
+.set-panel.lib-panel {width:96%; height:94%; max-width:1180dp; max-height:760dp; padding:10dp 18dp 8dp; background-color:#0c122c;}
 .lib-top {display:flex; align-items:center; gap:18dp; margin-bottom:8dp;}
 .lib-top h1 {margin:0; font-size:20dp; letter-spacing:1dp; white-space:nowrap;}
 .lib-top .set-tabs {flex:1 1 0; margin:0;}
@@ -1060,9 +1062,9 @@ std::string mod_panel() {
     return body;
 }
 
-// The Library (library.hpp): units or characters in ROM order on the left, the chosen
-// entry on the right. Up and down choose, left and right scroll the details, L / R
-// switch between units and characters.
+// The Library (library.hpp): units or characters grouped by work on the left, the chosen
+// entry on the right. Up and down choose, left and right jump between works, C-up and
+// C-down scroll the details, L / R switch between units and characters.
 const char* marker_glyph(const std::string& token);
 void library_turn(int step);
 const nlohmann::json& library_entries(){return library::contents().at(library_tab?"pilots":"units");}
@@ -1267,7 +1269,7 @@ std::string library_detail() {
 std::string library_panel() {
     // Laid out for a Steam Deck at the Largest size (865 x 540 dp): nearly the whole window,
     // the title and tabs on one row, a fixed-width list.
-    std::string body="<div class='set-shade'><div class='set-panel lib-panel'><div class='lib-top'><h1>"+label("library_title")+"</h1><div class='set-tabs nav'>";
+    std::string body="<div class='set-shade solid'><div class='set-panel lib-panel'><div class='lib-top'><h1>"+label("library_title")+"</h1><div class='set-tabs nav'>";
     const char* tabs[]={"units","pilots"};
     for(unsigned i=0;i<2;++i)
         body+=button("lib-tab:"+std::to_string(i),label("library_tab_"+std::string(tabs[i]))+"  ("+std::to_string(library::contents().at(tabs[i]).size())+")",i==library_tab,false,"set-tab");
@@ -1312,13 +1314,36 @@ void library_select(unsigned index,bool focus=true) {
     if(auto* detail=settings_doc->GetElementById("lib-detail")){detail->SetInnerRML(library_detail());detail->SetScrollTop(0);}
     settings_doc->UpdateDocument();fit_lines(settings_doc);
 }
+// Scrolls the details by `dp` (C-up / C-down, held: a little every frame).
+void library_scroll(float dp) {
+    if(auto* detail=settings_doc?settings_doc->GetElementById("lib-detail"):nullptr)detail->SetScrollTop(detail->GetScrollTop()+dp*context->GetDensityIndependentPixelRatio());
+}
+// Left and right jump between works: to the next work's first entry, or back to this
+// work's first entry and from there to the previous work's.
+unsigned library_work_step(int step) {
+    const auto& entries=library_entries();
+    const auto work=[&](size_t i){return entries[i].value("work",-1);};
+    size_t i=std::min<size_t>(library_index[library_tab],entries.empty()?0:entries.size()-1);
+    if(entries.empty())return 0;
+    if(step>0) {
+        size_t j=i;
+        while(j<entries.size() && work(j)==work(i))++j;
+        return unsigned(j<entries.size()?j:i);
+    }
+    size_t first=i;
+    while(first>0 && work(first-1)==work(i))--first;
+    if(first<i || first==0)return unsigned(first);
+    size_t previous=first-1;
+    while(previous>0 && work(previous-1)==work(first-1))--previous;
+    return unsigned(previous);
+}
 void library_move(int dy,int dx) {
     if(!settings_doc)return;
     auto* focus=context->GetFocusElement();
     const bool on_tab=focus && focus->IsClassSet("set-tab");
     if(dx) {
         if(on_tab){library_turn(dx);return;}
-        if(auto* detail=settings_doc->GetElementById("lib-detail"))detail->SetScrollTop(detail->GetScrollTop()+dx*80*context->GetDensityIndependentPixelRatio());
+        library_select(library_work_step(dx));
         return;
     }
     if(on_tab){if(dy>0)library_select(library_index[library_tab]);return;}
@@ -1563,7 +1588,7 @@ std::string viewer_panel() {
     // No song chosen: the attacker's, named from the サウンドセレクト list.
     std::string song=viewer_song>=0 && viewer_song<int(songs.size())?"<span>"+escape(songs[size_t(viewer_song)].value("text",std::string()))+"</span>":std::string();
     if(song.empty())song="<span>"+viewer_attacker_song()+"</span><span class='k'>"+label("viewer_song_attacker")+"</span>";
-    std::string body="<div class='set-shade'><div class='set-panel vw-panel'><div class='vw-top nav'><div class='vw-title'>"+label("viewer_title")+"</div><div class='vw-sub'>BATTLE VIEWER</div>"
+    std::string body="<div class='set-shade solid'><div class='set-panel vw-panel'><div class='vw-top nav'><div class='vw-title'>"+label("viewer_title")+"</div><div class='vw-sub'>BATTLE VIEWER</div>"
         "<div class='vw-bgm'><span class='k'>BGM</span>"+button("vw-song:-1","◀",false,false,"vw-arrow")+button("vw-songs",song,false,false,"vw-link t")+button("vw-song:1","▶",false,false,"vw-arrow")+"</div></div>"
         "<div id='set-body' class='vw-body'><div class='vw-cards vw-row nav' style='height:"+std::to_string(viewer_card_height)+"dp;'>"+viewer_card(1)+"<div class='vw-mid'>"+button("vw-swap",label("viewer_swap"),false,false,"vw-swap")+"</div>"+viewer_card(0)+"</div>";
     body+="<div class='vw-row nav'><div class='half'>"+viewer_cell(1,"unit",escape(viewer_unit(1).value("name",std::string())))+"</div><div class='gap'></div><div class='half'>"+
@@ -1578,7 +1603,7 @@ std::string viewer_panel() {
 // The weapon list a weapon cell opens.
 std::string viewer_pick_panel() {
     const unsigned s=unsigned(std::stoul(viewer_picker.substr(viewer_picker.find(':')+1)));
-    std::string body="<div class='set-shade'><div class='set-panel vw-panel'><div class='lib-top'><h1>"+label(s?"viewer_defender":"viewer_attacker")+" · "+
+    std::string body="<div class='set-shade solid'><div class='set-panel vw-panel'><div class='lib-top'><h1>"+label(s?"viewer_defender":"viewer_attacker")+" · "+
         label("viewer_weapon")+"</h1></div><div id='set-body' class='lib-list vw-list'>";
     const auto weapons=viewer_weapons(s);
     for(size_t i=0;i<weapons.size();++i) {
@@ -1803,7 +1828,7 @@ std::string viewer_grid_panel() {
     if(people)now=viewer_fill(label("viewer_now"),viewer_name(viewer_unit(s))+" · "+viewer_name(viewer_pilot(s)));
     else if(kind=="scene")now=viewer_fill(label("viewer_now"),viewer_scene_name(viewer_scene[s]));
     else now=viewer_fill(label("viewer_song_list"),std::to_string(battle_viewer::songs().size()));
-    std::string body="<div class='set-shade'><div class='set-panel vw-panel vw-picker'><div class='vw-top'>"+
+    std::string body="<div class='set-shade solid'><div class='set-panel vw-panel vw-picker'><div class='vw-top'>"+
         (kind=="song"?std::string("<div class='vw-role song'>BGM</div>"):"<div class='vw-role"+std::string(def?" def":"")+"'>"+label(def?"viewer_defender":"viewer_attacker")+"</div>")+
         "<div class='vw-ptitle'>"+label("viewer_choose_"+kind)+"</div><div class='vw-now fit'>"+now+"</div></div>";
     std::string grid;
@@ -4058,6 +4083,7 @@ void settings_pad(uint32_t now,uint32_t pressed) {
     if(pressed&(0x8000|0x1000)){settings_press();return;}
     if(pressed&(0x0020|0x0010)){settings_turn(pressed&0x0020?-1:1);return;}
     if((pressed&0x0002) && viewer_open && viewer_kind()=="song"){viewer_choose("vw-listen");return;}   // C-left (the Deck's X)
+    if(library_open && (now&(0x0008|0x0004))){library_scroll(now&0x0008?-9.f:9.f);return;}      // C-up / C-down held: the details scroll
     uint32_t repeats=0;const uint32_t presses=pad_presses(now,pressed,repeats);
     const int dy=presses&(0x0800|(1u<<16))?-1:presses&(0x0400|(1u<<17))?1:0;
     const int dx=presses&(0x0200|(1u<<18))?-1:presses&(0x0100|(1u<<19))?1:0;
@@ -4138,6 +4164,9 @@ void sync() {
     // A viewer battle back on the title opens the page again with the same choices.
     if(viewer_title() && battle_viewer::take_returned()){viewer_open=true;library_open=false;mod_open=false;settings_open=true;settings_release.hold();input.clear();}
     battle_viewer::set_page_open(settings_open && viewer_open);
+    // Any page in the settings window's frame (the Library, MOD, the settings themselves)
+    // holds the title still under it: no attract demo, no opening story.
+    battle_viewer::hold_title(settings_open);
     settings_sync();notices_sync();fps_sync();touch_sync();context->Update();input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
@@ -4229,6 +4258,7 @@ bool dispatch(SDL_Event& event) {
             const auto k=event.key.keysym.sym;const bool ctrl=event.key.keysym.mod&KMOD_CTRL,shift=event.key.keysym.mod&KMOD_SHIFT;
             if(k==SDLK_ESCAPE || k==SDLK_x){if(!event.key.repeat)choose("settings-close");return true;}
             if(k==SDLK_q || k==SDLK_PAGEUP || (k==SDLK_TAB && ctrl && shift)){if(!event.key.repeat)settings_turn(-1);return true;}
+            if(library_open && (k==SDLK_i || k==SDLK_k)){library_scroll(k==SDLK_i?-60.f:60.f);return true;}   // C-up / C-down
             if(k==SDLK_e || k==SDLK_PAGEDOWN || (k==SDLK_TAB && ctrl)){if(!event.key.repeat)settings_turn(1);return true;}
             if(k==SDLK_j && viewer_open && viewer_kind()=="song"){if(!event.key.repeat)viewer_choose("vw-listen");return true;}   // C-left
             const int dy=k==SDLK_UP || k==SDLK_w?-1:k==SDLK_DOWN || k==SDLK_s?1:0,dx=k==SDLK_LEFT || k==SDLK_a?-1:k==SDLK_RIGHT || k==SDLK_d?1:0;
