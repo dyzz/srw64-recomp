@@ -105,7 +105,8 @@ def build_dependencies(jobs: int) -> Path:
     check = work / 'icu_check'
     run(['clang++', '-std=c++17', f'-I{prefix}/include', f'-I{ROOT}/tools/release', ROOT / 'tools/release/icu_check.cpp',
          f'-L{prefix}/lib', '-licuuc', f'-Wl,-rpath,{prefix}/lib', '-o', check])
-    run([check])
+    # RUNPATH covers the check's own libraries, not libicuuc's libicudata.
+    run([check], env=dict(os.environ, LD_LIBRARY_PATH=str(prefix / 'lib')))
     report.write_text(json.dumps({'schema': 'srw64.linux-runtime-dependencies.v1', 'sources': lock['sources'],
                                   'icu_data': icu_data.digest(), 'prefix': str(prefix)}, indent=2) + '\n',
                       encoding='utf-8')
