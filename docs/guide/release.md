@@ -7,7 +7,7 @@
 ## 一次构建
 
 ```sh
-.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.3.4
+.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.3.5
 ```
 
 - 输出目录默认是 `build/release/<版本>-<短提交号>`，已存在时拒绝覆盖。可以用 `--output` 指定，用 `--keep-source` 保留检出目录与编译产物。
@@ -63,9 +63,9 @@ Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检�
 用 `--attach` 交给同一次 `build_release.py`，与 Mac 包和 HD 包放进同一个发布：
 
 ```sh
-.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.3.4 \
-  --attach linux=build/deck/<提交>/src/build/linux-x64/SRW64-SteamDeck-0.3.4-<日期>-<提交>.tar.gz \
-  --attach windows=build/windows/<提交>/SRW64-0.3.4-windows-x64.zip
+.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.3.5 \
+  --attach linux=build/deck/<提交>/src/build/linux-x64/SRW64-SteamDeck-0.3.5-<日期>-<提交>.tar.gz \
+  --attach windows=build/windows/<提交>/SRW64-0.3.5-windows-x64.zip
 ```
 
 附件改名为 `SRW64-<版本>-linux-x64.tar.gz`、`SRW64-<版本>-windows-x64.zip`，下载表、HD 包的三个平台安装位置、校验值和
