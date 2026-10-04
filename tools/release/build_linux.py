@@ -28,7 +28,6 @@ import tomllib
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_macos_dependencies import source  # the same pinned archives and checks
-import icu_data
 
 ROOT = Path(__file__).resolve().parents[2]
 WORK = ROOT / 'build/linux-x64'
@@ -56,10 +55,8 @@ def build_dependencies(jobs: int) -> Path:
     work = WORK / 'deps'
     prefix = work / 'prefix'
     report = work / 'dependencies.json'
-    if report.is_file():
-        cached = json.loads(report.read_text(encoding='utf-8'))
-        if cached.get('sources') == lock['sources'] and cached.get('icu_data') == icu_data.digest():
-            return prefix
+    if report.is_file() and json.loads(report.read_text(encoding='utf-8')).get('sources') == lock['sources']:
+        return prefix
     if prefix.exists():
         shutil.rmtree(prefix)
     ARCHIVES.mkdir(parents=True, exist_ok=True)
@@ -91,8 +88,6 @@ def build_dependencies(jobs: int) -> Path:
                        '-DHB_BUILD_RASTER=OFF', '-DHB_BUILD_VECTOR=OFF', '-DHB_BUILD_GPU=OFF',
                        f'-DFREETYPE_INCLUDE_DIRS={prefix}/include/freetype2',
                        f'-DFREETYPE_LIBRARY={prefix}/lib/libfreetype.so'])
-    # Only the break rules the game reads (tools/release/icu_data.py): 31.6 MB of data -> 0.5 MB.
-    icu_data.prepare_source(sources['icu'])
     icu_build = work / 'icu'
     if icu_build.exists():
         shutil.rmtree(icu_build)
@@ -102,14 +97,8 @@ def build_dependencies(jobs: int) -> Path:
          '--disable-tests', '--disable-samples', '--disable-extras', '--disable-icuio'], icu_build, icu_env)
     run(['make', f'-j{jobs}'], icu_build, icu_env)
     run(['make', 'install'], icu_build, icu_env)
-    check = work / 'icu_check'
-    run(['clang++', '-std=c++17', f'-I{prefix}/include', f'-I{ROOT}/tools/release', ROOT / 'tools/release/icu_check.cpp',
-         f'-L{prefix}/lib', '-licuuc', f'-Wl,-rpath,{prefix}/lib', '-o', check])
-    # RUNPATH covers the check's own libraries, not libicuuc's libicudata.
-    run([check], env=dict(os.environ, LD_LIBRARY_PATH=str(prefix / 'lib')))
     report.write_text(json.dumps({'schema': 'srw64.linux-runtime-dependencies.v1', 'sources': lock['sources'],
-                                  'icu_data': icu_data.digest(), 'prefix': str(prefix)}, indent=2) + '\n',
-                      encoding='utf-8')
+                                  'prefix': str(prefix)}, indent=2) + '\n', encoding='utf-8')
     return prefix
 
 

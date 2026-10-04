@@ -17,14 +17,11 @@ import argparse
 import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_probe import ROOT, MAIN_TREE, cmake_bin, ndk, llvm, sources  # noqa: E402
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-import icu_data  # noqa: E402
 
 API = 28
 TRIPLE = 'aarch64-linux-android'
@@ -36,8 +33,6 @@ def main() -> int:
     args = parser.parse_args()
     lock = json.loads((ROOT / 'config/recomp/macos-dependencies.json').read_text())
     src = sources(('freetype', 'harfbuzz', 'icu'))
-    # Only the break rules the game reads (tools/release/icu_data.py): 31.6 MB of data -> 0.5 MB.
-    icu_data.prepare_source(src['icu'])
     ndk_root = ndk()
     toolchain = llvm(ndk_root)
     tools = cmake_bin()
@@ -80,11 +75,7 @@ def main() -> int:
                        f'-DFREETYPE_INCLUDE_DIRS={prefix}/include/freetype2',
                        f'-DFREETYPE_LIBRARY={prefix}/lib/libfreetype.a'])
     icu = work / 'icu'
-    stamp = icu / 'srw64-icu-data.txt'
-    if icu.exists() and (not stamp.is_file() or stamp.read_text().strip() != icu_data.digest()):
-        shutil.rmtree(icu)   # built with other data
     icu.mkdir(exist_ok=True)
-    stamp.write_text(icu_data.digest() + '\n')
     env = {k: v for k, v in os.environ.items() if k not in ('CFLAGS', 'CXXFLAGS', 'CPPFLAGS', 'LDFLAGS')}
     env.update(CC=str(toolchain / f'bin/{TRIPLE}{API}-clang'), CXX=str(toolchain / f'bin/{TRIPLE}{API}-clang++'),
                AR=str(toolchain / 'bin/llvm-ar'), RANLIB=str(toolchain / 'bin/llvm-ranlib'),
