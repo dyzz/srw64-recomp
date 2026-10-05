@@ -147,7 +147,7 @@ def main() -> int:
     steps.run("build", ["cmake", "--build", str(build), "--target", "srw64-gfx-host", "--parallel", str(args.jobs)], source, env)
     # librashader for the RetroArch filters, loaded at run time (docs/native/bezels-and-filters.md).
     steps.run("librashader", [python, "tools/recomp/toolchain/fetch_librashader.py"], source, env)
-    librashader = source / "build/recomp/thirdparty/librashader"
+    librashader = source / "build/recomp/thirdparty/librashader/darwin"
     app_dir = output / "app"
     app_dir.mkdir()
     steps.run("package", [python, "tools/release/package_macos.py", "--binary", str(build / "srw64-gfx-host"),

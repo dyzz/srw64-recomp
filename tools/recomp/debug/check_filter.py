@@ -21,8 +21,10 @@ parser.add_argument('--reuse-build', action='store_true')
 parser.add_argument('--preset', default=str(SHADERS / 'crt/crt-lottes.slangp'))
 parser.add_argument('--multipass', default=str(SHADERS / 'crt/crt-guest-advanced.slangp'))
 parser.add_argument('--bezel', default=str(RA / 'overlays/borders/snes-lttp.cfg'))
+parser.add_argument('--vulkan', metavar='LIBRASHADER', help='run RT64 on Vulkan (MoltenVK on a Mac) with this librashader build')
 args = parser.parse_args()
-s = Session.launch(language='zh-Hans', images='hd', reuse_build=args.reuse_build)
+env = {'SRW64_GRAPHICS_API': 'vulkan', 'SRW64_LIBRASHADER': args.vulkan} if args.vulkan else None
+s = Session.launch(language='zh-Hans', images='hd', reuse_build=args.reuse_build, env=env)
 print('RUN', s.run, flush=True)
 checks = []
 def status():

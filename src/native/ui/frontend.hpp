@@ -14,7 +14,10 @@ bool event(SDL_Event&);
 uint32_t touch_buttons();
 void shutdown();
 void render_init(plume::RenderInterface*, plume::RenderDevice*);
-bool draw(plume::RenderCommandList*, plume::RenderFramebuffer*, bool name_cover);
+// layer: -1 every page; 0 those that belong to the game picture, drawn before a RetroArch
+// filter; 1 the rest (settings, notices, the bezel, the frame rate, touch buttons), after it
+// (docs/native/bezels-and-filters.md).
+bool draw(plume::RenderCommandList*, plume::RenderFramebuffer*, bool name_cover, int layer = -1);
 void presented();
 void render_shutdown();
 nlohmann::json tree();

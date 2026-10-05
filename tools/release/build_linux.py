@@ -184,6 +184,14 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
         run(['strip', '--strip-unneeded', library])
         run(['patchelf', '--set-rpath', '$ORIGIN', library])
     run(['patchelf', '--set-rpath', '$ORIGIN/lib', program])
+    # librashader for the RetroArch filters (docs/native/bezels-and-filters.md): compiled here
+    # from its pinned commit with Cargo and opened at run time, so it is not in the closure above.
+    run([sys.executable, ROOT / 'tools/recomp/toolchain/fetch_librashader.py'])
+    filters = ROOT / 'build/recomp/thirdparty/librashader/linux'
+    shutil.copyfile(filters / 'librashader.so', stage / 'lib/librashader.so')
+    run(['strip', '--strip-unneeded', stage / 'lib/librashader.so'])
+    run(['patchelf', '--set-rpath', '$ORIGIN', stage / 'lib/librashader.so'])
+    bundled['librashader.so'] = stage / 'lib/librashader.so'
     # The dynamic loader maps every bundled library before --help prints.
     clean = {k: v for k, v in os.environ.items() if k != 'LD_LIBRARY_PATH'}
     if 'Usage:' not in subprocess.run([program, '--play', '--help'], env=clean, capture_output=True, text=True).stdout:
@@ -214,6 +222,7 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
         name += '-hd'
     licenses = stage / 'licenses'
     licenses.mkdir()
+    shutil.copyfile(filters / 'LICENSE.md', licenses / 'librashader-LICENSE.md')
     for name_, pattern in (('sdl3', 'LICENSE.txt'), ('sdl2-compat', 'LICENSE.txt'), ('freetype', 'LICENSE.TXT'),
                            ('harfbuzz', 'COPYING'), ('icu', 'LICENSE')):
         found = sorted((ARCHIVES / name_).glob(f'*/{pattern}'))

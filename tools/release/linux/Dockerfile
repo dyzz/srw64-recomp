@@ -16,3 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Packaging: point the bundled libraries at each other ($ORIGIN) and inspect them.
 RUN apt-get update && apt-get install -y --no-install-recommends patchelf binutils file \
     && rm -rf /var/lib/apt/lists/*
+# Rust, for librashader (the RetroArch filters, tools/recomp/toolchain/fetch_librashader.py).
+ENV RUSTUP_HOME=/opt/rust CARGO_HOME=/opt/cargo PATH=/opt/cargo/bin:$PATH
+RUN curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain 1.97.1 --no-modify-path \
+    && chmod -R a+rwX /opt/rust /opt/cargo

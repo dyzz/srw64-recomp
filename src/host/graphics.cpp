@@ -157,15 +157,6 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
         color->setTexture(static_cast<const plume::MetalFramebuffer*>(framebuffer)->colorAttachments[0].getTexture());
         color->setLoadAction(MTL::LoadActionClear);color->setStoreAction(MTL::StoreActionStore);
         color->setClearColor(MTL::ClearColor(.028,.045,.07,1));
-    {
-        // A RetroArch preset over the picture and its dialogue, under the interface
-        // (post_filter.hpp); nothing while none is chosen.
-        const float width = float(framebuffer->getWidth()), height = float(framebuffer->getHeight());
-        const float scale = srw64::frame::scale(width, height), picture = srw64::frame::width(width, height);
-        const float w = picture * scale, h = srw64::frame::kHeight * scale;
-        srw64::post_filter::apply(list, framebuffer, int(std::lround((width - w) / 2)), int(std::lround((height - h) / 2)),
-                                  int(std::lround(w)), int(std::lround(h)), picture);
-    }
         name_commands->mtl->renderCommandEncoder(pass)->endEncoding();
         } else
 #endif
@@ -174,7 +165,21 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
             list->clearColor(0, RenderColor(.028f,.045f,.07f,1.f));
         }
     }
-    const bool ui_drawn=srw64::ui::draw(list,framebuffer,name_cover);
+    // With a RetroArch preset (post_filter.hpp): the pages that belong to the game picture,
+    // then the preset over the picture, its dialogue and those pages, then the rest of the
+    // interface (settings, notices, the bezel) sharp on top.
+    bool ui_drawn;
+    if(srw64::post_filter::active()) {
+        ui_drawn=srw64::ui::draw(list,framebuffer,name_cover,0);
+        const float width = float(framebuffer->getWidth()), height = float(framebuffer->getHeight());
+        const float scale = srw64::frame::scale(width, height), picture = srw64::frame::width(width, height);
+        const float w = picture * scale, h = srw64::frame::kHeight * scale;
+        srw64::post_filter::apply(list, framebuffer, int(std::lround((width - w) / 2)), int(std::lround((height - h) / 2)),
+                                  int(std::lround(w)), int(std::lround(h)), picture);
+        ui_drawn=srw64::ui::draw(list,framebuffer,name_cover,1) || ui_drawn;
+    } else {
+        ui_drawn=srw64::ui::draw(list,framebuffer,name_cover);
+    }
     srw64_after_gpu(list,[name_workload,name_cover,ui_drawn](bool completed) {
         if(ui_drawn)srw64::ui::presented();
         if(completed)srw64::names::cover_presented(name_workload,name_cover);
@@ -323,6 +328,12 @@ public:
             metal_backend = rhi->getCapabilities().shaderFormat == plume::RenderShaderFormat::METAL;
 #endif
             srw64::gpu::init(rhi, device);
+            {
+                const auto format = rhi->getCapabilities().shaderFormat;
+                using srw64::post_filter::Backend;
+                srw64::post_filter::init(format == plume::RenderShaderFormat::METAL ? Backend::metal :
+                                         format == plume::RenderShaderFormat::SPIRV ? Backend::vulkan : Backend::none, capture_directory);
+            }
             srw64::marker::gpu_init();
             srw64::hdmap::gpu_init();
             srw64::portraits::gpu_init();
@@ -335,12 +346,8 @@ public:
         }, capture_frame, [] {
             // Nothing is in flight after RT64's last present wait; settle the UI anyway.
             run_after_present(false);
+            srw64::post_filter::shutdown();
             srw64::marker::shutdown();
-#ifdef __APPLE__
-            srw64::post_filter::init(metal_backend, capture_directory);
-#else
-            srw64::post_filter::init(false, capture_directory);
-#endif
             srw64::hdmap::shutdown();
             srw64::portraits::shutdown();
             srw64::backgrounds::shutdown();
@@ -353,7 +360,6 @@ public:
         });
         RT64::SetRenderHookPresented([](unsigned long long) { run_after_present(true); });
         RT64::Application::Core core{};
-            srw64::post_filter::shutdown();
 #if defined(__APPLE__)
         core.window.window = handle.window;
         core.window.view = handle.view;

@@ -130,6 +130,7 @@ void NamePage::build() {
     body+="<div class='keys'>"+t(selection?"select_keyboard_hint":"review_keyboard_hint")+"</div>";
     body+="<button id='next'>"+t(selection?"select_confirm":"name_start")+"</button></div></div>";
     const std::string style=R"(
+layer-mark{display:block;width:0;height:0;}
 scrollbarvertical { width: 12dp; } scrollbarhorizontal { height: 12dp; }
 scrollbarvertical slidertrack, scrollbarhorizontal slidertrack { background-color: #122131; }
 scrollbarvertical sliderbar, scrollbarhorizontal sliderbar { background-color: #506d81; min-height: 16dp; min-width: 12dp; }
@@ -192,7 +193,7 @@ button:disabled { opacity: 0.45; }
 #next { background-color: #8fddf2; border-color: #8fddf2; color: #0a141e; }
 #next:hover, #next:focus { background-color: #b9ecf9; border-color: #b9ecf9; }
 )";
-    document=context.LoadDocumentFromMemory("<rml><head><style>"+style+locale_font_css(locale)+"</style></head><body>"+body+"</body></rml>");
+    document=context.LoadDocumentFromMemory("<rml><head><style>"+style+locale_font_css(locale)+"</style></head><body><layer-mark/>"+body+"</body></rml>");
     if(!document)throw std::runtime_error("Cannot build name page");
     document->AddEventListener("click",this);document->Show();context.Update();
 }

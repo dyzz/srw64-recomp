@@ -71,6 +71,46 @@ TextInput input;
 Rml::Context* context{};
 std::unique_ptr<NamePage> name_page;
 std::unique_ptr<SlantInstancer> slant_instancer;
+// Two passes over the pages (docs/native/bezels-and-filters.md): those that belong to the
+// game picture are drawn before a RetroArch filter, the rest after it. Every page starts
+// with a <layer-mark>, chrome='1' for the rest; its render tells the proxy below whose
+// geometry follows, and the proxy drops the other pass's.
+int layer_pass=-1,layer_now=0;
+class LayerMark:public Rml::Element {
+public:
+    using Rml::Element::Element;
+protected:
+    void OnRender() override {layer_now=GetAttribute<int>("chrome",0);}
+};
+Rml::ElementInstancerGeneric<LayerMark> layer_mark_instancer;
+class LayeredRender:public Rml::RenderInterface {
+    Rml::RenderInterface* real;
+    bool muted() const {return layer_pass>=0 && layer_now!=layer_pass;}
+public:
+    explicit LayeredRender(Rml::RenderInterface* to):real(to){}
+    Rml::CompiledGeometryHandle CompileGeometry(Rml::Span<const Rml::Vertex> v,Rml::Span<const int> i) override {return real->CompileGeometry(v,i);}
+    void RenderGeometry(Rml::CompiledGeometryHandle g,Rml::Vector2f t,Rml::TextureHandle x) override {if(!muted())real->RenderGeometry(g,t,x);}
+    void ReleaseGeometry(Rml::CompiledGeometryHandle g) override {real->ReleaseGeometry(g);}
+    Rml::TextureHandle LoadTexture(Rml::Vector2i& d,const Rml::String& s) override {return real->LoadTexture(d,s);}
+    Rml::TextureHandle GenerateTexture(Rml::Span<const Rml::byte> s,Rml::Vector2i d) override {return real->GenerateTexture(s,d);}
+    void ReleaseTexture(Rml::TextureHandle x) override {real->ReleaseTexture(x);}
+    void EnableScissorRegion(bool e) override {real->EnableScissorRegion(e);}
+    void SetScissorRegion(Rml::Rectanglei r) override {real->SetScissorRegion(r);}
+    void EnableClipMask(bool e) override {real->EnableClipMask(e);}
+    void RenderToClipMask(Rml::ClipMaskOperation o,Rml::CompiledGeometryHandle g,Rml::Vector2f t) override {real->RenderToClipMask(o,g,t);}
+    void SetTransform(const Rml::Matrix4f* m) override {real->SetTransform(m);}
+    Rml::LayerHandle PushLayer() override {return real->PushLayer();}
+    void CompositeLayers(Rml::LayerHandle s,Rml::LayerHandle d,Rml::BlendMode b,Rml::Span<const Rml::CompiledFilterHandle> f) override {real->CompositeLayers(s,d,b,f);}
+    void PopLayer() override {real->PopLayer();}
+    Rml::TextureHandle SaveLayerAsTexture() override {return real->SaveLayerAsTexture();}
+    Rml::CompiledFilterHandle SaveLayerAsMaskImage() override {return real->SaveLayerAsMaskImage();}
+    Rml::CompiledFilterHandle CompileFilter(const Rml::String& n,const Rml::Dictionary& p) override {return real->CompileFilter(n,p);}
+    void ReleaseFilter(Rml::CompiledFilterHandle f) override {real->ReleaseFilter(f);}
+    Rml::CompiledShaderHandle CompileShader(const Rml::String& n,const Rml::Dictionary& p) override {return real->CompileShader(n,p);}
+    void RenderShader(Rml::CompiledShaderHandle h,Rml::CompiledGeometryHandle g,Rml::Vector2f t,Rml::TextureHandle x) override {if(!muted())real->RenderShader(h,g,t,x);}
+    void ReleaseShader(Rml::CompiledShaderHandle h) override {real->ReleaseShader(h);}
+};
+std::unique_ptr<LayeredRender> layered;
 std::map<std::string,std::array<int,5>> art_bounds;  // opaque bounds and file width of unit art, by path
 std::vector<Rml::byte> font, chinese_font, english_font, symbol_font, prompt_font;
 std::map<std::string,std::string> images;
@@ -119,6 +159,7 @@ Rml::ElementDocument* mini_doc{};
 std::string mini_stamp;
 // The title screen's settings entry, for players with no menu bar (Steam Deck).
 Rml::ElementDocument* home_doc{};
+Rml::ElementDocument* home_chrome_doc{};   // the version and the settings entry, over a filter
 std::string home_stamp;
 // Every page's rebuild stamp, cleared when the hints change device.
 std::array<std::string*,14> all_stamps() {
@@ -238,6 +279,7 @@ scrollbarvertical { width: 12dp; } scrollbarhorizontal { height: 12dp; }
 scrollbarvertical slidertrack, scrollbarhorizontal slidertrack { background-color: #122131; }
 scrollbarvertical sliderbar, scrollbarhorizontal sliderbar { background-color: #506d81; min-height: 16dp; min-width: 12dp; }
 body { display: block; width: 100%; height: 100%; margin: 0; font-family: srw64-ui; font-size: 17dp; color: #d6e2ef; }
+layer-mark {display:block; width:0; height:0;}
 div,h1,h2,p { display: block; } h1 {font-size: 28dp; margin: 0 0 12dp;} h2 {font-size: 20dp; margin: 18dp 0 10dp;}
 p {color: #9eafc3; margin: 10dp 0;} .modal {background-color: #0b1421;} p.credit {font-size: 12dp; color: #7f8fa3; margin-top: 16dp;}
 .page {width: 88%; max-width: 1080dp; margin: 24dp auto; height: 90%; overflow-y: auto;}
@@ -730,9 +772,11 @@ void fit_lines(Rml::ElementDocument* doc) {
         doc->UpdateDocument();
     }
 }
-Rml::ElementDocument* document(const std::string& body,bool modal) {
-    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+body+"</body></rml>");
+// chrome: drawn over a RetroArch filter instead of under it (LayerMark above).
+Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=false) {
+    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"</body></rml>");
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
+    if(chrome)doc->SetAttribute("data-chrome","1");
     doc->AddEventListener("click",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);
     doc->UpdateDocument();fit_lines(doc);return doc;
 }
@@ -1040,7 +1084,7 @@ void bezel_sync() {
             const float u=frame::scale(float(pixels_w),float(pixels_h)),pw=frame::width(float(pixels_w),float(pixels_h))*u,ph=frame::kHeight*u;
             const auto r=bezel::place(b.w,b.h,b.hole,{(pixels_w-pw)/2,(pixels_h-ph)/2,pw,ph},float(pixels_w),float(pixels_h));
             const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
-            bezel_doc=document("<img src='"+escape(image(b.file))+"' style='position:absolute; left:"+px(r.x)+"; top:"+px(r.y)+"; width:"+px(r.w)+"; height:"+px(r.h)+";'/>",false);
+            bezel_doc=document("<img src='"+escape(image(b.file))+"' style='position:absolute; left:"+px(r.x)+"; top:"+px(r.y)+"; width:"+px(r.w)+"; height:"+px(r.h)+";'/>",false,true);
         } catch(const std::exception& error) {
             fprintf(stderr,"SRW64_BEZEL error=%s\n",error.what());
         }
@@ -2167,8 +2211,6 @@ void viewer_move(int dy,int dx) {
     const auto centre=[](Rml::Element* e){return e->GetAbsoluteLeft()+e->GetBox().GetSize(Rml::BoxArea::Border).x/2;};
     const float x=focus?centre(focus):0;
     for(int next=at+dy;next>=0 && next<int(rows.size());next+=dy) {
-        // The General page's bezel and filter rows and their picker.
-        (settings_pages[settings_page]==std::string("general")?look_stamp():std::string())+
         const auto to=buttons_of(rows[next]);
         if(to.empty())continue;
         auto* best=*std::min_element(to.begin(),to.end(),[&](Rml::Element* a,Rml::Element* b){return std::abs(centre(a)-x)<std::abs(centre(b)-x);});
@@ -2183,7 +2225,7 @@ void viewer_sync() {
     auto* focused=context->GetFocusElement();
     const std::string focus_id=!viewer_focus.empty()?viewer_focus:settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
     document_close(settings_doc);settings_stamp=stamp;settings_built=-1;viewer_focus.clear();
-    settings_doc=document(viewer_picker.empty()?viewer_panel():viewer_grid()?viewer_grid_panel():viewer_pick_panel(),true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+    settings_doc=document(viewer_picker.empty()?viewer_panel():viewer_grid()?viewer_grid_panel():viewer_pick_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
     settings_doc->UpdateDocument();
     auto* focus=focus_id.empty()?nullptr:settings_doc->GetElementById(focus_id);
     if(focus && focus->HasAttribute("disabled"))focus=nullptr;
@@ -2193,7 +2235,6 @@ void viewer_sync() {
         if(auto* grid=viewer_grid()?settings_doc->GetElementById("set-body"):nullptr;grid && grid->GetNumChildren())focus=grid->GetChild(0);
     }
     if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Center));}
-        body+=look_rows();
     if(focus && viewer_grid() && !pointer_mode && focus->GetId().starts_with("vw-pick:"))viewer_mark_card(std::stoi(focus->GetId().substr(8)));
 }
 void settings_sync() {
@@ -2203,7 +2244,7 @@ void settings_sync() {
         const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
         document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
-        settings_doc=document(library_panel(),true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc=document(library_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
         settings_doc->UpdateDocument();
         auto* tab=settings_doc->GetElementById("lib-tab:"+std::to_string(library_tab));
         if(library_tab_focus && tab)tab->Focus();
@@ -2218,7 +2259,7 @@ void settings_sync() {
         auto* focused=context->GetFocusElement();
         const std::string focus_id=!settings_focus.empty()?settings_focus:settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
         document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
-        settings_doc=document(mod_panel(),true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc=document(mod_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
         settings_doc->UpdateDocument();
         auto* focus=focus_id.empty() || focus_id=="first"?nullptr:settings_doc->GetElementById(focus_id);
         if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));}
@@ -2239,6 +2280,8 @@ void settings_sync() {
         // The セーブ page: its choices, the import folder as last read and the last result.
         [&]{const auto c=save_store::settings();return std::to_string(c.autosave)+std::to_string(c.intermission)+std::to_string(c.turn);}()+
         save_candidates.dump()+save_message+save_force+
+        // The General page's bezel and filter rows and their picker.
+        (settings_pages[settings_page]==std::string("general")?look_stamp():std::string())+
         // The Cheats page: its switches, the levels row and the pilots the menu lists.
         (settings_pages[settings_page]==std::string("cheats")?cheats_stamp():std::string());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -2263,6 +2306,7 @@ void settings_sync() {
         body+=settings_row("viewer_row",button("viewer-open",label("viewer_open")));
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
         body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
+        body+=look_rows();
         // A handheld plays full screen and has no window to size.
         if(!on_steam_deck()) {
             const auto window_state=window_menu_state();
@@ -2307,7 +2351,7 @@ void settings_sync() {
     body+="</div>";
     if(settings::failed())body+="<div class='set-error'>"+label("settings_error")+"</div>";
     body+="<div class='set-foot'><div class='set-hint'>"+label("settings_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div>"+capture_prompt()+"</div>";
-    settings_doc=document(body,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+    settings_doc=document(body,true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
     settings_doc->UpdateDocument();
     if(scroll>0)if(auto* page_body=settings_doc->GetElementById("set-body"))page_body->SetScrollTop(scroll);
     settings_built=int(settings_page);
@@ -3447,7 +3491,7 @@ void mini_sync() {
     const auto info=campaign::info();
     body+=entering?"<h2>"+label("mini_entering")+"</h2>":button("mini-enter",label(info?"dlc_start":"mini_enter"));
     body+="<p>"+escape(info?campaign_library::text(info->name,localization::catalog().locale):state.value("name",std::string{}))+"</p></div>";
-    mini_doc=document(body,entering);
+    mini_doc=document(body,entering,true);
 }
 // PRESS START and the ring menu (title 主状態 2 and 3): the settings window's entry, for
 // players with no menu bar. A controller shows the View button; a tap or click opens it.
@@ -3457,12 +3501,12 @@ bool touch_active();
 void home_sync() {
     const int major=intro::title_major();
     const bool settings_entry=pad_mode || !app_menu::available();
-    if((major!=2 && major!=3) || settings_open){document_close(home_doc);home_stamp.clear();return;}
+    if((major!=2 && major!=3) || settings_open){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
     // With touch controls the Library, MOD and settings are touch buttons along the top.
     const bool touch=touch_active();
     const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+(touch?"t":"")+frame_stamp();
-    if(home_doc && stamp==home_stamp)return;
-    document_close(home_doc);home_stamp=stamp;
+    if((home_doc || home_chrome_doc) && stamp==home_stamp)return;
+    document_close(home_doc);document_close(home_chrome_doc);home_stamp=stamp;
     // Library and MOD bottom right, lettered like the ring (menu_style: 14 game pixels, a
     // 1-pixel outline, a 0.8-pixel shadow); the settings entry top left.
     const float u=frame::scale(pixels_w,pixels_h);
@@ -3471,10 +3515,14 @@ void home_sync() {
         return "<button id='"+std::string(id)+"' class='home-mod' style='font-size:"+px(14)+"; font-effect:outline("+px(1)+" #0a0d17), shadow("+
             px(.8f)+" "+px(.8f)+" #00000073);'>"+label(key)+"</button>";
     };
-    std::string body=(touch?std::string():"<div class='home-corner'>"+lettered("library-open","library_open")+lettered("viewer-open","viewer_open")+(mod_entry_shown?lettered("mod-open","mod_open"):std::string())+"</div>")+
-        "<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
-    if(settings_entry && !touch)body+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
-    home_doc=document(body,false);
+    // The lettering belongs to the title picture: its corner is the picture's, so a 4:3
+    // picture keeps it inside (under a bezel's frame otherwise), and a filter reaches it.
+    const float pw=frame::width(pixels_w,pixels_h)*u,ph=frame::kHeight*u;
+    const auto corner="right:"+std::to_string(int((pixels_w-pw)/2+pw*.06f))+"px; bottom:"+std::to_string(int((pixels_h-ph)/2+ph*.06f))+"px;";
+    if(!touch)home_doc=document("<div class='home-corner' style='"+corner+"'>"+lettered("library-open","library_open")+lettered("viewer-open","viewer_open")+(mod_entry_shown?lettered("mod-open","mod_open"):std::string())+"</div>",false);
+    std::string chrome="<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
+    if(settings_entry && !touch)chrome+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
+    home_chrome_doc=document(chrome,false,true);
 }
 // The HD original (battle_ui "hd"): the original screen redrawn in its own 320x240
 // coordinates, like the intermission pages. Two panels (window layout 0x45, frame 1196;
@@ -3583,7 +3631,7 @@ void battle_sync() {
         const std::string stamp=next.value("original",false)?"original"+std::to_string(next.value("animation",true))+localization::catalog().locale:"";
         if(stamp!=original_stamp) {
             document_close(original_doc);original_stamp=stamp;
-            if(!stamp.empty())original_doc=document("<div class='bp-original'><div><span class='key'>"+escape(text::expand_prompts("{Anim}",prompt_context(pad_mode)))+"</span> "+label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>",false);
+            if(!stamp.empty())original_doc=document("<div class='bp-original'><div><span class='key'>"+escape(text::expand_prompts("{Anim}",prompt_context(pad_mode)))+"</span> "+label("battle_animation")+" \xc2\xb7 <b>"+label(next.value("animation",true)?"battle_on":"battle_off")+"</b></div></div>",false,true);
         }
         return;
     }
@@ -3964,7 +4012,7 @@ void fps_sync() {
         fps_window={now,lists,text};
     }
     const std::string stamp=fps_window.text+frame_stamp();
-    if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false);}
+    if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false,true);}
     if(fps_doc)fps_doc->PullToFront();
 }
 // Touch controls by scene on a phone (touch_pad.hpp, docs/design/touch-controls.md), or
@@ -4152,7 +4200,7 @@ void touch_sync() {
         body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
               face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+escape(text)+"</div>";
     }
-    touch_doc=document(body,false);
+    touch_doc=document(body,false,true);
     touch_doc->PullToFront();
 }
 void notices_sync() {
@@ -4162,13 +4210,15 @@ void notices_sync() {
     std::string stamp,body="<div id='notices'>";
     for(const auto& b:banners){stamp+=b.text+std::to_string(b.until);body+="<div class='banner'>"+escape(b.text)+"</div>";}
     body+="</div>";
-    if(stamp!=notice_stamp){document_close(notice_doc);notice_stamp=stamp;if(!banners.empty())notice_doc=document(body,false);}
+    if(stamp!=notice_stamp){document_close(notice_doc);notice_stamp=stamp;if(!banners.empty())notice_doc=document(body,false,true);}
     if(notice_doc)notice_doc->PullToFront();
 }
 void initialize() {
-    Rml::SetSystemInterface(&system);Rml::SetRenderInterface(renderer->get_rml_interface());
+    layered=std::make_unique<LayeredRender>(renderer->get_rml_interface());
+    Rml::SetSystemInterface(&system);Rml::SetRenderInterface(layered.get());
     if(!Rml::Initialise())throw std::runtime_error("Cannot initialize shared UI");
     initialized=true;
+    Rml::Factory::RegisterElementInstancer("layer-mark",&layer_mark_instancer);
     slant_instancer=std::make_unique<SlantInstancer>();Rml::Factory::RegisterDecoratorInstancer("slant",slant_instancer.get());
     const auto bytes=[](const std::filesystem::path& file){std::ifstream input(file,std::ios::binary);return std::vector<Rml::byte>{std::istreambuf_iterator<char>(input),{}};};
     std::filesystem::path path;
@@ -4691,18 +4741,29 @@ uint32_t touch_buttons() {
     return touch_held.load(std::memory_order_relaxed)|linger;
 }
 bool event(SDL_Event& e){auto lock=lock_ui();bool consumed=dispatch(e);if(e.type==SDL_TEXTEDITING_EXT)SDL_free(e.editExt.text);if(context){context->Update();input.flush_sdl();}return consumed;}
-bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,bool name_cover){
-    auto lock=lock_ui();if(!context || int(framebuffer->getWidth())!=pixels_w || int(framebuffer->getHeight())!=pixels_h)return false;
+// Set while this present's first pass is in flight: its second pass is part of the same
+// frame and must not wait for it (lock_ui waits for the previous frame's pages).
+bool first_pass_drawn=false;
+bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,bool name_cover,int layer){
+    const bool second=layer==1 && first_pass_drawn;
+    auto lock=second?std::unique_lock<std::mutex>(mutex):lock_ui();
+    first_pass_drawn=false;if(!context || int(framebuffer->getWidth())!=pixels_w || int(framebuffer->getHeight())!=pixels_h)return false;
     // The guest cover is workload keyed. Do not put a newly-opened page over an
     // older game workload that preceded interception of the guest name grid.
     if(names::request().visible && !name_cover)return false;
     // No page shown: skip the renderer, whose start and end clear, resolve and copy a
     // window-sized MSAA target, and leave the next lock_ui free of this GPU frame.
     bool shown=false;
-    for(int i=0;i<context->GetNumDocuments() && !shown;++i)shown=context->GetDocument(i)->IsVisible();
+    for(int i=0;i<context->GetNumDocuments() && !shown;++i) {
+        auto* doc=context->GetDocument(i);
+        shown=doc->IsVisible() && (layer<0 || doc->HasAttribute("data-chrome")==(layer==1));
+    }
     if(!shown)return false;
-    renderer->start(list,pixels_w,pixels_h);list->setFramebuffer(framebuffer);
+    layer_pass=layer;layer_now=0;
+    renderer->start(list,pixels_w,pixels_h,second);list->setFramebuffer(framebuffer);
     list->setViewports(plume::RenderViewport{0,0,float(pixels_w),float(pixels_h)});context->Render();renderer->end(list,framebuffer);
+    layer_pass=-1;
+    first_pass_drawn=layer==0;
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}

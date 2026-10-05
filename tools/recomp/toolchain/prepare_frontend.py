@@ -84,6 +84,35 @@ def prepare(fetch: bool = False) -> dict:
                             b"#else\n"
                             b"        const plume::RenderSampleCounts desired_sample_count = plume::RenderSampleCount::COUNT_4;\n"
                             b"#endif")
+    # Two passes on one command list: the pages under a RetroArch filter, then those over it
+    # (docs/native/bezels-and-filters.md). The second pass must keep the first's vertices and
+    # uploads, which start() would otherwise write over before the GPU reads them.
+    replacements = [
+        (b"    void start(plume::RenderCommandList* list, int image_width, int image_height) {\n",
+         b"    void start(plume::RenderCommandList* list, int image_width, int image_height, bool continue_frame = false) {\n"),
+        (b"        stale_buffers_.clear();\n\n        // Reset buffers.\n        reset_dynamic_buffer(upload_buffer_);\n"
+         b"        reset_dynamic_buffer(vertex_buffer_);\n        reset_dynamic_buffer(index_buffer_);\n",
+         b"        // SRW64: a second pass on the same command list maps the buffers again where the\n"
+         b"        // first left them; only a new command list starts them over.\n"
+         b"        if (continue_frame) {\n"
+         b"            for (DynamicBuffer *buffer : {&upload_buffer_, &vertex_buffer_, &index_buffer_})\n"
+         b"                buffer->mapped_data_ = reinterpret_cast<uint8_t*>(buffer->buffer_->map());\n"
+         b"        } else {\n"
+         b"        stale_buffers_.clear();\n\n        // Reset buffers.\n        reset_dynamic_buffer(upload_buffer_);\n"
+         b"        reset_dynamic_buffer(vertex_buffer_);\n        reset_dynamic_buffer(index_buffer_);\n        }\n"),
+        (b"void recompui::RmlRenderInterface_RT64::start(plume::RenderCommandList* list, int image_width, int image_height) {\n"
+         b"    assert(static_cast<bool>(impl));\n\n    impl->start(list, image_width, image_height);\n",
+         b"void recompui::RmlRenderInterface_RT64::start(plume::RenderCommandList* list, int image_width, int image_height, bool continue_frame) {\n"
+         b"    assert(static_cast<bool>(impl));\n\n    impl->start(list, image_width, image_height, continue_frame);\n"),
+    ]
+    for before, after in replacements:
+        if source.count(before) != 1:
+            raise RuntimeError("Pinned renderer start() no longer matches")
+        source = source.replace(before, after)
+    start = "        void start(plume::RenderCommandList* list, int image_width, int image_height);"
+    if header.count(start) != 1:
+        raise RuntimeError("Pinned renderer header start() no longer matches")
+    header = header.replace(start, "        void start(plume::RenderCommandList* list, int image_width, int image_height, bool continue_frame = false);")
     write_changed(OUTPUT / "ui_renderer.h", header.encode())
     write_changed(OUTPUT / "ui_renderer.cpp", source)
     report = {"schema": "srw64.frontend-adapter.v1", "commit": lock["commit"],

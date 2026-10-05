@@ -178,9 +178,9 @@ if(SRW64_ENABLE_RT64)
     # RetroArch shader presets through librashader, loaded at run time (post_filter.hpp);
     # tools/recomp/toolchain/fetch_librashader.py puts the library beside the host.
     target_sources(${SRW64_HOST_TARGET} PRIVATE post_filter.cpp)
-    if(APPLE AND EXISTS "${SRW64_BUILD}/thirdparty/librashader/librashader.dylib")
+    if(APPLE AND EXISTS "${SRW64_BUILD}/thirdparty/librashader/darwin/librashader.dylib")
         add_custom_command(TARGET ${SRW64_HOST_TARGET} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${SRW64_BUILD}/thirdparty/librashader/librashader.dylib" "$<TARGET_FILE_DIR:${SRW64_HOST_TARGET}>/librashader.dylib")
+            "${SRW64_BUILD}/thirdparty/librashader/darwin/librashader.dylib" "$<TARGET_FILE_DIR:${SRW64_HOST_TARGET}>/librashader.dylib")
     endif()
         target_link_libraries(${SRW64_HOST_TARGET} PRIVATE "-framework Cocoa")
         target_compile_options(${SRW64_HOST_TARGET} PRIVATE -fblocks)
