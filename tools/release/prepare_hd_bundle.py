@@ -64,7 +64,7 @@ def prepare(output: Path, art_manifest: Path = ART, marker: Path = MARKER, model
     pages = page_portraits(output / "art")
     shutil.copytree(marker, output / "native-marker")
     shutil.copytree(models, output / "native-models")
-    report = {"schema": "srw64.hd-bundle.v1", "distribution": "public: AI-generated art (Alibaba Cloud Qwen image models; world map and tactical maps: OpenAI image model via Codex) and images redrawn from the original graphics (unit poses, map unit icons, the tactical maps' palette-index maps); see NOTICE.txt",
+    report = {"schema": "srw64.hd-bundle.v1", "distribution": "public: AI-generated art (Alibaba Cloud Qwen and Wanx image models; world map, tactical maps and some battle cut-ins and extra unit images: OpenAI image model via Codex) and images redrawn from the original graphics (unit poses, map unit icons, battle cut-ins, props and ground textures, the tactical maps' palette-index maps); see NOTICE.txt",
               "art_source_sha256": sha(art_manifest.read_bytes()),
               "art": {key: art[key] for key in ("count", "portraits", "units", "unit_extras", "battle_sprites", "backgrounds", "scene_images", "tactical_maps")},
               "page_portraits": len(pages), "compressed": compressed,
