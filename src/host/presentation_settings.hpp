@@ -4,6 +4,7 @@
 #include <string>
 #include <optional>
 #include <string_view>
+#include <vector>
 #include "input_bindings.hpp"
 struct SDL_Window;
 namespace srw64::settings {
@@ -53,6 +54,22 @@ void set_wide_picture(bool wide);
 // (frame_rate.hpp, frontend.cpp). Off by default; saved as show_fps.
 bool show_fps();
 void set_show_fps(bool show);
+// Around the picture and over it (docs/native/bezels-and-filters.md). A bezel is a
+// RetroArch overlay image (a .png, or an overlay .cfg naming one) laid around the picture
+// while it is 4:3; a filter is a RetroArch slang shader preset (.slangp) run over the
+// picture through librashader (post_filter.hpp). Both are absolute paths, empty for none,
+// saved as bezel and filter. filter_scale is the picture's height the preset reads: 1-4
+// times the original 240 lines, or 0 for the window's own pixels; saved as filter_scale.
+std::string bezel();
+void set_bezel(const std::string& path);
+std::string filter();
+void set_filter(const std::string& path);
+unsigned filter_scale();
+void set_filter_scale(unsigned scale);
+// Where the pickers start: bezels/ and shaders/ in the player's folder, then RetroArch's
+// overlays and slang shaders where RetroArch is installed.
+std::vector<std::filesystem::path> bezel_roots();
+std::vector<std::filesystem::path> filter_roots();
 // The cheats page's switches (cheats.hpp), a mask of cheats::Switch. Saved as cheats,
 // a list of ids; SRW64_CHEATS for a run takes the place of the saved list.
 unsigned cheats();

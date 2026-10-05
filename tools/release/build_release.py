@@ -145,9 +145,13 @@ def main() -> int:
         f"-DSDL2_DIR={DEPS}/lib/cmake/SDL2", f"-DICU_ROOT={DEPS}", f"-Dharfbuzz_DIR={DEPS}/lib/cmake/harfbuzz",
         "-DSRW64_ENABLE_RT64=ON", "-DSRW64_METAL_SOURCE_SHADERS=ON", f"-DPython3_EXECUTABLE={python}"], source, env)
     steps.run("build", ["cmake", "--build", str(build), "--target", "srw64-gfx-host", "--parallel", str(args.jobs)], source, env)
+    # librashader for the RetroArch filters, loaded at run time (docs/native/bezels-and-filters.md).
+    steps.run("librashader", [python, "tools/recomp/toolchain/fetch_librashader.py"], source, env)
+    librashader = source / "build/recomp/thirdparty/librashader"
     app_dir = output / "app"
     app_dir.mkdir()
     steps.run("package", [python, "tools/release/package_macos.py", "--binary", str(build / "srw64-gfx-host"),
+        "--runtime-library", str(librashader / "librashader.dylib"), "--license-file", str(librashader / "LICENSE.md"),
         "--output", str(app_dir / "SRW64 Recompiled.app"), "--version", args.version, "--minimum-macos", "14.0",
         "--search-dir", str(DEPS / "lib"), "--runtime-library", str(DEPS / "lib/libSDL3.dylib"),
         "--fonts", str(source / "build/fonts"), "--dialogue", str(source / "content/dialogue")], source, env)

@@ -41,6 +41,7 @@
 #include "title_page.hpp"
 #include "native_dialogue.hpp"
 #endif
+#include "post_filter.hpp"
 #include "ultramodern/ultramodern.hpp"
 #include "librecomp/game.hpp"
 #include "rt64_render_hooks.h"
@@ -156,6 +157,15 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
         color->setTexture(static_cast<const plume::MetalFramebuffer*>(framebuffer)->colorAttachments[0].getTexture());
         color->setLoadAction(MTL::LoadActionClear);color->setStoreAction(MTL::StoreActionStore);
         color->setClearColor(MTL::ClearColor(.028,.045,.07,1));
+    {
+        // A RetroArch preset over the picture and its dialogue, under the interface
+        // (post_filter.hpp); nothing while none is chosen.
+        const float width = float(framebuffer->getWidth()), height = float(framebuffer->getHeight());
+        const float scale = srw64::frame::scale(width, height), picture = srw64::frame::width(width, height);
+        const float w = picture * scale, h = srw64::frame::kHeight * scale;
+        srw64::post_filter::apply(list, framebuffer, int(std::lround((width - w) / 2)), int(std::lround((height - h) / 2)),
+                                  int(std::lround(w)), int(std::lround(h)), picture);
+    }
         name_commands->mtl->renderCommandEncoder(pass)->endEncoding();
         } else
 #endif
@@ -326,6 +336,11 @@ public:
             // Nothing is in flight after RT64's last present wait; settle the UI anyway.
             run_after_present(false);
             srw64::marker::shutdown();
+#ifdef __APPLE__
+            srw64::post_filter::init(metal_backend, capture_directory);
+#else
+            srw64::post_filter::init(false, capture_directory);
+#endif
             srw64::hdmap::shutdown();
             srw64::portraits::shutdown();
             srw64::backgrounds::shutdown();
@@ -338,6 +353,7 @@ public:
         });
         RT64::SetRenderHookPresented([](unsigned long long) { run_after_present(true); });
         RT64::Application::Core core{};
+            srw64::post_filter::shutdown();
 #if defined(__APPLE__)
         core.window.window = handle.window;
         core.window.view = handle.view;

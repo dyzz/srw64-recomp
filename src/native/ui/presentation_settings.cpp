@@ -14,6 +14,9 @@
 #include <filesystem>
 #include <fstream>
 #include <stdexcept>
+#include <algorithm>
+#include <vector>
+#include <mutex>
 
 namespace srw64::settings {
 namespace {
@@ -62,6 +65,9 @@ constexpr bool fps_default=false;
 #endif
 std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true},fps_shown{fps_default};
 std::atomic<int> size_choice{-1};  // UiSize, or -1 until the player chooses
+std::mutex look_mutex;   // bezel and filter, read by the render thread
+std::string bezel_path,filter_path;
+std::atomic<unsigned> filter_lines{1};
 void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
@@ -70,6 +76,12 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
     auto cheat_ids=nlohmann::json::array();
     for(const auto& entry:srw64::cheats::catalog)if(srw64::cheats::active()&entry.bit)cheat_ids.push_back(entry.id);
     if(!cheat_ids.empty())saved["cheats"]=cheat_ids;
+    {
+        std::lock_guard lock(look_mutex);
+        if(!bezel_path.empty())saved["bezel"]=bezel_path;
+        if(!filter_path.empty())saved["filter"]=filter_path;
+    }
+    saved["filter_scale"]=filter_lines.load();
     srw64::app::atomic_write(path,saved.dump(2)+"\n");
 }
 void apply(const std::string& locale) {
@@ -118,6 +130,48 @@ void set_show_fps(bool show) {
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
+void save_now() {
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
+std::string bezel(){std::lock_guard lock(look_mutex);return bezel_path;}
+void set_bezel(const std::string& path){{std::lock_guard lock(look_mutex);bezel_path=path;}save_now();}
+std::string filter(){std::lock_guard lock(look_mutex);return filter_path;}
+void set_filter(const std::string& path){{std::lock_guard lock(look_mutex);filter_path=path;}save_now();}
+unsigned filter_scale(){return filter_lines.load();}
+void set_filter_scale(unsigned scale){filter_lines=std::min(scale,4u);save_now();}
+namespace {
+std::filesystem::path user_folder(){return destination.empty()?output:destination.parent_path();}
+// RetroArch's own folders where it is installed: its overlays and its slang shaders.
+std::vector<std::filesystem::path> retroarch_folders(const char* leaf) {
+    std::vector<std::filesystem::path> bases;
+    const auto env=[](const char* key){const char* v=std::getenv(key);return v?std::filesystem::path(v):std::filesystem::path();};
+#if defined(__APPLE__)
+    if(!env("HOME").empty())bases.push_back(env("HOME")/"Library/Application Support/RetroArch");
+#elif defined(_WIN32)
+    if(!env("APPDATA").empty())bases.push_back(env("APPDATA")/"RetroArch");
+    bases.push_back("C:/RetroArch-Win64");
+#else
+    if(!env("XDG_CONFIG_HOME").empty())bases.push_back(env("XDG_CONFIG_HOME")/"retroarch");
+    if(!env("HOME").empty()) {
+        bases.push_back(env("HOME")/".config/retroarch");
+        bases.push_back(env("HOME")/".var/app/org.libretro.RetroArch/config/retroarch");
+        bases.push_back(env("HOME")/".local/share/Steam/steamapps/common/RetroArch");
+    }
+#endif
+    std::vector<std::filesystem::path> found;
+    std::error_code error;
+    for(const auto& base:bases)if(std::filesystem::is_directory(base/leaf,error))found.push_back(base/leaf);
+    return found;
+}
+std::vector<std::filesystem::path> roots(const char* ours,const char* theirs) {
+    std::vector<std::filesystem::path> list{user_folder()/ours};
+    for(auto& folder:retroarch_folders(theirs))list.push_back(std::move(folder));
+    return list;
+}
+}
+std::vector<std::filesystem::path> bezel_roots(){return roots("bezels","overlays");}
+std::vector<std::filesystem::path> filter_roots(){return roots("shaders","shaders/shaders_slang");}
 unsigned cheats(){return srw64::cheats::active();}
 void set_cheats(unsigned switches) {
     srw64::cheats::set_active(switches);
@@ -173,6 +227,12 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
         if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();
+        if(saved.is_object()) {
+            std::lock_guard lock(look_mutex);
+            if(saved.contains("bezel") && saved["bezel"].is_string())bezel_path=saved["bezel"].get<std::string>();
+            if(saved.contains("filter") && saved["filter"].is_string())filter_path=saved["filter"].get<std::string>();
+            if(saved.contains("filter_scale") && saved["filter_scale"].is_number_unsigned())filter_lines=std::min(saved["filter_scale"].get<unsigned>(),4u);
+        }
         if(saved.is_object() && saved.contains("cheats") && saved["cheats"].is_array() && !std::getenv("SRW64_CHEATS")) {
             unsigned value=0;
             for(const auto& id:saved["cheats"])for(const auto& entry:srw64::cheats::catalog)if(id.is_string() && id.get<std::string>()==entry.id)value|=entry.bit;

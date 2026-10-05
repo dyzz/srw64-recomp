@@ -21,6 +21,7 @@
 #include "input_mode.hpp"
 #include "mini_stage.hpp"
 #include "presentation_settings.hpp"
+#include "post_filter.hpp"
 #include "presentation/image_mode.hpp"
 #include "rule_fixes.hpp"
 #include "settings_window.hpp"
@@ -178,7 +179,8 @@ json status(const json& params) {
         {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"battle_viewer",battle_viewer::state()},{"move_jump",move_jump::state()},{"enemy_cycle",enemy_cycle::state()},{"pad_held",pad().load()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
-                    {"settings_window",settings_window::visible()},{"ui",debug_ui::summary()}};
+                    {"settings_window",settings_window::visible()},{"ui",debug_ui::summary()},
+                    {"filter",[]{const auto f=post_filter::status();return json{{"available",f.available},{"loading",f.loading},{"preset",f.preset},{"error",f.error}};}()}};
     });
     state.update(window);
     return state;
@@ -285,6 +287,23 @@ json settings(const json& params) {
         const auto locale=params["locale"].get<std::string>();
         on_window([&]{settings::request_locale(locale);return json(nullptr);});
         done["locale"]=locale;
+    }
+    // Bezel and filter (docs/native/bezels-and-filters.md): absolute paths, "" for none.
+    if(params.contains("bezel")) {
+        const auto path=params["bezel"].get<std::string>();
+        on_window([&]{settings::set_bezel(path);return json(nullptr);});
+        done["bezel"]=path;
+    }
+    if(params.contains("filter")) {
+        const auto path=params["filter"].get<std::string>();
+        on_window([&]{settings::set_filter(path);return json(nullptr);});
+        done["filter"]=path;
+    }
+    if(params.contains("filter_scale")) {
+        const auto scale=params["filter_scale"].get<unsigned>();
+        if(scale>4)throw RpcError(InvalidParams,"filter_scale must be 0-4");
+        on_window([&]{settings::set_filter_scale(scale);return json(nullptr);});
+        done["filter_scale"]=scale;
     }
     return done;
 }

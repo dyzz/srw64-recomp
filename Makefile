@@ -94,7 +94,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-input-bindings-test recomp-button-prompts-test recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-script-skip-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-cheats-test recomp-rom-art-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test recomp-unit-name-test
+recomp-native-check: recomp-input-bindings-test recomp-button-prompts-test recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-script-skip-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-cheats-test recomp-bezel-test recomp-rom-art-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test recomp-unit-name-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -174,6 +174,12 @@ recomp-cheats-test:
 	mkdir -p build/recomp/cheats-test
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host tests/native_cheats.cpp -o build/recomp/cheats-test/test
 	build/recomp/cheats-test/test
+
+.PHONY: recomp-bezel-test
+recomp-bezel-test:
+	mkdir -p build/recomp/bezel-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host tests/native_bezel.cpp -o build/recomp/bezel-test/test
+	rm -rf build/recomp/bezel-test/run && build/recomp/bezel-test/test build/recomp/bezel-test/run
 
 .PHONY: recomp-link-battler-test
 recomp-link-battler-test:

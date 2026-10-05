@@ -32,6 +32,8 @@
 #include "steam_deck.hpp"
 #include "rule_fixes.hpp"
 #include "cheats.hpp"
+#include "bezel.hpp"
+#include "post_filter.hpp"
 #include "notices.hpp"
 #include "debug_ui.hpp"
 #include "debug_protocol.hpp"
@@ -50,6 +52,7 @@
 #include <condition_variable>
 #include <deque>
 #include <fstream>
+#include <map>
 #include <set>
 
 namespace srw64::ui {
@@ -954,6 +957,96 @@ std::string saves_page() {
 }
 // The Cheats page (docs/gameplay/cheats.md): five switches, then each pilot's level
 // behind a row that opens the list; levels change only while the インターミッション
+// Bezel and filter (docs/native/bezels-and-filters.md): a picker inside the General page
+// that walks the player's folder and RetroArch's, one level at a time.
+std::string browse_kind;            // "bezel", "filter" or empty while closed
+std::filesystem::path browse_dir;   // empty: the list of starting folders
+std::string browser() {
+    const bool bezels=browse_kind=="bezel";
+    const auto roots=bezels?settings::bezel_roots():settings::filter_roots();
+    const auto current=bezels?settings::bezel():settings::filter();
+    const auto row=[](const std::string& id,const std::string& text,bool on=false){return button(id,"<span class='set-name'>"+text+"</span>",on,false,"set-toggle nav");};
+    std::string out;
+    if(browse_dir.empty()) {
+        for(size_t i=0;i<roots.size();++i)
+            out+=row("browse-dir:"+roots[i].string(),label(i==0?(bezels?"settings_bezel_mine":"settings_filter_mine"):"settings_browse_retroarch")+" <span class='set-note'>"+escape(roots[i].string())+"</span>");
+        return out;
+    }
+    out+=row("browse-up",label("settings_browse_up")+" <span class='set-note'>"+escape(browse_dir.string())+"</span>");
+    std::vector<std::filesystem::path> folders,files;
+    std::error_code error;
+    for(std::filesystem::directory_iterator entry(browse_dir,error),end;!error && entry!=end;entry.increment(error)) {
+        const auto& path=entry->path();
+        auto extension=path.extension().string();
+        std::transform(extension.begin(),extension.end(),extension.begin(),[](unsigned char c){return char(std::tolower(c));});
+        if(entry->is_directory(error))folders.push_back(path);
+        else if(bezels?(extension==".png" || extension==".cfg"):extension==".slangp")files.push_back(path);
+    }
+    std::sort(folders.begin(),folders.end());std::sort(files.begin(),files.end());
+    for(const auto& folder:folders)out+=row("browse-dir:"+folder.string(),escape(folder.filename().string())+"/");
+    for(const auto& file:files)out+=row("browse-pick:"+file.string(),escape(file.stem().string()),file.string()==current);
+    if(folders.empty() && files.empty())out+="<p>"+label("settings_browse_empty")+"</p>";
+    return out;
+}
+// The General page's bezel and filter rows.
+std::string look_rows() {
+    std::string body;
+    const bool square=!settings::wide_picture();
+    const auto bezel=settings::bezel();
+    body+=settings_row("settings_bezel",button("bezel-off",label("settings_look_off"),bezel.empty(),!square)+
+        button("browse:bezel",bezel.empty()?label("settings_look_choose"):escape(std::filesystem::path(bezel).stem().string()),!bezel.empty(),!square),
+        square && browse_kind=="bezel"?browser():std::string());
+    const auto status=post_filter::status();
+    const auto filter=settings::filter();
+    std::string more;
+    if(!status.available)more+="<p class='set-note'>"+label("settings_filter_unavailable")+"</p>";
+    else if(status.loading)more+="<p class='set-note'>"+label("settings_filter_loading")+"</p>";
+    else if(!status.error.empty())more+="<p class='set-note'>"+label("settings_filter_error")+" "+escape(status.error.substr(0,status.error.find('\n')).substr(0,200))+"</p>";
+    if(status.available && browse_kind=="filter")more+=browser();
+    body+=settings_row("settings_filter",button("filter-off",label("settings_look_off"),filter.empty(),!status.available)+
+        button("browse:filter",filter.empty()?label("settings_look_choose"):escape(std::filesystem::path(filter).stem().string()),!filter.empty(),!status.available),more);
+    std::string scales;
+    for(const unsigned n:{1u,2u,4u,0u})
+        scales+=button("filter-scale:"+std::to_string(n),label("settings_filter_scale_"+std::to_string(n)),settings::filter_scale()==n,!status.available || filter.empty());
+    body+=settings_row("settings_filter_scale",scales);
+    return body;
+}
+std::string look_stamp() {
+    const auto status=post_filter::status();
+    return settings::bezel()+"|"+settings::filter()+"|"+std::to_string(settings::filter_scale())+"|"+browse_kind+"|"+browse_dir.string()+"|"+
+        std::to_string(status.available)+std::to_string(status.loading)+status.preset+status.error;
+}
+// The bezel under every other document while the picture is 4:3 and one is chosen.
+Rml::ElementDocument* bezel_doc=nullptr;
+std::string bezel_shown;
+void bezel_sync() {
+    const auto chosen=settings::bezel();
+    const bool on=!chosen.empty() && !settings::wide_picture();
+    const auto next=on?chosen+"|"+frame_stamp():std::string();
+    if(next!=bezel_shown) {
+        bezel_shown=next;
+        if(bezel_doc){bezel_doc->Close();bezel_doc=nullptr;}
+        if(on)try {
+            struct Seen {std::string file;int w,h;bezel::Hole hole;};
+            static std::map<std::string,Seen> seen;
+            auto found=seen.find(chosen);
+            if(found==seen.end()) {
+                const auto file=bezel::image_of(chosen);
+                if(file.empty())throw std::runtime_error("no overlay image in "+chosen);
+                const auto rgba=presentation::load_rgba(file);
+                found=seen.emplace(chosen,Seen{file.string(),rgba.width,rgba.height,bezel::find_hole(rgba.pixels.data(),rgba.width,rgba.height)}).first;
+            }
+            const auto& b=found->second;
+            const float u=frame::scale(float(pixels_w),float(pixels_h)),pw=frame::width(float(pixels_w),float(pixels_h))*u,ph=frame::kHeight*u;
+            const auto r=bezel::place(b.w,b.h,b.hole,{(pixels_w-pw)/2,(pixels_h-ph)/2,pw,ph},float(pixels_w),float(pixels_h));
+            const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
+            bezel_doc=document("<img src='"+escape(image(b.file))+"' style='position:absolute; left:"+px(r.x)+"; top:"+px(r.y)+"; width:"+px(r.w)+"; height:"+px(r.h)+";'/>",false);
+        } catch(const std::exception& error) {
+            fprintf(stderr,"SRW64_BEZEL error=%s\n",error.what());
+        }
+    }
+    if(bezel_doc)bezel_doc->PushToBack();
+}
 // menu is up.
 bool cheat_levels_open=false;
 std::string cheats_page() {
@@ -2074,6 +2167,8 @@ void viewer_move(int dy,int dx) {
     const auto centre=[](Rml::Element* e){return e->GetAbsoluteLeft()+e->GetBox().GetSize(Rml::BoxArea::Border).x/2;};
     const float x=focus?centre(focus):0;
     for(int next=at+dy;next>=0 && next<int(rows.size());next+=dy) {
+        // The General page's bezel and filter rows and their picker.
+        (settings_pages[settings_page]==std::string("general")?look_stamp():std::string())+
         const auto to=buttons_of(rows[next]);
         if(to.empty())continue;
         auto* best=*std::min_element(to.begin(),to.end(),[&](Rml::Element* a,Rml::Element* b){return std::abs(centre(a)-x)<std::abs(centre(b)-x);});
@@ -2098,6 +2193,7 @@ void viewer_sync() {
         if(auto* grid=viewer_grid()?settings_doc->GetElementById("set-body"):nullptr;grid && grid->GetNumChildren())focus=grid->GetChild(0);
     }
     if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Center));}
+        body+=look_rows();
     if(focus && viewer_grid() && !pointer_mode && focus->GetId().starts_with("vw-pick:"))viewer_mark_card(std::stoi(focus->GetId().substr(8)));
 }
 void settings_sync() {
@@ -2204,7 +2300,9 @@ void settings_sync() {
         // The HarmonyOS Sans licence asks for a visible notice wherever it is used.
         body+="<div class='set-about'><h2>SRW64</h2><div>"+escape(version)+"</div><h2>"+label("font_credit")+"</h2><div>"+label("settings_about_font")+"</div>"
             // PromptFont asks for an attribution in the credits.
-            "<h2>"+label("settings_about_prompts_title")+"</h2><div>"+label("settings_about_prompts")+"</div></div>";
+            "<h2>"+label("settings_about_prompts_title")+"</h2><div>"+label("settings_about_prompts")+"</div>"
+            // librashader is MPL 2.0; its licence ships beside the app (package_macos.py).
+            "<h2>librashader</h2><div>"+label("settings_about_librashader")+"</div></div>";
     }
     body+="</div>";
     if(settings::failed())body+="<div class='set-error'>"+label("settings_error")+"</div>";
@@ -3647,6 +3745,20 @@ void choose(const std::string& id) {
     }
     if(id.starts_with("save") && save_request.value("visible",false) && !settings_open) {
         const auto serial=save_request.at("serial").get<uint64_t>();const auto screen=save_request.value("screen",std::string());
+        if(id=="bezel-off"){settings::set_bezel("");browse_kind.clear();}
+        if(id=="filter-off"){settings::set_filter("");browse_kind.clear();}
+        if(id.starts_with("filter-scale:"))settings::set_filter_scale(unsigned(std::stoul(id.substr(13))));
+        if(id.starts_with("browse:")){const auto kind=id.substr(7);browse_kind=browse_kind==kind?std::string():kind;browse_dir.clear();}
+        if(id.starts_with("browse-dir:")){browse_dir=std::filesystem::path(id.substr(11));std::error_code error;std::filesystem::create_directories(browse_dir,error);}
+        if(id=="browse-up") {
+            const auto roots=browse_kind=="bezel"?settings::bezel_roots():settings::filter_roots();
+            browse_dir=std::find(roots.begin(),roots.end(),browse_dir)!=roots.end()?std::filesystem::path():browse_dir.parent_path();
+        }
+        if(id.starts_with("browse-pick:")) {
+            const auto path=id.substr(12);
+            if(browse_kind=="bezel")settings::set_bezel(path);else settings::set_filter(path);
+            browse_kind.clear();
+        }
         const unsigned mode=save_request.value("mode",0u);
         if(screen=="choice" && save_request.value("waiting",false))return;
         if(mode==2)return;
@@ -4239,7 +4351,7 @@ void sync() {
             pad_keys(pad_now,pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
-    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();
+    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_view"),
                       language->ui("menu_fullscreen"),language->ui("menu_window_scale")},window_menu_state());
     if(app_menu::take_settings_request())choose("settings-open");

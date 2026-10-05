@@ -175,6 +175,13 @@ if(SRW64_ENABLE_RT64)
         native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp)
     srw64_add_native_gpu_shaders(${SRW64_HOST_TARGET} "${SRW64_RT64}")
     if(APPLE)
+    # RetroArch shader presets through librashader, loaded at run time (post_filter.hpp);
+    # tools/recomp/toolchain/fetch_librashader.py puts the library beside the host.
+    target_sources(${SRW64_HOST_TARGET} PRIVATE post_filter.cpp)
+    if(APPLE AND EXISTS "${SRW64_BUILD}/thirdparty/librashader/librashader.dylib")
+        add_custom_command(TARGET ${SRW64_HOST_TARGET} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${SRW64_BUILD}/thirdparty/librashader/librashader.dylib" "$<TARGET_FILE_DIR:${SRW64_HOST_TARGET}>/librashader.dylib")
+    endif()
         target_link_libraries(${SRW64_HOST_TARGET} PRIVATE "-framework Cocoa")
         target_compile_options(${SRW64_HOST_TARGET} PRIVATE -fblocks)
     endif()

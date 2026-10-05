@@ -49,7 +49,8 @@ class SettingsWindowTests(unittest.TestCase):
                    "settings_ui_size": ("standard", "large", "largest"),
                    "settings_aspect": ("wide", "original"),
                    "settings_intermission_ui": ("native", "original"), "settings_name_entry_ui": ("native", "original"),
-                   "settings_title_ui": ("native", "original"), "settings_language": ()}
+                   "settings_title_ui": ("native", "original"), "settings_language": (),
+                   "settings_filter_scale": ("1", "2", "4", "0")}
         for locale in LOCALES:
             labels = ui(locale)
             for page in SETTINGS_PAGES:
@@ -69,6 +70,9 @@ class SettingsWindowTests(unittest.TestCase):
             for key in [k for k in labels if k.startswith("cheat_") and k not in ("cheat_levels_note", "cheat_levels_away")]:
                 for run in runs(labels[key]):   # beside the 38 dp switch, or a heading
                     self.assertLessEqual(em(run) * 15, row - 38 - 14, (locale, key, run))
+            for key in ("settings_bezel_note", "settings_filter_note", "settings_filter_unavailable", "settings_filter_loading"):
+                for run in runs(labels[key]):
+                    self.assertLessEqual(em(run) * 12, row, (locale, key, run))
             for key in ("cheats_note", "cheat_levels_note", "cheat_levels_away"):
                 for run in runs(labels[key]):
                     self.assertLessEqual(em(run) * 12, row, (locale, key, run))
