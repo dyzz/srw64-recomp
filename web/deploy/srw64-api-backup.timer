@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily copy of the MARCHWIND 64 suggestions database
+
+[Timer]
+OnCalendar=*-*-* 03:40 Asia/Shanghai
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { UI, langPaths, type Lang } from '../../../i18n';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`))).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const lead = { zh: '版本说明与制作记录。', en: 'Release notes, and how things were made.', ja: 'リリースノートと制作の記録。' };
+---
+<Base lang={lang} title={UI.nav.blog[lang]}>
+  <div class="wrap">
+    <header class="page-head">
+      <span class="tag">BLOG</span>
+      <h1>{UI.nav.blog[lang]}</h1>
+      <p>{lead[lang]}</p>
+    </header>
+    <ul class="list">
+      {posts.map((p) => (
+        <li>
+          <a class="panel item" href={`/${lang}/blog/${p.id.split('/')[1]}/`}>
+            <span class="dim latin">{p.data.date.toISOString().slice(0, 10)}{p.data.version && ` · v${p.data.version}`}</span>
+            <strong>{p.data.title}</strong>
+            <span class="muted">{p.data.summary}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; max-width: 820px; }
+  .item { display: grid; gap: 6px; padding: 22px 24px; color: var(--text); text-decoration: none !important; }
+  .item:hover { border-color: var(--cyan); }
+  .item strong { font-size: 20px; }
+</style>

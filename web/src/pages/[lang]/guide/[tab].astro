@@ -1,0 +1,41 @@
+---
+import GuideShell from '../../../components/GuideShell.astro';
+import { GUIDE_UI } from '../../../copy/guide';
+import { inline, isNumber, progression, reference } from '../../../lib/guide';
+import { LANGS, type Lang } from '../../../i18n';
+
+export async function getStaticPaths() {
+  return LANGS.flatMap((l) => reference(l.code).tabs.map((t: any) => ({ params: { lang: l.code, tab: t.id } })));
+}
+const lang = Astro.params.lang as Lang;
+const ui = GUIDE_UI[lang];
+const tab = reference(lang).tabs.find((t: any) => t.id === Astro.params.tab);
+const I = (x: unknown) => inline(x, ui.tags);
+const sources = progression(lang).sources ?? [];
+---
+<GuideShell lang={lang} tab={tab.id} title={tab.label} lead={tab.intro ? I(tab.intro) : undefined}>
+  <div class="shell">
+    {tab.blocks.map((b: any) => (
+      <section class="gcard ref">
+        {b.title && <h2>{b.title}</h2>}
+        {b.lead && <p class="lead" set:html={I(b.lead)} />}
+        {b.type === 'table' && <div class="gtable-wrap"><table class="gtable">
+          <thead><tr>{b.columns.map((c: string) => <th>{c}</th>)}</tr></thead>
+          <tbody>{b.rows.map((row: any[]) => <tr>{row.map((c) => <td class={isNumber(c) ? 'num' : undefined} set:html={I(c)} />)}</tr>)}</tbody>
+        </table></div>}
+        {b.type === 'list' && <ul class="dots">{b.items.map((x: string) => <li set:html={I(x)} />)}</ul>}
+        {b.notes?.length > 0 && <ul class="dots notes">{b.notes.map((x: string) => <li set:html={I(x)} />)}</ul>}
+      </section>
+    ))}
+  </div>
+  <Fragment slot="foot">{ui.sources}{sources.join(ui.sep)}</Fragment>
+</GuideShell>
+
+<style>
+  .shell { display: grid; gap: 12px; max-width: 1120px; }
+  .ref { padding: 18px; }
+  .ref h2 { margin: 0 0 12px; font-size: 15px; color: var(--gold); }
+  .lead { margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+  .notes { margin-top: 10px; }
+  .notes li { color: #c8d4ee; font-size: 13px; }
+</style>

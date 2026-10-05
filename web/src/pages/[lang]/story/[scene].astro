@@ -1,0 +1,253 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { LANGS, UI, type Lang } from '../../../i18n';
+import { library, scene as loadScene, storyGroups, storyIndex, type Line } from '../../../lib/data';
+
+export async function getStaticPaths() {
+  return LANGS.flatMap((l) => storyIndex().map((s) => ({ params: { lang: l.code, scene: String(s.scene) } })));
+}
+const lang = Astro.params.lang as Lang;
+const s = loadScene(Number(Astro.params.scene));
+const groups = storyGroups(lang);
+const all = storyIndex();
+const titleOf = (n: number) => all.find((x) => x.scene === n)?.title[lang] ?? `#${n}`;
+const t = {
+  stage: { zh: (n: string) => `第 ${n} 话`, en: (n: string) => `Stage ${n}`, ja: (n: string) => `第${n}話` },
+  prev: { zh: '上一话', en: 'Previous', ja: '前の話' },
+  next: { zh: '下一话', en: 'Next', ja: '次の話' },
+  translation: { zh: '译文', en: 'Translation', ja: '翻訳' },
+  original: { zh: '日文原文', en: 'Japanese', ja: '原文' },
+  show: { zh: '显示', en: 'Show', ja: '表示' },
+  hide: { zh: '隐藏', en: 'Hide', ja: '非表示' },
+  none: { zh: '不显示', en: 'None', ja: 'なし' },
+  hero: { zh: '主角', en: 'Hero', ja: '主人公' },
+  all: { zh: '全部', en: 'All', ja: 'すべて' },
+  routeHint: { zh: '随所选主角', en: 'Depends on your hero', ja: '主人公によって変化' },
+  suggest: { zh: '提意见', en: 'Suggest', ja: '意見' },
+  choice: { zh: '选择肢', en: 'Choice', ja: '選択肢' },
+  note: {
+    zh: '头像来自 HD 美术包；台词编号与游戏的台词文件一致，可以直接链接到某一句。原版剧本里各条路线写在一起，这里按段落标出路线。',
+    en: 'Portraits are from the HD art pack. Line numbers match the game’s dialogue files, so any line can be linked. The original script interleaves the routes; each passage is marked with its route.',
+    ja: '顔グラフィックは HD アートパックのものです。行番号はゲームのセリフファイルと同じで、各行に直接リンクできます。原作のスクリプトでは各ルートが混在しているため、段落ごとにルートを示しています。',
+  },
+};
+const heroes = (library().people.filter((p) => p.id >= 25 && p.id <= 32));
+const ROUTE_OF: Record<number, string> = { 25: 'ark', 26: 'selain', 27: 'brad', 28: 'manami', 29: 'ark', 30: 'selain', 31: 'brad', 32: 'manami' };
+const names: Record<string, Record<string, Record<Lang, string>>> = {};
+for (const p of heroes) {
+  const r = ROUTE_OF[p.id];
+  names[r] ??= {};
+  const who = p.id <= 28 ? 'Hero' : 'Partner';
+  names[r][`${who}Name`] = p.name; names[r][`${who}Nick`] = p.name; names[r][`${who}Full`] = p.full_name;
+  names[r][`${who}Surname`] = { ja: p.full_name.ja.split('・').pop()!, zh: p.full_name.zh.split('·').pop()!, en: p.full_name.en.split(' ').pop()! };
+}
+const PH: Record<string, Record<Lang, string>> = {
+  Hero: { zh: '〈主角〉', en: '⟨Hero⟩', ja: '〈主人公〉' },
+  Partner: { zh: '〈搭档〉', en: '⟨Partner⟩', ja: '〈パートナー〉' },
+  HeroMech: { zh: '〈主角机〉', en: '⟨Hero’s mech⟩', ja: '〈主人公機〉' },
+};
+const routeOrder = ['ark', 'selain', 'brad', 'manami'];
+const routeName = (r: string, l: Lang) => names[r]?.HeroName?.[l] ?? r;
+const esc = (x: string) => x.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+// Text with {HeroName}-style placeholders as spans the route filter can fill in.
+function rich(text: string, l: Lang) {
+  return esc(text).replace(/\{([A-Za-z]+)\}/g, (_, ph: string) => {
+    const label = ph === 'HeroMech' ? PH.HeroMech[l] : ph.startsWith('Partner') ? PH.Partner[l] : ph.startsWith('Hero') ? PH.Hero[l] : `{${ph}}`;
+    return `<span class="ph" data-ph="${ph}" data-label="${esc(label)}">${esc(label)}</span>`;
+  });
+}
+// Which routes each line belongs to: the latest route marker before it in its event.
+type Shown = { line: Line; routes: string | null; markerChange: boolean };
+const events = s.events.map((e) => {
+  let current: string[] | null = null;
+  let lastMarker = '';
+  const shown: Shown[] = [];
+  for (const line of e.lines) {
+    if (line.t === 'route') {
+      current = line.routes;
+      const change = line.marker !== lastMarker && !(line.marker === '3DD0' && lastMarker === '');
+      lastMarker = line.marker;
+      if (change) shown.push({ line, routes: current?.join(' ') ?? null, markerChange: true });
+      continue;
+    }
+    shown.push({ line, routes: current?.join(' ') ?? null, markerChange: false });
+  }
+  return { e, shown };
+});
+const trLangs = (lang === 'ja' ? ['en', 'zh'] : [lang, lang === 'zh' ? 'en' : 'zh']) as Lang[];
+const face = (id: number | null | undefined) => (id == null ? null : `/gen/portraits/${id}.webp`);
+const myGroup = groups.find((g) => g.scenes.some((x) => x.scene === s.scene));
+const pageTitle = `${s.episode ? t.stage[lang](s.episode.stage) + ' · ' : ''}${s.title[lang]}`;
+---
+<Base lang={lang} title={pageTitle} description={`${s.title.ja} · ${s.count}`}>
+  <div class="wrap layout" data-story data-lang={lang} data-scene={s.scene} data-names={JSON.stringify(names)}>
+    <aside class="side">
+      <a class="back" href={`/${lang}/story/`}>← {UI.nav.story[lang]}</a>
+      {groups.map((g) => (
+        <details open={g === myGroup}>
+          <summary>{g.title}</summary>
+          <ul>
+            {g.scenes.map((x) => (
+              <li><a href={`/${lang}/story/${x.scene}/`} aria-current={x.scene === s.scene ? 'page' : undefined}>
+                <span class="n latin">{x.episode?.stage ?? '·'}</span><span class="tt">{x.title[lang]}</span>
+              </a></li>
+            ))}
+          </ul>
+        </details>
+      ))}
+    </aside>
+
+    <main class="main">
+      <header class="head">
+        <div class="h1row">
+          {s.episode && <span class="tag">{t.stage[lang](s.episode.stage)}</span>}
+          <h1>{s.title[lang]}</h1>
+        </div>
+        {lang !== 'ja' && <p class="jt" lang="ja">{s.title.ja}</p>}
+        <p class="sub">
+          {s.episode?.lanes.map((l) => <span class="lane">{l[lang]}</span>)}
+          {s.previous.length > 0 && <span>{t.prev[lang]} {s.previous.map((n) => <a href={`/${lang}/story/${n}/`}>{titleOf(n)}</a>)}</span>}
+          {s.next.length > 0 && <span>{t.next[lang]} {s.next.map((n) => <a href={`/${lang}/story/${n}/`}>{titleOf(n)}</a>)}</span>}
+        </p>
+      </header>
+
+      <div class="controls" role="group">
+        <span class="lbl">{t.translation[lang]}</span>
+        <div class="seg" data-control="tr">
+          {trLangs.map((l, i) => <button type="button" data-value={l} aria-pressed={i === 0 ? 'true' : 'false'}>{LANGS.find((x) => x.code === l)!.label}</button>)}
+          {lang === 'ja' && <button type="button" data-value="none" aria-pressed="false">{t.none[lang]}</button>}
+        </div>
+        {lang !== 'ja' && <>
+          <span class="lbl">{t.original[lang]}</span>
+          <div class="seg" data-control="ja">
+            <button type="button" data-value="show" aria-pressed="true">{t.show[lang]}</button>
+            <button type="button" data-value="hide" aria-pressed="false">{t.hide[lang]}</button>
+          </div>
+        </>}
+        <span class="lbl">{t.hero[lang]}</span>
+        <div class="seg" data-control="route">
+          <button type="button" data-value="" aria-pressed="true">{t.all[lang]}</button>
+          {routeOrder.map((r) => <button type="button" data-value={r} aria-pressed="false">{routeName(r, lang)}</button>)}
+        </div>
+      </div>
+
+      {events.map(({ e, shown }) => (
+        <section class="event">
+          <div class="ev-head">
+            <span class={`tag ${e.phase === 'map' ? 'pink' : 'cyan'}`}>{e.label[lang]}</span>
+            {e.trigger && <span class="trigger">{e.trigger[lang]}</span>}
+          </div>
+          {shown.map(({ line, routes, markerChange }) => {
+            if (line.t === 'route') {
+              return markerChange ? <div class="route-mark" data-routes={routes ?? ''}><span>{line.label[lang]}</span></div> : null;
+            }
+            const anchor = `l${line.id}`;
+            if (line.t === 'choice') {
+              return (
+                <div class="line choice" id={anchor} data-routes={routes ?? ''} data-id={line.id}>
+                  <div class="face none" aria-hidden="true">?</div>
+                  <div class="body">
+                    <div class="who"><strong>{t.choice[lang]}</strong><a class="lid latin" href={`#${anchor}`}>@{line.id}</a><button type="button" class="act" data-suggest={line.id}>{t.suggest[lang]}</button></div>
+                    <ol class="ja" lang="ja">{(line.ja[0] ?? '').split('\n').map((o) => <li set:html={rich(o, 'ja')} />)}</ol>
+                    {trLangs.map((l) => <ol class={`tr tr-${l}`} lang={l === 'zh' ? 'zh-Hans' : l}>{(line[l][0] ?? '').split('\n').map((o) => <li set:html={rich(o, l)} />)}</ol>)}
+                  </div>
+                </div>
+              );
+            }
+            const cands = line.cands?.length ? JSON.stringify(Object.fromEntries(line.cands.filter((c) => c.route).map((c) => [c.route, { face: c.face, who: c.who }]))) : undefined;
+            const src = face(line.face ?? null);
+            return (
+              <div class={`line side-${line.side}`} id={anchor} data-routes={line.route ?? routes ?? ''} data-id={line.id} data-cands={cands}>
+                {src ? <img class="face" src={src} alt="" width="160" height="160" loading="lazy" /> : <div class="face none" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>}
+                <div class="body">
+                  <div class="who">
+                    <strong class="name" data-name={JSON.stringify(line.who)}>{line.who[lang]}</strong>
+                    {lang !== 'ja' && line.who.ja && line.who.ja !== line.who[lang] && <span class="wja" lang="ja">{line.who.ja}</span>}
+                    {line.cands?.length ? <span class="routey">{t.routeHint[lang]}</span> : null}
+                    <a class="lid latin" href={`#${anchor}`}>@{line.id}</a>
+                    <button type="button" class="act" data-suggest={line.id}>{t.suggest[lang]}</button>
+                  </div>
+                  <div class="ja" lang="ja">{line.ja.map((p) => <p set:html={rich(p, 'ja')} />)}</div>
+                  {trLangs.map((l) => <div class={`tr tr-${l}`} lang={l === 'zh' ? 'zh-Hans' : l}>{line[l].map((p) => <p set:html={rich(p, l)} />)}</div>)}
+                </div>
+              </div>
+            );
+          })}
+        </section>
+      ))}
+      <p class="foot">{t.note[lang]}</p>
+    </main>
+  </div>
+  <script>
+    import { initStory } from '../../../scripts/story';
+    initStory();
+  </script>
+  <script>
+    import { initSuggestions } from '../../../scripts/suggest';
+    initSuggestions();
+  </script>
+</Base>
+
+<style>
+  .layout { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; padding-top: 32px; padding-bottom: 24px; }
+  .side { flex: 1 1 250px; max-width: 290px; position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow-y: auto; font-size: 14px; }
+  .main { flex: 999 1 560px; min-width: 0; }
+  .back { display: inline-block; margin-bottom: 12px; }
+  details { margin-bottom: 6px; }
+  summary { cursor: pointer; padding: 6px 4px; font-size: 13px; font-weight: 700; color: var(--gold); }
+  .side ul { list-style: none; margin: 0; padding: 0; }
+  .side a { display: flex; gap: 8px; padding: 5px 8px; color: var(--muted); text-decoration: none; border-left: 2px solid transparent; }
+  .side a:hover { color: var(--text); background: var(--cyan-soft); }
+  .side a[aria-current] { color: #fff; background: rgba(255, 215, 94, 0.1); border-left-color: var(--gold); }
+  .side .n { width: 22px; flex-shrink: 0; color: var(--dim); }
+  .side .tt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .h1row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .head h1 { font-size: clamp(26px, 3.4vw, 36px); }
+  .jt { margin-top: 6px; color: var(--muted); }
+  .sub { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 14px; color: var(--dim); }
+  .sub a + a::before { content: ' / '; color: var(--dim); }
+  .lane { padding: 0 8px; font-size: 12px; color: var(--cyan); border: 1px solid rgba(63, 208, 255, 0.4); border-radius: 10px; }
+
+  .controls { position: sticky; top: 64px; z-index: 4; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin: 20px 0 8px; padding: 10px 14px; background: rgba(12, 18, 44, 0.96); border: 1px solid var(--line-soft); }
+  .lbl { font-size: 13px; color: var(--dim); margin-left: 6px; }
+  .seg { display: inline-flex; flex-wrap: wrap; border: 1px solid rgba(63, 208, 255, 0.3); border-radius: 4px; overflow: hidden; }
+  .seg button { min-height: 32px; padding: 0 12px; background: transparent; color: var(--muted); border: 0; font: 500 13px var(--sans); cursor: pointer; }
+  .seg button:hover { color: var(--text); }
+  .seg button[aria-pressed='true'] { background: var(--cyan); color: var(--ink); }
+
+  .event { margin-top: 30px; }
+  .ev-head { display: flex; align-items: center; gap: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(63, 208, 255, 0.3); }
+  .trigger { font-size: 14px; color: var(--muted); }
+  .route-mark { margin: 14px 0 0; display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--orange); }
+  .route-mark::after { content: ''; flex: 1; height: 1px; background: rgba(255, 181, 71, 0.3); }
+  .route-mark span { padding: 0 10px; border: 1px solid rgba(255, 181, 71, 0.5); border-radius: 10px; }
+
+  .line { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(63, 208, 255, 0.1); scroll-margin-top: 140px; }
+  .line:target { background: rgba(255, 215, 94, 0.06); box-shadow: inset 3px 0 0 var(--gold); }
+  .face { width: 64px; height: 64px; border-radius: 4px; object-fit: cover; background: var(--panel); border: 1px solid rgba(63, 208, 255, 0.25); }
+  .face.none { display: grid; place-items: center; color: #5d6890; font-weight: 700; }
+  .body { display: grid; gap: 4px; min-width: 0; }
+  .who { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .who .name { color: #8fe4ff; font-size: 15px; }
+  .side-1 .who .name, .side-2 .who .name { color: #ffc2dd; }
+  .wja { font-size: 12px; color: var(--dim); }
+  .routey { padding: 0 8px; font-size: 12px; color: var(--orange); border: 1px solid rgba(255, 181, 71, 0.5); border-radius: 10px; }
+  .lid { font-size: 12px; color: #5d6890; }
+  .act { margin-left: auto; height: 28px; padding: 0 12px; background: transparent; color: var(--muted); border: 1px solid rgba(63, 208, 255, 0.22); border-radius: 4px; font: 500 13px var(--sans); cursor: pointer; }
+  .act:hover { color: var(--text); border-color: var(--cyan); }
+  .act[data-count]::after { content: ' · ' attr(data-count); color: var(--gold); }
+  .ja { font-size: 14px; color: var(--dim); }
+  .tr { font-size: 17px; line-height: 1.7; }
+  .ja p, .tr p { margin: 0; }
+  .choice ol { margin: 0; padding-left: 1.4em; }
+  .ph { color: var(--gold); }
+  .foot { margin-top: 28px; font-size: 13px; color: #5d6890; }
+
+  /* Controls, set on the root by scripts/story.ts. */
+  [data-story] .tr { display: none; }
+  [data-story][data-tr='zh'] .tr-zh, [data-story][data-tr='en'] .tr-en { display: block; }
+  [data-story][data-ja='hide'] .ja { display: none; }
+  [data-story] .hidden-route { display: none; }
+  @media (max-width: 900px) { .side { position: static; max-width: none; max-height: none; } .controls { top: 0; } }
+</style>

@@ -1,0 +1,150 @@
+---
+import GuideShell from '../../../components/GuideShell.astro';
+import { GUIDE_UI, MAP_BOXES, MAP_EDGES } from '../../../copy/guide';
+import { hiddenElements, inline, progression } from '../../../lib/guide';
+import { langPaths, type Lang } from '../../../i18n';
+import { storyIndex } from '../../../lib/data';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const ui = GUIDE_UI[lang];
+const prog = progression(lang);
+const secrets = Object.fromEntries(hiddenElements(lang).entries.map((e: any) => [e.id, e]));
+const I = (x: unknown) => inline(x, ui.tags);
+const ROUTE: Record<string, string> = { oz: 'oz', cp: 'cp', common: 'common', super: 'super' };
+// Cards grouped by section, then by stage number, in data order.
+const sections: { name: string; rows: { stage: string; cards: any[] }[] }[] = [];
+for (const c of prog.cards) {
+  let s = sections.at(-1);
+  if (!s || s.name !== c.section) sections.push((s = { name: c.section, rows: [] }));
+  let r = s.rows.find((x) => x.stage === c.stage);
+  if (!r) s.rows.push((r = { stage: c.stage, cards: [] }));
+  r.cards.push(c);
+}
+const colors = ['var(--cyan)', '#b48cff', 'var(--orange)', 'var(--green)', '#2dd4bf', 'var(--gold)'];
+const [before, after] = ui.stage;
+// Each card links to its scene on the story pages (matched by the Japanese title).
+const sceneOf = new Map(storyIndex().map((s) => [s.title.ja, s.scene]));
+const readStory = { zh: '读这一话的剧情', en: 'Read this stage’s script', ja: 'この話のシナリオを読む' }[lang];
+---
+<GuideShell lang={lang} tab="flow" title={ui.flow} lead={ui.flow_lead}>
+  <ul class="legend">{ui.legend.map((t, i) => <li><span class="bd" style={`background:${colors[i]}`}></span>{t}</li>)}</ul>
+
+  <div class="intro">
+    <section class="gcard intro-card route-map">
+      <h2>{ui.route_map}</h2>
+      <svg viewBox="0 0 1000 270" role="img" aria-label={ui.route_map}>
+        <defs><marker id="rm-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5d6890" /></marker></defs>
+        <g marker-end="url(#rm-arrow)">{MAP_EDGES.map((d) => <path class="rm-edge" d={d} />)}</g>
+        {MAP_BOXES.map(([cls, x, y, w], i) => (
+          <g>
+            <rect class={cls} x={x} y={y} width={w} height="60" rx="9" />
+            <text x={x + Math.floor(w / 2)} y={y + 26} text-anchor="middle">{ui.map[i][0]}</text>
+            <text class="rm-sub" x={x + Math.floor(w / 2)} y={y + 44} text-anchor="middle">{ui.map[i][1]}</text>
+          </g>
+        ))}
+      </svg>
+    </section>
+    {(prog.intro?.boxes ?? []).map((b: any) => (
+      <section class="gcard intro-card"><h2>{b.title}</h2><ul class="dots">{b.items.map((x: string) => <li set:html={I(x)} />)}</ul></section>
+    ))}
+  </div>
+
+  {sections.map((s, n) => (
+    <section class="flow-section" id={`flow-${n + 1}`}>
+      <h2>{s.name}</h2>
+      {s.rows.map((r) => (
+        <div class={`flow-row ${r.cards.length >= 4 ? 'many' : ''}`}>
+          <div class="stage-number"><span>{before}</span><strong class="latin">{r.stage}</strong><span>{after}</span></div>
+          <div class="lanes">
+            {r.cards.map((c: any) => (
+              <article class="gcard stage-card" id={c.id}>
+                <header class="sc-head">
+                  <span class={`lane ${ROUTE[c.route] ?? ''}`}>{c.lane}</span>
+                  <h3>{c.title}</h3>
+                  {c.title_ja && c.title_ja !== c.title && <p class="src-title" lang="ja">{c.title_ja}</p>}
+                  {(c.victory || c.defeat) && <dl class="cond">
+                    {c.victory && <><dt>{ui.victory}</dt><dd set:html={I(c.victory)} /></>}
+                    {c.defeat && <><dt>{ui.defeat}</dt><dd set:html={I(c.defeat)} /></>}
+                  </dl>}
+                </header>
+                <div class="sc-body">
+                  {(c.joins?.length || c.joins_after?.length) && <section class="blk acquisition"><h4><span class="bd"></span>{ui.b_join}</h4>
+                    <ul class="dots">{(c.joins ?? []).map((x: string) => <li set:html={I(x)} />)}{(c.joins_after ?? []).map((x: string) => <li set:html={ui.after + I(x)} />)}</ul></section>}
+                  {c.temporary?.length > 0 && <section class="blk temporary"><h4><span class="bd"></span>{ui.b_temp}</h4><ul class="dots">{c.temporary.map((x: string) => <li set:html={I(x)} />)}</ul></section>}
+                  {c.leaves?.length > 0 && <section class="blk availability"><h4><span class="bd"></span>{ui.b_leave}</h4><ul class="dots">{c.leaves.map((x: string) => <li set:html={I(x)} />)}</ul></section>}
+                  {c.upgrades?.length > 0 && <section class="blk upgrade"><h4><span class="bd"></span>{ui.b_upgrade}</h4><ul class="dots">{c.upgrades.map((x: string) => <li set:html={I(x)} />)}</ul></section>}
+                  {c.parts?.length > 0 && <section class="blk parts"><h4><span class="bd"></span>{ui.b_parts}</h4><ul class="dots">{c.parts.map((p: any) => <li>{p.part} <span class="from" set:html={'← ' + I(p.from)} />{p.note && <span class="pnote">{ui.paren.replace('{}', p.note)}</span>}</li>)}</ul></section>}
+                  {c.secrets?.length > 0 && <section class="blk hidden-progress"><h4><span class="bd"></span>{ui.b_secret}</h4><ul class="dots">{c.secrets.map((x: any) => <li><a href={`/${lang}/guide/hidden-elements/#${x.ref}`}>{secrets[x.ref]?.title ?? x.ref}</a><p set:html={I(x.text)} /></li>)}</ul></section>}
+                  {c.notes?.length > 0 && <section class="blk notes"><h4><span class="bd"></span>{ui.b_notes}</h4><ul class="dots">{c.notes.map((x: string) => <li set:html={I(x)} />)}</ul></section>}
+                  {sceneOf.has(c.title_ja) && <a class="read" href={`/${lang}/story/${sceneOf.get(c.title_ja)}/`}>{readStory} →</a>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+  ))}
+
+  <Fragment slot="foot">{ui.sources}{(prog.sources ?? []).join(ui.sep)}</Fragment>
+</GuideShell>
+
+<style>
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0 0 18px; padding: 0; list-style: none; color: var(--muted); font-size: 13px; }
+  .legend li { display: flex; align-items: center; gap: 6px; }
+  .bd { display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: var(--muted); }
+  .intro { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 32px; }
+  .intro-card { padding: 16px 18px; }
+  .intro-card h2 { margin: 0 0 8px; font-size: 13px; color: var(--muted); letter-spacing: 0.06em; }
+  .route-map { grid-column: 1 / -1; overflow-x: auto; }
+  .route-map svg { display: block; width: 100%; min-width: 720px; height: auto; }
+  .route-map :global(rect) { fill: rgba(63, 208, 255, 0.06); stroke: #2a3b66; }
+  .route-map :global(.rm-ia) { fill: rgba(63, 208, 255, 0.14); stroke: rgba(63, 208, 255, 0.6); }
+  .route-map :global(.rm-oz) { fill: rgba(255, 181, 71, 0.12); stroke: rgba(255, 181, 71, 0.6); }
+  .route-map :global(.rm-cp) { fill: rgba(87, 227, 137, 0.1); stroke: rgba(87, 227, 137, 0.6); }
+  .route-map :global(.rm-end) { fill: rgba(180, 140, 255, 0.12); stroke: rgba(180, 140, 255, 0.6); }
+  .route-map text { fill: var(--text); font-size: 12px; }
+  .route-map .rm-sub { fill: var(--muted); font-size: 10.5px; }
+  .rm-edge { stroke: #5d6890; fill: none; stroke-width: 1.4; }
+
+  .flow-section { margin: 0 0 44px; scroll-margin-top: 120px; }
+  .flow-section > h2 { margin: 0 0 12px; padding: 0 0 9px; border-bottom: 1px solid var(--g-line); font-size: 14px; letter-spacing: 0.06em; color: var(--gold); }
+  .flow-row { --lane-min: 300px; display: grid; grid-template-columns: 60px 1fr; gap: 10px; margin: 0 0 10px; }
+  .flow-row.many { --lane-min: 230px; }
+  .stage-number { position: sticky; top: 124px; align-self: start; min-height: 78px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; border: 1px solid var(--g-line); border-radius: 6px; background: var(--g-card); }
+  .stage-number strong { font-size: 24px; color: var(--gold); }
+  .stage-number span { font-size: 11px; color: var(--dim); margin: 2px 0; }
+  .lanes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--lane-min)), 1fr)); gap: 10px; }
+  .stage-card { overflow: hidden; scroll-margin-top: 124px; }
+  .stage-card:target { outline: 2px solid var(--gold); }
+  .sc-head { padding: 14px 16px 12px; border-bottom: 1px solid var(--g-line); }
+  .lane { display: inline-flex; padding: 1px 9px; border: 1px solid rgba(63, 208, 255, 0.5); border-radius: 999px; color: #8fe4ff; font-size: 12px; font-weight: 600; }
+  .lane.oz { color: var(--orange); border-color: rgba(255, 181, 71, 0.6); }
+  .lane.cp { color: var(--green); border-color: rgba(87, 227, 137, 0.6); }
+  .lane.common { color: var(--muted); border-color: #3a4a74; }
+  .lane.super { color: #ff8fa3; border-color: rgba(255, 111, 168, 0.6); }
+  .sc-head h3 { margin: 7px 0 0; font-size: 17px; line-height: 1.35; }
+  .src-title { font-size: 13px; color: var(--dim); }
+  .cond { display: grid; grid-template-columns: auto 1fr; gap: 3px 9px; margin: 9px 0 0; font-size: 13px; }
+  .cond dt { color: var(--dim); font-weight: 600; }
+  .cond dd { margin: 0; }
+  .sc-body { padding: 2px 16px 10px; }
+  .blk { padding: 10px 0; border-top: 1px solid var(--g-line); }
+  .blk:first-child { border-top: 0; }
+  .blk h4 { display: flex; align-items: center; gap: 7px; margin: 0 0 4px; font-size: 13px; color: var(--muted); }
+  .acquisition h4 { color: var(--cyan); } .acquisition .bd { background: var(--cyan); }
+  .temporary h4 { color: #b48cff; } .temporary .bd { background: #b48cff; }
+  .availability h4 { color: var(--orange); } .availability .bd { background: var(--orange); }
+  .upgrade h4 { color: var(--green); } .upgrade .bd { background: var(--green); }
+  .parts h4 { color: #2dd4bf; } .parts .bd { background: #2dd4bf; }
+  .hidden-progress h4 { color: var(--gold); } .hidden-progress .bd { background: var(--gold); }
+  .from, .pnote { color: var(--dim); }
+  .pnote { font-size: 12px; }
+  .hidden-progress a { color: var(--gold); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .hidden-progress p { margin: 2px 0 0; color: #c8d4ee; }
+  .notes li { color: #c8d4ee; }
+  .read { display: inline-block; margin: 6px 0 2px; font-size: 13px; }
+  @media (max-width: 900px) { .intro { grid-template-columns: 1fr; } }
+  @media (max-width: 620px) { .flow-row { grid-template-columns: 44px 1fr; gap: 7px; } .stage-number { top: 118px; min-height: 66px; } .stage-number strong { font-size: 18px; } }
+</style>

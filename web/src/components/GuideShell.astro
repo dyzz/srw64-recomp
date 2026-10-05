@@ -1,0 +1,82 @@
+---
+// Frame for every guide page: title, the tab bar (one page per tab, so each has its
+// own address), the badge legend and the offline single-file guide. Styles follow
+// the offline guide (tools/content/build_guide.py) on the site's palette.
+import Base from '../layouts/Base.astro';
+import { GUIDE_UI } from '../copy/guide';
+import { guideTabs } from '../lib/guide';
+import { UI, type Lang } from '../i18n';
+interface Props { lang: Lang; tab: string; title: string; lead?: string; }
+const { lang, tab, title, lead } = Astro.props;
+const ui = GUIDE_UI[lang];
+const tabs = guideTabs(lang, ui);
+const AKURASU = 'https://akurasu.net/wiki/Super_Robot_Wars/64';
+const thanks = {
+  zh: `致谢：本攻略逐条对照了 <a href="${AKURASU}" rel="noopener">Akurasu Wiki 的《超级机器人大战64》页面</a>（流程图、隐藏要素等），感谢 Akurasu 的作者与编辑者多年的整理。正文以本项目对游戏脚本的解析为准，与之不同或其未载之处已用徽标标出。`,
+  en: `Thanks to Akurasu: every page of this guide was checked against the <a href="${AKURASU}" rel="noopener">Akurasu Wiki’s Super Robot Wars 64 pages</a> (flow chart, secrets and more), and we are grateful to everyone who has written and kept them up over the years. The text follows this project’s reading of the game’s scripts; where it differs from Akurasu, or covers something Akurasu does not, a badge says so.`,
+  ja: `謝辞：本攻略は <a href="${AKURASU}" rel="noopener">Akurasu Wiki の『スーパーロボット大戦64』のページ</a>（フローチャート・隠し要素など）と一項目ずつ照らし合わせて作成しました。長年まとめてこられた Akurasu の執筆者・編集者の皆さまに感謝します。本文は本プロジェクトによるゲームスクリプトの解析に基づき、Akurasu との相違点や未記載の点はバッジで示しています。`,
+};
+const t = {
+  offline: { zh: '下载离线版（单个网页文件，三语）', en: 'Offline copy (one HTML file, three languages)', ja: 'オフライン版（HTML 1 ファイル・3 言語）' },
+};
+---
+<Base lang={lang} title={`${title} · ${UI.nav.guide[lang]}`} description={ui.title}>
+  <div class="guide">
+    <nav class="gtabs" aria-label={ui.nav}>
+      <div class="wrap gtabs-in">
+        {tabs.map((x) => <a href={x.href} aria-current={x.id === tab ? 'page' : undefined}>{x.label}</a>)}
+      </div>
+    </nav>
+    <div class="wrap">
+      <header class="ghead">
+        <div>
+          <p class="kicker">{ui.title}</p>
+          <h1>{title}</h1>
+          {lead && <p class="lead" set:html={lead} />}
+          <ul class="gtag-legend">{Object.entries(ui.tags).map(([k, v]) => <li><span class={`gtag ${k}`}>{v}</span></li>)}</ul>
+          <p class="thanks" set:html={thanks[lang]} />
+        </div>
+        <a class="offline" href="/downloads/marchwind64-guide.html" download>{t.offline[lang]} ↓</a>
+      </header>
+      <slot />
+      <footer class="gfoot"><slot name="foot" /></footer>
+    </div>
+  </div>
+</Base>
+
+<style is:global>
+  .guide { --g-card: #0f1736; --g-line: rgba(63, 208, 255, 0.16); --g-dot: #5d6890; }
+  .gtabs { position: sticky; top: 64px; z-index: 15; background: rgba(7, 11, 29, 0.94); border-bottom: 1px solid var(--g-line); }
+  .gtabs-in { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .gtabs-in::-webkit-scrollbar { display: none; }
+  .gtabs a { flex: 0 0 auto; padding: 12px 14px; color: var(--muted); font-size: 14px; font-weight: 600; white-space: nowrap; border-bottom: 2px solid transparent; text-decoration: none; }
+  .gtabs a:hover { color: var(--text); }
+  .gtabs a[aria-current] { color: var(--text); border-bottom-color: var(--gold); }
+  .ghead { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px 24px; padding: 28px 0 22px; }
+  .ghead .kicker { font-size: 13px; color: var(--dim); }
+  .ghead h1 { font-size: clamp(26px, 3.4vw, 36px); margin-top: 4px; }
+  .ghead .lead { margin-top: 8px; max-width: 860px; color: var(--muted); font-size: 15px; }
+  .ghead .offline { font-size: 14px; white-space: nowrap; }
+  .gtag-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 10px 0 0; padding: 0; list-style: none; }
+  .gtag { display: inline-flex; margin-left: 6px; padding: 0 6px; border: 1px solid; border-radius: 999px; font-size: 11px; font-weight: 700; vertical-align: 1px; white-space: nowrap; line-height: 1.6; }
+  .gtag-legend .gtag { margin-left: 0; }
+  .gtag.diff { color: #ff8fa3; border-color: rgba(255, 111, 168, 0.55); background: rgba(255, 111, 168, 0.1); }
+  .gtag.new { color: #8fe4ff; border-color: rgba(63, 208, 255, 0.55); background: rgba(63, 208, 255, 0.1); }
+  .gtag.unverified { color: var(--gold); border-color: rgba(255, 215, 94, 0.55); background: rgba(255, 215, 94, 0.08); }
+  .ghead .thanks { margin-top: 12px; max-width: 860px; padding: 10px 14px; font-size: 13px; line-height: 1.7; color: var(--muted); background: rgba(63, 208, 255, 0.06); border-left: 3px solid var(--cyan); }
+  .ghead .thanks a { text-decoration: underline; text-underline-offset: 3px; }
+  .gfoot { margin: 40px 0 0; padding-top: 14px; border-top: 1px solid var(--g-line); color: var(--dim); font-size: 13px; }
+
+  /* Lists with small dots, as in the offline guide. */
+  .guide .dots { list-style: none; margin: 0; padding: 0; }
+  .guide .dots li { position: relative; padding: 4px 0 4px 14px; font-size: 14px; line-height: 1.6; }
+  .guide .dots li::before { content: ''; position: absolute; left: 1px; top: 0.85em; width: 4px; height: 4px; border-radius: 50%; background: var(--g-dot); }
+  .guide .gcard { background: var(--g-card); border: 1px solid var(--g-line); border-radius: 6px; min-width: 0; }
+
+  /* Reference tables. */
+  .guide .gtable-wrap { overflow-x: auto; border: 1px solid var(--g-line); border-radius: 6px; }
+  .guide .gtable { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .guide .gtable th { padding: 9px 11px; background: rgba(63, 208, 255, 0.07); color: var(--muted); font-size: 12px; text-align: left; white-space: nowrap; }
+  .guide .gtable td { padding: 9px 11px; border-top: 1px solid var(--g-line); vertical-align: top; white-space: pre-line; }
+  .guide .gtable td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+</style>

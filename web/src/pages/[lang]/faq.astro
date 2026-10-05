@@ -1,0 +1,35 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { langPaths, type Lang } from '../../i18n';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const entry = (await getEntry('pages', `faq/${lang}`))!;
+const { Content, headings } = await render(entry);
+---
+<Base lang={lang} title={entry.data.title}>
+  <div class="wrap">
+    <header class="page-head">
+      <span class="tag">FAQ</span>
+      <h1>{entry.data.title}</h1>
+      {entry.data.lead && <p>{entry.data.lead}</p>}
+    </header>
+    <div class="faq">
+      <nav class="toc" aria-label={entry.data.title}>
+        <ul>{headings.filter((h) => h.depth === 2).map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul>
+      </nav>
+      <article class="prose"><Content /></article>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .faq { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 48px; align-items: start; }
+  .toc { position: sticky; top: 88px; font-size: 14px; }
+  .toc ul { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--line); display: grid; gap: 8px; }
+  .toc a { color: var(--muted); }
+  .toc a:hover { color: var(--text); }
+  .prose :global(h2:first-child) { margin-top: 0; }
+  @media (max-width: 860px) { .faq { grid-template-columns: 1fr; } .toc { position: static; } }
+</style>

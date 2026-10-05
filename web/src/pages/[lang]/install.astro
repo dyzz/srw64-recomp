@@ -1,0 +1,122 @@
+---
+import Base from '../../layouts/Base.astro';
+import { INSTALL } from '../../copy/install';
+import { langPaths, type Lang } from '../../i18n';
+import { fileFor, mb, release, type Platform } from '../../data/release';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const c = INSTALL[lang];
+const fill = (s: string) =>
+  s.replace(/\{(windows|macos|linux|hd)\}/g, (_, p: Platform) => fileFor(p)!.name);
+const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', linux: 'linux', 'steam-deck': 'linux', android: 'android', hd: 'hd' };
+---
+<Base lang={lang} title={c.title}>
+  <div class="wrap">
+    <header class="page-head">
+      <span class="tag">INSTALL · v{release.version}</span>
+      <h1>{c.title}</h1>
+      <p>{c.lead}</p>
+      <p class="rom" set:html={c.rom} />
+    </header>
+
+    <ul class="quick">
+      {c.sections.map((s) => (
+        <li>
+          <a href={`#${s.id}`}>
+            <strong>{s.name}</strong>
+            {s.experimental && <span class="exp">{c.experimental}</span>}
+            <span class="muted">{s.summary}</span>
+            <span class="go">{c.viewSteps} ↓</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    {c.sections.map((s) => {
+      const f = fileFor(fileOf[s.id]);
+      return (
+        <section class="plat" id={s.id}>
+          <div class="plat-head">
+            <h2>{s.name}{s.experimental && <span class="exp">{c.experimental}</span>}</h2>
+            <p class="dim">{c.requires}{s.requires}</p>
+            {f ? (
+              <a class="btn" href={f.url}>
+                <span>{f.name}<small>{mb(f.bytes)}</small></span>
+              </a>
+            ) : <p class="nofile">{c.noFile}</p>}
+          </div>
+          <ol class="steps">
+            {s.steps.map((step, i) => (
+              <li><span class="n latin">{i + 1}</span><p set:html={fill(step)} /></li>
+            ))}
+          </ol>
+          {s.notes?.map((n) => <p class="note" set:html={n} />)}
+        </section>
+      );
+    })}
+
+    <section class="plat" id="downloads">
+      <div class="plat-head">
+        <h2>{c.downloadsTitle}</h2>
+        <p class="dim">{c.downloadsLead}</p>
+      </div>
+      <div class="table">
+        <table>
+          <thead><tr><th>{c.file}</th><th>{c.size}</th><th>{c.verify} (SHA-256)</th></tr></thead>
+          <tbody>
+            {release.files.map((f) => (
+              <tr>
+                <td><a href={f.url}>{f.name}</a></td>
+                <td class="nowrap">{mb(f.bytes)}</td>
+                <td><code class="hash">{f.sha256}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="links">
+        <a href={release.github}>GitHub Release {release.tag} →</a>
+        {release.quark ? <a href={release.quark}>{c.quark} →</a> : <span class="dim">{c.quarkPending}</span>}
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .rom { font-size: 15px; }
+  :global(code.hash) { font-size: 12px; word-break: break-all; }
+  .quick { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .quick a { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; height: 100%; padding: 16px 18px; color: var(--text); text-decoration: none; background: var(--cyan-soft); border-top: 3px solid var(--cyan); }
+  .quick a:hover { background: rgba(63, 208, 255, 0.2); }
+  .quick strong { font-size: 18px; }
+  .quick .muted { font-size: 14px; line-height: 1.55; }
+  .quick .go { margin-top: auto; font-size: 13px; color: var(--cyan); }
+  .exp { justify-self: start; display: inline-block; margin-left: 10px; padding: 0 8px; font-size: 12px; font-weight: 500; color: var(--orange); border: 1px solid rgba(255, 181, 71, 0.6); border-radius: 3px; vertical-align: middle; }
+  .quick .exp { margin-left: 0; }
+
+  .plat { padding: 56px 0 8px; border-bottom: 1px solid var(--line-soft); }
+  .plat:last-of-type { border-bottom: 0; }
+  .plat-head { display: grid; gap: 8px; justify-items: start; margin-bottom: 24px; }
+  .plat-head h2 { font-size: clamp(24px, 3vw, 32px); padding-left: 14px; border-left: 4px solid var(--gold); }
+  .plat-head .btn { margin-top: 8px; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; max-width: 860px; }
+  .steps li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 18px; background: var(--panel); border: 1px solid var(--line-soft); }
+  .n { display: grid; place-items: center; width: 34px; height: 34px; font-weight: 700; color: var(--ink); background: var(--cyan); clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%); }
+  .steps p { padding-top: 3px; overflow-wrap: anywhere; }
+  .nofile { margin-top: 8px; padding: 6px 14px; font-size: 14px; color: var(--orange); border: 1px dashed rgba(255, 181, 71, 0.5); }
+  .note { max-width: 860px; margin-top: 14px; padding: 10px 16px; color: var(--muted); font-size: 15px; border-left: 3px solid var(--orange); background: rgba(255, 181, 71, 0.07); }
+
+  .table { overflow-x: auto; border: 1px solid var(--line-soft); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; background: var(--panel); }
+  tr:last-child td { border-bottom: 0; }
+  .nowrap { white-space: nowrap; }
+  td:first-child { min-width: 240px; }
+  td:last-child { min-width: 280px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; font-size: 15px; }
+
+  @media (max-width: 1000px) { .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .quick { grid-template-columns: 1fr; } .steps li { grid-template-columns: 34px minmax(0, 1fr); padding: 12px; } }
+</style>

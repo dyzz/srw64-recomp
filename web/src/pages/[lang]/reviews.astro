@@ -1,0 +1,88 @@
+---
+import Base from '../../layouts/Base.astro';
+import { langPaths, UI, type Lang } from '../../i18n';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = {
+  lead: {
+    zh: '在剧情和图鉴里提的每一条意见都在这里，所有人都能看到。维护者逐条处理：采纳的改进会写进下一个版本，并在这里标为「已处理」；有疑问会直接在意见下提问。',
+    en: 'Every suggestion made on the story and Library pages is listed here for everyone to see. The maintainers go through them one by one: accepted changes go into the next version and show here as Done, and questions are asked right under the suggestion.',
+    ja: 'シナリオと図鑑で送られた意見はすべてここに公開されます。管理者が一件ずつ確認し、採用した修正は次のバージョンに反映して「対応済み」に、確認したい点があれば意見の下で質問します。',
+  },
+  you: { zh: '你的身份', en: 'You appear as', ja: 'あなたの表示名' },
+  none: { zh: '还没提过意见；第一次提交时会自动分配一个机战人物的名字。', en: 'No suggestions yet; your first one gets you a random SRW pilot’s name.', ja: 'まだ意見はありません。最初の送信時にスパロボのキャラクター名が自動で割り当てられます。' },
+  reroll: { zh: '换一个人物', en: 'Another pilot', ja: '別のキャラに' },
+  custom: { zh: '用自己的昵称', en: 'Use a nickname', ja: 'ニックネームにする' },
+  save: { zh: '保存', en: 'Save', ja: '保存' },
+  tabs: {
+    pending: { zh: '待处理', en: 'Pending', ja: '未対応' },
+    questioned: { zh: '有疑问', en: 'Questions', ja: '質問中' },
+    processed: { zh: '已处理', en: 'Done', ja: '対応済み' },
+    dismissed: { zh: '不处理', en: 'Declined', ja: '見送り' },
+    mine: { zh: '我的意见', en: 'Mine', ja: '自分の意見' },
+  },
+};
+---
+<Base lang={lang} title={UI.nav.reviews[lang]}>
+  <div class="wrap" data-reviews data-lang={lang}>
+    <header class="page-head">
+      <span class="tag">REVIEW</span>
+      <h1>{UI.nav.reviews[lang]}</h1>
+      <p>{t.lead[lang]}</p>
+    </header>
+
+    <section class="who-box" aria-live="polite">
+      <span class="lbl">{t.you[lang]}</span>
+      <span class="who" data-who>{t.none[lang]}</span>
+      <button type="button" class="mini" data-reroll hidden>{t.reroll[lang]}</button>
+      <form class="nick" data-nick hidden>
+        <input type="text" maxlength="20" aria-label={t.custom[lang]} placeholder={t.custom[lang]} />
+        <button type="submit" class="mini">{t.save[lang]}</button>
+      </form>
+    </section>
+
+    <div class="tabs" role="tablist" id="mine">
+      {(['pending', 'questioned', 'processed', 'dismissed', 'mine'] as const).map((k, i) => (
+        <button type="button" role="tab" data-tab={k} aria-selected={i === 0 ? 'true' : 'false'}>{t.tabs[k][lang]}<span class="n" data-count={k}></span></button>
+      ))}
+    </div>
+    <ol class="items" data-items></ol>
+    <button type="button" class="more mini" data-more hidden>…</button>
+  </div>
+  <script>
+    import { initReviews } from '../../scripts/reviews';
+    initReviews();
+  </script>
+</Base>
+
+<style>
+  .who-box { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line-soft); }
+  .lbl { font-size: 13px; color: var(--dim); }
+  .who { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
+  .who :global(img) { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+  .nick { display: inline-flex; gap: 6px; }
+  .nick[hidden] { display: none; }
+  .nick input { width: 12em; padding: 6px 10px; background: var(--bg); color: var(--text); border: 1px solid rgba(63, 208, 255, 0.3); border-radius: 4px; font: 14px var(--sans); }
+  .mini { min-height: 32px; padding: 0 14px; background: transparent; color: var(--muted); border: 1px solid rgba(63, 208, 255, 0.3); border-radius: 4px; font: 500 13px var(--sans); cursor: pointer; }
+  .mini:hover { color: var(--text); border-color: var(--cyan); }
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 28px 0 12px; border-bottom: 1px solid var(--line); }
+  .tabs button { padding: 10px 16px; background: transparent; color: var(--muted); border: 0; border-bottom: 2px solid transparent; font: 500 15px var(--sans); cursor: pointer; }
+  .tabs button[aria-selected='true'] { color: var(--text); border-bottom-color: var(--gold); }
+  .n { margin-left: 6px; font-size: 12px; color: var(--dim); }
+  .items { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .items :global(li) { display: grid; gap: 6px; padding: 16px 18px; background: var(--panel); border: 1px solid var(--line-soft); }
+  .items :global(.top) { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-size: 13px; color: var(--dim); }
+  .items :global(.top a) { font-weight: 700; }
+  .items :global(.src) { font-size: 14px; color: var(--dim); white-space: pre-line; }
+  .items :global(.cur), .items :global(.pro), .items :global(.live) { white-space: pre-line; }
+  .items :global(.cur) { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(255, 111, 168, 0.6); }
+  .items :global(.pro) { color: #fff; }
+  .items :global(.live) { color: var(--green); }
+  .items :global(.k) { color: var(--dim); font-size: 13px; margin-right: 6px; }
+  .items :global(.adm) { color: var(--orange); font-size: 14px; }
+  .items :global(.acts) { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .items :global(textarea) { width: 100%; box-sizing: border-box; padding: 8px 10px; background: var(--bg); color: var(--text); border: 1px solid rgba(63, 208, 255, 0.3); border-radius: 4px; font: 15px/1.6 var(--sans); }
+  .more { margin-top: 16px; }
+  .more[hidden] { display: none; }
+</style>

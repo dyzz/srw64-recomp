@@ -1,0 +1,60 @@
+---
+// The big download button. Every platform's button is rendered; a small script
+// shows the one for the reader's system (all of them stay visible without it).
+// A platform the current release has no file for links to its install steps.
+import { fileFor, mb, release, PLATFORM_LABEL, type Platform } from '../data/release';
+import type { Lang } from '../i18n';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = {
+  other: { zh: '其他平台', en: 'Other platforms', ja: 'ほかのプラットフォーム' },
+  steps: { zh: '查看安装方法', en: 'See how to install', ja: 'インストール方法を見る' },
+};
+const platforms: Platform[] = ['windows', 'macos', 'linux', 'android'];
+const label = (p: Platform) =>
+  lang === 'en' ? `Download for ${PLATFORM_LABEL[p]}` : lang === 'ja' ? `${PLATFORM_LABEL[p]} 版をダウンロード` : `下载 ${PLATFORM_LABEL[p]} 版`;
+const items = platforms.map((p) => {
+  const f = fileFor(p);
+  return f
+    ? { p, href: f.url, text: label(p), small: `v${release.version} · ${mb(f.bytes)}`, file: true }
+    : { p, href: `/${lang}/install/#${p}`, text: `${PLATFORM_LABEL[p]}`, small: t.steps[lang], file: false };
+});
+---
+<div class="dl" data-dl>
+  {items.map((it) => (
+    <a class={`btn big ${it.file ? '' : 'ghost'}`} href={it.href} data-platform={it.p} data-file={it.file ? '1' : undefined}>
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-7 16h16v2H4v-2Z"/></svg>
+      <span>{it.text}<small>{it.small}</small></span>
+    </a>
+  ))}
+</div>
+<a class="other" href={`/${lang}/install/#downloads`} data-other hidden>{t.other[lang]} →</a>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-dl]');
+  if (root) {
+    const ua = navigator.userAgent;
+    const p = /Android/.test(ua) ? 'android'
+      : /iPhone|iPad/.test(ua) ? null
+      : /Windows/.test(ua) ? 'windows'
+      : /Mac OS X|Macintosh/.test(ua) ? 'macos'
+      : /Linux|X11|CrOS/.test(ua) ? 'linux' : null;
+    if (p) {
+      root.querySelectorAll<HTMLElement>('[data-platform]').forEach((a) => { a.hidden = a.dataset.platform !== p; });
+      root.classList.add('one');
+      document.querySelector<HTMLElement>('[data-other]')!.hidden = false;
+    } else {
+      // Desktop-less or unknown systems see the platforms that have a download.
+      root.querySelectorAll<HTMLElement>('[data-platform]:not([data-file])').forEach((a) => { a.hidden = true; });
+    }
+  }
+</script>
+
+<style>
+  .dl { display: flex; flex-wrap: wrap; gap: 10px; }
+  .dl .btn { text-align: left; }
+  .dl .btn[hidden] { display: none; }
+  .dl:not(.one) .btn { min-height: 56px; font-size: 15px; }
+  .other { display: inline-block; margin-top: 10px; font-size: 14px; }
+  .other[hidden] { display: none; }
+</style>

@@ -1,0 +1,175 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import { LANGS, UI, type Lang } from '../../../../i18n';
+import { library, type Unit } from '../../../../lib/data';
+
+export async function getStaticPaths() {
+  return LANGS.flatMap((l) => library().units.map((u) => ({ params: { lang: l.code, id: String(u.id) } })));
+}
+const lang = Astro.params.lang as Lang;
+const lib = library();
+const u = lib.units.find((x) => x.id === Number(Astro.params.id)) as Unit;
+const L = (k: string) => lib.labels[k]?.[lang] ?? k;
+const series = lib.series.find((s) => s.id === u.series)?.name[lang] ?? '';
+const siblings = lib.units.filter((x) => x.series === u.series);
+const i = siblings.indexOf(u);
+const roman = ['', 'Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'];
+const types = (lib.upgrade_types as { type: number; power: number[]; price: number[] }[]);
+const usedTypes = [...new Set(u.weapons.map((w) => w.upgrade_type))].filter(Boolean).sort();
+const totals = usedTypes.map((ty) => {
+  const row = types.find((x) => x.type === ty)!;
+  return { ty, p: row.power.slice(0, u.upgrade_cap).reduce((a, b) => a + b, 0), c: row.price.slice(0, u.upgrade_cap).reduce((a, b) => a + b, 0) };
+});
+// Bars fill against roughly the top tenth of all units (docs/native/library.md).
+const max = { hp: 22000, en: 300, move: 10, mobility: 130, armor: 2300, limit: 380 };
+const stats = (['hp', 'en', 'move', 'mobility', 'armor', 'limit'] as const).map((k) => ({ k, v: u[k], w: Math.min(100, (u[k] / max[k]) * 100) }));
+const rng = (r: [number, number]) => (r[0] === r[1] ? `${r[0]}` : `${r[0]}–${r[1]}`);
+const sign = (n: number) => (n > 0 ? `+${n}` : `${n}`);
+const t = {
+  suggest: { zh: '对译名提意见', en: 'Suggest a better name', ja: '名称に意見' },
+  shield: { zh: '有盾牌', en: 'Shield', ja: 'シールド装備' },
+  weapons: { zh: '武器', en: 'Weapons', ja: '武器' },
+  abilities: { zh: '特殊能力', en: 'Abilities', ja: '特殊能力' },
+  prev: { zh: '上一台', en: 'Previous', ja: '前へ' },
+  next: { zh: '下一台', en: 'Next', ja: '次へ' },
+};
+const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-term': id });
+---
+<Base lang={lang} title={`${u.name[lang]} · ${UI.nav.library[lang]}`}>
+  <div class="wrap layout" data-library data-lang={lang} data-target-type="term" data-target-prefix="">
+    <aside class="side">
+      <a href={`/${lang}/library/#units`}>← {UI.nav.library[lang]}</a>
+      <p class="series">{series}</p>
+      <ul>
+        {siblings.map((x) => <li><a href={`/${lang}/library/unit/${x.id}/`} aria-current={x === u ? 'page' : undefined}>{x.name[lang]}{x.model && <span class="latin">{x.model}</span>}</a></li>)}
+      </ul>
+    </aside>
+
+    <main class="main">
+      <div class="top">
+        <div class="art"><img src={`/gen/units/${u.id}.webp`} alt={u.name[lang]} width="320" height="320" /></div>
+        <div class="info">
+          <p class="crumb">{series}{u.model && <> · <span class="latin">{u.model}</span></>}</p>
+          <div class="namerow" {...termAttrs(`unit:${u.id}`, u.name)}>
+            <h1>{u.name[lang]}</h1>
+            {lang !== 'ja' && <span class="jn" lang="ja">{u.name.ja}</span>}
+            {lang !== 'en' && <span class="en">{u.name.en}</span>}
+            <span class="tr-zh" hidden>{u.name.zh}</span><span class="tr-en" hidden>{u.name.en}</span>
+            <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`unit:${u.id}`}>{t.suggest[lang]}</button>
+            <div data-term-body class="tb"></div>
+          </div>
+          <p class="badges">
+            <span class="cap">{L('library_cap')} {L('library_cap_value').replace('{n}', String(u.upgrade_cap))}</span>
+            {u.movement_types.map((m) => <span class="pill">{m[lang]}</span>)}
+            <span class="pill">{L('size')} {u.size}</span>
+            {u.shield && <span class="pill">{t.shield[lang]}</span>}
+            <span class="pill">{L('library_slots')} {u.part_slots}</span>
+            <span class="pill">{L('repair')} {u.repair_cost}</span>
+          </p>
+          <div class="stats">
+            {stats.map((s) => <div class="stat"><span class="k">{L(s.k)}</span><span class="v latin">{s.v}</span><span class="bar"><span style={`width:${s.w}%`}></span></span></div>)}
+          </div>
+          <p class="terrain"><span class="k">{L('terrain')}</span>
+            {(['air', 'land', 'sea', 'space'] as const).map((k) => <span class={`pill t-${u.terrain[k]}`}>{L(k)} {u.terrain[k]}</span>)}
+          </p>
+          {u.abilities.length > 0 && <p class="abil"><span class="k">{t.abilities[lang]}</span>{u.abilities.map((a) => <span class="pill">{a[lang]}</span>)}</p>}
+        </div>
+      </div>
+
+      <h2>{t.weapons[lang]}</h2>
+      {u.weapons.length === 0 ? <p class="dim">{L('library_no_weapons')}</p> : (
+        <div class="tbl">
+          <table>
+            <thead><tr>
+              <th class="l">{L('weapon_weapon')}</th><th>{L('weapon_power')}</th><th class="full">{L('library_full')}</th><th>{L('library_type')}</th>
+              <th>{L('weapon_range')}</th><th>{L('weapon_hit')}</th><th>{L('library_critical')}</th><th>{L('weapon_ammo')}</th><th>{L('weapon_en')}</th><th>{L('library_morale')}</th>
+            </tr></thead>
+            <tbody>
+              {u.weapons.map((w) => (
+                <tr data-term={`weapon:${w.id}`}>
+                  <td class="l">
+                    <span class="wn">{w.name[lang]}</span>
+                    {w.markers.map((m) => <span class="mk">{m}</span>)}
+                    {w.combination && <span class="mk gold">{L('library_combo')}</span>}
+                    {w.unlock_at_full_upgrade && <span class="mk gold">{L('library_unlock')}</span>}
+                    <span class="tr-zh" hidden>{w.name.zh}</span><span class="tr-en" hidden>{w.name.en}</span>
+                    <button type="button" class="act small" data-suggest data-target-type="term" data-target-id={`weapon:${w.id}`} aria-label={t.suggest[lang]}>…</button>
+                    <div data-term-body></div>
+                  </td>
+                  <td class="latin">{w.power}</td><td class="latin full">{w.max_power}</td>
+                  <td><span class={`ty ty${w.upgrade_type}`}>{roman[w.upgrade_type]}</span></td>
+                  <td class="latin">{rng(w.range)}</td><td class="latin">{sign(w.hit)}</td><td class="latin">{sign(w.crit)}</td>
+                  <td class="latin">{w.ammo ?? '—'}</td><td class="latin">{w.en ?? '—'}</td><td class="latin">{w.morale ?? '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="note">{L('library_full_note').replace('{n}', String(u.upgrade_cap))}
+            {totals.map((x) => <span class="tot"><span class={`ty ty${x.ty}`}>{roman[x.ty]}</span> {L('library_type_line').replace('{p}', x.p.toLocaleString()).replace('{c}', x.c.toLocaleString())}</span>)}
+          </p>
+        </div>
+      )}
+
+      <nav class="pn">
+        {i > 0 && <a href={`/${lang}/library/unit/${siblings[i - 1].id}/`}>← {siblings[i - 1].name[lang]}</a>}
+        {i < siblings.length - 1 && <a class="r" href={`/${lang}/library/unit/${siblings[i + 1].id}/`}>{siblings[i + 1].name[lang]} →</a>}
+      </nav>
+    </main>
+  </div>
+  <script>
+    import { initSuggestions } from '../../../../scripts/suggest';
+    initSuggestions();
+  </script>
+</Base>
+
+<style>
+  .layout { display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start; padding-top: 28px; padding-bottom: 24px; }
+  .side { flex: 1 1 220px; max-width: 260px; position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow-y: auto; font-size: 14px; }
+  .side .series { margin: 14px 0 6px; font-weight: 700; color: var(--cyan); }
+  .side ul { list-style: none; margin: 0; padding: 0; }
+  .side li a { display: flex; justify-content: space-between; gap: 8px; padding: 6px 10px; color: var(--muted); text-decoration: none; border-left: 2px solid transparent; }
+  .side li a:hover { color: var(--text); background: var(--cyan-soft); }
+  .side li a[aria-current] { color: #fff; background: rgba(63, 208, 255, 0.14); border-left-color: var(--gold); }
+  .side li .latin { font-size: 11px; color: var(--dim); }
+  .main { flex: 999 1 560px; min-width: 0; }
+  .top { display: flex; flex-wrap: wrap; gap: 28px; }
+  .art { width: 280px; height: 280px; display: grid; place-items: center; background: radial-gradient(circle at 50% 45%, #16244f, var(--panel) 70%); border: 1px solid rgba(63, 208, 255, 0.25); }
+  .art img { width: 250px; height: 250px; object-fit: contain; }
+  .info { flex: 1 1 380px; min-width: 0; display: grid; gap: 12px; align-content: start; }
+  .crumb { font-size: 14px; color: var(--dim); }
+  .namerow { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+  .namerow h1 { font-size: 38px; }
+  .jn, .en { color: var(--muted); font-size: 17px; }
+  .tb { flex-basis: 100%; }
+  .act { height: 30px; padding: 0 12px; background: transparent; color: var(--muted); border: 1px solid rgba(63, 208, 255, 0.22); border-radius: 4px; font: 500 13px var(--sans); cursor: pointer; }
+  .act:hover { color: var(--text); border-color: var(--cyan); }
+  .act[data-count]::after { content: ' · ' attr(data-count); color: var(--gold); }
+  .act.small { height: 22px; padding: 0 6px; margin-left: 4px; font-size: 12px; opacity: 0.6; }
+  tr:hover .act.small { opacity: 1; }
+  .badges, .terrain, .abil { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .cap { padding: 3px 12px; background: var(--gold); color: var(--ink); font-weight: 700; font-size: 14px; }
+  .pill { padding: 3px 10px; font-size: 14px; border: 1px solid rgba(63, 208, 255, 0.3); color: #d6ddf2; }
+  .pill.t-A, .pill.t-S { background: var(--cyan); color: var(--ink); border-color: var(--cyan); }
+  .pill.t-- { color: #5d6890; }
+  .k { font-size: 13px; color: var(--dim); margin-right: 6px; }
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 22px; }
+  .stat { display: grid; gap: 3px; }
+  .stat .v { font-size: 22px; font-weight: 700; }
+  .bar { height: 6px; background: rgba(63, 208, 255, 0.12); }
+  .bar span { display: block; height: 6px; background: var(--cyan); }
+  h2 { margin: 32px 0 10px; font-size: 20px; padding-left: 12px; border-left: 4px solid var(--gold); }
+  .tbl { overflow-x: auto; background: var(--panel); border: 1px solid var(--line-soft); padding: 4px 14px 14px; }
+  table { width: 100%; border-collapse: collapse; min-width: 760px; }
+  th { font-weight: 500; color: var(--dim); font-size: 13px; text-align: right; padding: 8px; border-bottom: 1px solid rgba(63, 208, 255, 0.2); white-space: nowrap; }
+  td { text-align: right; padding: 9px 8px; border-bottom: 1px solid rgba(63, 208, 255, 0.08); font-size: 15px; vertical-align: top; }
+  .l { text-align: left; }
+  .full { color: var(--cyan); }
+  .mk { margin-left: 4px; padding: 0 5px; font-size: 11px; color: var(--muted); border: 1px solid rgba(164, 176, 210, 0.4); border-radius: 3px; }
+  .mk.gold { color: var(--gold); border-color: rgba(255, 215, 94, 0.5); }
+  .ty { display: inline-block; min-width: 24px; padding: 0 5px; font-size: 12px; font-weight: 700; text-align: center; color: var(--ink); }
+  .ty1 { background: #3fd0ff; } .ty2 { background: #57e389; } .ty3 { background: #ff6fa8; } .ty4 { background: #ffb547; }
+  .note { margin-top: 10px; font-size: 13px; color: var(--dim); display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
+  .pn { display: flex; justify-content: space-between; margin-top: 28px; }
+  .pn .r { margin-left: auto; }
+  @media (max-width: 900px) { .side { position: static; max-width: none; max-height: 240px; } .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .art { width: 100%; max-width: 320px; } }
+</style>

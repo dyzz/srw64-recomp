@@ -1,0 +1,30 @@
+---
+// Two screenshots side by side (original on the left, ours on the right), each with a caption.
+interface Props { left: string; right: string; leftLabel: string; rightLabel: string; alt: string; }
+const { left, right, leftLabel, rightLabel, alt } = Astro.props;
+---
+<div class="pair">
+  <figure>
+    <img src={left} alt={`${alt} · ${leftLabel}`} width="1280" height="720" loading="lazy" />
+    <figcaption><span class="lbl orig">{leftLabel}</span></figcaption>
+  </figure>
+  <span class="arrow" aria-hidden="true">→</span>
+  <figure>
+    <img src={right} alt={`${alt} · ${rightLabel}`} width="1280" height="720" loading="lazy" />
+    <figcaption><span class="lbl ours">{rightLabel}</span></figcaption>
+  </figure>
+</div>
+
+<style>
+  .pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 14px; align-items: center; }
+  figure { margin: 0; display: grid; gap: 10px; }
+  img { width: 100%; border: 1px solid var(--line-soft); background: #000; }
+  .lbl { display: inline-block; padding: 1px 14px 1px 10px; font: 700 13px/1.7 var(--display), var(--sans); letter-spacing: 0.06em; color: var(--ink); clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%); }
+  .lbl.orig { background: var(--muted); }
+  .lbl.ours { background: var(--gold); }
+  .arrow { color: var(--gold); font-size: 24px; font-weight: 700; }
+  @media (max-width: 760px) {
+    .pair { grid-template-columns: 1fr; }
+    .arrow { justify-self: center; transform: rotate(90deg); }
+  }
+</style>

@@ -1,0 +1,261 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Download from '../../components/Download.astro';
+import Pair from '../../components/Pair.astro';
+import { HOME } from '../../copy/home';
+import { UI, langPaths, type Lang } from '../../i18n';
+import { release } from '../../data/release';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const c = HOME[lang];
+const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`)))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<Base lang={lang}>
+  <section class="hero" style={`--hero: url('/media/hero-${lang}.webp')`}>
+    <div class="wrap hero-in">
+      <span class="tag">{c.kicker} · v{release.version}</span>
+      <h1 class="logo-h1"><img src="/brand/marchwind64-logo.webp" alt="MARCHWIND 64" width="1200" height="473" fetchpriority="high" /></h1>
+      <p class="tagline">{c.tagline}</p>
+      <p class="lead"><strong>{c.intro}</strong> {c.lead}</p>
+      <Download lang={lang} />
+      <p class="meta">{c.rom} · <a href={`/${lang}/faq/#rom`}>{c.romMore}</a> · <a href={`/${lang}/install/`}>{c.allPlatforms}</a></p>
+      <p class="optional"><span class="dot" aria-hidden="true"></span>{c.optional}</p>
+    </div>
+  </section>
+
+  <section class="strip">
+    <div class="wrap strip-in">
+      {c.strip.map((s) => <div class={`chip ${s.accent}`}><strong>{s.title}</strong><span>{s.body}</span></div>)}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag pink">ORIGINAL → HD</span>
+        <h2>{c.compareTitle}</h2>
+        <p>{c.compareBody}</p>
+      </div>
+      <Pair left={`/media/compare-original-${lang}.webp`} right={`/media/compare-hd-${lang}.webp`} leftLabel={c.original} rightLabel={c.ours} alt={c.compareTitle} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag cyan">FEATURES</span>
+        <h2>{c.showTitle}</h2>
+        <p>{c.showBody}</p>
+      </div>
+      <div class="shows">
+        {c.shows.map((sh, i) => (
+          <article class={`show ${i % 2 ? 'flip' : ''}`}>
+            <figure class="shot"><img src={sh.img.replace('{lang}', lang)} alt={sh.title} width="1280" height="720" loading="lazy" /></figure>
+            <div class="show-text">
+              <span class="num latin">{String(i + 1).padStart(2, '0')} · {sh.tag}</span>
+              <h3>{sh.title}</h3>
+              <p>{sh.body}</p>
+              <ul>{sh.points.map((pt) => <li>{pt}</li>)}</ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="rules">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag green">YOUR RULES</span>
+        <h2>{c.rulesTitle}</h2>
+        <p>{c.rulesBody}</p>
+      </div>
+      <div class="rules">
+        {c.rules.map((g) => (
+          <div class={`panel rule ${g.accent}`}>
+            <div class="rule-head"><h3>{g.title}</h3><span class="badge">{g.badge}</span></div>
+            <p class="rule-note">{g.note}</p>
+            <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">HD</span>
+        <h2>{c.galleryTitle}</h2>
+        <p>{c.galleryBody}</p>
+      </div>
+      <div class="gallery">
+        <img class="g-wide" src={`/media/sekiha-${lang}.webp`} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={`/media/slash-${lang}.webp`} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src="/media/battle-city.webp" alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{c.moreTitle}</h2></div>
+      <ul class="more">
+        {c.more.map((f) => <li class={`panel feat ${f.accent}`}><h3>{f.title}</h3><p>{f.body}</p></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><span class="tag">PLATFORMS</span><h2>{c.platformsTitle}</h2></div>
+      <ul class="platforms">
+        {c.platforms.map((p) => (
+          <li><a href={`/${lang}/install/#${p.name.toLowerCase().replace(' ', '-')}`}>
+            <strong class="latin">{p.name}</strong>
+            {p.experimental && <span class="exp">{c.experimental}</span>}
+            <span class="muted">{p.note}</span>
+          </a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="panel community">
+        <div class="cm-text">
+          <span class="tag cyan">COMMUNITY</span>
+          <h2>{c.communityTitle}</h2>
+          <p>{c.communityBody}</p>
+        </div>
+        <div class="cm-actions">
+          <a class="btn" href={`/${lang}/story/`}>{c.communityStory}</a>
+          <a class="btn ghost" href={`/${lang}/guide/`}>{c.communityGuide}</a>
+          <a class="btn ghost" href={`/${lang}/library/`}>{c.communityLibrary}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <section class="section news">
+      <div class="wrap">
+        <div class="section-head"><h2>{c.newsTitle}</h2></div>
+        <ul class="posts">
+          {posts.map((p) => (
+            <li><a class="panel post" href={`/${lang}/blog/${p.id.split('/')[1]}/`}>
+              <span class="dim latin">{fmt(p.data.date)}</span>
+              <strong>{p.data.title}</strong>
+              <span class="muted">{p.data.summary}</span>
+              <span class="more-link">{UI.readMore[lang]} →</span>
+            </a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .hero {
+    position: relative; min-height: min(760px, 86vh); display: flex; align-items: flex-end;
+    background-color: var(--bg); background-size: cover; background-position: 70% 30%;
+    background-image: linear-gradient(90deg, rgba(7, 11, 29, 0.97) 0%, rgba(7, 11, 29, 0.93) 38%, rgba(7, 11, 29, 0.55) 58%, rgba(7, 11, 29, 0.08) 80%),
+      linear-gradient(0deg, var(--bg) 0%, rgba(7, 11, 29, 0) 32%), var(--hero);
+  }
+  .hero-in { width: 100%; padding-top: 72px; padding-bottom: 64px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .logo-h1 { margin: -8px 0 -18px -14px; width: min(620px, 92vw); }
+  .logo-h1 img { width: 100%; height: auto; filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.6)); }
+  .tagline { font-size: clamp(19px, 2.2vw, 26px); font-weight: 700; color: var(--gold); text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); }
+  .lead strong { color: #fff; font-weight: 700; }
+  .lead { max-width: 32em; font-size: 18px; line-height: 1.75; color: #d6ddf2; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); }
+  .meta { font-size: 14px; color: var(--muted); }
+  .optional { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #d6ddf2; }
+  .dot { width: 8px; height: 8px; flex-shrink: 0; background: var(--green); border-radius: 50%; }
+
+  .strip { background: var(--bg-2); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .strip-in { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .chip { display: grid; gap: 4px; padding: 18px 22px; border-left: 2px solid var(--cyan); }
+  .chip.gold { border-left-color: var(--gold); } .chip.pink { border-left-color: var(--pink); } .chip.green { border-left-color: var(--green); }
+  .chip strong { font-size: 18px; }
+  .chip span { font-size: 14px; color: var(--muted); }
+
+  .shows { display: grid; gap: clamp(40px, 6vw, 72px); }
+  .show { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+  .show.flip { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+  .show.flip .shot { order: 2; }
+  .shot { margin: 0; position: relative; }
+  .shot img { width: 100%; border: 1px solid var(--line-soft); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); }
+  .shot::before { content: ''; position: absolute; left: -10px; top: -10px; width: 60px; height: 60px; border-left: 3px solid var(--cyan); border-top: 3px solid var(--cyan); }
+  .show.flip .shot::before { left: auto; right: -10px; border-left: 0; border-right: 3px solid var(--cyan); }
+  .show-text { display: grid; gap: 12px; align-content: center; }
+  .show-text .num { font-size: 13px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); }
+  .show-text h3 { font-size: clamp(22px, 2.6vw, 30px); }
+  .show-text p { color: var(--muted); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  .show-text ul, .rule ul { display: grid; gap: 6px; font-size: 15px; }
+  .show-text li, .rule li { position: relative; padding-left: 20px; }
+  .show-text li::before, .rule li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 10px; height: 6px; background: var(--acc, var(--cyan)); clip-path: polygon(30% 0, 100% 0, 70% 100%, 0 100%); }
+
+  .tag.green { background: var(--green); }
+  .rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .rule { padding: 24px; display: grid; gap: 12px; align-content: start; border-top: 3px solid var(--acc); }
+  .rule.green { --acc: var(--green); } .rule.orange { --acc: var(--orange); } .rule.cyan { --acc: var(--cyan); }
+  .rule-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .rule-head h3 { font-size: 20px; }
+  .badge { padding: 1px 10px; font-size: 12px; color: var(--acc); border: 1px solid var(--acc); border-radius: 10px; white-space: nowrap; }
+  .rule-note { font-size: 14px; color: var(--dim); }
+  .rule li { color: #d6ddf2; }
+
+  .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .gallery img { width: 100%; border: 1px solid var(--line-soft); }
+  .gallery .g-wide { grid-column: 1 / -1; }
+
+  .more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .feat { padding: 24px; display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--acc); }
+  .feat.cyan { --acc: var(--cyan); } .feat.gold { --acc: var(--gold); } .feat.pink { --acc: var(--pink); } .feat.orange { --acc: var(--orange); }
+  .feat h3 { font-size: 19px; }
+  .feat p { color: var(--muted); font-size: 15px; }
+
+  .platforms { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+  .platforms a { display: grid; gap: 4px; align-content: start; height: 100%; padding: 18px 20px; color: var(--text); text-decoration: none; background: var(--cyan-soft); border-left: 3px solid var(--cyan); }
+  .platforms a:hover { background: rgba(63, 208, 255, 0.2); }
+  .platforms strong { font-size: 20px; }
+  .platforms .muted { font-size: 14px; line-height: 1.5; }
+  .exp { justify-self: start; padding: 0 8px; font-size: 12px; color: var(--orange); border: 1px solid rgba(255, 181, 71, 0.6); border-radius: 3px; }
+
+  .community { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 28px; padding: 40px 44px; background: linear-gradient(120deg, #13204a, var(--panel) 60%); }
+  .cm-text { display: grid; gap: 12px; justify-items: start; max-width: 640px; }
+  .cm-text h2 { font-size: clamp(24px, 3vw, 30px); }
+  .cm-text p { color: var(--muted); }
+  .cm-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .post { display: grid; gap: 8px; height: 100%; padding: 22px; color: var(--text); text-decoration: none !important; }
+  .post:hover { border-color: var(--cyan); }
+  .post strong { font-size: 18px; }
+  .post .muted { font-size: 14px; }
+  .more-link { font-size: 14px; color: var(--cyan); }
+
+  @media (max-width: 1000px) { .platforms { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 960px) {
+    .show, .show.flip { grid-template-columns: 1fr; }
+    .show.flip .shot { order: 0; }
+    .rules, .more { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .strip-in { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .posts { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .hero { min-height: 0; background-position: 0 0, 70% 0; background-size: 100% 100%, auto 340px; background-repeat: no-repeat;
+      background-image: linear-gradient(0deg, var(--bg) 0%, var(--bg) calc(100% - 340px), rgba(7, 11, 29, 0.2) calc(100% - 140px), rgba(7, 11, 29, 0) 100%), var(--hero); }
+    .hero-in { padding-top: 220px; padding-bottom: 40px; }
+    .rules, .more, .gallery, .platforms { grid-template-columns: 1fr; }
+    .community { padding: 24px 20px; }
+  }
+</style>

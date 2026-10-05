@@ -1,0 +1,100 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { langPaths, UI, type Lang } from '../../../i18n';
+import { library, portraitUrl } from '../../../lib/data';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const lib = library();
+const seriesName = (id: number | null) => lib.series.find((s) => s.id === id)?.name[lang] ?? '';
+function grouped<T extends { series: number | null }>(xs: T[]) {
+  const out: { series: number | null; items: T[] }[] = [];
+  for (const x of xs) {
+    let g = out.find((o) => o.series === x.series);
+    if (!g) out.push((g = { series: x.series, items: [] }));
+    g.items.push(x);
+  }
+  return out;
+}
+const units = grouped(lib.units);
+const people = grouped(lib.people);
+const t = {
+  lead: {
+    zh: `游戏里图鉴的网页版：${lib.units.length} 台机体、${lib.people.length} 名人物，按作品分组。数值都是基础值，直接读自游戏。`,
+    en: `The in-game Library on the web: ${lib.units.length} units and ${lib.people.length} characters by series. All figures are base values read from the game.`,
+    ja: `ゲーム内図鑑のウェブ版。ユニット ${lib.units.length} 体、キャラクター ${lib.people.length} 人を作品別に。数値はすべてゲームから読み出した基本値です。`,
+  },
+  units: { zh: '机体', en: 'Units', ja: 'ユニット' },
+  people: { zh: '人物', en: 'Characters', ja: 'キャラクター' },
+};
+---
+<Base lang={lang} title={UI.nav.library[lang]}>
+  <div class="wrap" data-lib-index>
+    <header class="page-head">
+      <span class="tag">LIBRARY</span>
+      <h1>{UI.nav.library[lang]}</h1>
+      <p>{t.lead[lang]}</p>
+      <div class="seg" role="tablist">
+        <a href="#units" role="tab">{t.units[lang]} {lib.units.length}</a>
+        <a href="#people" role="tab">{t.people[lang]} {lib.people.length}</a>
+      </div>
+    </header>
+
+    <section id="units">
+      <h2 class="kind">{t.units[lang]}</h2>
+      {units.map((g) => (
+        <div class="group">
+          <h3>{seriesName(g.series)}</h3>
+          <ul class="cards">
+            {g.items.map((u) => (
+              <li><a href={`/${lang}/library/unit/${u.id}/`}>
+                <img src={`/gen/units/${u.id}.webp`} alt="" width="96" height="96" loading="lazy" />
+                <span class="nm">{u.name[lang]}</span>
+                {u.model && <span class="sub latin">{u.model}</span>}
+              </a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <section id="people">
+      <h2 class="kind">{t.people[lang]}</h2>
+      {people.map((g) => (
+        <div class="group">
+          <h3>{seriesName(g.series)}</h3>
+          <ul class="cards">
+            {g.items.map((p) => {
+              const src = portraitUrl(p.portrait);
+              return (
+                <li><a href={`/${lang}/library/people/${p.id}/`} class={p.enemy ? 'enemy' : ''}>
+                  {src ? <img class="face" src={src} alt="" width="96" height="96" loading="lazy" /> : <span class="face none" aria-hidden="true"></span>}
+                  <span class="nm">{p.name[lang]}</span>
+                </a></li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+    </section>
+  </div>
+</Base>
+
+<style>
+  .seg { display: inline-flex; border: 1px solid rgba(63, 208, 255, 0.3); border-radius: 4px; overflow: hidden; }
+  .seg a { padding: 8px 18px; color: var(--muted); text-decoration: none; }
+  .seg a:hover { color: var(--text); background: var(--cyan-soft); }
+  .kind { margin-top: 40px; font-size: 26px; scroll-margin-top: 80px; }
+  section { scroll-margin-top: 80px; }
+  .group { margin-top: 22px; }
+  .group h3 { font-size: 15px; color: var(--cyan); margin-bottom: 10px; }
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
+  .cards a { display: grid; justify-items: center; gap: 4px; padding: 10px 6px; height: 100%; box-sizing: border-box; text-align: center; color: var(--text); text-decoration: none; background: var(--panel); border: 1px solid var(--line-soft); }
+  .cards a:hover { border-color: var(--cyan); background: var(--panel-2); }
+  .cards a.enemy { border-bottom: 2px solid rgba(255, 111, 168, 0.6); }
+  .cards img { width: 80px; height: 80px; object-fit: contain; }
+  .cards .face { border-radius: 4px; object-fit: cover; }
+  .face.none { width: 80px; height: 80px; background: var(--panel-2); }
+  .nm { font-size: 14px; line-height: 1.35; }
+  .sub { font-size: 11px; color: var(--dim); }
+</style>

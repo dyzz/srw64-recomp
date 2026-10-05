@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily copy of the MARCHWIND 64 suggestions database
+ConditionPathExists=/srv/srw64/data/reviews.sqlite3
+
+[Service]
+Type=oneshot
+User=www-data
+Group=www-data
+UMask=0077
+ExecStart=/usr/bin/node --disable-warning=ExperimentalWarning /srv/srw64/current/api/backup.mjs /srv/srw64/data/reviews.sqlite3 /srv/srw64/backups 30
+Nice=10

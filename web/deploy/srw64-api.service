@@ -1,0 +1,30 @@
+[Unit]
+Description=MARCHWIND 64 site API (story search, suggestions)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/srv/srw64/current
+Environment=NODE_ENV=production
+Environment=SRW64_API_HOST=127.0.0.1
+Environment=SRW64_API_PORT=3064
+Environment=SRW64_DATA=/srv/srw64/current/data
+Environment=SRW64_DB=/srv/srw64/data/reviews.sqlite3
+Environment=SRW64_ORIGINS=https://srw64.dreamquest.club
+Environment=SRW64_SECURE_COOKIE=1
+# SRW64_ADMIN_TOKEN lives here, readable by root only.
+EnvironmentFile=-/etc/srw64-api.env
+ExecStart=/usr/bin/node --disable-warning=ExperimentalWarning /srv/srw64/current/api/server.mjs
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/srv/srw64/data
+
+[Install]
+WantedBy=multi-user.target

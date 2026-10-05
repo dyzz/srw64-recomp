@@ -77,6 +77,10 @@ CMakeCache.txt
 !/docs/media/*.jpg
 !/docs/media/*.webp
 !/docs/media/reading-demo.mp4
+# The website's screenshots, comparisons and brand images (web/README.md).
+!/web/public/media/*.webp
+!/web/public/brand/*.png
+!/web/public/brand/*.webp
 
 # Editor and operating-system metadata
 .DS_Store

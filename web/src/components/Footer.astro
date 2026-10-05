@@ -1,0 +1,32 @@
+---
+import { UI, type Lang } from '../i18n';
+import release from '../data/release.json';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+---
+<footer class="site-footer">
+  <div class="wrap grid">
+    <div>
+      <p class="brand"><img src="/brand/marchwind64-logo-small.webp" alt="MARCHWIND 64" width="200" height="79" /> <span class="dim latin">v{release.version}</span></p>
+      <p class="dim small">{UI.footer.unofficial[lang]}</p>
+    </div>
+    <ul class="links">
+      <li><a href="https://github.com/dyzz/srw64-recomp">{UI.footer.source[lang]} · GitHub</a></li>
+      <li><a href={`/${lang}/install/`}>{UI.nav.install[lang]}</a></li>
+      <li><a href={`/${lang}/faq/`}>{UI.nav.faq[lang]}</a></li>
+      <li><a href="/latest.json">latest.json</a></li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .site-footer { margin-top: 64px; padding: 36px 0 48px; border-top: 1px solid var(--line-soft); background: rgba(7, 11, 29, 0.6); }
+  .grid { display: grid; grid-template-columns: 1fr auto; gap: 24px 48px; align-items: start; }
+  .brand { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .brand b { color: var(--gold); }
+  .small { font-size: 13px; line-height: 1.7; max-width: 640px; }
+  .links { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14px; }
+  .links a { color: var(--muted); }
+  .links a:hover { color: var(--text); }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+</style>

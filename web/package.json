@@ -1,0 +1,14 @@
+{
+  "name": "srw64-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource/chakra-petch": "^5.3.0",
+    "astro": "^7.3.5"
+  }
+}

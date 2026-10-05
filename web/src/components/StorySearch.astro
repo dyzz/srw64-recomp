@@ -1,0 +1,73 @@
+---
+// Full-text search over every story line (Japanese and both translations), served by
+// the site API (/api/story/search). Results link to the line on its scene page.
+import type { Lang } from '../i18n';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = {
+  placeholder: { zh: '搜全部台词：日文原文、中文或英文', en: 'Search every line: Japanese, Chinese or English', ja: '全セリフを検索：日本語・中国語・英語' },
+  none: { zh: '没有找到', en: 'No matches', ja: '見つかりませんでした' },
+  more: { zh: '只显示前 {n} 条，换个更具体的词试试', en: 'Showing the first {n}; try a more specific term', ja: '先頭 {n} 件のみ表示。もっと具体的な語でどうぞ' },
+  offline: { zh: '搜索暂时不可用', en: 'Search is unavailable right now', ja: '検索は現在利用できません' },
+};
+---
+<div class="search" data-search data-lang={lang} data-none={t.none[lang]} data-more={t.more[lang]} data-offline={t.offline[lang]}>
+  <label class="box">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder={t.placeholder[lang]} aria-label={t.placeholder[lang]} autocomplete="off" />
+  </label>
+  <p class="status" aria-live="polite"></p>
+  <ol class="results"></ol>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-search]').forEach((root) => {
+    const input = root.querySelector('input')!;
+    const list = root.querySelector('.results')!;
+    const status = root.querySelector('.status')!;
+    const lang = root.dataset.lang!;
+    let timer = 0;
+    let seq = 0;
+    const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+    const mark = (text: string, q: string) => {
+      const i = text.toLowerCase().indexOf(q.toLowerCase());
+      if (i < 0) return esc(text);
+      return esc(text.slice(0, i)) + '<mark>' + esc(text.slice(i, i + q.length)) + '</mark>' + esc(text.slice(i + q.length));
+    };
+    async function run() {
+      const q = input.value.trim();
+      const mine = ++seq;
+      if (q.length < 1) { list.innerHTML = ''; status.textContent = ''; return; }
+      try {
+        const r = await fetch(`/api/story/search?lang=${lang}&q=${encodeURIComponent(q)}`);
+        if (!r.ok) throw new Error(String(r.status));
+        const data = await r.json();
+        if (mine !== seq) return;
+        status.textContent = data.results.length ? (data.truncated ? root.dataset.more!.replace('{n}', data.results.length) : '') : root.dataset.none!;
+        list.innerHTML = data.results.map((x: any) => `
+          <li><a href="/${lang}/story/${x.scene}/#l${x.id}">
+            <span class="where">${esc(x.scene_title)} · ${esc(x.who || '')}</span>
+            <span class="tr">${mark(x.text, q)}</span>
+            ${x.ja && lang !== 'ja' ? `<span class="jp" lang="ja">${mark(x.ja, q)}</span>` : ''}
+          </a></li>`).join('');
+      } catch {
+        if (mine === seq) { status.textContent = root.dataset.offline!; list.innerHTML = ''; }
+      }
+    }
+    input.addEventListener('input', () => { clearTimeout(timer); timer = window.setTimeout(run, 250); });
+  });
+</script>
+
+<style>
+  .search { width: 100%; max-width: 760px; }
+  .box { display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 14px; color: var(--muted); background: var(--panel); border: 1px solid rgba(63, 208, 255, 0.3); }
+  .box:focus-within { border-color: var(--cyan); }
+  input { flex: 1; min-width: 0; background: transparent; border: 0; color: var(--text); font: 16px var(--sans); outline: none; }
+  .status { margin-top: 8px; font-size: 14px; color: var(--dim); min-height: 1em; }
+  .results { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 6px; max-height: 60vh; overflow-y: auto; }
+  .results :global(a) { display: grid; gap: 2px; padding: 10px 14px; color: var(--text); text-decoration: none; background: var(--panel); border-left: 3px solid var(--cyan); }
+  .results :global(a:hover) { background: var(--panel-2); }
+  .results :global(.where) { font-size: 12px; color: var(--dim); }
+  .results :global(.jp) { font-size: 13px; color: var(--dim); }
+  .results :global(mark) { background: rgba(255, 215, 94, 0.35); color: inherit; }
+</style>

@@ -1,0 +1,33 @@
+---
+// The root picks a language: ?lang=, then the reader's last choice, then the
+// browser's languages. Without JavaScript the three links remain.
+import '../styles/global.css';
+import { LANGS } from '../i18n';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MARCHWIND 64</title>
+    <link rel="icon" href="/brand/icon-32.png" sizes="32x32" type="image/png" />
+    {LANGS.map((l) => <link rel="alternate" hreflang={l.tag} href={`/${l.code}/`} />)}
+    <script is:inline>
+      (function () {
+        var ok = ['zh', 'en', 'ja'];
+        var norm = function (v) { v = String(v || '').toLowerCase(); return v.indexOf('zh') === 0 ? 'zh' : v.indexOf('ja') === 0 ? 'ja' : v.indexOf('en') === 0 ? 'en' : null; };
+        var pick = norm(new URLSearchParams(location.search).get('lang'));
+        if (!pick) { try { pick = norm(localStorage.getItem('srw64-lang')); } catch (e) {} }
+        if (!pick) { var ls = navigator.languages || [navigator.language]; for (var i = 0; i < ls.length && !pick; i++) pick = norm(ls[i]); }
+        if (ok.indexOf(pick) < 0) pick = 'en';
+        location.replace('/' + pick + '/' + location.hash);
+      })();
+    </script>
+  </head>
+  <body>
+    <main class="wrap" style="padding-top: 20vh; text-align: center; display: grid; gap: 16px; justify-items: center;">
+      <img src="/brand/marchwind64-logo-small.webp" alt="MARCHWIND 64" width="360" height="142" />
+      <p>{LANGS.map((l) => <a href={`/${l.code}/`} hreflang={l.tag} style="margin: 0 12px;">{l.label}</a>)}</p>
+    </main>
+  </body>
+</html>

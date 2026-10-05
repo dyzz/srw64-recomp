@@ -1,0 +1,91 @@
+---
+import GuideShell from '../../../components/GuideShell.astro';
+import { GUIDE_UI } from '../../../copy/guide';
+import { hiddenElements, inline, progression } from '../../../lib/guide';
+import { langPaths, type Lang } from '../../../i18n';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const ui = GUIDE_UI[lang];
+const data = hiddenElements(lang);
+const labels = Object.fromEntries(data.categories.map((c: any) => [c.id, c.label]));
+const I = (x: unknown) => inline(x, ui.tags);
+const stepLabel = (stage: string) => (/\d/.test(stage) ? ui.step.replace('{}', stage) : stage);
+const sources = progression(lang).sources ?? [];
+---
+<GuideShell lang={lang} tab="hidden-elements" title={ui.hidden} lead={ui.hidden_lead}>
+  <div class="filters" data-filters>
+    <button type="button" data-category="all" aria-pressed="true">{ui.all}</button>
+    {data.categories.map((c: any) => <button type="button" data-category={c.id} aria-pressed="false">{c.label}</button>)}
+  </div>
+  {data.intro && <section class="gcard intro"><h2>{data.intro.title}</h2><ul class="dots">{data.intro.items.map((x: string) => <li set:html={I(x)} />)}</ul></section>}
+  <div class="grid">
+    {data.entries.map((e: any) => (
+      <article class="gcard secret" id={e.id} data-category={e.category}>
+        <div><span class="kicker">{e.kicker || labels[e.category]}</span>{e.applies && <span class="applies">{e.applies}</span>}</div>
+        <h3>{e.title}</h3>
+        {e.summary && <p class="summary" set:html={I(e.summary)} />}
+        {e.steps?.length > 0 && <ol class="steps">
+          {e.steps.map((s: any) => (
+            <li>
+              <div class="step-head">
+                {s.stage && <span class="when">{stepLabel(s.stage)}</span>}
+                {s.stage_title && <span class="st">{s.stage_title}</span>}
+                {s.route && <span class="rt">{s.route}</span>}
+              </div>
+              <p set:html={I(s.text)} />
+            </li>
+          ))}
+        </ol>}
+        {e.result && <p class="result" set:html={I(e.result)} />}
+        {e.notes?.length > 0 && <ul class="dots notes">{e.notes.map((x: string) => <li set:html={I(x)} />)}</ul>}
+        {e.akurasu_notes?.length > 0 && <div class="correction"><p class="ct">{ui.akurasu_box}</p><ul class="dots">{e.akurasu_notes.map((x: string) => <li set:html={I(x)} />)}</ul></div>}
+      </article>
+    ))}
+  </div>
+  <Fragment slot="foot">{ui.sources}{sources.join(ui.sep)}</Fragment>
+</GuideShell>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-filters]');
+  const cards = [...document.querySelectorAll<HTMLElement>('.secret')];
+  function pick(c: string) {
+    bar!.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.category === c)));
+    cards.forEach((card) => { card.hidden = c !== 'all' && card.dataset.category !== c; });
+  }
+  bar?.addEventListener('click', (e) => { const b = (e.target as Element).closest<HTMLButtonElement>('button[data-category]'); if (b) pick(b.dataset.category!); });
+  // A link to one secret shows it even when a filter would hide it.
+  addEventListener('hashchange', () => { const t = document.getElementById(location.hash.slice(1)); if (t?.hidden) pick('all'); });
+</script>
+
+<style>
+  .filters { position: sticky; top: 112px; z-index: 10; display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 14px; padding: 10px 0; background: linear-gradient(var(--bg) 80%, transparent); }
+  .filters button { min-height: 34px; padding: 4px 12px; background: var(--g-card); color: var(--muted); border: 1px solid var(--g-line); border-radius: 4px; font: 600 13px var(--sans); cursor: pointer; }
+  .filters button:hover { color: var(--text); border-color: var(--cyan); }
+  .filters button[aria-pressed='true'] { background: var(--cyan); color: var(--ink); border-color: var(--cyan); }
+  .intro { padding: 16px 18px; margin: 0 0 14px; }
+  .intro h2 { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .secret { padding: 18px; scroll-margin-top: 170px; }
+  .secret[hidden] { display: none; }
+  .secret:target { outline: 2px solid var(--gold); }
+  .kicker { display: inline-flex; padding: 1px 8px; border-radius: 999px; background: rgba(255, 215, 94, 0.12); color: var(--gold); font-size: 12px; font-weight: 700; }
+  .applies { margin-left: 8px; font-size: 12px; color: var(--dim); }
+  .secret h3 { margin: 8px 0 0; font-size: 18px; }
+  .summary { margin: 6px 0 12px; color: var(--muted); font-size: 14px; }
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  .steps > li { position: relative; padding: 10px 0 10px 38px; border-top: 1px solid var(--g-line); counter-increment: s; }
+  .steps > li::before { content: counter(s); position: absolute; left: 0; top: 10px; display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid var(--g-line); border-radius: 5px; color: var(--muted); font-size: 12px; font-weight: 700; }
+  .steps p { margin: 4px 0 0; font-size: 14px; }
+  .step-head { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+  .when { padding: 0 8px; border-radius: 999px; background: rgba(63, 208, 255, 0.14); color: #8fe4ff; font-size: 12px; font-weight: 700; }
+  .st { font-size: 13px; font-weight: 600; }
+  .rt { font-size: 12px; color: var(--dim); }
+  .result { margin: 6px 0 0; padding: 9px 12px; border-radius: 5px; background: rgba(87, 227, 137, 0.1); color: var(--green); font-size: 14px; font-weight: 600; }
+  .notes { margin-top: 8px; }
+  .notes li { color: #c8d4ee; font-size: 13px; }
+  .correction { margin: 10px 0 0; padding: 10px 12px; border: 1px solid rgba(255, 111, 168, 0.45); border-radius: 5px; background: rgba(255, 111, 168, 0.07); }
+  .ct { margin: 0 0 4px; color: #ff8fa3; font-size: 12px; font-weight: 700; }
+  .correction li { font-size: 13px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+</style>
