@@ -51,6 +51,7 @@
 #include "upgrade_page.hpp"
 #include "parts_page.hpp"
 #include "ability_page.hpp"
+#include "cheats.hpp"
 #include "focus_lines.hpp"
 #include "swap_page.hpp"
 #include "save_page.hpp"
@@ -463,6 +464,7 @@ static int run_host(int argc, char** argv) {
     srw64::parts_page::configure(output_dir);
     srw64::ability_page::configure(output_dir);
     srw64::swap_page::configure(output_dir);
+    srw64::cheats::configure(output_dir);
     srw64::save_store::configure(output_dir, initial_sram);
     if (srw64::save_store::enabled()) srw64_game_hooks.sram_transfer = srw64::save_store::transfer;
     srw64::autosave::configure(output_dir);

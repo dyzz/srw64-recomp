@@ -53,6 +53,7 @@
 | [基础修复](gameplay/base-fixes.md) | 默认生效、没有开关的缺陷修复（BUG05 五飞假身） |
 | [可选规则修正](gameplay/rule-fixes.md) | 超能力、圣战士、限界、底力、武器改造继承、奥拉斩威力等修正，以及假身、改造上限突破、离队退款等难度调整：原因、依据、开关与实机核对 |
 | [改造段数与上限](gameplay/upgrade-limits.md) | “丑小鸭”上限、每段增量与价格、上限突破、升级规则文件 |
+| [金手指](gameplay/cheats.md) | 设置「规则」页的六项：资金、部件、EN、SP、气力 150、改机师等级；地址与上限依据、为什么不用 libretro 的码 |
 | [改造继承分析](gameplay/upgrade-inheritance.md) | 换机时改造段数如何搬运、前任表与武器映射、疑似漏项（静态分析） |
 | [隐藏要素](gameplay/hidden-elements.md) | 隐藏机体／驾驶员、说服与分歧条件在脚本中的实现，与攻略对照（静态分析） |
 | [Link Battler 联动](gameplay/link-battler.md) | F91、ゴーショーグン、ザンボット3 的开放判定、插入关、等级对齐与 GB 数据块格式；原生版用联动页勾选代替卡带 |

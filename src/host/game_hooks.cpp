@@ -86,6 +86,7 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     if(srw64_game_hooks.ability_frame)srw64_game_hooks.ability_frame(ram);
     if(srw64_game_hooks.swap_frame)srw64_game_hooks.swap_frame(ram);
     if(srw64_game_hooks.save_frame)srw64_game_hooks.save_frame(ram);
+    if(srw64_game_hooks.cheats_frame)srw64_game_hooks.cheats_frame(ram);
     if(srw64::mini_stage::take_direct_entry()) {
         // The title overlay's own exit (801CAA34..801CAA80) with the mode the
         // intermission's next-stage exit selects (801D8D94).
@@ -863,6 +864,7 @@ void load_0008F4B0_func_801CDFB0(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_intermission_menu_build(rdram, ctx);
 }
 void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.cheats_intermission) srw64_game_hooks.cheats_intermission(rdram, ctx);
     if (!srw64_game_hooks.intermission_step || !srw64_game_hooks.intermission_step(rdram, ctx))
         srw64_original_intermission_menu_step(rdram, ctx);
     if (srw64_game_hooks.intermission_after_step) srw64_game_hooks.intermission_after_step(rdram, ctx);

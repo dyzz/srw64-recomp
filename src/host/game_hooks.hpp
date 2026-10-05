@@ -124,6 +124,9 @@ struct SRW64GameHooks {
     bool (*intermission_build)(uint8_t*, recomp_context*){};
     bool (*intermission_step)(uint8_t*, recomp_context*){};
     void (*intermission_frame)(uint8_t*){};
+    // Cheats (cheats.cpp): every frame, and before each インターミッション menu step.
+    void (*cheats_frame)(uint8_t*){};
+    void (*cheats_intermission)(uint8_t*, recomp_context*){};
     // Tactical map, choosing a move destination (docs/native/move-jump.md): 801CBB04 runs
     // (state 0xC, sub-state 0); true: the host handled this frame and the original does not
     // run. 801E4760 drew the move range into the display list whose Gfx* is at `list`.

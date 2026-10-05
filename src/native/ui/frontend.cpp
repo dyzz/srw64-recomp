@@ -31,6 +31,7 @@
 #include "frame_rate.hpp"
 #include "steam_deck.hpp"
 #include "rule_fixes.hpp"
+#include "cheats.hpp"
 #include "notices.hpp"
 #include "debug_ui.hpp"
 #include "debug_protocol.hpp"
@@ -950,6 +951,33 @@ std::string saves_page() {
     }
     if(!save_message.empty())body+="<p class='set-message'>"+escape(save_message)+"</p>";
     return body;
+}
+// The Rules page's cheats (docs/gameplay/cheats.md): five switches, then each pilot's
+// level, which can change only while the インターミッション menu is up.
+std::string cheats_page() {
+    std::string body="<h2>"+label("cheats_group")+"</h2><p>"+label("cheats_note")+"</p>";
+    for(const auto& entry:cheats::catalog)
+        body+=button("cheat:"+std::string(entry.id),"<span class='set-name'>"+label("cheat_"+std::string(entry.id))+"</span><span class='switch'><span></span></span>",settings::cheats()&entry.bit,false,"set-toggle nav");
+    body+="<h2>"+label("cheat_levels")+"</h2>";
+    const auto pilots=cheats::pilots();
+    if(pilots.empty())return body+"<p>"+label("cheat_levels_away")+"</p>";
+    body+="<p>"+label("cheat_levels_note")+"</p>";
+    for(const auto& pilot:pilots) {
+        std::string steps;
+        unsigned slot=0;   // ids stay unique where two steps reach the same level
+        const auto step=[&](int to,const std::string& text){
+            const unsigned level=unsigned(std::clamp(to,1,99));
+            steps+=button("cheat-level:"+std::to_string(pilot.index)+":"+std::to_string(level)+":"+std::to_string(slot++),text,false,level==pilot.level);
+        };
+        step(1,"1");step(int(pilot.level)-10,"-10");step(int(pilot.level)-1,"-1");step(int(pilot.level)+1,"+1");step(int(pilot.level)+10,"+10");step(99,"99");
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(pilot.name)+" <span class='set-note'>Lv "+std::to_string(pilot.level)+"</span></div><div class='set-seg'>"+steps+"</div></div></div>";
+    }
+    return body;
+}
+std::string cheats_stamp() {
+    std::string stamp=std::to_string(settings::cheats());
+    for(const auto& pilot:cheats::pilots())stamp+=","+std::to_string(pilot.index)+":"+std::to_string(pilot.level)+pilot.name;
+    return stamp;
 }
 // One setting: its name with its choices beside it, and its note on a line of its own.
 // RmlUi breaks lines only at spaces, so a Chinese or Japanese note needs the whole
@@ -2111,7 +2139,9 @@ void settings_sync() {
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
         // The セーブ page: its choices, the import folder as last read and the last result.
         [&]{const auto c=save_store::settings();return std::to_string(c.autosave)+std::to_string(c.intermission)+std::to_string(c.turn);}()+
-        save_candidates.dump()+save_message+save_force;
+        save_candidates.dump()+save_message+save_force+
+        // The Rules page's cheats: their switches and the pilots the menu lists.
+        (settings_pages[settings_page]==std::string("rules")?cheats_stamp():std::string());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     // A rebuilt window keeps its focused control and scroll position, so a controller
     // does not lose its place; another page starts at its top.
@@ -2159,6 +2189,7 @@ void settings_sync() {
             for(const auto& entry:rules::catalog)if(entry.kind==group)
                 body+=button("rule:"+std::string(entry.id),"<span class='set-name'>"+label(rules::ui_key(entry.id))+"</span><span class='switch'><span></span></span>",rules::active_fixes()&entry.fix,false,"set-toggle nav");
         }
+        body+=cheats_page();
     } else if(page=="saves") {
         body+=saves_page();
     } else if(page=="controls") {
@@ -3679,6 +3710,8 @@ void choose(const std::string& id) {
     if(id.starts_with("settings-page:")){for(unsigned i=0;i<std::size(settings_pages);++i)if(id.substr(14)==settings_pages[i])settings_show(i,id);return;}
     try {
         if(id.starts_with("rule:"))for(const auto& entry:rules::catalog)if(entry.id==id.substr(5))rules::set_fixes(rules::active_fixes()^entry.fix);
+        if(id.starts_with("cheat:"))for(const auto& entry:cheats::catalog)if(entry.id==id.substr(6))settings::set_cheats(settings::cheats()^entry.bit);
+        if(id.starts_with("cheat-level:"))if(const auto colon=id.find(':',12);colon!=std::string::npos)cheats::request_level(unsigned(std::stoul(id.substr(12,colon-12))),unsigned(std::stoul(id.substr(colon+1))));
         if(id.starts_with("preset:"))for(const auto& preset:rules::presets)if(preset.key==id.substr(7))rules::set_fixes(preset.fixes);
         if(id.starts_with("locale:") && !input.has_composition())settings::request_locale(id.substr(7));
         if(id.starts_with("images:") && presentation::image_mode.enabled())presentation::image_mode.request(id=="images:hd");

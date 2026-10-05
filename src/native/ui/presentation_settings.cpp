@@ -8,6 +8,7 @@
 #include "localization/catalog.hpp"
 #include "json/json.hpp"
 #include "input_bindings.hpp"
+#include "cheats.hpp"
 #include <atomic>
 #include <cstdlib>
 #include <filesystem>
@@ -66,6 +67,9 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
         {"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
+    auto cheat_ids=nlohmann::json::array();
+    for(const auto& entry:srw64::cheats::catalog)if(srw64::cheats::active()&entry.bit)cheat_ids.push_back(entry.id);
+    if(!cheat_ids.empty())saved["cheats"]=cheat_ids;
     srw64::app::atomic_write(path,saved.dump(2)+"\n");
 }
 void apply(const std::string& locale) {
@@ -111,6 +115,12 @@ void set_wide_picture(bool wide) {
 bool show_fps(){return fps_shown.load();}
 void set_show_fps(bool show) {
     fps_shown=show;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
+unsigned cheats(){return srw64::cheats::active();}
+void set_cheats(unsigned switches) {
+    srw64::cheats::set_active(switches);
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
@@ -163,6 +173,11 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
         if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();
+        if(saved.is_object() && saved.contains("cheats") && saved["cheats"].is_array() && !std::getenv("SRW64_CHEATS")) {
+            unsigned value=0;
+            for(const auto& id:saved["cheats"])for(const auto& entry:srw64::cheats::catalog)if(id.is_string() && id.get<std::string>()==entry.id)value|=entry.bit;
+            srw64::cheats::set_active(value);
+        }
         if(saved.is_object() && saved.contains("ui_size") && saved["ui_size"].is_string()) {
             const auto name=saved["ui_size"].get<std::string>();
             for(const auto size:{UiSize::Standard,UiSize::Large,UiSize::Largest})if(name==ui_size_name(size))size_choice=int(size);

@@ -66,6 +66,12 @@ class SettingsWindowTests(unittest.TestCase):
             for key in [k for k in labels if k.startswith("rule_")]:
                 for run in runs(labels[key]):   # beside the 38 dp switch
                     self.assertLessEqual(em(run) * 15, row - 38 - 14, (locale, key, run))
+            for key in [k for k in labels if k.startswith("cheat_") and k not in ("cheat_levels_note", "cheat_levels_away")]:
+                for run in runs(labels[key]):   # beside the 38 dp switch, or a heading
+                    self.assertLessEqual(em(run) * 15, row - 38 - 14, (locale, key, run))
+            for key in ("cheats_note", "cheat_levels_note", "cheat_levels_away"):
+                for run in runs(labels[key]):
+                    self.assertLessEqual(em(run) * 12, row, (locale, key, run))
             for name in CONTROL_ROWS:   # beside two 150 dp binding columns
                 for run in runs(labels[f"controls_row_{name}"]):
                     self.assertLessEqual(em(run) * 14, row - 300, (locale, name, run))
