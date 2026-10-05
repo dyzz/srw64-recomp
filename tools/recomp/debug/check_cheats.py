@@ -2,7 +2,7 @@
 """Verify the Rules page's cheats (docs/gameplay/cheats.md) on a first-episode save.
 
 Loads build/recomp/save-recovery-check/intermission-cold-1.source.sram through the
-title ring, opens the settings window on the Rules page, raises the protagonist's
+title ring, opens the settings window on the Cheats page, raises the protagonist's
 level and checks the record against the original's own recomputation, turns on the
 five switches and checks what each frame holds (lowering EN, SP and morale by hand
 and watching them come back), then saves into slot 2 and reads the level the slot
@@ -89,10 +89,14 @@ s.wait(intermission_page=True, timeout=30)
 time.sleep(1.5)
 check('intermission', status()['intermission_page'].get('visible'), {})
 
-# The settings window on the Rules page: the five switches and the pilots' rows.
+# The settings window's Cheats page: the five switches, the pilots folded away until
+# their row is opened.
 pad('view')
 check('settings-open', status()['settings_window'], {})
-s.client.call('ui.click', id='settings-page:rules')
+s.client.call('ui.click', id='settings-page:cheats')
+time.sleep(1)
+check('levels-folded', 'cheat-levels' in ids() and not [i for i in ids() if i.startswith('cheat-level:')], {})
+s.client.call('ui.click', id='cheat-levels')
 time.sleep(1)
 present = ids()
 switches = [f'cheat:{name}' for name in ('funds', 'parts', 'en', 'sp', 'morale')]

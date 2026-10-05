@@ -806,7 +806,7 @@ int dp_pixels(float dp){return int(dp*ui_density+.5f);}
 // The settings window (docs/native/settings-window.md): an overlay panel over the game
 // with one page per category. Pages in tab order; the id is what presentation.json
 // keeps as settings_page, so the window reopens where it was left.
-constexpr const char* settings_pages[]={"general","interface","rules","saves","controls","about"};
+constexpr const char* settings_pages[]={"general","interface","rules","cheats","saves","controls","about"};
 unsigned settings_page{};
 int settings_built=-1;  // the page the open window shows; -1 once it closes
 // The control to focus once the window is rebuilt: an id, "first" for the page's first
@@ -952,16 +952,18 @@ std::string saves_page() {
     if(!save_message.empty())body+="<p class='set-message'>"+escape(save_message)+"</p>";
     return body;
 }
-// The Rules page's cheats (docs/gameplay/cheats.md): five switches, then each pilot's
-// level, which can change only while the インターミッション menu is up.
+// The Cheats page (docs/gameplay/cheats.md): five switches, then each pilot's level
+// behind a row that opens the list; levels change only while the インターミッション
+// menu is up.
+bool cheat_levels_open=false;
 std::string cheats_page() {
-    std::string body="<h2>"+label("cheats_group")+"</h2><p>"+label("cheats_note")+"</p>";
+    std::string body="<p>"+label("cheats_note")+"</p>";
     for(const auto& entry:cheats::catalog)
         body+=button("cheat:"+std::string(entry.id),"<span class='set-name'>"+label("cheat_"+std::string(entry.id))+"</span><span class='switch'><span></span></span>",settings::cheats()&entry.bit,false,"set-toggle nav");
-    body+="<h2>"+label("cheat_levels")+"</h2>";
+    body+=settings_row("cheat_levels",button("cheat-levels",label(cheat_levels_open?"cheat_levels_close":"cheat_levels_open"),cheat_levels_open));
+    if(!cheat_levels_open)return body;
     const auto pilots=cheats::pilots();
     if(pilots.empty())return body+"<p>"+label("cheat_levels_away")+"</p>";
-    body+="<p>"+label("cheat_levels_note")+"</p>";
     for(const auto& pilot:pilots) {
         std::string steps;
         unsigned slot=0;   // ids stay unique where two steps reach the same level
@@ -975,7 +977,8 @@ std::string cheats_page() {
     return body;
 }
 std::string cheats_stamp() {
-    std::string stamp=std::to_string(settings::cheats());
+    std::string stamp=std::to_string(settings::cheats())+(cheat_levels_open?"+":"-");
+    if(!cheat_levels_open)return stamp;
     for(const auto& pilot:cheats::pilots())stamp+=","+std::to_string(pilot.index)+":"+std::to_string(pilot.level)+pilot.name;
     return stamp;
 }
@@ -2140,8 +2143,8 @@ void settings_sync() {
         // The セーブ page: its choices, the import folder as last read and the last result.
         [&]{const auto c=save_store::settings();return std::to_string(c.autosave)+std::to_string(c.intermission)+std::to_string(c.turn);}()+
         save_candidates.dump()+save_message+save_force+
-        // The Rules page's cheats: their switches and the pilots the menu lists.
-        (settings_pages[settings_page]==std::string("rules")?cheats_stamp():std::string());
+        // The Cheats page: its switches, the levels row and the pilots the menu lists.
+        (settings_pages[settings_page]==std::string("cheats")?cheats_stamp():std::string());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     // A rebuilt window keeps its focused control and scroll position, so a controller
     // does not lose its place; another page starts at its top.
@@ -2189,6 +2192,7 @@ void settings_sync() {
             for(const auto& entry:rules::catalog)if(entry.kind==group)
                 body+=button("rule:"+std::string(entry.id),"<span class='set-name'>"+label(rules::ui_key(entry.id))+"</span><span class='switch'><span></span></span>",rules::active_fixes()&entry.fix,false,"set-toggle nav");
         }
+    } else if(page=="cheats") {
         body+=cheats_page();
     } else if(page=="saves") {
         body+=saves_page();
@@ -3710,6 +3714,7 @@ void choose(const std::string& id) {
     if(id.starts_with("settings-page:")){for(unsigned i=0;i<std::size(settings_pages);++i)if(id.substr(14)==settings_pages[i])settings_show(i,id);return;}
     try {
         if(id.starts_with("rule:"))for(const auto& entry:rules::catalog)if(entry.id==id.substr(5))rules::set_fixes(rules::active_fixes()^entry.fix);
+        if(id=="cheat-levels")cheat_levels_open=!cheat_levels_open;
         if(id.starts_with("cheat:"))for(const auto& entry:cheats::catalog)if(entry.id==id.substr(6))settings::set_cheats(settings::cheats()^entry.bit);
         if(id.starts_with("cheat-level:"))if(const auto colon=id.find(':',12);colon!=std::string::npos)cheats::request_level(unsigned(std::stoul(id.substr(12,colon-12))),unsigned(std::stoul(id.substr(colon+1))));
         if(id.starts_with("preset:"))for(const auto& preset:rules::presets)if(preset.key==id.substr(7))rules::set_fixes(preset.fixes);

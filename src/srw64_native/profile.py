@@ -69,10 +69,10 @@ UI_KEYS |= {"settings_title_ui", "settings_title_ui_native", "settings_title_ui_
             "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint"}
 # The settings window's pages, footer and Controls page (frontend.cpp settings_sync; the
 # page ids and the functions are the same lists as settings_pages and control_rows there).
-SETTINGS_PAGES = ("general", "interface", "rules", "saves", "controls", "about")
+SETTINGS_PAGES = ("general", "interface", "rules", "cheats", "saves", "controls", "about")
 UI_KEYS |= {f"settings_page_{page}" for page in SETTINGS_PAGES}
-# The Rules page's cheats (frontend.cpp cheats_page; the switch ids are cheats.hpp catalog).
-UI_KEYS |= {"cheats_group", "cheats_note", "cheat_levels", "cheat_levels_note", "cheat_levels_away"}
+# The Cheats page (frontend.cpp cheats_page; the switch ids are cheats.hpp catalog).
+UI_KEYS |= {"cheats_note", "cheat_levels", "cheat_levels_note", "cheat_levels_open", "cheat_levels_close", "cheat_levels_away"}
 UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "en", "sp", "morale")}
 # The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
 CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "animation", "settings",
