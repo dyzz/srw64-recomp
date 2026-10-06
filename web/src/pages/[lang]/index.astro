@@ -11,7 +11,7 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = HOME[lang];
 // Dialogue first, the modern screens and controls second, bug fixes third (user, 2026-10-05).
-const ORDER = ['history', 'prebattle', 'settings', 'library', 'viewer'];
+const ORDER = ['history', 'prebattle', 'settings', 'filters', 'library', 'viewer'];
 const shows = ORDER.map((k) => c.shows.find((x) => x.key === k)!).filter(Boolean);
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`)))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -76,9 +76,10 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
           </div>
         ) : (
           <article class={`show ${i % 2 ? 'flip' : ''}`}>
-            <figure class={`shot ${item.sh!.img2 ? 'pair' : ''}`}>
+            <figure class={`shot ${item.sh!.img2 ? 'pair' : ''} ${item.sh!.side ? 'side' : ''}`}>
               <img src={item.sh!.img.replace('{lang}', lang)} alt={item.sh!.title} width="1280" height="720" loading="lazy" />
               {item.sh!.img2 && <img src={item.sh!.img2.replace('{lang}', lang)} alt="" width="1280" height="720" loading="lazy" />}
+              {item.sh!.credit && <figcaption>{item.sh!.credit}</figcaption>}
             </figure>
             <div class="show-text">
               <span class="num latin">{String(i + 1).padStart(2, '0')} · {item.sh!.tag}</span>
@@ -209,6 +210,14 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
   .shot::before { content: ''; position: absolute; left: -10px; top: -10px; width: 60px; height: 60px; border-left: 3px solid var(--cyan); border-top: 3px solid var(--cyan); }
   .show.flip .shot::before { left: auto; right: -10px; border-left: 0; border-right: 3px solid var(--cyan); }
   .shot.pair { display: grid; gap: 12px; }
+  /* A before-and-after pair: the text first, the two pictures side by side across the column. */
+  .show:has(.shot.side), .show.flip:has(.shot.side) { grid-template-columns: minmax(0, 1fr); }
+  .show:has(.shot.side) .shot { order: 2; }
+  .show:has(.shot.side) .show-text { max-width: 860px; }
+  .shot.side { grid-template-columns: 1fr 1fr; align-items: start; }
+  .shot.side figcaption { grid-column: 1 / -1; }
+  @media (max-width: 640px) { .shot.side { grid-template-columns: 1fr; } }
+  .shot figcaption { font-size: 12.5px; line-height: 1.6; color: var(--dim); }
   .show-text { display: grid; gap: 12px; align-content: center; }
   .show-text .num { font-size: 13px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); }
   .show-text h3 { font-size: clamp(22px, 2.6vw, 30px); }
