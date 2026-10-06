@@ -179,14 +179,45 @@ std::vector<std::filesystem::path> retroarch_folders(const char* leaf) {
     for(const auto& base:bases)if(std::filesystem::is_directory(base/leaf,error))found.push_back(base/leaf);
     return found;
 }
-std::vector<std::filesystem::path> roots(const char* ours,const char* theirs) {
-    std::vector<std::filesystem::path> list{user_folder()/ours};
-    for(auto& folder:retroarch_folders(theirs))list.push_back(std::move(folder));
+// Beside the program: Contents/Resources in the macOS app, the program's folder on Linux
+// (package_macos.py, build_linux.py); in a development build, build/filters copied by CMake.
+std::filesystem::path shipped(const char* name) {
+    std::filesystem::path base;
+    if(char* path=SDL_GetBasePath()){base=path;SDL_free(path);}
+    std::error_code error;
+    return !base.empty() && std::filesystem::is_directory(base/name,error)?base/name:std::filesystem::path();
+}
+std::vector<LookFolder> roots(const char* ours,const char* theirs) {
+    std::vector<LookFolder> list;
+    if(auto folder=shipped(ours);!folder.empty())list.push_back({LookFolder::builtin,folder});
+    list.push_back({LookFolder::mine,user_folder()/ours});
+    for(auto& folder:retroarch_folders(theirs))list.push_back({LookFolder::retroarch,std::move(folder)});
     return list;
 }
+// The player's folders, with a note on what goes in them, the first time the window opens.
+constexpr const char* kFiltersReadme=
+    "Filters: RetroArch slang shader presets (.slangp). Copy a preset with the .slang files and images it uses,\n"
+    "keeping its folder layout (most use ../include or ../../include); any subfolders. Settings > General > Filter.\n\n"
+    "滤镜：RetroArch 的 slang 着色器预设（.slangp）。连同它用到的 .slang 和图片一起复制进来，保持原来的文件夹结构\n"
+    "（很多预设会引用 ../include 或 ../../include），子文件夹随意。在 设置 > 通用 > 滤镜 里选择。\n\n"
+    "フィルター：RetroArch の slang シェーダープリセット（.slangp）。使う .slang と画像ごと、フォルダ構成を保って\n"
+    "コピーしてください（../include を参照するものが多い）。設定 > 一般 > フィルター で選びます。\n";
+constexpr const char* kBezelsReadme=
+    "Bezels: an image (.png) with a transparent window in the middle, or a RetroArch overlay .cfg naming one\n"
+    "(overlay0_overlay = name.png). The window is fitted to the 4:3 picture. Settings > General > Bezel, with the\n"
+    "aspect ratio at 4:3.\n\n"
+    "框体：中间有透明窗口的图片（.png），或者指向这种图片的 RetroArch overlay .cfg（overlay0_overlay = 图片名.png）。\n"
+    "透明窗口会自动对准 4:3 画面。画面比例选 4:3 后，在 设置 > 通用 > 框体 里选择。\n\n"
+    "ベゼル：中央に透明な窓がある画像（.png）、またはそれを指す RetroArch の overlay .cfg。\n"
+    "窓は 4:3 の画面に合わせます。画面比率を 4:3 にして 設定 > 一般 > ベゼル で選びます。\n";
+void make_folder(const std::filesystem::path& folder,const char* readme) {
+    std::error_code error;
+    std::filesystem::create_directories(folder,error);
+    if(!error && !std::filesystem::exists(folder/"README.txt",error))std::ofstream(folder/"README.txt")<<readme;
 }
-std::vector<std::filesystem::path> bezel_roots(){return roots("bezels","overlays");}
-std::vector<std::filesystem::path> filter_roots(){return roots("shaders","shaders/shaders_slang");}
+}
+std::vector<LookFolder> bezel_roots(){return roots("bezels","overlays");}
+std::vector<LookFolder> filter_roots(){return roots("filters","shaders/shaders_slang");}
 unsigned cheats(){return srw64::cheats::active();}
 void set_cheats(unsigned switches) {
     srw64::cheats::set_active(switches);
@@ -235,6 +266,8 @@ void update() {
 void window_init(SDL_Window* window,const std::filesystem::path& directory) {
     output=directory;
     if(const auto* path=std::getenv("SRW64_PRESENTATION_SETTINGS"))destination=path;
+    // The player's filters/ and bezels/ (docs/native/bezels-and-filters.md).
+    if(!destination.empty()){make_folder(user_folder()/"filters",kFiltersReadme);make_folder(user_folder()/"bezels",kBezelsReadme);}
     if(!destination.empty()) {
         std::ifstream file(destination);
         const auto saved=nlohmann::json::parse(file,nullptr,false);

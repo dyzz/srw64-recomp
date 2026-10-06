@@ -1014,6 +1014,7 @@ std::string cheats_page() {
     }
     return body;
 }
+bool touch_active();
 // Bezel and filter (docs/native/bezels-and-filters.md): a picker inside the General page
 // that walks the player's folder and RetroArch's, one level at a time.
 std::string browse_kind;            // "bezel", "filter" or empty while closed
@@ -1025,8 +1026,14 @@ std::string browser() {
     const auto row=[](const std::string& id,const std::string& text,bool on=false){return button(id,"<span class='set-name'>"+text+"</span>",on,false,"set-toggle nav");};
     std::string out;
     if(browse_dir.empty()) {
-        for(size_t i=0;i<roots.size();++i)
-            out+=row("browse-dir:"+roots[i].string(),label(i==0?(bezels?"settings_bezel_mine":"settings_filter_mine"):"settings_browse_retroarch")+" <span class='set-note'>"+escape(roots[i].string())+"</span>");
+        for(const auto& root:roots) {
+            const char* key=root.kind==settings::LookFolder::builtin?"settings_browse_builtin":root.kind==settings::LookFolder::mine?
+                (bezels?"settings_bezel_mine":"settings_filter_mine"):"settings_browse_retroarch";
+            out+=row("browse-dir:"+root.path.string(),label(key)+" <span class='set-note'>"+escape(root.path.string())+"</span>");
+            // The player's folder opens in the file manager, where there is one to open.
+            if(root.kind==settings::LookFolder::mine && !on_steam_deck() && !touch_active())
+                out+=row("open-folder:"+root.path.string(),label("settings_browse_open"));
+        }
         return out;
     }
     out+=row("browse-up",label("settings_browse_up")+" <span class='set-note'>"+escape(browse_dir.string())+"</span>");
@@ -3937,10 +3944,11 @@ void choose(const std::string& id) {
         if(id=="filter-off"){settings::set_filter("");browse_kind.clear();}
         if(id.starts_with("filter-scale:"))settings::set_filter_scale(unsigned(std::stoul(id.substr(13))));
         if(id.starts_with("browse:")){const auto kind=id.substr(7);browse_kind=browse_kind==kind?std::string():kind;browse_dir.clear();}
+        if(id.starts_with("open-folder:")){std::error_code error;std::filesystem::create_directories(id.substr(12),error);SDL_OpenURL(("file://"+id.substr(12)).c_str());}
         if(id.starts_with("browse-dir:")){browse_dir=std::filesystem::path(id.substr(11));std::error_code error;std::filesystem::create_directories(browse_dir,error);}
         if(id=="browse-up") {
             const auto roots=browse_kind=="bezel"?settings::bezel_roots():settings::filter_roots();
-            browse_dir=std::find(roots.begin(),roots.end(),browse_dir)!=roots.end()?std::filesystem::path():browse_dir.parent_path();
+            browse_dir=std::any_of(roots.begin(),roots.end(),[](const auto& root){return root.path==browse_dir;})?std::filesystem::path():browse_dir.parent_path();
         }
         if(id.starts_with("browse-pick:")) {
             const auto path=id.substr(12);

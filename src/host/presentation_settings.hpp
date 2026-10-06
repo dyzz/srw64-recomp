@@ -77,10 +77,16 @@ std::string filter();
 void set_filter(const std::string& path);
 unsigned filter_scale();
 void set_filter_scale(unsigned scale);
-// Where the pickers start: bezels/ and shaders/ in the player's folder, then RetroArch's
-// overlays and slang shaders where RetroArch is installed.
-std::vector<std::filesystem::path> bezel_roots();
-std::vector<std::filesystem::path> filter_roots();
+// Where the pickers start (docs/native/bezels-and-filters.md): the ones shipped beside the
+// program (filters/, bezels/), the player's own folders of the same names in their data
+// folder (made with a README.txt the first time the window opens, for them to add to),
+// then RetroArch's overlays and slang shaders where RetroArch is installed.
+struct LookFolder {
+    enum Kind {builtin, mine, retroarch} kind;
+    std::filesystem::path path;
+};
+std::vector<LookFolder> bezel_roots();
+std::vector<LookFolder> filter_roots();
 // The cheats page's switches (cheats.hpp), a mask of cheats::Switch. Saved as cheats,
 // a list of ids; SRW64_CHEATS for a run takes the place of the saved list.
 unsigned cheats();

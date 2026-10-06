@@ -109,7 +109,7 @@ def sign_bundle(bundle: Path, files: list[Path], identity: str) -> None:
 def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum: str = "14.0",
                  identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake",
                  search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = (),
-                 dialogue: Path | None = None, fonts: Path | None = None, hd: Path | None = None,
+                 dialogue: Path | None = None, fonts: Path | None = None, hd: Path | None = None, filters: Path | None = None,
                  rom: Path | None = None) -> Path:
     if sys.platform != "darwin":
         raise ValueError("macOS packaging must run on macOS")
@@ -189,6 +189,10 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
                 target = resources / "dialogue" / path.relative_to(source)
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(path, target)
+        if filters is not None:
+            # The built-in RetroArch filters (tools/content/fetch_filters.py), listed by the settings.
+            shutil.copytree(filters.resolve(strict=True), resources / "filters", symlinks=False,
+                            ignore=shutil.ignore_patterns(".commit"))
         if fonts is not None:
             # HarmonyOS Sans must ship unmodified with its licence (tools/content/prepare_fonts.py).
             source = fonts.resolve(strict=True)
@@ -242,6 +246,8 @@ def main() -> int:
                         help="dialogue text directory copied to Contents/Resources/dialogue")
     parser.add_argument("--fonts", type=Path, default=Path(__file__).resolve().parents[2] / "build/fonts",
                         help="prepared fonts (tools/content/prepare_fonts.py) copied to Contents/Resources/fonts")
+    parser.add_argument("--filters", type=Path, default=Path(__file__).resolve().parents[2] / "build/filters",
+                        help="built-in filters (tools/content/fetch_filters.py) copied to Contents/Resources/filters")
     parser.add_argument("--hd", type=Path, help="HD folder (tools/release/prepare_hd_bundle.py): the app starts in HD")
     parser.add_argument("--rom", type=Path, help="internal test builds only: bundle this ROM, so the app starts without asking for one")
     parser.add_argument("--runtime-library", type=Path, action="append", default=[],
@@ -251,7 +257,8 @@ def main() -> int:
         result = stage_bundle(args.binary, args.output, version=args.version, minimum=args.minimum_macos,
                               identity=args.sign_identity, notices=tuple(args.license_file), cmake=args.cmake,
                               search_dirs=tuple(args.search_dir), runtime_libraries=tuple(args.runtime_library),
-                              dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts, hd=args.hd, rom=args.rom)
+                              dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts, hd=args.hd, rom=args.rom,
+                              filters=args.filters if args.filters.is_dir() else None)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         detail = error.stdout if isinstance(error, subprocess.CalledProcessError) else str(error)
         parser.exit(1, f"Bundle staging failed: {detail}\n")

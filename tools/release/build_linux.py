@@ -208,6 +208,10 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
     for path in sorted((ROOT / 'build/fonts').iterdir()):
         if path.suffix in ('.ttf', '.txt'):
             shutil.copyfile(path, fonts / path.name)
+    # The built-in RetroArch filters (tools/content/fetch_filters.py; fetched where there is a
+    # network, the container has none), listed by the settings as filters/ beside the program.
+    run([sys.executable, ROOT / 'tools/content/fetch_filters.py'])
+    shutil.copytree(ROOT / 'build/filters', stage / 'filters', ignore=shutil.ignore_patterns('.commit'))
     source_text = ROOT / 'content/dialogue'
     for path in sorted(source_text.rglob('*.txt')):
         target = stage / 'dialogue' / path.relative_to(source_text)

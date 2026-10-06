@@ -161,6 +161,8 @@ if(SRW64_ENABLE_RT64)
     if(WIN32)
         target_link_libraries(srw64-gfx-host PRIVATE ws2_32)
     endif()
+    # Events and a once-a-second heartbeat for freezes found later (run_log.hpp).
+    target_sources(srw64-gfx-host PRIVATE run_log.cpp)
     # Banners and settings share the SDL/RmlUi surface.
     # Link Battler series page in front of the リンク screen.
     target_sources(srw64-gfx-host PRIVATE link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp)
@@ -192,6 +194,11 @@ if(SRW64_ENABLE_RT64)
     if(APPLE AND EXISTS "${SRW64_BUILD}/thirdparty/librashader/darwin/librashader.dylib")
         add_custom_command(TARGET ${SRW64_HOST_TARGET} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "${SRW64_BUILD}/thirdparty/librashader/darwin/librashader.dylib" "$<TARGET_FILE_DIR:${SRW64_HOST_TARGET}>/librashader.dylib")
+    endif()
+    # The built-in filters beside the host, as the packages ship them (tools/content/fetch_filters.py).
+    if(EXISTS "${SRW64_ROOT}/build/filters")
+        add_custom_command(TARGET ${SRW64_HOST_TARGET} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${SRW64_ROOT}/build/filters" "$<TARGET_FILE_DIR:${SRW64_HOST_TARGET}>/filters")
     endif()
     srw64_add_native_gpu_shaders(${SRW64_HOST_TARGET} "${SRW64_RT64}")
     if(APPLE)
