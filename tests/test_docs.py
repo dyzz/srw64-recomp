@@ -12,7 +12,9 @@ import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-MARKDOWN = sorted([*ROOT.glob("*.md"), *(ROOT / "docs").rglob("*.md"), ROOT / "assets/README.md"])
+# Docs kept only on the maintainer's machine (.gitignore); they are neither checked nor indexed.
+LOCAL_ONLY = {ROOT / "docs/design/website.md"}
+MARKDOWN = sorted({*ROOT.glob("*.md"), *(ROOT / "docs").rglob("*.md"), ROOT / "assets/README.md"} - LOCAL_ONLY)
 LINK = re.compile(r"\]\(([^)\s#]+)(?:#[^)\s]*)?\)")
 REPO_PATH = re.compile(r"`((?:src|tools|tests|config|content|scripts|docs)/[^`\s*<>{}|]+)`")
 # Paths that deliberately name something outside this repository or not yet written.
@@ -54,7 +56,7 @@ class DocsTests(unittest.TestCase):
         self.assertEqual(loose, [], "put new docs in a topic folder and list them in docs/README.md")
         index = (ROOT / "docs/README.md").read_text()
         unlisted = [str(p.relative_to(ROOT / "docs")) for p in (ROOT / "docs").glob("*/*.md")
-                    if f"({p.relative_to(ROOT / 'docs')})" not in index]
+                    if p not in LOCAL_ONLY and f"({p.relative_to(ROOT / 'docs')})" not in index]
         self.assertEqual(unlisted, [])
 
 

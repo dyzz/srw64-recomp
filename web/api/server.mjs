@@ -1,7 +1,6 @@
 // SRW64 site API: story search, anonymous identities and translation suggestions.
 // Plain Node (22.13+ for node:sqlite), no dependencies. Nginx proxies /api/ here.
-// Modeled on the SRW Z review site (srwz-community-web,
-// lib/review-store.ts): same four states, server-side targets, admin by token.
+// Modeled on the review store of our SRW Z community site: same four states, server-side targets, admin by token.
 //
 //   SRW64_DATA=web/.data SRW64_DB=/srv/srw64/data/reviews.sqlite3 \
 //   SRW64_ADMIN_TOKEN=… node web/api/server.mjs

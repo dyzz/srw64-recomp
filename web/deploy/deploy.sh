@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
-# Deploy the MARCHWIND 64 site to the origin ECS (docs/design/website.md §4).
+# Deploy the MARCHWIND 64 site to the origin server.
 #
 #   web/deploy/deploy.sh            build, upload a new release, switch to it
 #
 # Needs: web/.data from export_story.py / export_library.py and web/public/gen from
 # export_images.py (they come from the ROM-derived assets, so run them here first);
-# ssh access to origin-host. Each deploy is /srv/srw64/releases/<id>
+# ssh access to the origin, whose host name comes from SRW64_DEPLOY_HOST or
+# ~/.config/srw64/site-deploy-host (kept out of the repository). Each deploy is /srv/srw64/releases/<id>
 # (unchanged files hard-linked to the previous one); /srv/srw64/current points at
 # the live one; the five newest are kept. The suggestions database stays in
 # /srv/srw64/data. The admin token is created on the server the first time and
 # copied to ~/.config/srw64/site-admin-token without being printed.
 set -euo pipefail
-HOST=${SRW64_DEPLOY_HOST:-origin-host}
+HOST=${SRW64_DEPLOY_HOST:-$(cat ~/.config/srw64/site-deploy-host 2>/dev/null || true)}
+[ -n "$HOST" ] || { echo "set SRW64_DEPLOY_HOST or write ~/.config/srw64/site-deploy-host" >&2; exit 1; }
 WEB=$(cd "$(dirname "$0")/.." && pwd)
 ROOT=$(cd "$WEB/.." && pwd)
 for f in .data/story/index.json .data/story/search.json .data/library.json public/gen/portraits; do

@@ -77,6 +77,10 @@ CMakeCache.txt
 !/docs/media/*.jpg
 !/docs/media/*.webp
 !/docs/media/reading-demo.mp4
+# The website design notes name the server; they stay local (tests/test_docs.py skips them).
+/docs/design/website.md
+# Builds on a machine of the maintainer's over ssh; stays local.
+/tools/release/linux/build_remote.py
 # The website's screenshots, comparisons and brand images (web/README.md).
 !/web/public/media/*.webp
 !/web/public/brand/*.png

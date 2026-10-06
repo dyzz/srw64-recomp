@@ -1,7 +1,7 @@
 # srw64.dreamquest.club
 
 The MARCHWIND 64 website: an Astro static site in three languages (`/zh/`, `/en/`, `/ja/`) plus a small API (`api/server.mjs`) for story search and translation suggestions.
-Design and plans: [docs/design/website.md](../docs/design/website.md).
+The design notes stay outside the repository, since they describe the server.
 
 ```sh
 npm --prefix web install
@@ -35,4 +35,4 @@ In development run the API beside the dev server (`.claude/launch.json` has `web
 `web/deploy/deploy.sh` builds, uploads a release and switches to it (nginx config, systemd units and the daily database backup are in `web/deploy/`). Maintainers answer suggestions with `node web/api/admin.mjs`.
 
 
-The origin is the ECS behind the CDN (`ssh origin-host`); Nginx serves `/srv/srw64/public` for `srw64.dreamquest.club`. See docs/design/website.md §4.
+The origin is a server behind the CDN; Nginx serves `/srv/srw64/public` for `srw64.dreamquest.club`. `deploy.sh` reaches it by an ssh host name from `SRW64_DEPLOY_HOST` or `~/.config/srw64/site-deploy-host`, so the repository never names it.
