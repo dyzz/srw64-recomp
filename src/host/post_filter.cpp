@@ -1,4 +1,5 @@
 #include "post_filter.hpp"
+#include "presentation/image_mode.hpp"
 #include "presentation_settings.hpp"
 #include "rt64_render_hooks.h"
 #include <SDL.h>
@@ -315,8 +316,11 @@ void dropped(const std::string& error) {
 }
 // The height the preset reads, and the reduced picture's size for it; none when the
 // player chose the window's own pixels or the window is no taller than that.
+bool page_frame = false;   // apply()'s `pages`, for this frame
 bool reduced_size(float picture_width, int h, unsigned& sw, unsigned& sh) {
-    const unsigned scale = settings::filter_scale();
+    unsigned scale = settings::filter_scale();
+    const unsigned least = page_frame ? kPageScale : presentation::image_mode.current() == 1 ? kHdScale : 0;
+    if (scale != 0) scale = std::max(scale, least);
     if (scale == 0 || !downscale) return false;
     sh = 240 * scale;
     sw = std::max(1u, unsigned(picture_width * scale + 0.5f));
@@ -513,8 +517,9 @@ void init(Backend chosen, const std::filesystem::path& scratch) {
     state.available = true;
 }
 
-void apply(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, int x, int y, int w, int h, float picture_width) {
+void apply(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, int x, int y, int w, int h, float picture_width, bool pages) {
     if (!api.library) return;
+    page_frame = pages;
     x = std::max(0, x);
     y = std::max(0, y);
 #ifdef __APPLE__

@@ -100,7 +100,7 @@
     "settings_filter": "滤镜",
     "settings_filter_note": "RetroArch 的 slang 着色器预设（.slangp），只作用于游戏画面和对白，菜单和设置保持清晰。",
     "settings_filter_scale": "滤镜行数",
-    "settings_filter_scale_note": "CRT 类滤镜按原版 240 行最像；行数越多越清晰，扫描线越细。",
+    "settings_filter_scale_note": "CRT 类滤镜按原版 240 行最像；行数越多越清晰，扫描线越细。HD 模式下至少 480 行，有界面页面时至少 720 行，保证看得清。",
     "settings_filter_scale_1": "240 行",
     "settings_filter_scale_2": "480 行",
     "settings_filter_scale_4": "960 行",

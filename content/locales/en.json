@@ -100,7 +100,7 @@
     "settings_filter": "Filter",
     "settings_filter_note": "A RetroArch slang shader preset (.slangp). It applies to the game picture and its dialogue; menus and settings stay sharp.",
     "settings_filter_scale": "Filter lines",
-    "settings_filter_scale_note": "CRT presets look closest at the original 240 lines; more lines are sharper, with finer scanlines.",
+    "settings_filter_scale_note": "CRT presets look closest at the original 240 lines; more lines are sharper, with finer scanlines. HD images use at least 480 lines, and menu pages at least 720, so they stay readable.",
     "settings_filter_scale_1": "240",
     "settings_filter_scale_2": "480",
     "settings_filter_scale_4": "960",

@@ -100,7 +100,7 @@
     "settings_filter": "フィルター",
     "settings_filter_note": "RetroArch の slang シェーダープリセット（.slangp）。 ゲーム画面と会話にだけかかり、メニューと設定はくっきりしたままです。",
     "settings_filter_scale": "フィルターの行数",
-    "settings_filter_scale_note": "CRT 系はオリジナルの 240 行がいちばん近い見た目です。行数を増やすほど鮮明になり、走査線は細くなります。",
+    "settings_filter_scale_note": "CRT 系はオリジナルの 240 行がいちばん近い見た目です。行数を増やすほど鮮明になり、走査線は細くなります。HD 画像では 480 行以上、メニュー画面では 720 行以上で表示し、読みやすさを保ちます。",
     "settings_filter_scale_1": "240 行",
     "settings_filter_scale_2": "480 行",
     "settings_filter_scale_4": "960 行",

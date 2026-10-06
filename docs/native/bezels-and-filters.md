@@ -35,7 +35,7 @@
   3. 其余界面画在上面、保持清晰：设置窗口（含图鉴、战斗鉴赏、MOD 管理）、提示、帧率、框体、触屏按钮、标题页的版本号与设置按钮。
 - **怎么分两遍**：每个界面文档开头放一个 `<layer-mark>`（`chrome='1'` 表示第 3 类），它被画到时告诉渲染代理接下来的几何属于哪一层；代理（`frontend.cpp` 的 `LayeredRender`）在每一遍里丢掉另一层的绘制。同一帧的第二遍不能等「上一帧界面还在 GPU 上」（会自己锁死），也不能重置渲染器的顶点缓冲（第一遍的命令还没执行）：`prepare_frontend.py` 给渲染器适配层加了 `start(…, continue_frame)`。没有滤镜时照旧一遍画完。
 - **标题页字样跟着画面**：Library／战斗鉴赏／MOD 的位置按画面矩形算（右下角各留 6%），4:3 时在画面里面，不会被框体盖住，也能被滤镜照到。
-- **每帧**：把画面矩形从交换链拷进一张纹理 → 用我们自己的直通预设（一个线性加 mipmap 的 pass，写在运行目录的 `filter-passthrough/`）缩到「行数」指定的高度 → 玩家的预设从这张小图画回同一个矩形。行数选「窗口」时跳过缩小。
+- **每帧**：把画面矩形从交换链拷进一张纹理 → 用我们自己的直通预设（一个线性加 mipmap 的 pass，写在运行目录的 `filter-passthrough/`）缩到「行数」指定的高度 → 玩家的预设从这张小图画回同一个矩形。行数选「窗口」时跳过缩小。行数有下限：开 HD 图像时至少 480 行（`kHdScale`，免得 HD 素材缩回原版清晰度），画面里有我们的界面页面（第一遍画了东西）时至少 720 行（`kPageScale`）——12–16 dp 的字在 240 行下只剩 3–5 行高，汉字认不出（2026-10-06 用户要求「要滤镜效果，又要看得清」）。玩家选的行数更高时按玩家的。
 - **编译**放在后台线程，编好了下一帧换上；换下的旧链等 4 帧再释放，免得 GPU 还在用。Metal 直接用 RT64 的命令队列（Metal 队列可多线程提交）；Vulkan 用延迟创建（`libra_vk_filter_chain_create_deferred`），上传命令录进我们自己的命令缓冲，提交时拿 plume 的队列锁（`VulkanQueue::mutex`），不和 RT64 的提交抢。
 - **D3D12**：用非延迟的 `libra_d3d12_filter_chain_create`（后台线程上它自己建队列上传再等完，D3D12 队列可多线程用）；每帧的拷贝和状态切换与 Vulkan 共用 plume 的 `barriers`／`copyTextureRegion`，图像以 `ID3D12Resource*`（`LIBRA_D3D12_IMAGE_TYPE_RESOURCE`）传，视图由滤镜链自己建。librashader 会 `SetDescriptorHeaps` 换成它自己的描述符堆，画完调 `notifyDescriptorHeapWasChangedExternally()` 并清掉 plume 记住的管线、布局、拓扑和帧缓冲，让界面那一遍重新绑定。目标画完停在 `RENDER_TARGET`，与 plume 记录的 `COLOR_WRITE` 一致。
 - **Vulkan 细节**：交换链图像在 plume 里不带格式，按 RT64 的约定当 B8G8R8A8（安卓 R8G8B8A8）告诉 librashader，否则它建 render pass 时报 `FORMAT_NOT_SUPPORTED`；拷贝和布局切换用 plume 的 `barriers`／`copyTextureRegion`，librashader 画完后让 plume 重新绑定自己的管线和帧缓冲。

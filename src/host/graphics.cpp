@@ -170,12 +170,13 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     // interface (settings, notices, the bezel) sharp on top.
     bool ui_drawn;
     if(srw64::post_filter::active()) {
-        ui_drawn=srw64::ui::draw(list,framebuffer,name_cover,0);
+        const bool pages=srw64::ui::draw(list,framebuffer,name_cover,0);
+        ui_drawn=pages;
         const float width = float(framebuffer->getWidth()), height = float(framebuffer->getHeight());
         const float scale = srw64::frame::scale(width, height), picture = srw64::frame::width(width, height);
         const float w = picture * scale, h = srw64::frame::kHeight * scale;
         srw64::post_filter::apply(list, framebuffer, int(std::lround((width - w) / 2)), int(std::lround((height - h) / 2)),
-                                  int(std::lround(w)), int(std::lround(h)), picture);
+                                  int(std::lround(w)), int(std::lround(h)), picture, pages);
         ui_drawn=srw64::ui::draw(list,framebuffer,name_cover,1) || ui_drawn;
     } else {
         ui_drawn=srw64::ui::draw(list,framebuffer,name_cover);

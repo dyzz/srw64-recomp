@@ -35,9 +35,15 @@ enum class Backend {none, metal, vulkan, d3d12};
 void init(Backend backend, const std::filesystem::path& scratch);
 // Render thread: replaces the picture rectangle (x, y, w, h in the target's pixels) with
 // the chosen preset's output. `picture_width` is the picture in original pixels (320 at
-// 4:3). Does nothing while no preset is chosen or loaded.
+// 4:3). `pages`: one of our pages is in the picture this frame; their 12-16 dp text is
+// 3-5 lines tall at 240 lines and cannot be read, so the preset then reads at least
+// kPageScale × 240 lines (still scanlines and a mask, finer). With the HD images on, at
+// least kHdScale × 240, so the HD art keeps its detail. Does nothing while no preset is
+// chosen or loaded.
+constexpr unsigned kPageScale = 3;
+constexpr unsigned kHdScale = 2;
 void apply(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer,
-           int x, int y, int w, int h, float picture_width);
+           int x, int y, int w, int h, float picture_width, bool pages = false);
 void shutdown();
 
 }  // namespace srw64::post_filter
