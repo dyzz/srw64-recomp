@@ -15,7 +15,7 @@ import json
 import shlex
 import os
 import signal
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import socket
 import subprocess
 import sys
@@ -187,7 +187,8 @@ class Session:
         host's file.read, limited to its run directory) into remote-files/."""
         if self.local():
             return Path(path)
-        target = self.run / "remote-files" / Path(path).name
+        # A Windows host names its files with backslashes, which Path does not split here.
+        target = self.run / "remote-files" / PureWindowsPath(path).name
         target.parent.mkdir(exist_ok=True)
         with open(target, "wb") as out:
             offset = 0

@@ -78,7 +78,11 @@ std::unique_ptr<SlantInstancer> slant_instancer;
 // Two passes over the pages (docs/native/bezels-and-filters.md): those that belong to the
 // game picture are drawn before a RetroArch filter, the rest after it. Every page starts
 // with a <layer-mark>, chrome='1' for the rest; its render tells the proxy below whose
-// geometry follows, and the proxy drops the other pass's.
+// geometry follows, and the proxy drops the other pass's. RmlUi paints an element's own
+// background before its children, so a page's body background belongs to whatever the page
+// before it ended on: every page therefore ends with a mark back to the game pass, painted
+// last (layer-mark.layer-end). Without it a 4:3 bezel (chrome, always first) put the name
+// and Link Battler pages' backgrounds in the chrome pass, over the whole filtered picture.
 int layer_pass=-1,layer_now=0;
 class LayerMark:public Rml::Element {
 public:
@@ -287,6 +291,7 @@ scrollbarvertical slidertrack, scrollbarhorizontal slidertrack { background-colo
 scrollbarvertical sliderbar, scrollbarhorizontal sliderbar { background-color: #506d81; min-height: 16dp; min-width: 12dp; }
 body { display: block; width: 100%; height: 100%; margin: 0; font-family: srw64-ui; font-size: 17dp; color: #d6e2ef; }
 layer-mark {display:block; width:0; height:0;}
+layer-mark.layer-end {position:absolute; left:0; top:0; z-index:2000000000;}
 div,h1,h2,p { display: block; } h1 {font-size: 28dp; margin: 0 0 12dp;} h2 {font-size: 20dp; margin: 18dp 0 10dp;}
 p {color: #9eafc3; margin: 10dp 0;} .modal {background-color: #0b1421;} p.credit {font-size: 12dp; color: #7f8fa3; margin-top: 16dp;}
 .page {width: 88%; max-width: 1080dp; margin: 24dp auto; height: 90%; overflow-y: auto;}
@@ -765,7 +770,7 @@ void fit_lines(Rml::ElementDocument* doc) {
 }
 // chrome: drawn over a RetroArch filter instead of under it (LayerMark above).
 Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=false) {
-    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"</body></rml>");
+    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"<layer-mark class='layer-end'/></body></rml>");
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
     if(chrome)doc->SetAttribute("data-chrome","1");
     doc->AddEventListener("click",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);
