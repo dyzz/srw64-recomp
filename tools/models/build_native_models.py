@@ -27,9 +27,10 @@ from srw64_rom.resources import ResourceTable  # noqa: E402
 
 ROM_SHA256 = 'ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e'
 DEFAULT_OUTPUT = ROOT / 'build/recomp/native-models/assets'
-# World-map model table 801C5670. Authored meshes stay local like the other HD assets:
-# tools/models/<key>_blender.py writes assets/models/<key>/mesh.json, and a model whose
-# mesh is missing is left out of the pack (the original keeps drawing).
+# World-map model table 801C5670. Authored meshes stay local like the other HD assets, as
+# assets/models/<key>/mesh.json (the scripts that build them stay local too, in
+# assets/models/generators), and a model whose mesh is missing is left out of the pack (the
+# original keeps drawing).
 # display_scale is a presentation choice applied when packing (travelling ships are
 # drawn larger); the authored mesh keeps the design proportions in original units.
 # display_list is the descriptor replaced; name plates and other lists stay original.
@@ -61,7 +62,7 @@ MODELS = [
      'original_sha256': 'a732cef2ac9f3754c4b65bfc9d7c30d0e3f9ab9b24a26a5ebc487b9526a038bf'},
     {'resource_id': 5596, 'name': 'Barge', 'key': 'barge', 'display_list': 0,
      'original_sha256': '036e2dddd099ea685cc51f24b76b611b5f182a0940239c0c2af3bdc11f6d7e55'},
-    {'resource_id': 5598, 'name': 'Axis', 'key': 'axis', 'display_list': 1,
+    {'resource_id': 5598, 'name': 'Axis', 'key': 'axis', 'display_list': 1, 'shading': 'baked',
      'original_sha256': '4e4542dbd1a289773701a65c205c300787e08e1d6843d814aebcd7a046ae2ad8'},
     {'resource_id': 5607, 'name': 'Fifth Luna', 'key': 'fifth-luna', 'display_list': 0,
      'original_sha256': 'efaae5560b4655bae2d10febb84e1519f1bd567237da2885d81d0b0091033c63'},
@@ -73,7 +74,7 @@ BATTLE_BACKGROUNDS = [
     # docs/design/battle-animation-rendering.md §10: 5837 is the Yokohama
     # harbour of background record 58, its skyline, quay and two ships.
     # shading 'baked': the mesh carries uvs and an atlas with the lighting baked in
-    # (tools/models/battle_bake.py); 'water': no authored mesh, the host shades a plane
+    # (baked locally in Blender); 'water': no authored mesh, the host shades a plane
     # with moving waves (HdWaterPS.hlsl). The original's water is two layers: a flat opaque
     # plane (5836, y 0) and a wave layer over the whole ground drawn at vertex alpha 178 without
     # depth writes (5838, y 3..14); what is under the surface (a unit's legs) shows through

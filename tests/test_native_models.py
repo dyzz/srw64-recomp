@@ -95,6 +95,31 @@ class NativeModelPackTests(unittest.TestCase):
                 self.assertEqual(entry['plate']['text'], {'ja': 'リーブラ', 'zh-Hans': '天秤座', 'en': 'Libra'})
                 self.assertEqual(sorted(entry['plate']['textures']), sorted(models.PLATE_LOCALES))
 
+    def test_axis_baked_atlas_round_trip_and_drift(self):
+        from PIL import Image
+        mesh = {'schema': 'srw64.native-mesh.v2', 'texture': 'texture.png',
+                'positions': [[0, 0, 0], [1, 0, 0], [0, 1, 0]],
+                'normals': [[0, 0, 1]] * 3, 'colors': [[255, 255, 255, 255]] * 3,
+                'uvs': [[0.125, 0.25], [0.875, 0.25], [0.125, 0.75]], 'faces': [[0, 1, 2]]}
+        with tempfile.TemporaryDirectory() as folder:
+            folder = Path(folder)
+            source = folder / 'mesh.json'
+            source.write_text(json.dumps(mesh))
+            Image.new('RGB', (4, 4), (62, 59, 44)).save(folder / 'texture.png')
+            axis = next(m for m in models.MODELS if m['resource_id'] == 5598)
+            with mock.patch.object(models, 'MODELS', [{**axis, 'mesh': source}]), mock.patch.object(models, 'BOARDS', {}):
+                models.build(folder / 'pack')
+                entry = json.loads((folder / 'pack/manifest.json').read_text())['models'][0]
+                self.assertEqual((entry['shading'], entry['vertex_stride']), ('baked', 36))
+                self.assertEqual(entry['display_list'], 1)
+                vertex = struct.unpack_from('<8f4B', (folder / 'pack/5598.vertices.bin').read_bytes())
+                self.assertEqual(vertex[6:8], (0.125, 0.25))
+                texture = folder / 'pack' / entry['texture']
+                self.assertEqual(texture.read_bytes(), (folder / 'texture.png').read_bytes())
+                texture.write_bytes(texture.read_bytes() + b'\0')
+                with self.assertRaisesRegex(ValueError, 'asset drift'):
+                    models.validate(folder / 'pack')
+
     def test_space_region_plates_pack_without_a_mesh(self):
         if not models.FONT.exists():
             self.skipTest('fonts not prepared (tools/content/prepare_fonts.py)')

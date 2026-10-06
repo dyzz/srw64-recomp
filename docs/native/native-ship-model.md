@@ -40,16 +40,11 @@
 
 ## 设定与建模
 
-每个模型一个 Blender 脚本 `tools/models/<key>_blender.py`，文档字符串写明官方数据（全长、全宽、武装、设计者）与参考来源（ガンダムチャンネル、各作品官网、ガンダムWiki、授权立体商品照片等）；参考图只在浏览器中查看，不进仓库。共用部件库 [`blender_kit.py`](../../tools/models/blender_kit.py) 提供放样、方块、圆柱、球、倒角与导出，并用同一组机位渲染原版资源（带原贴图）生成 `compare.png` 左右对照：
-
-```sh
-/Applications/Blender.app/Contents/MacOS/Blender -b --factory-startup \
-  --python tools/models/ra_cailum_blender.py -- assets/models/ra-cailum --previews
-```
+模型在本地用 Blender 建好，导出成 `assets/models/<key>/mesh.json`；仓库只放打包程序 [`build_native_models.py`](../../tools/models/build_native_models.py)，生成模型的脚本、参考资料与材质记录都留在本地 `assets/models/generators/`，不进仓库（2026-10-06 用户定：只把模型打包进 HD 包）。参考图只在浏览器中查看。
 
 - **坐标系**：沿用各原资源的局部坐标，+Y 向上，舰首方向与原版一致（本批都是 +Z），尺寸以原版包围盒为准、比例按官方设定。アウドムラ、ミデア 按官方长宽比，比原版短 16–21%；其余长轴差 ±4% 以内。
 - **输出**：`assets/models/<key>/mesh.json`（位置、逐角法线、sRGB 顶点色，alpha < 128 为自发光喷口）、`model.glb`、预览与 `compare.png`。网格与其他 HD 资产一样只在本地 `assets/`，不随源码分发。
-- **已知取舍**：ゴラオン 用官方暗灰绿，原版为蓝；アウドムラ 用 TV 版橙粉色；ピースミリオン 只有透视彩图，平面比例沿用原版；ネェル・アーガマ 按 UC 版比例；ガンドール 龙形态参考现代商品原型。各脚本文档字符串列出其余不足。
+- **已知取舍**：配色以原版模型为准（2026-10-05 用户定）：ゴラオン 用原版的蓝（周边商品为暗灰绿），アウドムラ 用原版的赭橙（TV 设定为橙粉）；ピースミリオン 只有透视彩图，平面比例沿用原版；ネェル・アーガマ 按 UC 版比例；ガンドール 龙形态参考现代商品原型。各模型的生成脚本（本地）列出其余不足。
 
 ラー・カイラム 的设定依据：《逆襲のシャア》ラー・カイラム級，全长 487 m、全宽 165 m，メカニックデザイン 増尾昭一；连装メガ粒子砲 4 基（前 3 后 1）、舰首导弹 6 门、对空机銃 22 基、左右舷弹射甲板与后部着舰甲板、双舰桥、带长放热板的引擎块（[ガンダムチャンネル](https://www.gundam-c.com/manual/mechanic/counter/ra-cailum.html)、[ガンダムWiki](https://gundam.wiki.cre.jp/wiki/%E3%83%A9%E3%83%BC%E3%83%BB%E3%82%AB%E3%82%A4%E3%83%A9%E3%83%A0%E7%B4%9A)），外形对照 [Cosmo Fleet Special](https://www.megahobby.jp/products/item/1437/)。
 
