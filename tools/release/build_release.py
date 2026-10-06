@@ -9,8 +9,8 @@ frontend adapter, the audio microcode, the fonts and the two model packs. Other
 sessions' uncommitted work in the main worktree never reaches the build.
 
 Writes to OUTPUT:
-  SRW64-<version>-macos14-arm64.zip  the app (Original images; HD when a pack is installed)
-  SRW64-<version>-HD.zip             the HD pack: unzip into the user directory as hd/
+  Marchwind64-<version>-macos14-arm64.zip  the app (Original images; HD when a pack is installed)
+  Marchwind64-<version>-HD.zip             the HD pack: unzip into the user directory as hd/
   release.json, release-notes.md, logs/
 Publishing is a separate, manual step: release.json holds the gh command."""
 from __future__ import annotations
@@ -35,17 +35,17 @@ HD_NOTICE = ROOT / "tools/release/hd-notice.txt"
 CLONED = ("upstream", "tool-build", "cpu-scan")
 CLONED_ASSETS = ("fonts", "hd-ai", "models")
 # --attach: the other platforms' packages and their lines in the notes.
-ATTACH_NAMES = {"linux": "SRW64-{version}-linux-x64.tar.gz", "windows": "SRW64-{version}-windows-x64.zip"}
+ATTACH_NAMES = {"linux": "Marchwind64-{version}-linux-x64.tar.gz", "windows": "Marchwind64-{version}-windows-x64.zip"}
 PACKAGE_ROWS = {
     "macos": "应用本体。Apple Silicon，macOS 14 起。首次启动时选择你的 ROM。",
-    "linux": "应用本体。Linux x64（含 Steam Deck），glibc 2.35 起，Vulkan。解压后运行 `srw64.sh`；"
-             "ROM 放在 `~/.local/share/srw64-recomp/rom.z64` 或 `srw64.sh` 旁边。Steam Deck 上可用 `add-to-steam.sh` 加入 Steam，详见包内 README.txt。",
-    "windows": "应用本体。Windows 10（2004）／11，x64，D3D12 或 Vulkan。解压后把 ROM 命名为 `rom.z64` 放在 `srw64.cmd` 旁边"
-               "（或 `%LOCALAPPDATA%\\SRW64Recomp\\rom.z64`），双击 `srw64.cmd`。",
+    "linux": "应用本体。Linux x64（含 Steam Deck），glibc 2.35 起，Vulkan。解压后运行 `marchwind64.sh`；"
+             "ROM 放在 `~/.local/share/srw64-recomp/rom.z64` 或 `marchwind64.sh` 旁边。Steam Deck 上可用 `add-to-steam.sh` 加入 Steam，详见包内 README.txt。",
+    "windows": "应用本体。Windows 10（2004）／11，x64，D3D12 或 Vulkan。解压后把 ROM 命名为 `rom.z64` 放在 `Marchwind64.cmd` 旁边"
+               "（或 `%LOCALAPPDATA%\\SRW64Recomp\\rom.z64`），双击 `Marchwind64.cmd`。",
 }
 PACKAGE_EN = {"macos": "is the macOS app (Apple Silicon, macOS 14 or later)",
-              "linux": "the Linux x64 / Steam Deck build (glibc 2.35+, Vulkan; run `srw64.sh`, see README.txt)",
-              "windows": "the Windows x64 build (Windows 10 2004 / 11; put the ROM next to `srw64.cmd` as `rom.z64` and run it)"}
+              "linux": "the Linux x64 / Steam Deck build (glibc 2.35+, Vulkan; run `marchwind64.sh`, see README.txt)",
+              "windows": "the Windows x64 build (Windows 10 2004 / 11; put the ROM next to `Marchwind64.cmd` as `rom.z64` and run it)"}
 
 
 def sha256(path: Path) -> str:
@@ -87,7 +87,7 @@ def main() -> int:
     parser.add_argument("--jobs", type=int, default=8)
     parser.add_argument("--attach", action="append", default=[], metavar="PLATFORM=FILE",
                         help="another platform's package built elsewhere: linux=… (build_linux.py) or "
-                             "windows=… (the windows workflow); copied in as SRW64-<version>-<platform> and "
+                             "windows=… (the windows workflow); copied in as Marchwind64-<version>-<platform> and "
                              "listed in release.json and the notes")
     args = parser.parse_args()
 
@@ -152,11 +152,11 @@ def main() -> int:
     app_dir.mkdir()
     steps.run("package", [python, "tools/release/package_macos.py", "--binary", str(build / "srw64-gfx-host"),
         "--runtime-library", str(librashader / "librashader.dylib"), "--license-file", str(librashader / "LICENSE.md"),
-        "--output", str(app_dir / "SRW64 Recompiled.app"), "--version", args.version, "--minimum-macos", "14.0",
+        "--output", str(app_dir / "Marchwind64.app"), "--version", args.version, "--minimum-macos", "14.0",
         "--search-dir", str(DEPS / "lib"), "--runtime-library", str(DEPS / "lib/libSDL3.dylib"),
         "--fonts", str(source / "build/fonts"), "--dialogue", str(source / "content/dialogue")], source, env)
-    app_zip = output / f"SRW64-{args.version}-macos14-arm64.zip"
-    zip_folder(steps, "zip-app", app_dir, "SRW64 Recompiled.app", app_zip)
+    app_zip = output / f"Marchwind64-{args.version}-macos14-arm64.zip"
+    zip_folder(steps, "zip-app", app_dir, "Marchwind64.app", app_zip)
 
     # The HD pack, from this commit's tools and manifests and the local assets.
     steps.run("marker-pack", [python, "tools/recomp/model5600/prepare_native_marker.py",
@@ -168,7 +168,7 @@ def main() -> int:
     # The public pack is the whole HD folder, the same as the self-use one (user, 2026-09-28).
     if (source / HD_NOTICE.relative_to(ROOT)).is_file():
         shutil.copyfile(source / HD_NOTICE.relative_to(ROOT), pack_dir / "hd/NOTICE.txt")
-    hd_zip = output / f"SRW64-{args.version}-HD.zip"
+    hd_zip = output / f"Marchwind64-{args.version}-HD.zip"
     zip_folder(steps, "zip-hd", pack_dir, "hd", hd_zip)
 
     # Packages of the other platforms, under the release's names, between the app and the HD pack.
@@ -186,7 +186,7 @@ def main() -> int:
               "artifacts": artifacts, "hd": json.loads((pack_dir / "hd/hd.json").read_text()),
               # Not run here. --target pins the tag to the built commit.
               "publish": ["gh", "release", "create", f"v{args.version}", "--repo", "dyzz/srw64-recomp",
-                          "--target", commit, "--title", f"SRW64 Recompiled {args.version}",
+                          "--target", commit, "--title", f"Marchwind64 {args.version}",
                           "--notes-file", str(output / "release-notes.md"), *[str(path) for _, path in packages], str(hd_zip)]}
     (output / "release.json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
     notes = source / NOTES.relative_to(ROOT)

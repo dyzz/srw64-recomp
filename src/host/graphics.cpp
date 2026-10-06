@@ -744,7 +744,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     // Android: the activity hides the system bars itself (SRW64Activity).
     const bool fills_screen = deck;
     // A Steam Deck's 1280 x 800 is the reference (game_frame.hpp); the Deck fills its screen.
-    window = SDL_CreateWindow("SRW64 native graphics probe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+    window = SDL_CreateWindow("Marchwind64", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                               1280, 800, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
                               (fills_screen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
                               (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0));
@@ -797,27 +797,19 @@ void srw64_update_window(void*) {
 #else
     const bool editing_name=false;
 #endif
-    static int title_mode=-2;
-    static std::string title_locale;
+    // The application's name; a settings file that could not be saved says so after it.
     static bool title_error{};
-    const int applied=srw64::presentation::image_mode.current();
+    static std::string title_label;
 #ifdef SRW64_NATIVE_DIALOGUE
-    const auto locale=srw64::localization::catalog().locale;
     const bool failed=srw64::settings::failed();
-    const auto error_label=srw64::localization::catalog().ui("settings_error");
-    const auto language=srw64::localization::display_name(locale);
-    const auto languages=srw64::localization::language_choices();
+    const auto error_label=failed?srw64::localization::catalog().ui("settings_error"):std::string();
 #else
-    const std::string locale="ja",error_label;
     const bool failed=false;
-    const std::string language="日本語",languages="日本語";
+    const std::string error_label;
 #endif
-    if(applied!=title_mode || locale!=title_locale || failed!=title_error) {
-        title_mode=applied;
-        title_locale=locale;title_error=failed;
-        const std::string mode=!srw64::presentation::image_mode.enabled()?"Original | HD unavailable":applied?"HD":"Original";
-        if(applied>=0)SDL_SetWindowTitle(window,(std::string("SRW64 | ")+language+" | "+mode+
-            " | F6: Original / HD | F7: "+languages+(srw64::mini_stage::state().image?" | F8: mini stage "+srw64::mini_stage::state().image->name:"")+(failed?" | "+error_label:"")).c_str());
+    if(failed!=title_error || error_label!=title_label) {
+        title_error=failed;title_label=error_label;
+        SDL_SetWindowTitle(window,(std::string("Marchwind64")+(failed?" | "+error_label:"")).c_str());
     }
     SDL_Event event;
     while (SDL_PollEvent(&event)) {

@@ -157,7 +157,7 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
     # The Steam Deck edition; the same program runs on other x86-64 Linux desktops. Named by
     # version, commit date and commit (user, 2026-09-29), so a copy or a kept install says
     # what it is; VERSION.txt says it inside the folder the Steam shortcut points at.
-    name = f'SRW64-SteamDeck-{version}-{date}-{revision}'
+    name = f'Marchwind64-SteamDeck-{version}-{date}-{revision}'
     stage = WORK / 'package' / name
     if stage.exists():
         shutil.rmtree(stage)
@@ -229,7 +229,7 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
         if found:
             shutil.copyfile(found[0], licenses / f'{name_}-{pattern}')
     recipe = Path(__file__).resolve().parent / 'linux'
-    for script in ('srw64.sh', 'add-to-steam.sh'):
+    for script in ('marchwind64.sh', 'add-to-steam.sh'):
         shutil.copyfile(recipe / script, stage / script)
         (stage / script).chmod(0o755)
     shutil.copyfile(recipe / 'README.txt', stage / 'README.txt')

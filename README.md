@@ -449,11 +449,11 @@ cmake --build build/recomp/macos14-app-build --target srw64-gfx-host --parallel 
 # Bundle the executable and its runtime libraries / 打包主程序与运行库
 .venv/bin/python tools/release/package_macos.py \
   --binary build/recomp/macos14-app-build/srw64-gfx-host \
-  --output "dist/SRW64-macos14-arm64/SRW64 Recompiled.app" \
+  --output "dist/Marchwind64-macos14-arm64/Marchwind64.app" \
   --minimum-macos 14.0 --search-dir "$release_deps/lib" \
   --runtime-library "$release_deps/lib/libSDL3.dylib"
 
-open "dist/SRW64-macos14-arm64/SRW64 Recompiled.app"
+open "dist/Marchwind64-macos14-arm64/Marchwind64.app"
 ```
 
 On first launch, select your matching ROM; the application imports the content

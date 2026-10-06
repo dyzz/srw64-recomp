@@ -168,18 +168,18 @@ jobs:
 
       - name: Package
         run: |
-          $out = "SRW64-windows-x64"
+          $out = "Marchwind64-windows-x64"
           New-Item -ItemType Directory -Force $out | Out-Null
-          Copy-Item build/recomp/gfx-build/srw64-gfx-host.exe "$out/srw64.exe"
+          Copy-Item build/recomp/gfx-build/srw64-gfx-host.exe "$out/Marchwind64.exe"
           Copy-Item build/recomp/upstream/RT64/src/contrib/mupen64plus-win32-deps/SDL2-2.26.3/lib/x64/SDL2.dll $out
           Get-ChildItem -Recurse build/recomp/gfx-build -Include dxcompiler.dll,dxil.dll | Select-Object -First 2 | Copy-Item -Destination $out
           Copy-Item "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/bin/*.dll" $out
           Copy-Item -Recurse build/fonts "$out/fonts"
           Copy-Item -Recurse content/dialogue "$out/dialogue"
-          Copy-Item tools/release/windows/srw64.cmd $out
+          Copy-Item tools/release/windows/Marchwind64.cmd $out
           # The VC++ runtime (redistributable with the program), so no separate installer is needed.
           Copy-Item "$env:VCToolsRedistDir/x64/Microsoft.VC143.CRT/*.dll" $out
-          dumpbin /nologo /dependents "$out/srw64.exe"
+          dumpbin /nologo /dependents "$out/Marchwind64.exe"
           Get-ChildItem $out | Format-Table Name, Length
 
       # The program carries the recompiled game, like a release download; until a release is
@@ -189,14 +189,14 @@ jobs:
         env:
           KEY: ${{ secrets.CI_ARTIFACT_KEY }}
         run: |
-          tar -czf package.tgz SRW64-windows-x64
-          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in package.tgz -out SRW64-windows-x64.tgz.enc
+          tar -czf package.tgz Marchwind64-windows-x64
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in package.tgz -out Marchwind64-windows-x64.tgz.enc
           rm package.tgz
 
       - uses: actions/upload-artifact@v6
         with:
-          name: SRW64-windows-x64-encrypted
-          path: SRW64-windows-x64.tgz.enc
+          name: Marchwind64-windows-x64-encrypted
+          path: Marchwind64-windows-x64.tgz.enc
           retention-days: 7
 
   linux:
@@ -241,13 +241,13 @@ jobs:
         env:
           KEY: ${{ secrets.CI_ARTIFACT_KEY }}
         run: |
-          mv build/linux-x64/*.tar.gz SRW64-linux-x64.tar.gz
-          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in SRW64-linux-x64.tar.gz -out SRW64-linux-x64.tar.gz.enc
+          mv build/linux-x64/*.tar.gz Marchwind64-linux-x64.tar.gz
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in Marchwind64-linux-x64.tar.gz -out Marchwind64-linux-x64.tar.gz.enc
 
       - uses: actions/upload-artifact@v6
         with:
-          name: SRW64-linux-x64-encrypted
-          path: SRW64-linux-x64.tar.gz.enc
+          name: Marchwind64-linux-x64-encrypted
+          path: Marchwind64-linux-x64.tar.gz.enc
           retention-days: 7
 
   android:

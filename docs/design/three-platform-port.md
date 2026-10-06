@@ -187,7 +187,7 @@ Windows 与 Linux 共用 X2 已做的与后端无关部分：窗口句柄、后�
 6. **启动：**
    - 无参数启动时，先在用户目录（`%LOCALAPPDATA%\SRW64Recomp`）和程序旁找 `rom.z64`；找不到就用 `SDL_ShowSimpleMessageBox` 说明。
    - 以后换成 RmlUi 选择页，与 Deck 游戏模式共用。
-   - Linux 现在由 `srw64.sh` 做同样的事，届时一并收回 C++。
+   - Linux 现在由 `marchwind64.sh` 做同样的事，届时一并收回 C++。
 7. **Unicode 路径：** 加应用清单 `activeCodePage=UTF-8`（Windows 10 1903 起支持）。`launch.cpp` 经环境变量和 argv 传的路径遇到非 ASCII 用户名（如 `C:\Users\太郎`）就不会失真。
 8. **调试接口：** AF_UNIX（`debug_server.cpp`、`tools/recomp/debug/session.py:48`）改为回环 TCP + 令牌，这是 X0 的一项。原因是 CPython 在 Windows 上没有 `socket.AF_UNIX`，而 Windows 的实机验收要靠调试接口驱动。
 9. **迷你关卡：** `mini_stage.hpp:274` 的 `std::system` 用了 POSIX 引号，改为直接启动子进程。这是开发功能，可以先在 Windows 上关掉。

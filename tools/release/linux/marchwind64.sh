@@ -1,5 +1,5 @@
 #!/bin/sh
-# SRW64 Recompiled, Steam Deck edition (runs on other x86-64 Linux too); see README.txt.
+# Marchwind64, Steam Deck edition (runs on other x86-64 Linux too); see README.txt.
 # Finds your ROM (Super Robot Taisen 64, Japan, Rev 0) and starts the game.
 # Other options go straight to the program: ./srw64 --play --help lists them.
 set -eu
@@ -9,7 +9,7 @@ case $data in /*) ;; *) data=$HOME/.local/share ;; esac
 data=$data/srw64-recomp
 
 fail() {
-    echo "srw64: $1" >&2
+    echo "marchwind64: $1" >&2
     # Steam Deck Game Mode and desktop launchers have no terminal to show this.
     if command -v kdialog >/dev/null 2>&1; then kdialog --error "$1" || true
     elif command -v zenity >/dev/null 2>&1; then zenity --error --text="$1" || true
@@ -26,7 +26,8 @@ for argument in "$@"; do
 done
 if [ $given_rom = no ]; then
     rom=
-    for candidate in "${SRW64_ROM:-}" "$data/rom.z64" "$here/rom.z64"; do
+    # Any byte order: the game turns a .v64 or .n64 dump into .z64 itself.
+    for candidate in "${SRW64_ROM:-}" "$data/rom.z64" "$here/rom.z64" "$data/rom.n64" "$here/rom.n64" "$data/rom.v64" "$here/rom.v64"; do
         if [ -n "$candidate" ] && [ -f "$candidate" ]; then rom=$candidate; break; fi
     done
     [ -n "$rom" ] || fail "找不到 ROM：请把超级机器人大战 64（日版 Rev 0）复制到 $data/rom.z64，或放在本脚本旁边并命名为 rom.z64。

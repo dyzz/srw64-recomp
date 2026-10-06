@@ -1,4 +1,4 @@
-SRW64 Recompiled — HD 图片包 / HD image pack
+Marchwind64 — HD 图片包 / HD image pack
 
 安装：把这个 hd 文件夹放进用户目录，
   macOS：~/Library/Application Support/SRW64Recomp/hd

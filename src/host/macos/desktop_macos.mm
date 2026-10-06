@@ -24,7 +24,7 @@ DesktopUi macos_desktop_ui() {
             @autoreleasepool {
                 activate();
                 NSOpenPanel* panel = [NSOpenPanel openPanel];
-                panel.title = @"SRW64 Recompiled — Select ROM";
+                panel.title = @"Marchwind64 — Select ROM";
                 panel.message = @"Select your own unmodified Super Robot Wars 64 (Japan, Rev 0) .z64 ROM.\n"
                                  "The ROM is not included. Importing it does not require Python or build tools.";
                 panel.prompt = @"Use ROM";
@@ -47,7 +47,7 @@ DesktopUi macos_desktop_ui() {
                 activate();
                 NSAlert* alert = [[NSAlert alloc] init];
                 alert.alertStyle = NSAlertStyleWarning;
-                alert.messageText = @"SRW64 Recompiled";
+                alert.messageText = @"Marchwind64";
                 alert.informativeText = text(message);
                 [alert addButtonWithTitle:@"OK"];
                 [alert runModal];

@@ -76,7 +76,7 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
                           path_utf8(options.user_dir));
         return result;
     } catch (const std::exception& error) {
-        ui.show_error(std::string("Unable to start SRW64 Recompiled.\n") + error.what() +
+        ui.show_error(std::string("Unable to start Marchwind64.\n") + error.what() +
                       "\nNo automatic save reset or cache deletion was performed.");
         return 2;
     }

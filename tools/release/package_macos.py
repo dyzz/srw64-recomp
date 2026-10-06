@@ -156,8 +156,8 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
         shutil.copy2(binary, executable)
         executable.chmod(0o755)
         info = {
-            "CFBundleExecutable": EXECUTABLE, "CFBundleName": "SRW64 Recompiled",
-            "CFBundleDisplayName": "SRW64 Recompiled", "CFBundleIdentifier": "io.github.dyzz.srw64-recomp",
+            "CFBundleExecutable": EXECUTABLE, "CFBundleName": "Marchwind64",
+            "CFBundleDisplayName": "Marchwind64", "CFBundleIdentifier": "io.github.dyzz.srw64-recomp",
             "CFBundlePackageType": "APPL", "CFBundleVersion": version, "CFBundleShortVersionString": version,
             "LSMinimumSystemVersion": minimum, "NSHighResolutionCapable": True,
             "NSPrincipalClass": "NSApplication",
@@ -171,8 +171,8 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
                 raise ValueError(f"{rom} is not Super Robot Taisen 64 (Japan, Rev 0)")
             shutil.copyfile(source, resources / "rom.z64")
         (resources / "Distribution.txt").write_text(
-            ("SRW64 Recompiled INTERNAL TEST BUILD. It contains the game ROM: do not share it.\n"
-             if rom is not None else "SRW64 Recompiled experimental application. ROM not included.\n") +
+            ("Marchwind64 INTERNAL TEST BUILD. It contains the game ROM: do not share it.\n"
+             if rom is not None else "Marchwind64 experimental application. ROM not included.\n") +
             "Imported game content and saves remain in your private user directory.\n"
             "Hold Option when launching to choose another ROM, or use --choose-rom.\n"
             "Public distribution requires dependency-license review and Developer ID notarization.\n"

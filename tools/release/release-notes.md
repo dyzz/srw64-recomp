@@ -15,7 +15,7 @@
    - Linux／Steam Deck：`~/.local/share/srw64-recomp/hd`
    - Windows：`%LOCALAPPDATA%\SRW64Recomp\hd`
 
-   Linux 和 Windows 也可以把 `hd` 放在程序旁边（与 `srw64`／`srw64.exe` 同一文件夹）；用户目录里的优先。
+   Linux 和 Windows 也可以把 `hd` 放在程序旁边（与 `srw64`／`Marchwind64.exe` 同一文件夹）；用户目录里的优先。
 3. 打开应用即为 HD。F6 或设置窗口里的“图片”可以随时切回原版。
 
 HD 包只能配同一版本的应用使用，更新时整个替换。

@@ -35,7 +35,7 @@
 ```sh
 cd build/release/<版本>-<提交>/src
 PYTHONPATH=src:tools ../../../../.venv/bin/python tools/release/package_macos.py \
-  --binary build/recomp/macos14-app-build/srw64-gfx-host --output "../app-internal/SRW64 Recompiled.app" \
+  --binary build/recomp/macos14-app-build/srw64-gfx-host --output "../app-internal/Marchwind64.app" \
   --version <版本> --minimum-macos 14.0 --search-dir ../../../macos-deps/14.0-arm64/prefix/lib \
   --runtime-library ../../../macos-deps/14.0-arm64/prefix/lib/libSDL3.dylib \
   --fonts build/fonts --dialogue content/dialogue --hd ../pack/hd --rom rom.z64
@@ -52,11 +52,11 @@ Ubuntu 上从私有仓库 `dyzz/srw64-ci-inputs` 的 ROM 生成游戏代码，�
 同一个 Ubuntu 22.04 容器）两个任务；成品也加密上传（公开仓库的产物谁都能下载），用本地 `~/.config/srw64/ci-artifact-key` 解开：
 
 ```sh
-gh run download <运行号> --repo dyzz/srw64-recomp -n SRW64-linux-x64-encrypted
-openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass file:$HOME/.config/srw64/ci-artifact-key -in SRW64-linux-x64.tar.gz.enc -out SRW64-linux-x64.tar.gz
+gh run download <运行号> --repo dyzz/srw64-recomp -n Marchwind64-linux-x64-encrypted
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass file:$HOME/.config/srw64/ci-artifact-key -in Marchwind64-linux-x64.tar.gz.enc -out Marchwind64-linux-x64.tar.gz
 ```
 
-Windows 包同样下载 `SRW64-windows-x64-encrypted`，解开后是 `SRW64-windows-x64` 文件夹，压成 zip 再附上。Steam 封面图在仓库的 `tools/release/linux/steam-art/`
+Windows 包同样下载 `Marchwind64-windows-x64-encrypted`，解开后是 `Marchwind64-windows-x64` 文件夹，压成 zip 再附上。Steam 封面图在仓库的 `tools/release/linux/steam-art/`
 （`steam_art.py` 由 HD 标题图生成，改了标题图再重新生成并提交），CI 构建的 Linux 包也带封面。
 
 Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检出里的 `build_linux.py`），Windows 包只由 Actions 构建，
@@ -64,11 +64,11 @@ Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检�
 
 ```sh
 .venv/bin/python tools/release/build_release.py --commit HEAD --version 0.3.5 \
-  --attach linux=build/deck/<提交>/src/build/linux-x64/SRW64-SteamDeck-0.3.5-<日期>-<提交>.tar.gz \
-  --attach windows=build/windows/<提交>/SRW64-0.3.5-windows-x64.zip
+  --attach linux=build/deck/<提交>/src/build/linux-x64/Marchwind64-SteamDeck-0.3.5-<日期>-<提交>.tar.gz \
+  --attach windows=build/windows/<提交>/Marchwind64-0.3.5-windows-x64.zip
 ```
 
-附件改名为 `SRW64-<版本>-linux-x64.tar.gz`、`SRW64-<版本>-windows-x64.zip`，下载表、HD 包的三个平台安装位置、校验值和
+附件改名为 `Marchwind64-<版本>-linux-x64.tar.gz`、`Marchwind64-<版本>-windows-x64.zip`，下载表、HD 包的三个平台安装位置、校验值和
 `release.json` 的发布命令都按附上的包生成。三个平台共用同一个 HD 包；它只能在本机构建（素材不进仓库），所以总是由这一步打出。
 附上的包要来自同一个提交：HD 包只配同一版本的应用。
 

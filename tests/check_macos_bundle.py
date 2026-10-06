@@ -27,7 +27,7 @@ def main() -> int:
         parser.error("Requires the macOS smoke target, not a game binary")
     with tempfile.TemporaryDirectory(prefix="srw64-bundle-smoke-") as work:
         root = Path(work)
-        staged = root / "staged/SRW64 Recompiled.app"
+        staged = root / "staged/Marchwind64.app"
         subprocess.run([sys.executable, str(ROOT / "tools/release/package_macos.py"),
                         "--binary", str(binary), "--output", str(staged),
                         "--minimum-macos", "14.0"], check=True)
@@ -38,7 +38,7 @@ def main() -> int:
         if hidden.exists():
             raise RuntimeError("A prior smoke directory exists; refusing to overwrite it")
         source.rename(hidden)
-        relocated = root / "搬移 application/SRW64 Recompiled.app"
+        relocated = root / "搬移 application/Marchwind64.app"
         relocated.parent.mkdir()
         staged.rename(relocated)
         readonly = []

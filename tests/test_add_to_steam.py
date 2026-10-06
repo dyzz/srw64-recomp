@@ -24,18 +24,32 @@ def shortcut(index, app_id, name, exe):
 
 class AddToSteamTests(unittest.TestCase):
     def test_finds_the_shortcut_that_starts_the_launcher(self):
-        launcher = Path("/home/deck/Games/SRW64/srw64.sh")
+        launcher = Path("/home/deck/Games/SRW64/marchwind64.sh")
         data = (b"\x00shortcuts\0" + shortcut(0, 2186587176, "Other", '"/usr/bin/other"')
                 + shortcut(1, 3870819196, "超级机器人大战64", f'"{launcher}"') + b"\x08\x08")
         with tempfile.TemporaryDirectory() as folder:
             vdf = Path(folder) / "shortcuts.vdf"
             vdf.write_bytes(data)
             self.assertEqual(MODULE.shortcut_ids(vdf, launcher), [3870819196])
-            self.assertEqual(MODULE.shortcut_ids(vdf, Path("/elsewhere/srw64.sh")), [])
+            self.assertEqual(MODULE.shortcut_ids(vdf, Path("/elsewhere/marchwind64.sh")), [])
         parsed, end = MODULE.parse_vdf(data)
         self.assertEqual(end, len(data))
         self.assertEqual(parsed["shortcuts"]["1"]["AppName"], "超级机器人大战64")
         self.assertEqual(parsed["shortcuts"]["0"]["LastPlayTime"], 5)
+
+    def test_a_shortcut_to_the_old_launcher_counts(self):
+        # Made before the rename: it starts srw64.sh in the same folder.
+        launcher = Path("/home/deck/Games/SRW64/marchwind64.sh")
+        old = launcher.with_name("srw64.sh")
+        data = (b"\x00shortcuts\0" + shortcut(0, 3870819196, "超级机器人大战64", f'"{old}"') + b"\x08\x08")
+        with tempfile.TemporaryDirectory() as folder:
+            vdf = Path(folder) / "shortcuts.vdf"
+            vdf.write_bytes(data)
+            self.assertEqual(MODULE.shortcut_ids(vdf, launcher), [])
+            self.assertEqual(MODULE.shortcut_ids(vdf, launcher, old), [3870819196])
+            self.assertEqual(MODULE.shortcut_ids(vdf, launcher, Path("/elsewhere/srw64.sh")), [])
+        self.assertEqual(MODULE.OLD_LAUNCHER, MODULE.LAUNCHER.with_name("srw64.sh"))
+        self.assertEqual(MODULE.LAUNCHER.name, "marchwind64.sh")
 
     def test_unreadable_shortcuts_mean_none(self):
         with tempfile.TemporaryDirectory() as folder:

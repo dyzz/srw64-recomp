@@ -20,7 +20,7 @@ class MacOSPackageTests(unittest.TestCase):
         self.root = Path(self.work.name)
         self.binary = self.root / "game"
         self.binary.write_bytes(bytes.fromhex("cffaedfe") + b"synthetic fixture only")
-        self.output = self.root / "SRW64 Recompiled.app"
+        self.output = self.root / "Marchwind64.app"
         self.commands = []
 
     def run_tool(self, command):
@@ -54,6 +54,8 @@ class MacOSPackageTests(unittest.TestCase):
         result = self.stage(notices=(license_file,))
         info = plistlib.loads((result / "Contents/Info.plist").read_bytes())
         self.assertEqual(info["CFBundleExecutable"], PACKAGE.EXECUTABLE)
+        self.assertEqual((info["CFBundleName"], info["CFBundleDisplayName"]), ("Marchwind64", "Marchwind64"))
+        self.assertEqual(info["CFBundleIdentifier"], "io.github.dyzz.srw64-recomp")
         self.assertTrue(info["NSHighResolutionCapable"])
         files = {p.relative_to(result).as_posix() for p in result.rglob("*") if p.is_file()}
         self.assertEqual(files, {"Contents/MacOS/srw64-gfx-host", "Contents/Info.plist",

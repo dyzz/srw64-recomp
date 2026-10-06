@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Add SRW64 to the Steam library as a non-Steam game, with its artwork.
 
-Run by add-to-steam.sh beside srw64.sh, once, in Desktop Mode with Steam open. It
+Run by add-to-steam.sh beside marchwind64.sh, once, in Desktop Mode with Steam open. It
 writes a desktop entry (name in the game's language, icon), hands it to Steam the
 way SteamOS's own "Add to Steam" does, reads the new shortcut's app id from
 shortcuts.vdf and copies the artwork beside this script into Steam's grid folder.
-When the game is already in the library it only refreshes the artwork.
+When the game is already in the library it only refreshes the artwork; a shortcut made
+before the rename, which starts srw64.sh in the same folder, counts as already there.
 """
 from __future__ import annotations
 
@@ -20,9 +21,10 @@ import time
 import urllib.parse
 
 HERE = Path(__file__).resolve().parent          # <game>/steam
-LAUNCHER = HERE.parent / 'srw64.sh'
+LAUNCHER = HERE.parent / 'marchwind64.sh'
+OLD_LAUNCHER = HERE.parent / 'srw64.sh'           # the launcher's name before Marchwind64
 NAMES = {'zh-Hans': '超级机器人大战64', 'en': 'Super Robot Wars 64', 'ja': 'スーパーロボット大戦64'}
-FIRST_LOCALE = 'zh-Hans'                        # srw64.sh starts a first launch in Simplified Chinese
+FIRST_LOCALE = 'zh-Hans'                        # marchwind64.sh starts a first launch in Simplified Chinese
 # Steam's grid names for a shortcut's app id, from the files steam_art.py writes.
 ARTWORK = {'capsule.png': '{}p.png', 'wide.png': '{}.png', 'hero.png': '{}_hero.png',
            'logo.png': '{}_logo.png', 'icon.png': '{}_icon.png'}
@@ -68,14 +70,15 @@ def field(entry: dict, name: str):
     return next((value for key, value in entry.items() if key.lower() == name.lower()), None)
 
 
-def shortcut_ids(vdf: Path, launcher: Path) -> list[int]:
-    """App ids of the shortcuts in vdf that start launcher."""
+def shortcut_ids(vdf: Path, *launchers: Path) -> list[int]:
+    """App ids of the shortcuts in vdf that start any of launchers."""
     try:
         shortcuts = field(parse_vdf(vdf.read_bytes())[0], 'shortcuts') or {}
     except (OSError, ValueError, IndexError):
         return []
+    targets = {str(launcher) for launcher in launchers}
     return [field(entry, 'appid') for entry in shortcuts.values()
-            if isinstance(entry, dict) and str(field(entry, 'exe') or '').strip('"') == str(launcher)
+            if isinstance(entry, dict) and str(field(entry, 'exe') or '').strip('"') in targets
             and field(entry, 'appid') is not None]
 
 
@@ -91,10 +94,10 @@ def steam_users() -> list[Path]:
     return list(found.values())
 
 
-def find_shortcuts() -> dict[Path, list[int]]:
+def find_shortcuts(*launchers: Path) -> dict[Path, list[int]]:
     found = {}
     for user in steam_users():
-        ids = shortcut_ids(user / 'config/shortcuts.vdf', LAUNCHER)
+        ids = shortcut_ids(user / 'config/shortcuts.vdf', *(launchers or (LAUNCHER, OLD_LAUNCHER)))
         if ids:
             found[user] = ids
     return found
@@ -111,7 +114,7 @@ def write_desktop_entry(name: str) -> Path:
     entry = Path.home() / '.local/share/applications/srw64-recomp.desktop'
     entry.parent.mkdir(parents=True, exist_ok=True)
     quoted = f'"{LAUNCHER}"' if ' ' in str(LAUNCHER) else str(LAUNCHER)
-    lines = ['[Desktop Entry]', 'Type=Application', f'Name={name}', 'Comment=SRW64 Recomp',
+    lines = ['[Desktop Entry]', 'Type=Application', f'Name={name}', 'Comment=Marchwind64',
              f'Exec={quoted}', f'Path={LAUNCHER.parent}', 'Terminal=false', 'Categories=Game;']
     if (HERE / 'icon.png').is_file():
         lines.insert(5, f'Icon={HERE / "icon.png"}')
@@ -153,6 +156,10 @@ def main() -> int:
     if found:
         copy_artwork(found)
         print(f'已在 Steam 库中，封面已更新。\nAlready in the Steam library; the artwork is refreshed.')
+        if find_shortcuts(OLD_LAUNCHER) and not OLD_LAUNCHER.exists():
+            print(f'这个快捷方式还在启动旧的 srw64.sh：请在 Steam 里打开它的「属性」，把目标改成 {LAUNCHER}。\n'
+                  f'The shortcut still starts the old srw64.sh: in Steam, open its Properties and set the '
+                  f'target to {LAUNCHER}.')
         return 0
     if not steam_running():
         print('请先打开 Steam，再运行一次。\nOpen Steam first, then run this again.')
@@ -163,8 +170,8 @@ def main() -> int:
         time.sleep(0.5)
         found = find_shortcuts()
     if not found:
-        print('Steam 没有添加这个游戏。可以在 Steam 里选「添加非 Steam 游戏」手动添加 srw64.sh。\n'
-              'Steam did not add the game. In Steam, choose Add a Non-Steam Game and pick srw64.sh.')
+        print('Steam 没有添加这个游戏。可以在 Steam 里选「添加非 Steam 游戏」手动添加 marchwind64.sh。\n'
+              'Steam did not add the game. In Steam, choose Add a Non-Steam Game and pick marchwind64.sh.')
         return 1
     copy_artwork(found)
     print(f'已添加到 Steam：{name}。回到游戏模式即可在库里启动。\n'
