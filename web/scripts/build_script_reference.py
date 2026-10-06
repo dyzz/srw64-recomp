@@ -5,7 +5,10 @@ Generated from the layout lock's stage_scripts table (config/data/original-jp-v1
 command, condition, context marker, event type, operand role and deployment record field. The
 Chinese page carries the implementation notes and run-time findings as they are recorded; the
 English and Japanese pages translate the names and operands (script-reference-i18n.json) and link
-each entry to its Chinese notes. Run it again whenever the table changes:
+each entry to its Chinese notes. It also writes public/docs/mini-stage/llms.txt, everything an AI agent
+needs to write, compile and load a mini stage in one file (linked from the mini stage page): how to use
+them, the rules the compiler enforces, and every entry with its English name and Chinese notes. Run it
+again whenever the table changes:
 
   python3 web/scripts/build_script_reference.py           # write the three pages
   python3 web/scripts/build_script_reference.py --check   # fail if a page is out of date
@@ -21,6 +24,8 @@ ROOT = Path(__file__).resolve().parents[2]
 LOCK = ROOT / 'config/data/original-jp-v1.json'
 I18N = Path(__file__).with_name('script-reference-i18n.json')
 OUT = ROOT / 'web/src/content/docs'
+LLMS = ROOT / 'web/public/docs/mini-stage/llms.txt'
+SITE = 'https://srw64.dreamquest.club'
 REPO = 'https://github.com/dyzz/srw64-recomp/blob/main'
 UPDATED = '2026-10-07'
 # Deployment record bytes as the mini-stage compiler names them (tools/recomp/script_lab/mini_stage.py).
@@ -246,6 +251,173 @@ class Page:
         return '\n'.join(out).rstrip() + '\n'
 
 
+LLMS_HEAD = """# Marchwind 64 mini stages
+
+> Everything an AI agent needs to write, compile and load a mini stage in Marchwind 64, the native recompilation of
+> Super Robot Wars 64 (N64): how to use them, the rules the compiler enforces, and every script command, condition,
+> context marker, event type, variable and deployment record field. Generated from the game's script table; the
+> implementation notes ("basis") and in-game findings are in Chinese, as recorded.
+
+A mini stage is a small scenario in one JSON file (schema `srw64.mini-stage.v1`): an original map, the units placed on
+it, and event scripts. Loaded on the title's main menu, it takes the place of a scenario and the game enters it
+directly (no New Game, prologue or hero selection). Use it to reproduce a battle, a screen or a script command.
+There is no menu for it in the game: it is loaded through the debug interface's MCP server only.
+
+Human-readable pages: {site}/en/docs/mini-stage/ (usage), {site}/en/docs/script-commands/ (reference),
+{site}/en/docs/mcp/ (connecting an agent). Source: https://github.com/dyzz/srw64-recomp
+
+## Workflow
+
+1. Connect: the player turns on Options → About → AI debug interface (MCP), or starts the game with `--debug`; the
+   agent calls `srw64_attach`. A development session from the repository uses `srw64_launch` instead.
+2. Write the stage definition (below). Start from the closest of the 69 stages in `config/recomp/mini-stages/`; each
+   file's `note` says what it tests.
+3. Compile: `python3 tools/recomp/script_lab/mini_stage.py compile stage.json --out stage.image.json` in the
+   repository. Stages using `template`, `deployments_from` or `copy_from` need the original data extracted from the
+   player's ROM first: put the ROM in the repository as `rom.z64` and run `make recomp-data` once.
+4. Wait for the title's main menu (`srw64_status`: `title_major` 3, or `srw64_wait` with `title_major: 3`), then call
+   `srw64_mini_stage_load` with the image's path on the machine the game runs on. The game enters at once; poll
+   `srw64_status` until `mini_stage.ready` is true (the map is idle and waiting for input).
+5. Play it with `srw64_keys` / `srw64_pad` / `srw64_buttons`, check with `srw64_screenshot`, `srw64_status`,
+   `srw64_events`, and `srw64_quit` or return to the title when done. Loading another stage replaces the first.
+
+An installed game loads compiled images only; a `srw64_launch` session also accepts a stage definition and compiles
+it itself, and its `mini_stage` argument prepares a stage at launch (entered with F8 on the main menu).
+
+Caveats: the game writes to the player's own saves if the stage saves or autosaves are on (suggest a separate
+`--user-dir`); the hero's and partner's names and route are empty; random numbers differ from a normal game, so
+reproduce from the same image and inputs; images contain data copied from the ROM and must not be shared.
+
+## Stage definition
+
+```json
+{{
+  "schema": "srw64.mini-stage.v1",
+  "name": "my-test",
+  "note": "what this stage tests",
+  "map": 20,
+  "deployments": [
+    {{"template": "base:stage_deployments:001f0f1c", "group": 0, "x": 8, "y": 8, "faction": 0}},
+    {{"template": "base:stage_deployments:001f2720", "group": 1, "x": 12, "y": 8, "faction": 1}}
+  ],
+  "events": [
+    {{"name": "opening", "type": 12, "header": [0, 0, 0, 0], "commands": [
+      {{"op": "3DD0"}}, {{"op": "3D32", "args": [4]}}, {{"op": "3D4D"}}, {{"op": "3D65", "args": [17, 31]}},
+      {{"op": "3D3B", "args": [1]}}, {{"op": "3D45", "args": [0]}}, {{"op": "3D45", "args": [1]}},
+      {{"op": "3D35", "args": [16384, 0]}}, {{"op": "3D48"}}
+    ]}},
+    {{"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{{"op": "3DD0"}}, {{"op": "3D4B", "args": [4]}}]}}
+  ]
+}}
+```
+
+Fields and the limits `mini_stage.py compile` enforces:
+
+- `map`: original map number 0–255 (`base:map_assets`). `slot`: optional scene number 0–255 to borrow; without it, the
+  scenario the game registers after loading.
+- `events`: at most 63, together at most 0x1A00 bytes (each event is its type, four header words, its commands and
+  FFFF, padded to 4 bytes). Each event is either
+  - `{{"name", "type": 0–14, "header": [four 16-bit words], "commands": [...]}}`, where a command is
+    `{{"op": "3D45", "args": [...]}}` with exactly as many 16-bit args as the opcode's operand words (listed below).
+    Conditions (3E00–3E1D) and context markers (3DD0–3DDB, no operands) are written the same way. 3D76–3D79 are
+    rejected (no reachable handler); FFFF is appended for you. Or
+  - `{{"name", "copy_from": "base:stage_events:<key>"}}`, an original event copied word for word, optionally with a
+    `header` override that keeps its commands but changes when it fires.
+- `deployments_from`: optional `base:stage_auxiliary:<key>`, a scenario's whole original deployment block.
+  `deployments`: extra 28-byte records with the fields listed under "Deployment records"; `template`
+  (`base:stage_deployments:<key>`) starts from an original record. Together at most 0x2000 bytes with the 999
+  terminator.
+- `initial_resources`: optional, at most 90 rows `{{"side": 0–2, "slot": 0–29, "hp_percent": 1–100,
+  "en_percent": 0–100}}`, applied once when the map first becomes idle; the unit must be deployed.
+
+Looking up numbers (after `make recomp-data`, in `assets/original-data/records/*.jsonl`, one JSON object per line
+with `key`, `label`, `summary` and `search_terms`): `actors` (character numbers, `base:actors:0300` = 300),
+`units` (unit numbers), `stage_deployments` (records to use as `template`, with a decoded `deployment` object),
+`stage_auxiliary` (whole deployment blocks), `stage_events` (original events for `copy_from`), `map_assets`
+(maps). Text numbers for dialogue commands are entries of text table 0 (`base:t00_<number>`).
+
+Events run when their type's trigger holds (see "Event types"); a stage needs at least an opening event (type 12)
+that switches to the battlefield (`3D4D`), deploys groups (`3D45`) and hands over to the player (`3D48` closes the
+dialogue window), and usually an ending event (type 14) with `3D4B 4`.
+"""
+
+
+def llms(table: dict, i18n: dict) -> str:
+    page = Page('en', table, i18n)
+    d = table
+    out = [LLMS_HEAD.format(site=SITE)]
+
+    def name(text: str) -> str:
+        english = page.tr(text)
+        return english if english == text else f'{english} [{text}]'
+
+    out += ['## Event types', '', 'Type: name. Checked when. Header words 1–4.', '']
+    for key in sorted(d['event_types'], key=int):
+        e = d['event_types'][key]
+        polled = ', '.join(page.tr(p) for p in d['polling'].get(key, [])) or page.tr(e.get('polled', ''))
+        out.append(f'- {key}: {name(e["name"])}. Checked: {polled}.')
+        for i, h in enumerate(e.get('header', []), 1):
+            note = f' — {page.tr(h["note"])}' if h.get('note') else ''
+            out.append(f'  {i}. {page.tr(h["name"])} (`{h.get("role", "")}`){note}')
+    out.append('')
+
+    def entries(section: str, title: str) -> None:
+        out.extend([f'## {title}', ''])
+        for opcode in sorted(d[section]):
+            v = d[section][opcode]
+            operands = v.get('operands', [])
+            words = v.get('operand_words', len(operands))
+            head = f'### {opcode.upper()} — {name(v["name"])}'
+            facts = [f'{words} operand word(s)']
+            if v.get('kind'):
+                facts.append(f'kind: {v["kind"]}')
+            if v.get('dialogue_mode') is not None:
+                facts.append(f'dialogue display mode {v["dialogue_mode"]}')
+            conf = v.get('semantic_confidence') or v.get('confidence')
+            if conf:
+                facts.append(conf)
+            if v.get('handler_vram'):
+                facts.append(f'handler {v["handler_vram"]}')
+            out.extend([head, '; '.join(facts)])
+            for i, o in enumerate(operands, 1):
+                role = o.get('role')
+                meaning = d['operand_roles'].get(role) if role else None
+                out.append(f'{i}. {page.tr(o["name"])}' + (f' (`{role}`' + (f': {page.tr(meaning)}' if meaning else '') + ')' if role else ''))
+            if v.get('basis'):
+                out.append(f'Basis (zh): {v["basis"]}')
+            runtime = v.get('runtime')
+            if isinstance(runtime, dict) and runtime.get('finding'):
+                out.append(f'In game (zh{", " + runtime["date"] if runtime.get("date") else ""}): {runtime["finding"]}')
+            out.append('')
+
+    entries('commands', 'Commands (3D31–3D79)')
+    out += ['Conditions test and set the ACC register and variables. An opener starts a block; when false, the script',
+            'skips to the matching block end (3E1D). Blocks nest.', '']
+    entries('conditions', 'Conditions (3E00–3E1D)')
+    out += ['## Context markers (3DD0–3DDB, no operands)', '',
+            'At a marker the script continues if it matches the current context, otherwise it skips to the next matching',
+            'marker or the end of the event.', '']
+    for opcode in sorted(d['context_markers']):
+        m = d['context_markers'][opcode]
+        out.append(f'- {opcode.upper()}: {name(m["name"])} (matches: {m.get("matches", "")})')
+    out += ['', '## Operand types', '']
+    for role, meaning in d['operand_roles'].items():
+        out.append(f'- `{role}`: {page.tr(meaning)}')
+    var = d['variables']
+    out += ['', '## Variables', '', f'{var["count"]} variables of {var["bits"]} bits (values 0–3) at {var["storage_vram"]}, '
+            f'read and written by the conditions, kept across stages. Basis (zh): {var.get("basis", "")}', '',
+            '## Deployment records (28 bytes, 14 halfwords, group 999 ends the block)', '',
+            'Offset, bytes: name (mini stage field) — confidence. Basis (zh).', '']
+    for f in d['auxiliary_record']['fields']:
+        basis = f' Basis (zh): {f["basis"]}' if f.get('basis') else ''
+        out.append(f'- +{f["offset"]}, {f["size"]}: {name(f["name"])} (`{STAGE_FIELDS.get(f["offset"], "")}`) — '
+                   f'{f.get("confidence", "")}.{basis}')
+    out.append('')
+    if page.missing:
+        raise SystemExit('Untranslated in llms.txt: ' + ', '.join(sorted(page.missing)))
+    return '\n'.join(out).rstrip() + '\n'
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--check', action='store_true', help='fail if a page differs from what the table gives')
@@ -264,6 +436,14 @@ def main() -> int:
         else:
             target.write_text(text, encoding='utf-8')
             print(target.relative_to(ROOT))
+    text = llms(table, i18n)
+    if args.check:
+        if not LLMS.exists() or LLMS.read_text(encoding='utf-8') != text:
+            stale.append(str(LLMS.relative_to(ROOT)))
+    else:
+        LLMS.parent.mkdir(parents=True, exist_ok=True)
+        LLMS.write_text(text, encoding='utf-8')
+        print(LLMS.relative_to(ROOT))
     if missing:
         print('Untranslated (add to script-reference-i18n.json):', *sorted(missing), sep='\n  ', file=sys.stderr)
         return 1

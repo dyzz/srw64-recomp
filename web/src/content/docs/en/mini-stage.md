@@ -12,6 +12,12 @@ We use them during development to reproduce particular battles and screens: two 
 
 Mini stages are a debugging tool and **the game has no menu for them**: they can only be loaded through MCP, with the debug interface turned on. See [Controlling the game with an AI agent (MCP)](../mcp/) for how to connect.
 
+## For AI agents: llms.txt
+
+[`/docs/mini-stage/llms.txt`](/docs/mini-stage/llms.txt) puts everything needed to write a mini stage in one plain-text file for AI agents: the workflow, every limit the compiler checks, where to look up character and unit numbers, and the full reference of commands, conditions, markers, event types and deployment record fields (English names with the Chinese implementation notes and findings). Once the game is connected, hand the address to your agent:
+
+> Read https://srw64.dreamquest.club/docs/mini-stage/llms.txt, then write a mini stage with one allied unit and two enemies next to it, compile it, load it with srw64_mini_stage_load and take a screenshot once inside.
+
 ## What you need
 
 - The game connected as described in [the MCP guide](../mcp/) (`srw64_attach` works).

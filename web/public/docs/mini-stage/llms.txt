@@ -1,0 +1,862 @@
+# Marchwind 64 mini stages
+
+> Everything an AI agent needs to write, compile and load a mini stage in Marchwind 64, the native recompilation of
+> Super Robot Wars 64 (N64): how to use them, the rules the compiler enforces, and every script command, condition,
+> context marker, event type, variable and deployment record field. Generated from the game's script table; the
+> implementation notes ("basis") and in-game findings are in Chinese, as recorded.
+
+A mini stage is a small scenario in one JSON file (schema `srw64.mini-stage.v1`): an original map, the units placed on
+it, and event scripts. Loaded on the title's main menu, it takes the place of a scenario and the game enters it
+directly (no New Game, prologue or hero selection). Use it to reproduce a battle, a screen or a script command.
+There is no menu for it in the game: it is loaded through the debug interface's MCP server only.
+
+Human-readable pages: https://srw64.dreamquest.club/en/docs/mini-stage/ (usage), https://srw64.dreamquest.club/en/docs/script-commands/ (reference),
+https://srw64.dreamquest.club/en/docs/mcp/ (connecting an agent). Source: https://github.com/dyzz/srw64-recomp
+
+## Workflow
+
+1. Connect: the player turns on Options → About → AI debug interface (MCP), or starts the game with `--debug`; the
+   agent calls `srw64_attach`. A development session from the repository uses `srw64_launch` instead.
+2. Write the stage definition (below). Start from the closest of the 69 stages in `config/recomp/mini-stages/`; each
+   file's `note` says what it tests.
+3. Compile: `python3 tools/recomp/script_lab/mini_stage.py compile stage.json --out stage.image.json` in the
+   repository. Stages using `template`, `deployments_from` or `copy_from` need the original data extracted from the
+   player's ROM first: put the ROM in the repository as `rom.z64` and run `make recomp-data` once.
+4. Wait for the title's main menu (`srw64_status`: `title_major` 3, or `srw64_wait` with `title_major: 3`), then call
+   `srw64_mini_stage_load` with the image's path on the machine the game runs on. The game enters at once; poll
+   `srw64_status` until `mini_stage.ready` is true (the map is idle and waiting for input).
+5. Play it with `srw64_keys` / `srw64_pad` / `srw64_buttons`, check with `srw64_screenshot`, `srw64_status`,
+   `srw64_events`, and `srw64_quit` or return to the title when done. Loading another stage replaces the first.
+
+An installed game loads compiled images only; a `srw64_launch` session also accepts a stage definition and compiles
+it itself, and its `mini_stage` argument prepares a stage at launch (entered with F8 on the main menu).
+
+Caveats: the game writes to the player's own saves if the stage saves or autosaves are on (suggest a separate
+`--user-dir`); the hero's and partner's names and route are empty; random numbers differ from a normal game, so
+reproduce from the same image and inputs; images contain data copied from the ROM and must not be shared.
+
+## Stage definition
+
+```json
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "my-test",
+  "note": "what this stage tests",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001f0f1c", "group": 0, "x": 8, "y": 8, "faction": 0},
+    {"template": "base:stage_deployments:001f2720", "group": 1, "x": 12, "y": 8, "faction": 1}
+  ],
+  "events": [
+    {"name": "opening", "type": 12, "header": [0, 0, 0, 0], "commands": [
+      {"op": "3DD0"}, {"op": "3D32", "args": [4]}, {"op": "3D4D"}, {"op": "3D65", "args": [17, 31]},
+      {"op": "3D3B", "args": [1]}, {"op": "3D45", "args": [0]}, {"op": "3D45", "args": [1]},
+      {"op": "3D35", "args": [16384, 0]}, {"op": "3D48"}
+    ]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4B", "args": [4]}]}
+  ]
+}
+```
+
+Fields and the limits `mini_stage.py compile` enforces:
+
+- `map`: original map number 0–255 (`base:map_assets`). `slot`: optional scene number 0–255 to borrow; without it, the
+  scenario the game registers after loading.
+- `events`: at most 63, together at most 0x1A00 bytes (each event is its type, four header words, its commands and
+  FFFF, padded to 4 bytes). Each event is either
+  - `{"name", "type": 0–14, "header": [four 16-bit words], "commands": [...]}`, where a command is
+    `{"op": "3D45", "args": [...]}` with exactly as many 16-bit args as the opcode's operand words (listed below).
+    Conditions (3E00–3E1D) and context markers (3DD0–3DDB, no operands) are written the same way. 3D76–3D79 are
+    rejected (no reachable handler); FFFF is appended for you. Or
+  - `{"name", "copy_from": "base:stage_events:<key>"}`, an original event copied word for word, optionally with a
+    `header` override that keeps its commands but changes when it fires.
+- `deployments_from`: optional `base:stage_auxiliary:<key>`, a scenario's whole original deployment block.
+  `deployments`: extra 28-byte records with the fields listed under "Deployment records"; `template`
+  (`base:stage_deployments:<key>`) starts from an original record. Together at most 0x2000 bytes with the 999
+  terminator.
+- `initial_resources`: optional, at most 90 rows `{"side": 0–2, "slot": 0–29, "hp_percent": 1–100,
+  "en_percent": 0–100}`, applied once when the map first becomes idle; the unit must be deployed.
+
+Looking up numbers (after `make recomp-data`, in `assets/original-data/records/*.jsonl`, one JSON object per line
+with `key`, `label`, `summary` and `search_terms`): `actors` (character numbers, `base:actors:0300` = 300),
+`units` (unit numbers), `stage_deployments` (records to use as `template`, with a decoded `deployment` object),
+`stage_auxiliary` (whole deployment blocks), `stage_events` (original events for `copy_from`), `map_assets`
+(maps). Text numbers for dialogue commands are entries of text table 0 (`base:t00_<number>`).
+
+Events run when their type's trigger holds (see "Event types"); a stage needs at least an opening event (type 12)
+that switches to the battlefield (`3D4D`), deploys groups (`3D45`) and hands over to the player (`3D48` closes the
+dialogue window), and usually an ending event (type 14) with `3D4B 4`.
+
+## Event types
+
+Type: name. Checked when. Header words 1–4.
+
+- 0: Turn start [回合开始触发]. Checked: Phase 0.
+  1. Turns (`turn`) — Current turn ≥ this value
+  2. Phase (`side`) — Must equal the current phase 8010F5E8 (1 player / 2 enemy)
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 1: Delayed count (started by 3D52) [延迟计数触发（3D52 启动）]. Checked: Phase 0.
+  1. Initial state (`raw`) — Rewritten to 0xFD by 3D52 at run time
+  2. Phase (`side`) — Rewritten by 3D52 at run time; 4 = any
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 2: Unit destroyed / withdrawn [单位击破／退场触发]. Checked: Always.
+  1. Gate variable (`gate_flag`) — For 100–115 the event does not fire while the variable is 3 (8009DE7C sets 100–114 to 3 at the start of each stage; a script enables it by writing 0); other numbers are not checked; 0 means no gate
+  2. Character (`actor`) — The unit this character pilots reaches 0% HP
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 3: HP below a percentage [HP 低于百分比触发]. Checked: Always.
+  1. Character (`actor`) — Special case for character 138: continues only when its unit's HP < 11
+  2. Percentage (`value`) — HP% ≤ this value and on the map
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 4: Battle event (after battle, phase 7) [交战事件（战斗后，阶段 7）]. Checked: Phase 7.
+  1. Character A (`actor_or_any`) — 0 = any
+  2. Character B (`actor_or_any`) — 0 = any
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 5: Battle event (before battle, phase 4) [交战事件（战斗前，阶段 4）]. Checked: Phase 4.
+  1. Character A (`actor_or_any`) — 0 = any
+  2. Character B (`actor_or_any`) — 0 = any
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 6: All enemies destroyed [敌方全灭触发]. Checked: Always.
+  1. Latest turn (`turn`) — Fires only while the current turn (from 0) ≤ this value; 8009E834 returns once it is below the current turn
+  2. Phase (`side_or_any`) — 4 = any
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 7: Units remaining on a side [阵营残存数触发]. Checked: Always.
+  1. Side choice (`raw`) — 2 → third-party count 0x9B2, otherwise the enemy count 0x9B1
+  2. Maximum count (`value`) — Remaining ≤ this value
+  3. Phase (`side_or_any`) — 4 = any
+  4. Gate variable (`gate_flag`) — For 100–115 the event does not fire while the variable is 3 (8009DE7C sets 100–114 to 3 at the start of each stage; a script enables it by writing 0); other numbers are not checked
+- 8: Area reached (enabled by 3D57) [区域到达触发（需 3D57 启用）]. Checked: Phase 0, Phase 1, Phase 2, Phase 6.
+  1. Turn or mode (`raw`) — A number = current turn ≥ this value; 0xFF = fire on arrival; 0xFE = all allies have left
+  2. Target (`region_target`) — N×1000 + character (or 500 + side; 21 = the first character in the list on the map)
+  3. x range (`region_x`) — x0×10 + width
+  4. y range (`region_y`) — y0×10 + height
+- 9: Persuasion (0x992, phase 6) [说服（0x992，阶段 6）]. Checked: Phase 0, Phase 1, Phase 2, Phase 6.
+  1. Persuader (`actor`) — 800A4634 finds, in registration order, the first slot not yet run whose gate holds and whose two characters are orthogonally adjacent, and writes it to engine+0x992
+  2. Target (`actor`) — The target may be on any side
+  3. Gate variable (`raw`) — 0xFFF8 (−8) means no gate; otherwise Persuade appears only when the variable equals the gate value. Multi-step persuasion across stages is chained through it
+  4. Gate value (`raw`)
+- 10: Registered but never polled [登记但不轮询]. Checked: None.
+  1. Reserved (`raw`)
+  2. Reserved (`raw`)
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 11: Registered but never polled [登记但不轮询]. Checked: None.
+  1. Reserved (`raw`)
+  2. Reserved (`raw`)
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 12: Opening event (phase C1) [开场事件（阶段 C1）]. Checked: engine+4 = 0xC1.
+  1. Reserved (`raw`)
+  2. Reserved (`raw`)
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 13: Phase C2 event (initial deployment) [阶段 C2 事件（初期配置）]. Checked: engine+4 = 0xC2.
+  1. Reserved (`raw`)
+  2. Reserved (`raw`)
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+- 14: Ending event (phase C3, after 3D4A) [结束事件（阶段 C3，3D4A 之后）]. Checked: engine+4 = 0xC3.
+  1. Reserved (`raw`)
+  2. Reserved (`raw`)
+  3. Reserved (`raw`)
+  4. Reserved (`raw`)
+
+## Commands (3D31–3D79)
+
+### 3D31 — World map: place at location (same handler as 3D32) [世界地图定位（地点，与 3D32 同处理函数）]
+1 operand word(s); code-confirmed; handler 0x800A0E64
+1. Location (`world_location`)
+Basis (zh): 一字索引 D_801C5310 的三个半字调用 801C4BCC，等待 801C4FBC 返回 1；load_000A7EC0 世界地图 overlay；PC+2。
+In game (zh, 2026-09-16): 原脚本无实例。迷你关卡中 3D31 4 与基准 3D32 4 指向同一表项，画面同为不列颠／北海居中且带标记，用时同为 106 VI；与 3D32 共用 800A0E64，行为一致。
+
+### 3D32 — World map: place at location [世界地图定位（地点）]
+1 operand word(s); code-confirmed; handler 0x800A0E64
+1. Location (`world_location`)
+Basis (zh): 与 3D31 共用处理函数 800A0E64。
+In game (zh, 2026-09-16): 迷你关卡开场（世界地图 overlay）依次执行 3D32 0/2/19/46/71/63：标记始终停在画面正中，地图整体移动到表 801C5310 该项的位置，第 0 半字不同时地表整幅更换（项 2 地中海、项 19 海岸、项 46 雪山、项 63 荒漠）。除已在该地点的首次调用（0 VI）外每次固定 106 VI，与距离无关，是定长切换而非按距离卷动。
+
+### 3D33 — World map: travel to location [世界地图移动（目的地点）]
+1 operand word(s); code-confirmed; handler 0x800A0EFC
+1. Location (`world_location`)
+Basis (zh): 载具（世界地图模型表 801C5670 下标）取 D_801C5644[0x990]，0x990 为 0 时取 800A31DC(46)：ブライト 所乘机体经配对表 801C560C 换成模型下标（-1 → 24）；连同表项后两个半字调用 801C37B8，等待 801C41BC；PC+2。
+In game (zh, 2026-09-16): 迷你关卡中 3D33 2 与 3D33 69 在世界地图上画出一条蓝白航迹，由当前地点移动到表 801C5310 该项的位置（项 69 终点在北美），用时 316／566 VI，随距离变化。与 3D32 的定长 106 VI 定位相区别：3D32 换位置，3D33 演出移动过程。
+
+### 3D34 — Switch map and scroll to position (map, x, y, kind) [切换地图并卷动至位置（地图编号, x, y, 种类）]
+4 operand word(s); code-confirmed; handler 0x8009F6FC
+1. Map (`map`: Map number (base:map_assets; written to 8010F5EE))
+2. x (`x`: Square x)
+3. y (`y`: Square y)
+4. Kind (`raw`: Not yet understood)
+Basis (zh): 第 3 字为 0 → 状态 1：8020A9F4 把第 0 字低字节存入 802279EC 并调用 80099814(5,1,-1)，8020AAC8 按 8021E240 状态表推进到状态 2；否则状态 2：80212464 → 8020A874 直接把该字节写入当前地图索引 8010F5EE 并重载地图资源（8008B888(0x3B)、80098158、8009CB04/8009CA28、801C6394），8021261C 等待完成。之后 80209DAC(x, y, 1) 卷动视点；第 1/2 字为 0x4000 时改用 3D54 记住的位置；完成后 PC+8。非战术地图模式直接 PC+8。
+In game (zh, 2026-09-16): 注入 3D34 0,10,10,0 与 3D34 0,24,24,1：当前地图索引 8010F5EE 由 20 变为 0，随机数表 2081 字节重建，整幅画面重绘为地图 0（14254/19200 采样像素变化），分别 64／42 VI 完成。
+
+### 3D35 — Scroll camera to position (position, wait flag) [镜头卷动至位置（位置, 等待标志）]
+2 operand word(s); code-confirmed; handler 0x800A03E8
+1. Position (`position`: High byte x / low byte y; 0x40–0x44 relative to the position 3D54 remembered)
+2. Wait flag (`raw`: Not yet understood)
+Basis (zh): 第 0 字经 800A38DC 解码（高字节 x／低字节 y；0x40–0x44 为相对 3D54 记住位置：同位、上、右、下、左），第 1 字为 80209DAC 第三参数；完成后 PC+4。
+In game (zh, 2026-09-17): 两个参数都已测清。第 1 字不是速度，而是等待标志：原脚本只出现 0（86 次）与 1（1076 次）；同一段距离分别执行，3D35 2068,0 与 5642,0 各阻塞 80／68 VI 直到卷动完成，3D35 2068,1 与 5642,1 都在 0 VI 立即返回、画面在其后帧里继续卷动。第 0 字：高字节 0x40–0x44 为相对 3D54 记住的位置（同位／上／右／下／左），低字节为格数；其余为绝对坐标（高字节 x、低字节 y）。把记住的位置设在地图中央后，以逐帧位移检测（160×120 采样，1 格 = 8 像素，残差 0.0）测得：相对上 3、下 3、左 3 各使画面内容精确位移 24 像素即 3 格，方向正确；相对右 3 只位移 4 像素，方向正确但被地图右边界截住（早先 inject-2 中右 3 同样贴边）。原脚本分布：绝对坐标 643 次、相对同位 490 次、右 15、上 8、下 5、左 1。相对移动每 3 格约 10 VI。此前 inject-2 已确认绝对卷动与 0x4000 回到记住位置。
+
+### 3D36 — Shake screen (strength) [画面震动（强度编号）]
+1 operand word(s); code-confirmed; handler 0x8009F880
+1. Strength (`raw`: Not yet understood)
+Basis (zh): 战术地图模式：8020D3C8(低字节) 后等待 8020D4B0 状态机；其他模式 801C5000／801C5138；PC+2。
+In game (zh, 2026-09-16): 逐帧采样定案。命令期间 frame-trace 的 mean_delta 由 0 跳到 23.65 并**保持恒定**，同时 mean_rgb 在 56.53 与 50.37 两个值之间**逐帧交替**（静止时为 54.23，即在静止位两侧摆动）；恒定的帧间差配合两值交替，正是画面在两个位置间逐帧往复。采样帧显示此时视口偏移、边缘露出黑边，与摆动一致。原脚本用法完全吻合：196 处调用几乎全部是「3D39 音效 → 3D36 n → 角色惊讶台词」（如 40 号音效后接「まさか……敵の攻撃だってのか!?」「え……何!?」），是配合音效表现冲击。参数决定时长：5 → 18 VI（9 帧摆动）、6 → 22 VI（11 帧），二者占 196 次中的 161 次；其余值 8/4/2/12/16/3 未逐一测量。不写任何状态，采集窗口内确证无声（声音由相邻的 3D39 提供）。
+
+### 3D37 — Map effect overlay (effect, position) [地图特效叠加（特效编号, 位置）]
+2 operand word(s); code-confirmed; handler 0x8009FF2C
+1. Effect (`raw`: Not yet understood)
+2. Position (`position`: High byte x / low byte y; 0x40–0x44 relative to the position 3D54 remembered)
+Basis (zh): 第 0 字索引 D_800C99D4 → D_8021DDE0 三半字资源参数，经 80098158 载入窗口 0x122；位置经 800A38DC 解码为格坐标；D_800C99D6[索引] 交给 8007E8A8 播放音效；卷动后等待窗口标志再关闭；PC+4。
+In game (zh, 2026-09-17): 在同一单位格（位置 0x4000 = 3D54 记住的位置）上依次放三个原脚本用到的编号，逐帧测量该格亮度（基线 88.6）并截取峰值帧（build/recomp/mini-stage/hit-1/3D37-overlays.png）：编号 0 峰值 176.6、历时 28 VI，是覆盖整格的大型黄白爆炸；编号 1 峰值 130.3、历时 12 VI，是一道橙黄色的被弹火花；编号 11 峰值 106.0、历时 20 VI，是环绕单位的蓝色光环（护盾类）。三者全帧帧差都很小（0.7–1.5），是限于该格的局部效果，且不写任何状态。与静态描述一致：编号经 D_800C99D4 取资源参数载入窗口 0x122，并把 D_800C99D6[编号] 交给音效函数（编号 0 → 资源 3、音效 167；编号 1 → 资源 4、音效 166）。原脚本分布：1 为 370 次（常放在正被攻击的单位上）、0 为 192 次、11 为 11 次。
+
+### 3D38 — Wait (frames) [等待（帧计数）]
+1 operand word(s); code-confirmed; handler 0x800A00F0
+1. Frames (`count`: Count)
+Basis (zh): 一字初始计数，每次调用减一，变负后 PC+2；不换算为秒。
+In game (zh, 2026-09-16): 计数 45 用 90 VI、30 用 60 VI、10 用 20 VI：每计数 2 VI，即 30 fps 的一帧。
+
+### 3D39 — Play sound effect [播放音效]
+1 operand word(s); code-confirmed; handler 0x8009FA4C
+1. Sound effect (`se`: Sound effect number)
+Basis (zh): 8009F9D0 模式 0 → 8007E8A8(参数)；8009F3A8 以 0xB9 播放光标音、3D4D 以 -1 停止均用同一函数；PC+2。
+
+### 3D3A — Play BGM (0 = stop) [播放 BGM（0 = 停止）]
+1 operand word(s); code-confirmed; handler 0x8009FA70
+1. Track (`bgm`: Track number)
+Basis (zh): 8009F9D0 模式 1：非零 → 8007E810(参数)，零 → 8007E87C(10)；801FA9B0 回合切换同样用 8007E810 播放曲目；PC+2。
+
+### 3D3B — Fade screen (mode) [画面淡入淡出（模式）]
+1 operand word(s); code-confirmed; handler 0x8009F948
+1. Mode (`raw`: Not yet understood)
+Basis (zh): 800A3390 按模式选择颜色与目标透明度后调用 8009AC84(…, 12)：0 黑色不透明、1 黑色透明、2 白色不透明、3 白色透明；模式 0 与 3 先关闭对白窗口；完成后 PC+2。
+In game (zh, 2026-09-16): 四种模式各 88 VI 完成；160×120 采样帧均值 54.6 → 0.6（0 黑色不透明）→ 54（1 黑色透明）→ 252.5（2 白色不透明）→ 57（3 白色透明）。
+
+### 3D3C — Move unit to position (pilot, position) [单位移动至位置（驾驶员, 位置）]
+2 operand word(s); code-confirmed; handler 0x800A0360
+1. Pilot (`actor`: Character number (base:actors))
+2. Position (`position`: High byte x / low byte y; 0x40–0x44 relative to the position 3D54 remembered)
+Basis (zh): 关闭窗口；第 1 字经 800A38DC 解码后调用 8020A030(x, y, 第 0 字)。在 8015E100 三阵营各 30 槽中找有效单位，比较单位 +0x38 所指驾驶员的 +2 编号，取首个匹配项。目标格坐标转换为 ×16+32；8020A788 经横移、纵移、收尾状态等待完成后 PC+4，并跟随单位更新镜头。男性超级系开场五次原参数调用已静音观测；原值/目标上移一格对照确认精灵终点和名册逻辑坐标同步改变，收尾 801CBEB8 写回槽 +4/+5。相对位置修正、同编号多单位、目标缺失、地形碰撞及存档仍待专项验证。
+In game (zh, 2026-09-16): 注入 3D3C 28,(25,20)：100 VI 后名册 0/0 由 (19,5) 变为 (25,20)，画面中单位到达目标格。 相对位置已补测（finale-1，2026-09-17）：与 3D35 共用解码器 800A38DC。以 3D54 记住 万丈 于 (12,12) 后移动另一单位 ドモン，目标 0x4202（右 2）使其落在 (14,12)，0x4302（下 2）落在 (12,14)，0x4002（同位、低字节 2）落在 (12,12)——相对编码精确生效，「同位」时低字节被忽略；移到已有单位的格上允许重叠。
+
+### 3D3D — Sortie (–, –, –, count: 0 = choose mothership, 200 = all automatic, otherwise the selection limit; base group) [出击（–, –, –, 台数：0 = 选母舰 200 = 全部自动 其余 = 出击选择上限, 基准组）]
+5 operand word(s); code-confirmed; handler 0x800A09D0
+1. Reserved (original scripts copy the base x) (`raw`: Not yet understood)
+2. Reserved (original scripts copy the base y) (`raw`: Not yet understood)
+3. Parameter (always 0 in the original scripts) (`raw`: Not yet understood)
+4. Count (0 mothership / 200 automatic / otherwise limit) (`raw`: Not yet understood)
+5. Base group (`group`: Deployment record group)
+Basis (zh): 等 10 帧；取配套块中首字等于第 4 字的第一条记录的格坐标作基准点，台数取第 3 字（非 0/200 且 ≥16 时截为 15，故原脚本常用的 100 即 15），调用 801C78A0(x, y, 第 2 字, 台数, 第 4 字)；第 3 字非零时清空 8015F700；第 0/1 字未被读取；PC+10，本身不阻塞。801C78A0 从我方机体库（8016A210 起 140 项）挑候选：+0xC 有 0x80 无 0x40、+0xD ≠ 8、有驾驶员、该驾驶员在场状态 8015DE90 为 -1 或 2 且不在 8015F700 排除名单；台数 0 时只取带 +0x28 0x80000 的母舰，唯一候选直接登记到母舰表 8015E850，否则弹窗选择；200 时全部候选置选中后直接出场；其余打开出击选择界面（战术状态 80172EB0 = 2，801C820C 的名单／菜单／确认子状态），确认后状态 3 由 801C835C 每隔数帧把选中单位放到基准点附近的空槽（+0xB = 组）；状态 2/3 期间战术主循环不推进脚本，回到状态 5 后才继续；候选数为 0 时直接置状态 5。
+In game (zh, 2026-09-17): 三份验证关，开场都先用 3D5A 4,0,5,500 与 3D5A 95,0,119,500 登记 ドモン 与 ヒイロ（机体库出现 +0xC = 0x81／0x84 的两项），基准组 2 在 (8,8)、组 3 在 (5,10)，两组都不经 3D45 部署。
+• sortie-a（3D59 95 后 3D3D 8,8,0,1,2）：3D3D 执行后战术状态 05→02，排除名单被清空，候选数 1、候选为 ドモン 的机体 8016A210。画面为「出撃ユニット選択」名单（1/1，あと 1機，只有 ドモン・カッシュ），按 A 选中后弹出「これでよろしいですか? はい／いいえ」，确认后 (8,8) 出现传送特效、ドモン 登场。384 VI 后脚本才继续：状态回到 05，我方槽 0 = (8,8)、+0xB = 2、指向 8016A210，ドモン 在场状态 -1→1。
+• sortie-b（只把 3D59 的参数换成 4）：候选变为 ヒイロ 的 ウイングゼロ 8016A264，名单只有 ウイングゼロ，登场的是 ヒイロ，ドモン 保持 -1。
+• sortie-c（3D5A 46,0,52,500 登记 ブライト 与 アウドムラ，随后 3D3D 5,10,0,0,3 与 3D3D 8,8,0,200,2）：母舰那一步没有任何界面，状态直接 05→03，母舰表 8015E850 计数 1、机体 52，282 VI 后 アウドムラ 在 (5,10) 登场；自动出击那一步同样不出界面，两个候选都被置为选中（选中标志 01 01，上限与已选数 2／2），292 VI 后 ドモン (8,8)、ヒイロ (8,6) 依次传送登场，都带组号 2。母舰没有出现在第二步的候选里（该模式排除 0x80000）。
+此前 scene8-2 没进界面，是因为当时我方机体库里只有 ブライト 的母舰，又被 3D59 46 排除，候选数为 0，按代码直接回到状态 5。原脚本 216 处中 193 处在开场、都在 3D4D 之后；第 3 字 0×85、100×100、200×21（场景 4–10 的自动出击），最常见的是先 0 后 100 两条连用，即先选母舰再选出击单位。
+
+早先记录：取第 4 字所指出击组的首条记录格坐标，连同第 2、3 字调用 801C78A0；801C78A0 对数量 100／200 有专门分支，200 时把名单中的单位拷入 80223538 起的数组并调用 801C82F0(0)。scene8-2 补上 8015F700 探针后原样复现场景 8：3D4D 之后列表为空；3D59 46 执行后列表为 [46]（ブライト）；紧接的 3D3D 14,24,0,200,1 执行后列表又变为空——3D3D 读取并清空了该列表（其第 3 字 200 非零，与「第 3 字非零时清空 8015F700」一致）。3D3D 期间及之后我方地图槽始终为 0，即它本身不把单位放上地图；场景 8 出击组 1 的坐标为 万丈 (13,25)、ブラッド (12,24)、カーツ (14,24)、甲児 (13,23)、さやか (15,23)、ルー (11,23)，正在 3D3D 所给的 (14,24) 一带。据此推测二者是出击准备：3D59 把必须出击的角色（如母舰舰长 ブライト）列入名单，3D3D 以某组的出击点为基准处理该名单，实际落位要等玩家完成出击选择；有界运行不会进入出击选择，本轮未能看到该界面，故保持 structure-confirmed。
+
+### 3D3E — Dialogue · display mode 0 [对白 · 显示模式 0]
+1 operand word(s); dialogue display mode 0; code-confirmed; handler 0x8009F654
+1. Text (`text`: Text number in table 0)
+Basis (zh): 8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。
+In game (zh, 2026-09-16): 注入文本以对白窗口显示，说话人按运行时路线解析为マナミ，按 A 翻页后完成（2260 VI 含等待输入）。
+
+### 3D3F — Dialogue · display mode 1 [对白 · 显示模式 1]
+1 operand word(s); dialogue display mode 1; code-confirmed; handler 0x8009F670
+1. Text (`text`: Text number in table 0)
+Basis (zh): 8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。
+In game (zh, 2026-09-16): 同上，740 VI 含等待输入。
+
+### 3D40 — Dialogue · display mode 2 [对白 · 显示模式 2]
+1 operand word(s); dialogue display mode 2; code-confirmed; handler 0x8009F68C
+1. Text (`text`: Text number in table 0)
+Basis (zh): 8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。
+
+### 3D41 — Dialogue · display mode 3 [对白 · 显示模式 3]
+1 operand word(s); dialogue display mode 3; code-confirmed; handler 0x8009F6A8
+1. Text (`text`: Text number in table 0)
+Basis (zh): 8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。
+
+### 3D42 — Dialogue · display mode 4 [对白 · 显示模式 4]
+1 operand word(s); dialogue display mode 4; code-confirmed; handler 0x8009F6C4
+1. Text (`text`: Text number in table 0)
+Basis (zh): 8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。
+
+### 3D43 — Dialogue · display mode 5 [对白 · 显示模式 5]
+1 operand word(s); dialogue display mode 5; code-confirmed; handler 0x8009F6E0
+1. Text (`text`: Text number in table 0)
+Basis (zh): 8009F4B4 读取一字文本 ID；8008CE54 从文本头部前三位数字取说话人，25/29 按主角上下文加偏移；800A2C18 找到说话人所驾单位后卷动视点；8008FED4 返回 3 时 PC+2。
+
+### 3D44 — Show a choice (window slot, option count, option text) [显示选择肢（窗口槽位, 选项数, 选项文本）]
+3 operand word(s); code-confirmed; handler 0x8009FA94
+1. Window slot (`raw`: Not yet understood)
+2. Option count (`count`: Count)
+3. Option text (`text`: Text number in table 0)
+Basis (zh): 取指后 PC 指向参数 1（8009EED0 已推进 2 字节）。8009FA94 首帧：8008FF34(buf, 参数 1) 按 参数 1×12 读 800C6994/800C6996 作窗口坐标；8008FF04(a0=参数 1, a1=lhu 4(PC) 即参数 3) → 8008F648(槽位, 文本, 模式 2)，文本 ID 存入 s6 后交给 8008CD8C 绘制，与对白 8009F4B4→8008FED4 以 lhu 0(PC) 传文本走同一路径（模式 1）；参数 2 (lh 2(PC)) 作为选项数传给 8009F3A8，以上下键移动光标、A 键确认；确认后 0x994 = 0x3DD9 + 选中序号，供 3E10–3E12 与上下文标记 3DD9–3DDB 使用；PC+6。选项文本为一条文本，按 <BR> 分行，行数与选项数一致（46/46 处）。
+
+### 3D45 — Deploy a record group (arrival) [部署配套记录组（登场）]
+1 operand word(s); code-confirmed; handler 0x8009FC04
+1. Group (`group`: Deployment record group)
+Basis (zh): 10 帧后关闭窗口；从配套数据起点按 14 个半字步进查找首字等于参数的记录，8020B0D4 清空登场列表后对每条连续同组记录调用 8020B154（8020ABB4 由记录生成运行时机体与驾驶员）；8020C524 返回 1 后再等 10 帧，PC+2。
+In game (zh, 2026-09-16): 注入 3D45 3：292 VI 后名册 0/2 出现 (12,21) 组 3 的单位，机体、驾驶员（人物 204）与武器实例记录新建，画面中央出现我方单位。
+
+### 3D46 — Withdraw unit (character or group, immediately) [单位退场（角色或配套组, 立即）]
+2 operand word(s); code-confirmed; handler 0x8009FDC4
+1. Character or group (`actor_or_group`: Below 500 a character number, from 500 a group (value − 500))
+2. Immediately (`bool`: Switch)
+Basis (zh): 8020C620 清空列表，8020C7BC(第 0 字) 登记该角色所驾单位，≥500 时登记地图槽 +0xB 低 5 位等于 (值−500) 的整组单位；8020D300(第 1 字低字节) 非零立即完成，否则等状态机；再等 5 帧后 PC+4。800A4288 的区域到达处理使用同一组调用，候选含义为退场。
+In game (zh, 2026-09-16): 注入 3D46 503,1：36 VI 后名册 0/2（3D45 登场的组 3 单位）被移除，机体实例记录未清除；即退场。
+
+### 3D47 — Close the dialogue window and wait 32 frames [关闭对白窗口并等待 32 帧]
+0 operand word(s); code-confirmed; handler 0x800A013C
+Basis (zh): 800A34D8 关闭窗口 0x22/0x1F 与对白状态，计数到 32 后完成。
+
+### 3D48 — Close the dialogue window [关闭对白窗口]
+0 operand word(s); code-confirmed; handler 0x800A0194
+Basis (zh): 800A34D8 后立即完成。
+In game (zh, 2026-09-16): 立即完成（0 VI）。
+
+### 3D49 — Scripted battle scene (battle entry A, battle entry B) [脚本战斗演出（战斗表项 A, 战斗表项 B）]
+2 operand word(s); code-confirmed; handler 0x800A10F0
+1. Battle entry A (`battle_entry`)
+2. Battle entry B (`battle_entry`)
+Basis (zh): 两个参数各查 14 字节步进、999 结束的表 D_800C9A18；均命中时 80211DA4(第一项) 并等待 8021227C，再计数 25 帧；PC+4。
+In game (zh, 2026-09-16): 迷你关卡把表 800C9A18 项 15/16（レイン、アレンビー）与项 29/3（ドモン、ゾンビ兵）的四名角色都部署到地图后，3D49 15,16 用 1572 VI、3D49 29,3 用 972 VI 全部完成，出现完整战斗画面：双方 HP／EN 条、驾驶员头像、台词（レイン「いくわよっ!!」→ アレンビー「ぎゃああああっ!!」）与攻击动画。结果写回：项 16 一方的名册槽 0/1 状态由 1 变 2（失败／不可动），其机体实例 +0x58/+0x59 的 HP 由 8000 归零，与画面 0/8000 一致；项 3 一方的驾驶员记录 +0x35 清零。表项第 4 个半字不是画面 HP（画面为 8000/5000，表为 32760/10），含义仍未确认。前一轮 duel-2 崩溃的原因是这两名角色不在名册：80211BD0 取名册槽（基址 8015E10C、侧步进 0x258、槽步进 0x14、字段 +0x0C）的机体实例指针后，按 +0x2C 数量／+0x30 指针、步进 0x24 遍历且不校验指针，读到未初始化指针即 SIGBUS。3D49 需要两名角色在地图上，不需要进入战斗流程。
+
+### 3D4A — Stage victory [关卡胜利结算]
+0 operand word(s); code-confirmed; handler 0x800A01CC
+Basis (zh): 10 帧后关闭窗口，8020D6E4 启动结算状态机，8020DBF4 返回 1 后 engine+4 = 0xC3；8020DB08 归零回合与阶段、累计 8010F5EC 总回合与 8010F5EF 关卡数；随后执行类型 14 事件。
+
+### 3D4B — Set the next scene (500 = restore 8010F5F2) [设定下一场景索引（500 = 恢复 8010F5F2）]
+1 operand word(s); code-confirmed; handler 0x800A0260
+1. Scene (`scene`: Scene)
+Basis (zh): 写 8010F5F0（场景索引）与 8010F5F2；500 时把 8010F5F2 写回 8010F5F0。路线分支据此决定下一话；PC+2。
+
+### 3D4C — Game over [游戏结束]
+0 operand word(s); code-confirmed; handler 0x800A02E0
+Basis (zh): 801DF280：停止 BGM 并进入 game over 处理；败北序列 800A25B0 使用同一函数。
+
+### 3D4D — Switch from the world map to the battlefield [从世界地图切换到战场]
+0 operand word(s); code-confirmed; handler 0x800A031C
+Basis (zh): 8015F700 = -1，8007E8A8(-1)，engine+4 = 3；具体后续由 overlay 处理。
+In game (zh, 2026-09-17): 引擎块探针读到 engine+4 半字在执行前为 0x00C1（世界地图模式，与世界地图驱动「进入时 engine+4 = 0xC1」一致），3D4D 执行后立刻变为 0x0003，即静态描述中的 engine+4 = 3；此值交给 overlay 处理，由世界地图 overlay 切换到战术 overlay。3D4D 本身在同一轮询内完成，但下一条指令要在约 612 VI 之后才开始（mode-3 为 VI 3177 → 3789，与 flow-1 中观察到的 612 VI 相同），这段时间是 overlay 切换、战场地图载入与章节标题显示。本会话每一个迷你关卡都经由它进入战场，均复现此过程；它总紧跟在世界地图段之后、3D65（胜败条件）与 3D45（部署）之前。静态描述另指出它把单位列表 8015F700 置为 -1 并以 8007E8A8(-1) 停止音效；8015F700 不在探针覆盖范围内，这两项未单独测量。
+
+### 3D4E — Close windows and yield one frame [关闭窗口并让出一帧]
+0 operand word(s); code-confirmed; handler 0x800A0468
+Basis (zh): 800A34D8 后 state=1，下一帧完成。
+
+### 3D4F — Destroy unit (character or group) [单位击破（角色或配套组）]
+1 operand word(s); code-confirmed; handler 0x8009FE9C
+1. Character or group (`actor`: Character number (base:actors))
+Basis (zh): 8020DC40 清空列表，8020DC84(第 0 字)（与 8020C7BC 同构，≥500 同样按组）登记单位，等待 8020E604 后 5 帧，PC+2。候选含义为登场。
+In game (zh, 2026-09-17): 以已确认的 3D46（退场）作对照在同一轮里比较。3D4F 145：该机体 HP 由 7800/7800 变为 0/7800，名册槽状态由 1 变 2，引擎 +0x9B0（在场单位数）由 2 减到 1，耗时 82 VI；采样帧中该格的机体消失、选择框仍在原处。3D46 165,0：名册槽被整条删除（10 字节清空），耗时 36 VI。即二者都让单位离开战场，但 3D4F 是「被击破」——单位保留在名册里、标为状态 2 且 HP 归零，与 3D49 脚本战斗中败方的写入完全相同；3D46 是「退场」——直接从名册移除。与结构描述吻合：3D4F 与 3D46 同构（清空列表→登记单位，≥500 时按组），只是换用 8020DC40/8020DC84/8020E604 这一组函数。原脚本用法一致：场景 2 开场先用 3D37 1（被弹火花）打在 ゲリラ 身上，再对其 3D4F，随后台词为「ちっ……だめかな、こいつは」。
+
+### 3D50 — Transform unit (character, from unit, to unit) [机体变形（角色, 原机体, 目标机体）]
+3 operand word(s); code-confirmed; handler 0x800A04AC
+1. Character (`actor`: Character number (base:actors))
+2. From unit (`unit`: Unit number (base:units))
+3. To unit (`unit`: Unit number (base:units))
+Basis (zh): 关闭窗口后 8020E650(角色, 机体, 第 2 字)：查找该角色驾驶该机体的地图槽；等待 8020EB14；PC+6。
+In game (zh, 2026-09-16): 迷你关卡自建出击记录部署 ヒイロ/ウイングガンダム(バード) 与 ケーラ/ウェイブライダー 后注入原脚本实例：名册槽的机体实例指针各前移一条记录（0x54），格坐标不变，机体实例 +2 的编号由 118 → 117、49 → 48，HP 4300／3800 原样保留。两例各 66 VI。
+
+### 3D51 — Fire a MAP weapon (character, unit, MAP weapon, direction, –) [发射 MAP 兵器（角色, 机体, MAP 兵器, 方向, –）]
+5 operand word(s); code-confirmed; handler 0x800A051C
+1. Character (`actor`: Character number (base:actors))
+2. Unit (`unit`: Unit number (base:units))
+3. MAP weapon (`weapon`)
+4. Direction (`raw`: Not yet understood)
+5. – (`raw`: Not yet understood)
+Basis (zh): 8020ECE0(五字)，第 3/4 字同为 0x4000 时改用 3D54 记住的位置；查找角色+机体的地图槽后经 801E085C 驱动移动；等待 8021042C；PC+10。
+In game (zh, 2026-09-17): 原名「单位移动至坐标」有误。原脚本 14 处的第 2 字无一例外都是 MAP 兵器编号：478 バスターライフルMAP、146 集束荷電粒子砲MAP、1063 V-MAXMAP、1208 ガンドール砲MAP、487 ツインバスターライフルMAP，与第 0/1 字的角色、机体正好对应（ヒイロ／ウイングガンダム、アーク／ソルデファー、エイジ／レイズナー、葉月博士／ガンドール、カトル／ウイングゼロ）。调用点吻合：场景 12 中 ゼクス 喊「那武器……快撤退」，随后 3D51 95,117,478,0,0 与两次 3D4F 击破，ヒイロ 大笑；另一处 3D51 25,30,146 之后是一排 3D37 爆炸。mapw-1 部署 ヒイロ／ウイングガンダム 并在其正上方放两台敌机，照原调用执行 3D51 95,117,478,0,0：历时 116 VI，画面中 ウイングガンダム 向上方发射一团明亮的能量球、周围散出光点，射向上方的两台敌机（截图 3D51-mapweapon.png）。即本指令在过场中播放指定单位发射指定 MAP 兵器的演出。第 3 字为方向：本轮取 0 时向上发射；原脚本另有 1 与 3，未逐一测量。第 3/4 字同为 0x4000 时改用 3D54 记住的位置（原脚本 V-MAXMAP 一例如此）。本轮只观察到发射演出，敌机是否因此受伤由原脚本随后的 3D4F 负责。
+
+### 3D52 — Start a delayed-count event (slot, turns, phase) [启动延迟计数事件（槽, 回合数, 阶段）]
+3 operand word(s); code-confirmed; handler 0x800A05D0
+1. Type 1 slot (`event_slot_type1`: Registration index of a type 1 event in this scene)
+2. Turns (`count`: Count)
+3. Phase (`side`: Phase 1 player / 2 enemy / 3 third party (4 = any))
+Basis (zh): 0x97E[槽] 为 0xFF 时写入回合数，类型 1 组 +0x44[槽] = 阶段、+0x64[槽] = 0xFD；类型 1 触发器每换回合递减，归零且阶段匹配时执行；PC+6。
+
+### 3D53 — Stop a delayed-count event (slot) [停用延迟计数事件（槽）]
+1 operand word(s); code-confirmed; handler 0x800A0638
+1. Type 1 slot (`event_slot_type1`: Registration index of a type 1 event in this scene)
+Basis (zh): 0x97E[槽] = 0xFF，类型 1 组 +0x64[槽] = 0x2000；PC+2。
+
+### 3D54 — Remember the character's position [记住角色所在位置]
+1 operand word(s); code-confirmed; handler 0x800A0678
+1. Character (`actor`: Character number (base:actors))
+Basis (zh): 800A2C18 找到角色所驾单位的地图槽后把 +4/+5 写入 ctx+8/+9；否则用 800A3854 的备用坐标；3D34/3D35/3D37/3D51 的 0x40 系列参数引用该位置；PC+2。
+In game (zh, 2026-09-16): 同一轮询内完成，为随后 3D35 的 0x40xx 参数提供参照位置。
+
+### 3D55 — Use a spirit / cut the camera to a character (character, spirit or 30) [发动精神指令／镜头切至角色（角色, 精神编号或 30）]
+2 operand word(s); code-confirmed; handler 0x800A0714
+1. Character (`actor`: Character number (base:actors))
+2. Spirit (`spirit`)
+Basis (zh): 关闭窗口后 80210490(角色, 第 1 字) 遍历地图槽驾驶员；等待 802106CC；PC+4。
+In game (zh, 2026-09-16): 第二参数是精神指令编号。原脚本 169 处实例只用 11 个值——2、4、5、6、7、9、11、12、13、17、30，除 30 外全部对应真实精神：加速／集中／ひらめき／根性／必中／鉄壁／熱血／気合／ド根性／魂，且最常见的 4（集中，46 次）、30（40 次）、11（熱血，30 次）正是常用精神。处理函数 80210490 用该值作字节表 80217D20 的下标取出效果号存入 8022731C，再交 801D6A68 播放；该表恰好 31 项（0–30）后即为无效数据，与精神列表 0–29 加哨兵 30 吻合，表值只有 15（对自己）与 1（对他人：偵察／信頼／みがわり／脱力／補給／挑発／激励／再動／祈り），是目标类型。运行画面：3D55 31,9（鉄壁）使カーツ的单位显示为一个发光菱形特效，3D55 4,30 用 424 VI 把镜头移到该单位并选中。 第二参数 30 不是精神：精神只到 29（30 项 0–29），30 读的是字节表的第 31 项，处理函数对该参数没有边界检查。原脚本 40 处 30 的上下文与真实精神截然不同——真实精神成串连发（如 3D55[209,4] → [209,12] → [209,11]，集中／気合／熱血），而 30 总是夹在对白 3D3E/3D40 之间、每个角色一次轮流出现（忍 → 雅人 → 沙羅 → 亮 各一次），是配合台词的镜头／立绘切换而非精神发动。
+
+### 3D56 — Highlight a green target area (encoded corner A, encoded corner B, –) [高亮绿色目标区域（编码坐标 A, 编码坐标 B, –）]
+3 operand word(s); code-confirmed; handler 0x800A0780
+1. Corner A (`raw`: Not yet understood)
+2. Corner B (`raw`: Not yet understood)
+3. Reserved (`raw`: Not yet understood)
+Basis (zh): 打开窗口 0x23 并以 800A3AD8 绘制矩形；第 0/1 字按十进制拆为 (值/10, 值%10) 乘 16 转屏幕坐标；61 帧后关闭；第 2 字未被常驻代码读取；PC+6。
+In game (zh, 2026-09-17): 按原脚本序列复现（先用 3D35 把镜头卷到位，再执行 3D56）。画面上出现一个闪烁的**绿色矩形**：亮相位为鲜绿方块，暗相位只剩淡绿色调（build/recomp/mini-stage/area-1/3D56-blink.png）。逐帧采样显示周期性帧差——3D56 145,175 期间每约 33 VI 一次 4.6（VI 4593/4627/4659），3D56 186,212 期间每约 32 VI 一次 2.2（4906/4938/4970）；在同一闪烁周期内比较两个相位，变化严格局限在一块矩形里：前者为 5×5 格的方块，后者为 6×2 格的横条，形状随参数而变。这就是胜利条件文本里的「グリーンエリア」（如 5572「グリーンエリアへの3機以上の侵入」、5590「味方全機のグリーンエリアへの進入」）。原脚本上下文吻合：场景 15 中 ブライト 先说「目标地点就是这片区域」，3D56 之后又说「用 3 台以上占领这片区域」；场景 14 中 3D56 之后紧接 3D57 3,1／3D57 4,1（启用区域到达事件）与 3D65 24,16（设定胜利条件）。首轮 layout-1 未画出，是因为矩形位置依赖镜头，而该轮没有按原脚本先把镜头卷到对应处。第 0/1 字的十进制拆分（值/10, 值%10）与所见矩形尺寸之间的精确换算未逐项核对；第 2 字未被常驻代码读取，原脚本恒为 60。
+
+### 3D57 — Enable an area-arrival event slot (slot, value) [启用区域到达事件槽（槽, 值）]
+2 operand word(s); code-confirmed; handler 0x800A0BD0
+1. Type 8 slot (`event_slot_type8`: Registration index of a type 8 event in this scene)
+2. Value (`bool`: Switch)
+Basis (zh): 0x99A 位[槽] 先异或 1 再或上 (值<<槽)；类型 8 触发器只轮询已置位的槽；PC+4。
+
+### 3D58 — Change a unit's side (character, new side) [单位转换阵营（角色, 目标阵营）]
+2 operand word(s); code-confirmed; handler 0x800A0C14
+1. Character (`actor`: Character number (base:actors))
+2. New side (`raw`: Not yet understood)
+Basis (zh): 802106E0 后 80210758(角色, 第 1 字) 写入 802279EC/F0 并遍历地图槽；等待 80211634；PC+4。
+In game (zh, 2026-09-16): 3D58 31,1：カーツ 的名册槽 0/9 清空，同一格坐标 (8,14) 出现在 1/1，侧计数由 0 侧 11／1 侧 1 变为 10／2，驾驶员与机体实例记录清零后重建。3D58 59,0：ロザミア 已在名册槽 0/10（0 侧），写入当前所在侧时全区域无变化，即幂等。两次均 0 VI。
+
+### 3D59 — Bar from sorties (character; ≥500 means 500 + unit number) [不许出击（角色；≥500 为 500 + 机体编号）]
+1 operand word(s); code-confirmed; handler 0x800A0C80
+1. Character or 500 + unit (`raw`: Not yet understood)
+Basis (zh): 在至多 29 项、以 -1 结束的列表 8015F700 末尾追加参数并补 -1；该列表是 3D3D 出击候选的排除名单（801EB8F8 跳过名单里的角色），3D3D（台数非 0）与 3D4D 清空它；PC+2。
+In game (zh, 2026-09-17): 两份关卡只差 3D59 的参数，其后都用 3D3D 8,8,0,1,2 打开只选 1 台的出击选择界面，登记的候选是 ドモン 与 ヒイロ。3D59 95：名单为 [95]，界面里只有 ドモン，登场的是 ドモン；3D59 4：名单为 [4]，界面里只有 ヒイロ 的 ウイングゼロ，登场的是 ヒイロ。被列入的角色从候选中消失，所以它是「不许出击」，不是「必须出击」。原脚本吻合：场景 19 在葉月博士说「獣戦機は調整が終了していない」之后执行 3D59 168／170／169（沙羅、雅人、亮）再 3D3D …,100,…；场景 18 在アムロ说「カミーユが戻らない」之后先排除 38（カミーユ）再排除同样三人；场景 8 用 3D59 46 把 ブライト 的母舰排除在出击之外。
+
+早先记录：在至多 29 项、以 -1 结尾的列表 8015F700 末尾追加角色号并补 -1。scene8-2 补上 8015F700 探针后原样复现场景 8：3D4D 之后列表为空；3D59 46 执行后列表为 [46]（ブライト）；紧接的 3D3D 14,24,0,200,1 执行后列表又变为空——3D3D 读取并清空了该列表（其第 3 字 200 非零，与「第 3 字非零时清空 8015F700」一致）。3D3D 期间及之后我方地图槽始终为 0，即它本身不把单位放上地图；场景 8 出击组 1 的坐标为 万丈 (13,25)、ブラッド (12,24)、カーツ (14,24)、甲児 (13,23)、さやか (15,23)、ルー (11,23)，正在 3D3D 所给的 (14,24) 一带。据此推测二者是出击准备：3D59 把必须出击的角色（如母舰舰长 ブライト）列入名单，3D3D 以某组的出击点为基准处理该名单，实际落位要等玩家完成出击选择；有界运行不会进入出击选择，本轮未能看到该界面，故保持 structure-confirmed。
+
+### 3D5A — Team roster change (character, parameter, unit, mode / old unit) [部队编成（角色, 参数, 机体, 模式／旧机体）]
+4 operand word(s); code-confirmed; handler 0x800A0B3C
+1. Character (`actor`: Character number (base:actors))
+2. Parameter (`raw`: Not yet understood)
+3. Unit (`unit`: Unit number (base:units))
+4. Mode / old unit (`raw`: Not yet understood)
+Basis (zh): 第 3 字 ≥ 2000：800A3540——4000/3000 时 800AA464(角色, 机体)、4000/2000 时 800AA62C(角色)，角色 999 跳过；否则 800A3A1C 把主角机体编号 115–132 映射后调用 800AAD28(角色, 机体, 第 2 字, 第 3 字)；PC+8。
+In game (zh, 2026-09-17): 管理我方编成（驾驶员实例与机体实例这两张持久名单），第 3 字决定操作，五种取值都已核对。① 500（254 次）：登记驾驶员＋机体。targets-1 中 3D5A 183,0,999,500 新建了 チャム 的驾驶员记录（机体 999 表示不配机体）。② 小于 2000（66 次）：该值是旧机体编号，把驾驶员从旧机体换到新机体。swap-1 中 3D5A 124,0,174,171 使 リョウ 由 171 ゲッター1 换乘 174 ゲッタードラゴン；原脚本如 ブライト 由 64 ミデア 换到 アウドムラ、甲児 由 262 换到 マジンガーZ(JS)。500 也走这一支，是「无旧机体、直接登记」的特例。③ 2000（11 次）：移除驾驶员。roster-1 中 3D5A 4,0,999,2000 执行后驾驶员表里 ドモン 消失，机体表不变。④ 4000（74 次）：驾驶员与机体一并移除。3D5A 95,0,117,4000 执行后 ヒイロ 与 ウイングガンダム 都消失，连同其变形态 ウイングガンダム(バード) 一起被删。⑤ 3000（5 次）：代码上是移除机体，但分派函数 800A3540 在角色为 999 时跳过 800AA464 与 800AA62C 两个移除调用，而原脚本的 5 处 3000 全部以角色 999 调用——因此这些调用在原版中不产生任何效果。roster-1 中 3D5A 999,0,216,3000 执行前后两张名单完全不变，与此一致；这 5 处很可能是原开发遗留的无效调用。分派：第 3 字 ≥ 2000 时进入 800A3540（4000 与 3000 调 800AA464(角色, 机体)，4000 与 2000 调 800AA62C(角色)，均在角色 999 时跳过）；否则经 800A3A1C 映射主角机体编号 115–132 后调用 800AAD28。④ 的补充（2026-09-18，build/recomp/mini-stage/wufei-dummy-original-3）：对**仍在地图上**的单位直接用 4000，名册槽会留下指向已清空记录的指针，回到玩家操作后遍历名册即 SIGBUS（801FD020→801EB344）；先用 3D46 角色,1 让其退场再 4000 则正常。
+
+### 3D5B — Add funds: parameter × 1000 [资金增加 参数×1000]
+1 operand word(s); code-confirmed; handler 0x800A0D24
+1. Thousands (`value`: Number)
+Basis (zh): 800A0D24 将一字参数乘 1000 加到 8010F5F4；该字段由 80091904 存档、8008152C 新游戏清零；PC+2。
+In game (zh, 2026-09-16): 资金 0 → 8000，等于实际执行的三次（5+1+2）×1000；被跳过的条件块与他人路线段内的 3D5B 未执行。
+
+### 3D5C — Combine / separate (character, 1 = combine, 0 = separate) [合体／分离（角色, 1 = 合体 0 = 分离）]
+2 operand word(s); code-confirmed; handler 0x800A0D68
+1. Character (`actor`: Character number (base:actors))
+2. Mode (`raw`: Not yet understood)
+Basis (zh): 10 帧后关闭窗口；第 1 字 = 1 → 802116FC(角色) 并等待 80211840，否则 80211854(角色) 并等待 8021199C；PC+4。
+In game (zh, 2026-09-16): 3D5C 145,1（豹馬，已是合体状态）0 VI 且名册无变化；3D5C 145,0 后我方名册由 10 槽增至 14 槽，原槽 0/6 的机体实例指针改变，四个新槽出现在相邻格 (9,12)/(8,13)/(7,12)/(8,11)，即コン・バトラーV 分离为五机。48 VI。
+
+### 3D5D — Set a combining robot's form (1 = combined, 0 = separated; family 0 = Dancouga, 1 = Combattler V) [设定合体机器人的形态（1 = 合体 0 = 分离, 家族 0 = ダンクーガ 1 = コン・バトラーV）]
+2 operand word(s); code-confirmed; handler 0x800A1010
+1. Form (`raw`: Not yet understood)
+2. Family (`raw`: Not yet understood)
+Basis (zh): 800AB5C0(第 0 字, 第 1 字) 遍历运行时机体，针对机体 223/224 或 219/225/230/233 设置或清除 +0xC 的 0x80 位；PC+4。
+In game (zh, 2026-09-17): 800AB5C0 遍历 140 项机体实例，只改 +0x0C 的位 7（同一字节的位 6 是 3D6B 的分队标记），且合体形态与分离形态互斥。第 1 字选家族：为 0 时作用于 ダンクーガ（223/224）与其四台兽机 イーグルファイター 219／ビッグモス 225／ランドクーガー 230／ランドライガー 233；不为 0 时作用于 コン・バトラーV（196）与其五台组件 197–201（バトルクラッシャー／バトルクラフト／バトルジェット／バトルタンク／バトルマリン）。第 0 字选形态：为 1 时合体机置位、组件清除，为 0 时反之。beast-1 部署 ダンクーガ 224 与四台兽机（开始时五者位 7 均为 1），逐个参数读取：(1,0) 后 ダンクーガ=1、四兽机=0；(0,0) 后 ダンクーガ=0、四兽机=1；(0,1) 与 (1,1) 作用于 コン・バトラーV 家族，本关没有该家族的机体，因此五者保持 (0,0) 的结果不变——与代码完全一致。原脚本 15 处，参数 (1,0) 8 次、(0,0) 4 次、(0,1) 2 次、(1,1) 1 次，多在关卡结束、3D4B 切到下一场景之前，即在章节之间决定这两台合体机器人以哪种形态出现。静态描述原名只提到 ダンクーガ，实际也覆盖 コン・バトラーV。
+
+### 3D5E — Open the team name entry screen [打开部队名输入界面]
+0 operand word(s); code-confirmed; handler 0x800A1050
+Basis (zh): 不读取参数，调用后立即完成。
+In game (zh, 2026-09-16): 采样帧直接给出答案：执行后画面为「部隊名を入力してください」的命名界面，部隊名 栏预填 アーチウィンド，下方是假名／字母输入盘与「決定」。事件在此挂起等待玩家完成输入，有界运行无输入故永不继续（worldmap-1 与 prep-1 两轮一致，脚本轮询都停在 3D5E 之后）。原脚本 3 处调用上下文完全吻合：マナミ 说「マーチウィンド? うーん、もう少し別の名称がいいわね」，アムロ 问「なら、君はどんな呼び名がいいんだい?」，随即 3D5E，之后才是 3D32 世界地图定位与路线标记。处理函数 801C517C 设 801C58C4=2 并调用 80080188(6)、80099814(5,1,2)，与打开输入界面一致。
+
+### 3D5F — All pilots' morale −30 (minimum 50) [全体驾驶员气力 −30（下限 50）]
+1 operand word(s); code-confirmed; handler 0x800A1078
+1. Parameter (`raw`: Not yet understood)
+Basis (zh): 802119B0 遍历地图槽的驾驶员记录，+0x20 减 30，低于 50 时设为 50（气力：运行注入中三名驾驶员由初始 100 变为 70）；参数未被读取；PC+2。
+In game (zh, 2026-09-16): 三名在场驾驶员实例 +0x20 均由 100 变为 70。
+
+### 3D60 — Line up the allied units (start x, start y, per row) [我方部队排成阵型（起点 x, 起点 y, 每行数）]
+3 operand word(s); code-confirmed; handler 0x800A10AC
+1. x (`x`: Square x)
+2. y (`y`: Square y)
+3. Per row (`count`: Count)
+Basis (zh): 800A35EC 遍历 D_8015E100 的 30 个地图槽，对 HP 非零且非主角机的单位依次写入格坐标与屏幕坐标，每行放满后换行；PC+6。
+In game (zh, 2026-09-17): 把四个分散的我方单位部署在 (3,20)/(18,25)/(23,3)/(9,14)，执行 3D60 5,5,2 后逐条快照读到它们被收拢到 (5,5)/(7,5)/(6,6)/(5,7)：从起点开始、隔格交错排布而互不重叠；敌方侧（名册 1/0，位于 (22,5)）保持不动，与静态描述「遍历 D_8015E100 的 30 个我方地图槽」一致。0 VI 完成。静态描述另指出 HP 为零的单位与主角机会被跳过，本轮未部署这两类，未单独验证。原脚本 9 处，多在剧情换场后把我方重新集结到一处。
+
+### 3D61 — Suspend the "all allies destroyed means defeat" check (switch) [暂停「我方全灭即败北」判定（开关）]
+1 operand word(s); code-confirmed; handler 0x800A1328
+1. Suspend (`bool`: Switch)
+Basis (zh): engine+0x996 清除位 15，参数非零时置位；load_000AB160_func_801FF934(0) 在我方单位数 0x80172EDC 为 0 且位 15 未置位时判定全灭，由 801DF280 停止 BGM 并置战术状态 0x54 进入败北流程；800A4288（类型 8 区域触发）让我方单位离场时也置该位；PC+2。
+In game (zh, 2026-09-17): 读取方由重编译 C 代码找到：load_000AB160_func_801FF934 在参数为 0 时，若我方单位数（0x80172EDC）不为 0 返回 0，否则返回 (0x801602E6 & 0x8000) == 0，即 engine+0x996 位 15 未置位才算「全灭」；调用方 801D5898／801D90C4 据此进入 801DF280（停止 BGM，0x80172EB0 = 0x54 败北流程）。参数非 0 时走逐台「必须保护的机体被击破」判定（801DF5BC，状态 0x55），与本位无关。
+
+对照实验：两份迷你关只差 3D61 的参数。我方仅部署アレンビー一台、敌方レイン一台，开场依次 3D4D、3D65 17,38（败北条件「味方の全滅」）、3D61 x、3D49 15,16（脚本战斗，アレンビー被击破）、3D47、3D48。
+• 3D61 0：3D49 后我方单位数 1→0，战术状态变为 0x54，画面依次为白闪、星流、「GAME OVER」，VI 6915 引擎重新登记场景 0（离开关卡）；开场 11 条只执行 9 条，3D47／3D48 被败北流程打断。
+• 3D61 1：我方单位数同样变为 0，但战术状态保持 0x05，开场 11 条全部执行完，随后正常进入我方回合（出现「フェイズ終了」菜单，ターン数 2），没有 GAME OVER。
+
+原脚本 7 处用法吻合：场景 32 用 3D61 1/0 包住两次敌方之间的脚本战斗；场景 78 在我方尚未出击的开场里置位、开场末清除；场景 11（我方开局无单位）开场置位，シロー被击破事件与阵营残存数事件在 3D4C（游戏结束）前清除。
+
+### 3D62 — Replace a character's identity (character → character) [更换角色身份（角色 → 角色）]
+2 operand word(s); code-confirmed; handler 0x800A1224
+1. Old character (`actor`: Character number (base:actors))
+2. New character (`actor`: Character number (base:actors))
+Basis (zh): 800ABD98：名册 D_80172F40 中 +2 等于第 0 字的条目改写为第 1 字；PC+4。
+
+### 3D63 — Land / take off (character) [着地／飞行切换（角色）]
+1 operand word(s); code-confirmed; handler 0x800A1264
+1. Character (`actor`: Character number (base:actors))
+Basis (zh): 80212290(角色)：找到该角色所在的我方地图槽，读其 3D 模型高度（800FFA74 表 +8）；高度为 5.0（悬空）时按脚下地形（801E213C → 801E1F58）选模式 5 或 9，否则选 7 或 0xA，调用 801F1C48(模型, 模式, 1) 播放降落／起飞动画，完成后名册 +1 在 1（地面）与 2（空中）之间切换；等待 80212450；PC+2。801F1C48 的这几种模式也被战术指令处理函数 801D105C／801D1110／801D11C4／801D1268 使用。
+In game (zh, 2026-09-17): hyoma-3d63：只部署 豹馬（场景 80 自己的记录，バトルジェット），每次「フェイズ終了」后下一回合开始执行一步。名册该槽 +1 部署后为 2；第 2 回合 3D63 145：2 →（过渡 5）→ 1，24 VI；第 3 回合再执行：1 →（过渡 7）→ 2；第 4 回合按原脚本序列：2 → 5 → 1。放大实拍帧：执行前 バトルジェット 悬空、下方有影子，执行后贴在地面、影子消失；第二次执行后又升回空中。3D63 之后在 豹馬 上按 A 仍弹出「移動／精神／能力」，驾驶员 +0x35 不变——它不影响行动；随后的 3D69 145,0 才把 +0x35 清零、名册 +0x0B 置 0x80，此时按 A 只能看能力。
+所以场景 80 的原序列是：3D37 0（在他身上爆炸）→ 3D63（被击落到地面）→ 3D69 145,0（行动不能）→「うぅ……しまった……体が……」，并在第 1–4 回合开始时反复执行 3D69 145,0 维持行动不能。
+
+早先记录：用整关原样复制在真实上下文里跑通：场景 80「女帝ジャネラの人間狩り」的 20 个事件全部原样载入（地图 57、该场景自己的 39 条出击记录），开场执行到 140/146 条，3D63 145 于 VI 11895–11917 执行，前有 3D37 0,16384、后接 3D69 145,0，与原脚本完全一致。逐像素测量（豹馬 的精灵区 12×12）：前一条 3D37 使该区亮度由 84.12 飙到 204.83（爆炸／能量闪光）后回落到 88.91；3D63 期间由 86.69 降到 75.43 再缓升至 81.49，采样帧可见该机体精灵形态改变而两侧敌机不变。此前 act-1 的孤立执行为 92.58 → 97.12，与真实上下文下的走向不同，说明表现依赖前置状态。全作仅此 1 处实例，仍不足以定名，保持 unknown。
+
+补上引擎块探针后重测（scene80-2，2026-09-17，存档进入加提前退出，于 VI 11892 到达）。以全程 217 个转换中出现率超过 20% 的字节为簿记予以排除后，3D63 跨度内唯一的专属写入仍是名册该槽 +0x001：开始时 0x02 → 0x05，结束时 0x05 → 0x01；引擎块无任何专属变化。该字节全程只变 3 次，其中 2 次属本指令。由此排除了隐藏的引擎侧效果：3D63 的机制就是按序改写这个名册字节（执行中 2 → 5 → 1），配合可见的精灵变化与音效，是一段单位姿态／动画。紧接的 3D69 145,0 在同一轮里再次得到与 act-1 一致的写入（名册 +0x00B 置位 7，驾驶员记录 4 的 +0x35 清零），可作交叉验证。全作仅 1 处实例，姿态的游戏名称只能从上下文（豹馬 被制住、台词称身体动不了）推断，仍保持 unknown。
+
+### 3D64 — Move out a co-pilot (character; 500,500 = Aisha moves to Manami's mothership) [移出同乘驾驶员（角色；500,500 = アイシャ 转入 マナミ 的母舰）]
+2 operand word(s); code-confirmed; handler 0x800A12CC
+1. Character (`actor`: Character number (base:actors))
+2. Mode (`raw`: Not yet understood)
+Basis (zh): 第 1 字 = 500 → 800AB96C（针对角色 28/32 的特例），否则 80212668(角色)：从地图槽移除该驾驶员并前移其余指针；PC+4。
+In game (zh, 2026-09-17): 原脚本 3 处全部是 3D64 500,500，且都紧跟 3D5A 32,0,37,500（登记 アイシャ 与 エルブルス）和 3D5A 28,0,307,36（マナミ 由 36 スイームルグ 换乘 307 スイームルグS）。按此原序列复现并读驾驶员与机体表：3D64 执行前 スイームルグS 同乘 2 人为 マナミ、ローレンス，エルブルス 由 アイシャ 驾驶；执行后 スイームルグS 的 2 人变为 マナミ、アイシャ，ローレンス 被顶替，エルブルス 不再有驾驶员。即 500,500 分支（800AB96C）是剧情专用的硬编码：在 140 项机体表中找 マナミ（0x1C）的机体、在驾驶员表中找 アイシャ（0x20），把她挂为该机体的第二驾驶员（与 3D70 相同的 +0x34/+0x37 写法）。一般分支（第 1 字不为 500）调用 80212668(角色)，从地图槽里移除该驾驶员并前移其余指针，原脚本没有使用。三处都在结束事件里（如场景 57「キリマンジャロの嵐」），属剧情中 アイシャ 加入 マナミ 母舰的节点。
+
+### 3D65 — Set victory / defeat conditions (victory, defeat) [设定胜利／败北条件（胜利条件, 败北条件）]
+2 operand word(s); code-confirmed; handler 0x800A1360
+1. Victory condition (`victory_condition`)
+2. Defeat condition (`defeat_condition`)
+Basis (zh): engine+0x996 = (原值 & 0x8080) | (第 0 字 & 0x7F)<<8 | (第 1 字 & 0x7F)；800A3524 读取 & 0x7F7F；PC+4。
+In game (zh, 2026-09-17): 读写链完整。写入：engine+0x996 = (原值 & 0x8080) | (第0字 & 0x7F)<<8 | (第1字 & 0x7F)。读取：load_000AB160_func_801C688C 经 800A3524 取 engine+0x996 & 0x7F7F，拆出高字段 (v>>8)&0x7F 与低字段 v&0x7F，分别以文本编号 0x15BF+高字段、0x15D9+低字段调用 8008CD8C（按编号绘制文本，章节标题也用它）画在 (160,96) 与 (160,168)。这两段文本就是本作的胜利条件与败北条件：高字段 17→「敵の全滅」、25→「指定ターン以内のジェネレータの破壊」、12→「マーグを除く敵の全滅」、23→「味方全機のグリーンエリアへの進入」；低字段 31→「主人公機の撃破」、38→「味方の全滅」、22→「自軍戦闘の撃破」、3/4/2→アウドムラ／アルビオン／アーガマ の撃破。原脚本分布吻合：168 处中第0字 128 次为 17（最常见的胜利条件「敌全灭」），第1字在 0–46 间随关卡变化（败北条件常点名须保护的角色或战舰）；且总紧跟 3D4D（进入战场）。场景 1 的 3D65 17,31 即「敌全灭／主角机被击坠」，与该关实际的败北事件（マナミ 被击破→3D4C）一致。运行时：mode-3 逐条快照显示执行前两字段均为 127（未设置），执行后 engine+0x996=0x11、+0x997=0x1F，即 17 与 31。由此确定 engine+0x996 半字布局：位 15 为 3D61 的开关、位 8–14 为胜利条件、位 7 为 3D66 的开关、位 0–6 为败北条件。
+
+### 3D66 — Don't move the camera to the speaker during dialogue (switch) [对白时不自动把镜头移到说话者（开关）]
+1 operand word(s); code-confirmed; handler 0x800A13A4
+1. Don't follow the speaker (`bool`: Switch)
+Basis (zh): 800A3A04(&engine+0x996, (参数<<7)&0x80)；唯一读取方 800A3530 返回 engine+0x996 & 0x80，由对白前置步骤 8009F4B4（3D3E/3D40 经 8009F654/8009F670 进入）作为 800A2C18(说话者, 模式) 的模式传入：模式 0x80 时查找恒返回 0，且跳过后备位置表 800A3854，于是不设镜头目标、不调用 80209DAC；3D4C 的结束流程 800A25B0 与每帧轮询 8009E180 也临时置该位；PC+2。
+In game (zh, 2026-09-17): 读取方由重编译 C 代码找到。脚本虚拟机上下文 +0xC 存着 &engine+0x994，直接搜 0x996 偏移找不到的读取就藏在这里：800A3530 = (ctx->[+0xC])[+2] & 0x80，唯一调用者是 8009F4B4——3D3E（8009F654，左窗）与 3D40（8009F670，右窗）的对白前置步骤。它在战术地图上先由文本编号取说话者（8008CE54，0x19/0x1D 为主角占位），再调用 800A2C18(说话者, 位 7)；找到地图槽就把该格记到 ctx+0x28/+0x2A，随后每帧调用 80209DAC 把镜头移过去，到位后才出对白。800A2C18 以 0x80 为模式时，敌方与状态 2 的我方槽直接返回 0，其余继续找、找不到时也因模式非 0 而不走母舰内查找 800A2F00，8009F4B4 同样因模式非 0 跳过后备位置表 800A3854——镜头目标始终为空。
+
+对照实验（focus-0／focus-1，只差 3D66 的参数）：地图 20，アレンビー（248，我方）在 (4,4)，レイン（7，敌方）在右下角（引擎放到 (23,22)）；开场先用 3D35 把镜头停在两人之间的 (15,13)，再执行 3D66 x、3D3E 20246（アレンビー）、3D40 19682（レイン）。
+• 3D66 0：アレンビー 说话前镜头跳到左上角、画面里是她的蓝色单位；レイン 说话前又跳到右下角她的红色单位旁。逐帧位移检测在两句对白开头各测到一次整幅跳变（VI 4907、5094）。
+• 3D66 1：engine+0x996 = 0x11A6（位 7 置位），两句对白期间画面始终停在 (15,13)，两个单位都不在画面内，逐帧位移检测为 0。
+
+原脚本 284 个 0 与 279 个 1 严格成对，总包住「3D35 镜头卷动 + 对白」：脚本先把镜头摆到要展示的地方，再让不在画面里的角色说话而不被拉走。之前的孤立实验看不到画面变化，是因为那段没有对白。
+
+早先记录：孤立验证：关卡里只切换该开关、两侧各静止 150 帧，中间不放任何别的指令。加入引擎块探针后测得 3D66 1 使 engine+0x997（+0x996 半字的低字节）由 0x1F 变 0x9F（置位 7），3D66 0 使其由 0x9F 变回 0x1F（清位 7），完全对称，与静态描述一致。同一时刻另有 6 个字节变化（+0x967/+0x96F/+0x976/+0x977/+0x97A/+0x97B），但两次转换里它们的变化完全相同，是脚本引擎每条命令都会动的轮询簿记，不属于本指令。画面侧无可归因效果：以区域差分图比对「关→开」与对照组「关→再关」，两者差异同为 2.8/3.1（同一条对角带，属待机动画噪声），即开关本身不改变画面。原脚本 284 个 0 与 279 个 1 严格成对，总包住一段镜头卷动加对白。该位的消费者（基础指出 8009E180 与败北流程也操作它）尚未确认，故保持 structure-confirmed。
+
+### 3D67 — Power-up / combination scene (scene number) [机体强化／合体演出（演出编号）]
+1 operand word(s); code-confirmed; handler 0x800A13F0
+1. Scene number (`raw`: Not yet understood)
+Basis (zh): 802176A8(低字节)：编号 <11 经跳转表 8021F058 选曲后 8007E810，并设置状态；等待 8021779C；PC+2。
+In game (zh, 2026-09-16): 开音频的有界运行（SRW64_AUDIO_CAPTURE_FROM/_TO 4400–9000 窗口）。四个原脚本值各在静音（3D3A 0）之间单独执行：全部发出明显声音，RMS 2301–3092、峰值 1.5–1.8 万，而相邻静音段 RMS 仅 84–139，且比对照 BGM（3D3A 49，RMS 1358）更响。画面为登场 cut-in：屏幕中央出现一台机体穿过同一条光速隧道背景，0 为蓝红车型、1 为灰红、3 为绿、4 为橙红，各不相同。1/3/4 的频谱与包络高度相似（余弦 0.96–0.99、包络相关 0.93–0.99，同一隧道背景），但采样级相关仅 +0.007 且找不到对齐位移，是不同机体的不同音频；时长分别 10.87／13.93／14.93 秒。0 的频谱明显不同（对其余三者余弦 0.42–0.46）且无 0.75 秒前奏，时长 16.03 秒。原脚本两种固定写法与此一致：3D4E → 3D67 n → 3D38 → 3D45 <组>（增援登场前）和 3D54 145 → 3D35 → 3D67 0 → 3D5C 145,1（合体前）。 用户辨认了音轨：0 是超电磁合体 cut-in 所配的主题曲，1／3／4 是圣战士主题曲——这解释了为何 1/3/4 频谱与包络高度相似而采样级相关仅 +0.007（同一主题曲的不同段落／混音），0 则是另一首（对其余三者余弦仅 0.42–0.46）。也与脚本用法吻合：0 只出现在 3D5C 145,1（コン・バトラーV 合体）之前。整体表现为机体强化／换装登场，而非单纯的增援登场。
+
+### 3D68 — Bring the camera back to the selected unit [镜头拉回所选单位]
+0 operand word(s); code-confirmed; handler 0x800A1458
+Basis (zh): 80212780 调用 80099814(5,1,-1)；等待 80212898 返回 1。
+In game (zh, 2026-09-16): 战术地图上 87 VI 完成，探针区域无状态变化；audio-2 的采集窗口内测得完全无声（RMS 3.0 = 数字静音底噪，同一采集的对照 BGM 为 1328）。逐帧对照：执行前画面偏移、带黑边、光标停在远处敌方单位；执行后画面居中到所选我方单位、白色选择框出现、黑边消失——即把镜头拉回当前所选单位并复位选择界面。更正：此前记载的「世界地图下永不完成」不成立。prep-1 显示 worldmap-1 的开场事件其实停在更早的 3D5E（部队名输入界面挂起等待输入），3D68 根本没有执行到，因此那一轮没有关于它在世界地图下行为的证据。
+
+### 3D69 — Set a unit's action state (character, 1 = can act, 0 = cannot act) [设定单位行动状态（角色, 1 = 可行动 0 = 行动不能）]
+2 operand word(s); code-confirmed; handler 0x800A14A4
+1. Character (`actor`: Character number (base:actors))
+2. Action state (`raw`: Not yet understood)
+Basis (zh): 802128E4(角色, 第 1 字低字节) 遍历名册；PC+4。
+In game (zh, 2026-09-16): 按原调用点复现并逐像素测量。镜头锁在 豹馬 身上，精灵所在的中心 12×12 区域亮度：执行 3D69 145,0 前 97.12，之后 91.23，执行 3D69 145,1 后精确回到 97.12；每个状态连续 12 帧的 min 与 max 完全相等（无待机动画噪声），是确定性的两态开关，而全帧亮度几乎不变（64.90/64.81），说明变化只限于该单位的精灵——即本作中「已行动」单位的变暗表现。同时置名册该槽 +0x0B 的位 7 并清驾驶员 +0x35，作用于该单位全部同乘驾驶员（コン・バトラーV 五人一次清五条，单人机只一条）。原脚本用法一致：值 0 出现在 豹馬 被制住的场面（事件 001CCFF0，紧接台词「うぅ……しまった……体が……」与敌方「とどめを、さしておやり!!」）以及用 3D3C 把 NPC ゲリラ 移到位后定住；值 1 出现在 ヒイロ 即将发动精神（随后 3D55 95,11 熱血）和 大作 退场之后。0 VI，无声。
+
+### 3D6A — Godmars combination (mode) [ゴッドマーズ 合体处理（模式）]
+1 operand word(s); code-confirmed; handler 0x800A14E4
+1. Mode (`raw`: Not yet understood)
+Basis (zh): 3 → 800AB808（机体 187/185 处理）、4 → 800AB6F4（机体 186 与角色 138 处理）立即完成；其他值关闭窗口后 80212CC0(低字节) 并等待 80213498；PC+2。
+In game (zh, 2026-09-17): 四个原脚本值全部理清，作用对象都是 ゴッドマーズ 家族（185 ガイヤー／187 ゴッドマーズ／186 コスモクラッシャー，角色 138 タケル）。模式 3（800AB808）：合体的状态切换。godmars-1 中执行后 ガイヤー 的机体实例被删除（编号 185 → FFFF），タケル 的机体指针改指向 ゴッドマーズ，机体表由 ガイヤー／ゴッドマーズ 变为只剩 ゴッドマーズ。模式 4（800AB6F4）：清除 タケル 与机体的链接（驾驶员 +0x37 与 +0x38 指针归零），原脚本用在刚进战场、タケル 登上 コスモクラッシャー 之时。模式 0／1（各 9 次，总是成对出现）：合体动画，经 80212CC0 播放并等待 80213498，但受 80212BF8 守卫：该函数遍历我方 30 个地图槽，找状态为 1 且机体编号 0xB9（185 ガイヤー）的单位，仅当其 HP（+0x04）小于 11 时返回 1 才播放。即 ゴッドマーズ 只在 ガイヤー 濒临被击毁时觉醒合体。原脚本的调用点正是「HP 低于百分比触发」事件（场景 41／42），随后镜头切到 タケル、敌方 バレン 惊呼「这是什么，数据里根本没有」。godmars-1 中 ガイヤー HP 为满值 3000，守卫不通过，两条都在 0 VI 完成且画面无变化，与代码一致；本轮未能把 HP 压到 11 以下以实际观看动画。模式 3 与 4 都在 0 VI 立即完成。
+
+### 3D6B — Selection mark (character, unit, 1 = set, 0 = clear) [选定标记开关（角色, 机体, 1 = 置位 0 = 清除）]
+3 operand word(s); code-confirmed; handler 0x800A158C
+1. Character (`actor`: Character number (base:actors))
+2. Unit (`unit`: Unit number (base:units))
+3. Switch (`raw`: Not yet understood)
+Basis (zh): 800AC6C4 遍历名册与运行时机体；PC+6。
+In game (zh, 2026-09-16): 按原调用点原样复现（事件 001AB86C：3D6B 124,171,0 紧接 3D5A 124,0,174,171，即 リョウ 由 ゲッター1 换乘后继机 ゲッタードラゴン）。逐条快照给出明确分工：3D6B 执行后名册机体编号**不变**（仍是 ゲッター1），换乘完全由随后的 3D5A 完成；同理 3D6B 165,216,1 之后 万丈 仍在名册，是随后的 3D46 165,1 让他整条消失。因此 3D6B 自己不搬动任何单位，只在编成名单里置位或清除该「驾驶员＋机体」组合：标志 1 置驾驶员实例 +0 的位 7 与机体实例 +0x0C 的位 6，标志 0 完全复位，两者对称（ship-1 在 葉月博士／ガンドール 上取得完整一对）。全部 18 种原参数组合都是「驾驶员＋其本命机」，且总出现在换乘（3D5A）、退场（3D46）或剧情分别的场合。两个位的消费者仍未确认，故保持 unknown。均 0 VI、无画面、无状态以外的效果。 静态交叉引用补齐了消费者：resident_func_800AD990——即 3D73「按固定角色列表分组」调用的同一个函数——操作的正是这两个位：先遍历清除驾驶员 +0 的位 7（andi 0x7F）与位 6（andi 0xBF），再对名单中编号匹配（读 +0x2F42 的角色号比对）的条目置位 7（ori 0x80）。因此这一对位是「被选定／已登记」标记：3D73 按预设名单整批标记，3D6B 针对单个「驾驶员＋机体」组合置位或清除。据此升为 code-confirmed。 结合 3D73/3D74 可知这对位就是部队分割中的「当前分队」标记：3D73 按预设名单整组选定，3D74 全部清除，3D6B 单独把某一组驾驶员＋机体加入或移出。
+
+### 3D6C — Set a unit's upgrade level (unit, levels) [设定机体改造段数（机体, 段数）]
+2 operand word(s); code-confirmed; handler 0x800A15D0
+1. Unit (`unit`: Unit number (base:units))
+2. Levels (`value`: Number)
+Basis (zh): 800ACA1C：运行时机体 +0x4C..+0x50 五项写入 min(段数, +0x51)，随后 800A5C18 重算；PC+4。
+In game (zh, 2026-09-16): 注入 3D6C 36,3：机体实例 +0x4C..+0x50 五项 0 → 3，HP/EN 上限等经 800A5C18 重算，武器实例 +0x6/+0x7/+0x16 同步更新。
+
+### 3D6D — Set the current phase to 1 (player phase) [当前阶段设为 1（我方阶段）]
+1 operand word(s); code-confirmed; handler 0x800A1610
+1. Parameter (`raw`: Not yet understood)
+Basis (zh): 80213748 写 8010F5E8 = 1；阶段编号从 1 起（类型 0 事件头只出现 1/2），参数未被读取；PC+2。
+
+### 3D6E — Withdraw unit (character) [单位退场（角色）]
+1 operand word(s); code-confirmed; handler 0x800A1644
+1. Character (`actor`: Character number (base:actors))
+Basis (zh): 名册中该角色的 +0x38 指针非零时调用 8020AB14；PC+2。
+In game (zh, 2026-09-16): 3D6E 179：エレ 的名册槽 0/4 被清空（状态与坐标归零、机体指针清零），驾驶员实例 +0x130 由 1 变 65、机体实例 +0x2F8 由 17 变 58。0 VI，无画面演出。
+
+### 3D6F — Unlock a weapon (weapon number) [解锁武器（武器编号）]
+1 operand word(s); code-confirmed; handler 0x800A1680
+1. Weapon (`raw`: Not yet understood)
+Basis (zh): 800ACF44：700 项、36 字节步进，+2 等于参数时清 +0x22 的位 2；PC+2。该表是武器实例池（机体实例 +0x30 指向其中，+0x2C 为件数，+2 武器编号、+0x16 改造段数、+0x22 标志），位 2 为未解禁标记：原脚本的 11 个参数全部是剧情解禁的必杀技武器编号（19 石破天驚拳、1215 ダブルゴッドフィンガー、53／62／71／76 シャッフル同盟各机、770／773／775／777 コン・バトラーV、874 対空光牙剣），换机继承 800AA8F4 也专门为武器 314 ファンネルMAP 继承同一位。
+In game (zh, 2026-09-16): 用本关部件表中确实存在且已置位的原脚本参数（19、773、775；由 tactical-3 的 part_instances 快照挑出，此前用的 53／874 不在表内）：3D6F 773 与 3D6F 775 分别把部件记录 31、32 的 +0x22 由 0x0C 改为 0x08，即清除位 2（0x04），与静态分析 800ACF44 的描述完全一致。编号匹配的是记录 +2，不是索引。0 VI。
+
+### 3D70 — Add a co-pilot (pilot, co-pilot) [挂载同乘角色（驾驶员角色, 同乘角色）]
+2 operand word(s); code-confirmed; handler 0x800A16BC
+1. Pilot (`actor`: Character number (base:actors))
+2. Co-pilot (`actor`: Character number (base:actors))
+Basis (zh): 800ACFAC 在名册中查找两个角色；PC+4。
+In game (zh, 2026-09-16): 原脚本 10 处实例里 3D70 全部紧跟 3D5A，且同乘角色（183 チャム／182 シルキー）在全部 6,223 条出击记录中都不出现、由 3D5A 以机体 999 登记。按同一写法先 3D5A 183,0,999,500 建立驾驶员记录 7（角色号在 +2），再 3D70 181,183：该记录 +0x37 置 1、+0x38 写入机体实例指针 0x8016A210；同时 ショウ 所驾 ビルバイン（机体实例 0）与 ウイングキャリバー（机体实例 1）的 +0x34 由 1 变 2、+0x3C 写入驾驶员记录 7 的地址 0x80173154。即 +0x34 为同乘人数、+0x38 起为驾驶员指针数组（与 3D55 的 basis 一致），本指令把同乘角色挂到该单位上。tactical-3 中的“空操作”是因为 183 不在驾驶员表里，不是指令无效。0 VI。
+
+### 3D71 — Go to the ending (does not return) [进入结局（不返回）]
+0 operand word(s); code-confirmed; handler 0x800A02B8
+Basis (zh): 首帧调用 801C51B4 后既不推进 PC 也不完成；事件由 overlay 切换场景结束。
+In game (zh, 2026-09-17): 全作仅 1 处：场景 106「未来をこの手に」（流程图里没有任何后续场景，是最后一关）的结束事件，ブライト 说「好，航向月球，返回地球」之后执行。处理函数首帧调用 801C51B4，之后既不推进 PC 也不完成，由 overlay 切换场景。它属于世界地图 overlay：801C51B4 只存在于 load_000A7EC0（紧挨 3D5E 所用的 801C517C）。finale-1 在 3D4D 之后的战术地图上执行时，宿主在 get_function 中断言失败并中止（SIGABRT）——函数查找找不到这个地址；而原脚本的结束事件本就运行在世界地图上。ending-1 改在 3D4D 之前的世界地图上执行：VI 3303 执行后脚本轮询只再出现 2 次便停止，画面先转入深色的放射状拉远效果，随后在星空背景上显示结局的尾声文字（大意为战后留下疲惫的星球与人们，以及希望与新的未来），与最后一关标题相呼应（截图 3D71-ending.png）。运行正常结束，未再崩溃。即本指令启动全作结局。
+
+### 3D72 — Set the world map vehicle (vehicle) [设定世界地图旅行载具（载具编号）]
+1 operand word(s); code-confirmed; handler 0x800A0FCC
+1. Vehicle (`raw`: Not yet understood)
+Basis (zh): 写 engine+0x990 = 参数 mod 15；3D33 以它为下标取 D_801C5644，所得是世界地图模型表 801C5670 的下标（不是人物编号）；PC+2。
+In game (zh, 2026-09-17): 读写链与运行时一致。写入：engine+0x990 = 参数 mod 15；运行时逐条快照读到 0 → 8 → 14 → 3 → 0，与四次参数完全相同。读取：3D33 以 engine+0x990 为下标取表 D_801C5644 的人物（为 0 时改取 800A31DC(46) 的结果，-1 → 24），交给 801C37B8 绘制旅行动画。该表恰好 15 项（0–14）后接 FFFF，正是参数取 mod 15 的原因；表中依次为 シュバルツ／キラル／アレンビー／サイ・サイシー／アルゴ／ジョルジュ／ジョーカー／バニー／ローレンス／シュバルツ／シャリー／キャス／ジャネット／ドモン／レイン。画面：四次都做同一段 3D33 2 旅程（耗时同为 316 VI），旅途中航迹头部画出的载具随人物而变——14 レイン 与 3 サイ・サイシー 各是一种不同的飞行器，8 ローレンス 与 0 默认只有航迹；到达终点时四者都变回同一个黄色菱形标记。原脚本 33 处中 8（ローレンス）占 20 次。即本指令决定下一次 3D33 旅行时画哪个载具。2026-09-24 更正：D_801C5644 的值是世界地图模型表 801C5670 的下标，上面按人物编号读出的名字不成立——依次为 10 グラン・ガラン、9 ゴラオン、11 ガンドール、8 ラビアンローズ、12（5596）、6 リーブラ、5 ピースミリオン（5589）、24 ミデア、3 ミデア、2 アウドムラ、0 アルビオン、1 アーガマ、4 ネェル・アーガマ、7 ラー・カイラム（参数 1–14）；参数 0 的默认值 800A31DC(46) 取 ブライト 所乘机体，再查机体→模型配对表 801C560C（ミデア 3、アウドムラ 2、アルビオン 0、アーガマ 1、ネェル・アーガマ 4、ラー・カイラム 7、グラン・ガラン 10、ゴラオン 9、ガンドール 11、ラビアンローズ 8；无则 24 ミデア）。实证：ra-cailum 迷你关卡 3D72 14 后 3D33 绘制的正是资源 5591，宿主按资源内容识别并换成 HD 模型（docs/native/native-ship-model.md）。
+
+### 3D73 — Team split: select by preset list (1 = list A, 0 = list B) [部队分割：按预设名单选定（1 = 列表 A 0 = 列表 B）]
+1 operand word(s); code-confirmed; handler 0x800A16FC
+1. List (`raw`: Not yet understood)
+Basis (zh): 参数非零取 D_800D06A8（30 项），零取 D_800D06E4（62 项），复制到 -1 后调用 800AD990(列表, 参数)；PC+2。
+In game (zh, 2026-09-17): 参数非零取 D_800D06A8（列表 A，30 人），为零取 D_800D06E4（列表 B，62 人），复制到 -1 结尾后交给 800AD990。选定标记是驾驶员实例 +0 的位 7 与机体实例 +0x0C 的位 6，由 resident_func_800AD990 维护：先遍历清除所有条目的这两个位（andi 0x7F／andi 0xBF），再对名单中角色号匹配的条目置位 7（ori 0x80）。split-1 部署两名列表 A 成员（万丈、ヒイロ）与两名非列表 A 角色（カトル、ドモン），逐条快照读四人的位 7：初始全 0；3D74 后全 0；3D73 1 后只有 万丈、ヒイロ 为 1；再 3D74 后全 0；3D73 0 后只有 カトル、ドモン 为 1。列表 A 与列表 B 互不重叠，是部队分割的两半。原调用点给出含义：3D73 1 之后 サリィ 问「前往ムゲ宇宙的成员决定了吗」，ノイン 点名 ブライト艦長、万丈、アラン、獣戦機隊、ヒイロたち，マーベル 补充 カトル 会留下——列表 A 正是这些人且不含 カトル（ブライト 46、万丈 165、アラン 166、沙羅／亮／雅人／忍 168–171、ヒイロ 95、デュオ 92、五飛 91、トロワ 93……）。另一处 3D73 0 的上下文则是「クラッシャー隊とカトルは残る」。即本指令把一整组预设角色标为当前分队。
+
+### 3D74 — Clear all team-split selection marks [清除全部分队选定标记]
+0 operand word(s); code-confirmed; handler 0x800A1924
+Basis (zh): 复制 D_800D0760 的 8 字节（全为 -1）后调用 800AD990(列表, 2)。
+In game (zh, 2026-09-17): 以空名单与模式 2 调用 800AD990，因而只执行其清除部分、不置任何位。选定标记是驾驶员实例 +0 的位 7 与机体实例 +0x0C 的位 6，由 resident_func_800AD990 维护：先遍历清除所有条目的这两个位（andi 0x7F／andi 0xBF），再对名单中角色号匹配的条目置位 7（ori 0x80）。split-1 部署两名列表 A 成员（万丈、ヒイロ）与两名非列表 A 角色（カトル、ドモン），逐条快照读四人的位 7：初始全 0；3D74 后全 0；3D73 1 后只有 万丈、ヒイロ 为 1；再 3D74 后全 0；3D73 0 后只有 カトル、ドモン 为 1。列表 A 与列表 B 互不重叠，是部队分割的两半。两次 3D74 都把四人的位 7 全部清零。原脚本仅 1 处（场景 104 开场），紧接着就是逐个 3D5A 重新编成与 3D6B 253,222,0——即先清空分队，再按需逐个重建。
+
+### 3D75 — Launch units from a mothership (character; a captain launches the whole ship, 999 = 46 Bright) [放出母舰搭载的单位（角色；舰长 = 该舰全部搭载单位，999 = 46 ブライト）]
+1 operand word(s); code-confirmed; handler 0x800A197C
+1. Character (a captain launches the whole ship; 999 = 46) (`actor`: Character number (base:actors))
+Basis (zh): 80213758(角色)：999 改为 46；角色在舰长表 8021E398（46 ブライト／180 シーラ／179 エレ／253 葉月博士／37 エマリー／49 ヘンケン／250 ハワード）中时，取他所驾的母舰（母舰表 8015E85C/60 的 +0x38 驾驶员匹配，否则取非空的一艘），把该舰搭载表 8015E864 中的全部单位加入选择数组；否则在两艘母舰的搭载表里找该角色，只选他那一台；都找不到则什么也不做。随后以母舰所在格为基准，80213FDC 驱动的状态机每 4 帧放出一台（80213AAC：放进空地图槽、在场状态置 1、801F2E34 在母舰附近排位、801EB0D4 从搭载表移除、音效 0xD1、我方单位数加 1），状态到 3 时 PC+2。搭载只由玩家的移动指令完成（801CD0E4 → 801EAF88），脚本指令不会让单位上舰。
+In game (zh, 2026-09-17): 第八轮，先造出前七轮缺的前提：母舰里要真的有单位。launch-1 用 3D5A 登记 ブライト＋アウドムラ 与 ドモン，3D3D 5,10,0,0,3 让 アウドムラ 进母舰表并登场于 (5,10)，3D3D 6,10,0,200,2 让 ドモン 出现在它右边。开场结束后用按键操作：光标右移选中 ドモン →「移動」→ 左移到母舰格 → 弹出「搭載」→ 确认，ドモン 从地图上消失，母舰表搭载数 8015E858 由 0 变 1、搭载表首项为 ドモン 的机体 8016A264；随后打开地图菜单「フェイズ終了」→「はい」结束我方阶段。3D75 999 放在第 1 回合敌方阶段开始的事件里（类型 0，事件头 [0,2]；回合计数 8010F5EA 从 0 开始，头部 [1,x] 要到第 2 回合才成立）。
+结果：3D75 于 VI 6495 开始、6751 结束（256 VI）。执行前我方地图槽只有 アウドムラ，执行后多出一槽 = ドモン 于 (5,8)、组号 2，搭载数 1→0，我方单位数 1→2，基准点状态字节 802279E8 = 3（完成）、基准坐标 (0x70,0xC0) = 母舰格 (5,10)。画面：镜头移到母舰，母舰上方出现紫色发进特效，随后 ドモン 出现在母舰上方两格。
+所以 3D75 是「从母舰放出搭载单位」。原脚本里它总在舰长或角色离场（3D46）之前：场景 33／48 シーラ、エレ 返回バイストンウェル前、场景 105 ブライト 离开ラー・カイラム前，先把舰内的单位放出来，免得随母舰一起离场；非舰长（アラン、ゼクス、シュバルツ）只有在他们正搭载于母舰时才会被放出，否则什么也不发生——这正是前七轮与多数实机视频里看不到效果的原因，视频里看到的「消失、离开战场」是紧随其后的 3D46。
+
+早先记录：第五轮、也是唯一一轮在真实上下文里的测量：场景 78「獣戦機基地 総攻撃」的事件 001CC1B4 原样复制（指令逐字节不变，仅把触发条件由回合 8 放宽到回合 0 以便有界运行到达），配该场景自己的 66 条出击记录与地图 55。3D75 166（アラン）于 VI 6829–7017 在原脚本位置执行，紧跟 3D46 166,0，且确实走进了包裹它的 3E08 1 条件分支。结果：耗时仍是恒定的 188 VI；逐条快照显示该跨度内探针全部区域零变化（窗口内唯一的状态改动来自随后的 3D46，名册 11 字节／1 槽）；帧间差在 3D75 期间恒为 0.9–1.0，与其开始前和结束后完全相同，即待机动画基线，无任何可归因的画面变化。
+
+五轮实验汇总：孤立执行、与 3D46 配对、机体移到母舰旁、机体移到母舰同格、原脚本上下文——表现完全一致。原脚本 7 处实例全部紧跟同一角色的 3D46（退场）并由 3D3B 2/3 淡出淡入包住，位置上确属退场那一下的演出；命中 7 项舰长表（46 ブライト／180 シーラ／179 エレ／253 葉月博士／37 エマリー／49 ヘンケン／250 ハワード，999 先改写为 46）后还要求名册之后的两个战舰全局 8015E85C/60 非空且其 +0x38 驾驶员匹配。该条件在上述任何一轮都未成立，而它不由部署战舰满足，因此效果始终未显形。保持 unknown。
+
+第七轮（scene78t-3，2026-09-17）补上引擎块探针后重测，排除了「只写引擎字段所以前六轮看不见」的可能。3D75 跨度（VI 6830–7018）内引擎块仅 +0x96D 由 0x02 变 0x00；但全程 90 个命令转换中该字节变化了 67 次（74%），与 +0x967（100%）、+0x97A/+0x97B（51%）等同属脚本虚拟机自身的工作状态，是每条命令都会动的簿记，不是本指令的写入。作为对照，同一轮里 +0x997（3D66 的位 7）只变了 5 次，恰是场景 78 里那几处 3D66——稀有且专一，说明按变化频率区分簿记与指令效果是可靠的。结论不变：在名册、驾驶员、机体、部件、剧情变量与引擎块全部覆盖的情况下，3D75 仍无任何专属写入。
+
+### 3D76 — No handler [无处理函数]
+None operand word(s); code-confirmed
+Basis (zh): 分发表默认分支返回空处理函数，事件将停滞；ROM 脚本中未出现。
+
+### 3D77 — No handler [无处理函数]
+None operand word(s); code-confirmed
+Basis (zh): 同 3D76。
+
+### 3D78 — No-op (unreachable) [空操作（不可达）]
+0 operand word(s); code-confirmed; handler 0x800A01BC
+Basis (zh): 仅 state=0；8009F0E8 的标记循环不会让 ≥3D77 的字到达分发；ROM 脚本中未出现。
+
+### 3D79 — No-op (unreachable) [空操作（不可达）]
+0 operand word(s); code-confirmed; handler 0x800A01C4
+Basis (zh): 同 3D78。
+
+Conditions test and set the ACC register and variables. An opener starts a block; when false, the script
+skips to the matching block end (3E1D). Blocks nest.
+
+## Conditions (3E00–3E1D)
+
+### 3E00 — ACC = 0 [ACC 清零]
+0 operand word(s); kind: statement; code-confirmed; handler 0x800A2388
+Basis (zh): engine+0x99C = 0，返回真。
+
+### 3E01 — If the character's HP percentage < threshold (and on the map), ACC = value [若角色 HP 百分比 < 阈值（且在场）则 ACC = 值]
+3 operand word(s); kind: opener; code-confirmed; handler 0x800A1FBC
+1. Character (`actor`: Character number (base:actors))
+2. Percentage (`value`: Number)
+3. ACC value (`value`: Number)
+Basis (zh): 800A293C 取角色所驾单位 HP/最大 HP×100（下限 1；不在场 0；已退场 103）；百分比小于阈值且不为 103 时 ACC = 第 2 字并为真。
+
+### 3E02 — If variable ≠ value [若变量 ≠ 值]
+2 operand word(s); kind: opener; code-confirmed; handler 0x800A207C
+1. Variable (`flag`: 2-bit variable 0–199)
+2. Value (`value`: Number)
+Basis (zh): 800A496C 读取 200 个 2 位变量之一；不等时为真。
+
+### 3E03 — If variable = value, ACC = value 2 [若变量 = 值 则 ACC = 值 2]
+3 operand word(s); kind: opener; code-confirmed; handler 0x800A20C4
+1. Variable (`flag`: 2-bit variable 0–199)
+2. Value (`value`: Number)
+3. ACC value (`value`: Number)
+Basis (zh): 相等时 ACC = 第 2 字并为真。
+In game (zh, 2026-09-16): 变量 7 = 2 时 ACC 变为 9 并执行块内 3D5B；变量 7 = 1 的块整体跳到 3E1D 之后。
+
+### 3E04 — If the current turn < turns, ACC = value [若当前回合 < 回合数 则 ACC = 值]
+2 operand word(s); kind: opener; code-confirmed; handler 0x800A2344
+1. Turns (`value`: Number)
+2. ACC value (`value`: Number)
+Basis (zh): 8010F5EA（存档回合计数）小于第 0 字时 ACC = 第 1 字并为真。
+
+### 3E05 — Always true (not implemented) [恒真（未实现）]
+0 operand word(s); kind: opener; code-confirmed
+Basis (zh): 跳转表落入 800A1F64 返回 -1。
+
+### 3E06 — ACC = !(level[character A] < level[character B]) [ACC = !(等级[角色 A] < 等级[角色 B])]
+2 operand word(s); kind: statement; code-confirmed; handler 0x800A22CC
+1. Character A (`actor`: Character number (base:actors))
+2. Character B (`actor`: Character number (base:actors))
+Basis (zh): 800A32C0／800A32EC 在三张驾驶员表里按角色号找第一条，取 +5 的字节，即等级（2026-10-01，docs/gameplay/hidden-elements.md 2.4）。
+
+### 3E07 — Always true (not implemented) [恒真（未实现）]
+0 operand word(s); kind: opener; code-confirmed
+Basis (zh): 同 3E05。
+
+### 3E08 — If ACC = value [若 ACC = 值]
+1 operand word(s); kind: opener; code-confirmed; handler 0x800A23C4
+1. Value (`value`: Number)
+
+### 3E09 — If ACC ≥ value [若 ACC ≥ 值]
+1 operand word(s); kind: opener; code-confirmed; handler 0x800A23EC
+1. Value (`value`: Number)
+
+### 3E0A — If ACC ≠ value [若 ACC ≠ 值]
+1 operand word(s); kind: opener; code-confirmed; handler 0x800A2438
+1. Value (`value`: Number)
+
+### 3E0B — If ACC ≥ value [若 ACC ≥ 值]
+1 operand word(s); kind: opener; code-confirmed; handler 0x800A23EC
+1. Value (`value`: Number)
+Basis (zh): 与 3E09 共用处理函数。
+
+### 3E0C — If ACC < value [若 ACC < 值]
+1 operand word(s); kind: opener; code-confirmed; handler 0x800A2414
+1. Value (`value`: Number)
+
+### 3E0D — ACC = kills[character] [ACC = 击坠数[角色]]
+1 operand word(s); kind: statement; code-confirmed; handler 0x800A228C
+1. Character (`actor`: Character number (base:actors))
+Basis (zh): 800A3294 取名册条目 +0x14 的 s16，即击坠数：击坠资金加成 801F66C8 也按 +0x14 分档（2026-10-01，docs/gameplay/hidden-elements.md 2.4）。
+
+### 3E0E — variable = (variable + 1) mod 4 [变量 = (变量 + 1) mod 4]
+1 operand word(s); kind: statement; code-confirmed; handler 0x800A2198
+1. Variable (`flag`: 2-bit variable 0–199)
+
+### 3E0F — variable = (variable − 1) mod 4 (3 when ≤ 0) [变量 = (变量 − 1) mod 4（≤0 时为 3）]
+1 operand word(s); kind: statement; code-confirmed; handler 0x800A220C
+1. Variable (`flag`: 2-bit variable 0–199)
+
+### 3E10 — If the choice was option 1 [若选择肢结果 = 第 1 项]
+0 operand word(s); kind: opener; code-confirmed; handler 0x800A2394
+Basis (zh): engine+0x994 == 0x3DD9（3D44 写入）。
+
+### 3E11 — If the choice was option 2 [若选择肢结果 = 第 2 项]
+0 operand word(s); kind: opener; code-confirmed; handler 0x800A23A4
+Basis (zh): engine+0x994 == 0x3DDA。
+
+### 3E12 — If the choice was option 3 [若选择肢结果 = 第 3 项]
+0 operand word(s); kind: opener; code-confirmed; handler 0x800A23B4
+Basis (zh): engine+0x994 == 0x3DDB。
+
+### 3E13 — variable = value [变量 = 值]
+2 operand word(s); kind: statement; code-confirmed; handler 0x800A2158
+1. Variable (`flag`: 2-bit variable 0–199)
+2. Value (`value`: Number)
+Basis (zh): 800A4888 写入 2 位变量，值 ≥4 时忽略。
+In game (zh, 2026-09-16): 变量 7 由 3 写为 2。
+
+### 3E14 — ACC = value [ACC = 值]
+1 operand word(s); kind: statement; code-confirmed; handler 0x800A2138
+1. Value (`value`: Number)
+
+### 3E15 — ACC = number of units on a side [ACC = 阵营单位数]
+1 operand word(s); kind: statement; code-confirmed; handler 0x800A24FC
+1. Side (`faction`: Side index 0 player / 1 enemy / 2 third party)
+Basis (zh): 0/1/2 分别读取 engine+0x9B0/0x9B1/0x9B2，由 802018C4 按阵营刷新。
+
+### 3E16 — ACC = the other character in the battle (not the given one) [ACC = 交战另一方角色（排除参数角色）]
+1 operand word(s); kind: statement; structure-confirmed; handler 0x800A2478
+1. Character (`actor`: Character number (base:actors))
+Basis (zh): 依次检查 engine+0x9A0/0x9A4 指向的驾驶员记录 +2；等于参数时改查另一方；均不成立时 ACC = 0。
+
+### 3E17 — ACC = engine+0x9B6 (signed byte) [ACC = engine+0x9B6（有符号字节）]
+0 operand word(s); kind: statement; structure-confirmed; handler 0x800A2460
+Basis (zh): 0x9B6 由 801F3F90/801FE794 在战斗流程中写入。
+
+### 3E18 — ACC = current scene [ACC = 当前场景索引]
+0 operand word(s); kind: statement; code-confirmed; handler 0x800A2570
+Basis (zh): 读取 8010F5F0。
+
+### 3E19 — engine+0x998 = engine+0x9A8
+0 operand word(s); kind: statement; structure-confirmed; handler 0x800A2590
+Basis (zh): 字段含义未确认。
+
+### 3E1A — ACC = engine+0x998
+0 operand word(s); kind: statement; structure-confirmed; handler 0x800A25A0
+
+### 3E1B — ACC = character presence (0 absent / 1 on the map / 3 withdrawn) [ACC = 角色在场状态（0 不在 / 1 在场 / 3 已退场）]
+1 operand word(s); kind: statement; code-confirmed; handler 0x800A1F7C
+1. Character (`actor`: Character number (base:actors))
+Basis (zh): 800A3990 把 800A293C 的百分比折算：1–100 → 1，103 → 3，102 → 2。
+
+### 3E1C — Unconditional block start (always true) [无条件块开始（恒真）]
+0 operand word(s); kind: opener; code-confirmed; handler 0x800A2584
+Basis (zh): engine+0x96C = 0 并返回 -1；跳过扫描时按嵌套层计数。
+
+### 3E1D — End of conditional block [条件块结束]
+0 operand word(s); kind: block-end; code-confirmed; handler 0x800A1D60
+Basis (zh): 执行时恒真；条件为假时扫描到同层 3E1D 后继续。
+In game (zh, 2026-09-16): 作为跳过块的落点，执行到时继续。
+
+## Context markers (3DD0–3DDB, no operands)
+
+At a marker the script continues if it matches the current context, otherwise it skips to the next matching
+marker or the end of the event.
+
+- 3DD0: Common section (any context) [共通段（任何上下文）] (matches: always)
+- 3DD1: Arklight Blue route [アークライト・ブルー 路线] (matches: protagonist)
+- 3DD2: Selain Meneth route [セレイン・メネス 路线] (matches: protagonist)
+- 3DD3: Brad Skywind route [ブラッド・スカイウィンド 路线] (matches: protagonist)
+- 3DD4: Manami Hamill route [マナミ・ハミル 路线] (matches: protagonist)
+- 3DD5: Real-type hero (3DD1/3DD2) [リアル系主角（3DD1/3DD2）] (matches: derived)
+- 3DD6: Super-type hero (3DD3/3DD4) [スーパー系主角（3DD3/3DD4）] (matches: derived)
+- 3DD7: Male hero (3DD1/3DD3) [男性主角（3DD1/3DD3）] (matches: derived)
+- 3DD8: Female hero (3DD2/3DD4) [女性主角（3DD2/3DD4）] (matches: derived)
+- 3DD9: Choice option 1 [选择肢第 1 项] (matches: choice)
+- 3DDA: Choice option 2 [选择肢第 2 项] (matches: choice)
+- 3DDB: Choice option 3 [选择肢第 3 项] (matches: choice)
+
+## Operand types
+
+- `actor`: Character number (base:actors)
+- `text`: Text number in table 0
+- `unit`: Unit number (base:units)
+- `flag`: 2-bit variable 0–199
+- `scene`: Scene
+- `group`: Deployment record group
+- `position`: High byte x / low byte y; 0x40–0x44 relative to the position 3D54 remembered
+- `x`: Square x
+- `y`: Square y
+- `count`: Count
+- `frames`: Frames
+- `se`: Sound effect number
+- `bgm`: Track number
+- `event_slot_type1`: Registration index of a type 1 event in this scene
+- `event_slot_type8`: Registration index of a type 8 event in this scene
+- `actor_or_group`: Below 500 a character number, from 500 a group (value − 500)
+- `bool`: Switch
+- `value`: Number
+- `side`: Phase 1 player / 2 enemy / 3 third party (4 = any)
+- `deploy_side`: Deployment side 0/1/2 (3 → 0, 4 → 2)
+- `raw`: Not yet understood
+- `faction`: Side index 0 player / 1 enemy / 2 third party
+- `map`: Map number (base:map_assets; written to 8010F5EE)
+
+## Variables
+
+200 variables of 2 bits (values 0–3) at 0x8015E818, read and written by the conditions, kept across stages. Basis (zh): 800A496C/800A4888：每 8 个变量占一个 u16，掩码表 800CA380/800CA390；新关卡时变量 100–114 与 128–139 置 3、变量 54 置 1（8009DE7C）。
+
+## Deployment records (28 bytes, 14 halfwords, group 999 ends the block)
+
+Offset, bytes: name (mini stage field) — confidence. Basis (zh).
+
+- +0, 2: Group [组号] (`group`) — code-confirmed. Basis (zh): 3D45/3D3D 与首字比较；999 停止。
+- +2, 2: x (`x`) — code-confirmed. Basis (zh): 3D3D → 801C78A0 以 ×16+32 转为屏幕坐标。
+- +4, 2: y (`y`) — code-confirmed. Basis (zh): 同上。
+- +6, 2: Pilot [驾驶员角色] (`actor`) — code-confirmed. Basis (zh): 8020ABB4：<287 时按名册已分配机体的驾驶员 +2 匹配复用；否则作为默认驾驶员生成。
+- +8, 1: Unexplained byte [未解释字节] (`byte8`) — unknown.
+- +9, 1: Level offset [等级偏移] (`level_offset`) — code-confirmed. Basis (zh): 8020ABB4：等级 = 8010F5F3 + 该字节。
+- +10, 2: Unit [机体] (`unit`) — code-confirmed. Basis (zh): 8020ABB4 交给 800A6E68 机体加载器；与 D_800CA418 默认驾驶员表匹配。
+- +12, 2: Upgrade index [强化索引] (`upgrade`) — code-confirmed. Basis (zh): 8020ABB4：D_800CB5DC[值] 写入运行时机体 +0x4C..+0x50 五项改造段数。
+- +14, 6: Not yet understood [未解释] (`raw14, raw16, raw18`) — unknown.
+- +20, 2: Side [阵营] (`faction`) — code-confirmed. Basis (zh): 8020ABB4/8020B154：3 → 0、4 → 2，其余按值。
+- +22, 2: Behaviour flags [行为标志] (`behavior`) — structure-confirmed. Basis (zh): 交给 800A97F0；位 14 置位且阵营非 0 时把 +0x18 写入驾驶员 +0x14，即该单位的假身次数（801F6E3C 判定，801FCA78／801FE068 消耗）。原版 42 条记录设有此位。
+- +24, 2: Extra value [附加值] (`extra`) — structure-confirmed. Basis (zh): 见行为标志位 14：敌方单位的假身次数，原版取值 2、3、5、7。
+- +26, 2: Not yet understood [未解释] (`raw26`) — unknown.
