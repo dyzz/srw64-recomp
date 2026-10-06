@@ -16,7 +16,7 @@
 
 - **玩家自己加滤镜**：把 RetroArch 的预设（`.slangp`）连同它用到的 `.slang` 和图片一起复制进「我的」`filters/`，保持原来的文件夹结构（很多预设引用 `../include` 或 `../../include`），子文件夹随意。浏览列表每次打开都重新读文件夹，加完不用重启。
 - **玩家自己加框体**：中间有透明窗口的 `.png`，或指向它的 RetroArch overlay `.cfg`（`overlay0_overlay = 图片名.png`），放进「我的」`bezels/`。透明窗口自动对准 4:3 画面（§3）。
-- **内置滤镜**：`tools/content/fetch_filters.py` 从 libretro/slang-shaders 的固定提交（`1e0238f`，2026-10-05）取 9 个预设和它们用到的全部文件（按 `.slangp` 的 pass、贴图、`#reference` 与 `.slang` 的 `#include` 逐个追），保持仓库里的路径，共 35 个文件、约 316 KB，放到 `build/filters`，附 `NOTICE.txt`（来源与「各文件开头写明作者许可」）。清单：crt-lottes（曲面、荫罩）、crt-easymode（平面、干净扫描线）、crt-geom（曲面与圆角）、zfast-crt（很轻，适合掌机）、crt-guest-advanced-fast（选项多、较重）、scanline（只有扫描线）、ntsc-adaptive（复合视频渗色）、sharp-bilinear（任意尺寸的锐利像素）、xbrz-freescale（平滑像素画）。`build_release.py`、`build_linux.py`（Linux 构建容器不能联网，`build_remote.py` 把 `build/filters` 一起同步过去）把它放进包的 `filters/`。
+- **内置滤镜**：`tools/content/fetch_filters.py` 从 libretro/slang-shaders 的固定提交（`1e0238f`，2026-10-05）取 9 个预设和它们用到的全部文件（按 `.slangp` 的 pass、贴图、`#reference` 与 `.slang` 的 `#include` 逐个追），保持仓库里的路径，共 35 个文件、约 316 KB，放到 `build/filters`，附 `NOTICE.txt`（来源与「各文件开头写明作者许可」）。清单：crt-lottes（曲面、荫罩）、crt-easymode（平面、干净扫描线）、crt-geom（曲面与圆角）、zfast-crt（很轻，适合掌机）、crt-guest-advanced-fast（选项多、较重）、scanline（只有扫描线）、ntsc-adaptive（复合视频渗色）、sharp-bilinear（任意尺寸的锐利像素）、xbrz-freescale（平滑像素画）。`build_release.py`、`build_linux.py`（Linux 构建容器不能联网，所以 `build/filters` 要先在联网的机器上取好）把它放进包的 `filters/`。
 - **不内置框体**：现成的 N64 框体（libretro/overlay-borders，MIT）都印着任天堂的商标（N 字标、NINTENDO64 字样），只在官网演示里用，不随包分发；玩家自己放进「我的」`bezels/` 即可。
 - **滤镜行数**：预设读到的画面高度。默认「240 行」＝原版的行数，CRT 类最像；480／960 行更清晰、扫描线更细；「窗口」是窗口自己的像素。
 - 三项随 `presentation.json` 保存（`bezel`、`filter` 为绝对路径，`filter_scale` 为 0–4）。
