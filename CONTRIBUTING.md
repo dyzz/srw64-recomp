@@ -57,7 +57,7 @@ make check
   tree. Native runtime validation requires separately supplied local inputs.
 - Public documentation must distinguish implemented features, verified scenarios,
   and future plans. Keep historical local evidence references clearly labelled.
-- 项目源码许可证尚未选定；不要替维护者添加许可证，也不要把第三方来源说明当成授权。
+- 项目自有源码以 GPL-3.0-or-later 授权（[LICENSE](LICENSE)，范围见 README「License」）；贡献即同意以此授权。游戏本身与从 ROM 衍生的内容不在其内，不要把第三方来源说明当成授权。
 
 ## 原生代码与验证
 

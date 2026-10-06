@@ -557,11 +557,25 @@ Built on [N64Recomp](https://github.com/N64Recomp/N64Recomp),
 [N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime), and
 [RT64](https://github.com/rt64/rt64). Additional sources and pinned revisions are
 listed in [provenance](docs/guide/provenance.md). This is an unofficial project; game
-content belongs to its respective rights holders. A license for the project's
-own source has not yet been selected; third-party components retain their own terms.
+content belongs to its respective rights holders.
 
 感谢上述项目及[来源记录](docs/guide/provenance.md)中的工具与参考资料。本项目为非官方工程，
-游戏内容的权利归各自权利人所有。项目自有源码许可证尚未选定，第三方组件遵守各自条款。
+游戏内容的权利归各自权利人所有。
+
+## License / 许可证
+
+The project's own source code and tools are licensed under the
+[GNU General Public License v3.0](LICENSE) or (at your option) any later version.
+This covers only what the project wrote. It does not cover Super Robot Wars 64, its
+ROM, or anything taken or derived from it (game code, text, data, images, music),
+nor the characters, mechanics and trademarks of their rights holders. The fonts in
+`content/fonts`, the HD image pack (see its NOTICE) and third-party components keep
+their own terms.
+
+本项目自有的源码与工具以 [GNU 通用公共许可证第 3 版](LICENSE)（或你选择的任何更新版本）授权。
+它只涵盖本项目自己写的部分，不涵盖《超级机器人大战64》本身、其 ROM 以及从中提取或衍生的任何内容
+（游戏代码、文本、数据、图像、音乐），也不涵盖各权利人的角色、机体与商标。`content/fonts` 里的字体、
+HD 图片包（见其 NOTICE）与第三方组件遵守各自条款。
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for repository boundaries and validation
 requirements. Historical links into `build/` refer to local evidence, not files
