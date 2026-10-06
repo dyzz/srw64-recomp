@@ -1,8 +1,5 @@
 # 场间主菜单：原版逻辑与原生接管
 
-![原生场间主菜单（日文）](images/intermission-ja.png)
-
-
 日期：2026-09-21。状态：**已实现，完整菜单已在实机验证；两项菜单和 RNG 对照尚未运行验证**（见第 9 节）。第 1–3 节是对 `load_0008F4B0` 和常驻段的静态分析结论（反汇编与 ROM 数据表）；第 4 节以后是接管方案。画面基线是 `sdl-link-01` 运行留下的原版截图，运行目录不保留。
 
 ## 1. 原版画面
@@ -127,8 +124,6 @@
 
 调试接口：`ui.click --text intermission-funds`（改造画面 `upgrade-funds`）→ `ui.type 900000` → `ui.key return`；`tools/recomp/debug/check_funds.py` 覆盖主菜单修改、Esc 取消、五项画面修改后的 資金が足りません／確認窗、以及扣款基于新数字（8 项通过，运行 `build/recomp/debug/` 见脚本输出）。
 
-![资金改成 900000 后的主菜单](images/intermission-funds-edit.png)
-
 ## 7. 本地化
 
 - `content/locales/*.json` 的 `entries` 目前没有 `t00_04044`–`04055`（标题、九项、信息标签、第␣␣話）、`04064`（クリア）、`04076`／`04098`（パイロット／妖精）。需要补中、英译文；日文走源文本。
@@ -185,10 +180,6 @@
 
 另在首次手动会话里看过 800×600 窗口（英文），四块面板与文字均在范围内。
 
-![のりかえ 被拒绝](images/intermission-swap-refused.png)
-![中文](images/intermission-zh-Hans.png)
-![英文 800×600](images/intermission-en-800x600.png)
-
 **还没验证的**：
 
 - 两项菜单（「（前）」场景之后）没有现成存档，只有组件测试覆盖判定；页面的两项布局没实机看过。
@@ -197,13 +188,13 @@
 - 按住确认键的释放门控沿用其他页面的机制，没单独测。
 - 视觉参数（底色 `#0a0e3c` 78%、边色 `#3a78e0`、高亮 `#00c800`）是对着原版截图定的，没有从原图资源取色。
 
-原定分步（1–4 已完成，5 的截图放在 `docs/native/images/`）：
+原定分步（1–4 已完成）：
 
 1. 适配器 `intermission_page.{hpp,cpp}`＋两个钩子＋输入过滤，先发布快照、页面只画不可交互的静态面板，确认原版面板消失、背景和淡入正常。
 2. 交互：移动、确认、鼠标；のりかえ 二级菜单；释放门控；软复位放行。
 3. 本地化条目与 `ui` 标签；三语言排版。
 4. 调试接口字段（`status.intermission_page`、稳定 ID `intermission:0..8`、`intermission-swap:0|1`、等待条件 `intermission_page`、事件日志 `intermission`）与检查脚本 [`check_intermission.py`](../../tools/recomp/debug/check_intermission.py)。
-5. 验证、截图入 `docs/media/`、本文改写成实现文档。
+5. 验证、本文改写成实现文档。
 
 后续页面：ユニット改造／武器改造（[改造画面接管](native-upgrade-screens.md)）、強化パーツ（[強化パーツ 画面接管](native-parts-screens.md)）、ユニット能力／パイロット能力（[能力查看画面接管](native-ability-screens.md)）、のりかえ（[のりかえ 画面接管](native-swap-screens.md)）与 データセーブ（[データセーブ 画面接管](native-save-screens.md)）已接管；リンク 页（`link_page.cpp`）也按同一设置交回原版联动画面。场间画面至此全部可在原版与原生之间切换。
 

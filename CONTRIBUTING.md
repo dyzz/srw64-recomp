@@ -4,8 +4,8 @@
 
 本仓库只提交可审查的源码、配置、原生内容包、测试和文档。以下内容必须只
 保留在本地：原始或修改后的 ROM、模拟器内存/存档、Libretro 核心、字体、
-构建输出和原始测试截图。用于项目介绍、经维护者确认的运行截图可单独放入
-`docs/media/`；须记录来源、摘要和实验范围，不随图分发纹理包或其他游戏资源。
+构建输出和测试截图。项目介绍用的游戏截图只放在官网的 `web/public/media/`（README
+也引用这些图），经维护者确认后提交，不随图分发纹理包或其他游戏资源；文档里不放截图，
 待审图片保留在忽略的 `build/`。原始字形映射作为独立参考数据保存在 `reference/`，其来源和摘要固定在 `config/data/original-glyph-map.json`。
 
 第三方输入的来源、固定版本和哈希记录在 `docs/guide/provenance.md`。不得通过提交
@@ -51,8 +51,9 @@ make check
 - Keep source, pinned dependency manifests, tests, and documentation in Git.
   ROMs, saves, memory dumps, generated CPU/RSP code, fonts, dependency checkouts,
   credentials, and local agent settings stay outside the published tree.
-- Only maintainer-reviewed runtime screenshots belong in `docs/media/`. Record
-  their provenance and whether they show optional experimental HD assets.
+- Screenshots for presenting the project live only in the website's
+  `web/public/media/` (the READMEs use them too) and need maintainer review;
+  technical documents carry no screenshots.
 - Run the ROM-independent checks from a clean source copy as well as the working
   tree. Native runtime validation requires separately supplied local inputs.
 - Public documentation must distinguish implemented features, verified scenarios,
