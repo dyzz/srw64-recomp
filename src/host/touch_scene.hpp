@@ -14,14 +14,18 @@ namespace srw64::touch_scene {
 // (docs/gameplay/original-controls.md §3, the tactical UI states).
 inline constexpr uint32_t mode_address = 0x8015DA02, map_state_address = 0x80172EB0, map_sub_address = 0x80172EB2;
 
-inline touch_pad::SceneId decide(unsigned mode, unsigned map_state, unsigned map_sub, int title_major, bool dialogue) {
+// `title_waiting`: PRESS START or the ring menu is up (intro::title_waiting); the opening
+// and the demos keep the title's corner entries away.
+inline touch_pad::SceneId decide(unsigned mode, unsigned map_state, unsigned map_sub, int title_major, bool dialogue,
+                                 bool title_waiting = false) {
     using touch_pad::SceneId;
     switch (mode) {
     case 2: case 0x1A: case 0x1C:   // the battle animation (its lines run on their own)
         return SceneId::BattleScene;
     case 1: case 7:                 // the logo, the title overlay (opening, PRESS START, prologue pages)
         if (title_major == 3) return SceneId::TitleRing;
-        return dialogue ? SceneId::Dialogue : SceneId::Attract;
+        if (dialogue) return SceneId::Dialogue;
+        return title_waiting ? SceneId::Attract : SceneId::Opening;
     case 0x20:                      // the ending
         return SceneId::AnyKey;
     default:

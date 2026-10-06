@@ -3499,9 +3499,9 @@ void mini_sync() {
 // way back to it in a campaign (campaign_library.hpp).
 bool touch_active();
 void home_sync() {
-    const int major=intro::title_major();
     const bool settings_entry=pad_mode || !app_menu::available();
-    if((major!=2 && major!=3) || settings_open){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
+    // Not while the opening's works fly past or the logo comes in, nor in a demo.
+    if(!intro::title_waiting() || settings_open){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
     // With touch controls the Library, MOD and settings are touch buttons along the top.
     const bool touch=touch_active();
     const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+(touch?"t":"")+frame_stamp();

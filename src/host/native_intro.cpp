@@ -17,7 +17,7 @@ std::filesystem::path output;
 std::ofstream log;
 bool loaded{};
 uint64_t last_report{};
-int last_major=-1,last_group=-1,last_page=-1,last_phase=-1;
+int last_major=-1,last_sub=-1,last_group=-1,last_page=-1,last_phase=-1;
 json latest;       // The last step's state, for the debug interface.
 unsigned skips{};
 constexpr unsigned lengths[]={11,6,6,5,5};
@@ -36,6 +36,7 @@ void step(uint8_t* rdram,recomp_context* ctx) {
     const bool active=major==13 && sub<=1 && group<5 && page<lengths[group];
     if(last_major==13 && major!=13)srw64::state_probe::capture(rdram,"intro-exited",group);
     controls.scene(active);
+    last_sub=int(sub);
     json state={{"major",major},{"substate",sub},{"group",group},{"page",page},
         {"phase",phase},{"active",active},{"scene",MEM_BU(0,int32_t(0x8015DA02))}};
     if(last_major!=int(major) || (active && (last_group!=int(group) ||
@@ -76,6 +77,12 @@ int title_major() {
     std::lock_guard lock(mutex);
     return loaded?last_major:-1;
 }
+bool title_waiting() {
+    std::lock_guard lock(mutex);
+    // 主状態 2 substates 0-5 (801CB06C) bring the logo in after the works fly past; 6
+    // (801C5D94) waits on PRESS START until the demo starts (主状態 12).
+    return loaded && (last_major==3 || (last_major==2 && last_sub>=6));
+}
 void request_skip() {
     std::lock_guard lock(mutex);
     if(controls.active)controls.pending=true;
@@ -91,7 +98,7 @@ void overlay_loaded(uint32_t rom,uint32_t ram,uint32_t size) {
     std::lock_guard lock(mutex);
     if(uint64_t(ram)<0x801CC150ULL && uint64_t(ram)+size>0x801C4500ULL) {
         loaded=rom==0x10DA50 && ram==0x801C4500 && size==0x7C50;
-        controls.scene(false);last_major=-1;
+        controls.scene(false);last_major=-1;last_sub=-1;
         record("overlay",{{"rom",rom},{"loaded",loaded}});
     }
 }

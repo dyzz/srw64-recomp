@@ -113,7 +113,8 @@ void buttons() {
 // The game's scenes from its state (touch_scene.hpp).
 void recognition() {
     using srw64::touch_scene::decide;
-    check(decide(7, 0, 0, 12, false) == SceneId::Attract, "opening");
+    check(decide(7, 0, 0, 2, false) == SceneId::Opening && decide(7, 0, 0, 12, false) == SceneId::Opening, "opening, a demo's unit");
+    check(decide(7, 0, 0, 2, false, true) == SceneId::Attract, "PRESS START");
     check(decide(7, 0, 0, 3, false) == SceneId::TitleRing, "title ring");
     check(decide(7, 0, 0, 13, true) == SceneId::Dialogue, "prologue line");
     check(decide(2, 5, 0, 0, true) == SceneId::BattleScene, "battle lines stay the battle's");

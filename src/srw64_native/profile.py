@@ -67,6 +67,8 @@ UI_KEYS |= {"title_press_start", "title_start", "title_load", "title_continue", 
 # The title menu pages (title_page.cpp) and their original/native switch.
 UI_KEYS |= {"settings_title_ui", "settings_title_ui_native", "settings_title_ui_original", "settings_title_ui_note",
             "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint"}
+# Giant Robo's subtitle under its title in the title demo (sprite_text.cpp kDemoWorks).
+UI_KEYS |= {"title_demo_giant_robo_subtitle"}
 # The settings window's pages, footer and Controls page (frontend.cpp settings_sync; the
 # page ids and the functions are the same lists as settings_pages and control_rows there).
 SETTINGS_PAGES = ("general", "interface", "rules", "cheats", "saves", "controls", "about")

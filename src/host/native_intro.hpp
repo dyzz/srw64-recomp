@@ -11,6 +11,8 @@ void overlay_loaded(uint32_t rom, uint32_t ram, uint32_t size);
 nlohmann::json state();
 // Title flow state of the intro overlay: 3 is the main menu. -1 when the overlay is not loaded.
 int title_major();
+// PRESS START waiting or the ring menu up: not the opening's fly-in and logo, not a demo.
+bool title_waiting();
 // Ask the adapter to skip the current text sequence as if R+START were pressed.
 void request_skip();
 }

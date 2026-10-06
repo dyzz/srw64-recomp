@@ -12,7 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 ROM = ROOT / "rom.z64"
 CARDS = ROOT / "assets/transcriptions/chapter-titles.ja.json"
 ENDING = ROOT / "assets/transcriptions/ending-pages.ja.json"
-TITLE_LABELS = ("title_press_start", "title_start", "title_load", "title_continue", "title_option")
+TITLE_LABELS = ("title_press_start", "title_start", "title_load", "title_continue", "title_option",
+                "title_demo_giant_robo_subtitle")
 
 
 class TextImageTests(unittest.TestCase):
@@ -67,6 +68,26 @@ class TextImageTests(unittest.TestCase):
             ui = json.loads((ROOT / f"content/locales/{locale}.json").read_text())["ui"]
             for key in TITLE_LABELS:
                 self.assertTrue(ui.get(key), f"{locale} {key}")
+
+    def test_title_demo_names(self):
+        # sprite_text.cpp kDemoWorks / kDemoUnits: the works' split titles (record 85 + work)
+        # and the units' names (527 + unit) are translated; the units follow the demo table
+        # 801CB124 (title overlay, ROM 0x10DA50 at 801C4500) but for マジンガーZ (JS 263 -> 262).
+        source = (ROOT / "src/host/sprite_text.cpp").read_text()
+        works = [int(row.split(",")[0]) for row in source.split("kDemoWorks[] = {", 1)[1].split("};", 1)[0].split("{")[1:]]
+        units = [int(row.split(",")[0]) for row in source.split("kDemoUnits[] = {", 1)[1].split("};", 1)[0].split("{")[1:]]
+        self.assertEqual(len(works), 23)
+        self.assertEqual(len(units), 23)
+        if ROM.exists():
+            rom = ROM.read_bytes()
+            table = [int.from_bytes(rom[0x114674 + 4 * i:0x114676 + 4 * i], "big") for i in range(23)]
+            self.assertEqual([262 if unit == 263 else unit for unit in table], units)
+        for locale in ("zh-Hans", "en"):
+            entries = {e["key"]: e["target"] for e in json.loads((ROOT / f"content/locales/{locale}.json").read_text())["entries"]}
+            for work in works:
+                self.assertIn(f"base:t00_{85 + work:05d}", entries, f"{locale} work {work}")
+            missing = [unit for unit in units if f"base:t00_{527 + unit:05d}" not in entries]
+            self.assertEqual(missing, [42], locale)   # F91 reads the same everywhere
 
 
 if __name__ == "__main__":

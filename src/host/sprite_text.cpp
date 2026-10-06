@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <iterator>
 #include <limits>
 #include <map>
 #include <mutex>
@@ -35,6 +36,29 @@ constexpr uint16_t kHudAtlas = 1159, kHudPalette = 1160, kBannerFirst = 1142, kB
 constexpr uint16_t kBannerRecords[] = {1020, 1019, 1026, 1022, 1021, 1024, 1025, 1023, 0, 0, 1100, 1101};
 constexpr const char* kBannerLabels[] = {"", "", "", "", "", "", "", "", "hud_shield_defense", "hud_critical", "", ""};
 constexpr const char* kBadgeLabels[] = {"hud_counter", "hud_defend", "hud_evade"};
+// Title demo names (docs/native/native-title-and-story-images.md): the works flying past
+// the title (801C5500: scene 628 + n, atlas 623, palette 624) and the unit named before
+// each demo battle (801C9EA8: scene 658 + n, atlas 656, palette 657).
+constexpr uint16_t kWorkPalette = 624, kWorkFirst = 628, kWorkLast = 650;
+constexpr uint16_t kUnitAtlas = 656, kUnitPalette = 657, kUnitFirst = 658, kUnitLast = 680;
+constexpr uint16_t kWorkTitles = 60, kWorkTitlesSplit = 85, kUnitNames = 527;   // text records: + work, + work, + unit
+// Per work scene: its work (records 60/85 + work); the record over it when the split title
+// has no caption (機動戦士ガンダム over 逆襲のシャア and 第08MS小隊); what the image shows under it.
+// Giant Robo's subtitle line is a UI label (地球が静止する日 has no text record).
+struct DemoWork { uint8_t work; uint16_t caption; const char* below; const char* subtitle = ""; };
+constexpr DemoWork kDemoWorks[] = {
+    {0, 0, ""}, {3, 0, ""}, {4, 0, ""}, {5, kWorkTitles, ""}, {6, 0, ""}, {2, 0, "STARDUST MEMORY"},
+    {8, 0, ""}, {9, 0, ""}, {1, kWorkTitles, ""}, {13, 0, ""}, {14, 0, ""}, {10, 0, ""}, {11, 0, ""},
+    {12, 0, ""}, {16, 0, ""}, {17, 0, ""}, {18, 0, ""}, {19, 0, ""}, {23, 0, ""}, {20, 0, ""},
+    {21, 0, ""}, {22, 0, ""}, {24, 0, "THE ANIMATION", "title_demo_giant_robo_subtitle"}};
+// Per unit scene: the unit (the demo table 801CB124 names マジンガーZ(JS), 263; the image
+// says マジンガーZ, 262) and the model number over the name, as the image shows it.
+struct DemoUnit { uint16_t unit; const char* model; };
+constexpr DemoUnit kDemoUnits[] = {
+    {262, ""}, {48, "MSZ-006"}, {171, ""}, {47, "MSZ-010"}, {150, ""}, {50, "RX-93"}, {174, ""}, {42, ""},
+    {158, ""}, {44, "RX-78GP03"}, {196, ""}, {1, "GF13-017NJII"}, {206, ""}, {119, "XXXG-00W0"}, {216, ""},
+    {248, ""}, {184, ""}, {273, "SPT-LZ-00X"}, {224, ""}, {177, ""}, {207, ""}, {74, "RX-79(G)"}, {187, ""}};
+static_assert(std::size(kDemoWorks) == kWorkLast - kWorkFirst + 1 && std::size(kDemoUnits) == kUnitLast - kUnitFirst + 1);
 
 std::u16string utf16(const std::string& text) {
     std::u16string out;
@@ -177,6 +201,62 @@ Style copyright_style(const std::string& locale) {
     Style s = page_style(locale, false);
     s.size = locale == "en" ? 12.5 : 13; s.pitch = 1.45; s.width = 288; s.max_height = 196;
     return s;
+}
+// Title demo names: white over a dark rim like the originals' grey ramps; one line each,
+// narrowed rather than shrunk when a translation runs long.
+Style demo_style(double size, double max_width) {
+    Style s;
+    s.size = size; s.min_size = size * .7; s.pitch = 1.15; s.max_width = max_width; s.condense_min = .72;
+    s.fill_bottom[0] = s.fill_bottom[1] = s.fill_bottom[2] = .80f;
+    s.outline[0] = s.outline[1] = s.outline[2] = .06f;
+    s.outline_px = size < 10 ? .7 : 1.0; s.shadow_px = .7; s.shadow_alpha = .5;
+    return s;
+}
+
+// Lines in their own styles, one under another and centred: each drawn alone, then laid
+// over each other (premultiplied) with the padding between them taken out.
+struct Piece { Style style; std::string text; };
+TextImage stacked(const std::vector<Piece>& pieces, const std::string& locale) {
+    constexpr double density = 8;
+    std::vector<TextImage> images;
+    std::vector<double> pads;
+    for (const auto& piece : pieces) {
+        if (piece.text.empty()) continue;
+        images.push_back(draw(piece.style, locale, piece.text, density));
+        pads.push_back(piece.style.outline_px + piece.style.shadow_px + 1);
+    }
+    TextImage out;
+    if (images.empty()) return out;
+    std::vector<int> top(images.size());
+    int width = 0, height = 0;
+    for (size_t i = 0; i < images.size(); ++i) {
+        if (i) height -= int(std::lround((pads[i - 1] + pads[i] - 1.5) * density));
+        top[i] = height;
+        height += int(images[i].height);
+        width = std::max(width, int(images[i].width));
+    }
+    out.width = uint32_t(width); out.height = uint32_t(height);
+    out.units[0] = float(width / density); out.units[1] = float(height / density);
+    out.rgba.assign(size_t(width) * height * 4, 0);
+    for (size_t i = 0; i < images.size(); ++i) {
+        const auto& image = images[i];
+        const int left = (width - int(image.width)) / 2;
+        for (int y = 0; y < int(image.height); ++y)
+            for (int x = 0; x < int(image.width); ++x) {
+                const uint8_t* s = &image.rgba[(size_t(y) * image.width + x) * 4];
+                uint8_t* d = &out.rgba[(size_t(top[i] + y) * width + left + x) * 4];
+                const float keep = 1 - s[3] / 255.f;
+                for (int c = 0; c < 4; ++c) d[c] = uint8_t(std::min(255.f, s[c] + d[c] * keep + .5f));
+            }
+    }
+    return out;
+}
+
+// The record's text without its end mark.
+std::string record(const uint8_t* rdram, uint16_t id) {
+    std::string text = dialogue::ui_text(rdram, id);
+    if (const auto end = text.find("<END>"); end != std::string::npos) text.erase(end);
+    return text;
 }
 
 // Hash for cache keys: the style's numbers and the text.
@@ -354,6 +434,37 @@ bool describe(const uint8_t* rdram, const sprites::SceneId& id, TextJob& job) {
         if (const auto end = text.find("<END>"); end != std::string::npos) text.erase(end);
         if (text.empty()) return false;
         job_for(job, banner_style(badge, locale), locale, text, badge ? "hud-badge" : "hud-banner");
+        return true;
+    }
+    // Title demo: a work's title (its caption above, small lines below) or a unit's name
+    // (its model number above).
+    const bool work = id.atlas == kTitleAtlas && id.palette == kWorkPalette && id.scene >= kWorkFirst && id.scene <= kWorkLast;
+    const bool unit = id.atlas == kUnitAtlas && id.palette == kUnitPalette && id.scene >= kUnitFirst && id.scene <= kUnitLast;
+    if (work || unit) {
+        std::vector<Piece> pieces;
+        if (work) {
+            const auto& entry = kDemoWorks[id.scene - kWorkFirst];
+            std::string caption, title = record(rdram, uint16_t(kWorkTitlesSplit + entry.work));
+            if (const auto br = title.find('\n'); br != std::string::npos) {   // <BR>, as the record expands
+                caption = title.substr(0, br);
+                title.erase(0, br + 1);
+                // "Dancouga:<BR>Super Beast Machine God": the name is the big line.
+                if (!caption.empty() && caption.back() == ':') { caption.pop_back(); std::swap(caption, title); }
+            } else if (entry.caption) {
+                caption = record(rdram, entry.caption);
+            }
+            pieces.push_back({demo_style(cjk ? 9.5 : 8.5, 220), caption});
+            pieces.push_back({demo_style(cjk ? 16 : 14, 230), title});
+            pieces.push_back({demo_style(7.5, 220), entry.below});
+            if (*entry.subtitle) pieces.push_back({demo_style(cjk ? 11 : 10, 220), catalog->ui(entry.subtitle)});
+        } else {
+            const auto& entry = kDemoUnits[id.scene - kUnitFirst];
+            pieces.push_back({demo_style(7.5, 200), entry.model});
+            pieces.push_back({demo_style(cjk ? 16 : 14, 230), record(rdram, uint16_t(kUnitNames + entry.unit))});
+        }
+        job.key = std::string(work ? "demo-work|" : "demo-unit|") + locale;
+        for (const auto& piece : pieces) job.key += "|" + style_key(piece.style) + "|" + piece.text;
+        job.render = [pieces, locale] { return stacked(pieces, locale); };
         return true;
     }
     // Title ring menu and PRESS START BUTTON; the palette's brightest colour tints it.

@@ -47,7 +47,7 @@ enum class SceneId : uint8_t {
     Other,        // not recognised: everything, so no screen lacks a button
     Hidden,       // the settings window, the Library, the MOD manager: all touch
     Page,         // our pages: the battle confirmation, intermission, saves, title lists
-    Attract,      // the logo, the opening, PRESS START
+    Attract,      // PRESS START waiting
     TitleRing,
     Prologue,
     Dialogue,
@@ -62,6 +62,7 @@ enum class SceneId : uint8_t {
     AnyKey,       // results, defeat, the ending: continue
     BattlePage,   // the pre-battle page, laid out for touch: its buttons are these (user, 2026-10-03)
     BattleSpirits,// its spirit list
+    Opening,      // the logo, the works flying past, a demo's unit coming in: START only
     Count
 };
 
@@ -98,6 +99,10 @@ inline Scene scene(SceneId id) {
     case SceneId::Attract:
         set(Slot::Primary, bits::Start, "touch_start"); settings();
         open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "viewer-open", "viewer_open");
+        s.tap_primary = true;
+        break;
+    case SceneId::Opening:
+        set(Slot::Primary, bits::Start, "touch_start"); settings();
         s.tap_primary = true;
         break;
     case SceneId::TitleRing:
