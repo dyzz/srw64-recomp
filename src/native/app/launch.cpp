@@ -4,6 +4,7 @@
 #include "rom_import.hpp"
 #include "json/json.hpp"
 #include <cstdio>
+#include <cstdlib>
 #include <map>
 #include <set>
 #include <stdexcept>
@@ -185,14 +186,20 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     const auto dialogue=session.session_dir()/"dialogue.json";
     atomic_write(dialogue,data.dump()+"\n");
 
-    // Do not inherit development probes, scripted inputs or another ROM variant.
+    // Do not inherit development probes, scripted inputs or another ROM variant. A test may
+    // point the update check at its own server (update_check.hpp).
+    const char* update_url=std::getenv("SRW64_UPDATE_URL");
+    const std::string kept_update_url=update_url?update_url:"";
     clear_runtime_environment();
+    if(!kept_update_url.empty())set_environment("SRW64_UPDATE_URL",kept_update_url);
     for(const auto& [key,value]:std::map<std::string,std::string>{
         {"SRW64_INTERACTIVE","1"},{"SRW64_ROM_VARIANT","jp"},
         {"SRW64_AUDIO_OUTPUT",options.mute?"0":"1"},{"SRW64_NATIVE_NAME_ENTRY","1"},
         {"SRW64_DIALOGUE_DATA",dialogue.string()},{"SRW64_PRESENTATION_SETTINGS",language_file.string()},
         // The player's key and controller bindings (input_bindings.hpp), beside the language.
         {"SRW64_INPUT_SETTINGS",(session.user_dir()/"input.json").string()},
+        // The update check's switch and its last result (update_check.hpp).
+        {"SRW64_UPDATE_STATE",(session.user_dir()/"update.json").string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
         // The save library: extended slots, and the card published as the game saves.
         {"SRW64_SAVE_LIBRARY",session.saves_dir().string()},

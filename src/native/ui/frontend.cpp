@@ -35,6 +35,7 @@
 #include "bezel.hpp"
 #include "post_filter.hpp"
 #include "notices.hpp"
+#include "update_check.hpp"
 #include "debug_ui.hpp"
 #include "debug_protocol.hpp"
 #include "modal_input.hpp"
@@ -127,6 +128,9 @@ unsigned mod_page{};
 // units or characters in a list, the chosen one's details beside it. The list keeps its
 // place per tab; the details follow the choice without rebuilding the window.
 std::atomic_bool library_open{};
+// The question, once, whether to check for updates on start-up (update_check.hpp), in the
+// settings window's frame on the title; asked: put this run.
+bool update_ask_open{},update_asked{};
 unsigned library_tab{};
 std::array<unsigned,2> library_index{};
 bool library_tab_focus{};
@@ -335,6 +339,9 @@ button.ctl-row:focus,button.ctl-row:hover {background-color:#3fd0ff26;}
 .ctl-capture-title {font-size:18dp; font-weight:bold; color:#ffd75e;}
 .ctl-capture-box p {margin:8dp 0 12dp; font-size:13dp; color:#a4b0d2;}
 .set-about {padding:0 12dp;} .set-about div {margin-top:6dp; font-size:15dp; color:#d6ddf2;}
+.set-about h2.app {font-size:22dp; letter-spacing:1dp; color:#ffd75e; border-bottom-width:0;}
+.set-panel.set-ask {width:auto; min-width:460dp; max-width:640dp; height:auto; max-height:88%;}
+.set-ask .set-body {flex:0 0 auto;} .set-ask .set-seg {display:inline-flex; margin-top:12dp;}
 .set-error {margin-top:8dp; font-size:13dp; color:#ff8d8d;}
 .set-foot {display:flex; align-items:center; gap:12dp; margin-top:8dp; padding-top:8dp; border-top:1dp #3fd0ff40;}
 .set-hint {flex:1 1 0; min-width:0; font-size:12dp; color:#a4b0d2;}
@@ -676,6 +683,8 @@ button.home-mod:hover, button.home-mod:focus, .pad button.home-mod:focus {color:
 /* The title's corners: settings top left, the frame-rate readout top right, the version
    bottom left, Library and MOD bottom right. */
 .home-version {position:absolute; left:14dp; bottom:10dp; font-size:13dp; color:#ffffffb0; pointer-events:none; font-effect:outline(1dp #000000c0);}
+.home-update {position:absolute; left:14dp; bottom:32dp; margin:0; padding:4dp 12dp; font-size:13dp; font-weight:bold; pointer-events:auto; color:#0b1230; background-color:#ffd75e; border-color:#ffd75e; border-radius:0;}
+.home-update:hover, .home-update:focus {color:#0b1230; background-color:#fff0b0; border-color:#fff0b0;}
 .dlc-meta {color:#a4b0d2; font-size:13dp; margin-top:2dp;}
 .bp-hints {text-align:center; font-size:15dp; color:#a4b0d2; height:21dp; white-space:nowrap; overflow:hidden;}
 .narrow .bp-hints {font-size:16dp; height:22dp;}
@@ -2169,8 +2178,17 @@ void viewer_sync() {
     if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(scroll>=0?Rml::ScrollAlignment::Nearest:Rml::ScrollAlignment::Center));}
 }
 void settings_sync() {
-    if(!settings_open){mod_open=false;library_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(!settings_open){update_ask_open=false;mod_open=false;library_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
     if(viewer_open){viewer_sync();return;}
+    if(update_ask_open && !library_open && !mod_open) {
+        const auto stamp="update-ask"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        settings_doc=document(update_ask_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc->UpdateDocument();
+        if(!pointer_mode)settings_focus_first();
+        return;
+    }
     if(library_open) {
         const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -2273,7 +2291,8 @@ void settings_sync() {
         auto version=localization::catalog().ui("settings_about_version");
         if(const auto at=version.find("{version}");at!=std::string::npos)version.replace(at,9,SRW64_VERSION);
         // The HarmonyOS Sans licence asks for a visible notice wherever it is used.
-        body+="<div class='set-about'><h2>SRW64</h2><div>"+escape(version)+"</div><h2>"+label("font_credit")+"</h2><div>"+label("settings_about_font")+"</div>"
+        body+="<div class='set-about'><h2 class='app'>Marchwind64</h2><div>"+label("settings_about_tagline")+"</div><div>"+escape(version)+"</div></div>"+about_rows()+
+            "<div class='set-about'><h2>"+label("font_credit")+"</h2><div>"+label("settings_about_font")+"</div>"
             // PromptFont asks for an attribution in the credits.
             "<h2>"+label("settings_about_prompts_title")+"</h2><div>"+label("settings_about_prompts")+"</div>"
             // librashader is MPL 2.0; its licence ships beside the app (package_macos.py).
@@ -2295,6 +2314,18 @@ void settings_sync() {
 void settings_show(unsigned page,const std::string& focus) {
     if(page==settings_page)return;
     settings_page=page;settings_focus=focus;settings::set_settings_page(settings_pages[page]);
+}
+// The settings window on its About page (the application menu, the title's update hint).
+void open_about(const std::string& focus) {
+    const unsigned about=unsigned(std::size(settings_pages)-1);
+    if(settings_open && !library_open && !mod_open && !viewer_open && !update_ask_open) {
+        if(settings_page!=about)settings_show(about,focus);
+        else settings_focus=focus;
+        return;
+    }
+    settings::set_settings_page(settings_pages[about]);
+    update_ask_open=false;library_open=false;mod_open=false;viewer_open=false;
+    settings_open=true;settings_built=-1;settings_focus=focus;settings_release.hold();input.clear();
 }
 // L1/R1, Q/E and the page keys: the next or previous page, wrapping round. The focus
 // stays on the tab bar if it was there, else moves to the new page's first setting.
@@ -3436,7 +3467,8 @@ void home_sync() {
     if(!intro::title_waiting() || settings_open){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
     // With touch controls the Library, MOD and settings are touch buttons along the top.
     const bool touch=touch_active();
-    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+(touch?"t":"")+frame_stamp();
+    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+(touch?"t":"")+frame_stamp()+
+        (update::status("en").state==update::State::Available?"u"+update::status("en").latest.version:std::string());
     if((home_doc || home_chrome_doc) && stamp==home_stamp)return;
     document_close(home_doc);document_close(home_chrome_doc);home_stamp=stamp;
     // Library and MOD bottom right, lettered like the ring (menu_style: 14 game pixels, a
@@ -3454,6 +3486,9 @@ void home_sync() {
     if(!touch)home_doc=document("<div class='home-corner' style='"+corner+"'>"+lettered("library-open","library_open")+lettered("viewer-open","viewer_open")+(mod_entry_shown?lettered("mod-open","mod_open"):std::string())+"</div>",false);
     std::string chrome="<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
     if(settings_entry && !touch)chrome+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
+    // A newer release, found by the update check: a word in the corner that opens the About page.
+    if(const auto s=update::status("en");s.state==update::State::Available && !touch)
+        chrome+="<button id='update-open' class='home-update'>"+update_words("update_title_hint",s)+"</button>";
     home_chrome_doc=document(chrome,false,true);
 }
 // The HD original (battle_ui "hd"): the original screen redrawn in its own 320x240
@@ -3662,6 +3697,24 @@ void choose(const std::string& id) {
     if(id=="intermission-funds" || id=="upgrade-funds"){funds_editing=id.substr(0,id.size()-6);return;}
     if(id.ends_with("-funds-input"))return;
     funds_editing.clear();
+    // The update check (update_check.hpp): the start-up question, the About page, the title's hint.
+    if(id.starts_with("update-ask:") || (update_ask_open && id=="settings-close")) {
+        update::set_automatic(id=="update-ask:on");
+        update_ask_open=false;physical_held=held();settings_open=false;return;
+    }
+    if(id=="update-check"){update::check(true);settings_focus=id;return;}
+    if(id.starts_with("update-auto:")){update::set_automatic(id.ends_with(":on"));settings_focus=id;return;}
+    if(id=="update-download" || id=="update-notes") {
+        const auto s=update::status(update::site_language(localization::catalog().locale));
+        open_page(id=="update-download"?s.latest.download:s.latest.notes);settings_focus=id;return;
+    }
+    if(id.starts_with("about-link:")) {
+        const auto which=id.substr(11);
+        open_page(which=="site"?std::string(update::kSite)+"/"+update::site_language(localization::catalog().locale)+"/":
+                  which=="issues"?std::string(update::kIssues):std::string(update::kSource));
+        settings_focus=id;return;
+    }
+    if(id=="update-open"){open_about("update-download");return;}
     if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
     if(id=="settings-open"){settings_open=true;settings_release.hold();input.clear();return;}
     // The MOD manager. Its campaign page switches campaign (or back to the main game) on the
@@ -4146,6 +4199,9 @@ void notices_sync() {
     if(notice_doc)notice_doc->PullToFront();
 }
 void initialize() {
+    // The update check's state and, if the player chose it, the day's check (update_check.hpp).
+    static const bool update_started=[]{update::init(SRW64_VERSION);update::check_on_start();return true;}();
+    (void)update_started;
     layered=std::make_unique<LayeredRender>(renderer->get_rml_interface());
     Rml::SetSystemInterface(&system);Rml::SetRenderInterface(layered.get());
     if(!Rml::Initialise())throw std::runtime_error("Cannot initialize shared UI");
@@ -4335,8 +4391,14 @@ void sync() {
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_view"),
-                      language->ui("menu_fullscreen"),language->ui("menu_window_scale")},window_menu_state());
+                      language->ui("menu_fullscreen"),language->ui("menu_window_scale"),language->ui("menu_about"),language->ui("menu_check_updates")},window_menu_state());
     if(app_menu::take_settings_request())choose("settings-open");
+    if(app_menu::take_about_request())open_about("");
+    if(app_menu::take_update_request()){open_about("update-check");update::check(true);}
+    // The first time the title waits, the question whether to check for updates on start-up.
+    if(!update_asked && !settings_open && intro::title_waiting() && update::should_ask()) {
+        update_asked=true;update_ask_open=true;settings_open=true;settings_release.hold();input.clear();
+    }
     if(app_menu::take_reload_request())srw64::dialogue::request_reload();
     if(app_menu::take_fullscreen_request())toggle_fullscreen();
     if(const int n=app_menu::take_scale_request())scale_window(n);

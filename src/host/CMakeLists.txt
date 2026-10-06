@@ -146,6 +146,16 @@ if(SRW64_ENABLE_RT64)
         target_sources(srw64-gfx-host PRIVATE macos/app_menu.mm)
         set_source_files_properties(macos/app_menu.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
     endif()
+    # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md).
+    target_sources(srw64-gfx-host PRIVATE update_check.cpp update_http.cpp)
+    if(APPLE)
+        target_sources(srw64-gfx-host PRIVATE macos/update_http_macos.mm)
+        set_source_files_properties(macos/update_http_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
+    elseif(WIN32)
+        target_link_libraries(srw64-gfx-host PRIVATE winhttp)
+    elseif(NOT ANDROID)
+        target_link_libraries(srw64-gfx-host PRIVATE ${CMAKE_DL_LIBS})
+    endif()
     # Debug interface (docs/guide/debug-interface.md), inert unless SRW64_DEBUG=1.
     target_sources(srw64-gfx-host PRIVATE debug_server.cpp)
     # Banners and settings share the SDL/RmlUi surface.

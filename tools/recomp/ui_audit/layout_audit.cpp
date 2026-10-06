@@ -7,6 +7,9 @@
 #include "probe_surface.hpp"
 #include "localization/catalog.hpp"
 #include "presentation_settings.hpp"
+#include "update_check.hpp"
+#include "cheats.hpp"
+#include "post_filter.hpp"
 #include "native_name_entry.hpp"
 #include "link_page.hpp"
 #include "battle_page.hpp"
@@ -89,11 +92,24 @@ float ui_scale(UiSize s){return s==UiSize::Largest?1.5f:s==UiSize::Large?1.25f:1
 const char* ui_size_name(UiSize s){return s==UiSize::Largest?"largest":s==UiSize::Large?"large":"standard";}
 void set_wide_picture(bool v){wide=v;} bool wide_picture(){return wide;}
 bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
+// No bezel, filter or cheat chosen.
+std::string bezel(){return {};} void set_bezel(const std::string&){} std::string filter(){return {};} void set_filter(const std::string&){}
+unsigned filter_scale(){return 1;} void set_filter_scale(unsigned){} unsigned cheats(){return 0;} void set_cheats(unsigned){}
+std::vector<fs::path> bezel_roots(){return {};} std::vector<fs::path> filter_roots(){return {};}
 }
+namespace srw64::cheats { std::vector<Pilot> pilots(){return {};} void request_level(unsigned,unsigned){} }
+namespace srw64::post_filter { Status status(){return {};} }
 namespace srw64::app_menu {
 void update(const Labels&,const WindowState&){} bool available(){return false;} bool activate_settings(){return false;}
 bool activate(const std::string&){return false;} bool take_settings_request(){return false;} bool take_reload_request(){return false;}
 bool take_fullscreen_request(){return false;} int take_scale_request(){return 0;} void shutdown(){}
+bool take_about_request(){return false;} bool take_update_request(){return false;}
+}
+// The update check as a first launch sees it: never checked, the start-up question unanswered.
+namespace srw64::update {
+void init(std::string_view){} bool supported(){return true;} std::optional<bool> automatic(){return std::nullopt;}
+void set_automatic(bool){} bool should_ask(){return false;} void check(bool){} void check_on_start(){}
+Status status(std::string_view){return {};} bool open_url(const std::string&){return true;}
 }
 namespace srw64::dialogue {
 void request_reload(){}

@@ -3,7 +3,7 @@
 #include <atomic>
 
 namespace {
-std::atomic_bool requested{}, reload{}, fullscreen{}, installed{};
+std::atomic_bool requested{}, reload{}, fullscreen{}, installed{}, about{}, updates{};
 std::atomic_int scale{};
 void on_main(dispatch_block_t work) {
     if ([NSThread isMainThread]) work();
@@ -16,12 +16,16 @@ void on_main(dispatch_block_t work) {
 - (void)reloadDialogue:(id)sender;
 - (void)toggleGameFullScreen:(id)sender;
 - (void)scaleWindow:(id)sender;
+- (void)openAbout:(id)sender;
+- (void)checkForUpdates:(id)sender;
 @end
 @implementation SRW64AppMenuTarget
 - (void)openSettings:(id)sender { requested = true; }
 - (void)reloadDialogue:(id)sender { reload = true; }
 - (void)toggleGameFullScreen:(id)sender { fullscreen = true; }
 - (void)scaleWindow:(id)sender { scale = int([sender tag]); }
+- (void)openAbout:(id)sender { about = true; }
+- (void)checkForUpdates:(id)sender { updates = true; }
 @end
 
 namespace srw64::app_menu {
@@ -33,6 +37,8 @@ NSMenuItem* separator;
 NSMenuItem* view_item;  // the View menu's entry in the menu bar
 NSMenuItem* fullscreen_item;
 NSMenuItem* scale_items[kScales];
+NSMenuItem* about_item;    // SDL's About entry, turned to the settings window's About page
+NSMenuItem* updates_item;
 std::string last_title;
 WindowState last_state{false, -1, -1};
 
@@ -44,7 +50,8 @@ std::string scale_title(const std::string& pattern, int n) {
 }
 }
 void update(const Labels& labels, const WindowState& state) {
-    const std::string title = labels.settings + "\n" + labels.reload + "\n" + labels.view + "\n" + labels.fullscreen + "\n" + labels.window_scale;
+    const std::string title = labels.settings + "\n" + labels.reload + "\n" + labels.view + "\n" + labels.fullscreen + "\n" + labels.window_scale +
+                              "\n" + labels.about + "\n" + labels.check_updates;
     if (installed && title == last_title && state.fullscreen == last_state.fullscreen &&
         state.scale == last_state.scale && state.largest == last_state.largest) return;
     on_main(^{
@@ -60,8 +67,19 @@ void update(const Labels& labels, const WindowState& state) {
             reload_item.keyEquivalentModifierMask = NSEventModifierFlagCommand;
             reload_item.target = target;
             separator = [NSMenuItem separatorItem];
-            // After About and its separator, before Services/Hide/Quit.
-            NSInteger index = MIN(2, menu.numberOfItems);
+            // SDL's About shows the system panel; ours has the links and the update check.
+            for (NSMenuItem* entry in menu.itemArray)
+                if (entry.action == @selector(orderFrontStandardAboutPanel:)) about_item = entry;
+            updates_item = [[NSMenuItem alloc] initWithTitle:@"" action:@selector(checkForUpdates:) keyEquivalent:@""];
+            updates_item.target = target;
+            NSInteger after_about = about_item ? [menu indexOfItem:about_item] + 1 : 0;
+            [menu insertItem:updates_item atIndex:after_about];
+            if (about_item) {
+                about_item.target = target;
+                about_item.action = @selector(openAbout:);
+            }
+            // After About, Check for Updates and their separator, before Services/Hide/Quit.
+            NSInteger index = MIN(after_about + 2, menu.numberOfItems);
             [menu insertItem:item atIndex:index];
             [menu insertItem:reload_item atIndex:index + 1];
             [menu insertItem:separator atIndex:index + 2];
@@ -90,6 +108,8 @@ void update(const Labels& labels, const WindowState& state) {
                 if (entry.action == @selector(toggleFullScreen:)) entry.hidden = YES;
         }
         item.title = text(labels.settings);
+        if (about_item) about_item.title = text(labels.about);
+        updates_item.title = text(labels.check_updates);
         reload_item.title = text(labels.reload);
         view_item.title = text(labels.view);
         view_item.submenu.title = text(labels.view);
@@ -130,6 +150,8 @@ bool activate(const std::string& title) {
     return activated;
 }
 bool take_settings_request() { return requested.exchange(false); }
+bool take_about_request() { return about.exchange(false); }
+bool take_update_request() { return updates.exchange(false); }
 bool take_reload_request() { return reload.exchange(false); }
 bool take_fullscreen_request() { return fullscreen.exchange(false); }
 int take_scale_request() { return scale.exchange(0); }
@@ -139,11 +161,17 @@ void shutdown() {
         [reload_item.menu removeItem:reload_item];
         [separator.menu removeItem:separator];
         [view_item.menu removeItem:view_item];
+        [updates_item.menu removeItem:updates_item];
+        if (about_item) {
+            about_item.target = nil;
+            about_item.action = @selector(orderFrontStandardAboutPanel:);
+        }
+        about_item = nil; updates_item = nil;
         item = nil; reload_item = nil; separator = nil; view_item = nil; fullscreen_item = nil;
         for (auto& entry : scale_items) entry = nil;
         target = nil;
     });
-    installed = false; requested = false; reload = false; fullscreen = false; scale = 0;
+    installed = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false;
     last_title.clear(); last_state = {false, -1, -1};
 }
 }
