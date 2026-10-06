@@ -166,6 +166,13 @@ jobs:
       - name: Host
         run: cmake --build build/recomp/gfx-build --target srw64-gfx-host -j 4 -- -k 0
 
+      # librashader built from its pinned commit with D3D12 and Vulkan (fetch_librashader.py);
+      # the cache keeps the finished library, so Cargo only runs when the pin changes.
+      - uses: actions/cache@v5
+        with:
+          path: build/recomp/thirdparty/librashader/windows
+          key: librashader-windows-${{ hashFiles('tools/recomp/toolchain/fetch_librashader.py') }}
+
       - name: Package
         run: |
           $out = "Marchwind64-windows-x64"
@@ -177,7 +184,8 @@ jobs:
           Copy-Item -Recurse build/fonts "$out/fonts"
           Copy-Item -Recurse content/dialogue "$out/dialogue"
           Copy-Item tools/release/windows/Marchwind64.cmd $out
-          # librashader (D3D12 and Vulkan) and the built-in RetroArch filters (docs/native/bezels-and-filters.md).
+          # librashader (D3D12 and Vulkan, compiled unless cached) and the built-in RetroArch filters
+          # (docs/native/bezels-and-filters.md).
           .venv/Scripts/python.exe tools/recomp/toolchain/fetch_librashader.py
           if ($LASTEXITCODE -ne 0) { exit 1 }
           .venv/Scripts/python.exe tools/content/fetch_filters.py
