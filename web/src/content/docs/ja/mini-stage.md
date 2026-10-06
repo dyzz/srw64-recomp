@@ -16,7 +16,9 @@ updated: 2026-10-06
 
 [`/docs/mini-stage/llms.txt`](/docs/mini-stage/llms.txt) は、ミニステージを書くのに必要なことを AI エージェント向けに 1 つのテキストファイルにまとめたものです。作業の流れ、コンパイラが確認するすべての制限、キャラクターや機体の番号の調べ方、命令・条件命令・マーカー・イベントの種類・出撃データの項目の詳しい解説（英語名と中国語の根拠・検証結果）を収録しています。ゲームに接続したら、このアドレスをエージェントに渡してください。
 
-> https://srw64.dreamquest.club/docs/mini-stage/llms.txt を読んでから、味方 1 機と、その隣に敵 2 機を置いたミニステージを書いて。コンパイルして srw64_mini_stage_load で読み込み、入ったらスクリーンショットを撮って。
+```text
+https://srw64.dreamquest.club/docs/mini-stage/llms.txt を読んでから、味方 1 機と、その隣に敵 2 機を置いたミニステージを書いて。コンパイルして srw64_mini_stage_load で読み込み、入ったらスクリーンショットを撮って。
+```
 
 ## 必要なもの
 
@@ -87,7 +89,9 @@ python3 tools/recomp/script_lab/mini_stage.py compile my-test.json --out my-test
 
 ゲームをタイトル画面のメインメニュー（「ニューゲーム／コンティニュー」の階層）で止めておき、エージェントにイメージを読み込ませます。
 
-> タイトルのメインメニューになるまで待ってから、srw64_mini_stage_load で /あなたのパス/my-test.image.json を読み込み、ステージの準備ができたらスクリーンショットを撮って。
+```text
+タイトルのメインメニューになるまで待ってから、srw64_mini_stage_load で /あなたのパス/my-test.image.json を読み込み、ステージの準備ができたらスクリーンショットを撮って。
+```
 
 - `srw64_mini_stage_load` の `path` は、**ゲームが動いているマシン上**のパスです。Steam Deck に接続している場合は、先にイメージを Deck にコピーしてください。
 - 読み込むとすぐにステージに入り、開幕のイベントが流れたあと、マップ上で操作待ちになります。`srw64_status` の `mini_stage.ready` が `true` になれば操作できます。

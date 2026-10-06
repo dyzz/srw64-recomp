@@ -16,7 +16,9 @@ Mini stages are a debugging tool and **the game has no menu for them**: they can
 
 [`/docs/mini-stage/llms.txt`](/docs/mini-stage/llms.txt) puts everything needed to write a mini stage in one plain-text file for AI agents: the workflow, every limit the compiler checks, where to look up character and unit numbers, and the full reference of commands, conditions, markers, event types and deployment record fields (English names with the Chinese implementation notes and findings). Once the game is connected, hand the address to your agent:
 
-> Read https://srw64.dreamquest.club/docs/mini-stage/llms.txt, then write a mini stage with one allied unit and two enemies next to it, compile it, load it with srw64_mini_stage_load and take a screenshot once inside.
+```text
+Read https://srw64.dreamquest.club/docs/mini-stage/llms.txt, then write a mini stage with one allied unit and two enemies next to it, compile it, load it with srw64_mini_stage_load and take a screenshot once inside.
+```
 
 ## What you need
 
@@ -87,7 +89,9 @@ The image contains original data copied from your ROM. Use it on your own comput
 
 Leave the game on the title’s main menu (the New Game / Continue level), then have the agent load the image:
 
-> Wait for the title main menu, load /your/path/my-test.image.json with srw64_mini_stage_load, and take a screenshot once the stage is ready.
+```text
+Wait for the title main menu, load /your/path/my-test.image.json with srw64_mini_stage_load, and take a screenshot once the stage is ready.
+```
 
 - The `path` given to `srw64_mini_stage_load` is a path **on the machine the game runs on**. With a Steam Deck, copy the image to the Deck first.
 - The game enters the stage at once: the opening event plays, then it waits on the map for you. `mini_stage.ready` in `srw64_status` turns `true` when you can act.

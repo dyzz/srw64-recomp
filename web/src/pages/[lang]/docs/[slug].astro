@@ -15,6 +15,7 @@ const lang = Astro.params.lang as Lang;
 const { Content, headings } = await render(doc);
 const toc = headings.filter((h) => h.depth === 2);
 const updated = { zh: '更新于', en: 'Updated', ja: '更新' };
+const copy = { zh: ['复制', '已复制'], en: ['Copy', 'Copied'], ja: ['コピー', 'コピーしました'] };
 ---
 <Base lang={lang} title={doc.data.title} description={doc.data.summary}>
   <div class="wrap">
@@ -30,10 +31,15 @@ const updated = { zh: '更新于', en: 'Updated', ja: '更新' };
           <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
         </nav>
       )}
-      <article class="prose"><Content /></article>
+      <article class="prose" data-copy={copy[lang][0]} data-copied={copy[lang][1]}><Content /></article>
     </div>
   </div>
 </Base>
+
+<script>
+  import { copyButtons } from '../../../scripts/copy-code';
+  document.querySelectorAll<HTMLElement>('article.prose').forEach(copyButtons);
+</script>
 
 <style>
   .back { font-size: 14px; }

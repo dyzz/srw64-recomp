@@ -90,7 +90,9 @@ Your client should now list a set of tools whose names start with `srw64_`.
 
 Just ask the agent to connect. It doesn't need a path:
 
-> Use srw64_attach to connect to the game, then take a screenshot and tell me which screen it's on.
+```text
+Use srw64_attach to connect to the game, then take a screenshot and tell me which screen it's on.
+```
 
 Without arguments, `srw64_attach` looks in your user folder for games with the debug interface on and connects to the newest one that answers. If several games are running, or you want a particular one, pass the path from **Copy Run Folder** as its `run` argument.
 

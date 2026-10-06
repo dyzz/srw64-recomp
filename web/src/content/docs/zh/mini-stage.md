@@ -16,7 +16,9 @@ updated: 2026-10-06
 
 [`/docs/mini-stage/llms.txt`](/docs/mini-stage/llms.txt) 把写迷你关卡需要的一切放进一个纯文本文件，专门给 AI 智能体读：使用流程、编译器检查的每条限制、去哪里查人物和机体编号，以及全部指令、条件指令、标记、事件类型和出击记录字段的详细解析（英文名称加中文的实现依据与实测）。连上游戏后，把这个地址交给智能体即可：
 
-> 先读 https://srw64.dreamquest.club/docs/mini-stage/llms.txt，然后写一个迷你关卡：我方一台机体和两台相邻的敌人，编译后用 srw64_mini_stage_load 加载，进去后截图。
+```text
+先读 https://srw64.dreamquest.club/docs/mini-stage/llms.txt，然后写一个迷你关卡：我方一台机体和两台相邻的敌人，编译后用 srw64_mini_stage_load 加载，进去后截图。
+```
 
 ## 需要什么
 
@@ -87,7 +89,9 @@ python3 tools/recomp/script_lab/mini_stage.py compile my-test.json --out my-test
 
 让游戏停在标题画面的主菜单（「ニューゲーム／コンティニュー」那一层），然后让智能体加载镜像：
 
-> 等游戏到标题主菜单，用 srw64_mini_stage_load 加载 /你的路径/my-test.image.json，等关卡就绪后截图。
+```text
+等游戏到标题主菜单，用 srw64_mini_stage_load 加载 /你的路径/my-test.image.json，等关卡就绪后截图。
+```
 
 - `srw64_mini_stage_load` 的 `path` 是**游戏所在那台机器上**的路径。连 Steam Deck 时，镜像要先拷到 Deck 上。
 - 加载后游戏立刻进入关卡：先播开场事件，然后停在地图上等你操作。`srw64_status` 里的 `mini_stage.ready` 变成 `true` 表示已经可以操作了。
