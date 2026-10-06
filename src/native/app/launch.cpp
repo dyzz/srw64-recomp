@@ -1,4 +1,5 @@
 #include "launch.hpp"
+#include "rom_order.hpp"
 #include "sha256.hpp"
 #include "rom_import.hpp"
 #include "json/json.hpp"
@@ -54,7 +55,8 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     if(!options.campaign.empty())options.campaign_id=read_campaign_id(options.campaign);
     if(game.save_file.empty() || game.save_file.find_first_of("/\\:")!=std::string::npos ||
        game.save_file=="." || game.save_file=="..")throw std::runtime_error("Invalid game save filename");
-    if(sha256_file(options.rom)!=game.rom_sha256)throw std::runtime_error("ROM does not match the supported baseline");
+    // A .v64 or .n64 dump loads through a .z64 copy (rom_order.hpp).
+    options.rom=z64_rom(options.rom,fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir),game.rom_sha256);
     auto content=options.content;
     std::unique_ptr<Session> owned_session;
     if(content.empty()) {

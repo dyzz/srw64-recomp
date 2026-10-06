@@ -1,4 +1,5 @@
 #include "desktop.hpp"
+#include "rom_order.hpp"
 #include "sha256.hpp"
 #include <stdexcept>
 
@@ -25,9 +26,10 @@ fs::path validate_rom(const fs::path& path, const std::string& expected) {
     const auto resolved = fs::canonical(path);
     if (!fs::is_regular_file(resolved) || fs::file_size(resolved) > 64u * 1024u * 1024u)
         throw std::runtime_error("Select a regular Super Robot Wars 64 ROM file.");
-    if (sha256_file(resolved) != expected)
+    // Any byte order (.z64, .v64, .n64); the launch loads a .z64 copy (rom_order.hpp).
+    if (!rom_matches_any_order(resolved, expected))
         throw std::runtime_error("The ROM does not match Super Robot Wars 64 (Japan, Rev 0).\n"
-                                 "Use an unmodified, big-endian .z64 dump of your own game.");
+                                 "Use an unmodified dump of your own game (.z64, .v64 or .n64).");
     return resolved;
 }
 }

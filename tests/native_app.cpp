@@ -1,3 +1,4 @@
+#include "app/rom_order.hpp"
 #include "app/runtime.hpp"
 #include "app/sha256.hpp"
 #include "app/sram.hpp"
@@ -261,6 +262,30 @@ void environment() {
 }
 }
 int main() {
-    try { hashing();parser_and_paths();sessions();pruning();environment();std::cout<<checks<<" checks passed\n";return 0; }
+    try { hashing();parser_and_paths();sessions();pruning();environment();rom_byte_orders();std::cout<<checks<<" checks passed\n";return 0; }
     catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}
+// .v64 and .n64 dumps load through a .z64 copy (rom_order.hpp).
+void rom_byte_orders() {
+    std::string z64="\x80\x37\x12\x40" "ABCDEFGHIJKL";
+    std::string v64=z64,n64=z64;
+    for(size_t i=0;i<v64.size();i+=2)std::swap(v64[i],v64[i+1]);
+    for(size_t i=0;i<n64.size();i+=4){std::swap(n64[i],n64[i+3]);std::swap(n64[i+1],n64[i+2]);}
+    check(rom_big_endian(z64)==z64,"z64 kept");
+    check(rom_big_endian(v64)==z64,"v64 swapped back");
+    check(rom_big_endian(n64)==z64,"n64 swapped back");
+    check(rom_big_endian("not a rom!!!").empty(),"unknown header rejected");
+    check(rom_big_endian(z64.substr(0,6)).empty(),"odd length rejected");
+    const auto dir=fs::temp_directory_path()/("srw64-rom-order-"+std::to_string(std::chrono::steady_clock::now().time_since_epoch().count()));
+    fs::create_directories(dir);
+    const auto expected=sha256_bytes(z64);
+    atomic_write(dir/"game.n64",n64);atomic_write(dir/"game.z64",z64);
+    check(rom_matches_any_order(dir/"game.n64",expected),"n64 matches");
+    check(z64_rom(dir/"game.z64",dir/"user",expected)==dir/"game.z64","z64 used in place");
+    const auto copy=z64_rom(dir/"game.n64",dir/"user",expected);
+    check(copy==dir/"user"/"rom-z64.z64" && read_text(copy,64)==z64,"n64 converted to a z64 copy");
+    bool threw=false;try{z64_rom(dir/"game.n64",dir/"user",sha256_bytes("other"));}catch(const std::runtime_error&){threw=true;}
+    check(threw,"wrong game rejected");
+    fs::remove_all(dir);
+}
+
 }
