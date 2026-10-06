@@ -190,6 +190,8 @@ if(SRW64_ENABLE_RT64)
         add_custom_command(TARGET ${SRW64_HOST_TARGET} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "${SRW64_BUILD}/thirdparty/librashader/darwin/librashader.dylib" "$<TARGET_FILE_DIR:${SRW64_HOST_TARGET}>/librashader.dylib")
     endif()
+    srw64_add_native_gpu_shaders(${SRW64_HOST_TARGET} "${SRW64_RT64}")
+    if(APPLE)
         target_link_libraries(${SRW64_HOST_TARGET} PRIVATE "-framework Cocoa")
         target_compile_options(${SRW64_HOST_TARGET} PRIVATE -fblocks)
     endif()
@@ -205,8 +207,6 @@ if(SRW64_ENABLE_RT64)
         "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_BINARY_DIR}" "${SRW64_ROOT}/src/native"
         "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}"
         "${SRW64_RUNTIME}/librecomp/include/librecomp" "${SRW64_RUNTIME}/thirdparty/sse2neon"
-    srw64_add_native_gpu_shaders(${SRW64_HOST_TARGET} "${SRW64_RT64}")
-    if(APPLE)
         "${SRW64_RT64}/src" "${SRW64_RT64}/src/contrib" "${SRW64_RT64}/src/contrib/hlslpp/include"
         "${SRW64_RT64}/src/contrib/dxc/inc" "${SRW64_RT64}/src/contrib/plume"
         "${SRW64_RT64}/src/contrib/plume/contrib/metal-cpp"

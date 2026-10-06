@@ -261,9 +261,6 @@ void environment() {
     check(std::string(std::getenv("SRW_APP_TEST_UNRELATED"))=="keep","unrelated environment changed");
 }
 }
-int main() {
-    try { hashing();parser_and_paths();sessions();pruning();environment();rom_byte_orders();std::cout<<checks<<" checks passed\n";return 0; }
-    catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}
 // .v64 and .n64 dumps load through a .z64 copy (rom_order.hpp).
 void rom_byte_orders() {
     std::string z64="\x80\x37\x12\x40" "ABCDEFGHIJKL";
@@ -288,4 +285,7 @@ void rom_byte_orders() {
     fs::remove_all(dir);
 }
 
+int main() {
+    try { hashing();parser_and_paths();sessions();pruning();environment();rom_byte_orders();std::cout<<checks<<" checks passed\n";return 0; }
+    catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}
 }
