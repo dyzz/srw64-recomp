@@ -80,9 +80,7 @@ Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原
 
 ### RetroArch 滤镜与框体
 
-| | |
-| --- | --- |
-| ![框体加 crt-lottes 滤镜](web/public/media/filters-crt.webp) | ![只有框体](web/public/media/filters-plain.webp) |
+![RetroArch 框体加 crt-lottes 滤镜](web/public/media/filters-tv-crt.webp)
 
 可以直接使用 RetroArch 的 slang 着色器预设（.slangp），给画面加上 CRT 扫描线、NTSC 色彩等效果；画面比例为 4:3 时
 还能套上 RetroArch 的框体，透明窗口自动对准游戏画面。在「选项 → 通用」里设置。
@@ -93,8 +91,7 @@ Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原
 - 只作用于游戏画面和对白，选项窗口、提示和框体保持清晰
 - 滤镜支持 macOS 和 Linux／Steam Deck，Windows 版暂不支持
 
-<sub>第一张为框体加 crt-lottes 滤镜，第二张只有框体。演示用的 N64 框体来自 libretro/overlay-borders（作者 NyNy77，MIT 许可），
-已裁去两侧的 Nintendo 64 标识。安装包不内置任何框体。</sub>
+<sub>框体为 RetroArch 自带的 tv-integer（libretro/common-overlays，CC BY 4.0），滤镜为 crt-lottes（480 行）。安装包不内置任何框体。</sub>
 
 ### 图鉴：353 台机体、293 名人物
 

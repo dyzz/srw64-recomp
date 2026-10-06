@@ -87,9 +87,7 @@ N64 の原作をもとに、画面の刷新、全文翻訳、操作の改良を�
 
 ### RetroArch のフィルターとベゼル
 
-| | |
-| --- | --- |
-| ![ベゼル＋crt-lottes フィルター](web/public/media/filters-crt.webp) | ![ベゼルのみ](web/public/media/filters-plain.webp) |
+![RetroArch のベゼル＋crt-lottes フィルター](web/public/media/filters-tv-crt.webp)
 
 RetroArch の slang シェーダープリセット（.slangp）をそのまま使い、CRT の走査線や NTSC の色合いなどを加えられます。
 4:3 なら RetroArch のベゼルも重ねられ、透明部分は自動でゲーム画面に合わせます。設定は「オプション → 一般」から。
@@ -100,8 +98,7 @@ RetroArch の slang シェーダープリセット（.slangp）をそのまま�
 - フィルターはゲーム画面と会話だけにかかり、オプション画面・通知・ベゼルはくっきりしたまま
 - フィルターは macOS と Linux／Steam Deck に対応。Windows 版はまだ非対応
 
-<sub>1 枚目はベゼル＋crt-lottes フィルター、2 枚目はベゼルのみ。掲載の N64 ベゼルは libretro/overlay-borders（作者 NyNy77、
-MIT ライセンス）のもので、両側の Nintendo 64 のロゴは切り取っています。ゲームにベゼルは同梱していません。</sub>
+<sub>ベゼルは RetroArch 付属の tv-integer（libretro/common-overlays、CC BY 4.0）、フィルターは crt-lottes（480 ライン）。ゲームにベゼルは同梱していません。</sub>
 
 ### 図鑑：ユニット 353 体、キャラクター 293 人
 

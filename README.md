@@ -95,9 +95,7 @@ controller inputs.
 
 ### RetroArch filters and bezels
 
-| | |
-| --- | --- |
-| ![Bezel with the crt-lottes filter](web/public/media/filters-crt.webp) | ![Bezel only](web/public/media/filters-plain.webp) |
+![RetroArch bezel with the crt-lottes filter](web/public/media/filters-tv-crt.webp)
 
 Use RetroArch slang shader presets (.slangp) directly for CRT scanlines, NTSC colour and
 more. At 4:3 you can also add a RetroArch bezel; its transparent window lines up with the
@@ -112,9 +110,8 @@ picture by itself. Both are in Options → General.
   bezel stay sharp
 - Filters run on macOS and Linux/Steam Deck; not on Windows yet
 
-<sub>First: the bezel with the crt-lottes filter; second: the bezel only. The N64 bezel
-shown is from libretro/overlay-borders (by NyNy77, MIT licence), with the Nintendo 64
-marks on both sides cropped out. The game ships with no bezels.</sub>
+<sub>Bezel: tv-integer from RetroArch’s own overlays (libretro/common-overlays, CC BY 4.0).
+Filter: crt-lottes at 480 lines. The game ships with no bezels.</sub>
 
 ### Library: 353 units, 293 characters
 
