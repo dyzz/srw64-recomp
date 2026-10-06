@@ -4550,8 +4550,10 @@ bool dispatch(SDL_Event& event) {
     // A capture on the Controls page takes the next key or controller input.
     if(!capture.queue.empty() && settings_open && capture_event(event))return true;
     if(event.type==SDL_DROPFILE) {
-        // Debug aid: a mini-stage file dropped on the title menu loads and enters.
+        // Debug aid: a mini-stage file dropped on the title menu loads and enters, only while
+        // the debug interface is on; otherwise mini stages come in through it (mini_stage.load).
         const std::string path=event.drop.file?event.drop.file:"";SDL_free(event.drop.file);
+        if(!settings::debug_interface() && !settings::debug_interface_forced())return true;
         try {notices::post("mini-stage",mini_stage::load_file(path));}
         catch(const std::exception& error){notices::post("mini-stage-error",error.what());}
         return true;

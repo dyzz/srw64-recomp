@@ -29,7 +29,7 @@
 | 联动页：三张作品卡片、←→、空格／Z、Enter、Esc／X | SDL 鼠标与键盘 | `ui.click --text <作品名>`（每次切换勾选）、`ui.click --text <继续按钮>`、`ui.key right`／`space`／`return`；`status.link_page` 给出 `joined` 与 `scheduled` |
 | 选角与确认页：卡片、按钮、←→／Enter／Esc | SDL 鼠标与键盘 | `ui.click`、`ui.key`；`status.name_page` 给出 `person`（3 选角、2 确认）与选角页的四条路线 |
 | 战前确认页：双方概率、应对、动画、开始／返回；按键同游戏（Z/Enter、X/Esc、方向键/WASD、Q、E、K）及手柄 | SDL/RmlUi | `ui.click --id battle-confirm`、`battle-weapon`、`battle-counter`、`battle-evade`、`battle-defend`、`battle-spirits`、`battle-animation`、`battle-back`；`status.battle_page` 是游戏线程发布的快照 |
-| 运行时加载关卡文件 | 标题菜单时把文件拖到窗口 | `mini_stage.load {"path": <镜像或关卡源文件>}`；直接进入，无需启动时指定关卡，见[迷你关卡](../script/mini-stage.md) |
+| 运行时加载关卡文件 | 调试接口开着时，标题菜单时把文件拖到窗口 | `mini_stage.load {"path": <镜像或关卡源文件>}`；直接进入，无需启动时指定关卡，见[迷你关卡](../script/mini-stage.md) |
 | 主菜单迷你关卡入口 | RmlUi 按钮／F8 | 带 mini stage 启动后 `ui.click --id mini-enter`，或 `keys f8`；等待 `status.mini_stage.ready`。自动完成默认人物初始化，普通新游戏不变 |
 | 游戏内「选项」及规则设置 | RmlUi 控件、Ctrl/Cmd+, | `ui.click`、`ui.key`；`menu` 保留本地化规则标题的兼容转发 |
 | 场间 強化パーツ 页面：机体列表、槽位／库存、持有者 | RmlUi 页面 | `ui.click --id parts:N`／`parts-slot:N`，或 `keys` 的方向键、Z／X；`status.parts_page`，等待条件 `parts_page`，事件日志 `parts` |

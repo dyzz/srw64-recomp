@@ -448,7 +448,9 @@ every 4 frames: place one selected unit next to the ship, remove it from the abo
 进入时机提前约 700 VI 会改变 RNG 状态，敌方回合的出手对象与顺序随之变化；`check_battle_actions.py` 的反击段已改为按实际防守方执行对应检查（25 项通过，退出码 0，`build/recomp/debug/20260921T083602.242953Z/`）。
 
 **运行时加载任意本地关卡文件**：标题主菜单显示时，
-- 把关卡文件拖到游戏窗口（SDL 拖放事件；成功或失败以通知条显示），或
-- 调试接口 `mini_stage.load {"path": ...}`。
+- 调试接口 `mini_stage.load {"path": ...}`（MCP 的 `srw64_mini_stage_load`），或
+- 调试接口开着时（`--debug`，或设置「关于」页的调试接口开关），把关卡文件拖到游戏窗口（SDL 拖放事件；成功或失败以通知条显示）。
+
+普通游玩没有进入迷你关卡的入口（2026-10-06 用户定）：调试接口关着时拖放不加载；F8 与标题上的「进入迷你关卡」只在已经加载了关卡时出现，而关卡只能经调试接口或开发工具（`play_native.py --mini-stage`、`srw64ctl launch --mini-stage`）加载。
 
 编译后的镜像（`srw64.mini-stage-image.v1`）直接加载；关卡源文件（`srw64.mini-stage.v1`）先经 `SRW64_MINI_STAGE_COMPILER`（启动器设置为 shell 转义后的 `python tools/recomp/script_lab/mini_stage.py`）编译到运行目录的 `runtime-mini-stage-N.json`，编译输出在 `runtime-mini-stage-compile.log`。加载会替换当前镜像、重置绑定并立即武装进入；不需要启动时带 `SRW64_MINI_STAGE`。非标题菜单、文件不可读、编译失败均拒绝并给出原因。验证：不带关卡启动，标题菜单前加载被拒、缺失文件被拒、加载 `battle-ui.json` 源文件后 26.1 秒就绪，退出码 0（`build/recomp/debug/20260921T083917.598168Z/`）。拖放路径与调试命令共用 `mini_stage::load_file`，拖放事件本身未做自动化验证。
