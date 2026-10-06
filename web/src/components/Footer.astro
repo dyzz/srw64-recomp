@@ -1,5 +1,5 @@
 ---
-import { UI, type Lang } from '../i18n';
+import { TITLE_LOGO, UI, type Lang } from '../i18n';
 import release from '../data/release.json';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
@@ -7,13 +7,14 @@ const { lang } = Astro.props;
 <footer class="site-footer">
   <div class="wrap grid">
     <div>
-      <p class="brand"><img src="/brand/marchwind64-logo-small.webp" alt="MARCHWIND 64" width="200" height="79" /> <span class="dim latin">v{release.version}</span></p>
+      <p class="brand"><img src={`/brand/title-${lang}-small.webp`} alt={TITLE_LOGO[lang].alt} width="200" height={Math.round(TITLE_LOGO[lang].h * 200 / 1400)} /> <span class="dim latin">v{release.version}</span></p>
       <p class="dim small">{UI.footer.unofficial[lang]}</p>
     </div>
     <ul class="links">
       <li><a href="https://github.com/dyzz/srw64-recomp">{UI.footer.source[lang]} · GitHub</a></li>
       <li><a href={`/${lang}/install/`}>{UI.nav.install[lang]}</a></li>
       <li><a href={`/${lang}/faq/`}>{UI.nav.faq[lang]}</a></li>
+      <li><a href={`/${lang}/docs/`}>{UI.nav.docs[lang]}</a></li>
       <li><a href="/latest.json">latest.json</a></li>
     </ul>
   </div>

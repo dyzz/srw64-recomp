@@ -5,10 +5,10 @@ import type { Lang } from '../i18n';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = {
-  placeholder: { zh: '搜全部台词：日文原文、中文或英文', en: 'Search every line: Japanese, Chinese or English', ja: '全セリフを検索：日本語・中国語・英語' },
+  placeholder: { zh: '搜索全部台词：日文原文、中文或英文', en: 'Search all dialogue: Japanese, Chinese or English', ja: '全セリフを検索：日本語・中国語・英語' },
   none: { zh: '没有找到', en: 'No matches', ja: '見つかりませんでした' },
-  more: { zh: '只显示前 {n} 条，换个更具体的词试试', en: 'Showing the first {n}; try a more specific term', ja: '先頭 {n} 件のみ表示。もっと具体的な語でどうぞ' },
-  offline: { zh: '搜索暂时不可用', en: 'Search is unavailable right now', ja: '検索は現在利用できません' },
+  more: { zh: '显示前 {n} 条结果，请用更具体的关键词搜索', en: 'Showing the first {n} results. Try a more specific search term.', ja: '先頭 {n} 件を表示しています。より具体的な語で検索してください' },
+  offline: { zh: '搜索暂时不可用，请稍后再试', en: 'Search is temporarily unavailable. Please try again later', ja: '現在、検索を利用できません。時間をおいてお試しください' },
 };
 ---
 <div class="search" data-search data-lang={lang} data-none={t.none[lang]} data-more={t.more[lang]} data-offline={t.offline[lang]}>

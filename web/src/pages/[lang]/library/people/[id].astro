@@ -1,7 +1,8 @@
 ---
 import Base from '../../../../layouts/Base.astro';
-import { LANGS, UI, type Lang } from '../../../../i18n';
+import { LANGS, UI, canReview, type Lang } from '../../../../i18n';
 import { library, portraitUrl, type Person } from '../../../../lib/data';
+import Term from '../../../../components/Term.astro';
 
 export async function getStaticPaths() {
   return LANGS.flatMap((l) => library().people.map((p) => ({ params: { lang: l.code, id: String(p.id) } })));
@@ -16,12 +17,12 @@ const i = siblings.indexOf(p);
 const face = portraitUrl(p.portrait);
 const order = ['melee', 'shooting', 'skill', 'reaction', 'hit', 'evade', 'sp'] as const;
 const t = {
-  suggest: { zh: '对译名提意见', en: 'Suggest a better name', ja: '名称に意見' },
+  suggest: { zh: '对译名提建议', en: 'Suggest a name correction', ja: '訳名への意見を送る' },
   growth: { zh: 'Lv1 → Lv99', en: 'Lv1 → Lv99', ja: 'Lv1 → Lv99' },
 };
 const partner = (id: number) => lib.people.find((x) => x.id === id);
 ---
-<Base lang={lang} title={`${p.name[lang]} · ${UI.nav.library[lang]}`}>
+<Base lang={lang} title={`${p.name[lang]} · ${UI.nav.library[lang]}`} review={canReview(lang)}>
   <div class="wrap layout" data-library data-lang={lang} data-target-type="term" data-target-prefix="">
     <aside class="side">
       <a href={`/${lang}/library/#people`}>← {UI.nav.library[lang]}</a>
@@ -35,13 +36,13 @@ const partner = (id: number) => lib.people.find((x) => x.id === id);
       <div class="top">
         <div class="art">{face ? <img src={face} alt={p.name[lang]} width="160" height="160" /> : <span class="none"></span>}</div>
         <div class="info">
-          <p class="crumb">{series}</p>
+          <p class="crumb">{p.series != null ? <Term id={`series:${p.series}`} name={lib.series.find((x) => x.id === p.series)!.name} lang={lang} /> : series}</p>
           <div class="namerow" data-term={`person:${p.id}`}>
             <h1>{p.name[lang]}</h1>
-            {p.full_name[lang] !== p.name[lang] && <span class="full">{p.full_name[lang]}</span>}
+            {p.full_name.ja !== p.name.ja && <Term id={`person-full:${p.id}`} name={p.full_name} lang={lang} class="full" />}
             {lang !== 'ja' && <span class="jn" lang="ja">{p.full_name.ja}</span>}
             <span class="tr-zh" hidden>{p.name.zh}</span><span class="tr-en" hidden>{p.name.en}</span>
-            <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`person:${p.id}`}>{t.suggest[lang]}</button>
+            {canReview(lang) && <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`person:${p.id}`}>{t.suggest[lang]}</button>}
             <div data-term-body class="tb"></div>
           </div>
           <p class="badges">
@@ -73,7 +74,7 @@ const partner = (id: number) => lib.people.find((x) => x.id === id);
       {p.spirits.length > 0 && <>
         <h2>{L('spirits')} <span class="dim small">{L('library_spirit_note')}</span></h2>
         <ul class="spirits">
-          {p.spirits.map((s) => <li><strong>{s.name[lang]}</strong><span class="latin">Lv{s.level}</span><span class="dim">{L('library_spirit_cost').replace('{n}', String(s.cost))}</span></li>)}
+          {p.spirits.map((s) => <li><strong><Term id={`spirit:${s.id}`} name={s.name} lang={lang} /></strong><span class="latin">Lv{s.level}</span><span class="dim">{L('library_spirit_cost').replace('{n}', String(s.cost))}</span></li>)}
         </ul>
       </>}
       {p.skills.length > 0 && <>
@@ -81,7 +82,7 @@ const partner = (id: number) => lib.people.find((x) => x.id === id);
         <div class="skills">
           {p.skills.map((s) => (
             <div class="skill">
-              <span class="sn">{s.name[lang]}</span>
+              <span class="sn"><Term id={`skill:${s.name.ja}`} name={s.name} lang={lang} /></span>
               <div class="axis">
                 {s.levels.map((l) => <span class="tick" style={`left:${((l.level - 1) / 98) * 100}%`} title={l.label[lang]}><i></i><b class="latin">{l.level}</b></span>)}
               </div>

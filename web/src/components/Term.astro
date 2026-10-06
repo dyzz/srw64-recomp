@@ -1,0 +1,18 @@
+---
+// One Library name readers can suggest a better translation for: the name, a small
+// suggestion button and the place its panel opens (scripts/suggest.ts reads .tr-zh /
+// .tr-en for the current wording). The page needs data-library and initSuggestions().
+// `panel` names an element elsewhere to open the panel in (inside a scrolling table a
+// pop-over would be clipped).
+import { canReview, type Lang } from '../i18n';
+interface Props { id: string; name: { ja: string; zh: string; en: string }; lang: Lang; tag?: string; class?: string; panel?: string; }
+const { id, name, lang, tag = 'span', class: cls, panel } = Astro.props;
+const Tag = tag as any;
+const label = { zh: '对这个译名提建议', en: 'Suggest a name correction', ja: 'この訳名への意見を送る' }[lang];
+// Words, not an icon: next to weapon names an icon reads as one more weapon marker.
+const short = { zh: '提建议', en: 'Suggest', ja: '意見' }[lang];
+---
+<Tag class:list={['term', cls]} data-term={id} data-panel={panel}>
+  {canReview(lang) && <button type="button" class="term-act" data-suggest data-target-type="term" data-target-id={id} aria-label={label} title={label}>{short}</button>}<span class="term-name"><slot>{name[lang]}</slot></span><span class="tr-zh" hidden>{name.zh}</span><span class="tr-en" hidden>{name.en}</span>
+  {!panel && <span data-term-body class="term-body"></span>}
+</Tag>

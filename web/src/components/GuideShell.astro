@@ -12,12 +12,12 @@ const ui = GUIDE_UI[lang];
 const tabs = guideTabs(lang, ui);
 const AKURASU = 'https://akurasu.net/wiki/Super_Robot_Wars/64';
 const thanks = {
-  zh: `致谢：本攻略逐条对照了 <a href="${AKURASU}" rel="noopener">Akurasu Wiki 的《超级机器人大战64》页面</a>（流程图、隐藏要素等），感谢 Akurasu 的作者与编辑者多年的整理。正文以本项目对游戏脚本的解析为准，与之不同或其未载之处已用徽标标出。`,
-  en: `Thanks to Akurasu: every page of this guide was checked against the <a href="${AKURASU}" rel="noopener">Akurasu Wiki’s Super Robot Wars 64 pages</a> (flow chart, secrets and more), and we are grateful to everyone who has written and kept them up over the years. The text follows this project’s reading of the game’s scripts; where it differs from Akurasu, or covers something Akurasu does not, a badge says so.`,
-  ja: `謝辞：本攻略は <a href="${AKURASU}" rel="noopener">Akurasu Wiki の『スーパーロボット大戦64』のページ</a>（フローチャート・隠し要素など）と一項目ずつ照らし合わせて作成しました。長年まとめてこられた Akurasu の執筆者・編集者の皆さまに感謝します。本文は本プロジェクトによるゲームスクリプトの解析に基づき、Akurasu との相違点や未記載の点はバッジで示しています。`,
+  zh: `本攻略根据游戏脚本与程序解析整理，并参考了 <a href="${AKURASU}" rel="noopener">Akurasu Wiki 的《超级机器人大战64》页面</a>中的流程图、隐藏要素等资料。感谢 Akurasu 作者与编辑者长期维护这些内容。与 Akurasu 不同或其未收录的内容已作标记。`,
+  en: `This guide is based on the project’s analysis of the game’s scripts and code, with reference to the flow chart, secrets and other information on <a href="${AKURASU}" rel="noopener">Akurasu Wiki’s Super Robot Wars 64 pages</a>. Thanks to Akurasu’s writers and editors for maintaining this material over the years. Badges mark differences and information not covered there.`,
+  ja: `本攻略は、本プロジェクトによるゲームスクリプトとプログラムの解析をもとに、<a href="${AKURASU}" rel="noopener">Akurasu Wiki の『スーパーロボット大戦64』のページ</a>にあるフローチャートや隠し要素などの情報を参考にしてまとめました。長年にわたり情報を整備してきた Akurasu の執筆者・編集者の皆さまに感謝します。Akurasu との相違点や未記載の情報にはマークを付けています。`,
 };
 const t = {
-  offline: { zh: '下载离线版（单个网页文件，三语）', en: 'Offline copy (one HTML file, three languages)', ja: 'オフライン版（HTML 1 ファイル・3 言語）' },
+  offline: { zh: '下载离线版（单个网页文件，三语）', en: 'Download offline version (one HTML file, three languages)', ja: 'オフライン版をダウンロード（HTML 1 ファイル・3 言語）' },
 };
 ---
 <Base lang={lang} title={`${title} · ${UI.nav.guide[lang]}`} description={ui.title}>

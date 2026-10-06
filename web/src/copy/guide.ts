@@ -5,12 +5,12 @@ import type { Lang } from '../i18n';
 export const GUIDE_UI = {
   "zh": {
     "switch": "中文",
-    "title": "《超级机器人大战64》流程、隐藏要素与资料攻略",
+    "title": "《超级机器人大战64》攻略：流程、隐藏要素与资料",
     "nav": "攻略页面",
     "flow": "流程图",
     "hidden": "隐藏要素",
-    "flow_lead": "按话数排列；同一话数里并排的卡片是不同主角或路线的关卡。话数按游戏脚本的关卡衔接推算，取各路线最常见的值；走法不同时实际话数会前后差几话，卡片第一条备注写明差别。",
-    "hidden_lead": "人物、机体、武器与路线分歧的达成条件。条件以本项目对游戏脚本的解析为准，与社区攻略 Akurasu 的差异逐条标出。",
+    "flow_lead": "关卡按话数排列，同一话数下并排展示不同主角或路线的关卡。话数根据游戏脚本的关卡衔接推算，采用各路线最常见的值；实际话数可能因路线相差几话，具体差异见卡片首条备注。",
+    "hidden_lead": "人物、机体、武器与路线分歧的达成条件，根据本项目对游戏脚本的解析整理。与 Akurasu 攻略不同的地方已逐条标注。",
     "legend": [
       "加入",
       "临时参战",
@@ -94,8 +94,8 @@ export const GUIDE_UI = {
     "nav": "攻略ページ",
     "flow": "フローチャート",
     "hidden": "隠し要素",
-    "flow_lead": "話数順に並べ、同じ話数で横に並ぶカードは主人公やルートごとの別シナリオです。話数はゲームスクリプトのシナリオ接続から求め、各ルートで最も多い値を採っています。進み方によって実際の話数は前後するため、その差はカードの最初の備考に書いています。",
-    "hidden_lead": "隠しキャラクター・機体・武器とルート分岐の条件です。本プロジェクトによるゲームスクリプトの解析を基準とし、海外攻略サイト Akurasu との違いを項目ごとに示しています。",
+    "flow_lead": "話数順に並べています。同じ話数に並ぶカードは、主人公やルートによって異なるシナリオです。話数はゲームスクリプトのシナリオ接続から算出し、各ルートで最も多い値を採用しています。ルートによって実際の話数が数話前後する場合は、カードの最初の備考に記載しています。",
+    "hidden_lead": "隠しキャラクター・機体・武器とルート分岐の条件を、本プロジェクトによるゲームスクリプトの解析をもとにまとめています。海外攻略サイト Akurasu の情報と異なる点は、項目ごとに記載しています。",
     "legend": [
       "加入",
       "スポット参戦",
@@ -179,8 +179,8 @@ export const GUIDE_UI = {
     "nav": "Guide pages",
     "flow": "Flow Chart",
     "hidden": "Secrets",
-    "flow_lead": "Stages in order; cards side by side under one number are the scenarios of different protagonists or routes. Numbers are worked out from how the game's scripts chain the stages, using the most common value across routes; where your path gives a different number, the card's first note says so.",
-    "hidden_lead": "Requirements for hidden pilots, units, weapons and route splits. They follow this project's reading of the game's stage scripts; every point where Akurasu says otherwise is marked.",
+    "flow_lead": "Stages are listed by number, with different protagonists or routes shown side by side. Stage numbers are calculated from the connections in the game’s scripts, using the most common number across routes. Numbers may vary by a few stages depending on your route; the first note on each card explains the difference.",
+    "hidden_lead": "Requirements for hidden pilots, units, weapons and route splits, based on this project’s analysis of the game’s stage scripts. Differences from the Akurasu guide are marked individually.",
     "legend": [
       "Joins",
       "Guest",
@@ -195,15 +195,15 @@ export const GUIDE_UI = {
       "unverified": "Not verified in game"
     },
     "route_map": "Routes at a glance",
-    "victory": "Win",
-    "defeat": "Lose",
+    "victory": "Victory",
+    "defeat": "Defeat",
     "after": "After the stage: ",
     "b_join": "Joins / obtained",
     "b_temp": "Guest units",
     "b_leave": "Leaves / unavailable",
-    "b_upgrade": "Upgrades, new units, new weapons",
-    "b_parts": "Parts (dropped when shot down)",
-    "b_secret": "Secrets and splits",
+    "b_upgrade": "Upgrades / unit changes / new weapons",
+    "b_parts": "Parts (dropped by defeated units)",
+    "b_secret": "Secrets and route splits",
     "b_notes": "Notes",
     "stage": [
       "Stage",
@@ -218,7 +218,7 @@ export const GUIDE_UI = {
     "map": [
       [
         "Opening",
-        "Four leads · Real / Super"
+        "Four protagonists · Real / Super"
       ],
       [
         "Common route",
@@ -249,7 +249,7 @@ export const GUIDE_UI = {
         "From Kilimanjaro"
       ],
       [
-        "IA, second half",
+        "Independence Army, second half",
         "From the Galactic Vanguard"
       ],
       [

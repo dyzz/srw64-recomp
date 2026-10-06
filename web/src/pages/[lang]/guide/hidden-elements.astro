@@ -1,7 +1,8 @@
 ---
 import GuideShell from '../../../components/GuideShell.astro';
 import { GUIDE_UI } from '../../../copy/guide';
-import { hiddenElements, inline, progression } from '../../../lib/guide';
+import { hiddenElements, inline, progression, SECRET_ART } from '../../../lib/guide';
+import { library, portraitUrl } from '../../../lib/data';
 import { langPaths, type Lang } from '../../../i18n';
 
 export const getStaticPaths = langPaths;
@@ -12,6 +13,16 @@ const labels = Object.fromEntries(data.categories.map((c: any) => [c.id, c.label
 const I = (x: unknown) => inline(x, ui.tags);
 const stepLabel = (stage: string) => (/\d/.test(stage) ? ui.step.replace('{}', stage) : stage);
 const sources = progression(lang).sources ?? [];
+const lib = library();
+const people = new Map(lib.people.map((p) => [p.id, p]));
+const units = new Map(lib.units.map((u) => [u.id, u]));
+// Faces first, then machines; each links to its Library page.
+const art = (id: string) => [
+  ...(SECRET_ART[id]?.p ?? []).map((n) => people.get(n)!).filter((p) => portraitUrl(p.portrait))
+    .map((p) => ({ kind: 'face', href: `/${lang}/library/people/${p.id}/`, src: portraitUrl(p.portrait)!, name: p.name[lang] })),
+  ...(SECRET_ART[id]?.u ?? []).map((n) => units.get(n)!)
+    .map((u) => ({ kind: 'unit', href: `/${lang}/library/unit/${u.id}/`, src: `/gen/units/${u.id}.webp`, name: u.name[lang] })),
+];
 ---
 <GuideShell lang={lang} tab="hidden-elements" title={ui.hidden} lead={ui.hidden_lead}>
   <div class="filters" data-filters>
@@ -24,6 +35,9 @@ const sources = progression(lang).sources ?? [];
       <article class="gcard secret" id={e.id} data-category={e.category}>
         <div><span class="kicker">{e.kicker || labels[e.category]}</span>{e.applies && <span class="applies">{e.applies}</span>}</div>
         <h3>{e.title}</h3>
+        {art(e.id).length > 0 && <ul class="art">
+          {art(e.id).map((a) => <li class={a.kind}><a href={a.href} title={a.name}><img src={a.src} alt="" loading="lazy" width={a.kind === 'face' ? 80 : 96} height={a.kind === 'face' ? 80 : 96} /><span>{a.name}</span></a></li>)}
+        </ul>}
         {e.summary && <p class="summary" set:html={I(e.summary)} />}
         {e.steps?.length > 0 && <ol class="steps">
           {e.steps.map((s: any) => (
@@ -72,6 +86,13 @@ const sources = progression(lang).sources ?? [];
   .kicker { display: inline-flex; padding: 1px 8px; border-radius: 999px; background: rgba(255, 215, 94, 0.12); color: var(--gold); font-size: 12px; font-weight: 700; }
   .applies { margin-left: 8px; font-size: 12px; color: var(--dim); }
   .secret h3 { margin: 8px 0 0; font-size: 18px; }
+  .art { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; padding: 0; list-style: none; }
+  .art a { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 88px; color: var(--muted); font-size: 11px; line-height: 1.3; text-align: center; text-decoration: none; }
+  .art a:hover { color: var(--text); }
+  .art img { display: block; width: 88px; height: 88px; border: 1px solid var(--g-line); border-radius: 5px; background: rgba(63, 208, 255, 0.05); }
+  .art .face img { object-fit: cover; object-position: top; }
+  .art .unit img { object-fit: contain; padding: 4px; }
+  .art a:hover img { border-color: var(--cyan); }
   .summary { margin: 6px 0 12px; color: var(--muted); font-size: 14px; }
   .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
   .steps > li { position: relative; padding: 10px 0 10px 38px; border-top: 1px solid var(--g-line); counter-increment: s; }

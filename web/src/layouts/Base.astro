@@ -11,8 +11,10 @@ interface Props {
   lang: Lang;
   title?: string;
   description?: string;
+  /** Pages where readers can suggest changes: the header shows their identity. */
+  review?: boolean;
 }
-const { lang, title, description } = Astro.props;
+const { lang, title, description, review = false } = Astro.props;
 const info = langInfo(lang);
 const siteTitle = `${UI.brand} · ${UI.title[lang]}`;
 const fullTitle = title ? `${title} · ${UI.brand}` : siteTitle;
@@ -42,10 +44,14 @@ const path = Astro.url.pathname;
     </script>
   </head>
   <body>
-    <Header lang={lang} path={path} />
+    <Header lang={lang} path={path} review={review} />
     <main>
       <slot />
     </main>
     <Footer lang={lang} />
+    <script>
+      import { initLightbox } from '../scripts/lightbox';
+      initLightbox();
+    </script>
   </body>
 </html>

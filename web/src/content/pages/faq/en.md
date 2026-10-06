@@ -1,20 +1,20 @@
 ---
 title: FAQ
-lead: The questions asked most before and after installing. If yours is not here, open an issue on GitHub.
+lead: Common questions about installation, controls and saves. If you cannot find an answer, open an issue on GitHub.
 ---
 
 <span id="rom"></span>
 
 ## Why do I need my own ROM?
 
-The game's program, text, graphics and music belong to the original rights holders, so we cannot distribute them. This project only publishes what we wrote ourselves: the tools and runtime that turn the N64 program into native code, the translations and the interface. The game itself is read from your own ROM when you start it.
+The game content is read from your own ROM at launch; this project does not include a ROM. It provides the recompilation tools and runtime, translations and interface. The original game's code, text, graphics and music belong to their respective rights holders.
 
-Exactly one ROM is supported: Super Robot Wars 64, Japan Rev 0, `.z64` byte order, SHA-256
-`ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e`. Other revisions are not supported; convert a `.n64` or `.v64` file to `.z64` with any common N64 ROM tool first.
+Only Super Robot Wars 64, Japan Rev 0, is supported. Any byte order works (`.z64`, `.v64` or `.n64`); the game recognises and converts it. The SHA-256 of the `.z64` form is
+`ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e`. Other revisions are not supported.
 
 ## Is this an emulator?
 
-No. The N64's MIPS program is statically recompiled into C and built as a native Windows, macOS, Linux or Android program, with graphics drawn by [RT64](https://github.com/rt64/rt64). There is no BIOS, plugin or emulator setup, and the interface and features can be changed beyond the original.
+It is a native port built using static recompilation. The N64's MIPS program is translated into C, then compiled into a native Windows, macOS, Linux or Android application, with graphics rendered by [RT64](https://github.com/rt64/rt64). No BIOS, plugins or emulator configuration are needed. This approach also allows changes to the interface and additional features.
 
 ## Which platforms and controllers are supported?
 
@@ -23,42 +23,44 @@ No. The N64's MIPS program is statically recompiled into C and built as a native
 | Windows (experimental) | 64-bit Windows |
 | macOS | Apple silicon, macOS 14 or later |
 | Linux | x86-64, glibc 2.35 or later, a Vulkan driver |
-| Steam Deck (experimental) | The Linux package; the Deck is recognised |
+| Steam Deck (experimental) | The Linux package; the Deck is recognised automatically |
 | Android (experimental) | arm64, Android 9 or later, Vulkan 1.1 |
 
-Keyboards and common controllers work, and the on-screen hints follow whichever you used last. On Android without a controller you play by touch: buttons appear when a finger touches the screen, only the few the current screen needs, labelled with what they do, such as “OK”, “Fast” or “Next unit”. The settings window’s Controls page rebinds keys and buttons.
+Keyboards and common controllers are supported, and on-screen button prompts follow the device you used last. On Android, touch controls are available when no controller is connected. Touch the screen to show the buttons needed for the current screen, labelled with their functions, such as “OK”, “Fast” or “Next unit”. You can remap keyboard and controller inputs on the Controls page in settings.
 
 ## Where are my saves? Do they work with emulators?
 
-Saves live in the `saves` folder of the user directory:
+Saves are stored in the `saves` folder within the following user directories:
 
 - macOS: `~/Library/Application Support/SRW64Recomp/`
 - Linux and Steam Deck: `~/.local/share/srw64-recomp/`
 - Windows: `%LOCALAPPDATA%\SRW64Recomp\`
 
-The cartridge save `saves/cartridge.sram` has the same bytes as an ares `.ram`, so the two can be copied back and forth. For other emulators use the Saves page of the settings window: “Export for emulators” writes slots 1 and 2 for ares, Project64, mupen64plus and RetroArch, and “Import from emulators” reads saves you put in the `import` folder into a new slot, without overwriting any.
+The cartridge save `saves/cartridge.sram` is byte-for-byte compatible with an ares `.ram` file, so you can copy saves between the two. For other emulators, use the Saves page in settings. “Export for emulators” converts slots 1 and 2 to the formats used by ares, Project64, mupen64plus and RetroArch. “Import from emulators” reads saves placed in the `import` folder and adds them as new slots, preserving your existing saves.
 
 ## What is the HD pack?
 
-A separate, optional image pack. It changes no game content, only the pictures. Without it you see the original graphics; with it, <kbd>F6</kbd> switches between the two at any time.
+The HD pack is an optional, separate download that replaces the game's graphics. Without it, the game uses the original graphics. Once installed, you can switch between original and HD graphics at any time in game. On Android, import it in the app: long-press the app icon and choose “Import HD pack”, or open the downloaded zip with SRW64.
 
-Its images come from two kinds of source, both stated in the pack and the release notes:
+The images are mainly made in two ways, with their sources listed in the pack and release notes:
 
-- **AI-generated**: portraits, intermission backgrounds, space objects and the title image were generated by Alibaba Cloud’s Qwen image models with the original screens as reference; the story world map and the tactical maps were drawn by OpenAI’s image model from the original screens.
-- **Upscaled from the original**: unit art and the map unit icons were redrawn from the original pixel art with local upscaling models; the tactical maps’ palette-index maps are upscaled from the original map pixels.
+- **AI-generated**: portraits, intermission backgrounds, space objects and the title image are generated by Alibaba Cloud’s Qwen image models using the original graphics as reference. The story world map and the tactical map base images are drawn by OpenAI’s image model, also using the original graphics as reference.
+- **Upscaled from the original**: unit art and map unit icons are redrawn from the original pixel art with local upscaling models. The tactical maps’ palette-index maps are upscaled from the original map pixels.
 
-Frames are drawn by code; the BANPRESTO logo, GAME OVER and window borders are computed from your ROM at run time and are not in the pack.
+Frames are drawn by code. The BANPRESTO logo, GAME OVER and window borders are generated from your ROM at runtime and are not included in the pack.
 
 ## How do I change the language?
 
-Press <kbd>F7</kbd> (the left stick on a Steam Deck) to cycle between Chinese, English and Japanese, or choose under Language in the settings window. Dialogue, menus and data change together, and the choice is kept for the next launch.
+Choose Chinese, English or Japanese under Language in settings. There is also an in-game shortcut; its button depends on your platform and is listed on the Controls page of the settings. Dialogue, menus and data text switch together, and your choice is saved for the next launch.
 
 ## What is different from the original?
 
-The story, numbers, enemy behaviour and battle results run as on the N64. The differences are in the interface, reading and convenience: natively drawn settings and intermission screens, dialogue history and auto-reading, fast-forward and skip, widescreen, extra save slots and autosaves, rebinding. The few rule corrections are on the Rules page of the settings window and can be turned off.
+The story is preserved, while stats, enemy behaviour and battle calculations are based on the original. The Rules page in settings includes corrections that can be turned off. When enabled, these adjust the corresponding calculations and rules.
 
-Z+START during a battle is the original game’s soft reset: it returns to the title screen and unsaved progress is lost.
+Most additions focus on the interface, reading and controls: natively rendered settings and intermission screens, dialogue history and auto-reading, fast-forward and skip, widescreen, extra save slots, autosaves and remapping.
+
+The original game has a soft reset: pressing the N64 controller's Z and START together during a battle (see the Controls page in settings for where they are on your keyboard or controller) returns to the title screen, and unsaved progress is lost.
 
 ## How do I report a problem?
 
-Open an issue on [GitHub](https://github.com/dyzz/srw64-recomp/issues) with the version, your platform and what you did before it went wrong; screenshots help. In-game reporting is being worked on.
+Open an issue on [GitHub](https://github.com/dyzz/srw64-recomp/issues) with your version, platform and the steps leading up to the problem so it can be reproduced. Screenshots are helpful too. In-game reporting is still in development.

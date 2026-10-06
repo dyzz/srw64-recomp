@@ -1,11 +1,9 @@
-// Scene page controls: which translation shows, the Japanese on or off, and the hero
-// filter. Picking a hero hides the other routes' passages and fills in that hero's
-// portrait and the {HeroName}-style names. Choices are remembered per browser.
+// Stage page: the translation shown and the Japanese on or off (remembered per site
+// language), search within the stage, "only lines with suggestions", and the table of
+// contents following the scroll.
 
-type L3 = { ja: string; zh: string; en: string };
 const KEY = 'srw64-story';
 
-// Kept per site language: the English pages' translation choice is not the Chinese pages'.
 function load(lang: string): Record<string, string> {
   try { return JSON.parse(localStorage.getItem(`${KEY}-${lang}`) || '{}'); } catch { return {}; }
 }
@@ -16,73 +14,87 @@ function save(lang: string, v: Record<string, string>) {
 export function initStory() {
   const root = document.querySelector<HTMLElement>('[data-story]');
   if (!root) return;
-  const lang = root.dataset.lang as keyof L3;
-  const names: Record<string, Record<string, L3>> = JSON.parse(root.dataset.names || '{}');
+  const lang = root.dataset.lang!;
   const saved = load(lang);
-  const generic = new Map<HTMLElement, { src: string | null; name: string; ja: string }>();
+  const lines = [...root.querySelectorAll<HTMLElement>('.line')];
 
-  const langOf = (el: Element): keyof L3 => {
-    const l = el.closest('[lang]')?.getAttribute('lang') || lang;
-    return (l.startsWith('zh') ? 'zh' : l.startsWith('ja') ? 'ja' : 'en') as keyof L3;
-  };
-
-  function applyRoute(route: string) {
-    root!.querySelectorAll<HTMLElement>('[data-routes]').forEach((el) => {
-      const routes = el.dataset.routes;
-      el.classList.toggle('hidden-route', !!route && !!routes && !routes.split(' ').includes(route));
-    });
-    root!.querySelectorAll<HTMLElement>('.line[data-cands]').forEach((line) => {
-      const cands = JSON.parse(line.dataset.cands!);
-      const img = line.querySelector<HTMLImageElement>('img.face');
-      const name = line.querySelector<HTMLElement>('.name')!;
-      const wja = line.querySelector<HTMLElement>('.wja');
-      if (!generic.has(line)) generic.set(line, { src: img?.getAttribute('src') ?? null, name: name.textContent || '', ja: wja?.textContent || '' });
-      const pick = route ? cands[route] : null;
-      if (pick) {
-        name.textContent = pick.who[lang];
-        if (wja) wja.textContent = pick.who.ja;
-        let face = img;
-        if (!face) {
-          face = document.createElement('img');
-          face.className = 'face'; face.alt = ''; face.width = 160; face.height = 160;
-          line.querySelector('.face')!.replaceWith(face);
-        }
-        if (pick.face != null) face.src = `/gen/portraits/${pick.face}.webp`;
-      } else {
-        const g = generic.get(line)!;
-        name.textContent = g.name;
-        if (wja) wja.textContent = g.ja;
-        if (img && g.src) img.src = g.src;
-      }
-    });
-    root!.querySelectorAll<HTMLElement>('.ph').forEach((ph) => {
-      const n = route ? names[route]?.[ph.dataset.ph!] : null;
-      ph.textContent = n ? n[langOf(ph)] : ph.dataset.label!;
-    });
-  }
-
+  // --- View controls.
   function set(control: string, value: string) {
     root!.querySelectorAll<HTMLButtonElement>(`[data-control="${control}"] button`).forEach((b) => {
       b.setAttribute('aria-pressed', String(b.dataset.value === value));
     });
-    if (control === 'tr') root!.dataset.tr = value;
-    if (control === 'ja') root!.dataset.ja = value;
-    if (control === 'route') applyRoute(value);
+    root!.dataset[control] = value;
     saved[control] = value;
     save(lang, saved);
   }
-
   root.querySelectorAll<HTMLElement>('[data-control]').forEach((group) => {
     const control = group.dataset.control!;
     const buttons = [...group.querySelectorAll<HTMLButtonElement>('button')];
     buttons.forEach((b) => b.addEventListener('click', () => set(control, b.dataset.value!)));
-    const want = saved[control];
-    const initial = buttons.find((b) => b.dataset.value === want) ?? buttons.find((b) => b.getAttribute('aria-pressed') === 'true') ?? buttons[0];
+    const initial = buttons.find((b) => b.dataset.value === saved[control]) ?? buttons.find((b) => b.getAttribute('aria-pressed') === 'true') ?? buttons[0];
     set(control, initial.dataset.value!);
   });
 
-  // A #l<id> link lands on its line even when a route filter would hide it.
+  // --- Search within the stage: every visible text of a line, names included.
+  const input = root.querySelector<HTMLInputElement>('[data-find]')!;
+  const hitsOut = root.querySelector<HTMLElement>('[data-hits]')!;
+  let hits: HTMLElement[] = [];
+  let at = -1;
+  const text = (line: HTMLElement) => (line.dataset.text ??= (line.querySelector('.body')?.textContent || '').toLowerCase());
+  function go(step: number) {
+    if (!hits.length) return;
+    hits[at]?.classList.remove('hit-on');
+    at = (at + step + hits.length) % hits.length;
+    hits[at].classList.add('hit-on');
+    hits[at].scrollIntoView({ block: 'center' });
+    hitsOut.textContent = `${at + 1}/${hits.length}`;
+  }
+  function find() {
+    hits.forEach((h) => h.classList.remove('hit-on'));
+    const q = input.value.trim().toLowerCase();
+    hits = q ? lines.filter((l) => !l.classList.contains('filtered') && text(l).includes(q)) : [];
+    at = -1;
+    hitsOut.textContent = q ? (hits.length ? `0/${hits.length}` : '0') : '';
+    if (hits.length) go(1);
+  }
+  let timer = 0;
+  input.addEventListener('input', () => { clearTimeout(timer); timer = window.setTimeout(find, 200); });
+  input.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') { ev.preventDefault(); go(ev.shiftKey ? -1 : 1); } });
+  root.querySelectorAll<HTMLButtonElement>('[data-hit]').forEach((b) => b.addEventListener('click', () => go(Number(b.dataset.hit))));
+
+  // --- Suggestions: the count in the header and the "only reviewed" filter.
+  // Absent on the Japanese pages, which take no suggestions.
+  const only = root.querySelector<HTMLButtonElement>('[data-only]');
+  const onlyCount = root.querySelector<HTMLElement>('[data-only-count]');
+  const stat = root.querySelector<HTMLElement>('[data-stat-suggestions]');
+  function filter() {
+    const on = only?.getAttribute('aria-pressed') === 'true';
+    for (const l of lines) l.classList.toggle('filtered', on && !l.querySelector('[data-suggest][data-count]'));
+    root!.querySelectorAll<HTMLElement>('.node').forEach((n) => { n.hidden = on && !n.querySelector('.line:not(.filtered)'); });
+    if (input.value.trim()) find();
+  }
+  only?.addEventListener('click', () => { only.setAttribute('aria-pressed', String(only.getAttribute('aria-pressed') !== 'true')); filter(); });
+  root.addEventListener('suggestions', (ev) => {
+    const { items, online } = (ev as CustomEvent).detail;
+    if (stat) stat.textContent = online ? String(items.length) : '–';
+    if (onlyCount) onlyCount.textContent = `(${root!.querySelectorAll('.line [data-suggest][data-count]').length})`;
+    filter();
+  });
+
+  // --- Table of contents follows the scroll; the phone drop-down jumps.
+  const links = new Map([...root.querySelectorAll<HTMLAnchorElement>('[data-toc]')].map((a) => [a.dataset.toc!, a]));
+  const seen = new Map<string, boolean>();
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) seen.set(e.target.id, e.isIntersecting);
+    const first = [...links.keys()].reverse().find((id) => seen.get(id));
+    links.forEach((a, id) => a.classList.toggle('on', id === first));
+  }, { rootMargin: '-140px 0px -55% 0px' });
+  links.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+  root.querySelector<HTMLSelectElement>('[data-jump]')?.addEventListener('change', (ev) => {
+    const id = (ev.target as HTMLSelectElement).value;
+    if (id) document.getElementById(id)?.scrollIntoView({ block: 'start' });
+  });
+
   const target = location.hash && document.getElementById(location.hash.slice(1));
-  if (target?.classList.contains('hidden-route')) set('route', '');
-  if (target) target.scrollIntoView({ block: 'center' });
+  if (target?.classList.contains('line')) target.scrollIntoView({ block: 'center' });
 }

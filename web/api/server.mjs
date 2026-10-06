@@ -38,6 +38,8 @@ const COOKIE = 'srw64_session';
 const LOCALES = new Set(['zh-Hans', 'en']);
 const KINDS = new Set(['mistranslation', 'awkward', 'typo', 'naming', 'other']);
 const MAX_BODY = 64 * 1024;
+// Every list answers with at most the most recent 500 suggestions.
+const MAX_LIST = 500;
 
 // ---------------------------------------------------------------- game data
 const json = (p) => JSON.parse(readFileSync(join(DATA, p), 'utf8'));
@@ -55,9 +57,35 @@ for (const u of library.units) {
   terms.set(`unit:${u.id}`, u.name);
   for (const w of u.weapons) terms.set(`weapon:${w.id}`, w.name);
 }
-for (const p of library.people) terms.set(`person:${p.id}`, p.name);
-// Identities borrow a pilot's name and portrait, as on the SRW Z site.
-const pilots = library.people.filter((p) => !p.enemy && p.portrait?.hd && p.id > 32 && p.name.zh && !p.role);
+for (const p of library.people) {
+  terms.set(`person:${p.id}`, p.name);
+  if (p.full_name.ja !== p.name.ja) terms.set(`person-full:${p.id}`, p.full_name);
+}
+// Names shared across the Library are keyed once: spirits by id, skills and abilities
+// by their Japanese name.
+for (const p of library.people) {
+  for (const x of p.spirits) terms.set(`spirit:${x.id}`, x.name);
+  for (const x of p.skills) terms.set(`skill:${x.name.ja}`, x.name);
+}
+for (const u of library.units) for (const a of u.abilities) terms.set(`ability:${a.ja}`, a);
+for (const x of library.series) if (x.id != null) terms.set(`series:${x.id}`, x.name);
+// Identities borrow a character's name and portrait, as on the SRW Z site. Anyone named
+// with an HD portrait can be picked (one entry per name, not the four heroes and their
+// partners, whose names the player sets); a random draw takes an ally. A nickname gets a
+// nameless soldier's face.
+const seenName = new Set();
+const pickable = library.people
+  .filter((p) => p.enemy !== null && p.portrait?.hd && !p.portrait.silhouette_rgb && p.name.zh
+    && !(p.id >= 25 && p.id <= 32) && !/[(（]/.test(p.name.ja))
+  .filter((p) => !seenName.has(p.name.zh) && seenName.add(p.name.zh));
+const pickableById = new Map(pickable.map((p) => [p.id, p]));
+const pilots = pickable.filter((p) => p.enemy === false);
+const seenFace = new Set();
+const soldierFaces = library.people
+  .filter((p) => p.enemy === null && p.portrait?.hd && !p.portrait.silhouette_rgb)
+  .map((p) => p.portrait.image).filter((n) => !seenFace.has(n) && seenFace.add(n));
+const randomOf = (list) => list[randomBytes(4).readUInt32BE() % list.length];
+const seriesOrder = new Map(library.series.map((x, i) => [x.id, i]));
 
 const L = (locale) => (locale === 'zh-Hans' ? 'zh' : locale);
 function target(type, id, locale) {
@@ -82,7 +110,7 @@ db.exec(`
   PRAGMA foreign_keys = ON;
   CREATE TABLE IF NOT EXISTS participants (
     id INTEGER PRIMARY KEY, mode TEXT NOT NULL, pilot_id INTEGER, custom_name TEXT,
-    created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
+    custom_avatar INTEGER, created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
   CREATE TABLE IF NOT EXISTS sessions (
     token_hash TEXT PRIMARY KEY, participant_id INTEGER NOT NULL REFERENCES participants(id),
     created_at TEXT NOT NULL, expires_at TEXT NOT NULL);
@@ -99,6 +127,10 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS admin_log (
     id INTEGER PRIMARY KEY, suggestion_id INTEGER NOT NULL, action TEXT NOT NULL, reason TEXT NOT NULL, at TEXT NOT NULL);
 `);
+// Databases made before nicknames had faces.
+if (!db.prepare('PRAGMA table_info(participants)').all().some((c) => c.name === 'custom_avatar')) {
+  db.exec('ALTER TABLE participants ADD COLUMN custom_avatar INTEGER');
+}
 const now = () => new Date().toISOString();
 const sha = (s) => createHash('sha256').update(s).digest('hex');
 
@@ -119,7 +151,7 @@ function participantOf(req) {
   return row || null;
 }
 function newParticipant(res) {
-  const pilot = pilots[randomBytes(4).readUInt32BE() % pilots.length];
+  const pilot = randomOf(pilots);
   const t = now();
   const { lastInsertRowid } = db.prepare('INSERT INTO participants (mode, pilot_id, created_at, updated_at) VALUES (?, ?, ?, ?)').run('pilot', pilot.id, t, t);
   const token = randomBytes(32).toString('base64url');
@@ -130,7 +162,9 @@ function newParticipant(res) {
 }
 function display(p, lang) {
   if (!p) return { name: '', avatar: null };
-  if (p.mode === 'custom' && p.custom_name) return { name: p.custom_name, avatar: null };
+  if (p.mode === 'custom' && p.custom_name) {
+    return { name: p.custom_name, avatar: p.custom_avatar != null ? `/gen/portraits/${p.custom_avatar}.webp` : null };
+  }
   const pilot = library.people.find((x) => x.id === p.pilot_id);
   return { name: pilot ? pilot.name[lang] || pilot.name.zh : '?', avatar: pilot ? `/gen/portraits/${pilot.portrait.image}.webp` : null };
 }
@@ -154,7 +188,8 @@ function view(row, me, lang) {
     source: row.source_text, current: row.current_text, proposed: row.proposed, reason: row.reason,
     context, created_at: row.created_at, updated_at: row.updated_at,
     author: display(owner, lang), mine: !!me && me.id === row.participant_id,
-    ...st, admin_reason: row.admin_reason, question_response: row.question_response,
+    ...st, result: st.status === 'processed' ? (st.adopted ? 'adopted' : 'final') : st.status,
+    admin_reason: row.admin_reason, admin_at: row.admin_at, question_response: row.question_response,
   };
 }
 const clean = (s, max) => String(s ?? '').replace(/\r\n?/g, '\n').trim().slice(0, max);
@@ -215,23 +250,40 @@ const routes = {
   'GET /api/me': (req, url) => {
     const me = participantOf(req);
     const lang = url.searchParams.get('lang') || 'zh';
-    return [200, { participant: me ? { ...display(me, lang), mode: me.mode } : null }];
+    return [200, { participant: me ? { ...display(me, lang), mode: me.mode, pilot_id: me.mode === 'pilot' ? me.pilot_id : null } : null }];
   },
 
-  // Rename (custom nickname) or draw a new pilot identity.
+  // Everyone an identity can borrow, in the Library's series order.
+  'GET /api/me/pilots': (req, url) => {
+    const lang = url.searchParams.get('lang') || 'zh';
+    const list = [...pickable].sort((a, b) => (seriesOrder.get(a.series) ?? 999) - (seriesOrder.get(b.series) ?? 999) || a.id - b.id);
+    const series = library.series.map((x) => ({ id: x.id, name: x.name[lang] || x.name.zh }));
+    return [200, { series, pilots: list.map((p) => ({ id: p.id, series: p.series, name: p.name[lang] || p.name.zh, ja: p.name.ja, avatar: `/gen/portraits/${p.portrait.image}.webp` })) }];
+  },
+
+  // A nickname ({mode:'custom', name}), a chosen character ({mode:'pilot', pilot_id}) or a
+  // random ally ({mode:'pilot'}). Creates the identity when the browser has none yet.
   'POST /api/me': async (req, url, res) => {
     const body = await readBody(req);
     let me = participantOf(req) || newParticipant(res);
     if (body.mode === 'custom') {
       const name = clean(body.name, 20);
       if (!name) return [400, { error: 'name required' }];
-      db.prepare('UPDATE participants SET mode = ?, custom_name = ?, updated_at = ? WHERE id = ?').run('custom', name, now(), me.id);
+      // The soldier's face stays while the nickname changes.
+      const face = me.mode === 'custom' && me.custom_avatar != null ? me.custom_avatar : randomOf(soldierFaces);
+      db.prepare('UPDATE participants SET mode = ?, custom_name = ?, custom_avatar = ?, updated_at = ? WHERE id = ?').run('custom', name, face, now(), me.id);
     } else {
-      const pilot = pilots[randomBytes(4).readUInt32BE() % pilots.length];
+      let pilot;
+      if (body.pilot_id != null) {
+        pilot = pickableById.get(Number(body.pilot_id));
+        if (!pilot) return [400, { error: 'unknown pilot' }];
+      } else {
+        do pilot = randomOf(pilots); while (pilots.length > 1 && me.mode === 'pilot' && pilot.id === me.pilot_id);
+      }
       db.prepare('UPDATE participants SET mode = ?, pilot_id = ?, updated_at = ? WHERE id = ?').run('pilot', pilot.id, now(), me.id);
     }
     me = db.prepare('SELECT * FROM participants WHERE id = ?').get(me.id);
-    return [200, { participant: { ...display(me, url.searchParams.get('lang') || 'zh'), mode: me.mode } }];
+    return [200, { participant: { ...display(me, url.searchParams.get('lang') || 'zh'), mode: me.mode, pilot_id: me.mode === 'pilot' ? me.pilot_id : null } }];
   },
 
   // ?scene=N (one story page), ?target_type=&target_id= (one target),
@@ -241,23 +293,26 @@ const routes = {
     const lang = url.searchParams.get('lang') || 'zh';
     const p = url.searchParams;
     let rows;
+    // The latest MAX_LIST rows, oldest first on a page, newest first on the lists.
+    const recent = (where, args) => db.prepare(`SELECT * FROM (SELECT * FROM suggestions WHERE ${where} ORDER BY id DESC LIMIT ${MAX_LIST}) ORDER BY id`).all(...args);
     if (p.get('scene')) {
-      rows = db.prepare(`SELECT * FROM suggestions WHERE target_type = 'dialogue' AND json_extract(context_json, '$.scene') = ? ORDER BY id`).all(Number(p.get('scene')));
+      rows = recent(`target_type = 'dialogue' AND json_extract(context_json, '$.scene') = ?`, [Number(p.get('scene'))]);
     } else if (p.get('target_id')) {
-      rows = db.prepare('SELECT * FROM suggestions WHERE target_type = ? AND target_id = ? ORDER BY id').all(p.get('target_type') || 'dialogue', p.get('target_id'));
-    } else if (p.get('target_prefix')) {
-      rows = db.prepare('SELECT * FROM suggestions WHERE target_type = ? AND target_id LIKE ? ORDER BY id').all(p.get('target_type') || 'term', `${p.get('target_prefix')}%`);
+      rows = recent('target_type = ? AND target_id = ?', [p.get('target_type') || 'dialogue', p.get('target_id')]);
+    } else if (p.get('target_prefix') != null) {
+      rows = recent('target_type = ? AND target_id LIKE ?', [p.get('target_type') || 'term', `${p.get('target_prefix')}%`]);
     } else {
-      rows = db.prepare('SELECT * FROM suggestions ORDER BY id DESC').all();
-      if (p.get('mine') === '1') rows = me ? rows.filter((r) => r.participant_id === me.id) : [];
-      if (LOCALES.has(p.get('locale'))) rows = rows.filter((r) => r.locale === p.get('locale'));
+      const where = ['1'], args = [];
+      if (p.get('mine') === '1') { where.push('participant_id = ?'); args.push(me ? me.id : -1); }
+      if (LOCALES.has(p.get('locale'))) { where.push('locale = ?'); args.push(p.get('locale')); }
+      rows = recent(where.join(' AND '), args).reverse();
     }
     let items = rows.map((r) => view(r, me, lang));
     const counts = { pending: 0, questioned: 0, processed: 0, dismissed: 0 };
     for (const it of items) counts[it.status]++;
     if (p.get('status')) items = items.filter((it) => it.status === p.get('status'));
     const offset = Math.max(0, Number(p.get('offset') || 0));
-    const limit = Math.min(200, Math.max(1, Number(p.get('limit') || 200)));
+    const limit = Math.min(MAX_LIST, Math.max(1, Number(p.get('limit') || MAX_LIST)));
     return [200, { items: items.slice(offset, offset + limit), total: items.length, counts }];
   },
 
@@ -343,7 +398,7 @@ const routes = {
   // Maintainer export: every suggestion with its derived state, for working through.
   'GET /api/admin/suggestions': (req, url) => {
     if (!admin(req)) return [401, { error: 'admin token required' }];
-    let items = db.prepare('SELECT * FROM suggestions ORDER BY id').all().map((r) => view(r, null, 'zh'));
+    let items = db.prepare(`SELECT * FROM suggestions ORDER BY id DESC LIMIT ${MAX_LIST}`).all().reverse().map((r) => view(r, null, 'zh'));
     const st = url.searchParams.get('status');
     if (st) items = items.filter((x) => x.status === st);
     return [200, { items }];

@@ -16,32 +16,34 @@ type Item = {
 const T = {
   zh: {
     kinds: { mistranslation: '错译', awkward: '不通顺', typo: '错字', naming: '译名不统一', other: '其他' },
-    status: { pending: '待处理', questioned: '有疑问', processed: '已处理', dismissed: '不处理' },
-    adopted: '已采纳', proposal: '建议', reason: '理由', reasonPh: '哪里不对、为什么（可选）',
-    proposedLabel: '建议译文', submit: '提交意见', sent: '已提交，谢谢！', you: '你的身份', anon: '匿名',
-    none: '这一句还没有意见。', offline: '意见功能暂时不可用。', failed: '提交失败：', me: '我的意见',
-    hint: '不用注册；提交后可以在「我的意见」里修改或撤回。', question: '维护者的疑问', close: '收起',
-    empty: '请写建议译文或理由，至少一项。', same: '建议译文和现在的一样。',
+    status: { pending: '待处理', questioned: '待确认', processed: '已处理', dismissed: '未采纳' },
+    adopted: '已采纳', proposal: '建议', reason: '理由', reasonPh: '修改内容与理由（可选）',
+    proposedLabel: '建议译文', submit: '提交意见', sent: '已提交，谢谢！', anon: '匿名',
+    none: '这一句还没有意见。', offline: '意见功能暂时不可用，请稍后再试。', failed: '提交失败：', me: '我的意见',
+    hint: '无需注册。提交后可在「我的意见」中修改、撤回或查看处理结果。', as: '署名：{}（右上角可更改）', asNew: '首次提交时会随机分配一个机战人物作为署名，可在右上角更改。', question: '维护者的问题', close: '收起',
+    empty: '请填写建议译文或修改理由，至少一项。', same: '建议译文与当前译文相同。',
   },
   en: {
-    kinds: { mistranslation: 'Mistranslation', awkward: 'Awkward', typo: 'Typo', naming: 'Inconsistent name', other: 'Other' },
-    status: { pending: 'Pending', questioned: 'Question', processed: 'Done', dismissed: 'Declined' },
-    adopted: 'Adopted', proposal: 'Proposal', reason: 'Reason', reasonPh: 'What is wrong and why (optional)',
-    proposedLabel: 'Suggested translation', submit: 'Send suggestion', sent: 'Sent, thank you!', you: 'You are', anon: 'anonymous',
-    none: 'No suggestions on this line yet.', offline: 'Suggestions are unavailable right now.', failed: 'Could not send: ', me: 'My suggestions',
-    hint: 'No account needed; edit or withdraw it later under My suggestions.', question: 'Maintainer’s question', close: 'Close',
-    empty: 'Write a suggested translation or a reason.', same: 'The suggestion is the same as the current text.',
+    kinds: { mistranslation: 'Mistranslation', awkward: 'Awkward wording', typo: 'Typo', naming: 'Inconsistent naming', other: 'Other' },
+    status: { pending: 'Pending', questioned: 'Needs clarification', processed: 'Done', dismissed: 'Declined' },
+    adopted: 'Accepted', proposal: 'Suggestion', reason: 'Reason', reasonPh: 'What to change and why (optional)',
+    proposedLabel: 'Suggested translation', submit: 'Send suggestion', sent: 'Suggestion sent. Thank you!', anon: 'anonymous',
+    none: 'No suggestions on this line yet.', offline: 'Suggestions are temporarily unavailable. Please try again later.', failed: 'Could not send: ', me: 'My suggestions',
+    hint: 'No account needed. Use My suggestions to edit or withdraw your suggestions and check their results.', as: 'Display name: {} (change it at the top right)', asNew: 'Your first suggestion uses a randomly assigned SRW character as your display name. You can change it at the top right.', question: 'Maintainer’s question', close: 'Close',
+    empty: 'Enter a suggested translation, a reason, or both.', same: 'The suggested translation matches the current text.',
   },
   ja: {
-    kinds: { mistranslation: '誤訳', awkward: '不自然', typo: '誤字', naming: '表記揺れ', other: 'その他' },
-    status: { pending: '未対応', questioned: '質問中', processed: '対応済み', dismissed: '見送り' },
-    adopted: '採用', proposal: '提案', reason: '理由', reasonPh: 'どこが・なぜ（任意）',
-    proposedLabel: '提案する訳', submit: '意見を送る', sent: '送信しました。ありがとうございます！', you: 'あなたの名前', anon: '匿名',
-    none: 'この行への意見はまだありません。', offline: '意見機能は現在利用できません。', failed: '送信できませんでした：', me: '自分の意見',
-    hint: '登録不要。送信後は「自分の意見」で修正・取り消しができます。', question: '管理者からの質問', close: '閉じる',
-    empty: '提案する訳か理由のどちらかを書いてください。', same: '提案が現在の訳と同じです。',
+    kinds: { mistranslation: '誤訳', awkward: '不自然な表現', typo: '誤字', naming: '表記揺れ', other: 'その他' },
+    status: { pending: '未対応', questioned: '確認待ち', processed: '対応済み', dismissed: '見送り' },
+    adopted: '採用', proposal: '提案', reason: '理由', reasonPh: '修正したい点と理由（任意）',
+    proposedLabel: '修正案', submit: '意見を送る', sent: '送信しました。ありがとうございます！', anon: '匿名',
+    none: 'この行への意見はまだありません。', offline: '現在、意見機能を利用できません。時間をおいてお試しください。', failed: '送信できませんでした：', me: '自分の意見',
+    hint: '登録は不要です。送信後は「自分の意見」で修正・取り消しや対応結果の確認ができます。', as: '表示名：{}（右上で変更できます）', asNew: '初めて意見を送るときに、スパロボのキャラクター名がランダムで割り当てられます。右上で変更できます。', question: '管理者からの質問', close: '閉じる',
+    empty: '修正案か理由のどちらかを入力してください。', same: '修正案が現在の訳と同じです。',
   },
 };
+
+import { loadMe, loadMyResults, onMeChange, reloadMe, type Me } from './identity';
 
 const LOCALE: Record<string, string> = { zh: 'zh-Hans', en: 'en', ja: 'ja' };
 
@@ -61,12 +63,12 @@ function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: 
 
 export function initSuggestions() {
   const root = document.querySelector<HTMLElement>('[data-story], [data-library]');
-  if (!root) return;
+  // Japanese pages have no suggestion buttons (see canReview).
+  if (!root || !root.querySelector('[data-suggest]')) return;
   const lang = (root.dataset.lang || 'zh') as keyof typeof T;
   const t = T[lang];
   const scene = root.dataset.scene;
   let items: Item[] = [];
-  let me: { name: string } | null = null;
   let online = true;
 
   // The translation being reviewed: on story pages the one showing, else the page's.
@@ -82,13 +84,15 @@ export function initSuggestions() {
       const n = items.filter((x) => x.target_type === type && x.target_id === id && x.locale === reviewedLocale()).length;
       if (n) b.dataset.count = String(n); else delete b.dataset.count;
     });
+    // Story pages count them in the header and filter by them.
+    root!.dispatchEvent(new CustomEvent('suggestions', { detail: { items, online } }));
   }
 
   async function refresh() {
     try {
       const q = scene ? `scene=${scene}` : `target_type=${encodeURIComponent(root!.dataset.targetType || '')}&target_prefix=${encodeURIComponent(root!.dataset.targetPrefix || '')}`;
-      const [list, who] = await Promise.all([api(`suggestions?${q}&lang=${lang}`), api(`me?lang=${lang}`)]);
-      items = list.items; me = who.participant; online = true;
+      const [list] = await Promise.all([api(`suggestions?${q}&lang=${lang}`), loadMe(lang)]);
+      items = list.items; online = true;
     } catch { online = false; items = []; }
     badges();
   }
@@ -111,8 +115,11 @@ export function initSuggestions() {
 
   function panelFor(b: HTMLElement) {
     const host = b.closest('.line, [data-term]')!;
-    const existing = host.querySelector('.sg-panel');
+    const external = (host as HTMLElement).dataset.panel ? document.getElementById((host as HTMLElement).dataset.panel!) : null;
+    const existing = (external ?? host).querySelector('.sg-panel');
     if (existing) { existing.remove(); b.setAttribute('aria-expanded', 'false'); return; }
+    // One pop-over at a time.
+    if (host.classList.contains('term')) root!.querySelectorAll('.term .sg-panel, .term-row .sg-panel').forEach((p) => p.remove()); root!.querySelectorAll('.term [aria-expanded]').forEach((x) => x.setAttribute('aria-expanded', 'false'));
     b.setAttribute('aria-expanded', 'true');
     const { type, id } = targetOf(b);
     const locale = reviewedLocale();
@@ -160,13 +167,22 @@ export function initSuggestions() {
     const row = el('div', 'sg-row');
     const submit = el('button', 'sg-submit', t.submit);
     submit.type = 'submit';
-    const msg = el('span', 'sg-msg', me ? `${t.you}：${me.name} · ` : '');
+    const msg = el('span', 'sg-msg');
     const link = el('a', '', t.me);
     link.href = `/${lang}/reviews/#mine`;
     msg.append(link);
     row.append(submit, msg);
     const hint = el('p', 'sg-note', t.hint);
-    form.append(kinds, proposedLabel, reasonLabel, row, hint);
+    // Who the suggestion will be signed as; changed from the header.
+    const who = el('p', 'sg-who');
+    const showWho = (m: Me | null) => {
+      who.replaceChildren();
+      if (m?.avatar) { const img = el('img', 'sg-avatar'); img.src = m.avatar; img.alt = ''; who.append(img); }
+      who.append(m ? t.as.replace('{}', m.name) : t.asNew);
+    };
+    loadMe(lang).then(showWho, () => {});
+    onMeChange(showWho);
+    form.append(kinds, proposedLabel, reasonLabel, who, row, hint);
     form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
       const p = proposed.value.trim();
@@ -184,6 +200,8 @@ export function initSuggestions() {
           }),
         });
         await refresh();
+        await reloadMe(lang);
+        loadMyResults(lang);
         panel.remove();
         panelFor(b);
         host.querySelector('.sg-panel .sg-note')?.replaceWith(el('p', 'sg-ok', t.sent));
@@ -193,7 +211,15 @@ export function initSuggestions() {
       }
     });
     panel.append(form);
-    (host.querySelector('.body, [data-term-body]') ?? host).append(panel);
+    const slot = ((host as HTMLElement).dataset.panel ? document.getElementById((host as HTMLElement).dataset.panel!) : host.querySelector('.body, [data-term-body]')) as HTMLElement ?? host;
+    slot.append(panel);
+    // A pop-over under a small name stays inside the window.
+    if (slot.classList.contains('term-body')) {
+      slot.style.left = '0';
+      const r = slot.getBoundingClientRect();
+      const over = r.right - (document.documentElement.clientWidth - 16);
+      if (over > 0) slot.style.left = `${-over}px`;
+    }
   }
 
   root.addEventListener('click', (ev) => {

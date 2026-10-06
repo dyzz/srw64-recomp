@@ -1,17 +1,18 @@
 ---
-import { LANGS, UI, langInfo, switchLang, type Lang } from '../i18n';
+import { LANGS, UI, canReview, langInfo, switchLang, type Lang } from '../i18n';
 import Wordmark from './Wordmark.astro';
-interface Props { lang: Lang; path: string; }
-const { lang, path } = Astro.props;
+interface Props { lang: Lang; path: string; review?: boolean; }
+const { lang, path, review = false } = Astro.props;
 const items = [
   { href: `/${lang}/`, label: UI.nav.home[lang], match: (p: string) => p === `/${lang}/` },
   { href: `/${lang}/install/`, label: UI.nav.install[lang], match: (p: string) => p.startsWith(`/${lang}/install`) },
   { href: `/${lang}/guide/`, label: UI.nav.guide[lang], match: (p: string) => p.startsWith(`/${lang}/guide`) },
   { href: `/${lang}/story/`, label: UI.nav.story[lang], match: (p: string) => p.startsWith(`/${lang}/story`) },
   { href: `/${lang}/library/`, label: UI.nav.library[lang], match: (p: string) => p.startsWith(`/${lang}/library`) },
-  { href: `/${lang}/reviews/`, label: UI.nav.reviews[lang], match: (p: string) => p.startsWith(`/${lang}/reviews`) },
+  ...(canReview(lang) ? [{ href: `/${lang}/reviews/`, label: UI.nav.reviews[lang], match: (p: string) => p.startsWith(`/${lang}/reviews`) }] : []),
   { href: `/${lang}/faq/`, label: UI.nav.faq[lang], match: (p: string) => p.startsWith(`/${lang}/faq`) },
   { href: `/${lang}/blog/`, label: UI.nav.blog[lang], match: (p: string) => p.startsWith(`/${lang}/blog`) },
+  { href: `/${lang}/docs/`, label: UI.nav.docs[lang], match: (p: string) => p.startsWith(`/${lang}/docs`) },
 ];
 ---
 <header class="site-header">
@@ -24,6 +25,7 @@ const items = [
       {items.map((it) => <a href={it.href} aria-current={it.match(path) ? 'page' : undefined}>{it.label}</a>)}
     </nav>
     <div class="tools">
+      {review && canReview(lang) && <div class="hdr-id" data-identity-chip data-lang={lang}></div>}
       <details class="lang">
         <summary aria-label={UI.lang[lang]}>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.93 6h-2.95a15.6 15.6 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8ZM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96ZM4.26 14a8.2 8.2 0 0 1 0-4h3.38a16.5 16.5 0 0 0 0 4H4.26Zm.81 2h2.95c.32 1.25.78 2.45 1.38 3.56A8 8 0 0 1 5.07 16Zm2.95-8H5.07a8 8 0 0 1 4.33-3.56A15.6 15.6 0 0 0 8.02 8ZM12 19.96A14.1 14.1 0 0 1 10.09 16h3.82A14.1 14.1 0 0 1 12 19.96ZM14.34 14H9.66a14.7 14.7 0 0 1 0-4h4.68a14.7 14.7 0 0 1 0 4Zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56ZM16.36 14a16.5 16.5 0 0 0 0-4h3.38a8.2 8.2 0 0 1 0 4h-3.38Z"/></svg>
@@ -41,6 +43,11 @@ const items = [
     </div>
   </div>
 </header>
+<script>
+  import { mountIdentityChip } from '../scripts/identity';
+  const chip = document.querySelector<HTMLElement>('[data-identity-chip]');
+  if (chip) mountIdentityChip(chip, chip.dataset.lang as 'zh');
+</script>
 
 <style>
   .site-header {
@@ -54,8 +61,9 @@ const items = [
   .logo { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-size: 22px; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; }
   .logo b { color: var(--gold); font-weight: 700; }
   .icon { width: 34px; height: 34px; }
-  .nav { display: flex; gap: 4px; flex: 1; }
-  .nav a { position: relative; padding: 8px 12px; color: var(--muted); font-size: 15px; text-decoration: none; }
+  .nav { display: flex; gap: 4px; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { position: relative; padding: 8px 12px; color: var(--muted); font-size: 15px; text-decoration: none; white-space: nowrap; }
   .nav a:hover { color: var(--text); }
   .nav a[aria-current='page'] { color: var(--text); }
   .nav a[aria-current='page']::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; background: var(--gold); }
@@ -70,10 +78,23 @@ const items = [
   .lang ul a { display: block; padding: 8px 12px; color: var(--text); text-decoration: none; }
   .lang ul a:hover { background: var(--cyan-soft); }
   .lang ul a[aria-current] { color: var(--gold); }
+  .hdr-id { position: relative; }
+  @media (max-width: 480px) {
+    .gh { display: none; }
+    .lang summary { padding: 0 8px; }
+    .lang summary span { display: none; }
+  }
+  /* Narrower desktops: the header stays one 64px row (sticky bars below assume that
+     height), so the nav tightens and, if still too wide, scrolls sideways. */
+  @media (max-width: 1180px) {
+    .bar { gap: 16px; }
+    .nav { gap: 0; }
+    .nav a { padding: 8px; font-size: 14px; }
+    .nav a[aria-current='page']::after { left: 8px; right: 8px; }
+  }
   @media (max-width: 720px) {
     .bar { flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 4px; gap: 0 12px; }
     .logo { flex: 1; }
-    .nav { order: 3; flex-basis: 100%; overflow-x: auto; margin: 0 -8px; }
-    .nav a { padding: 8px; white-space: nowrap; }
+    .nav { order: 3; flex-basis: 100%; margin: 0 -8px; }
   }
 </style>

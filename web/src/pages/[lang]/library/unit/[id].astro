@@ -1,6 +1,7 @@
 ---
 import Base from '../../../../layouts/Base.astro';
-import { LANGS, UI, type Lang } from '../../../../i18n';
+import Term from '../../../../components/Term.astro';
+import { LANGS, UI, canReview, type Lang } from '../../../../i18n';
 import { library, type Unit } from '../../../../lib/data';
 
 export async function getStaticPaths() {
@@ -26,16 +27,17 @@ const stats = (['hp', 'en', 'move', 'mobility', 'armor', 'limit'] as const).map(
 const rng = (r: [number, number]) => (r[0] === r[1] ? `${r[0]}` : `${r[0]}–${r[1]}`);
 const sign = (n: number) => (n > 0 ? `+${n}` : `${n}`);
 const t = {
-  suggest: { zh: '对译名提意见', en: 'Suggest a better name', ja: '名称に意見' },
+  suggest: { zh: '对译名提建议', en: 'Suggest a name correction', ja: '訳名への意見を送る' },
   shield: { zh: '有盾牌', en: 'Shield', ja: 'シールド装備' },
   weapons: { zh: '武器', en: 'Weapons', ja: '武器' },
+  editHint: { zh: '点击武器名左侧的「提建议」，可提交译名修改意见', en: 'Click Suggest to the left of a weapon’s name to propose a name correction', ja: '武器名の左にある「意見」から、訳名の修正案を送れます' },
   abilities: { zh: '特殊能力', en: 'Abilities', ja: '特殊能力' },
   prev: { zh: '上一台', en: 'Previous', ja: '前へ' },
   next: { zh: '下一台', en: 'Next', ja: '次へ' },
 };
 const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-term': id });
 ---
-<Base lang={lang} title={`${u.name[lang]} · ${UI.nav.library[lang]}`}>
+<Base lang={lang} title={`${u.name[lang]} · ${UI.nav.library[lang]}`} review={canReview(lang)}>
   <div class="wrap layout" data-library data-lang={lang} data-target-type="term" data-target-prefix="">
     <aside class="side">
       <a href={`/${lang}/library/#units`}>← {UI.nav.library[lang]}</a>
@@ -49,13 +51,13 @@ const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-ter
       <div class="top">
         <div class="art"><img src={`/gen/units/${u.id}.webp`} alt={u.name[lang]} width="320" height="320" /></div>
         <div class="info">
-          <p class="crumb">{series}{u.model && <> · <span class="latin">{u.model}</span></>}</p>
+          <p class="crumb">{u.series != null ? <Term id={`series:${u.series}`} name={lib.series.find((x) => x.id === u.series)!.name} lang={lang} /> : series}{u.model && <> · <span class="latin">{u.model}</span></>}</p>
           <div class="namerow" {...termAttrs(`unit:${u.id}`, u.name)}>
             <h1>{u.name[lang]}</h1>
             {lang !== 'ja' && <span class="jn" lang="ja">{u.name.ja}</span>}
             {lang !== 'en' && <span class="en">{u.name.en}</span>}
             <span class="tr-zh" hidden>{u.name.zh}</span><span class="tr-en" hidden>{u.name.en}</span>
-            <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`unit:${u.id}`}>{t.suggest[lang]}</button>
+            {canReview(lang) && <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`unit:${u.id}`}>{t.suggest[lang]}</button>}
             <div data-term-body class="tb"></div>
           </div>
           <p class="badges">
@@ -72,11 +74,11 @@ const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-ter
           <p class="terrain"><span class="k">{L('terrain')}</span>
             {(['air', 'land', 'sea', 'space'] as const).map((k) => <span class={`pill t-${u.terrain[k]}`}>{L(k)} {u.terrain[k]}</span>)}
           </p>
-          {u.abilities.length > 0 && <p class="abil"><span class="k">{t.abilities[lang]}</span>{u.abilities.map((a) => <span class="pill">{a[lang]}</span>)}</p>}
+          {u.abilities.length > 0 && <p class="abil"><span class="k">{t.abilities[lang]}</span>{u.abilities.map((a) => <span class="pill"><Term id={`ability:${a.ja}`} name={a} lang={lang} /></span>)}</p>}
         </div>
       </div>
 
-      <h2>{t.weapons[lang]}</h2>
+      <h2>{t.weapons[lang]} {canReview(lang) && <span class="hint">{t.editHint[lang]}</span>}</h2>
       {u.weapons.length === 0 ? <p class="dim">{L('library_no_weapons')}</p> : (
         <div class="tbl">
           <table>
@@ -86,21 +88,19 @@ const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-ter
             </tr></thead>
             <tbody>
               {u.weapons.map((w) => (
-                <tr data-term={`weapon:${w.id}`}>
+                <><tr>
                   <td class="l">
-                    <span class="wn">{w.name[lang]}</span>
+                    <Term id={`weapon:${w.id}`} name={w.name} lang={lang} class="wn" panel={`wp-${w.id}`} />
                     {w.markers.map((m) => <span class="mk">{m}</span>)}
                     {w.combination && <span class="mk gold">{L('library_combo')}</span>}
                     {w.unlock_at_full_upgrade && <span class="mk gold">{L('library_unlock')}</span>}
-                    <span class="tr-zh" hidden>{w.name.zh}</span><span class="tr-en" hidden>{w.name.en}</span>
-                    <button type="button" class="act small" data-suggest data-target-type="term" data-target-id={`weapon:${w.id}`} aria-label={t.suggest[lang]}>…</button>
-                    <div data-term-body></div>
                   </td>
                   <td class="latin">{w.power}</td><td class="latin full">{w.max_power}</td>
                   <td><span class={`ty ty${w.upgrade_type}`}>{roman[w.upgrade_type]}</span></td>
                   <td class="latin">{rng(w.range)}</td><td class="latin">{sign(w.hit)}</td><td class="latin">{sign(w.crit)}</td>
                   <td class="latin">{w.ammo ?? '—'}</td><td class="latin">{w.en ?? '—'}</td><td class="latin">{w.morale ?? '—'}</td>
                 </tr>
+                <tr class="term-row"><td colspan="10" id={`wp-${w.id}`}></td></tr></>
               ))}
             </tbody>
           </table>
@@ -144,8 +144,10 @@ const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-ter
   .act { height: 30px; padding: 0 12px; background: transparent; color: var(--muted); border: 1px solid rgba(63, 208, 255, 0.22); border-radius: 4px; font: 500 13px var(--sans); cursor: pointer; }
   .act:hover { color: var(--text); border-color: var(--cyan); }
   .act[data-count]::after { content: ' · ' attr(data-count); color: var(--gold); }
-  .act.small { height: 22px; padding: 0 6px; margin-left: 4px; font-size: 12px; opacity: 0.6; }
-  tr:hover .act.small { opacity: 1; }
+  .hint { margin-left: 8px; font-size: 13px; font-weight: 400; color: var(--dim); }
+  .term-row td:empty { display: none; }
+  .term-row td { padding: 4px 0 14px; text-align: left; white-space: normal; }
+  tr:hover .term-act { opacity: 1; }
   .badges, .terrain, .abil { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
   .cap { padding: 3px 12px; background: var(--gold); color: var(--ink); font-weight: 700; font-size: 14px; }
   .pill { padding: 3px 10px; font-size: 14px; border: 1px solid rgba(63, 208, 255, 0.3); color: #d6ddf2; }

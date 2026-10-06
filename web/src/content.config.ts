@@ -22,4 +22,17 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { blog, pages };
+// Technical docs: src/content/docs/<lang>/<slug>.md, the same slug in every language.
+// `section` groups them on the index (tools now, mod guides later).
+const docs = defineCollection({
+  loader: glob({ pattern: '*/*.md', base: './src/content/docs' }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    section: z.enum(['tools', 'mods']),
+    order: z.number().default(0),
+    updated: z.coerce.date().optional(),
+  }),
+});
+
+export const collections = { blog, pages, docs };

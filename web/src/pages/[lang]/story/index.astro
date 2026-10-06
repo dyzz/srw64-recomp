@@ -10,13 +10,26 @@ const groups = storyGroups(lang);
 const total = storyIndex().reduce((n, s) => n + s.count, 0);
 const t = {
   lead: {
-    zh: `全部剧情按话数排好，日文原文与译文逐句对照，共 ${total.toLocaleString()} 句。读到别扭的地方，点一下就能提意见。`,
-    en: `The whole script in episode order, Japanese and translation line by line: ${total.toLocaleString()} lines. If a line reads oddly, one click sends a suggestion.`,
-    ja: `全シナリオを話数順に、日本語原文と翻訳を一行ずつ対照。全 ${total.toLocaleString()} 行。気になる訳があれば、ワンクリックで意見を送れます。`,
+    zh: `全部剧情按话数排列，共 ${total.toLocaleString()} 句，日文原文与译文逐句对照。如有修改建议，可以在对应台词旁提交。`,
+    en: `The full script in stage order, with the original Japanese and translations side by side: ${total.toLocaleString()} lines. You can submit a suggestion beside any line.`,
+    ja: `全シナリオを話数順に掲載し、日本語原文と翻訳を一行ずつ対照できます。全 ${total.toLocaleString()} 行。修正案は各セリフの横から送れます。`,
   },
   stage: { zh: (n: string) => `第 ${n} 话`, en: (n: string) => `Stage ${n}`, ja: (n: string) => `第${n}話` },
   lines: { zh: '句', en: 'lines', ja: '行' },
+  enter: { zh: '进入关卡', en: 'Open', ja: '開く' },
+  stages: { zh: (n: number) => `${n} 话`, en: (n: number) => `${n} stages`, ja: (n: number) => `${n} ステージ` },
 };
+// Scenes that share a stage number (one per route) sit side by side, as on the SRW Z site.
+type Meta = ReturnType<typeof storyIndex>[number];
+function rows(scenes: Meta[]) {
+  const out: { stage: string | null; scenes: Meta[] }[] = [];
+  for (const s of scenes) {
+    const stage = s.episode?.stage ?? null;
+    const last = out[out.length - 1];
+    if (stage && last?.stage === stage) last.scenes.push(s); else out.push({ stage, scenes: [s] });
+  }
+  return out;
+}
 ---
 <Base lang={lang} title={UI.nav.story[lang]}>
   <div class="wrap">
@@ -29,42 +42,50 @@ const t = {
 
     {groups.map((g) => (
       <section class="group">
-        <h2>{g.title}</h2>
-        <ul class="eps">
-          {g.scenes.map((s) => (
-            <li>
-              <a class="ep" href={`/${lang}/story/${s.scene}/`}>
-                <span class="num latin">{s.episode ? t.stage[lang](s.episode.stage) : `#${s.scene}`}</span>
-                <span class="title">
-                  <strong>{s.title[lang]}</strong>
-                  {lang !== 'ja' && <span class="ja-title" lang="ja">{s.title.ja}</span>}
-                </span>
-                <span class="meta">
-                  {s.episode?.lanes.map((l) => <span class="lane">{l[lang]}</span>)}
-                  <span class="count">{s.count} {t.lines[lang]}</span>
-                </span>
-              </a>
-            </li>
+        <div class="ghead"><h2>{g.title}</h2><span class="gcount">{t.stages[lang](rows(g.scenes).length)}</span></div>
+        <div class="rows">
+          {rows(g.scenes).map((r) => (
+            <div class="row">
+              <div class="num"><span class="latin">{r.stage ?? '·'}</span><small>{r.stage ? 'STAGE' : 'SCENE'}</small></div>
+              <div class="cards">
+                {r.scenes.map((s) => (
+                  <a class="card" href={`/${lang}/story/${s.scene}/`}>
+                    <span class="lanes">{s.episode?.lanes.length ? s.episode.lanes.map((l) => <span class="lane">{l[lang]}</span>) : <span class="lane dim">#{s.scene}</span>}</span>
+                    <strong>{s.title[lang]}</strong>
+                    {lang !== 'ja' && <span class="ja-title" lang="ja">{s.title.ja}</span>}
+                    <span class="foot"><span class="count">{s.count} {t.lines[lang]}</span><span class="go">{t.enter[lang]} →</span></span>
+                  </a>
+                ))}
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
     ))}
   </div>
 </Base>
 
 <style>
-  .group { margin-top: 40px; }
-  .group h2 { font-size: 20px; padding-left: 14px; border-left: 4px solid var(--gold); margin-bottom: 14px; }
-  .eps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .ep { display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 16px; color: var(--text); text-decoration: none !important; background: var(--panel); border: 1px solid var(--line-soft); }
-  .ep:hover { border-color: var(--cyan); background: var(--panel-2); }
-  .num { font-size: 14px; font-weight: 700; color: var(--gold); }
-  .title { display: grid; min-width: 0; }
-  .title strong { font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .ja-title { font-size: 13px; color: var(--dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .meta { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-  .lane { padding: 0 8px; font-size: 12px; color: var(--cyan); border: 1px solid rgba(63, 208, 255, 0.4); border-radius: 10px; white-space: nowrap; }
-  .count { font-size: 12px; color: var(--dim); white-space: nowrap; }
-  @media (max-width: 860px) { .eps { grid-template-columns: 1fr; } }
-  @media (max-width: 480px) { .ep { grid-template-columns: 60px minmax(0, 1fr); } .meta { grid-column: 2; justify-content: flex-start; } }
+  .group { margin-top: 44px; }
+  .ghead { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 10px; margin-bottom: 14px; border-bottom: 2px solid var(--text); }
+  .ghead h2 { font-size: 20px; }
+  .gcount { font-size: 12px; color: var(--dim); white-space: nowrap; }
+  .rows { display: grid; gap: 10px; }
+  .row { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px; }
+  .num { display: grid; place-content: center; justify-items: center; background: #0d1638; border: 1px solid var(--line-soft); color: #fff; }
+  .num span { font-size: 26px; font-weight: 700; line-height: 1; }
+  .num small { margin-top: 4px; font-size: 9px; letter-spacing: 0.14em; color: var(--dim); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+  .card { display: grid; gap: 3px; align-content: start; padding: 12px 14px; color: var(--text); text-decoration: none !important; background: var(--panel); border: 1px solid var(--line-soft); border-top: 3px solid var(--orange); }
+  .card:hover { border-color: var(--cyan); border-top-color: var(--cyan); background: var(--panel-2); }
+  .lanes { display: flex; flex-wrap: wrap; gap: 4px; }
+  .lane { padding: 0 8px; font-size: 11px; color: var(--cyan); border: 1px solid rgba(63, 208, 255, 0.4); border-radius: 10px; }
+  .lane.dim { color: var(--dim); border-color: var(--line-soft); }
+  .card strong { margin-top: 4px; font-size: 17px; }
+  .ja-title { font-size: 13px; color: var(--dim); }
+  .foot { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+  .count { font-size: 12px; color: var(--dim); }
+  .go { font-size: 12px; font-weight: 700; color: var(--orange); }
+  .card:hover .go { color: var(--cyan); }
+  @media (max-width: 560px) { .row { grid-template-columns: 48px minmax(0, 1fr); } .num span { font-size: 20px; } }
 </style>

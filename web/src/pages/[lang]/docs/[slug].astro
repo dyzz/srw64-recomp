@@ -1,0 +1,50 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { UI, type Lang } from '../../../i18n';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs.map((doc) => {
+    const [lang, slug] = doc.id.split('/');
+    return { params: { lang, slug }, props: { doc } };
+  });
+}
+const { doc } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const { Content, headings } = await render(doc);
+const toc = headings.filter((h) => h.depth === 2);
+const updated = { zh: '更新于', en: 'Updated', ja: '更新' };
+---
+<Base lang={lang} title={doc.data.title} description={doc.data.summary}>
+  <div class="wrap">
+    <header class="page-head">
+      <a class="back" href={`/${lang}/docs/`}>← {UI.nav.docs[lang]}</a>
+      <h1>{doc.data.title}</h1>
+      <p>{doc.data.summary}</p>
+      {doc.data.updated && <span class="dim small">{updated[lang]} <span class="latin">{doc.data.updated.toISOString().slice(0, 10)}</span></span>}
+    </header>
+    <div class="doc">
+      {toc.length > 2 && (
+        <nav class="toc" aria-label={doc.data.title}>
+          <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+        </nav>
+      )}
+      <article class="prose"><Content /></article>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .back { font-size: 14px; }
+  .doc { display: grid; grid-template-columns: minmax(0, 760px) 220px; gap: 48px; align-items: start; padding-bottom: 64px; }
+  .doc .prose { grid-column: 1; grid-row: 1; }
+  .toc { grid-column: 2; grid-row: 1; position: sticky; top: 88px; font-size: 14px; }
+  .toc ol { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--line); display: grid; gap: 8px; }
+  .toc a { color: var(--muted); text-decoration: none; }
+  .toc a:hover { color: var(--cyan); }
+  @media (max-width: 980px) {
+    .doc { grid-template-columns: minmax(0, 1fr); }
+    .toc { display: none; }
+  }
+</style>

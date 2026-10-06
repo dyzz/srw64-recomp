@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { UI, langPaths, type Lang } from '../../../i18n';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const docs = (await getCollection('docs', (d) => d.id.startsWith(`${lang}/`))).sort((a, b) => a.data.order - b.data.order);
+
+const lead = {
+  zh: '面向想深入使用、调试或扩展游戏的玩家与开发者。',
+  en: 'For players and developers who want to script, debug or extend the game.',
+  ja: 'ゲームを自動操作・デバッグ・拡張したいプレイヤーと開発者向けの資料です。',
+};
+const sections = [
+  {
+    key: 'tools',
+    title: { zh: '工具与调试', en: 'Tools and debugging', ja: 'ツールとデバッグ' },
+  },
+  {
+    key: 'mods',
+    title: { zh: 'MOD 指南', en: 'Mod guides', ja: 'MOD ガイド' },
+    empty: {
+      zh: '自定义关卡、战役和数据 MOD 的制作指南正在整理，之后会放在这里。',
+      en: 'Guides for making custom stages, campaigns and data mods are being written and will appear here.',
+      ja: 'カスタムステージ・キャンペーン・データ MOD の作り方は現在まとめています。公開後はここに掲載します。',
+    },
+  },
+] as const;
+---
+<Base lang={lang} title={UI.nav.docs[lang]} description={lead[lang]}>
+  <div class="wrap">
+    <header class="page-head">
+      <span class="tag">DOCS</span>
+      <h1>{UI.nav.docs[lang]}</h1>
+      <p>{lead[lang]}</p>
+    </header>
+    {sections.map((s) => {
+      const items = docs.filter((d) => d.data.section === s.key);
+      return (
+        <section class="sec">
+          <h2>{s.title[lang]}</h2>
+          {items.length ? (
+            <ul class="list">
+              {items.map((d) => (
+                <li>
+                  <a class="panel item" href={`/${lang}/docs/${d.id.split('/')[1]}/`}>
+                    <strong>{d.data.title}</strong>
+                    <span class="muted">{d.data.summary}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            'empty' in s && <p class="panel soon muted">{s.empty[lang]}</p>
+          )}
+        </section>
+      );
+    })}
+  </div>
+</Base>
+
+<style>
+  .sec { max-width: 820px; margin-bottom: 40px; }
+  .sec h2 { font-size: 20px; margin-bottom: 14px; padding-left: 12px; border-left: 4px solid var(--gold); }
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .item { display: grid; gap: 6px; padding: 22px 24px; color: var(--text); text-decoration: none !important; }
+  .item:hover { border-color: var(--cyan); }
+  .item strong { font-size: 20px; }
+  .soon { padding: 18px 24px; border-style: dashed; }
+</style>

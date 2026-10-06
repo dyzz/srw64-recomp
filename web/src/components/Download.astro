@@ -8,7 +8,7 @@ interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = {
   other: { zh: '其他平台', en: 'Other platforms', ja: 'ほかのプラットフォーム' },
-  steps: { zh: '查看安装方法', en: 'See how to install', ja: 'インストール方法を見る' },
+  steps: { zh: '查看安装方法', en: 'Installation instructions', ja: 'インストール方法を見る' },
 };
 const platforms: Platform[] = ['windows', 'macos', 'linux', 'android'];
 const label = (p: Platform) =>

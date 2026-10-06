@@ -4,12 +4,15 @@ import Base from '../../layouts/Base.astro';
 import Download from '../../components/Download.astro';
 import Pair from '../../components/Pair.astro';
 import { HOME } from '../../copy/home';
-import { UI, langPaths, type Lang } from '../../i18n';
+import { UI, langPaths, type Lang, TITLE_LOGO } from '../../i18n';
 import { release } from '../../data/release';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = HOME[lang];
+// Dialogue first, the modern screens and controls second, bug fixes third (user, 2026-10-05).
+const ORDER = ['history', 'prebattle', 'settings', 'library', 'viewer'];
+const shows = ORDER.map((k) => c.shows.find((x) => x.key === k)!).filter(Boolean);
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`)))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
@@ -18,8 +21,9 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
 <Base lang={lang}>
   <section class="hero" style={`--hero: url('/media/hero-${lang}.webp')`}>
     <div class="wrap hero-in">
+      <div class="hero-art" aria-hidden="true"></div>
       <span class="tag">{c.kicker} · v{release.version}</span>
-      <h1 class="logo-h1"><img src="/brand/marchwind64-logo.webp" alt="MARCHWIND 64" width="1200" height="473" fetchpriority="high" /></h1>
+      <h1 class="logo-h1"><img src={`/brand/title-${lang}.webp`} alt={TITLE_LOGO[lang].alt} width="1400" height={TITLE_LOGO[lang].h} fetchpriority="high" /></h1>
       <p class="tagline">{c.tagline}</p>
       <p class="lead"><strong>{c.intro}</strong> {c.lead}</p>
       <Download lang={lang} />
@@ -53,35 +57,36 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
         <p>{c.showBody}</p>
       </div>
       <div class="shows">
-        {c.shows.map((sh, i) => (
-          <article class={`show ${i % 2 ? 'flip' : ''}`}>
-            <figure class="shot"><img src={sh.img.replace('{lang}', lang)} alt={sh.title} width="1280" height="720" loading="lazy" /></figure>
+        {[...shows.slice(0, 2).map((sh) => ({ sh })), { rules: true }, ...shows.slice(2).map((sh) => ({ sh }))].map((item, i) => item.rules ? (
+          <div class="rules-block" id="rules">
             <div class="show-text">
-              <span class="num latin">{String(i + 1).padStart(2, '0')} · {sh.tag}</span>
-              <h3>{sh.title}</h3>
-              <p>{sh.body}</p>
-              <ul>{sh.points.map((pt) => <li>{pt}</li>)}</ul>
+              <span class="num latin">{String(i + 1).padStart(2, '0')} · RULES</span>
+              <h3>{c.rulesTitle}</h3>
+              <p>{c.rulesBody}</p>
+            </div>
+            <div class="rules">
+              {c.rules.map((g) => (
+                <div class={`panel rule ${g.accent}`}>
+                  <div class="rule-head"><h4>{g.title}</h4><span class="badge">{g.badge}</span></div>
+                  <p class="rule-note">{g.note}</p>
+                  <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <article class={`show ${i % 2 ? 'flip' : ''}`}>
+            <figure class={`shot ${item.sh!.img2 ? 'pair' : ''}`}>
+              <img src={item.sh!.img.replace('{lang}', lang)} alt={item.sh!.title} width="1280" height="720" loading="lazy" />
+              {item.sh!.img2 && <img src={item.sh!.img2.replace('{lang}', lang)} alt="" width="1280" height="720" loading="lazy" />}
+            </figure>
+            <div class="show-text">
+              <span class="num latin">{String(i + 1).padStart(2, '0')} · {item.sh!.tag}</span>
+              <h3>{item.sh!.title}</h3>
+              <p>{item.sh!.body}</p>
+              <ul>{item.sh!.points.map((pt) => <li>{pt}</li>)}</ul>
             </div>
           </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="rules">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="tag green">YOUR RULES</span>
-        <h2>{c.rulesTitle}</h2>
-        <p>{c.rulesBody}</p>
-      </div>
-      <div class="rules">
-        {c.rules.map((g) => (
-          <div class={`panel rule ${g.accent}`}>
-            <div class="rule-head"><h3>{g.title}</h3><span class="badge">{g.badge}</span></div>
-            <p class="rule-note">{g.note}</p>
-            <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
-          </div>
         ))}
       </div>
     </div>
@@ -95,9 +100,10 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
         <p>{c.galleryBody}</p>
       </div>
       <div class="gallery">
-        <img class="g-wide" src={`/media/sekiha-${lang}.webp`} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
-        <img src={`/media/slash-${lang}.webp`} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
-        <img src="/media/battle-city.webp" alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={`/media/cutin-${lang}.webp`} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={`/media/spin-${lang}.webp`} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={`/media/beam-${lang}.webp`} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={`/media/sekiha-${lang}.webp`} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
       </div>
     </div>
   </section>
@@ -163,14 +169,22 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
 </Base>
 
 <style>
-  .hero {
-    position: relative; min-height: min(760px, 86vh); display: flex; align-items: flex-end;
-    background-color: var(--bg); background-size: cover; background-position: 70% 30%;
-    background-image: linear-gradient(90deg, rgba(7, 11, 29, 0.97) 0%, rgba(7, 11, 29, 0.93) 38%, rgba(7, 11, 29, 0.55) 58%, rgba(7, 11, 29, 0.08) 80%),
-      linear-gradient(0deg, var(--bg) 0%, rgba(7, 11, 29, 0) 32%), var(--hero);
+  .hero { position: relative; min-height: min(760px, 86vh); display: flex; align-items: flex-end; background-color: var(--bg); overflow: hidden; }
+  /* The picture sits inside the centred content column, never past it: right-aligned to
+     the column, centred in the band, about 60% of the column wide so the mech's raised hand
+     clears the text. Its left and top edges fade into the page. */
+  .hero-art {
+    position: absolute; right: var(--gutter); top: 50%; transform: translateY(-50%);
+    width: min(60%, calc((760px - 40px) * 16 / 9)); aspect-ratio: 16 / 9;
+    background: var(--hero) center / cover no-repeat;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%), linear-gradient(180deg, transparent 0%, #000 12%);
+    -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, #000 22%), linear-gradient(180deg, transparent 0%, #000 12%);
+    mask-composite: intersect;
   }
+  .hero-in > :not(.hero-art) { position: relative; z-index: 1; }
+  .hero-in { position: relative; }
   .hero-in { width: 100%; padding-top: 72px; padding-bottom: 64px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
-  .logo-h1 { margin: -8px 0 -18px -14px; width: min(620px, 92vw); }
+  .logo-h1 { margin: 0 0 6px -6px; width: min(620px, 92vw); }
   .logo-h1 img { width: 100%; height: auto; filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.6)); }
   .tagline { font-size: clamp(19px, 2.2vw, 26px); font-weight: 700; color: var(--gold); text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); }
   .lead strong { color: #fff; font-weight: 700; }
@@ -194,6 +208,7 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
   .shot img { width: 100%; border: 1px solid var(--line-soft); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); }
   .shot::before { content: ''; position: absolute; left: -10px; top: -10px; width: 60px; height: 60px; border-left: 3px solid var(--cyan); border-top: 3px solid var(--cyan); }
   .show.flip .shot::before { left: auto; right: -10px; border-left: 0; border-right: 3px solid var(--cyan); }
+  .shot.pair { display: grid; gap: 12px; }
   .show-text { display: grid; gap: 12px; align-content: center; }
   .show-text .num { font-size: 13px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); }
   .show-text h3 { font-size: clamp(22px, 2.6vw, 30px); }
@@ -208,14 +223,15 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
   .rule { padding: 24px; display: grid; gap: 12px; align-content: start; border-top: 3px solid var(--acc); }
   .rule.green { --acc: var(--green); } .rule.orange { --acc: var(--orange); } .rule.cyan { --acc: var(--cyan); }
   .rule-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-  .rule-head h3 { font-size: 20px; }
+  .rule-head h4 { font-size: 20px; }
+  .rules-block { display: grid; gap: 24px; }
+  .rules-block .show-text { max-width: 760px; }
   .badge { padding: 1px 10px; font-size: 12px; color: var(--acc); border: 1px solid var(--acc); border-radius: 10px; white-space: nowrap; }
   .rule-note { font-size: 14px; color: var(--dim); }
   .rule li { color: #d6ddf2; }
 
   .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .gallery img { width: 100%; border: 1px solid var(--line-soft); }
-  .gallery .g-wide { grid-column: 1 / -1; }
 
   .more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .feat { padding: 24px; display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--acc); }
@@ -254,6 +270,7 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
   @media (max-width: 640px) {
     .hero { min-height: 0; background-position: 0 0, 70% 0; background-size: 100% 100%, auto 340px; background-repeat: no-repeat;
       background-image: linear-gradient(0deg, var(--bg) 0%, var(--bg) calc(100% - 340px), rgba(7, 11, 29, 0.2) calc(100% - 140px), rgba(7, 11, 29, 0) 100%), var(--hero); }
+    .hero-art { display: none; }
     .hero-in { padding-top: 220px; padding-bottom: 40px; }
     .rules, .more, .gallery, .platforms { grid-template-columns: 1fr; }
     .community { padding: 24px 20px; }
