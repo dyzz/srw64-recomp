@@ -104,9 +104,12 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         }
     // The HD pack (tools/release/prepare_hd_bundle.py): the compiled art, the page
     // portraits by (image, palette), and the model packs. A downloaded pack goes in
-    // the user directory as hd/; a full-HD build bundles it as Contents/Resources/hd.
+    // the user directory as hd/, or as hd/ in the game's own folder (beside the .app
+    // on macOS, beside the program elsewhere); a full-HD build bundles it as
+    // Contents/Resources/hd. The first of these that exists is used.
     const auto installed=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir)/"hd";
-    const auto hd=fs::exists(installed)?installed:bundled_resource("hd");
+    const auto beside=beside_game("hd");
+    const auto hd=fs::exists(installed)?installed:!beside.empty()?beside:bundled_resource("hd");
     if(!hd.empty() && fs::exists(hd)) {
         const auto about=hd/"hd.json";
         if(!fs::is_regular_file(about) || read_json(about,1024*1024).value("schema","")!="srw64.hd-bundle.v1"

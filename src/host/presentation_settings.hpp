@@ -54,6 +54,11 @@ void set_wide_picture(bool wide);
 // (frame_rate.hpp, frontend.cpp). Off by default; saved as show_fps.
 bool show_fps();
 void set_show_fps(bool show);
+// The reading controls under the dialogue (dialogue_scene.cpp): hidden 5 s after the
+// dialogue appears and shown again 3 s by a direction key (the default), or always shown.
+// Saved as dialogue_hints, "auto" or "always".
+bool dialogue_hints_always();
+void set_dialogue_hints_always(bool always);
 // The debug interface for AI agents over MCP (docs/guide/debug-interface.md): switched in
 // the About page, saved as debug_interface, off by default. --debug (SRW64_DEBUG=1) turns
 // it on for a run whatever is saved, and the switch then cannot turn it off.

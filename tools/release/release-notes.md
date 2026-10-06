@@ -15,7 +15,7 @@
    - Linux／Steam Deck：`~/.local/share/srw64-recomp/hd`
    - Windows：`%LOCALAPPDATA%\SRW64Recomp\hd`
 
-   Linux 和 Windows 也可以把 `hd` 放在程序旁边（与 `srw64`／`Marchwind64.exe` 同一文件夹）；用户目录里的优先。
+   也可以放在游戏所在的文件夹里，和 `Marchwind64.app`、`marchwind64.sh` 或 `Marchwind64.exe` 放在一起；两处都有时用用户目录里的。macOS 上放在应用旁边时，应用要先在访达里移动过一次（比如拖进「应用程序」），否则系统从别处运行一份副本，看不到旁边的 `hd`。
 3. 打开应用即为 HD。F6 或设置窗口里的“图片”可以随时切回原版。
 
 HD 包只能配同一版本的应用使用，更新时整个替换。
@@ -30,7 +30,7 @@ HD 包只能配同一版本的应用使用，更新时整个替换。
 
 ## English
 
-An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. {packages_en}. `{hd_zip}` is the optional HD image pack for every platform: unzip it and put the `hd` folder in the user directory (`~/Library/Application Support/SRW64Recomp/` on macOS, `~/.local/share/srw64-recomp/` on Linux, `%LOCALAPPDATA%\SRW64Recomp\` on Windows), or on Linux and Windows next to the program. F6 switches between HD and the original images. The HD images are AI-generated (Alibaba Cloud Qwen and Wanx image models; the world map, tactical maps and some battle cut-ins and extra unit images with OpenAI's image model) from the original graphics, and the unit poses, map unit icons, battle cut-ins, props and ground textures and the tactical maps' palette-index maps are upscaled from the original pixel art; this is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
+An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. {packages_en}. `{hd_zip}` is the optional HD image pack for every platform: unzip it and put the `hd` folder in the user directory (`~/Library/Application Support/SRW64Recomp/` on macOS, `~/.local/share/srw64-recomp/` on Linux, `%LOCALAPPDATA%\SRW64Recomp\` on Windows), or in the game's own folder next to `Marchwind64.app`, `marchwind64.sh` or `Marchwind64.exe` (on macOS once the app has been moved in Finder). F6 switches between HD and the original images. The HD images are AI-generated (Alibaba Cloud Qwen and Wanx image models; the world map, tactical maps and some battle cut-ins and extra unit images with OpenAI's image model) from the original graphics, and the unit poses, map unit icons, battle cut-ins, props and ground textures and the tactical maps' palette-index maps are upscaled from the original pixel art; this is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
 
 ## 校验 / Checksums
 

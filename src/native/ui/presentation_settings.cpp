@@ -63,7 +63,7 @@ constexpr bool fps_default=true;
 #else
 constexpr bool fps_default=false;
 #endif
-std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true},fps_shown{fps_default},debug_on{false};
+std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true},fps_shown{fps_default},debug_on{false},hints_always{false};
 std::mutex endpoint_mutex;
 DebugEndpoint endpoint_now;
 std::atomic<int> size_choice{-1};  // UiSize, or -1 until the player chooses
@@ -74,7 +74,7 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
         {"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
-        {"debug_interface",debug_on.load()}});
+        {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
     auto cheat_ids=nlohmann::json::array();
     for(const auto& entry:srw64::cheats::catalog)if(srw64::cheats::active()&entry.bit)cheat_ids.push_back(entry.id);
@@ -130,6 +130,12 @@ void set_wide_picture(bool wide) {
 bool show_fps(){return fps_shown.load();}
 void set_show_fps(bool show) {
     fps_shown=show;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
+bool dialogue_hints_always(){return hints_always.load();}
+void set_dialogue_hints_always(bool always) {
+    hints_always=always;
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
@@ -276,6 +282,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();
         if(saved.is_object() && saved.contains("debug_interface") && saved["debug_interface"].is_boolean())debug_on=saved["debug_interface"].get<bool>();
+        if(saved.is_object())hints_always=saved.value("dialogue_hints","auto")=="always";
         if(saved.is_object()) {
             std::lock_guard lock(look_mutex);
             if(saved.contains("bezel") && saved["bezel"].is_string())bezel_path=saved["bezel"].get<std::string>();

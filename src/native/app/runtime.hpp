@@ -51,6 +51,10 @@ void atomic_write(const fs::path& path, std::string_view text);
 // A file or directory shipped with the program: Contents/Resources/<name> in a
 // macOS bundle, else <name> beside the executable; empty when there is none.
 fs::path bundled_resource(const std::string& name);
+// <name> in the folder the player put the game in: beside the .app on macOS, beside
+// the executable elsewhere; empty when there is none (and on Android, which has no
+// such folder).
+fs::path beside_game(const std::string& name);
 void set_environment(const std::string& key, const std::string& value);
 void clear_runtime_environment();
 

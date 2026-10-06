@@ -36,6 +36,15 @@ constexpr uint32_t body_base=0xFBAB0, name_base=0x15CB00, stride=0x218;
 constexpr uint32_t transition_task=0x15E9C0, transition_left=0x15E9C8, transition_right=0x15ED88;
 std::recursive_mutex mutex;
 std::atomic<uint16_t> raw_buttons{};
+// The reading controls bar (settings dialogue_hints): shown until bar_until, a VI.
+// Shown 5 s when dialogue appears, 3 s again for a direction key or a change in how the
+// player reads; fades out over its last 0.3 s. Fast-forward and skip keep it up.
+constexpr uint64_t bar_first_vis=300,bar_again_vis=180,bar_fade_vis=18;
+uint64_t bar_until{};
+bool bar_dialogue{};                          // a box was visible in the last frame drawn
+uint16_t bar_buttons{};                       // the buttons as last read, for presses
+int bar_pad=-1;                               // pad_hints and pad_family last drawn
+void show_bar(uint64_t vis){bar_until=std::max(bar_until,srw64_current_vi()+vis);}
 std::atomic_bool auto_toggle{};              // an L2 press, for the next reading step
 std::atomic_bool owns_input{};
 uint16_t consumed_hold{};
@@ -440,6 +449,9 @@ void service_locale(uint8_t* ram) {
 // The reader takes this frame's keys. The log gets each press and release of
 // fast-forward and each page the reader turns, with what was held.
 void read_keys() {
+    const uint16_t buttons=raw_buttons.load(),directions=Reader::UP|Reader::DOWN|Reader::LEFT|Reader::RIGHT;
+    if(buttons&directions&~bar_buttons)show_bar(bar_again_vis);
+    bar_buttons=buttons;
     const bool was_fast=reader.fast,was_pending=reader.pending;
     const uint64_t was_event=reader.event;const size_t was_page=reader.page;
     reader.update(raw_buttons.load(),srw64_current_vi());
@@ -460,7 +472,7 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         auto_toggle=false;read_keys();return false;
     }
     const auto old_font=reader.font_size,old_speed=reader.speed;
-    const bool was_history=reader.history_open,was_skip=reader.skipping;
+    const bool was_history=reader.history_open,was_skip=reader.skipping,was_auto=reader.auto_read,was_fast=reader.fast;
     if(auto_toggle.exchange(false)) {
         reader.toggle_auto(srw64_current_vi());
         record("auto",{{"automatic",reader.auto_read},{"level",reader.speed}});
@@ -478,6 +490,9 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         record("font",{{"size",reader.font_size},{"pages",reader.layout.pages.size()}});
     }
     if(old_speed!=reader.speed)record("speed",{{"level",reader.speed},{"automatic",reader.auto_read}});
+    // How the player reads changed: the bar says so for a while.
+    if(old_font!=reader.font_size || old_speed!=reader.speed || was_history!=reader.history_open || was_skip!=reader.skipping ||
+       was_auto!=reader.auto_read || was_fast!=reader.fast)show_bar(bar_again_vis);
     if(was_history!=reader.history_open)record("history",{{"open",reader.history_open},{"entries",reader.history.size()}});
     if(reader.history_open && !was_history) {
         // As the panel lays them out (dialogue_scene.cpp): a name line for each record
@@ -541,6 +556,17 @@ void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
     frame->history_open=reader.history_open;frame->skipping=reader.skipping;frame->display_only=display_only;
     frame->pad_hints=input::pad_hints.load();frame->pad_family=input::pad_family.load();
     frame->bar_scale=settings::ui_scale(settings::ui_size());
+    {
+        const bool shown=std::any_of(current.begin(),current.end(),[](const Box& box){return box.visible && !box.layout.pages.empty();});
+        if(shown && !bar_dialogue)show_bar(bar_first_vis);
+        bar_dialogue=shown;
+        const int pad=int(frame->pad_hints)<<8|frame->pad_family;
+        if(bar_pad>=0 && pad!=bar_pad)show_bar(bar_again_vis);  // the hints change their icons
+        bar_pad=pad;
+        if(reader.fast || reader.skipping)show_bar(bar_again_vis);
+        frame->bar_fade=settings::dialogue_hints_always()?1:
+            std::clamp(double(int64_t(bar_until)-int64_t(frame->vi))/double(bar_fade_vis),0.0,1.0);
+    }
     {
         // The hints name what the player bound (input_bindings.hpp); copied again only when that changes.
         static input::Bindings bindings=input::live_bindings().get();

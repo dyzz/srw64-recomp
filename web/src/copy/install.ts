@@ -87,11 +87,11 @@ export const INSTALL: Record<Lang, Install> = {
       },
       {
         id: 'hd', name: 'HD 美术包',
-        summary: '可选下载。电脑上解压后放入用户数据目录，Android 在应用里导入。',
+        summary: '可选下载。电脑上解压后放入用户数据目录或游戏所在的文件夹，Android 在应用里导入。',
         requires: '须与应用版本一致',
         steps: [
           '下载 <code>{hd}</code>，解压得到 <code>hd</code> 文件夹，其根目录应包含 <code>hd.json</code> 和 <code>art/</code>。',
-          '将文件夹放入应用的用户数据目录：macOS 为 <code>~/Library/Application Support/SRW64Recomp/hd</code>，Linux／Steam Deck 为 <code>~/.local/share/srw64-recomp/hd</code>，Windows 为 <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code>。Linux 和 Windows 也可放在程序所在文件夹。Android 不用手动解压，按上面 Android 一节的说明在应用里导入即可。',
+          '将文件夹放入应用的用户数据目录：macOS 为 <code>~/Library/Application Support/SRW64Recomp/hd</code>，Linux／Steam Deck 为 <code>~/.local/share/srw64-recomp/hd</code>，Windows 为 <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code>。也可以放在游戏所在的文件夹里，与 <code>Marchwind64.app</code>、<code>marchwind64.sh</code> 或 <code>Marchwind64.exe</code> 放在一起；两处都有时用用户数据目录里的。macOS 上放在应用旁边时，应用要先在访达里移动过一次（例如拖进「应用程序」）。Android 不用手动解压，按上面 Android 一节的说明在应用里导入即可。',
           '启动游戏后默认使用 HD，可在设置窗口的「画面」中切换原版与 HD。',
         ],
         notes: ['HD 包需与应用版本一致，更新时请整体替换。包内图像主要由 AI 参考原版画面生成或放大重绘，详见常见问题。'],
@@ -170,11 +170,11 @@ export const INSTALL: Record<Lang, Install> = {
       },
       {
         id: 'hd', name: 'HD art pack',
-        summary: 'Optional download. On computers, unzip it into the user data directory; on Android, import it in the app.',
+        summary: 'Optional download. On computers, unzip it into the user data directory or the game’s own folder; on Android, import it in the app.',
         requires: 'Must match the app version',
         steps: [
           'Download <code>{hd}</code> and extract the <code>hd</code> folder. It should contain <code>hd.json</code> and <code>art/</code> directly inside.',
-          'Place the folder in the app’s user data directory: <code>~/Library/Application Support/SRW64Recomp/hd</code> on macOS, <code>~/.local/share/srw64-recomp/hd</code> on Linux and Steam Deck, or <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code> on Windows. On Linux and Windows, it can also go in the same folder as the program. On Android there is nothing to unzip: import it in the app as described in the Android section.',
+          'Place the folder in the app’s user data directory: <code>~/Library/Application Support/SRW64Recomp/hd</code> on macOS, <code>~/.local/share/srw64-recomp/hd</code> on Linux and Steam Deck, or <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code> on Windows. It can also go in the game’s own folder, next to <code>Marchwind64.app</code>, <code>marchwind64.sh</code> or <code>Marchwind64.exe</code>; when both have one, the user data directory’s is used. On macOS, next to the app works once the app has been moved in Finder (into Applications, say). On Android there is nothing to unzip: import it in the app as described in the Android section.',
           'The game starts in HD. Switch between original and HD art under “Images” in the settings window.',
         ],
         notes: ['Use the HD pack that matches your app version, and replace the entire pack when updating. Most images are generated or upscaled with AI using the original graphics as a reference; see the FAQ.'],
@@ -253,11 +253,11 @@ export const INSTALL: Record<Lang, Install> = {
       },
       {
         id: 'hd', name: 'HD アートパック',
-        summary: '任意で導入できます。パソコンでは展開してユーザーデータフォルダーに配置し、Android ではアプリ内で導入します。',
+        summary: '任意で導入できます。パソコンでは展開してユーザーデータフォルダーかゲーム本体のフォルダーに配置し、Android ではアプリ内で導入します。',
         requires: 'アプリと同じバージョン',
         steps: [
           '<code>{hd}</code> をダウンロードして展開し、<code>hd</code> フォルダーの直下に <code>hd.json</code> と <code>art/</code> があることを確認します。',
-          'アプリのユーザーデータフォルダーに配置します。macOS は <code>~/Library/Application Support/SRW64Recomp/hd</code>、Linux／Steam Deck は <code>~/.local/share/srw64-recomp/hd</code>、Windows は <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code>。Linux と Windows では、プログラムと同じフォルダーにも配置できます。Android では展開不要で、上の Android の項目のとおりアプリ内で導入します。',
+          'アプリのユーザーデータフォルダーに配置します。macOS は <code>~/Library/Application Support/SRW64Recomp/hd</code>、Linux／Steam Deck は <code>~/.local/share/srw64-recomp/hd</code>、Windows は <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code>。ゲーム本体のフォルダー（<code>Marchwind64.app</code>、<code>marchwind64.sh</code>、<code>Marchwind64.exe</code> と同じ場所）にも置けます。両方にある場合はユーザーデータフォルダーのものを使います。macOS でアプリの隣に置く場合は、先にアプリを Finder で一度移動してください（「アプリケーション」へドラッグするなど）。Android では展開不要で、上の Android の項目のとおりアプリ内で導入します。',
           'ゲームは HD で起動します。設定ウィンドウの「画面」で、オリジナルと HD を切り替えられます。',
         ],
         notes: ['HD パックはアプリと同じバージョンを使用し、更新時は丸ごと入れ替えてください。収録画像は主に、オリジナルを参考に AI で生成、または拡大・描き直したものです。詳しくはよくある質問をご覧ください。'],

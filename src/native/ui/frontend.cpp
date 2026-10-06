@@ -2318,7 +2318,7 @@ void settings_sync() {
         for(unsigned i=0;i<std::size(settings_pages);++i)if(saved==settings_pages[i])settings_page=i;
     }
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::show_fps())+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::show_fps())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -2371,6 +2371,7 @@ void settings_sync() {
         body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
         body+=settings_choice("settings_title_ui","title-ui",{"native","original"},settings::native_title_ui()?"native":"original");
         body+=settings_choice("settings_fps","fps",{"off","on"},settings::show_fps()?"on":"off");
+        body+=settings_choice("settings_dialogue_hints","dialogue-hints",{"auto","always"},settings::dialogue_hints_always()?"always":"auto");
     } else if(page=="rules") {
         std::string presets;
         for(const auto& preset:rules::presets)presets+=button("preset:"+std::string(preset.key),label(std::string(preset.key)));
@@ -3975,6 +3976,7 @@ void choose(const std::string& id) {
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
         if(id.starts_with("fps:"))settings::set_show_fps(id=="fps:on");
+        if(id.starts_with("dialogue-hints:"))settings::set_dialogue_hints_always(id=="dialogue-hints:always");
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
         if(id=="debug-copy-run")SDL_SetClipboardText(settings::debug_endpoint().run.c_str());
         if(id.starts_with("autosave")) {
