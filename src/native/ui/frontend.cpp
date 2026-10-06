@@ -975,6 +975,19 @@ std::string saves_page() {
         std::string slots;
         if(file.value("unknown",false))slots="<span class='set-note'>"+label("settings_save_import_unknown")+"</span>";
         else for(unsigned i=0;i<file.at("slots").size();++i) {
+            const auto& slot=file.at("slots")[i];
+            if(!slot.value("used",false))continue;
+            const auto id="save-import:"+std::to_string(i)+":"+name;
+            const auto key=slot.value("intact",false)?"settings_save_import_slot":save_force==id?"settings_save_import_confirm":"settings_save_import_damaged";
+            slots+=button(id,with_number(key,i+1));
+        }
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(name)+" <span class='set-note'>"+escape(file.value("format",std::string()))+"</span></div><div class='set-seg'>"+slots+"</div></div></div>";
+    }
+    if(!save_message.empty())body+="<p class='set-message'>"+escape(save_message)+"</p>";
+    return body;
+}
+// The Cheats page (docs/gameplay/cheats.md): five switches, then each pilot's level
+// behind a row that opens the list; levels change only while the インターミッション
 // menu is up.
 bool cheat_levels_open=false;
 std::string cheats_page() {
@@ -997,19 +1010,6 @@ std::string cheats_page() {
     }
     return body;
 }
-            const auto& slot=file.at("slots")[i];
-            if(!slot.value("used",false))continue;
-            const auto id="save-import:"+std::to_string(i)+":"+name;
-            const auto key=slot.value("intact",false)?"settings_save_import_slot":save_force==id?"settings_save_import_confirm":"settings_save_import_damaged";
-            slots+=button(id,with_number(key,i+1));
-        }
-        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(name)+" <span class='set-note'>"+escape(file.value("format",std::string()))+"</span></div><div class='set-seg'>"+slots+"</div></div></div>";
-    }
-    if(!save_message.empty())body+="<p class='set-message'>"+escape(save_message)+"</p>";
-    return body;
-}
-// The Cheats page (docs/gameplay/cheats.md): five switches, then each pilot's level
-// behind a row that opens the list; levels change only while the インターミッション
 // Bezel and filter (docs/native/bezels-and-filters.md): a picker inside the General page
 // that walks the player's folder and RetroArch's, one level at a time.
 std::string browse_kind;            // "bezel", "filter" or empty while closed
@@ -1203,6 +1203,48 @@ std::string mod_dialogue_page() {
         body+="<p class='dlc-meta'>"+escape(line)+"</p>";
     }
     return body+"<p class='dlc-meta'>"+label("mod_dialogue_note")+"</p>";
+}
+// The update check's words (update_check.hpp) with {version}, {date} and {error} filled in.
+std::string update_words(const std::string& key,const update::Status& s) {
+    auto text=localization::catalog().ui(key);
+    for(const auto& [mark,value]:{std::pair<std::string,std::string>{"{version}",s.latest.version},{"{date}",s.latest.date},{"{error}",s.error}})
+        if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),value);
+    for(const char* empty:{"（）"," ()"})if(const auto at=text.find(empty);at!=std::string::npos)text.erase(at,std::string(empty).size());
+    return escape(text);
+}
+// The About page's rows: the project's pages, then the update check and its switch.
+std::string about_rows() {
+    std::string rows=settings_row("settings_about_links",button("about-link:site",label("about_link_site"))+
+        button("about-link:source",label("about_link_source"))+button("about-link:issues",label("about_link_issues")));
+    if(!update::supported())return rows;
+    const auto s=update::status(update::site_language(localization::catalog().locale));
+    using update::State;
+    const char* key=s.state==State::Checking?"update_status_checking":s.state==State::Current?"update_status_current":
+        s.state==State::Available?"update_status_available":s.state==State::Failed?"update_status_failed":"update_status_unchecked";
+    std::string actions=button("update-check",label("update_check"),false,s.state==State::Checking);
+    if(s.state==State::Available) {
+        actions+=button("update-download",label("update_download"),true);
+        if(!s.latest.notes.empty())actions+=button("update-notes",label("update_notes"));
+    }
+    rows+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("settings_update")+"</div><div class='set-seg'>"+actions+
+        "</div></div><p>"+update_words(key,s)+"</p></div>";
+    const auto automatic=update::automatic();
+    rows+=settings_choice("settings_update_auto","update-auto",{"on","off"},automatic?(*automatic?"on":"off"):"");
+    return rows;
+}
+// Asked once on the title: whether to check on start-up. Closing it is a no.
+std::string update_ask_panel() {
+    return "<div class='set-shade'><div class='set-panel set-ask'><h1>"+label("update_check")+"</h1><div id='set-body' class='set-body'>"
+        "<div class='set-row nav'><div class='set-name'>"+label("update_ask_text")+"</div><p>"+label("update_ask_note")+"</p><div class='set-seg'>"+
+        button("update-ask:on",label("update_ask_on"),true)+button("update-ask:off",label("update_ask_off"))+"</div></div></div>"
+        "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+}
+// A page in the system browser; a notice with the address when there is none.
+void open_page(const std::string& url) {
+    if(url.empty() || update::open_url(url))return;
+    auto text=localization::catalog().ui("update_open_failed");
+    if(const auto at=text.find("{url}");at!=std::string::npos)text.replace(at,5,url);
+    notices::post("update",text);
 }
 std::string mod_panel() {
     std::string body="<div class='set-shade'><div class='set-panel'><h1>"+label("mod_title")+"</h1><div class='set-tabs nav'>";
@@ -2232,7 +2274,9 @@ void settings_sync() {
         // The General page's bezel and filter rows and their picker.
         (settings_pages[settings_page]==std::string("general")?look_stamp():std::string())+
         // The Cheats page: its switches, the levels row and the pilots the menu lists.
-        (settings_pages[settings_page]==std::string("cheats")?cheats_stamp():std::string());
+        (settings_pages[settings_page]==std::string("cheats")?cheats_stamp():std::string())+
+        // The About page: the update check as it goes.
+        (settings_pages[settings_page]==std::string("about")?std::to_string(update::status("en").serial):std::string());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     // A rebuilt window keeps its focused control and scroll position, so a controller
     // does not lose its place; another page starts at its top.
@@ -3846,6 +3890,20 @@ void choose(const std::string& id) {
     try {
         if(id.starts_with("rule:"))for(const auto& entry:rules::catalog)if(entry.id==id.substr(5))rules::set_fixes(rules::active_fixes()^entry.fix);
         if(id=="cheat-levels")cheat_levels_open=!cheat_levels_open;
+        if(id=="bezel-off"){settings::set_bezel("");browse_kind.clear();}
+        if(id=="filter-off"){settings::set_filter("");browse_kind.clear();}
+        if(id.starts_with("filter-scale:"))settings::set_filter_scale(unsigned(std::stoul(id.substr(13))));
+        if(id.starts_with("browse:")){const auto kind=id.substr(7);browse_kind=browse_kind==kind?std::string():kind;browse_dir.clear();}
+        if(id.starts_with("browse-dir:")){browse_dir=std::filesystem::path(id.substr(11));std::error_code error;std::filesystem::create_directories(browse_dir,error);}
+        if(id=="browse-up") {
+            const auto roots=browse_kind=="bezel"?settings::bezel_roots():settings::filter_roots();
+            browse_dir=std::find(roots.begin(),roots.end(),browse_dir)!=roots.end()?std::filesystem::path():browse_dir.parent_path();
+        }
+        if(id.starts_with("browse-pick:")) {
+            const auto path=id.substr(12);
+            if(browse_kind=="bezel")settings::set_bezel(path);else settings::set_filter(path);
+            browse_kind.clear();
+        }
         if(id.starts_with("cheat:"))for(const auto& entry:cheats::catalog)if(entry.id==id.substr(6))settings::set_cheats(settings::cheats()^entry.bit);
         if(id.starts_with("cheat-level:"))if(const auto colon=id.find(':',12);colon!=std::string::npos)cheats::request_level(unsigned(std::stoul(id.substr(12,colon-12))),unsigned(std::stoul(id.substr(colon+1))));
         if(id.starts_with("preset:"))for(const auto& preset:rules::presets)if(preset.key==id.substr(7))rules::set_fixes(preset.fixes);
@@ -3894,20 +3952,6 @@ void choose(const std::string& id) {
 // it, B goes back, L opens the weapon list, R the spirits, C-down toggles the battle
 // animation, C-left swaps 回避 and 防御.
 void battle_buttons(uint32_t pressed,bool tab) {
-        if(id=="bezel-off"){settings::set_bezel("");browse_kind.clear();}
-        if(id=="filter-off"){settings::set_filter("");browse_kind.clear();}
-        if(id.starts_with("filter-scale:"))settings::set_filter_scale(unsigned(std::stoul(id.substr(13))));
-        if(id.starts_with("browse:")){const auto kind=id.substr(7);browse_kind=browse_kind==kind?std::string():kind;browse_dir.clear();}
-        if(id.starts_with("browse-dir:")){browse_dir=std::filesystem::path(id.substr(11));std::error_code error;std::filesystem::create_directories(browse_dir,error);}
-        if(id=="browse-up") {
-            const auto roots=browse_kind=="bezel"?settings::bezel_roots():settings::filter_roots();
-            browse_dir=std::find(roots.begin(),roots.end(),browse_dir)!=roots.end()?std::filesystem::path():browse_dir.parent_path();
-        }
-        if(id.starts_with("browse-pick:")) {
-            const auto path=id.substr(12);
-            if(browse_kind=="bezel")settings::set_bezel(path);else settings::set_filter(path);
-            browse_kind.clear();
-        }
     if(!battle_doc || !battle_request.value("visible",false) || settings_open)return;
     if(battle_request.value("style",std::string())=="hd" && !touch_battle_layout()){battle_hd_buttons(pressed);return;}
     const bool spirits=battle_request.value("spirit_menu",false);
