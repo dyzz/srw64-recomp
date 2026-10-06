@@ -301,6 +301,24 @@ fs::path bundled_resource(const std::string& name) {
         if(fs::exists(candidate,error))return candidate;
     return {};
 }
+fs::path beside_game(const std::string& name) {
+#ifdef __ANDROID__
+    return {};
+#else
+    auto folder=executable_path().parent_path();
+    if(folder.empty())return {};
+#ifdef __APPLE__
+    // <folder>/Marchwind64.app/Contents/MacOS/<executable>. A downloaded app that was
+    // not moved runs translocated (a read-only copy elsewhere), with nothing beside it.
+    if(folder.filename()=="MacOS" && folder.parent_path().filename()=="Contents"
+       && folder.parent_path().parent_path().extension()==".app")
+        folder=folder.parent_path().parent_path().parent_path();
+#endif
+    std::error_code error;
+    const auto candidate=folder/name;
+    return fs::exists(candidate,error)?candidate:fs::path{};
+#endif
+}
 void set_environment(const std::string& key,const std::string& value) {
 #ifdef _WIN32
     if (_putenv_s(key.c_str(),value.c_str())!=0) throw std::runtime_error("Cannot set environment: "+key);

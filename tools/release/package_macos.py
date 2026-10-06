@@ -180,7 +180,7 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
                "see Resources/hd/NOTICE.txt). It is a personal build: do not distribute it.\n"
                if hd is not None else
                "HD images: download the HD pack of the same version and put its hd folder in\n"
-               "~/Library/Application Support/SRW64Recomp/ (see its NOTICE.txt).\n"),
+               "~/Library/Application Support/SRW64Recomp/ or next to this app (see its NOTICE.txt).\n"),
             encoding="utf-8")
         if dialogue is not None:
             # The dialogue text players can override (docs/guide/dialogue-text.md): text files only.

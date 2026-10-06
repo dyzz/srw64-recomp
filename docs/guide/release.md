@@ -86,7 +86,10 @@ Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检�
 - HD 窗口边框和标题图里的 BANPRESTO 标志、GAME OVER 由游戏在运行时从玩家自己的 ROM 生成（99d5cb2、7b0d7f5），
   美术清单里没有它们。
 - 玩家把解压出的 `hd` 文件夹放进用户目录（macOS 为 `~/Library/Application Support/SRW64Recomp/hd`），
-  启动器即以 HD 开局；文件夹不完整或版本不对时报错，不会悄悄退回原版（`src/native/app/launch.cpp`）。
+  或者放在游戏所在的文件夹里（`Marchwind64.app`、`marchwind64.sh`、`Marchwind64.exe` 旁边，`beside_game`），
+  启动器即以 HD 开局。查找顺序：用户目录 → 游戏旁边 → 应用自带（`Contents/Resources/hd`）；
+  文件夹不完整或版本不对时报错，不会悄悄退回原版（`src/native/app/launch.cpp`）。macOS 上未在访达里移动过的
+  下载应用会被系统换到只读副本里运行（App Translocation），这时旁边的 `hd` 看不到；安卓没有游戏文件夹，只认用户目录。
 - HD 包只配同一版本的应用。`hd.json` 的 schema 或 HD 数据格式变了，要同时发新应用和新 HD 包。
 - 体积（`tools/release/compress_hd.py`，2026-09-28）：整图都存 JPEG 质量 92、4:2:0，要透明的另存一张灰度加透明的 PNG。
   机体立绘从 8 倍缩到 6 倍 ROM 像素，长边不超过 1024 px；战前确认页最大只显示约 830 px（密度 2）或 980 px（密度 3）。

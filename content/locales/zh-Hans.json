@@ -486,7 +486,7 @@
     "mod_current": "游玩中",
     "mod_title_only": "切换追加剧本要回到标题画面进行。",
     "mod_art_installed": "HD 包已安装：",
-    "mod_art_missing": "没有找到 HD 包。把下载的 hd 文件夹放进用户目录即可启用。",
+    "mod_art_missing": "没有找到 HD 包。把下载的 hd 文件夹放进用户目录或游戏所在的文件夹即可启用。",
     "mod_art_note": "以后社区美术包也在这里管理。",
     "mod_dialogue_reload": "台词文件",
     "mod_dialogue_reload_note": "改好的台词文件放进下面的文件夹，按 F5 或点「重新载入台词」生效",

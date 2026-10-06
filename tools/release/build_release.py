@@ -10,7 +10,7 @@ sessions' uncommitted work in the main worktree never reaches the build.
 
 Writes to OUTPUT:
   Marchwind64-<version>-macos14-arm64.zip  the app (Original images; HD when a pack is installed)
-  Marchwind64-<version>-HD.zip             the HD pack: unzip into the user directory as hd/
+  Marchwind64-<version>-HD.zip             the HD pack: unzip as hd/ into the user directory or beside the game
   release.json, release-notes.md, logs/
 Publishing is a separate, manual step: release.json holds the gh command."""
 from __future__ import annotations

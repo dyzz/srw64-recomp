@@ -1,7 +1,14 @@
 Marchwind64 — HD 图片包 / HD image pack
 
-安装：把这个 hd 文件夹放进用户目录，
-  macOS：~/Library/Application Support/SRW64Recomp/hd
+安装：把这个 hd 文件夹放进用户目录，或者放在游戏所在的文件夹里。
+  用户目录：
+    macOS：~/Library/Application Support/SRW64Recomp/hd
+    Linux／Steam Deck：~/.local/share/srw64-recomp/hd
+    Windows：%LOCALAPPDATA%\SRW64Recomp\hd
+  游戏所在的文件夹：和 Marchwind64.app（macOS）、marchwind64.sh（Linux）
+    或 Marchwind64.exe（Windows）放在一起。
+  两处都有时用用户目录里的。macOS 上放在应用旁边时，应用要先在访达里移动过一次
+  （比如拖进「应用程序」），否则系统从别处运行一份副本，看不到旁边的 hd。
 打开游戏即为 HD。F6 或设置窗口的“图片”可以随时切回原版。
 这个包只能配同一版本的应用使用；换版本时整个替换。
 
@@ -22,8 +29,17 @@ Marchwind64 — HD 图片包 / HD image pack
 这是非官方的粉丝作品，与万代南梦宫、万普（BANPRESTO）及各作品的版权方无关。
 原作角色、美术与商标的权利归各自的权利人所有。
 
-Install: put this hd folder in the user directory
-  (macOS: ~/Library/Application Support/SRW64Recomp/hd). The game then starts in HD;
+Install: put this hd folder in the user directory, or in the game's own folder.
+  User directory:
+    macOS: ~/Library/Application Support/SRW64Recomp/hd
+    Linux / Steam Deck: ~/.local/share/srw64-recomp/hd
+    Windows: %LOCALAPPDATA%\SRW64Recomp\hd
+  The game's own folder: next to Marchwind64.app (macOS), marchwind64.sh (Linux)
+    or Marchwind64.exe (Windows).
+  When both have one, the user directory's is used. On macOS, next to the app works
+  once the app has been moved in Finder (into Applications, say): an app opened where
+  it was downloaded runs from a copy elsewhere and sees nothing beside it.
+The game then starts in HD;
 F6 or Images in the settings window switches back to the original. Use the pack with
 the app of the same version, and replace it as a whole when you update.
 

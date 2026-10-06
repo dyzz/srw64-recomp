@@ -486,7 +486,7 @@
     "mod_current": "Playing",
     "mod_title_only": "Extra scenarios are switched on the title screen.",
     "mod_art_installed": "HD pack installed:",
-    "mod_art_missing": "No HD pack found. Put the downloaded hd folder in the user folder to enable it.",
+    "mod_art_missing": "No HD pack found. Put the downloaded hd folder in the user folder or the game's own folder to enable it.",
     "mod_art_note": "Community art packs will be managed here too.",
     "mod_dialogue_reload": "Dialogue Files",
     "mod_dialogue_reload_note": "Put edited dialogue files in the folder below, then press F5 or Reload Dialogue Text",

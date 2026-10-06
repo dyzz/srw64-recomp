@@ -45,7 +45,8 @@ Marchwind64, Steam Deck edition (experimental). English below.
 HD 画面
   HD 素材包与 macOS 版是同一个下载。把它解压成
        ~/.local/share/srw64-recomp/hd
-  （里面应当直接有 hd.json 和 art/）。有 HD 包时游戏以 HD 开局，
+  或者放在本文件夹里（和 marchwind64.sh 同级的 hd/），
+  里面应当直接有 hd.json 和 art/；两处都有时用前一个。有 HD 包时游戏以 HD 开局，
   设置窗口（视图键）里可以切回原版。包里自带 hd/ 文件夹的自用版无需下载。
 
 其他
@@ -84,6 +85,7 @@ you used.
 
 Saves: ~/.local/share/srw64-recomp. Quitting from the Steam menu saves normally.
 HD: unpack the HD pack (the same download as for macOS) as
-~/.local/share/srw64-recomp/hd (hd.json and art/ directly inside); the game then
+~/.local/share/srw64-recomp/hd or as hd/ in this folder, next to marchwind64.sh
+(hd.json and art/ directly inside; the first wins when both exist); the game then
 starts in HD, and the settings window switches back to Original.
 Runs on other x86-64 Linux too (glibc 2.35+, a Vulkan driver).
