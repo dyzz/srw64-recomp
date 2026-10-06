@@ -14,7 +14,7 @@ Mini stages are a debugging tool and **the game has no menu for them**: they can
 
 ## For AI agents: llms.txt
 
-[`/docs/mini-stage/llms.txt`](/docs/mini-stage/llms.txt) puts everything needed to write a mini stage in one plain-text file for AI agents: the workflow, every limit the compiler checks, where to look up character and unit numbers, and the full reference of commands, conditions, markers, event types and deployment record fields (English names with the Chinese implementation notes and findings). Once the game is connected, hand the address to your agent:
+[`/docs/mini-stage/llms.txt`](/docs/mini-stage/llms.txt) puts everything needed to write a mini stage in one plain-text file for AI agents: the workflow, every limit the compiler checks, where to look up character and unit numbers, and the full reference of commands, conditions, markers, event types and deployment record fields (English names with the Chinese implementation notes and findings). Tools that ask for Markdown when they fetch a page, such as Claude Code, get this file automatically from this page’s own address; give other tools the address. Once the game is connected, you can say:
 
 ```text
 Read https://srw64.dreamquest.club/docs/mini-stage/llms.txt, then write a mini stage with one allied unit and two enemies next to it, compile it, load it with srw64_mini_stage_load and take a screenshot once inside.

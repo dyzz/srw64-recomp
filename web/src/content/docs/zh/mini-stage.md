@@ -14,7 +14,7 @@ updated: 2026-10-06
 
 ## 给 AI 智能体：llms.txt
 
-[`/docs/mini-stage/llms.txt`](/docs/mini-stage/llms.txt) 把写迷你关卡需要的一切放进一个纯文本文件，专门给 AI 智能体读：使用流程、编译器检查的每条限制、去哪里查人物和机体编号，以及全部指令、条件指令、标记、事件类型和出击记录字段的详细解析（英文名称加中文的实现依据与实测）。连上游戏后，把这个地址交给智能体即可：
+[`/docs/mini-stage/llms.txt`](/docs/mini-stage/llms.txt) 把写迷你关卡需要的一切放进一个纯文本文件，专门给 AI 智能体读：使用流程、编译器检查的每条限制、去哪里查人物和机体编号，以及全部指令、条件指令、标记、事件类型和出击记录字段的详细解析（英文名称加中文的实现依据与实测）。Claude Code 这类抓网页时声明想要 Markdown 的工具，直接打开本页地址也会自动拿到这份文件；其他工具把地址交给它即可。连上游戏后可以这样说：
 
 ```text
 先读 https://srw64.dreamquest.club/docs/mini-stage/llms.txt，然后写一个迷你关卡：我方一台机体和两台相邻的敌人，编译后用 srw64_mini_stage_load 加载，进去后截图。
