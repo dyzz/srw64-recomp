@@ -1,0 +1,1086 @@
+{
+ "世界地图定位（地点，与 3D32 同处理函数）": {
+  "en": "World map: place at location (same handler as 3D32)",
+  "ja": "ワールドマップ：地点に配置（3D32 と同じ処理）"
+ },
+ "地点": {
+  "en": "Location",
+  "ja": "地点"
+ },
+ "世界地图定位（地点）": {
+  "en": "World map: place at location",
+  "ja": "ワールドマップ：地点に配置"
+ },
+ "世界地图移动（目的地点）": {
+  "en": "World map: travel to location",
+  "ja": "ワールドマップ：目的地へ移動"
+ },
+ "切换地图并卷动至位置（地图编号, x, y, 种类）": {
+  "en": "Switch map and scroll to position (map, x, y, kind)",
+  "ja": "マップ切り替えと位置へのスクロール（マップ番号, x, y, 種類）"
+ },
+ "地图编号": {
+  "en": "Map",
+  "ja": "マップ番号"
+ },
+ "x": {
+  "en": "x",
+  "ja": "x"
+ },
+ "y": {
+  "en": "y",
+  "ja": "y"
+ },
+ "种类": {
+  "en": "Kind",
+  "ja": "種類"
+ },
+ "镜头卷动至位置（位置, 等待标志）": {
+  "en": "Scroll camera to position (position, wait flag)",
+  "ja": "カメラを位置へスクロール（位置, 待機フラグ）"
+ },
+ "位置": {
+  "en": "Position",
+  "ja": "位置"
+ },
+ "等待标志": {
+  "en": "Wait flag",
+  "ja": "待機フラグ"
+ },
+ "画面震动（强度编号）": {
+  "en": "Shake screen (strength)",
+  "ja": "画面振動（強さ）"
+ },
+ "强度编号": {
+  "en": "Strength",
+  "ja": "強さ"
+ },
+ "地图特效叠加（特效编号, 位置）": {
+  "en": "Map effect overlay (effect, position)",
+  "ja": "マップエフェクト表示（エフェクト番号, 位置）"
+ },
+ "特效编号": {
+  "en": "Effect",
+  "ja": "エフェクト番号"
+ },
+ "等待（帧计数）": {
+  "en": "Wait (frames)",
+  "ja": "待機（フレーム数）"
+ },
+ "帧数": {
+  "en": "Frames",
+  "ja": "フレーム数"
+ },
+ "播放音效": {
+  "en": "Play sound effect",
+  "ja": "効果音を再生"
+ },
+ "音效": {
+  "en": "Sound effect",
+  "ja": "効果音"
+ },
+ "播放 BGM（0 = 停止）": {
+  "en": "Play BGM (0 = stop)",
+  "ja": "BGM 再生（0 = 停止）"
+ },
+ "曲目": {
+  "en": "Track",
+  "ja": "曲"
+ },
+ "画面淡入淡出（模式）": {
+  "en": "Fade screen (mode)",
+  "ja": "フェードイン／アウト（モード）"
+ },
+ "模式": {
+  "en": "Mode",
+  "ja": "モード"
+ },
+ "单位移动至位置（驾驶员, 位置）": {
+  "en": "Move unit to position (pilot, position)",
+  "ja": "ユニットを位置へ移動（パイロット, 位置）"
+ },
+ "驾驶员": {
+  "en": "Pilot",
+  "ja": "パイロット"
+ },
+ "出击（–, –, –, 台数：0 = 选母舰 200 = 全部自动 其余 = 出击选择上限, 基准组）": {
+  "en": "Sortie (–, –, –, count: 0 = choose mothership, 200 = all automatic, otherwise the selection limit; base group)",
+  "ja": "出撃（–, –, –, 機数：0 = 母艦選択、200 = 全自動、それ以外 = 出撃選択の上限, 基準グループ）"
+ },
+ "保留（原脚本抄基准坐标 x）": {
+  "en": "Reserved (original scripts copy the base x)",
+  "ja": "予約（原作スクリプトは基準座標 x を写す）"
+ },
+ "保留（原脚本抄基准坐标 y）": {
+  "en": "Reserved (original scripts copy the base y)",
+  "ja": "予約（原作スクリプトは基準座標 y を写す）"
+ },
+ "参数（原脚本恒为 0）": {
+  "en": "Parameter (always 0 in the original scripts)",
+  "ja": "引数（原作スクリプトでは常に 0）"
+ },
+ "台数（0 母舰／200 自动／其余为上限）": {
+  "en": "Count (0 mothership / 200 automatic / otherwise limit)",
+  "ja": "機数（0 母艦／200 自動／それ以外は上限）"
+ },
+ "基准组": {
+  "en": "Base group",
+  "ja": "基準グループ"
+ },
+ "对白 · 显示模式 0": {
+  "en": "Dialogue · display mode 0",
+  "ja": "会話 · 表示モード 0"
+ },
+ "文本": {
+  "en": "Text",
+  "ja": "テキスト"
+ },
+ "对白 · 显示模式 1": {
+  "en": "Dialogue · display mode 1",
+  "ja": "会話 · 表示モード 1"
+ },
+ "对白 · 显示模式 2": {
+  "en": "Dialogue · display mode 2",
+  "ja": "会話 · 表示モード 2"
+ },
+ "对白 · 显示模式 3": {
+  "en": "Dialogue · display mode 3",
+  "ja": "会話 · 表示モード 3"
+ },
+ "对白 · 显示模式 4": {
+  "en": "Dialogue · display mode 4",
+  "ja": "会話 · 表示モード 4"
+ },
+ "对白 · 显示模式 5": {
+  "en": "Dialogue · display mode 5",
+  "ja": "会話 · 表示モード 5"
+ },
+ "显示选择肢（窗口槽位, 选项数, 选项文本）": {
+  "en": "Show a choice (window slot, option count, option text)",
+  "ja": "選択肢を表示（ウィンドウ枠, 選択肢の数, 選択肢テキスト）"
+ },
+ "窗口槽位": {
+  "en": "Window slot",
+  "ja": "ウィンドウ枠"
+ },
+ "选项数": {
+  "en": "Option count",
+  "ja": "選択肢の数"
+ },
+ "选项文本": {
+  "en": "Option text",
+  "ja": "選択肢テキスト"
+ },
+ "部署配套记录组（登场）": {
+  "en": "Deploy a record group (arrival)",
+  "ja": "出撃データのグループを配置（登場）"
+ },
+ "配套组": {
+  "en": "Group",
+  "ja": "グループ"
+ },
+ "单位退场（角色或配套组, 立即）": {
+  "en": "Withdraw unit (character or group, immediately)",
+  "ja": "ユニット退場（キャラクターまたはグループ, 即時）"
+ },
+ "角色或配套组": {
+  "en": "Character or group",
+  "ja": "キャラクターまたはグループ"
+ },
+ "立即": {
+  "en": "Immediately",
+  "ja": "即時"
+ },
+ "关闭对白窗口并等待 32 帧": {
+  "en": "Close the dialogue window and wait 32 frames",
+  "ja": "会話ウィンドウを閉じて 32 フレーム待機"
+ },
+ "关闭对白窗口": {
+  "en": "Close the dialogue window",
+  "ja": "会話ウィンドウを閉じる"
+ },
+ "脚本战斗演出（战斗表项 A, 战斗表项 B）": {
+  "en": "Scripted battle scene (battle entry A, battle entry B)",
+  "ja": "スクリプト戦闘演出（戦闘テーブル A, 戦闘テーブル B）"
+ },
+ "战斗表项 A": {
+  "en": "Battle entry A",
+  "ja": "戦闘テーブル A"
+ },
+ "战斗表项 B": {
+  "en": "Battle entry B",
+  "ja": "戦闘テーブル B"
+ },
+ "关卡胜利结算": {
+  "en": "Stage victory",
+  "ja": "ステージクリア処理"
+ },
+ "设定下一场景索引（500 = 恢复 8010F5F2）": {
+  "en": "Set the next scene (500 = restore 8010F5F2)",
+  "ja": "次のシーン番号を設定（500 = 8010F5F2 を復元）"
+ },
+ "场景索引": {
+  "en": "Scene",
+  "ja": "シーン番号"
+ },
+ "游戏结束": {
+  "en": "Game over",
+  "ja": "ゲームオーバー"
+ },
+ "从世界地图切换到战场": {
+  "en": "Switch from the world map to the battlefield",
+  "ja": "ワールドマップから戦場へ切り替え"
+ },
+ "关闭窗口并让出一帧": {
+  "en": "Close windows and yield one frame",
+  "ja": "ウィンドウを閉じて 1 フレーム譲る"
+ },
+ "单位击破（角色或配套组）": {
+  "en": "Destroy unit (character or group)",
+  "ja": "ユニット撃破（キャラクターまたはグループ）"
+ },
+ "机体变形（角色, 原机体, 目标机体）": {
+  "en": "Transform unit (character, from unit, to unit)",
+  "ja": "機体の変形（キャラクター, 元の機体, 変形後の機体）"
+ },
+ "角色": {
+  "en": "Character",
+  "ja": "キャラクター"
+ },
+ "原机体": {
+  "en": "From unit",
+  "ja": "元の機体"
+ },
+ "目标机体": {
+  "en": "To unit",
+  "ja": "変形後の機体"
+ },
+ "发射 MAP 兵器（角色, 机体, MAP 兵器, 方向, –）": {
+  "en": "Fire a MAP weapon (character, unit, MAP weapon, direction, –)",
+  "ja": "MAP 兵器を発射（キャラクター, 機体, MAP 兵器, 方向, –）"
+ },
+ "机体": {
+  "en": "Unit",
+  "ja": "機体"
+ },
+ "MAP 兵器": {
+  "en": "MAP weapon",
+  "ja": "MAP 兵器"
+ },
+ "方向": {
+  "en": "Direction",
+  "ja": "方向"
+ },
+ "–": {
+  "en": "–",
+  "ja": "–"
+ },
+ "启动延迟计数事件（槽, 回合数, 阶段）": {
+  "en": "Start a delayed-count event (slot, turns, phase)",
+  "ja": "遅延カウントイベントを開始（枠, ターン数, フェイズ）"
+ },
+ "类型 1 槽": {
+  "en": "Type 1 slot",
+  "ja": "タイプ 1 の枠"
+ },
+ "回合数": {
+  "en": "Turns",
+  "ja": "ターン数"
+ },
+ "阶段": {
+  "en": "Phase",
+  "ja": "フェイズ"
+ },
+ "停用延迟计数事件（槽）": {
+  "en": "Stop a delayed-count event (slot)",
+  "ja": "遅延カウントイベントを停止（枠）"
+ },
+ "记住角色所在位置": {
+  "en": "Remember the character's position",
+  "ja": "キャラクターの位置を記憶"
+ },
+ "发动精神指令／镜头切至角色（角色, 精神编号或 30）": {
+  "en": "Use a spirit / cut the camera to a character (character, spirit or 30)",
+  "ja": "精神コマンド発動／キャラクターへカメラ切り替え（キャラクター, 精神番号または 30）"
+ },
+ "精神编号": {
+  "en": "Spirit",
+  "ja": "精神番号"
+ },
+ "高亮绿色目标区域（编码坐标 A, 编码坐标 B, –）": {
+  "en": "Highlight a green target area (encoded corner A, encoded corner B, –)",
+  "ja": "緑の目標エリアを表示（座標 A, 座標 B, –）"
+ },
+ "坐标 A": {
+  "en": "Corner A",
+  "ja": "座標 A"
+ },
+ "坐标 B": {
+  "en": "Corner B",
+  "ja": "座標 B"
+ },
+ "保留": {
+  "en": "Reserved",
+  "ja": "予約"
+ },
+ "启用区域到达事件槽（槽, 值）": {
+  "en": "Enable an area-arrival event slot (slot, value)",
+  "ja": "エリア到達イベント枠を有効化（枠, 値）"
+ },
+ "类型 8 槽": {
+  "en": "Type 8 slot",
+  "ja": "タイプ 8 の枠"
+ },
+ "值": {
+  "en": "Value",
+  "ja": "値"
+ },
+ "单位转换阵营（角色, 目标阵营）": {
+  "en": "Change a unit's side (character, new side)",
+  "ja": "ユニットの所属変更（キャラクター, 変更先の陣営）"
+ },
+ "目标阵营": {
+  "en": "New side",
+  "ja": "変更先の陣営"
+ },
+ "不许出击（角色；≥500 为 500 + 机体编号）": {
+  "en": "Bar from sorties (character; ≥500 means 500 + unit number)",
+  "ja": "出撃不可（キャラクター。500 以上は 500 + 機体番号）"
+ },
+ "角色或 500+机体": {
+  "en": "Character or 500 + unit",
+  "ja": "キャラクターまたは 500 + 機体"
+ },
+ "部队编成（角色, 参数, 机体, 模式／旧机体）": {
+  "en": "Team roster change (character, parameter, unit, mode / old unit)",
+  "ja": "部隊編成（キャラクター, 引数, 機体, モード／旧機体）"
+ },
+ "参数": {
+  "en": "Parameter",
+  "ja": "引数"
+ },
+ "模式／旧机体": {
+  "en": "Mode / old unit",
+  "ja": "モード／旧機体"
+ },
+ "资金增加 参数×1000": {
+  "en": "Add funds: parameter × 1000",
+  "ja": "資金を加算：引数 × 1000"
+ },
+ "千元": {
+  "en": "Thousands",
+  "ja": "千単位"
+ },
+ "合体／分离（角色, 1 = 合体 0 = 分离）": {
+  "en": "Combine / separate (character, 1 = combine, 0 = separate)",
+  "ja": "合体／分離（キャラクター, 1 = 合体、0 = 分離）"
+ },
+ "设定合体机器人的形态（1 = 合体 0 = 分离, 家族 0 = ダンクーガ 1 = コン・バトラーV）": {
+  "en": "Set a combining robot's form (1 = combined, 0 = separated; family 0 = Dancouga, 1 = Combattler V)",
+  "ja": "合体ロボの形態を設定（1 = 合体、0 = 分離, 系統 0 = ダンクーガ、1 = コン・バトラーV）"
+ },
+ "形态": {
+  "en": "Form",
+  "ja": "形態"
+ },
+ "家族": {
+  "en": "Family",
+  "ja": "系統"
+ },
+ "打开部队名输入界面": {
+  "en": "Open the team name entry screen",
+  "ja": "部隊名入力画面を開く"
+ },
+ "全体驾驶员气力 −30（下限 50）": {
+  "en": "All pilots' morale −30 (minimum 50)",
+  "ja": "全パイロットの気力 −30（下限 50）"
+ },
+ "我方部队排成阵型（起点 x, 起点 y, 每行数）": {
+  "en": "Line up the allied units (start x, start y, per row)",
+  "ja": "味方部隊を隊列に並べる（開始 x, 開始 y, 1 列の数）"
+ },
+ "每行数": {
+  "en": "Per row",
+  "ja": "1 列の数"
+ },
+ "暂停「我方全灭即败北」判定（开关）": {
+  "en": "Suspend the \"all allies destroyed means defeat\" check (switch)",
+  "ja": "「味方全滅で敗北」判定を一時停止（スイッチ）"
+ },
+ "暂停": {
+  "en": "Suspend",
+  "ja": "停止"
+ },
+ "更换角色身份（角色 → 角色）": {
+  "en": "Replace a character's identity (character → character)",
+  "ja": "キャラクターの差し替え（キャラクター → キャラクター）"
+ },
+ "原角色": {
+  "en": "Old character",
+  "ja": "元のキャラクター"
+ },
+ "新角色": {
+  "en": "New character",
+  "ja": "新しいキャラクター"
+ },
+ "着地／飞行切换（角色）": {
+  "en": "Land / take off (character)",
+  "ja": "着地／飛行の切り替え（キャラクター）"
+ },
+ "移出同乘驾驶员（角色；500,500 = アイシャ 转入 マナミ 的母舰）": {
+  "en": "Move out a co-pilot (character; 500,500 = Aisha moves to Manami's mothership)",
+  "ja": "同乗パイロットを降ろす（キャラクター。500,500 = アイシャがマナミの母艦へ移る）"
+ },
+ "设定胜利／败北条件（胜利条件, 败北条件）": {
+  "en": "Set victory / defeat conditions (victory, defeat)",
+  "ja": "勝利／敗北条件を設定（勝利条件, 敗北条件）"
+ },
+ "胜利条件": {
+  "en": "Victory condition",
+  "ja": "勝利条件"
+ },
+ "败北条件": {
+  "en": "Defeat condition",
+  "ja": "敗北条件"
+ },
+ "对白时不自动把镜头移到说话者（开关）": {
+  "en": "Don't move the camera to the speaker during dialogue (switch)",
+  "ja": "会話中にカメラを話し手へ移さない（スイッチ）"
+ },
+ "不跟随说话者": {
+  "en": "Don't follow the speaker",
+  "ja": "話し手を追わない"
+ },
+ "机体强化／合体演出（演出编号）": {
+  "en": "Power-up / combination scene (scene number)",
+  "ja": "機体強化／合体演出（演出番号）"
+ },
+ "演出编号": {
+  "en": "Scene number",
+  "ja": "演出番号"
+ },
+ "镜头拉回所选单位": {
+  "en": "Bring the camera back to the selected unit",
+  "ja": "カメラを選択中のユニットへ戻す"
+ },
+ "设定单位行动状态（角色, 1 = 可行动 0 = 行动不能）": {
+  "en": "Set a unit's action state (character, 1 = can act, 0 = cannot act)",
+  "ja": "ユニットの行動状態を設定（キャラクター, 1 = 行動可能、0 = 行動不能）"
+ },
+ "行动状态": {
+  "en": "Action state",
+  "ja": "行動状態"
+ },
+ "ゴッドマーズ 合体处理（模式）": {
+  "en": "Godmars combination (mode)",
+  "ja": "ゴッドマーズ合体処理（モード）"
+ },
+ "选定标记开关（角色, 机体, 1 = 置位 0 = 清除）": {
+  "en": "Selection mark (character, unit, 1 = set, 0 = clear)",
+  "ja": "選択マークの切り替え（キャラクター, 機体, 1 = 付ける、0 = 外す）"
+ },
+ "开关": {
+  "en": "Switch",
+  "ja": "スイッチ"
+ },
+ "设定机体改造段数（机体, 段数）": {
+  "en": "Set a unit's upgrade level (unit, levels)",
+  "ja": "機体の改造段階を設定（機体, 段階）"
+ },
+ "段数": {
+  "en": "Levels",
+  "ja": "段階"
+ },
+ "当前阶段设为 1（我方阶段）": {
+  "en": "Set the current phase to 1 (player phase)",
+  "ja": "現在のフェイズを 1（味方フェイズ）にする"
+ },
+ "单位退场（角色）": {
+  "en": "Withdraw unit (character)",
+  "ja": "ユニット退場（キャラクター）"
+ },
+ "解锁武器（武器编号）": {
+  "en": "Unlock a weapon (weapon number)",
+  "ja": "武器を解放（武器番号）"
+ },
+ "武器编号": {
+  "en": "Weapon",
+  "ja": "武器番号"
+ },
+ "挂载同乘角色（驾驶员角色, 同乘角色）": {
+  "en": "Add a co-pilot (pilot, co-pilot)",
+  "ja": "同乗キャラクターを乗せる（パイロット, 同乗キャラクター）"
+ },
+ "驾驶员角色": {
+  "en": "Pilot",
+  "ja": "パイロット"
+ },
+ "同乘角色": {
+  "en": "Co-pilot",
+  "ja": "同乗キャラクター"
+ },
+ "进入结局（不返回）": {
+  "en": "Go to the ending (does not return)",
+  "ja": "エンディングへ（戻らない）"
+ },
+ "设定世界地图旅行载具（载具编号）": {
+  "en": "Set the world map vehicle (vehicle)",
+  "ja": "ワールドマップの移動手段を設定（乗り物番号）"
+ },
+ "载具编号": {
+  "en": "Vehicle",
+  "ja": "乗り物番号"
+ },
+ "部队分割：按预设名单选定（1 = 列表 A 0 = 列表 B）": {
+  "en": "Team split: select by preset list (1 = list A, 0 = list B)",
+  "ja": "部隊分割：既定のリストで選択（1 = リスト A、0 = リスト B）"
+ },
+ "名单": {
+  "en": "List",
+  "ja": "リスト"
+ },
+ "清除全部分队选定标记": {
+  "en": "Clear all team-split selection marks",
+  "ja": "部隊分割の選択マークをすべて外す"
+ },
+ "放出母舰搭载的单位（角色；舰长 = 该舰全部搭载单位，999 = 46 ブライト）": {
+  "en": "Launch units from a mothership (character; a captain launches the whole ship, 999 = 46 Bright)",
+  "ja": "母艦の搭載ユニットを発進（キャラクター。艦長なら全搭載ユニット、999 = 46 ブライト）"
+ },
+ "角色（舰长则放出全舰，999 = 46）": {
+  "en": "Character (a captain launches the whole ship; 999 = 46)",
+  "ja": "キャラクター（艦長なら全機発進、999 = 46）"
+ },
+ "无处理函数": {
+  "en": "No handler",
+  "ja": "処理関数なし"
+ },
+ "空操作（不可达）": {
+  "en": "No-op (unreachable)",
+  "ja": "何もしない（到達不能）"
+ },
+ "ACC 清零": {
+  "en": "ACC = 0",
+  "ja": "ACC = 0"
+ },
+ "若角色 HP 百分比 < 阈值（且在场）则 ACC = 值": {
+  "en": "If the character's HP percentage < threshold (and on the map), ACC = value",
+  "ja": "キャラクターの HP 割合 < しきい値（かつ出撃中）なら ACC = 値"
+ },
+ "百分比": {
+  "en": "Percentage",
+  "ja": "割合"
+ },
+ "ACC 值": {
+  "en": "ACC value",
+  "ja": "ACC の値"
+ },
+ "若变量 ≠ 值": {
+  "en": "If variable ≠ value",
+  "ja": "変数 ≠ 値 なら"
+ },
+ "变量": {
+  "en": "Variable",
+  "ja": "変数"
+ },
+ "若变量 = 值 则 ACC = 值 2": {
+  "en": "If variable = value, ACC = value 2",
+  "ja": "変数 = 値 なら ACC = 値 2"
+ },
+ "若当前回合 < 回合数 则 ACC = 值": {
+  "en": "If the current turn < turns, ACC = value",
+  "ja": "現在のターン < ターン数 なら ACC = 値"
+ },
+ "恒真（未实现）": {
+  "en": "Always true (not implemented)",
+  "ja": "常に真（未実装）"
+ },
+ "ACC = !(等级[角色 A] < 等级[角色 B])": {
+  "en": "ACC = !(level[character A] < level[character B])",
+  "ja": "ACC = !(レベル[キャラクター A] < レベル[キャラクター B])"
+ },
+ "角色 A": {
+  "en": "Character A",
+  "ja": "キャラクター A"
+ },
+ "角色 B": {
+  "en": "Character B",
+  "ja": "キャラクター B"
+ },
+ "若 ACC = 值": {
+  "en": "If ACC = value",
+  "ja": "ACC = 値 なら"
+ },
+ "若 ACC ≥ 值": {
+  "en": "If ACC ≥ value",
+  "ja": "ACC ≥ 値 なら"
+ },
+ "若 ACC ≠ 值": {
+  "en": "If ACC ≠ value",
+  "ja": "ACC ≠ 値 なら"
+ },
+ "若 ACC < 值": {
+  "en": "If ACC < value",
+  "ja": "ACC < 値 なら"
+ },
+ "ACC = 击坠数[角色]": {
+  "en": "ACC = kills[character]",
+  "ja": "ACC = 撃墜数[キャラクター]"
+ },
+ "变量 = (变量 + 1) mod 4": {
+  "en": "variable = (variable + 1) mod 4",
+  "ja": "変数 = (変数 + 1) mod 4"
+ },
+ "变量 = (变量 − 1) mod 4（≤0 时为 3）": {
+  "en": "variable = (variable − 1) mod 4 (3 when ≤ 0)",
+  "ja": "変数 = (変数 − 1) mod 4（0 以下なら 3）"
+ },
+ "若选择肢结果 = 第 1 项": {
+  "en": "If the choice was option 1",
+  "ja": "選択肢の結果 = 1 番目 なら"
+ },
+ "若选择肢结果 = 第 2 项": {
+  "en": "If the choice was option 2",
+  "ja": "選択肢の結果 = 2 番目 なら"
+ },
+ "若选择肢结果 = 第 3 项": {
+  "en": "If the choice was option 3",
+  "ja": "選択肢の結果 = 3 番目 なら"
+ },
+ "变量 = 值": {
+  "en": "variable = value",
+  "ja": "変数 = 値"
+ },
+ "ACC = 值": {
+  "en": "ACC = value",
+  "ja": "ACC = 値"
+ },
+ "ACC = 阵营单位数": {
+  "en": "ACC = number of units on a side",
+  "ja": "ACC = 陣営のユニット数"
+ },
+ "阵营": {
+  "en": "Side",
+  "ja": "陣営"
+ },
+ "ACC = 交战另一方角色（排除参数角色）": {
+  "en": "ACC = the other character in the battle (not the given one)",
+  "ja": "ACC = 交戦相手のキャラクター（引数のキャラクター以外）"
+ },
+ "ACC = engine+0x9B6（有符号字节）": {
+  "en": "ACC = engine+0x9B6 (signed byte)",
+  "ja": "ACC = engine+0x9B6（符号付きバイト）"
+ },
+ "ACC = 当前场景索引": {
+  "en": "ACC = current scene",
+  "ja": "ACC = 現在のシーン番号"
+ },
+ "engine+0x998 = engine+0x9A8": {
+  "en": "engine+0x998 = engine+0x9A8",
+  "ja": "engine+0x998 = engine+0x9A8"
+ },
+ "ACC = engine+0x998": {
+  "en": "ACC = engine+0x998",
+  "ja": "ACC = engine+0x998"
+ },
+ "ACC = 角色在场状态（0 不在 / 1 在场 / 3 已退场）": {
+  "en": "ACC = character presence (0 absent / 1 on the map / 3 withdrawn)",
+  "ja": "ACC = キャラクターの出撃状態（0 不在 / 1 出撃中 / 3 退場済み）"
+ },
+ "无条件块开始（恒真）": {
+  "en": "Unconditional block start (always true)",
+  "ja": "無条件ブロック開始（常に真）"
+ },
+ "条件块结束": {
+  "en": "End of conditional block",
+  "ja": "条件ブロック終了"
+ },
+ "共通段（任何上下文）": {
+  "en": "Common section (any context)",
+  "ja": "共通部分（どの状況でも）"
+ },
+ "アークライト・ブルー 路线": {
+  "en": "Arklight Blue route",
+  "ja": "アークライト・ブルー ルート"
+ },
+ "セレイン・メネス 路线": {
+  "en": "Selain Meneth route",
+  "ja": "セレイン・メネス ルート"
+ },
+ "ブラッド・スカイウィンド 路线": {
+  "en": "Brad Skywind route",
+  "ja": "ブラッド・スカイウィンド ルート"
+ },
+ "マナミ・ハミル 路线": {
+  "en": "Manami Hamill route",
+  "ja": "マナミ・ハミル ルート"
+ },
+ "リアル系主角（3DD1/3DD2）": {
+  "en": "Real-type hero (3DD1/3DD2)",
+  "ja": "リアル系主人公（3DD1/3DD2）"
+ },
+ "スーパー系主角（3DD3/3DD4）": {
+  "en": "Super-type hero (3DD3/3DD4)",
+  "ja": "スーパー系主人公（3DD3/3DD4）"
+ },
+ "男性主角（3DD1/3DD3）": {
+  "en": "Male hero (3DD1/3DD3)",
+  "ja": "男性主人公（3DD1/3DD3）"
+ },
+ "女性主角（3DD2/3DD4）": {
+  "en": "Female hero (3DD2/3DD4)",
+  "ja": "女性主人公（3DD2/3DD4）"
+ },
+ "选择肢第 1 项": {
+  "en": "Choice option 1",
+  "ja": "選択肢 1 番目"
+ },
+ "选择肢第 2 项": {
+  "en": "Choice option 2",
+  "ja": "選択肢 2 番目"
+ },
+ "选择肢第 3 项": {
+  "en": "Choice option 3",
+  "ja": "選択肢 3 番目"
+ },
+ "回合开始触发": {
+  "en": "Turn start",
+  "ja": "ターン開始"
+ },
+ "阶段 0": {
+  "en": "Phase 0",
+  "ja": "フェイズ 0"
+ },
+ "当前回合 ≥ 该值": {
+  "en": "Current turn ≥ this value",
+  "ja": "現在のターン ≥ この値"
+ },
+ "必须等于当前阶段 8010F5E8（1 我方 / 2 敌方）": {
+  "en": "Must equal the current phase 8010F5E8 (1 player / 2 enemy)",
+  "ja": "現在のフェイズ 8010F5E8 と一致すること（1 味方 / 2 敵）"
+ },
+ "延迟计数触发（3D52 启动）": {
+  "en": "Delayed count (started by 3D52)",
+  "ja": "遅延カウント（3D52 で開始）"
+ },
+ "初始状态": {
+  "en": "Initial state",
+  "ja": "初期状態"
+ },
+ "运行时由 3D52 改写为 0xFD": {
+  "en": "Rewritten to 0xFD by 3D52 at run time",
+  "ja": "実行時に 3D52 が 0xFD に書き換える"
+ },
+ "运行时由 3D52 改写；4 为任意": {
+  "en": "Rewritten by 3D52 at run time; 4 = any",
+  "ja": "実行時に 3D52 が書き換える。4 = 任意"
+ },
+ "单位击破／退场触发": {
+  "en": "Unit destroyed / withdrawn",
+  "ja": "ユニット撃破／退場"
+ },
+ "总是": {
+  "en": "Always",
+  "ja": "常時"
+ },
+ "门槛变量": {
+  "en": "Gate variable",
+  "ja": "条件変数"
+ },
+ "100–115 时变量等于 3 则不触发（8009DE7C 每关开始把 100–114 置 3，脚本写 0 才启用）；其他编号不检查；0 为无门槛": {
+  "en": "For 100–115 the event does not fire while the variable is 3 (8009DE7C sets 100–114 to 3 at the start of each stage; a script enables it by writing 0); other numbers are not checked; 0 means no gate",
+  "ja": "100〜115 の場合、変数が 3 の間は発動しない（8009DE7C が各ステージ開始時に 100〜114 を 3 にし、スクリプトが 0 を書くと有効になる）。それ以外の番号は調べない。0 は条件なし"
+ },
+ "该角色所驾单位 HP 百分比归零": {
+  "en": "The unit this character pilots reaches 0% HP",
+  "ja": "このキャラクターが乗る機体の HP 割合が 0 になる"
+ },
+ "HP 低于百分比触发": {
+  "en": "HP below a percentage",
+  "ja": "HP が割合を下回る"
+ },
+ "角色 138 特例：其单位 HP < 11 才继续": {
+  "en": "Special case for character 138: continues only when its unit's HP < 11",
+  "ja": "キャラクター 138 は特例：機体の HP < 11 のときだけ続行"
+ },
+ "HP% ≤ 该值且在场": {
+  "en": "HP% ≤ this value and on the map",
+  "ja": "HP% ≤ この値 かつ出撃中"
+ },
+ "交战事件（战斗后，阶段 7）": {
+  "en": "Battle event (after battle, phase 7)",
+  "ja": "交戦イベント（戦闘後、フェイズ 7）"
+ },
+ "阶段 7": {
+  "en": "Phase 7",
+  "ja": "フェイズ 7"
+ },
+ "0 = 任意": {
+  "en": "0 = any",
+  "ja": "0 = 任意"
+ },
+ "交战事件（战斗前，阶段 4）": {
+  "en": "Battle event (before battle, phase 4)",
+  "ja": "交戦イベント（戦闘前、フェイズ 4）"
+ },
+ "阶段 4": {
+  "en": "Phase 4",
+  "ja": "フェイズ 4"
+ },
+ "敌方全灭触发": {
+  "en": "All enemies destroyed",
+  "ja": "敵全滅"
+ },
+ "最晚回合": {
+  "en": "Latest turn",
+  "ja": "最終ターン"
+ },
+ "当前回合（0 起算）≤ 该值才触发；8009E834 在该值 < 当前回合时返回": {
+  "en": "Fires only while the current turn (from 0) ≤ this value; 8009E834 returns once it is below the current turn",
+  "ja": "現在のターン（0 起算）≤ この値 のときだけ発動。8009E834 はこの値 < 現在のターンで戻る"
+ },
+ "4 为任意": {
+  "en": "4 = any",
+  "ja": "4 = 任意"
+ },
+ "阵营残存数触发": {
+  "en": "Units remaining on a side",
+  "ja": "陣営の残り数"
+ },
+ "阵营选择": {
+  "en": "Side choice",
+  "ja": "陣営の選択"
+ },
+ "2 → 第三方计数 0x9B2，否则敌方 0x9B1": {
+  "en": "2 → third-party count 0x9B2, otherwise the enemy count 0x9B1",
+  "ja": "2 → 第三勢力の数 0x9B2、それ以外は敵の数 0x9B1"
+ },
+ "数量上限": {
+  "en": "Maximum count",
+  "ja": "上限数"
+ },
+ "残存数 ≤ 该值": {
+  "en": "Remaining ≤ this value",
+  "ja": "残り数 ≤ この値"
+ },
+ "100–115 时变量等于 3 则不触发（8009DE7C 每关开始把 100–114 置 3，脚本写 0 才启用）；其他编号不检查": {
+  "en": "For 100–115 the event does not fire while the variable is 3 (8009DE7C sets 100–114 to 3 at the start of each stage; a script enables it by writing 0); other numbers are not checked",
+  "ja": "100〜115 の場合、変数が 3 の間は発動しない（8009DE7C が各ステージ開始時に 100〜114 を 3 にし、スクリプトが 0 を書くと有効になる）。それ以外の番号は調べない"
+ },
+ "区域到达触发（需 3D57 启用）": {
+  "en": "Area reached (enabled by 3D57)",
+  "ja": "エリア到達（3D57 で有効化）"
+ },
+ "阶段 0/1/2/6": {
+  "en": "Phases 0/1/2/6",
+  "ja": "フェイズ 0/1/2/6"
+ },
+ "回合或模式": {
+  "en": "Turn or mode",
+  "ja": "ターンまたはモード"
+ },
+ "数值 = 当前回合 ≥ 该值；0xFF = 到达即触发；0xFE = 我方全部离场": {
+  "en": "A number = current turn ≥ this value; 0xFF = fire on arrival; 0xFE = all allies have left",
+  "ja": "数値 = 現在のターン ≥ この値。0xFF = 到達で発動。0xFE = 味方が全員離脱"
+ },
+ "目标": {
+  "en": "Target",
+  "ja": "対象"
+ },
+ "N×1000 + 角色（或 500+阵营、21 = 列表首个在场角色）": {
+  "en": "N×1000 + character (or 500 + side; 21 = the first character in the list on the map)",
+  "ja": "N×1000 + キャラクター（または 500 + 陣営。21 = リストで最初に出撃中のキャラクター）"
+ },
+ "x 范围": {
+  "en": "x range",
+  "ja": "x の範囲"
+ },
+ "x0×10 + 宽": {
+  "en": "x0×10 + width",
+  "ja": "x0×10 + 幅"
+ },
+ "y 范围": {
+  "en": "y range",
+  "ja": "y の範囲"
+ },
+ "y0×10 + 高": {
+  "en": "y0×10 + height",
+  "ja": "y0×10 + 高さ"
+ },
+ "说服（0x992，阶段 6）": {
+  "en": "Persuasion (0x992, phase 6)",
+  "ja": "説得（0x992、フェイズ 6）"
+ },
+ "说服者": {
+  "en": "Persuader",
+  "ja": "説得する側"
+ },
+ "800A4634 按登记顺序找第一个未执行、门槛满足、双方上下左右相邻的槽，写入 engine+0x992": {
+  "en": "800A4634 finds, in registration order, the first slot not yet run whose gate holds and whose two characters are orthogonally adjacent, and writes it to engine+0x992",
+  "ja": "800A4634 が登録順に、未実行・条件成立・両者が上下左右に隣接している最初の枠を探し、engine+0x992 に書き込む"
+ },
+ "对象": {
+  "en": "Target",
+  "ja": "相手"
+ },
+ "对象属于哪个阵营都可以": {
+  "en": "The target may be on any side",
+  "ja": "相手の陣営は問わない"
+ },
+ "0xFFF8（−8）为无门槛；否则 变量 == 门槛值 时「説得」才出现。跨关的多步说服靠它串联": {
+  "en": "0xFFF8 (−8) means no gate; otherwise Persuade appears only when the variable equals the gate value. Multi-step persuasion across stages is chained through it",
+  "ja": "0xFFF8（−8）は条件なし。それ以外は 変数 == 条件値 のときだけ「説得」が出る。ステージをまたぐ多段階の説得はこれでつなぐ"
+ },
+ "门槛值": {
+  "en": "Gate value",
+  "ja": "条件値"
+ },
+ "登记但不轮询": {
+  "en": "Registered but never polled",
+  "ja": "登録のみ（ポーリングしない）"
+ },
+ "无": {
+  "en": "None",
+  "ja": "なし"
+ },
+ "开场事件（阶段 C1）": {
+  "en": "Opening event (phase C1)",
+  "ja": "開幕イベント（フェイズ C1）"
+ },
+ "engine+4 = 0xC1": {
+  "en": "engine+4 = 0xC1",
+  "ja": "engine+4 = 0xC1"
+ },
+ "阶段 C2 事件（初期配置）": {
+  "en": "Phase C2 event (initial deployment)",
+  "ja": "フェイズ C2 イベント（初期配置）"
+ },
+ "engine+4 = 0xC2": {
+  "en": "engine+4 = 0xC2",
+  "ja": "engine+4 = 0xC2"
+ },
+ "结束事件（阶段 C3，3D4A 之后）": {
+  "en": "Ending event (phase C3, after 3D4A)",
+  "ja": "終了イベント（フェイズ C3、3D4A の後）"
+ },
+ "engine+4 = 0xC3": {
+  "en": "engine+4 = 0xC3",
+  "ja": "engine+4 = 0xC3"
+ },
+ "人物编号（base:actors）": {
+  "en": "Character number (base:actors)",
+  "ja": "キャラクター番号（base:actors）"
+ },
+ "表 0 文本编号": {
+  "en": "Text number in table 0",
+  "ja": "テーブル 0 のテキスト番号"
+ },
+ "机体编号（base:units）": {
+  "en": "Unit number (base:units)",
+  "ja": "機体番号（base:units）"
+ },
+ "2 位变量 0–199": {
+  "en": "2-bit variable 0–199",
+  "ja": "2 ビット変数 0〜199"
+ },
+ "配套记录组号": {
+  "en": "Deployment record group",
+  "ja": "出撃データのグループ番号"
+ },
+ "高字节 x／低字节 y，0x40–0x44 相对 3D54 位置": {
+  "en": "High byte x / low byte y; 0x40–0x44 relative to the position 3D54 remembered",
+  "ja": "上位バイト x／下位バイト y。0x40〜0x44 は 3D54 で記憶した位置からの相対"
+ },
+ "格 x": {
+  "en": "Square x",
+  "ja": "マス x"
+ },
+ "格 y": {
+  "en": "Square y",
+  "ja": "マス y"
+ },
+ "计数": {
+  "en": "Count",
+  "ja": "カウント"
+ },
+ "音效编号": {
+  "en": "Sound effect number",
+  "ja": "効果音番号"
+ },
+ "曲目编号": {
+  "en": "Track number",
+  "ja": "曲番号"
+ },
+ "本场景类型 1 事件的登记序号": {
+  "en": "Registration index of a type 1 event in this scene",
+  "ja": "このシーンのタイプ 1 イベントの登録順"
+ },
+ "本场景类型 8 事件的登记序号": {
+  "en": "Registration index of a type 8 event in this scene",
+  "ja": "このシーンのタイプ 8 イベントの登録順"
+ },
+ "<500 为人物编号，≥500 为配套组 (值−500)": {
+  "en": "Below 500 a character number, from 500 a group (value − 500)",
+  "ja": "500 未満はキャラクター番号、500 以上はグループ（値 − 500）"
+ },
+ "数值": {
+  "en": "Number",
+  "ja": "数値"
+ },
+ "阶段 1 我方 / 2 敌方 / 3 第三方（4 = 任意）": {
+  "en": "Phase 1 player / 2 enemy / 3 third party (4 = any)",
+  "ja": "フェイズ 1 味方 / 2 敵 / 3 第三勢力（4 = 任意）"
+ },
+ "出击记录阵营 0/1/2（3 → 0，4 → 2）": {
+  "en": "Deployment side 0/1/2 (3 → 0, 4 → 2)",
+  "ja": "出撃データの陣営 0/1/2（3 → 0、4 → 2）"
+ },
+ "未解释": {
+  "en": "Not yet understood",
+  "ja": "未解明"
+ },
+ "阵营索引 0 我方 / 1 敌方 / 2 第三方": {
+  "en": "Side index 0 player / 1 enemy / 2 third party",
+  "ja": "陣営 0 味方 / 1 敵 / 2 第三勢力"
+ },
+ "地图编号（base:map_assets；写入 8010F5EE）": {
+  "en": "Map number (base:map_assets; written to 8010F5EE)",
+  "ja": "マップ番号（base:map_assets。8010F5EE に書き込む）"
+ },
+ "组号": {
+  "en": "Group",
+  "ja": "グループ番号"
+ },
+ "未解释字节": {
+  "en": "Unexplained byte",
+  "ja": "未解明のバイト"
+ },
+ "等级偏移": {
+  "en": "Level offset",
+  "ja": "レベル補正"
+ },
+ "强化索引": {
+  "en": "Upgrade index",
+  "ja": "改造インデックス"
+ },
+ "行为标志": {
+  "en": "Behaviour flags",
+  "ja": "行動フラグ"
+ },
+ "附加值": {
+  "en": "Extra value",
+  "ja": "追加値"
+ },
+ "阶段 1": {
+  "en": "Phase 1",
+  "ja": "フェイズ 1"
+ },
+ "阶段 2": {
+  "en": "Phase 2",
+  "ja": "フェイズ 2"
+ },
+ "阶段 6": {
+  "en": "Phase 6",
+  "ja": "フェイズ 6"
+ }
+}

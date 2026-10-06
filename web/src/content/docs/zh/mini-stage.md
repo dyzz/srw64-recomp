@@ -63,7 +63,7 @@ updated: 2026-10-06
 | `initial_resources` | 可选。进入地图时把某些单位的 HP、EN 设成上限的百分比：`{"side": 1, "slot": 0, "hp_percent": 30, "en_percent": 100}`。 |
 | `events` | 事件列表，最多 63 个。每个事件有类型 `type`（0–14，例如 12 开场、13 初始出击、0 回合开始、7 敌数条件、14 结束）、四个触发参数 `header`，以及指令列表 `commands`；指令写成 `{"op": "3D45", "args": [1]}`。也可以用 `copy_from` 原样复制一个原版事件。 |
 
-指令的含义、事件类型和触发参数，仓库里有完整记录（中文）：[关卡脚本与事件类型](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/stage-script-exploration.md)、[指令写法](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/script-debug-injection.md)、[迷你关卡研究记录](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/mini-stage.md)。最省事的办法是从 [`config/recomp/mini-stages/`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mini-stages) 里挑一个接近的关卡改，每个文件的 `note` 都写了它测什么。
+每条指令、条件指令、事件类型和出击记录字段见[关卡脚本指令参考](../script-commands/)；更早的研究过程在仓库里（中文）：[关卡脚本与事件类型](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/stage-script-exploration.md)、[指令写法](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/script-debug-injection.md)、[迷你关卡研究记录](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/mini-stage.md)。最省事的办法是从 [`config/recomp/mini-stages/`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mini-stages) 里挑一个接近的关卡改，每个文件的 `note` 都写了它测什么。
 
 ## 2. 编译成镜像
 

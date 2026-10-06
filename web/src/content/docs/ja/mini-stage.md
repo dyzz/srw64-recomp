@@ -63,7 +63,7 @@ updated: 2026-10-06
 | `initial_resources` | 省略可。マップに入った時点で、指定したユニットの HP・EN を最大値の何パーセントにするか：`{"side": 1, "slot": 0, "hp_percent": 30, "en_percent": 100}`。 |
 | `events` | イベントの一覧（最大 63 個）。それぞれ種類 `type`（0〜14。例：12 開幕、13 初期出撃、0 ターン開始、7 敵数の条件、14 終了）、4 つの発動条件 `header`、命令の一覧 `commands` を持ち、命令は `{"op": "3D45", "args": [1]}` のように書きます。`copy_from` で原作のイベントをそのままコピーすることもできます。 |
 
-命令・イベントの種類・発動条件の意味は、リポジトリに詳しくまとめてあります（中国語）：[シナリオスクリプトとイベントの種類](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/stage-script-exploration.md)、[命令の書き方](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/script-debug-injection.md)、[ミニステージの調査記録](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/mini-stage.md)。いちばん手軽なのは、[`config/recomp/mini-stages/`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mini-stages) から近いステージを選んで書き換えることです。各ファイルの `note` に、そのステージで何を確かめるかが書いてあります。
+命令・条件命令・イベントの種類・出撃データの項目は[ステージスクリプト命令リファレンス](../script-commands/)にまとめてあります。調査の経緯はリポジトリにあります（中国語）：[シナリオスクリプトとイベントの種類](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/stage-script-exploration.md)、[命令の書き方](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/script-debug-injection.md)、[ミニステージの調査記録](https://github.com/dyzz/srw64-recomp/blob/main/docs/script/mini-stage.md)。いちばん手軽なのは、[`config/recomp/mini-stages/`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mini-stages) から近いステージを選んで書き換えることです。各ファイルの `note` に、そのステージで何を確かめるかが書いてあります。
 
 ## 2. イメージにコンパイルする
 
