@@ -193,9 +193,10 @@ APK 的 `libmain.so` 必须链接两份由 ROM 生成的代码：`build/recomp/c
   - 必须复制，因为 `select_rom`、`sha256_file` 和 `fs::canonical` 都要真实路径。
   - `srw64.sh` 的逻辑（找 ROM、首次启动的语言）一并移进 C++，Windows 原本就计划这样做。
 - **HD 包：**
-  - 约 700 MB 的目录，不进 APK。
-  - 用 SAF 导入 zip，解到应用的外部文件目录（`Android/data/<包名>/files/hd`），或者用 `adb push`。
+  - 约 700 MB 的目录，不进 APK。宿主在用户目录 `files/user/hd` 找它（`launch.cpp`），和电脑上同一个 `SRW64-<版本>-HD.zip`。
   - 各 HD 图层用 `directory_iterator` 读目录，所以必须是解开的目录。
+  - 已做（2026-10-05，`SetupActivity.importHd`）：启动页用 SAF 读 zip，只解 `hd/` 下的条目到 `files/user/hd.new`，有 `hd.json` 才与旧目录对换，失败或中断不动已装的包；按压缩字节显示百分比，先查剩余空间。三个入口：首次选完 ROM 问一次；长按图标的静态快捷方式「导入 HD 包」（`res/xml/shortcuts.xml`，动作 `org.srw64.game.IMPORT_HD`）；在文件管理器或浏览器里用本应用打开／分享 zip。游戏在运行时不导入（宿主不可重入，`SRW64Activity.running`），提示先关掉游戏。开发时仍可 `adb push` + `run-as` 放进去。
+  - 尚未在真机上走过导入流程。
 - **日志与报错：**
   - stderr 转到 logcat，同时写一份会话日志文件。
   - 面向玩家的 `std::abort()`（`graphics.cpp`、`src/host/audio.cpp`、`host.cpp`）改成先弹 `SDL_ShowSimpleMessageBox`。

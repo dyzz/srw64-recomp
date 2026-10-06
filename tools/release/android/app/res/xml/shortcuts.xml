@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Long-press on the launcher icon: install or replace the HD pack (SetupActivity). -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:shortcutId="import_hd"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/import_hd"
+        android:shortcutLongLabel="@string/import_hd_long">
+        <intent android:action="org.srw64.game.IMPORT_HD"
+            android:targetPackage="org.srw64.game"
+            android:targetClass="org.srw64.game.SetupActivity" />
+    </shortcut>
+</shortcuts>

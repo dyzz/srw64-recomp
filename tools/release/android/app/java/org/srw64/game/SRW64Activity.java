@@ -16,8 +16,13 @@ import java.util.ArrayList;
 // The game: SDL3's Java glue loads SDL3, sdl2-compat (libSDL2.so) and libmain.so, then
 // runs the host's main with the arguments srw64.sh passes on Linux.
 public class SRW64Activity extends SDLActivity {
+    // The host is not re-entrant and runs once per process; the launcher will not swap
+    // the HD folder under it (SetupActivity.importHd).
+    static volatile boolean running;
+
     @Override
     protected void onCreate(Bundle state) {
+        running = true;
         try {
             // bundled_resource() reads this (src/native/app/runtime.cpp).
             Os.setenv("SRW64_RESOURCE_DIR", SetupActivity.resourceDir(this).getPath(), true);

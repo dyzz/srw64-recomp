@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="import_hd">HD パックを導入</string>
+    <string name="import_hd_long">HD アートパックを導入</string>
+</resources>

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SRW64</string>
+    <string name="import_hd">导入 HD 包</string>
+    <string name="import_hd_long">导入 HD 美术包</string>
 </resources>
