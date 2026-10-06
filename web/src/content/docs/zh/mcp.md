@@ -123,7 +123,7 @@ Windows 上把 `python3` 换成 `python`，路径写成 `C:\\你的路径\\srw64
 | `srw64_menu` | 按路径点菜单栏项目，或列出菜单。 |
 | `srw64_window` | 调整窗口大小、置前或关闭。 |
 | `srw64_settings` | 直接改规则、语言、图片模式、界面大小、宽高比和各画面的原版/现代模式。 |
-| `srw64_mini_stage_load` | 加载并进入一个迷你关卡文件，相当于把文件拖到窗口上。 |
+| `srw64_mini_stage_load` | 加载并进入一个迷你关卡镜像，见[迷你关卡](../mini-stage/)。 |
 | `srw64_viewer_start` | 在战斗查看器里播放指定的一场战斗动画。 |
 | `srw64_memory` / `srw64_memory_write` | 读 / 写游戏内存（十六进制）。写入一次最多 4096 字节。 |
 | `srw64_quit` | 正常退出游戏，返回本次运行的报告。 |

@@ -123,7 +123,7 @@ Agents usually read `srw64_status` and a screenshot to work out where they are, 
 | `srw64_menu` | Press a menu bar item by its path, or list a menu. |
 | `srw64_window` | Resize the window, bring it to the front or close it. |
 | `srw64_settings` | Set the rules, language, image mode, interface size, aspect ratio and the original/modern mode of each screen directly. |
-| `srw64_mini_stage_load` | Load a mini stage file and enter it, as if it were dropped on the window. |
+| `srw64_mini_stage_load` | Load a compiled mini stage image and enter it; see [Mini stages](../mini-stage/). |
 | `srw64_viewer_start` | Play a chosen battle animation in the Battle Viewer. |
 | `srw64_memory` / `srw64_memory_write` | Read or write game memory as hex. Writes are limited to 4096 bytes at a time. |
 | `srw64_quit` | Quit the game normally and return the run report. |
