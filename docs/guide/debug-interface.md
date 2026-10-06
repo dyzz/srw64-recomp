@@ -154,7 +154,7 @@
 - `status.ui.focus` 是 RmlUi 的焦点元素，`active` 单独说明 SDL 窗口是否有系统键盘焦点。
 - 菜单项按标题匹配，标题随界面语言变化。
 - 真实手柄的输入不经过接口；接口有自己的虚拟手柄（`pad`／`srw64_pad`），和真实手柄的输入合并。
-- Windows 上接口已实现（回环 TCP），但截至 2026-10-06 只在 CI 编译过，还没在 Windows 真机上连过。`Session.launch`（`srw64ctl launch`、MCP 的 `srw64_launch`）在 Windows 上仍不可用：它用 `os.pipe` 加 `pass_fds` 让游戏随启动进程退出；玩家路径（选项里的开关或 `--debug`，加 `srw64_attach`）不受影响。
+- Windows 上接口已实现（回环 TCP）。2026-10-06 在 AWS（Windows Server 2022、Tesla T4、D3D12）实机连过：游戏用 `Marchwind64.cmd --debug` 启动，Mac 上 `ssh -L` 转发 `debug.json` 里的端口，本地运行目录写转发后的 `debug.json`（端口、原令牌）和 `remote.json`，`srw64_attach`（带 run）、status、screenshot、keys、pad、ui.tree、ui.click、settings、window、wait 都正常；截图经 `file.read` 取回（`local_file` 按 Windows 路径取文件名）。当时修掉的坑：plume 的 D3D12 `copyTextureRegion` 拷到缓冲时对空纹理断言，第一次截图游戏就中止（`prepare_rt64.py` 补丁）。`Session.launch`（`srw64ctl launch`、MCP 的 `srw64_launch`）在 Windows 上仍不可用：它用 `os.pipe` 加 `pass_fds` 让游戏随启动进程退出；玩家路径（选项里的开关或 `--debug`，加 `srw64_attach`）不受影响。
 
 战前页回归可运行 `.venv/bin/python tools/recomp/debug/check_battle_ui.py`；精神与主动攻击返回流程可运行 `.venv/bin/python tools/recomp/debug/check_battle_spirits.py`。两者构建当前 native 宿主，通过主菜单 `mini-enter` 进入，不启用旧版人物选择。`status.mini_stage.waiting_reason` 可诊断关卡尚未就绪的原因；只有 `ready=true` 后才开始地图操作。截图和断言结果保存在各自的 debug 会话目录。
 
