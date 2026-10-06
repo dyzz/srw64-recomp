@@ -128,7 +128,7 @@ make recomp-native-check
 | `SRW64_WINDOW_CONTROL=1` / `settings-control.json` | `{"schema":"srw64.settings-control.v1","sequence":N,"action":"open｜close｜press","id":"rule:<ID>｜preset:<键>｜locale:<语言>｜images:<original｜hd>"}`；操作设置窗口，结果与全部控件状态写入 `settings-window-events.jsonl`。见[设置窗口](../native/settings-window.md)。 |
 | `SRW64_RULE_PROBE=1` | 第一次停在 `3D38` 且敌我都有单位时，用各组规则调用两个命中率函数并写 `rule-probe.jsonl`；之后两函数的每次调用写 `rule-calls.jsonl`。 |
 | `SRW64_MSAA=<0｜2｜4｜8>` | RT64 多重采样抗锯齿的采样数，默认 4（2026-09-24 起）；设备不支持时 RT64 自动回退，宿主日志记 `SRW64_MSAA samples=N`。原生网格、名牌、航迹、战术地图与头像的管线都跟随场景目标的采样数。`0` 关闭，用于和旧截图对照。 |
-| `SRW64_DEBUG=1` / `debug.sock` | 调试接口：宿主在运行目录监听 Unix socket，每行一条 JSON-RPC 2.0（状态、游戏键盘、手柄、截图、原生界面点击/按键/输入、菜单、设置、窗口、退出）。一般通过 `tools/recomp/debug/srw64ctl.py` 或 MCP 使用，见[调试接口与 MCP](debug-interface.md)。 |
+| `SRW64_DEBUG=1` / `debug.json` | 调试接口：宿主监听本机回环 TCP，端口和令牌写在运行目录的 `debug.json`，每行一条 JSON-RPC 2.0（状态、游戏键盘、手柄、截图、原生界面点击/按键/输入、菜单、设置、窗口、退出）。一般通过 `tools/recomp/debug/srw64ctl.py` 或 MCP 使用，见[调试接口与 MCP](debug-interface.md)。 |
 | `SRW64_AUDIO_CAPTURE_FROM/_TO=<vi>` | 把 `--audio` 的诊断采集限定在这段 VI 内（默认只留开声后的前 30 秒，对几分钟后才出现的命令没用）。迷你关卡的有界音频运行必须设置 `_TO`。窗口逻辑见 `audio_timing.hpp` 的 `Srw64AudioCaptureWindow`；播放的声音不受影响。 |
 
 每种协议独立维护递增序号；一个运行目录只使用一个控制驱动，完整写入临时文件后原子替换。普通启动器不主动启用这些 QA 开关，开启调试用的环境变量只作用于对应测试命令。

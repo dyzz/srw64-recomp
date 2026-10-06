@@ -71,7 +71,7 @@
   - `flockfile` 换成 `std::mutex`，或在 Windows 上对应 `_lock_file`。
   - 路径统一改用 `path.u8string()`，再经一个小工具函数交给 `stbi_*`。
   - 迷你关卡编译改为以 argv 列表直接启动子进程。
-- **调试接口：** 改成本机回环 TCP：端口临时分配，令牌写进现有的 `debug.json`。`srw64ctl`、MCP 和测试一并调整。三个平台的实机验收都要靠它驱动，所以放在第一批。
+- **调试接口：** 改成本机回环 TCP：端口临时分配，令牌写进现有的 `debug.json`。`srw64ctl`、MCP 和测试一并调整。三个平台的实机验收都要靠它驱动，所以放在第一批。（2026-10-06 已完成，见 `src/host/debug_transport.cpp` 和[调试接口 · 连接方式](../guide/debug-interface.md#连接方式)；Windows 真机未验证。）
 - **Python：**
   - Makefile 和 CMake 的 `execute_process` 设置 `PYTHONUTF8=1`，工具函数逐步补上 `encoding="utf-8"`。
   - `fcntl` 换成兼容层（Windows 用 `msvcrt.locking`）。
@@ -189,7 +189,7 @@ Windows 与 Linux 共用 X2 已做的与后端无关部分：窗口句柄、后�
    - 以后换成 RmlUi 选择页，与 Deck 游戏模式共用。
    - Linux 现在由 `marchwind64.sh` 做同样的事，届时一并收回 C++。
 7. **Unicode 路径：** 加应用清单 `activeCodePage=UTF-8`（Windows 10 1903 起支持）。`launch.cpp` 经环境变量和 argv 传的路径遇到非 ASCII 用户名（如 `C:\Users\太郎`）就不会失真。
-8. **调试接口：** AF_UNIX（`debug_server.cpp`、`tools/recomp/debug/session.py:48`）改为回环 TCP + 令牌，这是 X0 的一项。原因是 CPython 在 Windows 上没有 `socket.AF_UNIX`，而 Windows 的实机验收要靠调试接口驱动。
+8. **调试接口：** ~~AF_UNIX（`debug_server.cpp`、`tools/recomp/debug/session.py:48`）改为回环 TCP + 令牌~~，2026-10-06 已完成（`debug_transport.cpp`），MCP 的标准输入输出也固定为 UTF-8。这是 X0 的一项。原因是 CPython 在 Windows 上没有 `socket.AF_UNIX`，而 Windows 的实机验收要靠调试接口驱动。
 9. **迷你关卡：** `mini_stage.hpp:274` 的 `std::system` 用了 POSIX 引号，改为直接启动子进程。这是开发功能，可以先在 Windows 上关掉。
 10. **截图：** plume 的 D3D12 后端已经支持纹理→缓冲拷贝（`plume_d3d12.cpp:2302`），所以 Windows 的 D3D12 可以比 Vulkan 先恢复调试截图。交换链是否带 COPY_SOURCE 用法还要核对。
 

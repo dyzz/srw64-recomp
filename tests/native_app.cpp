@@ -82,6 +82,9 @@ void parser_and_paths() {
     const std::vector<std::string_view> importing={"--import-save","card.srm"};
     check(parse_options(importing).import_save.is_absolute() && parse_options(importing).rom.empty(),"import alone needs no ROM");
     reject({"--import-save","x.sra","--mute"});
+    check(parse_options(std::vector<std::string_view>{"--rom","x","--debug"}).debug,"--debug flag");
+    reject({"--import-save","x.sra","--debug"});
+    reject({"--export-save","x.ram","--debug"});
     reject({"--rom","--content","y"});
     std::map<std::string,std::string> env;
     const auto get=[&](const char* key){return env[key];};

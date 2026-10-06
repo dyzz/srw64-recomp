@@ -6,10 +6,10 @@
 
 | 层 | 位置 | 作用 |
 | --- | --- | --- |
-| 宿主调试服务 | `src/host/debug_server.cpp`，开关 `SRW64_DEBUG=1` | 在运行目录下监听 `debug.sock`（权限 0600），每行一条 JSON-RPC 2.0 请求/回应。普通试玩不开启。需要 SDL/RmlUi 的操作排进窗口线程执行。 |
+| 宿主调试服务 | `src/host/debug_server.cpp`、`debug_transport.cpp`，开关 `SRW64_DEBUG=1` | 监听本机回环 TCP（`127.0.0.1`，端口由系统分配），每行一条 JSON-RPC 2.0 请求/回应；端口和令牌写在运行目录的 `debug.json`（见下文「连接方式」）。普通试玩不开启。需要 SDL/RmlUi 的操作排进窗口线程执行。 |
 | 游戏键盘层 | `src/host/debug_protocol.hpp`、`graphics.cpp` | 虚拟按键与真实按键走同一条读取路径：绑定到同名扫描码，F6/F7/F8/Esc 按下沿经过同样的姓名页与语言切换门控；姓名页关闭后的释放检查也计入虚拟按键。虚拟按键不需要窗口焦点，游戏可以在后台被驱动。 |
 | 原生界面层 | `src/host/debug_ui.hpp`、`src/native/ui/frontend.cpp` | 共享 SDL/RmlUi 页面提供界面树、稳定 ID／文字／坐标点击、输入文字和按键；设置与通知都在游戏 surface 内。 |
-| 会话与客户端 | `tools/recomp/debug/session.py` | 启动会话（经 `run_host_probe.py --graphics --interactive`，输出到 `build/recomp/debug/<时间戳>/`，不碰 `profile-play` 的存档和偏好）、socket 客户端、等待条件、事件日志增量读取。 |
+| 会话与客户端 | `tools/recomp/debug/session.py` | 启动会话（经 `run_host_probe.py --graphics --interactive`，输出到 `build/recomp/debug/<时间戳>/`，不碰 `profile-play` 的存档和偏好）、连接客户端（`Client(运行目录)`）、等待条件、事件日志增量读取。 |
 | 命令行 | `tools/recomp/debug/srw64ctl.py` | 给人用的同一套操作。 |
 | MCP 服务器 | `tools/recomp/debug/mcp_server.py`、仓库根 `.mcp.json` | 标准库实现的 stdio MCP（项目环境没有 `mcp` 包），Claude Code 批准项目 MCP 并重开会话后即可调用 `srw64_*` 工具。 |
 
@@ -91,6 +91,47 @@
 
 `srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_record`（录一段 MP4，返回路径）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_mini_stage_load`、`srw64_memory`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`link_page`、`intermission_page`、`battle_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`、`link`、`intermission`、`unit_name`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。宿主不再定期截图或导出内存（2026-10-01 删掉了「完整诊断」：每两秒左右截一张整窗图、导出 8 MiB 内存，标题火焰会从 30 帧掉到 18）；要画面就用 `srw64_screenshot`，要一段过程就用录像。
 
+## 连接方式
+
+2026-10-06 起三个桌面平台（macOS、Linux、Windows）统一用本机回环 TCP，取代原来的 Unix socket（`debug.sock`）。原因是 Windows 版 CPython 没有 `socket.AF_UNIX`；顺带去掉了 socket 路径的长度上限（macOS 104 字节）。
+
+- 宿主监听 `127.0.0.1:0`，端口由系统分配；Windows 上加 `SO_EXCLUSIVEADDRUSE`。
+- 运行目录的 `debug.json`（`srw64.debug-endpoint.v2`）写 `transport: "tcp"`、`host`、`port`、`token`（256 位随机数，十六进制）和 `pid`。文件先建成仅属主可读写再写入令牌，写完改名，客户端不会读到半份；游戏退出时删除。
+- 每个连接的第一行必须是 `{"jsonrpc":"2.0","id":0,"method":"auth","params":{"token":"…"}}`，令牌按常量时间比较。错了或缺了就回一条错误并断开；握手前最多缓存 4 KiB。
+- 令牌取代了原来 socket 文件 0600 的作用：回环端口本机任何进程都连得上，只有玩家自己读得到 `debug.json`。
+- 客户端 `Client(运行目录)` 先读 `debug.json`；没有时找 `debug.tcp`（Android：adb 转发好的本地端口，不带令牌）。`Session.launch`、`Session.attach` 都以「有没有这两个文件」判断会话是否在运行。
+- Android 不变：仍是抽象 socket `@srw64-debug`，只有 adb 转发够得着。改成 TCP 加令牌反而不行：发布版 APK 不可调试，adb 读不到应用私有目录里的令牌。
+- 新旧不兼容：新版客户端连不上 2026-10-06 之前的游戏，反之亦然。
+
+## 打开方式：选项里的开关
+
+玩家不用命令行：「选项 → 关于 → AI 调试接口（MCP）」（`presentation.json` 的 `debug_interface`，默认关）。窗口线程每帧（`debug::service_main`）比较开关与监听状态：
+
+- 打开：立即监听（每次新端口、新令牌），并贴一条提示（`debug_interface_notice`）；开关存着，以后每次启动都会监听并提示一次。
+- 关闭：`transport::stop()` 停止接受连接、断开已有连接、删掉 `debug.json`；排队中的窗口线程请求以错误返回。
+- `--debug`（`SRW64_DEBUG=1`）照旧在窗口打开前就监听，不贴提示；开关显示为「开」且不可点，本次运行关不掉。开发会话（`Session.launch`）都走这条。
+- 关于页在开着时显示监听地址和运行目录（家目录写成 `~`，过长只显示结尾），「复制运行目录」复制完整路径。设置里的状态经 `settings::set_debug_endpoint` 传给页面。
+
+监听失败（例如写不了 `debug.json`）时日志记 `SRW64_DEBUG_FAILED`，直到开关再次变化前不再重试。
+
+## 不带参数的 attach
+
+`Session.attach()`（MCP 的 `srw64_attach` 不带 `run`）按 `running_games()` 找：`build/recomp/debug/current`（最近一次 `srw64ctl launch` 或 `attach.py`）加上本机玩家用户目录（`player_data()`：macOS `~/Library/Application Support/SRW64Recomp`、Windows `%LOCALAPPDATA%\SRW64Recomp`、Linux `$XDG_DATA_HOME/srw64-recomp`）下所有 `sessions/*/run/debug.json`，按文件时间从新到旧逐个试连（3 秒超时，`methods`），第一个能应答的就是。崩溃留下的 `debug.json` 连不上，自然跳过。
+
+## 另一台机器上的文件
+
+截图、录像的帧和事件日志是宿主写在自己机器上的文件。宿主有两个只限本次运行目录的方法：`file.read {path, offset, size}`（一次最多 4 MiB，base64，回给文件总长和 `eof`）和 `file.remove {path}`（不能删运行目录本身）。`Session.local()` 为假（运行目录里有 `remote.json` 或 `debug.tcp`，即 Deck 或手机）时，`Session.local_file()` 用 `file.read` 分块取回到 `remote-files/`，`Session.record()` 用 `file.remove` 清掉宿主那边的帧目录，`Session.events()` 按 `status.run` 取远端的日志。Deck 不再需要 scp，安卓也能截图和录像。
+
+## 在 Steam Deck（或其他 Linux 机器）上
+
+发布包的 `--play` 会清掉所有 `SRW64_*` 环境变量，`SRW64_DEBUG=1` 在那里不起作用；要打开调试接口就给游戏传 `--debug`。`debug.json` 写在这次会话的运行目录里（`~/.local/share/srw64-recomp/sessions/<id>/run/`）。不开 `--debug` 时与以前完全一样。Windows 上同样传 `--debug`（`Marchwind64.cmd --debug`），运行目录在 `%LOCALAPPDATA%\SRW64Recomp\sessions\<id>\run\`。
+
+1. Deck 上：Steam 里这个快捷方式的「属性 → 启动选项」写 `%command% --debug`，然后照常用手柄玩。出问题时不用退出。
+2. Mac 上：`.venv/bin/python tools/release/linux/attach.py`（默认 ssh 主机 `Deck`，`--host` 可改）。它经 ssh 读出正在运行、开着调试接口（选项里的开关或 `--debug`）的游戏的 `debug.json`，挑一个本地空闲端口用 `ssh -L` 转发到远端端口，在 `build/recomp/debug/deck-<时间>/debug.json` 写下本地端口和原令牌（权限 0600），并设为当前会话；之后 `srw64ctl.py`、`Session.attach()`、MCP 的 `srw64_attach` 都直接可用。
+3. 不想动 Steam 设置时，`attach.py --start` 会通过 ssh 带 `--debug` 启动游戏（游戏模式在 Xwayland `:1`，桌面模式传 `--display :0`）。加上 `--data-dir ~/srw64-debug` 则用一套单独的数据目录：ROM 和 HD 包是软链，存档和设置是复制的，调试不会写玩家自己的存档。游戏参数写在 `--` 之后。
+
+运行目录里的 `remote.json` 记着主机、远端运行目录和转发进程。截图、录像（`srw64_record`）和事件日志（`srw64_events`、`wait` 的 `event` 条件）是宿主写在 Deck 上的文件，`Session.local_file()` 经同一条连接（`file.read`）取回到 `remote-files/`。`quit` 会关掉游戏和本地转发，报告留在 Deck 上。游戏的标准错误在 Steam 启动时进 `journalctl --user`（记在 steam 进程名下），`--start` 时游戏作为用户 systemd 的临时单元 `srw64-debug` 运行（SteamOS 开着 `KillUserProcesses=True`，留在 ssh 登录会话里的进程会随 ssh 断开被清掉），输出看 `journalctl --user -u srw64-debug`。
+
 ## 与现有控制文件的关系
 
 `control.txt`、`script-inject.txt` 与 SDL 窗口／语言控制保留。旧 AppKit 姓名／规则控制文件
@@ -112,7 +153,8 @@
 - 原生界面层只覆盖本程序自己的窗口；系统对话框、输入法候选窗不在范围内（组字本身用 `ui.type` 的 `marked` 模拟）。
 - `status.ui.focus` 是 RmlUi 的焦点元素，`active` 单独说明 SDL 窗口是否有系统键盘焦点。
 - 菜单项按标题匹配，标题随界面语言变化。
-- 键盘以外的手柄没有接入宿主，因此也不在接口范围内。
+- 真实手柄的输入不经过接口；接口有自己的虚拟手柄（`pad`／`srw64_pad`），和真实手柄的输入合并。
+- Windows 上接口已实现（回环 TCP），但截至 2026-10-06 只在 CI 编译过，还没在 Windows 真机上连过。`Session.launch`（`srw64ctl launch`、MCP 的 `srw64_launch`）在 Windows 上仍不可用：它用 `os.pipe` 加 `pass_fds` 让游戏随启动进程退出；玩家路径（选项里的开关或 `--debug`，加 `srw64_attach`）不受影响。
 
 战前页回归可运行 `.venv/bin/python tools/recomp/debug/check_battle_ui.py`；精神与主动攻击返回流程可运行 `.venv/bin/python tools/recomp/debug/check_battle_spirits.py`。两者构建当前 native 宿主，通过主菜单 `mini-enter` 进入，不启用旧版人物选择。`status.mini_stage.waiting_reason` 可诊断关卡尚未就绪的原因；只有 `ready=true` 后才开始地图操作。截图和断言结果保存在各自的 debug 会话目录。
 

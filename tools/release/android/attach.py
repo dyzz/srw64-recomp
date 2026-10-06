@@ -2,10 +2,13 @@
 """Start the game on the connected phone with its debug interface and attach to it
 (docs/design/android-port.md).
 
-The app listens on the abstract socket @srw64-debug when started with --ez debug true;
-adb forwards a local port to it. This writes build/recomp/debug/android-<time>/debug.tcp
+The app listens on the abstract socket @srw64-debug when its Options → About → AI debug
+interface switch is on, or when started with --ez debug true; adb forwards a local port to
+it. With the switch on, --no-start only forwards and attaches to the game as it is.
+This writes build/recomp/debug/android-<time>/debug.tcp
 and makes it the current run, so srw64ctl.py and Session.attach() reach the phone.
-Screenshots: `adb exec-out screencap -p` (the host's own path is on the phone).
+Screenshots, recordings and event logs come back over the same connection (the host's
+file.read, Session.local_file).
 
   tools/release/android/attach.py [--save SRAM] [--env SRW64_KEY=VALUE] [--no-start] [-- extra host arguments]
 """
@@ -31,7 +34,7 @@ def adb(*args: str, **kwargs) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--save", type=Path, help="32 KiB card to place as the player's cartridge.sram first")
-    parser.add_argument("--no-start", action="store_true", help="attach to a game already started with --ez debug true")
+    parser.add_argument("--no-start", action="store_true", help="attach to the running game (its debug switch on, or started with --ez debug true)")
     parser.add_argument("--env", action="append", default=[], metavar="SRW64_KEY=VALUE",
                         help="development variable for the host (repeatable)")
     parser.add_argument("extra", nargs="*", help="host arguments after --")

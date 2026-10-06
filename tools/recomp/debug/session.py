@@ -4,14 +4,17 @@
 A session is an interactive graphics run of the host with SRW64_DEBUG=1 in its
 own directory under build/recomp/debug/. It never touches the play history or
 the remembered settings of build/recomp/profile-play. The host answers
-JSON-RPC 2.0 requests, one per line, on <run>/debug.sock.
+JSON-RPC 2.0 requests, one per line, on the loopback port <run>/debug.json names,
+after a first line that presents the token written there.
 """
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import base64
 import json
 import shlex
 import os
+import signal
 from pathlib import Path
 import socket
 import subprocess
@@ -34,34 +37,76 @@ class HostError(RuntimeError):
     """The host refused a request or could not be reached."""
 
 
-class Client:
-    """Line-delimited JSON-RPC over the session's Unix socket."""
+def has_endpoint(run: Path) -> bool:
+    """Whether a run directory says where its host listens (it removes debug.json at exit)."""
+    return (run / "debug.json").exists() or (run / "debug.tcp").exists()
 
-    def __init__(self, path: Path, timeout: float = 30.0):
-        self.path = Path(path)
+
+def player_data() -> Path:
+    """The released game's user directory on this machine (default_user_dir, runtime.cpp)."""
+    if sys.platform == "darwin":
+        return Path.home() / "Library/Application Support/SRW64Recomp"
+    if os.name == "nt":
+        return Path(os.environ.get("LOCALAPPDATA") or Path.home() / "AppData/Local") / "SRW64Recomp"
+    return Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local/share") / "srw64-recomp"
+
+
+def running_games() -> list[Path]:
+    """Run directories that say where a game listens, newest first: the last srw64ctl launch
+    or attach.py run, and the player's own games with the debug interface on (Options →
+    About, or --debug). A crashed game leaves its debug.json; connecting tells."""
+    runs = [Path(CURRENT.read_text().strip())] if CURRENT.exists() else []
+    runs += [path.parent for path in player_data().glob("sessions/*/run/debug.json")]
+
+    def started(run: Path) -> float:
+        return max((f.stat().st_mtime for f in (run / "debug.json", run / "debug.tcp") if f.exists()), default=0.0)
+    return sorted({run for run in runs if has_endpoint(run)}, key=started, reverse=True)
+
+
+class Client:
+    """Line-delimited JSON-RPC to a run's host (src/host/debug_transport.hpp).
+
+    <run>/debug.json gives the loopback port and the token the first line presents. An
+    Android run (tools/release/android/attach.py) has debug.tcp instead: the local port adb
+    forwards to the app's abstract socket, which takes no token."""
+
+    def __init__(self, run: Path, timeout: float = 30.0):
+        self.run = Path(run)
         self.timeout = timeout
         self._socket: socket.socket | None = None
         self._buffer = b""
         self._next_id = 0
 
+    def endpoint(self) -> tuple[tuple[str, int], str | None]:
+        path = self.run / "debug.json"
+        if path.exists():
+            try:
+                data = json.loads(path.read_text())
+                if data.get("transport") == "tcp":
+                    return (data["host"], int(data["port"])), data["token"]
+            except (OSError, ValueError, KeyError) as error:
+                raise HostError(f"cannot read {path}: {error}") from error
+        tcp = self.run / "debug.tcp"
+        if tcp.exists():
+            return ("127.0.0.1", int(tcp.read_text().strip())), None
+        raise HostError(f"{self.run} has no debug endpoint (not a debug run, or the game has ended)")
+
     def _connect(self) -> socket.socket:
         if self._socket is None:
-            # An Android run (tools/release/android/attach.py) has debug.tcp beside it: the
-            # local port adb forwards to the app's abstract socket.
-            tcp = self.path.with_name("debug.tcp")
-            if not self.path.exists() and tcp.exists():
-                connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                address = ("127.0.0.1", int(tcp.read_text().strip()))
-            else:
-                connection = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-                address = str(self.path)
+            address, token = self.endpoint()
+            connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             connection.settimeout(self.timeout)
             try:
                 connection.connect(address)
             except OSError as error:
                 connection.close()
-                raise HostError(f"cannot reach the host at {self.path}: {error}") from error
+                raise HostError(f"cannot reach the host of {self.run} at {address[0]}:{address[1]}: {error}") from error
             self._socket = connection
+            if token is not None:
+                try:
+                    self._exchange({"jsonrpc": "2.0", "id": 0, "method": "auth", "params": {"token": token}})
+                except HostError as error:
+                    raise HostError(f"the host refused the token in {self.run / 'debug.json'}: {error}") from error
         return self._socket
 
     def close(self) -> None:
@@ -70,10 +115,8 @@ class Client:
             self._socket = None
             self._buffer = b""
 
-    def call(self, method: str, **params) -> dict:
-        self._next_id += 1
-        request = {"jsonrpc": "2.0", "id": self._next_id, "method": method, "params": params}
-        connection = self._connect()
+    def _exchange(self, request: dict) -> dict:
+        connection = self._socket
         try:
             connection.sendall(json.dumps(request, ensure_ascii=False).encode() + b"\n")
             while b"\n" not in self._buffer:
@@ -84,11 +127,21 @@ class Client:
         except OSError as error:
             self.close()
             raise HostError(f"lost the host connection: {error}") from error
+        except HostError:
+            self.close()
+            raise
         line, self._buffer = self._buffer.split(b"\n", 1)
         response = json.loads(line)
         if "error" in response:
+            if request["method"] == "auth":
+                self.close()
             raise HostError(response["error"].get("message", "host error"))
         return response["result"]
+
+    def call(self, method: str, **params) -> dict:
+        self._connect()
+        self._next_id += 1
+        return self._exchange({"jsonrpc": "2.0", "id": self._next_id, "method": method, "params": params})
 
 
 def rule_fixes(rules) -> str:
@@ -109,7 +162,43 @@ class Session:
         self.run = Path(run)
         self.process = process
         self.lease: int | None = None
-        self.client = Client(self.run / "debug.sock")
+        self.client = Client(self.run)
+
+    def remote(self) -> dict | None:
+        """A run on another machine (tools/release/linux/attach.py): its host and run directory."""
+        path = self.run / "remote.json"
+        return json.loads(path.read_text()) if path.exists() else None
+
+    def local(self) -> bool:
+        """Whether the host writes into this run directory, rather than on a Deck (remote.json,
+        tools/release/linux/attach.py) or a phone (debug.tcp, tools/release/android/attach.py)."""
+        return not (self.run / "remote.json").exists() and not (self.run / "debug.tcp").exists()
+
+    def host_run(self) -> str:
+        """The run directory as the host names it (on its own machine)."""
+        if self.local():
+            return str(self.run)
+        if not hasattr(self, "_host_run"):
+            self._host_run = self.client.call("status")["run"]
+        return self._host_run
+
+    def local_file(self, path: str | Path) -> Path:
+        """A file the host wrote, here. Another machine's comes over the connection (the
+        host's file.read, limited to its run directory) into remote-files/."""
+        if self.local():
+            return Path(path)
+        target = self.run / "remote-files" / Path(path).name
+        target.parent.mkdir(exist_ok=True)
+        with open(target, "wb") as out:
+            offset = 0
+            while True:
+                part = self.client.call("file.read", path=str(path), offset=offset, size=4 << 20)
+                data = base64.b64decode(part["data"])
+                out.write(data)
+                offset += len(data)
+                if part["eof"] or not data:
+                    break
+        return target
 
     # -- lifecycle ---------------------------------------------------------------
 
@@ -200,11 +289,11 @@ class Session:
         session = cls(run, process)
         session.lease = lease  # open until this process exits
         deadline = time.monotonic() + timeout
-        while not (run / "debug.sock").exists():
+        while not has_endpoint(run):
             if process.poll() is not None:
                 raise HostError(f"the host exited before listening; see {log.name}")
             if time.monotonic() > deadline:
-                raise HostError(f"no debug socket after {timeout:.0f} s; see {log.name}")
+                raise HostError(f"no debug endpoint after {timeout:.0f} s; see {log.name}")
             time.sleep(0.2)
         CURRENT.write_text(str(run) + "\n")
         return session
@@ -247,14 +336,22 @@ class Session:
 
     @classmethod
     def attach(cls, run: str | Path | None = None) -> "Session":
-        """The given run, or the one `launch` last started."""
+        """The given run, or the newest running game that answers (running_games())."""
         if run is None:
-            if not CURRENT.exists():
-                raise HostError("no debug session has been launched; run srw64ctl launch first")
-            run = CURRENT.read_text().strip()
+            for candidate in running_games():
+                probe = Client(candidate, timeout=3)
+                try:
+                    probe.call("methods")
+                except HostError:
+                    continue
+                finally:
+                    probe.close()
+                return cls(candidate)
+            raise HostError("no running game with the debug interface: turn it on in Options → About, or start the "
+                            "game with --debug (a development session: srw64ctl launch)")
         session = cls(Path(run))
-        if not (session.run / "debug.sock").exists() and not (session.run / "debug.tcp").exists():
-            raise HostError(f"{session.run} has no debug socket (not a debug run, or it has ended)")
+        if not has_endpoint(session.run):
+            raise HostError(f"{session.run} has no debug endpoint (not a debug run, or the game has ended)")
         return session
 
     def alive(self) -> bool:
@@ -276,16 +373,18 @@ class Session:
         finally:
             result = self.client.call("record.stop")
         directory = Path(started["directory"])
-        target = Path(path) if path else directory.with_suffix(".mp4")
+        local = self.local()
+        target = Path(path) if path else (directory.with_suffix(".mp4") if local else self.run / (directory.name + ".mp4"))
         w, h, count = result["width"], result["height"], result["frames"]
-        times = [float(line) for line in Path(result["times_path"]).read_text().split()][:count]
+        frames_path, times_path = self.local_file(result["frames_path"]), self.local_file(result["times_path"])
+        times = [float(line) for line in times_path.read_text().split()][:count]
         if not times:
             raise HostError("no frames were presented while recording")
         size = w * h * 3
         command = ["ffmpeg", "-loglevel", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{w}x{h}",
                    "-r", str(fps), "-i", "-", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", str(target)]
         encoder = subprocess.Popen(command, stdin=subprocess.PIPE)
-        with open(result["frames_path"], "rb") as frames:
+        with open(frames_path, "rb") as frames:
             shown, frame = -1, b""
             for tick in range(int(times[-1] * fps) + 1):
                 wanted = shown
@@ -299,9 +398,12 @@ class Session:
         encoder.stdin.close()
         if encoder.wait() != 0:
             raise HostError(f"ffmpeg could not encode {target}")
-        for name in ("frames_path", "times_path"):
-            Path(result[name]).unlink(missing_ok=True)
-        directory.rmdir()
+        frames_path.unlink(missing_ok=True)
+        times_path.unlink(missing_ok=True)
+        if local:
+            directory.rmdir()
+        else:
+            self.client.call("file.remove", path=str(directory))
         gaps = [b - a for a, b in zip(times, times[1:])]
         return {"path": str(target), "seconds": round(times[-1], 2), "presents": count, "size": [w, h], "fps": fps,
                 "longest_gap_ms": round(max(gaps) * 1000) if gaps else None}
@@ -312,6 +414,15 @@ class Session:
         except HostError:
             pass
         self.client.close()
+        if remote := self.remote():
+            # The report stays on that machine; the local forward is no longer needed.
+            (self.run / "debug.json").unlink(missing_ok=True)
+            if remote.get("forward_pid"):
+                try:
+                    os.kill(int(remote["forward_pid"]), signal.SIGTERM)
+                except OSError:
+                    pass
+            return {"status": "quit sent", "host": remote["host"], "run": remote["run"]}
         deadline = time.monotonic() + timeout
         report = self.run / "report.json"
         while time.monotonic() < deadline:
@@ -329,6 +440,11 @@ class Session:
         if log not in EVENT_LOGS:
             raise HostError(f"unknown log {log!r}; known: {', '.join(EVENT_LOGS)}")
         path = self.run / EVENT_LOGS[log]
+        if not self.local():
+            try:
+                path = self.local_file(f"{self.host_run()}/{EVENT_LOGS[log]}")
+            except HostError:
+                return [], since
         if not path.exists():
             return [], since
         lines = path.read_text().splitlines()

@@ -20,6 +20,10 @@ struct Options {
     std::optional<std::string> rules;
     unsigned resolution_scale{}; // Zero means use the prepared content default.
     bool new_game{}, mute{};
+    // --debug keeps SRW64_DEBUG=1 through the environment scrub: the debug interface for
+    // this run whatever the About page's switch says (loopback TCP, debug.json in the run
+    // directory; docs/guide/debug-interface.md).
+    bool debug{};
 };
 Options parse_options(std::span<const std::string_view> args);
 std::string usage();

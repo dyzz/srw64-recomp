@@ -4,8 +4,8 @@
 #include <filesystem>
 
 // Debug interface (docs/guide/debug-interface.md): with SRW64_DEBUG=1 the graphics
-// host serves newline-delimited JSON-RPC 2.0 on <run>/debug.sock. The server
-// thread answers requests; anything touching SDL or AppKit runs on the window
+// host serves newline-delimited JSON-RPC 2.0 on the loopback port <run>/debug.json
+// names, after a token handshake (debug_transport.hpp). The server thread answers requests; anything touching SDL or AppKit runs on the window
 // thread through service_main().
 namespace srw64::debug {
 // Host start-up, before the runtime starts. Inert unless SRW64_DEBUG=1.

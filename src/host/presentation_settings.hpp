@@ -54,6 +54,17 @@ void set_wide_picture(bool wide);
 // (frame_rate.hpp, frontend.cpp). Off by default; saved as show_fps.
 bool show_fps();
 void set_show_fps(bool show);
+// The debug interface for AI agents over MCP (docs/guide/debug-interface.md): switched in
+// the About page, saved as debug_interface, off by default. --debug (SRW64_DEBUG=1) turns
+// it on for a run whatever is saved, and the switch then cannot turn it off.
+bool debug_interface();
+void set_debug_interface(bool on);
+bool debug_interface_forced();
+// Where it listens while on ("127.0.0.1:port") and the run directory, for the About page;
+// both empty while off. Set by debug_server.cpp.
+struct DebugEndpoint {std::string address,run;};
+DebugEndpoint debug_endpoint();
+void set_debug_endpoint(DebugEndpoint endpoint);
 // Around the picture and over it (docs/native/bezels-and-filters.md). A bezel is a
 // RetroArch overlay image (a .png, or an overlay .cfg naming one) laid around the picture
 // while it is 4:3; a filter is a RetroArch slang shader preset (.slangp) run over the

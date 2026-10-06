@@ -96,7 +96,7 @@ void replace_file(const fs::path& source,const fs::path& destination) {
 std::string usage() {
     return "Usage: srw64-gfx-host --play --rom ROM [--content CONTENT_DIR] [--user-dir DIR]\n"
            "       [--language LOCALE] [--rules original|fixed|all] [--resolution-scale 1..8]\n"
-           "       [--new-game | --import-save SAVE] [--mute] [--campaign CAMPAIGN.json]\n"
+           "       [--new-game | --import-save SAVE] [--mute] [--campaign CAMPAIGN.json] [--debug]\n"
            "       srw64-gfx-host --play --export-save FILE [--export-format FORMAT] [--user-dir DIR]\n"
            "       srw64-gfx-host --play --import-save SAVE [--user-dir DIR]\n"
            "--import-save takes a 32 KiB SRAM (ares .ram, Project64/mupen64plus .sra) or a\n"
@@ -108,6 +108,8 @@ std::string usage() {
            "--content keeps the developer-only prepared-content path.\n"
            "--campaign plays a compiled custom campaign (mini_stage.py campaign) with its own\n"
            "saves in DIR/campaigns/<id>/saves.\n"
+           "--debug opens the debug interface for tools/recomp/debug (MCP) or tools/release/linux/attach.py:\n"
+           "loopback TCP, with the port and token in debug.json in the session's run directory.\n"
            "This entry never runs Python, Git, CMake, Ninja or the recompilers.\n";
 }
 Options parse_options(std::span<const std::string_view> args) {
@@ -120,6 +122,7 @@ Options parse_options(std::span<const std::string_view> args) {
         seen.push_back(key);
         if (key=="--new-game") options.new_game=true;
         else if (key=="--mute") options.mute=true;
+        else if (key=="--debug") options.debug=true;
         else {
             if (i+1==args.size() || args[i+1].empty() || args[i+1].starts_with("--"))
                 throw std::runtime_error("Missing value for "+std::string(key));
@@ -150,7 +153,7 @@ Options parse_options(std::span<const std::string_view> args) {
     if (!options.export_format.empty() && options.export_save.empty()) throw std::runtime_error("--export-format needs --export-save");
     if (!options.export_save.empty()) {
         if (!options.rom.empty() || !options.content.empty() || options.new_game || !options.import_save.empty() ||
-            !options.language.empty() || options.rules || options.resolution_scale || options.mute || !options.campaign.empty())
+            !options.language.empty() || options.rules || options.resolution_scale || options.mute || options.debug || !options.campaign.empty())
             throw std::runtime_error("--export-save only takes --export-format and --user-dir");
         options.export_save=fs::absolute(options.export_save);
         if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
@@ -159,7 +162,7 @@ Options parse_options(std::span<const std::string_view> args) {
     // --import-save alone takes the card in and starts nothing.
     if (options.rom.empty() && !options.import_save.empty()) {
         if (!options.content.empty() || options.new_game || !options.language.empty() || options.rules || options.resolution_scale || options.mute ||
-            !options.campaign.empty())
+            options.debug || !options.campaign.empty())
             throw std::runtime_error("--import-save without --rom only takes --user-dir");
         options.import_save=fs::absolute(options.import_save);
         if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);

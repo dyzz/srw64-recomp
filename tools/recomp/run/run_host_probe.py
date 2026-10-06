@@ -13,7 +13,6 @@ import json
 import os
 from pathlib import Path
 import select
-import socket
 import subprocess
 import sys
 import threading
@@ -41,14 +40,11 @@ def quit_with_owner(owner: int, output: Path, process: subprocess.Popen, report:
         return
     report["ended_with_owner"] = True
     print("SRW64_DEBUG_OWNER_GONE: quitting the game", flush=True)
+    from recomp.debug.session import Client, HostError
     try:
-        with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as connection:
-            connection.settimeout(5)
-            connection.connect(str(output / "debug.sock"))
-            connection.sendall(b'{"jsonrpc":"2.0","id":1,"method":"quit","params":{}}\n')
-            connection.recv(4096)
+        Client(output, timeout=5).call("quit")
         process.wait(timeout=30)
-    except (OSError, subprocess.TimeoutExpired):
+    except (HostError, OSError, subprocess.TimeoutExpired):
         process.terminate()
         try:
             process.wait(timeout=10)

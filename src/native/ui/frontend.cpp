@@ -50,11 +50,14 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <cstdlib>
+#include <cstring>
 #include <condition_variable>
 #include <deque>
 #include <fstream>
 #include <map>
 #include <set>
+#include <tuple>
 
 namespace srw64::ui {
 namespace {
@@ -342,6 +345,7 @@ button.ctl-row:focus,button.ctl-row:hover {background-color:#3fd0ff26;}
 .set-about h2.app {font-size:22dp; letter-spacing:1dp; color:#ffd75e; border-bottom-width:0;}
 .set-panel.set-ask {width:auto; min-width:460dp; max-width:640dp; height:auto; max-height:88%;}
 .set-ask .set-body {flex:0 0 auto;} .set-ask .set-seg {display:inline-flex; margin-top:12dp;}
+.set-row > .set-seg {display:inline-flex; margin-top:8dp;}
 .set-error {margin-top:8dp; font-size:13dp; color:#ff8d8d;}
 .set-foot {display:flex; align-items:center; gap:12dp; margin-top:8dp; padding-top:8dp; border-top:1dp #3fd0ff40;}
 .set-hint {flex:1 1 0; min-width:0; font-size:12dp; color:#a4b0d2;}
@@ -1212,11 +1216,49 @@ std::string update_words(const std::string& key,const update::Status& s) {
     for(const char* empty:{"（）"," ()"})if(const auto at=text.find(empty);at!=std::string::npos)text.erase(at,std::string(empty).size());
     return escape(text);
 }
-// The About page's rows: the project's pages, then the update check and its switch.
+// A path to show in a row: the home folder as ~, and a long one by its end (the button
+// beside it copies the whole), so a folder with no spaces cannot run off the page.
+std::string short_path(std::string path) {
+#ifdef _WIN32
+    const char* home=std::getenv("USERPROFILE");
+#else
+    const char* home=std::getenv("HOME");
+#endif
+    if(home && *home && path.starts_with(home))path="~"+path.substr(std::strlen(home));
+    constexpr size_t keep=56;
+    if(path.size()>keep+4) {
+        size_t from=path.size()-keep;
+        while(from<path.size() && (static_cast<unsigned char>(path[from])&0xC0)==0x80)++from;  // not inside a UTF-8 character
+        path="…"+path.substr(from);
+    }
+    return path;
+}
+// The debug interface for AI agents (settings debug_interface): its switch, and while on
+// where it listens and the run directory a client attaches to, with a button to copy it.
+// --debug turns it on for the run; the switch then shows on and cannot turn it off.
+std::string debug_row() {
+    const bool forced=settings::debug_interface_forced(),on=forced || settings::debug_interface();
+    std::string choices;
+    for(const std::string mode:{"on","off"})choices+=button("debug:"+mode,label("settings_debug_"+mode),(mode=="on")==on,forced);
+    std::string more;
+    if(forced)more+="<p>"+label("settings_debug_forced")+"</p>";
+    if(const auto endpoint=settings::debug_endpoint();on && !endpoint.address.empty()) {
+        for(const auto& [key,mark,value]:{std::tuple<const char*,std::string,std::string>{"settings_debug_status","{address}",endpoint.address},
+                                          {"settings_debug_run","{run}",short_path(endpoint.run)}}) {
+            auto text=localization::catalog().ui(key);
+            if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),value);
+            more+="<p class='set-path'>"+escape(text)+"</p>";
+        }
+        more+="<div class='set-seg'>"+button("debug-copy-run",label("settings_debug_copy"))+"</div>";
+    }
+    return settings_row("settings_debug",choices,more);
+}
+// The About page's rows: the project's pages, then the update check and its switch, then
+// the debug interface.
 std::string about_rows() {
     std::string rows=settings_row("settings_about_links",button("about-link:site",label("about_link_site"))+
         button("about-link:source",label("about_link_source"))+button("about-link:issues",label("about_link_issues")));
-    if(!update::supported())return rows;
+    if(!update::supported())return rows+debug_row();
     const auto s=update::status(update::site_language(localization::catalog().locale));
     using update::State;
     const char* key=s.state==State::Checking?"update_status_checking":s.state==State::Current?"update_status_current":
@@ -1230,7 +1272,7 @@ std::string about_rows() {
         "</div></div><p>"+update_words(key,s)+"</p></div>";
     const auto automatic=update::automatic();
     rows+=settings_choice("settings_update_auto","update-auto",{"on","off"},automatic?(*automatic?"on":"off"):"");
-    return rows;
+    return rows+debug_row();
 }
 // Asked once on the title: whether to check on start-up. Closing it is a no.
 std::string update_ask_panel() {
@@ -2276,7 +2318,8 @@ void settings_sync() {
         // The Cheats page: its switches, the levels row and the pilots the menu lists.
         (settings_pages[settings_page]==std::string("cheats")?cheats_stamp():std::string())+
         // The About page: the update check as it goes.
-        (settings_pages[settings_page]==std::string("about")?std::to_string(update::status("en").serial):std::string());
+        (settings_pages[settings_page]==std::string("about")?std::to_string(update::status("en").serial)+std::to_string(settings::debug_interface())+
+            settings::debug_endpoint().address:std::string());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     // A rebuilt window keeps its focused control and scroll position, so a controller
     // does not lose its place; another page starts at its top.
@@ -3919,6 +3962,8 @@ void choose(const std::string& id) {
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
         if(id.starts_with("fps:"))settings::set_show_fps(id=="fps:on");
+        if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
+        if(id=="debug-copy-run")SDL_SetClipboardText(settings::debug_endpoint().run.c_str());
         if(id.starts_with("autosave")) {
             auto c=save_store::settings();
             if(id.starts_with("autosave:"))c.autosave=id=="autosave:on";

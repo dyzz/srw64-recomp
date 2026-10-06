@@ -255,6 +255,7 @@ APK 的 `libmain.so` 必须链接两份由 ROM 生成的代码：`build/recomp/c
 
 - 现在的 AF_UNIX 套接字放在应用私有目录里，`adb forward` 访问不到，路径长度也接近 `sun_path` 的 108 字节上限（`src/host/debug_server.cpp`）。
 - 改用三平台计划 X0 已经规划的回环 TCP 加令牌，再经 `adb forward tcp:` 连入。`srw64ctl` 和 MCP 不需要为安卓另写。
+- 实际做法（已实现）：安卓用抽象 socket `@srw64-debug`，`adb forward tcp:0 localabstract:srw64-debug` 连入，不带令牌。桌面三平台 2026-10-06 改成了回环 TCP 加令牌，见[调试接口 · 连接方式](../guide/debug-interface.md#连接方式)。
 - release 构建要能编译时去掉调试接口。
 
 ### 已经可移植、不用改

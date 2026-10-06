@@ -16,9 +16,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # tools/, home of 
 from recomp.debug.session import EVENT_LOGS, HostError, Session, run_keys  # noqa: E402
 
 PROTOCOL_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")
-INSTRUCTIONS = """Drive the SRW64 native host for debugging. Start with srw64_launch (or srw64_attach to a
-session started with tools/recomp/debug/srw64ctl.py), then read srw64_status and take
-srw64_screenshot. Two input layers:
+INSTRUCTIONS = """Drive the SRW64 native host (Marchwind64) for debugging. Start with srw64_attach to reach a running game
+(the player's own, with Options → About → AI debug interface on or started with --debug; a Deck or phone attached
+with attach.py; or a srw64ctl.py session), or srw64_launch to build and start a separate development session.
+Then read srw64_status and take srw64_screenshot. Two input layers:
 - srw64_keys: the classic game keyboard, fixed whatever the player bound (Z=A, X=B, Enter=START, arrows, E=R, Q=L,
   I/K=C-up/down, WASD stick, F5 reload dialogue text, F6 images, F7 language, Esc quits). Goes through the same path as real keys,
   window focus not required. Reading controls: E+Z fast-forward, E+Enter skip, I/K text size.
@@ -26,7 +27,8 @@ srw64_screenshot. Two input layers:
 - srw64_ui_tree / srw64_click / srw64_type / srw64_ui_key / srw64_menu: the shared SDL/RmlUi UI that
   replaces game screens (name page, settings window, menu bar), by generic keyboard and mouse.
 Coordinates are points from the window's top-left; use srw64_ui_tree to find controls.
-Every session runs in its own directory under build/recomp/debug/ and never touches play saves."""
+srw64_launch sessions run in their own directory under build/recomp/debug/ and never touch play saves; a player's
+game reached with srw64_attach is their real game: saving or changing settings there is for real."""
 
 WINDOW = {"description": "\"game\" (default), \"key\", a window number, or a title substring", "type": ["string", "integer"]}
 TOOLS = [
@@ -38,7 +40,9 @@ TOOLS = [
          "save": {"type": "string", "description": "path of a 32 KiB SRAM to start from"},
          "mini_stage": {"type": "string", "description": "mini stage definition to substitute for the first stage (F8 on the title menu)"},
          "reuse_build": {"type": "boolean", "description": "skip the rebuild when nothing changed since the last debug run"}}}},
-    {"name": "srw64_attach", "description": "Use a running debug session (the latest one by default).",
+    {"name": "srw64_attach", "description": "Use a running game. Without run: the newest one that answers among the player's "
+                                            "games with the debug interface on (found in their user folder), the last attach.py "
+                                            "(Deck, phone) and the last srw64ctl launch. run: a run directory (<user folder>/sessions/<id>/run).",
      "inputSchema": {"type": "object", "properties": {"run": {"type": "string"}}}},
     {"name": "srw64_status", "description": "VI, window, locale, image mode, rules, title/intro state, the dialogue reader (page, text size, speed, history, skip) with its boxes, the name page, the Link Battler page, recent native notices (banners), native UI windows and focus, held keys.",
      "inputSchema": {"type": "object", "properties": {"history": {"type": "boolean", "description": "include the full dialogue history"}}}},
@@ -146,7 +150,7 @@ class Server:
             return text(client.call("buttons", **args))
         if name == "srw64_screenshot":
             result = client.call("screenshot", **args)
-            data = base64.b64encode(Path(result["path"]).read_bytes()).decode()
+            data = base64.b64encode(session.local_file(result["path"]).read_bytes()).decode()
             return [{"type": "image", "data": data, "mimeType": "image/png"}] + text(result)
         if name == "srw64_ui_tree":
             return text(client.call("ui.tree", **args))
@@ -220,6 +224,9 @@ def text(value) -> list[dict]:
 
 
 def main() -> int:
+    # MCP messages are UTF-8 whatever the console code page is (Windows: cp936, cp932...).
+    sys.stdin.reconfigure(encoding="utf-8")
+    sys.stdout.reconfigure(encoding="utf-8", newline="\n")
     server = Server()
     for line in sys.stdin:
         if not line.strip():

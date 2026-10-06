@@ -20,7 +20,7 @@ def main():
     parser.add_argument('--run', type=Path, required=True)
     args = parser.parse_args()
     run = args.run.resolve()
-    client = Client(run / 'debug.sock')
+    client = Client(run)
     checks = []
     window_points = (960, 720)
 

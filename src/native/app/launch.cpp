@@ -210,6 +210,8 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         // HarmonyOS Sans and the symbol font shipped in the bundle.
         {"SRW64_FONT_DIR",bundled_resource("fonts").string()}})
         set_environment(key,value);
+    // Asked for on the command line, unlike the variables cleared above: the debug interface.
+    if(options.debug)set_environment("SRW64_DEBUG","1");
     // A custom campaign: its stages replace the scenes they borrow (mini_stage.hpp).
     if(!options.campaign.empty())set_environment("SRW64_CAMPAIGN",options.campaign.string());
     // The MOD manager's extra scenarios (campaign_library.hpp): the player's campaigns,

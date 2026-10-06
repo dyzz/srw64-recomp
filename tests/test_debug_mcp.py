@@ -1,4 +1,4 @@
-"""Debug interface clients: socket JSON-RPC, key steps, waits, events and MCP (docs/guide/debug-interface.md)."""
+"""Debug interface clients: loopback JSON-RPC with a token, key steps, waits, events and MCP (docs/guide/debug-interface.md)."""
 from __future__ import annotations
 
 import base64
@@ -20,15 +20,25 @@ PNG = base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4
 
 
 class FakeHost:
-    """A debug socket that answers like the host, recording every request."""
+    """A debug endpoint that answers like the host (src/host/debug_transport.cpp): loopback
+    TCP named by debug.json, a token handshake first, recording every request after it."""
 
-    def __init__(self, run: Path):
+    def __init__(self, run: Path, token: str | None = "0123abcd" * 8):
         self.run = run
+        self.token = token
         self.requests: list[dict] = []
-        self.listener = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        self.listener.bind(str(run / "debug.sock"))
+        self.refused = 0
+        self.listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.listener.bind(("127.0.0.1", 0))
         self.listener.listen(4)
-        self.status = {"vi": 120, "dialogue": {"active": False, "boxes": []}, "intro": {"title_major": 3, "step": {}},
+        self.port = self.listener.getsockname()[1]
+        if token is None:  # an Android run: the adb-forwarded port, no token
+            (run / "debug.tcp").write_text(f"{self.port}\n")
+        else:
+            (run / "debug.json").write_text(json.dumps({"schema": "srw64.debug-endpoint.v2", "transport": "tcp",
+                                                        "host": "127.0.0.1", "port": self.port, "token": token,
+                                                        "pid": 1}))
+        self.status = {"vi": 120, "run": str(run), "dialogue": {"active": False, "boxes": []}, "intro": {"title_major": 3, "step": {}},
                        "name_page": {"visible": False}}
         threading.Thread(target=self.serve, daemon=True).start()
 
@@ -41,6 +51,10 @@ class FakeHost:
             path = self.run / "shot.png"
             path.write_bytes(PNG)
             return {"path": str(path), "width": 1, "height": 1, "overlays": []}
+        if method == "file.read":  # as debug_server.cpp's read_run_file, in small parts
+            data = Path(params["path"]).read_bytes()
+            part = data[params["offset"]:params["offset"] + 3]
+            return {"data": base64.b64encode(part).decode(), "size": len(data), "eof": params["offset"] + len(part) >= len(data)}
         if method == "fail":
             raise ValueError("refused")
         return {"method": method, "params": params}
@@ -53,6 +67,7 @@ class FakeHost:
                 return
             with connection:
                 buffer = b""
+                admitted = self.token is None
                 while True:
                     chunk = connection.recv(4096)
                     if not chunk:
@@ -61,27 +76,73 @@ class FakeHost:
                     while b"\n" in buffer:
                         line, buffer = buffer.split(b"\n", 1)
                         request = json.loads(line)
+                        if not admitted:
+                            admitted = request["method"] == "auth" and request["params"].get("token") == self.token
+                            body = {"result": {"authenticated": True}} if admitted else \
+                                {"error": {"code": -32600, "message": "authenticate first"}}
+                            connection.sendall(json.dumps({"jsonrpc": "2.0", "id": request["id"], **body}).encode() + b"\n")
+                            if not admitted:
+                                self.refused += 1
+                                break
+                            continue
                         self.requests.append(request)
                         try:
                             body = {"result": self.answer(request["method"], request["params"])}
                         except ValueError as error:
                             body = {"error": {"code": -32000, "message": str(error)}}
                         connection.sendall(json.dumps({"jsonrpc": "2.0", "id": request["id"], **body}).encode() + b"\n")
+                    if not admitted:
+                        break
 
     def close(self):
         self.listener.close()
 
 
 class DebugClientTests(unittest.TestCase):
+    def isolate_player_data(self) -> Path:
+        """An empty stand-in for the released game's user directory."""
+        home = Path(tempfile.mkdtemp())
+        self.addCleanup(lambda: __import__("shutil").rmtree(home, ignore_errors=True))
+        original = debug_session.player_data
+        debug_session.player_data = lambda: home
+        self.addCleanup(setattr, debug_session, "player_data", original)
+        return home
+
+    def test_attach_finds_the_players_game(self):
+        """No run given: the newest game that answers, skipping a crashed one's debug.json."""
+        original = debug_session.CURRENT
+        debug_session.CURRENT = self.run / "no-current"
+        self.addCleanup(setattr, debug_session, "CURRENT", original)
+        home = self.isolate_player_data()
+        crashed = home / "sessions/a/run"
+        crashed.mkdir(parents=True)
+        with socket.socket() as unused:
+            unused.bind(("127.0.0.1", 0))
+            port = unused.getsockname()[1]
+        (crashed / "debug.json").write_text(json.dumps({"transport": "tcp", "host": "127.0.0.1", "port": port, "token": "x"}))
+        playing = home / "sessions/b/run"
+        playing.mkdir(parents=True)
+        game = FakeHost(playing)
+        self.addCleanup(game.close)
+        import os
+        os.utime(crashed / "debug.json", (2e9, 2e9))  # the crashed one looks newer
+        attached = Session.attach()
+        self.addCleanup(attached.client.close)
+        self.assertEqual(attached.run, playing)
+        game.close()
+        (playing / "debug.json").unlink()
+        with self.assertRaisesRegex(HostError, "Options"):
+            Session.attach()
+
     def setUp(self):
-        self.directory = tempfile.TemporaryDirectory(dir="/tmp")
+        self.directory = tempfile.TemporaryDirectory()
         self.run = Path(self.directory.name)
         self.host = FakeHost(self.run)
         self.addCleanup(self.directory.cleanup)
         self.addCleanup(self.host.close)
 
     def test_calls_are_json_rpc_lines_and_errors_raise(self):
-        client = Client(self.run / "debug.sock")
+        client = Client(self.run)
         self.assertEqual(client.call("status")["vi"], 120)
         self.assertEqual(client.call("echo", a=1), {"method": "echo", "params": {"a": 1}})
         with self.assertRaisesRegex(HostError, "refused"):
@@ -91,12 +152,42 @@ class DebugClientTests(unittest.TestCase):
         self.assertEqual(second["id"], first["id"] + 1)
         client.close()
 
-    def test_missing_socket_is_a_host_error(self):
-        with self.assertRaises(HostError):
-            Client(self.run / "none.sock").call("status")
+    def test_files_of_a_phone_run_come_over_the_connection(self):
+        """A run whose host is elsewhere (debug.tcp): screenshots and event logs via file.read."""
+        with tempfile.TemporaryDirectory() as phone_dir, tempfile.TemporaryDirectory() as here:
+            phone = FakeHost(Path(phone_dir), token=None)
+            self.addCleanup(phone.close)
+            (Path(here) / "debug.tcp").write_text((Path(phone_dir) / "debug.tcp").read_text())
+            (Path(phone_dir) / "dialogue-events.jsonl").write_text('{"kind":"font","size":14}\n')
+            session = Session(Path(here))
+            self.addCleanup(session.client.close)
+            self.assertFalse(session.local())
+            shot = session.local_file(session.client.call("screenshot")["path"])
+            self.assertEqual((shot.parent.name, shot.read_bytes()), ("remote-files", PNG))
+            self.assertEqual(session.events("dialogue"), ([{"kind": "font", "size": 14}], 1))
+
+    def test_missing_endpoint_is_a_host_error(self):
+        with tempfile.TemporaryDirectory() as empty, self.assertRaisesRegex(HostError, "no debug endpoint"):
+            Client(Path(empty)).call("status")
+
+    def test_a_wrong_token_is_refused(self):
+        endpoint = json.loads((self.run / "debug.json").read_text())
+        (self.run / "debug.json").write_text(json.dumps({**endpoint, "token": "f" * 64}))
+        with self.assertRaisesRegex(HostError, "refused the token"):
+            Client(self.run).call("status")
+        self.assertEqual((self.host.refused, self.host.requests), (1, []))
+
+    def test_an_android_run_needs_no_token(self):
+        with tempfile.TemporaryDirectory() as directory:
+            android = FakeHost(Path(directory), token=None)
+            self.addCleanup(android.close)
+            client = Client(Path(directory))
+            self.addCleanup(client.close)
+            self.assertEqual(client.call("status")["vi"], 120)
+            self.assertEqual([r["method"] for r in android.requests], ["status"])
 
     def test_key_steps(self):
-        client = Client(self.run / "debug.sock")
+        client = Client(self.run)
         self.addCleanup(client.close)
         results = run_keys(client, [{"press": "e+return", "hold_ms": 50}, {"wait_ms": 1}, {"down": "e+z"}])
         self.assertEqual(len(results), 3)
@@ -135,17 +226,18 @@ class DebugClientTests(unittest.TestCase):
         original = debug_session.CURRENT
         debug_session.CURRENT = current
         self.addCleanup(setattr, debug_session, "CURRENT", original)
+        self.isolate_player_data()
         attached = Session.attach()
         self.addCleanup(attached.client.close)
         self.assertEqual(attached.run, self.run)
-        (self.run / "debug.sock").unlink()
+        (self.run / "debug.json").unlink()  # the host removes it at exit
         with self.assertRaises(HostError):
             Session.attach()
 
 
 class McpServerTests(unittest.TestCase):
     def setUp(self):
-        self.directory = tempfile.TemporaryDirectory(dir="/tmp")
+        self.directory = tempfile.TemporaryDirectory()
         self.run = Path(self.directory.name)
         self.host = FakeHost(self.run)
         self.addCleanup(self.directory.cleanup)

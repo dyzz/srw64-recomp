@@ -157,7 +157,10 @@ if(SRW64_ENABLE_RT64)
         target_link_libraries(srw64-gfx-host PRIVATE ${CMAKE_DL_LIBS})
     endif()
     # Debug interface (docs/guide/debug-interface.md), inert unless SRW64_DEBUG=1.
-    target_sources(srw64-gfx-host PRIVATE debug_server.cpp)
+    target_sources(srw64-gfx-host PRIVATE debug_server.cpp debug_transport.cpp)
+    if(WIN32)
+        target_link_libraries(srw64-gfx-host PRIVATE ws2_32)
+    endif()
     # Banners and settings share the SDL/RmlUi surface.
     # Link Battler series page in front of the リンク screen.
     target_sources(srw64-gfx-host PRIVATE link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp)

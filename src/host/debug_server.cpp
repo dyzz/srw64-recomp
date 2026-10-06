@@ -1,5 +1,6 @@
 #include "debug_server.hpp"
 #include "debug_protocol.hpp"
+#include "debug_transport.hpp"
 #include "debug_ui.hpp"
 #include "graphics.hpp"
 #include "native_dialogue.hpp"
@@ -44,12 +45,6 @@
 #include <memory>
 #include <mutex>
 #include <thread>
-#ifndef _WIN32
-#include <sys/socket.h>
-#include <sys/stat.h>
-#include <sys/un.h>
-#include <unistd.h>
-#endif
 
 extern uint8_t* srw64_rdram;  // host.cpp
 
@@ -61,7 +56,7 @@ using namespace std::chrono_literals;
 std::filesystem::path output;
 json host_info;
 bool running{};
-std::filesystem::path socket_path;
+bool prepared{},failed_switch{};  // start() has run; a listen that failed, until the switch changes
 uint64_t shots{};
 std::mutex shot_mutex;
 
@@ -168,7 +163,7 @@ json pad_buttons(const json& params) {
 }
 
 json status(const json& params) {
-    json state={{"vi",srw64_current_vi()},{"pid",getpid()},{"run",output.string()},{"host",host_info},
+    json state={{"vi",srw64_current_vi()},{"pid",transport::process_id()},{"run",output.string()},{"host",host_info},
         {"image_mode",{{"current",presentation::image_mode.current()},{"requested",presentation::image_mode.requested()},
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"aspect",settings::wide_picture()?"auto":"4:3"},{"picture_width",frame::picture_width.load()},
@@ -318,6 +313,46 @@ json wait_vi(const json& params) {
     return {{"vi",srw64_current_vi()}};
 }
 
+std::string base64(std::string_view bytes) {
+    static constexpr char digits[]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    std::string out;
+    out.reserve((bytes.size()+2)/3*4);
+    for(size_t i=0;i<bytes.size();i+=3) {
+        const uint32_t n=uint32_t(uint8_t(bytes[i]))<<16|(i+1<bytes.size()?uint32_t(uint8_t(bytes[i+1]))<<8:0)|
+                         (i+2<bytes.size()?uint32_t(uint8_t(bytes[i+2])):0);
+        out+=digits[n>>18&63];out+=digits[n>>12&63];
+        out+=i+1<bytes.size()?digits[n>>6&63]:'=';
+        out+=i+2<bytes.size()?digits[n&63]:'=';
+    }
+    return out;
+}
+// A file this run wrote (a screenshot, a recording's frames, an event log), for a client on
+// another machine that cannot open the path the host names: the Deck through ssh, a phone
+// through adb. Only under the run directory; a relative path is taken from there.
+std::filesystem::path run_file(const json& params) {
+    if(!params.contains("path") || !params["path"].is_string())throw RpcError(InvalidParams,"path must be a string");
+    std::filesystem::path path=params["path"].get<std::string>();
+    if(path.is_relative())path=output/path;
+    const auto root=std::filesystem::weakly_canonical(output),target=std::filesystem::weakly_canonical(path);
+    if(std::mismatch(root.begin(),root.end(),target.begin(),target.end()).first!=root.end())
+        throw RpcError(InvalidParams,"only files under the run directory "+root.string());
+    return target;
+}
+// {path, offset, size}: up to 4 MiB from offset, as base64; size in the reply is the file's.
+json read_run_file(const json& params) {
+    const auto path=run_file(params);
+    std::error_code error;
+    const auto total=std::filesystem::file_size(path,error);
+    if(error)throw RpcError(ServerError,"cannot read "+path.string()+": "+error.message());
+    const uint64_t offset=params.value("offset",uint64_t{0});
+    const uint64_t wanted=std::min<uint64_t>(params.value("size",uint64_t{1}<<20),uint64_t{4}<<20);
+    std::string data(size_t(offset<total?std::min(wanted,total-offset):0),'\0');
+    std::ifstream in(path,std::ios::binary);
+    in.seekg(std::streamoff(offset));
+    in.read(data.data(),std::streamsize(data.size()));
+    data.resize(size_t(in.gcount()));
+    return {{"path",path.string()},{"offset",offset},{"size",total},{"data",base64(data)},{"eof",offset+data.size()>=total}};
+}
 json dispatch(const std::string& method,const json& params) {
     if(method=="status")return status(params);
     if(method=="keys")return keys(params);
@@ -375,9 +410,19 @@ json dispatch(const std::string& method,const json& params) {
         try{return battle_viewer::request(params);}
         catch(const std::exception& error){throw RpcError(InvalidParams,error.what());}
     }
+    if(method=="file.read")return read_run_file(params);
+    if(method=="file.remove") {
+        const auto path=run_file(params);
+        if(path==std::filesystem::weakly_canonical(output))throw RpcError(InvalidParams,"not the run directory itself");
+        std::error_code error;
+        const auto removed=std::filesystem::remove_all(path,error);
+        if(error)throw RpcError(ServerError,"cannot remove "+path.string()+": "+error.message());
+        return {{"removed",removed}};
+    }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","settings","window","wait_vi","mini_stage.load","memory.read","memory.write","viewer.start","quit","methods"};
+                                 "menu","settings","window","wait_vi","mini_stage.load","memory.read","memory.write","viewer.start","file.read","file.remove",
+                                 "quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }
 
@@ -390,92 +435,54 @@ std::string handle(const std::string& line) {
     catch(const std::exception& error){return failure(call.id,ServerError,error.what());}
 }
 
-#ifndef _WIN32
-void serve(int client) {
-    std::string buffer;
-    char chunk[4096];
-    for(;;) {
-        const auto count=::read(client,chunk,sizeof chunk);
-        if(count<=0)break;
-        buffer.append(chunk,size_t(count));
-        size_t newline;
-        while((newline=buffer.find('\n'))!=std::string::npos) {
-            const auto line=buffer.substr(0,newline);
-            buffer.erase(0,newline+1);
-            if(line.find_first_not_of(" \t\r")==std::string::npos)continue;
-            const auto response=handle(line);
-            for(size_t sent=0;sent<response.size();) {
-                const auto written=::write(client,response.data()+sent,response.size()-sent);
-                if(written<=0){::close(client);return;}
-                sent+=size_t(written);
-            }
-        }
-    }
-    ::close(client);
-}
-
-void remove_socket(){
-#ifndef __ANDROID__
-    if(!socket_path.empty())::unlink(socket_path.c_str());
-#endif
-}
-#endif
 }
 
 bool enabled(){return running;}
 
+namespace {
+// Starts listening; `announce`: switched on in the About page, so a banner says so.
+void listen_now(bool announce) {
+    running=true;  // before the first connection can queue window-thread work
+    try {
+        const auto endpoint=transport::listen(output,handle);
+        settings::set_debug_endpoint({endpoint.address,output.string()});
+        std::fprintf(stderr,"SRW64_DEBUG tcp=%s endpoint=%s\n",endpoint.address.c_str(),endpoint.file.string().c_str());
+        if(announce)notices::post("debug",localization::catalog().ui("debug_interface_notice"));
+    } catch(...) {
+        running=false;
+        throw;
+    }
+}
+// The switch turned off: no new connections, the open ones ended, debug.json removed.
+void stop_now() {
+    transport::stop();
+    running=false;
+    settings::set_debug_endpoint({});
+    std::deque<std::shared_ptr<Task>> work;
+    {std::lock_guard lock(queue_mutex);work.swap(queue);}
+    for(auto& task:work)task->result.set_exception(std::make_exception_ptr(RpcError(ServerError,"the debug interface was switched off")));
+    std::fprintf(stderr,"SRW64_DEBUG stopped\n");
+}
+}
+
 void start(const std::filesystem::path& directory,json host) {
-    const char* flag=std::getenv("SRW64_DEBUG");
-    if(!flag || std::string(flag)!="1")return;
-    output=directory;host_info=std::move(host);
-#ifdef _WIN32
-    // The Unix socket becomes loopback TCP on Windows (docs/design/three-platform-port.md,
-    // X3 item 8); until then the interface is off there.
-    std::fprintf(stderr,"SRW64_DEBUG unavailable on Windows yet\n");
-    return;
-#else
-    sockaddr_un address{};
-    address.sun_family=AF_UNIX;
-#ifdef __ANDROID__
-    // The app's files are out of adb's reach: an abstract socket, which
-    // `adb forward tcp:0 localabstract:srw64-debug` reaches (tools/release/android/attach.py).
-    constexpr char name[]="srw64-debug";
-    std::memcpy(address.sun_path+1,name,sizeof name-1);
-    const socklen_t length=socklen_t(offsetof(sockaddr_un,sun_path)+1+sizeof name-1);
-    socket_path="@srw64-debug";
-#else
-    socket_path=directory/"debug.sock";
-    if(socket_path.string().size()>=sizeof address.sun_path)throw std::runtime_error("debug socket path is too long: "+socket_path.string());
-    std::strncpy(address.sun_path,socket_path.c_str(),sizeof address.sun_path-1);
-    const socklen_t length=sizeof address;
-#endif
-    const int listener=::socket(AF_UNIX,SOCK_STREAM,0);
-    if(listener<0)throw std::runtime_error("debug socket: "+std::string(std::strerror(errno)));
-#ifndef __ANDROID__
-    ::unlink(socket_path.c_str());
-#endif
-    if(::bind(listener,reinterpret_cast<sockaddr*>(&address),length)!=0 || ::listen(listener,4)!=0)
-        throw std::runtime_error("debug socket: "+std::string(std::strerror(errno)));
-#ifndef __ANDROID__
-    ::chmod(socket_path.c_str(),0600);
-#endif
-    std::signal(SIGPIPE,SIG_IGN);
-    std::atexit(remove_socket);
-    running=true;
-    std::thread([listener] {
-        for(;;) {
-            const int client=::accept(listener,nullptr,nullptr);
-            if(client<0){if(errno==EINTR)continue;break;}
-            std::thread(serve,client).detach();
-        }
-    }).detach();
-    std::ofstream(directory/"debug.json")<<json({{"schema","srw64.debug-endpoint.v1"},{"socket",socket_path.string()},
-        {"pid",getpid()},{"protocol","JSON-RPC 2.0, one message per line"}}).dump(2)<<'\n';
-    std::fprintf(stderr,"SRW64_DEBUG socket=%s\n",socket_path.c_str());
-#endif
+    output=directory;host_info=std::move(host);prepared=true;
+    // --debug (SRW64_DEBUG=1) listens before the window opens, as the tools expect; the
+    // About page's switch is followed from the first frame (service_main).
+    if(settings::debug_interface_forced())listen_now(false);
 }
 
 void service_main() {
+    if(prepared) {
+        const bool forced=settings::debug_interface_forced(),wanted=forced || settings::debug_interface();
+        if(!wanted)failed_switch=false;
+        if(wanted && !running && !failed_switch) {
+            try{listen_now(!forced);}
+            catch(const std::exception& error){failed_switch=true;std::fprintf(stderr,"SRW64_DEBUG_FAILED %s\n",error.what());}
+        } else if(!wanted && running) {
+            stop_now();
+        }
+    }
     if(!running)return;
     std::deque<std::shared_ptr<Task>> work;
     {std::lock_guard lock(queue_mutex);work.swap(queue);}

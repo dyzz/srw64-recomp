@@ -21,7 +21,7 @@ def main() -> None:
     parser.add_argument('--run', type=Path, required=True)
     args = parser.parse_args()
     run = args.run.resolve()
-    client = Client(run / 'debug.sock')
+    client = Client(run)
     records: list[dict] = []
 
     def wait(predicate, timeout: float = 20) -> dict:

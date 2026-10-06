@@ -99,7 +99,7 @@
 | 作弊 `cheats` | 2026-10-05：五个开关（默认关）与「机师等级」一行，点「展开」才列出机师和改等级的按钮（[金手指](../gameplay/cheats.md)）。加这一页后英文页签「Interface」「Controls」改成「UI」「Input」，否则 7 个页签在最小窗口放不下 |
 | 存档 `saves` | 2026-10-01，见[多存档栏与自动存档](../design/save-slots-autosave.md) §8：自动存档开关；场间、回合两种自动存档各保留 1／3／5／10 份；把卡带写成 ares、Project64、mupen64plus、RetroArch 四种文件（存档库的 `export/`）；列出存档库 `import/` 里的模拟器文件，逐栏导入为扩展栏（校验和不符的栏要再按一次，修复后导入）。设置存在存档库的 `settings.json`，不进 `presentation.json`。调试会话没有存档库时只显示一行说明 |
 | 操作 `controls` | 改键页（2026-09-28，见[改键](controls-remapping.md)）：识别到的手柄、键盘默认（PCSX2 布局）说明、按功能列出的改键表（键盘与手柄各一列，选中后按新键即改）、固定快捷键与恢复默认 |
-| 关于 `about` | 应用名 Marchwind64、一句介绍、版本号（取自根目录 `CMakeLists.txt` 的 `project(... VERSION)`，编译时经 `SRW64_VERSION` 传入）；链接行（官网、源代码、问题反馈，系统浏览器打开）；更新行（「检查更新」、结果，有新版时「下载页」「更新说明」）与「启动时检查更新」开关（[更新检查](update-check.md)）；HarmonyOS Sans、PromptFont、librashader 声明 |
+| 关于 `about` | 应用名 Marchwind64、一句介绍、版本号（取自根目录 `CMakeLists.txt` 的 `project(... VERSION)`，编译时经 `SRW64_VERSION` 传入）；链接行（官网、源代码、问题反馈，系统浏览器打开）；更新行（「检查更新」、结果，有新版时「下载页」「更新说明」）与「启动时检查更新」开关（[更新检查](update-check.md)）；「AI 调试接口（MCP）」开关，开着时显示监听地址、运行目录和「复制运行目录」（[调试接口](../guide/debug-interface.md#打开方式选项里的开关)）；HarmonyOS Sans、PromptFont、librashader 声明 |
 
 每个开关由 `settings_choice(键, id 前缀, 模式列表, 当前模式)` 生成一行：上面是 `label(键)` 和右侧一个模式一个按钮，下面整行是 `label(键+"_note")`，id 为 `前缀:模式`（与 §6 相同，如 `battle-ui:native`、`images:hd`）。新增一个原版／新版开关只要在「界面」页加一行调用，再在刷新 stamp 里加上它的当前值。
 
