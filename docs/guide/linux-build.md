@@ -2,7 +2,7 @@
 
 2026-09-25。[三平台移植计划](../design/three-platform-port.md) X2 的第一个版本：Linux x64 上用 Vulkan 运行游戏。五个 HD 图层都已改走 plume（X1），在 Linux 上与 macOS 同样绘制。HD 素材包与 macOS 版是同一个下载，解压到 `~/.local/share/srw64-recomp/hd` 即可；自用构建也可以用 `build_linux.py --hd DIR` 直接打进包里（`hd/` 在程序旁边）。
 
-## 从 Mac 构建
+## 在 Mac 上构建
 
 先在 Mac 上照常 `make`，并准备好字体（`tools/content/prepare_fonts.py`）。然后启动 Docker Desktop，在仓库根目录运行：
 
@@ -17,6 +17,25 @@ tools/release/linux/build.sh --jobs 8
 3. 在容器里运行 `tools/release/build_linux.py`。容器把仓库挂在同一个绝对路径，这样生成文件里记录的路径与 Mac 一致。
 
 Apple Silicon 上容器通过 x64 模拟运行，第一次构建（依赖加 RT64 加生成代码）需要较长时间。之后只重编改动的文件。
+
+## 在 x86-64 Linux 机器上构建
+
+在原生 x86-64 的 Linux 机器上跑同一个容器，比 Mac 上经模拟快得多。做法是把仓库（含 `.git`，这样包名里的提交号和 `-dirty` 一致）和 `make` 产出的平台无关输入（`build/recomp` 下的 `cpu-bound`、`upstream`、`audio-probe`、`runtime-lifecycle`、`graphics-source-patches.json`、`thirdparty/librashader/linux`，以及 `build/fonts`、`build/macos-deps/sources`）复制过去，在那边构建镜像并运行 `build_linux.py`：
+
+- 容器要把仓库挂在 Mac 上的同一绝对路径，生成文件里记录的源码路径才对得上；
+- 以那台机器的用户身份运行（`--user $(id -u):$(id -g) -e HOME=/tmp`），产物不会变成 root 所有；
+- 各上游检出不必带 `.git`，但要在每个检出里写 `.srw64-revision`（内容是 Mac 上 `git rev-parse HEAD` 的结果），和 Windows CI 一样；否则 `prepare_runtime_lifecycle.py` 会读到外层仓库的提交而报 `Runtime lifecycle source revision differs`；
+- 不用传的：librashader 在 Mac 上的 Rust 产物 `target/`、依赖源码包解开的目录（构建时从压缩包重新解开）、RT64 只给 Windows 用的 `mupen64plus-win32-deps`，合计约 1.2 GB。
+
+没有显卡的机器上运行测试用 Xvfb 加 lavapipe。Debian 12 自带的 Mesa 22.3.6 lavapipe 一启动游戏就在驱动里段错误，要换成 Ubuntu 22.04 更新源里的 Mesa 23.2.1：在构建镜像上加装 `xvfb mesa-vulkan-drivers libvulkan1`，游戏放在这个容器里跑。容器加 `--network host --pid host`，游戏监听的回环端口和 `debug.json` 里的进程号在宿主上才对得上，从别的电脑照常用 `attach.py --host <主机> --data-dir <数据目录>` 连入：
+
+```sh
+docker run -d --name srw64-run --network host --pid host --user $(id -u):$(id -g) -e HOME=/tmp \
+  -e XDG_DATA_HOME=$T/data -v $T:$T -w $T/<包名> <运行镜像> \
+  sh -c "Xvfb :98 -screen 0 1280x800x24 & sleep 1; DISPLAY=:98 exec ./marchwind64.sh --debug"
+```
+
+（`T` 是测试目录，ROM 放在 `$T/data/srw64-recomp/rom.z64`，测完删掉。）
 
 ## 构建步骤与产物
 
@@ -58,6 +77,8 @@ SDL3 运行时才加载 X11/Wayland、PipeWire/PulseAudio/ALSA，Vulkan 由 plum
 已在库里时只刷新封面。封面是仓库里的 `tools/release/linux/steam-art/*.png`，打包时原样拷进去，所以 GitHub Actions 上构建的包也有封面。它们由 `tools/release/linux/steam_art.py` 生成：HD 包的标题 logo（`content/art/stage1-hd.json` 的 `scene_images`）叠在标题火焰上，下方是项目的 MARCHWIND64 标题 logo（`web/public/brand/title-en.webp`），图标是 M64 徽标（`m64-icon.png`），各语言同一套；标题图或品牌图变了就在本机重跑 `steam_art.py --output tools/release/linux/steam-art` 再提交。
 
 ## 验证记录
+
+**2026-10-06 远端 Linux 机器（Debian 12，无显卡）：调试接口与 MCP。** 包用上面的容器构建，游戏在 Ubuntu 22.04 加 Mesa 23.2.1 的容器里经 Xvfb 加 lavapipe 运行。只靠「选项 → 关于」里的开关（不加 `--debug`）就开始监听，启动提示正常。Mac 上 `attach.py` 读到远端 `debug.json`，`ssh -L` 转发本地端口，MCP 的 `srw64_attach`（不带参数）、`srw64_status`、`srw64_screenshot`（经 `file.read` 取回 1280×800 的画面）、`srw64_events`、`srw64_quit` 都正常，退出后远端 `debug.json` 被删除。同一个包直接在 Debian 12 宿主上跑，会在 Mesa 22.3.6 的 lavapipe 里段错误（调试接口已经打开，与这次改动无关）。
 
 **2026-09-25 容器冒烟测试。** 测试方式：
 
