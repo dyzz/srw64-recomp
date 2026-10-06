@@ -37,13 +37,15 @@ void NamePage::sync(const names::Request& next,const std::map<std::string,std::s
     // The frontend syncs every frame; with no page up the request is the default one.
     if(next.visible && ((next.person!=names::Selection && next.person!=names::Review) || next.route>=4))
         throw std::invalid_argument("Invalid name-page request");
-    // The layout is sized to the window in dp (a Steam Deck at Largest: 865 x 540).
+    // The layout is sized to its room in dp (a Steam Deck at Largest: 865 x 540; at 4:3 the
+    // picture's 800 x 600), the whole window unless set_area says otherwise.
     const auto dims=context.GetDimensions();
+    if(area_w<=0 || area_h<=0){area_x=area_y=0;area_w=float(dims.x);area_h=float(dims.y);}
     const float density=std::max(0.01f,context.GetDensityIndependentPixelRatio());
-    const int w=int(dims.x/density+.5f),h=int(dims.y/density+.5f);
-    const bool rebuild=art_changed || !document || next.serial!=request.serial || next.person!=request.person || next.visible!=request.visible || next_locale!=locale || w!=page_w || h!=page_h;
+    const int w=int(area_w/density+.5f),h=int(area_h/density+.5f),ix=int(area_x),iy=int(area_y);
+    const bool rebuild=art_changed || !document || next.serial!=request.serial || next.person!=request.person || next.visible!=request.visible || next_locale!=locale || w!=page_w || h!=page_h || ix!=inset_x || iy!=inset_y;
     if(next.serial!=request.serial || next.revision!=request.revision)waiting=false;
-    request=next;labels=next_labels;locale=next_locale;art_changed=false;page_w=w;page_h=h;
+    request=next;labels=next_labels;locale=next_locale;art_changed=false;page_w=w;page_h=h;inset_x=ix;inset_y=iy;
     if(!request.visible){if(document && document->IsVisible())document->Hide();return;}
     if(rebuild)build();
     for(unsigned i=0;i<4;++i)if(auto* card=document->GetElementById("route"+std::to_string(i))){
@@ -193,7 +195,7 @@ button:disabled { opacity: 0.45; }
 #next { background-color: #8fddf2; border-color: #8fddf2; color: #0a141e; }
 #next:hover, #next:focus { background-color: #b9ecf9; border-color: #b9ecf9; }
 )";
-    document=context.LoadDocumentFromMemory("<rml><head><style>"+style+locale_font_css(locale)+"</style></head><body><layer-mark/>"+body+"<layer-mark class='layer-end'/></body></rml>");
+    document=context.LoadDocumentFromMemory("<rml><head><style>"+style+locale_font_css(locale)+"</style></head><body style='box-sizing: border-box; border-width: "+std::to_string(inset_y)+"px "+std::to_string(inset_x)+"px; border-color: #00000000;'><layer-mark/>"+body+"<layer-mark class='layer-end'/></body></rml>");
     if(!document)throw std::runtime_error("Cannot build name page");
     document->AddEventListener("click",this);document->Show();context.Update();
 }

@@ -28,7 +28,9 @@ OUT = ROOT / 'build/recomp/ui-audit'
 LOCALES = ('zh-Hans', 'en', 'ja')
 # name: window points and interface size (Steam Deck: 1280 x 800 at Largest).
 SIZES = {'deck': (1280, 800, 'largest'), 'deck-standard': (1280, 800, 'standard'),
-         'wide': (1920, 1080, 'standard'), 'smallest': (960, 720, 'standard')}
+         'wide': (1920, 1080, 'standard'), 'smallest': (960, 720, 'standard'),
+         # The picture kept 4:3 (a bezel frames it): the pages lay out in the 1067 x 800 picture.
+         'deck-4:3': (1280, 800, 'largest', '4:3')}
 LIBS = ['ui-probe/libsrw64_ui_pages.a', 'ui-probe/libsrw64_ui_renderer.a', 'rt64/rt64.a', 'rt64/src/contrib/re-spirv/libre-spirv.a',
         'rt64/src/contrib/nativefiledialog-extended/src/libnfd.a', 'rt64/src/contrib/zstd/build/cmake/lib/libzstd.a',
         'rt64/src/contrib/plume/libplume.a', 'ui-probe/rmlui/Source/Core/librmlui.a']
@@ -317,11 +319,11 @@ def main():
         all_fixtures = [f for f in all_fixtures if re.search(args.only, f['name'])]
     failed = False
     for size in args.sizes.split(','):
-        width, height, ui_size = SIZES[size]
-        directory = OUT / size
+        width, height, ui_size, *aspect = SIZES[size]
+        directory = OUT / size.replace(':', 'x')
         directory.mkdir(parents=True, exist_ok=True)
         path = directory / 'fixtures.json'
-        path.write_text(json.dumps([{**f, 'ui_size': ui_size} for f in all_fixtures], ensure_ascii=False))
+        path.write_text(json.dumps([{**f, 'ui_size': ui_size, 'aspect': (aspect or ['auto'])[0]} for f in all_fixtures], ensure_ascii=False))
         run = subprocess.run([str(binary), str(ROOT / 'content/locales'), str(path), str(directory), str(width), str(height)],
                              cwd=ROOT, env={'SRW64_FONT_DIR': str(ROOT / 'build/fonts'), 'PATH': '/usr/bin:/bin'}, capture_output=True, text=True)
         if run.returncode:

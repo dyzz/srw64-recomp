@@ -187,6 +187,14 @@ float pixel_ratio=1;
 // The window and the game picture's width (game_frame.hpp), which place the pages drawn
 // in the original's 320x240 coordinates.
 std::string frame_stamp(){return std::to_string(pixels_w)+"x"+std::to_string(pixels_h)+"/"+std::to_string(frame::width(pixels_w,pixels_h));}
+// Our pages' room, in screen pixels: the game picture while it is 4:3 (a bezel frames it,
+// user 2026-10-06), else the whole window. The pages lay out in it and the dp follows it.
+struct Area {float x,y,w,h;};
+Area page_area() {
+    if(settings::wide_picture())return {0,0,float(pixels_w),float(pixels_h)};
+    const float u=frame::scale(float(pixels_w),float(pixels_h)),w=frame::width(float(pixels_w),float(pixels_h))*u,h=frame::kHeight*u;
+    return {(pixels_w-w)/2,(pixels_h-h)/2,w,h};
+}
 // The View menu's window sizes (app_menu.hpp): n times the original's 240 lines, as wide
 // as the picture is for the window's present shape, in points.
 SDL_Point scaled_size(int w,int h,int n){return {int(std::lround(frame::width(float(w),float(h))*n)),int(frame::kHeight)*n};}
@@ -762,15 +770,22 @@ void fit_lines(Rml::ElementDocument* doc) {
             // later call on the same page (a redrawn part), whose floor stays relative to that face.
             const float size=line->GetComputedValues().font_size(),from=line->GetAttribute<float>("data-fit-from",size),floor=from*line->GetAttribute<float>("data-fit-min",.6f);
             if(size<=floor+.01f)continue;
-            line->SetProperty("font-size",std::to_string(std::max(floor,size*room/need))+"px");line->SetAttribute("data-fit-from",from);changed=true;
+            // 2 % under the ratio: the row then gives a little back, and three passes left 1-2 dp over (4:3 audit).
+            line->SetProperty("font-size",std::to_string(std::max(floor,size*room/need*.98f))+"px");line->SetAttribute("data-fit-from",from);changed=true;
         }
         if(!changed)break;
         doc->UpdateDocument();
     }
 }
 // chrome: drawn over a RetroArch filter instead of under it (LayerMark above).
+// A page (not chrome) keeps to page_area() by a transparent border on its body: the body's
+// background stays inside it (RmlUi paints backgrounds in the padding box), and what a page
+// places absolutely, in window pixels (the original's 320x240 coordinates), stays where it
+// was (an unpositioned body is not their containing block; the window is).
 Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=false) {
-    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"<layer-mark class='layer-end'/></body></rml>");
+    std::string inset;
+    if(!chrome){const auto a=page_area();if(a.x>=1 || a.y>=1)inset="box-sizing: border-box; border-width: "+std::to_string(int(a.y))+"px "+std::to_string(int(a.x))+"px; border-color: #00000000; ";}
+    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='"+inset+"pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"<layer-mark class='layer-end'/></body></rml>");
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
     if(chrome)doc->SetAttribute("data-chrome","1");
     doc->AddEventListener("click",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);
@@ -2496,7 +2511,8 @@ void link_sync() {
     for(bool value:ticked)stamp+=value?'1':'0';
     if(link_doc && link_stamp==stamp)return;
     document_close(link_doc);link_stamp=stamp;
-    std::string body="<div class='page'><h1>"+label("link_title")+"</h1><p>"+label("link_hint")+"</p><div class='row'>";
+    // The hints are one line each in Japanese (no spaces to break at, rmlui-cjk-wrap), so they shrink to fit.
+    std::string body="<div class='page'><h1>"+label("link_title")+"</h1><p class='fit'>"+label("link_hint")+"</p><div class='row'>";
     const char* keys[]={"f91","goshogun","zambot"};
     for(unsigned i=0;i<3;++i){
         std::string content;
@@ -2505,7 +2521,7 @@ void link_sync() {
         if(next.joined[i] || next.scheduled[i] || ticked[i])content+="<p>"+label(next.joined[i]?"link_joined":next.scheduled[i]?"link_scheduled":"link_ticked")+"</p>";
         body+=button("link:"+std::to_string(i),content,ticked[i] || i==link_focus,link_waiting || next.joined[i] || next.scheduled[i],"card");
     }
-    body+="</div><p>"+label("link_keyboard_hint")+"</p>"+button("link-back",label("link_back"),false,link_waiting)+button("link-next",label("link_confirm"),true,link_waiting)+"</div>";
+    body+="</div><p class='fit'>"+label("link_keyboard_hint")+"</p>"+button("link-back",label("link_back"),false,link_waiting)+button("link-next",label("link_confirm"),true,link_waiting)+"</div>";
     link_doc=document(body,true);
 }
 std::string battle_number(int value,bool sign=false){return (sign && value>=0?"+":"")+std::to_string(value);}
@@ -2582,7 +2598,7 @@ std::string battle_unit(const json& c,bool left) {
             found=art_bounds.emplace(path,std::array<int,5>{x0,y0,x1-x0,y1-y0,file.width}).first;
         }
         const auto [x,y,w,h,file_w]=found->second;
-        const float logical_w=pixels_w/ui_density,logical_h=pixels_h/ui_density;
+        const float logical_w=page_area().w/ui_density,logical_h=page_area().h/ui_density;
         const float limit_w=logical_w*.31f-8,limit_h=std::clamp(logical_h-436,120.f,360.f);
         // At most 6x the ROM pixels, whichever file is drawn. The file loads unresampled: `rect` is in its pixels.
         const float rom_px=float(unit.value("width",96.f))/std::max(1.f,float(file_w));
@@ -2603,7 +2619,7 @@ std::string battle_unit(const json& c,bool left) {
 void battle_fit_units(Rml::ElementDocument* doc) {
     auto* mid=doc?doc->GetElementById("battle-mid"):nullptr;
     if(!mid)return;
-    const float room=std::clamp(mid->GetBox().GetSize().y/ui_density-8,80.f,360.f),limit_w=pixels_w/ui_density*.31f-8;
+    const float room=std::clamp(mid->GetBox().GetSize().y/ui_density-8,80.f,360.f),limit_w=page_area().w/ui_density*.31f-8;
     Rml::ElementList pictures;mid->QuerySelectorAll(pictures,".battle-unit img");
     for(auto* img:pictures) {
         const float w=img->GetAttribute<float>("data-w",0),h=img->GetAttribute<float>("data-h",0),part=img->GetAttribute<float>("data-part",1);
@@ -2644,7 +2660,7 @@ float text_units(const std::string& text);
 // padding and border each, 3 dp apart), a little pessimistic so a second row is never
 // hidden: the column is the panel (31% of the page) less its padding, the face and a gap.
 int battle_spirit_rows(const json& c,bool narrow) {
-    const float page=std::min(pixels_w/ui_density,1500.f)-36,width=(page*.31f-22-(narrow?68:100)-8)*.95f;
+    const float page=std::min(page_area().w/ui_density,1500.f)-36,width=(page*.31f-22-(narrow?68:100)-8)*.95f;
     int rows=1;float x=0;
     for(const auto& spirit:c.value("spirit_grid",json::array())) {
         const float w=text_units(spirit.at("name").get<std::string>())*12+12;
@@ -3737,7 +3753,7 @@ void battle_sync() {
     const bool selecting_spirit=next.value("spirit_menu",false);
     // Under 1000 dp wide (a larger interface size on a small screen) the pilots' faces and
     // the buttons' padding shrink, so the figures keep one line.
-    const bool narrow=pixels_w/ui_density<1000;
+    const bool narrow=page_area().w/ui_density<1000;
     // Touch: the top strip for settings and the animation, the bottom corners for the stick
     // and the buttons, which take over the page's own (touch_pad.hpp BattlePage).
     std::string page_style,bottom_style;
@@ -4441,7 +4457,9 @@ void sync() {
 #else
     const float layout_ratio=pixel_ratio;
 #endif
-    const float points_w=float(pixels_w)/layout_ratio,points_h=float(pixels_h)/layout_ratio;
+    // Measured on the pages' room (page_area), so a 4:3 picture keeps them 800 x 540 dp too.
+    const auto room=page_area();
+    const float points_w=room.w/layout_ratio,points_h=room.h/layout_ratio;
     const float fit=std::min({1.f,points_w/960.f,points_h/720.f});
     ui_density=layout_ratio*std::min(fit*settings::ui_scale(settings::ui_size()),std::max(fit,std::min(points_w/800.f,points_h/540.f)));
     context->SetDimensions({pixels_w,pixels_h});context->SetDensityIndependentPixelRatio(ui_density);input.set_scale(pixel_ratio);
@@ -4454,6 +4472,7 @@ void sync() {
     for(auto& choice:request.choices)for(auto& person:choice.names){shown(names::Field::Name,person[0]);shown(names::Field::Surname,person[1]);}
     for(auto& person:request.names){shown(names::Field::Name,person[0]);shown(names::Field::Surname,person[1]);shown(names::Field::Nick,person[2]);}
     name_page->set_hd(presentation::image_mode.current()==1);
+    {const auto a=page_area();name_page->set_area(a.x,a.y,a.w,a.h);}
     // Catalog owns all labels. No duplicate translation table in the frontend.
     auto labels=language->ui_labels();
     if(pad_mode)for(auto& [key,text]:labels)if(auto pad=labels.find(key+"_pad");pad!=labels.end())text=pad->second;

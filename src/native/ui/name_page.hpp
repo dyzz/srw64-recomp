@@ -24,7 +24,9 @@ class NamePage final : public Rml::EventListener {
     names::Request request;
     std::map<std::string,std::string> labels;
     std::string locale;
-    int page_w{},page_h{};   // the window in dp; the layout is sized to it
+    int page_w{},page_h{};   // the page's room in dp; the layout is sized to it
+    float area_x{},area_y{},area_w{},area_h{};   // that room in screen pixels (set_area)
+    int inset_x{},inset_y{};
     bool waiting{}, hd{}, art_changed{};
     void build();
     std::string label(const std::string& key) const;
@@ -33,6 +35,8 @@ public:
     NamePage(Rml::Context& context, NameActions actions);
     ~NamePage();
     void set_hd(bool value) { if(hd!=value){hd=value;art_changed=true;} }
+    // The pages' room in screen pixels (frontend.cpp page_area: the 4:3 picture, or the window).
+    void set_area(float x, float y, float w, float h) { area_x=x; area_y=y; area_w=w; area_h=h; }
     void sync(const names::Request& next, const std::map<std::string,std::string>& next_labels, const std::string& next_locale);
     void ProcessEvent(Rml::Event& event) override;
     bool event(SDL_Event& event);

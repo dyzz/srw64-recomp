@@ -10,6 +10,7 @@
 #include "update_check.hpp"
 #include "cheats.hpp"
 #include "post_filter.hpp"
+#include "game_frame.hpp"
 #include "native_name_entry.hpp"
 #include "link_page.hpp"
 #include "battle_page.hpp"
@@ -327,6 +328,7 @@ int main(int argc,char** argv){try{
             srw64::settings::battle_value=srw64::settings::battle_ui_from(f.value("battle_ui","native"));
             const auto size=f.value("ui_size","largest");
             srw64::settings::size_value=size=="standard"?srw64::settings::UiSize::Standard:size=="large"?srw64::settings::UiSize::Large:srw64::settings::UiSize::Largest;
+            srw64::settings::wide=f.value("aspect","auto")!="4:3";srw64::frame::wide=srw64::settings::wide;
             srw64::settings_window::close();frame({});
             if(f.contains("settings")){srw64::settings::page=f.at("settings");srw64::settings_window::open();}
             for(int i=0;i<4;++i)frame({});

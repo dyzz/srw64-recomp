@@ -21,7 +21,7 @@
   - 小于 1.2 dp 的差值当作取整误差，不报；重叠 3 dp 以内是字形外沿相碰，也不报。
 - [`run_audit.py`](../../tools/recomp/ui_audit/run_audit.py) 用主机构建里 `frontend.cpp` 那条编译命令的参数编译，源文件或头文件更新过才重编。夹具来自 [`states.json`](../../tools/recomp/ui_audit/states.json)：9-23 各场间页检查、9-24 标题菜单检查、9-28 战前确认检查录下的页面状态（图片路径已去掉，不影响文字排版）。每个字符串经 ROM 文字表对回记录号，再换成中、英、日三种文字；改造画面和曲目表没有录下的状态，照 `upgrade_page.cpp`、`title_page.cpp` 的字段拼出来。另加最坏情况：按实际字体量出来最宽的 7 个机体名、驾驶员名、武器列表名、关卡名，4 位和 5 位伤害、99999 HP。
 - 战斗鉴赏：夹具带 `clicks`（按 id 点控件，和调试接口的 `srw64_click` 同一条路），从设置「一般」页点 `viewer-open` 打开整页，再分别点开机体、机师、武器、反击武器、双方结果、场景、BGM 各个框。图鉴数据（`library::contents()`）由 `run_audit.py` 按 `library.cpp` 的字段拼：机体 0（`battle_viewer_pilots.inc` 里可乘人数最多，13 人）对机体 28，名字、型号、作品名、技能、武器名都取最宽的；曲目取 ROM 记录 232–280。场景缩略图、头像不画（替身返回空）。
-- 尺寸：`deck` 1280×800 点、界面大小「特大」（Steam Deck 默认，也是定字号的基准）；`deck-standard` 同窗口「标准」；`wide` 1920×1080；`smallest` 960×720。截图和 `audit.json` 在 `build/recomp/ui-audit/<尺寸>/`。
+- 尺寸：`deck` 1280×800 点、界面大小「特大」（Steam Deck 默认，也是定字号的基准）；`deck-standard` 同窗口「标准」；`wide` 1920×1080；`smallest` 960×720；`deck-4:3` 同 `deck` 但画面比例 4:3（页面只在 1067×800 的画面里排版，目录名 `deck-4x3`）。截图和 `audit.json` 在 `build/recomp/ui-audit/<尺寸>/`。
 - 有问题时退出码为 1。
 - 缩字报告：`fit` 类把放不下的文字缩小时会在元素上记下原字号（`data-fit-from`），审计把每个缩过的元素连同原字号、现字号、比例和文字写进 `audit.json` 的 `shrunk`，`run_audit.py` 按比例从小到大列出低于 `--shrunk`（默认 0.85）的那些。缩字不算失败——`fit` 就是用来缩的——但缩得最狠的几条说明哪里的字号定大了、哪个栏定窄了，改字号前先看它。`--shrunk 1` 列出全部，`--shrunk 0` 不列。
 
