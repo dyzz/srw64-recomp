@@ -14,7 +14,9 @@
 #ifdef __APPLE__
 #include "plume_metal.h"
 #endif
-#ifndef _WIN32
+#ifdef _WIN32
+#include "plume_d3d12.h"
+#else
 #include <dlfcn.h>
 #endif
 
@@ -23,13 +25,25 @@ namespace {
 
 // The few librashader entry points we call (librashader.h, ABI 2), by name at run time.
 // Handles are pointers; Metal objects pass as their Objective-C pointers, and the Vulkan
-// structs below match libra_device_vk_t and libra_image_vk_t, which go by value.
+// and D3D12 structs below match libra_device_vk_t, libra_image_vk_t and libra_image_d3d12_t,
+// which go by value.
 using Error = void*;
 using Preset = void*;
 using Chain = void*;
 struct Viewport {float x, y; uint32_t width, height;};
 struct DeviceVk {VkPhysicalDevice physical; VkInstance instance; VkDevice device; VkQueue queue; PFN_vkGetInstanceProcAddr entry;};
 struct ImageVk {VkImage handle; VkFormat format; uint32_t width, height;};
+#ifdef _WIN32
+struct ImageD3D12 {
+    int32_t type;   // LIBRA_D3D12_IMAGE_TYPE_RESOURCE: the chain makes its own views
+    union {
+        ID3D12Resource* resource;
+        struct {D3D12_CPU_DESCRIPTOR_HANDLE descriptor; ID3D12Resource* resource;} source;
+        struct {D3D12_CPU_DESCRIPTOR_HANDLE descriptor; DXGI_FORMAT format; uint32_t width, height;} output;
+    } handle;
+};
+static_assert(sizeof(ImageD3D12) == 32, "libra_image_d3d12_t");
+#endif
 struct Api {
     void* library = nullptr;
     Error (*preset_create)(const char*, Preset*) = nullptr;
@@ -39,6 +53,11 @@ struct Api {
     Error (*vk_create_deferred)(Preset*, DeviceVk, VkCommandBuffer, const void* options, Chain*) = nullptr;
     Error (*vk_frame)(Chain*, VkCommandBuffer, size_t frame, ImageVk image, ImageVk output, const Viewport*, const float* mvp, const void* options) = nullptr;
     Error (*vk_free)(Chain*) = nullptr;
+#ifdef _WIN32
+    Error (*d3d12_create)(Preset*, ID3D12Device*, const void* options, Chain*) = nullptr;
+    Error (*d3d12_frame)(Chain*, ID3D12GraphicsCommandList*, size_t frame, ImageD3D12 image, ImageD3D12 output, const Viewport*, const float* mvp, const void* options) = nullptr;
+    Error (*d3d12_free)(Chain*) = nullptr;
+#endif
     int32_t (*error_write)(Error, char**) = nullptr;
     int32_t (*error_free_string)(char**) = nullptr;
     int32_t (*error_free)(Error*) = nullptr;
@@ -75,6 +94,10 @@ struct {
     plume::VulkanCommandQueue* queue = nullptr;
     DeviceVk handles{};
 } vulkan;
+plume::RenderDevice* rhi_device = nullptr;   // Vulkan or D3D12: where our textures are made
+#ifdef _WIN32
+ID3D12Device* d3d12_device = nullptr;
+#endif
 Chain chain = nullptr, downscale = nullptr;
 std::string wanted, drawn;        // the preset asked for and the one in `chain`
 struct Compiled {Chain chain = nullptr; std::string path, error; bool done = false;};
@@ -95,6 +118,9 @@ std::string take(Error error) {
 void free_chain(Chain& handle) {
     if (!handle) return;
     if (backend == Backend::metal) api.mtl_free(&handle);
+#ifdef _WIN32
+    else if (backend == Backend::d3d12) api.d3d12_free(&handle);
+#endif
     else api.vk_free(&handle);
     handle = nullptr;
 }
@@ -147,27 +173,49 @@ std::string compile(const std::string& path, Chain& out) {
     Preset preset = nullptr;
     if (auto error = take(api.preset_create(path.c_str(), &preset)); !error.empty()) return error;
     if (backend == Backend::metal) return take(api.mtl_create(&preset, metal_queue, nullptr, &out));
+#ifdef _WIN32
+    // D3D12 queues are free-threaded: the chain uploads on a queue of its own and waits.
+    if (backend == Backend::d3d12) return take(api.d3d12_create(&preset, d3d12_device, nullptr, &out));
+#endif
     return create_vulkan(preset, out);
 }
 
+const char* backend_name() {
+    return backend == Backend::metal ? "metal" : backend == Backend::d3d12 ? "d3d12" : "vulkan";
+}
+#ifdef _WIN32
+using Library = HMODULE;
+Library open_library(const std::string& path) {return LoadLibraryW(std::filesystem::path(reinterpret_cast<const char8_t*>(path.c_str())).c_str());}
+void* find_symbol(Library library, const char* name) {return reinterpret_cast<void*>(GetProcAddress(library, name));}
+void close_library(Library library) {FreeLibrary(library);}
+#else
+using Library = void*;
+Library open_library(const std::string& path) {return dlopen(path.c_str(), RTLD_NOW | RTLD_LOCAL);}
+void* find_symbol(Library library, const char* name) {return dlsym(library, name);}
+void close_library(Library library) {dlclose(library);}
+#endif
+
 bool load_library() {
-#ifndef _WIN32
     std::vector<std::string> candidates;
     if (const char* path = std::getenv("SRW64_LIBRASHADER"); path && *path) candidates.push_back(path);
     if (char* base = SDL_GetBasePath()) {
         const std::string dir(base);
         SDL_free(base);
+#ifdef _WIN32
+        candidates.push_back(dir + "librashader.dll");                // beside Marchwind64.exe
+#else
         candidates.push_back(dir + "librashader.dylib");
         candidates.push_back(dir + "../MacOS/librashader.dylib");   // the app bundle (package_macos.py)
         candidates.push_back(dir + "../Frameworks/librashader.dylib");
         candidates.push_back(dir + "librashader.so");
         candidates.push_back(dir + "lib/librashader.so");            // the Linux tarball (build_linux.py)
+#endif
     }
     for (const auto& path : candidates) {
-        void* library = dlopen(path.c_str(), RTLD_NOW | RTLD_LOCAL);
+        Library library = open_library(path);
         if (!library) continue;
         const auto symbol = [&](auto& function, const char* name) {
-            function = reinterpret_cast<std::remove_reference_t<decltype(function)>>(dlsym(library, name));
+            function = reinterpret_cast<std::remove_reference_t<decltype(function)>>(find_symbol(library, name));
             return function != nullptr;
         };
         bool complete = symbol(api.preset_create, "libra_preset_create") &&
@@ -176,19 +224,23 @@ bool load_library() {
         if (backend == Backend::metal)
             complete = complete && symbol(api.mtl_create, "libra_mtl_filter_chain_create") &&
                 symbol(api.mtl_frame, "libra_mtl_filter_chain_frame") && symbol(api.mtl_free, "libra_mtl_filter_chain_free");
+#ifdef _WIN32
+        else if (backend == Backend::d3d12)
+            complete = complete && symbol(api.d3d12_create, "libra_d3d12_filter_chain_create") &&
+                symbol(api.d3d12_frame, "libra_d3d12_filter_chain_frame") && symbol(api.d3d12_free, "libra_d3d12_filter_chain_free");
+#endif
         else
             complete = complete && symbol(api.vk_create_deferred, "libra_vk_filter_chain_create_deferred") &&
                 symbol(api.vk_frame, "libra_vk_filter_chain_frame") && symbol(api.vk_free, "libra_vk_filter_chain_free");
         if (complete && api.abi_version() == kAbi) {
-            api.library = library;
-            fprintf(stderr, "SRW64_FILTER library=%s backend=%s\n", path.c_str(), backend == Backend::metal ? "metal" : "vulkan");
+            api.library = reinterpret_cast<void*>(library);
+            fprintf(stderr, "SRW64_FILTER library=%s backend=%s\n", path.c_str(), backend_name());
             return true;
         }
         fprintf(stderr, "SRW64_FILTER rejected=%s complete=%d\n", path.c_str(), int(complete));
-        dlclose(library);
+        close_library(library);
         api = {};
     }
-#endif
     return false;
 }
 
@@ -316,19 +368,26 @@ void apply_metal(plume::RenderCommandList* list, plume::RenderFramebuffer* frame
 }
 #endif
 
-std::unique_ptr<plume::RenderTexture> vulkan_full, vulkan_small;
+// Vulkan and D3D12 share the copy through plume; only the chain's calls differ.
+std::unique_ptr<plume::RenderTexture> rhi_full, rhi_small;
+const plume::RenderTextureDesc& desc_of(plume::RenderTexture* texture) {
+#ifdef _WIN32
+    if (backend == Backend::d3d12) return static_cast<plume::D3D12Texture*>(texture)->desc;
+#endif
+    return static_cast<plume::VulkanTexture*>(texture)->desc;
+}
 plume::RenderTexture* ensure(std::unique_ptr<plume::RenderTexture>& texture, unsigned w, unsigned h, plume::RenderFormat format) {
     if (texture) {
-        const auto& desc = static_cast<plume::VulkanTexture*>(texture.get())->desc;
+        const auto& desc = desc_of(texture.get());
         if (desc.width == w && desc.height == h && desc.format == format) return texture.get();
     }
-    texture = vulkan.device->createTexture(plume::RenderTextureDesc::ColorTarget(w, h, format));
+    texture = rhi_device->createTexture(plume::RenderTextureDesc::ColorTarget(w, h, format));
     return texture.get();
 }
-// The swapchain's images carry no format of their own in plume; RT64 makes them B8G8R8A8
-// (R8G8B8A8 on Android, rt64_android_patches.py).
+// The swapchain's images carry no format of their own in plume's Vulkan; RT64 makes them
+// B8G8R8A8 (R8G8B8A8 on Android, rt64_android_patches.py). D3D12's keep theirs.
 plume::RenderFormat format_of(plume::RenderTexture* texture) {
-    const auto format = static_cast<plume::VulkanTexture*>(texture)->desc.format;
+    const auto format = desc_of(texture).format;
     if (format != plume::RenderFormat::UNKNOWN) return format;
 #ifdef __ANDROID__
     return plume::RenderFormat::R8G8B8A8_UNORM;
@@ -343,14 +402,37 @@ ImageVk image_of(plume::RenderTexture* texture) {
         format = format_of(texture) == plume::RenderFormat::R8G8B8A8_UNORM ? VK_FORMAT_R8G8B8A8_UNORM : VK_FORMAT_B8G8R8A8_UNORM;
     return {vk->vk, format, uint32_t(vk->desc.width), uint32_t(vk->desc.height)};
 }
-void apply_vulkan(plume::RenderCommandList* list, int x, int y, int w, int h, float picture_width) {
+// One pass of a chain from `source` (SHADER_READ) into `output` (COLOR_WRITE).
+std::string run_chain(plume::RenderCommandList* list, Chain& handle, plume::RenderTexture* source,
+                      plume::RenderTexture* output, const Viewport& viewport) {
+#ifdef _WIN32
+    if (backend == Backend::d3d12) {
+        auto* commands = static_cast<plume::D3D12CommandList*>(list);
+        ImageD3D12 in{}, out{};
+        in.handle.resource = static_cast<plume::D3D12Texture*>(source)->d3d;
+        out.handle.resource = static_cast<plume::D3D12Texture*>(output)->d3d;
+        return take(api.d3d12_frame(&handle, commands->d3d, frames, in, out, &viewport, nullptr, nullptr));
+    }
+#endif
+    auto* commands = static_cast<plume::VulkanCommandList*>(list);
+    return take(api.vk_frame(&handle, commands->vk, frames, image_of(source), image_of(output), &viewport, nullptr, nullptr));
+}
+void apply_rhi(plume::RenderCommandList* list, int x, int y, int w, int h, float picture_width) {
     using namespace plume;
-    auto* commands = static_cast<VulkanCommandList*>(list);
-    if (!vulkan.device) {
+#ifdef _WIN32
+    if (backend == Backend::d3d12 && !rhi_device) {
+        auto* commands = static_cast<D3D12CommandList*>(list);
+        rhi_device = commands->queue->device;
+        d3d12_device = commands->queue->device->d3d;
+    }
+#endif
+    if (backend == Backend::vulkan && !vulkan.device) {
+        auto* commands = static_cast<VulkanCommandList*>(list);
         vulkan.device = commands->queue->device;
         vulkan.queue = commands->queue;
         vulkan.handles = {vulkan.device->physicalDevice, vulkan.device->renderInterface->instance, vulkan.device->vk,
                           vulkan.queue->queue->vk, vkGetInstanceProcAddr};
+        rhi_device = vulkan.device;
     }
     bind_once();
     follow_settings();
@@ -360,12 +442,12 @@ void apply_vulkan(plume::RenderCommandList* list, int x, int y, int w, int h, fl
     // RT64's swapchain image, in COLOR_WRITE (rt64_present_queue.cpp, as the capture uses it).
     RenderTexture* target = RT64::GetRenderHookSwapChainTexture();
     if (!target) return;
-    const auto& target_desc = static_cast<VulkanTexture*>(target)->desc;
+    const auto& target_desc = desc_of(target);
     w = std::min<int>(w, int(target_desc.width) - x);
     h = std::min<int>(h, int(target_desc.height) - y);
     if (w <= 0 || h <= 0) return;
-    commands->endActiveRenderPass();
-    RenderTexture* copy = ensure(vulkan_full, unsigned(w), unsigned(h), format_of(target));
+    if (backend == Backend::vulkan) static_cast<VulkanCommandList*>(list)->endActiveRenderPass();
+    RenderTexture* copy = ensure(rhi_full, unsigned(w), unsigned(h), format_of(target));
     list->barriers(RenderBarrierStage::COPY, RenderTextureBarrier(target, RenderTextureLayout::COPY_SOURCE));
     list->barriers(RenderBarrierStage::COPY, RenderTextureBarrier(copy, RenderTextureLayout::COPY_DEST));
     const RenderBox box(x, y, x + w, y + h);
@@ -375,18 +457,30 @@ void apply_vulkan(plume::RenderCommandList* list, int x, int y, int w, int h, fl
     RenderTexture* source = copy;
     ++frames;
     if (unsigned sw, sh; reduced_size(picture_width, h, sw, sh)) {
-        RenderTexture* reduced = ensure(vulkan_small, sw, sh, format_of(target));
+        RenderTexture* reduced = ensure(rhi_small, sw, sh, format_of(target));
         list->barriers(RenderBarrierStage::GRAPHICS, RenderTextureBarrier(reduced, RenderTextureLayout::COLOR_WRITE));
-        const Viewport whole{0, 0, sw, sh};
-        if (take(api.vk_frame(&downscale, commands->vk, frames, image_of(copy), image_of(reduced), &whole, nullptr, nullptr)).empty()) {
+        if (run_chain(list, downscale, copy, reduced, Viewport{0, 0, sw, sh}).empty()) {
             list->barriers(RenderBarrierStage::GRAPHICS, RenderTextureBarrier(reduced, RenderTextureLayout::SHADER_READ));
             source = reduced;
         }
     }
     const Viewport out{float(x), float(y), uint32_t(w), uint32_t(h)};
-    if (auto error = take(api.vk_frame(&current, commands->vk, frames, image_of(source), image_of(target), &out, nullptr, nullptr)); !error.empty())
-        dropped(error);
-    // librashader bound its own pipelines and descriptor sets; plume binds its own again.
+    if (auto error = run_chain(list, current, source, target, out); !error.empty()) dropped(error);
+    // librashader bound its own pipelines, descriptor sets (and on D3D12 its own descriptor
+    // heaps); plume binds its own again. The target stays in COLOR_WRITE (RENDER_TARGET).
+#ifdef _WIN32
+    if (backend == Backend::d3d12) {
+        auto* commands = static_cast<D3D12CommandList*>(list);
+        commands->notifyDescriptorHeapWasChangedExternally();
+        commands->activeGraphicsPipelineLayout = nullptr;
+        commands->activeComputePipelineLayout = nullptr;
+        commands->activeGraphicsPipeline = nullptr;
+        commands->activeTopology = D3D_PRIMITIVE_TOPOLOGY_UNDEFINED;
+        commands->targetFramebuffer = nullptr;
+        return;
+    }
+#endif
+    auto* commands = static_cast<VulkanCommandList*>(list);
     commands->activeGraphicsPipelineLayout = nullptr;
     commands->activeComputePipelineLayout = nullptr;
     commands->targetFramebuffer = nullptr;
@@ -427,7 +521,7 @@ void apply(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer
     if (backend == Backend::metal) {apply_metal(list, framebuffer, x, y, w, h, picture_width); return;}
 #endif
     (void)framebuffer;
-    if (backend == Backend::vulkan) apply_vulkan(list, x, y, w, h, picture_width);
+    if (backend == Backend::vulkan || backend == Backend::d3d12) apply_rhi(list, x, y, w, h, picture_width);
 }
 
 void shutdown() {
@@ -444,9 +538,13 @@ void shutdown() {
     if (metal_small) metal_small->release();
     metal_full = metal_small = nullptr;
 #endif
-    vulkan_full.reset();
-    vulkan_small.reset();
+    rhi_full.reset();
+    rhi_small.reset();
     vulkan = {};
+    rhi_device = nullptr;
+#ifdef _WIN32
+    d3d12_device = nullptr;
+#endif
     metal_queue = nullptr;
     bound = false;
 }

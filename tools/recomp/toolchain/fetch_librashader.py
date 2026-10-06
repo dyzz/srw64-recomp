@@ -2,13 +2,13 @@
 """Fetch or build librashader, which runs RetroArch slang shader presets (docs/native/bezels-and-filters.md).
 
 The host loads it at run time (post_filter.cpp), so a build without it still runs and
-the settings say the filters are unavailable. macOS takes the project's published
-release (Metal), checked by hash. Linux and the Steam Deck have no published build: there
+the settings say the filters are unavailable. macOS (Metal) and Windows (D3D12 and Vulkan)
+take the project's published release, checked by hash. Linux and the Steam Deck have no published build: there
 it is compiled from the pinned commit with Cargo (the Linux container has Rust,
 tools/release/linux/Dockerfile), with the Vulkan runtime. --from-source does the same on
 any machine, e.g. a Vulkan build on a Mac to try the MoltenVK path. Either way the
 library, its header and its licence (MPL 2.0) land in build/recomp/thirdparty/librashader/
-<system> (darwin, linux) unless --dest says otherwise."""
+<system> (darwin, linux, windows) unless --dest says otherwise."""
 from __future__ import annotations
 
 import argparse
@@ -36,12 +36,14 @@ RELEASES = {
                           "49808004a4904f6a99e0231092dcfdfe52b7b61f68430a4c9f1e165749c4c90e"),
     ("Darwin", "x86_64"): ("librashader-x86_64-macos-v0.12.0-optimized.zip",
                            "8b2a50cefacf4073e8fa4757bec30242a788068c4096a580d94430688c184767"),
+    ("Windows", "AMD64"): ("librashader-x86_64-windows-v0.12.0-optimized.zip",
+                           "521fe0f364bfa705883f9e99fb1733a3a24f0f403bcc5591b6b78f6cff289183"),
 }
 LICENSE = f"https://raw.githubusercontent.com/SnowflakePowered/librashader/librashader-v{VERSION}/LICENSE.md"
-LIBRARY = {"Darwin": "librashader.dylib", "Linux": "librashader.so"}
-BUILT = {"Darwin": "liblibrashader_capi.dylib", "Linux": "liblibrashader_capi.so"}
-# The runtimes RT64 can need here: Vulkan everywhere, Metal on a Mac.
-FEATURES = {"Darwin": "runtime-vulkan runtime-metal", "Linux": "runtime-vulkan"}
+LIBRARY = {"Darwin": "librashader.dylib", "Linux": "librashader.so", "Windows": "librashader.dll"}
+BUILT = {"Darwin": "liblibrashader_capi.dylib", "Linux": "liblibrashader_capi.so", "Windows": "librashader_capi.dll"}
+# The runtimes RT64 can need here: Vulkan everywhere, Metal on a Mac, D3D12 on Windows.
+FEATURES = {"Darwin": "runtime-vulkan runtime-metal", "Linux": "runtime-vulkan", "Windows": "runtime-vulkan runtime-d3d12"}
 
 
 def fetch(url: str) -> bytes:

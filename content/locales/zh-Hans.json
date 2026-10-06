@@ -116,7 +116,7 @@
     "settings_browse_empty": "这里没有可用的文件。",
     "settings_filter_loading": "正在编译滤镜……",
     "settings_filter_error": "滤镜载入失败：",
-    "settings_filter_unavailable": "这里不能用滤镜：缺少 librashader，或这个平台（Windows、安卓）还不支持。",
+    "settings_filter_unavailable": "这里不能用滤镜：缺少 librashader，或这个平台（安卓）还不支持。",
     "settings_window": "显示方式",
     "settings_window_windowed": "窗口",
     "settings_window_fullscreen": "全屏",

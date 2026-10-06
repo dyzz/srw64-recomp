@@ -116,7 +116,7 @@
     "settings_browse_empty": "使えるファイルがありません。",
     "settings_filter_loading": "フィルターをコンパイル中……",
     "settings_filter_error": "フィルターを読み込めません：",
-    "settings_filter_unavailable": "ここではフィルターを使えません：librashader がないか、このプラットフォーム（Windows、Android）が未対応です。",
+    "settings_filter_unavailable": "ここではフィルターを使えません：librashader がないか、このプラットフォーム（Android）が未対応です。",
     "settings_window": "表示モード",
     "settings_window_windowed": "ウインドウ",
     "settings_window_fullscreen": "フルスクリーン",

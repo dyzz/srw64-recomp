@@ -177,6 +177,16 @@ jobs:
           Copy-Item -Recurse build/fonts "$out/fonts"
           Copy-Item -Recurse content/dialogue "$out/dialogue"
           Copy-Item tools/release/windows/Marchwind64.cmd $out
+          # librashader (D3D12 and Vulkan) and the built-in RetroArch filters (docs/native/bezels-and-filters.md).
+          .venv/Scripts/python.exe tools/recomp/toolchain/fetch_librashader.py
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          .venv/Scripts/python.exe tools/content/fetch_filters.py
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          Copy-Item build/recomp/thirdparty/librashader/windows/librashader.dll $out
+          Copy-Item -Recurse build/filters "$out/filters"
+          Remove-Item -Force -ErrorAction SilentlyContinue "$out/filters/.commit"
+          New-Item -ItemType Directory -Force "$out/licenses" | Out-Null
+          Copy-Item build/recomp/thirdparty/librashader/windows/LICENSE.md "$out/licenses/librashader-LICENSE.md"
           # The VC++ runtime (redistributable with the program), so no separate installer is needed.
           Copy-Item "$env:VCToolsRedistDir/x64/Microsoft.VC143.CRT/*.dll" $out
           dumpbin /nologo /dependents "$out/Marchwind64.exe"

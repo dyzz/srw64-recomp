@@ -116,7 +116,7 @@
     "settings_browse_empty": "Nothing usable here.",
     "settings_filter_loading": "Compiling the filter…",
     "settings_filter_error": "The filter did not load:",
-    "settings_filter_unavailable": "Filters are not available here: librashader is missing, or this platform (Windows, Android) is not supported yet.",
+    "settings_filter_unavailable": "Filters are not available here: librashader is missing, or this platform (Android) is not supported yet.",
     "settings_window": "Display",
     "settings_window_windowed": "Window",
     "settings_window_fullscreen": "Full Screen",

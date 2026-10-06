@@ -332,7 +332,8 @@ public:
                 const auto format = rhi->getCapabilities().shaderFormat;
                 using srw64::post_filter::Backend;
                 srw64::post_filter::init(format == plume::RenderShaderFormat::METAL ? Backend::metal :
-                                         format == plume::RenderShaderFormat::SPIRV ? Backend::vulkan : Backend::none, capture_directory);
+                                         format == plume::RenderShaderFormat::SPIRV ? Backend::vulkan :
+                                         format == plume::RenderShaderFormat::DXIL ? Backend::d3d12 : Backend::none, capture_directory);
             }
             srw64::marker::gpu_init();
             srw64::hdmap::gpu_init();
