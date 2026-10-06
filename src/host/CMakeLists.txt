@@ -161,8 +161,6 @@ if(SRW64_ENABLE_RT64)
     if(WIN32)
         target_link_libraries(srw64-gfx-host PRIVATE ws2_32)
     endif()
-    # Events and a once-a-second heartbeat for freezes found later (run_log.hpp).
-    target_sources(srw64-gfx-host PRIVATE run_log.cpp)
     # Banners and settings share the SDL/RmlUi surface.
     # Link Battler series page in front of the リンク screen.
     target_sources(srw64-gfx-host PRIVATE link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp)
