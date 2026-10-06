@@ -173,8 +173,6 @@ if(SRW64_ENABLE_RT64)
     # The HD layers draw through Plume (native_gpu.cpp, shaders in src/host/shaders).
     target_sources(${SRW64_HOST_TARGET} PRIVATE native_gpu.cpp native_map.cpp native_background.cpp native_marker.cpp
         native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp)
-    srw64_add_native_gpu_shaders(${SRW64_HOST_TARGET} "${SRW64_RT64}")
-    if(APPLE)
     # RetroArch shader presets through librashader, loaded at run time (post_filter.hpp);
     # tools/recomp/toolchain/fetch_librashader.py puts the library beside the host.
     target_sources(${SRW64_HOST_TARGET} PRIVATE post_filter.cpp)
@@ -197,6 +195,8 @@ if(SRW64_ENABLE_RT64)
         "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_BINARY_DIR}" "${SRW64_ROOT}/src/native"
         "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}"
         "${SRW64_RUNTIME}/librecomp/include/librecomp" "${SRW64_RUNTIME}/thirdparty/sse2neon"
+    srw64_add_native_gpu_shaders(${SRW64_HOST_TARGET} "${SRW64_RT64}")
+    if(APPLE)
         "${SRW64_RT64}/src" "${SRW64_RT64}/src/contrib" "${SRW64_RT64}/src/contrib/hlslpp/include"
         "${SRW64_RT64}/src/contrib/dxc/inc" "${SRW64_RT64}/src/contrib/plume"
         "${SRW64_RT64}/src/contrib/plume/contrib/metal-cpp"

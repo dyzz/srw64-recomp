@@ -988,6 +988,28 @@ std::string saves_page() {
         std::string slots;
         if(file.value("unknown",false))slots="<span class='set-note'>"+label("settings_save_import_unknown")+"</span>";
         else for(unsigned i=0;i<file.at("slots").size();++i) {
+// menu is up.
+bool cheat_levels_open=false;
+std::string cheats_page() {
+    std::string body="<p>"+label("cheats_note")+"</p>";
+    for(const auto& entry:cheats::catalog)
+        body+=button("cheat:"+std::string(entry.id),"<span class='set-name'>"+label("cheat_"+std::string(entry.id))+"</span><span class='switch'><span></span></span>",settings::cheats()&entry.bit,false,"set-toggle nav");
+    body+=settings_row("cheat_levels",button("cheat-levels",label(cheat_levels_open?"cheat_levels_close":"cheat_levels_open"),cheat_levels_open));
+    if(!cheat_levels_open)return body;
+    const auto pilots=cheats::pilots();
+    if(pilots.empty())return body+"<p>"+label("cheat_levels_away")+"</p>";
+    for(const auto& pilot:pilots) {
+        std::string steps;
+        unsigned slot=0;   // ids stay unique where two steps reach the same level
+        const auto step=[&](int to,const std::string& text){
+            const unsigned level=unsigned(std::clamp(to,1,99));
+            steps+=button("cheat-level:"+std::to_string(pilot.index)+":"+std::to_string(level)+":"+std::to_string(slot++),text,false,level==pilot.level);
+        };
+        step(1,"1");step(int(pilot.level)-10,"-10");step(int(pilot.level)-1,"-1");step(int(pilot.level)+1,"+1");step(int(pilot.level)+10,"+10");step(99,"99");
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(pilot.name)+" <span class='set-note'>Lv "+std::to_string(pilot.level)+"</span></div><div class='set-seg'>"+steps+"</div></div></div>";
+    }
+    return body;
+}
             const auto& slot=file.at("slots")[i];
             if(!slot.value("used",false))continue;
             const auto id="save-import:"+std::to_string(i)+":"+name;
@@ -1090,28 +1112,6 @@ void bezel_sync() {
         }
     }
     if(bezel_doc)bezel_doc->PushToBack();
-}
-// menu is up.
-bool cheat_levels_open=false;
-std::string cheats_page() {
-    std::string body="<p>"+label("cheats_note")+"</p>";
-    for(const auto& entry:cheats::catalog)
-        body+=button("cheat:"+std::string(entry.id),"<span class='set-name'>"+label("cheat_"+std::string(entry.id))+"</span><span class='switch'><span></span></span>",settings::cheats()&entry.bit,false,"set-toggle nav");
-    body+=settings_row("cheat_levels",button("cheat-levels",label(cheat_levels_open?"cheat_levels_close":"cheat_levels_open"),cheat_levels_open));
-    if(!cheat_levels_open)return body;
-    const auto pilots=cheats::pilots();
-    if(pilots.empty())return body+"<p>"+label("cheat_levels_away")+"</p>";
-    for(const auto& pilot:pilots) {
-        std::string steps;
-        unsigned slot=0;   // ids stay unique where two steps reach the same level
-        const auto step=[&](int to,const std::string& text){
-            const unsigned level=unsigned(std::clamp(to,1,99));
-            steps+=button("cheat-level:"+std::to_string(pilot.index)+":"+std::to_string(level)+":"+std::to_string(slot++),text,false,level==pilot.level);
-        };
-        step(1,"1");step(int(pilot.level)-10,"-10");step(int(pilot.level)-1,"-1");step(int(pilot.level)+1,"+1");step(int(pilot.level)+10,"+10");step(99,"99");
-        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(pilot.name)+" <span class='set-note'>Lv "+std::to_string(pilot.level)+"</span></div><div class='set-seg'>"+steps+"</div></div></div>";
-    }
-    return body;
 }
 std::string cheats_stamp() {
     std::string stamp=std::to_string(settings::cheats())+(cheat_levels_open?"+":"-");
@@ -3793,20 +3793,6 @@ void choose(const std::string& id) {
     }
     if(id.starts_with("save") && save_request.value("visible",false) && !settings_open) {
         const auto serial=save_request.at("serial").get<uint64_t>();const auto screen=save_request.value("screen",std::string());
-        if(id=="bezel-off"){settings::set_bezel("");browse_kind.clear();}
-        if(id=="filter-off"){settings::set_filter("");browse_kind.clear();}
-        if(id.starts_with("filter-scale:"))settings::set_filter_scale(unsigned(std::stoul(id.substr(13))));
-        if(id.starts_with("browse:")){const auto kind=id.substr(7);browse_kind=browse_kind==kind?std::string():kind;browse_dir.clear();}
-        if(id.starts_with("browse-dir:")){browse_dir=std::filesystem::path(id.substr(11));std::error_code error;std::filesystem::create_directories(browse_dir,error);}
-        if(id=="browse-up") {
-            const auto roots=browse_kind=="bezel"?settings::bezel_roots():settings::filter_roots();
-            browse_dir=std::find(roots.begin(),roots.end(),browse_dir)!=roots.end()?std::filesystem::path():browse_dir.parent_path();
-        }
-        if(id.starts_with("browse-pick:")) {
-            const auto path=id.substr(12);
-            if(browse_kind=="bezel")settings::set_bezel(path);else settings::set_filter(path);
-            browse_kind.clear();
-        }
         const unsigned mode=save_request.value("mode",0u);
         if(screen=="choice" && save_request.value("waiting",false))return;
         if(mode==2)return;
@@ -3923,6 +3909,20 @@ void choose(const std::string& id) {
 // it, B goes back, L opens the weapon list, R the spirits, C-down toggles the battle
 // animation, C-left swaps 回避 and 防御.
 void battle_buttons(uint32_t pressed,bool tab) {
+        if(id=="bezel-off"){settings::set_bezel("");browse_kind.clear();}
+        if(id=="filter-off"){settings::set_filter("");browse_kind.clear();}
+        if(id.starts_with("filter-scale:"))settings::set_filter_scale(unsigned(std::stoul(id.substr(13))));
+        if(id.starts_with("browse:")){const auto kind=id.substr(7);browse_kind=browse_kind==kind?std::string():kind;browse_dir.clear();}
+        if(id.starts_with("browse-dir:")){browse_dir=std::filesystem::path(id.substr(11));std::error_code error;std::filesystem::create_directories(browse_dir,error);}
+        if(id=="browse-up") {
+            const auto roots=browse_kind=="bezel"?settings::bezel_roots():settings::filter_roots();
+            browse_dir=std::find(roots.begin(),roots.end(),browse_dir)!=roots.end()?std::filesystem::path():browse_dir.parent_path();
+        }
+        if(id.starts_with("browse-pick:")) {
+            const auto path=id.substr(12);
+            if(browse_kind=="bezel")settings::set_bezel(path);else settings::set_filter(path);
+            browse_kind.clear();
+        }
     if(!battle_doc || !battle_request.value("visible",false) || settings_open)return;
     if(battle_request.value("style",std::string())=="hd" && !touch_battle_layout()){battle_hd_buttons(pressed);return;}
     const bool spirits=battle_request.value("spirit_menu",false);

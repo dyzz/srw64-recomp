@@ -40,9 +40,9 @@
 #include "save_page.hpp"
 #include "title_page.hpp"
 #include "native_dialogue.hpp"
-#endif
 #include "post_filter.hpp"
 #include "ultramodern/ultramodern.hpp"
+#endif
 #include "librecomp/game.hpp"
 #include "rt64_render_hooks.h"
 #ifdef __APPLE__
