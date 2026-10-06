@@ -77,7 +77,7 @@ def main() -> int:
                                            "src/hle/rt64_framebuffer_manager.cpp", "src/hle/rt64_workload_queue.cpp",
                                            "src/hle/rt64_rdp.cpp"}
                                            | set(NATIVE_MODEL_PATCHES) | set(ANDROID_PATCHES)),
-                                (plume, {"plume_metal.cpp", "plume_vulkan.cpp", "plume_apple.h", "plume_apple.mm"})):
+                                (plume, {"plume_metal.cpp", "plume_vulkan.cpp", "plume_d3d12.cpp", "plume_apple.h", "plume_apple.mm"})):
         changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=repository, text=True).splitlines())
         if changed - allowed:
             raise RuntimeError(f"unrelated local changes in graphics dependency: {changed - allowed}")
@@ -273,7 +273,12 @@ def main() -> int:
                      "        createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;",
                      "        createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;",
                      [(old_copy, new_copy), vulkan_scissor, vulkan_scissors, vulkan_scissor_one,
-                      vulkan_dependencies, vulkan_pipeline_pass, vulkan_framebuffer_pass])]
+                      vulkan_dependencies, vulkan_pipeline_pass, vulkan_framebuffer_pass]),
+               # Screenshots on D3D12: a readback into a buffer has no destination texture,
+               # and setSamplePositions asserts on one (the game aborted on every capture).
+               patch(plume, "plume_d3d12.cpp",
+                     "        setSamplePositions(dstLocation.texture);\n        d3d->CopyTextureRegion(",
+                     "        if (dstLocation.texture != nullptr) setSamplePositions(dstLocation.texture);\n        d3d->CopyTextureRegion(")]
     # Match a native text snapshot to the workload actually being presented.
     # The draw callback must never read live guest RDRAM or the latest CPU frame.
     # After the present queue's own fence wait, report that the command list the
