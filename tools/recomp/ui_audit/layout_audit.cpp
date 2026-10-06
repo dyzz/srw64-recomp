@@ -92,6 +92,7 @@ float ui_scale(UiSize s){return s==UiSize::Largest?1.5f:s==UiSize::Large?1.25f:1
 const char* ui_size_name(UiSize s){return s==UiSize::Largest?"largest":s==UiSize::Large?"large":"standard";}
 void set_wide_picture(bool v){wide=v;} bool wide_picture(){return wide;}
 bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
+bool hints_always=false; bool dialogue_hints_always(){return hints_always;} void set_dialogue_hints_always(bool v){hints_always=v;}
 // On, so the About page is audited with its longest row: the address and the run directory.
 bool debug_on=true; bool debug_interface(){return debug_on;} void set_debug_interface(bool v){debug_on=v;} bool debug_interface_forced(){return false;}
 DebugEndpoint debug_endpoint(){return debug_on?DebugEndpoint{"127.0.0.1:52817","/home/a-rather-long-user-name/.local/share/srw64-recomp/sessions/65d26a293f88c-c10a9e5f/run"}:DebugEndpoint{};}
@@ -99,7 +100,7 @@ void set_debug_endpoint(DebugEndpoint){}
 // No bezel, filter or cheat chosen.
 std::string bezel(){return {};} void set_bezel(const std::string&){} std::string filter(){return {};} void set_filter(const std::string&){}
 unsigned filter_scale(){return 1;} void set_filter_scale(unsigned){} unsigned cheats(){return 0;} void set_cheats(unsigned){}
-std::vector<fs::path> bezel_roots(){return {};} std::vector<fs::path> filter_roots(){return {};}
+std::vector<LookFolder> bezel_roots(){return {};} std::vector<LookFolder> filter_roots(){return {};}
 }
 namespace srw64::cheats { std::vector<Pilot> pilots(){return {};} void request_level(unsigned,unsigned){} }
 namespace srw64::post_filter { Status status(){return {};} }

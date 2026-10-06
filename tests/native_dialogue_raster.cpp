@@ -112,6 +112,8 @@ void incremental() {
     frame.history_open=true;frame.history.emplace_back();frame.history.back().text=u"Refund received";verify_incremental(raster,canvas,frame);
     frame.history_open=false;verify_incremental(raster,canvas,frame);
     frame.bar_scale=1.4;verify_incremental(raster,canvas,frame);
+    // The controls bar fading out, gone, and back (settings dialogue_hints).
+    for(const double fade:{.5,.1,0.,1.}){frame.bar_fade=fade;verify_incremental(raster,canvas,frame);}
     bottom.visible=false;verify_incremental(raster,canvas,frame);
     bottom.visible=true;frame.font_size=18;verify_incremental(raster,canvas,frame);
     // A transition's black lines take the text away under them, partly, then wholly.

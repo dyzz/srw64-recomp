@@ -43,6 +43,7 @@ struct Painter {
     double scale,ox,oy;
     std::vector<Op> ops;
     json blocks=json::array();
+    double fade=1;  // the opacity of what is painted now (the bottom bar fading out)
     void add(std::string key,PixelRect bounds,std::function<void(presentation::Bgra8Surface&,const PixelRect&)> paint) {
         bounds=bounds&PixelRect{0,0,int(width),int(height)};
         if(bounds.empty())return;
@@ -50,6 +51,7 @@ struct Painter {
         ops.push_back({std::move(key),bounds,std::move(paint)});
     }
     void fill(double x,double y,double w,double h,double r,double g,double b,double alpha=1) {
+        alpha*=fade;
         const double left=ox+x*scale,top=oy+y*scale,right=left+w*scale,bottom=top+h*scale;
         std::string key="fill";
         for(double v:{left,top,right,bottom,r,g,b,alpha})key+=exact(v);
@@ -86,7 +88,7 @@ struct Painter {
             text::TextDraw draw;draw.x=px;draw.y=top+row*shaped.line_height()*scale;draw.scale=scale;
             draw.first_line=size_t(found-shaped.lines().begin());draw.line_count=1;draw.revealed_utf16=revealed;
             draw.clip=text::TextClip{px,top,width*scale,h*scale};
-            draw.color={uint8_t(std::lround(r*255)),uint8_t(std::lround(g*255)),uint8_t(std::lround(b*255)),255};
+            draw.color={uint8_t(std::lround(r*255)),uint8_t(std::lround(g*255)),uint8_t(std::lround(b*255)),uint8_t(std::lround(fade*255))};
             // The line's glyphs stay inside its clip, and within a line height above and
             // below its own row.
             const auto& clip=*draw.clip;
@@ -95,7 +97,7 @@ struct Painter {
                     int(std::ceil(clip.x+clip.width)),int(std::ceil(clip.y+clip.height))}&
                 PixelRect{int(std::floor(clip.x)),int(std::floor(draw.y-band)),int(std::ceil(clip.x+clip.width)),int(std::ceil(draw.y+2*band))};
             std::string key="text "+utf8(value.text.substr(line.start,line.end-line.start));
-            for(double v:{found->width,shaped.font_size(),draw.x,draw.y,scale,clip.x,clip.y,clip.width,clip.height,r,g,b})key+=exact(v);
+            for(double v:{found->width,shaped.font_size(),draw.x,draw.y,scale,clip.x,clip.y,clip.width,clip.height,r,g,b,fade})key+=exact(v);
             key+=' '+std::to_string(std::clamp(revealed,line.start,line.end));
             add(std::move(key),bounds,[layout=shaped,draw](presentation::Bgra8Surface& image,const PixelRect& region) {
                 auto shifted=draw;
@@ -179,7 +181,12 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
     // speaker/STOP fragment arrives. Keep the shared controls visible for the
     // visible dialogue, independently of which panel currently owns reading.
     const auto visible=[](const Box& box){return box.visible && !box.layout.pages.empty();};
-    if(!frame.display_only && std::any_of(frame.boxes.begin(),frame.boxes.end(),visible)) {
+    // Hidden a few seconds after dialogue appears and back for a while on a direction key
+    // (settings dialogue_hints, native_dialogue.cpp); fades out rather than vanishing.
+    if(!frame.display_only && std::any_of(frame.boxes.begin(),frame.boxes.end(),visible))
+        paint.blocks.push_back({{"role","controls_bar"},{"fade",frame.bar_fade}});
+    if(!frame.display_only && frame.bar_fade>0 && std::any_of(frame.boxes.begin(),frame.boxes.end(),visible)) {
+        paint.fade=frame.bar_fade;
         const auto& catalog=localization::catalog();
         const auto status=frame.skipping?catalog.ui("skip"):frame.fast?catalog.ui("fast"):frame.auto_read?
             catalog.ui("auto")+" "+std::to_string(frame.speed)+"/"+std::to_string(Reader::max_speed):catalog.ui("manual");
@@ -200,6 +207,7 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
         paint.blocks.push_back({{"role","auto_speed"},{"level",frame.auto_read?frame.speed:0},{"maximum",Reader::max_speed}});
         paint.label(utf16(catalog.ui("font_size")+" "+std::to_string(frame.font_size)),x(68),y(230),6*f,24*f,.75,.87,1,"font_size");
         if(!frame.controls_text.empty())paint.label_fit(utf16(frame.controls_text),x(92),y(231),5.1*f,314-x(92),.75,.8,.86,"controls");
+        paint.fade=1;
     }
     if(frame.history_open) {
         paint.panel(16,18,288,202);
