@@ -16,7 +16,6 @@ type Install = {
   size: string;
   links: string;
   quark: string;
-  quarkPending: string;
   verify: string;
   noFile: string;
   notReleased: string;
@@ -104,7 +103,6 @@ export const INSTALL: Record<Lang, Install> = {
     size: '大小',
     links: '下载',
     quark: '夸克网盘',
-    quarkPending: '正式发布时提供国内网盘链接。',
     verify: '校验',
     noFile: '此版本暂未提供 Android 安装包。',
     notReleased: '0.4.0 正在准备中，暂未开放下载。安装步骤可以先看。',
@@ -188,7 +186,6 @@ export const INSTALL: Record<Lang, Install> = {
     size: 'Size',
     links: 'Download',
     quark: 'Quark Drive',
-    quarkPending: 'A download mirror for mainland China will be available with the public release.',
     verify: 'Checksum',
     noFile: 'An Android package is not yet available for this version.',
     notReleased: '0.4.0 is being prepared and cannot be downloaded yet. The installation steps are below.',
@@ -272,7 +269,6 @@ export const INSTALL: Record<Lang, Install> = {
     size: 'サイズ',
     links: 'ダウンロード',
     quark: 'Quark ドライブ',
-    quarkPending: '中国本土向けのミラーは正式公開時に用意します。',
     verify: 'チェックサム',
     noFile: 'このバージョンの Android パッケージは現在提供していません。',
     notReleased: '0.4.0 は公開準備中のため、まだダウンロードできません。インストール手順は先にご覧いただけます。',

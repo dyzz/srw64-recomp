@@ -1,8 +1,8 @@
 {
-  "published": false,
+  "published": true,
   "version": "0.4.0",
   "tag": "v0.4.0",
-  "commit": "35dd5b1b43f41c72345307b66e02f642b0798bb8",
+  "commit": "2a7d9c326ebf250bc7eb5945054f4fd3a91416db",
   "date": "2026-10-07",
   "github": "https://github.com/dyzz/srw64-recomp/releases/tag/v0.4.0",
   "quark": null,
@@ -10,29 +10,29 @@
     {
       "platform": "macos",
       "name": "Marchwind64-0.4.0-macos14-arm64.zip",
-      "bytes": 50425309,
-      "sha256": "08b707787ed3c120790732e487ac0e76b03178e62a96f62166dde556cde48005",
+      "bytes": 50468767,
+      "sha256": "ad4a844699b9d16797cd003a1eeee4711c1b2fe942f9ab092b195dcff082d0bd",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.0/Marchwind64-0.4.0-macos14-arm64.zip"
     },
     {
       "platform": "linux",
       "name": "Marchwind64-0.4.0-linux-x64.tar.gz",
-      "bytes": 52312850,
-      "sha256": "68729f4d056275767c2439207616a61102a7c7909b705fc04556083447e6d9a2",
+      "bytes": 52357556,
+      "sha256": "c83045025cd4a83b7c536aa42e8e81a1d427f1449fb3a92815f197d259d76403",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.0/Marchwind64-0.4.0-linux-x64.tar.gz"
     },
     {
       "platform": "windows",
       "name": "Marchwind64-0.4.0-windows-x64.zip",
-      "bytes": 61872481,
-      "sha256": "8d88b6db600a45e2546a699d1de3a7895582a92bec559570bbf91b05e18a9764",
+      "bytes": 61937672,
+      "sha256": "19b619fa88bcd82f1c2d3b3f71afea0637f0473b9f8125f2b26e0e79756be236",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.0/Marchwind64-0.4.0-windows-x64.zip"
     },
     {
       "platform": "android",
       "name": "Marchwind64-0.4.0-android-arm64.apk",
-      "bytes": 90932263,
-      "sha256": "4253fc1984108fe22037a59c14cbb3e8f94a9f7c074ea86d325b5da29772164c",
+      "bytes": 91014183,
+      "sha256": "7ea616d81c6df4c258489067432f4803750fcc0eba9cc82a94e2baed6006d54f",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.0/Marchwind64-0.4.0-android-arm64.apk"
     }
   ],

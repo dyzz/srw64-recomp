@@ -79,7 +79,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
       <p class="links">
         <a href={release.github}>GitHub Release {release.tag} →</a>
         {hd.tag !== release.tag && <a href={hd.github}>GitHub Release {hd.tag} →</a>}
-        {release.quark ? <a href={release.quark}>{c.quark} →</a> : <span class="dim">{c.quarkPending}</span>}
+        {release.quark && <a href={release.quark}>{c.quark} →</a>}
       </p>
       </> : <p class="nofile">{c.notReleased}</p>}
     </section>
