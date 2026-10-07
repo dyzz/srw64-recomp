@@ -1,42 +1,49 @@
 {
-  "version": "0.3.5",
-  "tag": "v0.3.5",
-  "commit": "cdb4020bc1e2281d7e27f872b5d8c2b80658339e",
-  "date": "2026-10-04",
-  "github": "https://github.com/dyzz/srw64-recomp/releases/tag/v0.3.5",
-  "quark": null,
+  "version": "0.4.0",
+  "tag": "v0.4.0",
+  "commit": "35dd5b1b43f41c72345307b66e02f642b0798bb8",
+  "date": "2026-10-07",
+  "github": "https://github.com/dyzz/srw64-recomp/releases/tag/v0.4.0",
+  "quark": "https://pan.quark.cn/s/a766ba6cff23",
   "files": [
     {
       "platform": "macos",
-      "name": "SRW64-0.3.5-macos14-arm64.zip",
-      "bytes": 46262467,
-      "sha256": "61c70b22614da67358c5da0a4daaad98d99ce4f63ef3ca291571393172410bab",
-      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.3.5/SRW64-0.3.5-macos14-arm64.zip"
+      "name": "Marchwind64-0.4.0-macos14-arm64.zip",
+      "bytes": 50425309,
+      "sha256": "08b707787ed3c120790732e487ac0e76b03178e62a96f62166dde556cde48005",
+      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.0/Marchwind64-0.4.0-macos14-arm64.zip"
     },
     {
       "platform": "linux",
-      "name": "SRW64-0.3.5-linux-x64.tar.gz",
-      "bytes": 48205847,
-      "sha256": "6ad1825ec5cc4a8d9667ff9f0932f27ff37c4c40a6e953e1e50ad92d60c2967b",
-      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.3.5/SRW64-0.3.5-linux-x64.tar.gz"
+      "name": "Marchwind64-0.4.0-linux-x64.tar.gz",
+      "bytes": 52312850,
+      "sha256": "68729f4d056275767c2439207616a61102a7c7909b705fc04556083447e6d9a2",
+      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.0/Marchwind64-0.4.0-linux-x64.tar.gz"
     },
     {
       "platform": "windows",
-      "name": "SRW64-0.3.5-windows-x64.zip",
-      "bytes": 56971814,
-      "sha256": "20c92cc0e9f89b1eea295242370e135aef7bc32ac52a5443e46bce955ca3d193",
-      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.3.5/SRW64-0.3.5-windows-x64.zip"
+      "name": "Marchwind64-0.4.0-windows-x64.zip",
+      "bytes": 61872481,
+      "sha256": "8d88b6db600a45e2546a699d1de3a7895582a92bec559570bbf91b05e18a9764",
+      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.0/Marchwind64-0.4.0-windows-x64.zip"
+    },
+    {
+      "platform": "android",
+      "name": "Marchwind64-0.4.0-android-arm64.apk",
+      "bytes": 90932263,
+      "sha256": "4253fc1984108fe22037a59c14cbb3e8f94a9f7c074ea86d325b5da29772164c",
+      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.0/Marchwind64-0.4.0-android-arm64.apk"
     }
   ],
   "hd": {
-    "version": "",
-    "tag": "v0.3.5",
-    "content_sha256": "",
-    "commit": "cdb4020bc1e2281d7e27f872b5d8c2b80658339e",
-    "github": "https://github.com/dyzz/srw64-recomp/releases/tag/v0.3.5",
-    "name": "SRW64-0.3.5-HD.zip",
-    "bytes": 505272440,
-    "sha256": "4c4d80c27cd360ea849b1d8505505a29e522cc2dee2e2ad82070da82d4f7b9b3",
-    "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.3.5/SRW64-0.3.5-HD.zip"
+    "version": "1.0",
+    "tag": "hd-1.0",
+    "content_sha256": "04e2e84fdb457a212fd6f64711c5ff50d649a421d0764ecc79cda23bc81f7b54",
+    "commit": "35dd5b1b43f41c72345307b66e02f642b0798bb8",
+    "github": "https://github.com/dyzz/srw64-recomp/releases/tag/hd-1.0",
+    "name": "Marchwind64-HD-1.0.zip",
+    "bytes": 522634634,
+    "sha256": "55de049482b0bbc1ee4f533ec40e7d2cdc0f8262c59a2363f2f0e0f22b1fa655",
+    "url": "https://github.com/dyzz/srw64-recomp/releases/download/hd-1.0/Marchwind64-HD-1.0.zip"
   }
 }
