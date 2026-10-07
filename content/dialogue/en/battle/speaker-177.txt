@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/12）
 # 审校：えじき是饵食
 > 「我が悪霊のえじきとなれ」
-“Become prey to my evil spirits.”
+“Be devoured by my evil spirits.”
 
 @9617 Emperor Muge · ムゲ帝王
 # 触发：攻击（通用，2/12）
@@ -23,7 +23,7 @@
 # 触发：攻击（通用，4/12）
 # 审校：同 9616
 > 「我が悪霊のえじきとなるがいい」
-“You shall be prey to my evil spirits.”
+“Become food for my evil spirits.”
 
 @9620 Emperor Muge · ムゲ帝王
 # 触发：攻击（通用，5/12）
@@ -61,14 +61,14 @@
 # 审校：更顺
 > 「お前たちも悪霊の中へ
 >  くわえてやろう」
-“I’ll add you to my evil spirits as well.”
+“You too shall join my evil spirits.”
 
 @9626 Emperor Muge · ムゲ帝王
 # 触发：攻击（通用，11/12）
 # 审校：myself 生硬
 > 「この宇宙は私そのもの。
 >  それを思い知れ!」
-“This cosmos is me. Know that well!”
+“This cosmos is my very self. Learn that well!”
 
 @9627 Emperor Muge · ムゲ帝王
 # 触发：攻击（通用，12/12）
@@ -86,7 +86,7 @@
 # 审校：语气词与口语
 > 「おぉぉっ!? やつらを見くびり
 >  すぎたか……」
-“Ohh?! Have I underestimated them...”
+“Ohh?! Did I underestimate them...?”
 
 @9630 Emperor Muge · ムゲ帝王
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -149,7 +149,7 @@
 # 触发：回避（通用，2/2）
 # 审校：帝王口吻应更正式，将 didn't you 改为 did you not 以符合其庄重语气。
 > 「当たらぬではないか」
-“You missed, did you not?”
+“Not a single hit, I see.”
 
 @9641 Emperor Muge · ムゲ帝王
 # 触发：攻击无效（护罩／装甲）（通用，1/1）

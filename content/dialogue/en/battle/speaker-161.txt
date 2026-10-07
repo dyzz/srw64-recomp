@@ -131,7 +131,7 @@
 # 触发：回避（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、よそ見はいかんぞ」
-“What’s wrong? Don’t look away.”
+“What’s wrong? Keep your eyes on me!”
 
 @7389 Alberto · アルベルト
 # 触发：回避（通用，2/2）

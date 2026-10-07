@@ -29,7 +29,7 @@
 @11835 Kappei · 勝平
 # 触发：被击坠（通用，2/3）
 > 「ちくしょうっ! やられちまった!」
-“Damn! I got taken down!”
+“Damn! They got me!”
 
 @11836 Kappei · 勝平
 # 触发：被击坠（通用，3/3）
@@ -99,7 +99,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 # 审校：少年口吻，避免 bastard
 > 「やりゃあがったな、こんちくしょう!!」
-“You did it now, you rotten jerk!!”
+“Now you’ve done it, you rotten jerk!!”
 
 @11848 Kappei · 勝平
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
@@ -133,7 +133,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：beam 小写
 > 「この程度のビームなんざへでもねえぜ!」
-“A beam like that is nothing to me!”
+“A puny beam like that doesn’t even tickle!”
 
 @11854 Kappei · 勝平
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -260,7 +260,7 @@
 # 触发：使用〈ムーンアタック〉（对话第 1/2 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「勝平、いつでもいけるぜ!」
-“Kappei, I’m ready anytime!”
+“Kappei, ready when you are!”
 
 @16710 Kappei · 勝平
 # 触发：使用〈ムーンアタック〉（对话第 2/2 句）
@@ -408,7 +408,7 @@ By the power of the sun, now, the finishing blow!”
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うるせーっ!! こっちだって
 >  一生懸命やってんだい!!」
-“Shut up!! I’m doing my best here too!!”
+“Shut up!! I’m trying as hard as I can here!!”
 
 @16735 Uchuta · 宇宙太
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈ザンボット3〉（对话第 1/2 句）
@@ -419,13 +419,13 @@ By the power of the sun, now, the finishing blow!”
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈ザンボット3〉（对话第 2/2 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんぐらいでガタガタ抜かすな!」
-“Don’t go whining over something like this!”
+“Quit whining over a little thing like this!”
 
 @16737 Uchuta · 宇宙太
 # 触发：回避，乘坐〈ザンボット3〉（对话第 1/2 句）
 > 「最大パワーがでるぞ! 上昇だ、
 >  勝平!」
-“We can get max power! Ascend, Kappei!”
+“Max power’s coming! Take us up, Kappei!”
 
 @16738 Kappei · 勝平
 # 触发：回避，乘坐〈ザンボット3〉（对话第 2/2 句）
@@ -452,4 +452,4 @@ By the power of the sun, now, the finishing blow!”
 # 触发：攻击无效（护罩／装甲），乘坐〈ザンボット3〉（对话第 2/2 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちょっと、油断しすぎよ!」
-“Hey, you’re way too careless!”
+“Hey, don’t get careless!”

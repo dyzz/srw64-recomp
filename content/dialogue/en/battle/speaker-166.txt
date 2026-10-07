@@ -47,7 +47,7 @@
 # 触发：攻击（通用，9/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「今を逃せばチャンスはない!」
-“Miss this moment and there’s no chance!”
+“Miss this chance and there won’t be another!”
 
 @9479 Alan · アラン
 # 触发：被击坠（通用，1/2）
@@ -75,7 +75,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このままでは……やられる!」
-“At this rate... I’ll be destroyed!”
+“If this keeps up... I’m finished!”
 
 @9484 Alan · アラン
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
@@ -92,7 +92,7 @@
 @9486 Alan · アラン
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 > 「くっこのパワーはデータ以上か!?」
-“Ngh, this power exceeds the data?!”
+“Ngh, it’s stronger than the data said?!”
 
 @9487 Alan · アラン
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
@@ -103,19 +103,19 @@
 @9488 Alan · アラン
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 > 「まだこんなものではっ!」
-“This is nothing yet!”
+“It’ll take more than this!”
 
 @9489 Alan · アラン
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 # 审校：この程度で（やられるか）
 > 「この程度で!」
-“Not from something like this!”
+“Not from a hit like this!”
 
 @9490 Alan · アラン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 # 审校：补全省略
 > 「この程度ならばな」
-“If that’s all it is, fine.”
+“If that’s all, no problem.”
 
 @9491 Alan · アラン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
@@ -141,7 +141,7 @@
 @9495 Alan · アラン
 # 触发：回避（通用，2/4）
 > 「ねらいが甘いようだな!」
-“Your aim seems sloppy!”
+“Your aim is sloppy!”
 
 @9496 Alan · アラン
 # 触发：回避（通用，3/4）

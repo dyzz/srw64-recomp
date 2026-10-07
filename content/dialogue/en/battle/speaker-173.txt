@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「かまわん! つっこめ!」
-“I don’t care! Charge in!”
+“Never mind that! Charge!”
 
 @9562 Gildrome · ギルドローム
 # 触发：攻击（通用，2/8）
@@ -22,7 +22,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「今まさに地球の命運が決まった
 >  のだ!」
-“Earth’s fate is decided this very moment!”
+“Earth’s fate has just been sealed!”
 
 @9565 Gildrome · ギルドローム
 # 触发：攻击（通用，5/8）
@@ -38,7 +38,7 @@
 # 触发：攻击（通用，7/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「悪夢をみせてやろう!」
-“I’ll give you a nightmare!”
+“I’ll show you a nightmare!”
 
 @9568 Gildrome · ギルドローム
 # 触发：攻击（通用，8/8）
@@ -67,12 +67,12 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うぬぬ、こうなったら一刻の猶予も
 >  ならん!」
-“Ngh, at this rate there’s not a moment to lose!”
+“Ngh, it’s come to this... there’s not a moment to lose!”
 
 @9573 Gildrome · ギルドローム
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「バ、バカな、なぜこんなことに……」
-“I-impossible, why did this happen...”
+“I-impossible, how did it come to this...”
 
 @9574 Gildrome · ギルドローム
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
@@ -83,7 +83,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……おのれ! 許さんぞ!」
-“Ngh... why you! I won’t forgive this!”
+“Ngh... curse you! You’ll pay for this!”
 
 @9576 Gildrome · ギルドローム
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
@@ -102,7 +102,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 # 审校：ええい→可恶；意思是被这种程度打中
 > 「ええーい、この程度のことで!」
-“Damn it, from a hit like that!”
+“Bah! To think a little hit like this...!”
 
 @9579 Gildrome · ギルドローム
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -144,7 +144,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ククククッ、効かぬ、効かぬわ!」
-“Kukukuku, it doesn’t work, it doesn’t work at all!”
+“Kukukuku, useless, utterly useless!”
 
 @9586 Gildrome · ギルドローム
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -157,4 +157,4 @@
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：修正了译文末尾多余的 ] 字符。
 > 「ぬぅ、こざかしい真似を」
-“Ngh, such a clever trick.”
+“Ngh, what a petty trick.”

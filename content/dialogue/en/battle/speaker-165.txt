@@ -75,7 +75,7 @@
 @9244 Banjo · 万丈
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
 > 「ぐっ!! まずい! このままでは!!」
-“Guh!! This is bad! At this rate!!”
+“Guh!! This is bad! If this keeps up!!”
 
 @9245 Banjo · 万丈
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
@@ -91,7 +91,7 @@
 @9247 Banjo · 万丈
 # 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 > 「まだまだっ!」
-“Not even close!”
+“I’m not done yet!”
 
 @9248 Banjo · 万丈
 # 触发：中伤（剩余 HP 30–90%）（通用，3/7）
@@ -143,7 +143,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 # 审校：效かん＝没用
 > 「効かんよ! その程度ではな!」
-“That won’t work! Not at that level!”
+“That won’t work on me! Not something that weak!”
 
 @9257 Banjo · 万丈
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
@@ -170,7 +170,7 @@
 @9261 Banjo · 万丈
 # 触发：回避（通用，3/6）
 > 「ほらほら、こっちだこっち」
-“Over here, over here, this way.”
+“Over here! This way, this way!”
 
 @9262 Banjo · 万丈
 # 触发：回避（通用，4/6）
@@ -194,7 +194,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そういうムダなことは、やめたほうがいいと
 >  思うな」
-“I’d say you ought to give up these pointless efforts.”
+“I really think you should quit wasting your time.”
 
 @9266 Banjo · 万丈
 # 触发：攻击无效（护罩／装甲）（通用，2/3）
@@ -211,13 +211,13 @@
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「何と、弾切れか!?
 >  僕とした事が……」
-“What, out of ammo?! And I call myself...”
+“What, out of ammo?! How careless of me...”
 
 @9269 Banjo · 万丈
 # 触发：射程外，无法反击（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、この距離では届きそうもないな」
-“Tch, at this range I don’t think I can reach.”
+“Tch, I doubt I can reach them from here.”
 
 @9270 Banjo · 万丈
 # 触发：射程外，无法反击（通用，2/2）

@@ -25,7 +25,7 @@
 @7397 Red · レッド
 # 触发：攻击（通用，5/11）
 > 「今度こそ死ねぇい!」
-“This time you die for sure!”
+“This time, you die!”
 
 @7398 Red · レッド
 # 触发：攻击（通用，6/11）

@@ -90,7 +90,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってくれたな、ただでは逃がさんぞっ」
-“You’ve done it now. I won’t let you get away with that.”
+“You’ll pay for that. You won’t get away unscathed.”
 
 @7322 Q Boss · Qボス
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）

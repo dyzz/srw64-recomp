@@ -35,7 +35,7 @@
 @9398 Sara · 沙羅
 # 触发：攻击（通用，7/13）
 > 「このぉ!」
-“Why you!”
+“Why, you!”
 
 @9399 Sara · 沙羅
 # 触发：攻击（通用，8/13）
@@ -97,7 +97,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! も、もたない!?」
-“Ngh! I-I can’t hold out?!”
+“Ngh! I-it’s not gonna hold!”
 
 @9410 Sara · 沙羅
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/7）
@@ -121,7 +121,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「や、やる! さすがは……」
-“N-not bad! As expected of...”
+“N-not bad! Just what I’d expect from...”
 
 @9414 Sara · 沙羅
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/7）
@@ -230,7 +230,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたしに当てようなんて、
 >  10年早いんだよ!」
-“You’re ten years too early to hit me!”
+“You’d need ten more years of practice to hit me!”
 
 @9433 Sara · 沙羅
 # 触发：回避（通用，6/6）
@@ -291,4 +291,4 @@
 # 触发：使用〈5連ミサイルランチャー〉（低优先，可能被通用台词顶掉）
 # 审校：原译 Come on 语气偏催促，改为 Here 更自然，符合送礼物的口吻。
 > 「さぁミサイルのプレゼントだよ」
-“Here, a present of missiles for you!”
+“Here, I’ve got a little missile present for you!”

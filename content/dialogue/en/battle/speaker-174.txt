@@ -8,12 +8,12 @@
 @9502 Shapiro · シャピロ
 # 触发：攻击（通用，2/12）
 > 「これで貴様も終わりだ」
-“This is the end for you too.”
+“You’re finished too.”
 
 @9503 Shapiro · シャピロ
 # 触发：攻击（通用，3/12）
 > 「あの世で後悔するんだな」
-“Regret it in the next world.”
+“You can regret it in the afterlife.”
 
 @9504 Shapiro · シャピロ
 # 触发：攻击（通用，4/12）
@@ -89,7 +89,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なぜだ!? なぜこれほどに……」
-“W-why?! Why so much...”
+“W-why?! How can they be this...”
 
 @9518 Shapiro · シャピロ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
@@ -107,7 +107,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! やりおったな……」
-“Ngh! You’ve done it...”
+“Ngh! You’ll pay for that...”
 
 @9521 Shapiro · シャピロ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
@@ -177,4 +177,4 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「沙羅、たとえお前でも容赦は
 >  せん!」
-“Sara, even if it’s you, I won’t hold back!”
+“Sara, not even you will get any mercy from me!”

@@ -37,7 +37,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あかん! こいつはまずいで!」
-“No good! This ain’t lookin’ good!”
+“Aw, no! This ain’t lookin’ good!”
 
 @11925 Juzo · 十三
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
@@ -79,7 +79,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あかんあかん、話にならんぐらい
 >  弱いで!」
-“No good, no good, you’re so weak it ain’t even funny!”
+“Nah, nah, you’re so weak it ain’t even funny!”
 
 @11932 Juzo · 十三
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -114,13 +114,13 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんやて!? 弾切れ? しもた、
 >  もっと節約しとくんやった」
-“What?! Out of ammo? Dang it, should’ve conserved more.”
+“What?! Out of ammo? Dang it, shoulda been savin’ some.”
 
 @11938 Juzo · 十三
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんや!? とどかへんのか!?」
-“What?! It won’t reach?!”
+“What?! I can’t reach?!”
 
 @16787 Juzo · 十三
 # 触发：使用〈ロックファイター〉

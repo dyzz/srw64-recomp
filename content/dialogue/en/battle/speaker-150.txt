@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/10）
 # 审校：原文“私みずから”强调亲自，译文未体现，补上“myself”以贴合女皇口吻。
 > 「私みずからが倒してくれるわ!」
-“I myself shall bring you down!”
+“I shall bring you down with my own hand!”
 
 @12004 Janera · ジャネラ
 # 触发：攻击（通用，2/10）
@@ -27,7 +27,7 @@
 # 触发：攻击（通用，5/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「今ごろ気がついても遅い!」
-“It’s too late to notice now!”
+“You realize it too late!”
 
 @12008 Janera · ジャネラ
 # 触发：攻击（通用，6/10）
@@ -39,7 +39,7 @@
 # 触发：攻击（通用，7/10）
 # 审校：原译“at hand”可接受，但“目の前”更直接。
 > 「勝利は目の前じゃ!」
-“Victory is before us!”
+“Victory is at hand!”
 
 @12010 Janera · ジャネラ
 # 触发：攻击（通用，8/10）
@@ -62,7 +62,7 @@
 # 触发：被击坠（通用，1/1）
 # 审校：原文是 !?
 > 「し……しまった!?」
-“Wh... what?!”
+“Cu... curses?!”
 
 @12014 Janera · ジャネラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
@@ -98,7 +98,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 # 审校：原文“やらせはせぬぞ”为女皇口吻，译文“won't”偏口语，改为“shall not”更贴合。
 > 「くっ……やらせはせぬぞ!」
-“Ngh... I shall not let you!”
+“Ngh... I shall not allow it!”
 
 @12020 Janera · ジャネラ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
@@ -111,7 +111,7 @@
 # 审校：原译“that”指代略弱，改为“such a thing”更贴近“それしき”。
 > 「こざかしや! それしきで倒せると
 >  思うてか!」
-“Insolent fool! You think such a thing can defeat me?!”
+“Insolent wretch! You think that is enough to defeat me?!”
 
 @12022 Janera · ジャネラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
@@ -129,19 +129,19 @@
 # 触发：回避（通用，1/1）
 # 审校：原译“That will never hit”可接受，但“It”更直接承接前句。
 > 「遅い攻撃じゃ。それでは当たらぬわ」
-“Such a slow attack. It will never hit.”
+“So slow. That will never hit me.”
 
 @12025 Janera · ジャネラ
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そのような攻撃は効かぬわ!」
-“An attack like that won’t work on me!”
+“Such an attack is useless against me!”
 
 @12026 Janera · ジャネラ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 # 审校：原译“can't”可接受，但“cannot”更符合反派正式语气。
 > 「なんと!? 攻撃できぬというのか?」
-“What?! You mean I cannot attack?”
+“What?! I cannot attack?”
 
 @12027 Janera · ジャネラ
 # 触发：射程外，无法反击（通用，1/1）

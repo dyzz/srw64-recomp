@@ -18,7 +18,7 @@
 @9274 Shinobu · 忍
 # 触发：攻击（通用，4/17）
 > 「覚悟しやがれ!!」
-“Get ready!!”
+“Say your prayers!!”
 
 @9275 Shinobu · 忍
 # 触发：攻击（通用，5/17）
@@ -61,7 +61,7 @@
 # 触发：攻击（通用，12/17）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつでとどめだ!!」
-“This one’s the finisher!!”
+“This’ll finish you!!”
 
 @9283 Shinobu · 忍
 # 触发：攻击（通用，13/17）
@@ -88,7 +88,7 @@
 # 触发：攻击（通用，17/17）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってやるぜっっ!!」
-“I’m gonna do it!!”
+“Let’s do this!!”
 
 @9288 Shinobu · 忍
 # 触发：被击坠（通用，1/3）
@@ -133,7 +133,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちくしょう、くたばってたまるかよ」
-“Damn it, like hell I’m dying”
+“Damn it, like hell I’m dying.”
 
 @9296 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/8）
@@ -152,7 +152,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，8/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「てめぇっ、許せねぇ!」
-“You bastard, I won’t forgive you!”
+“You bastard, you’re gonna pay!”
 
 @9299 Shinobu · 忍
 # 触发：中伤（剩余 HP 30–90%）（通用，1/10）
@@ -185,7 +185,7 @@
 @9304 Shinobu · 忍
 # 触发：中伤（剩余 HP 30–90%）（通用，6/10）
 > 「くっ!! まだいけるぜ!!」
-“Ngh!! I can still go!!”
+“Ngh!! I can still fight!!”
 
 @9305 Shinobu · 忍
 # 触发：中伤（剩余 HP 30–90%）（通用，7/10）
@@ -197,13 +197,13 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，8/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちくしょお! なめやがって!!」
-“Damn it! Don’t underestimate me!!”
+“Damn it! Don’t you look down on me!!”
 
 @9307 Shinobu · 忍
 # 触发：中伤（剩余 HP 30–90%）（通用，9/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちくしょう! もう許さねぇぜ!」
-“Damn! I won’t forgive you now!”
+“Damn! That’s it, you’re dead!”
 
 @9308 Shinobu · 忍
 # 触发：中伤（剩余 HP 30–90%）（通用，10/10）
@@ -214,7 +214,7 @@
 @9309 Shinobu · 忍
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/9）
 > 「へっ、余裕、余裕」
-“Heh, easy, easy”
+“Heh, easy, easy.”
 
 @9310 Shinobu · 忍
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/9）
@@ -241,7 +241,7 @@
 @9314 Shinobu · 忍
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/9）
 > 「ちっ」
-“Tch”
+“Tch.”
 
 @9315 Shinobu · 忍
 # 触发：轻伤（剩余 HP 90% 以上）（通用，7/9）
@@ -294,7 +294,7 @@
 @9324 Shinobu · 忍
 # 触发：回避（通用，7/13）
 > 「おっと、あぶねえ」
-“Whoa, that was close”
+“Whoa, that was close.”
 
 @9325 Shinobu · 忍
 # 触发：回避（通用，8/13）
@@ -328,7 +328,7 @@
 # 触发：回避（通用，13/13）
 # 审校：ざっとこんなもん是得意话
 > 「ざっとこんなもんさ」
-“That’s how it’s done”
+“That’s how it’s done.”
 
 @9331 Shinobu · 忍
 # 触发：攻击无效（护罩／装甲）（通用，1/3）
@@ -446,7 +446,7 @@
 # 触发：使用〈断空光牙剣〉（对话第 1/3 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつで最後だ!」
-“This one’s the last!”
+“This ends it!”
 
 @14743 Shinobu · 忍
 # 触发：使用〈断空光牙剣〉（对话第 2/3 句）
@@ -484,7 +484,7 @@
 # 审校：补引号（同句其他记录带引号）
 > 「忍、もうこうなったらアレを使うしか
 >  ねぇぜ」
-“Shinobu, at this point we’ve got no choice but to use that!”
+“Shinobu, we’ve got no choice now. Time to use that!”
 
 @14749 Shinobu · 忍
 # 触发：使用〈断空光牙剣〉（对话第 2/3 句）
@@ -598,21 +598,21 @@
 # 审校：补引号（同句其他记录带引号）
 > 「きやがれ! かたっぱしから
 >  撃ち落としてやるぜっ!!」
-“Bring it on! I’ll shoot you all down one after another!!”
+“Bring it on! I’ll shoot down every last one of you!!”
 
 @14766 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ダンクーガ〉
 # 审校：补引号（同句其他记录带引号）
 > 「ちきしょう! このままじゃダンクーガが
 >  もたねえ……」
-“Damn it! At this rate Dancouga won’t hold out...”
+“Damn it! Dancouga can’t take much more of this...”
 
 @14767 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ダンクーガ〉
 # 审校：补引号（同句其他记录带引号）
 > 「ちきしょう! このままじゃダンクーガが
 >  もたねえ……」
-“Damn it! At this rate Dancouga won’t hold out...”
+“Damn it! Dancouga can’t take much more of this...”
 
 @14768 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ダンクーガ〉（对话第 1/2 句）
@@ -637,20 +637,20 @@
 # 审校：补引号（同句其他记录带引号）
 > 「何やってるんだ忍! このままじゃ
 >  まずいぞ!!」
-“What are you doing, Shinobu! At this rate we’re in trouble!!”
+“What are you doing, Shinobu?! We’re in trouble here!!”
 
 @14772 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ダンクーガ〉（对话第 1/2 句）
 # 审校：补引号（同句其他记录带引号）
 > 「このままじゃばらばらにされちまう!」
-“At this rate we’re gonna get torn apart!”
+“Keep this up and we’re gonna get torn apart!”
 
 @14773 Sara · 沙羅
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ダンクーガ〉（对话第 2/2 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「きゃっ! し、忍、このままじゃ
 >  ヤバいよ!」
-“Kya! S-shinobu, at this rate we’re in big trouble!”
+“Kya! Sh-Shinobu, we’re in big trouble here!”
 
 @14774 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ダンクーガ〉（对话第 1/2 句）
@@ -687,20 +687,20 @@
 # 审校：补引号（同句其他记录带引号）
 > 「何やってるんだ忍! このままじゃ
 >  まずいぞ!!」
-“What are you doing, Shinobu! At this rate we’re in trouble!!”
+“What are you doing, Shinobu?! We’re in trouble here!!”
 
 @14780 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ダンクーガ〉（对话第 1/2 句）
 # 审校：补引号（同句其他记录带引号）
 > 「このままじゃばらばらにされちまう!」
-“At this rate we’re gonna get torn apart!”
+“Keep this up and we’re gonna get torn apart!”
 
 @14781 Sara · 沙羅
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ダンクーガ〉（对话第 2/2 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「きゃっ! し、忍、このままじゃ
 >  ヤバいよ!」
-“Kya! S-shinobu, at this rate we’re in big trouble!”
+“Kya! Sh-Shinobu, we’re in big trouble here!”
 
 @14782 Shinobu · 忍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ダンクーガ〉（对话第 1/2 句）
@@ -731,7 +731,7 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 1/2 句）
 # 审校：补引号（同句其他记录带引号）
 > 「なにしやがる!」
-“What the hell are you doing!”
+“What the hell do you think you’re doing?!”
 
 @14787 Masato · 雅人
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 2/2 句）
@@ -750,7 +750,7 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 1/2 句）
 # 审校：补引号（同句其他记录带引号）
 > 「もうゆるさねぇ!!」
-“I won’t forgive you anymore!!”
+“That’s it, you’re finished!!”
 
 @14790 Sara · 沙羅
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 2/2 句）
@@ -768,7 +768,7 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 2/2 句）
 # 审校：补引号（同句其他记录带引号）
 > 「何ボーッとしてんだよ、忍!」
-“What are you spacing out for, Shinobu!”
+“Quit spacing out, Shinobu!”
 
 @14793 Shinobu · 忍
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 1/2 句）
@@ -787,7 +787,7 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 1/2 句）
 # 审校：补引号（同句其他记录带引号）
 > 「なにしやがる!」
-“What the hell are you doing!”
+“What the hell do you think you’re doing?!”
 
 @14796 Masato · 雅人
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 2/2 句）
@@ -806,7 +806,7 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 1/2 句）
 # 审校：补引号（同句其他记录带引号）
 > 「もうゆるさねぇ!!」
-“I won’t forgive you anymore!!”
+“That’s it, you’re finished!!”
 
 @14799 Sara · 沙羅
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 2/2 句）
@@ -824,7 +824,7 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ダンクーガ〉（对话第 2/2 句）
 # 审校：补引号（同句其他记录带引号）
 > 「何ボーッとしてんだよ、忍!」
-“What are you spacing out for, Shinobu!”
+“Quit spacing out, Shinobu!”
 
 @14802 Shinobu · 忍
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈ダンクーガ〉

@@ -26,7 +26,7 @@
 # 触发：攻击（通用，4/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まず、お前から血祭りにあげてやる!」
-“First, I’ll make a blood offering of you!”
+“You’ll be the first to die!”
 
 @9592 Helmut · ヘルマット
 # 触发：攻击（通用，5/8）
@@ -63,7 +63,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 # 审校：図にのりおって是指责
 > 「き、貴様、図にのりおって!」
-“Y-you... getting cocky, are you!”
+“Y-you... don’t get cocky!”
 
 @9599 Helmut · ヘルマット
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -102,7 +102,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……おのれ、よくもやってくれたな!」
-“Ngh... why you, you’ve done it now!”
+“Ngh... curse you, you’ll pay for that!”
 
 @9606 Helmut · ヘルマット
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
@@ -115,7 +115,7 @@
 # 审校：抽检同类：甘い／効かない 按情境
 > 「ハーッハハハハッ!
 >  効かぬ、効かぬなぁ!」
-“Hahahahaha! That won’t work on me, it doesn’t work at all!”
+“Hahahahaha! Useless, utterly useless!”
 
 @9608 Helmut · ヘルマット
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
@@ -129,7 +129,7 @@
 # 检查提示：未用必用译名：ヘルマット→Helmut
 > 「たとえ体当たりをしたところで
 >  このヘルマット艦は、びくともせんわ!」
-“Even if you ram me, this Helmut ship won’t budge!”
+“Ram it all you like, the Helmut ship won’t budge!”
 
 @9610 Helmut · ヘルマット
 # 触发：回避（通用，1/2）
@@ -137,18 +137,18 @@
 # 检查提示：未用必用译名：デスガイヤー→Death Gaia
 > 「見よ、デスガイヤー、ギルドローム
 >  わしはお前たちとは違う!」
-“Behold, Death Gaia, Gildrome, I’m different from the likes of you!”
+“Behold, Death Gaia, Gildrome! I am not like you!”
 
 @9611 Helmut · ヘルマット
 # 触发：回避（通用，2/2）
 > 「わしの恐ろしさが身にしみたか!」
-“Have you felt just how terrifying I am!”
+“Now do you understand how terrifying I am?!”
 
 @9612 Helmut · ヘルマット
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッフッフ、どうだ、手が出まい」
-“Heh heh heh, well, you can’t lay a hand on me.”
+“Heh heh heh, well? You can’t touch me, can you?”
 
 @9613 Helmut · ヘルマット
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

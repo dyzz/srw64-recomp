@@ -3,13 +3,13 @@
 @9533 Death Gaia · デスガイヤー
 # 触发：攻击（通用，1/8）
 > 「ええいめんどうだ!」
-“Enough, this is a pain!”
+“Bah, what a nuisance!”
 
 @9534 Death Gaia · デスガイヤー
 # 触发：攻击（通用，2/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いっきにケリをつけてやる!」
-“I’ll finish this all at once!”
+“I’ll finish this in one go!”
 
 @9535 Death Gaia · デスガイヤー
 # 触发：攻击（通用，3/8）
@@ -31,7 +31,7 @@
 @9538 Death Gaia · デスガイヤー
 # 触发：攻击（通用，6/8）
 > 「くるならきてみろ!」
-“Come on then, try it!”
+“Come at me if you dare!”
 
 @9539 Death Gaia · デスガイヤー
 # 触发：攻击（通用，7/8）
@@ -105,7 +105,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度でやられる俺ではないわ!」
-“I’m not one to be taken down by this much!”
+“It’ll take more than this to bring me down!”
 
 @9551 Death Gaia · デスガイヤー
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
@@ -116,7 +116,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かぬわ!」
-“It doesn’t hurt!”
+“That doesn’t hurt!”
 
 @9553 Death Gaia · デスガイヤー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）

@@ -41,7 +41,7 @@
 @7280 Ginrei · 銀鈴
 # 触发：攻击（通用，8/11）
 > 「これを受けてみなさい!」
-“Try taking this!”
+“Take this, if you can!”
 
 @7281 Ginrei · 銀鈴
 # 触发：攻击（通用，9/11）
@@ -78,7 +78,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これくらいのことでは、私は負けない!」
-“A little thing like this won’t beat me!”
+“I won’t lose to something like this!”
 
 @7288 Ginrei · 銀鈴
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
@@ -100,7 +100,7 @@
 @7291 Ginrei · 銀鈴
 # 触发：中伤（剩余 HP 30–90%）（通用，3/6）
 > 「パワーの差が圧倒的だわ、でもっ!」
-“The power gap is overwhelming, but still!”
+“They’re far stronger, but still!”
 
 @7292 Ginrei · 銀鈴
 # 触发：中伤（剩余 HP 30–90%）（通用，4/6）
@@ -112,7 +112,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うぅっ、許せないわ!」
-“Ugh, I won’t forgive this!”
+“Ugh, you’ll pay for this!”
 
 @7294 Ginrei · 銀鈴
 # 触发：中伤（剩余 HP 30–90%）（通用，6/6）
@@ -143,7 +143,7 @@
 @7299 Ginrei · 銀鈴
 # 触发：回避（通用，2/4）
 > 「気づくのが遅かったわね!」
-“You noticed too late!”
+“You should’ve noticed sooner!”
 
 @7300 Ginrei · 銀鈴
 # 触发：回避（通用，3/4）

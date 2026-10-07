@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「思い知れ! やれ、ロボ!」
-“You’ll learn your lesson! Get him, Robo!”
+“You’ll pay for this! Get him, Robo!”
 
 @7239 Daisaku · 大作
 # 触发：攻击（通用，2/11）
@@ -51,13 +51,13 @@
 @7247 Daisaku · 大作
 # 触发：攻击（通用，10/11）
 > 「ロボ! そいつをやっつけろ!」
-“Robo! Take that one down!”
+“Robo! Take it down!”
 
 @7248 Daisaku · 大作
 # 触发：攻击（通用，11/11）
 > 「ジャイアント・ロボ、そいつを
 >  やっつけるんだ!」
-“Giant Robo, take that one down!”
+“Giant Robo, take it down!”
 
 @7249 Daisaku · 大作
 # 触发：被击坠（通用，1/1）
@@ -91,12 +91,12 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「と、とうさん、僕は精一杯
 >  やってみますっ!」
-“D-dad, I’ll do my very best!”
+“D-dad, I’ll give it everything I’ve got!”
 
 @7255 Daisaku · 大作
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
 > 「うぅ、はやくっはやく動くんだロボッ!」
-“Ugh, hurry, hurry and move, Robo!”
+“Ugh, come on, move, Robo! Hurry!”
 
 @7256 Daisaku · 大作
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -117,13 +117,13 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「負けるな、ロボ!」
-“Don’t lose, Robo!”
+“Hang in there, Robo!”
 
 @7260 Daisaku · 大作
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このくらいでやられるロボじゃないぞ!」
-“This isn’t enough to take Robo down!”
+“It’ll take more than that to beat Robo!”
 
 @7261 Daisaku · 大作
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
@@ -165,7 +165,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：攻击无效情境
 > 「ロボにそんな攻撃っ!」
-“That kind of attack, against Robo?!”
+“That won’t work on Robo!”
 
 @7269 Daisaku · 大作
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -181,7 +181,7 @@
 # 触发：射程外，无法反击（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ロボの攻撃が届かない!?」
-“Robo’s attack can’t reach?!”
+“Robo can’t reach them?!”
 
 @7272 Daisaku · 大作
 # 触发：射程外，无法反击（通用，2/2）
@@ -244,7 +244,7 @@
 # 触发：使用〈格闘／拳法〉（低优先，可能被通用台词顶掉）
 # 审校：叩き出す是赶出去，不是“揍出来”
 > 「ロボ、そいつを叩きだせ!」
-“Robo, send that one flying!”
+“Robo, send it flying!”
 
 @14467 Daisaku · 大作
 # 触发：使用〈格闘／拳法〉（低优先，可能被通用台词顶掉）
