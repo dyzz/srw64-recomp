@@ -228,7 +228,8 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
     if (srw64_rdram) {
         using namespace srw64::touch_scene;
         current() = uint8_t(decide(srw64::guest::read(srw64_rdram, mode_address, 1), srw64::guest::read(srw64_rdram, map_state_address, 1),
-                                   srw64::guest::read(srw64_rdram, map_sub_address, 1), srw64::intro::title_major(), srw64::dialogue::reading()));
+                                   srw64::guest::read(srw64_rdram, map_sub_address, 1), srw64::intro::title_major(), srw64::dialogue::reading(),
+                                   srw64::intro::title_waiting()));
     }
 #endif
     return true;

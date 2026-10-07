@@ -15,10 +15,13 @@ namespace srw64::touch_scene {
 inline constexpr uint32_t mode_address = 0x8015DA02, map_state_address = 0x80172EB0, map_sub_address = 0x80172EB2;
 
 // `title_waiting`: PRESS START or the ring menu is up (intro::title_waiting); the opening
-// and the demos keep the title's corner entries away.
+// and the demos keep the title's corner entries away. Title state 13 is the zooming
+// prologue pages, the common one and each route's (native_intro.cpp): sprites, not lines,
+// so they get their own scene with the R+START skip.
 inline touch_pad::SceneId decide(unsigned mode, unsigned map_state, unsigned map_sub, int title_major, bool dialogue,
                                  bool title_waiting = false) {
     using touch_pad::SceneId;
+    if (title_major == 13 && !dialogue) return SceneId::Prologue;
     switch (mode) {
     case 2: case 0x1A: case 0x1C:   // the battle animation (its lines run on their own)
         return SceneId::BattleScene;
