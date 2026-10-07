@@ -199,6 +199,9 @@ void close_library(Library library) {dlclose(library);}
 bool load_library() {
     std::vector<std::string> candidates;
     if (const char* path = std::getenv("SRW64_LIBRASHADER"); path && *path) candidates.push_back(path);
+#ifdef __ANDROID__
+    candidates.push_back("librashader.so");   // in the APK's lib/arm64-v8a, beside libmain.so (build_game.py)
+#endif
     if (char* base = SDL_GetBasePath()) {
         const std::string dir(base);
         SDL_free(base);

@@ -187,11 +187,16 @@ std::vector<std::filesystem::path> retroarch_folders(const char* leaf) {
 }
 // Beside the program: Contents/Resources in the macOS app, the program's folder on Linux
 // (package_macos.py, build_linux.py); in a development build, build/filters copied by CMake.
+// On Android, the resources the app unpacks from the APK (build_game.py).
 std::filesystem::path shipped(const char* name) {
+#ifdef __ANDROID__
+    return srw64::app::bundled_resource(name);
+#else
     std::filesystem::path base;
     if(char* path=SDL_GetBasePath()){base=path;SDL_free(path);}
     std::error_code error;
     return !base.empty() && std::filesystem::is_directory(base/name,error)?base/name:std::filesystem::path();
+#endif
 }
 std::vector<LookFolder> roots(const char* ours,const char* theirs) {
     std::vector<LookFolder> list;

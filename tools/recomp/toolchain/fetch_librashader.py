@@ -8,9 +8,11 @@ it is compiled from the pinned commit with Cargo (the Linux container has Rust,
 tools/release/linux/Dockerfile), with the Vulkan runtime. Windows is compiled too, with
 D3D12 and Vulkan only: the published Windows build carries the D3D9 runtime, which imports
 D3DX9_43.dll from the old DirectX redistributable, so it fails to load on a stock Windows. --from-source does the same on
-any machine, e.g. a Vulkan build on a Mac to try the MoltenVK path. Either way the
-library, its header and its licence (MPL 2.0) land in build/recomp/thirdparty/librashader/
-<system> (darwin, linux, windows) unless --dest says otherwise."""
+any machine, e.g. a Vulkan build on a Mac to try the MoltenVK path. --android cross-compiles
+the Vulkan runtime for arm64 Android with the pinned NDK (tools/release/android/build_game.py
+puts it in the APK). Either way the library, its header and its licence (MPL 2.0) land in
+build/recomp/thirdparty/librashader/<system> (darwin, linux, windows, android) unless --dest
+says otherwise."""
 from __future__ import annotations
 
 import argparse
@@ -40,10 +42,13 @@ RELEASES = {
                            "8b2a50cefacf4073e8fa4757bec30242a788068c4096a580d94430688c184767"),
 }
 LICENSE = f"https://raw.githubusercontent.com/SnowflakePowered/librashader/librashader-v{VERSION}/LICENSE.md"
-LIBRARY = {"Darwin": "librashader.dylib", "Linux": "librashader.so", "Windows": "librashader.dll"}
-BUILT = {"Darwin": "liblibrashader_capi.dylib", "Linux": "liblibrashader_capi.so", "Windows": "librashader_capi.dll"}
+LIBRARY = {"Darwin": "librashader.dylib", "Linux": "librashader.so", "Windows": "librashader.dll", "Android": "librashader.so"}
+BUILT = {"Darwin": "liblibrashader_capi.dylib", "Linux": "liblibrashader_capi.so", "Windows": "librashader_capi.dll",
+         "Android": "liblibrashader_capi.so"}
 # The runtimes RT64 can need here: Vulkan everywhere, Metal on a Mac, D3D12 on Windows.
-FEATURES = {"Darwin": "runtime-vulkan runtime-metal", "Linux": "runtime-vulkan", "Windows": "runtime-vulkan runtime-d3d12"}
+FEATURES = {"Darwin": "runtime-vulkan runtime-metal", "Linux": "runtime-vulkan", "Windows": "runtime-vulkan runtime-d3d12",
+            "Android": "runtime-vulkan"}
+ANDROID_TRIPLE = "aarch64-linux-android"
 
 
 def fetch(url: str) -> bytes:
@@ -61,6 +66,21 @@ def from_release(system: str, name: str, digest: str, dest: Path) -> None:
     (dest / "LICENSE.md").write_bytes(fetch(LICENSE))
 
 
+def android_environment() -> dict[str, str]:
+    """The NDK's clang for the cc-built C++ (glslang, SPIRV-Cross) and the link. libc++ goes
+    in statically, as in libmain.so, so the APK needs no libc++_shared.so: named at the end
+    of the link, since rustc links without the driver's default libraries (CXXSTDLIB alone,
+    or -static-libstdc++, left libc++ symbols undefined and dlopen refused the library)."""
+    sys.path.insert(0, str(ROOT / "tools/release/android"))
+    from build_probe import MIN_SDK, llvm, ndk  # noqa: PLC0415
+    bin = llvm(ndk()) / "bin"
+    key = ANDROID_TRIPLE.replace("-", "_")
+    clang = bin / f"{ANDROID_TRIPLE}{MIN_SDK}-clang"
+    return {f"CC_{key}": str(clang), f"CXX_{key}": f"{clang}++", f"AR_{key}": str(bin / "llvm-ar"),
+            f"CXXSTDLIB_{key}": "", f"CARGO_TARGET_{key.upper()}_LINKER": f"{clang}++",
+            f"CARGO_TARGET_{key.upper()}_RUSTFLAGS": "-C link-arg=-lc++_static -C link-arg=-lc++abi -C link-arg=-Wl,-z,max-page-size=16384"}
+
+
 def from_source(system: str, dest: Path) -> None:
     if not (SOURCE / ".git").exists():
         subprocess.run(["git", "clone", "--quiet", REPOSITORY, str(SOURCE)], check=True)
@@ -75,9 +95,15 @@ def from_source(system: str, dest: Path) -> None:
     # A target folder per system and machine: the Mac and the Linux container share the tree.
     target = ROOT / f"build/recomp/thirdparty/librashader-target/{system.lower()}-{platform.machine()}"
     env = dict(os.environ, CARGO_TARGET_DIR=str(target))
-    subprocess.run(["cargo", "build", "--locked", "--profile", "optimized", "-p", "librashader-capi",
-                    "--no-default-features", "--features", FEATURES[system]], cwd=SOURCE, env=env, check=True)
-    shutil.copyfile(target / "optimized" / BUILT[system], dest / LIBRARY[system])
+    command = ["cargo", "build", "--locked", "--profile", "optimized", "-p", "librashader-capi",
+               "--no-default-features", "--features", FEATURES[system]]
+    built = target / "optimized"
+    if system == "Android":
+        env.update(android_environment())
+        command += ["--target", ANDROID_TRIPLE]
+        built = target / ANDROID_TRIPLE / "optimized"
+    subprocess.run(command, cwd=SOURCE, env=env, check=True)
+    shutil.copyfile(built / BUILT[system], dest / LIBRARY[system])
     shutil.copyfile(SOURCE / "include/librashader.h", dest / "librashader.h")
     shutil.copyfile(SOURCE / "LICENSE.md", dest / "LICENSE.md")
 
@@ -86,13 +112,16 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--force", action="store_true", help="fetch or build again even if the version is in place")
     parser.add_argument("--from-source", action="store_true", help="build with Cargo even where a release is pinned")
-    parser.add_argument("--dest", type=Path, default=DEST)
+    parser.add_argument("--android", action="store_true", help="cross-compile for arm64 Android")
+    parser.add_argument("--dest", type=Path)
     args = parser.parse_args()
-    system = platform.system()
+    system = "Android" if args.android else platform.system()
+    if args.dest is None:
+        args.dest = DEST.parent / system.lower()
     if system not in LIBRARY:
         print(f"librashader: nothing for {system} yet; filters stay off in this build", file=sys.stderr)
         return 0
-    release = RELEASES.get((system, platform.machine()))
+    release = None if system == "Android" else RELEASES.get((system, platform.machine()))
     source = args.from_source or release is None
     stamp_text = f"{VERSION} {'source' if source else 'release'}"
     dest = args.dest.resolve()

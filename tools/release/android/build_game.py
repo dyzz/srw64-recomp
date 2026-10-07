@@ -7,6 +7,8 @@ the prepared build/recomp/upstream, build/fonts), plus the static text libraries
 tools/release/android/build_dependencies.py. The NDK's CMake toolchain builds
 tools/release/android/game (SDL3, sdl2-compat, src/host as libmain.so); fonts, dialogue
 text and licences go into the APK's assets, which SetupActivity unpacks on first start.
+librashader (Vulkan, compiled with Cargo unless already built) goes beside libmain.so and
+the built-in RetroArch filters into the assets (docs/native/bezels-and-filters.md).
 
   tools/release/android/build_game.py [--install] [--run]
 """
@@ -22,6 +24,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_probe import ROOT, SDK, MIN_SDK, ARCHIVES, latest, cmake_bin, ndk, llvm, run, sources, java, package  # noqa: E402
 
+LIBRASHADER = ROOT / 'build/recomp/thirdparty/librashader/android/librashader.so'
 APP = Path(__file__).resolve().parent / 'app'
 GAME = Path(__file__).resolve().parent / 'game'
 PACKAGE, ACTIVITY = 'org.srw64.game', 'org.srw64.game.SetupActivity'
@@ -52,7 +55,7 @@ def native(build: Path, source: dict[str, Path], prefix: Path, file_to_c: Path, 
             raise SystemExit(f'srw64_cpu failed: {errors} errors (output kept out of the log)')
         log.unlink()
     run(cmake / 'cmake', '--build', build, '--target', 'srw64-gfx-host', 'SDL3-shared', '-j', jobs)
-    libraries = [build / 'sdl3/libSDL3.so', build / 'sdl2-compat/libSDL2.so', build / 'host/libmain.so']
+    libraries = [build / 'sdl3/libSDL3.so', build / 'sdl2-compat/libSDL2.so', build / 'host/libmain.so', LIBRASHADER]
     strip = llvm(ndk_root) / 'bin/llvm-strip'
     stripped = build / 'stripped'
     stripped.mkdir(exist_ok=True)
@@ -87,8 +90,11 @@ def stage_assets(build: Path, deps: Path) -> Path:
         target = resources / 'dialogue' / path.relative_to(text)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
+    filters = ROOT / 'build/filters'
+    shutil.copytree(filters, resources / 'filters', ignore=shutil.ignore_patterns('.commit'))
     licenses = resources / 'licenses'
     licenses.mkdir()
+    shutil.copyfile(LIBRASHADER.parent / 'LICENSE.md', licenses / 'librashader-LICENSE.md')
     archives = ARCHIVES
     for name, pattern in (('sdl3', 'LICENSE.txt'), ('sdl2-compat', 'LICENSE.txt'), ('freetype', 'LICENSE.TXT'),
                           ('harfbuzz', 'COPYING'), ('icu', 'LICENSE')):
@@ -113,6 +119,8 @@ def main() -> int:
     if not (prefix / 'lib/libicuuc.a').exists():
         raise SystemExit('Build the text libraries first: tools/release/android/build_dependencies.py')
     source = sources()
+    run(sys.executable, ROOT / 'tools/recomp/toolchain/fetch_librashader.py', '--android')
+    run(sys.executable, ROOT / 'tools/content/fetch_filters.py')
     tools = latest(SDK / 'build-tools')
     android_jar = latest(SDK / 'platforms') / 'android.jar'
     libraries = native(args.build, source, prefix, host_file_to_c(args.build.parent), not args.no_prepare,

@@ -319,6 +319,16 @@ jobs:
             build/macos-deps/sources
           key: android-deps-${{ hashFiles('config/recomp/macos-dependencies.json', 'tools/release/android/build_dependencies.py') }}-v1
 
+      # librashader for the RetroArch filters, cross-compiled with Cargo (fetch_librashader.py
+      # --android); the cache keeps the finished library.
+      - uses: actions/cache@v5
+        with:
+          path: build/recomp/thirdparty/librashader/android
+          key: librashader-android-${{ hashFiles('tools/recomp/toolchain/fetch_librashader.py') }}
+
+      - name: Rust target
+        run: rustup target add aarch64-linux-android
+
       - name: FreeType, HarfBuzz, ICU (static, arm64)
         run: .venv/bin/python tools/release/android/build_dependencies.py --jobs 4 > deps-build.log 2>&1 || (tail -40 deps-build.log; exit 1)
 

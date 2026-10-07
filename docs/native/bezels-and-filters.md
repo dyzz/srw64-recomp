@@ -1,6 +1,6 @@
 # 框体与滤镜（RetroArch 兼容）
 
-日期：2026-10-05。设置「通用」页的三行：**框体**、**滤镜**、**滤镜行数**。滤镜支持 Metal（macOS）、Vulkan（Linux、Steam Deck；Mac 上可用 MoltenVK 试；2026-10-06 Steam Deck 实机通过）与 D3D12（Windows，2026-10-06 加上，见 §2）。用户定：框体只在画面比例设成 4:3 时才有（宽屏照旧填满）；滤镜要兼容 RetroArch 的全部 slang 预设，所以用 librashader 跑，不自己写着色器。
+日期：2026-10-05。设置「通用」页的三行：**框体**、**滤镜**、**滤镜行数**。滤镜支持 Metal（macOS）、Vulkan（Linux、Steam Deck、安卓；Mac 上可用 MoltenVK 试；2026-10-06 Steam Deck 实机通过，2026-10-07 安卓实机通过）与 D3D12（Windows，2026-10-06 加上，见 §2）。用户定：框体只在画面比例设成 4:3 时才有（宽屏照旧填满）；滤镜要兼容 RetroArch 的全部 slang 预设，所以用 librashader 跑，不自己写着色器。
 
 ## 1. 用法与目录
 
@@ -12,7 +12,7 @@
 | **我的（自己添加）** | 数据文件夹的 `filters/` | 数据文件夹的 `bezels/` | 第一次打开设置时自动建好，里面放一份三语的 `README.txt` 说明放什么；桌面上列表里有「在文件管理器里打开这个文件夹」 |
 | **RetroArch 自带** | `shaders/shaders_slang` | `overlays/` | 装了 RetroArch 才有：macOS `~/Library/Application Support/RetroArch`，Linux `~/.config/retroarch`、Flatpak `~/.var/app/org.libretro.RetroArch/config/retroarch`、Steam 版，Windows `%APPDATA%\RetroArch` 与 `C:\RetroArch-Win64` |
 
-数据文件夹就是存档旁的那个（macOS `~/Library/Application Support/srw64-recomp`，Linux／Steam Deck `~/.local/share/srw64-recomp`）。
+数据文件夹就是存档旁的那个（macOS `~/Library/Application Support/srw64-recomp`，Linux／Steam Deck `~/.local/share/srw64-recomp`，安卓是应用私有的 `files/user`）。安卓与 Steam Deck 不显示「在文件管理器里打开」，也不显示窗口大小与显示方式。
 
 - **玩家自己加滤镜**：把 RetroArch 的预设（`.slangp`）连同它用到的 `.slang` 和图片一起复制进「我的」`filters/`，保持原来的文件夹结构（很多预设引用 `../include` 或 `../../include`），子文件夹随意。浏览列表每次打开都重新读文件夹，加完不用重启。
 - **玩家自己加框体**：中间有透明窗口的 `.png`，或指向它的 RetroArch overlay `.cfg`（`overlay0_overlay = 图片名.png`），放进「我的」`bezels/`。透明窗口自动对准 4:3 画面（§3）。
@@ -26,6 +26,7 @@
 - **librashader**（v0.12.0，MPL 2.0）：运行时加载（`dlopen`；Windows 用 `LoadLibraryW` 找 exe 旁的 `librashader.dll`），没有它时宿主照常运行、设置里写「这个版本还不能用滤镜」。`tools/recomp/toolchain/fetch_librashader.py` 放到 `build/recomp/thirdparty/librashader/<系统>/`：
   - macOS：取官方发布包（核对 SHA-256，只带 Metal 与 OpenGL）。CMake 把 `librashader.dylib` 拷到宿主旁边；发布版由 `build_release.py` 放进 `.app` 的 `Contents/MacOS`，许可证进 `Resources/licenses`。
   - Linux／Steam Deck：官方不发二进制，在 Linux 构建容器里按固定提交（`87e8a97`）用 Cargo 编译（容器里装了 Rust 1.97.1，`tools/release/linux/Dockerfile`），只开 Vulkan 运行时；`build_linux.py` 把 `librashader.so` 放进包的 `lib/`，许可证进 `licenses/`。
+  - 安卓：`fetch_librashader.py --android` 用固定 NDK 的 clang 交叉编译 arm64、只开 Vulkan（`rustup target add aarch64-linux-android`）。libc++ 静态链进去（rustc 链接不带驱动的默认库，所以在链接末尾写明 `-lc++_static -lc++abi`；只设 `CXXSTDLIB` 或 `-static-libstdc++` 都会留下未定义的 libc++ 符号，`dlopen` 拒绝加载），库只依赖 libc/libm/libdl。`build_game.py` 自己调它和 `fetch_filters.py`：`librashader.so` 放进 APK 的 `lib/arm64-v8a`（宿主按库名 `dlopen`），内置滤镜进 `assets/resources/filters`，由 SetupActivity 解到 `files/resources/filters`（`bundled_resource`）。CI 的 android 任务按脚本哈希缓存编好的库。
   - Windows：也按固定提交用 Cargo 编译，只开 D3D12 与 Vulkan 运行时（CI 的 Windows 任务里编，编好的库按 `fetch_librashader.py` 的哈希缓存）；包里 exe 旁放 `librashader.dll` 和 `filters/`，许可证进 `licenses/`。**不用官方 Windows 发布包**：它带 D3D9 运行时，导入 `D3DX9_43.dll`（旧 DirectX 再发行包才有），干净的 Windows 上加载失败（错误 126），设置里就一直显示「不能用滤镜」——这正是 Windows 版以前滤镜不能用的原因之一（另一半是宿主根本没有 Windows 加载与 D3D12 代码）。D3D12 运行时延迟加载 `dxcompiler.dll`，用包里 RT64 带的那份。
   - `--from-source` 在任何机器上从源码编译；在 Mac 上编一个带 Vulkan 的版本，配合 `SRW64_GRAPHICS_API=vulkan`（MoltenVK）与 `SRW64_LIBRASHADER=<库>` 试 Vulkan 这一路（`check_filter.py --vulkan <库>`）。
   - 「关于」页注明 librashader 与许可证。
@@ -54,4 +55,5 @@
 - 目录（2026-10-06，`check_filter.py`，15 项全过）：起点依次是内置、我的、RetroArch；「我的」`filters/` 自动建好并带 README；内置的 `crt/zfast-crt` 能直接选用。
 - Steam Deck 实机（2026-10-06，fd28b1b 的 Linux 包，`tools/release/linux/attach.py --start` 带单独数据目录）：librashader 加载、crt-lottes 与多 pass 的 crt-guest-advanced 正常、4:3＋框体正常，设置能找到 Flatpak 版 RetroArch 的 `shaders_slang`。
 - Windows 实机（2026-10-06，AWS g4dn.xlarge：Windows Server 2022、Tesla T4、NVIDIA 驱动 32.0.15.9686，D3D12；CI 包经 `--debug` 加 ssh 转发远程驱动，证据在本地 `build/windows/filters-aws-20261006/`）：`SRW64_FILTER library=…\librashader.dll backend=d3d12`；内置的 crt-lottes（240 行）、zfast-crt（窗口）、多 pass 的 crt-guest-advanced-fast（480 行）、xbrz-freescale、ntsc-adaptive 都编译并显示；坏预设报错；关掉恢复；4:3＋框体＋crt-easymode；设置窗口压在滤镜上清晰；窗口改 1920×1080 后照常；设置里浏览内置与「我的」目录（反斜杠路径）并选用、README 自动建好；全程日志无 frame error。同时发现并修了两处：官方 Windows 库缺 `D3DX9_43.dll`（见 §2）；框体＋滤镜时姓名页整页只剩底色——RmlUi 先画元素自己的背景再画子元素，body 背景落在前一个文档（框体，chrome 层）的那一遍、盖住了整张滤镜画面，现在每个文档末尾加一个最后画的 `layer-mark.layer-end` 退回游戏层（Link Battler 页同样受益；这一改动编出时 AWS 机器已关，尚未实机复测）。
-- 没做：安卓（要用 NDK 编库）；Windows 上的 Vulkan 这一路（发布包只走 D3D12，`--play` 清掉 `SRW64_GRAPHICS_API`，RT64 只在 D3D12 不可用时退回 Vulkan）；预设参数调节（RetroArch 的 shader parameters）；动画框体。
+- 安卓实机（2026-10-07，Solana Seeker：Mali-G615 MC2、Vulkan，本机 `build_game.py` 的包，`attach.py` 经 MCP 驱动）：库加载，内置 9 个预设都能编译显示；4:3＋框体（推到「我的框体」的 PNG）正常，设置按钮与触屏键在滤镜上清晰。帧率（演示战斗，HD）：不开 30；scanline、zfast-crt、xbrz-freescale 30；crt-easymode 29；crt-geom、ntsc-adaptive、crt-guest-advanced-fast 约 28；sharp-bilinear 25；**crt-lottes 只有 6–8**，240/480/960 行都一样——是它每像素的采样量（输出约 1600×1200）在这块 GPU 上吃不消，不是同步问题。标题画面 crt-guest-advanced-fast 约 22（不开 29）。「我的」文件夹在应用私有目录 `files/user/filters`，玩家在手机上放不进文件，还没解决。
+- 没做：Windows 上的 Vulkan 这一路（发布包只走 D3D12，`--play` 清掉 `SRW64_GRAPHICS_API`，RT64 只在 D3D12 不可用时退回 Vulkan）；预设参数调节（RetroArch 的 shader parameters）；动画框体。
