@@ -5,7 +5,7 @@
 //   node web/api/admin.mjs dismiss|question|process <reason> <id> [id…]
 //   node web/api/admin.mjs restore <id> [id…]
 //   node web/api/admin.mjs hide|unhide <id> [id…]      words off / back on the public lists
-//   node web/api/admin.mjs ban|unban <id> [id…]        the authors of these suggestions
+//   node web/api/admin.mjs ban|unban <id> [id…]        these suggestions' authors and addresses (30 days)
 //
 // Uses ~/.config/srw64/site-admin-token (written by web/deploy/deploy.sh) and
 // https://srw64.dreamquest.club, or SRW64_API_BASE / SRW64_ADMIN_TOKEN.
@@ -25,7 +25,7 @@ const call = async (path, init = {}) => {
 if (cmd === 'list') {
   const { items } = await call(`admin/suggestions${args[0] ? `?status=${args[0]}` : ''}`);
   for (const x of items) {
-    console.log(`#${x.id} [${x.status}]${x.hidden ? ' [hidden]' : ''} ${x.target_type} ${x.target_id} ${x.locale} ${x.kind} — ${x.author.name} (participant ${x.participant_id}${x.banned ? ', banned' : ''})`);
+    console.log(`#${x.id} [${x.status}]${x.hidden ? ' [hidden]' : ''} ${x.target_type} ${x.target_id} ${x.locale} ${x.kind} — ${x.author.name} (participant ${x.participant_id}${x.banned ? ', banned' : ''}${x.ip_banned ? ', address banned' : ''})`);
     console.log(`   now: ${x.current.replace(/\n/g, ' / ')}`);
     if (x.proposed) console.log(`   new: ${x.proposed.replace(/\n/g, ' / ')}`);
     if (x.reason) console.log(`   why: ${x.reason}`);

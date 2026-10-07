@@ -15,7 +15,7 @@
 //
 // A suggestion targets a dialogue line (`base:t00_NNNNN`) or a Library name
 // (`unit:N`, `person:N`, `weapon:N`) in one translation locale (zh-Hans, en). Its
-// state is derived: dismissed or questioned by the maintainer; processed when the
+// state is derived (others see only processed and dismissed ones): dismissed or questioned by the maintainer; processed when the
 // maintainer says so or when the live translation no longer equals the text the
 // suggestion was made against (adopted when it now equals the proposal); else pending.
 // The site never becomes the translation's master copy: accepted changes go into
@@ -126,6 +126,8 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS suggestions_target ON suggestions (target_type, target_id, locale);
   CREATE TABLE IF NOT EXISTS admin_log (
     id INTEGER PRIMARY KEY, suggestion_id INTEGER NOT NULL, action TEXT NOT NULL, reason TEXT NOT NULL, at TEXT NOT NULL);
+  CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+  CREATE TABLE IF NOT EXISTS bans (ip_hash TEXT PRIMARY KEY, until TEXT NOT NULL, reason TEXT NOT NULL DEFAULT '', at TEXT NOT NULL);
 `);
 // Columns added after the first databases: nickname faces, and moderation (a suggestion
 // hidden from the public lists, a participant banned from writing).
@@ -133,8 +135,28 @@ const columns = (table) => db.prepare(`PRAGMA table_info(${table})`).all().map((
 if (!columns('participants').includes('custom_avatar')) db.exec('ALTER TABLE participants ADD COLUMN custom_avatar INTEGER');
 if (!columns('participants').includes('banned')) db.exec('ALTER TABLE participants ADD COLUMN banned INTEGER NOT NULL DEFAULT 0');
 if (!columns('suggestions').includes('hidden')) db.exec('ALTER TABLE suggestions ADD COLUMN hidden INTEGER NOT NULL DEFAULT 0');
+if (!columns('suggestions').includes('ip_hash')) db.exec('ALTER TABLE suggestions ADD COLUMN ip_hash TEXT');
 const now = () => new Date().toISOString();
 const sha = (s) => createHash('sha256').update(s).digest('hex');
+
+// ---------------------------------------------------------------- abuse
+// Identities are only cookies, so a ban holds the address a suggestion came from: a salted
+// hash (the salt never leaves this database), kept 30 days on the suggestion and for the
+// length of the ban, then dropped. Behind the CDN the address is X-Real-IP (Nginx).
+const KEEP_DAYS = 30;
+if (!db.prepare("SELECT 1 FROM meta WHERE key = 'ip_salt'").get()) {
+  db.prepare("INSERT INTO meta (key, value) VALUES ('ip_salt', ?)").run(randomBytes(32).toString('hex'));
+}
+const SALT = db.prepare("SELECT value FROM meta WHERE key = 'ip_salt'").get().value;
+const clientIp = (req) => String(req.headers['x-real-ip'] || req.socket.remoteAddress || '');
+const ipHash = (req) => sha(`${SALT}:${clientIp(req)}`);
+const daysAgo = (n) => new Date(Date.now() - n * 86400e3).toISOString();
+function forgetAddresses() {
+  db.prepare('UPDATE suggestions SET ip_hash = NULL WHERE ip_hash IS NOT NULL AND created_at < ?').run(daysAgo(KEEP_DAYS));
+  db.prepare('DELETE FROM bans WHERE until < ?').run(now());
+}
+forgetAddresses();
+const ipBanned = (req) => !!db.prepare('SELECT 1 FROM bans WHERE ip_hash = ? AND until > ?').get(ipHash(req), now());
 
 // ---------------------------------------------------------------- identity
 function cookies(req) {
@@ -197,9 +219,12 @@ function view(row, me, lang, full = false) {
     author: display(owner, lang), mine: !!me && me.id === row.participant_id,
     ...st, result: st.status === 'processed' ? (st.adopted ? 'adopted' : 'final') : st.status,
     admin_reason: row.admin_reason, admin_at: row.admin_at, question_response: words(row.question_response),
-    ...(full ? { participant_id: row.participant_id, banned: !!owner?.banned } : {}),
+    ...(full ? { participant_id: row.participant_id, banned: !!owner?.banned,
+      ip_banned: !!row.ip_hash && !!db.prepare('SELECT 1 FROM bans WHERE ip_hash = ? AND until > ?').get(row.ip_hash, now()) } : {}),
   };
 }
+// What others may see: suggestions the maintainers have handled.
+const PUBLIC = new Set(['processed', 'dismissed']);
 const clean = (s, max) => String(s ?? '').replace(/\r\n?/g, '\n').trim().slice(0, max);
 // A link a suggestion keeps back to its page: only a path on this site (/zh/…, /en/…,
 // /ja/…). Anything else, javascript: and other sites included, is dropped.
@@ -215,7 +240,7 @@ const hits = new Map();
 function limited(req) {
   // Nginx sets X-Real-IP: the visitor behind the CDN when the request came from a CDN
   // address (real_ip), else the peer itself. Headers a client sends are never trusted.
-  const ip = req.headers['x-real-ip'] || req.socket.remoteAddress;
+  const ip = clientIp(req);
   const minute = Math.floor(Date.now() / 60000);
   const key = `${ip}:${minute}`;
   const n = (hits.get(key) || 0) + 1;
@@ -284,6 +309,7 @@ const routes = {
   'POST /api/me': async (req, url, res) => {
     if (limited(req)) return [429, { error: 'too many requests' }];
     const body = await readBody(req);
+    if (ipBanned(req)) return [403, { error: 'banned' }];
     let me = participantOf(req) || newParticipant(res);
     if (me.banned) return [403, { error: 'banned' }];
     if (body.mode === 'custom') {
@@ -328,8 +354,9 @@ const routes = {
       if (LOCALES.has(p.get('locale'))) { where.push('locale = ?'); args.push(p.get('locale')); }
       rows = recent(where.join(' AND '), args).reverse();
     }
-    // Hidden suggestions show only to their author.
-    let items = rows.filter((r) => !r.hidden || (me && r.participant_id === me.id)).map((r) => view(r, me, lang));
+    // Others see a suggestion only once the maintainers have handled it (done or declined)
+    // and never a hidden one; its author always sees their own.
+    let items = rows.map((r) => view(r, me, lang)).filter((it) => it.mine || (!it.hidden && PUBLIC.has(it.status)));
     const counts = { pending: 0, questioned: 0, processed: 0, dismissed: 0 };
     for (const it of items) counts[it.status]++;
     if (p.get('status')) items = items.filter((it) => it.status === p.get('status'));
@@ -352,6 +379,7 @@ const routes = {
     if (proposed && proposed === tgt.current) return [400, { error: 'proposal equals the current text' }];
     const kind = KINDS.has(b.kind) ? b.kind : 'other';
     const requestId = clean(b.request_id, 64) || randomBytes(8).toString('hex');
+    if (ipBanned(req)) return [403, { error: 'banned' }];
     const me = participantOf(req) || newParticipant(res);
     if (me.banned) return [403, { error: 'banned' }];
     const ctx = { scene: tgt.scene ?? (Number.isInteger(b.context?.scene) ? b.context.scene : undefined), href: sitePath(b.context?.href), speaker: clean(b.context?.speaker, 60) || undefined };
@@ -359,8 +387,9 @@ const routes = {
     const existing = db.prepare('SELECT * FROM suggestions WHERE participant_id = ? AND request_id = ?').get(me.id, requestId);
     if (existing) return [200, { item: view(existing, me, url.searchParams.get('lang') || 'zh') }];
     const { lastInsertRowid } = db.prepare(`INSERT INTO suggestions
-      (participant_id, request_id, target_type, target_id, locale, kind, source_text, current_text, proposed, reason, context_json, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(me.id, requestId, type, String(b.target_id), locale, kind, tgt.source, tgt.current, proposed, reason, JSON.stringify(ctx), t, t);
+      (participant_id, request_id, target_type, target_id, locale, kind, source_text, current_text, proposed, reason, context_json, created_at, updated_at, ip_hash)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(me.id, requestId, type, String(b.target_id), locale, kind, tgt.source, tgt.current, proposed, reason, JSON.stringify(ctx), t, t, ipHash(req));
+    forgetAddresses();
     return [201, { item: view(db.prepare('SELECT * FROM suggestions WHERE id = ?').get(lastInsertRowid), me, url.searchParams.get('lang') || 'zh') }];
   },
 
@@ -371,7 +400,7 @@ const routes = {
     const me = participantOf(req);
     const row = me && db.prepare('SELECT * FROM suggestions WHERE id = ? AND participant_id = ?').get(Number(b.id), me.id);
     if (!row) return [404, { error: 'not found' }];
-    if (me.banned) return [403, { error: 'banned' }];
+    if (me.banned || ipBanned(req)) return [403, { error: 'banned' }];
     const st = status(row).status;
     if (b.answer != null) {
       if (st !== 'questioned') return [409, { error: 'no open question' }];
@@ -398,8 +427,9 @@ const routes = {
   },
 
   // Maintainer: {action: dismiss|question|process|restore, ids: [..], reason}, or moderation:
-  // hide|unhide (the suggestions' words leave the public lists), ban|unban (their authors
-  // can no longer write; a ban also drops a nickname for a random character).
+  // hide|unhide (the suggestions' words leave the public lists), ban|unban (their authors'
+  // identities and the addresses the suggestions came from, for `days` (30), can no longer
+  // write; a ban also drops a nickname for a random character).
   'POST /api/admin/suggestions': async (req) => {
     if (!admin(req)) return [401, { error: 'admin token required' }];
     const b = await readBody(req);
@@ -416,11 +446,19 @@ const routes = {
           if (what === 'hidden') {
             changed += db.prepare('UPDATE suggestions SET hidden = ? WHERE id = ?').run(value, id).changes;
           } else {
-            const row = db.prepare('SELECT participant_id FROM suggestions WHERE id = ?').get(id);
+            // The identity and, while the suggestion still keeps it, the address it came from.
+            const row = db.prepare('SELECT participant_id, ip_hash FROM suggestions WHERE id = ?').get(id);
             if (!row) continue;
             changed += db.prepare('UPDATE participants SET banned = ?, updated_at = ? WHERE id = ?').run(value, t, row.participant_id).changes;
             if (value) db.prepare(`UPDATE participants SET mode = 'pilot', pilot_id = ?, custom_name = NULL WHERE id = ? AND mode = 'custom'`)
               .run(randomOf(pilots).id, row.participant_id);
+            if (row.ip_hash && value) {
+              const days = Math.min(365, Math.max(1, Number(b.days) || KEEP_DAYS));
+              db.prepare('INSERT OR REPLACE INTO bans (ip_hash, until, reason, at) VALUES (?, ?, ?, ?)')
+                .run(row.ip_hash, new Date(Date.now() + days * 86400e3).toISOString(), reason, t);
+            } else if (row.ip_hash) {
+              db.prepare('DELETE FROM bans WHERE ip_hash = ?').run(row.ip_hash);
+            }
           }
           db.prepare('INSERT INTO admin_log (suggestion_id, action, reason, at) VALUES (?, ?, ?, ?)').run(id, b.action, reason, t);
         }
