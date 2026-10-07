@@ -9,7 +9,7 @@
 @10264 Gandal · ガンダル
 # 触发：攻击（通用，2/13）
 > 「攻めろ! 攻めまくるのだ!」
-“Attack! Attack them all!”
+“Attack! Keep attacking!”
 
 @10265 Gandal · ガンダル
 # 触发：攻击（通用，3/13）
@@ -25,7 +25,7 @@
 # 触发：攻击（通用，5/13）
 # 审校：殺してもかまわん 是准许，不是 if you must 的勉强
 > 「よし、殺してもかまわん。倒せ!」
-“Good. You may kill them. Take them down!”
+“Good. Kill them if you must. Take them down!”
 
 @10268 Gandal · ガンダル
 # 触发：攻击（通用，6/13）
@@ -46,7 +46,7 @@
 @10271 Gandal · ガンダル
 # 触发：攻击（通用，9/13）
 > 「息の根を止めてやれ!」
-“Put an end to them!”
+“Snuff them out!”
 
 @10272 Gandal · ガンダル
 # 触发：攻击（通用，10/13）
@@ -66,7 +66,7 @@
 @10275 Gandal · ガンダル
 # 触发：攻击（通用，13/13）
 > 「よし! 発射!」
-“Good! Fire!”
+“All right! Fire!”
 
 @10276 Gandal · ガンダル
 # 触发：被击坠（通用，1/6）
@@ -83,21 +83,21 @@
 @10278 Gandal · ガンダル
 # 触发：被击坠（通用，3/6）
 > 「ええぃ、作戦は失敗だ!」
-“Grr, the operation is a failure!”
+“Grr, the operation has failed!”
 
 @10279 Gandal · ガンダル
 # 触发：被击坠（通用，4/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しまった、やられた!? ええぃ、
 >  これまでか!」
-“Damn, I’ve been hit?! Grr, is this the end?!”
+“Damn, they got me?! Grr, is this the end?!”
 
 @10280 Gandal · ガンダル
 # 触发：被击坠（通用，5/6）
 # 审校：My life as Gandal 意思错；中文更顺
 > 「ぐわあぁぁっ!! このガンダルの命、
 >  まもなく果てるだろう……」
-“Gwaaaah!! The life of Gandal is about to end...”
+“Gwaaaah!! So this is where Gandal’s life ends...”
 
 @10281 Gandal · ガンダル
 # 触发：被击坠（通用，6/6）
@@ -117,12 +117,12 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「全員緊急退避だ、
 >  急げ! 爆発するぞ!」
-“Everyone, emergency retreat, hurry! It’s going to explode!”
+“All hands, evacuate now! Hurry, it’s going to blow!”
 
 @10284 Gandal · ガンダル
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/7）
 > 「おおおっ!? くっ……なんと強い!」
-“Ooooh?! Ngh... how strong!”
+“Ooooh?! Ngh... such strength!”
 
 @10285 Gandal · ガンダル
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/7）
@@ -181,29 +181,29 @@
 @10295 Gandal · ガンダル
 # 触发：中伤（剩余 HP 30–90%）（通用，7/7）
 > 「なにをぐずぐずしておる!」
-“What are you hesitating for?!”
+“Why are you dithering?!”
 
 @10296 Gandal · ガンダル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/8）
 > 「ばかめ、うまくこちらの誘いに
 >  乗ってきたぞ」
-“Fools, they took our bait perfectly.”
+“Fools, they’ve fallen right into our trap.”
 
 @10297 Gandal · ガンダル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/8）
 > 「また、しゃしゃりでおって!」
-“Meddling again, are you!”
+“Sticking your nose in again?!”
 
 @10298 Gandal · ガンダル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/8）
 > 「どうしたというのだ!」
-“What is the matter?!”
+“What is happening?!”
 
 @10299 Gandal · ガンダル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ゆるせん、成敗してくれる」
-“Unforgivable, I’ll punish you.”
+“Unforgivable! You will be punished!”
 
 @10300 Gandal · ガンダル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/8）
@@ -219,7 +219,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，7/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「何ごとだ、そうぞうしい」
-“What’s going on? Such a racket.”
+“What is all this racket?”
 
 @10303 Gandal · ガンダル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，8/8）
@@ -250,7 +250,7 @@
 @10308 Gandal · ガンダル
 # 触发：回避（通用，5/6）
 > 「さすが、たいした力だ!」
-“As expected, impressive power!”
+“Impressive! Such power!”
 
 @10309 Gandal · ガンダル
 # 触发：回避（通用，6/6）
@@ -273,7 +273,7 @@
 @10312 Gandal · ガンダル
 # 触发：攻击无效（护罩／装甲）（通用，3/3）
 > 「さすが、たいした力だ!」
-“As expected, impressive power!”
+“Impressive! Such power!”
 
 @10313 Gandal · ガンダル
 # 触发：弹药／EN 不足，无法反击（通用，1/4）
@@ -293,7 +293,7 @@
 @10316 Gandal · ガンダル
 # 触发：弹药／EN 不足，无法反击（通用，4/4）
 > 「おのれ! あと一息だというのに」
-“Curse you! And we were just one step away!”
+“Curse it! We were one step away!”
 
 @10317 Gandal · ガンダル
 # 触发：射程外，无法反击（通用，1/3）
@@ -310,7 +310,7 @@
 @10319 Gandal · ガンダル
 # 触发：射程外，无法反击（通用，3/3）
 > 「気にするな! 近い敵を探せ!」
-“Never mind that! Find a nearby enemy!”
+“Never mind! Go after a closer target!”
 
 @15794 Gandal · ガンダル
 # 触发：使用〈巨大ベガトロンビーム砲〉（低优先，可能被通用台词顶掉）

@@ -28,12 +28,12 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フフフフフフ、地獄のダンスを
 >  踊らせてやるぞ」
-“Heh heh heh heh heh, I’ll make you dance the dance of hell.”
+“Heh heh heh heh heh, I’ll make you dance in hell.”
 
 @10353 Blacky · ブラッキー
 # 触发：攻击（通用，6/13）
 > 「徹底的に壊せ、そして燃やすのだ」
-“Destroy them completely, then burn them.”
+“Smash everything, then burn it all.”
 
 @10354 Blacky · ブラッキー
 # 触发：攻击（通用，7/13）
@@ -43,7 +43,7 @@
 @10355 Blacky · ブラッキー
 # 触发：攻击（通用，8/13）
 > 「総攻撃開始ーっ!」
-“All-out attack, begin!”
+“Begin the all-out attack!”
 
 @10356 Blacky · ブラッキー
 # 触发：攻击（通用，9/13）
@@ -85,7 +85,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐあぁっ、この恨みは必ず、必ず、今度
 >  こそ!」
-“Gwaah, I’ll make you pay for this, I swear it, next time for sure!”
+“Gwaah, you’ll pay for this, I swear it, next time!”
 
 @10363 Blacky · ブラッキー
 # 触发：被击坠（通用，3/3）
@@ -110,14 +110,14 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おぉぉっ!? おのれ、この借りは必ず
 >  返してやるぞ!」
-“Ohh?! Curse you, I’ll repay this debt for sure!”
+“Ohh?! Curse you, I’ll pay you back for this!”
 
 @10367 Blacky · ブラッキー
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ!? て、撤退準備を
 >  始めろ! 急げ!」
-“Waaaah?! B-begin retreat preparations! Hurry!”
+“Waaaah?! P-prepare to retreat! Hurry!”
 
 @10368 Blacky · ブラッキー
 # 触发：中伤（剩余 HP 30–90%）（通用，1/7）
@@ -166,14 +166,14 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ゆるさん!」
-“I won’t forgive you!”
+“Unforgivable!”
 
 @10377 Blacky · ブラッキー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この期に及んで強がりなど
 >  通用せんぞ」
-“Bluffing won’t work at this point.”
+“Your bluster won’t help you now.”
 
 @10378 Blacky · ブラッキー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
@@ -255,7 +255,7 @@
 @15803 Blacky · ブラッキー
 # 触发：对手驾驶员〈デューク〉
 > 「グレンダイザーめ、覚悟!」
-“Grendizer, prepare yourself!”
+“Grendizer, you’re finished!”
 
 @15804 Blacky · ブラッキー
 # 触发：对手驾驶员〈デューク〉

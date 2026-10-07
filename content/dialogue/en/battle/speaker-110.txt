@@ -18,7 +18,7 @@
 @9811 Dark General · 暗黒大将軍
 # 触发：攻击（通用，4/10）
 > 「憎悪と呪いをこめて!」
-“With hatred and curses!”
+“With all my hatred and all my curses!”
 
 @9812 Dark General · 暗黒大将軍
 # 触发：攻击（通用，5/10）
@@ -47,13 +47,13 @@
 # 触发：攻击（通用，9/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「息の根を止めてやる!」
-“I’ll put an end to you!”
+“I’ll snuff the life out of you!”
 
 @9817 Dark General · 暗黒大将軍
 # 触发：攻击（通用，10/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「覚悟はいいな!」
-“You’d better be ready!”
+“Prepare yourself!”
 
 @9818 Dark General · 暗黒大将軍
 # 触发：被击坠（通用，1/4）
@@ -64,26 +64,26 @@
 # 触发：被击坠（通用，2/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、必ず地獄へ送ってやるぞ!」
-“Ngh, I’ll send you to hell for sure!”
+“Ngh, I swear I’ll send you to hell!”
 
 @9820 Dark General · 暗黒大将軍
 # 触发：被击坠（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそう、今日の屈辱は生涯
 >  忘れぬぞ」
-“Damn it, I’ll never forget today’s humiliation!”
+“Damn it, I shall never forget this day’s humiliation!”
 
 @9821 Dark General · 暗黒大将軍
 # 触发：被击坠（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「次は必ず勝てる、必ず……」
-“Next time I’ll win for sure, for sure...”
+“Next time I will win. I will...”
 
 @9822 Dark General · 暗黒大将軍
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそう、奴らだけいい気にはさせんぞ」
-“Damn it, I won’t let them have it all their way.”
+“Damn it, I won’t let them have the last laugh.”
 
 @9823 Dark General · 暗黒大将軍
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -95,7 +95,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むうう、やむをえん」
-“Mmm, it can’t be helped.”
+“Mmm... so be it.”
 
 @9825 Dark General · 暗黒大将軍
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
@@ -112,7 +112,7 @@
 @9827 Dark General · 暗黒大将軍
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「ぬう、くそう、味なマネを」
-“Ngh, damn you, clever little trick.”
+“Ngh, damn you... a clever move.”
 
 @9828 Dark General · 暗黒大将軍
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
@@ -125,7 +125,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この暗黒大将軍、これしきでは負けん
 >  ぞ!」
-“I, Dark General, won’t lose to the likes of this!”
+“It will take more than this to defeat the Dark General!”
 
 @9830 Dark General · 暗黒大将軍
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -163,7 +163,7 @@
 @9836 Dark General · 暗黒大将軍
 # 触发：回避（通用，2/5）
 > 「愚かな奴らよ、よく見ろ!」
-“You foolish lot, take a good look!”
+“Look well, you fools!”
 
 @9837 Dark General · 暗黒大将軍
 # 触发：回避（通用，3/5）
@@ -242,7 +242,7 @@
 # 触发：攻击，乘坐〈ミケロス〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「息の根を止めてやるのだ!!」
-“I’ll put an end to them!”
+“Snuff the life out of them!!”
 
 @15125 Dark General · 暗黒大将軍
 # 触发：攻击，乘坐〈ミケロス〉
@@ -263,7 +263,7 @@
 # 触发：攻击，乘坐〈デモニカ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「息の根を止めてやるのだ!!」
-“I’ll put an end to them!”
+“Snuff the life out of them!!”
 
 @15129 Dark General · 暗黒大将軍
 # 触发：攻击，乘坐〈デモニカ〉
@@ -273,24 +273,24 @@
 @15130 Dark General · 暗黒大将軍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ミケロス〉
 > 「ええい、どいつもこいつも役にたたん」
-“Gah, not a single one of them is any use.”
+“Gah, useless, every last one of them.”
 
 @15131 Dark General · 暗黒大将軍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ミケロス〉
 # 审校：与 15133 同句统一
 > 「かまわん、全速で突っこめー!」
-“Never mind that, charge at full speed!”
+“No matter! Charge at full speed!”
 
 @15132 Dark General · 暗黒大将軍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈デモニカ〉
 > 「ええい、どいつもこいつも役にたたん」
-“Gah, not a single one of them is any use.”
+“Gah, useless, every last one of them.”
 
 @15133 Dark General · 暗黒大将軍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈デモニカ〉
 # 审校：同上，统一 L61 的译法，并修正“かまわん”的译法。
 > 「かまわん、全速で突っこめー!」
-“Never mind that, charge at full speed!”
+“No matter! Charge at full speed!”
 
 @15134 Dark General · 暗黒大将軍
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ミケロス〉

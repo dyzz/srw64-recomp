@@ -50,7 +50,7 @@
 # 触发：攻击（通用，9/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いくら逃げ回っても同じことだ!」
-“No matter how you run, it’s all the same!”
+“Run all you like, it won’t make a difference!”
 
 @10329 Gorman · ゴーマン
 # 触发：攻击（通用，10/10）
@@ -87,7 +87,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうっ、許さん! 必ず息の根を
 >  止めてくれる!」
-“Guh, I won’t forgive this! I’ll finish you off for sure!”
+“Guh, unforgivable! I swear I’ll snuff you out!”
 
 @10335 Gorman · ゴーマン
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
@@ -104,7 +104,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このゴーマンにここまでやるとは!
 >  覚えておくぞ!」
-“To push me, Gorman, this far! I’ll remember this!”
+“You pushed Gorman this far?! I won’t forget this!”
 
 @10338 Gorman · ゴーマン
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
@@ -116,18 +116,18 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「命を捨てにわざわざ自分から
 >  出向いてきたか」
-“So you’ve gone out of your way to throw your life away.”
+“So you came all this way just to throw your life away.”
 
 @10340 Gorman · ゴーマン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「俺に歯向かうつもりか?」
-“You intend to defy me?”
+“You dare defy me?”
 
 @10341 Gorman · ゴーマン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「自分から死ににやってきたか!」
-“So you’ve come to die on your own!”
+“So you’ve walked right in to die!”
 
 @10342 Gorman · ゴーマン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
@@ -138,7 +138,7 @@
 @10343 Gorman · ゴーマン
 # 触发：回避（通用，1/2）
 > 「予想していた通りの力だな」
-“Just as much power as I expected.”
+“Your power is just what I expected.”
 
 @10344 Gorman · ゴーマン
 # 触发：回避（通用，2/2）
@@ -150,7 +150,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「フフフフフ、気がつくのが
 >  一足遅かったようだな」
-“Heh heh heh heh, seems you noticed a moment too late.”
+“Heh heh heh heh, looks like you caught on a moment too late.”
 
 @10346 Gorman · ゴーマン
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -165,7 +165,7 @@
 @15795 Gorman · ゴーマン
 # 触发：使用〈ハンマー〉（低优先，可能被通用台词顶掉）
 > 「このまま押しつぶされたいのか!」
-“Do you want to be crushed just like this?!”
+“Do you want to be crushed flat?!”
 
 @15796 Gorman · ゴーマン
 # 触发：对手驾驶员〈デューク〉
