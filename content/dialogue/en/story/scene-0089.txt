@@ -2328,7 +2328,7 @@ Come on, David, let’s go.”
 @42649 Anna · アンナ
 > 「エイジ……これ、私が部屋で育てて
 >  いた花なの。持って行ってくれる?」
-“Eiji... this is a flower I was growing in my room. Would you take it with you?”
+“Eiji... this is a flower I’ve been growing in my room. Will you take it with you?”
 
 @42650 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
@@ -2453,7 +2453,7 @@ One minute until energy critical.”
 # 审校：全局：弯撇号／弯引号
 > 「そんじゃちょっくら行ってくるぜ。
 >  宴会の用意して待っててくれよな」
-“Well, I’m off for a bit. Have a party waiting for us when we get back.”
+“Well, we’re off. Have a party ready for us when we get back.”
 
 @42672 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号

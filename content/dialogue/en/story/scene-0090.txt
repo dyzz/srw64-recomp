@@ -47,7 +47,7 @@ Come on, David, let’s go.”
 @42770 Anna · アンナ
 > 「エイジ……これ、私が部屋で育てて
 >  いた花なの。持って行ってくれる?」
-“Eiji... this is a flower I was growing in my room. Would you take it with you?”
+“Eiji... this is a flower I’ve been growing in my room. Will you take it with you?”
 
 @42771 Eiji · エイジ
 > 「……ひな菊だね」
@@ -98,7 +98,7 @@ what we need to get back to the moon. That’s fine, right?”
 
 @42779 Alan · アラン
 > 「大丈夫だ。いつでも出発できる」
-“No problem. We can depart at any time.”
+“All set. We can depart anytime.”
 
 @42780 Duo · デュオ
 > 「ああ。後はガンドール砲の改造が
@@ -170,7 +170,7 @@ One minute until energy critical.”
 # 审校：全局：弯撇号／弯引号
 > 「そんじゃちょっくら行ってくるぜ。
 >  宴会の用意して待っててくれよな」
-“Well, I’m off for a bit. Have a party waiting for us when we get back.”
+“Well, we’re off. Have a party ready for us when we get back.”
 
 @42793 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -250,13 +250,13 @@ there’s a chance we can come pick you up from this side.”
 ---
 >  以降は通常推進に
 >  切り替えます」
-Switching to normal propulsion from here on.”
+Switching to standard propulsion.”
 
 @42806 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「そうしてくれ。奇妙なところへ出たな
 >  …ここがムゲの宇宙だというのか……?」
-“Very well. We’ve come out somewhere strange... So this is Muge’s universe...?”
+“Do that. We’ve come out somewhere strange... Is this really Muge’s universe...?”
 
 @42807 Banjo · 万丈
 # 审校：英文更自然
@@ -310,7 +310,7 @@ Switching to normal propulsion from here on.”
 @42817 Ryoma · リョウ
 > 「どういうことなんだ、
 >  {HeroNick}、亮」
-“What do you mean, {HeroNick}, Ryo?”
+“What are you getting at, {HeroNick}, Ryo?”
 
 @42818 Manami · マナミ（按段落 3DD4）
 > 「どうしてそう思うの?」
@@ -599,7 +599,7 @@ into eternal suffering! Here I come!!”
 @42864 Ryo · 亮
 > 「俺もだ。軽い金縛りに
 >  あったみたいだ」
-“Same here. Felt like a mild case of sleep paralysis.”
+“Same here. Like a light case of sleep paralysis.”
 
 @42865 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -738,7 +738,7 @@ that is how the rules work.”
 # 审校：全局：弯撇号／弯引号
 > 「くっ……なるほど、これでは復活も
 >  できないということか! しかし……」
-“Ngh... I see, so this means he can’t revive either! But still...”
+“Ngh... I see, so this way he can’t revive! But still...”
 
 @42891 Duke · デューク
 > 「さあどうだ。これでも復活できるか!?」
@@ -765,7 +765,7 @@ that is how the rules work.”
 # 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤー、貴様もこいつで
 >  最後だぜ!」
-“Death Gaia, this is the end for you too!”
+“Death Gaia, this is it for you!”
 
 @42896 Benkei · ベンケイ
 > 「うおおおぉぉぉぉぉぉぉーっ!」
@@ -783,7 +783,7 @@ that is how the rules work.”
 @42899 Boss · ボス
 > 「おわぁぁぁーっ!
 >  こ、これでいいのかよ!?」
-“Whoaaaaa! I-Is this really okay?!”
+“Whoaaaaa! A-Are we sure about this?!”
 
 @42900 Heero · ヒイロ
 # 审校：全局：弯撇号／弯引号
@@ -1275,13 +1275,13 @@ At least the afterlife would still be in our universe.”
 # 审校：全局：弯撇号／弯引号
 > 「ここは……私はムゲの宇宙で……
 >  そうか、気絶していたのか」
-“This is... I was in Muge’s universe... I see, so I passed out.”
+“Where... I was in Muge’s universe... I see, I must have passed out.”
 
 @42980 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「そういうこった。ま、お前のことだ。
 >  心配はしてなかったけどな」
-“That’s right. Well, knowing you, I wasn’t worried.”
+“Yup. Well, knowing you, I wasn’t worried.”
 
 @42981 Alan · アラン
 > 「そうだ」
@@ -1311,7 +1311,7 @@ I wouldn’t be surprised one bit. Take a look outside the ship.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ……何もない。俺たちは
 >  虚空に取り残された」
-“Yeah... there’s nothing. We’ve been left behind in the void.”
+“Yeah... there’s nothing. We’re stranded in the void.”
 
 @42986 Ryoma · リョウ
 > 「これでは、あの世のほうが
@@ -1358,13 +1358,13 @@ Koji only just came to a moment ago himself.”
 @42993 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「ちぇっ、いわなきゃわかんないものを」
-“Tch, nobody needed to know that.”
+“Tch, you didn’t have to tell him.”
 
 @42994 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「それより、どうなった?
 >  どうやら死んじゃあいないようだが」
-“More importantly, what happened? Seems we’re not dead, at least.”
+“Never mind that, what happened? Looks like we’re not dead, at least.”
 
 @42995 Koji · 甲児
 > 「それがなあ……」

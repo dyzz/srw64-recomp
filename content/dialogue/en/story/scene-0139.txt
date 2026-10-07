@@ -2359,7 +2359,7 @@ If it failed, we’d be in serious trouble.”
 
 @48519 Dr. Hazuki · 葉月博士
 > 「うむ。ガンドール砲、発射スタンバイ」
-“Very well. Gandor Cannon, firing standby.”
+“Very well. Gandor Cannon, stand by to fire.”
 
 @48520 Chan · チェーン
 > 「ガンドール砲、
@@ -2397,7 +2397,7 @@ One minute to energy critical.”
 # 审校：全局：弯撇号／弯引号
 > 「そんじゃちょっくら行ってくるぜ。
 >  宴会の用意して待っててくれよな」
-“Well, I’m off for a bit. Have a party waiting for us when we get back.”
+“Well, we’re off. Have a party ready for us when we get back.”
 
 @48527 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -2408,10 +2408,10 @@ One minute to energy critical.”
 # 审校：全局：弯撇号／弯引号
 > 「帰ってきたら、オイラが
 >  腕によりをかけた
-“When you get back, I’ll cook you the best meal
+“When you get back, I’ll whip up the best meal
 ---
 >  最高の料理を食わしてやるぜ」
-I can make with all my skill.”
+you’ve ever had.”
 
 @48529 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号

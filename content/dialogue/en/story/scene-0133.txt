@@ -358,7 +358,7 @@ all these past few years.”
 @43661 Seabook · シーブック
 > 「ああ。
 >  戦ってばかりの毎日だったものな」
-“Yeah. Every day was nothing but fighting.”
+“Yeah. It’s been nothing but fighting, day after day.”
 
 @43662 Cecily · セシリー
 # 审校：全局：弯撇号／弯引号
@@ -376,7 +376,7 @@ we’ve done nothing but fight...”
 
 @43664 Cecily · セシリー
 > 「……コロニーのみんなは、元気かな」
-“...I wonder if everyone at the colony is doing well.”
+“...I wonder how everyone at the colony is doing.”
 
 @43665 Seabook · シーブック
 # 审校：全局：弯撇号／弯引号
@@ -514,7 +514,7 @@ that’s a rather short break.”
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
 > 「なんてこと……ブライト艦長たちに
 >  連絡を……」
-“How awful... We have to contact Captain Bright and the others...”
+“Oh no... We have to contact Captain Bright and the others...”
 
 @43685 Dr. Yotsuya · 四谷博士
 # 审校：英文 In the Earth 直译；“余裕”
