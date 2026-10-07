@@ -1,20 +1,14 @@
 非官方的《超级机器人大战64》原生移植，附全游戏中文与英文翻译。不含 ROM：需要自备日版原版 ROM。
 
-## 0.4.0 更新
+## 第一个公开版本：功能预览
 
-- 应用改名为 Marchwind64。
-- 中文与英文翻译全部重新润色：全部剧情和战斗台词去掉直译腔，专名统一。
-- 首次提供 Android 版（试验）：可从 zip 导入 HD 包，数据文件夹能在「文件」App 里打开。
-- 支持 RetroArch 滤镜和框体：macOS 用 Metal，Linux 与 Steam Deck 用 Vulkan，Windows 用 D3D12 或 Vulkan，Android 也有。除内置的以外，还能用你自己的或 RetroArch 的滤镜和框体文件夹。
-- 电脑版标题画面新增战斗查看器：自选攻防双方、武器、场景，回看战斗演出。
-- 新增作弊（金手指），在「选项」里单独一页，不写进存档。
-- 新增更新检查：启动时问一次，对照官网，不会自动下载。HD 包改用独立的版本号。
-- HD 包也可以直接放在游戏所在的文件夹里。
-- 对白下方的按键提示 5 秒后自动隐藏，按方向键会再显示 3 秒；也可以在「选项」里改成一直显示。
-- 标题画面飞过的作品名、演示战斗的机体名，改按阅读语言显示。
-- ROM 除 .z64 外也接受 .v64 和 .n64。
-- 新增给开发用的 AI 调试接口（MCP），各平台都有，在「选项 → 关于」里打开。
-- 项目代码改用 GPL-3.0-or-later 许可证。
+0.4.0 是第一个公开版本，定位是功能预览：从头玩到尾的主要功能都已具备，但还很粗糙。
+
+- **翻译尚未精翻。** 中英文以机器翻译为主，经过一轮去直译腔的润色、专名统一，还没有逐句人工校对，语气、用词和误译都会有不少问题。
+- **bug 应该会很多。** 新加的界面、翻译排版、HD 画面和宽屏都可能出错，请多留一个存档栏。
+- **各平台测试还不充分。** macOS 测得最多；Steam Deck、Windows、Linux 和 Android 只在少数设备上试过。
+
+程序问题欢迎到 [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues) 反馈（写明平台、设备和当时在做什么）；文本意见请在[官网](https://srw64.dreamquest.club/zh/story/)的剧情和图鉴页面上直接提交。功能一览见[官网的版本说明](https://srw64.dreamquest.club/zh/blog/v0-4-0/)。
 
 ## 下载
 
@@ -35,7 +29,7 @@
 
 ## English
 
-An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. New in 0.4.0: the app is now Marchwind64; every story and battle line of the Chinese and English translations has been rewritten to read naturally; a first, experimental Android build; RetroArch filters and bezels on every platform; a battle viewer on the title screen (computers); cheats (never saved); an update check that asks once and never downloads, with HD packs versioned on their own; the HD pack can also sit in the game's own folder; the controls bar under dialogue hides itself; .v64 and .n64 ROM dumps are accepted; the project's own source is now GPL-3.0-or-later. {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
+An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. 0.4.0 is the first public release and a feature preview: the whole game is playable, but it is still rough. The Chinese and English translations are mostly machine-translated with one polishing pass and have not been hand-edited line by line yet; expect plenty of bugs; testing beyond macOS has been limited to a few devices. Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues) and suggest text corrections on the [website](https://srw64.dreamquest.club/en/story/)'s Story and Library pages. Full feature list: [release notes on the website](https://srw64.dreamquest.club/en/blog/v0-4-0/). {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
 
 ## 校验 / Checksums
 
