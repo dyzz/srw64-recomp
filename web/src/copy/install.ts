@@ -18,6 +18,7 @@ type Install = {
   quark: string;
   baidu: string;
   passcode: string;
+  hdHint: string;
   verify: string;
   noFile: string;
   notReleased: string;
@@ -107,6 +108,7 @@ export const INSTALL: Record<Lang, Install> = {
     quark: '夸克网盘',
     baidu: '百度网盘',
     passcode: '（提取码 {p}）',
+    hdHint: '另有可选的 HD 美术包，各平台通用 →',
     verify: '校验',
     noFile: '此版本暂未提供 Android 安装包。',
     notReleased: '0.4.0 正在准备中，暂未开放下载。安装步骤可以先看。',
@@ -192,6 +194,7 @@ export const INSTALL: Record<Lang, Install> = {
     quark: 'Quark Drive',
     baidu: 'Baidu Netdisk',
     passcode: ' (passcode {p})',
+    hdHint: 'Optional HD art pack, for every platform →',
     verify: 'Checksum',
     noFile: 'An Android package is not yet available for this version.',
     notReleased: '0.4.0 is being prepared and cannot be downloaded yet. The installation steps are below.',
@@ -277,6 +280,7 @@ export const INSTALL: Record<Lang, Install> = {
     quark: 'Quark ドライブ',
     baidu: 'Baidu ネットディスク',
     passcode: '（パスコード {p}）',
+    hdHint: '全プラットフォーム共通の HD アートパック（任意）→',
     verify: 'チェックサム',
     noFile: 'このバージョンの Android パッケージは現在提供していません。',
     notReleased: '0.4.0 は公開準備中のため、まだダウンロードできません。インストール手順は先にご覧いただけます。',

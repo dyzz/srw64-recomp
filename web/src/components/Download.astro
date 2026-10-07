@@ -1,8 +1,9 @@
 ---
 // The big download button. Every platform's button is rendered; a small script
 // shows the one for the reader's system (all of them stay visible without it).
-// A platform the current release has no file for links to its install steps.
-import { fileFor, mb, release, PLATFORM_LABEL, type Platform } from '../data/release';
+// A platform the current release has no file for links to its install steps. The HD
+// pack, one download for every platform, has its own button beside them.
+import { fileFor, hd, mb, release, PLATFORM_LABEL, type Platform } from '../data/release';
 import Mirrors from './Mirrors.astro';
 import type { Lang } from '../i18n';
 interface Props { lang: Lang; }
@@ -10,7 +11,11 @@ const { lang } = Astro.props;
 const t = {
   other: { zh: '其他平台', en: 'Other platforms', ja: 'ほかのプラットフォーム' },
   steps: { zh: '查看安装方法', en: 'Installation instructions', ja: 'インストール方法を見る' },
+  hd: { zh: '下载 HD 美术包', en: 'Download the HD art pack', ja: 'HD アートパックをダウンロード' },
+  hdNote: { zh: '可选，各平台通用', en: 'optional, every platform', ja: '任意・全プラットフォーム共通' },
+  hdHow: { zh: 'HD 包怎么装', en: 'Installing the HD pack', ja: 'HD パックの入れ方' },
 };
+const hdFile = fileFor('hd');
 const platforms: Platform[] = ['windows', 'macos', 'linux', 'android'];
 const label = (p: Platform) =>
   lang === 'en' ? `Download for ${PLATFORM_LABEL[p]}` : lang === 'ja' ? `${PLATFORM_LABEL[p]} 版をダウンロード` : `下载 ${PLATFORM_LABEL[p]} 版`;
@@ -29,8 +34,17 @@ const items = platforms.map((p) => {
     </a>
   ))}
 </div>
+{hdFile && (
+  <a class="btn cyan hd" href={hdFile.url}>
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-7 16h16v2H4v-2Z"/></svg>
+    <span>{t.hd[lang]}<small>{hd.version && `HD ${hd.version} · `}{mb(hdFile.bytes)} · {t.hdNote[lang]}</small></span>
+  </a>
+)}
 <Mirrors lang={lang} />
-<a class="other" href={`/${lang}/install/#downloads`} data-other hidden>{t.other[lang]} →</a>
+<p class="more">
+  <a class="other" href={`/${lang}/install/#downloads`} data-other hidden>{t.other[lang]} →</a>
+  {hdFile && <a href={`/${lang}/install/#hd`}>{t.hdHow[lang]} →</a>}
+</p>
 
 <script>
   const root = document.querySelector<HTMLElement>('[data-dl]');
@@ -57,6 +71,7 @@ const items = platforms.map((p) => {
   .dl .btn { text-align: left; }
   .dl .btn[hidden] { display: none; }
   .dl:not(.one) .btn { min-height: 56px; font-size: 15px; }
-  .other { display: inline-block; margin-top: 10px; font-size: 14px; }
+  .hd { margin-top: 10px; text-align: left; min-height: 50px; }
+  .more { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 10px 0 0; font-size: 14px; }
   .other[hidden] { display: none; }
 </style>

@@ -47,6 +47,8 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
                 <span>{f.name}<small>{s.id === 'hd' && hd.version ? `HD ${hd.version} · ` : ''}{mb(f.bytes)}</small></span>
               </a>
             ) : <p class="nofile">{published ? c.noFile : c.notReleased}</p>}
+            {f && <Mirrors lang={lang} compact />}
+            {f && s.id !== 'hd' && fileFor('hd') && <p class="hd-hint"><a href="#hd">{c.hdHint}</a></p>}
           </div>
           <ol class="steps">
             {s.steps.map((step, i) => (
@@ -62,6 +64,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
       <div class="plat-head">
         <h2>{c.downloadsTitle}</h2>
         <p class="dim">{c.downloadsLead}</p>
+        <Mirrors lang={lang} />
       </div>
       {published ? <>
       <div class="table">
@@ -105,6 +108,8 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
   .plat-head { display: grid; gap: 8px; justify-items: start; margin-bottom: 24px; }
   .plat-head h2 { font-size: clamp(24px, 3vw, 32px); padding-left: 14px; border-left: 4px solid var(--gold); }
   .plat-head .btn { margin-top: 8px; }
+  .hd-hint { margin: 0; font-size: 14px; }
+  .hd-hint a { font-weight: 700; }
   .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; max-width: 860px; }
   .steps li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 18px; background: var(--panel); border: 1px solid var(--line-soft); }
   .n { display: grid; place-items: center; width: 34px; height: 34px; font-weight: 700; color: var(--ink); background: var(--cyan); clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%); }

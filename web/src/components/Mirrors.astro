@@ -1,10 +1,11 @@
 ---
 // The netdisk mirrors (release.ts mirrors), for readers in mainland China who cannot
-// download from GitHub: on the home page under the download button and atop the install page.
+// download from GitHub: on the home page under the download button, atop the install page and
+// (compact: no note) under each platform's download there.
 import { mirrors } from '../data/release';
 import type { Lang } from '../i18n';
-interface Props { lang: Lang; }
-const { lang } = Astro.props;
+interface Props { lang: Lang; compact?: boolean; }
+const { lang, compact = false } = Astro.props;
 const t = {
   lead: { zh: '国内下载：', en: 'Mirrors for mainland China: ', ja: '中国本土向けミラー：' },
   quark: { zh: '夸克网盘', en: 'Quark Drive', ja: 'Quark ドライブ' },
@@ -14,17 +15,18 @@ const t = {
 };
 ---
 {mirrors.length > 0 && (
-  <p class="mirrors">
+  <p class:list={['mirrors', { compact }]}>
     <span class="lead">{t.lead[lang]}</span>
     {mirrors.map((m, i) => (
       <>{i > 0 && <span class="sep"> · </span>}<a href={m.url}>{t[m.id][lang]}{m.passcode && t.passcode[lang].replace('{p}', m.passcode)}</a></>
     ))}
-    <span class="note">{lang === 'en' ? ' — ' : ' '}{t.note[lang]}</span>
+    {!compact && <span class="note">{lang === 'en' ? ' — ' : ' '}{t.note[lang]}</span>}
   </p>
 )}
 
 <style>
   .mirrors { margin: 14px 0 0; font-size: 16px; line-height: 1.7; }
+  .mirrors.compact { margin-top: 8px; font-size: 14px; line-height: 1.6; }
   .mirrors .lead { font-weight: 700; }
   .mirrors a { font-weight: 700; white-space: nowrap; }
   .mirrors .note { color: var(--muted); font-size: 14px; }
