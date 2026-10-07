@@ -675,7 +675,7 @@ What do you say?”
 @47065 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
 > 「そういってもらえると、うれしい」
-“I’m glad to hear you say that.”
+“I am pleased to hear it.”
 
 @47066 Gato · ガトー
 > 「このアナベル・ガトー、この機体に
@@ -736,10 +736,10 @@ It’s not just Ple, is it?”
 # 审校：全局：弯撇号／弯引号
 > 「隠さずともよい。
 >  私は知っているのだ、グレミー
-“You needn’t hide it. I know, Glemy.
+“There is no need to hide it. I know, Glemy.
 ---
 >  別に責めているわけではない」
-I’m not blaming you.”
+I am not reproaching you.”
 
 @47076 Glemy · グレミー
 > 「はっ……」

@@ -508,7 +508,7 @@ I cannot permit its use!”
 
 @45098 Dr. Saotome · 早乙女博士
 > 「お、お前までそんなことを……」
-“Y-you too, saying things like that...”
+“Y-you’re saying that too...?”
 
 @45099 Ryoma · リョウ
 > 「博士、俺たちには、こいつが必要
@@ -541,7 +541,7 @@ We’re not the same as we used to be!”
 @45103 Dr. Saotome · 早乙女博士
 > 「……わかった、好きにせい! ただし、
 >  扱いには十分気をつけるんじゃ」
-“...Fine, do as you like! But be extremely careful with how you handle it.”
+“...Fine, have it your way! But handle it with extreme care.”
 
 @45104 Hayato · ハヤト
 > 「もちろんですよ」

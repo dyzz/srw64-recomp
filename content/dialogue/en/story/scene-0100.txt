@@ -1771,7 +1771,7 @@ Whatever. All right, you lot, are you ready?”
 # 检查提示：未用必用译名：プルツー→Ple-Two
 > 「お前は利用されているだけだ、
 >  プルツー。お前は人形でいいのか!?」
-“You’re just being used, Ple-Two. Are you fine with being a puppet?!”
+“You’re just being used, Ple-Two. Are you okay with being a puppet?!”
 
 @47510 Ple-Two · プルツー
 > 「黙れ! 黙れ、黙れ! お前なんか
