@@ -57,7 +57,7 @@
 @8514 Kacricon · カクリコン
 # 触发：被击坠（通用，1/2）
 > 「ちいっ!! しくじった!」
-“Tch! I messed up!”
+“Tch! I blew it!”
 
 @8515 Kacricon · カクリコン
 # 触发：被击坠（通用，2/2）
@@ -67,7 +67,7 @@
 @8516 Kacricon · カクリコン
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「ぐぅっ! なんてパワーだ!?」
-“Guh! What power!”
+“Guh! What kind of power is that?!”
 
 @8517 Kacricon · カクリコン
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -112,7 +112,7 @@
 @8524 Kacricon · カクリコン
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「ぐおっ! 当たっただと!?」
-“Gah! It hit?!”
+“Gah! That actually hit?!”
 
 @8525 Kacricon · カクリコン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -128,7 +128,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんな、そんな攻撃は!」
-“That kind of attack won’t work!”
+“Attacks like that don’t work on me!”
 
 @8528 Kacricon · カクリコン
 # 触发：回避（通用，1/4）
@@ -145,7 +145,7 @@
 @8530 Kacricon · カクリコン
 # 触发：回避（通用，3/4）
 > 「なんのっ!」
-“No problem!”
+“Not even close!”
 
 @8531 Kacricon · カクリコン
 # 触发：回避（通用，4/4）

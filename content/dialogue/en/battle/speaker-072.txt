@@ -94,7 +94,7 @@
 @9222 Bask · バスク
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「ふん、悪あがきよ」
-“Hmph, pointless struggle.”
+“Hmph, struggling in vain.”
 
 @9223 Bask · バスク
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
@@ -105,7 +105,7 @@
 @9224 Bask · バスク
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 > 「この装甲は並ではないぞ」
-“This armor is no ordinary armor.”
+“This is no ordinary armor.”
 
 @9225 Bask · バスク
 # 触发：回避（通用，1/3）
@@ -116,7 +116,7 @@
 # 触发：回避（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「回避運動急げ! あたるなっ!!」
-“Evasive maneuvers, hurry! Don’t get hit!!”
+“Evasive maneuvers, now! Don’t let it hit us!!”
 
 @9227 Bask · バスク
 # 触发：回避（通用，3/3）
@@ -144,7 +144,7 @@
 @14701 Bask · バスク
 # 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
 > 「主砲、一斉発射っ!」
-“Main cannons, fire all at once!”
+“All main cannons, fire!”
 
 @14702 Bask · バスク
 # 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
@@ -156,4 +156,4 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 # 检查提示：未用必用译名：ドゴスギア→Dogosse Giar
 > 「ドゴスギアの装甲は並ではないわっ!」
-“The Dogosse Giar’s armor is no ordinary armor!”
+“The Dogosse Giar has no ordinary armor!”

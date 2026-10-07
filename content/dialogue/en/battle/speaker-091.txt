@@ -11,12 +11,12 @@
 # 触发：攻击（通用，2/23）
 > 「貴様らが正しいのであれば、俺を
 >  倒せるはずだ!」
-“If you lot are in the right, then you should be able to defeat me!”
+“If you lot are in the right, you should be able to beat me!”
 
 @6149 Wufei · 五飛
 # 触发：攻击（通用，3/23）
 > 「警戒があますぎる。自業自得だ」
-“You let your guard down too much. You brought this on yourself.”
+“Your guard’s far too lax. You brought this on yourself.”
 
 @6150 Wufei · 五飛
 # 触发：攻击（通用，4/23）
@@ -95,7 +95,7 @@
 # 触发：攻击（通用，17/23）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「戦いをみくびるな!!」
-“Don’t underestimate battle!!”
+“Don’t take battle lightly!!”
 
 @6164 Wufei · 五飛
 # 触发：攻击（通用，18/23）
@@ -147,7 +147,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうっ! こんな事で、俺は負ける
 >  わけにはいかん!!」
-“Ngh! I can’t afford to lose over something like this!!”
+“Ngh! I can’t lose to something like this!!”
 
 @6173 Wufei · 五飛
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/7）
@@ -178,7 +178,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，7/7）
 > 「くっ……推進システム異常、
 >  レフトアーム作動不能だと!?」
-“Tch... propulsion system abnormal, left arm inoperable?!”
+“Tch... propulsion malfunction, left arm unresponsive?!”
 
 @6178 Wufei · 五飛
 # 触发：中伤（剩余 HP 30–90%）（通用，1/7）
@@ -222,7 +222,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，7/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「構わん!」
-“I don’t mind!”
+“Doesn’t matter!”
 
 @6185 Wufei · 五飛
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/8）
@@ -232,7 +232,7 @@
 @6186 Wufei · 五飛
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/8）
 > 「その程度の力で……」
-“With that kind of power...”
+“With strength like that...”
 
 @6187 Wufei · 五飛
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/8）
@@ -266,7 +266,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なぜ戦う!? 勝てもしない
 >  相手に対して」
-“Why fight?! Against an opponent you can’t possibly beat!”
+“Why fight an opponent you can’t possibly beat?!”
 
 @6192 Wufei · 五飛
 # 触发：轻伤（剩余 HP 90% 以上）（通用，8/8）

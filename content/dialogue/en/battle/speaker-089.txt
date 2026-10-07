@@ -5,7 +5,7 @@
 # 审校：更顺口
 > 「今日は話していられない。
 >  僕の方が不利だから」
-“I can’t talk today. I’m the one at a disadvantage.”
+“No talking today. I’m the one at a disadvantage.”
 
 @6745 Quatre · カトル
 # 触发：攻击（通用，2/12）
@@ -77,7 +77,7 @@
 # 触发：被击坠（通用，2/2）
 # 审校：こんなところで指地点，初稿“here”丢失了“这种地方”的语义。
 > 「こ、こんなところでっ!?」
-“N-not in a place like this?!”
+“N-not here?!”
 
 @6758 Quatre · カトル
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
@@ -99,7 +99,7 @@
 @6761 Quatre · カトル
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 > 「こ、これは、この力は!?」
-“Th-this, this power is?!”
+“Wh-what is this power?!”
 
 @6762 Quatre · カトル
 # 触发：中伤（剩余 HP 30–90%）（通用，1/6）
@@ -171,7 +171,7 @@
 # 触发：回避（通用，4/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度の攻撃、よけてみせるよ!」
-“An attack like that, I’ll dodge it!”
+“I can dodge an attack like that!”
 
 @6775 Quatre · カトル
 # 触发：回避（通用，5/6）
@@ -205,7 +205,7 @@
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、届かないなんてっ!」
-“Ngh, it won’t reach?!”
+“Ngh, I can’t reach?!”
 
 @14377 Quatre · カトル
 # 触发：使用〈バルカン砲／60mmバルカン砲／バルカンポッド／80mmバルカン砲／30mmバルカン砲〉（低优先，可能被通用台词顶掉）
@@ -289,19 +289,19 @@
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ガンダムサンドロック〉
 # 审校：にぶい指机体变迟钝，不是太慢
 > 「くぅ、にぶい!? サンドロック!」
-“Ngh, you’re sluggish?! Sandrock!”
+“Ngh, so sluggish?! Sandrock!”
 
 @14391 Quatre · カトル
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈サンドロックカスタム〉
 # 审校：にぶい指机体变迟钝，不是太慢
 > 「くぅ、にぶい!? サンドロック!」
-“Ngh, you’re sluggish?! Sandrock!”
+“Ngh, so sluggish?! Sandrock!”
 
 @14392 Quatre · カトル
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ガンダムサンドロック改〉
 # 审校：にぶい指机体变迟钝，不是太慢
 > 「くぅ、にぶい!? サンドロック!」
-“Ngh, you’re sluggish?! Sandrock!”
+“Ngh, so sluggish?! Sandrock!”
 
 @14393 Quatre · カトル
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ガンダムサンドロック〉

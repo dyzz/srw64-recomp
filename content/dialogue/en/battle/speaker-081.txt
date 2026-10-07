@@ -33,7 +33,7 @@
 # 触发：攻击（通用，6/12）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「よけられるか!!」
-“Like I’d let you dodge!!”
+“Dodge this, if you can!!”
 
 @11135 Rakan · ラカン
 # 触发：攻击（通用，7/12）
@@ -77,13 +77,13 @@
 # 触发：被击坠（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬぅっ、貴様、忘れんぞっ!」
-“Ngh, you, I won’t forget this!”
+“Ngh, I won’t forget you for this!”
 
 @11143 Rakan · ラカン
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「むうっ!! この機体が……
 >  パワー負けするのか!?」
-“Mmph!! This machine... is outmatched in power?!”
+“Mmph!! This machine... being outpowered?!”
 
 @11144 Rakan · ラカン
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
@@ -101,7 +101,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「バカなっ!? これほどとは……」
-“Impossible?! To think it was this much...”
+“Impossible?! I never thought it’d be this strong...”
 
 @11147 Rakan · ラカン
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
@@ -112,7 +112,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅっ! この、図に乗るなぁっ!!」
-“Guh! You, don’t get cocky!!”
+“Guh! Why you, don’t get cocky!!”
 
 @11149 Rakan · ラカン
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
@@ -124,7 +124,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! このラカン・ダカラン、
 >  この程度でやられはせん!!」
-“Tch! I, Rakan Dahkaran, won’t fall to the likes of this!!”
+“Tch! I, Rakan Dahkaran, won’t go down from something like this!!”
 
 @11151 Rakan · ラカン
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
@@ -142,7 +142,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「並みのモビルスーツとは違うんだよっ!」
-“I’m not like your average Mobile Suit!”
+“This is no average Mobile Suit!”
 
 @11154 Rakan · ラカン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -190,7 +190,7 @@
 @11162 Rakan · ラカン
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れか!? うかつな……」
-“Out of ammo?! How careless...”
+“Out of ammo?! Careless of me...”
 
 @11163 Rakan · ラカン
 # 触发：射程外，无法反击（通用，1/1）

@@ -64,7 +64,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 # 审校：更顺口
 > 「こ、この私がやられるというのか!?」
-“I-I’m the one being beaten?!”
+“M-me? Beaten?!”
 
 @10686 Glemy · グレミー
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -75,7 +75,7 @@
 @10687 Glemy · グレミー
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「わ、私には大儀があるのだ!」
-“I-I have a great cause!”
+“I-I have a higher cause to serve!”
 
 @10688 Glemy · グレミー
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
@@ -87,7 +87,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 # 审校：原译“make you pay for this grudge”把“この無念”的遗憾/怨恨对象表达得不够准确，改为更贴合原意的“see this grudge avenged”。
 > 「くっこの無念は晴らさせてもらう!」
-“Ngh, I will see this grudge avenged!”
+“Ngh, you’ll pay for this humiliation!”
 
 @10690 Glemy · グレミー
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
@@ -138,7 +138,7 @@
 # 触发：回避（通用，3/3）
 # 审校：意思是自己躲开
 > 「この程度はよけてみせねばな?」
-“I ought to dodge this much at least, no?”
+“Dodging this much is the least I can do, wouldn’t you say?”
 
 @10699 Glemy · グレミー
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
@@ -166,7 +166,7 @@
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈バウ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このバウをなめてもらってはな!」
-“Don’t you underestimate this Bawoo!”
+“Don’t take this Bawoo lightly!”
 
 @16331 Glemy · グレミー
 # 触发：对手驾驶员为女性

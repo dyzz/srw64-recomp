@@ -39,7 +39,7 @@
 # 触发：攻击（通用，8/13）
 # 审校：对敌喊话用 you
 > 「アタシだけで掃除してやるよ!」
-“I’ll clean you all up by myself!”
+“I’ll mop you all up by myself!”
 
 @8116 Rezin · レズン
 # 触发：攻击（通用，9/13）
@@ -95,7 +95,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! ダメージがでかすぎるか!?」
-“Ngh! That’s too much damage?!”
+“Ngh! Is the damage that bad?!”
 
 @8126 Rezin · レズン
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）

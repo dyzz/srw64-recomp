@@ -25,7 +25,7 @@
 # 触发：攻击（通用，5/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フフ……落とさせてもらうよ」
-“Heh... I’ll shoot you down.”
+“Heh... time to shoot you down.”
 
 @8667 Lila · ライラ
 # 触发：攻击（通用，6/10）
@@ -110,7 +110,7 @@
 @8681 Lila · ライラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「そんな攻撃で!」
-“With an attack like that!”
+“Not with an attack like that!”
 
 @8682 Lila · ライラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -136,7 +136,7 @@
 @8686 Lila · ライラ
 # 触发：回避（通用，4/4）
 > 「間合いが甘いね!」
-“Your spacing is sloppy!”
+“You misjudged the distance!”
 
 @8687 Lila · ライラ
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
@@ -152,4 +152,4 @@
 @8689 Lila · ライラ
 # 触发：射程外，无法反击（通用，1/1）
 > 「ちっ…射程外から、そういう事かい」
-“Tch... attacking from out of range, is that it.”
+“Tch... from out of range, so that’s your game.”

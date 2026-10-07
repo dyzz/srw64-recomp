@@ -20,7 +20,7 @@
 # 触发：攻击（通用，4/13）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちょろちょろと……目障りなんだよ!!」
-“Flitting around... You’re in my way!!”
+“Quit flitting around... you’re getting on my nerves!!”
 
 @8948 Yazan · ヤザン
 # 触发：攻击（通用，5/13）
@@ -88,7 +88,7 @@
 @8960 Yazan · ヤザン
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 > 「なにいっ!? パワーダウンか!?」
-“What?! Power down?!”
+“What?! Losing power?!”
 
 @8961 Yazan · ヤザン
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
@@ -177,7 +177,7 @@
 # 触发：回避（通用，3/6）
 # 审校：間合い是距离感，不是 timing
 > 「まだ子供の間合いだな!!」
-“That’s a kid’s sense of range!!”
+“You judge distance like a kid!!”
 
 @8977 Yazan · ヤザン
 # 触发：回避（通用，4/6）
@@ -195,7 +195,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハッ、こんな攻撃にあたったら
 >  減俸ものだな」
-“Ha, if I got hit by an attack like that, it’d cost me my pay.”
+“Ha, getting hit by an attack like that would get my pay docked.”
 
 @8980 Yazan · ヤザン
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
@@ -271,4 +271,4 @@
 # 触发：回避，条件 1000
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダミーの一つや二つ、くれてやる!」
-“I’ll give you a decoy or two for free!”
+“Have a decoy or two, on the house!”

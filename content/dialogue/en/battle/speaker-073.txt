@@ -96,7 +96,7 @@
 # 审校：更顺口
 > 「この私が敗れる!?
 >  負けるというのか!?」
-“I, defeated?! I am to lose?!”
+“I, defeated?! Am I to lose?!”
 
 @8706 Scirocco · シロッコ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
@@ -145,7 +145,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/7）
 # 审校：补引号
 > 「小賢しい……いい気になるな!!」
-“Clever little... don’t get cocky!!”
+“Impertinent... don’t get cocky!!”
 
 @8714 Scirocco · シロッコ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/7）
@@ -189,7 +189,7 @@
 # 审校：补引号
 > 「そんな腕で私に向かってくるとは……
 >  なめられたものだ」
-“Coming at me with skill like that... you must take me lightly.”
+“Facing me with such meager skill... you underestimate me.”
 
 @8721 Scirocco · シロッコ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
@@ -220,7 +220,7 @@
 # 触发：回避（通用，3/6）
 # 审校：补引号
 > 「ふ……見えるぞ、貴様の攻撃が」
-“Heh... I can see it, your attack.”
+“Heh... I can see your attack.”
 
 @8726 Scirocco · シロッコ
 # 触发：回避（通用，4/6）
@@ -270,7 +270,7 @@
 # 触发：攻击，乘坐〈R・ジャジャ〉
 > 「このジ・オの力、身をもって
 >  知るがいい!!」
-“Learn the power of The-O firsthand!!”
+“Feel the power of The-O for yourself!!”
 
 @14646 Scirocco · シロッコ
 # 触发：攻击，乘坐〈R・ジャジャ〉

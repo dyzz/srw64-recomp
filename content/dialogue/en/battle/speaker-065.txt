@@ -9,7 +9,7 @@
 # 触发：攻击（通用，2/13）
 > 「くぅ 敵だ、敵だぁ、もう胸が
 >  張り裂けそう!」
-“Ooh, an enemy, an enemy! My chest is about to burst!”
+“Ooh, an enemy, an enemy! My heart’s gonna burst!”
 
 @10869 Chara · キャラ
 # 触发：攻击（通用，3/13）
@@ -33,37 +33,37 @@
 # 触发：攻击（通用，6/13）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ああっ体が熱いっ燃えるっ!」
-“Ahh, my body’s hot, it’s burning!”
+“Ahh, I’m so hot, I’m burning up!”
 
 @10873 Chara · キャラ
 # 触发：攻击（通用，7/13）
 > 「くぅーっ! あははは! 敵だ、敵だ!
 >  もう胸が張り裂けそう! 快感!」
-“Ooh! Ahahaha! An enemy, an enemy! My chest is about to burst! What a thrill!”
+“Ooh! Ahahaha! An enemy, an enemy! My heart’s gonna burst! What a thrill!”
 
 @10874 Chara · キャラ
 # 触发：攻击（通用，8/13）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そーら、そら! 落としちゃうよ!」
-“There, there! I’m gonna drop you!”
+“Come on, come on! I’m gonna shoot you down!”
 
 @10875 Chara · キャラ
 # 触发：攻击（通用，9/13）
 > 「さあて、行くよっ!」
-“Well now, here I go!”
+“Okay, here I come!”
 
 @10876 Chara · キャラ
 # 触发：攻击（通用，10/13）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「はははっ! ぞくぞくする! それっ!」
-“Hahaha! I’m tingling! Take this!”
+“Hahaha! I’ve got chills! Take this!”
 
 @10877 Chara · キャラ
 # 触发：攻击（通用，11/13）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「魂よ! 魂の躍動なのよ!
 >  私の魂は、宇宙を駆ける魂!」
-“My soul! It’s the throb of my soul! My soul races across the universe!”
+“My soul! My soul is leaping! My soul runs free across the universe!”
 
 @10878 Chara · キャラ
 # 触发：攻击（通用，12/13）
@@ -75,13 +75,13 @@
 @10879 Chara · キャラ
 # 触发：攻击（通用，13/13）
 > 「そこかいっ!」
-“Right there!”
+“There you are!”
 
 @10880 Chara · キャラ
 # 触发：被击坠（通用，1/1）
 # 审校：被击坠情境
 > 「え! ウソ!? やられちゃったのかい!?」
-“Huh! No way?! Did I just get taken out?!”
+“Huh?! No way! They got me?!”
 
 @10881 Chara · キャラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
@@ -104,7 +104,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なに!? 化け物かっ!?」
-“What?! Is it a monster?!”
+“What?! What are you, a monster?!”
 
 @10885 Chara · キャラ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
@@ -115,7 +115,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「このっ! あたしを怒らせるとどうなるか
 >  わかってるんだろうね!!」
-“Why you! You know what happens when you make me mad!!”
+“Why you! You do know what happens when you make me mad, right?!”
 
 @10887 Chara · キャラ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
@@ -144,13 +144,13 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度かい? 笑わせてくれるね!」
-“Is that all? You’re making me laugh!”
+“Is that all? Don’t make me laugh!”
 
 @10892 Chara · キャラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんだい、物足りないね!」
-“What’s this, not enough for me!”
+“What, that’s it? Not nearly enough!”
 
 @10893 Chara · キャラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
@@ -180,7 +180,7 @@
 # 触发：回避（通用，4/5）
 # 审校：更像人话
 > 「甘いね、そんなもの!」
-“Way too naive!”
+“Way too easy!”
 
 @10898 Chara · キャラ
 # 触发：回避（通用，5/5）
@@ -198,7 +198,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダなんだよ、そんなのは!」
-“That’s useless!”
+“That’s no use against me!”
 
 @10901 Chara · キャラ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -210,19 +210,19 @@
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそっ! 届かないのかい!?」
-“Damn! Can’t reach?!”
+“Damn! I can’t reach?!”
 
 @16362 Chara · キャラ
 # 触发：使用〈ミサイルポッド／連装ミサイルランチャー〉（低优先，可能被通用台词顶掉）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔するんなら撃っちゃうからねっ!」
-“If you get in my way, I’ll shoot you!”
+“Get in my way and I’ll shoot you!”
 
 @16363 Chara · キャラ
 # 触发：使用〈ビームライフル／銃剣付きビームライフル〉（低优先，可能被通用台词顶掉）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔するんなら撃っちゃうからねっ!」
-“If you get in my way, I’ll shoot you!”
+“Get in my way and I’ll shoot you!”
 
 @16364 Chara · キャラ
 # 触发：使用〈ファンネル／マザーファンネル〉
@@ -238,4 +238,4 @@
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  いけっ! ハイメガキャノン!!」
-“Energy charge... go! High Mega Cannon!!”
+“Charging energy... go! High Mega Cannon!!”

@@ -89,7 +89,7 @@
 # 审校：补引号
 > 「どこからでも来い! 近づくやつは、
 >  みんな灰にしてやる!」
-“Come at me from anywhere! Anyone who gets close, I’ll turn to ash!”
+“Come at me from any direction! Anyone who gets close gets turned to ash!”
 
 @8748 Jerid · ジェリド
 # 触发：被击坠（通用，1/3）
@@ -131,7 +131,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：补引号
 > 「ぐあっ! なんてパワーだ!!」
-“Gah! What power!!”
+“Gah! What kind of power is that?!”
 
 @8755 Jerid · ジェリド
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -143,13 +143,13 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 # 审校：补引号
 > 「まだまだっ!!」
-“Not yet, not yet!!”
+“Not yet!! I’m not done!!”
 
 @8757 Jerid · ジェリド
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
 # 审校：貴様なんぞに
 > 「うっ! 貴様なんぞにっ!!」
-“Ugh! By the likes of you!!”
+“Ugh! Not to the likes of you!!”
 
 @8758 Jerid · ジェリド
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
@@ -185,7 +185,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 # 审校：补引号
 > 「そんなものか!! 笑わせるぜ!!」
-“Is that all?! You’re kidding me!!”
+“Is that all?! Don’t make me laugh!!”
 
 @8764 Jerid · ジェリド
 # 触发：回避（通用，1/5）
@@ -203,7 +203,7 @@
 # 触发：回避（通用，3/5）
 # 审校：なんの＝不算什么
 > 「なんのっ!!」
-“Ha, no problem!!”
+“Not even close!!”
 
 @8767 Jerid · ジェリド
 # 触发：回避（通用，4/5）
@@ -215,7 +215,7 @@
 # 触发：回避（通用，5/5）
 # 审校：反问语气；补引号
 > 「ハハハッ! あたるかッ!」
-“Ha ha ha! You think you’ll hit me?!”
+“Hahaha! Like that’ll hit me!”
 
 @8769 Jerid · ジェリド
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
@@ -232,7 +232,7 @@
 # 触发：弹药／EN 不足，无法反击（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しまった、撃ちつくした! スペア!!」
-“Damn, I’m all out! Spare!!”
+“Damn, I’m all out! Spare mag!!”
 
 @8772 Jerid · ジェリド
 # 触发：射程外，无法反击（通用，1/1）

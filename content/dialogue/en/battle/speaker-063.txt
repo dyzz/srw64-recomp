@@ -15,7 +15,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「黒い三連星の恐ろしさ、教えて
 >  やるわ!」
-“I’ll teach you the terror of the Black Tri-Stars!”
+“Time you learned to fear the Black Tri-Stars!”
 
 @6125 Gaia · ガイア
 # 触发：攻击（通用，4/8）
@@ -58,7 +58,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「ぬううっ! このパイロット、
 >  ただものではないわっ!」
-“Ngh! This pilot is no ordinary foe!”
+“Ngh! This pilot’s something else!”
 
 @6133 Gaia · ガイア
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
@@ -79,7 +79,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やるっ!
 >  だがこの程度ではやられんよ!」
-“Not bad! But this won’t be enough to beat me!”
+“Not bad! But it’ll take more than this to beat me!”
 
 @6136 Gaia · ガイア
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
@@ -90,7 +90,7 @@
 @6137 Gaia · ガイア
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「ちいっ! この俺に当てるとは!」
-“Tch! To land a hit on me!”
+“Tch! You actually hit me!”
 
 @6138 Gaia · ガイア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -130,7 +130,7 @@
 @6144 Gaia · ガイア
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「はあん、ムダな事を!」
-“Hah, what a waste of effort!”
+“Hah, you’re wasting your time!”
 
 @6145 Gaia · ガイア
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -148,7 +148,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「オルテガ! マッシュ!
 >  ジェットストリーム・アタックをかけるぞ!」
-“Ortega! Mash! We’re launching the Jet Stream Attack!”
+“Ortega! Mash! Let’s hit them with the Jet Stream Attack!”
 
 @14256 Ortega · オルテガ
 # 触发：使用〈ジェットストリームアタック〉（对话第 2/3 句）

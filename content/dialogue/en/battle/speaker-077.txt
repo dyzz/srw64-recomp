@@ -31,13 +31,13 @@
 # 触发：攻击（通用，6/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これ以上好きにはさせない!」
-“I won’t let you do as you please anymore!”
+“I won’t let you run wild any longer!”
 
 @8597 Mouar · マウアー
 # 触发：攻击（通用，7/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私が相手だ!」
-“I’m your opponent!”
+“Your fight is with me!”
 
 @8598 Mouar · マウアー
 # 触发：攻击（通用，8/9）
@@ -58,7 +58,7 @@
 # 触发：被击坠（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ジェ、ジェリド……」
-“J-jerid...”
+“J-Jerid...”
 
 @8602 Mouar · マウアー
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
@@ -109,7 +109,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 # 审校：甘いな不是 too bad
 > 「甘いな、この程度のダメージなど!」
-“Too soft. Damage like this is nothing!”
+“Nice try. Damage like this is nothing!”
 
 @8611 Mouar · マウアー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
@@ -132,7 +132,7 @@
 @8614 Mouar · マウアー
 # 触发：回避（通用，2/6）
 > 「甘いな」
-“Too soft.”
+“Too easy.”
 
 @8615 Mouar · マウアー
 # 触发：回避（通用，3/6）

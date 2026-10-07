@@ -24,7 +24,7 @@
 @8897 Gates · ゲーツ
 # 触发：攻击（通用，5/7）
 > 「消えろっ!」
-“Disappear!”
+“Vanish!”
 
 @8898 Gates · ゲーツ
 # 触发：攻击（通用，6/7）
@@ -90,7 +90,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
 # 审校：原译“is that all you've got?!”语气过强，日文是轻蔑的陈述，改为更贴合的反派轻蔑口吻。
 > 「ふん、その程度の攻撃!」
-“Hmph, an attack of that level!”
+“Hmph, an attack like that?!”
 
 @8910 Gates · ゲーツ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）

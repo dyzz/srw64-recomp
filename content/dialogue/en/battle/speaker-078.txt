@@ -94,7 +94,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様などにやられる俺ではないわ!」
-“I’m not the kind to be beaten by the likes of you!”
+“I’m not going down to the likes of you!”
 
 @6116 Mash · マッシュ
 # 触发：回避（通用，1/3）
@@ -142,7 +142,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「オルテガ! マッシュ!
 >  ジェットストリーム・アタックをかけるぞ!」
-“Ortega! Mash! We’re launching the Jet Stream Attack!”
+“Ortega! Mash! Let’s hit them with the Jet Stream Attack!”
 
 @14253 Ortega · オルテガ
 # 触发：使用〈ジェットストリームアタック〉（对话第 2/3 句）
