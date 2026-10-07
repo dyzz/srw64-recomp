@@ -25,6 +25,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_probe import ROOT, SDK, MIN_SDK, ARCHIVES, latest, cmake_bin, ndk, llvm, run, sources, java, package  # noqa: E402
 
 LIBRASHADER = ROOT / 'build/recomp/thirdparty/librashader/android/librashader.so'
+# Built-in filters a phone GPU cannot run at full speed: crt-lottes samples so much per
+# pixel that the Seeker (Mali-G615 MC2) shows 6-8 FPS at any line count
+# (docs/native/bezels-and-filters.md). A player can still add it to their own folder.
+PHONE_SKIPS = ('crt-lottes.slangp', 'crt-lottes.slang')
 APP = Path(__file__).resolve().parent / 'app'
 GAME = Path(__file__).resolve().parent / 'game'
 PACKAGE, ACTIVITY = 'org.srw64.game', 'org.srw64.game.SetupActivity'
@@ -91,7 +95,10 @@ def stage_assets(build: Path, deps: Path) -> Path:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
     filters = ROOT / 'build/filters'
-    shutil.copytree(filters, resources / 'filters', ignore=shutil.ignore_patterns('.commit'))
+    shutil.copytree(filters, resources / 'filters', ignore=shutil.ignore_patterns('.commit', *PHONE_SKIPS))
+    notice = resources / 'filters/NOTICE.txt'
+    notice.write_text(''.join(line for line in notice.read_text().splitlines(keepends=True)
+                              if not line.strip().endswith(PHONE_SKIPS)))
     licenses = resources / 'licenses'
     licenses.mkdir()
     shutil.copyfile(LIBRASHADER.parent / 'LICENSE.md', licenses / 'librashader-LICENSE.md')
