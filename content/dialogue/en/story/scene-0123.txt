@@ -30,7 +30,7 @@
 
 @50626 Ark · アーク（按段落 3DD1）
 > 「……他に警備のMSはいないか……」
-“...Are there any other guard MS around...”
+“...Any more guard MS around...?”
 
 @50627 Ark · アーク（按段落 3DD1）
 > 「ここか……どの部屋だ……?」
@@ -40,16 +40,16 @@
 # 审校：全局：弯撇号／弯引号
 > 「女だ……薬で眠らされている?
 >  間違いない、この人だ。ひどいことを」
-“A woman... She’s been put to sleep with drugs? No doubt about it, it’s her. What a horrible thing to do.”
+“A woman... Have they drugged her to keep her asleep? That’s her, no question. How cruel.”
 
 @50629 Bask · バスク
 # 审校：全局：弯撇号／弯引号
 > 「なんだ、警備隊はどうしたか!
 >  あそこにおるのは{HeroMech}の
-“What’s this? Where’s the guard detail?! That over there is one of the {HeroMech}’s
+“What’s this? Where’s the guard detail?! That’s one of the {HeroMech}’s
 ---
 >  奴ではないか!」
-people, isn’t it?!”
+people over there, isn’t it?!”
 
 @50630 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -79,12 +79,12 @@ people, isn’t it?!”
 # 审校：全局：弯撇号／弯引号
 > 「もっと出せんのか!? 奴を完全に
 >  包囲させろ!」
-“Can’t you send out more?! Surround him completely!”
+“Is that all you can send?! Get him completely surrounded!”
 
 @50635 Specials · スペシャルズ
 > 「現在、機体の整備中でありま
 >  したので、動かせるのはこれだけです」
-“The units are currently undergoing maintenance, so this is all we can deploy.”
+“Our units are down for maintenance, sir. This is all we can field.”
 
 @50636 Bask · バスク
 > 「ええい、バカどもが! {PartnerSurname}、
@@ -112,15 +112,15 @@ this is?!”
 # 审校：全局：弯撇号／弯引号
 > 「ここは、あんたの恋人が軟禁されて
 >  いる場所なんだぞ! あんたの女は
-“This is where your lover is being held captive! Your woman was
+“This is where they’re keeping your lover locked up! Your woman’s been
 ---
 >  薬で眠らされてた。それをやらせている
 >  のは、バスクだろ!? あんたは、そんな
-drugged into sleep. And the one behind it is Bask, isn’t it?! Are you really
+drugged unconscious. And Bask is behind it, isn’t he?! You’re going to
 ---
 >  場所を守るために、それをやった奴
 >  の命令を聞くのか!?」
-going to obey the man who did that, just to protect this place?!”
+guard a place like this on orders from the man who did that?!”
 
 @50641 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「な……んだと……?」
@@ -138,11 +138,11 @@ going to obey the man who did that, just to protect this place?!”
 @50644 Bask · バスク
 > 「黙れ! 貴様は黙って命令を
 >  聞いておればよい! 従えぬというなら
-“Silence! You just shut up and follow orders! If you refuse,
+“Silence! Shut up and follow orders! If you won’t obey,
 ---
 >  貴様も女も、あ奴と同様ここで
 >  死んでもらうぞ!」
-then you and your woman will die here, just like him!”
+you and your woman can die here right alongside him!”
 
 @50645 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「くっ……アリンディーネ……」
@@ -152,34 +152,34 @@ then you and your woman will die here, just like him!”
 # 审校：全局：弯撇号／弯引号
 > 「惑わされるんじゃない! わかるか、いま
 >  ここを確保しているのは、俺だ!
-“Don’t let him fool you! Understand? I’m the one holding this place now!
+“Don’t let him get to you! Listen, I’m the one holding this place right now!
 ---
 >  連中をここに近づけなければ、
 >  あんたの恋人は助けられる!」
-If we keep them from getting close, your lover can be saved!”
+Keep them away from here, and we can save your lover!”
 
 @50647 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「君は……まさかそのために……?」
-“You... was that your reason all along...?”
+“You... Don’t tell me that’s why you...?”
 
 @50648 Ark · アーク（按段落 3DD1）
 > 「いいのか、いつまでもそんな奴のいいなり
 >  で!? いずれはあんたも女も、そいつに
-“Are you really fine with letting that man control you forever?! Eventually, both you and your woman
+“Are you going to let him order you around forever?! Sooner or later, you and your woman are both
 ---
 >  殺されるぞ!」
-will be killed by him!”
+going to die at his hands!”
 
 @50649 Bask · バスク
 > 「小僧が、好き放題いいおって!
 >  早く奴を黙らせい!」
-“You brat, running your mouth as you please! Shut him up, now!”
+“That brat’s got a mouth on him! Shut him up, now!”
 
 @50650 Ark · アーク（按段落 3DD1）
 # 审校：“证明给我看你能”拗口
 > 「こういう奴は許せないんだって、あんた
 >  だってわかるはずだ! だったら
-“You know men like him can’t be forgiven, same as I do! So
+“You know as well as I do that you can’t let a man like that get away with this! So
 ---
 >  自分の女を守って見せろよ!」
 prove it! Protect your own woman!”
@@ -187,7 +187,7 @@ prove it! Protect your own woman!”
 @50651 Bask · バスク
 # 审校：Bask 对部下的命令应更粗暴直接，原译“as you are”语气偏弱且不自然。
 > 「よぉし、そのままやってしまえ!」
-“All right, finish him off right now!”
+“Good, now finish him!”
 
 @50652 Ark · アーク（按段落 3DD1）
 > 「くっ……」
@@ -203,10 +203,10 @@ prove it! Protect your own woman!”
 # 审校：全局：弯撇号／弯引号
 > 「なんだと貴様ぁ! ええい、かまわん!
 >  奴ごとやってしまえ!
-“What did you say, you bastard?! Gah, I don’t care! Take him out along with everything else!
+“What did you say, you bastard?! Gah, no matter! Take them both out!
 ---
 >  生かしてかえすな! 女も殺せ!」
-Don’t let him leave alive! Kill the woman too!”
+Don’t let them leave alive! Kill the woman too!”
 
 @50655 Ark · アーク（按段落 3DD1）
 > 「敵を近づけたらあんたの女が殺され
@@ -215,7 +215,7 @@ Don’t let him leave alive! Kill the woman too!”
 
 @50656 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「了解している!」
-“Understood!”
+“I know!”
 
 @50657 主角
 > 「く……しまった……」
@@ -228,7 +228,7 @@ Don’t let him leave alive! Kill the woman too!”
 @50659 主角
 # 审校：全局：弯撇号／弯引号
 > 「ふぅ……どうにか終わったか……」
-“Phew... Somehow it’s over...”
+“Phew... Looks like it’s finally over...”
 
 @50660 对手
 > 「待たせたな」
@@ -236,40 +236,40 @@ Don’t let him leave alive! Kill the woman too!”
 
 @50661 主角
 > 「……あの人はどうしたんです?」
-“...What happened to that man?”
+“...What happened to her?”
 
 @50662 对手
 # 审校：全局：弯撇号／弯引号
 > 「別の町へ身を隠させた。バスクに
 >  見つかることはあるまい
-“I had him hide in another town. Bask won’t find him there.
+“I’ve sent her into hiding in another town. Bask won’t find her.
 ---
 >  大きな借りができたな、少年」
-You’ve done me a great favor, boy.”
+I owe you a great debt, boy.”
 
 @50663 主角
 # 审校：全局：弯撇号／弯引号
 > 「{HeroFull}です。
 >  名乗るのが遅れて悪かったけど
-“It’s {HeroFull}. Sorry I was slow to introduce myself,
+“My name’s {HeroFull}. Sorry I didn’t introduce myself sooner,
 ---
 >  その少年ってのはやめてもらいたいな」
-but I’d appreciate it if you’d stop calling me ‘boy’.”
+but I’d appreciate it if you stopped calling me ‘boy’.”
 
 @50664 对手
 > 「すまん。しかし……まさか君がこのような
 >  行動をとるとはな」
-“My apologies. But... to think you would take such action.”
+“My apologies. But... I never imagined you would do something like this.”
 
 @50665 主角
 # 审校：全局：弯撇号／弯引号
 > 「いいたいことはわかりますよ。前のあなた
 >  は信用できなかった。でも、恋人の
-“I understand what you’re saying. I couldn’t trust the man you were before. But if you’re
+“I know what you’re getting at. I couldn’t trust you before. But someone who’s
 ---
 >  ために死んでみせようとするあなたなら、
 >  信用できそうな気がしただけです」
-willing to die for your lover, then I felt I could trust you.”
+ready to die for his lover... I just felt like I could trust that.”
 
 @50666 对手
 > 「そうか……君はあの町で……。
@@ -280,10 +280,10 @@ willing to die for your lover, then I felt I could trust you.”
 # 审校：全局：弯撇号／弯引号
 > 「……恨みは忘れるといいました。それに
 >  あれがあなたのせいじゃなかったってことは
-“...I said I’d forget my grudge. And I think I understand now
+“...I told you I’d put my grudge behind me. And I think I understand now
 ---
 >  いまは、よくわかっているつもりです」
-that it wasn’t your fault.”
+that what happened wasn’t your fault.”
 
 @50668 对手
 > 「{HeroName}くん……」
@@ -297,50 +297,50 @@ that it wasn’t your fault.”
 # 审校：全局：弯撇号／弯引号
 > 「…………{HeroMech}に
 >  行くというのも、よいかもしれんな
-“...Perhaps it wouldn’t be a bad idea to go to the {HeroMech}.
+“...Perhaps I might go to the {HeroMech}.
 ---
 >  君がよければ、だが。君も長い間、
 >  部隊を離れていてはまずいだろう」
-That is, if you don’t mind. You can’t stay away from your unit for long either.”
+If you’re agreeable, that is. And you shouldn’t stay away from your unit too long either.”
 
 @50671 主角
 # 审校：全局：弯撇号／弯引号
 > 「いいんですか、それで。俺はそういうつも
 >  りで来たわけじゃ……」
-“Is that really all right? That’s not why I came here...”
+“Are you sure? That’s not why I came...”
 
 @50672 对手
 # 审校：全局：弯撇号／弯引号
 > 「いまさら、他にどうしようがある?
 >  まさかこの状況で、戦うことをやめる
-“At this point, what other choice is there? Surely in this situation, you can’t choose to stop
+“What else can I do at this point? I can hardly choose to quit
 ---
 >  選択などできまい。ならば、道は1つ
 >  だと思えるがね。もっとも、
-fighting. If so, then there’s only one path. Though I don’t know
+fighting in a situation like this. That leaves only one road, as I see it. Though
 ---
 >  {HeroMech}が私のような者を
 >  受け入れてくれるかどうかは
-whether the {HeroMech} would even accept
+whether the {HeroMech} would accept
 ---
 >  わからないが」
-someone like me.”
+someone like me, I can’t say.”
 
 @50673 主角
 > 「それは、大丈夫でしょう。エマさん
 >  だってそうだし、うちにはそういう人は
-“That should be fine. Emma is the same, and we have plenty of people
+“That won’t be a problem. Emma’s in the same boat, and we’ve got plenty of people
 ---
 >  たくさんいますから」
-like that in our ranks.”
+like that.”
 
 @50674 对手
 # 审校：全局：弯撇号／弯引号
 > 「ならば、やはり共にいかせてもらおう。
 >  かまわないのだろう?」
-“Then I’ll come along with you after all. You don’t mind, do you?”
+“Then I will join you. You have no objection, I take it?”
 
 @50675 主角
 # 审校：全局：弯撇号／弯引号
 > 「わかりました、いいでしょう。急ぎますよ」
-“Understood, that’s fine. Let’s hurry.”
+“All right, then. Let’s get moving.”

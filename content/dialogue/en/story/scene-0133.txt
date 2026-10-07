@@ -4,15 +4,15 @@
 # 审校：全局：弯撇号／弯引号
 > 「やはり来たか、{HeroMech}。
 >  グレミーを倒してくれたようだな
-“So you came after all, {HeroMech}. It seems you’ve defeated Glemy.
+“So you’ve come, {HeroMech}. I hear you disposed of Glemy for me.
 ---
 >  礼をいおう」
-I thank you.”
+You have my thanks.”
 
 @43611 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「別にお前のためにやったわけじゃない!」
-“It’s not like I did it for you!”
+“We didn’t do it for you!”
 
 @43612 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -41,18 +41,18 @@ and bring the Earth Sphere under my control.”
 # 审校：全局：弯撇号／弯引号
 > 「そう何もかも都合よくいくと
 >  思うなよ、ハマーン!」
-“Don’t think everything will go your way, Haman!”
+“Don’t count on everything going your way, Haman!”
 
 @43615 Haman · ハマーン
 # 审校：人称
 > 「どういわれようと、己の運命は
 >  自分で切り開くのが私だ!」
-“Whatever you say, I carve out my own destiny!”
+“Say what you will, I carve out my own destiny!”
 
 @43616 Bright · ブライト
 > 「パイロット各員は発進急げ!
 >  みんな、健闘を祈る!」
-“All pilots, launch immediately! Everyone, I wish you good luck!”
+“All pilots, launch immediately! Everyone, good luck out there!”
 
 @43617 Haman · ハマーン
 > 「なに!?」
@@ -76,7 +76,7 @@ and bring the Earth Sphere under my control.”
 @43621 Kamille · カミーユ
 > 「わかった! お前は生きていては
 >  いけない人間なんだ!
-“I understand now! You are someone who must not be allowed to live!
+“Now I see it! You’re someone who shouldn’t be alive!
 ---
 >  暗黒の世界へもどれ、ハマーン・
 >  カーン!! ここから、いなくなれッ!!」
@@ -98,7 +98,7 @@ I will eliminate you here and now!”
 ---
 >  そういう意思をなくせば、俺たち
 >  だってわかりあえて、シャアだって……」
-If you’d just let go of that, even we could understand each other, and Char too...”
+If you let go of that will, even we could understand each other, and Char too...”
 
 @43624 Haman · ハマーン
 > 「やさしさがニュータイプの力だと
@@ -107,7 +107,7 @@ If you’d just let go of that, even we could understand each other, and Char to
 ---
 >  女が誰でもそれを受け入れるなどと
 >  思うな、アムロ・レイ!」
-Do not think any woman would accept that, Amuro Ray!”
+Do not imagine every woman will welcome it, Amuro Ray!”
 
 @43625 Amuro · アムロ
 > 「なに!?」
@@ -127,7 +127,7 @@ Do not think any woman would accept that, Amuro Ray!”
 # 审校：全局：弯撇号／弯引号
 > 「そうだ、あなたにも見えているはずだ。
 >  戦いで無駄死にをした
-“That’s right, you should be able to see it too. The wills of those who died
+“That’s right, you must see it too. The wills of those who died
 ---
 >  人の意思が!」
 pointlessly in battle!”
@@ -136,11 +136,11 @@ pointlessly in battle!”
 # 审校：中文误断句
 > 「人は生きる限りひとりだよ。人類
 >  そのものもそうだ。人類すべてがそう
-“People are alone as long as they live. Humanity itself is the same. Humanity as a whole
+“A person is alone for as long as they live. So is humanity itself. Could all of humanity
 ---
 >  やすやすと変われるものか! その前に
 >  人類は地球を食い尽くすよ!」
-can’t change that easily! Before that happens, humanity will devour the Earth!”
+change so easily? Long before that, humanity will devour the Earth!”
 
 @43630 Judau · ジュドー
 # 审校：命令语气
@@ -151,7 +151,7 @@ can’t change that easily! Before that happens, humanity will devour the Earth!
 @43631 Haman · ハマーン
 > 「憎しみがあってこそ、
 >  人は強くなれる!
-“It is because of hatred that people can become strong!
+“Hatred is what makes people strong!
 ---
 >  私はそうやって地球圏へと
 >  もどってきた!」
@@ -187,14 +187,14 @@ you might have been able to save the Earth!”
 # 审校：中文“说明……就是证据”重复；英文 existence called
 > 「無駄だよ、ジュドー。
 >  アステロイドベルトまで行った人間が
-“It’s futile, Judau. The fact that humans who went as far as the Asteroid Belt
+“It’s no use, Judau. When people who went all the way out to the Asteroid Belt
 ---
 >  もどってくるっていうのはな、人類が
 >  まだ地球という存在に
-come back is proof that humanity is still
+come back, it’s proof that humanity is still
 ---
 >  縛りつけられている、証拠だろ」
-bound to the Earth.”
+chained to the Earth.”
 
 @43637 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -206,11 +206,11 @@ bound to the Earth.”
 # 审校：全局：弯撇号／弯引号
 > 「そうさ、賢しいお前らのおかげで、
 >  人類が負わされた
-“That’s right. Thanks to you clever ones, I was unable
+“Exactly. Thanks to you clever ones, I couldn’t
 ---
 >  地球の呪縛を、断ち切って
 >  やることができなかったよ……」
-to sever the curse of Earth that humanity bears...”
+break the curse of Earth that humanity was made to bear...”
 
 @43639 Judau · ジュドー
 > 「ハマーン!?」
@@ -238,7 +238,7 @@ to sever the curse of Earth that humanity bears...”
 @43644 Gato · ガトー
 > 「くっ……情けない、このような所で
 >  終わるとは……」
-“Ngh... How pathetic, to end in a place like this...”
+“Ngh... How shameful, to meet my end here...”
 
 @43645 Duo · デュオ
 > 「なぁ、俺たち……勝てたんだよな?」
@@ -247,7 +247,7 @@ to sever the curse of Earth that humanity bears...”
 @43646 Trowa · トロワ
 # 审校：そのはずだ
 > 「ああ、そのはずだ」
-“Yeah, we should have.”
+“Yeah. Looks that way.”
 
 @43647 Show · ショウ
 # 审校：全局：弯撇号／弯引号
@@ -259,7 +259,7 @@ to sever the curse of Earth that humanity bears...”
 # 审校：英文生硬
 > 「だが問題は山積みだぞ。
 >  銀河帝国やアクシズ軍の
-“But the problems are piling up. Skirmishes with the remnants of the
+“But we still have a mountain of problems. Skirmishes with the remnants of the
 ---
 >  残党との小ぜりあいも、
 >  当分は続くだろう」
@@ -277,7 +277,7 @@ I don’t think I can do anything for a while.”
 @43650 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「そうだな……月へでも向かうか」
-“Right then... let’s head for the Moon.”
+“True... Maybe we’ll head for the Moon.”
 
 @43651 Beauty · ビューティ
 # 审校：全局：弯撇号／弯引号
@@ -301,26 +301,26 @@ land at Von Braun.”
 @43653 Garrison · ギャリソン
 > 「それがよろしいでしょう
 >  このような状態で今後のことを
-“That would be for the best. Pondering the future in a state like this
+“A wise choice, sir. There is little point in pondering the future in such a state.
 ---
 >  思案してもしかたありますまい。
 >  今は休息をされるのがいちばんですな」
-will get us nowhere. Resting is the best thing for you now.”
+Rest is what you need most now.”
 
 @43654 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「よし、月のフォン・ブラウンへ向かおう
 >  みんな、悪いがもうしばらくは
-“All right, we’ll head for Von Braun on the Moon. Everyone, sorry, but bear with it
+“All right, we’ll head for Von Braun on the Moon. Sorry, everyone, but hang in there
 ---
 >  我慢してくれ」
-a while longer.”
+a little longer.”
 
 @43655 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「あー、ついたついた。さぁて、
 >  たっぷり寝るとするかぁ」
-“Ahh, we’re here, we’re here. Now then, time to get a nice long sleep.”
+“Ahh, finally here. Okay, time for a good long sleep.”
 
 @43656 Maria · マリア
 # 审校：英文生硬
@@ -344,16 +344,16 @@ Come on, let’s go, Koji.”
 
 @43659 Maria · マリア
 > 「あっ、ちょっと待ちなさいよ!」
-“Ah, wait just a moment!”
+“Hey, hold on a minute!”
 
 @43660 Cecily · セシリー
 # 审校：全局：弯撇号／弯引号
 > 「こんなふうにゆったりと過ごせる日が
 >  くるなんて、ここ数年考えたことが
-“I never thought I’d see days when we could relax like this, not once in
+“These past few years, I never once thought a day would come when we could
 ---
 >  なかったわ」
-all these past few years.”
+relax like this.”
 
 @43661 Seabook · シーブック
 > 「ああ。
@@ -382,12 +382,12 @@ we’ve done nothing but fight...”
 # 审校：全局：弯撇号／弯引号
 > 「大丈夫だよ、みんな元気でいるよ
 >  この戦いが終わったら、また会えるさ」
-“They’re fine, everyone’s doing well. Once this war is over, we can see them again.”
+“Don’t worry, I’m sure they’re all fine. Once this war is over, we’ll see them again.”
 
 @43666 Cecily · セシリー
 # 审校：全局：弯撇号／弯引号
 > 「ええ。その時はあなたも一緒よ」
-“Yes. And you’ll be with me then too.”
+“Yes. And you’re coming with me when we do.”
 
 @43667 Seabook · シーブック
 > 「ああ……もちろんだ」
@@ -406,7 +406,7 @@ Eiji, Roanne, Arthur, let’s have a drink and sleep it off. Oops,
 ---
 >  エイジはアンナと一緒のほうが
 >  よかったか」
-would Eiji rather be with Anna?”
+maybe Eiji would rather spend the time with Anna?”
 
 @43669 Anna · アンナ
 > 「デビッド!」
@@ -415,7 +415,7 @@ would Eiji rather be with Anna?”
 @43670 Roux · ルー
 > 「ばかなこといってないで、
 >  さっさと行きなさいよ」
-“Stop saying stupid things and get going already.”
+“Quit talking nonsense and get moving already.”
 
 @43671 Simone · シモーヌ
 > 「まったくねぇ。ほら、あんたたちも」
@@ -444,13 +444,13 @@ A little rest never hurt anybody.”
 @43674 Chief Chujo · 中条長官
 > 「そう思うな。ここは我々にまかせて、
 >  ブライト君たちも休んでくれたまえ」
-“I think so too. Leave things here to us, and you and the others should rest too, Bright.”
+“I agree. Leave things here to us, and get some rest yourselves, Bright.”
 
 @43675 Prof. Yumi · 弓教授
 # 审校：全局：弯撇号／弯引号
 > 「ああ、そうしてもらったほうがいいな。
 >  我々は君たちほど
-“Yes, that would be better. We’re not as
+“Yes, you’d best do that. We’re not as
 ---
 >  疲れてはいないからね」
 exhausted as you all are.”
@@ -459,13 +459,13 @@ exhausted as you all are.”
 # 审校：全局：弯撇号／弯引号
 > 「では、お言葉に甘えるとしましょう。
 >  艦長、僕たちも少し休んでおこう」
-“Then let’s take you up on that. Captain, let’s get some rest too.”
+“Then we’ll gladly take you up on that. Captain, let’s get some rest too.”
 
 @43677 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「そうさせてもらいましょう。
 >  ではあとを頼みます」
-“Let’s do that. I’ll leave the rest to you, then.”
+“We’ll do that. Then I’ll leave things to you.”
 
 @43678 Dr. Hazuki · 葉月博士
 # 审校：全局：弯撇号／弯引号
@@ -475,7 +475,7 @@ exhausted as you all are.”
 
 @43679 Sally · サリィ
 > 「え? それ本当なんですか?」
-“What? Is that really true?”
+“What? Is that true?”
 
 @43680 Dr. Hazuki · 葉月博士
 # 审校：全局：弯撇号／弯引号
@@ -490,7 +490,7 @@ I’m having Garrison analyze it right now, but...”
 @43681 Chief Chujo · 中条長官
 # 审校：全局：弯撇号／弯引号
 > 「……やはり、奴らかね」
-“...So it’s them after all, is it?”
+“...So it is them, then?”
 
 @43682 Dr. Hazuki · 葉月博士
 # 审校：去 As expected

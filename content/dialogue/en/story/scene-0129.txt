@@ -20,7 +20,7 @@
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「何にもないぜ。本当に、ここに
 >  デビルガンダムがいるのかよ」
-“There’s nothing out here. Is the Dark Gundam really here?”
+“There’s nothing out here. Is the Dark Gundam seriously here?”
 
 @43027 Domon · ドモン
 > 「ああ……そのはずだ」
@@ -30,7 +30,7 @@
 # 审校：全局：弯撇号／弯引号
 > 「いや、確かにここで間違いないようだ
 >  見ろ」
-“No, there’s no mistake. It’s here. Look.”
+“No, this is the place, all right. Look.”
 
 @43029 Domon · ドモン
 > 「マーキロット!? シジーマもか!」
@@ -91,7 +91,7 @@ Activate the enhanced Berserker System!”
 
 @43039 Markiroot · マーキロット
 > 「フハハハッ、さあ神の裁きを受けよ!」
-“Fuhahaha, now receive the judgment of God!”
+“Fuhahaha, now face the judgment of God!”
 
 @43040 Argo · アルゴ
 > 「ドモン、くるぞ!」
@@ -119,7 +119,7 @@ Activate the enhanced Berserker System!”
 # 检查提示：未用必用译名：ノーベルガンダム→Noble Gundam
 > 「しまった、ノーベルガンダムとDG細胞
 >  の融合を急がせすぎたか
-“Damn, did I rush the fusion of the Noble Gundam and the DG Cells too much?
+“Damn, did I push the fusion of the Noble Gundam and the DG Cells too fast?
 ---
 >  しかたがない、アレンビー、
 >  撤退しなさい!」
@@ -164,7 +164,7 @@ Domonnn!!”
 ---
 >  ドモンと魂の拳を交えたファイター
 >  なら、DG細胞に負けちゃいけない!」
-a fighter who crossed fists with Domon soul to soul, you can’t lose to the DG Cells!”
+a fighter who’s crossed soul-filled fists with Domon, don’t you dare lose to the DG Cells!”
 
 @43053 Allenby · アレンビー
 # 审校：全局：弯撇号／弯引号
@@ -190,24 +190,24 @@ I love Domon too!!”
 # 检查提示：未用必用译名：ノーベルガンダム→Noble Gundam
 > (……これは……以前の時とは違う?
 >  DG細胞がノーベルガンダムの
-(...This is... different from last time? The DG Cells are invading the Noble Gundam’s
+(...This is... different from before? The DG Cells are invading the Noble Gundam’s
 ---
 >  システムに侵入しているんだわ。
 >  なら、アムロさんがいっていたように
-system. Then, like Amuro said, if I can just stop the system...
+system. Then, just like Amuro said...
 ---
 >  システムだけ停止できれば……
 >  できるの、私に?)
-can I do it? Can I?)
+if I can stop only the system... But can I really pull it off?)
 
 @43057 Allenby · アレンビー
 > 「アタシだって、アタシだってぇぇぇ!!」
-“I... I toooo!!”
+“Me too... Me toooo!!”
 
 @43058 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 > 「やるしかない! この一矢にかけるわ!」
-“I have no choice! I’ll stake everything on this one arrow!”
+“There’s no other way! Everything rides on this one shot!”
 
 @43059 Allenby · アレンビー
 # 审校：全局：弯撇号／弯引号
@@ -222,7 +222,7 @@ can I do it? Can I?)
 ---
 >  あなたのような人を、救いたいという
 >  想いは、誰にも負けない! だから!」
-when it comes to wanting to save people like you, I won’t lose to anyone! So!”
+no one wants to save people like you more than I do! That’s why...!”
 
 @43061 Rain · レイン
 > 「やった!?」
@@ -251,10 +251,10 @@ when it comes to wanting to save people like you, I won’t lose to anyone! So!�
 # 审校：英文 you're pitiful 失礼
 > 「お願い、もうやめて! あなたも
 >  かわいそうだとは思うけど、これ以上
-“Please, stop this! I feel sorry for you too, but don’t torment
+“Please, stop this! I feel sorry for you too, but please don’t make
 ---
 >  ドモンを苦しめないで!」
-Domon anymore!”
+Domon suffer any more!”
 
 @43067 Allenby · アレンビー
 # 审校：全局：弯撇号／弯引号
@@ -264,7 +264,7 @@ Domon anymore!”
 ---
 >  アタシ、アタシ、ドモンのこと
 >  好きだったのにぃ!」
-I... I loved Domon, you know!”
+I... I loved Domon!”
 
 @43068 Rain · レイン
 # 审校：あなた…… 不是“你是”
@@ -281,25 +281,25 @@ I... I loved Domon, you know!”
 # 检查提示：未用必用译名：ノーベルガンダム→Noble Gundam
 > (……これは……以前の時とは違う?
 >  DG細胞がノーベルガンダムの
-(...This is... different from last time? The DG Cells are invading the Noble Gundam’s
+(...This is... different from before? The DG Cells are invading the Noble Gundam’s
 ---
 >  システムに侵入しているんだわ。
 >  なら、アムロさんがいっていたように
-system. Then, like Amuro said,
+system. Then, just like Amuro said...
 ---
 >  システムだけ停止できれば……
 >  できるの、私に?)
-if I can just stop the system... can I do it? Can I?)
+if I can stop only the system... But can I really pull it off?)
 
 @43071 Allenby · アレンビー
 > 「アタシだって、アタシだってぇぇぇ!!」
-“I... I toooo!!”
+“Me too... Me toooo!!”
 
 @43072 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 > 「やるしかない! この一矢にかけるわ!
 >  この娘を死なせはしない!」
-“I have no choice! I’ll stake everything on this one arrow! I won’t let this girl die!”
+“There’s no other way! Everything rides on this one shot! I won’t let this girl die!”
 
 @43073 Allenby · アレンビー
 # 审校：全局：弯撇号／弯引号
@@ -314,7 +314,7 @@ if I can just stop the system... can I do it? Can I?)
 ---
 >  あなたのような人を、救いたいという
 >  想いは、誰にも負けない! だから!」
-when it comes to wanting to save people like you, I won’t lose to anyone! So!”
+no one wants to save people like you more than I do! That’s why...!”
 
 @43075 Rain · レイン
 > 「やった!?」
@@ -350,12 +350,12 @@ when it comes to wanting to save people like you, I won’t lose to anyone! So!�
 
 @43082 Schwarz · シュバルツ
 > 「くっ、うかつだったか……!?」
-“Ngh, was I careless...?!”
+“Ngh, I let my guard down...?!”
 
 @43083 Domon · ドモン
 # 审校：?!
 > 「バカな!? この俺が……!?」
-“Impossible?! Me...?!”
+“Impossible! How could I...?!”
 
 @43084 Wong · ウォン
 # 审校：英文生硬
@@ -367,7 +367,7 @@ when it comes to wanting to save people like you, I won’t lose to anyone! So!�
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「なんだと!? ウォン、何をする気だ!
 >  キョウジの命はもはや風前のともしび
-“What?! Wong, what are you planning to do?! Kyoji’s life is already flickering like a candle in the wind.
+“What?! Wong, what do you think you’re doing?! Kyoji’s life is already flickering like a candle in the wind.
 ---
 >  パイロットが、コアがいなくてはデビル
 >  ガンダムの完全復活はないのだぞ!」
@@ -381,7 +381,7 @@ Without a pilot, without the core, the Dark Gundam can never fully revive!”
 # 审校：全局：弯撇号／弯引号
 > 「こんなに進化しているなんて……
 >  キョウジさん……」
-“To think it’s evolved this much... Kyoji...”
+“I can’t believe it’s evolved this far... Kyoji...”
 
 @43088 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号
@@ -420,7 +420,7 @@ Without a pilot, without the core, the Dark Gundam can never fully revive!”
 # 审校：全局：弯撇号／弯引号
 > 「今はこんなことをしている場合じゃ
 >  ないんだ。すぐに終わらせます!」
-“This isn’t the time to be doing this. I’ll finish it right away!”
+“We don’t have time for this. I’ll end it quickly!”
 
 @43095 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -431,7 +431,7 @@ Without a pilot, without the core, the Dark Gundam can never fully revive!”
 @43096 Selain · セレイン（按段落 3DD2）
 > 「デビルガンダムか……化け物め。
 >  ドモン、いいな」
-“The Dark Gundam, huh... what a monster. Domon, ready?”
+“The Dark Gundam... A monster. Domon, ready?”
 
 @43097 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -444,14 +444,14 @@ Without a pilot, without the core, the Dark Gundam can never fully revive!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「自己進化、自己増殖……
 >  ほうっておいたら、地球は
-“Self-evolution, self-replication... if left alone, the Earth will be
+“Self-evolution, self-replication... if we leave it be, the Earth will be
 ---
 >  デビルガンダムにうめつくされてしまう……
 >  それを許すわけにはいかない!
-buried in Devil Gundams... I won’t allow that!
+overrun by Devil Gundams... I won’t allow it!
 ---
 >  いいわね、ドモン」
-All right, Domon?”
+Ready, Domon?”
 
 @43099 Domon · ドモン
 > 「ああ、今度こそケリをつけてやる!」
@@ -481,10 +481,10 @@ All right, Domon?”
 # 审校：全局：弯撇号／弯引号
 > 「むっ!? あやつ、
 >  やはり、ワシのにらんだ通りか……
-“Hm?! That man... just as I suspected after all...
+“Hm?! So that one is... just as I suspected...
 ---
 >  おのれ、今度は邪魔をさせん!」
-Curse you, this time I won’t let you interfere!”
+Curse you, I will not let you interfere this time!”
 
 @43106 Domon · ドモン
 > 「東方不敗……!」
@@ -499,7 +499,7 @@ Curse you, this time I won’t let you interfere!”
 ---
 >  倒した代償がこれだ! さしもの
 >  デビルガンダムも、パイロットがこれでは
-your victory! Even the Dark Gundam, with a pilot like this, is
+your victory! With its pilot in this state, even the Dark Gundam is
 ---
 >  鉄くず同然!
 >  ドモンよ、貴様が新たなコアとなって
@@ -546,7 +546,7 @@ A heart and body split in two. I am the shadow of Kyoji reflected in a mirror.
 ---
 >  本物のキョウジは確かに
 >  あの中にいる」
-The real Kyoji is indeed inside that thing.”
+The real Kyoji is in there, without question.”
 
 @43113 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -564,23 +564,23 @@ Why are there two of you, brother?!”
 ---
 >  コピーにすぎないのだ。すべては
 >  デビルガンダムを抹殺するためだった」
-created with the power of the DG Cells. All of it was to destroy the Dark Gundam.”
+created with the power of the DG Cells. All in order to destroy the Dark Gundam.”
 
 @43115 Domon · ドモン
 > 「そんな! あれを使って地球圏の
 >  征服を企んだのは兄さんのはず……」
-“No! It was my brother who used that thing to try and conquer the Earth Sphere...”
+“No way! I thought my brother was the one who used that thing to try to conquer the Earth Sphere...”
 
 @43116 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それは違う! そもそもデビルガンダム、
 >  いや、アルティメットガンダムは
-“That’s wrong! To begin with, the Dark Gundam, no, the Ultimate Gundam, was
+“You’re wrong! The Dark Gundam, no, the Ultimate Gundam, was originally
 ---
 >  地球再生を目的として
 >  作られたものだ」
-created for the purpose of restoring the Earth.”
+built to restore the Earth.”
 
 @43117 Domon · ドモン
 > 「地球の再生……?」
@@ -595,7 +595,7 @@ created for the purpose of restoring the Earth.”
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth’s natural regeneration. But! Some had their eyes on
+all meant for the Earth’s natural regeneration. But! There were those who set their sights on
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
@@ -603,11 +603,11 @@ its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-fled to Earth. But damage from an attack during my escape threw its program
+fled to Earth. However, the attack I took during my escape caused the program to
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-into chaos, and it became that terrifying Dark Gundam.”
+go mad, and it became that terrifying Dark Gundam.”
 
 @43119 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -626,32 +626,32 @@ as the sixth Gundam of Operation Meteor.”
 @43121 Domon · ドモン
 > 「そ、そんな……
 >  じゃあ、俺はそんなことも知らずに
-“Th-then... so without knowing any of that,
+“Th-That can’t be... Then all this time, without knowing any of that,
 ---
 >  必死に兄さんを追いかけて……」
-I desperately chased after my brother...”
+I was desperately chasing my brother...”
 
 @43122 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「根が素直なお前は、ガンダムに
 >  乗せられ、キョウジを追ってくるに
-“You’re honest at heart, so I was sure you’d be put in a Gundam and come chasing
+“Honest at heart as you are, you were certain to be put in a Gundam and sent chasing
 ---
 >  違いない。そう思った。だが相手は
 >  強大で、ムゲ帝国軍もいた
-after Kyoji. That’s what I thought. But the enemy was powerful, and the Muge Empire’s
+after Kyoji. Or so I believed. But the enemy was powerful, and the Muge Empire’s
 ---
 >  お前が無茶をするのは目に見えて
 >  いた。そこでデビルガンダムに
-forces were there too. It was obvious you’d do something reckless. So Kyoji,
+forces were there too. It was plain you would do something reckless. So Kyoji,
 ---
 >  取り込まれたキョウジは、うすれていく
 >  意識の中で私をつくりあげ、
-taken into the Dark Gundam, created me within his fading consciousness,
+taken into the Dark Gundam, created me as his consciousness faded,
 ---
 >  お前を守らせようとしたのだ」
-and tried to have me protect you.”
+so that I might protect you.”
 
 @43123 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -663,11 +663,11 @@ and tried to have me protect you.”
 # 审校：英文 believed me honestly 直译
 > 「フフフッ、あれだけ、頭に血を
 >  のぼらせたお前が、素直に
-“Heh heh... With your head that hot with rage, there’s no way you’d have
+“Heh heh... Hot-headed as you were, you would never have
 ---
 >  信じたはずがあるまい……。ドモン、
 >  私も……私もつらかったぞ……うっ……」
-just believed me... Domon, I too... I suffered too... ngh...”
+simply believed me... Domon, it was... it was hard for me too... ngh...”
 
 @43125 Domon · ドモン
 # 审校：破折号
@@ -678,10 +678,10 @@ just believed me... Domon, I too... I suffered too... ngh...”
 # 审校：英文 exists alongside 直译
 > 「私の命もまたキョウジとともにある。
 >  もはや、これまでか……いや
-“My life is bound up with Kyoji’s. So this is the end... No,
+“My life, too, is tied to Kyoji’s. Is this the end for me...? No,
 ---
 >  もってくれよ、この体!」
-hold on, this body of mine!”
+hold out a little longer, body!”
 
 @43127 Master · マスター
 > 「貴様、何をする!」
@@ -741,7 +741,7 @@ hold on, this body of mine!”
 “Hurry! Blow the cockpit away, my body and all! To stop the Dark Gundam,
 ---
 >  とめるには、キョウジをうつしかない!」
-there’s no other way but to shoot Kyoji!”
+you have to shoot Kyoji!”
 
 @43139 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -752,7 +752,7 @@ there’s no other way but to shoot Kyoji!”
 # 审校：全局：弯撇号／弯引号
 > 「甘ったれるな! その拳の紋章は
 >  偽物か! お前もその紋章を
-“Don’t be soft! Is the crest on that fist a fake?! If you bear that crest,
+“Don’t be a child! Is the crest on that fist a fake?! If you bear that crest,
 ---
 >  持つ身なら、情に流され目的を
 >  見失ってはいかん!
@@ -824,11 +824,11 @@ Do you even understand what you’ve done?!”
 @43151 Domon · ドモン
 > 「黙れ!! マスターアジア、
 >  デビルガンダムを使って、世界を
-“Shut up!! Master Asia, you villain who plots to use the Dark Gundam to make the world
+“Shut up!! Master Asia, you scoundrel, scheming to use the Dark Gundam to take the world
 ---
 >  我が者にしようとたくらむ
 >  悪党がぁっ!!」
-your own!!”
+for yourself!!”
 
 @43152 Master · マスター
 > 「たわけが!! ワシがいつ、そんなものを
@@ -862,7 +862,7 @@ your own!!”
 @43158 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「終わった……これで、すべて……」
-“It’s over... With this, everything...”
+“It’s over... All of it...”
 
 @43159 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
@@ -906,28 +906,28 @@ split in two. In other words... the shadow of Kyoji reflected in a mirror.”
 @43166 Schwarz · シュバルツ
 > 「私はDG細胞の力を借り、
 >  作りだされた、キョウジのコピーなのだ
-“I am a copy of Kyoji, created by borrowing the power of the DG Cells.
+“I am a copy of Kyoji, created with the power of the DG Cells.
 ---
 >  すべてはデビルガンダムを抹殺する
 >  ためだった」
-All of it was to eradicate the Dark Gundam.”
+All in order to destroy the Dark Gundam.”
 
 @43167 Domon · ドモン
 # 审校：原文“企んだ”是“图谋、策划”，初稿 tried 语气较弱，改为 plotted。
 > 「そんな! あれを使って地球圏の
 >  征服を企んだのは兄さんのはず……」
-“No! It was my brother who used that thing and plotted to conquer the Earth Sphere...”
+“No way! I thought my brother was the one who used that thing to try to conquer the Earth Sphere...”
 
 @43168 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それは違う! そもそもデビルガンダム、
 >  いや、アルティメットガンダムは
-“That’s wrong! To begin with, the Dark Gundam, no, the Ultimate Gundam, was
+“You’re wrong! The Dark Gundam, no, the Ultimate Gundam, was originally
 ---
 >  地球再生を目的として
 >  作られたものだ」
-created for the purpose of restoring the Earth.”
+built to restore the Earth.”
 
 @43169 Domon · ドモン
 > 「地球の再生……?」
@@ -942,7 +942,7 @@ created for the purpose of restoring the Earth.”
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth’s natural regeneration. But! Some had their eyes on
+all meant for the Earth’s natural regeneration. But! There were those who set their sights on
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
@@ -950,11 +950,11 @@ its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-fled to Earth. But damage from an attack during my escape threw its program
+fled to Earth. However, the attack I took during my escape caused the program to
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-into chaos, and it became that terrifying Dark Gundam.”
+go mad, and it became that terrifying Dark Gundam.”
 
 @43171 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -974,29 +974,29 @@ the sixth Gundam of Operation Meteor.”
 # 审校：全局：弯撇号／弯引号
 > 「そ、そんな……
 >  じゃあ、俺はそんなことも知らずに
-“Th-that can’t be... Then I, without even knowing any of that,
+“Th-That can’t be... Then all this time, without knowing any of that,
 ---
 >  必死に兄さんを追いかけて……」
-desperately chased after my brother...”
+I was desperately chasing my brother...”
 
 @43174 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「根が素直なお前は、ガンダムに
 >  乗せられ、キョウジを追ってくるに
-“You’re honest at heart, so I was sure you’d be put in a Gundam and come chasing after
+“Honest at heart as you are, you were certain to be put in a Gundam and sent chasing after
 ---
 >  違いない。そう思った。だが相手は
 >  強大で、帝国軍もいた。お前が
-Kyoji. That’s what I thought. But the enemy was powerful, and the Imperial forces were there too. It was
+Kyoji. Or so I believed. But the enemy was powerful, and the Imperial forces were there too. It was
 ---
 >  無茶をするのは目に見えていた。
 >  そこでデビルガンダムに取り込まれた
-obvious you’d do something reckless. So Kyoji, swallowed by the Dark Gundam,
+plain you would do something reckless. So Kyoji, swallowed by the Dark Gundam,
 ---
 >  キョウジは、うすれていく意識の中で
 >  私をつくりあげ、お前を
-created me within his fading consciousness, and tried to have me
+created me as his consciousness faded, so that I might
 ---
 >  守らせようとしたのだ」
 protect you.”
@@ -1005,17 +1005,17 @@ protect you.”
 # 审校：全局：弯撇号／弯引号
 > 「なら、どうして!
 >  どうしていってくれなかったんだ!」
-“Then why! Why didn’t you tell me?!”
+“Then why?! Why didn’t you tell me?!”
 
 @43176 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 > 「フフフッ、あれだけ、頭に血を
 >  のぼらせたお前が、素直に
-“Heh heh, with your head that hot with rage, there’s no way you would have
+“Heh heh... Hot-headed as you were, you would never have
 ---
 >  信じたはずがあるまい……。ドモン、
 >  私も……私もつらかったぞ……うっ……」
-believed me so easily... Domon, I too... I suffered as well... ngh...”
+simply believed me... Domon, it was... it was hard for me too... ngh...”
 
 @43177 Domon · ドモン
 # 审校：破折号
@@ -1026,7 +1026,7 @@ believed me so easily... Domon, I too... I suffered as well... ngh...”
 # 审校：“陷入沉眠的现在”直译
 > 「私の命もまたキョウジとともにある。
 >  キョウジが眠りについた今
-“My life is bound up with Kyoji’s. Now that Kyoji has gone to his rest,
+“My life, too, is tied to Kyoji’s. Now that Kyoji has gone to his rest,
 ---
 >  私もまた……」
 I too...”
@@ -1039,11 +1039,11 @@ I too...”
 # 审校：全局：弯撇号／弯引号
 > 「ドモン……最後に、こうしてお前と
 >  話ができてよかった……
-“Domon... I’m glad that at the end, I could talk with you like this...
+“Domon... I’m glad I got to talk with you like this, at the end...
 ---
 >  先はまだ長い……
 >  負けるなよ、ドモン……」
-Your road is still long... Don’t lose, Domon...”
+You still have a long road ahead... Don’t lose, Domon...”
 
 @43181 Domon · ドモン
 > 「兄さん!? くっ……
@@ -1066,7 +1066,7 @@ Your road is still long... Don’t lose, Domon...”
 @43185 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「レイン? おかしなやつだな」
-“Rain? You’re acting strange.”
+“Rain? What’s with you?”
 
 @43186 Wong · ウォン
 # 审校：全局：弯撇号／弯引号
@@ -1094,11 +1094,11 @@ Do you even understand what you’ve done?!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「黙れ!! マスターアジア、
 >  デビルガンダムを使って、世界を
-“Shut up!! Master Asia, you’re a villain plotting to use the Dark Gundam to make the world
+“Shut up!! Master Asia, you scoundrel, scheming to use the Dark Gundam to take the world
 ---
 >  我が者にしようとたくらむ
 >  悪党がぁっ!!」
-your own!!”
+for yourself!!”
 
 @43190 Master · マスター
 > 「たわけが!! ワシがいつ、そんなものを
@@ -1164,7 +1164,7 @@ natural, verdant form.”
 ---
 >  第一、地球は異星人の
 >  侵略を受けているんだぞ!」
-For one thing, the Earth is being invaded by aliens!”
+And besides, the Earth is under alien invasion!”
 
 @43199 Master · マスター
 # 审校：英文 things like civilization 直译
@@ -1174,14 +1174,14 @@ For one thing, the Earth is being invaded by aliens!”
 ---
 >  抹殺なのだぞ! 地球人も
 >  異星人もワシにとっては、どちらも
-humanity on this Earth! Earthlings and aliens are both
+humanity on this Earth! Earthling or alien, to me they are
 ---
 >  同じよ。文明などというものを持つ
 >  生き物がいなければ、地球の
-the same to me. If no creatures with so-called civilization remain, the Earth’s
+one and the same. Without creatures burdened by this thing called civilization, the Earth’s
 ---
 >  自然は、おのずとよみがえる」
-nature will revive on its own.”
+nature will revive of its own accord.”
 
 @43200 Domon · ドモン
 > 「な……なんだと……?」
@@ -1192,15 +1192,15 @@ nature will revive on its own.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ククククッ、ハハハハハハッ、そうだ、
 >  それがいい。そのためならば、人類など
-“Heh heh heh heh, hahahahahaha, yes, that’s right. For that, humanity can simply
+“Heh heh heh heh, hahahahahaha, yes, that is the way. To that end, let humanity
 ---
 >  亡びてしまえばいいのだ! 償いだ、
 >  人類は自らの罪を償わねばならぬ
-perish! It’s atonement. Humanity must atone for its sins.
+perish! It is atonement. Humanity must atone for its sins.
 ---
 >  デビルガンダムと出会った時
 >  ワシはそれに気づいたのだ!」
-When I met the Dark Gundam, I realized it!”
+I realized it the moment I encountered the Dark Gundam!”
 
 @43202 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1216,7 +1216,7 @@ When I met the Dark Gundam, I realized it!”
 # 审校：全局：弯撇号／弯引号
 > 「くっ……東方不敗の拳から
 >  深い悲しみが伝わってきた……?
-“Ngh... I felt a deep sorrow in Master Asia’s fists...?
+“Ngh... Master Asia’s fists are filled with deep sorrow...?
 ---
 >  なぜだ!?」
 Why?!”
@@ -1247,7 +1247,7 @@ King of Hearts...”
 # 审校：Master 的 voice 要求无缩写，将 really 改为 truly 以贴合其古风口吻。
 > 「フ、ククククッ、まったくこの……
 >  ばか弟子が……だが……見事よな」
-“Hmph, heh heh heh, you truly are... a foolish disciple... but... magnificent.”
+“Heh, heh heh heh... what a foolish pupil you are... but... splendidly done.”
 
 @43210 Domon · ドモン
 > 「……師匠……?」
@@ -1288,10 +1288,10 @@ was supposed to become a god ruling the universe...”
 # 检查提示：未用必用译名：ウォン・ユンファ→Wong Yun-Fat
 > 「ウォン・ユンファ、財団の幹部が
 >  何を企んだか知らぬが、すべて
-“Wong Yun-Fat, I do not know what the Foundation’s executives were plotting, but it all
+“Wong Yun-Fat, I don’t know what a Foundation executive like you was scheming, but it’s all
 ---
 >  終わったようだな」
-seems to be over now.”
+over now.”
 
 @43217 Wong · ウォン
 # 审校：英文 hegemony 生硬
@@ -1333,7 +1333,7 @@ granted the power of the DG cells!!”
 # 审校：全局：弯撇号／弯引号
 > 「私だ、私が宇宙の支配者なの
 >  だ。アーッハハハハハハッ!!」
-“It’s me, I am the ruler of the universe. Ahahahahahaha!!”
+“Me! I am the ruler of the universe! Ahahahahahaha!!”
 
 @43224 Domon · ドモン
 > 「な……ばかな!?」
@@ -1343,11 +1343,11 @@ granted the power of the DG cells!!”
 # 审校：全局：弯撇号／弯引号
 > 「ハーッハハハハッ! キョウジの肉体は
 >  なくなったが、代わりのコアさえあれば
-“Hahahahaha! Kyoji’s body may be gone, but as long as I have a replacement core,
+“Hahahahaha! Kyoji’s body may be gone, but a replacement core will
 ---
 >  いいのだ! 見よ、この力を。私の
 >  研究は間違っていなかった!!」
-it’s fine! Behold this power. My research was not mistaken!!”
+do just as well! Behold this power. My research was right all along!!”
 
 @43226 Domon · ドモン
 > 「代わりのコアだと?」
@@ -1424,7 +1424,7 @@ Answer me, Allenby!!”
 @43239 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 > 「そんな……まさか、DG細胞……?」
-“No... don’t tell me, DG cells...?”
+“No... don’t tell me... the DG cells...?”
 
 @43240 Wong · ウォン
 > 「フフフフッ、さあ、やってしまいたまえ!」
@@ -1445,7 +1445,7 @@ Answer me, Allenby!!”
 # 审校：全局：弯撇号／弯引号
 > 「ウソでしょう、アレンビー、
 >  あなたまでDG細胞に……」
-“You can’t be serious, Allenby, even you’ve been taken by the DG cells...”
+“This can’t be... Allenby, the DG cells got you too...”
 
 @43244 Domon · ドモン
 > 「アレンビィィーッ!!」
@@ -1460,10 +1460,10 @@ Answer me, Allenby!!”
 @43246 Wong · ウォン
 > 「東方先生、私のアレンビーが
 >  ドモンたちを倒して、デビルガンダムの
-“Master Asia, my Allenby will defeat Domon and the others, and become the core of the Dark Gundam.
+“Master Asia, my Allenby will defeat Domon and the others and become the Dark Gundam’s
 ---
 >  コアになる。そういうことですよ」
-That is what this is about.”
+core. That is all there is to it.”
 
 @43247 Master · マスター
 # 审校：Master Asia 的 voice 要求不用缩写，将 “let's” 改为 “let us”。
@@ -1478,10 +1478,10 @@ That is what this is about.”
 @43249 Master · マスター
 > 「なぁ、ドモンよ……
 >  お前の拳が語っておったわ
-“Tell me, Domon... your fists spoke to me.
+“Domon... your fists spoke to me.
 ---
 >  人は、そう捨てたものでもないとな」
-That people are not so hopeless after all.”
+They told me people are not so beyond saving after all.”
 
 @43250 Domon · ドモン
 > 「東方不敗……」
@@ -1503,33 +1503,33 @@ to start over...”
 # 审校：Master Asia 的 voice 要求不用缩写，将 “You'll” 改为 “You will”。
 > 「ワシをまた師匠と呼んで
 >  くれるのか……ワシは……
-“You will still call me Master... Was I...
+“You would call me Master again...? Was I...
 ---
 >  ワシは間違っておったのか……?
 >  なぁ、ドモンよ」
-was I mistaken...? Tell me, Domon.”
+was I wrong...? Tell me, Domon.”
 
 @43254 Domon · ドモン
 > 「俺は、俺は今のいまになって初めて
 >  師匠の悲しみを知った。なのに
-“I, only now have I come to know your sorrow, Master. And yet
+“Only now... only now do I understand your sorrow, Master. And yet
 ---
 >  俺はあんたと、はりあうことばかり考え
 >  ていた。話を聞こうともしなかった
-I thought only of fighting you. I never even tried to listen to you.
+all I could think about was competing with you. I never even tried to hear you out.
 ---
 >  なのに、あんたは最後まで
 >  俺のことを……」
-And still, you, to the very end, cared about me...”
+But you... right to the end, you were thinking of me...”
 
 @43255 Master · マスター
 > 「何をいう……しょせんワシは大罪人
 >  よ。だがな、見てくれ。ワシの体は
-“What are you saying... I am nothing but a great sinner. But look. Not a single
+“What nonsense... In the end, I am a great sinner. But look at me. Not one
 ---
 >  一片たりともDG細胞に
 >  おかされてはおらぬ」
-part of my body has been corrupted by the DG cells.”
+shred of my body has been tainted by the DG cells.”
 
 @43256 Domon · ドモン
 > 「わかっていた……わかっていたのに……」
@@ -1551,7 +1551,7 @@ a Gundam Fighter, none of this, none of this would have happened...”
 @43259 Master · マスター
 > 「何を泣く……見よドモン、
 >  あの朝日を。美しいなぁ……」
-“Why do you weep... Look, Domon, at that morning sun. How beautiful...”
+“Why do you weep... Look, Domon. Look at that sunrise. How beautiful...”
 
 @43260 Domon · ドモン
 > 「はい、とても美しゅうございます!」
@@ -1614,11 +1614,11 @@ a Gundam Fighter, none of this, none of this would have happened...”
 # 审校：全局：弯撇号／弯引号
 > 「……もうよいわ。どのみちワシは長くは
 >  もたなんだ。……なぁドモン、ワシはな
-“...It’s all right now. Either way, I wouldn’t have lasted much longer. ...Domon, listen. I
+“...Enough. I would not have lasted much longer in any case. ...You see, Domon, I... I
 ---
 >  ワシは、この地球を再び緑あふるる
 >  星にしたかったのだ……」
-wanted to make this Earth a planet overflowing with green once more...”
+wanted to make this Earth a lush green planet once more...”
 
 @43273 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1631,7 +1631,7 @@ wanted to make this Earth a planet overflowing with green once more...”
 # 审校：全局：弯撇号／弯引号
 > 「もうよいというておるのに。
 >  いまさらワシが何を語ろうとも、ただの
-“I told you, leave it be. Whatever I say now would only be
+“I said enough. Whatever I might say now would be nothing more than
 ---
 >  言い訳にしかならぬ」
 an excuse.”
@@ -1639,20 +1639,20 @@ an excuse.”
 @43275 Domon · ドモン
 > 「俺が、俺があんたと、はりあうことばか
 >  り考えて、あんたの話を聞こうとも
-“Because I, because I thought only of fighting you, and never even tried to listen
+“Because I... because all I could think about was competing with you, I never even tried to hear
 ---
 >  しなかったから……。なのに、あんたは
 >  最後まで俺のことを……」
-to you... And still, you, to the very end, cared about me...”
+you out... But you... right to the end, you were thinking of me...”
 
 @43276 Master · マスター
 > 「何をいう……しょせんワシは大罪人
 >  よ。だがな、見てくれ。ワシの体は
-“What are you saying... I am nothing but a great sinner. But look. Not a single
+“What nonsense... In the end, I am a great sinner. But look at me. Not one
 ---
 >  一片たりともDG細胞に
 >  おかされてはおらぬ」
-part of my body has been corrupted by the DG cells.”
+shred of my body has been tainted by the DG cells.”
 
 @43277 Domon · ドモン
 > 「わかっていた……わかっていたのに……」
@@ -1674,7 +1674,7 @@ a Gundam Fighter, none of this, none of this would have happened...”
 @43280 Master · マスター
 > 「何を泣く……見よドモン、
 >  あの朝日を。美しいなぁ……」
-“Why do you weep... Look, Domon, at that morning sun. How beautiful...”
+“Why do you weep... Look, Domon. Look at that sunrise. How beautiful...”
 
 @43281 Domon · ドモン
 > 「はい、とても美しゅうございます!」
@@ -1743,7 +1743,7 @@ a Gundam Fighter, none of this, none of this would have happened...”
 # 审校：全局：弯撇号／弯引号
 > 「あの姉さんかい? DG細胞ってのに
 >  やられてたんじゃなかったのか?」
-“That lady? Wasn’t she taken down by those DG cells?”
+“The gal? Didn’t those DG cell things get her?”
 
 @43295 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -1753,7 +1753,7 @@ a Gundam Fighter, none of this, none of this would have happened...”
 
 @43296 Heero · ヒイロ
 > 「システムを止めたのが幸いしたな」
-“Lucky that the system was stopped.”
+“Shutting down the system paid off.”
 
 @43297 Rain · レイン
 > 「ええ、だと思うわ」
@@ -1763,14 +1763,14 @@ a Gundam Fighter, none of this, none of this would have happened...”
 # 审校：全局：弯撇号／弯引号
 > 「何にしても、お嬢さんを犠牲に
 >  しなくて幸いでした。……とにかく
-“In any case, it’s a blessing we didn’t have to sacrifice the young lady. ...After all,
+“In any case, I’m glad we didn’t have to sacrifice the young lady. ...This battle cost us
 ---
 >  犠牲の大きい戦いでしたからね」
-it was a battle with heavy losses.”
+dearly enough as it is.”
 
 @43299 Argo · アルゴ
 > 「ああ……そう思う」
-“Yeah... I think so.”
+“Yeah... It did.”
 
 @43300 Duo · デュオ
 # 审校：英文直译
@@ -1782,16 +1782,16 @@ it was a battle with heavy losses.”
 # 审校：全局：弯撇号／弯引号
 > 「そうですね……あの2人がいなければ、
 >  さすがにもう復活してこないでしょう」
-“I suppose so... With those two gone, surely they won’t be coming back now.”
+“I suppose so... With those two gone, it surely won’t come back again.”
 
 @43302 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号
 > 「それじゃあ、そろそろ出発するか。
 >  早いトコ仲間と合流しようぜ
-“Then let’s get moving soon. Let’s regroup with our friends as quick as we can.
+“Well then, time we headed out. Let’s hurry up and meet up with the others.
 ---
 >  シャリー、頼む」
-Shirley, take it away.”
+Shirley, take us there.”
 
 @43303 Shirley · シャリー
 # 审校：梁山泊是专有地名，按音译改为 Ryozanpaku，不应误译为 Neo Hong Kong。
@@ -1801,7 +1801,7 @@ Shirley, take it away.”
 @43304 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号
 > 「そういうこった」
-“That’s right.”
+“You got it.”
 
 @43305 George · ジョルジュ
 > 「ドモン……ドモン!」
@@ -1838,7 +1838,7 @@ but nothing’s finished yet, you hear?”
 
 @43311 Rain · レイン
 > 「ドモン……本当に大丈夫なの?」
-“Domon... Are you really fine?”
+“Domon... Are you really all right?”
 
 @43312 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1865,7 +1865,7 @@ but nothing’s finished yet, you hear?”
 # 审校：全局：弯撇号／弯引号
 > 「ヒイロ? そうね、そうするわ。
 >  あなたが、そんなこといってくれるなんて
-“Heero? You’re right, I’ll do that. It’s rare for you to say something like
+“Heero? You’re right, I’ll do that. That’s not like you, saying something like
 ---
 >  珍しいわね」
 that.”

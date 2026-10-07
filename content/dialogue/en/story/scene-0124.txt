@@ -8,7 +8,7 @@
 # 审校：全局：弯撇号／弯引号
 > 「間違いないわよ。さっき入ってきたん
 >  だけど……」
-“There’s no mistake. It just came in a moment ago...”
+“No mistake about it. It came in just now...”
 
 @50678 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号
@@ -19,12 +19,12 @@
 # 审校：全局：弯撇号／弯引号
 > 「{HeroNick}も、どうしたんです、血相を
 >  かえて」
-“What’s the matter with you too, {HeroNick}? You look as pale as a ghost.”
+“And what’s gotten into you, {HeroNick}? You look shaken.”
 
 @50680 Bunny · バニー
 > 「あ、チボデー。それがね、さっき例の
 >  {PartnerFull}って
-“Ah, Chibodee. Well, you see, we just got a message from that {PartnerFull}
+“Oh, Chibodee. It’s just, we got a message from that {PartnerFull}
 ---
 >  奴から、電文が入ったのよ」
 guy.”
@@ -37,7 +37,7 @@ guy.”
 # 审校：全局：弯撇号／弯引号
 > 「決着をつけたいから指定した場
 >  所に1人で出てこいって。それで……」
-“He says he wants to settle this, so you’re to come alone to the designated place. And then...”
+“He wants to settle things, and says to come alone to the place he named. And...”
 
 @50683 Chibodee · チボデー
 > 「なんだよ、どうした」
@@ -51,13 +51,13 @@ guy.”
 
 @50685 Chibodee · チボデー
 > 「なんだとぉ!?」
-“What did you say?!”
+“Say what?!”
 
 @50686 主角
 # 审校：全局：弯撇号／弯引号
 > 「{PartnerNick}………そこまで、そこまで
 >  本気で俺を……」
-“{PartnerNick}... You’re that... that serious about me...”
+“{PartnerNick}... You’re really... really that serious about beating me...”
 
 @50687 Roux · ルー
 # 审校：The other side/absolutely serious 生硬
@@ -91,7 +91,7 @@ isn’t?”
 @50691 Roux · ルー
 # 审校：全局：弯撇号／弯引号
 > 「ならいいんだけど」
-“Then that’s fine.”
+“As long as you know.”
 
 @50692 主角
 > (すまん……みんな。だが、こいつは俺が
@@ -153,14 +153,14 @@ yell at us again!”
 # 审校：全局：弯撇号／弯引号
 > 「そんなことができるか。こいつは奴と
 >  決着をつける必要がある。己の
-“Like I could do that. He needs to settle things with that guy. He has to drive
+“As if I could. He needs to settle things with that guy. He has to hit him with a fist
 ---
 >  すべてを込めた拳を、奴にたたき
 >  込み、とことんやりあう必要がな
-his fist, filled with everything he is, into him and fight it out to the bitter end.
+that carries everything he’s got, and fight it out to the bitter end.
 ---
 >  でなければ、どうにもならん」
-Otherwise, there’s no way forward.”
+Otherwise, nothing will ever be settled.”
 
 @50703 主角
 > 「ドモン……」
@@ -198,7 +198,7 @@ with you!”
 # 审校：全局：弯撇号／弯引号
 > 「よく来たな、{HeroNick}。こうして
 >  2人でまみえるのは、久しぶりだ」
-“So you came, {HeroNick}. It’s been a long time since we faced each other like this.”
+“So you came, {HeroNick}. It’s been a while since we last met like this, just the two of us.”
 
 @50710 主角
 # 审校：全局：弯撇号／弯引号
@@ -222,7 +222,7 @@ back down either! I’ll settle this here, just as you want!!”
 # 审校：全局：弯撇号／弯引号
 > 「フン、いい覚悟だ。ならば、ここで
 >  貴様を倒してくれる!!」
-“Hmph, that’s a fine resolve. Then I’ll defeat you right here!!”
+“Hmph, that’s the spirit. Then I’ll take you down right here!!”
 
 @50712 对手
 > 「いくぞ、{HeroNick}!!」
@@ -230,16 +230,16 @@ back down either! I’ll settle this here, just as you want!!”
 
 @50713 主角
 > 「これで満足だろう、{PartnerNick}!!」
-“This should satisfy you, {PartnerNick}!!”
+“Satisfied now, {PartnerNick}?!”
 
 @50714 对手
 # 审校：全局：弯撇号／弯引号
 > 「フン、貴様を倒せばな!」
-“Hmph, once I’ve defeated you!”
+“Hmph, I will be once you’re beaten!”
 
 @50715 对手
 > 「まだまだぁっ!!」
-“Not nearly enough!!”
+“I’m not done yet!!”
 
 @50716 主角
 # 审校：全局：弯撇号／弯引号
@@ -250,7 +250,7 @@ back down either! I’ll settle this here, just as you want!!”
 # 审校：全局：弯撇号／弯引号
 > 「クッ……これしきのことで……これしきの
 >  ことで、この戦いを終わらせるわけには
-“Ngh... Not over something like this... I can’t let this battle end over something like this!
+“Ngh... This is nothing... This is nothing! I won’t let this fight end here!
 ---
 >  いかんのだ!
 >  うおおぉぉぉぉぉーっ!!」
@@ -284,7 +284,7 @@ Uwoooooooh!!”
 @50724 对手
 > 「クッ……どうやら……完全に俺の
 >  負けらしいな……」
-“Ngh... It seems... this is my complete defeat...”
+“Ngh... It seems... I’m well and truly beaten...”
 
 @50725 主角
 > 「……教えてくれ、{PartnerNick}。
@@ -293,14 +293,14 @@ Uwoooooooh!!”
 ---
 >  こだわる? 地球はこれほどひどい
 >  状態だというのに、なぜお前は
-The Earth is in this terrible state, so why would you go
+With the Earth in such a terrible state, why would you go
 ---
 >  ここまでして……」
 this far...”
 
 @50726 对手
 > 「最初は……つまらん理由だった……」
-“At first... it was a trivial reason...”
+“At first... the reason was a petty one...”
 
 @50727 主角
 > 「{PartnerNick}……?」
@@ -310,11 +310,11 @@ this far...”
 # 审校：词条：ヴァイローズ=Virose
 > 「……あるとき俺は気づいたのだ。俺の
 >  ヴァイローズに隠された、真実に」
-“...At some point, I realized. The truth hidden within my Virose.”
+“...One day, I realized something. The truth hidden within my Virose.”
 
 @50729 主角
 > 「……なんだ、それは」
-“...What is it?”
+“...What truth?”
 
 @50730 对手
 # 审校：全局：弯撇号／弯引号
@@ -328,10 +328,10 @@ the Virose are our machines, but where is our Master’s machine?
 ---
 >  “武機覇拳流”の創始者で
 >  ある師匠が、まさか自分の
-There’s no way the Master, founder of the ‘Buki Haken-ryu,’
+Surely the Master, founder of the ‘Buki Haken-ryu,’
 ---
 >  機体を持たぬわけがない」
-could have lacked a machine of his own.”
+had a machine of his own.”
 
 @50731 主角
 > 「確かに……おぼろげながらに覚えている
@@ -341,7 +341,7 @@ could have lacked a machine of his own.”
 @50732 对手
 > 「そうだ。俺たちは確かに、師匠に
 >  拾われた直後に、それを見ている」
-“Yes. Right after we were taken in by the Master, we did see it.”
+“Yes. We did see it, right after the Master took us in.”
 
 @50733 主角
 > 「だが……ならばいったいどこへ? お前は
@@ -365,20 +365,20 @@ could have lacked a machine of his own.”
 
 @50737 主角
 > 「ここに……? どういうことだ、それは!?」
-“Here...? What do you mean by that?!”
+“Here...? What are you talking about?!”
 
 @50738 对手
 # 审校：全局：弯撇号／弯引号
 > 「わからんか? 貴様のアースゲインと、
 >  俺のヴァイローズこそが、師匠が
-“Don’t you understand? Your Earthgain and my Virose are the very machines
+“Don’t you see? Your Earthgain and my Virose are the very machines
 ---
 >  乗られていた機体そのものなのだ」
 the Master once piloted.”
 
 @50739 主角
 > 「な……なんだって!?」
-“W-What did you say?!”
+“Wh-What?!”
 
 @50740 对手
 > 「師匠は俺たちに
@@ -387,7 +387,7 @@ the Master once piloted.”
 ---
 >  ことを決めたとき、自分の機体を
 >  2つに分け俺たちに託したのだ」
-he split his own machine in two and entrusted them to us.”
+he split his own machine in two and entrusted the halves to us.”
 
 @50741 主角
 # 审校：全局：弯撇号／弯引号
@@ -398,7 +398,7 @@ he split his own machine in two and entrusted them to us.”
 # 审校：词条：ヴァイローズ=Virose
 > 「俺はそれに気づいたとき、こう思った
 >  真に“武機覇拳流”を継ぐ
-“When I realized that, I thought this: the one who truly inherits the ‘Buki Haken-ryu’
+“When I realized that, it came to me: the true heir to the ‘Buki Haken-ryu’
 ---
 >  者とは、師匠が乗っていた機体
 >  を継ぐ者でなければならないと。そして
@@ -406,11 +406,11 @@ must be the one who inherits the machine the Master piloted. And
 ---
 >  そのためにはアースゲインとヴァイローズを
 >  再び1つにせねばならない。……つまり、
-for that, the Earthgain and the Virose must become one again. ...In other words,
+for that, the Earthgain and the Virose must be made one again. ...In other words,
 ---
 >  どちらかが機体を失うということ、
 >  どちらかが、戦いに敗れるということだ」
-one of us must lose his machine, one of us must be defeated in battle.”
+one of us must lose his machine, one of us must be defeated.”
 
 @50743 主角
 # 审校：全局：弯撇号／弯引号
@@ -421,15 +421,15 @@ one of us must lose his machine, one of us must be defeated in battle.”
 @50744 对手
 > 「そう……最初は、そうだった。しかし
 >  ……それはきっかけにすぎん。貴様の
-“Yes... at first, that was it. But... that was only the trigger. Challenging you
+“Yes... at first, that was all. But... that was only what set it off. Facing you
 ---
 >  敵として挑み、貴様に敗れ……
 >  この混沌とした世界を渡り歩く
-as an enemy, losing to you... as I wandered this chaotic world,
+as an enemy, losing to you... as I drifted through this chaotic world,
 ---
 >  中で、俺の心の中の何かが、
 >  壊れていった。そして……
-something inside my heart broke. And then...
+something in my heart slowly broke. And then...
 ---
 >  狂気が生まれた」
 madness was born.”
@@ -449,7 +449,7 @@ called the ‘Buki Haken-ryu.’ But what were those fangs
 ---
 >  俺たちに与えられた? その牙は、
 >  戦うためだけに、敵を引き裂くため
-given to us for? Those fangs exist only to fight, only to tear
+given to us for? When fangs exist only for fighting, only for tearing
 ---
 >  だけに存在するというのに」
 enemies apart.”
@@ -500,11 +500,11 @@ nothing else...”
 # 审校：全局：弯撇号／弯引号
 > 「……バカだよ、お前は。戦いにも、
 >  俺たちの力にも、意味はあるんだ
-“...You fool. There is meaning in battle, and in our power.
+“...You’re a fool. Fighting has meaning, and so does our power.
 ---
 >  それを決めるのは、決めなくちゃならな
 >  いのは俺たち自身だったというのに!
-The ones who decide that, the ones who have to decide that, were us all along!
+And it was up to us to decide what it is, we were the ones who had to decide!
 ---
 >  なぜ……なぜお前はそれに気づくことが
 >  できなかった!? なぜ!?」
@@ -528,15 +528,15 @@ Take your... your fangs, and drive them into their throats.”
 # 审校：全局：弯撇号／弯引号
 > 「ヴァイローズを頼む。あれに入っている
 >  データをみれば、師匠の機体を……
-“Take care of the Virose. If you look at the data inside it, you should be able to...
+“Look after the Virose. With the data stored inside it, you should be able to...
 ---
 >  復活させられるはずだ。その機体で
 >  貴様が戦い続ける限り……
-revive the Master’s machine. As long as you keep fighting with that machine...
+bring the Master’s machine back. As long as you keep fighting in that machine...
 ---
 >  俺の魂もまた……貴様と……
 >  貴様と、ともにゆく……」
-my soul too... will go... go together with you...”
+my soul, too... will go with you... go on with you...”
 
 @50755 主角
 # 审校：such foolish things 生硬
@@ -547,7 +547,7 @@ my soul too... will go... go together with you...”
 # 审校：全局：弯撇号／弯引号
 > 「……気にすることはない。俺は……
 >  これで満足だ……
-“...Don’t worry about it. I’m... satisfied with this...
+“...Don’t worry about me. I’m... content with this...
 ---
 >  さらばだ、{HeroNick}。
 >  さらば……我が……」
@@ -567,7 +567,7 @@ Farewell, {HeroNick}. Farewell... my...”
 # 审校：全局：弯撇号／弯引号
 > 「……まいったな……まさか、ここまで
 >  完璧に叩きのめされるとは……」
-“...You got me... To think I’d be beaten this thoroughly...”
+“...Well, you got me... I never thought I’d be beaten this thoroughly...”
 
 @50760 主角
 # 审校：L15 原文带引号，初稿漏了引号，补上。
@@ -584,7 +584,7 @@ Farewell, {HeroNick}. Farewell... my...”
 # 审校：L17 原文带引号，初稿漏了引号，补上。
 > 「……聞かせてくれよ、{PartnerNick}。
 >  なぜお前は、そこまで俺との戦いに
-“...Let me hear it, {PartnerNick}. Why are you so obsessed with
+“...Tell me, {PartnerNick}. Why are you so obsessed with
 ---
 >  こだわる?」
 fighting me?”
@@ -601,10 +601,10 @@ the Virose are your machine and mine, but where is the Master’s machine?
 ---
 >  “武機覇拳流”の創始者で
 >  ある師匠が、まさか自分の
-There’s no way the Master, the founder of the ‘Buki Haken-ryu,’
+Surely the Master, the founder of the ‘Buki Haken-ryu,’
 ---
 >  機体を持たぬわけがない」
-wouldn’t have a machine of his own.”
+had a machine of his own.”
 
 @50764 主角
 # 审校：L19 原文带引号，初稿漏了引号，补上。
@@ -643,7 +643,7 @@ wouldn’t have a machine of his own.”
 @50770 主角
 # 审校：L25 原文带引号，初稿漏了引号，补上。
 > 「ここに……? どういうことだ、それは!?」
-“Here...? What do you mean by that?!”
+“Here...? What are you talking about?!”
 
 @50771 对手
 # 审校：全局：弯撇号／弯引号
@@ -657,7 +657,7 @@ the Master once piloted.”
 @50772 主角
 # 审校：L27 原文带引号，初稿漏了引号，补上。
 > 「な……なんだって!?」
-“Wha... What did you say?!”
+“Wh-What?!”
 
 @50773 对手
 # 审校：引号
@@ -667,7 +667,7 @@ the Master once piloted.”
 ---
 >  ことを決めたとき、自分の機体を
 >  2つに分け俺たちに託したのだ」
-he split his own machine in two and entrusted them to us.”
+he split his own machine in two and entrusted the halves to us.”
 
 @50774 主角
 # 审校：全局：弯撇号／弯引号
@@ -678,7 +678,7 @@ he split his own machine in two and entrusted them to us.”
 # 审校：词条：ヴァイローズ=Virose
 > 「俺はそれに気づいたとき、こう思った
 >  真に“武機覇拳流”を継ぐ
-“When I realized that, I thought this: the true heir to the ‘Buki Haken-ryu’
+“When I realized that, it came to me: the true heir to the ‘Buki Haken-ryu’
 ---
 >  者とは、師匠が乗っていた機体
 >  を継ぐ者でなければならないと。そして
@@ -686,7 +686,7 @@ must be the one who inherits the machine the Master piloted. And
 ---
 >  そのためにはアースゲインとヴァイローズを
 >  再び1つにせねばならない。……つまり、
-for that, the Earthgain and the Virose must become one again. ...In other words,
+for that, the Earthgain and the Virose must be made one again. ...In other words,
 ---
 >  どちらかが機体を失うということ、
 >  どちらかが、戦いに敗れるということだ」
@@ -702,15 +702,15 @@ one of us must lose his machine, one of us must lose the battle.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ……だが、どうやら残ったのは
 >  貴様の方だったな。貴様の
-“Yeah... But it seems the one who remains is you. You
+“Yeah... But it looks like you’re the one left standing. You
 ---
 >  勝ちだ。ここまで見事に敗れた俺
 >  には、もはやヴァイローズに乗る
-win. I, who was beaten so thoroughly, no longer have the right to pilot the
+win. Beaten as thoroughly as I was, I no longer have any right to pilot the
 ---
 >  資格はない。ましてや師匠の
 >  機体に乗る資格もな」
-Virose. Much less the right to pilot the Master’s machine.”
+Virose. Much less the Master’s machine.”
 
 @50778 主角
 # 审校：同上
@@ -726,15 +726,15 @@ Virose. Much less the right to pilot the Master’s machine.”
 # 审校：全局：弯撇号／弯引号
 > 「お前には、師匠のお心がわからない
 >  のか!? もしお前の言葉が真実
-“Can’t you understand the Master’s feelings?! If your words are true,
+“Don’t you understand the Master’s heart?! If what you say is true,
 ---
 >  ならば、アースゲインとヴァイローズは、
 >  師匠が俺たち2人のために、
-then the Earthgain and the Virose are what the Master prepared for the two of us,
+then the Earthgain and the Virose were made for the two of us by the Master,
 ---
 >  自らの愛機を失ってまで用意し
 >  てくれたものだろう!?」
-even at the cost of losing his own beloved machine!”
+who gave up even his own beloved machine to do it!”
 
 @50781 对手
 # 审校：全局：弯撇号／弯引号
@@ -754,7 +754,7 @@ Do you really believe that?! He couldn’t have! The Master must have wanted us
 ---
 >  ともに戦い、ともに高め合うことを
 >  こそ望んでいたはずだ
-to fight together, to better each other together!
+to fight side by side and push each other to grow!
 ---
 >  そうだろう、{PartnerNick}!?」
 Isn’t that right, {PartnerNick}?!”
@@ -768,10 +768,10 @@ Isn’t that right, {PartnerNick}?!”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、お前は大バカ野郎だ。これか
 >  らみっちり、修行をやりなおさなければ
-“Yeah, you’re a huge idiot. Looks like you’ll have to start your training
+“Yeah, you’re a complete idiot. You’ll have to redo your training
 ---
 >  ならんだろうな」
-all over again, and thoroughly this time.”
+from the ground up.”
 
 @50785 对手
 # 审校：全局：弯撇号／弯引号
@@ -793,14 +793,14 @@ all over again, and thoroughly this time.”
 # 审校：全局：弯撇号／弯引号
 > 「……相変わらず甘い奴だな、
 >  貴様は。だが……それも、よかろう
-“...You’re as soft as ever. But... that’s fine too.
+“...You’re as soft as ever. But... perhaps that’s fine.
 ---
 >  あそこまで見事に敗れ、逆に
 >  気分が楽になったようだ。しかし、
-After being beaten so thoroughly, I actually feel lighter. But
+Losing that completely has, oddly, taken a weight off me. Still,
 ---
 >  他の連中はそれで納得するのか」
-will the others accept it?”
+will the others go along with this?”
 
 @50788 主角
 # 审校：L43 原文带引号，初稿漏了引号，补上。

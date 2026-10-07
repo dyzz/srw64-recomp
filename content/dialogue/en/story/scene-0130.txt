@@ -8,12 +8,12 @@
 @43322 Bright · ブライト
 > 「ここを突破すればクスコまですぐだ
 >  一気に突破するぞ!」
-“Once we break through here, Cusco is just ahead. We push through in one go!”
+“Break through here and Cusco is right ahead. We’ll punch through in one push!”
 
 @43323 Amuro · アムロ
 > 「みんないいか、とにかく敵を突破する
 >  んだ」
-“Everyone, listen up. Just break through the enemy no matter what.”
+“Listen up, everyone. Whatever happens, we break through.”
 
 @43324 Rose · ロゼ
 # 审校：全局：弯撇号／弯引号
@@ -36,11 +36,11 @@
 # 审校：全局：弯撇号／弯引号
 > 「なんだって!? ばかな、それは
 >  俺のセリフだ!」
-“What?! That’s crazy. That’s my line!”
+“What?! Don’t be ridiculous, that’s my line!”
 
 @43328 Rose · ロゼ
 > 「問答無用!!」
-“No arguments!!”
+“Enough talk!!”
 
 @43329 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
@@ -77,7 +77,7 @@ my own younger brother.”
 @43334 Julia · ジュリア
 > 「それがいかに無意味であったかは、
 >  今のわたくしはよく知っているのです
-“How meaningless that was, I know all too well now.
+“Now I know all too well how meaningless it was.
 ---
 >  鎖を断ち切りなさい。
 >  あなたなら、できるはずです」
@@ -96,7 +96,7 @@ Break the chain. You can do it.”
 @43337 Rose · ロゼ
 > 「マーズ……ここで失敗すれば
 >  私は死を選ぶしかない
-“Mars... if I fail here, I have no choice but to die.
+“Mars... if I fail here, death is my only choice.
 ---
 >  ズール皇帝の名において、
 >  お前を殺す」
@@ -130,7 +130,7 @@ but to fight and defeat you!”
 
 @43341 Takeru · タケル
 > 「やめろ、やめるんだロゼ!」
-“Stop it, stop it, Rose!”
+“Stop it, Rose, stop!”
 
 @43342 Rose · ロゼ
 > 「黙れ!」
@@ -152,11 +152,11 @@ I don’t want to kill you either.”
 @43344 Rose · ロゼ
 > 「マーズ……なぜ……なぜ敵である私を
 >  助けようとする? 任務のためなら
-“Mars... why... why would you try to save me, your enemy? For the mission,
+“Mars... why... why would you try to save me, your enemy? If the mission called for it,
 ---
 >  味方ですら私を殺すだろうと
 >  いうのに。なぜ!?」
-even your own allies would kill me. Why?!”
+even my own side would kill me. Why?!”
 
 @43345 Takeru · タケル
 # 审校：口语化
@@ -199,7 +199,7 @@ Do you think Marg would be happy to see us take revenge on each other?”
 # 审校：全局：弯撇号／弯引号
 > 「…………ズール皇帝の命令は、
 >  すべてに優先する」
-“...Emperor Zuul’s orders take priority over everything.”
+“...Emperor Zuul’s orders come before everything.”
 
 @43351 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
@@ -211,7 +211,7 @@ Do you think Marg would be happy to see us take revenge on each other?”
 # 审校：全局：弯撇号／弯引号
 > 「!? なぜ敵である私を助けようと
 >  する。任務のためなら、味方ですら
-“?! Why would you try to save me, your enemy? For the mission, even my allies
+“?! Why would you try to save me, your enemy? If the mission called for it, even my own side
 ---
 >  私を殺すだろうというのに。
 >  私はマーグの仇だろう!? なぜ!?」
@@ -225,7 +225,7 @@ would kill me. I’m Marg’s enemy, aren’t I?! Why?!”
 ---
 >  人間なんだ。ズールの道具なんか
 >  では、ないはずだ」
-You’re human. You can’t be Zuul’s tool.”
+You’re human. You’re no tool of Zuul’s.”
 
 @43354 Rose · ロゼ
 > 「マーズ……? 私……私は……」
@@ -268,13 +268,13 @@ holding out still. It seems we have made it in time after all.”
 
 @43360 Bright · ブライト
 > 「よし、クスコへ急ぐぞ」
-“All right, hurry to Cusco.”
+“All right, full speed to Cusco.”
 
 @43361 Alan · アラン
 # 审校：全局：弯撇号／弯引号
 > 「くそっ、敵の勢力圏は突破
 >  できたが、予想以上の時間が
-“Damn it. We broke through the enemy’s sphere of influence, but it took longer than
+“Damn it. We got through enemy territory, but it took longer than
 ---
 >  かかってしまった。これでは……」
 expected. At this rate...”
@@ -313,7 +313,7 @@ would you?”
 ---
 >  地球人でもないのに、命をかけて
 >  まで地球のために戦えるのは
-You’re not even an Earthling, so why can you fight for Earth even at the risk of your life?
+You’re not even an Earthling. How can you risk your life fighting for Earth?
 ---
 >  なぜなの?」
 Why?”
@@ -355,7 +355,7 @@ I was raised on Earth.”
 @43374 Banjo · 万丈
 > 「彼女かい、投降してきた銀河
 >  帝国軍の兵士というのは?」
-“Is this her, the Galactic Empire soldier who surrendered to us?”
+“So she’s the Galactic Empire soldier who surrendered?”
 
 @43375 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
@@ -394,16 +394,16 @@ but...”
 # 审校：全局：弯撇号／弯引号
 > 「万丈さん、彼女がいれば作戦が
 >  成功した時に、敵に与える
-“Banjo, if she’s with us, when the operation succeeds, we might be able to cause
+“Banjo, if she’s with us when the operation succeeds, it might shake
 ---
 >  動揺を大きくできるかもしれない」
-even more unrest among the enemy.”
+the enemy up even more.”
 
 @43382 Banjo · 万丈
 # 审校：艦長たち 是复数
 > 「そうだな……わかった、艦長たちと
 >  相談してみよう」
-“I suppose so... All right, I’ll talk it over with the captains.”
+“True... All right, I’ll talk it over with the captains.”
 
 @43383 Takeru · タケル
 > 「ありがとうございます」
@@ -442,7 +442,7 @@ would you?”
 ---
 >  地球人でもないのに、命をかけて
 >  まで地球のために戦えるのは
-You’re not even an Earthling, so why can you fight for Earth even at the risk of your life?
+You’re not even an Earthling. How can you risk your life fighting for Earth?
 ---
 >  なぜなの?」
 Why?”
@@ -473,7 +473,7 @@ I was raised on Earth.”
 ---
 >  それを伝えたかったの。私の星も
 >  銀河帝国にせめこまれた星だった」
-That’s what I wanted to tell you. My planet was also a world invaded by the Galactic Empire.”
+That’s what I wanted to tell you. My planet, too, was invaded by the Galactic Empire.”
 
 @43394 Takeru · タケル
 > 「ロゼ……これからどうするんだ?」
@@ -483,15 +483,15 @@ That’s what I wanted to tell you. My planet was also a world invaded by the Ga
 # 审校：“名誉的死被赐予”直译
 > 「私は、また任務に失敗したわ。
 >  もう、もどっても名誉な死すらも
-“I failed my mission again. Even if I go back, they probably won’t grant me
+“I’ve failed my mission again. If I go back, they won’t even grant me
 ---
 >  与えられないでしょう。
 >  きっと洗脳されて、戦うだけの
-an honorable death. I’ll surely be brainwashed and turned into nothing but a
+an honorable death. They’ll brainwash me and make me into nothing but a
 ---
 >  バトルマシンにされてしまう。だけど……
 >  もどらないわけにはいかないもの」
-fighting machine. But... I have no choice but to go back.”
+fighting machine. But... I have to go back all the same.”
 
 @43396 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
@@ -520,7 +520,7 @@ couldn’t you?”
 # 审校：全局：弯撇号／弯引号
 > 「そういうこと。嫌なことを無理にする
 >  ことはない」
-“That’s right. You don’t have to force yourself to do something you hate.”
+“Exactly. No need to force yourself into something you don’t want to do.”
 
 @43400 Takeru · タケル
 > 「万丈さん……」
@@ -536,14 +536,14 @@ couldn’t you?”
 # 审校：全局：弯撇号／弯引号
 > 「別に、坊主憎けりゃ袈裟まで
 >  憎いってわけでもないからね
-“I’m not one to hate the monk’s robe just because I hate the monk, you know.
+“Hating the monk doesn’t mean I have to hate his robe too, you know.
 ---
 >  ま、実際のところは僕たちもまったく
 >  余裕がないんでね。よけいなことに
-Well, the truth is, we don’t have any room to spare either. We can’t afford
+Besides, truth be told, we’re stretched thin ourselves. We can’t afford
 ---
 >  かかわっていられないのさ」
-to get mixed up in anything extra.”
+to take on anything extra.”
 
 @43403 Rose · ロゼ
 > 「……なら……私も一緒に連れて

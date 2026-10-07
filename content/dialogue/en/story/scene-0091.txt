@@ -3305,7 +3305,7 @@ Do you think Marg would want us taking revenge on each other?”
 # 审校：全局：弯撇号／弯引号
 > 「…………ズール皇帝の命令は、
 >  すべてに優先する」
-“...Emperor Zuul’s orders take priority over everything.”
+“...Emperor Zuul’s orders come before everything.”
 
 @44207 Takeru · タケル
 # 审校：全局：弯撇号／弯引号

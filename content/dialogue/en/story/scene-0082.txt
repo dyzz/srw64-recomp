@@ -898,7 +898,7 @@ makes even a few stop fighting, that’s enough for me.”
 # 审校：全局：弯撇号／弯引号
 > 「そういうことなら、僕とマリアで
 >  やりましょう」
-“In that case, let Maria and me handle it.”
+“In that case, Maria and I will do it.”
 
 @40883 Alan · アラン
 > 「君が?」
@@ -1065,11 +1065,11 @@ they’re running the Getter Ray experiment on.”
 # 审校：全局：弯撇号／弯引号
 > 「……もう大丈夫なようだな。危ない
 >  ところだった。あいつが暴走したら
-“...It seems to be all right now. That was close. If it had gone out of control,
+“...Looks like it’s stable now. That was close. If it had run wild,
 ---
 >  ガンドールも無事ではすまなかった
 >  だろう」
-the Gandor wouldn’t have escaped unharmed either.”
+the Gandor would have been caught in it too.”
 
 @40913 Hayato · ハヤト
 > 「原因はわかっているんですか、

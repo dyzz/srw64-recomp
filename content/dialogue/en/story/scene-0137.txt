@@ -65,7 +65,7 @@ ourselves.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「何にもないぜ。本当に、ここに
 >  デビルガンダムがいるのかよ」
-“There’s nothing out here. Is the Dark Gundam really here?”
+“There’s nothing out here. Is the Dark Gundam seriously here?”
 
 @45374 Domon · ドモン
 > 「ああ……そのはずだ」
@@ -739,7 +739,7 @@ originally built to restore the Earth.”
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth’s natural regeneration. But! Some had their eyes on
+all meant for the Earth’s natural regeneration. But! There were those who set their sights on
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
@@ -747,11 +747,11 @@ its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-fled to Earth. But damage from an attack during my escape threw its program
+fled to Earth. However, the attack I took during my escape caused the program to
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-into chaos, and it became that terrifying Dark Gundam.”
+go mad, and it became that terrifying Dark Gundam.”
 
 @45485 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -803,7 +803,7 @@ so that I could protect you.”
 # 审校：全局：弯撇号／弯引号
 > 「なら、どうして!
 >  どうしていってくれなかったんだ!」
-“Then why! Why didn’t you tell me?!”
+“Then why?! Why didn’t you tell me?!”
 
 @45490 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
@@ -1087,7 +1087,7 @@ originally built to restore the Earth.”
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth’s natural regeneration. But! Some had their eyes on
+all meant for the Earth’s natural regeneration. But! There were those who set their sights on
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
@@ -1095,11 +1095,11 @@ its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-fled to Earth. But damage from an attack during my escape threw its program
+fled to Earth. However, the attack I took during my escape caused the program to
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-into chaos, and it became that terrifying Dark Gundam.”
+go mad, and it became that terrifying Dark Gundam.”
 
 @45537 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -1150,7 +1150,7 @@ protect you.”
 # 审校：全局：弯撇号／弯引号
 > 「なら、どうして!
 >  どうしていってくれなかったんだ!」
-“Then why! Why didn’t you tell me?!”
+“Then why?! Why didn’t you tell me?!”
 
 @45542 Schwarz · シュバルツ
 # 审校：英文拗口，与同段 45490 统一
@@ -1211,7 +1211,7 @@ You still have a long road ahead... don’t give up, Domon...”
 @45551 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「レイン? おかしなやつだな」
-“Rain? You’re acting strange.”
+“Rain? What’s with you?”
 
 @45552 Wong · ウォン
 # 审校：全局：弯撇号／弯引号
@@ -1725,7 +1725,7 @@ I wanted to make this Earth a planet overflowing with green once more...”
 # 审校：全局：弯撇号／弯引号
 > 「もうよいというておるのに。
 >  いまさらワシが何を語ろうとも、ただの
-“I told you, leave it be. Whatever I say now would only be
+“I said enough. Whatever I might say now would be nothing more than
 ---
 >  言い訳にしかならぬ」
 an excuse.”

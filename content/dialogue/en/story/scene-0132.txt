@@ -41,11 +41,11 @@ Fine, then. I’ll deal with you lot first!”
 # 审校：全局：弯撇号／弯引号
 > 「ジュドーたちは敵じゃない。
 >  ジュドーたちと一緒にいると
-“Judau and the others aren’t enemies. When you’re with them,
+“Judau and everyone aren’t our enemies. Being with them
 ---
 >  気持ちがいいんだってこと、
 >  なんで気づかないの!?」
-it feels good. Why can’t you see that?!”
+feels nice. Why can’t you see that?!”
 
 @43535 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号
@@ -61,12 +61,12 @@ it feels good. Why can’t you see that?!”
 ---
 >  君はパイロットをやっていては
 >  いけないのだ」
-You shouldn’t be a pilot.”
+You have no business being a pilot.”
 
 @43537 Roux · ルー
 # 审校：原文“もう、何勝手なこといってんのよ!”是ルー对グレミー擅自决定的强烈不满，初稿拆成两句且加了原文没有的“Who do you think you are?!”，改为一句更自然的口语表达
 > 「もう、何勝手なこといってんのよ!」
-“Oh, what are you going on about?!”
+“Oh, who asked for your opinion?!”
 
 @43538 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -87,7 +87,7 @@ You shouldn’t be a pilot.”
 ---
 >  お前こそ、無意味に戦いを
 >  続けているだけではないか」
-You’re the one who’s just fighting pointlessly, aren’t you?”
+You’re the one fighting without any purpose!”
 
 @43541 Judau · ジュドー
 > 「な……なに!?」
@@ -97,15 +97,15 @@ You’re the one who’s just fighting pointlessly, aren’t you?”
 # 审校：全局：弯撇号／弯引号
 > 「お前が戦っているのは、状況に
 >  すぎんだろう! しかし私は違う
-“What you’re fighting for is just circumstance! But I’m different.
+“You only fight because circumstances dragged you into it! But I’m different.
 ---
 >  自ら過酷な生き方を選び、
 >  後悔はしていない。お前には
-I chose this harsh path myself, and I have no regrets. You don’t have
+I chose this harsh path myself, and I have no regrets. You have no
 ---
 >  内からわきあがる衝動があるまい!
 >  そんなクズは私の前から去れ!」
-that impulse welling up from within! Get out of my sight, you trash!”
+fire burning within you! Get out of my sight, trash!”
 
 @43543 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -116,11 +116,11 @@ that impulse welling up from within! Get out of my sight, you trash!”
 @43544 Glemy · グレミー
 > 「私は、ザビ家の血をひく者として、
 >  この地球圏を
-“As one who carries the blood of the Zabi family, I must guide
+“As one of the Zabi bloodline, I must lead
 ---
 >  正しく導かねばならんのだ!
 >  貴様にはわかるまい!」
-this Earth Sphere on the right path! You could never understand!”
+the Earth Sphere down the right path! You could never understand!”
 
 @43545 Judau · ジュドー
 # 审校：中英长句，英文重复
@@ -149,7 +149,7 @@ have to be taken down, or there’s no future for the Earth Sphere!”
 # 审校：全局：弯撇号／弯引号
 > 「血に縛られたような連中は、
 >  邪魔なんだよ! 人間の
-“People who are bound by blood just get in the way! I won’t let
+“People shackled by their bloodlines just get in the way! I won’t let
 ---
 >  可能性をちっぽけな自己満足
 >  のためにつぶされてたまるか!」
@@ -158,7 +158,7 @@ humanity’s potential be crushed for the sake of your petty self-satisfaction!�
 @43548 Ple · プル
 > 「プルツー、ジュドーは
 >  やさしいことをいってるんだよ。プルツー」
-“Ple-Two, Judau is saying something kind. Ple-Two.”
+“Ple-Two, Judau’s saying nice things. Ple-Two.”
 
 @43549 Ple-Two · プルツー
 > 「プル……」
@@ -167,7 +167,7 @@ humanity’s potential be crushed for the sake of your petty self-satisfaction!�
 @43550 Glemy · グレミー
 > 「何をする気だプルツー。
 >  お前の役目は奴らを倒すことだ
-“What are you planning, Ple-Two? Your role is to destroy them.
+“What are you doing, Ple-Two? Your job is to destroy them.
 ---
 >  ジュドーを殺せ、プルツー!」
 Kill Judau, Ple-Two!”
@@ -179,7 +179,7 @@ Kill Judau, Ple-Two!”
 
 @43552 Glemy · グレミー
 > 「ばかなッ!? もどれプルツー!」
-“Impossible?! Come back, Ple-Two!”
+“What?! Come back, Ple-Two!”
 
 @43553 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号
@@ -198,12 +198,12 @@ Kill Judau, Ple-Two!”
 @43556 Glemy · グレミー
 > 「くっ……おのれプルツー、お前まで
 >  この私を裏切るのか!」
-“Ngh... Curse you, Ple-Two. Even you betray me?!”
+“Ngh... Curse you, Ple-Two, would you betray me too?!”
 
 @43557 Judau · ジュドー
 > 「あんたと一緒じゃ、プルもプルツーも
 >  不幸になる!」
-“With you, both Ple and Ple-Two will only end up miserable!”
+“Stay with you and Ple and Ple-Two will both end up miserable!”
 
 @43558 Glemy · グレミー
 > 「黙れ! 貴様などにいったい
@@ -317,7 +317,7 @@ Uwaaaaaaaah, no, my head...”
 @43578 Glemy · グレミー
 # 审校：英文直译
 > 「道理のわからぬ子供がッ!!」
-“A child who can’t see reason!!”
+“Foolish child, blind to reason!!”
 
 @43579 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -332,7 +332,7 @@ Uwaaaaaaaah, no, my head...”
 @43581 Roux · ルー
 # 审校：全局：弯撇号／弯引号
 > 「あんた、みっともないよ!」
-“You’re a sorry sight!”
+“You’re pathetic!”
 
 @43582 Glemy · グレミー
 > 「ルーさん!?」
@@ -361,7 +361,7 @@ Uwaaaaaaaah, no, my head...”
 
 @43587 Bright · ブライト
 > 「そうか。グレミーは倒したか……」
-“I see. So Glemy is defeated...”
+“I see. So Glemy’s been taken down...”
 
 @43588 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -373,10 +373,10 @@ Uwaaaaaaaah, no, my head...”
 # 审校：英文生硬
 > 「ひどいものよ。例の
 >  キュベレイタイプのMSのせいね
-“It’s a mess. It’s because of those Qubeley-type mobile suits.
+“It’s bad. Those Qubeley-type mobile suits did a number on them.
 ---
 >  大打撃を受けているといっていいわ」
-They’ve taken a real beating.”
+I’d say they’ve taken a real beating.”
 
 @43590 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -394,7 +394,7 @@ They’ve taken a real beating.”
 # 审校：全局：弯撇号／弯引号
 > 「あたしもその意見には賛成だよ。
 >  こっちもボロボロだけど
-“I agree with that too. We’re battered ourselves, but
+“I’m with you on that. We’re battered ourselves, but
 ---
 >  今やっとかないとダメさ。
 >  そいつだけは間違いないよ」
@@ -432,39 +432,39 @@ any time.”
 # 审校：全局：弯撇号／弯引号
 > 「しかし……いま戦闘を終えたばかりで
 >  まともに戦えるのか?」
-“But... we’ve just finished a battle. Can we really fight properly?”
+“But... we’ve only just finished a battle. Are we in any shape to fight?”
 
 @43597 Judau · ジュドー
 # 审校：英文拗口
 > 「そんなこといってる場合じゃない
 >  だろう!? ブライトさん、無茶でも
-“This is no time to be saying that! Bright, ‘we do it even if it’s reckless’
+“This is no time for that! Bright, ‘do it even if it’s reckless’
 ---
 >  やるんだってのは、あんたの口癖
 >  でしょうに!」
-is your favorite line, isn’t it?!”
+is practically your catchphrase!”
 
 @43598 Garrison · ギャリソン
 # 审校：全局：弯撇号／弯引号
 > 「これはこれは。艦長、
 >  1本とられましたな」
-“Well, well. Captain, he’s scored a point on you there.”
+“Well, well. He has you there, Captain.”
 
 @43599 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
 > 「行きましょう。ハマーンをここで
 >  叩けなけりゃ、ここまで出てきて
-“Let’s go. If we can’t strike Haman down here, then coming this far and
+“Let’s go. If we can’t strike Haman down here, then coming all this way to
 ---
 >  グレミーをつぶしたってのは、
 >  ハマーンに利するだけです」
-crushing Glemy only ends up benefiting Haman.”
+crush Glemy will just end up doing Haman a favor.”
 
 @43600 Selain · セレイン（按段落 3DD2）
 # 审校：英文生硬
 > 「ジュドーのいう通りだ。このまま
 >  もう1度出よう、艦長。直接
-“Judau’s right. Let’s head out again just as we are, Captain. We’ll cut straight
+“Judau’s right. Let’s sortie again right now, Captain. We’ll cut straight
 ---
 >  ハマーンの喉もとに切りこんでやる。
 >  いま出れば、ハマーンの首をとれる」
@@ -493,12 +493,12 @@ Let’s settle it here. We’ll strike Haman down.”
 @43603 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「……みんな、それでいいんだな?」
-“...Everyone, you’re all agreed on this?”
+“...Are you all agreed, then?”
 
 @43604 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「覚悟はできているさ、ブライト」
-“I’m ready for it, Bright.”
+“I’m prepared, Bright.”
 
 @43605 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -510,11 +510,11 @@ Let’s settle it here. We’ll strike Haman down.”
 # 审校：全局：弯撇号／弯引号
 > 「おおよその位置は見当がつきます。
 >  そのようなこともあろうかと
-“I have a rough idea of her position. In case something like this happened,
+“I can estimate her approximate position. Anticipating such a situation,
 ---
 >  ハマーンの所在は
 >  トレースしておりましたので」
-I’ve been tracing Haman’s whereabouts.”
+I have been tracking Haman’s whereabouts.”
 
 @43607 Chum · チャム
 # 审校：全局：弯撇号／弯引号
@@ -534,4 +534,4 @@ sense Haman’s aura power!”
 @43609 Bright · ブライト
 > 「よし、全員持ち場にもどれ。
 >  本艦隊はこれよりハマーンを討つ」
-“All right, everyone back to your posts. This fleet will now strike Haman down.”
+“All right, everyone back to your posts. This fleet now moves to strike Haman.”
