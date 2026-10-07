@@ -32,7 +32,7 @@
 # 审校：去掉“你听好。听好了”重复和 いいか 译成 All right 的直译腔
 > 「中条長官の指示で
 >  潜入していたんだ
-“I infiltrated on Chief Chujo’s orders.
+“I’ve been undercover on Chief Chujo’s orders.
 ---
 >  手短かにいうからよく聞いてくれ。
 >  いいか、この要塞はまだ未完成だ
@@ -61,7 +61,7 @@ we can destroy this fortress!”
 ---
 >  どれかを破壊してバランスをくずすと、
 >  残りが暴走する危険がある
-If we destroy one and throw off the balance, the rest could run wild.
+If we destroy one and throw off the balance, the rest could go out of control.
 ---
 >  最悪の場合、
 >  爆発に巻きこまれるかも知れん」
@@ -75,10 +75,10 @@ In the worst case, we might get caught in the explosion.”
 # 审校：いいか 译成 All right 不通
 > 「4か所のジェネレーターを、可能な
 >  限り同時に破壊することだ
-“We have to destroy all four generators at as close to the same time as possible.
+“You have to destroy all four generators as close to simultaneously as possible.
 ---
 >  いいか、くれぐれも気をつけてくれ」
-And listen, be extremely careful.”
+Listen, be very careful.”
 
 @31523 Bright · ブライト
 > 「わかった、ありがとう。
@@ -93,7 +93,7 @@ And listen, be extremely careful.”
 @31525 Emperor Burai · ブライ大帝
 > 「何と、奴らの進入を許したとな!
 >  ええい、どこまでもこざかしい……」
-“What, you let them get inside?! Curse them, always so clever...”
+“What, you let them get inside?! Bah, insolent to the very end...”
 
 @31526 Hell Marshal · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
@@ -103,10 +103,10 @@ And listen, be extremely careful.”
 ---
 >  この上は生かして帰さぬ!
 >  我が同胞の無念
-This time I won’t let you leave alive! I’ll make you feel
+Now I will not let you leave alive! I shall make you feel
 ---
 >  思い知らせてくれようぞ!」
-the grief of my comrades!”
+the bitterness of my fallen brethren!”
 
 @31527 Emperor Burai · ブライ大帝
 > 「グラー博士、ヤヌス侯爵!」
@@ -156,7 +156,7 @@ to its grave!”
 @31534 Bright · ブライト
 > 「村雨のいっていたエネルギー
 >  発生機は、ここと……」
-“The energy generator Murasame mentioned is here, and...”
+“The energy generators Murasame mentioned are here, and...”
 
 @31535 Bright · ブライト
 > 「ここと……」
@@ -178,7 +178,7 @@ to its grave!”
 @31539 Bright · ブライト
 > 「わかっているな? 可能な限り、
 >  同時に破壊するよう努力しろ!」
-“You understand? Make every effort to destroy them at the same time!”
+“Understood? Do everything you can to destroy them simultaneously!”
 
 @31540 Emperor Burai · ブライ大帝
 # 审校：全局：弯撇号／弯引号
@@ -199,7 +199,7 @@ to its grave!”
 # 审校：原文是ヤヌス侯爵的自称「わらわ」，译文误译为“a woman of”，且未完整表达原意，改为更自然的自述。
 > 「こ、こんな……人間ごときに
 >  わらわが……」
-“Th-this... to mere humans, I...”
+“Th-this... I, beaten by mere humans...”
 
 @31544 Dr. Gura · グラー博士
 > 「おおぉぉっ、おのれぇぇぇーっ!!」
@@ -213,10 +213,10 @@ to its grave!”
 # 审校：runaway 当名词不自然
 > 「暴走が始まった。
 >  あと10分以内に
-“It’s going critical. Within the next ten minutes,
+“It’s going critical. You have ten minutes
 ---
 >  残りの2つも破壊するんだ」
-destroy the remaining two as well.”
+to destroy the other two.”
 
 @31547 Bright · ブライト
 > 「あと1つだ、急げ!」
@@ -231,10 +231,10 @@ destroy the remaining two as well.”
 # 审校：runaway 当名词不自然
 > 「暴走が始まった。
 >  あと10分以内に
-“It’s going critical. Within the next ten minutes,
+“It’s going critical. You have ten minutes
 ---
 >  残りの2つも破壊するんだ」
-destroy the remaining two as well.”
+to destroy the other two.”
 
 @31550 Bright · ブライト
 > 「あと1つだ、急げ!」
@@ -249,10 +249,10 @@ destroy the remaining two as well.”
 # 审校：runaway 当名词不自然
 > 「暴走が始まった。
 >  あと10分以内に
-“It’s going critical. Within the next ten minutes,
+“It’s going critical. You have ten minutes
 ---
 >  残りの2つも破壊するんだ」
-destroy the remaining two as well.”
+to destroy the other two.”
 
 @31553 Bright · ブライト
 > 「あと1つだ、急げ!」
@@ -267,10 +267,10 @@ destroy the remaining two as well.”
 # 审校：runaway 当名词不自然
 > 「暴走が始まった。
 >  あと10分以内に
-“It’s going critical. Within the next ten minutes,
+“It’s going critical. You have ten minutes
 ---
 >  残りの2つも破壊するんだ」
-destroy the remaining two as well.”
+to destroy the other two.”
 
 @31556 Bright · ブライト
 > 「あと1つだ、急げ!」
@@ -320,7 +320,7 @@ destroy the remaining two as well.”
 @31566 Bright · ブライト
 > 「みんな、何かにつかまれ!
 >  衝撃波がくるぞ!」
-“Everyone, grab onto something! A shockwave is coming!”
+“Everyone, grab onto something! Shockwave incoming!”
 
 @31567 Beltorchika · ベルトーチカ
 > 「きゃああっ!」
@@ -345,13 +345,13 @@ destroy the remaining two as well.”
 
 @31572 Amuro · アムロ
 > 「やつらは……?」
-“And them...?”
+“What about them...?”
 
 @31573 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
 > 「移動要塞……消滅!
 >  すごい、完全にふきとんじゃってる……」
-“The mobile fortress... annihilated! Amazing, it’s been completely blown away...”
+“The mobile fortress... is gone! Wow, it’s been blown to bits...”
 
 @31574 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -389,13 +389,13 @@ there’s no way they’ll be coming back.”
 @31580 Daisaku · 大作
 # 审校：全局：弯撇号／弯引号
 > 「そうだ、村雨さんは!?」
-“That’s right, what about Murasame?!”
+“Oh, right, what about Murasame?!”
 
 @31581 Ginrei · 銀鈴
 # 审校：村雨是男性
 > 「心配いらないわ、
 >  とっくに脱出してるはずよ」
-“No need to worry, he should have escaped long ago.”
+“Don’t worry, he must have gotten out long ago.”
 
 @31582 Daisaku · 大作
 > 「……わかるんですか?」
@@ -405,12 +405,12 @@ there’s no way they’ll be coming back.”
 # 审校：村雨是男性
 > 「ええ。あの人はエキスパートよ……。
 >  仕損じることなんてありはしないの」
-“Yes. That man is an expert... He never makes a mistake.”
+“Yes. He’s an expert... He never slips up.”
 
 @31584 Astonaige · アストナージ
 > 「おうい、鉄也、ジュン。それに甲児
 >  たちも、ちょっと聞いてくれないか?」
-“Hey, Tetsuya, Jun. And Koji and the rest of you too, could you listen for a moment?”
+“Hey, Tetsuya, Jun. Koji and the rest of you too, can I have a minute?”
 
 @31585 Koji · 甲児
 # 审校：咬到舌头
@@ -421,7 +421,7 @@ there’s no way they’ll be coming back.”
 # 审校：全局：弯撇号／弯引号
 > 「ちょっと甲児くん、動かないで!
 >  薬がつけられないじゃないの」
-“Koji, hold still for a moment! I can’t put the medicine on otherwise.”
+“Koji, hold still! I can’t put the medicine on if you keep moving.”
 
 @31587 Tetsuya · 鉄也
 # 审校：全局：弯撇号／弯引号
@@ -447,7 +447,7 @@ was going to house a production plant for the MP Great.”
 @31590 Jun · ジュン
 # 审校：全局：弯撇号／弯引号
 > 「本当なの、それ!?」
-“Really, that’s true?!”
+“Is that really true?!”
 
 @31591 Astonaige · アストナージ
 # 审校：wreckages 不成词；中文去“呢”，運びこんで 是搬上船
@@ -458,30 +458,30 @@ was going to house a production plant for the MP Great.”
 ---
 >  量産型グレートの残がいやパーツを
 >  逃げ出す前にできるだけ運びこんで
-before we escaped I had as much MP Great wreckage and as many parts as I could loaded up,
+before we bailed out, I hauled in as much MP Great wreckage and parts as I could
 ---
 >  調べてみたんだ。そうしたら、どうやら
 >  1体だけ組み立てられそうなんだよ
-and took a look at them. And it seems we can put one together.
+and looked them over. Turns out we can put together just one.
 ---
 >  組み上がったらテストするから、
 >  その時はよろしく頼むな」
-Once it’s assembled I’ll run a test, so I’m counting on you then.”
+Once it’s built I’ll run a test, so I’m counting on you then.”
 
 @31592 Mondo · モンド
 > 「ふええ、あの状況でよくもまあ……」
-“Whoa, and you managed all that in that situation...”
+“Whoa, you pulled that off in the middle of all that...”
 
 @31593 Elle · エル
 # 审校：初稿“We don't stand a chance.”偏离原文「かないっこないね、私たちなんか」的“我们可做不到那种事”之意；改为更贴切的表达。
 > 「かないっこないね、私たちなんか」
-“We could never manage that.”
+“There’s no way we could match that.”
 
 @31594 Kayra · ケーラ
 # 审校：全局：弯撇号／弯引号
 > 「メカニックの鏡だろ?
 >  ま、場数の違いさ」
-“He’s the model mechanic, isn’t he? Well, that’s the difference experience makes.”
+“A mechanic’s mechanic, right? Well, it comes down to experience.”
 
 @31595 Roux · ルー
 > 「マジンガーって、
@@ -491,7 +491,7 @@ Once it’s assembled I’ll run a test, so I’m counting on you then.”
 @31596 Astonaige · アストナージ
 > 「まあ、人間が設計して作ったもの
 >  だからね。やろうと思えばできるだろ」
-“Well, humans designed and built it, so if you put your mind to it, it can be done.”
+“Well, people designed and built it. If you really wanted to, I guess you could.”
 
 @31597 Kayra · ケーラ
 # 审校：全局：弯撇号／弯引号
@@ -507,10 +507,10 @@ mass-produce a Great, couldn’t they?”
 # 审校：全局：弯撇号／弯引号
 > 「そんなことになったらおしまいだね。
 >  俺たちも
-“If that happened, it’d be all over. We wouldn’t be able to keep up
+“If that happened, it’d be all over. We wouldn’t even be able to
 ---
 >  ゲリラ活動どころじゃなくなるだろうぜ」
-our guerrilla activities either.”
+keep fighting as guerrillas.”
 
 @31599 Tetsuya · 鉄也
 # 审校：全局：弯撇号／弯引号
@@ -521,21 +521,21 @@ our guerrilla activities either.”
 # 审校：全局：弯撇号／弯引号
 > 「そうよ。私、
 >  何だか真剣に怖かったわ、今の」
-“That’s right. Honestly, that really scared me just now.”
+“Exactly. That actually scared me for a second there.”
 
 @31601 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
 > 「ははは、実際はそんなことは
 >  ないと思うよ。特にこの手のマシンは
-“Hahaha, in reality I don’t think that’ll happen. These kinds of machines especially are
+“Hahaha, I don’t think it’d really happen. Machines like these especially are
 ---
 >  パイロットに合わせて特化した、
 >  ほとんど1点物だからね……
-tailored to their pilot, practically one-of-a-kind...
+tailored to their pilots, practically one-of-a-kind...
 ---
 >  科学ってのは、
 >  決して万能じゃない」
-Science isn’t all-powerful, you know.”
+Science can’t do everything, you know.”
 
 @31602 Kayra · ケーラ
 > 「ふうん……。あんたがいうんなら、
@@ -545,14 +545,14 @@ Science isn’t all-powerful, you know.”
 @31603 Dermail · デルマイユ
 > 「我々の地球から、
 >  つまらぬ紛争が消えつつある
-“From our Earth, petty conflicts are fading away.
+“Petty conflicts are vanishing from our Earth.
 ---
 >  誠によろこばしいことだ。
 >  だが我々の責任は
-That is truly a joyous thing. But our responsibility
+A truly joyous development. But this alone
 ---
 >  これで果たされたわけではない……」
-is not fulfilled by this alone...”
+does not fulfill our responsibility...”
 
 @31604 Relena · リリーナ
 # 审校：第三页起两种语言都是长定语直译，时态也错（未来由……开辟）
@@ -570,11 +570,11 @@ is not fulfilled by this alone...”
 ---
 >  ひとつとなる時代がきたのです。
 >  地球の未来は国と国とが
-and become one. Earth’s future will open
+and to become one. Earth’s future
 ---
 >  ひとつに結びつくことによって
 >  開けるのです」
-when nation joins with nation as one.”
+lies in the union of nation with nation.”
 
 @31605 Dermail · デルマイユ
 # 审校：大写
@@ -589,7 +589,7 @@ unite as one and press on with the construction of the World Nation!”
 @31606 Relena · リリーナ
 > (……ヒイロ、わたくしも自分に
 >  できることをせいいっぱいやってみます)
-(...Heero, I too will do everything I can.)
+(...Heero, I will do everything I can as well.)
 
 @31607 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
@@ -607,7 +607,7 @@ And now Miss Relena is its representative...”
 @31609 Koji · 甲児
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
 > 「ブライト艦長、どういうことだよ!?」
-“Captain Bright, what does this mean?!”
+“Captain Bright, what’s going on?!”
 
 @31610 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -616,13 +616,13 @@ And now Miss Relena is its representative...”
 “I don’t know. Could she have been forced into it? No, even if she were,
 ---
 >  彼女がそれに屈するはずがない」
-she would never yield to that.”
+she’s not one to give in.”
 
 @31611 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「地上の争いを終わらせるため……
 >  じゃないんですか?」
-“Isn’t it to put an end to the fighting on Earth...?”
+“Couldn’t it be to end the fighting on Earth...?”
 
 @31612 David · デビッド
 > 「だからといってよ!」
@@ -640,24 +640,24 @@ she would never yield to that.”
 @31615 Quatre · カトル
 > 「……僕もそう思います。
 >  これは覚悟のうえでの行動だと」
-“...I think so too. This is an action taken with full resolve.”
+“...I think so too. She knew exactly what she was getting into.”
 
 @31616 Noin · ノイン
 > 「スペシャルズがOZとなり、現在の
 >  OZはロームフェラ財団の兵力だ
-“The Specials became OZ, and the current OZ is the military force of the Romefeller Foundation.
+“The Specials became OZ, and OZ is now the Romefeller Foundation’s army.
 ---
 >  いま地球圏にある争いのもとは、
 >  全て地球人自らが
-The source of every conflict now in the Earth Sphere is a seed that Earthlings themselves
+You could say every conflict in the Earth Sphere today grew from seeds that Earth’s people
 ---
 >  まいた種だといえる」
-sowed.”
+sowed themselves.”
 
 @31617 Quatre · カトル
 > 「まいた種は刈り取らなきゃいけない。
 >  リリーナさんは
-“The seeds we sowed must be reaped. Miss Relena
+“We have to reap what we’ve sown. Miss Relena
 ---
 >  それをやろうとしてるんです」
 is trying to do exactly that.”
@@ -670,24 +670,24 @@ is trying to do exactly that.”
 # 审校：两种语言首句都是直译长句
 > 「再び外宇宙からの敵がやってくる
 >  その時だからというわけか
-“Because this is the moment an enemy from beyond will come again, is that it?
+“Because enemies from deep space are coming again, I take it?
 ---
 >  なるほどな……立派な覚悟だ」
-I see... A splendid resolve.”
+I see... Admirable resolve.”
 
 @31620 Treize · トレーズ
 # 审校：absorb the people's hearts 直译
 > 「財団も考えたものだ。
 >  確かに彼女ならばロームフェラに
-“The Foundation has thought this through. Indeed, with her, Romefeller can
+“The Foundation was clever. With her, Romefeller can certainly
 ---
 >  人心を吸収することができる。
 >  だがそれが、ロームフェラにとって
-win the people’s hearts. But it seems they haven’t noticed
+win over the people. But they don’t seem to realize
 ---
 >  リスクが大きいことに、
 >  気づいていないようだね」
-how great a risk that is for Romefeller.”
+how great a risk that poses to Romefeller.”
 
 @31621 Lady · レディ
 > 「地上の争いは
@@ -711,7 +711,7 @@ or perhaps they will come from space.”
 ---
 >  OZ宇宙軍の形勢は
 >  不利になるでしょう。もっとも
-The OZ space force’s position will worsen. Though,
+The OZ space forces will likely be at a disadvantage. Though,
 ---
 >  戦艦リーブラが完成すれば、
 >  またわからなくなりますが……」
@@ -751,7 +751,7 @@ Hyakki-Mycenae forces. However, Zero and Epyon were not confirmed among them...�
 ---
 >  このグワダン1隻のことなど、
 >  気にかける余裕もあるまい」
-They’ll have no spare attention to worry about a single Gwadan.”
+They can hardly spare a thought for a single Gwadan.”
 
 @31629 Axis Soldier · アクシズ兵
 > 「はっ! 了解しました!」
@@ -765,11 +765,11 @@ They’ll have no spare attention to worry about a single Gwadan.”
 ---
 >  我々としては、
 >  OZとやりあうものとばかり思っていたが
-We had assumed they were here to fight OZ, but
+I had fully expected that we would be the ones clashing with OZ, but
 ---
 >  これでまたわからなくなったか。
 >  まあいい、戦争というものは
-now it’s unclear again. Well, no matter. War is
+this muddies the waters again. Well, no matter. War is
 ---
 >  あまりに単純だと面白みがない……」
 no fun when it’s too simple...”

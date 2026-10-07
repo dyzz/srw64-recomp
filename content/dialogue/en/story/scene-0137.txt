@@ -65,7 +65,7 @@ ourselves.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「何にもないぜ。本当に、ここに
 >  デビルガンダムがいるのかよ」
-“There’s nothing here. Is the Dark Gundam really in a place like this?”
+“There’s nothing out here. Is the Dark Gundam really here?”
 
 @45374 Domon · ドモン
 > 「ああ……そのはずだ」
@@ -80,7 +80,7 @@ ourselves.”
 @45376 Markiroot · マーキロット
 > 「フハハハッ、さぁ、神の裁きを
 >  受けよ!」
-“Hahahaha! Now, receive the judgment of God!”
+“Hahahaha! Now, face the judgment of God!”
 
 @45377 Sijima · シジーマ
 # 审校：全局：弯撇号／弯引号
@@ -120,7 +120,7 @@ ourselves.”
 @45384 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「どうだ、うまくいってるぜ!」
-“How’s that? We’re doing great!”
+“How about that? It’s working!”
 
 @45385 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
@@ -220,7 +220,7 @@ Answer me, Allenby!!”
 @45402 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 > 「そんな……まさか、DG細胞……?」
-“No... don’t tell me, DG Cells...?”
+“No... it can’t be the DG Cells...?”
 
 @45403 Wong · ウォン
 > 「フフフフッ、さあ、やってしまいたまえ!」
@@ -270,7 +270,7 @@ Answer me, Allenby!!”
 @45411 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 > 「そんな……まさか、DG細胞……?」
-“No... don’t tell me, DG Cells...?”
+“No... it can’t be the DG Cells...?”
 
 @45412 Wong · ウォン
 > 「フフフフッ、さあ、やってしまいたまえ!」
@@ -286,13 +286,13 @@ Answer me, Allenby!!”
 # 审校：全局：弯撇号／弯引号
 > 「わかるよ、ドモン。だから……
 >  ファイトしようよ、アタシとぉぉーっ!!」
-“I do, Domon. So... let’s fight, you and I!!”
+“Course I do, Domon. So... let’s fight, you and me!!”
 
 @45415 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 > 「ウソでしょう、アレンビー、
 >  あなたまでDG細胞に……」
-“You can’t be serious, Allenby. You too, infected with DG Cells...”
+“No, Allenby... not you too, taken by the DG Cells...”
 
 @45416 Domon · ドモン
 > 「くっ、アレンビィィーッ!!」
@@ -349,11 +349,11 @@ Domonnn!!”
 # 审校：全局：弯撇号／弯引号
 > 「そうよ、私よ。アレンビー、お願いだか
 >  ら、もとにもどって! あなたも、ドモンと
-“That’s right, it’s me. Allenby, please, come back to yourself! If you’re a fighter who has
+“That’s right, it’s me. Allenby, please, come back to yourself! If you’re a fighter who’s
 ---
 >  魂の拳を交えたファイターなら、
 >  DG細胞なんかに負けちゃいけない!」
-clashed fists of the soul with Domon, you can’t lose to something like DG Cells!”
+crossed fists with Domon soul to soul, you can’t let the DG Cells beat you!”
 
 @45426 Allenby · アレンビー
 # 审校：全局：弯撇号／弯引号
@@ -379,24 +379,24 @@ I love you too, Domon!!”
 # 检查提示：未用必用译名：ノーベルガンダム→Noble Gundam
 > (……これは……以前の時とは違う?
 >  DG細胞がノーベルガンダムの
-(...This is... different from last time? The DG Cells are invading the Noble Gundam’s
+(...This... isn’t like last time? The DG Cells have gotten into the Noble Gundam’s
 ---
 >  システムに侵入しているんだわ。
 >  なら、アムロさんがいっていたように
-system. Then, like Amuro said, if I can just shut down the system... can I do it,
+system. Then, like Amuro said,
 ---
 >  システムだけ停止できれば……
 >  できるの、私に?)
-can I really?)
+if I can just shut down the system... can I do it?)
 
 @45430 Allenby · アレンビー
 > 「アタシだって、アタシだってぇぇぇ!!」
-“I... I do toooo!!”
+“Me too... me toooo!!”
 
 @45431 Rain · レイン
 # 审校：英文去套话
 > 「やるしかない! この一矢にかけるわ!」
-“It’s the only way! I’m staking everything on this one arrow!”
+“It’s the only way! I’m staking everything on this one shot!”
 
 @45432 Allenby · アレンビー
 > 「ドモン! ドモンはどこなのぉぉぉーっ!!」
@@ -439,10 +439,10 @@ no one wants to save someone like you more than I do! So!”
 # 审校：全局：弯撇号／弯引号
 > 「お願い、もうやめて! あなたも
 >  かわいそうだとは思うけど、これ以上
-“Please, stop this! I know you’re a victim too, but don’t torment
+“Please, stop this! I know it’s not your fault, but don’t make
 ---
 >  ドモンを苦しめないで!」
-Domon any more!”
+Domon suffer any more!”
 
 @45440 Allenby · アレンビー
 # 审校：全局：弯撇号／弯引号
@@ -469,7 +469,7 @@ I... I loved you, Domon!”
 # 检查提示：未用必用译名：ノーベルガンダム→Noble Gundam
 > (……これは……以前の時とは違う?
 >  DG細胞がノーベルガンダムの
-(...Is this... different from last time? The DG Cells are invading the Noble Gundam’s
+(...This... isn’t like last time? The DG Cells have gotten into the Noble Gundam’s
 ---
 >  システムに侵入しているんだわ。
 >  なら、アムロさんがいっていたように
@@ -477,11 +477,11 @@ system. Then, like Amuro said,
 ---
 >  システムだけ停止できれば……
 >  できるの、私に?)
-if I can just stop the system... can I do it?)
+if I can just shut down the system... can I do it?)
 
 @45444 Allenby · アレンビー
 > 「アタシだって、アタシだってぇぇぇ!!」
-“I am too, I am toooo!!”
+“Me too... me toooo!!”
 
 @45445 Rain · レイン
 # 审校：英文去套话
@@ -575,7 +575,7 @@ Nothing for it. Allenby, retreat!”
 # 审校：全局：弯撇号／弯引号
 > 「くっ……このままでは……
 >  ええい、こうなったら、しかたがない」
-“Ngh... at this rate... Fine, if it’s come to this, there’s no other way.”
+“Ngh... at this rate... Bah, so be it. There’s no other way.”
 
 @45463 Master · マスター
 # 审校：全局：弯撇号／弯引号
@@ -612,7 +612,7 @@ finish it!!”
 
 @45468 Schwarz · シュバルツ
 > 「くっ、うかつだったか……!?」
-“Ngh, was I careless...?!”
+“Ngh, I let my guard down...?!”
 
 @45469 Schwarz · シュバルツ
 > 「ドモン、無事か!?」
@@ -626,7 +626,7 @@ finish it!!”
 # 审校：全局：弯撇号／弯引号
 > 「むっ!? あやつ、
 >  やはり、ワシのにらんだ通りか……
-“Hm?! That man, so it’s just as I suspected after all...
+“Hmm?! So I was right about that one after all...
 ---
 >  おのれ、今度は邪魔をさせん!」
 Curse you, I won’t let you interfere this time!”
@@ -644,7 +644,7 @@ Curse you, I won’t let you interfere this time!”
 ---
 >  倒した代償がこれだ! さしもの
 >  デビルガンダムも、パイロットがこれでは
-the price of your victory! Even the Dark Gundam, with a pilot like this, is
+the price of your victory! Even the mighty Dark Gundam, with its pilot in this state, is
 ---
 >  鉄くず同然!
 >  ドモンよ、貴様が新たなコアとなって
@@ -652,7 +652,7 @@ no better than scrap iron! Domon, you shall become the new core and
 ---
 >  デビルガンダムを完全復活させる
 >  のだ!」
-bring the Dark Gundam to full revival!”
+revive the Dark Gundam in full!”
 
 @45474 Schwarz · シュバルツ
 > 「黙れ! 貴様などに我が弟を
@@ -669,7 +669,7 @@ bring the Dark Gundam to full revival!”
 # 审校：全局：弯撇号／弯引号
 > 「そうよドモン! シュバルツは、シュバルツ
 >  はあなたのお兄さんだったのよ!」
-“That’s right, Domon! Schwarz... Schwarz was your older brother!”
+“That’s right, Domon! Schwarz... Schwarz was your brother all along!”
 
 @45477 Domon · ドモン
 > 「兄さん!? やっぱり
@@ -690,13 +690,13 @@ A heart and body split in two. I am the shadow of Kyoji reflected in a mirror.
 ---
 >  本物のキョウジは確かに
 >  あの中にいる」
-The real Kyoji is indeed inside that thing.”
+The real Kyoji is in there, without a doubt.”
 
 @45479 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「わからないよ!
 >  いったい、どういうことなんだよ!
-“I don’t understand! What on earth does this mean?!
+“I don’t understand! What on earth is going on?!
 ---
 >  どうして、兄さんが2人もいるんだ!?」
 Why are there two of you, brother?!”
@@ -708,7 +708,7 @@ Why are there two of you, brother?!”
 ---
 >  コピーにすぎないのだ。すべては
 >  デビルガンダムを抹殺するためだった」
-created using the power of the DG Cells. All of it was to destroy the Dark Gundam.”
+created using the power of the DG Cells. And all to destroy the Dark Gundam.”
 
 @45481 Domon · ドモン
 > 「そんな! あれを使って地球圏の
@@ -739,7 +739,7 @@ originally built to restore the Earth.”
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth’s natural regeneration. But! There were those who noticed
+all meant for the Earth’s natural regeneration. But! Some had their eyes on
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
@@ -747,23 +747,23 @@ its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-fled to Earth. However, the attack I took during my escape caused the program to
+fled to Earth. But damage from an attack during my escape threw its program
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-go mad, and it became that terrifying Dark Gundam.”
+into chaos, and it became that terrifying Dark Gundam.”
 
 @45485 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
 >  デビルガンダムを奪ったってのは……」
-“What?! Then you stealing the Dark Gundam was...”
+“What?! Then the story about you stealing the Dark Gundam...”
 
 @45486 Schwarz · シュバルツ
 # 审校：破折号；我们→我
 # 检查提示：未用必用译名：アルティメットガンダム→Ultimate Gundam
 > 「でっちあげだ。だまされたのだ、カーンズに
 >  奴はオペレーション・メテオの6つめの
-“A fabrication. I was deceived by Quinze. He tried to use the Ultimate
+“A frame-up. I was deceived by Quinze. He meant to use the Ultimate
 ---
 >  ガンダムとして、アルティメットガンダムを
 >  使おうとしたのだ」
@@ -772,17 +772,17 @@ Gundam as the sixth Gundam of Operation Meteor.”
 @45487 Domon · ドモン
 > 「そ、そんな……
 >  じゃあ、俺はそんなことも知らずに
-“Th-then... so I chased after my brother with everything I had,
+“N-no way... So all along, without knowing any of that,
 ---
 >  必死に兄さんを追いかけて……」
-never even knowing that...”
+I was desperately chasing after you, brother...”
 
 @45488 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam、ムゲ帝国→Muge Empire
 > 「根が素直なお前は、ガンダムに
 >  乗せられ、キョウジを追ってくるに
-“You’re honest to your core, so I knew the Gundam would be used to lure you
+“Honest as you are, I knew they’d put you in a Gundam and send you
 ---
 >  違いない。そう思った。だが相手は
 >  強大で、ムゲ帝国軍もいた
@@ -794,10 +794,10 @@ Empire’s forces were there too. It was obvious you’d do something reckless. 
 ---
 >  取り込まれたキョウジは、うすれていく
 >  意識の中で私をつくりあげ、
-Kyoji, swallowed by the Dark Gundam, used what fading consciousness he had left to create me,
+Kyoji, swallowed by the Dark Gundam, created me with the last of his fading consciousness,
 ---
 >  お前を守らせようとしたのだ」
-and tried to have me protect you.”
+so that I could protect you.”
 
 @45489 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -809,11 +809,11 @@ and tried to have me protect you.”
 # 审校：全局：弯撇号／弯引号
 > 「フフフッ、あれだけ、頭に血を
 >  のぼらせたお前が、素直に
-“Heh heh, with your head that hot, there’s no way you’d have
+“Heh heh, hotheaded as you were, you’d never have just
 ---
 >  信じたはずがあるまい……。ドモン、
 >  私も……私もつらかったぞ……うっ……」
-believed me... Domon, I... I suffered too... ugh...”
+believed me... Domon, it... it was hard for me too... ugh...”
 
 @45491 Domon · ドモン
 # 审校：破折号
@@ -827,7 +827,7 @@ believed me... Domon, I... I suffered too... ugh...”
 “My life is bound to Kyoji’s as well. So this is the end... no,
 ---
 >  もってくれよ、この体!」
-hold on, body!”
+hold together a little longer, body!”
 
 @45493 Master · マスター
 > 「貴様、何をする!」
@@ -847,7 +847,7 @@ hold on, body!”
 @45496 Schwarz · シュバルツ
 # 审校：英文生硬
 > 「黙ってみていろ!!」
-“Be quiet and watch!!”
+“Just watch!!”
 
 @45497 Schwarz · シュバルツ
 > 「うおおぉぉぉっ!!」
@@ -874,7 +874,7 @@ hold on, body!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン、早くうて、
 >  私ごとデビルガンダムを!」
-“Domon, shoot now! Take out the Dark Gundam, me along with it!”
+“Domon, fire now! Take out the Dark Gundam, and me with it!”
 
 @45503 Domon · ドモン
 > 「し、しかし兄さん……」
@@ -885,10 +885,10 @@ hold on, body!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「早く! 私の体ごとコックピットを
 >  吹き飛ばすんだ! デビルガンダムを
-“Hurry! Blow the cockpit apart, my body and all! To stop the Dark
+“Hurry! Blow the cockpit apart, my body and all! The only way to stop the Dark
 ---
 >  とめるには、キョウジをうつしかない!」
-Gundam, the only way is to shoot Kyoji!”
+Gundam is to shoot Kyoji!”
 
 @45505 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -899,11 +899,11 @@ Gundam, the only way is to shoot Kyoji!”
 # 审校：全局：弯撇号／弯引号
 > 「甘ったれるな! その拳の紋章は
 >  偽物か! お前もその紋章を
-“Don’t be soft! Is the crest on that fist a fake?! If you bear that crest
+“Don’t be soft! Is the crest on your fist a fake?! If you too bear that crest,
 ---
 >  持つ身なら、情に流され目的を
 >  見失ってはいかん!
-too, you mustn’t be swayed by sentiment and lose sight of your purpose!
+you can’t let sentiment make you lose sight of your purpose!
 ---
 >  こんな、こんな悲劇は、終わらせる
 >  のだ!」
@@ -962,7 +962,7 @@ Please, Domon, deal the Dark Gundam its final blow!!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ……ワシの……ワシのデビルガンダム
 >  が……許さん、許さんぞ、ドモン!
-“Ahh... my... my Dark Gundam... You’ll pay for this, you’ll pay, Domon!
+“Ahh... my... my Dark Gundam... You will pay for this, Domon, you will pay!
 ---
 >  貴様は自分が何をしたか、
 >  わかっておるのかぁ!!」
@@ -985,7 +985,7 @@ to make the world your own!!”
 @45519 Domon · ドモン
 > 「この期におよんで言い逃れか!?
 >  ウォンのことはどうなる!」
-“Still trying to talk your way out of it at this point?! What about Wong?!”
+“Still making excuses, even now?! What about Wong?!”
 
 @45520 Master · マスター
 > 「ワシは奴を利用しただけよ。すべては
@@ -1000,7 +1000,7 @@ to make the world your own!!”
 # 审校：勝負の二文字
 > 「クククッ、知りたいか。ならば、勝負
 >  の二文字をもって教えてくれよう!」
-“Heh heh heh, you want to know? Then let a match between us be my answer!”
+“Heh heh heh, you want to know? Then I shall answer you in battle!”
 
 @45523 Domon · ドモン
 > 「キョウジ……兄さん……」
@@ -1009,7 +1009,7 @@ to make the world your own!!”
 @45524 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「終わった……これで、すべて……」
-“It’s over... with this, everything...”
+“It’s over... all of it...”
 
 @45525 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
@@ -1024,7 +1024,7 @@ to make the world your own!!”
 @45527 Rain · レイン
 > 「……ドモン! その人は、その人は
 >  あなたのお兄さんなのよ!」
-“...Domon! That man, that man is your brother!”
+“...Domon! He... he’s your brother!”
 
 @45528 Schwarz · シュバルツ
 > 「レイン……」
@@ -1033,7 +1033,7 @@ to make the world your own!!”
 @45529 Domon · ドモン
 > 「なんだって!? どういうことだ? じゃあ
 >  いま死んだのは誰だというんだ?」
-“What?! What do you mean? Then who was it that just died?”
+“What?! What do you mean? Then who just died?”
 
 @45530 Schwarz · シュバルツ
 > 「……私はキョウジであってキョウジ
@@ -1052,16 +1052,16 @@ split in two. In other words... I am the shadow of Kyoji reflected in a mirror.�
 @45532 Schwarz · シュバルツ
 > 「私はDG細胞の力を借り、
 >  作りだされた、キョウジのコピーなのだ
-“I am a copy of Kyoji, created by borrowing the power of the DG Cells.
+“I am a copy of Kyoji, created with the power of the DG Cells.
 ---
 >  すべてはデビルガンダムを抹殺する
 >  ためだった」
-All of it was to destroy the Dark Gundam.”
+And all to destroy the Dark Gundam.”
 
 @45533 Domon · ドモン
 > 「そんな! あれを使って地球圏の
 >  征服を企んだのは兄さんのはず……」
-“No way! It was my brother who used that thing and tried to conquer the Earth Sphere...”
+“No way! You were the one who used that thing to try to conquer the Earth Sphere...”
 
 @45534 Schwarz · シュバルツ
 # 审校：“以……为目的而被制造”机翻腔
@@ -1087,7 +1087,7 @@ originally built to restore the Earth.”
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth’s natural regeneration. But! There were those who noticed
+all meant for the Earth’s natural regeneration. But! Some had their eyes on
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
@@ -1095,11 +1095,11 @@ its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-fled to Earth. However, the attack I took during my escape caused the program to
+fled to Earth. But damage from an attack during my escape threw its program
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-go mad, and it became that terrifying Dark Gundam.”
+into chaos, and it became that terrifying Dark Gundam.”
 
 @45537 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -1109,7 +1109,7 @@ go mad, and it became that terrifying Dark Gundam.”
 @45538 Schwarz · シュバルツ
 > 「でっちあげだ。だまされたのだ、カーンズに
 >  奴はオペレーション・メテオの6つめの
-“A fabrication. I was deceived by Quinze. He tried to use the Ultimate Gundam
+“A frame-up. I was deceived by Quinze. He meant to use the Ultimate Gundam
 ---
 >  ガンダムとして、アルティメットガンダムを
 >  使おうとしたのだ」
@@ -1119,17 +1119,17 @@ as the sixth Gundam of Operation Meteor.”
 # 审校：全局：弯撇号／弯引号
 > 「そ、そんな……
 >  じゃあ、俺はそんなことも知らずに
-“Th-that can’t be... then I, without even knowing any of that,
+“N-no way... So all along, without knowing any of that,
 ---
 >  必死に兄さんを追いかけて……」
-desperately chased after my brother...”
+I was desperately chasing after you, brother...”
 
 @45540 Schwarz · シュバルツ
 # 审校：“被高达引导”不通；英文长句拗口
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「根が素直なお前は、ガンダムに
 >  乗せられ、キョウジを追ってくるに
-“You’re honest at heart, so I was sure you’d be put in a Gundam and come chasing
+“Honest as you are, I knew they’d put you in a Gundam and send you chasing
 ---
 >  違いない。そう思った。だが相手は
 >  強大で、帝国軍もいた。お前が
@@ -1141,7 +1141,7 @@ was there too. It was obvious you’d do something reckless. So Kyoji, swallowed
 ---
 >  キョウジは、うすれていく意識の中で
 >  私をつくりあげ、お前を
-Dark Gundam, used the last of his fading consciousness to create me, and had me
+Dark Gundam, used the last of his fading consciousness to create me, so that I might
 ---
 >  守らせようとしたのだ」
 protect you.”
@@ -1156,11 +1156,11 @@ protect you.”
 # 审校：英文拗口，与同段 45490 统一
 > 「フフフッ、あれだけ、頭に血を
 >  のぼらせたお前が、素直に
-“Heh heh, with your head that hot, there’s no way you’d have
+“Heh heh, hotheaded as you were, you’d never have just
 ---
 >  信じたはずがあるまい……。ドモン、
 >  私も……私もつらかったぞ……うっ……」
-believed me... Domon, I... I suffered too... ngh...”
+believed me... Domon, it... it was hard for me too... ngh...”
 
 @45543 Domon · ドモン
 # 审校：破折号
@@ -1171,7 +1171,7 @@ believed me... Domon, I... I suffered too... ngh...”
 # 审校：“京二陷入沉眠的现在”机翻腔
 > 「私の命もまたキョウジとともにある。
 >  キョウジが眠りについた今
-“My life is bound to Kyoji’s as well. Now that Kyoji has gone to sleep,
+“My life is bound to Kyoji’s as well. Now that Kyoji has been laid to rest,
 ---
 >  私もまた……」
 I too...”
@@ -1184,11 +1184,11 @@ I too...”
 # 审校：全局：弯撇号／弯引号
 > 「ドモン……最後に、こうしてお前と
 >  話ができてよかった……
-“Domon... I’m glad that at the end, I could talk with you like this...
+“Domon... I’m glad I got to talk with you like this, at the end...
 ---
 >  先はまだ長い……
 >  負けるなよ、ドモン……」
-Your road is still long... don’t lose, Domon...”
+You still have a long road ahead... don’t give up, Domon...”
 
 @45547 Domon · ドモン
 > 「兄さん!? くっ……
@@ -1197,7 +1197,7 @@ Your road is still long... don’t lose, Domon...”
 
 @45548 Rain · レイン
 > 「……ドモン、あのね」
-“...Domon, you know...”
+“...Domon, listen...”
 
 @45549 Domon · ドモン
 > 「ん?」
@@ -1211,7 +1211,7 @@ Your road is still long... don’t lose, Domon...”
 @45551 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「レイン? おかしなやつだな」
-“Rain? You’re a strange one.”
+“Rain? You’re acting strange.”
 
 @45552 Wong · ウォン
 # 审校：全局：弯撇号／弯引号
@@ -1228,7 +1228,7 @@ Your road is still long... don’t lose, Domon...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ……ワシの……ワシのデビルガンダム
 >  が……許さん、許さんぞ、ドモン!
-“Ahh... my... my Dark Gundam... You’ll pay for this, you’ll pay, Domon!
+“Ahh... my... my Dark Gundam... You will pay for this, Domon, you will pay!
 ---
 >  貴様は自分たちが何をしたか、
 >  わかっておるのかぁ!!」
@@ -1251,7 +1251,7 @@ to make the world your own!!”
 @45557 Domon · ドモン
 > 「この期におよんで言い逃れか!?
 >  ウォンのことはどうなる!」
-“Still trying to talk your way out of it at this point?! What about Wong?!”
+“Still making excuses, even now?! What about Wong?!”
 
 @45558 Master · マスター
 > 「ワシは奴を利用しただけよ。すべては
@@ -1266,7 +1266,7 @@ to make the world your own!!”
 # 审校：勝負の二文字
 > 「クククッ、知りたいか。ならば、勝負
 >  の二文字をもって教えてくれよう!」
-“Heh heh heh, you want to know? Then let a match between us be my answer!”
+“Heh heh heh, you want to know? Then I shall answer you in battle!”
 
 @45561 Master · マスター
 # 审校：“一边……一边却”长句拗口；原文是反问
@@ -1288,7 +1288,7 @@ laid the Earth to waste?”
 @45563 Master · マスター
 > 「ばか者が……。ワシはな、それに
 >  気づいた時、こんな地球の姿を
-“You fool... When I realized that, I could no longer stay silent
+“You fool... When I realized it, I could no longer stand by in silence
 ---
 >  黙って見てはおれんようになった。
 >  そこで、ある誓いをたてた
@@ -1299,7 +1299,7 @@ and watch the Earth in this state. So I made a vow
 that by whatever means, I would restore this Earth
 ---
 >  もどしてみせるとな」
-to its natural, abundant former self.”
+to the nature-rich world it once was.”
 
 @45564 Domon · ドモン
 > 「ならばなぜ、こんなことをした!?
@@ -1308,7 +1308,7 @@ to its natural, abundant former self.”
 ---
 >  第一、地球は異星人の
 >  侵略を受けているんだぞ!」
-For one thing, the Earth is being invaded by aliens!”
+And besides, Earth is under alien invasion!”
 
 @45565 Master · マスター
 # 审校：全局：弯撇号／弯引号
@@ -1318,14 +1318,14 @@ For one thing, the Earth is being invaded by aliens!”
 ---
 >  抹殺なのだぞ! 地球人も
 >  異星人もワシにとっては、どちらも
-humanity on this Earth! Earthlings and aliens alike are the same
+humanity on this Earth! Earthlings and aliens are all one and the same
 ---
 >  同じよ。文明などというものを持つ
 >  生き物がいなければ、地球の
-to me. If there are no creatures possessing things like civilization, the Earth’s
+to me. Without creatures burdened with such a thing as civilization, the Earth’s
 ---
 >  自然は、おのずとよみがえる」
-nature will revive on its own.”
+nature will revive of its own accord.”
 
 @45566 Domon · ドモン
 > 「な……なんだと……?」
@@ -1336,15 +1336,15 @@ nature will revive on its own.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ククククッ、ハハハハハハッ、そうだ、
 >  それがいい。そのためならば、人類など
-“Heh heh heh, hahahahaha, yes, that’s right. For that, humanity can simply
+“Heh heh heh, hahahahaha, yes, that is how it should be. To that end, humanity may as well
 ---
 >  亡びてしまえばいいのだ! 償いだ、
 >  人類は自らの罪を償わねばならぬ
-perish! It’s atonement. Humanity must atone for its sins.
+perish! It is atonement. Humanity must atone for its sins.
 ---
 >  デビルガンダムと出会った時
 >  ワシはそれに気づいたのだ!」
-When I met the Dark Gundam, I realized it!”
+I realized it the moment I met the Dark Gundam!”
 
 @45568 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1385,12 +1385,12 @@ King of Hearts...”
 @45574 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「東方不敗、あんたはもう終わりだ」
-“Master Asia, it’s over for you.”
+“Master Asia, you’re finished.”
 
 @45575 Master · マスター
 > 「フ、ククククッ、まったくこの……
 >  ばか弟子が……だが……見事よな」
-“Hmph, heh heh heh, you really are... a foolish pupil... but... magnificent.”
+“Hmph, heh heh heh, you truly are... a foolish pupil... but... splendidly done.”
 
 @45576 Domon · ドモン
 > 「……師匠……?」
@@ -1413,28 +1413,28 @@ King of Hearts...”
 @45580 Domon · ドモン
 > 「……東方不敗……あんたはいったい
 >  何をしたかったんだ…………師匠……」
-“...Master Asia... what was it you really wanted to do... Master...”
+“...Master Asia... what were you really after... Master...”
 
 @45581 Wong · ウォン
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「こんなはずでは、こんなはずではなかったの
 >  に……デビルガンダムさえあればこの私は
-“This wasn’t supposed to happen, this wasn’t supposed to happen... If only I had the Dark Gundam, I
+“This wasn’t supposed to happen, this wasn’t supposed to happen... With the Dark Gundam, I
 ---
 >  宇宙を支配する神になれるはず
 >  だったのに……」
-was supposed to become a god who rules the universe...”
+was to become a god ruling over the universe...”
 
 @45582 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ウォン・ユンファ→Wong Yun-Fat
 > 「ウォン・ユンファ、財団の幹部が
 >  何を企んだか知らぬが、すべて
-“Wong Yun-Fat, I don’t know what the Foundation’s executives were plotting, but it all
+“Wong Yun-Fat, I don’t know what the Foundation’s executives were plotting, but it looks like it’s
 ---
 >  終わったようだな」
-seems to be over now.”
+all over now.”
 
 @45583 Wong · ウォン
 # 审校：hegemony 太书面
@@ -1460,10 +1460,10 @@ seems to be over now.”
 # 审校：全局：弯撇号／弯引号
 > 「ククククククッ、ただのウォンではない。
 >  今の私は、DG細胞の力を得た
-“Heh heh heh heh heh, I’m no mere Wong. I am now Great Wong,
+“Heh heh heh heh heh, I am no mere Wong. Now I am Great Wong,
 ---
 >  グレート・ウォンだ!!」
-who has gained the power of the DG Cells!!”
+empowered by the DG Cells!!”
 
 @45588 Domon · ドモン
 > 「ばかな……自ら、デビルガンダムに
@@ -1473,7 +1473,7 @@ who has gained the power of the DG Cells!!”
 @45589 Wong · ウォン
 > 「私だ、私が宇宙の支配者なの
 >  だ。アーッハハハハハハッ!!」
-“It is I, I am the ruler of the universe. Ahahahahahaha!!”
+“I am the one, I am the ruler of the universe! Ahahahahahaha!!”
 
 @45590 Domon · ドモン
 > 「な……ばかな!?」
@@ -1546,7 +1546,7 @@ I’ll dispose of you lot, and then I’ll go destroy those aliens.”
 @45602 Domon · ドモン
 > 「なに!? バカな、この俺がこんな
 >  ところで……」
-“What?! Impossible, me, of all people, in a place like this...”
+“What?! Impossible, I can’t fall here...”
 
 @45603 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -1563,7 +1563,7 @@ will never revive now.”
 
 @45605 Banjo · 万丈
 > 「そう思う。だが……」
-“I think so. But still...”
+“I agree. But still...”
 
 @45606 Domon · ドモン
 > 「東方不敗……」
@@ -1576,7 +1576,7 @@ will never revive now.”
 “You know, Domon... your fists spoke to me.
 ---
 >  人は、そう捨てたものでもないとな」
-They said people are not so far gone after all.”
+They said humanity is not beyond saving after all.”
 
 @45608 Domon · ドモン
 > 「…………」
@@ -1598,7 +1598,7 @@ to start over...”
 # 审校：Master Asia 的 voice 要求不用缩写，将 You'll 改为 You will。
 > 「ワシをまた師匠と呼んで
 >  くれるのか……? ワシは……
-“You will still call me Master...? Was I...
+“You would call me Master again...? Was I...
 ---
 >  ワシは間違っておったのか……?
 >  なぁ、ドモンよ」
@@ -1607,15 +1607,15 @@ was I wrong...? Tell me, Domon.”
 @45612 Domon · ドモン
 > 「俺は、俺はいまのいまになって初めて
 >  師匠の悲しみを知った。なのに
-“I... only now, for the first time, have I come to know your sorrow. And yet
+“I... I never understood your sorrow until now. And yet
 ---
 >  俺はあんたと、はりあうことばかり考え
 >  ていた。話を聞こうともしなかった
-all I ever thought about was fighting you. I never even tried to listen to you.
+all I ever thought about was competing with you. I never even tried to listen.
 ---
 >  なのに、あんたは最後まで
 >  俺のことを……」
-And still, you thought of me to the very end...”
+And still, you cared about me to the very end...”
 
 @45613 Master · マスター
 # 审校：Master Asia 的 voice 要求不用缩写，将 I'm 改为 I am。
@@ -1647,7 +1647,7 @@ none of this, none of this would have happened...”
 @45617 Master · マスター
 > 「何を泣く……見よドモン、
 >  あの朝日を。美しいなぁ……」
-“Why do you weep...? Look, Domon, at that sunrise. How beautiful...”
+“Why do you weep...? Look at that sunrise, Domon. How beautiful...”
 
 @45618 Domon · ドモン
 > 「はい、とても美しゅうございます!」
@@ -1710,7 +1710,7 @@ none of this, none of this would have happened...”
 # 审校：Master Asia 的 voice 要求不用缩写，将 It's 和 wouldn't 改为 It is 和 would not。（人工改写）
 > 「……もうよいわ。どのみちワシは長くは
 >  もたなんだ。……なぁドモン、ワシはな
-“...It is all right now. I would not have lasted much longer anyway. ...Domon, you see,
+“...Leave it be. I would not have lasted much longer anyway. ...Domon, you see,
 ---
 >  ワシは、この地球を再び緑あふるる
 >  星にしたかったのだ……」
@@ -1725,7 +1725,7 @@ I wanted to make this Earth a planet overflowing with green once more...”
 # 审校：全局：弯撇号／弯引号
 > 「もうよいというておるのに。
 >  いまさらワシが何を語ろうとも、ただの
-“I told you it’s all right. Whatever I say now would only be
+“I told you, leave it be. Whatever I say now would only be
 ---
 >  言い訳にしかならぬ」
 an excuse.”
@@ -1733,11 +1733,11 @@ an excuse.”
 @45633 Domon · ドモン
 > 「俺が、俺があんたと、はりあうことばか
 >  り考えて、あんたの話を聞こうとも
-“Because I, because all I ever thought about was fighting you, and I never tried to
+“It’s because I... because all I ever thought about was competing with you, and I never even tried to
 ---
 >  しなかったから……。なのに、あんたは
 >  最後まで俺のことを……」
-listen to you... And still, you thought of me to the very end...”
+listen... And still, you cared about me to the very end...”
 
 @45634 Master · マスター
 # 审校：Master's voice requires no contractions; "I'm" should be "I am".
@@ -1769,7 +1769,7 @@ none of this, none of this would have happened...”
 @45638 Master · マスター
 > 「何を泣く……見よドモン、
 >  あの朝日を。美しいなぁ……」
-“Why do you weep...? Look, Domon, at that sunrise. How beautiful...”
+“Why do you weep...? Look at that sunrise, Domon. How beautiful...”
 
 @45639 Domon · ドモン
 > 「はい、とても美しゅうございます!」
@@ -1860,7 +1860,7 @@ it should never revive again.”
 
 @45655 Treize · トレーズ
 > 「とりあえず、こちらへ来てくれたまえ」
-“For the time being, come over here.”
+“For now, I’d like you to come here.”
 
 @45656 Amuro · アムロ
 > 「欧州へ?」
@@ -1881,7 +1881,7 @@ sweep the enemy from the surface. Which means...”
 
 @45658 Quattro · クワトロ
 > 「我々はまた、宇宙へ上がるか」
-“So we head back up into space again.”
+“So we go back up into space.”
 
 @45659 Treize · トレーズ
 # 审校：英文生硬
@@ -1952,12 +1952,12 @@ Hard as it is to believe, the DG Cells are active.”
 # 审校：全局：弯撇号／弯引号
 > 「でも、キョウジさんが死んだら、一緒
 >  に死ぬはずではなかったんですか?」
-“But wasn’t he supposed to die together with Kyoji if Kyoji died?”
+“But wasn’t he supposed to die along with Kyoji?”
 
 @45670 George · ジョルジュ
 # 审校：全局：弯撇号／弯引号
 > 「確かに、そういっていましたね」
-“That’s certainly what he said.”
+“He did say that, yes.”
 
 @45671 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -1967,7 +1967,7 @@ Hard as it is to believe, the DG Cells are active.”
 
 @45672 Quatre · カトル
 > 「……まさか……真ゲッター」
-“...No way... Shin Getter.”
+“...Don’t tell me... Shin Getter?”
 
 @45673 Rain · レイン
 # 审校：“只能认为是”机翻腔
@@ -2013,7 +2013,7 @@ where is he?!”
 @45677 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 > 「へ、部屋で休んでもらっているわ」
-“He’s, he’s resting in his room.”
+“H-he’s resting in his room.”
 
 @45678 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -2048,7 +2048,7 @@ To think it would turn out like this...”
 # 审校：全局：弯撇号／弯引号
 > 「それは違うぞ、ドモン。キョウジは、
 >  お前の兄は、確かに死んだのだ
-“That’s not true, Domon. Kyoji, your brother, did die.
+“You’re wrong, Domon. Kyoji, your brother, is truly dead.
 ---
 >  私は、しょせんキョウジのコピーに
 >  すぎん……」
@@ -2058,20 +2058,20 @@ I’m nothing more than a copy of Kyoji...”
 # 审校：全局：弯撇号／弯引号
 > 「だけど、あんたは俺の兄さんだ!
 >  ずっと俺のことを陰から支えてくれた
-“But you’re my brother! You’ve always supported me from the shadows.
+“But you’re my brother! You’ve always watched over me from the shadows.
 ---
 >  俺の子供の頃のことも知っている
 >  俺の兄さんだ……」
-You’re my brother. You even know about my childhood...”
+You know what I was like as a kid... You’re my brother...”
 
 @45685 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 > 「……そんな顔をするな、ドモン。まだまだ
 >  修行が足りんな。お前がそれでは
-“...Don’t make that face, Domon. You still have much training to do. If you’re like this,
+“...Don’t make that face, Domon. Your training is far from over. If you’re going to be like this,
 ---
 >  安心して死ぬこともできん」
-I can’t die in peace.”
+I can’t even die in peace.”
 
 @45686 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -2087,7 +2087,7 @@ I can’t die in peace.”
 ---
 >  だが……この命の続くかぎり、ドモン、
 >  ともに戦おう」
-But... as long as this life continues, Domon, I’ll fight with you.”
+But... for as long as this life lasts, Domon, I’ll fight with you.”
 
 @45688 Domon · ドモン
 > 「兄さん!」
@@ -2102,7 +2102,7 @@ But... as long as this life continues, Domon, I’ll fight with you.”
 # 审校：全局：弯撇号／弯引号
 > 「なんとか大丈夫みたい。かなり
 >  体力を消耗しているけど
-“She seems to be all right, somehow. She’s worn out pretty badly, though.
+“She seems to be pulling through. She’s pretty worn out, though.
 ---
 >  ハサン先生にお願いしてあるわ」
 I’ve asked Dr. Hasan to look after her.”
@@ -2115,20 +2115,20 @@ I’ve asked Dr. Hasan to look after her.”
 ---
 >  サイ・サイシーたちの時は、かなり
 >  特殊だったと思うんだけど……」
-With Sai Saici and the others, I thought it was pretty unusual...”
+I thought Sai Saici and the others were a pretty special case...”
 
 @45692 Rain · レイン
 # 审校：中文句子不通
 > 「でも、あれほどひどくはなかったのよ。それ
 >  に、多分システムを停止させたのも
-“But it wasn’t that severe. Besides, I think stopping the system probably
+“But hers wasn’t nearly as bad. Besides, I think stopping the system probably
 ---
 >  よかったんだと思うの」
 helped too.”
 
 @45693 Cath · キャス
 > 「ガンドールの設備も、すごいものね」
-“The facilities at Gandor are amazing too.”
+“Gandor’s facilities are something else, too.”
 
 @45694 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -2167,11 +2167,11 @@ helped too.”
 # 审校：全局：弯撇号／弯引号
 > 「おいおい、しっかりしてくれよ。
 >  あんたの方はこれで、ひと区切りかも
-“Hey, hey, pull yourself together. For you, this might be one chapter closed,
+“Hey, hey, pull yourself together. This might close a chapter for you,
 ---
 >  しれないが、まだ何にも終わっちゃ
 >  いないんだぜ?」
-but nothing’s finished yet, you know?”
+but nothing’s over yet, got it?”
 
 @45702 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -2193,7 +2193,7 @@ but nothing’s finished yet, you know?”
 # 审校：全局：弯撇号／弯引号
 > (つってもなぁ、表情がうつろなんだよ
 >  なぁ……)
-(Still, though, his expression’s totally blank...)
+(Easy for him to say, but he looks totally out of it...)
 
 @45706 Rain · レイン
 > 「ドモン……」
@@ -2209,16 +2209,16 @@ but nothing’s finished yet, you know?”
 # 审校：全局：弯撇号／弯引号
 > 「ヒイロ? そうね、そうするわ。
 >  あなたが、そんなこといってくれるなんて
-“Heero? You’re right, I’ll do that. For you to say something like that,
+“Heero? You’re right, I’ll do that. You don’t often say things like that,
 ---
 >  珍しいわね」
-that’s rare.”
+do you?”
 
 @45709 Heero · ヒイロ
 # 审校：全局：弯撇号／弯引号
 > 「こいつの戦力は重要だ。
 >  失うわけにはいかない」
-“His combat strength is vital. We can’t afford to lose it.”
+“His fighting strength is vital. We can’t afford to lose him.”
 
 @45710 Duo · デュオ
 > 「やれやれ。お前もあいかわらずだね、
@@ -2239,29 +2239,29 @@ that’s rare.”
 # 审校：全局：弯撇号／弯引号
 > 「復興には、かなりの時間が必要
 >  だね」
-“It’ll take a considerable amount of time to rebuild.”
+“Rebuilding is going to take quite a while.”
 
 @45714 Anna · アンナ
 # 审校：全局：弯撇号／弯引号
 > 「ムゲ帝国の時に破壊をまぬがれた
 >  ところもあったのに……」
-“And some places had even survived the Muge Empire’s attacks...”
+“Some of it had even made it through the Muge Empire’s attacks...”
 
 @45715 David · デビッド
 # 审校：调整语序，使“伝統や格式ってやつも、こうなるとかえって無残なもんだな”更通顺自然。
 > 「まったく、伝統や格式ってやつも、
 >  こうなるとかえって無残なもんだな」
-“Honestly, when it comes to this, tradition and prestige just make it all the more tragic.”
+“Man, once it comes to this, all that tradition and prestige just makes it look sadder.”
 
 @45716 Roux · ルー
 # 审校：全局：弯撇号／弯引号
 > 「それでも生き残った人がいれば、また
 >  街がつくられるわ。いいじゃない
-“Even so, as long as people survive, the city will be rebuilt. Isn’t that fine?
+“Even so, as long as people survive, the city will get rebuilt. So what’s the problem?
 ---
 >  伝統なんて、あとからくっついてくる
 >  ものなんだから」
-Tradition is just something that comes along afterward.”
+Tradition is just something that comes along later anyway.”
 
 @45717 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -2287,7 +2287,7 @@ Tradition is just something that comes along afterward.”
 # 审校：全局：弯撇号／弯引号
 > 「ずいぶん昔の人の言葉だわね。
 >  戦争で国は滅びてなくなって
-“It’s a saying from a long time ago. It means that even if a nation is destroyed and lost in war,
+“It’s something someone said a long time ago. It means that even if war wipes a nation out,
 ---
 >  しまっても、山や河はそのまま残り
 >  つづける、っていう意味よね」
@@ -2305,20 +2305,20 @@ the mountains and rivers remain just as they are.”
 @45724 Simone · シモーヌ
 > 「戦争で国は滅びてなくなって
 >  しまっても、山や河はそのまま
-“Even if a nation is destroyed and lost in war, the mountains and rivers
+“Even if war wipes a nation out, the mountains and rivers
 ---
 >  残りつづける。だったかしらね」
-remain as they are. Something like that, I think.”
+still remain. Something like that, I think.”
 
 @45725 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「戦乱によって国は滅び、なくなって
 >  しまっても、山や河はもとのままに
-“Even if a nation is destroyed and lost to war, the mountains and rivers
+“Even if war destroys a nation and wipes it off the map, the mountains and rivers
 ---
 >  ありつづける。そういう意味の
 >  言葉だ」
-remain as they always were. That’s what the saying means.”
+stay just as they were. That’s what the saying means.”
 
 @45726 Koji · 甲児
 > 「へぇ、よく知ってるじゃないか」
@@ -2339,12 +2339,12 @@ remain as they always were. That’s what the saying means.”
 @45730 Roux · ルー
 > 「……あんたが知ってるなんて、びっくり
 >  しちゃったわよ」
-“...I was surprised you knew that.”
+“...Never thought you’d know something like that.”
 
 @45731 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
 > 「意外すぎて、声もでなかったわ」
-“It was so unexpected I couldn’t even speak.”
+“I was so surprised I was speechless.”
 
 @45732 Brad · ブラッド（按段落 3DD3）
 # 审校：Brad 对师父的称呼应为小写 master，而非大写 Master（大写是头衔，此处是“我的师父”）。
@@ -2356,11 +2356,11 @@ remain as they always were. That’s what the saying means.”
 # 审校：全局：弯撇号／弯引号
 > 「戦乱のために国は滅びて、もとの
 >  姿はなくなっても、山河だけは
-“Even if a nation is destroyed by war and its former shape is gone, the mountains and rivers alone
+“Even if war destroys a nation and its old form is lost, the mountains and rivers alone
 ---
 >  もとのまま存在する。
 >  そういう意味の言葉よ」
-remain as they were. That’s what the saying means.”
+remain as they were. That is what the saying means.”
 
 @45734 Koji · 甲児
 > 「ま、今回はあやうく、山や河どころ
@@ -2381,7 +2381,7 @@ itself. Hahahaha!”
 @45737 Treize · トレーズ
 > 「ネオ・ホンコンではご苦労だった、
 >  {HeroMech}の諸君」
-“You did well in Neo Hong Kong, everyone from the {HeroMech}.”
+“My thanks for your efforts in Neo Hong Kong, members of the {HeroMech}.”
 
 @45738 Bright · ブライト
 > 「しかし、このあたりもずいぶんと、
@@ -2395,11 +2395,11 @@ all right?”
 # 审校：“资源还是留下来的”不顺
 > 「むろん、大丈夫とはいえない。だが、
 >  戦後の地球の復興を
-“Of course, I can’t say we’re fine. But we still have enough people and resources
+“Naturally, I can’t say it is. But we still have enough people and resources
 ---
 >  先導していくことができる程度には
 >  人も資源も残っているよ」
-to lead Earth’s postwar reconstruction.”
+to lead Earth’s postwar recovery.”
 
 @45740 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -2430,7 +2430,7 @@ an army. The space forces are much the same.
 ---
 >  ものだ。月はいまだ、かろうじて
 >  確保してはいるがね」
-We still barely hold the Moon, though.”
+We are still clinging to the Moon, at least.”
 
 @45742 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -2443,7 +2443,7 @@ We still barely hold the Moon, though.”
 “Yeah. But we should be glad even this much survived. We
 ---
 >  生き残る見こみすら、なかったのだ」
-had no prospect of surviving at all.”
+didn’t even think we’d make it out alive.”
 
 @45744 Treize · トレーズ
 # 审校：全局：弯撇号／弯引号
@@ -2466,11 +2466,11 @@ time to regroup, we’ll have no hope of victory.”
 @45746 Treize · トレーズ
 > 「アクシズのハマーン・カーンからの
 >  情報では、宇宙でも帝国軍は
-“According to information from Haman Karn of Axis, the Imperial forces in
+“According to Haman Karn of Axis, the Imperial forces in
 ---
 >  戦闘を停止している。間違い
 >  なく、彼らは時間を欲している
-space have also halted combat. They definitely want time.
+space have also halted combat. They are clearly buying time.
 ---
 >  我々にとっては、文字通り、
 >  一刻が千金に値する」
@@ -2590,7 +2590,7 @@ became the Dark Gundam. But its essence never changed. It simply
 recognized humanity as the greatest polluter of Earth and tried to
 ---
 >  したのだ。あの男は、それを利用した」
-eliminate it. That man exploited that.”
+eliminate it. And that man took advantage of it.”
 
 @45762 Kamille · カミーユ
 > 「はい」
@@ -2599,10 +2599,10 @@ eliminate it. That man exploited that.”
 @45763 Quattro · クワトロ
 > 「ある意味では、それは地球のことを
 >  考えた時、もっとも当たり前の
-“In a sense, when you think about Earth, that was the most natural
+“In a sense, if you’re thinking of Earth, it was the most obvious
 ---
 >  ことだった」
-thing of all.”
+conclusion there is.”
 
 @45764 Kamille · カミーユ
 # 审校：末句长而拗口
@@ -2669,14 +2669,14 @@ pull back? I hate to admit it, but if the fighting had gone on like that, we’d
 # 审校：全局：弯撇号／弯引号
 > 「そう考えるのがまともだな。あのあと、
 >  敵軍には、かなりの混乱が
-“That’s the reasonable way to think about it. After that, it seems considerable
+“That is the sensible conclusion. Since then, the enemy appears to have fallen into considerable
 ---
 >  生じたように思える。どうやら
 >  地上の連中があれをやったのだと
-confusion broke out in the enemy forces. It appears we have to admit
+disarray. It seems I must admit
 ---
 >  いうことは、認めざるを得ないようだ」
-that the people on the surface were the ones who did it.”
+that the people on the surface pulled it off.”
 
 @45773 Yazan · ヤザン
 > 「ふん、地上からもかなりの数の
@@ -2706,7 +2706,7 @@ story. It’s probably true.”
 “You’ve got to be kidding! The Earth Sphere is our world. Like hell
 ---
 >  いつかれてたまるかよ」
-I’ll let a bunch of aliens run wild in it.”
+I’ll let a bunch of aliens settle in here.”
 
 @45776 Yazan · ヤザン
 # 审校：全局：弯撇号／弯引号
@@ -2724,7 +2724,7 @@ You coming too, Jerid?”
 @45777 Scirocco · シロッコ
 # 审校：全局：弯撇号／弯引号
 > 「まてヤザン。いまは動くな」
-“Wait, Yazan. Don’t move now.”
+“Wait, Yazan. Stay put for now.”
 
 @45778 Yazan · ヤザン
 > 「どういうことだ?」
@@ -2734,11 +2734,11 @@ You coming too, Jerid?”
 # 审校：全局：弯撇号／弯引号
 > 「我々の動くべき時ではないという
 >  ことだ。ここは、このバルジとリーブラ
-“It means this isn’t the time for us to make a move. Our first priority is to
+“It means now is not our time to move. Our first priority is to
 ---
 >  それにモビルドールの態勢を
 >  整え直すのが先決だ。先はまだ
-regroup here at this Barge and Libra, along with the Mobile Dolls. There’s still
+get Barge, Libra and the Mobile Dolls back in order. There’s still
 ---
 >  長い。せいぜい休んでおけ」
 a long road ahead. Rest while you can.”
@@ -2751,7 +2751,7 @@ a long road ahead. Rest while you can.”
 ---
 >  あの連中はよくやってくれたよ。
 >  このまま帝国軍を排除できれば
-Those people did well. If we can eliminate the Imperial forces just like this,
+They did fine work. If the Imperial forces can be driven out like this,
 ---
 >  問題はずいぶんと簡単になる。
 >  あの異星人どもが、そう容易に
@@ -2759,11 +2759,11 @@ things will become far simpler. Though I doubt those aliens will be
 ---
 >  叩けるとは思わんが……。
 >  {HeroMech}……せいぜい期待
-so easily crushed... {HeroMech}... I suppose I’ll let myself
+so easily crushed... {HeroMech}... I shall
 ---
 >  させてもらうとしよう。シロッコは……
 >  あの男はまだ動くまいな)
-hope a little. Scirocco... that man won’t make a move yet, will he?)
+look forward to seeing what you can do. Scirocco... that man won’t make a move yet, will he?)
 
 @45781 Glemy · グレミー
 > 「失礼いたします、ハマーン様。
@@ -2799,14 +2799,14 @@ hope a little. Scirocco... that man won’t make a move yet, will he?)
 # 审校：全局：弯撇号／弯引号
 > 「兵たちの疲れも、そのお言葉を
 >  聞けば、いやされましょう
-“Those words alone will heal the soldiers’ fatigue.
+“Your words alone will banish the soldiers’ weariness.
 ---
 >  我ら一同、再びハマーン様の
 >  おそばにて働けること、この上なき
-It is the greatest joy for all of us to be able to serve at your side
+To serve at your side once more is the greatest joy
 ---
 >  喜びにございます」
-once again, Lady Haman.”
+any of us could ask for, Lady Haman.”
 
 @45788 Haman · ハマーン
 # 审校：英文生硬；“尽情出力”不当
@@ -2816,7 +2816,7 @@ once again, Lady Haman.”
 ---
 >  することとなろう。お前たちにも存分
 >  に働いてもらう。期待しているぞ」
-the Galactic Empire’s forces. I expect you both to give it your all. I’m counting on you.”
+the Galactic Empire’s forces. You will both have ample chance to prove yourselves. I expect great things.”
 
 @45789 Mashymre · マシュマー
 # 审校：英文生硬
@@ -2828,7 +2828,7 @@ the Galactic Empire’s forces. I expect you both to give it your all. I’m cou
 # 审校：全局：弯撇号／弯引号
 > 「よくぞ申した。もどってよく休め。
 >  作戦は、おって伝える」
-“Well said. Go back and rest well. I’ll inform you of the operation later.”
+“Well said. Now go and rest. You will be briefed on the operation in due course.”
 
 @45791 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -2855,10 +2855,10 @@ the Galactic Empire’s forces. I expect you both to give it your all. I’m cou
 # 审校：全局：弯撇号／弯引号
 > 「ああ。月からの情報では、
 >  アクシズから来た別の戦艦と
-“Yeah. According to the information from the Moon, it seems she’s joined up
+“Yeah. Reports from the Moon say she’s joined up
 ---
 >  合流したようだ」
-with another warship that came from Axis.”
+with another warship from Axis.”
 
 @45796 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -2874,7 +2874,7 @@ with another warship that came from Axis.”
 # 审校：全局：弯撇号／弯引号
 > 「ない、とはいいきれないな。ただ、今は
 >  それはないだろう」
-“I can’t say for sure it won’t happen. But right now, it probably won’t.”
+“I wouldn’t rule it out. But not right now, I think.”
 
 @45799 Kayra · ケーラ
 > 「どうして、そう思うんだい?」
@@ -2884,10 +2884,10 @@ with another warship that came from Axis.”
 # 审校：全局：弯撇号／弯引号
 > 「あのハマーンが、異星人の軍を
 >  放っておいて僕らとやる気になるとは
-“I can’t imagine that Haman would leave the alien army alone and pick a fight
+“I can’t see Haman ignoring the alien army to pick a fight
 ---
 >  思えない。そういうことです」
-with us. That’s what I mean.”
+with us. That’s all.”
 
 @45801 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -2901,11 +2901,11 @@ with us. That’s what I mean.”
 
 @45803 Alan · アラン
 > 「戦闘光が観測されたようだ」
-“It seems combat light was observed.”
+“We’ve observed combat flashes.”
 
 @45804 Eiji · エイジ
 > 「戦闘光?」
-“Combat light?”
+“Combat flashes?”
 
 @45805 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -2922,11 +2922,11 @@ with us. That’s what I mean.”
 # 审校：全局：弯撇号／弯引号
 > 「反乱兵が出ている……そういうこと
 >  か」
-“Rebel troops have appeared... So that’s what it is.”
+“So they’ve got rebels on their hands...”
 
 @45808 Reika · レイカ
 > 「小型輸送艇1機、接近中」
-“One small transport craft, approaching.”
+“One small transport approaching.”
 
 @45809 Bunny · バニー
 # 审校：全局：弯撇号／弯引号
@@ -2982,10 +2982,10 @@ thrown into the Moon’s defense, but unfortunately only one survived.”
 @45818 Amuro · アムロ
 > 「いや、補充のMSを見に来たんだよ
 >  チェーン、さっき届いた新型って
-“No, I came to see the replacement MS, Chan. Is that the new model that
+“No, I came to see the replacement MS. Chan, is that the new model that
 ---
 >  あれかい?」
-arrived just now?”
+just arrived?”
 
 @45819 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -2997,31 +2997,31 @@ arrived just now?”
 # 审校：全局：弯撇号／弯引号
 > 「量産型のνガンダム!? すごい、
 >  そんなものが完成していたんですか!?」
-“A mass-produced Nu Gundam?! Amazing, they’d already completed something like that?!”
+“A mass-produced Nu Gundam?! Wow, they actually finished one?!”
 
 @45821 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「トレーズは月の防衛戦に投入
 >  されたといっていたな。オクトバーさんも
-“Treize said it was thrown into the Moon’s defense battle. It seems October
+“Treize said it was thrown into the Moon’s defense battle. Sounds like October
 ---
 >  よくやってくれているようだね」
-has been doing good work too.”
+has been working hard too.”
 
 @45822 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
 > 「ええ、助かりますね。急がせたせいか、
 >  オーバーホール中の機体を
-“Yes, that’s a help. Though it seems that because we rushed them, they
+“Yes, it’s a big help. Though maybe because we rushed them, they
 ---
 >  持って来ちゃったらしいですけど」
-brought over a unit that was still undergoing overhaul.”
+apparently sent one that was in the middle of an overhaul.”
 
 @45823 Astonaige · アストナージ
 # 审校：人名按词表统一
 > 「ああ、ちょうどよかった。いまチャムに
 >  呼びに行かせるところだったんですよ」
-“Ah, perfect timing. I was just about to have Chum go call for you.”
+“Ah, perfect timing. I was just about to send Chum to get you.”
 
 @45824 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -3040,10 +3040,10 @@ or an Incom type. On the Moon they apparently used
 ---
 >  インコムを使っていたらしいんですが、
 >  こっちで再調整するので、気を
-the Incom, but since we’re readjusting it here, they took the trouble to
+the Incom, but since we’re readjusting it here, they were thoughtful enough to
 ---
 >  きかせてファンネルも送ってくれたんです」
-send Funnels as well.”
+send the Funnels too.”
 
 @45826 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -3067,7 +3067,7 @@ So I’d like you to decide which one you want.”
 # 审校：全局：弯撇号／弯引号
 > 「なにいってるんだよ。汎用性の高い
 >  インコムに決まりだろう」
-“What are you saying? It’s got to be the highly versatile Incom.”
+“What are you talking about? The Incom’s more versatile, obviously.”
 
 @45830 Kayra · ケーラ
 > 「賛成だね」
@@ -3141,7 +3141,7 @@ I’d say the Incom.”
 @45842 Kamille · カミーユ
 > 「そうだな……フォウのこともあるし、
 >  ファンネル装備の方が……」
-“Yeah... Considering Four as well, the Funnel-equipped type would be...”
+“Yeah... With Four in mind too, the Funnel-equipped type would be...”
 
 @45843 Fa · ファ
 # 审校：全局：弯撇号／弯引号
@@ -3157,7 +3157,7 @@ I’d say the Incom.”
 # 审校：全局：弯撇号／弯引号
 > 「どうしてって……みんなが使える方が、
 >  いいに決まってるじゃない」
-“Why not...? It’s obvious it’s better if everyone can use it.”
+“Why...? Because it’s obviously better if everyone can use it!”
 
 @45846 Amuro · アムロ
 > 「やれやれ、これじゃラチがあかないな」
@@ -3251,11 +3251,11 @@ nobody complains. Everyone clear?”
 # 审校：全局：弯撇号／弯引号
 > 「そうですね……
 >  戦力の強化を第1に考えるなら
-“Let me think... If we’re putting firepower first,
+“Let me think... If boosting our strength comes first,
 ---
 >  やっぱりファンネルの方がいいんじゃない
 >  ですか?」
-Funnels would be better after all, wouldn’t they?”
+I guess Funnels would be better, right?”
 
 @45864 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -3265,7 +3265,7 @@ Funnels would be better after all, wouldn’t they?”
 ---
 >  インコム装備型の方がいいと
 >  思いますよ」
-I think the Incom-equipped type is better.”
+I’d go with the Incom-equipped type.”
 
 @45865 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -3283,7 +3283,7 @@ I think the Incom-equipped type is better.”
 # 审校：全局：弯撇号／弯引号
 > 「チッ、面倒なことさせるぜ。まぁいい。
 >  戦力の強化を考えるんなら
-“Tch, making me do the annoying stuff. Fine. If we’re thinking about boosting firepower,
+“Tch, sticking me with this. Fine. If we’re thinking about boosting firepower,
 ---
 >  ファンネルにしとくべきなんじゃないのか?」
 we should probably go with Funnels, shouldn’t we?”
@@ -3291,7 +3291,7 @@ we should probably go with Funnels, shouldn’t we?”
 @45868 Brad · ブラッド（按段落 3DD3）
 > 「チッ、面倒なことさせるぜ。まぁいい。
 >  インコムにしといた方が無難だろうな」
-“Tch, making me do the annoying stuff. Fine. Going with Incom is probably the safer bet.”
+“Tch, sticking me with this. Fine. Going with Incom is probably the safer bet.”
 
 @45869 Manami · マナミ（按段落 3DD4）
 # 审校：中英都拗口
@@ -3311,7 +3311,7 @@ If you’re thinking about firepower, that is.”
 ---
 >  思いますわ。人を選ばないのは、
 >  いざという時に重要ですもの」
-Not being picky about its pilot matters when it counts.”
+A machine anyone can pilot matters when it counts.”
 
 @45871 Amuro · アムロ
 > 「悪いね、{HeroNick}。アストナージ、

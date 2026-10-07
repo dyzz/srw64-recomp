@@ -998,7 +998,7 @@ My brother was never that kind of man.”
 # 审校：全局：弯撇号／弯引号
 > 「兄だって!? ハハハハハッ、俺は
 >  ひとりだ。弟をもった覚えはない」
-“Brother?! Hahahahaha, I have no one. I don’t recall ever having a little brother.”
+“Brother?! Hahahahaha, I have no family. I don’t recall ever having a little brother.”
 
 @27910 Takeru · タケル
 # 审校：原文为「マーグッ!!」，初稿 Maaarg 拖长音过度，改为 Marg!! 更自然。

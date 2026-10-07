@@ -9,10 +9,10 @@
 # 审校：全局：弯撇号／弯引号
 > 「うむ。今回こそは、何としても
 >  マーズの奴めを血祭りにあげるのだ
-“Mm. This time, no matter what, we’ll make a bloody example of that Mars.
+“Mm. This time we’ll see that Mars dead, whatever it takes.
 ---
 >  ロゼよ、わかっておろうな」
-Rose, you understand what that means.”
+Rose, I trust you understand.”
 
 @31633 Rose · ロゼ
 > 「はっ! おまかせを!」
@@ -48,7 +48,7 @@ Rose, you understand what that means.”
 # 审校：全局：弯撇号／弯引号
 > 「遅くなった!
 >  どうやら、間に合ったようだな!」
-“I’m late! Seems I made it in time, though!”
+“Sorry for the wait! Looks like I made it in time, though!”
 
 @31640 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -101,7 +101,7 @@ My brother was never that kind of man!”
 # 审校：全局：弯撇号／弯引号
 > 「兄だって!? ハハハハハッ、俺は
 >  ひとりだ。弟をもった覚えはない」
-“Brother?! Hahahahaha, I have no one. I don’t recall ever having a little brother.”
+“Brother?! Hahahahaha, I have no family. I don’t recall ever having a little brother.”
 
 @31648 Takeru · タケル
 > 「マーグッ!!」
@@ -124,7 +124,7 @@ My brother was never that kind of man!”
 @31652 Marg · マーグ
 > 「そうか……ならば、
 >  奴らを全滅させるだけのことだ」
-“I see... Then all I have to do is annihilate them all.”
+“I see... Then I’ll simply annihilate them.”
 
 @31653 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
@@ -150,7 +150,7 @@ by order of Emperor Zuul, I, Marg, will eliminate you!”
 # 审校：全局：弯撇号／弯引号
 > 「兄だって!? ハハハハハッ、俺は
 >  ひとりだ。弟をもった覚えはない」
-“Brother?! Hahahahaha, I am alone. I don’t recall ever having a little brother.”
+“Brother?! Hahahahaha, I have no family. I don’t recall ever having a little brother.”
 
 @31657 Takeru · タケル
 > 「マーグッ!!」
@@ -177,7 +177,7 @@ by order of Emperor Zuul, I, Marg, will eliminate you!”
 # 审校：「貴様のような奴」在反派口吻中应更轻蔑，改为“A wretch like you”以贴合玛古被洗脑后冷酷的语气。
 > 「貴様のような奴はズール皇帝の
 >  名のもとに処分してくれる!」
-“A wretch like you will be disposed of in the name of Emperor Zuul!”
+“In the name of Emperor Zuul, I’ll dispose of scum like you!”
 
 @31663 Takeru · タケル
 > 「マーグ、やめろぉぉーっ!」
@@ -239,7 +239,7 @@ A face just like mine. And he calls me brother...”
 @31673 Rose · ロゼ
 > (いけない……洗脳が弱まって
 >  いる……?)
-(This is bad... The brainwashing is weakening...?)
+(No... is the brainwashing wearing off...?)
 
 @31674 Rose · ロゼ
 # 审校：隊長统一
@@ -269,7 +269,7 @@ Defeat Mars.”
 
 @31679 Emperor Zuul · ズール皇帝
 > 「ワール、その後の経過はどうだ」
-“Wahl, what is the status since then?”
+“Wahl, how do matters stand now?”
 
 @31680 Wahl · ワール
 > 「はっ、先遣艦隊は苦戦している
@@ -282,7 +282,7 @@ alive and well.”
 @31681 Emperor Zuul · ズール皇帝
 > 「たかが辺境の一惑星ごときに、
 >  これほど手間取るとはな。ガンダルめ
-“To think a single backwater planet would give us so much trouble. Gandal,
+“To think a single backwater planet would give us so much trouble. Gandal...
 ---
 >  あるいはわしが買いかぶっておったか」
 perhaps I overestimated him.”
@@ -290,11 +290,11 @@ perhaps I overestimated him.”
 @31682 Wahl · ワール
 > 「地球にはマーズのみならず
 >  フリード星のデュークフリードも
-“On Earth, not only Mars but also Duke Fleed of Planet Fleed is said to
+“It is said that Earth holds not only Mars, but Duke Fleed of Planet Fleed
 ---
 >  存在するとか。ガンダル司令には
 >  荷が重すぎたのやも知れませぬ
-be present. The burden may have been too great for Commander Gandal.
+as well. The task may have been too much for Commander Gandal.
 ---
 >  いかがいたしましょうか、陛下」
 What shall we do, Your Majesty?”
@@ -324,12 +324,12 @@ Wahl, prepare the fleet. I shall head for this Earth myself.”
 ---
 >  宇宙は今、戦乱の
 >  まっただ中だといいますのに……」
-They say space is now in the thick of war...”
+Space is a battlefield right now, they say...”
 
 @31687 Relena · リリーナ
 > 「パーガン、わたくしの決意は
 >  わかっているはずですよ。兄ミリアルドを
-“Pagan, you should know my resolve. I am the only one who can stop my brother
+“Pagan, surely you understand my resolve. I am the only one who can stop my brother
 ---
 >  とめられるのは、わたくししかいません。
 >  いいえ、たとえ説得できなくても……
@@ -346,7 +346,7 @@ and watch this war go on.”
 @31689 Relena · リリーナ
 > 「ジュリア様、行ってまいります。
 >  地上のことは
-“Lady Julia, I will be going. Please take care of matters
+“Lady Julia, I must go now. Please look after things
 ---
 >  どうかよろしくお願いします」
 on the ground.”
@@ -355,11 +355,11 @@ on the ground.”
 # 审校：聞いておいて 是听我一句，不是提问；下句是叮嘱
 > 「わかりました。あなたのその決意は、
 >  尊いと思います
-“Understood. I think your resolve is noble.
+“Very well. Your resolve is a noble one.
 ---
 >  行ってらっしゃい、リリーナさん。
 >  だけど、これだけは聞いておいて」
-Take care, Relena. But hear me out on just one thing.”
+Go safely, Relena. But please remember just one thing.”
 
 @31691 Relena · リリーナ
 > 「何でしょう?」
@@ -368,7 +368,7 @@ Take care, Relena. But hear me out on just one thing.”
 @31692 Julia · ジュリア
 > 「決して死んではだめ。あなたは、
 >  これからの地球に必要な人なのよ
-“You must never die. You are someone the Earth will need from now on.
+“You must not die, no matter what. The Earth will need you in the days ahead.
 ---
 >  必ず無事で帰っていらして……」
 Be sure to come back safely...”
@@ -385,7 +385,7 @@ Please do not worry. Well then... I am off.”
 @31694 Treize · トレーズ
 > 「歴史はやはり我々人類に過
 >  酷な方向へと流れているようだね」
-“It seems history is indeed flowing in a harsh direction for us humans.”
+“So history is flowing in a harsh direction for humanity after all.”
 
 @31695 Lady · レディ
 # 审校：全局：弯撇号／弯引号
@@ -409,14 +409,14 @@ As the representative of OZ and the Foundation.”
 @31696 Treize · トレーズ
 > 「そうだろうね。事態がここまで
 >  推移すれば、指導者のいない
-“I thought as much. If matters have progressed this far, the Romefeller Foundation
+“I thought as much. With things having come this far, a leaderless Romefeller Foundation
 ---
 >  ロームフェラ財団など烏合の衆に
 >  すぎない。協議制では、めまぐるしく
-without a leader is nothing but a rabble. A council system cannot respond to
+is nothing but a rabble. A council cannot hope to keep up with
 ---
 >  移り行く事態に対応できまい」
-the rapidly shifting situation.”
+such a rapidly shifting situation.”
 
 @31697 Lady · レディ
 > 「では、やはりお受けになるのですね?」
@@ -451,11 +451,11 @@ This will be a battle for the future of Earth itself, for our survival, for huma
 ---
 >  戦いとなる。銀河帝国との
 >  戦いに敗れれば、我々
-If we lose to the Galactic Empire, we Earth humans will be annihilated.
+If we lose to the Galactic Empire, we, the people of Earth, will perish.
 ---
 >  地球人類は、滅亡するのだ。
 >  今ここにおいてこそOZを再編し
-It is now, here, that we must reorganize OZ, and I ask you to entrust
+Now, here, is the moment to rebuild OZ. I ask you to entrust
 ---
 >  諸君らの意志と行動を
 >  このトレーズに預けてもらいたい……」
@@ -515,7 +515,7 @@ a prototype called the Soldifar?
 ---
 >  ASSAULT-DRAGOONっていい
 >  ましたっけ。あれの後継機ですよ
-It was called the ASSAULT-DRAGOON. This is its successor.
+The ASSAULT-DRAGOON, I think it was called? This is its successor.
 ---
 >  バランスも性能も申し分ない
 >  機体です
@@ -523,7 +523,7 @@ Its balance and performance are flawless.
 ---
 >  D.P.S.って操縦システムは
 >  少し恐いところもありますけど」
-Though the D.P.S. control system has some frightening aspects.”
+Though the D.P.S. control system is a little scary.”
 
 @31707 Henken · ヘンケン
 > 「それがなぜ我々の手に入ったんだ?」
@@ -533,24 +533,24 @@ Though the D.P.S. control system has some frightening aspects.”
 # 审校：全局：弯撇号／弯引号
 > 「月面制圧時にOZが入手した
 >  そうです。ただ適応できるパイロットが
-“I hear OZ acquired it during the lunar suppression. But they couldn’t find
+“OZ got hold of it when they took the moon. But they couldn’t find
 ---
 >  見つからなくて、未完成機として
 >  放置されていたところを、アナハイムが
-a pilot who could handle it, so it was left as an incomplete unit, and Anaheim
+a pilot who could handle it, so it was left sitting unfinished, and that’s when Anaheim
 ---
 >  買い取ったらしいですよ。
 >  そうですよね、オクトバーさん」
-apparently bought it up. Isn’t that right, October?”
+apparently bought it. Isn’t that right, October?”
 
 @31709 October · オクトバー
 > 「ええ。我々は{HeroMech}の
 >  戦闘データをもらっています
-“Yes. We have received the combat data of {HeroMech}.
+“Yes. We’ve received combat data from {HeroMech}.
 ---
 >  ソルデファーのパイロットなら、
 >  アシュクリーフも使えるはずですからね
-If one can pilot the Soldifar, one should be able to use the Ashcleef as well.
+Whoever can pilot the Soldifar should be able to handle the Ashcleef too.
 ---
 >  もっとも上の判断では、新しい
 >  技術のテストデータをほしいと
@@ -565,7 +565,7 @@ test data for the new technology.”
 
 @31711 Henken · ヘンケン
 > 「それだけか。状況はかなり厳しいな」
-“Is that all? The situation is pretty grim.”
+“That’s it? Things are looking pretty grim.”
 
 @31712 Chan · チェーン
 > 「ZZガンダムは問題ありませんね」
@@ -573,13 +573,13 @@ test data for the new technology.”
 
 @31713 Henken · ヘンケン
 > 「それだけか。状況はかなり厳しいな」
-“Is that all? The situation is pretty grim.”
+“That’s it? Things are looking pretty grim.”
 
 @31714 Chan · チェーン
 # 审校：Chan 对 October 说话应保持礼貌，原文为敬体，译文过于随意。
 > 「オクトバーさん、νガンダムの調整は
 >  どうなっているんです?」
-“October, how is the adjustment on the Nu Gundam coming along?”
+“October, how’s the tuning on the Nu Gundam coming along?”
 
 @31715 October · オクトバー
 # 审校：全局：弯撇号／弯引号
@@ -588,7 +588,7 @@ test data for the new technology.”
 “It’ll still take time. Some of the armaments haven’t even been mounted yet.
 ---
 >  実戦に出すのは無理ですね」
-There’s no way it can go into combat.”
+It’s nowhere near ready for combat.”
 
 @31716 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -599,7 +599,7 @@ There’s no way it can go into combat.”
 @31717 October · オクトバー
 # 审校：英文更自然
 > 「無理なものは無理ですよ」
-“What can’t be done can’t be done.”
+“It just can’t be done.”
 
 @31718 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -625,7 +625,7 @@ Please send over the rest of the data.”
 @31721 October · オクトバー
 # 审校：全局：弯撇号／弯引号
 > 「どうなっても知りませんよ」
-“Don’t blame me for whatever happens.”
+“Don’t blame me if anything happens.”
 
 @31722 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -669,16 +669,16 @@ send it to La Vie en Rose. In exchange, send me the combat data as it comes in.�
 # 审校：全局：弯撇号／弯引号
 > 「ん? なんだ、
 >  見たことのない機体があるな
-“Hm? What’s this, there’s a machine I’ve never seen before.
+“Hm? What’s that? A machine I’ve never seen before.
 ---
 >  私の機体に似ているようだが……?」
-It looks like mine, but...?”
+Looks similar to mine...?”
 
 @31729 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「どれ…………おいおい、
 >  ありゃ“TYPE33”じゃねぇのか?」
-“Which one...? Hey, hey, isn’t that a ‘TYPE33’?”
+“Let’s see... Whoa, whoa, isn’t that a ‘TYPE33’?”
 
 @31730 Selain · セレイン（按段落 3DD2）
 > 「……TYPE33? おい言え、
@@ -690,10 +690,10 @@ It looks like mine, but...?”
 # 检查提示：未用必用译名：ヴァルキュリア・シリーズ→Valkyrie Series
 > 「まだ帝国がいた頃に、
 >  月のZ&R社で開発していた
-“Back when the Empire was still around, the lunar Z&R company was developing it,
+“Back when the Empire was still around, Z&R on the moon was working on it.
 ---
 >  ヴァルキュリア・シリーズの新型だ」
-a new model in the Valkyrie Series.”
+A new model in the Valkyrie Series.”
 
 @31732 Selain · セレイン（按段落 3DD2）
 > 「新型のヴァルキュリア……」
@@ -703,7 +703,7 @@ a new model in the Valkyrie Series.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、お前のが3機だけ作られた
 >  試作型の“TYPE27”
-“Yeah, yours is the ‘TYPE27,’ a prototype of which only three were built.
+“Yeah, yours is the ‘TYPE27,’ a prototype; only three were ever built.
 ---
 >  俺のがその正式型の
 >  “TYPE28”
@@ -715,23 +715,23 @@ The ‘TYPE33’ is a heavy-armored machine based on
 ---
 >  ベースにした重装機だ。
 >  だが“TYPE29”以降は
-a redesign of the ‘TYPE28.’ But after the ‘TYPE29,’
+a redesign of the ‘TYPE28.’ But from the ‘TYPE29’ on,
 ---
 >  設計段階でOZのクーデターが
 >  起きちまったから
-OZ’s coup happened while they were still at the design stage,
+OZ pulled its coup while they were still on the drawing board,
 ---
 >  作られてないはずなんだが」
-so it shouldn’t ever have been built.”
+so none of them should exist.”
 
 @31734 Alan · アラン
 # 审校：破折号
 > 「その通り。あれは我々で製作した
 >  いわば“TYPE33改”とでも
-“Exactly. That one is what we built ourselves. You could call it a ‘TYPE33 Kai’,
+“Exactly. That’s one we built ourselves. You might call it a ‘TYPE33 Kai,’
 ---
 >  いうべきものだ」
-so to speak.”
+if you like.”
 
 @31735 Selain · セレイン（按段落 3DD2）
 > 「アラン、どういうことだ」
@@ -741,11 +741,11 @@ so to speak.”
 # 审校：全局：弯撇号／弯引号
 > 「解放戦線もカラバも、組織と
 >  しての形は無くしてしまったが
-“Both the Liberation Front and Karaba have lost their form as organizations,
+“The Liberation Front and Karaba may no longer exist as organizations,
 ---
 >  それぞれの技術者集団は逆に
 >  合流することでより強化されている
-but their respective corps of engineers have only grown stronger by merging.
+but their engineering teams have actually grown stronger by joining forces.
 ---
 >  万丈とロス・イゴールの
 >  尽力のおかげでな
@@ -753,13 +753,13 @@ That’s thanks to the efforts of Banjo and Ross Igor.
 ---
 >  ゴッドとライジングも
 >  そこから持ってきたのだよ」
-That’s also where we got the God and the Rising from.”
+That’s also where we got the God and the Rising.”
 
 @31737 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「それでは帝国の機体が存在する
 >  理由になっていない」
-“Then that doesn’t explain why an Imperial machine exists.”
+“That still doesn’t explain why there’s an Imperial machine.”
 
 @31738 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -775,7 +775,7 @@ OZ came to us, design data and all.”
 # 审校：全局：弯撇号／弯引号
 > 「なるほどな。それで合点がいった。
 >  で、あれのパイロットはどこだ?」
-“I see. That clears it up. So, where’s the pilot for that thing?”
+“I see. That explains it. So, where’s the pilot for that thing?”
 
 @31740 Alan · アラン
 > 「パイロットは君だ、{HeroName}」
@@ -790,13 +790,13 @@ OZ came to us, design data and all.”
 ---
 >  あれには私の癖が記録されている。
 >  いまさら他の機体になど移れない」
-It has my habits recorded in it. I can’t switch to another machine now.”
+My habits are recorded in it. I can’t switch to another machine now.”
 
 @31742 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
 > 「だからこそ、あれには
 >  お前が乗ってくれないと困るんだよ」
-“That’s exactly why we’re in trouble if you don’t pilot it.”
+“That’s exactly why we need you in that thing.”
 
 @31743 Selain · セレイン（按段落 3DD2）
 > 「アストナージ?」
@@ -824,10 +824,10 @@ and no one but you can handle it.”
 # 审校：全局：弯撇号／弯引号
 > 「ははっ、まぁいいじゃないか。
 >  それより、せっかく持ってきたんだ
-“Haha, well, what does it matter? More importantly, we went to the trouble of bringing it,
+“Haha, now, now, no harm done. Anyway, we went to the trouble of bringing it here,
 ---
 >  乗ってくれるだろうな?」
-so you’ll pilot it, won’t you?”
+so you’ll fly it, won’t you?”
 
 @31747 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -844,7 +844,7 @@ so you’ll pilot it, won’t you?”
 # 审校：全局：弯撇号／弯引号
 > 「お前は黙ってろ! ……といいたい
 >  ところだが、それが常道か」
-“You keep quiet! ...Is what I’d like to say, but I suppose that’s the usual arrangement.”
+“Shut up, you! ...is what I’d like to say, but I suppose that’s standard practice.”
 
 @31750 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -934,17 +934,17 @@ What we developed from that data is that ‘TYPE33 Kai.’”
 # 审校：全局：弯撇号／弯引号
 > 「しかし、よくそんな余裕が
 >  あったものだな」
-“But I’m surprised you had that kind of leeway.”
+“I’m surprised you had the resources to spare.”
 
 @31760 Alan · アラン
 # 审校：全局：弯撇号／弯引号
 > 「解放戦線もカラバも、組織と
 >  しての形は無くしてしまったが
-“Both the Liberation Front and Karaba have lost their form as organizations,
+“The Liberation Front and Karaba may no longer exist as organizations,
 ---
 >  それぞれの技術者集団は逆に
 >  合流することでより強化されている
-but their respective corps of engineers have only grown stronger by merging.
+but their engineering teams have actually grown stronger by joining forces.
 ---
 >  万丈とロス・イゴールの
 >  尽力のおかげでな
@@ -952,13 +952,13 @@ Thanks to Banjo and Ross Igor’s efforts.
 ---
 >  ゴッドとライジングも
 >  そこから持ってきたのだよ」
-That’s also where we got the God and the Rising from.”
+That’s also where we got the God and the Rising.”
 
 @31761 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「なるほどな。それで合点がいった。
 >  で、あれのパイロットはどこだ?」
-“I see. That clears it up. So, where’s the pilot for that thing?”
+“I see. That explains it. So, where’s the pilot for that thing?”
 
 @31762 Alan · アラン
 > 「パイロットは君だ、{HeroName}」
@@ -973,7 +973,7 @@ That’s also where we got the God and the Rising from.”
 ---
 >  あれには私の癖が記録されている。
 >  いまさら他の機体になど移れない」
-It has my habits recorded in it. I can’t switch to another machine now.”
+My habits are recorded in it. I can’t switch to another machine now.”
 
 @31764 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -1007,10 +1007,10 @@ and no one but you can handle it.”
 # 审校：全局：弯撇号／弯引号
 > 「ははっ、まぁいいじゃないか。
 >  それより、せっかく持ってきたんだ
-“Haha, well, what does it matter? More importantly, we went to the trouble of bringing it,
+“Haha, now, now, no harm done. Anyway, we went to the trouble of bringing it here,
 ---
 >  乗ってくれるだろうな?」
-so you’ll pilot it, won’t you?”
+so you’ll fly it, won’t you?”
 
 @31769 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -1023,7 +1023,7 @@ so you’ll pilot it, won’t you?”
 # 审校：全局：弯撇号／弯引号
 > 「予備パーツにまわすさ。
 >  どうせ必要になる」
-“It’ll go to spare parts. We’ll need them anyway.”
+“We’ll strip it for spare parts. We’re going to need them anyway.”
 
 @31771 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号

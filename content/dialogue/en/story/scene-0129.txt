@@ -20,7 +20,7 @@
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「何にもないぜ。本当に、ここに
 >  デビルガンダムがいるのかよ」
-“There’s nothing here. Is the Dark Gundam really in a place like this?”
+“There’s nothing out here. Is the Dark Gundam really here?”
 
 @43027 Domon · ドモン
 > 「ああ……そのはずだ」
@@ -524,7 +524,7 @@ revive the Dark Gundam in full!”
 # 审校：全局：弯撇号／弯引号
 > 「そうよドモン! シュバルツは、シュバルツ
 >  はあなたのお兄さんだったのよ!」
-“That’s right, Domon! Schwarz... Schwarz was your older brother!”
+“That’s right, Domon! Schwarz... Schwarz was your brother all along!”
 
 @43111 Domon · ドモン
 > 「兄さん!? やっぱり
@@ -595,7 +595,7 @@ created for the purpose of restoring the Earth.”
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth’s natural regeneration. But! There were those who noticed
+all meant for the Earth’s natural regeneration. But! Some had their eyes on
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
@@ -603,11 +603,11 @@ its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-fled to Earth. However, the attack I took during my escape caused the program to
+fled to Earth. But damage from an attack during my escape threw its program
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-go mad, and it became that terrifying Dark Gundam.”
+into chaos, and it became that terrifying Dark Gundam.”
 
 @43119 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -617,7 +617,7 @@ go mad, and it became that terrifying Dark Gundam.”
 @43120 Schwarz · シュバルツ
 > 「でっちあげだ。だまされたのだ、カーンズに
 >  奴はオペレーション・メテオの6つめの
-“A fabrication. I was deceived by Quinze. He tried to use the Ultimate Gundam
+“A frame-up. I was deceived by Quinze. He meant to use the Ultimate Gundam
 ---
 >  ガンダムとして、アルティメットガンダムを
 >  使おうとしたのだ」
@@ -838,7 +838,7 @@ your own!!”
 @43153 Domon · ドモン
 > 「この期におよんで言い逃れか!?
 >  ウォンのことはどうなる!」
-“Still trying to talk your way out of it at this point?! What about Wong?!”
+“Still making excuses, even now?! What about Wong?!”
 
 @43154 Master · マスター
 > 「ワシは奴を利用しただけよ。すべては
@@ -853,7 +853,7 @@ your own!!”
 # 审校：勝負の二文字
 > 「クククッ、知りたいか。ならば、勝負
 >  の二文字をもって教えてくれよう!」
-“Heh heh heh, you want to know? Then let a match between us be my answer!”
+“Heh heh heh, you want to know? Then I shall answer you in battle!”
 
 @43157 Domon · ドモン
 > 「キョウジ……兄さん……」
@@ -887,7 +887,7 @@ your own!!”
 @43163 Domon · ドモン
 > 「なんだって!? どういうことだ? じゃあ
 >  いま死んだのは誰だというんだ?」
-“What?! What do you mean? Then who was it that just died?”
+“What?! What do you mean? Then who just died?”
 
 @43164 Schwarz · シュバルツ
 > 「……私はキョウジであってキョウジ
@@ -942,7 +942,7 @@ created for the purpose of restoring the Earth.”
 ---
 >  すべて地球の自然回復のための
 >  ものだった。だが! その驚異的な
-all meant for the Earth’s natural regeneration. But! There were those who noticed
+all meant for the Earth’s natural regeneration. But! Some had their eyes on
 ---
 >  力に目をつけた者がいた。私は
 >  アルティメットガンダムに乗りこみ
@@ -950,11 +950,11 @@ its incredible power. I boarded the Ultimate Gundam and
 ---
 >  地球へと逃れた。しかし脱出時
 >  に受けた攻撃がもとで、プログラムが
-fled to Earth. However, the attack I took during my escape caused the program to
+fled to Earth. But damage from an attack during my escape threw its program
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-go mad, and it became that terrifying Dark Gundam.”
+into chaos, and it became that terrifying Dark Gundam.”
 
 @43171 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
@@ -1108,7 +1108,7 @@ your own!!”
 @43191 Domon · ドモン
 > 「この期におよんで言い逃れか!?
 >  ウォンのことはどうなる!」
-“Still trying to talk your way out of it at this point?! What about Wong?!”
+“Still making excuses, even now?! What about Wong?!”
 
 @43192 Master · マスター
 > 「ワシは奴を利用しただけよ。すべては
@@ -1123,7 +1123,7 @@ your own!!”
 # 审校：勝負の二文字
 > 「クククッ、知りたいか。ならば、勝負
 >  の二文字をもって教えてくれよう!」
-“Heh heh heh, you want to know? Then let a match between us be my answer!”
+“Heh heh heh, you want to know? Then I shall answer you in battle!”
 
 @43195 Master · マスター
 > 「ドモンよ、貴様らは地球の
@@ -1631,7 +1631,7 @@ wanted to make this Earth a planet overflowing with green once more...”
 # 审校：全局：弯撇号／弯引号
 > 「もうよいというておるのに。
 >  いまさらワシが何を語ろうとも、ただの
-“I told you it’s all right. Whatever I say now would only be
+“I told you, leave it be. Whatever I say now would only be
 ---
 >  言い訳にしかならぬ」
 an excuse.”
