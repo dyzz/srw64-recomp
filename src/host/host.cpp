@@ -536,8 +536,10 @@ void crash_backtrace(int signal) {
     char number[4] = {char('0' + signal / 10 % 10), char('0' + signal % 10), '\n', 0};
     void* frames[64];
     const int count = backtrace(frames, 64);
-    // Straight into console.log as well: the pipe to it may not be read again.
-    for (const int fd : {2, srw64::console_log::crash_fd()}) {
+    // Past the pipes (console_log.hpp), which may not be read again: what they still hold
+    // first, then the stack to the original stderr and console.log.
+    srw64::console_log::flush_now();
+    for (const int fd : {srw64::console_log::original_stderr(), srw64::console_log::crash_fd()}) {
         if (fd < 0) continue;
         (void)!::write(fd, header, sizeof(header) - 1);
         (void)!::write(fd, number, 3);
