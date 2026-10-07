@@ -188,7 +188,7 @@ somewhere and assess the situation.”
 @44329 Hasan · ハサン
 > 「なんだね、騒々しい。おまけに
 >  大勢で、ぞろぞろと」
-“What is it? So noisy. And such a crowd, all trooping in.”
+“What’s all this racket? And the whole lot of you trooping in at once.”
 
 @44330 Takeru · タケル
 > 「すみません、先生」
@@ -246,7 +246,7 @@ controlled or not...”
 # 审校：全局：弯撇号／弯引号
 > 「いや、気にしないでくれ。これは僕の
 >  責任なんだ」
-“No, don’t worry about it. This is my responsibility.”
+“No, don’t blame yourself. The fault is mine.”
 
 @44339 Ryoma · リョウ
 > 「……本当に大丈夫なのか?
@@ -2513,11 +2513,11 @@ a power-up.”
 # 审校：全局：弯撇号／弯引号
 > 「なんだ、全然進んでいないじゃないか
 >  確か、{HeroMech}に
-“What, no progress at all? I’m fairly sure that before you joined the {HeroMech}
+“What, you haven’t gotten anywhere? If I remember right, before we joined the {HeroMech}
 ---
 >  合流する前にも同じようなことを
 >  いっていたぞ」
-you were saying the very same thing.”
+you were saying the exact same thing.”
 
 @44684 Remy · レミー
 # 审校：全局：弯撇号／弯引号
@@ -2555,7 +2555,7 @@ Spending some lovely time with them wouldn’t be bad either.”
 # 审校：全局：弯撇号／弯引号
 > 「ついてくるのはかまわんが、
 >  さびしい思いをするのはそっちだぞ」
-“I don’t mind you tagging along, but you’re the one who’ll end up feeling lonely.”
+“I don’t mind you tagging along, but you’re the one who’ll end up all alone.”
 
 @44688 Remy · レミー
 # 审校：英文改顺

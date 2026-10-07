@@ -707,7 +707,7 @@ adjust the seat either.”
 # 审校：全局：弯撇号／弯引号
 > 「どうだ、{HeroNick}?
 >  開発チームによれば、究極の
-“How is it, {HeroNick}? According to the development team, it’s the ultimate
+“How’s that, {HeroNick}? The development team says it’s the ultimate
 ---
 >  マン・マシン・インターフェイスだそうだ」
 man-machine interface.”
@@ -1805,7 +1805,7 @@ You have to be careful, don’t you?”
 # 审校：全局：弯撇号／弯引号
 > 「ナイーダ? ……これは……
 >  まさか、陽子爆弾!?」
-“Naida? ...This is... Don’t tell me, a proton bomb?!”
+“Naida? ...This is... It can’t be... a proton bomb?!”
 
 @43975 Naida · ナイーダ
 > 「…………」
@@ -1823,7 +1823,7 @@ You have to be careful, don’t you?”
 
 @43978 Koji · 甲児
 > 「いったい何があったんだよ、大介さん」
-“What in the world happened, Daisuke?”
+“What the heck happened, Daisuke?”
 
 @43979 Daisuke · 大介
 > 「ナイーダ、答えてくれ」
@@ -1891,7 +1891,7 @@ and ran. You traitor!”
 @43988 Daisuke · 大介
 # 审校：全局：弯撇号／弯引号
 > 「ナイーダ、それはあんまりだ!」
-“Naida, that’s too cruel!”
+“Naida, that’s not fair!”
 
 @43989 Naida · ナイーダ
 # 审校：长定语直译；“given to you”意思错
@@ -1969,15 +1969,15 @@ All of you, all of you die right here!!”
 @44002 Benkei · ベンケイ
 > 「でも……知らなかったぜ。
 >  俺たちが、戦っていたのが
-“But... I never knew. That the ones we were fighting
+“But... I had no idea. The ones we were fighting
 ---
 >  フリード星人だったなんて」
-were Fleed people.”
+were Fleed people...”
 
 @44003 Hayato · ハヤト
 > 「ああ……銀河帝国め……なんて
 >  恐ろしいことをしやがるんだ」
-“Yeah... The Galactic Empire... What a horrible thing to do.”
+“Yeah... Damn the Galactic Empire... What a sick thing to do.”
 
 @44004 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
@@ -2150,7 +2150,7 @@ full well. My brother is no traitor!”
 # 审校：全局：弯撇号／弯引号
 > 「待つんだ、マリアちゃん。あれは
 >  彼女の意思じゃなかったんだ」
-“Hold on, Maria. That wasn’t her own will.”
+“Hold on, Maria. She wasn’t acting of her own free will.”
 
 @44035 Maria · マリア
 > 「だけど、甲児……」
@@ -2165,7 +2165,7 @@ full well. My brother is no traitor!”
 # 审校：全局：弯撇号／弯引号
 > 「……ぜんぜんだめだ。何をいっても
 >  反応しないよ」
-“...It’s no good at all. He doesn’t respond no matter what you say.”
+“...He’s in bad shape. He doesn’t react to anything we say.”
 
 @44038 Erika · エリカ
 > 「甲児さん……」
@@ -2315,7 +2315,7 @@ consciousness might turn back toward us, but...”
 ---
 >  あんたは裏切り者なんかじゃ
 >  ないんだよ。わかるか、デューク
-You’re no traitor. Do you understand, Duke?
+You’re no traitor. Do you hear me, Duke?
 ---
 >  デューク・フリード!?」
 Duke Fleed?!”
@@ -2847,7 +2847,7 @@ Duke Fleed.”
 # 审校：全局：弯撇号／弯引号
 > 「……たとえ、それが真実だとしても
 >  僕は、僕は故郷を
-“...Even if that’s the truth, I... I’m the man who
+“...Even if that’s true, I... I’m still the man who
 ---
 >  見捨てた男なんだ……」
 abandoned his homeland...”

@@ -679,7 +679,7 @@ And he turned me into a man who fights exactly as Zuul wills...”
 # 审校：精读：隊長 统一
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
-“Commander Marg, get out of the way! Mars, prepare yourself!”
+“Commander Marg, get out of the way! Mars, this is the end!”
 
 @29509 Marg · マーグ
 > 「ロゼ、やめろッ!」
@@ -788,7 +788,7 @@ And he turned me into a man who fights exactly as Zuul wills...”
 # 审校：精读：隊長 统一
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
-“Commander Marg, get out of the way! Mars, prepare yourself!”
+“Commander Marg, get out of the way! Mars, this is the end!”
 
 @29529 Marg · マーグ
 > 「ロゼ、やめろッ!」
@@ -903,7 +903,7 @@ And he turned me into a man who fights exactly as Zuul wills...”
 # 审校：全局：弯撇号／弯引号
 > 「マーグ、もう大丈夫だ。絶対に
 >  離さない! さぁ、早くこっちへ」
-“Marg, it’s all right now. I’ll never let you go! Come on, hurry over here.”
+“Marg, it’s all right now. I’ll never let you go! Come on, over here, quick.”
 
 @29551 Marg · マーグ
 > 「ああ……わかったよマーズ」
@@ -1168,7 +1168,7 @@ This time, you’re finished!”
 @29595 Duke · デューク
 > 「ガンダル! 貴様は絶対に
 >  許さんぞ!」
-“Gandal! I will never forgive you!”
+“Gandal! You’ll pay for this, I swear it!”
 
 @29596 Marg · マーグ
 > 「死ね、マーズ!!」
@@ -1786,7 +1786,7 @@ Otherwise, this will just keep happening forever.”
 # 审校：全局：弯撇号／弯引号
 > 「だって、マーグさんの体はなくなって
 >  しまっても、きっと心はあなたの中に
-“Because even if Marg’s body is gone, his heart surely lives on inside you.
+“Because even if Marg’s body is gone, I know his heart lives on inside you.
 ---
 >  生きているもの。生まれた時に
 >  2つに分かれてしまった命が、また

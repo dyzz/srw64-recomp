@@ -1165,7 +1165,7 @@ what in the world has happened to me...?!”
 # 审校：全局：弯撇号／弯引号
 > 「お、俺の、俺のたった1人の
 >  大事な弟だ」
-“Y-you’re my, my one and only precious little brother.”
+“Y-you’re my... my one and only dear little brother.”
 
 @38514 Takeru · タケル
 > 「兄さん……兄さん!」
@@ -1201,7 +1201,7 @@ And he turned me into a man who fights only as Zuul wills...”
 # 审校：精读：隊長 统一 Commander
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
-“Commander Marg, get out of the way! Mars, prepare yourself!”
+“Commander Marg, get out of the way! Mars, this is the end!”
 
 @38520 Marg · マーグ
 > 「ロゼ、やめろッ!」
@@ -1274,7 +1274,7 @@ what in the world has happened to me...?!”
 # 审校：全局：弯撇号／弯引号
 > 「お、俺の、俺のたった1人の
 >  大事な弟だ」
-“Y-you’re my, my one and only precious little brother.”
+“Y-you’re my... my one and only dear little brother.”
 
 @38534 Takeru · タケル
 > 「兄さん……兄さん!」
@@ -1310,7 +1310,7 @@ And he turned me into a man who fights only as Zuul wills...”
 # 审校：精读：隊長 统一 Commander
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
-“Commander Marg, get out of the way! Mars, prepare yourself!”
+“Commander Marg, get out of the way! Mars, this is the end!”
 
 @38540 Marg · マーグ
 > 「ロゼ、やめろッ!」
@@ -1395,7 +1395,7 @@ what in the world has happened to me...?!”
 # 审校：全局：弯撇号／弯引号
 > 「お、俺の、俺のたった1人の
 >  大事な弟だ」
-“Y-you’re my, my one and only precious little brother.”
+“Y-you’re my... my one and only dear little brother.”
 
 @38557 Takeru · タケル
 > 「兄さん……兄さん!」
@@ -1424,7 +1424,7 @@ And he turned me into a man who fights only as Zuul wills it...”
 # 审校：全局：弯撇号／弯引号
 > 「マーグ、もう大丈夫だ。絶対に
 >  離さない! さぁ、早くこっちへ」
-“Marg, it’s all right now. I’ll never let you go! Come on, hurry over here.”
+“Marg, it’s all right now. I’ll never let you go! Come on, over here, quick.”
 
 @38562 Marg · マーグ
 > 「ああ……わかったよマーズ」
@@ -1485,7 +1485,7 @@ what in the world has happened to me...?!”
 # 审校：全局：弯撇号／弯引号
 > 「お、俺の、俺のたった1人の
 >  大事な弟だ」
-“Y-you’re my, my one and only precious little brother.”
+“Y-you’re my... my one and only dear little brother.”
 
 @38574 Takeru · タケル
 > 「兄さん……兄さん!」
@@ -2484,7 +2484,7 @@ and I swear I’ll protect the Earth.”
 # 审校：全局：弯撇号／弯引号
 > 「その意気、その意気。ほら、
 >  みんなが心配してるから、行きましょ」
-“That’s the spirit, that’s the spirit. Come on, everyone’s worried, so let’s go.”
+“That’s the spirit! Come on, everyone’s worried about you. Let’s go.”
 
 @38722 Maria · マリア
 > 「でもあたしたちの他にも、
