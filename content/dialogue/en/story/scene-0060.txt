@@ -671,7 +671,7 @@ All units, launch! Don’t let them sink the Gwadan!”
 @38228 Scirocco · シロッコ
 # 审校：全局：弯撇号／弯引号
 > 「そういうことだ。悪いな、ジャミトフ」
-“That’s how it is. Sorry, Jamitov.”
+“Just so. Forgive me, Jamitov.”
 
 @38229 Dermail · デルマイユ
 # 审校：全局：弯撇号／弯引号
@@ -773,7 +773,7 @@ You’ll see later, Scirocco. Point the Dogosse Giar toward the Gwadan!”
 # 审校：全局：弯撇号／弯引号
 > 「目標はグワダンだ! グワダンを
 >  落とせ! ハマーン、逃さんぞ!!」
-“The target is the Gwadan! Bring down the Gwadan! Haman, I won’t let you escape!!”
+“The Gwadan’s our target! Bring down the Gwadan! Haman, you’re not getting away!!”
 
 @38243 Jerid · ジェリド
 # 审校：全局：弯撇号／弯引号

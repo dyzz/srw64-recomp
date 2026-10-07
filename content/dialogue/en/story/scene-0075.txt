@@ -27,7 +27,7 @@
 
 @31299 Rose · ロゼ
 > 「未来に生きるために」
-“So that you may live for the future.”
+“To live for the future.”
 
 @31300 Marg · マーグ
 > 「未来に?」
@@ -45,15 +45,15 @@
 # 审校：全局：弯撇号／弯引号
 > 「地球の軍勢です。いくつかの
 >  勢力にわかれておりますが
-“Earth’s military forces. They’re split among several factions, but
+“These are Earth’s forces. They’re split into several factions, but
 ---
 >  我が銀河帝国軍の
 >  先遣艦隊は勢力の区別なく
-our Galactic Empire advance fleet’s objective is to assess these forces
+the objective of our Galactic Empire advance fleet is to gauge their strength,
 ---
 >  これらの戦力を把握すること、
 >  また、これに可能な限り大きな
-regardless of faction, and to inflict as much damage
+whatever the faction, and to inflict as much damage
 ---
 >  ダメージを与えることを目標として
 >  おります」
@@ -66,11 +66,11 @@ on them as possible.”
 @31305 Rose · ロゼ
 > 「そして、ズール皇帝陛下じきじきに
 >  隊長に与えられたもっとも重要な
-“And the most important mission Emperor Zuul himself has granted you,
+“And your most important mission, Commander, given to you by Emperor Zuul himself,
 ---
 >  任務が、裏切り者マーズの
 >  抹殺です」
-Commander, is the elimination of the traitor Mars.”
+is to eliminate the traitor Mars.”
 
 @31306 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
@@ -100,20 +100,20 @@ among Earth’s forces?”
 @31310 Haman · ハマーン
 > 「さすがに反応がじん速だな、
 >  {HeroMech}の方々
-“Your response is quick indeed, people of the {HeroMech}.
+“You respond swiftly, I see, people of the {HeroMech}.
 ---
 >  先日の話は考えてもらえたか?」
-Have you given thought to what we discussed the other day?”
+Have you considered what we discussed the other day?”
 
 @31311 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「{HeroMech}及び
 >  OZトレーズ派の総意として
-“As the consensus of the {HeroMech} and OZ’s Treize faction,
+“Speaking for the {HeroMech} and OZ’s Treize faction as a whole,
 ---
 >  回答をお伝えします。
 >  我々は貴軍の申し出をうけ
-we shall give you our answer. We accept your offer and
+here is our answer. We accept your offer and
 ---
 >  対銀河帝国戦において
 >  アクシズ軍の協力を要請したい」
@@ -122,7 +122,7 @@ request the Axis Forces’ cooperation in the war against the Galactic Empire.�
 @31312 Haman · ハマーン
 > 「ははっ、良い選択だな。了解した
 >  それではこちらの条件をいおう」
-“Ha ha, a wise choice. Understood. Then allow me to state our conditions.”
+“Ha ha, a wise choice. Very well. Then let me state our conditions.”
 
 @31313 Bright · ブライト
 > 「条件ですと?」
@@ -131,10 +131,10 @@ request the Axis Forces’ cooperation in the war against the Galactic Empire.�
 @31314 Haman · ハマーン
 > 「まず1つ。対帝国戦終了の
 >  あかつきには我がジオン約束の地
-“First. Upon the conclusion of the war against the Empire, you shall cede to us
+“First: when the war against the Empire is over, you will hand over to us
 ---
 >  サイド3を譲渡すること」
-Side 3, the promised land of Zeon.”
+Side 3, Zeon’s promised land.”
 
 @31315 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -152,26 +152,26 @@ spouting off whatever the hell suits you!”
 @31317 Bright · ブライト
 > 「……即答はしかねる。
 >  だが、できるだけの交渉はしてみよう」
-“...I cannot answer immediately. But I will negotiate as much as I can.”
+“...I cannot give you an answer right away. But I will do what I can at the negotiating table.”
 
 @31318 Haman · ハマーン
 # 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「当然だな、我々の戦力を
 >  味方につけるのに
-“Naturally. To gain our forces as allies,
+“Naturally. For our forces on your side,
 ---
 >  そのくらいは安いものだ。もう1つ、
 >  我々はこのあとバルジにおもむき
-that much is cheap. One more thing: we intend to head to Barge next
+that is a small price. One more thing: we intend to proceed to Barge after this
 ---
 >  ロームフェラ財団と交渉を
 >  持つつもりでいる」
-and hold negotiations with the Romefeller Foundation.”
+and open negotiations with the Romefeller Foundation.”
 
 @31319 Alan · アラン
 > 「何だと!? 我々とロームフェラの
 >  関係は承知のはずだ。それを……」
-“What?! You know full well of our relationship with Romefeller. And yet...”
+“What?! You know full well where we stand with Romefeller. And yet...”
 
 @31320 Haman · ハマーン
 > 「どうした? 私は
@@ -190,26 +190,26 @@ against the Galactic Empire, but I never said we would fight alongside Romefelle
 @31322 Haman · ハマーン
 > 「そもそも銀河帝国軍に
 >  対するためには、ロームフェラ派とも
-“In the first place, to oppose the Galactic Empire, it would be better to
+“Besides, if we are to stand against the Galactic Empire, surely it is best to
 ---
 >  歩調をあわせたほうがよかろう? だが
 >  知っての通り彼らとの交渉は
-coordinate with the Romefeller faction as well, no? But as you know, negotiations
+fall in step with the Romefeller faction too? But as you know, negotiating
 ---
 >  いささか危険をともなうのでな。そこで
 >  {HeroMech}の諸君に
-with them carry a certain danger. So I would like you people of the {HeroMech}
+with them is somewhat risky. So I would ask you of the {HeroMech}
 ---
 >  万一の時の援護を頼みたい」
-to provide support in case of an emergency.”
+to cover us should anything go wrong.”
 
 @31323 Banjo · 万丈
 > 「……確かに人類同士が手を
 >  取れればそれにこしたことはない
-“...True, nothing would be better than humanity joining hands.
+“...True, if humanity can join hands, so much the better.
 ---
 >  わかった、その件は了解だ」
-Understood. We accept that.”
+All right, we’ll do it.”
 
 @31324 Haman · ハマーン
 # 审校：直译
@@ -228,7 +228,7 @@ Understood. We accept that.”
 @31326 Haman · ハマーン
 > 「何も。我々も側面を
 >  固めねばならんのでな」
-“Nothing. We too must secure our flanks.”
+“Nothing. We must secure our own flanks as well.”
 
 @31327 Quattro · クワトロ
 > 「…………」
@@ -238,11 +238,11 @@ Understood. We accept that.”
 # 审校：原句说成what a nuisance不对人
 > 「だが、困ったものだ。貴様は
 >  物の頼み方を知らんようだな
-“Still, you’re a troublesome one. You don’t seem to know how to ask a favor.
+“But really, you don’t seem to know how to ask a favor.
 ---
 >  協力者には取るべき態度が
 >  あるように思うが? まあよい、ここで
-Isn’t there a proper attitude to take toward those who help you? Well, no matter.
+I would think one owes a certain courtesy to one’s allies, no? Well, no matter.
 ---
 >  頭を下げろというつもりはないよ。
 >  では{HeroMech}の諸君
@@ -260,11 +260,11 @@ farewell.”
 # 审校：去掉It can't be helped
 > 「やむをえん。銀河帝国を前にした
 >  現在、向こうにある程度の
-“No choice. With the Galactic Empire bearing down on us, we have to accept
+“No choice. With the Galactic Empire bearing down on us, we knew going in
 ---
 >  主導権を握られるのは
 >  覚悟の上だ」
-letting them take the initiative to some extent.”
+that they’d get to call some of the shots.”
 
 @31331 Hayato · ハヤト
 # 审校：at the perfect timing语法错
@@ -285,11 +285,11 @@ What a woman.”
 # 审校：口语化
 > 「いいもなにも、ここで人類が
 >  また内輪もめを始めたら
-“Right or not, if humanity starts squabbling among ourselves again now,
+“What choice do we have? If humanity starts fighting among itself again now,
 ---
 >  それこそ銀河帝国の
 >  思うつぼじゃない」
-that’s exactly what the Galactic Empire wants.”
+we’d be playing right into the Galactic Empire’s hands.”
 
 @31334 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
@@ -318,7 +318,7 @@ We just have to believe they’re not that foolish...”
 ---
 >  悲劇というしかないな。
 >  しかし、アクシズが
-there’s no other word for it but tragedy. But if Axis is going to
+it’s nothing short of tragic. But if Axis is going to
 ---
 >  ロームフェラとも交渉するとなると……」
 negotiate with Romefeller as well...”
@@ -327,11 +327,11 @@ negotiate with Romefeller as well...”
 # 审校：全局：弯撇号／弯引号
 > 「絶対まとまらないね。全財産
 >  賭けてもいいぜ。奴ら、ジャミトフや
-“They’ll never get along. I’d bet my whole fortune on it. Those guys don’t
+“That deal’ll never come together. I’d bet everything I’ve got. They don’t
 ---
 >  バスクがどんな性格してるか
 >  知らねえから、ああいってるのさ」
-know what kind of people Jamitov and Bask are, that’s why they talk like that.”
+know what Jamitov and Bask are like, that’s the only reason they’re saying that.”
 
 @31338 Show · ショウ
 > 「本当に知らないのかな?」
@@ -345,14 +345,14 @@ know what kind of people Jamitov and Bask are, that’s why they talk like that.
 # 审校：全局：弯撇号／弯引号
 > 「彼らがジャミトフらの性格を
 >  知らないという方が不自然だ
-“It’s more unnatural that they wouldn’t know what Jamitov and the others are like.
+“It’d be stranger if they didn’t know what Jamitov and his people are like.
 ---
 >  だとすると、
 >  まとまらないとわかってる交渉を
-If that’s the case, then they’re the ones proposing negotiations
+And if they do know, then they’re proposing talks
 ---
 >  自分から申しこむってことになる」
-they know will go nowhere.”
+they know will go nowhere, all on their own.”
 
 @31341 Chum · チャム
 # 审校：口语化
@@ -362,7 +362,7 @@ they know will go nowhere.”
 @31342 Ryo · 亮
 # 审校：全局：弯撇号／弯引号
 > 「ポーズということか? 我々に対する」
-“You mean it’s a pose? For our benefit?”
+“You mean it’s for show? For our benefit?”
 
 @31343 Simone · シモーヌ
 > 「なるほど。あるかもね」
@@ -375,7 +375,7 @@ they know will go nowhere.”
 “Or maybe they’ve got something even more outrageous in mind...
 ---
 >  まあ、それは考えすぎだと思うけどね」
-Well, I think that’s overthinking it, though.”
+Well, I’m probably overthinking it.”
 
 @31345 Jerid · ジェリド
 > 「ジェリド・メサ、入ります」
@@ -385,7 +385,7 @@ Well, I think that’s overthinking it, though.”
 # 审校：全局：弯撇号／弯引号
 > 「来たか。特尉、君はこれまで
 >  どうやって生き延びてきた」
-“So you’ve come. Special Lieutenant, how have you managed to survive until now?”
+“Ah, you’ve come. Special Lieutenant, how is it you’ve survived this long?”
 
 @31347 Jerid · ジェリド
 # 审校：全局：弯撇号／弯引号
@@ -397,7 +397,7 @@ Well, I think that’s overthinking it, though.”
 # 审校：全局：弯撇号／弯引号
 > 「ふむ……特尉、これをあずける。
 >  ハマーンとの会談には、同席しろ」
-“Hmm... Special Lieutenant, I’m entrusting you with this. Attend the talks with Haman.”
+“Hmm... Special Lieutenant, I leave this with you. You will sit in on the talks with Haman.”
 
 @31349 Jerid · ジェリド
 # 审校：リスト型应为wrist-mounted（腕装型），不是list-type；句末原文是「……?」，保留省略号加问号。
@@ -413,7 +413,7 @@ Well, I think that’s overthinking it, though.”
 
 @31351 Jerid · ジェリド
 > 「はっ、了解です!」
-“Yes, understood!”
+“Yes, sir!”
 
 @31352 Jamitov · ジャミトフ
 # 审校：原句不通
@@ -429,22 +429,22 @@ If you wish to join my forces and take part in operations, I won’t refuse.”
 # 审校：原句语序错乱
 > 「OZが我らアクシズに従う、の
 >  間違いではないのか?」
-“Surely you mean OZ will follow us, Axis?”
+“Don’t you mean that OZ will be following Axis?”
 
 @31354 Jamitov · ジャミトフ
 > 「何を根拠に
 >  それほどの強気でいられる?
-“On what grounds can you afford to be so assertive?
+“What gives you such confidence?
 ---
 >  貢献しだいでは、サイドの1つも
 >  まかせてやってもよいのだぞ」
-Depending on your contributions, I might even entrust you with one of the Sides.”
+Serve us well enough, and I might even let you have one of the Sides.”
 
 @31355 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
 > 「フッ、そんなものは、実力で手に
 >  入れてみせるよ、ジャミトフ・ハイマン」
-“Heh, I’ll obtain such things by my own strength, Jamitov Hymem.”
+“Heh, that I will take with my own strength, Jamitov Hymem.”
 
 @31356 Jamitov · ジャミトフ
 > 「何……?」
@@ -454,7 +454,7 @@ Depending on your contributions, I might even entrust you with one of the Sides.
 # 审校：全局：弯撇号／弯引号
 > 「勘違いなさっては困る。
 >  我々は、望むなら力を
-“Don’t misunderstand. We are saying that if you wish, we will
+“You mistake us. We are offering, if you so wish, to
 ---
 >  貸してやろうといっているのだ。そちらの
 >  指揮など受けるつもりは毛頭ない」
@@ -464,20 +464,20 @@ lend you our strength. We have no intention whatsoever of taking your orders.”
 # 审校：全局：弯撇号／弯引号
 > 「たかが亡国の残党の分際で、
 >  つけあがるな
-“Don’t get so full of yourself, you’re nothing but the remnants of a fallen nation.
+“Know your place, you mere remnant of a fallen nation!
 ---
 >  我がロームフェラ財団とOZの
 >  モビルドール部隊を敵にして
-Do you really think you can win with the Romefeller Foundation and
+Do you really think you can win against the Romefeller Foundation and
 ---
 >  勝てるつもりでおるのか?」
-OZ’s Mobile Doll Corps as your enemies?”
+OZ’s Mobile Doll Corps?”
 
 @31359 Haman · ハマーン
 # 审校：My dear noble不通
 > 「勝てるつもりではなく、
 >  勝てるのだよ。貴族どの」
-“It’s not that I think we can win. We will win, my lord.”
+“It is not a matter of thinking. We will win, my lord.”
 
 @31360 Jerid · ジェリド
 > (この女……)
@@ -487,11 +487,11 @@ OZ’s Mobile Doll Corps as your enemies?”
 # 审校：全局：弯撇号／弯引号
 > 「アステロイドに逃げこんだ
 >  敗残兵ごときが
-“A mere defeated soldier who fled to an asteroid.
+“Defeated stragglers who fled to an asteroid...
 ---
 >  しょせんは伝統の重さを
 >  理解せぬ、下衆か」
-In the end, are you just lowborn rabble who can’t understand the weight of tradition?”
+Base rabble after all, with no grasp of the weight of tradition.”
 
 @31362 Jamitov · ジャミトフ
 # 审校：全局：弯撇号／弯引号
@@ -502,10 +502,10 @@ In the end, are you just lowborn rabble who can’t understand the weight of tra
 @31363 Haman · ハマーン
 > 「交渉は決裂だな。
 >  我らの力、とくとお目にかけよう。が
-“Then the negotiations have broken down. We shall show you our power in full. But
+“Then these talks are over. You will see our power soon enough. But
 ---
 >  貴様らはここで死んでもらう」
-you will die here.”
+you yourselves will die here.”
 
 @31364 Jerid · ジェリド
 # 审校：全局：弯撇号／弯引号
@@ -529,7 +529,7 @@ you will die here.”
 @31368 Specials · スペシャルズ
 > 「グワダンからの砲撃!
 >  直撃です!!」
-“A bombardment from the Gwadan! Direct hit!!”
+“The Gwadan’s firing on us! Direct hit!!”
 
 @31369 Jamitov · ジャミトフ
 > 「なに!?」
@@ -551,28 +551,28 @@ you will die here.”
 
 @31373 Bright · ブライト
 > 「何だと!?」
-“What did you say?!”
+“What?!”
 
 @31374 Bunny · バニー
 # 审校：全局：弯撇号／弯引号
 > 「グワダンの発光信号確認!
 >  援護頼む、です」
-“Gwadan’s signal light confirmed! Requesting support, sir.”
+“Signal light from the Gwadan! It says, ‘Requesting support.’”
 
 @31375 Alan · アラン
 > 「早すぎるな」
-“That was too soon.”
+“That’s too soon.”
 
 @31376 Banjo · 万丈
 > 「ああ。だが、やはり最初からあてに
 >  されていたようだ。破廉恥な女だ」
-“Yeah. But it seems she was counting on us from the start. What a shameless woman.”
+“Yeah. Looks like she was counting on us from the start. Shameless woman.”
 
 @31377 Bright · ブライト
 # 审校：落とさせるな是别让它被击落，原英文意思反了
 > 「約束だ、しかたあるまい。
 >  バルジ方面に一斉射!
-“A promise is a promise. Nothing to be done. All ships, open fire on the Barge sector!
+“A promise is a promise. So be it. Full salvo toward Barge!
 ---
 >  各機、出撃しろ!
 >  グワダンを落とさせるな!」
@@ -582,7 +582,7 @@ All units, launch! Don’t let them shoot down the Gwadan!”
 # 审校：呼人的语气
 > 「む……戦闘が始まったか……
 >  ハマーンめ。誰かおらんのか!」
-“Hm... the battle has begun, has it... That Haman. Is anyone there?!”
+“Hm... so the fighting has started... Damn that Haman. Is no one there?!”
 
 @31379 Scirocco · シロッコ
 > 「…………」
@@ -603,7 +603,7 @@ All units, launch! Don’t let them shoot down the Gwadan!”
 @31383 Scirocco · シロッコ
 # 审校：全局：弯撇号／弯引号
 > 「そういうことだ。悪いな、ジャミトフ」
-“That’s how it is. Sorry, Jamitov.”
+“Just so. Forgive me, Jamitov.”
 
 @31384 Dermail · デルマイユ
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -618,15 +618,15 @@ All units, launch! Don’t let them shoot down the Gwadan!”
 
 @31386 Dermail · デルマイユ
 > 「なっ……何だと!?」
-“Wha... What did you say?!”
+“Wh-What?!”
 
 @31387 Scirocco · シロッコ
 > 「ハマーンにしてやられました。
 >  あの女、最初からそのつもりだったに
-“Haman did him in. That woman intended this from the very start,
+“Haman got the better of us. That woman must have planned this from the very start,
 ---
 >  相違ありません」
-I have no doubt.”
+without a doubt.”
 
 @31388 Dermail · デルマイユ
 # 审校：直译
@@ -642,7 +642,7 @@ I have no doubt.”
 ---
 >  本来ならばバスク特佐に
 >  指揮をとっていただくべきですが
-Normally, Special Colonel Bask should take command, but
+By rights, Special Colonel Bask should take command, but
 ---
 >  バルジは混乱しており、
 >  時間もありません」
@@ -652,17 +652,17 @@ Barge is in chaos, and there is no time.”
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「シロッコ……わ、わかった、
 >  今後の指揮は特佐にまかせる」
-“Scirocco... u-understood. I leave the command from here on to you, Special Colonel.”
+“Scirocco... v-very well. From here on, command is yours, Special Colonel.”
 
 @31391 Scirocco · シロッコ
 # 审校：全局：弯撇号／弯引号
 > 「聞こえるか、全OZ艦隊。
 >  これはジャミトフ閣下の遺言である
-“Can you hear me, all OZ fleet units? This is His Excellency Jamitov’s dying wish.
+“All OZ fleets, do you hear me? These are His Excellency Jamitov’s last words.
 ---
 >  閣下はハマーンに暗殺された!
 >  これは閣下の弔い合戦である!
-His Excellency was assassinated by Haman! This is a battle to avenge him!
+His Excellency has been assassinated by Haman! This battle is to avenge him!
 ---
 >  ただちにグワダンを叩け!!」
 Strike the Gwadan at once!!”
@@ -670,13 +670,13 @@ Strike the Gwadan at once!!”
 @31392 Haman · ハマーン
 > 「{HeroMech}の力、
 >  とくと見せてもらおう」
-“Show me the power of the {HeroMech} in full.”
+“Let me see what the {HeroMech} can really do.”
 
 @31393 Jerid · ジェリド
 # 审校：全局：弯撇号／弯引号
 > 「目標はグワダンだ! グワダンを
 >  落とせ! ハマーン、逃さんぞ!!」
-“The target is the Gwadan! Bring down the Gwadan! Haman, I won’t let you escape!!”
+“The Gwadan’s our target! Bring down the Gwadan! Haman, you’re not getting away!!”
 
 @31394 Jerid · ジェリド
 # 审校：全局：弯撇号／弯引号
@@ -693,16 +693,16 @@ Strike the Gwadan at once!!”
 # 审校：语法
 > 「フフッ、律義な奴らだ。
 >  聞こえるか、{HeroMech}
-“Heh heh, how dutiful of them. Can you hear me, {HeroMech}?
+“Heh heh, how very loyal of them. Can you hear me, {HeroMech}?
 ---
 >  グワダンを戦線から離脱させたい
 >  援護してくれると助かる」
-I would appreciate your support in getting the Gwadan off the front line.”
+I want to pull the Gwadan out of the fighting. I would appreciate your cover.”
 
 @31397 Beauty · ビューティ
 # 审校：“好大的口气”不贴切
 > 「まぁ、いい気なもんね」
-“My, isn’t she pleased with herself.”
+“My, she has some nerve.”
 
 @31398 Reika · レイカ
 > 「ホント」
@@ -731,7 +731,7 @@ and you, {HeroMech}! Special Lieutenant Gates Capa, you can handle this, yes?!�
 @31401 Gates · ゲーツ
 > 「はっ。問題ありません。
 >  ロザミアも順調です」
-“Yes, sir. No problem. Rosamia is doing well too.”
+“Yes, sir. No problems here. Rosamia is performing well too.”
 
 @31402 Bask · バスク
 # 审校：全局：弯撇号／弯引号
@@ -741,7 +741,7 @@ and you, {HeroMech}! Special Lieutenant Gates Capa, you can handle this, yes?!�
 @31403 Haman · ハマーン
 > 「グワダンが離脱したか。
 >  {HeroMech}、あとはまかせる」
-“The Gwadan has withdrawn, it seems. {HeroMech}, I leave the rest to you.”
+“The Gwadan is clear. {HeroMech}, I leave the rest to you.”
 
 @31404 Bask · バスク
 # 审校：ええい不是“哎哎”
@@ -751,7 +751,7 @@ and you, {HeroMech}! Special Lieutenant Gates Capa, you can handle this, yes?!�
 
 @31405 Specials · スペシャルズ
 > 「はっ、まもなく到着します」
-“Yes, sir, they will arrive shortly.”
+“Sir, they’ll be here shortly.”
 
 @31406 Bask · バスク
 # 审校：全局：弯撇号／弯引号
@@ -761,7 +761,7 @@ and you, {HeroMech}! Special Lieutenant Gates Capa, you can handle this, yes?!�
 ---
 >  やっておかねば、シロッコに対して
 >  示しがつかん!」
-I’ll have no face to show Scirocco!”
+I’ll have nothing to show Scirocco!”
 
 @31407 Specials · スペシャルズ
 > 「増援、来ました!」
@@ -889,10 +889,10 @@ by order of Emperor Zuul, I, Marg, will eliminate you!”
 # 审校：全局：弯撇号／弯引号
 > 「なんだ、カトルもいるのか? 嘘は
 >  いわねぇ。正真正銘の
-“What, Quatre’s here too? I kid you not. It’s the genuine
+“What, Quatre’s here too? I wouldn’t lie to you. It’s the one and only
 ---
 >  デュオ・マックスウェルだぜ」
-article, Duo Maxwell.”
+Duo Maxwell.”
 
 @31431 Ark · アーク（按段落 3DD1）
 > 「デュオ、やっぱりもどってきてくれたんだ」
@@ -916,7 +916,7 @@ article, Duo Maxwell.”
 # 审校：全局：弯撇号／弯引号
 > 「なーに、気にすんなって。OZは敵だが
 >  あんたらなら、味方してやってもいい
-“Hey, don’t worry about it. OZ is the enemy, but I don’t mind siding with you guys.
+“Aw, don’t mention it. OZ is the enemy, but you guys, I don’t mind fighting for.
 ---
 >  異星人なんてのは、
 >  もっと敵だからな」
@@ -939,7 +939,7 @@ Aliens are an even bigger enemy, after all.”
 
 @31439 Manami · マナミ（按段落 3DD4）
 > 「新しいガンダムね? デュオ」
-“A new Gundam, is it? Duo.”
+“Is that a new Gundam, Duo?”
 
 @31440 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -961,7 +961,7 @@ Well then, shall we get going?”
 @31442 Gates · ゲーツ
 # 审校：全局：弯撇号／弯引号
 > 「くっ……私がやられる……!?」
-“Ngh... I’ve been beaten...?!”
+“Ngh... I’m beaten...?!”
 
 @31443 Rosamia · ロザミア
 > 「きゃああぁぁぁーっ!!」
@@ -976,7 +976,7 @@ Well then, shall we get going?”
 # 审校：全局：弯撇号／弯引号
 > 「なに!? やられたというのか、
 >  ロザミア……」
-“What?! You mean Rosamia’s been hit...”
+“What?! Rosamia’s been shot down...?”
 
 @31446 Haman · ハマーン
 # 审校：原译“Impossible, me...!”不自然，改为更符合哈曼被击破时语气的表达。
@@ -1004,7 +1004,7 @@ Well then, shall we get going?”
 # 审校：全局：弯撇号／弯引号
 > 「なんだ!? この私に
 >  プレッシャーを与えるだと!?」
-“What?! You’re putting pressure on me?!”
+“What?! You dare pressure me, of all people?!”
 
 @31452 Jerid · ジェリド
 # 审校：全局：弯撇号／弯引号
@@ -1024,7 +1024,7 @@ Well then, shall we get going?”
 @31455 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「そういうわけにはいかない!」
-“I can’t let that happen!”
+“Not a chance!”
 
 @31456 Bask · バスク
 # 审校：ジャミトフ閣下应译为“His Excellency Jamitov”，与巴斯克对贾米托夫的敬语层级相符。
@@ -1051,23 +1051,23 @@ Well then, shall we get going?”
 # 审校：“被……凶弹击倒”欧化
 > 「諸君、我らが指導者、
 >  ジャミトフ閣下は平和の大使を
-“Gentlemen, our leader, His Excellency Jamitov, has fallen to the cowardly
+“Gentlemen, our leader, His Excellency Jamitov, has fallen to an assassin’s bullet
 ---
 >  装った卑劣なるアクシズの凶弾に
 >  倒れた。また、それにつけこんだ
-assassin’s bullet of Axis, who posed as an ambassador of peace. And taking
+from the cowardly Axis, who came disguised as envoys of peace. And seizing
 ---
 >  トレーズ派の飼い犬、
 >  {HeroMech}によって
-advantage of that, the {HeroMech}, the Treize faction’s lapdogs,
+on that, the {HeroMech}, lapdogs of the Treize faction,
 ---
 >  バスク特佐までもがその尊い命を
 >  散らされた。諸君、これが敵の
-even took the precious life of Special Colonel Bask. Gentlemen, this is how
+have taken the precious life of Special Colonel Bask as well. Gentlemen, this is how
 ---
 >  やり方だ。我々は崇高なる
 >  怒りを持って、憎むべき敵を
-the enemy operates. With righteous fury, we must crush our hated
+the enemy fights. In our noble wrath, we must crush our hated
 ---
 >  粉砕しなければならない。
 >  銀河帝国、トレーズ」
@@ -1077,11 +1077,11 @@ enemies. The Galactic Empire, and Treize.”
 # 审校：全局：Dr. Hasan／Barge 拼写统一
 > 「そして{HeroMech}……。諸君
 >  我々にはこのバルジとリーブラ
-“And {HeroMech}... Gentlemen, we have this Barge and Libra,
+“And {HeroMech}... Gentlemen, we have Barge here, and Libra,
 ---
 >  そして月面基地がある。
 >  この偉大な武力の前には
-and the lunar base. Before this mighty force,
+and the lunar base. Before such mighty force,
 ---
 >  いかなる敵も恐れるにたりないのだ……」
 no enemy is worth fearing...”
@@ -1110,7 +1110,7 @@ theater like this is simply part of the job.”
 ---
 >  解放し、新しい時代へと歩める
 >  ようにすることだと思っている」
-are bound by Earth’s gravity, and guide them so they may walk into a new era.”
+are bound by Earth’s gravity, and set them on the path to a new era.”
 
 @31465 Mouar · マウアー
 # 审校：全局：弯撇号／弯引号
@@ -1121,14 +1121,14 @@ are bound by Earth’s gravity, and guide them so they may walk into a new era.�
 @31466 Scirocco · シロッコ
 > 「違うな。地球に縛られているという
 >  点では、ロームフェラ財団もかつての
-“Not quite. In that they are bound to Earth, the Romefeller Foundation is
+“No. Bound to Earth as they are, the Romefeller Foundation is
 ---
 >  連邦となんら変わらん。くだらん
 >  連中だ。OZは……そう、いまのOZは
-no different from the old Federation. A worthless lot. OZ is... yes, OZ today is
+no different from the old Federation. A worthless lot. OZ... well, OZ as it is now is
 ---
 >  少々違うがね」
-a little different, though.”
+a little different.”
 
 @31467 Jerid · ジェリド
 > 「…………」
@@ -1148,30 +1148,30 @@ a little different, though.”
 # 检查提示：未用必用译名：ロームフェラ財団→Romefeller Foundation
 > 「私は、私がいなければ時代は
 >  変わらないと感じているにすぎん
-“I merely feel that without me, the times will not change.
+“I merely sense that without me, the age will not change.
 ---
 >  ジャミトフ閣下は、地球の重力
 >  に魂をひかれている人々を
-His Excellency Jamitov intends to use those very people, that is, the Romefeller
+His Excellency Jamitov intended to use those very people, the Romefeller
 ---
 >  根絶やしにするために、その人々
 >  自身、つまりロームフェラ財団を
-Foundation, to exterminate those whose souls are bound by Earth’s
+Foundation, to wipe out the ones whose souls are bound by Earth’s
 ---
 >  利用するつもりなのだ。帝国の
 >  侵略で壊滅的打撃を受けた
-gravity. On an Earth that has suffered devastating damage from the
+gravity. On an Earth already devastated by the
 ---
 >  地球で、さらに戦争を継続させ
 >  る。そうして地上を徹底的に
-Empire’s invasion, he will continue the war. Drive the surface into
+Empire’s invasion, he would drag the war on. Drive the surface into
 ---
 >  窮乏に追いこめば、地球上の
 >  人間は死滅するな。そうすれば
-utter destitution, and humanity on Earth will die out. And then
+utter ruin, and humanity on Earth dies out. And then
 ---
 >  地球は自然の手に、もどるだろう」
-Earth will return to nature’s hands.”
+Earth goes back into nature’s hands.”
 
 @31471 Mouar · マウアー
 # 审校：全局：弯撇号／弯引号
@@ -1186,30 +1186,30 @@ argument for preserving Earth.”
 # 审校：全局：弯撇号／弯引号
 > 「表面的には、だ。
 >  今の問題はこのあとの地球圏の
-“On the surface, yes. The real question is who will hold
+“On the surface, yes. What matters now is who will hold
 ---
 >  主導権を誰が握るか、だよ。
 >  それで地球圏はどうとでもなる
-dominance over the Earth Sphere next. With that, the Earth Sphere can be
+the reins of the Earth Sphere after this. That alone decides what becomes of it.
 ---
 >  財団ならば、古き伝統と格式
 >  とやらの時代だな。時とともに
-shaped however one likes. Under the Foundation, it would be an age of old
+Under the Foundation, it would be an age of old tradition and so-called dignity. A system
 ---
 >  形骸化していくのが、不可避な
 >  システムだ。ジャミトフのOZならば
-tradition and formality. Becoming a hollow shell with time is an
+bound to wither into an empty shell over time. Under Jamitov’s OZ,
 ---
 >  軍事政権だ。紛争の絶えない
 >  世界だ。これではともに良くはないな
-unavoidable fate for any system. Under Jamitov’s OZ, it would be a military
+a military regime. A world of endless conflict. Neither will do.
 ---
 >  これからの時代の地球圏を
 >  治めるには、新しい天才が
-regime. A world of endless conflict. Neither is good. To rule the
+To govern the Earth Sphere in the age to come, a new genius
 ---
 >  必要だと思わないか?」
-Earth Sphere in the coming era, a new genius is needed, don’t you think?”
+is needed, wouldn’t you say?”
 
 @31473 Jerid · ジェリド
 # 审校：全局：弯撇号／弯引号
@@ -1221,26 +1221,26 @@ Earth Sphere in the coming era, a new genius is needed, don’t you think?”
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「私はそんなにごう慢な人間では
 >  ないよ。私は天才が至る道を
-“I am not such an arrogant man. I believe I am one who illuminates
+“I am not so arrogant as that. I see myself as one who lights
 ---
 >  照らす者だと思っている。
 >  再統一後の地球圏の
-the path a genius takes. The ruler of the Earth Sphere after
+the path a genius walks. The ruler of the Earth Sphere after
 ---
 >  支配者は、ジェリド特尉、
 >  君かもしれんが、マウアー特尉
-reunification might be you, Special Lieutenant Jerid, or it might be you,
+reunification may be you, Special Lieutenant Jerid. Or it may be you,
 ---
 >  君かもしれない。私の見立てでは、
 >  戦後の地球を支配するのは
-Special Lieutenant Mouar. In my estimation, the one who will rule the postwar
+Special Lieutenant Mouar. If you ask me, the postwar
 ---
 >  女だと思っている。が、
 >  私はそれを見届けたら
-Earth is a woman. But once I have seen that through,
+Earth will be ruled by a woman. As for me, once I have seen that come to pass,
 ---
 >  恒星旅行にでもでるさ」
-I shall set off on a journey among the stars.”
+I may go off on a voyage to the stars.”
 
 @31475 Mouar · マウアー
 > 「待って、ジェリド」
@@ -1260,10 +1260,10 @@ I shall set off on a journey among the stars.”
 # 审校：全局：弯撇号／弯引号
 > 「わかってる。だが、いずれOZをこの手に
 >  するためには、シロッコだって利用して
-“I know. But to eventually make OZ mine, I’ll use Scirocco too,
+“I know. But if I’m going to take OZ for myself someday, I’ll use even Scirocco
 ---
 >  踏み台にしてみせる」
-and make him a stepping stone.”
+as a stepping stone.”
 
 @31479 Mouar · マウアー
 > 「ジェリド……」
@@ -1272,42 +1272,42 @@ and make him a stepping stone.”
 @31480 Treize · トレーズ
 > 「パプティマス・シロッコか。しばらく
 >  離れていた間にOZも変わったものだ
-“Paptimus Scirocco, is it? OZ has changed while I was away.
+“Paptimus Scirocco... OZ has changed in the time I was away.
 ---
 >  あのような男の台頭を許すとはな
 >  まあいい。いよいよこれから
-To allow a man like that to rise... Well, no matter. Now
+To let a man like that rise... Well, no matter. And now
 ---
 >  第3幕の始まりというわけだ」
-the third act truly begins.”
+the curtain rises on the third act.”
 
 @31481 Lady · レディ
 # 审校：全局：弯撇号／弯引号
 > 「トレーズ様、ご準備を。
 >  すでに財団幹部はじめ地上の
-“Your Excellency, please prepare. The Foundation executives and the
+“Your Excellency, please make ready. The Foundation executives and the rest of the
 ---
 >  ロームフェラ中枢は、部下によって
 >  抑えてあります。あとはトレーズ様
-Romefeller leadership on Earth have already been secured by our subordinates. All that remains
+Romefeller leadership on Earth are already in our people’s hands. All that remains
 ---
 >  ご自身が、OZ総帥への復帰を
 >  宣言するのみ。それによって
-is for you, Your Excellency, to declare your return as OZ’s supreme commander. With that,
+is for you yourself, Your Excellency, to declare your return as OZ’s supreme commander. With that,
 ---
 >  名実ともにトレーズ派OZが
 >  正統OZとなりましょう」
-the Treize faction OZ will become the rightful OZ in both name and reality.”
+the Treize faction will be the true OZ, in name and in fact.”
 
 @31482 Treize · トレーズ
 # 审校：精读：去破折号
 > 「クイーン・リリーナ……。あなたには
 >  いったん舞台をおりていただく
-“Queen Relena... You must step down from the stage for now.
+“Queen Relena... I must ask you to leave the stage for now.
 ---
 >  この先起こることは、あなたには
 >  あまりにも荷が重い。私でなくては
-What is to come is too heavy a burden for you. It must be me.
+What comes next would be far too heavy a burden for you. It must be me.
 ---
 >  ならないのだ。私でなくては、な。
 >  あなたの出番はまだ先だ
@@ -1315,7 +1315,7 @@ It has to be me. Your turn comes later,
 ---
 >  この地球にまだ
 >  未来が残されているとわかったあとに
-after it is known that a future still remains for this Earth,
+once we know this Earth still has a future,
 ---
 >  地球圏の人々の
 >  希望としてな……」
@@ -1331,16 +1331,16 @@ as the hope of the people of the Earth Sphere...”
 # 审校：全局：弯撇号／弯引号
 > 「わかった。行こう、レディ。
 >  観客がお待ちだ」
-“Understood. Let’s go, Lady. The audience is waiting.”
+“Very well. Let us go, Lady. Our audience awaits.”
 
 @31485 Haman · ハマーン
 > 「{HeroMech}の諸君、
 >  ごくろうだった。諸君の誠実さを
-“{HeroMech}, you have done well. I have felt your sincerity.
+“{HeroMech}, my thanks for your efforts. You have shown me your good faith.
 ---
 >  感じさせてもらったぞ。
 >  私は信義を軽んずるものではない
-I am not one to make light of good faith. Now it is our turn to fulfill
+I am not one to take trust lightly. Now it is our turn to keep
 ---
 >  今度は我々が諸君に対する
 >  約束を果たす番だな」
@@ -1360,20 +1360,20 @@ our promise to you.”
 ---
 >  撃滅する。今なら後方のうれいは
 >  あるまい。バスクは戦死、ジャミトフは
-Empire’s advance fleet. There will be no rear threat now. Bask is dead in battle, and Jamitov
+Empire’s advance fleet. We need not worry about our rear now. Bask fell in battle, and Jamitov
 ---
 >  バルジ内でシロッコに暗殺された。
 >  ふふふ、この件についてはあろうことか
-was assassinated by Scirocco inside Barge. Heh heh, though it seems that in this matter,
+was assassinated by Scirocco inside Barge. Heh heh, though it seems that, of all things,
 ---
 >  私が当て馬にされたようだがな」
-I was made the scapegoat.”
+I was made the scapegoat for it.”
 
 @31488 Banjo · 万丈
 # 审校：语序
 > 「……まあ、詮索するのはやめておくよ。
 >  確かに今がチャンスだというのは
-“...Well, I’ll refrain from prying. I do agree that now’s
+“...Well, I won’t pry. But I agree, now’s
 ---
 >  同感だね」
 our chance.”
@@ -1382,11 +1382,11 @@ our chance.”
 # 审校：直译
 > 「この機に銀河帝国に
 >  攻勢をかけるか。OZ宇宙軍は
-“So we take this chance to go on the offensive against the Galactic Empire? The OZ space force is
+“So we use this chance to go on the offensive against the Galactic Empire. That man Scirocco
 ---
 >  あのシロッコという男がまとめつつある。
 >  立ち直られては、機をのがす」
-being pulled together by that man Scirocco. If they recover, we’ll miss our window.”
+is pulling the OZ space force back together. Give them time to recover, and we’ll miss our window.”
 
 @31490 Bright · ブライト
 > 「よかろう。トレーズには私が
@@ -1400,7 +1400,7 @@ I agree with your proposal. We ask for your cooperation.”
 @31491 Haman · ハマーン
 > 「いいだろう。ではこちらも出撃準備
 >  を整えるとしようか。シャア」
-“Good. Then we shall prepare for sortie as well. Char.”
+“Good. Then we shall make ready to sortie as well. Char.”
 
 @31492 Quattro · クワトロ
 > 「何か?」
@@ -1419,18 +1419,18 @@ from the Red Comet.”
 # 审校：更自然
 > 「……状況による。
 >  口出しは無用だ」
-“...That depends on the situation. Keep your opinions to yourself.”
+“...That depends on the situation. I don’t need your input.”
 
 @31495 Haman · ハマーン
 # 审校：原句语义混乱
 > 「ははははっ、では{HeroMech}の
 >  諸君、通信を終わる。失礼」
-“Hahahaha. Then, {HeroMech}, this concludes our transmission. Farewell.”
+“Hahahaha. Well then, {HeroMech}, I will sign off. Farewell.”
 
 @31496 Duo · デュオ
 > 「みんな、実はちょっとばかり
 >  頼みがあるんだが……」
-“Everyone, I actually have a small favor to ask...”
+“Hey, everyone, I’ve actually got a little favor to ask...”
 
 @31497 Quatre · カトル
 > 「どうしたんだい、デュオ」
@@ -1458,10 +1458,10 @@ and I brought them along...”
 @31501 Duo · デュオ
 > 「ヒルデは、もともとOZの志願兵
 >  だったんだ。……ま、いろいろあってな
-“Hilde was originally an OZ volunteer soldier. ...Well, a lot happened,
+“Hilde used to be an OZ volunteer. ...Well, long story short,
 ---
 >  俺についてきたってわけだ」
-and she ended up coming with me.”
+she ended up tagging along with me.”
 
 @31502 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -1484,7 +1484,7 @@ and she ended up coming with me.”
 # 审校：Rose 对队长用敬语，原文「気になさる」是敬语，译文 concern yourself 偏平实，改为更贴合敬语口吻的 let such a thing trouble you。
 > 「隊長をまどわせようとしているのです。
 >  なぜそのようなことを気になさるのですか」
-“He is trying to confuse you, Commander. Why do you let such a thing trouble you?”
+“He is only trying to confuse you, Commander. Why should that trouble you?”
 
 @31506 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
@@ -1494,12 +1494,12 @@ and she ended up coming with me.”
 ---
 >  俺とそっくりの顔。しかも俺のことを
 >  兄と呼ぶ……」
-His face is identical to mine. And he even calls me brother...”
+He looks just like me. And he even calls me brother...”
 
 @31507 Rose · ロゼ
 > (いけない……洗脳が弱まって
 >  いる……?)
-(This is bad... Is the brainwashing weakening...?)
+(No... Is the brainwashing wearing off...?)
 
 @31508 Rose · ロゼ
 # 检查提示：未用必用译名：マーグ隊→Marg Squad

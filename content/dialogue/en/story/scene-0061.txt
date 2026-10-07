@@ -1137,7 +1137,7 @@ Answer me, Marg!!”
 # 审校：全局：弯撇号／弯引号
 > 「マーグ……お前が地球に害を
 >  及ぼす以上やむをえない……殺す」
-“Marg... As long as you bring harm to Earth, there’s no other way... I’ll kill you.”
+“Marg... If you’re going to harm Earth, I have no choice... I’ll kill you.”
 
 @38509 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
@@ -1246,7 +1246,7 @@ Marg, I won’t let anyone take you now. My brother belongs to me.”
 # 审校：全局：弯撇号／弯引号
 > 「マーグ……お前が地球に害を
 >  及ぼす以上やむをえない……殺す」
-“Marg... As long as you bring harm to Earth, there’s no other way... I’ll kill you.”
+“Marg... If you’re going to harm Earth, I have no choice... I’ll kill you.”
 
 @38529 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
@@ -1367,7 +1367,7 @@ is the same as Zuul. I believed that... I belie...ved...”
 # 审校：全局：弯撇号／弯引号
 > 「マーグ……お前が地球に害を
 >  及ぼす以上やむをえない……殺す」
-“Marg... As long as you bring harm to Earth, there’s no other way... I’ll kill you.”
+“Marg... If you’re going to harm Earth, I have no choice... I’ll kill you.”
 
 @38552 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
@@ -1424,7 +1424,7 @@ And he turned me into a man who fights only as Zuul wills it...”
 # 审校：全局：弯撇号／弯引号
 > 「マーグ、もう大丈夫だ。絶対に
 >  離さない! さぁ、早くこっちへ」
-“Marg, it’s all right now. I’ll never let you go! Come on, over here, quick.”
+“Marg, it’s all right now. I’ll never let you go! Come on, quick, this way.”
 
 @38562 Marg · マーグ
 > 「ああ……わかったよマーズ」
@@ -1447,7 +1447,7 @@ And he turned me into a man who fights only as Zuul wills it...”
 # 审校：全局：弯撇号／弯引号
 > 「兄さん、大丈夫か!? 待って
 >  いてくれ、すぐ残りの敵を片づける」
-“Brother, are you all right?! Wait for me, I’ll finish off the rest of the enemy right away.”
+“Brother, are you all right?! Hang on, I’ll take care of the rest of them right now.”
 
 @38567 Marg · マーグ
 > 「……う…………」
@@ -1457,7 +1457,7 @@ And he turned me into a man who fights only as Zuul wills it...”
 # 审校：全局：弯撇号／弯引号
 > 「マーグ……お前が地球に害を
 >  及ぼす以上やむをえない……殺す」
-“Marg... As long as you bring harm to Earth, there’s no other way... I’ll kill you.”
+“Marg... If you’re going to harm Earth, I have no choice... I’ll kill you.”
 
 @38569 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
@@ -1538,7 +1538,7 @@ And I was made into a man who fights just as Zuul wills it...”
 @38583 Marg · マーグ
 > 「……!? マーズ……俺はいったい、
 >  いったいどうしたと……!?」
-“...?! Mars... What in the world, what in the world has happened to me...?!”
+“...?! Mars... What’s... what’s happened to me...?!”
 
 @38584 Takeru · タケル
 > 「兄さん!?
@@ -1617,13 +1617,13 @@ Emperor Zuul is everything to us.”
 # 审校：全局：弯撇号／弯引号
 > 「なんだよあいつ。出たり入ったり、
 >  めんどくせぇ奴だな、まったくよ」
-“What’s with that guy? Coming and going, what a pain in the ass, seriously.”
+“What’s with that guy? In, out, in, out... what a pain in the ass.”
 
 @38597 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
 > 「やっぱりね。
 >  どうせすぐ、もどってくると思ってたわ」
-“I knew it. I figured he’d come right back anyway.”
+“I knew it. I was sure he’d be back soon enough.”
 
 @38598 Duke · デューク
 # 审校：Are you not 生硬
@@ -1640,7 +1640,7 @@ Emperor Zuul is everything to us.”
 # 审校：全局：弯撇号／弯引号
 > 「これは……ナイーダ?
 >  君はナイーダだろう!?
-“This is... Naida? You’re Naida, aren’t you?!
+“Wait... Naida? You’re Naida, aren’t you?!
 ---
 >  僕だ、デューク・フリードだ!」
 It’s me, Duke Fleed!”
@@ -1717,7 +1717,7 @@ This time you’re finished!”
 @38612 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
 > 「くそっ、こんなことでやられるものか!」
-“Damn it, you think I’d go down over something like this?!”
+“Damn it, I’m not going down like this!”
 
 @38613 Hyoma · 豹馬
 # 审校：全局：弯撇号／弯引号
@@ -1932,11 +1932,11 @@ don’t you think it best not to trust Special Colonel Scirocco too much?”
 @38637 Tubarov · ツバロフ
 > 「なに、配備された全MSが
 >  MDシステムになれば
-“Why, once every deployed MS is on the MD system,
+“Why, once every deployed MS runs on the MD system,
 ---
 >  人間の兵士など
 >  不要になりましょう」
-human soldiers will become unnecessary.”
+we’ll have no need for human soldiers.”
 
 @38638 Dermail · デルマイユ
 # 审校：全局：弯撇号／弯引号
@@ -1961,7 +1961,7 @@ approaching. Shall we activate the MDs?”
 @38641 Tubarov · ツバロフ
 > 「ビルゴⅡだったな?
 >  1機で十分だ。やれ」
-“The Virgo II, was it? One unit is enough. Do it.”
+“It’s Virgo IIs we have, isn’t it? One will do. Go.”
 
 @38642 Specials · スペシャルズ
 > 「はっ」
@@ -2012,7 +2012,7 @@ Chief Engineer Tubarov was aboard the same shuttle.”
 @38648 Treize · トレーズ
 > 「デルマイユ公がなくなられたか……
 >  それはこちらの不手際だったね」
-“Duke Dermail is dead... That was our blunder, then.”
+“So Duke Dermail is gone... That was a blunder on our part.”
 
 @38649 Lady · レディ
 # 审校：全局：弯撇号／弯引号
@@ -2237,11 +2237,11 @@ She comes from a planet conquered by the Empire.”
 @38681 Marg · マーグ
 > 「マーズ、悪いのはズールだ。
 >  銀河帝国の人々すべてが
-“Mars, Zuul is the one to blame. Not everyone in the Galactic Empire
+“Mars, it’s Zuul who’s to blame. Not everyone in the Galactic Empire
 ---
 >  ズールと同じわけではない。
 >  俺はそう信じている」
-is the same as Zuul. I believe that.”
+is like Zuul. I believe that.”
 
 @38682 Takeru · タケル
 # 审校：“想办法试试的”啰嗦

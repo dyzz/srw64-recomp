@@ -2191,7 +2191,7 @@ a man who fights at Zuul’s command...”
 # 审校：全局：弯撇号／弯引号
 > 「マーグ、もう大丈夫だ。絶対に
 >  離さない! さぁ、早くこっちへ」
-“Marg, it’s all right now. I’ll never let you go! Come on, over here, quick.”
+“Marg, it’s all right now. I’ll never let you go! Come on, quick, this way.”
 
 @39552 Marg · マーグ
 > 「ああ……わかったよマーズ」
@@ -2369,7 +2369,7 @@ fleet commander, I’ll crush them here and now!”
 @39583 Duke · デューク
 > 「ガンダル! 貴様は絶対に
 >  許さんぞ!」
-“Gandal! You’ll pay for this, I swear it!”
+“Gandal! I’ll never let you get away with this!”
 
 @39584 Reika · レイカ
 > 「残存する敵はないようです」

@@ -1091,7 +1091,7 @@ you will be the hope of everyone in the Earth Sphere...”
 # 审校：全局：弯撇号／弯引号
 > 「わかった。行こう、レディ。
 >  観客がお待ちだ」
-“Understood. Let’s go, Lady. The audience is waiting.”
+“Very well. Let us go, Lady. Our audience awaits.”
 
 @30831 Marg · マーグ
 > 「……う……ここは……?」
