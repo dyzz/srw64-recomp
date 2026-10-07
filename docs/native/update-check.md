@@ -12,8 +12,8 @@
 
 2026-10-07 起 HD 包有自己的版本号，和应用分开发布：
 
-- 版本号是日期（`2026.10.07`，同一天第二个是 `2026.10.07.2`），写在包里 `hd.json` 的 `version`；`hd.json` 还有 `content_sha256`，是包内全部文件（路径＋内容，除 `hd.json`、`NOTICE.txt`）的摘要（`prepare_hd_bundle.py`）。HD 包可以复现：同一份素材连建两次，6644 个文件逐字节相同。
-- `build_release.py` 每次都建 HD 包，把摘要和所建提交里的 `web/src/data/release.json` 的 `hd.content_sha256` 比较：相同就沿用那一版，不打包；不同就取新版本号（默认当天，`--hd-version` 可指定），打成 `Marchwind64-HD-<版本>.zip`，`release.json` 里多一条 `publish_hd`（标签 `hd-<版本>`，`--latest=false`，先于应用发布），另写 `hd-release-notes.md`。应用的发布说明只链接当前 HD 包的发布页。
+- 版本号和应用一样是数字（第一个是 `1.0`，之后默认末位加一：`1.1`、`1.2`…；大改时用 `--hd-version 2.0` 指定），写在包里 `hd.json` 的 `version`；`hd.json` 还有 `content_sha256`，是包内全部文件（路径＋内容，除 `hd.json`、`NOTICE.txt`）的摘要（`prepare_hd_bundle.py`）。HD 包可以复现：同一份素材连建两次，6644 个文件逐字节相同。
+- `build_release.py` 每次都建 HD 包，把摘要和所建提交里的 `web/src/data/release.json` 的 `hd.content_sha256` 比较：相同就沿用那一版，不打包；不同就取新版本号（默认末位加一，`--hd-version` 可指定），打成 `Marchwind64-HD-<版本>.zip`，`release.json` 里多一条 `publish_hd`（标签 `hd-<版本>`，`--latest=false`，先于应用发布），另写 `hd-release-notes.md`。应用的发布说明只链接当前 HD 包的发布页。
 - 发布后 `web/scripts/sync-release.mjs` 把 `hd` 写进官网的 `release.json`；`/latest.json` 的 `hd` 给出版本、各语言下载页（安装页 `#hd`）、文件与校验值。没有版本号的旧包（0.3.5 随应用发布的那个）不出现在 `latest.json`。
 - 游戏读已装的包：`SRW64_ART_PACK`（`hd/art`）旁边的 `hd/hd.json`。开发运行的美术目录没有 `hd.json`，算没装。`hd_newer()`（`update_version.hpp`）：装了包、官网的版本比它新，或装的包没有版本号，才提示；没装 HD 的玩家不提示。
 
@@ -54,7 +54,7 @@
 
 ## 验证
 
-- `tests/native_update.cpp`（根 CMake 的 `native-update`）：版本比较、网站语言与 `hd_newer`。`tests/test_hd_release.py` 的 `HdVersionTests`：摘要只随内容变、版本号按日期递增。
+- `tests/native_update.cpp`（根 CMake 的 `native-update`）：版本比较、网站语言与 `hd_newer`。`tests/test_hd_release.py` 的 `HdVersionTests`：摘要只随内容变、版本号末位加一。
 - 2026-10-07 用独立小程序（`update_check.cpp`＋`update_http_macos.mm`，`SRW64_UPDATE_URL` 指向本地 `latest.json`，`SRW64_ART_PACK` 指向假的 `hd/art`）验证四种情况：没有版本号的包、较旧的包提示，同版本、没装 HD 不提示。
 - 测试时用 `SRW64_UPDATE_URL` 指向别处（本地 `file://` 或本地服务器）；启动器会保留这个变量。2026-10-06 用独立小程序（只链接 `update_check.cpp`、`update_http_macos.mm`）在 macOS 上验证：本地 0.3.6 对 0.3.5 报新版、对 0.3.6 报已是最新、链接按语言取、`update.json` 写入；官网尚未部署时报「HTTP 404」；非 `latest.json` 的 200 响应报「not a release description」。
 - 「关于」页排版：`tools/recomp/ui_audit/run_audit.py --only about`，三语四种尺寸无溢出。

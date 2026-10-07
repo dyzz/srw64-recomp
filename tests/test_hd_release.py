@@ -170,7 +170,7 @@ class CompressHdTests(unittest.TestCase):
 
 
 class HdVersionTests(unittest.TestCase):
-    """The HD pack's own versions: a digest of its contents, and dates for a changed pack."""
+    """The HD pack's own versions: a digest of its contents, and the next number for a changed pack."""
 
     def test_the_digest_follows_the_contents_only(self):
         bundle = load("prepare_hd_bundle")
@@ -188,13 +188,12 @@ class HdVersionTests(unittest.TestCase):
             (folder / "art/a.jpg").rename(folder / "art/b.jpg")
             self.assertNotEqual(bundle.content_sha256(folder), first)
 
-    def test_a_changed_pack_is_named_by_the_day(self):
+    def test_a_changed_pack_takes_the_next_number(self):
         release = load("build_release")
-        today = release.time.strftime("%Y.%m.%d")
-        self.assertEqual(release.next_hd_version(""), today)
-        self.assertEqual(release.next_hd_version("2026.01.02"), today)
-        self.assertEqual(release.next_hd_version(today), f"{today}.2")
-        self.assertEqual(release.next_hd_version(f"{today}.2"), f"{today}.3")
+        self.assertEqual(release.next_hd_version(""), "1.0")
+        self.assertEqual(release.next_hd_version("1.0"), "1.1")
+        self.assertEqual(release.next_hd_version("1.9"), "1.10")
+        self.assertEqual(release.next_hd_version("2.0.3"), "2.0.4")
 
 
 if __name__ == "__main__":

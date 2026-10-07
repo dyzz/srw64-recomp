@@ -15,7 +15,7 @@ Writes to OUTPUT:
   release.json, release-notes.md (hd-release-notes.md with a new pack), logs/
 Publishing is a separate, manual step: release.json holds the gh commands.
 
-The HD pack has versions of its own, dates such as 2026.10.07, and its own GitHub
+The HD pack has version numbers of its own (1.0, 1.1 …) and its own GitHub
 release (tag hd-<hd version>, not marked latest). The pack is always built; when its
 content_sha256 (prepare_hd_bundle.py) is the one the website lists (web/src/data/release.json
 in the built commit, written by web/scripts/sync-release.mjs), the release keeps that
@@ -89,13 +89,11 @@ def zip_folder(steps: Steps, name: str, parent: Path, folder: str, archive: Path
 
 
 def next_hd_version(listed: str) -> str:
-    """Today as YYYY.MM.DD, or today.N after the website's pack of today.N-1."""
-    today = time.strftime("%Y.%m.%d")
-    if listed == today:
-        return f"{today}.2"
-    if listed.startswith(today + "."):
-        return f"{today}.{int(listed.rsplit('.', 1)[1]) + 1}"
-    return today
+    """The website's HD version with its last number one up; 1.0 for the first."""
+    parts = listed.split(".")
+    if not listed or not all(part.isdigit() for part in parts):
+        return "1.0"
+    return ".".join([*parts[:-1], str(int(parts[-1]) + 1)])
 
 
 def main() -> int:
@@ -105,8 +103,8 @@ def main() -> int:
     parser.add_argument("--output", type=Path, help="new directory (default build/release/<version>-<commit>)")
     parser.add_argument("--keep-source", action="store_true", help="keep OUTPUT/src and its build after success")
     parser.add_argument("--jobs", type=int, default=8)
-    parser.add_argument("--hd-version", help="the version for a changed HD pack (default: today, YYYY.MM.DD, "
-                        "with .2, .3 … after one already made today)")
+    parser.add_argument("--hd-version", help="the version for a changed HD pack (default: the listed one's last number "
+                        "one up, 1.0 → 1.1; give 2.0 for a large change)")
     parser.add_argument("--attach", action="append", default=[], metavar="PLATFORM=FILE",
                         help="another platform's package built elsewhere: linux=… (build_linux.py) or "
                              "windows=… (the windows workflow); copied in as Marchwind64-<version>-<platform> and "
