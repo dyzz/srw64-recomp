@@ -32,7 +32,7 @@ and the other is Queen Elle’s Goraon.”
 # 审校：全局：弯撇号／弯引号
 > 「どちらとの合流をめざすにしろ、
 >  現状では我々にとってはあまり
-“Whichever one we aim to join up with, at present it doesn’t make
+“Whichever one we head for, right now it doesn’t make
 ---
 >  たいした違いはないな」
 much difference to us.”
@@ -46,7 +46,7 @@ much difference to us.”
 @21798 Selain · セレイン（按段落 3DD2）
 > 「確かに、どのみち危険なことには
 >  かわりないでしょう」
-“True, either way it will be dangerous all the same.”
+“True. Either way, it will be dangerous.”
 
 @21799 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -86,12 +86,12 @@ Lady Ciela and Lady Elle!”
 @21804 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「では我々で決めるとするか」
-“Then we’ll decide among ourselves.”
+“Then we’ll have to decide ourselves.”
 
 @21805 Koji · 甲児
 > 「じゃあさ艦長、
 >  美人のほうってのはどうですかね?」
-“Then how about this, Captain? What if we go with the pretty one?”
+“Hey, Captain, how about we go with whichever one’s prettier?”
 
 @21806 Sayaka · さやか
 > 「ちょっと甲児くん!」
@@ -100,7 +100,7 @@ Lady Ciela and Lady Elle!”
 @21807 Tetsuya · 鉄也
 > 「やれやれ、こんな奴と一緒に
 >  戦わねばならんとは……」
-“Good grief, to think I have to fight alongside this guy...”
+“Good grief, and I’m supposed to fight alongside this guy...”
 
 @21808 Koji · 甲児
 > 「なにをぉっ!?」
@@ -110,7 +110,7 @@ Lady Ciela and Lady Elle!”
 # 审校：全局：弯撇号／弯引号
 > 「やめなよ、ふたりとも。
 >  みっともないったらありゃしない」
-“Cut it out, you two. You’re both acting ridiculous.”
+“Cut it out, you two. You’re embarrassing yourselves.”
 
 @21810 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
@@ -192,7 +192,7 @@ a warship that looks like a castle kinda interests me.”
 # 审校：全局：弯撇号／弯引号
 > 「……ないようならそれでいくか。
 >  では我々はこれからバイストンウェルの
-“...If not, we’ll go with that. Then we’ll head out to join up with
+“...If not, then that’s decided. We’ll set out to join up with
 ---
 >  シーラ女王との合流に向かう
 >  ことにする。各自持ち場につけ」
@@ -232,7 +232,7 @@ together, having more firepower can’t hurt, right?”
 # 审校：全局：弯撇号／弯引号
 > 「……ないようならそれでいくか。
 >  では我々はこれからバイストンウェルの
-“...If not, we’ll go with that. Then we’ll head out to join up with
+“...If not, then that’s decided. We’ll set out to join up with
 ---
 >  エレ女王との合流に向かう
 >  ことにする。各自持ち場につけ」
@@ -246,7 +246,7 @@ Queen Elle of Byston Well. Everyone, to your posts.”
 # 审校：聖女＝Saint
 > 「父上、うかがいたいことがあります。
 >  なぜレイズナーとの接触を
-“Father, I have something I wish to ask. Why did you forbid contact with
+“Father, there is something I must ask. Why did you forbid contact with
 ---
 >  はばませたのです。それともうひとつ、
 >  父上が連れ去らせた聖女を
@@ -254,11 +254,11 @@ the Layzner? And one more thing: what have you done with the Saint you had
 ---
 >  どうされたのです。このグラドスタワーの
 >  どこかへ連れ込んだことは
-taken away? I have confirmed that she was brought somewhere into this Grados Tower.
+taken away? I have learned she was brought somewhere inside this Grados Tower.
 ---
 >  調べがついております。
 >  父上、今日こそお聞かせください」
-Father, today you will tell me.”
+Father, today I will have my answer.”
 
 @21830 Gresco · グレスコ
 > 「ル・カインよ。レジスタンス
@@ -275,7 +275,7 @@ As commander of the occupation forces, you must still devote yourself fully to
 ---
 >  尽くさねばならん。くだらぬことに
 >  固執し、詰めを誤らせるつもりか?」
-subjugating the Earth. Do you intend to cling to trifles and misjudge the finish?”
+subjugating the Earth. Would you fixate on trifles and botch the final stroke?”
 
 @21831 Le Cain · ル・カイン
 # 审校：聖女＝Saint
@@ -293,15 +293,15 @@ What I want now is to hear what you are thinking, Father.
 ---
 >  聖女の行方について、民衆は
 >  おろか兵士の一部までもが
-About where the Saint has gone, not just the people but even some of the soldiers
+Over the Saint’s whereabouts, the people and even some of the soldiers
 ---
 >  騒ぎはじめております。父上!」
-have begun to stir. Father!”
+have begun to grow restless. Father!”
 
 @21832 Gresco · グレスコ
 > 「……ル・カイン……
 >  すべてはお前のためなのだ」
-“...Le Cain... Everything is for your sake.”
+“...Le Cain... All of this is for your sake.”
 
 @21833 Le Cain · ル・カイン
 > 「……なんですと?」
@@ -335,7 +335,7 @@ You once called that the principle of your rule.”
 @21838 Gresco · グレスコ
 > 「……ル・カイン、
 >  明日もう一度ここへくるがよい」
-“...Le Cain, come here again tomorrow.”
+“...Le Cain, come back tomorrow.”
 
 @21839 Le Cain · ル・カイン
 > 「……わかりました。
@@ -374,7 +374,7 @@ and Karaba have taken damage severe enough to make rebuilding difficult.”
 @21844 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「やはりそうか……今後のことはなんと?」
-“So it’s as I thought... What does he say about the future?”
+“As I feared... What does he plan to do next?”
 
 @21845 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -398,7 +398,7 @@ the Empire’s attacks. However...”
 # 审校：全局：弯撇号／弯引号
 > 「そうだ。我々が倒れれば、もはや
 >  レジスタンスの再建はできんな
-“That’s right. If we fall, the resistance can no longer be rebuilt.
+“That’s right. If we fall, there’ll be no rebuilding the resistance.
 ---
 >  准将もそれをご承知の上で、
 >  我々に独自の判断で行動を
@@ -417,10 +417,10 @@ on our own judgment.”
 # 审校：全局：弯撇号／弯引号
 > 「我々が大陸へ向かうということを
 >  聞き、現状で可能なかぎりの
-“He says that upon hearing we’re heading for the continent, they’ll provide
+“When he heard we were heading for the continent, he said they’d send
 ---
 >  補給は行うということだ」
-whatever resupply is possible under the current circumstances.”
+as many supplies as they can manage right now.”
 
 @21850 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -444,7 +444,7 @@ whatever resupply is possible under the current circumstances.”
 ---
 >  どちらに向かうのかは
 >  決まったのだろう?」
-Have you decided which way we’re heading?”
+You’ve decided which one we’re heading for, I take it?”
 
 @21854 Bright · ブライト
 > 「ああ」
@@ -453,13 +453,13 @@ Have you decided which way we’re heading?”
 @21855 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「ではあとはうまくいくことを祈るとしよう」
-“Then let’s just pray it goes well.”
+“Then all that’s left is to hope it goes well.”
 
 @21856 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「ここからはどこへ向かっても敵に
 >  発見される可能性はあるな」
-“From here on, there’s a chance we’ll be spotted by the enemy no matter which way we go.”
+“From here on, no matter which way we go, the enemy might spot us.”
 
 @21857 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -474,7 +474,7 @@ there’s a good chance that battleship is under attack, isn’t there?”
 @21858 Bright · ブライト
 > 「そうだな。お前たちは
 >  出撃準備をしておいてくれ」
-“Indeed. You all get ready to launch.”
+“Right. You lot, get ready to launch.”
 
 @21859 Shinobu · 忍
 > 「了解だ」
@@ -500,17 +500,17 @@ every time we see each other, so I’ve been keepin’ my distance.”
 # 审校：全局：弯撇号／弯引号
 > 「シャピロ・キーツか……。帝国との
 >  交戦前から降伏を進言して
-“Shapiro Keats... I’d heard that even before the war with the Empire, he proposed
+“Shapiro Keats... I’d heard he urged surrender before the fighting with the Empire even began,
 ---
 >  参謀本部からつまはじきされたと
 >  聞いていたが」
-surrender and was shunned by the General Staff.”
+and the General Staff froze him out.”
 
 @21863 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
 > 「それで奴は帝国に寝返ったんだ。
 >  あのとき俺がとめなきゃ
-“And so he defected to the Empire. If I hadn’t stopped her back then,
+“So he went over to the Empire. If I hadn’t stopped her back then,
 ---
 >  沙羅のやつも
 >  くっついていっちまう所だった」
@@ -520,11 +520,11 @@ Sara would’ve gone along with him too.”
 # 审校：全局：弯撇号／弯引号
 > 「だが終戦後にもシャピロが帝国に
 >  いるという話は聞かなかったがな
-“But I never heard talk of Shapiro being with the Empire after the war ended.
+“But after the war, I never heard anything about Shapiro being with the Empire.
 ---
 >  彼がバイストンウェル軍と
 >  一緒にいたというのも気になるな」
-It’s also curious that he was with the Byston Well Forces.”
+And it bothers me that he was with the Byston Well Forces.”
 
 @21865 Beltorchika · ベルトーチカ
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -552,17 +552,17 @@ and camouflaged itself.”
 @21868 Bright · ブライト
 # 审校：飞船不说 sail
 > 「航行できないのか? 敵影は?」
-“Can’t it move? Any sign of the enemy?”
+“Can’t it fly? Any sign of the enemy?”
 
 @21869 Beltorchika · ベルトーチカ
 > 「現在のところ、ないそうです」
-“None at present, apparently.”
+“None so far, they say.”
 
 @21870 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「敵がいないのは幸いだったな。
 >  あとは補給部隊の方だけか」
-“Lucky there’s no enemy. So it’s just the supply unit left.”
+“Good thing there’s no enemy. That leaves only the supply unit.”
 
 @21871 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -609,20 +609,20 @@ what appears to be the Goraon. It looks like it’s been hit.”
 
 @21878 Bright · ブライト
 > 「大丈夫なのか? 敵影は?」
-“Is it all right? Any sign of the enemy?”
+“Are they all right? Any sign of the enemy?”
 
 @21879 Beltorchika · ベルトーチカ
 > 「現在のところ、ないそうです」
-“None at present, apparently.”
+“None so far, they say.”
 
 @21880 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「敵は引き上げた後か……。またくる
 >  かもしれないな。補給部隊が
-“So the enemy pulled back... They might come again. I hope the supply unit
+“So the enemy has already pulled out... They may be back. I hope they don’t go
 ---
 >  狙われなければいいが……」
-doesn’t get targeted...”
+after the supply unit...”
 
 @21881 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -667,7 +667,7 @@ once we’re close, go on ahead and check the situation.”
 # 审校：全局：弯撇号／弯引号
 > 「かなり攻撃を受けました。
 >  あまり、無事とは申せませんね」
-“We took quite a beating. I can’t exactly say we’re safe.”
+“We have taken a great deal of fire. I cannot truly say we are safe.”
 
 @21889 Marvel · マーベル
 # 审校：全局：弯撇号／弯引号
@@ -686,11 +686,11 @@ Would you permit us to approach?”
 # 审校：全局：弯撇号／弯引号
 > 「マーベルもいるのですね。
 >  地上人の反政府軍……
-“Marvel, you’re here too. The surface dwellers’ anti-government army...
+“Marvel is with you as well. The surface dwellers’ anti-government army...
 ---
 >  信用できるのでしょうか? 地上は
 >  星の世界からきた者たちに
-can they be trusted? I’ve heard the surface was invaded
+can they be trusted? I have heard the surface was invaded
 ---
 >  侵略されたと聞いています」
 by people who came from the Star World.”
@@ -700,19 +700,19 @@ by people who came from the Star World.”
 # 检查提示：未用必用译名：ドレイク軍→Drake Army
 > 「ドレイクの軍がそちらにつきました。
 >  彼らはドレイク軍とも
-“Drake’s army has sided with them. They’re also
+“Drake’s army has joined them. And these people are fighting
 ---
 >  戦っているのです」
-fighting Drake’s army.”
+Drake’s army as well.”
 
 @21892 Ciela · シーラ
 # 审校：全局：弯撇号／弯引号
 > 「ドレイク・ルフトが……やはりそうでしたか
 >  わかりました
-“Drake Luft... So that’s how it is. Understood.
+“Drake Luft... So it is true. Very well.
 ---
 >  その方々とお会いしましょう」
-Let us meet these people.”
+I will meet with these people.”
 
 @21893 Chum · チャム
 > 「よかったぁ」
@@ -728,7 +728,7 @@ Let us meet these people.”
 # 审校：全局：弯撇号／弯引号
 > 「いえ、遅くなってしまい
 >  申しわけありませんでした」
-“No, I’m sorry we were so late.”
+“No, forgive us for taking so long.”
 
 @21896 Marvel · マーベル
 > 「ショウ、アルビオンがくるわ」
@@ -743,7 +743,7 @@ Let us meet these people.”
 @21898 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「ゴラオンが……かなりやられている?」
-“The Goraon... It’s taken quite a beating?”
+“The Goraon... has it been badly hit?”
 
 @21899 Marvel · マーベル
 > 「そのようね。エレ様は大丈夫かしら」
@@ -768,7 +768,7 @@ Let us meet these people.”
 # 审校：全局：弯撇号／弯引号
 > 「あまり無事といえる状況では
 >  ありませんね」
-“I can’t exactly say we’re in a safe situation.”
+“I cannot say we are entirely safe.”
 
 @21904 Marvel · マーベル
 # 审校：全局：弯撇号／弯引号
@@ -787,7 +787,7 @@ Would you permit us to approach?”
 # 审校：全局：弯撇号／弯引号
 > 「マーベルもいるのですね。
 >  地上人の戦艦…………
-“Marvel, you’re here too. The surface dwellers’ battleship...
+“Marvel is with you as well. A surface dwellers’ battleship...
 ---
 >  悪意は感じません、
 >  許可しましょう」
@@ -897,21 +897,21 @@ Please, hurry!”
 # 审校：全局：弯撇号／弯引号
 > 「サルどもめ、好きかってやりおって。
 >  全力で奴らを叩け!」
-“Those monkeys, doing whatever they please. Hit them with everything we’ve got!”
+“Damned monkeys, running wild like this. Hit them with everything we’ve got!”
 
 @21925 Giura · ギウラ
 # 审校：全局：弯撇号／弯引号
 > 「サルどもめ、好きかってやりおって。
 >  全力で奴らを叩け!」
-“Those monkeys, doing whatever they please. Hit them with everything we’ve got!”
+“Damned monkeys, running wild like this. Hit them with everything we’ve got!”
 
 @21926 Aisha · アイシャ（按段落 3DD4）
 > 「……やはりお逃げになっていたのね、
 >  {HeroName}さん
-“...So you were running away after all, {HeroName}.
+“...So you did run away, {HeroName}.
 ---
 >  でも、それもここまでですわ」
-But that ends here.”
+But your flight ends here.”
 
 @21927 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
@@ -969,7 +969,7 @@ Albion, please respond.”
 @21936 Bright · ブライト
 > 「准将の? 了解した、
 >  よろしく頼む」
-“By the Brigadier General? Understood, we appreciate it.”
+“The Brigadier General’s orders? Understood, we’re glad to have you.”
 
 @21937 Gyukenki · 牛剣鬼
 > 「おのれ、おのれぇぇーっ!!」
@@ -1065,7 +1065,7 @@ but it seems the battle is already over.”
 
 @21953 Bright · ブライト
 > 「そうか、助かる」
-“I see. That helps.”
+“Good. That’s a big help.”
 
 @21954 Bright · ブライト
 > 「な、なんだと!?」
@@ -1085,7 +1085,7 @@ but it seems the battle is already over.”
 # 审校：全局：弯撇号／弯引号
 > 「ふふふ、このところ
 >  ずいぶん無理をしてましたものね」
-“Hehehe, we’ve been pushing things awfully hard lately, after all.”
+“Hehe, you’ve really been pushing yourself lately, haven’t you?”
 
 @21958 Astonaige · アストナージ
 > 「まったく、勘弁してほしいよ」
@@ -1095,7 +1095,7 @@ but it seems the battle is already over.”
 # 审校：全局：弯撇号／弯引号
 > 「うーん、ずいぶん減ってしまったのよね。
 >  アストナージさん
-“Hmm, it’s gotten awfully low. Astonaige,
+“Hmm, we’re running awfully low. Astonaige,
 ---
 >  これだけで大丈夫なんでしょうか」
 will this really be enough?”
@@ -1104,11 +1104,11 @@ will this really be enough?”
 # 审校：全局：弯撇号／弯引号
 > 「大丈夫じゃないさ。……しかしまぁ、
 >  だましだましやっていくしかないな
-“It’s not enough. ...But well, we’ve just got to make do and keep patching things together.
+“It won’t be. ...But hey, we’ll just have to scrape by somehow.
 ---
 >  食料品がほとんど無事だったこと
 >  だけでもよしとしなけりゃな?」
-We should count ourselves lucky the food supplies were mostly untouched, at least.”
+At least most of the food made it through. We should be grateful for that, right?”
 
 @21961 Rain · レイン
 > 「フフッ、そうですね」
@@ -1117,15 +1117,15 @@ We should count ourselves lucky the food supplies were mostly untouched, at leas
 @21962 Rain · レイン
 > 「そういえば、戦闘機のようなものが
 >  あったみたいですけど……」
-“By the way, I think there was something like a fighter plane...”
+“By the way, it looked like there was some kind of fighter in there...”
 
 @21963 Astonaige · アストナージ
 > 「ああ、Gディフェンサーってやつだな」
-“Ah, that thing called the G-Defenser.”
+“Oh, that’s the G-Defenser.”
 
 @21964 Rain · レイン
 > 「ずいぶんと頼りない機体ですね」
-“It looks like a rather unreliable machine.”
+“It doesn’t look very dependable.”
 
 @21965 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -1135,15 +1135,15 @@ We should count ourselves lucky the food supplies were mostly untouched, at leas
 
 @21966 Masato · 雅人
 > 「へぇ、あの戦闘機が?」
-“Huh, that fighter plane is?”
+“Huh, that fighter?”
 
 @21967 Astonaige · アストナージ
 > 「増加装甲と武装のオプションだ
 >  と考えればいいんだ。もちろん、単体
-“You can think of it as optional extra armor and armaments. Of course, it seems it can
+“Think of it as an add-on package of armor and weapons. Though I hear it can
 ---
 >  でも運用はできるらしいけどな」
-also be operated on its own.”
+fly on its own too.”
 
 @21968 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1193,7 +1193,7 @@ chatting so happily with other men.”
 @21974 Domon · ドモン
 # 审校：勝手なことをいうな 口语化
 > 「勝手なことをいうな!!」
-“Don’t go spouting nonsense!!”
+“Don’t put words in my mouth!!”
 
 @21975 Ryo · 亮
 # 审校：全局：弯撇号／弯引号
@@ -1203,7 +1203,7 @@ chatting so happily with other men.”
 ---
 >  少しは静かにしたほうがいいんじゃ
 >  ないのか? 品性が疑われる」
-Shouldn’t you be a little quieter? People will question your breeding.”
+Shouldn’t you keep it down a little? People will think you have no class.”
 
 @21976 Domon · ドモン
 > 「ちっ」
@@ -1213,7 +1213,7 @@ Shouldn’t you be a little quieter? People will question your breeding.”
 # 审校：全局：弯撇号／弯引号
 > 「……という状況です。
 >  ご協力いただけますか?」
-“...That’s the situation. Will you lend us your cooperation?”
+“...That’s the situation. Will you work with us?”
 
 @21978 Ciela · シーラ
 > 「……わかりました。ドレイクは倒さねば
@@ -1231,13 +1231,13 @@ we look forward to working with you.”
 @21980 Ciela · シーラ
 > 「地上では我々にはわからぬことも
 >  多いのです。こちらこそ頼みます」
-“There is much on the surface we do not understand. We ask the same of you.”
+“There is much on the surface we do not understand. It is we who must rely on you.”
 
 @21981 Chum · チャム
 # 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
 > 「ね、シーラ様はちゃんと
 >  わかってくれるんだからっ」
-“See, Lady Ciela understands properly!”
+“See? Lady Ciela gets it!”
 
 @21982 Show · ショウ
 # 审校：全局：弯撇号／弯引号
@@ -1274,13 +1274,13 @@ so I believe the work will be finished before long.”
 # 审校：全局：弯撇号／弯引号
 > 「……という状況です。
 >  ご協力いただけますか?」
-“...That’s the situation. Will you lend us your cooperation?”
+“...That’s the situation. Will you work with us?”
 
 @21988 Elle · エレ
 # 审校：全局：弯撇号／弯引号
 > 「はい。ドレイクは放っておくわけにも
 >  まいりませんし……それに……」
-“Yes. We can’t just leave Drake be, after all... and besides...”
+“Yes. We cannot leave Drake unchecked... and besides...”
 
 @21989 Marvel · マーベル
 > 「どうされたのですか?」
@@ -1290,20 +1290,20 @@ so I believe the work will be finished before long.”
 # 审校：Thinking of ... as well 直译
 > 「いえ……、この世界にみちる
 >  悪意の力を感じます
-“No... I sense a power of malice filling this world.
+“No... I sense a malevolent force filling this world.
 ---
 >  バイストンウェルのことを考えても、
 >  やはり放置できません」
-For Byston Well’s sake as well, we cannot simply leave it be.”
+For Byston Well’s sake as well, we cannot leave it be.”
 
 @21991 Amuro · アムロ
 > 「悪意の力?」
-“A power of malice?”
+“A malevolent force?”
 
 @21992 Elle · エレ
 > 「そうとしか申し上げられませんが……
 >  ともかく、協力させていただきます」
-“I can only describe it that way... In any case, we will lend you our cooperation.”
+“That is all I can call it... In any case, we will gladly help you.”
 
 @21993 Bright · ブライト
 > 「それでは、いろいろと
@@ -1317,7 +1317,7 @@ we look forward to working with you.”
 # 审校：全局：弯撇号／弯引号
 > 「こちらこそ。聖戦士の故郷の
 >  方々のお力、頼りにしています」
-“The same to you. We are counting on the strength of the people from the Holy Warriors’ homeland.”
+“Likewise. We will be relying on the strength of the Holy Warriors’ countrymen.”
 
 @21995 Quattro · クワトロ
 > 「ところで被弾箇所の様子は
@@ -1327,20 +1327,20 @@ we look forward to working with you.”
 @21996 Elle · エレ
 > 「このままでも応急修理は
 >  可能です
-“Emergency repairs are possible as things stand.
+“We can make emergency repairs as we are.
 ---
 >  航行に支障はありませんが……
 >  可能ならばどこかで修理を
-There is no hindrance to navigation, but... if possible, I would like to
+It will not prevent us from flying, but... if possible, I would like to
 ---
 >  したいところですね。
 >  時間さえあればよいのですが……」
-carry out proper repairs somewhere. If only we had the time...”
+have proper repairs done somewhere. If only we had the time...”
 
 @21997 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「近いうちになんとかしてみましょう」
-“We’ll manage it somehow before long.”
+“We’ll see what we can do soon.”
 
 @21998 Bright · ブライト
 # 审校：少尉＝Second Lieutenant（与 Captain/Major/Colonel 同属陆军体系）
@@ -1371,19 +1371,19 @@ but I’m counting on you, Second Lieutenant.”
 # 审校：全局：弯撇号／弯引号
 > 「了解であります。しかし、この部隊
 >  にはガンダムがあります。大丈夫だと
-“Understood, sir. But this unit has a Gundam. I want to believe
+“Understood, sir. But this unit has a Gundam. I’d like to think
 ---
 >  思いたいですね」
-we’ll be all right.”
+we’ll be fine.”
 
 @22003 Amuro · アムロ
 > 「そうかい?」
-“Is that so?”
+“You think so?”
 
 @22004 Kou · コウ
 # 审校：全局：弯撇号／弯引号
 > 「そうです! 自分はそう思います!」
-“Yes! That’s what I believe!”
+“Yes, sir! I do!”
 
 @22005 Gresco · グレスコ
 # 审校：全局：弯撇号／弯引号
@@ -1392,7 +1392,7 @@ we’ll be all right.”
 
 @22006 Le Cain · ル・カイン
 > 「父上、お聞かせいただきましょう」
-“Father, let us hear it.”
+“Father, I will have my answer now.”
 
 @22007 Gresco · グレスコ
 > 「うむ……」
@@ -1408,7 +1408,7 @@ we’ll be all right.”
 
 @22010 Le Cain · ル・カイン
 > 「やはりでしたな、父上」
-“It was as I thought, Father.”
+“Just as I suspected, Father.”
 
 @22011 Gresco · グレスコ
 > 「ジュリアよ……ル・カインに話すがよい」
@@ -1439,7 +1439,7 @@ are races that sprang from the same root.”
 # 审校：The moment you appear 直译
 > 「フッ、あらわれたとたん、
 >  奇異なことをいう」
-“Hmph. Barely here a moment, and already you speak such strange things.”
+“Hmph. You have scarcely arrived, and already you talk nonsense.”
 
 @22014 Julia · ジュリア
 > 「いいえ、ウソではありません。
@@ -1484,7 +1484,7 @@ Father, do you still intend to let Julia say whatever she pleases?!”
 @22018 Gresco · グレスコ
 > 「……ル・カイン、ジュリアの言葉は
 >  すべて事実だ。嘘はない」
-“...Le Cain, everything Julia says is the truth. There is no lie.”
+“...Le Cain, everything Julia says is the truth. Not a word of it is false.”
 
 @22019 Le Cain · ル・カイン
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
@@ -1572,12 +1572,12 @@ Under Emperor Muge Zorbados, the Empire has dominated the stars in that way.”
 @22028 Gresco · グレスコ
 > 「やはり占領軍司令官としては
 >  まだまだ未熟なようだな、ル・カイン」
-“It seems you are still far from mature as an occupation army commander, Le Cain.”
+“It seems you are still far too green to command an occupation army, Le Cain.”
 
 @22029 Le Cain · ル・カイン
 > 「それは父上のお考え!
 >  私の場合はあくまでも
-“That is your thinking, Father! In my case, I hold to the belief that
+“That is your thinking, Father! My belief remains that
 ---
 >  すぐれた者こそが支配すべきという
 >  考え方です!」
@@ -1585,7 +1585,7 @@ only the superior should rule!”
 
 @22030 Gresco · グレスコ
 > 「支配だけなら愚者でも可能だ」
-“If it were only domination, even a fool could do it.”
+“Even a fool can rule, if ruling is all it is.”
 
 @22031 Le Cain · ル・カイン
 > 「いえ! すぐれている者こそです!」
@@ -1616,12 +1616,12 @@ flee from the heights of domination!!”
 @22036 Gresco · グレスコ
 > 「私はお前をかいかぶりすぎていたな。
 >  お前は幼すぎる」
-“I overestimated you far too much. You are too young.”
+“I thought far too highly of you. You are still a child.”
 
 @22037 Le Cain · ル・カイン
 > 「卑怯ですぞ父上。私が父上の
 >  意にそぐわぬからといって
-“That is cowardly, Father. Just because I do not suit your wishes,
+“That is cowardly, Father. Just because I go against your wishes...
 ---
 >  それが父上の支配の論理ですか」
 is that your logic of domination?”
@@ -1668,7 +1668,7 @@ the truth of my... death... keep it secret, keep it secret...”
 
 @22046 Le Cain · ル・カイン
 > 「ち……父上ぇぇーっ!!」
-“D... Faaatheeeer!!”
+“F... Faaatheeeer!!”
 
 @22047 Gresco · グレスコ
 > 「…………カルラ……」

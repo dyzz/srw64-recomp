@@ -17,7 +17,7 @@
 @21142 Koji · 甲児
 # 审校：去掉 it can't be helped
 > 「そうなっちまったら、しかたのないことさ」
-“If it comes to that, then that’s just how it is.”
+“If it comes to that, so be it.”
 
 @21143 Erika · エリカ
 > 「えぇっ!?」
@@ -27,29 +27,29 @@
 # 审校：全局：弯撇号／弯引号
 > 「今のこの世界を見てみなよ。
 >  地球はもうボロボロだし
-“Take a look at the world right now. The Earth is already in ruins,
+“Look at the world right now. The Earth’s in ruins,
 ---
 >  大勢の人たちが苦しみながら生き
 >  ている。ロームフェラの連中以外に
-and so many people are living in suffering. Apart from the Romefeller
+and tons of people are just struggling to get by. Apart from the Romefeller
 ---
 >  今の世界で幸せを感じられる
 >  地球人なんか、いやしない
-crowd, there isn’t a single Earthling who can feel happy in this world.
+crowd, there isn’t a single Earthling who’s happy in this world.
 ---
 >  帝国の情け容赦ないやり方に、
 >  みんな、おびえながら生きているんだ」
-Everyone lives in fear of the Empire’s merciless ways.”
+Everyone lives in fear of the Empire’s ruthlessness.”
 
 @21145 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「おまけに百鬼一族やミケーネのよう
 >  にこれまで機会をうかがってた奴らも
-“On top of that, guys like the Hyakki Clan and Mycenae, who’d been waiting
+“On top of that, guys like the Hyakki Clan and Mycenae, who’d been biding their time,
 ---
 >  出てきて帝国につきやがった。帝
 >  国を倒さない限り俺たち人間に
-for their chance all along, have shown up and sided with the Empire. Unless we defeat
+have crawled out and joined the Empire. Unless we take down
 ---
 >  未来はないんだ。俺たちは戦って
 >  平和を取り戻さなくちゃならない
@@ -57,7 +57,7 @@ the Empire, we humans have no future. We have to fight to win back peace.
 ---
 >  そのために、もし犠牲になったとしても
 >  悔いはないのさ」
-And for that, even if I end up a sacrifice, I won’t regret it.”
+And if I die doing it, I won’t regret a thing.”
 
 @21146 Erika · エリカ
 # 审校：全局：弯撇号／弯引号
@@ -79,11 +79,11 @@ And for that, even if I end up a sacrifice, I won’t regret it.”
 # 审校：全局：弯撇号／弯引号
 > 「少なくとも間違っちゃいないぜ。
 >  帝国を倒したって、問題は
-“At least he’s not wrong. Even if we beat the Empire, we’ll still have
+“He’s not wrong, at least. Even if we beat the Empire, there’ll still be
 ---
 >  山積みだが、帝国を倒さなけりゃ
 >  始まらねぇからな」
-a mountain of problems, but we can’t even start until we beat them.”
+a mountain of problems, but none of it even starts till we beat them.”
 
 @21150 Simone · シモーヌ
 > 「甲児、あの娘の記憶が戻った
@@ -97,7 +97,7 @@ a mountain of problems, but we can’t even start until we beat them.”
 @21152 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
 > 「どうもワケありみたいだけどね」
-“Though it seems there’s more to it than that.”
+“Sounds like there’s a story behind it, though.”
 
 @21153 Koji · 甲児
 > 「どういうことだ?」
@@ -106,7 +106,7 @@ a mountain of problems, but we can’t even start until we beat them.”
 @21154 Erika · エリカ
 > 「ああ、甲児さん。
 >  私、思い出したんです
-“Oh, Koji. I remembered.
+“Oh, Koji. I remember now.
 ---
 >  私の町は帝国軍に襲われて……」
 My town was attacked by the Imperial army, and...”
@@ -124,7 +124,7 @@ My town was attacked by the Imperial army, and...”
 # 审校：全局：弯撇号／弯引号
 > 「まさか百鬼一族か!?
 >  くそったれどもめ」
-“Don’t tell me it was the Hyakki Clan?! Those bastards.”
+“Was it the Hyakki Clan?! Those bastards.”
 
 @21158 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -136,7 +136,7 @@ My town was attacked by the Imperial army, and...”
 # 审校：全局：弯撇号／弯引号
 > 「俺たちも行くぜ。いいだろう?
 >  リョウ、ムサシ」
-“We’re coming too. That okay? Ryoma, Musashi.”
+“We’re coming too. That okay, Ryoma, Musashi?”
 
 @21160 Ryoma · リョウ
 # 审校：“If that's decided”是直译
@@ -172,12 +172,12 @@ You might run into the enemy, after all.”
 # 审校：去掉 As expected of you
 > 「さっすが、話がわかるね艦長。
 >  よし、行こうエリカ」
-“Now that’s our Captain, he gets it. All right, let’s go, Erika.”
+“That’s the Captain for you, he gets it! All right, let’s go, Erika.”
 
 @21165 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「敵はいないようだな」
-“Doesn’t look like there’s any enemy around.”
+“No sign of the enemy.”
 
 @21166 Quatre · カトル
 > 「でも本当に、ここが
@@ -188,7 +188,7 @@ You might run into the enemy, after all.”
 # 审校：全局：弯撇号／弯引号
 > 「カトルの疑問も、もっともだね。ここは
 >  戦場になったような感じがないよ」
-“Quatre’s question is fair. This place doesn’t feel like it’s seen battle.”
+“Quatre’s got a point. This place doesn’t look like it’s seen any fighting.”
 
 @21168 Erika · エリカ
 # 审校：全局：弯撇号／弯引号
@@ -199,7 +199,7 @@ You might run into the enemy, after all.”
 # 审校：全局：弯撇号／弯引号
 > 「人間狩りが目的だったら、
 >  そんなに破壊したりはしないだろう
-“If their goal was hunting people, they wouldn’t destroy this much.
+“If they were after people, they wouldn’t wreck the place that much.
 ---
 >  とにかく急ごうぜ」
 Anyway, let’s hurry.”
@@ -214,16 +214,16 @@ Anyway, let’s hurry.”
 # 审校：全局：弯撇号／弯引号
 > 「ありがとうございます。
 >  皆さん、たいしたものはありませんけど
-“Thank you. Everyone, we don’t have much, but please
+“Thank you. Everyone, it’s nothing much, but please
 ---
 >  食事でもしていってください」
-stay and have a meal.”
+stay for a meal.”
 
 @21172 Musashi · ムサシ
 # 审校：全局：弯撇号／弯引号
 > 「そりゃありがたい。実は腹ペコで
 >  死にそうだったんだ」
-“That’s a lifesaver. Truth is, I was starving to death.”
+“Now you’re talking. Truth is, I’m about to starve to death.”
 
 @21173 Amuro · アムロ
 > 「ベルトーチカ、甲児くんたちから
@@ -244,17 +244,17 @@ stay and have a meal.”
 # 审校：全局：弯撇号／弯引号
 > 「こ、これは……艦長、敵に囲まれて
 >  います!」
-“Th-this is... Captain, we’re surrounded by the enemy!”
+“Wh-what... Captain, we’re surrounded by enemies!”
 
 @21177 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「なんだと!?
 >  なぜ今まで気づかなかった!
-“What?! Why didn’t we notice until now!
+“What?! How did we not notice until now?!
 ---
 >  すぐ迎撃に出させろ!
 >  町に行った連中を呼び戻せ!」
-Send out interceptors at once! Call back the group that went to town!”
+Launch interceptors at once! Recall the group that went into town!”
 
 @21178 Beauty · ビューティ
 # 审校：全局：弯撇号／弯引号
@@ -265,7 +265,7 @@ Send out interceptors at once! Call back the group that went to town!”
 @21179 Bright · ブライト
 > 「く、とにかく応戦だ! ビューティ、
 >  甲児たちを呼び出し続けろ」
-“Ngh, just fight back! Beauty, keep trying to reach Koji and the others!”
+“Ngh, all we can do is fight! Beauty, keep calling Koji and the others!”
 
 @21180 Beauty · ビューティ
 > 「はい!」
@@ -274,7 +274,7 @@ Send out interceptors at once! Call back the group that went to town!”
 @21181 Sayaka · さやか
 > 「まったく、甲児くんがあんな女に
 >  ついていくから、こうなるのよ」
-“Honestly, this is what happens because Koji went off with a woman like that.”
+“Honestly, this is what Koji gets for running off after that girl.”
 
 @21182 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
@@ -305,18 +305,18 @@ Send out interceptors at once! Call back the group that went to town!”
 # 审校：全局：弯撇号／弯引号
 > 「……おいおい、まいったな。ここは
 >  武装した住民に囲まれてるぜ」
-“...Well, well, this is bad. We’re surrounded by armed locals here.”
+“...Oh boy, now we’re in it. The locals have us surrounded, and they’re armed.”
 
 @21188 Hayato · ハヤト
 # 审校：remodeled 用在人身上不自然
 > 「まさか、住民たちはすでに奴らに
 >  改造されちまってたのか……」
-“Don’t tell me the townspeople had already been converted by them...”
+“Don’t tell me they’d already gotten to the townspeople and modified them...”
 
 @21189 Koji · 甲児
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「エリカ、いったいどうして君が!?」
-“Erika, why in the world are you...?!”
+“Erika, why would you...?!”
 
 @21190 Erika · エリカ
 # 审校：全局：弯撇号／弯引号
@@ -339,7 +339,7 @@ Send out interceptors at once! Call back the group that went to town!”
 # 审校：全局：弯撇号／弯引号
 > 「バカね、あの女の持ってる
 >  通信機よ」
-“Don’t be stupid, it’s the communicator that woman’s holding.”
+“Duh, it’s coming from the communicator she’s holding.”
 
 @21195 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -353,7 +353,7 @@ and the people here?!”
 @21196 Marquis Janus · ヤヌス侯爵
 > 「ホホホホ、ばかな人間たちよ。
 >  そいつはエリカなどという名前ではない
-“Hohohoho, foolish humans. She is not named Erika.
+“Hohohoho, foolish humans. Her name is not Erika.
 ---
 >  エスピオナージR1だ。我々の
 >  スパイアンドロイドなのだ」
@@ -370,16 +370,16 @@ She is Espionage R1. Our Spy Android.”
 @21199 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「まさか、ここの住民たちも……」
-“Don’t tell me the townspeople here too...”
+“Don’t tell me the people here are...”
 
 @21200 Marquis Janus · ヤヌス侯爵
 > 「そこの人間どもには何もしておらぬ。
 >  お前たちを捕らえるのに協力すれば
-“I have done nothing to the humans there. When I told them that if they cooperated
+“I have done nothing to those humans. If they helped capture you, I told them,
 ---
 >  命は助けてやるといったら、喜んで
 >  協力してくれたわ。ホーッホッホッホ」
-in capturing you I would spare their lives, they gladly cooperated. Hoh-hoh-hoh-hoh.”
+I would spare their lives, and they were glad to oblige. Hoh-hoh-hoh-hoh.”
 
 @21201 Hayato · ハヤト
 > 「なんという卑劣なマネを!」
@@ -407,11 +407,11 @@ in capturing you I would spare their lives, they gladly cooperated. Hoh-hoh-hoh-
 # 审校：全局：弯撇号／弯引号
 > 「フフフッ、これでいい。私は一足先
 >  にもどる。お前は、そやつらを
-“Heheheh, that will do. I’ll return ahead of you. After you finish off
+“Heheheh, that will do. I shall go on ahead. Once you have disposed of
 ---
 >  始末したあと、もう1度、艦に
 >  潜入し、エンジンを破壊しろ」
-those fools, infiltrate the ship once more and destroy the engine.”
+those fools, slip aboard the ship again and destroy its engine.”
 
 @21207 Koji · 甲児
 > 「エリカ……君は……」
@@ -430,7 +430,7 @@ those fools, infiltrate the ship once more and destroy the engine.”
 @21210 Marquis Janus · ヤヌス侯爵
 > 「ホホホホ、ばかな人間たちよ。
 >  こいつはエリカなどという名前ではない
-“Hohohoho, foolish humans. She is not named Erika.
+“Hohohoho, foolish humans. Her name is not Erika.
 ---
 >  エスピオナージR1だ。我々の
 >  スパイアンドロイドなのだ」
@@ -447,16 +447,16 @@ She is Espionage R1. Our Spy Android.”
 @21213 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「まさか、ここの住民たちも……」
-“Don’t tell me the townspeople here too...”
+“Don’t tell me the people here are...”
 
 @21214 Marquis Janus · ヤヌス侯爵
 > 「そこの人間どもには何もしておらぬ。
 >  お前たちを捕らえるのに協力すれば
-“I have done nothing to the humans there. When I told them that if they cooperated
+“I have done nothing to those humans. If they helped capture you, I told them,
 ---
 >  命は助けてやるといったら、喜んで
 >  協力してくれたわ。ホーッホッホッホ」
-in capturing you I would spare their lives, they gladly cooperated. Hoh-hoh-hoh-hoh.”
+I would spare their lives, and they were glad to oblige. Hoh-hoh-hoh-hoh.”
 
 @21215 Ryoma · リョウ
 > 「なんという卑劣なマネを!」
@@ -475,11 +475,11 @@ in capturing you I would spare their lives, they gladly cooperated. Hoh-hoh-hoh-
 # 审校：全局：弯撇号／弯引号
 > 「よし。私は一足先にもどる。
 >  お前は、こやつらを始末したあと
-“Good. I’ll return ahead of you. After you finish off these fools,
+“Good. I shall go on ahead. Once you have disposed of these fools,
 ---
 >  もう1度、艦に潜入し、
 >  エンジンを破壊しろ」
-infiltrate the ship once more and destroy the engine.”
+slip aboard the ship again and destroy its engine.”
 
 @21219 Erika · エリカ
 > 「…………」
@@ -511,28 +511,28 @@ But...”
 # 审校：全局：弯撇号／弯引号
 > 「やめるんだ、エリカ。あんな奴らのいうこ
 >  とを聞くことなんかない。俺たちを
-“Stop it, Erika. There’s no reason to do what those people tell you. Let us
+“Stop it, Erika. You don’t have to listen to those creeps. Get us
 ---
 >  ここから出してくれ。一緒に奴らを
 >  やっつければいいんだ」
-out of here. We can just take them down together.”
+out of here. We’ll take them down together.”
 
 @21225 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
 > 「だめだよ甲児。まいったね……周りの
 >  連中、ずいぶん殺気だってきてるよ」
-“It’s no good, Koji. This is bad... Everyone around us is getting awfully bloodthirsty.”
+“It’s no good, Koji. This is bad... Everyone out there is starting to look murderous.”
 
 @21226 Musashi · ムサシ
 # 审校：全局：弯撇号／弯引号
 > 「こりゃあ、無事ですみそうにないな」
-“This ain’t gonna end without bloodshed.”
+“We ain’t gettin’ out of this in one piece.”
 
 @21227 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
 > 「ああ。オレたちをやらなけりゃ、自分た
 >  ちが殺されると思っているんだ」
-“Yeah. They think if they don’t kill us, they’ll be killed themselves.”
+“Yeah. They figure if they don’t get us, they’re the ones who’ll die.”
 
 @21228 Quatre · カトル
 # 审校：全局：弯撇号／弯引号
@@ -543,7 +543,7 @@ out of here. We can just take them down together.”
 # 审校：全局：弯撇号／弯引号
 > 「冗談じゃないわよ! あたしたちは
 >  こんなところで死ぬわけには
-“You’ve gotta be kidding! We can’t afford to die in a place
+“You’ve gotta be kidding! There’s no way we’re dying in a dump
 ---
 >  いかないんだから!」
 like this!”
@@ -578,7 +578,7 @@ like this!”
 ---
 >  そして、人を想うことができる。
 >  そうだろう?」
-And you can care about people. Isn’t that right?”
+And you can care about people. Right?”
 
 @21236 Erika · エリカ
 > 「………………」
@@ -601,7 +601,7 @@ that’s what I believe.”
 # 审校：全局：弯撇号／弯引号
 > 「エリカ、こんなことを続けていたら、
 >  君はその心まで失ってしまう」
-“Erika, if you keep doing this, you’ll lose even that heart.”
+“Erika, if you keep this up, you’ll end up losing your heart too.”
 
 @21240 Erika · エリカ
 > 「甲児さん…………」
@@ -625,19 +625,19 @@ that’s what I believe.”
 # 审校：全局：弯撇号／弯引号
 > 「助けてくれようってのはうれしいけど、
 >  外の連中をなんとかしないと
-“I’m glad you want to help us, but unless we do something about the people
+“I’m glad you want to help, but unless we deal with the people
 ---
 >  逃げられやしないよ」
-outside, we can’t escape.”
+outside, we’re not getting out of here.”
 
 @21245 David · デビッド
 # 审校：全局：弯撇号／弯引号
 > 「ああ、連中そうとうあせってきてるぜ。
 >  俺たちが外へ出たとたん、銃弾の
-“Yeah, they’re getting pretty desperate. The moment we step outside, it’ll be a
+“Yeah, they’re getting pretty desperate. The second we step outside, we’ll be walking into a
 ---
 >  雨が降るな」
-rain of bullets.”
+hail of bullets.”
 
 @21246 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
@@ -649,12 +649,12 @@ rain of bullets.”
 # 审校：全局：弯撇号／弯引号
 > 「だめですよ! あの人たちだって、
 >  普通の人たちなんです!」
-“We can’t! Those people are just ordinary people too!”
+“We can’t! They’re just ordinary people!”
 
 @21248 David · デビッド
 # 审校：全局：弯撇号／弯引号
 > 「だが、これじゃどうにもならんぜ」
-“But like this, we’ve got no other choice.”
+“But as things stand, we’re stuck.”
 
 @21249 Erika · エリカ
 # 审校：全局：弯撇号／弯引号
@@ -709,7 +709,7 @@ rain of bullets.”
 # 审校：全局：弯撇号／弯引号
 > 「くっ……だがここまでくれば……
 >  大作くん!」
-“Ngh... but if we’ve made it this far... Daisaku!”
+“Ngh... but now that we’ve made it this far... Daisaku!”
 
 @21260 Daisaku · 大作
 > 「はい! ロボォッ!!」
@@ -727,10 +727,10 @@ rain of bullets.”
 # 审校：全局：弯撇号／弯引号
 > 「坊や、町の人にケガさせるんじゃない
 >  よ。ここの連中だって、被害者
-“Kid, don’t go hurting the townsfolk. These people here are
+“Kid, don’t you go hurting the townsfolk. They’re
 ---
 >  なんだからね」
-victims too, you know.”
+victims in this too.”
 
 @21264 Daisaku · 大作
 > 「わかってます! それから、坊やっていう
@@ -740,7 +740,7 @@ victims too, you know.”
 @21265 Daisaku · 大作
 > 「よし、ロボ。僕たちを乗せて、移動
 >  するんだ!」
-“All right, Robo. Carry us and move out!”
+“All right, Robo. Pick us up and get us out of here!”
 
 @21266 Sara · 沙羅
 > 「ふう、なんとか脱出できたようだね」
@@ -749,12 +749,12 @@ victims too, you know.”
 @21267 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「ああ、ここまでくればこっちのものだぜ!」
-“Yeah, once we’ve made it this far, we’ve got it made!”
+“Yeah, we’re in the clear now!”
 
 @21268 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「よしみんな、俺たちもいくぞ!」
-“All right, everyone, we’re going too!”
+“All right, everyone, let’s join the fight!”
 
 @21269 Quatre · カトル
 > 「はい!」
@@ -774,7 +774,7 @@ victims too, you know.”
 # 审校：全局：弯撇号／弯引号
 > 「無事だったか……よし、全力で
 >  敵を叩け!」
-“You made it... Good, hit the enemy with everything we’ve got!”
+“They’re safe... Good, hit them with everything we’ve got!”
 
 @21273 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -788,11 +788,11 @@ patch job we can do here, it’ll stop running before long.”
 
 @21274 Bright · ブライト
 > 「くそっ。とりあえず修理を急げ」
-“Damn. For now, hurry up with the repairs.”
+“Damn. Just get the repairs done, fast.”
 
 @21275 Banjo · 万丈
 > 「どうするつもりです?」
-“What do you intend to do?”
+“So what’s the plan?”
 
 @21276 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -822,25 +822,25 @@ patch job we can do here, it’ll stop running before long.”
 “We can’t just leave her. She helped us out.
 ---
 >  戻ったって殺されるだけです」
-If she goes back, she’ll only be killed.”
+If she goes back, they’ll just kill her.”
 
 @21281 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
 > 「何いってるのよ。だいたい、その女が
 >  原因でこんなことになったんじゃない
-“What are you saying? She’s the whole reason this happened in the first place,
+“What are you talking about? This whole mess is her fault to begin with!
 ---
 >  かばうことなんてないわ」
-isn’t she? There’s no reason to protect her.”
+You don’t need to defend her.”
 
 @21282 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「本気でいってるのか、さやかさん。
 >  彼女だって好きでそうしたわけじゃ
-“Are you serious, Sayaka? She didn’t do it because she wanted to.
+“Are you serious, Sayaka? It’s not like she wanted to do it.
 ---
 >  ないんだ。それはみんなだってわかるはずだ」
-Everyone should be able to see that.”
+You all ought to see that.”
 
 @21283 Bright · ブライト
 # 审校：竜馬やデビッドたち 不止两人
@@ -851,7 +851,7 @@ Everyone should be able to see that.”
 @21284 Ryoma · リョウ
 > 「はい。悪いのは帝国とそれにくみする
 >  連中ですよ」
-“Yes. The ones at fault are the Empire and those who side with them.”
+“Yes. It’s the Empire and the people siding with it who are to blame.”
 
 @21285 Quattro · クワトロ
 # 审校：“no telling whether she won't”双重否定拗口
@@ -873,7 +873,7 @@ For the same reason, there’s no guarantee she won’t help the enemy again.”
 # 审校：全局：弯撇号／弯引号
 > 「大作くん、いい人だからこそ、それを
 >  利用されることだってあるんだ」
-“Daisaku, precisely because she’s a good person, she can be taken advantage of.”
+“Daisaku, good people are exactly the ones who get used.”
 
 @21288 Daisaku · 大作
 # 审校：全局：弯撇号／弯引号
@@ -883,7 +883,7 @@ For the same reason, there’s no guarantee she won’t help the enemy again.”
 @21289 Banjo · 万丈
 > 「あるんだよ、そういうことは。
 >  特に敵が卑怯な場合はね
-“It happens, that sort of thing. Especially when the enemy is cowardly.
+“That sort of thing happens. Especially when the enemy fights dirty.
 ---
 >  {HeroNick}、君はどう思う?」
 {HeroNick}, what do you think?”
@@ -915,7 +915,7 @@ right? Besides, you’re the ones saying we’re short-handed.”
 # 审校：全局：弯撇号／弯引号
 > 「しかたあるまい、同行を認めよう。
 >  それでいいか、大尉?」
-“We’ve no choice. I’ll allow her to come along. Is that fine, Captain?”
+“We’ve no choice. I’ll allow her to come along. Is that acceptable, Captain?”
 
 @21294 Quattro · クワトロ
 > 「これでは、同行させないといったら
@@ -932,14 +932,14 @@ right? Besides, you’re the ones saying we’re short-handed.”
 # 审校：全局：弯撇号／弯引号
 > 「俺は反対だな。もしそいつが、また
 >  敵と接触したら、俺たちを
-“I’m against it. If she makes contact with the enemy again,
+“I’m against it. If she gets in touch with the enemy again,
 ---
 >  殺さずにすむ程度なら、小細工
 >  くらいするかもしれない。悪いが、
-she might pull some trick as long as it doesn’t get us killed.
+she might pull a few tricks, so long as they don’t mean killing us.
 ---
 >  俺はそんなのは、ごめんだぜ」
-Sorry, but I won’t stand for that.”
+Sorry, but I want no part of that.”
 
 @21297 Koji · 甲児
 > 「だけどよ」
@@ -962,17 +962,17 @@ Right?”
 # 审校：全局：弯撇号／弯引号
 > 「結論が出たようだな。彼女がした
 >  ことの是非は問わない
-“It seems we’ve reached a conclusion. I won’t question the rights and wrongs of what she did,
+“Looks like that settles it. I won’t judge what she did,
 ---
 >  が、連れて行くわけにはいかん。それで
 >  納得してほしいものだな」
-but we can’t take her with us. I hope you can accept that.”
+but we can’t take her with us. I’d like you to accept that.”
 
 @21300 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「…………わかったよ。そこまでいわれちゃ、
 >  しかたねぇや」
-“...All right. If you’re going to put it that way, I’ve got no choice.”
+“...Fine. If you put it like that, there’s nothing I can do.”
 
 @21301 Banjo · 万丈
 > 「すまない、みんな」
@@ -1015,7 +1015,7 @@ for you to do as Koji and the others say.”
 # 审校：全局：弯撇号／弯引号
 > 「しかたあるまい、同行を認めよう。
 >  それでいいか、大尉?」
-“We’ve no choice. I’ll allow her to come along. Is that fine, Captain?”
+“We’ve no choice. I’ll allow her to come along. Is that acceptable, Captain?”
 
 @21307 Quattro · クワトロ
 > 「これでは、同行させないといったら
@@ -1036,16 +1036,16 @@ for you to do as Koji and the others say.”
 ---
 >  色々と問題は多いと思うの。
 >  自由にしてあげるのは構わないと
-but I think there are all sorts of problems. I don’t mind setting her free,
+but it raises a lot of problems. I don’t mind letting her go free,
 ---
 >  思うけど、一緒に行くというのは
 >  ちょっとね」
-but having her come along with us is a bit much.”
+but having her come with us is another matter.”
 
 @21310 Lawrence · ローレンス
 > 「さようですな。心配ごとは少ない方
 >  がよろしいでしょう」
-“Indeed, my lady. Fewer worries is for the best.”
+“Indeed, my lady. The fewer worries, the better.”
 
 @21311 Koji · 甲児
 > 「だけどよ」
@@ -1068,17 +1068,17 @@ Right?”
 # 审校：全局：弯撇号／弯引号
 > 「結論が出たようだな。彼女がした
 >  ことの是非は問わない
-“It seems we’ve reached a conclusion. I won’t question the rights and wrongs of what she did,
+“Looks like that settles it. I won’t judge what she did,
 ---
 >  が、連れて行くわけにはいかん。それで
 >  納得してほしいものだな」
-but we can’t take her with us. I hope you can accept that.”
+but we can’t take her with us. I’d like you to accept that.”
 
 @21314 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「…………わかったよ。そこまでいわれちゃ、
 >  しかたねぇや」
-“...All right. If you’re going to put it that way, I’ve got no choice.”
+“...Fine. If you put it like that, there’s nothing I can do.”
 
 @21315 Banjo · 万丈
 > 「すまない、みんな」
@@ -1097,17 +1097,17 @@ Is there some kind of problem?”
 # 审校：全局：弯撇号／弯引号
 > 「我々の艦がダメージを受けたのは
 >  敵も知っているはずだ。だから再び
-“The enemy must know our ship took damage. So I had the area thoroughly scanned,
+“The enemy must know our ship was damaged. So I’ve been expecting
 ---
 >  敵の襲撃があると考えて周囲の
 >  偵察も厳重にさせていたんだが……」
-thinking they’d attack again, but...”
+another attack and keeping a close watch on the area, but...”
 
 @21318 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
 > 「この数日は動きがありませんでしたね
 >  確かにイヤな感じはあります」
-“There’s been no movement for the past few days. It does feel unsettling, though.”
+“Nothing’s moved for days now. You’re right, it does feel ominous.”
 
 @21319 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -1116,7 +1116,7 @@ thinking they’d attack again, but...”
 
 @21320 Bright · ブライト
 > 「いったい何があったんだ?」
-“What on earth happened?”
+“What’s happened?”
 
 @21321 Banjo · 万丈
 > 「いま、アランから連絡があった。帝
@@ -1134,11 +1134,11 @@ operation to wipe out the resistance.”
 # 审校：全局：弯撇号／弯引号
 > 「最悪だ。各地の抵抗組織は
 >  ほぼ壊滅したと考えていい
-“It’s as bad as it gets. You can consider the resistance groups everywhere
+“It’s as bad as it gets. Resistance groups everywhere are as good as wiped out.
 ---
 >  カラバもかなりの人員と施設を
 >  失った」
-all but annihilated. Karaba lost a lot of people and facilities too.”
+Karaba lost a lot of people and facilities too.”
 
 @21324 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1158,7 +1158,7 @@ Captain, what about the Liberation Front?!”
 @21326 Bright · ブライト
 > 「ちょっと待て。ベルトーチカ、連絡は
 >  取れるか?」
-“Wait a moment. Beltorchika, can you reach them?”
+“Hold on. Beltorchika, can you reach them?”
 
 @21327 Beltorchika · ベルトーチカ
 > 「……本部は応答ありません」
@@ -1174,7 +1174,7 @@ Captain, what about the Liberation Front?!”
 
 @21330 Bright · ブライト
 > 「なんということだ……くそっ、帝国め!」
-“How could this be... Damn it, those Imperials!”
+“This can’t be happening... Damn it, damn the Empire!”
 
 @21331 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -1185,11 +1185,11 @@ Captain, what about the Liberation Front?!”
 # 审校：全局：弯撇号／弯引号
 > 「帝国のレジスタンス壊滅作戦
 >  だ。解放戦線もカラバも
-“It’s the Empire’s resistance annihilation operation. The Liberation Front, Karaba,
+“The Empire launched an operation to crush the resistance. The Liberation Front, Karaba,
 ---
 >  各地の組織も壊滅的な
 >  打撃を受けた」
-and every organization out there has taken devastating damage.”
+and groups everywhere have taken a crippling blow.”
 
 @21333 Amuro · アムロ
 # 审校：“should have had a considerable”别扭
@@ -1199,7 +1199,7 @@ and every organization out there has taken devastating damage.”
 ---
 >  大規模な作戦なら少しくらいは
 >  事前の動きがつかめていたはずだろ?」
-that large should have shown some signs beforehand, shouldn’t it?”
+that big should’ve tipped its hand somehow, shouldn’t it?”
 
 @21334 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -1239,7 +1239,7 @@ if we run into the enemy again.”
 
 @21338 Quatre · カトル
 > 「なんとか連絡はついたよ」
-“I managed to get through to them somehow.”
+“I managed to reach them.”
 
 @21339 Bright · ブライト
 > 「あてになるのか? その、マグアナック隊
@@ -1249,7 +1249,7 @@ if we run into the enemy again.”
 @21340 Quatre · カトル
 > 「はい。彼らの基地は町の地下に
 >  あって発見されずに済んだようです
-“Yes. Their base is underground in the town, so it seems it went undiscovered.
+“Yes. Their base is under the town, and it seems to have escaped notice.
 ---
 >  アルビオンの修理もできるといって
 >  いました」
@@ -1278,7 +1278,7 @@ Can we really get there without the enemy spotting us?”
 # 审校：全局：弯撇号／弯引号
 > 「行くしかないだろう。
 >  現状では我々に選択肢はない
-“We’ve got no choice but to go. As things stand, we have no other option.
+“We’ll have to go. As things stand, we don’t have a choice.
 ---
 >  全員出発の準備をしておけ」
-Everyone, get ready to depart.”
+Everyone, prepare to depart.”
