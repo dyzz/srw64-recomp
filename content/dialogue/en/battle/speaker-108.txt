@@ -22,7 +22,7 @@
 # 触发：攻击（通用，4/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お返しだ、受け取ってもらおう!」
-“Here’s payback, take it!”
+“Payback time, take this!”
 
 @9709 Tetsuya · 鉄也
 # 触发：攻击（通用，5/6）
@@ -44,7 +44,7 @@
 # 触发：被击坠（通用，2/3）
 # 审校：抽检：被击坠台词“ここまでか”是“到此为止了吗”，“This is it?!”疑问语气别扭。
 > 「くっ!! ここまでか!!」
-“Ngh!! Is this the end?!”
+“Ngh!! Is this it?!”
 
 @9713 Tetsuya · 鉄也
 # 触发：被击坠（通用，3/3）
@@ -56,12 +56,12 @@
 # 审校：ダメージ是机体损伤，“伤害太大”像数值
 > 「ぐぅっ! い、いかん、ダメージが
 >  でかすぎるか!?」
-“Gah! N-not good, the damage is too heavy?!”
+“Gah! Th-this is bad, is the damage too heavy?!”
 
 @9715 Tetsuya · 鉄也
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 > 「うわあっ!! な、なんてパワーだ!?」
-“Whoa! W-what power is this?!”
+“Whoa! Wh-what kind of power is that?!”
 
 @9716 Tetsuya · 鉄也
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -143,7 +143,7 @@
 @9729 Tetsuya · 鉄也
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/7）
 > 「ふん、大した事はないな」
-“Hmph, nothing impressive.”
+“Hmph, that was nothing.”
 
 @9730 Tetsuya · 鉄也
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/7）
@@ -412,12 +412,12 @@
 # 触发：合体技〈マジンガートルネード〉：鉄也＋リョウ、リョウ＋鉄也（对话第 2/3 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いつでもいいぜ!」
-“I’m ready anytime!”
+“Ready when you are!”
 
 @14963 Ryoma · リョウ
 # 触发：合体技〈マジンガートルネード〉：鉄也＋リョウ、リョウ＋鉄也（对话第 3/3 句）
 > 「いくぞ、俺たちのパワーを受けてみろ!」
-“Here we go, take the power of all of us!”
+“Here we go! Feel our combined power!”
 ---
 > 「ツイィィィン・ビィィィィィィィィムッ!!」
 “Twi-i-i-in Be-e-e-e-e-e-eam!!”
@@ -446,7 +446,7 @@
 # 触发：合体技〈ダブルバーニングファイヤー（グレート）／ダブルバーニングファイヤー（マジンガー）／ダブルバーニングファイヤー（ミネルバ）／ダブルバーニングファイヤー（量グレート）〉：甲児＋鉄也、鉄也＋甲児（对话第 1/3 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「すまねぇ、頼むぜ!」
-“Sorry, I’m counting on you!”
+“Thanks, I’m counting on you!”
 
 @14968 Tetsuya · 鉄也
 # 触发：合体技〈ダブルバーニングファイヤー（グレート）／ダブルバーニングファイヤー（マジンガー）／ダブルバーニングファイヤー（ミネルバ）／ダブルバーニングファイヤー（量グレート）〉：甲児＋鉄也、鉄也＋甲児（对话第 2/3 句）
@@ -572,7 +572,7 @@
 # 触发：合体技〈トリプルマジンガーパンチ〉：甲児＋鉄也、鉄也＋甲児（对话第 3/4 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いつでもいいぜ!」
-“I’m ready anytime!”
+“Ready when you are!”
 
 @14988 Tetsuya · 鉄也
 # 触发：合体技〈トリプルマジンガーパンチ〉：甲児＋鉄也、鉄也＋甲児（对话第 4/4 句）
@@ -620,7 +620,7 @@
 # 触发：合体技〈トリプルマジンガーパンチ〉：鉄也＋ジュン、ジュン＋鉄也（对话第 3/4 句）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「いつでもいいわよ!」
-“I’m good anytime!”
+“Ready when you are!”
 
 @14996 Tetsuya · 鉄也
 # 触发：合体技〈トリプルマジンガーパンチ〉：鉄也＋ジュン、ジュン＋鉄也（对话第 4/4 句）
@@ -639,7 +639,7 @@
 # 触发：合体技〈ダブルマジンガーブレード〉：甲児＋鉄也、鉄也＋甲児（对话第 2/3 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「たたきこんでやるぜ!」
-“I’m gonna smash ’em in!”
+“I’ll let ’em have it!”
 
 @14999 Tetsuya · 鉄也
 # 触发：合体技〈ダブルマジンガーブレード〉：甲児＋鉄也、鉄也＋甲児（对话第 3/3 句）
@@ -729,19 +729,19 @@
 # 触发：合体技〈ツインビーム〉：鉄也＋ジュン、ジュン＋鉄也（对话第 1/3 句）
 > 「ジュン、バラバラに攻撃していては
 >  意味がない!」
-“Jun, attacking separately is pointless!”
+“Jun, there’s no point attacking separately!”
 
 @15013 Jun · ジュン
 # 触发：合体技〈ツインビーム〉：鉄也＋ジュン、ジュン＋鉄也（对话第 2/3 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そうね、わかったわ鉄也!」
-“You’re right, got it, Tetsuya!”
+“Right, got it, Tetsuya!”
 
 @15014 Tetsuya · 鉄也
 # 触发：合体技〈ツインビーム〉：鉄也＋ジュン、ジュン＋鉄也（对话第 3/3 句）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「よぉし、同時に集中攻撃だ!」
-“All right, concentrated attack all at once!”
+“All right, let’s focus our fire together!”
 ---
 > 「ダブル・マジンガーブレード!!」
 “Double Mazinger Blade!!”
@@ -866,7 +866,7 @@
 # 触发：被击坠，乘坐〈グレートマジンガー〉
 # 审校：“被干掉”不合铁也口吻
 > 「バカな!? グレートがやられるなんて……」
-“Impossible?! Great, defeated...”
+“Impossible?! How could Great be beaten...”
 
 @15039 Tetsuya · 鉄也
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ボスボロット〉
@@ -885,34 +885,34 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈グレートマジンガー〉
 > 「うっ! グレートが、これしきのことで
 >  やられるものか!」
-“Ugh! As if Great would go down from something like this!”
+“Ugh! Great won’t go down to something like this!”
 
 @15042 Tetsuya · 鉄也
 # 触发：中伤（剩余 HP 30–90%），乘坐〈マジンガーZ〉
 > 「うっ! マジンガーが、これしきのことで
 >  やられるものか!」
-“Ugh! As if Mazinger would go down from something like this!”
+“Ugh! Mazinger won’t go down to something like this!”
 
 @15043 Tetsuya · 鉄也
 # 触发：中伤（剩余 HP 30–90%），乘坐〈マジンガーZ(JS)〉
 > 「うっ! マジンガーが、これしきのことで
 >  やられるものか!」
-“Ugh! As if Mazinger would go down from something like this!”
+“Ugh! Mazinger won’t go down to something like this!”
 
 @15044 Tetsuya · 鉄也
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈グレートマジンガー〉
 > 「超合金ニューZの、このボディに
 >  そんな攻撃が通用するものか!!」
-“As if an attack like that would work on this Super Alloy New Z body!!”
+“An attack like that won’t work on a Super Alloy New Z body!!”
 
 @15045 Tetsuya · 鉄也
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈マジンガーZ〉
 > 「超合金Zの、このボディに
 >  そんな攻撃が通用するものか!!」
-“As if an attack like that would work on this Super Alloy Z body!!”
+“An attack like that won’t work on a Super Alloy Z body!!”
 
 @15046 Tetsuya · 鉄也
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈マジンガーZ(JS)〉
 > 「超合金Zの、このボディに
 >  そんな攻撃が通用するものか!!」
-“As if an attack like that would work on this Super Alloy Z body!!”
+“An attack like that won’t work on a Super Alloy Z body!!”

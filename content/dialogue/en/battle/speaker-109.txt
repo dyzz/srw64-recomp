@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/8）
 # 审校：“有有有”不像人话
 > 「いるいる、獲物がいるぞ!」
-“There they are, there’s our prey!”
+“There they are! Our prey!”
 
 @9750 Marquis Janus · ヤヌス侯爵
 # 触发：攻击（通用，2/8）
@@ -48,7 +48,7 @@
 @9757 Marquis Janus · ヤヌス侯爵
 # 触发：被击坠（通用，1/3）
 > 「くそう、あと一歩というところで……」
-“Curse it, just one step short...”
+“Curse it, when I was so close...”
 
 @9758 Marquis Janus · ヤヌス侯爵
 # 触发：被击坠（通用，2/3）
@@ -70,7 +70,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ううう、覚えていろ!」
-“Ugh, you’ll remember this!”
+“Ugh, I won’t forget this!”
 
 @9762 Marquis Janus · ヤヌス侯爵
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
@@ -98,13 +98,13 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 > 「おとなしくしてればいい気になりおって
 >  見ていろ、叩きつぶしてやる!」
-“Just because I stay quiet, you get cocky. Watch me crush you!”
+“I hold back and you get cocky! Just watch, I’ll crush you!”
 
 @9767 Marquis Janus · ヤヌス侯爵
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くそう、敵もやるな」
-“Curse it, the enemy’s good too.”
+“Curse it, the enemy’s no pushover.”
 
 @9768 Marquis Janus · ヤヌス侯爵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
@@ -114,13 +114,13 @@
 @9769 Marquis Janus · ヤヌス侯爵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
 > 「フハハハハ、さぞかし悔しいだろうよ」
-“Fuhahahaha, you must be so frustrated.”
+“Fuhahahaha, that must sting.”
 
 @9770 Marquis Janus · ヤヌス侯爵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 # 审校：原文无呼语，译文未添加称呼，符合要求。
 > 「ハハハハ、頼りにならない者たちよ」
-“Hahahaha, what an unreliable lot you are.”
+“Hahahaha, what a feeble lot you are.”
 
 @9771 Marquis Janus · ヤヌス侯爵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
@@ -141,23 +141,23 @@
 @9774 Marquis Janus · ヤヌス侯爵
 # 触发：回避（通用，1/3）
 > 「フフフ、万事うまくいっている」
-“Hehehe, everything is going well.”
+“Hehehe, all is going splendidly.”
 
 @9775 Marquis Janus · ヤヌス侯爵
 # 触发：回避（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そうはさせぬぞ、フフフフフ」
-“I won’t let you, hehehehe.”
+“Oh no you don’t, hehehehe.”
 
 @9776 Marquis Janus · ヤヌス侯爵
 # 触发：回避（通用，3/3）
 > 「これでいい、これでいいのだ!」
-“This is good, this is how it should be!”
+“Yes, this is fine, just fine!”
 
 @9777 Marquis Janus · ヤヌス侯爵
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「これでいい、これでいいのだ!」
-“This is good, this is how it should be!”
+“Yes, this is fine, just fine!”
 
 @9778 Marquis Janus · ヤヌス侯爵
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -197,13 +197,13 @@
 @15049 Marquis Janus · ヤヌス侯爵
 # 触发：攻击，乘坐〈ミケロス〉
 > 「ようし、今だ! ようく狙え!」
-“All right, now! Take good aim!”
+“All right, now! Aim carefully!”
 
 @15050 Marquis Janus · ヤヌス侯爵
 # 触发：攻击，乘坐〈ミケロス〉
 > 「準備はいいか? 攻撃を開始
 >  するぞ!」
-“Ready? We begin the attack!”
+“Ready? Commence the attack!”
 
 @15051 Marquis Janus · ヤヌス侯爵
 # 触发：攻击，乘坐〈デモニカ〉
@@ -219,13 +219,13 @@
 @15053 Marquis Janus · ヤヌス侯爵
 # 触发：攻击，乘坐〈デモニカ〉
 > 「ようし、今だ! ようく狙え!」
-“All right, now! Take good aim!”
+“All right, now! Aim carefully!”
 
 @15054 Marquis Janus · ヤヌス侯爵
 # 触发：攻击，乘坐〈デモニカ〉
 > 「準備はいいか? 攻撃を開始
 >  するぞ!」
-“Ready? We begin the attack!”
+“Ready? Commence the attack!”
 
 @15055 Marquis Janus · ヤヌス侯爵
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
@@ -240,7 +240,7 @@
 @15057 Marquis Janus · ヤヌス侯爵
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
 > 「よし、発射!」
-“Good, fire!”
+“Right, fire!”
 
 @15058 Marquis Janus · ヤヌス侯爵
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
@@ -260,7 +260,7 @@
 @15061 Marquis Janus · ヤヌス侯爵
 # 触发：使用〈破壊光線〉（低优先，可能被通用台词顶掉）
 > 「よし、発射!」
-“Good, fire!”
+“Right, fire!”
 
 @15062 Marquis Janus · ヤヌス侯爵
 # 触发：使用〈破壊光線〉（低优先，可能被通用台词顶掉）
@@ -280,7 +280,7 @@
 @15065 Marquis Janus · ヤヌス侯爵
 # 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）
 > 「よし、発射!」
-“Good, fire!”
+“Right, fire!”
 
 @15066 Marquis Janus · ヤヌス侯爵
 # 触发：使用〈爆雷〉（低优先，可能被通用台词顶掉）

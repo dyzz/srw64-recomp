@@ -19,7 +19,7 @@
 # 触发：攻击（通用，4/19）
 # 审校：“You ready to die?” 过度意译，原文“覚悟はいいな”只是问对方是否做好觉悟，未明确说死。
 > 「……覚悟はいいな」
-“...Are you prepared?”
+“...Prepare yourself.”
 
 @6345 Heero · ヒイロ
 # 触发：攻击（通用，5/19）
@@ -81,7 +81,7 @@
 # 触发：攻击（通用，15/19）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ターゲット確認……直撃させる!」
-“Target confirmed... I’ll hit it directly!”
+“Target confirmed... going for a direct hit!”
 
 @6356 Heero · ヒイロ
 # 触发：攻击（通用，16/19）
@@ -92,7 +92,7 @@
 @6357 Heero · ヒイロ
 # 触发：攻击（通用，17/19）
 > 「ターゲット、ロックオン……」
-“Target, lock on...”
+“Locking on to target...”
 
 @6358 Heero · ヒイロ
 # 触发：攻击（通用，18/19）
@@ -147,7 +147,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/8）
 # 审校：“Situation unfavorable” 缺少冠词，英文不自然。
 > 「状況は不利……だが!」
-“The situation is unfavorable... but!”
+“Situation unfavorable... but!”
 
 @6368 Heero · ヒイロ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/8）
@@ -164,7 +164,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/8）
 # 审校：原文是疑问语气“あったか”，译文用句号丢失了疑问感。
 > 「何っ! ここまでのパワーがあったか……」
-“What! It had this much power...?”
+“What?! It has this much power...?”
 
 @6371 Heero · ヒイロ
 # 触发：重伤（剩余 HP 不足 30%）（通用，7/8）
@@ -185,7 +185,7 @@
 @6374 Heero · ヒイロ
 # 触发：中伤（剩余 HP 30–90%）（通用，2/10）
 > 「つぅっ! ……当たったか……」
-“Tch! ...It hit, huh...”
+“Tch! ...So it hit me...”
 
 @6375 Heero · ヒイロ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/10）
@@ -219,7 +219,7 @@
 # 审校：“thruster” 与原文“推進システム”不完全对应，且“やるなっ”是称赞对方，保留“not bad”即可；改为 propulsion system 更准确。
 > 「左推進システム異常……
 >  やるなっ!」
-“Left propulsion system abnormal... not bad!”
+“Left propulsion system malfunction... not bad!”
 
 @6381 Heero · ヒイロ
 # 触发：中伤（剩余 HP 30–90%）（通用，9/10）
@@ -245,7 +245,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものか!」
-“Is that all you’ve got!”
+“Is that all you’ve got?!”
 
 @6386 Heero · ヒイロ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/7）
@@ -263,12 +263,12 @@
 # 审校：“その程度の力”带有轻视语气，应译为“that little power”而非中性的“that much power”。
 > 「その程度の力で、お前は何を
 >  するつもりだ」
-“With that little power, what do you intend to do?”
+“What do you think you can do with so little power?”
 
 @6389 Heero · ヒイロ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，7/7）
 > 「各部異常なし……」
-“All sections normal...”
+“All systems normal...”
 
 @6390 Heero · ヒイロ
 # 触发：回避（通用，1/8）
@@ -316,12 +316,12 @@
 @6398 Heero · ヒイロ
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「ダメージ、0……ムダな事をする」
-“Damage, zero... what a waste of effort.”
+“Damage: zero... a waste of effort.”
 
 @6399 Heero · ヒイロ
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「各部正常、ダメージ……0」
-“All sections normal, damage... zero.”
+“All systems normal, damage... zero.”
 
 @6400 Heero · ヒイロ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -331,7 +331,7 @@
 @6401 Heero · ヒイロ
 # 触发：射程外，无法反击（通用，1/1）
 > 「レンジ外からの攻撃か……」
-“An attack from out of range...”
+“Attacking from outside my range...”
 
 @14293 Heero · ヒイロ
 # 触发：攻击，乘坐〈ウイングゼロ〉

@@ -24,7 +24,7 @@
 @6528 Zechs · ゼクス
 # 触发：攻击（通用，5/15）
 > 「とどめだっ!!」
-“The finishing blow!”
+“Now to finish it!”
 
 @6529 Zechs · ゼクス
 # 触发：攻击（通用，6/15）
@@ -35,7 +35,7 @@
 @6530 Zechs · ゼクス
 # 触发：攻击（通用，7/15）
 > 「落ちるがいい!」
-“Fall!”
+“Down you go!”
 
 @6531 Zechs · ゼクス
 # 触发：攻击（通用，8/15）
@@ -59,7 +59,7 @@
 # 触发：攻击（通用，11/15）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「悪いが、死んでもらおう!」
-“Sorry, but you’re going to die!”
+“Forgive me, but you must die!”
 
 @6535 Zechs · ゼクス
 # 触发：攻击（通用，12/15）
@@ -109,7 +109,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このままでは、こちらも戦えんか!?」
-“At this rate, I can’t fight either?!”
+“At this rate, even I won’t be able to fight?!”
 
 @6544 Zechs · ゼクス
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
@@ -125,13 +125,13 @@
 @6546 Zechs · ゼクス
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
 > 「うっ……こうも直撃をくらうとは!」
-“Ugh... to take a direct hit like that!”
+“Ugh... I can’t believe I took such a direct hit!”
 
 @6547 Zechs · ゼクス
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
 # 审校：死ぬな这里是感叹“要死了”，不是祈使“别死”
 > 「死ぬな……このままでは……」
-“I’ll die... at this rate...”
+“I’ll die... if this keeps up...”
 
 @6548 Zechs · ゼクス
 # 触发：中伤（剩余 HP 30–90%）（通用，1/7）
@@ -178,7 +178,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フフ、私に挑んでくる相手を、
 >  無下にはできんな」
-“Heh, I can’t dismiss anyone who challenges me.”
+“Heh, I can’t turn away anyone who challenges me.”
 
 @6556 Zechs · ゼクス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
@@ -189,7 +189,7 @@
 @6557 Zechs · ゼクス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
 > 「私に戦いを挑むとは……」
-“To challenge me in battle...”
+“You dare challenge me...”
 
 @6558 Zechs · ゼクス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）

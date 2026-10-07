@@ -41,7 +41,7 @@
 # 触发：攻击（通用，8/11）
 # 审校：原句不像口语
 > 「お手合わせ願おう!」
-“Let us have a match!”
+“Let us cross blades!”
 
 @6720 Treize · トレーズ
 # 触发：攻击（通用，9/11）
@@ -88,7 +88,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 # 审校：落ちる指被击坠，初稿 fall over 不准确。
 > 「これしきのことで落ちるわけにはいかんな」
-“I cannot afford to be shot down by something like this.”
+“I cannot fall to something like this.”
 
 @6728 Treize · トレーズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
@@ -117,7 +117,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なかなかやるようだな」
-“You’re quite good, it seems.”
+“You are rather skilled, I see.”
 
 @6733 Treize · トレーズ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
@@ -143,7 +143,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした?」
-“What’s wrong?”
+“What is the matter?”
 
 @6737 Treize · トレーズ
 # 触发：回避（通用，1/4）
@@ -180,7 +180,7 @@
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 # 审校：しかたあるまい更简洁
 > 「弾がない、か。しかたあるまい」
-“Out of ammunition, is it? So be it.”
+“Out of ammunition... So be it.”
 
 @6743 Treize · トレーズ
 # 触发：射程外，无法反击（通用，1/1）

@@ -9,7 +9,7 @@
 # 触发：攻击（通用，2/17）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「今日は、後へは退けないぜぇ!」
-“Today I ain’t backing down!”
+“No backing down today!”
 
 @6204 Duo · デュオ
 # 触发：攻击（通用，3/17）
@@ -81,12 +81,12 @@
 # 触发：攻击（通用，15/17）
 > 「うかつに俺に近づくやつは……
 >  死ぬぜぇっ!」
-“Anyone who gets careless and comes near me... dies!”
+“Anyone careless enough to get near me... dies!”
 
 @6217 Duo · デュオ
 # 触发：攻击（通用，16/17）
 > 「俺と一緒に地獄へ行こうぜぇ!」
-“Come to hell with me!”
+“Let’s go to hell together!”
 
 @6218 Duo · デュオ
 # 触发：攻击（通用，17/17）
@@ -148,7 +148,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，8/10）
 # 审校：ざまぁねぇ是自嘲狼狈
 > 「ざまぁねぇや……」
-“What a sorry sight...”
+“Talk about pathetic...”
 
 @6229 Duo · デュオ
 # 触发：重伤（剩余 HP 不足 30%）（通用，9/10）
@@ -158,7 +158,7 @@
 @6230 Duo · デュオ
 # 触发：重伤（剩余 HP 不足 30%）（通用，10/10）
 > 「うっ、なんてぇスピードとパワーなんだ!?」
-“Ugh, what speed and power is this?!”
+“Ugh, what kind of speed and power is that?!”
 
 @6231 Duo · デュオ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/11）
@@ -194,20 +194,20 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，6/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あうっ!! 何しやがる!!」
-“Agh!! What’re you doing!!”
+“Agh!! Hey, what’s the big idea?!”
 
 @6237 Duo · デュオ
 # 触发：中伤（剩余 HP 30–90%）（通用，7/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたた……やってくれるじゃねえの!」
-“Ouch... you’re really something!”
+“Ouch... you got me good!”
 
 @6238 Duo · デュオ
 # 触发：中伤（剩余 HP 30–90%）（通用，8/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「本気で俺を怒らせるなよ、
 >  長生きしたかったらな!」
-“Don’t make me seriously mad, if you wanna live long!”
+“Don’t make me mad for real, not if you wanna live long!”
 
 @6239 Duo · デュオ
 # 触发：中伤（剩余 HP 30–90%）（通用，9/11）
@@ -220,7 +220,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こう攻撃が厳しいんじゃ動きが
 >  とれないぜ」
-“With an attack this fierce, I can’t even move.”
+“I can’t make a move under fire this heavy.”
 
 @6241 Duo · デュオ
 # 触发：中伤（剩余 HP 30–90%）（通用，11/11）
@@ -232,7 +232,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんだよ、そんなもんか?」
-“What’s this, is that all you got?”
+“What, is that all you got?”
 
 @6243 Duo · デュオ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
@@ -250,7 +250,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうしたどうした、その程度か!?」
-“What’s wrong, what’s wrong, is that all?!”
+“C’mon, c’mon, is that all you got?!”
 
 @6246 Duo · デュオ
 # 触发：回避（通用，1/10）
@@ -267,24 +267,24 @@
 # 触发：回避（通用，3/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どこ狙ってんだよ、へたくそ!」
-“Where’re you aiming, you lousy shot!”
+“Where ya aiming, you lousy shot?!”
 
 @6249 Duo · デュオ
 # 触发：回避（通用，4/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「へへっ、なんだよ、余裕じゃねぇか」
-“Heh, what’s this, easy as pie.”
+“Heh, what’s this? Too easy.”
 
 @6250 Duo · デュオ
 # 触发：回避（通用，5/10）
 > 「よっと、こんなもんか?」
-“Whoops, is that all?”
+“Hup! Is that all?”
 
 @6251 Duo · デュオ
 # 触发：回避（通用，6/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「甘いってんだよ!」
-“I said you’re too soft!”
+“Too slow, I tell ya!”
 
 @6252 Duo · デュオ
 # 触发：回避（通用，7/10）
@@ -297,7 +297,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このデュオ様に当てようなんて、
 >  100年早いんだよ!」
-“Trying to hit the great Duo? You’re a hundred years too early!”
+“Hit the great Duo? Not in a hundred years!”
 
 @6254 Duo · デュオ
 # 触发：回避（通用，9/10）
@@ -317,7 +317,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：beam 小写，へん是嘿
 > 「へん、そんなビームなんざ!!」
-“Heh, a beam like that?!”
+“Hah, as if a beam like that could!!”
 
 @6257 Duo · デュオ
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -352,7 +352,7 @@
 # 触发：使用〈ビームサイズ／ツインビームサイズ／ビームシザース〉（低优先，可能被通用台词顶掉）
 # 审校：「突撃あるのみ!!」是“只有突击一途”的热血喊叫，原译“Nothing but a charge!!”略显生硬，改为更自然的“All we can do is charge!!”。
 > 「突撃あるのみ!!」
-“All we can do is charge!!”
+“Nothing to do but charge!!”
 
 @14274 Duo · デュオ
 # 触发：使用〈ビームサイズ／ツインビームサイズ／ビームシザース〉（低优先，可能被通用台词顶掉）
@@ -383,59 +383,59 @@
 # 触发：攻击，乘坐〈ヴァイエイト〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「所詮コピーじゃねぇか!」
-“You’re just a copy after all!”
+“You’re nothing but a copy!”
 
 @14279 Duo · デュオ
 # 触发：攻击，乘坐〈ビルゴ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「所詮コピーじゃねぇか!」
-“You’re just a copy after all!”
+“You’re nothing but a copy!”
 
 @14280 Duo · デュオ
 # 触发：攻击，乘坐〈ビルゴⅡ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「所詮コピーじゃねぇか!」
-“You’re just a copy after all!”
+“You’re nothing but a copy!”
 
 @14281 Duo · デュオ
 # 触发：攻击，乘坐〈ヴァイエイト〉
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「人形ごときに負けてて
 >  ガンダムのパイロットがつとまるかぁ!」
-“If I lost to a mere puppet, could I call myself a Gundam pilot?!”
+“What kind of Gundam pilot loses to a puppet?!”
 
 @14282 Duo · デュオ
 # 触发：攻击，乘坐〈ビルゴ〉
 > 「人形ごときに負けてて
 >  ガンダムのパイロットがつとまるかぁ!」
-“If I lost to a mere puppet, could I call myself a Gundam pilot?!”
+“What kind of Gundam pilot loses to a puppet?!”
 
 @14283 Duo · デュオ
 # 触发：攻击，乘坐〈ビルゴⅡ〉
 > 「人形ごときに負けてて
 >  ガンダムのパイロットがつとまるかぁ!」
-“If I lost to a mere puppet, could I call myself a Gundam pilot?!”
+“What kind of Gundam pilot loses to a puppet?!”
 
 @14284 Duo · デュオ
 # 触发：被击坠，乘坐〈ガンダムデスサイズ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、出力ゼロか。
 >  このデスサイズも死んだな……」
-“Tch, output zero, huh. This Deathscythe’s dead too...”
+“Tch, output’s at zero. So Deathscythe’s dead too...”
 
 @14285 Duo · デュオ
 # 触发：被击坠，乘坐〈ガンダムデスサイズH〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、出力ゼロか。
 >  このデスサイズも死んだな……」
-“Tch, output zero, huh. This Deathscythe’s dead too...”
+“Tch, output’s at zero. So Deathscythe’s dead too...”
 
 @14286 Duo · デュオ
 # 触发：被击坠，乘坐〈デスサイズHカスタム〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、出力ゼロか。
 >  このデスサイズも死んだな……」
-“Tch, output zero, huh. This Deathscythe’s dead too...”
+“Tch, output’s at zero. So Deathscythe’s dead too...”
 
 @14287 Duo · デュオ
 # 触发：被击坠，乘坐〈ガンダムデスサイズ〉

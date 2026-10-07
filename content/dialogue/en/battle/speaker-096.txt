@@ -18,19 +18,19 @@
 @6620 Milliardo · ミリアルド
 # 触发：攻击（通用，4/12）
 > 「必要ないのだ……貴様たちは!」
-“You are unnecessary... all of you!”
+“You are not needed... any of you!”
 
 @6621 Milliardo · ミリアルド
 # 触发：攻击（通用，5/12）
 > 「教えてやろう。要は戦い方次第
 >  なのだと」
-“Let me teach you. It all comes down to how you fight.”
+“Allow me to show you. It all comes down to how you fight.”
 
 @6622 Milliardo · ミリアルド
 # 触发：攻击（通用，6/12）
 # 审校：頭を叩く是打掉领头，不是头部
 > 「まずは頭を叩いておきたいのだよ!」
-“First, I want to take out the head!”
+“First, I’ll cut off the head!”
 
 @6623 Milliardo · ミリアルド
 # 触发：攻击（通用，7/12）
@@ -47,12 +47,12 @@
 # 触发：攻击（通用，9/12）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「悪いが、死んでもらおう!」
-“Sorry, but you’re going to die!”
+“Forgive me, but you must die!”
 
 @6626 Milliardo · ミリアルド
 # 触发：攻击（通用，10/12）
 > 「とどめだっ!!」
-“This is the end!!”
+“Now to finish you!!”
 
 @6627 Milliardo · ミリアルド
 # 触发：攻击（通用，11/12）
@@ -71,7 +71,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅぅっ! 私はどこまでも
 >  生き抜いてみせる!」
-“Guh! I’ll survive no matter what!”
+“Guh! I will live on, whatever it takes!”
 
 @6630 Milliardo · ミリアルド
 # 触发：被击坠（通用，2/2）
@@ -92,13 +92,13 @@
 @6633 Milliardo · ミリアルド
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「うっ……こうも直撃をくらうとは!」
-“Ugh... To take a direct hit like that!”
+“Ugh... I can’t believe I took such a direct hit!”
 
 @6634 Milliardo · ミリアルド
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「くっ、問題は敵よりも
 >  私自身だな……」
-“Ngh, the problem is me more than the enemy...”
+“Ngh, my real problem isn’t the enemy... it’s myself...”
 
 @6635 Milliardo · ミリアルド
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
@@ -151,7 +151,7 @@
 @6643 Milliardo · ミリアルド
 # 触发：回避（通用，3/4）
 > 「かわす!」
-“Dodge!”
+“Evading!”
 
 @6644 Milliardo · ミリアルド
 # 触发：回避（通用，4/4）

@@ -24,7 +24,7 @@
 @6892 Alex · アレックス
 # 触发：攻击（通用，5/8）
 > 「とどめだ!」
-“This is the finishing blow!”
+“Time to finish you!”
 
 @6893 Alex · アレックス
 # 触发：攻击（通用，6/8）
@@ -74,7 +74,7 @@
 # 审校：ククク不是咕咕咕
 > 「ククク、こいつの性能を
 >  甘くみたようだな」
-“Heh heh heh, seems you underestimated this machine’s performance.”
+“Heh heh heh, looks like you underestimated what this machine can do.”
 
 @6902 Alex · アレックス
 # 触发：回避（通用，1/1）

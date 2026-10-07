@@ -3,7 +3,7 @@
 @6402 Lady · レディ
 # 触发：攻击（通用，1/11）
 > 「ここまでだ、死ねぇ!」
-“This is the end. Die!”
+“That’s it for you. Die!”
 
 @6403 Lady · レディ
 # 触发：攻击（通用，2/11）
@@ -63,7 +63,7 @@
 @6412 Lady · レディ
 # 触发：攻击（通用，11/11）
 > 「これで終わりだ!!」
-“This is the end!!”
+“It’s over!!”
 
 @6413 Lady · レディ
 # 触发：被击坠（通用，1/2）
@@ -85,14 +85,14 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……このままではやられる!?」
-“Ngh... At this rate I’ll be finished!”
+“Ngh... If this keeps up, I’m finished!”
 
 @6417 Lady · レディ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ! や、やらせん……
 >  トレーズ閣下のためにも!」
-“Ugh! I-I won’t let you... not for His Excellency Treize!”
+“Ugh! I-I won’t let you... for His Excellency Treize’s sake!”
 
 @6418 Lady · レディ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
@@ -128,7 +128,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんな」
-“That’s useless.”
+“That has no effect.”
 
 @6424 Lady · レディ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
@@ -178,7 +178,7 @@
 # 触发：回避（通用，4/5）
 > 「ふ、貴様の攻撃など、とうに
 >  見切った!」
-“Hmph. I saw through your attack long ago!”
+“Hmph. I had your attacks figured out long ago!”
 
 @6433 Lady · レディ
 # 触发：回避（通用，5/5）
@@ -202,7 +202,7 @@
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「弾切れか!? しくじった……」
-“Out of ammo?! I’ve blundered...”
+“Out of ammo?! I slipped up...”
 
 @6437 Lady · レディ
 # 触发：射程外，无法反击（通用，1/1）

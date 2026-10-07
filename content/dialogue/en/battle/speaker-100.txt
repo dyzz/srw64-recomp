@@ -84,7 +84,7 @@
 @6988 Quinze · カーンズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「えーい、修理はまだかっ!?」
-“Gah, is the repair not done yet?!”
+“Blast it, aren’t the repairs done yet?!”
 
 @6989 Quinze · カーンズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
@@ -102,7 +102,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「主砲のシステムダウン……
 >  各部損傷だとぉ!?」
-“Main gun system down... damage to all sections?!”
+“Main gun system down... damage throughout the ship?!”
 
 @6992 Quinze · カーンズ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）

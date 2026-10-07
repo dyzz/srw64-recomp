@@ -112,7 +112,7 @@
 @6281 Trowa · トロワ
 # 触发：被击坠（通用，4/4）
 > 「早かったな……俺の死も……」
-“That was quick... my death too...”
+“Sooner than I thought... my death, too...”
 
 @6282 Trowa · トロワ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
@@ -140,7 +140,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 > 「く……戦闘続行可能、
 >  任務を継続する」
-“Ngh... combat capability maintained. Continuing the mission.”
+“Ngh... still combat-capable. Continuing the mission.”
 
 @6287 Trowa · トロワ
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
@@ -151,14 +151,14 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「脚部にトラブルか…まだ大丈夫だ」
-“Trouble in the legs... still, I’m fine.”
+“Leg trouble... I can still manage.”
 
 @6289 Trowa · トロワ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度の損傷なら
 >  任務継続に支障はない」
-“Damage of this level won’t hinder the mission.”
+“Damage this light won’t hinder the mission.”
 
 @6290 Trowa · トロワ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
@@ -187,7 +187,7 @@
 # 触发：回避（通用，1/4）
 > 「戦術、戦闘レベル共に、
 >  ムダな攻撃だ……」
-“Both tactically and in combat level, that attack was wasted...”
+“Poor tactics, poor skill... a wasted attack...”
 
 @6295 Trowa · トロワ
 # 触发：回避（通用，2/4）
@@ -203,7 +203,7 @@
 @6297 Trowa · トロワ
 # 触发：回避（通用，4/4）
 > 「なるほど、この程度か」
-“I see, is that all?”
+“I see. So that’s all.”
 
 @6298 Trowa · トロワ
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
