@@ -87,6 +87,7 @@
 | [开场文字](native/native-intro.md) | 开场缩放文字跳过与资源提取 |
 | [设置窗口](native/settings-window.md) | 菜单栏「选项」与设置窗口的结构、元数据与验收；游戏内叠加的五页面板（通用／界面／规则／操作／关于）与键位 |
 | [更新检查](native/update-check.md) | 读官网 `/latest.json` 比版本：「关于」页与 macOS 应用菜单手动检查、首次在标题询问后每天最多一次自动检查、标题角落新版提示；各平台系统 HTTP；不下载不安装 |
+| [问题报告](native/bug-report.md) | 设置「反馈」页：复制平台信息、一键导出 zip：系统与显卡、游戏设置、最近 3 次运行的日志；新的 `console.log` 记下 stdout／stderr；不带 ROM、存档和令牌，家目录写成 `~` |
 | [Original 回退](native/native-original-fallback.md) | HD 资源缺失时的启动行为 |
 | [世界地图 HD](native/native-worldmap-hd.md) | 对话世界地图高清资源 |
 | [人物头像 HD](native/native-portraits-hd.md) | 全部头像的 2×2 拼图生成、逐格配准与抠图，模式 7 绘制的整张 768×768 替换（宿主经 Plume 绘制） |

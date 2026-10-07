@@ -43,7 +43,8 @@ class SettingsWindowTests(unittest.TestCase):
         # its column: a Chinese or Japanese sentence is one run.
         panel = 800 * 0.88 - 52 - 2
         row = panel - 8 - 12 - 24
-        tab = (panel - (len(SETTINGS_PAGES) - 1) * 6) / len(SETTINGS_PAGES) - 20
+        # Eight tabs share the row: 6 dp gaps, 6 dp padding each side (frontend.cpp .set-tabs).
+        tab = (panel - (len(SETTINGS_PAGES) - 1) * 6) / len(SETTINGS_PAGES) - 12
         runs = lambda text: text.split(" ")
         choices = {"settings_images": ("original", "hd"), "settings_battle_ui": ("native", "original"),
                    "settings_ui_size": ("standard", "large", "largest"),

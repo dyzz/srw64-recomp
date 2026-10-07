@@ -265,7 +265,7 @@ def fixtures(text):
             {'file': 'Super Robot Wars 64 (Japan).sra', 'format': '32-bit swapped', 'slots': [{'used': True, 'intact': True}, {'used': True, 'intact': False}]},
             {'file': 'SRW64.srm', 'format': '32-bit swapped .srm', 'slots': [{'used': True, 'intact': True}, {'used': False, 'intact': False}]},
             {'file': 'notes.txt', 'unknown': True}]}}
-        for page in ('general', 'interface', 'rules', 'saves', 'controls', 'about'):
+        for page in ('general', 'interface', 'rules', 'saves', 'controls', 'feedback', 'about'):
             add(f'settings-{page}', imports if page == 'saves' else {}, settings=page)
         add('link', {'link_page': {'visible': True}})
         # Battle viewer (frontend.cpp viewer_panel), opened from the settings' 一般 page: the

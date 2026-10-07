@@ -30,6 +30,8 @@ uint64_t srw64_current_vi();
 void srw64_after_gpu(plume::RenderCommandList* list, std::function<void(bool completed)> callback);
 // Window thread: focus, size and title, for the debug interface's status.
 nlohmann::json srw64_window_status();
+// The graphics API in use and the GPU's name, vendor, driver and memory (any thread).
+nlohmann::json srw64_graphics_info();
 // Window thread: resize ({width, height}), raise ({front: true}) and/or press the
 // close button ({close: true}) of the game window.
 nlohmann::json srw64_window_control(const nlohmann::json& params);

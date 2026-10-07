@@ -98,6 +98,7 @@ std::array<uint8_t, 0x40> header{};
 uint32_t mi_interrupt{}, dpc_start{}, dpc_end{}, dpc_current{}, dpc_status{};
 uint32_t dpc_clock{}, dpc_buffer_busy{}, dpc_pipe_busy{}, dpc_tmem{};
 plume::RenderDevice* capture_device;
+int graphics_api = -1;  // RT64's chosen API (RT64::UserConfiguration::GraphicsAPI), for srw64_graphics_info
 std::filesystem::path capture_directory;
 uint64_t presented_frames{};
 std::string capture_clock = "native_vi_at_draw";
@@ -482,6 +483,7 @@ public:
         default: chosen_api = ultramodern::renderer::GraphicsApi::Metal; break;
         }
         fprintf(stderr, "SRW64_GRAPHICS_API %d\n", int(app->chosenGraphicsAPI));
+        graphics_api = int(app->chosenGraphicsAPI);
         setup_result = result == RT64::Application::SetupResult::Success
             ? ultramodern::renderer::SetupResult::Success : ultramodern::renderer::SetupResult::GraphicsDeviceNotFound;
         if (setup_result != ultramodern::renderer::SetupResult::Success) {
@@ -980,6 +982,24 @@ nlohmann::json srw64_window_status() {
     return {{"focused", SDL_GetKeyboardFocus() == window}, {"width", width}, {"height", height},
             {"fullscreen", (SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN) != 0},
             {"pixel_width", pixel_width}, {"pixel_height", pixel_height}, {"title", SDL_GetWindowTitle(window)}};
+}
+
+// The graphics API and the GPU as plume describes it, for a bug report (bug_report.hpp).
+nlohmann::json srw64_graphics_info() {
+    using API = RT64::UserConfiguration::GraphicsAPI;
+    const char* api = graphics_api < 0 ? "none" : graphics_api == int(API::D3D12) ? "D3D12" :
+                      graphics_api == int(API::Vulkan) ? "Vulkan" : graphics_api == int(API::Metal) ? "Metal" : "other";
+    nlohmann::json info = {{"api", api}};
+    if (capture_device) {
+        const auto& d = capture_device->getDescription();
+        using Vendor = plume::RenderDeviceVendor;
+        info["device"] = d.name;
+        info["vendor"] = d.vendor == Vendor::AMD ? "AMD" : d.vendor == Vendor::NVIDIA ? "NVIDIA" : d.vendor == Vendor::INTEL ? "Intel" :
+                         d.vendor == Vendor::APPLE ? "Apple" : "other";
+        info["driver_version"] = d.driverVersion;
+        info["video_memory_mb"] = d.dedicatedVideoMemory >> 20;
+    }
+    return info;
 }
 
 nlohmann::json srw64_window_control(const nlohmann::json& params) {

@@ -163,6 +163,9 @@ unsigned filter_scale(){return filter_lines.load();}
 void set_filter_scale(unsigned scale){filter_lines=std::min(scale,4u);save_now();}
 namespace {
 std::filesystem::path user_folder(){return destination.empty()?output:destination.parent_path();}
+}
+std::filesystem::path data_folder(){return user_folder();}
+namespace {
 // RetroArch's own folders where it is installed: its overlays and its slang shaders.
 std::vector<std::filesystem::path> retroarch_folders(const char* leaf) {
     std::vector<std::filesystem::path> bases;

@@ -1,5 +1,6 @@
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
+#include "console_log.hpp"
 // Native integration host, optionally rendered through RT64/Metal.
 #include <atomic>
 #include <cstdio>
@@ -309,6 +310,7 @@ static int run_host(int argc, char** argv) {
         return 2;
     }
     output_dir = std::filesystem::absolute(argv[2]);
+    srw64::console_log::attach(output_dir);
     const char* variant_key = std::getenv("SRW64_ROM_VARIANT");
     if (!variant_key) variant_key = "jp";
     const NativeRomVariant* variant = nullptr;
@@ -523,7 +525,7 @@ static int run_host(int argc, char** argv) {
 }
 
 #if defined(__linux__) && !defined(__ANDROID__)
-// A crash leaves its stack on stderr (the session's native.log), for reports from
+// A crash leaves its stack on stderr and in the run's console.log, for reports from
 // Linux and the Steam Deck: addresses resolve with addr2line on the unstripped build.
 #include <execinfo.h>
 #include <csignal>
@@ -532,47 +534,27 @@ namespace {
 void crash_backtrace(int signal) {
     static const char header[] = "SRW64_CRASH signal ";
     char number[4] = {char('0' + signal / 10 % 10), char('0' + signal % 10), '\n', 0};
-    (void)!::write(2, header, sizeof(header) - 1);
-    (void)!::write(2, number, 3);
     void* frames[64];
-    backtrace_symbols_fd(frames, backtrace(frames, 64), 2);
+    const int count = backtrace(frames, 64);
+    // Straight into console.log as well: the pipe to it may not be read again.
+    for (const int fd : {2, srw64::console_log::crash_fd()}) {
+        if (fd < 0) continue;
+        (void)!::write(fd, header, sizeof(header) - 1);
+        (void)!::write(fd, number, 3);
+        backtrace_symbols_fd(frames, count, fd);
+    }
     std::signal(signal, SIG_DFL);
     std::raise(signal);
 }
 }
 #endif
 
-#ifdef __ANDROID__
-// Android drops stdout and stderr, where the host and RT64 report: forward both to logcat.
-#include <android/log.h>
-#include <thread>
-#include <unistd.h>
-namespace {
-void forward_output_to_logcat() {
-    int pipes[2];
-    if (pipe(pipes) != 0) return;
-    setvbuf(stdout, nullptr, _IOLBF, 0);
-    setvbuf(stderr, nullptr, _IONBF, 0);
-    dup2(pipes[1], STDOUT_FILENO);
-    dup2(pipes[1], STDERR_FILENO);
-    std::thread([fd = pipes[0]] {
-        char buffer[4096];
-        std::string line;
-        for (ssize_t n; (n = read(fd, buffer, sizeof(buffer))) > 0;) {
-            line.append(buffer, size_t(n));
-            for (size_t end; (end = line.find('\n')) != std::string::npos; line.erase(0, end + 1))
-                __android_log_write(ANDROID_LOG_INFO, "SRW64", line.substr(0, end).c_str());
-        }
-    }).detach();
-}
-}
-#endif
 
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
-#ifdef __ANDROID__
-    forward_output_to_logcat();
-#endif
+    // stdout and stderr also into the run's console.log (Android: to logcat, which would
+    // otherwise drop them), for a bug report (console_log.hpp).
+    srw64::console_log::start();
 #if defined(__linux__) && !defined(__ANDROID__)
     // Android: bionic has backtrace() only from API 33, and debuggerd's tombstone needs
     // its own handlers, so crashes go to logcat as tombstones.

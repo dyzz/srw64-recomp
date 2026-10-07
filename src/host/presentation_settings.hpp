@@ -70,6 +70,9 @@ bool debug_interface_forced();
 struct DebugEndpoint {std::string address,run;};
 DebugEndpoint debug_endpoint();
 void set_debug_endpoint(DebugEndpoint endpoint);
+// The user directory (presentation.json's folder; the run directory without one), for a
+// bug report (bug_report.hpp).
+std::filesystem::path data_folder();
 // Around the picture and over it (docs/native/bezels-and-filters.md). A bezel is a
 // RetroArch overlay image (a .png, or an overlay .cfg naming one) laid around the picture
 // while it is 4:3; a filter is a RetroArch slang shader preset (.slangp) run over the

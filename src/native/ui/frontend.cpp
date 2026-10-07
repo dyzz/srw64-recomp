@@ -39,6 +39,7 @@
 #include "post_filter.hpp"
 #include "notices.hpp"
 #include "update_check.hpp"
+#include "bug_report.hpp"
 #include "debug_ui.hpp"
 #include "debug_protocol.hpp"
 #include "modal_input.hpp"
@@ -318,7 +319,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;}
 .set-panel {display:flex; flex-direction:column; width:88%; max-width:1040dp; height:88%; max-height:820dp; box-sizing:border-box; padding:14dp 26dp 12dp; color:#e8eefc; background-color:#0c122cf2; border:1dp #3fd0ff; border-top:3dp #3fd0ff;}
 .set-panel h1 {margin:0 0 8dp; font-size:24dp; letter-spacing:2dp;}
 .set-tabs {display:flex; gap:6dp; margin-bottom:10dp;}
-.set-tabs button {flex:1 1 0; min-width:0; margin:0; padding:0 10dp; height:34dp; line-height:32dp; box-sizing:border-box; text-align:center; white-space:nowrap; overflow:hidden; font-size:15dp; font-weight:bold; color:#a4b0d2; background-color:#0c122ceb; border:1dp #3fd0ff; border-radius:0;}
+.set-tabs button {flex:1 1 0; min-width:0; margin:0; padding:0 6dp; height:34dp; line-height:32dp; box-sizing:border-box; text-align:center; white-space:nowrap; overflow:hidden; font-size:15dp; font-weight:bold; color:#a4b0d2; background-color:#0c122ceb; border:1dp #3fd0ff; border-radius:0;}
 .set-tabs button.on {color:#0b1230; background-color:#3fd0ff; border-color:#3fd0ff;}
 .set-tabs button:focus {color:#ffd75e; border-color:#ffd75e;}
 .set-tabs button.on:focus {color:#0b1230; background-color:#ffd75e; border-color:#ffd75e;}
@@ -869,7 +870,7 @@ int dp_pixels(float dp){return int(dp*ui_density+.5f);}
 // The settings window (docs/native/settings-window.md): an overlay panel over the game
 // with one page per category. Pages in tab order; the id is what presentation.json
 // keeps as settings_page, so the window reopens where it was left.
-constexpr const char* settings_pages[]={"general","interface","rules","cheats","saves","controls","about"};
+constexpr const char* settings_pages[]={"general","interface","rules","cheats","saves","controls","feedback","about"};
 unsigned settings_page{};
 int settings_built=-1;  // the page the open window shows; -1 once it closes
 // The control to focus once the window is rebuilt: an id, "first" for the page's first
@@ -1329,6 +1330,42 @@ std::string debug_row() {
 #else
     return settings_row("settings_debug",choices,more);
 #endif
+}
+// A bug report for an issue (bug_report.hpp, docs/native/bug-report.md). The game's side
+// of report.json: what it is set to now. bug_report adds the system, the settings files
+// and the logs.
+std::filesystem::path report_zip;
+std::string report_message;
+nlohmann::json report_facts() {
+    nlohmann::json rules=nlohmann::json::array(),cheats_on=nlohmann::json::array();
+    for(const auto& entry:rules::catalog)if(rules::active_fixes()&entry.fix)rules.push_back(entry.id);
+    for(const auto& entry:cheats::catalog)if(settings::cheats()&entry.bit)cheats_on.push_back(entry.id);
+    const auto hd=update::status(update::site_language(localization::catalog().locale)).hd;
+    const auto name=[](const std::string& path){return path.empty()?std::string():std::filesystem::path(path).filename().string();};
+    return {{"version",SRW64_VERSION},{"locale",localization::catalog().locale},{"ui_size",settings::ui_size_name(settings::ui_size())},
+        {"images",presentation::image_mode.current()==1?"hd":"original"},{"hd_pack",{{"installed",hd.installed},{"version",hd.version}}},
+        {"wide",settings::wide_picture()},{"filter",name(settings::filter())},{"bezel",name(settings::bezel())},
+        {"rules",rules},{"cheats",cheats_on},{"controller",srw64_pad_name()},{"touch",touch_active()},{"handheld",handheld()},
+        {"debug_interface",settings::debug_interface_forced() || settings::debug_interface()},
+        {"window",srw64_window_status()},{"graphics",srw64_graphics_info()}};
+}
+// The Feedback page (docs/native/bug-report.md): the platform summary to paste into an
+// issue, the report zip to attach, and where each kind of feedback goes.
+std::string info_message;
+std::string feedback_page() {
+    std::string info;
+    for(size_t at=0;at<info_message.size();) {
+        const auto end=std::min(info_message.find('\n',at),info_message.size());
+        info+="<p class='set-path'>"+escape(info_message.substr(at,end-at))+"</p>";
+        at=end+1;
+    }
+    std::string report;
+    if(!report_message.empty())report+="<p class='set-path'>"+escape(report_message)+"</p>";
+    if(!report_zip.empty())report+="<div class='set-seg'>"+(can_open_folder()?button("report-open",label("settings_report_open")):
+        button("report-copy",label("settings_report_copy")))+"</div>";
+    return settings_row("settings_info",button("info-copy",label("settings_info_copy")),info)+
+        settings_row("settings_report",button("report-export",label("settings_report_export")),report)+
+        settings_row("settings_feedback_links",button("report-issue",label("settings_report_issue"))+button("feedback-text",label("settings_feedback_text")));
 }
 // The About page's rows: the project's pages, then the update check and its switch, then
 // the debug interface.
@@ -2394,7 +2431,7 @@ void settings_sync() {
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
         // The セーブ page: its choices, the import folder as last read and the last result.
         [&]{const auto c=save_store::settings();return std::to_string(c.autosave)+std::to_string(c.intermission)+std::to_string(c.turn);}()+
-        save_candidates.dump()+save_message+save_force+
+        save_candidates.dump()+save_message+save_force+report_message+info_message+
         // The General page's bezel and filter rows and their picker.
         (settings_pages[settings_page]==std::string("general")?look_stamp():std::string())+
         // The Cheats page: its switches, the levels row and the pilots the menu lists.
@@ -2457,6 +2494,8 @@ void settings_sync() {
         body+=saves_page();
     } else if(page=="controls") {
         body+=controls_page();
+    } else if(page=="feedback") {
+        body+=feedback_page();
     } else {
         auto version=localization::catalog().ui("settings_about_version");
         if(const auto at=version.find("{version}");at!=std::string::npos)version.replace(at,9,SRW64_VERSION);
@@ -4055,6 +4094,23 @@ void choose(const std::string& id) {
         if(id.starts_with("dialogue-hints:"))settings::set_dialogue_hints_always(id=="dialogue-hints:always");
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
         if(id=="debug-copy-run")SDL_SetClipboardText(settings::debug_endpoint().run.c_str());
+        if(id=="report-export") {
+            const auto result=bug_report::write(settings::data_folder(),output,report_facts());
+            report_zip=result.zip;
+            auto text=localization::catalog().ui(result.zip.empty()?"settings_report_failed":"settings_report_done");
+            const std::string mark=result.zip.empty()?"{error}":"{path}";
+            if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),result.zip.empty()?result.error:short_path(result.zip.string()));
+            report_message=text;
+        }
+        if(id=="report-open" && !report_zip.empty())open_folder(report_zip.parent_path().string());
+        if(id=="report-copy" && !report_zip.empty())SDL_SetClipboardText(report_zip.string().c_str());
+        if(id=="report-issue")open_page(std::string(update::kIssues)+"/new/choose");
+        if(id=="info-copy") {
+            const auto text=bug_report::summary(report_facts());
+            SDL_SetClipboardText(text.c_str());
+            info_message=localization::catalog().ui("settings_info_copied")+"\n"+text;
+        }
+        if(id=="feedback-text")open_page("https://srw64.dreamquest.club/"+update::site_language(localization::catalog().locale)+"/story/");
         if(id.starts_with("autosave")) {
             auto c=save_store::settings();
             if(id.starts_with("autosave:"))c.autosave=id=="autosave:on";

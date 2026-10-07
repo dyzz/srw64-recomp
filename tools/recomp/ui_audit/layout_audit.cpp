@@ -8,6 +8,7 @@
 #include "localization/catalog.hpp"
 #include "presentation_settings.hpp"
 #include "update_check.hpp"
+#include "bug_report.hpp"
 #include "cheats.hpp"
 #include "post_filter.hpp"
 #include "game_frame.hpp"
@@ -98,6 +99,7 @@ bool hints_always=false; bool dialogue_hints_always(){return hints_always;} void
 bool debug_on=true; bool debug_interface(){return debug_on;} void set_debug_interface(bool v){debug_on=v;} bool debug_interface_forced(){return false;}
 DebugEndpoint debug_endpoint(){return debug_on?DebugEndpoint{"127.0.0.1:52817","/home/a-rather-long-user-name/.local/share/srw64-recomp/sessions/65d26a293f88c-c10a9e5f/run"}:DebugEndpoint{};}
 void set_debug_endpoint(DebugEndpoint){}
+std::filesystem::path data_folder(){return "/home/a-rather-long-user-name/.local/share/srw64-recomp";}
 // No bezel, filter or cheat chosen.
 std::string bezel(){return {};} void set_bezel(const std::string&){} std::string filter(){return {};} void set_filter(const std::string&){}
 unsigned filter_scale(){return 1;} void set_filter_scale(unsigned){} unsigned cheats(){return 0;} void set_cheats(unsigned){}
@@ -154,6 +156,9 @@ namespace srw64::campaign_switch { bool available(){return false;} void enter(co
 uint32_t srw64_pad_state(){return 0;}
 uint32_t srw64_keyboard_state(){return 0;}
 std::string srw64_pad_name(){return "Steam Deck Controller";}
+json srw64_window_status(){return json::object();}
+json srw64_graphics_info(){return json::object();}
+namespace srw64::bug_report { Result write(const std::filesystem::path&,const std::filesystem::path&,json){return {};} std::string summary(const json&){return {};} }
 uint64_t srw64_current_vi(){return 1000;}
 
 // ---- overflow scan ---------------------------------------------------------------

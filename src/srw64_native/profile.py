@@ -54,6 +54,11 @@ UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings
 # The debug interface switch on the About page (settings debug_interface).
 UI_KEYS |= {"settings_debug", "settings_debug_on", "settings_debug_off", "settings_debug_note", "settings_debug_note_android", "settings_debug_forced",
             "settings_debug_status", "settings_debug_run", "settings_debug_copy", "debug_interface_notice"}
+# The Feedback page (frontend.cpp feedback_page, bug_report.hpp).
+UI_KEYS |= {"settings_report", "settings_report_note", "settings_report_export", "settings_report_issue",
+            "settings_report_open", "settings_report_copy", "settings_report_done", "settings_report_failed",
+            "settings_info", "settings_info_note", "settings_info_copy", "settings_info_copied",
+            "settings_feedback_links", "settings_feedback_links_note", "settings_feedback_text"}
 # The 部隊名 each language shows while the stored name is the original マーチウィンド
 # (docs/native/fixed-unit-name.md; the name cannot be changed).
 UI_KEYS |= {"unit_default_name"}
@@ -78,7 +83,7 @@ UI_KEYS |= {"settings_title_ui", "settings_title_ui_native", "settings_title_ui_
 UI_KEYS |= {"title_demo_giant_robo_subtitle"}
 # The settings window's pages, footer and Controls page (frontend.cpp settings_sync; the
 # page ids and the functions are the same lists as settings_pages and control_rows there).
-SETTINGS_PAGES = ("general", "interface", "rules", "cheats", "saves", "controls", "about")
+SETTINGS_PAGES = ("general", "interface", "rules", "cheats", "saves", "controls", "feedback", "about")
 UI_KEYS |= {f"settings_page_{page}" for page in SETTINGS_PAGES}
 # The General page's bezel and filter rows (frontend.cpp look_rows, docs/native/bezels-and-filters.md).
 UI_KEYS |= {"settings_bezel", "settings_bezel_note", "settings_filter", "settings_filter_note", "settings_filter_scale",
