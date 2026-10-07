@@ -429,7 +429,7 @@ feeling well!”
 
 @41121 Quatre · カトル
 > 「どういうことなんですか?」
-“What do you mean by that?”
+“What do you mean?”
 
 @41122 Cathrine · キャスリン
 # 审校：全局：弯撇号／弯引号
@@ -876,7 +876,7 @@ I can’t allow you to use this thing!”
 
 @41188 Dr. Saotome · 早乙女博士
 > 「お、お前までそんなことを……」
-“Y-you’re saying that too...?”
+“N-not you too...”
 
 @41189 Ryoma · リョウ
 > 「博士、俺たちには、こいつが必要
@@ -909,7 +909,7 @@ We’re not who we used to be either!”
 @41193 Dr. Saotome · 早乙女博士
 > 「……わかった、好きにせい! ただし、
 >  扱いには十分気をつけるんじゃ」
-“...Fine, have it your way! But handle it with extreme care.”
+“...Fine, have it your way! But handle it with the utmost care.”
 
 @41194 Hayato · ハヤト
 > 「もちろんですよ」

@@ -427,10 +427,10 @@ out on its own.”
 # 审校：全局：弯撇号／弯引号
 > 「1人では直せそうにない。
 >  応急処置でいい
-“I cannot fix it alone. A field repair will do.
+“I doubt I can fix it alone. Emergency repairs will do.
 ---
 >  手伝ってくれ、レイン」
-Lend me a hand, Rain.”
+Help me, Rain.”
 
 @40177 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -442,7 +442,7 @@ Lend me a hand, Rain.”
 # 审校：全局：弯撇号／弯引号
 > 「君なら……大丈夫だ。
 >  君の腕はよく知っている
-“You can do it... I know how skilled you are.
+“You’ll be... fine. I know your skills well.
 ---
 >  私のいう通りにやってくれればいい……」
 Just do as I tell you...”
@@ -493,7 +493,7 @@ Gundam to drop to Earth...”
 # 审校：全局：弯撇号／弯引号
 > 「誰だ、だと? このたわけが!
 >  ワシの声を忘れたと申すか!?」
-“Who’s there, you say? You fool! Have you forgotten my voice?!”
+“Who’s there? You dare ask, you fool?! Have you forgotten my voice?!”
 
 @40185 Domon · ドモン
 # 审校：英文不通
@@ -626,7 +626,7 @@ attack you? You’re on their side, aren’t you?”
 @40208 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「うっ……しまった、ふさがれた!?」
-“Ugh... Damn, it’s blocked?!”
+“Ugh... Damn, it’s blocked!”
 
 @40209 Master · マスター
 # 审校：“应该使出了”误读；英文同
@@ -698,10 +698,10 @@ The aliens? No, it was not them.”
 # 审校：Master 的 voice 要求不用缩写，将 “Don't” 改为 “Do you not”
 > 「……人間とは、つくづく度しがたい
 >  存在だと思わぬか。だからこそ
-“...Do you not think mankind is truly beyond redemption? That is precisely why,
+“...Do you not think humans are truly beyond redemption? That is exactly why,
 ---
 >  だからこそワシは……」
-precisely why I...”
+exactly why I...”
 
 @40218 Domon · ドモン
 > 「しまった、まだいたのか!?」
@@ -733,7 +733,7 @@ precisely why I...”
 
 @40224 Master · マスター
 > 「いや、まだ1匹残っておる!」
-“No, there is one left!”
+“No, there is still one left!”
 
 @40225 Master · マスター
 # 审校：精读：去破折号
