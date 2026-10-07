@@ -579,10 +579,10 @@ I’ll hang in there, Captain Bright!”
 @24803 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「少年、君のその強さはいったい
 >  どこからくる? 君は何のために
-“Boy, where does that strength of yours come from? For what,
+“Boy, where does that strength of yours come from? What do you fight for,
 ---
 >  何を信じて戦っているのだ!?」
-and believing in what, are you fighting?!”
+and what do you believe in?!”
 
 @24804 Ark · アーク（按段落 3DD1）
 > 「俺は……誰かが無意味に死んで
@@ -655,12 +655,12 @@ is exactly why you always end up crawling home beaten.”
 # 审校：全局：弯撇号／弯引号
 > 「あいにくと運だけはよくてな。お前にや
 >  られたってそう簡単にゃくたばらねぇよ」
-“Sorry, but luck’s one thing I’ve always had. You can beat me all you want, I won’t croak that easy.”
+“Sorry to disappoint, but I’ve always been lucky. You beat me, I still won’t kick the bucket that easy.”
 
 @24814 Selain · セレイン（按段落 3DD2）
 > 「そうか、ならば今回もためしてみたら
 >  どうだ!?」
-“Is that so? Then why not try again this time?!”
+“Oh? Then why not test that luck again?!”
 
 @24815 Rish · リッシュ（按段落 3DD2）
 # 审校：can't be helped 日语腔
@@ -671,7 +671,7 @@ is exactly why you always end up crawling home beaten.”
 # 审校：全局：弯撇号／弯引号
 > 「貴様が何をいおうと、敵である
 >  以上は戦う以外に道はなかろう」
-“Say what you like. As long as you’re the enemy, fighting is the only option.”
+“Whatever you say, as long as you’re my enemy, there’s no choice but to fight.”
 
 @24817 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -697,7 +697,7 @@ Haven’t I told you that?”
 # 审校：全局：弯撇号／弯引号
 > 「そうか……なら、お前が死んだら
 >  考えてやる」
-“I see... Then if you die, I’ll think about it.”
+“I see... Then I’ll think about it once you’re dead.”
 
 @24821 Rish · リッシュ（按段落 3DD2）
 > 「おい、ちょっと待て!

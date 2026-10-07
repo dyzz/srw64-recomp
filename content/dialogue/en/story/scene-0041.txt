@@ -1600,7 +1600,7 @@ about the Virose we recovered.”
 # 审校：全局：弯撇号／弯引号
 > 「おう、来たな。
 >  ちょっとこれを見てくれないか」
-“Hey, there you are. Take a look at this, would you?”
+“Hey, there you are. Take a look at this, will you?”
 
 @26587 Brad · ブラッド（按段落 3DD3）
 > 「こ、これは……アストナージ、こいつは

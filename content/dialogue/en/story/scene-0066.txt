@@ -8,7 +8,7 @@
 ---
 >  財団は完全平和主義を
 >  理解して下さったかしら?」
-Do you suppose the Foundation has come to understand complete pacifism?”
+Has the Foundation come to understand complete pacifism, I wonder?”
 
 @28856 Relena · リリーナ
 > 「たった一度の話しあいで全てが
@@ -17,13 +17,13 @@ Do you suppose the Foundation has come to understand complete pacifism?”
 ---
 >  大切なことは、あきらめずに
 >  理想を説き続けることです」
-What matters is to keep preaching the ideal without giving up.”
+What matters is never giving up, and continuing to speak for the ideal.”
 
 @28857 Dorothy · ドロシー
 # 审校：Dorothy 的贵族口吻应更正式，将 “won't we” 改为 “shall we not” 以贴合其 ornate formality。
 > 「すばらしいお考えですわ。
 >  でも、明日にも戦争が
-“What a wonderful way of thinking. But war may
+“What a wonderful attitude. But war may
 ---
 >  始まるかも知れなくってよ?
 >  その時は、やはり戦ってこの国を
@@ -43,7 +43,7 @@ any conflict whatsoever.”
 @28859 Dorothy · ドロシー
 > 「そうかしら。{HeroMech}の
 >  みなさんも、そうお考え?」
-“Is that so? What about all of you in the {HeroMech}? Do you think the same?”
+“Is that so? And does everyone in the {HeroMech} feel the same?”
 
 @28860 Relena · リリーナ
 > 「…………」
@@ -53,7 +53,7 @@ any conflict whatsoever.”
 # 审校：Dorothy 的贵族口吻应更正式，将 “too” 改为 “as well” 以贴合其 ornate formality。
 > (ふふふ、がんばって、リリーナ様。
 >  理想を守って、死をも恐れず
-(Hehehe, do your best, Lady Relena. People who defend their ideals and fight without fear of death...
+(Hehehe, keep it up, Lady Relena. People who defend their ideals and fight without fear of death...
 ---
 >  戦う人々……これほど美しいものは
 >  この世にありはしないわ
@@ -61,7 +61,7 @@ there is nothing more beautiful in this world.
 ---
 >  あなたのまわりには、
 >  そんな人たちがいっぱいいます
-Around you, there are so many such people.
+And you are surrounded by such people.
 ---
 >  だから私もここにいるのよ、リリーナ様)
 That is why I am here as well, Lady Relena.)
@@ -96,11 +96,11 @@ that is to say, the Romefeller Foundation faction.”
 “Huh. That old man sure is popular.
 ---
 >  わけのわかんないところが、いいのかね」
-Guess it’s the part nobody can figure out that people like.”
+Maybe it’s the whole mysterious thing they go for.”
 
 @28865 Bright · ブライト
 > 「それで、現状は?」
-“So, what is the current situation?”
+“So, where do things stand?”
 
 @28866 Noin · ノイン
 # 审校：the crucial Treize 不像英文
@@ -114,7 +114,7 @@ by sheer numbers, and on top of that, Treize himself has yet to show his face.
 ---
 >  組織の面でも
 >  不利といわざるをえません」
-Organizationally, too, they’re at a disadvantage.”
+Their organization puts them at a disadvantage as well.”
 
 @28867 Alan · アラン
 > 「それでは、鎮圧は
@@ -129,32 +129,32 @@ Organizationally, too, they’re at a disadvantage.”
 ---
 >  また別の場所で反乱が
 >  起こっている。トレーズの影響は
-rebellions break out elsewhere. It means Treize’s influence
+rebellions break out elsewhere. Treize’s influence, it seems,
 ---
 >  OZの組織の隅々にまで
 >  及んでいるということですね」
-reaches every corner of OZ’s organization.”
+reaches into every corner of OZ.”
 
 @28869 Kenji · ケンジ
 # 审校：全局：弯撇号／弯引号
 > 「我々にとってはありがたいんじゃ
 >  ないか? こちらへの対応が鈍くなる」
-“Isn’t that good for us? Their response to us will grow slower.”
+“Isn’t that good for us? It’ll slow down their response to us.”
 
 @28870 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「いや、一概にはいえないな。敵の
 >  あせりが、こちらへの強攻策となって
-“No, we can’t say that for certain. The enemy’s impatience could also
+“No, it’s not that simple. Desperation could just as easily
 ---
 >  出てくる可能性もある」
-come out as a hardline offensive against us.”
+drive them to come at us harder.”
 
 @28871 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
 > 「なるほど。ジャミトフの野郎の
 >  性格からして
-“I see. Knowing that bastard Jamitov’s personality,
+“I see. Knowing what that bastard Jamitov is like,
 ---
 >  案外そっちの方がありうるかもな」
 that might actually be more likely.”
@@ -162,10 +162,10 @@ that might actually be more likely.”
 @28872 Noin · ノイン
 > 「とにかく、目を離さずにいましょう。
 >  奴らがここを狙っているのは
-“In any case, let us keep a close eye on them. It is certain
+“In any case, let us keep a close eye on them. There is no doubt
 ---
 >  確かなのですから」
-that they have their sights set on this place.”
+they have their sights set on this place.”
 
 @28873 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -177,31 +177,31 @@ that they have their sights set on this place.”
 # 审校：全局：弯撇号／弯引号
 > 「なんとかしてくれよ。ゲッターやガンダムが
 >  出撃してるっていうのに、マジンガーが
-“Do something about it. Getter and Gundam are out there fighting, so it’s just not cool
+“Come on, do something! Getter and Gundam are out there, and Mazinger
 ---
 >  出られないってんじゃカッコがつかないぜ」
-if Mazinger can’t deploy.”
+can’t even launch? That looks so lame.”
 
 @28875 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
 > 「目には見えないだろうが、
 >  かなりのダメージなんだ。装甲が
-“You can’t see it, but the damage is considerable. Some parts of the armor
+“You might not see it, but it’s taken a lot of damage. Some parts of the armor
 ---
 >  弱くなっている部分もあるし、
 >  なによりエネルギーもれも見つかっている
-have been weakened, and above all, an energy leak has been found.
+have been weakened, and worse, we found an energy leak.
 ---
 >  今まで、だましだまし使ってきたが、
 >  もう限界だ。ここらで完全に
-We’ve been patching it up and using it until now, but it’s reached its limit. It’s about time
+We’ve been nursing it along this whole time, but it can’t take any more. It’s time
 ---
 >  オーバーホールした方がいい」
-we gave it a complete overhaul.”
+we gave it a full overhaul.”
 
 @28876 Koji · 甲児
 > 「そんなこといってもよぉ……」
-“Even if you say that...”
+“Come on, man...”
 
 @28877 Astonaige · アストナージ
 > 「そんなに出撃したければ、
@@ -216,12 +216,12 @@ we gave it a complete overhaul.”
 # 审校：全局：弯撇号／弯引号
 > 「兜ぉ、ボスボロットのどこが
 >  気に入らないっていうのさ?」
-“Koji, what don’t you like about the Boss Borot?”
+“Koji, what’s wrong with the Boss Borot, huh?”
 
 @28880 Koji · 甲児
 > 「ヘン! あんなの、オレのマジンガーZに
 >  くらべりゃ、ただのポンコツスクラップだ!」
-“Hmph! Compared to my Mazinger Z, that thing is just a piece of junk scrap!”
+“Hmph! Compared to my Mazinger Z, that thing’s just a pile of junk!”
 
 @28881 Boss · ボス
 # 审校：精读：结巴
@@ -231,13 +231,13 @@ we gave it a complete overhaul.”
 @28882 Koji · 甲児
 > 「おっ、ひさしぶりにやろうってのか!
 >  上等だ、かかってこい!」
-“Oh, you wanna go at it after so long? Fine by me, bring it on!”
+“Oh, wanna go a round, for old times’ sake? Fine by me, bring it on!”
 
 @28883 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
 > 「2人ともやめろって!
 >  …………わかったよ、マジンガーZの
-“Both of you, stop it! ...All right, I get it. I’ll cancel the overhaul
+“Both of you, knock it off! ...Fine, you win. I’ll cancel the overhaul
 ---
 >  オーバーホールはとりやめる。ただし、
 >  エネルギーもれだけは直させてくれよ
@@ -296,14 +296,14 @@ halt the attack for now!”
 @28889 Bask · バスク
 > 「その通りだ、逃がしてやるのよ。
 >  ただし、サンクキングダムの中にな
-“Exactly. Let them escape. But into the Sanc Kingdom.
+“Exactly, we let them escape. Into the Sanc Kingdom, that is.
 ---
 >  その上で、改めて攻撃する。
 >  完全平和主義国家の中で
-And then, we attack again. Openly and honorably,
+And then we attack again. Inside a nation of complete pacifism,
 ---
 >  公明正大にな。ふはははは!」
-inside a nation of complete pacifism. Fuhahahaha!”
+fair and square. Fuhahahaha!”
 
 @28890 Ginrei · 銀鈴
 # 审校：全局：弯撇号／弯引号
@@ -331,7 +331,7 @@ directly attacked, so...”
 # 审校：全局：弯撇号／弯引号
 > 「それも時間の問題だ。
 >  覚悟は決めておくんですな」
-“That too is only a matter of time. You’d best make up your mind.”
+“That’s only a matter of time too. You’d better be ready for it.”
 
 @28894 Pagan · パーガン
 # 审校：语序顺一下
@@ -364,16 +364,16 @@ pursued by the Romefeller faction and have been driven inside our borders...”
 @28897 Quattro · クワトロ
 > 「ああ。奴らの意図はわかりきっている
 >  リリーナ王女がどう動くかで
-“Yeah. Their intent is obvious. How Princess Relena moves
+“Yes. Their aim is obvious. What Princess Relena does
 ---
 >  我々の出方も決まるぞ」
-will determine how we move too.”
+will decide our own move.”
 
 @28898 Specials · スペシャルズ
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「特佐殿、サンクキングダムから
 >  通信が入っております!」
-“Special Colonel, we have a communication coming in from the Sanc Kingdom!”
+“Special Colonel, we have an incoming transmission from the Sanc Kingdom!”
 
 @28899 Bask · バスク
 > 「ほおっておけ」
@@ -383,10 +383,10 @@ will determine how we move too.”
 # 审校：全局：弯撇号／弯引号
 > 「はっ、それが……。国家代表、
 >  リリーナ・ピースクラフト王女から
-“Sir, but... it’s from the head of state, Princess Relena Peacecraft,
+“Yes, sir, but... it’s the head of state, Princess Relena Peacecraft,
 ---
 >  直接……」
-directly...”
+in person...”
 
 @28901 Bask · バスク
 # 审校：全局：弯撇号／弯引号
@@ -405,7 +405,7 @@ from a head of state, I can’t very well ignore it. Put her through.”
 ---
 >  OZの戦闘部隊の指揮官に、
 >  ただちに非戦闘区域での
-I advise the commander of the OZ combat unit to immediately
+I call on the commander of the OZ combat unit to immediately
 ---
 >  いっさいの軍事行動を
 >  停止するよう勧告します」
@@ -419,10 +419,10 @@ cease all military action within the non-combat zone.”
 ---
 >  バスク・オム特佐であります。
 >  遺憾ながら、その勧告は
-OZ rebel suppression force. Regrettably, I cannot
+OZ rebel suppression force. Regrettably, I must
 ---
 >  受け入れかねますな」
-accept that advice.”
+decline that request.”
 
 @28904 Relena · リリーナ
 # 审校：全局：弯撇号／弯引号
@@ -432,21 +432,21 @@ accept that advice.”
 ---
 >  このサンクキングダムは、
 >  完全平和主義の国です
-This Sanc Kingdom is a nation of complete pacifism.
+The Sanc Kingdom is a nation of complete pacifism.
 ---
 >  いかなる争いも、
 >  持ちこむことは許しません」
-We will not permit any conflict to be brought inside.”
+We will not allow conflict of any kind to be brought here.”
 
 @28905 Bask · バスク
 # 审校：补译：原稿页数错误
 > 「反乱軍が、我が隊を攻撃
 >  しながらここに移動してきたのです
-“The rebels moved in here while attacking my unit.
+“The rebels fled here while attacking my unit.
 ---
 >  小官としては、このまま放置する
 >  わけにはいきませんな
-As an officer, I cannot simply leave them be.
+I can hardly leave them be.
 ---
 >  それともあなた方が
 >  反乱軍を鎮圧し、我々に
@@ -471,7 +471,7 @@ In any case, now that they have entered our nation,
 ---
 >  OZの反乱軍といえども
 >  私たちの敵ではありません」
-even if they are OZ rebels, they are not our enemies.”
+OZ rebels or not, they are not our enemies.”
 
 @28907 Bask · バスク
 > 「ほう。それはすなわち、OZへの敵対と
@@ -489,7 +489,7 @@ We will protect them as refugees.”
 @28909 Bask · バスク
 > 「……そのようなざれごとが
 >  通用するとお思いか!」
-“...You think such nonsense will pass?!”
+“...You expect such drivel to hold up?!”
 
 @28910 Relena · リリーナ
 > 「もう一度いいます、
@@ -520,17 +520,17 @@ Cease combat immediately and withdraw from this nation!”
 # 审校：全局：弯撇号／弯引号
 > 「傷ついた者を
 >  見殺しにできないという
-“I understand Lady Relena’s feelings, that she cannot
+“I understand how Lady Relena feels; she cannot bear
 ---
 >  リリーナ様のお気持ちはよくわかる。
 >  しかし……」
-abandon the wounded to die. But...”
+to leave the wounded to die. But...”
 
 @28915 Eiji · エイジ
 # 审校：we can only help 生硬
 > 「彼らに退去してもらうしかない。
 >  せめて安全に逃げてもらうしか……」
-“All we can do is have them leave. At the very least, help them get away safely...”
+“We’ll just have to ask them to leave. Or at least help them get away safely...”
 
 @28916 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -540,11 +540,11 @@ abandon the wounded to die. But...”
 ---
 >  逃亡を手助けした事が
 >  知られたら、同じことだ」
-If it’s discovered we helped them escape, it’s the same thing.”
+And if it comes out that we helped them escape, it’s no different.”
 
 @28917 Kamille · カミーユ
 > 「だからといって!」
-“But even so!”
+“But still!”
 
 @28918 Noin · ノイン
 # 审校：全局：弯撇号／弯引号
@@ -554,17 +554,17 @@ If it’s discovered we helped them escape, it’s the same thing.”
 ---
 >  {HeroMech}の皆さん、お願い
 >  する。現地に行ってもらいたい」
-Everyone with the {HeroMech}, I’m asking you. I want you to head to the site.”
+Everyone aboard the {HeroMech}, please. I need you to go out there.”
 
 @28919 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「……了解しました。みんな、とにかく
 >  急ごう。考えるのはあとまわしだ!」
-“...Understood. Everyone, let’s hurry for now. We can think about it later!”
+“...Understood. Everyone, let’s move. We’ll think about it later!”
 
 @28920 Specials · スペシャルズ
 > 「……攻撃が弱まったな」
-“...The attack has weakened.”
+“...They’ve let up.”
 
 @28921 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
@@ -574,17 +574,17 @@ Everyone with the {HeroMech}, I’m asking you. I want you to head to the site.�
 ---
 >  完全平和の理想国に
 >  俺たちがいてはいけない」
-We shouldn’t be in a nation of complete peace.”
+Our kind don’t belong in a nation of complete peace.”
 
 @28922 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
 > 「だめだ、動けん。
 >  部隊の大半は負傷兵だ
-“It’s no good, we can’t move. Most of the unit are wounded.
+“It’s no good, we can’t move. Most of the unit is wounded.
 ---
 >  機動部隊も被弾して
 >  使いものにならん……」
-Our mobile units are hit too and useless...”
+Our mobile units have taken hits and are useless...”
 
 @28923 Specials · スペシャルズ
 > 「くそっ、初めから俺たちを
@@ -599,22 +599,22 @@ That bastard Bask... we fell right into his trap.”
 # 审校：全局：弯撇号／弯引号
 > 「……残るは投降するか、
 >  自爆するかだ
-“...All that’s left is to surrender or self-destruct.
+“...Our only options are surrender or self-destruction.
 ---
 >  今さら投降するより、いっそ……」
-Rather than surrender at this point, I’d just as soon...”
+Rather than surrender now, I’d sooner...”
 
 @28925 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
 > 「まて、通信が入っている。これは……
 >  {HeroMech}からだと!?」
-“Wait, we’re getting a communication. This is... from the {HeroMech}?!”
+“Wait, we’re getting a transmission. This is... from the {HeroMech}?!”
 
 @28926 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
 > 「あ、あれか! 接近してくる……
 >  間違いない
-“Th-that one! It’s approaching... no mistake.
+“Th-there! It’s coming this way... No doubt about it.
 ---
 >  あれは{HeroMech}だ!」
 That’s the {HeroMech}!”
@@ -639,7 +639,7 @@ representative of the Sanc Kingdom. We’re here to protect you.”
 “Representative Relena says she will accept you as refugees.
 ---
 >  ただし、武装は解除させていただく」
-However, we will have you disarm.”
+However, you will have to disarm.”
 
 @28930 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
@@ -659,10 +659,10 @@ pretext for their intervention. We can’t cause you any more trouble.”
 # 审校：全局：弯撇号／弯引号
 > 「……もう十分迷惑かけてるって。
 >  それじゃあ、いったい
-“...You’ve already caused plenty of trouble. So then, what exactly
+“...You already have, believe me. So what exactly
 ---
 >  どうするつもりなんだよ?」
-do you intend to do?”
+are you planning to do?”
 
 @28932 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
@@ -679,10 +679,10 @@ do you intend to do?”
 # 审校：全局：弯撇号／弯引号
 > 「そんなことはリリーナ代表が
 >  喜ばないわ
-“Representative Relena wouldn’t be happy about that.
+“Representative Relena wouldn’t want that.
 ---
 >  何より、この私が許しません!」
-More than anything, I won’t allow it!”
+And more importantly, I won’t allow it!”
 
 @28935 Specials · スペシャルズ
 > 「しかし……」
@@ -695,7 +695,7 @@ More than anything, I won’t allow it!”
 “Wait. Captain Bright, an aerial unit is approaching.
 ---
 >  OZじゃないわ……まさか、これは!」
-It’s not OZ... Could this be?!”
+It’s not OZ... Don’t tell me...!”
 
 @28937 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -716,7 +716,7 @@ It’s not OZ... Could this be?!”
 # 审校：隼人口吻
 > 「よりによって
 >  問答無用の連中とはな
-“Of all the unreasonable bastards to show up.
+“Of all the times for the no-talk crowd to show up.
 ---
 >  いちばん来てほしくねえ奴らが
 >  来やがったか!」
@@ -745,7 +745,7 @@ They’re heading straight for the target area!”
 @28943 Bask · バスク
 > 「ははははは、絶好のきっかけが
 >  思わぬところから現れたぞ
-“Hahahahaha, the perfect opportunity has appeared from an unexpected place.
+“Hahahahaha, the perfect pretext has fallen right into our laps.
 ---
 >  総員に告ぐ、目標変更!
 >  MD部隊はそのまま前進し
@@ -753,10 +753,10 @@ To all units: change of target! The MD unit will continue advancing
 ---
 >  百鬼・ミケーネ軍を攻撃せよ!
 >  ……ただし、邪魔になるものは
-and attack the Hyakki-Mycenae Army! ...However, anything in the way
+and attack the Hyakki-Mycenae Army! ...And feel free to eliminate
 ---
 >  何であれ排除してかまわんぞ!」
-may be eliminated, whatever it is!”
+anything that gets in the way!”
 
 @28944 Relena · リリーナ
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -770,7 +770,7 @@ Why are you advancing the MDs?!”
 @28945 Bask · バスク
 > 「これは遺憾ですなあ。百鬼や
 >  ミケーネは人類の敵でありますぞ
-“How regrettable. The Hyakki and Mycenae are enemies of mankind.
+“Now that is regrettable. The Hyakki and Mycenae are enemies of mankind.
 ---
 >  当然、自国を守る戦力のない
 >  サンクキングダムのためにも
@@ -778,7 +778,7 @@ Naturally, for the sake of the Sanc Kingdom, which lacks the forces to defend it
 ---
 >  我々が戦わねばならん。
 >  感謝していただきたいですな」
-we must fight. You ought to be grateful.”
+we must fight. I would expect a little gratitude.”
 
 @28946 Relena · リリーナ
 # 审校：Relena's formal, no-contraction voice requires "do not" instead of "don't".
@@ -804,11 +804,11 @@ we must fight. You ought to be grateful.”
 @28950 Dr. Gura · グラー博士
 > 「なんとしてもゲッター線を
 >  奪い取るのだ!」
-“We must seize the Getter Ray by any means!”
+“Seize the Getter Rays, whatever it takes!”
 
 @28951 Bright · ブライト
 > 「総員、出撃準備はいいのか!?」
-“All hands, are you ready to launch?!”
+“All hands, ready to launch?!”
 
 @28952 Koji · 甲児
 > 「待ってくれ!
@@ -839,7 +839,7 @@ launch immediately!”
 # 审校：全局：弯撇号／弯引号
 > 「その状態では戦闘は無理だ。
 >  いいから早く脱出しろ!」
-“You can’t fight in that condition. Just hurry up and escape!”
+“You can’t fight in that condition. Just get out of here!”
 
 @28957 David · デビッド
 # 审校：全局：弯撇号／弯引号
@@ -854,12 +854,12 @@ launch immediately!”
 @28959 Sayaka · さやか
 > 「マジンガーZにそっくりね、あのロボット。
 >  なーんかやな感じ」
-“That robot looks just like Mazinger Z. It gives me a really bad feeling.”
+“That robot looks just like Mazinger Z. Something about it just feels wrong.”
 
 @28960 Boss · ボス
 # 审校：全局：弯撇号／弯引号
 > 「まるで女みたいなロボットだわさ」
-“It’s a robot that looks just like a woman!”
+“That robot looks just like a girl!”
 
 @28961 Marquis Janus · ヤヌス侯爵
 > 「見よ! これぞ地獄大元帥より
@@ -870,7 +870,7 @@ launch immediately!”
 # 审校：全局：弯撇号／弯引号
 > 「……ミネルバX!?
 >  まさか、完成していたのか!!」
-“...Minerva X?! Don’t tell me it was completed!!”
+“...Minerva X?! Don’t tell me they finished it!!”
 
 @28963 Sayaka · さやか
 > 「お父様、何か知ってるの?」
@@ -921,17 +921,17 @@ with the scientific might of Mycenae.”
 # 审校：全局：弯撇号／弯引号
 > 「……それがあれば、ミネルバXは
 >  マジンガーZのコンピュータ回路からの
-“...With that, Minerva X is designed to activate as Z’s partner via a special
+“...It’s designed so that a special signal from Mazinger Z’s computer circuit
 ---
 >  特殊な電波でZのパートナーとして
 >  起動する仕組みなのだ」
-signal from Mazinger Z’s computer circuit.”
+will activate Minerva X as Z’s partner.”
 
 @28972 Marquis Janus · ヤヌス侯爵
 # 审校：全局：弯撇号／弯引号
 > 「なに!? そんな回路があったのか?
 >  ……そうか、設計図でどうしても
-“What?! There was such a circuit? ...I see. There was a mysterious circuit
+“What?! There was a circuit like that? ...I see. There was a mysterious circuit
 ---
 >  わからない謎の回路があったが……
 >  そのことだったのか!」
@@ -947,12 +947,12 @@ we could never figure out from the blueprints... So that’s what it was!”
 # 审校：全局：弯撇号／弯引号
 > 「じゃあ味方にできるかもしれないって
 >  わけですね」
-“Then there’s a chance we can make it our ally.”
+“Then we might be able to bring it over to our side.”
 
 @28975 Prof. Yumi · 弓教授
 # 审校：弓教授对甲児的称呼应体现长辈口吻，用“my boy”更贴合温和学者对晚辈的语气。
 > 「うむ、やってみたまえ。甲児くん」
-“Yes, give it a try, my boy.”
+“Yes, give it a try, Koji.”
 
 @28976 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -1029,7 +1029,7 @@ using her as they please! Hang on, Minerva X... here I come!”
 # 审校：Don’t mock me 直译，卡兹不说俚语
 > 「チッ、奴がいないのか! この俺に
 >  恐れをなしたか!? ふざけおって!」
-“Tch, so he’s not here! Is he afraid of me?! How dare he!”
+“Tch, he’s not here! Does he fear me?! Insolent!”
 
 @28992 Kurtz · カーツ（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1062,7 +1062,7 @@ Not to the likes of you!!”
 # 审校：原文第1页结尾是逗号，初稿用了句号，改为逗号以保持页末标点一致。
 > 「{PartnerNick}ッ!! くっ……お前は
 >  ……本当は何を手にしたかったんだ
-“{PartnerNick}!! Ngh... you... what was it you really wanted to gain?
+“{PartnerNick}!! Ngh... you... what was it you really wanted?
 ---
 >  ……{PartnerNick}……
 >  ばか野郎がぁぁぁぁぁーっ!」
@@ -1070,7 +1070,7 @@ Not to the likes of you!!”
 
 @28996 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「少年か。何のつもりだ?」
-“A boy, is it? What do you want?”
+“Ah, the boy. What is this about?”
 
 @28997 Ark · アーク（按段落 3DD1）
 # 审校：口语化
@@ -1085,14 +1085,14 @@ Not to the likes of you!!”
 @28999 Ark · アーク（按段落 3DD1）
 > 「完全平和主義をかかげる
 >  サンクキングダムをつぶそうっていうのが
-“What OZ is doing now is trying to crush the Sanc Kingdom, which stands for
+“Right now OZ is trying to crush the Sanc Kingdom, a nation that stands for
 ---
 >  いまのOZのやってることだ。それが、
 >  あんたがいっていた地球圏のための
-absolute pacifism. Is that the continuation of this fight for the Earth Sphere
+absolute pacifism. Is that part of this fight for the Earth Sphere
 ---
 >  戦いってやつの、続きなのか」
-you were talking about?”
+you kept talking about?”
 
 @29000 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「…………」
@@ -1133,21 +1133,21 @@ do you not think such a thing is impossible in an Earth Sphere this far gone?
 ---
 >  考えないのか? 結局、理念はと
 >  もかく誰かが力をもって制しなければ
-In the end, ideals aside, do you not think someone must hold power and subdue it,
+In the end, ideals aside, do you not think that unless someone takes control by force,
 ---
 >  この混乱は収まらんとは、考えない
 >  のか?」
-or this chaos will never end?”
+this chaos will never end?”
 
 @29005 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
 > 「そんなことはわからないよ。あんたのいう
 >  ように、はなから無理なことなのかも
-“I don’t know that. Maybe, as you say, it’s impossible from the start.
+“I don’t know. Maybe you’re right, and it was never possible to begin with.
 ---
 >  しれない。けど、無理かどうかは、
 >  自分で確かめて決めさせてもらう
-But whether it’s impossible or not, I’ll find out for myself and decide.
+But whether it’s possible or not, I’m going to find out and decide for myself.
 ---
 >  俺たちはそのためにここにいる」
 That’s why we’re here.”
@@ -1155,10 +1155,10 @@ That’s why we’re here.”
 @29006 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「…………少年、最初の問いの
 >  返答はしたはずだな。それを聞いて
-“...Boy, I believe I answered your first question. Having heard it,
+“...Boy, I believe I answered your first question. And now that you have it,
 ---
 >  どうしようというのだ」
-what do you intend to do?”
+what do you mean to do?”
 
 @29007 Ark · アーク（按段落 3DD1）
 # 审校：结尾口语化
@@ -1204,7 +1204,7 @@ I figured I could believe you meant it.”
 # 审校：全局：弯撇号／弯引号
 > 「返事を聞かせてもらいたいな。
 >  場合によっては、このままやりあう
-“I’d like to hear your answer. Depending on it, we’ll end up fighting
+“So, what’s your answer? Depending on what it is, we may have to fight
 ---
 >  ことになるんだ」
 right here.”
@@ -1212,7 +1212,7 @@ right here.”
 @29012 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「……いいだろう。私も君たちが見い
 >  だそうとしている道がどのようなものか
-“...Very well. I too have come to want to see what sort of path you
+“...Very well. I find I want to see for myself what sort of path you
 ---
 >  見てみたくなった」
 are trying to find.”
@@ -1234,11 +1234,11 @@ in an age of upheaval.”
 @29015 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「……ここで死ぬのか……私は。
 >  それもよかろう。
-“...So I die here... do I. That is fine, too.
+“...So I am to die here... Perhaps that is fitting.
 ---
 >  フッ……地獄はさぞかし、
 >  にぎやかだろうな」
-Heh... Hell must be quite the lively place.”
+Heh... Hell must be bustling these days.”
 
 @29016 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「くっ……私は……」
@@ -1264,15 +1264,15 @@ What are you doing?!”
 # 审校：it has no meaning at all?! 不像英文
 > 「お願い、もうやめて。
 >  あたしたちが戦ったって
-“Please, stop this already. Even if we fight each other,
+“Please, stop this. There is no point
 ---
 >  何の意味もないのよ!?」
-what would it even accomplish?!”
+in the two of us fighting!”
 
 @29021 Aisha · アイシャ（按段落 3DD4）
 > 「意味……いいえ、
 >  意味ならありますわ
-“Meaning... no, there is meaning.
+“No point? Oh, but there is.
 ---
 >  あなたを倒さなければ、わたくしは、
 >  いえ{PartnerSurname}の家は
@@ -1285,23 +1285,23 @@ will lose its standing within Romefeller.”
 # 审校：わかって 是“听我说”不是“我知道”
 > 「わかって{PartnerName}、もう
 >  そんなことを言っているときではないのよ
-“Listen to me, {PartnerName}. This is no time to be saying such things.
+“Please understand, {PartnerName}. This is no time for that!
 ---
 >  ロームフェラの、
 >  OZのやり方は間違ってるわ!
-Romefeller’s and OZ’s ways are wrong!
+The way Romefeller and OZ do things is wrong!
 ---
 >  あなただってそれは
 >  わかっているでしょうに!」
-Even you understand that, surely!”
+Surely you can see that yourself!”
 
 @29023 Aisha · アイシャ（按段落 3DD4）
 > 「……それでも、それでも、わたくしには……
 >  他の道は選べない
-“...Even so, even so, I... cannot choose any other path.
+“...Even so... even so, I... cannot choose another path.
 ---
 >  選ぶわけにはいかないのです!」
-I must not choose it!”
+I am not permitted to!”
 
 @29024 Manami · マナミ（按段落 3DD4）
 > 「{PartnerName}!?」
@@ -1328,11 +1328,11 @@ I must not choose it!”
 # 审校：精读：省略号
 > 「{PartnerName}……あなた……ばかよ。
 >  こんな風に死んだって
-“{PartnerName}... you... you fool. Even if you die like this,
+“{PartnerName}... you... you fool. Dying like this...
 ---
 >  誰も、喜んでなんてくれないのに……
 >  ばかよ、あなたは
-no one would be glad of it... you fool.
+won’t make anyone happy... You fool...
 ---
 >  ……{PartnerName}……」
 ...{PartnerName}...”
@@ -1370,7 +1370,7 @@ has escaped safely.”
 @29035 Sayaka · さやか
 > 「アストナージさんたちが回収してきたの
 >  よ。整備ハンガーの方らしいわ」
-“Astonaige and the others recovered it. It seems to be in the maintenance hangar.”
+“Astonaige and the others recovered it. It’s in the maintenance hangar, I think.”
 
 @29036 Koji · 甲児
 # 审校：甲儿对沙也加直呼其名；英文口语化
@@ -1382,7 +1382,7 @@ has escaped safely.”
 # 审校：全局：弯撇号／弯引号
 > 「あ、ちょ、ちょっと待ってよぉ、
 >  甲児くんったら!
-“Ah, w-wait a moment, Koji!
+“H-hey, wait a minute, Koji!
 ---
 >  ……何が恋人よ、フン!
 >  もう知らないんだから!」
@@ -1392,10 +1392,10 @@ has escaped safely.”
 # 审校：全局：弯撇号／弯引号
 > 「……というわけで、機能停止して
 >  動けなくなっていたミネルバXを
-“...So anyway, we were able to bring back Minerva X,
+“...So anyway, Minerva X had shut down and was dead in the water,
 ---
 >  運んでくることができたんだ」
-which had shut down and couldn’t move.”
+so we were able to haul it back.”
 
 @29039 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -1406,25 +1406,25 @@ which had shut down and couldn’t move.”
 # 审校：全局：弯撇号／弯引号
 > 「おそらくミネルバXのパートナー回路が
 >  原因じゃないのかな」
-“It’s probably because of Minerva X’s partner circuit, I’d say.”
+“I suspect Minerva X’s partner circuit is to blame.”
 
 @29041 Koji · 甲児
 > 「それって……?」
-“That means...?”
+“Meaning...?”
 
 @29042 Prof. Yumi · 弓教授
 # 审校：全局：弯撇号／弯引号
 > 「もともとはマジンガーZの良きパートナー
 >  として動くように設計されてはいた
-“Originally it was designed to operate as Mazinger Z’s good partner.
+“Originally, it was designed to work as Mazinger Z’s faithful partner.
 ---
 >  だが、敵の手先としてZに敵対
 >  するようAIが埋めこまれた。戦場で
-But an AI was implanted to make it oppose Z as a pawn of the enemy. When it met
+But the enemy implanted an AI to turn it against Z. Then, meeting
 ---
 >  Zと会ったことにより本来持って
 >  いたパートナー回路が目覚めた……」
-Z on the battlefield, the partner circuit it originally possessed awakened...”
+Z on the battlefield woke up its original partner circuit...”
 
 @29043 Astonaige · アストナージ
 > 「……そこでマジンガーZに
@@ -1439,11 +1439,11 @@ Mazinger Z and the AI trying to oppose it.”
 # 审校：全局：弯撇号／弯引号
 > 「そうだね。結局ミネルバXは
 >  協力、敵対のどちらの行動を
-“That’s right. In the end, Minerva X couldn’t take either action, cooperation or
+“Exactly. In the end, unable either to help Z or to fight it,
 ---
 >  とることもできず自ら機能停止
 >  してしまったのではないのかな」
-opposition, and shut itself down, I suspect.”
+Minerva X shut itself down, I suspect.”
 
 @29045 Koji · 甲児
 > 「ミネルバX……」
@@ -1453,7 +1453,7 @@ opposition, and shut itself down, I suspect.”
 # 审校：全局：弯撇号／弯引号
 > 「そう心配そうな顔をするな、甲児
 >  改修が終われば、すぐにでも
-“Don’t make such a worried face, Koji. Once the refit is done, you’ll be able to
+“Don’t look so worried, Koji. Once the refit’s done, the two of you can
 ---
 >  一緒に戦うことができるって」
 fight together right away.”
@@ -1465,17 +1465,17 @@ fight together right away.”
 @29048 Astonaige · アストナージ
 > 「奴らが取りつけたAIさえ
 >  解除できれば、あとはなんとかなるさ」
-“As long as we can remove the AI they attached, the rest will work out somehow.”
+“If we can just strip out the AI they installed, the rest we can handle.”
 
 @29049 Koji · 甲児
 > 「お願いします、アストナージさん」
-“Please do it, Astonaige.”
+“Please, Astonaige. I’m counting on you.”
 
 @29050 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
 > 「おっ、いつもと違って素直じゃない
 >  かよ。まぁ、まかせておけよ」
-“Oh, you’re more honest than usual. Well, leave it to me.”
+“Whoa, you’re awfully polite today. Well, leave it to me.”
 
 @29051 Dermail · デルマイユ
 # 审校：全局：弯撇号／弯引号
@@ -1493,11 +1493,11 @@ a challenge to our ideal of achieving world peace
 ---
 >  対する挑戦である。我々は、
 >  彼らの完全平和主義を
-through OZ’s rule. We regard their absolute pacifism as
+through OZ’s rule. We deem their absolute pacifism
 ---
 >  ぎまんと見なし、サンクキングダムの
 >  即刻解体を勧告するものである
-a deception, and advise the immediate dissolution of the Sanc Kingdom.
+a sham, and call for the immediate dissolution of the Sanc Kingdom.
 ---
 >  むろん拒否した場合は、いかなる
 >  実力行使をもってしても……」
@@ -1510,12 +1510,12 @@ Of course, should they refuse, by any means of force we deem necessary...”
 @29053 Noin · ノイン
 > 「やはりこうなってしまったか……。
 >  避けられないことなのだろうな……」
-“So it has come to this after all... It was unavoidable, I suppose...”
+“So it has come to this after all... I suppose there was no avoiding it...”
 
 @29054 Quattro · クワトロ
 # 审校：as expected 套话
 > 「強引だな。やはり奴らもあせっている」
-“Heavy-handed. So they’re getting impatient too, as I thought.”
+“Heavy-handed. They’re getting desperate, just as I thought.”
 
 @29055 Eiji · エイジ
 > 「……例の内紛のことですか?」
@@ -1524,7 +1524,7 @@ Of course, should they refuse, by any means of force we deem necessary...”
 @29056 Quattro · クワトロ
 > 「それもある。さらに、
 >  ロームフェラ財団内部にも
-“That too. On top of that, voices opposing
+“That’s part of it. On top of that, voices opposing
 ---
 >  戦いに対して否定的な意見が
 >  出始めてもいた
@@ -1537,7 +1537,7 @@ That must be what pushed them to take such forceful measures.”
 # 审校：全局：弯撇号／弯引号
 > 「アムロの予感が当たってしまったか。
 >  リリーナ代表にとっては
-“So Amuro’s hunch came true after all. For Representative Relena,
+“So Amuro’s hunch was right. For Representative Relena,
 ---
 >  つらいところだな……」
 this must be hard to bear...”
@@ -1563,11 +1563,11 @@ the only hope for the people of this world now.”
 @29061 Relena · リリーナ
 > 「あの方も、いくつもの困難な
 >  お仕事を抱えておられます
-“She too is burdened with any number of difficult tasks.
+“She has many difficult tasks of her own.
 ---
 >  ここは、私ひとりで
 >  決断しなければなりません」
-Here, I must make the decision on my own.”
+This is a decision I must make alone.”
 
 @29062 Dorothy · ドロシー
 > 「誰にも相談なさらずに、
@@ -1592,12 +1592,12 @@ this Dorothy.”
 @29064 Relena · リリーナ
 > 「ありがとう、ドロシー。でも大丈夫。
 >  私は決して絶望したりはしません」
-“Thank you, Dorothy. But I am fine. I will never give in to despair.”
+“Thank you, Dorothy. But I will be all right. I will never give in to despair.”
 
 @29065 Dorothy · ドロシー
 > 「そうでしょうとも。私の大好きな
 >  リリーナ様は、こんなことで
-“Of course not. My beloved Lady Relena would never
+“Of course you won’t. My beloved Lady Relena would never
 ---
 >  くじけたりはなさいませんわ。たとえ
 >  どんな軍団が攻めてこようとも……
@@ -1621,7 +1621,7 @@ Ah, just thinking about it makes my heart race.”
 @29067 Dorothy · ドロシー
 > (ふふふ、ご自分で戦うのが、
 >  おイヤなら何も変わりはしなくってよ
-(Hehehe, if you dislike fighting yourself, nothing will change at all,
+(Hehehe, if you refuse to fight yourself, nothing will ever change,
 ---
 >  リリーナ様)
 Lady Relena.)
@@ -1635,26 +1635,26 @@ Lady Relena.)
 # 审校：全局：弯撇号／弯引号
 > 「そんなこといってられないでしょう。
 >  むしろ、僕たちが必要とされるのは
-“We can’t afford to say that. If anything, aren’t we needed
+“We can’t worry about that now. If anything, isn’t this exactly when
 ---
 >  今からじゃないんですか?」
-more now than ever?”
+we’re needed?”
 
 @29070 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
 > 「俺もそう思う。仮に
 >  俺たちが出ていったところで
-“I think so too. Even if we were to leave,
+“I think so too. Even if we left now,
 ---
 >  もはや状況は変わらない。
 >  かえって悪くなるだけだ」
-the situation wouldn’t change anymore. It would only get worse.”
+it wouldn’t change anything. It would only make things worse.”
 
 @29071 David · デビッド
 # 审校：全局：弯撇号／弯引号
 > 「戦うしかないってか。なんかそれじゃあ、
 >  結局いつもと同じなんじゃねえか?」
-“So we’ve got no choice but to fight, huh. Doesn’t that just make it the same as always?”
+“So we just fight, huh. Isn’t that the same as always?”
 
 @29072 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -1671,7 +1671,7 @@ Bask and their kind crush the Sanc Kingdom. If they’re going to come
 attacking, then we’ve got no choice but to fight. Even if
 ---
 >  それを望んでいなかったとしても」
-Miss Relena doesn’t wish for it.”
+Miss Relena doesn’t want us to.”
 
 @29073 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -1688,7 +1688,7 @@ Bask and their kind crush the Sanc Kingdom. If they’re going to come
 attacking, then we fight. Even if
 ---
 >  それを望んでいないとしてもだ」
-Princess Relena doesn’t wish for it.”
+Princess Relena doesn’t want it.”
 
 @29074 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1702,33 +1702,33 @@ Bask and their lot crush the Sanc Kingdom. If they’re going to come
 ---
 >  いうんなら、戦ってやろうじゃねぇか。
 >  たとえ、リリーナ王女が
-attacking, then let’s fight them. Even if
+attacking, then let’s give ’em a fight. Even if
 ---
 >  それを望んでいなかったとしてもな」
-Princess Relena doesn’t wish for it.”
+Princess Relena doesn’t want that.”
 
 @29075 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
 > 「そうかもしれないわね。でも、
 >  このままサンクキングダムをデルマイユや
-“Maybe so. But we can’t let Dermail and
+“Maybe so. But we cannot let Dermail and
 ---
 >  バスクたちにつぶさせてはいけない。
 >  もしも彼らが攻めこんでくるなら
-Bask and their lot crush the Sanc Kingdom. If they’re going to come
+Bask and their lot crush the Sanc Kingdom. If they come
 ---
 >  あたしたちが戦うしかないわ。
 >  たとえ、リリーナさんが
-attacking, then we’ve got no choice but to fight. Even if
+attacking, then we have no choice but to fight. Even if
 ---
 >  それを望んでいなかったとしてもね」
-Miss Relena doesn’t wish for it.”
+Miss Relena does not want us to.”
 
 @29076 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「そうだな、{HeroNick}。
 >  俺達の守るものは、はっきりしている
-“That’s right, {HeroNick}. What we protect is clear.
+“That’s right, {HeroNick}. We know exactly what we’re protecting.
 ---
 >  完全平和への希望を
 >  消してしまってはいけないんだ」
@@ -1738,11 +1738,11 @@ We must not let the hope for absolute peace be extinguished.”
 # 审校：全局：弯撇号／弯引号
 > (……ヒイロとカトルらしき
 >  人物がいるというのか……
-(...So there are people who appear to be Heero and Quatre...
+(...People resembling Heero and Quatre have been sighted, then...
 ---
 >  リリーナ様のためにも
 >  彼らを探しにいくべきなのか……)
-Should I go looking for them, for Lady Relena’s sake as well...?)
+Should I go look for them, if only for Lady Relena’s sake...?)
 
 @29078 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「私のような者を{HeroMech}に
@@ -1753,7 +1753,7 @@ Should I go looking for them, for Lady Relena’s sake as well...?)
 # 审校：全局：弯撇号／弯引号
 > 「優秀なパイロットだからこそだ。
 >  ブライト・ノアだ。期待している」
-“It’s precisely because you’re an excellent pilot. I’m Bright Noa. I have high hopes for you.”
+“You’re an excellent pilot, that’s why. I’m Bright Noa. I’m counting on you.”
 
 @29080 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -1778,7 +1778,7 @@ Should I go looking for them, for Lady Relena’s sake as well...?)
 # 审校：全局：弯撇号／弯引号
 > 「おう、来たな。
 >  ちょっとこれを見てくれないか」
-“Hey, there you are. Take a look at this, would you?”
+“Hey, there you are. Take a look at this, will you?”
 
 @29085 Brad · ブラッド（按段落 3DD3）
 > 「こ、これは……アストナージ、こいつは
@@ -1789,11 +1789,11 @@ Should I go looking for them, for Lady Relena’s sake as well...?)
 # 审校：词条：ヴァイローズ=Virose
 > 「ヴァイローズを調べてたら、このデータが
 >  出てきたんだ。どうやら、お前の
-“I found this data while examining the Virose. It seems that your
+“I found this data while examining the Virose. Looks like your
 ---
 >  アースゲインとヴァイローズは、もとは1つ
 >  だったらしくてな」
-Earthgain and the Virose were originally one and the same.”
+Earthgain and the Virose were originally a single machine.”
 
 @29087 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1805,7 +1805,7 @@ Earthgain and the Virose were originally one and the same.”
 # 审校：全局：弯撇号／弯引号
 > 「スーパー・アースゲインといったところかな
 >  かなりパワーアップするようだ
-“I’d call it the Super Earthgain. It looks like it’ll get a good deal more powerful.
+“Call it a Super Earthgain. Looks like it’d be a big power boost.
 ---
 >  操縦関連のシステムはいじらなくて
 >  すむから、俺たちでもなんとかできるが、
@@ -1831,7 +1831,7 @@ what do you say?”
 # 审校：词条：ヴァイローズ=Virose
 > 「アースゲインとヴァイローズを1つに
 >  してくれっていいだしたのは{PartnerNick}さ」
-“It was {PartnerNick} who said to combine the Earthgain and the Virose into one.”
+“It was {PartnerNick}’s idea to combine the Earthgain and the Virose.”
 
 @29093 Brad · ブラッド（按段落 3DD3）
 > 「…………」
@@ -1845,7 +1845,7 @@ what do you say?”
 ---
 >  わかったとでもいうのかな……今までの
 >  罪ほろぼしってわけじゃないが
-my own weakness, I suppose... It’s not exactly atonement for my past sins, but
+my own weakness, I suppose... It’s not like this makes up for everything I’ve done, but
 ---
 >  俺のヴァイローズを使ってくれよ」
 use my Virose.”
@@ -1865,12 +1865,12 @@ use my Virose.”
 @29098 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
 > 「よし、それじゃさっそくとりかかるとするか」
-“All right, then let’s get started right away.”
+“All right, let’s get right on it.”
 
 @29099 Brad · ブラッド（按段落 3DD3）
 > 「師匠……俺は、俺はどうしたらいい
 >  のですか……教えてください師匠……」
-“Master... What should I, what should I do...? Please tell me, Master...”
+“Master... What should I do... what should I do...? Please, tell me, Master...”
 
 @29100 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -1885,7 +1885,7 @@ use my Virose.”
 # 审校：全局：弯撇号／弯引号
 > 「彼だって、こうなる可能性は
 >  考えてたでしょう
-“He must have considered the possibility this could happen, too.
+“He must have known this could happen.
 ---
 >  あなたが悪いんじゃないんだから」
 It’s not your fault.”
@@ -1902,13 +1902,13 @@ It’s not your fault.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ……戦闘になれば、
 >  そんなこと考えているヒマはないからな」
-“Yeah... Once we’re in battle, there’s no time to think about that.”
+“Yeah... Once the fighting starts, I won’t have time to dwell on it anyway.”
 
 @29106 Roux · ルー
 # 审校：全局：弯撇号／弯引号
 > 「ならいいんだけど。あ、そうそう、
 >  アストナージさんが
-“That’s fine, then. Oh, right, Astonaige said he wants to talk to you
+“If you say so. Oh, right, Astonaige said he wants to talk to you
 ---
 >  回収したヴァイローズの件で
 >  話があるっていってたわよ」
@@ -1922,7 +1922,7 @@ about the Virose they recovered.”
 # 审校：全局：弯撇号／弯引号
 > 「おう、来たな。
 >  ちょっとこれを見てくれないか」
-“Hey, there you are. Take a look at this, would you?”
+“Hey, there you are. Take a look at this, will you?”
 
 @29109 Brad · ブラッド（按段落 3DD3）
 > 「こ、これは……アストナージ、こいつは
@@ -1933,11 +1933,11 @@ about the Virose they recovered.”
 # 审校：词条：ヴァイローズ=Virose
 > 「ヴァイローズを調べてたら、このデータが
 >  出てきたんだ。どうやら、お前の
-“I found this data while examining the Virose. It seems that your
+“I found this data while examining the Virose. Looks like your
 ---
 >  アースゲインとヴァイローズは、もとは1つ
 >  だったらしくてな」
-Earthgain and the Virose were originally one and the same.”
+Earthgain and the Virose were originally a single machine.”
 
 @29111 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1949,7 +1949,7 @@ Earthgain and the Virose were originally one and the same.”
 # 审校：全局：弯撇号／弯引号
 > 「スーパー・アースゲインといったところかな
 >  かなりパワーアップするようだ
-“I’d call it the Super Earthgain. It looks like it’ll get a good deal more powerful.
+“Call it a Super Earthgain. Looks like it’d be a big power boost.
 ---
 >  操縦関連のシステムはいじらなくて
 >  すむから、俺たちでもなんとかできるが、
@@ -1973,7 +1973,7 @@ what do you say?”
 @29116 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
 > 「よし、それじゃさっそくとりかかるとするか」
-“All right, then let’s get started right away.”
+“All right, let’s get right on it.”
 
 @29117 Brad · ブラッド（按段落 3DD3）
 > ({PartnerNick}……お前はそれを知って
@@ -2011,7 +2011,7 @@ No mercy for anyone who resists.”
 # 审校：全局：弯撇号／弯引号
 > 「さあてね。とにかく、奴らの野望は
 >  阻止しなくては。トレーズ派との
-“Who knows. At any rate, we have to stop their ambitions. We’re thinking about
+“Well now, who knows. At any rate, we have to stop their ambitions. We’re thinking about
 ---
 >  連携も考えているんだが、
 >  そっちはまだこれからだな。近いうちに
