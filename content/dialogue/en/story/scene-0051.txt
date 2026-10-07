@@ -651,7 +651,7 @@ but why do we have to die in a place like this?”
 # 审校：全局：弯撇号／弯引号
 > 「そこまでよ。あなたたちはもう逃げられ
 >  ない。おとなしく抵抗はやめなさい」
-“That’s far enough. You can’t escape now. Give up and stop resisting.”
+“That’s enough. There’s no escape for you now. Stop resisting and come quietly.”
 
 @34361 Duo · デュオ
 > 「その声……ヒルデ・シュバイカーか」
@@ -1602,7 +1602,7 @@ Hahahahahahaha!”
 # 审校：精读：去破折号
 > 「貴様ら、まず手始めに、貴様ら
 >  から死ぬがいい!!」
-“You lot, for starters, you can be the first to die!!”
+“You fools! To begin with, you will be the first to die!!”
 
 @34506 Shapiro · シャピロ
 > 「おのれ、おのれおのれぇぇーっ!!」
@@ -1632,7 +1632,7 @@ Hahahahahahaha!”
 
 @34512 Shinobu · 忍
 > 「奴め、また逃げるつもりかよ!?」
-“That bastard, is he trying to run again?!”
+“Is that bastard running away again?!”
 
 @34513 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -1709,7 +1709,7 @@ The universe is calling for me.”
 @34524 Shapiro · シャピロ
 > 「死ね、沙羅。お前はもはやこの俺
 >  の前から完全に姿を消すのだ」
-“Die, Sara. You will now vanish completely from before me.”
+“Die, Sara. Now you will vanish from my sight for good.”
 
 @34525 Sara · 沙羅
 # 审校：そいつがいいとこだ 是“顶多如此”
@@ -1798,7 +1798,7 @@ Fuh, fuhahahahaha!!”
 # 审校：全局：弯撇号／弯引号
 > 「これは……いかん、爆発するぞ!
 >  早く退避しろ!」
-“This is... bad, it’s going to explode! Everyone retreat, quickly!”
+“What... No, it’s going to blow! Everyone, get clear now!”
 
 @34540 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1879,7 +1879,7 @@ the planet Zorbados.”
 
 @34552 Koji · 甲児
 > 「ちくしょう! そんなのありかよ!!」
-“Damn it! How can that be?!”
+“Damn it! You’ve gotta be kidding me!!”
 
 @34553 Jun · ジュン
 # 审校：精读：去破折号

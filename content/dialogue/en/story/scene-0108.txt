@@ -81,7 +81,7 @@ I think. So why do we have to die in a place like this?”
 # 审校：全局：弯撇号／弯引号
 > 「そこまでよ。あなたたちはもう逃げられ
 >  ない。おとなしく抵抗はやめなさい」
-“That’s far enough. You can’t escape now. Give up and stop resisting.”
+“That’s enough. There’s no escape for you now. Stop resisting and come quietly.”
 
 @34637 Duo · デュオ
 > 「その声……ヒルデ・シュバイカーか」
@@ -980,7 +980,7 @@ to be aboard the Argama...”
 # 审校：全局：弯撇号／弯引号
 > 「あとはまかせる。私はしばらく自室で
 >  休む」
-“I’ll leave the rest to you. I’ll rest in my quarters for a while.”
+“You have the bridge. I’ll be resting in my quarters for a while.”
 
 @34779 Bright · ブライト
 > 「エマリー……」
@@ -1009,13 +1009,13 @@ to be aboard the Argama...”
 @34784 Daisaku · 大作
 # 审校：全局：弯撇号／弯引号
 > 「なにが大人の常識なんですか?」
-“What’s this about adult common sense?”
+“What’s common sense for grown-ups?”
 
 @34785 Naoto · ナオト
 # 审校：全局：弯撇号／弯引号
 > 「お? なんだなんだ、みんなで
 >  何やってるんだ?」
-“Oh? What’s going on, what’s everyone doing?”
+“Huh? What’s this, what’s everybody up to?”
 
 @34786 Fa · ファ
 # 审校：全局：弯撇号／弯引号
@@ -2077,7 +2077,7 @@ The universe itself demands me.”
 @34946 Shapiro · シャピロ
 > 「死ね、沙羅。お前はもはやこの俺
 >  の前から完全に姿を消すのだ」
-“Die, Sara. You will now vanish completely from before me.”
+“Die, Sara. Now you will vanish from my sight for good.”
 
 @34947 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -2248,7 +2248,7 @@ told about.”
 
 @34974 Koji · 甲児
 > 「ちくしょう! そんなのありかよ!!」
-“Damn it! How can that be?!”
+“Damn it! You’ve gotta be kidding me!!”
 
 @34975 Jun · ジュン
 > 「もう、落ち着きなよ、忍も甲児も」

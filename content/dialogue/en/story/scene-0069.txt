@@ -926,12 +926,12 @@ that I was a man who was in love with you.”
 @29876 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「……いいだろう。覚えておいてやる」
-“...Fine. I’ll remember it.”
+“...Very well. I’ll remember.”
 
 @29877 Rish · リッシュ（按段落 3DD2）
 > 「フッ、そいつを聞いて安心したぜ。
 >  それじゃま、いくかい」
-“Heh, hearing that puts me at ease. Well then, shall we go?”
+“Heh, that’s a load off my mind. Well then, shall we?”
 
 @29878 Aisha · アイシャ（按段落 3DD4）
 # 审校：アイシャ是贵族女性，译文应更正式，用“I have arrived”而非“I made it”。
@@ -1059,12 +1059,12 @@ that I was a man who was in love with you.”
 @29895 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「……いいだろう。覚えておいてやる」
-“...Fine. I’ll remember it.”
+“...Very well. I’ll remember.”
 
 @29896 Rish · リッシュ（按段落 3DD2）
 > 「フッ、そいつを聞いて安心したぜ。
 >  それじゃま、いくかい」
-“Heh, hearing that puts me at ease. Well then, shall we go?”
+“Heh, that’s a load off my mind. Well then, shall we?”
 
 @29897 Aisha · アイシャ（按段落 3DD4）
 > 「どうやら間に合ったようですわね」

@@ -1743,7 +1743,7 @@ Probably that Gundam and a pursuit squad. Be careful!”
 @35881 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「……わかりました。まかせます」
-“...Understood. I’ll leave it to you.”
+“...All right. It’s your call.”
 
 @35882 Judau · ジュドー
 > 「なにやってんの!
@@ -1969,7 +1969,7 @@ Not until I erase everything with this Wing Zero.”
 # 审校：全局：弯撇号／弯引号
 > 「ウィナー家の資源衛星のことか?
 >  お前はそれほど弱くはなかったはずだ」
-“You mean the Winner family’s resource satellite? You were never that weak.”
+“Is this about the Winner family’s resource satellite? You were stronger than that.”
 
 @35918 Quatre · カトル
 # 审校：卡特尔是直接对大家说，不是托人转告

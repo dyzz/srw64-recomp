@@ -3,7 +3,7 @@
 @25480 Ark · アーク（按段落 3DD1）
 # 审校：补全整条台词的外层引号
 > 「それで、どうするつもりなんです?」
-“So, what do you intend to do?”
+“So, what are you planning to do?”
 
 @25481 Selain · セレイン（按段落 3DD2）
 # 审校：补全整条台词的外层引号
@@ -19,7 +19,7 @@
 # 审校：补全整条台词的外层引号
 > 「今後の行動については、
 >  決まったのですか?」
-“Have you decided on our future course of action?”
+“Have you decided what we’ll do next?”
 
 @25484 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -37,7 +37,7 @@
 # 审校：全局：弯撇号／弯引号
 > 「それなんだが……ジャブローへの
 >  降下作戦を検討している」
-“That’s the thing... I’m considering a descent operation on Jaburo.”
+“Well... I’m considering a drop operation on Jaburo.”
 
 @25487 Ark · アーク（按段落 3DD1）
 # 审校：补全整条台词的外层引号
@@ -54,7 +54,7 @@
 # 审校：全局：弯撇号／弯引号
 > 「あそこか。だがOZが占拠してんだろ?
 >  ちょっと大胆すぎやしないか」
-“That place, huh? But OZ has it occupied, right? Isn’t that a bit too bold?”
+“Jaburo, huh? But OZ is holding it, right? Isn’t that pushing it a bit?”
 
 @25490 Manami · マナミ（按段落 3DD4）
 # 审校：补全整条台词的外层引号
@@ -117,7 +117,7 @@ as well.”
 # 审校：补全整条台词的外层引号
 > 「だが我々が戦ってみせることで、
 >  反OZ感情を高めることができる」
-“But by showing them that we fight, we can raise anti-OZ sentiment.”
+“But if we let them see us fighting, we can stir up anti-OZ sentiment.”
 
 @25496 Eiji · エイジ
 # 审校：补全整条台词的外层引号
@@ -134,7 +134,7 @@ as well.”
 # 审校：补全整条台词的外层引号
 > 「だけど艦長、
 >  よくそんな詳しく知ってますね」
-“But Captain, how do you know all this in such detail?”
+“But Captain, how do you know all these details?”
 
 @25499 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -174,7 +174,7 @@ there’s also information that concerns Domon and the rest of you.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、いや、そういうわけでは
 >  ないらしいんだがな
-“Ah, no, it doesn’t seem to be that, exactly, but
+“Well, no, it’s not quite that, apparently, but
 ---
 >  デスアーミーの件は
 >  不確定情報だから
@@ -189,14 +189,14 @@ just keep in mind that it’s a possibility.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それだけで十分だ。そういうことなら
 >  話しは別だ。艦長、地球へ
-“That’s enough for me. If that’s the case, it’s a different story. Captain, hurry
+“That’s all I need. That changes everything. Captain, get us
 ---
 >  急いでくれ! マスターアジア、
 >  それに、デビルガンダム!
-to Earth! Master Asia, and the Dark Gundam!
+to Earth, fast! Master Asia, and the Dark Gundam!
 ---
 >  今度こそこの俺が倒してやる!」
-This time I’m definitely going to take them down!”
+This time I’ll take them down myself!”
 
 @25506 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号
@@ -226,7 +226,7 @@ This time I’m definitely going to take them down!”
 # 审校：补全整条台词的外层引号
 > 「フフフフフ、ハーッハハハハハハ。
 >  果たして本当にできるかな?」
-“Heh heh heh heh, hah hah hah hah hah hah. And can you really do it, I wonder?”
+“Heh heh heh heh, hah hah hah hah hah hah. But can you really?”
 
 @25511 Domon · ドモン
 # 审校：补全整条台词的外层引号
@@ -265,19 +265,19 @@ master himself has no hope of ever winning a battle.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ハハハハハッ。ムキになっても
 >  勝てぬものは勝てぬということだ
-“Hah hah hah hah. Get as worked up as you like; what can’t be won can’t be won.
+“Hah hah hah hah. Getting worked up won’t win a fight you cannot win.
 ---
 >  腕も、心もまだまだ未熟よ。
 >  人よりわずかに抜きんでた
-Your skill and your heart are both still immature. A man drunk on
+Your skill and your heart are both still immature. So long as he is drunk on
 ---
 >  おのが腕におぼれているようでは、
 >  マスターアジアに勝つことなど
-skill that barely outstrips other men’s has no hope of
+skill only slightly above other men’s, beating Master Asia
 ---
 >  夢のまた夢。それに…デビルガンダムの
 >  幻影に脅えているようではな」
-beating Master Asia. It’s a dream within a dream. And besides... not while he’s cowering before the Dark Gundam’s phantom.”
+remains a pipe dream. All the more so while he cowers before the Dark Gundam’s phantom.”
 
 @25517 Rain · レイン
 # 审校：补全整条台词的外层引号
@@ -288,11 +288,11 @@ beating Master Asia. It’s a dream within a dream. And besides... not while he�
 # 审校：全局：弯撇号／弯引号
 > 「その通り。口では
 >  いくら否定しようとも
-“Exactly. No matter how much they deny it with their mouths,
+“Exactly. However much they may deny it,
 ---
 >  この私の目はごまかせん。それを
 >  克服せんかぎりは、どうにもならん」
-they can’t fool these eyes of mine. Unless they overcome it, there’s no way forward.”
+they cannot fool my eyes. Until they overcome it, they will get nowhere.”
 
 @25519 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -312,11 +312,11 @@ you know Domon even better than I do.”
 # 审校：全局：弯撇号／弯引号
 > 「私の正体などどうでもいい。
 >  レイン、地上へ降りたらさりげなく
-“My true identity doesn’t matter. Rain, once you’re on the ground, casually
+“Who I am does not matter. Rain, once you’re on the ground, subtly
 ---
 >  ドモンに修業をするよううながすのだ。
 >  よいな」
-nudge Domon toward training. Understood?”
+encourage Domon to train. Understood?”
 
 @25521 Lady · レディ
 # 审校：补全整条台词的外层引号
@@ -337,11 +337,11 @@ destroying colonies as it makes its way here.”
 # 审校：全局：弯撇号／弯引号
 > 「コロニーを? 妙だな……
 >  あの連中ならば
-“Destroying colonies? Strange... those people
+“Destroying colonies? Strange... those pilots
 ---
 >  そんな真似はしないはずだ。
 >  ……メリクリウスとヴァイエイトはどうか」
-wouldn’t do such a thing. ...What of the Mercurius and the Vayeate?”
+wouldn’t do something like that. ...What is the status of the Mercurius and the Vayeate?”
 
 @25524 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
@@ -371,7 +371,7 @@ the Mercurius and Vayeate tests here.”
 “Yes. But this Gundam is apparently destroying colonies.
 ---
 >  新型のテストをかねて出てもらいたい」
-I want you to sortie, doubling as a test of the new models.”
+I want you to go out, and test the new models while you’re at it.”
 
 @25528 Trowa · トロワ
 # 审校：补全整条台词的外层引号
@@ -405,7 +405,7 @@ I want you to sortie, doubling as a test of the new models.”
 # 审校：补全整条台词的外层引号
 > 「接触してから後の行動は、
 >  お前にまかせる。好きにするがいい」
-“Once you make contact, I leave your actions to you. Do as you please.”
+“What you do after making contact is up to you. Do as you see fit.”
 
 @25534 Trowa · トロワ
 # 审校：补全整条台词的外层引号
@@ -416,20 +416,20 @@ I want you to sortie, doubling as a test of the new models.”
 # 审校：精读：两个“他们”指代不清、数字
 > (さてと……残るは2人か。
 >  うまく脱出して彼らと
-(Now then... that leaves two. I hope those two escape safely and
+(Now then... two left. I hope they manage to escape and
 ---
 >  合流してくれればいいのだがな。
 >  私は、お前たちに
-join up with the others. I will believe that you
+rejoin their comrades. I choose to believe that you
 ---
 >  時代を動かす力があると、
 >  信じよう……)
-have the power to move the era...)
+have the power to change the times...)
 
 @25536 Lady · レディ
 # 审校：全局：弯撇号／弯引号
 > 「これでよし……」
-“There, that’s done...”
+“There. That should do it...”
 
 @25537 Tubarov · ツバロフ
 # 审校：补全整条台词的外层引号
@@ -451,7 +451,7 @@ have the power to move the era...)
 @25540 Wufei · 五飛
 # 审校：全局：弯撇号／弯引号
 > 「そうか、ならば行くか」
-“Is that so. Then let’s go.”
+“Good. Then let’s go.”
 
 @25541 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -463,29 +463,29 @@ have the power to move the era...)
 # 审校：全局：弯撇号／弯引号
 > 「殺すならとっくにやっている。
 >  こんな回りくどい真似はしない
-“If they meant to kill us, they’d have done it long ago. They wouldn’t pull such a roundabout trick.
+“If they wanted us dead, we’d be dead already. They wouldn’t bother with something this roundabout.
 ---
 >  行かないのなら一人で残るがいい」
-If you won’t go, then stay here alone.”
+If you’re not coming, stay here by yourself.”
 
 @25543 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
 > 「冷たいやつだな、
 >  誰が行かないって言ったんだよ
-“Cold bastard, aren’t you. Who said I wasn’t going?
+“Cold, aren’t ya? Who said I wasn’t going?
 ---
 >  生きて出られるのが
 >  不思議なくらいだ
-It’s a wonder we’re even alive.
+Honestly, I’m amazed we’re getting out of here alive.
 ---
 >  俺だって文句はねぇぜ。
 >  それじゃさっさと行きますか」
-I’ve got no complaints either. So let’s get moving.”
+I’m not complaining. So, shall we get going?”
 
 @25544 Wufei · 五飛
 # 审校：补全整条台词的外层引号
 > 「借りを返してからな」
-“After I repay what I owe.”
+“After I pay back what I owe them.”
 
 @25545 Tubarov · ツバロフ
 # 审校：补全整条台词的外层引号
@@ -506,7 +506,7 @@ Do you have anything to say for yourself?”
 # 审校：补全整条台词的外层引号
 > 「ではレディ・アン嬢、OZへの
 >  反逆罪であなたを処刑します」
-“Then, Lady Une, I hereby execute you for treason against OZ.”
+“Then, Lady Une, you will be executed for treason against OZ.”
 
 @25548 Lady · レディ
 # 审校：补全整条台词的外层引号
@@ -520,15 +520,15 @@ And he loved their deaths as well. Death appeals fiercely to human emotion.
 ---
 >  死者が与える感情、
 >  戦うことに対する肯定と否定
-The emotions the dead give rise to, the affirmation and denial of fighting.
+The feelings the dead stir in us, the yes and the no to fighting.
 ---
 >  高ぶる感情は人を
 >  極論の選択へと導く
-Heightened emotion leads people to choose extremes.
+Heightened emotion drives people to extreme choices.
 ---
 >  それこそがあるべきものの姿であり、
 >  その中からこそ未来が生まれるのだ」
-That is precisely how things ought to be, and it is from within that that the future is born.”
+That is how things are meant to be, and it is from there that the future is born.”
 
 @25549 Tubarov · ツバロフ
 # 审校：补全整条台词的外层引号
@@ -540,11 +540,11 @@ That is precisely how things ought to be, and it is from within that that the fu
 # 检查提示：未用必用译名：ツバロフ→Tubarov
 > 「だから敵となるのだ。お前と私は。
 >  OZでの過ちは死に値する
-“That is why we are enemies. You and I. My mistake within OZ is a past
+“That is why we are enemies, you and I. My mistakes in OZ are a past
 ---
 >  過去であった。さぁ、撃てツバロフ。
 >  己を肯定するために」
-that deserves death. Now, shoot, Tubarov. To affirm yourself.”
+that deserves death. Now shoot, Tubarov. Prove yourself right.”
 
 @25551 Tubarov · ツバロフ
 # 审校：补全整条台词的外层引号
@@ -570,25 +570,25 @@ I believe I have lived uncompromisingly as a human being.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ……コロニーに毒ガスなんて
 >  冗談じゃないし、食わせてもらった
-“Yeah... poison gas on a colony is no joke, and I’ll work off
+“Yeah... gassing a colony? No way. Plus I’ll work off
 ---
 >  メシの分は働くさ。あんたは何だって
 >  戦争なんかやってるんだ?」
-the meals you fed me. What are you fighting a war for, anyway?”
+the meals you gave me. So why are you fighting a war, anyway?”
 
 @25555 Roux · ルー
 # 审校：全局：弯撇号／弯引号
 > 「あたしは反帝国のレジスタンスに
 >  自分から参加したわ。当時は
-“I joined the anti-Empire resistance of my own will. Back then,
+“I joined the anti-Empire resistance on my own. Back then,
 ---
 >  それが正しいことだって信じてたから。
 >  ムゲ帝国がいなくなった今でも同じ
-because I believed it was the right thing. Even now that the Muge Empire is gone, it’s the same.
+I believed it was the right thing to do. It’s the same now that the Muge Empire is gone.
 ---
 >  あたしは、OZに正義はないと信じて
 >  いるわ」
-I believe there is no justice in OZ.”
+I don’t believe OZ has justice on its side.”
 
 @25556 Judau · ジュドー
 # 审校：补全整条台词的外层引号
@@ -598,12 +598,12 @@ I believe there is no justice in OZ.”
 @25557 Show · ショウ
 # 审校：补全整条台词的外层引号
 > 「沙羅はまだ、だめなのか?」
-“Is Sara still not ready?”
+“Sara’s still not up to it?”
 
 @25558 Chum · チャム
 # 审校：全局：弯撇号／弯引号
 > 「もう出発よ」
-“We’re leaving now.”
+“We’re about to leave!”
 
 @25559 Shinobu · 忍
 # 审校：补全整条台词的外层引号
@@ -614,7 +614,7 @@ I believe there is no justice in OZ.”
 # 审校：全局：弯撇号／弯引号
 > 「沙羅はおいていくしかないな。
 >  ダンクーガが使えないのは痛いが……」
-“We’ve got no choice but to leave Sara behind. It hurts not being able to use Dancouga, but...”
+“We’ll have to leave Sara behind. Losing Dancouga hurts, but...”
 
 @25561 Marvel · マーベル
 # 审校：补全整条台词的外层引号
@@ -625,11 +625,11 @@ I believe there is no justice in OZ.”
 # 审校：全局：弯撇号／弯引号
 > 「冗談じゃないよ。
 >  なに勝手なこと言ってんのさ
-“Don’t be ridiculous. Who said you could decide that on your own?
+“Like hell. What makes you think you get to decide that?
 ---
 >  あたしを抜きにして
 >  そんなこと決めないでおくれ」
-Don’t go making decisions like that without me.”
+Don’t go deciding things like that without me.”
 
 @25563 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -656,10 +656,10 @@ look right with only three of us.”
 # 审校：全局：弯撇号／弯引号
 > 「フン、礼は言わないよ、忍。
 >  あんたがいなかったときも
-“Hmph, I won’t thank you, Shinobu. When you weren’t here,
+“Hmph, don’t expect any thanks, Shinobu. Back when you weren’t around,
 ---
 >  同じことを言ってたんだからね」
-you were saying the same thing anyway.”
+we said the exact same thing.”
 
 @25567 Ginrei · 銀鈴
 # 审校：补全整条台词的外层引号
@@ -687,25 +687,25 @@ you were saying the same thing anyway.”
 @25571 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「は……いえ、自分にはわかりかねます」
-“Yes... no, I’m afraid I don’t.”
+“Sir... no, I couldn’t say, sir.”
 
 @25572 Bask · バスク
 # 审校：补全整条台词的外层引号
 > 「フン、貴様の指揮能力に対す
 >  る評価は、このところいちじるしく
-“Hmph. The assessment of your command ability has declined markedly
+“Hmph. Your standing as a commander has fallen markedly
 ---
 >  低下しておる。我々OZもあまり
 >  余裕のある状況ではない
-as of late. We in OZ are not in a position with much room to spare either.
+of late. OZ is hardly in a position to spare resources either.
 ---
 >  これ以上の失敗は、容認できん」
-I cannot tolerate any further failures.”
+I will not tolerate any further failures.”
 
 @25573 Rish · リッシュ（按段落 3DD2）
 # 审校：补全整条台词的外层引号
 > 「はっ、それはよくわかっております」
-“Yes, sir. I understand that quite well.”
+“Yes, sir. I’m well aware of that.”
 
 @25574 Bask · バスク
 # 审校：全局：弯撇号／弯引号
@@ -718,7 +718,7 @@ I cannot tolerate any further failures.”
 to be descending to Earth. Join Special Lieutenant Yazan and stop them.
 ---
 >  ここでやってみせねば、最後だと思え」
-If you cannot prove yourself here, consider this your last chance.”
+Fail here, and consider yourself finished.”
 
 @25575 Rish · リッシュ（按段落 3DD2）
 # 审校：补全整条台词的外层引号
@@ -739,10 +739,10 @@ If you cannot prove yourself here, consider this your last chance.”
 # 审校：全局：弯撇号／弯引号
 > 「{HeroMech}が地球へ降下
 >  するという情報をつかんだ。これを
-“We’ve obtained information that the {HeroMech} is descending to Earth. Join
+“We have word that the {HeroMech} is descending to Earth. Join
 ---
 >  阻止するヤザンの部隊に加われ」
-Yazan’s unit and stop them.”
+Yazan’s unit in stopping them.”
 
 @25579 Aisha · アイシャ（按段落 3DD4）
 # 审校：补全整条台词的外层引号
@@ -753,18 +753,18 @@ Yazan’s unit and stop them.”
 # 审校：补译：原稿页数错误
 > 「貴公は、財団を裏切った
 >  {HeroSurname}の小娘を叩くという
-“You were taken in on the pretext of striking down the {HeroSurname} girl who betrayed the Foundation,
+“You were brought in on the pretext of crushing the {HeroSurname} girl who betrayed the Foundation,
 ---
 >  名目で、特例としてOZの
 >  1級特尉待遇で迎えておる
-as a special case, with the standing of a Special Lieutenant First Class of OZ.
+and granted the rank of OZ Special Lieutenant First Class as a special exception.
 ---
 >  目的を果たせなければ、財団への
 >  立場がなかろう
-Fail to achieve that end, and you will have no standing left with the Foundation.
+Fail in that purpose, and you will have no standing left with the Foundation.
 ---
 >  せいぜいやってみせるのだな」
-Do your utmost, then.”
+Do try your best, then.”
 
 @25581 Aisha · アイシャ（按段落 3DD4）
 # 审校：补全整条台词的外层引号
@@ -775,19 +775,19 @@ Do your utmost, then.”
 # 审校：全局：弯撇号／弯引号
 > 「あれか……恐らくカトルか誰かだろう。
 >  合流するぞ、ヒイロ」
-“That’s... probably Quatre, or someone. Let’s rendezvous, Heero.”
+“That must be... Quatre, or one of the others. Let’s join up, Heero.”
 
 @25583 Heero · ヒイロ
 # 审校：全局：弯撇号／弯引号
 > 「どうかな……奴はコロニーを
 >  破壊している」
-“I wonder... He’s been destroying colonies.”
+“I’m not so sure... That one’s been destroying colonies.”
 
 @25584 Trowa · トロワ
 # 审校：全局：弯撇号／弯引号
 > 「間違いない、あれはカトルだ。
 >  カトル、こちらトロワだ
-“There’s no mistake, that’s Quatre. Quatre, this is Trowa.
+“No doubt about it, that’s Quatre. Quatre, this is Trowa.
 ---
 >  聞こえているか、カトル?」
 Can you hear me, Quatre?”
@@ -841,16 +841,16 @@ Not until I erase everything with this Wing Zero.”
 # 审校：全局：弯撇号／弯引号
 > 「ウィナー家の資源衛星のことか?
 >  お前はそれほど弱くはなかったはずだ」
-“You mean the Winner family’s resource satellite? You were never that weak.”
+“Is this about the Winner family’s resource satellite? You were stronger than that.”
 
 @25591 Quatre · カトル
 # 审校：全局：弯撇号／弯引号
 > 「あの人たちにも伝えてほしい。
 >  もう僕の前に現れないで
-“Tell them too. Don’t appear before me again.
+“Tell the others for me, too. Don’t show yourselves to me again.
 ---
 >  でないと、みんなを殺すことになる」
-Otherwise, I’ll end up killing everyone.”
+Or I’ll end up killing all of you.”
 
 @25592 Trowa · トロワ
 # 审校：补全整条台词的外层引号
@@ -861,11 +861,11 @@ Otherwise, I’ll end up killing everyone.”
 # 审校：全局：弯撇号／弯引号
 > 「言いたいことは、それだけか。
 >  すべてが狂っているのなら
-“Is that all you wanted to say? If everything is mad,
+“Is that all you have to say? If everything has gone mad,
 ---
 >  俺は自分を信じて戦う。
 >  カトル……お前を殺す」
-then I’ll believe in myself and fight. Quatre... I’ll kill you.”
+then I’ll fight trusting in myself. Quatre... I’ll kill you.”
 
 @25594 Quatre · カトル
 # 审校：补全整条台词的外层引号
@@ -891,34 +891,34 @@ then I’ll believe in myself and fight. Quatre... I’ll kill you.”
 # 审校：全局：弯撇号／弯引号
 > 「……ヒイロ、コロニーは
 >  OZと手を組んだんだ
-“...Heero, the colonies have joined hands with OZ.
+“...Heero, the colonies have sided with OZ.
 ---
 >  コロニーは敵になったんだよ。
 >  せっかく異星人を追い出したのに
-The colonies have become the enemy. We finally drove out the aliens, and yet
+The colonies are the enemy now. We finally drove out the aliens, and still
 ---
 >  地球圏は狂ってしまったんだ。
 >  だから僕はすべてを破壊する
-the Earth Sphere has gone mad. So I will destroy everything.
+the Earth Sphere has gone mad. So I’ll destroy everything.
 ---
 >  破壊して正す。そうだろう? ヒイロ」
-Destroy it and set it right. Isn’t that so? Heero.”
+Destroy it and set it right. Isn’t that right, Heero?”
 
 @25599 Heero · ヒイロ
 # 审校：补全整条台词的外层引号
 > 「……言いたいことはそれだけか……
 >  うっ……」
-“...Is that all you wanted to say... ugh...”
+“...Is that all you have to say... ugh...”
 
 @25600 Quatre · カトル
 # 审校：全局：弯撇号／弯引号
 > 「死ぬよ、ヒイロ。
 >  でも僕は仲間を殺したくない
-“You’re going to die, Heero. But I don’t want to kill my comrades.
+“You’ll die, Heero. But I don’t want to kill a friend.
 ---
 >  逃げてヒイロ。
 >  ねぇ聞いているの、ヒイロ?」
-Run, Heero. Hey, are you listening, Heero?”
+Run, Heero. Are you listening to me, Heero?”
 
 @25601 Heero · ヒイロ
 # 审校：全局：弯撇号／弯引号
@@ -945,18 +945,18 @@ Run, Heero. Hey, are you listening, Heero?”
 # 审校：全局：弯撇号／弯引号
 > 「カトル、俺はお前が過ちを犯して
 >  いると思う。コロニーのためと信じて
-“Quatre, I think you’re making a mistake. For those of us who believed in the colonies
+“Quatre, I think you’re making a mistake. For those of us who believed it was for the colonies
 ---
 >  戦ってきた俺たちには、
 >  この結果は確かに残念なことだ
-and fought, this outcome is truly a shame.
+and fought, this outcome is a bitter one.
 ---
 >  だがこれが現実だ。
 >  受け入れるしかない。そして残るのは
-But this is reality. We have no choice but to accept it. And what remains
+But this is reality. We have to accept it. And all that remains
 ---
 >  俺たちの心の中の問題だけだ……」
-is only a problem within our own hearts...”
+is what each of us must face in our own hearts...”
 
 @25606 Quatre · カトル
 # 审校：补全整条台词的外层引号
@@ -978,7 +978,7 @@ that even one person might be able to change the course of history. It’s not
 just you. But that feeling drives those with the strongest convictions, the gentlest souls,
 ---
 >  つらく追い込んでいく……」
-the hardest of all...”
+into the cruelest corners...”
 
 @25608 Trowa · トロワ
 # 审校：补全整条台词的外层引号
@@ -989,18 +989,18 @@ the hardest of all...”
 # 审校：补全整条台词的外层引号
 > 「カトル、俺たちの心の問題は、
 >  俺たち自身が戦い
-“Quatre, the problem in our hearts is something we must fight through ourselves
+“Quatre, the problems in our hearts are ours to fight through
 ---
 >  結論を見出さなければならない。
 >  己を信じて戦う者たちがいる
-and find the answer to. There are those who fight believing in themselves.
+and find our own answers to. There are those who fight believing in themselves.
 ---
 >  銃を持たずに戦う者たちもいる。
 >  俺たちはまだ
-There are those who fight without holding a gun. We are not yet
+There are those who fight without ever picking up a gun. We are not yet
 ---
 >  いらなくなった兵士ではないんだ」
-soldiers who have become unnecessary.”
+soldiers who are no longer needed.”
 
 @25610 Quatre · カトル
 # 审校：补全整条台词的外层引号
@@ -1011,11 +1011,11 @@ soldiers who have become unnecessary.”
 # 审校：全局：弯撇号／弯引号
 > 「だからカトル、
 >  まだ目を閉ざさないでくれ
-“So Quatre, don’t close your eyes yet.
+“So, Quatre, don’t close your eyes yet.
 ---
 >  時代の流れを受け入れよう。
 >  やさしいカトルに戻ってくれないか……」
-Accept the flow of the times. Won’t you go back to being the gentle Quatre...?”
+Let’s accept the way the times are moving. Won’t you be the gentle Quatre again...?”
 
 @25612 Trowa · トロワ
 # 审校：全局：弯撇号／弯引号
@@ -1051,23 +1051,23 @@ Accept the flow of the times. Won’t you go back to being the gentle Quatre...?
 @25618 Beltorchika · ベルトーチカ
 # 审校：补全整条台词的外层引号
 > 「敵です!」
-“Enemy!”
+“Enemy contact!”
 
 @25619 Bright · ブライト
 # 审校：补全整条台词的外层引号
 > 「いいか、目標はジャブローだ。この
 >  エリアへ入れば地球へ降下できる」
-“Listen, our target is Jaburo. Once we enter this area, we can descend to Earth.”
+“Listen, our objective is Jaburo. Once we reach this area, we can begin our descent to Earth.”
 
 @25620 Bright · ブライト
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段，而不是每页分别加引号。
 > 「可能な限り交戦を避け、
 >  地上への降下を優先させろ!
-“Avoid combat as much as possible and prioritize descending to the surface!
+“Avoid combat wherever possible. Our priority is getting down to the surface!
 ---
 >  カミーユ、降下時には
 >  ウェイブライダーで先に降下しろ」
-Kamille, descend first in the Waverider when we go down.”
+Kamille, when we descend, go in first in the Waverider.”
 
 @25621 Kamille · カミーユ
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1091,11 +1091,11 @@ Kamille, descend first in the Waverider when we go down.”
 # 审校：全局：弯撇号／弯引号
 > (けっ、そろそろ俺の豪運も
 >  尽きかけてきたかよ
-(Tch, looks like my luck’s finally running out too.
+(Tch, guess even my crazy luck’s about to run dry.
 ---
 >  ここいらでしまいにするのも、
 >  いいかもな……)
-Maybe this is a good place to end it...)
+Might as well wrap things up around here...)
 
 @25625 Rish · リッシュ（按段落 3DD2）
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1111,7 +1111,7 @@ Maybe this is a good place to end it...)
 # 审校：「聞いてくれ」是听我说，不是问
 > 「こいつで最後にするぜ。だからよ、
 >  最後に一つ聞いてくれないか」
-“This’ll be the last one. So, uh, hear me out on one thing before the end.”
+“This is the last time. So, uh, mind hearing me out on one last thing?”
 
 @25628 Selain · セレイン（按段落 3DD2）
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1122,15 +1122,15 @@ Maybe this is a good place to end it...)
 # 审校：全局：弯撇号／弯引号
 > 「何度も言うが、俺がお前に
 >  惚れてるってのは、こりゃマジだぜ
-“I’ve said it before, but me being in love with you, that’s the real deal.
+“I’ve said it before, but I’m dead serious about being crazy for you.
 ---
 >  俺もこれまでかなり
 >  好きに生きてきたがよ
-I’ve lived pretty much however I wanted up till now,
+I’ve pretty much lived however I liked up till now,
 ---
 >  おかげでずいぶん妙なことに
 >  なってきちまった。俺としたことがな」
-and thanks to that, things have gotten pretty strange. And me, of all people.”
+and look where it’s got me. Things have gotten real weird. Me, of all people.”
 
 @25630 Selain · セレイン（按段落 3DD2）
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1141,57 +1141,57 @@ and thanks to that, things have gotten pretty strange. And me, of all people.”
 # 审校：去掉 can't be helped；中文“迷上你的男人这件事”拗口
 > 「ま、俺はお前の敵だった。だから
 >  どんな結果でもそりゃあ仕方ねぇ
-“Well, I was your enemy. So whatever comes of it, that’s just how it is.
+“Well, I was your enemy. So however it turns out, I can’t complain.
 ---
 >  だけどな、俺がお前に
 >  惚れてた男だったってことだけは
-But at least remember this one thing:
+But just remember one thing:
 ---
 >  覚えておいてくれ」
-that I was a man who was in love with you.”
+I was the guy who fell for you.”
 
 @25632 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「……いいだろう。覚えておいてやる」
-“...Fine. I’ll remember it.”
+“...Very well. I’ll remember.”
 
 @25633 Rish · リッシュ（按段落 3DD2）
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
 > 「フッ、そいつを聞いて安心したぜ。
 >  それじゃま、いくかい」
-“Heh, hearing that puts me at ease. Well then, shall we go?”
+“Heh, that’s a load off my mind. Well then, shall we?”
 
 @25634 Yazan · ヤザン
 # 审校：全局：弯撇号／弯引号
 > 「聞こえたな、女!?
 >  俺はてめぇの面倒を見る気はねぇ
-“You heard me, woman?! I’ve got no intention of looking after you.
+“You heard me, woman?! I’m not babysitting you.
 ---
 >  やるなら勝手にやってみせな!」
-If you’re going to do it, then show me what you can do on your own!”
+If you’re gonna fight, do it on your own!”
 
 @25635 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
 > (……なんて野蛮な男。
 >  バスクといいこの男といい
-(...What a barbaric man. Bask and now this one too.
+(...What a barbaric man. First Bask, now this one.
 ---
 >  これではOZが
 >  だめになってしまうのではなくて?
-At this rate, won’t OZ itself fall apart?
+At this rate, OZ itself will be ruined, will it not?
 ---
 >  トレーズ閣下の目指されたものは、
 >  こんなものではなかったはずなのに……)
-What His Excellency Treize aimed for shouldn’t have been anything like this...)
+Surely this is not what His Excellency Treize was striving for...)
 
 @25636 Aisha · アイシャ（按段落 3DD4）
 # 审校：アイシャ是贵族口吻，应使用正式表达，将 I'm 改为 I am、It's 改为 It is，并补上 as well 以贴合“も”的语感。
 > 「{HeroName}さん……
 >  わたくしも疲れましたわ
-“{HeroName}... I am tired as well.
+“{HeroName}... I, too, have grown weary.
 ---
 >  そろそろ、決着をつけましょう」
-It is about time we settled this.”
+It is time we settled this.”
 
 @25637 Manami · マナミ（按段落 3DD4）
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1208,7 +1208,7 @@ It is about time we settled this.”
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
 > 「デュオ!?
 >  しかしその機体は一体……」
-“Duo?! But that mobile suit... what is it...”
+“Duo?! But what is that machine you’re in...”
 
 @25640 Duo · デュオ
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1278,11 +1278,11 @@ and I gratefully took it off his hands.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、残念だが俺は知らない。
 >  五飛とは途中まで
-“Sorry, but I don’t know. Wufei and I were together part of the way,
+“Nope, sorry, no idea. Wufei and I were together part of the way,
 ---
 >  一緒だったんだが、あいつは
 >  俺と違って1人が好きだからな」
-but unlike me, that guy likes being on his own.”
+but unlike me, he likes going it alone.”
 
 @25650 Bright · ブライト
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1294,11 +1294,11 @@ but unlike me, that guy likes being on his own.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、残念だが俺は知らない。
 >  五飛とは途中まで
-“Sorry, but I don’t know. Wufei and I were together part of the way,
+“Nope, sorry, no idea. Wufei and I were together part of the way,
 ---
 >  一緒だったんだが、あいつは
 >  俺と違って1人が好きだからな」
-but unlike me, that guy likes being on his own.”
+but unlike me, he likes going it alone.”
 
 @25652 Bright · ブライト
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1310,11 +1310,11 @@ but unlike me, that guy likes being on his own.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、残念だが俺は知らない。
 >  五飛とは途中まで
-“Sorry, but I don’t know. Wufei and I were together part of the way,
+“Nope, sorry, no idea. Wufei and I were together part of the way,
 ---
 >  一緒だったんだが、あいつは
 >  俺と違って1人が好きだからな」
-but unlike me, that guy likes being on his own.”
+but unlike me, he likes going it alone.”
 
 @25654 Hilde · ヒルデ
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1343,18 +1343,18 @@ but unlike me, that guy likes being on his own.”
 # 检查提示：未用必用译名：ゾルバドス軍→Zorbados Army
 > 「いっちゃ悪いが、お前の力じゃ
 >  俺たちの敵にならない。そんな奴が
-“No offense, but with your strength, you’re no match for us. For someone like that
+“No offense, but you’re no match for us. Someone like that
 ---
 >  命をかけて立ち向かってくるなんて、
 >  馬鹿げたことだ。でもな、なんか俺が
-to risk her life and come at us is just ridiculous. But you know, it kind of
+putting her life on the line to come at us is just plain stupid. But, I dunno, it kinda
 ---
 >  たった一人で、ゾルバドス軍に
 >  占領された地球へ降りた時に
 reminded me of when I came down to Earth all alone,
 ---
 >  似てるなって思ったのさ」
-to a planet occupied by the Zorbados Army.”
+back when it was occupied by the Zorbados Army.”
 
 @25659 Hilde · ヒルデ
 # 审校：全局：弯撇号／弯引号
@@ -1365,15 +1365,15 @@ to a planet occupied by the Zorbados Army.”
 # 审校：全局：弯撇号／弯引号
 > 「俺たち馬鹿なんだぜ、きっと。
 >  兵士はいつ死んでもおかしくない
-“We’re the fools, I’m sure of it. A soldier can die at any time.
+“We’re all fools, probably. A soldier could die any minute.
 ---
 >  コロニーの仲間だって、これから
 >  どんどん死んでいく。せめてお互い
-Our comrades in the colonies will keep dying one after another. At least
+Our friends in the colonies are gonna keep dying, one after another. So at least
 ---
 >  自分の信じられる道で
 >  精一杯生きようぜ」
-let’s each live as hard as we can on the path we believe in.”
+let’s both live as hard as we can, on whatever path we each believe in.”
 
 @25661 Hilde · ヒルデ
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1384,7 +1384,7 @@ let’s each live as hard as we can on the path we believe in.”
 # 审校：全局：弯撇号／弯引号
 > 「馬鹿! OZの識別信号を
 >  出せ! やられるぞ!」
-“Idiot! Broadcast your OZ identification signal! You’ll be killed!”
+“Idiot! Turn on your OZ identification signal! They’ll shoot you down!”
 
 @25663 Hilde · ヒルデ
 # 审校：全局：弯撇号／弯引号
@@ -1400,7 +1400,7 @@ let’s each live as hard as we can on the path we believe in.”
 @25665 对手
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
 > 「ああ、いい声だ。よ～く聞こえるぜ」
-“Yeah, a nice voice. I hear you loud and clear.”
+“Yeah, and what a nice voice. I hear you loud and clear.”
 
 @25666 主角
 # 审校：全局：弯撇号／弯引号
@@ -1437,7 +1437,7 @@ If you’re up for it, come to the {HeroMech}.”
 ---
 >  我々は戦いつづけるために戦力が
 >  必要だ」
-We need fighting strength in order to keep fighting.”
+We need more fighting strength to keep this up.”
 
 @25671 对手
 # 审校：全局：弯撇号／弯引号
@@ -1459,11 +1459,11 @@ But I’m still an OZ officer. If I survive this again, I’ll take you up on it
 # 审校：全局：弯撇号／弯引号
 > 「悪いな。俺にも一応、俺なりの
 >  こだわりってもんがあるのさ
-“Sorry. Even I’ve got my own code of honor, more or less.
+“Sorry. Even a guy like me’s got his own sense of pride, sort of.
 ---
 >  なに、俺も“不死人”と呼ばれた
 >  男だ。そう簡単にゃくたばらねぇよ」
-Don’t worry, I’m a man they called the ‘Undying.’ I won’t kick the bucket that easily.”
+Relax, I’m the guy they called the ‘Undying.’ I won’t kick the bucket that easily.”
 
 @25674 主角
 # 审校：全局：弯撇号／弯引号
@@ -1500,10 +1500,10 @@ Man, what a pathetic way to go...”
 # 审校：全局：弯撇号／弯引号
 > 「くっ……やられっちまったか……へっ、
 >  生きてたらまた会おうぜ
-“Ugh... so I got taken down... Heh, if we both live, let’s meet again,
+“Ugh... so they got me... Heh, if I make it, I’ll see you again,
 ---
 >  {HeroName}。じゃあな……」
-{HeroName}. See you...”
+{HeroName}. Later...”
 
 @25678 主角
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1528,16 +1528,16 @@ What are you doing?!”
 # 审校：全局：弯撇号／弯引号
 > 「お願い、もうやめて。
 >  あたしたちが戦ったって
-“Please, stop this already. Even if we fight,
+“Please, stop this. There is no point
 ---
 >  何の意味もないのよ!?」
-it won’t mean a thing, don’t you see?!”
+in the two of us fighting!”
 
 @25682 对手
 # 审校：精读：去掉破折号
 > 「意味……いいえ、
 >  意味ならありますわ
-“Meaning... no, there is a meaning.
+“No point...? Oh, but there is a point.
 ---
 >  あなたを倒さなければ、わたくしは、
 >  いえ{PartnerSurname}の家は
@@ -1550,7 +1550,7 @@ will lose its standing within Romefeller.”
 # 审校：全局：弯撇号／弯引号
 > 「わかって{PartnerName}、もう
 >  そんなことを言っているときではないのよ
-“Understand, {PartnerName}, this isn’t the time to be saying such things.
+“Please understand, {PartnerName}, this is no time for that.
 ---
 >  ロームフェラの、
 >  OZのやり方は間違ってるわ!
@@ -1558,7 +1558,7 @@ Romefeller’s way, OZ’s way, is wrong!
 ---
 >  あなただってそれは
 >  わかっているでしょうに!」
-You know that as well as I do!”
+Surely you know that as well as I do!”
 
 @25684 对手
 # 审校：对手为贵族小姐，voice 要求正式、不用缩写，将“can't”改为“cannot”、“I'm”改为“I am”以符合其正式口吻。
@@ -1578,7 +1578,7 @@ I am not allowed to choose one!”
 # 审校：全局：弯撇号／弯引号
 > 「お話はもうおしまい。お互いのなすべき
 >  ことをしましょう、{HeroName}さん」
-“Our talk is over. Let’s each do what we must, {HeroName}.”
+“Enough talk. Let us each do what we must, {HeroName}.”
 
 @25687 主角
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1595,11 +1595,11 @@ I am not allowed to choose one!”
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
 > 「{PartnerName}……あなた……ばかよ。
 >  こんな風に死んだって
-“{PartnerName}... you... you idiot. Dying like this,
+“{PartnerName}... you... you fool. Dying like this,
 ---
 >  誰も、喜んでなんてくれないのに……
 >  ばかよ、あなたは
-no one would ever be happy about it... you idiot.
+no one is going to thank you for it... You fool.
 ---
 >  ……{PartnerName}……」
 ...{PartnerName}...”
@@ -1676,7 +1676,7 @@ the thing you believe in...”
 # 审校：补全整条台词的外层引号
 > 「艦長! 未確認MSが1機、
 >  艦尾にとりつきました!!」
-“Captain! One unidentified MS has attached itself to the stern!!”
+“Captain! An unidentified MS has latched onto our stern!!”
 
 @25702 Bright · ブライト
 # 审校：补全整条台词的外层引号
@@ -1697,10 +1697,10 @@ the thing you believe in...”
 # 审校：全局：弯撇号／弯引号
 > 「よっ、ひさしぶり。いきなりで悪いが、
 >  はやいとこ入れてくれよ。このままじゃ
-“Yo, long time no see. Sorry to drop in like this, but let me in quick. At this rate,
+“Yo, long time no see. Sorry to barge in, but let me in, quick. Out here,
 ---
 >  いくら俺でも、燃えつきちまうぜ」
-even I’ll burn up.”
+even I’m gonna burn up.”
 
 @25706 Bright · ブライト
 # 审校：补全整条台词的外层引号
@@ -1732,28 +1732,28 @@ and I gratefully took it off his hands.”
 # 审校：同一句台词与 25649 统一
 > 「いや、残念だが俺は知らない。
 >  五飛とは途中まで
-“Sorry, but I don’t know. Wufei and I were together part of the way,
+“Nope, sorry, no idea. Wufei and I were together part of the way,
 ---
 >  一緒だったんだが、あいつは
 >  俺と違って1人が好きだからな」
-but unlike me, that guy likes being on his own.”
+but unlike me, he likes going it alone.”
 
 @25711 Hilde · ヒルデ
 # 审校：补全整条台词的外层引号
 > 「デュオ、私も自分の思ったことを
 >  精一杯やってみる
-“Duo, I want to give it my all too, doing what I believe in.
+“Duo, I’m going to try my hardest to do what I think is right, too.
 ---
 >  私もあなたたちと一緒に行かせて」
-Let me come along with you.”
+Let me come with you guys.”
 
 @25712 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
 > 「まったく……馬鹿だな、お前も」
-“Honestly... you’re an idiot too.”
+“Jeez... you’re an idiot too, you know that?”
 
 @25713 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「くっ……みんなは敵の攻撃で降下
 >  地点を変えられてしまったのか……?」
-“Ngh... Did everyone get forced off their landing point by the enemy’s attack...?”
+“Ngh... Did the enemy attack knock everyone off course from the landing point...?”

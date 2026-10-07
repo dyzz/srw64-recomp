@@ -8,17 +8,17 @@
 # 审校：去掉直译腔
 > 「ああ。これで、残るは
 >  我々地球人同士の問題だ」
-“Yeah. Now what’s left is a matter between us Earthlings.”
+“Yes. What’s left now is a matter among us Earthlings.”
 
 @25197 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「監視衛星の件は了解した。
 >  手配しておこう
-“Understood about the surveillance satellite. I’ll make the arrangements.
+“The surveillance satellite, understood. I’ll arrange it.
 ---
 >  それと一応このことについてはOZにも
 >  情報を流しておいたほうがいいな」
-Also, we’d best pass this information along to OZ as well, just in case.”
+Also, it’d be wise to pass this along to OZ as well, just in case.”
 
 @25198 Chan · チェーン
 > 「アムロ大尉」
@@ -45,7 +45,7 @@ Also, we’d best pass this information along to OZ as well, just in case.”
 ---
 >  クワトロ大尉が今後のことで
 >  話をつけたそうなので」
-Captain Quattro has apparently worked out the details for what comes next.”
+Captain Quattro has apparently come to an arrangement with him about what’s next.”
 
 @25203 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -72,23 +72,23 @@ Captain Quattro has apparently worked out the details for what comes next.”
 # 审校：全局：弯撇号／弯引号
 > 「わからんな。恐らくは
 >  強化人間だろうとは思うが……」
-“I can’t say. I suspect she’s likely an enhanced human, but...”
+“Hard to say. Most likely she’s an enhanced human, but...”
 
 @25208 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「ああ、俺たちと、いやカミーユと
 >  接触する理由がわからないな
-“Yeah, I don’t understand why she’d want contact with us... no, with Kamille.
+“Yes. What I don’t get is why she’d approach us... no, Kamille.
 ---
 >  戦場でのシンパシーというなら
 >  理解はできるが」
-If it’s some kind of battlefield sympathy, I can understand that much.”
+Some kind of sympathy on the battlefield, that I could understand.”
 
 @25209 Emma · エマ
 # 审校：全局：弯撇号／弯引号
 > 「でも、危険な気がします。カミーユっ
 >  て意外ともろい部分があるから……」
-“Still, I feel she’s dangerous. Kamille has a surprisingly fragile side, after all...”
+“Still, I have a bad feeling about her. Kamille can be surprisingly fragile...”
 
 @25210 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -104,23 +104,23 @@ If it’s some kind of battlefield sympathy, I can understand that much.”
 # 审校：全局：弯撇号／弯引号
 > 「わからんな。恐らくは
 >  強化人間だろうとは思うが……」
-“I can’t say. I suspect she’s likely an enhanced human, but...”
+“Hard to say. Most likely she’s an enhanced human, but...”
 
 @25213 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「ああ、俺たちと、いやカミーユと
 >  接触する理由がわからないな
-“Yeah, I don’t understand why she’d want contact with us... no, with Kamille.
+“Yes. What I don’t get is why she’d approach us... no, Kamille.
 ---
 >  戦場でのシンパシーというなら
 >  理解はできるが」
-If it’s some kind of battlefield sympathy, I can understand that much.”
+Some kind of sympathy on the battlefield, that I could understand.”
 
 @25214 Emma · エマ
 # 审校：全局：弯撇号／弯引号
 > 「でも、危険な気がします。カミーユっ
 >  て意外ともろい部分があるから……」
-“Still, I feel she’s dangerous. Kamille has a surprisingly fragile side, after all...”
+“Still, I have a bad feeling about her. Kamille can be surprisingly fragile...”
 
 @25215 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -135,7 +135,7 @@ If it’s some kind of battlefield sympathy, I can understand that much.”
 # 审校：全局：弯撇号／弯引号
 > 「カミーユの連れてきた娘か?
 >  わからないな……危険な気はするが」
-“The girl Kamille brought along? I don’t know... but she does feel dangerous.”
+“The girl Kamille brought along? I don’t know... but I have a bad feeling about her.”
 
 @25218 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -156,17 +156,17 @@ If it’s some kind of battlefield sympathy, I can understand that much.”
 @25221 Sally · サリィ
 > 「色々とありましたからね。
 >  それで、どうですか?」
-“A lot has happened. So, how is she?”
+“A lot has happened. So, how do they look?”
 
 @25222 Hasan · ハサン
 # 审校：全局：弯撇号／弯引号
 > 「うむ、葉月博士に連絡はついた
 >  沙羅の方はあまり問題はないよう
-“Mm, we’ve made contact with Dr. Hazuki. Sara doesn’t seem to be much of a problem.
+“Mm, I got in touch with Dr. Hazuki. Sara seems to be mostly fine.
 ---
 >  だな。しばらく休ませてやれば、あとは
 >  本人とまわりのケアの問題だ」
-If we let her rest a while, after that it’s just a matter of care for her and those around her.”
+Let her rest a while, and after that it’s up to her and the people around her to look after her.”
 
 @25223 Sally · サリィ
 > 「そうですか。ではロザミィのほうは?」
@@ -176,10 +176,10 @@ If we let her rest a while, after that it’s just a matter of care for her and 
 # 审校：全局：弯撇号／弯引号
 > 「薬物反応が出た。
 >  詳しい事はDNA鑑定まで
-“There was a drug reaction. We’ll need to wait for the DNA test
+“She tested positive for drugs. We’ll have to wait for the DNA analysis
 ---
 >  待つ必要があるが……」
-for the details, but...”
+for details, but...”
 
 @25225 Kamille · カミーユ
 > 「ロザミィが強化人間だって
@@ -189,26 +189,26 @@ for the details, but...”
 @25226 Hasan · ハサン
 # 审校：全局：弯撇号／弯引号
 > 「可能性は否定できないな」
-“I can’t deny the possibility.”
+“I can’t rule it out.”
 
 @25227 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「……強化人間なんてつくって、
 >  どうしようって言うんです」
-“...Creating enhanced humans... what do they think they’re doing?”
+“...What do they think they’ll accomplish by making enhanced humans?”
 
 @25228 Hasan · ハサン
 # 审校：全局：弯撇号／弯引号
 > 「私をせめられても困る。
 >  もっとも医者として
-“It’s no use taking it out on me. Though as a doctor,
+“Don’t blame me. Though as a doctor,
 ---
 >  興味がないといえばウソになるがね。
 >  こんな時代ではなかったら
-I’d be lying if I said I wasn’t interested. If it weren’t for times like these,
+I’d be lying if I said I wasn’t interested. If these weren’t such times,
 ---
 >  ここまでにはならなかっただろうが……」
-it never would have come to this, but...”
+things would never have gone this far, but...”
 
 @25229 Sally · サリィ
 # 审校：哈桑是医生，Sally 称呼他应用 Doctor 而非 Mr.
@@ -219,30 +219,30 @@ it never would have come to this, but...”
 # 审校：全局：弯撇号／弯引号
 > 「戦争のためなら、
 >  人間の身体をいじるのも
-“Are you saying that if it’s for the sake of war, it’s acceptable
+“So as long as it’s for war, tampering with human bodies
 ---
 >  許されるって言うんですか!?」
-to tamper with human bodies?!”
+is just fine?!”
 
 @25231 Hasan · ハサン
 # 审校：全局：弯撇号／弯引号
 > 「一概にそうとは言えんが、
 >  戦争のおかげで飛躍的に
-“I can’t say that’s entirely true, but there are any number of technologies
+“It’s not that simple, but there are any number of technologies
 ---
 >  発展を遂げた技術は
 >  いくらでもある。医学だってそうだ」
-that made dramatic advances thanks to war. Medicine included.”
+that leapt forward thanks to war. Medicine is one of them.”
 
 @25232 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「納得できませんね、そんなこと」
-“I can’t accept that. Not at all.”
+“That doesn’t sit right with me at all.”
 
 @25233 Hasan · ハサン
 > 「平和になれば
 >  戦時中の技術も還元できるよ」
-“Once peace comes, wartime technology can be given back to society too.”
+“Once there’s peace, wartime technology can be put to good use.”
 
 @25234 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
@@ -257,7 +257,7 @@ that made dramatic advances thanks to war. Medicine included.”
 @25236 Kamille · カミーユ
 > 「ロザミィ、
 >  どこか……おかしな所はないか?」
-“Rosamy, is there anything... strange about you?”
+“Rosamy, do you feel... strange anywhere?”
 
 @25237 Rosamia · ロザミア
 > 「ぜんぜん。お兄ちゃん、アメたべる?」
@@ -273,7 +273,7 @@ that made dramatic advances thanks to war. Medicine included.”
 # 检查提示：未用必用译名：ロザミィ→Rosamy
 > (ロザミィが強化人間だって……
 >  ここにいれば、戦いに出なくてすむんだ)
-(Rosamy is an enhanced human... If she stays here, she won’t have to go out and fight.)
+(Rosamy, an enhanced human... As long as she stays here, she won’t have to fight.)
 
 @25240 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -288,7 +288,7 @@ that made dramatic advances thanks to war. Medicine included.”
 @25242 Elle · エル
 > 「あったり前じゃない。
 >  あんたいまさら何言ってんのよ」
-“Of course we are. What are you saying at this point?”
+“Duh. Why are you bringing that up now?”
 
 @25243 Beecha · ビーチャ
 # 审校：全局：弯撇号／弯引号
@@ -335,40 +335,40 @@ that made dramatic advances thanks to war. Medicine included.”
 @25252 Lady · レディ
 > 「閣下はずるうございます。閣下は
 >  世界の頂点に立たなければ
-“You are unfair, Your Excellency. You are a man who must stand at the pinnacle of the world.
+“You are being unfair, Your Excellency. You are meant to stand at the pinnacle of the world.
 ---
 >  ならないお方。なのに、世界を
 >  混乱のまま放っておいでになる
-Yet you leave the world in chaos.
+Yet you leave it in chaos.
 ---
 >  私は閣下のお手伝いのために
 >  宇宙へ上がりました
-I went up to space to assist you,
+I came up to space to help you,
 ---
 >  そして、閣下の未来を
 >  ご用意しました」
-and I have prepared your future.”
+and I have prepared your future for you.”
 
 @25253 Treize · トレーズ
 > 「レディ、世界から戦いはなくならない
 >  ならば、常に強者が世界を
-“Lady, if war will never vanish from the world, then the strong should always rule it.
+“Lady, if war can never be banished from the world, then the strong should always rule it.
 ---
 >  治めればいい。人々は強い者に
 >  支配されることに喜びすら感じる
-People even take joy in being ruled by the strong.
+People even find joy in being ruled by the strong.
 ---
 >  世界は戦ってこそ自然なのだ」
-It is only natural for the world to fight.”
+Struggle is the world’s natural state.”
 
 @25254 Lady · レディ
 > 「それには無駄な血が流れすぎます。
 >  閣下はすべての人々を愛せる
-“But that spills too much pointless blood. You are a man who can love all people.
+“That would shed far too much needless blood. You are capable of loving all people.
 ---
 >  お方。宇宙から地球圏の
 >  平和を築けるお方です」
-You are a man who can build peace over the Earth Sphere from space.”
+You are the one who can build peace for the Earth Sphere from space.”
 
 @25255 Treize · トレーズ
 > 「レディ、君は自分の理想で
@@ -387,15 +387,15 @@ You are a man who can build peace over the Earth Sphere from space.”
 ---
 >  日々の積み重ねでつくられる。
 >  個人の未来などに意味はない」
-built by the accumulation of each day. An individual’s future means nothing.”
+built day by day. One man’s future means nothing.”
 
 @25258 Lady · レディ
 > 「閣下の未来は決まっております。
 >  宇宙にこそ
-“Your future is already decided. It is in space
+“Your future is already decided. Space is
 ---
 >  閣下の未来が存在します」
-that your future exists.”
+where your future lies.”
 
 @25259 Treize · トレーズ
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -415,7 +415,7 @@ they are risking their lives to find the path to the future.”
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「急ぐ必要はない。
 >  時代は繰り返されるのだ
-“There is no need to rush. The ages will repeat themselves.
+“There is no need to hurry. History repeats itself.
 ---
 >  レディ、戻ってきておくれ、
 >  私の大好きだったレディ・アン」
@@ -465,7 +465,7 @@ Lady, come back to me... my beloved Lady Une.”
 # 审校：全局：弯撇号／弯引号
 > 「わかってるよ! えー、アーガマの皆さん
 >  大変お忙しいところを失礼します
-“I know! Ahem... everyone aboard the Argama, sorry to trouble you when you’re so busy.
+“I know! Ahem... everyone aboard the Argama, sorry to bother you at such a busy time.
 ---
 >  実はわたくしたちはぁ……」
 The truth is, we are...”
@@ -502,15 +502,15 @@ If you don’t hand over a Mobile Suit, we can’t guarantee their lives!”
 @25276 Judau · ジュドー
 > 「そんなのあったり前でしょ。
 >  あんたたちのモビルスーツなら
-“Of course we do. Your Mobile Suits
+“Well, duh. Mobile Suits like yours
 ---
 >  高く売れるってもんだぜ」
-would fetch a nice high price.”
+would go for a pretty penny.”
 
 @25277 Iino · イーノ
 > 「わっ、ジュドー、
 >  どんどん人が集まってくるよ」
-“Whoa, Judau, more and more people keep gathering!”
+“Whoa, Judau, more and more people are showing up!”
 
 @25278 Beecha · ビーチャ
 # 审校：全局：弯撇号／弯引号
@@ -523,7 +523,7 @@ Judau, hurry it up.”
 
 @25279 Judau · ジュドー
 > 「おうっ」
-“Yeah!”
+“Got it!”
 
 @25280 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号
@@ -556,7 +556,7 @@ that is inexcusable.”
 # 审校：全局：弯撇号／弯引号
 > 「あまり手荒な真似はするなよ、
 >  お前たち」
-“Don’t be too rough with them, you lot.”
+“Go easy on them, all of you.”
 
 @25285 Sai Saici · サイ・サイシー
 # 审校：原文「アランのあんちゃん」是赛·塞西对阿兰的昵称，译文应体现这种亲近称呼。
@@ -596,13 +596,13 @@ that is inexcusable.”
 # 审校：修瓦鲁兹是神秘严肃的忍者，原文「修業が足りなかったようだな」语气更正式，译文应更庄重。
 > 「フフフフ、ハハハハッ。修業が
 >  足りなかったようだな、少年たち」
-“Heh heh heh, ha ha ha ha. It seems your training was insufficient, boys.”
+“Heh heh heh, ha ha ha ha. Your training is lacking, boys.”
 
 @25293 Mondo · モンド
 # 审校：全局：弯撇号／弯引号
 > 「ひっ、また出た!
 >  もう勘弁してくれぇ」
-“Hii, he’s back again! Give me a break already!”
+“Eek, another one! Gimme a break already!”
 
 @25294 Eiji · エイジ
 > 「アンナ、大丈夫か?」
@@ -634,11 +634,11 @@ that is inexcusable.”
 # 审校：布莱特对部下说话时用「お前」，译文“what is going on”过于客观，应改为直接质问“you”。
 > 「Zが盗まれただと!?
 >  一体なにをやってるんだ!
-“The Z has been stolen?! What on earth are you doing?!
+“The Z has been stolen?! What on earth were you all doing?!
 ---
 >  アムロ、カミーユ、頼む。
 >  取り押さえてくれ」
-Amuro, Kamille, please. Subdue him.”
+Amuro, Kamille, I’m counting on you. Bring him in.”
 
 @25300 Beltorchika · ベルトーチカ
 > 「アムロ、Zが外へ出るわ」
@@ -648,7 +648,7 @@ Amuro, Kamille, please. Subdue him.”
 # 审校：全局：弯撇号／弯引号
 > 「急がないとまずいな。
 >  カミーユ、mkⅡで出てくれ」
-“We’d better hurry. Kamille, take out the Mk-II.”
+“We need to hurry. Kamille, take the Mk-II out.”
 
 @25302 Kamille · カミーユ
 > 「了解!」
@@ -657,7 +657,7 @@ Amuro, Kamille, please. Subdue him.”
 @25303 Judau · ジュドー
 > 「うわっ、外に出ちまったのか。
 >  この、ちゃんと動けっての!」
-“Whoa, it got outside?! Come on, move properly, damn it!”
+“Whoa, I’m outside?! Come on, work right, damn it!”
 
 @25304 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -669,7 +669,7 @@ Amuro, Kamille, please. Subdue him.”
 # 审校：全局：弯撇号／弯引号
 > 「そこのお前! おとなしくZを返せ!
 >  そうすればケガはしなくてすむ!」
-“You there! Return the Z quietly! Do that and you won’t get hurt!”
+“You there! Give back the Z, nice and quiet! Then nobody gets hurt!”
 
 @25306 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -678,7 +678,7 @@ Amuro, Kamille, please. Subdue him.”
 “No way in hell. I went through a lot of trouble to get this.
 ---
 >  はいそうですかって返せるかよ!」
-Like I’d just hand it back!”
+You think I’m just gonna say ‘okay’ and give it back?!”
 
 @25307 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -744,11 +744,11 @@ I’ll teach them what it means to defy OZ.”
 # 审校：第二三页语义不通，改顺
 > 「コロニーに潜伏する賊軍
 >  {HeroMech}に告ぐ
-“To the rebel army {HeroMech} hiding in this colony:
+“Attention, rebel army {HeroMech} hiding in this colony:
 ---
 >  いまから我々はコロニーを攻撃する
 >  武器を持って我々OZの
-As of now, we will attack this colony. All who take up arms
+We will now attack the colony. All who take up arms
 ---
 >  統治に反抗する者どもは
 >  排除されねばならん」
@@ -758,13 +758,13 @@ against OZ’s rule must be eliminated.”
 # 审校：被动句改口语
 > 「コロニーは貴様らの
 >  巻き添えで攻撃されるのだ」
-“The colony gets caught in this because of you.”
+“The colony suffers this attack on your account.”
 
 @25321 Yazan · ヤザン
 # 审校：「バスクめ」应体现亚赞对上司的不满与粗野，改为 “you bastard” 更符合其性格。
 > (ちっ、バスクめ。
 >  つまらん仕事をやらせおって)
-(Tch, Bask, you bastard. Making me do such a boring job.)
+(Tch, damn Bask. Sticking me with such a boring job.)
 
 @25322 Quattro · クワトロ
 > 「バスクめ……」
@@ -774,13 +774,13 @@ against OZ’s rule must be eliminated.”
 # 审校：全局：弯撇号／弯引号
 > 「あれはまさか……ブライト、
 >  連中はガスを使うつもりだ!」
-“That’s... Bright, they intend to use gas!”
+“Could that be... Bright, they’re going to use gas!”
 
 @25324 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「なんだと!? G3だというのか、
 >  OZめ!
-“What?! You mean G3, those OZ bastards!
+“What?! G3, you mean?! Damn OZ!
 ---
 >  総員、OZ部隊を迎撃しろ!
 >  敵をコロニーに近づけるな!!」
@@ -795,7 +795,7 @@ All hands, intercept the OZ forces! Don’t let them near the colony!!”
 @25326 Kamille · カミーユ
 > 「奴らはガスでこの辺りのコロニーを、
 >  全滅させるつもりなんだ」
-“They intend to wipe out all the colonies around here with gas.”
+“They’re going to wipe out the colonies around here with gas.”
 
 @25327 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -820,12 +820,12 @@ All hands, intercept the OZ forces! Don’t let them near the colony!!”
 @25331 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「君も、さっきのを見たはずだ」
-“You saw what happened earlier too, didn’t you?”
+“You saw what just happened too.”
 
 @25332 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「……わかりました。まかせます」
-“...Understood. I’ll leave it to you.”
+“...All right. It’s your call.”
 
 @25333 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -837,10 +837,10 @@ All hands, intercept the OZ forces! Don’t let them near the colony!!”
 # 审校：聞こえるな 是“听得见我吧”
 > 「君、聞こえるな。
 >  コロニーを守りたければ、君も戦え
-“You there, you can hear me, right? If you want to protect the colony, then fight too.
+“You there, can you hear me? If you want to protect the colony, then fight.
 ---
 >  守るべきものがあるなら、できるはずだ」
-If there’s something you must protect, you should be able to do it.”
+If you have something to protect, you can do it.”
 
 @25335 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -866,11 +866,11 @@ and even gave you a chance to fight again. Don’t forget that debt.”
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「バ、バスク特佐ぁぁ、
 >  わたくしめをお助けいただいたご恩は
-“M-Special Colonel Bask, the debt I owe you for saving my life,
+“S-Special Colonel Bask, for saving my life,
 ---
 >  ここでたっぷりと
 >  返させていただきますぅぅ」
-I shall repay it in full right here.”
+I shall repay you in full right heeere!”
 
 @25339 Bask · バスク
 # 审校：全局：弯撇号／弯引号
@@ -896,11 +896,11 @@ I shall repay it in full right here.”
 # 审校：全局：弯撇号／弯引号
 > 「その声……ゲゲゲ、ゲイルかぁ!?
 >  ゲイルゥ、貴様が生きていてくれて
-“That voice... G-G-Gale?! Gale, I’m glad you’re still alive.
+“That voice... G-G-Gale?! Gale, I’m so glad you’re still alive.
 ---
 >  うれしいぜぇ。貴様を
 >  この俺の手で殺せるなんてなぁ!!」
-To think I can kill you with my own hands!!”
+Now I get to kill you with my own hands!!”
 
 @25344 Bright · ブライト
 > 「なんだ!?」
@@ -912,13 +912,13 @@ To think I can kill you with my own hands!!”
 “This is Milliardo Peacecraft of the Sanc Kingdom.
 ---
 >  これより諸君らを援護する」
-From here on, we will provide you support.”
+We will now provide support.”
 
 @25346 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「トールギスだと?
 >  ゼクス・マーキス……そういうことか」
-“Tallgeese?! Zechs Merquise... so that’s how it is.”
+“Tallgeese?! Zechs Merquise... I see.”
 
 @25347 Bask · バスク
 # 审校：全局：弯撇号／弯引号
@@ -933,13 +933,13 @@ From here on, we will provide you support.”
 
 @25349 Gates · ゲーツ
 > 「さて、ロザミアはどうか……」
-“Now then, how is Rosamia doing...”
+“Now, let’s see how Rosamia is doing...”
 
 @25350 Gates · ゲーツ
 # 审校：全局：弯撇号／弯引号
 > 「戦況はよくないようだな。
 >  さて、ロザミアはどうか……」
-“The battle situation doesn’t look good. Now then, how is Rosamia doing...”
+“The battle isn’t going well. Now, let’s see how Rosamia is doing...”
 
 @25351 Rosamia · ロザミア
 > 「……うぅ……頭が……お兄ちゃん……」
@@ -947,7 +947,7 @@ From here on, we will provide you support.”
 
 @25352 Astonaige · アストナージ
 > 「あ、おい何やってんの。やめろ!」
-“Ah, hey, what are you doing? Stop!”
+“Hey, what do you think you’re doing? Stop!”
 
 @25353 Rosamia · ロザミア
 # 审校：全局：弯撇号／弯引号
@@ -960,7 +960,7 @@ From here on, we will provide you support.”
 # 检查提示：未用必用译名：ロザミィ→Rosamy
 > 「なんだって? お前、ロザミィか?
 >  待て!」
-“What? You’re Rosamy? Wait!”
+“What? Rosamy, is that you? Wait!”
 
 @25355 Rosamia · ロザミア
 > 「見つけた、お兄ちゃん!」
@@ -1000,7 +1000,7 @@ Can you hear me, Special Lieutenant Rosamia?”
 @25362 Gates · ゲーツ
 > 「刷り込みが強力すぎたか……?
 >  出力を上げるしかないな」
-“Was the imprinting too strong...? I have no choice but to raise the output.”
+“Was the imprinting too strong...? Then I’ll just have to raise the output.”
 
 @25363 Rosamia · ロザミア
 > 「ああぁぁぁーっ!!」
@@ -1035,7 +1035,7 @@ Can you hear me, Special Lieutenant Rosamia?”
 # 审校：全局：弯撇号／弯引号
 > 「カミーユ! そいつは敵の
 >  強化人間だ。撃墜しろ!」
-“Kamille! That one’s an enemy enhanced human. Shoot it down!”
+“Kamille! She’s an enemy enhanced human. Shoot her down!”
 
 @25370 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
@@ -1074,7 +1074,7 @@ Can you hear me, Special Lieutenant Rosamia?”
 # 审校：全局：弯撇号／弯引号
 > 「これでは戦闘は無理か……
 >  撤退するぞ、来い、ロザミア」
-“Then fighting is impossible... We’re retreating. Come, Rosamia.”
+“She’s in no state to fight... We’re pulling back. Come, Rosamia.”
 
 @25377 Rosamia · ロザミア
 > 「……了解であります」
@@ -1084,7 +1084,7 @@ Can you hear me, Special Lieutenant Rosamia?”
 # 审校：全局：弯撇号／弯引号
 > 「ゲイルゥゥーッ!! 貴様を
 >  殺せるなんて、ゆ、夢みたいだぜぇ!!
-“Gaaaaale!! To think I can kill you, i-it’s like a dream!!
+“Gaaaaale!! Getting to kill you, i-it’s a dream come true!!
 ---
 >  ヒャハハハハハハーッ!!」
 Hyahahahahahaha!!”
@@ -1092,11 +1092,11 @@ Hyahahahahahaha!!”
 @25379 Gale · ゲイル
 > 「ゴステロ、人としての誇りは
 >  とうになくしたようだな
-“Gosterro, it seems you long ago cast aside your pride as a man.
+“Gosterro, it seems you lost your pride as a human being long ago.
 ---
 >  同じグラドス人として、
 >  せめて私の手で眠らせてやる」
-As a fellow Gradosian, I will at least put you to sleep with my own hands.”
+As a fellow Gradosian, the least I can do is put you down myself.”
 
 @25380 Gosterro · ゴステロ
 # 审校：全局：弯撇号／弯引号
@@ -1130,7 +1130,7 @@ As a fellow Gradosian, I will at least put you to sleep with my own hands.”
 @25386 Gates · ゲーツ
 # 审校：全局：弯撇号／弯引号
 > 「ロザミア! これ以上は無理か……」
-“Rosamia! So we can’t push any further...”
+“Rosamia! She can’t take any more...”
 
 @25387 Bask · バスク
 # 审校：全局：弯撇号／弯引号
@@ -1145,13 +1145,13 @@ As a fellow Gradosian, I will at least put you to sleep with my own hands.”
 
 @25389 Gates · ゲーツ
 > 「さて、ロザミアはどうか……」
-“Now then, how is Rosamia doing...”
+“Now, let’s see how Rosamia is doing...”
 
 @25390 Gates · ゲーツ
 # 审校：全局：弯撇号／弯引号
 > 「戦況はよくないようだな。
 >  さて、ロザミアはどうか……」
-“The battle situation doesn’t look good. Now then, how is Rosamia doing...”
+“The battle isn’t going well. Now, let’s see how Rosamia is doing...”
 
 @25391 Rosamia · ロザミア
 > 「……うぅ……頭が……お兄ちゃん……」
@@ -1159,7 +1159,7 @@ As a fellow Gradosian, I will at least put you to sleep with my own hands.”
 
 @25392 Astonaige · アストナージ
 > 「あ、おい何やってんの。やめろ!」
-“Ah, hey, what are you doing? Stop!”
+“Hey, what do you think you’re doing? Stop!”
 
 @25393 Rosamia · ロザミア
 # 审校：全局：弯撇号／弯引号
@@ -1172,7 +1172,7 @@ As a fellow Gradosian, I will at least put you to sleep with my own hands.”
 # 检查提示：未用必用译名：ロザミィ→Rosamy
 > 「なんだって? お前、ロザミィか?
 >  待て!」
-“What? You’re Rosamy? Wait!”
+“What? Rosamy, is that you? Wait!”
 
 @25395 Rosamia · ロザミア
 > 「見つけた、お兄ちゃん!」
@@ -1214,7 +1214,7 @@ can you hear me, Special Lieutenant Rosamia?”
 # 审校：全局：弯撇号／弯引号
 > 「刷り込みが強力すぎたか……?
 >  出力を上げるしかないな」
-“Was the imprinting too strong...? I’ve no choice but to raise the output.”
+“Was the imprinting too strong...? Then I’ll just have to raise the output.”
 
 @25403 Rosamia · ロザミア
 > 「ああぁぁぁーっ!!」
@@ -1287,7 +1287,7 @@ can you hear me, Special Lieutenant Rosamia?”
 # 审校：全局：弯撇号／弯引号
 > 「これでは戦闘は無理か……
 >  撤退するぞ、来い、ロザミア」
-“Then fighting is impossible... We’re retreating. Come, Rosamia.”
+“She’s in no state to fight... We’re pulling back. Come, Rosamia.”
 
 @25417 Rosamia · ロザミア
 > 「……了解であります」
@@ -1309,7 +1309,7 @@ We will now provide you with support.”
 # 审校：全局：弯撇号／弯引号
 > 「トールギスだと?
 >  ゼクス・マーキス……そういうことか」
-“The Tallgeese? Zechs Merquise... so that’s how it is.”
+“The Tallgeese? Zechs Merquise... I see.”
 
 @25421 Milliardo · ミリアルド
 > 「ん? ……なんだ」
@@ -1331,35 +1331,35 @@ We will now provide you with support.”
 ---
 >  君が宇宙に現れたと聞いて、
 >  うれしく思う。OZが変わっていく
-I am glad to hear you have appeared in space. OZ is changing.
+I was glad to hear you had come to space. OZ is changing.
 ---
 >  私の力が不足していた。
 >  ロームフェラが、いや人類が
-My strength was insufficient. The path Romefeller, no, humanity
+I lacked the strength to stop it. The path Romefeller, no, humanity
 ---
 >  進む道はあまりにも気ままだ。
 >  膨れ上がる力がこれほどまでに
-will take is far too selfish. That this swelling power should leave
+is taking is far too willful. To think that swelling power would leave
 ---
 >  人の心を置き去りにしていくとはな」
-people’s hearts behind to such a degree...”
+people’s hearts so far behind...”
 
 @25425 Milliardo · ミリアルド
 # 审校：全局：弯撇号／弯引号
 > 「支配するために戦うのではなく、
 >  異星人の侵略に
-“I believed it was OZ’s task not to fight in order to dominate, but to
+“I believed OZ’s task was not to fight for domination, but to
 ---
 >  あらがう誇り高き心を、
 >  戦う心を持つ兵士を育てるのが
-raise soldiers with a proud heart that resists the alien invasion,
+raise soldiers with the pride to resist the alien invasion,
 ---
 >  OZの仕事と考えておりました。
 >  しかし戦いは混迷を極め
-soldiers with a fighting spirit. But the war has fallen into utter chaos
+soldiers with the will to fight. But the war has descended into utter chaos,
 ---
 >  人の心さえゆがめていきます」
-and is even distorting people’s hearts.”
+and it is warping even people’s hearts.”
 
 @25426 Treize · トレーズ
 > 「ミリアルド、ロームフェラの選んだ道を
@@ -1372,24 +1372,24 @@ I am happy to speak with one who understands my heart. Milliardo, there is one
 ---
 >  理解者がいる。私を思うあまり
 >  2つの心をもった女性だ。一番
-other who understands me. A woman with two hearts, from caring too much for me.
+other who understands me. A woman so devoted to me that her heart has split in two.
 ---
 >  身近なところを不安にしてしまう
 >  とは、私に未来を語る資格は
-To think I would make the one closest to me uneasy... I have no right to speak of the future.
+If I cannot even keep the one closest to me at peace, I have no right to speak of the future.
 ---
 >  ない。もしも可能であったなら
 >  ミリアルド、彼女を助けてやってくれ」
-If it were possible, Milliardo, I would ask you to save her.”
+If at all possible, Milliardo, please help her.”
 
 @25427 Milliardo · ミリアルド
 > 「トレーズ、私こそ力がない。
 >  この混迷の戦いの中で
-“Treize, it is I who have no power. Amid this chaotic war,
+“Treize, I am the one who lacks strength. Amid the chaos of this war,
 ---
 >  いまだ成すべきことを見出せずに
 >  いるのだからな……」
-I still cannot find what I ought to do...”
+I have yet to find what I must do...”
 
 @25428 Kamille · カミーユ
 > 「ロザミィ……どうしてなんだ……」
@@ -1410,10 +1410,10 @@ enhanced humans. There was nothing you could do.”
 # 审校：全局：弯撇号／弯引号
 > 「強化人間だって、
 >  普通の人間に変わりはないんだ!
-“Even if she’s an enhanced human, she’s still a normal person!
+“Enhanced human or not, she’s still a person like anyone else!
 ---
 >  それを、あんな……」
-And yet, like that...”
+And they did that to her...”
 
 @25431 Fa · ファ
 > 「カミーユ……」
@@ -1423,17 +1423,17 @@ And yet, like that...”
 # 审校：全局：弯撇号／弯引号
 > 「今回はなんとか持ちこたえたが、
 >  G3まで持ち出してくるとなると……」
-“We managed to hold out this time, but if they’re going to bring out even the G3...”
+“We held them off this time, but if they’re willing to go as far as G3...”
 
 @25433 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「ああ、連中は本気で
 >  我々をつぶそうとしているな
-“Yeah, they’re serious about crushing us.
+“Yes, they truly mean to crush us.
 ---
 >  いや、我々だけでなく、
 >  OZに従わないすべて、か」
-No, not just us... everyone who won’t obey OZ.”
+No, not just us... everyone who won’t obey OZ, perhaps.”
 
 @25434 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -1448,7 +1448,7 @@ there’s no way we can keep that up forever.”
 # 审校：全局：弯撇号／弯引号
 > 「そうだな。ここに俺たちがいるかぎり、
 >  OZにコロニー攻撃の口実を
-“Yeah. As long as we’re here, we’re also giving OZ an excuse to
+“Right. As long as we stay here, we’re handing OZ an excuse to
 ---
 >  与えていることにもなる」
 attack the colonies.”
@@ -1457,22 +1457,22 @@ attack the colonies.”
 # 审校：全局：弯撇号／弯引号
 > 「俺たちとOZに批判的なコロニー、
 >  敵にとっては一挙両得ってわけか」
-“Us and the colonies that criticize OZ... for the enemy, that’s killing two birds with one stone.”
+“Us and the colonies that criticize OZ... two birds with one stone for the enemy, huh?”
 
 @25437 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「悔しいが、OZの動きが早すぎた。
 >  このまま後手にまわっていては
-“It’s frustrating, but OZ moved too fast. If we keep letting them stay one step ahead,
+“I hate to admit it, but OZ moved too fast. If we keep reacting to them like this,
 ---
 >  どうにもならないか……」
-we won’t be able to do anything...”
+we’ll get nowhere...”
 
 @25438 Alan · アラン
 # 审校：全局：弯撇号／弯引号
 > 「うむ。どのみち兜たちの言うように
 >  ここにとどまるわけにもいかんな」
-“Indeed. Either way, as Kabuto and the others say, we can’t stay here forever.”
+“Agreed. Either way, as Kabuto and the others said, we can’t stay here.”
 
 @25439 Judau · ジュドー
 > 「放せよ!」
@@ -1487,28 +1487,28 @@ we won’t be able to do anything...”
 # 审校：全局：弯撇号／弯引号
 > 「おとなしくしてろ。
 >  艦長、ガキどもを連れてきた」
-“Sit still. Captain, I’ve brought the kids.”
+“Settle down. Captain, I brought the brats.”
 
 @25442 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「すまない。ジュドーと言ったな。自分
 >  たちが何をしたのかは、わかっているな?」
-“Sorry about that. Judau, was it? You do know what you’ve done, don’t you?”
+“Thanks. Judau, was it? You understand what you’ve done, I take it?”
 
 @25443 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
 > 「ああ、わかってるさ。
 >  だけどね
-“Yeah, I know. But you know,
+“Yeah, I know. But look,
 ---
 >  俺たちだって好きでこんなことを
 >  してるんじゃないんだよ」
-we’re not doing this because we want to.”
+it’s not like we do this kind of thing for fun.”
 
 @25444 Bright · ブライト
 > 「そうか……ならお前たち、
 >  我々と一緒にこないか?」
-“I see... Then how about you come with us?”
+“I see... Then why don’t you come with us?”
 
 @25445 Shinobu · 忍
 > 「おいおい、正気かよ艦長さん」
@@ -1523,7 +1523,7 @@ we’re not doing this because we want to.”
 # 审校：全局：弯撇号／弯引号
 > 「あんたら、子供に
 >  戦争やらせようっていうのかよ」
-“You’re telling us to make kids fight a war?”
+“You want kids to fight your war?”
 
 @25448 Beecha · ビーチャ
 # 审校：全局：弯撇号／弯引号
@@ -1547,7 +1547,7 @@ And now they’re trying to take control of the Earth Sphere.
 ---
 >  どうなるかなんて、
 >  ちょっと考えればわかるでしょ」
-Anyone could figure out what’s going to happen with a little thought.”
+It doesn’t take a genius to figure out what happens next.”
 
 @25450 Mondo · モンド
 # 审校：全局：弯撇号／弯引号
@@ -1577,20 +1577,20 @@ it’s no wonder the other colonies accept OZ.”
 # 审校：全局：弯撇号／弯引号
 > 「ジュドー、いますぐに決めろとは
 >  言わない。考えてみてくれないか
-“Judau, I’m not telling you to decide right now. Just think about it.
+“Judau, I’m not asking you to decide right now. But will you think about it?
 ---
 >  我々は少しでも多くの力を
 >  必要としているんだ」
-We need as much strength as we can get.”
+We need all the help we can get.”
 
 @25454 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「それで、どういうことかな?
 >  ゼクス・マーキス
-“So, what’s the meaning of this, Zechs Merquise?
+“So, what is all this about, Zechs Merquise?
 ---
 >  説明は聞かせてもらえるのだろうな?」
-You’ll give us an explanation, won’t you?”
+I trust you’ll explain?”
 
 @25455 Milliardo · ミリアルド
 > 「ゼクス・マーキスは死んだよ。
@@ -1599,21 +1599,21 @@ You’ll give us an explanation, won’t you?”
 ---
 >  地球圏の未来を憂える者の
 >  一人として、戦わせてもらっただけだ
-I merely fought as one who worries about the future of the Earth Sphere.
+I simply fought as one who fears for the future of the Earth Sphere.
 ---
 >  それ以上の意味はない」
-There is no deeper meaning than that.”
+Nothing more.”
 
 @25456 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「では、我々に加わるつもりで
 >  来たのではない、というのだな」
-“Then you’re saying you didn’t come intending to join us.”
+“So you didn’t come here to join us, then.”
 
 @25457 Milliardo · ミリアルド
 > 「少なくとも、今のところは。私も、
 >  私なりにとるべき道を探しているのだ」
-“At least, not for now. I too am searching for the path I should take.”
+“Not for now, at least. I am still searching for my own path.”
 
 @25458 ???
 > 「マーズ……マーズよ」
@@ -1648,10 +1648,10 @@ My name isn’t Mars!”
 @25464 ???
 > 「……違う、お前はマーズだ。
 >  だが多少の手違いがあったようだな
-“...No, you are Mars. But it seems there was some slight mistake.
+“...No, you are Mars. But it seems something went slightly wrong.
 ---
 >  もう少し時間をかけねばならぬか……」
-Perhaps I must spend a little more time...”
+It will take a little more time, then...”
 
 @25465 Takeru · タケル
 > 「……はっ!? ……夢……か。
@@ -1687,7 +1687,7 @@ Perhaps I must spend a little more time...”
 
 @25472 Heero · ヒイロ
 > 「お前は……」
-“You are...”
+“You...”
 
 @25473 Trowa · トロワ
 # 审校：全局：弯撇号／弯引号
@@ -1736,15 +1736,15 @@ In any case, you need only do as you are told.”
 ---
 >  たとえトレーズ様でも……。だが私は
 >  トレーズ様の理想へ
-Not even His Excellency Treize... But I need only carry history toward His Excellency’s ideal.
+Not even His Excellency Treize... But all I must do is steer history toward His Excellency’s ideal.
 ---
 >  歴史を運べばよいのだ。私は
 >  そのために命を捨てることができる
-For that, I can throw away my life.
+For that, I would gladly lay down my life.
 ---
 >  戦って勝ち取ることができる。
 >  トレーズ様の未来……
-I can fight and win it. His Excellency’s future...
+I can fight for it and win it. His Excellency’s future...
 ---
 >  そして私の未来を」
-And my own future.”
+and my own.”
