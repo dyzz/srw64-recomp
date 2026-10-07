@@ -2,7 +2,7 @@
 
 @47245 Tetsuya · 鉄也
 > 「なんだと!? もう一度いってみろ!」
-“What did you say?! Say that again!”
+“What was that?! Say it again!”
 
 @47246 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -33,7 +33,7 @@ playing along with a lunatic like you! Walking right into your own death is what
 
 @47248 Koji · 甲児
 > 「なにぃ、いったなこの野郎っ!」
-“What, you wanna say that to my face, you bastard?!”
+“What?! You asked for it, you bastard!”
 
 @47249 Sayaka · さやか
 > 「ちょっと、やめなさいよ2人とも」
@@ -82,7 +82,7 @@ You’re not the only ones here!”
 
 @47257 Bright · ブライト
 > 「なんだと、貴様ら……」
-“What did you say, you lot...”
+“What was that? You people...”
 
 @47258 George · ジョルジュ
 > 「艦長、ここは我々におまかせを」
@@ -96,7 +96,7 @@ You’re not the only ones here!”
 @47260 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「わかった。手荒な真似はするなよ」
-“Understood. Don’t rough them up too much.”
+“All right. Don’t get too rough.”
 
 @47261 Sai Saici · サイ・サイシー
 > 「わかってるって!」
@@ -156,10 +156,10 @@ You’re not the only ones here!”
 @47273 Sara · 沙羅
 > 「まったく、身内でやりあって
 >  どうするってのさ
-“Honestly, what good does it do to fight among ourselves?
+“Honestly, what good’s fighting each other gonna do?
 ---
 >  こういう連中には、いい薬だよ」
-A good lesson for the lot of them.”
+Serves the lot of them right.”
 
 @47274 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -183,7 +183,7 @@ A good lesson for the lot of them.”
 ---
 >  全体の士気にも関わる。
 >  自重してもらいたいものだな」
-affects everyone’s morale. I’d like you to show some restraint.”
+affects everyone’s morale. I expect you to show some restraint.”
 
 @47278 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -227,7 +227,7 @@ then hit Side 3 or Axis with a surprise attack.”
 # 审校：全局：弯撇号／弯引号
 > 「ふん、その派手な行動の
 >  どこが奇襲だよ。冗談じゃねぇや」
-“Hmph, what part of that flashy stunt is a surprise attack? Don’t make me laugh.”
+“Hmph, how is a flashy stunt like that a surprise attack? Give me a break.”
 
 @47282 Jun · ジュン
 # 审校：全局：弯撇号／弯引号
@@ -246,13 +246,13 @@ Koji and the others feel, don’t you?”
 # 审校：全局：弯撇号／弯引号
 > 「確かに、このままで
 >  いいわけはないのは、事実だけどね」
-“It’s true we can’t just keep going on like this, though.”
+“Still, it’s true we can’t keep going like this.”
 
 @47285 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
 > 「しっかしなぁ。
 >  いまの状態じゃ、打つ手なしだぜ」
-“Still, though. The way things are now, we’ve got no move to make.”
+“Still, though. The way things are, there’s nothing we can do.”
 
 @47286 Wufei · 五飛
 # 审校：英文首页过长且 pathetic 不对，中文“一个人”指各自单干
@@ -280,7 +280,7 @@ If the people here can’t move, then we’ll just do it again. That’s all.”
 # 审校：全局：弯撇号／弯引号
 > 「待ってください。そんなことしても、
 >  どうにもできませんよ」
-“Please wait. Even if you do that, it won’t change anything.”
+“Please wait. Doing that won’t accomplish anything.”
 
 @47290 Wufei · 五飛
 # 审校：全局：弯撇号／弯引号
@@ -333,7 +333,7 @@ no one accomplishes anything alone.”
 
 @47299 Haman · ハマーン
 > 「なんだと?」
-“What did you say?”
+“What?”
 
 @47300 Chara · キャラ
 > 「{HeroMech}の連中かい?
@@ -460,7 +460,7 @@ they’re not the kind to miss that.”
 
 @47315 Chara · キャラ
 > 「では、そちらへの対応は……」
-“Then, our response to them...”
+“Then, as for dealing with them...”
 
 @47316 Haman · ハマーン
 > 「いまはグレミーが先だ。
@@ -483,15 +483,15 @@ jump the gun...?)
 @47318 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「敵の様子が、おかしいだと?」
-“The enemy’s movements are strange?”
+“The enemy’s acting strange?”
 
 @47319 Beltorchika · ベルトーチカ
 > 「少し前から、月の周囲に
 >  配置されていた部隊が
-“For a little while now, the units stationed around the moon
+“The units stationed around the moon
 ---
 >  動き始めています」
-have started to move.”
+started moving a little while ago.”
 
 @47320 Garrison · ギャリソン
 > 「地球へ向かった艦隊も、
@@ -502,7 +502,7 @@ have started to move.”
 # 审校：全局：弯撇号／弯引号
 > 「……サイド3で何かあったのは
 >  間違いないな。サイド3の様子は?」
-“...Something has definitely happened at Side 3. What’s the situation at Side 3?”
+“...Something’s definitely happened at Side 3. What’s the situation there?”
 
 @47322 Reika · レイカ
 # 审校：全局：弯撇号／弯引号
@@ -512,10 +512,10 @@ have started to move.”
 ---
 >  未確認だけど、アクシズの表面に
 >  爆発光が観測されたという
-It’s unconfirmed, but there was also a report that an explosion flash
+It’s unconfirmed, but there was also a report of an explosion flash
 ---
 >  報告もあったわ」
-was observed on the surface of Axis.”
+spotted on the surface of Axis.”
 
 @47323 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -548,15 +548,15 @@ couldn’t have had that many left...”
 # 审校：全局：弯撇号／弯引号
 > 「いや、それはない。アステロイドの
 >  観測装置には反応が
-“No, that’s not it. The Asteroid observation devices show no reaction.
+“No, that’s not it. The Asteroid observation equipment hasn’t picked anything up.
 ---
 >  出ていない。銀河帝国軍も、
 >  徹底抗戦を望んだ
-As for the Galactic Empire’s forces, nearly every commander who wanted
+And in the Galactic Empire’s forces, nearly every commander who wanted
 ---
 >  指揮官たちは、ほとんどが
 >  兵士たちによって拘束されたはずだ」
-to fight to the bitter end should have been restrained by their own soldiers.”
+to fight to the bitter end was supposedly detained by their own soldiers.”
 
 @47328 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -571,7 +571,7 @@ to attack Axis, and they’d have no reason to.”
 # 审校：全局：弯撇号／弯引号
 > 「が、単なる事故にしては、
 >  敵の動きがおかしすぎるか」
-“But for a mere accident, the enemy’s movements are far too strange.”
+“But the enemy’s acting far too strangely for a mere accident.”
 
 @47330 Amuro · アムロ
 # 审校：补足省略的前提
@@ -594,11 +594,11 @@ to attack Axis, and they’d have no reason to.”
 # 审校：全局：弯撇号／弯引号
 > 「月の周辺の部隊も動かすという
 >  ことは、俺たちを気にしている
-“If they’re moving the units around the moon too, they may not have the luxury
+“If they’re moving the units around the moon too, maybe they can’t afford
 ---
 >  余裕がないのかもしれない。確かに
 >  俺たちが動くのなら、いい機会だな」
-of worrying about us. If we’re going to move, this is a good chance.”
+to worry about us. If we’re going to move, this is a good chance.”
 
 @47334 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「そうだな……そう思う」
@@ -608,20 +608,20 @@ of worrying about us. If we’re going to move, this is a good chance.”
 # 审校：全局：弯撇号／弯引号
 > 「月の周辺の部隊も動かすという
 >  ことは、俺たちを気にしている
-“If they’re moving the units around the moon too, they may not have the luxury
+“If they’re moving the units around the moon too, maybe they can’t afford
 ---
 >  余裕がないのかもしれない。確かに
 >  俺たちが動くのなら、いい機会だな」
-of worrying about us. If we’re going to move, this is a good chance.”
+to worry about us. If we’re going to move, this is a good chance.”
 
 @47336 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「そうだな……連中の動きを見れば、
 >  こちらを気にしていないのは明らかだ
-“Right... judging by their movements, it’s clear they’re not concerned with us.
+“Right... judging by their movements, they’re clearly not paying attention to us.
 ---
 >  余裕がないのかもしれん」
-They may not have the luxury.”
+They may not be able to afford it.”
 
 @47337 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -651,10 +651,10 @@ so don’t stare at me like that.”
 # 审校：全局：弯撇号／弯引号
 > 「そうだな……連中の動きを見れば、
 >  こちらを気にしていないのは明らかだ
-“Right... judging by their movements, it’s clear they’re not concerned with us.
+“Right... judging by their movements, they’re clearly not paying attention to us.
 ---
 >  余裕がないのかもしれん」
-They may not have the luxury.”
+They may not be able to afford it.”
 
 @47342 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -666,7 +666,7 @@ They may not have the luxury.”
 # 审校：全局：弯撇号／弯引号
 > 「ふん、やるのならば、
 >  一気にやっちまうしかなかろうな」
-“Hmph. If we’re doing this, we’ve got no choice but to go all out at once.”
+“Hmph. If we are doing this, we had best do it all at once.”
 
 @47344 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -715,7 +715,7 @@ Let’s do it, Captain, Doctor!”
 # 审校：英文生硬
 > 「我々はすべての行動を、
 >  艦長たちに一任しておるよ」
-“We’ve entrusted all our decisions to you captains.”
+“We leave all decisions to you captains.”
 
 @47350 Bright · ブライト
 > 「ふむ…………」
@@ -872,7 +872,7 @@ regarding Glemy Toto’s rebellion!”
 
 @47376 Ple-Two · プルツー
 > 「お前たちごときに、やられるものか」
-“You think the likes of you could take me down?”
+“As if the likes of you could take me down.”
 
 @47377 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
@@ -992,10 +992,10 @@ seized by Glemy. They’ll likely come out to intercept. Return and prepare for 
 # 审校：全局：弯撇号／弯引号
 > 「よくはわからないんですが、
 >  グレミー・トトの反乱のようです
-“I don’t quite understand it all, but it seems Glemy Toto has rebelled.
+“I can’t make out all of it, but it looks like Glemy Toto has rebelled.
 ---
 >  アクシズが占拠されたとか」
-They say Axis has been occupied.”
+Something about Axis being occupied.”
 
 @47398 Roux · ルー
 # 审校：全局：省略号统一为三点
@@ -1028,7 +1028,7 @@ a better situation.”
 # 审校：全局：弯撇号／弯引号
 > 「どうもこのあたりで、双方の部隊が
 >  交戦しそうな雰囲気です」
-“It seems like both sides’ forces are about to engage each other around here.”
+“It looks like both sides’ forces are about to clash right around here.”
 
 @47404 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
@@ -1038,7 +1038,7 @@ a better situation.”
 @47405 Banjo · 万丈
 > 「さて、どうする艦長。
 >  僕たちがとるべき行動を
-“Now then, Captain, what do we do? It seems we need to decide our course of action
+“Now then, Captain, what’ll it be? Looks like we need to decide what to do
 ---
 >  早急に決めなくてはならないようだよ」
 right away.”
@@ -1061,7 +1061,7 @@ right away.”
 
 @47409 Tetsuya · 鉄也
 > 「ここまで来たからには、当然だな」
-“Having come this far, that goes without saying.”
+“We’ve come this far, so that goes without saying.”
 
 @47410 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1095,10 +1095,10 @@ We can do it. Let’s take them on!”
 # 审校：全局：弯撇号／弯引号
 > 「しかし、それでもかなりの数だろう。
 >  ここが最後というわけでもない
-“But even so, that’s still quite a number. This isn’t necessarily the final battle.
+“But even so, there are still a lot of them. This isn’t the final battle, either.
 ---
 >  無理はできないと思う」
-I don’t think we can afford to overdo it.”
+I don’t think we should overextend ourselves.”
 
 @47415 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
@@ -1161,11 +1161,11 @@ lending Glemy Toto a hand.”
 # 审校：全局：弯撇号／弯引号
 > 「ま、いいたいことはわかるがね。
 >  ハマーンとは
-“Well, I see what you’re getting at. With Haman, we’ve cooperated
+“Well, I see what you’re getting at. We’ve worked with Haman
 ---
 >  一度は協力したこともあれば、
 >  なにより行動がわかりやすい」
-once before, and above all her actions are easy to read.”
+once before, and above all, her moves are easy to read.”
 
 @47426 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -1199,7 +1199,7 @@ or else...”
 # 审校：全局：弯撇号／弯引号
 > 「ハマーンの出方を見るか。
 >  そんなところでしょう」
-“Or we wait and see how Haman moves. That’s about the gist of it.”
+“Or we wait and see how Haman moves. That’s about the size of it.”
 
 @47431 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -1317,7 +1317,7 @@ I’m sure he’d say the same.”
 
 @47443 Amuro · アムロ
 > 「そうだな……そう思える」
-“Yeah... I can see that.”
+“Yeah... I think so too.”
 
 @47444 Banjo · 万丈
 > 「賛成だ」
@@ -1343,11 +1343,11 @@ then we can focus on crushing one side first.”
 # 审校：全局：弯撇号／弯引号
 > 「そういうこと。それに、ハマーンの方で、
 >  僕らも狙ってくることだって
-“Exactly. And it’s also possible that Haman will come after us,
+“Exactly. Besides, Haman could still come after us too.
 ---
 >  考えられるわけだしね。その場合は、
 >  もうやるしかなくなる」
-you know. In that case, we’ll just have to fight.”
+In that case, we’ll have no choice but to fight.”
 
 @47448 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -1361,7 +1361,7 @@ you know. In that case, we’ll just have to fight.”
 @47450 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
 > 「ヘッ、そうこなくっちゃな」
-“Heh, now that’s what I wanted to hear.”
+“Heh, now you’re talking.”
 
 @47451 Alan · アラン
 > 「やれやれだな」
@@ -1379,7 +1379,7 @@ or we put an end to every last battle, it looks like this will go on.”
 @47453 Beltorchika · ベルトーチカ
 > 「接近するアクシズ軍、
 >  グレミー軍の戦闘艦を確認!」
-“Confirmed! Approaching combat vessels of the Axis Forces and the Glemy Army!”
+“Confirmed: Axis Forces and Glemy Army warships approaching!”
 
 @47454 Bright · ブライト
 > 「総員、
@@ -1434,7 +1434,7 @@ If we can avoid fighting you, all the better.”
 @47461 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「そういうことになるかな」
-“I suppose that’s how it works out.”
+“I suppose it comes to that.”
 
 @47462 Haman · ハマーン
 # 审校：英文与中文都生硬
@@ -1548,20 +1548,20 @@ Sorry, but you’re coming along whether you like it or not.”
 # 审校：全局：弯撇号／弯引号
 > 「私とグレミーが、お前たちを
 >  倒したあとで決着をつけるとは
-“You don’t think that after Glemy and I defeat you,
+“Has it not occurred to you that Glemy and I might defeat you first
 ---
 >  考えないのか?」
-we’ll settle things between us?”
+and settle things between us afterward?”
 
 @47477 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「その可能性はないだろう、ハマーン。
 >  俺たちよりも
-“That won’t happen, Haman. More than us,
+“That won’t happen, Haman. You want to strike Glemy
 ---
 >  グレミーの方を叩きたい。
 >  たった今、そう口にした」
-you want to strike at Glemy. You just said so yourself.”
+more than us. You said so yourself just now.”
 
 @47478 Haman · ハマーン
 > 「アムロ・レイ……
@@ -1819,7 +1819,7 @@ Finish him off!”
 # 审校：哈曼语气威严正式，can't 过于口语化，改为 cannot。
 > 「くっ、こんなところでやられるわけには
 >  いかん。少佐、あとは頼む」
-“Ngh, I cannot afford to be finished off in a place like this. Major, I leave the rest to you.”
+“Ngh, I cannot afford to fall here. Major, I leave the rest to you.”
 
 @47518 Gato · ガトー
 > 「承知した」
@@ -1829,7 +1829,7 @@ Finish him off!”
 # 审校：同上，哈曼的正式威严口吻。
 > 「くっ、こんなところでやられるわけには
 >  いかん。マシュマー、あとは頼むぞ」
-“Ngh, I cannot afford to be finished off in a place like this. Mashymre, I leave the rest to you.”
+“Ngh, I cannot afford to fall here. Mashymre, I leave the rest to you.”
 
 @47520 Mashymre · マシュマー
 > 「はっ、おまかせください、ハマーン様!」
@@ -1839,7 +1839,7 @@ Finish him off!”
 # 审校：同上，哈曼的正式威严口吻。
 > 「くっ、こんなところでやられるわけには
 >  いかん。キャラ、あとは頼むぞ」
-“Ngh, I cannot afford to be finished off in a place like this. Chara, I leave the rest to you.”
+“Ngh, I cannot afford to fall here. Chara, I leave the rest to you.”
 
 @47522 Chara · キャラ
 > 「はい、おまかせください、ハマーン様!」
@@ -1849,7 +1849,7 @@ Finish him off!”
 # 审校：同上，哈曼的正式威严口吻。
 > 「くっ、こんなところで
 >  やられるわけにはいかん」
-“Ngh, I cannot afford to be finished off in a place like this.”
+“Ngh, I cannot afford to fall here.”
 
 @47524 Judau · ジュドー
 > 「このぉっ!!」
@@ -1895,7 +1895,7 @@ Finish him off!”
 # 审校：全局：弯撇号／弯引号
 > 「お前はまだそうやって
 >  私の邪魔をするのか!」
-“You’re still getting in my way like this?!”
+“Are you still going to get in my way?!”
 
 @47533 Ple · プル
 > 「くっ……グレミー……」
@@ -1958,10 +1958,10 @@ and will reach Axis before we do.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、なんでもない。
 >  現状では問題はないと思うが
-“No, it’s nothing. I don’t think there’s a problem at present, but
+“No, it’s nothing. I don’t foresee a problem at present, but
 ---
 >  いちおう警戒だけはしておけ」
-just keep up your guard for now.”
+stay on guard just in case.”
 
 @47544 Mashymre · マシュマー
 # 审校：全局：弯撇号／弯引号
@@ -2041,7 +2041,7 @@ Unforgivable.)
 # 审校：全局：弯撇号／弯引号
 > 「我々にとっては、
 >  これ以上の状況は望めん
-“For us, we couldn’t ask for a better situation.
+“We couldn’t ask for a better situation.
 ---
 >  この機会を最大に
 >  利用しなくてはならん」
@@ -2069,7 +2069,7 @@ We must make the most of this opportunity.”
 “We weren’t doing it because we wanted to dominate anyone.
 ---
 >  同じではないはずだろ」
-It shouldn’t be the same thing.”
+That’s not the same, is it?”
 
 @47562 David · デビッド
 > 「なら、バスクやジャミトフはどうなんだ?」
@@ -2091,13 +2091,13 @@ It shouldn’t be the same thing.”
 # 审校：common sense 用词不准
 > 「そのあたりまえが、通用しなく
 >  なることがあるのが、人間だよ」
-“Sometimes what’s obvious stops holding true. That’s human nature.”
+“Sometimes, the obvious stops being obvious. That’s people for you.”
 
 @47566 Bright · ブライト
 # 审校：精读：我がごとながら
 > 「我がごとながら、度し難いことだな。
 >  まったく」
-“Speaking as one of them, we humans really are beyond saving. Honestly.”
+“I say this as one of them, but we humans are hopeless. Honestly.”
 
 @47567 Quatre · カトル
 # 审校：英文首页过长，中文语序

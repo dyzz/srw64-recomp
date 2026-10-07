@@ -8,7 +8,7 @@
 # 审校：原文是反问“不是月球吗”，初稿译成“You mean the moon, sir”语气偏弱且加了 sir，改为更自然的反问。
 > 「まともな地面といっても、
 >  月じゃないですか」
-“Solid ground, you say? But this is the moon.”
+“Solid ground? We’re on the moon.”
 
 @46971 Masato · 雅人
 # 审校：“Beats being cooped up inside a ship forever”可接受，但 forever 略重；改为 the whole time 更贴合“ずっと”。
@@ -30,10 +30,10 @@ you can’t even feel like you’ve rested. Hm? What’s up, Koji?”
 # 审校：全局：弯撇号／弯引号
 > 「いやなんかよ、オレたちって
 >  月にくるたびに、すごい状況が
-“Nah, it’s just... every time we come to the moon,
+“Nah, I was just thinking... every time we come to the moon,
 ---
 >  変わってるなって、思ったんだ」
-I think about how much things have changed.”
+everything’s totally different.”
 
 @46974 Shiro · シロー
 # 审校：全局：弯撇号／弯引号
@@ -94,10 +94,10 @@ things would turn out like this.”
 # 审校：全局：弯撇号／弯引号
 > 「僕らが火星で最初に
 >  ムゲに攻撃された時だって
-“When the Muge first attacked us on Mars,
+“Back when the Muge first attacked us on Mars,
 ---
 >  想像できませんでしたよ」
-we couldn’t have imagined it either.”
+we couldn’t have imagined this either.”
 
 @46982 David · デビッド
 > 「ああ……エイジが来たときもな。
@@ -145,10 +145,10 @@ who knows what would’ve happened to Earth.”
 # 审校：全局：弯撇号／弯引号
 > 「終わっちまったことなんざ、
 >  どうでもいいさ
-“What’s done is done. Who cares.
+“Who cares about what’s already done?
 ---
 >  いまの問題は、あの女だろうが」
-The problem right now is that woman.”
+What matters now is that woman.”
 
 @46988 Ryo · 亮
 # 审校：全局：弯撇号／弯引号
@@ -173,11 +173,11 @@ if we’d taken her out first?!”
 @46991 Roux · ルー
 > 「ジュドーも似たようなこといってたけど、
 >  そしたらあたしたち
-“Judau said something similar, but if we had, we might not
+“Judau said something like that too, but if we had, we might not
 ---
 >  ここにいなかったかもしれないんだよ?
 >  それがわかってて、いってるんでしょうね」
-even be here now, you know? You do understand that, right?”
+even be here now, you know? I hope you realize that.”
 
 @46992 Hyoma · 豹馬
 > 「だけどよ……」
@@ -211,7 +211,7 @@ so for now we’d better think about getting some rest.”
 @46997 Quatre · カトル
 # 审校：全局：弯撇号／弯引号
 > 「ええ……これから、どうなるんでしょう」
-“Yeah... what’s going to happen to us now?”
+“Yes... I wonder what will happen now.”
 
 @46998 Noin · ノイン
 # 审校：全局：弯撇号／弯引号
@@ -246,7 +246,7 @@ They won’t go around smashing colonies or killing their people for no reason.�
 ---
 >  駐留させていたコロニー守備隊
 >  ごときでは、どうにもならないだろう」
-stationed by OZ is hardly going to make a difference.”
+like the one OZ stationed there can’t do a thing.”
 
 @47003 Quatre · カトル
 > 「…………」
@@ -256,7 +256,7 @@ stationed by OZ is hardly going to make a difference.”
 # 审校：全局：弯撇号／弯引号
 > 「デュオーッ、みんな
 >  もう行くっていってるわよ!」
-“Duo! Everyone’s saying they’re leaving already!”
+“Duo! Everybody’s saying it’s time to go!”
 
 @47005 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -290,7 +290,7 @@ stationed by OZ is hardly going to make a difference.”
 # 审校：全局：弯撇号／弯引号
 > 「でも、そのくらいでなくては、
 >  戦い続けてはいられません」
-“But if we couldn’t be like that, we wouldn’t be able to keep fighting.”
+“But you need that kind of attitude to keep fighting.”
 
 @47011 Wufei · 五飛
 # 审校：全局：弯撇号／弯引号
@@ -370,7 +370,7 @@ I couldn’t have survived this brutal war.”
 ---
 >  くわえてこの状況だ。彼らが
 >  つぶれてしまわないか、心配ですよ」
-And on top of that, there’s the current situation. I worry they might collapse.”
+And on top of that, there’s this situation. I worry they might break under it.”
 
 @47022 Hasan · ハサン
 # 审校：全局：弯撇号／弯引号
@@ -385,20 +385,20 @@ they have the strength to recover.”
 # 审校：全局：弯撇号／弯引号
 > 「若さというのは、可能性の
 >  かたまりみたいなものですな。しかし
-“Youth is like a bundle of possibilities. But still,
+“Youth is a bundle of possibilities, isn’t it? But
 ---
 >  そんな若者たちに頼らねばならん
 >  我々大人は、情けないかぎりだ」
-it’s truly shameful that we adults have to rely on young people like them.”
+it’s truly shameful that we adults must rely on young people like them.”
 
 @47024 Dr. Hazuki · 葉月博士
 # 审校：全局：弯撇号／弯引号
 > 「彼らはわかってくれていますよ。
 >  新しい時代をつくるのは
-“They understand. That it isn’t us
+“They understand. That we are not
 ---
 >  我々ではないということをね」
-who will build the new era.”
+the ones who will build the new era.”
 
 @47025 Naoto · ナオト
 > 「ミカ、タケルの奴はどこへいったんだ?」
@@ -452,7 +452,7 @@ See? Can’t you hear it?”
 
 @47034 Naoto · ナオト
 > 「ちぇっ、いってくれるぜ」
-“Tch, listen to you.”
+“Tch, you’ve got some nerve.”
 
 @47035 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
@@ -464,10 +464,10 @@ See? Can’t you hear it?”
 # 审校：全局：弯撇号／弯引号
 > 「そういやそうだな。豹馬たちもいっち
 >  まってんだろ? しっかし、よく黙って
-“Yeah, that’s right. Hyoma and the others went too, didn’t they? Still, she really held it in
+“Now that you mention it, yeah. Hyoma and the others went too, right? Man, she really kept quiet
 ---
 >  我慢してたよなぁ」
-without complaining, huh.”
+and toughed it out, huh.”
 
 @47037 Daisuke · 大介
 # 审校：全局：弯撇号／弯引号
@@ -525,7 +525,7 @@ Chizuru, hang in there...)
 @47045 Alan · アラン
 > 「そうだな。まずサイド3を掌握し、
 >  ジオン公国の再興を
-“Indeed. First they seize Side 3, then they may intend to declare
+“Indeed. They may intend to seize Side 3 first, then declare
 ---
 >  宣言するつもりかもしれん」
 the restoration of the Principality of Zeon.”
@@ -534,16 +534,16 @@ the restoration of the Principality of Zeon.”
 # 审校：全局：弯撇号／弯引号
 > 「しかし、あそこの共和政府の
 >  連中は、ザビ家の一党とは
-“But the people in that republic government over there held
+“But the republic government there held
 ---
 >  主張を異にしていた連中だろう?」
-different views from the Zabi family’s faction, didn’t they?”
+different views from the Zabi faction, didn’t they?”
 
 @47047 Garrison · ギャリソン
 # 审校：全局：弯撇号／弯引号
 > 「そうですな。少しは
 >  抵抗していただけることを
-“Quite so. I’d like to hope they’ll put up at least
+“Quite so. One would like to hope they will put up at least
 ---
 >  期待したいところですが……」
 a little resistance, but...”
@@ -587,11 +587,11 @@ time before they take control of the colonies. What’s left is Earth and...”
 ---
 >  ギャリソン、引き続き
 >  観測を続けていてくれ」
-Garrison, keep up the observation.”
+Garrison, keep monitoring them.”
 
 @47054 Garrison · ギャリソン
 > 「かしこまりました」
-“Understood.”
+“Certainly, sir.”
 
 @47055 Haman · ハマーン
 > 「少佐、部隊を率いて、
@@ -621,7 +621,7 @@ already in our hands, but we must take every precaution.”
 @47058 Gato · ガトー
 > 「わかりました。
 >  お引き受けいたしましょう」
-“Understood. I shall accept.”
+“Understood. I shall take it on.”
 
 @47059 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
@@ -631,16 +631,16 @@ already in our hands, but we must take every precaution.”
 ---
 >  ところで、少佐が持ってきた
 >  ガンダムは、修理ができないそうだな?」
-By the way, the Gundam you brought can’t be repaired, I hear?”
+By the way, I hear the Gundam you brought can’t be repaired?”
 
 @47060 Gato · ガトー
 # 审校：全局：弯撇号／弯引号
 > 「整備兵からは、アクシズには
 >  規格の合うパーツがないため
-“The maintenance crew tells me that Axis has no parts
+“The maintenance crew tells me it will be difficult, as Axis has no parts
 ---
 >  難しいと聞いております」
-that match its specifications, so it’s difficult.”
+built to its specifications.”
 
 @47061 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
@@ -662,7 +662,7 @@ It’s as if the spirit of Zeon itself has taken form...”
 # 审校：全局：弯撇号／弯引号
 > 「モビルアーマー、ノイエジールだ。
 >  少佐に使ってもらおうと
-“It’s the Mobile Armor Neue Ziel. I thought I’d have you use it.
+“It’s the Mobile Armor Neue Ziel. I thought you might pilot it.
 ---
 >  思ったのだが、どうかな」
 What do you say?”
@@ -696,7 +696,7 @@ What do you say?”
 # 审校：全局：弯撇号／弯引号
 > 「来たか、グレミー。面白いものを
 >  手にいれたが、使える者がいなくてな」
-“You’ve come, Glemy. I’ve obtained something interesting, but I have no one who can use it.”
+“Ah, Glemy. I’ve acquired something interesting, but I have no one who can use it.”
 
 @47070 Glemy · グレミー
 > 「面白いもの?」
@@ -706,17 +706,17 @@ What do you say?”
 # 审校：全局：弯撇号／弯引号
 > 「OZの実験部隊が
 >  使っていたものでな
-“It’s what OZ’s experimental unit was using.
+“It was used by an OZ experimental unit.
 ---
 >  サイコガンダムという
 >  ニュータイプ用のマシーンだ」
-It’s called the Psyco Gundam, a machine for Newtypes.”
+A machine for Newtypes called the Psyco Gundam.”
 
 @47072 Glemy · グレミー
 # 审校：全局：弯撇号／弯引号
 > 「は……私のところにも
 >  使える者がおりませんが……」
-“Ha... I don’t have anyone who can use it either...”
+“Well... I have no one who can use it either...”
 
 @47073 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
@@ -787,7 +787,7 @@ I am not reproaching you.”
 @47085 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号
 > 「あたり前だ。体ならしにはちょうどいい」
-“Of course. It’s just right for a warm-up.”
+“Of course. It’ll make a good warm-up.”
 
 @47086 Glemy · グレミー
 # 审校：全局：弯撇号／弯引号
@@ -854,7 +854,7 @@ But still... no, never mind.”
 # 审校：全局：弯撇号／弯引号
 > 「そういうことは俺たちじゃなくて、
 >  ハマーンにいってくれよ、チャム」
-“That’s something you should tell Haman, not us, Chum.”
+“Tell that to Haman, not us, Chum.”
 
 @47097 Chum · チャム
 > 「べーっだ」
@@ -870,10 +870,10 @@ But still... no, never mind.”
 # 审校：全局：弯撇号／弯引号
 > 「いってもしかたあるまい。急ぐぞ。敵が
 >  こちらの上空に到達する前に
-“There’s no point in complaining. Hurry. Before the enemy reaches our airspace,
+“Complaining won’t help. Hurry. Before the enemy reaches our airspace,
 ---
 >  迎撃態勢を整えなくてはならん」
-we have to be ready to intercept them.”
+we have to be ready to intercept.”
 
 @47100 Show · ショウ
 # 审校：全局：弯撇号／弯引号
@@ -895,7 +895,7 @@ we have to be ready to intercept them.”
 # 审校：全局：弯撇号／弯引号
 > 「それは、いってもしかたないでしょ、
 >  チャム。急ぎましょう
-“There’s no point in saying that, Chum. Let’s hurry.
+“Saying that won’t do any good, Chum. Let’s hurry.
 ---
 >  敵がくる前に、
 >  態勢を整えなくっちゃ」
@@ -930,7 +930,7 @@ From what I hear, if things had stayed as they were, there was no saving her.”
 @47108 Gato · ガトー
 > 「……{HeroMech}か……。
 >  マシュマー殿」
-“...The {HeroMech}, is it... Lord Mashymre.”
+“...So, the {HeroMech}... Lord Mashymre.”
 
 @47109 Mashymre · マシュマー
 > 「承知した。聞こえるか
@@ -979,7 +979,7 @@ that countless threats exist in space. At this stage,
 ---
 >  なおも地球人同士で
 >  争うことは、無意味である
-for Earthlings to keep fighting among themselves is meaningless.
+it is pointless for Earthlings to keep fighting among themselves.
 ---
 >  {HeroMech}の諸君、
 >  事実を認め、降伏してもらいたい」
@@ -1170,11 +1170,11 @@ I’ll finish you off right here, {HeroMech}!”
 # 审校：全局：弯撇号／弯引号
 > 「人はね、人間はね、自分を見る
 >  のが不愉快なのよ。でもね、どんなに
-“People, you know, human beings, find it unpleasant to look at themselves. But no matter how
+“People, you know, human beings, don’t like looking at themselves. But no matter how
 ---
 >  不愉快でも、どんなに憎くっても、
 >  自分をやめることはできないのよ!」
-unpleasant, no matter how much you hate it, you can’t stop being yourself!”
+unpleasant it is, no matter how much you hate it, you can’t stop being yourself!”
 
 @47142 Ple-Two · プルツー
 > 「な……何をいってるんだ、お前は!?」
@@ -1184,11 +1184,11 @@ unpleasant, no matter how much you hate it, you can’t stop being yourself!”
 # 审校：全局：弯撇号／弯引号
 > 「あたしはあなたよ。あなたはあたしなのよ!
 >  あなたはあたしのいっとう激しい
-“I am you. You are me! You’re the person who has only my most violent
+“I am you. You are me! You’re the one who got only the most violent
 ---
 >  ところだけを持った人でしょ!?
 >  あたしは、エルピー・プル!」
-parts, aren’t you?! I’m Elpeo Ple!”
+parts of me, aren’t you?! I’m Elpeo Ple!”
 
 @47144 Ple-Two · プルツー
 > 「私はプルツーだ……
@@ -1200,7 +1200,7 @@ parts, aren’t you?! I’m Elpeo Ple!”
 # 检查提示：未用必用译名：プルツー→Ple-Two
 > 「プルツー……? まるで……
 >  プルそっくりじゃないか……」
-“Ple-Two...? She’s just... the spitting image of Ple...”
+“Ple-Two...? She looks... just like Ple...”
 
 @47146 Glemy · グレミー
 # 审校：全局：弯撇号／弯引号
@@ -1239,7 +1239,7 @@ that you feel awful, why can’t you understand?!”
 @47151 Ple-Two · プルツー
 > 「うるさい! お前たちを倒せば、
 >  こんなのはすぐに治る!」
-“Shut up! Once I defeat you all, this will clear up right away!”
+“Shut up! Once I defeat you, this will go away in no time!”
 
 @47152 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -1255,7 +1255,7 @@ If you look into your own heart, you won’t have to suffer either...”
 @47153 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号
 > 「苦しくなんかあるものか!!」
-“As if I’d ever suffer!!”
+“Who says I’m suffering?!”
 
 @47154 Judau · ジュドー
 > 「プルツー!」
@@ -1270,7 +1270,7 @@ If you look into your own heart, you won’t have to suffer either...”
 # 检查提示：未用必用译名：プルツー→Ple-Two
 > 「プルツー! 止められないのなら、
 >  せめてあたしが!」
-“Ple-Two! If I can’t stop you, then at least I will!”
+“Ple-Two! If you can’t be stopped, then at least let it be me!”
 
 @47157 Ple-Two · プルツー
 > 「不愉快な奴が!!」
@@ -1384,7 +1384,7 @@ but we’d better at least stay on our guard.”
 # 审校：全局：弯撇号／弯引号
 > 「……仕損じたか。奴らは月面で
 >  守りに入ったというのだな」
-“...So they slipped through. You say they’ve gone on the defensive on the lunar surface.”
+“...So we failed. And now they’ve dug in on the lunar surface, you say?”
 
 @47177 Mashymre · マシュマー
 # 审校：Mashymre is addressing Haman, not Bright, so the reply should not say “ma'am”.
@@ -1426,7 +1426,7 @@ In their current state, they won’t be the ones to make a move.
 ---
 >  奴らを月に封じこめておけ。
 >  一歩も動けぬようにな
-Keep them sealed away on the moon. So they cannot move a single step.
+Keep them sealed on the moon. Don’t let them move a single step.
 ---
 >  その間に我々は、
 >  地球圏を制しよう」
@@ -1502,7 +1502,7 @@ if you’d died, I...”
 # 审校：全局：弯撇号／弯引号
 > 「そう。しかけてくる気は、
 >  やっぱりないわね、あれ」
-“Right. They really don’t seem to have any intention of attacking, do they?”
+“Nope. Looks like they really aren’t planning to attack.”
 
 @47194 Hayato · ハヤト
 > 「なら、俺たちを月に
@@ -1513,7 +1513,7 @@ if you’d died, I...”
 # 审校：全局：弯撇号／弯引号
 > 「でしょうね。この間に、コロニーを
 >  制圧してしまうつもりでしょう」
-“I’d say so. In the meantime, they probably intend to subjugate the colonies.”
+“I’d say so. Meanwhile, they probably plan to take over the colonies.”
 
 @47196 Benkei · ベンケイ
 > 「ま、こっちも休めていいけどな」
@@ -1527,10 +1527,10 @@ if you’d died, I...”
 ---
 >  私なんか落ち着かなくて、
 >  かえって寝不足よ
-But someone like me can’t settle down, so I’m actually losing sleep.
+But me, I can’t settle down, so I’m actually losing sleep.
 ---
 >  お肌が荒れちゃってしょうがないわ」
-My skin’s gotten so rough, it’s awful.”
+My skin is a total mess.”
 
 @47198 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -1542,10 +1542,10 @@ My skin’s gotten so rough, it’s awful.”
 # 审校：全局：弯撇号／弯引号
 > 「チッ、まったくいらつくぜ。
 >  月の周囲に艦艇を配置してよ
-“Tch, it’s really getting on my nerves. Deploying ships around the moon
+“Tch, this is really getting on my nerves. They put ships all around the moon
 ---
 >  こっちを監視してるだけだってのか?」
-and just keeping us under watch, is that it?”
+and just sit there watching us?”
 
 @47200 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -1614,7 +1614,7 @@ They also seem to be dispatching units to other colonies.”
 # 审校：原意是受托制造
 > 「実はトレーズから頼まれていたものが
 >  あってな。新しいトールギスだ」
-“Actually, Treize had asked me to build something. A new Tallgeese.”
+“Truth is, Treize asked me to build something for him. A new Tallgeese.”
 
 @47209 Noin · ノイン
 > 「トールギス?」
@@ -1688,7 +1688,7 @@ There should be no problem.”
 # 审校：全局：弯撇号／弯引号
 > 「ま、お前さんがそういうなら、そうしてお
 >  くか」
-“Well, if that’s what you say, I guess we’ll do it that way.”
+“Well, if that’s what you want, we’ll go with that.”
 
 @47219 Zechs · ゼクス
 # 审校：全局：弯撇号／弯引号
@@ -1705,12 +1705,12 @@ There should be no problem.”
 # 审校：全局：弯撇号／弯引号
 > 「かまわん。トレーズが最後につくろうと
 >  したものであるならば、私が継がねばな」
-“I don’t mind. If it’s what Treize intended to build in the end, then I must carry it on.”
+“I don’t mind. If it is the last thing Treize meant to build, then I must carry it on.”
 
 @47222 Howard · ハワード
 > 「そうか。よし、ならすぐに作業を始め
 >  るぞ。お前さんも手伝え」
-“I see. All right, then we start work right away. You lend a hand too.”
+“Right. Then we start work right away. And you’re lending a hand.”
 
 @47223 Haman · ハマーン
 > 「それで、サイド3の
@@ -1725,20 +1725,20 @@ There should be no problem.”
 ---
 >  非協力的な態度を受けて
 >  一部住民の間で
-government’s uncooperative stance, it seems a protest movement
+government’s uncooperative stance, some residents seem to have
 ---
 >  反対運動が起こっているようです」
-has arisen among some of the residents.”
+started a protest movement.”
 
 @47225 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
 > 「異星人に滅ぼされるかも
 >  知れなかった時には、何も
-“When they might have been destroyed by aliens, they couldn’t
+“Yet when the aliens might have destroyed them, they could do
 ---
 >  できなかったくせにな。鎮圧しろ。
 >  サイド3を完全に手中に
-do a thing. Crush them. Unless we hold Side 3 completely in our grasp,
+nothing. Crush them. Unless we hold Side 3 completely in our grasp,
 ---
 >  おさめねば、ネオ・ジオンは名のれん」
 Neo Zeon cannot truly claim its name.”
@@ -1790,11 +1790,11 @@ I can have Mashymre and the others strike them there...)
 # 审校：全局：弯撇号／弯引号
 > 「お前に地上の制圧をまかせる。
 >  地上のOZ軍など、もはや
-“I’m entrusting you with the subjugation of the surface. The OZ forces on Earth are no longer
+“I am entrusting you with subjugating the surface. The OZ forces on Earth are no longer
 ---
 >  問題にもならんが、ロームフェラの
 >  生き残りは放ってはおけん
-even a concern, but we can’t leave the remnants of Romefeller alone.
+even a concern, but the remnants of Romefeller cannot be left alone.
 ---
 >  反抗する者はすべてつぶせ。
 >  地上を完全に制圧するのだ」
@@ -1810,7 +1810,7 @@ Crush all who resist. Subjugate the surface completely.”
 # 审校：全局：弯撇号／弯引号
 > (わからんな、ハマーン……
 >  私の意図を見ぬいているのか……?)
-(I don’t understand, Haman... Has she seen through my intentions...?)
+(What are you up to, Haman... Has she seen through my plans...?)
 
 @47236 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号
@@ -1821,7 +1821,7 @@ Crush all who resist. Subjugate the surface completely.”
 # 审校：全局：弯撇号／弯引号
 > 「いや……ハマーンは私に、地上を
 >  制圧しろという。考えが読めん」
-“Nothing... Haman tells me to subjugate the surface. I can’t read her thinking.”
+“Nothing... Haman wants me to subjugate the surface. I can’t read her intent.”
 
 @47238 Ple-Two · プルツー
 > 「だったら、地上を
@@ -1854,7 +1854,7 @@ Perhaps I should act before that happens.)
 
 @47241 Ple-Two · プルツー
 > 「結論は出たのか」
-“Have you reached a conclusion?”
+“Have you decided?”
 
 @47242 Glemy · グレミー
 # 审校：全局：弯撇号／弯引号
