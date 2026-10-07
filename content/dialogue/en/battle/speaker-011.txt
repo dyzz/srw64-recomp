@@ -35,7 +35,7 @@
 # 触发：攻击（通用，7/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「容赦しないぜ!」
-“I won’t show any mercy!”
+“I’m not holding back!”
 
 @12870 Sai Saici · サイ・サイシー
 # 触发：攻击（通用，8/11）
@@ -57,7 +57,7 @@
 # 触发：攻击（通用，11/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こうなりゃ奥の手だ!」
-“Guess I’ll use my trump card!”
+“Time for my trump card!”
 
 @12874 Sai Saici · サイ・サイシー
 # 触发：被击坠（通用，1/4）
@@ -124,7 +124,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなに強い奴がいたとは、
 >  うれしいねぇ」
-“I’m glad there’s someone this strong!”
+“Never knew there was someone this strong. This is great!”
 
 @12886 Sai Saici · サイ・サイシー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -181,13 +181,13 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうだ! びびって口もきけねぇだろ!」
-“How’s that?! You’re too scared to speak!”
+“How’s that?! Too scared to say anything, huh?”
 
 @12896 Sai Saici · サイ・サイシー
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「へへっ、効くわけないだろっ!」
-“Heh, of course it doesn’t work!”
+“Heh, like that’s gonna work!”
 
 @12897 Sai Saici · サイ・サイシー
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -211,7 +211,7 @@
 # 触发：使用〈フェイロンフラッグ〉（低优先，可能被通用台词顶掉）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こうなったら決めてやる!」
-“If it comes to this, I’ll finish it!”
+“Fine, time to finish this!”
 ---
 > 「まわれ、フェイロンフラッグ!」
 “Spin, Feilong Flag!”

@@ -40,7 +40,7 @@
 # 触发：攻击（通用，8/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まとめてあの世に送ってくれるわ!」
-“I’ll send you all to the next world at once!”
+“I’ll send you all to the afterlife together!”
 
 @12982 Kyral · キラル
 # 触发：攻击（通用，9/11）
@@ -53,16 +53,16 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様にも見せてやる、この世の
 >  闇をな!」
-“I’ll show you too... the darkness of this world!”
+“You too shall see the darkness of this world!”
 
 @12984 Kyral · キラル
 # 触发：攻击（通用，11/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様に今こそ教えてやるわっ!」
-“I’ll teach you right now!”
+“Now I’ll make you feel it!”
 ---
 > 「この私のうらみを!」
-“All of my grudge!”
+“The full weight of my hatred!”
 
 @12985 Kyral · キラル
 # 触发：被击坠（通用，1/3）
@@ -120,7 +120,7 @@
 @12995 Kyral · キラル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「この程度の攻撃など」
-“An attack of this level is nothing.”
+“An attack like this is nothing.”
 
 @12996 Kyral · キラル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
@@ -130,12 +130,12 @@
 @12997 Kyral · キラル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「効きはせん!」
-“It has no effect!”
+“That doesn’t hurt me!”
 
 @12998 Kyral · キラル
 # 触发：回避（通用，1/2）
 > 「ははははっ! 見たか!」
-“Hahahaha! Did you see that!”
+“Hahahaha! See that?!”
 
 @12999 Kyral · キラル
 # 触发：回避（通用，2/2）
@@ -151,7 +151,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、手も足もでないか?」
-“What’s wrong, can’t move a muscle?”
+“What’s wrong? Can’t lay a finger on me?”
 
 @13002 Kyral · キラル
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -168,7 +168,7 @@
 @17275 Kyral · キラル
 # 触发：使用〈アイアンネット〉（低优先，可能被通用台词顶掉）
 > 「このまま焼け死ね!」
-“Burn to death right there!”
+“Now burn to death!”
 
 @17276 Kyral · キラル
 # 触发：使用〈アイアンネット〉（低优先，可能被通用台词顶掉）

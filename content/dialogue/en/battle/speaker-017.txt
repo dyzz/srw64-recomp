@@ -53,23 +53,23 @@
 # 审校：原文是自问式“まさか……のか”，改为疑问语气更贴切
 > 「まさか、おごりたかぶっていたのは
 >  俺のほうだったのか……」
-“Could it be that I was the arrogant one all along...”
+“No... was I the arrogant one all along...?”
 
 @12942 Markiroot · マーキロット
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/2）
 > 「ぐぅ、なんだと!?」
-“Guh, what did you say?!”
+“Guh, what?!”
 
 @12943 Markiroot · マーキロット
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/2）
 > 「うおぉぉぉ、こ、この俺がぁ!」
-“Uooooh, m-me of all people!”
+“Uooooh, n-not me!”
 
 @12944 Markiroot · マーキロット
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ほめてやろう! だがこの罪は重いぞ!」
-“I’ll praise you! But this sin is a heavy one!”
+“I commend you! But this sin is grave!”
 
 @12945 Markiroot · マーキロット
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
@@ -81,7 +81,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おのれっ、望み通りその身を
 >  粉々にしてくれるわっ!」
-“Curse you! As you wish, I’ll smash you to bits!”
+“Curse you! If that’s what you want, I’ll smash you to bits!”
 
 @12947 Markiroot · マーキロット
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -94,7 +94,7 @@
 # 审校：“come back another day” 偏离“出直してこい”的“重新来过”含义
 > 「貴様のような青二才は
 >  もう一度出直してこい!」
-“A greenhorn like you should go back and try again!”
+“Come back when you’ve grown up, greenhorn!”
 
 @12949 Markiroot · マーキロット
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）

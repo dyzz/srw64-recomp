@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/14）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした! どうした! どうしたっ!」
-“What’s wrong?! What’s wrong?! What’s wrong?!”
+“Come on! Come on! Come on!”
 
 @12773 Schwarz · シュバルツ
 # 触发：攻击（通用，2/14）
@@ -76,7 +76,7 @@
 @12786 Schwarz · シュバルツ
 # 触发：被击坠（通用，1/5）
 > 「あまかったか……!?」
-“Was I too soft...?!”
+“Was I too careless...?!”
 
 @12787 Schwarz · シュバルツ
 # 触发：被击坠（通用，2/5）
@@ -109,14 +109,14 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くくっ……! この凄まじいパワー、
 >  ただ者ではないな!?」
-“Heh heh...! This incredible power, you’re no ordinary foe?!”
+“Heh heh...! Power like this... you’re no ordinary foe, are you?!”
 
 @12793 Schwarz · シュバルツ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 # 审校：この程度ならまだいける 指伤势，不是速度
 > 「くっ!
 >  だが、この程度ならまだいける!!」
-“Ngh! But I can still take this much!!”
+“Ngh! But this much I can still handle!!”
 
 @12794 Schwarz · シュバルツ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
@@ -149,7 +149,7 @@
 @12799 Schwarz · シュバルツ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/10）
 > 「くっ! ま、まだいける!」
-“Ngh! I-I can still go!”
+“Ngh! I-I can still fight!”
 
 @12800 Schwarz · シュバルツ
 # 触发：中伤（剩余 HP 30–90%）（通用，5/10）
@@ -160,7 +160,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，6/10）
 # 审校：ツメが甘い＝收尾不够狠
 > 「いい腕だ! だが、ツメがあまいぞっ!!」
-“Good skill! But your finish is sloppy!!”
+“You’re good! But you didn’t finish the job!!”
 
 @12802 Schwarz · シュバルツ
 # 触发：中伤（剩余 HP 30–90%）（通用，7/10）
@@ -171,12 +171,12 @@
 @12803 Schwarz · シュバルツ
 # 触发：中伤（剩余 HP 30–90%）（通用，8/10）
 > 「よくぞ、この私に当てた!」
-“You actually managed to hit me!”
+“Well done, landing a blow on me!”
 
 @12804 Schwarz · シュバルツ
 # 触发：中伤（剩余 HP 30–90%）（通用，9/10）
 > 「うっ!! 当たったか……」
-“Ugh!! So it hit...”
+“Ugh!! It got me...”
 
 @12805 Schwarz · シュバルツ
 # 触发：中伤（剩余 HP 30–90%）（通用，10/10）
@@ -200,7 +200,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!!」
-“It’s useless!!”
+“Useless!!”
 
 @12809 Schwarz · シュバルツ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/7）
@@ -228,13 +228,13 @@
 # 触发：回避（通用，1/5）
 # 审校：回避的あまい，Too green 不对味
 > 「あまいぞっ!!」
-“Naive!!”
+“Too slow!!”
 
 @12814 Schwarz · シュバルツ
 # 触发：回避（通用，2/5）
 # 审校：同上
 > 「あまいなっ!私はここだっ!!」
-“Naive! I’m right here!!”
+“Too slow! I’m right here!!”
 
 @12815 Schwarz · シュバルツ
 # 触发：回避（通用，3/5）
@@ -252,7 +252,7 @@
 # 触发：回避（通用，5/5）
 # 审校：回避的あまい
 > 「あまい、あまいぞっ!!」
-“Naive, too naive!!”
+“Too slow, far too slow!!”
 
 @12818 Schwarz · シュバルツ
 # 触发：攻击无效（护罩／装甲）（通用，1/2）

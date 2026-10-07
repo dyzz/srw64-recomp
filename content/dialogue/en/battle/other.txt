@@ -10,7 +10,7 @@
 # 触发：未被任何选择表引用，原版不会显示
 # 审校：原文“こんなことで!”表示“竟然因为这种事”，初稿“You think this will stop me!”意思偏离，改为更贴近原意。
 > 「ええーい! こんなことで!」
-“Gah! Over something like this!”
+“Gah! Not like this!”
 
 @10481 Sayaka · さやか
 # 触发：未被任何选择表引用，原版不会显示
@@ -20,7 +20,7 @@
 @10482 Sayaka · さやか
 # 触发：未被任何选择表引用，原版不会显示
 > 「ふう、たすかった」
-“Phew, that was a relief.”
+“Phew, I’m safe.”
 
 @10483 Sayaka · さやか
 # 触发：未被任何选择表引用，原版不会显示
@@ -193,7 +193,7 @@
 @14529 Le Cain · ル・カイン
 # 触发：未被任何选择表引用，原版不会显示
 > 「それで私に当てたつもりか?」
-“And you thought that hit me?”
+“You call that a hit?”
 
 @14530 Le Cain · ル・カイン
 # 触发：未被任何选择表引用，原版不会显示

@@ -38,7 +38,7 @@
 # 触发：攻击（通用，7/11）
 > 「さあ、おとなしく最後を迎えるが
 >  よい!」
-“Now, accept your end quietly!”
+“Now, go quietly to your end!”
 
 @12599 Master · マスター
 # 触发：攻击（通用，8/11）
@@ -104,7 +104,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/12）
 > 「うおおっ! こ、こんな事で
 >  このわしが参ると思ってかっ!!」
-“Uwoh! Y-you think this would make me yield!!”
+“Uwoh! D-do you truly think this would make me yield?!”
 
 @12610 Master · マスター
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/12）
@@ -194,7 +194,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しょせん貴様はその程度よ!」
-“In the end, you’re only that much!”
+“In the end, that is all you are!”
 
 @12626 Master · マスター
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/8）
@@ -205,7 +205,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした! 腰がはいっとらんぞ!」
-“What’s wrong! You’re not putting your back into it!”
+“What is the matter?! Put your back into it!”
 
 @12628 Master · マスター
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/8）
@@ -220,19 +220,19 @@
 @12630 Master · マスター
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/8）
 > 「貴様の力はその程度のものかぁ!」
-“Is your power only that much?!”
+“Is that the extent of your power?!”
 
 @12631 Master · マスター
 # 触发：轻伤（剩余 HP 90% 以上）（通用，7/8）
 > 「そんな腕でわしを倒せるとでも思って
 >  おるのか!?」
-“You think you can defeat me with such skill?!”
+“Do you truly think such skill can defeat me?!”
 
 @12632 Master · マスター
 # 触发：轻伤（剩余 HP 90% 以上）（通用，8/8）
 > 「ふっふっふっ……
 >  このザコどもが……ほざきよるわ……!」
-“Heh heh heh... you small fry... running your mouth...!”
+“Heh heh heh... such big talk... from small fry...!”
 
 @12633 Master · マスター
 # 触发：回避（通用，1/11）
@@ -261,7 +261,7 @@
 # 触发：回避（通用，5/11）
 # 审校：原文「次々とかかってこんかっ!!」是催促对方接二连三攻过来，初稿“Keep them coming”稍弱，改为更贴近原意。
 > 「さあ! 次々とかかってこんかっ!!」
-“Come! Keep coming at me, one after another!!”
+“Come! All of you, come at me!!”
 
 @12638 Master · マスター
 # 触发：回避（通用，6/11）
@@ -280,7 +280,7 @@
 # 触发：回避（通用，8/11）
 # 审校：回避的あまい
 > 「あまいぞっ!!」
-“Naive!!”
+“Too easy!!”
 
 @12641 Master · マスター
 # 触发：回避（通用，9/11）

@@ -109,13 +109,13 @@
 @12667 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/9）
 > 「なんてパワーだ!?」
-“What power?!”
+“What power is this?!”
 
 @12668 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/9）
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわぁぁっ! なんてパワーだ!?」
-“Waaaah! What power?!”
+“Waaaah! What power is this?!”
 
 @12669 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/9）
@@ -128,14 +128,14 @@
 # 审校：こんな事で＝就这么（被打倒），不是“因为这种事”
 > 「くそぉっ!!
 >  こんな事で……やられるわけにはっ!!」
-“Damn it!! I can’t... go down to something like this!!”
+“Damn it!! I can’t... go down like this!!”
 
 @12671 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，8/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬおおおっ!! こ、こいつ……
 >  これほどの力を……」
-“Nuooooh!! Th-this guy... such power...”
+“Nuooooh!! Th-this guy... has this much power...”
 
 @12672 Domon · ドモン
 # 触发：重伤（剩余 HP 不足 30%）（通用，9/9）
@@ -153,14 +153,14 @@
 @12674 Domon · ドモン
 # 触发：中伤（剩余 HP 30–90%）（通用，2/10）
 > 「むうっ! さすがだな……だがっ!!」
-“Mmph! As expected... but!!”
+“Mmph! Impressive... but!!”
 
 @12675 Domon · ドモン
 # 触发：中伤（剩余 HP 30–90%）（通用，3/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ! だがこの程度で俺を
 >  倒せると思うなっ!」
-“Guh! But don’t think you can beat me with this much!”
+“Guh! But don’t think that’s enough to beat me!”
 
 @12676 Domon · ドモン
 # 触发：中伤（剩余 HP 30–90%）（通用，4/10）
@@ -171,7 +171,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「少しはできるなっ!?」
-“You’ve got some skill?!”
+“So you’ve got some skill?!”
 
 @12678 Domon · ドモン
 # 触发：中伤（剩余 HP 30–90%）（通用，6/10）
@@ -187,7 +187,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，8/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんの!! まだまだぁっ!!」
-“Th-this is nothing!! Not even close!!”
+“Th-this is nothing!! I’m just getting started!!”
 
 @12681 Domon · ドモン
 # 触发：中伤（剩余 HP 30–90%）（通用，9/10）
@@ -198,7 +198,7 @@
 @12682 Domon · ドモン
 # 触发：中伤（剩余 HP 30–90%）（通用，10/10）
 > 「キング・オブ・ハートの名にかけてっ!!」
-“On the name of the King of Hearts!!”
+“In the name of the King of Hearts!!”
 
 @12683 Domon · ドモン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/8）
@@ -209,12 +209,12 @@
 @12684 Domon · ドモン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/8）
 > 「そんな攻撃が効くものかっ!!」
-“Like that attack could work on me!!”
+“As if an attack like that could hurt me!!”
 
 @12685 Domon · ドモン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/8）
 > 「まだまだっ!!」
-“Not even close!!”
+“I’m not done yet!!”
 
 @12686 Domon · ドモン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/8）
@@ -226,7 +226,7 @@
 @12687 Domon · ドモン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/8）
 > 「ムダなことを!」
-“What a waste of effort!”
+“You’re wasting your time!”
 
 @12688 Domon · ドモン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/8）
@@ -242,7 +242,7 @@
 @12690 Domon · ドモン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，8/8）
 > 「貴様の腕はその程度か!?」
-“Is that all your skill amounts to?!”
+“Is that the best you can do?!”
 
 @12691 Domon · ドモン
 # 触发：回避（通用，1/9）
@@ -289,7 +289,7 @@
 # 触发：回避（通用，8/9）
 # 审校：回避的あまい
 > 「あまいっ!!」
-“Naive!!”
+“Too easy!!”
 
 @12699 Domon · ドモン
 # 触发：回避（通用，9/9）
@@ -300,13 +300,13 @@
 @12700 Domon · ドモン
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「効くかっ!!」
-“Like that would work!!”
+“As if that would work!!”
 
 @12701 Domon · ドモン
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!!」
-“It’s useless!!”
+“Useless!!”
 
 @12702 Domon · ドモン
 # 触发：弹药／EN 不足，无法反击（通用，1/2）
@@ -327,7 +327,7 @@
 @12705 Domon · ドモン
 # 触发：射程外，无法反击（通用，2/2）
 > 「射程外からとは汚い手を使う!」
-“Attacking from out of range is a dirty trick!”
+“Attacking from out of range? What a dirty trick!”
 
 @17081 Domon · ドモン
 # 触发：使用〈ダブルゴッドフィンガー〉（对话第 1/10 句）

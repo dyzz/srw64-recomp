@@ -63,12 +63,12 @@
 @12966 Sijima · シジーマ
 # 触发：中伤（剩余 HP 30–90%）（通用，2/2）
 > 「なんですってぇ!?」
-“What did you say?!”
+“What?!”
 
 @12967 Sijima · シジーマ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
 > 「ムダなことをするわねぇ」
-“What a pointless thing to do.”
+“You’re wasting your time.”
 
 @12968 Sijima · シジーマ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
