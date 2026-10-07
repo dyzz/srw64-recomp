@@ -692,7 +692,7 @@ it may sense us and come out on its own.”
 @45129 Schwarz · シュバルツ
 > 「すまん、君に来てもらって
 >  正解だったようだ……」
-“Sorry. It seems I was right to bring you along...”
+“Forgive me. It seems I was right to ask you along...”
 
 @45130 Schwarz · シュバルツ
 > 「見てくれ」
@@ -708,7 +708,7 @@ it may sense us and come out on its own.”
 # 审校：全局：弯撇号／弯引号
 > 「1人では直せそうにない。
 >  応急処置でいい
-“I can’t seem to fix it alone. Field repairs will do.
+“I cannot fix it alone. A field repair will do.
 ---
 >  手伝ってくれ、レイン」
 Lend me a hand, Rain.”
@@ -723,10 +723,10 @@ Lend me a hand, Rain.”
 # 审校：全局：弯撇号／弯引号
 > 「君なら……大丈夫だ。
 >  君の腕はよく知っている
-“You’ll be fine... I know your skill well.
+“You can do it... I know how skilled you are.
 ---
 >  私のいう通りにやってくれればいい……」
-Just do as I say...”
+Just do as I tell you...”
 
 @45135 Rain · レイン
 > 「……キョウジ……さん?
@@ -927,10 +927,10 @@ the final secret of the School of the Undefeated of the East. Its name: Sekiha T
 @45166 Domon · ドモン
 > (覚えている……覚えているぞ。
 >  あの時も同じだった。俺はこの人に
-(I remember... I remember it. It was the same back then. I was saved
+(I remember... I remember it well. It was just like this back then. This man
 ---
 >  助けられたんだ……)
-by this man...)
+saved me...)
 
 @45167 Master · マスター
 # 审校：全局：弯撇号／弯引号
@@ -980,10 +980,10 @@ The aliens? No, it was not them.”
 # 审校：Master 的 voice 要求无缩写，译文用了 Don't，改为 Do you not。
 > 「……人間とは、つくづく度しがたい
 >  存在だと思わぬか。だからこそ
-“...Do you not think humans are, through and through, beyond saving? That is exactly why,
+“...Do you not think mankind is truly beyond redemption? That is precisely why,
 ---
 >  だからこそワシは……」
-exactly why I...”
+precisely why I...”
 
 @45174 Domon · ドモン
 > 「しまった、まだいたのか!?」
@@ -1027,7 +1027,7 @@ exactly why I...”
 
 @45182 Master · マスター
 > 「いや、まだ1匹残っておる!」
-“No, one of them is still left!”
+“No, there is one left!”
 
 @45183 Master · マスター
 # 审校：精读：破折号
@@ -1055,7 +1055,7 @@ I have indeed passed it on to you.”
 @45187 Domon · ドモン
 > 「待ってください、俺は、まだ師匠に
 >  聞きたいことが!」
-“Wait, please! I still have things I want to ask you, Master!”
+“Wait, please! There’s still so much I want to ask you, Master!”
 
 @45188 Master · マスター
 # 审校：全局：弯撇号／弯引号

@@ -143,7 +143,7 @@ All forces, charge! Stop them no matter what!!”
 
 @43431 Dr. Hazuki · 葉月博士
 > 「むっ……このエネルギー反応は……」
-“Hm... This energy reaction is...”
+“Hm... This energy reading...”
 
 @43432 Bright · ブライト
 # 审校：刻印＝Crest 统一
@@ -163,7 +163,7 @@ I am activating the ‘Crest’ now. Evacuate from within the ruins.”
 
 @43434 Dr. Hazuki · 葉月博士
 > 「むっ……このエネルギー反応は……」
-“Hm... This energy reaction is...”
+“Hm... This energy reading...”
 
 @43435 Bright · ブライト
 # 审校：刻印＝Crest 统一
@@ -390,7 +390,7 @@ reaches space, the mechanism that warps space will begin to move.”
 ---
 >  この星系に来た者たちは、
 >  帰るべき場所を失ったのです
-Those who came to this star system have lost the place they should return to.
+Those who came to this star system have lost any home to return to.
 ---
 >  戦いがどのようになろうとも、
 >  彼らもまたのちの地球圏の
@@ -503,7 +503,7 @@ of the activation of the ‘Grados Crest’ and its effects. It may sap their wi
 @43478 Rose · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「いいわ、マーズ。私がやります」
-“It’s fine, Mars. I’ll do it.”
+“It’s all right, Mars. I’ll do it.”
 
 @43479 Takeru · タケル
 > 「ロゼ……」
@@ -570,7 +570,7 @@ Coming from us, it should shake them up even more.”
 
 @43489 Bright · ブライト
 > 「ふむ……頼めるか、デューク、マリア」
-“Hmm... Can I leave it to you, Duke, Maria?”
+“Hmm... Can I count on you, Duke, Maria?”
 
 @43490 Maria · マリア
 > 「もっちろん。まかせて、みんな」
@@ -606,7 +606,7 @@ Also, please contact Treize.”
 # 审校：全局：弯撇号／弯引号
 > 「万丈、もしもうまくいかなかったら
 >  どうなるの?」
-“Banjo, what happens if it doesn’t go well?”
+“Banjo, what happens if it doesn’t work?”
 
 @43496 Reika · レイカ
 # 审校：全局：弯撇号／弯引号

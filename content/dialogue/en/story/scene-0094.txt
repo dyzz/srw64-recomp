@@ -385,7 +385,7 @@ There is something I must tell you all.”
 ---
 >  出れば、空間をゆがめる機構が
 >  動き始めます」
-reaches space, the mechanism that warps space will begin to move.”
+reaches space, the mechanism that warps space will begin to operate.”
 
 @48680 Gale · ゲイル
 > 「そうか……」
@@ -661,7 +661,7 @@ of what the activation of the ‘Crest’ means?”
 @48715 Rose · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「いいわ、マーズ。私がやります」
-“It’s fine, Mars. I’ll do it.”
+“It’s all right, Mars. I’ll do it.”
 
 @48716 Takeru · タケル
 > 「ロゼ……」
@@ -725,7 +725,7 @@ which they destroyed, they should be all the more shaken.”
 
 @48726 Bright · ブライト
 > 「ふむ……頼めるか、デューク、マリア」
-“Hmm... Can I leave it to you, Duke, Maria?”
+“Hmm... Can I count on you, Duke, Maria?”
 
 @48727 Maria · マリア
 > 「もっちろん。まかせて、みんな」
@@ -758,7 +758,7 @@ to the Imperial forces.”
 # 审校：全局：弯撇号／弯引号
 > 「万丈、もしもうまくいかなかったら
 >  どうなるの?」
-“Banjo, what happens if it doesn’t go well?”
+“Banjo, what happens if it doesn’t work?”
 
 @48733 Reika · レイカ
 # 审校：全局：弯撇号／弯引号

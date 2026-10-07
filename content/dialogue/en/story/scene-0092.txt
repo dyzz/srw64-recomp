@@ -36,7 +36,7 @@ the will of the great galaxy, must do.”
 # 审校：全局：弯撇号／弯引号
 > 「わかってるヨ……ヴァル＝ア。もう1度
 >  やりなおす余裕は、もうないからネ」
-“I know... Val-A. There’s no room left to start over again.”
+“I know... Val-A. We don’t have the luxury of starting over again.”
 
 @44308 Reika · レイカ
 > 「周囲に敵影なし」
@@ -1563,7 +1563,7 @@ Even I’ve heard what kind of people this Galactic Empire is.
 ---
 >  貴様への恨みをチャラにする気は
 >  ないが、何をするべきかは
-I’ve got no intention of letting go of my grudge against you, but I know
+I’m not calling it square with you, but I’d like to think I know
 ---
 >  わかってるつもりだぜ」
 what needs to be done.”
@@ -1598,7 +1598,7 @@ what needs to be done.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、助かる、トッド。しかし、その
 >  オーラバトラーはなんだ?」
-“Yeah, you’re a big help, Tod. But what’s that Aura Battler?”
+“Yeah, thanks, Tod. But what’s that Aura Battler?”
 
 @44547 Tod · トッド
 # 审校：全局：弯撇号／弯引号

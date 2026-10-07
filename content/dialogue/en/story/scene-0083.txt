@@ -8,10 +8,10 @@
 # 审校：精读：ムゲかズール 误译
 > 「ならばムゲかズールが選ばれるだけのこと
 >  どうせ最初から候補に入っては
-“Then Muge or Zuul will simply be the ones chosen. They were never
+“Then Muge or Zuul will be chosen instead, that is all. The Earthlings were never
 ---
 >  いなかった奴らではないか」
-in the running from the start, were they?”
+in the running to begin with.”
 
 @40926 Avie-Lu · アヴィ＝ルー
 # 审校：全局：弯撇号／弯引号
@@ -38,7 +38,7 @@ Al-E-Quis, must do.”
 # 审校：全局：弯撇号／弯引号
 > 「わかってるヨ……ヴァル＝ア。もう1度
 >  やりなおす余裕は、もうないからネ」
-“I know... Val-A. There’s no room left to start over again.”
+“I know... Val-A. We don’t have the luxury of starting over again.”
 
 @40929 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -101,16 +101,16 @@ fallen into the Galactic Empire’s hands.”
 # 审校：全局：弯撇号／弯引号
 > 「なるほど……これでわかりました。
 >  つまり、帝国軍が探していたものは
-“I see... now I understand. In other words, what the Imperial forces were after
+“I see... That explains it. What the Imperial forces were searching for
 ---
 >  “刻印”そのものであったと、
 >  こういうことでしょう」
-was the ‘Crest’ itself. That’s what this means.”
+was the ‘Crest’ itself, it would seem.”
 
 @40939 Treize · トレーズ
 > 「私もそう思う。どうやら敵は
 >  我々がそれに触れるのを、どうしても
-“I believe so as well. It seems the enemy was absolutely determined
+“I agree. It seems the enemy was determined at all costs
 ---
 >  避けたかったようだ」
 to keep us from touching it.”
@@ -141,7 +141,7 @@ we don’t stand a chance, do we?!”
 ---
 >  今に始まったことじゃない。やるのよ。
 >  何がなんでも、“刻印”のある
-This is nothing new. We do it. No matter what, we’re going
+This is nothing new. We just do it. Whatever it takes, we get
 ---
 >  遺跡へ行くの!」
 to the ruins where the ‘Crest’ is!”
@@ -155,22 +155,22 @@ to the ruins where the ‘Crest’ is!”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、そうだな。よーし、そうと決まった
 >  ら、行こうぜ、クスコに!」
-“Yeah, that’s right. All right, if that’s decided, let’s go. To Cusco!”
+“Yeah, damn right. Okay, then it’s settled. Let’s go, to Cusco!”
 
 @40946 Quatre · カトル
 # 审校：“对吧……对吧”重复
 > 「そう……ですよね、まだ間にあわないと
 >  決まったわけではありませんよね」
-“That’s... right, isn’t it? It’s not certain we’re too late yet.”
+“You’re... right. It isn’t certain yet that we’re too late.”
 
 @40947 Heero · ヒイロ
 # 审校：全局：弯撇号／弯引号
 > 「だが、クスコ一帯は敵が制圧して
 >  いる。容易には突破できない
-“But the entire Cusco area is under enemy control. We can’t break through easily.
+“But the entire Cusco area is under enemy control. It won’t be easy to break through.
 ---
 >  どうするつもりだ」
-What do you intend to do?”
+What’s the plan?”
 
 @40948 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -192,7 +192,7 @@ Easy or not, we’ve got no choice but to do it!”
 # 审校：全局：弯撇号／弯引号
 > 「そういうこった。やれやれ、しんどい戦い
 >  になりそうだぜ」
-“That’s how it is. Man, this is gonna be a rough fight.”
+“You said it. Man, this is gonna be a rough fight.”
 
 @40951 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -215,14 +215,14 @@ You’re just alike.”
 # 审校：全局：弯撇号／弯引号
 > 「なるほど、君たちの覚悟のほどは
 >  よくわかった。そういうことならば
-“I see, I understand your resolve well enough. If that’s the case,
+“I see. Your resolve is quite clear. In that case,
 ---
 >  我々OZも全力をあげて協力
 >  しよう。遺跡への突破口は
-we of OZ will cooperate with all our strength. We will open
+we of OZ will lend you all our strength. We will open
 ---
 >  我々が開く」
-the breach to the ruins.”
+the way to the ruins.”
 
 @40954 Amuro · アムロ
 > 「しかし、それでは……」
@@ -232,7 +232,7 @@ the breach to the ruins.”
 # 审校：精读：去破折号
 > 「我がOZの兵士諸君は、
 >  この戦いのもつ意味を正しく
-“My OZ soldiers understand the true meaning of this battle.
+“The soldiers of OZ understand full well what this battle means.
 ---
 >  理解している。全力をつくして
 >  戦ってくれるだろう。君は、君たちは
@@ -261,7 +261,7 @@ need only think about reaching the ruins.”
 # 审校：全局：弯撇号／弯引号
 > 「大丈夫さ、チャム。トレーズだって
 >  馬鹿じゃない」
-“It’s all right, Chum. Treize isn’t a fool either.”
+“It’s all right, Chum. Treize is no fool.”
 
 @40960 Marvel · マーベル
 > 「…………」
@@ -276,33 +276,33 @@ need only think about reaching the ruins.”
 # 审校：全局：弯撇号／弯引号
 > 「……ねぇ、ショウ。出撃するたびに
 >  これでお別れか、なんて
-“...Hey, Show. Every time we sortie, I don’t want to think
+“...Show. I don’t want to think, every time we sortie,
 ---
 >  思いたくはないけど……」
-this might be goodbye, but...”
+that this might be goodbye, but...”
 
 @40963 Show · ショウ
 # 审校：英文直译不通
 > 「それ以上はいうなよ。オーラ力には
 >  呼び合う力だってあるんだ
-“Don’t say any more. Aura Power has a way of drawing people together.
+“Don’t say another word. Aura Power draws people to each other, too.
 ---
 >  別れることなんてないさ」
-We’ll never be parted.”
+We won’t be separated.”
 
 @40964 Marvel · マーベル
 > 「本当にそう思えて?」
-“Can you really believe that?”
+“Do you really think so?”
 
 @40965 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：マーベル→Marvel
 > 「そうでなければ、バイストンウェルから
 >  今まで、マーベルと一緒には
-“If that weren’t so, I couldn’t have stayed with you all this way from Byston Well
+“If it didn’t, I’d never have stayed by your side, Marvel, all the way from Byston Well
 ---
 >  いられやしないさ」
-up to now.”
+to here.”
 
 @40966 Marvel · マーベル
 # 审校：全局：弯撇号／弯引号
@@ -317,7 +317,7 @@ up to now.”
 ---
 >  じっとしてるからそんなこと考えるんだ。
 >  整備でも手伝ってこよう」
-You only think things like that because you’re sitting around doing nothing. I’m going to go help with the maintenance.”
+You only think like that because you’re sitting still. I’ll go lend a hand with maintenance.”
 
 @40968 David · デビッド
 # 审校：全局：弯撇号／弯引号
@@ -327,7 +327,7 @@ You only think things like that because you’re sitting around doing nothing. I
 @40969 Chum · チャム
 # 审校：不器用 指不会表达感情
 > 「2人ともすっごい不器用なのよ」
-“They’re both so bad at this stuff.”
+“They’re both sooo awkward.”
 
 @40970 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
@@ -348,28 +348,28 @@ You only think things like that because you’re sitting around doing nothing. I
 # 审校：全局：弯撇号／弯引号
 > 「そうだね……マーベルじゃなくても、
 >  もしも……って考えちゃうもんね」
-“Yeah... Even if you’re not Marvel, you can’t help thinking ‘what if’...”
+“Yeah... It’s not just Marvel. Anyone would start thinking ‘what if’...”
 
 @40974 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
 > 「ネガティブな思考じゃ、そういう
 >  結果しか得られない。そういうのは
-“If you think negatively, that’s the only outcome you’ll get. That kind of
+“Think negative, and negative is all you’ll get. That kind of
 ---
 >  よくないんじゃないか?」
-thinking isn’t good, is it?”
+thinking won’t help us, will it?”
 
 @40975 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「それはそうだな。俺たちはここまで戦い
 >  続けてきた。まだやれると信じよう」
-“That’s true. We’ve kept fighting this far. Let’s believe we can still do it.”
+“True. We’ve fought our way this far. Let’s believe we can still do it.”
 
 @40976 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
 > 「ああ、まだこんなもんじゃ、俺たちの
 >  戦いを終わらせるわけにはいかんな」
-“Yeah, we can’t let our fight end at a time like this.”
+“Yeah. We can’t let our fight end over something like this.”
 
 @40977 Jun · ジュン
 > 「そうだね……そう思うよ」
@@ -379,13 +379,13 @@ thinking isn’t good, is it?”
 # 审校：全局：弯撇号／弯引号
 > 「そうさ。こんなところで、こんなところで
 >  終わらせちゃいけないんだ」
-“That’s right. We can’t let it end here, of all places.”
+“That’s right. Not here... we can’t let it end here.”
 
 @40979 Chum · チャム
 # 审校：全局：弯撇号／弯引号
 > 「{HeroNick}……なんだか怖いよ。
 >  いつもと違う」
-“{HeroNick}... I’m kind of scared. You’re not like yourself.”
+“{HeroNick}... you’re kind of scaring me. You’re not yourself.”
 
 @40980 Ark · アーク（按段落 3DD1）
 # 审校：英文口语化
@@ -402,13 +402,13 @@ thinking isn’t good, is it?”
 # 审校：全局：弯撇号／弯引号
 > 「それはそうだな。俺たちはここまで戦い
 >  続けてきた。まだやれると信じよう」
-“That’s true. We’ve kept fighting this far. Let’s believe we can still do it.”
+“True. We’ve fought our way this far. Let’s believe we can still do it.”
 
 @40983 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
 > 「ああ、まだこんなもんじゃ、俺たちの
 >  戦いを終わらせるわけにはいかんな」
-“Yeah, we can’t let our fight end at a time like this.”
+“Yeah. We can’t let our fight end over something like this.”
 
 @40984 Jun · ジュン
 > 「そうだね……そう思うよ」
@@ -418,7 +418,7 @@ thinking isn’t good, is it?”
 # 审校：全局：弯撇号／弯引号
 > 「それでいい。だからこそ、私たちは
 >  今までやってこれたんだ」
-“That’s right. That’s exactly why we’ve been able to make it this far.”
+“Good. That’s exactly how we’ve made it this far.”
 
 @40986 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -434,10 +434,10 @@ Ahh, come to think of it, things were a lot simpler back then...”
 # 审校：全局：弯撇号／弯引号
 > 「バカなことをいうな! 俺たちは必ず
 >  勝つ。俺たちがそう信じなくて
-“Don’t talk nonsense! We will win. If we don’t believe that,
+“Don’t talk crazy! We’re gonna win. If we don’t believe that,
 ---
 >  どうして戦いに勝てる!?」
-how could we ever win a battle?!”
+how the hell are we supposed to win?!”
 
 @40988 Domon · ドモン
 > 「その通りだ。俺たちはホーロー虫を
@@ -451,7 +451,7 @@ how could we ever win a battle?!”
 
 @40990 Ryoma · リョウ
 > 「知ってるか?」
-“You know it?”
+“You ever heard of it?”
 
 @40991 Tetsuya · 鉄也
 > 「いいや、聞いたこともないな」
@@ -516,11 +516,11 @@ but to survive, it never, ever gives up.”
 # 审校：全局：弯撇号／弯引号
 > 「はいはい、もう何度も聞きましたよ、
 >  ドモン。しかし、いくら自分がかつて
-“Yeah, yeah, we’ve heard it plenty of times already, Domon. But even if it once
+“Yes, yes, we have heard it many times, Domon. But even if it once
 ---
 >  勇気づけられたからといって、
 >  人をだますのはあまり感心しませんね」
-gave you courage, I can’t say I approve of deceiving people.”
+gave you courage, I hardly approve of deceiving people.”
 
 @41002 Domon · ドモン
 > 「…………」
@@ -530,23 +530,23 @@ gave you courage, I can’t say I approve of deceiving people.”
 # 审校：全局：弯撇号／弯引号
 > 「だめよ、そんなことじゃ。あたしたちは
 >  今、この地球を背負っているのよ
-“That won’t do at all. Right now, we’re carrying this whole Earth on our shoulders.
+“That won’t do at all. We’re carrying the fate of the whole Earth right now.
 ---
 >  信じましょう。ここまで戦い続けて
 >  きた、あたしたちの力を」
-Let’s believe in the strength that’s kept us fighting all this way.”
+Let us believe in our own strength, the strength that has carried us this far.”
 
 @41004 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「それはそうだな。俺たちはここまで戦い
 >  続けてきた。まだやれると信じよう」
-“That’s right. We’ve kept fighting this long. Let’s believe we can still do it.”
+“True. We’ve fought our way this far. Let’s believe we can still do it.”
 
 @41005 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
 > 「ああ、まだこんなもんじゃ、俺たちの
 >  戦いを終わらせるわけにはいかんな」
-“Yeah. We can’t let our fight end at a time like this.”
+“Yeah. We can’t let our fight end over something like this.”
 
 @41006 Jun · ジュン
 > 「そうだね……そう思うよ」
@@ -556,12 +556,12 @@ Let’s believe in the strength that’s kept us fighting all this way.”
 # 审校：ローレンス对ハヤト说话，不是对マナミ，不应称呼“my lady”。
 > 「そうでございますとも。想いは力となり
 >  信じることもまた、力となるのです」
-“Indeed. Feelings become strength, and believing is also a source of strength.”
+“Quite so. Our feelings become strength, and belief, too, becomes strength.”
 
 @41008 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「まだか……トレーズの合図は……」
-“Not yet...? Treize’s signal...”
+“Still no signal... from Treize...”
 
 @41009 Koji · 甲児
 # 审校：全局：刻印＝Crest
@@ -591,7 +591,7 @@ came to be called a Saint.”
 @41012 Koji · 甲児
 > 「そういえば前にアンナがいってたな。
 >  クスコのあたりから噂が広まったって」
-“Now that you mention it, Anna said that before. The rumor spread from around Cusco.”
+“Come to think of it, Anna mentioned that before. That the rumors started around Cusco.”
 
 @41013 Anna · アンナ
 > 「ええ……」
@@ -601,29 +601,29 @@ came to be called a Saint.”
 # 审校：聖女＝Saint
 > 「しかし……どうやら聖女さんは
 >  自分でいっているほどには
-“But... it seems the Saint isn’t as
+“But... the Saint doesn’t seem nearly as keen
 ---
 >  乗り気じゃないようだ」
-enthusiastic about this as she claims.”
+on this as she lets on.”
 
 @41015 Anna · アンナ
 > 「やっぱり……そうなんですか? 私も、
 >  そうじゃないかっていう気はしていました」
-“Is that... really so? I had a feeling that might be the case too.”
+“So... it’s true? I’d had a feeling that might be so.”
 
 @41016 Julia · ジュリア
 # 审校：全局：刻印＝Crest
 > 「そうですね……わたくしは今でも、
 >  人と人とが最善をつくして
-“Yes... Even now, I believe that people doing their utmost to
+“Perhaps so... Even now, I believe that for people to do their utmost to
 ---
 >  理解しあうことが、いちばん大切な
 >  ことと信じています。できることならば
-understand one another is the most important thing of all. If I could have helped it,
+understand one another is what matters most. If it were at all possible,
 ---
 >  “グラドスの刻印”などは
 >  使いたくありませんでした」
-I would never have wanted to use the ‘Grados Crest.’”
+I would never have used the ‘Grados Crest.’”
 
 @41017 Eiji · エイジ
 > 「ジュリア姉さん……」
@@ -642,7 +642,7 @@ a secret all this time?”
 # 审校：英文去套话
 > 「ええ。けれどやむをえません。これ以上
 >  無益な血を流させないために
-“Yes. But there is no other choice. To keep any more pointless blood from being spilled,
+“Yes. But I have no other choice. To keep any more blood from being shed in vain,
 ---
 >  地球人に絶望的な戦いを
 >  させないために。私たち人類は
@@ -694,11 +694,11 @@ against the Galactic Empire’s forces.”
 # 审校：全局：弯撇号／弯引号
 > 「シャア……我々とて銀河帝国
 >  軍には勝たねばならんと
-“Char... Even we believe we must defeat the Galactic Empire’s forces.
+“Char... We too know that the Galactic Empire must be defeated.
 ---
 >  思っているのだ。現在も我々と
 >  ホワイトファングは銀河帝国軍と
-Even now, we and White Fang are engaged with the Galactic Empire.
+Even now, we and White Fang are fighting the Galactic Empire.
 ---
 >  交戦中だ。が、そちらの作戦が
 >  終了するまで、これ以上やつらの
@@ -716,16 +716,16 @@ landing forces touch down.”
 # 审校：全局：弯撇号／弯引号
 > 「別に見返りなど要求せんよ。
 >  人類存亡のかかった戦いだからな
-“I ask for no reward. This is a battle for humanity’s very survival.
+“I ask nothing in return. This is a battle for humanity’s very survival.
 ---
 >  では{HeroMech}の諸君、
 >  作戦の成功を祈る」
-Now then, people of the {HeroMech}, I wish you success in your operation.”
+Now then, members of the {HeroMech}, I wish you success in your operation.”
 
 @41029 Quattro · クワトロ
 > 「……いまだグワダン1隻しか出さずに、
 >  よくいう」
-“...She talks big, for someone still only sending out a single Gwadan.”
+“...Big words, from someone who’s still sent nothing but the Gwadan.”
 
 @41030 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -748,11 +748,11 @@ it won’t matter what Axis does.”
 @41033 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「間違いないんだな!?」
-“There’s no mistake?!”
+“You’re certain?!”
 
 @41034 Beltorchika · ベルトーチカ
 > 「ありません。確認しました」
-“None. Confirmed.”
+“No mistake. It’s confirmed.”
 
 @41035 Amuro · アムロ
 > 「トレーズからの合図か?」
@@ -800,7 +800,7 @@ to seize the last hope left to humanity...”
 # 审校：全局：弯撇号／弯引号
 > 「へっ、ウジャウジャいやがる。こいつは
 >  突破しがいがありそうだぜ」
-“Heh, they’re swarming like flies. This looks like it’ll be worth breaking through.”
+“Heh, there’s a whole swarm of ’em. Now this’ll be worth punching through.”
 
 @41041 Sara · 沙羅
 > 「冗談やってんじゃないんだよ、忍!」
@@ -816,11 +816,11 @@ to seize the last hope left to humanity...”
 # 检查提示：未用必用译名：アーマス・ゲイル→Ahmos Gale
 > 「アーマス・ゲイル、君には
 >  遺跡突入後、聖女を
-“Ahmos Gale, once we enter the ruins, you’ll have to carry the Saint
+“Ahmos Gale, once we’re inside the ruins, I need you to carry the Saint
 ---
 >  “刻印”まで、運んでもらわねば
 >  ならん。すまないが待機していてくれ」
-to the ‘Crest.’ Sorry, but stand by until then.”
+to the ‘Crest.’ I’m sorry, but please stand by.”
 
 @41044 Gale · ゲイル
 # 审校：全局：弯撇号／弯引号
@@ -846,11 +846,11 @@ All pilots, hurry up and launch!”
 # 审校：聖女＝Saint
 > 「エイジ、君には遺跡突入後、
 >  聖女を“刻印”まで
-“Eiji, once we enter the ruins, you’ll have to carry the Saint
+“Eiji, once we’re inside the ruins, I need you to carry the Saint
 ---
 >  運んでもらわねばならん。すまないが
 >  待機していてくれ」
-to the ‘Crest.’ Sorry, but stand by until then.”
+to the ‘Crest.’ I’m sorry, but please stand by.”
 
 @41048 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
@@ -890,7 +890,7 @@ Reaching the ruins is our top priority. Understood?!”
 # 审校：全局：弯撇号／弯引号
 > 「ふん、愚かな地球人どもめ、
 >  のこのことやってきおって。迎撃だ
-“Hmph, foolish Earthlings, strolling in here like this. Intercept them!
+“Hmph, foolish Earthlings, waltzing right in. Intercept them!
 ---
 >  奴らを生かして帰すな!!」
 Don’t let a single one of them leave alive!!”
@@ -912,7 +912,7 @@ Tell the troops inside the ruins to hurry up and destroy it!”
 @41055 Garrison · ギャリソン
 > 「少々時間がかかりすぎておるよう
 >  ですな」
-“It seems this is taking a bit too long.”
+“We seem to be taking rather too long, I fear.”
 
 @41056 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -923,7 +923,7 @@ Tell the troops inside the ruins to hurry up and destroy it!”
 # 审校：全局：弯撇号／弯引号
 > 「もう時間がないぞ、急げ! なんとか
 >  あと2分以内に到達するんだ!」
-“There’s no time left, hurry! We have to reach it within two minutes somehow!”
+“We’re out of time, hurry! We have to get there within two minutes, whatever it takes!”
 
 @41058 Roux · ルー
 > 「艦長!!」
@@ -933,7 +933,7 @@ Tell the troops inside the ruins to hurry up and destroy it!”
 # 审校：全局：弯撇号／弯引号
 > 「くっ、奴らめ。もう余裕がないぞ!
 >  あと1分以内になんとしても
-“Ngh, those bastards. We’re out of leeway! Reach the ruins within one minute,
+“Ngh, those bastards. We’re running out of time! Reach the ruins within one minute,
 ---
 >  遺跡にたどり着け!」
 no matter what!”
@@ -953,7 +953,7 @@ no matter what!”
 # 审校：全局：弯撇号／弯引号
 > 「なんだと!?
 >  くっ……作戦失敗だ……」
-“What?! Ngh... The operation’s a failure...”
+“What?! Ngh... The operation has failed...”
 
 @41063 Beltorchika · ベルトーチカ
 # 审校：全局：刻印＝Crest
@@ -965,10 +965,10 @@ no matter what!”
 # 审校：全局：弯撇号／弯引号
 > 「なんだと!?
 >  くっ……作戦失敗だ……」
-“What?! Ngh... The operation’s a failure...”
+“What?! Ngh... The operation has failed...”
 
 @41065 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「どうにか突破できたか……
 >  よし、遺跡内を制圧するぞ!」
-“We managed to break through somehow... All right, we’re securing the inside of the ruins!”
+“We made it through... All right, secure the ruins!”

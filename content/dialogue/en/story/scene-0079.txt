@@ -8,24 +8,24 @@
 ---
 >  異星人どもさえこなければ、この
 >  デビルガンダムで地球圏の覇権は
-aliens had never come, this Dark Gundam would have made dominion over the Earth Sphere
+aliens had never come, this Dark Gundam would have made the Earth Sphere
 ---
 >  私のものとなったでしょうに……」
-mine...”
+mine to rule...”
 
 @40113 Master · マスター
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「だが、すでにキョウジの肉体は
 >  ボロボロになりすぎ、コアとしての役を
-“But Kyoji’s body is already far too battered, and is ceasing to
+“But Kyoji’s body is far too broken down now; it can no longer
 ---
 >  果たさなくなりつつある。デビルガンダム
 >  には強じんな肉体と精神を持つ
-serve its role as the core. The Dark Gundam requires a new core
+serve as the core. The Dark Gundam requires a new core
 ---
 >  新しいコアが必要だ」
-with a strong body and spirit.”
+of strong body and spirit.”
 
 @40114 Wong · ウォン
 > 「それがドモン・カッシュというわけですか?
@@ -47,7 +47,7 @@ understand what real strength is?”
 @40116 Wong · ウォン
 > 「……まあ、いいでしょう。異星人ども
 >  に地球を支配される前に
-“...Well, very well. Before the aliens seize the Earth,
+“...Very well, then. Before the aliens seize the Earth,
 ---
 >  デビルガンダムを完全なものとしなけれ
 >  ばなりません。その点で私とあなたの
@@ -73,11 +73,11 @@ can no longer be relied upon.”
 @40119 Master · マスター
 > 「グッ……く、ワシの体も、もう長くは
 >  もたんか……だがお前が完全に
-“Ngh... hah, my body too, it seems, will not last much longer... But if you are fully
+“Ngh... So even my body will not hold out much longer... But once you are fully
 ---
 >  よみがえれば、そのために戦い続けて
 >  きたワシもまた、報われるというもの
-revived, then I, who have fought on all this time for that sake, will also be rewarded.
+revived, all my years of fighting for that will have been rewarded.
 ---
 >  いや、報われなんでもよい。だが
 >  このままにだけは、このままにだけは……」
@@ -105,10 +105,10 @@ with the Dark Gundam, the entire universe will be mine...”
 @40122 Schwarz · シュバルツ
 > 「確実とはいえんが、おおよその見当
 >  はついている。大丈夫だ
-“I cannot say for certain, but I have a rough idea. It will be fine.
+“I cannot say for certain, but I have a rough idea. Do not worry.
 ---
 >  約束の刻限までには、なんとかなる」
-By the appointed hour, I will manage something.”
+I will have it in hand by the appointed hour.”
 
 @40123 Dr. Hazuki · 葉月博士
 # 审校：全局：弯撇号／弯引号
@@ -129,7 +129,7 @@ By the appointed hour, I will manage something.”
 @40126 David · デビッド
 # 审校：全局：弯撇号／弯引号
 > 「それが信用できないってんだよ」
-“That’s exactly what I can’t trust.”
+“That’s the part I don’t trust.”
 
 @40127 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -151,17 +151,17 @@ By the appointed hour, I will manage something.”
 @40130 Beauty · ビューティ
 # 审校：英文改口语
 > 「本当かしらねぇ」
-“Is that so?”
+“Oh, really now?”
 
 @40131 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「まぁまぁ。それで結局、行くのは
 >  ドモンたちと{HeroNick}だけなのか?」
-“Now, now. So in the end, only Domon’s group and {HeroNick} are going?”
+“Now, now. So it’s just Domon’s group and {HeroNick} going, then?”
 
 @40132 Rain · レイン
 > 「ええ、そのはずですけど……」
-“Yes, that should be the case, but...”
+“Yes, that’s the plan, but...”
 
 @40133 Duo · デュオ
 # 审校：英文改口语
@@ -176,12 +176,12 @@ By the appointed hour, I will manage something.”
 @40135 Quatre · カトル
 > 「はい。僕たちも、決して無関係
 >  では、ありませんからね」
-“Yes. After all, we are hardly uninvolved in this either.”
+“Yes. This concerns us too, after all.”
 
 @40136 Heero · ヒイロ
 # 审校：全局：弯撇号／弯引号
 > 「ああ、そういうことだ」
-“Yeah, that’s how it is.”
+“Yeah. That’s right.”
 
 @40137 Domon · ドモン
 > 「お前たち……」
@@ -211,17 +211,17 @@ MS with their bare hands. Oh well, what can you do.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「……ドモン、みんな、デビルガンダムを
 >  倒し、必ずもどってこいよ。俺たちは
-“...Domon, everyone, defeat the Dark Gundam and be sure to come back. We are
+“...Domon, everyone, take down the Dark Gundam and make sure you come back. We’re
 ---
 >  全員、運命をともにする仲間だ
 >  みんなのもどる場所は、ここしかない」
-all comrades who share one fate. This is the only place any of us can come home to.”
+comrades bound by the same fate. This is the only home any of us has to come back to.”
 
 @40142 Domon · ドモン
 # 审校：英文改顺
 > 「竜馬……ああ、すべてに決着を
 >  つけて、俺は、俺たちは必ずもどる
-“Ryoma... Yeah, we’ll settle everything, and I... we will come back.
+“Ryoma... Yeah. Once we settle everything, I... we will come back.
 ---
 >  約束する」
 I promise.”
@@ -246,7 +246,7 @@ kick the bucket over something like this?”
 “Oh no. Baby, that’s one question you don’t ask. Haha, well, whatever.
 ---
 >  とにかく、ウィナーは俺たちだぜ」
-Anyway, we’re the winners here.”
+Point is, the winners are gonna be us.”
 
 @40146 Sai Saici · サイ・サイシー
 # 审校：全局：弯撇号／弯引号
@@ -258,7 +258,7 @@ Anyway, we’re the winners here.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、そうだな。……そろそろ行かない
 >  か? 時間がおしい」
-“Yeah, that’s right. ...Shall we get going soon? Time’s wasting.”
+“Yeah, you’re right. ...Let’s get moving, shall we? Time’s wasting.”
 
 @40148 Selain · セレイン（按段落 3DD2）
 # 审校：英文逗号连句
@@ -270,17 +270,17 @@ Anyway, we’re the winners here.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、まったくだ。さぁて、そろそろ
 >  行こうぜ。カタつけによ」
-“Yeah, absolutely. Alright, let’s get going soon. Time to settle this.”
+“Yeah, no kidding. Alright, let’s get moving. Time to settle this.”
 
 @40150 Manami · マナミ（按段落 3DD4）
 > 「そうね。……そろそろ行きましょうか。
 >  その方が早くもどれるもの」
-“Yes. ...Shall we get going soon? That way we can come back sooner.”
+“Yes. ...Shall we be going? The sooner we leave, the sooner we’ll be back.”
 
 @40151 Garrison · ギャリソン
 > 「そうですな、その方がよろしいでしょう。
 >  ではみなさま、お気をつけて」
-“Indeed, that would be for the best. Then everyone, please take care.”
+“Indeed, that would be best. Do take care, everyone.”
 
 @40152 George · ジョルジュ
 > 「これが、あのネオホンコンだと
@@ -300,7 +300,7 @@ Anyway, we’re the winners here.”
 ---
 >  光景だぜ。ジオンのせいでコロニーの
 >  大半もなくなっちまった。そのあとの
-depressing sight. Thanks to Zeon, most of the colonies are gone too. And then
+depressing sight. Zeon took out most of the colonies. And after that,
 ---
 >  ムゲで地上の7割も焼かれた。
 >  ここもこの有り様、欧州も同じ
@@ -308,18 +308,18 @@ the Muge burned seventy percent of the surface. This place is a wreck, and Europ
 ---
 >  いったいこれから
 >  どうなっちまうんだろうなぁ」
-I wonder what’s going to become of us now.”
+What’s gonna happen to us now, huh?”
 
 @40155 Quatre · カトル
 > 「僕たちが、そんなことをいっていて、
 >  どうするんです、デュオ」
-“If we sit around saying things like that, what good does it do, Duo?”
+“What good is it for us to say things like that, Duo?”
 
 @40156 Sai Saici · サイ・サイシー
 # 审校：全局：弯撇号／弯引号
 > 「そうさ、オイラたちが、これから
 >  どうにかしようってんだろ」
-“That’s right. We’re the ones who are going to do something about it.”
+“Yeah! We’re the ones who are gonna fix it, right?”
 
 @40157 Duo · デュオ
 > 「そりゃ、そうなんだけどなぁ」
@@ -355,10 +355,10 @@ somewhere near here.”
 # 审校：全局：弯撇号／弯引号
 > 「手分けをして探すのだ。
 >  我々を察知すれば、向こうから
-“We split up and search. If it senses us, it’ll come
+“We split up and search. If it senses us, it will come
 ---
 >  出てくるだろう」
-out to us.”
+out on its own.”
 
 @40164 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -401,7 +401,7 @@ out to us.”
 @40171 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 > 「くっ……やはり無理か……」
-“Ngh... so it’s no use after all...”
+“Ngh... as I feared, it is too much...”
 
 @40172 Rain · レイン
 > 「シュバルツ!? やっぱり、まだどこか
@@ -411,7 +411,7 @@ out to us.”
 @40173 Schwarz · シュバルツ
 > 「すまん、君に来てもらって
 >  正解だったようだ……」
-“Sorry. It seems I was right to bring you along...”
+“Forgive me. It seems I was right to ask you along...”
 
 @40174 Schwarz · シュバルツ
 > 「見てくれ」
@@ -427,7 +427,7 @@ out to us.”
 # 审校：全局：弯撇号／弯引号
 > 「1人では直せそうにない。
 >  応急処置でいい
-“I can’t seem to fix it alone. Field repairs will do.
+“I cannot fix it alone. A field repair will do.
 ---
 >  手伝ってくれ、レイン」
 Lend me a hand, Rain.”
@@ -442,10 +442,10 @@ Lend me a hand, Rain.”
 # 审校：全局：弯撇号／弯引号
 > 「君なら……大丈夫だ。
 >  君の腕はよく知っている
-“You’ll be fine... I know your skill well.
+“You can do it... I know how skilled you are.
 ---
 >  私のいう通りにやってくれればいい……」
-Just do as I say...”
+Just do as I tell you...”
 
 @40179 Rain · レイン
 > 「……キョウジ……さん?
@@ -499,20 +499,20 @@ Gundam to drop to Earth...”
 # 审校：英文不通
 > 「そ、そんなまさか!?
 >  あんたは確かにあの時……」
-“Th-that can’t be?! Back then, you definitely...”
+“N-no, it can’t be?! Back then, you were...”
 
 @40186 Master · マスター
 # 审校：英文直译
 > 「ひさしいな、ドモン。何をほうけておる。
 >  声をかけられるまで、ワシの存在に
-“It has been a long time, Domon. What are you gaping at? Failing to sense my presence
+“It has been a long time, Domon. Why do you stand there gaping? To not even sense my presence
 ---
 >  気づかぬとは、未熟千万。
 >  そんなことで異星人どもに勝てると
-until I spoke is the height of immaturity. Do you think you can
+until I spoke... how utterly green! Do you truly think you can
 ---
 >  思っているのか」
-beat those aliens like that?”
+defeat the aliens like that?”
 
 @40187 Domon · ドモン
 > 「東方不敗!」
@@ -522,14 +522,14 @@ beat those aliens like that?”
 # 审校：宗师口吻要求不用缩写，将 I'll 改为 I shall。
 > 「そんな未熟者は、異星人に
 >  倒される前に、このワシが
-“An immature fool like you, I shall strike down myself
+“Before the aliens can cut down a greenhorn like you, I
 ---
 >  倒してくれるわ!」
-before the aliens ever get the chance!”
+shall do it myself!”
 
 @40189 Domon · ドモン
 > 「なにをぉっ!」
-“What did you say?!”
+“What was that?!”
 
 @40190 Domon · ドモン
 > 「くっ……」
@@ -587,7 +587,7 @@ before the aliens ever get the chance!”
 # 审校：Master 的 voice 要求不用缩写，将 “Seems it's” 改为 “It seems it has”
 > 「地下通路か……ガレキにうめられた
 >  ようだな」
-“An underground passage... It seems it has been buried in rubble.”
+“An underground passage... It appears the way is buried in rubble.”
 
 @40203 Domon · ドモン
 > 「東方不敗、さっきは、なぜ俺を
@@ -598,11 +598,11 @@ before the aliens ever get the chance!”
 # 审校：缺标点；英文改顺
 > 「助けたわけではない。あわてるな、こんな
 >  ところでやりあえば、ガレキの下敷きだ
-“I did not save you. Do not be hasty. If we fight in a place like this, we will be crushed under the rubble.
+“I did not save you. Calm yourself. Fight here, and we will both be buried under the rubble.
 ---
 >  そんなこともわからんのか。
 >  一時休戦だ、いいな」
-Do you not even see that? A temporary truce, agreed?”
+Can you not see even that? We call a truce for now. Understood?”
 
 @40205 Domon · ドモン
 > 「……どうするつもりだ」
@@ -617,11 +617,11 @@ Do you not even see that? A temporary truce, agreed?”
 # 审校：全局：弯撇号／弯引号
 > 「なぁ、師匠……
 >  あ、いや……東方不敗。なぜ
-“Hey, Master... ah, no... Master Asia. Why are you
+“Hey, Master... no... Master Asia. Why would they
 ---
 >  あんたが襲われる?
 >  あんた、奴らの仲間だろう」
-being attacked? You’re one of them, aren’t you?”
+attack you? You’re on their side, aren’t you?”
 
 @40208 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -632,11 +632,11 @@ being attacked? You’re one of them, aren’t you?”
 # 审校：“应该使出了”误读；英文同
 > 「……このままでは長くは、もたんな。
 >  覚えておるか、ドモン。以前にも
-“...At this rate, we will not last long. Do you remember, Domon? There was
+“...We will not last long like this. Do you remember, Domon? Something like this
 ---
 >  こういうことがあった。そしてあの時も、
 >  この流派東方不敗の
-a time like this before. And back then too, I unleashed the
+happened once before. And that time, too, I unleashed the
 ---
 >  最終奥義を放ったはず。
 >  その名は、石破天驚拳!」
@@ -645,15 +645,15 @@ final secret technique of the School of the Undefeated of the East. Its name: Se
 @40210 Domon · ドモン
 > (覚えている……覚えているぞ。
 >  あの時も同じだった。俺はこの人に
-(I remember... I remember it. It was the same back then. I was saved
+(I remember... I remember it well. It was just like this back then. This man
 ---
 >  助けられたんだ……)
-by this man...)
+saved me...)
 
 @40211 Master · マスター
 # 审校：Master 的 voice 要求不用缩写，将 “Seems we've” 改为 “It seems we have”
 > 「どうやら命びろいしたようだな」
-“It seems we have narrowly escaped death.”
+“It seems we have escaped with our lives.”
 
 @40212 Domon · ドモン
 > 「師匠……」
@@ -663,11 +663,11 @@ by this man...)
 # 审校：Master 的 voice 要求不用缩写，将 “haven't” 改为 “have not”
 > 「ついにあの技だけはお前に伝えられな
 >  かった。お前はあの頃から、まったく
-“In the end, that technique alone I could never pass on to you. Since back then, you have not
+“That one technique I never managed to pass on to you. Since those days, you have not
 ---
 >  変わっておらん。目先のことにとらわ
 >  れ、いちばん大切なことを見失う」
-changed at all. You fixate on what is in front of you and lose sight of what matters most.”
+changed one bit. You fixate on what is in front of you and lose sight of what matters most.”
 
 @40214 Domon · ドモン
 > 「どういうことだ……?」
@@ -677,15 +677,15 @@ changed at all. You fixate on what is in front of you and lose sight of what mat
 # 审校：“毁灭都在确实逼近”直译
 > 「よく見ておけ、ドモン。ネオホンコン、
 >  一年戦争後の地球でもっとも
-“Look well, Domon. Neo Hong Kong, the most prosperous city on Earth after
+“Mark it well, Domon. Neo Hong Kong, the most prosperous city on Earth after
 ---
 >  繁栄した街も、もはやこの通りだ。
 >  世界中、いや地球そのものに
-the One Year War, has come to this. Across the whole world, no, the Earth itself,
+the One Year War, has come to this. Across the whole world, no, upon the Earth itself,
 ---
 >  破滅は確実に迫っておる。だがな
 >  それを招いたのは何だ?
-ruin is surely closing in. But what invited it?
+ruin is closing in, without question. But what brought it on?
 ---
 >  異星人か? いや、そうではない」
 The aliens? No, it was not them.”
@@ -698,10 +698,10 @@ The aliens? No, it was not them.”
 # 审校：Master 的 voice 要求不用缩写，将 “Don't” 改为 “Do you not”
 > 「……人間とは、つくづく度しがたい
 >  存在だと思わぬか。だからこそ
-“...Do you not think humans are, through and through, beyond saving? That is exactly why,
+“...Do you not think mankind is truly beyond redemption? That is precisely why,
 ---
 >  だからこそワシは……」
-exactly why I...”
+precisely why I...”
 
 @40218 Domon · ドモン
 > 「しまった、まだいたのか!?」
@@ -711,7 +711,7 @@ exactly why I...”
 # 审校：Master 的 voice 要求不用缩写，将 “let's” 改为 “let us”
 > 「ドモン、こやつらを片づけるぞ!
 >  ガンダムを出せ」
-“Domon, let us finish these ones off! Bring out your Gundam.”
+“Domon, let us dispose of these! Call your Gundam.”
 
 @40220 Domon · ドモン
 # 审校：原文“出ろぉぉぉっ!”是拖长音的呼喊，初稿“Come out! ”没有体现拖长音且结尾有空格，改为“Come oooout!”
@@ -733,13 +733,13 @@ exactly why I...”
 
 @40224 Master · マスター
 > 「いや、まだ1匹残っておる!」
-“No, one of them is still left!”
+“No, there is one left!”
 
 @40225 Master · マスター
 # 审校：精读：去破折号
 > 「ドモン! 石破天驚拳、
 >  今こそ、うってみせい!」
-“Domon! The Sekiha Tenkyoken. Now is the time to unleash it!”
+“Domon! Now is the time. Show me the Sekiha Tenkyoken!”
 
 @40226 Domon · ドモン
 > 「うおおぉぉぉぉぉぉーっ!!」
@@ -761,7 +761,7 @@ I have indeed passed it on to you.”
 @40229 Domon · ドモン
 > 「待ってください、俺は、まだ師匠に
 >  聞きたいことが!」
-“Wait, please! I still have things I want to ask you, Master!”
+“Wait, please! There’s still so much I want to ask you, Master!”
 
 @40230 Master · マスター
 # 审校：全局：弯撇号／弯引号
@@ -783,10 +783,10 @@ Burn this sight of humanity’s twilight into your heart.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ランタオ島で待っておるぞ、ドモン。
 >  デビルガンダムもな。決着をつけたくば
-“I shall be waiting on Lantau Island, Domon. The Dark Gundam too. If you want to settle this,
+“I shall be waiting on Lantau Island, Domon. As will the Dark Gundam. If you wish to settle this,
 ---
 >  くるがよい」
-come.”
+then come.”
 
 @40233 Domon · ドモン
 > 「し、師匠……師匠ーっ!!」
@@ -827,13 +827,13 @@ here?!”
 # 检查提示：未用必用译名：ゴッドガンダム→Burning Gundam
 > 「ゴッドガンダム……ドモンね? どうしたの
 >  戦闘があったみたいだけど?」
-“The Burning Gundam... that’s Domon, right? What’s going on? It looked like there was a fight.”
+“The Burning Gundam... that’s Domon, right? What happened? It looks as though there was a battle.”
 
 @40240 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「{HeroNick}か。いや……たいしたことじゃな
 >  い。それより、ランタオ島へ行くぞ
-“{HeroNick}, huh. No... it was nothing much. More importantly, we’re going to Lantau Island.
+“{HeroNick}. No... it’s nothing. Never mind that, we’re going to Lantau Island.
 ---
 >  みんなに連絡をとってくれ」
 Get in touch with everyone.”
