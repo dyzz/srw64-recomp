@@ -12,6 +12,16 @@ lead: 关于安装、操作和存档的常见问题。没有找到答案，可�
 目前只支持《超级机器人大战64》日版 Rev 0。`.z64`、`.v64`、`.n64` 三种字节序都可以，游戏会自动识别并转换；按 `.z64` 计算的 SHA-256 为
 `ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e`。其他版本不受支持。
 
+<span id="rom-location"></span>
+
+## ROM 放在哪里？
+
+- **Windows**：把 ROM 改名为 `rom.z64`，放进解压出的文件夹，和 `Marchwind64.cmd` 放在一起，然后双击 `Marchwind64.cmd`。也可以放在 `%LOCALAPPDATA%\SRW64Recomp\rom.z64`。Windows 默认隐藏扩展名，改名时容易变成 `rom.z64.z64`，先在资源管理器的「查看」里勾选「文件扩展名」。
+- **Linux／Steam Deck**：改名为 `rom.z64`，放在 `marchwind64.sh` 旁边，或 `~/.local/share/srw64-recomp/rom.z64`。
+- **macOS、Android**：不用改名，首次启动时在弹出的窗口里选择 ROM。
+
+ROM 是压缩包的话先解压。`.n64`、`.v64` 格式改名为 `rom.n64`、`rom.v64` 即可。详见[安装](/zh/install/)。
+
 ## 这是模拟器吗？
 
 本项目是通过静态重编译制作的原生移植：先将 N64 的 MIPS 程序翻译成 C，再编译成 Windows、macOS、Linux、Android 的本机程序，图形由 [RT64](https://github.com/rt64/rt64) 渲染。运行时无需配置 BIOS、插件或模拟器，也可以在原版的基础上调整界面、增加功能。

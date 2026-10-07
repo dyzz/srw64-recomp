@@ -114,6 +114,8 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
   .steps li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 18px; background: var(--panel); border: 1px solid var(--line-soft); }
   .n { display: grid; place-items: center; width: 34px; height: 34px; font-weight: 700; color: var(--ink); background: var(--cyan); clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%); }
   .steps p { padding-top: 3px; overflow-wrap: anywhere; }
+  /* The one thing to get right in a step (where the ROM goes), from the copy's <strong>. */
+  .steps :global(strong) { color: var(--gold); }
   .nofile { margin-top: 8px; padding: 6px 14px; font-size: 14px; color: var(--orange); border: 1px dashed rgba(255, 181, 71, 0.5); }
   .note { max-width: 860px; margin-top: 14px; padding: 10px 16px; color: var(--muted); font-size: 15px; border-left: 3px solid var(--orange); background: rgba(255, 181, 71, 0.07); }
 

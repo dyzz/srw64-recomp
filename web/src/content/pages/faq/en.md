@@ -12,6 +12,16 @@ The game content is read from your own ROM at launch; this project does not incl
 Only Super Robot Wars 64, Japan Rev 0, is supported. Any byte order works (`.z64`, `.v64` or `.n64`); the game recognises and converts it. The SHA-256 of the `.z64` form is
 `ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e`. Other revisions are not supported.
 
+<span id="rom-location"></span>
+
+## Where do I put the ROM?
+
+- **Windows**: rename your ROM to `rom.z64` and put it in the unzipped folder, next to `Marchwind64.cmd`, then double-click `Marchwind64.cmd`. `%LOCALAPPDATA%\SRW64Recomp\rom.z64` works too. Windows hides file extensions by default, so the file can end up as `rom.z64.z64`: turn on “File name extensions” under View in File Explorer first.
+- **Linux and Steam Deck**: rename it to `rom.z64` next to `marchwind64.sh`, or put it at `~/.local/share/srw64-recomp/rom.z64`.
+- **macOS and Android**: no renaming; choose the ROM in the window that opens on first launch.
+
+Unzip the ROM first if it is in an archive. A `.n64` or `.v64` dump can be named `rom.n64` or `rom.v64`. See [Install](/en/install/) for the full steps.
+
 ## Is this an emulator?
 
 It is a native port built using static recompilation. The N64's MIPS program is translated into C, then compiled into a native Windows, macOS, Linux or Android application, with graphics rendered by [RT64](https://github.com/rt64/rt64). No BIOS, plugins or emulator configuration are needed. This approach also allows changes to the interface and additional features.
