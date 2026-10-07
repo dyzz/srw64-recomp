@@ -1413,7 +1413,7 @@ A bio-reaction? ...It says it’s impossible to determine?! Just who are you?!�
 @38995 Shinobu · 忍
 > 「なんだとぉ!? てめぇ、そりゃいったい
 >  なんなんだ!」
-“What?! You, just what the hell is that?!”
+“What?! What the hell is that supposed to be?!”
 
 @38996 Avie-Lu · アヴィ＝ルー
 # 审校：全局：弯撇号／弯引号
