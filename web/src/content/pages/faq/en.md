@@ -38,6 +38,14 @@ Saves are stored in the `saves` folder within the following user directories:
 
 The cartridge save `saves/cartridge.sram` is byte-for-byte compatible with an ares `.ram` file, so you can copy saves between the two. For other emulators, use the Saves page in settings. “Export for emulators” converts slots 1 and 2 to the formats used by ares, Project64, mupen64plus and RetroArch. “Import from emulators” reads saves placed in the `import` folder and adds them as new slots, preserving your existing saves.
 
+## Can I save state at any moment?
+
+No. The game does not run in an emulator, so there are no emulator-style save states that save and load at any moment. You save the way the original does, and autosaves have been added:
+
+- They are on by default, and save after each map, before each sortie and at the start of each of your turns.
+- By default 3 intermission autosaves and 5 turn autosaves are kept, and the oldest are deleted once there are more. Change how many, or turn autosaves off, on the Saves page in settings.
+- Load an autosave from the Load screen on the title screen. Loading a turn autosave starts that turn again.
+
 ## What is the HD pack?
 
 The HD pack is an optional, separate download that replaces the game's graphics. Without it, the game uses the original graphics. Once installed, you can switch between original and HD graphics at any time in game. On Android, import it in the app: long-press the app icon and choose “Import HD pack”, or open the downloaded zip with SRW64.
