@@ -3,7 +3,7 @@
 @50226 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「敵の様子はどうだ?」
-“What’s the enemy’s status?”
+“What’s the enemy doing?”
 
 @50227 Beltorchika · ベルトーチカ
 > 「変化ありません」
@@ -42,11 +42,11 @@ plotting something nasty...”
 # 审校：全局：弯撇号／弯引号
 > 「んなこたぁ、どうだっていいぜ。奴らが
 >  敵だってのは間違いねぇんだ
-“Who cares about that. There’s no doubt they’re the enemy.
+“Who gives a damn. They’re the enemy, no question.
 ---
 >  しかけてこねぇってんなら、
 >  こっちからやってやるぜ!」
-If they won’t come at us, then we’ll go at them!”
+If they won’t come at us, we’ll go at them!”
 
 @50234 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -83,14 +83,14 @@ If they won’t come at us, then we’ll go at them!”
 # 审校：全局：弯撇号／弯引号
 > 「……受信装置が
 >  強制割り込みを受けてます!
-“...The receiver’s getting a forced override!
+“...Something’s forcing its way into our receiver!
 ---
 >  信じられない」
 I can’t believe it.”
 
 @50242 Alan · アラン
 > 「あの敵か!?」
-“That enemy?!”
+“Is it them?!”
 
 @50243 Val-A · ヴァル＝ア
 # 审校：中文把瓦尔＝阿说成大银河意志的化身，误读
@@ -122,7 +122,7 @@ I have come here, for I recognize that you have quelled all strife.”
 # 审校：全局：弯撇号／弯引号
 > 「これまで一方的に
 >  しかけてきておいて、どういうことだ?」
-“You’ve done nothing but attack us one-sidedly until now. What do you mean by this?”
+“You’ve done nothing but attack us all this time. What’s this supposed to mean?”
 
 @50247 Selain · セレイン（按段落 3DD2）
 > 「いまさら、何のつもりだ?」
@@ -136,7 +136,7 @@ I have come here, for I recognize that you have quelled all strife.”
 # 审校：全局：弯撇号／弯引号
 > 「なんですって? これまで一方的に
 >  攻めてきてたのはそっちでしょう!?
-“What did you say? You’re the ones who’ve been attacking us one-sidedly all this time!
+“What did you say? You’re the ones who’ve been attacking us all this time!
 ---
 >  どういうつもりなの!?」
 What are you playing at?!”
@@ -144,7 +144,7 @@ What are you playing at?!”
 @50250 Val-A · ヴァル＝ア
 > 「すべては、この時のためになされたこと。
 >  おとなしく我の話を聞くがよい」
-“Everything was done for this moment. Be quiet and listen to what I have to say.”
+“Everything was done for this moment. Now be silent and listen to me.”
 
 @50251 Judau · ジュドー
 # 审校：yes, sir 不贴切
@@ -192,7 +192,7 @@ What exactly are you after?!”
 # 审校：英文 put us to unnecessary trouble 生硬
 > 「いらぬ手間をかけたな。
 >  最初からそうしておけば良かったのだ」
-“What a waste of effort. We should have done this from the start.”
+“Needless trouble. We should have done this from the start.”
 
 @50258 Show · ショウ
 > 「……なにをするつもりだ!?」
@@ -248,10 +248,10 @@ your solar system resides.”
 # 审校：全局：弯撇号／弯引号
 > 「そんな、いったいどうして……?
 >  “刻印”が
-“That can’t be, how could that be...? The ‘Crest’ should have
+“But how...? The ‘Crest’ should be
 ---
 >  封鎖しているはずなのに……」
-been blocking it...”
+sealing it off...”
 
 @50269 Val-A · ヴァル＝ア
 # 审校：精读：先住グラドス人
@@ -272,7 +272,7 @@ knew, we know as well.”
 @50271 Daisuke · 大介
 # 审校：全局：弯撇号／弯引号
 > 「まさか……本物だというのか……」
-“You don’t mean... this is real...?”
+“Could they... really be the real thing...?”
 
 @50272 Bright · ブライト
 > 「例の伝説……
@@ -288,13 +288,13 @@ knew, we know as well.”
 # 检查提示：未用必用译名：フリード星人→Fleedian
 > 「お前はフリード星人だネ……
 >  少しは知っている奴もいるんダ」
-“You are a Fleed, aren’t you... So there are some who know a little.”
+“You are a Fleed, aren’t you... So some of you do know a thing or two.”
 
 @50275 Daisuke · 大介
 # 审校：全局：弯撇号／弯引号
 > 「だが、もし本当にそうなら、
 >  なぜ今になって出てくる?
-“But if that’s really true, why appear now?
+“But if that’s really true, why show up now?
 ---
 >  なぜ戦いをしかけた?」
 Why start a war?”
@@ -344,7 +344,7 @@ return to nothing.”
 # 审校：中文生硬，英文啰嗦
 > 「黙って聞いてりゃ、
 >  わけのわかんねぇことをいいやがってよ
-“I’ve kept my mouth shut and listened, and it’s all gibberish!
+“I’ve been sitting here listening, and you’re talking nonsense!
 ---
 >  結局お前らの目的は
 >  何なんだよ!?」
@@ -353,7 +353,7 @@ So what the hell are you after?!”
 @50282 Avie-Lu · アヴィ＝ルー
 > 「代わりを見つけること……
 >  新たに大銀河の意思を
-“To find a replacement... someone to newly embody
+“To find a replacement... someone new to embody
 ---
 >  体現する者をネ」
 the will of the Great Galaxy.”
@@ -488,11 +488,11 @@ That is what these battles were arranged for.”
 # 审校：全局：弯撇号／弯引号
 > 「いきなり出てきて、よくいう。そのことの
 >  意味を、そしてそれが真実か
-“You appear out of nowhere and say such things. How could we possibly judge what it means,
+“You show up out of nowhere and have the nerve to say that. How could we possibly judge what it means,
 ---
 >  どうかを、どうして我々が判断
 >  できるわけがある? 無駄なことだ」
-or whether it is even true? It’s pointless.”
+or whether it’s even true? It’s pointless.”
 
 @50298 Val-A · ヴァル＝ア
 # 审校：It is fine if 生硬
@@ -662,7 +662,7 @@ would survive.”
 # 审校：英文语气
 > 「まさか……シャピロやウォンも、
 >  そうなのではありませんか?」
-“Don’t tell me... Were Shapiro and Wong the same way?”
+“Don’t tell me... Could Shapiro and Wong have been the same?”
 
 @50320 Rain · レイン
 > 「そういえば……2人とも
@@ -695,7 +695,7 @@ people’s hearts like that?”
 @50324 J-Ren · ジェイ＝レン
 > 「より多くをまきこむ戦いが、
 >  その戦いをぬけでる者が必要だった」
-“A battle that draws in more was needed, and so were those who could break free of it.”
+“We needed a war that would draw in as many as possible, and those who could rise above it.”
 
 @50325 Elle · エレ
 > 「ひどいことを……。なぜそのようなことを
@@ -709,7 +709,7 @@ You who call yourselves the protectors of the galaxy?!”
 @50326 J-Ren · ジェイ＝レン
 > 「より多くをまきこむ戦いが、
 >  その戦いをぬけでる者が必要だった」
-“A battle that draws in more was needed, and so were those who could break free of it.”
+“We needed a war that would draw in as many as possible, and those who could rise above it.”
 
 @50327 Takeru · タケル
 > 「そんな……そんなことのために、あんなに
@@ -748,29 +748,29 @@ It was more than worth it.”
 # 审校：全局：弯撇号／弯引号
 > 「そうだ。そんなことをして、
 >  いくつもの世界をメチャメチャにして
-“That’s right. Wrecking countless worlds like that, and on top of it all,
+“That’s right. You wreck one world after another, and then build
 ---
 >  そのうえになりたつ銀河の
 >  存続など、なんの意味がある
-a galaxy that survives on such a foundation? What meaning could that possibly have?
+the galaxy’s survival on top of that? What’s the point of that?
 ---
 >  お前たちは、ムゲかズールが
 >  残ると思っていたといった。ムゲや
-You said you thought Muge or Zuul would survive. What becomes of a civilization
+You said you thought Muge or Zuul would survive. What good is it if the only civilization left
 ---
 >  ズールの支配する、そんな文明だけ
 >  残って、どうなるというんだ!?」
-ruled by Muge or Zuul, with only that left?!”
+is one ruled by Muge or Zuul?!”
 
 @50331 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「そんなもののために、
 >  大勢の人たちが犠牲になるなんて
-“For something like that, so many people being sacrificed...
+“Sacrificing so many people for something like that...
 ---
 >  そんなこと認めちゃいけないんだ。
 >  お前たちがしたことは、俺たちには
-I can’t accept that. What you’ve done is something we
+We can’t let that stand. What you’ve done is something we
 ---
 >  認めるわけにはいかないことなんだよ!」
 can never accept!”
@@ -795,14 +795,14 @@ can never accept!”
 @50336 Val-A · ヴァル＝ア
 > 「銀河全域において、戦いのない
 >  平和な世界を形成することは、
-“Across the entire galaxy, to form a peaceful world without battle is
+“Throughout the galaxy, a peaceful world without battle cannot
 ---
 >  不可能なのだ。それではいずれ
 >  銀河文明は滅びを
-impossible. If you did, galactic civilization would eventually
+exist. Were it to, galactic civilization would eventually
 ---
 >  迎えることになる」
-meet its destruction.”
+meet its end.”
 
 @50337 Eiji · エイジ
 > 「……なぜだ?」
@@ -891,7 +891,7 @@ Do not hesitate. You need only accept it.”
 # 审校：全局：弯撇号／弯引号
 > 「……ためらってなどいない。答えは
 >  決まっているからな。そうだろ、みんな?」
-“...We’re not hesitating. Our answer’s already decided. Right, everyone?”
+“...We’re not hesitating. We already know our answer. Right, everyone?”
 
 @50346 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -991,7 +991,7 @@ how I live, my future, I’ll decide for myself.
 ---
 >  大銀河の意思だろうが
 >  なんだろうが、それだけは譲れない
-Whether it’s the will of the Great Galaxy or whatever, that much I won’t yield.
+Will of the Great Galaxy or not, on that I will not yield.
 ---
 >  そして、この戦いをあえておこしたという
 >  お前たちは、許せん。他の連中が
@@ -1078,23 +1078,23 @@ to protect that one planet!”
 # 审校：全局：弯撇号／弯引号
 > 「残念だヨ。やっぱり未成熟な
 >  種には、星の呪縛から
-“Too bad. It seems it was too soon for an immature species,
+“Too bad. Guess it was just too soon for an immature species,
 ---
 >  解き放たれない銀河の幼な子
 >  たちには、早すぎたみたいだネ」
-for the galaxy’s children who can’t be freed from the curse of their planet.”
+for children of the galaxy still bound by their planet’s curse.”
 
 @50360 J-Ren · ジェイ＝レン
 > 「だが、我らに残された時間は
 >  あまりにも少ない
-“But the time left to us is far too little.
+“But we have far too little time left.
 ---
 >  お前たちを排除し、
 >  そのあとにもう1度
-We will eliminate you, and after that, once more,
+We will eliminate you, and then once again
 ---
 >  他の地球種へ問いかけよう」
-we will put the question to the other Earth species.”
+put the question to the other Earth species.”
 
 @50361 Avie-Lu · アヴィ＝ルー
 # 审校：全局：弯撇号／弯引号
@@ -1115,11 +1115,11 @@ we will put the question to the other Earth species.”
 # 审校：全局：弯撇号／弯引号
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“We can. Neither Muge nor Zuul had their existence completely erased,
+“Neither Muge nor Zuul has been wiped out completely,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
-you see. They’re different creatures from you humans.”
+you see. They aren’t the same kind of creature as you humans.”
 
 @50365 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -1144,7 +1144,7 @@ you see. They’re different creatures from you humans.”
 ---
 >  この生体すらも我らの
 >  仮の姿にすぎぬというのに」
-Even this body is nothing more than a temporary form of ours.”
+Even this body is merely a temporary form.”
 
 @50369 Eiji · エイジ
 > 「仮の姿!?」
@@ -1153,11 +1153,11 @@ Even this body is nothing more than a temporary form of ours.”
 @50370 J-Ren · ジェイ＝レン
 > 「お前たちに与える印象を
 >  考慮して、“人間”の
-“Taking into account the impression we would give you, we created bodies
+“With the impression we would make in mind, we created bodies
 ---
 >  形態に似せた生体をつくったのだ
 >  その方が話しやすかろう?
-that resemble the ‘human’ form. It makes talking easier, does it not?
+modeled on the ‘human’ form. That makes conversation easier, does it not?
 ---
 >  もっとも、無駄なことだったようだがな」
 Though it seems it was a waste of effort.”
@@ -1221,11 +1221,11 @@ won’t let you keep pulling our strings forever!”
 # 审校：全局：弯撇号／弯引号
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“We can. Neither Muge nor Zuul had their existence completely erased,
+“Neither Muge nor Zuul has been wiped out completely,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
-you see. They’re different creatures from you humans.”
+you see. They aren’t the same kind of creature as you humans.”
 
 @50379 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -1250,7 +1250,7 @@ you see. They’re different creatures from you humans.”
 ---
 >  この生体すらも我らの
 >  仮の姿にすぎぬというのに」
-Even this body is nothing more than a temporary form of ours.”
+Even this body is merely a temporary form.”
 
 @50383 Eiji · エイジ
 > 「仮の姿!?」
@@ -1259,11 +1259,11 @@ Even this body is nothing more than a temporary form of ours.”
 @50384 J-Ren · ジェイ＝レン
 > 「お前たちに与える印象を
 >  考慮して“人間”の形態に
-“Taking into account the impression we would give you, we created bodies
+“With the impression we would make in mind, we created bodies
 ---
 >  似せた生体をつくったのだ。
 >  その方が話しやすかろう?
-that resemble the ‘human’ form. It makes talking easier, does it not?
+modeled on the ‘human’ form. That makes conversation easier, does it not?
 ---
 >  もっとも、無駄なことだったようだがな」
 Though it seems it was a waste of effort.”
@@ -1328,11 +1328,11 @@ won’t let you keep pulling our strings forever!”
 # 审校：全局：弯撇号／弯引号
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“We can. Neither Muge nor Zuul had their existence completely erased,
+“Neither Muge nor Zuul has been wiped out completely,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
-you see. They’re different creatures from you humans.”
+you see. They aren’t the same kind of creature as you humans.”
 
 @50393 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
@@ -1357,7 +1357,7 @@ you see. They’re different creatures from you humans.”
 ---
 >  この生体すらも我らの
 >  仮の姿にすぎぬというのに」
-Even this body is nothing more than a temporary form of ours.”
+Even this body is merely a temporary form.”
 
 @50397 Banjo · 万丈
 > 「仮の姿だって!?」
@@ -1366,11 +1366,11 @@ Even this body is nothing more than a temporary form of ours.”
 @50398 J-Ren · ジェイ＝レン
 > 「お前たちに与える印象を
 >  考慮して“人間”の形態に
-“Taking into account the impression we would give you, we created bodies
+“With the impression we would make in mind, we created bodies
 ---
 >  似せた生体をつくったのだ。
 >  その方が話しやすかろう?
-that resemble the ‘human’ form. It makes talking easier, does it not?
+modeled on the ‘human’ form. That makes conversation easier, does it not?
 ---
 >  もっとも、無駄なことだったようだがな」
 Though it seems it was a waste of effort.”
@@ -1441,11 +1441,11 @@ forever, you’ve got another thing coming!”
 # 审校：全局：弯撇号／弯引号
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“We can. Neither Muge nor Zuul had their existence completely erased,
+“Neither Muge nor Zuul has been wiped out completely,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
-you see. They’re different creatures from you humans.”
+you see. They aren’t the same kind of creature as you humans.”
 
 @50408 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
@@ -1470,7 +1470,7 @@ you see. They’re different creatures from you humans.”
 ---
 >  この生体すらも我らの
 >  仮の姿にすぎぬというのに」
-Even this body is nothing more than a temporary form of ours.”
+Even this body is merely a temporary form.”
 
 @50412 Banjo · 万丈
 > 「仮の姿だって!?」
@@ -1479,11 +1479,11 @@ Even this body is nothing more than a temporary form of ours.”
 @50413 J-Ren · ジェイ＝レン
 > 「お前たちに与える印象を
 >  考慮して“人間”の形態に
-“Taking into account the impression we would give you, we created bodies
+“With the impression we would make in mind, we created bodies
 ---
 >  似せた生体をつくったのだ。
 >  その方が話しやすかろう?
-that resemble the ‘human’ form. It makes talking easier, does it not?
+modeled on the ‘human’ form. That makes conversation easier, does it not?
 ---
 >  もっとも、無駄なことだったようだがな」
 Though it seems it was a waste of effort.”
@@ -1562,7 +1562,7 @@ forever, you’ve got another thing coming!”
 # 审校：英文啰嗦
 > 「とにかく、やるしかない。
 >  みんな、頼むぞ!」
-“Whatever happens, we have to do this. Everyone, I’m counting on you!”
+“Either way, we’ve got no choice. Everyone, I’m counting on you!”
 
 @50423 Val-A · ヴァル＝ア
 # 审校：全局：弯撇号／弯引号
@@ -1585,7 +1585,7 @@ forever, you’ve got another thing coming!”
 @50427 Reika · レイカ
 # 审校：全局：弯撇号／弯引号
 > 「こっちにも出たわ!」
-“They’re coming out here too!”
+“They’ve appeared over here too!”
 
 @50428 Val-A · ヴァル＝ア
 > 「…………」
@@ -1610,7 +1610,7 @@ forever, you’ve got another thing coming!”
 @50432 Elle · エレ
 > 「まだ……まだいけます!
 >  ここで何としても終わらせなくては!」
-“I can still... I can still go on! We have to end this here no matter what!”
+“We can still... we can still fight! We have to end this here no matter what!”
 
 @50433 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -1690,12 +1690,12 @@ this galaxy will...”
 @50446 Bright · ブライト
 > 「……なんとか倒したが……今度は
 >  どうだ!?」
-“...We managed to beat them, but... what now?!”
+“...We somehow beat them, but... is it over this time?!”
 
 @50447 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
 > 「……出現の気配はありません」
-“...There’s no sign of any more appearing.”
+“...No sign of any more.”
 
 @50448 Reika · レイカ
 # 审校：英文意思偏
@@ -1765,7 +1765,7 @@ of the ‘Crest’...”
 # 审校：中英接不上
 > 「いや、そうでもなさそうだ。あまり調子
 >  はよろしくないようだよ」
-“No, I don’t think so. They don’t look to be in very good shape.”
+“No, maybe not. They don’t seem to be in very good shape.”
 
 @50461 Alan · アラン
 # 审校：英文 visible 生硬
@@ -1931,7 +1931,7 @@ the guardians of our galaxy... waiting in the distant future, for that time...)
 # 审校：全局：弯撇号／弯引号
 > 「あんな連中の考えることなんて、
 >  わかるかってんだ
-“Who cares what those guys were thinking?
+“How should I know what goes on in their heads?
 ---
 >  俺たちは戦いを終わらせて、
 >  帰ってきた。それでいいじゃないか」
@@ -1977,10 +1977,10 @@ We ended the fight and came home. Isn’t that good enough?”
 ---
 >  なんだかスケールでかすぎてなぁ。
 >  地球圏だけでも
-It’s all a bit too big in scale for me. Even just the Earth Sphere
+It’s all way too big for me. Just the Earth Sphere alone
 ---
 >  戦争だなんだって大変だってのにさ」
-has plenty of wars and trouble as it is.”
+has enough wars and trouble to deal with.”
 
 @50499 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -1992,11 +1992,11 @@ has plenty of wars and trouble as it is.”
 # 审校：全局：弯撇号／弯引号
 > 「さてな。俺にはたいした違いはなかった
 >  ような気がするがな。連中の話じゃ
-“Who knows. To me it doesn’t seem like it would’ve made much difference. From what they said,
+“Who knows. I doubt it would’ve made much difference. From what they said,
 ---
 >  もともとそういう性質をもった者
 >  のみが、反応するといっていた」
-only those who already had that nature to begin with would react.”
+only those who already had it in them would respond.”
 
 @50501 David · デビッド
 # 审校：英文 Word is 不贴切
@@ -2096,13 +2096,13 @@ actually died for.”
 # 审校：中文“为了这个而战”绕，英文口气
 > 「そうね。そのための戦いでもあったの
 >  だから。それは、努力しなくてはね」
-“That’s right. That’s what this fight was for too. So we have to work at it.”
+“Yes. That’s part of what we fought for. We’ll have to work at it.”
 
 @50515 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
 > 「まったく、ずいぶん長かったわ。
 >  最初は、ムゲ帝国を
-“Honestly, it’s been so long. At first, this was just a war
+“Honestly, it’s been a long road. At first, this was just a war
 ---
 >  追い出すためだけの戦いだったのに」
 to drive out the Muge Empire.”
@@ -2110,7 +2110,7 @@ to drive out the Muge Empire.”
 @50516 Ark · アーク（按段落 3DD1）
 > 「だけどさ、俺は……
 >  これでよかったんだって、そう思うよ」
-“But you know, I... I think this was the right way.”
+“But you know, I... I think it turned out the way it should.”
 
 @50517 Ark · アーク（按段落 3DD1）
 # 审校：“是好的吧”不顺
@@ -2128,11 +2128,11 @@ to drive out the Muge Empire.”
 # 审校：英文意思反了
 > 「そうね。でも、
 >  大丈夫なのではなくて?
-“Yes. But I think it will be all right, won’t it?
+“Yes. But I think it will be all right, don’t you?
 ---
 >  いまは私も、
 >  そう信じられると思えるわ」
-Even I feel I can believe that now.”
+Now even I feel like I can believe that.”
 
 @50520 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
@@ -2181,21 +2181,21 @@ you telling me to live...)
 @50523 Brad · ブラッド（按段落 3DD3）
 > 「なぁに、問題ねぇって。
 >  俺は信じてるぜ
-“Come on, no problem at all. I believe it.
+“Relax, it’ll be fine. I believe it.
 ---
 >  これから地球圏は
 >  平和になるってな」
-The Earth Sphere is going to be peaceful from now on.”
+The Earth Sphere’s gonna be at peace from here on out.”
 
 @50524 Boss · ボス
 # 审校：全局：弯撇号／弯引号
 > 「当然だわさ。俺さまたちが
 >  死にそうな目にあいながらも
-“Of course it is. We went through hell and barely survived,
+“Of course it is. We went through hell and barely survived
 ---
 >  ようやく戦いを終わらせて、
 >  そうならなかったら困るわよ」
-and we finally ended the war. It’d be a problem if it didn’t work out.”
+to finally end the war. It better turn out that way!”
 
 @50525 Sai Saici · サイ・サイシー
 # 审校：全局：弯撇号／弯引号
@@ -2279,13 +2279,13 @@ After all, we accomplished even what we thought was absolutely impossible.”
 @50534 Jun · ジュン
 # 审校：全局：弯撇号／弯引号
 > 「そうだね。本当に、そう思うよ」
-“That’s right. I really think so.”
+“That’s true. I really believe that.”
 
 @50535 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
 > 「長かったわ……ようやく、
 >  ようやくここまでたどり着いたのね」
-“It’s been so long... We finally, finally made it this far.”
+“It’s been so long... We’ve finally, finally made it.”
 
 @50536 Alan · アラン
 > 「ムゲを追い出すための戦いが……
@@ -2296,7 +2296,7 @@ After all, we accomplished even what we thought was absolutely impossible.”
 # 审校：全局：弯撇号／弯引号
 > 「終わっちまえば、なんでもいいさ。
 >  あとはのんびりさせてもらうさ」
-“Once it’s over, who cares. I’m just gonna take it easy from here on out.”
+“It’s over, that’s all that matters. Now I’m gonna kick back and take it easy.”
 
 @50538 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -2331,7 +2331,7 @@ will surely be a vital strength in rebuilding this Earth Sphere...”
 @50542 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「これで終わったんだな……本当に」
-“So it’s over now... truly.”
+“So it’s over... it’s really over.”
 
 @50543 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -2353,4 +2353,4 @@ will surely be a vital strength in rebuilding this Earth Sphere...”
 # 审校：全局：弯撇号／弯引号
 > 「そうだな。よし、進路を月に向けろ
 >  地球に帰還するぞ」
-“That’s right. All right, set course for the Moon, we’re returning to Earth.”
+“Right. Set course for the Moon. We’re going home to Earth.”
