@@ -3,6 +3,7 @@
 // shows the one for the reader's system (all of them stay visible without it).
 // A platform the current release has no file for links to its install steps.
 import { fileFor, mb, release, PLATFORM_LABEL, type Platform } from '../data/release';
+import Mirrors from './Mirrors.astro';
 import type { Lang } from '../i18n';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
@@ -28,6 +29,7 @@ const items = platforms.map((p) => {
     </a>
   ))}
 </div>
+<Mirrors lang={lang} />
 <a class="other" href={`/${lang}/install/#downloads`} data-other hidden>{t.other[lang]} →</a>
 
 <script>

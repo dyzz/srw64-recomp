@@ -2,22 +2,14 @@
 import Base from '../../layouts/Base.astro';
 import { INSTALL } from '../../copy/install';
 import { langPaths, type Lang } from '../../i18n';
-import { allFiles, fileFor, hd, mb, published, release, type Platform } from '../../data/release';
+import { allFiles, fileFor, hd, mb, published, release, mirrors, type Platform } from '../../data/release';
+import Mirrors from '../../components/Mirrors.astro';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = INSTALL[lang];
 const fill = (s: string) =>
   s.replace(/\{(windows|macos|linux|hd)\}/g, (_, p: Platform) => (p === 'hd' ? release.hd : release.files.find((f) => f.platform === p))!.name);
-// The netdisk mirrors for mainland China; the passcode is in the link and shown beside it.
-const mirrors = (
-  [
-    [release.quark, c.quark],
-    [release.baidu, c.baidu],
-  ] as [string | null | undefined, string][]
-)
-  .filter(([url]) => url)
-  .map(([url, name]) => ({ url: url!, name, passcode: new URL(url!).searchParams.get('pwd') }));
 const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', linux: 'linux', 'steam-deck': 'linux', android: 'android', hd: 'hd' };
 ---
 <Base lang={lang} title={c.title}>
@@ -27,6 +19,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
       <h1>{c.title}</h1>
       <p>{c.lead}</p>
       <p class="rom" set:html={c.rom} />
+      <Mirrors lang={lang} />
     </header>
 
     <ul class="quick">
@@ -88,7 +81,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
       <p class="links">
         <a href={release.github}>GitHub Release {release.tag} →</a>
         {hd.tag !== release.tag && <a href={hd.github}>GitHub Release {hd.tag} →</a>}
-        {mirrors.map((m) => <a href={m.url}>{m.name}{m.passcode && c.passcode.replace('{p}', m.passcode)} →</a>)}
+        {mirrors.map((m) => <a href={m.url}>{c[m.id]}{m.passcode && c.passcode.replace('{p}', m.passcode)} →</a>)}
       </p>
       </> : <p class="nofile">{c.notReleased}</p>}
     </section>
