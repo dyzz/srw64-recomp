@@ -61,7 +61,7 @@
 | `wait_vi` | `vi`、`timeout_ms` | 等到指定 VI |
 | `memory.read` | `address`、`size`（≤ 0x10000） | 读客体内存，返回十六进制；不暂停游戏，是调试视图而非快照（[短跳过](../native/script-skip.md)的状态对照用它） |
 | `memory.write` | `address`、`hex`（整字节，≤ 4096 字节） | 写客体内存（探针用，比如强制战斗背景；只在调试会话里） |
-| `record.start`、`record.stop` | `width`（默认 960） | 录像：开始后每次呈现都读回、缩到 `width`、追加写入运行目录下 `record-<VI>/` 的原始帧和时间；停止时返回帧数与尺寸。`Session.record(秒数)` 把它排成固定 30 帧的时间线（每一刻显示当时最新的一帧，卡住的地方就是定格），用 ffmpeg 编成 MP4 并删掉原始帧；MCP 是 `srw64_record`。实测标题画面录 8 秒得 240 帧、最长间隔 40 ms，录像本身几乎不拖慢 |
+| `record.start`、`record.stop` | `width`（默认 960） | 录像：开始后每次呈现都读回、缩到 `width`、追加写入运行目录下 `record-<VI>/` 的原始帧和时间，游戏声音按送进输出设备的样子写 `audio.s16`（立体声 s16le）；停止时返回帧数与尺寸，以及 `audio_frames`、`audio_rate` 和 `audio_start`（第一块声音相对开始录像的秒数）。`Session.record(秒数)`（或 `record_start` … `record_stop(path)`，中间可以操作游戏）把画面排成固定 30 帧的时间线（每一刻显示当时最新的一帧，卡住的地方就是定格），按 `audio_start` 对齐混入 AAC 音轨，用 ffmpeg 编成 MP4 并删掉原始文件；MCP 是 `srw64_record`、`srw64_record_start`／`srw64_record_stop`（可给 `path`，目录不存在会建）。调试会话默认静音，要声音得 `srw64_launch(audio=true)`；开机前约 27 秒（logo 与开场）游戏本身没有声音。实测标题画面录 8 秒得 240 帧、最长间隔 40 ms，录像本身几乎不拖慢 |
 | `quit` | — | 正常退出，报告记为控制退出 |
 | `methods` | — | 列出宿主支持的方法 |
 
@@ -89,7 +89,7 @@
 
 ## MCP 工具
 
-`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_record`（录一段 MP4，返回路径）、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_mini_stage_load`、`srw64_memory`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`link_page`、`intermission_page`、`battle_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`、`link`、`intermission`、`unit_name`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。宿主不再定期截图或导出内存（2026-10-01 删掉了「完整诊断」：每两秒左右截一张整窗图、导出 8 MiB 内存，标题火焰会从 30 帧掉到 18）；要画面就用 `srw64_screenshot`，要一段过程就用录像。
+`srw64_launch`、`srw64_attach`、`srw64_status`、`srw64_keys`、`srw64_buttons`、`srw64_screenshot`（直接返回图片）、`srw64_record`（录一段带声音的 MP4，返回路径）、`srw64_record_start`／`srw64_record_stop`、`srw64_ui_tree`、`srw64_click`、`srw64_type`、`srw64_ui_key`、`srw64_menu`、`srw64_window`、`srw64_settings`、`srw64_mini_stage_load`、`srw64_memory`、`srw64_wait`（`vi`、`dialogue_active`、`intro_active`、`name_page`、`link_page`、`intermission_page`、`battle_page`、`title_major`、`text`、`event`）、`srw64_events`（日志：`dialogue`、`intro`、`name`、`rules`、`images`、`control`、`script`、`mini_stage`、`settings`、`refunds`、`link`、`intermission`、`unit_name`）、`srw64_quit`。工具错误以 `isError` 返回，不会中断服务器。宿主不再定期截图或导出内存（2026-10-01 删掉了「完整诊断」：每两秒左右截一张整窗图、导出 8 MiB 内存，标题火焰会从 30 帧掉到 18）；要画面就用 `srw64_screenshot`，要一段过程就用录像。
 
 ## 连接方式
 

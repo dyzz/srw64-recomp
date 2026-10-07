@@ -138,6 +138,8 @@ inline Screenshots& screenshots(){static Screenshots value;return value;}
 // A recording of every present, for a video of a stretch of play (debug methods record.start
 // and record.stop; session.py turns it into an MP4). Each present is read back, scaled down to
 // `width` (2 x 2 averaged samples) and appended to a raw RGB file, its time to a second file.
+// The game's sound goes to a third file, as sent to the output device (stereo s16le), with the
+// time of its first block so session.py can line it up with the pictures.
 class Recording {
 public:
     // Debug thread. False when one is already running or the files cannot be opened.
@@ -146,9 +148,12 @@ public:
         if(on)return false;
         std::filesystem::create_directories(directory);
         frames_path=directory/"frames.rgb";times_path=directory/"frames.times";
+        audio_path=directory/"audio.s16";
         frames.open(frames_path,std::ios::binary|std::ios::trunc);times.open(times_path,std::ios::trunc);
-        if(!frames || !times)return false;
+        audio_file.open(audio_path,std::ios::binary|std::ios::trunc);
+        if(!frames || !times || !audio_file)return false;
         out_width=std::max<uint32_t>(64,width&~1u);out_height=0;count=0;
+        audio_frames=0;audio_rate=0;audio_start=-1;
         began=std::chrono::steady_clock::now();on=true;
         return true;
     }
@@ -156,10 +161,25 @@ public:
     nlohmann::json stop() {
         std::lock_guard lock(mutex);
         if(!on)return {{"error","not recording"}};
-        on=false;frames.close();times.close();
+        on=false;frames.close();times.close();audio_file.close();
         return {{"frames",count},{"width",out_width},{"height",out_height},
                 {"seconds",std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count()},
-                {"frames_path",frames_path.string()},{"times_path",times_path.string()}};
+                {"frames_path",frames_path.string()},{"times_path",times_path.string()},
+                {"audio_path",audio_path.string()},{"audio_frames",audio_frames},{"audio_rate",audio_rate},
+                {"audio_start",audio_start}};
+    }
+    // Audio thread: one block of interleaved stereo samples as queued to the device. A change
+    // of rate mid-recording ends the track there (the game sets it once at start-up).
+    void audio(const int16_t* samples,size_t count,uint32_t rate) {
+        std::lock_guard lock(mutex);
+        if(!on || !count)return;
+        if(audio_rate && audio_rate!=rate)return;
+        if(!audio_rate) {
+            audio_rate=rate;
+            audio_start=std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count();
+        }
+        audio_file.write(reinterpret_cast<const char*>(samples),std::streamsize(count*sizeof(int16_t)));
+        audio_frames+=count/2;
     }
     // Render thread, once per present: whether to read this one back.
     bool active() const {return on.load();}
@@ -188,10 +208,11 @@ public:
 private:
     std::mutex mutex;
     std::atomic_bool on{false};
-    std::ofstream frames,times;
-    std::filesystem::path frames_path,times_path;
-    uint32_t out_width=960,out_height=0;
-    uint64_t count=0;
+    std::ofstream frames,times,audio_file;
+    std::filesystem::path frames_path,times_path,audio_path;
+    uint32_t out_width=960,out_height=0,audio_rate=0;
+    uint64_t count=0,audio_frames=0;
+    double audio_start=-1;
     std::chrono::steady_clock::time_point began;
 };
 inline Recording& recording(){static Recording value;return value;}

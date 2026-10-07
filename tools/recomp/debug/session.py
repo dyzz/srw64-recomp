@@ -12,6 +12,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 import base64
 import json
+import math
 import shlex
 import os
 import signal
@@ -367,15 +368,28 @@ class Session:
     def record(self, seconds: float, path: str | Path | None = None, width: int = 960, fps: int = 30) -> dict:
         """An MP4 of the next `seconds` of play, as presented (the host reads every present
         back, scaled to `width`). Frames go on a steady `fps` timeline: each tick shows the
-        latest present by then, so a stalled stretch plays as a held frame. Needs ffmpeg."""
-        started = self.client.call("record.start", width=width)
+        latest present by then, so a stalled stretch plays as a held frame. The game's sound
+        is the audio track. Needs ffmpeg."""
+        self.record_start(width)
         try:
             time.sleep(seconds)
-        finally:
-            result = self.client.call("record.stop")
-        directory = Path(started["directory"])
+        except BaseException:
+            self.client.call("record.stop")
+            raise
+        return self.record_stop(path, fps)
+
+    def record_start(self, width: int = 960) -> dict:
+        """Start a recording that `record_stop` ends and encodes, for input sent in between."""
+        self._recording = self.client.call("record.start", width=width)
+        return self._recording
+
+    def record_stop(self, path: str | Path | None = None, fps: int = 30) -> dict:
+        started, self._recording = getattr(self, "_recording", None), None
+        result = self.client.call("record.stop")
+        directory = Path(started["directory"]) if started else Path(result["frames_path"]).parent
         local = self.local()
         target = Path(path) if path else (directory.with_suffix(".mp4") if local else self.run / (directory.name + ".mp4"))
+        target.parent.mkdir(parents=True, exist_ok=True)
         w, h, count = result["width"], result["height"], result["frames"]
         frames_path, times_path = self.local_file(result["frames_path"]), self.local_file(result["times_path"])
         times = [float(line) for line in times_path.read_text().split()][:count]
@@ -383,7 +397,15 @@ class Session:
             raise HostError("no frames were presented while recording")
         size = w * h * 3
         command = ["ffmpeg", "-loglevel", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{w}x{h}",
-                   "-r", str(fps), "-i", "-", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", str(target)]
+                   "-r", str(fps), "-i", "-"]
+        audio_path = None
+        if result.get("audio_frames") and result.get("audio_rate"):
+            audio_path = self.local_file(result["audio_path"])
+            # The video's first tick is the first one with a present; the sound starts at its first block.
+            offset = result["audio_start"] - math.ceil(times[0] * fps) / fps
+            command += ["-itsoffset", f"{offset:.4f}", "-f", "s16le", "-ar", str(result["audio_rate"]), "-ac", "2",
+                        "-i", str(audio_path), "-map", "0:v", "-map", "1:a", "-c:a", "aac", "-b:a", "192k", "-shortest"]
+        command += ["-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", str(target)]
         encoder = subprocess.Popen(command, stdin=subprocess.PIPE)
         with open(frames_path, "rb") as frames:
             shown, frame = -1, b""
@@ -401,13 +423,18 @@ class Session:
             raise HostError(f"ffmpeg could not encode {target}")
         frames_path.unlink(missing_ok=True)
         times_path.unlink(missing_ok=True)
+        if audio_path:
+            audio_path.unlink(missing_ok=True)
+        elif local:
+            Path(result.get("audio_path", directory / "audio.s16")).unlink(missing_ok=True)
         if local:
             directory.rmdir()
         else:
             self.client.call("file.remove", path=str(directory))
         gaps = [b - a for a, b in zip(times, times[1:])]
         return {"path": str(target), "seconds": round(times[-1], 2), "presents": count, "size": [w, h], "fps": fps,
-                "longest_gap_ms": round(max(gaps) * 1000) if gaps else None}
+                "longest_gap_ms": round(max(gaps) * 1000) if gaps else None,
+                "audio_seconds": round(result["audio_frames"] / result["audio_rate"], 2) if audio_path else None}
 
     def quit(self, timeout: float = 30.0) -> dict:
         try:

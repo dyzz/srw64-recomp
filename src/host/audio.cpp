@@ -1,5 +1,6 @@
 #include "audio.hpp"
 #include "audio_timing.hpp"
+#include "debug_protocol.hpp"
 #include <SDL.h>
 #include <algorithm>
 #include <cstdio>
@@ -100,6 +101,7 @@ void srw64_queue_audio(int16_t* samples, size_t count) {
         fprintf(stderr, "SRW64_AUDIO_QUEUE_FAILED %s\n", SDL_GetError());
         std::abort();
     }
+    if (srw64::debug::recording().active()) srw64::debug::recording().audio(swapped.data(), count, rate);
     queued_samples += count;
     const uint64_t device_frames = SDL_GetQueuedAudioSize(device) / 4;
     max_queued_frames = std::max(max_queued_frames, device_frames);

@@ -36,6 +36,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {
          "language": {"type": "string", "enum": ["ja", "zh-Hans", "en"]},
          "images": {"type": "string", "enum": ["original", "hd"]},
+         "audio": {"type": "boolean", "description": "play the game's sound (off by default); recordings then carry it"},
          "rules": {"description": "\"fixed\" (default: corrections on), \"original\", \"all\", or a list of rule ids", "type": ["string", "array"]},
          "save": {"type": "string", "description": "path of a 32 KiB SRAM to start from"},
          "mini_stage": {"type": "string", "description": "mini stage definition to substitute for the first stage (F8 on the title menu)"},
@@ -57,7 +58,7 @@ TOOLS = [
     {"name": "srw64_buttons", "description": "N64 controller buttons directly, below the keyboard layer (a b z start up down left right l r c_up c_down c_left c_right), held for vis frames.",
      "inputSchema": {"type": "object", "required": ["buttons"], "properties": {
          "buttons": {"type": "string", "description": "e.g. \"r+start\""}, "vis": {"type": "integer", "minimum": 1, "maximum": 600}}}},
-    {"name": "srw64_record", "description": "Record the next seconds of play as an MP4 (every present, scaled to width, on a steady 30 fps timeline) and return its path, the presents seen and the longest gap between two. Play continues meanwhile; send input from another call if needed.",
+    {"name": "srw64_record", "description": "Record the next seconds of play as an MP4 with the game's sound (every present, scaled to width, on a steady 30 fps timeline) and return its path, the presents seen and the longest gap between two. Play continues meanwhile; send input from another call if needed.",
      "inputSchema": {"type": "object", "properties": {
          "seconds": {"type": "number", "description": "1 to 120"},
          "width": {"type": "integer", "description": "video width in pixels (default 960)"}}, "required": ["seconds"]}},
@@ -96,10 +97,10 @@ TOOLS = [
      "inputSchema": {"type": "object", "required": ["address"], "properties": {"address": {"type": "integer"}, "size": {"type": "integer"}}}},
     {"name": "srw64_memory_write", "description": "Write bytes (hex) into guest RAM at an address, between the game's own writes, for probes such as forcing a battle background. Debug sessions only; at most 4096 bytes.",
      "inputSchema": {"type": "object", "required": ["address", "hex"], "properties": {"address": {"type": "integer"}, "hex": {"type": "string"}}}},
-    {"name": "srw64_record_start", "description": "Start recording the game window to an MP4 in the run directory (width in pixels, default 960). Stop with srw64_record_stop.",
+    {"name": "srw64_record_start", "description": "Start recording the game window and its sound (width in pixels, default 960) while other calls drive the game. Stop with srw64_record_stop.",
      "inputSchema": {"type": "object", "properties": {"width": {"type": "integer"}}}},
-    {"name": "srw64_record_stop", "description": "Stop the recording started by srw64_record_start and return where the MP4 was written.",
-     "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "srw64_record_stop", "description": "Stop the recording started by srw64_record_start, encode it as an MP4 with the game's sound (optional path) and return where it was written.",
+     "inputSchema": {"type": "object", "properties": {"path": {"type": "string"}}}},
     {"name": "srw64_wait", "description": "Wait until conditions hold: vi (at least), dialogue_active, intro_active, name_page, link_page, intermission_page, battle_page, parts_page, ability_page, swap_page, save_page, title_major (3 = main menu), text (in the active dialogue), event {log, kind, count}.",
      "inputSchema": {"type": "object", "properties": {"until": {"type": "object"}, "timeout_s": {"type": "number"}}}},
     {"name": "srw64_events", "description": "Rows of an event log from a cursor. Logs: " + ", ".join(EVENT_LOGS) + ".",
@@ -124,7 +125,7 @@ class Server:
 
     def call_tool(self, name: str, args: dict) -> list[dict]:
         if name == "srw64_launch":
-            self.session = Session.launch(**{k: args[k] for k in ("language", "images", "rules", "save", "mini_stage", "reuse_build") if k in args})
+            self.session = Session.launch(**{k: args[k] for k in ("language", "images", "rules", "save", "mini_stage", "reuse_build", "audio") if k in args})
             return text({"run": str(self.session.run), "status": self.session.client.call("status")})
         if name == "srw64_record":
             seconds = float(args["seconds"])
@@ -175,9 +176,9 @@ class Server:
         if name == "srw64_memory_write":
             return text(client.call("memory.write", address=int(args["address"]), hex=str(args["hex"])))
         if name == "srw64_record_start":
-            return text(client.call("record.start", **({"width": int(args["width"])} if "width" in args else {})))
+            return text(session.record_start(int(args.get("width", 960))))
         if name == "srw64_record_stop":
-            return text(client.call("record.stop"))
+            return text(session.record_stop(args.get("path")))
         if name == "srw64_wait":
             return text(session.wait(timeout=float(args.get("timeout_s", 30)), **args.get("until", {})))
         if name == "srw64_events":
