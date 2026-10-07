@@ -747,7 +747,7 @@ die out here?”
 # 审校：全局：弯撇号／弯引号
 > 「そこまでよ。あなたたちはもう逃げられ
 >  ない。おとなしく抵抗はやめなさい」
-“That’s enough. There’s no escape for you now. Stop resisting and come quietly.”
+“That’s far enough. There’s no escape now. Stop resisting and come quietly.”
 
 @25042 Duo · デュオ
 > 「その声、ヒルデ・シュバイカーか」
@@ -1054,7 +1054,7 @@ Hahahahahahaha!”
 @25088 Shapiro · シャピロ
 > 「貴様ら、まず手始めに、貴様ら
 >  から死ぬがいい!!」
-“You fools! To begin with, you will be the first to die!!”
+“To start with, you lot can die first!!”
 
 @25089 Shapiro · シャピロ
 > 「おのれ、おのれおのれぇぇーっ!!」
@@ -1155,7 +1155,7 @@ The universe is calling for me.”
 @25106 Shapiro · シャピロ
 > 「死ね、沙羅。お前はもはやこの俺
 >  の前から完全に姿を消すのだ」
-“Die, Sara. Now you will vanish from my sight for good.”
+“Die, Sara. You will now vanish from my sight forever.”
 
 @25107 Sara · 沙羅
 # 审校：そいつがいいとこだ 是“顶多如此”
@@ -1240,7 +1240,7 @@ Fuh, fuhahahahaha!!”
 # 审校：全局：弯撇号／弯引号
 > 「これは……いかん、爆発するぞ!
 >  早く退避しろ!」
-“What... No, it’s going to blow! Everyone, get clear now!”
+“This is... it’s going to blow! Everyone, get clear, now!”
 
 @25121 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1304,7 +1304,7 @@ Huh, Ryo?!”
 
 @25130 Koji · 甲児
 > 「ちくしょう! そんなのありかよ!!」
-“Damn it! You’ve gotta be kidding me!!”
+“Damn it! That’s not fair!!”
 
 @25131 Jun · ジュン
 > 「落ち着きなよ、忍も甲児も」

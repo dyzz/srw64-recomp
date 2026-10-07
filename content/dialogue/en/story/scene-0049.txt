@@ -60,7 +60,7 @@ upon a speck of stardust.”
 @33433 Luna · ルーナ
 > 「……でも、女の身の私には、はかなく
 >  消える星くずにも頼りたいことも……
-“...But as a woman, there are times when even I wish to rely on a fleeting speck of
+“...But I am a woman, and there are things I would wish for even on a fleeting speck of
 ---
 >  ございます」
 stardust...”
@@ -111,7 +111,7 @@ domination of the Earth Sphere. Then I’ll destroy the whole factory...)
 
 @33442 Heero · ヒイロ
 > 「エネルギーパイプはどこだ……」
-“Where is the energy pipe...”
+“Where’s the energy pipe...”
 
 @33443 Heero · ヒイロ
 > 「なに!?」
@@ -197,7 +197,7 @@ Remember that.”
 # 审校：全局：弯撇号／弯引号
 > 「私はヒルデ・シュバイカー。このコロニー
 >  から志願した者よ」
-“I’m Hilde Schbeiker. I volunteered from this colony.”
+“I’m Hilde Schbeiker. I signed up from this colony.”
 
 @33456 Duo · デュオ
 > 「ふーん、OZの兵隊さんか」
@@ -214,7 +214,7 @@ then fight with OZ.”
 @33458 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
 > 「そいつはいいや。ま、考えさせてもらうよ」
-“That’s a good one. Well, I’ll think it over.”
+“That’s a good one. Well, I’ll give it some thought.”
 
 @33459 David · デビッド
 > 「おい、聞いたか。やっぱりやっちまった
@@ -401,7 +401,7 @@ I’ll make you taste the bitterness of defeat! All right, we sortie!!”
 @33487 Shapiro · シャピロ
 > 「まだ出てはならん。もっと敵を
 >  引きつけるのだ」
-“Not yet. Let the enemy come closer.”
+“Not yet. Draw the enemy in closer.”
 
 @33488 Helmut · ヘルマット
 # 审校：全局：弯撇号／弯引号
@@ -415,7 +415,7 @@ There’s no need for such tricks. I alone can...”
 @33489 Shapiro · シャピロ
 # 审校：全局：弯撇号／弯引号
 > 「俺の作戦に従えんというのか?」
-“You refuse to follow my plan?”
+“Are you saying you won’t follow my plan?”
 
 @33490 Helmut · ヘルマット
 # 审校：全局：弯撇号／弯引号
@@ -461,7 +461,7 @@ this moon will become a living hell for them. Heh heh heh heh.”
 @33496 Shapiro · シャピロ
 > 「いいだろう。ヘルマット将軍、
 >  出撃してくれ」
-“Very well. General Helmut, launch.”
+“Very well. General Helmut, you may launch.”
 
 @33497 Helmut · ヘルマット
 # 审校：「相手をしてくれるわ」意为“我来做你们的对手”，初稿“here will be your opponent”生硬，改为“will take you on”。
@@ -1800,7 +1800,7 @@ thought of something?”
 # 审校：全局：弯撇号／弯引号
 > 「ふうん、そうなの。でも私は、
 >  アムロ特尉のために、一緒にMSを
-“Oh, really? But I can build mobile suits together with Special Lieutenant Amuro.
+“Oh, really? But I can build mobile suits with Special Lieutenant Amuro, for him.
 ---
 >  つくれるわ。新しいガンダムを。
 >  あなたには、それはできないでしょう?」
@@ -2286,12 +2286,12 @@ turning back now.”
 # 审校：全局：弯撇号／弯引号
 > 「……ロス・イゴールになら、万丈を
 >  経由で連絡がつけられるかもしれん」
-“...Ross Igor, though, we might be able to reach through Banjo.”
+“...We might be able to reach Ross Igor through Banjo.”
 
 @33764 Quattro · クワトロ
 > 「イゴール将軍か……
 >  なんとかできるかもしれんな」
-“General Igor, huh... We might be able to work something out.”
+“General Igor... He might be able to do something.”
 
 @33765 Ryo · 亮
 # 审校：全局：弯撇号／弯引号
@@ -2337,7 +2337,7 @@ in the Shoal Zone.”
 
 @33771 Eiji · エイジ
 > 「暗礁宙域というと……この間の?」
-“The Shoal Zone... you mean the one from before?”
+“The Shoal Zone... you mean the one we were in recently?”
 
 @33772 David · デビッド
 > 「なんだ、なら探しにいけばいいじゃないか
@@ -2446,7 +2446,7 @@ had a mobile suit developed, and it’s apparently at La Vie en Rose.”
 @33788 Bright · ブライト
 > 「よし、とりあえず我々はラビアンローズ
 >  との合流を急ぐぞ」
-“All right, for now we make haste to rendezvous with La Vie en Rose.”
+“All right, our priority now is to rendezvous with La Vie en Rose.”
 
 @33789 Beltorchika · ベルトーチカ
 > 「ラビアンローズ確認」
@@ -2526,7 +2526,7 @@ so I gave it everything I had...”
 @33804 Rain · レイン
 > 「はい、すみません。ほらみんな、さっさと
 >  いらっしゃい」
-“Yes, sorry. Come on, everyone, get moving.”
+“Yes, sorry. Come on, everyone, this way.”
 
 @33805 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -2592,7 +2592,7 @@ to meet you.”
 
 @33815 Amuro · アムロ
 > 「そういえばアナハイムといっていたが……」
-“Speaking of which, you said Anaheim...”
+“Speaking of which, you mentioned Anaheim...”
 
 @33816 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -2656,7 +2656,7 @@ is at least part of the reason.”
 # 审校：全局：弯撇号／弯引号
 > 「ふうん、そうなの。でも私は、
 >  アムロ特尉のために、一緒にMSを
-“Oh, really? But I can build mobile suits together with Special Lieutenant Amuro.
+“Oh, really? But I can build mobile suits with Special Lieutenant Amuro, for him.
 ---
 >  つくれるわ。新しいガンダムを。
 >  あなたには、それはできないでしょう?」
@@ -2670,7 +2670,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「私は、アムロ特尉のお役に
 >  たてるってことです」
-“It means I can be useful to Special Lieutenant Amuro.”
+“It means I can actually be of use to Special Lieutenant Amuro.”
 
 @33828 Beltorchika · ベルトーチカ
 > 「な……あ、ちょっとアムロ、どこいくのよ」
@@ -2691,7 +2691,7 @@ A new Gundam. You can’t do that, can you?”
 @33831 Beltorchika · ベルトーチカ
 > 「ちょっと、あなた待ちなさいよ!
 >  アムロ!」
-“Hey, you wait right there! Amuro!”
+“Hey, you, wait just a minute! Amuro!”
 
 @33832 David · デビッド
 # 审校：原文“すげぇもん見ちまった”是粗俗口语，初稿“something else”偏弱，改为“something crazy”更贴切。
@@ -2706,7 +2706,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「ほんとほんと。でもアムロ特尉って
 >  意外に、はっきりしないんだね」
-“Totally. But Special Lieutenant Amuro sure is surprisingly wishy-washy.”
+“Totally. But who knew Special Lieutenant Amuro could be so wishy-washy?”
 
 @33835 Killy · キリー
 # 审校：全局：弯撇号／弯引号
@@ -2745,4 +2745,4 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「わっ、覆面のあんちゃん、いきなり
 >  出てくんなよな」
-“Whoa, masked guy, don’t just pop out of nowhere.”
+“Whoa, Mask Guy, quit popping out of nowhere like that!”

@@ -1019,7 +1019,7 @@ meet you.”
 
 @24882 Amuro · アムロ
 > 「そういえばアナハイムといっていたが……」
-“Speaking of which, you said Anaheim...”
+“Speaking of which, you mentioned Anaheim...”
 
 @24883 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -1126,7 +1126,7 @@ A new Gundam. You can’t do that, can you?”
 @24899 Beltorchika · ベルトーチカ
 > 「ちょっと、あなた待ちなさいよ!
 >  アムロ!」
-“Hey, you wait right there! Amuro!”
+“Hey, you, wait just a minute! Amuro!”
 
 @24900 David · デビッド
 # 审校：口语化
@@ -1179,7 +1179,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「わっ、覆面のあんちゃん、いきなり
 >  出てくんなよな」
-“Whoa, masked guy, don’t just pop out of nowhere.”
+“Whoa, Mask Guy, quit popping out of nowhere like that!”
 
 @24910 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号

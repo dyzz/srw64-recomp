@@ -736,7 +736,7 @@ You may call their combined form Godmars.)
 @29845 Takeru · タケル
 > 「な……に? さっきも聞こえた……
 >  誰だ?」
-“W-What? That voice again... Who are you?”
+“Wh-what? That voice again... Who are you?”
 
 @29846 ???
 # 审校：全局：弯撇号／弯引号

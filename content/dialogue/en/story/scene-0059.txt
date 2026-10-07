@@ -312,10 +312,10 @@ All hands, to your stations.”
 # 审校：全局：弯撇号／弯引号
 > 「はい!
 >  私、きっと艦長がいらしてくださると
-“Yes! I just knew you’d come, Captain,
+“Yes! I knew you would come, Captain,
 ---
 >  信じて、ずっと待っていたんですよ」
-so I’ve been waiting all this time.”
+and I’ve been waiting all this time.”
 
 @37775 Bright · ブライト
 > 「え……?」
@@ -325,10 +325,10 @@ so I’ve been waiting all this time.”
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
 > 「ブライト艦長……忘れてしまったの
 >  ですか? 私、艦長に頼まれたと
-“Captain Bright... have you forgotten? I thought you had asked me to,
+“Captain Bright... have you forgotten? I thought you had entrusted this to me,
 ---
 >  思って、一生懸命……」
-so I did my very best...”
+so I gave it everything...”
 
 @37777 Bright · ブライト
 # 审校：全局：弯撇号／弯引号

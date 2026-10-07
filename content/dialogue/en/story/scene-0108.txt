@@ -81,7 +81,7 @@ I think. So why do we have to die in a place like this?”
 # 审校：全局：弯撇号／弯引号
 > 「そこまでよ。あなたたちはもう逃げられ
 >  ない。おとなしく抵抗はやめなさい」
-“That’s enough. There’s no escape for you now. Stop resisting and come quietly.”
+“That’s far enough. There’s no escape now. Stop resisting and come quietly.”
 
 @34637 Duo · デュオ
 > 「その声……ヒルデ・シュバイカーか」
@@ -95,7 +95,7 @@ I think. So why do we have to die in a place like this?”
 @34639 Wufei · 五飛
 > 「戦場で女と語らうとはな。
 >  もう少しマシな奴だと思っていたが
-“Chatting with a woman on the battlefield. I thought you were a little better than that,
+“Chatting with a woman on the battlefield? I thought better of you than that,
 ---
 >  俺の勘違いだったようだ」
 but it seems I was mistaken.”
@@ -135,7 +135,7 @@ Very well. I do not kill the weak, nor women.”
 @34644 Hilde · ヒルデ
 > 「……ではMSから降りなさい。
 >  そのガンダムは破壊する」
-“...Then get out of your MS. That Gundam will be destroyed.”
+“...Then get out of your MS. That Gundam is to be destroyed.”
 
 @34645 Duo · デュオ
 > 「ちょ、ちょっと待ってくれ、こいつは……」
@@ -572,7 +572,7 @@ she went off on her own.”
 # 审校：全局：弯撇号／弯引号
 > 「うむ。話を聞いた限りでは、その
 >  システムに原因があるようだね」
-“Indeed. From what I’ve heard, it seems the cause lies in that system.”
+“Yes. From what I’ve heard, the system does seem to be the cause.”
 
 @34711 Shinobu · 忍
 > 「おい、沙羅が倒れたってのは、
@@ -593,10 +593,10 @@ she went off on her own.”
 # 审校：全局：弯撇号／弯引号
 > 「ダンクーガのシステムによる負荷が
 >  問題だな。肉体的なものではなく
-“The strain from the Dancouga’s system is the problem. It’s not physical.
+“The problem is the strain from the Dancouga’s system. It isn’t physical,
 ---
 >  精神的なものだということだな」
-It’s mental.”
+it’s mental.”
 
 @34715 Shinobu · 忍
 > 「誰だ、あんた」
@@ -612,7 +612,7 @@ It’s mental.”
 # 审校：全局：弯撇号／弯引号
 > 「これから君たちに同行させてもらう
 >  ことになった。ひとつよろしく頼むよ」
-“I’ll be accompanying you all from now on. I look forward to working with you.”
+“I’ll be coming along with you from now on. Glad to be aboard.”
 
 @34718 Shinobu · 忍
 > 「あ、ああ」
@@ -1093,7 +1093,7 @@ to be aboard the Argama...”
 
 @34801 Bunny · バニー
 > 「所属不明機よりコンタクト」
-“Contact from the unidentified craft.”
+“The unidentified craft is contacting us.”
 
 @34802 Ryoma · リョウ
 > 「こちら、ゲッターチームの流竜馬。
@@ -1436,10 +1436,10 @@ without the man himself here.”
 # 审校：补译：原稿占位符错页；特佐 军衔
 > 「俺もぬけてきたってことですよ、ブライト
 >  特佐。それで{HeroMech}に
-“It means I got out too, Special Colonel Bright. So I was thinking the {HeroMech}
+“It means I bailed too, Special Colonel Bright. So I was hoping the {HeroMech}
 ---
 >  加えてもらえないかと思ってね」
-might have room for one more.”
+might take me in.”
 
 @34849 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -1561,7 +1561,7 @@ Now, now, don’t make such a scary face.”
 
 @34866 Quattro · クワトロ
 > 「それで、どういうことなのだ?」
-“So, what is the meaning of this?”
+“So, what’s this all about?”
 
 @34867 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -1838,12 +1838,12 @@ for invading Earth.”
 @34907 Bright · ブライト
 > 「くっ……やはり、まだこれほどの戦力を
 >  隠していたか」
-“Ngh... so they were still hiding this much fighting strength after all.”
+“Ngh... So they were still hiding this much strength.”
 
 @34908 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 > 「連中もそれだけ必死だということよ」
-“It just means they’re that desperate.”
+“It only shows how desperate they are.”
 
 @34909 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -2077,7 +2077,7 @@ The universe itself demands me.”
 @34946 Shapiro · シャピロ
 > 「死ね、沙羅。お前はもはやこの俺
 >  の前から完全に姿を消すのだ」
-“Die, Sara. Now you will vanish from my sight for good.”
+“Die, Sara. You will now vanish from my sight forever.”
 
 @34947 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -2248,11 +2248,11 @@ told about.”
 
 @34974 Koji · 甲児
 > 「ちくしょう! そんなのありかよ!!」
-“Damn it! You’ve gotta be kidding me!!”
+“Damn it! That’s not fair!!”
 
 @34975 Jun · ジュン
 > 「もう、落ち着きなよ、忍も甲児も」
-“Come on, calm down, both of you, Shinobu and Koji.”
+“Come on, calm down, Shinobu, Koji.”
 
 @34976 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -2270,7 +2270,7 @@ bound to come back.”
 @34977 Tetsuya · 鉄也
 > 「そうとばかりもいえないだろう。連中の
 >  地球占領軍は壊滅した
-“It may not necessarily come to that. Their occupation army on Earth has been wiped out.
+“That’s not necessarily so. Their occupation army on Earth has been wiped out.
 ---
 >  これ以上の損害はだしたくない
 >  かもしれない」
@@ -2453,7 +2453,7 @@ there are the people on Treize’s side too, aren’t there?”
 
 @35005 Masato · 雅人
 > 「やっぱり、例のやつなんですか?」
-“So it really is that thing, after all?”
+“So it is that thing after all?”
 
 @35006 Hasan · ハサン
 # 审校：全局：弯撇号／弯引号
@@ -2685,10 +2685,10 @@ I’ll set off on a voyage among the stars.”
 # 审校：全局：弯撇号／弯引号
 > 「わかってる。だが、いずれOZをこの手に
 >  するためには、シロッコだって利用して
-“I know. But to make OZ mine someday, I’ll use Scirocco too,
+“I know. But if it gets me OZ someday, I’ll use even Scirocco
 ---
 >  踏み台にしてみせる」
-and make him my stepping stone.”
+as a stepping stone.”
 
 @35031 Mouar · マウアー
 > 「ジェリド……」
@@ -2724,7 +2724,7 @@ inside it.”
 
 @35037 Zechs · ゼクス
 > 「ご老人、私の乗っていたMSは……」
-“Old man, the mobile suit I was piloting...”
+“Sir, the mobile suit I was piloting...”
 
 @35038 Howard · ハワード
 > 「トールギスか? まだ残っとるとは思わ
@@ -2733,7 +2733,7 @@ inside it.”
 
 @35039 Zechs · ゼクス
 > 「ご老人……あなたはいったい……?」
-“Old man... just who are you...?”
+“Sir... just who are you...?”
 
 @35040 Howard · ハワード
 # 审校：全局：弯撇号／弯引号
@@ -2848,4 +2848,4 @@ all the way outside the door. It gave me a fright. Shall I get Dr. Hasan?”
 # 审校：全局：弯撇号／弯引号
 > 「いや……ちょっと疲れただけだよ。
 >  あとで栄養剤でも、もらってくるさ」
-“No... I’m just a little tired. I’ll go get some nutrients later.”
+“No... I’m just a little tired. I’ll go get some vitamins or something later.”
