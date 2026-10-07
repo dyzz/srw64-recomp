@@ -1041,7 +1041,7 @@ Don’t you think?”
 # 审校：全局：弯撇号／弯引号
 > 「勝てるさ。スーパーモードさえあれば、
 >  俺は師匠を超えてみせる」
-“I can win. With Super Mode, I’ll surpass my Master.”
+“I will. With Super Mode, I’ll surpass my Master.”
 
 @36385 Schwarz · シュバルツ
 # 审校：光秃秃的 Master 指代不清
@@ -1184,7 +1184,7 @@ and put your very soul into your technique! Now, here I come!”
 @36406 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
 > 「どうしたどうしたどうした!!」
-“What’s wrong, what’s wrong, what’s wrong!!”
+“What’s the matter, what’s the matter, what’s the matter?!”
 
 @36407 Domon · ドモン
 > 「ぐうぅぅぅっ……」
@@ -1701,7 +1701,7 @@ That single instant of Meikyo Shisui...!”
 # 审校：全局：弯撇号／弯引号
 > (死ぬ……? 俺が……? そうだ、
 >  あの時と同じだ……あの時と……)
-(Die...? Me...? That’s it, it’s just like before... just like then...)
+(Die...? Me...? Yes, it’s just like that time... Just like then...)
 
 @36493 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -1716,7 +1716,7 @@ That single instant of Meikyo Shisui...!”
 # 审校：全局：弯撇号／弯引号
 > 「なんだこの気迫は!? いままでの
 >  奴とは違う……なんだ!?」
-“What is this fighting spirit?! He’s different from before... What is this?!”
+“What is this fighting spirit?! He is not the same man... What is happening?!”
 
 @36496 Domon · ドモン
 > 「東方不敗……!」

@@ -629,7 +629,7 @@ and I can’t have you climbing into the cockpit on your own!”
 @37828 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「まぁいいじゃないか、別に」
-“Come on, it’s fine, isn’t it?”
+“Oh, come on, what’s the harm?”
 
 @37829 Allenby · アレンビー
 # 审校：全局：弯撇号／弯引号

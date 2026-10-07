@@ -779,7 +779,7 @@ OZ came to us, design data and all.”
 
 @31740 Alan · アラン
 > 「パイロットは君だ、{HeroName}」
-“The pilot is you, {HeroName}.”
+“You are, {HeroName}.”
 
 @31741 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -818,7 +818,7 @@ and no one but you can handle it.”
 @31745 Selain · セレイン（按段落 3DD2）
 > 「いつの間にそんなことを……アストナージ
 >  私に黙って、データをコピーしたな」
-“When did you go and do that... Astonaige, you copied my data without telling me.”
+“When did you... Astonaige, you copied my data behind my back.”
 
 @31746 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -834,7 +834,7 @@ so you’ll pilot it, won’t you?”
 # 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「いいだろう。使わせてもらうとしよう。
 >  しかしスヴァンヒルドはどうなるのだ?」
-“Fine. I’ll put it to use. But what becomes of the Svanheld?”
+“Fine. I’ll take it. But what happens to the Svanheld?”
 
 @31748 Rish · リッシュ（按段落 3DD2）
 > 「俺の機体の予備パーツだな」
@@ -962,7 +962,7 @@ That’s also where we got the God and the Rising from.”
 
 @31762 Alan · アラン
 > 「パイロットは君だ、{HeroName}」
-“The pilot is you, {HeroName}.”
+“You are, {HeroName}.”
 
 @31763 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -1001,7 +1001,7 @@ and no one but you can handle it.”
 @31767 Selain · セレイン（按段落 3DD2）
 > 「いつの間にそんなことを……アストナージ
 >  私に黙って、データをコピーしたな」
-“When did you go and do that... Astonaige, you copied my data without telling me.”
+“When did you... Astonaige, you copied my data behind my back.”
 
 @31768 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -1017,7 +1017,7 @@ so you’ll pilot it, won’t you?”
 # 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「いいだろう。使わせてもらうとしよう。
 >  しかしスヴァンヒルドはどうなるのだ?」
-“Fine. I’ll put it to use. But what becomes of the Svanheld?”
+“Fine. I’ll take it. But what happens to the Svanheld?”
 
 @31770 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -1029,4 +1029,4 @@ so you’ll pilot it, won’t you?”
 # 审校：全局：弯撇号／弯引号
 > 「そうか……おしい気もするが、
 >  それが常道か。わかった、まかせる」
-“I see... It feels like a waste, but I suppose that’s the usual arrangement. All right, I’ll leave it to you.”
+“I see... Seems a shame, but I suppose that’s standard practice. All right, I’ll leave it to you.”

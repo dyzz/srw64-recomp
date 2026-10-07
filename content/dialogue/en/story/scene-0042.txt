@@ -157,7 +157,7 @@ And Banjo’s still off who knows where.”
 @26662 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「いいって。それより、大丈夫かよ?」
-“It’s fine. Never mind that, are you okay?”
+“Don’t mention it. Anyway, you gonna be okay?”
 
 @26663 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号

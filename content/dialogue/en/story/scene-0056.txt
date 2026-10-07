@@ -2241,7 +2241,7 @@ see such a thing. You have my thanks. ...Farewell!”
 @37022 Domon · ドモン
 > 「キラル・メキレル……お前とは
 >  もっと違う形で出会いたかった……」
-“Kyral Mekirel... I wish I could have met you in some other way...”
+“Kyral Mekirel... I wish we could have met under different circumstances...”
 
 @37023 Kyral · キラル
 > 「く……無念……」

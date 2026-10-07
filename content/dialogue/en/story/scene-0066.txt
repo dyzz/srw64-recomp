@@ -1778,7 +1778,7 @@ Should I go looking for them, for Lady Relena’s sake as well...?)
 # 审校：全局：弯撇号／弯引号
 > 「おう、来たな。
 >  ちょっとこれを見てくれないか」
-“Oh, you’re here. Take a look at this for a moment.”
+“Hey, there you are. Take a look at this, would you?”
 
 @29085 Brad · ブラッド（按段落 3DD3）
 > 「こ、これは……アストナージ、こいつは
@@ -1922,7 +1922,7 @@ about the Virose they recovered.”
 # 审校：全局：弯撇号／弯引号
 > 「おう、来たな。
 >  ちょっとこれを見てくれないか」
-“Oh, you’re here. Take a look at this for a moment.”
+“Hey, there you are. Take a look at this, would you?”
 
 @29109 Brad · ブラッド（按段落 3DD3）
 > 「こ、これは……アストナージ、こいつは

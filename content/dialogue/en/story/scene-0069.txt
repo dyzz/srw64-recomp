@@ -736,7 +736,7 @@ You may call their combined form Godmars.)
 @29845 Takeru · タケル
 > 「な……に? さっきも聞こえた……
 >  誰だ?」
-“W-What? I heard it again... Who are you?”
+“W-What? That voice again... Who are you?”
 
 @29846 ???
 # 审校：全局：弯撇号／弯引号
@@ -751,7 +751,7 @@ You may call their combined form Godmars.)
 # 审校：全局：弯撇号／弯引号
 > 「しょせんはみかけ倒しにすぎない。
 >  一気にケリをつけてやる」
-“He’s nothing but a bluff. I’ll finish this in one blow.”
+“It’s all show. I’ll finish this in one blow.”
 
 @29849 Baren · バレン
 > 「きゃあああぁぁーっ!!」
@@ -798,7 +798,7 @@ or I will attack!”
 # 审校：全局：弯撇号／弯引号
 > 「隊長、俺にもわからないんです。
 >  俺は……」
-“Commander, I don’t understand it either. I just...”
+“Commander, I don’t know either. I...”
 
 @29858 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -2025,11 +2025,11 @@ No matter what happens, I won’t let this Earth be sacrificed...)
 # 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「ああ、見てみたんだがね、スイームルグも
 >  エルブルスも、設計段階に
-“Yeah, I took a look, and both the Sweemurg and the Elbulls have been redesigned
+“Yeah, I had a look. Both the Sweemurg and the Elbulls were redesigned,
 ---
 >  あったドッキング機構を
 >  廃して再設計してあるんだな」
-with the docking mechanism from the design stage removed.”
+scrapping the docking mechanism they had back at the design stage.”
 
 @30027 Lawrence · ローレンス
 # 审校：精读：万丈様
@@ -2190,11 +2190,11 @@ Might you hear me out?”
 # 审校：补译：原稿占位符丢失
 > 「実はこれまで老骨にムチ打って
 >  {HeroName}お嬢様のサポートを
-“The truth is, from whipping these old bones to support Lady {HeroName},
+“The truth is, perhaps from driving these old bones so hard in support of Lady {HeroName},
 ---
 >  してまいりましたためか、腰痛が
 >  ひどくなってまいりました。このままでは
-my back has grown terribly sore. At this rate,
+my back pain has grown quite severe. At this rate,
 ---
 >  近いうちにスイームルグに搭乗する
 >  ことができなくなってしまいそうなのです」
@@ -2490,7 +2490,7 @@ has just now achieved complete victory.”
 # 审校：全局：弯撇号／弯引号
 > 「待てワール。
 >  シルバー戦線の報告がないが?」
-“Wait, Wahl. There’s no report from the Silver Front?”
+“Wait, Wahl. What of the report from the Silver Front?”
 
 @30087 Wahl · ワール
 > 「はっ。先遣艦隊司令
