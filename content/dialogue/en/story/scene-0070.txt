@@ -1191,7 +1191,7 @@ I’ve come to take back Grendizer!”
 
 @30279 Maria · マリア
 > 「お兄ちゃん、生きてたのね!?」
-“Brother, you were alive?!”
+“Brother, you’re alive?!”
 
 @30280 Daisuke · 大介
 > 「マリア、お前こそよく……」
@@ -1345,10 +1345,10 @@ drive out someone willing to fight. It’ll be a hard battle, but glad to have y
 # 审校：全局：弯撇号／弯引号
 > 「ありがとう、甲児。あたしがんばるわ。
 >  あっ、そういえば甲児、あの時の傷
-“Thank you, Koji. I’ll do my best. Oh, that reminds me, Koji, that wound from back then,
+“Thanks, Koji. I’ll do my best. Oh, that reminds me, Koji, that wound from before,
 ---
 >  大丈夫だった?」
-are you all right?”
+is it okay now?”
 
 @30300 Koji · 甲児
 # 审校：全局：弯撇号／弯引号

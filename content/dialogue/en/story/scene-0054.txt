@@ -3796,7 +3796,7 @@ They say you’ve been fighting ever since the days of Zorbados.”
 @36192 Banjo · 万丈
 > 「南原博士の残した戦闘ロボ、
 >  コン・バトラーVを動かしてください」
-“Please get the combat robot Dr. Nanbara left behind, Combattler V, running.”
+“Please get Combattler V, the combat robot Dr. Nanbara left behind, up and running.”
 
 @36193 Dr. Yotsuya · 四谷博士
 # 审校：全局：弯撇号／弯引号

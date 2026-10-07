@@ -33,7 +33,7 @@ Sooner or later we’ll be moving over to her.”
 @26868 Henken · ヘンケン
 > 「アーガマに近いもの、ということらしい
 >  がな」
-“Apparently it means something close to the Argama.”
+“Supposedly it means something like ‘close to the Argama.’”
 
 @26869 Kamille · カミーユ
 > 「しかし宇宙で新造戦艦って、
@@ -114,12 +114,12 @@ influence. They’d rather avoid that.”
 @26881 Banjo · 万丈
 > 「ギャリソン、本当にこんなところに
 >  いるのかい?」
-“Garrison, is he really out here?”
+“Garrison, is he really living somewhere like this?”
 
 @26882 Garrison · ギャリソン
 > 「間違いございません。ただ……私の
 >  調べましたところによりますと
-“There is no doubt, sir. However... from what I have learned,
+“Without a doubt, sir. However... from what I have been able to learn,
 ---
 >  少々問題がございますが……」
 there is a slight problem...”
@@ -181,7 +181,7 @@ do something about it.”
 @26890 Banjo · 万丈
 > 「失礼、四谷博士とお見うけ
 >  いたしますが?」
-“Excuse me, I take it you are Dr. Yotsuya?”
+“Pardon me, but would you be Dr. Yotsuya?”
 
 @26891 Dr. Yotsuya · 四谷博士
 # 审校：全局：弯撇号／弯引号
@@ -226,11 +226,11 @@ Dr. Nanbara, I take it.”
 # 审校：全局：弯撇号／弯引号
 > 「南原博士は亡くなられた。彼が
 >  その卓抜した先見の明で
-“Dr. Nanbara has passed away. The combat robot he built with his remarkable foresight
+“Dr. Nanbara has passed away. The combat robot he built,
 ---
 >  建造した戦闘ロボットも、その時
 >  から動かないままです」
-has sat idle ever since.”
+thanks to his remarkable foresight, hasn’t moved since.”
 
 @26897 Dr. Yotsuya · 四谷博士
 > 「そうか……南原が死んだか」
@@ -282,11 +282,11 @@ first.”
 # 审校：全局：弯撇号／弯引号
 > 「なんだって? いったいなぜそこまで……
 >  いや、あなたがどう思おうとかまわない
-“What? Why on earth would you go that far... No, I don’t care what you think.
+“What? Why would you go that far... No, I don’t care what you think.
 ---
 >  博士、僕がつかんでいる情報では
 >  今度の敵、銀河帝国は
-Doctor, according to the information I’ve gathered, this new enemy, the Galactic Empire,
+Doctor, from what I’ve learned, this new enemy, the Galactic Empire,
 ---
 >  人間を殺すだけじゃない。この
 >  地球そのものを破壊しても
@@ -327,7 +327,7 @@ They say you’ve been fighting since the days of Zorbados.”
 @26907 Dr. Yotsuya · 四谷博士
 > 「……わかった。それで、わしは
 >  何をすればいい」
-“...Understood. So, what do you need from me?”
+“...All right. So, what do you need me to do?”
 
 @26908 Banjo · 万丈
 # 审校：精读：去破折号
@@ -843,7 +843,7 @@ an enemy, they’ll take in just about anyone.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ……そうだな。それに、この雰囲
 >  気の理由はそれなのかもしれんな」
-“Yes... I suppose so. And perhaps that’s what gives this place its atmosphere.”
+“Yeah... I suppose so. Maybe that’s where this atmosphere comes from, too.”
 
 @26979 Ehrlich · エルリッヒ（按段落 3DD1）
 > (それと強さの理由も、か)
@@ -978,11 +978,11 @@ Captain, have the rest search the ship for enemies.”
 ---
 >  やらねばならぬことがある。地球などに
 >  いつまでもかかわっているヒマはないのだ
-you must do. You have no time to waste forever on a world like Earth.
+you must do. You have no time to waste on a planet like Earth.
 ---
 >  マーズ、地球を破壊して
 >  帰って来い」
-Mars, destroy Earth and come back.”
+Mars, destroy Earth and return.”
 
 @27003 Takeru · タケル
 > 「黙れズール! 俺の父などといって
@@ -1019,7 +1019,7 @@ never do as you wish!”
 @27009 Takeru · タケル
 > 「兄さんを追っていて、俺はズールと
 >  戦ったんだ」
-“I was chasing my brother, and I ended up fighting Zuul.”
+“I went after my brother, and I ended up fighting Zuul.”
 
 @27010 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1100,7 +1100,7 @@ shadow. You wasted your effort. Wahahahahahaha!”
 # 审校：全局：弯撇号／弯引号
 > 「はははっ、あまり無茶な飛ばし方は
 >  しないでくれよ」
-“Hahaha, don’t fly it too recklessly, all right?”
+“Hahaha, try not to push it too hard, all right?”
 
 @27024 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -1166,7 +1166,7 @@ on Planet Gishin. It’s a terrifying power.”
 @27032 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「中佐、何か用件があったのでは?」
-“Lieutenant Colonel, wasn’t there something you wanted to discuss?”
+“Lieutenant Colonel, wasn’t there something you wanted?”
 
 @27033 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
@@ -1185,13 +1185,13 @@ could use, but the enemy’s at every one of them.”
 # 审校：全局：弯撇号／弯引号
 > 「そうか……結局、戦闘は避けられ
 >  んか」
-“I see... So there’s no avoiding a fight after all.”
+“I see... So we can’t avoid a fight after all.”
 
 @27035 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
 > 「そういうことになる。そこでだ、
 >  1つ、提案があるんだが」
-“Afraid so. Which brings me to a proposal.”
+“Looks that way. Which brings me to a proposal.”
 
 @27036 Bright · ブライト
 > 「なにか?」
@@ -1217,7 +1217,7 @@ If you can, I’d like you to take them out.”
 # 审校：全局：弯撇号／弯引号
 > 「そうだな。わかった、その件は検討
 >  してみよう」
-“Agreed. All right, we’ll consider it.”
+“Right. All right, we’ll consider it.”
 
 @27040 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
@@ -1376,7 +1376,7 @@ there seems to be one that’s different.”
 @27063 Tetsuya · 鉄也
 > 「お前にも無関係じゃない。
 >  ミケーネの残党がいるんだ」
-“This concerns you too. There are Mycenae remnants there.”
+“This concerns you too. Mycenae remnants are holed up there.”
 
 @27064 Koji · 甲児
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
@@ -1582,7 +1582,7 @@ we’ll always be together.”
 @27100 Koji · 甲児
 > 「だってよ……大介さんが……
 >  大介さんが……」
-“But... Daisuke... Daisuke is...”
+“But... Daisuke... Daisuke...”
 
 @27101 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -1616,7 +1616,7 @@ and I want to link up with them before that.”
 @27106 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「よし、では出発するとしようか」
-“Good, then let’s get moving.”
+“Good, then let’s get going.”
 
 @27107 Reika · レイカ
 # 审校：全局：弯撇号／弯引号
@@ -1637,7 +1637,7 @@ and I want to link up with them before that.”
 # 审校：全局：弯撇号／弯引号
 > 「あまり時間を無駄にしたくないな。
 >  間に合わなくなると困る」
-“I don’t want to waste too much time. I’d hate for us to miss them.”
+“I’d rather not waste much time. We can’t afford to be late.”
 
 @27111 Dr. Yotsuya · 四谷博士
 > 「ならば、コン・バトラーVでやればよかろう
@@ -1682,7 +1682,7 @@ and I want to link up with them before that.”
 # 审校：全局：弯撇号／弯引号
 > 「終わったようだな。よし、これ以上
 >  時間を無駄にしていられない
-“Looks like it’s over. Right, we can’t afford to waste any more time.
+“Looks like that’s over. Good, we can’t afford to waste any more time.
 ---
 >  みんな、急ごう」
 Let’s hurry, everyone.”
@@ -1721,7 +1721,7 @@ then bring it on!”
 @27123 Domon · ドモン
 > 「破嵐万丈か……面白い奴だ。
 >  気に入ったぜ」
-“Banjo Haran, huh... What an interesting guy. I like him.”
+“Banjo Haran, huh... Interesting guy. I like him.”
 
 @27124 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -3053,7 +3053,7 @@ It’s been a long time since I left Axis.”
 # 审校：全局：弯撇号／弯引号
 > 「私にも今のアクシズはわからんよ。
 >  だから問題なのだ」
-“Even I don’t know what Axis is like now. That’s exactly why it’s a problem.”
+“Even I don’t know what Axis is like now. That’s the problem.”
 
 @27347 Daisuke · 大介
 > 「一段落ついたようだな。
@@ -3185,7 +3185,7 @@ Land Liger. Nice to meet you, Maria. If there’s anything you don’t understan
 # 审校：全局：弯撇号／弯引号
 > 「へっ、雅人、お前は眼中に
 >  ねぇとさ」
-“Heh, Masato, she doesn’t even see you.”
+“Heh, Masato, she doesn’t even know you exist.”
 
 @27367 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -3255,11 +3255,11 @@ whittling down OZ’s forces. It’s practically suicide.”
 # 审校：日语腔反问
 > 「落ち着いている場合か、ハヤト。
 >  そいつらが自殺するのはいいが
-“This is no time to be calm, Hayato. If they want to kill themselves, fine,
+“This is no time to be so calm, Hayato. If they want to kill themselves, fine,
 ---
 >  地球圏がまきぞえになるのは
 >  ごめんだぜ」
-but I won’t stand for the Earth Sphere getting dragged into it.”
+but I’m not letting them drag the Earth Sphere down with them.”
 
 @27377 Alan · アラン
 # 审校：全局：弯撇号／弯引号

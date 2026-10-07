@@ -1042,7 +1042,7 @@ was true...”
 @38492 Maria · マリア
 > 「あれに乗っているのは
 >  フリード星人だわ!」
-“The one piloting that is a Fleed!”
+“That pilot is a Fleed!”
 
 @38493 Duke · デューク
 > 「なんだって?」
@@ -1670,7 +1670,7 @@ thank goodness. Naida, you can’t stay in a place like this. Come over to our s
 
 @38603 Naida · ナイーダ
 > 「え、ええデューク。わかったわ」
-“Y-yes, Duke. I understand.”
+“Y-yes, Duke. All right.”
 
 @38604 Dungele · ダンゲル
 # 审校：全局：弯撇号／弯引号

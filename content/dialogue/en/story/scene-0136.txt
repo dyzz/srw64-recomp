@@ -219,7 +219,7 @@ to His Majesty Emperor Zuul!”
 @31670 Marg · マーグ
 > 「ロゼ、あのマーズというのは何者
 >  なんだ? なぜ俺を兄という」
-“Rose, who is this Mars? Why does he call me brother?”
+“Rose, who is this Mars? Why does he call me his brother?”
 
 @31671 Rose · ロゼ
 > 「隊長をまどわせようとしているのです。
@@ -310,7 +310,7 @@ Wahl, prepare the fleet. I shall head for this Earth myself.”
 
 @31684 Wahl · ワール
 > 「はっ、かしこまりました、陛下」
-“Yes, understood, Your Majesty.”
+“Yes, Your Majesty. At once.”
 
 @31685 Emperor Zuul · ズール皇帝
 > 「指揮はお前にまかせる。副官と
@@ -527,7 +527,7 @@ Though the D.P.S. control system has some frightening aspects.”
 
 @31707 Henken · ヘンケン
 > 「それがなぜ我々の手に入ったんだ?」
-“How did that end up in our hands?”
+“How did we end up with it?”
 
 @31708 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -614,7 +614,7 @@ Please send over the rest of the data.”
 # 审校：全局：弯撇号／弯引号
 > 「やめてください。未完成のまま
 >  持ち出すつもりですか」
-“Please don’t. You intend to take it out unfinished?”
+“Please don’t. You’re going to take it out unfinished?”
 
 @31720 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -644,7 +644,7 @@ ready to launch, and hurry. I’ll have the Nu loaded aboard.”
 @31724 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
 > 「いいですね、オクトバーさん」
-“That’s fine with you, isn’t it, October?”
+“You don’t mind, do you, October?”
 
 @31725 October · オクトバー
 # 审校：去掉no helping it
@@ -658,7 +658,7 @@ send it to La Vie en Rose. In exchange, send me the combat data as it comes in.�
 
 @31726 Chan · チェーン
 > 「はい。ありがとうございますッ!」
-“Yes. Thank you so much!”
+“Okay. Thank you so much!”
 
 @31727 Henken · ヘンケン
 # 审校：亨肯是在说琴刚才的样子

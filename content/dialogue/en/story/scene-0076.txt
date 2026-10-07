@@ -522,7 +522,7 @@ true after all...”
 @29481 Maria · マリア
 > 「あれに乗っているのは
 >  フリード星人だわ!」
-“The one piloting that is a Fleed!”
+“That pilot is a Fleed!”
 
 @29482 Duke · デューク
 > 「なんだって?」
@@ -1094,7 +1094,7 @@ thank goodness. Naida, you can’t stay in a place like this. Come over to our s
 
 @29581 Naida · ナイーダ
 > 「え、ええデューク。わかったわ」
-“Y-yes, Duke. I understand.”
+“Y-yes, Duke. All right.”
 
 @29582 Dungele · ダンゲル
 # 审校：全局：弯撇号／弯引号
@@ -1975,7 +1975,7 @@ Your wounded heart will heal in time, and you’ll be your old self again.”
 # 审校：全局：弯撇号／弯引号
 > 「その通り。君さえよければ
 >  いつまでだっていてくれていい
-“Exactly. As long as you’re fine with it, you’re welcome to stay as long as you like.
+“Exactly. If you like, you can stay as long as you want.
 ---
 >  きれいな女性は大歓迎だ」
 Beautiful women are always welcome.”

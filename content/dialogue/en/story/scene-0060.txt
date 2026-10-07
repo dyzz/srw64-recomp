@@ -1379,7 +1379,7 @@ I shall head for Earth myself.”
 
 @38332 Wahl · ワール
 > 「はっ、かしこまりました、陛下」
-“Yes, understood, Your Majesty.”
+“Yes, Your Majesty. At once.”
 
 @38333 Emperor Zuul · ズール皇帝
 > 「指揮はお前にまかせる。

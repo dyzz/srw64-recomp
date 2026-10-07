@@ -2932,7 +2932,7 @@ so it’s over there. All right, I’ve found you, you devils. Just you watch...
 # 审校：全局：弯撇号／弯引号
 > 「ん? あんな子いたっけ……?
 >  いや様子がおかしい。おい待て!」
-“Hm? Do we have a girl like that aboard...? No, something’s off about her. Hey, wait!”
+“Hm? Did we have a girl like that...? No, something’s off about her. Hey, wait!”
 
 @37105 Maria · マリア
 > 「見つかった!? えい!」
@@ -3029,7 +3029,7 @@ I’ve come to take Grendizer back!”
 
 @37125 Maria · マリア
 > 「お兄ちゃん、生きてたのね!?」
-“Brother, you were alive?!”
+“Brother, you’re alive?!”
 
 @37126 Daisuke · 大介
 # 审校：you're the one who made it out safely 生硬
@@ -3752,12 +3752,12 @@ never do as you wish!”
 # 审校：全局：弯撇号／弯引号
 > 「おいタケル、ひどいありさまだがいったい
 >  何があったんだ?」
-“Hey, Takeru, you look awful. What on earth happened?”
+“Hey, Takeru, you look awful. What the heck happened?”
 
 @37236 Takeru · タケル
 > 「兄さんを追っていて、俺はズールと
 >  戦ったんだ」
-“I was chasing my brother, and I ended up fighting Zuul.”
+“I went after my brother, and I ended up fighting Zuul.”
 
 @37237 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号

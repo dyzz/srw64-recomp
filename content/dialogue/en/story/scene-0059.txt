@@ -1081,19 +1081,19 @@ I just hope this doesn’t turn into a real mess...”
 # 审校：全局：弯撇号／弯引号
 > 「地球の軍勢です。いくつかの
 >  勢力にわかれておりますが
-“Earth’s military forces. They’re split among several factions,
+“Earth’s military forces. They’re divided into several factions,
 ---
 >  我が銀河帝国軍の
 >  先遣艦隊は勢力の区別なく
-but our Galactic Empire advance fleet, regardless of faction,
+but our Galactic Empire advance fleet, without distinguishing among them,
 ---
 >  これらの戦力を把握すること、
 >  また、これに可能な限り大きな
-aims to grasp the full scope of their forces and, where possible,
+aims to assess the full extent of their strength and, wherever possible,
 ---
 >  ダメージを与えることを目標として
 >  おります」
-inflict the greatest possible damage upon them.”
+inflict as much damage on them as it can.”
 
 @37901 Marg · マーグ
 > 「地球……」
