@@ -1573,13 +1573,13 @@ And Banjo’s still off who knows where.”
 @26582 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「いいって。それより、大丈夫かよ?」
-“Don’t mention it. Anyway, you gonna be okay?”
+“Don’t mention it. More to the point, you okay?”
 
 @26583 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「ああ。戦闘になれば、
 >  そんなこと考えているヒマはないからな」
-“Yeah. Once the fighting starts, I won’t have time to think about it.”
+“Yeah. Once the fighting starts, I won’t have time to think about that stuff.”
 
 @26584 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -1898,7 +1898,7 @@ so you can’t just climb into the cockpit whenever you like!”
 @26629 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「まぁいいじゃないか、別に」
-“Oh, come on, what’s the harm?”
+“Come on, what’s the harm?”
 
 @26630 Allenby · アレンビー
 # 审校：全局：弯撇号／弯引号

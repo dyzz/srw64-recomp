@@ -813,7 +813,7 @@ someday I swear I’ll pay that bastard back in kind! I swear it!”
 @28167 Four · フォウ
 # 审校：全局：弯撇号／弯引号
 > 「カミーユがいてくれたからだよ」
-“It’s because you were there, Kamille.”
+“Only because you were there for me, Kamille.”
 
 @28168 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号

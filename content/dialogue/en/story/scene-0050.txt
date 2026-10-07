@@ -2360,10 +2360,10 @@ had a mobile suit developed, and it’s apparently at La Vie en Rose.”
 # 审校：全局：弯撇号／弯引号
 > 「はい!
 >  私、きっと艦長がいらしてくださると
-“Yes! I believed you would come, Captain,
+“Yes! I just knew you’d come, Captain,
 ---
 >  信じて、ずっと待っていたんですよ」
-and I’ve been waiting all this time.”
+so I’ve been waiting all this time.”
 
 @34214 Bright · ブライト
 > 「え……?」

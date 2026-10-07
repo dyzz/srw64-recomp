@@ -109,7 +109,7 @@ My brother was never that kind of man!”
 
 @31649 Marg · マーグ
 > 「問答無用。覚悟しろ、マーズ!」
-“No arguments. Prepare yourself, Mars!”
+“Enough talk. Prepare yourself, Mars!”
 
 @31650 Marg · マーグ
 > 「ロゼ、マーズはどこだ」
@@ -144,7 +144,7 @@ by order of Emperor Zuul, I, Marg, will eliminate you!”
 @31655 Takeru · タケル
 > 「いったいどうしたっていうんだ、マーグ!?
 >  俺の兄はそんな男じゃなかった」
-“What on earth happened to you, Marg?! My brother was never that kind of man!”
+“What’s gotten into you, Marg?! My brother was never that kind of man!”
 
 @31656 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
@@ -158,7 +158,7 @@ by order of Emperor Zuul, I, Marg, will eliminate you!”
 
 @31658 Marg · マーグ
 > 「問答無用。覚悟しろ、マーズ!」
-“No arguments. Prepare yourself, Mars!”
+“Enough talk. Prepare yourself, Mars!”
 
 @31659 Takeru · タケル
 > 「マーグ、お前は本当にマーグなのか?
