@@ -50,7 +50,7 @@ UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 # The debug interface switch on the About page (settings debug_interface).
-UI_KEYS |= {"settings_debug", "settings_debug_on", "settings_debug_off", "settings_debug_note", "settings_debug_forced",
+UI_KEYS |= {"settings_debug", "settings_debug_on", "settings_debug_off", "settings_debug_note", "settings_debug_note_android", "settings_debug_forced",
             "settings_debug_status", "settings_debug_run", "settings_debug_copy", "debug_interface_notice"}
 # The 部隊名 each language shows while the stored name is the original マーチウィンド
 # (docs/native/fixed-unit-name.md; the name cannot be changed).

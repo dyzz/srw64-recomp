@@ -978,7 +978,7 @@ std::string controls_page() {
 nlohmann::json save_candidates;
 bool save_candidates_read{};
 std::string save_message,save_force;
-std::string settings_row(const std::string& key,const std::string& choices,const std::string& more={});
+std::string settings_row(const std::string& key,const std::string& choices,const std::string& more={},const std::string& note={});
 std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false);
 std::string with_number(const std::string& key,unsigned n) {
     auto text=localization::catalog().ui(key);
@@ -1177,8 +1177,9 @@ std::string cheats_stamp() {
 // One setting: its name with its choices beside it, and its note on a line of its own.
 // RmlUi breaks lines only at spaces, so a Chinese or Japanese note needs the whole
 // width (test_settings_window.py checks that each fits the smallest window).
-std::string settings_row(const std::string& key,const std::string& choices,const std::string& more) {
-    return "<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label(key)+"</div><div class='set-seg'>"+choices+"</div></div><p>"+label(key+"_note")+"</p>"+more+"</div>";
+// note: another key for the line under the name than key_note.
+std::string settings_row(const std::string& key,const std::string& choices,const std::string& more,const std::string& note) {
+    return "<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label(key)+"</div><div class='set-seg'>"+choices+"</div></div><p>"+label(note.empty()?key+"_note":note)+"</p>"+more+"</div>";
 }
 // A setting with one button per mode: ids prefix:mode, labels key_mode.
 std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled) {
@@ -1315,7 +1316,12 @@ std::string debug_row() {
         }
         more+="<div class='set-seg'>"+button("debug-copy-run",label("settings_debug_copy"))+"</div>";
     }
+#ifdef __ANDROID__
+    // The phone listens on an abstract socket that adb forwards, with no token (debug_transport.cpp).
+    return settings_row("settings_debug",choices,more,"settings_debug_note_android");
+#else
     return settings_row("settings_debug",choices,more);
+#endif
 }
 // The About page's rows: the project's pages, then the update check and its switch, then
 // the debug interface.

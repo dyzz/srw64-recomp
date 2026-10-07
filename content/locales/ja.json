@@ -340,6 +340,7 @@
     "settings_debug_on": "オン",
     "settings_debug_off": "オフ",
     "settings_debug_note": "Claude Code など MCP 対応の AI ツールから、実行中のゲームの状態を読み取ったり操作したりできます。 自動テスト、録画、不具合の調査向けです。 接続できるのはこのパソコンからだけで、実行フォルダのトークンが必要です。 使い方は公式サイトの「技術資料」を参照してください。",
+    "settings_debug_note_android": "Claude Code など MCP 対応の AI ツールから、実行中のゲームの状態を読み取ったり操作したりできます。 自動テスト、録画、不具合の調査向けです。 接続できるのは USB デバッグ（adb）でこの端末につないだパソコンだけで、ネットワーク経由では接続できません。 使い方は公式サイトの「技術資料」を参照してください。",
     "settings_debug_forced": "起動オプション --debug で有効になっています。 この実行中はここでオフにできません。",
     "settings_debug_status": "{address} で待ち受け中",
     "settings_debug_run": "実行フォルダ：{run}",

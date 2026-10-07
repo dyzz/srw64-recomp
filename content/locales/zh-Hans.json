@@ -340,6 +340,7 @@
     "settings_debug_on": "开",
     "settings_debug_off": "关",
     "settings_debug_note": "让 Claude Code 等支持 MCP 的 AI 工具读取和操作正在运行的游戏，用于自动测试、录像和排查问题。 只接受这台电脑上的连接，而且要用运行目录里的令牌。 用法见官网的「技术文档」。",
+    "settings_debug_note_android": "让 Claude Code 等支持 MCP 的 AI 工具读取和操作正在运行的游戏，用于自动测试、录像和排查问题。 只有用 USB 调试（adb）连着这台手机的电脑能连上，不经过网络。 用法见官网的「技术文档」。",
     "settings_debug_forced": "已由启动参数 --debug 打开，本次运行不能在这里关闭。",
     "settings_debug_status": "正在监听 {address}",
     "settings_debug_run": "运行目录：{run}",
