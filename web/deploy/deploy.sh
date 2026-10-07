@@ -20,6 +20,17 @@ for f in .data/story/index.json .data/story/search.json .data/library.json publi
   [ -e "$WEB/$f" ] || { echo "missing web/$f: run the exporters in web/scripts first" >&2; exit 1; }
 done
 
+# The site publishes committed translations: after handling suggestions, commit the text,
+# export again, then deploy. The story export records what it read (export_story.py).
+read -r EXPORTED DIRTY <<<"$(node -e 'const s=require(process.argv[1]).source??{};console.log((s.commit||"-")+" "+(s.dirty?1:0))' "$WEB/.data/story/index.json")"
+LATEST=$(git -C "$ROOT" log -1 --format=%h -- content/dialogue content/locales)
+if [ "$DIRTY" = 1 ] && [ "${SRW64_DEPLOY_DIRTY:-}" != 1 ]; then
+  echo "the story export read uncommitted edits in content/: commit them (or set SRW64_DEPLOY_DIRTY=1), export again" >&2; exit 1
+fi
+if [ "$EXPORTED" != "$LATEST" ]; then
+  echo "the story export is of $EXPORTED but the translations are at $LATEST: run web/scripts/export_story.py again" >&2; exit 1
+fi
+
 (cd "$WEB" && npm run build --silent)
 ID=$(date +%Y%m%d-%H%M%S)-$(git -C "$ROOT" rev-parse --short HEAD)$(git -C "$ROOT" diff --quiet -- web content || echo -dirty)
 REL=/srv/srw64/releases/$ID

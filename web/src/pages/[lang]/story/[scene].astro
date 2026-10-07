@@ -4,7 +4,7 @@
 // (opening, each map event with its trigger, ending), and the lines as cards.
 import Base from '../../../layouts/Base.astro';
 import { LANGS, UI, canReview, type Lang } from '../../../i18n';
-import { library, scene as loadScene, storyIndex, type Line } from '../../../lib/data';
+import { library, scene as loadScene, storyIndex, storySource, type Line } from '../../../lib/data';
 
 export async function getStaticPaths() {
   return LANGS.flatMap((l) => storyIndex().map((s) => ({ params: { lang: l.code, scene: String(s.scene) } })));
@@ -13,6 +13,9 @@ const lang = Astro.params.lang as Lang;
 const review = canReview(lang);
 const s = loadScene(Number(Astro.params.scene));
 const all = storyIndex();
+// Lines that read differently from the latest game release (export_story.py).
+const tag = storySource()?.baseline ?? '';
+const changedAny = !!tag && !!s.changed && (s.changed.zh > 0 || s.changed.en > 0);
 const titleOf = (n: number) => all.find((x) => x.scene === n)?.title[lang] ?? `#${n}`;
 const t = {
   stage: { zh: (n: string) => `第 ${n} 话`, en: (n: string) => `Stage ${n}`, ja: (n: string) => `第${n}話` },
@@ -31,6 +34,10 @@ const t = {
   prevHit: { zh: '上一处', en: 'Prev', ja: '前へ' },
   nextHit: { zh: '下一处', en: 'Next', ja: '次へ' },
   onlyReviewed: { zh: '只看有意见的台词', en: 'Only lines with suggestions', ja: '意見のある行のみ' },
+  onlyChanged: { zh: '只看更新', en: 'Only changed lines', ja: '更新された行のみ' },
+  changedStat: { zh: (v: string) => `句 ${v} 后更新`, en: (v: string) => `lines changed since ${v}`, ja: (v: string) => `行が ${v} 以降に更新` },
+  changed: { zh: (v: string) => `${v} 后有改动`, en: (v: string) => `Changed since ${v}`, ja: (v: string) => `${v} 以降に変更` },
+  newLine: { zh: (v: string) => `${v} 中没有这句译文`, en: (v: string) => `Not translated in ${v}`, ja: (v: string) => `${v} には訳文なし` },
   translation: { zh: '译文', en: 'Translation', ja: '翻訳' },
   original: { zh: '日文', en: 'Japanese', ja: '原文' },
   show: { zh: '显示', en: 'Show', ja: '表示' },
@@ -164,6 +171,7 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[lang] ?? x.e.lab
           <div><b class="latin">{events.length}</b><span>{t.nodes[lang]}</span></div>
           <div><b class="latin">{choiceCount}</b><span>{t.choices[lang]}</span></div>
           {review && <div><b class="latin" data-stat-suggestions>–</b><span>{t.suggestions[lang]}</span></div>}
+          {lang !== 'ja' && tag && s.changed && <div><b class="latin">{s.changed[lang]}</b><span>{t.changedStat[lang](tag)}</span></div>}
         </div>
       </div>
     </section>
@@ -178,6 +186,7 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[lang] ?? x.e.lab
         <button type="button" class="mini" data-hit="-1">{t.prevHit[lang]}</button>
         <button type="button" class="mini" data-hit="1">{t.nextHit[lang]}</button>
         {review && <button type="button" class="mini" data-only aria-pressed="false">{t.onlyReviewed[lang]} <span data-only-count></span></button>}
+        {changedAny && <button type="button" class="mini" data-only-changed aria-pressed="false">{t.onlyChanged[lang]} <span data-changed-count></span></button>}
         <span class="sep"></span>
         <span class="lbl">{t.translation[lang]}</span>
         <div class="seg" data-control="tr">
@@ -244,11 +253,17 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[lang] ?? x.e.lab
                   const anchor = `l${line.id}`;
                   if (line.t === 'choice') {
                     return (
-                      <article class="line choice" id={anchor} data-id={line.id}>
+                      <article class="line choice" id={anchor} data-id={line.id} data-changed={Object.keys(line.was ?? {}).join(' ') || undefined}>
                         <div class="face-col"><div class="face none" aria-hidden="true">?</div><a class="lid latin" href={`#${anchor}`}>@{line.id}</a></div>
                         <div class="body">
                           <div class="who"><strong class="name">{t.choice[lang]}</strong>{route && <span class="route">{route}</span>}{review && <button type="button" class="act" data-suggest={line.id}>{t.suggest[lang]}</button>}</div>
-                          {trLangs.map((l) => <ol class={`tr tr-${l}`} lang={l === 'zh' ? 'zh-Hans' : l}>{(line[l][0] ?? '').split('\n').map((o) => <li set:html={rich(o, l, hero)} />)}</ol>)}
+                          {trLangs.map((l) => <div class={`tr tr-${l}`} lang={l === 'zh' ? 'zh-Hans' : l}><ol data-now>{(line[l][0] ?? '').split('\n').map((o) => <li set:html={rich(o, l, hero)} />)}</ol>{(line.was as Record<string, string[]> | undefined)?.[l] && (
+                            <details class="upd" data-upd={l}>
+                              <summary>{(line.was as Record<string, string[]>)[l].length ? t.changed[lang](tag) : t.newLine[lang](tag)}</summary>
+                              <div class="diff" data-diff></div>
+                              <template data-was set:html={(line.was as Record<string, string[]>)[l].flatMap((p) => p.split('\n')).map((p) => `<p>${rich(p, l, hero)}</p>`).join('')} />
+                            </details>
+                          )}</div>)}
                           <div class="ja" lang="ja"><span class="ja-lbl">{t.jaLabel[lang]}</span><ol>{(line.ja[0] ?? '').split('\n').map((o) => <li set:html={rich(o, 'ja', hero)} />)}</ol></div>
                         </div>
                       </article>
@@ -261,7 +276,7 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[lang] ?? x.e.lab
                   const src = face(pick ? pick.face : line.face ?? null);
                   const maybe = open && heroes.length < HEROES.length ? heroes.map((h) => heroName(h, lang)).join(' / ') : null;
                   return (
-                    <article class={`line side-${line.side}`} id={anchor} data-id={line.id}>
+                    <article class={`line side-${line.side}`} id={anchor} data-id={line.id} data-changed={Object.keys(line.was ?? {}).join(' ') || undefined}>
                       <div class="face-col">
                         {src ? <img class="face" src={src} alt="" width="160" height="160" loading="lazy" /> : <div class="face none" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>}
                         <a class="lid latin" href={`#${anchor}`}>@{line.id}</a>
@@ -273,7 +288,13 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[lang] ?? x.e.lab
                           {open ? <span class="route">{maybe ?? t.heroDep[lang]}</span> : route && <span class="route">{route}</span>}
                           {review && <button type="button" class="act" data-suggest={line.id}>{t.suggest[lang]}</button>}
                         </div>
-                        {trLangs.map((l) => <div class={`tr tr-${l}`} lang={l === 'zh' ? 'zh-Hans' : l}>{line[l].map((p) => <p set:html={rich(p, l, hero)} />)}</div>)}
+                        {trLangs.map((l) => <div class={`tr tr-${l}`} lang={l === 'zh' ? 'zh-Hans' : l}><div data-now>{line[l].map((p) => <p set:html={rich(p, l, hero)} />)}</div>{(line.was as Record<string, string[]> | undefined)?.[l] && (
+                            <details class="upd" data-upd={l}>
+                              <summary>{(line.was as Record<string, string[]>)[l].length ? t.changed[lang](tag) : t.newLine[lang](tag)}</summary>
+                              <div class="diff" data-diff></div>
+                              <template data-was set:html={(line.was as Record<string, string[]>)[l].flatMap((p) => p.split('\n')).map((p) => `<p>${rich(p, l, hero)}</p>`).join('')} />
+                            </details>
+                          )}</div>)}
                         <div class="ja" lang="ja"><span class="ja-lbl">{t.jaLabel[lang]}</span><div>{line.ja.map((p) => <p set:html={rich(p, 'ja', hero)} />)}</div></div>
                       </div>
                     </article>
@@ -398,6 +419,18 @@ const nodeTitle = (x: (typeof events)[number]) => x.e.trigger?.[lang] ?? x.e.lab
   .ja { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; font-size: 14px; color: var(--muted); }
   .ja-lbl { padding-top: 2px; font-size: 11px; color: var(--dim); }
   .tr p, .ja p { margin: 0; }
+  /* A line changed since the latest game release: a quiet note under the translation that
+     opens to the old and new text compared. */
+  .upd { margin-top: 4px; font-size: 13px; line-height: 1.6; }
+  .upd summary { width: fit-content; cursor: pointer; color: var(--gold); list-style: none; }
+  .upd summary::-webkit-details-marker { display: none; }
+  .upd summary::before { content: '▸ '; }
+  .upd[open] summary::before { content: '▾ '; }
+  .diff { margin-top: 4px; padding: 8px 12px; font-size: 15px; color: var(--muted); background: rgba(255, 255, 255, 0.04); border-left: 2px solid var(--gold); white-space: pre-wrap; }
+  .diff del { color: #ff9c9c; background: rgba(255, 90, 90, 0.16); text-decoration: line-through; }
+  .diff ins { color: #a6f2c4; background: rgba(80, 220, 140, 0.16); text-decoration: none; }
+  .diff .old { display: block; color: #ff9c9c; text-decoration: line-through; }
+  .diff .new { display: block; color: #a6f2c4; }
   .choice ol { margin: 0; padding-left: 1.4em; }
   .ph { color: var(--gold); }
   mark { background: rgba(255, 215, 94, 0.35); color: inherit; }

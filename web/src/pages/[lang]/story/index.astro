@@ -2,12 +2,16 @@
 import Base from '../../../layouts/Base.astro';
 import StorySearch from '../../../components/StorySearch.astro';
 import { langPaths, UI, type Lang } from '../../../i18n';
-import { storyGroups, storyIndex } from '../../../lib/data';
+import { storyGroups, storyIndex, storySource } from '../../../lib/data';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const groups = storyGroups(lang);
 const total = storyIndex().reduce((n, s) => n + s.count, 0);
+// Lines changed since the latest game release, in this page's translation (none on ja).
+const source = storySource();
+const changedLang = lang === 'ja' ? null : lang;
+const changedTotal = changedLang ? storyIndex().reduce((n, s) => n + (s.changed?.[changedLang] ?? 0), 0) : 0;
 const t = {
   lead: {
     zh: `全部剧情按话数排列，共 ${total.toLocaleString()} 句，日文原文与译文逐句对照。如有修改建议，可以在对应台词旁提交。`,
@@ -18,6 +22,12 @@ const t = {
   lines: { zh: '句', en: 'lines', ja: '行' },
   enter: { zh: '进入关卡', en: 'Open', ja: '開く' },
   stages: { zh: (n: number) => `${n} 话`, en: (n: number) => `${n} stages`, ja: (n: number) => `${n} ステージ` },
+  changedTotal: {
+    zh: (n: number, v: string) => `自 ${v} 发布以来，译文共更新 ${n.toLocaleString()} 句；各关的更新数标在卡片上，点击即可只看这些台词和改动对照。`,
+    en: (n: number, v: string) => `Since ${v}, ${n.toLocaleString()} lines of the translation have changed. Each stage card shows its count; click it to see only those lines, old and new compared.`,
+    ja: (_n: number, _v: string) => '',
+  },
+  changed: { zh: (n: number) => `更新 ${n}`, en: (n: number) => `${n} changed`, ja: (n: number) => `更新 ${n}` },
 };
 // Scenes that share a stage number (one per route) sit side by side, as on the SRW Z site.
 type Meta = ReturnType<typeof storyIndex>[number];
@@ -37,6 +47,7 @@ function rows(scenes: Meta[]) {
       <span class="tag">STORY</span>
       <h1>{UI.nav.story[lang]}</h1>
       <p>{t.lead[lang]}</p>
+      {changedLang && source && changedTotal > 0 && <p class="changed-total">{t.changedTotal[lang](changedTotal, source.baseline)}</p>}
       <StorySearch lang={lang} />
     </header>
 
@@ -53,7 +64,7 @@ function rows(scenes: Meta[]) {
                     <span class="lanes">{s.episode?.lanes.length ? s.episode.lanes.map((l) => <span class="lane">{l[lang]}</span>) : <span class="lane dim">#{s.scene}</span>}</span>
                     <strong>{s.title[lang]}</strong>
                     {lang !== 'ja' && <span class="ja-title" lang="ja">{s.title.ja}</span>}
-                    <span class="foot"><span class="count">{s.count} {t.lines[lang]}</span><span class="go">{t.enter[lang]} →</span></span>
+                    <span class="foot"><span class="count">{s.count} {t.lines[lang]}</span>{changedLang && (s.changed?.[changedLang] ?? 0) > 0 && <span class="chg" data-href={`/${lang}/story/${s.scene}/?changed=1`}>{t.changed[lang](s.changed![changedLang])}</span>}<span class="go">{t.enter[lang]} →</span></span>
                   </a>
                 ))}
               </div>
@@ -64,6 +75,14 @@ function rows(scenes: Meta[]) {
     ))}
   </div>
 </Base>
+
+<script>
+  // The card is a link to the stage; its change count opens the stage with only those lines.
+  document.querySelectorAll<HTMLElement>('.chg[data-href]').forEach((b) => b.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    location.href = b.dataset.href!;
+  }));
+</script>
 
 <style>
   .group { margin-top: 44px; }
@@ -85,6 +104,10 @@ function rows(scenes: Meta[]) {
   .ja-title { font-size: 13px; color: var(--dim); }
   .foot { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
   .count { font-size: 12px; color: var(--dim); }
+  /* Lines changed since the release: opens the stage showing only those, compared. */
+  .chg { margin-left: auto; margin-right: 10px; padding: 1px 7px; font-size: 12px; color: var(--gold); border: 1px solid rgba(255, 215, 94, 0.45); cursor: pointer; }
+  .chg:hover { color: var(--bg); background: var(--gold); }
+  .changed-total { font-size: 14px; color: var(--gold); }
   .go { font-size: 12px; font-weight: 700; color: var(--orange); }
   .card:hover .go { color: var(--cyan); }
   @media (max-width: 560px) { .row { grid-template-columns: 48px minmax(0, 1fr); } .num span { font-size: 20px; } }

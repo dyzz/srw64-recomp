@@ -20,16 +20,23 @@ function read<T>(path: string): T {
 
 export type L3 = { ja: string; zh: string; en: string };
 export type Episode = { stage: string; section: L3; lanes: L3[]; routes: string[] } | null;
-export type SceneMeta = { scene: number; title: L3; episode: Episode; count: number; next: number[]; previous: number[] };
+// changed: lines whose zh / en text differs from the latest game release (StorySource.baseline).
+export type SceneMeta = { scene: number; title: L3; episode: Episode; count: number; changed?: { zh: number; en: number }; next: number[]; previous: number[] };
+// What the exported translations are (web/scripts/export_story.py): the release they are
+// compared with, the last commit that changed them, uncommitted edits in the export.
+export type StorySource = { baseline: string; commit: string; date: string; dirty: boolean };
+// was: the release's text of each language that reads differently now ([] if it had none).
+type Was = { was?: { zh?: string[]; en?: string[] } };
 export type Cand = { route: string; who: L3; face: number | null };
 export type Line =
   | { t: 'route'; marker: string; label: L3; routes: string[] | null }
-  | { t: 'say'; id: number; ja: string[]; zh: string[]; en: string[]; side: number; who: L3; face?: number | null; route?: string; cands?: Cand[] }
-  | { t: 'choice'; id: number; ja: string[]; zh: string[]; en: string[] };
+  | ({ t: 'say'; id: number; ja: string[]; zh: string[]; en: string[]; side: number; who: L3; face?: number | null; route?: string; cands?: Cand[] } & Was)
+  | ({ t: 'choice'; id: number; ja: string[]; zh: string[]; en: string[] } & Was);
 export type Event = { phase: string; label: L3; trigger?: L3; lines: Line[] };
 export type Scene = SceneMeta & { events: Event[] };
 
 export const storyIndex = () => read<{ scenes: SceneMeta[] }>('story/index.json').scenes;
+export const storySource = () => read<{ source?: StorySource }>('story/index.json').source ?? null;
 export const scene = (n: number) => read<Scene>(`story/scenes/${String(n).padStart(4, '0')}.json`);
 
 /** Scenes grouped the way the guide groups episodes; scenes outside the campaign last. */

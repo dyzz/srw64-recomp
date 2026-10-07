@@ -17,6 +17,12 @@ at 160 px.
 
 The site shows only what a reader needs: dialogue, choices and route markers. Script
 statements, conditions and BGM notes stay in the catalog.
+
+Each line also carries what changed since the latest game release (the tag in
+web/src/data/release.json, or --baseline TAG): `was` holds the release's translation of
+each language whose text differs ([] if the release had none). The index records the
+baseline, the last commit that changed the translations and whether content/ has
+uncommitted edits, which the site should not publish (deploy.sh checks).
 """
 from __future__ import annotations
 
@@ -29,6 +35,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from srw64_native.dialogue_text import parse  # noqa: E402
+import argparse  # noqa: E402
+import subprocess  # noqa: E402
+import tarfile  # noqa: E402
+import tempfile  # noqa: E402
+import io  # noqa: E402
 
 CATALOG = ROOT / "assets/original-data/story"
 HD_PORTRAITS = ROOT / "assets/hd-ai/portrait-batch/whole-v1"
@@ -80,17 +91,42 @@ def text_key(n: int) -> str:
     return f"base:t00_{n:05d}"
 
 
-def load_dialogue() -> dict[str, dict[str, object]]:
-    """key -> {lang: Entry}; Japanese comes from the source lines of either file."""
+def load_dialogue(base: Path = ROOT, strict: bool = True) -> dict[str, dict[str, object]]:
+    """key -> {lang: Entry}; Japanese comes from the source lines of either file. Not
+    strict for an older release's files: a file the parser no longer reads is left out."""
     out: dict[str, dict[str, object]] = defaultdict(dict)
     for code, locale in LOCALES.items():
-        for path in sorted((ROOT / f"content/dialogue/{locale}").rglob("*.txt")):
+        for path in sorted((base / f"content/dialogue/{locale}").rglob("*.txt")):
             entries, problems = parse(path.read_text(), str(path))
             if problems:
-                raise SystemExit("\n".join(map(str, problems[:5])))
+                if strict:
+                    raise SystemExit("\n".join(map(str, problems[:5])))
+                print(f"baseline: skipped {path.relative_to(base)} ({len(problems)} problem(s))")
+                continue
             for entry in entries:
                 out[entry.key][code] = entry
     return out
+
+
+def git(*args: str) -> str:
+    return subprocess.run(["git", "-C", str(ROOT), *args], check=True, capture_output=True, text=True).stdout
+
+
+def baseline_dialogue(tag: str) -> dict[str, dict[str, object]]:
+    """The dialogue files as they were at a release tag."""
+    archive = subprocess.run(["git", "-C", str(ROOT), "archive", tag, "content/dialogue"], check=True, capture_output=True).stdout
+    with tempfile.TemporaryDirectory() as tmp:
+        with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+            tar.extractall(tmp, filter="data")
+        return load_dialogue(Path(tmp), strict=False)
+
+
+def source_version(tag: str) -> dict:
+    """What the exported translations are: the baseline release, the last commit that
+    changed them, and whether the working tree has edits not committed yet."""
+    paths = ["content/dialogue", "content/locales"]
+    commit, date = (git("log", "-1", "--format=%h%x09%cI", "--", *paths).strip().split("\t") + [""])[:2]
+    return {"baseline": tag, "commit": commit, "date": date, "dirty": bool(git("status", "--porcelain", "--", *paths).strip())}
 
 
 PLACEHOLDER = re.compile(r"\{([A-Za-z]+)\}")
@@ -179,10 +215,16 @@ def episode_cards() -> dict[str, list[dict]]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--baseline", help="release tag to compare with (default: the tag in web/src/data/release.json)")
+    args = parser.parse_args()
     if not (CATALOG / "index.json").exists():
         raise SystemExit(f"{CATALOG} is missing: run `make recomp-data` with the ROM first")
+    tag = args.baseline or json.loads((ROOT / "web/src/data/release.json").read_text())["tag"]
     terms = load_terms()
     dialogue = load_dialogue()
+    before = baseline_dialogue(tag)
+    source = source_version(tag)
     index = json.loads((CATALOG / "index.json").read_text())
     cards = episode_cards()
 
@@ -241,6 +283,12 @@ def main() -> int:
                             "ja": pages(src, "source") if src else [line.get("display", "")],
                             "zh": pages(entry["zh"], "target") if "zh" in entry else [],
                             "en": pages(entry["en"], "target") if "en" in entry else []}
+                    # What the release said, for each language that reads differently now.
+                    old = before.get(key, {})
+                    for code in LOCALES:
+                        was = pages(old[code], "target") if code in old else []
+                        if item[code] and was != item[code]:
+                            item.setdefault("was", {})[code] = was
                     if kind == "dialogue":
                         sp = line["speaker"]
                         item["side"] = line.get("mode", 0)
@@ -278,11 +326,12 @@ def main() -> int:
         episode = {"stage": matched[0]["stage"], "section": matched[0]["section"],
                    "lanes": [c["lane"] for c in matched], "routes": sorted({c["route"] for c in matched if c.get("route")})} if matched else None
         counts = sum(1 for e in events for l in e["lines"] if l["t"] == "say")
-        scene = {"scene": n, "title": title, "episode": episode, "events": events, "count": counts,
+        changed = {code: sum(1 for e in events for l in e["lines"] if code in l.get("was", {})) for code in LOCALES}
+        scene = {"scene": n, "title": title, "episode": episode, "events": events, "count": counts, "changed": changed,
                  "next": [x["scene"] for x in data.get("next_scenes", [])],
                  "previous": [x["scene"] if isinstance(x, dict) else x for x in data.get("previous_scenes", [])]}
         (OUT / f"story/scenes/{n:04d}.json").write_text(json.dumps(scene, ensure_ascii=False, separators=(",", ":")))
-        out_scenes.append({k: scene[k] for k in ("scene", "title", "episode", "count", "next", "previous")})
+        out_scenes.append({k: scene[k] for k in ("scene", "title", "episode", "count", "changed", "next", "previous")})
 
     # Reading order: by episode number (scenes the guide does not list go last, by index).
     def order(s):
@@ -292,7 +341,8 @@ def main() -> int:
         except (TypeError, ValueError):
             return (1, 0, s["scene"])
     out_scenes.sort(key=order)
-    (OUT / "story/index.json").write_text(json.dumps({"schema": "srw64.web-story-index.v1", "scenes": out_scenes}, ensure_ascii=False, indent=1))
+    (OUT / "story/index.json").write_text(json.dumps({"schema": "srw64.web-story-index.v2", "source": source, "scenes": out_scenes},
+                                                       ensure_ascii=False, indent=1))
     (OUT / "story/search.json").write_text(json.dumps({"schema": "srw64.web-story-search.v1",
                                                          "columns": ["id", "scene", "who_zh", "who_en", "who_ja", "ja", "zh", "en"],
                                                          "rows": search_rows}, ensure_ascii=False, separators=(",", ":")))
@@ -312,6 +362,8 @@ def main() -> int:
         im = Image.open(src).convert("RGBA").resize((PORTRAIT_SIZE, PORTRAIT_SIZE), Image.LANCZOS)
         im.save(dst, "WEBP", quality=82, method=6)
     print(f"scenes {len(out_scenes)}, lines {len(search_rows)}, portraits {len(portraits_used) - len(missing)} (missing HD: {missing})")
+    print(f"since {tag}: " + ", ".join(f"{code} {sum(s['changed'][code] for s in out_scenes)} lines changed" for code in LOCALES)
+          + f"; translations at {source['commit']}{' + uncommitted edits' if source['dirty'] else ''}")
     unmatched = [s["scene"] for s in out_scenes if not s["episode"]]
     print(f"scenes without an episode number: {unmatched}")
     return 0
