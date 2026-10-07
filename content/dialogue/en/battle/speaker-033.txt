@@ -68,7 +68,7 @@
 @11747 Val-A · ヴァル＝ア
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「くっ……なんというパワーだ……」
-“Ngh... what power this is...”
+“Ngh... such power...”
 
 @11748 Val-A · ヴァル＝ア
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -79,7 +79,7 @@
 @11749 Val-A · ヴァル＝ア
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 > 「この身ではこれが限度か……」
-“In this body, this is my limit, it seems...”
+“It seems this body can go no further...”
 
 @11750 Val-A · ヴァル＝ア
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
@@ -90,7 +90,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そうだ……それでいい」
-“Yes... that’s right.”
+“Yes... that’s the way.”
 
 @11752 Val-A · ヴァル＝ア
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
@@ -111,7 +111,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 # 审校：去“哦”
 > 「それでは我らは倒せぬぞ?」
-“Like that, you cannot defeat us.”
+“That will not be enough to defeat us.”
 
 @11756 Val-A · ヴァル＝ア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
@@ -132,7 +132,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お前たちがこの程度のはずがあるまい」
-“There’s no way this is all you’re capable of.”
+“Surely this is not all you are capable of.”
 
 @11760 Val-A · ヴァル＝ア
 # 触发：回避（通用，1/3）
@@ -143,12 +143,12 @@
 # 触发：回避（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度ではな……」
-“This level won’t do...”
+“That will not do...”
 
 @11762 Val-A · ヴァル＝ア
 # 触发：回避（通用，3/3）
 > 「本気でやっているのか?」
-“Are you even fighting seriously?”
+“Are you truly fighting in earnest?”
 
 @11763 Val-A · ヴァル＝ア
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
@@ -175,4 +175,4 @@
 @11767 Val-A · ヴァル＝ア
 # 触发：射程外，无法反击（通用，2/2）
 > 「……この身では届かぬか……」
-“...In this body, I cannot reach them, it seems...”
+“...This body cannot reach them...”

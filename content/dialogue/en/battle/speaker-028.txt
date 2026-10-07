@@ -4,12 +4,12 @@
 # 触发：攻击（通用，1/15）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「許さない!」
-“I won’t forgive you!”
+“You’ll pay for this!”
 
 @11627 Manami · マナミ
 # 触发：攻击（通用，2/15）
 > 「絶対許さないわ!」
-“I will never forgive you!”
+“I’ll never let you get away with this!”
 
 @11628 Manami · マナミ
 # 触发：攻击（通用，3/15）
@@ -54,7 +54,7 @@
 # 触发：攻击（通用，10/15）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あなたたち、許さないわ!」
-“I won’t forgive any of you!”
+“You’ll all pay for this!”
 
 @11636 Manami · マナミ
 # 触发：攻击（通用，11/15）
@@ -71,7 +71,7 @@
 # 触发：攻击（通用，13/15）
 # 审校：“give it up”过于口语化，改为更符合マナミ大小姐口吻的“resign yourself!”
 > 「さぁ、観念しなさい!」
-“Now, resign yourself!”
+“Now, accept your fate!”
 
 @11639 Manami · マナミ
 # 触发：攻击（通用，14/15）
@@ -92,7 +92,7 @@
 # 触发：被击坠（通用，2/4）
 # 审校：“I got shot down”过于口语化，改为更符合大小姐口吻的“I was shot down”。
 > 「そ、そんな、やられちゃったの!?」
-“N-no way, I was shot down?!”
+“N-no way, they got me?!”
 
 @11643 Manami · マナミ
 # 触发：被击坠（通用，3/4）
@@ -113,13 +113,13 @@
 @11646 Manami · マナミ
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/10）
 > 「きゃぁぁっ、こ、ここまでなの!?」
-“Kyaaah, th-this is as far as I go?!”
+“Kyaaah, is th-this the end?!”
 
 @11647 Manami · マナミ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだ、やられないわ!」
-“N-not yet! I won’t be taken down!”
+“N-not yet! I’m not going down!”
 
 @11648 Manami · マナミ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/10）
@@ -144,7 +144,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あうっ……許さない!
 >  絶対に許さないわ!」
-“Agh... I won’t forgive you! I’ll never forgive you!”
+“Agh... You’ll pay for this! I swear you’ll pay!”
 
 @11652 Manami · マナミ
 # 触发：重伤（剩余 HP 不足 30%）（通用，8/10）
@@ -157,32 +157,32 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「きゃぁぁぁぁーっ!
 >  こ、これじゃやられてしまう!?」
-“Kyaaaaa! I-I’m going to be shot down?!”
+“Kyaaaaah! A-at this rate, they’ll get me?!”
 
 @11654 Manami · マナミ
 # 触发：重伤（剩余 HP 不足 30%）（通用，10/10）
 # 审校：补上“あたしじゃ”
 > 「あぅっ! な、なんて強い!
 >  勝てないの? あたしじゃ!?」
-“Agh! S-so strong! Can’t I win? Not even me?!”
+“Agh! H-how strong! Can’t I win? Am I not enough?!”
 
 @11655 Manami · マナミ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「や、やってくれるわね!」
-“Y-you’ll pay for that!”
+“Y-you’ve got some nerve!”
 
 @11656 Manami · マナミ
 # 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「こ、これくらいでっ!」
-“Th-this much will not stop me!”
+“Th-this won’t stop me!”
 
 @11657 Manami · マナミ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、許さないわよ!」
-“Ngh, I won’t forgive you!”
+“Ngh, you won’t get away with this!”
 
 @11658 Manami · マナミ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/7）
@@ -198,18 +198,18 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……すこしはできるようね!」
-“Ngh... you’re not half bad!”
+“Ngh... so you do have some skill!”
 
 @11661 Manami · マナミ
 # 触发：中伤（剩余 HP 30–90%）（通用，7/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くぅっ! このくらいでやられるわけには!」
-“Ngh! I can’t let myself go down from this!”
+“Ngh! I can’t go down to something like this!”
 
 @11662 Manami · マナミ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/9）
 > 「つっ! このくらい、なんでもないわ!」
-“Tch! This much is nothing!”
+“Ow! This is nothing!”
 
 @11663 Manami · マナミ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/9）
@@ -264,17 +264,17 @@
 @11671 Manami · マナミ
 # 触发：回避（通用，1/9）
 > 「スイームルグは伊達ではないのよ!」
-“The Sweemurg is no pushover!”
+“The Sweemurg isn’t just for show!”
 
 @11672 Manami · マナミ
 # 触发：回避（通用，2/9）
 > 「このくらいなら!」
-“This much is fine!”
+“This much I can handle!”
 
 @11673 Manami · マナミ
 # 触发：回避（通用，3/9）
 > 「ふふっ、だめよ、それでは」
-“Hehe, no good. Not like that.”
+“Hehe, that won’t do at all.”
 
 @11674 Manami · マナミ
 # 触发：回避（通用，4/9）
@@ -301,7 +301,7 @@
 @11678 Manami · マナミ
 # 触发：回避（通用，8/9）
 > 「読めるわ、あたしにも!」
-“I can read you too!”
+“Even I can read that one!”
 
 @11679 Manami · マナミ
 # 触发：回避（通用，9/9）
@@ -324,20 +324,20 @@
 @11682 Manami · マナミ
 # 触发：攻击无效（护罩／装甲）（通用，3/6）
 > 「ビームは無効化するのよ」
-“I nullify beams.”
+“Beams get nullified.”
 
 @11683 Manami · マナミ
 # 触发：攻击无效（护罩／装甲）（通用，4/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「だめよ、そんな攻撃では」
-“That won’t do. Not with an attack like that.”
+“No, no, an attack like that won’t do.”
 
 @11684 Manami · マナミ
 # 触发：攻击无效（护罩／装甲）（通用，5/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 # 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「スイームルグを甘くみないで!」
-“Don’t underestimate the Sweemurg!”
+“Don’t take the Sweemurg lightly!”
 
 @11685 Manami · マナミ
 # 触发：攻击无效（护罩／装甲）（通用，6/6）
@@ -362,7 +362,7 @@
 # 触发：射程外，无法反击（通用，2/2）
 # 审校：“That's dirty”语气偏弱，改为“How dirty”更符合“汚いわ”的斥责口吻。
 > 「そんなところからなんて、汚いわ!」
-“Attacking from way over there? How dirty!”
+“From way over there? How unfair!”
 
 @16567 Manami · マナミ
 # 触发：使用〈ライトニングソード〉（低优先，可能被通用台词顶掉）
@@ -461,7 +461,7 @@
 @16581 Manami · マナミ
 # 触发：使用〈ブラッディハウリング〉
 > 「いくわ、必殺!」
-“Here I go, my finisher!”
+“Here it comes, my finishing move!”
 ---
 > 「ブラッディィィハウリングッ!」
 “Bloody Howling!”
@@ -474,7 +474,7 @@
 @16583 Manami · マナミ
 # 触发：使用〈ブラッディハウリング〉
 > 「とどめよ!」
-“The finishing blow!”
+“This finishes it!”
 ---
 > 「ブラッディハウリング!」
 “Bloody Howling!”
@@ -487,7 +487,7 @@
 @16585 Manami · マナミ
 # 触发：使用〈アルティメットビーム〉（低优先，可能被通用台词顶掉）
 > 「とどめよ!」
-“The finishing blow!”
+“This finishes it!”
 ---
 > 「アルティメットビーム!」
 “Ultimate Beam!”
@@ -519,18 +519,18 @@
 @16590 Lawrence · ローレンス
 # 触发：副驾驶〈ローレンス〉，使用〈アルティメットビーム〉（对话第 2/2 句）
 > 「しかとあわせてございます」
-“It is perfectly aligned.”
+“The sights are firmly set.”
 
 @16591 Manami · マナミ
 # 触发：副驾驶〈ローレンス〉，使用〈ブラッディハウリング〉（对话第 1/2 句）
 # 审校：あれを出す 是玛奈美自己使出那招
 > 「ローレンス、あれを出すわ!」
-“Lawrence, I’m bringing out that one!”
+“Lawrence, time for that weapon!”
 
 @16592 Lawrence · ローレンス
 # 触发：副驾驶〈ローレンス〉，使用〈ブラッディハウリング〉（对话第 2/2 句）
 > 「準備万端ととのってございます」
-“Everything is fully prepared.”
+“All is in readiness.”
 
 @16593 Manami · マナミ
 # 触发：副驾驶〈ローレンス〉，使用〈アッシャークルー〉（对话第 1/2 句）
@@ -540,7 +540,7 @@
 @16594 Lawrence · ローレンス
 # 触发：副驾驶〈ローレンス〉，使用〈アッシャークルー〉（对话第 2/2 句）
 > 「設定終了でございます、お嬢様」
-“Settings complete, my lady.”
+“All set, my lady.”
 
 @16595 Manami · マナミ
 # 触发：副驾驶〈アイシャ〉，使用〈デストラクションブーメラン〉（对话第 1/2 句）
@@ -550,7 +550,7 @@
 @16596 Aisha · アイシャ
 # 触发：副驾驶〈アイシャ〉，使用〈デストラクションブーメラン〉（对话第 2/2 句）
 > 「わかっていますわ!」
-“I know!”
+“I am well aware!”
 
 @16597 Manami · マナミ
 # 触发：副驾驶〈アイシャ〉，使用〈アッシャークルー〉（对话第 1/2 句）
@@ -560,7 +560,7 @@
 @16598 Aisha · アイシャ
 # 触发：副驾驶〈アイシャ〉，使用〈アッシャークルー〉（对话第 2/2 句）
 > 「発射はまかせていただくわ!」
-“Leave the firing to me!”
+“Kindly leave the firing to me!”
 
 @16599 Manami · マナミ
 # 触发：副驾驶〈アイシャ〉，使用〈デストラクションブーメラン〉（对话第 1/2 句）
@@ -658,13 +658,13 @@
 # 触发：重伤（剩余 HP 不足 30%），副驾驶〈ローレンス〉（对话第 2/2 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お、お嬢様、緊急退避をっ!」
-“M-my lady, emergency retreat!”
+“M-my lady, you must withdraw at once!”
 
 @16616 Lawrence · ローレンス
 # 触发：重伤（剩余 HP 不足 30%），副驾驶〈ローレンス〉
 # 审校：ローレンス说的是自己跟在お嬢様身边，原文“私がついていながら”指伴随小姐，应译为“with her”而非“with you”。
 > 「くっ、私がついていながら!」
-“Ngh, and I was right there with her!”
+“Ngh, and with me at your side!”
 
 @16617 Lawrence · ローレンス
 # 触发：重伤（剩余 HP 不足 30%），副驾驶〈ローレンス〉
@@ -675,19 +675,19 @@
 # 触发：重伤（剩余 HP 不足 30%），副驾驶〈アイシャ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「も、もう危ないのではなくって!?」
-“I-is this not getting dangerous?!”
+“I-is it not getting rather dangerous?!”
 
 @16619 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%），副驾驶〈アイシャ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「キャァ! は、はやく逃げて!」
-“Eek! H-hurry, run!”
+“Eek! H-hurry, get us out!”
 
 @16620 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%），副驾驶〈アイシャ〉
 > 「あぅぅ!?
 >  こんなにパワーが違うなんて!」
-“Ahh?! Such a difference in power!”
+“Ahh?! I never imagined such a gap in power!”
 
 @16621 Lawrence · ローレンス
 # 触发：重伤（剩余 HP 不足 30%），对手驾驶员〈アイシャ〉
@@ -703,19 +703,19 @@
 @16623 Lawrence · ローレンス
 # 触发：中伤（剩余 HP 30–90%），副驾驶〈ローレンス〉（对话第 2/2 句）
 > 「お嬢様、危険でございます」
-“My lady, it is dangerous.”
+“My lady, this is perilous.”
 
 @16624 Lawrence · ローレンス
 # 触发：中伤（剩余 HP 30–90%），副驾驶〈ローレンス〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むぅ! こ、このままではまずいですぞ!」
-“Mm! A-at this rate, we are in trouble!”
+“Mm! Th-this does not bode well!”
 
 @16625 Lawrence · ローレンス
 # 触发：中伤（剩余 HP 30–90%），副驾驶〈ローレンス〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬぅ……私も甘くなりましたな」
-“Ngh... I’ve grown soft as well.”
+“Ngh... I have grown soft, it seems.”
 
 @16626 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%），副驾驶〈アイシャ〉（对话第 1/2 句）
@@ -744,7 +744,7 @@
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈アイシャ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、これくらいでっ!」
-“Th-this much will not stop me!”
+“Th-this won’t stop me!”
 
 @16631 Manami · マナミ
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈アイシャ〉
@@ -755,7 +755,7 @@
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈アイシャ〉
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「くぅっ! このくらいでやられるわけには!」
-“Ngh! I can’t let myself go down from this!”
+“Ngh! I can’t go down to something like this!”
 
 @16633 Manami · マナミ
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈アイシャ〉
@@ -770,13 +770,13 @@
 @16635 Lawrence · ローレンス
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈アイシャ〉（对话第 2/2 句）
 > 「お嬢様、危険でございます」
-“My lady, it is dangerous.”
+“My lady, this is perilous.”
 
 @16636 Lawrence · ローレンス
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈アイシャ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「むぅ! こ、このままではまずいですぞ!」
-“Mm! A-at this rate, we are in trouble!”
+“Mm! Th-this does not bode well!”
 
 @16637 Manami · マナミ
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈ローレンス〉（对话第 1/2 句）
@@ -787,12 +787,12 @@
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈ローレンス〉（对话第 2/2 句）
 # 审校：ローレンス不用缩写，应保持完整句式。
 > 「損傷軽微、問題ございません」
-“Damage is minor, there is no problem at all.”
+“Minor damage. Nothing to be concerned about.”
 
 @16639 Lawrence · ローレンス
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈ローレンス〉（对话第 1/2 句）
 > 「この程度なら問題ございませんぞ」
-“This much is no problem at all.”
+“This much is of no concern whatsoever.”
 
 @16640 Manami · マナミ
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈ローレンス〉（对话第 2/2 句）
@@ -803,7 +803,7 @@
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉（对话第 1/2 句）
 > 「フフフ
 >  この程度なら大丈夫ですわね」
-“Hehehe, this much is quite all right.”
+“Hehehe, this much is nothing to worry about.”
 
 @16642 Manami · マナミ
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉（对话第 2/2 句）
@@ -826,7 +826,7 @@
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉
 # 审校：アイシャ的贵族口吻应更正式，不用缩写。
 > 「もう、やめたほうがよいのではなくて?」
-“Really, would it not be better to give up?”
+“Honestly, would it not be wiser to give up?”
 
 @16646 Manami · マナミ
 # 触发：回避，副驾驶〈ローレンス〉（对话第 1/2 句）
@@ -836,7 +836,7 @@
 @16647 Lawrence · ローレンス
 # 触发：回避，副驾驶〈ローレンス〉（对话第 2/2 句）
 > 「油断は禁物ですぞ!」
-“Carelessness is forbidden!”
+“Never let your guard down!”
 
 @16648 Lawrence · ローレンス
 # 触发：回避，副驾驶〈ローレンス〉（对话第 1/2 句）
@@ -875,19 +875,19 @@
 # 触发：攻击无效（护罩／装甲），副驾驶〈アイシャ〉
 # 审校：アイシャ的贵族口吻应更正式，不用缩写。
 > 「フフ、わたくしたちには効きませんわよ!」
-“Hehe, they do not work on us!”
+“Hehe, that will not work on us!”
 
 @16655 Aisha · アイシャ
 # 触发：攻击无效（护罩／装甲），副驾驶〈アイシャ〉
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「あら、ビームは効きませんのよ?」
-“Oh my, a beam will not work on me, you know?”
+“Oh my, beams will not work, I am afraid.”
 
 @16656 Aisha · アイシャ
 # 触发：攻击无效（护罩／装甲），副驾驶〈アイシャ〉
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「もうよろしいかしら?」
-“Is that quite enough for you?”
+“Are you quite finished?”
 
 @16657 Manami · マナミ
 # 触发：弹药／EN 不足，无法反击，副驾驶〈ローレンス〉（对话第 1/2 句）
@@ -897,7 +897,7 @@
 @16658 Lawrence · ローレンス
 # 触发：弹药／EN 不足，无法反击，副驾驶〈ローレンス〉（对话第 2/2 句）
 > 「エネルギーゼロです、お嬢様」
-“Energy zero, my lady.”
+“We have no energy left, my lady.”
 
 @16659 Manami · マナミ
 # 触发：弹药／EN 不足，无法反击，副驾驶〈アイシャ〉（对话第 1/2 句）
@@ -914,7 +914,7 @@
 # 触发：弹药／EN 不足，无法反击，副驾驶〈アイシャ〉
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「確認を怠ったのが失敗でしたわ」
-“My mistake was in failing to confirm it.”
+“I failed to check. That was my mistake.”
 
 @16662 Manami · マナミ
 # 触发：射程外，无法反击，副驾驶〈ローレンス〉（对话第 1/2 句）
@@ -935,4 +935,4 @@
 @16665 Aisha · アイシャ
 # 触发：射程外，无法反击，副驾驶〈アイシャ〉（对话第 2/2 句）
 > 「射程外、攻撃はできませんわね」
-“Out of range, we cannot attack.”
+“They are out of range. We cannot attack.”

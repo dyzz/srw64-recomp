@@ -46,7 +46,7 @@
 @11804 J-Ren · ジェイ＝レン
 # 触发：被击坠（通用，2/2）
 > 「くっ……まさか、これほどとは……」
-“Ngh... To think it was this much...”
+“Ngh... I never imagined such strength...”
 
 @11805 J-Ren · ジェイ＝レン
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
@@ -62,13 +62,13 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「まさかとは思ったが……我らの予想を上
 >  回るか……」
-“I doubted it, but... you surpass our expectations...”
+“I thought it impossible, but... you exceed our predictions...”
 
 @11808 J-Ren · ジェイ＝レン
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 # 审校：全局：Zuul 拼写
 > 「ほう……ズールを倒しただけのことはある」
-“Oh... worthy of one who defeated Zuul.”
+“Hoh... no wonder you defeated Zuul.”
 
 @11809 J-Ren · ジェイ＝レン
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
@@ -79,20 +79,20 @@
 @11810 J-Ren · ジェイ＝レン
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「……確かに、面白い知性体だ……」
-“...Truly, an interesting intellect...”
+“...Interesting beings, indeed...”
 
 @11811 J-Ren · ジェイ＝レン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 # 审校：无駄だった指期待落空
 > 「この程度とは……無駄だったか」
-“Only this much... So it was a waste.”
+“Only this...? Then this was a waste of time.”
 
 @11812 J-Ren · ジェイ＝レン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「……本気でこい。でなければ、消滅させ
 >  る」
-“...Come at me seriously. Otherwise, I’ll annihilate you.”
+“...Come at me in earnest. Or I will annihilate you.”
 
 @11813 J-Ren · ジェイ＝レン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -108,13 +108,13 @@
 @11815 J-Ren · ジェイ＝レン
 # 触发：回避（通用，2/3）
 > 「無駄なことがわからぬようだな」
-“You seem unable to see the futility.”
+“You still do not see how futile this is.”
 
 @11816 J-Ren · ジェイ＝レン
 # 触发：回避（通用，3/3）
 # 审校：原译“beyond reasoning”不通顺，改为更自然的表达。
 > 「これでは、話にならぬな」
-“This is getting us nowhere.”
+“This is not even worth my time.”
 
 @11817 J-Ren · ジェイ＝レン
 # 触发：攻击无效（护罩／装甲）（通用，1/1）

@@ -15,13 +15,13 @@
 # 触发：攻击（通用，3/9）
 # 审校：“Take my strike!” 略显生硬，改为更自然的战斗台词
 > 「俺の一撃を受けろっ!」
-“Take this blow of mine!”
+“Take my strike!”
 
 @11570 Kurtz · カーツ
 # 触发：攻击（通用，4/9）
 # 审校：みやがれ 是“看好了”
 > 「みやがれ!」
-“Take a good look!”
+“Watch this!”
 
 @11571 Kurtz · カーツ
 # 触发：攻击（通用，5/9）
@@ -72,7 +72,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ!
 >  俺の修行が足りんというのかぁっ!?」
-“Ngh! Are you saying my training isn’t enough?!”
+“Ngh! Is my training still lacking?!”
 
 @11580 Kurtz · カーツ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/9）
@@ -91,7 +91,7 @@
 # 审校：原译多加了人名
 > 「げ、限界だというのか!? だが、この
 >  俺に後退の二文字はないっ!」
-“Th-the limit?! But the word retreat does not exist for me!”
+“Th-the limit?! But I do not know the word retreat!”
 
 @11583 Kurtz · カーツ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/9）
@@ -109,7 +109,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅぅ……
 >  ざけんじゃねぇ、俺は負けんぞ!!」
-“Guh... don’t mock me. I won’t lose!!”
+“Guh... like hell! I won’t lose!!”
 
 @11586 Kurtz · カーツ
 # 触发：重伤（剩余 HP 不足 30%）（通用，7/9）
@@ -176,7 +176,7 @@
 # 审校：“もろにくらった” 是“正面吃下”，改为 “direct hit” 更准确
 > 「バカな!?
 >  この俺がもろにくらっただと!?」
-“Impossible?! I took a direct hit?!”
+“Impossible! A direct hit, on me?!”
 
 @11597 Kurtz · カーツ
 # 触发：中伤（剩余 HP 30–90%）（通用，9/9）
@@ -189,7 +189,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ククク、効かん、効かんぞ!」
-“Heh heh heh, it doesn’t hurt, not at all!”
+“Heh heh heh, I feel nothing! Nothing!”
 
 @11599 Kurtz · カーツ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/10）
@@ -217,7 +217,7 @@
 @11603 Kurtz · カーツ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/10）
 > 「どうやら死にたいらしいな!」
-“So you want to die, it seems!”
+“It seems you wish to die!”
 
 @11604 Kurtz · カーツ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，7/10）
@@ -236,7 +236,7 @@
 @11606 Kurtz · カーツ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，9/10）
 > 「フッ、笑わせてくれる」
-“Heh, you crack me up.”
+“Heh, how laughable.”
 
 @11607 Kurtz · カーツ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，10/10）
@@ -296,13 +296,13 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「クククッ、どうやらムダだということが
 >  理解できないようだな」
-“Heh heh heh, it seems you can’t understand that it’s pointless.”
+“Heh heh heh, you still fail to grasp that it is pointless.”
 
 @11617 Kurtz · カーツ
 # 触发：攻击无效（护罩／装甲）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やるだけムダだな」
-“It’s all pointless.”
+“A waste of effort.”
 
 @11618 Kurtz · カーツ
 # 触发：攻击无效（护罩／装甲）（通用，3/5）
@@ -313,7 +313,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しつこいぞ、貴様」
-“You’re persistent, you wretch.”
+“You try my patience, wretch.”
 
 @11620 Kurtz · カーツ
 # 触发：攻击无效（护罩／装甲）（通用，5/5）
@@ -348,7 +348,7 @@
 # 触发：射程外，无法反击（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フン、俺に近寄れんのか!?」
-“Hmph, you can’t even get close to me?!”
+“Hmph, afraid to come near me?!”
 
 @16513 Kurtz · カーツ
 # 触发：对手驾驶员〈ブラッド〉
@@ -567,13 +567,13 @@
 # 触发：使用〈招雷 天竜魔滅陣〉（对话第 1/8 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「{PartnerNick}、あれをやるぞ!」
-“{PartnerNick}, let’s do that one!”
+“{PartnerNick}, time for that move!”
 
 @16547 Kurtz · カーツ
 # 触发：使用〈招雷 天竜魔滅陣〉（对话第 2/8 句）
 # 审校：与 16489 统一
 > 「あれか。いいだろう」
-“That one, huh. Very well.”
+“That move? Very well.”
 
 @16548 Kurtz · カーツ
 # 触发：使用〈招雷 天竜魔滅陣〉（对话第 3/8 句）
@@ -629,7 +629,7 @@
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「バカな!?
 >  この俺がもろにくらっただと!?」
-“Impossible?! I took a direct hit?!”
+“Impossible! A direct hit, on me?!”
 
 @16556 Kurtz · カーツ
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈ブラッド〉
@@ -689,10 +689,10 @@
 # 触发：分身回避，乘坐〈ヴァイローズ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様ごときに、見切れはせんぞ!」
-“A wretch like you won’t see through it!”
+“The likes of you will never see through it!”
 
 @16566 Kurtz · カーツ
 # 触发：分身回避，乘坐〈ヴァイローズ〉
 > 「くっ、俺に瞬幻足を
 >  使わせるとはな」
-“Hmph, to make me use Phantom Step...”
+“Hmph, you forced me to use Phantom Step...”

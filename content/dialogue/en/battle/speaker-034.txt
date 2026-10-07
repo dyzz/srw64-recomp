@@ -37,7 +37,7 @@
 # 触发：攻击（通用，7/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ほら……どうしたんだイ?」
-“Hey... what’s the matter with you?”
+“Well...? What’s wrong?”
 
 @11775 Avie-Lu · アヴィ＝ルー
 # 触发：攻击（通用，8/9）
@@ -55,7 +55,7 @@
 # 触发：被击坠（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な……なんだって!?」
-“W-what did you say?!”
+“Wh-what?!”
 
 @11778 Avie-Lu · アヴィ＝ルー
 # 触发：被击坠（通用，2/2）
@@ -75,7 +75,7 @@
 # 审校：更像人话
 > 「アウッ……この形態を
 >  維持しながらじゃ、もう無理か……」
-“Agh... I can’t keep this up while holding this form...”
+“Agh... I can’t keep fighting and hold this form at the same time...”
 
 @11781 Avie-Lu · アヴィ＝ルー
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
@@ -89,14 +89,14 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そう……そうだヨ。感じるヨ、
 >  お前たちの力……」
-“Yes... that’s right. I can feel it, your power...”
+“Yes... that’s it. I can feel your power...”
 
 @11783 Avie-Lu · アヴィ＝ルー
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 # 审校：去掉“哟”；英文断句
 > 「さァ、もっと、もっと、力をだしなヨ。
 >  でないと、みんな死んでしまうヨ?」
-“Come on, more, more. Show me your power. Otherwise, you’re all going to die, you know?”
+“Come on, more! Show me more power! Or else you’re all going to die!”
 
 @11784 Avie-Lu · アヴィ＝ルー
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
@@ -115,25 +115,25 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「本気でやらないと……永劫の
 >  闇の中へ、消えてしまうヨ」
-“If you don’t get serious... you’ll vanish into the eternal darkness, you know.”
+“Get serious... or you’ll vanish into eternal darkness.”
 
 @11787 Avie-Lu · アヴィ＝ルー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まさか……このまま終わるワケないよネ?」
-“No way... there’s no way it ends like this, right?”
+“Don’t tell me... it’s not gonna end like this, is it?”
 
 @11788 Avie-Lu · アヴィ＝ルー
 # 触发：回避（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ホラホラ、どうしたんだイ」
-“Hey hey, what’s the matter with you?”
+“Come on, come on, what’s the matter?”
 
 @11789 Avie-Lu · アヴィ＝ルー
 # 触发：回避（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「それではあたらないヨ」
-“That won’t hit me, you know.”
+“You’ll never hit me like that.”
 
 @11790 Avie-Lu · アヴィ＝ルー
 # 触发：回避（通用，3/3）
@@ -172,7 +172,7 @@
 # 触发：使用〈ギガフレア〉（低优先，可能被通用台词顶掉）
 # 审校：原文句尾的“かイ”是反问语气，不是“eh”的追加，应去掉多余的 eh。
 > 「この炎に、耐えられるかイ」
-“Can you withstand this flame?”
+“Think you can stand these flames?”
 
 @16688 Avie-Lu · アヴィ＝ルー
 # 触发：使用〈カオスイリュージョン〉（低优先，可能被通用台词顶掉）

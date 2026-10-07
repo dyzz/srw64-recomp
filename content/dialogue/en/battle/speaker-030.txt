@@ -35,7 +35,7 @@
 @11450 Rish · リッシュ
 # 触发：攻击（通用，7/17）
 > 「そらよ」
-“Here goes.”
+“Here you go.”
 
 @11451 Rish · リッシュ
 # 触发：攻击（通用，8/17）
@@ -46,7 +46,7 @@
 # 触发：攻击（通用，9/17）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうしたどうした!?」
-“What’s wrong, what’s wrong?!”
+“What’s the matter? Huh?!”
 
 @11453 Rish · リッシュ
 # 触发：攻击（通用，10/17）
@@ -67,7 +67,7 @@
 # 触发：攻击（通用，13/17）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「止めといくかい」
-“I’ll finish you off.”
+“Guess I’ll finish you off.”
 
 @11457 Rish · リッシュ
 # 触发：攻击（通用，14/17）
@@ -78,12 +78,12 @@
 # 触发：攻击（通用，15/17）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なかなか素早いが、ね」
-“Quick, aren’t you. But still.”
+“You’re pretty quick. But...”
 
 @11459 Rish · リッシュ
 # 触发：攻击（通用，16/17）
 > 「甘いな、甘すぎるぜ」
-“Naive. Way too naive.”
+“Sloppy, way too sloppy.”
 
 @11460 Rish · リッシュ
 # 触发：攻击（通用，17/17）
@@ -98,7 +98,7 @@
 @11462 Rish · リッシュ
 # 触发：被击坠（通用，2/4）
 > 「ちぃっ、やっちまったか!?」
-“Tch, did I mess up?!”
+“Tch, did I blow it?!”
 
 @11463 Rish · リッシュ
 # 触发：被击坠（通用，3/4）
@@ -109,7 +109,7 @@
 @11464 Rish · リッシュ
 # 触发：被击坠（通用，4/4）
 > 「へっ、俺もここで終わりかよ」
-“Heh, so this is the end for me too, huh.”
+“Heh, guess this is it for me.”
 
 @11465 Rish · リッシュ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/8）
@@ -120,18 +120,18 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やべぇ! 限界じゃねぇか!?」
-“Damn! I’m at my limit?!”
+“Crap! Is it at its limit?!”
 
 @11467 Rish · リッシュ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「けっ……そろそろ俺も終わりかよ」
-“Keh... guess I’m done for soon too.”
+“Keh... guess my time’s about up.”
 
 @11468 Rish · リッシュ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/8）
 > 「こいつぁ持たねぇかもな……」
-“I might not last much longer...”
+“This thing might not hold...”
 
 @11469 Rish · リッシュ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/8）
@@ -148,7 +148,7 @@
 # 审校：是自己被打中要害
 > 「なんだと!?
 >  マズイ所にあたっちまったみてぇだな……」
-“What?! Looks like it hit somewhere bad...”
+“What?! Looks like it hit a bad spot...”
 
 @11472 Rish · リッシュ
 # 触发：重伤（剩余 HP 不足 30%）（通用，8/8）
@@ -187,12 +187,12 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 # 审校：原译多了 You're saying
 > 「この俺が押されてるってのか!?」
-“I’m the one getting pushed back?!”
+“Me, getting pushed back?!”
 
 @11479 Rish · リッシュ
 # 触发：中伤（剩余 HP 30–90%）（通用，7/7）
 > 「ほう……やるじゃねぇか」
-“Oh... not bad.”
+“Huh... not bad.”
 
 @11480 Rish · リッシュ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
@@ -216,7 +216,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ハハハッ
 >  威力が足りなかったようだな」
-“Hahaha, seems it wasn’t powerful enough.”
+“Hahaha, guess it didn’t pack enough punch.”
 
 @11484 Rish · リッシュ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
@@ -257,18 +257,18 @@
 # 触发：回避（通用，5/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたってやるわけにはいかないんでな」
-“Can’t afford to get hit, you see.”
+“Can’t go letting you hit me, see.”
 
 @11491 Rish · リッシュ
 # 触发：回避（通用，6/8）
 > 「クククッ、あたんなかったようだな?」
-“Heheheh, looks like it missed?”
+“Heheheh, missed, huh?”
 
 @11492 Rish · リッシュ
 # 触发：回避（通用，7/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッ、俺の運も捨てたもんじゃねぇな」
-“Hmph, my luck ain’t half bad either.”
+“Heh, guess my luck ain’t so bad.”
 
 @11493 Rish · リッシュ
 # 触发：回避（通用，8/8）
@@ -303,7 +303,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「悪いが相手にならねぇ
 >  出直してきな」
-“Sorry, but you’re no match. Come back later.”
+“Sorry, you’re no match. Go try again later.”
 
 @11499 Rish · リッシュ
 # 触发：攻击无效（护罩／装甲）（通用，6/6）
@@ -329,7 +329,7 @@
 # 触发：射程外，无法反击（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ……これじゃやれねぇか」
-“Tch... can’t do it like this, huh.”
+“Tch... can’t do a thing from here.”
 
 @16436 Rish · リッシュ
 # 触发：对手驾驶员〈セレイン〉
@@ -352,7 +352,7 @@
 # 触发：对手驾驶员〈セレイン〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「直撃しちまったら勘弁しろよ」
-“If it’s a direct hit, don’t blame me.”
+“No hard feelings if this one hits dead-on.”
 
 @16440 Rish · リッシュ
 # 触发：对手驾驶员〈セレイン〉
@@ -364,4 +364,4 @@
 # 触发：对手驾驶员〈セレイン〉
 # 审校：原文是叮嘱语气“しっかりよけろよ”，句末用问号更自然。
 > 「しっかりよけろよ」
-“Dodge properly, got it?”
+“Make sure you dodge, got it?”

@@ -3,7 +3,7 @@
 @8374 Kamille · カミーユ
 # 触发：攻击（通用，1/21）
 > 「来るかッ!」
-“Coming at me?!”
+“Here it comes!”
 
 @8375 Kamille · カミーユ
 # 触发：攻击（通用，2/21）
@@ -14,7 +14,7 @@
 # 触发：攻击（通用，3/21）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「出てこなければ、やられなかったのに!」
-“If you hadn’t come out, you wouldn’t have been shot!”
+“You wouldn’t have been shot if you’d stayed out of this!”
 
 @8377 Kamille · カミーユ
 # 触发：攻击（通用，4/21）
@@ -179,7 +179,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たった!? やってくれる!!」
-“It hit?! You’re good!!”
+“It hit?! You’ll pay for that!!”
 
 @8406 Kamille · カミーユ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/7）
@@ -203,7 +203,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やる! でもまだ!」
-“You’re good! But not yet!”
+“Not bad! But I’m not done yet!”
 
 @8410 Kamille · カミーユ
 # 触发：中伤（剩余 HP 30–90%）（通用，7/7）
@@ -237,7 +237,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「この程度のダメージなら!」
-“If it’s only this much damage!”
+“Damage like this won’t stop me!”
 
 @8416 Kamille · カミーユ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）

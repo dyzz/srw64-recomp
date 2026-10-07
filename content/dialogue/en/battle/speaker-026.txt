@@ -16,7 +16,7 @@
 # 触发：攻击（通用，3/19）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当ててみせる!」
-“I’ll hit you, just watch!”
+“I’ll make this hit!”
 
 @11381 Selain · セレイン
 # 触发：攻击（通用，4/19）
@@ -48,7 +48,7 @@
 @11386 Selain · セレイン
 # 触发：攻击（通用，9/19）
 > 「これで!」
-“With this!”
+“Take this!”
 
 @11387 Selain · セレイン
 # 触发：攻击（通用，10/19）
@@ -76,7 +76,7 @@
 @11391 Selain · セレイン
 # 触发：攻击（通用，14/19）
 > 「つぎは……」
-“Next is...”
+“Next...”
 
 @11392 Selain · セレイン
 # 触发：攻击（通用，15/19）
@@ -88,7 +88,7 @@
 # 触发：攻击（通用，16/19）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってみせる!」
-“I’ll do it, just watch!”
+“Watch me!”
 
 @11394 Selain · セレイン
 # 触发：攻击（通用，17/19）
@@ -132,13 +132,13 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/7）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「くっ、機体がもう限界かっ!」
-“Ngh, is my unit already at its limit?!”
+“Ngh, has my unit hit its limit?!”
 
 @11402 Selain · セレイン
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あぅっ! も、もたない!?」
-“Ah! I-I can’t hold out?!”
+“Agh! I-It’s not going to hold?!”
 
 @11403 Selain · セレイン
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/7）
@@ -168,24 +168,24 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「し、しまった!?
 >  出力が上がらないとは……」
-“D-damn it?! Output’s not climbing...”
+“D-damn it! The output won’t rise...”
 
 @11408 Selain · セレイン
 # 触发：中伤（剩余 HP 30–90%）（通用，1/7）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ぐ……ダメージが大きすぎるか!?」
-“Ugh... Is the damage too heavy?!”
+“Ugh... Too much damage?!”
 
 @11409 Selain · セレイン
 # 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「ううっ、直撃をくらってしまった!?」
-“Ugh, I took a direct hit?!”
+“Ugh, a direct hit?!”
 
 @11410 Selain · セレイン
 # 触发：中伤（剩余 HP 30–90%）（通用，3/7）
 > 「ま、まだ、まだやれる!」
-“I-I can still keep going!”
+“I-I can still fight!”
 
 @11411 Selain · セレイン
 # 触发：中伤（剩余 HP 30–90%）（通用，4/7）
@@ -212,12 +212,12 @@
 @11415 Selain · セレイン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/7）
 > 「多少装甲が削られたくらいっ」
-“Just a little armor scraped off!”
+“It only scraped the armor!”
 
 @11416 Selain · セレイン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/7）
 > 「この程度なら、いけるな」
-“This much, I can handle.”
+“I can handle this much.”
 
 @11417 Selain · セレイン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/7）
@@ -238,7 +238,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「敵のパワー不足に救われたか……」
-“Saved by the enemy’s lack of power...”
+“Saved by their lack of firepower...”
 
 @11421 Selain · セレイン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，7/7）
@@ -271,17 +271,17 @@
 @11426 Selain · セレイン
 # 触发：回避（通用，5/13）
 > 「甘いッ!」
-“Too easy!”
+“Too slow!”
 
 @11427 Selain · セレイン
 # 触发：回避（通用，6/13）
 > 「見えた!」
-“I saw it!”
+“I see it!”
 
 @11428 Selain · セレイン
 # 触发：回避（通用，7/13）
 > 「私にもこの程度の技量は!」
-“Even I have this much skill!”
+“I have at least this much skill!”
 
 @11429 Selain · セレイン
 # 触发：回避（通用，8/13）
@@ -292,12 +292,12 @@
 # 触发：回避（通用，9/13）
 > 「単純な攻撃パターンだ。
 >  読みきれる」
-“A simple attack pattern. I can read it.”
+“A simple attack pattern. I can read every move.”
 
 @11431 Selain · セレイン
 # 触发：回避（通用，10/13）
 > 「この程度で私をやろうなどと!」
-“You think this is enough to beat me!”
+“You think this is enough to take me down?!”
 
 @11432 Selain · セレイン
 # 触发：回避（通用，11/13）
@@ -309,7 +309,7 @@
 @11433 Selain · セレイン
 # 触发：回避（通用，12/13）
 > 「このパターンなら、かわせる」
-“With this pattern, I can dodge.”
+“I can dodge a pattern like this.”
 
 @11434 Selain · セレイン
 # 触发：回避（通用，13/13）
@@ -338,12 +338,12 @@
 # 触发：攻击无效（护罩／装甲）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ、性能に助けられたか……」
-“Ngh, saved by my unit’s performance...”
+“Ngh, my unit’s specs saved me...”
 
 @11439 Selain · セレイン
 # 触发：攻击无效（护罩／装甲）（通用，5/5）
 > 「よくもそんな攻撃をしかけてくる」
-“How dare you launch an attack like that.”
+“You have some nerve, trying an attack like that.”
 
 @11440 Selain · セレイン
 # 触发：弹药／EN 不足，无法反击（通用，1/2）
@@ -375,7 +375,7 @@
 @16431 Selain · セレイン
 # 触发：对手驾驶员〈リッシュ〉
 > 「貴様のような奴は!」
-“Someone like you!”
+“Your kind!”
 
 @16432 Selain · セレイン
 # 触发：对手驾驶员〈リッシュ〉
@@ -388,7 +388,7 @@
 # 触发：对手驾驶员〈リッシュ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私の前に出るならば、落とす」
-“If you stand before me, I’ll shoot you down.”
+“Get in my way, and I’ll shoot you down.”
 
 @16434 Selain · セレイン
 # 触发：使用〈集束荷電粒子砲MAP〉（低优先，可能被通用台词顶掉）
@@ -400,7 +400,7 @@
 @16435 Selain · セレイン
 # 触发：使用〈集束荷電粒子砲MAP〉（低优先，可能被通用台词顶掉）
 > 「集束荷電粒子砲、スタンバイ」
-“Convergent Charged Particle Cannon, standby.”
+“Convergent Charged Particle Cannon, stand by.”
 ---
 > 「シュート!!」
 “Shoot!!”

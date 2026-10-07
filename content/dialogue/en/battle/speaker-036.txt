@@ -30,7 +30,7 @@
 @7955 Amuro · アムロ
 # 触发：攻击（通用，6/14）
 > 「この一撃で!」
-“With this one shot!”
+“This shot will do it!”
 
 @7956 Amuro · アムロ
 # 触发：攻击（通用，7/14）
@@ -41,13 +41,13 @@
 # 触发：攻击（通用，8/14）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あててみせるっ!」
-“I’ll hit you, just watch!”
+“I’ll make this hit!”
 
 @7958 Amuro · アムロ
 # 触发：攻击（通用，9/14）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「落としてみせるっ!」
-“I’ll shoot you down, just watch!”
+“I will shoot you down!”
 
 @7959 Amuro · アムロ
 # 触发：攻击（通用，10/14）
@@ -143,7 +143,7 @@
 @7975 Amuro · アムロ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/10）
 > 「くっ! まだだ! まだいける!!」
-“Ngh! Not yet! I can still go!!”
+“Ngh! Not yet! I can still fight!!”
 
 @7976 Amuro · アムロ
 # 触发：中伤（剩余 HP 30–90%）（通用，5/10）
@@ -166,7 +166,7 @@
 @7979 Amuro · アムロ
 # 触发：中伤（剩余 HP 30–90%）（通用，8/10）
 > 「やったな!」
-“You got me!”
+“So you got one in!”
 
 @7980 Amuro · アムロ
 # 触发：中伤（剩余 HP 30–90%）（通用，9/10）
@@ -179,7 +179,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ! 機体の調整が完全じゃ
 >  ないのか!?」
-“Tch! Isn’t the unit fully tuned?!”
+“Tch! Is the unit not tuned right?!”
 
 @7982 Amuro · アムロ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
@@ -195,7 +195,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「この程度のダメージなら!」
-“If it’s only this much damage!”
+“Damage like this won’t stop me!”
 
 @7985 Amuro · アムロ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
@@ -228,7 +228,7 @@
 @7990 Amuro · アムロ
 # 触发：回避（通用，3/10）
 > 「あまいっ!!」
-“Too easy!!”
+“Too slow!!”
 
 @7991 Amuro · アムロ
 # 触发：回避（通用，4/10）
@@ -256,7 +256,7 @@
 # 触发：回避（通用，8/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「敵の動きが……見える!」
-“I can see... the enemy’s movements!”
+“I can see... how they move!”
 
 @7996 Amuro · アムロ
 # 触发：回避（通用，9/10）

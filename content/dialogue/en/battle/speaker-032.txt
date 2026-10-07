@@ -9,7 +9,7 @@
 # 触发：攻击（通用，2/14）
 # 审校：原文“ごらんなさい”是贵族命令式，改为“Do try”更符合艾莎的敬体口吻。
 > 「これを受けてごらんなさい!」
-“Do try taking this!”
+“Let us see you withstand this!”
 
 @11691 Aisha · アイシャ
 # 触发：攻击（通用，3/14）
@@ -20,7 +20,7 @@
 # 触发：攻击（通用，4/14）
 # 审校：贵族敬体，与 16668 统一
 > 「本気でやらせていただくわ!」
-“I shall take this seriously now!”
+“Allow me to fight in earnest!”
 
 @11693 Aisha · アイシャ
 # 触发：攻击（通用，5/14）
@@ -32,7 +32,7 @@
 # 审校：艾莎在愤怒时不用缩略，改为“you are”以符合其正式口吻。
 > 「なかなかよい動きのようですけれど、
 >  まだまだですわ!」
-“You move quite well, but you are still far from ready!”
+“You move rather well, but you are still no match for me!”
 
 @11695 Aisha · アイシャ
 # 触发：攻击（通用，7/14）
@@ -61,18 +61,18 @@
 # 触发：攻击（通用，11/14）
 # 审校：原文“お逃げになりませんの”是敬语，改为“will you not”更符合贵族口吻。
 > 「あら、お逃げになりませんの?」
-“Oh my, will you not run away?”
+“Oh my, are you not going to run?”
 
 @11700 Aisha · アイシャ
 # 触发：攻击（通用，12/14）
 # 审校：原文“許せませんわ”带敬体，改为“I shall never forgive”更符合艾莎的贵族口吻。
 > 「あなたたちは、許せませんわ!」
-“I shall never forgive you people!”
+“You people are unforgivable!”
 
 @11701 Aisha · アイシャ
 # 触发：攻击（通用，13/14）
 > 「さぁ……どうぞご覧になって」
-“Now... do take a look.”
+“Now... do watch closely.”
 
 @11702 Aisha · アイシャ
 # 触发：攻击（通用，14/14）
@@ -105,7 +105,7 @@
 # 审校：原文“こんなところ”带轻蔑，改为“a place such as this”更符合贵族口吻。
 > 「わ、わたくしはこんなところで
 >  倒れるわけにはまいりません!」
-“I-I cannot fall in a place such as this!”
+“I-I cannot possibly fall here!”
 
 @11708 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -123,7 +123,7 @@
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「あぅぅ!?
 >  こんなにパワーが違うなんて!」
-“Ahh?! Such a difference in power!”
+“Ahh?! I never imagined such a gap in power!”
 
 @11711 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -145,7 +145,7 @@
 @11714 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 > 「これでこそ、倒す価値もありますわ!」
-“This is what makes defeating you worthwhile!”
+“Now you are worth defeating!”
 
 @11715 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
@@ -156,7 +156,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
 # 审校：去“呢”
 > 「フフフ、効きませんわね」
-“Hehehe, it does not work.”
+“Hehehe, that had no effect.”
 
 @11717 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
@@ -177,13 +177,13 @@
 @11720 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
 > 「威力が弱すぎたようですわね?」
-“It seems your power was too weak?”
+“It seems that was a little too weak, hmm?”
 
 @11721 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「もう、やめたほうがよいのではなくて?」
-“Really, would it not be better to give up?”
+“Honestly, would it not be wiser to give up?”
 
 @11722 Aisha · アイシャ
 # 触发：回避（通用，1/5）
@@ -205,24 +205,24 @@
 # 触发：回避（通用，4/5）
 # 审校：同L18，补上“is it not”更符合贵族口吻。
 > 「そこですわね?」
-“Right there, is it not?”
+“Coming from there, I take it?”
 
 @11726 Aisha · アイシャ
 # 触发：回避（通用，5/5）
 > 「わたくしにもこの程度は!」
-“Even I can handle this much!”
+“I can manage this much as well!”
 
 @11727 Aisha · アイシャ
 # 触发：攻击无效（护罩／装甲）（通用，1/4）
 # 审校：大小写
 > 「あら、ビームは効きませんのよ?」
-“Oh my, a beam will not work on me, you know?”
+“Oh my, beams will not work, I am afraid.”
 
 @11728 Aisha · アイシャ
 # 触发：攻击无效（护罩／装甲）（通用，2/4）
 # 审校：原文“でしたわねぇ”带敬体，改为“was it not”更符合贵族口吻。
 > 「あらあら、ムダでしたわねぇ」
-“Oh dear, oh dear, that was quite pointless, was it not?”
+“Oh dear, oh dear, what a waste of effort.”
 
 @11729 Aisha · アイシャ
 # 触发：攻击无效（护罩／装甲）（通用，3/4）
@@ -233,19 +233,19 @@
 @11730 Aisha · アイシャ
 # 触发：攻击无效（护罩／装甲）（通用，4/4）
 > 「もうよろしいかしら?」
-“Is that quite enough for you?”
+“Are you quite finished?”
 
 @11731 Aisha · アイシャ
 # 触发：弹药／EN 不足，无法反击（通用，1/2）
 # 审校：更贴合“わたくしとしたことが”的自责语气。
 > 「わたくしとしたことが……!」
-“To think that I, of all people...!”
+“How unlike me...!”
 
 @11732 Aisha · アイシャ
 # 触发：弹药／EN 不足，无法反击（通用，2/2）
 # 审校：failure 改为 mistake，更自然。
 > 「確認を怠ったのが失敗でしたわ」
-“My mistake was in failing to confirm it.”
+“I failed to check. That was my mistake.”
 
 @11733 Aisha · アイシャ
 # 触发：射程外，无法反击（通用，1/2）
@@ -263,7 +263,7 @@
 # 触发：对手驾驶员〈マナミ〉
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「これを受けてごらんなさい!」
-“Do try taking this!”
+“Let us see you withstand this!”
 
 @16667 Aisha · アイシャ
 # 触发：对手驾驶员〈マナミ〉
@@ -275,7 +275,7 @@
 # 触发：对手驾驶员〈マナミ〉
 # 审校：与 11692 统一
 > 「本気でやらせていただくわ!」
-“I shall take this seriously now!”
+“Allow me to fight in earnest!”
 
 @16669 Aisha · アイシャ
 # 触发：对手驾驶员〈マナミ〉
@@ -287,7 +287,7 @@
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「なかなかよい動きのようですけれど、
 >  まだまだですわ!」
-“You move quite well, but you are still far from ready!”
+“You move rather well, but you are still no match for me!”
 
 @16671 Aisha · アイシャ
 # 触发：对手驾驶员〈マナミ〉
@@ -325,13 +325,13 @@
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「わ、わたくしはこんなところで
 >  倒れるわけにはまいりません!」
-“I-I cannot fall in a place such as this!”
+“I-I cannot possibly fall here!”
 
 @16677 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%），对手驾驶员〈マナミ〉
 > 「あぅぅ!?
 >  こんなにパワーが違うなんて!」
-“Ahh?! Such a difference in power!”
+“Ahh?! I never imagined such a gap in power!”
 
 @16678 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%），对手驾驶员〈マナミ〉
@@ -355,7 +355,7 @@
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈マナミ〉
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「これでこそ、倒す価値もありますわ!」
-“This is what makes defeating you worthwhile!”
+“Now you are worth defeating!”
 
 @16682 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%），对手驾驶员〈マナミ〉
@@ -378,10 +378,10 @@
 # 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈マナミ〉
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「威力が弱すぎたようですわね?」
-“It seems your power was too weak?”
+“It seems that was a little too weak, hmm?”
 
 @16686 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈マナミ〉
 # 审校：アイシャ的贵族口吻要求不用缩约形，wouldn't 应改为 would it not。
 > 「もう、やめたほうがよいのではなくて?」
-“Really, would it not be better to give up?”
+“Honestly, would it not be wiser to give up?”

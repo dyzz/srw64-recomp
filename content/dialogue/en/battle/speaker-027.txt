@@ -24,7 +24,7 @@
 # 触发：攻击（通用，5/8）
 # 审校：“technique”太生硬，改为更自然的战斗台词
 > 「俺の技を受けてみろ!」
-“Try and take my best shot!”
+“See if you can handle my technique!”
 
 @11509 Brad · ブラッド
 # 触发：攻击（通用，6/8）
@@ -74,7 +74,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、こんなことでやられるか!」
-“N-no way I’m beaten by this!”
+“L-like I’d lose to something like this!”
 
 @11518 Brad · ブラッド
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/10）
@@ -107,7 +107,7 @@
 @11523 Brad · ブラッド
 # 触发：重伤（剩余 HP 不足 30%）（通用，9/10）
 > 「なにぃ!? バカな、この俺が!?」
-“What?! Impossible, me of all people?!”
+“What?! No way, not me?!”
 
 @11524 Brad · ブラッド
 # 触发：重伤（剩余 HP 不足 30%）（通用，10/10）
@@ -151,7 +151,7 @@
 @11531 Brad · ブラッド
 # 触发：中伤（剩余 HP 30–90%）（通用，7/12）
 > 「くっ……この俺にこうも当てる!?」
-“Ngh... landing hits on me like that?!”
+“Ngh... they keep landing hits on me?!”
 
 @11532 Brad · ブラッド
 # 触发：中伤（剩余 HP 30–90%）（通用，8/12）
@@ -169,7 +169,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，10/12）
 > 「面白いッ! この俺と正面から
 >  やりあおうってんだな!」
-“Interesting! So you want to face me head-on!”
+“Now this is fun! So you want to take me head-on!”
 
 @11535 Brad · ブラッド
 # 触发：中伤（剩余 HP 30–90%）（通用，11/12）
@@ -194,19 +194,19 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぜんぜん効かねぇぜ!」
-“That doesn’t hurt me one bit!”
+“Didn’t feel a thing!”
 
 @11539 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ!? だがムダだ!」
-“Ugh?! But it’s useless!”
+“Ugh?! But that won’t work!”
 
 @11540 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっそぉ、なめやがって!」
-“Damn it, don’t underestimate me!”
+“Damn you, looking down on me!”
 
 @11541 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/11）
@@ -218,7 +218,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/11）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「ムダなことはやめろってんだよ!」
-“I’m telling you to cut the pointless crap!”
+“Quit wasting your time!”
 
 @11543 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上）（通用，7/11）
@@ -228,21 +228,21 @@
 @11544 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上）（通用，8/11）
 > 「チッ、ザコは下がってろ!!」
-“Tch, small fry like you stay back!!”
+“Tch, back off, small fry!!”
 
 @11545 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上）（通用，9/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃!
 >  何度やっても効きはしない!」
-“An attack like that! No matter how many times you try, it won’t work!”
+“Attacks like that! Try all you want, they won’t work!”
 
 @11546 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上）（通用，10/11）
 # 审校：“连我也”不通
 > 「なに!?
 >  この俺もずいぶんとなめられたもんだぜ」
-“What?! Guess I’ve really been underestimated.”
+“What?! You’re really taking me lightly, huh?”
 
 @11547 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上）（通用，11/11）
@@ -258,19 +258,19 @@
 @11549 Brad · ブラッド
 # 触发：回避（通用，2/8）
 > 「見えるぞ、貴様の攻撃が!」
-“I can see it, your attack!”
+“I can see your attack coming!”
 
 @11550 Brad · ブラッド
 # 触发：回避（通用，3/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺に当てるんじゃなかったのか!?」
-“Weren’t you supposed to hit me?!”
+“Weren’t you going to hit me?!”
 
 @11551 Brad · ブラッド
 # 触发：回避（通用，4/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした! ハハハハハッ!」
-“What’s wrong! Hahahahaha!”
+“What’s the matter?! Hahahahaha!”
 
 @11552 Brad · ブラッド
 # 触发：回避（通用，5/8）
@@ -298,12 +298,12 @@
 @11556 Brad · ブラッド
 # 触发：攻击无效（护罩／装甲）（通用，1/6）
 > 「どうやらムダだったようだな!」
-“Looks like that was useless!”
+“Looks like that was a waste!”
 
 @11557 Brad · ブラッド
 # 触发：攻击无效（护罩／装甲）（通用，2/6）
 > 「見たかっ!」
-“See that!”
+“How’s that!”
 
 @11558 Brad · ブラッド
 # 触发：攻击无效（护罩／装甲）（通用，3/6）
@@ -314,7 +314,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，4/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様ごときにやぶられはしない!」
-“The likes of you won’t beat me!”
+“The likes of you can’t break through!”
 
 @11560 Brad · ブラッド
 # 触发：攻击无效（护罩／装甲）（通用，5/6）
@@ -533,7 +533,7 @@
 # 触发：使用〈天馬翔覇〉（对话第 1/3 句）
 > 「天を翔けよ! 空を裂け!
 >  我が魂の力、いまこそ見せん!」
-“Soar through the heavens! Split the sky! Now I show you the power of my soul!”
+“Soar through the heavens! Split the sky! Now I shall show you the power of my soul!”
 
 @16471 Brad · ブラッド
 # 触发：使用〈天馬翔覇〉（对话第 2/3 句）
@@ -556,7 +556,7 @@
 # 触发：使用〈天馬翔覇〉（对话第 2/3 句）
 > 「我が魂の力、いまこそ見せん!
 >  必殺奥義ぃぃぃーっ!」
-“Now I show you the power of my soul! Ultimate secret technique!”
+“Now I shall show you the power of my soul! Ultimate secret technique!”
 
 @16475 Brad · ブラッド
 # 触发：使用〈天馬翔覇〉（对话第 3/3 句）
@@ -568,7 +568,7 @@
 # 审校：原句结构不通
 > 「打ち倒せ! この魂を修羅と化し
 >  我が命のすべてをもって成す!」
-“Strike them down! I turn this soul into an asura and give my whole life to it!”
+“Strike them down! Turning my soul into an asura, I stake my whole life on this!”
 
 @16477 Brad · ブラッド
 # 触发：使用〈天馬翔覇〉（对话第 2/3 句）
@@ -592,7 +592,7 @@
 # 触发：使用〈鳳凰光覇〉（对话第 2/3 句）
 > 「その身をもってとくと知れ!
 >  武機覇拳流が最終奥義!」
-“Know it with your own body! The ultimate secret of Buki Haken-ryu!”
+“Learn it in your own flesh! The ultimate secret of Buki Haken-ryu!”
 
 @16481 Brad · ブラッド
 # 触发：使用〈鳳凰光覇〉（对话第 3/3 句）
@@ -623,13 +623,13 @@
 # 触发：使用〈鳳凰光覇〉（对话第 1/3 句）
 > 「天に舞え鳳凰!
 >  その光翼で敵を無に帰せ!」
-“Dance in the heavens, phoenix! Return the enemy to nothing with your wings of light!”
+“Dance in the heavens, phoenix! Reduce the enemy to nothing with your wings of light!”
 
 @16486 Brad · ブラッド
 # 触发：使用〈鳳凰光覇〉（对话第 2/3 句）
 > 「いまより放つこの一撃は
 >  絶対無敵の不破の技!」
-“The strike I now unleash is the absolute invincible, unbreakable technique!”
+“The strike I unleash now is an invincible, unbreakable technique!”
 
 @16487 Brad · ブラッド
 # 触发：使用〈鳳凰光覇〉（对话第 3/3 句）
@@ -641,13 +641,13 @@
 # 触发：使用〈招雷 天竜魔滅陣〉（对话第 1/8 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「{PartnerNick}、あれをやるぞ!」
-“{PartnerNick}, let’s do that one!”
+“{PartnerNick}, time for that move!”
 
 @16489 Kurtz · カーツ
 # 触发：使用〈招雷 天竜魔滅陣〉（对话第 2/8 句）
 # 审校：卡茨口吻，与 16547 统一
 > 「あれか。いいだろう」
-“That one, huh. Very well.”
+“That move? Very well.”
 
 @16490 Kurtz · カーツ
 # 触发：使用〈招雷 天竜魔滅陣〉（对话第 3/8 句）
@@ -743,7 +743,7 @@
 # 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈カーツ〉
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「くっそぉ、なめやがって!」
-“Damn it, don’t underestimate me!”
+“Damn you, looking down on me!”
 
 @16505 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈カーツ〉
@@ -757,13 +757,13 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした!?
 >  それがお前の本気の技か!?」
-“What’s wrong?! Is that your real attack?!”
+“What’s the matter?! Is that really your best?!”
 
 @16507 Brad · ブラッド
 # 触发：轻伤（剩余 HP 90% 以上），对手驾驶员〈カーツ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダなことはやめろってんだよ!」
-“I’m telling you to cut the pointless crap!”
+“Quit wasting your time!”
 
 @16508 Brad · ブラッド
 # 触发：分身回避，乘坐〈スーパーアースゲイン〉
@@ -785,9 +785,9 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この瞬幻足は貴様ごときに
 >  破られはしない!」
-“This Phantom Step won’t be broken by the likes of you!”
+“The likes of you will never break my Phantom Step!”
 
 @16512 Brad · ブラッド
 # 触发：分身回避，对手驾驶员〈カーツ〉
 > 「読み切ったぞ、{PartnerName}!」
-“I read you completely, {PartnerName}!”
+“I’ve read your every move, {PartnerName}!”

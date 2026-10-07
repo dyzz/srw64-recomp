@@ -90,7 +90,7 @@
 # 审校：原译“Front's got a thin barrage”不够自然，改为更通顺的说法。
 > 「前方、弾幕うすいぞ!
 >  ……なんてね」
-“The barrage up front is thin!... Just kidding.”
+“Barrage is too thin up front!... Just kidding.”
 
 @16325 Emary · エマリー
 # 触发：使用〈対空機関砲／対空砲〉（低优先，可能被通用台词顶掉）
@@ -103,7 +103,7 @@
 # 触发：使用〈対空機関砲／対空砲〉（低优先，可能被通用台词顶掉）
 # 检查提示：未用必用译名：対空砲→AA Gun
 > 「と、とりあえず対空砲火を!」
-“F-first, AA fire!”
+“J-just open AA fire for now!”
 
 @16327 Emary · エマリー
 # 触发：使用〈ドッキングアーム〉（低优先，可能被通用台词顶掉）
