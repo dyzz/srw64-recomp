@@ -726,7 +726,7 @@ You may call their combined form Godmars.)
 @35165 Takeru · タケル
 > 「な……に? さっきも聞こえた……
 >  誰だ?」
-“Wh-what? That voice again... Who are you?”
+“Wh-what? I heard that voice before... Who are you?”
 
 @35166 ???
 > (マーズ……死ぬな……)

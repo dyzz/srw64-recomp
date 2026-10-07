@@ -272,7 +272,7 @@ I’m putting him in your charge.”
 # 审校：全局：弯撇号／弯引号
 > 「しかしな、自分の言葉には
 >  責任を持つべきだとは思わんか?」
-“But don’t you think you should take responsibility for your own words?”
+“Still, don’t you think a person should stand by their own words?”
 
 @26054 Selain · セレイン（按段落 3DD2）
 > 「…………はい」
@@ -282,11 +282,11 @@ I’m putting him in your charge.”
 # 审校：全局：弯撇号／弯引号
 > 「{PartnerFull}くん、
 >  そういうことだ
-“{PartnerFull}, that’s how it is.
+“{PartnerFull}, there you have it.
 ---
 >  我々としても優秀なパイロットは
 >  欲しい。期待している」
-We can always use skilled pilots. I’m counting on you.”
+We could use a skilled pilot. I’m expecting great things.”
 
 @26056 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -890,7 +890,7 @@ Come, shoot me.”
 
 @26152 Heero · ヒイロ
 > 「俺はお前の命に興味などない」
-“I have no interest in your life.”
+“Your life means nothing to me.”
 
 @26153 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
@@ -1835,11 +1835,11 @@ You’ll pilot it, won’t you?”
 # 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「ああ、見てみたんだがね、スイームルグも
 >  エルブルスも、設計段階に
-“Yeah, I had a look. Both the Sweemurg and the Elbulls were redesigned,
+“Yeah, I had a look. The Sweemurg and the Elbulls both originally had
 ---
 >  あったドッキング機構を
 >  廃して再設計してあるんだな」
-scrapping the docking mechanism they had back at the design stage.”
+a docking mechanism in the design, but it was dropped when they were redesigned.”
 
 @26276 Lawrence · ローレンス
 # 审校：劳伦斯称 Mr. Banjo
@@ -1872,7 +1872,7 @@ How disappointing.”
 @26279 Shirley · シャリー
 # 审校：全局：弯撇号／弯引号
 > 「あら、あきらめるのは早いわよ」
-“Oh, it’s too early to give up.”
+“Oh, don’t give up just yet.”
 
 @26280 Lawrence · ローレンス
 > 「どういうことですかな、シャリーどの?」
@@ -1984,10 +1984,10 @@ could go to the Sweemurg, too.”
 # 审校：补译：原稿占位符丢失
 > 「いえ、実は{PartnerName}
 >  お嬢様にお頼みいたしたいことが
-“No, in truth there is something I wished to ask of Lady {PartnerName}.
+“No, the truth is, there is a favor I wished to ask of Lady {PartnerName}.
 ---
 >  ございまして。お聞きいただけますかな?」
-Might you hear me out?”
+Would you hear me out?”
 
 @26295 Aisha · アイシャ（按段落 3DD4）
 # 审校：アイシャ为高傲贵族女性，原文“聞いてあげます”带有施恩语气，用“I shall listen”更贴合其正式口吻。
@@ -2000,15 +2000,15 @@ Might you hear me out?”
 # 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「実はこれまで老骨にムチ打って
 >  {HeroName}お嬢様のサポートを
-“The truth is, perhaps from driving these old bones so hard in support of Lady {HeroName},
+“The truth is, perhaps from driving these old bones to support Lady {HeroName},
 ---
 >  してまいりましたためか、腰痛が
 >  ひどくなってまいりました。このままでは
-my back pain has grown quite severe. At this rate,
+my back pain has grown severe. At this rate,
 ---
 >  近いうちにスイームルグに搭乗する
 >  ことができなくなってしまいそうなのです」
-I fear I shall soon be unable to board the Sweemurg at all.”
+I fear I shall soon be unable to ride in the Sweemurg.”
 
 @26297 Aisha · アイシャ（按段落 3DD4）
 > 「…………それで?」
@@ -2183,7 +2183,7 @@ Elbulls is yours to use as you see fit.’ That is all.”
 @26321 Shirley · シャリー
 > 「お話中ごめんなさい。
 >  作業、進めちゃっていいのかしら?」
-“Sorry to interrupt. Should I go ahead with the work?”
+“Sorry to interrupt. Is it okay if I go ahead with the work?”
 
 @26322 Manami · マナミ（按段落 3DD4）
 > 「作業? 何のです?」

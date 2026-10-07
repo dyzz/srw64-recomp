@@ -500,7 +500,7 @@ Their combined form shall be called Godmars.)
 @26413 Takeru · タケル
 > 「な……に? さっきも聞こえた……
 >  誰だ?」
-“Wh-what? That voice again... Who are you?”
+“Wh-what? I heard that voice before... Who are you?”
 
 @26414 ???
 # 审校：全局：弯撇号／弯引号
@@ -516,7 +516,7 @@ Their combined form shall be called Godmars.)
 # 审校：全局：弯撇号／弯引号
 > 「しょせんはみかけ倒しにすぎない。
 >  一気にケリをつけてやる」
-“It’s all show. I’ll finish this in one blow.”
+“It’s all for show. I’ll finish this in one go.”
 
 @26417 Baren · バレン
 > 「きゃあああぁぁーっ!!」
@@ -1356,7 +1356,7 @@ the Zorbados Army has just been wiped out, giving us total victory.”
 # 审校：全局：弯撇号／弯引号
 > 「待てワール。
 >  シルバー戦線の報告がないが?」
-“Wait, Wahl. What of the report from the Silver Front?”
+“Wait, Wahl. I have heard no report from the Silver Front.”
 
 @26552 Wahl · ワール
 > 「はっ。先遣艦隊司令

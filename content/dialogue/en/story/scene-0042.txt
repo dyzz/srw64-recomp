@@ -422,7 +422,7 @@ Kill Mars and I’ll disarm it. Understood?”
 # 审校：全局：弯撇号／弯引号
 > 「大介さん、見て。あれはどこの
 >  軍隊なのかしら。OZではないわね」
-“Daisuke, look. Whose army is that? It’s not OZ.”
+“Daisuke, look. Whose army could that be? It isn’t OZ.”
 
 @26698 Daisuke · 大介
 # 审校：全局：弯撇号／弯引号

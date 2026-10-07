@@ -1159,7 +1159,7 @@ I was the guy who fell for you.”
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
 > 「フッ、そいつを聞いて安心したぜ。
 >  それじゃま、いくかい」
-“Heh, that’s a load off my mind. Well then, shall we?”
+“Heh, glad to hear it. Well then, let’s do this.”
 
 @25634 Yazan · ヤザン
 # 审校：全局：弯撇号／弯引号

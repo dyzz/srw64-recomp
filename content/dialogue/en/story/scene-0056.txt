@@ -3029,7 +3029,7 @@ I’ve come to take Grendizer back!”
 
 @37125 Maria · マリア
 > 「お兄ちゃん、生きてたのね!?」
-“Brother, you’re alive?!”
+“Brother, you’re alive!”
 
 @37126 Daisuke · 大介
 # 审校：you're the one who made it out safely 生硬
