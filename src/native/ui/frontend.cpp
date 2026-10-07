@@ -492,8 +492,10 @@ button.vw-li .ico img {margin:0;}
 button.vw-li .ph {font-size:14dp; font-weight:bold; color:#2a3b66;}
 button.vw-li.scene {height:44dp;} button.vw-li.scene .ico {width:64dp; height:36dp;}
 button.vw-li.song {height:26dp;} button.vw-li.auto {height:32dp;}
-button.vw-li .n {flex:1 1 0; min-width:0; white-space:nowrap; overflow:hidden;}
-button.vw-li .s {flex-shrink:0; font-size:10dp; color:#8f9bbd; white-space:nowrap;}
+/* Name and subtitle (a pilot's skills) both give way, each in proportion to its width, then fit their share:
+   a fixed subtitle and a badge left a long name less than its 60 % floor (Deck, the largest size). */
+button.vw-li .n {flex:1 1 auto; min-width:0; white-space:nowrap; overflow:hidden;}
+button.vw-li .s {flex:0 1 auto; min-width:0; font-size:10dp; color:#8f9bbd; white-space:nowrap; overflow:hidden;}
 button.vw-li .t {flex-shrink:0; padding:0 4dp; font-size:10dp; font-weight:bold; color:#0b1230; background-color:#8fd7ff;}
 button.vw-li .t.melee {background-color:#ffb547;}
 button.vw-li .badge {flex-shrink:0; padding:0 5dp; font-size:9dp; line-height:15dp; font-weight:bold; color:#0b1230; background-color:#3fd0ff;}
@@ -1995,7 +1997,7 @@ std::string viewer_help() {
 // A row of a box's list.
 std::string viewer_li(int value,const std::string& cls,const std::string& icon,const std::string& text,const std::string& sub,const std::string& badge,bool on) {
     return button("vw-pick:"+std::to_string(value),(icon.empty()?std::string():"<span class='ico'>"+icon+"</span>")+"<span class='n fit'>"+text+"</span>"+
-        (sub.empty()?std::string():"<span class='s'>"+sub+"</span>")+(badge.empty()?std::string():"<span class='badge'>"+badge+"</span>"),on,false,"vw-li"+cls);
+        (sub.empty()?std::string():"<span class='s fit'>"+sub+"</span>")+(badge.empty()?std::string():"<span class='badge'>"+badge+"</span>"),on,false,"vw-li"+cls);
 }
 std::string viewer_icon(const json& e,float box) {
     const auto art=library_art(e,box);
