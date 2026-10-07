@@ -1059,7 +1059,7 @@ could defeat me?!”
 # 审校：全局：弯撇号／弯引号
 > 「さあ、今とどめをさしてやるぞ!
 >  くらえぃ!」
-“Now, I’ll finish you off! Take this!”
+“Now, I shall finish you off! Take this!”
 
 @25887 Schwarz · シュバルツ
 > 「いかん、ドモンッ! なにをやっている!!」
@@ -1158,7 +1158,7 @@ That single instant of Meikyo Shisui...!”
 # 审校：全局：弯撇号／弯引号
 > (死ぬ……? 俺が……? そうだ、
 >  あの時と同じだ……あの時と……)
-(Die...? Me...? That’s right, it’s the same as that time... The same as then...)
+(Die...? Me...? That’s it, it’s just like before... just like then...)
 
 @25903 Rain · レイン
 # 审校：全局：弯撇号／弯引号
