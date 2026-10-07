@@ -14,7 +14,7 @@
 @13821 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击（通用，3/10）
 > 「これでとどめだ!!」
-“This is the finishing blow!!”
+“This ends it!!”
 
 @13822 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击（通用，4/10）
@@ -74,7 +74,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 # 审校：“这边不利”生硬；Kh 不是英文拟声；标点照原文
 > 「うおっ!? くっ、こっちが不利か!」
-“Whoa?! Tch, I’m at a disadvantage!”
+“Whoa?! Tch, they’ve got the upper hand!”
 
 @13833 Neo Zeon Soldier · ネオジオン兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -86,7 +86,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 # 审校：“不愧是”没说完
 > 「やるっ! さすがは!」
-“Not bad! As expected of you!”
+“Not bad! You live up to your name!”
 
 @13835 Neo Zeon Soldier · ネオジオン兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
@@ -161,13 +161,13 @@
 @13847 Neo Zeon Soldier · ネオジオン兵
 # 触发：回避（通用，3/5）
 > 「間合いが遠いわっ!」
-“Too far out of range!”
+“Your spacing’s way off!”
 
 @13848 Neo Zeon Soldier · ネオジオン兵
 # 触发：回避（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「狙いが甘い!」
-“Your aim’s too soft!”
+“Your aim’s sloppy!”
 
 @13849 Neo Zeon Soldier · ネオジオン兵
 # 触发：回避（通用，5/5）

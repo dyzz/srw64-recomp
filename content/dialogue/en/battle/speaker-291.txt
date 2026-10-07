@@ -18,7 +18,7 @@
 @14051 Byston Well Soldier · バイストンウェル兵
 # 触发：攻击（通用，4/11）
 > 「うけてみろっ!!」
-“Try and take it!!”
+“Let’s see you take this!!”
 
 @14052 Byston Well Soldier · バイストンウェル兵
 # 触发：攻击（通用，5/11）
@@ -152,12 +152,12 @@
 @14076 Byston Well Soldier · バイストンウェル兵
 # 触发：回避（通用，1/7）
 > 「甘いっ!」
-“Too soft!”
+“Too slow!”
 
 @14077 Byston Well Soldier · バイストンウェル兵
 # 触发：回避（通用，2/7）
 > 「そこかっ!」
-“There?!”
+“There you are!”
 
 @14078 Byston Well Soldier · バイストンウェル兵
 # 触发：回避（通用，3/7）
@@ -179,7 +179,7 @@
 # 触发：回避（通用，6/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「かわしてみせる!!」
-“I’ll dodge it, just watch!!”
+“Watch me dodge it!!”
 
 @14082 Byston Well Soldier · バイストンウェル兵
 # 触发：回避（通用，7/7）

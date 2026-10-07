@@ -74,7 +74,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ!? くっ、こっちが不利か!」
-“Whoa?! Tch, I’m at a disadvantage!”
+“Whoa?! Tch, they’ve got the upper hand!”
 
 @14103 Gishin Soldier · ギシン星兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -86,7 +86,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 # 审校：“不愧是”没说完
 > 「やるっ! さすがは!」
-“Not bad! Just as expected of you!”
+“Not bad! You live up to your name!”
 
 @14105 Gishin Soldier · ギシン星兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
@@ -166,18 +166,18 @@
 @14118 Gishin Soldier · ギシン星兵
 # 触发：回避（通用，3/5）
 > 「間合いが遠いわっ!」
-“Too far away!”
+“Your spacing’s way off!”
 
 @14119 Gishin Soldier · ギシン星兵
 # 触发：回避（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「狙いが甘い!」
-“Your aim’s too sloppy!”
+“Your aim’s sloppy!”
 
 @14120 Gishin Soldier · ギシン星兵
 # 触发：回避（通用，5/5）
 > 「バカめ。どこを狙っている!」
-“Fool. What are you aiming at!”
+“Fool. What are you aiming at?!”
 
 @14121 Gishin Soldier · ギシン星兵
 # 触发：攻击无效（护罩／装甲）（通用，1/2）

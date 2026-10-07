@@ -3,7 +3,7 @@
 @8222 Quess · クェス
 # 触发：攻击（通用，1/14）
 > 「みんな、落ちちゃえぇぇっ!!」
-“Everyone, just fall already!!”
+“All of you, just go down!!”
 
 @8223 Quess · クェス
 # 触发：攻击（通用，2/14）
@@ -14,7 +14,7 @@
 @8224 Quess · クェス
 # 触发：攻击（通用，3/14）
 > 「落ちろ、落ちろ、落ちろ!」
-“Fall, fall, fall!”
+“Down! Down! Down!”
 
 @8225 Quess · クェス
 # 触发：攻击（通用，4/14）
@@ -36,17 +36,17 @@
 @8228 Quess · クェス
 # 触发：攻击（通用，7/14）
 > 「おちちゃえーっ!!」
-“Just fall already!!”
+“Just go down already!!”
 
 @8229 Quess · クェス
 # 触发：攻击（通用，8/14）
 > 「おちなさいっ!!」
-“Fall, I said!!”
+“Go down!!”
 
 @8230 Quess · クェス
 # 触发：攻击（通用，9/14）
 > 「みんな! 落ちちゃえー!!」
-“Everyone! Just fall!!”
+“All of you! Go down!!”
 
 @8231 Quess · クェス
 # 触发：攻击（通用，10/14）
@@ -62,7 +62,7 @@
 @8233 Quess · クェス
 # 触发：攻击（通用，12/14）
 > 「落ちなさいっ!!」
-“Fall, I said!!”
+“Go down!!”
 
 @8234 Quess · クェス
 # 触发：攻击（通用，13/14）
@@ -80,7 +80,7 @@
 # 触发：被击坠（通用，1/4）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「しまった!? ここまで!?」
-“Damn?! Is this it?!”
+“Oh no?! Is this it?!”
 
 @8237 Quess · クェス
 # 触发：被击坠（通用，2/4）
@@ -115,7 +115,7 @@
 @8242 Quess · クェス
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
 > 「きゃあっ! こんなパワーがあるなんて……」
-“Kyaah! To think it had this much power...”
+“Kyaah! I didn’t know it was this strong...”
 
 @8243 Quess · クェス
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
@@ -193,7 +193,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「何さ、こんなダメージっ!!」
-“So what? Damage like that?!”
+“So what? What’s a little damage like this?!”
 
 @8257 Quess · クェス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
@@ -220,7 +220,7 @@
 # 触发：回避（通用，2/5）
 # 审校：去掉重复的“看我”；英文断句
 > 「このくらい、よけてみせる!!」
-“This much? I’ll dodge it!!”
+“I can dodge something like this!!”
 
 @8262 Quess · クェス
 # 触发：回避（通用，3/5）
@@ -243,13 +243,13 @@
 # 审校：护罩弹开更顺
 > 「その程度のビーム、
 >  弾き飛ばすんだからっ!」
-“A Beam like that? I’ll just knock it away!”
+“A beam like that? I’ll just knock it away!”
 
 @8266 Quess · クェス
 # 触发：攻击无效（护罩／装甲）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダよ!!」
-“It’s useless!!”
+“Useless!!”
 
 @8267 Quess · クェス
 # 触发：攻击无效（护罩／装甲）（通用，3/3）
@@ -311,4 +311,4 @@
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  いけっ! ハイメガキャノン!!」
-“Energy charge... Go! High Mega Cannon!!”
+“Charging energy... Go! High Mega Cannon!!”

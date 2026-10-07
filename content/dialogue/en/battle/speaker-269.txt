@@ -16,7 +16,7 @@
 # 触发：攻击（通用，3/14）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「逃げられるわけがない!」
-“There’s no way you can escape!”
+“You can’t escape!”
 
 @6484 Noin · ノイン
 # 触发：攻击（通用，4/14）
@@ -34,7 +34,7 @@
 # 触发：攻击（通用，6/14）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「落ちろっ!!」
-“Fall!!”
+“Go down!!”
 
 @6487 Noin · ノイン
 # 触发：攻击（通用，7/14）
@@ -50,13 +50,13 @@
 @6489 Noin · ノイン
 # 触发：攻击（通用，9/14）
 > 「これでとどめだっ!」
-“This is the finishing blow!”
+“This ends it!”
 
 @6490 Noin · ノイン
 # 触发：攻击（通用，10/14）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「うかつなっ!」
-“You’re careless!”
+“Careless!”
 
 @6491 Noin · ノイン
 # 触发：攻击（通用，11/14）
@@ -102,7 +102,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「つっ……このままでは危険か……」
-“Ngh... At this rate, I’m in danger...”
+“Ngh... This is getting dangerous...”
 
 @6499 Noin · ノイン
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -131,7 +131,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/8）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「うっ!! さ、さすがに……」
-“Ugh!! A-as expected...”
+“Ugh!! Th-that one hurt...”
 
 @6504 Noin · ノイン
 # 触发：中伤（剩余 HP 30–90%）（通用，3/8）
@@ -260,16 +260,16 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ヴァイエイト〉
 > 「モビルドールに戦術的なプログラムが
 >  されている!?」
-“The Mobile Dolls have tactical programs?!”
+“The Mobile Dolls are programmed with tactics?!”
 
 @14325 Noin · ノイン
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ビルゴ〉
 > 「モビルドールに戦術的なプログラムが
 >  されている!?」
-“The Mobile Dolls have tactical programs?!”
+“The Mobile Dolls are programmed with tactics?!”
 
 @14326 Noin · ノイン
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ビルゴⅡ〉
 > 「モビルドールに戦術的なプログラムが
 >  されている!?」
-“The Mobile Dolls have tactical programs?!”
+“The Mobile Dolls are programmed with tactics?!”

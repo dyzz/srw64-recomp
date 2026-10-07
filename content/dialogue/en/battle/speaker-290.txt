@@ -14,7 +14,7 @@
 @14012 Maganac Soldier · マグアナック兵
 # 触发：攻击（通用，3/10）
 > 「これでとどめだ!!」
-“This is the finishing blow!!”
+“This ends it!!”
 
 @14013 Maganac Soldier · マグアナック兵
 # 触发：攻击（通用，4/10）
@@ -74,7 +74,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ!? くっ、こっちが不利か!」
-“Whoa?! Tch, I’m at a disadvantage!”
+“Whoa?! Tch, they’ve got the upper hand!”
 
 @14024 Maganac Soldier · マグアナック兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -86,12 +86,12 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 # 审校：“不愧是”没说完
 > 「やるっ! さすがは!」
-“Not bad! As expected of you!”
+“Not bad! You live up to your name!”
 
 @14026 Maganac Soldier · マグアナック兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「ぐうぅっ!! パワーが違いすぎる!!」
-“Guhh!! The power difference is too much!!”
+“Guhh!! Their power’s on another level!!”
 
 @14027 Maganac Soldier · マグアナック兵
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -171,7 +171,7 @@
 # 触发：回避（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「狙いが甘い!」
-“Your aim’s too soft!”
+“Your aim’s sloppy!”
 
 @14041 Maganac Soldier · マグアナック兵
 # 触发：回避（通用，5/5）

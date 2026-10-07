@@ -21,7 +21,7 @@
 # 触发：攻击（通用，4/13）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「……いただく」
-“...I’ll take it.”
+“...You’re mine.”
 
 @6307 Trowa · トロワ
 # 触发：攻击（通用，5/13）
@@ -87,17 +87,17 @@
 @6318 Trowa · トロワ
 # 触发：被击坠（通用，3/4）
 > 「俺の戦いもこれで終わりか……」
-“So my fight ends here too...”
+“So this is where my fight ends...”
 
 @6319 Trowa · トロワ
 # 触发：被击坠（通用，4/4）
 > 「早かったな……俺の死も……」
-“That was quick... my death too...”
+“Sooner than I thought... my death...”
 
 @6320 Trowa · トロワ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「やるな……だが最後の詰めが甘い」
-“Not bad... but your finishing move was sloppy.”
+“Not bad... but you didn’t finish the job.”
 
 @6321 Trowa · トロワ
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -131,20 +131,20 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「脚部にトラブルか…まだ大丈夫だ」
-“Trouble in the legs... still, I’m fine.”
+“Leg trouble... I’m still fine.”
 
 @6327 Trowa · トロワ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度の損傷なら
 >  任務継続に支障はない」
-“Damage of this level won’t hinder the mission.”
+“Damage this minor won’t affect the mission.”
 
 @6328 Trowa · トロワ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「戦術を誤ったようだな」
-“Seems you misjudged your tactics.”
+“Looks like you chose the wrong tactics.”
 
 @6329 Trowa · トロワ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
@@ -167,7 +167,7 @@
 # 触发：回避（通用，1/4）
 > 「戦術、戦闘レベル共に、
 >  ムダな攻撃だ……」
-“Both tactically and in combat level, that attack was wasted...”
+“Wrong tactics, wrong skill level. A wasted attack...”
 
 @6333 Trowa · トロワ
 # 触发：回避（通用，2/4）
@@ -183,7 +183,7 @@
 @6335 Trowa · トロワ
 # 触发：回避（通用，4/4）
 > 「なるほど、この程度か」
-“I see, is that all?”
+“I see. So that’s all.”
 
 @6336 Trowa · トロワ
 # 触发：攻击无效（护罩／装甲）（通用，1/2）

@@ -25,7 +25,7 @@
 @8436 Kamille · カミーユ
 # 触发：攻击（通用，5/10）
 > 「いけるかっ!?」
-“Can I do this?!”
+“Will this work?!”
 
 @8437 Kamille · カミーユ
 # 触发：攻击（通用，6/10）
@@ -86,7 +86,7 @@
 # 审校：Kuh 改 Ngh
 > 「くぅっ! パワーダウンか!?
 >  こんな時に……」
-“Ngh! Power down?! Of all times...”
+“Ngh! Losing power?! Now of all times...”
 
 @8448 Kamille · カミーユ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -116,7 +116,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/7）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「当たった!? やってくれる!!」
-“It hit?! You’re good!!”
+“I’m hit?! Not bad!!”
 
 @8453 Kamille · カミーユ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/7）
@@ -129,7 +129,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，4/7）
 # 审校：补双感叹
 > 「なにっ!!こ、こいつっ!!」
-“What?! Th-this guy!!”
+“What?! Wh-why you!!”
 
 @8455 Kamille · カミーユ
 # 触发：中伤（剩余 HP 30–90%）（通用，5/7）
@@ -141,7 +141,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 # 审校：Nice try 是对方失败时说的
 > 「やる!でもまだ!」
-“Not bad! But not yet!”
+“Not bad! But I’m not done!”
 
 @8457 Kamille · カミーユ
 # 触发：中伤（剩余 HP 30–90%）（通用，7/7）
@@ -153,7 +153,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「こんな攻撃、効くもんかよっ!!」
-“An attack like that won’t do a thing!!”
+“That attack won’t do a thing!!”
 
 @8459 Kamille · カミーユ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
@@ -171,13 +171,13 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 # 审校：补双感叹
 > 「この程度の攻撃!!」
-“An attack like this!!”
+“This attack is nothing!!”
 
 @8462 Kamille · カミーユ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度のダメージなら!」
-“If it’s only this much damage!”
+“I can handle this much damage!”
 
 @8463 Kamille · カミーユ
 # 触发：回避（通用，1/6）

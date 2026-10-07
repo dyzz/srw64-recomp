@@ -115,7 +115,7 @@
 @10445 Koji · 甲児
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
 > 「ちっ! あたっちまったか!」
-“Tch! Got hit, huh!”
+“Tch! So you got a hit in!”
 
 @10446 Koji · 甲児
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
@@ -126,12 +126,12 @@
 @10447 Koji · 甲児
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 > 「ヘン、その程度かよ!」
-“Hah, is that all you got!”
+“Hah, is that all you got?!”
 
 @10448 Koji · 甲児
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
 > 「何でえ、そんなもんかよ!」
-“What, is that all!”
+“What, is that all?!”
 
 @10449 Koji · 甲児
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/6）
@@ -164,7 +164,7 @@
 @10454 Koji · 甲児
 # 触发：回避（通用，4/6）
 > 「おっと、あぶねぇあぶねぇ」
-“Whoa, that was close, that was close.”
+“Whoa, close one, close one.”
 
 @10455 Koji · 甲児
 # 触发：回避（通用，5/6）
@@ -180,13 +180,13 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!」
-“It’s useless!”
+“Useless!”
 
 @10458 Koji · 甲児
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっていったろ!」
-“I told you it’s useless!”
+“I told you, it’s no use!”
 
 @10459 Koji · 甲児
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -203,7 +203,7 @@
 @15954 Koji · 甲児
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉
 > 「ミサイル発射!」
-“Missile launch!”
+“Firing missiles!”
 
 @15955 Koji · 甲児
 # 触发：使用〈ロケットパンチ〉
@@ -434,7 +434,7 @@
 @16000 Koji · 甲児
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉
 > 「ミサイル発射!」
-“Missile launch!”
+“Firing missiles!”
 
 @16001 Koji · 甲児
 # 触发：使用〈光子力ビーム〉
@@ -466,7 +466,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「スペシャルボロットパーンチ!!
 >  ……効かねえかな?」
-“Special Borot Punch!! ...Didn’t even faze you, huh?”
+“Special Borot Punch!! ...Guess it won’t work, huh?”
 
 @16007 Koji · 甲児
 # 触发：使用〈スペシャルDXボロットパンチ〉
@@ -499,19 +499,19 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈グレートマジンガー〉
 > 「くそっ! グレートがこんなもんで
 >  やられるかよっ!」
-“Damn! You think Great would go down from that?!”
+“Damn! Like Great’s gonna go down to that?!”
 
 @16012 Koji · 甲児
 # 触发：中伤（剩余 HP 30–90%），乘坐〈マジンガーZ〉
 > 「くそっ! マジンガーがこんなもんで
 >  やられるかよっ!」
-“Damn! You think Mazinger would go down from that?!”
+“Damn! Like Mazinger’s gonna go down to that?!”
 
 @16013 Koji · 甲児
 # 触发：中伤（剩余 HP 30–90%），乘坐〈マジンガーZ(JS)〉
 > 「くそっ! マジンガーがこんなもんで
 >  やられるかよっ!」
-“Damn! You think Mazinger would go down from that?!”
+“Damn! Like Mazinger’s gonna go down to that?!”
 
 @16014 Koji · 甲児
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈グレートマジンガー〉

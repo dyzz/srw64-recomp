@@ -25,13 +25,13 @@
 @6812 Dorothy · ドロシー
 # 触发：攻击（通用，5/11）
 > 「これは戦争ですのよ」
-“This is war, you know.”
+“This is war, after all.”
 
 @6813 Dorothy · ドロシー
 # 触发：攻击（通用，6/11）
 > 「あなたの死も、理想のための
 >  尊い犠牲ですわ!」
-“Your death, too, is a noble sacrifice for our ideals!”
+“Even your death is a noble sacrifice for our ideals!”
 
 @6814 Dorothy · ドロシー
 # 触发：攻击（通用，7/11）
@@ -55,14 +55,14 @@
 # 触发：攻击（通用，10/11）
 > 「逃げるなんてだめ、
 >  あなたは戦わなくてはならないのよ」
-“Running away is not allowed. You must fight.”
+“Running away won’t do. You must fight.”
 
 @6818 Dorothy · ドロシー
 # 触发：攻击（通用，11/11）
 # 审校：避免连用 Now then
 > 「さぁお人形さんたち、華麗なダンス
 >  を踊りなさい」
-“Come, my little dolls, dance a splendid dance.”
+“Come, my little dolls, put on a splendid dance.”
 
 @6819 Dorothy · ドロシー
 # 触发：被击坠（通用，1/1）
@@ -91,12 +91,12 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「うっ、こちらを予測している
 >  というの!?」
-“Ngh, you anticipated this?!”
+“Ngh, you’re predicting my moves?!”
 
 @6824 Dorothy · ドロシー
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「な、流れがかわった!?」
-“Wh-what, the tide has turned?!”
+“Th-the tide has turned?!”
 
 @6825 Dorothy · ドロシー
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
@@ -113,7 +113,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 # 审校：原文「ですのね」带有贵族式嘲讽，译文过于直白，需体现其华丽正式感。
 > 「あなたの力はその程度ですのね」
-“So your power amounts to no more than that.”
+“So that is the extent of your power.”
 
 @6828 Dorothy · ドロシー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -126,7 +126,7 @@
 # 触发：回避（通用，1/4）
 # 审校：原文「ですわね」的贵族反问口吻未体现，需改为更正式的反问。
 > 「どうやらはずれたようですわね?」
-“It seems you have missed, have you not?”
+“It seems you have missed, hmm?”
 
 @6830 Dorothy · ドロシー
 # 触发：回避（通用，2/4）
@@ -138,7 +138,7 @@
 # 触发：回避（通用，3/4）
 # 审校：原文「ですわね」的贵族式感叹口吻未体现，需加入正式感。
 > 「愚かな行為ですわね」
-“What a foolish act indeed.”
+“How very foolish.”
 
 @6832 Dorothy · ドロシー
 # 触发：回避（通用，4/4）
