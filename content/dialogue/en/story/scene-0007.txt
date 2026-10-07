@@ -909,7 +909,7 @@ Answer me, Heero.”
 ---
 >  深入りしすぎた。
 >  お前を、殺す」
-You’ve pried too deep. I’ll kill you.”
+You’ve gotten too involved. I’ll kill you.”
 
 @18095 Heero · ヒイロ
 > 「く……」

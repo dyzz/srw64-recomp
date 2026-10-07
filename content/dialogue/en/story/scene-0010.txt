@@ -14,11 +14,11 @@
 # 审校：全局：弯撇号／弯引号
 > 「半日といったところだな。このあたりは
 >  帝国軍の哨戒ルートだ
-“About half a day. This area is on the Imperial Army’s patrol route.
+“About half a day. This area’s on an Imperial Army patrol route.
 ---
 >  すまないが、もう少し
 >  我慢してもらいたい」
-I’m sorry, but I need you to hold out a little longer.”
+Sorry, but I’ll need you to bear with it a little longer.”
 
 @18335 Ark · アーク（按段落 3DD1）
 > 「はい」
@@ -52,15 +52,15 @@ I’m sorry, but I need you to hold out a little longer.”
 # 审校：全局：弯撇号／弯引号
 > 「廃墟となった町はどこにでもある。
 >  帝国軍は我々がその中に
-“There are ruined towns everywhere. Even if the Imperial Army knows we’re
+“Ruined towns are everywhere. Even if the Imperial Army knows we’re
 ---
 >  隠れていることを知っていても、
 >  しらみつぶしに探すわけにもいかん
-hiding among them, they can’t search every last inch.
+hiding in them, they can’t afford to comb through every one.
 ---
 >  長期的には難しいが、短期間
 >  であれば、いい隠れ家になる」
-It’s hard long-term, but for a short while, it makes a good hideout.”
+It won’t work long-term, but for a short stay, it makes a good hideout.”
 
 @18342 Aboly · アポリー
 > 「大尉、モビルスーツは
@@ -75,12 +75,12 @@ It’s hard long-term, but for a short while, it makes a good hideout.”
 ---
 >  機体を中へ入れれば、
 >  あとは休める」
-Once you’ve brought your machine inside, you can rest.”
+Once your machine’s inside, you can get some rest.”
 
 @18344 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
 > 「あ、はい。そうします」
-“Oh, yes. I’ll do that.”
+“Oh, right. I’ll do that.”
 
 @18345 Selain · セレイン（按段落 3DD2）
 > 「機体はどこへ?」
@@ -110,7 +110,7 @@ Once you’ve brought your machine inside, you can rest.”
 # 审校：全局：弯撇号／弯引号
 > 「そうだ。しかし、残念ながら向こうの
 >  組織は、壊滅状態だった」
-“That’s right. But unfortunately, the organization on the other side was annihilated.”
+“Yes. Unfortunately, the group on their end had been all but wiped out.”
 
 @18351 Bright · ブライト
 > 「では、あのパイロットは?」
@@ -138,7 +138,7 @@ This is Lieutenant Colonel Bright Noa of the Liberation Front of the Earth.”
 @18355 Quattro · クワトロ
 # 审校：原文“もとC級市民”意为“前C级市民”，补上former使意思更准确。
 > 「彼はもとC級市民だ、中佐
-“He was a former C-class citizen, Lieutenant Colonel.
+“He used to be a C-class citizen, Lieutenant Colonel.
 ---
 >  ゲリラ狩りに巻きこまれていた
 >  ところを保護した」
@@ -148,10 +148,10 @@ We took him in after he got caught up in a guerrilla hunt.”
 # 审校：全局：弯撇号／弯引号
 > 「そうか。最近では少なくないパターン
 >  だな。しかし、多少の訓練は
-“I see. That’s a pattern we’ve been seeing a lot of lately. But you’d had
+“I see. We’ve been seeing that a lot lately. But you must have had
 ---
 >  受けていたのだろう?」
-some training, hadn’t you?”
+some training, surely?”
 
 @18357 Ark · アーク（按段落 3DD1）
 > 「いえ……。システムには市街戦闘
@@ -170,7 +170,7 @@ and the controls were semi-automatic, with the manual always displayed, so...”
 @18359 Quattro · クワトロ
 > 「センスがいいのだよ、彼は。
 >  パイロットとしての資質をそなえている」
-“He has good instincts. He has the makings of a pilot.”
+“He has a knack for it. He has the makings of a real pilot.”
 
 @18360 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -181,22 +181,22 @@ and the controls were semi-automatic, with the manual always displayed, so...”
 # 审校：全局：弯撇号／弯引号
 > 「彼女は、あの近辺のゲリラの
 >  生き残りだ
-“She’s a survivor of the guerrillas from that area.
+“She’s one of the surviving guerrillas from that area.
 ---
 >  腕利きのパイロットだよ」
-She’s a skilled pilot.”
+And quite a skilled pilot.”
 
 @18362 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「ほう。{HeroFull}……
 >  そうか、君があの。それは心強いな」
-“Oh. {HeroFull}... I see, so you’re the one. That’s reassuring.”
+“Oh? {HeroFull}... I see, so you’re the one I’ve heard about. That’s reassuring.”
 
 @18363 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「どのような噂をお聞きなのか
 >  知りませんが、買いかぶってもらっては
-“I don’t know what rumors you’ve heard, but I’d rather you not overestimate me.
+“I don’t know what rumors you’ve heard, but please don’t overestimate me.
 ---
 >  困ります。私は先の戦いで、
 >  多くの仲間を失いました
@@ -204,7 +204,7 @@ I lost many comrades in the last battle.
 ---
 >  これまで勝ってこれたのは……
 >  運がよかったからに過ぎません
-The only reason I’ve won so far... is that I’ve simply been lucky.
+If I’ve won so far... it’s only because I got lucky.
 ---
 >  それをもっとも理解しているのは、
 >  私なのですから」
@@ -214,21 +214,21 @@ And no one understands that better than I do.”
 # 审校：全局：弯撇号／弯引号
 > 「しかしな、我々のような組織では、
 >  運も噂も、人の力のうちなのだよ
-“But you see, in an organization like ours, luck and reputation are part of a person’s strength.
+“Still, in an organization like ours, luck and reputation count as part of a person’s strength.
 ---
 >  本人にとっても、周囲の者に
 >  とってもな」
-Both for the person themselves and for those around them.”
+For the person and for everyone around them alike.”
 
 @18365 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「……それはわかります。私はただ、
 >  私のような者を
-“...I understand that. I just wanted to say that you shouldn’t
+“...I understand that. I just meant that you shouldn’t
 ---
 >  あてにされても困ると
 >  いいたかっただけです」
-rely on someone like me.”
+count on someone like me.”
 
 @18366 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -238,7 +238,7 @@ rely on someone like me.”
 ---
 >  あまりみくびってもらいたくは
 >  ないものだな?」
-I’d appreciate it if you didn’t underestimate us too much.”
+I’d rather you didn’t sell us so short.”
 
 @18367 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -266,7 +266,7 @@ I’ll introduce you to everyone.”
 “My name is Eiji. This place is a target.
 ---
 >  それを伝えにやってきた」
-I came to tell you that.”
+I came to warn you.”
 
 @18371 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -287,25 +287,25 @@ But I don’t understand. Why would you tell us that?”
 ---
 >  この地球から叩きだすためだ。
 >  悪いことはいわない
-out of this Earth. I’m telling you for your own good...
+off this Earth. Take my advice...
 ---
 >  すぐここから退去したほうがいい」
-you’d better leave this place right away.”
+you should get out of here right away.”
 
 @18373 Aboly · アポリー
 > 「いきなりいわれて、はいそうですかと
 >  信じられるかよ」
-“You expect us to just take your word for it and say, sure, okay?”
+“You can’t just show up and expect us to take your word for it.”
 
 @18374 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「そうだな。我々にしてもそれなりに
 >  情報は集めているが、その話は
-“Indeed. We’ve gathered our own share of intelligence, but that story of yours
+“Indeed. We’ve gathered our own share of intelligence, but we have nothing
 ---
 >  確認されていない。なぜ君がそれを
 >  知ったのか、教えてもらえないかな?」
-is unconfirmed. Won’t you tell us how you came to know it?”
+to confirm that. Would you mind telling us how you came to know it?”
 
 @18375 Eiji · エイジ
 # 审校：精读：发现地点的是英二自己，不是敌军
@@ -324,16 +324,16 @@ analyzing the terrain of the surrounding area.”
 # 审校：全局：弯撇号／弯引号
 > 「大尉、こんなやつのいうことを
 >  真に受ける必要はありませんよ」
-“Captain, there’s no need to take what this guy says seriously.”
+“Captain, you don’t need to take this guy seriously.”
 
 @18377 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「ふむ……少し考えさせてもらう
-“Hmm... Let me think it over a while.
+“Hmm... Let me think it over for a bit.
 ---
 >  悪いがその間、君の身がらを
 >  拘束するが、よろしいか?」
-I’m sorry, but in the meantime I’ll have you detained. Is that acceptable?”
+Sorry, but I’ll have to detain you in the meantime. Is that all right?”
 
 @18378 Eiji · エイジ
 > 「……いいでしょう。
@@ -342,7 +342,7 @@ I’m sorry, but in the meantime I’ll have you detained. Is that acceptable?�
 ---
 >  敵部隊はここに向けて
 >  移動中です」
-The enemy unit is already on the move toward this location.”
+The enemy is already headed this way.”
 
 @18379 Bright · ブライト
 > 「帝国製のSPTに乗る
@@ -364,12 +364,12 @@ What do you think, Captain?”
 # 审校：全局：弯撇号／弯引号
 > 「我々をここから移動させても、
 >  得するような者は思いつかない」
-“I can’t think of anyone who would benefit from making us move out of here.”
+“I can’t think of anyone who’d gain anything by getting us to move.”
 
 @18383 Bright · ブライト
 > 「そうだな……そう思う。
 >  よし、移動の準備だ」
-“Yes... I think so too. All right, prepare to move out.”
+“Yes... I agree. All right, prepare to move out.”
 
 @18384 Aboly · アポリー
 > 「了解」
@@ -392,7 +392,7 @@ What do you think, Captain?”
 # 审校：全局：弯撇号／弯引号
 > 「{HeroName}のことだな。確認は
 >  してみるが、無理強いはしたくない」
-“It’s about {HeroName}. I’ll ask, but I don’t want to force it.”
+“You mean {HeroName}. I’ll ask, but I don’t want to force it.”
 
 @18389 Bright · ブライト
 > 「わかっている
@@ -400,7 +400,7 @@ What do you think, Captain?”
 ---
 >  だが、あの機体は解放戦線で
 >  運用させてもらう」
-But that unit will be operated by the Liberation Front.”
+But the Liberation Front will be putting that unit to use.”
 
 @18390 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -415,7 +415,7 @@ But that unit will be operated by the Liberation Front.”
 
 @18392 Ark · アーク（按段落 3DD1）
 > (俺、これからどうするんだろう……
-(What am I going to do from now on...?
+(What am I going to do now...?
 ---
 >  エミリア、俺、戦争しなきゃ
 >  ならないのかな……)
@@ -447,11 +447,11 @@ Emilia, do I really have to fight...?)
 ---
 >  ソルデファーのパイロットとして
 >  歓迎する。スタッフは多いが
-you’re welcome as a Soldifar pilot. We have plenty of staff,
+we’d welcome you as the Soldifar’s pilot. We have plenty of staff,
 ---
 >  戦闘パイロットは、
 >  そう多くないのでな」
-but not many combat pilots.”
+but combat pilots are in short supply.”
 
 @18398 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -462,11 +462,11 @@ but not many combat pilots.”
 # 审校：全局：弯撇号／弯引号
 > 「残念だが、近くの町まで
 >  送るようなことはできない。かわりに
-“Unfortunately, I can’t have you driven to a nearby town. Instead,
+“Unfortunately, we can’t take you as far as a nearby town. Instead,
 ---
 >  ジープを1台おいていく。ソルデファーは
 >  我々で運用することになる」
-I’ll leave one jeep behind. The Soldifar will be operated by us.”
+we’ll leave you a jeep. The Soldifar stays with us.”
 
 @18400 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -477,7 +477,7 @@ I’ll leave one jeep behind. The Soldifar will be operated by us.”
 # 审校：全局：弯撇号／弯引号
 > 「そういうものだ。
 >  我々も死にたくはないのでな」
-“That’s how it is. We don’t want to die either.”
+“That’s how it goes. We’d rather not die, either.”
 
 @18402
 # 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
@@ -490,7 +490,7 @@ I’ll leave one jeep behind. The Soldifar will be operated by us.”
 # 审校：全局：弯撇号／弯引号
 > 「いきますよ。僕にはもう
 >  他にありませんから」
-“I’ll go. I have nothing else left.”
+“I’m coming. There’s nothing else left for me.”
 
 @18404 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -499,7 +499,7 @@ I’ll leave one jeep behind. The Soldifar will be operated by us.”
 “Very well. Then I’ll leave the Soldifar to you.
 ---
 >  出発準備をしておいてくれ」
-Get it ready to depart.”
+Get ready to head out.”
 
 @18405 Ark · アーク（按段落 3DD1）
 > 「わかりました」
@@ -519,7 +519,7 @@ Get it ready to depart.”
 # 审校：原文“わかりました”在此是接受安排，原译“I understand”可以，但结合前文更自然用“Understood”，并保持省略号格式。
 > 「……わかりました。一番近い町まで
 >  の地図、もらえますか?」
-“...Understood. Can I have a map to the nearest town?”
+“...All right. Can I have a map to the nearest town?”
 
 @18409 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -543,25 +543,25 @@ Is it naive of me to want to trust him?”
 @18412 Quattro · クワトロ
 > 「いや……{HeroName}、
 >  君はどう思う?」
-“No... What do you think, {HeroName}?”
+“Not at all... What do you think, {HeroName}?”
 
 @18413 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「私は帝国がこのような手を
 >  使うのを見たことはありません
-“I’ve never seen the Empire use tactics like this.
+“I’ve never seen the Empire use a ploy like this.
 ---
 >  それにこの町に
 >  防衛能力がない以上
-And since this town has no defensive capability,
+And since this town can’t defend itself,
 ---
 >  ここで攻撃しても移動中でも
 >  それほど差があるとは思えません
-I doubt it makes much difference whether they attack here or while we’re moving.
+it hardly matters whether they attack us here or on the move.
 ---
 >  帝国軍の計略としては、
 >  あまりにも無意味でしょう」
-As an Imperial scheme, it would be far too pointless.”
+As an Imperial scheme, it would be completely pointless.”
 
 @18414 Quattro · クワトロ
 > 「ふむ、正しい見方だな。
@@ -574,13 +574,13 @@ What he says is probably true.”
 @18415 Bright · ブライト
 > 「そうだな……そう思う。よし、
 >  移動の準備だ。アポリー中尉」
-“Yes... I think so too. All right, prepare to move out. Lieutenant Aboly.”
+“Yes... I agree. All right, prepare to move out. Lieutenant Aboly.”
 
 @18416 Aboly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「了解。整備班には
 >  作業を中止させますよ」
-“Understood. I’ll have the maintenance crew stop their work.”
+“Understood. I’ll tell the maintenance crew to stop work.”
 
 @18417 Bright · ブライト
 > 「大尉、あとでその青年を
@@ -599,7 +599,7 @@ What he says is probably true.”
 “{HeroName}, as you heard, we’re leaving this place.
 ---
 >  君は、どうするつもりだ?」
-What do you intend to do?”
+What do you plan to do?”
 
 @18420 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -617,14 +617,14 @@ What do you intend to do?”
 # 检查提示：未用必用译名：スヴァンヒルド→Svanheld
 > 「スヴァンヒルドは、仲間が命と
 >  引き換えに残したものです
-“The Svanheld is what my comrades left behind at the cost of their lives.
+“My comrades gave their lives to leave me the Svanheld.
 ---
 >  置いていけません。それに、安全な
 >  生活を望むのならば
-I can’t abandon it. Besides, if I wanted a safe life,
+I can’t leave it behind. Besides, if I wanted a safe life,
 ---
 >  そもそも銃をとったりはしません」
-I would never have taken up a gun in the first place.”
+I would never have picked up a gun in the first place.”
 
 @18423 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -645,7 +645,7 @@ But I’d ask you not to be so eager to throw your life away.”
 # 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「よし、あらためてよろしく頼む、
 >  {HeroFull}
-“Good. Then once more, I’m counting on you, {HeroFull}.
+“Good. Then let me say it again, {HeroFull}: I’m counting on you.
 ---
 >  地球解放戦線機構は
 >  君を歓迎する」
@@ -663,7 +663,7 @@ The Liberation Front of the Earth welcomes you.”
 ---
 >  我々は君の情報を受け、
 >  ここを放棄することにした」
-After receiving your information, we decided to abandon this place.”
+Thanks to your information, we’ve decided to abandon this place.”
 
 @18428 Eiji · エイジ
 > 「急いでください。
@@ -708,11 +708,11 @@ so I left the military and started the anti-Imperial movement.”
 @18432 Eiji · エイジ
 > 「僕もそのとき、
 >  ほんのわずかな間でしたが
-“At that time, for just a short while,
+“Back then, if only for a short while,
 ---
 >  地球連邦軍とともに
 >  帝国と戦ったことがあります」
-I also fought the Empire alongside the Earth Federation Forces.”
+I fought the Empire alongside the Earth Federation Forces too.”
 
 @18433 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -722,7 +722,7 @@ I also fought the Empire alongside the Earth Federation Forces.”
 ---
 >  地球と帝国の混血児……
 >  では、あれがレイズナーか」
-A child of both Earth and the Empire... So that’s the Layzner, then.”
+A child of both Earth and the Empire... Then that must be the Layzner.”
 
 @18434 Eiji · エイジ
 > 「ええ」
@@ -742,16 +742,16 @@ Still, if you’d told me that from the start, I would have trusted you right aw
 # 审校：全局：弯撇号／弯引号
 > 「いえ、おそらく逆に
 >  疑いをもったのではないですか?」
-“No, wouldn’t it have made you suspicious instead?”
+“No, I think it would only have made you more suspicious.”
 
 @18437 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「……確かに、その可能性もあるか。
 >  それで、我々はもうここを発つが
-“...True, that’s possible. Anyway, we’re leaving here now.
+“...You may have a point. Anyway, we’re leaving now.
 ---
 >  君はどうするつもりだ?」
-What do you intend to do?”
+What will you do?”
 
 @18438 Eiji · エイジ
 > 「一緒にいかせてください。僕には
@@ -762,7 +762,7 @@ What do you intend to do?”
 # 审校：全局：弯撇号／弯引号
 > 「わかった。君とレイズナーが
 >  加わってくれるとは心強い」
-“Understood. It’s reassuring to have you and the Layzner join us.”
+“Understood. Having you and the Layzner with us is a real boost.”
 
 @18440 Bright · ブライト
 > 「なんだ?」
@@ -771,7 +771,7 @@ What do you intend to do?”
 @18441 Quattro · クワトロ
 > 「残念だが彼の行為を
 >  無にしてしまったようだ
-“Sorry, but it seems his efforts were in vain.
+“I’m afraid we’ve wasted his warning.
 ---
 >  敵に発見された」
 The enemy has spotted us.”
@@ -811,7 +811,7 @@ The enemy has spotted us.”
 @18449 Ark · アーク（按段落 3DD1）
 > 「戦闘モードは市街戦のままで……
 >  セミオート……よし」
-“Keep combat mode set for urban warfare... semi-auto... good.”
+“Combat mode stays on urban warfare... semi-auto... okay.”
 
 @18450 Quattro · クワトロ
 > 「{HeroName}君、どうか?」
@@ -838,7 +838,7 @@ The enemy has spotted us.”
 
 @18455 Quattro · クワトロ
 > 「助かる」
-“That helps.”
+“Much appreciated.”
 
 @18456 Quattro · クワトロ
 > 「帝国の無人機か。
@@ -870,7 +870,7 @@ The enemy has spotted us.”
 
 @18462 Quattro · クワトロ
 > 「助かる」
-“That helps.”
+“Much appreciated.”
 
 @18463 Quattro · クワトロ
 > 「帝国の無人機か。アポリー、
@@ -907,7 +907,7 @@ The enemy has spotted us.”
 
 @18470 Quattro · クワトロ
 > 「助かる」
-“That helps.”
+“Much appreciated.”
 
 @18471 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -916,7 +916,7 @@ The enemy has spotted us.”
 ---
 >  そうか、パイロットがいないって
 >  いってたっけ
-Right, they said there’s no pilot.
+Right, they said they don’t have a pilot for it.
 ---
 >  ……何を考えてるんだ、俺は。
 >  関係ないことじゃないか……」
@@ -925,7 +925,7 @@ Right, they said there’s no pilot.
 @18472 Gale · ゲイル
 > 「所詮ターミネーターポリスでは
 >  これが限度か……」
-“So this is the limit of the Terminator Police...”
+“So this is the best the Terminator Police can do...”
 
 @18473 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
@@ -946,7 +946,7 @@ Right, they said there’s no pilot.
 @18476 Eiji · エイジ
 # 审校：“先輩”在英文中不宜直译为 Senior，改为直接称呼名字，更自然。
 > 「やはり……ゲイル先輩!」
-“Just as I thought... Gale!”
+“I knew it... Gale!”
 
 @18477 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -957,7 +957,7 @@ Right, they said there’s no pilot.
 # 审校：全局：弯撇号／弯引号
 > 「あれは……グライムカイザル!?
 >  まさか、ゲイル先輩が来たのか!?」
-“That’s... the Greimkaiser?! Don’t tell me Gale has come?!”
+“That’s... the Greimkaiser?! Don’t tell me Gale’s here?!”
 
 @18479 Gale · ゲイル
 > 「なに!?
@@ -972,7 +972,7 @@ Right, they said there’s no pilot.
 @18481 Eiji · エイジ
 # 审校：同上，去掉 Senior。
 > 「やはり……ゲイル先輩!」
-“Just as I thought... Gale!”
+“I knew it... Gale!”
 
 @18482 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -986,7 +986,7 @@ Right, they said there’s no pilot.
 ---
 >  よくもぬけぬけと中尉の前に
 >  現れた!」
-How dare you show your face before the Lieutenant so shamelessly!”
+You have some nerve, showing your face before the Lieutenant!”
 
 @18484 Gale · ゲイル
 # 审校：跨页多余的引号
@@ -995,7 +995,7 @@ How dare you show your face before the Lieutenant so shamelessly!”
 ---
 >  エイジ、まさかお前が
 >  生きているとは思わなかった」
-Eiji, I never thought you were still alive.”
+Eiji, I never imagined you’d still be alive.”
 
 @18485 Eiji · エイジ
 # 审校：同上，去掉 Senior。
@@ -1006,7 +1006,7 @@ Eiji, I never thought you were still alive.”
 # 审校：全局：弯撇号／弯引号
 > 「エイジ、お前が生きていたと知れば、
 >  ジュリアも喜ぶだろう
-“Eiji, if Julia knew you were alive, she’d be glad too.
+“Eiji, Julia will be overjoyed to hear you’re alive.
 ---
 >  ここでお前と出会えてよかった。
 >  投降しろ、エイジ
@@ -1014,23 +1014,23 @@ I’m glad I ran into you here. Surrender, Eiji.
 ---
 >  今ならばまだ、私の権限で
 >  命だけは助けられる」
-If you do it now, I can still spare your life on my authority.”
+Do it now, and my authority can still save your life, at least.”
 
 @18487 Eiji · エイジ
 # 审校：跨页多余的引号
 > 「帝国にもどるつもりはありません。
 >  先輩、地球の現状を見れば
-“I have no intention of going back to the Empire. Gale, if you look at Earth as it is now,
+“I have no intention of going back to the Empire. Gale, if you look at the state Earth is in now,
 ---
 >  帝国が間違っているのは
 >  わかるはずです」
-you must see that the Empire is wrong.”
+you must see that the Empire is in the wrong.”
 
 @18488 Gale · ゲイル
 # 审校：全局：弯撇号／弯引号
 > 「……お前の体の半分に流れる
 >  地球人の血か……
-“...The Earthling blood flowing through half your body, is it...
+“...So it’s the Earthling blood in half your veins...
 ---
 >  エイジ、反逆者の弟を持つ
 >  兄のことを考えたことがあるのか
@@ -1061,7 +1061,7 @@ This is a battlefield!”
 ---
 >  ……いや、パイロットが、いないんだ。
 >  くっ、なんでこんな時に……」
-...No, there’s no pilot. Damn, why now of all times...”
+...No, it doesn’t have a pilot. Damn, why now of all times...”
 
 @18492 Ark · アーク（按段落 3DD1）
 > 「あんなに敵が……くっ」
@@ -1080,7 +1080,7 @@ This is a battlefield!”
 ---
 >  いくらクワトロ大尉だって
 >  やられちゃいますよ!
-even Captain Quattro will get shot down!
+even Captain Quattro’s gonna get taken out!
 ---
 >  僕でも少しぐらいは
 >  敵を減らせます!」
@@ -1108,11 +1108,11 @@ All right, I’m leaving it to you.”
 @18498 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
 > 「クワトロ大尉、僕も手伝います」
-“Captain Quattro, I’ll help too.”
+“Captain Quattro, let me help.”
 
 @18499 Quattro · クワトロ
 > 「{HeroName}君か。いいのか?」
-“{HeroName}, is it? Are you sure?”
+“Is that you, {HeroName}? Are you sure about this?”
 
 @18500 Ark · アーク（按段落 3DD1）
 > 「一人だけ逃げるのが、
@@ -1121,7 +1121,7 @@ All right, I’m leaving it to you.”
 
 @18501 Quattro · クワトロ
 > 「死ぬかもしれんのだぞ?」
-“You might die, you know?”
+“You could die out here, you realize.”
 
 @18502 Ark · アーク（按段落 3DD1）
 > 「わかってます」
@@ -1130,7 +1130,7 @@ All right, I’m leaving it to you.”
 @18503 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「本気のようだな。わかった、頼むぞ」
-“You seem serious. All right, I’m counting on you.”
+“You mean it, then. All right, I’m counting on you.”
 
 @18504 Eiji · エイジ
 # 审校：同上，去掉 Senior。
@@ -1141,11 +1141,11 @@ All right, I’m leaving it to you.”
 # 审校：全局：弯撇号／弯引号
 > 「撃破した相手のことを気にかける
 >  とは、相変わらず甘い奴だ
-“Worrying about the one you shot down... you’re as soft as ever.
+“Still worrying about the opponent you just beat? You’re as soft as ever.
 ---
 >  だがエイジ……これで私とお前の
 >  いく道が決まったようだな
-But Eiji... it seems our paths are now decided.
+But Eiji... it seems this has set us on our separate paths.
 ---
 >  ……次に会ったときは容赦しない」
 ...Next time we meet, I won’t hold back.”
@@ -1154,11 +1154,11 @@ But Eiji... it seems our paths are now decided.
 # 审校：全局：弯撇号／弯引号
 > 「撃破した相手のことを気にかける
 >  とは、相変わらず甘い奴だ
-“Worrying about the one you shot down... you’re as soft as ever.
+“Still worrying about the opponent you just beat? You’re as soft as ever.
 ---
 >  だがエイジ……これで私とお前の
 >  いく道が決まったようだな
-But Eiji... it seems our paths are now decided.
+But Eiji... it seems this has set us on our separate paths.
 ---
 >  ……次に会ったときは容赦しない
 >  全機帰投しろ!」
@@ -1168,11 +1168,11 @@ But Eiji... it seems our paths are now decided.
 # 审校：全局：弯撇号／弯引号
 > 「くっ、私としたことが。
 >  エイジ……
-“Ngh, to think I’d let this happen. Eiji...
+“Ngh, how careless of me. Eiji...
 ---
 >  これで私とお前のいく道が
 >  決まったようだな
-it seems our paths are now decided.
+it seems this has set us on our separate paths.
 ---
 >  次に会ったときは、
 >  私も容赦しない」
@@ -1182,11 +1182,11 @@ Next time we meet, I won’t hold back either.”
 # 审校：全局：弯撇号／弯引号
 > 「くっ、私としたことが。
 >  エイジ……
-“Ngh, to think I’d let this happen. Eiji...
+“Ngh, how careless of me. Eiji...
 ---
 >  これで私とお前のいく道が
 >  決まったようだな
-it seems our paths are now decided.
+it seems this has set us on our separate paths.
 ---
 >  次に会ったときは、
 >  私も容赦しない
@@ -1261,25 +1261,25 @@ All units, return to base!”
 # 审校：全局：弯撇号／弯引号
 > 「帝国の試作機と、
 >  帝国の出でありながら
-“An Imperial prototype, and one who, though born of the Empire,
+“An Imperial prototype, and a man born of the Empire
 ---
 >  帝国に反抗する者か。さすがに
 >  中佐の部隊には
-resists it. Truly, the Lieutenant Colonel’s unit
+who defies it. Your unit certainly
 ---
 >  特異な存在が集まるな」
-gathers quite the unusual bunch.”
+draws remarkable people, Lieutenant Colonel.”
 
 @18522 Quattro · クワトロ
 > 「ブレックス准将、それで
 >  例の件はどうなっているのです?」
-“Brigadier General Blex, so what of that matter?”
+“Brigadier General Blex, where do things stand on that matter?”
 
 @18523 Blex · ブレックス
 # 审校：全局：弯撇号／弯引号
 > 「ああ、順調に進んでいる。
 >  君たちの他にもいくつか
-“Ah, it’s proceeding smoothly. Besides you, we’re now in a position
+“Ah, it’s going well. Besides you, we’re now in a position
 ---
 >  遊撃部隊を編成できる
 >  目処もついてきた
@@ -1292,11 +1292,11 @@ Talks with Karaba for mutual support are moving along as well.”
 @18524 Quattro · クワトロ
 > 「准将、各地で軍事行動
 >  を起こすのは重要ですが
-“Brigadier General, military action across the regions is important,
+“Brigadier General, staging operations all over is important,
 ---
 >  こちらも戦力を増強して
 >  いただきませんと」
-but we need you to strengthen our forces as well.”
+but we need reinforcements of our own as well.”
 
 @18525 Blex · ブレックス
 # 审校：全局：弯撇号／弯引号
@@ -1316,10 +1316,10 @@ Ask Henken for the details.”
 # 审校：全局：弯撇号／弯引号
 > 「なぁ、お前、あのゲイル先輩
 >  ってのとどういう関係なんだ?
-“Hey, you, what’s your connection to that Gale?
+“Hey, so what’s the deal between you and this Gale guy?
 ---
 >  向こうは弟っていってただろう?」
-He called you his little brother, right?”
+He called you his little brother, didn’t he?”
 
 @18527 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
@@ -1331,13 +1331,13 @@ He called you his little brother, right?”
 # 审校：全局：弯撇号／弯引号
 > 「……本当かよ。
 >  悪いこと聞いちまったみたいだな」
-“...You’re kidding. Guess I asked something I shouldn’t have.”
+“...Seriously? Guess I shouldn’t have asked.”
 
 @18529 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
 > 「いえ……僕は3年前に
 >  帝国を捨てた身です」
-“No... I’m the one who abandoned the Empire three years ago.”
+“No... I turned my back on the Empire three years ago.”
 
 @18530 Aboly · アポリー
 # 审校：全局：弯撇号／弯引号
@@ -1366,7 +1366,7 @@ Resting when you can is part of a pilot’s job.”
 # 审校：全局：弯撇号／弯引号
 > 「おう、素直なのはいいことだ。
 >  これからも頼むぞ」
-“Good to see you’re so agreeable. I’ll be counting on you from now on.”
+“Good, I like that attitude. We’re counting on you from here on.”
 
 @18533 Aboly · アポリー
 # 审校：全局：弯撇号／弯引号
@@ -1382,7 +1382,7 @@ Get some rest, Eiji.
 ---
 >  {HeroFull}、
 >  ブライト中佐が呼んでたぞ」
-{HeroFull}, Lieutenant Colonel Bright was calling for you.”
+{HeroFull}, Lieutenant Colonel Bright wants to see you.”
 
 @18534 Ark · アーク（按段落 3DD1）
 > 「は、はい」
@@ -1401,11 +1401,11 @@ Get some rest, Eiji.
 ---
 >  期待するな。それから、自分の
 >  機体の整備は自分でやっておけ
-to be treated like a guest. And you’ll handle your own machine’s maintenance.
+to be treated like a guest. And you’ll maintain your own machine.
 ---
 >  人を使ってもいい。お前が責任を
 >  持ってやるんだ。わかったな?」
-You can use other people. But the responsibility is yours. Understood?”
+You can get help, but it’s your responsibility. Understood?”
 
 @18537 Ark · アーク（按段落 3DD1）
 > 「なっ……」
@@ -1419,10 +1419,10 @@ You can use other people. But the responsibility is yours. Understood?”
 # 审校：全局：弯撇号／弯引号
 > 「……わかりましたよ。
 >  やればいいんでしょう。やりますよ
-“...Fine, I understand. I’ll just do it, right? I’ll do it.
+“...Fine, I get it. I just have to do it, right? Then I will.
 ---
 >  僕だって遊んでるつもりはないんだ」
-I’m not here to fool around either.”
+I’m not here to goof off either.”
 
 @18540 Aboly · アポリー
 # 审校：全局：弯撇号／弯引号
@@ -1454,13 +1454,13 @@ But I’d at least like to check the drive system.”
 # 审校：全局：弯撇号／弯引号
 > 「なんだよお前。
 >  かわいくないねぇ、まったく」
-“What’s with you? You’re not cute at all, you know.”
+“Geez, what’s with you? You’re not cute at all, I swear.”
 
 @18543 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「それで結構。
 >  別に女であることに興味はない」
-“That’s fine. I have no particular interest in being a woman.”
+“Fine by me. I don’t much care about being a woman.”
 
 @18544 Aboly · アポリー
 > 「はいはい、わかったよ」

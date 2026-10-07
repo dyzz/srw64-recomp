@@ -52,7 +52,7 @@ planning an attack on Le Cain.”
 
 @19103 David · デビッド
 > 「なんだって!? ……あいつらか」
-“What?! ...Those guys, huh.”
+“What?! ...Figures it’s them.”
 
 @19104 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -62,7 +62,7 @@ planning an attack on Le Cain.”
 ---
 >  帝国軍も黙っているわけがない。
 >  こちらにも影響がでる」
-the Imperial Army won’t stay quiet. It’ll affect us too.”
+the Imperial Army won’t just sit back. It’ll affect us too.”
 
 @19105 David · デビッド
 # 审校：全局：弯撇号／弯引号
@@ -101,7 +101,7 @@ But don’t do anything reckless.”
 # 审校：全局：弯撇号／弯引号
 > 「なんだよ、せっかく人が
 >  親切にしてやってんのに
-“What the hell, man? I’m being nice to you here.
+“Geez, here I am trying to do you a favor.
 ---
 >  お前のガンダムは
 >  修理が必要なんだろ」
@@ -153,7 +153,7 @@ I’d have cursed that gloomy personality and given up on being human ages ago.�
 
 @19118 Heero · ヒイロ
 > 「少し黙っててくれ」
-“Be quiet for a moment.”
+“Keep quiet for a bit.”
 
 @19119 Duo · デュオ
 > 「……はいはい、
@@ -167,10 +167,10 @@ I’d have cursed that gloomy personality and given up on being human ages ago.�
 ---
 >  ……まったくよく似てやがる。
 >  てことは6つめに関しても
-...We really are alike. Which means the sixth one is
+...We really are alike. Which means it’s the same deal
 ---
 >  同様ってわけか……)
-the same too, huh...)
+with the sixth one, huh...)
 
 @19121 Le Cain · ル・カイン
 # 审校：“抛下血肉模糊的身躯”直译
@@ -202,10 +202,10 @@ will end up sprawled bloody at my feet.)
 @19125 Roanne · ロアン
 > 「お呼びいただき光栄です。
 >  私にできますことはなんなりと
-“I am honored by your summons. Whatever I can do, please
+“I am honored by your summons. Whatever I can do for you,
 ---
 >  お申し付けください」
-command it of me.”
+you need only ask.”
 
 @19126 Treize · トレーズ
 # 审校：Treize 的贵族口吻应更正式，将 Your Excellency 移到句末更符合英文敬语习惯。
@@ -227,7 +227,7 @@ command it of me.”
 ---
 >  ル・カインを襲撃するなんて
 >  バカな真似はやめろ!」
-Stop this foolish attack on Le Cain!”
+Give up this stupid plan to attack Le Cain!”
 
 @19129 Guerrilla · ゲリラ
 # 审校：Just try defeating 读不通
@@ -259,11 +259,11 @@ Once you lose your organization and your comrades, there’s no getting them bac
 # 审校：That's what naive means 不通
 > 「それが甘いというのだ。仮にも
 >  占領軍の新司令官として
-“That’s exactly what’s naive about it. A man coming to take up the post of
+“That’s what I call naive. This is a man coming in as the occupation army’s
 ---
 >  赴任してくる男が、そう簡単に
 >  やれるわけがない。全滅してからでは
-new commander of the occupation army wouldn’t be that easy to beat. Once you’re wiped out,
+new commander. He won’t be that easy to kill. Once you’re wiped out,
 ---
 >  取り返しがつかないぞ」
 there’s no undoing it.”
@@ -272,17 +272,17 @@ there’s no undoing it.”
 # 审校：全局：弯撇号／弯引号
 > 「俺たちが銃やバズーカでやるとでも
 >  思ってるのか。MSだって
-“You think we’re going to do this with guns and bazookas? We’ve even got
+“You think we’re going to do this with guns and bazookas? We’ve even got our hands on
 ---
 >  手に入れている。どうだ、
 >  文句はあるまい」
-MS. What, got any complaints?”
+MS. So, any complaints now?”
 
 @19133 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
 > 「無理だ。悪いことはいわない
 >  ル・カインの襲撃は中止するんだな」
-“It’s impossible. I’m telling you for your own good, call off the attack on Le Cain.”
+“It won’t work. Take my advice and call off the attack on Le Cain.”
 
 @19134 Guerrilla · ゲリラ
 > 「なんだお前は」
@@ -296,7 +296,7 @@ MS. What, got any complaints?”
 # 审校：全局：弯撇号／弯引号
 > 「エイジ・アスカ……あの混血か。
 >  もういい。余計な手出しは
-“Eiji Asuka... that half-breed, huh. Enough. I’d like you to stop
+“Eiji Asuka... that half-breed, huh. Enough. Quit
 ---
 >  やめてもらいたいね。俺たちの力を
 >  見せてやる」
@@ -342,13 +342,13 @@ The more comrades we have, the better.”
 # 审校：全局：弯撇号／弯引号
 > 「ニューヨークか。少しばかり無茶を
 >  せにゃならんな」
-“New York, huh. We’ll have to be a little reckless.”
+“New York, huh. We’ll have to take a few risks.”
 
 @19143 Guerrilla · ゲリラ
 # 审校：全局：弯撇号／弯引号
 > 「……見てろ……
 >  俺たちがやってやる」
-“...Just watch... We’ll do it.”
+“...Just watch... We’ll pull it off.”
 
 @19144 Guerrilla · ゲリラ
 > 「よし……いまだ、やれ!」
@@ -362,7 +362,7 @@ The more comrades we have, the better.”
 # 审校：全局：弯撇号／弯引号
 > 「あれが、ル・カインだ!
 >  一気にいくぞ!!」
-“That’s Le Cain! We’re going in all at once!!”
+“That’s Le Cain! Hit him with everything!!”
 
 @19147 Guerrilla · ゲリラ
 # 审校：全局：弯撇号／弯引号
@@ -387,7 +387,7 @@ You see that, David?! So much for the Liberation Front!”
 @19149 Guerrilla · ゲリラ
 # 审校：全局：弯撇号／弯引号
 > 「くそぅ帝国め……お、お前は!?」
-“Damn you, Empire... Y-you’re?!”
+“Damn you, Empire... Y-you?!”
 
 @19150 Le Cain · ル・カイン
 # 审校：口语化
@@ -450,7 +450,7 @@ Believe in me! Believe in the Empire!”
 ---
 >  私たちが望むのは、帝国が
 >  地球から、いなくなることだわ!」
-is for the Empire to disappear from Earth!”
+is for the Empire to get off Earth!”
 
 @19156 Eiji · エイジ
 > 「俺たちは、あんたとグレスコ総督を
@@ -517,7 +517,7 @@ we withdraw as well.”
 # 审校：全局：弯撇号／弯引号
 > 「フフフ、
 >  なかなか楽しませてくれそうだな
-“Heh heh heh, you look like you’ll be quite entertaining.
+“Heh heh heh, this promises to be quite entertaining.
 ---
 >  ハーハハハハハッ、
 >  せん滅せよ!」
@@ -539,7 +539,7 @@ Hahahahahaha! Annihilate them!”
 # 审校：口语化
 > 「バカにしやがって、
 >  地球人を、なめきってやがる
-“Making fools of us, looking down on Earthlings like that.
+“Bastard’s mocking us, treating Earthlings like dirt.
 ---
 >  しかもあの裏切り者の
 >  ブタまで一緒だ」
@@ -605,10 +605,10 @@ we’re blocking their escape route.”
 # 审校：全局：弯撇号／弯引号
 > 「おう。ガイア、整備兵に無理を
 >  いってつけさせたこの装備だ
-“Yeah. Gaia, this equipment’s what we strong-armed the mechanics into fitting for us.
+“Yeah. Gaia, we twisted the mechanics’ arms to get this gear fitted.
 ---
 >  使わぬわけにはいくまいな」
-No way we’re not using it.”
+We’d be fools not to use it.”
 
 @19180 Gaia · ガイア
 # 审校：“那个”指代不清；与前文“来那一手”一致
@@ -623,7 +623,7 @@ If we get the chance, we’re pulling that move.”
 # 审校：全局：弯撇号／弯引号
 > 「了解だ。ドライセンでどこまでできるか
 >  試してみるとしよう」
-“Understood. Let’s see just how far the Dreissen can go.”
+“Right. Let’s see just how far the Dreissen can go.”
 
 @19182 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -671,16 +671,16 @@ cooperate with His Excellency Le Cain’s forces and annihilate the enemy.”
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「おう。ガイア、整備兵に無理を
 >  いってつけさせたこの装備、さっそく
-“Yeah. Gaia, this gear we strong-armed the mechanics into fitting... the chance
+“Yeah. Gaia, this gear we twisted the mechanics’ arms to get fitted... and here’s our chance
 ---
 >  試す機会がめぐってきたな」
-to try it out has come around already.”
+to try it out already.”
 
 @19190 Gaia · ガイア
 # 审校：全局：弯撇号／弯引号
 > 「あの連中に使い勝手の報告も
 >  してやらねばならん
-“We’ve got to report back to those people on how well it handles too.
+“We’ve got to report back to those guys on how well it handles too.
 ---
 >  1度はあれをやっておきたいところだな」
 I’d like to pull that off at least once.”
@@ -689,7 +689,7 @@ I’d like to pull that off at least once.”
 # 审校：全局：弯撇号／弯引号
 > 「了解だ。ドライセンでどこまでできるか
 >  試してみるとしよう」
-“Understood. Let’s see just how far the Dreissen can go.”
+“Right. Let’s see just how far the Dreissen can go.”
 
 @19192 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -727,7 +727,7 @@ just doesn’t sit right with me.”
 # 审校：全局：弯撇号／弯引号
 > 「そんなつもりはねぇんだが……どうだ?
 >  長い目でみりゃお前らに
-“That’s not my intent... So how about it? In the long run, you people
+“Didn’t mean it that way... So how about it? In the long run, you people
 ---
 >  勝ち目はないぜ?」
 don’t stand a chance, you know?”
@@ -750,7 +750,7 @@ and die here. Never say it again!”
 # 审校：全局：弯撇号／弯引号
 > 「ひゅーっ、いいねぇ、
 >  さすが俺が見込んだ女だ
-“Whew, nice, just what I’d expect from the woman I’ve got my eye on.
+“Whew, nice. That’s the woman I picked out, all right.
 ---
 >  そういうだろうと思ってたぜ」
 I figured you’d say that.”
@@ -765,14 +765,14 @@ I figured you’d say that.”
 # 审校：全局：弯撇号／弯引号
 > 「おっと、あの部隊だってのに
 >  {HeroName}はやられちまったのか
-“Whoa, so {HeroName} got taken out even with that unit around.
+“Whoa, {HeroName} got taken out, and with a unit like that?
 ---
 >  俺が惚れた女にしちゃ、
 >  ちょっとばかり早すぎる気もするが
-For the woman I’ve fallen for, it feels a bit too soon, but
+Kind of early for a woman I fell for, but
 ---
 >  ま、やりあうよりはマシか」
-well, it beats fighting each other.”
+well, beats fighting her.”
 
 @19202 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -816,11 +816,11 @@ I like it! Hahahahahaha!!”
 ---
 >  だがこの程度で帝国に
 >  逆らおうなど、片腹痛いわ」
-But thinking you can defy the Empire with this much is laughable.”
+But to defy the Empire with this little? Don’t make me laugh.”
 
 @19207 Quattro · クワトロ
 > 「いかん、全員退くぞ!!」
-“This is bad, everyone retreat!!”
+“No good. Everyone, fall back!!”
 
 @19208 Eiji · エイジ
 # 审校：同 19204
@@ -849,11 +849,11 @@ I like it! Hahahahahaha!!”
 ---
 >  だがこの程度で帝国に
 >  逆らおうなど、片腹痛いわ」
-But thinking you can defy the Empire with this much is laughable.”
+But to defy the Empire with this little? Don’t make me laugh.”
 
 @19211 Quattro · クワトロ
 > 「いかん、全員退くぞ!!」
-“This is bad, everyone retreat!!”
+“No good. Everyone, fall back!!”
 
 @19212 Eiji · エイジ
 # 审校：同 19204
@@ -888,17 +888,17 @@ I like it! Hahahahahaha!!”
 # 审校：全局：弯撇号／弯引号
 > 「腕をあげているな、少年。どうしても
 >  戦いをやめぬ気か?」
-“You’ve improved, boy. Are you truly set on never stopping this fight?”
+“You’ve improved, boy. Will you not give up this fight, no matter what?”
 
 @19217 主角
 # 审校：全局：弯撇号／弯引号
 > 「お前が、それをいうのか!?」
-“You’re the one saying that?!”
+“You’re one to talk!”
 
 @19218 主角
 # 审校：全局：弯撇号／弯引号
 > 「お前は目ざわりだ。沈め!」
-“You’re an eyesore. Sink!”
+“You’re an eyesore. Go down!”
 
 @19219 对手
 # 审校：全局：弯撇号／弯引号
@@ -908,7 +908,7 @@ I like it! Hahahahahaha!!”
 @19220 Karla · カルラ
 # 审校：I will never forgive
 > 「エイジ……貴様だけは許さんぞ!」
-“Eiji... you of all people will pay for this!”
+“Eiji... you, I will never forgive!”
 
 @19221 Gosterro · ゴステロ
 # 审校：全局：弯撇号／弯引号
@@ -931,12 +931,12 @@ I like it! Hahahahahaha!!”
 # 审校：It can't be helped
 > 「しかたあるまい。ル・カインか……
 >  やっかいな相手だな」
-“Nothing for it. Le Cain, huh... He’s a troublesome opponent.”
+“Nothing for it. Le Cain, huh... He’s going to be trouble.”
 
 @19225 Quattro · クワトロ
 > 「そうだな。それを直接確認できた
 >  だけでも、よしとするべきか……」
-“Indeed. I suppose we should count it as a gain that we could confirm that firsthand...”
+“Indeed. Just seeing that for ourselves should count for something...”
 
 @19226 Kamille · カミーユ
 > 「……やりきれませんね」
@@ -944,7 +944,7 @@ I like it! Hahahahahaha!!”
 
 @19227 Quattro · クワトロ
 > 「ああ……そうだ」
-“Yeah... it does.”
+“Yes... it does.”
 
 @19228 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -979,15 +979,15 @@ they’d secured to us.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、ブレックス准将の使いだ。
 >  今回の件で、我々は敵に
-“Ah, it was a messenger from Brigadier General Blex. Thanks to this incident, we’ve
+“Ah, it was a messenger from Brigadier General Blex. With what happened, we’ve
 ---
 >  その存在をさらけだしてしまった。
 >  これからは、かなり狙われるだろう
-exposed our existence to the enemy. From now on, we’ll be targeted quite heavily.
+shown the enemy that we exist. From now on, we’ll be a prime target.
 ---
 >  部隊強化の足しにと、10000
 >  ほど、資金を送ってくれたのだ」
-He sent us about 10,000 to help strengthen our forces.”
+He sent us about 10,000 in funds to help strengthen our forces.”
 
 @19233 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -1003,15 +1003,15 @@ He sent us about 10,000 to help strengthen our forces.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、ブレックス准将の使いだ。
 >  今回の件で、我々は敵に
-“Ah, it was a messenger from Brigadier General Blex. Thanks to this incident, we’ve
+“Ah, it was a messenger from Brigadier General Blex. With what happened, we’ve
 ---
 >  その存在をさらけだしてしまった。
 >  これからは、かなり狙われるだろう
-exposed our existence to the enemy. From now on, we’ll be targeted quite heavily.
+shown the enemy that we exist. From now on, we’ll be a prime target.
 ---
 >  部隊強化の足しにと、20000
 >  ほど、資金を送ってくれたのだ」
-He sent us about 20,000 to help strengthen our forces.”
+He sent us about 20,000 in funds to help strengthen our forces.”
 
 @19236 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -1027,15 +1027,15 @@ He sent us about 20,000 to help strengthen our forces.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、ブレックス准将の使いだ。
 >  今回の件で、我々は敵に
-“Ah, it was a messenger from Brigadier General Blex. Thanks to this incident, we’ve
+“Ah, it was a messenger from Brigadier General Blex. With what happened, we’ve
 ---
 >  その存在をさらけだしてしまった。
 >  これからは、かなり狙われるだろう
-exposed our existence to the enemy. From now on, we’ll be targeted quite heavily.
+shown the enemy that we exist. From now on, we’ll be a prime target.
 ---
 >  部隊強化の足しにと、35000
 >  ほど、資金を送ってくれたのだ」
-He sent us about 35,000 to help strengthen our forces.”
+He sent us about 35,000 in funds to help strengthen our forces.”
 
 @19239 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -1044,12 +1044,12 @@ He sent us about 35,000 to help strengthen our forces.”
 
 @19240 Gresco · グレスコ
 > 「だいぶ派手にやったそうだな?」
-“I hear you made quite a spectacle of yourself?”
+“I hear you made quite a show of it.”
 
 @19241 Le Cain · ル・カイン
 # 审校：全局：弯撇号／弯引号
 > 「もうお耳に入りましたか」
-“It’s reached your ears already?”
+“Word has reached you already?”
 
 @19242 Gresco · グレスコ
 # 审校：全局：弯撇号／弯引号
@@ -1070,7 +1070,7 @@ He sent us about 35,000 to help strengthen our forces.”
 # 审校：全局：弯撇号／弯引号
 > 「……!? 父上もかわられましたな。
 >  やはり3年も地球におられると
-“...?! You’ve changed too, Father. I suppose after three years on Earth,
+“...?! So even you have changed, Father. I suppose after three years on Earth,
 ---
 >  地球病とやらにかかるのですかな」
 one does catch this so-called Earth disease.”
@@ -1097,7 +1097,7 @@ unnecessary leniency will only make the Earthlings look down on us.”
 # 审校：全局：弯撇号／弯引号
 > 「わかろうとも思いません。父上、
 >  いいかげんに目をさまされたらどうです」
-“I don’t intend to understand. Father, why don’t you wake up already?”
+“Nor do I care to. Father, isn’t it time you woke up?”
 
 @19250 Le Cain · ル・カイン
 # 审校：全局：弯撇号／弯引号
@@ -1106,11 +1106,11 @@ unnecessary leniency will only make the Earthlings look down on us.”
 ---
 >  ……そうか、そういうことなのか
 >  父上はご自分が
-...I see, so that’s how it is. You know yourself that
+...I see, so that’s how it is. You know full well that
 ---
 >  地球の空気に感傷的に
 >  なっていることを、ご存じなのだ
-you’ve grown sentimental from Earth’s air.
+Earth’s air has made you sentimental.
 ---
 >  ですから私を招いたのですね
 >  ……父上」
@@ -1155,7 +1155,7 @@ to His Excellency.”
 ---
 >  コロニーの再建について、ずいぶんと
 >  精力的に活動されているようだね」
-for the Earthlings’ bid for autonomy and the reconstruction of the colonies.”
+for Earthling self-rule and the rebuilding of the colonies.”
 
 @19257 Lady · レディ
 > 「承知いたしました。
@@ -1187,17 +1187,17 @@ for your next bath time.”
 @19262 Howard · ハワード
 # 审校：全局：弯撇号／弯引号
 > 「なら誰がデスサイズを解体するんじゃ」
-“Then who’s going to dismantle Deathscythe?”
+“Then who’s been taking Deathscythe apart?”
 
 @19263 Duo · デュオ
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「解体!? ……
 >  あーっ、あいつやりやがった!
-“Dismantle?! ...Ah... that bastard did it!
+“Dismantle?! ...Aaah, that bastard!
 ---
 >  足りないパーツを俺のから
 >  とっていきやがったのかよ!
-He went and took the missing parts from mine!
+He swiped the parts he was missing from mine!
 ---
 >  ちっきしょーーっ!!」
 Damn iiiit!!”
