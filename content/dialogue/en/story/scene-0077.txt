@@ -395,7 +395,7 @@ adjust the seat.”
 # 审校：全局：弯撇号／弯引号
 > 「どうだ、{HeroNick}?
 >  開発チームによれば、究極の
-“How’s that, {HeroNick}? The development team says it’s the ultimate
+“Well, {HeroNick}? The development team says it’s the ultimate
 ---
 >  マン・マシン・インターフェイスだそうだ」
 man-machine interface.”
@@ -573,7 +573,7 @@ but...”
 
 @39291 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「君なら適応できるだろう」
-“You should be able to adapt to it.”
+“If anyone can adapt to it, it’s you.”
 
 @39292 Ark · アーク（按段落 3DD1）
 > 「どうしてです?」
@@ -703,7 +703,7 @@ other than me gets close. You have to be careful.”
 @39313 Daisuke · 大介
 > 「ナイーダ、なぜこんなものを?
 >  なぜなんだ!?」
-“Naida, why do you have something like this? Why?!”
+“Naida, why would you have this? Why?!”
 
 @39314 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
@@ -780,7 +780,7 @@ A traitor!”
 @39325 Daisuke · 大介
 # 审校：全局：弯撇号／弯引号
 > 「ナイーダ、それはあんまりだ!」
-“Naida, that’s not fair!”
+“Naida, that’s cruel!”
 
 @39326 Naida · ナイーダ
 # 审校：长句直译，语序乱
@@ -859,7 +859,7 @@ All of you, die right here!!”
 @39339 Benkei · ベンケイ
 > 「でも……知らなかったぜ。
 >  俺たちが、戦っていたのが
-“But... I had no idea. The ones we were fighting
+“But... I had no idea. The ones we’ve been fighting
 ---
 >  フリード星人だったなんて」
 were Fleed people...”
@@ -876,7 +876,7 @@ were Fleed people...”
 “Hey, don’t ever tell Maria about this. If she found out, the shock would
 ---
 >  どうにかなっちまう」
-destroy her.”
+be too much for her.”
 
 @39342 Benkei · ベンケイ
 # 审校：あれ 指大介的样子，不是玛丽亚
@@ -1042,7 +1042,7 @@ so I know the truth. My brother is no traitor!”
 # 审校：全局：弯撇号／弯引号
 > 「待つんだ、マリアちゃん。あれは
 >  彼女の意思じゃなかったんだ」
-“Hold on, Maria. She wasn’t acting of her own free will.”
+“Hold on, Maria. That wasn’t really her talking.”
 
 @39371 Maria · マリア
 > 「だけど、甲児……」
@@ -1057,7 +1057,7 @@ so I know the truth. My brother is no traitor!”
 # 审校：全局：弯撇号／弯引号
 > 「……ぜんぜんだめだ。何をいっても
 >  反応しないよ」
-“...He’s in bad shape. He doesn’t react to anything we say.”
+“...He’s in bad shape. Nothing we say gets through to him.”
 
 @39374 Erika · エリカ
 > 「甲児さん……」
@@ -1190,7 +1190,7 @@ with a shockwave.”
 ---
 >  あんたは裏切り者なんかじゃ
 >  ないんだよ。わかるか、デューク
-You’re no traitor. Do you hear me, Duke?
+You’re no traitor. Got it, Duke?
 ---
 >  デューク・フリード!?」
 Duke Fleed?!”
@@ -1374,7 +1374,7 @@ you’re saying you can’t fight?!”
 @39418 Maria · マリア
 > 「兄さん! 兄さんは間違っていない
 >  わ。だから自信を持って戦ってよ!」
-“Brother! You did nothing wrong. So have some confidence and fight!”
+“Brother! You did nothing wrong. So believe in yourself and fight!”
 
 @39419 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
@@ -1511,7 +1511,7 @@ you’re saying you can’t fight?!”
 @39438 Maria · マリア
 > 「兄さん! 兄さんは間違っていない
 >  わ。だから自信を持って戦ってよ!」
-“Brother! You did nothing wrong. So have some confidence and fight!”
+“Brother! You did nothing wrong. So believe in yourself and fight!”
 
 @39439 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
