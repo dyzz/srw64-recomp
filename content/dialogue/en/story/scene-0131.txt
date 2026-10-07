@@ -552,7 +552,7 @@ Also, please contact Treize.”
 # 审校：全局：弯撇号／弯引号
 > 「そういうことなら、僕とマリアで
 >  やりましょう」
-“If that’s the case, let Maria and me do it.”
+“In that case, let Maria and me handle it.”
 
 @43487 Alan · アラン
 > 「君が?」
@@ -651,7 +651,7 @@ they’re overwhelming. We’ll lose.”
 @43503 Sara · 沙羅
 > 「……空が……なんて光景だい、
 >  まったく」
-“...The sky... What a sight, honestly.”
+“...The sky... Now there’s a sight, I’ll tell you.”
 
 @43504 Duo · デュオ
 # 审校：全局：弯撇号／弯引号

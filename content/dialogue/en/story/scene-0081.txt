@@ -2109,18 +2109,18 @@ as quickly as possible.”
 # 审校：全局：弯撇号／弯引号
 > 「どういうつもりもクソもあるかよ!
 >  俺だって、地球人だぜ
-“What am I playing at, my ass! I’m an Earthling too, you know.
+“What am I playing at, my ass! I’m from Earth too!
 ---
 >  銀河帝国ってのがどういう奴らか
 >  ってことぐらい、俺だって聞いてるんだ
-Even I’ve heard what kind of people this Galactic Empire is.
+Even I’ve heard what kind of bastards this Galactic Empire are.
 ---
 >  貴様への恨みをチャラにする気は
 >  ないが、何をするべきかは
-I’m not calling it square with you, but I’d like to think I know
+I’m not about to call it even with you, but I know
 ---
 >  わかってるつもりだぜ」
-what needs to be done.”
+what needs doing.”
 
 @40712 Show · ショウ
 > 「トッド……」
@@ -2150,7 +2150,7 @@ what needs to be done.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、助かる、トッド。しかし、その
 >  オーラバトラーはなんだ?」
-“Yeah, thanks, Tod. But what’s that Aura Battler?”
+“Yeah, glad to have you, Tod. But what’s that Aura Battler?”
 
 @40718 Tod · トッド
 # 审校：全局：弯撇号／弯引号

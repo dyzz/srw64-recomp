@@ -1828,11 +1828,11 @@ is that even possible...?)
 # 审校：全局：弯撇号／弯引号
 > 「なんだ、全然進んでいないじゃないか
 >  確か、{HeroMech}に
-“What, you haven’t gotten anywhere? If I remember right, before we joined the {HeroMech}
+“What, you haven’t gotten anywhere at all? I’m pretty sure, even before the {HeroMech}
 ---
 >  合流する前にも同じようなことを
 >  いっていたぞ」
-you were saying the exact same thing.”
+picked us up, you were saying the exact same thing.”
 
 @40015 Remy · レミー
 # 审校：全局：弯撇号／弯引号
@@ -1870,7 +1870,7 @@ Spending some quality time with them wouldn’t be bad either.”
 # 审校：全局：弯撇号／弯引号
 > 「ついてくるのはかまわんが、
 >  さびしい思いをするのはそっちだぞ」
-“I don’t mind you tagging along, but you’re the one who’ll end up all alone.”
+“Tag along if you want, but you’re the one who’ll end up all alone.”
 
 @40019 Remy · レミー
 # 审校：全局：弯撇号／弯引号

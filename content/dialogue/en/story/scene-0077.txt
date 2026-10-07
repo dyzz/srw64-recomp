@@ -2825,7 +2825,7 @@ I swear I’ll protect the Earth.”
 @39657 Hasan · ハサン
 > 「なんだね、騒々しい。おまけに
 >  大勢で、ぞろぞろと」
-“What’s all this racket? And the whole lot of you trooping in at once.”
+“What is all this racket? And the whole crowd of you, trooping in.”
 
 @39658 Takeru · タケル
 # 审校：原文「先生」指医生，哈桑是长者，译作 Teacher 不符语境。
@@ -2883,7 +2883,7 @@ controlled or not...”
 # 审校：全局：弯撇号／弯引号
 > 「いや、気にしないでくれ。これは僕の
 >  責任なんだ」
-“No, don’t blame yourself. The fault is mine.”
+“No, don’t worry about it. This is my fault.”
 
 @39667 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
