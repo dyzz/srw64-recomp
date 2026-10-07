@@ -14,7 +14,7 @@ a little later than scheduled...”
 # 审校：全局：バルジ 词条 Barge
 > 「まったく、この歳で前線指揮官
 >  になろうとはな。反乱軍どもめ……
-“Good grief, to become a front-line commander at my age. Those rebels...
+“Honestly, to end up a front-line commander at my age. Those rebels...
 ---
 >  わしが直接バルジへおもむき、
 >  ジャミトフらを督励してくれる」
@@ -32,10 +32,10 @@ I shall go to Barge myself and spur Jamitov and the rest into action.”
 @30667 Specials · スペシャルズ
 > 「ホワイトファングの攻撃か!?
 >  まさか、ここに
-“An attack by White Fang?! To think a force this large
+“Is it White Fang?! I never thought a force this large
 ---
 >  こんな大部隊がいるなんて……」
-would be here...”
+would be out here...”
 
 @30668 Dermail · デルマイユ
 > 「MD部隊を出せ!」
@@ -60,7 +60,7 @@ would be here...”
 @30672 Dermail · デルマイユ
 > 「ワシが!? このワシが……
 >  こんなところで!? うおおおっ!」
-“Me?! Me, of all people... in a place like this?! Uwooooh!”
+“Me?! Me, of all people... out here?! Uwooooh!”
 
 @30673 Relena · リリーナ
 > 「宇宙に出たデルマイユ公が
@@ -90,7 +90,7 @@ saying they were under attack by White Fang’s MD units...”
 @30676 Pagan · パーガン
 > 「……そのまま途絶えました。
 >  おそらくは……撃墜されたものと……」
-“...It cut off there. In all likelihood... they were shot down...”
+“...And then nothing. Most likely... they were shot down...”
 
 @30677 Dorothy · ドロシー
 > 「おじいさまが!?」
@@ -168,12 +168,12 @@ Or would you prefer I call you the Lightning Count?”
 @30689 Milliardo · ミリアルド
 > 「悪いが話すことは何もない。
 >  帰ってくれないか」
-“Sorry, but I have nothing to say to you. Would you leave?”
+“I’m afraid I have nothing to say. Please leave.”
 
 @30690 Quinze · カーンズ
 > 「いいえ、ぜひとも聞いていただきたい。
 >  申し遅れました、私はコロニーの
-“No, I very much want you to hear me out. Forgive my late introduction: I am Quinze of White Fang,
+“No, I must insist you hear me out. Forgive me for not introducing myself: I am Quinze of White Fang,
 ---
 >  革命闘士、ホワイトファングの
 >  カーンズといいます。ゼクス特佐
@@ -186,7 +186,7 @@ I want you to come to space. Together with your Gundam.”
 @30691 Milliardo · ミリアルド
 > 「ガンダムと……? 私にいったい、
 >  何をさせようというのだ?」
-“With my Gundam...? Just what are you trying to make me do?”
+“With my Gundam...? And just what do you want me to do?”
 
 @30692 Quinze · カーンズ
 > 「ガンダムは反抗の象徴です。
@@ -239,7 +239,7 @@ to humanity’s future. But not now. And that is precisely why...”
 # 审校：全局：弯撇号／弯引号
 > 「逆だ。それゆえに、
 >  その話に乗るとしよう」
-“The opposite. That is precisely why I’ll take you up on it.”
+“Quite the opposite. That is precisely why I’ll accept.”
 
 @30700 Quinze · カーンズ
 # 审校：全局：弯撇号／弯引号
@@ -280,16 +280,16 @@ I thank you.”
 # 审校：全局：弯撇号／弯引号
 > 「まったく、仲のいい兄弟だねぇ。
 >  ……少林寺のアニキたちは
-“Man, you two really are close brothers. ...I wonder how the guys back at Shaolin are doing.
+“Man, you two sure are close. ...I wonder how the guys back at Shaolin are doing.
 ---
 >  元気かなあ。思いだしちまった」
-Now I’m feeling nostalgic.”
+Thinking about it got me missing them.”
 
 @30705 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号
 > 「おい、ここで懐かしがるのはいいが、
 >  ドモンの前では
-“Hey, it’s fine to get nostalgic here, but be careful not to say that
+“Hey, it’s fine to get nostalgic here, but just don’t bring it up
 ---
 >  いわないように気をつけろよ」
 in front of Domon.”
@@ -387,12 +387,12 @@ in front of Domon.”
 @30725 Emperor Zuul · ズール皇帝
 > 「幼い頃に地球に送られたせいか、
 >  皇帝への礼儀を知らぬようだな」
-“Perhaps because you were sent to Earth as a child, you never learned proper manners toward your emperor.”
+“It seems being sent to Earth as an infant left you ignorant of the respect owed your emperor.”
 
 @30726 Takeru · タケル
 # 审校：直译
 > 「お前に礼儀など無用だ!」
-“You don’t deserve my manners!”
+“Manners are wasted on you!”
 
 @30727 Emperor Zuul · ズール皇帝
 > 「マーズ、我が銀河帝国にもどれ。
@@ -401,19 +401,19 @@ in front of Domon.”
 ---
 >  やらねばならぬことがある。地球などに
 >  いつまでもかかわっているヒマはないのだ
-you must do. You have no time to keep involving yourself with Earth
+you must accomplish. You have no time to waste forever on a world like Earth.
 ---
 >  マーズ、地球を破壊して
 >  帰ってこい」
-forever. Mars, destroy Earth and come back.”
+Mars, destroy Earth and come home.”
 
 @30728 Takeru · タケル
 > 「黙れズール! 俺の父などといって
 >  だまそうとしたくせに! 俺はお前の
-“Silence, Zuul! You tried to deceive me by calling yourself my father! I will
+“Silence, Zuul! You tried to deceive me by calling yourself my father! I’ll
 ---
 >  思い通りにはならないぞ!」
-never do as you wish!”
+never do what you want!”
 
 @30729 Emperor Zuul · ズール皇帝
 > 「愚かな奴」
@@ -425,7 +425,7 @@ never do as you wish!”
 
 @30731 David · デビッド
 > 「うわっ、ありゃいったいなんだ!?」
-“Whoa, what in the world is that?!”
+“Whoa, what the hell is that?!”
 
 @30732 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号
@@ -446,7 +446,7 @@ never do as you wish!”
 # 审校：全局：弯撇号／弯引号
 > 「タケルの奴め。
 >  ……あいつがマーグをさらったのか!?」
-“That Takeru. ...So he’s the one who took Marg?!”
+“Takeru, that fool... Is that who took Marg?!”
 
 @30736 Daisuke · 大介
 # 审校：全局：弯撇号／弯引号
@@ -471,17 +471,17 @@ never do as you wish!”
 
 @30740 Takeru · タケル
 > 「ズール!? ばかな……?」
-“Zuul?! Impossible...?”
+“Zuul?! But how...?”
 
 @30741 Emperor Zuul · ズール皇帝
 # 审校：更通顺
 > 「マーズよ、お前はワシと対等に
 >  戦えたと思っておろうが、あれはワシの
-“Mars, you think you fought me as an equal, but that was merely my
+“Mars, you think you fought me as an equal, but that was nothing more than my
 ---
 >  影にすぎん。無駄なことをしたな。
 >  ワハハハハハハハッ」
-shadow. All your effort was for nothing. Wah ha ha ha ha ha ha ha!”
+shadow. You fought for nothing. Wah ha ha ha ha ha ha ha!”
 
 @30742 Takeru · タケル
 > 「くっ……兄さぁぁぁぁぁぁーんっっ!!」
@@ -508,7 +508,7 @@ shadow. All your effort was for nothing. Wah ha ha ha ha ha ha ha!”
 
 @30746 Bright · ブライト
 > 「なんだと!? どこの部隊だ!?」
-“What?! Whose forces are they?!”
+“What?! Who are they?!”
 
 @30747 Quinze · カーンズ
 # 审校：全局：弯撇号／弯引号
@@ -527,27 +527,27 @@ Revolutionary Army’s White Fang.”
 @30749 Quinze · カーンズ
 > 「{HeroMech}の力を評価する
 >  我々ホワイトファングに対し
-“We of White Fang have evaluated the power of the {HeroMech}
+“We of White Fang recognize the {HeroMech}’s strength,
 ---
 >  協力を要請するものである」
-and request your cooperation.”
+and we request your cooperation.”
 
 @30750 Koji · 甲児
 > 「モビルスーツで脅しておいて、
 >  いきなりそれかよ!
-“You threaten us with Mobile Suits and then pull that?!
+“You point Mobile Suits at us and then ask that?!
 ---
 >  それが人に物を頼む態度かよ!」
-Is that how you ask someone a favor?!”
+Is that any way to ask for a favor?!”
 
 @30751 Bright · ブライト
 > 「その通りだ。
 >  ……君たちの申し出は断る
-“Well said. ...We refuse your offer.
+“Exactly. ...We refuse your offer.
 ---
 >  現在、我々{HeroMech}は
 >  独立部隊として行動している
-At present, we of the {HeroMech} operate as an independent unit.
+At present, the {HeroMech} operates as an independent unit.
 ---
 >  ホワイトファングには協力できない。
 >  ただちに兵を退き
@@ -555,7 +555,7 @@ We cannot cooperate with White Fang. Withdraw your troops at once
 ---
 >  我々のもとから
 >  引き上げてもらいたい」
-and pull back from our position.”
+and leave us be.”
 
 @30752 Quinze · カーンズ
 # 审校：全局：弯撇号／弯引号
@@ -606,7 +606,7 @@ and pull back from our position.”
 
 @30762 Bright · ブライト
 > 「な……なんだ?」
-“Wh... what is it?”
+“Wh... what’s happening?”
 
 @30763 Vega Soldier · ベガ星兵
 # 审校：原文「撤退だぁっ!」拖长音，译文“Retreat!”未体现拖长，改为“Retreeeat!”以贴合士兵喊叫的语气。
@@ -616,7 +616,7 @@ and pull back from our position.”
 @30764 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「どうやら敵ではないようだな……」
-“Seems they’re not the enemy...”
+“It seems they’re not hostile...”
 
 @30765 Quattro · クワトロ
 > 「キュベレイ……完成させていたのか。
@@ -631,10 +631,10 @@ and pull back from our position.”
 # 审校：全局：弯撇号／弯引号
 > 「アクシズ軍の戦艦、グワダンか……。
 >  こんな物が
-“The Axis Forces’ battleship, the Gwadan... To think something like this
+“The Axis Forces’ battleship, the Gwadan... And no one knew
 ---
 >  今まで知られていなかったとは……」
-went unknown until now...”
+a ship like this existed until now...”
 
 @30768 Beltorchika · ベルトーチカ
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -645,7 +645,7 @@ went unknown until now...”
 @30769 Bright · ブライト
 > 「まずはあいさつということか。
 >  ……わかった、つないでくれ」
-“So they want to exchange greetings first. ...Understood, put them through.”
+“A courtesy call first, then. ...Understood, put them through.”
 
 @30770 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
@@ -664,7 +664,7 @@ They’re requesting permission to land...”
 @30772 Bright · ブライト
 > 「わかった、迎えないわけにはいくまい。
 >  着艦許可を出せ」
-“Understood. We can hardly refuse to receive them. Grant landing permission.”
+“Very well. We can hardly turn them away. Clear them to land.”
 
 @30773 Quattro · クワトロ
 > 「……ハマーン……」
@@ -695,7 +695,7 @@ I am Haman Karn, commander of the Axis Forces.”
 # 审校：見境いがない误译
 > 「ほんっとに見境いがないね、あんたは!
 >  黙って聞きな!」
-“You’ll really go for anyone, won’t you?! Just shut up and listen!”
+“You really have no standards, do you?! Just shut up and listen!”
 
 @30778 Bright · ブライト
 # 审校：去掉this time
@@ -720,12 +720,12 @@ I am Haman Karn, commander of the Axis Forces.”
 # 审校：全局：弯撇号／弯引号
 > 「ひさしいな。いっこうに帰ってこぬと
 >  思っていたが……やはり裏切りか?」
-“It’s been a long time. I thought you would never return... So it was betrayal after all?”
+“It has been a long time. I wondered why you never came back... So you did betray us?”
 
 @30782 Quattro · クワトロ
 > 「昔も今も、
 >  私は裏切りなどした覚えはない」
-“Then and now, I have no memory of ever betraying anyone.”
+“I have never betrayed anyone, then or now.”
 
 @30783 Haman · ハマーン
 > 「ふん。まあよい、今日ここへ来たのは
@@ -747,32 +747,32 @@ It is not a bad offer, is it?”
 # 审校：原句不通
 > 「ほう、それは確かに悪い話じゃないね
 >  ジオンの復興を目指すあなたたちが
-“Oh, that’s certainly not a bad offer. Though if I knew the real reason you, who seek to revive Zeon,
+“Oh, that’s certainly not a bad offer. You’re out to revive Zeon,
 ---
 >  僕たちに力を貸す……その真意が
 >  わかれば、なおさらいいんだが」
-would lend us your strength... that would be even better.”
+and yet you’d lend us your strength... If I knew what you were really after, even better.”
 
 @30785 Haman · ハマーン
 > 「ふふふ、さあな。我々の真意を
 >  どうくむかは諸君ら次第だ
-“Heh heh. Who knows. How you interpret our true intent is up to you.
+“Heh heh. Perhaps. How you read our true intentions is up to you.
 ---
 >  だが、いっておく。我々の戦力を
 >  甘く見ないことだ
-But I will say this: do not underestimate our fighting strength.
+But let me say this: do not underestimate our strength.
 ---
 >  我々を敵としないのが、
 >  お互いのためだと思うがな」
-I think it would be in both our interests not to make enemies of us.”
+I believe it would serve us both if you did not make enemies of us.”
 
 @30786 Bright · ブライト
 > 「……申し出は検討させていただく。
 >  我々も人類同士で
-“...We will consider your offer. We too have no wish for humans
+“...We will consider your offer. We have no wish to see humans
 ---
 >  敵対することは望んでいない」
-to fight among themselves.”
+fighting each other either.”
 
 @30787 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
@@ -786,7 +786,7 @@ to fight among themselves.”
 
 @30789 Kamille · カミーユ
 > 「シャア……やっぱりそうだったのか……」
-“Char... So it really was true...”
+“Char... So I was right...”
 
 @30790 Roux · ルー
 # 审校：大尉 统一 Captain
@@ -801,19 +801,19 @@ to fight among themselves.”
 “Those two definitely have a lot of history.
 ---
 >  まさか……恋人……」
-Could it be... they were lovers...”
+Could they have been... lovers...”
 
 @30792 Beauty · ビューティ
 # 审校：全局：弯撇号／弯引号
 > 「ちょっと、いくら何でも
 >  それはないでしょ。考えられる?」
-“Come on, that’s going too far. Can you even imagine it?”
+“Oh, come on, there’s no way. Can you picture that?”
 
 @30793 Roux · ルー
 # 审校：全局：弯撇号／弯引号
 > 「考えられないこともないと思うけど……
 >  怖いかもしんない……」
-“I wouldn’t say it’s impossible... but it might be scary...”
+“I can kind of picture it... but it’d be kind of scary...”
 
 @30794 Ginrei · 銀鈴
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -844,14 +844,14 @@ was attacked and annihilated.”
 # 审校：人工：军衔行原文混有其他军衔，逐条改
 > 「はい。たった今、ホワイトファングの
 >  総攻撃を受けて大破したとの
-“Yes. We have just received word that it was heavily damaged in a full-scale assault by White Fang.
+“Yes. Word has just reached us that it was devastated by an all-out assault from White Fang.
 ---
 >  連絡がございました。
 >  ジャミトフ司令、バスク特佐
 Commander Jamitov and Special Colonel Bask
 ---
 >  ともに戦死したと……」
-are both reported killed in action...”
+were both killed in action, I am told...”
 
 @30799 Alan · アラン
 > 「ちょっと待ってくれ!
@@ -860,22 +860,22 @@ are both reported killed in action...”
 
 @30800 Garrison · ギャリソン
 > 「はい。間違いございません」
-“Yes. There is no mistake.”
+“Yes. There is no doubt of it.”
 
 @30801 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「何てことだ。
 >  銀河帝国軍ならともかく
-“This is unbelievable. If it were the Galactic Empire’s forces, maybe,
+“Good God. The Galactic Empire, I could understand,
 ---
 >  ホワイトファングにあのバルジが……」
-but for White Fang to take down Barge...”
+but White Fang taking down Barge...”
 
 @30802 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「信じられん。やつらにそんな戦力が
 >  あったのか? とても不可能だ……」
-“I can’t believe it. Did they have that kind of fighting strength? It should be utterly impossible...”
+“I can’t believe it. Did they really have that kind of strength? It shouldn’t be possible...”
 
 @30803 Judau · ジュドー
 > 「おい、みんな! モニター見てみろよ!」
@@ -898,19 +898,19 @@ is up there talking all smug.”
 @30806 Quinze · カーンズ
 > 「かつて平和的自治権の確立
 >  を願った我々宇宙コロニーに
-“To us space colonists, who once wished for the establishment of peaceful autonomy,
+“We of the space colonies once sought only peaceful self-rule,
 ---
 >  対し、地球側は常に武力に
 >  よる弾圧を行ってきた。連邦の
-the Earth side has always responded with armed oppression. Such was the age of the Federation,
+yet Earth has always answered us with armed oppression. So it was under the Federation,
 ---
 >  時代しかり、異星人を排除
 >  したOZの時代しかりなのだ。今また
-and such was the age of OZ, which drove out the aliens. Now once again
+and so it was under OZ, which drove out the aliens. Now once again
 ---
 >  地球圏は新たな危機に直面
 >  しているが、その罪を見逃して
-the Earth Sphere faces a new crisis, but that sin cannot be overlooked.
+the Earth Sphere faces a new crisis, but that does not absolve Earth of its sins.
 ---
 >  いいものではない。我々の敵は、
 >  地球に根ざすすべての存在である
@@ -921,7 +921,7 @@ Our enemy is everything rooted in the Earth.
 And we, the Space Revolutionary Army White Fang, have welcomed a leader
 ---
 >  指導者を迎えた」
-to carry out our righteous cause.”
+to see our righteous cause through.”
 
 @30807 Tetsuya · 鉄也
 > 「おい、こいつは……」
@@ -973,7 +973,7 @@ But... why?!”
 ---
 >  自分が何をしたかを。
 >  それとも奴は正気ではないのか!?」
-he must know what he’s done. Or is he simply not sane?!”
+he must know what he’s done. Or has he lost his mind?!”
 
 @30815 Noin · ノイン
 > 「……ゼクス……あなたが……なぜ……?」
@@ -1047,7 +1047,7 @@ Then I... I’ll kill you.”
 # 审校：全局：弯撇号／弯引号
 > 「ゼクス……。舞台の幕開けを
 >  告げる者は、やはり君だったか
-“Zechs... So it was you, after all, who would announce the opening of the curtain.
+“Zechs... So you are the one to herald the rise of the curtain after all.
 ---
 >  ……それでこそ私の友だ」
 ...That’s my friend for you.”
@@ -1057,11 +1057,11 @@ Then I... I’ll kill you.”
 # 检查提示：未用必用译名：トレーズ→Treize
 > 「トレーズ様、ご準備を。
 >  すでに財団幹部はじめ
-“Your Excellency, please prepare yourself. The Foundation’s executives and
+“Your Excellency, please make ready. The Foundation’s executives and
 ---
 >  ロームフェラの中枢は、
 >  部下によって抑えています」
-the core of Romefeller are already under our men’s control.”
+the rest of Romefeller’s leadership are already in our men’s hands.”
 
 @30828 Treize · トレーズ
 # 审校：全局：弯撇号／弯引号
@@ -1144,15 +1144,15 @@ you will be the hope of everyone in the Earth Sphere...”
 ---
 >  我が銀河帝国軍の
 >  先遣艦隊は勢力の区別なく
-but our Galactic Empire advance fleet’s objective is to grasp
+but the objective of our Galactic Empire advance fleet is to assess
 ---
 >  これらの戦力を把握すること、
 >  また、これに可能な限り大きな
-the strength of these forces regardless of faction, and to inflict
+all their strength, regardless of faction, and to inflict
 ---
 >  ダメージを与えることを目標として
 >  おります」
-as much damage on them as possible.”
+as much damage as possible.”
 
 @30841 Marg · マーグ
 > 「地球……」

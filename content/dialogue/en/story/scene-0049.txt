@@ -1784,7 +1784,7 @@ thought of something?”
 # 审校：全局：弯撇号／弯引号
 > 「ベルトーチカ・イルマ、アーガマのクルーよ
 >  あんまりアムロにちょっかい出さないで」
-“Beltorchika Irma, a crew member of the Argama. Don’t go pestering Amuro so much.”
+“Beltorchika Irma, crew of the Argama. Don’t get too cozy with Amuro.”
 
 @33692 Chan · チェーン
 > 「あなたにそんなこといわれる理由は
@@ -2441,7 +2441,7 @@ had a mobile suit developed, and it’s apparently at La Vie en Rose.”
 @33787 Shinobu · 忍
 > 「戦力の増強もできるってわけだな。
 >  そいつは都合がいいぜ」
-“So we can boost our fighting strength too. That works out nicely.”
+“So we get reinforcements too. Now that’s convenient.”
 
 @33788 Bright · ブライト
 > 「よし、とりあえず我々はラビアンローズ
@@ -2598,7 +2598,7 @@ to meet you.”
 # 审校：全局：弯撇号／弯引号
 > 「はい。まだ帝国の支配を
 >  受けていた頃から、実戦データの
-“Yes. Even back when we were under the Empire’s rule, they cooperated with us
+“Yes. Even back when we were under the Empire’s rule, they were helping us too,
 ---
 >  提供を条件にこちらにも
 >  協力してくれてました」
@@ -2639,7 +2639,7 @@ is at least part of the reason.”
 # 审校：全局：弯撇号／弯引号
 > 「ベルトーチカ・イルマ、アーガマのクルーよ
 >  あんまりアムロにちょっかい出さないで」
-“Beltorchika Irma, Argama crew. Stop making passes at Amuro.”
+“Beltorchika Irma, crew of the Argama. Don’t get too cozy with Amuro.”
 
 @33823 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -2723,7 +2723,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「ふん、男の戦いに女は邪魔になる
 >  だけだというのにな」
-“Hmph. In a man’s battle, women only get in the way.”
+“Hmph. Women only get in the way when men are fighting.”
 
 @33838 Rain · レイン
 > 「…………」

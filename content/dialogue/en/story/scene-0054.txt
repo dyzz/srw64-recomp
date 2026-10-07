@@ -2450,7 +2450,7 @@ I mean it!”
 @35995 Marg · マーグ
 > 「お前は俺の弟。
 >  俺たちは双子の兄弟だ!」
-“You are my brother. We’re twins!”
+“You’re my younger brother. We’re twins!”
 
 @35996 Takeru · タケル
 > 「な、なんだと!? 俺に……兄が……?」
@@ -2615,7 +2615,7 @@ is resisting the forces that currently control the Earth.”
 @36025 Takeru · タケル
 > 「……オレは、本当にマーズという、
 >  お前たちと同じ星の人間なのか」
-“...So I really am this Mars, from the same planet as you?”
+“...Am I really this Mars? Am I really from the same planet as you?”
 
 @36026 Marg · マーグ
 # 审校：精读：页首大写
@@ -2757,10 +2757,10 @@ Mother kept begging Zuul to give you back, until a few years ago...)
 # 审校：全局：弯撇号／弯引号
 > 「大丈夫だ、マーズ……俺の弟よ。
 >  ずっと、お前に会いたかった
-“I’m fine, Mars... my little brother. I’ve wanted to see you for so long.
+“It’s all right, Mars... my little brother. I’ve wanted to see you for so long.
 ---
 >  お前に会える日を待っていた」
-I’ve been waiting for the day we’d meet.”
+I’ve waited for the day we’d finally meet.”
 
 @36048 Takeru · タケル
 > 「マーグ……兄さん」
@@ -2825,7 +2825,7 @@ and said all kinds of awful things.”
 # 审校：全局：弯撇号／弯引号
 > 「すまない、タケル。
 >  俺はただ、その、不安だったんだ」
-“I’m sorry, Takeru. I was just, well, uneasy.”
+“I’m sorry, Takeru. I was just, you know, on edge.”
 
 @36056 Akira · アキラ
 > 「悪かったよ、お前を疑って。
@@ -2836,7 +2836,7 @@ and said all kinds of awful things.”
 # 审校：全局：弯撇号／弯引号
 > 「いいんだ、こうして
 >  誤解は解けたんだから」
-“It’s fine. The misunderstanding is cleared up now.”
+“It’s fine. It’s all cleared up now.”
 
 @36058 Anna · アンナ
 > 「よかったわ……ね、エイジ」

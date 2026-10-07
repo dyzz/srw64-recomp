@@ -720,7 +720,7 @@ Hey, report this to Commander Gandal.”
 
 @26741 Marg · マーグ
 > (マーズ、会いたい、会って話がしたい)
-(Mars, I want to see you. I want to see you and talk.)
+(Mars, I want to meet you. Meet you and talk.)
 
 @26742 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
@@ -777,7 +777,7 @@ remember?!”
 # 审校：全局：弯撇号／弯引号
 > 「あれは、ガイヤーという奴か!?
 >  タケルが乗っているのか!?」
-“Is that the thing called Gaia?! Is Takeru piloting it?!”
+“So that’s Gaia?! Is Takeru piloting it?!”
 
 @26752 Chibodee · チボデー
 > 「おいおいバニー、
@@ -823,7 +823,7 @@ remember?!”
 @26760 Marg · マーグ
 > 「お前は俺の弟。
 >  俺たちは双子の兄弟だ!」
-“You are my brother. We’re twins!”
+“You’re my younger brother. We’re twins!”
 
 @26761 Takeru · タケル
 > 「な、なんだと!? オレに……兄が……?」
@@ -1039,7 +1039,7 @@ all sorts of awful things.”
 # 审校：全局：弯撇号／弯引号
 > 「すまない、タケル。
 >  俺はただ、その、不安だったんだ」
-“I’m sorry, Takeru. I was just, well, uneasy.”
+“I’m sorry, Takeru. I was just, you know, on edge.”
 
 @26794 Akira · アキラ
 # 审校：勘弁してくれ 是请求原谅

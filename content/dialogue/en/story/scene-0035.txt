@@ -1000,7 +1000,7 @@ meet you.”
 @24878 Amuro · アムロ
 > 「ははは、実物を見てがっかりしたん
 >  じゃないか」
-“Hahaha, I bet the real thing was a disappointment.”
+“Hahaha, I bet I’m a letdown in person.”
 
 @24879 Chan · チェーン
 > 「そんなことないです。
@@ -1015,7 +1015,7 @@ meet you.”
 # 审校：全局：弯撇号／弯引号
 > 「私の夢なんです。アムロ大尉の
 >  乗るガンダムをつくるのが」
-“It’s my dream. Building the Gundam that Captain Amuro will pilot.”
+“It’s my dream. To build a Gundam for Captain Amuro to pilot.”
 
 @24882 Amuro · アムロ
 > 「そういえばアナハイムといっていたが……」
@@ -1075,7 +1075,7 @@ that’s its standard configuration, called the Dendrobium.”
 # 审校：全局：弯撇号／弯引号
 > 「ベルトーチカ・イルマ、アーガマのクルーよ
 >  あんまりアムロにちょっかい出さないで」
-“Beltorchika Irma, Argama crew. Stop making passes at Amuro.”
+“Beltorchika Irma, crew of the Argama. Don’t get too cozy with Amuro.”
 
 @24891 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -1146,7 +1146,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「どっちかに決めてもらえば、
 >  俺にもチャンスがあるってわけだ」
-“If he’d just pick one of them, I’d have a shot too.”
+“If he’d just pick one of them, that’d give me a chance.”
 
 @24904 Shingo · 真吾
 # 审校：全局：弯撇号／弯引号
@@ -1157,7 +1157,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「ふん、男の戦いに女は邪魔になる
 >  だけだというのにな」
-“Hmph. In a man’s battle, women only get in the way.”
+“Hmph. Women only get in the way when men are fighting.”
 
 @24906 Rain · レイン
 > 「…………」
@@ -1167,7 +1167,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「あ、いや、レインのことをいったんじゃ
 >  なくてだな……」
-“Ah, no, I didn’t mean you, Rain...”
+“Uh, no, I wasn’t talking about you, Rain...”
 
 @24908 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号

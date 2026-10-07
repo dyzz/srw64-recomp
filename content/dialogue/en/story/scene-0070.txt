@@ -707,7 +707,7 @@ Hey, contact my brother.”
 # 审校：全局：弯撇号／弯引号
 > 「来たか……この地球を
 >  フリード星のようにはさせん!」
-“So you’ve come... I won’t let this Earth end up like Planet Fleed!”
+“So you’ve come... I won’t let Earth end up like Planet Fleed!”
 
 @30202 Sai Saici · サイ・サイシー
 # 审校：全局：弯撇号／弯引号

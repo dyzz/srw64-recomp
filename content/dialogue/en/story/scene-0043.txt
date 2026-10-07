@@ -987,10 +987,10 @@ Mars, destroy Earth and return.”
 @27003 Takeru · タケル
 > 「黙れズール! 俺の父などといって
 >  だまそうとしたくせに! 俺はお前の
-“Silence, Zuul! You tried to deceive me by calling yourself my father! I will
+“Silence, Zuul! You tried to deceive me by calling yourself my father! I’ll
 ---
 >  思い通りにはならないぞ!」
-never do as you wish!”
+never do what you want!”
 
 @27004 Emperor Zuul · ズール皇帝
 # 审校：ズール皇帝称タケル为“奴”，不是“boy”；改为更贴切的“creature”。

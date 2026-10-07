@@ -2327,7 +2327,7 @@ had a mobile suit developed, and it’s apparently at La Vie en Rose.”
 @34206 Shinobu · 忍
 > 「戦力の増強もできるってわけだな。
 >  そいつは都合がいいぜ」
-“So we can boost our fighting strength too. That works out nicely.”
+“So we get reinforcements too. Now that’s convenient.”
 
 @34207 Bright · ブライト
 > 「よし、とりあえず我々はラビアンローズ
@@ -2373,10 +2373,10 @@ and I’ve been waiting all this time.”
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
 > 「ブライト艦長……忘れてしまったの
 >  ですか? 私、艦長に頼まれたと
-“Captain Bright... have you forgotten? I thought you had entrusted this to me,
+“Captain Bright... have you forgotten? I thought you’d asked me to,
 ---
 >  思って、一生懸命……」
-so I gave it everything...”
+so I worked so hard...”
 
 @34216 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -2484,7 +2484,7 @@ to meet you.”
 # 审校：全局：弯撇号／弯引号
 > 「はい。まだ帝国の支配を
 >  受けていた頃から、実戦データの
-“Yes. Even back when we were under the Empire’s rule, they cooperated with us
+“Yes. Even back when we were under the Empire’s rule, they were helping us too,
 ---
 >  提供を条件にこちらにも
 >  協力してくれてました」
@@ -2598,7 +2598,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「どっちかに決めてもらえば、
 >  俺にもチャンスがあるってわけだ」
-“If he’d just pick one of them, I’d have a shot too.”
+“If he’d just pick one of them, that’d give me a chance.”
 
 @34255 Shingo · 真吾
 # 审校：全局：弯撇号／弯引号
@@ -2609,7 +2609,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「ふん、男の戦いに女は邪魔になる
 >  だけだというのにな」
-“Hmph. In a man’s battle, women only get in the way.”
+“Hmph. Women only get in the way when men are fighting.”
 
 @34257 Rain · レイン
 > 「…………」
@@ -2619,7 +2619,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「あ、いや、レインのことをいったんじゃ
 >  なくてだな……」
-“Ah, no, I didn’t mean you, Rain...”
+“Uh, no, I wasn’t talking about you, Rain...”
 
 @34259 Schwarz · シュバルツ
 # 审校：笑声后应加感叹号以匹配原文「ハハハハハハッ」的爆发感，同时“修業が足りん”改为更符合 Schwarz 严肃口吻的“lack training”。
