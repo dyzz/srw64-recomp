@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/5）
 # 审校：「つぶれろ」是命令对方被压碎，初稿“Crush them!”把对象变成了第三方。
 > 「つぶれろ!」
-“Get crushed!”
+“I’ll crush you!”
 
 @10848 Beanne · ビアン
 # 触发：攻击（通用，2/5）
@@ -15,13 +15,13 @@
 # 触发：攻击（通用，3/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「文句はいわせん!」
-“I won’t hear any complaints!”
+“You’ve got no say in this!”
 
 @10850 Beanne · ビアン
 # 触发：攻击（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こうも簡単にやらせるとはな!」
-“To think they’d let me do this so easily!”
+“Didn’t think they’d make it this easy!”
 
 @10851 Beanne · ビアン
 # 触发：攻击（通用，5/5）
@@ -58,12 +58,12 @@
 @10857 Beanne · ビアン
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「つ、強い……ならばっ!」
-“S-strong... then take this!”
+“Th-they’re strong... Then take this!”
 
 @10858 Beanne · ビアン
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「くぅっ! やる! だがこれなら!」
-“Ngh! Not bad! But with this!”
+“Ngh! Not bad! But try this!”
 
 @10859 Beanne · ビアン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -75,7 +75,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度ならば!」
-“If it’s only this much!”
+“This much is nothing!”
 
 @10861 Beanne · ビアン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -87,7 +87,7 @@
 # 触发：回避（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こうも簡単によけられるとはな」
-“To think you’d dodge so easily.”
+“Didn’t think it’d be this easy to dodge.”
 
 @10863 Beanne · ビアン
 # 触发：回避（通用，2/2）

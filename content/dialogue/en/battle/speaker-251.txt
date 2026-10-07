@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/6）
 # 审校：更像喊话
 > 「人形が……落ちてしまえっ!!」
-“You doll... fall!!”
+“You doll... go down!!”
 
 @8536 Four · フォウ
 # 触发：攻击（通用，2/6）
@@ -15,7 +15,7 @@
 @8537 Four · フォウ
 # 触发：攻击（通用，3/6）
 > 「ちょこまかと……消えろっ!!」
-“Quit scurrying around... disappear!!”
+“Scurrying around... just vanish!!”
 
 @8538 Four · フォウ
 # 触发：攻击（通用，4/6）
@@ -27,7 +27,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔するやつは、許さないと
 >  いったはずだ!!」
-“I told you, I won’t forgive anyone who gets in my way!!”
+“I told you I won’t tolerate anyone who gets in my way!!”
 
 @8540 Four · フォウ
 # 触发：攻击（通用，6/6）
@@ -115,4 +115,4 @@
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この距離では届かない……か」
-“At this range it won’t reach... huh.”
+“Can’t reach at this range... huh.”

@@ -3,7 +3,7 @@
 @12052 Warchimedes · ワルキメデス
 # 触发：攻击（通用，1/9）
 > 「ゆくぞ、ダークロン!」
-“Here I go, Darkron!”
+“Let’s go, Darkron!”
 
 @12053 Warchimedes · ワルキメデス
 # 触发：攻击（通用，2/9）
@@ -48,7 +48,7 @@
 @12060 Warchimedes · ワルキメデス
 # 触发：攻击（通用，9/9）
 > 「これでもくらうがいい!」
-“Try taking this!”
+“Have a taste of this!”
 
 @12061 Warchimedes · ワルキメデス
 # 触发：被击坠（通用，1/3）
@@ -81,7 +81,7 @@
 @12066 Warchimedes · ワルキメデス
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「お……おのれ、このままでは……」
-“Y-you fiend, at this rate...”
+“C-curse you, at this rate...”
 
 @12067 Warchimedes · ワルキメデス
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
@@ -101,13 +101,13 @@
 @12070 Warchimedes · ワルキメデス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「フフフ、無駄な攻撃だ!」
-“Hehehe, a futile attack!”
+“Heh heh heh, how futile!”
 
 @12071 Warchimedes · ワルキメデス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このダークロンには効きはせん!」
-“It won’t work on this Darkron!”
+“That won’t work on my Darkron!”
 
 @12072 Warchimedes · ワルキメデス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）

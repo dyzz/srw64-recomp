@@ -10,7 +10,7 @@
 # 触发：攻击（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「仕方あるまい」
-“It can’t be helped.”
+“No choice, then.”
 
 @6943 Howard · ハワード
 # 触发：被击坠（通用，1/1）
@@ -21,7 +21,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「エンジンが壊れたって構わん!」
-“I don’t care if the engine’s broken!”
+“I don’t care if it wrecks the engines!”
 
 @6945 Howard · ハワード
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
@@ -62,19 +62,19 @@
 @6951 Howard · ハワード
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
 > 「各部損害を報告しろ」
-“Report damage to all sections.”
+“All sections, report damage.”
 
 @6952 Howard · ハワード
 # 触发：回避（通用，1/1）
 # 审校：回避情境：是己方脱离射线
 > 「射線をはずしたか……」
-“Slipped out of their line of fire, did we...”
+“We slipped out of their line of fire...”
 
 @6953 Howard · ハワード
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：与 6952 同句
 > 「射線をはずしたか……」
-“Slipped out of their line of fire, did we...”
+“We slipped out of their line of fire...”
 
 @6954 Howard · ハワード
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -88,7 +88,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この船では、あの距離の敵には
 >  攻撃できんな……」
-“With this ship, we can’t attack an enemy at that range...”
+“This ship can’t hit an enemy at that range...”
 
 @14399 Howard · ハワード
 # 触发：使用〈対空機関砲／対空砲〉（低优先，可能被通用台词顶掉）

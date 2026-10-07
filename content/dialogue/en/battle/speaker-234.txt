@@ -41,7 +41,7 @@
 # 触发：攻击（通用，7/10）
 # 审校：英文缺引号，补齐
 > 「やってみる!」
-“I’ll give it a try!”
+“Let’s try this!”
 
 @10599 Elle · エル
 # 触发：攻击（通用，8/10）
@@ -65,7 +65,7 @@
 # 触发：被击坠（通用，1/2）
 # 审校：英文缺引号；被击坠情境
 > 「やだ! やられちゃった!?」
-“No way! I got shot down?!”
+“No way! They got me?!”
 
 @10603 Elle · エル
 # 触发：被击坠（通用，2/2）
@@ -97,13 +97,13 @@
 # 审校：英文缺引号；原英文句子不通
 > 「うわっ! 何よこれ、
 >  パワーが違いすぎる!?」
-“Whoa! What is this? The power gap’s way too big?!”
+“Whoa! What is this? They totally outpower me?!”
 
 @10608 Elle · エル
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 # 审校：英文缺引号，补齐
 > 「あぅっ! こ、こいつ、強い!?」
-“Agh! Th-this one’s strong?!”
+“Agh! Th-this guy’s strong?!”
 
 @10609 Elle · エル
 # 触发：中伤（剩余 HP 30–90%）（通用，1/6）
@@ -127,13 +127,13 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，4/6）
 # 审校：英文缺引号；やってくれんじゃないの 是被打后的“你还真干了”
 > 「や、やってくれんじゃないの!」
-“Y-you really did it, huh!”
+“Y-you’ve got some nerve!”
 
 @10613 Elle · エル
 # 触发：中伤（剩余 HP 30–90%）（通用，5/6）
 # 审校：英文缺引号，补齐
 > 「いったぁ……なにすんのさ!」
-“Ow... what’re you doing!”
+“Ow... what was that for?!”
 
 @10614 Elle · エル
 # 触发：中伤（剩余 HP 30–90%）（通用，6/6）
@@ -163,7 +163,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 # 审校：英文缺引号，补齐
 > 「なーにさ、こんな攻撃」
-“What’s this, an attack like that?”
+“Pfft, what kind of attack is that?”
 
 @10619 Elle · エル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
@@ -193,7 +193,7 @@
 # 触发：回避（通用，4/5）
 # 审校：英文缺引号，补齐
 > 「どこ狙ってるのさ!」
-“What’re you aiming at!”
+“What’re you aiming at?!”
 
 @10624 Elle · エル
 # 触发：回避（通用，5/5）
@@ -212,13 +212,13 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/3）
 # 审校：英文缺引号，补齐
 > 「なにさビームなんて!」
-“What’s a beam supposed to do!”
+“Who cares about beams!”
 
 @10627 Elle · エル
 # 触发：攻击无效（护罩／装甲）（通用，3/3）
 # 审校：英文缺引号；原文是反问，补“huh?”
 > 「フフン、たいしたことないじゃん?」
-“Hmph, that’s nothing special, huh?”
+“Heh, not so tough after all, huh?”
 
 @10628 Elle · エル
 # 触发：弹药／EN 不足，无法反击（通用，1/2）
@@ -242,7 +242,7 @@
 # 触发：射程外，无法反击（通用，2/2）
 # 审校：英文缺引号，补齐
 > 「なによ、届かないじゃない!」
-“What, it doesn’t even reach!”
+“What, I can’t even reach!”
 
 @16318 Elle · エル
 # 触发：使用〈ビームライフル／銃剣付きビームライフル〉（低优先，可能被通用台词顶掉）
@@ -273,4 +273,4 @@
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  いけっ! ハイメガキャノン!!」
-“Energy charge... fire! High Mega Cannon!!”
+“Charging energy... fire! High Mega Cannon!!”

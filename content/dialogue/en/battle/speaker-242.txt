@@ -36,7 +36,7 @@
 @12034 Dungele · ダンゲル
 # 触发：攻击（通用，7/8）
 > 「これでもくらえ!」
-“Try taking this!”
+“Eat this!”
 
 @12035 Dungele · ダンゲル
 # 触发：攻击（通用，8/8）
@@ -49,7 +49,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ジャ、ジャネラ様、申しわけ
 >  ございません!」
-“L-lady Janera, I am terribly sorry!”
+“L-Lady Janera, my deepest apologies!”
 
 @12037 Dungele · ダンゲル
 # 触发：被击坠（通用，2/2）
@@ -109,7 +109,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かぬわ! ハーッハッハッハッ!」
-“It’s useless! Ha ha ha ha!”
+“That doesn’t hurt! Ha ha ha ha!”
 
 @12047 Dungele · ダンゲル
 # 触发：回避（通用，1/2）

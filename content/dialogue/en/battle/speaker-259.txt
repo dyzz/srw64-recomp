@@ -9,12 +9,12 @@
 # 触发：攻击（通用，2/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その首もらったぁ!」
-“That head’s mine!”
+“Your head is mine!”
 
 @13133 Sai Saici · サイ・サイシー
 # 触发：攻击（通用，3/11）
 > 「覚悟ぉ!」
-“Get ready!”
+“Prepare yourself!”
 
 @13134 Sai Saici · サイ・サイシー
 # 触发：攻击（通用，4/11）
@@ -36,7 +36,7 @@
 # 触发：攻击（通用，7/11）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「容赦しないぜ!」
-“I won’t show any mercy!”
+“No mercy!”
 
 @13138 Sai Saici · サイ・サイシー
 # 触发：攻击（通用，8/11）
@@ -47,7 +47,7 @@
 # 触发：攻击（通用，9/11）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「とぉどめぇぇ!」
-“Finishing bloooow!”
+“This ends iiit!”
 
 @13140 Sai Saici · サイ・サイシー
 # 触发：攻击（通用，10/11）
@@ -111,7 +111,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「こんなものでぇ負けられるかぁぁぁ!」
-“You think this’ll beat me?!”
+“Like I’d lose to thiiis!”
 
 @13151 Sai Saici · サイ・サイシー
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
@@ -129,7 +129,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなに強い奴がいたとは、
 >  うれしいねぇ」
-“I’m glad there’s someone this strong!”
+“Who knew there was someone this strong? Awesome!”
 
 @13154 Sai Saici · サイ・サイシー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -147,7 +147,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：あまい 是天真不是容易
 > 「あまいあまい」
-“Too soft, way too soft.”
+“Too weak, way too weak.”
 
 @13157 Sai Saici · サイ・サイシー
 # 触发：回避（通用，1/4）
@@ -175,7 +175,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうだ! びびって口もきけねぇだろ!」
-“How’s that?! You’re too scared to speak!”
+“How’s that?! Bet you’re too scared to talk!”
 
 @13162 Sai Saici · サイ・サイシー
 # 触发：攻击无效（护罩／装甲）（通用，2/2）

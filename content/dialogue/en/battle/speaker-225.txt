@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/7）
 # 审校：补引号
 > 「俺たちにかかればわけないことだ」
-“With us on it, it’s no problem.”
+“Nothing to it, with us on the job.”
 
 @10733 Danny · ダニー
 # 触发：攻击（通用，2/7）
@@ -16,7 +16,7 @@
 # 触发：攻击（通用，3/7）
 # 审校：补引号
 > 「沈め!」
-“Sink!”
+“Down you go!”
 
 @10735 Danny · ダニー
 # 触发：攻击（通用，4/7）
@@ -46,7 +46,7 @@
 # 触发：被击坠（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なにぃ!? 俺達がやられるっ!?」
-“W-what?! We’re the ones getting taken out?!”
+“Wh-what?! We’re going down?!”
 
 @10740 Danny · ダニー
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
@@ -70,19 +70,19 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このパワー……化け物か!?」
-“Th-this power... is it some kind of monster?!”
+“Th-this power... what are you, a monster?!”
 
 @10744 Danny · ダニー
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 # 审校：补引号
 > 「くっ、ブースターをやられた!?」
-“Ngh, my booster’s been hit?!”
+“Ngh, they hit my booster?!”
 
 @10745 Danny · ダニー
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 # 审校：补引号
 > 「うっ! さすが噂だけのことはある!」
-“Ugh! So the rumors were true!”
+“Ugh! You live up to the rumors!”
 
 @10746 Danny · ダニー
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
@@ -161,4 +161,4 @@
 @16337 Deune · デューン
 # 触发：使用〈3D〉（对话第 3/3 句）
 > 「死神の声が聞こえてきたかい!?」
-“Did you hear the voice of the Grim Reaper?!”
+“Hear the Grim Reaper calling yet?!”

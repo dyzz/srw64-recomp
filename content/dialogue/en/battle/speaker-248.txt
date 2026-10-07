@@ -57,7 +57,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ!
 >  負けないよ絶対……ぜぇったいっ!!」
-“Ngh! I won’t lose, absolutely... absolutely!!”
+“Ngh! I won’t lose, no way... no waaay!!”
 
 @12761 Allenby · アレンビー
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
@@ -101,7 +101,7 @@
 @12768 Allenby · アレンビー
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「ビームなんて効くもんかぁーっ!!」
-“A Beam like that would never hurt!!”
+“Like a beam’s gonna hurt me!!”
 
 @12769 Allenby · アレンビー
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

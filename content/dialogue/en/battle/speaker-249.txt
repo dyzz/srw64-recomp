@@ -10,12 +10,12 @@
 @6782 Quatre · カトル
 # 触发：攻击（通用，2/12）
 > 「邪魔しないでっていってるだろぉ!?」
-“I told you not to get in my way?!”
+“I told you not to get in my way, didn’t I?!”
 
 @6783 Quatre · カトル
 # 触发：攻击（通用，3/12）
 > 「近づかないでっていってるだろぉ!?」
-“I told you not to come near me?!”
+“I told you not to come near me, didn’t I?!”
 
 @6784 Quatre · カトル
 # 触发：攻击（通用，4/12）
@@ -133,7 +133,7 @@
 # 触发：回避（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「本気でやっているのかい? 死ぬよ?」
-“Are you serious? You’ll die, you know?”
+“Are you really doing this? You’ll die, you know.”
 
 @6804 Quatre · カトル
 # 触发：回避（通用，2/2）
@@ -146,7 +146,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないって言ってるだろぅ!?」
-“I told you it won’t work?!”
+“I told you it doesn’t work, didn’t I?!”
 
 @6806 Quatre · カトル
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

@@ -37,7 +37,7 @@
 @9184 Roberto · ロベルト
 # 触发：攻击（通用，7/7）
 > 「この程度の敵に!」
-“Against an enemy like this!”
+“Not against this small fry!”
 
 @9185 Roberto · ロベルト
 # 触发：被击坠（通用，1/1）
@@ -65,7 +65,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ……まだだ! 落ちてたまるか!」
-“Guh... Not yet! I won’t go down!”
+“Guh... Not yet! No way I’m going down!”
 
 @9190 Roberto · ロベルト
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
@@ -97,12 +97,12 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「きいてないってんだよ」
-“I told you it won’t work.”
+“Told you, that doesn’t work.”
 
 @9196 Roberto · ロベルト
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「この程度で!」
-“With this much!”
+“Not with that!”
 
 @9197 Roberto · ロベルト
 # 触发：回避（通用，1/5）
@@ -114,13 +114,13 @@
 # 触发：回避（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たらないってんだ」
-“I said it won’t hit.”
+“Told you, it won’t hit.”
 
 @9199 Roberto · ロベルト
 # 触发：回避（通用，3/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たるもんかよ!」
-“Like it’d ever hit!”
+“Like that’s gonna hit!”
 
 @9200 Roberto · ロベルト
 # 触发：回避（通用，4/5）
@@ -132,19 +132,19 @@
 # 触发：回避（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やられてたまるか!」
-“I won’t be beaten!”
+“Like I’d let you get me!”
 
 @9202 Roberto · ロベルト
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないんだよ!」
-“It won’t work!”
+“That doesn’t work!”
 
 @9203 Roberto · ロベルト
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ビーム程度で!」
-“A mere Beam won’t work!”
+“A beam won’t cut it!”
 
 @9204 Roberto · ロベルト
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -161,4 +161,4 @@
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  いけっ! ハイメガキャノン!!」
-“Energy charge... Fire! High Mega Cannon!!”
+“Charging energy... Fire! High Mega Cannon!!”

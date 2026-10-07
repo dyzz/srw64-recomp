@@ -3,7 +3,7 @@
 @9026 Rosamia · ロザミア
 # 触发：攻击（通用，1/10）
 > 「沈めっ!」
-“Sink!”
+“Go down!”
 
 @9027 Rosamia · ロザミア
 # 触发：攻击（通用，2/10）
@@ -63,7 +63,7 @@
 @9037 Rosamia · ロザミア
 # 触发：被击坠（通用，2/2）
 > 「くっ! しくじった!!」
-“Ngh! I messed up!!”
+“Ngh! I blew it!!”
 
 @9038 Rosamia · ロザミア
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
@@ -91,7 +91,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! このっ、生意気なんだよっ!」
-“Ugh! Why you, you’re getting cocky!”
+“Ugh! Why you, you cocky little...!”
 
 @9043 Rosamia · ロザミア
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
@@ -113,13 +113,13 @@
 @9046 Rosamia · ロザミア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 > 「そんな攻撃でやられるものか!」
-“Like an attack like that could take me down!”
+“Like I’d go down to an attack like that!”
 
 @9047 Rosamia · ロザミア
 # 触发：回避（通用，1/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たりはしないっ!」
-“It won’t hit!”
+“You won’t hit me!”
 
 @9048 Rosamia · ロザミア
 # 触发：回避（通用，2/5）
@@ -131,7 +131,7 @@
 @9049 Rosamia · ロザミア
 # 触发：回避（通用，3/5）
 > 「甘いんだよっ!」
-“Too soft!”
+“Not even close!”
 
 @9050 Rosamia · ロザミア
 # 触发：回避（通用，4/5）
@@ -152,7 +152,7 @@
 @9053 Rosamia · ロザミア
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れか!? ぬかった!」
-“Out of ammo?! I slipped up!”
+“Out of ammo?! Careless of me!”
 
 @9054 Rosamia · ロザミア
 # 触发：射程外，无法反击（通用，1/1）

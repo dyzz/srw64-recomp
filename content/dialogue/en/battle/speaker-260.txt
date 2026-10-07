@@ -26,7 +26,7 @@
 # 触发：攻击（通用，5/7）
 # 审校：とどめ 的常用译法
 > 「とどめだぁ!」
-“The finishing blow!”
+“This ends it!”
 
 @13170 George · ジョルジュ
 # 触发：攻击（通用，6/7）
@@ -43,7 +43,7 @@
 @13172 George · ジョルジュ
 # 触发：被击坠（通用，1/3）
 > 「む、無念……」
-“H-how regrettable...”
+“I-I have failed...”
 
 @13173 George · ジョルジュ
 # 触发：被击坠（通用，2/3）
@@ -85,7 +85,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした! 戦いはまだ終わって
 >  いないぞぉ!」
-“What’s wrong! The battle isn’t over yet!”
+“What’s the matter? The battle isn’t over yet!”
 
 @13180 George · ジョルジュ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/6）
@@ -111,13 +111,13 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/6）
 # 审校：フッ 是轻笑不是哼
 > 「フッ、さすがですね」
-“Heh, as expected of you.”
+“Heh, you live up to your reputation.”
 
 @13185 George · ジョルジュ
 # 触发：中伤（剩余 HP 30–90%）（通用，6/6）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「そうこなくては張り合いがありません」
-“Now that’s more like it.”
+“Now that’s a worthy challenge.”
 
 @13186 George · ジョルジュ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -164,7 +164,7 @@
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「弾切れ!? 私としたことが」
-“Out of ammo?! I can’t believe it.”
+“Out of ammo?! How careless of me.”
 
 @13194 George · ジョルジュ
 # 触发：射程外，无法反击（通用，1/2）
@@ -216,7 +216,7 @@
 # 检查提示：未用必用译名：ローゼスビット→Rose Bits
 > 「いかがかな、
 >  変幻自在のローゼスビットは!?」
-“How do you like it, my ever-changing Rose Bits?!”
+“How do you like my ever-shifting Rose Bits?!”
 
 @17338 George · ジョルジュ
 # 触发：使用〈ローゼススクリーマー〉
@@ -254,24 +254,24 @@
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ガンダムローズ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ガ、ガンダムローズが……」
-“G-gundam Rose is...”
+“M-my Gundam Rose is...”
 
 @17344 George · ジョルジュ
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ガンダムローズS〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ガ、ガンダムローズが……」
-“G-gundam Rose is...”
+“M-my Gundam Rose is...”
 
 @17345 George · ジョルジュ
 # 触发：攻击无效（护罩／装甲），乘坐〈ガンダムローズ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「それではこのガンダムローズに傷ひとつ
 >  つきませんよ」
-“Then this Gundam Rose won’t take a single scratch.”
+“That won’t leave a single scratch on this Gundam Rose.”
 
 @17346 George · ジョルジュ
 # 触发：攻击无效（护罩／装甲），乘坐〈ガンダムローズS〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「それではこのガンダムローズに傷ひとつ
 >  つきませんよ」
-“Then this Gundam Rose won’t take a single scratch.”
+“That won’t leave a single scratch on this Gundam Rose.”

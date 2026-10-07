@@ -32,7 +32,7 @@
 # 触发：攻击（通用，6/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「もらうよっ!」
-“I’ll take that!”
+“You’re mine!”
 
 @10909 Mondo · モンド
 # 触发：攻击（通用，7/11）
@@ -43,7 +43,7 @@
 @10910 Mondo · モンド
 # 触发：攻击（通用，8/11）
 > 「よ～く狙って……そこだぁっ!」
-“Aim real careful... there!”
+“Aim nice and careful... there!”
 
 @10911 Mondo · モンド
 # 触发：攻击（通用，9/11）
@@ -72,7 +72,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ひゃーっ、もう限界だよ!」
-“Yikes, I’m at my limit!”
+“Yikes, I can’t take much more!”
 
 @10916 Mondo · モンド
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -90,7 +90,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわわわっ! 落ちる、落ちるぅ～!」
-“Whoa whoa whoa! I’m falling, I’m falling!”
+“Whoa whoa whoa! I’m going down, I’m going down!”
 
 @10919 Mondo · モンド
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -109,7 +109,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つ、強いっ! け、けどなあ、俺だって
 >  意地があるんだよっ!」
-“S-strong! B-but still, I’ve got my pride too!”
+“Th-they’re strong! B-but I’ve got my pride too!”
 
 @10922 Mondo · モンド
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
@@ -179,7 +179,7 @@
 @10933 Mondo · モンド
 # 触发：回避（通用，6/7）
 > 「ふ～、危ない危ない」
-“Phew, that was close, that was close.”
+“Phew, close one, close one.”
 
 @10934 Mondo · モンド
 # 触发：回避（通用，7/7）
@@ -202,7 +202,7 @@
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ダメだぁ、遠すぎて攻撃できない!」
-“No good, it’s too far to attack!”
+“No good, it’s too far away!”
 
 @16367 Mondo · モンド
 # 触发：使用〈ビームライフル／銃剣付きビームライフル〉（低优先，可能被通用台词顶掉）
@@ -225,7 +225,7 @@
 @16370 Mondo · モンド
 # 触发：使用〈フィンファンネル〉
 > 「いけるか? フィンファンネル!」
-“Can you do it? Fin Funnels!”
+“Will this work? Fin Funnels!”
 
 @16371 Mondo · モンド
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）

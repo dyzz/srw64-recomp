@@ -8,7 +8,7 @@
 @9645 Dr. Hazuki · 葉月博士
 # 触发：攻击（通用，2/4）
 > 「成功してくれ!」
-“Let it work!”
+“Please, let this work!”
 
 @9646 Dr. Hazuki · 葉月博士
 # 触发：攻击（通用，3/4）
@@ -34,7 +34,7 @@
 @9650 Dr. Hazuki · 葉月博士
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「くっ……いかん、これ以上は……」
-“Ngh... no good, any more of this...”
+“Ngh... we can’t take much more of this...”
 
 @9651 Dr. Hazuki · 葉月博士
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
@@ -56,12 +56,12 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「まだだ、ガンドールならこの程度の
 >  攻撃は耐えられる」
-“Not yet. The Gandor can withstand an attack of this level.”
+“Not yet. The Gandor can take an attack like this.”
 
 @9655 Dr. Hazuki · 葉月博士
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「くっ……いかん、出力をあげろ!」
-“Ngh... no good, raise the output!”
+“Ngh... this is bad, increase output!”
 
 @9656 Dr. Hazuki · 葉月博士
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -79,7 +79,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ロス・イゴールが残したこの竜は、
 >  これしきのことでは落ちん!」
-“This dragon left to us by Ross Igor won’t fall to something like this!”
+“This dragon Ross Igor left us won’t fall to something like this!”
 
 @9659 Dr. Hazuki · 葉月博士
 # 触发：回避（通用，1/3）
@@ -101,7 +101,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どんなものかな、諸君」
-“How’s that, everyone?”
+“How about that, gentlemen?”
 
 @9663 Dr. Hazuki · 葉月博士
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -112,13 +112,13 @@
 @9664 Dr. Hazuki · 葉月博士
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「エネルギー切れか……」
-“Out of energy, are we...”
+“We’re out of energy...”
 
 @9665 Dr. Hazuki · 葉月博士
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここからでは届かぬようだな……」
-“It seems we can’t reach them from here...”
+“Looks like we can’t reach them from here...”
 
 @14817 Dr. Hazuki · 葉月博士
 # 触发：使用〈ガンドール砲／ガンドール砲MAP〉
@@ -128,4 +128,4 @@
 @14818 Dr. Hazuki · 葉月博士
 # 触发：使用〈ガンドール砲／ガンドール砲MAP〉
 > 「ガンドール砲、スタンバイ!」
-“Gandor Cannon, standby!”
+“Gandor Cannon, stand by!”
