@@ -6,12 +6,12 @@ labels:
 body:
 - type: markdown
   attributes:
-    value: '感谢反馈！0.4.0 之后的版本请先在游戏里打开「选项 → 关于 → 问题报告」，点「导出问题报告」，把导出的 zip 拖到下面的「问题报告」一栏。它包括版本、系统和显卡信息、设置和最近 3 次运行的日志，不含存档和 ROM。
+    value: '感谢反馈！请先在游戏里打开「选项 → 反馈」：点「复制平台信息」贴到下面的「设备」一栏，再点「导出问题报告」，把导出的 zip 拖到「问题报告」一栏。它包括版本、系统和显卡信息、设置和最近 3 次运行的日志，不含存档和 ROM。
 
       剧情台词和图鉴里的译名请到[官网](https://srw64.dreamquest.club/zh/story/)对应的句子旁直接提建议，不用在这里提。
 
 
-      Thanks! From the version after 0.4.0, open Options → About → Problem Report and click Export Report, then drag the zip into "Problem report" below. It holds the version, your system and graphics, your settings and the logs of the last 3 runs; no saves, no ROM.
+      Thanks! In the game, open Options → Report: click Copy Platform Info and paste it into "Device" below, then click Export Report and drag the zip into "Problem report". It holds the version, your system and graphics, your settings and the logs of the last 3 runs; no saves, no ROM.
 
       For story lines and Library names, suggest a correction next to the line on the [website](https://srw64.dreamquest.club/en/story/) instead.
 
@@ -36,12 +36,12 @@ body:
     - Android
   validations:
     required: true
-- type: input
+- type: textarea
   id: device
   attributes:
     label: 设备 / Device
-    description: 电脑或手机的型号、系统版本、显卡；用手柄的话写上手柄。Computer or phone model, system version, graphics; and the controller, if you use one.
-    placeholder: MacBook Air M2, macOS 15.5 / RTX 3060, Windows 11 / Pixel 8, Android 15
+    description: 贴上「选项 → 反馈 → 复制平台信息」的内容；用手柄的话写上手柄型号。Paste what Options → Report → Copy Platform Info copied; name your controller if you use one.
+    render: text
   validations:
     required: true
 - type: textarea
@@ -69,9 +69,9 @@ body:
   id: report
   attributes:
     label: 问题报告 / Problem report
-    description: '把导出的 Marchwind64-report-….zip 拖到这里。闪退或卡死后，重新打开游戏再导出，上一次运行的日志也会在里面。Drag the exported zip here. After a crash or freeze, reopen the game and export: the previous run''s logs are included. 0.4.0 还没有这个按钮：请在上面写清系统和显卡，有截图更好。0.4.0 does not have this button yet: describe your system and graphics above, with screenshots if you can.'
+    description: '把导出的 Marchwind64-report-….zip 拖到这里。闪退或卡死后，重新打开游戏再导出，上一次运行的日志也会在里面。Drag the exported zip here. After a crash or freeze, reopen the game and export: the previous run''s logs are included.'
   validations:
-    required: false
+    required: true
 - type: textarea
   id: extra
   attributes:
