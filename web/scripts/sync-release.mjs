@@ -37,6 +37,7 @@ const { changed: _changed, ...hd } = build.hd;
 if (!hd.version || !hd.content_sha256 || !hd.url) throw new Error('release.json has no versioned HD pack');
 
 const out = {
+  published: true,
   version: build.version,
   tag: build.tag,
   commit: build.commit,

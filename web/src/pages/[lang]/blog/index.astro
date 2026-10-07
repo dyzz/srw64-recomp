@@ -5,7 +5,7 @@ import { UI, langPaths, type Lang } from '../../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`))).sort(
+const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft)).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 const lead = { zh: '版本说明与制作记录。', en: 'Release notes and development notes.', ja: 'リリースノートと制作記録。' };

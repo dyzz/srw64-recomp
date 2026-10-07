@@ -2,19 +2,19 @@
 import Base from '../../layouts/Base.astro';
 import { INSTALL } from '../../copy/install';
 import { langPaths, type Lang } from '../../i18n';
-import { allFiles, fileFor, hd, mb, release, type Platform } from '../../data/release';
+import { allFiles, fileFor, hd, mb, published, release, type Platform } from '../../data/release';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = INSTALL[lang];
 const fill = (s: string) =>
-  s.replace(/\{(windows|macos|linux|hd)\}/g, (_, p: Platform) => fileFor(p)!.name);
+  s.replace(/\{(windows|macos|linux|hd)\}/g, (_, p: Platform) => (p === 'hd' ? release.hd : release.files.find((f) => f.platform === p))!.name);
 const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', linux: 'linux', 'steam-deck': 'linux', android: 'android', hd: 'hd' };
 ---
 <Base lang={lang} title={c.title}>
   <div class="wrap">
     <header class="page-head">
-      <span class="tag">INSTALL · v{release.version}</span>
+      <span class="tag">INSTALL{published && ` · v${release.version}`}</span>
       <h1>{c.title}</h1>
       <p>{c.lead}</p>
       <p class="rom" set:html={c.rom} />
@@ -44,7 +44,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
               <a class="btn" href={f.url}>
                 <span>{f.name}<small>{s.id === 'hd' && hd.version ? `HD ${hd.version} · ` : ''}{mb(f.bytes)}</small></span>
               </a>
-            ) : <p class="nofile">{c.noFile}</p>}
+            ) : <p class="nofile">{published ? c.noFile : c.notReleased}</p>}
           </div>
           <ol class="steps">
             {s.steps.map((step, i) => (
@@ -61,6 +61,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
         <h2>{c.downloadsTitle}</h2>
         <p class="dim">{c.downloadsLead}</p>
       </div>
+      {published ? <>
       <div class="table">
         <table>
           <thead><tr><th>{c.file}</th><th>{c.size}</th><th>{c.verify} (SHA-256)</th></tr></thead>
@@ -80,6 +81,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
         {hd.tag !== release.tag && <a href={hd.github}>GitHub Release {hd.tag} →</a>}
         {release.quark ? <a href={release.quark}>{c.quark} →</a> : <span class="dim">{c.quarkPending}</span>}
       </p>
+      </> : <p class="nofile">{c.notReleased}</p>}
     </section>
   </div>
 </Base>

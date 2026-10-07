@@ -7,7 +7,7 @@ const { lang } = Astro.props;
 <footer class="site-footer">
   <div class="wrap grid">
     <div>
-      <p class="brand"><img src={`/brand/title-${lang}-small.webp`} alt={TITLE_LOGO[lang].alt} width="200" height={Math.round(TITLE_LOGO[lang].h * 200 / 1400)} /> <span class="dim latin">v{release.version}</span></p>
+      <p class="brand"><img src={`/brand/title-${lang}-small.webp`} alt={TITLE_LOGO[lang].alt} width="200" height={Math.round(TITLE_LOGO[lang].h * 200 / 1400)} /> {release.published !== false && <span class="dim latin">v{release.version}</span>}</p>
       <p class="dim small">{UI.footer.unofficial[lang]}</p>
     </div>
     <ul class="links">

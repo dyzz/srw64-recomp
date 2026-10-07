@@ -10,6 +10,8 @@ const blog = defineCollection({
     date: z.coerce.date(),
     summary: z.string(),
     version: z.string().optional(),
+    // Not listed or built until false (a release taken down).
+    draft: z.boolean().default(false),
   }),
 });
 

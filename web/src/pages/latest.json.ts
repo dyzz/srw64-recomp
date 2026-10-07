@@ -1,6 +1,6 @@
 // /latest.json: what the game's update check reads (docs/design/website.md §5.3,
 // docs/native/update-check.md). `hd` is the newest HD pack, which has versions of its own.
-import { allFiles, hd, release } from '../data/release';
+import { allFiles, hd, published, release } from '../data/release';
 
 const install = (lang: string) => `https://srw64.dreamquest.club/${lang}/install/`;
 
@@ -23,7 +23,8 @@ export const GET = () =>
         quark: release.quark,
         files: allFiles,
         // A pack from before HD versions has none, and is offered to nobody.
-        ...(hd.version && {
+        // Taken down (published false): no files and no HD pack to offer.
+        ...(published && hd.version && {
           hd: {
             version: hd.version,
             download: { zh: `${install('zh')}#hd`, en: `${install('en')}#hd`, ja: `${install('ja')}#hd` },

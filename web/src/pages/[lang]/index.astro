@@ -5,7 +5,7 @@ import Download from '../../components/Download.astro';
 import Pair from '../../components/Pair.astro';
 import { HOME } from '../../copy/home';
 import { UI, langPaths, type Lang, TITLE_LOGO } from '../../i18n';
-import { release } from '../../data/release';
+import { published, release } from '../../data/release';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -13,7 +13,7 @@ const c = HOME[lang];
 // Dialogue first, the modern screens and controls second, bug fixes third (user, 2026-10-05).
 const ORDER = ['history', 'prebattle', 'settings', 'filters', 'library', 'viewer'];
 const shows = ORDER.map((k) => c.shows.find((x) => x.key === k)!).filter(Boolean);
-const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`)))
+const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 const fmt = (d: Date) => d.toISOString().slice(0, 10);
@@ -22,7 +22,7 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
   <section class="hero" style={`--hero: url('/media/hero-${lang}.webp')`}>
     <div class="wrap hero-in">
       <div class="hero-art" aria-hidden="true"></div>
-      <span class="tag">{c.kicker} · v{release.version}</span>
+      <span class="tag">{c.kicker}{published && ` · v${release.version}`}</span>
       <h1 class="logo-h1"><img src={`/brand/title-${lang}.webp`} alt={TITLE_LOGO[lang].alt} width="1400" height={TITLE_LOGO[lang].h} fetchpriority="high" /></h1>
       <p class="tagline">{c.tagline}</p>
       <p class="lead"><strong>{c.intro}</strong> {c.lead}</p>

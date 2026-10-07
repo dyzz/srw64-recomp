@@ -19,6 +19,7 @@ type Install = {
   quarkPending: string;
   verify: string;
   noFile: string;
+  notReleased: string;
 };
 
 const ROM_SHA = 'ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e';
@@ -106,6 +107,7 @@ export const INSTALL: Record<Lang, Install> = {
     quarkPending: '正式发布时提供国内网盘链接。',
     verify: '校验',
     noFile: '此版本暂未提供 Android 安装包。',
+    notReleased: '0.4.0 正在准备中，暂未开放下载。安装步骤可以先看。',
   },
   en: {
     title: 'Install',
@@ -189,6 +191,7 @@ export const INSTALL: Record<Lang, Install> = {
     quarkPending: 'A download mirror for mainland China will be available with the public release.',
     verify: 'Checksum',
     noFile: 'An Android package is not yet available for this version.',
+    notReleased: '0.4.0 is being prepared and cannot be downloaded yet. The installation steps are below.',
   },
   ja: {
     title: 'インストール',
@@ -272,5 +275,6 @@ export const INSTALL: Record<Lang, Install> = {
     quarkPending: '中国本土向けのミラーは正式公開時に用意します。',
     verify: 'チェックサム',
     noFile: 'このバージョンの Android パッケージは現在提供していません。',
+    notReleased: '0.4.0 は公開準備中のため、まだダウンロードできません。インストール手順は先にご覧いただけます。',
   },
 };
