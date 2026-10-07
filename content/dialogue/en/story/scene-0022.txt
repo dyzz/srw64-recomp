@@ -2,7 +2,7 @@
 
 @20974 Hayato · ハヤト
 > 「見事なまでの廃墟だな、これは」
-“This is a magnificent ruin, I must say.”
+“Now that’s what I call a ruin.”
 
 @20975 Ryoma · リョウ
 > 「ああ。だが、住んでいる人は
@@ -13,15 +13,15 @@
 # 审校：全局：弯撇号／弯引号
 > 「ホントかよ。ま、こんなところなら
 >  帝国もあんまり、こないんだろうけどな」
-“For real? Well, I guess the Empire doesn’t come around a place like this much anyway.”
+“For real? Well, I guess the Empire doesn’t bother coming out to a place like this much.”
 
 @20977 Sayaka · さやか
 > 「ちょっと、甲児くんたち、
 >  こんなところで遊んでないで
-“Hey, Koji and the rest of you, quit playing around in a place like this.
+“Hey, Koji, all of you, quit fooling around
 ---
 >  少し手伝ったら、どうなのよ」
-How about giving us a hand for a change?”
+and give us a hand, why don’t you?”
 
 @20978 Boss · ボス
 # 审校：全局：弯撇号／弯引号
@@ -48,16 +48,16 @@ How about giving us a hand for a change?”
 # 审校：全局：弯撇号／弯引号
 > 「まったくだ。あんなのばっかりじゃ
 >  たまらないぜ」
-“You said it. If they’re all like that, I can’t take it.”
+“You said it. I couldn’t take it if they were all like that.”
 
 @20983 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
 > 「ばぁか、レジスタンスで戦闘パイロット
 >  やってるような女が
-“You idiot. A woman who flies combat as a Resistance pilot
+“You idiot. No woman flying combat for the Resistance
 ---
 >  おとなしいわけがねぇだろう」
-isn’t gonna be some meek little thing.”
+is gonna be some meek little thing.”
 
 @20984 Simone · シモーヌ
 > 「へぇ? それはいったい、
@@ -73,7 +73,7 @@ isn’t gonna be some meek little thing.”
 # 审校：全局：弯撇号／弯引号
 > 「そうね、ぜひとも教えていただきたいもの
 >  だわ」
-“Yes, I’d very much like you to explain that.”
+“Yes, I’d simply love for you to explain.”
 
 @20987 Shinobu · 忍
 > 「げっ」
@@ -118,10 +118,10 @@ isn’t gonna be some meek little thing.”
 @20996 Hayato · ハヤト
 > 「いや……この荒れ果てた街並みを
 >  見ていたら、ふと昔のことを
-“Nothing... Looking at this ruined cityscape, I just found myself
+“Nothing... Seeing these ruined streets just got me
 ---
 >  思い出してな」
-remembering the old days.”
+thinking about the old days.”
 
 @20997 Ryoma · リョウ
 > 「昔の?」
@@ -143,7 +143,7 @@ that someday he was going to do something big.”
 # 审校：全局：弯撇号／弯引号
 > 「いや……知らん。俺がゲッターチームに
 >  入ってから、会っていない」
-“No... I don’t know. I haven’t seen him since I joined the Getter Team.”
+“...I don’t know. I haven’t seen him since I joined the Getter Team.”
 
 @21001 Ryoma · リョウ
 > 「そうか……」
@@ -153,16 +153,16 @@ that someday he was going to do something big.”
 # 审校：全局：弯撇号／弯引号
 > 「なに、あいつのことだ。どこかでうまいこと
 >  やって、生き延びてるさ」
-“Don’t worry. Knowing him, he’s found some way to get by and survive somewhere.”
+“Don’t worry. Knowing him, he’s landed on his feet somewhere and is getting by.”
 
 @21003 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「お前のあの機体、格闘戦用
 >  だったな。MTSもないのに
-“That machine of yours was built for melee combat. You don’t even have an MTS.
+“That machine of yours is built for melee combat, right? Without an MTS,
 ---
 >  まともに戦えるのか?」
-Can you really fight properly?”
+can it really hold its own?”
 
 @21004 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -184,7 +184,7 @@ In melee combat, nothing can touch it. Don’t compare it to some Gundam knockof
 
 @21006 Brad · ブラッド（按段落 3DD3）
 > 「なんなら試してみてもいいんだぜ?」
-“If you want, we can settle it right here.”
+“If you want, we can find out right now.”
 
 @21007 Domon · ドモン
 # 审校：“キング・オブ・ハートの名にかけて”应译为“In the name of the King of Hearts”，初稿“On the name”不自然。
@@ -196,13 +196,13 @@ In melee combat, nothing can touch it. Don’t compare it to some Gundam knockof
 # 审校：全局：弯撇号／弯引号
 > 「ちょ、ちょっとあなたたち、なにいってるの
 >  今が、どんなときか忘れちゃったの!?」
-“H-hey, you two, what are you saying? Have you forgotten what’s going on right now?!”
+“H-hey, you two, what are you talking about? Have you forgotten what’s going on right now?!”
 
 @21009 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 > 「黙っていろ、レイン!
 >  男の勝負に口出しは無用だ!」
-“Be quiet, Rain! No butting in on a man’s duel!”
+“Keep out of this, Rain! Don’t interfere in a contest between men!”
 
 @21010 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -269,7 +269,7 @@ what goes on in the heads of men like that.”
 
 @21021 Manami · マナミ（按段落 3DD4）
 > 「ん……ちょっとね」
-“Mm... a little.”
+“Mm... sort of.”
 
 @21022 Anna · アンナ
 > 「{PartnerName}さんのこと?」
@@ -290,15 +290,15 @@ what goes on in the heads of men like that.”
 # 审校：全局：弯撇号／弯引号
 > 「でもね……{PartnerNick}は昔から
 >  人のいうこと聞かなかったから
-“But you know... {PartnerNick} has never listened to anyone, even back then.
+“But you know... {PartnerNick} never listened to anyone, even back then.
 ---
 >  今は、お金のこととか、家系のこと
 >  とかいってる場合じゃないって
-Right now isn’t the time to be talking about money or family bloodlines.
+This is no time to be going on about money or family lineage.
 ---
 >  自分で気づいてくれればいいんだけど
 >  ……でも、ありがとう、アンナ」
-I just wish he’d realize that himself... But thank you, Anna.”
+If only he’d realize that himself... But thank you, Anna.”
 
 @21026 Brad · ブラッド（按段落 3DD3）
 > 「いくぞ、ドモン!」
@@ -348,7 +348,7 @@ hand over the Professor and that case.”
 # 审校：“even if it's only you”“你一个人”是直译
 > 「ぎ、銀鈴くん、君だけでも先に
 >  逃げてくれ」
-“G-Ginrei, at least you should get away!”
+“G-Ginrei, save yourself, run on ahead.”
 
 @21036 Ginrei · 銀鈴
 # 审校：全局：弯撇号／弯引号
@@ -434,7 +434,7 @@ Go! Giant Robo!”
 # 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「弓教授だって?
 >  いったいどうして……」
-“Professor Yumi, you say? What in the world...”
+“Professor Yumi? But what’s he doing here...”
 
 @21052 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -451,26 +451,26 @@ Go! Giant Robo!”
 # 审校：全局：弯撇号／弯引号
 > 「もと国際警察機構の銀鈴で
 >  す。中条長官にいわれて
-“I’m Ginrei, formerly of the International Police Organization. Chief Chujo sent
+“I’m Ginrei, formerly of the International Police Organization. Chief Chujo
 ---
 >  まいりました」
-me here.”
+sent me.”
 
 @21055 Banjo · 万丈
 # 审校：“Thanks for your hard work”是日语腔
 # 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「ご苦労さま、きれいなお嬢さん。
 >  しかし、なぜ弓教授が?」
-“Well done, my lovely lady. But why is Professor Yumi with you?”
+“Thanks for coming, lovely lady. But why is Professor Yumi with you?”
 
 @21056 Prof. Yumi · 弓教授
 > 「おお、万丈くん。実は研究施
 >  設が何者かの襲撃を受けてね
-“Ah, Banjo. You see, our research facility came under attack by someone,
+“Ah, Banjo. You see, someone attacked our research facility,
 ---
 >  ジャイアント・ロボの調整のために来て
 >  いた銀鈴くんたちに助けられたんだよ」
-and Ginrei and the others, who were here to tune up Giant Robo, saved us.”
+and Ginrei and the others, who had come to tune up Giant Robo, rescued us.”
 
 @21057 Sayaka · さやか
 > 「お父さま、大丈夫なの!?」
@@ -498,7 +498,7 @@ out safely.”
 # 审校：全局：弯撇号／弯引号
 > 「あれがジャイアント・ロボ……
 >  ではあの子が?」
-“So that’s Giant Robo... Then that kid is?”
+“So that’s Giant Robo... Then that boy is...?”
 
 @21061 Ginrei · 銀鈴
 # 审校：全局：弯撇号／弯引号
@@ -521,15 +521,15 @@ out safely.”
 # 审校：全局：弯撇号／弯引号
 > 「ただのガキじゃありません。だいたいなんで
 >  すか、初対面の人間にいきなり
-“I’m not just a little kid. Besides, what’s with you, saying something like
+“I’m not just a little kid. And what’s with you, saying something like
 ---
 >  そんなことをいうなんて、
 >  失礼じゃないですか?」
-that to someone you just met? Isn’t that rude?”
+that to someone you just met? Don’t you think that’s rude?”
 
 @21065 Koji · 甲児
 > 「な……なにをぉ」
-“Wh... what did you say?”
+“Wh... why, you little...”
 
 @21066 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
@@ -540,7 +540,7 @@ that to someone you just met? Isn’t that rude?”
 @21067 Daisaku · 大作
 # 审校：全局：弯撇号／弯引号
 > 「いえ、そんな……」
-“No, it’s nothing...”
+“Oh, no, it’s fine...”
 
 @21068 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -558,7 +558,7 @@ that to someone you just met? Isn’t that rude?”
 
 @21071 Ginrei · 銀鈴
 > 「はいっ!」
-“Yes, sir!”
+“Right away!”
 
 @21072 Boryuki · 暴竜鬼
 > 「ふふふ、俺はついているな。奴らを
@@ -586,7 +586,7 @@ that to someone you just met? Isn’t that rude?”
 # 审校：“aren't you Isamu”“你不是勇吗”读来别扭
 > 「間違いない……イサム、お前はイサム
 >  じゃないのか!?」
-“No mistake... Isamu. You’re Isamu, aren’t you?!”
+“No doubt about it... Isamu. You’re Isamu, aren’t you?!”
 
 @21078 Boryuki · 暴竜鬼
 > 「お前……隼人か!?」
@@ -614,7 +614,7 @@ Boryuki of my own free will!”
 # 审校：全局：弯撇号／弯引号
 > 「そうだ! 人には、それぞれの生き方
 >  がある。こんな時代だ。誰にも
-“That’s right! Everyone has their own way of living. Times like these,
+“That’s right! Everyone has their own way to live. In times like these,
 ---
 >  文句などいわせない!」
 I won’t let anyone tell me otherwise!”
@@ -627,7 +627,7 @@ I won’t let anyone tell me otherwise!”
 # 审校：全局：弯撇号／弯引号
 > 「隼人、お前には、お前の生き方
 >  があるように、俺には俺の道がある!
-“Hayato, just as you have your own way of living, I have my own path!
+“Hayato, just as you have your way of life, I have my own path!
 ---
 >  邪魔だてするというのなら、
 >  お前も倒す!」
@@ -645,11 +645,11 @@ or wrong!”
 @21086 Boryuki · 暴竜鬼
 > 「それは戦いが決めてくれる。
 >  勝った者が正義で
-“The battle will decide that. The winner becomes justice,
+“The battle will decide that. The winner is justice,
 ---
 >  負けた者が邪悪になるのだ。
 >  いくぞ!」
-and the loser becomes evil. Here I come!”
+and the loser is evil. Here I come!”
 
 @21087 Hayato · ハヤト
 > 「イサム、やめるんだ、イサム!!」
@@ -707,7 +707,7 @@ and the loser becomes evil. Here I come!”
 # 审校：补上“改造手术で”中“用手术”的动词，使句子完整自然。
 > 「は……隼人か。俺が、ばかだったんだ
 >  奴ら、A級市民への登録や
-“Ha... Hayato, huh. I was the fool. They lured guys like us in with A-class citizenship and
+“Ha... Hayato, is that you? I was the fool. They baited guys like me with A-class citizenship and
 ---
 >  金をエサに、俺たちみたいのを
 >  集めて、改造手術で
@@ -719,16 +719,16 @@ into oni soldiers.”
 @21099 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
 > 「もうしゃべるな」
-“Don’t talk anymore.”
+“Don’t try to talk.”
 
 @21100 Boryuki · 暴竜鬼
 # 审校：全局：弯撇号／弯引号
 > 「俺は……金と力がほしかった……
 >  そうすれば帝国軍にだって
-“I... I wanted money and power... That way, even the Imperial Army
+“I... I wanted money and power... Then not even the Imperial Army
 ---
 >  好きにやられずにすむ……」
-couldn’t do whatever they wanted to me...”
+could push me around...”
 
 @21101 Hayato · ハヤト
 > 「イサム、しっかりしろ!」
@@ -738,7 +738,7 @@ couldn’t do whatever they wanted to me...”
 # 审校：原文“人間に戻って死にたかった”是“想变回人类再死”，初稿“die human again”表达不准确，改为更忠实自然的说法。
 > 「い……いやだ、鬼なんて。せめて……
 >  人間に戻って死にたかった……」
-“N-no, not an oni. At least... I wanted to turn back into a human before I died...”
+“N-no, not an oni. At least... I wanted to be human again when I died...”
 
 @21103 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
@@ -755,10 +755,10 @@ couldn’t do whatever they wanted to me...”
 # 审校：全局：弯撇号／弯引号
 > 「バカだな、角なんかどこにもないぜ、
 >  イサム。お前は正真正銘の……
-“Don’t be stupid. There aren’t any horns anywhere, Isamu. You’re the real thing...
+“Don’t be stupid. There aren’t any horns, Isamu. You’re every bit a...
 ---
 >  人間だ」
-a human.”
+human being.”
 
 @21106 Boryuki · 暴竜鬼
 # 审校：全局：弯撇号／弯引号
@@ -777,7 +777,7 @@ pay for this, I swear it!”
 @21108 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「やーれやれ、やっと終わったか」
-“Well, well, it’s finally over, huh.”
+“Phew, about time that was over.”
 
 @21109 Domon · ドモン
 # 审校：原文“ナイスガイ”是评价对方，初稿“you're a nice guy”略显冗长，改为更贴近原句节奏的“nice guy”。
@@ -794,11 +794,11 @@ pay for this, I swear it!”
 # 审校：全局：弯撇号／弯引号
 > 「貴様ら、自分たちのおかれている
 >  状況を理解しているのか!?
-“Do you people understand the situation you’re in?!
+“Do you people understand the position you’re in?!
 ---
 >  今後、あんな勝手なマネは
 >  許さんぞ!」
-From now on, I won’t allow any more of that reckless behavior!”
+From now on, I won’t tolerate that kind of stunt!”
 
 @21112 Brad · ブラッド（按段落 3DD3）
 # 审校：ブラッド对舰长说话应保持粗放但不过分无礼，“you know”改为“hey”更符合其热血直率的口吻。
@@ -810,7 +810,7 @@ From now on, I won’t allow any more of that reckless behavior!”
 # 审校：全局：弯撇号／弯引号
 > 「やめとけ、{HeroNick}。
 >  しょせん拳の心が、わからぬ者には
-“Let it go, {HeroNick}. It’s useless talking to someone
+“Let it go, {HeroNick}. There’s no point talking to someone
 ---
 >  いってもムダだ」
 who doesn’t understand the heart of the fist.”
@@ -842,17 +842,17 @@ the Empire before we even find the Dark Gundam?!”
 # 审校：全局：弯撇号／弯引号
 > 「……とにかく我々のまわりは敵ばかり
 >  なのだということは、覚えておけ」
-“...In any case, just remember that we’re surrounded by enemies.”
+“...In any case, don’t forget we’re surrounded by enemies.”
 
 @21118 Koji · 甲児
 # 审校：「地道なこと」在此指无聊的杂活，改为 grunt work 更自然。
 > 「ちっ、こんな地道なことは他の奴に
 >  やらせりゃいいんだ。なんで俺が
-“Tch, this kind of grunt work should be left to someone else. Why do I have to
+“Tch, someone else should be doing this grunt work. Why do I have to
 ---
 >  こんなガレキの中を走りまわらなけりゃ
 >  ならないんだよ、まったく」
-run around in all this rubble, seriously.”
+run around in all this rubble anyway?”
 
 @21119 ???
 > 「キャーッ!!」
@@ -869,7 +869,7 @@ All right, you bastards!”
 
 @21121 Muge Soldier · ムゲ兵
 > 「うわっ退け、退けぇーっ!!」
-“Whoa, get out of the way, out of the way!!”
+“Whoa, fall back, fall back!!”
 
 @21122 Koji · 甲児
 # 审校：「君、ケガはないかい?」是对被救女性说话，改为 Are you hurt, miss? 更自然。
@@ -893,7 +893,7 @@ All right, you bastards!”
 
 @21126 Koji · 甲児
 > 「……名前は?」
-“...Your name?”
+“...What’s your name?”
 
 @21127 Erika · エリカ
 # 审校：全局：弯撇号／弯引号
@@ -918,7 +918,7 @@ All right, you bastards!”
 # 审校：全局：弯撇号／弯引号
 > 「なんだ、ボスじゃないの。
 >  何なの、いったい?」
-“What, it’s just Boss. What is it, anyway?”
+“Oh, it’s just Boss. What is it?”
 
 @21132 Boss · ボス
 # 审校：全局：弯撇号／弯引号
@@ -936,13 +936,13 @@ with him!”
 @21134 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「へぇ、甲児くんもなかなかやるもんだな」
-“Heh, Koji’s not bad at all.”
+“Heh, not bad, Koji.”
 
 @21135 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
 > 「まさか。甲児くんは、
 >  およそ美人には縁のない顔よ
-“No way. Koji’s got a face that’s about as far from beautiful girls as it gets.
+“No way. Koji’s just not the face beautiful girls go for.
 ---
 >  この私が相手にしないのが、
 >  なによりの証拠でーす」

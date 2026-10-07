@@ -207,7 +207,7 @@ But if I find out you’re no good, I’ll dump you. I don’t have time to wast
 
 @20074 Ryoma · リョウ
 > 「これがネオホンコンか。噂通りだな」
-“So this is Neo Hong Kong. Just like the rumors said.”
+“So this is Neo Hong Kong. It’s just like they say.”
 
 @20075 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
@@ -642,11 +642,11 @@ Of course I have. I’ll be counting on you for your part as well.”
 # 审校：全局：弯撇号／弯引号
 > 「やはり来たか。
 >  全員をすぐに呼び戻せ
-“So they’ve come after all. Recall everyone at once.
+“So they came after all. Recall everyone immediately.
 ---
 >  残っているパイロットは
 >  スタンバらせておけ!」
-Have the remaining pilots stand by!”
+Have the pilots still aboard stand by!”
 
 @20146 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -657,10 +657,10 @@ Have the remaining pilots stand by!”
 # 审校：全局：弯撇号／弯引号
 > 「頼む、大尉。アムロ、お前も
 >  新型のディジェで出てくれ
-“I’m counting on you, Captain. Amuro, you go out in the new Dijeh too.
+“I’m counting on you, Captain. Amuro, take the new Dijeh out too.
 ---
 >  やれるのだろう?」
-You can do it, right?”
+You can handle it, right?”
 
 @20148 Amuro · アムロ
 # 审校：“I'll show you”像挑衅；“做给你看”生硬
@@ -823,7 +823,7 @@ bring my memories back to me!”
 # 审校：全局：弯撇号／弯引号
 > 「やめろ、藤原。
 >  いまのお前では無理だ」
-“Stop it, Fujiwara. You can’t do it the way you are now.”
+“Stop it, Fujiwara. You’re in no shape for this.”
 
 @20178 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -875,13 +875,13 @@ The enemy’s right in front of us! Doctor, can’t we launch yet?!”
 @20185 Dr. Hazuki · 葉月博士
 # 审校：“现在刚好结束了”“It just finished now”别扭
 > 「あわてるな。いま終わったところだ」
-“Don’t panic. It’s just finished.”
+“Don’t panic. We just finished.”
 
 @20186 Masato · 雅人
 # 审校：统一 Beast Fighters
 > 「それじゃ行きますか。
 >  艦長、獣戦機出撃します!」
-“Then let’s go. Captain, the Beast Fighters are launching!”
+“Well then, shall we? Captain, the Beast Fighters are launching!”
 
 @20187 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -918,7 +918,7 @@ Aggressive Mode won’t cut it. We’re combining!”
 # 审校：精读：気合い 不是术语
 > 「フッ、久しぶりに気合いをいれて
 >  いくとするか」
-“Hmph, time to put some spirit into it, for the first time in a while.”
+“Hmph, guess it’s time to get fired up for once.”
 
 @20193 Shinobu · 忍
 > 「キーワード、

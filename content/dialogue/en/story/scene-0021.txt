@@ -9,11 +9,11 @@
 # 审校：全局：弯撇号／弯引号
 > 「今はどこもこんなものだ。帝国の
 >  衛星軌道上からの攻撃で
-“Everything’s like this now. After the Empire’s attacks from satellite orbit,
+“It’s like this everywhere now. After the Empire’s attacks from orbit,
 ---
 >  まともに残っているところなんて、
 >  なくなってしまった」
-there isn’t a single place left that’s still intact.”
+there’s hardly anywhere left standing.”
 
 @20810 Show · ショウ
 # 审校：全局：弯撇号／弯引号
@@ -25,16 +25,16 @@ there isn’t a single place left that’s still intact.”
 # 审校：全局：弯撇号／弯引号
 > 「そりゃ、こっちのセリフだぜ。
 >  バイストンウェルとかなんとかって
-“Hey, that’s our line. A world between the sea and the earth,
+“Hey, that’s my line. This Byston Well whatever,
 ---
 >  海と大地の間の世界なんてよ、
 >  ほんとにそんなところがあるのかよ?」
-this Byston Well place... does it really exist?”
+a world between the sea and the land... is there really such a place?”
 
 @20812 Masato · 雅人
 > 「でもさ、アレみたら信じる気にも
 >  なるよね」
-“But come on, after seeing that thing, you kind of want to believe.”
+“Still, after seeing that, you kind of have to believe it.”
 
 @20813 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -63,12 +63,12 @@ this Byston Well place... does it really exist?”
 # 审校：全局：弯撇号／弯引号
 > 「何って、あたしだって仕事しなくちゃ
 >  何よ、みんなしてジロジロ見ないでよぉ」
-“What do you mean, what? I’ve got work to do too, you know! Don’t everybody stare at me like that!”
+“What do you mean, what? I’ve got work to do too, you know! And quit staring at me, all of you!”
 
 @20818 Aboly · アポリー
 > 「しかし本当にこんなところへ
 >  来るんですかね」
-“But are they really coming to a place like this?”
+“But are they really coming all the way out here?”
 
 @20819 Bright · ブライト
 # 审校：“a little too late”意思偏；中文接上句
@@ -121,7 +121,7 @@ the professor and that case.”
 @20828 Prof. Yumi · 弓教授
 > 「ぎ、銀鈴くん、君だけでも先に
 >  逃げてくれ」
-“G-Ginrei, at least you should escape first.”
+“G-Ginrei, save yourself, run on ahead.”
 
 @20829 Ginrei · 銀鈴
 # 审校：全局：弯撇号／弯引号
@@ -134,7 +134,7 @@ the professor and that case.”
 # 审校：全局：弯撇号／弯引号
 > 「ほう? まだ逃げようというのですか。
 >  わたしはそのケースだけでも
-“Oh? You still intend to run? I’d be perfectly satisfied
+“Oh? Still trying to run? I’d be perfectly happy
 ---
 >  手に入ればいいのですがねぇ」
 with just that case, you know.”
@@ -146,7 +146,7 @@ with just that case, you know.”
 @20832 ???
 > 「走って、もっと早く!
 >  そのまま、まっすぐ!」
-“Run, faster! Just like that, straight ahead!”
+“Run, faster! Keep going, straight ahead!”
 
 @20833 Ginrei · 銀鈴
 > 「えっ!? ええ!」
@@ -170,11 +170,11 @@ Go! Giant Robo!”
 
 @20837 Q Boss · Qボス
 > 「こ、これは、ジャイアント・ロボ!?」
-“Th-This is Giant Robo?!”
+“Th-this is... Giant Robo?!”
 
 @20838 Q Boss · Qボス
 > 「えぇーい!」
-“Eeei!”
+“Rrraaagh!”
 
 @20839 Daisaku · 大作
 # 审校：全局：弯撇号／弯引号
@@ -208,7 +208,7 @@ I’m Ginrei, formerly of the International Police Organization. Pleased to meet
 
 @20844 Bright · ブライト
 > 「銀鈴くん、そちらの方は?」
-“Ginrei, and who is this?”
+“Ginrei, and who’s this with you?”
 
 @20845 Ginrei · 銀鈴
 # 审校：全局：弯撇号／弯引号
@@ -219,11 +219,11 @@ I’m Ginrei, formerly of the International Police Organization. Pleased to meet
 ---
 >  急襲されたとき、偶然お助けしま
 >  した。それで一緒に逃げてきたんです」
-the professor’s research facility, I happened to help him out. So we fled together.”
+the professor’s research facility, I happened to be there to help him. So we escaped together.”
 
 @20846 Quattro · クワトロ
 > 「ほう、カラバの?」
-“Oh, of Karaba?”
+“Oh, from Karaba?”
 
 @20847 Prof. Yumi · 弓教授
 # 审校：全局：弯撇号／弯引号
@@ -251,21 +251,21 @@ If not for Giant Robo, we’d have been in real trouble.”
 ---
 >  彼が操縦を担当している
 >  草間大作くんです」
-He’s Daisaku Kusama, the one who handles the controls.”
+This is Daisaku Kusama, who controls it.”
 
 @20850 Bright · ブライト
 > 「あんな子供が……?」
-“A kid like that...?”
+“That kid...?”
 
 @20851 Ginrei · 銀鈴
 # 审校：全局：弯撇号／弯引号
 > 「ええ。直接操縦するわけではないの
 >  で問題はありません。それに
-“Yes. He doesn’t pilot it directly, so there’s no problem. Besides,
+“Yes. He doesn’t pilot it directly, so it’s no problem. Besides,
 ---
 >  ジャイアント・ロボは大作くんのコン
 >  トロール以外は受け付けませんから」
-Giant Robo won’t accept anyone’s control but Daisaku’s.”
+Giant Robo won’t respond to anyone’s control but Daisaku’s.”
 
 @20852 Daisaku · 大作
 # 审校：全局：弯撇号／弯引号
@@ -295,7 +295,7 @@ Giant Robo won’t accept anyone’s control but Daisaku’s.”
 @20857 Roux · ルー
 # 审校：全局：弯撇号／弯引号
 > 「まぁ、そりゃそうなんだけど……」
-“Well, I suppose you wouldn’t...”
+“Well, I guess that’s true, but...”
 
 @20858 Beltorchika · ベルトーチカ
 > 「艦長、もと国際警察機構の
@@ -312,11 +312,11 @@ Giant Robo won’t accept anyone’s control but Daisaku’s.”
 # 审校：全局：弯撇号／弯引号
 > 「そちらも、あいかわらずのようだね、
 >  ブライト艦長。3年ぶりだったかな
-“And you’re as busy as ever, Captain Bright. It’s been three years, hasn’t it?
+“You seem the same as ever, Captain Bright. It’s been three years, hasn’t it?
 ---
 >  銀鈴くんたちは無事に合流
 >  できただろうか?」
-Were Ginrei and the others able to join up with you safely?”
+Did Ginrei and the others reach you safely?”
 
 @20861 Bright · ブライト
 > 「ええ、いま話を聞いていたところです」
@@ -325,7 +325,7 @@ Were Ginrei and the others able to join up with you safely?”
 @20862 Chief Chujo · 中条長官
 > 「そうか……それで、多少問題が
 >  減ったな」
-“I see... Well, that takes a few problems off my plate.”
+“I see... Well, that’s one less problem.”
 
 @20863 Ginrei · 銀鈴
 > 「長官、何かあったのですか?」
@@ -335,7 +335,7 @@ Were Ginrei and the others able to join up with you safely?”
 # 审校：全局：弯撇号／弯引号
 > 「うむ、実は帝国が大がかりなレジス
 >  タンス掃討作戦を開始した
-“Indeed. We’ve obtained information that the Empire has launched a large-scale
+“Yes. We’ve learned that the Empire has launched a large-scale
 ---
 >  という情報を入手したのだ」
 operation to wipe out the resistance.”
@@ -368,38 +368,38 @@ with some rather special abilities.”
 # 审校：全局：弯撇号／弯引号
 > 「世界各地でレジスタンスの拠点
 >  と思われる地域に一斉に攻撃
-“Simultaneous attacks will be carried out on areas believed to be resistance
+“Attacks will be launched simultaneously on suspected resistance
 ---
 >  が行われる。残念だが警告は、
 >  もう間にあわないだろう。君たちの
-strongholds across the world. Unfortunately, a warning won’t reach them in time.
+strongholds around the world. I’m afraid it’s too late to warn them.
 ---
 >  もとにも帝国の大部隊が
 >  向かっているとの情報が入っている
-We have information that a large Imperial force is headed your way as well.
+We’ve learned that a large Imperial force is headed your way as well.
 ---
 >  今すぐその場所から移動し、
 >  なんとしても逃げ延びてもらいたい」
-Move from your current location at once, and survive no matter what.”
+Leave your current position at once, and survive no matter what it takes.”
 
 @20869 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「やってみましょう」
-“We’ll do our best.”
+“We’ll try.”
 
 @20870 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「どうやら遅かったようですよ。
 >  大部隊かどうかはわかりませんが、
-“Seems we’re too late. I don’t know if it’s the main force, but
+“Looks like we’re too late. I can’t tell if it’s that large force, but
 ---
 >  敵が接近しています」
-the enemy is approaching.”
+the enemy is closing in.”
 
 @20871 Bright · ブライト
 > 「なに!?
 >  総員、第一級戦闘配備!」
-“What?! All hands, battle stations, Level One!”
+“What?! All hands, Level One battle stations!”
 
 @20872 Daisaku · 大作
 # 审校：全局：弯撇号／弯引号
@@ -420,7 +420,7 @@ the enemy is approaching.”
 # 审校：地狱大元帅的 voice 要求 archaic 腔调，将 isn't it 改为 is it not 以贴合老派反派口吻。
 > 「くくくく、見つけたぞ。
 >  どうだ、ワシのいったとおりであろうが
-“Kukuku, found you. See? Just as I said, is it not?
+“Kukuku, found you. Did I not tell you so?
 ---
 >  さぁゆけ、お前たち。
 >  ここで奴らを倒すのじゃ!」
@@ -430,7 +430,7 @@ Now go, all of you. Destroy them here!”
 # 审校：全局：弯撇号／弯引号
 > 「くそぉ、ル・カイン閣下の命令
 >  だからって、えばりちらしやがってよぉ……」
-“Damn it... Just ’cause it’s His Excellency Le Cain’s orders, he thinks he can boss us around...”
+“Damn it... Just ’cause he’s got His Excellency Le Cain’s orders, he thinks he can boss us around...”
 
 @20877 Gosterro · ゴステロ
 # 审校：全局：弯撇号／弯引号
@@ -466,7 +466,7 @@ Hell Marshal, let me be the one to get Eijiii!”
 # 审校：全局：弯撇号／弯引号
 > 「おお、甲児くん、さやか、ボスくん、
 >  君たちも無事だったか」
-“Oh, Koji, Sayaka, Boss, so you’re all safe too.”
+“Oh, Koji, Sayaka, Boss, you’re safe too.”
 
 @20883 Sayaka · さやか
 > 「お父さま……よかったわ」
@@ -479,7 +479,7 @@ Hell Marshal, let me be the one to get Eijiii!”
 @20885 Prof. Yumi · 弓教授
 > 「娘のさやかと、カラバのスタッフの
 >  甲児くんとボスくんだ」
-“My daughter Sayaka, and Koji and Boss, staff of Karaba.”
+“My daughter Sayaka, and Koji and Boss, who work with Karaba.”
 
 @20886 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -518,10 +518,10 @@ you’re safe, Professor.”
 # 审校：全局：弯撇号／弯引号
 > 「彼らか……
 >  また、まみえることになるとはな
-“So it’s them... To think we’d meet face to face again.
+“So it’s them... To think we’d meet again.
 ---
 >  どうも浅くはない因縁があるようだ」
-It seems we share a bond that runs deep.”
+There seems to be a deep tie of fate between us.”
 
 @20893 Yazan · ヤザン
 # 审校：全局：弯撇号／弯引号
@@ -535,7 +535,7 @@ wipe ’em out, that’s the end of it. You’re fine with that too, right?”
 
 @20894 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「できるものなら、それもよかろう」
-“If you can do it, then by all means.”
+“If you can manage it, by all means.”
 
 @20895 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -550,7 +550,7 @@ wipe ’em out, that’s the end of it. You’re fine with that too, right?”
 # 审校：全局：弯撇号／弯引号
 > 「違うよ。あいつは……俺が忘れちゃ
 >  いけないことを思い出させてくれるんだ」
-“No. He’s... the one who reminds me of what I must never forget.”
+“No. He’s... someone who reminds me of what I can never forget.”
 
 @20898 Lera · レラ
 # 审校：全局：弯撇号／弯引号
@@ -566,7 +566,7 @@ wipe ’em out, that’s the end of it. You’re fine with that too, right?”
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
 > 「あの少年もいるのか? だがなぜだ、
 >  なぜ彼はここまで戦ってこれる!?」
-“Is that boy here too? But why... why can he keep fighting this far?!”
+“That boy is here too? But why... how has he kept fighting all this way?!”
 
 @20901 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -578,7 +578,7 @@ wipe ’em out, that’s the end of it. You’re fine with that too, right?”
 # 审校：全局：弯撇号／弯引号
 > 「まぁた、あいつらか。ちっとばかし
 >  やりづれぇかな……」
-“It’s those guys again, huh. This is gonna be a bit of a pain...”
+“Them again, huh. This could get a little tricky...”
 
 @20903 Yazan · ヤザン
 # 审校：全局：弯撇号／弯引号
@@ -593,17 +593,17 @@ wipe ’em out, that’s the end of it. You’re fine with that too, right?”
 @20904 Rish · リッシュ（按段落 3DD2）
 > 「ああ、好きにやっちゃってくれ。
 >  お互い、その方がいいだろうよ」
-“Yeah, go ahead and do as you like. That works better for both of us anyway.”
+“Yeah, knock yourself out. Works better for both of us anyway.”
 
 @20905 Yazan · ヤザン
 > 「へっ、わかってるじゃねぇか」
-“Heh, you catch on quick.”
+“Heh, you get it.”
 
 @20906 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「貴様……また来たのか。
 >  しつこい奴だ」
-“You... You’ve come again. What a persistent bastard.”
+“You... back again. Persistent, aren’t you.”
 
 @20907 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -627,7 +627,7 @@ wipe ’em out, that’s the end of it. You’re fine with that too, right?”
 # 审校：全局：弯撇号／弯引号
 > 「ブライト艦長、敵の増援部隊
 >  が接近中です。ものすごい数です!
-“Captain Bright, enemy reinforcements are approaching. There’s a huge number of them!
+“Captain Bright, enemy reinforcements incoming. A huge number of them!
 ---
 >  とてもじゃありませんが、
 >  持ちこたえられません!」
@@ -646,7 +646,7 @@ were meant to pin us down!”
 # 审校：全局：弯撇号／弯引号
 > 「ブライト、ここは脱出しよう。
 >  俺たちがここでやられてしまうわけには
-“Bright, we should escape from here. We can’t afford
+“Bright, we need to get out of here. We can’t afford
 ---
 >  いかないんだ」
 to be wiped out here.”
@@ -661,7 +661,7 @@ to be wiped out here.”
 # 审校：全局：弯撇号／弯引号
 > 「ブライト艦長、敵の増援部隊
 >  が接近中です。ものすごい数です!
-“Captain Bright, enemy reinforcements are approaching. There’s a huge number of them!
+“Captain Bright, enemy reinforcements incoming. A huge number of them!
 ---
 >  とてもじゃありませんが、
 >  持ちこたえられません!」
@@ -711,7 +711,7 @@ in a heartbeat, you know?!”
 # 审校：全局：弯撇号／弯引号
 > 「地獄大元帥! お前たちの
 >  好きにはさせないぞ!」
-“Hell Marshal! We won’t let you do as you please!”
+“Hell Marshal! We won’t let you have your way!”
 
 @20923 Hell Marshal · 地獄大元帥
 > 「おのれ兜甲児め!!」
@@ -735,18 +735,18 @@ in a heartbeat, you know?!”
 # 审校：全局：弯撇号／弯引号
 > 「我々もカラバも、45の拠点の
 >  ほとんどが、つぶされた
-“Both our forces and Karaba’s... nearly all 45 bases have been crushed.
+“Both we and Karaba have lost nearly all of our 45 bases.
 ---
 >  他の組織についても、
 >  ほぼ壊滅したと考えて間違いない
-As for the other organizations, we can safely assume they’ve been all but annihilated.
+As for the other organizations, it’s safe to assume they’ve been all but wiped out.
 ---
 >  帝国をあなどりすぎたようだ」
 It seems we underestimated the Empire.”
 
 @20928 Bright · ブライト
 > 「くっ……なんということだ……」
-“Ngh... How did it come to this...”
+“Ngh... How could this happen...”
 
 @20929 Ryoma · リョウ
 > 「そんなっ! じゃあ俺たちは、これから
@@ -757,10 +757,10 @@ It seems we underestimated the Empire.”
 # 审校：全局：弯撇号／弯引号
 > 「どうしようもねぇってことさ。帝国に
 >  降伏するのがイヤなら俺たちだけでも
-“It means there’s nothin’ we can do. If you don’t wanna surrender to the Empire, then we’ll just have to fight on our own,
+“It means there’s nothin’ we can do about it. If you don’t wanna surrender to the Empire, then it’s just us
 ---
 >  戦うしかねぇ。そうだろう大尉」
-even if it’s only us. Ain’t that right, Captain?”
+fightin’ on alone. Ain’t that right, Captain?”
 
 @20931 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -790,11 +790,11 @@ But... it’s going to be a hard fight.”
 # 审校：全局：弯撇号／弯引号
 > 「ドモン、そんなこといっている場合じゃ
 >  ないでしょう? あなたの気持ちも
-“Domon, this isn’t the time for that, is it? I understand how you feel,
+“Domon, this isn’t the time for that. I know how you feel,
 ---
 >  わかるけど、あせったって何も
 >  解決できはしないわ。ね? ドモン」
-but panicking won’t solve anything. Right? Domon?”
+but rushing won’t solve anything. Okay, Domon?”
 
 @20936 Domon · ドモン
 > 「くっ……」
@@ -866,16 +866,16 @@ That’s serious, isn’t it.”
 # 审校：全局：弯撇号／弯引号
 > 「クワトロ大尉、バイストンウェルから
 >  出たらしいという軍勢の方は
-“Captain Quattro, do you know what’s happened to the forces that seem to have
+“Captain Quattro, do you know what’s become of the forces that apparently
 ---
 >  どうなっているのか、わかりますか?」
-come out of Byston Well?”
+came out of Byston Well?”
 
 @20948 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「ああ、その件もあったな。はっきりとは
 >  わからないが、どうやら大部分は
-“Ah, that matter too. I can’t say for certain, but it appears the majority
+“Ah, there was that too. I can’t say for certain, but it appears most of them
 ---
 >  占領軍との交戦を行っていない
 >  ようだ」
@@ -889,23 +889,23 @@ haven’t engaged the occupation forces.”
 @20950 Show · ショウ
 > 「……帝国とドレイクが手を結んだ
 >  かもしれない、ということですか?」
-“...You mean the Empire and Drake might have joined hands?”
+“...You mean the Empire and Drake may have formed an alliance?”
 
 @20951 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「その可能性が高いな。ショウくん、
 >  君の考えはどうかな?」
-“That’s highly likely. Show, what do you think?”
+“That seems likely. Show, what’s your take?”
 
 @20952 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「ろくに戦いもしないでドレイクが同盟
 >  関係を求めるとは思えません。でも
-“I can’t imagine Drake seeking an alliance without even putting up a fight. But
+“I can’t see Drake seeking an alliance without a real fight. But
 ---
 >  ドレイクのもとにいた地上人が手
 >  引きをしたのならありうることでしょうね」
-if a surface dweller who was with Drake acted as a go-between, it’s possible.”
+if a surface dweller who served Drake arranged it, it’s possible.”
 
 @20953 Ark · アーク（按段落 3DD1）
 > 「どういう人なんです、その人?」
@@ -919,27 +919,27 @@ if a surface dweller who was with Drake acted as a go-between, it’s possible.�
 # 审校：全局：弯撇号／弯引号
 > 「よくは知らない。ただ、俺たちよりも
 >  ずっと、あとにバイストンウェルに来た
-“I don’t know much. I’ve only heard he was apparently a surface military official
+“I don’t know him well. He came to Byston Well long after we did...
 ---
 >  地上の軍関係者だったらしい
 >  とは聞いている」
-who came to Byston Well much later than we did.”
+Apparently he was with the military on the surface, from what I’ve heard.”
 
 @20956 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「軍関係者か……ありうるな」
-“A military official... That’s possible.”
+“Military, huh... That would fit.”
 
 @20957 Show · ショウ
 > 「でも、さっき大部分は、といいました
 >  よね?」
-“But you said the majority, right?”
+“But earlier you said most of them, right?”
 
 @20958 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「そうだ。一部では交戦が確認
 >  されている」
-“That’s right. Combat has been confirmed in some areas.”
+“That’s right. There have been confirmed clashes in some areas.”
 
 @20959 Chum · チャム
 # 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
@@ -979,7 +979,7 @@ who came to Byston Well much later than we did.”
 “We can’t, Chum. I want to go too, but if we don’t even know where they are,
 ---
 >  うかつには動けないよ」
-we can’t just make a move.”
+we can’t just rush off.”
 
 @20966 Chum · チャム
 > 「そんなぁ～」
@@ -1002,7 +1002,7 @@ we can’t just make a move.”
 @20970 Quatre · カトル
 > 「はい。彼らの基地は町の地下に
 >  あって発見されずに済んだようです
-“Yes. Their base is underground in the town, so it seems it was never discovered.
+“Yes. Their base is under the town, so it seems it escaped detection.
 ---
 >  アルビオンの修理もできると
 >  いっていました」
@@ -1021,4 +1021,4 @@ They said they can repair the Albion, too.”
 # 审校：全局：弯撇号／弯引号
 > 「……かなり遠いが、敵に会わないこと
 >  を祈るしかないか」
-“...That’s quite far, but I suppose all we can do is pray we don’t run into the enemy.”
+“...That’s a long way. All we can do is pray we don’t run into the enemy.”

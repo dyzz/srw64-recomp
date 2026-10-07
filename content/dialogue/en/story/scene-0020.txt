@@ -12,7 +12,7 @@
 @20490 Zechs · ゼクス
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
 > 「レディ・アン特佐、どういうおつもりか」
-“Special Colonel Lady Une, what is your intention?”
+“Special Colonel Lady Une, what is the meaning of this?”
 
 @20491 Lady · レディ
 > 「なにがだ?」
@@ -26,17 +26,17 @@
 ---
 >  トレーズ閣下は連中に対しては、
 >  様子見にまわるお考えのはず」
-His Excellency Treize’s plan was to wait and see with regard to them.”
+His Excellency Treize intended to take a wait-and-see approach with them.”
 
 @20493 Lady · レディ
 # 审校：「機会があれば」应译为条件句“If the opportunity arises”，初稿“If there is an opportunity”不够自然。
 > 「貴様に意見されることではない。
 >  機会があれば
-“It is not for you to question. If the opportunity arises,
+“That is not for you to question. When the opportunity arises,
 ---
 >  レジスタンスを叩くのは当然だ。
 >  多少市民に犠牲が
-striking the resistance is only natural. Even if a few citizens
+naturally we strike the resistance. If a few citizens
 ---
 >  出たところで、どうというものでも
 >  あるまい」
@@ -46,11 +46,11 @@ become casualties, what of it?”
 # 审校：全局：弯撇号／弯引号
 > 「ウォンのようなやからの実験部隊を
 >  動かしてまでか。特佐、
-“Even to the point of deploying an experimental unit like Wong’s? Special Colonel,
+“Even if it means using an experimental unit from the likes of Wong? Special Colonel,
 ---
 >  追撃隊を帰還させるんだ。それは
 >  トレーズ閣下の望むところではない
-recall the pursuit force. That is not what His Excellency Treize wishes.
+recall the pursuit force. This is not what His Excellency Treize wants.
 ---
 >  特佐は閣下の考えを
 >  理解していない」
@@ -58,7 +58,7 @@ You do not understand His Excellency’s thinking.”
 
 @20495 Lady · レディ
 > 「理解していないのはゼクス、お前だ」
-“The one who does not understand is you, Zechs.”
+“It is you who does not understand, Zechs.”
 
 @20496 Noin · ノイン
 # 审校：机械统一：特佐 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -68,21 +68,21 @@ You do not understand His Excellency’s thinking.”
 ---
 >  このような戦いは
 >  閣下は望んでおりません」
-His Excellency does not wish for this kind of battle.”
+His Excellency wants no part of this kind of battle.”
 
 @20497 Lady · レディ
 > 「私に指図するつもりか!?
 >  貴様らは黙って見ていればよいのだ」
-“You dare give me orders?! You need only stay silent and watch.”
+“You presume to give me orders?! You need only sit back and watch.”
 
 @20498 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「これだけ大きく迂回していけば、
 >  目的地も、そう簡単には
-“If we make a detour this wide, our destination won’t be
+“With a detour this wide, they won’t figure out our destination
 ---
 >  わからないだろう」
-so easily figured out.”
+so easily.”
 
 @20499 Amuro · アムロ
 > 「ああ、それに沿岸部の基地からも
@@ -109,31 +109,31 @@ so easily figured out.”
 ---
 >  現在各地で、所属不明の
 >  部隊が出現しているらしい」
-units of unknown affiliation seem to be appearing all over now.”
+units of unknown affiliation have been appearing all over.”
 
 @20504 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「しかし解放戦線でもカラバでも
 >  知らないとなれば、レジスタンスでは
-“But if neither the Liberation Front nor Karaba knows of them, they can’t be
+“But if neither the Liberation Front nor Karaba knows about them, they can’t be
 ---
 >  ないだろう。帝国軍の
 >  特殊部隊か、なにかなのでは?」
-the resistance. Could they be an Imperial special forces unit, or something?”
+the resistance. Could they be an Imperial special forces unit or something?”
 
 @20505 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「いや、帝国軍でも、これの対応に
 >  追われているらしい。情報では
-“No, it seems even the Imperial military is being kept busy dealing with them. According to reports,
+“No, it seems even the Imperial military has its hands full with them. According to reports,
 ---
 >  巨大な戦艦や、見たこともない
 >  人型マシンを有しているそうだ
-they possess enormous battleships and humanoid machines the likes of which we’ve never seen.
+they have enormous battleships and humanoid machines unlike anything we’ve seen.
 ---
 >  それに、未確認だが本当に
 >  突然“出現”したという
-And though unconfirmed, there are also reports that they truly
+And though it’s unconfirmed, there are also reports that they literally
 ---
 >  報告もある」
 ‘appeared’ out of nowhere.”
@@ -142,12 +142,12 @@ And though unconfirmed, there are also reports that they truly
 # 审校：全局：弯撇号／弯引号
 > 「まさか、百鬼一族や
 >  ミケーネでしょうか」
-“Surely you don’t mean the Hyakki Clan or Mycenae?”
+“Could it be the Hyakki Clan or Mycenae?”
 
 @20507 Quattro · クワトロ
 > 「そうとは思えんな。
 >  しかし不可解ではある」
-“I doubt it. But it is baffling nonetheless.”
+“I doubt it. But it is puzzling.”
 
 @20508 Roux · ルー
 > 「ブレックス准将やイゴール将軍は
@@ -161,11 +161,11 @@ Are we to make contact again?”
 # 审校：“with this much mystery”“这样谜团重重”直译
 > 「さすがに、こうも謎では危険すぎると
 >  判断されたようだな
-“Seems they’ve decided it’s too dangerous with this many unknowns.
+“It seems they’ve judged it too dangerous with so much unknown.
 ---
 >  まずはチベットに向かうことを
 >  優先しろということだが……」
-They say to prioritize heading for Tibet first, but...”
+They want us to make heading for Tibet our priority, but...”
 
 @20510 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
@@ -194,36 +194,36 @@ They say to prioritize heading for Tibet first, but...”
 @20515 Banjo · 万丈
 > 「ちょっと妙な情報が入ってね。
 >  ギャリソン」
-“Some odd information came in. Garrison.”
+“We’ve gotten some odd information. Garrison.”
 
 @20516 Garrison · ギャリソン
 # 审校：“appear to be appearing”
 > 「はい。私どもがつかんだ情報に
 >  よりますと、現在各地に
-“Yes. According to the information we’ve gathered, mysterious units
+“Yes. According to the information we have obtained, mysterious units
 ---
 >  所属不明の謎の部隊が
 >  出現しているようでございます
-of unknown affiliation seem to be showing up all over now.
+of unknown affiliation appear to be emerging in various places.
 ---
 >  少なくとも
 >  レジスタンス組織ではありません」
-They are at least not a resistance organization.”
+They are, at the very least, not a resistance organization.”
 
 @20517 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「どうせ占領軍の特殊部隊か
 >  何かだろ」
-“It’s probably just some special forces unit of the occupation army or something.”
+“Probably just some special forces unit from the occupation army.”
 
 @20518 Garrison · ギャリソン
 # 审校：全局：弯撇号／弯引号
 > 「いいえ、帝国軍もこれの対応に
 >  追われているようですので、
-“No, the Imperial military also seems to be kept busy dealing with them,
+“No, the Imperial military also appears to have its hands full with them,
 ---
 >  それはないでしょう」
-so that’s likely not the case.”
+so I believe that is unlikely.”
 
 @20519 Ryoma · リョウ
 > 「とすると……
@@ -253,7 +253,7 @@ you’d expect a good deal more of them.”
 # 审校：全局：弯撇号／弯引号
 > 「正体を探るのは、あとでいい。
 >  それよりも
-“Finding out their true identity can wait. More importantly,
+“Figuring out who they are can wait. More importantly,
 ---
 >  何か問題があるのだろう?」
 there’s some kind of problem, isn’t there?”
@@ -261,7 +261,7 @@ there’s some kind of problem, isn’t there?”
 @20524 Banjo · 万丈
 > 「そう。実はこの近隣地域にも
 >  出現しているらしいんだ」
-“Right. Actually, they seem to have appeared in this nearby area too.”
+“Right. Actually, they seem to have appeared in this area too.”
 
 @20525 Beauty · ビューティ
 # 审校：全局：弯撇号／弯引号
@@ -273,11 +273,11 @@ there’s some kind of problem, isn’t there?”
 # 审校：全局：弯撇号／弯引号
 > 「そういうこと。
 >  みんな、準備だけはしておいてほしい
-“Exactly. Everyone, I’d like you to at least be prepared.
+“Exactly. Everyone, I’d like you to at least be ready.
 ---
 >  スペシャルズの追撃隊も
 >  あきらめていないようだしね」
-The Specials’ pursuit force doesn’t seem to have given up either.”
+It doesn’t look like the Specials’ pursuit force has given up either.”
 
 @20527 Ryo · 亮
 # 审校：亮语气冷静，奴 不必译成 bastard
@@ -291,7 +291,7 @@ Did you find him?”
 @20528 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
 > 「なぁに、恋人? そのシャピロって」
-“What’s this, your lover? That Shapiro guy.”
+“What’s this, a boyfriend? This Shapiro guy.”
 
 @20529 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -321,13 +321,13 @@ Did you find him?”
 
 @20535 Simone · シモーヌ
 > 「誰なの、その人?」
-“Who is that guy?”
+“Who is he?”
 
 @20536 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
 > 「あんたのいったとおり、沙羅の恋人
 >  そして士官学校で俺たちの
-“Just like you said, he was Sara’s lover, and the man who was our
+“Like you said, Sara’s lover, and the man who was our
 ---
 >  教官だった男さ」
 instructor at the military academy.”
@@ -345,15 +345,15 @@ instructor at the military academy.”
 # 审校：全局：弯撇号／弯引号
 > 「行方不明さ。お前らには
 >  黙ってたが、終戦前に
-“Missing. I kept it from you all, but before the war ended,
+“Missing. I kept it from you guys, but before the war ended,
 ---
 >  確かに奴が帝国側にいたことは
 >  確認している。だが、戦後の
-I confirmed he was definitely on the Empire’s side. But in the postwar
+I confirmed he was definitely on the Empire’s side. But after the war,
 ---
 >  帝国軍に奴の姿はなかった。
 >  俺が知ってるのはそれだけだ」
-Imperial military, there was no sign of him. That’s all I know.”
+there was no sign of him in the Imperial military. That’s all I know.”
 
 @20540 Masato · 雅人
 > 「帝国軍に殺されちゃったのかな」
@@ -363,7 +363,7 @@ Imperial military, there was no sign of him. That’s all I know.”
 # 审校：全局：弯撇号／弯引号
 > 「さあな。どうだっていいさ、
 >  あんな裏切り者のことはな」
-“Who knows. Doesn’t matter anyway, not for a traitor like him.”
+“Who knows. Who cares about a traitor like him anyway.”
 
 @20542 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -374,7 +374,7 @@ Imperial military, there was no sign of him. That’s all I know.”
 # 审校：全局：弯撇号／弯引号
 > 「整備を手伝ってるんだ。
 >  勝手にやってるわけじゃない」
-“I’m helping with the maintenance. I’m not doing it on my own.”
+“I’m helping with the maintenance. I’m not just doing whatever I want.”
 
 @20544 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -384,7 +384,7 @@ Imperial military, there was no sign of him. That’s all I know.”
 
 @20545 Ark · アーク（按段落 3DD1）
 > 「そう……なんですか」
-“Is that... so.”
+“Oh... is that right?”
 
 @20546 Lera · レラ
 > 「ふんっ」
@@ -402,7 +402,7 @@ Imperial military, there was no sign of him. That’s all I know.”
 # 审校：全局：弯撇号／弯引号
 > 「整備を手伝ってるんだ。
 >  勝手にやってるわけじゃない」
-“I’m helping with the maintenance. I’m not doing it on my own.”
+“I’m helping with the maintenance. I’m not just doing whatever I want.”
 
 @20550 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
@@ -413,7 +413,7 @@ Imperial military, there was no sign of him. That’s all I know.”
 @20551 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「なら、いい」
-“Then it’s fine.”
+“Then fine.”
 
 @20552 Lera · レラ
 > 「ふんっ」
@@ -452,10 +452,10 @@ Imperial military, there was no sign of him. That’s all I know.”
 # 审校：全局：弯撇号／弯引号
 > 「接触してみるか、ブライト?
 >  たとえ敵でも、2機程度なら
-“Want to try making contact, Bright? Even if they’re enemies, two
+“Want to try making contact, Bright? Even if they’re hostile, we can handle
 ---
 >  なんとかなる」
-shouldn’t be a problem.”
+two of them.”
 
 @20560 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -471,19 +471,19 @@ shouldn’t be a problem.”
 # 审校：全局：弯撇号／弯引号
 > 「あ、万丈。
 >  それが、例の未確認機らしいの」
-“Ah, Banjo. It seems to be that unidentified craft we’ve been hearing about.”
+“Oh, Banjo. It looks like it’s one of those unidentified craft we’ve been hearing about.”
 
 @20563 Bright · ブライト
 # 审校：“but?”不成句；数字用汉字
 > 「現在確認されている数は2機
 >  のみだ。接触してみるつもりでいるが?」
-“The number currently confirmed is only two. I’m thinking of trying to make contact. Any objection?”
+“So far we’ve only confirmed two. I’m thinking of making contact. Any objection?”
 
 @20564 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「ええ、そうしましょう。
 >  正体を確認したい」
-“Yes, let’s do that. I want to confirm what they are.”
+“Yes, let’s. I want to know what they are.”
 
 @20565 Show · ショウ
 # 审校：全局：弯撇号／弯引号
@@ -494,19 +494,19 @@ shouldn’t be a problem.”
 @20566 Garalia · ガラリア
 > 「バイストンウェルに帰れぬとあらば、
 >  せめてお前を倒さずして
-“If I cannot return to Byston Well, then at the very least, what kind of
+“If I cannot return to Byston Well, then at the very least I will defeat you,
 ---
 >  なんの戦士か!」
-warrior would I be if I did not defeat you?!”
+or what kind of warrior am I?!”
 
 @20567 Show · ショウ
 > 「あの軍勢を見ただろう!? あれは
 >  地上のものでも、バイストンウェルの
-“Did you see that army?! That was neither something of the surface nor
+“Did you see that army?! It wasn’t from the surface or from
 ---
 >  ものでもなかった。地上は何か
 >  おかしなことになっているんだ!」
-of Byston Well. Something strange is happening on the surface!”
+Byston Well. Something strange is happening on the surface!”
 
 @20568 Garalia · ガラリア
 > 「私には関係ない!」
@@ -531,11 +531,11 @@ of Byston Well. Something strange is happening on the surface!”
 # 审校：全局：弯撇号／弯引号
 > 「そんな場合じゃないだろ! ガラリア、
 >  俺たち以外にも地上に出ている
-“This isn’t the time for that! Garalia, there have to be others who came out to the surface besides us.
+“This isn’t the time for that! Garalia, we can’t be the only ones who came out to the surface.
 ---
 >  者がいるはずだ。戻れる方法だって
 >  見つかるかもしれないだろ!?」
-We might even find a way back, you know?!”
+We might even find a way back, right?!”
 
 @20573 Garalia · ガラリア
 # 审校：全局：弯撇号／弯引号
@@ -546,7 +546,7 @@ We might even find a way back, you know?!”
 @20574 Chum · チャム
 # 审校：全局：弯撇号／弯引号
 > 「ショウ! 何か近づいてくる!」
-“Show! Something’s coming closer!”
+“Show! Something’s coming!”
 
 @20575 Show · ショウ
 > 「なんだ!? ……ガラリア!」
@@ -562,7 +562,7 @@ We might even find a way back, you know?!”
 “Can you hear me? We have no intention of fighting.
 ---
 >  君たちの所属を確認したい」
-We want to confirm your affiliation.”
+We’d like to know which side you’re on.”
 
 @20578 Show · ショウ
 # 审校：全局：弯撇号／弯引号
@@ -572,27 +572,27 @@ We want to confirm your affiliation.”
 ---
 >  あんたたちと同じ地上人だ。
 >  攻撃はしないでくれ」
-I’m a surface-dweller, same as you. Don’t attack.”
+I’m from the surface, same as you. Please don’t attack.”
 
 @20579 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「地上人?
 >  地球人ということか?
-“Surface-dweller? You mean an Earthling?
+“Surface-dweller? You mean you’re from Earth?
 ---
 >  攻撃はしない。
 >  状況を確認したいんだ」
-We won’t attack. We just want to confirm the situation.”
+We won’t attack. We just want to know what’s going on.”
 
 @20580 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「俺はバイストンウェルから
 >  戻ってきたんだ
-“I came back from Byston Well.
+“I just came back from Byston Well.
 ---
 >  こっちこそ何がどうなっているのか
 >  わからないんだよ」
-If anything, I’m the one who doesn’t understand what’s going on.”
+I’m the one who has no idea what’s going on here.”
 
 @20581 Amuro · アムロ
 > 「バイストンウェル? どこのことだ?」
@@ -601,14 +601,14 @@ If anything, I’m the one who doesn’t understand what’s going on.”
 @20582 Show · ショウ
 > 「……海と大地の
 >  狭間にある世界だ
-“...A world in the space between the sea and the earth.
+“...A world that lies between the sea and the land.
 ---
 >  ファンタジーの異世界みたいなものだ」
-Something like a fantasy otherworld.”
+Like some fantasy otherworld.”
 
 @20583 Chum · チャム
 > 「ショウ、この人たち大丈夫なの?」
-“Show, are these people okay?”
+“Show, can we trust these people?”
 
 @20584 Bright · ブライト
 > 「……な、なんだ? 小人……?」
@@ -623,7 +623,7 @@ Something like a fantasy otherworld.”
 # 审校：全局：弯撇号／弯引号
 > 「こっちも聞かせてもらいたい。いったい
 >  地上はどうなってしまったんだ?」
-“I’d like to hear from you too. Just what has happened to the surface?”
+“Now I’ve got questions for you. What on earth has happened to the surface?”
 
 @20587 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -649,52 +649,52 @@ Something like a fantasy otherworld.”
 # 审校：全局：弯撇号／弯引号
 > 「ショウくんといったな。
 >  君が地球人であるなら
-“Show, was it? If you’re an Earthling,
+“Show, was it? If you’re from Earth,
 ---
 >  協力してくれないか。
 >  君の事情も詳しく聞きたいし
-won’t you cooperate with us? I’d also like to hear your circumstances in detail.
+won’t you work with us? I’d like to hear your story in detail,
 ---
 >  世界各地に君たちのような
 >  集団が出現しているんだ」
-Groups like yours have been appearing all over the world.”
+and groups like yours have been appearing all over the world.”
 
 @20592 Show · ショウ
 # 审校：ジャコバ・アオンかフェラリオ 是“或者”，现译把两者分成两句
 # 检查提示：未用必用译名：フェラリオ→Ferario
 > 「世界各地に?
 >  やはりジャコバ・アオンか
-“All over the world? So it was Jacoba Aon,
+“All over the world? Then it must be Jacoba Aon...
 ---
 >  フェラリオがしかけたんだ……」
-or the Ferario, who set this up...”
+or the Ferario who set this in motion...”
 
 @20593 Garalia · ガラリア
 # 审校：全局：弯撇号／弯引号
 > 「ショウ! 貴様、地上人に
 >  己を売るのか?
-“Show! You bastard, are you selling yourself to the surface-dwellers?
+“Show! You bastard, you’d sell yourself to the surface-dwellers?
 ---
 >  やはり地上人同士の
 >  なれあいか!?」
-So it’s just surface-dwellers cozying up to each other after all?!”
+So you surface-dwellers stick together after all?!”
 
 @20594 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「落ち着けガラリア! やはり
 >  他にも地上に出てきているんだ
-“Calm down, Garalia! So there really are others who came out to the surface.
+“Calm down, Garalia! There really are others who’ve come out to the surface.
 ---
 >  バイストンウェルに戻れずに、
 >  こんなところで死ぬつもりか?
-Do you intend to die here, unable to return to Byston Well?
+Do you want to die here, without ever getting back to Byston Well?
 ---
 >  俺はお前との戦いを避けてみせた。
 >  いいかげん少しくらいは
-I’ve shown you I’m avoiding a fight with you. At least for once,
+I’ve gone out of my way not to fight you. The least you can do
 ---
 >  話を聞いてくれ!」
-just listen to what I have to say!”
+is listen to what I have to say!”
 
 @20595 Chum · チャム
 # 审校：全局：弯撇号／弯引号
@@ -704,16 +704,16 @@ just listen to what I have to say!”
 @20596 Garalia · ガラリア
 > 「……わかった。私にどうしろというのだ、
 >  ショウ・ザマ」
-“...Understood. What do you want me to do, Show Zama?”
+“...Very well. What would you have me do, Show Zama?”
 
 @20597 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「この人たちと一緒にいくんだ。
 >  少なくとも敵じゃない
-“Come along with these people. At the very least, they’re not enemies.
+“Come with these people. At the very least, they’re not our enemies.
 ---
 >  他の連中の情報も入る」
-We’ll also get information on the others.”
+And we’ll hear about the others too.”
 
 @20598 Garalia · ガラリア
 # 审校：dog's death 是日语腔
@@ -733,7 +733,7 @@ We’ll also get information on the others.”
 @20601 Quattro · クワトロ
 # 审校：“Were we careless”“大意了吗”生硬
 > 「敵だと!? うかつだったか」
-“Enemies?! Did we let our guard down?”
+“Enemies?! We got careless.”
 
 @20602 Bern · バーン
 > 「ダンバイン!? ショウ・ザマか!!」
@@ -753,11 +753,11 @@ We’ll also get information on the others.”
 # 审校：全局：弯撇号／弯引号
 > 「ガラリアも一緒か? ふん、
 >  貴様ごときが裏切ったとて
-“Garalia too? Hmph, even if the likes of you betrayed us,
+“Garalia too? Hmph, whether or not the likes of you betrays us,
 ---
 >  どうということもないわ。まとめて
 >  叩き落としてくれる!」
-it’s nothing to me. I’ll shoot you all down together!”
+it makes no difference. I’ll shoot you both down at once!”
 
 @20606 Garalia · ガラリア
 > 「違う、私は……」
@@ -771,17 +771,17 @@ it’s nothing to me. I’ll shoot you all down together!”
 # 审校：人名按词表统一
 > 「バーン、状況を考えろ!
 >  ここは地上なんだぞ、戦いをやめろ!」
-“Bern, think about the situation! This is the surface, stop fighting!”
+“Bern, think about where we are! This is the surface, stop fighting!”
 
 @20609 Bern · バーン
 # 审校：全局：弯撇号／弯引号
 > 「そうはいかん。地上で最初に
 >  会う者がお前だというのは
-“That won’t do. That you’re the first person I meet on the surface
+“That I cannot do. For you to be the first one I meet on the surface
 ---
 >  私にとっては僥倖なのだ。
 >  地上で死ねるのは幸せだと思え!」
-is a stroke of luck for me. Consider yourself fortunate to die on the surface!”
+is a stroke of luck for me. Consider it a blessing to die on the surface!”
 
 @20610 Show · ショウ
 > 「僥倖だと……? 俺に会ったのが
@@ -798,10 +798,10 @@ is a stroke of luck for me. Consider yourself fortunate to die on the surface!�
 # 审校：全局：弯撇号／弯引号
 > 「バイストンウェルの人間が地上に
 >  来てしまったっていうのに、そのことの
-“Even though people from Byston Well have come to the surface, you don’t even
+“The people of Byston Well have come to the surface, and yet
 ---
 >  意味も考えず、貴様は!」
-think about what that means, you bastard!”
+you don’t even think about what that means, you bastard!”
 
 @20613 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -818,7 +818,7 @@ think about what that means, you bastard!”
 # 审校：全局：弯撇号／弯引号
 > 「敵だというのか!?
 >  よし、出撃しろ!」
-“You’re saying they’re enemies?! All right, launch!”
+“They’re hostile?! All right, launch!”
 
 @20616 Garalia · ガラリア
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
@@ -847,16 +847,16 @@ think about what that means, you bastard!”
 # 审校：全局：弯撇号／弯引号
 > 「わからない。その前にあの軍勢に
 >  やられるかもしれない……
-“I don’t know. Before that, we might be killed by that army...
+“I don’t know. That army might get us before we ever do...
 ---
 >  地上で死ねるのがせめてもの幸せ
 >  かなって、考えることもあるんだ……」
-Sometimes I think that at least dying on the surface might be a kind of happiness...”
+Sometimes I think dying on the surface would at least be some comfort...”
 
 @20622 Chum · チャム
 # 审校：全局：弯撇号／弯引号
 > 「じゃあ、あたしは不幸な女じゃない」
-“Then I’m not an unfortunate woman.”
+“Then that makes me an unlucky woman, doesn’t it!”
 
 @20623 Show · ショウ
 # 审校：人名按词表统一
@@ -864,7 +864,7 @@ Sometimes I think that at least dying on the surface might be a kind of happines
 “Haha, sorry, Chum.
 ---
 >  なに!? オーラレーダーに反応!?」
-What?! A reaction on the aura radar?!”
+What?! Something on the aura radar?!”
 
 @20624 Chum · チャム
 # 审校：全局：弯撇号／弯引号
@@ -881,7 +881,7 @@ What?! A reaction on the aura radar?!”
 “Can you hear me? We have no intention of fighting.
 ---
 >  君たちの所属を確認したい」
-We want to confirm your affiliation.”
+We’d like to know which side you’re on.”
 
 @20627 Show · ショウ
 # 审校：空格；surface-dweller 与 20578 统一
@@ -891,27 +891,27 @@ We want to confirm your affiliation.”
 ---
 >  あんたたちと同じ地上人だ。
 >  攻撃はしないでくれ」
-I’m a surface-dweller, same as you. Don’t attack.”
+I’m from the surface, same as you. Please don’t attack.”
 
 @20628 Amuro · アムロ
 # 审校：surface-dweller 统一
 > 「地上人?
 >  地球人ということか?
-“Surface-dweller? You mean an Earthling?
+“Surface-dweller? You mean you’re from Earth?
 ---
 >  攻撃はしない。
 >  状況を確認したいんだ」
-We won’t attack. We just want to confirm the situation.”
+We won’t attack. We just want to know what’s going on.”
 
 @20629 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「俺はバイストンウェルから
 >  戻ってきたんだ
-“I came back from Byston Well.
+“I just came back from Byston Well.
 ---
 >  こっちこそ何がどうなっているのか
 >  わからないんだよ」
-If anything, I’m the one who doesn’t understand what’s going on.”
+I’m the one who has no idea what’s going on here.”
 
 @20630 Amuro · アムロ
 > 「バイストンウェル? どこのことだ?」
@@ -920,14 +920,14 @@ If anything, I’m the one who doesn’t understand what’s going on.”
 @20631 Show · ショウ
 > 「……海と大地の
 >  狭間にある世界だ
-“...A world between the sea and the earth.
+“...A world that lies between the sea and the land.
 ---
 >  ファンタジーの異世界みたいなものだ」
-Something like a fantasy otherworld.”
+Like some fantasy otherworld.”
 
 @20632 Chum · チャム
 > 「ショウ、この人たち大丈夫なの?」
-“Show, are these people okay?”
+“Show, can we trust these people?”
 
 @20633 Bright · ブライト
 > 「……な、なんだ? 小人……?」
@@ -942,7 +942,7 @@ Something like a fantasy otherworld.”
 # 审校：全局：弯撇号／弯引号
 > 「こっちも聞かせてもらいたい。いったい
 >  地上はどうなってしまったんだ?」
-“I’d like to hear from you too. What on earth has happened to the surface?”
+“Now I’ve got questions for you. What on earth has happened to the surface?”
 
 @20636 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -968,25 +968,25 @@ Something like a fantasy otherworld.”
 # 审校：全局：弯撇号／弯引号
 > 「ショウくんといったな。
 >  君が地球人であるなら
-“Show, was it? If you’re an Earthling,
+“Show, was it? If you’re from Earth,
 ---
 >  協力してくれないか。
 >  君の事情も詳しく聞きたいし
-won’t you cooperate with us? I’d also like to hear your circumstances in detail.
+won’t you work with us? I’d like to hear your story in detail,
 ---
 >  世界各地に君たちのような
 >  集団が出現しているんだ」
-Groups like yours are appearing all over the world.”
+and groups like yours have been appearing all over the world.”
 
 @20641 Show · ショウ
 # 审校：同 20592
 # 检查提示：未用必用译名：フェラリオ→Ferario
 > 「世界各地に?
 >  やはりジャコバ・アオンか
-“All over the world? So it was Jacoba Aon,
+“All over the world? Then it must be Jacoba Aon...
 ---
 >  フェラリオがしかけたんだ……」
-or the Ferario, who set this up...”
+or the Ferario who set this in motion...”
 
 @20642 Amuro · アムロ
 # 审校：どうかな 是在等答复
@@ -995,7 +995,7 @@ or the Ferario, who set this up...”
 
 @20643 Show · ショウ
 > 「わかりました。一緒にいかせてください」
-“Understood. Let me come with you.”
+“All right. Please let me come with you.”
 
 @20644 Chum · チャム
 > 「ショウ、大丈夫なの……?」
@@ -1004,13 +1004,13 @@ or the Ferario, who set this up...”
 @20645 Show · ショウ
 > 「そう思う。この人たちなら
 >  信じてもいい」
-“I think so. These people can be trusted.”
+“I think so. We can trust these people.”
 
 @20646 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「そういってくれて助かるよ。
 >  では後部デッキから……」
-“I’m glad to hear that. Then from the rear deck...”
+“Glad to hear it. Then come in through the rear deck...”
 
 @20647 Amuro · アムロ
 > 「なんだ!?」
@@ -1019,7 +1019,7 @@ or the Ferario, who set this up...”
 @20648 Quattro · クワトロ
 # 审校：同 20601
 > 「敵だと!? うかつだったか」
-“Enemies?! Did we let our guard down?”
+“Enemies?! We got careless.”
 
 @20649 Bern · バーン
 > 「ダンバイン!? ショウ・ザマか!!」
@@ -1039,13 +1039,13 @@ or the Ferario, who set this up...”
 # 审校：人名按词表统一
 > 「バーン、状況を考えろ!
 >  ここは地上なんだぞ、戦いをやめろ!」
-“Bern, think about the situation! This is the surface! Stop fighting!”
+“Bern, think about where we are! This is the surface! Stop fighting!”
 
 @20653 Bern · バーン
 # 审校：“幸せ”在此处是“死得其所/幸运”之意，改为 blessing 更贴合巴恩的武士式语气，避免与 L26 的 fortune 重复。
 > 「そうはいかん。地上で最初に
 >  会う者がお前だというのは
-“That I cannot do. That you are the first one I meet on the surface
+“That I cannot do. For you to be the first one I meet on the surface
 ---
 >  私にとっては僥倖なのだ。
 >  地上で死ねるのは幸せだと思え!」
@@ -1085,13 +1085,13 @@ you don’t even think about what that means, you bastard!”
 @20659 Bright · ブライト
 > 「敵だというのか!?
 >  よし、出撃しろ!」
-“You mean enemies?! All right, launch!”
+“They’re hostile?! All right, launch!”
 
 @20660 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
 > 「艦長! スペシャルズの追撃隊に
 >  捕捉されました!」
-“Captain! We’ve been caught by a Specials pursuit squad!”
+“Captain! We’ve been spotted by a Specials pursuit squad!”
 
 @20661 Bright · ブライト
 > 「なんだと!?」
@@ -1128,7 +1128,7 @@ you don’t even think about what that means, you bastard!”
 # 审校：全局：弯撇号／弯引号
 > 「フォウ、やめろ! 戦っちゃいけない!
 >  フォウ!」
-“Four, stop! You mustn’t fight! Four!”
+“Four, stop! Don’t fight! Four!”
 
 @20669 Four · フォウ
 > 「お前は私を苦しめるために
@@ -1168,7 +1168,7 @@ you don’t even think about what that means, you bastard!”
 # 审校：全局：弯撇号／弯引号
 > 「カミーユ……出てきたのなら、
 >  さっさと撃破してくれればいいものを!」
-“Kamille... If you’ve come out, you might as well just shoot me down quickly!”
+“Kamille... If you’re going to come out, then just shoot me down and be done with it!”
 
 @20677 Kamille · カミーユ
 > 「フォウ、話を聞いてくれ。フォウ!」
@@ -1192,11 +1192,11 @@ you don’t even think about what that means, you bastard!”
 # 审校：全局：弯撇号／弯引号
 > 「……それで、幼なじみの女の子が
 >  いうんだよ。カミーユ、爪をかむクセを
-“...So this girl I grew up with says to me, Kamille, stop biting your nails,
+“...So this girl I grew up with keeps telling me, Kamille, stop biting your nails,
 ---
 >  やめなさい、カミーユって。僕はそれが
 >  嫌だった。だってさ、カミーユってのは
-Kamille. I hated that. Because, you know, Kamille is
+Kamille. I hated that. I mean, Kamille is
 ---
 >  女の子の名前だ。だから僕はカラ
 >  テもやったし、戦い方の勉強もした
@@ -1204,7 +1204,7 @@ a girl’s name. So I took up karate, and I studied how to fight.
 ---
 >  こんな世界でもちゃんと
 >  やっていけるように、体も鍛えた
-So I could make it in a world like this, I trained my body too.
+I built myself up too, so I could make it in a world like this.
 ---
 >  男の証明を、
 >  手に入れたかったんだ……」
@@ -1239,7 +1239,7 @@ Do you still hate the name Kamille?”
 “I see... Kamille, let’s go back to where we each belong.
 ---
 >  これは、あなたにふさわしいことじゃないわ」
-This isn’t something that suits you.”
+This kind of thing isn’t for you.”
 
 @20687 Kamille · カミーユ
 > 「フォウ、フォウ!? 待ってくれ、
@@ -1259,11 +1259,11 @@ This isn’t something that suits you.”
 # 审校：全局：弯撇号／弯引号
 > 「来たか。よし一気に敵を叩くぞ!
 >  フォウ特尉、どうなっている!
-“So they’ve come. Good, we’ll crush the enemy in one go! Special Lieutenant Four, what’s your status!
+“There they are. Good, we’ll crush them in one go! Special Lieutenant Four, report!
 ---
 >  やれないのならば邪魔にしかならん。
 >  引き返せ!」
-If you can’t do it, you’re only in the way. Turn back!”
+If you can’t do it, you’re only in the way. Fall back!”
 
 @20691 Wooder · ウッダー
 # 审校：全局：弯撇号／弯引号
@@ -1288,12 +1288,12 @@ If you can’t do it, you’re only in the way. Turn back!”
 @20695 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
 > 「ス、スードリが!? 撤退だ!!」
-“Th-the Sudori?! We’re retreating!!”
+“Th-the Sudori?! Retreat!!”
 
 @20696 Bright · ブライト
 > 「敵の増援だと!? 数が多すぎる
 >  スペシャルズめ!」
-“Enemy reinforcements?! There are too many of them, those Specials!”
+“Enemy reinforcements?! There are too many of them, damn those Specials!”
 
 @20697 Ryoma · リョウ
 > 「なに? どうしたんだ、いったい!?」
@@ -1302,7 +1302,7 @@ If you can’t do it, you’re only in the way. Turn back!”
 @20698 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「ブライト、離脱するんだ」
-“Bright, we’re pulling out.”
+“Bright, we need to pull out.”
 
 @20699 Bright · ブライト
 > 「なんだと?」
@@ -1374,11 +1374,11 @@ If you can’t do it, you’re only in the way. Turn back!”
 # 审校：全局：弯撇号／弯引号
 > 「なるほどな。つまり、
 >  君はその異世界に呼び込まれた
-“I see. So you were summoned into that other world,
+“I see. So you’re an Earthling who was drawn into that other world,
 ---
 >  地球人で、彼女たちは
 >  その世界の住人ということか」
-and you’re saying those girls are inhabitants of that world.”
+and they’re natives of that world.”
 
 @20714 Show · ショウ
 > 「ええ」
@@ -1402,41 +1402,41 @@ and you’re saying those girls are inhabitants of that world.”
 # 审校：全局：弯撇号／弯引号
 > 「信じないわけにもいくまい。
 >  しかし戦争中でその敵も
-“I suppose I have no choice but to believe it. But the problem is that
+“I suppose we have little choice but to believe it. But the problem is that, with a war on,
 ---
 >  地上に出ているというのが
 >  問題だな」
-we’re in the middle of a war, and that enemy has come to the surface as well.”
+that enemy has come to the surface as well.”
 
 @20719 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「はい。他にも地上の人間が
 >  いましたが、どう行動するのか
-“Yes. There were other people from the surface too, but I don’t know
+“Yes. There were other people from the surface, too, but I don’t know
 ---
 >  わかりません。それと、
 >  仲間がいれば合流したいのですが」
-how they’ll act. Also, if I have comrades, I’d like to join up with them.”
+what they’ll do. Also, if any of my comrades are out there, I’d like to join up with them.”
 
 @20720 Quattro · クワトロ
 # 审校：“the one who controls”“立场也不太自由”直译
 > 「わかった。可能な限り情報を
 >  集めさせよう。しかし、いま地上を
-“Understood. I’ll have information gathered as much as possible. However, it’s the Empire
+“Understood. I’ll have as much information gathered as possible. However, it’s the Empire
 ---
 >  制圧しているのは帝国だ。我々
 >  もあまり自由のきく立場ではない」
-that holds the surface right now. We’re not exactly free to act as we please either.”
+that controls the surface right now. We’re not exactly free to act as we please ourselves.”
 
 @20721 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「それは、わかりました。
 >  バイストンウェルでの敵である
-“I understand that. Drake and the others, our enemies in
+“I understand. Drake and the others, our enemies in
 ---
 >  ドレイクたちも気になりますが、
 >  僕も地球人です
-Byston Well, concern me as well, but I’m an Earthling too.
+Byston Well, worry me too, but I’m an Earthling as well.
 ---
 >  異星人の帝国との戦いには
 >  参加します」
@@ -1455,21 +1455,21 @@ I hear you belonged to an organization hostile to young Show.”
 # 审校：全局：弯撇号／弯引号
 > 「……わからない。
 >  しばらくは世話になるつもりだ
-“...I don’t know. For the time being, I intend to accept your hospitality.
+“...I don’t know. For now, I intend to stay under your care.
 ---
 >  私も武人だ、
 >  いきなり敵にまわるようなことはしない
-I too am a warrior; I won’t suddenly turn on you as an enemy.
+I am a warrior. I will not suddenly turn against you.
 ---
 >  その証に、バーンたちとも
 >  戦ってみせただろう」
-As proof of that, I fought against Bern and the others, didn’t I?”
+As proof, I fought Bern and the others, did I not?”
 
 @20724 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「いいだろう。ただし、しばらくの間は、
 >  監視はつけさせてもらう」
-“Very well. However, for the time being, you’ll be kept under surveillance.”
+“Very well. But for the time being, we’ll be keeping an eye on you.”
 
 @20725 Garalia · ガラリア
 > 「……わかった」
@@ -1479,30 +1479,30 @@ As proof of that, I fought against Bern and the others, didn’t I?”
 # 审校：全局：弯撇号／弯引号
 > 「信じないわけにもいかないね。
 >  しかし戦争中でその敵も
-“I guess we’ve got no choice but to believe it. But the problem is that
+“I guess we’ve got no choice but to believe it. But the problem is that, with a war on,
 ---
 >  地上に出ているというのが
 >  問題だな」
-we’re in the middle of a war, and that enemy has come to the surface as well.”
+that enemy has come to the surface as well.”
 
 @20727 Show · ショウ
 # 审校：全局：弯撇号／弯引号
 > 「はい。他も地上の人間が
 >  いましたが、どう行動するのか
-“Yes. There were other people from the surface too, but I don’t know
+“Yes. There were other people from the surface, too, but I don’t know
 ---
 >  わかりません。それと、
 >  仲間がいれば合流したいのですが」
-how they’ll act. Also, if I have comrades, I’d like to join up with them.”
+what they’ll do. Also, if any of my comrades are out there, I’d like to join up with them.”
 
 @20728 Banjo · 万丈
 > 「わかった。ギャリソン、この件に関して
 >  は最優先で情報を集めてくれ」
-“Understood. Garrison, gather information on this matter on top priority.”
+“Understood. Garrison, make gathering information on this a top priority.”
 
 @20729 Garrison · ギャリソン
 > 「かしこまりました」
-“Understood.”
+“Certainly, sir.”
 
 @20730 Quattro · クワトロ
 # 审校：同 20720
@@ -1518,11 +1518,11 @@ We’re not exactly free to act as we please either.”
 # 审校：全局：弯撇号／弯引号
 > 「それは、わかりました。
 >  バイストンウェルでの敵である
-“I understand that. Drake and the others, our enemies in Byston Well,
+“I understand. Drake and the others, our enemies in Byston Well,
 ---
 >  ドレイクたちも気になりますが、
 >  僕も地球人です
-concern me as well, but I’m an Earthling too.
+worry me too, but I’m an Earthling as well.
 ---
 >  異星人の帝国との戦いには
 >  参加します」
@@ -1546,20 +1546,20 @@ I hear you belonged to an organization hostile to young Show.”
 # 审校：全局：弯撇号／弯引号
 > 「……わからない。
 >  しばらくは世話になるつもりだ
-“...I don’t know. For the time being, I intend to accept your hospitality.
+“...I don’t know. For now, I intend to stay under your care.
 ---
 >  私も武人だ、
 >  いきなり敵にまわるようなことはしない
-I too am a warrior; I won’t suddenly turn on you as an enemy.
+I am a warrior. I will not suddenly turn against you.
 ---
 >  その証に、バーンたちとも
 >  戦ってみせただろう」
-As proof of that, I fought against Bern and the others, didn’t I?”
+As proof, I fought Bern and the others, did I not?”
 
 @20735 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「わかった。君たちを信用しよう」
-“Understood. We’ll trust you.”
+“All right. We’ll trust you.”
 
 @20736 Shinobu · 忍
 > 「おいおいホントかよ」
@@ -1568,7 +1568,7 @@ As proof of that, I fought against Bern and the others, didn’t I?”
 @20737 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
 > 「まぁまぁ文句いわないの、忍」
-“Now, now, don’t complain, Shinobu.”
+“Now, now, no complaining, Shinobu.”
 
 @20738 Henken · ヘンケン
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
@@ -1578,22 +1578,22 @@ As proof of that, I fought against Bern and the others, didn’t I?”
 @20739 Bright · ブライト
 # 审校：“it was you”像在指认
 > 「ヘンケン中佐、あなたでしたか」
-“Lieutenant Colonel Henken, so it’s you.”
+“Lieutenant Colonel Henken, so it was you.”
 
 @20740 Henken · ヘンケン
 > 「ずいぶんと戦果をあげているようだな。
 >  おかげで、こちらもやりやすくて助かる
-“You seem to have racked up quite the results. Thanks to that, things are easier on our end too.
+“Looks like you’ve been racking up quite a record. Makes things easier on our end, too.
 ---
 >  戦艦アルビオンは当分の間、
 >  君らで運用してもらうことになる」
-The battleship Albion will be operated by you lot for the time being.”
+You’ll be operating the battleship Albion for the time being.”
 
 @20741 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「聞いています。
 >  パイロットの補充もあるとか?」
-“I’ve heard. There are replacement pilots too, I hear?”
+“So I’ve heard. And there are replacement pilots too?”
 
 @20742 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
@@ -1616,16 +1616,16 @@ The battleship Albion will be operated by you lot for the time being.”
 @20745 Fa · ファ
 # 审校：全局：弯撇号／弯引号
 > 「はい。では失礼します」
-“Yes. Then if you’ll excuse me.”
+“Yes, sir. Excuse me, then.”
 
 @20746 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「ヘンケン中佐がおられるとなると、
 >  我々の次の行動の指示も
-“With Lieutenant Colonel Henken here, I take it we’ll also be receiving orders
+“With Lieutenant Colonel Henken here, I take it you have orders
 ---
 >  あるとみましたが」
-for our next move.”
+for our next move as well.”
 
 @20747 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
@@ -1637,13 +1637,13 @@ for our next move.”
 # 审校：全局：弯撇号／弯引号
 > 「北京? しかし、
 >  あそこは廃墟になっていたはずでは?」
-“Beijing? But wasn’t that place reduced to ruins?”
+“Beijing? But isn’t it in ruins?”
 
 @20749 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
 > 「そうだ。そこで、
 >  もと国際警察機構のスタッフと
-“That’s right. There, I want you to rendezvous with former staff of the
+“That’s right. I want you to rendezvous there with former staff of the
 ---
 >  合流してもらいたい」
 International Police Organization.”
@@ -1661,10 +1661,10 @@ by armed groups? I heard it was disbanded after the war.”
 # 审校：全局：弯撇号／弯引号
 > 「我々と同じだよ。まぁ、どんな
 >  連中なのかは俺も聞いていない
-“Same as us. Well, I haven’t heard what kind of people they are either.
+“Same as us. Well, I haven’t been told what kind of people they are either.
 ---
 >  向こうから接触してくるはずだ」
-They should make contact with you from their side.”
+They should contact you themselves.”
 
 @20752 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -1702,11 +1702,11 @@ They should make contact with you from their side.”
 @20759 Fa · ファ
 > 「父さんも母さんも、
 >  帝国軍につかまっちゃったのよ
-“Both Dad and Mom got captured by the Imperial Army.
+“Mom and Dad were both captured by the Imperial Army.
 ---
 >  レジスタンスのパイロットのカミーユの
 >  知り合いだからって」
-They said it was because they knew you, Kamille, a Resistance pilot.”
+Because they knew you, Kamille, a Resistance pilot.”
 
 @20760 Kamille · カミーユ
 > 「そうか……それで、ファは?」
@@ -1715,7 +1715,7 @@ They said it was because they knew you, Kamille, a Resistance pilot.”
 @20761 Fa · ファ
 > 「地球解放戦線機構の
 >  人たちに助けられて……それで……」
-“I was saved by the people of the Liberation Front of the Earth... and then...”
+“People from the Liberation Front of the Earth rescued me... and then...”
 
 @20762 Kamille · カミーユ
 > 「くそっ、帝国め!」
@@ -1725,13 +1725,13 @@ They said it was because they knew you, Kamille, a Resistance pilot.”
 # 审校：全局：弯撇号／弯引号
 > 「ご苦労さまです。
 >  カラバの破嵐万丈です」
-“Thanks for your hard work. I’m Banjo Haran of Karaba.”
+“Thanks for coming all this way. I’m Banjo Haran of Karaba.”
 
 @20764 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
 > 「解放戦線のヘンケン・ベッケナーだ
 >  君の噂は聞いているよ」
-“I’m Henken Bekkener of the Liberation Front. I’ve heard rumors about you.”
+“I’m Henken Bekkener of the Liberation Front. I’ve heard a lot about you.”
 
 @20765 Banjo · 万丈
 > 「それはどうも。
@@ -1742,16 +1742,16 @@ They said it was because they knew you, Kamille, a Resistance pilot.”
 # 审校：全局：弯撇号／弯引号
 > 「廃艦扱いとはいえ、戦後のどさく
 >  さで隠した艦だ。整備もそれなりに
-“It may be treated as a decommissioned ship, but it’s one we hid in the postwar confusion. The maintenance has been
+“It may be listed as decommissioned, but we hid it in the postwar confusion. It’s been kept up
 ---
 >  やってあるさ」
-done properly enough.”
+well enough.”
 
 @20767 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「助かります。補充兵もいると聞き
 >  ましたが……」
-“That’s a relief. I heard there are replacement soldiers too...”
+“That’s a big help. I heard there are reinforcements too...”
 
 @20768 Henken · ヘンケン
 > 「ああ、紹介しよう。シロー・アマダだ。
@@ -1826,7 +1826,7 @@ I’d say he’s smitten.”
 # 审校：全局：弯撇号／弯引号
 > 「面倒をおこさなけりゃいいんだがな。
 >  ところで万丈くん、君たちは
-“As long as it doesn’t cause trouble, fine. Anyway, Banjo, could you and your people
+“Just so long as it doesn’t cause trouble. Anyway, Banjo, could you and your people
 ---
 >  アルビオンで北京へ向かってくれ
 >  ないか」
@@ -1866,20 +1866,20 @@ They should make contact with us from their side.”
 @20785 Banjo · 万丈
 > 「なるほど、解放戦線の方でも
 >  この部隊を
-“I see. So even the Liberation Front wants to make this unit
+“I see. So the Liberation Front also wants this unit
 ---
 >  中核にしていきたいということですか」
-the core of its forces.”
+to be the core of its forces.”
 
 @20786 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
 > 「そういうことだ。
 >  ブライト中佐やクワトロ大尉も
-“Exactly. Lieutenant Colonel Bright and Captain Quattro are working hard
+“Exactly. Lieutenant Colonel Bright and Captain Quattro are working
 ---
 >  そのためにがんばってもらっている。
 >  カラバも我々も基本的な
-toward that as well. Karaba and we are in basically the same
+toward that too. Karaba and we are in basically the same
 ---
 >  状況は同じだからな。
 >  強力な部隊で
@@ -1887,7 +1887,7 @@ situation. Unless we build a strong force and
 ---
 >  主導権をとっていかなければ、
 >  味方だって掌握できん」
-take the initiative, we won’t be able to keep even our allies in hand.”
+take the lead, we can’t even keep our own allies in line.”
 
 @20787 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -1906,12 +1906,12 @@ take the initiative, we won’t be able to keep even our allies in hand.”
 # 检查提示：未用必用译名：スペシャルズ→Specials
 > 「君が、もとスペシャルズの
 >  エマ・シーン特尉か」
-“So you’re Emma Sheen, formerly a Special Lieutenant.”
+“So you’re Special Lieutenant Emma Sheen, formerly of the Specials.”
 
 @20790 Emma · エマ
 # 审校：全局：弯撇号／弯引号
 > 「そうですけど……なにか?」
-“That’s right... is something the matter?”
+“Yes... is there something you need?”
 
 @20791 Henken · ヘンケン
 # 审校：“fine staff”“好参谋”不对，スタッフ 指人员
@@ -1936,12 +1936,12 @@ Keep at it, Special Lieutenant. I have high hopes for you.”
 # 检查提示：未用必用译名：スペシャルズ→Specials
 > 「君が、もとスペシャルズの
 >  エマ・シーン特尉か」
-“So you’re Emma Sheen, formerly a Special Lieutenant.”
+“So you’re Special Lieutenant Emma Sheen, formerly of the Specials.”
 
 @20795 Emma · エマ
 # 审校：全局：弯撇号／弯引号
 > 「そうですけど……なにか?」
-“That’s right... is something the matter?”
+“Yes... is there something you need?”
 
 @20796 Henken · ヘンケン
 # 审校：同 20791
@@ -1965,7 +1965,7 @@ Keep at it, Special Lieutenant. I have high hopes for you.”
 # 审校：“of knightly birth”“本该是骑士出身”生硬
 > 「……敗北につぐ敗北……すべて、
 >  あの地上人があらわれてからだ
-“...Defeat after defeat... all of it began when that surface dweller appeared.
+“...Defeat after defeat... it all started when that surface dweller appeared.
 ---
 >  クッ……私は……勝ちたい。
 >  私は奴を破りたい
@@ -1989,7 +1989,7 @@ have made their way to the surface.”
 ---
 >  いまの地上界を支配しているのは
 >  地上人とは違う種族です
-The one who rules the surface world now is a race different from the surface dwellers,
+Those who rule the surface world now are not surface dwellers but another race,
 ---
 >  が、私に策がございます。
 >  交渉は私におまかせください」
@@ -2008,7 +2008,7 @@ but I have a plan. Leave the negotiations to me.”
 # 审校：全局：弯撇号／弯引号
 > 「なに!? 失敗したというのか。
 >  おのれ、レジスタンスどもめ
-“What?! You’re saying it failed? Curse those Resistance dogs.
+“What?! It failed? Curse those Resistance dogs.
 ---
 >  だが奴らとて相当のダメージを
 >  受けているはず
@@ -2031,7 +2031,7 @@ combat operations concerning the Resistance and return to headquarters.”
 @20806 Lady · レディ
 # 审校：全局：弯撇号／弯引号
 > 「な……なんだと? でまかせを、いうな!」
-“Wha... what did you say? Don’t make things up!”
+“Wha... what did you say? Don’t lie to me!”
 
 @20807 Noin · ノイン
 > 「特佐、閣下からもうひとつ。
