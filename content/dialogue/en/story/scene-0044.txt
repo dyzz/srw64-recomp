@@ -1074,7 +1074,7 @@ do as you wish!”
 # 审校：全局：弯撇号／弯引号
 > 「おいタケル、ひどいありさまだがいったい
 >  何があったんだ?」
-“Hey, Takeru, you’re in a terrible state. What on earth happened?”
+“Hey, Takeru, you look awful. What on earth happened?”
 
 @27535 Takeru · タケル
 > 「兄さんを追っていて、俺はズールと
@@ -1503,7 +1503,7 @@ Army base the Mycenae have occupied.”
 # 审校：全局：弯撇号／弯引号
 > 「ん? あんな子いたっけ……?
 >  いや様子がおかしい。おい待て!」
-“Hm? Was there a girl like that...? No, something’s off about her. Hey, wait!”
+“Hm? Do we have a girl like that aboard...? No, something’s off about her. Hey, wait!”
 
 @27600 Maria · マリア
 > 「見つかった!? えい!」
