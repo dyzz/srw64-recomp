@@ -13,7 +13,7 @@
 @5986 Seabook · シーブック
 # 触发：攻击（通用，3/20）
 > 「まだまだぁっ!」
-“Not done yet!”
+“I’m not done yet!”
 
 @5987 Seabook · シーブック
 # 触发：攻击（通用，4/20）
@@ -62,7 +62,7 @@
 # 触发：攻击（通用，12/20）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こいつで、とどめだっ!」
-“This one’s the finisher!”
+“This’ll finish you!”
 
 @5996 Seabook · シーブック
 # 触发：攻击（通用，13/20）
@@ -89,7 +89,7 @@
 @6000 Seabook · シーブック
 # 触发：攻击（通用，17/20）
 > 「これまでだっ!!」
-“This is the end!”
+“It’s over!”
 
 @6001 Seabook · シーブック
 # 触发：攻击（通用，18/20）
@@ -172,7 +172,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つっ!! まだ落ちるものか!」
-“Tch! Like I’d go down!”
+“Tch! I’m not going down yet!”
 
 @6015 Seabook · シーブック
 # 触发：中伤（剩余 HP 30–90%）（通用，4/6）
@@ -188,7 +188,7 @@
 @6017 Seabook · シーブック
 # 触发：中伤（剩余 HP 30–90%）（通用，6/6）
 > 「くっ! まだだ! まだいける!!」
-“Ngh! Not yet! I can still go!”
+“Ngh! Not yet! I can still fight!”
 
 @6018 Seabook · シーブック
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/7）
@@ -205,7 +205,7 @@
 @6020 Seabook · シーブック
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/7）
 > 「まだまだっ!」
-“Not done yet!”
+“I’m not done yet!”
 
 @6021 Seabook · シーブック
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/7）
@@ -217,19 +217,19 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/7）
 > 「くっ!!
 >  だが、まだこの程度ならまだいける!」
-“Ngh! But at this level I can still go!”
+“Ngh! But I can still handle this much!”
 
 @6023 Seabook · シーブック
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだ、こんなものなら!!」
-“If it’s just this much!”
+“I can still handle this!”
 
 @6024 Seabook · シーブック
 # 触发：轻伤（剩余 HP 90% 以上）（通用，7/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ!! この程度で落ちるものか!」
-“Ngh! Like I’d fall from this!”
+“Ngh! This won’t bring me down!”
 
 @6025 Seabook · シーブック
 # 触发：回避（通用，1/12）
@@ -279,7 +279,7 @@
 @6033 Seabook · シーブック
 # 触发：回避（通用，9/12）
 > 「よし、かわした!」
-“Yes, dodged it!”
+“All right, dodged it!”
 
 @6034 Seabook · シーブック
 # 触发：回避（通用，10/12）
@@ -321,7 +321,7 @@
 # 触发：射程外，无法反击（通用，1/2）
 # 审校：语序不通
 > 「だめだ、とどかないのか!」
-“No good, I can’t reach it?!”
+“No good, it can’t reach?!”
 
 @6041 Seabook · シーブック
 # 触发：射程外，无法反击（通用，2/2）
@@ -366,4 +366,4 @@
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  いけっ! ハイメガキャノン!!」
-“Energy charge... Go! High Mega Cannon!!”
+“Charging energy... Go! High Mega Cannon!!”

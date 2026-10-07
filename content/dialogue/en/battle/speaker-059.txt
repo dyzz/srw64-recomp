@@ -81,7 +81,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ううっ! や、やられてないよね、まだ……」
-“Ugh! I-I haven’t been beaten yet, right...”
+“Ugh! I-I’m not beaten yet... am I?”
 
 @9070 Rosamia · ロザミア
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
@@ -92,13 +92,13 @@
 @9071 Rosamia · ロザミア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「なにさ、そんな攻撃っ!」
-“What, an attack like that?!”
+“What kind of attack was that?!”
 
 @9072 Rosamia · ロザミア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 # 审校：抽检同类：甘い／効かない 按情境
 > 「効かないのよっ!」
-“That won’t work on me on me!”
+“That won’t work on me!”
 
 @9073 Rosamia · ロザミア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -143,7 +143,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：抽检同类：甘い／効かない 按情境
 > 「効かないのよっ!」
-“That won’t work on me on me!”
+“That won’t work on me!”
 
 @9081 Rosamia · ロザミア
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -184,4 +184,4 @@
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  いけっ! ハイメガキャノン!!」
-“Energy charge... Fire! High Mega Cannon!!”
+“Charging energy... Fire! High Mega Cannon!!”

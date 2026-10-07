@@ -64,7 +64,7 @@
 @8339 Bright · ブライト
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/4）
 > 「ま、まだだっ!! 持ちこたえろ!」
-“N-not yet!! Hold together!”
+“N-not yet!! Hold on!”
 
 @8340 Bright · ブライト
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -93,7 +93,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/11）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ! どうした、対空防御!!」
-“Guh! What’s wrong, anti-air defense!!”
+“Guh! What’s the anti-air doing?!”
 
 @8345 Bright · ブライト
 # 触发：中伤（剩余 HP 30–90%）（通用，3/11）
@@ -103,7 +103,7 @@
 @8346 Bright · ブライト
 # 触发：中伤（剩余 HP 30–90%）（通用，4/11）
 > 「被弾状況知らせ!」
-“Report hit status!”
+“Damage report!”
 
 @8347 Bright · ブライト
 # 触发：中伤（剩余 HP 30–90%）（通用，5/11）
@@ -119,7 +119,7 @@
 @8349 Bright · ブライト
 # 触发：中伤（剩余 HP 30–90%）（通用，7/11）
 > 「くっ! 消火作業、急げ!!」
-“Ngh! Hurry the firefighting!!”
+“Ngh! Get those fires out, now!!”
 
 @8350 Bright · ブライト
 # 触发：中伤（剩余 HP 30–90%）（通用，8/11）
@@ -147,7 +147,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/6）
 # 审校：补句号
 > 「この程度で落ちはしない」
-“We won’t go down from this much.”
+“This won’t bring us down.”
 
 @8355 Bright · ブライト
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/6）
@@ -211,7 +211,7 @@
 @8366 Bright · ブライト
 # 触发：回避（通用，7/7）
 > 「ムダなことを!」
-“What a waste of effort!”
+“Futile!”
 
 @8367 Bright · ブライト
 # 触发：攻击无效（护罩／装甲）（通用，1/3）
@@ -228,7 +228,7 @@
 @8369 Bright · ブライト
 # 触发：攻击无效（护罩／装甲）（通用，3/3）
 > 「ムダなことを!」
-“What a waste of effort!”
+“Futile!”
 
 @8370 Bright · ブライト
 # 触发：弹药／EN 不足，无法反击（通用，1/2）
@@ -245,7 +245,7 @@
 @8372 Bright · ブライト
 # 触发：射程外，无法反击（通用，1/2）
 > 「くっ! この距離では遠すぎるか!」
-“Ngh! Too far at this range?!”
+“Ngh! Too far to reach from here?!”
 
 @8373 Bright · ブライト
 # 触发：射程外，无法反击（通用，2/2）
@@ -255,35 +255,35 @@
 @14601 Bright · ブライト
 # 触发：使用〈対空機関砲／対空レーザー砲〉（低优先，可能被通用台词顶掉）
 > 「各砲座、しっかり狙え!!」
-“All turrets, aim carefully!!”
+“All turrets, take careful aim!!”
 
 @14602 Bright · ブライト
 # 触发：使用〈対空機関砲／対空レーザー砲〉（低优先，可能被通用台词顶掉）
 > 「各砲座、各個に敵を
 >  撃破しろ!」
-“All turrets, destroy the enemy one by one!”
+“All turrets, pick your targets and take them out!”
 
 @14603 Bright · ブライト
 # 触发：使用〈対空レーザー砲／対空機関砲〉（低优先，可能被通用台词顶掉）
 > 「各砲座、しっかり狙え!!」
-“All turrets, aim carefully!!”
+“All turrets, take careful aim!!”
 
 @14604 Bright · ブライト
 # 触发：使用〈対空レーザー砲／対空機関砲〉（低优先，可能被通用台词顶掉）
 > 「各砲座、各個に敵を
 >  撃破しろ!」
-“All turrets, destroy the enemy one by one!”
+“All turrets, pick your targets and take them out!”
 
 @14605 Bright · ブライト
 # 触发：使用〈対空機関砲〉（低优先，可能被通用台词顶掉）
 > 「各砲座、しっかり狙え!!」
-“All turrets, aim carefully!!”
+“All turrets, take careful aim!!”
 
 @14606 Bright · ブライト
 # 触发：使用〈対空機関砲〉（低优先，可能被通用台词顶掉）
 > 「各砲座、各個に敵を
 >  撃破しろ!」
-“All turrets, destroy the enemy one by one!”
+“All turrets, pick your targets and take them out!”
 
 @14607 Bright · ブライト
 # 触发：使用〈連装ミサイルランチャー〉（低优先，可能被通用台词顶掉）
@@ -343,4 +343,4 @@
 @14618 Bright · ブライト
 # 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
 > 「主砲、一斉発射!!」
-“Main cannons, fire all together!!”
+“Main cannons, full salvo!!”

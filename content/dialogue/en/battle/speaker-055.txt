@@ -3,7 +3,7 @@
 @8272 Quess · クェス
 # 触发：攻击（通用，1/16）
 > 「みんな、落ちちゃえぇぇっ!!」
-“Everyone, just fall already!!”
+“All of you, just go down!!”
 
 @8273 Quess · クェス
 # 触发：攻击（通用，2/16）
@@ -20,7 +20,7 @@
 # 触发：攻击（通用，4/16）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「それ以上好きにはやらせないよっ!!」
-“I won’t let you have it your way anymore!!”
+“I won’t let you do whatever you want anymore!!”
 
 @8276 Quess · クェス
 # 触发：攻击（通用，5/16）
@@ -86,7 +86,7 @@
 # 触发：攻击（通用，16/16）
 # 审校：そんなんで指对方的攻击
 > 「そんなんで、大佐を困らせないでよ!」
-“Don’t go troubling the Colonel with that!”
+“Don’t bother the Colonel with junk like that!”
 
 @8288 Quess · クェス
 # 触发：被击坠（通用，1/4）
@@ -127,7 +127,7 @@
 @8294 Quess · クェス
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
 > 「きゃあっ! こんなパワーがあるなんて……」
-“Kyaah! To think it had this much power...”
+“Kyaah! I didn’t know it had this much power...”
 
 @8295 Quess · クェス
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
@@ -193,7 +193,7 @@
 @8306 Quess · クェス
 # 触发：中伤（剩余 HP 30–90%）（通用，9/9）
 > 「くっ! まだいける!」
-“Ngh! I can still go!”
+“Ngh! I can still fight!”
 
 @8307 Quess · クェス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/7）
@@ -216,7 +216,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/7）
 # 审校：更顺口
 > 「何さ、こんなダメージっ!!」
-“So what? Damage like that?!”
+“So what? This damage is nothing!!”
 
 @8311 Quess · クェス
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/7）
@@ -271,7 +271,7 @@
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「その程度のビーム、
 >  弾き飛ばすんだからっ!」
-“A Beam like that? I’ll just knock it away!”
+“A beam like that? I’ll just knock it away!”
 
 @8321 Quess · クェス
 # 触发：攻击无效（护罩／装甲）（通用，2/3）
@@ -308,7 +308,7 @@
 # 触发：射程外，无法反击（通用，2/2）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「だめ、とどかない!」
-“No, I can’t reach!”
+“No, it won’t reach!”
 
 @14595 Quess · クェス
 # 触发：使用〈ファンネル／マザーファンネル〉
@@ -339,4 +339,4 @@
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  いけっ! ハイメガキャノン!!」
-“Energy charge... Go! High Mega Cannon!!”
+“Charging energy... Go! High Mega Cannon!!”

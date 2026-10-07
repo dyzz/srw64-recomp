@@ -3,7 +3,7 @@
 @5846 Gato · ガトー
 # 触发：攻击（通用，1/19）
 > 「これでとどめだっ!」
-“This is the finishing blow!”
+“This will finish you!”
 
 @5847 Gato · ガトー
 # 触发：攻击（通用，2/19）
@@ -22,7 +22,7 @@
 # 触发：攻击（通用，4/19）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当ててみせる!!」
-“I’ll make it hit!!”
+“I won’t miss!!”
 
 @5850 Gato · ガトー
 # 触发：攻击（通用，5/19）
@@ -66,7 +66,7 @@
 # 触发：攻击（通用，12/19）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「手間取るわけにはいかぬ!」
-“I can’t afford to waste time!”
+“I have no time to waste!”
 
 @5858 Gato · ガトー
 # 触发：攻击（通用，13/19）
@@ -83,7 +83,7 @@
 # 触发：攻击（通用，15/19）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「後退せんのか。よい覚悟だ!」
-“You won’t retreat? Commendable resolve!”
+“You won’t fall back? I admire your resolve!”
 
 @5861 Gato · ガトー
 # 触发：攻击（通用，16/19）
@@ -124,7 +124,7 @@
 # 触发：被击坠（通用，3/5）
 # 审校：原文“なんだと!?”是震惊的反问，改为更完整的“What did you say?!”更贴合语气。
 > 「なんだと!?」
-“What did you say?!”
+“What?!”
 
 @5868 Gato · ガトー
 # 触发：被击坠（通用，4/5）
@@ -154,7 +154,7 @@
 # 审校：Uooh 不是英文拟声
 > 「うおっ! バカな、
 >  この私がおされているだと!?」
-“Whoa! Impossible, I’m being pushed back?!”
+“Ugh! Impossible! Me, being pushed back?!”
 
 @5873 Gato · ガトー
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
@@ -176,19 +176,19 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなもので、落ちはしない!」
-“I won’t be brought down by something like this!”
+“Something like this will not bring me down!”
 
 @5877 Gato · ガトー
 # 触发：中伤（剩余 HP 30–90%）（通用，3/8）
 > 「ぐ!
 >  この私に手傷を負わせるとは……」
-“Guh! To wound me like this...”
+“Guh! You managed to wound me...”
 
 @5878 Gato · ガトー
 # 触发：中伤（剩余 HP 30–90%）（通用，4/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! 少しはやるようだな……」
-“Ugh! You’re a little better than I thought...”
+“Ugh! So you have some skill after all...”
 
 @5879 Gato · ガトー
 # 触发：中伤（剩余 HP 30–90%）（通用，5/8）
@@ -205,7 +205,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，7/8）
 > 「くっ!!
 >  だが、この程度ならば!!」
-“Ngh!! But at this level, I can still fight!!”
+“Ngh!! But this much, I can handle!!”
 
 @5882 Gato · ガトー
 # 触发：中伤（剩余 HP 30–90%）（通用，8/8）
@@ -248,12 +248,12 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，6/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだまだだな!!」
-“You’re still no match for me!!”
+“You still have much to learn!!”
 
 @5889 Gato · ガトー
 # 触发：回避（通用，1/8）
 > 「ふっ、笑止!」
-“Hmph, ridiculous!”
+“Hmph, laughable!”
 
 @5890 Gato · ガトー
 # 触发：回避（通用，2/8）
@@ -282,7 +282,7 @@
 # 触发：回避（通用，6/8）
 # 审校：間合い 是距离不是时机
 > 「間合いがあまいっ!」
-“Your spacing is sloppy!”
+“You misjudged the distance!”
 
 @5895 Gato · ガトー
 # 触发：回避（通用，7/8）
@@ -304,7 +304,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんよ!その程度ではな!」
-“It won’t work! Not at that level!”
+“That won’t work! Not something that weak!”
 
 @5899 Gato · ガトー
 # 触发：攻击无效（护罩／装甲）（通用，3/4）
@@ -334,13 +334,13 @@
 # 审校：原文是说自己被射程外攻击，原译 from out of range 可接受但稍生硬，改为更自然表达。
 > 「くっ!
 >  射程距離外からの攻撃とはな」
-“Ngh! Attacking from outside my range, are you?”
+“Ngh! So you attack from outside my range.”
 
 @14228 Gato · ガトー
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  ハイメガキャノン発射!」
-“Energy charge... High Mega Cannon, fire!”
+“Charging energy... High Mega Cannon, fire!”
 
 @14229 Gato · ガトー
 # 触发：回避，条件 1000
@@ -353,7 +353,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ときには、このような手も使わせて
 >  もらう!」
-“Sometimes, I’ll use a trick like this too!”
+“At times, even I will resort to such tricks!”
 
 @14231 Gato · ガトー
 # 触发：回避，条件 1000

@@ -96,13 +96,13 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま……まだよ、まだいけるっ!!」
-“I-I’m not done yet, I can still go!!”
+“N-not yet, I can still fight!!”
 
 @9001 Fa · ファ
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あうっ! こ、この程度ならまだっ!」
-“Agh! I-if it’s only this much, I can still take it!”
+“Agh! I-I can still take this much!”
 
 @9002 Fa · ファ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
@@ -113,7 +113,7 @@
 @9003 Fa · ファ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 > 「つっ! まだ、まだ戦える!」
-“Ngh! I can still, still fight!”
+“Ngh! I can still... still fight!”
 
 @9004 Fa · ファ
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
@@ -138,7 +138,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たった!? けど、この程度なら!」
-“It hit?! But if it’s only this much!”
+“It hit?! But this much is nothing!”
 
 @9008 Fa · ファ
 # 触发：回避（通用，1/5）
@@ -154,12 +154,12 @@
 @9010 Fa · ファ
 # 触发：回避（通用，3/5）
 > 「外れた!? 外れて……くれた」
-“It missed?! It... missed.”
+“It missed?! It actually... missed.”
 
 @9011 Fa · ファ
 # 触发：回避（通用，4/5）
 > 「な、なんとか……」
-“I-I managed somehow...”
+“I-I made it, somehow...”
 
 @9012 Fa · ファ
 # 触发：回避（通用，5/5）
@@ -170,7 +170,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダよ、そんなビームなんて!」
-“It’s useless, a beam like that!”
+“A beam like that won’t work on me!”
 
 @9014 Fa · ファ
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -209,4 +209,4 @@
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  いけっ! ハイメガキャノン!!」
-“Energy charge... Fire! High Mega Cannon!!”
+“Charging energy... Fire! High Mega Cannon!!”

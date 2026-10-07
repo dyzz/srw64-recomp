@@ -54,7 +54,7 @@
 @9136 Henken · ヘンケン
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 > 「くっ……対空砲火、しっかりしろ!!」
-“Ngh... AA Gun, get it together!!”
+“Ngh... AA guns, get it together!!”
 
 @9137 Henken · ヘンケン
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
@@ -66,7 +66,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ……弾幕、しっかりやらんか!」
-“Ugh... Barrage, don’t slack off!”
+“Ugh... Tighten up that barrage!”
 
 @9139 Henken · ヘンケン
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
@@ -99,7 +99,7 @@
 @9144 Henken · ヘンケン
 # 触发：回避（通用，2/4）
 > 「来るぞ!! 面舵っ!!」
-“Here it comes!! Starboard!!”
+“Here it comes!! Hard to starboard!!”
 
 @9145 Henken · ヘンケン
 # 触发：回避（通用，3/4）
@@ -116,7 +116,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「フッ……この程度のビームなら気にす
 >  ることないが……」
-“Hmph... A Beam like that is nothing to worry about...”
+“Heh... A beam like that’s nothing to worry about, but...”
 
 @9148 Henken · ヘンケン
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -143,7 +143,7 @@
 @14694 Henken · ヘンケン
 # 触发：使用〈対空機関砲／対空レーザー砲〉（低优先，可能被通用台词顶掉）
 > 「各砲座! しっかり狙え!!」
-“All turrets! Aim carefully!!”
+“All turrets! Take careful aim!!”
 
 @14695 Henken · ヘンケン
 # 触发：使用〈対空機関砲／対空レーザー砲〉（低优先，可能被通用台词顶掉）
@@ -159,7 +159,7 @@
 @14697 Henken · ヘンケン
 # 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）
 > 「メガ粒子砲、よく狙えよ」
-“Mega Particle Cannon, aim well.”
+“Mega Particle Cannon, take good aim.”
 
 @14698 Henken · ヘンケン
 # 触发：使用〈ハイメガ粒子砲〉（低优先，可能被通用台词顶掉）

@@ -3,13 +3,13 @@
 @10981 Illia · イリア
 # 触发：攻击（通用，1/12）
 > 「沈めっ!」
-“Sink!”
+“Go down!”
 
 @10982 Illia · イリア
 # 触发：攻击（通用，2/12）
 # 审校：伊莉亚为女军官，正式口吻下 there's 改为 there is 更贴合。
 > 「私が負けるはずないのだ!!」
-“There is no way I could lose!!”
+“There’s no way I can lose!!”
 
 @10983 Illia · イリア
 # 触发：攻击（通用，3/12）
@@ -19,7 +19,7 @@
 @10984 Illia · イリア
 # 触发：攻击（通用，4/12）
 > 「これで終わりだ!」
-“This is the end!”
+“It’s over!”
 
 @10985 Illia · イリア
 # 触发：攻击（通用，5/12）
@@ -45,12 +45,12 @@
 @10989 Illia · イリア
 # 触发：攻击（通用，9/12）
 > 「消えろっ!」
-“Vanish!”
+“Get lost!”
 
 @10990 Illia · イリア
 # 触发：攻击（通用，10/12）
 > 「フフッいいエサだな」
-“Heh heh, what nice bait.”
+“Heh heh, easy prey.”
 
 @10991 Illia · イリア
 # 触发：攻击（通用，11/12）
@@ -92,7 +92,7 @@
 @10997 Illia · イリア
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「な……なんてパワーだ、こいつっ!」
-“Wh... what power this one has!”
+“Wh... this one’s got such power!”
 
 @10998 Illia · イリア
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
@@ -111,45 +111,45 @@
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「うっ! 私に当てた!?
 >  上等じゃないか!」
-“Ugh! You hit me?! Fine by me!”
+“Ugh! You hit me?! All right, bring it on!”
 
 @11001 Illia · イリア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度か!」
-“Is that all you’ve got!”
+“Is that all you’ve got?!”
 
 @11002 Illia · イリア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「ふん、情けない……そんなものか!」
-“Hmph, pathetic... is that all!”
+“Hmph, pathetic... is that all?!”
 
 @11003 Illia · イリア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「相手にならんな」
-“No match for me.”
+“You’re no match for me.”
 
 @11004 Illia · イリア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「なんて戦い方だ! ばかにするな!」
-“What kind of fighting is that! Don’t mock me!”
+“What kind of fighting is that?! Don’t mock me!”
 
 @11005 Illia · イリア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「なんだ? なめているのか!?」
-“What? Are you underestimating me?!”
+“What? Are you toying with me?!”
 
 @11006 Illia · イリア
 # 触发：回避（通用，1/5）
 > 「どこを見てるんだよ!!」
-“What are you looking at!!”
+“Where are you looking?!”
 
 @11007 Illia · イリア
 # 触发：回避（通用，2/5）
 > 「どこを狙っている!」
-“What are you aiming at!”
+“Where are you aiming?!”
 
 @11008 Illia · イリア
 # 触发：回避（通用，3/5）
@@ -177,7 +177,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：抽检同类：甘い／効かない 按情境
 > 「効かないんだよ!」
-“That won’t work on me on me!”
+“That won’t work on me!”
 
 @11013 Illia · イリア
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

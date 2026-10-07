@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/8）
 # 审校：补引号
 > 「行きがけの駄賃に、いただく!」
-“I’ll take this as a little bonus on the way!”
+“I’ll take you out on my way through!”
 
 @10647 Arius · アリアス
 # 触发：攻击（通用，2/8）
@@ -82,7 +82,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
 # 审校：补引号
 > 「くっ、これほどやるとは!」
-“Ugh, to think you were this good!”
+“Ugh, I didn’t think you were this good!”
 
 @10660 Arius · アリアス
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
@@ -94,7 +94,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
 # 审校：补引号
 > 「くうっ! 貴様ごときにぃ!」
-“Gah! By the likes of you!”
+“Gah! Hit by the likes of you?!”
 
 @10662 Arius · アリアス
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
@@ -124,7 +124,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：补引号
 > 「きかんな!」
-“It’s no use!”
+“That won’t work!”
 
 @10667 Arius · アリアス
 # 触发：回避（通用，1/3）
@@ -148,7 +148,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：补引号
 > 「きかんな!」
-“It’s no use!”
+“That won’t work!”
 
 @10671 Arius · アリアス
 # 触发：攻击无效（护罩／装甲）（通用，2/2）

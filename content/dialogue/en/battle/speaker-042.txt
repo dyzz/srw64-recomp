@@ -20,7 +20,7 @@
 # 触发：攻击（通用，4/16）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しつこいんだよっ!」
-“You’re persistent!”
+“You just don’t quit!”
 
 @11082 Judau · ジュドー
 # 触发：攻击（通用，5/16）
@@ -36,7 +36,7 @@
 @11084 Judau · ジュドー
 # 触发：攻击（通用，7/16）
 > 「消えろっ!」
-“Disappear!”
+“Get lost!”
 
 @11085 Judau · ジュドー
 # 触发：攻击（通用，8/16）
@@ -128,7 +128,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわああっ! まずい、パワーが段ちだ!」
-“Waaah! This is bad, his power’s on another level!”
+“Waaah! This is bad, that power’s on another level!”
 
 @11101 Judau · ジュドー
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/7）
@@ -138,7 +138,7 @@
 @11102 Judau · ジュドー
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/7）
 > 「くっ!ダメージがでかすぎるか!?」
-“Ngh! Is the damage too much?!”
+“Ngh! Did I take too much damage?!”
 
 @11103 Judau · ジュドー
 # 触发：重伤（剩余 HP 不足 30%）（通用，7/7）
@@ -156,7 +156,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! す、好き勝手やってくれ
 >  ちゃって!!」
-“Ugh! Y-you’re having a field day, aren’t you!!”
+“Ugh! Y-you’re really going to town on me!!”
 
 @11106 Judau · ジュドー
 # 触发：中伤（剩余 HP 30–90%）（通用，3/8）
@@ -168,7 +168,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，4/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐっ! な、何の、これからこれから!」
-“Guh! W-what, we’re just getting started!”
+“Guh! N-no sweat, I’m just getting started!”
 
 @11108 Judau · ジュドー
 # 触发：中伤（剩余 HP 30–90%）（通用，5/8）
@@ -184,28 +184,28 @@
 @11110 Judau · ジュドー
 # 触发：中伤（剩余 HP 30–90%）（通用，7/8）
 > 「まだまだぁっ!!」
-“Not done yet!!”
+“I’m not done yet!!”
 
 @11111 Judau · ジュドー
 # 触发：中伤（剩余 HP 30–90%）（通用，8/8）
 > 「くっ!!まだいけるぜ!!」
-“Ngh!! I can still go!!”
+“Ngh!! I’m still good to go!!”
 
 @11112 Judau · ジュドー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなもん、効くかよ!!」
-“That little thing? Like it’d work!!”
+“Like that junk’s gonna hurt!!”
 
 @11113 Judau · ジュドー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「そんな攻撃でっ!」
-“An attack like that!”
+“Not with an attack like that!”
 
 @11114 Judau · ジュドー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「当たった!? けど、このくらいでっ!」
-“It hit?! But this much!”
+“It hit?! But this much won’t stop me!”
 
 @11115 Judau · ジュドー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
@@ -215,7 +215,7 @@
 @11116 Judau · ジュドー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 > 「その程度かよ!」
-“Is that all you got!”
+“Is that all you’ve got?!”
 
 @11117 Judau · ジュドー
 # 触发：回避（通用，1/9）
@@ -225,7 +225,7 @@
 @11118 Judau · ジュドー
 # 触发：回避（通用，2/9）
 > 「何やってんだよ、ヘタクソ!」
-“What are you doing, you amateur!”
+“What are you doing, you klutz!”
 
 @11119 Judau · ジュドー
 # 触发：回避（通用，3/9）
@@ -273,7 +273,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんなもん、効くかい!!」
-“That little thing? Like it’d work!!”
+“Like this junk’s gonna work on me!!”
 
 @11127 Judau · ジュドー
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

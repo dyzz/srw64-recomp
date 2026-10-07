@@ -92,13 +92,13 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「機体の安定が……っ!」
-“The unit’s stability...!”
+“I’m losing stability...!”
 
 @5973 Aina · アイナ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あぁっ、だめだわっ!」
-“Ah, no, this can’t be!”
+“Ah, no, it’s no good!”
 
 @5974 Aina · アイナ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
@@ -109,7 +109,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ、まだこの程度では」
-“Ngh, this much won’t...”
+“Ngh, it’ll take more than this...”
 
 @5976 Aina · アイナ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
@@ -141,7 +141,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「思ったより振動は小さいわ……」
-“The shaking’s less than I thought...”
+“The impact was lighter than I expected...”
 
 @5982 Aina · アイナ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -152,10 +152,10 @@
 @5983 Aina · アイナ
 # 触发：射程外，无法反击（通用，1/1）
 > 「くっ、この距離ではだめ!」
-“Ngh, this distance is no good!”
+“Ngh, it’s no good from this distance!”
 
 @14236 Aina · アイナ
 # 触发：使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）
 > 「エネルギー充填……
 >  いけっ! ハイメガキャノン!!」
-“Energy charge... Go! High Mega Cannon!!”
+“Charging energy... Go! High Mega Cannon!!”
