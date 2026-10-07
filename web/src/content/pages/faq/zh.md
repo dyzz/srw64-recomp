@@ -38,13 +38,18 @@ ROM 是压缩包的话先解压。`.n64`、`.v64` 格式改名为 `rom.n64`、`r
 
 支持键盘和常见手柄，画面上的按键提示会随最后使用的设备切换。Android 未连接手柄时可以触屏操作：触碰屏幕后会出现当前画面需要的按键，并标出「确定」「快进」「下个单位」等功能名。键盘和手柄的按键分配可以在设置窗口的「操作」页修改。
 
+<span id="saves"></span>
+
 ## 存档在哪里？能和模拟器互通吗？
 
-存档位于以下用户目录中的 `saves` 文件夹：
+存档都在用户目录的 `saves` 文件夹里：
 
-- macOS：`~/Library/Application Support/SRW64Recomp/`
-- Linux／Steam Deck：`~/.local/share/srw64-recomp/`
-- Windows：`%LOCALAPPDATA%\SRW64Recomp\`
+- **Windows**：`%LOCALAPPDATA%\SRW64Recomp\saves`，在资源管理器地址栏输入这个路径回车即可打开。
+- **macOS**：`~/Library/Application Support/SRW64Recomp/saves`，在访达里按 ⇧⌘G 输入路径。
+- **Linux／Steam Deck**：`~/.local/share/srw64-recomp/saves`。
+- **Android**：在系统「文件」应用里找到「Marchwind64」，打开里面的 `saves`。
+
+里面的 `cartridge.sram` 是卡带存档（存档栏 1、2），`slots/` 是存档栏 3 起，`auto/` 是自动存档。备份时复制整个 `saves` 文件夹；恢复时先退出游戏，再放回原处。换电脑或换平台时也是这样搬存档。
 
 卡带存档 `saves/cartridge.sram` 与 ares 的 `.ram` 格式相同，可以直接互拷。其他模拟器的存档可以通过设置窗口的「存档」页导入或导出：「导出给模拟器」将存档栏 1、2 转为 ares、Project64、mupen64plus、RetroArch 的格式；「从模拟器导入」读取放在 `import` 文件夹中的存档，存入新的存档栏，保留原有存档。
 

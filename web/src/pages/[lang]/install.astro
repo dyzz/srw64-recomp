@@ -19,6 +19,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
       <h1>{c.title}</h1>
       <p>{c.lead}</p>
       <p class="rom" set:html={c.rom} />
+      <p class="rom"><a href={`/${lang}/faq/#saves`}>{c.savesLink}</a></p>
       <Mirrors lang={lang} />
     </header>
 

@@ -38,13 +38,18 @@ It is a native port built using static recompilation. The N64's MIPS program is 
 
 Keyboards and common controllers are supported, and on-screen button prompts follow the device you used last. On Android, touch controls are available when no controller is connected. Touch the screen to show the buttons needed for the current screen, labelled with their functions, such as “OK”, “Fast” or “Next unit”. You can remap keyboard and controller inputs on the Controls page in settings.
 
+<span id="saves"></span>
+
 ## Where are my saves? Do they work with emulators?
 
-Saves are stored in the `saves` folder within the following user directories:
+Saves are in the `saves` folder of the user directory:
 
-- macOS: `~/Library/Application Support/SRW64Recomp/`
-- Linux and Steam Deck: `~/.local/share/srw64-recomp/`
-- Windows: `%LOCALAPPDATA%\SRW64Recomp\`
+- **Windows**: `%LOCALAPPDATA%\SRW64Recomp\saves`; type it in File Explorer’s address bar and press Enter.
+- **macOS**: `~/Library/Application Support/SRW64Recomp/saves`; press ⇧⌘G in Finder and paste it.
+- **Linux and Steam Deck**: `~/.local/share/srw64-recomp/saves`.
+- **Android**: open “Marchwind64” in the system Files app, then `saves`.
+
+`cartridge.sram` is the cartridge save (slots 1 and 2), `slots/` holds slot 3 onwards and `auto/` the autosaves. To back up, copy the whole `saves` folder; to restore, quit the game and put it back. The same moves your saves to another computer or platform.
 
 The cartridge save `saves/cartridge.sram` is byte-for-byte compatible with an ares `.ram` file, so you can copy saves between the two. For other emulators, use the Saves page in settings. “Export for emulators” converts slots 1 and 2 to the formats used by ares, Project64, mupen64plus and RetroArch. “Import from emulators” reads saves placed in the `import` folder and adds them as new slots, preserving your existing saves.
 

@@ -38,13 +38,18 @@ ROM が圧縮ファイルなら先に展開してください。`.n64`・`.v64` 
 
 キーボードと一般的なコントローラーに対応し、画面のボタン表示は最後に使った機器に合わせて切り替わります。Android でコントローラーを接続していない場合は、タッチ操作が使えます。画面に触れると、その画面で使うボタンが「決定」「早送り」「次の味方」などの機能名とともに表示されます。キーやボタンの割り当ては、設定ウィンドウの「操作」ページで変更できます。
 
+<span id="saves"></span>
+
 ## セーブデータはどこにありますか？エミュレーターと共有できますか？
 
-セーブデータは、以下のユーザーディレクトリ内の `saves` フォルダーに保存されます。
+セーブデータはユーザーディレクトリの `saves` フォルダーにあります。
 
-- macOS：`~/Library/Application Support/SRW64Recomp/`
-- Linux／Steam Deck：`~/.local/share/srw64-recomp/`
-- Windows：`%LOCALAPPDATA%\SRW64Recomp\`
+- **Windows**：`%LOCALAPPDATA%\SRW64Recomp\saves`。エクスプローラーのアドレスバーに入力して Enter で開けます。
+- **macOS**：`~/Library/Application Support/SRW64Recomp/saves`。Finder で ⇧⌘G を押してパスを入力します。
+- **Linux／Steam Deck**：`~/.local/share/srw64-recomp/saves`。
+- **Android**：システムの「ファイル」アプリで「Marchwind64」を開き、その中の `saves` です。
+
+`cartridge.sram` がカートリッジのセーブ（セーブ 1・2）、`slots/` がセーブ 3 以降、`auto/` がオートセーブです。バックアップは `saves` フォルダーごとコピーし、戻すときはゲームを終了してから元の場所に置きます。別のパソコンやプラットフォームへの移行も同じ方法です。
 
 カートリッジのセーブ `saves/cartridge.sram` は ares の `.ram` と同じバイト列なので、そのまま相互にコピーできます。ほかのエミュレーターとのやり取りには、設定ウィンドウの「セーブ」ページを使います。「エミュレーター用に書き出す」でセーブ 1・2 を ares・Project64・mupen64plus・RetroArch の形式に変換します。「エミュレーターから取り込む」では、`import` フォルダーに置いたセーブを新しいセーブ枠に読み込み、既存のセーブを残します。
 
