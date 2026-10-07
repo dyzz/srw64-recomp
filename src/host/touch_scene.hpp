@@ -23,6 +23,7 @@ inline touch_pad::SceneId decide(unsigned mode, unsigned map_state, unsigned map
     case 2: case 0x1A: case 0x1C:   // the battle animation (its lines run on their own)
         return SceneId::BattleScene;
     case 1: case 7:                 // the logo, the title overlay (opening, PRESS START, prologue pages)
+    case 0x1D: case 0x1E:           // the title again, back from a demo (battle_viewer.cpp)
         if (title_major == 3) return SceneId::TitleRing;
         if (dialogue) return SceneId::Dialogue;
         return title_waiting ? SceneId::Attract : SceneId::Opening;

@@ -1035,6 +1035,14 @@ std::string cheats_page() {
     return body;
 }
 bool touch_active();
+// The Steam Deck and Android: full screen, no window, no file manager to open a folder in.
+bool handheld() {
+#ifdef __ANDROID__
+    return true;
+#else
+    return on_steam_deck();
+#endif
+}
 // Bezel and filter (docs/native/bezels-and-filters.md): a picker inside the General page
 // that walks the player's folder and RetroArch's, one level at a time.
 std::string browse_kind;            // "bezel", "filter" or empty while closed
@@ -1051,7 +1059,7 @@ std::string browser() {
                 (bezels?"settings_bezel_mine":"settings_filter_mine"):"settings_browse_retroarch";
             out+=row("browse-dir:"+root.path.string(),label(key)+" <span class='set-note'>"+escape(root.path.string())+"</span>");
             // The player's folder opens in the file manager, where there is one to open.
-            if(root.kind==settings::LookFolder::mine && !on_steam_deck() && !touch_active())
+            if(root.kind==settings::LookFolder::mine && !handheld() && !touch_active())
                 out+=row("open-folder:"+root.path.string(),label("settings_browse_open"));
         }
         return out;
@@ -2370,8 +2378,8 @@ void settings_sync() {
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
         body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
         body+=look_rows();
-        // A handheld plays full screen and has no window to size.
-        if(!on_steam_deck()) {
+        // A handheld or a phone plays full screen and has no window to size.
+        if(!handheld()) {
             const auto window_state=window_menu_state();
             body+=settings_choice("settings_window","window",{"windowed","fullscreen"},window_state.fullscreen?"fullscreen":"windowed");
             std::string sizes;

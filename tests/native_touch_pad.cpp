@@ -116,6 +116,8 @@ void recognition() {
     check(decide(7, 0, 0, 2, false) == SceneId::Opening && decide(7, 0, 0, 12, false) == SceneId::Opening, "opening, a demo's unit");
     check(decide(7, 0, 0, 2, false, true) == SceneId::Attract, "PRESS START");
     check(decide(7, 0, 0, 3, false) == SceneId::TitleRing, "title ring");
+    check(decide(0x1D, 0, 0, 3, false) == SceneId::TitleRing && decide(0x1E, 0, 0, 3, false) == SceneId::TitleRing &&
+          decide(0x1D, 0, 0, 2, false, true) == SceneId::Attract, "the title back from a demo");
     check(decide(7, 0, 0, 13, true) == SceneId::Dialogue, "prologue line");
     check(decide(2, 5, 0, 0, true) == SceneId::BattleScene, "battle lines stay the battle's");
     check(decide(3, 5, 0, 0, false) == SceneId::MapIdle && decide(0x16, 6, 0, 0, false) == SceneId::MapIdle, "idle map, cursor moving");
