@@ -99,7 +99,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅぅっ! こ、こんなことでやられるわけ
 >  にはいかぬ」
-“Guh! I-I can’t let this finish me.”
+“Guh! I-I cannot fall to something like this.”
 
 @12533 Black Knight · 黒騎士
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
@@ -111,7 +111,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，1/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだ! まだやられはせんよ!」
-“Not yet! I won’t be defeated yet!”
+“Not yet! I will not fall yet!”
 
 @12535 Black Knight · 黒騎士
 # 触发：中伤（剩余 HP 30–90%）（通用，2/7）
@@ -132,7 +132,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ! この程度でいい気になるな」
-“Ugh! Don’t get cocky over that.”
+“Ugh! Don’t let that go to your head.”
 
 @12539 Black Knight · 黒騎士
 # 触发：中伤（剩余 HP 30–90%）（通用，6/7）

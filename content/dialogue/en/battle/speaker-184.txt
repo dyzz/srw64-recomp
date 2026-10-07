@@ -26,7 +26,7 @@
 # 触发：攻击（通用，5/12）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「やってみせる!!」
-“I’ll show you!!”
+“I can do this!!”
 
 @12082 Marvel · マーベル
 # 触发：攻击（通用，6/12）
@@ -42,7 +42,7 @@
 # 触发：攻击（通用，8/12）
 > 「私だって、オーラ力は上がっている
 >  はず!!」
-“My Aura Power should be rising too!!”
+“My Aura Power must be growing too!!”
 
 @12085 Marvel · マーベル
 # 触发：攻击（通用，9/12）
@@ -58,7 +58,7 @@
 # 触发：攻击（通用，11/12）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「邪魔をするのなら!」
-“If you’re going to get in my way!”
+“If you insist on getting in my way...!”
 
 @12088 Marvel · マーベル
 # 触发：攻击（通用，12/12）
@@ -70,7 +70,7 @@
 # 触发：被击坠（通用，1/2）
 # 审校：玛贝尔口吻
 > 「しまった!?」
-“Oh no?!”
+“Oh no!”
 
 @12090 Marvel · マーベル
 # 触发：被击坠（通用，2/2）
@@ -91,7 +91,7 @@
 @12093 Marvel · マーベル
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「くううっ! パワーが違いすぎる!!」
-“Nghhh! The power difference is too much!!”
+“Nghhh! They’re way too strong!!”
 
 @12094 Marvel · マーベル
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
@@ -120,7 +120,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! こんな事でやられるものですか!」
-“Ngh! I won’t be beaten by something like this!”
+“Ngh! Like I’d lose to something like this!”
 
 @12099 Marvel · マーベル
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
@@ -132,7 +132,7 @@
 @12100 Marvel · マーベル
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「うっ! まだまだ!! この程度で!!」
-“Ugh! Not yet!! Not from this much!!”
+“Ugh! Not yet!! It’ll take more than this!!”
 
 @12101 Marvel · マーベル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
@@ -181,13 +181,13 @@
 @12109 Marvel · マーベル
 # 触发：回避（通用，5/7）
 > 「当たるものですか!!」
-“As if that would hit!!”
+“Like that’s going to hit me!!”
 
 @12110 Marvel · マーベル
 # 触发：回避（通用，6/7）
 # 审校：間合い是距离不是时机
 > 「間合いが甘い!」
-“Your range is sloppy!”
+“You misjudged the distance!”
 
 @12111 Marvel · マーベル
 # 触发：回避（通用，7/7）
@@ -206,7 +206,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私のオーラ力も、捨てたものでは
 >  ないわね」
-“My Aura Power isn’t so bad either.”
+“Seems my Aura Power isn’t half bad either.”
 
 @12114 Marvel · マーベル
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -232,7 +232,7 @@
 @16801 Marvel · マーベル
 # 触发：攻击，副驾驶〈チャム〉（对话第 1/2 句）
 > 「これでとどめ!」
-“This is the finisher!”
+“This finishes it!”
 
 @16802 Chum · チャム
 # 触发：攻击，副驾驶〈チャム〉（对话第 2/2 句）
@@ -254,7 +254,7 @@
 # 审校：与 16959 统一
 > 「マーベル! オーラ力を俺に
 >  集中してくれ!」
-“Marvel! Focus your Aura Power into me!”
+“Marvel! Channel your Aura Power into me!”
 
 @16806 Marvel · マーベル
 # 触发：合体技〈スペースコンビネーションアタック〉：ショウ＋マーベル（带チャム）、マーベル＋ショウ（带チャム）、ショウ（带チャム）＋マーベル、マーベル（带チャム）＋ショウ、マーベル（带チャム）＋ガラリア、マーベル（带チャム）＋ショウ（带チャム）（对话第 2/3 句）
@@ -275,7 +275,7 @@
 # 审校：补引号；与 16959 统一
 > 「マーベル! オーラ力を俺に
 >  集中してくれ!」
-“Marvel! Focus your Aura Power into me!”
+“Marvel! Channel your Aura Power into me!”
 
 @16809 Marvel · マーベル
 # 触发：合体技〈スペースコンビネーションアタック〉：ショウ＋マーベル、マーベル＋ショウ（对话第 2/3 句）
@@ -318,13 +318,13 @@
 # 触发：中伤（剩余 HP 30–90%），副驾驶〈チャム〉（对话第 1/2 句）
 # 审校：补引号；与查姆下一句连读
 > 「くっ、この程度のことで!」
-“Ngh, from something like this...”
+“Ngh, something like this...”
 
 @16816 Chum · チャム
 # 触发：中伤（剩余 HP 30–90%），副驾驶〈チャム〉（对话第 2/2 句）
 # 审校：补引号；接上一句
 > 「やられないんだからっ!」
-“...we’re not going down!”
+“...isn’t gonna take us down!”
 
 @16817 Chum · チャム
 # 触发：中伤（剩余 HP 30–90%），副驾驶〈チャム〉（对话第 1/2 句）

@@ -9,13 +9,13 @@
 # 触发：攻击（通用，2/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「させるな!撃ち落とせ!」
-“Don’t let them! Shoot them down!”
+“Stop them! Shoot them down!”
 
 @12118 Shot · ショット
 # 触发：攻击（通用，3/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「好きにはさせん!」
-“I won’t let you do as you please!”
+“I won’t let you have your way!”
 
 @12119 Shot · ショット
 # 触发：攻击（通用，4/6）
@@ -41,7 +41,7 @@
 @12123 Shot · ショット
 # 触发：被击坠（通用，2/2）
 > 「バカな!? ミュージィ……」
-“Impossible?! Musy...”
+“Impossible! Musy...”
 
 @12124 Shot · ショット
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
@@ -52,23 +52,23 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「ぐうっ! い、いかん、これ以上
 >  やられては……」
-“Guh! N-no good, if I take any more...”
+“Guh! Th-this is bad, if I take any more...”
 
 @12126 Shot · ショット
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「うおっ! ま、まさかこれ程とは……」
-“Whoa! T-to think it was this strong...”
+“Whoa! I-I never imagined it was this strong...”
 
 @12127 Shot · ショット
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「くっ!! どこをやられたか!?」
-“Gah!! Where did it hit me?!”
+“Gah!! Where were we hit?!”
 
 @12128 Shot · ショット
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちいっ! まだだ! まだ落ちるな!」
-“Tch! Not yet! Don’t go down yet!”
+“Tch! Not yet! Stay in the air!”
 
 @12129 Shot · ショット
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
@@ -81,7 +81,7 @@
 @12130 Shot · ショット
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「私とて、オーラ力はある!!」
-“Even I have aura power!!”
+“I have aura power of my own!!”
 
 @12131 Shot · ショット
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
@@ -93,17 +93,17 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「スプリガンの装甲は、並みでは
 >  ないのだ!」
-“The Spriggan’s armor is no ordinary armor!”
+“The Spriggan’s armor is nothing ordinary!”
 
 @12133 Shot · ショット
 # 触发：回避（通用，1/4）
 > 「よく見て回避しろ!」
-“Watch closely and evade!”
+“Keep your eyes open and evade!”
 
 @12134 Shot · ショット
 # 触发：回避（通用，2/4）
 > 「正面! 回避だ!」
-“In front! Evade!”
+“Dead ahead! Evade!”
 
 @12135 Shot · ショット
 # 触发：回避（通用，3/4）
@@ -121,7 +121,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かんよ! そんな攻撃など」
-“It won’t work! An attack like that!”
+“An attack like that won’t work on me!”
 
 @12138 Shot · ショット
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -133,7 +133,7 @@
 # 触发：射程外，无法反击（通用，1/1）
 > 「ちいっ、このスプリガンの射程をも
 >  上回るとは……」
-“Tch, to outrange even this Spriggan...”
+“Tch, they can outrange even the Spriggan...”
 
 @16835 Shot · ショット
 # 触发：使用〈オーラキャノン〉（低优先，可能被通用台词顶掉）
@@ -145,4 +145,4 @@
 # 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
 # 审校：补引号
 > 「全砲門、一斉発射!!」
-“All guns, fire at once!!”
+“All guns, full volley!!”

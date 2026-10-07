@@ -72,7 +72,7 @@
 @12190 Drake · ドレイク
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「ちいっ! 小賢しいマネを……」
-“Tch! Clever little tricks...”
+“Tch! Such petty tricks...”
 
 @12191 Drake · ドレイク
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
@@ -96,12 +96,12 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふ……落ちはせんよ」
-“Heh... I won’t go down.”
+“Heh... this ship will not fall.”
 
 @12195 Drake · ドレイク
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「ふん、なめられたものだな」
-“Hmph, they underestimate me.”
+“Hmph, they must think little of me.”
 
 @12196 Drake · ドレイク
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
@@ -117,7 +117,7 @@
 # 检查提示：未用必用译名：ウィル・ウィプス→Will-Wips
 > 「ハハハハ、数で来なければこの
 >  ウィル・ウィプスは落ちはせん」
-“Hahahaha, unless they come in numbers, this Will-Wips won’t fall.”
+“Hahahaha, it will take more than one of you to bring down the Will-Wips.”
 
 @12198 Drake · ドレイク
 # 触发：回避（通用，1/4）
@@ -135,7 +135,7 @@
 # 触发：回避（通用，3/4）
 # 审校：初稿 Hurry the evasive maneuvers 多了一个 the，不自然，改为 Hurry evasive maneuvers。
 > 「回避運動急げ!」
-“Hurry evasive maneuvers!”
+“Evasive maneuvers, quickly!”
 
 @12201 Drake · ドレイク
 # 触发：回避（通用，4/4）
@@ -172,10 +172,10 @@
 # 触发：使用〈ハイパーオーラキャノン〉（低优先，可能被通用台词顶掉）
 # 审校：补引号
 > 「主砲、一斉発射!」
-“Main cannon, fire at once!”
+“Main cannons, full salvo!”
 
 @16838 Drake · ドレイク
 # 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
 # 审校：补引号
 > 「全砲門開け!一斉射撃!」
-“Open all gun ports! Fire at once!”
+“Open all gun ports! Full volley!”

@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/2）
 # 审校：与 17003/17020 统一
 > 「やらせてはなりません」
-“We must not let them.”
+“We must not allow this.”
 
 @12409 Ciela · シーラ
 # 触发：攻击（通用，2/2）
@@ -44,7 +44,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「っはぁ……出力が下がったぞ、
 >  どうしたか!?」
-“Hah... output’s dropping, what happened?!”
+“Hah... our output has dropped. What happened?!”
 
 @12416 Ciela · シーラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
@@ -78,7 +78,7 @@
 # 检查提示：未用必用译名：グランガラン→Gran-Garan
 > 「グランガランはこの程度では
 >  落ちはしません」
-“The Gran-Garan won’t fall to this level of attack.”
+“The Gran-Garan will not fall to an attack like this.”
 
 @12422 Ciela · シーラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
@@ -118,23 +118,23 @@
 # 触发：攻击无效（护罩／装甲）（通用，3/3）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「この程度ならば問題ありませんね」
-“At this level, there’s no problem.”
+“This poses no problem.”
 
 @12429 Ciela · シーラ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「弾切れだというのですか!?」
-“Out of ammo, you say?!”
+“We are out of ammunition?!”
 
 @12430 Ciela · シーラ
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここからでは反撃はできませんね……」
-“From here, we can’t counterattack...”
+“We cannot counterattack from here...”
 
 @17003 Ciela · シーラ
 # 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
 > 「やらせてはなりません」
-“We must not let them.”
+“We must not allow this.”
 
 @17004 Ciela · シーラ
 # 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
@@ -144,12 +144,12 @@
 @17005 Ciela · シーラ
 # 触发：使用〈オーラバルカン〉（低优先，可能被通用台词顶掉）
 > 「前方に集中砲火をかけよ」
-“Concentrate your fire to the front.”
+“Concentrate fire on the enemy ahead.”
 
 @17006 Ciela · シーラ
 # 触发：使用〈フレイボム〉
 > 「前方に集中砲火をかけよ」
-“Concentrate your fire to the front.”
+“Concentrate fire on the enemy ahead.”
 
 @17007 Ciela · シーラ
 # 触发：使用〈オーラキャノン〉（低优先，可能被通用台词顶掉）
@@ -179,7 +179,7 @@
 @17012 Ciela · シーラ
 # 触发：副驾驶〈チャム〉，使用〈オーラバルカン〉（对话第 1/2 句）
 > 「前方に集中砲火をかけよ」
-“Concentrate your fire to the front.”
+“Concentrate fire on the enemy ahead.”
 
 @17013 Chum · チャム
 # 触发：副驾驶〈チャム〉，使用〈オーラバルカン〉（对话第 2/2 句）
@@ -223,7 +223,7 @@
 @17020 Ciela · シーラ
 # 触发：副驾驶〈チャム〉，使用〈ハイパーオーラキャノン〉（对话第 1/2 句）
 > 「やらせてはなりません」
-“We must not let them.”
+“We must not allow this.”
 
 @17021 Chum · チャム
 # 触发：副驾驶〈チャム〉，使用〈ハイパーオーラキャノン〉（对话第 2/2 句）
@@ -271,7 +271,7 @@
 # 检查提示：未用必用译名：グランガラン→Gran-Garan
 > 「グランガランはこの程度じゃ、落ちないん
 >  だからぁっ!!」
-“The Gran-Garan won’t go down from just this!!”
+“It’ll take more than this to bring down the Gran-Garan!!”
 
 @17029 Ciela · シーラ
 # 触发：中伤（剩余 HP 30–90%），副驾驶〈チャム〉（对话第 1/2 句）
@@ -301,7 +301,7 @@
 # 审校：与查姆下一句连读
 # 检查提示：未用必用译名：グランガラン→Gran-Garan
 > 「グランガランはこの程度では」
-“The Gran-Garan, from just this...”
+“Against just this, the Gran-Garan...”
 
 @17034 Chum · チャム
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈チャム〉（对话第 2/2 句）
@@ -351,7 +351,7 @@
 # 触发：回避，副驾驶〈チャム〉（对话第 2/2 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたらないんだから!」
-“It won’t hit us!”
+“Can’t touch us!”
 
 @17043 Chum · チャム
 # 触发：回避，副驾驶〈チャム〉（对话第 1/2 句）
@@ -369,7 +369,7 @@
 # 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉（对话第 1/2 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度ならば問題ありませんね」
-“At this level, there’s no problem.”
+“This poses no problem.”
 
 @17046 Chum · チャム
 # 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉（对话第 2/2 句）
@@ -405,7 +405,7 @@
 # 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉（对话第 2/2 句）
 # 审校：抽检同类：甘い／効かない 按情境
 > 「効かないよ!」
-“That won’t work on me!”
+“That won’t work on us!”
 
 @17052 Chum · チャム
 # 触发：攻击无效（护罩／装甲），副驾驶〈チャム〉

@@ -41,7 +41,7 @@
 @12379 Allen · アレン
 # 触发：攻击（通用，8/11）
 > 「消えろっ!!」
-“Vanish!!”
+“Get lost!!”
 
 @12380 Allen · アレン
 # 触发：攻击（通用，9/11）
@@ -64,7 +64,7 @@
 # 触发：被击坠（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「何っ!? やられた!?」
-“What?! I’ve been hit?!”
+“What?! They got me?!”
 
 @12384 Allen · アレン
 # 触发：被击坠（通用，2/2）
@@ -81,13 +81,13 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「バカな!? 押されているだと!?」
-“Impossible?! I’m being pushed back?!”
+“Impossible! I’m being pushed back?!”
 
 @12387 Allen · アレン
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおっ!! やられた!? どこだ!?」
-“Whoa!! I’ve been hit?! Where?!”
+“Whoa!! I’m hit?! Where?!”
 
 @12388 Allen · アレン
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
@@ -128,7 +128,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、そんなもんか!?」
-“What’s wrong, is that all you’ve got?!”
+“What’s the matter, is that all you’ve got?!”
 
 @12395 Allen · アレン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
@@ -164,7 +164,7 @@
 # 触发：回避（通用，3/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まるで素人の攻撃だな!」
-“That’s an amateur’s attack!”
+“You attack like an amateur!”
 
 @12401 Allen · アレン
 # 触发：回避（通用，4/7）
@@ -176,12 +176,12 @@
 # 触发：回避（通用，5/7）
 # 审校：“嘛”是日语腔
 > 「ま……こんなもんか」
-“Well... that’s all you’ve got?”
+“Well... about what I expected.”
 
 @12403 Allen · アレン
 # 触发：回避（通用，6/7）
 > 「これでも眼はいい方なんだぜ!」
-“Even so, my eyes are pretty sharp!”
+“I’ll have you know, my eyes are pretty sharp!”
 
 @12404 Allen · アレン
 # 触发：回避（通用，7/7）
@@ -198,7 +198,7 @@
 @12406 Allen · アレン
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「バカな、弾切れだと!?」
-“Impossible, out of ammo?!”
+“No way, out of ammo?!”
 
 @12407 Allen · アレン
 # 触发：射程外，无法反击（通用，1/1）

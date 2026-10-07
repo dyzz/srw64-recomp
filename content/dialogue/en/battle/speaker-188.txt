@@ -42,17 +42,17 @@
 # 触发：攻击（通用，8/13）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「目障りだっ!」
-“You’re an eyesore!”
+“Get out of my sight!”
 
 @12148 Jeril · ジェリル
 # 触发：攻击（通用，9/13）
 > 「消えなっ!」
-“Disappear!”
+“Get lost!”
 
 @12149 Jeril · ジェリル
 # 触发：攻击（通用，10/13）
 > 「地獄へ落ちな!!」
-“Fall to hell!!”
+“Go to hell!!”
 
 @12150 Jeril · ジェリル
 # 触发：攻击（通用，11/13）
@@ -86,18 +86,18 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うあっ!! こ、こいつ……パワーが
 >  段ちだ」
-“Ugh!! Th-this guy... his power’s on another level.”
+“Ugh!! Th-this one... the power’s on another level.”
 
 @12156 Jeril · ジェリル
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「うっ! しまった!? どこをやられた!?」
-“Ugh! Damn it?! Where did it hit me?!”
+“Ugh! Damn it! Where’d it get me?!”
 
 @12157 Jeril · ジェリル
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「何っ!? あ、あたしのオーラ力が……
 >  押されている!?」
-“What?! M-my aura power is... being pushed back?!”
+“What?! M-my aura power... it’s being overpowered?!”
 
 @12158 Jeril · ジェリル
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -110,13 +110,13 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あうっ! そうかい、そんなに死にたいの
 >  かいっ!」
-“Agh! So that’s how it is, you wanna die that badly?!”
+“Agh! Fine, you want to die that badly?!”
 
 @12160 Jeril · ジェリル
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ! あたしを本気にさせたね!!」
-“Whoa! You’ve made me serious!!”
+“Whoa! Now you’ve done it, I’m getting serious!!”
 
 @12161 Jeril · ジェリル
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
@@ -127,7 +127,7 @@
 @12162 Jeril · ジェリル
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「うっ! こ、こしゃくな!」
-“Ugh! H-how insolent!”
+“Ugh! Y-you little pest!”
 
 @12163 Jeril · ジェリル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -150,7 +150,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないって言ってんだろ!!」
-“I told you it doesn’t work!!”
+“I told you, that won’t work!!”
 
 @12167 Jeril · ジェリル
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
@@ -166,7 +166,7 @@
 @12169 Jeril · ジェリル
 # 触发：回避（通用，2/6）
 > 「ハハハッ、いいねぇこの緊張感!」
-“Hahaha, nice, this tension!”
+“Hahaha, I love this rush!”
 
 @12170 Jeril · ジェリル
 # 触发：回避（通用，3/6）
@@ -179,7 +179,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あたしを狙おうなんて、いい根性
 >  してるよ!」
-“Targeting me, you’ve got some nerve!”
+“You’ve got some nerve, aiming at me!”
 
 @12172 Jeril · ジェリル
 # 触发：回避（通用，5/6）
@@ -201,7 +201,7 @@
 @12175 Jeril · ジェリル
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「ハハハッ、いきがってさ!」
-“Hahaha, getting all cocky!”
+“Hahaha, look at you acting tough!”
 
 @12176 Jeril · ジェリル
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -212,4 +212,4 @@
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ、少しは頭を使ってるようだね」
-“Tch, seems you’re using your head a little.”
+“Tch, so you’re using your head a little.”

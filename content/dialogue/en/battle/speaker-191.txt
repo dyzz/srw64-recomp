@@ -97,7 +97,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ……こんなことでやられるわけには
 >  いかぬ!」
-“Ugh... I can’t be beaten by this!”
+“Ugh... I cannot fall to something like this!”
 
 @12467 Bern · バーン
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/6）
@@ -121,7 +121,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだ! まだやられはせんよ!」
-“Not yet! I won’t be beaten yet!”
+“Not yet! I will not fall yet!”
 
 @12471 Bern · バーン
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
@@ -143,7 +143,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うっ……この程度でいい気になるな」
-“Ugh... don’t get cocky over this.”
+“Ugh... don’t let this go to your head.”
 
 @12475 Bern · バーン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/8）
@@ -200,7 +200,7 @@
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「しまった!? 反撃できん!」
-“Damn?! I can’t counterattack!”
+“Damn! I can’t counterattack!”
 
 @12485 Bern · バーン
 # 触发：射程外，无法反击（通用，1/1）
