@@ -1061,7 +1061,7 @@ that’s its standard configuration, called the Dendrobium.”
 @24887 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
 > 「ちょっとあなた、何やってるのよ!」
-“Hey you, what do you think you’re doing?!”
+“Hey, you! What do you think you’re doing?!”
 
 @24888 Amuro · アムロ
 > 「ベルトーチカ」

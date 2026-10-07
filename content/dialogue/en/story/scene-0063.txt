@@ -1199,7 +1199,7 @@ an opportunity for me...”
 # 审校：同 28378
 > 「ショウ……いい夢を、見させてもらった
 >  ぜ……」
-“Show... it was a good dream while it lasted...”
+“Show... thanks for the good dream...”
 
 @28381 Show · ショウ
 # 审校：同 28379
@@ -1209,7 +1209,7 @@ an opportunity for me...”
 
 @28382 Chum · チャム
 > 「ショウ……。トッド、死んじゃったの?」
-“Show... Did Tod die?”
+“Show... Is Tod dead?”
 
 @28383 Show · ショウ
 > 「ああ………………」
@@ -1337,7 +1337,7 @@ Let no hatred be left behind on the surface...”
 # 审校：全局：弯撇号／弯引号
 > 「なんだと!? まさかこんなところで
 >  討たれようとは……」
-“What?! To think I’d be struck down in a place like this...”
+“What?! To think I would fall here, of all places...”
 
 @28404 Show · ショウ
 # 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏
@@ -1519,7 +1519,7 @@ Let no hatred remain on the surface...”
 @28436 Ciela · シーラ
 # 审校：全局：弯撇号／弯引号
 > 「ドレイク! これで終わりにします!」
-“Drake! I’m putting an end to this!”
+“Drake! I shall end this here!”
 
 @28437 Drake · ドレイク
 # 审校：is it! 不自然
@@ -1533,7 +1533,7 @@ Let no hatred remain on the surface...”
 @28439 Drake · ドレイク
 > 「ウィル・ウィプスで
 >  グラン・ガランを受けろ!!」
-“Take the Gran-Garan with the Will-Wips!!”
+“Meet the Gran-Garan head-on with the Will-Wips!!”
 
 @28440 Koji · 甲児
 # 审校：全局：弯撇号／弯引号

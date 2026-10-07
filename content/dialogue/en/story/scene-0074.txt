@@ -1865,7 +1865,7 @@ is at least one of their reasons.”
 @31244 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
 > 「ちょっとあなた、何やってるのよ!」
-“Hey you, what do you think you’re doing?!”
+“Hey, you! What do you think you’re doing?!”
 
 @31245 Amuro · アムロ
 > 「ベルトーチカ」

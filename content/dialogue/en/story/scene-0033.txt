@@ -1809,7 +1809,7 @@ Are you really okay with the Earth being torn apart like this? Tod!”
 @24245 Tod · トッド
 > 「ショウ……いい夢を、
 >  見させてもらったぜ……」
-“Show... it was a good dream while it lasted...”
+“Show... thanks for the good dream...”
 
 @24246 Show · ショウ
 > 「これが、これがいい夢で

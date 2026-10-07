@@ -11,7 +11,7 @@
 @33844 Luna · ルーナ
 > 「地球人の艦隊が要塞を発し
 >  て、この月へと向かっているようです」
-“The Earthling fleet has left the fortress and appears to be heading for this moon.”
+“The Earthling fleet has left the fortress and appears to be heading for the Moon.”
 
 @33845 Shapiro · シャピロ
 > 「そろそろ、くるころだと思っていた。
@@ -21,7 +21,7 @@
 @33846 Luna · ルーナ
 > 「地球人たちも必死の様子。
 >  かなりの大兵力を整えてきたようで」
-“The Earthlings seem desperate as well. They appear to have assembled quite a large force.”
+“The Earthlings seem desperate. They appear to have assembled quite a large force.”
 
 @33847 Shapiro · シャピロ
 # 审校：全局：弯撇号／弯引号
@@ -215,7 +215,7 @@ then fight with OZ.”
 @33877 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
 > 「そいつはいいや。ま、考えさせてもらうよ」
-“No thanks. Well, I’ll think about it.”
+“That’s a good one. Well, I’ll think it over.”
 
 @33878 Shinobu · 忍
 > 「アポロ作戦が発令された。
@@ -416,7 +416,7 @@ I’ll make you taste the bitter gall of defeat! All right, we’re launching!!�
 @33909 Shapiro · シャピロ
 > 「まだ出てはならん。もっと敵を
 >  引きつけるのだ」
-“You must not go out yet. Draw in more of the enemy.”
+“Not yet. Let the enemy come closer.”
 
 @33910 Helmut · ヘルマット
 # 审校：全局：弯撇号／弯引号
@@ -430,7 +430,7 @@ There’s no need for that. I myself will...”
 @33911 Shapiro · シャピロ
 # 审校：全局：弯撇号／弯引号
 > 「俺の作戦に従えんというのか?」
-“Are you saying you can’t follow my plan?”
+“You refuse to follow my plan?”
 
 @33912 Helmut · ヘルマット
 # 审校：全局：弯撇号／弯引号
@@ -2207,7 +2207,7 @@ There’s no turning back anymore.”
 # 审校：全局：弯撇号／弯引号
 > 「……ロス・イゴールになら、万丈を
 >  経由で連絡がつけられるかもしれん」
-“...If it’s Ross Igor, we might be able to reach him through Banjo.”
+“...Ross Igor, though, we might be able to reach through Banjo.”
 
 @34188 Quattro · クワトロ
 > 「イゴール将軍か……
@@ -2542,7 +2542,7 @@ is at least one of their reasons.”
 # 审校：全局：弯撇号／弯引号
 > 「ふうん、そうなの。でも私は、
 >  アムロ特尉のために、一緒にMSを
-“Hmm, is that so. But I can build mobile suits together with Special Lieutenant Amuro.
+“Oh, really? But I can build mobile suits together with Special Lieutenant Amuro.
 ---
 >  つくれるわ。新しいガンダムを。
 >  あなたには、それはできないでしょう?」
