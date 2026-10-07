@@ -1,6 +1,6 @@
 非官方的《超级机器人大战64》原生移植，附全游戏中文与英文翻译。不含 ROM：需要自备日版原版 ROM。
 
-## 0.5.0 更新
+## 0.4.0 更新
 
 - 应用改名为 Marchwind64。
 - 中文与英文翻译全部重新润色：全部剧情和战斗台词去掉直译腔，专名统一。
@@ -35,7 +35,7 @@
 
 ## English
 
-An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. New in 0.5.0: the app is now Marchwind64; every story and battle line of the Chinese and English translations has been rewritten to read naturally; a first, experimental Android build; RetroArch filters and bezels on every platform; a battle viewer on the title screen (computers); cheats (never saved); an update check that asks once and never downloads, with HD packs versioned on their own; the HD pack can also sit in the game's own folder; the controls bar under dialogue hides itself; .v64 and .n64 ROM dumps are accepted; the project's own source is now GPL-3.0-or-later. {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
+An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. New in 0.4.0: the app is now Marchwind64; every story and battle line of the Chinese and English translations has been rewritten to read naturally; a first, experimental Android build; RetroArch filters and bezels on every platform; a battle viewer on the title screen (computers); cheats (never saved); an update check that asks once and never downloads, with HD packs versioned on their own; the HD pack can also sit in the game's own folder; the controls bar under dialogue hides itself; .v64 and .n64 ROM dumps are accepted; the project's own source is now GPL-3.0-or-later. {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
 
 ## 校验 / Checksums
 

@@ -7,7 +7,7 @@
 ## 一次构建
 
 ```sh
-.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.5.0
+.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.4.0
 ```
 
 - 输出目录默认是 `build/release/<版本>-<短提交号>`，已存在时拒绝覆盖。可以用 `--output` 指定，用 `--keep-source` 保留检出目录与编译产物。
@@ -59,16 +59,16 @@ openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass file:$HOME/.config/srw64/
 Windows 包同样下载 `Marchwind64-windows-x64-encrypted`，解开后是 `Marchwind64-windows-x64` 文件夹，压成 zip 再附上。
 安卓包下载 `SRW64-android-arm64-encrypted`，解开后就是 APK（CI 用仓库里的发布密钥签名，能覆盖安装旧版并保留存档）；
 `android:versionName` 与 `versionCode` 在 `tools/release/android/app/AndroidManifest.xml`，发版时与根目录 `CMakeLists.txt` 一起改
-（versionCode＝主版本×10000＋次版本×100＋修订号，0.5.0 为 500，只能变大；`tests/test_release_version.py` 核对三处一致）。Steam 封面图在仓库的 `tools/release/linux/steam-art/`
+（versionCode＝主版本×10000＋次版本×100＋修订号，0.4.0 为 400，只能变大；`tests/test_release_version.py` 核对三处一致）。Steam 封面图在仓库的 `tools/release/linux/steam-art/`
 （`steam_art.py` 由 HD 标题图生成，改了标题图再重新生成并提交），CI 构建的 Linux 包也带封面。
 
 Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检出里的 `build_linux.py`），Windows 包只由 Actions 构建，
 用 `--attach` 交给同一次 `build_release.py`，与 Mac 包和 HD 包放进同一个发布：
 
 ```sh
-.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.5.0 \
-  --attach linux=build/deck/<提交>/src/build/linux-x64/Marchwind64-SteamDeck-0.5.0-<日期>-<提交>.tar.gz \
-  --attach windows=build/windows/<提交>/Marchwind64-0.5.0-windows-x64.zip \
+.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.4.0 \
+  --attach linux=build/deck/<提交>/src/build/linux-x64/Marchwind64-SteamDeck-0.4.0-<日期>-<提交>.tar.gz \
+  --attach windows=build/windows/<提交>/Marchwind64-0.4.0-windows-x64.zip \
   --attach android=build/android/<提交>/SRW64-android-arm64-<提交>.apk
 ```
 
