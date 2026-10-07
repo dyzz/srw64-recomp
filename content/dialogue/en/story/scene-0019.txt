@@ -597,7 +597,7 @@ Have the pilots still aboard stand by!”
 “I’m counting on you, Captain. Amuro, take the new Dijeh out too.
 ---
 >  やれるのだろう?」
-You can handle it, right?”
+You can handle it, can’t you?”
 
 @20387 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -793,7 +793,7 @@ Sorry, but give us a little time.”
 # 审校：全局：弯撇号／弯引号
 > 「やめろ、藤原。
 >  いまのお前では無理だ」
-“Stop it, Fujiwara. You’re in no shape for this.”
+“Don’t, Fujiwara. You’re in no shape for this.”
 
 @20421 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -845,7 +845,7 @@ The enemy’s right in front of us! Doctor, can’t we launch yet?!”
 @20428 Dr. Hazuki · 葉月博士
 # 审校：同 20185
 > 「あわてるな。いま終わったところだ」
-“Don’t panic. We just finished.”
+“Don’t rush me. I’ve just finished.”
 
 @20429 Masato · 雅人
 # 审校：统一 Beast Fighters
@@ -888,7 +888,7 @@ Aggressive Mode won’t cut it. We’re combining!”
 # 审校：精读：気合い 不是术语
 > 「フッ、久しぶりに気合いをいれて
 >  いくとするか」
-“Hmph, guess it’s time to get fired up for once.”
+“Heh, guess it’s time I got fired up again for once.”
 
 @20436 Shinobu · 忍
 > 「キーワード、

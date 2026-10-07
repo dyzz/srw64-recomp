@@ -4,13 +4,13 @@
 # 审校：全局：弯撇号／弯引号
 > 「艦長、イゴール将軍から
 >  通信が入っています」
-“Captain, we’re receiving a communication from General Igor.”
+“Captain, incoming transmission from General Igor.”
 
 @19830 Beauty · ビューティ
 # 审校：全局：弯撇号／弯引号
 > 「艦長、
 >  ライフのイゴール将軍から通信よ」
-“Captain, there’s a communication from General Igor of LIFE.”
+“Captain, General Igor of LIFE is on the line.”
 
 @19831 Bright · ブライト
 # 审校：补全整条台词的外层引号
@@ -21,7 +21,7 @@
 # 审校：补全整条台词的外层引号
 > 「おお、ブライト中佐。
 >  そちらもなかなか、大変なようだな」
-“Ah, Lieutenant Colonel Bright. Things seem quite difficult on your end as well.”
+“Ah, Lieutenant Colonel Bright. You seem to be having quite a time of it yourselves.”
 
 @19833 Bright · ブライト
 # 审校：补全整条台词的外层引号
@@ -53,25 +53,25 @@
 @19838 Bright · ブライト
 # 审校：补全整条台词的外层引号
 > 「それで、どのようなご用件です?」
-“So, what is it you need?”
+“So, what can we do for you?”
 
 @19839 Igor · イゴール
 # 审校：全局：弯撇号／弯引号
 > 「うむ。実はカンザスシティで
 >  武装市民が占領軍に
-“Yes. Actually, armed citizens in Kansas City have
+“Indeed. Armed citizens in Kansas City have
 ---
 >  反発して一斉蜂起したのだ。
 >  しかし占領軍の
-risen up in revolt against the occupation forces. But it seems
+risen up against the occupation forces. But it seems
 ---
 >  鎮圧部隊によって、街が
 >  攻撃を受けているらしい
-the occupation army’s suppression unit is attacking the city.
+the occupation army has sent troops to crush them, and the city is under attack.
 ---
 >  そこで、君たちに市民の救援に
 >  向かってほしいのだ」
-So I want you to head there and rescue the citizens.”
+So I want you to go to the citizens’ aid.”
 
 @19840 Quattro · クワトロ
 # 审校：补全整条台词的外层引号
@@ -86,7 +86,7 @@ So I want you to head there and rescue the citizens.”
 ---
 >  補充の人員もまわしてある。
 >  もうじき、そちらに合流できるはずだ」
-I’m sending replacement personnel too. They should be able to join you before long.”
+I’ve sent you some extra personnel as well. They should reach you shortly.”
 
 @19842 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -101,7 +101,7 @@ we’ll head for Kansas City.”
 # 审校：全局：弯撇号／弯引号
 > 「蜂起した市民が攻撃されて
 >  いるとあれば放ってはおけないな
-“If citizens who rose up are under attack, we can’t just ignore it.
+“If the citizens who rose up are under attack, we can’t just sit by.
 ---
 >  わかりました。我々はカンザスシティに
 >  向かいましょう」
@@ -121,12 +121,12 @@ Understood. We’ll head for Kansas City.”
 @19846 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「……わかっている。あとで行く」
-“...I know. I’ll go later.”
+“...I know. I’ll be there in a bit.”
 
 @19847 Amuro · アムロ
 > 「……シャアもブライトも、
 >  俺にあてつけているんだ
-“...Char and Bright are both throwing it in my face.
+“...Char and Bright are both rubbing it in.
 ---
 >  ガンダムを若い奴に使わせて……」
 Letting some kid pilot the Gundam...”
@@ -145,7 +145,7 @@ Sara Yuki, Ryo Shiba, and Masato Shikibu, reporting for duty.”
 # 检查提示：未用必用译名：獣戦機隊→Cyber Beast Force
 > 「ご苦労。まさか獣戦機隊が
 >  無事だったとはな。よく来てくれた」
-“Good work. I never thought the Cyber Beast Force was still intact. I’m glad you came.”
+“Thank you. I never thought the Cyber Beast Force had made it through. Good to have you.”
 
 @19850 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -158,7 +158,7 @@ Sara Yuki, Ryo Shiba, and Masato Shikibu, reporting for duty.”
 # 检查提示：未用必用译名：獣戦機隊→Cyber Beast Force
 > 「そうか……獣戦機隊は4名では
 >  なかったか? 1人たりないようだが」
-“I see... Wasn’t the Cyber Beast Force four people? Looks like you’re one short.”
+“I see... Doesn’t the Cyber Beast Force have four members? You seem to be one short.”
 
 @19852 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -168,7 +168,7 @@ Sara Yuki, Ryo Shiba, and Masato Shikibu, reporting for duty.”
 ---
 >  沙羅が寂しがっちゃって
 >  大変なんですから」
-Sara’s been so lonely it’s a real handful.”
+Sara misses him so much, she’s been impossible.”
 
 @19853 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -202,16 +202,16 @@ I’ll drag him back by the neck if I have to.”
 @19857 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
 > 「あんた、相変わらずそればっかりだね」
-“You never change, do you? It’s always that with you.”
+“Still got a one-track mind, huh?”
 
 @19858 Masato · 雅人
 # 审校：“so it seems worth doing”没有主语
 > 「人生楽しく生きなきゃ
 >  ここは美人が多くて、
-“You’ve gotta enjoy life. Lots of beauties around here,
+“Gotta enjoy life. There are lots of pretty girls here,
 ---
 >  やりがいがありそうだよ」
-so this looks like a job worth doing.”
+so this job might be worth it after all.”
 
 @19859 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
@@ -223,7 +223,7 @@ so this looks like a job worth doing.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、ご苦労さま。少し休んでくれ
 >  アムロも来たな、紹介しよう」
-“Ah, good work. Take a little rest. Amuro, you’re here too. Let me introduce you.”
+“Ah, thank you. Take a break. Ah, Amuro’s here. Let me introduce you.”
 
 @19861 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
@@ -283,11 +283,11 @@ I’m relieved. I was afraid that LIFE, or Karaba, might be just like the Empire
 ---
 >  ううん、スペシャルズみたいに、
 >  大義名分を隠れみのに平気で
-no, like the Specials... hiding behind some noble cause while calmly
+no, like the Specials... hiding behind some noble cause while killing
 ---
 >  同じ地球人を殺すような
 >  集団だったらどうしようって
-killing fellow Earthlings.
+their fellow Earthlings without a second thought.
 ---
 >  怖かったの」
 I was scared.”
@@ -299,17 +299,17 @@ I was scared.”
 @19872 Beltorchika · ベルトーチカ
 > 「町はゲリラ狩りで焼かれてしまったし
 >  占領軍も嫌いだったから」
-“My town was burned down in the guerrilla hunts, and I hated the occupation army too.”
+“My town got burned in the hunt for guerrillas, and I never liked the occupation army anyway.”
 
 @19873 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「艦長、時間が押している。
 >  作業を急がせてくるが」
-“Captain, we’re running behind schedule. I’ll go hurry up the work.”
+“Captain, we’re running behind schedule. I’ll go speed things up.”
 
 @19874 Bright · ブライト
 > 「ああ、頼む」
-“Yeah, please do.”
+“Right, thanks.”
 
 @19875 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
@@ -366,12 +366,12 @@ error zero point +2. Transform system... normal. All right.”
 # 审校：全局：弯撇号／弯引号
 > 「はい、構いませんよ。
 >  ちょっと待ってください」
-“Yes, that’s fine. Just a moment, please.”
+“Sure, no problem. Just a moment.”
 
 @19885 Astonaige · アストナージ
 # 审校：全局：弯撇号／弯引号
 > 「助かるよ。なにしろ人手不足でね」
-“You’re a lifesaver. We’re really short-handed, you see.”
+“You’re a lifesaver. We’re short-handed as it is.”
 
 @19886 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -382,7 +382,7 @@ error zero point +2. Transform system... normal. All right.”
 @19887 Astonaige · アストナージ
 > 「スクリーン回りの不具合は
 >  どうした?」
-“What about the trouble around the screen?”
+“What about the screen glitches?”
 
 @19888 Ark · アーク（按段落 3DD1）
 > 「データ表示のエラーですか?
@@ -392,7 +392,7 @@ error zero point +2. Transform system... normal. All right.”
 @19889 Aboly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「よう、がんばってるじゃないか」
-“Hey, you’re working hard, aren’t you.”
+“Hey, working hard, I see.”
 
 @19890 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -402,17 +402,17 @@ error zero point +2. Transform system... normal. All right.”
 ---
 >  試作機だけあって、ソフト
 >  関係にも問題多いですからね」
-is a prototype, after all, so it’s got plenty of problems with its software too.”
+is a prototype, so its software has plenty of problems too.”
 
 @19891 Aboly · アポリー
 > 「結構、結構」
-“Good, good.”
+“Glad to hear it.”
 
 @19892 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「そろそろだな。総員、
 >  第一戦闘配備のまま待機!」
-“It’s about time. All hands, stand by at first battle stations!”
+“Almost time. All hands, remain at first battle stations and stand by!”
 
 @19893 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -433,7 +433,7 @@ is a prototype, after all, so it’s got plenty of problems with its software to
 @19896 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「いいでしょう。彼女なら大丈夫」
-“That’s fine. She’ll be all right.”
+“Go ahead. She’ll be fine.”
 
 @19897 Heero · ヒイロ
 > 「……みじめな仕事だ……くそっ」
@@ -481,7 +481,7 @@ is a prototype, after all, so it’s got plenty of problems with its software to
 
 @19907 Specials · スペシャルズ
 > 「だ、だめだっ! 退却しろ!」
-“N-No good! Retreat!”
+“I-It’s no use! Fall back!”
 
 @19908 Relena · リリーナ
 # 审校：全局：弯撇号／弯引号
@@ -505,7 +505,7 @@ Instead of killing me? Answer me, Heero!”
 # 审校：全局：弯撇号／弯引号
 > 「たくさん生け捕りにするのだ。
 >  改造して我らの兵士にしてくれる」
-“Take plenty of them alive. We’ll remodel them into soldiers for our cause.”
+“Take plenty of them alive. We shall rebuild them into our soldiers.”
 
 @19912 Dark General · 暗黒大将軍
 > 「百鬼一族め。
@@ -519,13 +519,13 @@ Instead of killing me? Answer me, Heero!”
 ---
 >  きゃつらめ、ゲッターロボが
 >  混じっておるぞ」
-Those curs have a Getter Robo mixed in with them!”
+Those curs have a Getter Robo among them!”
 
 @19914 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「くっ、あれはミケーネと百鬼か。
 >  帝国についた悪魔め
-“Ngh, that’s Mycenae and the Hyakki, is it. Devils who’ve thrown in with the Empire.
+“Ngh, Mycenae and the Hyakki. Devils who’ve sold out to the Empire.
 ---
 >  総員、戦闘開始だ!
 >  出撃しろ!」
@@ -548,7 +548,7 @@ destroy mankind? Everyone, let’s go!”
 # 审校：全局：弯撇号／弯引号
 > 「ん? やめておけ! 3年間も
 >  モビルスーツは、いじってないんだろう!?」
-“Hm? Don’t bother! You haven’t touched a Mobile Suit in three years, have you?!”
+“Hm? Don’t do it! You haven’t touched a Mobile Suit in three years, have you?!”
 
 @19918 Beltorchika · ベルトーチカ
 > 「機銃座でしょ?」
@@ -562,10 +562,10 @@ destroy mankind? Everyone, let’s go!”
 # 审校：人名拼写 Rei→Ray
 > (アムロ……レイ……
 >  やっぱりこの人もパイロットだった
-(Amuro... Ray... so this man was a pilot too.
+(Amuro... Ray... so he really was a pilot after all.
 ---
 >  戦う人だったんだわ……)
-He was a man who fought...)
+A man who fights...)
 
 @19921 Bright · ブライト
 > 「各パイロットは出撃しろ!」
@@ -583,11 +583,11 @@ He was a man who fought...)
 ---
 >  あれがニュータイプといわれた人なの?
 >  ……違う、あたしが空が
-Is that what a so-called Newtype is?... No, just like I’m afraid the sky
+Is that what they call a Newtype?... No, just like I’m afraid of the sky
 ---
 >  落ちてくるのが怖いように、この人も
 >  戦うことが怖いんだわ……だけど!)
-is falling, this man is afraid to fight... but still!)
+falling down on me, he’s afraid of fighting... but still!)
 
 @19924 Beltorchika · ベルトーチカ
 > 「機銃座に案内して!」
@@ -597,10 +597,10 @@ is falling, this man is afraid to fight... but still!)
 # 审校：全局：弯撇号／弯引号
 > (どうしたのだ、アムロ君……
 >  こうして若者たちも戦っている
-(What’s wrong, Amuro... even the young ones are fighting like this.
+(What’s the matter, Amuro? Even the young ones are out there fighting.
 ---
 >  あのときの血の騒ぎはなくなったのか?)
-Has the stirring of blood from back then faded?)
+Has the fire that once stirred your blood died out?)
 
 @19926 Tekkoki · 鉄甲鬼
 > 「ひけ、グラー。あとは俺にまかせて
@@ -615,15 +615,15 @@ Tekkoki of the Hyakki Clan. Now, face me fair and square!”
 # 审校：全局：弯撇号／弯引号
 > 「貴様らが正々堂々だと?
 >  笑わせるな」
-“You lot, fair and square? Don’t make me laugh.”
+“You? Fair and square? Don’t make me laugh.”
 
 @19928 Dr. Gura · グラー博士
 > (奴のいうことを真に受けておっては
 >  我が百鬼一族の野望は
-(If we take that one at his word, the ambition of our Hyakki Clan will
+(If we took that fool at his word, the Hyakki Clan’s ambitions would
 ---
 >  達成されぬわ)
-never be fulfilled.)
+never be realized.)
 
 @19929 Tekkoki · 鉄甲鬼
 # 审校：全局：弯撇号／弯引号
@@ -642,7 +642,7 @@ our ambition will advance by leaps and bounds!”
 
 @19931 Ark · アーク（按段落 3DD1）
 > 「こ、こんなにいるのか……!?」
-“Th-There are this many...?!”
+“Th-There’s this many of them...?!”
 
 @19932 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -669,7 +669,7 @@ our ambition will advance by leaps and bounds!”
 # 审校：全局：弯撇号／弯引号
 > 「クソッ、グラーめ!
 >  こんな戦いは俺のプライドが許さん
-“Damn it, that Gura! My pride won’t allow this kind of battle.
+“Damn you, Gura! My pride won’t allow this kind of battle.
 ---
 >  貴様ら、勝負は、おあずけだ。
 >  また会おう」
@@ -682,19 +682,19 @@ You lot, we’ll settle this another time. We’ll meet again.”
 @19938 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「ふぅ、なんだか知らないが助かったな」
-“Phew, I don’t know what happened, but we were saved.”
+“Phew, I don’t know what that was about, but it saved our skins.”
 
 @19939 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
 > 「ああ、百鬼一族にもあんな奴が
 >  いるとはな。たいした奴だぜ」
-“Yeah, to think the Hyakki Clan had a guy like that. He’s quite something.”
+“Yeah, who knew the Hyakki Clan had a guy like that? He’s really something.”
 
 @19940 Tekkoki · 鉄甲鬼
 # 审校：全局：弯撇号／弯引号
 > 「グラーはやられたのか。まぁいい、あとは
 >  俺にまかせてもらおう。地球人ども
-“So Gura’s been finished, has he. Fine, leave the rest to me. Earthlings,
+“So Gura’s been beaten. Fine, leave the rest to me. Earthlings,
 ---
 >  俺は百鬼一族の鉄甲鬼だ。
 >  さぁ、この俺と、正々堂々戦え!」
@@ -704,12 +704,12 @@ I am Tekkoki of the Hyakki Clan. Now, face me fair and square!”
 # 审校：全局：弯撇号／弯引号
 > 「貴様らが正々堂々だと?
 >  笑わせるな」
-“You lot, fair and square? Don’t make me laugh.”
+“You? Fair and square? Don’t make me laugh.”
 
 @19942 Tekkoki · 鉄甲鬼
 > 「なに!? くっ、グラーめ、まだこれだけの
 >  戦力を隠していたのか」
-“What?! Ngh, that Gura, he was still hiding this much fighting strength.”
+“What?! Ngh, so Gura still had this many troops hidden away.”
 
 @19943 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
@@ -737,7 +737,7 @@ another time. We’ll meet again.”
 @19946 Hayato · ハヤト
 > 「フッ、百鬼一族にもあんな奴が
 >  いるとはな」
-“Hmph, to think the Hyakki Clan had a guy like that.”
+“Heh, who knew the Hyakki Clan had a guy like that?”
 
 @19947 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -780,7 +780,7 @@ You’re just trying to make me owe you!”
 # 审校：全局：弯撇号／弯引号
 > 「そんなこといってる場合じゃない
 >  だろ!? ほら、血が出てるじゃないか」
-“This isn’t the time to say that! Look, you’re bleeding.”
+“This is no time for that! Look, you’re bleeding.”
 
 @19954 Lera · レラ
 > 「放せっ、バカやろう! あぅぅっ!」
@@ -818,10 +818,10 @@ You’re just trying to make me owe you!”
 # 审校：“I don't mind if you refuse”太客气，不合口吻
 > 「そうしても構わないが、このまま
 >  死にでもされたら寝覚めが悪い
-“Fine by me, but if you go and die on me, I won’t sleep well.
+“Fine by me, but if you go and die on me, it’d weigh on my conscience.
 ---
 >  いいから来い」
-Enough. Come with me.”
+Just come.”
 
 @19962 Lera · レラ
 # 审校：全局：弯撇号／弯引号
@@ -840,7 +840,7 @@ You’re just trying to make me owe you!”
 ---
 >  お前が死んでも
 >  喜ぶのは帝国軍だけだぞ」
-If you die, the only ones who’ll be happy are the Imperial Army.”
+If you die, the only ones celebrating will be the Imperial Army.”
 
 @19964 Lera · レラ
 # 审校：全局：弯撇号／弯引号
@@ -850,7 +850,7 @@ If you die, the only ones who’ll be happy are the Imperial Army.”
 
 @19965 Selain · セレイン（按段落 3DD2）
 > 「ならば早く来い」
-“Then hurry up and come.”
+“Then hurry up.”
 
 @19966 Lera · レラ
 # 审校：全局：弯撇号／弯引号
@@ -872,12 +872,12 @@ If you die, the only ones who’ll be happy are the Imperial Army.”
 @19970 Banjo · 万丈
 > 「よし、みんな、
 >  負傷者の救助を急ごう」
-“All right, everyone, hurry and rescue the wounded.”
+“All right, everyone, let’s get the wounded to safety, fast.”
 
 @19971 Bright · ブライト
 > 「せっかく補給した物資も、
 >  カンザスシティで放出してしまったな」
-“All the supplies we went to the trouble of getting, and we ended up unloading them at Kansas City.”
+“We went to all that trouble to resupply, and then gave it all away in Kansas City.”
 
 @19972 Beltorchika · ベルトーチカ
 > 「ええ。現在の状態では、
@@ -919,11 +919,11 @@ should be able to arrange some for us.”
 ---
 >  十分なのですが、食料、
 >  医療品などはカンザスシティで
-but as for food and medical supplies, we unloaded them at Kansas City,
+but our food and medical supplies were all given out in Kansas City,
 ---
 >  放出してしまいましたので、
 >  ほとんど残っておりません」
-so almost nothing remains.”
+so we have almost nothing left.”
 
 @19978 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -934,11 +934,11 @@ so almost nothing remains.”
 @19979 David · デビッド
 # 审校：全局：弯撇号／弯引号
 > 「そりゃ冗談じゃないぜ!」
-“That’s no joke!”
+“No way, that’s not happening!”
 
 @19980 Simone · シモーヌ
 > 「あーったく、いやしいのね、あんたたちは」
-“Oh, honestly, you guys are so greedy.”
+“Ugh, honestly, you’re such gluttons.”
 
 @19981 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -953,7 +953,7 @@ so almost nothing remains.”
 @19983 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「めずらしいは余計だい」
-“You didn’t have to say ‘rare.’”
+“Leave out the ‘rare’ part.”
 
 @19984 Banjo · 万丈
 # 审校：去 It can't be helped
@@ -964,7 +964,7 @@ so almost nothing remains.”
 @19985 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「ホンコン? ずいぶんと遠いな」
-“Hong Kong? That’s quite far.”
+“Hong Kong? That’s a long way.”
 
 @19986 Banjo · 万丈
 > 「しかし、あそこのルオ商会なら
@@ -981,7 +981,7 @@ so almost nothing remains.”
 # 审校：全局：弯撇号／弯引号
 > 「ちょっと沙羅
 >  今勝手に出ちゃまずいんじゃない?」
-“Hey, isn’t it bad for Sara to just go off on her own right now?”
+“Hey, Sara, you shouldn’t just take off on your own right now, should you?”
 
 @19989 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -1005,22 +1005,22 @@ so almost nothing remains.”
 # 审校：全局：弯撇号／弯引号
 > 「ちぇっ、俺1人悪者かい。
 >  わかりましたよ、ほっときゃいいんでしょ」
-“Tch, so I’m the bad guy here. Fine, I get it, just leave her alone.”
+“Tch, so I’m the only bad guy here. Fine, fine, I’ll just leave her be.”
 
 @19993 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
 > 「よっと。連絡艇で出るんだろ?
 >  キーカード持ってきてやったぜ」
-“Whoa there. You’re heading out in the shuttle, right? I brought you the key card.”
+“Hup. You’re taking the shuttle, right? I brought you the key card.”
 
 @19994 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
 > 「サンキュ。気がきくじゃないか」
-“Thanks. Aren’t you thoughtful.”
+“Thanks. Pretty thoughtful of you.”
 
 @19995 Duo · デュオ
 > 「へへっ、お礼はいらないぜ」
-“Heh, no thanks needed.”
+“Heh, don’t mention it.”
 
 @19996 Lera · レラ
 > 「う……ん……」
@@ -1043,7 +1043,7 @@ so almost nothing remains.”
 ---
 >  運び込んだんだ。
 >  大丈夫、治療は終わってるよ
-so we carried you in. Don’t worry, the treatment’s finished.
+so we carried you in. Don’t worry, you’ve been patched up.
 ---
 >  レインさんはあまり体を動かすなってさ
 >  ……ってちょっと、どこ行くつもりだよ?」
@@ -1079,7 +1079,7 @@ Besides, you won’t be able to move properly for a while anyway.”
 # 审校：全局：弯撇号／弯引号
 > 「くっ……ふざけるな! 今すぐおろせ、
 >  自分で戻る」
-“Ngh... don’t mess with me! Put me down right now, I’ll go back on my own.”
+“Ngh... are you kidding me?! Let me off right now, I’ll get back myself.”
 
 @20005 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -1148,7 +1148,7 @@ Good thing you didn’t die... where do you think you’re going?”
 # 审校：全局：弯撇号／弯引号
 > 「無理だな。今はホンコンに
 >  向かっている。空の上だ」
-“That’s impossible. We’re heading to Hong Kong right now. We’re in the sky.”
+“Not happening. We’re on our way to Hong Kong. We’re in the air.”
 
 @20015 Lera · レラ
 > 「な……なんだって!? どうしてなのさ!」
@@ -1158,23 +1158,23 @@ Good thing you didn’t die... where do you think you’re going?”
 # 审校：全局：弯撇号／弯引号
 > 「お前の都合で動くわけじゃない。
 >  そういうことだ」
-“We don’t move at your convenience. That’s how it is.”
+“We don’t fly on your schedule. That’s all there is to it.”
 
 @20017 Lera · レラ
 # 审校：全局：弯撇号／弯引号
 > 「冗談じゃない! 今すぐおろしてよ。
 >  そうすりゃ自分で帰るから。うぅっ」
-“You’ve gotta be kidding! Put me down right now. Then I’ll go back myself. Ugh.”
+“You’ve gotta be kidding! Let me off right now. I’ll get home myself. Ugh.”
 
 @20018 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「もうわかったと思うが、お前はまともに
 >  動ける状態じゃない。そんなに
-“I think you understand by now, but you’re in no state to move properly. If you hate it that much,
+“You’ve probably figured it out by now, but you’re in no shape to move. If you hate it here that much,
 ---
 >  嫌ならば治ってからなら好きに
 >  するがいい。それくらいは手配してやる」
-then once you’re healed, do as you like. I’ll arrange at least that much.”
+you can do as you like once you’ve healed. I’ll arrange that much for you.”
 
 @20019 Lera · レラ
 > 「くぅ……」
@@ -1184,7 +1184,7 @@ then once you’re healed, do as you like. I’ll arrange at least that much.”
 # 审校：全局：弯撇号／弯引号
 > 「痛むのか? いっておくが私は別に
 >  お前に親切にしてやっている
-“Does it hurt? Let me tell you, I’m not being kind to you or anything.
+“Does it hurt? Just so you know, I’m not doing this out of kindness.
 ---
 >  わけじゃない。動けるものなら
 >  放り出していただろうからな」
@@ -1193,17 +1193,17 @@ If you could move, I’d have thrown you out already.”
 @20021 Lera · レラ
 # 审校：全局：弯撇号／弯引号
 > 「なら、礼はいわなくていいね」
-“Then I don’t have to thank you, do I.”
+“Then I guess I don’t have to thank you.”
 
 @20022 Selain · セレイン（按段落 3DD2）
 # 审校：同 20007
 > 「ああ、好きにするがいい。
 >  しかし当分はここにいるんだ
-“Yeah, do as you like. But for now you’re staying here.
+“Suit yourself. But you’re staying here for now.
 ---
 >  不便だから名前くらいは
 >  聞いておこうか」
-It’s a pain not having something to call you, so I’ll at least ask your name.”
+I need something to call you, so at least tell me your name.”
 
 @20023 Lera · レラ
 > 「……レラ」
@@ -1218,24 +1218,24 @@ It’s a pain not having something to call you, so I’ll at least ask your name
 # 审校：全局：弯撇号／弯引号
 > 「やっぱりこんなトコにいたんだね……忍。
 >  うすぎたなくて、あんたにピッタリだよ」
-“I knew you’d be in a place like this... Shinobu. Filthy and grimy, just perfect for you.”
+“I knew I’d find you in a dump like this... Shinobu. Filthy and grimy. Suits you perfectly.”
 
 @20026 Shinobu · 忍
 > 「…………沙羅……か」
-“...Sara... huh.”
+“...Sara...?”
 
 @20027 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
 > 「召集命令は聞いてるんでしょ、
 >  忍。亮も雅人も、もう戻って
-“You heard the call-up order, didn’t you, Shinobu? Ryo and Masato have already gone back
+“You heard the call-up order, didn’t you, Shinobu? Ryo and Masato are already back
 ---
 >  ムゲ野郎と戦ってるよ。なのに
 >  あんたは、なんだってこんなトコで
-and are fighting those Muge bastards. And yet here you are, moping around
+fighting those Muge bastards. So what the hell are you doing moping around
 ---
 >  ウダウダやってんのさ」
-in a place like this.”
+in a dump like this?”
 
 @20028 Shinobu · 忍
 > 「…………」
@@ -1244,7 +1244,7 @@ in a place like this.”
 @20029 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
 > 「黙ってないで、なんとかお言いよ!」
-“Don’t just stand there silent, say something!”
+“Don’t just stand there, say something!”
 
 @20030 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1255,7 +1255,7 @@ in a place like this.”
 # 审校：全局：弯撇号／弯引号
 > 「忍!? どうしたっていうのさ?
 >  ふぬけになっちまったっていうのかい!?」
-“Shinobu?! What’s gotten into you? Are you telling me you’ve turned into a spineless wreck?!”
+“Shinobu?! What’s gotten into you? Have you gone soft on me?!”
 
 @20032 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1284,7 +1284,7 @@ I found myself thinking... just what were we fighting for all this time?”
 # 审校：全局：弯撇号／弯引号
 > 「だけどさ……信じられるものだって、手
 >  に入れたんだよね。違うかい、忍?」
-“But you know... we did gain something we can believe in, didn’t we? Isn’t that right, Shinobu?”
+“But you know... we also found something we could believe in. Am I wrong, Shinobu?”
 
 @20036 Shinobu · 忍
 > 「…………」
@@ -1324,7 +1324,7 @@ I found myself thinking... just what were we fighting for all this time?”
 # 审校：全局：弯撇号／弯引号
 > 「あんたか……いや、地球で見る月は
 >  キレイだなと思ってさ
-“It’s you... No, I was just thinking the moon looks beautiful from Earth.
+“Oh, it’s you... Nah, I was just thinking how pretty the moon looks from Earth.
 ---
 >  コロニーじゃ月がはっきり見えすぎて、
 >  まるで墓場みたいだった
@@ -1336,4 +1336,4 @@ And there was an Imperial base there too. I wonder how much longer I’ll get to
 ---
 >  ……あいつは月なんか見やしないだろう
 >  けどな……」
-...Though I doubt that guy ever looks at the moon at all...”
+...Not that that guy ever bothers looking at the moon...”
