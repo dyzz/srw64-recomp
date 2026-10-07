@@ -163,13 +163,13 @@ One minute until energy critical.”
 @47960 Bright · ブライト
 # 审校：Bright 的舰长口吻应更简洁有力，去掉多余的“Then”。
 > 「ではみんな、あとを頼むぞ」
-“Everyone, I leave the rest to you.”
+“Take care of things while we’re gone, everyone.”
 
 @47961 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「そんじゃちょっくら行ってくるぜ。
 >  宴会の用意して待っててくれよな」
-“Well then, I’m off for a bit. Get the party ready and wait for us.”
+“Well, I’m off for a bit. Have a party waiting for us when we get back.”
 
 @47962 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -208,7 +208,7 @@ there’s a chance we can come pick you up from here.”
 @47966 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「ははっ、期待しないで待ってますよ」
-“Haha, I’ll wait without getting my hopes up.”
+“Haha, I won’t hold my breath.”
 
 @47967 Chan · チェーン
 > 「ガンドール砲、エネルギー臨界。
@@ -255,7 +255,7 @@ Switching to normal propulsion from here on.”
 # 审校：全局：弯撇号／弯引号
 > 「そうしてくれ。奇妙なところへ出たな
 >  …ここがムゲの宇宙だというのか……?」
-“Please do. We’ve come out somewhere strange... So this is Muge’s universe...?”
+“Very well. We’ve come out somewhere strange... So this is Muge’s universe...?”
 
 @47976 Banjo · 万丈
 # 审校：英文生硬
@@ -266,7 +266,7 @@ Switching to normal propulsion from here on.”
 @47977 Koji · 甲児
 > 「なんだかどこもかしこも、
 >  ゆがんでるような気がするぜ」
-“Somehow it feels like everything, everywhere, is warped.”
+“Feels like everything around here is warped somehow.”
 
 @47978 Hayato · ハヤト
 > 「そうだな……星の見え方もおかしいか」
@@ -359,11 +359,11 @@ Everyone, stay on your guard.”
 @47996 Emperor Muge · ムゲ帝王
 > 「生き物は自らの生きうる
 >  空間をわきまえてこそ
-“Living things survive only when they know the space in which they can live.
+“A living thing survives only if it knows the bounds of the space it can live in.
 ---
 >  生きのびることができるのだ。
 >  おのれをわきまえぬ、愚か者どもめ」
-Fools who do not know their place.”
+Fools, who know not their place.”
 
 @47997 Death Gaia · デスガイヤー
 # 审校：中英句子断裂
@@ -432,7 +432,7 @@ answer the voice of this Muge Zorbados!”
 # 审校：全局：弯撇号／弯引号
 > 「ちっ、はなから歓迎パレードは
 >  期待してなかったけどさ、こいつは……」
-“Tch, I wasn’t expecting a welcome parade from the start, but this is...”
+“Tch, I wasn’t exactly expecting a welcome parade, but this...”
 
 @48008 Bright · ブライト
 > 「こ、これは……」
@@ -447,10 +447,10 @@ answer the voice of this Muge Zorbados!”
 # 审校：全局：弯撇号／弯引号
 > 「まるで……まるで地獄だね。
 >  死神たちが
-“It’s like... it’s like hell. The reapers look like they’re
+“It’s like... it’s like hell. Like the reapers are
 ---
 >  パーティーでも始めそうだよ」
-about to start a party.”
+about to throw a party.”
 
 @48011 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -522,7 +522,7 @@ just so they could relax in heaven by themselves.”
 @48023 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
 > 「ああ、どうやらおいでなすったようだな」
-“Yeah, looks like they’ve shown up.”
+“Yeah, looks like our hosts have arrived.”
 
 @48024 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -605,7 +605,7 @@ into eternal suffering! Here I come!!”
 @48034 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
 > 「まさかあいつ、なんか新しい術を!?」
-“Don’t tell me he’s got some new spell?!”
+“Don’t tell me he’s got some new trick?!”
 
 @48035 Shinobu · 忍
 > 「くそぉっ、体が重いぜ」
@@ -1106,7 +1106,7 @@ We took down that bastard Muge. If that saves the Earth, then...”
 # 审校：全局：弯撇号／弯引号
 > 「そう……まだ最後じゃないヨ。
 >  まだ、アタシがいるからネ」
-“That’s right... it’s not the end yet. Because I’m still here, you see.”
+“That’s right... it’s not the end yet. I’m still here, you see.”
 
 @48121 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -1267,11 +1267,11 @@ There’s nothing here, is there?”
 @48146 Ryoma · リョウ
 > 「ああ……これでは
 >  あの世のほうがマシかもな
-“Yeah... at this rate, the afterlife might be better.
+“Yeah... the afterlife might be better than this.
 ---
 >  あの世ならまだ俺たちの
 >  宇宙のはずだからな」
-At least the afterlife would still be our universe.”
+At least the afterlife would still be in our universe.”
 
 @48147 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -1323,7 +1323,7 @@ I wouldn’t be a bit surprised. Take a look outside the ship.”
 @48155 Ryoma · リョウ
 > 「これでは、あの世のほうが
 >  まだマシかもな……」
-“At this rate, the afterlife might be better...”
+“The afterlife might be better than this...”
 
 @48156 Brad · ブラッド（按段落 3DD3）
 > 「ぐっ……」
@@ -1365,7 +1365,7 @@ Even Koji only just came to a little while ago.”
 @48162 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「ちぇっ、いわなきゃわかんないものを」
-“Tch, you didn’t have to say that.”
+“Tch, nobody needed to know that.”
 
 @48163 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1553,4 +1553,4 @@ It’ll be fine, just fine.”
 @48191 Sara · 沙羅
 > 「違いないね。じゃ
 >  みんなで食堂にでも行くかい」
-“No doubt about it. So, shall we all head to the mess hall?”
+“You got that right. So, how about we all hit the mess hall?”

@@ -58,13 +58,13 @@ Do so, and you shall be praised as heroes of the Earth Sphere for all generation
 # 审校：去句尾“哦”，英文重复
 > 「気にいったよ、グレミー。
 >  こういうの、好きだ」
-“I like it, Glemy. I like this kind of thing.”
+“I like that, Glemy. This is my kind of thing.”
 
 @42237 Glemy · グレミー
 # 审校：英文语序不通，中文“觉悟”腔
 > 「別にお前に喜んでもらうためではない
 >  昨日までハマーンに忠誠を誓って
-“It’s not to please you. For people who were swearing loyalty to Haman just yesterday,
+“I didn’t do it to please you. If I want men who swore loyalty to Haman only yesterday,
 ---
 >  いた者たちには、地球をくれてやる
 >  くらいのことは、覚悟しないとな」
@@ -86,7 +86,7 @@ I’d better be ready to hand them the whole Earth.”
 ---
 >  グレミーは反逆者である。
 >  悪い奴だということだ
-Glemy is a traitor. In other words, a villain.
+Glemy is a traitor. That is to say, a bad man.
 ---
 >  私のあとに続いて、叩きつぶすのだ!」
 Follow me and crush him!”
@@ -94,7 +94,7 @@ Follow me and crush him!”
 @42241 Illia · イリア
 > (ふむ……精神は安定している
 >  ようだな……これならば問題はないか)
-(Hmm... his mind seems stable... then there should be no problem.)
+(Hmm... his mind seems stable enough... Then there’s nothing to worry about.)
 
 @42242 Haman · ハマーン
 > 「……優劣はつけがたいか……
@@ -130,7 +130,7 @@ Follow me and crush him!”
 # 审校：全局：弯撇号／弯引号
 > 「いま月から来た映像を
 >  チェックしてもらってます」
-“We’re having the footage just in from the Moon checked now.”
+“They’re going over the footage that just came in from the Moon.”
 
 @42249 Amuro · アムロ
 > 「ベルトーチカ?」
@@ -140,11 +140,11 @@ Follow me and crush him!”
 # 审校：全局：弯撇号／弯引号
 > 「はっきりとはわからないけど、
 >  サイド3には
-“I can’t say for certain, but I don’t think Side 3 has
+“I can’t say for certain, but I don’t think they’ve left
 ---
 >  ほとんど艦艇を残していないと
 >  思うわ」
-left many ships behind.”
+many ships at Side 3.”
 
 @42251 Amuro · アムロ
 # 审校：英文生硬
@@ -168,7 +168,7 @@ crush Glemy too. Otherwise, we’ll get hit from behind.”
 @42253 Alan · アラン
 # 审校：去翻译腔，中文句读
 > 「うむ、その見方は正しいな。艦長」
-“Yes, that’s the right read, Captain.”
+“Yes, I’d say that read is correct. Captain?”
 
 @42254 Bright · ブライト
 > 「……よし、我々もアクシズへ向かう。
@@ -194,7 +194,7 @@ And after that, Haman too, if possible.”
 # 审校：全局：弯撇号／弯引号
 > 「そういうことだ。{HeroMech}は
 >  アクシズへ向けて出発する
-“That’s how it is. The {HeroMech} departs for Axis.
+“That settles it. The {HeroMech} departs for Axis.
 ---
 >  補給と整備は終わらせておけよ!」
 Finish resupply and maintenance!”
@@ -214,11 +214,11 @@ Finish resupply and maintenance!”
 @42260 Shirley · シャリー
 > 「そう。こういう状況じゃ、あたしたちに
 >  できるのって、これくらいだものね」
-“Right. In a situation like this, this is about all we can do.”
+“Well, in a situation like this, it’s about all we can do.”
 
 @42261 Amuro · アムロ
 > 「助かるよ。チェーン、どうだい?」
-“That helps. Chan, how about you?”
+“Thanks. Chan, how’s yours coming?”
 
 @42262 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -261,7 +261,7 @@ You can launch anytime.”
 @42267 Astonaige · アストナージ
 > 「おせじはいいんだよ!
 >  みんな、今度で決めてくれよ」
-“Save the flattery! Everyone, settle it this time!”
+“Save the flattery! Make this one count, all of you!”
 
 @42268 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -284,7 +284,7 @@ Be ready to launch at any time!”
 @42271 Glemy · グレミー
 # 审校：英文生硬
 > 「ハマーン、自らやられに出てくるとはな」
-“Haman, coming out in person just to be shot down?”
+“So Haman comes out in person, just to be shot down.”
 
 @42272 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号
@@ -317,7 +317,7 @@ Be ready to launch at any time!”
 # 检查提示：未用必用译名：プルツー→Ple-Two
 > 「くっ……冗談ではない。
 >  プルツー、来い!」
-“Ngh... Don’t be ridiculous. Ple-Two, with me!”
+“Ngh... I won’t have this. Ple-Two, with me!”
 
 @42278 Ple-Two · プルツー
 > 「了解ッ」
@@ -332,7 +332,7 @@ Be ready to launch at any time!”
 @42280 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
 > 「そうさせてもらう」
-“I’ll do just that.”
+“So I shall.”
 
 @42281 Judau · ジュドー
 > 「ハマーン、待て!」
@@ -341,10 +341,10 @@ Be ready to launch at any time!”
 @42282 Haman · ハマーン
 > 「私は今グレミーを倒すことで
 >  手いっぱいだ
-“I have my hands full defeating Glemy right now.
+“My hands are full with Glemy right now.
 ---
 >  お前たちを相手にしているヒマはない」
-I have no time to deal with you.”
+I have no time to waste on you.”
 
 @42283 Kamille · カミーユ
 # 审校：原意是“那由我们自己决定”，中文接不上
@@ -369,15 +369,15 @@ I have no time to deal with you.”
 # 审校：全局：弯撇号／弯引号
 > 「結局は、あなたのやろうと
 >  していることだって同じだってね。
-“In the end, what you’re trying to do is the same thing.
+“In the end, what you’re trying to do is no different.
 ---
 >  同じ結果になる。
 >  それが俺にはわかるんだ」
-It’ll end the same way. That much I can see.”
+It’ll end the same way. I can see that much.”
 
 @42288 Haman · ハマーン
 > 「聞いたふうな口をきく」
-“You talk as if you know.”
+“You talk as if you know it all.”
 
 @42289 Mashymre · マシュマー
 > 「ハマーン様、お早く!」
@@ -387,10 +387,10 @@ It’ll end the same way. That much I can see.”
 # 审校：全局：弯撇号／弯引号
 > 「時間をつぶすわけにはいかん。
 >  互いに生き残れば
-“I can’t afford to waste time. If we both survive,
+“I have no time to waste. If we both live through this,
 ---
 >  少しは話につきあってもやろう」
-I’ll hear a little more of what you have to say.”
+perhaps I’ll humor you with a little conversation.”
 
 @42291 Kamille · カミーユ
 > 「ハマーンッ!」
@@ -412,7 +412,7 @@ First, we focus on crushing Glemy.”
 ---
 >  よし、グレミーに従う反逆者どもを
 >  今ここで叩きつぶすのだ!
-All right, we crush the rebels who follow Glemy right here and now!
+Now, let us crush the rebels who follow Glemy, here and now!
 ---
 >  マシュマー・セロ、まいる!」
 Mashymre Cello, moving out!”
@@ -431,7 +431,7 @@ Mashymre Cello, moving out!”
 @42296 Mashymre · マシュマー
 > 「いらぬことだ。このマシュマー・セロ、
 >  ハマーン様のためどこまでも戦いぬく!」
-“None of your concern. I, Mashymre Cello, will fight on to the end for Lady Haman!”
+“Needless words! I, Mashymre Cello, will fight on to the end for Lady Haman!”
 
 @42297 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
@@ -515,18 +515,18 @@ we have a duty to serve as the rear guard!”
 # 审校：全局：弯撇号／弯引号
 > 「そうさ。こんなところであんたたちに
 >  死なれちゃ、面白くないからね」
-“That’s right. It wouldn’t be any fun if you all died in a place like this.”
+“That’s right. It’d be no fun if you all went and died out here.”
 
 @42311 Beltorchika · ベルトーチカ
 > 「!? 艦長、あの二人の機体、
 >  被弾しています」
-“?! Captain, those two units are taking hits.”
+“?! Captain, both their units have been hit.”
 
 @42312 Mashymre · マシュマー
 # 审校：全局：弯撇号／弯引号
 > 「心配は無用だ! お前たちとの
 >  決着も、いずれ必ずつける!
-“No need to worry! I’ll settle things with you all someday, without fail!
+“No need to worry! And I will settle things with you one day, mark my words!
 ---
 >  行け!」
 Go!”
@@ -563,10 +563,10 @@ Go!”
 # 审校：全局：弯撇号／弯引号
 > 「お前たちとの決着もついていないのだ
 >  私もあとから、はせ参じる
-“Our score with you isn’t settled yet. I’ll come after you shortly,
+“Our score is not yet settled. I shall join you soon enough,
 ---
 >  ここは私にまかせて先へ行け!」
-so leave this to me and go on ahead!”
+so leave this to me and go!”
 
 @42320 Bright · ブライト
 > 「……よし、全機、
@@ -615,7 +615,7 @@ Lady Haman, banzaiiiii!!”
 ---
 >  行きな! あたしはこんなところじゃ
 >  死にゃしないよ!」
-Go! I’m not gonna die in a place like this!”
+Go! I’m not gonna die out here!”
 
 @42328 Bright · ブライト
 > 「……よし、全機、

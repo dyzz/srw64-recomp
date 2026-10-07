@@ -74,16 +74,16 @@ hanging around, weren’t they? I totally forgot. Right, Heero?”
 @48202 Heero · ヒイロ
 > 「俺はくると思っていた。
 >  忘れていたのは、お前のミスだ」
-“I knew they would come. Forgetting was your mistake.”
+“I knew they’d come. Forgetting was your mistake.”
 
 @48203 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
 > 「へぇへぇ。お前を驚かすにゃ、
 >  あのお嬢さんでも連れてこなくちゃ
-“Yeah, yeah. To surprise you, I’d have to bring that young lady along,
+“Yeah, yeah. Guess the only way to surprise you is to bring that young lady along,
 ---
 >  だめだよな。そいつも忘れてたぜ」
-wouldn’t I? I forgot about her too.”
+huh? Forgot about her too.”
 
 @48204 Heero · ヒイロ
 > 「リリーナは関係ない」
@@ -254,7 +254,7 @@ notify all OZ units. And contact Lady Une as well.”
 @48224 Sayaka · さやか
 > 「どう、お父さま?
 >  なんとかなりそうなの?」
-“How is it, Father? Do you think you can manage something?”
+“Well, Father? Can anything be done?”
 
 @48225 Prof. Yumi · 弓教授
 > 「さやか、甲児くんたちも一緒かね。
@@ -317,12 +317,12 @@ or we won’t find any countermeasure at all.”
 # 审校：全局：弯撇号／弯引号
 > 「それはわからん。
 >  可能性があるという話だ」
-“That I don’t know. I’m saying there’s a possibility.”
+“That remains to be seen. I’m only saying it’s possible.”
 
 @48235 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「なんだよ、はっきりしないなぁ」
-“What the heck, that’s so vague.”
+“Come on, quit being so vague.”
 
 @48236 Prof. Yumi · 弓教授
 # 审校：全局：弯撇号／弯引号
@@ -446,7 +446,7 @@ remember that!!”
 @48251 Bright · ブライト
 > 「まさか……気をつけろ!
 >  奴の精神攻撃がくるぞ!」
-“No way... Watch out! His mental attack is coming!”
+“It can’t be... Watch out! His mental attack is coming!”
 
 @48252 Gildrome · ギルドローム
 > 「マシーンは壊れなくとも、
@@ -472,7 +472,7 @@ your minds? Kukukukuku.”
 @48255 Bright · ブライト
 > 「なんだと!? いかん、みんな持ち
 >  こたえてくれよ!」
-“What?! This is bad, everyone hold on!”
+“What?! Damn it, hang in there, everyone!”
 
 @48256 Ciela · シーラ
 # 审校：いけません 是“不好”
@@ -501,10 +501,10 @@ your minds? Kukukukuku.”
 # 审校：全局：弯撇号／弯引号
 > 「シーラ女王、大丈夫ですか!?
 >  どうやら我々は
-“Queen Ciela, are you okay?! It seems we’ve
+“Queen Ciela, are you all right?! Looks like we’ve
 ---
 >  敵の術中にはまったようです」
-fallen into the enemy’s trap.”
+played right into the enemy’s hands.”
 
 @48260 Ciela · シーラ
 > 「わかっていながら避けられぬとは……
@@ -543,7 +543,7 @@ fallen into the enemy’s trap.”
 @48265 Elle · エレ
 > 「オーラ力も減退している……いけない
 >  皆さん、気をつけてください!」
-“My aura power is fading too... This is bad, everyone, please be careful!”
+“My aura power is waning too... Everyone, you must be careful!”
 
 @48266 Dr. Hazuki · 葉月博士
 > 「なんだ!? 何をするつもりだ!?」
@@ -575,7 +575,7 @@ your minds? Kukukukuku.”
 # 审校：全局：弯撇号／弯引号
 > 「博士、大丈夫ですか!?
 >  どうやら敵の術中にはまったようです」
-“Doctor, are you all right?! It seems we’ve fallen into the enemy’s trap.”
+“Doctor, are you all right?! Looks like we’ve played right into the enemy’s hands.”
 
 @48272 Dr. Hazuki · 葉月博士
 > 「くっ……い、いかん、このままでは……」
@@ -680,7 +680,7 @@ Just like we thought, they still haven’t given up.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ……このままじゃ
 >  何度でも攻めてくるな
-“Yeah... At this rate they’ll keep attacking again and again.
+“Yeah... At this rate they’ll just keep coming back.
 ---
 >  いつまで持ちこたえることができるか……」
 How long can we hold out...”
@@ -688,7 +688,7 @@ How long can we hold out...”
 @48289 Chum · チャム
 # 审校：全局：弯撇号／弯引号
 > 「ショウ、そんな不吉なこといわないでよ」
-“Show, don’t say such ominous things.”
+“Show, don’t say creepy stuff like that.”
 
 @48290 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -746,7 +746,7 @@ They say they’re coming over here now.”
 # 审校：全局：弯撇号／弯引号
 > 「わしらも遊んでいたわけではないのでな。
 >  葉月博士」
-“We haven’t been idle either, you know. Dr. Hazuki.”
+“We haven’t been sitting on our hands, you know. Dr. Hazuki?”
 
 @48298 Dr. Hazuki · 葉月博士
 # 审校：“无法实现……的机构”翻译腔
@@ -865,7 +865,7 @@ and reach the Muge universe.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、そう結論を急ぐものでもない。
 >  艦長、先の戦闘で破壊した
-“No, there’s no need to jump to conclusions. Captain, I’d like permission to recover
+“No, don’t jump to conclusions. Captain, I’d like permission to recover
 ---
 >  敵艦の残骸を
 >  回収させてもらいたい」
@@ -889,11 +889,11 @@ If we examine the enemy ship’s wreckage, we may learn something.”
 @48315 Bright · ブライト
 > 「なるほど、わかりました。
 >  万丈、手のあいている者を
-“I see, understood. Banjo, could you take a few people who are free
+“I see, understood. Banjo, could you take a few hands who aren’t busy
 ---
 >  何人か連れていって、
 >  回収に当たってくれないか」
-and handle the recovery?”
+and see to the recovery?”
 
 @48316 Banjo · 万丈
 # 审校：万丈的从容口吻中“after all”位置更自然，且原文“ってことだからね”的轻松语气应保留。
@@ -915,7 +915,7 @@ and handle the recovery?”
 # 审校：全局：弯撇号／弯引号
 > 「いいだろう。それが役に立つなら、
 >  何でもやってやるさ」
-“Very well. If it helps, I’ll do anything.”
+“Fine. If it’ll help, I’ll do whatever it takes.”
 
 @48320 Bright · ブライト
 > 「よし、さっそく始めてくれ」
@@ -1013,7 +1013,7 @@ Pushing her is the worst thing we could do.”
 “Don’t be impatient, Takeru. Compared to what we’ve been through,
 ---
 >  たいしたことじゃないじゃない」
-this is nothing, isn’t it?”
+this is nothing.”
 
 @48335 David · デビッド
 # 审校：全局：弯撇号／弯引号
@@ -1191,7 +1191,7 @@ along with a certain amount of equipment and personnel, but...”
 # 审校：全局：弯撇号／弯引号
 > 「なんだ、結局行けるんじゃないか。
 >  ならそれで十分だぜ」
-“What, so we can go after all. Then that’s good enough.”
+“What, so we can go after all? Then that’s all we need.”
 
 @48360 Dr. Yotsuya · 四谷博士
 # 审校：英文生硬
@@ -1234,7 +1234,7 @@ we could secure a means of return.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ……むろん別の方法があるならば
 >  それにこしたことはないが……あるのか?」
-“Yeah... Of course, if there’s another way, that would be best... but is there one?”
+“Yeah... Of course, another way would be better... but is there one?”
 
 @48367 Dr. Hazuki · 葉月博士
 # 审校：缩写
@@ -1457,7 +1457,7 @@ you’ll never get anywhere.”
 
 @48395 Duo · デュオ
 > 「素直じゃねぇなぁ、相変わらず」
-“Still not honest with yourself, huh. Same as ever.”
+“Can’t just say it straight, can you? Same as ever.”
 
 @48396 Wufei · 五飛
 > 「お前たちとつるむ気はない。
@@ -1534,11 +1534,11 @@ I can’t very well stay behind. Or should I say, we can’t?”
 # 审校：全局：弯撇号／弯引号
 > 「……ムゲを叩ければ、たとえ
 >  もどってこれなかったとしても
-“...If we can strike at Muge, then even if we can’t come back,
+“...If we can strike Muge, then even if we never come back,
 ---
 >  地球圏の安全は
 >  確保できるか……」
-the Earth Sphere’s safety can be secured...”
+the Earth Sphere would be safe...”
 
 @48407 Bright · ブライト
 # 审校：英文生硬
@@ -1639,7 +1639,7 @@ We’re not going so we won’t lose. We’re going so we’ll win.”
 # 审校：原译“it's not yet decided”偏口语，与老管家极其恭敬的措辞不符，改为“it is not yet decided”。
 > 「確かに。それに艦長、まだもどれぬと
 >  決まったわけではありますまい」
-“Indeed. And Captain, it is not yet decided that we cannot return, is it?”
+“Quite so. And Captain, it is hardly settled yet that we cannot return.”
 
 @48418 Bright · ブライト
 > 「わかった、わかったよ。まったく、
@@ -2124,7 +2124,7 @@ They all said they’re going.”
 ---
 >  もしやとは思いますが、
 >  地球人どもに破れたのでは……」
-I may be wrong, but could he have been defeated by the Earthlings...?”
+I hope I am wrong, but could he have fallen to the Earthlings...?”
 
 @48485 Emperor Muge · ムゲ帝王
 # 审校：デスガイヤー 按词表 Death Gaia
@@ -2391,13 +2391,13 @@ One minute to energy critical.”
 
 @48525 Bright · ブライト
 > 「ではみんな、あとを頼むぞ」
-“Everyone, I leave the rest to you.”
+“Take care of things while we’re gone, everyone.”
 
 @48526 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「そんじゃちょっくら行ってくるぜ。
 >  宴会の用意して待っててくれよな」
-“Well then, I’m off for a bit. Get the party ready and wait for us.”
+“Well, I’m off for a bit. Have a party waiting for us when we get back.”
 
 @48527 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -2436,7 +2436,7 @@ there’s a chance we can come get you from this side.”
 @48531 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「ははっ、期待しないで待ってますよ」
-“Haha, we’ll wait without getting our hopes up.”
+“Haha, we won’t hold our breath.”
 
 @48532 Chan · チェーン
 > 「ガンドール砲、エネルギー臨界。
@@ -2639,7 +2639,7 @@ We’re going to be plenty busy ourselves.”
 ---
 >  葉月博士、ガンドールの
 >  改造の方、よろしく頼みますよ」
-Dr. Hazuki, please take care of the Gandor’s modifications.”
+Dr. Hazuki, I’ll leave the Gandor modifications in your hands.”
 
 @48566 Dr. Hazuki · 葉月博士
 # 审校：全局：弯撇号／弯引号
@@ -2860,7 +2860,7 @@ ask Judau to smooth things over with Ple.”
 # 审校：全局：弯撇号／弯引号
 > 「いい、いい。気にするな。さっさとやって
 >  もらっちまえよ」
-“Fine, fine. Don’t worry about it. Just get it done quick.”
+“Fine, fine. Don’t worry about it. Go on, get them to do it.”
 
 @48605 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
@@ -2894,7 +2894,7 @@ I’ll apologize properly to Ple later.”
 ---
 >  もしやとは思いますが、
 >  地球人どもに破れたのでは……」
-I may be wrong, but could he have been defeated by the Earthlings...?”
+I hope I am wrong, but could he have fallen to the Earthlings...?”
 
 @48610 Emperor Muge · ムゲ帝王
 # 审校：デスガイヤー 按词表 Death Gaia

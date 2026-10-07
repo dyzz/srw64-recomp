@@ -25,7 +25,7 @@ Come on, David, let’s go.”
 
 @42765 Simone · シモーヌ
 > 「いいから、くるのよ」
-“Never mind that, just come on.”
+“Never mind that, just come along.”
 
 @42766 David · デビッド
 > 「わかった、わかったからひっぱるなよ」
@@ -149,7 +149,7 @@ One minute until energy critical.”
 # 审校：全局：弯撇号／弯引号
 > 「アンナ、留守番よろしくね。エイジは
 >  あたしが絶対連れて帰ってくるから」
-“Anna, hold down the fort. I’ll definitely bring Eiji back with me.”
+“Anna, hold down the fort. I’ll bring Eiji home, I promise.”
 
 @42789 David · デビッド
 > 「シモーヌ、俺はどうでもいいのかよ」
@@ -164,13 +164,13 @@ One minute until energy critical.”
 
 @42791 Bright · ブライト
 > 「ではみんな、あとを頼むぞ」
-“Everyone, I leave the rest to you.”
+“Take care of things while we’re gone, everyone.”
 
 @42792 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「そんじゃちょっくら行ってくるぜ。
 >  宴会の用意して待っててくれよな」
-“Well then, I’m off for a bit. Get the party ready and wait for us.”
+“Well, I’m off for a bit. Have a party waiting for us when we get back.”
 
 @42793 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -209,7 +209,7 @@ there’s a chance we can come pick you up from this side.”
 @42797 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「ははっ、期待しないで待ってますよ」
-“Haha, I’ll wait without getting my hopes up.”
+“Haha, I won’t hold my breath.”
 
 @42798 Chan · チェーン
 > 「ガンドール砲、エネルギー臨界。
@@ -227,7 +227,7 @@ there’s a chance we can come pick you up from this side.”
 
 @42801 Chum · チャム
 > 「みんな、がんばってね!」
-“Everyone, do your best!”
+“Good luck, everyone!”
 
 @42802 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -256,7 +256,7 @@ Switching to normal propulsion from here on.”
 # 审校：全局：弯撇号／弯引号
 > 「そうしてくれ。奇妙なところへ出たな
 >  …ここがムゲの宇宙だというのか……?」
-“Please do. We’ve come out somewhere strange... So this is Muge’s universe...?”
+“Very well. We’ve come out somewhere strange... So this is Muge’s universe...?”
 
 @42807 Banjo · 万丈
 # 审校：英文更自然
@@ -267,7 +267,7 @@ Switching to normal propulsion from here on.”
 @42808 Koji · 甲児
 > 「なんだかどこもかしこも、
 >  ゆがんでるような気がするぜ」
-“Somehow it feels like everything, everywhere, is warped.”
+“Feels like everything around here is warped somehow.”
 
 @42809 Hayato · ハヤト
 > 「そうだな……星の見え方もおかしいか」
@@ -351,7 +351,7 @@ Everyone, stay on your guard.”
 
 @42825 Emperor Muge · ムゲ帝王
 > 「現れおったな」
-“They have appeared.”
+“They have come.”
 
 @42826 Death Gaia · デスガイヤー
 > 「なんと!?」
@@ -360,11 +360,11 @@ Everyone, stay on your guard.”
 @42827 Emperor Muge · ムゲ帝王
 > 「生き物は自らの生きうる
 >  空間をわきまえてこそ
-“Living things survive only when they know the space in which they can live.
+“A living thing survives only if it knows the bounds of the space it can live in.
 ---
 >  生きのびることができるのだ。
 >  おのれをわきまえぬ、愚か者どもめ」
-Fools who do not know their place.”
+Fools, who know not their place.”
 
 @42828 Death Gaia · デスガイヤー
 # 审校：中英都语序别扭
@@ -380,7 +380,7 @@ Fools who do not know their place.”
 ---
 >  この私自身であるということを、
 >  すぐに思い知るであろう」
-is none other than me.”
+is none other than I myself.”
 
 @42830 Death Gaia · デスガイヤー
 # 审校：精读：破折号
@@ -405,7 +405,7 @@ Death Gaia, which arena will you choose?”
 @42833 Emperor Muge · ムゲ帝王
 > 「ふむ、“赤い宇宙”とな?
 >  いいだろう。我が宇宙に眠る
-“Hmm, the ‘Red Universe’, is it? Very well. Sad souls that sleep within my universe,
+“Hmm, the ‘Red Universe’? Very well. Sad souls that sleep within my universe,
 ---
 >  悲しき魂どもよ、このムゲゾルバドスの
 >  声に応えよ!」
@@ -434,7 +434,7 @@ answer the voice of Muge Zorbados!”
 # 审校：全局：弯撇号／弯引号
 > 「ちっ、はなから歓迎パレードは
 >  期待してなかったけどさ、こいつは……」
-“Tch, I wasn’t expecting a welcome parade from the start, but this is...”
+“Tch, I wasn’t exactly expecting a welcome parade, but this...”
 
 @42839 Bright · ブライト
 > 「こ、これは……」
@@ -449,10 +449,10 @@ answer the voice of Muge Zorbados!”
 # 审校：全局：弯撇号／弯引号
 > 「まるで……まるで地獄だね。
 >  死神たちが
-“It’s like... it’s like hell. The reapers look like they’re
+“It’s like... it’s like hell. Like the reapers are
 ---
 >  パーティーでも始めそうだよ」
-about to start a party.”
+about to throw a party.”
 
 @42842 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -493,7 +493,7 @@ about to start a party.”
 # 审校：管家 voice 要求无缩写，I'm 改为 I am。
 > 「お手上げでございますな。
 >  まったくエネルギー反応がございません」
-“I am at a loss, sir. There is no energy reaction whatsoever.”
+“I am at a loss, sir. There are no energy readings whatsoever.”
 
 @42850 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -518,12 +518,12 @@ just so they could lounge around in heaven by themselves.”
 # 审校：管家口吻要求无缩写，将 I'm 改为 I am。
 > 「これは……エネルギー反応が
 >  多数感知されましたぞ」
-“This is... I am detecting multiple energy reactions.”
+“What is this... I am detecting multiple energy readings.”
 
 @42854 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
 > 「ああ、どうやらおいでなすったようだな」
-“Yeah, looks like they’ve shown up.”
+“Yeah, looks like our hosts have arrived.”
 
 @42855 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -534,7 +534,7 @@ just so they could lounge around in heaven by themselves.”
 # 审校：英文意思偏
 > 「あいもかわらず、好きにはなれない
 >  ご面相だね」
-“Same as ever, that’s a face I could never like.”
+“Same mug as ever. Never could stand that face.”
 
 @42857 Death Gaia · デスガイヤー
 # 审校：全局：弯撇号／弯引号
@@ -550,7 +550,7 @@ To wipe away that defeat on Earth! That humiliation!”
 # 审校：全局：弯撇号／弯引号
 > 「冗談じゃないよ! よくも
 >  そんな勝手なことがいえたもんだね」
-“You’ve got to be kidding! How dare you say something so selfish!”
+“Give me a break! You’ve got some nerve saying that!”
 
 @42859 Banjo · 万丈
 # 审校：ああ＝赞同，不是反驳
@@ -594,7 +594,7 @@ into eternal suffering! Here I come!!”
 # 审校：全局：弯撇号／弯引号
 > 「なんだ!? なんかおかしいぜ。
 >  今、体が自由にならなかった」
-“What?! Something’s wrong. Just now, my body wouldn’t move.”
+“What?! Something’s wrong. For a second there, I couldn’t move.”
 
 @42864 Ryo · 亮
 > 「俺もだ。軽い金縛りに
@@ -604,7 +604,7 @@ into eternal suffering! Here I come!!”
 @42865 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
 > 「まさかあいつ、なんか新しい術を!?」
-“Don’t tell me he’s got some new spell?!”
+“Don’t tell me he’s got some new trick?!”
 
 @42866 Shinobu · 忍
 > 「くそぉっ、体が重いぜ」
@@ -618,7 +618,7 @@ into eternal suffering! Here I come!!”
 @42868 Heero · ヒイロ
 # 审校：英文更自然
 > 「状況は不利……か」
-“Things aren’t in our favor... huh.”
+“The odds are against us... huh.”
 
 @42869 Trowa · トロワ
 > 「ああ……どうやら俺たちの気力が
@@ -658,7 +658,7 @@ into eternal suffering! Here I come!!”
 ---
 >  まともに戦ってもこちらのパワーを
 >  吸い取られるだけでしょう」
-Even fighting him head-on will only drain our power.”
+Fight him head-on, and he will only drain our power.”
 
 @42877 Reika · レイカ
 > 「なんですって!?」
@@ -705,7 +705,7 @@ that is how the rules work.”
 @42884 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
 > 「それだけの価値はあるということか……」
-“So that’s how much it’s worth...”
+“So it’s worth that much...”
 
 @42885 David · デビッド
 # 审校：全局：弯撇号／弯引号
@@ -742,7 +742,7 @@ that is how the rules work.”
 
 @42891 Duke · デューク
 > 「さあどうだ。これでも復活できるか!?」
-“Well, how about it? Can you revive even now?!”
+“How about that? Can you revive now?!”
 
 @42892 Shinobu · 忍
 > 「さぁ、復活できるもんなら
@@ -759,7 +759,7 @@ that is how the rules work.”
 # 审校：デスガイヤー 按词表 Death Gaia
 > 「デスガイヤー、復活できるものなら
 >  やってみろ!」
-“Death Gaia, if you can revive, then try it!”
+“Death Gaia, revive if you can!”
 
 @42895 Hayato · ハヤト
 # 审校：デスガイヤー 按词表 Death Gaia
@@ -865,7 +865,7 @@ then let’s see you do it!”
 @42914 主角
 # 审校：全局：弯撇号／弯引号
 > 「くっ……もたせてみせる!」
-“Ngh... I’ll hold out, just you watch!”
+“Ngh... I’ll make it hold!”
 
 @42915 对手
 > 「ちぃっ……こいつはたまんねぇぜ……」
@@ -979,7 +979,7 @@ and I shall make you regret ever angering me. For you see...
 the one you call the Absolute, and at times hold up as your ideal,
 ---
 >  “神”こそが、この私だからだ」
-that ‘god’ is none other than me.”
+that ‘god’ is none other than I.”
 
 @42932 Shinobu · 忍
 > 「ちいっ! なんだってんだ、こいつは!?」
@@ -998,18 +998,18 @@ is pressing down on us...”
 # 审校：全局：弯撇号／弯引号
 > 「この世界、この宇宙そのものが、
 >  あたしたちを押しつぶそうと
-“You’re saying this world, this very universe, is trying to crush us...
+“So this world, this very universe, is trying to crush us, huh...
 ---
 >  してるってことかい……だけどさッ!」
 but you know what?!”
 
 @42935 Emperor Muge · ムゲ帝王
 > 「愚かな……わが悪霊のえじきとなれ!」
-“Foolish... become fodder for my evil spirits!”
+“Fools... Become prey for my evil spirits!”
 
 @42936 Emperor Muge · ムゲ帝王
 > 「この私を相手に、よくやる。だが……」
-“You do well, facing me. But...”
+“You fare well against me. But...”
 
 @42937 Shinobu · 忍
 > 「なんだと!? くっ……くっそぉぉーっ!!」
@@ -1084,7 +1084,7 @@ We took down that bastard Muge. If that’s what saves the Earth...”
 # 审校：帰還＝回舰；中文后半拗口
 > 「とにかく全員帰還してくれ。
 >  まだ最後と決まったわけじゃない」
-“Everyone, just get back to the ship. It’s not decided yet that this is the end.”
+“Everyone, just get back to the ship. Nobody said this is the end yet.”
 
 @42949 Reika · レイカ
 > 「えっ……これは!?」
@@ -1093,13 +1093,13 @@ We took down that bastard Muge. If that’s what saves the Earth...”
 @42950 Garrison · ギャリソン
 > 「なんと、新しい反応が
 >  出現いたしましたぞ!」
-“Good heavens, a new reaction has appeared!”
+“Good heavens, a new reading has appeared!”
 
 @42951 Avie-Lu · アヴィ＝ルー
 # 审校：全局：弯撇号／弯引号
 > 「そう……まだ最後じゃないヨ。
 >  まだ、アタシがいるからネ」
-“That’s right... it’s not the end yet. Because I’m still here, you see.”
+“That’s right... it’s not the end yet. I’m still here, you see.”
 
 @42952 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -1145,7 +1145,7 @@ That just wouldn’t be any fun, you see...”
 # 审校：全局：弯撇号／弯引号
 > 「わざわざ我々を
 >  やるまでもないということか……」
-“So she means there’s no need to bother finishing us off...”
+“So we’re not even worth her finishing off...”
 
 @42958 Garrison · ギャリソン
 > 「確かに……結局、帰るすべは
@@ -1194,7 +1194,7 @@ That just wouldn’t be any fun, you see...”
 # 审校：全局：弯撇号／弯引号
 > 「わざわざ我々を
 >  やるまでもないということか……」
-“So she means there’s no need to bother finishing us off...”
+“So we’re not even worth her finishing off...”
 
 @42966 Garrison · ギャリソン
 > 「確かに……結局、帰るすべは
@@ -1240,7 +1240,7 @@ That just wouldn’t be any fun, you see...”
 # 审校：补上主语，使句子完整自然。
 > 「さてな……これが生きていると
 >  いえるのかどうか」
-“Who knows... whether we can call this alive or not.”
+“Who knows... if you can call this living.”
 
 @42975 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -1260,11 +1260,11 @@ There’s nothing here, is there?”
 @42977 Ryoma · リョウ
 > 「ああ……これでは
 >  あの世のほうがマシかもな
-“Yeah... at this rate, the afterlife might be better.
+“Yeah... the afterlife might be better than this.
 ---
 >  あの世ならまだ俺たちの
 >  宇宙のはずだからな」
-At least the afterlife would still be our universe.”
+At least the afterlife would still be in our universe.”
 
 @42978 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -1316,7 +1316,7 @@ I wouldn’t be surprised one bit. Take a look outside the ship.”
 @42986 Ryoma · リョウ
 > 「これでは、あの世のほうが
 >  まだマシかもな……」
-“At this rate, the afterlife might be better...”
+“The afterlife might be better than this...”
 
 @42987 Brad · ブラッド（按段落 3DD3）
 > 「ぐっ……」
@@ -1349,7 +1349,7 @@ I wouldn’t be surprised one bit. Take a look outside the ship.”
 # 审校：沙也加对布拉德说甲儿，不是对甲儿说
 > 「しかたないわよ。
 >  みんなそうだったんだもの
-“Can’t be helped. Everyone was the same.
+“It’s not your fault. It happened to everyone.
 ---
 >  甲児くんだって、
 >  ついさっき気がついたのよ」
@@ -1358,7 +1358,7 @@ Koji only just came to a moment ago himself.”
 @42993 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「ちぇっ、いわなきゃわかんないものを」
-“Tch, you didn’t have to say that.”
+“Tch, nobody needed to know that.”
 
 @42994 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1379,7 +1379,7 @@ Koji only just came to a moment ago himself.”
 @42997 Brad · ブラッド（按段落 3DD3）
 > 「虚空……? 悪い、
 >  もっとわかりやすくいってくれよ」
-“The void...? Sorry, say it in a way I can understand.”
+“The void...? Sorry, mind putting that in simpler terms?”
 
 @42998 Manami · マナミ（按段落 3DD4）
 > 「うっ……」
@@ -1448,7 +1448,7 @@ it seems. What happened?”
 return to our universe. Even the flow of time may differ
 ---
 >  違うかもしれません」
-from our own universe.”
+from that of our own universe.”
 
 @43009 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -1458,13 +1458,13 @@ from our own universe.”
 
 @43010 Shinobu · 忍
 > 「生きてるだけ、上等さ」
-“Being alive is good enough.”
+“We’re alive. That’s good enough.”
 
 @43011 Alan · アラン
 # 审校：全局：弯撇号／弯引号
 > 「そう思う。ガンドールの
 >  改造が終われば
-“I think so. Once Gandor’s modifications are done,
+“I agree. Once Gandor’s modifications are done,
 ---
 >  仲間たちが迎えに来てくれる
 >  かもしれん。いまはただ、待つしかない」
@@ -1478,7 +1478,7 @@ our comrades might come for us. For now, all we can do is wait.”
 ---
 >  そう長い間生きていけるだけの
 >  物資はないはずだ」
-We shouldn’t have enough supplies to last that long.”
+We don’t have the supplies to last that long.”
 
 @43013 Simone · シモーヌ
 # 审校：英文更自然
@@ -1508,20 +1508,20 @@ someone more optimistic.”
 # 审校：全局：弯撇号／弯引号
 > 「フッ、論理的な人間よりも、
 >  忍たちのような
-“Heh, so you’d rather have simple minds like Shinobu and the rest
+“Heh, who’d have thought simple heads like Shinobu’s would be
 ---
 >  単純なおつむがありがたいとはな」
-than logical people.”
+more welcome than logical ones.”
 
 @43018 Banjo · 万丈
 # 审校：去掉“这一点是事实”
 > 「ははははっ。まあともかく、
 >  待つしかできないというのは事実だ
-“Hahahaha. Anyway, all we can do is wait, and that’s a fact.
+“Hahahaha. Anyway, the fact is, all we can do is wait.
 ---
 >  とりあえず腹ごしらえでも
 >  しようじゃないか」
-For now, let’s get something to eat.”
+In the meantime, let’s grab something to eat.”
 
 @43019 Trowa · トロワ
 > 「正論だな」
@@ -1545,4 +1545,4 @@ It’ll be fine, it’ll be fine.”
 @43022 Sara · 沙羅
 > 「違いないね。じゃ
 >  みんなで食堂にでも行くかい」
-“No doubt about it. So, shall we all head to the mess hall?”
+“You got that right. So, how about we all hit the mess hall?”
