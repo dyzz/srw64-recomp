@@ -497,7 +497,7 @@ Base rabble after all, with no grasp of the weight of tradition.”
 # 审校：全局：弯撇号／弯引号
 > 「ハマーン・カーン、いま1度聞く。
 >  我々に従う気はないのだな?」
-“Haman Karn, I’ll ask you once more. You have no intention of obeying us?”
+“Haman Karn, I’ll ask you once more. You have no intention of submitting to us, then?”
 
 @31363 Haman · ハマーン
 > 「交渉は決裂だな。

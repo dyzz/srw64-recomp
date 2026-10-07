@@ -2125,7 +2125,7 @@ like Zuul. I believed that... I belie...ved...”
 @39539 Rose · ロゼ
 > 「マーグ……隊長……!?
 >  おのれ、マーズ!!」
-“Marg... Captain...?! Curse you, Mars!!”
+“Commander... Marg...?! Curse you, Mars!!”
 
 @39540 Marg · マーグ
 > 「……う…………」
@@ -2801,7 +2801,7 @@ I swear I’ll protect the Earth.”
 # 审校：全局：弯撇号／弯引号
 > 「その意気、その意気。ほら、
 >  みんなが心配してるから、行きましょ」
-“That’s the spirit! Come on, everyone’s worried about you. Let’s go.”
+“That’s the spirit, that’s the spirit. Come on, everyone’s worried about you. Let’s go.”
 
 @39653 Maria · マリア
 # 审校：全局：弯撇号／弯引号
