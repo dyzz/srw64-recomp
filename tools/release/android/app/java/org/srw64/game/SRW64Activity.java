@@ -1,8 +1,11 @@
 package org.srw64.game;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.system.ErrnoException;
@@ -68,6 +71,30 @@ public class SRW64Activity extends SDLActivity {
     @Override
     public void setOrientationBis(int w, int h, boolean resizable, String hint) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+    }
+
+    // The settings' "open this folder" (src/native/ui/frontend.cpp, over JNI): the system
+    // Files app at a folder of the data folder, through UserFilesProvider. False for a
+    // folder outside it or when no app can show it.
+    public boolean openUserFolder(String path) {
+        String relative;
+        try {
+            String base = SetupActivity.userDir(this).getCanonicalPath(), folder = new File(path).getCanonicalPath();
+            if (folder.equals(base)) relative = "";
+            else if (folder.startsWith(base + File.separator)) relative = folder.substring(base.length() + 1);
+            else return false;
+        } catch (java.io.IOException error) {
+            return false;
+        }
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(UserFilesProvider.folderUri(relative), DocumentsContract.Document.MIME_TYPE_DIR);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        try {
+            startActivity(intent);
+            return true;
+        } catch (ActivityNotFoundException error) {
+            return false;
+        }
     }
 
     @Override

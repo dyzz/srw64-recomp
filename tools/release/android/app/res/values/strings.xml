@@ -3,4 +3,5 @@
     <string name="app_name">SRW64</string>
     <string name="import_hd">导入 HD 包</string>
     <string name="import_hd_long">导入 HD 美术包</string>
+    <string name="user_files_summary">存档、滤镜、框体与 HD 包</string>
 </resources>

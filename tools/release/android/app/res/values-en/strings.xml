@@ -2,4 +2,5 @@
 <resources>
     <string name="import_hd">Import HD pack</string>
     <string name="import_hd_long">Import the HD art pack</string>
+    <string name="user_files_summary">Saves, filters, bezels and the HD pack</string>
 </resources>

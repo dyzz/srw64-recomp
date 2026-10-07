@@ -2,4 +2,5 @@
 <resources>
     <string name="import_hd">HD パックを導入</string>
     <string name="import_hd_long">HD アートパックを導入</string>
+    <string name="user_files_summary">セーブ・フィルター・ベゼル・HD パック</string>
 </resources>

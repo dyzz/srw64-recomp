@@ -1,4 +1,7 @@
 #include "frontend.hpp"
+#ifdef __ANDROID__
+#include <jni.h>
+#endif
 #include "app_menu.hpp"
 #include "ui_fonts.hpp"
 #include "slant_decorator.hpp"
@@ -1045,6 +1048,29 @@ bool handheld() {
     return on_steam_deck();
 #endif
 }
+#ifdef __ANDROID__
+// SRW64Activity.openUserFolder: the Files app at a folder of the data folder.
+bool open_folder(const std::string& path) {
+    auto* env=static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    auto activity=static_cast<jobject>(SDL_AndroidGetActivity());
+    if(!env || !activity)return false;
+    const jclass type=env->GetObjectClass(activity);
+    const jmethodID method=env->GetMethodID(type,"openUserFolder","(Ljava/lang/String;)Z");
+    bool opened=false;
+    if(method) {
+        const jstring text=env->NewStringUTF(path.c_str());
+        opened=env->CallBooleanMethod(activity,method,text);
+        env->DeleteLocalRef(text);
+    }
+    if(env->ExceptionCheck()){env->ExceptionClear();opened=false;}
+    env->DeleteLocalRef(type);env->DeleteLocalRef(activity);
+    return opened;
+}
+bool can_open_folder(){return true;}
+#else
+bool open_folder(const std::string& path){return SDL_OpenURL(("file://"+path).c_str())==0;}
+bool can_open_folder(){return !handheld() && !touch_active();}
+#endif
 // Bezel and filter (docs/native/bezels-and-filters.md): a picker inside the General page
 // that walks the player's folder and RetroArch's, one level at a time.
 std::string browse_kind;            // "bezel", "filter" or empty while closed
@@ -1060,8 +1086,9 @@ std::string browser() {
             const char* key=root.kind==settings::LookFolder::builtin?"settings_browse_builtin":root.kind==settings::LookFolder::mine?
                 (bezels?"settings_bezel_mine":"settings_filter_mine"):"settings_browse_retroarch";
             out+=row("browse-dir:"+root.path.string(),label(key)+" <span class='set-note'>"+escape(root.path.string())+"</span>");
-            // The player's folder opens in the file manager, where there is one to open.
-            if(root.kind==settings::LookFolder::mine && !handheld() && !touch_active())
+            // The player's folder opens in the file manager, where there is one to open: on
+            // Android the Files app, through the app's UserFilesProvider.
+            if(root.kind==settings::LookFolder::mine && can_open_folder())
                 out+=row("open-folder:"+root.path.string(),label("settings_browse_open"));
         }
         return out;
@@ -3976,7 +4003,7 @@ void choose(const std::string& id) {
         if(id=="filter-off"){settings::set_filter("");browse_kind.clear();}
         if(id.starts_with("filter-scale:"))settings::set_filter_scale(unsigned(std::stoul(id.substr(13))));
         if(id.starts_with("browse:")){const auto kind=id.substr(7);browse_kind=browse_kind==kind?std::string():kind;browse_dir.clear();}
-        if(id.starts_with("open-folder:")){std::error_code error;std::filesystem::create_directories(id.substr(12),error);SDL_OpenURL(("file://"+id.substr(12)).c_str());}
+        if(id.starts_with("open-folder:")){std::error_code error;std::filesystem::create_directories(id.substr(12),error);open_folder(id.substr(12));}
         if(id.starts_with("browse-dir:")){browse_dir=std::filesystem::path(id.substr(11));std::error_code error;std::filesystem::create_directories(browse_dir,error);}
         if(id=="browse-up") {
             const auto roots=browse_kind=="bezel"?settings::bezel_roots():settings::filter_roots();
