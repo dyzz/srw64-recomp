@@ -3241,7 +3241,7 @@ while you can.”
 
 @39714 Eiji · エイジ
 > 「いや……じゃあ、アンナ」
-“Don’t mention it... Good night, Anna.”
+“Don’t mention it... See you, Anna.”
 
 @39715 Anna · アンナ
 # 审校：全局：弯撇号／弯引号

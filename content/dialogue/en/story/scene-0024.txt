@@ -643,7 +643,7 @@ We’ll hit the enemy base too!”
 @21446 Lila · ライラ
 # 审校：全局：弯撇号／弯引号
 > 「ごますりかい? おもしろくないね」
-“Sucking up to him? I don’t care for that.”
+“Sucking up? I don’t care for that.”
 
 @21447 Zechs · ゼクス
 # 审校：全局：弯撇号／弯引号
@@ -719,7 +719,7 @@ can do.”
 @21459 Lila · ライラ
 # 审校：全局：弯撇号／弯引号
 > 「ごますりかい? おもしろくないね」
-“Sucking up to him? I don’t care for that.”
+“Sucking up? I don’t care for that.”
 
 @21460 Zechs · ゼクス
 # 审校：全局：弯撇号／弯引号
