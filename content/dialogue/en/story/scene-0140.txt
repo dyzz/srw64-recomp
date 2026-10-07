@@ -15,11 +15,11 @@
 @38754 Bright · ブライト
 > 「{HeroNick}はどうした!? 艦内の
 >  捜索、早く終わらせろ!」
-“What happened to {HeroNick}?! Hurry up and finish searching the ship!”
+“Where’s {HeroNick}?! Hurry up and finish searching the ship!”
 
 @38755 Lera · レラ
 > 「サリィ? そんなところで何やってんの?」
-“Sally? What are you doing in a place like that?”
+“Sally? What are you doing in there?”
 
 @38756 Sally · サリィ
 # 审校：全局：弯撇号／弯引号
@@ -40,16 +40,16 @@
 # 审校：全局：弯撇号／弯引号
 > 「だって、見覚えのない奴がいたって
 >  いったの、サリィじゃなかったっけ」
-“But weren’t you the one who said there was someone you didn’t recognize, Sally?”
+“But Sally, weren’t you the one who said you’d spotted someone you didn’t recognize?”
 
 @38760 Sally · サリィ
 # 审校：全局：弯撇号／弯引号
 > 「もしかしたら、姿を変えられるかも
 >  しれないしね。探すなら徹底的に
-“Maybe they can change their appearance. If we’re going to search, we have to do it
+“They might be able to change shape, too. If we’re going to search, we have to be
 ---
 >  やらないと」
-thoroughly.”
+thorough.”
 
 @38761 Lera · レラ
 > 「ふうん……」
@@ -90,10 +90,10 @@ going to check somewhere else.”
 # 审校：全局：弯撇号／弯引号
 > 「動くな! アタシはサリィより前から
 >  この部隊にいるんだ。サリィならそれを
-“Don’t move! I’ve been with this unit longer than Sally has. If you were really Sally, you
+“Don’t move! I was in this unit before Sally ever joined. If you were Sally, you’d
 ---
 >  知らないはずがない!」
-couldn’t possibly not know that!”
+know that!”
 
 @38768 Sally · サリィ
 > 「……ふっ、ほほほほ。よく見破ったわ!」
@@ -107,7 +107,7 @@ couldn’t possibly not know that!”
 # 审校：全局：弯撇号／弯引号
 > 「ほほほほほ! ムダなことじゃ。
 >  ミケーネの幹部……」
-“Ho ho ho ho ho! It’s useless. A Mycenae executive...”
+“Ho ho ho ho ho! Struggling is futile. A Mycenae executive...”
 
 @38771 Marquis Janus · ヤヌス侯爵
 > 「ヤヌス侯爵とは、わらわのことぞ!」
@@ -121,11 +121,11 @@ couldn’t possibly not know that!”
 # 审校：全局：弯撇号／弯引号
 > 「わらわに向かって化け物とはよくいっ
 >  たわ。小娘、貴様は人質じゃ
-“Calling me a monster to my face, how bold. Little girl, you’ll be my hostage. I couldn’t
+“You dare call me a monster to my face? Little girl, you shall be my hostage. I could not
 ---
 >  爆弾はしかけきれなんだが、代わりに
 >  貴様を使ってやろう。こい!」
-finish setting the bombs, but I’ll use you instead. Come!”
+finish planting the bombs, but you will serve instead. Come!”
 
 @38774 Ark · アーク（按段落 3DD1）
 > 「え!? サリィ・ポォがニセ者!?」
@@ -138,18 +138,18 @@ finish setting the bombs, but I’ll use you instead. Come!”
 “That’s right. The base just contacted us. The real Sally has been
 ---
 >  保護されたわ」
-taken into protective custody.”
+found safe.”
 
 @38776 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
 > 「くそっ、そういうことか」
-“Damn it, so that’s what’s going on.”
+“Damn it, so that’s it.”
 
 @38777 Ginrei · 銀鈴
 # 审校：全局：弯撇号／弯引号
 > 「まだ艦内にいるはずよ。急いで
 >  探しましょ」
-“She should still be aboard the ship. Let’s hurry and find her.”
+“She’s got to be somewhere on the ship. Let’s find her, fast.”
 
 @38778 Ark · アーク（按段落 3DD1）
 > 「いたな…………
@@ -181,13 +181,13 @@ Lera?!”
 “I know. We got word that the real Sally was found at the base.
 ---
 >  動くなよ、あんた。レラを放せ」
-Don’t move, you. Let Lera go.”
+Don’t you move. Let Lera go.”
 
 @38783 Sally · サリィ
 # 审校：全局：弯撇号／弯引号
 > 「ホホホ、バレているなら、このような姿を
 >  している理由もないわ」
-“Ho ho ho. If I’ve been found out, there’s no reason to keep this form.”
+“Ho ho ho. Since you’ve seen through me, there’s no reason to keep wearing this face.”
 
 @38784 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -199,11 +199,11 @@ Don’t move, you. Let Lera go.”
 # 审校：原译像在称呼对方为 Marquis Janus
 > 「このヤヌス侯爵にそんなものは効かぬ
 >  お前こそ動くでない
-“Such things won’t work on Marquis Janus. You’re the one who shouldn’t move.
+“Toys like that do nothing to Marquis Janus. It is you who should not move.
 ---
 >  この小娘の細首など、ひねるのは
 >  簡単ぞ!」
-Snapping this little girl’s slender neck would be easy!”
+I could snap this little girl’s slender neck with ease!”
 
 @38786 Ark · アーク（按段落 3DD1）
 > 「く……」
@@ -213,11 +213,11 @@ Snapping this little girl’s slender neck would be easy!”
 # 审校：全局：弯撇号／弯引号
 > 「ホホホホホッ、どうやらこの小娘を
 >  よほど死なせたくないようだな
-“Ho ho ho ho ho, it seems you really don’t want this little girl to die.
+“Ho ho ho ho ho, it seems you would very much rather this little girl not die.
 ---
 >  邪魔が入ってしかけきれなんだが、
 >  せめて格納庫に最後の爆弾を
-I was interrupted before I could finish, but at least I’ll set the last bomb
+I was interrupted before I could finish, but I shall at least plant the last bomb
 ---
 >  しかけるとしよう」
 in the hangar.”
@@ -236,7 +236,7 @@ in the hangar.”
 # 审校：全局：弯撇号／弯引号
 > 「威勢のいいことよ。だが人質は2人
 >  もいらぬな。お前はここで死ぬがよい」
-“Such spirit. But I don’t need two hostages. You can die here.”
+“Such bravado. But I have no need for two hostages. You may die here.”
 
 @38791 Lera · レラ
 > 「くっ……{HeroNick}!!」
@@ -299,10 +299,10 @@ LERAAAAAA!!”
 # 审校：全局：弯撇号／弯引号
 > 「ええい、もはや作戦の続行はムリか
 >  仕掛け終わった爆弾だけでも
-“Tch, no chance of carrying on the plan now. At least I’ll set off
+“Tch, the plan is ruined. I shall at least set off
 ---
 >  爆発させてくれるわ!」
-the bombs I’ve already planted!”
+the bombs I have already planted!”
 
 @38803 Rain · レイン
 > 「みんなは敵を追って!」
@@ -340,7 +340,7 @@ the bombs I’ve already planted!”
 # 审校：全局：弯撇号／弯引号
 > 「だめよ{HeroNick}! 下手に動かし
 >  ちゃだめ!
-“Don’t, {HeroNick}! Don’t move her carelessly!
+“Don’t, {HeroNick}! Don’t try to move her!
 ---
 >  ………………
 ...
@@ -356,7 +356,7 @@ This is...”
 @38811 Rain · レイン
 > 「……とにかく……すぐ治療をしなくちゃ
 >  あなたのケガは?」
-“...In any case... we have to treat her right away. What about your wounds?”
+“...Either way... she needs treatment right away. Are you hurt?”
 
 @38812 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -386,13 +386,13 @@ This is...”
 
 @38817 Ark · アーク（按段落 3DD1）
 > 「だけど……レラが……」
-“But... Lera is...”
+“But... Lera...”
 
 @38818 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 > 「あなたがいても、できることはないわ!
 >  あなたはパイロットでしょう!?」
-“There’s nothing you can do here even if you stay! You’re a pilot, aren’t you?!”
+“There’s nothing you can do by staying here! You’re a pilot, aren’t you?!”
 
 @38819 Ark · アーク（按段落 3DD1）
 > 「くっ……」
@@ -410,7 +410,7 @@ This is...”
 “That’s right. We just got word from the base. The real Sally has been
 ---
 >  保護されたわ」
-taken into protective custody.”
+found safe.”
 
 @38822 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -456,7 +456,7 @@ Lera?!”
 # 审校：全局：弯撇号／弯引号
 > 「ホホホ、バレているなら、このような姿を
 >  している理由もないわ」
-“Ho ho ho. If I’ve been found out, there’s no reason to keep this form.”
+“Ho ho ho. Since you’ve seen through me, there’s no reason to keep wearing this face.”
 
 @38830 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -467,11 +467,11 @@ Lera?!”
 # 审校：同 38785
 > 「このヤヌス侯爵にそんなものは効かぬ
 >  お前こそ動くでない
-“Such things have no effect on Marquis Janus. You are the one who should not move.
+“Toys like that have no effect on Marquis Janus. It is you who should not move.
 ---
 >  この小娘の細首など、ひねるのは
 >  簡単ぞ!」
-Snapping this little girl’s slender neck would be easy!”
+I could snap this little girl’s slender neck with ease!”
 
 @38832 Selain · セレイン（按段落 3DD2）
 > 「なに……? く……」
@@ -580,7 +580,7 @@ Lera?!”
 # 审校：统一侯爵语气，将“I'll”改为“I shall”，并调整第二页表达。
 > 「ええい、もはや作戦の続行はムリか
 >  仕掛け終わった爆弾だけでも
-“Tch, continuing the operation is impossible now. At least I shall set off the bombs
+“Tch, the operation is ruined. At least I shall set off the bombs
 ---
 >  爆発させてくれるわ!」
 I have already planted!”
@@ -621,7 +621,7 @@ I have already planted!”
 # 审校：全局：弯撇号／弯引号
 > 「だめよ{HeroNick}! 下手に動かし
 >  ちゃだめ!
-“No, {HeroNick}! Don’t move her carelessly!
+“No, {HeroNick}! Don’t try to move her!
 ---
 >  ………………
 ...
@@ -636,13 +636,13 @@ This is...”
 @38858 Rain · レイン
 > 「……とにかく……すぐ治療をしなくちゃ
 >  あなたのケガは?」
-“...In any case... she needs treatment right away. What about your wounds?”
+“...Either way... she needs treatment right away. Are you hurt?”
 
 @38859 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「こんなもの、なんでもない!
 >  レラは大丈夫なのかと聞いている!」
-“This is nothing! I’m asking whether Lera is all right!”
+“This is nothing! I asked if Lera is going to be all right!”
 
 @38860 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -700,25 +700,25 @@ right away. I’ll do everything I can.”
 # 审校：that one 指人别扭
 > 「あいつは……あいつをこんな所で
 >  死なせるわけには……」
-“She... I can’t let her die in a place like this...”
+“She... I can’t let her die here, like this...”
 
 @38871 Ginrei · 銀鈴
 # 审校：Where has the you… gone 拗口
 > 「しっかりしなさい! そうした奴も外へ
 >  逃げてしまったわ。敵が来てるのよ
-“Pull yourself together! That thing has fled outside too. The enemy is coming.
+“Pull yourself together! Whoever did this has already escaped outside. The enemy is here.
 ---
 >  あなたがこれまで戦ってきたのは、
 >  何のためなの!? いつものあなたは
-What have you been fighting for all this time?! What happened to
+What have you been fighting for all this time?! Where did
 ---
 >  どこへいってしまったの!? あなたは
 >  そんなに弱くはないでしょう!?」
-the you we know?! You’re not this weak, are you?!”
+the you we know go?! You’re not this weak, are you?!”
 
 @38872 Selain · セレイン（按段落 3DD2）
 > 「お前に……お前たちに何がわかる!」
-“What do you... what do any of you know?!”
+“What would you... what would any of you know?!”
 
 @38873 Rain · レイン
 # 审校：そんなことわからない 是回应“你们懂什么”，不是“我不知道”
@@ -746,13 +746,13 @@ that girl saved you!”
 # 审校：笑声与自称统一
 > 「ほほほっ、これがわらわの本体よ。
 >  さぁお前たち、やっておしまい!」
-“Ho ho ho, this is my true body. Now then, all of you, finish them off!”
+“Ho ho ho, behold my true form! Now then, all of you, finish them off!”
 
 @38877 Ark · アーク（按段落 3DD1）
 # 审校：not ever 别扭
 > 「ヤヌス……絶対に逃がすものか。
 >  ソルデファー、発進準備完了!」
-“Janus... there’s no way I’m letting you get away. Soldifar, launch preparations complete!”
+“Janus... there’s no way I’m letting you get away. Soldifar, ready to launch!”
 
 @38878 Bright · ブライト
 > 「よし出ろ!」
@@ -766,10 +766,10 @@ that girl saved you!”
 # 审校：笑声统一 Ho ho ho
 > 「ほほほほほ、お前もさっきの小娘の
 >  あとを追わせてやろうぞ!
-“Ho ho ho ho ho, I shall send you after that little girl from before too!
+“Ho ho ho ho ho, I shall send you after that little girl!
 ---
 >  あの世で仲よくするがよいわ!」
-Make merry together in the next world!”
+The two of you can keep each other company in the next world!”
 
 @38881 Selain · セレイン（按段落 3DD2）
 # 审校：I will never forgive you 日语腔
@@ -792,10 +792,10 @@ Make merry together in the next world!”
 # 审校：同 38880
 > 「ほほほほほ、お前もさっきの小娘の
 >  あとを追わせてやろうぞ!
-“Ho ho ho ho ho, I shall send you after that little girl from before too!
+“Ho ho ho ho ho, I shall send you after that little girl!
 ---
 >  あの世で仲よくするがよいわ!」
-Make merry together in the next world!”
+The two of you can keep each other company in the next world!”
 
 @38885 Ark · アーク（按段落 3DD1）
 > 「とまれ!」
@@ -826,7 +826,7 @@ locked up inside the base.”
 # 审校：can't be helped 日语腔；笑声统一
 > 「ふっ、ほほほほほほ。バレてしまっては
 >  しかたない。ミケーネ幹部……」
-“Heh, ho ho ho ho ho. Now that I’ve been found out, so be it. A Mycenae officer...”
+“Heh, ho ho ho ho ho. Now that I’ve been found out, there’s no point pretending. A Mycenae officer...”
 
 @38890 Marquis Janus · ヤヌス侯爵
 > 「ヤヌス侯爵とは、わらわのことぞ!!」
@@ -865,7 +865,7 @@ accomplished.”
 @38896 Marquis Janus · ヤヌス侯爵
 # 审校：笑声、自称统一
 > 「ほほほっ、これがわらわの本体よ」
-“Ho ho ho, this is my true body.”
+“Ho ho ho, behold my true form.”
 
 @38897 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -890,10 +890,10 @@ accomplished.”
 @38901 Selain · セレイン（按段落 3DD2）
 > 「芝居は終わりだ。本物のサリィは
 >  先ほど保護された。貴様が
-“The act is over. The real Sally was taken into protective custody a short while ago. You
+“The act is over. The real Sally was found safe a short while ago. You
 ---
 >  潜入した敵なのだろう」
-must be the enemy who infiltrated us.”
+must be the infiltrator.”
 
 @38902 Ginrei · 銀鈴
 # 审校：全局：弯撇号／弯引号
@@ -904,7 +904,7 @@ must be the enemy who infiltrated us.”
 # 审校：can't be helped 日语腔；笑声统一
 > 「ふっ、ほほほほほほ。バレてしまっては
 >  しかたない。ミケーネ幹部……」
-“Heh, ho ho ho ho ho. Now that I’ve been found out, so be it. A Mycenae officer...”
+“Heh, ho ho ho ho ho. Now that I’ve been found out, there’s no point pretending. A Mycenae officer...”
 
 @38904 Marquis Janus · ヤヌス侯爵
 > 「ヤヌス侯爵とは、わらわのことぞ!!」
@@ -942,7 +942,7 @@ accomplished.”
 @38910 Marquis Janus · ヤヌス侯爵
 # 审校：笑声、自称统一
 > 「ほほほっ、これがわらわの本体よ」
-“Ho ho ho, this is my true body.”
+“Ho ho ho, behold my true form.”
 
 @38911 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -969,7 +969,7 @@ accomplished.”
 # 审校：全局：弯撇号／弯引号
 > 「うるせぇ! よくも俺たちをだましやがっ
 >  たな。本物のサリィは基地ん中で
-“Shut up! You had a lot of nerve tricking us. The real Sally was
+“Shut up! How dare you trick us! The real Sally was
 ---
 >  見つかったんだ。てめぇが敵だってのは
 >  もうバレてんだよ!!」
@@ -984,7 +984,7 @@ found inside the base. We already know you’re the enemy!!”
 # 审校：can't be helped 日语腔；笑声统一
 > 「ふっ、ほほほほほほ。バレてしまっては
 >  しかたない。ミケーネ幹部……」
-“Heh, ho ho ho ho ho. Now that I’ve been found out, so be it. A Mycenae officer...”
+“Heh, ho ho ho ho ho. Now that I’ve been found out, there’s no point pretending. A Mycenae officer...”
 
 @38918 Marquis Janus · ヤヌス侯爵
 > 「ヤヌス侯爵とは、わらわのことぞ!!」
@@ -1022,7 +1022,7 @@ accomplished.”
 @38924 Marquis Janus · ヤヌス侯爵
 # 审校：笑声、自称统一
 > 「ほほほっ、これがわらわの本体よ」
-“Ho ho ho, this is my true body.”
+“Ho ho ho, behold my true form.”
 
 @38925 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1063,7 +1063,7 @@ inside the base.”
 # 审校：can't be helped 日语腔；笑声统一
 > 「ふっ、ほほほほほほ。バレてしまっては
 >  しかたない。ミケーネ幹部……」
-“Heh, ho ho ho ho ho. Now that I’ve been found out, so be it. A Mycenae officer...”
+“Heh, ho ho ho ho ho. Now that I’ve been found out, there’s no point pretending. A Mycenae officer...”
 
 @38932 Marquis Janus · ヤヌス侯爵
 > 「ヤヌス侯爵とは、わらわのことぞ!!」
@@ -1101,17 +1101,17 @@ accomplished.”
 @38938 Marquis Janus · ヤヌス侯爵
 # 审校：笑声、自称统一
 > 「ほほほっ、これがわらわの本体よ」
-“Ho ho ho, this is my true body.”
+“Ho ho ho, behold my true form.”
 
 @38939 Manami · マナミ（按段落 3DD4）
 # 审校：I won't forgive this 日语腔
 > 「許せない! あなたたちの好きにはさせ
 >  ないわ! 艦長、出撃するわよ!!」
-“This is unforgivable! I won’t let you have your way! Captain, I’m launching!!”
+“How dare you! I won’t let you have your way! Captain, I’m launching!!”
 
 @38940 Bright · ブライト
 > 「頼む!」
-“Please!”
+“I’m counting on you!”
 
 @38941 主角
 > 「くっそぉぉぉぉぉーっ!!」
@@ -1154,11 +1154,11 @@ accomplished.”
 @38949 Marquis Janus · ヤヌス侯爵
 # 审校：I'll be your opponent 直译；自称统一
 > 「おのれ! わらわが相手だ!」
-“Curse you! You’ll face me!”
+“Curse you! I’ll deal with you myself!”
 
 @38950 Tetsuya · 鉄也
 > 「フン、望むところだ!!」
-“Hmph, just what I wanted!!”
+“Hmph, bring it on!!”
 
 @38951 Jun · ジュン
 # 审校：全局：弯撇号／弯引号
@@ -1185,7 +1185,7 @@ accomplished.”
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「敵ながらなかなかやるようだが、それも
 >  ここまでだ。いまこそ我らが
-“They put up quite a fight for enemies, but this is as far as they go. Now we shall
+“They are worthy foes, I grant, but this is where it ends. Now we shall
 ---
 >  地球支配に名乗りを上げるの
 >  だ! ウワハハハハハハッ!!!」
@@ -1195,7 +1195,7 @@ declare ourselves rulers of Earth! Waahahahahahaha!!!”
 # 审校：全局：弯撇号／弯引号
 > 「ヤヌスめ、やられてしまいおったか!
 >  だがよいわ。後は我が軍団をもって
-“Janus, defeated, was he?! But no matter. Now I’ll crush them
+“So Janus has fallen?! No matter. Now I’ll crush them
 ---
 >  叩きつぶしてくれる!」
 with my own army!”
@@ -1204,7 +1204,7 @@ with my own army!”
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「敵ながらなかなかやるようだが、それも
 >  ここまでだ。いまこそ我らが
-“They put up quite a fight for enemies, but this is as far as they go. Now we shall
+“They are worthy foes, I grant, but this is where it ends. Now we shall
 ---
 >  地球支配に名乗りを上げるの
 >  だ! ウワハハハハハハッ!!!」
@@ -1314,7 +1314,7 @@ see hell!”
 # 审校：全局：弯撇号／弯引号
 > 「やれやれ、様子を見にきたダケなのに
 >  こういうのを見せられたらタダでは
-“Good grief, I only came to take a look, but when you show me something like this, I can’t just
+“Good grief, I only came to take a look, but after a show like this, I can’t just
 ---
 >  帰れないネェ」
 go home empty-handed.”
@@ -1325,12 +1325,12 @@ go home empty-handed.”
 
 @38979 Beltorchika · ベルトーチカ
 > 「……反応ありません」
-“...No response.”
+“...Nothing on sensors.”
 
 @38980 Bunny · バニー
 > 「すべての通信装置に異常が
 >  発生しています!」
-“All communication devices are malfunctioning!”
+“All our comm systems are malfunctioning!”
 
 @38981 ???
 > 「クククククク」
@@ -1343,7 +1343,7 @@ go home empty-handed.”
 @38983 Avie-Lu · アヴィ＝ルー
 > 「すごいネ……感じるヨ、お前たちの
 >  力を」
-“Amazing... I can feel it, your power.”
+“Amazing... I can feel it. Your power.”
 
 @38984 Amuro · アムロ
 > 「くっ……なんだ、この強烈な
@@ -1361,7 +1361,7 @@ go home empty-handed.”
 
 @38987 Bright · ブライト
 > 「敵……なのか……?」
-“An enemy... is it...?”
+“Is it... an enemy...?”
 
 @38988 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -1376,7 +1376,7 @@ go home empty-handed.”
 “Ngh... I’ve never seen a machine like this.
 ---
 >  貴様、いったいどこの兵士だ!?」
-You, just whose soldier are you?!”
+Whose soldier are you?!”
 
 @38990 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1385,7 +1385,7 @@ You, just whose soldier are you?!”
 “What?! Guuuh... what overwhelming pressure. You’re no ordinary foe.
 ---
 >  貴様ぁ、いったい何者だ!?」
-You, just who are you?!”
+You bastard, who the hell are you?!”
 
 @38991 Manami · マナミ（按段落 3DD4）
 > 「な……なんなの、あれは!?」
@@ -1400,11 +1400,11 @@ You, just who are you?!”
 # 审校：全局：弯撇号／弯引号
 > 「データ登録なし、
 >  類似するシステムなし
-“No data registered, no similar system.
+“No matching data, no similar systems.
 ---
 >  生体反応? ……推測不能
 >  ですって!? あなた、何者なの!?」
-A bio-reaction? ...It says it’s impossible to determine?! Just who are you?!”
+Life signs? ...‘Cannot be determined’?! Who are you?!”
 
 @38994 Avie-Lu · アヴィ＝ルー
 > 「“アル＝イー＝クイス”」
@@ -1419,20 +1419,20 @@ A bio-reaction? ...It says it’s impossible to determine?! Just who are you?!�
 # 审校：全局：弯撇号／弯引号
 > 「わかンなくていいのサ、アンタたちは。
 >  アタシが見たところじゃ、アンタたちは
-“You don’t need to understand that, you lot. From what I see, you’ve got
+“You lot don’t need to understand. Way I see it, you’ve got
 ---
 >  この惑星圏の中デモ、突出した
 >  潜在能力がある。確かめなくちゃ
-outstanding latent potential, even within this planetary sphere. I’ve gotta
+latent potential that stands out even in this whole planetary sphere. I’ve gotta
 ---
 >  ならないンだ。サァ、アタシと戦いなヨ!」
-confirm it. C’mon, fight me!”
+check it for myself. C’mon, fight me!”
 
 @38997 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「終わったな……。正体不明の敵
 >  だったが、みんなよくやってくれた
-“It’s over... An enemy of unknown origin, but you all did well.
+“It’s over... We didn’t know what that enemy was, but you all did well.
 ---
 >  帰還してくれ」
 Return to the ship.”
@@ -1460,7 +1460,7 @@ Return to the ship.”
 @39003 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
 > 「そんなばかな!?」
-“That’s impossible?!”
+“How can that be?!”
 
 @39004 Avie-Lu · アヴィ＝ルー
 # 审校：nothin' like this 意思反了
@@ -1501,13 +1501,13 @@ C’mon, show me. More, more. Or else you’ll all die, y’know?!”
 @39010 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
 > 「リョウ……お前まさか!」
-“Ryoma... don’t tell me you’re gonna!”
+“Ryoma... you’re not thinking of...!”
 
 @39011 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「ああ、ゲッター線エネルギーを暴走
 >  させて、ゲッターごと奴を
-“Yeah. I’ll make the Getter Ray energy go out of control and blow that thing away,
+“Yeah. I’ll overload the Getter Ray energy and blow that thing away,
 ---
 >  吹き飛ばしてやる!」
 Getter and all!”
@@ -1515,13 +1515,13 @@ Getter and all!”
 @39012 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
 > 「ばかなことをいうなリョウ!」
-“Don’t say crazy things, Ryoma!”
+“Don’t be ridiculous, Ryoma!”
 
 @39013 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「しかしもう他には方法がない!
 >  大丈夫、ちゃんと脱出しますって」
-“But there’s no other way now! It’s fine, we’ll eject properly, I swear.”
+“But there’s no other way! Don’t worry, we’ll bail out in time, I promise.”
 
 @39014 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
@@ -1556,7 +1556,7 @@ Getter and all!”
 # 审校：全局：弯撇号／弯引号
 > 「最後はおいらの番だな……アレ?
 >  このやろう動けっ!」
-“Last one’s my turn... Huh? Move, you damn thing!”
+“Guess I’m the last one out... Huh? Move, damn it!”
 
 @39021 Ryoma · リョウ
 > 「ムサシ、早くしろ!!」
@@ -1616,7 +1616,7 @@ not bad... Earthlings, huh, interesting...)
 # 审校：全局：弯撇号／弯引号
 > 「……あの敵は復活してこないが……
 >  ゲッターが……」
-“...That enemy won’t be coming back, but... the Getter...”
+“...That enemy isn’t regenerating, but... the Getter...”
 
 @39032 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
@@ -1668,13 +1668,13 @@ not bad... Earthlings, huh, interesting...)
 
 @39042 Lera · レラ
 > 「よかった……元気そうで……」
-“Good... You look well...”
+“Good... you look okay...”
 
 @39043 Ark · アーク（按段落 3DD1）
 # 审校：仇はとってやった 是为你报仇
 > 「お前のおかげだ。安心しろよ、
 >  俺たちが仇はとってやったからさ」
-“Thanks to you. Don’t worry, we’ve avenged you.”
+“Thanks to you. Don’t worry, we got the one who did this to you.”
 
 @39044 Lera · レラ
 > 「うん……{HeroNick}、アタシ、お願いが
@@ -1689,11 +1689,11 @@ not bad... Earthlings, huh, interesting...)
 # 审校：全局：弯撇号／弯引号
 > 「約束してよ……{HeroNick}。
 >  あんたが……みんなが……きっと戦いを
-“Promise me... {HeroNick}. That you... that all of you... will definitely end this war.
+“Promise me... {HeroNick}. That you... that all of you... will end this war, no matter what.
 ---
 >  終わらせるって。きっと……
 >  地球圏を平和にするってさ……」
-That you’ll definitely... bring peace to the Earth Sphere...”
+That you’ll really... bring peace to the Earth Sphere...”
 
 @39047 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -1743,14 +1743,14 @@ I’ll show you a peaceful Earth Sphere, I swear!”
 ---
 >  くっ………こんな……こんなのってあるかよ
 >  ……。お前、いつもいってたじゃないか
-Ngh... How... how can this happen... You always used to say it, didn’t you?
+Ngh... How... how can this be happening... You always used to tell me, didn’t you?
 ---
 >  ずっと戦ってきて、捕まったり、
 >  撃たれたりしたことだってあるって
-That you’d been fighting all this time, that you’d been captured, that you’d been shot...
+That you’d been fighting all this time, that you’d been captured, even shot...
 ---
 >  なのに……なのにこんな……こんな…………」
-And yet... and yet like this... like this...”
+And now... now like this... like this...”
 
 @39053 Rain · レイン
 > 「…………」
@@ -1760,13 +1760,13 @@ And yet... and yet like this... like this...”
 # 审校：全局：弯撇号／弯引号
 > 「……悪い冗談はやめろ。私はそんな
 >  気分じゃないんだ」
-“...Stop with the bad jokes. I’m not in the mood.”
+“...That’s not funny. I’m not in the mood.”
 
 @39055 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 > 「冗談で……冗談でいえること
 >  じゃないでしょう?」
-“This isn’t... this isn’t something you can joke about, is it?”
+“Would I... would I joke about something like this?”
 
 @39056 Cath · キャス
 # 审校：同 39037
@@ -1794,7 +1794,7 @@ And yet... and yet like this... like this...”
 
 @39061 Lera · レラ
 > 「よかった……元気そうで……」
-“Good... You look well...”
+“Good... you look okay...”
 
 @39062 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -1814,17 +1814,17 @@ And yet... and yet like this... like this...”
 # 审校：全局：弯撇号／弯引号
 > 「{HeroNick}……死んじゃだめだよ……。
 >  生きてればさ、きっと……」
-“{HeroNick}... Don’t you die... If you live, I’m sure...”
+“{HeroNick}... Don’t you die... As long as you’re alive, I’m sure...”
 
 @39066 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「何をいっている。まだまだ戦いが続く
 >  といったのは、お前じゃないか
-“What are you saying? Weren’t you the one who said the fighting would go on?
+“What are you talking about? Weren’t you the one who said there was still a long fight ahead?
 ---
 >  終わるまで一緒に戦って、
 >  それから……それから……」
-We’d fight together until it’s over, and then... and then...”
+We were going to fight together until it was over, and then... and then...”
 
 @39067 Lera · レラ
 # 审校：全局：弯撇号／弯引号
@@ -1841,7 +1841,7 @@ We’d fight together until it’s over, and then... and then...”
 # 审校：全局：弯撇号／弯引号
 > 「見たいな……どこで終わってもいいと
 >  思ってたけど……アンタと一緒に……
-“I wanted to see it... I thought I didn’t care where it ended, but... with you...
+“I’d like to see it... I used to think I didn’t care where it all ended, but... with you...
 ---
 >  行きたかったよ……」
 I wanted to go...”
@@ -1898,7 +1898,7 @@ Ngh...”
 # 审校：全局：弯撇号／弯引号
 > 「ゲッターの回収、終わりましたが……
 >  修理とかそういうレベルじゃないですね」
-“We’ve finished recovering the Getter, but... this isn’t something that can be fixed with repairs.”
+“We’ve finished hauling the Getter in, but... it’s way past the point of repairs.”
 
 @39076 Ryoma · リョウ
 > 「ムサシ……」
@@ -1910,12 +1910,12 @@ Ngh...”
 
 @39078 Bright · ブライト
 > 「……誰だって……死ぬんだよ」
-“...Everyone dies. Every last one of us.”
+“...Everyone... dies.”
 
 @39079 Kamille · カミーユ
 > 「ようやく……ようやく地上の敵が
 >  片づいたっていうのに……こんな……」
-“We finally... finally finished off the enemy on Earth, and yet... this...”
+“We finally... finally cleared the enemy off Earth, and now... this...”
 
 @39080 Shinobu · 忍
 > 「……ムサシの奴、つまんねぇこと
@@ -1943,7 +1943,7 @@ him, didn’t we?”
 
 @39084 Masato · 雅人
 > 「ああ……そっか。ちぇっ、忍の奴」
-“Oh... right. Sheesh, that Shinobu.”
+“Oh... right. Geez, Shinobu...”
 
 @39085 Daisaku · 大作
 # 审校：全局：弯撇号／弯引号
@@ -1959,14 +1959,14 @@ it’s just too cruel. Talking about the dead that way...”
 # 审校：全局：弯撇号／弯引号
 > 「そうだね……あんたにもいつかわかるよ、
 >  大作。この戦いが終わる頃には
-“I suppose so... You’ll understand someday too, Daisaku. By the time this war ends,
+“Yeah... You’ll understand someday too, Daisaku. By the time this war’s over,
 ---
 >  きっとね」
-I’m sure you will.”
+I bet you will.”
 
 @39087 Tetsuya · 鉄也
 > 「もういいのかい」
-“Are you done already?”
+“You all right now?”
 
 @39088 Ryoma · リョウ
 # 审校：That'd be a problem 生硬
@@ -1981,7 +1981,7 @@ He’d hate that.”
 # 审校：全局：弯撇号／弯引号
 > 「それにな、ムサシの死を無駄にしない
 >  ためにも俺たちは戦いをやめるわけには
-“Besides, so that Musashi’s death isn’t in vain, we can’t afford to stop
+“Besides, if we don’t want Musashi’s death to be for nothing, we can’t stop
 ---
 >  いかないのさ」
 fighting.”
@@ -2002,10 +2002,10 @@ fighting.”
 # 审校：全局：弯撇号／弯引号
 > 「そうか。ま、しばらく休んでおくんだな。
 >  その間は絶対、帝国なんぞに
-“I see. Well, rest up for a while. In the meantime, we absolutely won’t let the Empire
+“I see. Well, rest up for a while. Meanwhile, there’s no way we’re letting the Empire
 ---
 >  好きにはやらせねぇ。ムサシのためにもな」
-have its way. For Musashi’s sake too.”
+run wild. We’ll do it for Musashi.”
 
 @39093 Hayato · ハヤト
 > 「ああ。それで、あの敵に関して何か
@@ -2031,13 +2031,13 @@ to do with Byston Well either.”
 # 审校：全局：弯撇号／弯引号
 > 「いちおう回収した破片をあちこちに
 >  送って調べるとはいっていたがね」
-“They said they’d send the fragments we recovered to various places to have them analyzed, at least.”
+“They did say they’d send the debris we recovered out to be analyzed, at least.”
 
 @39097 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 > 「ムサシの仇だというのに正体も
 >  わからないとは……くやしいな」
-“It’s Musashi’s enemy, and we don’t even know what it is... How frustrating.”
+“That thing killed Musashi, and we don’t even know what it is... It’s maddening.”
 
 @39098 Hayato · ハヤト
 # 审校：全局：弯撇号／弯引号
@@ -2046,7 +2046,7 @@ to do with Byston Well either.”
 “If that thing is an enemy, we’ll find out eventually. Either way, without the Getter,
 ---
 >  俺たちは戦いに参加できない」
-we can’t take part in the fighting.”
+we’re out of the fight.”
 
 @39099 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
@@ -2078,7 +2078,7 @@ guerrillas flying the banner of anti-OZ resistance.”
 @39102 Treize · トレーズ
 > 「そういうことになる。少なくとも人類
 >  に敵対する勢力はなくなったよ」
-“That would be the case. At the very least, no force hostile to humanity remains.”
+“So it would seem. At the very least, no force hostile to humanity remains.”
 
 @39103 Lady · レディ
 > 「おめでとうございます。
@@ -2205,7 +2205,7 @@ erased from the surface by Queen Ciela’s power?”
 # 审校：全局：弯撇号／弯引号
 > 「さてな、オーラ力というのは、
 >  我々にはわからんよ」
-“Who knows. This Aura Power is something we can’t understand.”
+“Who can say? Aura Power is beyond our understanding.”
 
 @39123 Bright · ブライト
 > 「それで、どういうことなのでしょう?」
@@ -2222,7 +2222,7 @@ in the fact that only we have returned to this land like this.”
 
 @39125 Bright · ブライト
 > 「とおっしゃると?」
-“And that would mean?”
+“What do you mean by that?”
 
 @39126 Ciela · シーラ
 # 审校：第二页残句
@@ -2335,7 +2335,7 @@ Okay?”
 # 审校：全局：弯撇号／弯引号
 > 「さてな、オーラ力というのは、
 >  我々にはわからんよ」
-“Who knows. This Aura Power is something we can’t understand.”
+“Who can say? Aura Power is beyond our understanding.”
 
 @39142 Bright · ブライト
 > 「それで、どういうことなのでしょう?」
@@ -2353,7 +2353,7 @@ in the fact that only we have returned to this land like this.”
 
 @39144 Bright · ブライト
 > 「とおっしゃると?」
-“And that would mean?”
+“What do you mean by that?”
 
 @39145 Elle · エレ
 # 审校：第二页残句
@@ -2465,7 +2465,7 @@ Okay?”
 ---
 >  バイストンウェルへ帰れるのなら、
 >  それはさせてもらう。それでいいのだろう?」
-lets me return to Byston Well, then I’ll do it. That’s fine, isn’t it?”
+lets me return to Byston Well, then I’ll do it. Is that good enough for you?”
 
 @39160 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -2520,7 +2520,7 @@ grieve, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「比べられるもんじゃないでしょ、
 >  そういうのは」
-“That’s not something you can compare, is it?”
+“You can’t compare things like that.”
 
 @39169 Chum · チャム
 > 「{HeroNick}……可哀想……」
@@ -2578,7 +2578,7 @@ plenty of times. That’s how I’ve survived this long...”
 @39178 Selain · セレイン（按段落 3DD2）
 # 审校：原文“すまない”是道歉，初稿“Thanks”误译为感谢；改为“Sorry”。
 > 「……すまない」
-“...Sorry.”
+“...Thanks.”
 
 @39179 Noin · ノイン
 > 「ゼクス、聞きましたか」
@@ -2611,7 +2611,7 @@ that we drove the Imperial forces off the Earth.”
 # 审校：全局：弯撇号／弯引号
 > 「彼らは徹底した平和主義者
 >  たちです。帝国の支配下に
-“They’re thoroughgoing pacifists. When we were under
+“They’re pacifists through and through. When we were under
 ---
 >  あった時には、帝国に対しても
 >  同様の批判をしていました
@@ -2665,11 +2665,11 @@ Darlian’s daughter.”
 # 审校：全局：弯撇号／弯引号
 > 「当然だ。あいつは私とは違う。
 >  平和主義者の父を持ちながら
-“Of course. She’s different from me. Unlike me, who walks a blood-soaked path
+“Of course. She’s not like me. Not like me, walking a path of blood
 ---
 >  血ぬられた道をいく私とはな。
 >  ……ノイン」
-despite having a pacifist father. ...Noin.”
+despite a pacifist father. ...Noin.”
 
 @39191 Noin · ノイン
 > 「なんです?」
@@ -2727,11 +2727,11 @@ is something I cannot bring myself to support.”
 # 审校：同行させてもか 是特列斯提议让杰克斯随行
 > 「ゼクス……{HeroMech}と同行
 >  させてもか? 彼らもまた、財団の
-“Zechs... even if I had you accompany the {HeroMech}? They too can hardly be
+“Zechs... even if I send you with the {HeroMech}? They can hardly be
 ---
 >  方針に心から賛成しているわけ
 >  ではないだろう」
-in favor of the Foundation’s course.”
+wholehearted supporters of the Foundation’s course either.”
 
 @39200 Zechs · ゼクス
 > 「トレーズ。{HeroMech}は帝国
@@ -2761,7 +2761,7 @@ my friend Milliardo Peacecraft.”
 @39202 Zechs · ゼクス
 > 「私は自分の納得のいく生き方
 >  をしたいだけだ」
-“I simply want to live in a way I can accept.”
+“I simply want to live a life I can be at peace with.”
 
 @39203 Treize · トレーズ
 # 审校：律義 不是 honest

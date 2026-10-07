@@ -1723,7 +1723,7 @@ that worried, so couldn’t you at least show a little concern?”
 # 审校：全局：弯撇号／弯引号
 > 「でもよぉ、俺たちがいくら考えたって、
 >  どうにかなるってもんじゃないだろ」
-“But come on, no matter how much we think about it, it’s not like we can do anything about it.”
+“But come on, no matter how much we think about it, it’s not gonna change anything.”
 
 @46465 Uchuta · 宇宙太
 # 审校：全局：弯撇号／弯引号
@@ -1746,7 +1746,7 @@ Well then, good night...”
 @46467 Keiko · 恵子
 # 审校：全局：弯撇号／弯引号
 > 「ま、勝平ったら、もう寝ちゃってるわ」
-“Oh, Kappei, you’re already asleep.”
+“Honestly, Kappei’s already asleep.”
 
 @46468 Uchuta · 宇宙太
 # 审校：全局：弯撇号／弯引号

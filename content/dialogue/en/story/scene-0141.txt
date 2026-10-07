@@ -39,7 +39,7 @@ alien soldiers on your own whim.”
 
 @41948 Bright · ブライト
 > 「なんということを……」
-“What has she done...”
+“How could she...”
 
 @41949 Haman · ハマーン
 # 审校：全局：弯撇号／弯引号
@@ -228,11 +228,11 @@ take you over.”
 # 审校：全局：弯撇号／弯引号
 > 「人はね、人間はね、自分を見る
 >  のが不愉快なのよ。でもね、どんなに
-“People, you know, humans find it unpleasant to look at themselves. But no matter how
+“People... human beings hate seeing themselves. But no matter how
 ---
 >  不愉快でも、どんなに憎くっても、
 >  自分をやめることはできないのよ!」
-unpleasant, no matter how much you hate it, you can’t stop being yourself!”
+unpleasant it is, no matter how much you hate it, you can’t stop being yourself!”
 
 @41977 Ple-Two · プルツー
 > 「な……何をいってるんだ、お前は!?」
@@ -242,11 +242,11 @@ unpleasant, no matter how much you hate it, you can’t stop being yourself!”
 # 审校：全局：弯撇号／弯引号
 > 「あたしはあなたよ。あなたはあたしなのよ!
 >  あなたはあたしのいっとう激しい
-“I am you. You are me! You’re the one who has only my most violent
+“I am you. You are me! You’re me with nothing but the wildest
 ---
 >  ところだけを持った人でしょ!?
 >  あたしは、エルピー・プル!」
-parts, aren’t you?! I’m Elpeo Ple!”
+parts left, aren’t you?! I’m Elpeo Ple!”
 
 @41979 Ple-Two · プルツー
 > 「私はプルツーだ……
@@ -323,32 +323,32 @@ Are you the one doing this?!”
 # 检查提示：未用必用译名：プルツー→Ple-Two
 > 「やめろプルツー!
 >  そんなことをしてるから
-“Stop it, Ple-Two! It’s because you do things like this that
+“Stop it, Ple-Two! It’s doing this that
 ---
 >  気持ち悪いんだって、
 >  なぜわからない!?」
-you feel awful. Why can’t you understand?!”
+makes you feel awful. Why can’t you see that?!”
 
 @41993 Ple-Two · プルツー
 > 「うるさい! お前たちを倒せば、
 >  こんなのはすぐに治る!」
-“Shut up! Once I defeat you all, this will clear up in no time!”
+“Shut up! Once I’ve beaten you all, this’ll go away!”
 
 @41994 Judau · ジュドー
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：プルツー→Ple-Two
 > 「強がりをいうな、プルツー!
 >  プルを見ろ
-“Don’t put on a brave face, Ple-Two! Look at Ple.
+“Quit acting tough, Ple-Two! Look at Ple!
 ---
 >  自分の心を見つめれば
 >  お前だって苦しまずに……」
-If you looked into your own heart, even you could live without suffering...”
+If you’d just look into your own heart, you wouldn’t have to suffer...”
 
 @41995 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号
 > 「苦しくなんかあるものか!!」
-“Who says I’m suffering?!”
+“I’m not suffering at all!!”
 
 @41996 Haman · ハマーン
 # 审校：start over another time 不自然
@@ -409,11 +409,11 @@ Let us withdraw for now. All forces, retreat.”
 # 检查提示：未用必用译名：アヴィ＝ルー→Avie-Lu
 > 「……まさかとは思ったが……
 >  あのズールがやられるとは、我らの
-“...I thought it impossible, but... for that Zuul to be defeated. Are they
+“...I did not think it possible... yet Zuul has been defeated. Intelligences beyond
 ---
 >  予測を上まわる知性体か。
 >  アヴィ＝ルーのいうとおり
-intellects beyond our predictions? As Avie-Lu said,
+our projections, then. As Avie-Lu said,
 ---
 >  確かに面白いかもしれぬ……」
 they may indeed prove interesting...”
@@ -421,7 +421,7 @@ they may indeed prove interesting...”
 @42005 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
 > 「あいつはまさか……竜馬、あいつは……」
-“That guy can’t be... Ryoma, that guy is...”
+“Don’t tell me that’s... Ryoma, is that...?”
 
 @42006 Selain · セレイン（按段落 3DD2）
 > 「なんだ? あれは……
@@ -432,7 +432,7 @@ they may indeed prove interesting...”
 # 审校：全局：弯撇号／弯引号
 > 「なんだ奴は!? まさか……
 >  あん時の奴の仲間か!?」
-“What is that thing?! Don’t tell me... he’s one of that guy’s comrades from back then?!”
+“What the hell is that?! Don’t tell me... it’s a buddy of that guy from before?!”
 
 @42008 Manami · マナミ（按段落 3DD4）
 > 「あれはもしかして……
@@ -447,7 +447,7 @@ they may indeed prove interesting...”
 # 审校：全局：弯撇号／弯引号
 > 「やっぱり、あの時の敵の
 >  仲間なんだわ」
-“I knew it. They’re comrades of that enemy from back then.”
+“I knew it. It must be one of that enemy’s allies.”
 
 @42011 Ryoma · リョウ
 > 「ああ……間違いない」
@@ -457,7 +457,7 @@ they may indeed prove interesting...”
 # 审校：“一样的家伙”重复，读起来绕
 > 「あの時の奴と同様の奴だ。
 >  ムサシが死んだあの時と」
-“It’s the same as that one back then. The one from when Musashi died.”
+“Same kind as that one. The one from when Musashi died.”
 
 @42013 Koji · 甲児
 > 「ちっきしょう! てめぇら
@@ -517,7 +517,7 @@ What the hell is your goal?!”
 # 审校：全局：弯撇号／弯引号
 > 「反応、消えました。
 >  右舷に敵影なし」
-“The reaction’s gone. No enemy contacts to starboard.”
+“The signal’s gone. No enemy contacts to starboard.”
 
 @42024 Reika · レイカ
 # 审校：全局：弯撇号／弯引号
@@ -562,16 +562,16 @@ but can’t we do something about it?”
 # 审校：全局：弯撇号／弯引号
 > 「まったくだぜ。オレたちはズールを倒して
 >  とてもかないやしないって思ってた
-“You said it. We beat Zuul, and the Galactic Empire forces we thought we’d never stand a chance against
+“You said it. We beat Zuul, and the Galactic Empire, the guys we thought we could never beat,
 ---
 >  銀河帝国軍だって
 >  もうほとんど敵じゃないんだぜ?」
-are hardly even enemies anymore, right?”
+are barely a threat anymore, y’know?”
 
 @42031 Chum · チャム
 # 审校：全局：弯撇号／弯引号
 > 「そうよ、すごいじゃない」
-“That’s right, isn’t that amazing?”
+“Yeah, that’s amazing!”
 
 @42032 Show · ショウ
 > 「しかしな……」
@@ -623,11 +623,11 @@ somewhere before...”
 # 审校：全局：弯撇号／弯引号
 > 「マリアにいわれて思い出したが、
 >  確かに僕も
-“Maria mentioning it reminded me. I’m sure I’ve heard
+“Now that Maria mentions it, I remember. I have heard
 ---
 >  その言葉を聞いたことがある。
 >  フリード星の古い伝説だ」
-those words too. It’s an old legend of Planet Fleed.”
+those words before. It’s an old legend of Planet Fleed.”
 
 @42041 Naida · ナイーダ
 # 审校：全局：弯撇号／弯引号
@@ -642,7 +642,7 @@ those words too. It’s an old legend of Planet Fleed.”
 
 @42043 Duo · デュオ
 > 「へぇ、それってどういうやつなんだ?」
-“Oh? So what kind of thing is it?”
+“Huh, so what’s the story?”
 
 @42044 Daisuke · 大介
 # 审校：长定语拆开
@@ -720,7 +720,7 @@ close to human. They may simply know the legend too.”
 # 审校：全局：弯撇号／弯引号
 > 「ちっ、まったくやってらんねぇぜ。
 >  それよかエマリーさんよ
-“Tch, I can’t take this. Anyway, Emary,
+“Tch, give me a break. Anyway, Emary,
 ---
 >  状況はどうなってんだい」
 what’s the situation?”
@@ -741,7 +741,7 @@ warfare, but according to OZ’s Lady Une,
 ---
 >  彼らはアクシズ軍との和平が
 >  成立すると考えているようです
-they believe peace with the Axis Forces will be established.
+they think they can make peace with the Axis Forces.
 ---
 >  {HeroMech}にも
 >  アクシズに対して
@@ -837,16 +837,16 @@ for back then?!”
 # 审校：全局：弯撇号／弯引号
 > 「その意見には賛成だ。
 >  疲労がたまっていると思考もにぶる
-“I agree with that. When fatigue builds up, your thinking dulls too.
+“I agree. Fatigue dulls the mind.
 ---
 >  いい状態とはいいがたいだろう」
-It’s hard to call this a good state to be in.”
+We are hardly in good shape.”
 
 @42068 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「そう思います。みんな、
 >  ハマーンがどう動くかもわからん
-“I think so too. Everyone, we don’t even know how Haman will move.
+“Agreed. Everyone, we don’t know what Haman will do next.
 ---
 >  今のうちに少しでも多く休んでおく
 >  ことにしよう。話はそのあとだ」
@@ -865,29 +865,29 @@ Let’s rest as much as we can while we can. We’ll talk after that.”
 @42071 Uchuta · 宇宙太
 # 审校：全局：弯撇号／弯引号
 > 「まだ敵が残ってるっていうことだからな」
-“That’s because the enemy’s still out there.”
+“Not with the enemy still out there.”
 
 @42072 Kappei · 勝平
 # 审校：全局：弯撇号／弯引号
 > 「アルイー……なんとかってのとアクシズだろ
 >  気にするなよ、そんなの」
-“The Al... whatever-it’s-called and Axis, right? Don’t worry about stuff like that.”
+“The Al... whatever-it’s-called and Axis, right? Forget about all that.”
 
 @42073 Keiko · 恵子
 # 审校：全局：弯撇号／弯引号
 > 「そうはいってもね、勝平。
 >  ブライト艦長やみんなが、あれだけ
-“Even so, Kappei. Captain Bright and everyone else are that
+“Still, Kappei. Captain Bright and the others are really
 ---
 >  心配しているんだから、
 >  少しは気にかけてもいいんじゃないの」
-worried, so couldn’t you at least show a little concern?”
+worried. Couldn’t you at least care a little?”
 
 @42074 Kappei · 勝平
 # 审校：全局：弯撇号／弯引号
 > 「でもよぉ、俺たちがいくら考えたって、
 >  どうにかなるってもんじゃないだろ」
-“But come on, no matter how much we think about it, it’s not like we can do anything about it.”
+“But come on, no matter how much we think about it, it’s not gonna change anything.”
 
 @42075 Uchuta · 宇宙太
 # 审校：全局：弯撇号／弯引号
@@ -909,7 +909,7 @@ Well then, good night...”
 @42077 Keiko · 恵子
 # 审校：全局：弯撇号／弯引号
 > 「ま、勝平ったら、もう寝ちゃってるわ」
-“Oh, Kappei, you’re already asleep.”
+“Honestly, Kappei’s already asleep.”
 
 @42078 Uchuta · 宇宙太
 # 审校：句子不通顺
@@ -920,12 +920,12 @@ Well then, good night...”
 @42079 Wufei · 五飛
 > 「う……なんだここは?
 >  貴様、俺に何をした!」
-“Ugh... where is this? You! What did you do to me?!”
+“Ugh... where am I? You! What did you do to me?!”
 
 @42080 Cath · キャス
 # 审校：全局：弯撇号／弯引号
 > 「ひゃっ、なによいきなり。危ないじゃない」
-“Eek, what’s with you all of a sudden? That’s dangerous, you know.”
+“Eek, what’s gotten into you all of a sudden? Watch it!”
 
 @42081 Sally · サリィ
 > 「落ち着きなさい、五飛」
@@ -933,7 +933,7 @@ Well then, good night...”
 
 @42082 Wufei · 五飛
 > 「……サリィ・ポオか。ここはどこだ」
-“...Sally Po. Where is this place?”
+“...Sally Po. Where am I?”
 
 @42083 Sally · サリィ
 # 审校：全局：弯撇号／弯引号
@@ -1037,7 +1037,7 @@ now is Haman of Axis.”
 ---
 >  倒す。だが、お前たちに正義がある
 >  のかどうか、俺はまだ確かめていない」
-evil. But I haven’t yet decided whether justice is on your side.”
+evil. But I have yet to see whether justice is on your side.”
 
 @42099 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
