@@ -735,7 +735,7 @@ Hey, report to Commander Gandal.”
 
 @31072 Marg · マーグ
 > (マーズ、会いたい、会って話がしたい)
-(Mars, I want to see you. I want to meet and talk.)
+(Mars, I want to see you. I want to see you and talk.)
 
 @31073 Takeru · タケル
 > (またお前か……)
@@ -776,10 +776,10 @@ Hey, report to Commander Gandal.”
 # 审校：全局：弯撇号／弯引号
 > 「あっ、ちょっと待ってよ!
 >  勝手に動いちゃいけないって
-“Ah, wait a second! You were told not to move on your own,
+“Hey, wait a second! They told you not to go off on your own,
 ---
 >  いわれてたでしょ!!」
-weren’t you?!”
+remember?!”
 
 @31081 Takeru · タケル
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
@@ -790,7 +790,7 @@ weren’t you?!”
 # 审校：全局：弯撇号／弯引号
 > 「あれは、ガイヤーという奴か!?
 >  タケルが乗っているのか!?」
-“That’s the one called Gaia?! Is Takeru piloting it?!”
+“Is that the thing called Gaia?! Is Takeru piloting it?!”
 
 @31083 Marg · マーグ
 # 审校：全局：弯撇号／弯引号

@@ -3757,7 +3757,7 @@ never do as you wish!”
 @37236 Takeru · タケル
 > 「兄さんを追っていて、俺はズールと
 >  戦ったんだ」
-“I chased after my brother, and I fought Zuul.”
+“I was chasing my brother, and I ended up fighting Zuul.”
 
 @37237 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -3767,7 +3767,7 @@ never do as you wish!”
 ---
 >  なんだってそんな奴がこんなところに
 >  いるんだ!?」
-What’s a guy like that doing in a place like this?!”
+What the hell’s a guy like that doing here?!”
 
 @37238 Takeru · タケル
 # 审校：全局：弯撇号／弯引号

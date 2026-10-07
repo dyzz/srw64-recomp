@@ -180,7 +180,7 @@ Banjo was worried too, you know.”
 @37277 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「いいって。それより、大丈夫かよ?」
-“It’s fine. More importantly, are you okay?”
+“It’s fine. Never mind that, are you okay?”
 
 @37278 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -248,11 +248,11 @@ but what do you want to do?”
 # 审校：全局：弯撇号／弯引号
 > ({PartnerNick}……見ていろ。敵を
 >  滅するその日まで、俺は
-({PartnerNick}... Watch me. Until the day I destroy the enemy, I’ll
+({PartnerNick}... Watch me. Until the day the enemy is destroyed, I’ll
 ---
 >  戦いつづける。お前の魂とともに……
 >  このスーパーアースゲインで……)
-keep fighting. Together with your soul... in this Super Earthgain...)
+keep fighting. With your soul beside me... in this Super Earthgain...)
 
 @37289 Manami · マナミ（按段落 3DD4）
 > 「シャリー、何か話が

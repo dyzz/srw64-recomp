@@ -115,12 +115,12 @@ Romefeller’s influence. That’s what they want to avoid.”
 @27398 Banjo · 万丈
 > 「ギャリソン、本当にこんなところに
 >  いるのかい?」
-“Garrison, is he really in a place like this?”
+“Garrison, is he really out here?”
 
 @27399 Garrison · ギャリソン
 > 「間違いございません。ただ……私の
 >  調べましたところによりますと
-“There is no mistake. However... according to my investigation,
+“There is no doubt, sir. However... from what I have learned,
 ---
 >  少々問題がございますが……」
 there is a slight problem...”
@@ -177,7 +177,7 @@ about that.”
 @27406 Reika · レイカ
 # 审校：全局：弯撇号／弯引号
 > 「了解。うまくいくことを祈ってるわ」
-“Roger. I’ll pray it goes well.”
+“Roger. Here’s hoping it goes well.”
 
 @27407 Banjo · 万丈
 > 「失礼、四谷博士とお見うけ
@@ -227,11 +227,11 @@ Dr. Nanbara, I trust.”
 # 审校：全局：弯撇号／弯引号
 > 「南原博士は亡くなられた。彼が
 >  その卓抜した先見の明で
-“Dr. Nanbara has passed away. The combat robot he built
+“Dr. Nanbara has passed away. The combat robot he built with his remarkable foresight
 ---
 >  建造した戦闘ロボットも、その時
 >  から動かないままです」
-with his outstanding foresight hasn’t moved since then either.”
+has sat idle ever since.”
 
 @27414 Dr. Yotsuya · 四谷博士
 > 「そうか……南原が死んだか」
@@ -254,7 +254,7 @@ hiding away in a ruin like this.”
 # 审校：全局：弯撇号／弯引号
 > 「……わしは何もできんし、するつもりも
 >  ない。お引き取り願おう」
-“...I can do nothing, and I intend to do nothing. I’ll ask you to leave.”
+“...I can’t do anything, and I don’t intend to. Kindly leave.”
 
 @27417 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -283,7 +283,7 @@ wiped out first.”
 # 审校：全局：弯撇号／弯引号
 > 「なんだって? いったいなぜそこまで……
 >  いや、あなたがどう思おうとかまわない
-“What did you say? Just why would you go that far... No, I don’t care what you think.
+“What? Why on earth would you go that far... No, I don’t care what you think.
 ---
 >  博士、僕がつかんでいる情報では
 >  今度の敵、銀河帝国は
@@ -330,7 +330,7 @@ They say you’ve been fighting ever since the days of Zorbados.”
 @27424 Dr. Yotsuya · 四谷博士
 > 「……わかった。それで、わしは何をすれば
 >  いい」
-“...Understood. So then, what should I do?”
+“...Understood. So, what do you need from me?”
 
 @27425 Banjo · 万丈
 # 审校：精读：去破折号
@@ -392,7 +392,7 @@ If you’re not an enemy, they’ll accept just about anything, you see.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ……そうだな。それに、この雰囲
 >  気の理由はそれなのかもしれんな」
-“Yeah... I suppose so. And maybe that’s also the reason for this atmosphere.”
+“Yes... I suppose so. And perhaps that’s what gives this place its atmosphere.”
 
 @27434 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：；独白不加引号
@@ -614,7 +614,7 @@ In OZ, depending on who you say it to, that could land you in serious trouble.�
 @27464 Shirley · シャリー
 > 「そう。それで、手伝ってくれるの?
 >  くれないの?」
-“I see. So, are you going to help me or not?”
+“Uh-huh. So, are you going to help me or not?”
 
 @27465 Rish · リッシュ（按段落 3DD2）
 # 审校：精读：姉さん
@@ -985,7 +985,7 @@ chased after them in the Gaia...”
 @27518 Amuro · アムロ
 > 「タケルの奴め。ブライト、誰かにあとを
 >  追わせるんだ」
-“That Takeru. Bright, send someone after him.”
+“Takeru, honestly. Bright, send someone after him.”
 
 @27519 Bright · ブライト
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
@@ -1039,7 +1039,7 @@ Captain, have the rest search the ship for enemies.”
 ---
 >  やらねばならぬことがある。地球などに
 >  いつまでもかかわっているヒマはないのだ
-you must do. You have no time to keep meddling with a place like Earth.
+you must do. You have no time to waste forever on a world like Earth.
 ---
 >  マーズ、地球を破壊して帰って
 >  来い」
@@ -1079,7 +1079,7 @@ do as you wish!”
 @27535 Takeru · タケル
 > 「兄さんを追っていて、俺はズールと
 >  戦ったんだ」
-“I chased after my brother, and I fought Zuul.”
+“I was chasing my brother, and I ended up fighting Zuul.”
 
 @27536 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1228,7 +1228,7 @@ Planet Gishin. Truly a terrifying power.”
 @27558 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「中佐、何か用件があったのでは?」
-“Lieutenant Colonel, didn’t you have some business with us?”
+“Lieutenant Colonel, wasn’t there something you wanted to discuss?”
 
 @27559 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
@@ -1247,13 +1247,13 @@ facilities we could use, but the enemy’s at every one of them.”
 # 审校：全局：弯撇号／弯引号
 > 「そうか……結局、戦闘は
 >  避けられんか」
-“I see... So in the end, combat’s unavoidable.”
+“I see... So there’s no avoiding a fight after all.”
 
 @27561 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
 > 「そういうことになる。そこでだ、
 >  1つ、提案があるんだが」
-“That’s how it is. So then, I have one proposal for you.”
+“Afraid so. Which brings me to a proposal.”
 
 @27562 Bright · ブライト
 > 「なにか?」
@@ -1279,7 +1279,7 @@ If possible, I’d like you to strike it for us.”
 # 审校：全局：弯撇号／弯引号
 > 「そうだな。わかった、その件は検討
 >  してみよう」
-“Right. Understood, we’ll look into that matter.”
+“Agreed. All right, we’ll consider it.”
 
 @27566 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
@@ -1705,7 +1705,7 @@ I want to link up with them before that.”
 # 审校：全局：弯撇号／弯引号
 > 「あまり時間を無駄にしたくないな。
 >  間に合わなくなると困る」
-“I don’t want to waste too much time. It’d be a problem if we don’t make it in time.”
+“I don’t want to waste too much time. I’d hate for us to miss them.”
 
 @27639 Dr. Yotsuya · 四谷博士
 > 「ならば、コン・バトラーVでやればよかろう
@@ -1750,10 +1750,10 @@ I want to link up with them before that.”
 # 审校：全局：弯撇号／弯引号
 > 「終わったようだな。よし、これ以上
 >  時間を無駄にしていられない
-“Looks like it’s over. Good, we can’t waste any more time.
+“Looks like it’s over. Right, we can’t afford to waste any more time.
 ---
 >  みんな、急ごう」
-Everyone, hurry.”
+Let’s hurry, everyone.”
 
 @27648 Marquis Janus · ヤヌス侯爵
 # 审校：同 27120

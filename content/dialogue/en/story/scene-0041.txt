@@ -1573,7 +1573,7 @@ And Banjo’s gone off somewhere and hasn’t come back.”
 @26582 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「いいって。それより、大丈夫かよ?」
-“It’s fine. More importantly, are you okay?”
+“It’s fine. Never mind that, are you okay?”
 
 @26583 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号

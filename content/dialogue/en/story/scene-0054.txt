@@ -2724,7 +2724,7 @@ the entire Earth Sphere would be blown away without a trace.)
 @36041 Takeru · タケル
 > (それで俺は捨て子として
 >  地球で育てられた……)
-(And so I was raised on Earth as an abandoned child...)
+(So that’s why I was raised on Earth as a foundling...)
 
 @36042 Marg · マーグ
 # 审校：L17 初稿把“ズール”译成 Zuhl，与词表 Emperor Zuul 及 L36 的 Zuhl 不一致，统一为 Zuul。
@@ -2897,7 +2897,7 @@ surpass the combined forces of the entire Earth.”
 # 审校：全局：弯撇号／弯引号
 > 「タケルを殺せばそれでよし……
 >  そうでなくても戦争で、か
-“Kill Takeru and that’s that... and if not, then through war, huh.
+“If they can kill Takeru, fine... and if not, they’ll do it through war, is that it?
 ---
 >  なぜそれほどこの地球にこだわるんだ?」
 Why are they so fixated on this Earth?”
@@ -2934,10 +2934,10 @@ everything we did was pointless?! Daaamn iiit!!”
 # 审校：全局：弯撇号／弯引号
 > 「だが忍、それでも俺たちはやるしかない
 >  あきらめてしまったら
-“But Shinobu, even so, all we can do is fight. If we give up,
+“But Shinobu, we still have to fight. If we give up,
 ---
 >  そこで終わってしまうんだ」
-that’s where it all ends.”
+it all ends right there.”
 
 @36069 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -3002,7 +3002,7 @@ to see it through. Be patient. Isn’t that right, Show Zama?”
 # 审校：人名按词表统一
 > 「そう思います。チャム、俺たちと
 >  一緒にいるのがそんなに嫌なのか?」
-“I think so. Chum, do you really hate being with us that much?”
+“I agree. Chum, is being with us really that bad?”
 
 @36078 Chum · チャム
 # 审校：全局：弯撇号／弯引号
@@ -3621,7 +3621,7 @@ who can do something about it.”
 @36172 Reika · レイカ
 # 审校：全局：弯撇号／弯引号
 > 「了解。うまくいくことを祈ってるわ」
-“Roger. I’ll pray it goes well.”
+“Roger. Here’s hoping it goes well.”
 
 @36173 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -3708,7 +3708,7 @@ I never imagined you’d be hiding away in a ruin like this.”
 # 审校：全局：弯撇号／弯引号
 > 「……わしは何もできんし、
 >  するつもりもない。お引き取り願おう」
-“...I can do nothing, and I intend to do nothing. I’ll ask you to leave.”
+“...I can’t do anything, and I don’t intend to. Kindly leave.”
 
 @36184 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号

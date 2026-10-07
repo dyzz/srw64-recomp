@@ -721,7 +721,7 @@ Hey, report this to Commander Gandal.”
 
 @30493 Marg · マーグ
 > (マーズ、会いたい、会って話がしたい)
-(Mars, I want to see you. I want to meet and talk.)
+(Mars, I want to see you. I want to see you and talk.)
 
 @30494 Takeru · タケル
 > (またお前か……)
@@ -853,7 +853,7 @@ Our father’s name was Idea, and our mother’s name was Aida.”
 # 审校：全局：弯撇号／弯引号
 > (なんだ……あの機体に爆弾!?
 >  そうだったのか……)
-(What... a bomb on that unit?! So that’s how it was...)
+(What... a bomb on that unit?! So that’s it...)
 
 @30519 Marg · マーグ
 > 「さぁ……俺と戦えマーズ!」
