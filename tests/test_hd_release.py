@@ -168,5 +168,34 @@ class CompressHdTests(unittest.TestCase):
                 compress.compress_backgrounds(art)
 
 
+
+class HdVersionTests(unittest.TestCase):
+    """The HD pack's own versions: a digest of its contents, and dates for a changed pack."""
+
+    def test_the_digest_follows_the_contents_only(self):
+        bundle = load("prepare_hd_bundle")
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            (folder / "art").mkdir()
+            (folder / "art/a.jpg").write_bytes(b"one")
+            first = bundle.content_sha256(folder)
+            (folder / "hd.json").write_text("{}")
+            (folder / "NOTICE.txt").write_text("notice")
+            self.assertEqual(bundle.content_sha256(folder), first)
+            (folder / "art/a.jpg").write_bytes(b"two")
+            self.assertNotEqual(bundle.content_sha256(folder), first)
+            (folder / "art/a.jpg").write_bytes(b"one")
+            (folder / "art/a.jpg").rename(folder / "art/b.jpg")
+            self.assertNotEqual(bundle.content_sha256(folder), first)
+
+    def test_a_changed_pack_is_named_by_the_day(self):
+        release = load("build_release")
+        today = release.time.strftime("%Y.%m.%d")
+        self.assertEqual(release.next_hd_version(""), today)
+        self.assertEqual(release.next_hd_version("2026.01.02"), today)
+        self.assertEqual(release.next_hd_version(today), f"{today}.2")
+        self.assertEqual(release.next_hd_version(f"{today}.2"), f"{today}.3")
+
+
 if __name__ == "__main__":
     unittest.main()

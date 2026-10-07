@@ -10,9 +10,17 @@ sessions' uncommitted work in the main worktree never reaches the build.
 
 Writes to OUTPUT:
   Marchwind64-<version>-macos14-arm64.zip  the app (Original images; HD when a pack is installed)
-  Marchwind64-<version>-HD.zip             the HD pack: unzip as hd/ into the user directory or beside the game
-  release.json, release-notes.md, logs/
-Publishing is a separate, manual step: release.json holds the gh command."""
+  Marchwind64-HD-<hd version>.zip          the HD pack, only when it changed: unzip as hd/ into the
+                                           user directory or beside the game
+  release.json, release-notes.md (hd-release-notes.md with a new pack), logs/
+Publishing is a separate, manual step: release.json holds the gh commands.
+
+The HD pack has versions of its own, dates such as 2026.10.07, and its own GitHub
+release (tag hd-<hd version>, not marked latest). The pack is always built; when its
+content_sha256 (prepare_hd_bundle.py) is the one the website lists (web/src/data/release.json
+in the built commit, written by web/scripts/sync-release.mjs), the release keeps that
+pack and nothing is zipped. Otherwise it gets the next version, written into its
+hd.json, and the game's update check offers it to players with an older pack."""
 from __future__ import annotations
 
 import argparse
@@ -29,6 +37,8 @@ import tomllib
 ROOT = Path(__file__).resolve().parents[2]
 DEPS = ROOT / "build/macos-deps/14.0-arm64/prefix"
 NOTES = ROOT / "tools/release/release-notes.md"
+HD_NOTES = ROOT / "tools/release/hd-release-notes.md"
+REPO = "dyzz/srw64-recomp"
 HD_NOTICE = ROOT / "tools/release/hd-notice.txt"
 # Built once by make recomp-bootstrap / recomp-scan; they depend on the pinned
 # toolchain and the ROM, not on the project's sources.
@@ -78,6 +88,16 @@ def zip_folder(steps: Steps, name: str, parent: Path, folder: str, archive: Path
     steps.run(name, ["/usr/bin/ditto", "-c", "-k", "--norsrc", "--noextattr", "--keepParent", folder, str(archive)], parent)
 
 
+def next_hd_version(listed: str) -> str:
+    """Today as YYYY.MM.DD, or today.N after the website's pack of today.N-1."""
+    today = time.strftime("%Y.%m.%d")
+    if listed == today:
+        return f"{today}.2"
+    if listed.startswith(today + "."):
+        return f"{today}.{int(listed.rsplit('.', 1)[1]) + 1}"
+    return today
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--commit", default="HEAD")
@@ -85,6 +105,8 @@ def main() -> int:
     parser.add_argument("--output", type=Path, help="new directory (default build/release/<version>-<commit>)")
     parser.add_argument("--keep-source", action="store_true", help="keep OUTPUT/src and its build after success")
     parser.add_argument("--jobs", type=int, default=8)
+    parser.add_argument("--hd-version", help="the version for a changed HD pack (default: today, YYYY.MM.DD, "
+                        "with .2, .3 … after one already made today)")
     parser.add_argument("--attach", action="append", default=[], metavar="PLATFORM=FILE",
                         help="another platform's package built elsewhere: linux=… (build_linux.py) or "
                              "windows=… (the windows workflow); copied in as Marchwind64-<version>-<platform> and "
@@ -169,8 +191,22 @@ def main() -> int:
     # The public pack is the whole HD folder, the same as the self-use one (user, 2026-09-28).
     if (source / HD_NOTICE.relative_to(ROOT)).is_file():
         shutil.copyfile(source / HD_NOTICE.relative_to(ROOT), pack_dir / "hd/NOTICE.txt")
-    hd_zip = output / f"Marchwind64-{args.version}-HD.zip"
-    zip_folder(steps, "zip-hd", pack_dir, "hd", hd_zip)
+    hd_about = json.loads((pack_dir / "hd/hd.json").read_text())
+    listed = json.loads((source / "web/src/data/release.json").read_text()).get("hd") or {}
+    hd_zip = None
+    if listed.get("content_sha256") == hd_about["content_sha256"]:
+        hd = {**listed, "changed": False}
+        print(f"     HD unchanged: keeps HD {hd['version']}", flush=True)
+    else:
+        hd_version = args.hd_version or next_hd_version(listed.get("version", ""))
+        hd_about["version"] = hd_version
+        (pack_dir / "hd/hd.json").write_text(json.dumps(hd_about, indent=2) + "\n")
+        hd_zip = output / f"Marchwind64-HD-{hd_version}.zip"
+        zip_folder(steps, "zip-hd", pack_dir, "hd", hd_zip)
+        tag = f"hd-{hd_version}"
+        hd = {"version": hd_version, "tag": tag, "content_sha256": hd_about["content_sha256"], "commit": commit,
+              "github": f"https://github.com/{REPO}/releases/tag/{tag}", "name": hd_zip.name, "bytes": hd_zip.stat().st_size,
+              "sha256": sha256(hd_zip), "url": f"https://github.com/{REPO}/releases/download/{tag}/{hd_zip.name}", "changed": True}
 
     # Packages of the other platforms, under the release's names, between the app and the HD pack.
     attached = []
@@ -182,13 +218,18 @@ def main() -> int:
         shutil.copyfile(source_file, target)
         attached.append((platform, target))
     packages = [("macos", app_zip), *attached]
-    artifacts = {path.name: {"bytes": path.stat().st_size, "sha256": sha256(path)} for _, path in (*packages, ("hd", hd_zip))}
+    artifacts = {path.name: {"bytes": path.stat().st_size, "sha256": sha256(path)} for _, path in packages}
     record = {"schema": "srw64.release-build.v1", "version": args.version, "tag": f"v{args.version}", "commit": commit,
-              "artifacts": artifacts, "hd": json.loads((pack_dir / "hd/hd.json").read_text()),
+              "artifacts": artifacts, "hd": hd, "hd_pack": hd_about,
               # Not run here. --target pins the tag to the built commit.
-              "publish": ["gh", "release", "create", f"v{args.version}", "--repo", "dyzz/srw64-recomp",
+              "publish": ["gh", "release", "create", f"v{args.version}", "--repo", REPO,
                           "--target", commit, "--title", f"Marchwind64 {args.version}",
-                          "--notes-file", str(output / "release-notes.md"), *[str(path) for _, path in packages], str(hd_zip)]}
+                          "--notes-file", str(output / "release-notes.md"), *[str(path) for _, path in packages]]}
+    if hd_zip:
+        # Published first, so the app's notes link to it; never the repository's latest release.
+        record["publish_hd"] = ["gh", "release", "create", hd["tag"], "--repo", REPO, "--target", commit, "--latest=false",
+                                "--title", f"Marchwind64 HD {hd['version']}", "--notes-file", str(output / "hd-release-notes.md"),
+                                str(hd_zip)]
     (output / "release.json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
     notes = source / NOTES.relative_to(ROOT)
     if notes.is_file():
@@ -196,13 +237,22 @@ def main() -> int:
         rows = "\n".join(f"| `{path.name}` | {mib[path.name]} | {PACKAGE_ROWS[platform]} |" for platform, path in packages)
         checksums = "\n".join(f"{row['sha256']}  {name}" for name, row in artifacts.items())
         text = notes.read_text().format(version=args.version, tag=record["tag"], commit=commit, short=commit[:7],
-                                        app_zip=app_zip.name, hd_zip=hd_zip.name, hd_size=mib[hd_zip.name],
+                                        app_zip=app_zip.name, hd_version=hd["version"], hd_url=hd["github"],
+                                        hd_status="本次随应用发布了新的 HD 包。" if hd_zip else "这次 HD 包没有变化，已经装了的不用重新下载。",
+                                        hd_status_en="This release comes with a new HD pack." if hd_zip else
+                                        "The HD pack has not changed: if you have it, there is nothing to download.",
                                         package_rows=rows, checksums=checksums,
                                         packages_en="; ".join(f"`{path.name}` {PACKAGE_EN[platform]}" for platform, path in packages))
         (output / "release-notes.md").write_text(text)
+    hd_notes = source / HD_NOTES.relative_to(ROOT)
+    if hd_zip and hd_notes.is_file():
+        text = hd_notes.read_text().format(hd_version=hd["version"], hd_zip=hd_zip.name, hd_size=f"{hd['bytes'] / 1048576:.0f} MB",
+                                           checksum=f"{hd['sha256']}  {hd_zip.name}", commit=commit, version=args.version)
+        (output / "hd-release-notes.md").write_text(text)
     if not args.keep_source:
         subprocess.run(["git", "worktree", "remove", "--force", str(source)], cwd=ROOT, check=True)
     print(json.dumps(record["artifacts"], indent=2))
+    print(f"HD {hd['version']}: " + (f"new, {hd_zip.name}" if hd_zip else "unchanged"))
     print(f"Ready in {output}. Nothing was published.")
     return 0
 

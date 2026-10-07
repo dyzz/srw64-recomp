@@ -9,6 +9,9 @@ native pages show by (image, palette), the silhouette being each portrait's alph
 file, and copies the world-map model pack and the 5600 marker pack after
 validating them. The app's launcher starts in HD when it finds this folder.
 
+hd.json records content_sha256, a digest of every file in the folder (paths and
+contents): build_release.py gives the pack a new HD version only when it changes.
+
 The result is a public download: AI-generated art (Alibaba Cloud Qwen image models;
 the world map with OpenAI's image model via Codex image_gen) and no ROM data;
 build_release.py adds NOTICE.txt.
@@ -17,6 +20,7 @@ of the public pack as ROM-derived."""
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -68,9 +72,20 @@ def prepare(output: Path, art_manifest: Path = ART, marker: Path = MARKER, model
               "art_source_sha256": sha(art_manifest.read_bytes()),
               "art": {key: art[key] for key in ("count", "portraits", "units", "unit_extras", "battle_sprites", "backgrounds", "scene_images", "tactical_maps")},
               "page_portraits": len(pages), "compressed": compressed,
-              "native_marker": marker_check["manifest_sha256"], "native_models": models_check["manifest_sha256"]}
+              "native_marker": marker_check["manifest_sha256"], "native_models": models_check["manifest_sha256"],
+              "content_sha256": content_sha256(output)}
     (output / "hd.json").write_text(json.dumps(report, indent=2) + "\n")
     return report
+
+
+def content_sha256(folder: Path) -> str:
+    """The pack's contents, apart from hd.json and NOTICE.txt: each file's path and sha256."""
+    digest = hashlib.sha256()
+    for path in sorted(p for p in folder.rglob("*") if p.is_file()):
+        name = path.relative_to(folder).as_posix()
+        if name not in ("hd.json", "NOTICE.txt"):
+            digest.update(f"{name}\0{sha(path.read_bytes())}\n".encode())
+    return digest.hexdigest()
 
 
 def main() -> int:

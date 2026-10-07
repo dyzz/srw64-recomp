@@ -26,13 +26,17 @@
       "bytes": 56971814,
       "sha256": "20c92cc0e9f89b1eea295242370e135aef7bc32ac52a5443e46bce955ca3d193",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.3.5/SRW64-0.3.5-windows-x64.zip"
-    },
-    {
-      "platform": "hd",
-      "name": "SRW64-0.3.5-HD.zip",
-      "bytes": 505272440,
-      "sha256": "4c4d80c27cd360ea849b1d8505505a29e522cc2dee2e2ad82070da82d4f7b9b3",
-      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.3.5/SRW64-0.3.5-HD.zip"
     }
-  ]
+  ],
+  "hd": {
+    "version": "",
+    "tag": "v0.3.5",
+    "content_sha256": "",
+    "commit": "cdb4020bc1e2281d7e27f872b5d8c2b80658339e",
+    "github": "https://github.com/dyzz/srw64-recomp/releases/tag/v0.3.5",
+    "name": "SRW64-0.3.5-HD.zip",
+    "bytes": 505272440,
+    "sha256": "4c4d80c27cd360ea849b1d8505505a29e522cc2dee2e2ad82070da82d4f7b9b3",
+    "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.3.5/SRW64-0.3.5-HD.zip"
+  }
 }

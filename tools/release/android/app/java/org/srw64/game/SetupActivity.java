@@ -28,7 +28,7 @@ import java.util.zip.ZipInputStream;
 // it into the app's own files, then starts the game. The host needs real paths: it
 // imports the ROM and walks the dialogue folders with std::filesystem.
 //
-// It also installs the HD pack, the same Marchwind64-<version>-HD.zip as on computers: its hd/
+// It also installs the HD pack, the same Marchwind64-HD-<hd version>.zip as on computers: its hd/
 // folder is unpacked into the user directory (files/user/hd), where the host looks for it
 // (src/native/app/launch.cpp). Three ways in: offered once after the ROM is chosen, the
 // launcher icon's "Import HD pack" shortcut (res/xml/shortcuts.xml), and opening the zip
@@ -106,12 +106,12 @@ public class SetupActivity extends Activity {
         offerHd = false;
         show("要导入 HD 美术包吗？可以跳过，以后长按应用图标选「导入 HD 包」。\n"
                 + "Import the HD art pack? You can skip this and later long-press the app icon for “Import HD pack”.");
-        button("选择 HD 包（Marchwind64-…-HD.zip）\nChoose the HD pack", this::pickHd);
+        button("选择 HD 包（Marchwind64-HD-….zip）\nChoose the HD pack", this::pickHd);
         button("跳过，开始游戏\nSkip and play", this::next);
     }
 
     private void pickHd() {
-        show("请选择 HD 美术包（Marchwind64-…-HD.zip）\nChoose the HD art pack (Marchwind64-…-HD.zip)");
+        show("请选择 HD 美术包（Marchwind64-HD-….zip）\nChoose the HD art pack (Marchwind64-HD-….zip)");
         Intent pick = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         pick.addCategory(Intent.CATEGORY_OPENABLE);
         pick.setType("*/*");

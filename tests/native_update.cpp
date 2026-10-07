@@ -26,6 +26,14 @@ int main() {
         check(!newer("0.3.5", "0.3.5-dirty") && newer("0.3.6", "0.3.5-dirty"), "a suffix is ignored");
         check(!newer("", "0.3.5") && !newer("v0.3.6", "0.3.5"), "something that is not a version is never newer");
         check(newer("0.3.6", "?"), "a build with no version takes any release as newer");
+        using srw64::update::hd_newer;
+        check(hd_newer("2026.10.07", true, "2026.09.30") && hd_newer("2026.10.07.2", true, "2026.10.07"),
+              "a later HD pack is offered");
+        check(!hd_newer("2026.10.07", true, "2026.10.07") && !hd_newer("2026.09.30", true, "2026.10.07"),
+              "the same or an older HD pack is not");
+        check(hd_newer("2026.10.07", true, ""), "a pack from before HD versions is offered the website's");
+        check(!hd_newer("2026.10.07", false, ""), "no pack installed: nothing is offered");
+        check(!hd_newer("", true, "") && !hd_newer("hd", true, ""), "no website version: nothing is offered");
         check(site_language("zh-Hans") == "zh" && site_language("ja") == "ja" && site_language("en") == "en" &&
                   site_language("ko") == "en",
               "website languages");

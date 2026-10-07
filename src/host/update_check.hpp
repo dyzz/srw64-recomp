@@ -11,6 +11,8 @@
 // in their browser. A check on start-up is the player's choice, asked once on the
 // title and kept in update.json (SRW64_UPDATE_STATE), at most one a day; the About page
 // and the macOS application menu check on demand. Not on Android.
+// The HD pack has versions of its own (dates, in its hd.json); /latest.json names the
+// newest, and a player with an older pack installed is told so too.
 namespace srw64::update {
 constexpr const char* kLatestUrl = "https://srw64.dreamquest.club/latest.json";
 constexpr const char* kSite = "https://srw64.dreamquest.club";
@@ -22,9 +24,18 @@ struct Release {
     std::string version, date;
     std::string notes, download;  // pages in the player's language
 };
+// The HD pack: the installed one (hd.json beside SRW64_ART_PACK) and the website's.
+struct HdPack {
+    bool installed = false;
+    std::string version;   // installed; empty for a pack from before HD versions
+    std::string latest;    // the website's, once a check has read it
+    std::string download;  // its download page, in the player's language
+    bool available = false;  // hd_newer(): latest is one to offer
+};
 struct Status {
     State state = State::Unchecked;
     Release latest;     // Current and Available; Available also from a past check
+    HdPack hd;
     std::string error;  // Failed
     uint64_t serial = 0;  // changes with every new status, for redraws
 };
@@ -33,7 +44,8 @@ struct Status {
 // A /latest.json body for this language; nullopt when it is not one.
 std::optional<Release> parse(const std::string& body, std::string_view language);
 
-// Window thread. `version` is this build's (SRW64_VERSION). Reads update.json.
+// Window thread. `version` is this build's (SRW64_VERSION). Reads update.json and the
+// installed HD pack's hd.json.
 void init(std::string_view version);
 bool supported();
 // The start-up check's switch: nullopt until the player has answered.

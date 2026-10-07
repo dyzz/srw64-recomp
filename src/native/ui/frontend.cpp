@@ -1281,6 +1281,13 @@ std::string update_words(const std::string& key,const update::Status& s) {
     for(const char* empty:{"（）"," ()"})if(const auto at=text.find(empty);at!=std::string::npos)text.erase(at,std::string(empty).size());
     return escape(text);
 }
+// The HD pack's words, with {version} (the website's) and {installed}.
+std::string update_hd_words(const std::string& key,const update::Status& s) {
+    auto text=localization::catalog().ui(key);
+    for(const auto& [mark,value]:{std::pair<std::string,std::string>{"{version}",s.hd.latest},{"{installed}",s.hd.version}})
+        if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),value);
+    return escape(text);
+}
 // A path to show in a row: the home folder as ~, and a long one by its end (the button
 // beside it copies the whole), so a folder with no spaces cannot run off the page.
 std::string short_path(std::string path) {
@@ -1340,6 +1347,11 @@ std::string about_rows() {
     }
     rows+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("settings_update")+"</div><div class='set-seg'>"+actions+
         "</div></div><p>"+update_words(key,s)+"</p></div>";
+    // The HD pack, with versions of its own: the one installed, and the website's when newer.
+    std::string hd=update_hd_words(!s.hd.installed?"update_hd_missing":s.hd.version.empty()?"update_hd_unknown":"update_hd_installed",s);
+    if(s.hd.available)hd+=" "+update_hd_words("update_hd_available",s);
+    rows+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("settings_update_hd")+"</div><div class='set-seg'>"+
+        button("update-hd-download",label("update_hd_download"),s.hd.available)+"</div></div><p>"+hd+"</p></div>";
     const auto automatic=update::automatic();
     rows+=settings_choice("settings_update_auto","update-auto",{"on","off"},automatic?(*automatic?"on":"off"):"");
     return rows+debug_row();
@@ -3627,7 +3639,8 @@ void home_sync() {
     // With touch controls the Library, MOD and settings are touch buttons along the top.
     const bool touch=touch_active();
     const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+(touch?"t":"")+frame_stamp()+
-        (update::status("en").state==update::State::Available?"u"+update::status("en").latest.version:std::string());
+        (update::status("en").state==update::State::Available?"u"+update::status("en").latest.version:std::string())+
+        (update::status("en").hd.available?"h"+update::status("en").hd.latest:std::string());
     if((home_doc || home_chrome_doc) && stamp==home_stamp)return;
     document_close(home_doc);document_close(home_chrome_doc);home_stamp=stamp;
     // Library and MOD bottom right, lettered like the ring (menu_style: 14 game pixels, a
@@ -3646,8 +3659,11 @@ void home_sync() {
     std::string chrome="<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
     if(settings_entry && !touch)chrome+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
     // A newer release, found by the update check: a word in the corner that opens the About page.
+    // A newer HD pack says so in the same place when the program itself is current.
     if(const auto s=update::status("en");s.state==update::State::Available && !touch)
         chrome+="<button id='update-open' class='home-update'>"+update_words("update_title_hint",s)+"</button>";
+    else if(s.hd.available && !touch)
+        chrome+="<button id='update-open' class='home-update'>"+update_hd_words("update_title_hint_hd",s)+"</button>";
     home_chrome_doc=document(chrome,false,true);
 }
 // The HD original (battle_ui "hd"): the original screen redrawn in its own 320x240
@@ -3867,13 +3883,14 @@ void choose(const std::string& id) {
         const auto s=update::status(update::site_language(localization::catalog().locale));
         open_page(id=="update-download"?s.latest.download:s.latest.notes);settings_focus=id;return;
     }
+    if(id=="update-hd-download"){open_page(update::status(update::site_language(localization::catalog().locale)).hd.download);settings_focus=id;return;}
     if(id.starts_with("about-link:")) {
         const auto which=id.substr(11);
         open_page(which=="site"?std::string(update::kSite)+"/"+update::site_language(localization::catalog().locale)+"/":
                   which=="issues"?std::string(update::kIssues):std::string(update::kSource));
         settings_focus=id;return;
     }
-    if(id=="update-open"){open_about("update-download");return;}
+    if(id=="update-open"){open_about(update::status("en").state==update::State::Available?"update-download":"update-hd-download");return;}
     if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
     if(id=="settings-open"){settings_open=true;settings_release.hold();input.clear();return;}
     // The MOD manager. Its campaign page switches campaign (or back to the main game) on the

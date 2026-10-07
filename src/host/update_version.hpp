@@ -27,6 +27,13 @@ inline bool newer(std::string_view candidate, std::string_view current) {
     b.resize(a.size());
     return a > b;
 }
+// Whether to offer the website's HD pack (version `latest`): only to a player with a pack
+// installed, older than it or from before the packs had versions (an empty `installed`).
+// HD versions are dates, "2026.10.07" or "2026.10.07.2", compared like the game's.
+inline bool hd_newer(std::string_view latest, bool installed, std::string_view version) {
+    if (!installed || !newer(latest, "0")) return false;
+    return version.empty() || newer(latest, version);
+}
 // The website's language for a game locale: zh, en, ja.
 inline std::string site_language(std::string_view locale) {
     if (locale.starts_with("zh")) return "zh";

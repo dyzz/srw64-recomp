@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { INSTALL } from '../../copy/install';
 import { langPaths, type Lang } from '../../i18n';
-import { fileFor, mb, release, type Platform } from '../../data/release';
+import { allFiles, fileFor, hd, mb, release, type Platform } from '../../data/release';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -42,7 +42,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
             <p class="dim">{c.requires}{s.requires}</p>
             {f ? (
               <a class="btn" href={f.url}>
-                <span>{f.name}<small>{mb(f.bytes)}</small></span>
+                <span>{f.name}<small>{s.id === 'hd' && hd.version ? `HD ${hd.version} · ` : ''}{mb(f.bytes)}</small></span>
               </a>
             ) : <p class="nofile">{c.noFile}</p>}
           </div>
@@ -65,7 +65,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
         <table>
           <thead><tr><th>{c.file}</th><th>{c.size}</th><th>{c.verify} (SHA-256)</th></tr></thead>
           <tbody>
-            {release.files.map((f) => (
+            {allFiles.map((f) => (
               <tr>
                 <td><a href={f.url}>{f.name}</a></td>
                 <td class="nowrap">{mb(f.bytes)}</td>
@@ -77,6 +77,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
       </div>
       <p class="links">
         <a href={release.github}>GitHub Release {release.tag} →</a>
+        {hd.tag !== release.tag && <a href={hd.github}>GitHub Release {hd.tag} →</a>}
         {release.quark ? <a href={release.quark}>{c.quark} →</a> : <span class="dim">{c.quarkPending}</span>}
       </p>
     </section>

@@ -27,6 +27,8 @@ struct Shared {
     std::string error;
     uint64_t serial = 1;
     bool running = false;
+    bool hd_installed = false;
+    std::string hd_version;  // the installed pack's; empty before HD versions
 };
 Shared& shared() {
     static auto* s = new Shared;
@@ -117,6 +119,20 @@ void init(std::string_view version) {
     std::lock_guard lock(s.mutex);
     s.version = version;
     if (const char* file = std::getenv("SRW64_UPDATE_STATE"); file && *file) s.file = file;
+    // The HD pack in use: its art folder is SRW64_ART_PACK, hd.json is beside it. A
+    // development run's art folder has no hd.json and counts as no pack.
+    if (const char* art = std::getenv("SRW64_ART_PACK"); art && *art) {
+        const auto about = std::filesystem::path(art).parent_path() / "hd.json";
+        std::error_code missing;
+        if (std::filesystem::is_regular_file(about, missing)) {
+            std::ifstream hd(about);
+            const auto pack = json::parse(hd, nullptr, false);
+            if (pack.is_object() && pack.value("schema", "") == "srw64.hd-bundle.v1") {
+                s.hd_installed = true;
+                if (pack.contains("version") && pack["version"].is_string()) s.hd_version = pack["version"].get<std::string>();
+            }
+        }
+    }
     if (s.file.empty() || !std::filesystem::exists(s.file)) return;
     std::ifstream in(s.file);
     const auto saved = json::parse(in, nullptr, false);
@@ -181,8 +197,22 @@ void check_on_start() {
 Status status(std::string_view language) {
     auto& s = shared();
     std::lock_guard lock(s.mutex);
-    Status status{s.state, {}, s.error, s.serial};
+    Status status{s.state, {}, {}, s.error, s.serial};
     if (const auto release = describe(s.latest, language)) status.latest = *release;
+    status.hd.installed = s.hd_installed;
+    status.hd.version = s.hd_version;
+    if (const auto hd = s.latest.is_object() ? s.latest.value("hd", json()) : json();
+        hd.is_object() && hd.contains("version") && hd["version"].is_string()) {
+        status.hd.latest = hd["version"].get<std::string>();
+        const auto page = hd.value("download", json());
+        for (const auto& key : {std::string(language), std::string("en")})
+            if (page.is_object() && page.contains(key) && page[key].is_string()) {
+                status.hd.download = page[key].get<std::string>();
+                break;
+            }
+    }
+    if (status.hd.download.empty()) status.hd.download = std::string(kSite) + "/" + std::string(language) + "/install/#hd";
+    status.hd.available = hd_newer(status.hd.latest, status.hd.installed, status.hd.version);
     return status;
 }
 
