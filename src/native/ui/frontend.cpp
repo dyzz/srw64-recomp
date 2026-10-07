@@ -2244,7 +2244,7 @@ void viewer_pick(int i,bool confirm) {
         // From what the box found: its pilot if they may fly it, else the unit's default.
         viewer_side[s].unit=unsigned(i);viewer_side[s].pilot=viewer_saved.side[s].pilot;viewer_fit_pilot(s);
         if(viewer_side[s].unit==viewer_saved.side[s].unit){viewer_side[s].weapon=viewer_saved.side[s].weapon;viewer_hit=viewer_saved.hit;}
-        else{viewer_default_weapon(s);viewer_hit={};}
+        else{viewer_default_weapon(s);viewer_hit[s].damage=-1;}   // its HP differs; 撃墜 and the reactions stay (gated when shown)
     } else if(kind=="pilot")viewer_side[s].pilot=unsigned(i);
     else if(kind=="weapon")viewer_side[s].weapon=unsigned(i);
     else if(kind=="scene")viewer_scene[s]=unsigned(i);
@@ -2284,7 +2284,7 @@ void viewer_choose(const std::string& id) {
         viewer_listen(battle_viewer::listened()<0);
         return;
     }
-    if(id=="vw-swap"){std::swap(viewer_side[0],viewer_side[1]);std::swap(viewer_scene[0],viewer_scene[1]);viewer_default_weapon(0);viewer_default_weapon(1);viewer_hit={};return;}
+    if(id=="vw-swap"){std::swap(viewer_side[0],viewer_side[1]);std::swap(viewer_scene[0],viewer_scene[1]);std::swap(viewer_hit[0],viewer_hit[1]);viewer_default_weapon(0);viewer_default_weapon(1);return;}
     if(id.starts_with("vw-react:")){const unsigned t=id[9]=='1';viewer_hit[t]={unsigned(arg(11))%reaction_count,-1,false};return;}
     if(id.starts_with("vw-preset:")) {
         const unsigned t=id[10]=='1',k=unsigned(arg(12));
