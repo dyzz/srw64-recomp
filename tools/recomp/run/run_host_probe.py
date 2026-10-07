@@ -202,6 +202,13 @@ def main() -> int:
                 subprocess.run([sys.executable, str(ROOT / "tools/recomp/model5600/prepare_native_marker.py"), "--output", str(args.native_marker)], check=True)
             from recomp.model5600.prepare_native_marker import validate
             native_marker = validate(args.native_marker)
+        # The HD ship models and their name plates, as the app loads them from the HD pack
+        # (launch.cpp); the golden beacon also needs them.
+        default_models = ROOT / "build/recomp/native-models/assets"
+        if prepared_profile["hd_available"] and not args.native_models and (default_models / "manifest.json").exists():
+            from models.build_native_models import validate as validate_models
+            args.native_models = default_models
+            native_models = validate_models(default_models)
         if not prepared_profile["hd_available"]:
             print(f"原始画面模式；HD 不可用：{prepared_profile['hd_unavailable_reason']}", flush=True)
     layout = analyze((ROOT / "rom.z64").read_bytes(), None)
