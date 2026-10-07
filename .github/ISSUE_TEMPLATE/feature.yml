@@ -1,0 +1,29 @@
+name: "功能建议 / Feature request"
+description: "新功能或对现有功能的改进建议。A new feature, or a change to an existing one."
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: "建议 / Suggestion"
+      description: "想要什么，在什么时候用得上。What you would like, and when it would help."
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: "现在的不便 / What is in the way now"
+      description: "可选：现在怎么做、哪里不方便。Optional: how you do it now and what is awkward about it."
+  - type: dropdown
+    id: platform
+    attributes:
+      label: "平台 / Platform"
+      description: "只和某个平台有关时选择。Only if it concerns one platform."
+      multiple: true
+      options:
+        - macOS
+        - Windows
+        - Linux
+        - Steam Deck
+        - Android

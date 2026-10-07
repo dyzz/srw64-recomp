@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "剧情台词与图鉴译名 / Story lines and Library names"
+    url: https://srw64.dreamquest.club/zh/story/
+    about: "在官网对应的句子或译名旁直接提修改建议。Suggest a correction next to the line or name on the website."
+  - name: "下载与安装 / Download and install"
+    url: https://srw64.dreamquest.club/zh/install/
+    about: "各平台的安装步骤、ROM 与 HD 包说明。How to install on each platform, the ROM and the HD pack."

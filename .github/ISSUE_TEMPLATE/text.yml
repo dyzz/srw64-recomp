@@ -1,0 +1,52 @@
+name: "界面文字问题 / Interface text"
+description: "菜单、设置、提示等界面文字的翻译、排版或显示问题。剧情台词和图鉴译名请在官网提。Translation, layout or display of menus, settings and messages. Story lines and Library names go on the website."
+title: "[Text] "
+labels: ["translation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        剧情台词、战斗台词和图鉴里的人名、机体名、武器名，请到[官网](https://srw64.dreamquest.club/zh/story/)对应的句子或译名旁直接提建议，我们在那里统一处理。这里只收网站上提不了的文字：菜单、设置窗口、提示、按键说明等。
+
+        Story and battle lines and the Library's names of people, units and weapons: please suggest corrections next to them on the [website](https://srw64.dreamquest.club/en/story/). This form is for text the site cannot take: menus, the settings window, messages, button hints.
+  - type: input
+    id: version
+    attributes:
+      label: "版本 / Version"
+      placeholder: "0.4.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: "语言 / Language"
+      options:
+        - 中文
+        - English
+        - 日本語
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: "在哪里 / Where"
+      description: "哪个画面或设置页。Which screen or settings page."
+      placeholder: "选项 → 界面 / 改造画面 / 战前确认"
+    validations:
+      required: true
+  - type: textarea
+    id: now
+    attributes:
+      label: "现在的文字 / Current text"
+    validations:
+      required: true
+  - type: textarea
+    id: better
+    attributes:
+      label: "建议改成 / Suggested text"
+      description: "可选：为什么这样改更好。Optional: why it reads better."
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: "截图 / Screenshot"
+      description: "文字被截断、重叠或显示不全时请附截图。Please attach one when text is cut off, overlaps or does not fit."
