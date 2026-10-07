@@ -94,7 +94,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうした、もうおしまいか!」
-“What’s wrong, is that all?!”
+“What’s the matter, finished already?!”
 
 @7111 Baren · バレン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）

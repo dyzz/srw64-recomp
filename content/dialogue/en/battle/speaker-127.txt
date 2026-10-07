@@ -77,7 +77,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ま、まだだ! こんなことでぇっ!」
-“N-not yet! Not over something like this!”
+“N-not yet! Not from a hit like this!”
 
 @9995 Gyugaki · 牛餓鬼
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/2）
@@ -89,17 +89,17 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この牛餓鬼には、効かないぞ!」
-“It won’t work on me, Gyugaki!”
+“That won’t work on Gyugaki!”
 
 @9997 Gyugaki · 牛餓鬼
 # 触发：回避（通用，1/2）
 > 「見たか!」
-“You see that!”
+“See that?!”
 
 @9998 Gyugaki · 牛餓鬼
 # 触发：回避（通用，2/2）
 > 「俺だってこのくらいはっ!」
-“Even I can do at least this much!”
+“I can do this much too!”
 
 @9999 Gyugaki · 牛餓鬼
 # 触发：攻击无效（护罩／装甲）（通用，1/1）

@@ -62,14 +62,14 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐぅっ、わしは死なぬっ! わしは
 >  戦うっ! まだまだ戦ってやるわっ!」
-“Guh, I won’t die! I’ll fight! I’ll keep fighting on and on!”
+“Guh, I won’t die! I’ll fight! I’ll keep on fighting!”
 
 @10013 Gyukenki · 牛剣鬼
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぬうぅぅっ!!
 >  百鬼老兵は死なぬっ!!」
-“Nghhh!! A Hyakki veteran doesn’t die!!”
+“Nghhh!! Old Hyakki soldiers never die!!”
 
 @10014 Gyukenki · 牛剣鬼
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
@@ -87,7 +87,7 @@
 @10016 Gyukenki · 牛剣鬼
 # 触发：中伤（剩余 HP 30–90%）（通用，2/4）
 > 「な、何じゃと?」
-“W-what did you say?”
+“Wh-what?”
 
 @10017 Gyukenki · 牛剣鬼
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
@@ -105,7 +105,7 @@
 @10019 Gyukenki · 牛剣鬼
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「若僧め、バカにしおって」
-“You whelp, making a fool of me.”
+“Insolent whelp, mocking me like that.”
 
 @10020 Gyukenki · 牛剣鬼
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）

@@ -18,7 +18,7 @@
 @11898 Hyoma · 豹馬
 # 触发：攻击（通用，4/5）
 > 「これでもくらえっ!!」
-“Take this too!!”
+“Eat this!!”
 
 @11899 Hyoma · 豹馬
 # 触发：攻击（通用，5/5）
@@ -52,14 +52,14 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! このままじゃヤバイぜ!!」
-“Ngh! At this rate I’m in trouble!!”
+“Ngh! I’m in real trouble here!!”
 
 @11905 Hyoma · 豹馬
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちくしょう! このままじゃ
 >  やられちまうぜっ!」
-“Damn! At this rate I’m gonna get taken out!”
+“Damn! Keep this up and I’m done for!”
 
 @11906 Hyoma · 豹馬
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
@@ -71,7 +71,7 @@
 @11907 Hyoma · 豹馬
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「うあっ! やりやがったなっ!」
-“Ugh! You got me!”
+“Ugh! You’ll pay for that!”
 
 @11908 Hyoma · 豹馬
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
@@ -93,7 +93,7 @@
 @11911 Hyoma · 豹馬
 # 触发：回避（通用，1/3）
 > 「あぶねぇ、あぶねぇ」
-“That was close, that was close.”
+“Close one, close one.”
 
 @11912 Hyoma · 豹馬
 # 触发：回避（通用，2/3）
@@ -104,7 +104,7 @@
 @11913 Hyoma · 豹馬
 # 触发：回避（通用，3/3）
 > 「あらよっと!」
-“Whoops!”
+“Hup!”
 
 @11914 Hyoma · 豹馬
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
@@ -242,7 +242,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「わああっ! ひょ、豹馬、
 >  これ以上は危険たい!」
-“Waaah! H-hyoma, any more of this is dangerous!”
+“Waaah! H-Hyoma, any more and we’re in real danger!”
 
 @16776 Kosuke · 小介
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈コン・バトラーV〉
@@ -294,7 +294,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ばってん、たいしたことなか! さすがは
 >  コン・バトラーたい」
-“But it’s nothing serious! That’s the Combattler for you.”
+“Still, nothin’ serious! That’s the Combattler for ya.”
 
 @16784 Juzo · 十三
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈コン・バトラーV〉

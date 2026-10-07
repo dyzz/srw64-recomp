@@ -37,7 +37,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「きゃあっ! ダメ、このままじゃ
 >  やられちゃうっ!」
-“Kyaah! No, at this rate I’ll be shot down!”
+“Kyaah! No, I’m going to get shot down!”
 
 @11946 Chizuru · ちずる
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
@@ -49,12 +49,12 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あうっ! まだよ、こんな事で
 >  負けるもんですか!」
-“Augh! Not yet, I won’t lose over something like this!”
+“Augh! Not yet! I’m not losing to this!”
 
 @11948 Chizuru · ちずる
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 > 「くうっ! よくもやったわねえっ!」
-“Ngh! How dare you do that!”
+“Ngh! How dare you!”
 
 @11949 Chizuru · ちずる
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）

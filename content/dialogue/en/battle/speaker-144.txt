@@ -58,7 +58,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おぉぅっ! や、やつらの力が
 >  これほどとは!?」
-“Ooh! T-to think their power was this great?!”
+“Ooh! Th-they’re this strong?!”
 
 @7128 Wahl · ワール
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
@@ -69,7 +69,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、これでは私まで死んでしまうっ!」
-“A-at this rate even I will die!”
+“A-at this rate, I’ll be killed too!”
 
 @7130 Wahl · ワール
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
@@ -121,7 +121,7 @@
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「エネルギー切れだと!? ええぃ何を
 >  やっている!」
-“Out of energy?! Damn it, what are you doing!”
+“Out of energy?! Blast, what are you people doing?!”
 
 @7139 Wahl · ワール
 # 触发：射程外，无法反击（通用，1/1）

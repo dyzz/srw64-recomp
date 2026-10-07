@@ -14,7 +14,7 @@
 @10057 Tekkoki · 鉄甲鬼
 # 触发：攻击（通用，3/13）
 > 「とうっ!」
-“Toh!”
+“Hyah!”
 
 @10058 Tekkoki · 鉄甲鬼
 # 触发：攻击（通用，4/13）
@@ -49,17 +49,17 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺の作ったこのメカ鉄甲鬼で
 >  貴様を倒す!」
-“I’ll destroy you with this Mecha Tekkoki I built!”
+“This Mecha Tekkoki, my own creation, will destroy you!”
 
 @10064 Tekkoki · 鉄甲鬼
 # 触发：攻击（通用，10/13）
 > 「さっさと消えうせろーッ!」
-“Hurry up and disappear!”
+“Just vanish already!”
 
 @10065 Tekkoki · 鉄甲鬼
 # 触发：攻击（通用，11/13）
 > 「受けてみろ!」
-“Try and take this!”
+“See if you can take this!”
 
 @10066 Tekkoki · 鉄甲鬼
 # 触发：攻击（通用，12/13）
@@ -81,7 +81,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こ、このメカ鉄甲鬼がやられる
 >  はずが……!!」
-“Th-this Mecha Tekkoki can’t be beaten...!!”
+“Th-there’s no way Mecha Tekkoki could lose...!!”
 
 @10070 Tekkoki · 鉄甲鬼
 # 触发：被击坠（通用，3/3）
@@ -141,12 +141,12 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/7）
 # 审校：原句残缺
 > 「うっ……この程度でっ!」
-“Ugh... not from this!”
+“Ugh... not from a hit like this!”
 
 @10080 Tekkoki · 鉄甲鬼
 # 触发：中伤（剩余 HP 30–90%）（通用，6/7）
 > 「な、なんだとっ!」
-“W-what did you say?!”
+“Wh-what?!”
 
 @10081 Tekkoki · 鉄甲鬼
 # 触发：中伤（剩余 HP 30–90%）（通用，7/7）
@@ -169,7 +169,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 # 审校：それだけ 指数量
 > 「貴様の武器はそれだけか!!」
-“Is that all the weapons you’ve got?!”
+“Is that the only weapon you’ve got?!”
 
 @10085 Tekkoki · 鉄甲鬼
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
@@ -217,7 +217,7 @@
 # 触发：回避（通用，5/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!」
-“It’s useless!”
+“Useless!”
 
 @10093 Tekkoki · 鉄甲鬼
 # 触发：回避（通用，6/6）
@@ -228,7 +228,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!」
-“It’s useless!”
+“Useless!”
 
 @10095 Tekkoki · 鉄甲鬼
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -256,7 +256,7 @@
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
 # 审校：原文以「开头，应使用弯引号“。
 > 「ミサイル発射!」
-“Missile, fire!”
+“Firing missiles!”
 
 @15274 Tekkoki · 鉄甲鬼
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）

@@ -14,7 +14,7 @@
 @11962 Kosuke · 小介
 # 触发：攻击（通用，3/5）
 > 「これでもくらえっ!」
-“Try taking this!”
+“Eat this!”
 
 @11963 Kosuke · 小介
 # 触发：攻击（通用，4/5）
@@ -24,7 +24,7 @@
 @11964 Kosuke · 小介
 # 触发：攻击（通用，5/5）
 > 「僕だって!」
-“I can do it too!”
+“I can fight too!”
 
 @11965 Kosuke · 小介
 # 触发：被击坠（通用，1/1）
@@ -38,7 +38,7 @@
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「うわああっ! パ、パワーが
 >  違いすぎるっ!」
-“Waaaah! Th-the power gap’s way too big!”
+“Waaaah! Th-they’re way too powerful!”
 
 @11967 Kosuke · 小介
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
@@ -56,7 +56,7 @@
 @11969 Kosuke · 小介
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
 > 「くうっ! やったなあっ!」
-“Ngh! You did it now!”
+“Ngh! Now you’ve done it!”
 
 @11970 Kosuke · 小介
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
@@ -68,7 +68,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだっ! まだやられるもんか!」
-“Not yet! Like I’d go down!”
+“Not yet! I’m not going down!”
 
 @11972 Kosuke · 小介
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -80,7 +80,7 @@
 @11973 Kosuke · 小介
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「こんな攻撃で落ちるもんか!」
-“Like an attack like that would bring me down!”
+“As if an attack like that could bring me down!”
 
 @11974 Kosuke · 小介
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -136,4 +136,4 @@
 @16795 Kosuke · 小介
 # 触发：使用〈クラフトミサイル〉（低优先，可能被通用台词顶掉）
 > 「ミサイル発射!」
-“Missile launch!”
+“Missiles away!”

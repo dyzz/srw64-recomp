@@ -69,12 +69,12 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ううっ! こうなったらやぶれかぶれだ!」
-“Ugh! If it’s come to this, I’ll go all out!”
+“Ugh! Guess it’s all or nothin’ now!”
 
 @9970 Musashi · ムサシ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
 > 「あぁっ、しまったぁ!」
-“Ah, I messed up!”
+“Aah, crap!”
 
 @9971 Musashi · ムサシ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -115,7 +115,7 @@
 @9978 Musashi · ムサシ
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 > 「そんなもんが効くかぁ!」
-“Like that could work on me!”
+“Like that’s gonna work on me!”
 
 @9979 Musashi · ムサシ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

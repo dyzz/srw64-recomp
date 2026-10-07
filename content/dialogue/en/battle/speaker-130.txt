@@ -19,7 +19,7 @@
 # 触发：攻击（通用，4/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「金と力を手に入れるんだ!!」
-“I’ll get money and power!!”
+“Money and power will be mine!!”
 
 @10032 Boryuki · 暴竜鬼
 # 触发：攻击（通用，5/9）
@@ -30,7 +30,7 @@
 # 触发：攻击（通用，6/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これでどうだ!!」
-“How’s this!!”
+“How about this!!”
 
 @10034 Boryuki · 暴竜鬼
 # 触发：攻击（通用，7/9）
@@ -42,12 +42,12 @@
 # 触发：攻击（通用，8/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺は勝つ! 勝った者が正義だ!」
-“I’ll win! The winner is justice!”
+“I’ll win! Whoever wins is in the right!”
 
 @10036 Boryuki · 暴竜鬼
 # 触发：攻击（通用，9/9）
 > 「負けた者が邪悪になるのだ!」
-“The loser is the evil one!”
+“And whoever loses is evil!”
 
 @10037 Boryuki · 暴竜鬼
 # 触发：被击坠（通用，1/2）
@@ -82,7 +82,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おのれっ! 邪魔する奴は
 >  ゆるさんっ!」
-“Curse you! I won’t forgive anyone who gets in my way!”
+“Curse you! Anyone who gets in my way will pay!”
 
 @10043 Boryuki · 暴竜鬼
 # 触发：中伤（剩余 HP 30–90%）（通用，2/3）
@@ -94,7 +94,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ……自ら望んで鬼になった俺が
 >  これしきで負けるわけには!」
-“Guh... I chose to become a demon myself. I can’t lose to something like this!”
+“Guh... I chose to become a demon. I can’t let this beat me!”
 
 @10045 Boryuki · 暴竜鬼
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
@@ -111,7 +111,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「無駄だ!!」
-“It’s useless!!”
+“Useless!!”
 
 @10048 Boryuki · 暴竜鬼
 # 触发：回避（通用，1/4）
@@ -133,12 +133,12 @@
 @10051 Boryuki · 暴竜鬼
 # 触发：回避（通用，4/4）
 > 「見たか、俺の力を!」
-“Did you see my power?!”
+“See that? That’s my power!”
 
 @10052 Boryuki · 暴竜鬼
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「見たか、俺の力を!」
-“Did you see my power?!”
+“See that? That’s my power!”
 
 @10053 Boryuki · 暴竜鬼
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -156,7 +156,7 @@
 # 审校：原文以「开头，应使用弯引号“，且句末感叹号保留。
 > 「イサムの名ぐらい、いつでも
 >  捨ててやらぁ!」
-“I can throw away the name Isamu anytime!”
+“I’d throw away the name Isamu in a heartbeat!”
 
 @15270 Boryuki · 暴竜鬼
 # 触发：对手驾驶员〈ハヤト〉
@@ -168,7 +168,7 @@
 # 触发：对手驾驶员〈ハヤト〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いくぞ、隼人!!」
-“Let’s go, Hayato!!”
+“Here I come, Hayato!!”
 
 @15272 Boryuki · 暴竜鬼
 # 触发：对手驾驶员〈ハヤト〉

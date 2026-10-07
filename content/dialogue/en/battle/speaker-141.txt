@@ -56,7 +56,7 @@
 @7150 Emperor Zuul · ズール皇帝
 # 触发：攻击（通用，11/15）
 > 「死んで自分の愚かさをしれ!」
-“Die, and learn your own foolishness!”
+“Die, and know the depth of your folly!”
 
 @7151 Emperor Zuul · ズール皇帝
 # 触发：攻击（通用，12/15）
@@ -67,7 +67,7 @@
 @7152 Emperor Zuul · ズール皇帝
 # 触发：攻击（通用，13/15）
 > 「自分の無力を思い知れ!」
-“Know your own helplessness!”
+“Learn how powerless you are!”
 
 @7153 Emperor Zuul · ズール皇帝
 # 触发：攻击（通用，14/15）
@@ -83,7 +83,7 @@
 # 触发：被击坠（通用，1/2）
 # 审校：不用缩写
 > 「なんだと!? こんなばかなぁぁぁぁ」
-“This cannot beeeee!”
+“What?! This cannot beeeee!”
 
 @7156 Emperor Zuul · ズール皇帝
 # 触发：被击坠（通用，2/2）
@@ -106,7 +106,7 @@
 # 审校：不用缩写
 > 「うおぉぉ!? 許さんぞこの
 >  ムシケラどもがぁっ!」
-“Uwooo?! I will not forgive this, you insects!”
+“Uwooo?! You will pay for this, insects!”
 
 @7160 Emperor Zuul · ズール皇帝
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）

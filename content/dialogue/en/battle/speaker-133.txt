@@ -9,13 +9,13 @@
 # 触发：攻击（通用，2/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「これでどうだ!」
-“How’s this!”
+“How about this!”
 
 @7883 Shingo · 真吾
 # 触发：攻击（通用，3/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「さあて、こいつでとどめだ!」
-“All right, this one’s the finisher!”
+“All right, this’ll finish you!”
 
 @7884 Shingo · 真吾
 # 触发：攻击（通用，4/6）
@@ -65,12 +65,12 @@
 @7892 Killy · キリー
 # 触发：被击坠（通用，6/7）
 > 「ちっ! やられちまったぜ!」
-“Tch! I got taken down!”
+“Tch! They got us!”
 
 @7893 Killy · キリー
 # 触发：被击坠（通用，7/7）
 > 「あーあ、ダメか」
-“Aw man, no good, huh.”
+“Oh well, guess that’s it.”
 
 @7894 Shingo · 真吾
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/6）
@@ -82,12 +82,12 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちっ!! このままじゃまずいな……」
-“Tch! At this rate we’re in trouble...”
+“Tch! This isn’t looking good...”
 
 @7896 Shingo · 真吾
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/6）
 > 「うわっ!! これはちょっとヤバイかな……」
-“Whoa! This might be a bit bad...”
+“Whoa! This could get kinda hairy...”
 
 @7897 Remy · レミー
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/6）
@@ -101,7 +101,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うわっ!! 真吾!!
 >  ヤバイぜこいつは!」
-“Whoa! Shingo! This one’s bad!”
+“Whoa! Shingo! This is bad news!”
 
 @7899 Killy · キリー
 # 触发：重伤（剩余 HP 不足 30%）（通用，6/6）
@@ -117,7 +117,7 @@
 @7901 Shingo · 真吾
 # 触发：中伤（剩余 HP 30–90%）（通用，2/8）
 > 「ちっ、油断したか?」
-“Tch, I let my guard down?”
+“Tch, got careless, did I?”
 
 @7902 Shingo · 真吾
 # 触发：中伤（剩余 HP 30–90%）（通用，3/8）
@@ -154,12 +154,12 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「つっ! 受けた分は利子つけて
 >  返させてもらうぜ!」
-“Ugh! I’ll make you pay back what I took, with interest!”
+“Ugh! I’ll pay you back for that, with interest!”
 
 @7908 Shingo · 真吾
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/8）
 > 「何だ、そんなもの!」
-“What, is that all!”
+“What, that’s it?!”
 
 @7909 Shingo · 真吾
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/8）
@@ -177,7 +177,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度か!」
-“Is this all you’ve got!”
+“Is that all you’ve got?!”
 
 @7912 Remy · レミー
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/8）
@@ -215,7 +215,7 @@
 @7918 Shingo · 真吾
 # 触发：回避（通用，3/8）
 > 「ふ、どこをねらってる!」
-“Hmph, what are you aiming at!”
+“Hmph, where are you aiming?!”
 
 @7919 Shingo · 真吾
 # 触发：回避（通用，4/8）
@@ -226,7 +226,7 @@
 # 触发：回避（通用，5/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ムダだっ!!」
-“It’s useless!”
+“Useless!”
 
 @7921 Remy · レミー
 # 触发：回避（通用，6/8）
@@ -328,7 +328,7 @@
 @14553 Shingo · 真吾
 # 触发：使用〈ゴーフラッシャー〉
 > 「これで決める!」
-“This finishes it!
+“This finishes it!”
 ---
 > 「ゴーフラッシャーッ!!」
-Go Flasher!!”
+“Go Flasher!!”
