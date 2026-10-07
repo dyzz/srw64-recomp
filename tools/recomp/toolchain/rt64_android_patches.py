@@ -242,6 +242,91 @@ endif()'''),
             targetBlend.srcBlend = RenderBlend::SRC1_ALPHA;
             targetBlend.dstBlend = RenderBlend::INV_SRC1_ALPHA;
 #       endif'''),
+    # Qualcomm's shader compiler (Adreno 750, driver 0x802e800a, 2026-10-08) cannot build
+    # the framebuffer compute shaders: vkCreateComputePipelines fails with VK_ERROR_UNKNOWN
+    # for the five that use EndianSwapUINT16 (FbCommon.hlsli), and the first framebuffer
+    # read binds the missing pipeline and crashes. Goemon64Recomp-Android met the same on
+    # Adreno 6xx (ogdanimal/rt64 25fa568): the driver fails on the shift-mask-OR pattern
+    # and on helper calls these -O0 shaders keep. As there, the swap masks once after the OR
+    # (bit for bit the same), and spirv-opt from the NDK inlines every compute shader after
+    # DXC, checked with spirv-val. The shaders see RT64_ANDROID only on Android.
+    ('CMakeLists.txt', '''function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
+    add_custom_command(OUTPUT ${OUTNAME}.spv
+        COMMAND ${DXC} ${DXC_SPV_OPTS} ${ARGN} ${FILENAME} /Fo ${OUTNAME}.spv
+        DEPENDS ${FILENAME})
+    add_custom_command(OUTPUT ${OUTNAME}.spirv.c
+        COMMAND file_to_c ${OUTNAME}.spv ${TARGET_NAME}BlobSPIRV ${OUTNAME}.spirv.c ${OUTNAME}.spirv.h
+        DEPENDS ${OUTNAME}.spv file_to_c
+        BYPRODUCTS ${OUTNAME}.spirv.h)''', '''if (ANDROID)
+    file(GLOB RT64_SHADER_TOOLS_DIRS "${ANDROID_NDK}/shader-tools/*")
+    find_program(SPIRV_OPT NAMES spirv-opt HINTS ${RT64_SHADER_TOOLS_DIRS} REQUIRED)
+    find_program(SPIRV_VAL NAMES spirv-val HINTS ${RT64_SHADER_TOOLS_DIRS} REQUIRED)
+    # --skip-block-layout: the shaders use -fvk-use-dx-layout on purpose.
+    set(RT64_SPIRV_INLINE_PASSES --skip-block-layout --eliminate-dead-branches --merge-return --inline-entry-points-exhaustive --eliminate-dead-functions)
+endif()
+
+function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
+    if (ANDROID)
+        add_custom_command(OUTPUT ${OUTNAME}.spv
+            COMMAND ${DXC} ${DXC_SPV_OPTS} ${ARGN} -D RT64_ANDROID ${FILENAME} /Fo ${OUTNAME}.spv
+            DEPENDS ${FILENAME})
+    else()
+    add_custom_command(OUTPUT ${OUTNAME}.spv
+        COMMAND ${DXC} ${DXC_SPV_OPTS} ${ARGN} ${FILENAME} /Fo ${OUTNAME}.spv
+        DEPENDS ${FILENAME})
+    endif()
+    set(RT64_SPIRV_BLOB ${OUTNAME}.spv)
+    # RT64_SPIRV_POST_OPT comes from build_compute_shader (CMake's dynamic scope).
+    if (ANDROID AND RT64_SPIRV_POST_OPT)
+        add_custom_command(OUTPUT ${OUTNAME}.opt.spv
+            COMMAND ${SPIRV_OPT} ${RT64_SPIRV_INLINE_PASSES} ${OUTNAME}.spv -o ${OUTNAME}.opt.spv
+            COMMAND ${SPIRV_VAL} --target-env vulkan1.0 --skip-block-layout ${OUTNAME}.opt.spv
+            DEPENDS ${OUTNAME}.spv)
+        set(RT64_SPIRV_BLOB ${OUTNAME}.opt.spv)
+    endif()
+    add_custom_command(OUTPUT ${OUTNAME}.spirv.c
+        COMMAND file_to_c ${RT64_SPIRV_BLOB} ${TARGET_NAME}BlobSPIRV ${OUTNAME}.spirv.c ${OUTNAME}.spirv.h
+        DEPENDS ${RT64_SPIRV_BLOB} file_to_c
+        BYPRODUCTS ${OUTNAME}.spirv.h)'''),
+    ('CMakeLists.txt', '''function(build_compute_shader TARGETOBJ SHADERNAME)
+    build_shader(${TARGETOBJ} ${SHADERNAME} "${DXC_CS_OPTS}" ${ARGN})''', '''function(build_compute_shader TARGETOBJ SHADERNAME)
+    if (ANDROID)
+        set(RT64_SPIRV_POST_OPT TRUE)
+    endif()
+    build_shader(${TARGETOBJ} ${SHADERNAME} "${DXC_CS_OPTS}" ${ARGN})'''),
+    ('src/shaders/FbCommon.hlsli', '''uint EndianSwapUINT16(uint i) {
+    return ((i << 8) & 0xFF00) | ((i >> 8) & 0xFF);
+}''', '''uint EndianSwapUINT16(uint i) {
+#ifdef RT64_ANDROID
+    i &= 0xFFFFu;
+    return (i << 8 | i >> 8) & 0xFFFFu;
+#else
+    return ((i << 8) & 0xFF00) | ((i >> 8) & 0xFF);
+#endif
+}'''),
+    # A boundless range (RT64's texture set: up to 8192 textures, as many as the texture
+    # cache holds) is allocated with a variable count, and the pool is sized for that count.
+    # Qualcomm's Adreno drivers count the layout's full upper bound against the pool instead:
+    # vkAllocateDescriptorSets fails with OUT_OF_POOL_MEMORY and the next write to the empty
+    # set crashes in vkUpdateDescriptorSets (Adreno 740, 2026-10-08; Mali follows the spec).
+    # The pool takes the upper bound; a write to a set that failed to allocate is skipped.
+    ('src/contrib/plume/plume_vulkan.cpp', '''            const RenderDescriptorRange &lastDescriptorRange = desc.descriptorRanges[desc.descriptorRangesCount - 1];
+            typeCounts[toVk(lastDescriptorRange.type)] += boundlessRangeSize;''', '''            const RenderDescriptorRange &lastDescriptorRange = desc.descriptorRanges[desc.descriptorRangesCount - 1];
+#       ifdef __ANDROID__
+            typeCounts[toVk(lastDescriptorRange.type)] += std::max(boundlessRangeSize, lastDescriptorRange.count);
+#       else
+            typeCounts[toVk(lastDescriptorRange.type)] += boundlessRangeSize;
+#       endif'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''        assert(descriptorIndex < setLayout->descriptorBindingIndices.size());
+
+        const uint32_t indexBase''', '''        assert(descriptorIndex < setLayout->descriptorBindingIndices.size());
+#   ifdef __ANDROID__
+        if (vk == VK_NULL_HANDLE) {
+            return;
+        }
+#   endif
+
+        const uint32_t indexBase'''),
     # Leaving the app (Home, the Files app) destroys the activity's window, and coming back
     # brings a new one: the swap chain's surface is lost for good and every new swap chain
     # on it fails (SURFACE_LOST, then NATIVE_WINDOW_IN_USE), so the picture stays frozen.
