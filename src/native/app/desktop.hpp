@@ -16,7 +16,17 @@ using DesktopLaunch = std::function<int(const Options&, const DesktopReady&)>;
 int run_desktop(Options options, const std::string& expected_rom_sha256,
                 const DesktopUi& ui, const DesktopLaunch& launch,
                 bool choose_another_rom = false);
+// Where Marchwind64.cmd looks for the ROM, in its order: `named` (SRW64_ROM), then
+// rom.z64, rom.n64 and rom.v64, each in the user directory before the game's folder.
+// Empty when none of them is a file.
+fs::path launcher_rom(const fs::path& named, const fs::path& user_dir, const fs::path& game_dir);
 // macOS implementation only; tests of run_desktop inject deterministic UI.
 DesktopUi macos_desktop_ui();
 bool macos_choose_another_rom();
+// Windows (src/host/windows/desktop_windows.cpp): the open-file dialog and message box,
+// SRW64_ROM as a path, and closing the console window a double-click opened for the
+// program (a console started from a shell stays).
+DesktopUi windows_desktop_ui();
+fs::path windows_named_rom();
+void windows_release_console();
 }

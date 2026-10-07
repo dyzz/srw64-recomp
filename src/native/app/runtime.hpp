@@ -48,6 +48,8 @@ inline constexpr char campaign_dir_separator=';';
 inline constexpr char campaign_dir_separator=':';
 #endif
 void atomic_write(const fs::path& path, std::string_view text);
+// The running program's file; empty when the system does not say.
+fs::path executable_path();
 // A file or directory shipped with the program: Contents/Resources/<name> in a
 // macOS bundle, else <name> beside the executable; empty when there is none.
 fs::path bundled_resource(const std::string& name);

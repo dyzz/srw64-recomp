@@ -90,6 +90,24 @@ void errors_never_retry_host_or_replace_progress() {
     check(f.run()==2,"corrupt save pointer ignored");
     check(read_text(f.options.user_dir/"last-session.txt",128)==pointer,"corrupt pointer was reset");
 }
+void launcher_rom_order() {
+    // Marchwind64.cmd's order: SRW64_ROM, then each name in the user directory before the
+    // game's folder; a directory with a ROM's name is not one.
+    Fixture f;
+    const auto user=f.root/"data",game=f.root/fs::path(u8"游戏");
+    fs::create_directories(user);fs::create_directories(game);
+    check(launcher_rom({},user,game).empty(),"ROM found where there is none");
+    fs::create_directories(user/"rom.z64");
+    atomic_write(game/"rom.v64","v");
+    check(launcher_rom({},user,game)==game/"rom.v64","directory taken for a ROM");
+    atomic_write(user/"rom.n64","n");
+    check(launcher_rom({},user,game)==user/"rom.n64","user directory not before the game's");
+    atomic_write(game/"rom.z64","z");
+    check(launcher_rom({},user,game)==game/"rom.z64",".z64 not before .n64");
+    fs::remove(user/"rom.z64");atomic_write(user/"rom.z64","z");
+    check(launcher_rom(f.root/"missing.z64",user,game)==user/"rom.z64","missing SRW64_ROM used");
+    check(launcher_rom(f.rom,user,game)==f.rom,"SRW64_ROM not first");
+}
 void relocated_working_directory_and_lock() {
     Fixture f;f.options.rom=f.rom;
     const auto previous=fs::current_path();fs::create_directories(f.root/"unrelated");fs::current_path(f.root/"unrelated");
@@ -100,7 +118,7 @@ void relocated_working_directory_and_lock() {
 }
 }
 int main() {
-    try {cancel_and_resume();missing_and_wrong_rom();errors_never_retry_host_or_replace_progress();relocated_working_directory_and_lock();
+    try {cancel_and_resume();missing_and_wrong_rom();errors_never_retry_host_or_replace_progress();launcher_rom_order();relocated_working_directory_and_lock();
         std::cout<<checks<<" desktop checks passed\n";return 0;}
     catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
 }

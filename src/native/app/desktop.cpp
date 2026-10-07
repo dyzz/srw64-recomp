@@ -34,6 +34,16 @@ fs::path validate_rom(const fs::path& path, const std::string& expected) {
 }
 }
 
+fs::path launcher_rom(const fs::path& named, const fs::path& user_dir, const fs::path& game_dir) {
+    std::error_code error;
+    if (!named.empty() && fs::is_regular_file(named, error)) return named;
+    // Any byte order: the launch turns a .v64 or .n64 dump into .z64 itself.
+    for (const char* name : {"rom.z64", "rom.n64", "rom.v64"})
+        for (const auto& folder : {user_dir, game_dir})
+            if (!folder.empty() && fs::is_regular_file(folder / name, error)) return folder / name;
+    return {};
+}
+
 int run_desktop(Options options, const std::string& expected_rom_sha256,
                 const DesktopUi& ui, const DesktopLaunch& launch, bool choose_another_rom) {
     if (!ui.choose_rom || !ui.show_error || !launch)

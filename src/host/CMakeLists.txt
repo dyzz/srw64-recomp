@@ -146,6 +146,11 @@ if(SRW64_ENABLE_RT64)
         target_sources(srw64-gfx-host PRIVATE macos/app_menu.mm)
         set_source_files_properties(macos/app_menu.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
     endif()
+    if(WIN32)
+        # Double-clicking Marchwind64.exe: the ROM dialog and message box (host.cpp main()).
+        target_sources(srw64-gfx-host PRIVATE windows/desktop_windows.cpp)
+        target_link_libraries(srw64-gfx-host PRIVATE comdlg32 user32 ole32)
+    endif()
     # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md).
     target_sources(srw64-gfx-host PRIVATE update_check.cpp update_http.cpp)
     # What the program prints, into the run's console.log, and the bug report zip of the

@@ -590,6 +590,40 @@ int main(int argc, char** argv) {
             }, choose_another);
     }
 #endif
+#if defined(_WIN32) && defined(SRW64_WITH_RT64)
+    // Explorer supplies no arguments: start as Marchwind64.cmd does, which stays for
+    // its options. --play and the diagnostic ABI below keep their console.
+    if (argc == 1 || (argc == 2 && std::string_view(argv[1]) == "--choose-rom")) {
+        srw64::app::windows_release_console();
+        const auto ui = srw64::app::windows_desktop_ui();
+        srw64::app::Options options;
+        try {
+            options.user_dir = srw64::app::default_user_dir();
+            // The .cmd's places and order (SRW64_ROM, rom.z64/.n64/.v64 in the user
+            // directory, then beside the program); else the remembered or a chosen file.
+            if (argc == 1)
+                options.rom = srw64::app::launcher_rom(srw64::app::windows_named_rom(), options.user_dir,
+                                                       srw64::app::executable_path().parent_path());
+        } catch (const std::exception& error) {
+            ui.show_error(std::string("Unable to start Marchwind64.\n") + error.what());
+            return 2;
+        }
+        // First launch starts in Simplified Chinese; the settings window changes it.
+        std::error_code missing;
+        if (!std::filesystem::exists(options.user_dir / "presentation.json", missing)) options.language = "zh-Hans";
+        srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
+            native_rom_variants[0].save_file, srw64::rules::version, {}};
+        for (const auto& rule : srw64::rules::catalog)
+            game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
+        return srw64::app::run_desktop(options, game.rom_sha256, ui,
+            [&](const srw64::app::Options& selected, const srw64::app::DesktopReady& ready) {
+                return srw64::app::run_standalone(selected, game, [&](int count, char** values) {
+                    ready(); // The standalone Session owns the lock until run_host returns.
+                    return run_host(count, values);
+                });
+            }, argc == 2);
+    }
+#endif
     if (argc == 2 && std::string_view(argv[1]) == "--help") {
         std::fputs(srw64::app::usage().c_str(), stdout);
         return 0;
