@@ -333,7 +333,7 @@ the colonies don’t trust us all that much.”
 ---
 >  聖女ジュリアを中心にしたクスコの
 >  聖女隊も、各地で
-the Cusco Saints’ Corps, led by Saint Julia, and they’re out
+the Saints of Cusco, led by Saint Julia, and they’re out
 ---
 >  難民救済にあたってるって
 >  話ですしね」
@@ -347,7 +347,7 @@ helping refugees all over.”
 ---
 >  聖女ジュリアを中心にしたクスコの
 >  聖女隊も、各地で
-the Cusco Saints’ Corps, led by Saint Julia, has been out
+the Saints of Cusco, led by Saint Julia, have been out
 ---
 >  難民救済にあたってるって話、
 >  聞きましたか?」
@@ -496,10 +496,10 @@ There are so many refugees, too. I feel like now isn’t the time for that.”
 # 审校：聖女＝Saint
 > 「難民に関しては、聖女にまかせて
 >  いるんだろ。クスコの聖女隊って
-“Isn’t the Saint handling the refugees? I hear the Cusco Saints’ Corps
+“Isn’t the Saint handling the refugees? I hear the Saints of Cusco
 ---
 >  かなりの人数になってるって話だよ」
-has grown pretty large.”
+have grown pretty large.”
 
 @48938 Emma · エマ
 # 审校：“那倒也许是这样呢”拖沓
@@ -523,10 +523,10 @@ right now.”
 # 审校：聖女＝Saint
 > 「難民に関しては、聖女にまかせて
 >  いるんだろ。クスコの聖女隊って
-“Isn’t the Saint handling the refugees? I hear the Cusco Saints’ Corps
+“Isn’t the Saint handling the refugees? I hear the Saints of Cusco
 ---
 >  かなりの人数になってるって話だよ」
-has grown pretty large.”
+have grown pretty large.”
 
 @48941 Kayra · ケーラ
 > 「ああ、なるほど。そういえばそんな話も

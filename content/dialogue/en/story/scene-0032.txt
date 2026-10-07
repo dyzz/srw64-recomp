@@ -376,7 +376,7 @@ has changed greatly. Now... I am fighting too, in my own way.”
 # 检查提示：未用必用译名：聖女隊→Saints
 > 「でもおっどろいたわね。
 >  まさかクスコの聖女隊までいるなんて」
-“Talk about a surprise, though. I never thought even the Holy Women’s Corps of Cusco would be here.”
+“Talk about a surprise, though. I never thought even the Saints of Cusco would be here.”
 
 @23758 Fa · ファ
 > 「ホントね」

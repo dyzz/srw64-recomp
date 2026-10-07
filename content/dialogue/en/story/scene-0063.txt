@@ -237,7 +237,7 @@ I knew she was in Europe, but in the Sanc Kingdom...”
 # 检查提示：未用必用译名：聖女隊→Saints
 > 「クスコの聖女隊は、ここを中心に
 >  近隣に平和をもたらす活動を
-“Cusco’s Holy Women’s Corps works out of this country
+“The Saints of Cusco work out of this country
 ---
 >  展開しています。難民の救済や
 >  国々の復興……。欧州は

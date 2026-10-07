@@ -4966,7 +4966,7 @@
     {
       "key": "base:t00_00779",
       "source_sha256": "6993f11736865fd054b48a2cc00d13fa94e77b8daa9e60c557d34e4b2ca9cdbd",
-      "target": "卡拉巴<END>",
+      "target": "加拉巴<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5631,7 +5631,7 @@
     {
       "key": "base:t00_00874",
       "source_sha256": "1bcaf3396f1df514f77cc9c571f3243a1f21cdf4b9ae31814aca88aaa4b9f9de",
-      "target": "超级卡拉巴<END>",
+      "target": "超级加拉巴<END>",
       "review_status": "draft",
       "origin": "terms"
     },

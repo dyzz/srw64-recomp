@@ -941,7 +941,7 @@ If that’s what you want, I won’t stop you.”
 # 检查提示：未用必用译名：聖女隊→Saints
 > 「クスコの聖女隊は、欧州で
 >  平和活動をしてるって聞いたわ
-“I heard Cusco’s Holy Women’s Corps is doing peace work in Europe.
+“I heard the Saints of Cusco are doing peace work in Europe.
 ---
 >  いま欧州は比較的
 >  平穏だってことだけど……

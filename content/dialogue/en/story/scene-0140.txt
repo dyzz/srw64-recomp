@@ -2628,7 +2628,7 @@ negotiate directly with Governor Gresco.”
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：聖女隊→Saints
 > 「クスコの聖女隊か」
-“Cusco’s Holy Women’s Corps, you mean.”
+“The Saints of Cusco, you mean.”
 
 @39185 Noin · ノイン
 # 审校：聖女＝Saint
@@ -2637,7 +2637,7 @@ negotiate directly with Governor Gresco.”
 “Yes. And lately, besides the Saint, there’s said to be another figure
 ---
 >  目される人物がいるのだそうです」
-regarded as a leader of the Saints’ Corps.”
+regarded as a leader of the Saints.”
 
 @39186 Zechs · ゼクス
 > 「ほう?」

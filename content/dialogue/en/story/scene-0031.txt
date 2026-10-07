@@ -1824,7 +1824,7 @@ Romefeller to be wrong.”
 # 检查提示：未用必用译名：聖女隊→Saints
 > 「……噂だけはな。クスコの聖女隊と
 >  いったか」
-“...Only rumors. The Holy Women’s Corps of Cusco, was it?”
+“...Only rumors. The Saints of Cusco, was it?”
 
 @23692 Noin · ノイン
 # 审校：聖女＝Saint

@@ -258,10 +258,10 @@ isn’t as large as it used to be, but then again, they’ve got Banjo.”
 ---
 >  “クスコの聖女隊”が
 >  活動していることと
-the fact that the ‘Cusco Holy Women’s Corps’
+the fact that the ‘Saints of Cusco’
 ---
 >  無関係ではないかもしれません」
-is active in Northern Europe.”
+are active in Northern Europe.”
 
 @35304 Eiji · エイジ
 # 审校：原文是疑问句「姉さんたちが?」，译文用了陈述句“are?”，改为更自然的疑问表达。

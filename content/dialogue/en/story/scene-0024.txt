@@ -93,7 +93,7 @@ and Romefeller for only thinking about themselves.”
 ---
 >  掃討作戦に反発して、
 >  “クスコの聖女隊”ってのが
-sweep, a group called the ‘Holy Women’s Corps of Cusco’
+sweep, a group called the ‘Saints of Cusco’
 ---
 >  不戦運動をしてるんだってさ。
 >  よく殺されないもんだよな」
@@ -108,21 +108,21 @@ is running an anti-war campaign. Amazing they haven’t been killed yet.”
 # 检查提示：未用必用译名：聖女隊→Saints
 > 「なんなの、その
 >  “クスコの聖女隊”って?」
-“What is this ‘Holy Women’s Corps of Cusco’ thing?”
+“What are these ‘Saints of Cusco’?”
 
 @21360 Emma · エマ
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：聖女隊→Saints
 > 「なんなの、その
 >  “クスコの聖女隊”って?」
-“What is this ‘Holy Women’s Corps of Cusco’ thing?”
+“What are these ‘Saints of Cusco’?”
 
 @21361 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：聖女隊→Saints
 > 「なんだ、その“クスコの聖女隊”
 >  っていうのは?」
-“What’s this ‘Holy Women’s Corps of Cusco’ thing?”
+“What are these ‘Saints of Cusco’?”
 
 @21362 Anna · アンナ
 # 审校：聖女＝Saint

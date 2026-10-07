@@ -2931,7 +2931,7 @@ they’re trying to move the Foundation’s headquarters to the moon or a colony
 ---
 >  支えになっているわ。財団がクスコの
 >  聖女隊のバックアップをしてるのよ」
-for the people doing the rebuilding. The Foundation is backing the Saints’ Corps of Cusco.”
+for the people doing the rebuilding. The Foundation is backing the Saints of Cusco.”
 
 @50133 Amuro · アムロ
 # 审校：英文冗长，中文“留下的不信任感”指向错
@@ -3192,7 +3192,7 @@ She’s going by the Darlian name again now.”
 # 检查提示：未用必用译名：聖女隊→Saints
 > 「ジュリアさんたちもすごいわよ。クスコの
 >  聖女隊はかなりの人数に
-“Miss Julia and the others are amazing too. The Holy Women’s Corps in Cusco has grown quite large.
+“Miss Julia and the others are amazing too. The Saints of Cusco have grown quite large.
 ---
 >  なってるしね。財団とOZが全面
 >  支援しているの。とくに難民の

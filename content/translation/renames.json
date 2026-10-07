@@ -2581,10 +2581,10 @@
     "ガラバ"
    ],
    "zh-Hans": {
-    "old": "加拉巴",
-    "new": "卡拉巴"
+    "old": "卡拉巴",
+    "new": "加拉巴"
    },
-   "gate": false,
+   "gate": true,
    "sections": [
     "units"
    ]
@@ -4737,8 +4737,8 @@
     "ハイパーガラバ"
    ],
    "zh-Hans": {
-    "old": "超级加拉巴",
-    "new": "超级卡拉巴"
+    "old": "超级卡拉巴",
+    "new": "超级加拉巴"
    },
    "gate": false,
    "sections": [
