@@ -227,7 +227,7 @@ can’t believe you people really beat the Imperial army.”
 @35089 Eiji · エイジ
 # 审校：先輩：英文统一直呼 Gale
 > 「でも先輩、いったいどうして……」
-“But Gale, how on earth...”
+“But Gale, how did you...”
 
 @35090 Gale · ゲイル
 > 「お前たちに負けたあと、重傷を
@@ -451,7 +451,7 @@ aliens other than Zorbados?”
 
 @35118 Bask · バスク
 > 「レディ・アン特佐を呼び出せ」
-“Summon Special Colonel Lady Une.”
+“Get me Special Colonel Lady Une.”
 
 @35119 Specials · スペシャルズ
 > 「お待ちください」
@@ -671,7 +671,7 @@ His Majesty is most displeased with your act of rebellion.”
 (Mars, there is nothing to fear. Gaia has come to protect you.
 ---
 >  ガイヤーに乗れ)
-Get in Gaia.)
+Get into Gaia.)
 
 @35157 Takeru · タケル
 > 「な、なんだこいつ……勝手に……」
@@ -701,7 +701,7 @@ So this is what Zuul was talking about...”
 @35161 Takeru · タケル
 > 「こ、こんなところで
 >  オレは死ぬのか……!?」
-“A-Am I going to die in a place like this...?!”
+“A-Am I going to die here...?!”
 
 @35162 Takeru · タケル
 > 「こ、これは……」
@@ -1183,7 +1183,7 @@ Unless you prefer boys. But I’m the one who can satisfy your ambition.”
 @35246 Lady · レディ
 # 审校：全局：弯撇号／弯引号
 > 「なんだと? それは間違いないのだな?」
-“What? There’s no mistake about this?”
+“What? You’re certain of this?”
 
 @35247 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
@@ -1282,7 +1282,7 @@ converted into MDs. If you have pilots who can handle them properly, by all mean
 # 审校：I have an idea 意思偏，与后一版本统一
 > 「心当たりがある。
 >  トロワ特士を呼んでもらおう」
-“I have someone in mind. Have Special Officer Trowa summoned.”
+“I have someone in mind. Send for Special Officer Trowa.”
 
 @35257 Trowa · トロワ
 > 「ガンダムが出たそうだな」
@@ -1306,7 +1306,7 @@ Colony Defense Force has already engaged it, but they were no match for it at al
 # 审校：全局：弯撇号／弯引号
 > 「メリクリウスとヴァイエイト、
 >  それとビルゴ部隊をまかせる
-“I’m entrusting you with the Mercurius and Vayeate, along with a Virgo Unit.
+“I’m putting you in charge of the Mercurius and Vayeate, along with a Virgo Unit.
 ---
 >  そのガンダムをとめてもらいたい」
 I want you to stop that Gundam.”

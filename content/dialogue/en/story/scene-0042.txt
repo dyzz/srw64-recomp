@@ -823,7 +823,7 @@ remember?!”
 @26760 Marg · マーグ
 > 「お前は俺の弟。
 >  俺たちは双子の兄弟だ!」
-“You are my younger brother. We are twin brothers!”
+“You are my brother. We’re twins!”
 
 @26761 Takeru · タケル
 > 「な、なんだと!? オレに……兄が……?」

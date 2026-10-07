@@ -1999,7 +1999,7 @@ forget you for even a moment...)
 
 @29712 Chan · チェーン
 > 「ZZガンダムが届いたんですって?」
-“The ZZ Gundam arrived, I hear?”
+“I hear the ZZ Gundam has arrived?”
 
 @29713 Amuro · アムロ
 # 检查提示：未用必用译名：エマリー艦→Emary's ship
@@ -2012,7 +2012,7 @@ forget you for even a moment...)
 # 检查提示：未用必用译名：ブライト艦→Bright's ship
 > 「エマリーさん、ブライト艦長のことが
 >  からむと、すごいですから」
-“When it comes to Captain Bright, Emary is something else.”
+“Emary’s really something when Captain Bright’s involved.”
 
 @29715 Bright · ブライト
 # 审校：全局：弯撇号／弯引号

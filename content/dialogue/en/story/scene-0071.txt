@@ -815,7 +815,7 @@ go off on your own!!”
 @30511 Marg · マーグ
 > 「お前は俺の弟。
 >  俺たちは双子の兄弟だ!」
-“You are my younger brother. We are twin brothers!”
+“You are my brother. We’re twins!”
 
 @30512 Takeru · タケル
 > 「な、なんだと!? オレに……兄が……?」
@@ -963,7 +963,7 @@ resisting the forces that rule Earth, correct?”
 @30539 Takeru · タケル
 > 「……オレは、本当にマーズという、
 >  お前たちと同じ星の人間なのか」
-“...Am I really Mars, a person from the same planet as you?”
+“...So I really am this Mars, from the same planet as you?”
 
 @30540 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
@@ -1089,10 +1089,10 @@ Mother kept pleading with Zuul to give you back, and a few years ago...)
 # 审校：全局：弯撇号／弯引号
 > 「大丈夫だ、マーズ……俺の弟よ。
 >  ずっと、お前に会いたかった
-“It’s all right, Mars... my little brother. I’ve wanted to see you all this time.
+“I’m fine, Mars... my little brother. I’ve wanted to see you for so long.
 ---
 >  お前に会える日を待っていた」
-I’ve been waiting for the day I could meet you.”
+I’ve been waiting for the day we’d meet.”
 
 @30558 Takeru · タケル
 > 「マーグ……兄さん」

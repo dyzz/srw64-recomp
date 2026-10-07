@@ -830,7 +830,7 @@ remember?!”
 @31090 Marg · マーグ
 > 「お前は俺の弟。
 >  俺たちは双子の兄弟だ!」
-“You are my younger brother. We are twin brothers!”
+“You are my brother. We’re twins!”
 
 @31091 Takeru · タケル
 > 「な、なんだと!? オレに……兄が……?」
@@ -1158,7 +1158,7 @@ the entire Earth Sphere will be blown away without a trace.)
 ---
 >  母はズールにお前を返してくれるよう
 >  嘆願しつづけ、数年前に……)
-Mother kept pleading with Zuul to return you, and several years ago...)
+Mother kept begging Zuul to give you back, until a few years ago...)
 
 @31147 Takeru · タケル
 > (俺の……本当の両親……)

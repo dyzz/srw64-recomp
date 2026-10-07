@@ -497,7 +497,7 @@ If you don’t hand over a Mobile Suit, we can’t guarantee their lives!”
 @25275 Shinobu · 忍
 > 「なんだてめぇら、何やってやがる! 俺
 >  たちが誰だか知っててやってんだろうな」
-“What the hell are you punks doing?! You know damn well who we are, right?”
+“What the hell are you punks doing?! You do know who we are, right?”
 
 @25276 Judau · ジュドー
 > 「そんなのあったり前でしょ。
@@ -663,7 +663,7 @@ Amuro, Kamille, I’m counting on you. Bring him in.”
 # 审校：全局：弯撇号／弯引号
 > 「何をやっている、
 >  それでは外壁にぶつかるぞ!」
-“What are you doing? At this rate you’ll crash into the outer wall!”
+“What are you doing? You’ll crash into the outer wall like that!”
 
 @25305 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
@@ -846,7 +846,7 @@ If you have something to protect, you can do it.”
 # 审校：全局：弯撇号／弯引号
 > 「俺が!? ……わかったよ。
 >  くそっ、やってやろうじゃないの!」
-“Me?! ...Fine. Damn it, I’ll do it!”
+“Me?! ...Fine. Damn it, bring it on!”
 
 @25336 Gosterro · ゴステロ
 > 「や、奴ら、奴ら、奴らぁぁぁーっ!」
