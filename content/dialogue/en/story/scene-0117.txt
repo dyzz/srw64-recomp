@@ -48,7 +48,7 @@ and we were about to give up on finding the unit.”
 # 审校：全局：弯撇号／弯引号
 > 「旅は道連れ、世は情けってね。
 >  ま、仲良く行きましょうや」
-“Travelers need companions, and the world runs on kindness. Well, let’s all get along.”
+“Like they say, the road’s better with company. So let’s all get along.”
 
 @50887 Uchuta · 宇宙太
 > 「もうそろそろ合流地点だぜ……あれ
@@ -59,10 +59,10 @@ and we were about to give up on finding the unit.”
 # 审校：全局：弯撇号／弯引号
 > 「違うぞ! あれは敵だ!
 >  おそらくレジスタンス部隊を
-“No! Those are the enemy! They’re probably
+“No! That’s the enemy! They’re probably
 ---
 >  追って来たんだろう」
-chasing after the resistance.”
+after the resistance.”
 
 @50889 Kappei · 勝平
 # 审校：全局：弯撇号／弯引号
@@ -94,7 +94,7 @@ chasing after the resistance.”
 
 @50894 Seabook · シーブック
 > 「敵部隊を全滅させる!」
-“Wipe out the enemy force!”
+“We’ll wipe out the enemy force!”
 
 @50895 Kappei · 勝平
 > 「ザンボットコンビネーション!」
@@ -138,7 +138,7 @@ chasing after the resistance.”
 @50904 Seabook · シーブック
 # 审校：全局：弯撇号／弯引号
 > 「やったぞ! 全滅だ!」
-“We did it! They’re all wiped out!”
+“We did it! That’s all of them!”
 
 @50905 Cecily · セシリー
 # 审校：全局：弯撇号／弯引号

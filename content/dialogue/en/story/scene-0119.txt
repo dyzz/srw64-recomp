@@ -65,7 +65,7 @@ and set a rendezvous point.”
 # 审校：全局：弯撇号／弯引号
 > 「旅は道連れ、世は情けってね。
 >  ま、仲良く行きましょうや」
-“Travelers need companions, and the world runs on kindness. Well, let’s all get along.”
+“Like they say, the road’s better with company. So let’s all get along.”
 
 @50918 Uchuta · 宇宙太
 # 审校：“resistance”改为“resistance forces”，与原文“レジスタンス部隊”一致。
@@ -149,7 +149,7 @@ and set a rendezvous point.”
 # 审校：全局：弯撇号／弯引号
 > 「……終わったわね。グッドサンダーチーム
 >  ここにありって感じ!」
-“...It’s over. This is what it means to be the Good Thunder Team!”
+“...It’s over. That’s the Good Thunder Team for you!”
 
 @50935 Keiko · 恵子
 # 审校：全局：弯撇号／弯引号

@@ -41,19 +41,19 @@ to give up on finding the unit.”
 # 审校：全局：弯撇号／弯引号
 > 「僕たちはあらかじめ
 >  部隊に連絡して
-“We’d contacted the unit in advance,
+“We’d contacted the unit in advance
 ---
 >  合流地点を決めていましたからね」
-so we’d already decided on a rendezvous point.”
+and set up a rendezvous point.”
 
 @50861 Killy · キリー
 # 审校：全局：弯撇号／弯引号
 > 「ま、でもそのおかげでこーんなかわいい
 >  お嬢さんに出会えたからね
-“Well, but thanks to that, I got to meet such a cute little lady.
+“Still, thanks to that, I got to meet this cute young lady.
 ---
 >  俺の運もまだまだ捨てたもんじゃない」
-My luck still isn’t all bad.”
+Guess my luck hasn’t run out yet.”
 
 @50862 Remy · レミー
 # 审校：全局：弯撇号／弯引号

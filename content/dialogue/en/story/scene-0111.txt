@@ -27,23 +27,23 @@
 “You haven’t gotten past chapter 1 at all. How many years have you been at this?
 ---
 >  ホントに出版できるのか」
-Can you really get it published?”
+Are you ever actually gonna get it published?”
 
 @50806 Killy · キリー
 # 审校：全局：弯撇号／弯引号
 > 「うるさい! たとえ何年かかろうとだな
 >  俺の歩んできた道を後世に
-“Shut up! Even if it takes years, passing down the path I’ve walked
+“Shut up! However many years it takes, leaving a record of the path I’ve walked
 ---
 >  残すのは人類にとって非常に
 >  大切なことなんだ」
-to future generations is something incredibly important for mankind.”
+for future generations is of vital importance to mankind.”
 
 @50807 Shingo · 真吾
 # 审校：全局：弯撇号／弯引号
 > 「後世になっても、それを読んでくれる
 >  人類が生き残っていたらな……」
-“If there’s still a mankind left alive to read it in the future...”
+“Assuming there’s anyone left in the future to read it...”
 
 @50808 Remy · レミー
 # 审校：全局：弯撇号／弯引号
@@ -55,7 +55,7 @@ to future generations is something incredibly important for mankind.”
 # 审校：全局：弯撇号／弯引号
 > 「……しかし、大変なことになっちまった
 >  よな。地球がこんな目にあうなんてよ」
-“...Still, things have gotten serious, haven’t they? To think the Earth would end up like this.”
+“...Still, things sure have gotten bad. Who’d have thought Earth would end up like this.”
 
 @50810 Remy · レミー
 > 「やっぱりこの一件にはドクーガが、
@@ -64,7 +64,7 @@ to future generations is something incredibly important for mankind.”
 
 @50811 Killy · キリー
 > 「奴らなら、やりかねないな」
-“Those guys are certainly capable of it.”
+“I wouldn’t put it past them.”
 
 @50812 Shingo · 真吾
 # 审校：全局：弯撇号／弯引号
@@ -119,7 +119,7 @@ to future generations is something incredibly important for mankind.”
 # 审校：全局：弯撇号／弯引号
 > 「……終わったわね。グッドサンダーチーム
 >  ここにありって感じ!」
-“...It’s over. This is what it means to be the Good Thunder Team!”
+“...It’s over. That’s the Good Thunder Team for you!”
 
 @50822 Killy · キリー
 # 审校：书名统一

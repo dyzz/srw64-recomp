@@ -621,7 +621,7 @@ so I’ve decided to come along for a while.”
 @25021 Daisaku · 大作
 # 审校：全局：弯撇号／弯引号
 > 「なにが大人の常識なんですか?」
-“What’s common sense for grown-ups?”
+“What is it every grown-up knows?”
 
 @25022 Naoto · ナオト
 # 审校：全局：弯撇号／弯引号
@@ -1150,7 +1150,7 @@ The universe is calling for me.”
 
 @25105 Sara · 沙羅
 > 「シャピロ……あんた、どこまで……」
-“Shapiro... how far will you go...”
+“Shapiro... just how far gone are you...”
 
 @25106 Shapiro · シャピロ
 > 「死ね、沙羅。お前はもはやこの俺

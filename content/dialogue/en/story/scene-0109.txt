@@ -19,11 +19,11 @@
 # 审校：It can’t be helped
 > 「しかたがないさ、セシリー。今はどこの
 >  組織だって、ひとりでも戦力を
-“That’s just how it is, Cecily. Right now every group out there wants to secure
+“That’s just how it is, Cecily. Right now every group out there wants every fighter
 ---
 >  確保しておきたいんだ。2人も
 >  出られるだけでも、たいしたもんだよ」
-even one more fighter. Being able to send two of us is already a lot.”
+it can get. Sparing two of us is a big deal.”
 
 @50793 Cecily · セシリー
 # 审校：全局：弯撇号／弯引号
@@ -54,7 +54,7 @@ even one more fighter. Being able to send two of us is already a lot.”
 @50798 Seabook · シーブック
 # 审校：全局：弯撇号／弯引号
 > 「やったぞ! 全滅だ!」
-“We did it! They’re all wiped out!”
+“We did it! That’s all of them!”
 
 @50799 Cecily · セシリー
 # 审校：全局：弯撇号／弯引号

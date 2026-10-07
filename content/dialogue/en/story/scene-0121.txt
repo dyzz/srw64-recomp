@@ -81,10 +81,10 @@ and set a rendezvous point, you see.”
 # 审校：全局：弯撇号／弯引号
 > 「ま、でもそのおかげでこーんなかわいい
 >  お嬢さんたちに出会えたからね
-“Well, but thanks to that, we got to meet such cute young ladies.
+“Still, thanks to that, I got to meet these cute young ladies.
 ---
 >  俺の運もまだまだ捨てたもんじゃない」
-My luck hasn’t run out yet.”
+Guess my luck hasn’t run out yet.”
 
 @50948 Remy · レミー
 # 审校：全局：弯撇号／弯引号
@@ -139,7 +139,7 @@ moving out!”
 @50956 Seabook · シーブック
 # 审校：补上开头的左双引号和结尾的右双引号。
 > 「敵部隊を全滅させる!」
-“Wipe out the enemy force!”
+“We’ll wipe out the enemy force!”
 
 @50957 Shingo · 真吾
 # 审校：补上开头的左双引号和结尾的右双引号。

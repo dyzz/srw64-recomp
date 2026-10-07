@@ -797,7 +797,7 @@ Heh heh heh.”
 
 @34384 Bunny · バニー
 > 「所属不明機よりコンタクト」
-“The unidentified craft is contacting us.”
+“We’re being hailed by the unidentified craft.”
 
 @34385 Ryoma · リョウ
 > 「こちら、ゲッターチームの流竜馬。
@@ -1074,10 +1074,10 @@ settle this without the man himself in the room?”
 # 审校：补译：原稿占位符错页
 > 「俺もぬけてきたってことですよ、ブライト
 >  特佐。それで{HeroMech}に
-“It means I bailed too, Special Colonel Bright. So I was hoping the {HeroMech}
+“It means I jumped ship too, Special Colonel Bright. Figured maybe the {HeroMech}
 ---
 >  加えてもらえないかと思ってね」
-might take me in.”
+would take me in.”
 
 @34428 Selain · セレイン（按段落 3DD2）
 # 审校：塞莱因对敌冷淡不骂人
@@ -1101,7 +1101,7 @@ in a place that boring any longer.”
 # 审校：全局：弯撇号／弯引号
 > 「いいたいことはわかるが、我々がそれを
 >  信じる理由はないな」
-“I understand what you’re saying, but we have no reason to believe it.”
+“I see your point, but we have no reason to believe you.”
 
 @34431 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -1475,7 +1475,7 @@ for invading Earth.”
 @34485 Bright · ブライト
 > 「くっ……やはり、まだこれほどの戦力を
 >  隠していたか」
-“Ngh... So they were still hiding this much strength.”
+“Ngh... They were still hiding this many forces after all.”
 
 @34486 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
@@ -1525,11 +1525,11 @@ withdrawing to Planet Zorbados for the time being.”
 # 审校：全局：弯撇号／弯引号
 > 「ほほほほっ。シャピロ、地球人は
 >  地球人同士、刺し違えて
-“Ohohoho. Shapiro, you Earthlings should just kill each other off,
+“Ohohoho. Shapiro, let Earthlings kill Earthlings, and take each other
 ---
 >  死になさい。それが帝王さまの
 >  ご意志だわ」
-Earthling against Earthling. That is His Majesty the Emperor’s will.”
+to the grave. That is His Majesty the Emperor’s will.”
 
 @34494 Shapiro · シャピロ
 > 「ルーナ……」
@@ -1704,7 +1704,7 @@ The universe demands me.”
 
 @34523 Sara · 沙羅
 > 「シャピロ……あんた、どこまで……」
-“Shapiro... how far will you go...”
+“Shapiro... just how far gone are you...”
 
 @34524 Shapiro · シャピロ
 > 「死ね、沙羅。お前はもはやこの俺
@@ -2292,7 +2292,7 @@ as a stepping stone.”
 
 @34604 Masato · 雅人
 > 「やっぱり、例のやつなんですか?」
-“So it is that thing after all?”
+“So it’s that thing again, then?”
 
 @34605 Hasan · ハサン
 # 审校：全局：弯撇号／弯引号

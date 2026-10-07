@@ -8,7 +8,7 @@
 @50830 Keiko · 恵子
 > 「ちょっと勝平、いきなり何いってん
 >  のよ」
-“Hey, Kappei, what are you saying all of a sudden?”
+“Hey, Kappei, where did that come from?”
 
 @50831 Uchuta · 宇宙太
 # 审校：全局：弯撇号／弯引号
@@ -37,11 +37,11 @@
 # 审校：全局：弯撇号／弯引号
 > 「なーに、いってんのよ。
 >  思い出してよ、勝平
-“What are you talking about? Come on, remember, Kappei?
+“What are you talking about? Remember, Kappei?
 ---
 >  おじいさんがいってたでしょ。地球を
 >  守るためにレジスタンス部隊に
-Grandpa told us, didn’t he? To help the Resistance and fight the enemy
+Grandpa told us to help the Resistance and fight the enemy
 ---
 >  協力して敵と戦えって」
 to protect the Earth.”
@@ -50,7 +50,7 @@ to protect the Earth.”
 # 审校：全局：弯撇号／弯引号
 > 「第2の故郷であるこの地球を
 >  ビアル星のように滅亡させちゃ
-“He said we mustn’t let this Earth, our second home,
+“He said we can’t let Earth, our second home,
 ---
 >  ならないっていってたろう」
 be destroyed like Planet Bial.”
@@ -117,18 +117,18 @@ be destroyed like Planet Bial.”
 # 审校：合并：冲突人工取舍
 > 「はん、チョロいチョロい。
 >  軽ーくひねってやったぜ」
-“Hah, too easy, too easy. Wrung ’em out without breaking a sweat.”
+“Hah, piece of cake. Took ’em down without breaking a sweat.”
 
 @50850 Keiko · 恵子
 # 审校：全局：弯撇号／弯引号
 > 「勝平! 油断してると、いつか
 >  大変な目にあうわよ」
-“Kappei! If you let your guard down, someday you’ll be in big trouble.”
+“Kappei! Keep getting cocky and one day you’ll be in big trouble.”
 
 @50851 Kappei · 勝平
 # 审校：全局：弯撇号／弯引号
 > 「へーん、そんなヘマはしませんですよーだ」
-“Nyah, I won’t make a blunder like that, no sir.”
+“Nyah, I’d never mess up like that, nuh-uh.”
 
 @50852 Keiko · 恵子
 > 「なんですって! こらっ、勝平!
