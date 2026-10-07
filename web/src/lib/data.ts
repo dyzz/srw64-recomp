@@ -37,6 +37,16 @@ export type Scene = SceneMeta & { events: Event[] };
 
 export const storyIndex = () => read<{ scenes: SceneMeta[] }>('story/index.json').scenes;
 export const storySource = () => read<{ source?: StorySource }>('story/index.json').source ?? null;
+
+// --- Translation history (export_history.py) ----------------------------------
+// The commits since the latest game release that changed translations, newest first;
+// each commit's changed lines grouped by story scene, battle speaker, other file, terms.
+export type HistoryCommit = { commit: string; date: string; subject: string; counts: { zh: number; en: number }; scenes: { zh: number[]; en: number[] }; terms: number };
+export type HistoryLine = { key: string; id: number | null; who?: string; ja: string; was: { zh?: string; en?: string }; now: { zh?: string; en?: string } };
+export type HistoryGroup = { kind: 'story' | 'battle' | 'other' | 'terms'; group: string; title?: L3 | null; lines: HistoryLine[] };
+export const historyIndex = () =>
+  existsSync(join(DATA, 'history/index.json')) ? read<{ baseline: string; commits: HistoryCommit[] }>('history/index.json') : null;
+export const historyCommit = (commit: string) => read<HistoryCommit & { groups: HistoryGroup[] }>(`history/${commit}.json`);
 export const scene = (n: number) => read<Scene>(`story/scenes/${String(n).padStart(4, '0')}.json`);
 
 /** Scenes grouped the way the guide groups episodes; scenes outside the campaign last. */

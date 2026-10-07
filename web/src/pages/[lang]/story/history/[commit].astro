@@ -1,0 +1,92 @@
+---
+// One commit of the translation history (web/scripts/export_history.py): the lines and
+// terms it changed, grouped by stage, battle speaker and file, old and new compared.
+import Base from '../../../../layouts/Base.astro';
+import { LANGS, type Lang } from '../../../../i18n';
+import { historyCommit, historyIndex } from '../../../../lib/data';
+
+export async function getStaticPaths() {
+  const h = historyIndex();
+  return LANGS.flatMap((l) => (h?.commits ?? []).map((c) => ({ params: { lang: l.code, commit: c.commit } })));
+}
+const lang = Astro.params.lang as Lang;
+const c = historyCommit(Astro.params.commit!);
+const shown = (lang === 'ja' ? ['zh', 'en'] : [lang]) as ('zh' | 'en')[];
+const groups = c.groups
+  .map((g) => ({ ...g, lines: g.lines.filter((x) => shown.some((l) => x.now[l] !== undefined)) }))
+  .filter((g) => g.lines.length);
+const t = {
+  back: { zh: '更新历史', en: 'Translation history', ja: '翻訳の更新履歴' },
+  lines: { zh: (n: number) => `${n} 句`, en: (n: number) => `${n} lines`, ja: (n: number) => `${n} 行` },
+  battle: { zh: '战斗台词', en: 'Battle quotes', ja: '戦闘セリフ' },
+  terms: { zh: '词条（人名、机体名、武器名等）', en: 'Terms (names of characters, units, weapons…)', ja: '用語（人名・機体名・武器名など）' },
+  other: { zh: '其他文本', en: 'Other text', ja: 'その他のテキスト' },
+  langName: { zh: { zh: '中文', en: '英文' }, en: { zh: 'Chinese', en: 'English' }, ja: { zh: '中国語', en: '英語' } },
+  source: { zh: '源代码中的这次提交', en: 'This commit in the source code', ja: 'ソースコードのこのコミット' },
+};
+const title = (g: (typeof groups)[number]) =>
+  g.kind === 'story' ? (g.title?.[lang] ?? `#${g.group}`)
+  : g.kind === 'battle' ? `${t.battle[lang]} · ${(g.lines[0].who ?? g.group).split(' · ')[0]}`
+  : g.kind === 'terms' ? t.terms[lang] : `${t.other[lang]} · ${g.group}`;
+---
+<Base lang={lang} title={`${c.subject} · ${t.back[lang]}`}>
+  <div class="wrap" data-history>
+    <header class="page-head">
+      <a class="back" href={`/${lang}/story/history/`}>← {t.back[lang]}</a>
+      <span class="dim latin">{c.date.slice(0, 16).replace('T', ' ')} · <a href={`https://github.com/dyzz/srw64-recomp/commit/${c.commit}`}>{c.commit}</a></span>
+      <h1 class="latin">{c.subject}</h1>
+    </header>
+    {groups.map((g) => (
+      <section class="group">
+        <h2>
+          {g.kind === 'story' ? <a href={`/${lang}/story/${g.group}/`}>{title(g)}</a> : title(g)}
+          <span class="dim small">{t.lines[lang](g.lines.length)}</span>
+        </h2>
+        <ul>
+          {g.lines.map((x) => (
+            <li>
+              <p class="meta">
+                {g.kind === 'story' && x.id != null
+                  ? <a class="lid latin" href={`/${lang}/story/${g.group}/#l${x.id}`}>@{x.id}</a>
+                  : x.id != null && <span class="lid latin">@{x.id}</span>}
+                {x.who && g.kind !== 'terms' && <span class="who">{x.who}</span>}
+              </p>
+              {x.ja && <p class="ja" lang="ja">{x.ja}</p>}
+              {shown.filter((l) => x.now[l] !== undefined).map((l) => (
+                <div class="diff" lang={l === 'zh' ? 'zh-Hans' : 'en'} data-words={l === 'en' ? '1' : undefined} data-was={x.was[l] ?? ''} data-now={x.now[l]}>
+                  {shown.length > 1 && <span class="tl">{t.langName[lang][l]}</span>}
+                  <span class="out">{x.now[l]}</span>
+                </div>
+              ))}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<script>
+  import { diffHtml } from '../../../../scripts/story';
+  document.querySelectorAll<HTMLElement>('[data-history] .diff').forEach((d) => {
+    d.querySelector('.out')!.innerHTML = diffHtml(d.dataset.was ?? '', d.dataset.now ?? '', d.dataset.words === '1');
+  });
+</script>
+
+<style>
+  .back { font-size: 14px; }
+  .page-head h1 { font-size: clamp(22px, 3vw, 30px); overflow-wrap: anywhere; }
+  .group { max-width: 900px; margin-bottom: 36px; }
+  .group h2 { font-size: 19px; display: flex; align-items: baseline; gap: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { padding: 10px 0; border-bottom: 1px solid var(--line-soft); }
+  .meta { margin: 0; display: flex; gap: 10px; font-size: 13px; color: var(--dim); }
+  .who { color: var(--muted); }
+  .ja { margin: 4px 0; font-size: 14px; color: var(--dim); white-space: pre-wrap; }
+  .diff { margin-top: 4px; padding: 6px 12px; font-size: 15px; line-height: 1.7; color: var(--text); background: rgba(255, 255, 255, 0.04); border-left: 2px solid var(--gold); white-space: pre-wrap; }
+  .tl { margin-right: 8px; font-size: 12px; color: var(--dim); }
+  .diff :global(del) { color: #ff9c9c; background: rgba(255, 90, 90, 0.16); text-decoration: line-through; }
+  .diff :global(ins) { color: #a6f2c4; background: rgba(80, 220, 140, 0.16); text-decoration: none; }
+  .diff :global(.old) { display: block; color: #ff9c9c; text-decoration: line-through; }
+  .diff :global(.new) { display: block; color: #a6f2c4; }
+</style>

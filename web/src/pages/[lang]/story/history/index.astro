@@ -1,0 +1,70 @@
+---
+// The translation history: every commit since the latest game release that changed
+// translations, newest first (web/scripts/export_history.py). Each opens to its lines.
+import Base from '../../../../layouts/Base.astro';
+import { langPaths, UI, type Lang } from '../../../../i18n';
+import { historyIndex } from '../../../../lib/data';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const h = historyIndex();
+// The Japanese pages show both translations' changes.
+const shown = (lang === 'ja' ? ['zh', 'en'] : [lang]) as ('zh' | 'en')[];
+const commits = (h?.commits ?? []).filter((c) => shown.some((l) => c.counts[l] > 0));
+const t = {
+  title: { zh: '更新历史', en: 'Translation history', ja: '翻訳の更新履歴' },
+  lead: {
+    zh: (n: number, v: string) => `自 ${v} 发布以来，共有 ${n} 次提交改动了中文译文，最新的在前。点开可以看到每次改了哪些台词和词条，新旧对照。`,
+    en: (n: number, v: string) => `Since ${v}, ${n} commits have changed the English translation, newest first. Open one to see which lines and terms it changed, old and new compared.`,
+    ja: (n: number, v: string) => `${v} の公開以降に翻訳を変更した ${n} 件のコミットを新しい順に掲載しています。各コミットで変わったセリフと用語を新旧対照で確認できます。`,
+  },
+  none: { zh: '还没有导出更新历史。', en: 'No history has been exported yet.', ja: '更新履歴はまだ書き出されていません。' },
+  lines: { zh: '句', en: 'lines', ja: '行' },
+  langName: { zh: { zh: '中文', en: '英文' }, en: { zh: 'Chinese', en: 'English' }, ja: { zh: '中国語', en: '英語' } },
+  scenes: { zh: (n: number) => `${n} 关`, en: (n: number) => `${n} stages`, ja: (n: number) => `${n} 話` },
+  terms: { zh: (n: number) => `词条 ${n}`, en: (n: number) => `${n} terms`, ja: (n: number) => `用語 ${n}` },
+  back: { zh: '剧情', en: 'Story', ja: 'シナリオ' },
+};
+const when = (iso: string) => iso.slice(0, 16).replace('T', ' ');
+---
+<Base lang={lang} title={t.title[lang]}>
+  <div class="wrap">
+    <header class="page-head">
+      <a class="back" href={`/${lang}/story/`}>← {t.back[lang]}</a>
+      <span class="tag">HISTORY</span>
+      <h1>{t.title[lang]}</h1>
+      <p>{h ? t.lead[lang](commits.length, h.baseline) : t.none[lang]}</p>
+    </header>
+    <ol class="commits">
+      {commits.map((c) => (
+        <li>
+          <a class="row" href={`/${lang}/story/history/${c.commit}/`}>
+            <span class="when latin">{when(c.date)}</span>
+            <span class="subject latin">{c.subject}</span>
+            <span class="nums">
+              {shown.filter((l) => c.counts[l] > 0).map((l) => <span class="n">{shown.length > 1 ? `${t.langName[lang][l]} ` : ''}{c.counts[l]} {t.lines[lang]}</span>)}
+              {(() => { const n = new Set(shown.flatMap((l) => c.scenes[l])).size; return n > 0 && <span class="n dim">{t.scenes[lang](n)}</span>; })()}
+              {c.terms > 0 && <span class="n dim">{t.terms[lang](c.terms)}</span>}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .back { font-size: 14px; }
+  .commits { list-style: none; margin: 0 0 64px; padding: 0; display: grid; gap: 8px; max-width: 980px; }
+  .row { display: grid; grid-template-columns: 140px minmax(0, 1fr) auto; gap: 6px 16px; align-items: baseline; padding: 12px 16px; color: var(--text); text-decoration: none !important; background: var(--panel); border: 1px solid var(--line-soft); }
+  .row:hover { border-color: var(--cyan); }
+  .when { font-size: 13px; color: var(--dim); }
+  .subject { font-size: 14px; overflow-wrap: anywhere; }
+  .nums { display: flex; flex-wrap: wrap; gap: 4px 10px; justify-content: flex-end; font-size: 13px; }
+  .n { color: var(--gold); white-space: nowrap; }
+  .n.dim { color: var(--muted); }
+  @media (max-width: 720px) {
+    .row { grid-template-columns: minmax(0, 1fr); }
+    .nums { justify-content: flex-start; }
+  }
+</style>

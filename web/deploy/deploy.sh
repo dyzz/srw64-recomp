@@ -16,7 +16,7 @@ HOST=${SRW64_DEPLOY_HOST:-$(cat ~/.config/srw64/site-deploy-host 2>/dev/null || 
 [ -n "$HOST" ] || { echo "set SRW64_DEPLOY_HOST or write ~/.config/srw64/site-deploy-host" >&2; exit 1; }
 WEB=$(cd "$(dirname "$0")/.." && pwd)
 ROOT=$(cd "$WEB/.." && pwd)
-for f in .data/story/index.json .data/story/search.json .data/library.json public/gen/portraits; do
+for f in .data/story/index.json .data/story/search.json .data/library.json .data/history/index.json public/gen/portraits; do
   [ -e "$WEB/$f" ] || { echo "missing web/$f: run the exporters in web/scripts first" >&2; exit 1; }
 done
 

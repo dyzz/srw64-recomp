@@ -28,6 +28,7 @@ const t = {
     ja: (_n: number, _v: string) => '',
   },
   changed: { zh: (n: number) => `更新 ${n}`, en: (n: number) => `${n} changed`, ja: (n: number) => `更新 ${n}` },
+  history: { zh: '按提交查看更新历史 →', en: 'History by commit →', ja: 'コミットごとの更新履歴 →' },
 };
 // Scenes that share a stage number (one per route) sit side by side, as on the SRW Z site.
 type Meta = ReturnType<typeof storyIndex>[number];
@@ -47,7 +48,7 @@ function rows(scenes: Meta[]) {
       <span class="tag">STORY</span>
       <h1>{UI.nav.story[lang]}</h1>
       <p>{t.lead[lang]}</p>
-      {changedLang && source && changedTotal > 0 && <p class="changed-total">{t.changedTotal[lang](changedTotal, source.baseline)}</p>}
+      {changedLang && source && changedTotal > 0 && <p class="changed-total">{t.changedTotal[lang](changedTotal, source.baseline)} <a href={`/${lang}/story/history/`}>{t.history[lang]}</a></p>}
       <StorySearch lang={lang} />
     </header>
 

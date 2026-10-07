@@ -25,11 +25,12 @@ The story, Library and image pages need data derived from the ROM, which is not 
 
 ```sh
 .venv/bin/python web/scripts/export_story.py      # web/.data/story, web/public/gen/portraits
+.venv/bin/python web/scripts/export_history.py    # web/.data/history (after export_story.py)
 .venv/bin/python web/scripts/export_library.py --check   # web/.data/library.json
 .venv/bin/python web/scripts/export_images.py     # web/public/gen/units and the Library portraits
 ```
 
-The story export also compares every line with the latest game release (the tag in `src/data/release.json`, or `--baseline TAG`): the stage list counts the lines changed since then, and each stage marks them, with "only changed" comparing old and new text. It records the last commit that changed the translations and whether `content/` had uncommitted edits.
+The story export also compares every line with the latest game release (the tag in `src/data/release.json`, or `--baseline TAG`): the stage list counts the lines changed since then, and each stage marks them, with "only changed" comparing old and new text. It records the last commit that changed the translations and whether `content/` had uncommitted edits. The Library export does the same for every name and term of each entry. `export_history.py` lists every commit since that release that changed a translation, with its changed lines (story, battle quotes, terms), for the history pages under `/<lang>/story/history/`; it reads committed files only.
 
 In development run the API beside the dev server (`.claude/launch.json` has `web` and `web-api`); the dev server proxies `/api`.
 
@@ -37,7 +38,7 @@ In development run the API beside the dev server (`.claude/launch.json` has `web
 
 `web/deploy/deploy.sh` builds, uploads a release and switches to it (nginx config, systemd units and the daily database backup are in `web/deploy/`). Maintainers answer suggestions with `node web/api/admin.mjs`.
 
-A site release after handling suggestions, by hand: change the translations, commit them, run `export_story.py` (and the other exporters if their data changed), then `deploy.sh`. The suggestions answered by the new text show as accepted or as the final wording once the site has it. `deploy.sh` stops if the story export read uncommitted edits in `content/` (`SRW64_DEPLOY_DIRTY=1` deploys anyway) or is older than the latest translation commit.
+A site release after handling suggestions, by hand: change the translations, commit them, run `export_story.py`, `export_library.py` and `export_history.py`, then `deploy.sh`. The suggestions answered by the new text show as accepted or as the final wording once the site has it. `deploy.sh` stops if the story export read uncommitted edits in `content/` (`SRW64_DEPLOY_DIRTY=1` deploys anyway) or is older than the latest translation commit.
 
 
 The origin is a server behind the CDN; Nginx serves `/srv/srw64/public` for `srw64.dreamquest.club`. `deploy.sh` reaches it by an ssh host name from `SRW64_DEPLOY_HOST` or `~/.config/srw64/site-deploy-host`, so the repository never names it.
