@@ -1,71 +1,79 @@
-name: "程序问题 / Bug report"
-description: "闪退、卡死、画面或声音不对、操作没反应等程序问题。Crashes, freezes, wrong picture or sound, controls that do nothing."
-title: "[Bug] "
-labels: ["bug"]
+name: 程序问题 / Bug report
+description: 闪退、卡死、画面或声音不对、操作没反应等程序问题。Crashes, freezes, wrong picture or sound, controls that do nothing.
+title: '[Bug] '
+labels:
+- bug
 body:
-  - type: markdown
-    attributes:
-      value: |
-        感谢反馈！请先在游戏里打开「选项 → 关于 → 问题报告」，点「导出问题报告」，把导出的 zip 拖到下面的「问题报告」一栏。它包括版本、系统和显卡信息、设置和最近 3 次运行的日志，不含存档和 ROM。
-        剧情台词和图鉴里的译名请到[官网](https://srw64.dreamquest.club/zh/story/)对应的句子旁直接提建议，不用在这里提。
+- type: markdown
+  attributes:
+    value: '感谢反馈！0.4.0 之后的版本请先在游戏里打开「选项 → 关于 → 问题报告」，点「导出问题报告」，把导出的 zip 拖到下面的「问题报告」一栏。它包括版本、系统和显卡信息、设置和最近 3 次运行的日志，不含存档和 ROM。
 
-        Thanks! In the game, open Options → About → Problem Report and click Export Report, then drag the zip into "Problem report" below. It holds the version, your system and graphics, your settings and the logs of the last 3 runs; no saves, no ROM.
-        For story lines and Library names, suggest a correction next to the line on the [website](https://srw64.dreamquest.club/en/story/) instead.
-  - type: input
-    id: version
-    attributes:
-      label: "版本 / Version"
-      description: "「选项 → 关于」里显示的版本，HD 包装了的话也写上它的版本。The version under Options → About, and the HD pack's version if you have it."
-      placeholder: "0.4.0, HD 1.0"
-    validations:
-      required: true
-  - type: dropdown
-    id: platform
-    attributes:
-      label: "平台 / Platform"
-      options:
-        - macOS
-        - Windows
-        - Linux
-        - Steam Deck
-        - Android
-    validations:
-      required: true
-  - type: input
-    id: device
-    attributes:
-      label: "设备 / Device"
-      description: "电脑或手机的型号、系统版本、显卡；用手柄的话写上手柄。Computer or phone model, system version, graphics; and the controller, if you use one."
-      placeholder: "MacBook Air M2, macOS 15.5 / RTX 3060, Windows 11 / Pixel 8, Android 15"
-    validations:
-      required: true
-  - type: textarea
-    id: what
-    attributes:
-      label: "发生了什么 / What happened"
-      description: "出了什么问题，你本来期待的是什么。What went wrong, and what you expected instead."
-    validations:
-      required: true
-  - type: textarea
-    id: steps
-    attributes:
-      label: "怎样重现 / How to make it happen"
-      description: "在第几话、哪个画面、做了什么操作；每次都会发生还是偶尔。Which scenario and screen, what you did; every time or now and then."
-      placeholder: |
-        1. 第 12 话，敌方回合
-        2. 选择反击 → 武器 …
-        3. …
-    validations:
-      required: true
-  - type: textarea
-    id: report
-    attributes:
-      label: "问题报告 / Problem report"
-      description: "把导出的 Marchwind64-report-….zip 拖到这里。闪退或卡死后，重新打开游戏再导出，上一次运行的日志也会在里面。Drag the exported zip here. After a crash or freeze, reopen the game and export: the previous run's logs are included."
-    validations:
-      required: true
-  - type: textarea
-    id: extra
-    attributes:
-      label: "截图、录像或存档 / Screenshots, video or saves"
-      description: "可选。存档在「选项 → 存档」里导出。Optional. Export saves under Options → Saves."
+      剧情台词和图鉴里的译名请到[官网](https://srw64.dreamquest.club/zh/story/)对应的句子旁直接提建议，不用在这里提。
+
+
+      Thanks! From the version after 0.4.0, open Options → About → Problem Report and click Export Report, then drag the zip into "Problem report" below. It holds the version, your system and graphics, your settings and the logs of the last 3 runs; no saves, no ROM.
+
+      For story lines and Library names, suggest a correction next to the line on the [website](https://srw64.dreamquest.club/en/story/) instead.
+
+      '
+- type: input
+  id: version
+  attributes:
+    label: 版本 / Version
+    description: 「选项 → 关于」里显示的版本，HD 包装了的话也写上它的版本。The version under Options → About, and the HD pack's version if you have it.
+    placeholder: 0.4.0, HD 1.0
+  validations:
+    required: true
+- type: dropdown
+  id: platform
+  attributes:
+    label: 平台 / Platform
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - Steam Deck
+    - Android
+  validations:
+    required: true
+- type: input
+  id: device
+  attributes:
+    label: 设备 / Device
+    description: 电脑或手机的型号、系统版本、显卡；用手柄的话写上手柄。Computer or phone model, system version, graphics; and the controller, if you use one.
+    placeholder: MacBook Air M2, macOS 15.5 / RTX 3060, Windows 11 / Pixel 8, Android 15
+  validations:
+    required: true
+- type: textarea
+  id: what
+  attributes:
+    label: 发生了什么 / What happened
+    description: 出了什么问题，你本来期待的是什么。What went wrong, and what you expected instead.
+  validations:
+    required: true
+- type: textarea
+  id: steps
+  attributes:
+    label: 怎样重现 / How to make it happen
+    description: 在第几话、哪个画面、做了什么操作；每次都会发生还是偶尔。Which scenario and screen, what you did; every time or now and then.
+    placeholder: '1. 第 12 话，敌方回合
+
+      2. 选择反击 → 武器 …
+
+      3. …
+
+      '
+  validations:
+    required: true
+- type: textarea
+  id: report
+  attributes:
+    label: 问题报告 / Problem report
+    description: '把导出的 Marchwind64-report-….zip 拖到这里。闪退或卡死后，重新打开游戏再导出，上一次运行的日志也会在里面。Drag the exported zip here. After a crash or freeze, reopen the game and export: the previous run''s logs are included. 0.4.0 还没有这个按钮：请在上面写清系统和显卡，有截图更好。0.4.0 does not have this button yet: describe your system and graphics above, with screenshots if you can.'
+  validations:
+    required: false
+- type: textarea
+  id: extra
+  attributes:
+    label: 截图、录像或存档 / Screenshots, video or saves
+    description: 可选。存档在「选项 → 存档」里导出。Optional. Export saves under Options → Saves.
