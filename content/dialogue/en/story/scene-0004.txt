@@ -9,7 +9,7 @@
 # 审校：全局：弯撇号／弯引号
 > 「発端はコロニー国家であった
 >  ジオン公国の
-“There’s no doubt it all started with the Principality of Zeon’s
+“It’s fair to say it all started with the Principality of Zeon’s
 ---
 >  独立戦争だといっても
 >  間違いないだろうね
@@ -43,11 +43,11 @@ and we’d still be fighting the Imperial Army.”
 # 审校：全局：弯撇号／弯引号
 > 「なるほどな。そこにあの
 >  異星人どもが、やってきて
-“I see. So that’s when those aliens showed up,
+“I see. And then those aliens showed up,
 ---
 >  あっという間に、やられちまったって
 >  わけか」
-and we got wiped out in the blink of an eye.”
+and we were crushed in the blink of an eye.”
 
 @17686 Brad · ブラッド（按段落 3DD3）
 > 「なにしろ俺たちは、そういうのとは
@@ -97,7 +97,7 @@ culture, and the only way to survive was to do as the Empire said.”
 ---
 >  帝国に率先して協力し、
 >  かつ有益な者はA級
-Those who cooperated with the Empire first and were useful got A-rank.
+Those who were first to cooperate with the Empire and proved useful got A-rank.
 ---
 >  積極的に協力する者が
 >  B級
@@ -109,7 +109,7 @@ Those who were relatively cooperative got C-rank.
 ---
 >  それ以外の、反抗的でない
 >  者は、ただの市民」
-Everyone else, anyone who wasn’t rebellious, was just a citizen.”
+Everyone else who wasn’t rebellious was just a citizen.”
 
 @17691 Brad · ブラッド（按段落 3DD3）
 > 「じゃ、俺たちは?」
@@ -167,7 +167,7 @@ operating as part of the Imperial Army.”
 ---
 >  それも僕たちのような反帝国を
 >  掲げる人々を狩り出すことで
-And they earned the Empire’s favor by hunting down people like us who stand against the Empire.
+And they earned the Empire’s favor by hunting down people like us who oppose it.
 ---
 >  帝国に認められた、
 >  許されざる者たちだ」
@@ -177,7 +177,7 @@ They’re unforgivable.”
 # 审校：全局：弯撇号／弯引号
 > 「発端はコロニー国家であった
 >  ジオン公国の
-“There’s no doubt it all started with the Principality of Zeon’s
+“It’s fair to say it all started with the Principality of Zeon’s
 ---
 >  独立戦争だといっても
 >  間違いないだろうね
@@ -208,7 +208,7 @@ the Earth Sphere running fell apart.”
 ---
 >  ムゲゾルバドス帝国との戦争を
 >  続けていたかもしれない」
-fighting a war against the Muge Zorbados Empire.”
+at war with the Muge Zorbados Empire.”
 
 @17699 Banjo · 万丈
 > 「そう。だが現実には
@@ -259,7 +259,7 @@ cooperating with the Imperial Army ahead of everyone else, right?”
 # 审校：全局：弯撇号／弯引号
 > 「だけど、みんなはその頃から
 >  戦っていたのでしょう?」
-“But everyone else had been fighting since back then, hadn’t they?”
+“But everyone here was already fighting back then, weren’t they?”
 
 @17703 Simone · シモーヌ
 # 审校：研究设施不说“全军覆没”
@@ -292,11 +292,11 @@ It’s a miracle I’m even here now.”
 # 审校：全局：弯撇号／弯引号
 > 「万丈様、お話中申しわけ
 >  ありませんが
-“Master Banjo, I apologize for interrupting your conversation,
+“Master Banjo, forgive me for interrupting,
 ---
 >  先に向かわれていたお二方から
 >  緊急通信が入りました」
-but we’ve received an emergency transmission from the two who went on ahead.”
+but we have received an emergency transmission from the two who went on ahead.”
 
 @17708 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -312,10 +312,10 @@ but we’ve received an emergency transmission from the two who went on ahead.�
 ---
 >  なにぶん、かなりあわてておいでの
 >  ご様子で、詳しい状況は
-They sounded quite frantic, so I’m afraid I couldn’t confirm
+They sounded rather frantic, so I was unable to confirm
 ---
 >  確認できませんでしたが」
-the details of the situation.”
+the details.”
 
 @17710 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -339,7 +339,7 @@ with Professor Yumi somehow?”
 @17712 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「あそこか。みんな、いくぞ!」
-“That place, huh. Everyone, let’s go!”
+“There it is. Let’s go, everyone!”
 
 @17713 Brad · ブラッド（按段落 3DD3）
 > 「おう!」
@@ -356,7 +356,7 @@ with Professor Yumi somehow?”
 ---
 >  こんなところで、おじいちゃんの恨みも
 >  晴らさずに死ねるかぁっ!!」
-I can’t die in a place like this without avenging Grandpa!!”
+I can’t die here without avenging Grandpa!!”
 
 @17716 Hell Marshal · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
@@ -365,19 +365,19 @@ I can’t die in a place like this without avenging Grandpa!!”
 ---
 >  兜十蔵めが、よくもこんな
 >  ロボットをつくったものだが
-To think Juzo Kabuto built a robot like this.
+Juzo Kabuto made a fine robot indeed,
 ---
 >  乗っているのが貴様のような
 >  奴では
-But with a wretch like you piloting it,
+but with a wretch like you at the controls,
 ---
 >  我が軍団の前には
 >  ひとたまりもないわ!」
-it’s no match for my army!”
+it is no match for my army!”
 
 @17717 Koji · 甲児
 > 「なにを!」
-“What did you say?!”
+“Why, you!”
 
 @17718 Hell Marshal · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
@@ -414,7 +414,7 @@ Go!”
 # 审校：地狱大元帅用“is it?”显得现代，改为“are they?”更符合其古旧反派口吻。
 > 「なに!? むぅ、
 >  反帝国ゲリラどもか」
-“What?! Hmph, anti-Imperial guerrillas, are they?”
+“What?! Hmph, the anti-Imperial guerrillas!”
 
 @17723 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -442,7 +442,7 @@ Who exactly are you? And where’s Dr. Kabuto?”
 # 审校：全局：弯撇号／弯引号
 > 「そう何もかもいっぺんにいわないでくれよ
 >  頭が、こんがらがっちまう
-“Don’t dump it all on me at once, my head’s spinning here.
+“Don’t throw everything at me at once, you’re getting my head all tangled.
 ---
 >  カラバってのは、おじいちゃんからも
 >  聞いた名前だ
@@ -450,7 +450,7 @@ Karaba’s a name I heard from my grandpa too.
 ---
 >  とりあえず敵じゃないってことで
 >  いいんだな?」
-So for now I can take it you’re not an enemy, right?”
+So I can take it you’re not an enemy, right?”
 
 @17727 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -475,7 +475,7 @@ Juzo Kabuto... my grandpa... they killed him!”
 ---
 >  話の続きは連中を倒してからに
 >  するとしよう
-Let’s save the rest of the story for after we’ve beaten them.
+Let’s finish this talk after we’ve beaten them.
 ---
 >  やれるか、甲児くん?」
 Can you fight, Koji?”
@@ -484,7 +484,7 @@ Can you fight, Koji?”
 # 审校：全局：弯撇号／弯引号
 > 「ありがてぇ、加勢してくれる
 >  ってんならなんとかやってみるぜ
-“Thanks, if you’re backing me up I’ll manage somehow.
+“Thanks. If you’re backing me up, I’ll manage somehow.
 ---
 >  みてろよ化け物どもめ、
 >  おじいちゃんの仇をうってやる!」
@@ -493,21 +493,21 @@ Just you watch, you monsters. I’ll avenge my grandpa!”
 @17731 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「あれが次の仲間ってわけか
-“So that’s our next comrade, huh.
+“So that’s our newest ally, huh.
 ---
 >  お手並み拝見だな
 >  {PartnerName}」
-Let’s see what you’ve got, {PartnerName}.”
+Let’s see what he can do, eh, {PartnerName}?”
 
 @17732 Kurtz · カーツ（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「動きを一目見てわからんとはな。
 >  あれは、まだ不慣れなパイロットだ
-“You can’t tell from one glance at his movements? That’s a pilot who’s still green.
+“You can’t tell from one glance at how he moves? That pilot is still green.
 ---
 >  昨日今日乗ったばかりに
 >  相違ない」
-He must have only gotten in that thing yesterday or today.”
+He cannot have been in that thing for more than a day or two.”
 
 @17733 Brad · ブラッド（按段落 3DD3）
 > 「ちっ」
@@ -527,7 +527,7 @@ He must have only gotten in that thing yesterday or today.”
 @17736 Hell Marshal · 地獄大元帥
 > 「うぬぅ、ゲリラどもめ
 >  好き勝手なことをほざきおって
-“Grr, those blasted guerrillas, running their mouths as they please.
+“Grr, you blasted guerrillas, how you prattle on!
 ---
 >  ゆけ、戦闘獣どもよ!
 >  奴らを皆殺しにするのじゃ!」
@@ -535,13 +535,13 @@ Go, my battle beasts! Slaughter them all!”
 
 @17737 Koji · 甲児
 > 「この野郎、覚悟しやがれ!」
-“You bastard, get ready!”
+“You bastard, you’re going down!”
 
 @17738 Hell Marshal · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「こざかしい!
 >  返り討ちにしてくれるわ!」
-“Insolent fool! I’ll strike you down instead!”
+“Insolent whelp! I will cut you down where you stand!”
 
 @17739 Hell Marshal · 地獄大元帥
 > 「おのれマジンガーZ、
@@ -563,13 +563,13 @@ I won’t forget this!”
 
 @17742 Koji · 甲児
 > 「なにぃ!?」
-“What did you say?!”
+“What?!”
 
 @17743 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「短気な奴だな。
 >  ほめているのに、なぜ怒る?」
-“What a short temper. I’m complimenting you, so why get angry?”
+“Touchy, aren’t you? I’m complimenting you. Why get angry?”
 
 @17744 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -586,13 +586,13 @@ I won’t forget this!”
 @17746 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「ああ、いつでもかまわないぜ」
-“Yeah, anytime’s fine.”
+“Yeah, I’m ready whenever.”
 
 @17747 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「よし、じゃあみんな、
 >  ひきあげよう」
-“All right, then everyone, let’s pull out.”
+“All right, everyone, let’s pull out.”
 
 @17748 Manami · マナミ（按段落 3DD4）
 > 「すごいのね、マジンガーZって」
@@ -619,7 +619,7 @@ I won’t forget this!”
 @17752 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「ああ、いつでもかまわないぜ」
-“Yeah, anytime’s fine.”
+“Yeah, I’m ready whenever.”
 
 @17753 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -649,7 +649,7 @@ I won’t forget this!”
 # 审校：全局：弯撇号／弯引号
 > 「そういってもらえると、助かる。
 >  続けてくれ」
-“I’m glad to hear you say that. Go on.”
+“That’s good of you to say. Go on.”
 
 @17758 Koji · 甲児
 # 审校：跨页引号改弯引号
@@ -691,15 +691,15 @@ Still, what a loss. The doctor was a capable man.”
 # 检查提示：未用必用译名：弓教授→Prof. Yumi
 > 「万丈様、
 >  弓教授との連絡がつきました
-“Master Banjo, we’ve made contact with Professor Yumi.
+“Master Banjo, I have reached Professor Yumi.
 ---
 >  マジンガーZの操縦訓練の
 >  ために、ロボット1体と
-He says he’ll send one robot and one pilot
+He says he will send a robot and a pilot
 ---
 >  パイロット1人を、こちらに
 >  向かわせるとのことです」
-here for Mazinger Z pilot training.”
+here for Mazinger Z flight training.”
 
 @17761 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -731,7 +731,7 @@ the doctor left him in charge of photon power research.
 ---
 >  やはり僕たちが保護したうちの
 >  1人だ」
-He’s one of the people we rescued, as it happens.”
+He’s another of the people we took under our protection.”
 
 @17765 Beauty · ビューティ
 > 「万丈!
@@ -815,7 +815,7 @@ I’m Beautiful Tachibana. Call me Beauty.”
 
 @17777 Simone · シモーヌ
 > 「こっちこそ、よろしく頼むわ」
-“Likewise, I look forward to working with you.”
+“Same here. Glad to be working with you.”
 
 @17778 Koji · 甲児
 > (うーん美人ばっかり、
@@ -840,11 +840,11 @@ I’m Beautiful Tachibana. Call me Beauty.”
 @17782 Garrison · ギャリソン
 # 审校：全局：弯撇号／弯引号
 > 「はい、連絡はついております
-“Yes, we’ve made contact.
+“Yes, I have been in contact with them.
 ---
 >  今のところ問題はないと
 >  思われます」
-As far as I can tell, there are no problems at present.”
+As far as I can tell, all is well for the moment.”
 
 @17783 Brad · ブラッド（按段落 3DD3）
 > 「次の目的地か?
@@ -864,9 +864,9 @@ As far as I can tell, there are no problems at present.”
 @17786 Lawrence · ローレンス
 > 「ふむ、新鮮な紅茶も
 >  手に入るとよいですな」
-“Hmm, it would be nice if we could get our hands on some fresh tea as well.”
+“Hmm, I do hope we can obtain some fresh tea as well.”
 
 @17787 Kurtz · カーツ（按段落 3DD3）
 > (……なんだというのだ、この虚しさは。
 >  俺は……このままでよいのか……?)
-(...What is this emptiness? I... is it really all right for me to stay like this...?)
+(...What is this emptiness? Am I... truly content to go on like this...?)

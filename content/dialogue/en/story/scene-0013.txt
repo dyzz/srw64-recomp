@@ -1275,7 +1275,7 @@ Answer me, Heero.”
 # 审校：全局：弯撇号／弯引号
 > 「リリーナ・ドーリアン……
 >  A級市民だったな
-“Relena Darlian... an A-class citizen, weren’t you.
+“Relena Darlian... an A-class citizen, as I recall.
 ---
 >  深入りしすぎた。
 >  お前を、殺す」
@@ -1313,7 +1313,7 @@ Hey, hey, hold on a second.
 ---
 >  俺の方が悪者になっちまってる
 >  じゃねぇか」
-Now I’m the one who’s turned into the bad guy.”
+How did I end up the bad guy here?”
 
 @19088 Heero · ヒイロ
 > 「……?」
@@ -1357,4 +1357,4 @@ I can’t bring myself to kill a girl like you.”
 @19094 Relena · リリーナ
 > (なんなの!?
 >  一体なんなの、この人たち!?)
-(What is this?! Just what is wrong with these people?!)
+(What is going on?! Who on earth are these people?!)

@@ -8,7 +8,7 @@
 ---
 >  エミリア、怒るだろうなぁ……。
 >  でも、しかたないよな
-Emilia’s gonna be mad... But there’s nothing I could do.
+Emilia’s gonna be mad... But what was I supposed to do?
 ---
 >  かわりにチーズも手に入ったし……」
 At least I got some cheese instead...”
@@ -42,20 +42,20 @@ At least I got some cheese instead...”
 @17510 Specials · スペシャルズ
 > 「どうも正規軍の無人機が
 >  出ているようです。当該地域に
-“It seems regular army drones have been deployed. Code C has been
+“Looks like regular army drones are out. Code C has been
 ---
 >  コードCが発令されています」
-issued for the area in question.”
+declared for the area.”
 
 @17511 Ehrlich · エルリッヒ（本话主角的对手）
 # 审校：バカな 这里是“荒唐”，不是“不可能”
 > 「バカな。無人機にコードCでは、
 >  無差別攻撃と同じではないか
-“That’s absurd. Code C with drones is no different from an indiscriminate attack.
+“That’s absurd. Drones under Code C are no different from an indiscriminate attack.
 ---
 >  ゲリラ掃討のためとはいえ、
 >  それでは何も残らん」
-Even if it’s to sweep out guerrillas, that would leave nothing behind.”
+Even if the aim is to sweep out guerrillas, there would be nothing left standing.”
 
 @17512 Specials · スペシャルズ
 # 审校：部下对长官
@@ -67,18 +67,18 @@ Even if it’s to sweep out guerrillas, that would leave nothing behind.”
 # 审校：全局：弯撇号／弯引号
 > 「追跡していた試作機の行方が
 >  そこだというのなら、いくしかなかろう?
-“If the prototype we were tracking is there, we have no choice but to go, do we?
+“If that’s where the prototype went, we have little choice but to go.
 ---
 >  それに、我々もこの任務のために
 >  それなりの権限が与えられている
-Besides, we’ve been given considerable authority for this mission.
+Besides, we have been given considerable authority for this mission.
 ---
 >  間に合えば無人機の攻撃を
 >  抑制することもできよう
-If we make it in time, we can even suppress the drones’ attack.
+If we arrive in time, we may even be able to rein in the drones.
 ---
 >  放っておけば住人も全滅するぞ」
-If we leave it alone, the residents will be wiped out too.”
+Leave it be, and everyone in that town dies.”
 
 @17514 Specials · スペシャルズ
 > 「了解です。無人機は容赦が
@@ -88,13 +88,13 @@ If we leave it alone, the residents will be wiped out too.”
 @17515 Guerrilla · ゲリラ
 > 「くそっ、帝国めッ!
 >  散開して迎撃しろ!!」
-“Damn it, those Imperials! Spread out and intercept them!!”
+“Damn the Empire! Spread out and intercept!!”
 
 @17516 Guerrilla · ゲリラ
 # 审校：全局：弯撇号／弯引号
 > 「ちっ……だめかな、こいつは。
 >  ……ん?」
-“Tch... I guess this one’s no good. ...Hm?”
+“Tch... this one’s had it. ...Hm?”
 
 @17517 Ark · アーク（按段落 3DD1）
 > 「はぁっ、はぁっ、みんな、はやく!!」
@@ -103,7 +103,7 @@ If we leave it alone, the residents will be wiped out too.”
 @17518 Guerrilla · ゲリラ
 # 审校：全局：弯撇号／弯引号
 > 「くっ……逃げ遅れた連中か!」
-“Ngh... People who didn’t make it out in time!”
+“Ngh... Stragglers?!”
 
 @17519 Ark · アーク（按段落 3DD1）
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
@@ -118,7 +118,7 @@ If we leave it alone, the residents will be wiped out too.”
 @17521 Guerrilla · ゲリラ
 > 「坊や、おい坊や、生きてるか!?
 >  早く逃げるんだ!」
-“Kid, hey kid, are you alive?! Hurry and run!”
+“Kid, hey, kid, you alive?! Get out of here, quick!”
 
 @17522 Ark · アーク（按段落 3DD1）
 > 「う……あ……
@@ -128,11 +128,11 @@ If we leave it alone, the residents will be wiped out too.”
 @17523 Guerrilla · ゲリラ
 # 审校：全局：弯撇号／弯引号
 > 「残念だが……瓦礫の下だろう
-“I’m sorry, but... they’re under the rubble.
+“Sorry, but... they’re under the rubble.
 ---
 >  くそっ帝国め、見境いなしに
 >  攻撃してやがる
-Damn those Imperials, attacking without a thought for anyone.
+Damn those Imperials, firing at everything in sight.
 ---
 >  おい坊や、何をしてる!?」
 Hey kid, what are you doing?!”
@@ -146,7 +146,7 @@ Hey kid, what are you doing?!”
 # 审校：“doing foolish things”直译
 > 「バカなことはやめて早く逃げろ!
 >  お前も死ぬぞ!!」
-“Stop being a fool and run! You’ll die too!!”
+“Don’t do anything stupid, just run! You’ll die too!!”
 
 @17526 Ark · アーク（按段落 3DD1）
 > 「エミリア!
@@ -171,7 +171,7 @@ Hey kid, what are you doing?!”
 # 审校：全局：弯撇号／弯引号
 > 「あ、あんたたちがこんな所で戦争
 >  なんて始めるからっ!
-“I-it’s because you people started a war in a place like this!
+“I-it’s because you people started a war here!
 ---
 >  うあぁぁぁぁっ!」
 Uwaaaaaah!”
@@ -180,11 +180,11 @@ Uwaaaaaah!”
 # 审校：全局：弯撇号／弯引号
 > 「……すまんな、坊や。
 >  だが言い訳をするわけじゃないが、
-“...I’m sorry, kid. But I’m not making excuses when I say this:
+“...I’m sorry, kid. I’m not making excuses, but
 ---
 >  奴らは、はなからこの町が
 >  狙いだったんだ
-they had their sights on this town from the very start.
+they were after this town from the start.
 ---
 >  皆殺しにするつもりだったのさ。
 >  あの無人機をみりゃわかる
@@ -192,7 +192,7 @@ They meant to kill everyone. One look at those drones tells you that.
 ---
 >  奴らのやり方は3年前から
 >  少しもかわっちゃいない」
-Their methods haven’t changed one bit since three years ago.”
+They haven’t changed their ways one bit in three years.”
 
 @17532 Ark · アーク（按段落 3DD1）
 > 「うぅっ……うっ……」
@@ -202,11 +202,11 @@ Their methods haven’t changed one bit since three years ago.”
 # 审校：“至少你一个人也要”“at least you have to”别扭
 > 「逃げろ坊や。
 >  俺たちはもう長くは持たない
-“Run, kid. We won’t last much longer.
+“Run, kid. We won’t hold out much longer.
 ---
 >  頼む、せめて君だけでも
 >  逃げてくれ!」
-I’m begging you, at least you get out of here!”
+Please, at least you have to get out of here!”
 
 @17534 Guerrilla · ゲリラ
 > 「くっそぉぉぉーっ!!」
@@ -256,7 +256,7 @@ Waah, w-what?! Is there someone inside too?!”
 # 审校：全局：弯撇号／弯引号
 > 「違う……こいつ……
 >  レジスタンスの……?」
-“No... this thing... it’s the Resistance’s...?”
+“No... this is... one of the Resistance’s...?”
 
 @17544 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -275,7 +275,7 @@ Combat mode... urban warfare... semi-auto?
 ---
 >  このディスプレイに出てるのは
 >  操作ガイダンスなのか……」
-Is what’s on this display an operation guide...?”
+Is this screen... telling me how to fly it?”
 
 @17546 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -310,11 +310,11 @@ Is what’s on this display an operation guide...?”
 # 审校：“what a sight”语义不清
 > 「うむ……ひどい有り様だ。帝国の
 >  無人機などに好きにやらせるから、
-“Mm... what a mess. Because they let the Empire’s drones run wild,
+“Hm... a terrible sight. This is what happens when you let the Empire’s drones run wild.
 ---
 >  非武装の市民まで巻き添えに
 >  なる」
-even unarmed civilians get caught in it.”
+Even unarmed civilians get caught up in it.”
 
 @17553 Specials · スペシャルズ
 > 「レジスタンスは、ほぼ壊滅
@@ -329,7 +329,7 @@ even unarmed civilians get caught in it.”
 ---
 >  やはりレジスタンスの手に
 >  渡っていたな」
-So it did end up in the Resistance’s hands after all.”
+So it did fall into the Resistance’s hands.”
 
 @17555 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
@@ -365,11 +365,11 @@ Cease this pointless fighting and surrender.”
 ---
 >  あるいは破壊だ。おとなしく
 >  そのマシンをおりてくれれば、この私……
-or else destroy it. If you come down from that machine quietly, I,
+or else destroy it. Step down from that machine quietly, and I,
 ---
 >  {PartnerFull}の名に
 >  かけて、君の命は保証しよう
-{PartnerFull}, give you my word your life will be spared.
+{PartnerFull}, give you my word that your life will be spared.
 ---
 >  だが、聞き入れてもらえぬならば……」
 But if you refuse to listen...”
@@ -378,16 +378,16 @@ But if you refuse to listen...”
 # 审校：全局：弯撇号／弯引号
 > 「うるさいんだよ、この人殺しが!
 >  今さら俺一人生き残ったって!」
-“Shut up, you murderer! What’s the point of me being the only one left alive?!”
+“Shut up, you murderer! What good is it if I’m the only one left alive now?!”
 
 @17561 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：It can’t be helped
 > 「……やむを得まい。これ以上
 >  死者を増やすのは忍びないが、
-“...Then so be it. I hate to add to the death toll,
+“...So be it. I would rather not add to the dead,
 ---
 >  これも任務なのでな」
-but this too is my duty.”
+but this is my duty.”
 
 @17562 Aboly · アポリー
 > 「大尉、こいつは……」
@@ -401,7 +401,7 @@ but this too is my duty.”
 @17564 Quattro · クワトロ
 > 「いや……あの1機、
 >  例の試作機か?」
-“No... that machine, is it the prototype?”
+“Wait... is that the prototype?”
 
 @17565 Aboly · アポリー
 > 「そのようです」
@@ -432,7 +432,7 @@ Otherwise there was no point in coming this far at such risk...”
 “Even if the cockpit’s different, give me three days and I can make it
 ---
 >  できます。大丈夫です」
-like my own limbs. No problem.”
+handle like part of me. No problem.”
 
 @17570 Roberto · ロベルト
 # 审校：全局：弯撇号／弯引号
@@ -465,15 +465,15 @@ That’s how we made it through the One Year War.”
 @17575 Ehrlich · エルリッヒ（按段落 3DD1）
 # 审校：“Even Intelligence is unreliable”生硬
 > 「ん? 見たことのない機体だな
-“Hm? A machine I’ve never seen before.
+“Hm? I’ve never seen that machine before.
 ---
 >  レジスタンスが独自に
 >  開発したものか?
-Did the Resistance develop it on their own?
+Did the Resistance develop it themselves?
 ---
 >  情報部もあてにならん。
 >  狙いは、あれか……」
-Can’t count on Intelligence either. So that’s their target...”
+So much for Intelligence. So that’s what they’re after...”
 
 @17576 Specials · スペシャルズ
 > 「やはりレジスタンスでしょうか?
@@ -529,29 +529,29 @@ Can’t count on Intelligence either. So that’s their target...”
 @17586 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「残念だがそういうわけにもいかん
-“Sorry, but I can’t do that.
+“Unfortunately, that isn’t an option.
 ---
 >  それは我々が苦労して入手
 >  したものだ。放ってはおけない
-That’s something we went through a lot of trouble to get. I can’t just leave it.
+We went to a lot of trouble to get that. I can’t just leave it.
 ---
 >  それに、君のような若者を
 >  無駄死にさせるわけにもな」
-Besides, I can’t let a young man like you die for nothing.”
+Besides, I can’t let a young man like you throw his life away.”
 
 @17587 Ark · アーク（按段落 3DD1）
 > 「勝手なことを……」
-“Doing whatever you want...”
+“You’ve got some nerve...”
 
 @17588 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「どう思ってもらっても構わんが、
 >  今は敵を排除することが先決だ
-“Think whatever you like, but right now clearing out the enemy comes first.
+“Think what you like, but right now our priority is clearing out the enemy.
 ---
 >  動けるのなら戦うのだな。
 >  援護する」
-If you can still move, then fight. We’ll cover you.”
+If you can move, fight. We’ll cover you.”
 
 @17589 Quattro · クワトロ
 # 审校：It can’t be helped；“确保下来”生硬
@@ -618,10 +618,10 @@ It’s a Resistance organization with former Federation soldiers at its core.
 ---
 >  レジスタンス組織でな。おかげで、
 >  いまだに階級で呼びあうクセが
-Thanks to that, I still can’t shake the habit of
+Which is why I still can’t shake the habit of
 ---
 >  抜けずにいる」
-addressing people by rank.”
+calling people by rank.”
 
 @17600 Ark · アーク（本话主角）
 # 审校：全局：弯撇号／弯引号
@@ -641,7 +641,7 @@ A lot of people in this town supported the Resistance.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ。君が落ち着いて話ができる
 >  ようになってくれて、助かる
-“Yeah. I’m glad you’ve calmed down enough to talk.
+“Right. I’m glad you’ve calmed down enough to talk.
 ---
 >  またすぐ、帝国軍がくるだろう。
 >  できれば我々と一緒に
@@ -658,11 +658,11 @@ I won’t stop you, but...”
 # 审校：全局：弯撇号／弯引号
 > 「…………いえ、いきます。僕には……もう
 >  何も残っていませんから
-“...No, I’ll come. I... don’t have anything left anymore.
+“...No, I’ll come. I... don’t have anything left.
 ---
 >  ……ここに残っても、帝国軍と
 >  うまくやる自信はありませんし……」
-...Even if I stayed here, I don’t think I could get along with the Imperial Army...”
+...And if I stayed, I don’t think I could get along with the Imperial Army...”
 
 @17603 Quattro · クワトロ
 > 「そうか……」
@@ -672,15 +672,15 @@ I won’t stop you, but...”
 # 审校：“姨母夫妇”“aunt and her husband”生硬
 > 「あの、少し時間をください。
 >  おば夫婦や……友達を……
-“Um, please give me a little time. My aunt and uncle... and my friends...
+“Um, could you give me a little time? My aunt and uncle... and my friends...
 ---
 >  せめて埋葬してあげたいんです」
-I want to at least bury them.”
+I want to at least give them a burial.”
 
 @17605 Quattro · クワトロ
 # 审校：“I don’t mind, but…”不像克瓦特罗
 > 「構わんが……我々も手伝おう」
-“Of course... We’ll help too.”
+“That’s fine... We’ll help.”
 
 @17606 Ark · アーク（本话主角）
 > 「でも……」
@@ -690,7 +690,7 @@ I want to at least bury them.”
 # 审校：全局：弯撇号／弯引号
 > 「君はあまり見ないほうがいい
 >  ……それに、急ぐ必要もある」
-“You’d better not look too much... Besides, we need to hurry.”
+“It’s best you don’t see too much... Besides, we need to hurry.”
 
 @17608 Ark · アーク（本话主角）
 > 「はい……」
@@ -719,43 +719,43 @@ I want to at least bury them.”
 ---
 >  俺、とりあえずこの人たちと一緒に
 >  いくよ。必ずもどってくるから……
-I’ll go with these people for now. I’ll definitely come back, so...
+I’ll go with these people for now. I promise I’ll come back, so...
 ---
 >  さよなら、エミリア……)
 Goodbye, Emilia...)
 
 @17613 Ark · アーク（本话主角）
 > 「あの、これからどうするんですか?」
-“Um, what will you do now?”
+“Um, what happens now?”
 
 @17614 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「仲間と合流する。このところ
 >  各地の抵抗運動が活発に
-“We’ll regroup with our comrades. With resistance movements stirring
+“We’ll rejoin our comrades. With resistance movements stirring
 ---
 >  なっているせいで、帝国軍も
 >  ゲリラ狩りに本腰をいれてきている
-all over lately, the Imperial Army has gotten serious about guerrilla hunting.
+all over lately, the Imperial Army has gotten serious about hunting guerrillas.
 ---
 >  我々としては、高まりつつある
 >  気運を維持したい。そのために
-As for us, we want to keep the momentum building. That’s why
+We want to keep that momentum building. That’s why
 ---
 >  各地の活動を支援しているのだ
 >  君が守ってくれた帝国の
-we’re supporting movements everywhere. That Imperial
+we’re supporting resistance efforts everywhere. That Imperial
 ---
 >  試作機、開発コードは
 >  ソルデファーというが、あれを帝国から
-prototype you protected, its development code is Soldifar, and
+prototype you protected, development code Soldifar,
 ---
 >  奪取したのも、その一環でな。
 >  反帝国の抵抗運動の
-seizing it from the Empire was part of that effort. It’s a machine
+we seized it from the Empire as part of that effort. It’s a machine
 ---
 >  象徴とできる機体だ」
-that can serve as a symbol of the anti-Imperial resistance.”
+that can become a symbol of the resistance against the Empire.”
 
 @17615 Ark · アーク（本话主角）
 > 「……そのために、
@@ -766,20 +766,20 @@ that can serve as a symbol of the anti-Imperial resistance.”
 # 审校：全局：弯撇号／弯引号
 > 「理由の一つではあるだろうが、
 >  ……違うな」
-“It may be one of the reasons, but... no, that’s not it.”
+“It may be one reason, but... no, I don’t think so.”
 
 @17617 Ark · アーク（本话主角）
 > 「……なんで……いいきれるんです」
-“...How can you... say that so surely?”
+“...How can you... be so sure?”
 
 @17618 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
 > 「理由は君が口にしている
-“The reason is what you just said.
+“You said it yourself.
 ---
 >  ゲリラが潜伏し、その
 >  支持者が多かったのだろう?
-Guerrillas were hiding there, and they had many supporters, didn’t they?
+Guerrillas were hiding there, and they had plenty of supporters, didn’t they?
 ---
 >  帝国軍はそういう場所を
 >  つぶしにかかっているのだ」

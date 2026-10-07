@@ -14,7 +14,7 @@
 
 @17974 Roux · ルー
 > 「これです。どうぞ」
-“Here it is. Please, go ahead.”
+“Here you are.”
 
 @17975 Banjo · 万丈
 > 「ありがとう。…………」
@@ -28,17 +28,17 @@
 @17977 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「知らん。俺に聞くなよ」
-“Beats me. Don’t ask me.”
+“Beats me. Why ask me?”
 
 @17978 Garrison · ギャリソン
 # 审校：合并：冲突人工取舍
 > 「地球解放戦線機構、
 >  つまり、
-“L.I.F.E. is short for the Liberation Front of the Earth...
+“It comes from the Liberation Front of the Earth...
 ---
 >  Liberation Front of
 >  the Earthの略称ですな
-that is, the Liberation Front of the Earth.
+L-I-F-E, taken from the initials.
 ---
 >  スタッフの中でも特に
 >  実働部隊で好まれる
@@ -55,17 +55,17 @@ name, especially in the combat units.”
 # 审校：全局：弯撇号／弯引号
 > 「カラバにいるくせに、甲児くんたち
 >  の方が知らなすぎるのよ」
-“You’re with Karaba, and yet you two know even less than anyone.”
+“You’re part of Karaba, and you two know way too little.”
 
 @17981 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「そんなもの知らなくとも
 >  戦いに支障はない」
-“Not knowing that doesn’t get in the way of fighting.”
+“You don’t need to know that to fight.”
 
 @17982 Koji · 甲児
 > 「まったくだぜ」
-“Exactly.”
+“Damn right.”
 
 @17983 Sayaka · さやか
 > 「……もう」
@@ -75,21 +75,21 @@ name, especially in the combat units.”
 # 审校：全局：弯撇号／弯引号
 > 「あなたって、ほんと無知ね。
 >  地球解放戦線機構……
-“You really are clueless. L.I.F.E. is short for the Liberation Front of the Earth...
+“You really are clueless. It comes from the Liberation Front of the Earth...
 ---
 >  つまり、Liberation Front
 >  of the Earthの略称よ
-that is, the Liberation Front of the Earth.
+LIFE, from the initials.
 ---
 >  スタッフの中でも特に実働部隊
 >  で好まれる呼び方だわ」
-Among the staff, it’s the preferred name, especially in the combat units.”
+It’s what the staff call it, especially the combat units.”
 
 @17985 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「ちぇっ、無知はないだろう、
 >  無知は」
-“Tch, clueless is a bit much, don’t you think?”
+“Tch, ‘clueless’ is a bit harsh, isn’t it?”
 
 @17986 Sayaka · さやか
 # 审校：can't help it 日语腔
@@ -111,31 +111,31 @@ Among the staff, it’s the preferred name, especially in the combat units.”
 # 审校：全局：弯撇号／弯引号
 > 「ええ。そのために、このままこちらに
 >  合流して行動するように、
-“Yes. I’ve been instructed to join up with you here and operate together,
+“Yes. In fact, I’ve been told to join up with you and stay on.
 ---
 >  との指示を受けています。私の
 >  ジェガンも運び込んでもらってますから」
-so that’s what I’m doing. My Jegan’s been brought in as well.”
+My Jegan’s already been brought in, too.”
 
 @17990 Koji · 甲児
 > 「その、なんたら将軍っていうのは
 >  なんて言って来たんだ?」
-“So what did that general guy have to say?”
+“So what did General Whatshisname say?”
 
 @17991 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「コロニーのM作戦を
 >  キャッチしたので
-“He says they’ve caught wind of the colonies’ Operation M,
+“He says they’ve picked up word of the colonies’ Operation M,
 ---
 >  その実態調査に協同で
 >  あたりたいと言ってきている
-and he wants us to work together to investigate what’s really going on.
+and he wants us to investigate it jointly.
 ---
 >  地球解放戦線は
 >  この地域をカバーしていないからね」
-The Liberation Front of the Earth doesn’t cover this region, after all.”
+The Liberation Front of the Earth doesn’t cover this region, you see.”
 
 @17992 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -145,11 +145,11 @@ The Liberation Front of the Earth doesn’t cover this region, after all.”
 ---
 >  思われる計画で、簡単に言うと
 >  流星に偽装した新兵器を
-to be carrying out. Simply put, they’re dropping new weapons disguised as
+to be carrying out. Basically, they drop new weapons disguised as
 ---
 >  地球へ投下して、破壊活動
 >  をさせようっていうものらしいわ」
-meteors onto Earth to carry out acts of destruction.”
+meteors onto Earth and use them to wreak havoc.”
 
 @17993 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -166,7 +166,7 @@ but even so, that’s all the intel they can get?”
 # 审校：it can't be helped
 > 「我々が把握しているのはコロニーの
 >  ごく一部だけですからね。帝国の
-“We only have a grasp on a tiny portion of the colonies. The Empire’s
+“We only have contact with a tiny fraction of the colonies. The Empire’s
 ---
 >  監視が厳しくてコロニー間の
 >  連絡もほとんどとれないし、
@@ -180,10 +180,10 @@ The Operation M group is completely separate from us, so there’s not much we c
 # 审校：全局：弯撇号／弯引号
 > 「確かに、今後の活動を考えれば
 >  敵か味方かだけでも確認して
-“Indeed. Considering our future operations, we’d at least like to confirm
+“Indeed. With our future operations in mind, we would at least like to know
 ---
 >  おきたいところですな」
-whether they’re friend or foe.”
+whether they are friend or foe.”
 
 @17996 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -207,11 +207,11 @@ so I’m sure they’ll be on our side.”
 # 审校：全局：弯撇号／弯引号
 > 「そうだといいんだけど。宇宙は
 >  地上以上に混乱しているって
-“I hope so. They say space is even more chaotic than the surface.
+“I hope so. They say space is in even worse chaos than down here.
 ---
 >  いう話だしね。結局、調査には
 >  いくんでしょ?」
-In the end, you’re going to investigate, aren’t you?”
+Anyway, you’re going to investigate, right?”
 
 @17999 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -239,11 +239,11 @@ step up their space surveillance.”
 @18002 Garrison · ギャリソン
 > 「万丈さま、ほぼ同時に大気圏
 >  へ突入すると思われる
-“Master Banjo, six meteor-like objects have been confirmed,
+“Master Banjo, six objects that look like meteors have been spotted,
 ---
 >  隕石らしきものが6つ
 >  確認されたようです」
-and they appear to be entering the atmosphere almost simultaneously.”
+apparently due to enter the atmosphere almost simultaneously.”
 
 @18003 Banjo · 万丈
 > 「6つもか。よし、一番近いやつは
@@ -264,7 +264,7 @@ and they appear to be entering the atmosphere almost simultaneously.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ。この距離では落下には
 >  間に合わないが、すぐ出よう」
-“Yeah. At this distance we won’t make it in time for the landing, but let’s head out now.”
+“Yeah. From this distance we won’t make it before it lands, but let’s head out now.”
 
 @18007 Brad · ブラッド（按段落 3DD3）
 > 「わかった。{PartnerName}……
@@ -286,13 +286,13 @@ and they appear to be entering the atmosphere almost simultaneously.”
 # 审校：全局：弯撇号／弯引号
 > 「いよいよね。
 >  一体、何が落ちてくるのかしら」
-“It’s finally time. I wonder what’s going to fall.”
+“This is it. I wonder what’s going to come down.”
 
 @18011 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
 > 「さぁてね。でも万丈、この距離じゃ
 >  落下には間に合わないわよ」
-“Who knows. But Banjo, at this distance we won’t make it in time for the landing.”
+“Who knows. But Banjo, from this distance we won’t make it before it lands.”
 
 @18012 Banjo · 万丈
 # 审校：can't be helped
@@ -304,7 +304,7 @@ and they appear to be entering the atmosphere almost simultaneously.”
 # 审校：全局：弯撇号／弯引号
 > 「ここが落下地点だな。
 >  ……やはり移動した後か」
-“This is the landing site. ...So it’s already moved on.”
+“So this is where it landed. ...Looks like it’s already moved on.”
 
 @18014 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -324,20 +324,20 @@ came falling down from the sky?”
 # 审校：全局：弯撇号／弯引号
 > 「違うわよ。落下した何かと
 >  モビルスーツの部隊が接触したって
-“No, that’s not it. I bet whatever fell down
+“No, that’s not it. I bet whatever came down
 ---
 >  ことじゃないの」
-came into contact with a Mobile Suit unit.”
+ran into a Mobile Suit unit.”
 
 @18017 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「そういうこと。残骸がない以上は
 >  敵に遭遇して撃破されたとは
-“That’s right. With no wreckage left behind, I doubt they were
+“That’s right. With no wreckage, I doubt they ran into the enemy
 ---
 >  考えられないな。捕獲されたのか、
 >  仲間と合流したのか……」
-found by the enemy and destroyed. Either they were captured, or they linked up with allies...”
+and were destroyed. Either they were captured, or they met up with allies...”
 
 @18018 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -352,7 +352,7 @@ found by the enemy and destroyed. Either they were captured, or they linked up w
 @18020 Garrison · ギャリソン
 > 「その付近の帝国軍基地で
 >  戦闘が行われている模様です
-“It appears fighting is underway at the Imperial base nearby.
+“It appears there is fighting at an Imperial base in that area.
 ---
 >  お気をつけて」
 Please be careful.”
@@ -373,7 +373,7 @@ Please be careful.”
 # 审校：“我不会说要你们的命”直译
 > 「武器を捨てて投降しろ。
 >  命まで奪うとは言わない」
-“Throw down your weapons and surrender. I’m not asking for your lives.”
+“Throw down your weapons and surrender. I have no wish to take your lives.”
 
 @18024 Specials · スペシャルズ
 # 审校：全局：弯撇号／弯引号
@@ -384,11 +384,11 @@ Please be careful.”
 # 审校：全局：弯撇号／弯引号
 > 「こちらカトル、隊長機を破壊した
 >  これより敵基地をせん滅する
-“This is Quatre. I’ve destroyed the commander’s unit. From here I’ll wipe out the enemy base.
+“This is Quatre. Enemy commander’s unit destroyed. Proceeding to wipe out the enemy base.
 ---
 >  ……言ったよ、
 >  僕は投降しろって……」
-...I told you, I said surrender...”
+...I did tell you to surrender...”
 
 @18026 Rasid · ラシード
 # 审校：As expected of you
@@ -404,7 +404,7 @@ Please be careful.”
 ---
 >  M作戦で降下したのは
 >  あのガンダムタイプか?」
-Was that Gundam type the one that descended in Operation M?”
+Is that Gundam type what came down in Operation M?”
 
 @18028 Koji · 甲児
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
@@ -428,7 +428,7 @@ Was that Gundam type the one that descended in Operation M?”
 ---
 >  帝国軍と交戦している以上、
 >  敵とは思いたくないが?」
-Since you’re fighting the Imperial forces, I’d rather not take you for an enemy. Am I wrong?”
+Since you’re fighting the Imperial forces, I’d rather not think of you as an enemy.”
 
 @18032 Quatre · カトル
 # 审校：全局：弯撇号／弯引号
@@ -442,7 +442,7 @@ It’s true they’re not my target... but
 ---
 >  味方と判断するには
 >  情報が少なすぎる)
-there’s too little information to judge them as allies.)
+I don’t know enough yet to call them allies.)
 
 @18033 Quatre · カトル
 # 审校：全局：弯撇号／弯引号
@@ -460,25 +460,25 @@ Please don’t get in my way.”
 @18034 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「了解した。邪魔はしないさ
-“Understood. I won’t get in your way.
+“Understood. We won’t get in your way.
 ---
 >  みんな、
 >  僕たちも基地を攻撃するぞ」
-Everyone, we’ll attack the base too.”
+Everyone, we’re attacking the base too.”
 
 @18035 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「あの連中に協力するのか!?」
-“You’re going to cooperate with those guys?!”
+“We’re teaming up with those guys?!”
 
 @18036 Banjo · 万丈
 # 审校：“基地之一”“有效利用”生硬
 > 「結果的には、さ。帝国軍の
 >  基地の1つをせん滅するチャンスだ
-“In effect, yes. This is our chance to wipe out one of the Imperial bases.
+“In effect, yes. This is our chance to take out an Imperial base.
 ---
 >  有効に利用したい」
-I want to make good use of it.”
+Let’s make the most of it.”
 
 @18037 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -506,16 +506,16 @@ I want to make good use of it.”
 @18041 Rasid · ラシード
 # 审校：Rasid's address for Quatre should be “Master Quatre” per his address card, not “Lord Quatre”.
 > 「いいんですかい、カトル様」
-“Is that all right, Master Quatre?”
+“You sure about this, Master Quatre?”
 
 @18042 Quatre · カトル
 # 审校：全局：弯撇号／弯引号
 > 「かまわないよ。こちらにしてもムダな
 >  損害を出さずにすめば
-“It’s fine. If it means we can avoid needless losses on our side,
+“It’s fine. If we can avoid needless losses on our side,
 ---
 >  それにこしたことはない」
-then all the better.”
+so much the better.”
 
 @18043 Quatre · カトル
 > 「くっ、しまった……」
@@ -525,10 +525,10 @@ then all the better.”
 # 审校：全局：弯撇号／弯引号
 > 「カトル様!? どうやらこれ以上は
 >  無理そうですな
-“Master Quatre?! It seems we can’t hold out any longer.
+“Master Quatre?! Looks like we can’t hold out any longer.
 ---
 >  ここは撤退しましょう、カトル様」
-Let’s retreat here, Master Quatre.”
+Let’s fall back, Master Quatre.”
 
 @18045 Quatre · カトル
 # 审校：To you of Karaba 不地道
@@ -565,38 +565,38 @@ I pray we won’t be enemies the next time we meet.”
 @18049 Banjo · 万丈
 # 审校：For this time 别扭
 > 「今回は、これでいいさ」
-“This time, that’s fine.”
+“That’s fine, for now.”
 
 @18050 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
 > 「そうね……そう祈りたいわ、アタシも」
-“Yes... I’d like to pray for that too.”
+“Yes... I pray for that as well.”
 
 @18051 Mash · マッシュ
 > 「基地は壊滅のようだな」
-“Looks like the base has been annihilated.”
+“Looks like the base has been wiped out.”
 
 @18052 Ortega · オルテガ
 # 审校：全局：弯撇号／弯引号
 > 「なに、奴らの足止めをしてくれたと
 >  考えればよかろう」
-“What’s the harm? Just think of it as them buying us time.”
+“So what? Think of it as them buying us time.”
 
 @18053 Mash · マッシュ
 # 审校：全局：弯撇号／弯引号
 > 「なら、連中をつぶさんと、基地の
 >  連中に申しわけがたたんな」
-“Then if we don’t crush those guys, we’ll have no excuse to give the folks back at base.”
+“Then we’d better crush that lot, or we’ll have let down the men at that base.”
 
 @18054 Gaia · ガイア
 # 审校：rare treat / using that 不通
 > 「オルテガ、マッシュ、せっかくの
 >  特注装備だ。使い勝手を
-“Ortega, Mash, we didn’t get that custom gear for nothing.
+“Ortega, Mash, we’ve got that custom gear, let’s put it to use.
 ---
 >  整備兵に知らせてやるためにも、
 >  チャンスがあればあれをやるぞ」
-To show the mechanics how it handles, if we get the chance, we’re pulling that move.”
+If we get the chance, we’re pulling that move, so we can tell the mechanics how it handles.”
 
 @18055 Mash · マッシュ
 # 审校：全局：弯撇号／弯引号
@@ -616,18 +616,18 @@ To show the mechanics how it handles, if we get the chance, we’re pulling that
 # 审校：Rasid's address for Quatre should be “Master Quatre” per his address card, not “Lord Quatre”.
 > 「カトル様、どうやら新手のようですな
 >  どうしますか?」
-“Master Quatre, it seems fresh enemy units have arrived. What shall we do?”
+“Master Quatre, looks like enemy reinforcements. What do we do?”
 
 @18059 Quatre · カトル
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ラシード→Rasid
 > 「さすがに対応が早いね。ラシード、
 >  僕たちは退きましょう
-“They really are quick to respond. Rasid, we’re pulling back.
+“They’re quick to respond, I’ll give them that. Rasid, let’s pull back.
 ---
 >  最初の目的は達成しました。
 >  長居は無用です」
-Our initial objective is complete. There’s no need to linger.”
+We’ve achieved our first objective. There’s no point staying.”
 
 @18060 Rasid · ラシード
 # 审校：Rasid's address for Quatre should be “Master Quatre” per his address card, not “Lord Quatre”.
@@ -667,7 +667,7 @@ We’ll crush them with everything we’ve got.”
 # 审校：全局：弯撇号／弯引号
 > 「ひゅーっ、いうじゃないか
 >  そういうことなら話は別だ
-“Whoa, now that’s more like it. If that’s how it is, that’s a different story.
+“Whoa, now you’re talking. Well, if that’s how it is, it’s a whole different story.
 ---
 >  さぁ来やがれ!」
 Come on, bring it!”
@@ -676,7 +676,7 @@ Come on, bring it!”
 # 审校：全局：弯撇号／弯引号
 > 「ちょっと、待ちなさいよ!
 >  ねえ、追わなくていいの?」
-“Hey, wait a minute! Hey, shouldn’t we go after them?”
+“Hey, wait a minute! Shouldn’t we go after them?”
 
 @18066 Manami · マナミ（按段落 3DD4）
 > 「だめよ! スペシャルズを前にしながら
@@ -687,7 +687,7 @@ Come on, bring it!”
 # 审校：全局：弯撇号／弯引号
 > 「なんだよ突然。
 >  一体どうしたっていうんだ?」
-“What’s with you all of a sudden? What on earth’s going on?”
+“What’s with you all of a sudden? What’s gotten into you?”
 
 @18068 Manami · マナミ（按段落 3DD4）
 # 审校：I can't forgive
@@ -706,7 +706,7 @@ But the Specials are far worse!”
 @18070 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「みんな、敵の新手を叩くぞ!」
-“Everyone, we’re hitting the enemy’s new units!”
+“Everyone, let’s hit the new enemy units!”
 
 @18071 Mash · マッシュ
 > 「何機か逃げたようだな」
@@ -728,11 +728,11 @@ mopping up the Resistance.”
 ---
 >  オルテガ、マッシュ、せっかくの
 >  特注装備だ。使い勝手を
-Ortega, Mash, we didn’t get that custom gear for nothing. To show the mechanics
+Ortega, Mash, we’ve got that custom gear, let’s put it to use. If we get the chance,
 ---
 >  整備兵に知らせてやるためにも、
 >  チャンスがあればあれをやるぞ」
-how it handles, if we get the chance, we’re pulling that move.”
+we’re pulling that move, so we can tell the mechanics how it handles.”
 
 @18074 Mash · マッシュ
 # 审校：全局：弯撇号／弯引号
@@ -805,54 +805,54 @@ My target was the spaceport, but I’ll wipe out everything.”
 # 审校：全局：弯撇号／弯引号
 > 「各地で確認された
 >  ガンダムタイプは
-“The Gundam-types confirmed in various locations,
+“The Gundam types sighted in various locations
 ---
 >  先ほどのものも合わせて
 >  全部で5体ですな
-including the one from earlier, total five in all.
+number five in all, including the one from earlier.
 ---
 >  かなりの規模の破壊活動が
 >  確認されておりますが
-We’ve confirmed a considerable scale of destruction,
+Considerable destruction has been reported,
 ---
 >  うち一体はスペシャルズの
 >  攻撃によって海中に落下し
-but one of them fell into the sea from the Specials’ attack,
+but one of them was shot down into the sea by the Specials,
 ---
 >  パイロットの生存確率は
 >  かなり低いようです」
-and the pilot’s chances of survival appear quite low.”
+and the pilot’s chances of survival appear quite slim.”
 
 @18086 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「それがすべてM作戦で降下してきた
 >  のか。敵には、したくないものだね
-“So they all descended in Operation M. I wouldn’t want them as enemies.
+“So they all came down in Operation M. I wouldn’t want them as enemies.
 ---
 >  僕らが会ったのは、まだ少年だった
 >  が、冷静な判断力を持っていた
-The one we met was still a boy, but he had a calm head on him.
+The one we met was just a boy, but he had a cool head on him.
 ---
 >  1人減ったとして、あとの3人は
 >  いったい……
-With one gone, what in the world are the other three...
+With one gone, what are the other three up to...
 ---
 >  ちょっと待ってくれ、ギャリソン。
 >  確認されたのは5ヶ所だけなのか?
-Hold on a second, Garrison. Only five locations were confirmed?
+Hold on, Garrison. Only five locations were confirmed?
 ---
 >  もう1つは?」
-What about the other one?”
+What about the sixth?”
 
 @18087 Garrison · ギャリソン
 # 审校：全局：弯撇号／弯引号
 > 「落下は確認されておるのですが、
 >  その後、なんの情報もないようです
-“Its descent was confirmed, but there’s been no information since.
+“Its landing was confirmed, but there has been no word since.
 ---
 >  帝国も発見できなかった
 >  ようですな」
-It seems even the Empire couldn’t find it.”
+It seems even the Empire could not find it.”
 
 @18088 Banjo · 万丈
 > 「そう……か……気になるな……。
@@ -869,7 +869,7 @@ Oh, and one more thing.”
 @18089 Garrison · ギャリソン
 > 「海中に沈んだガンダムタイプの
 >  探査状況ですな」
-“You mean the search status of the Gundam-type that sank into the sea.”
+“You wish to know how the search for the Gundam type that sank into the sea is going.”
 
 @18090 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -880,7 +880,7 @@ Oh, and one more thing.”
 # 审校：全局：弯撇号／弯引号
 > 「あなた、ヒイロといったわね。
 >  こんなところで何をしているの。教えて
-“You... your name was Heero, wasn’t it? What are you doing in a place like this? Tell me.
+“You said your name was Heero. What are you doing here? Tell me.
 ---
 >  そして、あなたは何者?」
 And who are you?”
@@ -892,11 +892,11 @@ And who are you?”
 @18093 Relena · リリーナ
 > 「わたくし知りたいの、
 >  あなたのことを
-“I want to know about you.
+“I want to know who you are.
 ---
 >  なぜパイロットスーツのようなものを着て
 >  海岸に倒れていたのか
-Why were you lying on the beach wearing something like a pilot suit?
+Why were you lying on the beach in what looked like a pilot suit?
 ---
 >  話しなさい、ヒイロ」
 Answer me, Heero.”
@@ -905,7 +905,7 @@ Answer me, Heero.”
 # 审校：全局：弯撇号／弯引号
 > 「リリーナ・ドーリアン……
 >  A級市民だったな
-“Relena Darlian... an A-class citizen, weren’t you.
+“Relena Darlian... an A-class citizen, as I recall.
 ---
 >  深入りしすぎた。
 >  お前を、殺す」
@@ -919,7 +919,7 @@ You’ve pried too deep. I’ll kill you.”
 # 审校：全局：弯撇号／弯引号
 > 「こういう場合、どう見たって
 >  お前の方が悪者だろ
-“In a case like this, no matter how you look at it, you’re the bad guy.
+“Any way you look at it, you’re the bad guy here.
 ---
 >  ケガはないかい、お嬢さん」
 Are you hurt, miss?”
@@ -927,7 +927,7 @@ Are you hurt, miss?”
 @18097 Relena · リリーナ
 > 「大丈夫、ヒイロ? もうやめて。
 >  この人に、なんのうらみがあるんです」
-“Are you all right, Heero? Stop it already. What grudge do you have against this man?”
+“Are you all right, Heero? Please, stop. What grudge could you have against this man?”
 
 @18098 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -939,7 +939,7 @@ Hey, hey, hold on a second.
 ---
 >  俺の方が悪者になっちまってる
 >  じゃねぇか」
-Now I’m the one who’s turned into the bad guy.”
+How did I end up the bad guy here?”
 
 @18099 Heero · ヒイロ
 > 「ん……?」
@@ -959,15 +959,15 @@ Now I’m the one who’s turned into the bad guy.”
 # 审校：同 19091
 > 「おっと、みちゃいけねぇ。お嬢さん、
 >  なんかわけありみたいだけど、すぐこっから
-“Whoa, that’s not for your eyes. Miss, you seem to have some kind of story, but you’d best get out of here right away.
+“Whoa, you didn’t see that. Miss, looks like you’ve got your reasons, but for your own good, get out of here now.
 ---
 >  立ち去るのが身のためだ。
 >  この時代に立派な身なりの
-Even if you are a well-dressed A-class citizen in this day and age,
+Even if you’re a well-dressed A-class citizen in times like these,
 ---
 >  A級市民とはいえ、お嬢さんを
 >  殺すのは忍びない」
-I can’t bring myself to kill a girl like you.”
+I’d hate to have to kill a girl like you.”
 
 @18103 Relena · リリーナ
 > 「ヒイロ!?」
@@ -981,35 +981,35 @@ I can’t bring myself to kill a girl like you.”
 @18105 Relena · リリーナ
 > (なんなの!?
 >  一体なんなの、この人たち!?)
-(What is this?! Just what is wrong with these people?!)
+(What is going on?! Who on earth are these people?!)
 
 @18106 Banjo · 万丈
 > 「なんだって!? 本当なのか、アラン」
-“What did you say?! Is it true, Alan?”
+“What?! Is that true, Alan?”
 
 @18107 Alan · アラン
 # 审校：第三页生硬
 > 「信用できる情報だ
 >  占領軍に新司令官として
-“It’s reliable information. As the new commander of the occupation army,
+“This is reliable intel. Gresco’s son is apparently
 ---
 >  グレスコの息子が
 >  赴任してくるらしい
-it seems Gresco’s son is being sent to take up the post.
+being posted here as the new commander of the occupation army.
 ---
 >  我々としては可能ならば
 >  この男を始末したい
-If we can, we’d like to take this man out.
+If possible, we’d like to eliminate him.
 ---
 >  そうすれば帝国軍の士気は
 >  著しく低下するはずだ」
-If we do, the Imperial Army’s morale should drop dramatically.”
+That should deal a serious blow to the Imperial Army’s morale.”
 
 @18108 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「確かに。しかし帝国も
 >  それほど甘くは、ないだろう」
-“True enough. But the Empire won’t be that easy, either.”
+“True. But the Empire won’t make it that easy.”
 
 @18109 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -1018,11 +1018,11 @@ If we do, the Imperial Army’s morale should drop dramatically.”
 ---
 >  だが、これほどの機会は
 >  そうそうないのも事実だ
-But it’s also a fact that an opportunity like this doesn’t come often.
+But it’s also true that chances like this don’t come along often.
 ---
 >  できれば現地に行って
 >  機会を、みてほしいな」
-If possible, I’d like you to go there and look for a chance.”
+If you can, I’d like you to go there and see if an opening presents itself.”
 
 @18110 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1059,21 +1059,21 @@ If it goes well, we might settle this all at once.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、すまない。お前たちを見ていると
 >  昔の知り合いを思い出してな
-“No, forgive me. Watching you all reminds me of an old acquaintance.
+“No, sorry. Watching you reminds me of someone I used to know.
 ---
 >  で、どうする万丈。現地の
 >  レジスタンスたちにも話はつけてあるが」
-So, what will it be, Banjo? I’ve already arranged things with the local resistance.”
+So, what’ll it be, Banjo? I’ve already talked to the local resistance.”
 
 @18115 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「わかった、
 >  やるか、やらないかは別として
-“Got it. Whether we do it or not,
+“Got it. Whether we go through with it or not,
 ---
 >  とりあえず北米へいくとしよう。
 >  すぐに準備する」
-for now let’s head to North America. I’ll get us ready right away.”
+let’s head to North America for now. I’ll get us ready right away.”
 
 @18116 Brad · ブラッド（按段落 3DD3）
 > 「よぉし、おもしろくなってきたぜ!」
@@ -1090,11 +1090,11 @@ for now let’s head to North America. I’ll get us ready right away.”
 @18119 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
 > 「アタシは賛成
-“I’m in favor.
+“I’m in.
 ---
 >  ニューヨークには知り合いも
 >  いたはずだしね」
-I should have acquaintances in New York, after all.”
+I should still have some friends in New York.”
 
 @18120 Koji · 甲児
 > 「オレもだ
@@ -1107,58 +1107,58 @@ If it goes well, we might settle this all at once.”
 @18121 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
 > 「あまり気は進まないわね
-“I’m not too keen on it, honestly.
+“I am not very keen on it.
 ---
 >  あの辺りは帝国の本拠地と
 >  いってもいいわ
-That area is practically the Empire’s home base.
+That area is practically the Empire’s home ground.
 ---
 >  まだあたしたちに、それだけの
 >  準備が整っているとは
-I don’t think we’re ready for
+I do not think we are ready for
 ---
 >  思えないけど……
 something like that yet...
 ---
 >  でも、それだけ意味が
 >  あるってことは認めるわ」
-But I’ll admit there’s that much to be gained from it.”
+But I admit it would mean a great deal.”
 
 @18122 Garrison · ギャリソン
 # 审校：管家口吻应避免缩写，将“it would be a bit tough”改为更正式的表达，并将“There's”改为“There is”。
 # 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「確かに、いまの戦力では
 >  少々きつうございますな
-“Indeed, with our current forces it would be a bit difficult.
+“Indeed, our current strength would be stretched rather thin.
 ---
 >  しかし北米大陸でも
 >  反帝国運動は
-However, the anti-Imperial movement is showing
+However, the anti-Imperial movement is gaining
 ---
 >  盛り上がりをみせております
-growing momentum on the North American continent as well.
+momentum on the North American continent as well.
 ---
 >  現地のカラバと、
 >  地球解放戦線機構からも
-There is a strong chance we can obtain cooperation from the local Karaba
+There is a good chance we could gain the support of the local Karaba
 ---
 >  協力が得られる可能性は
 >  大いにありますな」
-and from the Liberation Front of the Earth as well.”
+and the Liberation Front of the Earth.”
 
 @18123 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「よし、いこう。
 >  このところ帝国も
-“All right, let’s go. Lately the Empire has been
+“All right, let’s go. Lately the Empire has gotten
 ---
 >  十分対応できる体制を
 >  整えてきている
-building up a system that can respond well enough.
+much better at responding to us.
 ---
 >  多少の強攻策も
 >  いいかもしれない」
-A bit of a hard push might not be a bad idea.”
+A bolder move might be just what we need.”
 
 @18124 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -1171,4 +1171,4 @@ I’ll arrange things with the local resistance.
 ---
 >  戦力の増強も急がせる。
 >  なんとかうまくやってくれ」
-I’ll hurry the reinforcements along too. Make it work somehow.”
+I’ll make sure reinforcements get there quickly. Do what you can.”

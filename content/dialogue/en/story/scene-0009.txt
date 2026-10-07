@@ -4,20 +4,20 @@
 # 审校：全局：弯撇号／弯引号
 > 「新司令官のル・カインか。
 >  一体、どんな人物なんだ?」
-“So Le Cain’s the new commander. Just what kind of man is he?”
+“Le Cain, the new commander... What sort of man is he?”
 
 @18193 Garrison · ギャリソン
 # 审校：管家口吻要求无缩写，将 I've 改为 I have。
 > 「さて。個人情報は
 >  入ってきておりませんが……
-“Well now. I have received no personal information on him, but...
+“Well now. I have no personal information on him, but...
 ---
 >  アラン様のお話ですと、我々に
 >  合流していただく方々が
-according to Lord Alan, the people joining up with us
+according to Lord Alan, the people who will be joining us
 ---
 >  よくご存じとか」
-know him quite well.”
+know him well.”
 
 @18194 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -36,7 +36,7 @@ Who are these people, anyway?”
 # 审校：全局：弯撇号／弯引号
 > 「なんでも3年前地球が侵略を
 >  受けた際にも
-“By all accounts, they’re the ones who fought the Empire
+“By all accounts, they are the ones who fought the Empire
 ---
 >  帝国と戦った方々だとか」
 when Earth was invaded three years ago.”
@@ -74,7 +74,7 @@ along with his comrades.”
 # 审校：全局：弯撇号／弯引号
 > 「3年もか。いまだに戦いつづけて
 >  いるんだ、期待できそうじゃないか」
-“Three whole years. They’re still fighting after all this time. Sounds promising, doesn’t it?”
+“Three whole years, and they’re still fighting. Sounds promising, doesn’t it?”
 
 @18202 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -94,7 +94,7 @@ along with his comrades.”
 @18205 Simone · シモーヌ
 > 「前に、火星の生き残りだって
 >  話はしたわよね?」
-“I told you before about the survivors from Mars, remember?”
+“Remember I told you I was a survivor from Mars?”
 
 @18206 Manami · マナミ（按段落 3DD4）
 > 「ええ」
@@ -103,7 +103,7 @@ along with his comrades.”
 @18207 Simone · シモーヌ
 > 「そのときアタシたちが助かった理由は
 >  エイジが、いてくれたからなの
-“The reason we made it out alive back then was because Eiji was there for us.
+“We only made it out alive back then because Eiji was there.
 ---
 >  アルバトロ・ナル・エイジ・アスカ……
 Albatro Null Eiji Asuka...
@@ -120,7 +120,7 @@ Half Earthling, half Gradosian from Imperial territory.”
 # 审校：全局：弯撇号／弯引号
 > 「たぶん、その仲間っていうのも
 >  アタシの知り合いだと思う
-“I think these comrades of his are probably people I know, too.
+“His comrades are probably people I know, too.
 ---
 >  アタシたちはみんな、エイジが
 >  いなかったら、生きてはいなかった」
@@ -135,11 +135,11 @@ None of us would be alive if it weren’t for Eiji.”
 # 审校：同 19121
 > (地球か……。私が来たからには、
 >  帝国に刃を向ける者たちも
-(Earth, is it... Now that I have come, those who would turn their blades on the Empire
+(So this is Earth... Now that I am here, those who turn their blades on the Empire
 ---
 >  私の足もとに血まみれの体を
 >  投げ出すことになろう)
-will end up sprawled bloody at my feet.)
+will throw their bloodied bodies at my feet.)
 
 @18212 Giura · ギウラ
 # 审校：精读：迎接上级到任的 ご苦労様です
@@ -150,7 +150,7 @@ will end up sprawled bloody at my feet.)
 # 审校：英文语序
 > 「そいつらか、
 >  使える地球人というのは」
-“So these are the useful Earthlings.”
+“So these are the Earthlings who might be of use.”
 
 @18214 Giura · ギウラ
 > 「はっ、ロアン・デミトリッヒと
@@ -160,10 +160,10 @@ will end up sprawled bloody at my feet.)
 @18215 Roanne · ロアン
 > 「お呼びいただき光栄です。
 >  私にできますことは、
-“It is an honor to be summoned. Whatever I can do for you,
+“It is an honor to be summoned. Whatever I can do,
 ---
 >  なんなりとお申し付けください」
-please command it without hesitation.”
+you need only command it.”
 
 @18216 Treize · トレーズ
 # 审校：全局：弯撇号／弯引号
@@ -177,10 +177,10 @@ on Your Excellency’s appointment.”
 @18217 Le Cain · ル・カイン
 > 「フッ、こういう地球人もいるか。
 >  よかろう。貴様たちはギウラとともに
-“Hmph, so Earthlings like these exist as well. Very well. You two, along with Giura,
+“Hmph, so there are Earthlings like these too. Very well. You two, together with Giura,
 ---
 >  私の就任パレードの準備をしろ」
-make preparations for my inauguration parade.”
+prepare for my inauguration parade.”
 
 @18218 Treize · トレーズ
 > 「閣下、ゲリラの間で不穏な
@@ -194,7 +194,7 @@ make preparations for my inauguration parade.”
 ---
 >  貴様らのするべきことは、
 >  そやつらを引きずり出すことだ
-What you are to do is drag them out into the open.
+Your task is to draw them out into the open.
 ---
 >  就任パレードの間にな」
 During my inauguration parade.”
@@ -205,7 +205,7 @@ During my inauguration parade.”
 “A splendid plan, Your Excellency. They are extremely short-sighted.
 ---
 >  必ずや出てくることでしょう」
-They will surely come out.”
+They will surely show themselves.”
 
 @18221 Garrison · ギャリソン
 > 「ふむ……これは、しかし……」
@@ -220,7 +220,7 @@ They will surely come out.”
 # 审校：全局：弯撇号／弯引号
 > 「実は新司令官の
 >  就任パレードの情報を
-“The truth is, I have obtained information about
+“As it happens, I have obtained information on
 ---
 >  入手したのですが……」
 the new commander’s inauguration parade, but...”
@@ -237,7 +237,7 @@ the new commander’s inauguration parade, but...”
 
 @18226 Garrison · ギャリソン
 > 「それが、どうもワナではないかと」
-“It seems to me it may well be a trap.”
+“I suspect it may well be a trap.”
 
 @18227 Banjo · 万丈
 > 「何故だい?」
@@ -246,18 +246,18 @@ the new commander’s inauguration parade, but...”
 @18228 Garrison · ギャリソン
 > 「まず各方面から一斉に
 >  情報が入り始めたことといい
-“For one thing, information began pouring in from every quarter all at once.
+“For one thing, information began pouring in from every quarter at once.
 ---
 >  また警備情報までもが
 >  そっくり流れている点といい
-For another, even the security details have been leaked wholesale.
+For another, even the security arrangements have leaked in their entirety.
 ---
 >  不信な点が多すぎるのですよ。
 >  さらに警備がこうも
-There are far too many suspicious points. And on top of that, the guard is so
+There is too much that does not add up. And with security this
 ---
 >  手薄とあっては……」
-thin that...”
+thin...”
 
 @18229 Banjo · 万丈
 > 「なるほど、クサイな。どう思う?」
@@ -267,21 +267,21 @@ thin that...”
 # 审校：全局：弯撇号／弯引号
 > 「どうもこうもない。もしそれが本当なら
 >  そいつは俺たちが
-“There’s nothing to think about. If it’s real, then that means he knew we were
+“Nothing to think about. If it’s real, then he knows we’re
 ---
 >  襲撃するつもりなのを知ってて
 >  ワザとそうしてるってことだろ?
-planning to raid it and set it up on purpose, right?
+planning to hit it and he’s doing this on purpose, right?
 ---
 >  こいつは明らかに俺たち
 >  地球人に対する挑戦だぜ」
-This is clearly a challenge to us Earthlings.”
+This is a clear challenge to us Earthlings.”
 
 @18231 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「やれるもんなら、やってみろってわけか。
 >  っきしょう、なんて奴だ」
-“So it’s a ‘come at me if you can,’ huh. Damn, what a guy.”
+“So it’s ‘come and get me if you can,’ huh? Damn, what a jerk.”
 
 @18232 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
@@ -291,12 +291,12 @@ This is clearly a challenge to us Earthlings.”
 @18233 Koji · 甲児
 > 「なにいってんだい、さやかさん。そこまで
 >  されて黙ってみてろってのか?」
-“What are you saying, Sayaka? Are you telling me to just sit back and watch after all that?”
+“What are you talking about, Sayaka? He goes that far, and we’re supposed to just sit back and watch?”
 
 @18234 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「そうだ。こいつは受けて立つべきだ」
-“That’s right. This is a challenge we should accept.”
+“That’s right. We should take him up on it.”
 
 @18235 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
@@ -308,7 +308,7 @@ This is clearly a challenge to us Earthlings.”
 # 审校：全局：弯撇号／弯引号
 > 「あからさまにワナと見せておいて
 >  襲撃を避けるつもりなのか
-“Are they showing us an obvious trap so we’ll avoid the raid,
+“Are they making the trap obvious so we’ll call off the raid,
 ---
 >  あるいは……」
 or else...”
@@ -316,40 +316,40 @@ or else...”
 @18237 Lawrence · ローレンス
 # 审校：ローレンス对シモーヌ说话，不应称“my lady”，且原文无呼语，去掉该称呼。
 > 「挑戦……でございますな」
-“A challenge... indeed.”
+“It is a challenge, then.”
 
 @18238 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
 > 「そうね。やれるものならやってみろ、
 >  というわけね」
-“That’s right. It’s a ‘come at us if you can,’ isn’t it.”
+“Yes. ‘Come and get me if you can,’ in other words.”
 
 @18239 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「どうするんだ?
-“What are we going to do?
+“So what do we do?
 ---
 >  だからって、はいそうですかと
 >  黙ってみてろっていうのかよ」
-Does that mean we’re supposed to just sit back and take it?”
+We can’t just say ‘oh, okay’ and sit back and watch, can we?”
 
 @18240 Banjo · 万丈
 # 审校：crushing his opening move 别扭
 > 「ル・カインか……大胆なことをする。
 >  だが、僕たちがこれから
-“Le Cain, huh... He’s being bold. But as we go on fighting from here,
+“Le Cain, huh... A bold move. But for the fight ahead of us,
 ---
 >  戦っていく上で、
 >  彼の出端をくじくのは
-blunting his first move will mean a great deal.
+stopping him in his tracks right at the start matters a great deal.
 ---
 >  重要な意味がある。アランもいって
 >  いたが、彼を倒すことができれば
-Alan said it too, but if we can defeat him,
+As Alan said, if we can defeat him,
 ---
 >  帝国に与える打撃は
 >  計り知れない」
-the blow dealt to the Empire will be immeasurable.”
+it’ll deal the Empire an immeasurable blow.”
 
 @18241 Reika · レイカ
 > 「じゃあ……」
@@ -364,7 +364,7 @@ the blow dealt to the Empire will be immeasurable.”
 @18243 Garrison · ギャリソン
 # 审校：ギャリソン对レイカ说话，不应称“my lord”，且原文无呼语，去掉该称呼。
 > 「そろそろ時間でございますな」
-“It is about time.”
+“It is nearly time.”
 
 @18244 Banjo · 万丈
 > 「来たぞ。みんな、準備はいいな」
@@ -387,7 +387,7 @@ the blow dealt to the Empire will be immeasurable.”
 @18248 Roux · ルー
 > 「あっけなさすぎる……
 >  やっぱり、おとりだわ」
-“That was far too easy... So he really was bait.”
+“That was far too easy... It was a decoy after all.”
 
 @18249 Beauty · ビューティ
 > 「ウッソーッ!
@@ -397,7 +397,7 @@ the blow dealt to the Empire will be immeasurable.”
 @18250 Reika · レイカ
 > 「あっけなさすぎるわ。
 >  やっぱり、おとりね」
-“That was far too easy. He really was bait.”
+“That was far too easy. So it was a decoy.”
 
 @18251 Garrison · ギャリソン
 # 审校：ギャリソン对ビューティ说话，不应称“my lord”，且原文无呼语，去掉该称呼。
@@ -422,15 +422,15 @@ We have been completely surrounded.”
 # 审校：第二三页直译
 > 「なるほど、ワナと知りつつ
 >  あえて出てきたというのか
-“I see, so you dared to come out knowing full well it was a trap.
+“I see, so you came out knowing full well it was a trap.
 ---
 >  地球人ごときが、
 >  こざかしい真似をする
-Mere Earthlings, playing at being clever.
+Mere Earthlings, playing clever.
 ---
 >  だが、その浅はかさを
 >  身をもって知ることになる」
-But you will learn just how shallow that was, the hard way.”
+But you will learn the price of your folly firsthand.”
 
 @18255 Le Cain · ル・カイン
 # 审校：全局机械：破折号→省略号/Foundation/撇号/Ciela
@@ -461,11 +461,11 @@ this alone is the one truth that brings forth an ideal world.”
 @18256 Le Cain · ル・カイン
 > 「私が地球に来たのは
 >  その原理に基づいて
-“I came to Earth based on that principle,
+“I came to Earth to establish true peace
 ---
 >  真の平和を確立するためだ。
 >  地球的なるものは一切捨てよ!
-to establish true peace. Cast aside everything Earthly!
+founded on that principle. Cast aside all things of Earth!
 ---
 >  我を信じよ 帝国を信じよ!」
 Believe in me! Believe in the Empire!”
@@ -474,21 +474,21 @@ Believe in me! Believe in the Empire!”
 # 审校：全局：弯撇号／弯引号
 > 「黙れ! この地球に
 >  僕たちがいるかぎり
-“Silence! As long as we are on this Earth,
+“Silence! As long as we stand on this Earth,
 ---
 >  かならず帝国の支配を
 >  打ち砕いてみせる!」
-we will surely crush the Empire’s rule!”
+we will crush the Empire’s rule, I promise you!”
 
 @18258 Le Cain · ル・カイン
 # 审校：全局：弯撇号／弯引号
 > 「フフフ、なかなか楽しませて
 >  くれそうだな
-“Heh heh heh, you look like you’ll be quite entertaining.
+“Heh heh heh, you may prove quite entertaining.
 ---
 >  ならばまず、ここでそれを
 >  見せてもらおうか」
-Then first, let me see it right here.”
+Then let us start by seeing it here.”
 
 @18259 Eiji · エイジ
 # 审校：全局：弯撇号／弯引号
@@ -525,7 +525,7 @@ Then first, let me see it right here.”
 
 @18265 Simone · シモーヌ
 > 「あらデビッド、よく生きてたわね」
-“Oh, David. So you managed to survive.”
+“Oh, David. So you’re still alive.”
 
 @18266 David · デビッド
 # 审校：全局：弯撇号／弯引号
@@ -539,7 +539,7 @@ Then first, let me see it right here.”
 ---
 >  フッ、お前とは必ず
 >  会えると思っていたぞ」
-Hmph, I knew I would meet you again for certain.”
+Hmph, I knew we would meet sooner or later.”
 
 @18268 David · デビッド
 # 审校：全局：弯撇号／弯引号
@@ -628,13 +628,13 @@ Ghh, my... my brain hurts.”
 # 审校：全局：弯撇号／弯引号
 > 「これはいけません。皆様方、
 >  ここは撤退いたしましょう」
-“This won’t do. Everyone, we should retreat here.”
+“This will not do. Everyone, let us withdraw from here.”
 
 @18280 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「くっ、確かにここは
 >  一旦ひくしかないようだね
-“Tch, it seems we really have no choice but to pull back for now.
+“Tch, looks like we have no choice but to pull back for now.
 ---
 >  みんな、ひきあげるぞ!」
 Everyone, we’re withdrawing!”
@@ -666,7 +666,7 @@ I like it! Hahahahahaha!!”
 ---
 >  だがこの程度で帝国に
 >  逆らおうなど、片腹痛いわ」
-But to defy the Empire with only this much... how laughable.”
+But defying the Empire with this much... laughable.”
 
 @18284 Reika · レイカ
 # 审校：同 L17，修正直译导致的生硬表达。
@@ -683,7 +683,7 @@ But to defy the Empire with only this much... how laughable.”
 # 审校：全局：弯撇号／弯引号
 > 「くっ、確かにここは
 >  一旦ひくしかないようだね
-“Tch, it seems we really have no choice but to pull back for now.
+“Tch, looks like we have no choice but to pull back for now.
 ---
 >  みんな、ひきあげるぞ!」
 Everyone, we’re withdrawing!”
@@ -727,7 +727,7 @@ I like it! Hahahahahaha!!”
 # 审校：全局：弯撇号／弯引号
 > 「ゴステロ! お前にやられるわけには
 >  いかない!」
-“Gosterro! I can’t afford to be beaten by you!”
+“Gosterro! I won’t lose to you!”
 
 @18293 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -751,7 +751,7 @@ I like it! Hahahahahaha!!”
 # 审校：全局：弯撇号／弯引号
 > 「お世話になります。
 >  アンナ・ステファニーです」
-“Thank you for having us. I’m Anna Stephanie.”
+“Thank you for taking us in. I’m Anna Stephanie.”
 
 @18297 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
@@ -762,7 +762,7 @@ I like it! Hahahahahaha!!”
 @18298 Banjo · 万丈
 > 「シモーヌ…… ルフラン侯爵家の
 >  ご令嬢かな?」
-“Simone... the young lady of the Reflann marquis family, is it?”
+“Simone... of the Reflann marquis family, perhaps?”
 
 @18299 David · デビッド
 > 「なんだ、知り合いか?」
@@ -772,7 +772,7 @@ I like it! Hahahahahaha!!”
 # 审校：全局：弯撇号／弯引号
 > 「違うわよ。アタシはこっちに来る前は
 >  ロームフェラの情報を
-“Not exactly. Before I came here, I was feeding Romefeller intelligence
+“No. Before I came here, I was passing Romefeller intel
 ---
 >  カラバに流してたのよ。直接お会い
 >  するのは初めてだわ」
@@ -781,7 +781,7 @@ to Karaba. This is the first time we’ve met in person.”
 @18301 Banjo · 万丈
 > 「君の情報には、ずいぶんと
 >  助けられた
-“Your information has helped us a great deal.
+“Your information was a big help to us.
 ---
 >  あらためて、お礼を言おう」
 Let me thank you properly.”
@@ -796,7 +796,7 @@ Let me thank you properly.”
 
 @18304 David · デビッド
 > 「シモーヌ、一体……!?」
-“Simone, what in the world...?!”
+“Simone, what the...?!”
 
 @18305 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
@@ -843,7 +843,7 @@ Let me thank you properly.”
 ---
 >  うぅっ……ごめんなさい
 >  ……やだ、みっともないわ」
-Ah... I’m sorry... no, I’m such a mess.”
+...I’m sorry... ugh, look at me, I’m a mess.”
 
 @18312 David · デビッド
 # 审校：精读：句意
@@ -853,17 +853,17 @@ Ah... I’m sorry... no, I’m such a mess.”
 
 @18313 Gresco · グレスコ
 > 「だいぶ派手に、やったそうだな?」
-“I hear you made quite a flashy mess of things?”
+“I hear you made quite a show of it.”
 
 @18314 Le Cain · ル・カイン
 > 「もうお耳に入りましたか」
-“Word has already reached you, then.”
+“So word has already reached you.”
 
 @18315 Gresco · グレスコ
 # 审校：全局：弯撇号／弯引号
 > 「お前を呼び寄せた理由は、
 >  わかっておろうな」
-“You know why I summoned you, don’t you.”
+“You know why I summoned you, I trust.”
 
 @18316 Le Cain · ル・カイン
 > 「心得ております、父上」
@@ -878,14 +878,14 @@ Ah... I’m sorry... no, I’m such a mess.”
 # 审校：全局：弯撇号／弯引号
 > 「……!? 父上もかわられましたな。
 >  やはり3年も地球におられると、
-“...?! So you’ve changed too, Father. I suppose after three years on Earth,
+“...?! You too have changed, Father. Do three years on Earth
 ---
 >  地球病とやらにかかるのですかな」
-you’ve caught this so-called Earth disease.”
+give one this so-called Earth sickness?”
 
 @18319 Gresco · グレスコ
 > 「地球病?」
-“Earth disease?”
+“Earth sickness?”
 
 @18320 Le Cain · ル・カイン
 > 「将軍どもが噂しております。
@@ -905,7 +905,7 @@ needless leniency will only make the Earthlings look down on us.”
 # 审校：全局：弯撇号／弯引号
 > 「わかろうとも思いません。父上、
 >  いいかげんに目をさまされたらどうです」
-“I have no wish to understand. Father, why don’t you wake up already?”
+“I have no wish to. Father, is it not time you woke up?”
 
 @18323 Le Cain · ル・カイン
 # 审校：全局：弯撇号／弯引号
@@ -915,7 +915,7 @@ needless leniency will only make the Earthlings look down on us.”
 ---
 >  父上はご自分が地球の空気
 >  に感傷的になっていることを
-You know full well that you’ve grown sentimental from Earth’s air.
+You know full well the Earth’s air has made you sentimental.
 ---
 >  ご存じなのだ。
 >  ですから私を招いたのですね
@@ -949,7 +949,7 @@ to His Excellency.”
 @18327 Treize · トレーズ
 > 「さすがだね。そのまま進めてくれ。
 >  ところで、レディ・アン」
-“Just as I expected. Carry on as planned. By the way, Lady Une.”
+“Excellent. Proceed as planned. By the way, Lady Une.”
 
 @18328 Lady · レディ
 > 「はい」
@@ -959,7 +959,7 @@ to His Excellency.”
 # 审校：全局：弯撇号／弯引号
 > 「ドーリアン氏なのだが、
 >  地球人の自治権獲得や
-“It’s about Mr. Darlian. He seems to be quite actively campaigning
+“About Mr. Darlian. He seems to be campaigning quite energetically
 ---
 >  コロニーの再建について、
 >  ずいぶんと精力的に
@@ -971,7 +971,7 @@ to be rebuilt.”
 @18330 Lady · レディ
 > 「承知いたしました。
 >  次のバスタイムには
-“Understood. For your next bath time,
+“Understood. For your next bath,
 ---
 >  バラのエッセンスをご用意いたします」
 I shall prepare the rose essence.”

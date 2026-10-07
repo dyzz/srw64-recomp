@@ -5,18 +5,18 @@
 # 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「そういえば ローレンス、
 >  前に言っていたスイームルグの
-“By the way, Lawrence, that design document you mentioned before,
+“By the way, Lawrence, you mentioned blueprints before,
 ---
 >  背面に取りつけるはずだった
 >  ものの設計図っていうのは
-the one for the thing that was supposed to attach to the Sweemurg’s
+for something that was supposed to attach to the Sweemurg’s
 ---
 >  どうなったんだい?
-back, what ever happened to it?
+back. What became of them?
 ---
 >  ウチの技術者はブースターだろうと
 >  いっていたが」
-Our engineers said it was a booster.”
+Our engineers figured it was a booster.”
 
 @17888 主角
 # 审校：全局：弯撇号／弯引号
@@ -27,7 +27,7 @@ Our engineers said it was a booster.”
 @17889 Lawrence · ローレンス
 > 「はい、確かわたくしの記憶では、
 >  単体で活動可能な
-“Yes, if my memory serves me correctly, it was a flight booster
+“Yes, if memory serves, it was a flight booster
 ---
 >  飛行ブースターであったと
 >  記憶しております」
@@ -55,15 +55,15 @@ so I do not know what became of it.”
 @17892 主角
 > 「残念ね。それがあればスイームルグも
 >  飛べたのでしょうに」
-“What a shame. With that, the Sweemurg would have been able to fly.”
+“What a shame. With that, the Sweemurg could have flown.”
 
 @17893 Koji · 甲児
 > 「おっいたいた。みんな、
 >  なんかギャリソンさんが
-“Oh, there you all are. Everyone, Mr. Garrison says
+“Oh, there you are. Hey everyone, Mr. Garrison says
 ---
 >  来てくれっていってるぜ」
-he wants us to come.”
+he wants you to come.”
 
 @17894 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -101,19 +101,19 @@ installed in the mountains to the south.”
 # 审校：全局：弯撇号／弯引号
 > 「はい、ローレンス殿の
 >  ご協力により
-“Yes. With Mr. Lawrence’s cooperation,
+“Yes. Thanks to Mr. Lawrence’s cooperation,
 ---
 >  私の情報網でも、ロームフェラや
 >  スペシャルズの動きならば
-even my information network should be able to grasp the movements of Romefeller and the Specials
+my information network ought to be able to track Romefeller and the Specials
 ---
 >  ある程度把握できる
 >  はずなのです
-to a certain extent.
+to some degree.
 ---
 >  が、それによれば現在この地域で
 >  活動しているスペシャルズの
-Yet according to that, there are currently no regular Specials units
+Yet according to it, there are currently no regular Specials units
 ---
 >  正規部隊はないようなのですよ」
 operating in this region.”
@@ -122,22 +122,22 @@ operating in this region.”
 # 审校：全局：弯撇号／弯引号
 > 「……正規部隊ではない
 >  スペシャルズか……
-“...Specials who aren’t a regular unit, huh...
+“...Specials that aren’t a regular unit, huh...
 ---
 >  確かに気になるな
-That is certainly concerning.
+That is worrying.
 ---
 >  帝国は僕たちがここにいるのは
 >  すでにわかっているはずだから
-The Empire should already know that we’re here,
+The Empire must already know we’re here,
 ---
 >  この施設を攻撃するには
 >  少なすぎる戦力だ
-so this is far too few forces to attack this facility.
+so that’s far too small a force to attack this facility.
 ---
 >  彼らの目的がわからないうちは、
 >  うかつに動けないか」
-Until we know their objective, we can’t move carelessly.”
+Until we know what they’re after, we can’t afford to act rashly.”
 
 @17902 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -151,7 +151,7 @@ I’ll go do it myself.”
 @17903 Simone · シモーヌ
 > 「だめよ甲児。敵の出方を待つっ
 >  ていうのも、戦い方のうちよ」
-“No, Koji. Waiting to see how the enemy moves is a tactic too.”
+“No, Koji. Waiting to see what the enemy does is part of fighting too.”
 
 @17904 Beauty · ビューティ
 > 「万丈、敵がこのエリアに
@@ -162,7 +162,7 @@ I’ll go do it myself.”
 # 审校：全局：弯撇号／弯引号
 > 「来たか……さて、どうなるかな。
 >  映像出せるかい?」
-“So they’ve come... Now then, how will this play out? Can you put up the visuals?”
+“So they’ve come... Now, let’s see how this plays out. Can you put it on screen?”
 
 @17906 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -172,7 +172,7 @@ I’ll go do it myself.”
 
 @17907 Simone · シモーヌ
 > 「可能性は低いわね」
-“The odds of that are low.”
+“Not likely.”
 
 @17908 Lawrence · ローレンス
 > (む……あれは……もしや……)
@@ -186,7 +186,7 @@ I’ll go do it myself.”
 @17910 Lawrence · ローレンス
 > 「……やはり間違いない。
 >  お嬢様」
-“...There is no mistake after all. My lady.”
+“...There is no mistaking it. My lady.”
 
 @17911 主角
 > 「なに?」
@@ -202,7 +202,7 @@ I’ll go do it myself.”
 # 检查提示：未用必用译名：スイームルグ→Sweemurg
 > 「あれはエルブルス。スイームルグとともに
 >  設計された機体です」
-“That is the Elbulls. It was designed together with the Sweemurg.”
+“That is the Elbulls. It was designed alongside the Sweemurg.”
 
 @17914 主角
 > 「本当なの、ローレンス!?」
@@ -223,10 +223,10 @@ I’ll go do it myself.”
 # 审校：口吻偏平淡，改为更符合贵族千金语气的表达。
 > 「やはりここにいらしたのね、
 >  {HeroName}さん
-“So you really were here after all, {HeroName}.
+“So you were here after all, {HeroName}.
 ---
 >  ずいぶんと探しましたわよ」
-I searched for you for quite some time.”
+I have been searching for you for quite some time.”
 
 @17918 主角
 # 审校：全局：弯撇号／弯引号
@@ -246,7 +246,7 @@ I searched for you for quite some time.”
 @17921 对手
 # 审校：原文为敬语表达，译文改为完成时更贴合贵族口吻。
 > 「思い出していただけたようですわね」
-“It seems you have remembered me.”
+“I see you remember me now.”
 
 @17922 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -258,11 +258,11 @@ I searched for you for quite some time.”
 # 审校：全局：弯撇号／弯引号
 > 「……{PartnerSurname}子爵家の、
 >  {PartnerName}お嬢様です
-“...This is the {PartnerSurname} viscountcy’s Lady {PartnerName}.
+“...That is Lady {PartnerName} of the {PartnerSurname} viscount family.
 ---
 >  {HeroName}お嬢様の
 >  いとこにあたる方です
-She is a cousin of Lady {HeroName}.
+She is Lady {HeroName}’s cousin.
 ---
 >  なるほど、エルブルスの設計図は
 >  {PartnerSurname}家にあったと
@@ -274,11 +274,11 @@ hands all along.”
 @17924 Simone · シモーヌ
 > 「ああ、そういえば{HeroSurname}家と、
 >  {PartnerSurname}家は、血縁だったわね
-“Ah, now that you mention it, the {HeroSurname} family and the {PartnerSurname} family were related by blood.
+“Ah, that’s right, the {HeroSurname} and {PartnerSurname} families are related.
 ---
 >  じゃあ、あの娘も仲間になってくれる
 >  のかしら」
-So will that girl join us too, then?”
+So will that girl be joining us too?”
 
 @17925 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -314,7 +314,7 @@ With those traitors who hunt down their fellow Earthlings without a second thoug
 @17929 对手
 > 「裏切り者ですって? それをアナタに
 >  言われるのは心外ですわ
-“Traitors, you say? I take offense at hearing that from you.
+“Traitors, you say? I resent hearing that from you of all people.
 ---
 >  アナタがそうやってレジスタンスと
 >  一緒になって邪魔をするから、
@@ -327,10 +327,10 @@ even the {PartnerSurname} family has come under suspicion!”
 @17930 对手
 > 「お戻りなさい、{HeroName}さん
 >  今ならばまだ、わたくしが
-“Come back, {HeroName}. Even now, I could still
+“Come back, {HeroName}. It is not too late; I can still
 ---
 >  とりなして差し上げるわ」
-put in a good word for you.”
+put in a word for you.”
 
 @17931 主角
 # 审校：全局：弯撇号／弯引号
@@ -357,7 +357,7 @@ then for the honor of the {PartnerSurname} family, I will strike you down!”
 ---
 >  敵はムゲゾルバドス帝国の
 >  はずでしょう!?」
-Our enemy is supposed to be the Muge Zorbados Empire?!”
+Our enemy should be the Muge Zorbados Empire!”
 
 @17934 对手
 > 「ロームフェラの導く、
@@ -376,11 +376,11 @@ Our enemy is supposed to be the Muge Zorbados Empire?!”
 # 审校：全局：弯撇号／弯引号
 > 「くっ、なんてこと、このわたくしが……
 >  撤退します!
-“Ngh, how could this happen... to me... I’m retreating!
+“Ngh, how could this happen... to me, of all people... I am retreating!
 ---
 >  {HeroName}さん、わたくしは必ず
 >  アナタを倒してご覧にいれますわ!」
-{HeroName}, I swear I will most certainly defeat you!”
+{HeroName}, I swear I will defeat you one day!”
 
 @17938 主角
 > 「待って{PartnerName}!
@@ -391,14 +391,14 @@ Our enemy is supposed to be the Muge Zorbados Empire?!”
 # 审校：对手全程称“您”，本条混用“你”
 > 「くっ、ア、アナタ、本気でわたくしを
 >  亡き者にしようというのね!?
-“Ngh... Y-You really mean to do me in?!
+“Ngh... Y-You truly mean to finish me off?!
 ---
 >  もう許しませんわ! 覚えておきなさい
 >  わたくしは、必ずアナタを倒して
-I shall not let this pass! Mark my words, I will most certainly defeat you
+I shall not let this pass! Mark my words, I will defeat you,
 ---
 >  ご覧にいれますわ!」
-and show you!”
+just you wait and see!”
 
 @17940 主角
 > 「{PartnerName}……」
@@ -430,7 +430,7 @@ here and now! It is for your own good!”
 # 审校：全局：弯撇号／弯引号
 > 「{HeroNick}は僕たちの
 >  大切な仲間だ
-“{HeroNick} is a precious comrade of ours.
+“{HeroNick} is a dear friend and comrade.
 ---
 >  悪いが、君に連れていかせる
 >  わけにはいかない」
@@ -468,19 +468,19 @@ If you mean to stand in my way, I will show you no mercy!”
 # 审校：全局：弯撇号／弯引号
 > 「やいやいやい!
 >  お家だか財団だか知らないが
-“Hey, hey, hey! I don’t care if it’s your family or your Foundation,
+“Hey, hey, hey! I don’t know about your family or your Foundation,
 ---
 >  勝手なことばっかり言うな!
-stop saying whatever you please!
+but quit saying whatever you like!
 ---
 >  いくら顔がよくったって、
 >  こっちだって黙っちゃいないぜ!」
-No matter how pretty your face is, we’re not gonna stay quiet either!”
+Pretty face or not, we’re not just gonna sit here and take it!”
 
 @17949 对手
 > 「お黙りなさいッ!
 >  それ以上の暴言は許しませんわ!」
-“Silence! I will not permit another insult like that!”
+“Silence! I will not tolerate any more of your insolence!”
 
 @17950 主角
 > 「…………{PartnerName}……どうして……」
@@ -498,7 +498,7 @@ No matter how pretty your face is, we’re not gonna stay quiet either!”
 # 审校：全局：弯撇号／弯引号
 > 「あら、もっと怖い思いを
 >  させてあげてもいいのよ?」
-“Oh, I could give you an even scarier time if you’d like?”
+“Oh? Shall I show you just how scary we can be?”
 
 @17954 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
@@ -518,13 +518,13 @@ No matter how pretty your face is, we’re not gonna stay quiet either!”
 # 审校：全局：弯撇号／弯引号
 > 「いいのよ、別に。気をつかって
 >  いただく必要はないわ」
-“It’s fine. You don’t need to worry about me.”
+“It’s all right, really. You needn’t worry about me.”
 
 @17958 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
 > 「でも……いとこなんでしょ、あの人?
 >  きっとわかってもらえるわよ」
-“But... she’s your cousin, isn’t she? I’m sure she’ll understand.”
+“But... she’s your cousin, right? I’m sure she’ll come around.”
 
 @17959 主角
 # 审校：全局：弯撇号／弯引号
@@ -537,7 +537,7 @@ No matter how pretty your face is, we’re not gonna stay quiet either!”
 “My lady, your jasmine tea is ready.
 ---
 >  少し、お気を落ち着かせなさいませ」
-Please, do try to calm yourself a little.”
+Please, try to settle your nerves a little.”
 
 @17961 主角
 > 「……ありがとう、ローレンス」
@@ -559,7 +559,7 @@ but... unless something happens to completely change her values,
 ---
 >  出来事でもないかぎり、何度でも
 >  来るわね」
-she’ll keep coming back, no matter how many times.”
+she’ll keep coming at us, again and again.”
 
 @17964 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -597,14 +597,14 @@ there’s no telling what she’ll do.”
 # 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「それが、
 >  地球解放戦線機構の
-“It’s just that we’ve received a telegram from General Igor of the Liberation Front of the Earth.
+“Well, sir, a telegram has arrived from General Igor of the Liberation Front of the Earth.
 ---
 >  イゴール将軍よりの電文で
 >  親書を持ったスタッフを1人
-A staff member carrying a personal letter has been sent
+He has sent a staff member carrying a personal letter
 ---
 >  こちらに向かわせたとの事です」
-our way, it seems.”
+our way.”
 
 @17969 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -622,7 +622,7 @@ So, when will he arrive here?”
 @17970 Garrison · ギャリソン
 > 「おそらく数日は、かかるものと
 >  思われますが」
-“It will likely take a few days, I believe.”
+“It will probably take a few days, sir.”
 
 @17971 Banjo · 万丈
 # 审校：去掉 Can't be helped

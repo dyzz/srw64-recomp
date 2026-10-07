@@ -15,7 +15,7 @@ Master is gone.
 ---
 >  そして俺たちには、するべきことが
 >  あるはずだ」
-And there is something we should be doing.”
+And we have work we must do.”
 
 @17349 Brad · ブラッド（本话主角）
 > 「{PartnerName}……しかし……」
@@ -49,13 +49,13 @@ You can stay there and mope forever.”
 ---
 >  近くの町をゲリラが拠点に
 >  しているとは聞いていたが……」
-I had heard the guerrillas were using a nearby town as their base, but...”
+I’d heard the guerrillas had set up in a town nearby, but...”
 
 @17353 Kurtz · カーツ（本话主角的对手）
 # 审校：去掉“确认情况”直译腔
 > 「状況を確認するぞ、
 >  {HeroName}」
-“We will assess the situation, {HeroName}.”
+“Let us see what is happening, {HeroName}.”
 
 @17354 Dark General · 暗黒大将軍
 # 审校：英文第三页原是凑数的填充句
@@ -80,11 +80,11 @@ the full might of Mycenae!”
 @17356 Kurtz · カーツ（本话主角的对手）
 > 「そうだな……
 >  全滅も時間の問題だ
-“Indeed... their annihilation is only a matter of time.
+“Indeed... it is only a matter of time before they are wiped out.
 ---
 >  ここは俺たちが戦うべき敵を
 >  よく見ておくのがいいだろう」
-This is a good chance to get a clear look at the enemy we ought to be fighting.”
+Let us take this chance to get a good look at the enemy we ought to be fighting.”
 
 @17357 Brad · ブラッド（本话主角）
 # 审校：全局：弯撇号／弯引号
@@ -105,17 +105,17 @@ forgotten Master’s words?!”
 ---
 >  ゲリラが戦いで敗れるのは
 >  しかたのないこと
-It is only natural that guerrillas lose in battle.
+Guerrillas lose battles. There is no helping that.
 ---
 >  今、俺たちがいったからといって、
 >  奴らには、なんの成長もない」
-Even if we fight now, they will gain nothing from it.”
+Even if we step in now, they will learn nothing from it.”
 
 @17359 Brad · ブラッド（本话主角）
 # 审校：全局：弯撇号／弯引号
 > 「だが、このまま放っておいては
 >  町の人たちはどうなる!?
-“But if we leave them like this, what will happen to the townspeople?!
+“But if we leave them be, what happens to the people in that town?!
 ---
 >  俺はゆくぞ!
 >  アースゲイン!!」
@@ -155,16 +155,16 @@ You’re the lowest of the low.
 ---
 >  俺たちが相手だ、来いっ!
 >  叩きつぶしてやる!」
-You’re fighting us now. Come on! We’ll crush you!”
+Your fight is with us! Come on! We’ll crush you!”
 
 @17364 Dark General · 暗黒大将軍
 > 「ぬうぅ、この暗黒大将軍に
 >  よくもほざいたな!
-“Grr, you dare spout such words to me, the Dark General!
+“Grr, how dare you speak so to me, the Dark General!
 ---
 >  それほど死にたいなら、貴様らも
 >  一緒に地獄へ送ってやろう
-If you wish to die so badly, I will send you all to hell together!
+If you are so eager to die, I will send you to hell along with them!
 ---
 >  ゆけ!」
 Go!”
@@ -176,11 +176,11 @@ Go!”
 
 @17366 ???
 > 「うん、先を越されたようだね
-“Yes, it seems they beat us to it.
+“Yeah, looks like they beat us to it.
 ---
 >  だが、彼らはいい仲間となって
 >  くれそうだ」
-But they look like they will make fine comrades.”
+But they look like they’d make good allies.”
 
 @17367 Brad · ブラッド（本话主角）
 > 「なんだと!?
@@ -189,18 +189,18 @@ But they look like they will make fine comrades.”
 
 @17368 Brad · ブラッド（本话主角）
 > 「ぐぅ、次から次へとっ!」
-“Ngh, one after another!”
+“Ngh, they just keep coming!”
 
 @17369 ???
 > 「これはちと、
 >  先がわからなくなってまいりましたな」
-“This is getting a bit hard to predict, I must say.”
+“Things have become rather uncertain, I must say.”
 
 @17370 ???
 # 审校：万丈从容口吻，去掉“还是也去吧”
 > 「さすがにあの数はきついようだね。
 >  やはり僕もいこう」
-“That many is a tall order. Looks like I’m going in too.”
+“That many is too much for them. Looks like I’d better go in too.”
 
 @17371 Banjo · 万丈
 > 「カァァァムヒア!
@@ -218,7 +218,7 @@ But they look like they will make fine comrades.”
 “Wait, I’m Banjo Haran of the anti-Empire organization Karaba.
 ---
 >  君たちに加勢する」
-I’ll lend you my strength.”
+I’m here to help you.”
 
 @17374 Brad · ブラッド（本话主角）
 > 「なんだと!?」
@@ -228,7 +228,7 @@ I’ll lend you my strength.”
 # 审校：全局：弯撇号／弯引号
 > 「敵ではない。僕も奴らを倒すために
 >  ここに来た」
-“I’m not your enemy. I came here to defeat them too.”
+“I’m not your enemy. I came here to take them down too.”
 
 @17376 Brad · ブラッド（本话主角）
 # 审校：全局：弯撇号／弯引号
@@ -284,7 +284,7 @@ If you do not fear the radiance of this sun, then come at me!”
 @17384 Banjo · 万丈
 > 「改めて自己紹介しよう。
 >  僕はカラバの破嵐万丈だ
-“Allow me to introduce myself properly. I am Banjo Haran of Karaba.
+“Let me introduce myself properly. I’m Banjo Haran of Karaba.
 ---
 >  そして彼が……」
 And this is...”
@@ -353,25 +353,25 @@ will. We will see to that ourselves.”
 # 审校：全局：弯撇号／弯引号
 > 「察するところお前は
 >  金持ちのようだな
-“From what I gather, you seem to be a wealthy man.
+“I take it you are a wealthy man.
 ---
 >  だが最近では金持ちは
 >  帝国がいうところの
-But these days, the wealthy are always what the Empire calls
+But these days, the wealthy are all what the Empire calls
 ---
 >  A級市民と
 >  決まっているはずだが?」
-A-class citizens, aren’t they?”
+A-class citizens, are they not?”
 
 @17392 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「ああ、君のいうことは
 >  理解できる
-“Ah, I understand what you’re saying.
+“Yes, I see what you mean.
 ---
 >  こっちにも色々と
 >  複雑な事情があってね
-There are all sorts of complicated circumstances on my end too.
+My situation is a bit complicated.
 ---
 >  僕は戦前からそうだった
 >  わけじゃないのさ
@@ -379,15 +379,15 @@ I wasn’t like this before the war, you see.
 ---
 >  だから目をつけられても資産を
 >  押さえられるということもなかった
-So even when they had their eye on me, they never seized my assets.
+So even once they had their eye on me, my assets were never seized.
 ---
 >  そのおかげで反帝国の人々に
 >  支援もできたし
-Thanks to that, I could support the anti-Imperial people,
+That let me support the people resisting the Empire,
 ---
 >  そのための組織もつくれた
 >  というわけだ
-and build an organization for it.
+and build an organization to do it.
 ---
 >  つまりC級市民ですらない」
 In other words, I’m not even a C-class citizen.”
@@ -412,7 +412,7 @@ why you lent us a hand?”
 ---
 >  率直にいって、
 >  君たちの力を借りたい
-To put it bluntly, I want to borrow your strength.
+To be frank, I could use your strength.
 ---
 >  僕たちの組織もかなり
 >  活動範囲を広げているが
@@ -420,23 +420,23 @@ Our organization has been expanding its reach considerably,
 ---
 >  帝国軍と直接、わたりあえる
 >  戦闘ロボットも
-but combat robots that can face the Imperial Army directly,
+but we still don’t have enough robots that can take on the Imperial Army head-on,
 ---
 >  そのパイロットも、まだまだ
 >  不足している
-and pilots for them, are still in short supply.
+or enough pilots to fly them.
 ---
 >  君たちが帝国と戦う
 >  心と力をもっていることは
-You’ve already shown me that you have the heart and the power
+You’ve already shown me you have the will and the strength
 ---
 >  すでに見せてもらった。
 >  ぜひ協力してほしい
-to fight the Empire. I’d really like your help.
+to fight the Empire. I’d really like you to join us.
 ---
 >  帝国軍と戦うつもりなら
 >  悪い話じゃないだろう?」
-If you intend to fight the Imperial Army, it’s not a bad offer, is it?”
+If you mean to fight the Imperial Army, it’s not a bad deal, is it?”
 
 @17395 Brad · ブラッド（本话主角）
 # 审校：“a battle of justice”“为了人们、正义的战斗”直译
@@ -467,7 +467,7 @@ a just war, for the people. Right?”
 @17399 Banjo · 万丈
 > 「よし、決まりだ。これからよろしく頼む
 >  {HeroFull}、
-“Good, that settles it. I look forward to working with you, {HeroFull},
+“Good, that settles it. Glad to have you aboard, {HeroFull},
 ---
 >  {PartnerName}。
 >  なにか必要なものがあったら、
@@ -500,34 +500,34 @@ whose research Karaba supports.”
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「科学者の方々、特に軍事
 >  関係や、それに転用できる
-“Scientists, especially those researching military matters
+“Scientists, particularly those researching military matters
 ---
 >  エネルギー関連の研究を
 >  されている方々は
-or energy-related fields that can be diverted to such uses,
+or energy fields that can be turned to military use,
 ---
 >  帝国に目をつけられやすい
 >  ですからな
-tend to catch the Empire’s eye.
+are apt to draw the Empire’s attention.
 ---
 >  ほかにも旧連邦の技術者など
 >  何人かの方がおりますが
-There are also several others, such as former Federation engineers,
+There are others as well, such as former Federation engineers,
 ---
 >  大半の方はもともと
 >  日本地区に研究施設を
-but most of them originally had research facilities
+but most of them originally had their research facilities
 ---
 >  持たれていたのですよ
 in the Japan region.
 ---
 >  ムゲゾルバドス帝国の占領前に
 >  私どもがご助力して
-Before the Muge Zorbados Empire occupied it, we assisted them
+Before the Muge Zorbados Empire occupied it, we helped them
 ---
 >  各地に散っていただいたので
 >  ございます」
-and had them scatter to various places.”
+disperse to various locations.”
 
 @17404 Brad · ブラッド（本话主角）
 > 「……まぁいいや。で、

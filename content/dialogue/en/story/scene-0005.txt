@@ -3,37 +3,37 @@
 @17788 Guerrilla · ゲリラ
 # 审校：全局：弯撇号／弯引号
 > 「ご苦労様です
-“Thank you for your hard work.
+“Good work out there.
 ---
 >  機体はすべて倉庫の方へまわして
 >  ください。そこで整備しますので」
-Please send all the units to the warehouse. We’ll do the maintenance there.”
+Please take all the units to the warehouse. We’ll do maintenance there.”
 
 @17789 Banjo · 万丈
 > 「すまない。アランの方は順調なのか?」
-“Sorry about that. How are things going with Alan?”
+“Thanks. How are things going on Alan’s end?”
 
 @17790 Guerrilla · ゲリラ
 # 审校：全局：弯撇号／弯引号
 > 「そう聞いています
-“That’s what I hear.
+“So I hear.
 ---
 >  各プロジェクトは急ピッチで
 >  進んでいるようです」
-Every project seems to be moving along at a rapid pace.”
+All the projects seem to be moving full speed ahead.”
 
 @17791 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「そうか。では、こちらはしばらく
 >  様子見となるかな……
-“I see. Then I suppose we’ll just wait and see for a while...
+“I see. Then I guess we’ll sit tight for a while...
 ---
 >  君たち、ここはカラバの施設だ。
 >  あまりきれいとはいえないが
-You lot, this is a Karaba facility. It’s not much to look at,
+Everyone, this is a Karaba facility. It’s not much to look at,
 ---
 >  少し休んでくれ」
-but take a rest.”
+but get some rest.”
 
 @17792 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -48,7 +48,7 @@ I’ll do it!”
 # 审校：全局：弯撇号／弯引号
 > 「なんだよ、こんな狭いところに
 >  入れるのか!?
-“What the, you’re putting it in a space this tight?!
+“What, you want me to fit it in a space this tight?!
 ---
 >  ……うわーっ!!」
 ...Whoa!!”
@@ -57,7 +57,7 @@ I’ll do it!”
 # 审校：全局：弯撇号／弯引号
 > 「きゃっ! ちょっと、
 >  あぶないじゃないのっ!!」
-“Kya! Hey, watch it, that’s dangerous!!”
+“Eek! Hey, watch it, you could’ve hurt someone!!”
 
 @17795 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -82,16 +82,16 @@ Damn it, why won’t this thing walk straight...”
 # 审校：全局：弯撇号／弯引号
 > 「いえ、いいですよ。
 >  彼らの活躍は聞いています
-“No, it’s fine. We’ve heard of their exploits.
+“No, it’s fine. We’ve heard what they’ve done.
 ---
 >  私らにはできないことです」
-It’s something we could never do.”
+We could never do what they do.”
 
 @17799 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
 > 「ええ、そうさせてもらうわ。
 >  シャワー、借りられるかしら?」
-“Yes, we’ll take you up on that. Could I borrow a shower?”
+“Yes, I believe we will. Might I use a shower?”
 
 @17800 Guerrilla · ゲリラ
 > 「もちろんです。
@@ -100,7 +100,7 @@ It’s something we could never do.”
 
 @17801 Manami · マナミ（按段落 3DD4）
 > 「ありがとう、助かるわ」
-“Thank you, that helps.”
+“Thank you, that’s very kind.”
 
 @17802 Simone · シモーヌ
 # 审校：全局：弯撇号／弯引号
@@ -128,40 +128,40 @@ It’s something we could never do.”
 ---
 >  じゃあ、私はお茶菓子の
 >  用意をしようかしら」
-Then I suppose I’ll get some tea snacks ready.”
+Then maybe I’ll put out something sweet to go with it.”
 
 @17807 Garrison · ギャリソン
 # 审校：全局：弯撇号／弯引号
 > 「私は整備の方を
 >  手伝ってまいります」
-“I’ll go help with the maintenance.”
+“I shall go and help with the maintenance.”
 
 @17808 Garrison · ギャリソン
 # 审校：全局：弯撇号／弯引号
 > 「……ああ、これ、そこの整備士、
 >  そのようなもので扱っては
-“...Ah, here, you there, mechanic, don’t handle it like that,
+“...Ah, I say, you there, mechanic, if you handle it with that,
 ---
 >  キズがついて……」
-you’ll scratch it...”
+you will scratch it...”
 
 @17809 Dark General · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「奴らの潜伏場所がわかった。
 >  今度は俺が行かせてもらう
-“We’ve found where they’re hiding. This time, let me go.
+“We have found their hideout. This time, I shall go.
 ---
 >  我らミケーネが帝国の軍門に
 >  くだったのも
-The only reason we Mycenae submitted to the Empire’s banner
+We of Mycenae bent the knee to the Empire
 ---
 >  いずれはこの地球を
 >  支配せんがため
-was so that one day we might rule this Earth.
+only so that one day we might rule this Earth.
 ---
 >  これ以上の屈辱など、そうそう
 >  ありえんわ」
-I will not suffer any further humiliation.”
+There could hardly be a greater humiliation than this.”
 
 @17810 Dr. Gura · グラー博士
 # 审校：全局：弯撇号／弯引号
@@ -221,52 +221,52 @@ Getter Rays better suit our purposes.”
 # 审校：全局：弯撇号／弯引号
 > 「しかし帝国軍が侵攻してきた
 >  おかげで
-“However, thanks to the Imperial Army’s invasion,
+“However, because of the Imperial Army’s invasion,
 ---
 >  人間の研究者どもは
 >  行方を、くらましております
-the human researchers have gone into hiding.
+the human researchers have vanished.
 ---
 >  帝国軍に潜り込ませた
 >  鬼兵士の報告では
-According to reports from the oni soldiers we’ve infiltrated into the Imperial Army,
+According to the oni soldiers we planted in the Imperial Army,
 ---
 >  カラバに保護されている
 >  可能性が高いと」
-there’s a high possibility they’re being protected by Karaba.”
+they are most likely under Karaba’s protection.”
 
 @17819 Emperor Burai · ブライ大帝
 # 审校：全局：弯撇号／弯引号
 > 「ふむ、人間どもめ、
 >  なかなかやるのう
-“Hmm, those humans, they’re quite resourceful.
+“Hmm, these humans are quite resourceful.
 ---
 >  だが、それを手に入れねば、我らの
 >  もくろみは達成できぬのであろう」
-But if we do not obtain it, our scheme can never be achieved.”
+But without it, our plans can never come to fruition.”
 
 @17820 Dr. Gura · グラー博士
 > 「はい。すでに帝国軍の中にも、
 >  密かに改造手術で
-“Yes. We already have some within the Imperial Army who were secretly
+“Yes. We already have some within the Imperial Army whom we secretly
 ---
 >  百鬼兵士にしたてあげた者が
 >  おりますが、月に一度はエネルギーを
-remade into Hyakki soldiers through modification surgery, but they must have their energy
+turned into Hyakki soldiers through surgery, but they must have their energy
 ---
 >  補充しなければならないため、
 >  これ以上は増やせません。もしも
-replenished once a month, so we cannot increase their numbers further. If we
+replenished once a month, so we cannot add more. If we
 ---
 >  無理をして1度でも失敗すれば
 >  我らは帝国に滅ぼされましょう」
-push too hard and fail even once, we will be destroyed by the Empire.”
+push too hard and fail even once, the Empire will destroy us.”
 
 @17821 Emperor Burai · ブライ大帝
 # 审校：Emperor Burai's archaic grandeur calls for "there is" instead of the contraction "there's".
 > 「わかっておる。我ら百鬼一族を
 >  あなどりおって、帝国め
-“I know. To think the Empire would underestimate us, the Hyakki Clan.
+“I am aware. The Empire dares to underestimate us, the Hyakki Clan.
 ---
 >  グラー博士、その装置に
 >  関するものが、ミケーネが向かう
@@ -310,10 +310,10 @@ We must obtain it no matter what...”
 # 审校：全局：弯撇号／弯引号
 > 「そうよ、お父さまにいわれて
 >  しかたなく来たんだから
-“That’s right. Father told me to, so I came, no choice in the matter.
+“That’s right. Father told me to, so I had no choice but to come.
 ---
 >  ちゃんと覚えてちょうだい」
-So make sure you learn properly.”
+So you’d better learn properly.”
 
 @17826 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -324,24 +324,24 @@ So make sure you learn properly.”
 @17827 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
 > 「まぁっ、なによそれ!
-“What?! How dare you!
+“What?! How rude!
 ---
 >  ろくに操縦もできないのに
 >  よく言うわね
-You can barely pilot it yourself, and you say that?
+You can barely pilot it, and you have the nerve to say that?
 ---
 >  いっときますけど、
 >  あのタイプのロボットの操縦は
-Let me tell you something, when it comes to piloting that type of robot,
+For your information, when it comes to piloting that type of robot,
 ---
 >  あたしの方がずっと上手なのよ」
-I’m way better at it than you.”
+I’m way better than you.”
 
 @17828 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「そんなもんすぐに慣れてみせるさ。
 >  オレはすでに1回、戦ってるんだぜ?
-“I’ll get used to it in no time. I’ve already fought once, haven’t I?
+“I’ll get used to it in no time. I’ve already fought once, you know.
 ---
 >  君に教わる必要なんて
 >  ぜ～んぜんないね」
@@ -351,15 +351,15 @@ I don’t need you teaching me, not one bit.”
 # 审校：全局：弯撇号／弯引号
 > 「甲児くんが慣れるまで待ってる
 >  余裕がないから、あたしが
-“It’s not like we have time to wait for you to get used to it, Koji. That’s why I
+“We can’t afford to wait for you to get used to it, Koji. That’s why I
 ---
 >  来たんじゃない。ぐずぐずいってないで、
 >  ついてらっしゃい。それから、あたしは
-came. Stop dawdling and come along. And besides, I
+came. Quit grumbling and come along. And I’ll have you know, I
 ---
 >  さやかっていう名前が、ちゃんと
 >  あるんですからね」
-have a proper name, you know. It’s Sayaka.”
+have a name. It’s Sayaka.”
 
 @17830 Koji · 甲児
 > 「ちぇっ」
@@ -381,13 +381,13 @@ She could stand to learn a thing or two from those ladies.)
 @17833 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「い～や、なんにも言ってないぜ」
-“No~, I didn’t say anything.”
+“Nope, didn’t say a thing.”
 
 @17834 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
 > 「そうそう、だいぶ上手に
 >  なってきたじゃない」
-“That’s right, you’re getting pretty good at this.”
+“There you go, you’re getting pretty good at this.”
 
 @17835 Koji · 甲児
 > 「…………」
@@ -425,16 +425,16 @@ Judging by their route, I believe this place is their objective.”
 @17841 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「どうやらそうらしい
-“Seems so.
+“Looks that way.
 ---
 >  帝国軍も甘くはなくなって
 >  きているようだね」
-The Imperial Army isn’t pulling its punches anymore, it seems.”
+The Imperial Army’s stopped going easy on us.”
 
 @17842 Brad · ブラッド（按段落 3DD3）
 > 「ふん、だがまた返り討ちにして
 >  やるだけだ!」
-“Hmph, but all that means is we beat them back again!”
+“Hmph, then we’ll just beat them back again!”
 
 @17843 Manami · マナミ（按段落 3DD4）
 > 「見つかってしまったの!?」
@@ -444,24 +444,24 @@ The Imperial Army isn’t pulling its punches anymore, it seems.”
 # 审校：全局：弯撇号／弯引号
 > 「どうやらそのようね。
 >  帝国軍がゲリラ狩りに
-“It seems so. So it’s true that the Imperial Army has
+“Looks that way. So it’s true the Imperial Army has
 ---
 >  本腰を入れ始めたっていうの、
 >  やっぱり本当ね
-started hunting guerrillas in earnest.
+gotten serious about hunting guerrillas.
 ---
 >  以前だったらここまで追っては
 >  こなかったわ」
-They never used to chase us this far before.”
+They never used to chase us this far.”
 
 @17845 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「こうなった以上は
 >  隠れていてもムダだ
-“Now that it’s come to this, hiding is pointless.
+“If they’ve found us, there’s no point hiding.
 ---
 >  迎撃しよう」
-Let’s intercept them.”
+Let’s meet them.”
 
 @17846 Manami · マナミ（按段落 3DD4）
 > 「わかったわ。ローレンス!
@@ -469,7 +469,7 @@ Let’s intercept them.”
 ---
 >  お茶の片付けなんて
 >  後でいいから、急いで」
-Clearing away the tea can wait, hurry!”
+Leave the tea things for later, and hurry!”
 
 @17847 Lawrence · ローレンス
 # 审校：Lawrence's old butler voice requires no contractions and a more formal, gentle understatement; "right away" is too curt.（人工改写）
@@ -507,7 +507,7 @@ You should get inside.”
 # 审校：全局：弯撇号／弯引号
 > 「勝手にしろ!
 >  助けてなんか、やらないからな」
-“Do what you want! I’m not gonna save you, you know.”
+“Suit yourself! Don’t expect me to save you.”
 
 @17853 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
@@ -518,11 +518,11 @@ You should get inside.”
 @17854 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「もう来やがったのか
-“They’re already here, huh.
+“They’re here already, huh.
 ---
 >  さぁどっからでも、かかって
 >  こいってんだ!」
-All right, come at me from wherever you like!”
+All right, bring it on, from wherever you like!”
 
 @17855 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -540,16 +540,16 @@ All right, come at me from wherever you like!”
 # 审校：全局：弯撇号／弯引号
 > 「でてきおったな、レジスタンスどもめが
 >  まとめて片付けてやるわ!」
-“So you’ve come out, you Resistance lot. I’ll wipe you all out at once!”
+“So you show yourselves at last, you Resistance rabble. I will finish you all at once!”
 
 @17858 Dark General · 暗黒大将軍
 # 审校：“出直しだ”不是“start over”，而是撤退、改日再来的意思；改为更符合 Dark General 语气的“I must withdraw!”
 > 「うぬぅ、これはいかん! 出直しだ!」
-“Ngh, this is bad! I must withdraw!”
+“Ngh, this will not do! I must regroup!”
 
 @17859 Dark General · 暗黒大将軍
 > 「おのれ、ぬかったわ。次を見ておれよ!」
-“Curse you, I let my guard down. Just you wait until next time!”
+“Curses, I was careless. Next time, you will see!”
 
 @17860 Dr. Gura · グラー博士
 # 审校：全局：弯撇号／弯引号
@@ -574,28 +574,28 @@ I’ll defeat these insolent humans and then search that place.”
 # 审校：全局：弯撇号／弯引号
 > 「なに、同じ帝国に属する者
 >  同士ではないか
-“What, are we not fellow servants of the same Empire?
+“Come now, are we not fellow servants of the same Empire?
 ---
 >  レジスタンスどもを排除するのは
 >  我らが帝国から負った
-Eliminating the Resistance is the mission we’ve been charged with
+Eliminating the Resistance is the mission the Empire has charged us with,
 ---
 >  使命であろう」
-by the Empire, is it not?”
+is it not?”
 
 @17863 Dark General · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「何をたくらんでおるのか知らんが、
 >  まぁよい
-“I don’t know what you’re plotting, but very well.
+“I do not know what you are plotting, but very well.
 ---
 >  だが、俺が要請したのではない
 >  ことだけは、肝に命じておけ」
-Just remember this: it was not I who requested you.”
+Just bear this in mind: I did not ask for your help.”
 
 @17864 Dr. Gura · グラー博士
 > 「心得ておる」
-“Understood.”
+“I am well aware.”
 
 @17865 Reika · レイカ
 > 「新手が来たわ!
@@ -605,7 +605,7 @@ Just remember this: it was not I who requested you.”
 @17866 Brad · ブラッド（按段落 3DD3）
 > 「新手かっ!?
 >  ふん、いくらでも来るがいい!」
-“Reinforcements?! Hmph, let them come, as many as they like!”
+“Reinforcements?! Hmph, bring on as many as you like!”
 
 @17867 Reika · レイカ
 > 「新手が来たわ!
@@ -615,18 +615,18 @@ Just remember this: it was not I who requested you.”
 @17868 Manami · マナミ（按段落 3DD4）
 > 「新手!?
 >  いいわ、いくらでも来なさい!」
-“Reinforcements?! Fine, let them come, as many as they like!”
+“Reinforcements?! Very well, come as many as you like!”
 
 @17869 Dr. Gura · グラー博士
 > 「くっ、いかん、
 >  これ以上は危険すぎる」
-“Ngh, this is bad. Any more of this is too dangerous.”
+“Ngh, this is bad. It is too dangerous to stay any longer.”
 
 @17870 Dr. Gura · グラー博士
 # 审校：全局：弯撇号／弯引号
 > 「ええい、カラバの施設の調査も
 >  できんとは!」
-“Damn it, and I couldn’t even investigate the Karaba facility!”
+“Blast, I could not even search the Karaba facility!”
 
 @17871 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -637,7 +637,7 @@ Just remember this: it was not I who requested you.”
 @17872 Sayaka · さやか
 # 审校：全局：弯撇号／弯引号
 > 「あたしの教え方が、よかったのね」
-“It’s because my teaching was so good.”
+“That’s because I’m such a good teacher.”
 
 @17873 Koji · 甲児
 > 「…………」
@@ -653,12 +653,12 @@ Just remember this: it was not I who requested you.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、もうしばらくここにいる。
 >  敵もすぐにはこないはずだ」
-“No, we’ll stay here a while longer. The enemy shouldn’t be coming right away either.”
+“No, we’ll stay here a while longer. The enemy shouldn’t be back anytime soon.”
 
 @17876 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
 > 「わかった、まかせるぜ」
-“Got it, I’ll leave it to you.”
+“Got it. Your call.”
 
 @17877 Garrison · ギャリソン
 > 「万丈様」
@@ -673,14 +673,14 @@ Just remember this: it was not I who requested you.”
 # 检查提示：未用必用译名：地球解放戦線→Liberation Front of the Earth
 > 「それが、
 >  地球解放戦線機構の
-“Well, we have received a telegram from
+“Well, sir, a telegram has arrived from
 ---
 >  イゴール将軍よりの電文で
-General Igor of the Liberation Front of the Earth,
+General Igor of the Liberation Front of the Earth.
 ---
 >  親書を持ったスタッフを1人
 >  こちらに向かわせたとの事です」
-saying they have sent one staff member our way carrying a personal letter.”
+He has sent a staff member our way with a personal letter.”
 
 @17880 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -698,7 +698,7 @@ So, when will they arrive here?”
 @17881 Garrison · ギャリソン
 > 「おそらく数日は、かかるものと
 >  思われますが」
-“I believe it will likely take several days.”
+“It will probably take several days, sir.”
 
 @17882 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -708,12 +708,12 @@ So, when will they arrive here?”
 ---
 >  ちょうどいい。
 >  それまで待つとしようか」
-That works out fine. Let’s wait until then.”
+Works out nicely. Let’s wait for them here.”
 
 @17883 Simone · シモーヌ
 > 「どうするの、万丈。
 >  また移動?」
-“What are we doing, Banjo? Moving again?”
+“What’s the plan, Banjo? Moving again?”
 
 @17884 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -725,7 +725,7 @@ That works out fine. Let’s wait until then.”
 Garrison and the others are checking on the situation right now.
 ---
 >  動くのは、それからにしたほうがいい」
-It’d be better to move after that.”
+Better to move after that.”
 
 @17885 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
@@ -734,8 +734,8 @@ It’d be better to move after that.”
 ---
 >  ロームフェラとスペシャルズのことも
 >  気にかかりますし」
-I’m also worried about Romefeller and the Specials.”
+Romefeller and the Specials concern me as well.”
 
 @17886 Banjo · 万丈
 > 「そういうことだ」
-“That settles it, then.”
+“Exactly.”
