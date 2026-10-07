@@ -2464,7 +2464,7 @@ to meet you.”
 @34231 Chan · チェーン
 > 「そんなことないです。
 >  ますますがんばろうって、思いました」
-“Not at all. It made me want to work even harder.”
+“Not at all. It made me want to try even harder.”
 
 @34232 Amuro · アムロ
 > 「なにをだい?」
@@ -2536,7 +2536,7 @@ is at least one of their reasons.”
 @34243 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
 > 「私は、アムロの恋人なのよ」
-“I’m Amuro’s lover.”
+“I’m Amuro’s girlfriend.”
 
 @34244 Chan · チェーン
 # 审校：全局：弯撇号／弯引号

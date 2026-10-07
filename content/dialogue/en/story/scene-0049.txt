@@ -1794,7 +1794,7 @@ thought of something?”
 @33693 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
 > 「私は、アムロの恋人なのよ」
-“I’m Amuro’s lover.”
+“I’m Amuro’s girlfriend.”
 
 @33694 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -2487,10 +2487,10 @@ and I’ve been waiting all this time.”
 # 审校：全局：弯撇号／弯引号
 > 「ブライト艦長……忘れてしまったの
 >  ですか? 私、艦長に頼まれたと
-“Captain Bright... have you forgotten? I thought you’d asked me to,
+“Captain Bright... did you forget? I thought you’d asked me to,
 ---
 >  思って、一生懸命……」
-so I did my very best...”
+so I gave it everything I had...”
 
 @33797 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -2578,7 +2578,7 @@ to meet you.”
 @33812 Chan · チェーン
 > 「そんなことないです。
 >  ますますがんばろうって、思いました」
-“Not at all. It made me want to work even harder.”
+“Not at all. It made me want to try even harder.”
 
 @33813 Amuro · アムロ
 > 「なにをだい?」
@@ -2639,7 +2639,7 @@ is at least one of their reasons.”
 # 审校：全局：弯撇号／弯引号
 > 「ベルトーチカ・イルマ、アーガマのクルーよ
 >  あんまりアムロにちょっかい出さないで」
-“Beltorchika Irma, crew of the Argama. Don’t go pestering Amuro so much.”
+“Beltorchika Irma, Argama crew. Stop making passes at Amuro.”
 
 @33823 Chan · チェーン
 # 审校：全局：弯撇号／弯引号
@@ -2650,7 +2650,7 @@ is at least one of their reasons.”
 @33824 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
 > 「私は、アムロの恋人なのよ」
-“I’m Amuro’s lover.”
+“I’m Amuro’s girlfriend.”
 
 @33825 Chan · チェーン
 # 审校：全局：弯撇号／弯引号

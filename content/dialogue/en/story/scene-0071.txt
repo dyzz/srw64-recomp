@@ -194,7 +194,7 @@ The refit to space combat specs should be done before long.”
 @30417 Beltorchika · ベルトーチカ
 # 审校：全局：弯撇号／弯引号
 > 「アムロ……なにか様子がおかしいわ」
-“Amuro... something’s off with him.”
+“Amuro... something’s wrong with him.”
 
 @30418 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -1412,7 +1412,7 @@ to meet you.”
 @30609 Chan · チェーン
 > 「そんなことないです。
 >  ますますがんばろうって、思いました」
-“Not at all. It made me want to work even harder.”
+“Not at all. It made me want to try even harder.”
 
 @30610 Amuro · アムロ
 > 「なにをだい?」
@@ -1422,7 +1422,7 @@ to meet you.”
 # 审校：全局：弯撇号／弯引号
 > 「私の夢なんです。アムロ大尉の
 >  乗るガンダムをつくるのが」
-“It’s my dream. To build the Gundam that Captain Amuro pilots.”
+“It’s my dream. Building the Gundam that Captain Amuro will pilot.”
 
 @30612 Amuro · アムロ
 > 「そういえばアナハイムといっていたが……」
@@ -1473,7 +1473,7 @@ is at least one of their reasons.”
 # 审校：全局：弯撇号／弯引号
 > 「ベルトーチカ・イルマ、アーガマのクルーよ
 >  あんまりアムロにちょっかい出さないで」
-“Beltorchika Irma, crew of the Argama. Don’t go pestering Amuro so much.”
+“Beltorchika Irma, Argama crew. Stop making passes at Amuro.”
 
 @30620 Chan · チェーン
 > 「あなたにそんなこといわれる理由は
@@ -1541,7 +1541,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「どっちかに決めてもらえば、
 >  俺にもチャンスがあるってわけだ」
-“If he’d just pick one, that’d mean I’ve got a chance too.”
+“If he’d just pick one of them, I’d have a shot too.”
 
 @30633 Shingo · 真吾
 # 审校：全局：弯撇号／弯引号

@@ -1240,7 +1240,7 @@ an opportunity for me...”
 # 审校：全局：弯撇号／弯引号
 > 「くっ……まさか地上で
 >  討たれようとはな……」
-“Ngh... To think I’d be struck down on the surface...”
+“Ngh... To think I would be struck down on the surface...”
 
 @28389 Marvel · マーベル
 > 「ウィル・ウィプスが……落ちる……

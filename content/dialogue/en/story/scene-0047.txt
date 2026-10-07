@@ -172,7 +172,7 @@ I’m thrilled. It’s an honor, Captain... I mean, Special Lieutenant Amuro Ray
 # 审校：全局：弯撇号／弯引号
 > 「クラッシャー隊か。
 >  士官学校時代に
-“The Crusher Team, huh. I heard about them back in
+“The Crusher Team, huh. I heard about them back at
 ---
 >  聞いたことがあったな」
 the officers’ academy.”
@@ -1954,7 +1954,7 @@ it’s those people.”
 @32484 Shot · ショット
 # 审校：与 24201 同句统一，原句多出 can't die
 > 「こ、こんな所で俺は……ミュージィ……」
-“T-To fall in a place like this... Musy...”
+“N-Not here... not like this... Musy...”
 
 @32485 Musy · ミュージィ
 > 「ショット様!? くっ、おのれ!」

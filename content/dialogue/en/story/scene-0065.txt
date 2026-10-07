@@ -688,7 +688,7 @@ that you always end up going home beaten.”
 # 审校：全局：弯撇号／弯引号
 > 「あいにくと運だけはよくてな。お前にや
 >  られたってそう簡単にゃくたばらねぇよ」
-“Unfortunately, my luck’s always been good. Even if you beat me, I won’t kick the bucket that easily.”
+“Sorry, but luck’s one thing I’ve always had. You can beat me all you want, I won’t croak that easy.”
 
 @28812 Selain · セレイン（按段落 3DD2）
 > 「そうか、ならば今回もためしてみたら
@@ -704,7 +704,7 @@ that you always end up going home beaten.”
 # 审校：全局：弯撇号／弯引号
 > 「貴様が何をいおうと、敵である
 >  以上は戦う以外に道はなかろう」
-“Whatever you say, as long as you’re the enemy, there’s no path but to fight.”
+“Say what you like. As long as you’re the enemy, fighting is the only option.”
 
 @28815 Rish · リッシュ（按段落 3DD2）
 # 审校：英文更口语

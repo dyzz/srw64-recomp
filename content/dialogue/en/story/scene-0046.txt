@@ -890,7 +890,7 @@ people I used to know well, long ago.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、ここしばらくレラの奴をみてないと
 >  思ってさ」
-“Nothing. I just realized I haven’t seen Lera around for a while.”
+“Nah. I just realized I haven’t seen Lera around for a while.”
 
 @31902 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
@@ -1551,7 +1551,7 @@ It’s from a poem I heard long ago. That’s the title of the poem.”
 # 审校：全局：弯撇号／弯引号
 > 「へぇ、いいんじゃない?
 >  どう、{HeroNick}?」
-“Oh, that’s nice, isn’t it? What do you think, {HeroNick}?”
+“Ooh, I like it. What do you think, {HeroNick}?”
 
 @32003
 # 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
@@ -1883,7 +1883,7 @@ And for that, I have no choice but to fight here and prove myself.”
 @32057 Musy · ミュージィ
 > 「私は……ショット様のために
 >  戦いましょう」
-“I... I will fight for you, Lord Shot.”
+“I... shall fight for you, Lord Shot.”
 
 @32058 Shot · ショット
 # 审校：“恩を売る”是让对方欠人情，初稿 sell a favor 表达生硬，改为 put ... in our debt。

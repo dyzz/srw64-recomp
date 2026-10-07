@@ -1818,7 +1818,7 @@ wanted to meet you.”
 @31237 Chan · チェーン
 > 「そんなことないです。
 >  ますますがんばろうって、思いました」
-“Not at all. It made me want to work even harder.”
+“Not at all. It made me want to try even harder.”
 
 @31238 Amuro · アムロ
 > 「なにをだい?」
@@ -1828,7 +1828,7 @@ wanted to meet you.”
 # 审校：全局：弯撇号／弯引号
 > 「私の夢なんです。アムロ大尉の
 >  乗るガンダムをつくるのが」
-“It’s my dream. To build the Gundam that Captain Amuro pilots.”
+“It’s my dream. Building the Gundam that Captain Amuro will pilot.”
 
 @31240 Amuro · アムロ
 > 「そういえばアナハイムといっていたが……」
@@ -1949,7 +1949,7 @@ A new Gundam. You can’t do that, can you?”
 # 审校：全局：弯撇号／弯引号
 > 「どっちかに決めてもらえば、
 >  俺にもチャンスがあるってわけだ」
-“If he’d just pick one, that’d mean I’ve got a chance too.”
+“If he’d just pick one of them, I’d have a shot too.”
 
 @31261 Shingo · 真吾
 # 审校：全局：弯撇号／弯引号

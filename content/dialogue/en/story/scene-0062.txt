@@ -413,7 +413,7 @@ But it’s back to training this afternoon.”
 
 @24360 Amuro · アムロ
 > 「いったい何をやってるんだ?」
-“What on earth are you doing?”
+“What exactly are you doing?”
 
 @24361 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
@@ -750,7 +750,7 @@ long ago. That’s the poem’s title.”
 # 审校：全局：弯撇号／弯引号
 > 「へぇ、いいんじゃない?
 >  どう、{HeroNick}?」
-“Oh, that’s nice, isn’t it? What do you think, {HeroNick}?”
+“Ooh, I like it. What do you think, {HeroNick}?”
 
 @24417
 # 审校：选择肢精读：去掉原文没有的引号、选项末不加句号、措辞统一（2026-09-27）
@@ -1352,7 +1352,7 @@ We can only wait for the next time we meet...”
 # 审校：全局：弯撇号／弯引号
 > 「一年戦争の英雄と
 >  ご一緒できるとは、感激です
-“To think I’d get to serve alongside the hero of the One Year War. I’m honored.
+“It’s an honor to serve alongside the hero of the One Year War.
 ---
 >  よろしくお願いします、
 >  アムロ・レイ大尉」
