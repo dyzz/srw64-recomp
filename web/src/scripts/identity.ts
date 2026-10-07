@@ -9,19 +9,19 @@ const T = {
   zh: {
     none: '尚未设置署名。首次提交意见时会随机分配一个机战人物，也可以现在选择。',
     reroll: '随机换一个', pick: '选择人物', nick: '用昵称', save: '保存', cancel: '收起', change: '更改',
-    nickPh: '昵称（最多 20 字）', search: '搜索人物名', loading: '载入中…', failed: '没能更改：', none2: '没有找到符合的人物。',
+    nickPh: '昵称（最多 20 字）', search: '搜索人物名', loading: '载入中…', failed: '没能更改：', errors: { banned: '这个身份已被停止使用。', 'name reserved': '这个昵称不能使用，请换一个。', 'too many requests': '操作太频繁，请稍后再试。' } as Record<string, string>, none2: '没有找到符合的人物。',
     other: '其他', you: '你的署名',
   },
   en: {
     none: 'No display name yet. Your first suggestion will use a random SRW character, or you can choose one now.',
     reroll: 'Randomise', pick: 'Choose a character', nick: 'Use a nickname', save: 'Save', cancel: 'Close', change: 'Change',
-    nickPh: 'Nickname (up to 20 characters)', search: 'Search by name', loading: 'Loading…', failed: 'Could not change: ', none2: 'No matching characters.',
+    nickPh: 'Nickname (up to 20 characters)', search: 'Search by name', loading: 'Loading…', failed: 'Could not change: ', errors: { banned: 'This identity has been disabled.', 'name reserved': 'That nickname cannot be used. Please choose another.', 'too many requests': 'Too many changes. Please try again in a minute.' } as Record<string, string>, none2: 'No matching characters.',
     other: 'Other', you: 'Your display name',
   },
   ja: {
     none: '表示名はまだ設定されていません。初めて意見を送るときにスパロボのキャラクターがランダムで割り当てられます。今選ぶこともできます。',
     reroll: 'ランダムに変える', pick: 'キャラクターを選ぶ', nick: 'ニックネームにする', save: '保存', cancel: '閉じる', change: '変更',
-    nickPh: 'ニックネーム（20 文字まで）', search: '名前で検索', loading: '読み込み中…', failed: '変更できませんでした：', none2: '該当するキャラクターが見つかりません。',
+    nickPh: 'ニックネーム（20 文字まで）', search: '名前で検索', loading: '読み込み中…', failed: '変更できませんでした：', errors: { banned: 'この ID は利用できなくなりました。', 'name reserved': 'このニックネームは使えません。別のものにしてください。', 'too many requests': '操作が多すぎます。しばらくしてからお試しください。' } as Record<string, string>, none2: '該当するキャラクターが見つかりません。',
     other: 'その他', you: 'あなたの表示名',
   },
 };
@@ -102,7 +102,7 @@ export function mountIdentity(box: HTMLElement, lang: Lang, opts: { compact?: bo
       const { participant } = await api(`me?lang=${lang}`, { method: 'POST', body: JSON.stringify(body) });
       announce(participant);
       drawer.replaceChildren();
-    } catch (e) { msg.textContent = t.failed + (e as Error).message; }
+    } catch (e) { msg.textContent = t.failed + (t.errors[(e as Error).message] ?? (e as Error).message); }
   }
 
   reroll.addEventListener('click', () => change({ mode: 'pilot' }));

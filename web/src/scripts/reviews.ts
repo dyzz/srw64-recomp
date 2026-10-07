@@ -10,7 +10,7 @@ const T = {
     confirm: '确定撤回这条意见？', empty: '这里还没有意见。', more: '加载更多', offline: '意见功能暂时不可用，请稍后再试。', line: '台词',
     results: { all: '全部', pending: '待处理', questioned: '待确认', adopted: '已采纳', final: '最终译文', dismissed: '未采纳' },
     verdict: { adopted: '已采纳：你的建议已原样用于译文。', final: '已处理：译文已按维护者的最终方案更新。', dismissed: '未采纳。', questioned: '维护者需要补充信息，请在下方回复。' },
-    finalText: '最终译文：', fresh: '新结果', cap: '显示最近 500 条意见。',
+    finalText: '最终译文：', fresh: '新结果', hidden: '这条意见的内容已被管理员隐藏，其他人看不到；只有你能看到它的状态。', cap: '显示最近 500 条意见。',
   },
   en: {
     status: { pending: 'Pending', questioned: 'Needs clarification', processed: 'Done', dismissed: 'Declined' }, adopted: 'Accepted as proposed',
@@ -20,7 +20,7 @@ const T = {
     confirm: 'Withdraw this suggestion?', empty: 'No suggestions here yet.', more: 'Load more', offline: 'Suggestions are temporarily unavailable. Please try again later.', line: 'line',
     results: { all: 'All', pending: 'Pending', questioned: 'Needs clarification', adopted: 'Accepted', final: 'Final wording', dismissed: 'Declined' },
     verdict: { adopted: 'Accepted: your suggested wording has been used as written.', final: 'Done: the translation has been updated to the maintainers’ final wording.', dismissed: 'Declined.', questioned: 'The maintainers need more information. Please reply below.' },
-    finalText: 'Final wording: ', fresh: 'New', cap: 'Showing the latest 500 suggestions.',
+    finalText: 'Final wording: ', fresh: 'New', hidden: 'The maintainers have hidden the words of this suggestion. Others no longer see it; only you see its state.', cap: 'Showing the latest 500 suggestions.',
   },
   ja: {
     status: { pending: '未対応', questioned: '確認待ち', processed: '対応済み', dismissed: '見送り' }, adopted: '提案どおり採用',
@@ -30,7 +30,7 @@ const T = {
     confirm: 'この意見を取り消しますか？', empty: 'まだ意見はありません。', more: 'さらに読み込む', offline: '現在、意見機能を利用できません。時間をおいてお試しください。', line: '行',
     results: { all: 'すべて', pending: '未対応', questioned: '確認待ち', adopted: '採用', final: '最終訳', dismissed: '見送り' },
     verdict: { adopted: '採用：提案どおりの訳が反映されました。', final: '対応済み：管理者の最終案を訳文に反映しました。', dismissed: '見送りになりました。', questioned: '管理者から確認事項があります。下で回答してください。' },
-    finalText: '最終訳：', fresh: '新着', cap: '最新 500 件の意見を表示しています。',
+    finalText: '最終訳：', fresh: '新着', hidden: 'この意見の内容は管理者により非表示になりました。他の人には表示されず、状態はあなただけが確認できます。', cap: '最新 500 件の意見を表示しています。',
   },
 };
 import { markResultsSeen, onMeChange, unseenResults } from './identity';
@@ -69,7 +69,9 @@ export function initReviews() {
       return a;
     }
     const a = el('a', '', x.source);
-    a.href = x.context.href || `/${lang}/library/`;
+    // Only a path on this site (the server keeps no other); never javascript: or another host.
+    const href = String(x.context.href ?? '');
+    a.href = /^\/(zh|en|ja)\//.test(href) && !href.startsWith('//') ? href : `/${lang}/library/`;
     return a;
   }
 
@@ -91,6 +93,7 @@ export function initReviews() {
       if (fresh.has(x.id)) v.prepend(el('span', 'new', t.fresh));
       li.append(v);
     }
+    if (x.hidden) li.append(el('p', 'verdict r-dismissed', t.hidden));
     if (x.target_type === 'dialogue') li.append(el('div', 'src', x.source));
     const line = (k: string, cls: string, text: string) => { const p = el('div', cls); p.append(el('span', 'k', k), text); return p; };
     if (x.proposed) { li.append(line(t.now, 'cur', x.current), line(t.proposed, 'pro', x.proposed)); }

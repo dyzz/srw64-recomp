@@ -38,8 +38,9 @@ const path = Astro.url.pathname;
     <meta property="og:description" content={desc} />
     <meta property="og:image" content={new URL(`/media/hero-${lang}.webp`, Astro.site)} />
     <meta property="og:type" content="website" />
-    <script is:inline>
-      // Remember the language the reader chose, for the root page's redirect.
+    <script>
+      // Remember the language the reader chose, for the root page's redirect. Processed, not
+      // is:inline, so Astro hashes it for the pages' Content-Security-Policy.
       try { localStorage.setItem('srw64-lang', document.documentElement.lang.startsWith('zh') ? 'zh' : document.documentElement.lang); } catch (e) {}
     </script>
   </head>

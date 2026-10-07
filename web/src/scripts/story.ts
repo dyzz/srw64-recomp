@@ -156,6 +156,6 @@ export function initStory() {
     if (id) document.getElementById(id)?.scrollIntoView({ block: 'start' });
   });
 
-  const target = location.hash && document.getElementById(location.hash.slice(1));
+  const target = location.hash ? document.getElementById(location.hash.slice(1)) : null;
   if (target?.classList.contains('line')) target.scrollIntoView({ block: 'center' });
 }

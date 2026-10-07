@@ -9,7 +9,7 @@ type Item = {
   id: number; target_type: string; target_id: string; locale: string; kind: string;
   current: string; proposed: string; reason: string; created_at: string;
   author: { name: string; avatar: string | null }; mine: boolean;
-  status: 'pending' | 'questioned' | 'processed' | 'dismissed'; adopted?: boolean;
+  status: 'pending' | 'questioned' | 'processed' | 'dismissed'; adopted?: boolean; hidden?: boolean;
   admin_reason?: string; question_response?: string;
 };
 
@@ -19,7 +19,8 @@ const T = {
     status: { pending: '待处理', questioned: '待确认', processed: '已处理', dismissed: '未采纳' },
     adopted: '已采纳', proposal: '建议', reason: '理由', reasonPh: '修改内容与理由（可选）',
     proposedLabel: '建议译文', submit: '提交意见', sent: '已提交，谢谢！', anon: '匿名',
-    none: '这一句还没有意见。', offline: '意见功能暂时不可用，请稍后再试。', failed: '提交失败：', me: '我的意见',
+    none: '这一句还没有意见。', offline: '意见功能暂时不可用，请稍后再试。', failed: '提交失败：', me: '我的意见', hiddenNote: '内容已被管理员隐藏，只有你能看到这条意见。',
+    errors: { banned: '这个身份已被停止提交意见。', 'name reserved': '这个昵称不能使用，请换一个。', 'too many requests': '提交太频繁，请稍后再试。' } as Record<string, string>,
     hint: '无需注册。提交后可在「我的意见」中修改、撤回或查看处理结果。', as: '署名：{}（右上角可更改）', asNew: '首次提交时会随机分配一个机战人物作为署名，可在右上角更改。', question: '维护者的问题', close: '收起',
     empty: '请填写建议译文或修改理由，至少一项。', same: '建议译文与当前译文相同。',
   },
@@ -28,7 +29,8 @@ const T = {
     status: { pending: 'Pending', questioned: 'Needs clarification', processed: 'Done', dismissed: 'Declined' },
     adopted: 'Accepted', proposal: 'Suggestion', reason: 'Reason', reasonPh: 'What to change and why (optional)',
     proposedLabel: 'Suggested translation', submit: 'Send suggestion', sent: 'Suggestion sent. Thank you!', anon: 'anonymous',
-    none: 'No suggestions on this line yet.', offline: 'Suggestions are temporarily unavailable. Please try again later.', failed: 'Could not send: ', me: 'My suggestions',
+    none: 'No suggestions on this line yet.', offline: 'Suggestions are temporarily unavailable. Please try again later.', failed: 'Could not send: ', me: 'My suggestions', hiddenNote: 'The maintainers have hidden its words; only you see this suggestion.',
+    errors: { banned: 'This identity can no longer send suggestions.', 'name reserved': 'That nickname cannot be used. Please choose another.', 'too many requests': 'Too many requests. Please try again in a minute.' } as Record<string, string>,
     hint: 'No account needed. Use My suggestions to edit or withdraw your suggestions and check their results.', as: 'Display name: {} (change it at the top right)', asNew: 'Your first suggestion uses a randomly assigned SRW character as your display name. You can change it at the top right.', question: 'Maintainer’s question', close: 'Close',
     empty: 'Enter a suggested translation, a reason, or both.', same: 'The suggested translation matches the current text.',
   },
@@ -37,7 +39,8 @@ const T = {
     status: { pending: '未対応', questioned: '確認待ち', processed: '対応済み', dismissed: '見送り' },
     adopted: '採用', proposal: '提案', reason: '理由', reasonPh: '修正したい点と理由（任意）',
     proposedLabel: '修正案', submit: '意見を送る', sent: '送信しました。ありがとうございます！', anon: '匿名',
-    none: 'この行への意見はまだありません。', offline: '現在、意見機能を利用できません。時間をおいてお試しください。', failed: '送信できませんでした：', me: '自分の意見',
+    none: 'この行への意見はまだありません。', offline: '現在、意見機能を利用できません。時間をおいてお試しください。', failed: '送信できませんでした：', me: '自分の意見', hiddenNote: '内容は管理者により非表示になりました。この意見はあなたにだけ表示されています。',
+    errors: { banned: 'この ID からは意見を送信できなくなりました。', 'name reserved': 'このニックネームは使えません。別のものにしてください。', 'too many requests': '送信が多すぎます。しばらくしてからお試しください。' } as Record<string, string>,
     hint: '登録は不要です。送信後は「自分の意見」で修正・取り消しや対応結果の確認ができます。', as: '表示名：{}（右上で変更できます）', asNew: '初めて意見を送るときに、スパロボのキャラクター名がランダムで割り当てられます。右上で変更できます。', question: '管理者からの質問', close: '閉じる',
     empty: '修正案か理由のどちらかを入力してください。', same: '修正案が現在の訳と同じです。',
   },
@@ -137,6 +140,7 @@ export function initSuggestions() {
       head.append(el('span', `sg-status st-${x.status}`, x.adopted ? t.adopted : t.status[x.status]));
       head.append(el('span', 'sg-kind', (t.kinds as Record<string, string>)[x.kind] || x.kind));
       card.append(head);
+      if (x.hidden) card.append(el('p', 'sg-note', t.hiddenNote));
       if (x.proposed) { const p = el('p', 'sg-proposed'); p.append(el('span', 'sg-k', `${t.proposal}：`), document.createTextNode(x.proposed)); card.append(p); }
       if (x.reason) { const p = el('p', 'sg-reason'); p.append(el('span', 'sg-k', `${t.reason}：`), document.createTextNode(x.reason)); card.append(p); }
       if (x.admin_reason) { const p = el('p', 'sg-admin'); p.append(el('span', 'sg-k', `${x.status === 'questioned' ? t.question : t.status[x.status]}：`), document.createTextNode(x.admin_reason)); card.append(p); }
@@ -206,7 +210,7 @@ export function initSuggestions() {
         panelFor(b);
         host.querySelector('.sg-panel .sg-note')?.replaceWith(el('p', 'sg-ok', t.sent));
       } catch (e) {
-        hint.textContent = t.failed + (e as Error).message;
+        hint.textContent = t.failed + (t.errors[(e as Error).message] ?? (e as Error).message);
         submit.disabled = false;
       }
     });

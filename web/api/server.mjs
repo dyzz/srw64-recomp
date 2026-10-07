@@ -32,7 +32,7 @@ const PORT = Number(process.env.SRW64_API_PORT || 3064);
 const DATA = process.env.SRW64_DATA || join(process.cwd(), '.data');
 const DB_PATH = process.env.SRW64_DB || join(DATA, 'reviews.sqlite3');
 const ADMIN_TOKEN = process.env.SRW64_ADMIN_TOKEN || '';
-const ORIGINS = (process.env.SRW64_ORIGINS || 'https://srw64.dreamquest.club,http://localhost:4321,http://127.0.0.1:4321,http://localhost:59151,http://127.0.0.1:59151').split(',');
+const ORIGINS = (process.env.SRW64_ORIGINS || 'https://srw64.dreamquest.club,http://localhost:4321,http://127.0.0.1:4321,http://localhost:59151,http://127.0.0.1:59151,http://localhost:59152,http://127.0.0.1:59152').split(',');
 const SECURE = process.env.SRW64_SECURE_COOKIE === '1';
 const COOKIE = 'srw64_session';
 const LOCALES = new Set(['zh-Hans', 'en']);
@@ -127,10 +127,12 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS admin_log (
     id INTEGER PRIMARY KEY, suggestion_id INTEGER NOT NULL, action TEXT NOT NULL, reason TEXT NOT NULL, at TEXT NOT NULL);
 `);
-// Databases made before nicknames had faces.
-if (!db.prepare('PRAGMA table_info(participants)').all().some((c) => c.name === 'custom_avatar')) {
-  db.exec('ALTER TABLE participants ADD COLUMN custom_avatar INTEGER');
-}
+// Columns added after the first databases: nickname faces, and moderation (a suggestion
+// hidden from the public lists, a participant banned from writing).
+const columns = (table) => db.prepare(`PRAGMA table_info(${table})`).all().map((c) => c.name);
+if (!columns('participants').includes('custom_avatar')) db.exec('ALTER TABLE participants ADD COLUMN custom_avatar INTEGER');
+if (!columns('participants').includes('banned')) db.exec('ALTER TABLE participants ADD COLUMN banned INTEGER NOT NULL DEFAULT 0');
+if (!columns('suggestions').includes('hidden')) db.exec('ALTER TABLE suggestions ADD COLUMN hidden INTEGER NOT NULL DEFAULT 0');
 const now = () => new Date().toISOString();
 const sha = (s) => createHash('sha256').update(s).digest('hex');
 
@@ -178,26 +180,42 @@ function status(row) {
   if (row.admin_status === 'processed') return { status: 'processed', adopted: false, live };
   return { status: 'pending' };
 }
-function view(row, me, lang) {
+// full: the maintainer's view, words of hidden suggestions and the author's ban included.
+function view(row, me, lang, full = false) {
   const owner = db.prepare('SELECT * FROM participants WHERE id = ?').get(row.participant_id);
   const st = status(row);
   const context = JSON.parse(row.context_json || '{}');
   if (context.scene != null) context.scene_title = sceneTitle.get(context.scene)?.[lang] ?? null;
+  // A hidden suggestion keeps its place and state, but its words are gone from every list;
+  // only its author still sees that it was hidden (moderation, POST /api/admin/suggestions).
+  const hidden = !!row.hidden;
+  const words = (s) => (hidden && !full ? '' : s);
   return {
     id: row.id, target_type: row.target_type, target_id: row.target_id, locale: row.locale, kind: row.kind,
-    source: row.source_text, current: row.current_text, proposed: row.proposed, reason: row.reason,
+    source: row.source_text, current: row.current_text, proposed: words(row.proposed), reason: words(row.reason), hidden,
     context, created_at: row.created_at, updated_at: row.updated_at,
     author: display(owner, lang), mine: !!me && me.id === row.participant_id,
     ...st, result: st.status === 'processed' ? (st.adopted ? 'adopted' : 'final') : st.status,
-    admin_reason: row.admin_reason, admin_at: row.admin_at, question_response: row.question_response,
+    admin_reason: row.admin_reason, admin_at: row.admin_at, question_response: words(row.question_response),
+    ...(full ? { participant_id: row.participant_id, banned: !!owner?.banned } : {}),
   };
 }
 const clean = (s, max) => String(s ?? '').replace(/\r\n?/g, '\n').trim().slice(0, max);
+// A link a suggestion keeps back to its page: only a path on this site (/zh/…, /en/…,
+// /ja/…). Anything else, javascript: and other sites included, is dropped.
+const sitePath = (s) => {
+  const v = clean(s, 300);
+  return /^\/(zh|en|ja)\/[A-Za-z0-9/_.~%#?=&:-]*$/.test(v) && !v.includes('//') ? v : undefined;
+};
+// Nicknames that would pass for the site's own voice.
+const RESERVED = /管理|维护|維護|官方|版主|站长|admin|moderator|maintainer|official|marchwind|srw64|三月风|マーチウィンド|管理者|運営/i;
 
 // ---------------------------------------------------------------- http
 const hits = new Map();
 function limited(req) {
-  const ip = req.headers['ali-cdn-real-ip'] || req.headers['x-real-ip'] || req.socket.remoteAddress;
+  // Nginx sets X-Real-IP: the visitor behind the CDN when the request came from a CDN
+  // address (real_ip), else the peer itself. Headers a client sends are never trusted.
+  const ip = req.headers['x-real-ip'] || req.socket.remoteAddress;
   const minute = Math.floor(Date.now() / 60000);
   const key = `${ip}:${minute}`;
   const n = (hits.get(key) || 0) + 1;
@@ -264,11 +282,14 @@ const routes = {
   // A nickname ({mode:'custom', name}), a chosen character ({mode:'pilot', pilot_id}) or a
   // random ally ({mode:'pilot'}). Creates the identity when the browser has none yet.
   'POST /api/me': async (req, url, res) => {
+    if (limited(req)) return [429, { error: 'too many requests' }];
     const body = await readBody(req);
     let me = participantOf(req) || newParticipant(res);
+    if (me.banned) return [403, { error: 'banned' }];
     if (body.mode === 'custom') {
       const name = clean(body.name, 20);
       if (!name) return [400, { error: 'name required' }];
+      if (RESERVED.test(name)) return [400, { error: 'name reserved' }];
       // The soldier's face stays while the nickname changes.
       const face = me.mode === 'custom' && me.custom_avatar != null ? me.custom_avatar : randomOf(soldierFaces);
       db.prepare('UPDATE participants SET mode = ?, custom_name = ?, custom_avatar = ?, updated_at = ? WHERE id = ?').run('custom', name, face, now(), me.id);
@@ -307,7 +328,8 @@ const routes = {
       if (LOCALES.has(p.get('locale'))) { where.push('locale = ?'); args.push(p.get('locale')); }
       rows = recent(where.join(' AND '), args).reverse();
     }
-    let items = rows.map((r) => view(r, me, lang));
+    // Hidden suggestions show only to their author.
+    let items = rows.filter((r) => !r.hidden || (me && r.participant_id === me.id)).map((r) => view(r, me, lang));
     const counts = { pending: 0, questioned: 0, processed: 0, dismissed: 0 };
     for (const it of items) counts[it.status]++;
     if (p.get('status')) items = items.filter((it) => it.status === p.get('status'));
@@ -331,7 +353,8 @@ const routes = {
     const kind = KINDS.has(b.kind) ? b.kind : 'other';
     const requestId = clean(b.request_id, 64) || randomBytes(8).toString('hex');
     const me = participantOf(req) || newParticipant(res);
-    const ctx = { scene: tgt.scene ?? (Number.isInteger(b.context?.scene) ? b.context.scene : undefined), href: clean(b.context?.href, 300) || undefined, speaker: clean(b.context?.speaker, 60) || undefined };
+    if (me.banned) return [403, { error: 'banned' }];
+    const ctx = { scene: tgt.scene ?? (Number.isInteger(b.context?.scene) ? b.context.scene : undefined), href: sitePath(b.context?.href), speaker: clean(b.context?.speaker, 60) || undefined };
     const t = now();
     const existing = db.prepare('SELECT * FROM suggestions WHERE participant_id = ? AND request_id = ?').get(me.id, requestId);
     if (existing) return [200, { item: view(existing, me, url.searchParams.get('lang') || 'zh') }];
@@ -348,6 +371,7 @@ const routes = {
     const me = participantOf(req);
     const row = me && db.prepare('SELECT * FROM suggestions WHERE id = ? AND participant_id = ?').get(Number(b.id), me.id);
     if (!row) return [404, { error: 'not found' }];
+    if (me.banned) return [403, { error: 'banned' }];
     const st = status(row).status;
     if (b.answer != null) {
       if (st !== 'questioned') return [409, { error: 'no open question' }];
@@ -373,12 +397,37 @@ const routes = {
     return [200, { ok: true }];
   },
 
-  // Maintainer: {action: dismiss|question|process|restore, ids: [..], reason}.
+  // Maintainer: {action: dismiss|question|process|restore, ids: [..], reason}, or moderation:
+  // hide|unhide (the suggestions' words leave the public lists), ban|unban (their authors
+  // can no longer write; a ban also drops a nickname for a random character).
   'POST /api/admin/suggestions': async (req) => {
     if (!admin(req)) return [401, { error: 'admin token required' }];
     const b = await readBody(req);
     const ids = (Array.isArray(b.ids) ? b.ids : []).map(Number).filter(Number.isInteger).slice(0, 200);
     const reason = clean(b.reason, 1000);
+    const moderation = { hide: ['hidden', 1], unhide: ['hidden', 0], ban: ['banned', 1], unban: ['banned', 0] }[b.action];
+    if (moderation) {
+      if (!ids.length) return [400, { error: 'ids required' }];
+      const [what, value] = moderation, t = now();
+      let changed = 0;
+      db.exec('BEGIN');
+      try {
+        for (const id of ids) {
+          if (what === 'hidden') {
+            changed += db.prepare('UPDATE suggestions SET hidden = ? WHERE id = ?').run(value, id).changes;
+          } else {
+            const row = db.prepare('SELECT participant_id FROM suggestions WHERE id = ?').get(id);
+            if (!row) continue;
+            changed += db.prepare('UPDATE participants SET banned = ?, updated_at = ? WHERE id = ?').run(value, t, row.participant_id).changes;
+            if (value) db.prepare(`UPDATE participants SET mode = 'pilot', pilot_id = ?, custom_name = NULL WHERE id = ? AND mode = 'custom'`)
+              .run(randomOf(pilots).id, row.participant_id);
+          }
+          db.prepare('INSERT INTO admin_log (suggestion_id, action, reason, at) VALUES (?, ?, ?, ?)').run(id, b.action, reason, t);
+        }
+        db.exec('COMMIT');
+      } catch (e) { db.exec('ROLLBACK'); throw e; }
+      return [200, { changed }];
+    }
     const state = { dismiss: 'dismissed', question: 'questioned', process: 'processed', restore: '' }[b.action];
     if (state === undefined || !ids.length) return [400, { error: 'action and ids required' }];
     if (b.action !== 'restore' && !reason) return [400, { error: 'reason required' }];
@@ -398,7 +447,7 @@ const routes = {
   // Maintainer export: every suggestion with its derived state, for working through.
   'GET /api/admin/suggestions': (req, url) => {
     if (!admin(req)) return [401, { error: 'admin token required' }];
-    let items = db.prepare(`SELECT * FROM suggestions ORDER BY id DESC LIMIT ${MAX_LIST}`).all().reverse().map((r) => view(r, null, 'zh'));
+    let items = db.prepare(`SELECT * FROM suggestions ORDER BY id DESC LIMIT ${MAX_LIST}`).all().reverse().map((r) => view(r, null, 'zh', true));
     const st = url.searchParams.get('status');
     if (st) items = items.filter((x) => x.status === st);
     return [200, { items }];

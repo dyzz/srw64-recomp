@@ -12,7 +12,8 @@ import { LANGS } from '../i18n';
     <title>MARCHWIND 64</title>
     <link rel="icon" href="/brand/icon-32.png" sizes="32x32" type="image/png" />
     {LANGS.map((l) => <link rel="alternate" hreflang={l.tag} href={`/${l.code}/`} />)}
-    <script is:inline>
+    <!-- Processed, not is:inline, so Astro hashes it for the Content-Security-Policy. -->
+    <script>
       (function () {
         var ok = ['zh', 'en', 'ja'];
         var norm = function (v) { v = String(v || '').toLowerCase(); return v.indexOf('zh') === 0 ? 'zh' : v.indexOf('ja') === 0 ? 'ja' : v.indexOf('en') === 0 ? 'en' : null; };

@@ -42,7 +42,7 @@ rsync -a --delete ${LINK:+--link-dest=$LINK/public} "$WEB/dist/" "$HOST:$REL/pub
 rsync -a ${LINK:+--link-dest=$LINK/api} "$WEB/api/" "$HOST:$REL/api/"
 rsync -a ${LINK:+--link-dest=$LINK/data} "$WEB/.data/library.json" "$HOST:$REL/data/"
 rsync -a ${LINK:+--link-dest=$LINK/data/story} "$WEB/.data/story/index.json" "$WEB/.data/story/search.json" "$HOST:$REL/data/story/"
-scp -q "$WEB/deploy/nginx-srw64.conf" "$WEB/deploy/srw64-api.service" "$WEB/deploy/srw64-api-backup.service" "$WEB/deploy/srw64-api-backup.timer" "$HOST:$REL/"
+scp -q "$WEB/deploy/nginx-srw64.conf" "$WEB/deploy/nginx-srw64-headers.conf" "$WEB/deploy/srw64-api.service" "$WEB/deploy/srw64-api-backup.service" "$WEB/deploy/srw64-api-backup.timer" "$HOST:$REL/"
 
 ssh "$HOST" bash -s -- "$REL" <<'REMOTE'
 set -euo pipefail
@@ -53,6 +53,8 @@ if [ ! -f /etc/srw64-api.env ]; then
 fi
 install -m 644 "$REL/srw64-api.service" "$REL/srw64-api-backup.service" "$REL/srw64-api-backup.timer" /etc/systemd/system/
 install -m 644 "$REL/nginx-srw64.conf" /etc/nginx/sites-available/srw64
+install -m 644 "$REL/nginx-srw64-headers.conf" /etc/nginx/srw64-headers.conf
+[ -f /etc/nginx/srw64-cdn.conf ] || echo "warning: /etc/nginx/srw64-cdn.conf is missing: visitors' addresses are the CDN's (README)" >&2
 ln -sfn /etc/nginx/sites-available/srw64 /etc/nginx/sites-enabled/srw64
 ln -sfn "$REL" /srv/srw64/current.new && mv -T /srv/srw64/current.new /srv/srw64/current
 systemctl daemon-reload
