@@ -48,6 +48,11 @@
 #ifdef __APPLE__
 #include "plume_metal.h"
 #endif
+#ifdef __ANDROID__
+#include <android/native_window.h>
+// Plume's Vulkan swap chain asks for the activity's current window (rt64_android_patches.py).
+namespace plume { extern ANativeWindow *(*AndroidCurrentWindow)(); }
+#endif
 #define STB_IMAGE_WRITE_STATIC
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
@@ -64,6 +69,15 @@
 #include <fstream>
 
 namespace {
+#ifdef __ANDROID__
+// The game's SDL window and its current ANativeWindow, for Plume (rt64_android_patches.py).
+SDL_Window* android_window = nullptr;
+ANativeWindow* android_current_window() {
+    SDL_SysWMinfo wm{};
+    SDL_VERSION(&wm.version);
+    return SDL_GetWindowWMInfo(android_window, &wm) && wm.subsystem == SDL_SYSWM_ANDROID ? wm.info.android.window : nullptr;
+}
+#endif
 SDL_Window* window;
 #ifdef __APPLE__
 SDL_MetalView view;
@@ -373,6 +387,10 @@ public:
         SDL_VERSION(&info.version);
         if (!SDL_GetWindowWMInfo(handle, &info) || info.subsystem != SDL_SYSWM_ANDROID) std::abort();
         core.window = info.info.android.window;
+        // Back from the background the activity has a new window (rt64_android_patches.py):
+        // Plume asks SDL for it when it remakes the swap chain; null while there is none.
+        android_window = handle;
+        plume::AndroidCurrentWindow = android_current_window;
 #else
         core.window = handle;
 #endif

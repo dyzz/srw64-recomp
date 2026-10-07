@@ -74,7 +74,7 @@ plume 留着一套安卓骨架：
 | nativefiledialog 无条件链接；它的 CMake 把安卓当 Linux | RT64 `CMakeLists.txt:74,444` | 配置期要 GTK3，CMake 失败 |
 | DXC 和 `file_to_c` 按目标平台选择 | RT64 `CMakeLists.txt:61-65,72` | 交叉编译时在构建机上运行 arm64 程序 |
 | 交换链只认 `B8G8R8A8_UNORM` | `rt64_application.cpp:328`、`plume_vulkan.cpp:2207-2209` | 安卓表面一般只提供 `R8G8B8A8`，创建交换链失败 |
-| 表面只创建一次 | plume Vulkan 后端 | 切到后台时安卓会销毁 `ANativeWindow`，回到前台无法重建 |
+| 表面只创建一次 | plume Vulkan 后端 | 切到后台时安卓会销毁 `ANativeWindow`，回到前台无法重建。2026-10-07 已修：`rt64_android_patches.py` 让 `VulkanSwapChain::resize()` 在表面丢失或窗口换了时，用宿主给的当前窗口（`graphics.cpp` 从 SDL 取，后台时为空就等）重建表面；Seeker 上 Home、切到「文件」App 再回来都恢复。锁屏/解锁不换窗口，以前就正常 |
 | `preTransform` 固定为 IDENTITY | `plume_vulkan.cpp:2343` | 屏幕原生竖放的设备每帧多一次系统旋转，约 1–3 ms，并返回 SUBOPTIMAL（[Android 预旋转](https://developer.android.com/games/optimize/vulkan-prerotation)） |
 | 混合固定用 `SRC1_ALPHA`（dualSrcBlend），不检查设备是否支持 | `rt64_raster_shader.cpp:336-337` | **所有 Mali 都没有这个特性**，驱动仍返回成功，画面全白（Goemon 在 Mali-G57 上实测） |
 | `preferHDR`：设备本地内存大于 512 MB 时成立 | `plume_vulkan.cpp:4136` | 手机是统一内存，一律走 RGBA16 渲染目标，在分块 GPU 上更费带宽（推断） |

@@ -242,6 +242,58 @@ endif()'''),
             targetBlend.srcBlend = RenderBlend::SRC1_ALPHA;
             targetBlend.dstBlend = RenderBlend::INV_SRC1_ALPHA;
 #       endif'''),
+    # Leaving the app (Home, the Files app) destroys the activity's window, and coming back
+    # brings a new one: the swap chain's surface is lost for good and every new swap chain
+    # on it fails (SURFACE_LOST, then NATIVE_WINDOW_IN_USE), so the picture stays frozen.
+    # The host tells Plume where the current window is (graphics.cpp, from SDL); resize()
+    # makes a surface on it when the old one is lost or the window changed, and waits
+    # while there is none (in the background).
+    ('src/contrib/plume/plume_vulkan.cpp', '''    // VulkanSwapChain
+
+    VulkanSwapChain::VulkanSwapChain(''', '''    // VulkanSwapChain
+
+#ifdef __ANDROID__
+    // The activity's current window, or null while it has none; set by the host, which
+    // declares it itself (prepare_rt64.py patches no Plume headers).
+    ANativeWindow *(*AndroidCurrentWindow)() = nullptr;
+#endif
+
+    VulkanSwapChain::VulkanSwapChain('''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''    bool VulkanSwapChain::resize() {
+        getWindowSize(width, height);''', '''    bool VulkanSwapChain::resize() {
+#   ifdef __ANDROID__
+        if (AndroidCurrentWindow != nullptr) {
+            ANativeWindow *window = AndroidCurrentWindow();
+            if (window == nullptr) {
+                return false;
+            }
+
+            VkSurfaceCapabilitiesKHR capabilities = {};
+            const bool lost = (surface == VK_NULL_HANDLE) ||
+                (vkGetPhysicalDeviceSurfaceCapabilitiesKHR(commandQueue->device->physicalDevice, surface, &capabilities) == VK_ERROR_SURFACE_LOST_KHR);
+            if (lost || (window != desc.renderWindow)) {
+                VulkanInterface *renderInterface = commandQueue->device->renderInterface;
+                releaseImageViews();
+                releaseSwapChain();
+                if (surface != VK_NULL_HANDLE) {
+                    vkDestroySurfaceKHR(renderInterface->instance, surface, nullptr);
+                    surface = VK_NULL_HANDLE;
+                }
+
+                desc.renderWindow = window;
+                VkAndroidSurfaceCreateInfoKHR surfaceCreateInfo = {};
+                surfaceCreateInfo.sType = VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
+                surfaceCreateInfo.window = window;
+                VkResult surfaceRes = vkCreateAndroidSurfaceKHR(renderInterface->instance, &surfaceCreateInfo, nullptr, &surface);
+                if (surfaceRes != VK_SUCCESS) {
+                    fprintf(stderr, "vkCreateAndroidSurfaceKHR failed with error code 0x%X.\\n", surfaceRes);
+                    surface = VK_NULL_HANDLE;
+                    return false;
+                }
+            }
+        }
+#   endif
+        getWindowSize(width, height);'''),
 ]
 
 # prepare_rt64.py applies a file's replacements in this order, after its own.
