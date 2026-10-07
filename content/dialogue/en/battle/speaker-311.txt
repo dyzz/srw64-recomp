@@ -9,7 +9,7 @@
 @13857 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击（通用，2/11）
 > 「覚悟!」
-“Prepare yourself!”
+“You’re finished!”
 
 @13858 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击（通用，3/11）
@@ -190,7 +190,7 @@
 # 触发：回避（通用，6/7）
 # 审校：原句英文生硬
 > 「かわしてみせる!!」
-“I’ll dodge it, just watch!!”
+“Watch me dodge this!!”
 
 @13890 Neo Zeon Soldier · ネオジオン兵
 # 触发：回避（通用，7/7）
@@ -200,7 +200,7 @@
 @13891 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「そんなビームなど!」
-“A Beam like that?!”
+“A beam like that?!”
 
 @13892 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -210,7 +210,7 @@
 @13893 Neo Zeon Soldier · ネオジオン兵
 # 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「ちっ、しまった! 弾切れか!」
-“Tch, damn! Out of ammo!”
+“Tch, damn! Out of ammo?!”
 
 @13894 Neo Zeon Soldier · ネオジオン兵
 # 触发：弹药／EN 不足，无法反击（通用，2/2）

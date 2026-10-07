@@ -14,7 +14,7 @@
 @13373 Specials · スペシャルズ
 # 触发：攻击（通用，3/10）
 > 「これでとどめだ!!」
-“This is the finisher!!”
+“This’ll finish you!!”
 
 @13374 Specials · スペシャルズ
 # 触发：攻击（通用，4/10）
@@ -84,12 +84,12 @@
 @13386 Specials · スペシャルズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「やるっ! さすがは!」
-“Not bad! As expected!”
+“Not bad! Just what I’d expect!”
 
 @13387 Specials · スペシャルズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「ぐうぅっ!! パワーが違いすぎる!!」
-“Guh!! The power difference is too much!!”
+“Guh!! That power’s on another level!!”
 
 @13388 Specials · スペシャルズ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -101,7 +101,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 # 审校：少しはできる；弯撇号
 > 「くっ! 少しはできるな!」
-“Ngh! You’ve got some skill!”
+“Ngh! You’re not half bad!”
 
 @13390 Specials · スペシャルズ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
@@ -118,7 +118,7 @@
 @13392 Specials · スペシャルズ
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「まだだっ! まだこれからよ!!」
-“Not yet! This is just the beginning!!”
+“Not yet! I’m just getting started!!”
 
 @13393 Specials · スペシャルズ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/4）
@@ -128,7 +128,7 @@
 @13394 Specials · スペシャルズ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/4）
 > 「その程度か!」
-“Is that all!”
+“Is that all?!”
 
 @13395 Specials · スペシャルズ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
@@ -167,7 +167,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふ、そんなビームではな!」
-“Heh, a Beam like that won’t do it!”
+“Heh, a beam like that won’t do it!”
 
 @13402 Specials · スペシャルズ
 # 触发：弹药／EN 不足，无法反击（通用，1/2）
@@ -177,12 +177,12 @@
 @13403 Specials · スペシャルズ
 # 触发：弹药／EN 不足，无法反击（通用，2/2）
 > 「弾切れか……しかたあるまい」
-“Out of ammo... nothing to be done.”
+“Out of ammo... nothing I can do.”
 
 @13404 Specials · スペシャルズ
 # 触发：射程外，无法反击（通用，1/2）
 > 「ちっ、遠距離からの攻撃か……」
-“Tch, a long-range attack...”
+“Tch, hitting me from long range...”
 
 @13405 Specials · スペシャルズ
 # 触发：射程外，无法反击（通用，2/2）

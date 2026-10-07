@@ -14,7 +14,7 @@
 @13974 Grados Soldier · グラドス兵
 # 触发：攻击（通用，3/10）
 > 「これでとどめだ!!」
-“This is the finishing blow!!”
+“This’ll finish you!!”
 
 @13975 Grados Soldier · グラドス兵
 # 触发：攻击（通用，4/10）
@@ -51,7 +51,7 @@
 @13981 Grados Soldier · グラドス兵
 # 触发：攻击（通用，10/10）
 > 「もらった!」
-“Got him!”
+“You’re mine!”
 
 @13982 Grados Soldier · グラドス兵
 # 触发：被击坠（通用，1/2）
@@ -69,13 +69,13 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうっ、い、いかん、やられる!?」
-“Guuh, n-no good, I’m done for?!”
+“Guuh, n-not good, I’m done for?!”
 
 @13985 Grados Soldier · グラドス兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 # 审校：“这边不利”生硬；Uwoh/Kuh 不是英文拟声
 > 「うおっ!? くっ、こっちが不利か!」
-“Whoa?! Tch, I’m at a disadvantage!”
+“Whoa?! Tch, I’m losing this?!”
 
 @13986 Grados Soldier · グラドス兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -87,13 +87,13 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 # 审校：“不愧是”没说完
 > 「やるっ! さすがは!」
-“You’re good! Just as expected of you!”
+“Not bad! Just what I’d expect!”
 
 @13988 Grados Soldier · グラドス兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうぅっ!! パワーが違いすぎる!!」
-“Guuuh!! His power’s on another level!!”
+“Guuuh!! That power’s on another level!!”
 
 @13989 Grados Soldier · グラドス兵
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -105,7 +105,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 # 审校：Kuh 不是英文拟声
 > 「くっ! 少しはできるな!」
-“Ngh! You’ve got some skill!”
+“Ngh! You’re not half bad!”
 
 @13991 Grados Soldier · グラドス兵
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
@@ -116,12 +116,12 @@
 @13992 Grados Soldier · グラドス兵
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 > 「うっ! やってくれたな!!」
-“Uh! You got me!!”
+“Ugh! You’ll pay for that!!”
 
 @13993 Grados Soldier · グラドス兵
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 > 「まだだっ! まだこれからよ!!」
-“Not yet! This is just the beginning!!”
+“Not yet! I’m just getting started!!”
 
 @13994 Grados Soldier · グラドス兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -137,12 +137,12 @@
 @13996 Grados Soldier · グラドス兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「その程度か!」
-“Is that all!”
+“Is that all?!”
 
 @13997 Grados Soldier · グラドス兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 > 「そんな攻撃など効くものかよ!」
-“An attack like that could never hurt me!”
+“As if an attack like that could hurt me!”
 
 @13998 Grados Soldier · グラドス兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
@@ -157,12 +157,12 @@
 @14000 Grados Soldier · グラドス兵
 # 触发：回避（通用，2/5）
 > 「踏み込みが足りん!」
-“You lack commitment!”
+“You didn’t come in hard enough!”
 
 @14001 Grados Soldier · グラドス兵
 # 触发：回避（通用，3/5）
 > 「間合いが遠いわっ!」
-“Too far away!”
+“You’re too far away!”
 
 @14002 Grados Soldier · グラドス兵
 # 触发：回避（通用，4/5）
@@ -172,7 +172,7 @@
 @14003 Grados Soldier · グラドス兵
 # 触发：回避（通用，5/5）
 > 「バカめ。どこを狙っている!」
-“Fool. What are you aiming at!”
+“Fool. What are you aiming at?!”
 
 @14004 Grados Soldier · グラドス兵
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
@@ -198,7 +198,7 @@
 @14008 Grados Soldier · グラドス兵
 # 触发：射程外，无法反击（通用，1/2）
 > 「ちっ、遠距離からの攻撃か……」
-“Tch, an attack from long range...”
+“Tch, hitting me from long range...”
 
 @14009 Grados Soldier · グラドス兵
 # 触发：射程外，无法反击（通用，2/2）

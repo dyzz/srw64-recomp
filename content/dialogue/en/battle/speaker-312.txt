@@ -8,7 +8,7 @@
 @13898 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击（通用，2/10）
 > 「沈めっ!」
-“Sink!”
+“Down you go!”
 
 @13899 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击（通用，3/10）
@@ -26,7 +26,7 @@
 # 触发：攻击（通用，5/10）
 # 审校：“结果你”偏方言
 > 「こいつでとどめだ!!」
-“This is the finishing blow!!”
+“This’ll finish you!!”
 
 @13902 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击（通用，6/10）
@@ -76,7 +76,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 > 「な、なんだと!? この力……
 >  化け物か!?」
-“Wh-what?! This strength... is it a monster?!”
+“Wh-what?! This strength... What are you, a monster?!”
 
 @13911 Neo Zeon Soldier · ネオジオン兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -92,7 +92,7 @@
 @13913 Neo Zeon Soldier · ネオジオン兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「こ、こいつら、ただもんじゃない!!」
-“Th-these guys are no ordinary foes!”
+“Th-these guys are something else!!”
 
 @13914 Neo Zeon Soldier · ネオジオン兵
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -160,7 +160,7 @@
 # 触发：回避（通用，2/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「当たりはせん!」
-“It won’t hit!”
+“That won’t hit me!”
 
 @13926 Neo Zeon Soldier · ネオジオン兵
 # 触发：回避（通用，3/6）
@@ -189,7 +189,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度のビームが効くか!」
-“A Beam like that won’t work!”
+“A beam like that won’t work!”
 
 @13931 Neo Zeon Soldier · ネオジオン兵
 # 触发：攻击无效（护罩／装甲）（通用，2/2）

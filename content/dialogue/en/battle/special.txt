@@ -36,7 +36,7 @@
 # 触发：旗舰被击坠，舰长〈葉月博士〉（主程序 800A2890，随机二选一）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こんな所で竜を死なせるわけには……」
-“I can’t let the dragon die in a place like this...”
+“I can’t let the dragon die here...”
 
 @5806 Dr. Hazuki · 葉月博士
 # 触发：旗舰被击坠，舰长〈葉月博士〉（主程序 800A2890，随机二选一）

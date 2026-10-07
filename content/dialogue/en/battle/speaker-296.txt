@@ -16,7 +16,7 @@
 # 触发：攻击（通用，3/9）
 # 审校：“干给你看”不像喊话
 > 「やってやる、やってやるぞ!」
-“I’ll get you, I’ll get you for sure!”
+“I’ll take you down, I swear I will!”
 
 @13939 Grados Soldier · グラドス兵
 # 触发：攻击（通用，4/9）
@@ -37,7 +37,7 @@
 @13942 Grados Soldier · グラドス兵
 # 触发：攻击（通用，7/9）
 > 「落ちろってんだよ!!」
-“I said go down!!”
+“Just go down already!!”
 
 @13943 Grados Soldier · グラドス兵
 # 触发：攻击（通用，8/9）
@@ -72,25 +72,25 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐあっ! こ、これじゃもたない!?」
-“Gwah! I-I can’t hold out?!”
+“Gwah! I-I can’t hold out like this?!”
 
 @13949 Grados Soldier · グラドス兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「つ、強い、強すぎる!?」
-“S-strong, way too strong?!”
+“S-so strong... way too strong?!”
 
 @13950 Grados Soldier · グラドス兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんだこいつのパワーは!?」
-“W-what is with this guy’s power?!”
+“Wh-what kind of power is this?!”
 
 @13951 Grados Soldier · グラドス兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「がああっ! パ、パワーが違いすぎる……」
-“Gaaah! H-his power’s on another level...”
+“Gaaah! Th-that power’s on another level...”
 
 @13952 Grados Soldier · グラドス兵
 # 触发：中伤（剩余 HP 30–90%）（通用，1/6）
@@ -102,29 +102,29 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんの、まだまだっ!!」
-“N-no way, I’m not done yet!!”
+“Th-that’s nothing, I’m not done yet!!”
 
 @13954 Grados Soldier · グラドス兵
 # 触发：中伤（剩余 HP 30–90%）（通用，3/6）
 # 审校：Kuh 不是英文拟声
 > 「くっ! さすがにやるじゃないか!」
-“Ngh! You’re pretty good after all!”
+“Ngh! Not bad, I’ll give you that!”
 
 @13955 Grados Soldier · グラドス兵
 # 触发：中伤（剩余 HP 30–90%）（通用，4/6）
 > 「ちっ! この程度ならまだ戦える!」
-“Tch! I can still fight at this rate!”
+“Tch! This much won’t stop me from fighting!”
 
 @13956 Grados Soldier · グラドス兵
 # 触发：中伤（剩余 HP 30–90%）（通用，5/6）
 > 「このっ! やったな!」
-“Why you! You got me!”
+“Why you! You’ll pay for that!”
 
 @13957 Grados Soldier · グラドス兵
 # 触发：中伤（剩余 HP 30–90%）（通用，6/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「クソっ!! こんなもんでやられるか!!」
-“Damn!! You think this’ll finish me!!”
+“Damn!! Like this is enough to finish me!!”
 
 @13958 Grados Soldier · グラドス兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -136,7 +136,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものか!」
-“Is that all you’ve got!”
+“Is that all you’ve got?!”
 
 @13960 Grados Soldier · グラドス兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
@@ -178,7 +178,7 @@
 @13967 Grados Soldier · グラドス兵
 # 触发：回避（通用，5/6）
 > 「な、なんとか……」
-“I-I managed somehow...”
+“I-I made it, somehow...”
 
 @13968 Grados Soldier · グラドス兵
 # 触发：回避（通用，6/6）
@@ -189,7 +189,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このっ! 効かないんだよっ!!」
-“Why you! It doesn’t even hurt!!”
+“Why you! That won’t work on me!!”
 
 @13970 Grados Soldier · グラドス兵
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -202,4 +202,4 @@
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「な、なんだ!?
 >  あんな距離から攻撃できるのか!?」
-“W-what?! He can attack from that range?!”
+“W-what?! They can hit me from that far?!”

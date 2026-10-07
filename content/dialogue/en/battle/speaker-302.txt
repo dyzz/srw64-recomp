@@ -14,7 +14,7 @@
 # 触发：攻击（通用，3/9）
 # 审校：やってやる是“干掉你”，“干给你看”不像喊话
 > 「やってやる、やってやるぞ!」
-“I’ll get you, I’ll get you for sure!”
+“I’ll take you down, I swear I will!”
 
 @13604 Guerrilla · ゲリラ
 # 触发：攻击（通用，4/9）
@@ -36,7 +36,7 @@
 @13607 Guerrilla · ゲリラ
 # 触发：攻击（通用，7/9）
 > 「落ちろってんだよ!!」
-“I said go down!!”
+“Just go down already!!”
 
 @13608 Guerrilla · ゲリラ
 # 触发：攻击（通用，8/9）
@@ -72,24 +72,24 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐあっ! こ、これじゃもたない!?」
-“Gah! I-I can’t hold out?!”
+“Gah! I-I can’t hold out like this?!”
 
 @13614 Guerrilla · ゲリラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 > 「つ、強い、強すぎる!?」
-“S-strong, too strong?!”
+“S-so strong... too strong?!”
 
 @13615 Guerrilla · ゲリラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「な、なんだこいつのパワーは!?」
-“W-what is with this guy’s power?!”
+“Wh-what kind of power is this?!”
 
 @13616 Guerrilla · ゲリラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「がああっ! パ、パワーが違いすぎる……」
-“Gaaah! H-his power’s on another level...”
+“Gaaah! Th-that power’s on another level...”
 
 @13617 Guerrilla · ゲリラ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/6）
@@ -107,12 +107,12 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「くっ! さすがにやるじゃないか!」
-“Tch! You’re pretty good after all!”
+“Tch! Not bad, I’ll give you that!”
 
 @13620 Guerrilla · ゲリラ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/6）
 > 「ちっ! この程度ならまだ戦える!」
-“Tch! I can still fight with this much!”
+“Tch! This much won’t stop me from fighting!”
 
 @13621 Guerrilla · ゲリラ
 # 触发：中伤（剩余 HP 30–90%）（通用，5/6）
@@ -136,7 +136,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「そんなものか!」
-“Is that all you’ve got!”
+“Is that all you’ve got?!”
 
 @13625 Guerrilla · ゲリラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
@@ -178,7 +178,7 @@
 @13632 Guerrilla · ゲリラ
 # 触发：回避（通用，5/6）
 > 「な、なんとか……」
-“I-I managed somehow...”
+“I-I made it, somehow...”
 
 @13633 Guerrilla · ゲリラ
 # 触发：回避（通用，6/6）
@@ -200,4 +200,4 @@
 # 触发：射程外，无法反击（通用，1/1）
 > 「な、なんだ!?
 >  あんな距離から攻撃できるのか!?」
-“W-what?! You can attack from that range?!”
+“W-what?! You can hit me from that far?!”

@@ -9,7 +9,7 @@
 @13638 Guerrilla · ゲリラ
 # 触发：攻击（通用，2/8）
 > 「覚悟しろ!」
-“Get ready!”
+“You’re finished!”
 
 @13639 Guerrilla · ゲリラ
 # 触发：攻击（通用，3/8）
@@ -19,7 +19,7 @@
 @13640 Guerrilla · ゲリラ
 # 触发：攻击（通用，4/8）
 > 「うけてみなよっ!!」
-“Try and take it!!”
+“Eat this!!”
 
 @13641 Guerrilla · ゲリラ
 # 触发：攻击（通用，5/8）
@@ -59,7 +59,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 # 审校：「なんてパワー!?」是感叹，不是疑问，改为感叹号
 > 「あぁぁっ!? なんてパワー!?」
-“Aaaah?! What power!”
+“Aaaah?! Such power?!”
 
 @13648 Guerrilla · ゲリラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
@@ -100,7 +100,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，3/4）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「くっ! まだまだ勝負はこれからよ!」
-“Kuh! The real fight’s just starting!”
+“Ngh! The real fight’s just starting!”
 
 @13655 Guerrilla · ゲリラ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
@@ -122,7 +122,7 @@
 @13658 Guerrilla · ゲリラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/4）
 > 「この程度のダメージなら!!」
-“This little damage is nothing!!”
+“A little damage like this is nothing!!”
 
 @13659 Guerrilla · ゲリラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/4）
@@ -155,7 +155,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：攻击无效情境是打中了但挡下，不是没打中
 > 「そんなビームなど!」
-“A Beam like that won’t work!”
+“A beam like that won’t work!”
 
 @13665 Guerrilla · ゲリラ
 # 触发：攻击无效（护罩／装甲）（通用，2/2）

@@ -8,7 +8,7 @@
 @13448 Specials · スペシャルズ
 # 触发：攻击（通用，2/10）
 > 「沈めっ!」
-“Sink!”
+“Down you go!”
 
 @13449 Specials · スペシャルズ
 # 触发：攻击（通用，3/10）
@@ -26,7 +26,7 @@
 # 触发：攻击（通用，5/10）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「こいつでとどめだ!!」
-“This one’s the finisher!!”
+“This one’ll finish you!!”
 
 @13452 Specials · スペシャルズ
 # 触发：攻击（通用，6/10）
@@ -79,7 +79,7 @@
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「な、なんだと!? この力……
 >  化け物か!?」
-“W-what?! This power... Is he a monster?!”
+“W-what?! This power... What are you, a monster?!”
 
 @13461 Specials · スペシャルズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
@@ -109,7 +109,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「ぐあっ! この、黙ってやられるものか!」
-“Gah! Damn you, I won’t just take this!”
+“Gah! Damn you, I won’t go down quietly!”
 
 @13466 Specials · スペシャルズ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
@@ -121,7 +121,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，4/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「うおっ! なんの、まだまだっ!」
-“Whoa! No you don’t, I’m not done yet!”
+“Whoa! That’s nothing, I’m not done yet!”
 
 @13468 Specials · スペシャルズ
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
@@ -133,7 +133,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「ふん、その程度か!」
-“Hmph, is that all!”
+“Hmph, is that all?!”
 
 @13470 Specials · スペシャルズ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
@@ -174,7 +174,7 @@
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「貴様らの攻撃パターンなど、
 >  お見通しよ!」
-“I can see through all your attack patterns!”
+“I see right through your attack patterns!”
 
 @13477 Specials · スペシャルズ
 # 触发：回避（通用，4/6）

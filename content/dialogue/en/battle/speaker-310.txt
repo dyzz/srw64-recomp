@@ -86,13 +86,13 @@
 @13796 Axis Soldier · アクシズ兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「やるっ! さすがは!」
-“Not bad! As expected!”
+“Not bad! Just what I’d expect!”
 
 @13797 Axis Soldier · アクシズ兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうぅっ!! パワーが違いすぎる!!」
-“Guuuh!! His power’s on another level!!”
+“Guuuh!! That power’s on another level!!”
 
 @13798 Axis Soldier · アクシズ兵
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -104,7 +104,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「くっ! 少しはできるな!」
-“Ngh! You’ve got some skill!”
+“Ngh! You’re not half bad!”
 
 @13800 Axis Soldier · アクシズ兵
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
@@ -122,7 +122,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだっ! まだこれからよ!!」
-“Not yet! It’s only starting!!”
+“Not yet! I’m just getting started!!”
 
 @13803 Axis Soldier · アクシズ兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -190,7 +190,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふ、そんなビームではな!」
-“Hah, a Beam like that won’t work!”
+“Hah, a beam like that won’t work!”
 
 @13815 Axis Soldier · アクシズ兵
 # 触发：弹药／EN 不足，无法反击（通用，1/2）
@@ -205,7 +205,7 @@
 @13817 Axis Soldier · アクシズ兵
 # 触发：射程外，无法反击（通用，1/2）
 > 「ちっ、遠距離からの攻撃か……」
-“Tch, an attack from long range, huh...”
+“Tch, hitting me from long range, huh...”
 
 @13818 Axis Soldier · アクシズ兵
 # 触发：射程外，无法反击（通用，2/2）

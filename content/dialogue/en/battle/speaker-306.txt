@@ -9,7 +9,7 @@
 @13407 Specials · スペシャルズ
 # 触发：攻击（通用，2/11）
 > 「覚悟!」
-“Prepare yourself!”
+“You’re finished!”
 
 @13408 Specials · スペシャルズ
 # 触发：攻击（通用，3/11）
@@ -185,7 +185,7 @@
 # 触发：回避（通用，6/7）
 # 审校：弯撇号；叠叹号跟原文
 > 「かわしてみせる!!」
-“I’ll dodge it, just watch!!”
+“Watch me dodge this!!”
 
 @13440 Specials · スペシャルズ
 # 触发：回避（通用，7/7）
@@ -195,7 +195,7 @@
 @13441 Specials · スペシャルズ
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「そんなビームなど!」
-“A Beam like that?!”
+“A beam like that?!”
 
 @13442 Specials · スペシャルズ
 # 触发：攻击无效（护罩／装甲）（通用，2/2）

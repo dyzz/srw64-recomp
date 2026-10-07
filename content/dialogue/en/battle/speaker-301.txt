@@ -85,12 +85,12 @@
 @13578 Guerrilla · ゲリラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 > 「やるっ! さすがは!」
-“Not bad! As expected!”
+“Not bad! Just what I’d expect!”
 
 @13579 Guerrilla · ゲリラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 > 「ぐうぅっ!! パワーが違いすぎる!!」
-“Guhh!! The power difference is too much!!”
+“Guhh!! That power’s on another level!!”
 
 @13580 Guerrilla · ゲリラ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -120,7 +120,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「まだだっ! まだこれからよ!!」
-“Not yet! It’s only starting!!”
+“Not yet! I’m just getting started!!”
 
 @13585 Guerrilla · ゲリラ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -188,7 +188,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ふ、そんなビームではな!」
-“Hah, a Beam like that won’t work!”
+“Hah, a beam like that won’t work!”
 
 @13597 Guerrilla · ゲリラ
 # 触发：弹药／EN 不足，无法反击（通用，1/2）

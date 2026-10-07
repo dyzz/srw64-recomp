@@ -8,7 +8,7 @@
 @13741 Axis Soldier · アクシズ兵
 # 触发：攻击（通用，2/11）
 > 「覚悟!」
-“Prepare yourself!”
+“You’re finished!”
 
 @13742 Axis Soldier · アクシズ兵
 # 触发：攻击（通用，3/11）
@@ -18,7 +18,7 @@
 @13743 Axis Soldier · アクシズ兵
 # 触发：攻击（通用，4/11）
 > 「うけてみろっ!!」
-“Try and take it!!”
+“Eat this!!”
 
 @13744 Axis Soldier · アクシズ兵
 # 触发：攻击（通用，5/11）
@@ -49,7 +49,7 @@
 @13749 Axis Soldier · アクシズ兵
 # 触发：攻击（通用，10/11）
 > 「とどめっ!!」
-“Finishing blow!!”
+“This finishes it!!”
 
 @13750 Axis Soldier · アクシズ兵
 # 触发：攻击（通用，11/11）
@@ -72,7 +72,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「うおおっ! く、なんてパワーなんだ!?」
-“Whoaah! W-what power?!”
+“Whoaah! Wh-what kind of power is this?!”
 
 @13754 Axis Soldier · アクシズ兵
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
@@ -123,7 +123,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「くぅっ! やってくれたな!!」
-“Ngh! You got me!!”
+“Ngh! You’ll pay for that!!”
 
 @13763 Axis Soldier · アクシズ兵
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -183,7 +183,7 @@
 # 触发：回避（通用，6/7）
 # 审校：原句英文生硬
 > 「かわしてみせる!!」
-“I’ll dodge it, just watch!!”
+“Watch me dodge this!!”
 
 @13774 Axis Soldier · アクシズ兵
 # 触发：回避（通用，7/7）
@@ -193,7 +193,7 @@
 @13775 Axis Soldier · アクシズ兵
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「そんなビームなど!」
-“A Beam like that is nothing!”
+“A beam like that is nothing!”
 
 @13776 Axis Soldier · アクシズ兵
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
@@ -203,7 +203,7 @@
 @13777 Axis Soldier · アクシズ兵
 # 触发：弹药／EN 不足，无法反击（通用，1/2）
 > 「ちっ、しまった! 弾切れか!」
-“Tch, damn! Out of ammo!”
+“Tch, damn! Out of ammo?!”
 
 @13778 Axis Soldier · アクシズ兵
 # 触发：弹药／EN 不足，无法反击（通用，2/2）

@@ -16,7 +16,7 @@
 # 触发：攻击（通用，3/9）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「やってやる、やってやるぞ!」
-“I’ll get you, I’ll get you for sure!”
+“I’ll take you down, I swear I will!”
 
 @13489 Specials · スペシャルズ
 # 触发：攻击（通用，4/9）
@@ -38,7 +38,7 @@
 @13492 Specials · スペシャルズ
 # 触发：攻击（通用，7/9）
 > 「落ちろってんだよ!!」
-“I said go down!!”
+“Just go down already!!”
 
 @13493 Specials · スペシャルズ
 # 触发：攻击（通用，8/9）
@@ -74,25 +74,25 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐあっ! こ、これじゃもたない!?」
-“Gah! I-I can’t hold out?!”
+“Gah! I-I can’t hold out like this?!”
 
 @13499 Specials · スペシャルズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「つ、強い、強すぎる!?」
-“S-strong, way too strong?!”
+“S-so strong... way too strong?!”
 
 @13500 Specials · スペシャルズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「な、なんだこいつのパワーは!?」
-“W-what is with this guy’s power?!”
+“Wh-what kind of power is this?!”
 
 @13501 Specials · スペシャルズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「がああっ! パ、パワーが違いすぎる……」
-“Gwaaah! H-his power’s on another level...”
+“Gwaaah! Th-that power’s on another level...”
 
 @13502 Specials · スペシャルズ
 # 触发：中伤（剩余 HP 30–90%）（通用，1/6）
@@ -104,19 +104,19 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，2/6）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「な、なんの、まだまだっ!!」
-“N-no way, I’m not done yet!!”
+“Th-that’s nothing, I’m not done yet!!”
 
 @13504 Specials · スペシャルズ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/6）
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「くっ! さすがにやるじゃないか!」
-“Ngh! You’re pretty good after all!”
+“Ngh! Not bad, I’ll give you that!”
 
 @13505 Specials · スペシャルズ
 # 触发：中伤（剩余 HP 30–90%）（通用，4/6）
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「ちっ! この程度ならまだ戦える!」
-“Tch! This much and I can still fight!”
+“Tch! This much won’t stop me from fighting!”
 
 @13506 Specials · スペシャルズ
 # 触发：中伤（剩余 HP 30–90%）（通用，5/6）
@@ -128,7 +128,7 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，6/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「クソっ!! こんなもんでやられるか!!」
-“Damn!! You think this’ll take me down!!”
+“Damn!! Like this’ll take me down!!”
 
 @13508 Specials · スペシャルズ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
@@ -140,7 +140,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんなものか!」
-“Is that all you’ve got!”
+“Is that all you’ve got?!”
 
 @13510 Specials · スペシャルズ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
@@ -196,7 +196,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 # 审校：抽检同类：甘い／効かない 按情境
 > 「このっ! 効かないんだよっ!!」
-“Why you! That won’t work on me on me!!”
+“Why you! That won’t work on me!!”
 
 @13520 Specials · スペシャルズ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
@@ -209,4 +209,4 @@
 # 审校：同源同人同译：统一到精读过／多数的版本
 > 「な、なんだ!?
 >  あんな距離から攻撃できるのか!?」
-“W-what?! He can attack from that far?!”
+“W-what?! They can hit me from that far?!”
