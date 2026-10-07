@@ -3665,18 +3665,18 @@ But I’ve no use for you. The only thing I have use for is drink.”
 “I’m afraid we can’t leave it at that.
 ---
 >  南原博士はご存知ですね?」
-You know Dr. Nanbara, don’t you?”
+You know Dr. Nambara, don’t you?”
 
 @36179 Dr. Yotsuya · 四谷博士
 # 审校：全局：弯撇号／弯引号
 > 「……南原か。
 >  もう何年も会っておらん」
-“...Nanbara. I haven’t seen him in years.”
+“...Nambara. I haven’t seen him in years.”
 
 @36180 Banjo · 万丈
 > 「南原博士は3年前に
 >  亡くなられた
-“Dr. Nanbara passed away three years ago.
+“Dr. Nambara passed away three years ago.
 ---
 >  彼がその卓抜した先見の明で
 >  建造した戦闘ロボットも
@@ -3688,13 +3688,13 @@ hasn’t moved since.”
 @36181 Dr. Yotsuya · 四谷博士
 > 「そうか……南原は
 >  奴らに殺されていたか」
-“I see... so they got Nanbara.”
+“I see... so they got Nambara.”
 
 @36182 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「南原博士は自分に
 >  もしものことがあれば
-“Dr. Nanbara left word that if anything happened to him,
+“Dr. Nambara left word that if anything happened to him,
 ---
 >  四谷博士を頼るようにと
 >  いい残された。探しましたよ、あなたを
@@ -3796,7 +3796,7 @@ They say you’ve been fighting ever since the days of Zorbados.”
 @36192 Banjo · 万丈
 > 「南原博士の残した戦闘ロボ、
 >  コン・バトラーVを動かしてください」
-“Please get Combattler V, the combat robot Dr. Nanbara left behind, up and running.”
+“Please get Combattler V, the combat robot Dr. Nambara left behind, up and running.”
 
 @36193 Dr. Yotsuya · 四谷博士
 # 审校：全局：弯撇号／弯引号

@@ -479,7 +479,7 @@ played right into the enemy’s hands.”
 @42393 Elle · エレ
 > 「オーラ力も減退している……いけない
 >  皆さん、気をつけてください!」
-“My aura power is waning too... Everyone, you must be careful!”
+“My Aura Power is waning too... Everyone, you must be careful!”
 
 @42394 Dr. Hazuki · 葉月博士
 > 「なんだ!? 何をするつもりだ!?」
@@ -637,7 +637,7 @@ played right into the enemy’s hands.”
 @42417 Elle · エレ
 > 「オーラ力も減退している……いけない
 >  皆さん、気をつけてください!」
-“My aura power is waning too... Everyone, you must be careful!”
+“My Aura Power is waning too... Everyone, you must be careful!”
 
 @42418 Dr. Hazuki · 葉月博士
 > 「なんだ!? 何をするつもりだ!?」

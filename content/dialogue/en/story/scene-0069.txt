@@ -1151,7 +1151,7 @@ First, we defeat those people. Let us go.”
 # 审校：全局：弯撇号／弯引号
 > 「南原博士の建造した
 >  コン・バトラーVだ。これから一緒に
-“It’s Combattler V, built by Doctor Nanbara. From now on,
+“It’s Combattler V, built by Doctor Nambara. From now on,
 ---
 >  戦ってくれる仲間さ」
 they’ll be fighting alongside us.”
@@ -1229,7 +1229,7 @@ Let’s wrap this up quickly, shall we?”
 # 审校：全局：弯撇号／弯引号
 > 「南原博士の建造した
 >  コン・バトラーVだ。これから一緒に
-“It’s Combattler V, built by Doctor Nanbara. From now on,
+“It’s Combattler V, built by Doctor Nambara. From now on,
 ---
 >  戦ってくれる仲間さ」
 they’ll be fighting alongside us.”
@@ -1575,7 +1575,7 @@ we didn’t do too bad.”
 ---
 >  かつて南原博士の
 >  開発したマシンを、四谷博士が
-Doctor Nanbara developed their machine long ago, and Doctor Yotsuya
+Doctor Nambara developed their machine long ago, and Doctor Yotsuya
 ---
 >  復活させてくれたんだ」
 brought it back to life for us.”

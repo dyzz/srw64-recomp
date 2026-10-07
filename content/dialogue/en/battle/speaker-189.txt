@@ -81,7 +81,7 @@
 @12130 Shot · ショット
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「私とて、オーラ力はある!!」
-“I have aura power of my own!!”
+“I have Aura Power of my own!!”
 
 @12131 Shot · ショット
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）

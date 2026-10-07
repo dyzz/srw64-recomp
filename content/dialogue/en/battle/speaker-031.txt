@@ -524,7 +524,7 @@
 “Carve the terror into them!”
 ---
 > 「天王捷破斬ッ!」
-“Ten'o Shohazan!”
+“Ten’o Shohazan!”
 
 @16540 Kurtz · カーツ
 # 触发：使用〈天王捷破斬〉（对话第 1/3 句）
@@ -543,7 +543,7 @@
 # 检查提示：未用必用译名：天王捷破斬→Ten'o Shohazan
 > 「鬼神となりて討ち果たす!
 >  天王捷破斬ッ!」
-“I become a war god and strike them down! Ten'o Shohazan!”
+“I become a war god and strike them down! Ten’o Shohazan!”
 
 @16543 Kurtz · カーツ
 # 触发：使用〈天王捷破斬〉（对话第 1/3 句）
@@ -561,7 +561,7 @@
 # 触发：使用〈天王捷破斬〉（对话第 3/3 句）
 # 审校：原文是招式名“天王捷破斬”的逐字喊法，词表必用译名为 Tenno Shohazan，不应拆成 Ten! No! Sho! Ha! Zan!
 > 「天・王・捷・破・斬!」
-“Ten'o Shohazan!”
+“Ten’o Shohazan!”
 
 @16546 Brad · ブラッド
 # 触发：使用〈招雷 天竜魔滅陣〉（对话第 1/8 句）

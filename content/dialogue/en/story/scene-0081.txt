@@ -2299,7 +2299,7 @@ in Tod Guines now. I believe we may trust him.”
 # 检查提示：未用必用译名：トッド・ギネス→Tod Guines
 > 「トッド・ギネスのオーラ力に
 >  悪意は感じません。この者は
-“I sense no ill will in Tod Guines’s aura power. I acknowledge that
+“I sense no ill will in Tod Guines’s Aura Power. I acknowledge that
 ---
 >  聖戦士として、ここにいるのだと
 >  認めます」

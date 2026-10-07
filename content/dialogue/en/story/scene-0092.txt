@@ -179,7 +179,7 @@ somewhere and get a picture of the situation.”
 # 审校：全局：弯撇号／弯引号
 > 「うん。いま先生の診察を受けてる
 >  ところよ」
-“Yeah. Teacher’s examining him right now.”
+“Yeah. The doctor’s examining him right now.”
 
 @44328 Koji · 甲児
 > 「大介さん!」
@@ -192,7 +192,7 @@ somewhere and get a picture of the situation.”
 
 @44330 Takeru · タケル
 > 「すみません、先生」
-“Sorry, Teacher.”
+“Sorry, Doctor.”
 
 @44331 Daisuke · 大介
 # 审校：全局：弯撇号／弯引号
@@ -2199,7 +2199,7 @@ Holy Warrior in Tod Guines now. I believe we may trust him.”
 # 检查提示：未用必用译名：トッド・ギネス→Tod Guines
 > 「トッド・ギネスのオーラ力に、
 >  悪意は感じません。この者は
-“I sense no malice in Tod Guines’s aura power. I acknowledge
+“I sense no malice in Tod Guines’s Aura Power. I acknowledge
 ---
 >  聖戦士として、ここにいるのだと、
 >  認めます。シーラ女王の浄化の

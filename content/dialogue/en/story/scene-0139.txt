@@ -543,7 +543,7 @@ fallen into the enemy’s trap.”
 @48265 Elle · エレ
 > 「オーラ力も減退している……いけない
 >  皆さん、気をつけてください!」
-“My aura power is waning too... Everyone, you must be careful!”
+“My Aura Power is waning too... Everyone, you must be careful!”
 
 @48266 Dr. Hazuki · 葉月博士
 > 「なんだ!? 何をするつもりだ!?」

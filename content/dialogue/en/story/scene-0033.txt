@@ -1761,7 +1761,7 @@ Are you really okay with the Earth being torn apart like this? Tod!”
 # 检查提示：未用必用译名：ガラバ→Gallaba
 > 「あ、あのガラバのオーラ力……
 >  バーン・バニングス!」
-“Th-That Gallaba’s aura power... Bern Bunnings!”
+“Th-That Gallaba’s Aura Power... Bern Bunnings!”
 
 @24237 Show · ショウ
 # 审校：人名按词表统一
@@ -1788,7 +1788,7 @@ Are you really okay with the Earth being torn apart like this? Tod!”
 # 审校：全局：弯撇号／弯引号
 > 「さがれ! お前のオーラ力は
 >  私が引き受ける!」
-“Stand back! I shall take on your aura power myself!”
+“Stand back! I shall take on your Aura Power myself!”
 
 @24242 Bern · バーン
 # 审校：全局：弯撇号／弯引号
@@ -1830,13 +1830,13 @@ Are you really okay with the Earth being torn apart like this? Tod!”
 # 审校：词表必用译名为 Wil Wiph，初稿误作 Will Wiph。
 > 「ウィル・ウィプスが……落ちる……
 >  オーラ力が……!」
-“The Will-Wips... is falling... The aura power...!”
+“The Will-Wips... is falling... The Aura Power...!”
 
 @24250 Marvel · マーベル
 # 审校：词表必用译名为 Wil Wiph，初稿误作 Will Wiph。
 > 「ウィル・ウィプスが……落ちる……
 >  オーラ力が……!」
-“The Will-Wips... is falling... The aura power...!”
+“The Will-Wips... is falling... The Aura Power...!”
 
 @24251 Show · ショウ
 # 审校：全局：Sheela→Ciela / 刻印＝Crest 补漏

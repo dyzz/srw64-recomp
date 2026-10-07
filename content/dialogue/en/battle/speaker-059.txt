@@ -43,7 +43,7 @@
 # 触发：攻击（通用，8/9）
 # 审校：“落ちなさいよっ!”是击坠敌人时的喊话，初稿“Just fall already!”中的“Just”多余，改为更直接的“Fall already!”。
 > 「落ちなさいよっ!」
-“Fall already!”
+“Go down already!”
 
 @9063 Rosamia · ロザミア
 # 触发：攻击（通用，9/9）

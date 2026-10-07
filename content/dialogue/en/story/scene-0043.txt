@@ -214,19 +214,19 @@ The only thing I’ve got business with is my drink.”
 “Unfortunately, we can’t leave it at that. You know of
 ---
 >  ご存知ですね」
-Dr. Nanbara, I take it.”
+Dr. Nambara, I take it.”
 
 @26895 Dr. Yotsuya · 四谷博士
 # 审校：全局：弯撇号／弯引号
 > 「……南原か。もう何年も会って
 >  おらん」
-“...Nanbara. I haven’t seen him in years.”
+“...Nambara. I haven’t seen him in years.”
 
 @26896 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「南原博士は亡くなられた。彼が
 >  その卓抜した先見の明で
-“Dr. Nanbara has passed away. The combat robot he built,
+“Dr. Nambara has passed away. The combat robot he built,
 ---
 >  建造した戦闘ロボットも、その時
 >  から動かないままです」
@@ -234,13 +234,13 @@ thanks to his remarkable foresight, hasn’t moved since.”
 
 @26897 Dr. Yotsuya · 四谷博士
 > 「そうか……南原が死んだか」
-“I see... so Nanbara is dead.”
+“I see... so Nambara is dead.”
 
 @26898 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「南原博士は自分にもしものこと
 >  があれば、四谷博士を頼るように
-“Dr. Nanbara left word that if anything should happen to him, we should turn to you,
+“Dr. Nambara left word that if anything should happen to him, we should turn to you,
 ---
 >  と言い残された。探しましたよ、
 >  あなたを。このような廃虚にお隠れに
@@ -333,7 +333,7 @@ They say you’ve been fighting since the days of Zorbados.”
 # 审校：精读：去破折号
 > 「南原博士の残した戦闘ロボ、
 >  コン・バトラーVを動かしてください」
-“Please get the combat robot Dr. Nanbara left behind, Combattler V, up and running.”
+“Please get the combat robot Dr. Nambara left behind, Combattler V, up and running.”
 
 @26909 Dr. Yotsuya · 四谷博士
 # 审校：全局：弯撇号／弯引号
@@ -1733,7 +1733,7 @@ then bring it on!”
 # 审校：全局：弯撇号／弯引号
 > 「南原博士の建造した
 >  コン・バトラーVだ。これから一緒に
-“It’s the Combattler V that Dr. Nanbara built. They’ll be fighting
+“It’s the Combattler V that Dr. Nambara built. They’ll be fighting
 ---
 >  戦ってくれる仲間さ」
 alongside us from now on.”

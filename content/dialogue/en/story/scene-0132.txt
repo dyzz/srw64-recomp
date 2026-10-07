@@ -523,7 +523,7 @@ I have been tracking Haman’s whereabouts.”
 “That’s good enough! Once we get close, even we can
 ---
 >  ハマーンのオーラ力は感じとれるわ!」
-sense Haman’s aura power!”
+sense Haman’s Aura Power!”
 
 @43608 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号

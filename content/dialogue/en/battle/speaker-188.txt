@@ -97,7 +97,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 > 「何っ!? あ、あたしのオーラ力が……
 >  押されている!?」
-“What?! M-my aura power... it’s being overpowered?!”
+“What?! M-my Aura Power... it’s being overpowered?!”
 
 @12158 Jeril · ジェリル
 # 触发：中伤（剩余 HP 30–90%）（通用，1/5）
@@ -196,7 +196,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 > 「そんなものが効くか!! このあたしの
 >  オーラ力に!!」
-“Like that could work on me!! Not against my aura power!!”
+“Like that could work on me!! Not against my Aura Power!!”
 
 @12175 Jeril · ジェリル
 # 触发：攻击无效（护罩／装甲）（通用，2/2）

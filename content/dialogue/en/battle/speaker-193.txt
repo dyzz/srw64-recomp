@@ -37,7 +37,7 @@
 # 触发：攻击（通用，7/10）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「私のオーラ力を甘く見るなっ!」
-“Don’t underestimate my aura power!”
+“Don’t underestimate my Aura Power!”
 
 @12349 Musy · ミュージィ
 # 触发：攻击（通用，8/10）
@@ -69,7 +69,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「こ、このパワー……私のオーラ力が
 >  足りぬというのか……」
-“Th-this power... Is my aura power not enough...”
+“Th-this power... Is my Aura Power not enough...”
 
 @12355 Musy · ミュージィ
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）

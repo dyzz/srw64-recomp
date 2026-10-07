@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/14）
 # 审校：补引号
 > 「身の程知らずが……落ちろっ!」
-“You don’t know your place... Fall!”
+“You don’t know your place... Go down!”
 
 @8691 Scirocco · シロッコ
 # 触发：攻击（通用，2/14）
@@ -40,7 +40,7 @@
 # 触发：攻击（通用，7/14）
 # 审校：カトンボ是蔑称
 > 「落ちろ……カトンボ」
-“Fall... you gnat.”
+“Go down... you gnat.”
 
 @8697 Scirocco · シロッコ
 # 触发：攻击（通用，8/14）
@@ -70,7 +70,7 @@
 # 触发：攻击（通用，12/14）
 # 审校：补引号
 > 「フフフッ、ハハハハッ! 落ちろっ!!」
-“Heh heh heh, ha ha ha ha! Fall!!”
+“Heh heh heh, ha ha ha ha! Go down!!”
 
 @8702 Scirocco · シロッコ
 # 触发：攻击（通用，13/14）

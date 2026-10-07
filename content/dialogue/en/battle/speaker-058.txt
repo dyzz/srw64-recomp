@@ -41,7 +41,7 @@
 @10945 Mashymre · マシュマー
 # 触发：攻击（通用，8/13）
 > 「落ちろおぉぉっ!!」
-“Fall, damn you!!”
+“Go down, damn you!!”
 
 @10946 Mashymre · マシュマー
 # 触发：攻击（通用，9/13）
