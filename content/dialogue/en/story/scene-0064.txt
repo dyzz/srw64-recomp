@@ -1281,7 +1281,7 @@ coming along with those monsters.”
 @28670 Kurtz · カーツ（按段落 3DD3）
 > 「{HeroName}ッ! 貴様はいったい
 >  どこまで俺をコケにすれば気がすむ!?」
-“{HeroName}! Just how far do you intend to make a fool of me?!”
+“{HeroName}! How much more will you mock me before you’re satisfied?!”
 
 @28671 Amuro · アムロ
 > 「リリーナ代表、あなたに黙って

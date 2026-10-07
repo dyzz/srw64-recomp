@@ -462,7 +462,7 @@ I guess that’s no good either, huh?”
 @24027 Remy · レミー
 # 审校：全局：弯撇号／弯引号
 > 「ダメに決まってるでしょ」
-“Of course it’s no good.”
+“Obviously not.”
 
 @24028 David · デビッド
 # 审校：全局：弯撇号／弯引号
@@ -1247,7 +1247,7 @@ I look forward to working with you, Captain Amuro Ray.”
 # 审校：全局：弯撇号／弯引号
 > 「クラッシャー隊か。
 >  士官学校時代に
-“The Crusher Team, huh. I heard about them back at
+“The Crusher Team, huh. I heard about them back when I was at
 ---
 >  聞いたことがあったな」
 the officers’ academy.”
