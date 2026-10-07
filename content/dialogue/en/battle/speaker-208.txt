@@ -9,7 +9,7 @@
 @7497 Roanne · ロアン
 # 触发：攻击（通用，2/5）
 > 「このっ! このっ!」
-“Why you! Why you!”
+“Take that! And that!”
 
 @7498 Roanne · ロアン
 # 触发：攻击（通用，3/5）
@@ -38,12 +38,12 @@
 # 触发：被击坠（通用，2/2）
 # 审校：被击坠情境
 > 「や、やられた……!?」
-“I-I’ve been shot down...?!”
+“Th-they got me...?!”
 
 @7503 Roanne · ロアン
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「くっ! これ以上もつのか!?」
-“Ngh! Can it hold any longer?!”
+“Ngh! How much longer can it hold?!”
 
 @7504 Roanne · ロアン
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
@@ -90,7 +90,7 @@
 @7512 Roanne · ロアン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「この程度ならまだやれるはず!」
-“I should still be able to fight through this!”
+“I can still fight through this much!”
 
 @7513 Roanne · ロアン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）

@@ -10,7 +10,7 @@
 # 触发：攻击（通用，2/9）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「あんたたち、絶対に許さないよ!」
-“I’ll never forgive you guys!”
+“You guys are gonna pay for this!”
 
 @7548 Simone · シモーヌ
 # 触发：攻击（通用，3/9）
@@ -96,7 +96,7 @@
 @7563 Simone · シモーヌ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 > 「これぐらいなら、まだ!」
-“This much, I can still take!”
+“I can still take this much!”
 
 @7564 Simone · シモーヌ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
@@ -113,7 +113,7 @@
 @7566 Simone · シモーヌ
 # 触发：回避（通用，1/9）
 > 「間に合った!?」
-“I made it in time?!”
+“Made it?!”
 
 @7567 Simone · シモーヌ
 # 触发：回避（通用，2/9）
@@ -129,7 +129,7 @@
 @7569 Simone · シモーヌ
 # 触发：回避（通用，4/9）
 > 「このぐらいアタシだって!」
-“Even I can handle this much!”
+“I can handle this much too!”
 
 @7570 Simone · シモーヌ
 # 触发：回避（通用，5/9）
@@ -151,7 +151,7 @@
 @7573 Simone · シモーヌ
 # 触发：回避（通用，8/9）
 > 「そんなのでやられるもんか!」
-“Like that would take me down!”
+“Like that’s gonna take me down!”
 
 @7574 Simone · シモーヌ
 # 触发：回避（通用，9/9）
@@ -162,17 +162,17 @@
 # 触发：攻击无效（护罩／装甲）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「効かないわよ!!」
-“It doesn’t hurt me!!”
+“That doesn’t work on me!!”
 
 @7576 Simone · シモーヌ
 # 触发：攻击无效（护罩／装甲）（通用，2/3）
 > 「どうやら無駄だったみたいだね」
-“Looks like it was useless.”
+“Looks like that was a waste.”
 
 @7577 Simone · シモーヌ
 # 触发：攻击无效（护罩／装甲）（通用，3/3）
 > 「効くもんか!」
-“Like that would work!”
+“Like that’s gonna work!”
 
 @7578 Simone · シモーヌ
 # 触发：弹药／EN 不足，无法反击（通用，1/2）

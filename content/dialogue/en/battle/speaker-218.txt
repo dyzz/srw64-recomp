@@ -109,18 +109,18 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
 # 审校：原文是反问
 > 「ひへへへへっ、効かねぇなぁ?」
-“Heheheheh, didn’t feel a thing, huh?”
+“Heheheheh, didn’t feel a thing!”
 
 @7754 Gosterro · ゴステロ
 # 触发：回避（通用，1/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「出力が違うんだ出力がぁっ!」
-“Our output’s on another level!”
+“My output’s on a whole other level!”
 
 @7755 Gosterro · ゴステロ
 # 触发：回避（通用，2/4）
 > 「あいかわらずアマちゃんだなぁ!」
-“Still just an amateur, huh!”
+“Still as soft as ever, huh!”
 
 @7756 Gosterro · ゴステロ
 # 触发：回避（通用，3/4）
@@ -143,7 +143,7 @@
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：原文是反问
 > 「ひへへへへっ、効かねぇなぁ?」
-“Heheheheh, didn’t feel a thing, huh?”
+“Heheheheh, didn’t feel a thing!”
 
 @7760 Gosterro · ゴステロ
 # 触发：弹药／EN 不足，无法反击（通用，1/1）

@@ -14,7 +14,7 @@
 # 触发：攻击（通用，3/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「こちらからいきます!」
-“I’ll come to you!”
+“Here I come!”
 
 @7585 Julia · ジュリア
 # 触发：攻击（通用，4/7）
@@ -35,7 +35,7 @@
 @7588 Julia · ジュリア
 # 触发：攻击（通用，7/7）
 > 「逃げても無駄です!」
-“Running is useless!”
+“Running will do you no good!”
 
 @7589 Julia · ジュリア
 # 触发：被击坠（通用，1/2）
@@ -47,7 +47,7 @@
 # 触发：被击坠（通用，2/2）
 # 审校：被击坠情境
 > 「や、やられた!?」
-“I-I’ve been shot down?!”
+“I-I’ve been hit?!”
 
 @7591 Julia · ジュリア
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
@@ -85,18 +85,18 @@
 @7597 Julia · ジュリア
 # 触发：中伤（剩余 HP 30–90%）（通用，4/4）
 > 「うぅっ、まだいけるはず!」
-“Ugh, I should still be able to fight!”
+“Ugh, I can still keep going!”
 
 @7598 Julia · ジュリア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「この程度なら!」
-“If it’s only this much!”
+“This much I can handle!”
 
 @7599 Julia · ジュリア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「本気で戦いなさい!」
-“Fight me seriously!”
+“Fight me in earnest!”
 
 @7600 Julia · ジュリア
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -106,7 +106,7 @@
 @7601 Julia · ジュリア
 # 触发：回避（通用，1/2）
 > 「このくらいはっ!」
-“This much!”
+“I can handle this!”
 
 @7602 Julia · ジュリア
 # 触发：回避（通用，2/2）

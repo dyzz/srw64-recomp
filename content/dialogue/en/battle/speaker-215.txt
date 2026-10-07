@@ -65,7 +65,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺を殺そうとしやがって……
 >  ゆるせねえ!!」
-“You tried to kill me... I won’t forgive you!!”
+“You tried to kill me... you’re gonna pay!!”
 
 @7800 Borne · ボーン
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/4）
@@ -82,7 +82,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「お、俺をぉぉぉぉ!」
-“H-how dare you... to me!”
+“Y-you dare do this to meee!”
 
 @7803 Borne · ボーン
 # 触发：中伤（剩余 HP 30–90%）（通用，1/3）
@@ -109,7 +109,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「フッハッハ! どうしたぁっ!?」
-“Fuhah hah! What’s wrong?!”
+“Fuhah hah! What’s the matter?!”
 
 @7808 Borne · ボーン
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -124,7 +124,7 @@
 @7810 Borne · ボーン
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
 > 「もう終わりか? ひへへへへへ!」
-“Is that all? Hee heh heh heh heh!”
+“Done already? Hee heh heh heh heh!”
 
 @7811 Borne · ボーン
 # 触发：弹药／EN 不足，无法反击（通用，1/2）

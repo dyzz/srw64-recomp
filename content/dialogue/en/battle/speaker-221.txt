@@ -60,7 +60,7 @@
 @10807 Pampa · パンパ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 > 「くっ! 私は決して許さない!」
-“Ngh! I will never forgive you!”
+“Ngh! You’ll pay for this!”
 
 @10808 Pampa · パンパ
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
@@ -98,18 +98,18 @@
 # 触发：中伤（剩余 HP 30–90%）（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「で、できる相手だ……だがっ!」
-“Y-you’re capable... but still!”
+“Y-you’re good... but even so!”
 
 @10815 Pampa · パンパ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度では相手にならんぞ!」
-“That’s not nearly enough to face me!”
+“That’s not nearly enough to challenge me!”
 
 @10816 Pampa · パンパ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/3）
 > 「さぁ、もっと攻めてこい!」
-“Come on, attack me more!”
+“Come on, give me more!”
 
 @10817 Pampa · パンパ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/3）
@@ -120,7 +120,7 @@
 @10818 Pampa · パンパ
 # 触发：回避（通用，1/3）
 > 「まだまだ未熟だな!」
-“Still so inexperienced!”
+“You’re still green!”
 
 @10819 Pampa · パンパ
 # 触发：回避（通用，2/3）

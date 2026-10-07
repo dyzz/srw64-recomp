@@ -20,7 +20,7 @@
 # 触发：攻击（通用，4/15）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「たっぷり楽しませてもらおうか」
-“I’m going to enjoy this plenty.”
+“I’m gonna enjoy every minute of this.”
 
 @7700 Gosterro · ゴステロ
 # 触发：攻击（通用，5/15）
@@ -47,7 +47,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「簡単に死ぬなよ! いたぶる
 >  楽しみが無くなるからなっ!」
-“Don’t die too easily! I’d lose the fun of tormenting you!”
+“Don’t die too fast! It’ll spoil the fun of tormenting you!”
 
 @7705 Gosterro · ゴステロ
 # 触发：攻击（通用，10/15）
@@ -74,7 +74,7 @@
 # 触发：攻击（通用，14/15）
 # 审校：「たまらないなぁ」表示难以抗拒的快感，初稿“There's nothing like killing people”语气不够贴切。
 > 「たまらないなぁ人殺しというのはぁ!」
-“Killing people is just irresistible!”
+“Nothing beats killing people!”
 
 @7710 Gosterro · ゴステロ
 # 触发：攻击（通用，15/15）
@@ -91,14 +91,14 @@
 # 触发：被击坠（通用，2/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「俺はこんな所でくたばらんぞぉ!!」
-“I’m not dying in a place like this!!”
+“I’m not dying here!!”
 
 @7713 Gosterro · ゴステロ
 # 触发：被击坠（通用，3/4）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「覚えておけ! 俺は必ず戻ってきて
 >  お前の体を八つ裂きにしてやる!!」
-“Remember this! I’ll be back, and I’ll tear your body to pieces!!”
+“Remember this! I’ll be back to tear you limb from limb!!”
 
 @7714 Gosterro · ゴステロ
 # 触发：被击坠（通用，4/4）
@@ -169,14 +169,14 @@
 @7726 Gosterro · ゴステロ
 # 触发：回避（通用，1/5）
 > 「ひへへへへへへっ! アマちゃんめ!」
-“Heheheheheh! You amateur!”
+“Heheheheheh! What a softie!”
 
 @7727 Gosterro · ゴステロ
 # 触发：回避（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様はムダなことをしたのだと、
 >  思い知るがいい!」
-“You’d best learn you’ve done all this for nothing!”
+“You’re about to learn it was all for nothing!”
 
 @7728 Gosterro · ゴステロ
 # 触发：回避（通用，3/5）

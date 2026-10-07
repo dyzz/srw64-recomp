@@ -4,7 +4,7 @@
 # 触发：攻击（通用，1/7）
 # 审校：原文没有“some”，去掉多余词更贴合军官的干脆口吻。
 > 「いさぎよく死ぬがいい!」
-“Die with dignity!”
+“Accept your death gracefully!”
 
 @7840 Karla · カルラ
 # 触发：攻击（通用，2/7）
@@ -32,7 +32,7 @@
 @7844 Karla · カルラ
 # 触发：攻击（通用，6/7）
 > 「無駄なあがきをっ!」
-“What a pointless struggle!”
+“Your struggling is pointless!”
 
 @7845 Karla · カルラ
 # 触发：攻击（通用，7/7）
@@ -49,7 +49,7 @@
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「この私を、ここまで追い詰める
 >  とは!?」
-“To push me this far?!”
+“You’ve pushed me this far?!”
 
 @7848 Karla · カルラ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/2）
@@ -90,7 +90,7 @@
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/2）
 > 「その程度の攻撃で何をしようと
 >  いうのだ!」
-“What do you hope to do with an attack like that!”
+“What do you hope to accomplish with that?!”
 
 @7855 Karla · カルラ
 # 触发：回避（通用，1/3）
@@ -106,7 +106,7 @@
 @7857 Karla · カルラ
 # 触发：回避（通用，3/3）
 > 「そんな構えで当てられるか!」
-“You think you can hit me with that stance!”
+“You’ll never hit me with a stance like that!”
 
 @7858 Karla · カルラ
 # 触发：攻击无效（护罩／装甲）（通用，1/1）
@@ -140,7 +140,7 @@
 # 触发：剧情标志 0 = 0，武器码 0（按表原样）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「貴様らは許さん!」
-“I won’t forgive any of you!”
+“You’ll all pay for this!”
 
 @14543 Karla · カルラ
 # 触发：剧情标志 0 = 0，武器码 0（按表原样）
@@ -153,7 +153,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「エイジ! 貴様だけはこの手で
 >  殺してやる!」
-“Eiji! You alone I’ll kill with my own hands!”
+“Eiji! You’re the one I’ll kill with my own hands!”
 
 @14545 Karla · カルラ
 # 触发：对手驾驶员〈エイジ〉

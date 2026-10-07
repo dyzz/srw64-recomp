@@ -62,7 +62,7 @@
 # 审校：“くっ”是日文拟声，应转为自然英文闷哼。
 > 「くっ! 最後の意地をかけての
 >  悪あがきか!」
-“Ngh! A last-ditch struggle for pride, is it?!”
+“Ngh! One last desperate stand for your pride?!”
 
 @7872 Giura · ギウラ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/3）
@@ -114,4 +114,4 @@
 # 审校：原文结尾为「!」，译文漏掉感叹号。
 > 「おのれそんなところから攻撃して
 >  くるとは!」
-“Curse you, attacking from a place like that?!”
+“Curse you, attacking from way over there?!”

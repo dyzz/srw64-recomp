@@ -13,7 +13,7 @@
 @7608 Gale · ゲイル
 # 触发：攻击（通用，3/8）
 > 「覚悟を決めろ!!」
-“Prepare yourself!”
+“Make your peace!”
 
 @7609 Gale · ゲイル
 # 触发：攻击（通用，4/8）
@@ -74,7 +74,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「うおぉぉ!? う、うかつだったか!?」
-“Uwooooh?! W-was I careless?!”
+“Uwooooh?! D-did I let my guard down?!”
 
 @7620 Gale · ゲイル
 # 触发：中伤（剩余 HP 30–90%）（通用，1/4）
@@ -118,7 +118,7 @@
 # 触发：回避（通用，2/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな腕でやられるような私でない」
-“I’m not the kind to be beaten by skill like that.”
+“It’ll take more skill than that to beat me.”
 
 @7628 Gale · ゲイル
 # 触发：回避（通用，3/7）
@@ -133,7 +133,7 @@
 @7630 Gale · ゲイル
 # 触发：回避（通用，5/7）
 > 「その程度で!」
-“With just that!”
+“That won’t be enough!”
 
 @7631 Gale · ゲイル
 # 触发：回避（通用，6/7）
@@ -145,7 +145,7 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「そんな攻撃で相手を倒せると
 >  思うな!」
-“Don’t think an attack like that can beat your enemy!”
+“An attack like that won’t bring anyone down!”
 
 @7633 Gale · ゲイル
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
@@ -168,4 +168,4 @@
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おのれ、卑怯な!」
-“Curse you, that’s cowardly!”
+“Curse you, coward!”
