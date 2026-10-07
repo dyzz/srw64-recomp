@@ -638,7 +638,7 @@ those words before. It’s an old legend of Planet Fleed.”
 # 审校：全局：弯撇号／弯引号
 > 「ああっ、そうそう!
 >  やっと思い出したわ」
-“Ah, yes, that’s it! I finally remembered.”
+“Oh, right, right! Now I remember.”
 
 @42043 Duo · デュオ
 > 「へぇ、それってどういうやつなんだ?」
@@ -909,7 +909,7 @@ Well then, good night...”
 @42077 Keiko · 恵子
 # 审校：全局：弯撇号／弯引号
 > 「ま、勝平ったら、もう寝ちゃってるわ」
-“Honestly, Kappei’s already asleep.”
+“Oh, Kappei... he’s already fallen asleep.”
 
 @42078 Uchuta · 宇宙太
 # 审校：句子不通顺

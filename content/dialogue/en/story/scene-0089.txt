@@ -221,7 +221,7 @@ Prepare to set sail.”
 ---
 >  彼らがいったいどこからやってくるのかは
 >  ほぼわかってきている」
-we’ve almost figured out exactly where they’re coming from.”
+we’ve nearly pinned down where they’re coming from.”
 
 @42358 Koji · 甲児
 > 「どこからって、異次元なんだろ?」
@@ -378,7 +378,7 @@ But the Gildrome Style is neither speed nor power!”
 @42379 Bright · ブライト
 > 「まさか……気をつけろ!
 >  奴の精神攻撃がくるぞ!」
-“It can’t be... Watch out! His mental attack is coming!”
+“No... Watch out! His mental attack is coming!”
 
 @42380 Gildrome · ギルドローム
 # 审校：精读：破折号
@@ -536,7 +536,7 @@ But the Gildrome Style is neither speed nor power!”
 @42403 Bright · ブライト
 > 「まさか……気をつけろ!
 >  奴の精神攻撃がくるぞ!」
-“It can’t be... Watch out! His mental attack is coming!”
+“No... Watch out! His mental attack is coming!”
 
 @42404 Gildrome · ギルドローム
 # 审校：精读：破折号
@@ -641,7 +641,7 @@ played right into the enemy’s hands.”
 
 @42418 Dr. Hazuki · 葉月博士
 > 「なんだ!? 何をするつもりだ!?」
-“What?! What are you planning to do?!”
+“What?! What’s he up to?!”
 
 @42419 Bright · ブライト
 > 「博士、敵は精神攻撃を
@@ -745,7 +745,7 @@ How long can we hold out...”
 @42434 Chum · チャム
 # 审校：全局：弯撇号／弯引号
 > 「ショウ、そんな不吉なこといわないでよ」
-“Show, don’t say creepy stuff like that.”
+“Show, don’t say gloomy stuff like that.”
 
 @42435 Alan · アラン
 # 审校：全局：弯撇号／弯引号
@@ -914,7 +914,7 @@ and reach the Muge universe.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、そう結論を急ぐものでもない。
 >  艦長、先の戦闘で破壊した
-“No, don’t jump to conclusions. Captain, I’d like permission to recover
+“No, let’s not jump to conclusions. Captain, I’d like permission to recover
 ---
 >  敵艦の残骸を
 >  回収させてもらいたい」
@@ -923,7 +923,7 @@ the wreckage of the enemy ship we destroyed in the last battle.”
 @42457 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「敵艦の? どういうことです?」
-“The enemy ship’s? What do you mean?”
+“The enemy ship? What for?”
 
 @42458 Dr. Hazuki · 葉月博士
 # 审校：全局：弯撇号／弯引号
@@ -938,11 +938,11 @@ If we examine the enemy ship’s wreckage, we may learn something.”
 @42459 Bright · ブライト
 > 「なるほど、わかりました。
 >  万丈、手のあいている者を
-“I see, understood. Banjo, could you take a few hands who aren’t busy
+“I see. Understood. Banjo, could you take a few people who are free
 ---
 >  何人か連れていって、
 >  回収に当たってくれないか」
-and see to the recovery?”
+and handle the recovery?”
 
 @42460 Banjo · 万丈
 > 「もちろんだ、艦長。今ここにいるのが
@@ -1096,14 +1096,14 @@ but going on the attack is another, right?”
 # 审校：全局：弯撇号／弯引号
 > 「だけどよ、奴らがまだ
 >  あきらめちゃいない以上
-“But as long as they haven’t given up yet,
+“But as long as they haven’t given up,
 ---
 >  そこまでやらないと戦いは終わらないぜ」
-the fighting won’t end unless we go that far.”
+this war won’t end unless we go that far.”
 
 @42485 Eiji · エイジ
 > 「わかってる。それはわかっているんだ」
-“I know. I know that.”
+“I know. I do know that.”
 
 @42486 Takeru · タケル
 > 「エイジ、それは俺も同じだよ。
@@ -1133,13 +1133,13 @@ it simply doesn’t work on, in more ways than one.”
 @42489 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
 > 「それで葉月博士、どうなんです?」
-“So, Dr. Hazuki, what’s the situation?”
+“So, Dr. Hazuki, what did you find?”
 
 @42490 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
 > 「博士、そろそろ結果を
 >  教えてもらいたいな」
-“Doctor, it’s about time you told us the results.”
+“Doctor, it’s time you told us the results.”
 
 @42491 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -1284,7 +1284,7 @@ we can secure a means for them to return.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ……むろん別の方法があるならば
 >  それにこしたことはないが……あるのか?」
-“Yeah... Of course, another way would be better... but is there one?”
+“Yeah... Naturally, if there’s another way, so much the better... but is there?”
 
 @42511 Dr. Hazuki · 葉月博士
 # 审校：中英都理顺
@@ -1428,10 +1428,10 @@ I’ll go, I’ll fight, and I’ll die.”
 # 审校：全局：弯撇号／弯引号
 > 「どうせあんたもそのつもりだったんだろ、
 >  忍。まさか今さら
-“You were planning the same thing anyway, weren’t you, Shinobu? Surely you’re not
+“You were planning on it anyway, weren’t you, Shinobu? Don’t you dare
 ---
 >  ダメだなんて、いわないよね」
-going to tell me no at this point.”
+tell me no now.”
 
 @42529 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1723,7 +1723,7 @@ we head out not to avoid losing, but to win.”
 @42567 Beecha · ビーチャ
 > 「あ、なんなら俺が艦長代理を
 >  やりましょうか」
-“Oh, if you want, I could act as captain in your place.”
+“Oh, if you like, I could fill in as acting captain.”
 
 @42568 Elle · エル
 # 审校：英文更自然
@@ -1743,7 +1743,7 @@ M-maybe I’ll pass after all...”
 @42570 Elle · エル
 # 审校：全局：弯撇号／弯引号
 > 「だったら最初からいうんじゃない!」
-“Then don’t say it in the first place!”
+“Then don’t offer in the first place!”
 
 @42571 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -2453,7 +2453,7 @@ One minute until energy critical.”
 # 审校：全局：弯撇号／弯引号
 > 「そんじゃちょっくら行ってくるぜ。
 >  宴会の用意して待っててくれよな」
-“Well, we’re off. Have a party ready for us when we get back.”
+“Well, we’re off. Have a party ready for when we get back.”
 
 @42672 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -2506,7 +2506,7 @@ there’s a chance we can come pick you up from this side.”
 @42679 Ciela · シーラ
 # 审校：英文更自然
 > 「みなのご武運を祈っています」
-“I pray fortune favors you all in battle.”
+“May fortune be with you all in battle.”
 
 @42680 Chum · チャム
 > 「みんな、がんばってね!」
@@ -2696,7 +2696,7 @@ We’re going to be plenty busy ourselves.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ、そうだな。よし、
 >  俺たちは急いで月へ帰還しよう
-“Yeah, that’s right. All right, let’s hurry back to the moon.
+“Yeah, you’re right. All right, let’s hurry back to the Moon.
 ---
 >  葉月博士、ガンドールの
 >  改造の方、よろしく頼みますよ」
@@ -2763,7 +2763,7 @@ We have to go pick them up as soon as possible.”
 
 @42721 Ark · アーク（按段落 3DD1）
 > 「なんとかっていわれても……」
-“Do something how...?”
+“Do something? Like what...?”
 
 @42722 Selain · セレイン（按段落 3DD2）
 > 「私にどうしろというんだ、アストナージ」
@@ -2920,7 +2920,7 @@ Judau to smooth things over with Ple.”
 # 审校：全局：弯撇号／弯引号
 > 「いい、いい。気にするな。さっさとやって
 >  もらっちまえよ」
-“Fine, fine. Don’t worry about it. Go on, get them to do it.”
+“Fine, fine. Don’t worry about it. Go on, have them do it.”
 
 @42750 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
@@ -2935,7 +2935,7 @@ I’ll apologize properly to Ple later.”
 @42751 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号
 > 「うれしいな。ありがとう、{HeroName}」
-“I’m so happy. Thank you, {HeroName}.”
+“I’m glad. Thank you, {HeroName}.”
 
 @42752 Death Gaia · デスガイヤー
 # 审校：Death Gaia 是武人型将军，对帝王用简洁的敬称即可，原文无“我が君”等，译成“My lord Emperor Muge”过于冗长且不符合其豪迈口吻。
@@ -2950,11 +2950,11 @@ I’ll apologize properly to Ple later.”
 @42754 Death Gaia · デスガイヤー
 > 「ギルドローム将軍からの報告が
 >  届かぬようです
-“It seems no report has arrived from General Gildrome.
+“It seems no report has come from General Gildrome.
 ---
 >  もしやとは思いますが、
 >  地球人どもに破れたのでは……」
-I hope I am wrong, but could he have fallen to the Earthlings...?”
+I dare not think it, but might he have been defeated by the Earthlings...?”
 
 @42755 Emperor Muge · ムゲ帝王
 # 审校：デスガイヤー 按词表 Death Gaia

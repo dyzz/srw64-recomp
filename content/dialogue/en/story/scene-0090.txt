@@ -109,10 +109,10 @@ what we need to get back to the moon. That’s fine, right?”
 # 审校：全局：弯撇号／弯引号
 > 「はははっ、なにしろガンドール砲を
 >  直接受けるわけだからね
-“Hahaha, after all, we’re taking the Gandor Cannon’s blast head-on.
+“Hahaha, we are taking a Gandor Cannon blast head-on, after all.
 ---
 >  失敗してたら大変なことになる」
-If it failed, we’d be in serious trouble.”
+If it didn’t work, we’d be in big trouble.”
 
 @42782 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -170,7 +170,7 @@ One minute until energy critical.”
 # 审校：全局：弯撇号／弯引号
 > 「そんじゃちょっくら行ってくるぜ。
 >  宴会の用意して待っててくれよな」
-“Well, we’re off. Have a party ready for us when we get back.”
+“Well, we’re off. Have a party ready for when we get back.”
 
 @42793 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -223,7 +223,7 @@ there’s a chance we can come pick you up from this side.”
 @42800 Ciela · シーラ
 # 审校：英文更自然
 > 「みなのご武運を祈っています」
-“I pray fortune favors you all in battle.”
+“May fortune be with you all in battle.”
 
 @42801 Chum · チャム
 > 「みんな、がんばってね!」

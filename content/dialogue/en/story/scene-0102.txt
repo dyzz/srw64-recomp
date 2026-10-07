@@ -13,10 +13,10 @@
 # 审校：全局：弯撇号／弯引号
 > 「エイジ、あたしたち先に
 >  搬入に行ってるわね
-“Eiji, we’re going on ahead to load the cargo, okay?
+“Eiji, we’ll go on ahead and start loading, okay?
 ---
 >  ほらデビッド、いらっしゃい」
-Come on, David, let’s go.”
+Come on, David, this way.”
 
 @47933 David · デビッド
 # 审校：全局：弯撇号／弯引号
@@ -169,7 +169,7 @@ One minute until energy critical.”
 # 审校：全局：弯撇号／弯引号
 > 「そんじゃちょっくら行ってくるぜ。
 >  宴会の用意して待っててくれよな」
-“Well, we’re off. Have a party ready for us when we get back.”
+“Well, we’re off. Have a party ready for when we get back.”
 
 @47962 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -222,7 +222,7 @@ we may be able to come get you.”
 @47969 Ciela · シーラ
 # 审校：同上
 > 「みなのご武運を祈っています」
-“I pray fortune favors you all in battle.”
+“May fortune be with you all in battle.”
 
 @47970 Chum · チャム
 > 「みんな、がんばってね!」
