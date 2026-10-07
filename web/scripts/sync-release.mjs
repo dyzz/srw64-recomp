@@ -1,7 +1,7 @@
 // Writes src/data/release.json (the site's download data and /latest.json)
 // from a build_release.py output directory:
 //
-//   node scripts/sync-release.mjs ../build/release/0.3.5-cdb4020 [--quark <share url>]
+//   node scripts/sync-release.mjs ../build/release/0.3.5-cdb4020 [--quark <share url>] [--baidu <share url>]
 //
 // Download links point at the GitHub release for the tag; the Quark share link
 // is added by hand once the files are uploaded there. The date is the tag's
@@ -13,9 +13,11 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const [dir, ...rest] = process.argv.slice(2);
-if (!dir) throw new Error('usage: sync-release.mjs <build/release/VERSION-COMMIT> [--quark URL]');
-const quarkAt = rest.indexOf('--quark');
-const quark = quarkAt >= 0 ? rest[quarkAt + 1] : null;
+if (!dir) throw new Error('usage: sync-release.mjs <build/release/VERSION-COMMIT> [--quark URL] [--baidu URL]');
+// Netdisk mirrors, each a share link with its passcode (?pwd=).
+const option = (name) => (rest.indexOf(name) >= 0 ? rest[rest.indexOf(name) + 1] : null);
+const quark = option('--quark');
+const baidu = option('--baidu');
 
 const build = JSON.parse(readFileSync(join(dir, 'release.json'), 'utf8'));
 const repo = 'dyzz/srw64-recomp';
@@ -44,6 +46,7 @@ const out = {
   date,
   github: `https://github.com/${repo}/releases/tag/${build.tag}`,
   quark,
+  baidu,
   files,
   hd,
 };

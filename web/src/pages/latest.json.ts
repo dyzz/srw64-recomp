@@ -21,6 +21,7 @@ export const GET = () =>
         download: { zh: install('zh'), en: install('en'), ja: install('ja') },
         github: release.github,
         quark: release.quark,
+        baidu: release.baidu,
         files: allFiles,
         // A pack from before HD versions has none, and is offered to nobody.
         // Taken down (published false): no files and no HD pack to offer.
