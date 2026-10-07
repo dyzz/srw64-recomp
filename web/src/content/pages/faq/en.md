@@ -16,7 +16,7 @@ Only Super Robot Wars 64, Japan Rev 0, is supported. Any byte order works (`.z64
 
 ## Where do I put the ROM?
 
-- **Windows**: rename your ROM to `rom.z64` and put it in the unzipped folder, next to `Marchwind64.cmd`, then double-click `Marchwind64.cmd`. `%LOCALAPPDATA%\SRW64Recomp\rom.z64` works too. Windows hides file extensions by default, so the file can end up as `rom.z64.z64`: turn on “File name extensions” under View in File Explorer first.
+- **Windows**: rename your ROM to `rom.z64` and put it in the unzipped `Marchwind64-windows-x64` folder, then double-click `Marchwind64.cmd` (not `Marchwind64.exe`). `%LOCALAPPDATA%\SRW64Recomp\rom.z64` works too. Windows hides file extensions by default, so the file can end up as `rom.z64.z64`: turn on “File name extensions” under View in File Explorer first.
 - **Linux and Steam Deck**: rename it to `rom.z64` next to `marchwind64.sh`, or put it at `~/.local/share/srw64-recomp/rom.z64`.
 - **macOS and Android**: no renaming; choose the ROM in the window that opens on first launch.
 

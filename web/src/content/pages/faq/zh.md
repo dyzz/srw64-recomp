@@ -16,7 +16,7 @@ lead: 关于安装、操作和存档的常见问题。没有找到答案，可�
 
 ## ROM 放在哪里？
 
-- **Windows**：把 ROM 改名为 `rom.z64`，放进解压出的文件夹，和 `Marchwind64.cmd` 放在一起，然后双击 `Marchwind64.cmd`。也可以放在 `%LOCALAPPDATA%\SRW64Recomp\rom.z64`。Windows 默认隐藏扩展名，改名时容易变成 `rom.z64.z64`，先在资源管理器的「查看」里勾选「文件扩展名」。
+- **Windows**：把 ROM 改名为 `rom.z64`，放进解压出的 `Marchwind64-windows-x64` 文件夹，然后双击 `Marchwind64.cmd` 启动（不是 `Marchwind64.exe`）。也可以放在 `%LOCALAPPDATA%\SRW64Recomp\rom.z64`。Windows 默认隐藏扩展名，改名时容易变成 `rom.z64.z64`，先在资源管理器的「查看」里勾选「文件扩展名」。
 - **Linux／Steam Deck**：改名为 `rom.z64`，放在 `marchwind64.sh` 旁边，或 `~/.local/share/srw64-recomp/rom.z64`。
 - **macOS、Android**：不用改名，首次启动时在弹出的窗口里选择 ROM。
 

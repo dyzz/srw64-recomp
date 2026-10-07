@@ -16,7 +16,7 @@ lead: インストール、操作、セーブに関するよくある質問を�
 
 ## ROM はどこに置けばよいですか？
 
-- **Windows**：ROM の名前を `rom.z64` に変更し、展開したフォルダーの `Marchwind64.cmd` と同じ場所に置いて、`Marchwind64.cmd` をダブルクリックします。`%LOCALAPPDATA%\SRW64Recomp\rom.z64` に置くこともできます。Windows は既定で拡張子を隠すため、`rom.z64.z64` になりがちです。エクスプローラーの「表示」で「ファイル名拡張子」をオンにしてから変更してください。
+- **Windows**：ROM の名前を `rom.z64` に変更し、展開した `Marchwind64-windows-x64` フォルダーに置いて、`Marchwind64.cmd` をダブルクリックします（`Marchwind64.exe` ではありません）。`%LOCALAPPDATA%\SRW64Recomp\rom.z64` に置くこともできます。Windows は既定で拡張子を隠すため、`rom.z64.z64` になりがちです。エクスプローラーの「表示」で「ファイル名拡張子」をオンにしてから変更してください。
 - **Linux／Steam Deck**：`rom.z64` に名前を変更して `marchwind64.sh` と同じ場所、または `~/.local/share/srw64-recomp/rom.z64` に置きます。
 - **macOS・Android**：名前の変更は不要です。初回起動時に表示される画面で ROM を選択します。
 
