@@ -502,7 +502,7 @@ Base rabble after all, with no grasp of the weight of tradition.”
 @31363 Haman · ハマーン
 > 「交渉は決裂だな。
 >  我らの力、とくとお目にかけよう。が
-“Then these talks are over. You will see our power soon enough. But
+“Then these talks are over. You will see our power in full. But
 ---
 >  貴様らはここで死んでもらう」
 you yourselves will die here.”
@@ -1240,7 +1240,7 @@ Special Lieutenant Mouar. If you ask me, the postwar
 Earth will be ruled by a woman. As for me, once I have seen that come to pass,
 ---
 >  恒星旅行にでもでるさ」
-I may go off on a voyage to the stars.”
+I will go off on a voyage to the stars.”
 
 @31475 Mouar · マウアー
 > 「待って、ジェリド」

@@ -1168,7 +1168,7 @@ you don’t even think about what that means, you bastard!”
 # 审校：全局：弯撇号／弯引号
 > 「カミーユ……出てきたのなら、
 >  さっさと撃破してくれればいいものを!」
-“Kamille... If you’re going to come out, then just shoot me down and be done with it!”
+“Kamille... If you’ve come out, then just shoot me down and be done with it!”
 
 @20677 Kamille · カミーユ
 > 「フォウ、話を聞いてくれ。フォウ!」

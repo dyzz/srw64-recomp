@@ -170,7 +170,7 @@ We can’t settle it on our own.”
 “But if we don’t know where Special Colonel Treize is being held,
 ---
 >  できない相談です」
-that’s easier said than done.”
+it can’t be done.”
 
 @35293 Hayato · ハヤト
 > 「まったく、やっかいなことに
@@ -1097,7 +1097,7 @@ have lost none of my edge. As you saved my life,
 ---
 >  その恩義に報いるため、
 >  見事戦ってみせよう」
-I shall repay that debt by fighting with honor.”
+I shall repay that debt by fighting with distinction.”
 
 @35448 Yazan · ヤザン
 > 「そうかい。ゲーツ・キャパ、そっちはどうだ」

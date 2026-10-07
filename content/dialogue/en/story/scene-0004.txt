@@ -339,7 +339,7 @@ with Professor Yumi somehow?”
 @17712 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「あそこか。みんな、いくぞ!」
-“There it is. Let’s go, everyone!”
+“That place, huh. Let’s go, everyone!”
 
 @17713 Brad · ブラッド（按段落 3DD3）
 > 「おう!」
@@ -699,7 +699,7 @@ He says he will send a robot and a pilot
 ---
 >  パイロット1人を、こちらに
 >  向かわせるとのことです」
-here for Mazinger Z flight training.”
+here for Mazinger Z pilot training.”
 
 @17761 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号

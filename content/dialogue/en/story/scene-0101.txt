@@ -246,7 +246,7 @@ Otherwise, that bastard Glemy will hit us from behind.”
 Haman won’t move against us. At least not until
 ---
 >  自分の勝利が確信できるまでは」
-she’s sure she’s won.”
+she’s sure she’ll win.”
 
 @47608 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -2051,7 +2051,7 @@ to you.”
 # 审校：全局：弯撇号／弯引号
 > 「しかしな……復旧できそうなコロニーは
 >  いくつもあるだろうが……大変だぞ
-“Still... there may be plenty of colonies worth restoring, but it won’t be easy.
+“Still... there may be plenty of colonies we could restore, but it won’t be easy.
 ---
 >  ロームフェラ財団を動かすだけでは、
 >  どうにもならん」

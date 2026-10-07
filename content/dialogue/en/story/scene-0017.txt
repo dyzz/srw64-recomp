@@ -562,7 +562,7 @@ destroy mankind? Everyone, let’s go!”
 # 审校：人名拼写 Rei→Ray
 > (アムロ……レイ……
 >  やっぱりこの人もパイロットだった
-(Amuro... Ray... so he really was a pilot after all.
+(Amuro... Ray... so he was a pilot too, after all.
 ---
 >  戦う人だったんだわ……)
 A man who fights...)
@@ -620,7 +620,7 @@ Tekkoki of the Hyakki Clan. Now, face me fair and square!”
 @19928 Dr. Gura · グラー博士
 > (奴のいうことを真に受けておっては
 >  我が百鬼一族の野望は
-(If we took that fool at his word, the Hyakki Clan’s ambitions would
+(If we took him at his word, the Hyakki Clan’s ambitions would
 ---
 >  達成されぬわ)
 never be realized.)

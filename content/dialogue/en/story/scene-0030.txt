@@ -1700,7 +1700,7 @@ there’s no backing out of the fight anyway, that’s for sure.”
 @23078 Ark · アーク（按段落 3DD1）
 > 「そう……だな。わかった。悪かったな、
 >  よけいな気をつかわせたみたいでさ」
-“Yeah... I guess you’re right. Okay. Sorry for making you worry about me.”
+“Yeah... I guess you’re right. Okay. Sorry for making you worry over nothing.”
 
 @23079 Lera · レラ
 # 审校：全局：弯撇号／弯引号
@@ -1853,7 +1853,7 @@ there’s no backing out of the fight anyway, that’s for sure.”
 @23098 Ark · アーク（按段落 3DD1）
 > 「そう……だな。わかった。悪かったな、
 >  よけいな気をつかわせたみたいでさ」
-“Yeah... I guess you’re right. Okay. Sorry for making you worry about me.”
+“Yeah... I guess you’re right. Okay. Sorry for making you worry over nothing.”
 
 @23099 Lera · レラ
 # 审校：全局：弯撇号／弯引号
@@ -3450,7 +3450,7 @@ possible, which path you will take. We shall take our leave now. I look forward 
 @23318 Bright · ブライト
 > 「うむ……やはりOZからの誘いがある
 >  そうだ。解放戦線もカラバも
-“Hmm... it seems OZ has made them an offer as well. The Liberation Front and Karaba
+“Hmm... it seems OZ has made them an offer, as expected. The Liberation Front and Karaba
 ---
 >  なくなるだろう」
 will both cease to exist.”

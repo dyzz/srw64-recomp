@@ -143,7 +143,7 @@ against the Romefeller faction...”
 @30121 David · デビッド
 # 审校：全局：弯撇号／弯引号
 > 「どうだかな。それだけじゃ判断できんぜ」
-“Maybe. That alone isn’t enough to go on.”
+“Who knows. That alone isn’t enough to go on.”
 
 @30122 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -1658,7 +1658,7 @@ I’m putting you in charge of him.”
 # 审校：全局：弯撇号／弯引号
 > 「しかしな、自分の言葉には
 >  責任を持つべきだとは思わんか?」
-“Still, don’t you think a person should stand by their own words?”
+“Still, don’t you think you should stand by your own words?”
 
 @30351 Selain · セレイン（按段落 3DD2）
 > 「…………はい」

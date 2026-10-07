@@ -1041,7 +1041,7 @@ Don’t you think?”
 # 审校：全局：弯撇号／弯引号
 > 「勝てるさ。スーパーモードさえあれば、
 >  俺は師匠を超えてみせる」
-“I will. With Super Mode, I’ll surpass my Master.”
+“I can. With Super Mode, I’ll surpass my Master.”
 
 @36385 Schwarz · シュバルツ
 # 审校：光秃秃的 Master 指代不清

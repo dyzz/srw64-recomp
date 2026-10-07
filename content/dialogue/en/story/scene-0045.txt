@@ -1602,7 +1602,7 @@ test data on the new technology.”
 # 审校：原意是能早交付所以先送走了，不是“本来能”
 > 「ZZガンダムは問題ありませんね。
 >  もっと早く渡せたものですから
-“The ZZ Gundam is fine. We could have handed it over sooner, so
+“The ZZ Gundam is fine. It was ready sooner, so
 ---
 >  先行して出させています」
 it’s already been sent on ahead.”
@@ -1626,7 +1626,7 @@ it’s already been sent on ahead.”
 # 审校：同上
 > 「ZZガンダムは問題ありませんね。
 >  もっと早く渡せたものですから
-“The ZZ Gundam is fine. We could have handed it over sooner, so
+“The ZZ Gundam is fine. It was ready sooner, so
 ---
 >  先行して出させています」
 it’s already been sent on ahead.”
@@ -1745,7 +1745,7 @@ alive and well.”
 # 审校：祖尔皇帝为威严暴君，voice 要求无缩写，将“he's”改为“he is”。
 > 「うぅむ、マーズめ。あやつに関しては
 >  ワシの誤算であったわ」
-“Mmm, curse that Mars. He was my one miscalculation.”
+“Mmm, curse that Mars. With him, I miscalculated.”
 
 @28019 Wahl · ワール
 # 审校：精读：对皇帝

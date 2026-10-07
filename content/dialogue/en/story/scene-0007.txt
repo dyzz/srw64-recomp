@@ -264,7 +264,7 @@ apparently due to enter the atmosphere almost simultaneously.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ。この距離では落下には
 >  間に合わないが、すぐ出よう」
-“Yeah. From this distance we won’t make it before it lands, but let’s head out now.”
+“Yeah. From this distance we won’t make it before they land, but let’s head out now.”
 
 @18007 Brad · ブラッド（按段落 3DD3）
 > 「わかった。{PartnerName}……
@@ -292,7 +292,7 @@ apparently due to enter the atmosphere almost simultaneously.”
 # 审校：全局：弯撇号／弯引号
 > 「さぁてね。でも万丈、この距離じゃ
 >  落下には間に合わないわよ」
-“Who knows. But Banjo, from this distance we won’t make it before it lands.”
+“Who knows. But Banjo, from this distance we won’t make it before they land.”
 
 @18012 Banjo · 万丈
 # 审校：can't be helped

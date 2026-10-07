@@ -1992,7 +1992,7 @@ they intend to gather in this region.”
 @40693 Wahl · ワール
 > 「ふむ……いったいどういうつもりか。もはや
 >  勝ち目はないと知って、我らに
-“Hmm... what are they up to? Do they know they cannot win, and mean to
+“Hmm... what are they up to? Knowing they cannot win, do they mean to
 ---
 >  最後の決戦でも挑もうというのか」
 challenge us to one last battle?”

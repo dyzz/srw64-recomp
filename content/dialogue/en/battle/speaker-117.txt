@@ -25,7 +25,7 @@
 # 触发：攻击（通用，5/13）
 # 审校：殺してもかまわん 是准许，不是 if you must 的勉强
 > 「よし、殺してもかまわん。倒せ!」
-“Good. Kill them if you must. Take them down!”
+“Good. Go ahead and kill them. Take them down!”
 
 @10268 Gandal · ガンダル
 # 触发：攻击（通用，6/13）

@@ -387,7 +387,7 @@ forgotten Master’s final words?!”
 # 审校：全局：弯撇号／弯引号
 > 「貴様が戦えん、というなら
 >  それもよかろう
-“If you will not fight, so be it.
+“If you cannot fight, so be it.
 ---
 >  だが、忘れるな{HeroNick}。
 >  いずれ必ず、俺と戦ってもらう

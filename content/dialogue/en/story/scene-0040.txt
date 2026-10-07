@@ -272,7 +272,7 @@ I’m putting him in your charge.”
 # 审校：全局：弯撇号／弯引号
 > 「しかしな、自分の言葉には
 >  責任を持つべきだとは思わんか?」
-“Still, don’t you think a person should stand by their own words?”
+“Still, don’t you think you should stand by your own words?”
 
 @26054 Selain · セレイン（按段落 3DD2）
 > 「…………はい」
@@ -1437,11 +1437,11 @@ If you are willing, I may find a use for you again.”
 ---
 >  どんな因縁かは知らんが、
 >  {HeroFull}は
-I don’t know what history you have with him, but {HeroFull} is
+I don’t know what your history is, but {HeroFull} is
 ---
 >  奴らの中核の1人だ。
 >  押さえておけるだけでも価値がある」
-one of their key figures. Just keeping him tied down is worth something.”
+one of their key figures. Just keeping that one tied down is worth something.”
 
 @26228 Kurtz · カーツ（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号

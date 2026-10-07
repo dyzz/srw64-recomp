@@ -1057,7 +1057,7 @@ to test the results of your project.”
 @37411 Fa · ファ
 # 审校：指代不清
 > 「じゃ、やっぱりあのとき……」
-“Then it really was him...”
+“Then it really was him back then...”
 
 @37412 Amuro · アムロ
 > 「見たのか?

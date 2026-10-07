@@ -2387,7 +2387,7 @@ One minute to energy critical.”
 # 审校：全局：弯撇号／弯引号
 > 「あんたもエイジのついでに、
 >  連れて帰ってあげるわよ」
-“I’ll bring you back too, along with Eiji.”
+“I’ll bring you back too, while I’m at it with Eiji.”
 
 @48525 Bright · ブライト
 > 「ではみんな、あとを頼むぞ」

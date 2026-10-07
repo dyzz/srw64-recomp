@@ -729,7 +729,7 @@ for going on like that.”
 @31881 Selain · セレイン（按段落 3DD2）
 > 「さあな。少なくとも現状では
 >  最良の選択ではあったはずだ」
-“Who knows. As things stand, at least, it was the best choice we had.”
+“Who knows. As things stand, at least, it must have been the best choice we had.”
 
 @31882 Lera · レラ
 > 「現状ではって、じゃあ、これから先は

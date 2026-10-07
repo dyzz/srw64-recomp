@@ -907,7 +907,7 @@ You performed just as I expected. You have my thanks.”
 # 审校：全局：弯撇号／弯引号
 > 「いや、あるさ。我がアクシズの
 >  地球圏制圧の邪魔者を
-“Oh, but there is. You’ve removed the one obstacle
+“Oh, but there is. You’ve removed an obstacle
 ---
 >  排除してくれたのだからな」
 to Axis’s conquest of the Earth Sphere.”

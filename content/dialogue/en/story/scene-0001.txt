@@ -311,7 +311,7 @@ He’s waxing the Sweemurg.”
 
 @17450 Lawrence · ローレンス
 > 「やはり帝国軍のようでございます」
-“It is the Imperial army, as I feared.”
+“It appears to be the Imperial army, as I suspected.”
 
 @17451 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号

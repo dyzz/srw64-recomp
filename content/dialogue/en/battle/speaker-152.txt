@@ -452,4 +452,4 @@ By the power of the sun, now, the finishing blow!”
 # 触发：攻击无效（护罩／装甲），乘坐〈ザンボット3〉（对话第 2/2 句）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ちょっと、油断しすぎよ!」
-“Hey, don’t get careless!”
+“Hey, you’re getting way too careless!”

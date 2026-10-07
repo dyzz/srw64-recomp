@@ -1501,7 +1501,7 @@ I’d heard about that business with the Dark Gundam myself.”
 # 审校：knows the identity of 生硬
 > 「てめぇ、どこの誰だかわからねぇような
 >  怪しい奴を連れてきたってのかよ!?」
-“You brought along some shady guy, and you don’t even know who he is?!”
+“You brought along some shady guy, and nobody even knows who he is?!”
 
 @32414 Domon · ドモン
 > 「シュバルツ、貴様どういうつもりだ」
@@ -2052,7 +2052,7 @@ Luna, flip the switch.”
 “No, this was part of Lord Shapiro’s plan from the very beginning.
 ---
 >  すべて予定されていたこと」
-All of it was foreseen.”
+All of it was planned.”
 
 @32502 Shapiro · シャピロ
 # 审校：全局：弯撇号／弯引号
@@ -2094,7 +2094,7 @@ If you don’t want to be caught in the blast, retreat at once.”
 “No, this was part of Lord Shapiro’s plan from the very beginning.
 ---
 >  すべて予定されていたこと」
-All of it was foreseen.”
+All of it was planned.”
 
 @32509 Shapiro · シャピロ
 # 审校：全局：弯撇号／弯引号
@@ -2156,7 +2156,7 @@ Shapiro, consider your life forfeit.”
 “No, this was part of Lord Shapiro’s plan from the very beginning.
 ---
 >  すべて予定されていたこと」
-All of it was foreseen.”
+All of it was planned.”
 
 @32519 Shapiro · シャピロ
 # 审校：全局：弯撇号／弯引号

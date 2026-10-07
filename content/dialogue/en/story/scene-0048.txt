@@ -407,7 +407,7 @@ several times.”
 @32700 Treize · トレーズ
 > 「地上での戦いももうすぐ
 >  ひと区切りつく。そうなれば
-“The fighting on Earth will soon reach a turning point. When it does,
+“The fighting on Earth will soon reach a lull. When it does,
 ---
 >  {HeroMech}には宇宙に
 >  あがってもらうことになる。地球も
@@ -1636,7 +1636,7 @@ beings that must be purged.”
 that I will settle. And for that, I cannot afford to lose to you here.
 ---
 >  いかぬな」
-Not now.”
+No, I cannot.”
 
 @32886 Show · ショウ
 # 审校：全局：弯撇号／弯引号

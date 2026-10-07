@@ -1115,7 +1115,7 @@ put the question to the other Earth species.”
 # 审校：全局：弯撇号／弯引号
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“Neither Muge nor Zuul has been wiped out completely,
+“We can. Neither Muge nor Zuul has been wiped out completely,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
@@ -1221,7 +1221,7 @@ won’t let you keep pulling our strings forever!”
 # 审校：全局：弯撇号／弯引号
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“Neither Muge nor Zuul has been wiped out completely,
+“We can. Neither Muge nor Zuul has been wiped out completely,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
@@ -1328,7 +1328,7 @@ won’t let you keep pulling our strings forever!”
 # 审校：全局：弯撇号／弯引号
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“Neither Muge nor Zuul has been wiped out completely,
+“We can. Neither Muge nor Zuul has been wiped out completely,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」
@@ -1441,7 +1441,7 @@ forever, you’ve got another thing coming!”
 # 审校：全局：弯撇号／弯引号
 > 「できるヨ。ムゲもズールも、完全に
 >  存在を消し去ったわけじゃ
-“Neither Muge nor Zuul has been wiped out completely,
+“We can. Neither Muge nor Zuul has been wiped out completely,
 ---
 >  ないからね。アンタたち人間とは、
 >  違う生き物なんだヨ」

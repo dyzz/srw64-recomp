@@ -549,7 +549,7 @@ it could hardly be helped. I’m glad you made it back, Major.”
 ---
 >  {HeroMech}のMSもあるゆえ、
 >  ぜひこの戦いから
-And as the {HeroMech} fields MS of its own, I ask that from this battle onward
+And as I have the {HeroMech}’s MS with me, I ask that from this battle onward
 ---
 >  戦列に加えていただきたい」
 I be allowed to join the line.”

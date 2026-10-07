@@ -13,7 +13,7 @@
 ---
 >  まともに残っているところなんて、
 >  なくなってしまった」
-there’s hardly anywhere left standing.”
+there’s nowhere left standing.”
 
 @20810 Show · ショウ
 # 审校：全局：弯撇号／弯引号
@@ -550,7 +550,7 @@ wipe ’em out, that’s the end of it. You’re fine with that too, right?”
 # 审校：全局：弯撇号／弯引号
 > 「違うよ。あいつは……俺が忘れちゃ
 >  いけないことを思い出させてくれるんだ」
-“No. He’s... someone who reminds me of what I can never forget.”
+“No. He’s... someone who reminds me of what I must never forget.”
 
 @20898 Lera · レラ
 # 审校：全局：弯撇号／弯引号

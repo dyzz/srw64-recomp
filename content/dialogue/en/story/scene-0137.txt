@@ -439,7 +439,7 @@ no one wants to save someone like you more than I do! So!”
 # 审校：全局：弯撇号／弯引号
 > 「お願い、もうやめて! あなたも
 >  かわいそうだとは思うけど、これ以上
-“Please, stop this! I know it’s not your fault, but don’t make
+“Please, stop this! I feel sorry for you too, but don’t make
 ---
 >  ドモンを苦しめないで!」
 Domon suffer any more!”
@@ -1061,7 +1061,7 @@ And all to destroy the Dark Gundam.”
 @45533 Domon · ドモン
 > 「そんな! あれを使って地球圏の
 >  征服を企んだのは兄さんのはず……」
-“No way! You were the one who used that thing to try to conquer the Earth Sphere...”
+“No way! You were supposed to be the one who used that thing to try to conquer the Earth Sphere...”
 
 @45534 Schwarz · シュバルツ
 # 审校：“以……为目的而被制造”机翻腔
@@ -2193,7 +2193,7 @@ but nothing’s over yet, got it?”
 # 审校：全局：弯撇号／弯引号
 > (つってもなぁ、表情がうつろなんだよ
 >  なぁ……)
-(Easy for him to say, but he looks totally out of it...)
+(He says that, but he looks totally out of it...)
 
 @45706 Rain · レイン
 > 「ドモン……」
@@ -2816,7 +2816,7 @@ any of us could ask for, Lady Haman.”
 ---
 >  することとなろう。お前たちにも存分
 >  に働いてもらう。期待しているぞ」
-the Galactic Empire’s forces. You will both have ample chance to prove yourselves. I expect great things.”
+the Galactic Empire’s forces. I will have you both give it your all. I expect great things.”
 
 @45789 Mashymre · マシュマー
 # 审校：英文生硬

@@ -1281,7 +1281,7 @@ And Zechs Merquise was killed in action.”
 @33240 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
 > 「な、なんだよ。オレは間違ってないぜ」
-“W-what? I’m right, aren’t I?”
+“W-what? I’m not wrong.”
 
 @33241 Sayaka · さやか
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）

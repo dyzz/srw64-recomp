@@ -181,11 +181,11 @@ Rest assured.”
 # 审校：全局：弯撇号／弯引号
 > 「すまない。もしも地球人類に
 >  未来があるなら、その時は
-“Thank you. If humanity has a future on Earth, then when the time comes,
+“Thank you. If the people of Earth have a future, then when the time comes,
 ---
 >  彼女たちが必要になるだろう。
 >  今必要とされているのは、戦って
-people like her will be needed. What’s needed now are those willing to fight
+she and the others will be needed. What’s needed now are those willing to fight
 ---
 >  血にまみれることをいとわない者だ。
 >  我々のようにな……」
@@ -711,7 +711,7 @@ And he turned me into a man who fights at Zuul’s command...”
 ---
 >  マーグ、もう誰にも渡さない。
 >  兄さんは俺のものだ」
-Marg, I’m never letting anyone take you again. My brother belongs with me.”
+Marg, I’m never letting anyone take you again. My brother belongs to me.”
 
 @29515 Rose · ロゼ
 > 「マーズッ!!」

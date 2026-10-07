@@ -676,7 +676,7 @@ You can handle it, can’t you?”
 # 审校：全局：弯撇号／弯引号
 > 「ウフフフ、わたしたち敵同士
 >  らしいのにね? ……ね、頼める?」
-“Hee hee, even though we’re supposed to be enemies? ...Hey, can I ask you something?”
+“Hee hee, even though we’re supposed to be enemies? ...Hey, can I ask you a favor?”
 
 @20151 Kamille · カミーユ
 > 「何を?」
@@ -849,7 +849,7 @@ Got it? Then sit tight and watch!”
 # 审校：全局：弯撇号／弯引号
 > 「フッ、あいかわらずの単細胞ぶりだな
 >  威勢だけでは戦いには勝てんぞ」
-“Hmph, as single-minded as ever. Bluster alone won’t win a fight.”
+“Hmph, as simple-minded as ever. Bluster alone won’t win a fight.”
 
 @20182 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号

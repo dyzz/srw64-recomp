@@ -78,7 +78,7 @@
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/5）
 # 审校：全局机械：?!/Gaia/Virose/Professor/Banjo
 > 「つ、強い、強すぎる!?」
-“H-he’s strong, way too strong?!”
+“Th-they’re strong, way too strong?!”
 
 @13310 Specials · スペシャルズ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）

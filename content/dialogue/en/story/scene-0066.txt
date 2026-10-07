@@ -716,7 +716,7 @@ It’s not OZ... Don’t tell me...!”
 # 审校：隼人口吻
 > 「よりによって
 >  問答無用の連中とはな
-“Of all the times for the no-talk crowd to show up.
+“Of all people, it had to be the no-talk crowd.
 ---
 >  いちばん来てほしくねえ奴らが
 >  来やがったか!」
@@ -1234,11 +1234,11 @@ in an age of upheaval.”
 @29015 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「……ここで死ぬのか……私は。
 >  それもよかろう。
-“...So I am to die here... Perhaps that is fitting.
+“...So I am to die here... So be it.
 ---
 >  フッ……地獄はさぞかし、
 >  にぎやかだろうな」
-Heh... Hell must be bustling these days.”
+Heh... Hell must be quite bustling.”
 
 @29016 Ehrlich · エルリッヒ（按段落 3DD1）
 > 「くっ……私は……」

@@ -713,7 +713,7 @@ in Special Colonel Scirocco’s hands, and it seems they could not touch it.”
 
 @38447 Bright · ブライト
 > 「やっかいなことになりそうだな、まったく」
-“Things are getting messier by the minute.”
+“Looks like things are going to get messy.”
 
 @38448 Wahl · ワール
 > 「ガンダル殿、地球人勢力の
@@ -1232,7 +1232,7 @@ And he turned me into a man who fights only as Zuul wills...”
 ---
 >  マーグ、もう誰にも渡さない。
 >  兄さんは俺のものだ」
-Marg, I won’t let anyone take you from me again. You’re my brother.”
+Marg, I won’t let anyone take you from me again. You’re mine, brother.”
 
 @38526 Rose · ロゼ
 > 「マーズッ!!」
@@ -2032,7 +2032,7 @@ but by a malfunction in its own escort MDs.”
 ---
 >  信頼性の高さは
 >  実証されていたはずだ
-but its reliability was well proven.
+but its reliability was supposedly well proven.
 ---
 >  事故にしてはいささか妙だね」
 Rather odd, for an accident.”
