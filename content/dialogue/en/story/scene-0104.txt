@@ -4,11 +4,11 @@
 # 审校：全局：弯撇号／弯引号
 > 「アムロさん、アクシズの核パルスに
 >  火がつきましたッ!
-“Amuro, the Axis nuclear pulse has ignited!
+“Amuro, Axis’s nuclear pulse engines have ignited!
 ---
 >  地球へ向けて
 >  移動を開始しています」
-It’s starting to move toward Earth.”
+It’s started moving toward Earth.”
 
 @49341 Hyoma · 豹馬
 > 「なんだって!?」
@@ -23,11 +23,11 @@ It’s starting to move toward Earth.”
 # 审校：“这是最大的战力”指代不清；英文误读
 > 「俺たちも行きましょう。カトルも、
 >  もどりました。現状では
-“Let’s go too. Quatre is back as well. As things stand, this is
+“Let’s go too. Quatre’s back now. Right now, this is
 ---
 >  最大の戦力です。今、
 >  行かなくては取り返しがつかない」
-the most strength we can muster. If we don’t go now, there’ll be no turning back.”
+as strong as we’re going to get. If we don’t go now, it’ll be too late.”
 
 @49344 Selain · セレイン（按段落 3DD2）
 # 审校：英文提议语气
@@ -62,11 +62,11 @@ and Quatre’s back, right?!”
 # 审校：英文称呼统一；中文结尾
 > 「行きましょう、アムロさん。
 >  今のあたしたちだけでは
-“Let’s go, Amuro. With just us as we are now,
+“Let’s go, Amuro. As we are now, on our own,
 ---
 >  とめられるかどうかわからない。だけど、
 >  今行かなくてはどうにもならなくなるわ」
-I don’t know if we can stop it. But if we don’t go now, there’ll be no way to fix this.”
+I don’t know whether we can stop it. But if we don’t go now, all will be lost.”
 
 @49348 Lawrence · ローレンス
 > 「カトル様もおもどりになりましたしな。
@@ -79,11 +79,11 @@ any greater fighting strength.”
 @49349 Amuro · アムロ
 > 「ああ。{HeroMech}、
 >  出撃するぞ。目標は、アクシズだ」
-“Yeah. {HeroMech}, launching. Our target is Axis.”
+“Right. {HeroMech}, move out. Our target is Axis.”
 
 @49350 Quinze · カーンズ
 > 「総帥、兵たちにお言葉を」
-“Supreme Commander, a word to the troops.”
+“Supreme Commander, a few words for the troops, if you would.”
 
 @49351 Char · シャア
 > 「わかっている」
@@ -92,23 +92,23 @@ any greater fighting strength.”
 @49352 Char · シャア
 > 「ネオジオンの兵士諸君、聞いて
 >  もらいたい。数年にわたり続いた
-“Soldiers of Neo Zeon, I want you to hear me out. The years of
+“Soldiers of Neo Zeon, hear me. The years of
 ---
 >  地球圏の争乱は、もはや
 >  終結したといってよい。ではなぜ
-turmoil in the Earth Sphere may now be called over. So then why
+turmoil in the Earth Sphere can now be said to be over. Why, then,
 ---
 >  今になって、我々はまた戦いを
 >  おこしたのか。諸君、もう1度
-have we risen in battle once again now? Everyone, I want you
+have we taken up arms once more? I ask you all
 ---
 >  よく考えてみてほしい。このままでは
 >  我らスペースノイドにとっても
-to think it over once more. If things go on like this, for us Spacenoids,
+to consider this carefully once again. If things go on as they are, for us Spacenoids,
 ---
 >  そして地球そのものにとっても、
 >  かつての地球連邦の時代と
-and for Earth itself, nothing will differ from
+and for Earth itself, nothing will have changed from
 ---
 >  何ら変わりはしないことを」
 the days of the old Earth Federation.”
@@ -120,35 +120,35 @@ the days of the old Earth Federation.”
 @49354 Char · シャア
 > 「いや、ムゲゾルバドス帝国、
 >  そして銀河帝国の
-“No, one could say the situation is even worse, with Earth
+“No, with an Earth battered by the Muge Zorbados Empire and the
 ---
 >  攻撃にさらされ、疲弊しきった
 >  地球を前にすれば、状況は
-exposed to the attacks of the Muge Zorbados Empire and the
+Galactic Empire and worn to exhaustion before us, I can say the situation
 ---
 >  より悪化しているといいきれる。
 >  かつて私の父、ジオン・ダイクンが
-Galactic Empire, and utterly exhausted. Long ago, my father, Zeon Deikun,
+has only grown worse. Long ago, when my father, Zeon Deikun,
 ---
 >  宇宙移民者すなわち
 >  スペースノイドの自治権獲得を
-demanded from Earth the right of autonomy for the space emigrants,
+demanded autonomy for the space emigrants, the Spacenoids,
 ---
 >  地球に要求したとき、
 >  父ジオンはザビ家に暗殺された
-the Spacenoids. My father Zeon was assassinated by the Zabi family.
+from Earth, my father Zeon was assassinated by the Zabi family.
 ---
 >  そしてそのザビ家はジオン公国を
 >  名のり、地球連邦政府に
-And that Zabi family took the name Principality of Zeon and
+The Zabis then named themselves the Principality of Zeon and
 ---
 >  独立戦争を挑んだのである。
 >  その結果は諸君らの
-challenged the Earth Federation government to a war of
+waged a war of independence against the Earth Federation government. As you
 ---
 >  知っている通り、ザビ家の敗北に
 >  終わった。それはいい」
-independence. The result, as all of you know, was the defeat of the Zabi family. That much is fine.”
+all know, it ended in the Zabi family’s defeat. That much is well and good.”
 
 @49355 Char · シャア
 > 「しかしその結果、
@@ -175,27 +175,27 @@ the rulers, and organized the Specials as a part of the Imperial military.”
 # 审校：后半段“温床……尽管如此”机翻腔
 > 「そして今、すべての異星人の
 >  支配を脱却し、ようやく
-“And now, even on an Earth finally freed from the rule of all
+“And now, even on an Earth at last freed from the rule of all
 ---
 >  解放された地球にあっても、
 >  彼らは難民の救助、地球の
-aliens, under the pretext of rescuing refugees and rebuilding
+aliens, under the banner of rescuing refugees and rebuilding
 ---
 >  再建という名目をかかげ、
 >  疲れきった地球の中で、再び
-Earth, amid an exhausted world, they are once again trying to turn back
+Earth, amid a world worn to exhaustion, they seek once again to turn back
 ---
 >  時代をかつてのごとく、もどそうと
 >  している。ザビ家の残党を語る
-the clock to what it once was. Yet the very ones who sowed the seeds
+the clock to the way things were. Those who claimed to carry on the Zabi legacy,
 ---
 >  ハマーン一党の跳梁を生んだ
 >  原因をつくったのもまた
-of the rampage by Haman’s faction, which claimed the Zabi family’s mantle,
+Haman’s faction, ran rampant because of conditions created
 ---
 >  かつて連邦にくみした彼らである
 >  にもかかわらず、である
-are they themselves, who once sided with the Federation.
+by these same men, who once sided with the Federation.
 ---
 >  それは、許せることではない」
 That is something I cannot forgive.”
@@ -211,7 +211,7 @@ That is something I cannot forgive.”
 ---
 >  乗りこえた。人類はこれを機に、
 >  新たな時代に移行しなければ
-crisis. Mankind must use this as a chance to move to a new age.
+crisis. Mankind must seize this chance to step into a new age.
 ---
 >  ならないのである。我らが母なる
 >  地球を人類の手から解放し
@@ -219,7 +219,7 @@ We must free our mother Earth from the hands of humanity,
 ---
 >  再び人類同士の戦争の
 >  起こることのない世界にしなければ
-and make it a world where war among humans will never occur
+and build a world where humans will never wage war on one another
 ---
 >  ならないのだ。これが、アクシズを
 >  地球に落とす真の目的である」
@@ -229,23 +229,23 @@ again. This is the true purpose of dropping Axis onto Earth.”
 # 审校：全局：弯撇号／弯引号
 > 「これにより地球を荒廃させ、
 >  地球に居続ける人々を
-“By this, we will lay Earth to waste and purge the people
+“With this, we will lay waste to the Earth and purge those
 ---
 >  粛清する! これによってのみ、
 >  人類すべてが宇宙に暮らす
-who remain on it! Only through this can we realize a new century
+who cling to it! Only then can we bring about a new century
 ---
 >  新世紀を実現できるのである!
 >  諸君! 新たなる時代を
-in which all of humanity lives in space! Everyone! To open up a new age,
+in which all humanity lives in space! Soldiers! To open the way to a new age,
 ---
 >  拓くため、あと一息、諸君らの
 >  力を私に貸していただきたい!
-just a little more, I ask you to lend me your strength!
+lend me your strength for one last push!
 ---
 >  そして私は、父ジオンのもとへ
 >  召されるであろう!!」
-And I shall be summoned to my father Zeon’s side!!”
+And then I shall be called to my father Zeon’s side!!”
 
 @49360 Quinze · カーンズ
 > 「お見事な演説でした」
@@ -254,37 +254,37 @@ And I shall be summoned to my father Zeon’s side!!”
 @49361 Char · シャア
 # 审校：英文
 > 「これでは道化だよ」
-“I’m nothing but a clown.”
+“This makes me a clown.”
 
 @49362 Quinze · カーンズ
 > 「兵の士気は高すぎて悪いと
 >  いうことはありません。……しかしこれで
-“There is no such thing as troop morale being too high. ...But with this,
+“Troop morale can never be too high. ...But with this,
 ---
 >  ようやくジオン・ダイクンの仇が……」
-at last the vengeance for Zeon Deikun...”
+at last, Zeon Deikun will be avenged...”
 
 @49363 Char · シャア
 > 「それ以上は口にするな。
 >  貴様がどういう腹づもりでいようが
-“Say no more. Whatever you intend by it
+“Not another word. Whatever you’re scheming
 ---
 >  私には関係のないことだ。
 >  それで、あれはどうなっている?」
-is none of my concern. So, how is that thing coming along?”
+is no concern of mine. Now, how is that thing coming along?”
 
 @49364 Quinze · カーンズ
 > 「すでにアクシズに運びこんであります。
 >  しかし、よろしいのですか?
-“It has already been carried into Axis. But, is this truly all right?
+“It has already been brought into Axis. But are you certain about this?
 ---
 >  万全を期すならばレポートに
 >  あるように女を……
-If you want to be absolutely certain, then as the report says, the woman...
+If you want to leave nothing to chance, then as the report says, a woman...
 ---
 >  あのクェスという少女など、そのために
 >  連れてきたのだと思っておりましたが」
-I had thought that girl Quess was brought along precisely for that purpose.”
+I had assumed that girl Quess was brought along precisely for that purpose.”
 
 @49365 Char · シャア
 > 「……あれはあのままでやれ。あくまでも
@@ -307,10 +307,10 @@ That was your intention, was it not?”
 # 审校：精读：句末标点
 > (アムロ……私はあこぎなことをやっている
 >  ……感じているのならば
-(Amuro... I am doing something merciless... If you sense it,
+(Amuro... what I’m doing is ruthless... If you can sense it,
 ---
 >  私をとめてみせろ)
-then try and stop me.)
+then stop me.)
 
 @49368 Kamille · カミーユ
 > 「しかし、レディ・アン……博物館
@@ -321,7 +321,7 @@ then try and stop me.)
 # 审校：全局：弯撇号／弯引号
 > 「変わったとはいっても、
 >  あいかわらず怖い人だな」
-“Even if she’s changed, she’s still a frightening person.”
+“She may have changed, but she’s still a scary one.”
 
 @49370 Dr. Yotsuya · 四谷博士
 > 「使うつもりかね? 核を?」
@@ -331,7 +331,7 @@ then try and stop me.)
 # 审校：全局：弯撇号／弯引号
 > 「アクシズをとめるためなら、
 >  なんでもやってみせますよ」
-“If it’s to stop Axis, I’ll try anything.”
+“If it’ll stop Axis, I’ll do whatever it takes.”
 
 @49372 Beltorchika · ベルトーチカ
 > 「……あれ……?」
@@ -361,7 +361,7 @@ really modify it that much?”
 @49377 Quatre · カトル
 > 「いいえ、アクシズにはまだ何もして
 >  いません。……そんなに違うんですか?」
-“No, nothing has been done to Axis yet. ...Is it that different?”
+“No, we haven’t touched Axis yet. ...Is it that different?”
 
 @49378 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -377,7 +377,7 @@ really modify it that much?”
 # 审校：全局：弯撇号／弯引号
 > 「……これ……やっぱりアクシズとは
 >  形が違うわ!」
-“...This... this really doesn’t have the same shape as Axis!”
+“...This... it’s definitely not the same shape as Axis!”
 
 @49381 Mika · ミカ
 > 「ええっ!?」
@@ -421,7 +421,7 @@ there was nothing like that on Axis!! And that thing is...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ……間違いないッ!
 >  デビルガンダムだ!!」
-“Yeah... there’s no mistake! It’s the Dark Gundam!!”
+“Yeah... no doubt about it! It’s the Dark Gundam!!”
 
 @49389 Juzo · 十三
 # 审校：全局：弯撇号／弯引号
@@ -434,7 +434,7 @@ there was nothing like that on Axis!! And that thing is...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「いえ、僕が独自に分析した
 >  デビルガンダムの能力が正しければ
-“No, if my independent analysis of the Dark Gundam’s abilities is correct,
+“No, if my own analysis of the Dark Gundam’s abilities is correct,
 ---
 >  その程度のことはできますよ」
 it’s entirely capable of that.”
@@ -451,7 +451,7 @@ it’s entirely capable of that.”
 
 @49393 Rain · レイン
 > 「どういうことなんです!?」
-“What does this mean?!”
+“What’s going on?!”
 
 @49394 Kosuke · 小介
 # 审校：全局：弯撇号／弯引号
@@ -497,7 +497,7 @@ the Dark Gundam, there’s no telling whether a nuke would even work.”
 @49399 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「あの中へ入るしかないっていうのか……」
-“You’re saying we have no choice but to go inside...”
+“So our only option is to go in there...”
 
 @49400 Tetsuya · 鉄也
 # 审校：全局：弯撇号／弯引号
@@ -544,16 +544,16 @@ involved, I’ll smash them all to pieces myself!!”
 # 审校：“撞上去”直译
 > 「……事情が変わった。
 >  こうなったらシャアの望むように
-“...The situation has changed. If it’s come to this, then just as Char wants,
+“...Things have changed. Now we have no choice but to do what Char wants
 ---
 >  正面からぶつかるしかない」
-we’ll have to hit him head-on.”
+and hit him head-on.”
 
 @49407 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
 > 「しかしこの戦力差だぞ?
 >  うまく中へ入りこめたとしても
-“But with this gap in forces? Even if we manage to get inside,
+“But with odds like these? Even if we manage to get inside,
 ---
 >  何が待っているかわかったものじゃない」
 there’s no telling what’s waiting for us.”
@@ -572,7 +572,7 @@ there’s no telling what’s waiting for us.”
 # 审校：全局：弯撇号／弯引号
 > 「アクシズはもう動いているんです。そんな
 >  問答をしている時間はありません!」
-“Axis is already moving. We don’t have time for this debate!”
+“Axis is already moving. We don’t have time to argue!”
 
 @49411 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
@@ -587,11 +587,11 @@ we’re out of time.”
 # 审校：全局：弯撇号／弯引号
 > 「アクシズはもう動いてるんだぜ!?
 >  そんな問答している時間は
-“Axis is already on the move?! We don’t have time for
+“Axis is already on the move?! We don’t have time to
 ---
 >  ねぇだろうが!
 >  どうせやるしかねぇんなら
-this debate! If we’ve gotta do it anyway,
+argue about this! If we’ve gotta do it anyway,
 ---
 >  早めに動いたほうがいいってもんだ」
 we’re better off moving fast.”
@@ -604,7 +604,7 @@ we’re better off moving fast.”
 ---
 >  あたしたちはすでに
 >  後手にまわっているんですよ!?」
-We’re already a step behind, you know?!”
+We’re already one step behind, don’t you see?!”
 
 @49414 Henken · ヘンケン
 # 审校：全局：弯撇号／弯引号
@@ -615,7 +615,7 @@ We’re already a step behind, you know?!”
 ---
 >  本艦隊はこれより、デビルアクシズに
 >  対し艦隊特攻をかける!」
-This fleet will now launch a fleet charge against Dark Axis!”
+This fleet will now make a full charge on Dark Axis!”
 
 @49415 Kignan · キグナン
 # 审校：全局：弯撇号／弯引号
@@ -626,10 +626,10 @@ This fleet will now launch a fleet charge against Dark Axis!”
 # 审校：全局：弯撇号／弯引号
 > 「来たか、{HeroMech}。
 >  さすがに早いな
-“So you’ve come, {HeroMech}. Fast as expected.
+“So you’ve come, {HeroMech}. Quick, as I’d expect.
 ---
 >  こちらの動きを読んでいたということか」
-So you read our movements, did you?”
+You must have read our movements.”
 
 @49417 Quinze · カーンズ
 > 「今の連中の戦力では、
@@ -700,7 +700,7 @@ Stuck out here in the middle of nowhere.”
 @49426 Sayaka · さやか
 > 「もう、そんなこと誰も
 >  考えてないとでも思ったの?」
-“Oh, did you really think nobody else was thinking about it?”
+“Geez, did you think you were the only one thinking it?”
 
 @49427 Maria · マリア
 # 审校：全局：弯撇号／弯引号
@@ -730,11 +730,11 @@ everyone’s thinking about it.”
 # 审校：全局：弯撇号／弯引号
 > 「まぁまぁ、その辺でやめにしないか。
 >  確かに言い出しにくいことではあるが
-“Now, now, let’s leave it at that. It’s true it’s hard to bring up,
+“Now, now, that’s enough. It’s not an easy thing to bring up,
 ---
 >  かなりの問題であるのは
 >  間違いないことだ」
-but there’s no doubt it’s a serious problem.”
+but it is a serious problem, no question.”
 
 @49432 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -745,7 +745,7 @@ but there’s no doubt it’s a serious problem.”
 # 审校：全局：弯撇号／弯引号
 > 「話が出たついでです。で、実際の
 >  ところはどうなんです、艦長?」
-“Since it’s come up, then. What’s the actual situation, Captain?”
+“Since it’s come up anyway... how do things actually stand, Captain?”
 
 @49434 Garrison · ギャリソン
 > 「ふむ、では私からご説明
@@ -776,10 +776,10 @@ about three more days, at most.”
 @49438 Garrison · ギャリソン
 > 「さよう。私といたしましても、
 >  その先のことは
-“Indeed. As for me, I would rather not think too much
+“Indeed. I myself would rather not dwell
 ---
 >  あまり考えたくはございませんが……」
-about what comes after that, but...”
+on what comes after that, but...”
 
 @49439 Ryoma · リョウ
 # 审校：全局：弯撇号／弯引号
@@ -802,7 +802,7 @@ about what comes after that, but...”
 @49442 David · デビッド
 # 审校：全局：弯撇号／弯引号
 > 「認めんといわれてもなぁ……」
-“Even if you say you won’t accept it...”
+“You can say you won’t accept it, but...”
 
 @49443 Heero · ヒイロ
 # 审校：词表将「自爆」列为参考译名 Self-Destruct，战斗语境下应使用 Title Case，保持术语一致。
@@ -829,11 +829,11 @@ We’re soldiers who are no longer needed.”
 # 审校：全局：弯撇号／弯引号
 > 「ちょっと、話が飛躍しすぎよ。
 >  まだ助からないと
-“Hey, you’re jumping way too far ahead. It’s not decided yet that we
+“Hey, you’re jumping way too far ahead. It’s not like it’s settled that we
 ---
 >  決まったわけじゃないでしょ。
 >  それとも、それもゼロの予測?」
-can’t be saved. Or is that another one of Zero’s predictions?”
+won’t make it. Or is that another one of Zero’s predictions?”
 
 @49447 Heero · ヒイロ
 > 「いや……ゼロはわずかだが
@@ -878,14 +878,14 @@ the Muge universe finally caught up with you.”
 # 审校：全局：弯撇号／弯引号
 > 「沙羅と同じだ。少しばかり休んで
 >  気を抜いたとたん、反動が来た
-“Same as Sara. The moment you relaxed after a little rest, the backlash hit.
+“Same as Sara. The moment you got a little rest and let your guard down, the backlash hit.
 ---
 >  俺すら倒れていたんだ。お前たちが
 >  全員倒れていたところで
-Even I collapsed. It’s no wonder
+Even I went down. No wonder
 ---
 >  不思議はない」
-all of you were down.”
+the rest of you did too.”
 
 @49455 Shinobu · 忍
 # 审校：补全整条台词的外层引号
@@ -911,7 +911,7 @@ we were partly running on sheer willpower.”
 @49458 Ryo · 亮
 > 「まだだ。俺が先に回復したのは、
 >  日頃の鍛錬のたまものだな」
-“Not yet. The fact that I recovered first is the fruit of my daily training.”
+“Not yet. I recovered first thanks to my daily training.”
 
 @49459 Shinobu · 忍
 > 「チッ、勝手にいってやがれ。
@@ -952,7 +952,7 @@ When it’s time to die, we ought to be allowed to go easy.”
 @49464 Ryo · 亮
 > 「なんなら、もう1度
 >  寝かせてやってもいいんだぞ」
-“If you want, I could put you back to sleep again.”
+“If you want, I can knock you out again.”
 
 @49465 Shinobu · 忍
 # 审校：英文逻辑反了
@@ -1030,11 +1030,11 @@ when I die, I’ll decide that for myself.”
 # 审校：全局：弯撇号／弯引号
 > 「ああ。正直やっと終わったって感じ
 >  だぜ。……かわりにまた、いろんなもんを
-“Yeah. Honestly, it finally feels like it’s over. ...In exchange, we lost a lot of
+“Yeah. Honestly, it finally feels like it’s over. ...And once again, we lost a lot of
 ---
 >  失っちまった。おまけに今度は
 >  自分の命まで失いそうだしな」
-things again. And on top of that, now we’re about to lose our own lives.”
+stuff along the way. And on top of that, now we’re about to lose our own lives.”
 
 @49478 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -1058,7 +1058,7 @@ things again. And on top of that, now we’re about to lose our own lives.”
 @49482 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
 > 「……パーッとやりましょ。みんなでね」
-“...Let’s go all out. All of us together.”
+“...Let’s throw a big party. All of us.”
 
 @49483 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1176,7 +1176,7 @@ would have begun to fail.”
 @49505 Dr. Hazuki · 葉月博士
 # 审校：全局：弯撇号／弯引号
 > 「……やはり、そうだったか」
-“...So that’s how it was, after all.”
+“...So it was true after all.”
 
 @49506 Bright · ブライト
 > 「なにか?」
@@ -1195,7 +1195,7 @@ would have begun to fail.”
 # 审校：全局：弯撇号／弯引号
 > 「しかし博士、俺たちは確かにここで
 >  2週間ほどしか過ごしていない
-“But Doctor, we’ve certainly spent only about two weeks here.
+“But Doctor, we’ve only been here about two weeks, I’m sure of it.
 ---
 >  この虚空で4ヶ月も生き延びる
 >  のは不可能だ」
@@ -1208,10 +1208,10 @@ It’s impossible to survive four months in this void.”
 @49511 Daisuke · 大介
 > 「この閉じた空間の、時間の流れ
 >  が違うということですね。そのような
-“It means the flow of time differs in this closed space. I have heard of
+“So time flows differently in this closed space. I have heard of
 ---
 >  存在を聞いたことがあります」
-such a phenomenon before.”
+such things.”
 
 @49512 Dr. Hazuki · 葉月博士
 # 审校：全局：弯撇号／弯引号
@@ -1223,21 +1223,21 @@ such a phenomenon before.”
 # 审校：全局：弯撇号／弯引号
 > 「でも博士、『やはりそうだったか』って
 >  いってたじゃないですか」
-“But Doctor, you said ‘so that’s how it was, after all,’ didn’t you?”
+“But Doctor, you said ‘so it was true after all,’ didn’t you?”
 
 @49514 Dr. Hazuki · 葉月博士
 # 审校：全局：弯撇号／弯引号
 > 「他の博士方といろいろと研究
 >  した結果、そうではないか、と
-“After various studies with the other doctors, it was merely a hypothesis that it might be so.
+“After a great deal of research with the other doctors, we merely suspected it might be so.
 ---
 >  推測されただけにすぎん。だが我々
 >  はその推測だけに期待を託し、
-But we pinned our hopes on that hypothesis alone, and
+But we staked everything on that guess alone,
 ---
 >  こうしてガンドールの改修を終わらせ
 >  この空間へやってきたのだ」
-that is how we finished the Gandor’s refit and came to this space.”
+finished the Gandor’s refit, and came here.”
 
 @49515 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1260,7 +1260,7 @@ while we were still alive.”
 @49517 Garrison · ギャリソン
 > 「そうですな……もう少し遅ければ、
 >  大変なことになっているところでした」
-“Indeed... A little later, and things would have turned very bad.”
+“Indeed... Any later, and we would have been in dire straits.”
 
 @49518 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1275,7 +1275,7 @@ aren’t you going to ask what happened to Muge?”
 # 审校：英文生硬
 > 「この様子を見ればわかる。
 >  みんな、よくやってくれたようだな」
-“I can tell just by looking at you all. Looks like you all did a fine job.”
+“I can tell just by looking at you. You all did splendidly, it seems.”
 
 @49520 Masato · 雅人
 # 审校：全局：弯撇号／弯引号
@@ -1287,7 +1287,7 @@ aren’t you going to ask what happened to Muge?”
 # 审校：全局：弯撇号／弯引号
 > 「地球はどうなっているんですか?
 >  あれから4ヶ月たっている
-“What’s become of Earth? You said four months have passed
+“How is Earth? You said it’s been four months
 ---
 >  ということですが」
 since then.”
@@ -1296,11 +1296,11 @@ since then.”
 # 审校：全局：弯撇号／弯引号
 > 「うむ。各地で小規模な戦闘は
 >  続いているが、とりあえず復興を
-“Indeed. Small-scale fighting continues in various places, but for the most part reconstruction has
+“Mm. There’s still some small-scale fighting here and there, but reconstruction has at least
 ---
 >  始めている。これまでのことを考えれば
 >  おおむね平和といっていいだろう」
-begun. Considering all that’s happened, you could say it’s largely peaceful.”
+begun. Considering everything, you could call it peaceful, more or less.”
 
 @49523 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -1400,7 +1400,7 @@ For now, we’ll head there.”
 ---
 >  これじゃまるで、
 >  大規模戦闘中なみよ」
-This is like being in the middle of a large-scale battle.”
+It’s like there’s a major battle going on.”
 
 @49538 Maria · マリア
 > 「どういうこと?」
@@ -1410,12 +1410,12 @@ This is like being in the middle of a large-scale battle.”
 # 审校：全局：弯撇号／弯引号
 > 「どうやら……博士のいったほどには、
 >  平和になっていないということらしいな」
-“It seems... things haven’t become as peaceful as the Doctor said.”
+“Looks like... things aren’t quite as peaceful as the Doctor said.”
 
 @49540 Duo · デュオ
 > 「ちょっと待ってくれよ。いまさらいったい
 >  誰と誰が
-“Hold on a second. Who the hell is fighting whom
+“Hold on a second. Who the hell is even fighting who
 ---
 >  戦争やってるっていうんだ?」
 at this point?”
@@ -1423,7 +1423,7 @@ at this point?”
 @49541 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
 > 「わからんな……」
-“I don’t get it...”
+“I don’t know...”
 
 @49542 Trowa · トロワ
 # 审校：全局：弯撇号／弯引号
@@ -1442,7 +1442,7 @@ at this point?”
 ---
 >  {HeroMech}の
 >  艦隊じゃないかしら」
-Could it be the fleet of the {HeroMech}?”
+Could it be the {HeroMech}’s fleet?”
 
 @49545 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -1475,7 +1475,7 @@ Could it be the fleet of the {HeroMech}?”
 # 审校：ギャリソン是管家，对万丈说话时用敬语，但这里没有明确对象且原文无“sir”，删去多余的 sir。
 > 「なにやら顔がついているようにも
 >  見えますな」
-“It appears to have something like a face on it.”
+“It almost looks as though it has a face.”
 
 @49552 Heero · ヒイロ
 > 「……デビルガンダム」
@@ -1504,7 +1504,7 @@ Could it be the fleet of the {HeroMech}?”
 # 审校：全局：弯撇号／弯引号
 > 「……いや、私も知らん。私が出発
 >  する前にはあんなものはなかったはずだ」
-“...No, I don’t know either. There was nothing like that before I departed.”
+“...No, I don’t know either. That wasn’t there when I left.”
 
 @49558 Bright · ブライト
 > 「いったい、なにがどうなっているんだ!?」
@@ -1579,11 +1579,11 @@ but is that Axis?! What on earth is going on?!”
 @49570 Amuro · アムロ
 > 「もう、クワトロ大尉はいないという
 >  ことさ。あのデビルアクシズにいるのは
-“It means Captain Quattro no longer exists. The one aboard that Dark Axis is
+“It means there is no Captain Quattro anymore. The man on that Dark Axis is
 ---
 >  シャア・アズナブル、かつて俺が戦い、
 >  そして今も敵である男だ」
-Char Aznable, the man I once fought, and who is still my enemy now.”
+Char Aznable, the man I fought long ago, and my enemy still.”
 
 @49571 Bright · ブライト
 # 审校：机械统一：特尉 保留为特殊部队军衔（用户 2026-09-26 定）
@@ -1599,11 +1599,11 @@ Char Aznable, the man I once fought, and who is still my enemy now.”
 @49573 Amuro · アムロ
 > 「もう、クワトロ・バジーナはいないというこ
 >  とさ。あのデビルアクシズにいるのは
-“It means Quattro Bajeena no longer exists. The one aboard that Dark Axis is
+“It means there is no Quattro Bajeena anymore. The man on that Dark Axis is
 ---
 >  シャア・アズナブル、かつて俺たちが
 >  戦い、そして今も敵である男だ」
-Char Aznable, the man we once fought, and who is still our enemy now.”
+Char Aznable, the man we fought long ago, and our enemy still.”
 
 @49574 Bright · ブライト
 > 「デビルアクシズ……
@@ -1616,7 +1616,7 @@ Char Aznable, the man we once fought, and who is still our enemy now.”
 “Explanations can wait. Right now we have to stop that Dark Axis from
 ---
 >  とめにゃならん。そっちはやれるのか?」
-falling to Earth. Can you do it on your end?”
+falling to Earth. Are you up for it?”
 
 @49576 Bright · ブライト
 > 「あ、ああ、もちろんだ」
@@ -1704,7 +1704,7 @@ doesn’t that make whoever takes that on an unhappy person?”
 @49588 Char · シャア
 > 「私は、信じる道を
 >  進んでいるつもりだ」
-“I intend to walk the path I believe in.”
+“I’m simply following the path I believe in.”
 
 @49589 Quinze · カーンズ
 # 审校：英文时态
@@ -1720,7 +1720,7 @@ doesn’t that make whoever takes that on an unhappy person?”
 # 审校：全局：弯撇号／弯引号
 > 「大佐の予測された通りです。
 >  確実にアクシズを捕捉しています」
-“Just as you predicted, Colonel. They’ve locked onto Axis for certain.”
+“Just as you predicted, Colonel. They definitely have Axis in their sights.”
 
 @49592 Char · シャア
 > 「残りの核パルスを点火しろ」
@@ -1843,7 +1843,7 @@ who can’t even see that much!”
 # 审校：英文生硬；中文末句
 > 「いまさら見苦しいですよ、
 >  シャア・アズナブル!
-“This is pathetic, coming back now, Char Aznable!
+“Coming back now is just pathetic, Char Aznable!
 ---
 >  あなたはあの時、死んでしまった方が
 >  よかったんだ!
@@ -1851,7 +1851,7 @@ You should have stayed dead back then!
 ---
 >  今になってもどってきちゃ
 >  いけない人なんだ!」
-You’re a man who should never have come back!”
+You had no business coming back now!”
 
 @49612 Char · シャア
 # 审校：全局：弯撇号／弯引号
@@ -1869,7 +1869,7 @@ I cannot let you stand in my way!”
 @49613 Kamille · カミーユ
 # 审校：英文
 > 「そんな理屈でッ!!」
-“Don’t give me that logic!!”
+“You call that a reason?!”
 
 @49614 Heero · ヒイロ
 > 「ゼクス・マーキス、いったい何のつもりで
@@ -1899,7 +1899,7 @@ I cannot let you stand in my way!”
 # 审校：全局：弯撇号／弯引号
 > 「待ちに待った時が来たのだ!
 >  多くの英霊が、無駄死にでは
-“The time I’ve waited for has come! For proof that the many heroic spirits did not die in
+“The long-awaited hour has come! To prove that our many fallen heroes did not die in
 ---
 >  なかったことの証のために! そして、
 >  人類の新たな時代のために!」
@@ -2007,7 +2007,7 @@ Prepare the assault team! Still no word from Murasame?!”
 @49635 Bunny · バニー
 > 「通信、来ました!
 >  『突入よろし』です」
-“Transmission received! ‘Assault approved.’”
+“Transmission received! ‘Clear to go in.’”
 
 @49636 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -2061,7 +2061,7 @@ I lend my aid in the name of righteousness!”
 ---
 >  思って、待っていたのに。さぁ、
 >  ここは我々にまかせてください!
-finally call on us. Now, leave this place to us!
+finally call on us. Now, leave this to us!
 ---
 >  野郎ども、カトル様に会うまでは、
 >  誰も死ぬんじゃないぞ!」
@@ -2079,7 +2079,7 @@ Men, no one dies until we’ve seen Master Quatre!”
 # 审校：“名为生命的盾牌”直译
 > 「我らが母なる星の危機、
 >  主義も主張もあるものか!
-“Our mother star is in peril, so what are ideology and principle to us!
+“Our mother world is in peril! What do ideals and creeds matter now?!
 ---
 >  我ら一同この地球を守るため、
 >  命という名の盾とならん
@@ -2087,7 +2087,7 @@ We shall all make shields of our lives to protect this Earth.
 ---
 >  さぁ、おのおの方、
 >  アクシズへ突入されるがよい!」
-Now, everyone, go and breach Axis!”
+Now, all of you, go forth and storm Axis!”
 
 @49648 Domon · ドモン
 > 「お前たち……まったく……」
@@ -2110,7 +2110,7 @@ Now, everyone, go and breach Axis!”
 ---
 >  思って、待っていたのに。さぁ、
 >  ここは我々にまかせてください!
-finally call on us. Now, leave this place to us!
+finally call on us. Now, leave this to us!
 ---
 >  野郎ども、カトル様に会うまでは、
 >  誰も死ぬんじゃないぞ!」
@@ -2144,10 +2144,10 @@ and don’t let the enemy get close! Domon, do you hear me?!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「聞こえている。
 >  いわれなくともデビルガンダムは
-“I hear you. Even if you hadn’t said it, I’ll be the one to
+“I hear you. You don’t have to tell me. I’ll
 ---
 >  この俺が叩きつぶしてみせる!」
-smash the Dark Gundam to pieces!”
+smash the Dark Gundam myself!”
 
 @49656 Kyral · キラル
 # 审校：英文冗余
