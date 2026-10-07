@@ -73,12 +73,15 @@ class DebugCoverageTests(unittest.TestCase):
         called = set(re.findall(r'client\.call\("([\w.]+)"', mcp))
         called |= {"quit", "keys"}  # through Session.quit and run_keys
         self.assertIn("run_keys(client", mcp)
-        # Files of a run on another machine: Session.local_file (screenshots, events) and Session.record.
+        # Files of a run on another machine: Session.local_file (screenshots, events) and Session.record;
+        # recordings with sound: Session.record_start / record_stop (srw64_record_start / _stop).
         session = (ROOT / "tools/recomp/debug/session.py").read_text()
-        for method in ("file.read", "file.remove"):
+        for method in ("file.read", "file.remove", "record.start", "record.stop"):
             self.assertIn(f'client.call("{method}"', session)
-        called |= {"file.read", "file.remove"}
+        called |= {"file.read", "file.remove", "record.start", "record.stop"}
         self.assertIn("session.local_file(", mcp)
+        self.assertIn("session.record_start(", mcp)
+        self.assertIn("session.record_stop(", mcp)
         self.assertEqual(methods - called, set())
 
 
