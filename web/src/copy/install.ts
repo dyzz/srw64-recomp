@@ -81,9 +81,9 @@ export const INSTALL: Record<Lang, Install> = {
         steps: [
           '在设备上下载 Android 安装包（APK）。',
           '打开 APK，按系统提示允许浏览器或文件管理器「安装未知应用」，然后完成安装。',
-          '打开 SRW64，在文件选择窗口中选择 ROM。ROM 会复制到应用目录，后续启动无需重复选择。',
+          '打开 Marchwind64，在文件选择窗口中选择 ROM。ROM 会复制到应用目录，后续启动无需重复选择。',
         ],
-        notes: ['触摸屏幕时显示当前画面需要的按键；切换到手柄或键盘操作时自动隐藏。点击顶边的「设置」按钮可打开设置窗口。', 'HD 美术包：长按应用图标选「导入 HD 包」，或在文件管理器里用 SRW64 打开下载的 HD 包 zip，应用会自动解压安装。首次选择 ROM 后也会询问一次。'],
+        notes: ['触摸屏幕时显示当前画面需要的按键；切换到手柄或键盘操作时自动隐藏。点击顶边的「设置」按钮可打开设置窗口。', 'HD 美术包：长按应用图标选「导入 HD 包」，或在文件管理器里用 Marchwind64 打开下载的 HD 包 zip，应用会自动解压安装。首次选择 ROM 后也会询问一次。'],
       },
       {
         id: 'hd', name: 'HD 美术包',
@@ -164,9 +164,9 @@ export const INSTALL: Record<Lang, Install> = {
         steps: [
           'Download the Android package (APK) on your device.',
           'Open the APK. If prompted, allow “Install unknown apps” for your browser or file manager, then complete the installation.',
-          'Open SRW64 and select your ROM in the file picker. The ROM is copied into the app’s own folder for future launches.',
+          'Open Marchwind64 and select your ROM in the file picker. The ROM is copied into the app’s own folder for future launches.',
         ],
-        notes: ['Touching the screen brings up the buttons needed for the current screen. They hide when you switch to a controller or keyboard. Tap Settings along the top to open the settings window.', 'HD art pack: long-press the app icon and choose “Import HD pack”, or open the downloaded HD zip with SRW64 from a file manager; the app unpacks and installs it. You are also asked once after choosing the ROM.'],
+        notes: ['Touching the screen brings up the buttons needed for the current screen. They hide when you switch to a controller or keyboard. Tap Settings along the top to open the settings window.', 'HD art pack: long-press the app icon and choose “Import HD pack”, or open the downloaded HD zip with Marchwind64 from a file manager; the app unpacks and installs it. You are also asked once after choosing the ROM.'],
       },
       {
         id: 'hd', name: 'HD art pack',
@@ -247,9 +247,9 @@ export const INSTALL: Record<Lang, Install> = {
         steps: [
           '端末で Android 版のインストールパッケージ（APK）をダウンロードします。',
           'APK を開き、案内に従ってブラウザまたはファイルマネージャーに「不明なアプリのインストール」を許可し、インストールを進めます。',
-          'SRW64 を開き、ファイル選択画面で ROM を選びます。ROM はアプリ専用のフォルダーにコピーされ、次回から選び直す必要はありません。',
+          'Marchwind64 を開き、ファイル選択画面で ROM を選びます。ROM はアプリ専用のフォルダーにコピーされ、次回から選び直す必要はありません。',
         ],
-        notes: ['画面に触れると、現在の画面で使うタッチボタンが表示されます。コントローラーやキーボードの操作に切り替えると自動で隠れます。上端の「設定」ボタンで設定ウィンドウを開きます。', 'HD アートパック：アプリアイコンを長押しして「HD パックを導入」を選ぶか、ダウンロードした HD パックの zip をファイルマネージャーから SRW64 で開くと、自動で展開して導入します。初回の ROM 選択後にも一度確認されます。'],
+        notes: ['画面に触れると、現在の画面で使うタッチボタンが表示されます。コントローラーやキーボードの操作に切り替えると自動で隠れます。上端の「設定」ボタンで設定ウィンドウを開きます。', 'HD アートパック：アプリアイコンを長押しして「HD パックを導入」を選ぶか、ダウンロードした HD パックの zip をファイルマネージャーから Marchwind64 で開くと、自動で展開して導入します。初回の ROM 選択後にも一度確認されます。'],
       },
       {
         id: 'hd', name: 'HD アートパック',

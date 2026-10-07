@@ -45,17 +45,22 @@ HD_NOTICE = ROOT / "tools/release/hd-notice.txt"
 CLONED = ("upstream", "tool-build", "cpu-scan")
 CLONED_ASSETS = ("fonts", "hd-ai", "models")
 # --attach: the other platforms' packages and their lines in the notes.
-ATTACH_NAMES = {"linux": "Marchwind64-{version}-linux-x64.tar.gz", "windows": "Marchwind64-{version}-windows-x64.zip"}
+ATTACH_NAMES = {"linux": "Marchwind64-{version}-linux-x64.tar.gz", "windows": "Marchwind64-{version}-windows-x64.zip",
+                "android": "Marchwind64-{version}-android-arm64.apk"}
 PACKAGE_ROWS = {
     "macos": "应用本体。Apple Silicon，macOS 14 起。首次启动时选择你的 ROM。",
     "linux": "应用本体。Linux x64（含 Steam Deck），glibc 2.35 起，Vulkan。解压后运行 `marchwind64.sh`；"
              "ROM 放在 `~/.local/share/srw64-recomp/rom.z64` 或 `marchwind64.sh` 旁边。Steam Deck 上可用 `add-to-steam.sh` 加入 Steam，详见包内 README.txt。",
     "windows": "应用本体。Windows 10（2004）／11，x64，D3D12 或 Vulkan。解压后把 ROM 命名为 `rom.z64` 放在 `Marchwind64.cmd` 旁边"
                "（或 `%LOCALAPPDATA%\\SRW64Recomp\\rom.z64`），双击 `Marchwind64.cmd`。",
+    "android": "应用本体（试验）。arm64，Android 9 起，Vulkan 1.1。在设备上安装 APK，首次启动时选择 ROM；"
+               "HD 包下载后用 Marchwind64 打开 zip 即可导入。",
 }
 PACKAGE_EN = {"macos": "is the macOS app (Apple Silicon, macOS 14 or later)",
               "linux": "the Linux x64 / Steam Deck build (glibc 2.35+, Vulkan; run `marchwind64.sh`, see README.txt)",
-              "windows": "the Windows x64 build (Windows 10 2004 / 11; put the ROM next to `Marchwind64.cmd` as `rom.z64` and run it)"}
+              "windows": "the Windows x64 build (Windows 10 2004 / 11; put the ROM next to `Marchwind64.cmd` as `rom.z64` and run it)",
+              "android": "the experimental Android build (arm64, Android 9+, Vulkan 1.1; install the APK and choose the ROM on first "
+                         "launch, open the HD zip with Marchwind64 to import it)"}
 
 
 def sha256(path: Path) -> str:
@@ -106,8 +111,8 @@ def main() -> int:
     parser.add_argument("--hd-version", help="the version for a changed HD pack (default: the listed one's last number "
                         "one up, 1.0 → 1.1; give 2.0 for a large change)")
     parser.add_argument("--attach", action="append", default=[], metavar="PLATFORM=FILE",
-                        help="another platform's package built elsewhere: linux=… (build_linux.py) or "
-                             "windows=… (the windows workflow); copied in as Marchwind64-<version>-<platform> and "
+                        help="another platform's package built elsewhere: linux=…, windows=… or android=… "
+                             "(the build workflow); copied in as Marchwind64-<version>-<platform> and "
                              "listed in release.json and the notes")
     args = parser.parse_args()
 
@@ -211,7 +216,7 @@ def main() -> int:
     for item in args.attach:
         platform, _, source_file = item.partition("=")
         if platform not in ATTACH_NAMES or not Path(source_file).is_file():
-            raise SystemExit(f"--attach {item}: expected linux=FILE or windows=FILE")
+            raise SystemExit(f"--attach {item}: expected linux=FILE, windows=FILE or android=FILE")
         target = output / ATTACH_NAMES[platform].format(version=args.version)
         shutil.copyfile(source_file, target)
         attached.append((platform, target))
