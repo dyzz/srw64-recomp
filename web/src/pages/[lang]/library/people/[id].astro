@@ -3,6 +3,7 @@ import Base from '../../../../layouts/Base.astro';
 import { LANGS, UI, canReview, type Lang } from '../../../../i18n';
 import { library, portraitUrl, type Person } from '../../../../lib/data';
 import Term from '../../../../components/Term.astro';
+import LibraryChanges from '../../../../components/LibraryChanges.astro';
 
 export async function getStaticPaths() {
   return LANGS.flatMap((l) => library().people.map((p) => ({ params: { lang: l.code, id: String(p.id) } })));
@@ -45,6 +46,7 @@ const partner = (id: number) => lib.people.find((x) => x.id === id);
             {canReview(lang) && <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`person:${p.id}`}>{t.suggest[lang]}</button>}
             <div data-term-body class="tb"></div>
           </div>
+          <LibraryChanges changes={p.changes} lang={lang} tag={lib.baseline} />
           <p class="badges">
             {p.double_move_level != null && <span class="cap">{L('library_double_move')} Lv{p.double_move_level}</span>}
             <span class={`pill ${p.enemy ? 'enemy' : ''}`}>{p.enemy ? L('library_enemy') : L('library_ally')}</span>

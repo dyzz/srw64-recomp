@@ -59,13 +59,17 @@ export type Weapon = {
   range: [number, number]; hit: number; crit: number; ammo: number | null; en: number | null; morale: number | null;
   terrain: Record<string, string>; unlock_at_full_upgrade: unknown; combination: boolean;
 };
-export type Unit = {
+// A text of a Library entry that reads differently from the latest game release
+// (export_library.py): what kind of field, the Japanese, and old / new per language changed.
+export type TextChange = { kind: string; ja: string; was: { zh?: string; en?: string }; now: { zh?: string; en?: string } };
+type Changes = { changes?: TextChange[]; changed?: { zh: number; en: number } };
+export type Unit = Changes & {
   id: number; series: number | null; model: string | null; name: L3; upgrade_cap: number;
   hp: number; en: number; move: number; mobility: number; armor: number; limit: number; size: string;
   movement_types: L3[]; terrain: Record<string, string>; abilities: L3[]; shield: boolean; part_slots: number;
   repair_cost: number; weapons: Weapon[]; image?: { hd?: string };
 };
-export type Person = {
+export type Person = Changes & {
   id: number; series: number | null; name: L3; full_name: L3; enemy: boolean; role: string | null; no_battle: boolean;
   stats: { lv1: Record<string, number>; lv99: Record<string, number> } | null; terrain: Record<string, string> | null;
   double_move_level: number | null; spirits: { level: number; id: number; name: L3; cost: number }[];
@@ -75,7 +79,7 @@ export type Person = {
 };
 export type Library = {
   series: { id: number | null; name: L3 }[]; labels: Record<string, L3>;
-  upgrade_types: unknown; units: Unit[]; people: Person[];
+  upgrade_types: unknown; units: Unit[]; people: Person[]; baseline?: string;
 };
 export const library = () => read<Library>('library.json');
 

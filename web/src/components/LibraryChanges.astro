@@ -1,0 +1,46 @@
+---
+// A Library entry's texts that changed since the latest game release (export_library.py):
+// one row per text, old struck through, new beside it. Nothing on the Japanese pages,
+// which show the original, or when this language has no change.
+import type { Lang } from '../i18n';
+import type { TextChange } from '../lib/data';
+
+interface Props { changes?: TextChange[]; lang: Lang; tag?: string; }
+const { changes = [], lang, tag = '' } = Astro.props;
+const l = lang === 'ja' ? null : lang;
+const rows = l ? changes.filter((c) => l in c.was) : [];
+const t = {
+  title: { zh: (v: string) => `${v} 后的译名改动`, en: (v: string) => `Changed since ${v}`, ja: (v: string) => v },
+  kinds: {
+    name: { zh: '名称', en: 'Name' }, full_name: { zh: '全名', en: 'Full name' }, weapon: { zh: '武器', en: 'Weapon' },
+    ability: { zh: '能力', en: 'Ability' }, movement: { zh: '移动类型', en: 'Movement' }, skill: { zh: '技能', en: 'Skill' },
+    spirit: { zh: '精神指令', en: 'Spirit' }, love: { zh: '恋爱补正', en: 'Love bonus' }, other: { zh: '其他', en: 'Other' },
+  } as Record<string, { zh: string; en: string }>,
+};
+---
+{l && rows.length > 0 && (
+  <div class="lib-changes">
+    <p class="head">{t.title[l](tag)}</p>
+    <ul>
+      {rows.map((c) => (
+        <li>
+          <span class="kind">{(t.kinds[c.kind] ?? t.kinds.other)[l]}</span>
+          <span class="ja" lang="ja">{c.ja}</span>
+          <del>{c.was[l] || '—'}</del><span class="arrow">→</span><ins>{c.now[l]}</ins>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<style>
+  .lib-changes { margin-top: 12px; padding: 8px 12px; font-size: 14px; background: rgba(255, 255, 255, 0.04); border-left: 2px solid var(--gold); }
+  .head { margin: 0 0 4px; color: var(--gold); font-size: 13px; }
+  ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+  li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+  .kind { color: var(--dim); font-size: 12px; }
+  .ja { color: var(--muted); }
+  del { color: #ff9c9c; }
+  ins { color: #a6f2c4; text-decoration: none; }
+  .arrow { color: var(--dim); }
+</style>

@@ -59,6 +59,7 @@ import hashlib
 import json
 import re
 import struct
+import subprocess
 import sys
 from pathlib import Path
 
@@ -338,13 +339,67 @@ def art_lookups(rom_bytes: bytes):
 
 
 # --- Export ------------------------------------------------------------------
-def export(rom_path: Path) -> dict:
+def locale_docs(rev: str | None = None) -> dict[str, dict]:
+    """The term tables of each language: the working tree's, or as they were at REV."""
+    docs = {}
+    for short, locale in LANGS.items():
+        path = f"content/locales/{locale}.json"
+        text = (ROOT / path).read_text() if rev is None else subprocess.run(
+            ["git", "-C", str(ROOT), "show", f"{rev}:{path}"], check=True, capture_output=True, text=True).stdout
+        docs[short] = json.loads(text)
+    return docs
+
+
+# What kind of field a changed text is, by where it sits in an entry.
+CHANGE_KINDS = {"name": "name", "full_name": "full_name", "weapons": "weapon", "abilities": "ability",
+                "movement_types": "movement", "skills": "skill", "spirits": "spirit", "love": "love"}
+
+
+def text_changes(new, old, path=()) -> list[dict]:
+    """Every localized text ({ja, zh, en}) of NEW whose zh or en differs from OLD's."""
+    if isinstance(new, dict) and isinstance(new.get("ja"), str) and "zh" in new and "en" in new:
+        was = {lang: old.get(lang) for lang in ("zh", "en") if isinstance(old, dict) and old.get(lang) != new[lang]}
+        return [{"path": path, "ja": new["ja"], "was": was, "now": {lang: new[lang] for lang in was}}] if was else []
+    out = []
+    if isinstance(new, dict) and isinstance(old, dict):
+        for key in new:
+            if key in old:
+                out += text_changes(new[key], old[key], path + (key,))
+    elif isinstance(new, list) and isinstance(old, list) and len(new) == len(old):
+        for i, (a, b) in enumerate(zip(new, old)):
+            out += text_changes(a, b, path + (i,))
+    return out
+
+
+def mark_changes(data: dict, before: dict, tag: str) -> None:
+    """Each unit and person gets `changes` (kind, ja, was, now; one row per distinct text)
+    and `changed` {zh, en} counts against the term tables of release TAG."""
+    for kind in ("units", "people"):
+        old = {e["id"]: e for e in before[kind]}
+        for e in data[kind]:
+            rows, seen = [], set()
+            for c in text_changes(e, old.get(e["id"], {})):
+                if c["path"][0] in ("image", "portrait"):
+                    continue
+                row = {"kind": CHANGE_KINDS.get(c["path"][0], "other"), "ja": c["ja"], "was": c["was"], "now": c["now"]}
+                key = json.dumps(row, ensure_ascii=False, sort_keys=True)
+                if key not in seen:
+                    seen.add(key)
+                    rows.append(row)
+            if rows:
+                e["changes"] = rows
+            e["changed"] = {lang: sum(1 for r in rows if lang in r["was"]) for lang in ("zh", "en")}
+    data["baseline"] = tag
+
+
+def export(rom_path: Path, docs: dict[str, dict] | None = None) -> dict:
     rom_bytes = rom_path.read_bytes()
     rom = Rom(rom_bytes)
     sources, hashes, glyphs = source_catalog(ROOT, rom_path)
     texts = {}
-    for short, locale in LANGS.items():
-        doc = json.loads((ROOT / f"content/locales/{locale}.json").read_text())
+    docs = docs or locale_docs()
+    for short in LANGS:
+        doc = docs[short]
         texts[short] = (Texts(sources, glyphs, compile_locale(doc, sources, hashes)), doc["ui"])
     def loc(tid):
         return {lang: texts[lang][0](tid) for lang in LANGS}
@@ -569,11 +624,18 @@ def main():
     parser.add_argument("--rom", type=Path, default=ROOT / "rom.z64")
     parser.add_argument("--out", type=Path, default=ROOT / "web/.data/library.json")
     parser.add_argument("--check", action="store_true", help="assert known in-game facts")
+    parser.add_argument("--baseline", help="release tag whose term tables the changes are counted from "
+                                           "(default: the tag in web/src/data/release.json)")
     args = parser.parse_args()
     data = export(args.rom)
+    tag = args.baseline or json.loads((ROOT / "web/src/data/release.json").read_text())["tag"]
+    mark_changes(data, export(args.rom, locale_docs(tag)), tag)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
     print(f"{args.out}: {data['counts']['units']} units, {data['counts']['people']} people")
+    for kind in ("units", "people"):
+        print(f"since {tag}, {kind}: " + ", ".join(
+            f"{lang} {sum(1 for e in data[kind] if e['changed'][lang])} with changes" for lang in ("zh", "en")))
     for note in data["notes"]:
         print("note:", note)
     if args.check:

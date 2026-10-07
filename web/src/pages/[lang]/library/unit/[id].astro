@@ -1,6 +1,7 @@
 ---
 import Base from '../../../../layouts/Base.astro';
 import Term from '../../../../components/Term.astro';
+import LibraryChanges from '../../../../components/LibraryChanges.astro';
 import { LANGS, UI, canReview, type Lang } from '../../../../i18n';
 import { library, type Unit } from '../../../../lib/data';
 
@@ -60,6 +61,7 @@ const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-ter
             {canReview(lang) && <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`unit:${u.id}`}>{t.suggest[lang]}</button>}
             <div data-term-body class="tb"></div>
           </div>
+          <LibraryChanges changes={u.changes} lang={lang} tag={lib.baseline} />
           <p class="badges">
             <span class="cap">{L('library_cap')} {L('library_cap_value').replace('{n}', String(u.upgrade_cap))}</span>
             {u.movement_types.map((m) => <span class="pill">{m[lang]}</span>)}

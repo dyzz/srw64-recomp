@@ -17,6 +17,9 @@ function grouped<T extends { series: number | null }>(xs: T[]) {
   return out;
 }
 const units = grouped(lib.units);
+// Entries whose texts changed since the latest game release, in this page's translation.
+const cl = lang === 'ja' ? null : lang;
+const changedEntries = cl ? [...lib.units, ...lib.people].filter((e) => (e.changed?.[cl] ?? 0) > 0).length : 0;
 const people = grouped(lib.people);
 const t = {
   lead: {
@@ -25,6 +28,12 @@ const t = {
     ja: `ゲーム内図鑑のウェブ版です。ユニット ${lib.units.length} 体、キャラクター ${lib.people.length} 人を作品別に掲載しています。数値はすべてゲームから直接取得した基本値です。`,
   },
   units: { zh: '机体', en: 'Units', ja: 'ユニット' },
+  changed: {
+    zh: (n: number, v: string) => `自 ${v} 发布以来，有 ${n} 个条目的译名有改动（卡片上带「更新」标记）。`,
+    en: (n: number, v: string) => `Since ${v}, the names in ${n} entries have changed (marked “changed” on their cards).`,
+    ja: (_n: number, _v: string) => '',
+  },
+  mark: { zh: '更新', en: 'changed', ja: '' },
   people: { zh: '人物', en: 'Characters', ja: 'キャラクター' },
 };
 ---
@@ -34,6 +43,7 @@ const t = {
       <span class="tag">LIBRARY</span>
       <h1>{UI.nav.library[lang]}</h1>
       <p>{t.lead[lang]}</p>
+      {cl && changedEntries > 0 && lib.baseline && <p class="changed-total">{t.changed[lang](changedEntries, lib.baseline)}</p>}
       <div class="seg" role="tablist">
         <a href="#units" role="tab">{t.units[lang]} {lib.units.length}</a>
         <a href="#people" role="tab">{t.people[lang]} {lib.people.length}</a>
@@ -50,6 +60,7 @@ const t = {
               <li><a href={`/${lang}/library/unit/${u.id}/`}>
                 <img src={`/gen/units/${u.id}.webp`} alt="" width="96" height="96" loading="lazy" />
                 <span class="nm">{u.name[lang]}</span>
+                {cl && (u.changed?.[cl] ?? 0) > 0 && <span class="chg">{t.mark[lang]}</span>}
                 {u.model && <span class="sub latin">{u.model}</span>}
               </a></li>
             ))}
@@ -70,6 +81,7 @@ const t = {
                 <li><a href={`/${lang}/library/people/${p.id}/`} class={p.enemy ? 'enemy' : ''}>
                   {src ? <img class="face" src={src} alt="" width="96" height="96" loading="lazy" /> : <span class="face none" aria-hidden="true"></span>}
                   <span class="nm">{p.name[lang]}</span>
+                  {cl && (p.changed?.[cl] ?? 0) > 0 && <span class="chg">{t.mark[lang]}</span>}
                 </a></li>
               );
             })}
@@ -96,5 +108,7 @@ const t = {
   .cards .face { border-radius: 4px; object-fit: cover; }
   .face.none { width: 80px; height: 80px; background: var(--panel-2); }
   .nm { font-size: 14px; line-height: 1.35; }
+  .chg { padding: 0 6px; font-size: 11px; color: var(--gold); border: 1px solid rgba(255, 215, 94, 0.45); }
+  .changed-total { font-size: 14px; color: var(--gold); }
   .sub { font-size: 11px; color: var(--dim); }
 </style>
