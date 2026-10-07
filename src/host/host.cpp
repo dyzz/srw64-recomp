@@ -310,7 +310,6 @@ static int run_host(int argc, char** argv) {
         return 2;
     }
     output_dir = std::filesystem::absolute(argv[2]);
-    srw64::console_log::attach(output_dir);
     const char* variant_key = std::getenv("SRW64_ROM_VARIANT");
     if (!variant_key) variant_key = "jp";
     const NativeRomVariant* variant = nullptr;
@@ -320,6 +319,7 @@ static int run_host(int argc, char** argv) {
     if (!variant) fail("unknown ROM variant");
     if (std::filesystem::exists(output_dir)) fail("output directory already exists");
     std::filesystem::create_directories(output_dir);
+    srw64::console_log::attach(output_dir);
     max_vis = std::stoull(argv[3]);
     const bool interactive = std::getenv("SRW64_INTERACTIVE") && std::string(std::getenv("SRW64_INTERACTIVE")) == "1";
     if ((!interactive && max_vis == 0) || max_vis > 216000) fail("VI limit outside diagnostic range");
