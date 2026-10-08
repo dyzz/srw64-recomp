@@ -304,6 +304,38 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
     return ((i << 8) & 0xFF00) | ((i >> 8) & 0xFF);
 #endif
 }'''),
+    # The Android host builds Plume without NDEBUG (for --validation), which names Vulkan
+    # objects and so lists VK_EXT_debug_utils as a required instance extension. Older Mali
+    # drivers (Vulkan 1.3.219: Galaxy A15 with Dimensity 6100+, A35 with Exynos 1380,
+    # 2026-10-08) do not offer it, and the instance is never made: "Unable to find
+    # compatible graphics device" at start. On Android it is optional, and objects go
+    # unnamed without it.
+    ('src/contrib/plume/plume_vulkan.cpp', '''#   ifdef VULKAN_OBJECT_NAMES_ENABLED
+        VK_EXT_DEBUG_UTILS_EXTENSION_NAME,
+#   endif''', '''#   if defined(VULKAN_OBJECT_NAMES_ENABLED) && !defined(__ANDROID__)
+        VK_EXT_DEBUG_UTILS_EXTENSION_NAME,
+#   endif'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''    static const std::unordered_set<std::string> OptionalInstanceExtensions = {''', '''    static const std::unordered_set<std::string> OptionalInstanceExtensions = {
+#   if defined(VULKAN_OBJECT_NAMES_ENABLED) && defined(__ANDROID__)
+        VK_EXT_DEBUG_UTILS_EXTENSION_NAME,
+#   endif'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''    static void setObjectName(VkDevice device, VkObjectType objectType, uint64_t object, const std::string &name) {
+#   ifdef VULKAN_OBJECT_NAMES_ENABLED''', '''#   ifdef __ANDROID__
+    // Whether the instance has VK_EXT_debug_utils (optional on Android).
+    static bool AndroidDebugUtilsEnabled = false;
+#   endif
+
+    static void setObjectName(VkDevice device, VkObjectType objectType, uint64_t object, const std::string &name) {
+#   ifdef __ANDROID__
+        if (!AndroidDebugUtilsEnabled) {
+            return;
+        }
+#   endif
+#   ifdef VULKAN_OBJECT_NAMES_ENABLED'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''        volkLoadInstance(instance);''', '''        volkLoadInstance(instance);
+#   ifdef __ANDROID__
+        AndroidDebugUtilsEnabled = supportedOptionalExtensions.count(VK_EXT_DEBUG_UTILS_EXTENSION_NAME) > 0;
+#   endif'''),
     # A boundless range (RT64's texture set: up to 8192 textures, as many as the texture
     # cache holds) is allocated with a variable count, and the pool is sized for that count.
     # Qualcomm's Adreno drivers count the layout's full upper bound against the pool instead:
