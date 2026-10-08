@@ -403,13 +403,14 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
             androidLogFailedStages("graphics", stages.data(), uint32_t(stages.size()));
 #       endif
             return;'''),
-    # Adreno 6xx drivers crash while recording the two compute dispatches that move a
-    # framebuffer between RDRAM and the GPU (Galaxy Tab S7, Adreno 650, 2026-10-08: in
-    # vkCmdDispatch under NativeTarget::copyToNative, a second after the game starts
-    # drawing). Goemon64Recomp-Android met it on the Adreno 630 (ogdanimal/rt64 40b3011)
-    # and skips both, as here: skipping one moves the crash to the other. The barriers and
-    # readback copies around them stay; what the game reads back of a frame or draws into
-    # one itself is then not exact.
+    # The Adreno 650's driver crashes while recording the two compute dispatches that move
+    # a framebuffer between RDRAM and the GPU (Galaxy Tab S7, 2026-10-08: in vkCmdDispatch
+    # under NativeTarget::copyToNative, a second after the game starts drawing; a POCO F3
+    # player too). Goemon64Recomp-Android met it on the Adreno 630 (ogdanimal/rt64 40b3011)
+    # and skips both, as here: skipping one moves the crash to the other. Only the 650,
+    # by its exact name (user: no other GPU gets it until one is seen to need it). The
+    # barriers and readback copies around them stay; what the game reads back of a frame
+    # or draws into one itself is then not exact.
     ('src/render/rt64_native_target.cpp', '''#include "rt64_render_worker.h"
 
 namespace RT64 {''', '''#include "rt64_render_worker.h"
@@ -436,11 +437,22 @@ namespace RT64 {
     ('src/hle/rt64_application.cpp', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);''', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);
 #   ifdef __ANDROID__
         extern bool AndroidFramebufferSyncDisabled;
-        AndroidFramebufferSyncDisabled = deviceDescription.name.find("Adreno (TM) 6") != std::string::npos;
+        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 650";
         if (AndroidFramebufferSyncDisabled) {
-            fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 6xx driver workaround: framebuffer effects are not exact)\\n");
+            fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 650 driver workaround: framebuffer effects are not exact)\\n");
         }
 #   endif'''),
+    # A Redmi K60 (Adreno 730, MIUI 14, 2026-10-08) hung for good on the first resize:
+    # vkCreateSwapchainKHR with the old swap chain as oldSwapchain dequeued a new buffer and
+    # waited forever on a lock in Qualcomm's gralloc (BufferManager::RetainBuffer), black
+    # from the second frame. On Android the old swap chain goes first (the present thread
+    # has waited for its GPU work), so its buffers are freed before new ones are made.
+    ('src/contrib/plume/plume_vulkan.cpp', '''        createInfo.clipped = VK_TRUE;
+        createInfo.oldSwapchain = vk;''', '''        createInfo.clipped = VK_TRUE;
+#   ifdef __ANDROID__
+        releaseSwapChain();
+#   endif
+        createInfo.oldSwapchain = vk;'''),
     # A boundless range (RT64's texture set: up to 8192 textures, as many as the texture
     # cache holds) is allocated with a variable count, and the pool is sized for that count.
     # Qualcomm's Adreno drivers count the layout's full upper bound against the pool instead:
