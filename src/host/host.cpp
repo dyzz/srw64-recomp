@@ -44,6 +44,7 @@
 #include "game_hooks.hpp"
 #include "native_intro.hpp"
 #include "touch_scene.hpp"
+#include "stall_watchdog.hpp"
 #include "guest_memory.hpp"
 #include "native_name_entry.hpp"
 #include "unit_name.hpp"
@@ -99,6 +100,7 @@ public:
     void enable_instant_present() override {}
     void send_dl(const OSTask* task) override {
         if (renderer) renderer->send_dl(task);
+        srw64::stall::frame_done();
         const auto count = ++dl_count;
         if (count <= 3 || count % 60 == 0) {
             std::fprintf(stderr, "SRW64_GFX task=%llu ucode=%08X commands=%08X size=%u\n",
@@ -117,6 +119,7 @@ private:
 
 void on_init(uint8_t* rdram, recomp_context*) {
     srw64_rdram = rdram;
+    srw64::stall::start();
     srw64::state_probe::directory=output_dir;
     srw64::mini_stage::configure(output_dir);
     srw64::rules::configure(output_dir);

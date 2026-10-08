@@ -65,7 +65,7 @@ target_include_directories(srw64_cpu PUBLIC
     "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}")
 target_compile_options(srw64_cpu PRIVATE -fno-strict-aliasing $<IF:$<BOOL:${MSVC}>,/clang:-fwrapv,-fwrapv> -Wno-unused-variable)
 if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/host.cpp" AND NOT ANDROID)
-    add_executable(srw64-host host.cpp console_log.cpp game_hooks.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp "${SRW64_BUILD}/audio-probe/audio.cpp")
+    add_executable(srw64-host host.cpp console_log.cpp stall_watchdog.cpp game_hooks.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp "${SRW64_BUILD}/audio-probe/audio.cpp")
     target_include_directories(srw64-host PRIVATE
         "${CMAKE_CURRENT_BINARY_DIR}"
         "${SRW64_BUILD}/upstream/N64Recomp/include"
@@ -168,7 +168,7 @@ if(SRW64_ENABLE_RT64)
     target_sources(srw64-gfx-host PRIVATE update_check.cpp update_http.cpp)
     # What the program prints, into the run's console.log, and the bug report zip of the
     # Feedback page (docs/native/bug-report.md).
-    target_sources(srw64-gfx-host PRIVATE console_log.cpp bug_report.cpp)
+    target_sources(srw64-gfx-host PRIVATE console_log.cpp bug_report.cpp stall_watchdog.cpp)
     if(APPLE)
         target_sources(srw64-gfx-host PRIVATE macos/update_http_macos.mm)
         set_source_files_properties(macos/update_http_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")

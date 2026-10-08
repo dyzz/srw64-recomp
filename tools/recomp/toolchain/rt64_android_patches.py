@@ -336,6 +336,111 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
 #   ifdef __ANDROID__
         AndroidDebugUtilsEnabled = supportedOptionalExtensions.count(VK_EXT_DEBUG_UTILS_EXTENSION_NAME) > 0;
 #   endif'''),
+    # Which shaders a pipeline the driver fails to build was made of (Adreno 660 fails
+    # some graphics pipelines with VK_ERROR_UNKNOWN, 2026-10-08): each module's SPIR-V
+    # size and FNV-1a hash, matched against the build's .spv files, and the pipeline's
+    # specialization constants.
+    ('src/contrib/plume/plume_vulkan.cpp', '''    VulkanShader::VulkanShader(VulkanDevice *device, const void *data, uint64_t size, const char *entryPointName, RenderShaderFormat format) {''', '''#   ifdef __ANDROID__
+    static std::mutex AndroidShaderInfoMutex;
+    static std::unordered_map<VkShaderModule, std::pair<uint64_t, uint64_t>> AndroidShaderInfo;
+
+    static void androidLogFailedStages(const char *kind, const VkPipelineShaderStageCreateInfo *stages, uint32_t count) {
+        std::lock_guard<std::mutex> lock(AndroidShaderInfoMutex);
+        for (uint32_t i = 0; i < count; i++) {
+            const auto it = AndroidShaderInfo.find(stages[i].module);
+            const VkSpecializationInfo *spec = stages[i].pSpecializationInfo;
+            fprintf(stderr, "  %s stage 0x%X entry %s spirv bytes=%llu fnv1a=%016llx spec=", kind, unsigned(stages[i].stage),
+                stages[i].pName != nullptr ? stages[i].pName : "?", (unsigned long long)(it != AndroidShaderInfo.end() ? it->second.first : 0),
+                (unsigned long long)(it != AndroidShaderInfo.end() ? it->second.second : 0));
+            for (uint32_t j = 0; (spec != nullptr) && (j < spec->mapEntryCount); j++) {
+                uint32_t value = 0;
+                memcpy(&value, static_cast<const uint8_t *>(spec->pData) + spec->pMapEntries[j].offset, std::min<size_t>(sizeof(value), spec->pMapEntries[j].size));
+                fprintf(stderr, "%s%u=%u", j > 0 ? "," : "", spec->pMapEntries[j].constantID, value);
+            }
+            fprintf(stderr, "\\n");
+        }
+    }
+#   endif
+
+    VulkanShader::VulkanShader(VulkanDevice *device, const void *data, uint64_t size, const char *entryPointName, RenderShaderFormat format) {'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''        VkResult res = vkCreateShaderModule(device->vk, &shaderInfo, nullptr, &vk);
+        if (res != VK_SUCCESS) {
+            fprintf(stderr, "vkCreateShaderModule failed with error code 0x%X.\\n", res);
+            return;
+        }''', '''        VkResult res = vkCreateShaderModule(device->vk, &shaderInfo, nullptr, &vk);
+        if (res != VK_SUCCESS) {
+            fprintf(stderr, "vkCreateShaderModule failed with error code 0x%X.\\n", res);
+            return;
+        }
+#   ifdef __ANDROID__
+        uint64_t hash = 0xcbf29ce484222325ULL;
+        for (uint64_t i = 0; i < size; i++) {
+            hash = (hash ^ static_cast<const uint8_t *>(data)[i]) * 0x100000001b3ULL;
+        }
+        {
+            std::lock_guard<std::mutex> lock(AndroidShaderInfoMutex);
+            AndroidShaderInfo[vk] = { size, hash };
+        }
+#   endif'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''    VulkanShader::~VulkanShader() {
+        if (vk != VK_NULL_HANDLE) {''', '''    VulkanShader::~VulkanShader() {
+#   ifdef __ANDROID__
+        if (vk != VK_NULL_HANDLE) {
+            std::lock_guard<std::mutex> lock(AndroidShaderInfoMutex);
+            AndroidShaderInfo.erase(vk);
+        }
+#   endif
+        if (vk != VK_NULL_HANDLE) {'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''            fprintf(stderr, "vkCreateComputePipelines failed with error code 0x%X.\\n", res);
+            return;''', '''            fprintf(stderr, "vkCreateComputePipelines failed with error code 0x%X.\\n", res);
+#       ifdef __ANDROID__
+            androidLogFailedStages("compute", &stageInfo, 1);
+#       endif
+            return;'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''            fprintf(stderr, "vkCreateGraphicsPipelines failed with error code 0x%X.\\n", res);
+            return;''', '''            fprintf(stderr, "vkCreateGraphicsPipelines failed with error code 0x%X.\\n", res);
+#       ifdef __ANDROID__
+            androidLogFailedStages("graphics", stages.data(), uint32_t(stages.size()));
+#       endif
+            return;'''),
+    # Adreno 6xx drivers crash while recording the two compute dispatches that move a
+    # framebuffer between RDRAM and the GPU (Galaxy Tab S7, Adreno 650, 2026-10-08: in
+    # vkCmdDispatch under NativeTarget::copyToNative, a second after the game starts
+    # drawing). Goemon64Recomp-Android met it on the Adreno 630 (ogdanimal/rt64 40b3011)
+    # and skips both, as here: skipping one moves the crash to the other. The barriers and
+    # readback copies around them stay; what the game reads back of a frame or draws into
+    # one itself is then not exact.
+    ('src/render/rt64_native_target.cpp', '''#include "rt64_render_worker.h"
+
+namespace RT64 {''', '''#include "rt64_render_worker.h"
+
+namespace RT64 {
+#ifdef __ANDROID__
+    // Set at setup from the device's name (rt64_application.cpp).
+    bool AndroidFramebufferSyncDisabled = false;
+#endif'''),
+    ('src/render/rt64_native_target.cpp', '''        worker->commandList->setComputePushConstants(0, &nativeCB);
+        worker->commandList->dispatch(dispatchX, dispatchY, 1);
+        worker->commandList->barriers(RenderBarrierStage::ALL, afterBarriers''', '''        worker->commandList->setComputePushConstants(0, &nativeCB);
+#   ifdef __ANDROID__
+        if (!AndroidFramebufferSyncDisabled)
+#   endif
+        worker->commandList->dispatch(dispatchX, dispatchY, 1);
+        worker->commandList->barriers(RenderBarrierStage::ALL, afterBarriers'''),
+    ('src/render/rt64_native_target.cpp', '''        worker->commandList->setComputeDescriptorSet(srcTarget->fbWriteDescSet->get(), 1);
+        worker->commandList->dispatch(dispatchX, dispatchY, 1);''', '''        worker->commandList->setComputeDescriptorSet(srcTarget->fbWriteDescSet->get(), 1);
+#   ifdef __ANDROID__
+        if (!AndroidFramebufferSyncDisabled)
+#   endif
+        worker->commandList->dispatch(dispatchX, dispatchY, 1);'''),
+    ('src/hle/rt64_application.cpp', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);''', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);
+#   ifdef __ANDROID__
+        extern bool AndroidFramebufferSyncDisabled;
+        AndroidFramebufferSyncDisabled = deviceDescription.name.find("Adreno (TM) 6") != std::string::npos;
+        if (AndroidFramebufferSyncDisabled) {
+            fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 6xx driver workaround: framebuffer effects are not exact)\\n");
+        }
+#   endif'''),
     # A boundless range (RT64's texture set: up to 8192 textures, as many as the texture
     # cache holds) is allocated with a variable count, and the pool is sized for that count.
     # Qualcomm's Adreno drivers count the layout's full upper bound against the pool instead:
