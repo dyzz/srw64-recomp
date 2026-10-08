@@ -222,9 +222,19 @@ if (ANDROID OR RT64_SINGLE_SOURCE_BLEND)
 endif()'''),
     ('src/shaders/RasterPS.hlsl', '''    // Add highlight color to the last step.''', '''#if defined(SINGLE_SOURCE_BLEND)
     // One output carries both: a blended draw stores its blend factor, not its coverage.
+    // The ubershader's pipelines always blend (RasterShaderUber sets alphaBlend) and the
+    // shader picks per draw, so there the factor always goes out: resultAlpha is 1.0 for a
+    // draw that does not blend, which then lands as written. Coverage in its place drew
+    // such draws at about 8/255 (Goemon64Recomp-Android met it, ogdanimal/rt64 3606f0b; on
+    // the Adreno 660, whose failed specialized shaders keep the ubershader, backgrounds and
+    // HUD frames went missing and moving sprites left trails).
+#   if defined(DYNAMIC_RENDER_PARAMS)
+    resultColor.a = resultAlpha.a;
+#   else
     if (alphaBlend) {
         resultColor.a = resultAlpha.a;
     }
+#   endif
 #endif
 
     // Add highlight color to the last step.'''),
