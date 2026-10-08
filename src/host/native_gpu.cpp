@@ -130,10 +130,16 @@ struct Context {
     std::mutex mutex;
 };
 std::unique_ptr<Context> context;
+using Retired = std::deque<std::pair<std::chrono::steady_clock::time_point, std::shared_ptr<void>>>;
 
-void collect() {
+// Moves the expired objects out; the caller drops them after unlocking, because dropping
+// one can retire more (an evicted HD map holds Textures, whose destructor calls retire).
+void collect(Retired& expired) {
     const auto now = std::chrono::steady_clock::now();
-    while (!context->retired.empty() && now - context->retired.front().first > kRetireDelay) context->retired.pop_front();
+    while (!context->retired.empty() && now - context->retired.front().first > kRetireDelay) {
+        expired.push_back(std::move(context->retired.front()));
+        context->retired.pop_front();
+    }
 }
 
 uint32_t aligned(uint32_t value, uint32_t alignment) { return (value + alignment - 1) / alignment * alignment; }
@@ -158,7 +164,14 @@ void init(RenderInterface* rhi, RenderDevice* device) {
 
 void shutdown() {
     if (!context) return;
-    context->retired.clear();
+    // Dropping a retired object can retire more into the list, so drain it in rounds.
+    while (!context->retired.empty()) {
+        Retired dropped;
+        {
+            std::lock_guard lock(context->mutex);
+            dropped.swap(context->retired);
+        }
+    }
     context->data_set.reset();
     if (context->mapped) context->data->unmap();
     context.reset();
@@ -180,8 +193,9 @@ uint32_t push_data(const void* data, size_t bytes) {
 
 void retire(std::shared_ptr<void> object) {
     if (!context || !object) return;
+    Retired expired;   // destroyed after the lock is released
     std::lock_guard lock(context->mutex);
-    collect();
+    collect(expired);
     context->retired.emplace_back(std::chrono::steady_clock::now(), std::move(object));
 }
 
