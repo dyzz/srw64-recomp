@@ -1,6 +1,10 @@
 非官方的《超级机器人大战64》原生移植，附全游戏中文与英文翻译。不含 ROM：需要自备日版原版 ROM。
 
-## 本版更新（0.4.1）
+## 本版更新（0.4.2）
+
+- **Windows：修复程序一打开就退出。** 0.4.0 和 0.4.1 在 Windows 上无论双击 `Marchwind64.exe` 还是运行 `Marchwind64.cmd`，窗口都一闪就关、不留任何日志，现已修复，并在 Windows 11 上验证过。0.4.1 说的「双击 exe 开始游戏」从这一版起才真正可用。
+
+## 0.4.1 的更新
 
 - **安卓：修复骁龙手机一进游戏就闪退。** 高通 Adreno 显卡（骁龙 8 Gen 2、8 Gen 3 等，如红米 K70、iQOO 12、vivo Neo9）在游戏开始绘制时崩溃，现已修复，并在 Adreno 740、750、830 的真机上验证过。
 - **安卓：开场序章文字页有了「跳过」按钮**；PRESS START 画面重新显示「图鉴」「战斗查看器」按钮。
@@ -35,7 +39,7 @@
 
 ## English
 
-An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. New in 0.4.1: Android no longer crashes on Snapdragon phones (Adreno GPUs) once the game starts drawing; the opening prologue pages have a touch Skip button; on Windows, double-clicking Marchwind64.exe starts the game as Marchwind64.cmd does. 0.4 is the first public release and a feature preview: the whole game is playable, but it is still rough. The Chinese and English translations are mostly machine-translated with one polishing pass and have not been hand-edited line by line yet; expect plenty of bugs; testing beyond macOS has been limited to a few devices. Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues), with the platform info and problem report from Options → Report, and suggest text corrections on the [website](https://srw64.dreamquest.club/en/story/)'s Story and Library pages. Full feature list: [release notes on the website](https://srw64.dreamquest.club/en/blog/v0-4-0/). {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
+An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. New in 0.4.2: the game starts on Windows again; 0.4.0 and 0.4.1 closed at once on every launch, from Marchwind64.exe or Marchwind64.cmd, without leaving a log. From 0.4.1: Android no longer crashes on Snapdragon phones (Adreno GPUs) once the game starts drawing; the opening prologue pages have a touch Skip button; on Windows, double-clicking Marchwind64.exe starts the game as Marchwind64.cmd does. 0.4 is the first public release and a feature preview: the whole game is playable, but it is still rough. The Chinese and English translations are mostly machine-translated with one polishing pass and have not been hand-edited line by line yet; expect plenty of bugs; testing beyond macOS has been limited to a few devices. Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues), with the platform info and problem report from Options → Report, and suggest text corrections on the [website](https://srw64.dreamquest.club/en/story/)'s Story and Library pages. Full feature list: [release notes on the website](https://srw64.dreamquest.club/en/blog/v0-4-0/). {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
 
 ## 校验 / Checksums
 
