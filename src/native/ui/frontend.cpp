@@ -3953,7 +3953,12 @@ void choose(const std::string& id) {
     }
     if(id=="update-open"){open_about(update::status("en").state==update::State::Available?"update-download":"update-hd-download");return;}
     if(id.starts_with("battle-") && !id.starts_with("battle-ui:") && battle_request.value("visible",false) && !settings_open){battle_page::answer(battle_request.at("serial"),id.substr(7));return;}
-    if(id=="settings-open"){settings_open=true;settings_release.hold();input.clear();return;}
+    // From the Library, the battle viewer or MOD (the menu bar's Settings…, Ctrl/Cmd+,), which
+    // share the settings window's frame: its own pages, as closing would leave the viewer.
+    if(id=="settings-open"){
+        if(library_open || viewer_open || mod_open){library_open=false;viewer_open=false;mod_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);}
+        settings_open=true;settings_release.hold();input.clear();return;
+    }
     // The MOD manager. Its campaign page switches campaign (or back to the main game) on the
     // title screen: a switch asks the launcher for the next start and closes the game as
     // the window would.
