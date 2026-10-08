@@ -203,6 +203,7 @@ jobs:
             -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl `
             "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" `
             -DSRW64_ENABLE_RT64=ON -DSRW64_METAL_SOURCE_SHADERS=OFF `
+            -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON `
             "-DPython3_EXECUTABLE=$PWD/.venv/Scripts/python.exe"
 
       - name: Game code (output kept out of the log)
@@ -214,7 +215,9 @@ jobs:
       - name: Host
         run: |
           cmake --build build/recomp/gfx-build --target srw64-gfx-host -j 4 -- -k 0
+          $built = $LASTEXITCODE
           ccache -s
+          if ($built -ne 0) { exit $built }
 
       - name: Encrypt the compiler cache
         shell: bash
