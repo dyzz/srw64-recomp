@@ -20,6 +20,25 @@ from recomp.toolchain.native_model_hook_patches import PATCHES as NATIVE_MODEL_P
 from recomp.toolchain.rt64_android_patches import BY_FILE as ANDROID_PATCHES
 
 
+def patched_subset(text: str, original: str, steps) -> bool:
+    """Whether text is original with some of the steps applied, in order: what a checkout
+    patched by an earlier revision of these lists holds; nothing else is accepted.
+
+    The steps are undone from the last, each where its result is still there, so a step
+    must leave some text to find (a deletion keeps its context). (Listing
+    every subset instead doubles with each step: 17 on plume_vulkan.cpp took tens of GB.)"""
+    for before, after in reversed(steps):
+        if before in after:
+            applied = text.count(after) == 1
+        elif after in before:
+            applied = text.count(before) == 0 and text.count(after) == 1
+        else:
+            applied = text.count(after) == 1 and text.count(before) == 0
+        if applied:
+            text = text.replace(after, before)
+    return text == original
+
+
 def patch(checkout: Path, relative: str, old: str | None = None, new: str | None = None, additional=()) -> dict:
     original = subprocess.check_output(["git", "show", f"HEAD:{relative}"], cwd=checkout).decode()
     if old is not None and original.count(old) != 1:
@@ -29,16 +48,12 @@ def patch(checkout: Path, relative: str, old: str | None = None, new: str | None
     steps = [*([(old, new)] if old is not None else []), *NATIVE_MODEL_PATCHES.get(relative, []), *additional,
              *ANDROID_PATCHES.get(android_key, [])]
     expected = original
-    # A checkout patched by an earlier revision of these lists holds some of the
-    # patches, in order: accept any such subset, nothing else.
-    states = {original}
     for before, after in steps:
         if expected.count(before) != 1:
             raise RuntimeError(f'additional graphics patch context differs in {relative}')
         expected = expected.replace(before, after)
-        states |= {state.replace(before, after) for state in states if state.count(before) == 1}
     path = checkout / relative
-    if path.read_text() not in states:
+    if not patched_subset(path.read_text(), original, steps):
         raise RuntimeError(f"unexpected local changes in {path}")
     if path.read_text() != expected:
         path.write_text(expected)
