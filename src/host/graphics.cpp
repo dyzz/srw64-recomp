@@ -748,6 +748,12 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     // system's "leave the activity", which would end the game without its save.
     SDL_SetHint("SDL_ANDROID_TRAP_BACK_BUTTON", "1");
 #endif
+#ifdef _WIN32
+    // A scaled screen (4K at 150 % or 200 %) gets the picture and the pages at its own pixels,
+    // not drawn at the scaled size and stretched by Windows: per-monitor DPI awareness, the
+    // window in points as on a Mac (SDL_GetWindowSizeInPixels for the drawable, frontend.cpp).
+    SDL_SetHint(SDL_HINT_WINDOWS_DPI_SCALING, "1");
+#endif
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | (srw64_audio_enabled() ? SDL_INIT_AUDIO : 0)) != 0) {
         fprintf(stderr, "SRW64_SDL_INIT_FAILED %s\n", SDL_GetError());
         std::abort();
