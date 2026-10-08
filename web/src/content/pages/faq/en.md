@@ -84,6 +84,20 @@ Most additions focus on the interface, reading and controls: natively rendered s
 
 The original game has a soft reset: pressing the N64 controller's Z and START together during a battle (see the Controls page in settings for where they are on your keyboard or controller) returns to the title screen, and unsaved progress is lost.
 
+<span id="gpu"></span>
+
+## The game stops on one screen, or the window is "Not responding"?
+
+Most often the graphics driver is too old. One Windows player, for example, had an NVIDIA driver from 2021 (472.12): the game stopped on the opening flames, and the log showed the graphics device lost (`VK_ERROR_DEVICE_LOST`). First update your graphics driver to the latest version:
+
+- **NVIDIA**: update with the NVIDIA App (or GeForce Experience), or download it from NVIDIA's website.
+- **AMD**: download the Adrenalin driver from AMD's website.
+- **Intel**: update with Intel Driver & Support Assistant, or download it from Intel's website.
+- A laptop with both a dedicated and an integrated GPU needs both drivers updated. The drivers Windows Update installs are often old; get them from the GPU maker's website instead.
+- **Linux**: update your system's graphics driver (Mesa or the NVIDIA driver). On the **Steam Deck**, keep SteamOS up to date.
+
+If it still stops after the update, close the game, open it again, export a problem report under Options → Report (the previous run's logs are included), and attach it to a [GitHub issue](https://github.com/dyzz/srw64-recomp/issues) with your graphics card model.
+
 ## How do I report a problem?
 
-Open an issue on [GitHub](https://github.com/dyzz/srw64-recomp/issues) with your version, platform and the steps leading up to the problem so it can be reproduced. Screenshots are helpful too. In-game reporting is still in development.
+Open an issue on [GitHub](https://github.com/dyzz/srw64-recomp/issues) using the form, with your version, platform and the steps leading up to the problem so it can be reproduced. In the game, Options → Report copies your platform info and exports a problem report (version, system, graphics, settings and the logs of the last few runs; no saves and no ROM): please attach it, and screenshots if you have them. For story lines and Library names, suggest a correction next to the line on the site's [Story](/en/story/) and [Library](/en/library/) pages.

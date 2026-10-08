@@ -84,6 +84,20 @@ HD 包是单独下载、可选安装的图片包，只替换游戏画面。未�
 
 原版自带软复位：战斗中同时按 N64 手柄的 Z 和 START（对应到你的键盘或手柄上的按键见设置的「操作」页）会回到标题画面，未存档的进度会丢失。
 
+<span id="gpu"></span>
+
+## 游戏卡在某个画面不动，或窗口「未响应」？
+
+多半是显卡驱动太旧。例如有 Windows 玩家用的是 2021 年的 NVIDIA 驱动（472.12），游戏停在开场的火焰画面不动，日志里显示显卡设备丢失（`VK_ERROR_DEVICE_LOST`）。请先把显卡驱动更新到最新版：
+
+- **NVIDIA**：用 NVIDIA App（或 GeForce Experience）更新，或到 NVIDIA 官网下载。
+- **AMD**：到 AMD 官网下载 Adrenalin 驱动。
+- **Intel**：用 Intel 驱动与支持助理更新，或到 Intel 官网下载。
+- 笔记本如果同时有独立显卡和集成显卡，两块的驱动都要更新。Windows 更新自带的驱动往往偏旧，最好从显卡厂商官网下载。
+- **Linux**：更新系统的显卡驱动（Mesa 或 NVIDIA 驱动）。**Steam Deck** 保持 SteamOS 为最新即可。
+
+更新后仍然卡住，请关掉游戏、重新打开，在「选项 → 反馈」里导出问题报告（上一次运行的日志也会在里面），附在 [GitHub Issue](https://github.com/dyzz/srw64-recomp/issues) 里，并写上显卡型号。
+
 ## 遇到问题怎么反馈？
 
-请到 [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues) 提交，注明版本、平台和问题发生前的操作，方便复现；有截图也可以一并附上。游戏内的一键反馈功能仍在开发中。
+请到 [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues) 按表单提交，注明版本、平台和问题发生前的操作，方便复现。游戏里「选项 → 反馈」可以一键复制平台信息、导出问题报告（版本、系统、显卡、设置和最近几次运行的日志，不含存档和 ROM），请一并附上；有截图更好。剧情台词和图鉴译名的意见，请在官网[剧情](/zh/story/)和[图鉴](/zh/library/)页面对应的句子旁直接提交。
