@@ -3,6 +3,14 @@
 #include <chrono>
 #include <iostream>
 #include <stdexcept>
+#include <thread>
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <csignal>
+#include <sys/wait.h>
+#include <unistd.h>
+#endif
 using namespace srw64::app;
 namespace {
 unsigned checks{};
@@ -15,7 +23,8 @@ struct Fixture {
     Options options;
     std::string hash;
     std::vector<std::optional<fs::path>> selections;
-    std::vector<std::string> errors;
+    std::vector<std::string> errors, questions;
+    bool end_holder{};
     size_t picked{};
     unsigned launches{};
     Fixture() {
@@ -28,7 +37,8 @@ struct Fixture {
     DesktopUi ui() {
         return {[this]() -> std::optional<fs::path> {
             check(picked<selections.size(),"unexpected picker");return selections.at(picked++);
-        },[this](const std::string& message){errors.push_back(message);}};
+        },[this](const std::string& message){errors.push_back(message);},
+        [this](const std::string& message,const std::string&,const std::string&){questions.push_back(message);return end_holder;}};
     }
     int run(bool force=false, bool failure=false) {
         return run_desktop(options,hash,ui(),[&](const Options& selected,const DesktopReady& ready){
@@ -118,12 +128,51 @@ void relocated_working_directory_and_lock() {
     const auto shown=f.errors.size();
     check(f.run()==2,"second instance bypassed session lock");
     check(f.errors.size()==shown+1 && f.errors.back()==play_lock_message("en"),"lock message not in the saved language");
+    check(f.questions.empty(),"offered to end this very process");
     check(play_lock_message("ja").starts_with("Marchwind64 を") && play_lock_message("fr")==play_lock_message("zh-Hans"),
           "lock message languages");
 }
+// Another process holding the user directory: Cancel leaves it, the other button ends it
+// and the game starts. The holder is this program again (--hold), as another game would be.
+void ending_the_holder(const char* self) {
+    Fixture f;f.options.rom=f.rom;
+    fs::create_directories(f.options.user_dir);
+#ifdef _WIN32
+    std::wstring command=L"\""+fs::path(self).wstring()+L"\" --hold \""+f.options.user_dir.wstring()+L"\"";
+    STARTUPINFOW startup{};startup.cb=sizeof startup;PROCESS_INFORMATION child{};
+    check(CreateProcessW(nullptr,command.data(),nullptr,nullptr,FALSE,0,nullptr,nullptr,&startup,&child)!=0,"holder not started");
+    CloseHandle(child.hThread);
+    const unsigned long child_id=child.dwProcessId;
+    const auto alive=[&]{return WaitForSingleObject(child.hProcess,0)==WAIT_TIMEOUT;};
+#else
+    (void)self;
+    const pid_t child=fork();
+    if (child==0) { try { UserLock held(f.options.user_dir); for (;;) pause(); } catch (...) {} _exit(1); }
+    const unsigned long child_id=(unsigned long)child;
+    const auto alive=[&]{return kill(child,0)==0;};
+#endif
+    std::optional<PlayLockHolder> holder;
+    for (int i=0;i<200 && !(holder=play_lock_holder(f.options.user_dir));++i) std::this_thread::sleep_for(std::chrono::milliseconds(25));
+    check(holder && holder->pid==child_id,"lock holder not recorded");
+    check(f.run()==0 && f.launches==0 && f.questions.size()==1,"declined question started the game");
+    check(f.questions.back()==play_lock_question("zh-Hans").message && alive(),"declining ended the holder");
+    f.end_holder=true;
+    check(f.run()==0 && f.launches==1 && f.questions.size()==2,"ending the holder did not start the game");
+#ifdef _WIN32
+    check(WaitForSingleObject(child.hProcess,5000)==WAIT_OBJECT_0,"holder not ended");
+    CloseHandle(child.hProcess);
+#else
+    int status=0;
+    check(waitpid(child,&status,0)==child && WIFSIGNALED(status),"holder not ended");
+#endif
 }
-int main() {
-    try {cancel_and_resume();missing_and_wrong_rom();errors_never_retry_host_or_replace_progress();launcher_rom_order();relocated_working_directory_and_lock();
+}
+int main(int argc, char** argv) {
+    if (argc==3 && std::string_view(argv[1])=="--hold") {   // the other game in ending_the_holder
+        UserLock held{fs::path(argv[2])};
+        for (;;) std::this_thread::sleep_for(std::chrono::seconds(60));
+    }
+    try {cancel_and_resume();missing_and_wrong_rom();errors_never_retry_host_or_replace_progress();launcher_rom_order();relocated_working_directory_and_lock();ending_the_holder(argv[0]);
         std::cout<<checks<<" desktop checks passed\n";return 0;}
     catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
 }

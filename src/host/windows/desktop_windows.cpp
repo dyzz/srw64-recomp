@@ -58,6 +58,12 @@ DesktopUi windows_desktop_ui() {
         [](const std::string& message) {
             MessageBoxW(nullptr, wide(message).c_str(), L"Marchwind64",
                         MB_OK | MB_ICONWARNING | MB_SETFOREGROUND);
+        },
+        // A message box names its buttons in the system's language (OK, Cancel), so the
+        // question reads without the labels. Cancel is the default.
+        [](const std::string& message, const std::string&, const std::string&) {
+            return MessageBoxW(nullptr, wide(message).c_str(), L"Marchwind64",
+                               MB_OKCANCEL | MB_DEFBUTTON2 | MB_ICONWARNING | MB_SETFOREGROUND) == IDOK;
         }
     };
 }

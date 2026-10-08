@@ -1,4 +1,6 @@
 #pragma once
+#include <chrono>
+#include <cstdint>
 #include <filesystem>
 #include <functional>
 #include <memory>
@@ -70,11 +72,19 @@ class UserLock {
     struct Handle;
     std::unique_ptr<Handle> handle;
 public:
-    explicit UserLock(const fs::path& user_dir);
+    // Waits this long for a game that is still exiting before throwing PlayLockHeld.
+    explicit UserLock(const fs::path& user_dir,std::chrono::milliseconds wait=std::chrono::seconds(10));
     ~UserLock();
     UserLock(const UserLock&)=delete;
     UserLock& operator=(const UserLock&)=delete;
 };
+// The game holding a user directory, from the record its lock keeps in active.lock: its
+// process id and start time, so a reused id is never taken for it. Empty when no other
+// live game is recorded there (an older version, another platform's, or this process).
+struct PlayLockHolder { unsigned long pid; std::uint64_t started; };
+std::optional<PlayLockHolder> play_lock_holder(const fs::path& user_dir);
+// Ends that game at once; its unsaved progress is lost. False when it could not be ended.
+bool end_play_lock_holder(const PlayLockHolder& holder);
 // The lock is held for the entire in-process host run.
 class Session {
     std::unique_ptr<UserLock> lock;

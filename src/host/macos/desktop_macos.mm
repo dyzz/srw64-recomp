@@ -52,6 +52,18 @@ DesktopUi macos_desktop_ui() {
                 [alert addButtonWithTitle:@"OK"];
                 [alert runModal];
             }
+        },
+        [](const std::string& message, const std::string& accept, const std::string& cancel) {
+            @autoreleasepool {
+                activate();
+                NSAlert* alert = [[NSAlert alloc] init];
+                alert.alertStyle = NSAlertStyleWarning;
+                alert.messageText = @"Marchwind64";
+                alert.informativeText = text(message);
+                [alert addButtonWithTitle:text(accept)];
+                [alert addButtonWithTitle:text(cancel)];
+                return [alert runModal] == NSAlertFirstButtonReturn;
+            }
         }
     };
 }

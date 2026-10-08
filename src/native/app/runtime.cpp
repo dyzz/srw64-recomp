@@ -11,6 +11,7 @@
 #include <fstream>
 #include <optional>
 #include <random>
+#include <sstream>
 #include <stdexcept>
 #include <system_error>
 #include <thread>
@@ -22,12 +23,14 @@
 #include <windows.h>
 #else
 #include <cerrno>
+#include <csignal>
 #include <fcntl.h>
 #include <sys/file.h>
 #include <unistd.h>
 extern char** environ;
 #endif
 #ifdef __APPLE__
+#include <libproc.h>
 #include <mach-o/dyld.h>
 #endif
 
@@ -364,8 +367,8 @@ void clear_runtime_environment() {
 namespace {
 // A game that was just closed can hold the lock for a few seconds more while it exits,
 // so a quick relaunch waits for it before giving up.
-template<class Try> bool wait_for_lock(Try&& attempt) {
-    const auto deadline=std::chrono::steady_clock::now()+std::chrono::seconds(10);
+template<class Try> bool wait_for_lock(Try&& attempt,std::chrono::milliseconds wait) {
+    const auto deadline=std::chrono::steady_clock::now()+wait;
     while (!attempt()) {
         if (std::chrono::steady_clock::now()>=deadline) return false;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -375,33 +378,104 @@ template<class Try> bool wait_for_lock(Try&& attempt) {
 constexpr const char* play_lock_held=
     "Marchwind64 is already running with this user directory, or a closed game has not finished exiting.\n"
     "Switch to the open game, or end Marchwind64 in Task Manager (Activity Monitor on a Mac) and start again.";
+// The holder's record sits past the locked first byte, where Windows lets others read it:
+// "pid start-time", padded so a shorter record replaces a longer one.
+constexpr unsigned holder_offset=64,holder_size=64;
+// When a live process started, in the platform's own units; empty when it is gone.
+std::optional<std::uint64_t> process_start(unsigned long pid) {
+#ifdef _WIN32
+    const HANDLE process=OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION,FALSE,DWORD(pid));
+    if (!process) return std::nullopt;
+    FILETIME created,exited,kernel,user;DWORD code=0;
+    std::optional<std::uint64_t> start;
+    if (GetProcessTimes(process,&created,&exited,&kernel,&user) && GetExitCodeProcess(process,&code) && code==STILL_ACTIVE)
+        start=(std::uint64_t(created.dwHighDateTime)<<32)|created.dwLowDateTime;
+    CloseHandle(process);
+    return start;
+#elif defined(__APPLE__)
+    proc_bsdinfo info{};
+    if (proc_pidinfo(int(pid),PROC_PIDTBSDINFO,0,&info,sizeof info)!=int(sizeof info)) return std::nullopt;
+    return std::uint64_t(info.pbi_start_tvsec)*1000000u+info.pbi_start_tvusec;
+#else
+    std::ifstream stat("/proc/"+std::to_string(pid)+"/stat");
+    std::string text;
+    if (!std::getline(stat,text) || text.rfind(')')==std::string::npos) return std::nullopt;
+    std::istringstream fields(text.substr(text.rfind(')')+1));
+    std::string field;
+    for (int index=3;index<=22 && fields>>field;++index)   // starttime is the 22nd field
+        if (std::uint64_t start=0;index==22 && std::from_chars(field.data(),field.data()+field.size(),start).ec==std::errc{}) return start;
+    return std::nullopt;
+#endif
+}
+unsigned long current_pid() {
+#ifdef _WIN32
+    return GetCurrentProcessId();
+#else
+    return (unsigned long)getpid();
+#endif
+}
+std::string holder_record() {
+    const auto start=process_start(current_pid());
+    auto record=start?std::to_string(current_pid())+" "+std::to_string(*start)+"\n":std::string("\n");
+    record.resize(holder_size,' ');
+    return record;
+}
 }
 struct UserLock::Handle {
 #ifdef _WIN32
     HANDLE handle=INVALID_HANDLE_VALUE;
-    explicit Handle(const fs::path& path) {
+    Handle(const fs::path& path,std::chrono::milliseconds wait) {
         handle=CreateFileW(path.c_str(),GENERIC_READ|GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE,
                            nullptr,OPEN_ALWAYS,FILE_ATTRIBUTE_NORMAL,nullptr);
         if (handle==INVALID_HANDLE_VALUE) throw std::runtime_error("Cannot open play lock");
         if (!wait_for_lock([&] { OVERLAPPED offset{};
-                return LockFileEx(handle,LOCKFILE_EXCLUSIVE_LOCK|LOCKFILE_FAIL_IMMEDIATELY,0,1,0,&offset)!=0; })) {
+                return LockFileEx(handle,LOCKFILE_EXCLUSIVE_LOCK|LOCKFILE_FAIL_IMMEDIATELY,0,1,0,&offset)!=0; },wait)) {
             CloseHandle(handle);handle=INVALID_HANDLE_VALUE;
             throw PlayLockHeld(play_lock_held);
         }
+        const auto record=holder_record();
+        OVERLAPPED at{};at.Offset=holder_offset;DWORD written=0;
+        WriteFile(handle,record.data(),DWORD(record.size()),&written,&at);   // only for ending this game from another
     }
     ~Handle() { if(handle!=INVALID_HANDLE_VALUE){OVERLAPPED offset{};UnlockFileEx(handle,0,1,0,&offset);CloseHandle(handle);} }
 #else
     int fd=-1;
-    explicit Handle(const fs::path& path) {
+    Handle(const fs::path& path,std::chrono::milliseconds wait) {
         fd=open(path.c_str(),O_RDWR|O_CREAT|O_CLOEXEC,0600);
         if (fd<0) throw std::runtime_error("Cannot open play lock");
-        if (!wait_for_lock([&] { return flock(fd,LOCK_EX|LOCK_NB)==0; })) { close(fd);fd=-1;throw PlayLockHeld(play_lock_held); }
+        if (!wait_for_lock([&] { return flock(fd,LOCK_EX|LOCK_NB)==0; },wait)) { close(fd);fd=-1;throw PlayLockHeld(play_lock_held); }
+        const auto record=holder_record();
+        (void)!pwrite(fd,record.data(),record.size(),holder_offset);   // only for ending this game from another
     }
     ~Handle() { if(fd>=0)close(fd); }
 #endif
 };
-UserLock::UserLock(const fs::path& user_dir):handle(std::make_unique<Handle>(user_dir/"active.lock")) {}
+UserLock::UserLock(const fs::path& user_dir,std::chrono::milliseconds wait):handle(std::make_unique<Handle>(user_dir/"active.lock",wait)) {}
 UserLock::~UserLock()=default;
+std::optional<PlayLockHolder> play_lock_holder(const fs::path& user_dir) {
+    std::ifstream file(user_dir/"active.lock",std::ios::binary);
+    std::string record(holder_size,'\0');
+    if (!file.seekg(holder_offset) || !file.read(record.data(),holder_size)) return std::nullopt;
+    std::istringstream fields(record);
+    PlayLockHolder holder{};
+    if (!(fields>>holder.pid>>holder.started) || holder.pid==current_pid()) return std::nullopt;
+    if (process_start(holder.pid)!=holder.started) return std::nullopt;   // gone, or its id reused
+    return holder;
+}
+bool end_play_lock_holder(const PlayLockHolder& holder) {
+    if (process_start(holder.pid)!=holder.started) return true;
+#ifdef _WIN32
+    const HANDLE process=OpenProcess(PROCESS_TERMINATE|SYNCHRONIZE,FALSE,DWORD(holder.pid));
+    if (!process) return false;
+    const bool ended=TerminateProcess(process,1)!=0;
+    if (ended) WaitForSingleObject(process,5000);
+    CloseHandle(process);
+    return ended;
+#else
+    // Its lock goes with its files when it dies; the caller's lock retry waits for that.
+    return kill(pid_t(holder.pid),SIGKILL)==0;
+#endif
+}
 Session::Session(const Options& options) {
     root=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir);
     fs::create_directories(root);

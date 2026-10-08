@@ -78,10 +78,32 @@ std::string play_lock_message(const std::string& locale) {
            (mac ? "活动监视器" : "任务管理器") + "中结束 Marchwind64 后重新启动。\n存档没有被改动。";
 }
 
+PlayLockQuestion play_lock_question(const std::string& locale) {
+    if (locale == "ja")
+        return {"Marchwind64 を起動できません。\n"
+                "別の Marchwind64 が同じセーブデータと設定を使用しています（バックグラウンドにあるか、応答していない可能性があります）。\n"
+                "それを終了して起動しますか？保存していない進行状況は失われます。保存済みのセーブデータはそのままです。",
+                "終了して起動", "キャンセル"};
+    if (locale == "en")
+        return {"Unable to start Marchwind64.\n"
+                "Another Marchwind64 is using the same saves and settings (it may be in the background or not responding).\n"
+                "End it and start? Its unsaved progress will be lost; saved games are kept.",
+                "End and Start", "Cancel"};
+    return {"无法启动 Marchwind64。\n"
+            "另一个 Marchwind64 正在使用同一份存档和设置（可能在后台，或者已经没有响应）。\n"
+            "要结束它并启动吗？它没有保存的进度会丢失，已保存的存档不受影响。",
+            "结束并启动", "取消"};
+}
+
 int run_desktop(Options options, const std::string& expected_rom_sha256,
                 const DesktopUi& ui, const DesktopLaunch& launch, bool choose_another_rom) {
     if (!ui.choose_rom || !ui.show_error || !launch)
         throw std::invalid_argument("Incomplete desktop callbacks");
+    // The first launch has no settings yet and starts in Simplified Chinese (host.cpp).
+    const auto locale = [&] {
+        auto chosen = options.language.empty() ? saved_locale(options.user_dir) : options.language;
+        return chosen.empty() ? std::string("zh-Hans") : chosen;
+    };
     try {
         options.user_dir = fs::absolute(options.user_dir.empty() ? default_user_dir() : options.user_dir);
         const auto preference = options.user_dir / "last-rom.txt";
@@ -106,6 +128,19 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
                 options.rom.clear();
             }
         }
+        // Another game holding the user directory can be ended here, before anything else
+        // is touched; Session takes the lock for real. Briefly, for one that is exiting.
+        fs::create_directories(options.user_dir);
+        for (;;) {
+            try { UserLock probe(options.user_dir, std::chrono::seconds(3)); break; }
+            catch (const PlayLockHeld&) {
+                const auto holder = play_lock_holder(options.user_dir);
+                if (!holder || !ui.confirm) throw;
+                const auto question = play_lock_question(locale());
+                if (!ui.confirm(question.message, question.accept, question.cancel)) return 0;
+                if (!end_play_lock_holder(*holder)) throw;
+            }
+        }
         bool ready_called = false;
         const int result = launch(options, [&] {
             if (ready_called) throw std::logic_error("Desktop bootstrap entered the game twice");
@@ -120,10 +155,7 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
                           path_utf8(options.user_dir));
         return result;
     } catch (const PlayLockHeld&) {
-        // The first launch has no settings yet and starts in Simplified Chinese (host.cpp).
-        auto locale = options.language;
-        if (locale.empty()) locale = saved_locale(options.user_dir);
-        ui.show_error(play_lock_message(locale.empty() ? "zh-Hans" : locale));
+        ui.show_error(play_lock_message(locale()));
         return 2;
     } catch (const std::exception& error) {
         ui.show_error(std::string("Unable to start Marchwind64.\n") + error.what() +
