@@ -562,6 +562,8 @@
     "menu_view": "View",
     "menu_fullscreen": "Full Screen",
     "menu_window_scale": "Window Size {n}×",
+    "menu_game": "Game",
+    "menu_exit": "Exit",
     "font_credit": "Font: HarmonyOS Sans",
     "viewer_open": "Battle Viewer",
     "viewer_title": "Battle Viewer",

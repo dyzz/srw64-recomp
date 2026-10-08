@@ -45,8 +45,8 @@ UI_KEYS |= {"viewer_attacker", "viewer_back", "viewer_badge_default", "viewer_ba
 UI_KEYS |= {"about_link_issues", "about_link_site", "about_link_source", "menu_about", "menu_check_updates", "settings_about_links", "settings_about_links_note", "settings_about_tagline", "settings_update", "settings_update_auto", "settings_update_auto_note", "settings_update_auto_off", "settings_update_auto_on", "update_ask_note", "update_ask_off", "update_ask_on", "update_ask_text", "update_check", "update_download", "update_notes", "update_open_failed", "update_status_available", "update_status_checking", "update_status_current", "update_status_failed", "update_status_unchecked", "update_title_hint",
             "settings_update_hd", "update_hd_installed", "update_hd_unknown", "update_hd_missing", "update_hd_available",
             "update_hd_download", "update_title_hint_hd"}
-# The macOS View menu (src/host/macos/app_menu.hpp).
-UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale"}
+# The View menu and the Windows menu bar (src/native/ui/app_menu.hpp).
+UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale", "menu_game", "menu_exit"}
 # The frame-rate readout (settings show_fps).
 UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps_note"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).

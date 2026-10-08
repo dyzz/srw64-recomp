@@ -1,0 +1,3 @@
+// Marchwind64.exe's icon (tools/release/app_icons.py). Explorer and SDL's window class take
+// the first icon in the executable.
+1 ICON "Marchwind64.ico"

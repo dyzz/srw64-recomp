@@ -4630,7 +4630,8 @@ void sync() {
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_view"),
-                      language->ui("menu_fullscreen"),language->ui("menu_window_scale"),language->ui("menu_about"),language->ui("menu_check_updates")},window_menu_state());
+                      language->ui("menu_fullscreen"),language->ui("menu_window_scale"),language->ui("menu_about"),language->ui("menu_check_updates"),
+                      language->ui("menu_game"),language->ui("menu_exit")},window_menu_state());
     if(app_menu::take_settings_request())choose("settings-open");
     if(app_menu::take_about_request())open_about("");
     if(app_menu::take_update_request()){open_about("update-check");update::check(true);}
@@ -4695,7 +4696,7 @@ bool dispatch(SDL_Event& event) {
         if(!event.key.repeat)srw64::dialogue::request_reload();return true;
     }
 #ifndef __APPLE__
-    // F11 toggles full screen where there is no menu bar (a Mac has View > Full Screen, ⌃⌘F).
+    // F11 toggles full screen (Windows names it in View > Full Screen; a Mac has ⌃⌘F there).
     if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F11 && !on_steam_deck() &&
        !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))){
         if(!event.key.repeat)toggle_fullscreen();return true;
@@ -4968,7 +4969,7 @@ Rml::Element* find(Rml::Element* root,const std::string& text,bool exact) {
 }
 void require(){if(!context)throw debug::RpcError(debug::ServerError,"shared UI is not ready");}
 }
-void window_init(SDL_Window* value,const std::filesystem::path& path){window=value;output=path;system.SetWindow(window);input.defer_sdl(true);}
+void window_init(SDL_Window* value,const std::filesystem::path& path){window=value;output=path;system.SetWindow(window);input.defer_sdl(true);app_menu::attach(window);}
 void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device);ready=true;}
 void update(){auto lock=lock_ui();if(!ready)return;SDL_GetWindowSizeInPixels(window,&pixels_w,&pixels_h);int w,h;SDL_GetWindowSize(window,&w,&h);pixel_ratio=w?float(pixels_w)/w:1;if(!initialized)initialize();sync();input.flush_sdl();}
 uint32_t touch_buttons() {
@@ -5050,7 +5051,7 @@ json menu(const json& p){
     if(!path.empty()){
         const auto& wanted=path.back();
         if(wanted==localization::catalog().ui("settings_open") || wanted==localization::catalog().ui("settings_title")){
-#ifdef __APPLE__
+#if defined(__APPLE__) || defined(_WIN32)
             if(!app_menu::activate_settings())throw debug::RpcError(debug::ServerError,"application menu is not ready");
 #else
             choose("settings-open");

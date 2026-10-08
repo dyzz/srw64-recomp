@@ -149,6 +149,8 @@ if(SRW64_ENABLE_RT64)
     if(WIN32)
         # Double-clicking Marchwind64.exe: the ROM dialog and message box (host.cpp main()).
         target_sources(srw64-gfx-host PRIVATE windows/desktop_windows.cpp)
+        # The menu bar (src/native/ui/app_menu.hpp) and the executable's icon.
+        target_sources(srw64-gfx-host PRIVATE windows/app_menu_windows.cpp windows/marchwind64.rc)
         target_link_libraries(srw64-gfx-host PRIVATE comdlg32 user32 ole32)
     endif()
     # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md).

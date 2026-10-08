@@ -23,6 +23,7 @@ import tempfile
 MACHO_MAGIC = {bytes.fromhex(value) for value in (
     "feedface", "cefaedfe", "feedfacf", "cffaedfe", "cafebabe", "bebafeca", "cafebabf", "bfbafeca")}
 EXECUTABLE = "srw64-gfx-host"
+ICON = Path(__file__).resolve().parents[2] / "src/host/macos/Marchwind64.icns"
 # The one ROM the game runs (config/recomp/rom-variants.json), checked before --rom bundles it.
 ROM_SHA256 = json.loads((Path(__file__).resolve().parents[2] / "config/recomp/rom-variants.json").read_text())["variants"]["jp"]["sha256"]
 
@@ -160,9 +161,11 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
             "CFBundleDisplayName": "Marchwind64", "CFBundleIdentifier": "io.github.dyzz.srw64-recomp",
             "CFBundlePackageType": "APPL", "CFBundleVersion": version, "CFBundleShortVersionString": version,
             "LSMinimumSystemVersion": minimum, "NSHighResolutionCapable": True,
-            "NSPrincipalClass": "NSApplication",
+            "NSPrincipalClass": "NSApplication", "CFBundleIconFile": "Marchwind64",
         }
         (staged / "Contents/Info.plist").write_bytes(plistlib.dumps(info))
+        # The M64 badge on a rounded plate (tools/release/app_icons.py).
+        shutil.copyfile(ICON, resources / "Marchwind64.icns")
         if rom is not None:
             # An internal test build only (docs/guide/release.md): the app starts on this ROM
             # without asking, unless the Mac remembers another. Never for distribution.

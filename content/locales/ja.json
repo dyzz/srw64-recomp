@@ -562,6 +562,8 @@
     "menu_view": "表示",
     "menu_fullscreen": "フルスクリーン",
     "menu_window_scale": "ウインドウサイズ {n}×",
+    "menu_game": "ゲーム",
+    "menu_exit": "終了",
     "font_credit": "フォント：HarmonyOS Sans",
     "viewer_open": "バトルビューア",
     "viewer_title": "バトルビューア",

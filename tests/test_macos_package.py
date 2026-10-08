@@ -57,9 +57,11 @@ class MacOSPackageTests(unittest.TestCase):
         self.assertEqual((info["CFBundleName"], info["CFBundleDisplayName"]), ("Marchwind64", "Marchwind64"))
         self.assertEqual(info["CFBundleIdentifier"], "io.github.dyzz.srw64-recomp")
         self.assertTrue(info["NSHighResolutionCapable"])
+        self.assertEqual(info["CFBundleIconFile"], "Marchwind64")
         files = {p.relative_to(result).as_posix() for p in result.rglob("*") if p.is_file()}
         self.assertEqual(files, {"Contents/MacOS/srw64-gfx-host", "Contents/Info.plist",
-                                 "Contents/Resources/Distribution.txt", "Contents/Resources/licenses/00-LICENSE"})
+                                 "Contents/Resources/Distribution.txt", "Contents/Resources/Marchwind64.icns",
+                                 "Contents/Resources/licenses/00-LICENSE"})
         signing = [c for c in self.commands if "codesign" in c[0]]
         self.assertEqual(signing[-2][-1].endswith(".app"), True)
         self.assertIn("--verify", signing[-1])
