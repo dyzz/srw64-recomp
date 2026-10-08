@@ -1,0 +1,162 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "video-battle",
+  "note": "Release video (0.4.0): showcase battles. Player νガンダム, ダイターン3 and マジンガーZ start next to シャア's サザビー and ロゼ's ゼーロン so a battle can be filmed on the first player phase; camera on アムロ.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:0020c274",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "アムロ / νガンダム",
+      "level_offset": 30
+    },
+    {
+      "template": "base:stage_deployments:001e4248",
+      "group": 0,
+      "x": 8,
+      "y": 10,
+      "faction": 0,
+      "note": "万丈 / ダイターン3",
+      "level_offset": 30
+    },
+    {
+      "template": "base:stage_deployments:001e4a38",
+      "group": 0,
+      "x": 7,
+      "y": 9,
+      "faction": 0,
+      "note": "甲児 / マジンガーZ",
+      "level_offset": 30
+    },
+    {
+      "template": "base:stage_deployments:0020b144",
+      "group": 1,
+      "x": 9,
+      "y": 8,
+      "faction": 1,
+      "behavior": 0,
+      "note": "シャア / サザビー, next to νガンダム"
+    },
+    {
+      "template": "base:stage_deployments:001f2720",
+      "group": 1,
+      "x": 9,
+      "y": 10,
+      "faction": 1,
+      "note": "ロゼ / ゼーロン, next to ダイターン3"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D54",
+          "args": [
+            262
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "camera on アムロ"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}
