@@ -7,7 +7,7 @@
 ## 一次构建
 
 ```sh
-.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.4.2
+.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.4.3
 ```
 
 - 输出目录默认是 `build/release/<版本>-<短提交号>`，已存在时拒绝覆盖。可以用 `--output` 指定，用 `--keep-source` 保留检出目录与编译产物。
@@ -66,9 +66,9 @@ Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检�
 用 `--attach` 交给同一次 `build_release.py`，与 Mac 包和 HD 包放进同一个发布：
 
 ```sh
-.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.4.2 \
-  --attach linux=build/deck/<提交>/src/build/linux-x64/Marchwind64-SteamDeck-0.4.2-<日期>-<提交>.tar.gz \
-  --attach windows=build/windows/<提交>/Marchwind64-0.4.2-windows-x64.zip \
+.venv/bin/python tools/release/build_release.py --commit HEAD --version 0.4.3 \
+  --attach linux=build/deck/<提交>/src/build/linux-x64/Marchwind64-SteamDeck-0.4.3-<日期>-<提交>.tar.gz \
+  --attach windows=build/windows/<提交>/Marchwind64-0.4.3-windows-x64.zip \
   --attach android=build/android/<提交>/SRW64-android-arm64-<提交>.apk
 ```
 
