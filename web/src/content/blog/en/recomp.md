@@ -1,6 +1,7 @@
 ---
 title: "What recompilation is: how Marchwind 64 is built"
 date: 2026-10-08
+pinned: true
 summary: "Marchwind 64 is neither an emulator nor a remake: the original program is translated, whole, into code that computers and phones run directly. This post explains static recompilation and how the project fits together."
 ---
 
@@ -35,6 +36,31 @@ Because the original functions are now ordinary C functions, we can take over or
 - **Development tools.** A built-in debug interface lets AI tools read the game's state, press buttons and take screenshots, for automated tests and reproducing problems.
 
 Our own part is about 36,000 lines of C++ (runtime, screens, translation, HD, platform support), plus about 40,000 lines of Python tools for script analysis, the translation pipeline, art packaging, tests and releases.
+
+## A few examples
+
+**Dialogue.** The story is still driven by the original event scripts: who speaks, which line comes next and when to wait for a button are all decided by the original code. At the moment the script shows a line, we read the line's number and speaker, take the translation for the current language from the dialogue files by that number, and lay it out at high resolution in the bundled HarmonyOS Sans font. The original Japanese font has only a few thousand fixed glyphs; this way we are not bound by it, and whole lines can be re-wrapped so there are fewer pages to click through.
+
+**Intermission screens.** The original menus between scenarios switch screens through a dispatch table. At that entry point we check whether a screen has a native version; if it does, the new screen takes over input and drawing, and when the player confirms, the result goes back to the original code. Upgrading a unit, for example, still spends the money and raises the stats through the original routine, so prices and limits match the original.
+
+**Saves.** All of the original's save reads and writes go through one function that moves a block of cartridge save memory (SRAM). We only point that transfer at other files. The 32 KiB cartridge save stays as it is, so saves can be exchanged with emulators such as ares, Project64, mupen64plus and RetroArch; the extra slots and autosaves are separate files, each the same bytes the original writes, checked and restored by the original code.
+
+**Skipping battle animations.** The original can already turn battle animations off in its settings, and then settles the battle on another path. When the player aborts an animation, we switch to that original "no animation" path, so damage, hits and experience are exactly what they would be with animations off, and skipped frames change nothing.
+
+**Widescreen.** RT64 can draw the 3D scene wider, but the game's own 2D elements (status bars, cursors, text boxes) are placed for 4:3. We give each of them its position in widescreen, so the interface stays aligned when the picture fills 16:9.
+
+For the ways HD art is plugged in, see [Making the HD art](/en/blog/hd-art/).
+
+## Checking against the original
+
+- **An emulator as the reference.** When we need to know what the original does, we run the same ROM with the same save in the ares emulator and compare screen by screen.
+- **Read the code first.** Battle formulas, controls and hidden content are worked out from the original code and documented before we decide how to plug in or fix anything; fixes for the original's bugs are switches that can be turned off.
+- **Automated tests.** About 450 tests check the data exports, translation files and interface text, and an offline layout check lays out every screen in every language and screen size, without running the game, to find text that does not fit.
+- **Driving the game automatically.** Through the built-in debug interface, scripts and AI tools can start the game, press buttons, take screenshots and read its memory, which is how we reproduce problems players report.
+
+## What it cannot do (yet)
+
+Recompilation keeps all of the original's logic, and its pace with it: the game logic runs at a fixed 30 frames per second and counts every wait, animation and scroll in frames, so it cannot simply be switched to 60; that would have to be done later by interpolating frames on the display side. Likewise, anything the original logic decides, such as enemy moves and battle results, we leave alone except in fixes that are on by default and can be switched off.
 
 ## One codebase, five platforms
 

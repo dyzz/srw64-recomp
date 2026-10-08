@@ -12,6 +12,8 @@ const blog = defineCollection({
     version: z.string().optional(),
     // Not listed or built until false (a release taken down).
     draft: z.boolean().default(false),
+    // Listed first, before the newest (an introduction to keep on top).
+    pinned: z.boolean().default(false),
   }),
 });
 
