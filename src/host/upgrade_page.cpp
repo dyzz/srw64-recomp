@@ -9,6 +9,7 @@
 #include "funcs.h"
 #include "focus_lines.hpp"
 #include <algorithm>
+#include <array>
 #include <atomic>
 #include <fstream>
 #include <mutex>
@@ -67,6 +68,12 @@ std::string pending,locale;
 bool active{};
 std::atomic_bool owning{},window_owning{};
 uint16_t held{};
+// The modern way to upgrade: ←→ set how many levels each stat (or the weapon on its
+// confirm screen) is to gain, one confirm then runs the original's paid step that many
+// times. `planned` marks a plan the confirm window made from a bare A, undone by いいえ.
+std::array<unsigned,up::stat_count> plans{};
+unsigned weapon_plan{};
+bool planned{};
 std::ofstream log;
 
 void record(const char* kind,json extra=json::object()) {
@@ -93,12 +100,14 @@ void hide(const char* reason) {
     active=false;owning=false;pending.clear();current["visible"]=false;record(reason);
 }
 std::string text(const uint8_t* ram,uint16_t id){return dialogue::ui_text(ram,id);}
+void fit_plans(uint32_t money);
 // Typed funds apply to whichever screen is up; the stat window decisions read the
-// new figure live.
+// new figure live, and a standing plan shrinks to what the new figure covers.
 bool set_funds(uint8_t* ram,const std::string& action) {
     uint32_t value;
     if(!intermission_page::parse_funds(action,value))return false;
     write32(ram,funds,value);current["funds"]=value;record("funds",{{"funds",value}});
+    fit_plans(value);
     return true;
 }
 
@@ -122,6 +131,15 @@ json unit_row(uint8_t* ram,recomp_context* ctx,uint32_t slot) {
     row["pilot"]=pilot && valid(pilot,4)?text(ram,text_pilot_names+read(ram,pilot+2,2)):std::string();
     return row;
 }
+// Gauge cells as the rule draws them: ▶▷ up to the original cap, ●☆ beyond; every
+// cell to the raised cap with the rule on, else only as far as reached or planned.
+// '>' / '*' are reached levels, '+' / '#' planned ones, '.' / 'o' the rest.
+std::string gauge_cells(unsigned original,unsigned allowed,unsigned level,unsigned plan) {
+    const unsigned cells=up::breaking()?allowed:std::max(original,level+plan);
+    std::string gauge;
+    for(unsigned i=0;i<cells;++i)gauge+=i<original?(i<level?'>':i<level+plan?'+':'.'):(i<level?'*':i<level+plan?'#':'o');
+    return gauge;
+}
 json stat_rows(uint8_t* ram,recomp_context* ctx,uint32_t unit) {
     refresh_display(ram,ctx,unit);
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
@@ -135,16 +153,54 @@ json stat_rows(uint8_t* ram,recomp_context* ctx,uint32_t unit) {
             row["preview"]=values[stat]+read(ram,up::stat_previews+stat*up::stat_previews_stride+level*2,2);
             row["price"]=read(ram,up::stat_prices+stat*up::stat_prices_stride+level*4,4);
         }
-        // Gauge cells as the rule draws them: ▶▷ up to the original cap, ●☆ beyond;
-        // every cell to the raised cap with the rule on, else only as far as reached.
-        const unsigned cells=up::breaking()?allowed:std::max(original,level);
-        std::string gauge;
-        for(unsigned i=0;i<cells;++i)gauge+=i<original?(i<level?'>':'.'):(i<level?'*':'o');
-        row["gauge"]=gauge;
+        // Each level still open: the value once it is reached and what it costs.
+        json steps=json::array();
+        uint32_t value=values[stat];
+        for(unsigned l=level;l<allowed && l<up::levels;++l) {
+            value+=read(ram,up::stat_previews+stat*up::stat_previews_stride+l*2,2);
+            steps.push_back({{"value",value},{"price",read(ram,up::stat_prices+stat*up::stat_prices_stride+l*4,4)}});
+        }
+        row["steps"]=steps;
+        row["gauge"]=gauge_cells(original,allowed,level,0);
         rows.push_back(row);
     }
     return rows;
 }
+// The plans written into the snapshot: each row's "plan" and planned gauge cells,
+// "target" (the value or power the plan reaches) and the page's "plan_cost".
+void show_plans() {
+    const auto screen=current.value("screen",std::string());
+    const auto mark=[](json& row,unsigned plan,const char* key) {
+        const auto& steps=row.value("steps",json::array());
+        plan=std::min<unsigned>(plan,unsigned(steps.size()));
+        uint32_t cost=0;
+        for(unsigned n=0;n<plan;++n)cost+=steps[n].value("price",0u);
+        row["plan"]=plan;
+        row["gauge"]=gauge_cells(row.value("original_cap",0u),row.value("cap",0u),row.value("level",0u),plan);
+        if(plan)row["target"]=steps[plan-1].at(key);else row.erase("target");
+        return cost;
+    };
+    if(screen=="stats" && current.contains("rows")) {
+        uint32_t cost=0;
+        for(unsigned n=0;n<current["rows"].size() && n<up::stat_count;++n)cost+=mark(current["rows"][n],plans[n],"value");
+        current["plan_cost"]=cost;
+    } else if(screen=="weapon" && current.contains("weapon"))current["plan_cost"]=mark(current["weapon"],weapon_plan,"power");
+}
+// How many more levels a plan may take: up to the open levels, and as far as the
+// funds cover with every other row's plan paid.
+uint32_t step_price(const json& row,unsigned n){return row.value("steps",json::array()).at(n).value("price",0u);}
+unsigned open_steps(const json& row){return unsigned(row.value("steps",json::array()).size());}
+// Funds typed while a plan stands: the plan shrinks, last rows first, to what is left.
+void fit_plans(uint32_t money) {
+    show_plans();
+    const auto screen=current.value("screen",std::string());
+    if(screen=="stats")
+        for(unsigned n=up::stat_count;n-- && current.value("plan_cost",0u)>money;)
+            while(plans[n] && current.value("plan_cost",0u)>money){--plans[n];show_plans();}
+    if(screen=="weapon")
+        while(weapon_plan>1 && current.value("plan_cost",0u)>money){--weapon_plan;show_plans();}
+}
+
 // 800A6104(1, rank): 1 'D', 2 'C', 3 'B', 4 'A', else '-' (verified against the
 // original 武器一覧: ダイターンミサイル prints A A A A).
 char terrain_letter(unsigned rank){return rank==1?'D':rank==2?'C':rank==3?'B':rank==4?'A':'-';}
@@ -183,6 +239,7 @@ void relocalize(uint8_t* ram,recomp_context* ctx) {
     const json next=screen=="list"?list_page_json(ram,ctx):screen=="stats"?stats_json(ram,ctx):screen=="weapons"?weapon_list_json(ram):json::object();
     for(const char* key:{"unit","rows"})if(next.contains(key))current[key]=next[key];
     if(screen=="weapon"){current["weapon"]=chosen_weapon(ram);current["unit"]["name"]=text(ram,text_unit_names+current["unit"].value("number",0u));}
+    show_plans();
     if(current.contains("bonus")){const auto& ids=current["bonus"]["numbers"];current["bonus"]=bonus_json(ram,ids[0].get<unsigned>(),ids[1].get<unsigned>());}
     labels(ram);
 }
@@ -277,9 +334,21 @@ bool stats_build(uint8_t* ram,recomp_context* ctx) {
     // to the cursor stops the step from drawing the price itself.
     write8(ram,0x801DDA30,2);write32(ram,mode,0);write32(ram,stat_drawn,read(ram,stat_cursor,2));write8(ram,0x801DECC1,0);write8(ram,0x801DECC0,0);
     std::lock_guard lock(mutex);
-    open(stats_json(ram,ctx),ram);
+    plans={};planned=false;
+    open(stats_json(ram,ctx),ram);show_plans();
     call(ram,ctx,resident_func_80099814,4,2,0);
     return true;
+}
+// Runs the original paid step (one A edge on its confirm window) for one more level
+// of `stat`. Every step after the first in a frame finds the fade the last one began:
+// marking it idle lets the step run, and 80099814 then frees that fade and starts its
+// own (its replace path), so a whole plan still ends in one fade and one re-entry.
+void pay_stat_level(uint8_t* ram,recomp_context* ctx,unsigned stat,uint32_t price,bool first) {
+    write16(ram,stat_cursor,uint16_t(stat));write32(ram,stat_drawn,stat);write32(ram,stat_price,price);
+    write32(ram,mode,1);write16(ram,confirm_cursor,0);
+    for(unsigned n=0;n<4;++n)write8(ram,confirm_texts+n,0);
+    if(!first)write8(ram,transition,0xFF);
+    feed(ram,ctx,srw64_original_upgrade_stats_step,button_a);
 }
 bool stats_step(uint8_t* ram,recomp_context* ctx) {
     std::unique_lock lock(mutex);
@@ -290,42 +359,79 @@ bool stats_step(uint8_t* ram,recomp_context* ctx) {
     if(set_funds(ram,action))return false;
     const auto window=current.value("window",std::string());
     const auto& rows=current.at("rows");
+    const bool any_plan=std::any_of(plans.begin(),plans.end(),[](unsigned n){return n>0;});
     if(action.starts_with("move:") && window.empty()) {
         const unsigned index=unsigned(std::atoi(action.c_str()+5));
         if(index>=up::stat_count || index==current.value("cursor",0u))return false;
         write16(ram,stat_cursor,uint16_t(index));write32(ram,stat_drawn,index);current["cursor"]=index;
         lock.unlock();sound(ram,ctx,sound_move);return false;
     }
+    if((action.starts_with("more:") || action.starts_with("less:")) && window.empty()) {
+        // ←→ on a row: one level more or less in its plan, the cursor moving to it.
+        const unsigned index=unsigned(std::atoi(action.c_str()+5));
+        if(index>=up::stat_count)return false;
+        write16(ram,stat_cursor,uint16_t(index));write32(ram,stat_drawn,index);current["cursor"]=index;
+        const auto& row=rows.at(index);
+        bool changed=false;planned=false;
+        if(action[0]=='m') {
+            if(plans[index]<open_steps(row) && current.value("plan_cost",0u)+step_price(row,plans[index])<=read(ram,funds,4)){++plans[index];changed=true;}
+        } else if(plans[index]){--plans[index];changed=true;}
+        show_plans();
+        record("plan",{{"index",index},{"plan",plans[index]},{"cost",current["plan_cost"]}});
+        lock.unlock();sound(ram,ctx,changed?sound_move:sound_cancel);return false;
+    }
     if(action.starts_with("choose:") && window.empty()) {
-        // As 801CF988 decides: below the cap and affordable opens the はい/いいえ
-        // window, otherwise the message and the buzzer.
+        // A: with a plan standing, the はい/いいえ window for all of it. Without one, as
+        // 801CF988 decides for its row: below the cap and affordable plans one level and
+        // opens the window, otherwise the message and the buzzer.
         const unsigned index=unsigned(std::atoi(action.c_str()+7));
         if(index>=up::stat_count)return false;
         write16(ram,stat_cursor,uint16_t(index));write32(ram,stat_drawn,index);current["cursor"]=index;
         const auto& row=rows.at(index);
-        const bool can=row.contains("price") && read(ram,funds,4)>=row.at("price").get<uint32_t>();
+        const bool can=any_plan || (row.contains("price") && read(ram,funds,4)>=row.at("price").get<uint32_t>());
+        if(can && !any_plan){plans[index]=1;planned=true;show_plans();}
         current["window"]=can?"confirm":row.contains("price")?"poor":"maxed";
         record("window",{{"index",index},{"window",current["window"]}});
         lock.unlock();sound(ram,ctx,can?sound_confirm:sound_cancel);return false;
     }
     if((action=="cancel" || action=="dismiss") && !window.empty()) {
+        if(planned){plans={};planned=false;show_plans();}
         current["window"]="";
         lock.unlock();sound(ram,ctx,sound_cancel);return false;
     }
     if(action=="confirm" && window=="confirm") {
-        // The window's はい branch: it pays the price the step computed when it drew
-        // it (D_801DEBCC, set here instead), adds the preview, raises the level,
-        // propagates to the unit's forms, runs the EW check, and re-enters the screen.
-        write32(ram,stat_price,rows.at(current.value("cursor",0u)).value("price",0u));
-        write32(ram,mode,1);write16(ram,confirm_cursor,0);
-        for(unsigned n=0;n<4;++n)write8(ram,confirm_texts+n,0);
+        // The window's はい branch, once for every planned level: it pays the price the
+        // step computed when it drew it (D_801DEBCC, set here instead), adds the preview,
+        // raises the level, propagates to the unit's forms, runs the EW check, and
+        // re-enters the screen. Prices and funds are read again before each level; an
+        // EW swap (next screen no longer 10) ends the plan where it stands.
+        const uint32_t unit=up::unit_at(read(ram,screen_unit,4));
+        const unsigned allowed=up::allowed_cap(uint16_t(read(ram,unit+up::unit_number,2))),cursor=current.value("cursor",0u);
+        const auto chosen=plans;
         lock.unlock();
-        const bool left=feed(ram,ctx,srw64_original_upgrade_stats_step,button_a);
-        lock.lock();record("confirm",{{"index",current.value("cursor",0u)},{"left",left},{"next",read(ram,next_screen,4)}});
-        if(left)hide("close");else{write32(ram,mode,0);current["window"]="";}
+        unsigned paid=0;
+        for(unsigned stat=0;stat<up::stat_count;++stat)
+            for(unsigned n=0;n<chosen[stat];++n) {
+                const unsigned level=read(ram,unit+up::unit_levels+stat,1);
+                if(level>=allowed || level>=up::levels)break;
+                const uint32_t price=read(ram,up::stat_prices+stat*up::stat_prices_stride+level*4,4);
+                if(read(ram,funds,4)<price || (paid && read(ram,next_screen,4)!=10))goto done;
+                pay_stat_level(ram,ctx,stat,price,paid==0);++paid;
+            }
+        done:
+        // The re-entered screen keeps the player's row.
+        if(read(ram,next_screen,4)==10){write16(ram,stat_cursor,uint16_t(cursor));write32(ram,stat_drawn,cursor);}
+        const bool left=!idle(ram);
+        lock.lock();record("confirm",{{"plans",chosen},{"paid",paid},{"left",left},{"next",read(ram,next_screen,4)}});
+        if(left)hide("close");else{write32(ram,mode,0);current["window"]="";planned=false;}
         return true;
     }
     if(action=="back" && window.empty()) {
+        // B first drops a standing plan, then leaves.
+        if(any_plan) {
+            plans={};show_plans();record("plan-clear");
+            lock.unlock();sound(ram,ctx,sound_cancel);return false;
+        }
         lock.unlock();
         const bool left=feed(ram,ctx,srw64_original_upgrade_stats_step,button_b);
         lock.lock();record("back",{{"left",left}});
@@ -378,13 +484,17 @@ json weapon_row(const uint8_t* ram,uint32_t unit,unsigned index) {
     for(unsigned n=0;n<4;++n)terrain+=terrain_letter(read(ram,w+0x10+n,1));
     row["terrain"]=terrain;
     if(row["skill"].get<unsigned>()>=2)row["skill_name"]=text(ram,uint16_t(row["skill"].get<unsigned>()));
-    const unsigned cells=up::breaking()?allowed:std::max(original,level);
-    std::string gauge;
-    for(unsigned i=0;i<cells;++i)gauge+=i<original?(i<level?'>':'.'):(i<level?'*':'o');
-    row["gauge"]=gauge;
+    row["gauge"]=gauge_cells(original,allowed,level,0);
     if(type>=1 && type<=4 && level<allowed && level<up::levels) {
         row["price"]=read(ram,up::weapon_prices[type-1]+level*4,4);
         row["preview"]=read(ram,w+6,2)+read(ram,up::weapon_previews[type-1]+level*2,2);
+        json steps=json::array();
+        uint32_t power=read(ram,w+6,2);
+        for(unsigned l=level;l<allowed && l<up::levels;++l) {
+            power+=read(ram,up::weapon_previews[type-1]+l*2,2);
+            steps.push_back({{"power",power},{"price",read(ram,up::weapon_prices[type-1]+l*4,4)}});
+        }
+        row["steps"]=steps;
     } else if(type==0)row["price"]=0;
     weapon_markers(row,text(ram,uint16_t(text_weapon_pure_names+number)));
     return row;
@@ -484,6 +594,7 @@ bool weapon_confirm_build(uint8_t* ram,recomp_context* ctx) {
     open({{"screen","weapon"},{"kind","weapons"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)},
         {"en",read(ram,unit+0x08,2)},{"morale",pilot && valid(pilot,0x24)?int(read(ram,pilot+0x20,2)):-1}}},
         {"weapon",row},{"cursor",0},{"window",maxed?"maxed":"confirm"}},ram);
+    weapon_plan=maxed?0:1;show_plans();
     call(ram,ctx,resident_func_80099814,4,2,0);
     return true;
 }
@@ -501,16 +612,43 @@ bool weapon_confirm_step(uint8_t* ram,recomp_context* ctx) {
         write16(ram,confirm_cursor,uint16_t(index));current["cursor"]=index;
         lock.unlock();sound(ram,ctx,sound_move);return false;
     }
+    if((action=="more" || action=="less") && window=="confirm") {
+        // ←→: one level more or less, from one up to the open levels the funds cover.
+        const auto& w=current.at("weapon");
+        bool changed=false;
+        if(action=="more") {
+            if(weapon_plan<open_steps(w) && current.value("plan_cost",0u)+step_price(w,weapon_plan)<=read(ram,funds,4)){++weapon_plan;changed=true;}
+        } else if(weapon_plan>1){--weapon_plan;changed=true;}
+        show_plans();
+        record("plan",{{"plan",weapon_plan},{"cost",current["plan_cost"]}});
+        lock.unlock();sound(ram,ctx,changed?sound_move:sound_cancel);return false;
+    }
     if(action=="confirm" && window=="confirm") {
         const auto& w=current.at("weapon");
         if(read(ram,funds,4)<w.value("price",0u)){current["window"]="poor";lock.unlock();sound(ram,ctx,sound_cancel);return false;}
-        // はい: the original pays, writes the previewed power, raises the level, syncs
-        // the twin weapon, unlocks the full-upgrade bonus and re-enters this confirm
-        // screen (next screen 12) for the same weapon, as the stat screen re-enters.
-        write16(ram,confirm_cursor,0);
+        // はい, once for every planned level: the original pays, writes the previewed
+        // power, raises the level, syncs the twin weapon, unlocks the full-upgrade bonus
+        // and re-enters this confirm screen (next screen 12) for the same weapon, as the
+        // stat screen re-enters. Price and power are set again before each level (as the
+        // re-entered screen would); the bonus (next screen 11) ends the plan. Every level
+        // after the first finds the last one's fade, handled as in pay_stat_level.
+        const uint32_t unit=up::unit_at(read(ram,screen_unit,4));
+        const uint32_t record_at=weapon_at(ram,unit,w.value("index",0u));
+        const unsigned allowed=up::allowed_cap(uint16_t(read(ram,unit+up::unit_number,2))),plan=std::max(1u,weapon_plan);
         lock.unlock();
-        const bool left=feed(ram,ctx,srw64_original_upgrade_weapon_step,button_a);
-        lock.lock();record("weapon-confirm",{{"left",left},{"next",read(ram,next_screen,4)}});
+        unsigned paid=0;
+        for(;paid<plan;++paid) {
+            const unsigned level=read(ram,record_at+0x16,1),type=read(ram,record_at+0x15,1);
+            if(type<1 || type>4 || level>=allowed || level>=up::levels)break;
+            const uint32_t price=read(ram,up::weapon_prices[type-1]+level*4,4);
+            if(read(ram,funds,4)<price || (paid && read(ram,next_screen,4)!=12))break;
+            write32(ram,stat_price,price);write16(ram,weapon_preview,uint16_t(read(ram,record_at+6,2)+read(ram,up::weapon_previews[type-1]+level*2,2)));
+            write32(ram,mode,0);write16(ram,confirm_cursor,0);
+            if(paid)write8(ram,transition,0xFF);
+            feed(ram,ctx,srw64_original_upgrade_weapon_step,button_a);
+        }
+        const bool left=!idle(ram);
+        lock.lock();record("weapon-confirm",{{"plan",plan},{"paid",paid},{"left",left},{"next",read(ram,next_screen,4)}});
         if(left)hide("close");
         return true;
     }

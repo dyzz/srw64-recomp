@@ -26,6 +26,7 @@
 | 修改或翻译剧情与战斗台词（纯文本，玩家可改） | [台词文本文件](guide/dialogue-text.md) |
 | 全部文本的分类导出，剧情与战斗台词的中英机翻（DeepSeek）、审校、台词文件与后续阶段 | [全文本地化规划](design/translation-plan.md) |
 | 对白框怎样多显示字、少翻页：字体、字号、整条连排与翻页位置 | [对白排版](design/dialogue-typesetting.md) |
+| 接下来要做的功能 | [后续路线图](design/roadmap.md) |
 | 首发与后续功能范围 | [内置 MOD 路线图](design/mod-roadmap.md) |
 | 原生启动、首次 ROM 导入与跨平台发布改造 | [P0 发布计划](design/cross-platform-release-plan.md) → [P1 原生导入](design/native-rom-importer.md) → [三平台移植计划](design/three-platform-port.md) → [安卓移植方案](design/android-port.md) |
 
@@ -141,6 +142,7 @@
 
 | 文档 | 内容 |
 | --- | --- |
+| [后续路线图](design/roadmap.md) | 已决定要做的功能与状态：改造现代操作（已完成）、60 帧（远期） |
 | [内置 MOD 路线图](design/mod-roadmap.md) | 首发／后续范围、多语种、Original/HD、存档兼容与验收门槛 |
 | [全文本地化规划](design/translation-plan.md) | 51,174 条文本、开场转写与原生 UI 的分类导出；词条表与机翻分工；中英全量初稿与 AI 审校结果、台词文件生成、阶段与待定事项 |
 | [对白排版](design/dialogue-typesetting.md) | HarmonyOS 字体与许可、英文 0.85 倍字号、整条连排与原版翻页同步、名牌、行距自适应、翻页位置动态规划；翻页次数模拟数据 |

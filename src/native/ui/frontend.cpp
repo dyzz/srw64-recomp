@@ -741,6 +741,8 @@ body.pointer .im-funds:hover,.im-funds:focus {background-color:#00c80055; border
 .im-row {display:flex; align-items:center;} .im-row span {display:inline-block; white-space:nowrap; overflow:hidden;}
 .im-right {text-align:right;} .im-center {text-align:center;} .im-dim {color:#9eafc3;}
 .im-gauge {font-family: srw64-ui; letter-spacing:0;} .im-gauge b {font-weight:normal; color:#ff6fa8;} .im-gauge i {font-style:normal; color:#ffd75e;}
+.im-gauge em {font-style:normal; color:#7ff0a0;} .im-plan {color:#7ff0a0;}
+.im-panel button.on .im-plan,.im-panel button.on .im-gauge em {color:#06205a;} .im-poor {color:#ff8d8d;}
 .im-up {color:#7dff8a;} .im-down {color:#ff8d8d;}
 .im-badge {display:inline-block; text-align:center; vertical-align:middle; border-radius:6dp; border-width:1dp; border-color:#e8f0ff; color:#ffffff; font-weight:bold; margin-right:1dp; overflow:hidden;}
 .im-mark {color:#ffffff; vertical-align:middle;} .im-mark.map {color:#de416a;}
@@ -2981,6 +2983,13 @@ float original_side(const json& owner,float most){
     const auto& art=owner.value("art",json::object());
     return std::min(most,std::max(art.value("width",96.f),art.value("height",96.f)));
 }
+// A gauge string from upgrade_page.cpp: reached ▶ / ●, planned in green, open ▷ / ☆.
+// A plan the funds do not cover shows as open cells.
+std::string gauge_html(const std::string& cells,bool plan_shown=true) {
+    std::string gauge;
+    for(char c:cells)gauge+=c=='>'?"▶":c=='.'?"▷":c=='+'?(plan_shown?"<em>▶</em>":"▷"):c=='#'?(plan_shown?"<em>●</em>":"<i>☆</i>"):c=='*'?"<i>●</i>":"<i>☆</i>";
+    return gauge;
+}
 void upgrade_sync() {
     const auto next=upgrade_page::state();upgrade_request=next;
     if(!next.value("visible",false)){document_close(upgrade_doc);upgrade_stamp.clear();return;}
@@ -3046,14 +3055,16 @@ void upgrade_sync() {
         const auto window=next.value("window",std::string());
         if(confirm) {
             const auto& w=next.at("weapon");
-            std::string gauge;
-            for(char c:w.value("gauge",std::string()))gauge+=c=='>'?"▶":c=='.'?"▷":c=='*'?"<i>●</i>":"<i>☆</i>";
+            // The plan (←→) shows its power and its whole price in green; one the funds do
+            // not cover (the screen re-entered with less money) shows its price in red.
+            const bool poor=next.value("plan_cost",0u)>next.value("funds",0u),plan=w.contains("target") && !poor;
+            const std::string gauge=gauge_html(w.value("gauge",std::string()),plan);
             // Layout 0x78: name and gauge at y 64, 攻撃力 ▶ preview and 資金 at 88, 費用 in its own box.
             body+="<div class='im-shade'></div>"+box(21,61,299,107,
                 "<div class='im-row' style='height:"+px(24)+"; line-height:"+px(24)+"; padding:0 "+px(3)+";'>"+span(w.value("display_name",w.value("name",std::string())),150,"",std::min(10.f,fit(w.value("display_name",w.value("name",std::string())),148)))+"<span class='im-gauge' style='width:"+px(120)+"; font-size:"+px(9)+";'>"+gauge+"</span></div>"
-                "<div class='im-row' style='height:"+px(20)+"; line-height:"+px(20)+"; padding:0 "+px(3)+";'>"+span(wl("power"),44,"im-dim")+span(number(w.at("power")),40,"im-right")+span("▶",14,"im-dim")+span(number(w.value("preview",json())),40,"im-right")+
+                "<div class='im-row' style='height:"+px(20)+"; line-height:"+px(20)+"; padding:0 "+px(3)+";'>"+span(wl("power"),44,"im-dim")+span(number(w.at("power")),40,"im-right")+span("▶",14,"im-dim")+span(number(w.value("target",w.value("preview",json()))),40,plan?"im-right im-plan":"im-right")+
                     span(label_of("funds"),32,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(56),px(11),px(20))+"</div>",10.f,"upgrade-weapon")+
-                box(181,107,299,123,"<div class='im-row' style='height:"+px(15)+"; line-height:"+px(15)+"; padding:0 "+px(3)+";'>"+span(label_of("price"),32,"im-dim")+span(number(w.value("price",json())),76,"im-right")+"</div>",10.f,"upgrade-weapon-price");
+                box(181,107,299,123,"<div class='im-row' style='height:"+px(15)+"; line-height:"+px(15)+"; padding:0 "+px(3)+";'>"+span(label_of("price"),32,"im-dim")+span(number(next.value("plan_cost",0u)?next.at("plan_cost"):w.value("price",json())),76,poor?"im-right im-poor":plan?"im-right im-plan":"im-right")+"</div>",10.f,"upgrade-weapon-price");
             if(const std::string raised=cap_legend(w.value("original_cap",0u),w.value("cap",0u));!raised.empty())
                 body+="<div class='im-dim' style='position:absolute; left:"+px(24)+"; top:"+px(110)+"; width:"+px(150)+"; font-size:"+px(7)+"; line-height:"+px(12)+";'>"+raised+"</div>";
             if(window=="confirm")
@@ -3065,7 +3076,7 @@ void upgrade_sync() {
             body+="<div class='im-shade'></div>"+box(29,77,291,179,"<button id='upgrade-dismiss' style='height:"+px(100)+"; padding:"+px(6)+" "+px(8)+"; line-height:"+px(18)+";'>"+
                 escape(b.value("upgraded",std::string()))+"<br/>"+escape(bl[0].get<std::string>())+"<br/>"+escape(bl[1].get<std::string>())+"<br/>"+escape(b.value("unlocked",std::string()))+"<br/>"+escape(bl[2].get<std::string>())+"</button>",10.f,"upgrade-bonus");
         }
-        const char* hint=confirm?(window=="confirm"?"upgrade_confirm_hint":"upgrade_message_hint"):window=="bonus"?"upgrade_message_hint":next.value("pages",1u)>1?"upgrade_weapons_hint_pages":"upgrade_weapons_hint";
+        const char* hint=confirm?(window=="confirm"?"upgrade_weapon_confirm_hint":"upgrade_message_hint"):window=="bonus"?"upgrade_message_hint":next.value("pages",1u)>1?"upgrade_weapons_hint_pages":"upgrade_weapons_hint";
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";
     } else if(screen=="stats") {
         const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);const auto& unit=next.at("unit");
@@ -3076,16 +3087,18 @@ void upgrade_sync() {
         std::string lines;
         for(unsigned n=0;n<rows.size();++n) {
             const auto& r=rows[n];
-            std::string gauge;
-            for(char c:r.value("gauge",std::string()))gauge+=c=='>'?"▶":c=='.'?"▷":c=='*'?"<i>●</i>":"<i>☆</i>";
+            const std::string gauge=gauge_html(r.value("gauge",std::string()));
             lines+="<button id='upgrade:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
-                span(r.value("name",std::string()),44)+span(number(r.at("value")),40,"im-right")+span("▶",16,"im-dim")+span(number(r.value("preview",json())),40,"im-right")+
+                span(r.value("name",std::string()),44)+span(number(r.at("value")),40,"im-right")+span("▶",16,"im-dim")+span(number(r.value("target",r.value("preview",json()))),40,r.contains("target")?"im-right im-plan":"im-right")+
                 "<span class='im-gauge' style='width:"+px(120)+"; margin-left:"+px(8)+"; font-size:"+px(9)+";'>"+gauge+"</span></button>";
         }
         body+=box(21,10,175,42,"<div style='padding:0 "+px(4)+"; line-height:"+px(31)+";'>"+escape(unit.value("name",std::string()))+"</div>",fit(unit.value("name",std::string()),146),"upgrade-name")+
             box(21,43,175,89,"<div style='padding:"+px(3)+" "+px(4)+" 0;'>"+escape(label_of("question"))+"<br/>"+escape(cap)+"</div>",fit(label_of("question"),146),"upgrade-question")+
             box(21,90,175,131,"<div class='im-row' style='padding:0 "+px(4)+";'>"+span(label_of("funds"),50,"im-dim")+funds_field("upgrade",next.value("funds",0u),px(90),px(12),px(16))+"</div>"
-                "<div class='im-row' style='padding:0 "+px(4)+";'>"+span(label_of("price"),50,"im-dim")+span(number(row_at.value("price",json())),90,"im-right")+"</div>"+
+                // 費用 is the whole plan's price once one stands (←→), else the cursor row's next level.
+                "<div class='im-row' style='padding:0 "+px(4)+";'>"+span(label_of("price"),50,"im-dim")+
+                    (next.value("plan_cost",0u)?span(number(next.at("plan_cost")),90,"im-right im-plan"):
+                        span(number(row_at.value("price",json())),90,row_at.value("price",0u)>next.value("funds",0u)?"im-right im-poor":"im-right"))+"</div>"+
                 // The 上限突破 legend fills the money box's spare third row; the question box has no room for it.
                 (raised.empty()?std::string():"<div class='im-dim' style='padding:0 "+px(4)+"; font-size:"+px(7)+"; line-height:"+px(12)+";'>"+raised+"</div>"),10.f,"upgrade-money");
         std::string art;
@@ -3099,7 +3112,9 @@ void upgrade_sync() {
         if(!window.empty()) {
             body+="<div class='im-shade'></div>";
             if(window=="confirm")
-                body+=box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(label_of("ask"))+"</div>",10.f,"upgrade-window")+
+                // The whole plan's price under the question: the money box is behind the window.
+                body+=box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(label_of("ask"))+"</div>"
+                    "<div class='im-row' style='padding:0 "+px(4)+";'>"+span(label_of("price"),50,"im-dim")+span(number(next.value("plan_cost",0u)),70,"im-right im-plan")+"</div>",10.f,"upgrade-window")+
                     box(221,139,251,163,"<button id='upgrade-confirm' class='on' style='height:"+px(12)+"; line-height:"+px(12)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='upgrade-cancel' style='height:"+px(12)+"; line-height:"+px(12)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",7.5f,"upgrade-choice");
             else
                 body+=box(85,61,235,83,"<button id='upgrade-dismiss' style='height:"+px(22)+"; line-height:"+px(22)+"; text-align:center;'>"+escape(label_of(window=="poor"?"poor":"maxed"))+"</button>",fit(label_of(window=="poor"?"poor":"maxed"),146),"upgrade-message");
@@ -4774,6 +4789,7 @@ bool dispatch(SDL_Event& event) {
             const unsigned count=confirm?2:unsigned(upgrade_request.at("rows").size()),at=upgrade_request.value("cursor",0u);
             if(confirm){
                 if(window=="confirm" && (k==SDLK_UP || k==SDLK_DOWN)){upgrade_page::answer(serial,"move:"+std::to_string(at^1));return true;}
+                if(window=="confirm" && (k==SDLK_LEFT || k==SDLK_RIGHT)){upgrade_page::answer(serial,k==SDLK_LEFT?"less":"more");return true;}
                 if(event.key.repeat)return true;
                 if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){upgrade_page::answer(serial,window!="confirm"?"dismiss":at==0?"confirm":"cancel");return true;}
                 if(k==SDLK_ESCAPE || k==SDLK_x){upgrade_page::answer(serial,window=="confirm"?"cancel":"dismiss");return true;}
@@ -4785,6 +4801,8 @@ bool dispatch(SDL_Event& event) {
                 const unsigned pages=upgrade_request.value("pages",1u),page=upgrade_request.value("page",0u);
                 if(pages>1)upgrade_page::answer(serial,"page:"+std::to_string((page+(k==SDLK_LEFT?pages-1:1))%pages));return true;
             }
+            // The five stats: ←→ plan levels on the cursor row (held, they repeat).
+            if(screen=="stats" && window.empty() && (k==SDLK_LEFT || k==SDLK_RIGHT)){upgrade_page::answer(serial,std::string(k==SDLK_LEFT?"less:":"more:")+std::to_string(at));return true;}
             if(event.key.repeat)return true;
             if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){
                 if(window=="confirm")upgrade_page::answer(serial,"confirm");

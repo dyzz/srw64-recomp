@@ -214,7 +214,7 @@ class UpgradePageSourceTests(unittest.TestCase):
     def test_labels_exist_in_every_language(self):
         from srw64_native.profile import UI_KEYS
         keys = {key for key in UI_KEYS if key.startswith("upgrade_") and not key.endswith("_pad")}
-        self.assertEqual(len(keys), 8)
+        self.assertEqual(len(keys), 9)
         page = (ROOT / "src/native/ui/frontend.cpp").read_text()
         for key in keys:
             self.assertIn(f'"{key}"', page)
