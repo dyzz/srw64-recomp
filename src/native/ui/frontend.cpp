@@ -4311,8 +4311,9 @@ touch_pad::Layout touch_layout() {
     const float mm=SDL_GetDisplayDPI(0,&ddpi,nullptr,nullptr)==0 && ddpi>0?ddpi/25.4f:pixel_ratio*96/25.4f;
     return touch_pad::layout(float(pixels_w),float(pixels_h),mm);
 }
-// The scene: our all-touch windows, our pages, or the game's own.
-touch_pad::SceneId touch_scene_now() {
+// The scene: our all-touch windows, our pages, or the game's own; with fixed buttons
+// (touch_pad::by_scene off) its fixed counterpart.
+touch_pad::SceneId touch_scene_by_kind() {
     if(settings_open || library_open)return touch_pad::SceneId::Hidden;
     if(battle_request.value("visible",false))
         return battle_request.value("spirit_menu",false)?touch_pad::SceneId::BattleSpirits:touch_pad::SceneId::BattlePage;
@@ -4323,9 +4324,13 @@ touch_pad::SceneId touch_scene_now() {
     // The game's own scene, as the input callback saw it (touch_scene.hpp).
     return touch_pad::SceneId(touch_scene::current().load());
 }
+touch_pad::SceneId touch_scene_now() {
+    const auto id=touch_scene_by_kind();
+    return touch_pad::by_scene?id:touch_pad::fixed(id);
+}
 void touch_publish(){touch_held=touch_fingers.buttons()|(touch_back?touch_pad::bits::B:0);}
-// Our pre-battle page lays itself out for touch while the touch controls show.
-bool touch_battle_layout(){return touch_supported() && touch_shown;}
+// Our pre-battle page lays itself out for touch while the touch controls show (buttons by scene only).
+bool touch_battle_layout(){return touch_pad::by_scene && touch_supported() && touch_shown;}
 // Does the mouse SDL makes from a finger belong to the controls (not to a page under them)?
 bool touch_owns_point(float x,float y) {
     const auto layout=touch_layout();const auto scene=touch_pad::scene(touch_scene_id);

@@ -132,7 +132,27 @@ void recognition() {
     check(decide(4, 0, 0, 0, false) == SceneId::Other && decide(4, 0, 0, 0, true) == SceneId::Dialogue, "intermission");
     check(decide(0x20, 0, 0, 0, false) == SceneId::AnyKey, "ending");
 }
+
+// Fixed buttons (by_scene off): the whole set everywhere, the stick in the corner on our
+// pages, the title's two entries for L2 and R2; the settings window keeps none.
+void fixed_buttons() {
+    check(!by_scene, "buttons are fixed for now");
+    const auto full = scene(SceneId::Other);
+    for (const auto id : {SceneId::MapIdle, SceneId::Dialogue, SceneId::Prologue, SceneId::BattleScene, SceneId::Opening, SceneId::AnyKey})
+        check(fixed(id) == SceneId::Other, "a game scene shows the whole set");
+    for (const auto id : {SceneId::Page, SceneId::BattlePage, SceneId::BattleSpirits}) check(fixed(id) == SceneId::FixedPage, "our pages");
+    check(fixed(SceneId::Attract) == SceneId::FixedTitle && fixed(SceneId::TitleRing) == SceneId::FixedTitle, "the title");
+    check(fixed(SceneId::Hidden) == SceneId::Hidden, "the settings window");
+    const auto page = scene(SceneId::FixedPage), title = scene(SceneId::FixedTitle);
+    check(page.stick == Stick::Corner && full.stick == Stick::Wide && title.stick == Stick::Wide, "sticks");
+    for (size_t i = 0; i < slot_count; ++i) {
+        check(page.slots[i] == full.slots[i], "the page has the whole set");
+        check(full.slots[i].filled() && title.slots[i].filled(), "no empty place");
+    }
+    check(title[Slot::Top3].command == "library-open" && title[Slot::Top4].command == "viewer-open" &&
+          title[Slot::Primary].bits == bits::A && title[Slot::Top2].bits == bits::Start, "the title's entries");
+}
 int main() {
-    try { places(); scenes(); stick(); buttons(); recognition(); std::cout << checks << " checks passed\n"; return 0; }
+    try { places(); scenes(); stick(); buttons(); recognition(); fixed_buttons(); std::cout << checks << " checks passed\n"; return 0; }
     catch (const std::exception& error) { std::cerr << "FAIL: " << error.what() << "\n"; return 1; }
 }

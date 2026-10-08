@@ -63,8 +63,25 @@ enum class SceneId : uint8_t {
     BattlePage,   // the pre-battle page, laid out for touch: its buttons are these (user, 2026-10-03)
     BattleSpirits,// its spirit list
     Opening,      // the logo, the works flying past, a demo's unit coming in: START only
+    FixedPage,    // fixed buttons: the whole set on our pages, the stick in the corner
+    FixedTitle,   // fixed buttons: the whole set at the title, the Library and Battle Viewer for L2 and R2
     Count
 };
+
+// Buttons by scene, or the same whole set everywhere (user, 2026-10-08: some screens
+// lacked a button they needed). The scene table and its recognition stay for later.
+inline constexpr bool by_scene = false;
+
+// A scene's fixed counterpart: the whole set (Other), on our pages with the stick in the
+// corner so their lists stay tappable, at the title with its two entries.
+inline SceneId fixed(SceneId id) {
+    switch (id) {
+    case SceneId::Hidden: return SceneId::Hidden;
+    case SceneId::Page: case SceneId::BattlePage: case SceneId::BattleSpirits: return SceneId::FixedPage;
+    case SceneId::Attract: case SceneId::TitleRing: return SceneId::FixedTitle;
+    default: return SceneId::Other;
+    }
+}
 
 struct Scene {
     Stick stick = Stick::None;
@@ -82,12 +99,16 @@ inline Scene scene(SceneId id) {
     switch (id) {
     case SceneId::Hidden:
         break;
-    case SceneId::Other:
-        s.stick = Stick::Wide;
+    case SceneId::Other: case SceneId::FixedPage: case SceneId::FixedTitle:
+        s.stick = id == SceneId::FixedPage ? Stick::Corner : Stick::Wide;
         set(Slot::Primary, bits::A, "touch_ok"); set(Slot::Back, bits::B, "touch_back");
         set(Slot::Arc2, bits::L, "touch_l1"); set(Slot::Arc3, bits::R, "touch_r1");
         settings(); set(Slot::Top2, bits::Start, "touch_start");
-        set(Slot::Top3, bits::L2, "touch_l2"); set(Slot::Top4, bits::R2, "touch_r2");
+        if (id == SceneId::FixedTitle) {
+            open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "viewer-open", "viewer_open");
+        } else {
+            set(Slot::Top3, bits::L2, "touch_l2"); set(Slot::Top4, bits::R2, "touch_r2");
+        }
         break;
     case SceneId::Page:
         s.stick = Stick::Corner;
