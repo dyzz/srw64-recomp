@@ -74,7 +74,14 @@ std::filesystem::path output;
 std::unique_ptr<recompui::RmlRenderInterface_RT64> renderer;
 // All access, including Render(), holds mutex. SDL callbacks are deferred to the
 // window thread, including text deactivation during render-device teardown.
-SystemInterface_SDL system;
+// An RmlUi assert that still fires (inline in its headers, built here without NDEBUG) is a
+// log line: RmlUi's default on Windows is a modal box, then a break with no debugger.
+struct SystemInterface : SystemInterface_SDL {
+    bool LogMessage(Rml::Log::Type type,const Rml::String& message) override {
+        if(type!=Rml::Log::LT_ASSERT)return SystemInterface_SDL::LogMessage(type,message);
+        std::fprintf(stderr,"%s\n",message.c_str());return true;
+    }
+} system;
 TextInput input;
 Rml::Context* context{};
 std::unique_ptr<NamePage> name_page;
@@ -318,7 +325,7 @@ button:disabled {opacity: 0.45;} .row {display: flex;}
 .set-shade {position:absolute; left:0; top:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center; background-color:#040712b8;}
 .set-panel {display:flex; flex-direction:column; width:88%; max-width:1040dp; height:88%; max-height:820dp; box-sizing:border-box; padding:14dp 26dp 12dp; color:#e8eefc; background-color:#0c122cf2; border:1dp #3fd0ff; border-top:3dp #3fd0ff;}
 .set-panel h1 {margin:0 0 8dp; font-size:24dp; letter-spacing:2dp;}
-.set-tabs {display:flex; gap:6dp; margin-bottom:10dp;}
+.set-tabs {display:flex; width:100%; gap:6dp; margin-bottom:10dp;}
 .set-tabs button {flex:1 1 0; min-width:0; margin:0; padding:0 6dp; height:34dp; line-height:32dp; box-sizing:border-box; text-align:center; white-space:nowrap; overflow:hidden; font-size:15dp; font-weight:bold; color:#a4b0d2; background-color:#0c122ceb; border:1dp #3fd0ff; border-radius:0;}
 .set-tabs button.on {color:#0b1230; background-color:#3fd0ff; border-color:#3fd0ff;}
 .set-tabs button:focus {color:#ffd75e; border-color:#ffd75e;}
@@ -421,7 +428,7 @@ button.vw-swap {width:52dp; height:26dp; margin:0; padding:0; line-height:22dp; 
 button.vw-swap:focus {color:#0b1230; background-color:#ffd75e; border-color:#ffd75e;}
 body.pointer button.vw-swap:focus {color:#3fd0ff; background-color:#0c122c; border-color:#3fd0ff;} body.pointer button.vw-swap:hover {background-color:#3fd0ff40;}
 .vw-body {flex:1 1 0; min-height:0; display:flex; flex-direction:column; gap:6dp;}
-.vw-cols {flex:1 1 0; min-height:0; display:flex;}
+.vw-cols {flex:1 1 0; min-height:0; display:flex; width:100%;}
 .vw-col {flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:4dp;}
 .vw-colgap {width:24dp; flex-shrink:0;}
 .vw-card {position:relative; flex-shrink:0; overflow:hidden; background-color:#0d1430; border:1dp #2a3b66; border-top:3dp #ffb547;}
@@ -442,7 +449,7 @@ body.pointer button.vw-swap:focus {color:#3fd0ff; background-color:#0c122c; bord
 .vw-card.att .foot {justify-content:flex-end;}
 .vw-card .hp {font-size:10dp; color:#8f9bbd;} .vw-card .hpv {font-size:14dp; font-weight:bold; color:#e8eefc;}
 .vw-card .hpv.hurt {color:#ffd75e;} .vw-card .hpv.down {color:#ff6b5a;}
-button.vw-cell {flex-shrink:0; display:flex; align-items:center; gap:8dp; height:30dp; margin:0; padding:0 10dp; text-align:left; font-size:13dp; color:#e8eefc; background-color:#0d1430; border:1dp #2a3b66; border-radius:0;}
+button.vw-cell {flex-shrink:0; display:flex; align-items:center; gap:8dp; box-sizing:border-box; width:100%; height:30dp; margin:0; padding:0 10dp; text-align:left; font-size:13dp; color:#e8eefc; background-color:#0d1430; border:1dp #2a3b66; border-radius:0;}
 button.vw-cell .k {flex-shrink:0; width:52dp; font-size:10dp; color:#8f9bbd;}
 button.vw-cell .v {flex:1 1 0; min-width:0; white-space:nowrap; overflow:hidden;}
 button.vw-cell .m {flex-shrink:0; font-size:10dp; color:#8f9bbd; white-space:nowrap;}
@@ -477,7 +484,7 @@ body.pointer .set-panel.vw-panel button.vw-start:focus, body.pointer .set-panel.
 .vw-pop-head .role.def {decorator:slant(#3fd0ff #3fd0ff 0dp 0dp 0dp 10dp 0dp 0dp);}
 .vw-pop-head .ttl {font-size:14dp; font-weight:bold; white-space:nowrap;}
 .vw-pop-head .gap {flex:1 1 0;}
-.vw-pager-row {flex-shrink:0; display:flex; align-items:center; gap:10dp; height:32dp; padding:0 8dp; border-bottom:1dp #2a3b66;}
+.vw-pager-row {flex-shrink:0; display:flex; align-items:center; gap:10dp; box-sizing:border-box; width:100%; height:32dp; padding:0 8dp; border-bottom:1dp #2a3b66;}
 .vw-pager-row .page {flex:1 1 0; min-width:0; text-align:center; font-size:15dp; font-weight:bold; color:#5be37d; white-space:nowrap;}
 .vw-pager-row .no {font-size:12dp; color:#8fe4ff; white-space:nowrap;}
 button.vw-pager {margin:0; width:28dp; height:26dp; padding:0; font-size:15dp; color:#3fd0ff; background-color:transparent; border:0; border-radius:0;}
@@ -512,7 +519,7 @@ body.pointer button.vw-li:focus {background-color:transparent;} body.pointer but
 .vw-pop-foot button:focus {background-color:#ffd75e;}
 body.pointer .vw-pop-foot button:focus {background-color:#3fd0ff;} body.pointer .vw-pop-foot button:hover {background-color:#8fe4ff;}
 .vw-pop-foot button.vw-start {height:28dp; line-height:28dp; padding:0 26dp 0 30dp; font-size:14dp; background-color:transparent;}
-.vw-resbox {flex:1 1 0; min-height:0; display:flex; gap:8dp; padding:8dp;}
+.vw-resbox {flex:1 1 0; min-height:0; display:flex; gap:8dp; box-sizing:border-box; width:100%; padding:8dp;}
 .vw-resbox .col {flex:1 1 0; min-width:0; display:flex; flex-direction:column; border:1dp #2a3b66;}
 .vw-resbox .col.dmg {flex:0 0 auto; width:44%;}
 .vw-resbox .h {padding:4dp 8dp; font-size:11dp; font-weight:bold; color:#ffb547;}
@@ -603,7 +610,7 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 .bp-tint.left {left:0; decorator:horizontal-gradient(#78144659 #080c1e00);}
 .bp-tint.right {right:0; decorator:horizontal-gradient(#080c1e00 #0a3c6e59);}
 .battle-page {position:relative; display:flex; flex-direction:column; width:100%; max-width:1500dp; height:100%; margin:0 auto; box-sizing:border-box; padding:12dp 18dp 8dp; gap:7dp; color:#e8eefc; font-size:11dp;}
-.bp-row {display:flex; justify-content:space-between; align-items:stretch;}
+.bp-row {display:flex; width:100%; justify-content:space-between; align-items:stretch;}
 .bp-mid {flex:1 1 0; min-height:0; align-items:center;}
 .bp-side {width:31%; box-sizing:border-box;} .bp-center {width:35.5%; box-sizing:border-box;}
 .battle-page.touch .bp-bottom .bp-side {width:37.5%;} .battle-page.touch .bp-bottom .bp-center {width:24%;}

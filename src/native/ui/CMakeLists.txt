@@ -7,6 +7,10 @@ set(BUILD_SHARED_LIBS OFF)
 set(RMLUI_SVG_PLUGIN OFF CACHE BOOL "" FORCE)
 set(RMLUI_SAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory("${FRONTEND}/lib/RmlUi" rmlui EXCLUDE_FROM_ALL)
+# The host's -UNDEBUG would turn on RMLUI_DEBUG (Platform.h), and on Windows a failed
+# RmlUi assert opens a modal box, then breaks into a debugger that is not there.
+# Appended after the directory's -UNDEBUG, so NDEBUG wins for RmlUi alone.
+target_compile_options(rmlui_core PRIVATE -DNDEBUG)
 add_library(srw64_ui_renderer STATIC "${ADAPTER}/ui_renderer.cpp")
 target_compile_definitions(srw64_ui_renderer PRIVATE HLSL_CPU)
 target_include_directories(srw64_ui_renderer PUBLIC "${ADAPTER}")
