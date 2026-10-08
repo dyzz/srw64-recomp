@@ -304,7 +304,7 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
     return ((i << 8) & 0xFF00) | ((i >> 8) & 0xFF);
 #endif
 }'''),
-    # The Android host builds Plume without NDEBUG (for --validation), which names Vulkan
+    # With build_game.py --validation the Android host builds Plume without NDEBUG, which names Vulkan
     # objects and so lists VK_EXT_debug_utils as a required instance extension. Older Mali
     # drivers (Vulkan 1.3.219: Galaxy A15 with Dimensity 6100+, A35 with Exynos 1380,
     # 2026-10-08) do not offer it, and the instance is never made: "Unable to find

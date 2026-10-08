@@ -35,7 +35,7 @@ PACKAGE, ACTIVITY = 'org.srw64.game', 'org.srw64.game.SetupActivity'
 
 
 def native(build: Path, source: dict[str, Path], prefix: Path, file_to_c: Path, prepare: bool = True,
-           quiet_game_code: bool = False) -> list[Path]:
+           quiet_game_code: bool = False, asserts: bool = False) -> list[Path]:
     ndk_root = ndk()
     cmake = cmake_bin()
     if prepare:
@@ -45,7 +45,8 @@ def native(build: Path, source: dict[str, Path], prefix: Path, file_to_c: Path, 
         f'-DCMAKE_TOOLCHAIN_FILE={ndk_root / "build/cmake/android.toolchain.cmake"}',
         '-DANDROID_ABI=arm64-v8a', f'-DANDROID_PLATFORM=android-{MIN_SDK}', '-DCMAKE_BUILD_TYPE=RelWithDebInfo',
         f'-DSRW64_SDL3_SOURCE={source["sdl3"]}', f'-DSRW64_SDL2_COMPAT_SOURCE={source["sdl2-compat"]}',
-        f'-DSRW64_ANDROID_PREFIX={prefix}', f'-DRT64_FILE_TO_C={file_to_c}', f'-DPython3_EXECUTABLE={sys.executable}')
+        f'-DSRW64_ANDROID_PREFIX={prefix}', f'-DRT64_FILE_TO_C={file_to_c}', f'-DPython3_EXECUTABLE={sys.executable}',
+        f'-DSRW64_ASSERTS={"ON" if asserts else "OFF"}')
     jobs = str(os.cpu_count() or 8)
     if quiet_game_code:
         # The code generated from the ROM stays out of the log (a public CI log): its
@@ -120,7 +121,7 @@ def main() -> int:
     parser.add_argument('--quiet-game-code', action='store_true',
                         help='keep the generated game code\'s compiler output out of the log (CI)')
     parser.add_argument('--validation', type=Path, metavar='SO',
-                        help="Khronos libVkLayer_khronos_validation.so (arm64) to ship; Plume enables it (the host builds without NDEBUG)")
+                        help="Khronos libVkLayer_khronos_validation.so (arm64) to ship; the host then builds with assert() and Plume's debug paths, which enable it")
     args = parser.parse_args()
     prefix = ROOT / 'build/android/deps/prefix'
     if not (prefix / 'lib/libicuuc.a').exists():
@@ -131,7 +132,7 @@ def main() -> int:
     tools = latest(SDK / 'build-tools')
     android_jar = latest(SDK / 'platforms') / 'android.jar'
     libraries = native(args.build, source, prefix, host_file_to_c(args.build.parent), not args.no_prepare,
-                       args.quiet_game_code)
+                       args.quiet_game_code, asserts=args.validation is not None)
     if args.validation:
         libraries.append(args.validation.resolve(strict=True))
     dex = java(args.build, source['sdl3'], android_jar, tools, APP / 'java')
