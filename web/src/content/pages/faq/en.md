@@ -82,8 +82,6 @@ The story is preserved, while stats, enemy behaviour and battle calculations are
 
 Most additions focus on the interface, reading and controls: natively rendered settings and intermission screens, dialogue history and auto-reading, fast-forward and skip, widescreen, extra save slots, autosaves and remapping.
 
-The original game has a soft reset: pressing the N64 controller's Z and START together during a battle (see the Controls page in settings for where they are on your keyboard or controller) returns to the title screen, and unsaved progress is lost.
-
 <span id="gpu"></span>
 
 ## The game stops on one screen, or the window is "Not responding"?
