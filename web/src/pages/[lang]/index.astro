@@ -6,6 +6,7 @@ import Pair from '../../components/Pair.astro';
 import { HOME } from '../../copy/home';
 import { UI, langPaths, type Lang, TITLE_LOGO } from '../../i18n';
 import { published, release } from '../../data/release';
+import { newestFirst } from '../../lib/blog';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -14,7 +15,7 @@ const c = HOME[lang];
 const ORDER = ['history', 'prebattle', 'settings', 'filters', 'library', 'viewer'];
 const shows = ORDER.map((k) => c.shows.find((x) => x.key === k)!).filter(Boolean);
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .sort(newestFirst)
   .slice(0, 3);
 const fmt = (d: Date) => d.toISOString().slice(0, 10);
 ---
