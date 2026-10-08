@@ -49,7 +49,7 @@ PYTHONPATH=src:tools ../../../../.venv/bin/python tools/release/package_macos.py
 
 Linux 包和 Windows 包由 GitHub Actions 的 `build` 工作流构建（`.github/workflows/build.yml`；推送 main、推送 `v*` 标签或手动触发）：
 Ubuntu 上从私有仓库 `dyzz/srw64-ci-inputs` 的 ROM 生成游戏代码，加密后交给 Windows（clang-cl）和 Linux（与 `tools/release/linux/build.sh`
-同一个 Ubuntu 22.04 容器）两个任务；成品也加密上传（公开仓库的产物谁都能下载），用本地 `~/.config/srw64/ci-artifact-key` 解开。只改 `web/`、`docs/` 或根目录 `.md` 的推送不触发构建（标签推送照常构建）。三个平台各有编译缓存（ccache，含编译后的游戏代码，所以同样加密后存进 Actions 缓存，每次运行存一份、下次从最新的一份开始；`ccache -s` 的输出在编译步骤末尾），Linux 的 librashader 和另外两个平台一样缓存成品：
+同一个 Ubuntu 22.04 容器）两个任务；成品也加密上传（公开仓库的产物谁都能下载），用本地 `~/.config/srw64/ci-artifact-key` 解开。只改 `web/`、`docs/` 或根目录 `.md` 的推送不触发构建（标签推送照常构建）。三个平台各有编译缓存（ccache，含编译后的游戏代码，所以同样加密后存进 Actions 缓存，每次运行存一份、下次从最新的一份开始；`ccache -s` 的输出在编译步骤末尾），Linux 的 librashader 和另外两个平台一样缓存成品。Windows 的 vcpkg 固定在发布版 2026.07.29（工作流的 `VCPKG_COMMIT`），不用 runner 镜像自带的那份：各镜像的 vcpkg 不同，同一个 ICU 算出不同的 ABI，半数运行要重编 ICU 14 分钟；改这个提交号会让 ICU 重编一次：
 
 ```sh
 gh run download <运行号> --repo dyzz/srw64-recomp -n Marchwind64-linux-x64-encrypted

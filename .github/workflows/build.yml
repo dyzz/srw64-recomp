@@ -99,6 +99,8 @@ jobs:
       # Python reads and writes text as UTF-8, not the Windows code page (X3: unspecified encodings).
       PYTHONUTF8: "1"
       CCACHE_DIR: ${{ github.workspace }}\.ccache
+      # vcpkg's release 2026.07.29, not the runner's own copy (see the vcpkg step).
+      VCPKG_COMMIT: 9e593bb18ea69cc5095e012465dcd675a822ed0d
       CCACHE_BASEDIR: ${{ github.workspace }}
       CCACHE_COMPILERCHECK: content
       CCACHE_MAXSIZE: 2G
@@ -128,17 +130,28 @@ jobs:
           python -m venv .venv
           .venv\Scripts\python -m pip install -q -e . -r requirements.lock
 
-      # vcpkg's binary cache. The runner images in rotation differ in their tools, so vcpkg
-      # can want packages the cache does not have yet (half the runs rebuilt ICU, 14 minutes,
-      # and never kept it): a run that builds any package saves the cache again.
+      # vcpkg at a fixed release. The runner images in rotation carry different vcpkg copies,
+      # whose scripts give the same ICU 78.3 another ABI: half the runs found 6 of their 12
+      # packages and rebuilt ICU for 14 minutes. Later steps take this copy through
+      # VCPKG_INSTALLATION_ROOT.
+      - name: vcpkg
+        run: |
+          $root = "$env:RUNNER_TEMP\vcpkg"
+          git init -q $root
+          git -C $root fetch -q --depth 1 https://github.com/microsoft/vcpkg $env:VCPKG_COMMIT
+          git -C $root checkout -q FETCH_HEAD
+          & "$root\bootstrap-vcpkg.bat" -disableMetrics
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          "VCPKG_INSTALLATION_ROOT=$root" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          "VCPKG_ROOT=$root" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+
+      # vcpkg's binary cache; a run that builds any package saves it again.
       - name: vcpkg cache
         uses: actions/cache/restore@v5
         with:
           path: vcpkg-cache
-          key: vcpkg-x64-windows-freetype-harfbuzz-icu-v2-${{ github.run_id }}
-          restore-keys: |
-            vcpkg-x64-windows-freetype-harfbuzz-icu-v2-
-            vcpkg-x64-windows-freetype-harfbuzz-icu-v1
+          key: vcpkg-x64-windows-${{ env.VCPKG_COMMIT }}-${{ github.run_id }}
+          restore-keys: vcpkg-x64-windows-${{ env.VCPKG_COMMIT }}-
 
       - name: FreeType, HarfBuzz, ICU (vcpkg)
         id: vcpkg
@@ -154,7 +167,7 @@ jobs:
         uses: actions/cache/save@v5
         with:
           path: vcpkg-cache
-          key: vcpkg-x64-windows-freetype-harfbuzz-icu-v2-${{ github.run_id }}
+          key: vcpkg-x64-windows-${{ env.VCPKG_COMMIT }}-${{ github.run_id }}
 
       # The compiler cache (ccache), kept encrypted like the generated inputs: it holds the
       # compiled game code. Each run saves its own copy and starts from the newest one.
