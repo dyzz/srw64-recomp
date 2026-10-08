@@ -16,6 +16,9 @@ using DesktopLaunch = std::function<int(const Options&, const DesktopReady&)>;
 int run_desktop(Options options, const std::string& expected_rom_sha256,
                 const DesktopUi& ui, const DesktopLaunch& launch,
                 bool choose_another_rom = false);
+// What the player sees when another game holds the user directory, in their language
+// (zh-Hans, en or ja; anything else gets Simplified Chinese).
+std::string play_lock_message(const std::string& locale);
 // Where Marchwind64.cmd looks for the ROM, in its order: `named` (SRW64_ROM), then
 // rom.z64, rom.n64 and rom.v64, each in the user directory before the game's folder.
 // Empty when none of them is a file.

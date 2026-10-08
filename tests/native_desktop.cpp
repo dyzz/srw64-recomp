@@ -114,7 +114,12 @@ void relocated_working_directory_and_lock() {
     try {check(f.run()==0,"unrelated cwd failed");}catch(...){fs::current_path(previous);throw;}
     fs::current_path(previous);
     Session held(f.options);
+    atomic_write(f.options.user_dir/"presentation.json","{\n  \"locale\": \"en\"\n}\n");
+    const auto shown=f.errors.size();
     check(f.run()==2,"second instance bypassed session lock");
+    check(f.errors.size()==shown+1 && f.errors.back()==play_lock_message("en"),"lock message not in the saved language");
+    check(play_lock_message("ja").starts_with("Marchwind64 を") && play_lock_message("fr")==play_lock_message("zh-Hans"),
+          "lock message languages");
 }
 }
 int main() {

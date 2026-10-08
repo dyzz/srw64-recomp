@@ -1,6 +1,7 @@
 #include "desktop.hpp"
 #include "rom_order.hpp"
 #include "sha256.hpp"
+#include <regex>
 #include <stdexcept>
 
 namespace srw64::app {
@@ -19,6 +20,16 @@ fs::path remembered_rom(const fs::path& file) {
     const auto path = fs::path(std::u8string(reinterpret_cast<const char8_t*>(bytes.data()), bytes.size()));
     if (!path.is_absolute()) throw std::runtime_error("The saved ROM path is not absolute.");
     return path;
+}
+// The language the player chose (presentation.json, written by launch.cpp); empty when
+// there is none or it cannot be read.
+std::string saved_locale(const fs::path& user_dir) {
+    try {
+        const auto text = read_text(user_dir / "presentation.json", 65536);
+        std::smatch found;
+        if (std::regex_search(text, found, std::regex(R"re("locale"\s*:\s*"([^"]+)")re"))) return found[1];
+    } catch (const std::exception&) {}
+    return {};
 }
 fs::path validate_rom(const fs::path& path, const std::string& expected) {
     // Bound IO before hashing. The authoritative, exact identity/size checks
@@ -42,6 +53,29 @@ fs::path launcher_rom(const fs::path& named, const fs::path& user_dir, const fs:
         for (const auto& folder : {user_dir, game_dir})
             if (!folder.empty() && fs::is_regular_file(folder / name, error)) return folder / name;
     return {};
+}
+
+std::string play_lock_message(const std::string& locale) {
+#ifdef __APPLE__
+    const bool mac = true;
+#else
+    const bool mac = false;
+#endif
+    if (locale == "ja")
+        return std::string("Marchwind64 を起動できません。\n"
+                           "Marchwind64 はすでに起動しているか、終了したゲームがまだ完全に閉じていません。\n"
+                           "開いているゲームのウィンドウに切り替えてください。見つからない場合は、") +
+               (mac ? "アクティビティモニタ" : "タスクマネージャー") +
+               "で Marchwind64 を終了してから、もう一度起動してください。\nセーブデータは変更されていません。";
+    if (locale == "en")
+        return std::string("Unable to start Marchwind64.\n"
+                           "Marchwind64 is already running, or a game you just closed has not finished exiting.\n"
+                           "Switch to the open game window. If there is none, end Marchwind64 in ") +
+               (mac ? "Activity Monitor" : "Task Manager") + " and start it again.\nYour saves have not been changed.";
+    return std::string("无法启动 Marchwind64。\n"
+                       "Marchwind64 已经在运行，或者刚关闭的游戏还没有完全退出。\n"
+                       "请切换到已打开的游戏窗口；如果找不到窗口，请在") +
+           (mac ? "活动监视器" : "任务管理器") + "中结束 Marchwind64 后重新启动。\n存档没有被改动。";
 }
 
 int run_desktop(Options options, const std::string& expected_rom_sha256,
@@ -85,6 +119,12 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
                           ".\nYour last committed save has not been replaced.\nUser data: " +
                           path_utf8(options.user_dir));
         return result;
+    } catch (const PlayLockHeld&) {
+        // The first launch has no settings yet and starts in Simplified Chinese (host.cpp).
+        auto locale = options.language;
+        if (locale.empty()) locale = saved_locale(options.user_dir);
+        ui.show_error(play_lock_message(locale.empty() ? "zh-Hans" : locale));
+        return 2;
     } catch (const std::exception& error) {
         ui.show_error(std::string("Unable to start Marchwind64.\n") + error.what() +
                       "\nNo automatic save reset or cache deletion was performed.");

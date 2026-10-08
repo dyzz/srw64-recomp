@@ -4,6 +4,7 @@
 #include <memory>
 #include <optional>
 #include <span>
+#include <stdexcept>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -60,6 +61,9 @@ fs::path beside_game(const std::string& name);
 void set_environment(const std::string& key, const std::string& value);
 void clear_runtime_environment();
 
+// Thrown when another game (or one still exiting) holds the user directory; the desktop
+// launcher shows it in the player's language (desktop.cpp).
+struct PlayLockHeld : std::runtime_error { using std::runtime_error::runtime_error; };
 // The user directory's lock: one game (or one import) at a time. An existing lock file is
 // harmless; only an OS-held lock prevents another.
 class UserLock {

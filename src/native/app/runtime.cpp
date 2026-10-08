@@ -386,7 +386,7 @@ struct UserLock::Handle {
         if (!wait_for_lock([&] { OVERLAPPED offset{};
                 return LockFileEx(handle,LOCKFILE_EXCLUSIVE_LOCK|LOCKFILE_FAIL_IMMEDIATELY,0,1,0,&offset)!=0; })) {
             CloseHandle(handle);handle=INVALID_HANDLE_VALUE;
-            throw std::runtime_error(play_lock_held);
+            throw PlayLockHeld(play_lock_held);
         }
     }
     ~Handle() { if(handle!=INVALID_HANDLE_VALUE){OVERLAPPED offset{};UnlockFileEx(handle,0,1,0,&offset);CloseHandle(handle);} }
@@ -395,7 +395,7 @@ struct UserLock::Handle {
     explicit Handle(const fs::path& path) {
         fd=open(path.c_str(),O_RDWR|O_CREAT|O_CLOEXEC,0600);
         if (fd<0) throw std::runtime_error("Cannot open play lock");
-        if (!wait_for_lock([&] { return flock(fd,LOCK_EX|LOCK_NB)==0; })) { close(fd);fd=-1;throw std::runtime_error(play_lock_held); }
+        if (!wait_for_lock([&] { return flock(fd,LOCK_EX|LOCK_NB)==0; })) { close(fd);fd=-1;throw PlayLockHeld(play_lock_held); }
     }
     ~Handle() { if(fd>=0)close(fd); }
 #endif
