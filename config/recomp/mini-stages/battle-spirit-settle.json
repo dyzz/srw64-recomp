@@ -1,0 +1,198 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "battle-spirit-settle",
+  "note": "Pre-battle spirits must reach the settlement: 万丈 with 必中/ド根性/気合/ひらめき/熱血/魂, 甲児 with 鉄壁/熱血/必中.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001f0f1c",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "タケル / ガイヤー — 超能力"
+    },
+    {
+      "template": "base:stage_deployments:00200a6c",
+      "group": 0,
+      "x": 8,
+      "y": 10,
+      "faction": 0,
+      "note": "マリア / ドリルスペイザー — 超能力"
+    },
+    {
+      "template": "base:stage_deployments:001e4a38",
+      "group": 0,
+      "x": 10,
+      "y": 8,
+      "faction": 0,
+      "level_offset": 30,
+      "note": "甲児 / マジンガーZ — 鉄壁 L2, 熱血 L6, 必中 L13"
+    },
+    {
+      "template": "base:stage_deployments:001e4248",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "unit": 170,
+      "faction": 0,
+      "note": "万丈 in ミニフォー, level raised so 魂 (L45) is learned",
+      "level_offset": 45
+    },
+    {
+      "template": "base:stage_deployments:001f2720",
+      "group": 1,
+      "x": 9,
+      "y": 10,
+      "faction": 1,
+      "note": "ロゼ / ゼーロン — enemy 超能力"
+    },
+    {
+      "template": "base:stage_deployments:001e8d68",
+      "group": 1,
+      "x": 11,
+      "y": 8,
+      "faction": 1,
+      "note": "ガラリア / バストール — enemy 聖戦士"
+    },
+    {
+      "template": "base:stage_deployments:001e40dc",
+      "group": 1,
+      "x": 9,
+      "y": 8,
+      "unit": 170,
+      "faction": 1,
+      "note": "ムゲ兵 in ミニフォー — over the limit"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D54",
+          "args": [
+            138
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "camera on タケル"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ],
+  "initial_resources": [
+    {
+      "side": 0,
+      "slot": 3,
+      "hp_percent": 35,
+      "en_percent": 50
+    },
+    {
+      "side": 0,
+      "slot": 2,
+      "hp_percent": 55,
+      "en_percent": 85
+    },
+    {
+      "side": 1,
+      "slot": 0,
+      "hp_percent": 65,
+      "en_percent": 60
+    }
+  ]
+}

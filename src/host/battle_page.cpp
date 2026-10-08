@@ -55,11 +55,19 @@ bool return_from_spirit(uint8_t* ram,recomp_context* ctx) {
     for(const auto& b:spirit_return_state)write8(ram,b.address,b.value);
     spirit_return_state.clear();spirit_running=false;
     invoke(ram,ctx,0x8009DB8C);invoke(ram,ctx,0x801C2FD8);
-    for(unsigned slot=0;slot<2;++slot) {
-        const auto base=rules::participants+slot*rules::participant_size;
-        const auto other=rules::participants+(1-slot)*rules::participant_size;
-        if(read(ram,base+8,4))write16(ram,base+0x12,invoke(ram,ctx,0x801F4384,slot,1-slot,read(ram,other+0x10,1)==1));
+    // The original settles the whole exchange, rolls included, before this page: as the
+    // target is chosen when attacking (801D3140), as the enemy picks its target when
+    // defending (801C90F4), again only when the response or counter weapon changes. Settle
+    // it again so the cast spirit counts, as those steps do; the same as backing out and
+    // choosing the target again, or changing the response and back.
+    unsigned mode;{std::lock_guard lock(mutex);mode=current.value("mode",0u);}
+    const auto a=combat_preview::participant(ram,0),d=combat_preview::participant(ram,1);
+    if(mode==1) {
+        invoke(ram,ctx,0x801F7B54);write8(ram,0x8022796C,0);
+        invoke(ram,ctx,0x801F7D6C,a.handle,d.handle,0);
     }
+    // The response (8018B754) and counter weapon (8018B74C) stay as chosen (801D5294, 801D5404).
+    else invoke(ram,ctx,0x801F7D6C,a.handle,d.handle,1);
     invoke(ram,ctx,0x801F3578);
     std::lock_guard lock(mutex);current["visible"]=false;current["spirit_running"]=false;
     spirit_menu=true;return true;
