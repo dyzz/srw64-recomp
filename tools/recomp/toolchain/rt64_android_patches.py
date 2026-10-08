@@ -442,6 +442,136 @@ namespace RT64 {
             fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 650 driver workaround: framebuffer effects are not exact)\\n");
         }
 #   endif'''),
+    # The Adreno 660's shader compiler (Galaxy S21 Ultra, driver 0x80212000, 2026-10-08)
+    # fails RasterPSDynamic with VK_ERROR_UNKNOWN, and the game crashes at start. Variants
+    # swapped in on the device show it is the texture lookups with tiles
+    # that LOD picks per pixel (computeLOD's tileIndex0/1), not the size of the shader nor
+    # the arithmetic. With UNIFORM_TILE_SAMPLING each texture samples every tile of the
+    # draw in a loop, the tile the same for the whole draw, and keeps the one LOD picked:
+    # the same result, a few more lookups where LOD is on. Android builds these variants as
+    # well; RT64 uses them when the device's name is exactly Adreno (TM) 660.
+    ('src/shaders/RasterPS.hlsl', '''    float4 texVal1 = float4(0.0f, 0.0f, 0.0f, 1.0f);
+    if (renderFlagUsesTexture0(rp.flags)) {''', '''    float4 texVal1 = float4(0.0f, 0.0f, 0.0f, 1.0f);
+#if defined(UNIFORM_TILE_SAMPLING)
+    const uint uniformTileCount = max(min(instanceRenderIndices[gConstants.renderIndex].rdpTileCount, 8U), 1U);
+    if (renderFlagUsesTexture0(rp.flags)) {
+        [loop] for (uint uniformTile = 0; uniformTile < uniformTileCount; uniformTile++) {
+            const uint globalTileIndex = instanceRenderIndices[gConstants.renderIndex].rdpTileIndex + uniformTile;
+            RDPTile rdpTile = RDPTiles[globalTileIndex];
+            if (!renderFlagDynamicTiles(rp.flags)) {
+                rdpTile.cms = renderCMS0(rp.flags);
+                rdpTile.cmt = renderCMT0(rp.flags);
+                rdpTile.nativeSampler = renderFlagNativeSampler0(rp.flags);
+            }
+
+            const GPUTile gpuTile = GPUTiles[globalTileIndex];
+            const float2 textureUV = gpuTileFlagHighRes(gpuTile.flags) ? vertexUV : lowResUV;
+            const float4 sampled = sampleTexture(otherMode, rp.flags, textureUV, ddxVertexUV, ddyVertexUV, rdpTile, gpuTile, false);
+            if (int(uniformTile) == tileIndex0) {
+                texVal0 = sampled;
+            }
+        }
+    }
+
+    if (renderFlagUsesTexture1(rp.flags)) {
+        const bool oneCycleHardwareBug = (otherMode.cycleType() == G_CYC_1CYCLE);
+        const int pickedTile = oneCycleHardwareBug ? tileIndex0 : tileIndex1;
+        [loop] for (uint uniformTile = 0; uniformTile < uniformTileCount; uniformTile++) {
+            const uint globalTileIndex = instanceRenderIndices[gConstants.renderIndex].rdpTileIndex + uniformTile;
+            RDPTile rdpTile = RDPTiles[globalTileIndex];
+            if (!renderFlagDynamicTiles(rp.flags)) {
+                rdpTile.cms = oneCycleHardwareBug ? renderCMS0(rp.flags) : renderCMS1(rp.flags);
+                rdpTile.cmt = oneCycleHardwareBug ? renderCMT0(rp.flags) : renderCMT1(rp.flags);
+                rdpTile.nativeSampler = oneCycleHardwareBug ? renderFlagNativeSampler0(rp.flags) : renderFlagNativeSampler1(rp.flags);
+            }
+
+            const GPUTile gpuTile = GPUTiles[globalTileIndex];
+            const float2 textureUV = gpuTileFlagHighRes(gpuTile.flags) ? vertexUV : lowResUV;
+            const float4 sampled = sampleTexture(otherMode, rp.flags, textureUV, ddxVertexUV, ddyVertexUV, rdpTile, gpuTile, oneCycleHardwareBug);
+            if (int(uniformTile) == pickedTile) {
+                texVal1 = sampled;
+            }
+        }
+    }
+#else
+    if (renderFlagUsesTexture0(rp.flags)) {'''),
+    ('src/shaders/RasterPS.hlsl', '''        texVal1 = sampleTexture(otherMode, rp.flags, textureUV, ddxVertexUV, ddyVertexUV, rdpTile, gpuTile, oneCycleHardwareBug);
+    }''', '''        texVal1 = sampleTexture(otherMode, rp.flags, textureUV, ddxVertexUV, ddyVertexUV, rdpTile, gpuTile, oneCycleHardwareBug);
+    }
+#endif'''),
+    ('CMakeLists.txt', '''build_vertex_shader_spec_constants( rt64 "src/shaders/RasterVS.hlsl" "src/shaders/RasterVSSpecConstantFlat.hlsl" "-D SPEC_CONSTANT_RENDER_PARAMS" "-D VERTEX_FLAT_COLOR")''', '''build_vertex_shader_spec_constants( rt64 "src/shaders/RasterVS.hlsl" "src/shaders/RasterVSSpecConstantFlat.hlsl" "-D SPEC_CONSTANT_RENDER_PARAMS" "-D VERTEX_FLAT_COLOR")
+if (ANDROID)
+    build_pixel_shader(  rt64 "src/shaders/RasterPS.hlsl" "src/shaders/RasterPSDynamicUniformTiles.hlsl" "-D DYNAMIC_RENDER_PARAMS" "-D UNIFORM_TILE_SAMPLING")
+    build_pixel_shader(  rt64 "src/shaders/RasterPS.hlsl" "src/shaders/RasterPSDynamicMSUniformTiles.hlsl" "-D DYNAMIC_RENDER_PARAMS" "-D MULTISAMPLING" "-D UNIFORM_TILE_SAMPLING")
+    build_pixel_shader_spec_constants(rt64 "src/shaders/RasterPS.hlsl" "src/shaders/RasterPSSpecConstantUniformTiles.hlsl" "-D SPEC_CONSTANT_RENDER_PARAMS" "-D UNIFORM_TILE_SAMPLING")
+    build_pixel_shader_spec_constants(rt64 "src/shaders/RasterPS.hlsl" "src/shaders/RasterPSSpecConstantMSUniformTiles.hlsl" "-D SPEC_CONSTANT_RENDER_PARAMS" "-D MULTISAMPLING" "-D UNIFORM_TILE_SAMPLING")
+    build_pixel_shader_spec_constants(rt64 "src/shaders/RasterPS.hlsl" "src/shaders/RasterPSSpecConstantFlatUniformTiles.hlsl" "-D SPEC_CONSTANT_RENDER_PARAMS" "-D VERTEX_FLAT_COLOR" "-D UNIFORM_TILE_SAMPLING")
+    build_pixel_shader_spec_constants(rt64 "src/shaders/RasterPS.hlsl" "src/shaders/RasterPSSpecConstantFlatMSUniformTiles.hlsl" "-D SPEC_CONSTANT_RENDER_PARAMS" "-D VERTEX_FLAT_COLOR" "-D MULTISAMPLING" "-D UNIFORM_TILE_SAMPLING")
+endif()'''),
+    ('src/render/rt64_raster_shader.cpp', '''#include "shaders/RasterPSSpecConstantFlatMS.hlsl.spirv.h"''', '''#include "shaders/RasterPSSpecConstantFlatMS.hlsl.spirv.h"
+#ifdef __ANDROID__
+#include "shaders/RasterPSDynamicUniformTiles.hlsl.spirv.h"
+#include "shaders/RasterPSDynamicMSUniformTiles.hlsl.spirv.h"
+#include "shaders/RasterPSSpecConstantUniformTiles.hlsl.spirv.h"
+#include "shaders/RasterPSSpecConstantMSUniformTiles.hlsl.spirv.h"
+#include "shaders/RasterPSSpecConstantFlatUniformTiles.hlsl.spirv.h"
+#include "shaders/RasterPSSpecConstantFlatMSUniformTiles.hlsl.spirv.h"
+#endif'''),
+    ('src/render/rt64_raster_shader.cpp', '''    void OptimizerCacheSPIRV::initialize() {
+        rasterVS.parse(RasterVSSpecConstantBlobSPIRV, std::size(RasterVSSpecConstantBlobSPIRV));
+        rasterVSFlat.parse(RasterVSSpecConstantFlatBlobSPIRV, std::size(RasterVSSpecConstantFlatBlobSPIRV));''', '''#ifdef __ANDROID__
+    // Set at setup from the device's name (rt64_application.cpp).
+    bool AndroidUniformTileSampling = false;
+#endif
+
+    void OptimizerCacheSPIRV::initialize() {
+        rasterVS.parse(RasterVSSpecConstantBlobSPIRV, std::size(RasterVSSpecConstantBlobSPIRV));
+        rasterVSFlat.parse(RasterVSSpecConstantFlatBlobSPIRV, std::size(RasterVSSpecConstantFlatBlobSPIRV));
+#   ifdef __ANDROID__
+        if (AndroidUniformTileSampling) {
+            rasterPS.parse(RasterPSSpecConstantUniformTilesBlobSPIRV, std::size(RasterPSSpecConstantUniformTilesBlobSPIRV));
+            rasterPSMS.parse(RasterPSSpecConstantMSUniformTilesBlobSPIRV, std::size(RasterPSSpecConstantMSUniformTilesBlobSPIRV));
+            rasterPSFlat.parse(RasterPSSpecConstantFlatUniformTilesBlobSPIRV, std::size(RasterPSSpecConstantFlatUniformTilesBlobSPIRV));
+            rasterPSFlatMS.parse(RasterPSSpecConstantFlatMSUniformTilesBlobSPIRV, std::size(RasterPSSpecConstantFlatMSUniformTilesBlobSPIRV));
+            return;
+        }
+#   endif'''),
+    ('src/render/rt64_raster_shader.cpp', '''            PSBlob = useMSAA ? RasterPSDynamicMSBlobSPIRV : RasterPSDynamicBlobSPIRV;
+            VSBlobSize = uint32_t(std::size(RasterVSDynamicBlobSPIRV));
+            PSBlobSize = uint32_t(useMSAA ? std::size(RasterPSDynamicMSBlobSPIRV) : std::size(RasterPSDynamicBlobSPIRV));''', '''            PSBlob = useMSAA ? RasterPSDynamicMSBlobSPIRV : RasterPSDynamicBlobSPIRV;
+            VSBlobSize = uint32_t(std::size(RasterVSDynamicBlobSPIRV));
+            PSBlobSize = uint32_t(useMSAA ? std::size(RasterPSDynamicMSBlobSPIRV) : std::size(RasterPSDynamicBlobSPIRV));
+#       ifdef __ANDROID__
+            if (AndroidUniformTileSampling) {
+                PSBlob = useMSAA ? RasterPSDynamicMSUniformTilesBlobSPIRV : RasterPSDynamicUniformTilesBlobSPIRV;
+                PSBlobSize = uint32_t(useMSAA ? std::size(RasterPSDynamicMSUniformTilesBlobSPIRV) : std::size(RasterPSDynamicUniformTilesBlobSPIRV));
+            }
+#       endif'''),
+    ('src/hle/rt64_application.cpp', '''        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 650";''', '''        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 650";
+        extern bool AndroidUniformTileSampling;
+        AndroidUniformTileSampling = deviceDescription.name == "Adreno (TM) 660";
+        if (AndroidUniformTileSampling) {
+            fprintf(stdout, "SRW64_UNIFORM_TILE_SAMPLING on (Adreno 660 shader compiler workaround)\\n");
+        }'''),
+    # On the Adreno 660 the specialized raster shaders still fail for some materials after
+    # specialization (VK_ERROR_UNKNOWN from vkCreateGraphicsPipelines, then a crash drawing
+    # with the empty pipeline). There a shader the driver cannot build stays out of the
+    # cache: a material is submitted once, so its draws keep the ubershader, which builds.
+    ('src/render/rt64_raster_shader_cache.cpp', '''#include "rt64_raster_shader_cache.h"''', '''#include "rt64_raster_shader_cache.h"
+#ifdef __ANDROID__
+#include "plume_vulkan.h"
+#endif'''),
+    ('src/render/rt64_raster_shader_cache.cpp', '''                std::unique_ptr<RasterShader> newShader = std::make_unique<RasterShader>(shaderCache->device, shaderDesc, uberPipelineLayout, shaderCache->shaderFormat, multisampling, shaderCache->shaderCompiler.get(), &shaderCache->optimizerCacheSPIRV);
+''', '''                std::unique_ptr<RasterShader> newShader = std::make_unique<RasterShader>(shaderCache->device, shaderDesc, uberPipelineLayout, shaderCache->shaderFormat, multisampling, shaderCache->shaderCompiler.get(), &shaderCache->optimizerCacheSPIRV);
+#           ifdef __ANDROID__
+                extern bool AndroidUniformTileSampling;
+                const auto *builtPipeline = static_cast<const plume::VulkanGraphicsPipeline *>(newShader->pipeline.get());
+                if (AndroidUniformTileSampling && ((builtPipeline == nullptr) || (builtPipeline->vk == VK_NULL_HANDLE))) {
+                    fprintf(stderr, "SRW64_RASTER_SHADER_FALLBACK %016llx: the driver could not build it, the ubershader draws it\\n", (unsigned long long)shaderDesc.hash());
+                    continue;
+                }
+#           endif
+'''),
     # A boundless range (RT64's texture set: up to 8192 textures, as many as the texture
     # cache holds) is allocated with a variable count, and the pool is sized for that count.
     # Qualcomm's Adreno drivers count the layout's full upper bound against the pool instead:
