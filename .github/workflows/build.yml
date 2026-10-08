@@ -128,24 +128,33 @@ jobs:
           python -m venv .venv
           .venv\Scripts\python -m pip install -q -e . -r requirements.lock
 
+      # vcpkg's binary cache. The runner images in rotation differ in their tools, so vcpkg
+      # can want packages the cache does not have yet (half the runs rebuilt ICU, 14 minutes,
+      # and never kept it): a run that builds any package saves the cache again.
       - name: vcpkg cache
-        id: vcpkg-cache
         uses: actions/cache/restore@v5
         with:
           path: vcpkg-cache
-          key: vcpkg-x64-windows-freetype-harfbuzz-icu-v1
+          key: vcpkg-x64-windows-freetype-harfbuzz-icu-v2-${{ github.run_id }}
+          restore-keys: |
+            vcpkg-x64-windows-freetype-harfbuzz-icu-v2-
+            vcpkg-x64-windows-freetype-harfbuzz-icu-v1
 
       - name: FreeType, HarfBuzz, ICU (vcpkg)
+        id: vcpkg
         run: |
           New-Item -ItemType Directory -Force vcpkg-cache | Out-Null
+          $before = (Get-ChildItem -Recurse -File vcpkg-cache).Count
           & "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe" install freetype harfbuzz icu --triplet x64-windows
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          if ((Get-ChildItem -Recurse -File vcpkg-cache).Count -gt $before) { "built=true" | Out-File -Append -Encoding utf8 $env:GITHUB_OUTPUT }
 
       # Saved right away: ICU takes a quarter of an hour, and later steps may fail.
-      - if: steps.vcpkg-cache.outputs.cache-hit != 'true'
+      - if: steps.vcpkg.outputs.built == 'true'
         uses: actions/cache/save@v5
         with:
           path: vcpkg-cache
-          key: vcpkg-x64-windows-freetype-harfbuzz-icu-v1
+          key: vcpkg-x64-windows-freetype-harfbuzz-icu-v2-${{ github.run_id }}
 
       # The compiler cache (ccache), kept encrypted like the generated inputs: it holds the
       # compiled game code. Each run saves its own copy and starts from the newest one.
@@ -487,6 +496,19 @@ jobs:
 
       # The package carries the recompiled game, like the other platforms' downloads; it
       # stays encrypted until a release is public.
+      - name: Encrypt the compiler cache
+        shell: bash
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          tar -c -C .ccache . | openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -out ccache.tar.enc
+          ls -l ccache.tar.enc
+
+      - uses: actions/cache/save@v5
+        with:
+          path: ccache.tar.enc
+          key: ccache-android-${{ github.run_id }}-${{ github.run_attempt }}
+
       - name: Encrypt the package
         env:
           KEY: ${{ secrets.CI_ARTIFACT_KEY }}
