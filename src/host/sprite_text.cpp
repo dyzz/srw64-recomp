@@ -30,9 +30,11 @@ constexpr uint32_t kTitleSlot = 0x9C;          // 801C72C8: the card's title; 0x
 constexpr uint32_t kStageScene = 0x0010F5F0;   // current stage scene, physical
 constexpr const char* kMenuLabels[] = {"title_press_start", "title_start", "title_load", "title_continue", "title_option"};
 // Battle HUD scenes in atlas 1159 / palette 1160 (docs/native/native-ui-text.md §4): the
-// ability banners 1142-1153 and 1157, the response badges 反 防 回 1154-1156. Banner
-// text records, 0 where the table has none and a UI label stands in.
-constexpr uint16_t kHudAtlas = 1159, kHudPalette = 1160, kBannerFirst = 1142, kBadgeFirst = 1154, kHyperJammer = 1157;
+// ability banners 1142-1153 and 1157, ダミー 1158 (a decoy took the hit), the response
+// badges 反 防 回 1154-1156. Banner text records, 0 where the table has none and a UI
+// label stands in.
+constexpr uint16_t kHudAtlas = 1159, kHudPalette = 1160, kBannerFirst = 1142, kBadgeFirst = 1154, kHyperJammer = 1157,
+                   kDummy = 1158;
 constexpr uint16_t kBannerRecords[] = {1020, 1019, 1026, 1022, 1021, 1024, 1025, 1023, 0, 0, 1100, 1101};
 constexpr const char* kBannerLabels[] = {"", "", "", "", "", "", "", "", "hud_shield_defense", "hud_critical", "", ""};
 constexpr const char* kBadgeLabels[] = {"hud_counter", "hud_defend", "hud_evade"};
@@ -166,11 +168,14 @@ Style banner_style(bool badge, const std::string& locale) {
         s.fill_bottom[c] = badge ? yellow_bottom[c] : green_bottom[c];
         s.outline[c] = .02f;
     }
+    // Only the badges have a plate in atlas 1159; a banner is its letters in a black rim
+    // over the battle, which shows around them.
+    if (!badge) { s.outline_px = 1.0; s.outline_alpha = 1; s.shadow_px = .7; s.shadow_alpha = .45; return s; }
     s.outline_px = .6; s.outline_alpha = .8;
-    s.plate[0] = .12f; s.plate[1] = .14f; s.plate[2] = badge ? .42f : .27f; s.plate[3] = badge ? .95f : .88f;
-    s.plate_pad = badge ? 1.5 : 2.5;
-    s.min_plate[0] = badge ? 16 : 0; s.min_plate[1] = 16;
-    if (badge) { s.border[0] = 1; s.border[1] = 1; s.border[2] = .1f; s.border_px = 1; }
+    s.plate[0] = .12f; s.plate[1] = .14f; s.plate[2] = .42f; s.plate[3] = .95f;
+    s.plate_pad = 1.5;
+    s.min_plate[0] = 16; s.min_plate[1] = 16;
+    s.border[0] = 1; s.border[1] = 1; s.border[2] = .1f; s.border_px = 1;
     return s;
 }
 Style card_style(double size) {
@@ -424,11 +429,12 @@ bool describe(const uint8_t* rdram, const sprites::SceneId& id, TextJob& job) {
     const std::string locale = catalog->locale;
     const bool cjk = locale != "en";
     // Battle HUD: ability banners and the response badges.
-    if (id.atlas == kHudAtlas && id.palette == kHudPalette && id.scene >= kBannerFirst && id.scene <= kHyperJammer) {
+    if (id.atlas == kHudAtlas && id.palette == kHudPalette && id.scene >= kBannerFirst && id.scene <= kDummy) {
         const bool badge = id.scene >= kBadgeFirst && id.scene < kHyperJammer;
         std::string text;
         if (badge) text = catalog->ui(kBadgeLabels[id.scene - kBadgeFirst]);
         else if (id.scene == kHyperJammer) text = dialogue::ui_text(rdram, 1116);
+        else if (id.scene == kDummy) text = catalog->ui("hud_dummy");
         else if (const uint16_t record = kBannerRecords[id.scene - kBannerFirst]) text = dialogue::ui_text(rdram, record);
         else text = catalog->ui(kBannerLabels[id.scene - kBannerFirst]);
         if (const auto end = text.find("<END>"); end != std::string::npos) text.erase(end);

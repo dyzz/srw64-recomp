@@ -19,6 +19,9 @@ struct SRW64GameHooks {
     void (*damage_drawn)(uint8_t*, uint32_t begin, uint32_t end){};
     // 800945D4 (tactical map and other mode 8/9 sprites) wrote [begin, end) for sprite slot/sub.
     void (*map_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
+    // 8009504C (sprite mode 10) wrote [begin, end): a banner through 800945D4 (map_drawn
+    // already saw it), then the number beside it, up to five 8x16 cells of resource 1159.
+    void (*banner_number_drawn)(uint8_t*, uint32_t begin, uint32_t end){};
     // 800945D4 is about to draw slot/sub: true when its rectangles should stretch across a
     // picture wider than 4:3 (the focus lines, layouts 610-612, behind the title and prologue).
     bool (*map_stretch)(uint8_t*, uint32_t slot, uint32_t sub){};

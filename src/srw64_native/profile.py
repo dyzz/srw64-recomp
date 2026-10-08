@@ -103,7 +103,7 @@ UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_pr
 # The Controls page's remapping (frontend.cpp controls_page).
 UI_KEYS |= {"controls_cancel", "controls_capture", "controls_capture_note", "controls_controller", "controls_detected", "controls_fixed", "controls_fixed_list", "controls_keyboard", "controls_keyboard_note", "controls_list_note", "controls_no_pad", "controls_reserved", "controls_reset"}
 # Battle HUD banners and response badges drawn natively (sprite_text.cpp).
-UI_KEYS |= {"hud_counter", "hud_defend", "hud_evade", "hud_shield_defense", "hud_critical"}
+UI_KEYS |= {"hud_counter", "hud_defend", "hud_evade", "hud_shield_defense", "hud_critical", "hud_dummy"}
 UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_weapon_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}
 UI_KEYS |= {"parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "parts_free", "parts_equipped_count"}
 UI_KEYS |= {"ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint"}

@@ -422,6 +422,7 @@
     "hud_evade": "避",
     "hud_shield_defense": "盾牌防御",
     "hud_critical": "暴击",
+    "hud_dummy": "假身",
     "intermission_hint": "{KeyUp}{KeyDown} 选择   ·   {Enter} / {A} 确定   ·   也可以直接点击",
     "intermission_hint_pad": "{DUpDown} 选择   ·   {A} 确定   ·   也可以直接点触   ·   {Settings} 设置",
     "intermission_swap_hint": "{KeyUp}{KeyDown} 选择   ·   {Enter} / {A} 确定   ·   {Esc} / {B} 关闭",

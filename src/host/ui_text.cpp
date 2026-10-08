@@ -733,6 +733,60 @@ void damage_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
         {"step", int32_t(word(ram, 0x22722C))}, {"step_frame", int32_t(word(ram, 0x22731C))},
         {"cell", int16_t(half(ram, 0x227BC6))}, {"side", byte(ram, 0x227B60)}});
 }
+
+// The number beside a battle banner (8009504C, sprite mode 10: クリティカル 3000). After the
+// banner it resets the mode (E3000C00, 0), then per drawn cell loads 8x16 texels of 1159 at
+// T = 40, S = 144 + 8 * digit (LOADTILE S in 8-bit texels: half the pixel), sets the tile
+// size and draws one TEXRECT; leading zeros take no cell. Redrawn cell by cell in the
+// banners' green and black rim (sprite_text.cpp banner_style), narrowed into the cell.
+Style banner_digit_style() {
+    Style s;
+    s.bold = true; s.center = false; s.origin = Style::Origin::center;
+    s.size = 15; s.min_size = 15; s.pitch = 16 / s.size;
+    s.max_width = kCell; s.condense_min = .7;
+    const float top[3] = {.90f, 1.f, .90f}, bottom[3] = {.29f, .87f, .55f};
+    for (int c = 0; c < 3; ++c) { s.fill_top[c] = top[c]; s.fill_bottom[c] = bottom[c]; s.outline[c] = .02f; }
+    s.outline_px = 1.0; s.outline_alpha = 1; s.shadow_px = .7; s.shadow_alpha = .45;
+    return s;
+}
+void banner_number_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
+    if (end <= begin || end > 0x800000 || !active()) return;
+    uint32_t from = 0;
+    for (uint32_t p = begin; p + 8 <= end; p += 8)
+        if (word(ram, p) == 0xE3000C00 && word(ram, p + 4) == 0) from = p + 8;
+    if (!from) return;
+    std::lock_guard lock(mutex);
+    std::vector<uint32_t> rects;
+    std::vector<sprites::PlacedText> items;
+    float bounds[4] = {1e9f, 1e9f, -1e9f, -1e9f};
+    uint32_t load = 0;
+    std::string figure;
+    for (uint32_t p = from; p + 24 <= end; p += 8) {
+        const uint32_t w0 = word(ram, p);
+        if (w0 >> 24 == 0xF4) { load = w0; continue; }
+        if (w0 >> 24 != 0xE4 || word(ram, p - 8) >> 24 != 0xF2 || word(ram, p + 8) >> 24 != 0xE1 || word(ram, p + 16) >> 24 != 0xF1) continue;
+        const unsigned s = ((load >> 12) & 0xFFF) / 2;
+        if (!load || (load & 0xFFF) != 40 * 4 || s < 144 || (s - 144) % 8 || s > 144 + 9 * 8) {
+            note("banner-number", {{"kind", "mismatch"}, {"what", "banner number"}});
+            return;
+        }
+        const auto [x0, y0] = corner(ram, p);
+        bounds[0] = std::min(bounds[0], x0 / 4.f); bounds[1] = std::min(bounds[1], y0 / 4.f);
+        bounds[2] = std::max(bounds[2], ((w0 >> 12) & 0xFFF) / 4.f); bounds[3] = std::max(bounds[3], (w0 & 0xFFF) / 4.f);
+        const std::string glyph(1, char('0' + (s - 144) / 8));
+        figure += glyph;
+        const float white[3] = {1, 1, 1};
+        items.push_back(placed(banner_digit_style(), "ja", glyph, "banner-digit", x0 / 4.f + kCell / 2.f, y0 / 4.f, white));
+        rects.push_back(p);
+        p += 16;
+    }
+    if (items.empty() || !sprites::place_texts(ram, rects.front(), bounds, items)) return;
+    for (const uint32_t rect : rects)
+        if (rect != rects.front())
+            for (uint32_t k = 0; k < 24; k += 4) put(ram, rect + k, 0);
+    ++counts.numbers;
+    note("banner-number:" + figure, {{"kind", "banner number"}, {"figure", figure}});
+}
 }
 
 void configure(const std::filesystem::path& output) {
@@ -742,6 +796,7 @@ void configure(const std::filesystem::path& output) {
     if (!output.empty()) log.open(output / "ui-text.jsonl");
     srw64_game_hooks.ui_text_drawn = drawn;
     srw64_game_hooks.damage_drawn = damage_drawn;
+    srw64_game_hooks.banner_number_drawn = banner_number_drawn;
 }
 
 json state() {

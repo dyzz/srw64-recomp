@@ -70,6 +70,8 @@ NATIVE_HOOKS = {
     "load_000AB160_func_801C8B04": "srw64_original_map_idle",
     "load_000AB160_func_801E4760": "srw64_original_move_range_draw",
     "resident_func_800945D4": "srw64_original_map_draw",
+    # Sprite mode 10: an ability banner and the number beside it (ui_text.cpp).
+    "resident_func_8009504C": "srw64_original_banner_number_draw",
     "load_000AB160_func_801E2D54": "srw64_original_terrain_panel_draw",
     "resident_func_800964E4": "srw64_original_portrait_draw",
     "resident_func_80095974": "srw64_original_background_draw",

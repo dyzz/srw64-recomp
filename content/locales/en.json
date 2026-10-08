@@ -422,6 +422,7 @@
     "hud_evade": "EVA",
     "hud_shield_defense": "Shield Defense",
     "hud_critical": "Critical",
+    "hud_dummy": "Dummy",
     "intermission_hint": "{KeyUp}{KeyDown} Select   ·   {Enter} / {A}: Confirm   ·   or click an item",
     "intermission_hint_pad": "{DUpDown} Select   ·   {A}: Confirm   ·   or tap an item   ·   {Settings}: Settings",
     "intermission_swap_hint": "{KeyUp}{KeyDown} Select   ·   {Enter} / {A}: Confirm   ·   {Esc} / {B}: Close",

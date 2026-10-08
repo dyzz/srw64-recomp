@@ -280,6 +280,13 @@ void resident_func_800945D4(uint8_t* rdram, recomp_context* ctx) {
     if (stretch) srw64::wide_map::stretch_rects(rdram, cursor, false);
     if (srw64_game_hooks.map_drawn) srw64_game_hooks.map_drawn(rdram, begin, end, slot, sub);
 }
+void resident_func_8009504C(uint8_t* rdram, recomp_context* ctx) {
+    const int32_t cursor = ctx->r4;
+    const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
+    srw64_original_banner_number_draw(rdram, ctx);
+    const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
+    if (srw64_game_hooks.banner_number_drawn) srw64_game_hooks.banner_number_drawn(rdram, begin, end);
+}
 void resident_func_800964E4(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
     const uint32_t slot = ctx->r5, sub = ctx->r6;

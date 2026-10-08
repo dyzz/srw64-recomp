@@ -422,6 +422,7 @@
     "hud_evade": "回",
     "hud_shield_defense": "シールド防御",
     "hud_critical": "クリティカル",
+    "hud_dummy": "ダミー",
     "intermission_hint": "{KeyUp}{KeyDown} 選択   ·   {Enter} / {A} 決定   ·   クリックでも選べます",
     "intermission_hint_pad": "{DUpDown} 選択   ·   {A} 決定   ·   タッチでも選べます   ·   {Settings} 設定",
     "intermission_swap_hint": "{KeyUp}{KeyDown} 選択   ·   {Enter} / {A} 決定   ·   {Esc} / {B} 閉じる",
