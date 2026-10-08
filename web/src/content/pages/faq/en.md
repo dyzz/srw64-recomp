@@ -86,15 +86,14 @@ Most additions focus on the interface, reading and controls: natively rendered s
 
 ## The game stops on one screen, or the window is "Not responding"?
 
-Most often the graphics driver is too old. One Windows player, for example, had an NVIDIA driver from 2021 (472.12): the game stopped on the opening flames, and the log showed the graphics device lost (`VK_ERROR_DEVICE_LOST`). First update your graphics driver to the latest version:
+Most often the graphics driver is too old. Update it to at least:
 
-- **NVIDIA**: update with the NVIDIA App (or GeForce Experience), or download it from NVIDIA's website.
-- **AMD**: download the Adrenalin driver from AMD's website.
-- **Intel**: update with Intel Driver & Support Assistant, or download it from Intel's website.
-- A laptop with both a dedicated and an integrated GPU needs both drivers updated. The drivers Windows Update installs are often old; get them from the GPU maker's website instead.
-- **Linux**: update your system's graphics driver (Mesa or the NVIDIA driver). On the **Steam Deck**, keep SteamOS up to date.
+- **NVIDIA**: newer than 475.14.
+- **AMD**: a driver released in 2019 or later.
+- **Intel**: the latest driver.
+- **Linux**: your distribution's latest Mesa or NVIDIA driver. On the **Steam Deck**, keep SteamOS up to date.
 
-If it still stops after the update, close the game, open it again, export a problem report under Options → Report (the previous run's logs are included), and attach it to a [GitHub issue](https://github.com/dyzz/srw64-recomp/issues) with your graphics card model.
+Get the driver from the GPU maker's website; the ones Windows Update installs are often old. A laptop with two GPUs needs both updated. If it still stops, open the game again, export a problem report under Options → Report and attach it to a [GitHub issue](https://github.com/dyzz/srw64-recomp/issues).
 
 ## How do I report a problem?
 

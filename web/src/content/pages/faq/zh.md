@@ -86,15 +86,14 @@ HD 包是单独下载、可选安装的图片包，只替换游戏画面。未�
 
 ## 游戏卡在某个画面不动，或窗口「未响应」？
 
-多半是显卡驱动太旧。例如有 Windows 玩家用的是 2021 年的 NVIDIA 驱动（472.12），游戏停在开场的火焰画面不动，日志里显示显卡设备丢失（`VK_ERROR_DEVICE_LOST`）。请先把显卡驱动更新到最新版：
+多半是显卡驱动太旧，请先更新到下面的版本或更新：
 
-- **NVIDIA**：用 NVIDIA App（或 GeForce Experience）更新，或到 NVIDIA 官网下载。
-- **AMD**：到 AMD 官网下载 Adrenalin 驱动。
-- **Intel**：用 Intel 驱动与支持助理更新，或到 Intel 官网下载。
-- 笔记本如果同时有独立显卡和集成显卡，两块的驱动都要更新。Windows 更新自带的驱动往往偏旧，最好从显卡厂商官网下载。
-- **Linux**：更新系统的显卡驱动（Mesa 或 NVIDIA 驱动）。**Steam Deck** 保持 SteamOS 为最新即可。
+- **NVIDIA**：高于 475.14。
+- **AMD**：2019 年以后发布的驱动。
+- **Intel**：最新驱动。
+- **Linux**：发行版提供的最新 Mesa 或 NVIDIA 驱动。**Steam Deck** 保持 SteamOS 为最新即可。
 
-更新后仍然卡住，请关掉游戏、重新打开，在「选项 → 反馈」里导出问题报告（上一次运行的日志也会在里面），附在 [GitHub Issue](https://github.com/dyzz/srw64-recomp/issues) 里，并写上显卡型号。
+驱动最好从显卡厂商官网下载，Windows 更新自带的往往偏旧；笔记本如果有两块显卡，两块都要更新。更新后仍然卡住，请重新打开游戏，在「选项 → 反馈」里导出问题报告，附在 [GitHub Issue](https://github.com/dyzz/srw64-recomp/issues) 里。
 
 ## 遇到问题怎么反馈？
 
