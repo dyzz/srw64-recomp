@@ -1,4 +1,5 @@
-// The Windows menu bar (app_menu.hpp): always on the window, full screen included. SDL turns
+// The Windows menu bar (app_menu.hpp): always on a window; in full screen it comes down when
+// the mouse reaches the top of the screen and goes away when the mouse leaves it. SDL turns
 // Alt and F10 away from menus, so the bar answers the mouse; the shortcuts it names (Ctrl+,
 // F5, F11) are frontend.cpp's own keys. Everything runs on the window's thread.
 #include "app_menu.hpp"
@@ -18,6 +19,7 @@ HWND hwnd{};
 HMENU bar{}, game{}, view{};
 WNDPROC sdl_proc{};
 bool installed = false;
+bool bar_shown = false;
 std::string last_title;
 WindowState last_state{false, -1, -1};
 
@@ -39,6 +41,32 @@ void set_text(HMENU menu, UINT id, const std::string& text, bool by_position = f
     info.fMask = MIIM_STRING;
     info.dwTypeData = value.data();
     SetMenuItemInfoW(menu, id, by_position, &info);
+}
+// Puts the bar on the window or takes it off. A window keeps its picture's size (the bar
+// adds its height to the window); in full screen the window is the screen and the picture
+// gives the bar its row.
+void show_bar(bool shown, bool keep_picture) {
+    if (shown == bar_shown) return;
+    RECT before{}, after{}, frame{};
+    GetClientRect(hwnd, &before);
+    SetMenu(hwnd, shown ? bar : nullptr);
+    bar_shown = shown;
+    GetClientRect(hwnd, &after);
+    if (keep_picture && GetWindowRect(hwnd, &frame) && after.bottom != before.bottom)
+        SetWindowPos(hwnd, nullptr, 0, 0, frame.right - frame.left, frame.bottom - frame.top + before.bottom - after.bottom,
+                     SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+}
+// In full screen: shown while the mouse is at the screen's top edge or on the bar.
+bool bar_wanted(bool fullscreen) {
+    if (!fullscreen) return true;
+    if (GetForegroundWindow() != hwnd) return false;
+    POINT mouse{};
+    RECT frame{};
+    if (!GetCursorPos(&mouse) || !GetWindowRect(hwnd, &frame) || mouse.x < frame.left || mouse.x >= frame.right) return false;
+    if (!bar_shown) return mouse.y <= frame.top;
+    POINT client{0, 0};
+    ClientToScreen(hwnd, &client);
+    return mouse.y < client.y;
 }
 LRESULT CALLBACK proc(HWND window, UINT message, WPARAM w, LPARAM l) {
     if (message == WM_COMMAND && HIWORD(w) == 0) {
@@ -82,18 +110,12 @@ void attach(SDL_Window* window) {
     AppendMenuW(bar, MF_POPUP, UINT_PTR(game), L"Marchwind64");
     AppendMenuW(bar, MF_POPUP, UINT_PTR(view), L"View");
     sdl_proc = WNDPROC(SetWindowLongPtrW(hwnd, GWLP_WNDPROC, LONG_PTR(&proc)));
-    // The bar takes its height from the window; the picture keeps the size it was given.
-    RECT before{}, after{}, frame{};
-    GetClientRect(hwnd, &before);
-    SetMenu(hwnd, bar);
-    GetClientRect(hwnd, &after);
-    const bool sized = !(SDL_GetWindowFlags(window) & (SDL_WINDOW_FULLSCREEN | SDL_WINDOW_MAXIMIZED));
-    if (sized && GetWindowRect(hwnd, &frame) && after.bottom != before.bottom)
-        SetWindowPos(hwnd, nullptr, 0, 0, frame.right - frame.left, frame.bottom - frame.top + before.bottom - after.bottom,
-                     SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+    show_bar(true, !(SDL_GetWindowFlags(window) & (SDL_WINDOW_FULLSCREEN | SDL_WINDOW_MAXIMIZED)));
 }
 void update(const Labels& labels, const WindowState& state) {
     if (!hwnd) return;
+    // Leaving full screen, SDL sized the window without the bar: it comes back with its height.
+    show_bar(bar_wanted(state.fullscreen), !state.fullscreen && !IsZoomed(hwnd));
     const std::string title = labels.game + "\n" + labels.settings + "\n" + labels.reload + "\n" + labels.view + "\n" + labels.fullscreen +
                               "\n" + labels.window_scale + "\n" + labels.about + "\n" + labels.check_updates + "\n" + labels.exit;
     if (installed && title == last_title && state.fullscreen == last_state.fullscreen &&
@@ -157,7 +179,7 @@ void shutdown() {
         DestroyMenu(bar);  // with its popups
     }
     hwnd = nullptr; bar = game = view = nullptr; sdl_proc = nullptr;
-    installed = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false;
+    installed = false; bar_shown = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false;
     last_title.clear(); last_state = {false, -1, -1};
 }
 }
