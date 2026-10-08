@@ -20,6 +20,8 @@ on:
   push:
     branches: [main]
     tags: ["v*"]
+    # The website and the documents go into no package. Tag pushes ignore these filters.
+    paths-ignore: ["web/**", "docs/**", "*.md"]
 
 permissions:
   contents: read
@@ -96,6 +98,10 @@ jobs:
       VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}\vcpkg-cache
       # Python reads and writes text as UTF-8, not the Windows code page (X3: unspecified encodings).
       PYTHONUTF8: "1"
+      CCACHE_DIR: ${{ github.workspace }}\.ccache
+      CCACHE_BASEDIR: ${{ github.workspace }}
+      CCACHE_COMPILERCHECK: content
+      CCACHE_MAXSIZE: 2G
     steps:
       - uses: actions/checkout@v5
 
@@ -141,6 +147,36 @@ jobs:
           path: vcpkg-cache
           key: vcpkg-x64-windows-freetype-harfbuzz-icu-v1
 
+      # The compiler cache (ccache), kept encrypted like the generated inputs: it holds the
+      # compiled game code. Each run saves its own copy and starts from the newest one.
+      - uses: actions/cache/restore@v5
+        with:
+          path: ccache.tar.enc
+          key: ccache-windows-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: ccache-windows-
+
+      - name: Decrypt the compiler cache
+        shell: bash
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          mkdir -p .ccache
+          if [ -f ccache.tar.enc ]; then
+            openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:KEY -in ccache.tar.enc | tar -x -C .ccache
+            rm ccache.tar.enc
+          fi
+          du -sh .ccache
+
+      # ccache from its release, checked against the hash taken when it was pinned.
+      - name: ccache
+        shell: pwsh
+        run: |
+          $zip = "$env:RUNNER_TEMP\ccache.zip"
+          Invoke-WebRequest -Uri https://github.com/ccache/ccache/releases/download/v4.13.6/ccache-4.13.6-windows-x86_64.zip -OutFile $zip
+          if ((Get-FileHash $zip -Algorithm SHA256).Hash -ne "3D7CEBB05850AD704E197B3F1D3F0F924AB6C9FDFC561578E146184FE9D89380") { throw "ccache checksum mismatch" }
+          Expand-Archive $zip -DestinationPath $env:RUNNER_TEMP
+          "$env:RUNNER_TEMP\ccache-4.13.6-windows-x86_64" | Out-File -Append -Encoding utf8 $env:GITHUB_PATH
+
       - name: MSVC environment
         shell: pwsh
         run: |
@@ -150,6 +186,9 @@ jobs:
           }
 
       - name: Configure
+        env:
+          CMAKE_C_COMPILER_LAUNCHER: ccache
+          CMAKE_CXX_COMPILER_LAUNCHER: ccache
         run: |
           cmake -S src/host -B build/recomp/gfx-build -G Ninja -DCMAKE_BUILD_TYPE=Release `
             -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl `
@@ -164,7 +203,22 @@ jobs:
           Remove-Item cpu-build.log
 
       - name: Host
-        run: cmake --build build/recomp/gfx-build --target srw64-gfx-host -j 4 -- -k 0
+        run: |
+          cmake --build build/recomp/gfx-build --target srw64-gfx-host -j 4 -- -k 0
+          ccache -s
+
+      - name: Encrypt the compiler cache
+        shell: bash
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          tar -c -C .ccache . | openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -out ccache.tar.enc
+          ls -l ccache.tar.enc
+
+      - uses: actions/cache/save@v5
+        with:
+          path: ccache.tar.enc
+          key: ccache-windows-${{ github.run_id }}-${{ github.run_attempt }}
 
       # librashader built from its pinned commit with D3D12 and Vulkan (fetch_librashader.py);
       # the cache keeps the finished library, so Cargo only runs when the pin changes.
@@ -251,15 +305,56 @@ jobs:
             build/macos-deps/sources
           key: linux-deps-${{ hashFiles('config/recomp/macos-dependencies.json') }}-v1
 
+      # librashader, compiled with Cargo in the container; the cache keeps the finished library.
+      - uses: actions/cache@v5
+        with:
+          path: build/recomp/thirdparty/librashader/linux
+          key: librashader-linux-${{ hashFiles('tools/recomp/toolchain/fetch_librashader.py') }}
+
+      # The compiler cache (ccache), kept encrypted like the generated inputs: it holds the
+      # compiled game code. Each run saves its own copy and starts from the newest one.
+      - uses: actions/cache/restore@v5
+        with:
+          path: ccache.tar.enc
+          key: ccache-linux-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: ccache-linux-
+
+      - name: Decrypt the compiler cache
+        shell: bash
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          mkdir -p .ccache
+          if [ -f ccache.tar.enc ]; then
+            openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:KEY -in ccache.tar.enc | tar -x -C .ccache
+            rm ccache.tar.enc
+          fi
+          du -sh .ccache
+
       # The same Ubuntu 22.04 container as tools/release/linux/build.sh (glibc 2.35 baseline).
       - name: Build in the Ubuntu 22.04 container
         run: |
           docker build -q -t srw64-linux-build:jammy tools/release/linux
           docker run --rm -v "$PWD:$PWD" -w "$PWD" -e HOME=/tmp -e PYTHONUTF8=1 \
             -e GIT_CONFIG_COUNT=1 -e GIT_CONFIG_KEY_0=safe.directory -e GIT_CONFIG_VALUE_0='*' \
-            srw64-linux-build:jammy python3.11 tools/release/build_linux.py --jobs 4
-          sudo chown -R "$(id -u):$(id -g)" build
+            -e CCACHE_DIR="$PWD/.ccache" -e CCACHE_BASEDIR="$PWD" -e CCACHE_COMPILERCHECK=content -e CCACHE_MAXSIZE=2G \
+            -e CMAKE_C_COMPILER_LAUNCHER=ccache -e CMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            srw64-linux-build:jammy sh -c 'python3.11 tools/release/build_linux.py --jobs 4 && ccache -s'
+          sudo chown -R "$(id -u):$(id -g)" build .ccache
           ls -l build/linux-x64/*.tar.gz
+
+      - name: Encrypt the compiler cache
+        shell: bash
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          tar -c -C .ccache . | openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -out ccache.tar.enc
+          ls -l ccache.tar.enc
+
+      - uses: actions/cache/save@v5
+        with:
+          path: ccache.tar.enc
+          key: ccache-linux-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Encrypt the package
         env:
@@ -307,7 +402,7 @@ jobs:
       - name: Tools
         run: |
           sudo apt-get update -q
-          sudo apt-get install -y -q clang
+          sudo apt-get install -y -q clang ccache
           python -m venv .venv
           .venv/bin/python -m pip install -q -e . -r requirements.lock
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null
@@ -332,6 +427,26 @@ jobs:
           path: build/recomp/thirdparty/librashader/android
           key: librashader-android-${{ hashFiles('tools/recomp/toolchain/fetch_librashader.py') }}
 
+      # The compiler cache (ccache), kept encrypted like the generated inputs: it holds the
+      # compiled game code. Each run saves its own copy and starts from the newest one.
+      - uses: actions/cache/restore@v5
+        with:
+          path: ccache.tar.enc
+          key: ccache-android-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: ccache-android-
+
+      - name: Decrypt the compiler cache
+        shell: bash
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          mkdir -p .ccache
+          if [ -f ccache.tar.enc ]; then
+            openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:KEY -in ccache.tar.enc | tar -x -C .ccache
+            rm ccache.tar.enc
+          fi
+          du -sh .ccache
+
       - name: Rust target
         run: rustup target add aarch64-linux-android
 
@@ -354,8 +469,15 @@ jobs:
       - name: Build the APK
         env:
           SRW64_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          CCACHE_DIR: ${{ github.workspace }}/.ccache
+          CCACHE_BASEDIR: ${{ github.workspace }}
+          CCACHE_COMPILERCHECK: content
+          CCACHE_MAXSIZE: 2G
+          CMAKE_C_COMPILER_LAUNCHER: ccache
+          CMAKE_CXX_COMPILER_LAUNCHER: ccache
         run: |
           .venv/bin/python tools/release/android/build_game.py --no-prepare --quiet-game-code
+          ccache -s
           apk=build/android/game/srw64-android.apk
           "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 "$apk" > /dev/null
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs "$apk" | head -3

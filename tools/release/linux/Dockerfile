@@ -5,7 +5,7 @@
 FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        ca-certificates curl git xz-utils pkg-config make ninja-build cmake \
+        ca-certificates curl git xz-utils pkg-config make ninja-build cmake ccache \
         clang lld python3.11 python3.11-venv \
         zlib1g-dev libdbus-1-dev libudev-dev \
         libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev \
