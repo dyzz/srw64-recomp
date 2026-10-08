@@ -33,6 +33,9 @@ constexpr uint32_t kNumbers = 0x1613E0, kNumberSize = 8, kNumberCount = 20;     
 constexpr uint32_t kPaletteHandles = 0x178B52;                                    // s16 x 8: resources 2 3 4 8 7 5 6 1160
 constexpr uint32_t kHandles = 0x160340, kHandleSize = 20, kHandleCount = 200;
 constexpr unsigned kLine = 14, kNarrow = 8, kWide = 14, kWideFirst = 0x13B, kCell = 8, kLabelGlyphs = 64;
+// The ROM's glyphs carry a pixel of space on their left, the font's capitals hardly any: a
+// translation starts that much in, off the frame its window draws (Will on the map panel).
+constexpr int kInset = 1;
 constexpr uint16_t kLongDash = 0xD3;   // ー: the minus sign of printed numbers
 
 std::mutex mutex;
@@ -102,7 +105,7 @@ Style label_style(const std::string& locale, double max_width, bool single) {
     // then a little smaller.
     s.size = locale == "en" ? 12 : 12.5; s.min_size = s.size - 1.5; s.pitch = kLine / s.size;
     s.max_width = max_width;
-    s.condense_min = locale == "en" ? .8 : .7;
+    s.condense_min = .7;
     s.origin = single ? Style::Origin::center : Style::Origin::left;
     for (int c = 0; c < 3; ++c) { s.fill_top[c] = s.fill_bottom[c] = 1; s.outline[c] = 0; }
     s.outline_px = .8; s.outline_alpha = .65; s.shadow_px = .7; s.shadow_alpha = .45;
@@ -127,6 +130,15 @@ sprites::PlacedText placed(const Style& style, const std::string& locale, const 
     std::copy(tint, tint + 3, item.job.tint);
     item.x = x; item.y = y;
     return item;
+}
+// The blank an original line ends on: full-width punctuation fills only the left of its
+// cell, so the ink of 。 and the like stops half a cell early; other glyphs leave a pixel.
+int trailing_blank(const std::string& drawn) {
+    for (const char* mark : {"。", "、", "！", "？", "」", "』", "）"}) {
+        const size_t n = std::strlen(mark);
+        if (drawn.size() >= n && drawn.compare(drawn.size() - n, n, mark) == 0) return int(kWide) / 2;
+    }
+    return 1;
 }
 std::string catalog_form(const std::string& text) {
     std::string out;
@@ -315,11 +327,27 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             widest = std::max(widest, line);
         }
         Style style = label_style(locale, 0, false);
+        std::string shown_text = catalog_form(text);
         style.pitch = 16 / style.size;
         style.width = widest * 1.1 + 6;
+        // A label the original prints right after a one-line body (発進！スイームルグ|クリア)
+        // joins it as one sentence in the run's width, on the labels' line pitch so it shares
+        // their baseline.
+        for (auto& l : found) {
+            if (shown_text.find("<BR>") != std::string::npos) break;
+            if (l.id == 0 || l.consumed || l.cells.empty() || l.palette != body.palette) continue;
+            const auto& c0 = l.cells.front();
+            if (std::abs(c0.y - body.y) > 2 || c0.x < body.x + widest - 2 || c0.x > body.x + widest + int(kNarrow)) continue;
+            shown_text += (locale == "en" ? " " : "") + (l.text.empty() ? l.drawn : l.text);
+            style.pitch = kLine / style.size;
+            style.width = 0;
+            style.max_width = l.cells.back().x + l.cells.back().width - body.x - trailing_blank(l.drawn);
+            l.consumed = true;
+            break;
+        }
         float tint[3];
         colour(ram, body.palette, tint);
-        items.push_back(placed(style, locale, catalog_form(text), "body", float(body.x), float(body.y), tint));
+        items.push_back(placed(style, locale, shown_text, "body", float(body.x), float(body.y), tint));
         for (const uint32_t rect : body.record->rects) { replaced.push_back(rect); cover(rect); }
         shown.push_back({{"body", body.address}, {"x", body.x}, {"y", body.y}, {"text", text}});
         note("body:" + locale + ":" + text, {{"kind", "body"}, {"record", half(ram, body.address)}, {"text", text}});
@@ -393,6 +421,52 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         const size_t lead = std::min(text.find_first_not_of(' '), text.size());
         starts.push_back({half(ram, entry + 4) + int(kCell * lead), half(ram, entry + 6), -1});
     }
+    // Labels starting in one column on nearby lines share a window, so the widest original
+    // among them is the room the window has: no less (ムゲ兵 under ムゲ小型戦闘機), and,
+    // since the frame is out of sight, no more (変形 among the unit commands).
+    // 0 for a label alone in its column.
+    const auto column = [&](int x, int y) {
+        std::vector<std::pair<int, int>> lines;   // y, original width
+        for (size_t i = 0; i < found.size(); ++i) {
+            if (found[i].consumed || found[i].id == 0) continue;
+            const auto parts = parts_of(found[i]);
+            if (!parts.empty() && std::abs(parts.front().x - x) <= 1) lines.push_back({parts.front().y, parts.front().width});
+        }
+        std::sort(lines.begin(), lines.end());
+        const auto at = std::find_if(lines.begin(), lines.end(), [y](const auto& line) { return line.first == y; });
+        if (at == lines.end()) return 0;
+        int widest = 0;
+        for (auto k = at; k + 1 != lines.end() && (k + 1)->first - k->first <= 24; ++k) widest = std::max(widest, (k + 1)->second);
+        for (auto k = at; k != lines.begin() && k->first - (k - 1)->first <= 24; --k) widest = std::max(widest, (k - 1)->second);
+        return widest ? std::max(widest, at->second) : 0;
+    };
+    // A label the original continues on the same line where it ends (ROMカートリッジ|のデータを
+    // ロードします): the translation reads as one sentence from the first piece's start, in
+    // the run's own width. The follower is alone in its column, so table cells stay apart.
+    std::vector<int> run(found.size(), 0);   // label -> the original run's width it now holds
+    for (size_t i = 0; i < found.size(); ++i) {
+        Label& a = found[i];
+        if (a.id == 0 || a.consumed) continue;
+        const auto pa = parts_of(a);
+        if (pa.size() != 1) continue;
+        for (bool joined = true; joined;) {
+            joined = false;
+            const int end = pa.front().x + (run[i] ? run[i] : pa.front().width);
+            for (size_t j = 0; j < found.size(); ++j) {
+                Label& b = found[j];
+                if (j == i || b.id == 0 || b.consumed || b.palette != a.palette || (!a.translated && !b.translated)) continue;
+                const auto pb = parts_of(b);
+                if (pb.size() != 1 || std::abs(pb.front().y - pa.front().y) > 2) continue;
+                if (pb.front().x < end - 2 || pb.front().x > end + int(kNarrow) || column(pb.front().x, pb.front().y)) continue;
+                const std::string first = composed[i].empty() ? a.text : composed[i];
+                const std::string second = composed[j].empty() ? (b.text.empty() ? b.drawn : b.text) : composed[j];
+                composed[i] = first + (locale == "en" ? " " : "") + second;
+                run[i] = pb.front().x + pb.front().width - pa.front().x - trailing_blank(b.drawn) + 1;
+                a.translated = true; b.consumed = true; joined = true;
+                break;
+            }
+        }
+    }
     const auto room = [&](size_t self, int x, int y, int width) {
         int next = 316;   // the screen's right edge, less a margin
         for (const auto& start : starts) {
@@ -400,8 +474,12 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             if (std::abs(start.y - y) <= 6 && start.x > x + 2) next = std::min(next, start.x - 4);
         }
         // Text as drawn keeps the original's width (its narrow kana set it); a translation
-        // may run on a little where nothing follows.
-        const double limit = std::min(double(next - x), found[self].translated ? width * 1.35 + 4 : width + 2.0);
+        // takes its column's width less the pixel the ROM's glyphs leave on their right, or
+        // alone may run on a little where nothing follows.
+        const int widest = column(x, y);
+        const double spare = !found[self].translated ? width + 2.0
+                           : run[self] ? run[self] - 1.0 : widest ? widest - 1.0 : width * 1.35 + 4;
+        const double limit = std::min(double(next - x), spare) - (found[self].translated ? kInset : 0);
         return std::max(double(width) - (found[self].translated ? 0 : 2), limit);
     };
     // Text printed glyph by glyph (カラオケ lyrics are one label per glyph): the ROM's kana are
@@ -527,20 +605,21 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             }
             const auto parts = parts_of(l);
             const auto pieces = split(text);
+            const int inset = l.translated ? kInset : 0;
             if (parts.empty() || pieces.empty()) {
             } else if (composed[i].empty() && pieces.size() == parts.size() && parts.size() > 1) {
                 // Runs of two spaces or more hold places for numbers other labels draw:
                 // each part goes to where the original part starts.
                 for (size_t k = 0; k < parts.size(); ++k)
                     items.push_back(placed(label_style(locale, room(i, parts[k].x, parts[k].y, parts[k].width), false), locale, pieces[k], "label",
-                                           float(parts[k].x), float(parts[k].y), tint));
+                                           float(parts[k].x + inset), float(parts[k].y), tint));
             } else {
                 int widest = 0;
                 for (const auto& part : parts) widest = std::max(widest, part.x + part.width - parts.front().x);
                 const bool one_line = parts.back().y == parts.front().y && text.find('\n') == std::string::npos;
                 const double width = one_line ? room(i, parts.front().x, parts.front().y, widest) : widest * 1.15 + 3;
                 items.push_back(placed(label_style(locale, width, false), locale, catalog_form(text), "label",
-                                       float(parts.front().x), float(l.cells.front().icon ? parts.front().y : l.y), tint));
+                                       float(parts.front().x + inset), float(l.cells.front().icon ? parts.front().y : l.y), tint));
             }
             counts.translated += l.translated;
             for (size_t k = 0; k < l.cells.size(); ++k) if (!l.cells[k].icon) take(k);
