@@ -1,7 +1,6 @@
 ---
 title: "What recompilation is: how Marchwind 64 is built"
-date: 2026-10-08
-pinned: true
+date: 2026-10-04
 summary: "Marchwind 64 is neither an emulator nor a remake: the original program is translated, whole, into code that computers and phones run directly. This post explains static recompilation and how the project fits together."
 ---
 
