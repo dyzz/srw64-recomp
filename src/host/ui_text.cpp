@@ -1,4 +1,5 @@
 #include "ui_text.hpp"
+#include "menu_widen.hpp"
 #include "battle_page.hpp"
 #include "game_hooks.hpp"
 #include "native_dialogue.hpp"
@@ -467,6 +468,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             }
         }
     }
+    const auto widened = menu_widen::windows();
     const auto room = [&](size_t self, int x, int y, int width) {
         int next = 316;   // the screen's right edge, less a margin
         for (const auto& start : starts) {
@@ -477,8 +479,12 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         // takes its column's width less the pixel the ROM's glyphs leave on their right, or
         // alone may run on a little where nothing follows.
         const int widest = column(x, y);
-        const double spare = !found[self].translated ? width + 2.0
-                           : run[self] ? run[self] - 1.0 : widest ? widest - 1.0 : width * 1.35 + 4;
+        double spare = !found[self].translated ? width + 2.0
+                     : run[self] ? run[self] - 1.0 : widest ? widest - 1.0 : width * 1.35 + 4;
+        // In a menu drawn wider than the original's (menu_widen.hpp), up to its inner edge.
+        if (found[self].translated)
+            for (const auto& w : widened)
+                if (x >= w.x0 && x < w.x1 && y >= w.y0 - 2 && y <= w.y1) spare = w.x1 - x;
         const double limit = std::min(double(next - x), spare) - (found[self].translated ? kInset : 0);
         return std::max(double(width) - (found[self].translated ? 0 : 2), limit);
     };

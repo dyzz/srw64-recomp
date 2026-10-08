@@ -6,6 +6,7 @@
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
 #include "native_gpu.hpp"
+#include "menu_widen.hpp"
 #include "rom_art.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
@@ -153,12 +154,27 @@ Asset load_meta(const std::filesystem::path& folder) {
     return asset;
 }
 
+// A widened menu's frame in the original picture mode: its original pixels (asset layout
+// = scene | kPixels). Drawn from the ROM even then, since the menu_widen.cpp display list
+// stretch alone smears its widened column.
+constexpr uint16_t kPixels = 0x8000;
+
+// A frame scene's spec: the widened menus (menu_widen.hpp) as drawn, wider than the ROM's.
+std::optional<rom_art::FrameSpec> frame_spec(uint16_t layout) {
+    const uint16_t scene = layout & uint16_t(~kPixels);
+    const auto c = menu_widen::columns(scene);
+    if (!c) return rom_art::frame(scene);
+    auto spec = rom_art::line_frame(scene);
+    spec.widen = {c->top, c->bottom, c->stretch, c->shift, c->shift_end, c->delta};
+    return spec;
+}
+
 // A window frame drawn from the ROM's line layout (rom_art.cpp): indices, coverage, the
 // reference palette and the painted base.
 void generate(Asset& asset) {
-    const auto spec = rom_art::frame(asset.layout);
+    const auto spec = frame_spec(asset.layout);
     if (!spec) return;
-    const auto image = rom_art::frame_image(*spec);
+    const auto image = rom_art::frame_image(*spec, !(asset.layout & kPixels));
     if (!image.width) return;
     asset.width = image.width; asset.height = image.height; asset.scale = image.scale;
     asset.origin[0] = image.origin[0]; asset.origin[1] = image.origin[1];
@@ -382,7 +398,7 @@ void configure(const std::filesystem::path& directory) {
     // as assets added the first time each frame scene is drawn.
     if (const char* art = std::getenv("SRW64_ART_PACK"); art && *art) rom_frames = true;
     assets.reserve(assets.size() + 512);     // frames join later: no reallocation under the renderer
-    if (assets.empty() && !rom_frames) return;
+    // The widened menus' frames come from the ROM with or without the pack, so this runs always.
     decoder = std::thread(decode_loop);
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
@@ -391,7 +407,6 @@ void configure(const std::filesystem::path& directory) {
 }
 
 void gpu_init() {
-    if (assets.empty() && !rom_frames) return;
     // The textures upload on first draw, on RT64's workload command list.
     {
         std::lock_guard lock(asset_mutex);
@@ -406,14 +421,20 @@ void gpu_init() {
 void set_original_frames(bool (*keep)(uint16_t)) { original_frames = keep; }
 
 void rewrite(uint8_t* rdram, const MapDraw& draw) {
-    if (assets.empty() && !rom_frames) return;
-    int asset_index = find_asset(draw.layout);
-    if (asset_index < 0 && rom_frames && rom_art::ready() && rom_art::frame(draw.layout) && assets.size() < assets.capacity()) {
+    const bool widened = menu_widen::columns(draw.layout).has_value();
+    if (assets.empty() && !rom_frames && !widened) return;
+    // A widened menu draws from the ROM in either picture mode: HD strokes with the pack in
+    // the HD mode, its original pixels otherwise.
+    const uint16_t key = widened && !(rom_frames && hd_enabled()) ? uint16_t(draw.layout | kPixels) : draw.layout;
+    int asset_index = find_asset(key);
+    if (asset_index < 0 && (rom_frames || widened) && rom_art::ready() && frame_spec(key) && assets.size() < assets.capacity()) {
         // A window frame drawn for the first time: its asset joins, made on the decoder thread.
         std::lock_guard lock(asset_mutex);
         Asset frame;
-        frame.layout = draw.layout;
+        frame.layout = key;
         frame.from_rom = true;
+        // A widened menu waits for it once rather than show the stretched cells first.
+        frame.lazy = widened;
         assets.push_back(std::move(frame));
         ++frame_assets;
         asset_index = int(assets.size() - 1);
@@ -422,7 +443,7 @@ void rewrite(uint8_t* rdram, const MapDraw& draw) {
     if (!assets[size_t(asset_index)].from_rom) current_map = asset_index;
     const uint8_t colony_frame = rdram[(0x80178C6D & 0x1FFFFFFF) ^ 3] & 7;
     const auto keep = original_frames.load();
-    const bool hd = hd_enabled() && !(assets[size_t(asset_index)].from_rom && keep && keep(draw.layout));
+    const bool hd = (hd_enabled() || (key & kPixels)) && !(assets[size_t(asset_index)].from_rom && keep && keep(draw.layout));
     if (!assets[size_t(asset_index)].colonies.empty() &&
         (last_colony_layout != draw.layout || last_colony_frame != colony_frame || last_colony_mode != int(hd))) {
         colony_events << json({{"layout", draw.layout}, {"frame", colony_frame},
@@ -592,7 +613,6 @@ void rewrite_panel(uint8_t* rdram, const PanelDraw& draw) {
 }
 
 void shutdown() {
-    if (assets.empty() && !rom_frames) return;
     {
         std::lock_guard lock(asset_mutex);
         stopping = true;

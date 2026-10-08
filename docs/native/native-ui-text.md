@@ -128,7 +128,21 @@ PYTHONPATH=src:. .venv/bin/python -B tools/hd_ai/hud_frame_asset.py \
 - 显示列表与文字引擎同一种形状：一次调色板，然后每格一个矩形。
 - `80209900` 在 `NATIVE_HOOKS` 里改名为 `srw64_original_map_damage_draw`，包装后调用 `damage_drawn`。`ui_text.cpp` 核对格数和位置以后，逐格画成高清数字。
 
-## 6. 实机验证
+## 6. 加宽的原版菜单
+
+两个原版窗口按两个汉字定宽，英文「Transform」「Upgrade Weapons」放不下，压窄缩小又太难看（用户 2026-10-08 否决），所以把窗口本身加宽。实现在 [`menu_widen.cpp`](../../src/host/menu_widen.cpp)，所有语言都生效。
+
+| 窗口 | 加宽 | 宽度从哪来 | 怎么改 |
+| --- | --- | --- | --- |
+| 单位指令菜单（场景 1161–1171，`D_800C8988` 第 7–17、19 项） | 16 | 边框 3 列 16 像素格；暗底 `801E3EF0`／`801E3F98` 传宽 0x2C 给 `801E3D9C`；绿条（精灵槽 0x27，`801E4160`）宽 40；开窗位置 `801C9D08` 用 `D_80217B1C[0]`=238 夹住 | 边框中间列画宽 16、右列右移；两条 FILLRECT 右缘加 16；`D_80217B1C[0]` 改 222，菜单靠右时不出屏 |
+| 场间主菜单（场景 1177／1329，布局 0x69／0x8D） | 8 | 边框是整屏格子场景，菜单框 x 31–104，标题框从 x 119 起同高，只能加 8；暗底是布局显示列表 `0x800C7BB8`／`0x800C7C18` 的 FILLRECT；绿条（槽 0x14，`801C45F4`）(33,y)–(103,y+15) | 边框 x=80 列画宽 8、x=96 列右移（只在菜单那几行）；两个 FILLRECT 字改右缘 111；绿条 FILLRECT 右缘加 8 |
+
+- **边框**：`map_drawn` 先在显示列表里改格子矩形（中间列 `dsdx` 按比例缩），再交给高清改写。但非 1:1 的矩形在 RT64 里会被过滤，拉宽那段发虚、调色板流光也对不上，所以这几个场景两种画面模式都改由 `rom_art` 从 ROM 拼图画：高清模式是笔画版，原版模式是原像素 4 倍放大（资源表键 `场景 | 0x8000`）。没有高清包时也这样画（`native_map.cpp` 因此总是启动）。显示列表的拉伸只在第一次解码完成前那一帧可见（资源设了 `lazy`，首次会等解码）。
+- **暗底和绿条**：渲染节点回调画完以后（`game_hooks.cpp` 的 `srw64_render_node`）改它刚写的 FILLRECT。战术 overlay 用 `801C9D70` 处的指令字认，场间绿条按坐标认。
+- **文字**：`menu_widen::windows()` 给出最近一帧画过的加宽窗口内缘，`ui_text.cpp` 里窗口内的译文可以排到内缘，不再按原文列宽截。
+- **`rom_art` 测试**：参考表不变，加宽图是另一个变体（`FrameSpec::widen`），`make recomp-rom-art-test` 照旧 146 个场景。
+
+## 7. 实机验证
 
 ```sh
 .venv/bin/python tools/recomp/debug/check_ui_text.py --language zh-Hans   # 也可以 en、ja
@@ -148,7 +162,7 @@ PYTHONPATH=src:. .venv/bin/python -B tools/hd_ai/hud_frame_asset.py \
 - 日文的确认窗、部队表、武器表。
 - 战斗 HUD 的 HP／EN、斜杠、边框与 反 徽章。
 
-## 7. 未做与限制
+## 8. 未做与限制
 
 - **还没接的零散文字**：
   - 模式 10 绘制的能力横幅：`8009504C` 没有挂钩子。

@@ -20,10 +20,17 @@ namespace srw64::rom_art {
 void initialize(std::span<const uint8_t> rom);
 bool ready();
 
-struct FrameSpec { uint16_t scene = 0, atlas = 0, palette = 0; };
+struct FrameSpec {
+    uint16_t scene = 0, atlas = 0, palette = 0;
+    // A menu drawn wider than the ROM's (menu_widen.hpp): in cell rows top..bottom, the cell
+    // at x = stretch is drawn 16 + delta wide and those at shift <= x < shift_end move right.
+    struct Widen { int top = 0, bottom = -1, stretch = -1, shift = -1, shift_end = -1, delta = 0; } widen;
+};
 // The frame scenes and the atlas and palette each is drawn with.
 const std::vector<FrameSpec>& frames();
 std::optional<FrameSpec> frame(uint16_t scene);
+// Any grid scene of the line atlas, in the table or not (the 1-4 row unit menus 1161-1164).
+FrameSpec line_frame(uint16_t scene);
 
 // An HD colour-index image: `scale` texels per original pixel, cropped to the cells the
 // scene uses; `origin` is the crop's corner in scene pixels. `palette` is the scene's
@@ -36,8 +43,9 @@ struct IndexImage {
     std::vector<uint8_t> source;              // the composed original crop, width x height
     std::array<uint32_t, 256> palette{};
 };
-// Empty (width 0) when the scene has no picture or does not decode.
-IndexImage frame_image(const FrameSpec& spec);
+// Empty (width 0) when the scene has no picture or does not decode. Without strokes, the
+// original pixels as squares (a widened menu in the original picture mode).
+IndexImage frame_image(const FrameSpec& spec, bool strokes = true);
 
 // Flat-colour scenes upscaled 8x (the BANPRESTO logo 619 and GAME OVER 614): every pixel
 // split between its two nearest key colours, each colour group upscaled and smoothed,

@@ -65,7 +65,7 @@ target_include_directories(srw64_cpu PUBLIC
     "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}")
 target_compile_options(srw64_cpu PRIVATE -fno-strict-aliasing $<IF:$<BOOL:${MSVC}>,/clang:-fwrapv,-fwrapv> -Wno-unused-variable)
 if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/host.cpp" AND NOT ANDROID)
-    add_executable(srw64-host host.cpp console_log.cpp game_hooks.cpp wide_map.cpp battle_hud.cpp "${SRW64_BUILD}/audio-probe/audio.cpp")
+    add_executable(srw64-host host.cpp console_log.cpp game_hooks.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp "${SRW64_BUILD}/audio-probe/audio.cpp")
     target_include_directories(srw64-host PRIVATE
         "${CMAKE_CURRENT_BINARY_DIR}"
         "${SRW64_BUILD}/upstream/N64Recomp/include"
@@ -206,7 +206,7 @@ if(SRW64_ENABLE_RT64)
     target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/native/ui/window_test_control.cpp")
     # The HD layers draw through Plume (native_gpu.cpp, shaders in src/host/shaders).
     target_sources(${SRW64_HOST_TARGET} PRIVATE native_gpu.cpp native_map.cpp native_background.cpp native_marker.cpp
-        native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp)
+        native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp)
     # RetroArch shader presets through librashader, loaded at run time (post_filter.hpp);
     # tools/recomp/toolchain/fetch_librashader.py puts the library beside the host.
     target_sources(${SRW64_HOST_TARGET} PRIVATE post_filter.cpp)

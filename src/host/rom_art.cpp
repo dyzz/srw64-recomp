@@ -148,8 +148,12 @@ std::optional<FrameSpec> frame(uint16_t scene) {
     const auto found = by_scene.find(scene);
     return found == by_scene.end() ? std::nullopt : std::optional(found->second);
 }
+FrameSpec line_frame(uint16_t scene) {
+    const auto found = by_scene.find(scene);
+    return found == by_scene.end() ? FrameSpec{scene, kLines, kDefaultPalette} : found->second;
+}
 
-IndexImage frame_image(const FrameSpec& spec) {
+IndexImage frame_image(const FrameSpec& spec, bool strokes) {
     IndexImage image;
     const auto scene = extract(spec.scene);
     const Atlas& source = atlas(spec.atlas);
@@ -157,10 +161,13 @@ IndexImage frame_image(const FrameSpec& spec) {
     const auto& d = *scene;
     const auto u16 = [&](size_t p) -> int { return p + 1 < d.size() ? d[p] << 8 | d[p + 1] : -1; };
     if (u16(0) != 6) return image;
-    const int groups = u16(2), w = u16(4) * 8, h = u16(6) * 8;
-    if (groups < 0 || w <= 0 || h <= 0) return image;
+    const int groups = u16(2), w0 = u16(4) * 8, h = u16(6) * 8;
+    if (groups < 0 || w0 <= 0 || h <= 0) return image;
+    // A widened menu: its cells moved over, so the grid may grow.
+    const auto& widen = spec.widen;
+    const int w = widen.delta > 0 ? std::max(w0, widen.shift_end + widen.delta) : w0;
     std::vector<uint8_t> grid(size_t(w) * h);
-    const size_t table = 8 + size_t(w / 8) * (h / 8);
+    const size_t table = 8 + size_t(w0 / 8) * (h / 8);
     for (int g = 0; g < groups; ++g) {
         const int tile = u16(table + g * 6), count = u16(table + g * 6 + 2), offset = u16(table + g * 6 + 4);
         if (tile < 0 || count < 0 || offset < 0) return {};
@@ -168,11 +175,18 @@ IndexImage frame_image(const FrameSpec& spec) {
         const int sx = (tile & 15) * 8 + ((tile & 0x300) >> 1), sy = ((tile & 0xF0) >> 1) + ((tile & 0xC00) >> 3);
         if (sy + 16 > source.height || sx + 16 > source.width) continue;   // 0xFFEF in 1246: no picture
         for (int k = 0; k < count; ++k) {
-            const int flags = u16(offset + k * 6), x = u16(offset + k * 6 + 2), y = u16(offset + k * 6 + 4);
+            const int flags = u16(offset + k * 6), y = u16(offset + k * 6 + 4);
+            int x = u16(offset + k * 6 + 2), cells = 16;
             if (flags < 0 || x < 0 || y < 0) return {};
+            // As menu_widen.cpp draws it: one column wider (sampled at 16 / (16 + delta)), the next ones over.
+            if (widen.delta > 0 && y >= widen.top && y <= widen.bottom) {
+                if (x == widen.stretch) cells = 16 + widen.delta;
+                else if (x >= widen.shift && x < widen.shift_end) x += widen.delta;
+            }
             for (int r = 0; r < 16; ++r)
-                for (int c = 0; c < 16; ++c) {
-                    const int src_r = flags & 0x8000 ? 15 - r : r, src_c = flags & 0x4000 ? 15 - c : c;
+                for (int c = 0; c < cells; ++c) {
+                    const int u = c * 16 / cells;
+                    const int src_r = flags & 0x8000 ? 15 - r : r, src_c = flags & 0x4000 ? 15 - u : u;
                     const uint8_t n = source.pixels[size_t(sy + src_r) * source.width + sx + src_c];
                     if (n && y + r < h && x + c < w) grid[size_t(y + r) * w + x + c] = n;
                 }
@@ -198,7 +212,18 @@ IndexImage frame_image(const FrameSpec& spec) {
         }
     }
     image.palette[0] &= 0x00FFFFFFu;
-    draw(crop, cw, ch, kScale, image.palette, image.index, image.coverage);
+    if (strokes) draw(crop, cw, ch, kScale, image.palette, image.index, image.coverage);
+    else {
+        // The original pixels as they are, each a kScale square.
+        image.index.assign(size_t(cw) * kScale * ch * kScale, 0);
+        image.coverage.assign(image.index.size(), 0);
+        for (int y = 0; y < ch * kScale; ++y)
+            for (int x = 0; x < cw * kScale; ++x) {
+                const uint8_t n = crop[size_t(y / kScale) * cw + x / kScale];
+                const size_t i = size_t(y) * cw * kScale + x;
+                image.index[i] = n; image.coverage[i] = n ? 255 : 0;
+            }
+    }
     image.source = std::move(crop);
     return image;
 }

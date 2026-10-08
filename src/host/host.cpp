@@ -29,6 +29,7 @@
 #include "audio.hpp"
 #include "native_dialogue.hpp"
 #include "native_map.hpp"
+#include "menu_widen.hpp"
 #include "wide_map.hpp"
 #include "battle_hud.hpp"
 #include "game_frame.hpp"
@@ -375,7 +376,9 @@ static int run_host(int argc, char** argv) {
     // scroll with the map (sub-record +2 == 1: the map, units and cursor, map effects) and
     // the map overlay's own callbacks go in the widened view; the rest (windows, banners,
     // portraits) stays in the centred 320. Not in the whole-map overview (801027DB == 1).
-    srw64_game_hooks.frame_start = [](uint8_t* ram) { srw64::wide_map::frame(ram); srw64::battle_hud::frame(ram); };
+    srw64_game_hooks.frame_start = [](uint8_t* ram) {
+        srw64::wide_map::frame(ram); srw64::battle_hud::frame(ram); srw64::menu_widen::frame_start(ram);
+    };
     srw64_game_hooks.map_space_begin = [](uint8_t* ram, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub) {
         if (ram[0x001027DB ^ 3] == 1) return false;
         // The map overlay's callbacks, whichever call reaches them (a node registered by
@@ -420,14 +423,16 @@ static int run_host(int argc, char** argv) {
         auto byte = [&](uint32_t a) { return ram[a ^ 3]; };
         auto half = [&](uint32_t a) { uint16_t v; std::memcpy(&v, ram + (a ^ 2), 2); return v; };
         auto word = [&](uint32_t a) { uint32_t v; std::memcpy(&v, ram + a, 4); return v; };
-        // Mode 9 scenes the text describer knows (battle HUD banners and badges).
-        srw64::sprites::rewrite_grid(ram, {begin, end, slot, sub, false});
         const bool overview = byte(record + 3) != 0;  // 800943E0 scaling: the whole map on one screen
         float origin_x, origin_y;
         const uint32_t ox = word(base + 4), oy = word(base + 8);
         std::memcpy(&origin_x, &ox, 4); std::memcpy(&origin_y, &oy, 4);
         int32_t offset_x = int32_t(origin_x), offset_y = int32_t(origin_y);
         if (byte(record + 2) == 1) { offset_x += int32_t(word(0x0010F5D4)); offset_y += int32_t(word(0x0010F5D8)); }
+        // The widened menus' frames (menu_widen.hpp), before anything reads their rectangles.
+        if (!overview) srw64::menu_widen::frame_drawn(ram, begin, end, half(record + 4), offset_x, offset_y);
+        // Mode 9 scenes the text describer knows (battle HUD banners and badges).
+        srw64::sprites::rewrite_grid(ram, {begin, end, slot, sub, false});
         // Screen = map + offset, so the map pixel at screen (0,0) is -offset.
         srw64::hdmap::rewrite(ram, {begin, end, half(record + 4), -offset_x, -offset_y, overview, srw64::wide_map::view_offset()});
     };

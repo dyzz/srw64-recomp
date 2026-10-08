@@ -17,6 +17,7 @@
 #include "link_battler.hpp"
 #include "script_skip.hpp"
 #include "wide_map.hpp"
+#include "menu_widen.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 namespace rules=srw64::rules;
@@ -72,6 +73,7 @@ void srw64_render_node(uint8_t* rdram,recomp_context* ctx,int32_t function,int32
     const int32_t slot=sprite?int32_t(ctx->r5):-1,sub=sprite?int32_t(ctx->r6):-1;
     const uint32_t begin=MEM_W(0,cursor);
     LOOKUP_FUNC(function)(rdram,ctx);
+    srw64::menu_widen::callback_drawn(rdram,uint32_t(function),begin,MEM_W(0,cursor));   // the widened menus' fills
     if(wide)srw64_game_hooks.map_space_end(rdram,cursor);
     else srw64::battle_hud::after_draw(rdram,cursor,uint32_t(function),slot,sub,begin);
 }
