@@ -13,6 +13,7 @@
 #include <random>
 #include <stdexcept>
 #include <system_error>
+#include <thread>
 #include <vector>
 #ifdef _WIN32
 #ifndef NOMINMAX
@@ -360,6 +361,21 @@ void clear_runtime_environment() {
     }
 }
 
+namespace {
+// A game that was just closed can hold the lock for a few seconds more while it exits,
+// so a quick relaunch waits for it before giving up.
+template<class Try> bool wait_for_lock(Try&& attempt) {
+    const auto deadline=std::chrono::steady_clock::now()+std::chrono::seconds(10);
+    while (!attempt()) {
+        if (std::chrono::steady_clock::now()>=deadline) return false;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    return true;
+}
+constexpr const char* play_lock_held=
+    "Marchwind64 is already running with this user directory, or a closed game has not finished exiting.\n"
+    "Switch to the open game, or end Marchwind64 in Task Manager (Activity Monitor on a Mac) and start again.";
+}
 struct UserLock::Handle {
 #ifdef _WIN32
     HANDLE handle=INVALID_HANDLE_VALUE;
@@ -367,10 +383,10 @@ struct UserLock::Handle {
         handle=CreateFileW(path.c_str(),GENERIC_READ|GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE,
                            nullptr,OPEN_ALWAYS,FILE_ATTRIBUTE_NORMAL,nullptr);
         if (handle==INVALID_HANDLE_VALUE) throw std::runtime_error("Cannot open play lock");
-        OVERLAPPED offset{};
-        if (!LockFileEx(handle,LOCKFILE_EXCLUSIVE_LOCK|LOCKFILE_FAIL_IMMEDIATELY,0,1,0,&offset)) {
+        if (!wait_for_lock([&] { OVERLAPPED offset{};
+                return LockFileEx(handle,LOCKFILE_EXCLUSIVE_LOCK|LOCKFILE_FAIL_IMMEDIATELY,0,1,0,&offset)!=0; })) {
             CloseHandle(handle);handle=INVALID_HANDLE_VALUE;
-            throw std::runtime_error("Another game is using this user directory (or locking failed)");
+            throw std::runtime_error(play_lock_held);
         }
     }
     ~Handle() { if(handle!=INVALID_HANDLE_VALUE){OVERLAPPED offset{};UnlockFileEx(handle,0,1,0,&offset);CloseHandle(handle);} }
@@ -379,7 +395,7 @@ struct UserLock::Handle {
     explicit Handle(const fs::path& path) {
         fd=open(path.c_str(),O_RDWR|O_CREAT|O_CLOEXEC,0600);
         if (fd<0) throw std::runtime_error("Cannot open play lock");
-        if (flock(fd,LOCK_EX|LOCK_NB)!=0) { close(fd);fd=-1;throw std::runtime_error("Another game is using this user directory (or locking failed)"); }
+        if (!wait_for_lock([&] { return flock(fd,LOCK_EX|LOCK_NB)==0; })) { close(fd);fd=-1;throw std::runtime_error(play_lock_held); }
     }
     ~Handle() { if(fd>=0)close(fd); }
 #endif
