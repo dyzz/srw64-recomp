@@ -3201,7 +3201,7 @@
     {
       "key": "base:t00_00522",
       "source_sha256": "bce0682d5976e96399696b23f6fd7bbde59b5fce0e48838cd16b52286ab4c352",
-      "target": "Counterattack Settings<END>",
+      "target": "Counter Plan<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5875,7 +5875,7 @@
     {
       "key": "base:t00_00907",
       "source_sha256": "831735c7ad2d80d6a5d993be5aecd633107c2dcb0388ebe85e63a38c4b90d463",
-      "target": "Weapon Stats<END>",
+      "target": "Weapons<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6218,7 +6218,7 @@
     {
       "key": "base:t00_00957",
       "source_sha256": "bce0682d5976e96399696b23f6fd7bbde59b5fce0e48838cd16b52286ab4c352",
-      "target": "Counterattack Settings<END>",
+      "target": "Counter Plan<END>",
       "review_status": "draft",
       "origin": "terms"
     },
