@@ -442,17 +442,6 @@ namespace RT64 {
             fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 650 driver workaround: framebuffer effects are not exact)\\n");
         }
 #   endif'''),
-    # A Redmi K60 (Adreno 730, MIUI 14, 2026-10-08) hung for good on the first resize:
-    # vkCreateSwapchainKHR with the old swap chain as oldSwapchain dequeued a new buffer and
-    # waited forever on a lock in Qualcomm's gralloc (BufferManager::RetainBuffer), black
-    # from the second frame. On Android the old swap chain goes first (the present thread
-    # has waited for its GPU work), so its buffers are freed before new ones are made.
-    ('src/contrib/plume/plume_vulkan.cpp', '''        createInfo.clipped = VK_TRUE;
-        createInfo.oldSwapchain = vk;''', '''        createInfo.clipped = VK_TRUE;
-#   ifdef __ANDROID__
-        releaseSwapChain();
-#   endif
-        createInfo.oldSwapchain = vk;'''),
     # A boundless range (RT64's texture set: up to 8192 textures, as many as the texture
     # cache holds) is allocated with a variable count, and the pool is sized for that count.
     # Qualcomm's Adreno drivers count the layout's full upper bound against the pool instead:
