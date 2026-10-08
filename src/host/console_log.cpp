@@ -177,7 +177,13 @@ void start() {
     static bool started = false;
     if (started) return;
     started = true;
+#ifdef _WIN32
+    // The UCRT has no line buffering (_IOLBF is full buffering) and takes a size of 0 as
+    // an invalid parameter, which ends the process before main() goes on: unbuffered.
+    std::setvbuf(stdout, nullptr, _IONBF, 0);
+#else
     std::setvbuf(stdout, nullptr, _IOLBF, 0);
+#endif
     std::setvbuf(stderr, nullptr, _IONBF, 0);
 #ifdef __ANDROID__
     redirect(streams[0], 1, ANDROID_LOG_INFO);

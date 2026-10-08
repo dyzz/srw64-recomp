@@ -199,6 +199,12 @@ jobs:
           Copy-Item "$env:VCToolsRedistDir/x64/Microsoft.VC143.CRT/*.dll" $out
           dumpbin /nologo /dependents "$out/Marchwind64.exe"
           Get-ChildItem $out | Format-Table Name, Length
+          # The packaged program starts: 0.4.0 and 0.4.1 ended before main() went on
+          # (0xC0000409 in ucrtbase), on every launch, with nothing in any log.
+          $usage = & "$out/Marchwind64.exe" --play --help | Out-String
+          if ($LASTEXITCODE -ne 0 -or $usage -notmatch '--play --rom') {
+            Write-Error ("Marchwind64.exe --play --help exited 0x{0:X8}" -f $LASTEXITCODE); exit 1
+          }
 
       # The program carries the recompiled game, like a release download; until a release is
       # public it stays encrypted too (decrypt: openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000).
