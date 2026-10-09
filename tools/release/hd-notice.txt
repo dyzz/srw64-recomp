@@ -19,7 +19,7 @@ Marchwind64 — HD 图片包 / HD image pack
   属于 AI 生成内容。
 - 剧情世界地图和战术地图的底图，以及部分战斗 cut-in 与战斗中的机体额外图，
   由 OpenAI 的图像模型（通过 Codex 的 image_gen）以原版画面为参考绘制，属于 AI 生成内容。
-- 机体立绘、地图上的机体图标、战斗 cut-in 与道具、战斗地面贴图，
+- 机体立绘、地图上的机体图标、战斗 cut-in 与道具、战斗地面贴图与战斗天空，
   用本地放大模型（4x-UltraSharpV2、4x-PixelPerfectV4）从原版像素图放大重绘；
   其余机体额外图由 HD 立绘推导；战术地图的色号图（水面等颜色循环用）由原版地图像素放大而来。
   这几类图由原版画面衍生。
@@ -49,7 +49,7 @@ qwen-image-3.0-pro; the sides of the intermission backgrounds widened to 16:9 wi
 Wanx wanx2.1-imageedit), and the story world map, the tactical map bases and some
 battle cut-ins and extra battle unit images with OpenAI's image model (Codex
 image_gen), using the original graphics as reference. The unit poses, the map unit
-icons, the battle cut-ins and props and the battle ground textures are upscaled and
+icons, the battle cut-ins and props, the battle ground textures and skies are upscaled and
 redrawn from the original pixel art with local upscaling models (4x-UltraSharpV2,
 4x-PixelPerfectV4), the other extra battle unit images are derived from the HD unit
 poses, and the tactical maps' palette-index maps (for water and other colour cycling)
