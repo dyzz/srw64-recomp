@@ -138,17 +138,23 @@ void recognition() {
 void fixed_buttons() {
     check(!by_scene, "buttons are fixed for now");
     const auto full = scene(SceneId::Other);
-    for (const auto id : {SceneId::MapIdle, SceneId::Dialogue, SceneId::Prologue, SceneId::BattleScene, SceneId::Opening, SceneId::AnyKey})
+    for (const auto id : {SceneId::MapIdle, SceneId::BattleScene, SceneId::Opening, SceneId::AnyKey})
         check(fixed(id) == SceneId::Other, "a game scene shows the whole set");
+    check(fixed(SceneId::Dialogue) == SceneId::FixedDialogue && fixed(SceneId::Prologue) == SceneId::FixedDialogue, "reading");
     for (const auto id : {SceneId::Page, SceneId::BattlePage, SceneId::BattleSpirits}) check(fixed(id) == SceneId::FixedPage, "our pages");
     check(fixed(SceneId::Attract) == SceneId::FixedTitle && fixed(SceneId::TitleRing) == SceneId::FixedTitle, "the title");
     check(fixed(SceneId::Hidden) == SceneId::Hidden, "the settings window");
-    const auto page = scene(SceneId::FixedPage), title = scene(SceneId::FixedTitle);
+    const auto page = scene(SceneId::FixedPage), title = scene(SceneId::FixedTitle), reading = scene(SceneId::FixedDialogue);
     check(page.stick == Stick::Corner && full.stick == Stick::Wide && title.stick == Stick::Wide, "sticks");
     for (size_t i = 0; i < slot_count; ++i) {
         check(page.slots[i] == full.slots[i], "the page has the whole set");
-        check(full.slots[i].filled() && title.slots[i].filled(), "no empty place");
+        check(full.slots[i].filled() && title.slots[i].filled() && reading.slots[i].filled(), "no empty place");
+        if (i != size_t(Slot::Top2) && i != size_t(Slot::Top3) && i != size_t(Slot::Top4))
+            check(reading.slots[i] == full.slots[i], "reading keeps the rest of the set");
     }
+    // One finger skips (Reader::update wants R and START held together), R2 held fast-forwards.
+    check(reading[Slot::Top2].bits == (bits::R | bits::Start) && reading[Slot::Top2].label == "touch_skip" &&
+          reading[Slot::Top3].bits == bits::L2 && reading[Slot::Top4].bits == bits::R2 && reading.stick == Stick::Wide, "reading's top row");
     check(title[Slot::Top3].command == "library-open" && title[Slot::Top4].command == "viewer-open" &&
           title[Slot::Primary].bits == bits::A && title[Slot::Top2].bits == bits::Start, "the title's entries");
 }

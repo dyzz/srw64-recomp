@@ -65,6 +65,7 @@ enum class SceneId : uint8_t {
     Opening,      // the logo, the works flying past, a demo's unit coming in: START only
     FixedPage,    // fixed buttons: the whole set on our pages, the stick in the corner
     FixedTitle,   // fixed buttons: the whole set at the title, the Library and Battle Viewer for L2 and R2
+    FixedDialogue,// fixed buttons: the whole set while reading, START, L2 and R2 as skip, auto and fast
     Count
 };
 
@@ -79,6 +80,8 @@ inline SceneId fixed(SceneId id) {
     case SceneId::Hidden: return SceneId::Hidden;
     case SceneId::Page: case SceneId::BattlePage: case SceneId::BattleSpirits: return SceneId::FixedPage;
     case SceneId::Attract: case SceneId::TitleRing: return SceneId::FixedTitle;
+    // The skip is R + START together, out of one thumb's reach (a player, 2026-10-09).
+    case SceneId::Dialogue: case SceneId::Prologue: return SceneId::FixedDialogue;
     default: return SceneId::Other;
     }
 }
@@ -99,13 +102,18 @@ inline Scene scene(SceneId id) {
     switch (id) {
     case SceneId::Hidden:
         break;
-    case SceneId::Other: case SceneId::FixedPage: case SceneId::FixedTitle:
+    case SceneId::Other: case SceneId::FixedPage: case SceneId::FixedTitle: case SceneId::FixedDialogue:
         s.stick = id == SceneId::FixedPage ? Stick::Corner : Stick::Wide;
         set(Slot::Primary, bits::A, "touch_ok"); set(Slot::Back, bits::B, "touch_back");
         set(Slot::Arc2, bits::L, "touch_l1"); set(Slot::Arc3, bits::R, "touch_r1");
         settings(); set(Slot::Top2, bits::Start, "touch_start");
         if (id == SceneId::FixedTitle) {
             open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "viewer-open", "viewer_open");
+        } else if (id == SceneId::FixedDialogue) {
+            // The same places as START, L2 and R2, named for what they do on a line
+            // (native_dialogue.cpp input: R2 held fast-forwards, an L2 press toggles auto).
+            set(Slot::Top2, bits::R | bits::Start, "touch_skip");
+            set(Slot::Top3, bits::L2, "touch_auto"); set(Slot::Top4, bits::R2, "touch_fast");
         } else {
             set(Slot::Top3, bits::L2, "touch_l2"); set(Slot::Top4, bits::R2, "touch_r2");
         }
