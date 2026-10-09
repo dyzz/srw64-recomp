@@ -18,7 +18,8 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
 // Render-hook init, after gpu::init (native_gpu.hpp).
 void gpu_init();
 void shutdown();
-// The battle's sky layers that follow the camera's pitch (kinds 2, 3 and 9, 80084D90),
+// The battle's sky layers that follow the camera's pitch (kinds 2, 3 and 9, 80084D90; the
+// still ones, 10 and 11, too, at their own size, so no seam shows between side copies),
 // without the bands (automatic aspect; at 4:3 they are drawn as the game draws them), in
 // either image mode (the HD picture, or the original decoded from the ROM): rewrite draws
 // them whole, enlarged by kSkyZoom about their bottom edge so the rows the camera uncovers

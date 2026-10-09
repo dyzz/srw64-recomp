@@ -102,12 +102,19 @@ bool resource(const uint8_t* rdram, int16_t handle, uint16_t& id) {
 bool hd_enabled() {
     return !presentation::image_mode.enabled() || presentation::image_mode.current() == 1;
 }
-// The slot's layer kind (+1, the table at 800C5960): 2, 3 and 9 place it by the pitch.
-// Only without the bands (automatic aspect, battle_hud.cpp): at 4:3 the top band hides
-// the wrapped rows as in the original, so the sky is drawn as the game draws it.
+// The slot's layer kind (+1, the table at 800C5960): 2, 3 and 9 place it by the pitch,
+// 10 and 11 keep it still; 4-7 drift up or down on their own and wrap by design.
+uint8_t layer_kind(const uint8_t* rdram, uint32_t slot) {
+    return rdram[((kSlots + slot * kSlotSize + 1) & 0x1FFFFFFF) ^ 3];
+}
+bool pitch_kind(uint8_t kind) { return kind == 2 || kind == 3 || kind == 9; }
+// A battle sky drawn whole across the screen in one draw, so no seam shows where the side
+// copies would meet the picture: only without the bands (automatic aspect,
+// battle_hud.cpp); at 4:3 the top band hides the wrapped rows as in the original, and the
+// sky is drawn as the game draws it.
 bool pitch_layer(const uint8_t* rdram, uint32_t slot) {
-    const uint8_t kind = rdram[((kSlots + slot * kSlotSize + 1) & 0x1FFFFFFF) ^ 3];
-    return (kind == 2 || kind == 3 || kind == 9) && frame::wide && wide_map::battle_shown();
+    const uint8_t kind = layer_kind(rdram, slot);
+    return (pitch_kind(kind) || kind == 10 || kind == 11) && frame::wide && wide_map::battle_shown();
 }
 // The picture's (image, palette) asset, or -1.
 int asset_of(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
@@ -297,15 +304,15 @@ float unwrapped_x(uint32_t slot, float x) {
     last[slot] = x; seen[slot] = frame_count;
     return total[slot];
 }
-void sky_quads(Draw& record, float origin_x, float origin_y) {
+void sky_quads(Draw& record, float origin_x, float origin_y, float zoom) {
     const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
-    const float period = source_width * kSkyZoom, bottom = origin_y + source_height, top = bottom - source_height * kSkyZoom;
+    const float period = source_width * zoom, bottom = origin_y + source_height, top = bottom - source_height * zoom;
     const float gap = frame::kHeight - bottom;            // rows below the picture's bottom edge
     float x = origin_x - period * std::ceil((origin_x + side) / period);
     record.quads.clear();
     for (; x < frame::kWidth + side; x += period) {
         record.quads.push_back({{x, top, x + period, bottom}, {0, 0, 1, 1}});
-        if (gap > 0.25f) record.quads.push_back({{x, bottom, x + period, frame::kHeight}, {0, 1 - gap / (source_height * kSkyZoom), 1, 1}});
+        if (gap > 0.25f) record.quads.push_back({{x, bottom, x + period, frame::kHeight}, {0, 1 - gap / (source_height * zoom), 1, 1}});
     }
     record.wide = true;
 }
@@ -389,7 +396,8 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         if (ox < 0) ox += source_width;
         if (oy > source_height / 2.f) oy -= source_height;
         if (oy <= -source_height / 2.f) oy += source_height;
-        sky_quads(record, unwrapped_x(draw.slot, ox), oy);
+        // Still skies keep their size; the ones the pitch places are enlarged (kSkyZoom).
+        sky_quads(record, unwrapped_x(draw.slot, ox), oy, pitch_kind(layer_kind(rdram, draw.slot)) ? kSkyZoom : 1.f);
     }
     const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
     const bool whole = x0 == 0 && x1 >= int32_t(frame::kWidth * 4) - 4;

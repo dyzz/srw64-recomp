@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <climits>
 #include <cmath>
+#include <cstdlib>
 #include <cstring>
 #include <vector>
 
@@ -150,6 +151,10 @@ void after_draw(uint8_t* rdram, int32_t cursor, uint32_t function, int32_t slot,
     if (what == Kind::none) return;
     const uint32_t start = begin & 0x1FFFFFFF, end = word(rdram, uint32_t(cursor)) & 0x1FFFFFFF;
     if (end <= start || end - start > 0x8000) return;
+    // Development: the battle without its windows, for the viewer's scene pictures
+    // (tools/hd_ai/viewer_scenes.py).
+    static const bool hidden = std::getenv("SRW64_DEV_HIDE_BATTLE_HUD") != nullptr;
+    if (hidden) { put(rdram, uint32_t(cursor), begin); return; }
     std::vector<uint32_t> in((end - start) / 4);
     for (size_t i = 0; i < in.size(); ++i) in[i] = word(rdram, start + uint32_t(4 * i));
     // The rectangles it drew.

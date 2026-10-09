@@ -33,6 +33,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 import time
@@ -155,18 +156,31 @@ def pack(bind: bool) -> None:
     scenes(bind)
 
 
-def scenes(bind: bool) -> None:
-    """The viewer's scene thumbnails into the pack (scene-<key>.jpg, index `scenes`)."""
+def scenes(bind: bool, shots: Path | None = None, into: Path | None = None) -> None:
+    """The viewer's scene thumbnails into the pack (scene-<key>.jpg, index `scenes`): the
+    catalogue's offline renders, or with `shots` the HD captures of viewer_scenes.py. With
+    `into`, a new pack folder hard-linked from the current one takes them, so the pack an
+    older commit names keeps its files."""
     folder = OUT / 'pack'
+    if into is not None:
+        into = into.resolve()
+        into.mkdir(parents=True, exist_ok=False)
+        for path in folder.iterdir():
+            if path.is_file():
+                os.link(path, into / path.name)
+        folder = into
     rom = (ROOT / 'rom.z64').read_bytes()
     sets = json.loads((CATALOG / 'catalog.json').read_text())['sets']
     index = json.loads((folder / 'battle-sprites.json').read_text())
+    (folder / 'battle-sprites.json').unlink()
     rows = []
     for key, a, b in VIEWER_SCENES:
         record = rom[SCENE_GROUPS + a] * 101 + b
         found = next(s for s in sets if record in s['records'] and not s['night'])
         name = f'scene-{key}.jpg'
-        data = (CATALOG / 'thumbs' / f"{found['thumb']}.jpg").read_bytes()
+        source = shots / name if shots is not None else CATALOG / 'thumbs' / f"{found['thumb']}.jpg"
+        data = source.read_bytes()
+        (folder / name).unlink(missing_ok=True)          # a hard link stays the older pack's
         (folder / name).write_bytes(data)
         with Image.open(folder / name) as image:
             rows.append({'key': key, 'record': record, 'file': name, 'sha256': hashlib.sha256(data).hexdigest(),
@@ -219,6 +233,8 @@ def main() -> None:
     parser.add_argument('step', choices=('export', 'run', 'pack', 'scenes', 'review'))
     parser.add_argument('--models', type=Path, default=ROOT / 'build/esrgan-models')
     parser.add_argument('--bind', action='store_true', help='point the art manifest at the pack')
+    parser.add_argument('--shots', type=Path, help='scenes: HD captures (tools/hd_ai/viewer_scenes.py) instead of the catalogue renders')
+    parser.add_argument('--into', type=Path, help='scenes: a new pack folder, hard-linked from the current one')
     args = parser.parse_args()
     if args.step == 'export':
         export()
@@ -227,7 +243,7 @@ def main() -> None:
     elif args.step == 'pack':
         pack(args.bind)
     elif args.step == 'scenes':
-        scenes(args.bind)
+        scenes(args.bind, args.shots, args.into)
     else:
         review()
 

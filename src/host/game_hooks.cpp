@@ -357,6 +357,10 @@ void resident_func_8009761C(uint8_t* rdram, recomp_context* ctx) {
     const int32_t cursor = ctx->r4;
     const uint32_t slot = ctx->r5, sub = ctx->r6;
     const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
+    // Development: the battle's ground and sky without units and effects, for the viewer's
+    // scene pictures (with SRW64_DEV_HIDE_BATTLE_HUD, battle_hud.cpp).
+    static const bool hidden = std::getenv("SRW64_DEV_HIDE_BATTLE_SPRITES") != nullptr;
+    if (hidden && srw64::wide_map::battle_shown()) return;
     srw64_original_scene_quad_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
     if (srw64_game_hooks.scene_drawn) srw64_game_hooks.scene_drawn(rdram, begin, end, slot, sub, true);

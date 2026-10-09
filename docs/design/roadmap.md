@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | 1 | 改造改成现代操作：左右键直接加减段数，最后确认一次 | 已完成（2026-10-08 实机通过） |
 | 2 | 60 帧 | 远期，暂不开工 |
-| 6 | 战斗鉴赏的场景缩略图换成 HD 画面 | 未开工，随 HD 1.2 |
+| 6 | 战斗鉴赏的场景缩略图换成 HD 画面 | 已完成（2026-10-09，随 HD 1.1） |
 
 ## 1. 改造：左右加减段数，最后确认一次
 
@@ -24,4 +24,4 @@
 
 鉴赏里实际播放的战斗已经自动用 HD 背景（天空、地面贴图、机体），但选场景时的 21 张缩略图还是 2026-09-30 从原版画面渲染的 480×270 截图（`tools/hd_ai/cutin_hd.py scenes`，取自 `assets/hd-ai/battle-backgrounds/catalog/thumbs`，进 HD 包的 `battle_sprites` 清单 `scenes` 一节），HD 1.1 不会让它们变清晰。
 
-决定（2026-10-09）：HD 1.1 先发，缩略图留到 HD 1.2 再换。做法：Mac 上用调试接口逐个强制 21 个场景（`VIEWER_SCENES` 的块与地形，写 `800F97EA/B`），静止镜头下截 HD 画面，裁成同尺寸替换 `scene-<key>.jpg`，重跑 `cutin_hd.py scenes --bind`。
+已完成（2026-10-09，用户改为随 HD 1.1 一起发）：`tools/hd_ai/viewer_scenes.py` 在游戏里实拍，藏掉战斗窗口与机体（开发开关 `SRW64_DEV_HIDE_BATTLE_HUD`／`_SPRITES`），960×540，`cutin_hd.py scenes --shots … --into assets/hd-ai/cutins/pack-v2 --bind`。实拍时发现宽屏下静态天空（kind 10/11）的 HD 整图在本体与左右副本交界露缝，静态天空也改为一次铺满整屏（不放大）。原定做法：Mac 上用调试接口逐个强制 21 个场景（`VIEWER_SCENES` 的块与地形，写 `800F97EA/B`），静止镜头下截 HD 画面，裁成同尺寸替换 `scene-<key>.jpg`，重跑 `cutin_hd.py scenes --bind`。
