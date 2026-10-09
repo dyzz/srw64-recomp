@@ -41,6 +41,7 @@
 #include "title_page.hpp"
 #include "native_dialogue.hpp"
 #include "post_filter.hpp"
+#include "notices.hpp"
 #include "ultramodern/ultramodern.hpp"
 #endif
 #include "librecomp/game.hpp"
@@ -66,6 +67,7 @@ namespace plume { extern ANativeWindow *(*AndroidCurrentWindow)(); }
 #include <array>
 #include <atomic>
 #include <cstring>
+#include <ctime>
 #include <fstream>
 
 namespace {
@@ -102,6 +104,43 @@ int graphics_api = -1;  // RT64's chosen API (RT64::UserConfiguration::GraphicsA
 std::filesystem::path capture_directory;
 uint64_t presented_frames{};
 std::string capture_clock = "native_vi_at_draw";
+// F12 or Print Screen: the next present goes to screenshots/ in the user folder.
+std::atomic<bool> player_shot_requested{};
+// The Enter of an Alt + Enter (full screen, frontend.cpp) is not START until it is let go,
+// whichever key comes up first.
+SDL_Scancode alt_enter_key = SDL_SCANCODE_UNKNOWN;
+// GPU completion thread: writes the picture as a dated PNG and says where it went.
+void save_player_screenshot(const uint8_t* rgba, uint32_t width, uint32_t height) {
+#ifdef SRW64_NATIVE_DIALOGUE
+    const auto folder = srw64::settings::data_folder() / "screenshots";
+#else
+    const auto folder = capture_directory / "screenshots";
+#endif
+    std::error_code error;
+    std::filesystem::create_directories(folder, error);
+    const std::time_t now = std::time(nullptr);
+    std::tm local{};
+#ifdef _WIN32
+    localtime_s(&local, &now);
+#else
+    localtime_r(&now, &local);
+#endif
+    char stamp[32];
+    std::strftime(stamp, sizeof stamp, "%Y%m%d-%H%M%S", &local);
+    auto path = folder / ("Marchwind64-" + std::string(stamp) + ".png");
+    for (int n = 2; std::filesystem::exists(path, error); ++n)
+        path = folder / ("Marchwind64-" + std::string(stamp) + "-" + std::to_string(n) + ".png");
+    // Opaque whatever the swap chain's alpha holds.
+    std::vector<uint8_t> opaque(rgba, rgba + size_t(width) * height * 4);
+    for (size_t i = 3; i < opaque.size(); i += 4) opaque[i] = 255;
+    const bool written = stbi_write_png(path.string().c_str(), width, height, 4, opaque.data(), width * 4);
+    fprintf(stderr, "SRW64_SCREENSHOT %s %s\n", written ? "saved" : "failed", path.string().c_str());
+#ifdef SRW64_NATIVE_DIALOGUE
+    auto text = srw64::localization::catalog().ui(written ? "screenshot_saved" : "screenshot_failed");
+    if (const auto at = text.find("{path}"); at != std::string::npos) text.replace(at, 6, path.string());
+    srw64::notices::post("screenshot", text);
+#endif
+}
 // SDL is polled on the window thread; the game reads one coherent snapshot.
 std::atomic<uint32_t> keyboard_state{}, pad_state{};
 SDL_GameController* pad{};
@@ -214,7 +253,9 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     // A debug-interface screenshot request takes this present; a recording takes every one.
     const auto debug_shot = srw64::debug::screenshots().take();
     const bool recording = srw64::debug::recording().active();
-    if (!trace && !debug_shot && !recording) return;
+    // The player's screenshot key (F12, Print Screen) takes this one too, the window as shown.
+    const bool player_shot = player_shot_requested.exchange(false);
+    if (!trace && !debug_shot && !recording && !player_shot) return;
     nlohmann::json dialogue_trace=nullptr;
 #ifdef SRW64_NATIVE_DIALOGUE
     if(trace)if(auto snapshot=srw64::dialogue::presented_frame(workload)) {
@@ -278,7 +319,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     }
     const bool interactive = std::getenv("SRW64_INTERACTIVE") && std::string(std::getenv("SRW64_INTERACTIVE")) == "1";
     const auto path = capture_directory / (interactive ? "present-latest.png" : "present-" + std::to_string(frame) + ".png");
-    srw64_after_gpu(list, [buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, dialogue_trace, debug_shot, recording](bool completed) {
+    srw64_after_gpu(list, [buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, dialogue_trace, debug_shot, recording, player_shot](bool completed) {
         if (!completed) {
             fprintf(stderr, "SRW64_CAPTURE_GPU_FAILED\n");
             if (debug_shot) srw64::debug::screenshots().finish(debug_shot->id, {{"error", "GPU capture failed"}});
@@ -321,6 +362,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
                                   {"width", width}, {"height", height}, {"image_mode", image_mode}})
                 : nlohmann::json({{"error", "cannot write " + debug_shot->path.string()}}));
         }
+        if (player_shot) save_player_screenshot(rgba.data(), width, height);
         if(!anomaly)return;
         if (!stbi_write_png(path.string().c_str(), width, height, 4, rgba.data(), width * 4)) std::abort();
         auto metadata_path = path;
@@ -862,6 +904,15 @@ void srw64_update_window(void*) {
             if(pad && SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(pad))==event.cdevice.which){SDL_GameControllerClose(pad);pad=nullptr;}
             continue;
         }
+        if(event.type==SDL_KEYDOWN && (event.key.keysym.mod & KMOD_ALT) &&
+           (event.key.keysym.scancode==SDL_SCANCODE_RETURN || event.key.keysym.scancode==SDL_SCANCODE_KP_ENTER))
+            alt_enter_key=event.key.keysym.scancode;
+        // Screenshots on every screen, the settings window and our pages included.
+        if(event.type==SDL_KEYDOWN && !event.key.repeat && (event.key.keysym.sym==SDLK_F12 || event.key.keysym.sym==SDLK_PRINTSCREEN) &&
+           !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))) {
+            player_shot_requested=true;
+            continue;
+        }
 #ifdef SRW64_NATIVE_DIALOGUE
         if(event.type!=SDL_QUIT && srw64::ui::event(event))continue;
         if(srw64::settings::owns_input() && event.type!=SDL_QUIT && !(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_CLOSE))continue;
@@ -886,6 +937,7 @@ void srw64_update_window(void*) {
     // Presses from the debug interface take the same paths as the SDL events
     // above. F7 goes through the same SDL composition and repeat gates.
     for (const auto key : srw64::debug::keyboard().take_presses()) {
+        if (key == srw64::debug::F12) { player_shot_requested = true; continue; }
 #ifdef SRW64_NATIVE_DIALOGUE
         {
             SDL_Event e{};e.type=SDL_KEYDOWN;
@@ -926,6 +978,7 @@ void srw64_update_window(void*) {
     }
     if (!editing_name) {
         const Uint8* keys = SDL_GetKeyboardState(nullptr);
+        if (alt_enter_key != SDL_SCANCODE_UNKNOWN && !keys[alt_enter_key]) alt_enter_key = SDL_SCANCODE_UNKNOWN;
         // Physical positions stay stable across keyboard layouts. Do not pass
         // macOS application shortcuts through as game input. Physical keys need
         // window focus; keys held through the debug interface do not, since it
@@ -934,7 +987,7 @@ void srw64_update_window(void*) {
         // The keys are the player's bindings (input_bindings.hpp). Keys the debug interface
         // holds keep the classic layout whatever is bound, as the native pages take them.
         if (physical)
-            state |= srw64::input::key_mask(bindings, [&](int key) { return key >= 0 && key < SDL_NUM_SCANCODES && keys[key]; });
+            state |= srw64::input::key_mask(bindings, [&](int key) { return key >= 0 && key < SDL_NUM_SCANCODES && keys[key] && key != alt_enter_key; });
         static const auto classic = srw64::input::classic_keys();
         state |= srw64::input::key_mask(classic, [&](int key) {
             for (unsigned k = 0; k < srw64::debug::KeyCount; ++k)

@@ -144,7 +144,8 @@
 | --- | --- |
 | Mac 菜单栏「显示」 | 「全屏」⌃⌘F（打勾＝当前全屏）；「窗口大小 1×–4×」⌘1–⌘4（打勾＝窗口正好是这一档）。SDL 自带 Window 菜单里的英文 Toggle Full Screen 同键，已隐藏。`src/host/macos/app_menu.mm` 只记请求，窗口线程在 `frontend.cpp` 里处理。 |
 | Windows 菜单栏（2026-10-08） | 窗口上一直有菜单栏；全屏时隐藏，鼠标推到屏幕最上沿才出现、移开就收起（出现时画面让出菜单那一行，5K 200% 下 39 像素；退出全屏时把这一行加回窗口，窗口档位不变）：「游戏」下是设置…（Ctrl+,）、重新读取台词（F5）、检查更新、关于、退出（同关窗）；「显示」与 Mac 相同，快捷键标 F11。SDL 把 Alt／F10 留给游戏，所以菜单只用鼠标点。`src/host/windows/app_menu_windows.cpp` 子类化 SDL 的窗口过程收 `WM_COMMAND`；挂菜单时把窗口加高一行，画面仍是原来的尺寸。有菜单栏后标题画面左上角的「设置…」按钮和 Mac 一样只在手柄输入后显示。 |
-| Windows／Linux | F11 切全屏（无修饰键）。没有 Alt+Enter：游戏按扫描码读键盘，Enter 会同时按下 START。 |
+| Windows／Linux | F11 或 Alt+Enter 切全屏（2026-10-09 加 Alt+Enter）。按着 Alt 时键盘本来就不进游戏；先松 Alt 后松 Enter 时，那颗 Enter 到松开前都不算 START（graphics.cpp `alt_enter_key`）。 |
+| 截图（2026-10-09） | 所有平台 F12 或 Print Screen（无修饰键）：下一帧整窗（含界面）存成 `数据文件夹/screenshots/Marchwind64-日期-时间.png`，顶部提示路径。改键页拒绝 F11、F12、Print Screen。 |
 | 设置「通用」页 | 「显示方式」窗口／全屏、「窗口大小」1×–4×，所有桌面平台都有。 |
 
 - 全屏用 `SDL_WINDOW_FULLSCREEN_DESKTOP`（Mac 上是独立空间的原生全屏）。

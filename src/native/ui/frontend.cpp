@@ -931,7 +931,8 @@ bool capture_event(const SDL_Event& event) {
         const auto key=event.key.keysym.scancode;
         if(key==SDL_SCANCODE_UNKNOWN)return true;
         if(key==SDL_SCANCODE_ESCAPE){capture.queue.clear();return true;}
-        if(key==SDL_SCANCODE_F5 || key==SDL_SCANCODE_F6 || key==SDL_SCANCODE_F7 || key==SDL_SCANCODE_F8){capture.refused=true;return true;}
+        if(key==SDL_SCANCODE_F5 || key==SDL_SCANCODE_F6 || key==SDL_SCANCODE_F7 || key==SDL_SCANCODE_F8 ||
+           key==SDL_SCANCODE_F11 || key==SDL_SCANCODE_F12 || key==SDL_SCANCODE_PRINTSCREEN){capture.refused=true;return true;}
         bind([&](input::Bindings& b,input::Action a){input::assign_key(b,a,int(key));});
         return true;
     }
@@ -4731,9 +4732,12 @@ bool dispatch(SDL_Event& event) {
         if(!event.key.repeat)srw64::dialogue::request_reload();return true;
     }
 #ifndef __APPLE__
-    // F11 toggles full screen (Windows names it in View > Full Screen; a Mac has ⌃⌘F there).
-    if(event.type==SDL_KEYDOWN && event.key.keysym.sym==SDLK_F11 && !on_steam_deck() &&
-       !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))){
+    // F11 or Alt + Enter toggles full screen (Windows names F11 in View > Full Screen; a Mac
+    // has ⌃⌘F there).
+    const bool alt_enter=(event.key.keysym.sym==SDLK_RETURN || event.key.keysym.sym==SDLK_KP_ENTER) &&
+        (event.key.keysym.mod&KMOD_ALT) && !(event.key.keysym.mod&(KMOD_GUI|KMOD_CTRL|KMOD_SHIFT));
+    if(event.type==SDL_KEYDOWN && !on_steam_deck() && (alt_enter || (event.key.keysym.sym==SDLK_F11 &&
+       !(event.key.keysym.mod&(KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))))){
         if(!event.key.repeat)toggle_fullscreen();return true;
     }
 #endif
