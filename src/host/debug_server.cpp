@@ -70,7 +70,13 @@ json on_window(std::function<json()> work) {
     task->work=std::move(work);
     auto future=task->result.get_future();
     {std::lock_guard lock(queue_mutex);queue.push_back(task);}
-    if(future.wait_for(5s)!=std::future_status::ready)throw RpcError(ServerError,"the window thread did not answer within 5 s");
+    if(future.wait_for(5s)!=std::future_status::ready) {
+        // Android can pause the window thread while the system Files app is open.
+        // Discard work that has not started; callbacks already running own their
+        // arguments, so returning this timeout cannot leave dangling references.
+        {std::lock_guard lock(queue_mutex);std::erase(queue,task);}
+        throw RpcError(ServerError,"the window thread did not answer within 5 s");
+    }
     return future.get();
 }
 
@@ -210,11 +216,11 @@ json screenshot(const json& params) {
         path=output/"debug-shots"/("shot-"+std::to_string(++shots)+".png");
     }
     if(params.contains("window") && params["window"]!="game")
-        return on_window([&]{return debug_ui::capture(params,path);});
+        return on_window([=]{return debug_ui::capture(params,path);});
     auto result=screenshots().capture(path,std::chrono::milliseconds(params.value("timeout_ms",3000)));
     if(!result)throw RpcError(ServerError,"no frame was presented in time (is the game paused or minimised?)");
     if(result->contains("error"))throw RpcError(ServerError,(*result)["error"].get<std::string>());
-    if(params.value("overlays",true))result->update(on_window([&]{return debug_ui::compose(path);}));
+    if(params.value("overlays",true))result->update(on_window([=]{return debug_ui::compose(path);}));
     return *result;
 }
 
@@ -245,59 +251,59 @@ json settings(const json& params) {
     if(params.contains("battle_ui")) {
         const auto ui=params["battle_ui"].get<std::string>();
         if(ui!="native" && ui!="hd" && ui!="original")throw RpcError(InvalidParams,"battle_ui must be native, hd or original");
-        on_window([&]{settings::set_battle_ui(settings::battle_ui_from(ui));return json(nullptr);});
+        on_window([=]{settings::set_battle_ui(settings::battle_ui_from(ui));return json(nullptr);});
         done["battle_ui"]=ui;
     }
     if(params.contains("aspect")) {
         const auto aspect=params["aspect"].get<std::string>();
         if(aspect!="auto" && aspect!="4:3")throw RpcError(InvalidParams,"aspect must be auto or 4:3");
-        on_window([&]{settings::set_wide_picture(aspect=="auto");return json(nullptr);});
+        on_window([=]{settings::set_wide_picture(aspect=="auto");return json(nullptr);});
         done["aspect"]=aspect;
     }
     if(params.contains("ui_size")) {
         const auto size=params["ui_size"].get<std::string>();
         if(size!="standard" && size!="large" && size!="largest")throw RpcError(InvalidParams,"ui_size must be standard, large or largest");
-        on_window([&]{settings::set_ui_size(size=="largest"?settings::UiSize::Largest:size=="large"?settings::UiSize::Large:settings::UiSize::Standard);return json(nullptr);});
+        on_window([=]{settings::set_ui_size(size=="largest"?settings::UiSize::Largest:size=="large"?settings::UiSize::Large:settings::UiSize::Standard);return json(nullptr);});
         done["ui_size"]=size;
     }
     if(params.contains("intermission_ui")) {
         const auto ui=params["intermission_ui"].get<std::string>();
         if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"intermission_ui must be native or original");
-        on_window([&]{settings::set_native_intermission_ui(ui=="native");return json(nullptr);});
+        on_window([=]{settings::set_native_intermission_ui(ui=="native");return json(nullptr);});
         done["intermission_ui"]=ui;
     }
     if(params.contains("name_entry_ui")) {
         const auto ui=params["name_entry_ui"].get<std::string>();
         if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"name_entry_ui must be native or original");
-        on_window([&]{settings::set_native_name_entry_ui(ui=="native");return json(nullptr);});
+        on_window([=]{settings::set_native_name_entry_ui(ui=="native");return json(nullptr);});
         done["name_entry_ui"]=ui;
     }
     if(params.contains("title_ui")) {
         const auto ui=params["title_ui"].get<std::string>();
         if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"title_ui must be native or original");
-        on_window([&]{settings::set_native_title_ui(ui=="native");return json(nullptr);});
+        on_window([=]{settings::set_native_title_ui(ui=="native");return json(nullptr);});
         done["title_ui"]=ui;
     }
     if(params.contains("locale")) {
         const auto locale=params["locale"].get<std::string>();
-        on_window([&]{settings::request_locale(locale);return json(nullptr);});
+        on_window([=]{settings::request_locale(locale);return json(nullptr);});
         done["locale"]=locale;
     }
     // Bezel and filter (docs/native/bezels-and-filters.md): absolute paths, "" for none.
     if(params.contains("bezel")) {
         const auto path=params["bezel"].get<std::string>();
-        on_window([&]{settings::set_bezel(path);return json(nullptr);});
+        on_window([=]{settings::set_bezel(path);return json(nullptr);});
         done["bezel"]=path;
     }
     if(params.contains("filter")) {
         const auto path=params["filter"].get<std::string>();
-        on_window([&]{settings::set_filter(path);return json(nullptr);});
+        on_window([=]{settings::set_filter(path);return json(nullptr);});
         done["filter"]=path;
     }
     if(params.contains("filter_scale")) {
         const auto scale=params["filter_scale"].get<unsigned>();
         if(scale>4)throw RpcError(InvalidParams,"filter_scale must be 0-4");
-        on_window([&]{settings::set_filter_scale(scale);return json(nullptr);});
+        on_window([=]{settings::set_filter_scale(scale);return json(nullptr);});
         done["filter_scale"]=scale;
     }
     return done;
@@ -375,13 +381,13 @@ json dispatch(const std::string& method,const json& params) {
         if(result.contains("error"))throw RpcError(ServerError,result["error"].get<std::string>());
         return result;
     }
-    if(method=="ui.tree")return on_window([&]{return debug_ui::tree(params);});
-    if(method=="ui.click")return on_window([&]{return debug_ui::click(params);});
-    if(method=="ui.key")return on_window([&]{return debug_ui::key(params);});
-    if(method=="ui.type")return on_window([&]{return debug_ui::type(params);});
-    if(method=="menu")return on_window([&]{return debug_ui::menu(params);});
+    if(method=="ui.tree")return on_window([=]{return debug_ui::tree(params);});
+    if(method=="ui.click")return on_window([=]{return debug_ui::click(params);});
+    if(method=="ui.key")return on_window([=]{return debug_ui::key(params);});
+    if(method=="ui.type")return on_window([=]{return debug_ui::type(params);});
+    if(method=="menu")return on_window([=]{return debug_ui::menu(params);});
     if(method=="settings")return settings(params);
-    if(method=="window")return on_window([&] {
+    if(method=="window")return on_window([=] {
         try{return srw64_window_control(params);}
         catch(const std::invalid_argument& error){throw RpcError(InvalidParams,error.what());}
     });

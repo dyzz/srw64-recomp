@@ -159,3 +159,5 @@
 战前页回归可运行 `.venv/bin/python tools/recomp/debug/check_battle_ui.py`；精神与主动攻击返回流程可运行 `.venv/bin/python tools/recomp/debug/check_battle_spirits.py`。两者构建当前 native 宿主，通过主菜单 `mini-enter` 进入，不启用旧版人物选择。`status.mini_stage.waiting_reason` 可诊断关卡尚未就绪的原因；只有 `ready=true` 后才开始地图操作。截图和断言结果保存在各自的 debug 会话目录。
 
 战前换武器与现场施放精神可运行 `.venv/bin/python tools/recomp/debug/check_battle_actions.py`：从新构建进入迷你关卡，验证主动攻击换武器、SP 实际扣除、精神效果刷新、反击／回避选择保留、同乘驾驶员 SP，以及中／日／英左右镜像布局。通过 `ui.click`、`ui.key`、`status.battle_page` 和 GPU 截图执行，不改写战斗快照。
+
+2026-10-09 安卓后台超时修复：切到系统「文件」后 SDL 窗口线程可能暂停。`on_window` 的回调现在持有参数副本，并从队列撤销尚未开始的超时任务，避免请求返回错误后访问已销毁参数或恢复前台时执行过期点击。Seeker / Android 16 实测后台点击超时 5 秒，再从启动器返回后仍为同一进程，设置窗口保持打开；超时的关闭操作未执行。
