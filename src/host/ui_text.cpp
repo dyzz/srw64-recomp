@@ -141,6 +141,12 @@ int trailing_blank(const std::string& drawn) {
     }
     return 1;
 }
+// Text that continues a sentence: a particle or punctuation first (のデータを…, ：名前を入力).
+bool continues(const std::string& drawn) {
+    for (const char* lead : {"の", "に", "を", "が", "は", "で", "と", "へ", "も", "か", "：", ":", "、", "。", "！", "？"})
+        if (drawn.rfind(lead, 0) == 0) return true;
+    return false;
+}
 std::string catalog_form(const std::string& text) {
     std::string out;
     for (const char c : text) {
@@ -464,7 +470,8 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
     };
     // A label the original continues on the same line where it ends (ROMカートリッジ|のデータを
     // ロードします): the translation reads as one sentence from the first piece's start, in
-    // the run's own width. The follower is alone in its column, so table cells stay apart.
+    // the run's own width. The follower is alone in its column, so table cells stay apart, and
+    // starts with a particle or punctuation: a word of its own (レベルアップ|レベル 12) stays apart.
     std::vector<int> run(found.size(), 0);   // label -> the original run's width it now holds
     for (size_t i = 0; i < found.size(); ++i) {
         Label& a = found[i];
@@ -477,6 +484,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             for (size_t j = 0; j < found.size(); ++j) {
                 Label& b = found[j];
                 if (j == i || b.id == 0 || b.consumed || b.palette != a.palette || (!a.translated && !b.translated)) continue;
+                if (!continues(b.drawn)) continue;
                 const auto pb = parts_of(b);
                 if (pb.size() != 1 || std::abs(pb.front().y - pa.front().y) > 2) continue;
                 if (pb.front().x < end - 2 || pb.front().x > end + int(kNarrow) || column(pb.front().x, pb.front().y)) continue;

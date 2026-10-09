@@ -135,11 +135,14 @@ def original_width(source):
 
 def joins(items, sources, x, y, text_id):
     """The label the overlay sets after this one as one sentence (ui_text.cpp): on its row,
-    starting within a cell of where this one's original ends, alone in its column."""
+    starting within a cell of where this one's original ends, alone in its column, and
+    starting with a particle or punctuation."""
     end = x + original_width(sources.get(text_id, ''))
     for t, ox, oy in items:
         if abs(oy - y) > 2 or not end - 2 <= ox <= end + 8:
             continue
+        if sources.get(t, '')[:1] not in PARTICLES | set('：:、。！？'):
+            continue   # a word of its own (レベルアップ|レベル 12)
         if any(abs(cx - ox) <= 1 and 0 < abs(cy - oy) <= 24 for _, cx, cy in items):
             continue
         return t, ox, oy
