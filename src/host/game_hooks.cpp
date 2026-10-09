@@ -607,28 +607,46 @@ void resident_func_800A5F84(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_weapon_twin_sync(rdram, ctx);
     upgrades::steer_unlock(rdram, unit, weapon);
 }
+// The intermission overlay's input latch: 801C45BC fills D_801DD62C (four ports) every
+// frame with the pressed edges and held repeats. The original steps read it to move their
+// cursors and to free and redraw the texts they drew (801CD0CC, 801CD268, 801C6680...).
+// On a screen a native page built those texts were never drawn: the counts and handles
+// there are whatever another overlay left. On the frame the dispatcher (801D8D20) changes
+// screens it latches the input, builds the new screen and runs its step: the page opens
+// after the input was read, so a press on that frame reached 801CD268, which freed up to a
+// stale negative count, out of RDRAM (the 武器改造 crash in 0.4.2/0.4.3). Such a screen's
+// steps see no latch; the pages move the cursors themselves.
+namespace {
+bool native_screen = false;
+bool native_built(bool native) { native_screen = native; return native; }
+void quiet_latch(uint8_t* rdram) {
+    if (native_screen) for (uint32_t port = 0; port < 4; ++port) srw64::guest::write16(rdram, 0x801DD62C + 2 * port, 0);
+}
+}
 // The machine lists of ユニット改造 / 武器改造 and the five-stat screen: the native
 // page (upgrade_page.cpp) may build them without drawing and answer their steps.
 void load_0008F4B0_func_801CF388(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.upgrade_list_build && srw64_game_hooks.upgrade_list_build(rdram, ctx, false)) return;
+    if (native_built(srw64_game_hooks.upgrade_list_build && srw64_game_hooks.upgrade_list_build(rdram, ctx, false))) return;
     srw64_original_upgrade_list_open(rdram, ctx);
 }
 void load_0008F4B0_func_801CF564(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.upgrade_list_step && srw64_game_hooks.upgrade_list_step(rdram, ctx, srw64_original_upgrade_list_step)) return;
     srw64_original_upgrade_list_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D03D0(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.upgrade_list_build && srw64_game_hooks.upgrade_list_build(rdram, ctx, true)) return;
+    if (native_built(srw64_game_hooks.upgrade_list_build && srw64_game_hooks.upgrade_list_build(rdram, ctx, true))) return;
     srw64_original_weapon_list_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D04A4(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.upgrade_list_step && srw64_game_hooks.upgrade_list_step(rdram, ctx, srw64_original_weapon_list_step)) return;
     srw64_original_weapon_list_step(rdram, ctx);
 }
 void load_0008F4B0_func_801CF680(uint8_t* rdram, recomp_context* ctx) {
     // Upgrade screen set-up; prints the unit's cap.
     upgrades::Scope scope(rdram, upgrades::Policy::decide);
-    if (srw64_game_hooks.upgrade_stats_build && srw64_game_hooks.upgrade_stats_build(rdram, ctx)) return;
+    if (native_built(srw64_game_hooks.upgrade_stats_build && srw64_game_hooks.upgrade_stats_build(rdram, ctx))) return;
     srw64_original_upgrade_open(rdram, ctx);
 }
 void load_0008F4B0_func_801C80E0(uint8_t* rdram, recomp_context* ctx) {
@@ -638,6 +656,7 @@ void load_0008F4B0_func_801C80E0(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_upgrade_stats_view(rdram, ctx);
 }
 void load_0008F4B0_func_801CF988(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     // Five stats: cursor, price, "can upgrade" and the confirmed upgrade.
     upgrades::Scope scope(rdram, upgrades::Policy::decide);
     if (srw64_game_hooks.upgrade_stats_step && srw64_game_hooks.upgrade_stats_step(rdram, ctx)) return;
@@ -650,20 +669,22 @@ void load_0008F4B0_func_801CF85C(uint8_t* rdram, recomp_context* ctx) {
 }
 void load_0008F4B0_func_801D0600(uint8_t* rdram, recomp_context* ctx) {
     // 武器改造 weapon list build, with the full-upgrade bonus message.
-    if (srw64_game_hooks.weapon_list_build && srw64_game_hooks.weapon_list_build(rdram, ctx)) return;
+    if (native_built(srw64_game_hooks.weapon_list_build && srw64_game_hooks.weapon_list_build(rdram, ctx))) return;
     srw64_original_weapon_screen_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D087C(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.weapon_list_step && srw64_game_hooks.weapon_list_step(rdram, ctx)) return;
     srw64_original_weapon_screen_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D0C7C(uint8_t* rdram, recomp_context* ctx) {
     // Selected weapon: price, power preview, gauge, "cannot upgrade further".
     upgrades::Scope scope(rdram, upgrades::Policy::weapon);
-    if (srw64_game_hooks.weapon_confirm_build && srw64_game_hooks.weapon_confirm_build(rdram, ctx)) return;
+    if (native_built(srw64_game_hooks.weapon_confirm_build && srw64_game_hooks.weapon_confirm_build(rdram, ctx))) return;
     srw64_original_upgrade_weapon_view(rdram, ctx);
 }
 void load_0008F4B0_func_801D1100(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     // Selected weapon: the confirmed upgrade and full-upgrade weapons.
     upgrades::Scope scope(rdram, upgrades::Policy::weapon);
     if (srw64_game_hooks.weapon_confirm_step && srw64_game_hooks.weapon_confirm_step(rdram, ctx)) return;
@@ -673,68 +694,76 @@ void load_0008F4B0_func_801D1100(uint8_t* rdram, recomp_context* ctx) {
 // screen; the native page (parts_page.cpp) builds them without drawing and
 // answers their steps.
 void load_0008F4B0_func_801D4A00(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.parts_build && srw64_game_hooks.parts_build(rdram, ctx, 7)) return;
+    if (native_built(srw64_game_hooks.parts_build && srw64_game_hooks.parts_build(rdram, ctx, 7))) return;
     srw64_original_parts_list_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D4A98(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.parts_step && srw64_game_hooks.parts_step(rdram, ctx, 7, srw64_original_parts_list_step)) return;
     srw64_original_parts_list_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D4BEC(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.parts_build && srw64_game_hooks.parts_build(rdram, ctx, 18)) return;
+    if (native_built(srw64_game_hooks.parts_build && srw64_game_hooks.parts_build(rdram, ctx, 18))) return;
     srw64_original_parts_slots_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D4C94(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.parts_step && srw64_game_hooks.parts_step(rdram, ctx, 18, srw64_original_parts_slots_step)) return;
     srw64_original_parts_slots_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D5168(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.parts_build && srw64_game_hooks.parts_build(rdram, ctx, 19)) return;
+    if (native_built(srw64_game_hooks.parts_build && srw64_game_hooks.parts_build(rdram, ctx, 19))) return;
     srw64_original_parts_holders_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D51EC(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.parts_step && srw64_game_hooks.parts_step(rdram, ctx, 19, srw64_original_parts_holders_step)) return;
     srw64_original_parts_holders_step(rdram, ctx);
 }
 // ユニット能力／パイロット能力 (ability_page.cpp): the two lists, the unit page, its
 // weapon list and the pilot page, built without drawing and stepped by the page.
 void load_0008F4B0_func_801D14BC(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 4)) return;
+    if (native_built(srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 4))) return;
     srw64_original_ability_unit_list_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D1554(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.ability_step && srw64_game_hooks.ability_step(rdram, ctx, 4, srw64_original_ability_unit_list_step)) return;
     srw64_original_ability_unit_list_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D16D8(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 13)) return;
+    if (native_built(srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 13))) return;
     srw64_original_ability_unit_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D2030(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.ability_step && srw64_game_hooks.ability_step(rdram, ctx, 13, srw64_original_ability_unit_step)) return;
     srw64_original_ability_unit_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D2144(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 14)) return;
+    if (native_built(srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 14))) return;
     srw64_original_ability_weapons_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D21F8(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.ability_step && srw64_game_hooks.ability_step(rdram, ctx, 14, srw64_original_ability_weapons_step)) return;
     srw64_original_ability_weapons_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D22E0(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 5)) return;
+    if (native_built(srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 5))) return;
     srw64_original_ability_pilot_list_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D2378(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.ability_step && srw64_game_hooks.ability_step(rdram, ctx, 5, srw64_original_ability_pilot_list_step)) return;
     srw64_original_ability_pilot_list_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D2480(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 15)) return;
+    if (native_built(srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 15))) return;
     srw64_original_ability_pilot_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D24C8(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.ability_step && srw64_game_hooks.ability_step(rdram, ctx, 15, srw64_original_ability_pilot_step)) return;
     srw64_original_ability_pilot_step(rdram, ctx);
 }
@@ -748,60 +777,67 @@ void resident_func_80090E5C(uint8_t* rdram, recomp_context* ctx) {
 // データセーブ (save_page.cpp): the medium choice and the slot page, built without
 // drawing; the page runs the state machine and calls the original write routines.
 void load_0008F4B0_func_801CEA30(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.save_build && srw64_game_hooks.save_build(rdram, ctx, 1)) return;
+    if (native_built(srw64_game_hooks.save_build && srw64_game_hooks.save_build(rdram, ctx, 1))) return;
     srw64_original_save_choice_open(rdram, ctx);
 }
 void load_0008F4B0_func_801CEABC(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.save_step && srw64_game_hooks.save_step(rdram, ctx, 1, srw64_original_save_choice_step)) return;
     srw64_original_save_choice_step(rdram, ctx);
 }
 void load_0008F4B0_func_801CECE8(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.save_build && srw64_game_hooks.save_build(rdram, ctx, 9)) return;
+    if (native_built(srw64_game_hooks.save_build && srw64_game_hooks.save_build(rdram, ctx, 9))) return;
     srw64_original_save_slots_open(rdram, ctx);
 }
 void load_0008F4B0_func_801CEEF8(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.save_step && srw64_game_hooks.save_step(rdram, ctx, 9, srw64_original_save_slots_step)) return;
     srw64_original_save_slots_step(rdram, ctx);
 }
 // のりかえ (swap_page.cpp): the pilot / fairy lists, the target lists and the confirm
 // page, built without drawing and stepped by the page; the swap is the original's.
 void load_0008F4B0_func_801D25A4(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 6)) return;
+    if (native_built(srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 6))) return;
     srw64_original_swap_pilots_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D263C(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 6, srw64_original_swap_pilots_step)) return;
     srw64_original_swap_pilots_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D2758(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 16)) return;
+    if (native_built(srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 16))) return;
     srw64_original_swap_targets_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D2A24(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 16, srw64_original_swap_targets_step)) return;
     srw64_original_swap_targets_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D2B64(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 17)) return;
+    if (native_built(srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 17))) return;
     srw64_original_swap_confirm_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D3A90(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 17, srw64_original_swap_confirm_step)) return;
     srw64_original_swap_confirm_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D4164(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 20)) return;
+    if (native_built(srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 20))) return;
     srw64_original_swap_fairies_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D41FC(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 20, srw64_original_swap_fairies_step)) return;
     srw64_original_swap_fairies_step(rdram, ctx);
 }
 void load_0008F4B0_func_801D42FC(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 21)) return;
+    if (native_built(srw64_game_hooks.swap_build && srw64_game_hooks.swap_build(rdram, ctx, 21))) return;
     srw64_original_swap_fairy_targets_open(rdram, ctx);
 }
 void load_0008F4B0_func_801D4578(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.swap_step && srw64_game_hooks.swap_step(rdram, ctx, 21, srw64_original_swap_fairy_targets_step)) return;
     srw64_original_swap_fairy_targets_step(rdram, ctx);
 }
@@ -884,10 +920,11 @@ void load_0008F4B0_func_801D6FF4(uint8_t* rdram, recomp_context* ctx) {
 }
 void load_0008F4B0_func_801CDFB0(uint8_t* rdram, recomp_context* ctx) {
     // インターミッション menu build: panels, numbers, cursor. The native page shows them.
-    if (srw64_game_hooks.intermission_build && srw64_game_hooks.intermission_build(rdram, ctx)) return;
+    if (native_built(srw64_game_hooks.intermission_build && srw64_game_hooks.intermission_build(rdram, ctx))) return;
     srw64_original_intermission_menu_build(rdram, ctx);
 }
 void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
+    quiet_latch(rdram);
     if (srw64_game_hooks.cheats_intermission) srw64_game_hooks.cheats_intermission(rdram, ctx);
     if (!srw64_game_hooks.intermission_step || !srw64_game_hooks.intermission_step(rdram, ctx))
         srw64_original_intermission_menu_step(rdram, ctx);
