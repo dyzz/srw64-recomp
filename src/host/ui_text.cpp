@@ -329,26 +329,43 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         }
         Style style = label_style(locale, 0, false);
         std::string shown_text = catalog_form(text);
+        float body_x = float(body.x);
         style.pitch = 16 / style.size;
         style.width = widest * 1.1 + 6;
-        // A label the original prints right after a one-line body (発進！スイームルグ|クリア)
-        // joins it as one sentence in the run's width, on the labels' line pitch so it shares
-        // their baseline.
-        for (auto& l : found) {
-            if (shown_text.find("<BR>") != std::string::npos) break;
-            if (l.id == 0 || l.consumed || l.cells.empty() || l.palette != body.palette) continue;
-            const auto& c0 = l.cells.front();
-            if (std::abs(c0.y - body.y) > 2 || c0.x < body.x + widest - 2 || c0.x > body.x + widest + int(kNarrow)) continue;
-            shown_text += (locale == "en" ? " " : "") + (l.text.empty() ? l.drawn : l.text);
-            style.pitch = kLine / style.size;
-            style.width = 0;
-            style.max_width = l.cells.back().x + l.cells.back().width - body.x - trailing_blank(l.drawn);
-            l.consumed = true;
-            break;
+        // A label the original prints after a one-line body on the same line joins it as one
+        // sentence on the labels' line pitch, so it shares their baseline: right after it
+        // (発進！スイームルグ|クリア), or across the blank a short title leaves before the
+        // column the label keeps (二大勢力 … クリア). A translation then runs up to whatever
+        // follows on that line; set in the original's own blanks it would wrap or collide.
+        if (shown_text.find("<BR>") == std::string::npos) {
+            Label* next = nullptr;
+            for (auto& l : found) {
+                if (l.id == 0 || l.consumed || l.cells.empty() || l.palette != body.palette) continue;
+                const auto& c0 = l.cells.front();
+                if (std::abs(c0.y - body.y) > 2 || c0.x < body.x + widest - 2) continue;
+                if (!next || c0.x < next->cells.front().x) next = &l;
+            }
+            const int gap = next ? next->cells.front().x - (body.x + widest) : 0;
+            if (next && (gap <= int(kNarrow) || (locale != "ja" && gap <= 6 * int(kNarrow)))) {
+                shown_text += (locale == "en" ? " " : "") + (next->text.empty() ? next->drawn : next->text);
+                const int end = next->cells.back().x + next->cells.back().width;
+                // Room to the next text on the line, or the narrower of the two windows these
+                // lines sit in (the intermission's stage bar ends at x 288, the save list at 300).
+                int after = 284;
+                for (const auto& l : found)
+                    if (&l != next && !l.cells.empty() && std::abs(l.cells.front().y - body.y) <= 2 && l.cells.front().x >= end)
+                        after = std::min(after, l.cells.front().x - 4);
+                const int inset = locale == "ja" ? 0 : kInset;
+                style.pitch = kLine / style.size;
+                style.width = 0;
+                style.max_width = std::max(end - trailing_blank(next->drawn), after) - body.x - inset;
+                body_x = float(body.x + inset);
+                next->consumed = true;
+            }
         }
         float tint[3];
         colour(ram, body.palette, tint);
-        items.push_back(placed(style, locale, shown_text, "body", float(body.x), float(body.y), tint));
+        items.push_back(placed(style, locale, shown_text, "body", body_x, float(body.y), tint));
         for (const uint32_t rect : body.record->rects) { replaced.push_back(rect); cover(rect); }
         shown.push_back({{"body", body.address}, {"x", body.x}, {"y", body.y}, {"text", text}});
         note("body:" + locale + ":" + text, {{"kind", "body"}, {"record", half(ram, body.address)}, {"text", text}});
