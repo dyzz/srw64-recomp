@@ -6194,7 +6194,7 @@
     {
       "key": "base:t00_00952",
       "source_sha256": "5f69cde56a0722bd7c78d331225a37c4d573f86d73b5b94a36bdffb9a189eabb",
-      "target": "Confirm Deployment<END>",
+      "target": "Confirm<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -6292,14 +6292,14 @@
     {
       "key": "base:t00_00966",
       "source_sha256": "255175de83cb7538280f31f6eb325ade9f73ad524590c26244bedf844fde69db",
-      "target": "Victory Conditions<END>",
+      "target": "Victory<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00967",
       "source_sha256": "7a42e0ce0bc35cfaba9e771acfd76b2a843c24059dc3a1ffd1b54b66cb3b0d53",
-      "target": "Defeat Conditions<END>",
+      "target": "Defeat<END>",
       "review_status": "draft",
       "origin": "terms"
     },
