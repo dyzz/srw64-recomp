@@ -459,6 +459,26 @@ def main() -> int:
                          "            if (sameOrigin && (abs(scissorRect.lrx - movedLrx) <= 4) && (movedFromOrigin(ulx, extAlignment.leftOrigin) < scissorRect.lrx)) {\n"
                          "                lrx += scissorRect.lrx - movedLrx;\n"
                          "            }\n"))
+    # A shader compilation thread could sleep through its stop: the destructor cleared
+    # threadRunning and notified without the queue's lock, so a thread between its wait's
+    # check and its sleep missed the wake-up, and join() waited for ever (a game window that
+    # would not close, Mac 2026-10-09: the Gfx thread in RasterShaderCache's destructor, the
+    # thread in its wait). The flag is now set before the thread starts (the constructor's
+    # clear raced the thread's own set) and cleared under the lock.
+    records.append(patch(checkout, "src/render/rt64_raster_shader_cache.cpp",
+                         "        thread = std::make_unique<std::thread>(&CompilationThread::loop, this);\n"
+                         "        threadRunning = false;\n",
+                         "        threadRunning = true;\n"
+                         "        thread = std::make_unique<std::thread>(&CompilationThread::loop, this);\n",
+                         additional=[("    RasterShaderCache::CompilationThread::~CompilationThread() {\n"
+                                      "        threadRunning = false;\n",
+                                      "    RasterShaderCache::CompilationThread::~CompilationThread() {\n"
+                                      "        {\n"
+                                      "            const std::unique_lock<std::mutex> queueLock(shaderCache->descQueueMutex);\n"
+                                      "            threadRunning = false;\n"
+                                      "        }\n"),
+                                     ("        threadRunning = true;\n\n        while (threadRunning) {",
+                                      "        while (threadRunning) {")]))
     recorded = {r['path'] for r in records}
     for relative in [*NATIVE_MODEL_PATCHES, *(r for r in ANDROID_PATCHES if not r.startswith("src/contrib/plume/"))]:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:
