@@ -482,7 +482,9 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 if (pb.front().x < end - 2 || pb.front().x > end + int(kNarrow) || column(pb.front().x, pb.front().y)) continue;
                 const std::string first = composed[i].empty() ? a.text : composed[i];
                 const std::string second = composed[j].empty() ? (b.text.empty() ? b.drawn : b.text) : composed[j];
-                composed[i] = first + (locale == "en" ? " " : "") + second;
+                // No space before the punctuation a continuation may start with (": enter a name").
+                const bool spaced = locale == "en" && !second.empty() && std::string(":;,.!?)").find(second[0]) == std::string::npos;
+                composed[i] = first + (spaced ? " " : "") + second;
                 run[i] = pb.front().x + pb.front().width - pa.front().x - trailing_blank(b.drawn) + 1;
                 a.translated = true; b.consumed = true; joined = true;
                 break;

@@ -14,7 +14,8 @@ first, then down to 1.5 points smaller.
 A label whose Japanese starts with a particle (のデータをロードします after ROMカートリッジ)
 continues text the game prints before it at run time, and the overlay sets the two as one
 sentence: such a label is checked against the whole window row, and "prefix room" says how
-much is left for what comes before it.
+much is left for what comes before it. Two labels the overlay joins (the second starting
+within a cell of where the first's original ends, 主人公|：名前を入力) are checked as one.
 
 The unit command menu is built at run time (801CA4D8): its commands are checked against the
 widened panel's room.
@@ -127,6 +128,24 @@ def room(grid, x, y, others):
     return end - (x + INSET)
 
 
+def original_width(source):
+    """The ROM's cells: kanji and full-width forms 14 pixels, kana and the rest 8."""
+    return sum(14 if '\u4e00' <= c <= '\u9fff' or c == '々' or '\uff00' <= c <= '\uffef' else 8 for c in source)
+
+
+def joins(items, sources, x, y, text_id):
+    """The label the overlay sets after this one as one sentence (ui_text.cpp): on its row,
+    starting within a cell of where this one's original ends, alone in its column."""
+    end = x + original_width(sources.get(text_id, ''))
+    for t, ox, oy in items:
+        if abs(oy - y) > 2 or not end - 2 <= ox <= end + 8:
+            continue
+        if any(abs(cx - ox) <= 1 and 0 < abs(cy - oy) <= 24 for _, cx, cy in items):
+            continue
+        return t, ox, oy
+    return None
+
+
 def fit(font, size, text, space):
     natural = font.getlength(text) * size / 100
     if natural <= space:
@@ -165,10 +184,26 @@ def main():
             skipped.append({'layout': hex(i), 'scene': scene, 'why': f'scene {w8 * 8}x{h8 * 8}, placed at run time'})
             continue
         grid = widened(scene, data, atlas)
+        source_of = {t: re.sub(r'<END>$', '', sources.get(f'base:t00_{t:05d}', '')) for t, _, _ in items}
+        joined = set()
         for text_id, x, y in items:
+            if (text_id, x, y) in joined:
+                continue
             text = entries.get(f'base:t00_{text_id:05d}', '')
             if not text or '<' in text.replace('<END>', ''):
                 continue
+            follower = joins(items, source_of, x, y, text_id)
+            if follower and not re.search(r' {2,}', text):
+                second = entries.get(f'base:t00_{follower[0]:05d}', '').strip()
+                if second and '<' not in second:
+                    joined.add(follower)
+                    sep = '' if second[:1] in ':;,.!?)' or args.locale != 'en' else ' '
+                    whole = text.strip() + sep + second
+                    space = room(grid, x, y, [(ox, oy) for t, ox, oy in items if (ox, oy) not in ((x, y), follower[1:])])
+                    kind, natural, squeeze = fit(font, size, whole, space)
+                    rows.append({'layout': hex(i), 'scene': scene, 'text_id': text_id, 'x': x, 'y': y, 'text': whole,
+                                 'room': space, 'natural': round(natural, 1), 'squeeze': round(squeeze, 2), 'kind': kind, 'joined': True})
+                    continue
             others = [(ox, oy) for t, ox, oy in items if (ox, oy) != (x, y)]
             source = re.sub(r'<END>$', '', sources.get(f'base:t00_{text_id:05d}', '')).lstrip()
             left = window_left(grid, x, y)
