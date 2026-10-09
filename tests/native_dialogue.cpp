@@ -132,11 +132,14 @@ int main() {
         // Held on: the first page at once, then one every fast_step_vis after the delay.
         held.toggle_auto(90);assert(held.auto_read);
         held.update(chord,100);assert(held.page==3);
-        for(uint64_t vi=102;vi<=100+Reader::fast_hold_vis+2*Reader::fast_step_vis;vi+=2)held.update(chord,vi);
+        // A held chord must leave the current page visible for 0.3 seconds.
+        for(uint64_t vi=102;vi<118;vi+=2) {held.update(chord,vi);assert(held.page==3);}
+        for(uint64_t vi=118;vi<=100+Reader::fast_hold_vis+2*Reader::fast_step_vis;vi+=2)held.update(chord,vi);
         assert(held.page==6);
         // Let go: manual from that update, the page waits for an A, then one A turns one page.
-        held.update(0,132);assert(!held.fast && !held.auto_read && held.page==6);
-        for(uint64_t vi=134;vi<2000;vi+=2) {
+        const auto released=102+Reader::fast_hold_vis+2*Reader::fast_step_vis;
+        held.update(0,released);assert(!held.fast && !held.auto_read && held.page==6);
+        for(uint64_t vi=released+2;vi<2000;vi+=2) {
             assert(!held.update(0,vi));
             assert(held.page==6 && !held.pending && held.confirmation(vi)==Confirm::none);
         }
@@ -170,6 +173,8 @@ int main() {
         across.boundary();
         across.begin(2,101,u"乙",typeset(std::u16string(300,u'乙'),13),40);
         across.update(Reader::R|Reader::A,40);across.update(Reader::R|Reader::A,46);
+        assert(across.page==1);
+        across.update(Reader::R|Reader::A,58);
         assert(across.page==2);
     }
     {

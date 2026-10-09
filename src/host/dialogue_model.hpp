@@ -76,7 +76,7 @@ struct Reader {
     bool end_sent{};
     static constexpr uint64_t stop_pause_vis=18;   // the typewriter rests 0.3 s at an original page break
     static constexpr uint64_t stop_retry_vis=30;   // an A the original ignored is sent again
-    static constexpr uint64_t fast_step_vis=6;     // fast-forward held turns a page every 0.1 s,
+    static constexpr uint64_t fast_step_vis=18;    // fast-forward held turns a page every 0.3 s,
     static constexpr uint64_t fast_hold_vis=18;    // once held 0.3 s: a shorter press turns one
     size_t page{}, visible{}, history_offset{}, history_scroll_limit{};
     uint16_t previous{};
@@ -294,7 +294,7 @@ struct Reader {
         if(pending)return false;
         // A press of the chord turns one page (Z tapped while E stays down too);
         // held fast_hold_vis, it turns one every fast_step_vis.
-        const bool fast_turn=fast && now-last_fast>=fast_step_vis && (fresh || now-fast_since>=fast_hold_vis);
+        const bool fast_turn=fast && (fresh || (now-last_fast>=fast_step_vis && now-fast_since>=fast_hold_vis));
         const bool advance = ((pressed&A) && !(buttons&R)) || fast_turn || skipping ||
             (auto_read && visible==p.end && now-page_started>=timing.total_vis());
         if(!advance)return false;
