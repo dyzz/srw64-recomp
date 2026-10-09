@@ -319,35 +319,36 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
     for (const auto& body : bodies_found) {
         const std::string text = dialogue::body_page(ram, body.address);
         if (text.empty()) continue;
-        int widest = 0, line = 0;
+        // The widest line, and the widest up to its last glyph: titles come padded with
+        // blanks up to the column a following label keeps.
+        int widest = 0, inked = 0, line = 0;
         for (unsigned k2 = 0; k2 < 256; ++k2) {
             const uint16_t code = half(ram, body.address + 0xC + 2 * k2);
             if (code == 0xFFFF) break;
             if (code == 0xFFFE || code == 0xFFFD) { line = 0; continue; }
             line += code == 0 || code < kWideFirst ? kNarrow : kWide;
             widest = std::max(widest, line);
+            if (code) inked = std::max(inked, line);
         }
         Style style = label_style(locale, 0, false);
         std::string shown_text = catalog_form(text);
         float body_x = float(body.x);
         style.pitch = 16 / style.size;
         style.width = widest * 1.1 + 6;
-        // A label the original prints after a one-line body on the same line joins it as one
-        // sentence on the labels' line pitch, so it shares their baseline: right after it
-        // (発進！スイームルグ|クリア), or across the blank a short title leaves before the
-        // column the label keeps (二大勢力 … クリア). A translation then runs up to whatever
-        // follows on that line; set in the original's own blanks it would wrap or collide.
+        // A label the original prints after a one-line body on the same line (発進！スイームルグ
+        // クリア, 二大勢力 クリア: the original puts クリア after the title wherever it ends) joins
+        // it as one sentence on the labels' line pitch, so it shares their baseline. It runs up
+        // to whatever follows on that line; in the original's own width it would wrap.
         if (shown_text.find("<BR>") == std::string::npos) {
             Label* next = nullptr;
             for (auto& l : found) {
                 if (l.id == 0 || l.consumed || l.cells.empty() || l.palette != body.palette) continue;
                 const auto& c0 = l.cells.front();
-                if (std::abs(c0.y - body.y) > 2 || c0.x < body.x + widest - 2) continue;
+                if (std::abs(c0.y - body.y) > 2 || c0.x < body.x + inked - 2) continue;
                 if (!next || c0.x < next->cells.front().x) next = &l;
             }
-            const int gap = next ? next->cells.front().x - (body.x + widest) : 0;
+            const int gap = next ? next->cells.front().x - (body.x + inked) : 0;
             if (next && (gap <= int(kNarrow) || (locale != "ja" && gap <= 6 * int(kNarrow)))) {
-                shown_text += (locale == "en" ? " " : "") + (next->text.empty() ? next->drawn : next->text);
                 const int end = next->cells.back().x + next->cells.back().width;
                 // Room to the next text on the line, or the narrower of the two windows these
                 // lines sit in (the intermission's stage bar ends at x 288, the save list at 300).
@@ -356,10 +357,13 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                     if (&l != next && !l.cells.empty() && std::abs(l.cells.front().y - body.y) <= 2 && l.cells.front().x >= end)
                         after = std::min(after, l.cells.front().x - 4);
                 const int inset = locale == "ja" ? 0 : kInset;
+                // The original prints the label right after the title wherever it ends; so
+                // does the translation, a space after its own last word.
                 style.pitch = kLine / style.size;
                 style.width = 0;
-                style.max_width = std::max(end - trailing_blank(next->drawn), after) - body.x - inset;
                 body_x = float(body.x + inset);
+                shown_text += (locale == "en" ? " " : "") + (next->text.empty() ? next->drawn : next->text);
+                style.max_width = std::max(end - trailing_blank(next->drawn), after) - body.x - inset;
                 next->consumed = true;
             }
         }
@@ -633,16 +637,18 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             } else if (composed[i].empty() && pieces.size() == parts.size() && parts.size() > 1) {
                 // Runs of two spaces or more hold places for numbers other labels draw:
                 // each part goes to where the original part starts.
-                for (size_t k = 0; k < parts.size(); ++k)
-                    items.push_back(placed(label_style(locale, room(i, parts[k].x, parts[k].y, parts[k].width), false), locale, pieces[k], "label",
-                                           float(parts[k].x + inset), float(parts[k].y), tint));
+                for (size_t k = 0; k < parts.size(); ++k) {
+                    const Style style = label_style(locale, room(i, parts[k].x, parts[k].y, parts[k].width), false);
+                    items.push_back(placed(style, locale, pieces[k], "label", float(parts[k].x + inset), float(parts[k].y), tint));
+                }
             } else {
                 int widest = 0;
                 for (const auto& part : parts) widest = std::max(widest, part.x + part.width - parts.front().x);
                 const bool one_line = parts.back().y == parts.front().y && text.find('\n') == std::string::npos;
                 const double width = one_line ? room(i, parts.front().x, parts.front().y, widest) : widest * 1.15 + 3;
-                items.push_back(placed(label_style(locale, width, false), locale, catalog_form(text), "label",
-                                       float(parts.front().x + inset), float(l.cells.front().icon ? parts.front().y : l.y), tint));
+                const Style style = label_style(locale, width, false);
+                const float lx = float(parts.front().x + inset), ly = float(l.cells.front().icon ? parts.front().y : l.y);
+                items.push_back(placed(style, locale, catalog_form(text), "label", lx, ly, tint));
             }
             counts.translated += l.translated;
             for (size_t k = 0; k < l.cells.size(); ++k) if (!l.cells[k].icon) take(k);
