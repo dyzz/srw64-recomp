@@ -296,7 +296,7 @@
     "settings_autosave_turn": "ターン開始の保存数",
     "settings_autosave_turn_note": "タイトルのロード画面から読み込めます。",
     "settings_save_export": "エミュレーター用に書き出す",
-    "settings_save_export_note": "カートリッジのセーブ1・2を ares Project64 mupen64plus RetroArch 用に書き出します。",
+    "settings_save_export_note": "カートリッジの欄1・2と中断セーブを ares・Project64・mupen64plus・RetroArch 向けに書き出します。",
     "settings_save_export_button": "書き出す",
     "settings_save_exported": "{n} 個のファイルを書き出しました。",
     "settings_save_import": "エミュレーターから取り込む",
@@ -706,7 +706,12 @@
     "touch_skip_battle": "演出スキップ",
     "touch_continue": "次へ",
     "touch_history": "ログ",
-    "touch_animation": "演出"
+    "touch_animation": "演出",
+    "settings_save_export_note_android": "Android 10 以降は権限不要で Download/Marchwind64/saves に保存。Android 9 は保存先を選択します。スロット1・2と中断データを含み、拡張枠と自動セーブは含みません。",
+    "settings_save_export_choose": "保存中…（Android 9 はシステム画面で保存先を選んでください）",
+    "settings_save_export_saved": "保存しました：{path}",
+    "settings_save_export_cancelled": "書き出しをキャンセルしました。",
+    "settings_save_export_failed": "保存できませんでした。空き容量を確認して再試行してください。"
   },
   "entries": [],
   "display_name": "日本語"

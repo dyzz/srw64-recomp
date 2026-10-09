@@ -991,6 +991,21 @@ bool save_candidates_read{};
 std::string save_message,save_force;
 std::string settings_row(const std::string& key,const std::string& choices,const std::string& more={},const std::string& note={});
 std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false);
+#ifdef __ANDROID__
+bool android_export_saves(const std::string& folder);
+int android_export_status(const char* method);
+std::string android_export_location(const char* method);
+bool save_export_pending=false;
+void save_export_poll() {
+    if(!save_export_pending)return;
+    const int status=android_export_status("saveExportStatus");
+    if(status==1)return;
+    save_export_pending=false;
+    save_message=localization::catalog().ui(status==2?"settings_save_export_saved":status==3?"settings_save_export_cancelled":"settings_save_export_failed");
+    if(status==2)if(const auto at=save_message.find("{path}");at!=std::string::npos)
+        save_message.replace(at,6,android_export_location("saveExportLocation"));
+}
+#endif
 std::string with_number(const std::string& key,unsigned n) {
     auto text=localization::catalog().ui(key);
     if(const auto at=text.find("{n}");at!=std::string::npos)text.replace(at,3,std::to_string(n));
@@ -1007,7 +1022,11 @@ std::string saves_page() {
     }
     body+=settings_row("settings_autosave_intermission",intermission)+settings_row("settings_autosave_turn",turn);
     const auto folder=save_store::library_directory();
+#ifdef __ANDROID__
+    body+=settings_row("settings_save_export",button("save-export",label("settings_save_export_button"),false,save_export_pending),{},"settings_save_export_note_android");
+#else
     body+=settings_row("settings_save_export",button("save-export",label("settings_save_export_button")),"<p class='set-path'>"+escape((folder/"export").string())+"</p>");
+#endif
     if(!save_candidates_read){save_candidates=save_store::import_candidates();save_candidates_read=true;}
     body+=settings_row("settings_save_import",button("save-import-refresh",label("settings_save_import_refresh")),"<p class='set-path'>"+escape((folder/"import").string())+"</p>");
     for(const auto& file:save_candidates) {
@@ -1060,6 +1079,53 @@ bool handheld() {
 #endif
 }
 #ifdef __ANDROID__
+// Java publishes app-owned downloads (Android 10+) or uses SAF (Android 9).
+bool android_export_file(const char* name,const std::string& folder) {
+    auto* env=static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    auto activity=static_cast<jobject>(SDL_AndroidGetActivity());
+    if(!env || !activity)return false;
+    const jclass type=env->GetObjectClass(activity);
+    const jmethodID method=env->GetMethodID(type,name,"(Ljava/lang/String;)Z");
+    bool opened=false;
+    if(method) {
+        const jstring path=env->NewStringUTF(folder.c_str());
+        opened=env->CallBooleanMethod(activity,method,path);
+        env->DeleteLocalRef(path);
+    }
+    if(env->ExceptionCheck()){env->ExceptionClear();opened=false;}
+    env->DeleteLocalRef(type);env->DeleteLocalRef(activity);
+    return opened;
+}
+bool android_export_saves(const std::string& folder) {return android_export_file("exportSaves",folder);}
+int android_export_status(const char* name) {
+    auto* env=static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    auto activity=static_cast<jobject>(SDL_AndroidGetActivity());
+    if(!env || !activity)return 4;
+    const jclass type=env->GetObjectClass(activity);
+    const jmethodID method=env->GetMethodID(type,name,"()I");
+    int status=method?env->CallIntMethod(activity,method):4;
+    if(env->ExceptionCheck()){env->ExceptionClear();status=4;}
+    env->DeleteLocalRef(type);env->DeleteLocalRef(activity);
+    return status;
+}
+std::string android_export_location(const char* name) {
+    auto* env=static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    auto activity=static_cast<jobject>(SDL_AndroidGetActivity());
+    if(!env || !activity)return {};
+    const jclass type=env->GetObjectClass(activity);
+    const jmethodID method=env->GetMethodID(type,name,"()Ljava/lang/String;");
+    auto value=method?static_cast<jstring>(env->CallObjectMethod(activity,method)):nullptr;
+    std::string location;
+    if(env->ExceptionCheck())env->ExceptionClear();
+    else if(value) {
+        if(const char* text=env->GetStringUTFChars(value,nullptr)) {
+            location=text;env->ReleaseStringUTFChars(value,text);
+        }
+    }
+    if(value)env->DeleteLocalRef(value);
+    env->DeleteLocalRef(type);env->DeleteLocalRef(activity);
+    return location;
+}
 // SRW64Activity.openUserFolder: the Files app at a folder of the data folder.
 bool open_folder(const std::string& path) {
     auto* env=static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
@@ -1346,6 +1412,22 @@ std::string debug_row() {
 // and the logs.
 std::filesystem::path report_zip;
 std::string report_message;
+#ifdef __ANDROID__
+bool report_export_pending=false;
+void report_export_poll() {
+    if(!report_export_pending)return;
+    const int status=android_export_status("reportExportStatus");
+    if(status==1)return;
+    report_export_pending=false;
+    report_zip=status==2?android_export_location("reportExportLocation"):std::string();
+    report_message=localization::catalog().ui(status==2?"settings_report_done":status==3?"settings_save_export_cancelled":"settings_report_failed");
+    if(status==2) {
+        if(const auto at=report_message.find("{path}");at!=std::string::npos)report_message.replace(at,6,report_zip.string());
+    } else if(status!=3) {
+        if(const auto at=report_message.find("{error}");at!=std::string::npos)report_message.replace(at,7,localization::catalog().ui("settings_save_export_failed"));
+    }
+}
+#endif
 nlohmann::json report_facts() {
     nlohmann::json rules=nlohmann::json::array(),cheats_on=nlohmann::json::array();
     for(const auto& entry:rules::catalog)if(rules::active_fixes()&entry.fix)rules.push_back(entry.id);
@@ -2434,6 +2516,10 @@ void settings_sync() {
         settings_page=0;
         for(unsigned i=0;i<std::size(settings_pages);++i)if(saved==settings_pages[i])settings_page=i;
     }
+#ifdef __ANDROID__
+    save_export_poll();
+    report_export_poll();
+#endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::show_fps())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
@@ -4123,14 +4209,31 @@ void choose(const std::string& id) {
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
         if(id=="debug-copy-run")SDL_SetClipboardText(settings::debug_endpoint().run.c_str());
         if(id=="report-export") {
+#ifdef __ANDROID__
+            if(report_export_pending)return;
+#endif
             const auto result=bug_report::write(settings::data_folder(),output,report_facts());
+#ifdef __ANDROID__
+            if(!result.zip.empty()) {
+                report_zip.clear();
+                report_export_pending=android_export_file("exportReport",result.zip.string());
+                report_message=localization::catalog().ui(report_export_pending?"settings_save_export_choose":"settings_save_export_failed");
+                return;
+            }
+#endif
             report_zip=result.zip;
             auto text=localization::catalog().ui(result.zip.empty()?"settings_report_failed":"settings_report_done");
             const std::string mark=result.zip.empty()?"{error}":"{path}";
             if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),result.zip.empty()?result.error:short_path(result.zip.string()));
             report_message=text;
         }
-        if(id=="report-open" && !report_zip.empty())open_folder(report_zip.parent_path().string());
+        if(id=="report-open" && !report_zip.empty()) {
+#ifdef __ANDROID__
+            if(report_zip.string().starts_with("content://"))SDL_OpenURL(report_zip.string().c_str());
+            else
+#endif
+            open_folder(report_zip.parent_path().string());
+        }
         if(id=="report-copy" && !report_zip.empty())SDL_SetClipboardText(report_zip.string().c_str());
         if(id=="report-issue")open_page(std::string(update::kIssues)+"/new/choose");
         if(id=="info-copy") {
@@ -4147,9 +4250,19 @@ void choose(const std::string& id) {
             save_store::set_settings(c);
         }
         if(id=="save-export") {
+#ifdef __ANDROID__
+            if(save_export_pending)return;
+#endif
             std::string error;const auto files=save_store::export_all(error);
+#ifdef __ANDROID__
+            if(error.empty() && files.size()==4) {
+                save_export_pending=android_export_saves(files.front().parent_path().string());
+                save_message=localization::catalog().ui(save_export_pending?"settings_save_export_choose":"settings_save_export_failed");
+            } else save_message=error.empty()?localization::catalog().ui("settings_save_export_failed"):error;
+#else
             save_message=error.empty()?localization::catalog().ui("settings_save_exported"):error;
             if(const auto at=save_message.find("{n}");at!=std::string::npos)save_message.replace(at,3,std::to_string(files.size()));
+#endif
         }
         if(id=="save-import-refresh"){save_candidates_read=false;save_message.clear();save_force.clear();}
         if(id.starts_with("save-import:") && id.size()>14) {

@@ -296,7 +296,7 @@
     "settings_autosave_turn": "回合保留份数",
     "settings_autosave_turn_note": "在标题的读取画面里读取。",
     "settings_save_export": "导出给模拟器",
-    "settings_save_export_note": "把卡带的存档栏1、2写成 ares Project64 mupen64plus RetroArch 的格式。",
+    "settings_save_export_note": "导出卡带的存档栏1、2和中途存档，支持 ares Project64 mupen64plus RetroArch。",
     "settings_save_export_button": "导出",
     "settings_save_exported": "已写出 {n} 个文件。",
     "settings_save_import": "从模拟器导入",
@@ -706,7 +706,12 @@
     "touch_skip_battle": "跳过演出",
     "touch_continue": "继续",
     "touch_history": "回看",
-    "touch_animation": "动画"
+    "touch_animation": "动画",
+    "settings_save_export_note_android": "Android 10 及以上直接保存到 Download/Marchwind64/saves，无需存储权限；Android 9 选择保存位置。包含栏1、2和中途存档，不含扩展栏与自动存档。",
+    "settings_save_export_choose": "正在保存…（Android 9 请在系统选择器中选择位置）",
+    "settings_save_export_saved": "已保存：{path}",
+    "settings_save_export_cancelled": "已取消导出。",
+    "settings_save_export_failed": "保存失败，请检查可用空间后重试。"
   },
   "entries": [
     {

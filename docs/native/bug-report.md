@@ -27,3 +27,10 @@
 此前玩家这边没有任何日志文件：宿主的 `SRW64_*` 行和 RT64 的输出只到 stderr，macOS 从访达打开时直接丢掉，Windows 只在控制台窗口里。现在 `main` 一开始调用 `console_log::start()`（`src/host/console_log.cpp`）：stdout、stderr 各接一根管道，读出来的内容照旧写回原来的地方（终端；安卓转到 logcat，取代原来的 `forward_output_to_logcat`），同时写进本次运行目录的 `console.log`。运行目录在 `run_host` 里才知道（`console_log::attach`），之前的输出先存在内存里（最多 1 MiB），接上后先写。退出时最多等 0.2 秒让管道排空。Linux 的崩溃处理（`crash_backtrace`）除了 stderr，还把回溯直接写进 `console.log`，因为进程正在崩溃时管道不一定还会被读。
 
 所以崩溃或卡死后，玩家重新打开游戏再导出，上一次运行的 `console.log` 也在报告里（用户目录保留最近 3 次）。
+
+
+## 安卓公共导出（2026-10-09）
+
+Android 10+ 导出的报告通过 `MediaStore.Downloads` 保存到 **内部共享存储/Download/Marchwind64/reports/**，无需存储权限；反馈页在保存成功后显示实际公共路径，「打开文件夹」进入该目录。Android 9 使用系统文件选择器选择报告 ZIP 的保存位置，同样无需存储权限。发布前保持 pending，输出流关闭失败时删除不完整下载，失败不会显示成功。
+
+原始运行日志继续位于私有 `files/user/sessions/`，可从系统「文件」的 Marchwind64 入口访问；公共报告仍只包含本页规定的脱敏内容。不申请「管理所有文件」，不要求玩家进入 `Android/data`。

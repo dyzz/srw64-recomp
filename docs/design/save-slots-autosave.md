@@ -303,3 +303,25 @@ S2 起的实机运行、S5 的模拟器运行，每次开跑前先问。
   - 读：卡带原样作为 `save.ram`，开机后 `8010F4D0` 的「见过」位图与卡带 `0x78F0` 逐字节相同。对照：同一卡带按 32 位字倒序给 ares，位图全零（游戏当作没有卡带格式化了），说明这项检查能分出字节序。
   - 写：不给存档，游戏在 ares 里格式化卡带，ares 自己的内存自动保存（每 30 秒）写出 `save.ram`；`--import-save` 识别为大端，导入的卡带与 ares 的文件逐字节相同。
 - **没做到的**：ares 里没有驱动游戏去存某一栏（ares 只认聚焦窗口的键盘，测试不抢前台）；栏级的游戏内写入由上面的 RetroArch 核心覆盖，ares 的文件字节序由读、写两项共同确定。Project64 没有 macOS 版，按源码与 mupen64plus 同序（§1.4），只由 S1 的格式测试覆盖。
+
+
+## 10. 安卓存档取出与触控反馈（2026-10-09）
+
+玩家报告在 Android 13（三星 One UI 5.1）和 Android 16（OriginOS 6）的 MT 管理器里找不到目录，点导出也没有可见文件。代码核对：安卓版用户目录由 `getFilesDir()/user` 指定，属于应用内部私有存储，通常是 `/data/user/0/org.srw64.game/files/user`，并非共享存储里的 `Android/data/org.srw64.game`。现有 `DocumentsProvider` 将其显示为系统文件选择器里的 Marchwind64 来源，但文件管理器未必会列出这种来源。原导出只写私有 `saves/export/`，所以文件已生成也不能保证玩家在 MT 里看到。
+
+**中途存档有效，不需要打完第一话。** 手动地图中断位于同一张 32 KiB 卡带的 `0x3E10` 区域（§1.1），整卡导出包含它；标题用「继续」读取。扩展栏和自动存档另存，若要带去模拟器，先载入后存进卡带栏 1／2 或手动中断，再导出。
+
+本次安卓「设置 → 存档 → 导出给模拟器 → 导出」将四种模拟器文件打成 ZIP。Android 10+ 直接写到公共下载目录，Android 9 打开系统“另存为”选择位置（详见下节）。导出前固定四份文件的字节快照，写入 ZIP 并关闭目标流后才显示成功；取消和写入失败分别反馈，失败时清理不完整目标。桌面导出仍按原文件夹方式。
+
+静态／组件检查：`native-save` 新增只有中断区、两栏都空的卡带，验证发布及四种文件导出的全部字节；`test_android_save_export.py` 编译并运行 APK 同一份 Java ZIP 代码，验证四份文件字节、选择器期间的快照隔离、输出失败、缺文件及空文件拒绝。Android C++／Java 编译与 APK 打包另行完成。以上不等于两位玩家的 Android 13／16 设备已实测。
+
+
+### 无存储权限的公共导出（2026-10-09 后续）
+
+Android 10+ 通过 `MediaStore.Downloads` 写入应用自己的公开下载文件，不申请存储权限。存档 ZIP 在 **内部共享存储/Download/Marchwind64/saves/**，问题报告在 **Download/Marchwind64/reports/**；普通文件管理器可见。每次存档导出用时间戳文件名，不覆盖已有备份。先设置 `IS_PENDING`，输出流和 ZIP 成功关闭后才发布并显示实际路径，失败删除不完整文件。Android 9 用 `ACTION_CREATE_DOCUMENT` 选保存位置，同样不申请存储权限。
+
+正在使用的存档、设置、HD 包与原始日志仍在原私有 `files/user`，不迁移，不申请「管理所有文件」。系统「文件」的 Marchwind64 入口由 `DocumentsProvider` 暴露该目录；游戏内「打开文件夹」进入同一入口。公共 ZIP 是导出时的快照，之后的新存档需要再次导出；备份所有扩展栏、自动存档可通过上述系统文件入口复制 `saves` 文件夹。
+
+依据：[Android shared storage](https://developer.android.com/training/data-storage/shared/media)、[Storage Access Framework](https://developer.android.com/training/data-storage/shared/documents-files)。
+
+实机验证（2026-10-09）：Seeker / Android 16，APK 不声明任何 `uses-permission`，未授予管理所有文件权限。存档与报告均写到上述 Download 公共目录，普通 `adb pull` 可取回；系统「文件」能显示报告 ZIP，「打开文件夹」定位正确。解压存档包含四个模拟器文件，ares 文件与安装前 32 KiB 卡带逐字节一致。此证据不代表三星 One UI 5.1 或 OriginOS 6 已实测。本地证据在 `build/android/public-data-qa-20261009/`。

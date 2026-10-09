@@ -78,6 +78,18 @@ void formats() {
     rejects([&]{sram::from_cartridge(big,sram::Format::retroarch,std::span(container).first(100));},"short container accepted");
     rejects([&]{sram::to_cartridge(sram::Bytes(sram::size,0));},"blank file recognised");
     rejects([&]{sram::to_cartridge(sram::Bytes(sram::size+4,0));},"odd size recognised");
+    // The player's first save can be an in-stage suspend, before clearing episode 1.
+    auto suspend_only=card(0x41,0,true);
+    std::fill_n(suspend_only.begin()+sram::slot_offsets[0],sram::slot_size,0);
+    check(sram::problems(suspend_only).empty(),"suspend-only cartridge rejected");
+    Temporary temp;
+    SaveLibrary library(temp.path/"saves");
+    library.publish_cartridge(suspend_only);
+    for(const auto format:{sram::Format::ares,sram::Format::project64,sram::Format::mupen64plus,sram::Format::retroarch}) {
+        const auto exported=library.export_cartridge(temp.path/("suspend-"+std::to_string(int(format))),format);
+        const auto restored=sram::to_cartridge(read(exported));
+        check(same(restored,suspend_only) && sram::intact(sram::suspend(restored)),"suspend-only file export changed the card");
+    }
     check(sram::format_for(".SRA")==sram::Format::project64 && sram::format_for(".ram")==sram::Format::ares &&
           sram::format_for(".srm")==sram::Format::retroarch && !sram::format_for(".bin"),"extensions");
 }

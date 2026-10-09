@@ -296,7 +296,7 @@
     "settings_autosave_turn": "Turn autosaves kept",
     "settings_autosave_turn_note": "Load them from the title's Load screen.",
     "settings_save_export": "Export for emulators",
-    "settings_save_export_note": "Writes cartridge slots 1-2 for ares, Project64, mupen64plus and RetroArch.",
+    "settings_save_export_note": "Export cartridge slots 1, 2 and the suspend save for ares, Project64, mupen64plus and RetroArch.",
     "settings_save_export_button": "Export",
     "settings_save_exported": "Wrote {n} files.",
     "settings_save_import": "Import from emulators",
@@ -706,7 +706,12 @@
     "touch_skip_battle": "Skip scene",
     "touch_continue": "Continue",
     "touch_history": "Log",
-    "touch_animation": "Anim"
+    "touch_animation": "Anim",
+    "settings_save_export_note_android": "Android 10+: saves to Download/Marchwind64/saves without storage permission. Android 9: choose a destination. Includes slots 1, 2 and suspend, not extended slots or autosaves.",
+    "settings_save_export_choose": "Saving… (Android 9: choose a destination in the system picker.)",
+    "settings_save_export_saved": "Saved: {path}",
+    "settings_save_export_cancelled": "Export cancelled.",
+    "settings_save_export_failed": "Could not save. Check free space and try again."
   },
   "entries": [
     {
