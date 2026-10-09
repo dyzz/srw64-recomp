@@ -35,6 +35,9 @@ struct SRW64GameHooks {
     // 80095974 is about to draw slot/sub: true when it should also be drawn one 320-pixel
     // period to each side (the battle's wrapping sky in a picture wider than 4:3).
     bool (*background_sides)(uint8_t*, uint32_t slot, uint32_t sub){};
+    // The rows of the battle's sky that wrap around to the other edge where the bands are
+    // gone (positive: at the top, negative: at the bottom); 0 to draw it as it is.
+    float (*background_wrap)(uint8_t*, uint32_t slot, uint32_t sub){};
     // 80095974 (sprite modes 2 and 4: intermission backgrounds) wrote [begin, end) for slot/sub.
     // sides: it was drawn to each side as well (background_sides).
     void (*background_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool sides){};

@@ -301,19 +301,34 @@ void resident_func_80095974(uint8_t* rdram, recomp_context* ctx) {
     // The battle's sky wraps every 320 pixels: the periods either side fill a wider
     // picture (docs/design/deck-16x10.md). Each copy runs the drawer on a copy of the call.
     const bool sides = srw64_game_hooks.background_sides && srw64_game_hooks.background_sides(rdram, slot, sub);
-    if (sides) {
-        srw64::wide_map::open_sides(rdram, cursor);
-        for (const float offset : {-320.f, 320.f}) {
-            srw64::wide_map::offset_rects(rdram, cursor, offset);
+    // It wraps every 240 rows too: placed a few rows down, its last rows (the ruins' black
+    // and broken floors) show above it, where the original's top band hid them. Without
+    // the bands those rows take a copy moved to the edge (its first rows, sky), and the
+    // picture itself keeps to the rest.
+    const float wrap = srw64_game_hooks.background_wrap ? srw64_game_hooks.background_wrap(rdram, slot, sub) : 0.f;
+    const auto copies = [&](float down) {
+        for (const float offset : {-320.f, 0.f, 320.f}) {
+            if (offset != 0 && !sides) continue;
+            if (offset == 0 && down == 0) continue;
+            srw64::wide_map::offset_rects(rdram, cursor, offset, down);
             recomp_context copy = *ctx;
             srw64_original_background_draw(rdram, &copy);
         }
+    };
+    if (wrap != 0) {
+        srw64::wide_map::open_rows(rdram, cursor, wrap > 0 ? 0 : 240 + wrap, wrap > 0 ? wrap : 240);
+        copies(-wrap);
+        srw64::wide_map::close_sides(rdram, cursor);
+    }
+    if (sides || wrap != 0) {
+        srw64::wide_map::open_rows(rdram, cursor, wrap > 0 ? wrap : 0, wrap < 0 ? 240 + wrap : 240);
+        copies(0);
         srw64::wide_map::offset_rects(rdram, cursor, 0);
     }
     const uint32_t begin = MEM_W(0, cursor) & 0x1FFFFFFF;
     srw64_original_background_draw(rdram, ctx);
     const uint32_t end = MEM_W(0, cursor) & 0x1FFFFFFF;
-    if (sides) srw64::wide_map::close_sides(rdram, cursor);
+    if (sides || wrap != 0) srw64::wide_map::close_sides(rdram, cursor);
     if (srw64_game_hooks.background_drawn) srw64_game_hooks.background_drawn(rdram, begin, end, slot, sub, sides);
 }
 void resident_func_80096CD8(uint8_t* rdram, recomp_context* ctx) {

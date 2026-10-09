@@ -49,8 +49,11 @@ bool battle_shown();
 // The battle's sky (80095974, a 320-pixel picture that wraps) is drawn again one period to
 // each side, in the whole picture's scissor: open_sides before the copies, offset_rects
 // before each (original pixels; 0 for the original itself), close_sides after.
+// open_rows narrows that scissor to rows [top, bottom) (original pixels), and
+// offset_rects can move the rectangles down (`down`, negative up) as well.
 void open_sides(uint8_t* rdram, int32_t cursor);
-void offset_rects(uint8_t* rdram, int32_t cursor, float pixels);
+void open_rows(uint8_t* rdram, int32_t cursor, float top, float bottom);
+void offset_rects(uint8_t* rdram, int32_t cursor, float pixels, float down = 0);
 void close_sides(uint8_t* rdram, int32_t cursor);
 // Rectangles from here on stretch across the whole picture (RT64's rectangle aspect
 // STRETCH), or back to RT64's own rule: art that has no wider version but reads the same

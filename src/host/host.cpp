@@ -5,6 +5,7 @@
 #include <atomic>
 #include <cstdio>
 #include <cstdlib>
+#include <cmath>
 #include <cstring>
 #include <filesystem>
 #include <fstream>
@@ -451,6 +452,16 @@ static int run_host(int argc, char** argv) {
     // side in a picture wider than 4:3.
     srw64_game_hooks.background_sides = [](uint8_t*, uint32_t, uint32_t) {
         return srw64::frame::wide && srw64::frame::picture_width > srw64::frame::kWidth && srw64::wide_map::battle_shown();
+    };
+    // Without the bands (battle_hud.cpp, any automatic aspect) its rows that wrap from one
+    // edge to the other show: the slot's y (800FFA70 + slot * 0xC4 + 8, a float 80084D90
+    // sets from the camera's pitch, about 8). Only within the 16 rows a band covered.
+    srw64_game_hooks.background_wrap = [](uint8_t* ram, uint32_t slot, uint32_t) {
+        if (!srw64::frame::wide || !srw64::wide_map::battle_shown()) return 0.f;
+        float y;
+        const uint32_t bits = srw64::guest::read(ram, 0x800FFA70 + slot * 0xC4 + 8, 4);
+        std::memcpy(&y, &bits, 4);
+        return std::isfinite(y) && std::abs(y) >= .25f && std::abs(y) <= 16.f ? y : 0.f;
     };
     srw64_game_hooks.background_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool sides) {
         // A background still 4:3 (the intermission pictures without HD art) leaves the

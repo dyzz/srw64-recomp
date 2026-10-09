@@ -105,13 +105,15 @@ std::atomic<int64_t> last_battle{INT64_MIN / 2};
 }
 void mark_battle() { frame_marks |= kBattle; last_battle = now(); }
 bool battle_shown() { return now() - last_battle < 200'000'000; }
-void open_sides(uint8_t* rdram, int32_t cursor) {
+void open_sides(uint8_t* rdram, int32_t cursor) { open_rows(rdram, cursor, 0, 240); }
+void open_rows(uint8_t* rdram, int32_t cursor, float top, float bottom) {
     append(rdram, cursor, {kExtended | kPushScissor, 0,
-        kExtended | kSetScissor, kOriginLeft << 2 | kOriginRight << 14, pair(0, 0), pair(0, 240 * 4)});
+        kExtended | kSetScissor, kOriginLeft << 2 | kOriginRight << 14,
+        pair(0, int32_t(std::lround(top * 4))), pair(0, int32_t(std::lround(bottom * 4)))});
 }
-void offset_rects(uint8_t* rdram, int32_t cursor, float pixels) {
-    const int32_t offset = int32_t(std::lround(pixels * 4));
-    append(rdram, cursor, {kExtended | kSetRectAlign, kOriginNone | kOriginNone << 12, pair(offset, 0), pair(offset, 0)});
+void offset_rects(uint8_t* rdram, int32_t cursor, float pixels, float down) {
+    const int32_t x = int32_t(std::lround(pixels * 4)), y = int32_t(std::lround(down * 4));
+    append(rdram, cursor, {kExtended | kSetRectAlign, kOriginNone | kOriginNone << 12, pair(x, y), pair(x, y)});
 }
 bool wipe_begin(uint8_t* rdram, int32_t cursor) {
     if (!frame::wide || float(frame::picture_width) <= frame::kWidth + 0.5f) return false;
