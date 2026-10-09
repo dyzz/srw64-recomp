@@ -130,6 +130,18 @@ void fail_closed() {
     rejects([&]{run_standalone(f.options,f.game,no_host);},"unknown saved rule accepted");
     check(!unexpectedly_called,"a rejected bootstrap entered the host");
 }
+void touch_preferences() {
+    Fixture f;
+    fs::create_directories(f.options.user_dir);
+    atomic_write(f.options.user_dir/"presentation.json",json({{"schema","srw64.presentation-settings.v1"},
+        {"locale","ja"},{"touch_opacity",50}}).dump());
+    f.options.language="en";
+    check(run_standalone(f.options,f.game,[&](int,char**) {
+        const auto saved=load(env("SRW64_PRESENTATION_SETTINGS"));
+        check(saved.at("touch_opacity")==50,"language override lost touch preferences");
+        return 0;
+    })==0,"touch preferences launch failed");
+}
 // A full-HD bundle (tools/release/prepare_hd_bundle.py): the launcher looks for hd
 // beside the executable when it is not inside a .app.
 void make_pack(const fs::path& hd) {
@@ -211,6 +223,6 @@ void campaigns() {
     rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"a campaign id with a path was accepted");
 }
 }
-int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
+int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();touch_preferences();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
     std::cout<<checks<<" bootstrap checks passed\n";return 0;}
 catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}}

@@ -1,6 +1,6 @@
 #pragma once
-// Touch controls for phones by scene (docs/design/touch-controls.md): like a MOBA game,
-// a stick wherever the left thumb lands, and a few buttons named for what they do in the
+// Touch controls for phones by scene (docs/design/touch-controls.md): a fixed D-pad
+// in the bottom left, and buttons named for what they do in the
 // scene at hand, always in the same places. Each button sends N64 and host bits, so the
 // game, our pages and the hints take them as a controller. The layout is in millimetres;
 // the shared UI (frontend.cpp) draws it, feeds it SDL's finger events and names the
@@ -24,8 +24,8 @@ inline constexpr uint32_t L2 = input::pad_l2, R2 = input::pad_r2, Option = input
 
 // The places a button can take: the primary bottom right, the back button left of it,
 // two more on the arc above, four small ones along the top edge (the first one always
-// the settings window).
-enum class Slot : uint8_t { Primary, Back, Arc2, Arc3, Top1, Top2, Top3, Top4, Count };
+// the settings window), plus a dialogue skip button above R1.
+enum class Slot : uint8_t { Primary, Back, Arc2, Arc3, Top1, Top2, Top3, Top4, Skip, Count };
 inline constexpr size_t slot_count = size_t(Slot::Count);
 
 struct Action {
@@ -42,6 +42,7 @@ enum class Stick : uint8_t {
     Corner,   // fixed in the bottom left corner (our pages: their lists stay tappable)
     Hidden,   // the wide area, not drawn (dialogue: drag to read back)
 };
+
 
 enum class SceneId : uint8_t {
     Other,        // not recognised: everything, so no screen lacks a button
@@ -65,7 +66,7 @@ enum class SceneId : uint8_t {
     Opening,      // the logo, the works flying past, a demo's unit coming in: START only
     FixedPage,    // fixed buttons: the whole set on our pages, the stick in the corner
     FixedTitle,   // fixed buttons: the whole set at the title, the Library and Battle Viewer for L2 and R2
-    FixedDialogue,// fixed buttons: the whole set while reading, START, L2 and R2 as skip, auto and fast
+    FixedDialogue,// fixed top row; L1/R1 become auto/hold-fast, with skip above R1
     Count
 };
 
@@ -109,13 +110,14 @@ inline Scene scene(SceneId id) {
         settings(); set(Slot::Top2, bits::Start, "touch_start");
         if (id == SceneId::FixedTitle) {
             open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "viewer-open", "viewer_open");
-        } else if (id == SceneId::FixedDialogue) {
-            // The same places as START, L2 and R2, named for what they do on a line
-            // (native_dialogue.cpp input: R2 held fast-forwards, an L2 press toggles auto).
-            set(Slot::Top2, bits::R | bits::Start, "touch_skip");
-            set(Slot::Top3, bits::L2, "touch_auto"); set(Slot::Top4, bits::R2, "touch_fast");
         } else {
             set(Slot::Top3, bits::L2, "touch_l2"); set(Slot::Top4, bits::R2, "touch_r2");
+        }
+        if (id == SceneId::FixedDialogue) {
+            // Keep START, L2 and R2 in place (user, 2026-10-09). The two round
+            // shoulder buttons use the reader's auto toggle and hold-fast inputs.
+            set(Slot::Arc2, bits::L2, "touch_auto"); set(Slot::Arc3, bits::R2, "touch_hold_fast");
+            set(Slot::Skip, bits::R | bits::Start, "touch_skip");
         }
         break;
     case SceneId::Page:
@@ -146,8 +148,8 @@ inline Scene scene(SceneId id) {
     case SceneId::Dialogue:
         s.stick = Stick::Hidden;
         set(Slot::Primary, bits::A, "touch_next_line");
-        set(Slot::Arc2, bits::R2, "touch_fast"); set(Slot::Arc3, bits::L2, "touch_auto");
-        settings(); set(Slot::Top2, bits::R | bits::Start, "touch_skip"); set(Slot::Top3, bits::L, "touch_history");
+        set(Slot::Arc2, bits::L2, "touch_auto"); set(Slot::Arc3, bits::R2, "touch_hold_fast");
+        settings(); set(Slot::Skip, bits::R | bits::Start, "touch_skip"); set(Slot::Top3, bits::L, "touch_history");
         s.tap_primary = true;
         break;
     case SceneId::Choice:
@@ -223,6 +225,7 @@ struct Layout {
     float rest_x{}, rest_y{};        // where the stick rests, and the corner stick's centre
     float wide_right{}, wide_top{};  // the wide stick area: left of this, below this
     float corner_size{};             // the corner stick area, a square in the bottom left
+    float dpad_cell{};               // a cross of five squares, fixed at rest_x/rest_y
     const Place& operator[](Slot s) const { return slots[size_t(s)]; }
 };
 
@@ -245,6 +248,7 @@ inline Layout layout(float width, float height, float px_per_mm) {
     on_arc(180, x, y); circle(Slot::Back, x, y, 5);
     on_arc(130, x, y); circle(Slot::Arc2, x, y, 4.6f);
     on_arc(85, x, y); circle(Slot::Arc3, x, y, 4.6f);
+    circle(Slot::Skip, x, y - 12.2f, 4.6f);
     // Settings is everywhere but seldom wanted: small, tucked in the corner (user, 2026-10-03).
     bar(Slot::Top1, 6.5f, 3.5f, 10, 4); bar(Slot::Top2, 20.5f, 5, 15, 5);
     bar(Slot::Top3, w - 26.5f, 5, 15, 5); bar(Slot::Top4, w - 9.5f, 5, 15, 5);
@@ -252,6 +256,7 @@ inline Layout layout(float width, float height, float px_per_mm) {
     out.rest_x = 14.5f * m; out.rest_y = (h - 13) * m;
     out.wide_right = width * .42f; out.wide_top = 10 * m;
     out.corner_size = 30 * m;
+    out.dpad_cell = 8 * m;
     return out;
 }
 
@@ -269,24 +274,23 @@ inline std::optional<Slot> hit(const Layout& layout, const Scene& scene, float x
 }
 
 inline bool in_stick_area(const Layout& layout, const Scene& scene, float x, float y) {
-    switch (scene.stick) {
-    case Stick::Wide: case Stick::Hidden: return x < layout.wide_right && y > layout.wide_top;
-    case Stick::Corner: return x < layout.corner_size && y > layout.height - layout.corner_size;
-    default: return false;
-    }
+    if (scene.stick == Stick::None) return false;
+    const float dx = std::abs(x - layout.rest_x), dy = std::abs(y - layout.rest_y), half = layout.dpad_cell / 2;
+    return (dx <= half && dy <= 3 * half) || (dy <= half && dx <= 3 * half);
 }
 
-// Four ways, by the longer axis from the stick's centre; nothing within the dead zone.
+// Four fixed arms; the centre, corners and outside the cross release the direction.
 inline uint32_t direction(const Layout& layout, float cx, float cy, float x, float y) {
-    const float dx = x - cx, dy = y - cy;
-    if (dx * dx + dy * dy < (2.5f * layout.mm) * (2.5f * layout.mm)) return 0;
-    if (std::abs(dx) >= std::abs(dy)) return dx < 0 ? bits::Left : bits::Right;
-    return dy < 0 ? bits::Up : bits::Down;
+    const float dx = x - cx, dy = y - cy, half = layout.dpad_cell / 2;
+    if (std::abs(dx) <= half && std::abs(dy) > half && std::abs(dy) <= 3 * half)
+        return dy < 0 ? bits::Up : bits::Down;
+    if (std::abs(dy) <= half && std::abs(dx) > half && std::abs(dx) <= 3 * half)
+        return dx < 0 ? bits::Left : bits::Right;
+    return 0;
 }
 
 // The fingers, by SDL finger id. A finger keeps what it landed on while it moves: the
-// stick follows its direction from where the thumb came down (from the corner stick's
-// centre on our pages); a button finger moving onto another button takes that one.
+// direction uses the fixed cross; a button finger moving onto another button takes that one.
 class Fingers {
 public:
     enum class Kind : uint8_t { Button, Stick, Tap };
@@ -306,8 +310,7 @@ public:
             return true;
         }
         if (in_stick_area(layout, scene, x, y)) {
-            const bool corner = scene.stick == Stick::Corner;
-            const float cx = corner ? layout.rest_x : x, cy = corner ? layout.rest_y : y;
+            const float cx = layout.rest_x, cy = layout.rest_y;
             held[id] = {Kind::Stick, {}, cx, cy, x, y, direction(layout, cx, cy, x, y)};
             return true;
         }

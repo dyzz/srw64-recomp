@@ -13,7 +13,6 @@
 #include "link_page.hpp"
 #include "graphics.hpp"
 #include "battle_page.hpp"
-#include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include "intermission_page.hpp"
 #include "upgrade_page.hpp"
 #include "parts_page.hpp"
@@ -341,6 +340,12 @@ button:disabled {opacity: 0.45;} .row {display: flex;}
 .set-line {display:flex; align-items:center; gap:18dp;} .set-line .set-name {flex:1 1 0; min-width:0;}
 .set-seg {display:flex; flex-shrink:0; border:2dp #3fd0ff; background-color:#0c122ceb;}
 .set-seg button {margin:0; padding:7dp 16dp; border:0; border-radius:0; font-size:14dp; font-weight:bold; white-space:nowrap; color:#e8eefc; background-color:transparent;}
+#touch-opacity {width:220dp; height:36dp; margin:0 8dp;}
+#touch-opacity slidertrack {height:6dp; margin-top:15dp; background-color:#506d81; border-radius:3dp;}
+#touch-opacity sliderbar {width:28dp; height:36dp; background-color:#3fd0ff; border-radius:10dp;}
+#touch-opacity sliderbar:hover, #touch-opacity sliderbar:active {background-color:#ffd75e;}
+#touch-opacity sliderarrowdec, #touch-opacity sliderarrowinc {display:none;}
+#touch-opacity-value {width:48dp; margin-right:8dp; line-height:36dp; text-align:right;}
 .set-seg button.on {color:#0b1230; background-color:#3fd0ff;}
 .set-seg button:focus {color:#0b1230; background-color:#ffd75e;}
 .set-actions {display:flex; flex-wrap:wrap; gap:8dp; margin-top:8dp;}
@@ -767,6 +772,15 @@ void choose(const std::string& id);
 void battle_buttons(uint32_t pressed,bool tab=false);
 struct Actions : Rml::EventListener {
     void ProcessEvent(Rml::Event& event) override {
+        if(event.GetType()=="change") {
+            if(event.GetTargetElement()->GetId()=="touch-opacity") {
+                const auto value=unsigned(std::clamp(int(std::lround(event.GetParameter<float>("value",100))),25,100));
+                settings::set_touch_opacity(value);
+                if(auto* doc=event.GetTargetElement()->GetOwnerDocument())
+                    if(auto* label=doc->GetElementById("touch-opacity-value"))label->SetInnerRML(std::to_string(value)+"%");
+            }
+            return;
+        }
         for(auto* el=event.GetTargetElement();el;el=el->GetParentNode())
             if(el->GetTagName()=="button"){choose(el->GetId());break;}
     }
@@ -803,7 +817,7 @@ Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=fa
     auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='"+inset+"pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"<layer-mark class='layer-end'/></body></rml>");
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
     if(chrome)doc->SetAttribute("data-chrome","1");
-    doc->AddEventListener("click",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);
+    doc->AddEventListener("click",&actions);doc->AddEventListener("change",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);
     doc->UpdateDocument();fit_lines(doc);return doc;
 }
 std::string button(const std::string& id,const std::string& text,bool on=false,bool disabled=false,const std::string& cls="") {
@@ -964,8 +978,16 @@ std::string capture_prompt() {
 }
 // The Controls page body: the controller found, the functions to rebind, the fixed
 // shortcuts and restore.
+bool touch_supported();
+std::string settings_row(const std::string& key,const std::string& choices,const std::string& more={},const std::string& note={});
+std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false);
 std::string controls_page() {
     std::string body;
+    if(touch_supported()) {
+        body+=settings_row("settings_touch_opacity",
+            "<input id='touch-opacity' type='range' min='25' max='100' step='1' value='"+std::to_string(settings::touch_opacity())+"'/>"
+            "<span id='touch-opacity-value'>"+std::to_string(settings::touch_opacity())+"%</span>",{},"settings_touch_opacity_note");
+    }
     const auto pad_name=srw64_pad_name();
     auto found=pad_name.empty()?label("controls_no_pad"):label("controls_detected");
     if(const auto at=found.find("{name}");at!=std::string::npos)found.replace(at,6,escape(pad_name));
@@ -989,8 +1011,6 @@ std::string controls_page() {
 nlohmann::json save_candidates;
 bool save_candidates_read{};
 std::string save_message,save_force;
-std::string settings_row(const std::string& key,const std::string& choices,const std::string& more={},const std::string& note={});
-std::string settings_choice(const std::string& key,const std::string& prefix,std::initializer_list<const char*> modes,const std::string& current,bool disabled=false);
 #ifdef __ANDROID__
 bool android_export_saves(const std::string& folder);
 int android_export_status(const char* method);
@@ -1266,8 +1286,8 @@ std::string settings_choice(const std::string& key,const std::string& prefix,std
 }
 // The button a row offers first: its selected one, else its first enabled one.
 Rml::Element* settings_choice_of(Rml::Element* row) {
-    if(row->GetTagName()=="button")return row->HasAttribute("disabled")?nullptr:row;
-    Rml::ElementList buttons;row->QuerySelectorAll(buttons,"button");
+    if(row->GetTagName()=="button" || row->GetTagName()=="input")return row->HasAttribute("disabled")?nullptr:row;
+    Rml::ElementList buttons;row->QuerySelectorAll(buttons,"button, input[type=range]");
     for(auto* b:buttons)if(b->IsClassSet("on") && !b->HasAttribute("disabled"))return b;
     for(auto* b:buttons)if(!b->HasAttribute("disabled"))return b;
     return nullptr;
@@ -4508,9 +4528,11 @@ bool touch_event(const SDL_Event& event) {
 }
 // A label's size in a button: CJK a whole em, Latin about half, so it fits the width.
 float touch_label_size(const std::string& text,float room,float largest) {
-    float ems=0;
-    for(size_t i=0;i<text.size();){const auto c=uint8_t(text[i]);const int n=c<0x80?1:c<0xE0?2:c<0xF0?3:4;ems+=n==1?.58f:1.f;i+=n;}
-    return std::min(largest,ems>0?room/ems:largest);
+    float ems=0,widest=0;
+    for(size_t i=0;i<text.size();){const auto c=uint8_t(text[i]);const int n=c<0x80?1:c<0xE0?2:c<0xF0?3:4;
+        if(c=='\n'){widest=std::max(widest,ems);ems=0;}else ems+=n==1?.58f:1.f;i+=n;}
+    widest=std::max(widest,ems);
+    return std::min(largest,widest>0?room/widest:largest);
 }
 void touch_sync() {
     touch_scene_id=touch_scene_now();
@@ -4524,7 +4546,7 @@ void touch_sync() {
     const float mm=layout.mm;
     const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
     std::string stamp=frame_stamp()+"/"+std::to_string(mm)+"/"+std::to_string(int(touch_scene_id))+"/"+localization::catalog().locale+"/"+
-        std::to_string(touch_fingers.buttons());
+        std::to_string(touch_fingers.buttons())+"/"+std::to_string(settings::touch_opacity());
     for(size_t i=0;i<touch_pad::slot_count;++i)stamp+=touch_fingers.pressed(touch_pad::Slot(i))?'1':'0';
     if(stick)stamp+="/"+std::to_string(int(stick->cx))+","+std::to_string(int(stick->cy))+","+std::to_string(int(stick->x/mm))+","+std::to_string(int(stick->y/mm));
     if(stamp==touch_stamp){if(touch_doc)touch_doc->PullToFront();return;}
@@ -4534,27 +4556,19 @@ void touch_sync() {
         char fill[16];std::snprintf(fill,sizeof fill,"#ffffff%02x",int((down?.44f:.18f)*alpha*255));
         return std::string("background-color:")+fill+";border-width:"+px(.35f*mm)+";border-color:#ffffff99;color:#ffffffe0;text-align:center;font-weight:bold;";
     };
-    std::string body;
-    // The stick: under the thumb while held; at rest a faint one in the corner.
-    if(scene.stick==touch_pad::Stick::Wide || scene.stick==touch_pad::Stick::Corner) {
-        const bool corner=scene.stick==touch_pad::Stick::Corner;
-        const float cx=stick?stick->cx:layout.rest_x,cy=stick?stick->cy:layout.rest_y,r=layout.stick_radius;
-        const float alpha=stick||corner?1.f:.6f;
-        body+="<div style='position:absolute;left:"+px(cx-r)+";top:"+px(cy-r)+";width:"+px(2*r)+";height:"+px(2*r)+";border-radius:"+px(r)+";"+face(false,alpha)+"'></div>";
-        const uint32_t held=stick?stick->bits:0;
+    std::string body="<div style='position:absolute;left:0;top:0;width:100%;height:100%;opacity:"+std::to_string(settings::touch_opacity()/100.f)+";'>";
+    // Fixed D-pad only (user, 2026-10-09).
+    if(scene.stick!=touch_pad::Stick::None) {
+        const float cell=layout.dpad_cell;
         const struct {uint32_t bit;float dx,dy;int turn;} arrows[]={{touch_pad::bits::Up,0,-1,0},{touch_pad::bits::Down,0,1,180},
-            {touch_pad::bits::Left,-1,0,270},{touch_pad::bits::Right,1,0,90}};
+            {touch_pad::bits::Left,-1,0,270},{touch_pad::bits::Right,1,0,90},{0,0,0,0}};
         for(const auto& a:arrows) {
-            const float ax=cx+a.dx*r*.7f,ay=cy+a.dy*r*.7f,size=2.8f*mm;
-            body+="<div style='position:absolute;left:"+px(ax-size/2)+";top:"+px(ay-size/2)+";width:"+px(size)+";height:"+px(size)+
-                  ";font-size:"+px(size*.8f)+";line-height:"+px(size)+";text-align:center;color:"+(held&a.bit?"#ffffff":"#ffffffa0")+
-                  ";transform:rotate("+std::to_string(a.turn)+"deg);'>&#x25B2;</div>";
+            const float x=layout.rest_x+(a.dx-.5f)*cell,y=layout.rest_y+(a.dy-.5f)*cell;
+            body+="<div style='position:absolute;left:"+px(x)+";top:"+px(y)+";width:"+px(cell)+";height:"+px(cell)+";border-radius:"+px(mm)+";"+
+                face(a.bit && (touch_fingers.buttons()&a.bit),1)+"font-size:"+px(cell*.4f)+";line-height:"+px(cell)+";'>";
+            if(a.bit)body+="<div style='transform:rotate("+std::to_string(a.turn)+"deg);'>&#x25B2;</div>";
+            body+="</div>";
         }
-        // The knob follows the thumb, as far as the rim.
-        float kx=cx,ky=cy;
-        if(stick){const float dx=stick->x-cx,dy=stick->y-cy,d=std::hypot(dx,dy),reach=r*.55f;kx=cx+(d>reach?dx*reach/d:dx);ky=cy+(d>reach?dy*reach/d:dy);}
-        const float k=3.2f*mm;
-        body+="<div style='position:absolute;left:"+px(kx-k)+";top:"+px(ky-k)+";width:"+px(2*k)+";height:"+px(2*k)+";border-radius:"+px(k)+";"+face(stick!=nullptr,alpha)+"'></div>";
     }
     for(size_t i=0;i<touch_pad::slot_count;++i) {
         const auto& action=scene.slots[i];
@@ -4564,9 +4578,16 @@ void touch_sync() {
         std::string text=label(std::string(action.label));
         if(action.command=="battle-animation")text+=" "+label(battle_request.value("animation",true)?"battle_on":"battle_off");
         const float size=touch_label_size(text,w*(place.round?.76f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?3.8f:2.8f)*mm:std::min(2.4f*mm,h*.5f));
+        const auto lines=1+std::count(text.begin(),text.end(),'\n');
+        std::string caption=escape(text);
+        if(lines>1) {
+            for(size_t at=0;(at=caption.find('\n',at))!=std::string::npos;at+=5)caption.replace(at,1,"<br/>");
+            caption="<div style='padding-top:"+px((h-lines*size*1.15f)/2)+";line-height:"+px(size*1.15f)+";'>"+caption+"</div>";
+        }
         body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
-              face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+escape(text)+"</div>";
+              face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+caption+"</div>";
     }
+    body+="</div>";
     touch_doc=document(body,false,true);
     touch_doc->PullToFront();
 }

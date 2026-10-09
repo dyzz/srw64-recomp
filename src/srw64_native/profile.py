@@ -26,7 +26,7 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "settings_name_entry_ui", "settings_name_entry_ui_native", "settings_name_entry_ui_original", "settings_name_entry_ui_note",
             "refund_notice", "screenshot_saved", "screenshot_failed", "dialogue_text_status", "dialogue_reload", "font_credit"}
 # The phone's touch controls, one label per function (docs/design/touch-controls.md §5).
-UI_KEYS |= {"touch_settings", "touch_ok", "touch_back", "touch_close", "touch_start", "touch_l1", "touch_r1", "touch_l2", "touch_r2", "touch_next_page", "touch_prev_page", "touch_skip", "touch_next_line", "touch_fast", "touch_auto", "touch_select", "touch_info", "touch_prev_unit", "touch_next_unit", "touch_prev_enemy", "touch_next_enemy", "touch_move_here", "touch_cancel", "touch_farthest", "touch_prev_target", "touch_next_target", "touch_skip_battle", "touch_continue", "touch_history", "touch_animation"}
+UI_KEYS |= {"touch_settings", "touch_ok", "touch_back", "touch_close", "touch_start", "touch_l1", "touch_r1", "touch_l2", "touch_r2", "touch_next_page", "touch_prev_page", "touch_skip", "touch_next_line", "touch_fast", "touch_hold_fast", "touch_auto", "touch_select", "touch_info", "touch_prev_unit", "touch_next_unit", "touch_prev_enemy", "touch_next_enemy", "touch_move_here", "touch_cancel", "touch_farthest", "touch_prev_target", "touch_next_target", "touch_skip_battle", "touch_continue", "touch_history", "touch_animation"}
 # Custom campaign notices (src/host/link_page.cpp, src/host/mini_stage.hpp).
 UI_KEYS |= {"campaign_link_blocked", "campaign_scene_unmapped"}
 # The MOD manager and its extra scenarios (DLC) page (src/native/ui/frontend.cpp).
@@ -102,7 +102,8 @@ UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_pr
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}
 # The Controls page's remapping (frontend.cpp controls_page).
 UI_KEYS |= {"controls_cancel", "controls_capture", "controls_capture_note", "controls_controller", "controls_detected", "controls_fixed", "controls_fixed_list", "controls_keyboard", "controls_keyboard_note", "controls_list_note", "controls_no_pad", "controls_reserved", "controls_reset"}
-UI_KEYS |= {"settings_save_export_note_android", "settings_save_export_choose", "settings_save_export_saved", "settings_save_export_cancelled", "settings_save_export_failed"}
+UI_KEYS |= {"settings_touch_opacity", "settings_touch_opacity_note", "settings_save_export_note_android", "settings_save_export_choose",
+            "settings_save_export_saved", "settings_save_export_cancelled", "settings_save_export_failed"}
 # Battle HUD banners and response badges drawn natively (sprite_text.cpp).
 UI_KEYS |= {"hud_counter", "hud_defend", "hud_evade", "hud_shield_defense", "hud_critical", "hud_dummy"}
 UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_weapon_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}

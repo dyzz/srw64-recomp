@@ -59,6 +59,9 @@ void set_show_fps(bool show);
 // Saved as dialogue_hints, "auto" or "always".
 bool dialogue_hints_always();
 void set_dialogue_hints_always(bool always);
+// Phone controls use a fixed D-pad. Opacity (25..100) scales controls, text and outlines.
+unsigned touch_opacity();
+void set_touch_opacity(unsigned percent);
 // The debug interface for AI agents over MCP (docs/guide/debug-interface.md): switched in
 // the About page, saved as debug_interface, off by default. --debug (SRW64_DEBUG=1) turns
 // it on for a run whatever is saved, and the switch then cannot turn it off.

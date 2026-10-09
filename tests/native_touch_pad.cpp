@@ -61,35 +61,11 @@ void scenes() {
     check(scene(SceneId::BattleScene)[Slot::Primary].bits == bits::R2, "skipping the battle is not the primary button");
 }
 
-void stick() {
-    const auto l = layout(width, height, mm);
-    const auto wide = scene(SceneId::MapIdle), page = scene(SceneId::Page);
-    Fingers f;
-    // The wide stick centres where the thumb lands, anywhere in the left part.
-    const float x = width * .3f, y = height * .5f;
-    check(f.down(l, wide, 1, x, y) && f.buttons() == 0, "a stick touch pressed a direction");
-    f.move(l, wide, 1, x, y - 6 * mm);
-    check(f.buttons() == bits::Up, "drag up");
-    f.move(l, wide, 1, x - 30 * mm, y + 2 * mm);
-    check(f.buttons() == bits::Left, "drag far left");
-    check(f.stick() && f.stick()->cx == x && f.stick()->cy == y, "the stick's centre moved");
-    f.up(1);
-    // On our pages the stick stays in the corner; the middle of the screen is the page's.
-    check(!f.down(l, page, 2, width * .3f, height * .5f), "a page touch taken by the stick");
-    check(f.down(l, page, 3, l.rest_x + 8 * mm, l.rest_y), "the corner stick missed");
-    check(f.buttons() == bits::Right, "the corner stick's direction is from its fixed centre");
-    f.clear();
-    // Above the stick area along the top, and right of it, nothing (in a scene without taps).
-    check(!f.down(l, wide, 4, width * .5f, height * .5f), "the middle of the map is a control");
-    check(!in_stick_area(l, wide, width * .2f, 5 * mm), "the stick area reaches the top bar");
-}
-
 void buttons() {
     const auto l = layout(width, height, mm);
     const auto map = scene(SceneId::MapIdle), dialogue = scene(SceneId::Dialogue);
     Fingers f;
-    check(f.down(l, map, 1, width * .3f, height * .5f), "stick");
-    f.move(l, map, 1, width * .3f + 8 * mm, height * .5f);
+    check(f.down(l, map, 1, l.rest_x + l.dpad_cell, l.rest_y), "D-pad");
     check(f.down(l, map, 2, l[Slot::Primary].x, l[Slot::Primary].y), "primary");
     check(f.buttons() == (bits::Right | bits::A), "stick and primary together");
     check(f.pressed(Slot::Primary), "primary drawn pressed");
@@ -105,8 +81,37 @@ void buttons() {
     // Dialogue: a tap anywhere outside the controls pages; the stick area still reads back.
     check(f.down(l, dialogue, 6, width * .6f, height * .4f) && f.buttons() == bits::A, "a tap does not page");
     f.up(6);
-    check(f.down(l, dialogue, 7, width * .2f, height * .6f) && f.buttons() == 0, "the dialogue's stick area pages");
+    check(f.down(l, dialogue, 7, l.rest_x, l.rest_y) && f.buttons() == 0, "the D-pad centre pages");
     check(f.up(7) && !f.up(7) && f.empty(), "release");
+}
+
+void dpad() {
+    const auto l = layout(width, height, mm);
+    const auto full = scene(SceneId::Other), page = scene(SceneId::FixedPage);
+    Fingers f;
+    const float x = l.rest_x, y = l.rest_y, step = l.dpad_cell;
+    // Each arm takes effect on the first touch; no initial drag is needed.
+    const struct {float dx, dy; uint32_t bit;} arms[] = {
+        {0, -1, bits::Up}, {0, 1, bits::Down}, {-1, 0, bits::Left}, {1, 0, bits::Right}};
+    for (const auto& arm : arms) {
+        check(f.down(l, full, 1, x + step * arm.dx, y + step * arm.dy) && f.buttons() == arm.bit, "D-pad arm missed");
+        check(f.stick()->cx == x && f.stick()->cy == y, "D-pad centre followed the finger");
+        f.up(1);
+    }
+    check(f.down(l, full, 1, x, y) && f.buttons() == 0, "D-pad centre pressed a direction");
+    f.move(l, full, 1, x + step, y);
+    check(f.buttons() == bits::Right, "slide from centre to right");
+    check(f.down(l, full, 2, l[Slot::Primary].x, l[Slot::Primary].y) && f.buttons() == (bits::Right | bits::A), "D-pad plus confirm");
+    f.move(l, full, 1, x, y - step);
+    check(f.buttons() == (bits::Up | bits::A), "slide between D-pad arms");
+    f.move(l, full, 1, x + step, y + step);
+    check(f.buttons() == bits::A, "D-pad corner did not release");
+    f.move(l, full, 1, x + 4 * step, y);
+    check(f.buttons() == bits::A, "outside D-pad did not release");
+    f.clear();
+    check(!f.down(l, full, 1, width * .3f, height * .5f), "D-pad captured the old floating stick area");
+    check(!f.down(l, page, 1, x + step, y + step), "D-pad corner captured a page touch");
+    check(!in_stick_area(l, scene(SceneId::Hidden), x, y), "D-pad on an all-touch window");
 }
 }
 
@@ -148,17 +153,30 @@ void fixed_buttons() {
     check(page.stick == Stick::Corner && full.stick == Stick::Wide && title.stick == Stick::Wide, "sticks");
     for (size_t i = 0; i < slot_count; ++i) {
         check(page.slots[i] == full.slots[i], "the page has the whole set");
-        check(full.slots[i].filled() && title.slots[i].filled() && reading.slots[i].filled(), "no empty place");
-        if (i != size_t(Slot::Top2) && i != size_t(Slot::Top3) && i != size_t(Slot::Top4))
-            check(reading.slots[i] == full.slots[i], "reading keeps the rest of the set");
+        if (i == size_t(Slot::Skip)) {
+            check(!full.slots[i].filled() && !title.slots[i].filled() && reading.slots[i].filled(), "skip only while reading");
+        } else check(full.slots[i].filled() && title.slots[i].filled() && reading.slots[i].filled(), "no empty place");
+        if (i != size_t(Slot::Arc2) && i != size_t(Slot::Arc3) && i != size_t(Slot::Skip))
+            check(reading.slots[i] == full.slots[i], "reading keeps the top row and other buttons");
     }
-    // One finger skips (Reader::update wants R and START held together), R2 held fast-forwards.
-    check(reading[Slot::Top2].bits == (bits::R | bits::Start) && reading[Slot::Top2].label == "touch_skip" &&
-          reading[Slot::Top3].bits == bits::L2 && reading[Slot::Top4].bits == bits::R2 && reading.stick == Stick::Wide, "reading's top row");
+    check(reading[Slot::Arc2].bits == bits::L2 && reading[Slot::Arc2].label == "touch_auto" &&
+          reading[Slot::Arc3].bits == bits::R2 && reading[Slot::Arc3].label == "touch_hold_fast", "round L1/R1 become auto and hold-fast");
+    check(reading[Slot::Skip].bits == (bits::R | bits::Start) && reading[Slot::Skip].label == "touch_skip", "one finger skips with R plus START");
+    const auto l = layout(width, height, mm);
+    check(l[Slot::Skip].x == l[Slot::Arc3].x && l[Slot::Skip].y + l[Slot::Skip].r + 2 * mm < l[Slot::Arc3].y - l[Slot::Arc3].r,
+          "skip is above R1 with space between touch targets");
+    Fingers f;
+    for (const auto slot : {Slot::Arc2, Slot::Arc3, Slot::Skip, Slot::Top2, Slot::Top3, Slot::Top4}) {
+        const auto& place = l[slot];
+        check(f.down(l, reading, 1, place.x, place.y) && f.buttons() == reading[slot].bits, "reading control sends its input");
+        f.up(1);
+        check(f.buttons() == 0, "hold-fast/skip sticks after release");
+    }
+    check(!f.down(l, full, 1, l[Slot::Skip].x, l[Slot::Skip].y), "skip area consumes touches outside dialogue");
     check(title[Slot::Top3].command == "library-open" && title[Slot::Top4].command == "viewer-open" &&
           title[Slot::Primary].bits == bits::A && title[Slot::Top2].bits == bits::Start, "the title's entries");
 }
 int main() {
-    try { places(); scenes(); stick(); buttons(); recognition(); fixed_buttons(); std::cout << checks << " checks passed\n"; return 0; }
+    try { places(); scenes(); buttons(); dpad(); recognition(); fixed_buttons(); std::cout << checks << " checks passed\n"; return 0; }
     catch (const std::exception& error) { std::cerr << "FAIL: " << error.what() << "\n"; return 1; }
 }

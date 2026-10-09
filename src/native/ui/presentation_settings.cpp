@@ -70,11 +70,13 @@ std::atomic<int> size_choice{-1};  // UiSize, or -1 until the player chooses
 std::mutex look_mutex;   // bezel and filter, read by the render thread
 std::string bezel_path,filter_path;
 std::atomic<unsigned> filter_lines{1};
+std::atomic<unsigned> touch_alpha{100};
 void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
         {"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
-        {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"}});
+        {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
+        {"touch_opacity",touch_alpha.load()}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
     auto cheat_ids=nlohmann::json::array();
     for(const auto& entry:srw64::cheats::catalog)if(srw64::cheats::active()&entry.bit)cheat_ids.push_back(entry.id);
@@ -155,6 +157,8 @@ void save_now() {
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
+unsigned touch_opacity(){return touch_alpha.load();}
+void set_touch_opacity(unsigned percent){touch_alpha=std::clamp(percent,25u,100u);save_now();}
 std::string bezel(){std::lock_guard lock(look_mutex);return bezel_path;}
 void set_bezel(const std::string& path){{std::lock_guard lock(look_mutex);bezel_path=path;}save_now();}
 std::string filter(){std::lock_guard lock(look_mutex);return filter_path;}
@@ -291,6 +295,8 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();
         if(saved.is_object() && saved.contains("debug_interface") && saved["debug_interface"].is_boolean())debug_on=saved["debug_interface"].get<bool>();
         if(saved.is_object())hints_always=saved.value("dialogue_hints","auto")=="always";
+        if(saved.is_object() && saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())
+            touch_alpha=std::clamp(saved["touch_opacity"].get<unsigned>(),25u,100u);
         if(saved.is_object()) {
             std::lock_guard lock(look_mutex);
             if(saved.contains("bezel") && saved["bezel"].is_string())bezel_path=saved["bezel"].get<std::string>();
