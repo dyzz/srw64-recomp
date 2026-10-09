@@ -4,10 +4,11 @@
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
 #include "native_gpu.hpp"
+#include "rom_art.hpp"
 #include "game_frame.hpp"
 #include "wide_map.hpp"
 #include "json/json.hpp"
-#include "stb/stb_image.h"
+#include "presentation/rgba_file.hpp"
 #include <algorithm>
 #include <array>
 #include <atomic>
@@ -36,6 +37,7 @@ constexpr uint32_t kHandles = 0x00160340, kHandleSize = 20, kHandleCount = 200; 
 
 struct Asset {
     uint16_t image = 0, palette = 0;
+    bool rom = false;                          // the original picture, decoded from the ROM (rom_art)
     std::filesystem::path file;
     int width = 0, height = 0;                 // the picture's pixels
     // The original's pixels the picture covers: 0, 0, 320, 240, or wider for a picture
@@ -62,6 +64,11 @@ struct Draw {
 int width = 0, height = 0, source_width = 0, source_height = 0;
 std::vector<Asset> assets;
 std::map<std::pair<uint16_t, uint16_t>, int> by_ids;
+// Original battle skies drawn whole like the HD ones (no HD pack, or the original images):
+// added while playing, into capacity reserved once so the render thread's references hold.
+std::map<std::pair<uint16_t, uint16_t>, int> rom_ids;
+constexpr size_t kAssetCapacity = 1024;
+bool hooks_set = false;
 std::mutex asset_mutex;
 std::array<Draw, kRing> ring;
 std::mutex ring_mutex;
@@ -96,9 +103,11 @@ bool hd_enabled() {
     return !presentation::image_mode.enabled() || presentation::image_mode.current() == 1;
 }
 // The slot's layer kind (+1, the table at 800C5960): 2, 3 and 9 place it by the pitch.
+// Only without the bands (automatic aspect, battle_hud.cpp): at 4:3 the top band hides
+// the wrapped rows as in the original, so the sky is drawn as the game draws it.
 bool pitch_layer(const uint8_t* rdram, uint32_t slot) {
     const uint8_t kind = rdram[((kSlots + slot * kSlotSize + 1) & 0x1FFFFFFF) ^ 3];
-    return (kind == 2 || kind == 3 || kind == 9) && wide_map::battle_shown();
+    return (kind == 2 || kind == 3 || kind == 9) && frame::wide && wide_map::battle_shown();
 }
 // The picture's (image, palette) asset, or -1.
 int asset_of(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
@@ -109,15 +118,36 @@ int asset_of(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
     const auto found = by_ids.find({image, palette});
     return found == by_ids.end() ? -1 : found->second;
 }
+// The original picture as an asset of its own, made on first use; -1 without the ROM.
+int rom_asset(uint16_t image, uint16_t palette) {
+    std::lock_guard lock(asset_mutex);
+    if (const auto found = rom_ids.find({image, palette}); found != rom_ids.end()) return found->second;
+    if (!rom_art::ready() || assets.size() >= assets.capacity()) return -1;
+    if (rom_art::picture_ci4(image, palette).width != source_width) { rom_ids[{image, palette}] = -1; return -1; }
+    Asset asset;
+    asset.image = image; asset.palette = palette; asset.rom = true;
+    asset.width = source_width; asset.height = source_height;
+    asset.extent[2] = float(source_width); asset.extent[3] = float(source_height);
+    assets.push_back(std::move(asset));
+    return rom_ids[{image, palette}] = int(assets.size() - 1);
+}
 
 // Premultiplied RGBA with a box-filtered mip chain (any size; odd edges clamp).
 void decode(Asset& asset) {
     int w = 0, h = 0, n = 0;
-    uint8_t* pixels = stbi_load(asset.file.string().c_str(), &w, &h, &n, 4);
-    if (!pixels) throw std::runtime_error("Cannot read HD background " + asset.file.string());
-    if (w != asset.width || h != asset.height) { stbi_image_free(pixels); throw std::runtime_error("HD background size differs from the manifest: " + asset.file.string()); }
-    std::vector<uint8_t> level(pixels, pixels + size_t(w) * h * 4);
-    stbi_image_free(pixels);
+    std::vector<uint8_t> level;
+    if (asset.rom) {
+        auto picture = rom_art::picture_ci4(asset.image, asset.palette);
+        if (picture.width != asset.width || picture.height != asset.height)
+            throw std::runtime_error("Cannot decode the original picture " + std::to_string(asset.image));
+        w = picture.width; h = picture.height; level = std::move(picture.rgba);
+    } else {
+        // PNG, or the released pack's JPEG with its alpha beside it (compress_hd.py).
+        auto picture = presentation::load_rgba(asset.file);
+        if (picture.width != asset.width || picture.height != asset.height)
+            throw std::runtime_error("HD background size differs from the manifest: " + asset.file.string());
+        w = picture.width; h = picture.height; level = std::move(picture.pixels);
+    }
     for (size_t i = 0; i < level.size(); i += 4)
         for (int c = 0; c < 3; ++c) level[i + c] = uint8_t((level[i + c] * level[i + 3] + 127) / 255);
     asset.levels.clear(); asset.sizes.clear();
@@ -189,7 +219,19 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 }
 }
 
+void initialize(const std::filesystem::path& directory) {
+    if (hooks_set) return;
+    hooks_set = true;
+    output = directory;
+    assets.reserve(kAssetCapacity);
+    if (!source_width) { source_width = int(frame::kWidth); source_height = int(frame::kHeight); }
+    previous_classify = RT64::GetNativeMeshClassify();
+    previous_render = RT64::GetNativeMeshRender();
+    RT64::SetNativeMeshHooks(classify, render);
+}
+
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& directory) {
+    initialize(directory);
     output = directory;
     if (std::getenv("SRW64_BG_DUMP")) dump.open(directory / "background-draws.jsonl");
     const auto spec_path = art_directory / "srw64-backgrounds-hd.json";
@@ -216,17 +258,20 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
         if (!std::filesystem::exists(asset.file)) throw std::runtime_error("Missing HD background " + asset.file.string());
         if (!by_ids.emplace(std::make_pair(asset.image, asset.palette), int(assets.size())).second)
             throw std::runtime_error("Duplicate HD background identity");
+        if (assets.size() >= assets.capacity()) throw std::runtime_error("Too many HD backgrounds");
         assets.push_back(std::move(asset));
     }
-    if (assets.empty()) return;
-    previous_classify = RT64::GetNativeMeshClassify();
-    previous_render = RT64::GetNativeMeshRender();
-    RT64::SetNativeMeshHooks(classify, render);
     fprintf(stderr, "SRW64_HD_BACKGROUNDS loaded %zu background(s) at %dx%d\n", assets.size(), width, height);
 }
 
 bool battle_sky(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
-    return hd_enabled() && asset_of(rdram, slot, sub) >= 0 && pitch_layer(rdram, slot);
+    if (!pitch_layer(rdram, slot)) return false;
+    if (hd_enabled() && asset_of(rdram, slot, sub) >= 0) return true;
+    if (slot >= 300 || sub >= 4) return false;
+    const uint32_t record = kSlots + slot * kSlotSize + kSubBase + sub * kSubSize;
+    uint16_t image = 0, palette = 0;
+    return resource(rdram, int16_t(half(rdram, record + 0xC)), image) && resource(rdram, int16_t(half(rdram, record + 0xE)), palette) &&
+           rom_asset(image, palette) >= 0;
 }
 
 namespace {
@@ -283,12 +328,17 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         dump << json({{"slot", draw.slot}, {"sub", draw.sub}, {"image", image}, {"palette", palette}, {"words", words}}).dump() << '\n';
         dump.flush();
     }
-    if (found == by_ids.end() || !hd_enabled()) return false;
+    // A sky the pitch places is drawn whole in either image mode: its HD picture, or the
+    // original decoded from the ROM; other pictures only in HD.
+    const bool sky = pitch_layer(rdram, draw.slot);
+    int chosen = found != by_ids.end() && hd_enabled() ? found->second : -1;
+    if (chosen < 0 && sky) chosen = rom_asset(image, palette);
+    if (chosen < 0) return false;
     // The drawer sets PRIM once, then per 32x32 tile: SETTIMG (the picture), LOADTILE of
     // the tile's region (image coordinates), SETTILESIZE to (0,0)-(31,31) and TEXRECT
     // (E4, E1, F1) at the tile's screen position with S/T from the tile's origin.
     Draw record;
-    record.asset = found->second;
+    record.asset = chosen;
     float extent[4];
     std::copy(std::begin(assets[size_t(record.asset)].extent), std::end(assets[size_t(record.asset)].extent), extent);
     std::vector<uint32_t> rects;
@@ -334,7 +384,6 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         }
     }
     if (rects.empty() || x1 <= x0 || y1 <= y0) { ++unexpected; return false; }
-    const bool sky = pitch_layer(rdram, draw.slot);
     if (sky) {
         float ox = std::fmod(origin[0], float(source_width)), oy = std::fmod(origin[1], float(source_height));
         if (ox < 0) ox += source_width;

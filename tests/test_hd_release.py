@@ -159,13 +159,22 @@ class CompressHdTests(unittest.TestCase):
             self.assertEqual(Image.open(art / "b.png").getpixel((0, 0)), (10, 20, 30, 128))
             self.assertEqual(sorted(p.name for p in art.iterdir()), ["a.png", "b.png", "rt64.json"])
 
-    def test_a_translucent_background_is_refused(self):
+    def test_a_transparent_background_keeps_its_alpha_beside(self):
+        """The battle skies' transparent rows: JPEG colour and an alpha PNG, as the unit poses."""
         compress = load("compress_hd")
         with tempfile.TemporaryDirectory() as tmp:
             art = self.art(Path(tmp))
-            Image.new("RGBA", (32, 24), (10, 80, 160, 200)).save(art / "backgrounds/background-5470-5478.png")
-            with self.assertRaisesRegex(ValueError, "not opaque"):
-                compress.compress_backgrounds(art)
+            sky = Image.new("RGBA", (32, 24), (10, 80, 160, 255))
+            sky.paste((0, 0, 0, 0), (0, 12, 32, 24))
+            sky.save(art / "backgrounds/background-5470-5478.png")
+            compress.compress_backgrounds(art)
+            row = json.loads((art / "srw64-backgrounds-hd.json").read_text())["images"][0]
+            self.assertEqual(row["file"], "backgrounds/background-5470-5478.jpg")
+            alpha = Image.open(art / row["alpha"])
+            self.assertEqual(alpha.mode, "LA")
+            self.assertEqual(alpha.getchannel("A").getpixel((0, 0)), 255)
+            self.assertEqual(alpha.getchannel("A").getpixel((0, 20)), 0)
+            self.assertFalse((art / "backgrounds/background-5470-5478.png").exists())
 
 
 

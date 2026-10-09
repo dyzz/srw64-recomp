@@ -2,6 +2,7 @@
 #include "app/rom_import_codec.hpp"
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include <map>
 #include <mutex>
 #include <set>
@@ -143,6 +144,26 @@ void initialize(std::span<const uint8_t> rom) {
     catch (const std::exception&) { specs.clear(); by_scene.clear(); }
 }
 bool ready() { return !rom_bytes.empty(); }
+
+RgbaImage picture_ci4(uint16_t image, uint16_t palette) {
+    RgbaImage out;
+    const auto data = extract(image), colours = extract(palette);
+    if (!data || !colours || data->size() < 8 || colours->size() < 8 + 32) return out;
+    const int kind = (*data)[0] << 8 | (*data)[1], w = (*data)[2] << 8 | (*data)[3], h = (*data)[4] << 8 | (*data)[5];
+    if (kind != 5 || w <= 0 || h <= 0 || size_t(8) + size_t(w) * h / 2 > data->size()) return out;
+    std::array<uint32_t, 16> rgba{};
+    for (int i = 1; i < 16; ++i) {   // RGBA5551, big-endian; entry 0 stays transparent
+        const unsigned v = (*colours)[8 + 2 * i] << 8 | (*colours)[9 + 2 * i];
+        const auto c = [&](int shift) { return uint32_t(((v >> shift) & 31) * 255 / 31); };
+        rgba[i] = c(11) | c(6) << 8 | c(1) << 16 | 0xFF000000u;
+    }
+    out.width = w; out.height = h; out.rgba.resize(size_t(w) * h * 4);
+    for (size_t i = 0; i < size_t(w) * h; ++i) {
+        const uint8_t byte = (*data)[8 + i / 2], index = i % 2 ? byte & 15 : byte >> 4;
+        std::memcpy(&out.rgba[i * 4], &rgba[index], 4);
+    }
+    return out;
+}
 const std::vector<FrameSpec>& frames() { return specs; }
 std::optional<FrameSpec> frame(uint16_t scene) {
     const auto found = by_scene.find(scene);

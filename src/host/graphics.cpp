@@ -380,6 +380,7 @@ public:
     SRW64Renderer(uint8_t* rdram, ultramodern::renderer::WindowHandle handle) {
         srw64::marker::configure(capture_directory);
         srw64::hdmap::configure(capture_directory);
+        srw64::backgrounds::initialize(capture_directory);
         RT64::SetRenderHooks([](plume::RenderInterface* rhi, plume::RenderDevice* device) {
             capture_device = device;
 #ifdef __APPLE__

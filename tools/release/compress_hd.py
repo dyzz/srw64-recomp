@@ -61,10 +61,17 @@ def compress_backgrounds(art: Path) -> int:
     for row in index["images"]:
         source = art / row["file"]
         with Image.open(source) as image:
-            if image.mode not in ("RGB", "RGBA") or (image.mode == "RGBA" and image.getchannel("A").getextrema() != (255, 255)):
-                raise ValueError(f"Background is not opaque: {row['file']}")
+            if image.mode not in ("RGB", "RGBA"):
+                raise ValueError(f"Unsupported background mode: {row['file']}")
             target = source.with_suffix(".jpg")
             jpeg(image, target)
+            # The battle skies keep their transparent rows (the ground covers them): the
+            # alpha beside the colour, as the unit poses (rgba_file.hpp).
+            alpha = image.getchannel("A") if image.mode == "RGBA" else None
+            if alpha is not None and alpha.getextrema() != (255, 255):
+                alpha_file = source.with_suffix(".alpha.png")
+                Image.merge("LA", (Image.new("L", image.size, 0), alpha)).save(alpha_file, optimize=True)
+                row.update(alpha=alpha_file.relative_to(art).as_posix(), alpha_sha256=sha(alpha_file))
         source.unlink()
         row.update(file=target.relative_to(art).as_posix(), sha256=sha(target))
     index_path.write_text(json.dumps(index, indent=2) + "\n")
