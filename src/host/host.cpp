@@ -468,6 +468,9 @@ static int run_host(int argc, char** argv) {
         std::memcpy(&y, &bits, 4);
         return std::isfinite(y) && std::abs(y) >= .25f && std::abs(y) <= 64.f ? y : 0.f;
     };
+    srw64_game_hooks.background_whole = [](uint8_t* ram, uint32_t slot, uint32_t sub) {
+        return srw64::backgrounds::battle_sky(ram, slot, sub);
+    };
     srw64_game_hooks.background_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool sides) {
         // A background still 4:3 (the intermission pictures without HD art) leaves the
         // sides black (docs/design/deck-16x10.md).

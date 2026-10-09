@@ -300,12 +300,13 @@ void resident_func_80095974(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t slot = ctx->r5, sub = ctx->r6;
     // The battle's sky wraps every 320 pixels: the periods either side fill a wider
     // picture (docs/design/deck-16x10.md). Each copy runs the drawer on a copy of the call.
-    const bool sides = srw64_game_hooks.background_sides && srw64_game_hooks.background_sides(rdram, slot, sub);
+    const bool whole = srw64_game_hooks.background_whole && srw64_game_hooks.background_whole(rdram, slot, sub);
+    const bool sides = !whole && srw64_game_hooks.background_sides && srw64_game_hooks.background_sides(rdram, slot, sub);
     // It wraps every 240 rows too: placed a few rows down, its last rows (the ruins' black
     // and broken floors) show above it, where the original's top band hid them. Without
     // the bands those rows take a copy moved to the edge (its first rows, sky), and the
     // picture itself keeps to the rest.
-    const float wrap = srw64_game_hooks.background_wrap ? srw64_game_hooks.background_wrap(rdram, slot, sub) : 0.f;
+    const float wrap = !whole && srw64_game_hooks.background_wrap ? srw64_game_hooks.background_wrap(rdram, slot, sub) : 0.f;
     const auto copies = [&](float down) {
         for (const float offset : {-320.f, 0.f, 320.f}) {
             if (offset != 0 && !sides) continue;

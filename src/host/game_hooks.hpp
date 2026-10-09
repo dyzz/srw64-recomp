@@ -38,6 +38,9 @@ struct SRW64GameHooks {
     // The rows of the battle's sky that wrap around to the other edge where the bands are
     // gone (positive: at the top, negative: at the bottom); 0 to draw it as it is.
     float (*background_wrap)(uint8_t*, uint32_t slot, uint32_t sub){};
+    // True when an HD picture replaces the battle sky whole (native_background.cpp
+    // battle_sky): the drawer runs once, without side copies or wrapped rows.
+    bool (*background_whole)(uint8_t*, uint32_t slot, uint32_t sub){};
     // 80095974 (sprite modes 2 and 4: intermission backgrounds) wrote [begin, end) for slot/sub.
     // sides: it was drawn to each side as well (background_sides).
     void (*background_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub, bool sides){};

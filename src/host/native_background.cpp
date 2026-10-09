@@ -5,11 +5,13 @@
 #include "rhi/rt64_render_hooks.h"
 #include "native_gpu.hpp"
 #include "game_frame.hpp"
+#include "wide_map.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
 #include <array>
 #include <atomic>
+#include <cmath>
 #include <cstring>
 #include <fstream>
 #include <map>
@@ -92,6 +94,20 @@ bool resource(const uint8_t* rdram, int16_t handle, uint16_t& id) {
 
 bool hd_enabled() {
     return !presentation::image_mode.enabled() || presentation::image_mode.current() == 1;
+}
+// The slot's layer kind (+1, the table at 800C5960): 2, 3 and 9 place it by the pitch.
+bool pitch_layer(const uint8_t* rdram, uint32_t slot) {
+    const uint8_t kind = rdram[((kSlots + slot * kSlotSize + 1) & 0x1FFFFFFF) ^ 3];
+    return (kind == 2 || kind == 3 || kind == 9) && wide_map::battle_shown();
+}
+// The picture's (image, palette) asset, or -1.
+int asset_of(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
+    if (slot >= 300 || sub >= 4) return -1;
+    const uint32_t record = kSlots + slot * kSlotSize + kSubBase + sub * kSubSize;
+    uint16_t image = 0, palette = 0;
+    if (!resource(rdram, int16_t(half(rdram, record + 0xC)), image) || !resource(rdram, int16_t(half(rdram, record + 0xE)), palette)) return -1;
+    const auto found = by_ids.find({image, palette});
+    return found == by_ids.end() ? -1 : found->second;
 }
 
 // Premultiplied RGBA with a box-filtered mip chain (any size; odd edges clamp).
@@ -209,6 +225,47 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     fprintf(stderr, "SRW64_HD_BACKGROUNDS loaded %zu background(s) at %dx%d\n", assets.size(), width, height);
 }
 
+bool battle_sky(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
+    return hd_enabled() && asset_of(rdram, slot, sub) >= 0 && pitch_layer(rdram, slot);
+}
+
+namespace {
+// A sky the camera's pitch places: the whole picture from its origin (where its texel 0,0
+// lands, from any tile: screen minus texel, wrapped back near the screen's top-left),
+// enlarged by kSkyZoom about its bottom edge and repeated across the screen at the
+// enlarged period; below a sky the pitch lifted, its last rows again, as the original's
+// rows would wrap there otherwise (game_hooks.cpp's wrapper does the same without HD).
+// The game keeps a sky's horizontal place modulo 320; at the enlarged period a wrap would
+// jump. Each slot's place is followed frame to frame without wrapping.
+float unwrapped_x(uint32_t slot, float x) {
+    static std::array<float, 300> last{}, total{};
+    static std::array<uint64_t, 300> seen{};
+    static uint64_t frame_count = 0;
+    ++frame_count;
+    if (frame_count - seen[slot] > 30) total[slot] = x;         // a new battle or a new sky (calls, a few per frame)
+    else {
+        float d = x - last[slot];
+        if (d > 160) d -= 320;
+        if (d < -160) d += 320;
+        total[slot] += d;
+    }
+    last[slot] = x; seen[slot] = frame_count;
+    return total[slot];
+}
+void sky_quads(Draw& record, float origin_x, float origin_y) {
+    const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
+    const float period = source_width * kSkyZoom, bottom = origin_y + source_height, top = bottom - source_height * kSkyZoom;
+    const float gap = frame::kHeight - bottom;            // rows below the picture's bottom edge
+    float x = origin_x - period * std::ceil((origin_x + side) / period);
+    record.quads.clear();
+    for (; x < frame::kWidth + side; x += period) {
+        record.quads.push_back({{x, top, x + period, bottom}, {0, 0, 1, 1}});
+        if (gap > 0.25f) record.quads.push_back({{x, bottom, x + period, frame::kHeight}, {0, 1 - gap / (source_height * kSkyZoom), 1, 1}});
+    }
+    record.wide = true;
+}
+}  // namespace
+
 void gpu_init() {
     // One linear, mipmapped, clamped sampler after the picture.
     program = std::make_unique<gpu::Program>("HdBackground", 1, std::vector<gpu::Sampler>{{.linear = true, .mipmaps = true}});
@@ -239,6 +296,7 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     float columns = 1;  // picture pixels per loaded texel: 2 when CI4 is loaded as 8-bit (starfield)
     bool loaded = false;
     int32_t x0 = INT32_MAX, y0 = INT32_MAX, x1 = INT32_MIN, y1 = INT32_MIN;
+    float origin[2]{};   // where texel (0, 0) lands, from the first tile
     for (uint32_t p = draw.dl_begin; p + 8 <= draw.dl_end; p += 8) {
         const uint32_t w0 = word(rdram, p), w1 = word(rdram, p + 4), op = w0 >> 24;
         if (op == 0xFD && ((w0 >> 19) & 3) == 1) {
@@ -268,6 +326,7 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
             const auto v = [&](float y) { return (y - e[1]) / (e[3] - e[1]); };
             Quad q{{sx0, sy0, sx1, sy1}, {u(u0), v(v0), u(u0 + (sx1 - sx0) * dsdx), v(v0 + (sy1 - sy0) * dtdy)}};
             record.quads.push_back(q);
+            if (rects.empty()) { origin[0] = sx0 - u0; origin[1] = sy0 - v0; }
             x0 = std::min<int32_t>(x0, (w1 >> 12) & 0xFFF); y0 = std::min<int32_t>(y0, w1 & 0xFFF);
             x1 = std::max<int32_t>(x1, (w0 >> 12) & 0xFFF); y1 = std::max<int32_t>(y1, w0 & 0xFFF);
             rects.push_back(p);
@@ -275,9 +334,18 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         }
     }
     if (rects.empty() || x1 <= x0 || y1 <= y0) { ++unexpected; return false; }
+    const bool sky = pitch_layer(rdram, draw.slot);
+    if (sky) {
+        float ox = std::fmod(origin[0], float(source_width)), oy = std::fmod(origin[1], float(source_height));
+        if (ox < 0) ox += source_width;
+        if (oy > source_height / 2.f) oy -= source_height;
+        if (oy <= -source_height / 2.f) oy += source_height;
+        sky_quads(record, unwrapped_x(draw.slot, ox), oy);
+    }
     const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
     const bool whole = x0 == 0 && x1 >= int32_t(frame::kWidth * 4) - 4;
-    if (side > 0 && whole && -extent[0] >= side - 0.5f && extent[2] - source_width >= side - 0.5f) {
+    if (sky) {
+    } else if (side > 0 && whole && -extent[0] >= side - 0.5f && extent[2] - source_width >= side - 0.5f) {
         // A picture drawn out past 4:3: its own sides fill the picture's.
         const float top = y0 / 4.f, bottom = y1 / 4.f;
         const float v0 = (top - extent[1]) / (extent[3] - extent[1]), v1 = (bottom - extent[1]) / (extent[3] - extent[1]);
