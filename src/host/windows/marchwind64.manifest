@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Marchwind64.exe runs with UTF-8 as its ANSI code page (Windows 10 1903 and later), so a
+     path's string() and the narrow C library and environment calls use the same UTF-8 the
+     JSON files, SDL and the UI expect. Without it a user name or game folder in Chinese
+     comes out in GBK and the first JSON written at launch fails. -->
+<assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
+  <application xmlns="urn:schemas-microsoft-com:asm.v3">
+    <windowsSettings>
+      <activeCodePage xmlns="http://schemas.microsoft.com/SMI/2019/WindowsSettings">UTF-8</activeCodePage>
+    </windowsSettings>
+  </application>
+</assembly>

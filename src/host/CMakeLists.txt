@@ -164,8 +164,9 @@ if(SRW64_ENABLE_RT64)
     if(WIN32)
         # Double-clicking Marchwind64.exe: the ROM dialog and message box (host.cpp main()).
         target_sources(srw64-gfx-host PRIVATE windows/desktop_windows.cpp)
-        # The menu bar (src/native/ui/app_menu.hpp) and the executable's icon.
-        target_sources(srw64-gfx-host PRIVATE windows/app_menu_windows.cpp windows/marchwind64.rc)
+        # The menu bar (src/native/ui/app_menu.hpp), the executable's icon, and the manifest
+        # that makes UTF-8 its code page (CMake embeds a listed .manifest).
+        target_sources(srw64-gfx-host PRIVATE windows/app_menu_windows.cpp windows/marchwind64.rc windows/marchwind64.manifest)
         target_link_libraries(srw64-gfx-host PRIVATE comdlg32 user32 ole32)
         # A crash's minidump into the run directory (crash_dump.hpp, docs/native/bug-report.md).
         target_sources(srw64-gfx-host PRIVATE windows/crash_dump_windows.cpp)
