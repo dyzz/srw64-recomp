@@ -179,10 +179,19 @@ inline void step(uint8_t* ram,recomp_context* ctx) {
     // for this battle to be over, request the same fade here and mark it
     // requested (D_80250205 = 1) so state 21 does not ask a second time.
     //
-    // States 0..20 all qualify, so the key works from the first frame. Only 21+
-    // are excluded: the wind-down already requested the fade.
-    if(ending && int8_t(guest::read(ram,fade_request,1))==-1 &&
-       state>=0 && state<=20) {
+    // States 2..20 qualify. 21+ are excluded: the wind-down already requested the
+    // fade. 0 and 1 are too: they build the two sides' actors (the behaviour pointer
+    // at side +0x848 +0x98 is written during state 1), and state 21 (801C80C0 ->
+    // 801C5E30 -> 801C5F34) walks them; an abort in state 0 read an unset pointer and
+    // crashed (a press right after the battle starts, 2026-10-10, every platform).
+    // A press in 0 or 1, held or not, takes effect at state 2, the opening, within a
+    // fifth of a second of the start.
+    static bool early=false;
+    if(state<0 || state>20)early=false;
+    else if(ending && state<2)early=true;
+    const bool abort=(ending || early) && state>=2 && state<=20;
+    if(abort)early=false;
+    if(abort && int8_t(guest::read(ram,fade_request,1))==-1) {
         owed()=true;waited()=0;
         guest::write8(ram,state_byte,21);
         guest::write16(ram,frame_counter,0);
