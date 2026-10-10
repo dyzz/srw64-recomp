@@ -18,6 +18,8 @@
 #include "script_skip.hpp"
 #include "wide_map.hpp"
 #include "menu_widen.hpp"
+#include "map_miss.hpp"
+#include "ui_text.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 namespace rules=srw64::rules;
@@ -37,10 +39,23 @@ void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {
     // 4) and runs the animation-off branch of the fork instead, so the map
     // presents the result as it does with the animation switched off.
     srw64::battle_animation_probe::map_step(ram,ctx);
+    // With the animation off: a MISS for a missed attack, and a faster presentation.
+    srw64::map_miss::map_step(ram,ctx);
     srw64_original_map_dispatch(ram,ctx);
 }
 void load_000AB160_func_801C8AB4(uint8_t* ram,recomp_context* ctx) {
     if(!srw64_game_hooks.battle_spirit_return || !srw64_game_hooks.battle_spirit_return(ram,ctx))srw64_original_return_to_map(ram,ctx);
+}
+void load_000AB160_func_801FCA78(uint8_t* ram,recomp_context* ctx) {
+    srw64::map_miss::queue_begin(ram,srw64::ui_text::native_numbers());
+    srw64_original_map_rounds(ram,ctx);
+    srw64::map_miss::queue_end();
+}
+void load_000AB160_func_801FB8B4(uint8_t* ram,recomp_context* ctx) {
+    const uint32_t handle=uint32_t(ctx->r4),damage=uint32_t(ctx->r5),reaction=uint32_t(ctx->r7);
+    const unsigned before=srw64::guest::read(ram,srw64::map_miss::round_count,1);
+    srw64_original_map_round_push(ram,ctx);
+    srw64::map_miss::round_pushed(ram,handle,damage,reaction,before);
 }
 void load_000AB160_func_801D5064(uint8_t* ram,recomp_context* ctx) {
     if(!srw64_game_hooks.battle_step || !srw64_game_hooks.battle_step(ram,ctx,1))srw64_original_battle_confirm_step(ram,ctx);

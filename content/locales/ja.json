@@ -125,6 +125,7 @@
     "settings_window_windowed": "ウインドウ",
     "settings_window_fullscreen": "フルスクリーン",
     "settings_window_note": "Mac ではメニューの「表示」か Control+Command+F、 ほかのパソコンでは F11 か Alt+Enter でも切り替えられます。",
+    "map_miss": "ミス",
     "screenshot_saved": "スクリーンショットを保存しました：{path}",
     "screenshot_failed": "スクリーンショットを保存できませんでした：{path}",
     "settings_window_size": "ウインドウサイズ",

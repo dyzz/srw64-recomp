@@ -1,4 +1,5 @@
 #include "ui_text.hpp"
+#include "map_miss.hpp"
 #include "menu_widen.hpp"
 #include "battle_page.hpp"
 #include "game_hooks.hpp"
@@ -725,12 +726,49 @@ namespace {
 // 80228530, a shown flag at 80228536 and x, y words at 80228548. Cell indices: 0 blank,
 // 1 '+', 2 '-', 3-12 the outlined digits, 13-22 the shadowed ones.
 constexpr uint32_t kDamageCells = 0x228530, kDamageShown = 0x228536, kDamagePlaces = 0x228548;
+// A missed attack's figure (map_miss.hpp): the word in the reading language, in the
+// figure's own style, centred on the cells it was given and moving with them.
+bool miss_drawn(uint8_t* ram, const std::vector<uint32_t>& rects) {
+    float bounds[4] = {1e9f, 1e9f, -1e9f, -1e9f};
+    float sum_x = 0, sum_y = 0;
+    size_t next = 0, cells = 0;
+    for (uint32_t k = 0; k < 6; ++k) {
+        if (!byte(ram, kDamageShown + k)) continue;
+        if (next >= rects.size()) return false;
+        const uint32_t rect = rects[next++];
+        const auto [x0, y0] = corner(ram, rect);
+        const uint32_t w0 = word(ram, rect);
+        bounds[0] = std::min(bounds[0], x0 / 4.f); bounds[1] = std::min(bounds[1], y0 / 4.f);
+        bounds[2] = std::max(bounds[2], ((w0 >> 12) & 0xFFF) / 4.f); bounds[3] = std::max(bounds[3], (w0 & 0xFFF) / 4.f);
+        sum_x += int32_t(word(ram, kDamagePlaces + 8 * k)) + kCell / 2.f;
+        sum_y += int32_t(word(ram, kDamagePlaces + 8 * k + 4));
+        ++cells;
+    }
+    if (!cells || next != rects.size()) return false;
+    const auto& catalog = localization::catalog();
+    Style style = number_style(true);
+    style.pitch = 1;
+    if (catalog.locale != "en") { style.size = 11; style.min_size = 11; }
+    const float white[3] = {1, 1, 1};
+    // The word is wider than the cells: room around them for the drawing.
+    bounds[0] -= 16; bounds[2] += 16; bounds[1] -= 4; bounds[3] += 4;
+    std::vector<sprites::PlacedText> items{placed(style, catalog.locale, catalog.ui("map_miss"), "miss", sum_x / cells, sum_y / cells, white)};
+    if (!sprites::place_texts(ram, rects.front(), bounds, items)) return false;
+    for (const uint32_t rect : rects)
+        if (rect != rects.front())
+            for (uint32_t k = 0; k < 24; k += 4) put(ram, rect + k, 0);
+    return true;
+}
 void damage_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
     if (end <= begin || end > 0x800000 || !active()) return;
     std::lock_guard lock(mutex);
     const auto list = records(ram, begin, end);
     if (list.size() != 1) return;
     const auto& rects = list.front().rects;
+    if (map_miss::state().showing) {
+        if (miss_drawn(ram, rects)) ++counts.numbers;
+        return;
+    }
     std::vector<sprites::PlacedText> items;
     float bounds[4] = {1e9f, 1e9f, -1e9f, -1e9f};
     size_t next = 0;
@@ -822,6 +860,7 @@ void banner_number_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
 }
 }
 
+bool native_numbers() { return active(); }
 void configure(const std::filesystem::path& output) {
     if (installed) return;
     installed = true;

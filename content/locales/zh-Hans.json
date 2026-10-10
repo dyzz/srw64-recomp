@@ -125,6 +125,7 @@
     "settings_window_windowed": "窗口",
     "settings_window_fullscreen": "全屏",
     "settings_window_note": "Mac 上也可用菜单「显示」或 Control+Command+F， 其他电脑按 F11 或 Alt+Enter。",
+    "map_miss": "未命中",
     "screenshot_saved": "截图已保存：{path}",
     "screenshot_failed": "截图保存失败：{path}",
     "settings_window_size": "窗口大小",

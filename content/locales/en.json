@@ -125,6 +125,7 @@
     "settings_window_windowed": "Window",
     "settings_window_fullscreen": "Full Screen",
     "settings_window_note": "Also View > Full Screen or Control+Command+F on a Mac, F11 or Alt+Enter elsewhere.",
+    "map_miss": "MISS",
     "screenshot_saved": "Screenshot saved: {path}",
     "screenshot_failed": "Could not save the screenshot: {path}",
     "settings_window_size": "Window Size",

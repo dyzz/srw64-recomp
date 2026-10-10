@@ -24,6 +24,10 @@ NATIVE_HOOKS = {
     "load_000AB160_func_801C8AB4": "srw64_original_return_to_map",
     "load_000AB160_func_801D5064": "srw64_original_battle_confirm_step",
     "load_000AB160_func_801D5294": "srw64_original_battle_response_step",
+    # The animation-off presentation's round queue (src/host/map_miss.hpp): misses the
+    # original drops are queued and shown.
+    "load_000AB160_func_801FCA78": "srw64_original_map_rounds",
+    "load_000AB160_func_801FB8B4": "srw64_original_map_round_push",
     "resident_func_80082334": "srw64_original_random_bound",
     "resident_func_80085F30": "srw64_original_frame_boundary",
     "resident_func_800821B0": "srw64_original_rng_seed",

@@ -1,4 +1,5 @@
 #pragma once
+#include "map_miss.hpp"
 #include "guest_memory.hpp"
 #include "rule_probe.hpp"
 #include "graphics.hpp"
@@ -270,7 +271,9 @@ inline void replay_animation_off(uint8_t* ram,recomp_context* ctx) {
     // writes the HP straight into the roster and queues nothing.
     const uint8_t flags=uint8_t(guest::read(ram,animation_flags,1));
     guest::write8(ram,animation_flags,flags|animation_off);
+    map_miss::state().replaying=true;   // no MISS here: only with the animation off (map_miss.hpp)
     call(ram,ctx,0x801FCA78);
+    map_miss::state().replaying=false;
     guest::write8(ram,animation_flags,flags);
     const unsigned rounds=guest::read(ram,round_count,1);
     for(unsigned i=0;i<rounds && i<8;++i)

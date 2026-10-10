@@ -14,4 +14,7 @@ namespace srw64::ui_text {
 void configure(const std::filesystem::path& output);
 // Debug status: counters and the labels of the last passes.
 nlohmann::json state();
+// Whether the original's numbers and labels are drawn natively now (what the map's MISS
+// figure needs, map_miss.hpp).
+bool native_numbers();
 }
