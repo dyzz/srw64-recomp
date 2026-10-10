@@ -267,6 +267,8 @@
     "settings_fps_on": "开",
     "settings_fps_note": "右上角显示游戏每秒画出的帧数和最近半秒里最长的一帧。 原版大多是 20–30 帧。",
     "settings_dialogue_hints": "对白操作提示",
+    "settings_dialogue_font_size": "对白字号",
+    "settings_dialogue_font_size_note": "调整对白文字大小，立即生效并保留阅读位置。默认 13。",
     "settings_dialogue_hints_auto": "自动隐藏",
     "settings_dialogue_hints_always": "一直显示",
     "settings_dialogue_hints_note": "对白下方的阅读模式、字号和按键提示。 自动隐藏时，对白出现 5 秒后隐藏，按方向键或改变阅读方式时显示 3 秒；快进和跳过期间一直显示。",

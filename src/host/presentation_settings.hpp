@@ -59,6 +59,10 @@ void set_show_fps(bool show);
 // Saved as dialogue_hints, "auto" or "always".
 bool dialogue_hints_always();
 void set_dialogue_hints_always(bool always);
+// Dialogue text size, independent of the interface scale. Saved as dialogue_font_size.
+// Safe on the game thread too: the window thread writes pending changes in update().
+unsigned dialogue_font_size();
+void set_dialogue_font_size(unsigned size,bool remember=true);
 // Phone controls use a fixed D-pad. Opacity (25..100) scales controls, text and outlines.
 unsigned touch_opacity();
 void set_touch_opacity(unsigned percent);

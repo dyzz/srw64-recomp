@@ -51,6 +51,7 @@ UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale", "menu_game", "m
 UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps_note"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
+UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}
 # The debug interface switch on the About page (settings debug_interface).
 UI_KEYS |= {"settings_debug", "settings_debug_on", "settings_debug_off", "settings_debug_note", "settings_debug_note_android", "settings_debug_forced",
             "settings_debug_status", "settings_debug_run", "settings_debug_copy", "debug_interface_notice"}

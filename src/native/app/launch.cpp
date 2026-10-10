@@ -154,6 +154,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     const auto language_file=session.user_dir()/"presentation.json";
     std::string locale=options.language,battle_ui="native",intermission_ui="native",name_entry_ui="native",title_ui="native",settings_page,ui_size,aspect="auto";
     unsigned touch_opacity=100;
+    unsigned dialogue_font_size=data.at("config").value("font_size",13u);
     if(fs::exists(language_file)) {
         // Unreadable settings count as invalid: an explicit --language replaces them.
         json saved=json::object();
@@ -171,6 +172,8 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
             aspect=saved.value("aspect","auto");
             if(saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())
                 touch_opacity=std::clamp(saved["touch_opacity"].get<unsigned>(),25u,100u);
+            if(saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())
+                dialogue_font_size=std::clamp(saved["dialogue_font_size"].get<unsigned>(),10u,18u);
         }
     }
     if(locale.empty())locale=data.at("config").at("locale").get<std::string>();
@@ -187,7 +190,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     if(!options.language.empty()) {
         json settings={{"schema","srw64.presentation-settings.v1"},
             {"locale",locale},{"battle_ui",battle_ui},{"intermission_ui",intermission_ui},{"name_entry_ui",name_entry_ui},{"title_ui",title_ui},{"settings_page",settings_page},{"aspect",aspect},
-            {"touch_opacity",touch_opacity}};
+            {"touch_opacity",touch_opacity},{"dialogue_font_size",dialogue_font_size}};
         if(!ui_size.empty())settings["ui_size"]=ui_size;  // absent until the player chooses one
         atomic_write(language_file,settings.dump(2)+"\n");
     }

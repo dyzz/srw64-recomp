@@ -134,11 +134,12 @@ void touch_preferences() {
     Fixture f;
     fs::create_directories(f.options.user_dir);
     atomic_write(f.options.user_dir/"presentation.json",json({{"schema","srw64.presentation-settings.v1"},
-        {"locale","ja"},{"touch_opacity",50}}).dump());
+        {"locale","ja"},{"touch_opacity",50},{"dialogue_font_size",18}}).dump());
     f.options.language="en";
     check(run_standalone(f.options,f.game,[&](int,char**) {
         const auto saved=load(env("SRW64_PRESENTATION_SETTINGS"));
         check(saved.at("touch_opacity")==50,"language override lost touch preferences");
+        check(saved.at("dialogue_font_size")==18,"language override lost dialogue text size");
         return 0;
     })==0,"touch preferences launch failed");
 }

@@ -267,6 +267,8 @@
     "settings_fps_on": "On",
     "settings_fps_note": "Shows the game's frames per second and the longest frame of the last half second in the top right corner. The original mostly runs at 20-30.",
     "settings_dialogue_hints": "Dialogue Controls Bar",
+    "settings_dialogue_font_size": "Dialogue Text Size",
+    "settings_dialogue_font_size_note": "Change dialogue text size immediately, keeping your reading position. Default: 13.",
     "settings_dialogue_hints_auto": "Auto-hide",
     "settings_dialogue_hints_always": "Always",
     "settings_dialogue_hints_note": "The reading mode, text size and controls under the dialogue. Auto-hide hides them 5 seconds after the dialogue appears and shows them for 3 seconds when you press a direction or change how you read; they stay while fast-forwarding or skipping.",

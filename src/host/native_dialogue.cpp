@@ -465,7 +465,16 @@ void read_keys() {
 }
 bool step(uint8_t* ram,recomp_context* ctx) {
     std::lock_guard lock(mutex);
-    service_locale(ram);refresh(ram,true);
+    service_locale(ram);
+    const auto font=settings::dialogue_font_size();
+    if(reader.font_size!=font) {
+        reader.font_size=font;
+        if(!reader.layout.text.empty())
+            reader.relayout(typeset_body(reader.layout.text,body_size(font),reader.stops,{reader.page_start()}));
+        record("font",{{"size",font},{"pages",reader.layout.pages.size()}});
+        show_bar(bar_again_vis);
+    }
+    refresh(ram,true);
     if(observe)return false;
     if(settings::owns_input() && reader.active) {
         const auto now=srw64_current_vi();reader.page_started+=now-reader.tick;reader.tick=now;
@@ -486,6 +495,7 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         else {reader.skipping=false;record("skip_unavailable");}
     }
     if(old_font!=reader.font_size) {
+        settings::set_dialogue_font_size(reader.font_size);
         // The current page keeps its first character; only what follows moves.
         reader.relayout(typeset_body(reader.layout.text,body_size(reader.font_size),reader.stops,{reader.page_start()}));
         record("font",{{"size",reader.font_size},{"pages",reader.layout.pages.size()}});
@@ -618,6 +628,7 @@ void configure(const std::filesystem::path& directory) {
     }
     reader.font_size=data.at("config").at("font_size").get<unsigned>();
     if(reader.font_size<10 || reader.font_size>18)throw std::runtime_error("Native font size outside 10..18");
+    settings::set_dialogue_font_size(reader.font_size,false);
     for(const auto& [key,value]:data.at("glyphs").items())glyphs.emplace(std::stoul(key),value.get<std::string>());
     enabled=true;observe=data.at("config").value("mode","replace")=="observe";
     output=directory;log.open(directory/"dialogue-events.jsonl");

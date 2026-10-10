@@ -2541,7 +2541,7 @@ void settings_sync() {
     report_export_poll();
 #endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::show_fps())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::show_fps())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -2589,6 +2589,12 @@ void settings_sync() {
         }
     } else if(page=="interface") {
         body+=settings_choice("settings_ui_size","ui-size",{"standard","large","largest"},settings::ui_size_name(settings::ui_size()));
+        std::string font_sizes;
+        const auto font=settings::dialogue_font_size();
+        // Keep a non-preset size selected when a keyboard/controller shortcut chose it.
+        for(unsigned size=10;size<=18;++size)if(size==10 || size==12 || size==13 || size==15 || size==18 || size==font)
+            font_sizes+=button("dialogue-font:"+std::to_string(size),std::to_string(size),font==size);
+        body+=settings_row("settings_dialogue_font_size",font_sizes,{},"settings_dialogue_font_size_note");
         body+=settings_choice("settings_battle_ui","battle-ui",{"native","hd","original"},settings::battle_ui_name(settings::battle_ui()));
         body+=settings_choice("settings_intermission_ui","intermission-ui",{"native","original"},settings::native_intermission_ui()?"native":"original");
         body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
@@ -4225,6 +4231,7 @@ void choose(const std::string& id) {
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
         if(id.starts_with("fps:"))settings::set_show_fps(id=="fps:on");
+        if(id.starts_with("dialogue-font:"))settings::set_dialogue_font_size(unsigned(std::stoul(id.substr(14))));
         if(id.starts_with("dialogue-hints:"))settings::set_dialogue_hints_always(id=="dialogue-hints:always");
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
         if(id=="debug-copy-run")SDL_SetClipboardText(settings::debug_endpoint().run.c_str());

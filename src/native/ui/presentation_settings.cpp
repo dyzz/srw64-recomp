@@ -71,12 +71,14 @@ std::mutex look_mutex;   // bezel and filter, read by the render thread
 std::string bezel_path,filter_path;
 std::atomic<unsigned> filter_lines{1};
 std::atomic<unsigned> touch_alpha{100};
+std::atomic<unsigned> dialogue_size{13};
+std::atomic_bool dialogue_size_changed{};
 void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
         {"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
         {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
-        {"touch_opacity",touch_alpha.load()}});
+        {"touch_opacity",touch_alpha.load()},{"dialogue_font_size",dialogue_size.load()}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
     auto cheat_ids=nlohmann::json::array();
     for(const auto& entry:srw64::cheats::catalog)if(srw64::cheats::active()&entry.bit)cheat_ids.push_back(entry.id);
@@ -159,6 +161,11 @@ void save_now() {
 }
 unsigned touch_opacity(){return touch_alpha.load();}
 void set_touch_opacity(unsigned percent){touch_alpha=std::clamp(percent,25u,100u);save_now();}
+unsigned dialogue_font_size(){return dialogue_size.load();}
+void set_dialogue_font_size(unsigned size,bool remember) {
+    if(dialogue_size.exchange(std::clamp(size,10u,18u))!=std::clamp(size,10u,18u) && remember)
+        dialogue_size_changed=true;
+}
 std::string bezel(){std::lock_guard lock(look_mutex);return bezel_path;}
 void set_bezel(const std::string& path){{std::lock_guard lock(look_mutex);bezel_path=path;}save_now();}
 std::string filter(){std::lock_guard lock(look_mutex);return filter_path;}
@@ -271,6 +278,7 @@ uint32_t filter_input(uint32_t input){return release_gate.filter(input,applying,
 void release_input_when(bool all_keys_released){if(!applying && all_keys_released)awaiting_release=false;}
 bool failed(){return !last_error.empty();} // Main-window thread only.
 void update() {
+    if(dialogue_size_changed.exchange(false))save_now();
     if(!applying)return;
     const auto status=dialogue::locale_status();if(status.completed<applying_request)return;
     last_error=status.error;
@@ -295,6 +303,8 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();
         if(saved.is_object() && saved.contains("debug_interface") && saved["debug_interface"].is_boolean())debug_on=saved["debug_interface"].get<bool>();
         if(saved.is_object())hints_always=saved.value("dialogue_hints","auto")=="always";
+        if(saved.is_object() && saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())
+            dialogue_size=std::clamp(saved["dialogue_font_size"].get<unsigned>(),10u,18u);
         if(saved.is_object() && saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())
             touch_alpha=std::clamp(saved["touch_opacity"].get<unsigned>(),25u,100u);
         if(saved.is_object()) {
