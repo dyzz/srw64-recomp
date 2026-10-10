@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
+#include <iterator>
 #include <sstream>
 #include <vector>
 
@@ -44,6 +45,11 @@ bool run_file(const fs::path& file) {
 }
 constexpr size_t kFileLimit = 4u << 20;   // the end of a longer file
 constexpr unsigned kSessions = 3;
+// A crash's minidump (Windows, crash_dump.hpp): as it is, the newest two of a run, none
+// larger than this (they are a few MB).
+constexpr size_t kDumpLimit = 32u << 20;
+constexpr size_t kDumps = 2;
+bool dump_file(const fs::path& file) { return file.extension() == ".dmp"; }
 
 std::string read_text(const fs::path& path) {
     std::ifstream in(path, std::ios::binary);
@@ -56,6 +62,11 @@ std::string read_text(const fs::path& path) {
     in.read(text.data(), std::streamsize(text.size()));
     if (from) text = "[... first " + std::to_string(from) + " bytes left out ...]\n" + text.substr(text.find('\n') + 1);
     return text;
+}
+
+std::string read_bytes(const fs::path& path) {
+    std::ifstream in(path, std::ios::binary);
+    return {std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>()};
 }
 
 void replace_all(std::string& text, const std::string& from, const std::string& to) {
@@ -263,12 +274,22 @@ Result write(const fs::path& user, const fs::path& run, nlohmann::json facts) {
             add(base + "launch.json", redact(read_text(session / "launch.json")));
             files.push_back(base + "launch.json");
         }
-        std::vector<fs::path> logs;
-        for (const auto& entry : fs::directory_iterator(session / "run", error))
-            if (entry.is_regular_file(error) && entry.file_size(error) > 0 && run_file(entry.path())) logs.push_back(entry.path());
+        std::vector<fs::path> logs, dumps;
+        for (const auto& entry : fs::directory_iterator(session / "run", error)) {
+            if (!entry.is_regular_file(error) || entry.file_size(error) == 0) continue;
+            if (run_file(entry.path())) logs.push_back(entry.path());
+            else if (dump_file(entry.path()) && entry.file_size(error) <= kDumpLimit) dumps.push_back(entry.path());
+        }
         std::sort(logs.begin(), logs.end());
         for (const auto& path : logs) {
             add(base + "run/" + path.filename().string(), redact(read_text(path)));
+            files.push_back(base + "run/" + path.filename().string());
+        }
+        // Binary, so not through redact: crash-<date>-<time>.dmp, the newest last.
+        std::sort(dumps.begin(), dumps.end());
+        if (dumps.size() > kDumps) dumps.erase(dumps.begin(), dumps.end() - kDumps);
+        for (const auto& path : dumps) {
+            add(base + "run/" + path.filename().string(), read_bytes(path));
             files.push_back(base + "run/" + path.filename().string());
         }
     }
