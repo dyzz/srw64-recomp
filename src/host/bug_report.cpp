@@ -276,9 +276,13 @@ Result write(const fs::path& user, const fs::path& run, nlohmann::json facts) {
         }
         std::vector<fs::path> logs, dumps;
         for (const auto& entry : fs::directory_iterator(session / "run", error)) {
-            if (!entry.is_regular_file(error) || entry.file_size(error) == 0) continue;
+            // The file's own size: on Windows the listing's is that of when it was last
+            // closed, 0 for this run's logs, which are still open.
+            if (!entry.is_regular_file(error)) continue;
+            const auto size = fs::file_size(entry.path(), error);
+            if (error || size == 0) continue;
             if (run_file(entry.path())) logs.push_back(entry.path());
-            else if (dump_file(entry.path()) && entry.file_size(error) <= kDumpLimit) dumps.push_back(entry.path());
+            else if (dump_file(entry.path()) && size <= kDumpLimit) dumps.push_back(entry.path());
         }
         std::sort(logs.begin(), logs.end());
         for (const auto& path : logs) {

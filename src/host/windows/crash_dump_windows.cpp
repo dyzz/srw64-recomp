@@ -18,6 +18,7 @@
 #include <cwchar>
 #include <exception>
 #include <stdexcept>
+#include <string>
 #include <string_view>
 #include <thread>
 
@@ -46,6 +47,7 @@ EXCEPTION_POINTERS* crash = nullptr;
 DWORD crash_thread = 0;
 LPTOP_LEVEL_EXCEPTION_FILTER previous_filter = nullptr;
 _crt_signal_t previous_abort = SIG_DFL;
+std::string test;                     // SRW64_CRASH_TEST, read before --play clears SRW64_*
 
 // The SRW64_CRASH line, put together without the heap.
 struct Line {
@@ -275,6 +277,7 @@ void install() {
     static bool installed = false;
     if (installed) return;
     installed = true;
+    if (const char* kind = std::getenv("SRW64_CRASH_TEST")) test = kind;
     wake = CreateEventW(nullptr, FALSE, FALSE, nullptr);
     finished = CreateEventW(nullptr, TRUE, FALSE, nullptr);
     if (wake && finished) {
@@ -296,6 +299,6 @@ void attach(const std::filesystem::path& run) {
         wmemcpy(folder, text.c_str(), text.size() + 1);
         attached.store(true, std::memory_order_release);
     }
-    if (const char* kind = std::getenv("SRW64_CRASH_TEST"); kind && *kind) crash_test(kind);
+    if (!test.empty()) crash_test(test);
 }
 }

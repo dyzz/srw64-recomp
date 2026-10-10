@@ -11,7 +11,7 @@ namespace srw64::crash_dump {
 // exception filter, the CRT's invalid-parameter, pure-call and terminate handlers, SIGABRT.
 void install();
 // The run directory, once known; until then a crash writes only the line. With
-// SRW64_CRASH_TEST set (access, stack, abort, invalid, terminate) it crashes right here,
-// to try the handlers.
+// SRW64_CRASH_TEST set when the program started (access, stack, abort, invalid,
+// terminate, throw) it crashes right here, to try the handlers.
 void attach(const std::filesystem::path& run);
 }
