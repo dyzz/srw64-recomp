@@ -18,7 +18,7 @@ const t = {
   <p class:list={['mirrors', { compact }]}>
     <span class="lead">{t.lead[lang]}</span>
     {mirrors.map((m, i) => (
-      <>{i > 0 && <span class="sep"> · </span>}<a href={m.url}>{t[m.id][lang]}{m.passcode && t.passcode[lang].replace('{p}', m.passcode)}</a></>
+      <>{i > 0 && <span class="sep"> · </span>}<a href={m.url} data-umami-event="download-mirror" data-umami-event-mirror={m.id} data-umami-event-language={lang}>{t[m.id][lang]}{m.passcode && t.passcode[lang].replace('{p}', m.passcode)}</a></>
     ))}
     {!compact && <span class="note">{lang === 'en' ? ' — ' : ' '}{t.note[lang]}</span>}
   </p>

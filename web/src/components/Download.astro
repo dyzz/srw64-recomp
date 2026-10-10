@@ -28,14 +28,15 @@ const items = platforms.map((p) => {
 ---
 <div class="dl" data-dl>
   {items.map((it) => (
-    <a class={`btn big ${it.file ? '' : 'ghost'}`} href={it.href} data-platform={it.p} data-file={it.file ? '1' : undefined}>
+    <a class={`btn big ${it.file ? '' : 'ghost'}`} href={it.href} data-platform={it.p} data-file={it.file ? '1' : undefined}
+      data-umami-event={it.file ? 'download' : undefined} data-umami-event-platform={it.p} data-umami-event-language={lang} data-umami-event-source="home">
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-7 16h16v2H4v-2Z"/></svg>
       <span>{it.text}<small>{it.small}</small></span>
     </a>
   ))}
 </div>
 {hdFile && (
-  <a class="btn cyan hd" href={hdFile.url}>
+  <a class="btn cyan hd" href={hdFile.url} data-umami-event="download" data-umami-event-platform="hd" data-umami-event-language={lang} data-umami-event-source="home">
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-7 16h16v2H4v-2Z"/></svg>
     <span>{t.hd[lang]}<small>{hd.version && `HD ${hd.version} · `}{mb(hdFile.bytes)} · {t.hdNote[lang]}</small></span>
   </a>

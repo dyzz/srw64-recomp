@@ -36,7 +36,7 @@ const t = {
           <ul class="gtag-legend">{Object.entries(ui.tags).map(([k, v]) => <li><span class={`gtag ${k}`}>{v}</span></li>)}</ul>
           <p class="thanks" set:html={thanks[lang]} />
         </div>
-        <a class="offline" href="/downloads/marchwind64-guide.html" download>{t.offline[lang]} ↓</a>
+        <a class="offline" href="/downloads/marchwind64-guide.html" download data-guide-download={lang}>{t.offline[lang]} ↓</a>
       </header>
       <slot />
       <footer class="gfoot"><slot name="foot" /></footer>

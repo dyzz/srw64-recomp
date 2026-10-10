@@ -44,7 +44,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
             <h2>{s.name}{s.experimental && <span class="exp">{c.experimental}</span>}</h2>
             <p class="dim">{c.requires}{s.requires}</p>
             {f ? (
-              <a class="btn" href={f.url}>
+              <a class="btn" href={f.url} data-umami-event="download" data-umami-event-platform={fileOf[s.id]} data-umami-event-language={lang} data-umami-event-source={s.id}>
                 <span>{f.name}<small>{s.id === 'hd' && hd.version ? `HD ${hd.version} · ` : ''}{mb(f.bytes)}</small></span>
               </a>
             ) : <p class="nofile">{published ? c.noFile : c.notReleased}</p>}
@@ -74,7 +74,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
           <tbody>
             {allFiles.map((f) => (
               <tr>
-                <td><a href={f.url}>{f.name}</a></td>
+                <td><a href={f.url} data-umami-event="download" data-umami-event-platform={f.platform} data-umami-event-language={lang} data-umami-event-source="file-list">{f.name}</a></td>
                 <td class="nowrap">{mb(f.bytes)}</td>
                 <td><code class="hash">{f.sha256}</code></td>
               </tr>
@@ -85,7 +85,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
       <p class="links">
         <a href={release.github}>GitHub Release {release.tag} →</a>
         {hd.tag !== release.tag && <a href={hd.github}>GitHub Release {hd.tag} →</a>}
-        {mirrors.map((m) => <a href={m.url}>{c[m.id]}{m.passcode && c.passcode.replace('{p}', m.passcode)} →</a>)}
+        {mirrors.map((m) => <a href={m.url} data-umami-event="download-mirror" data-umami-event-mirror={m.id} data-umami-event-language={lang}>{c[m.id]}{m.passcode && c.passcode.replace('{p}', m.passcode)} →</a>)}
       </p>
       </> : <p class="nofile">{c.notReleased}</p>}
     </section>

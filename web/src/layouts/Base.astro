@@ -5,6 +5,7 @@ import '@fontsource/chakra-petch/latin-700.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
 import { LANGS, UI, langInfo, switchLang, type Lang } from '../i18n';
 
 interface Props {
@@ -38,6 +39,7 @@ const path = Astro.url.pathname;
     <meta property="og:description" content={desc} />
     <meta property="og:image" content={new URL(`/media/hero-${lang}.webp`, Astro.site)} />
     <meta property="og:type" content="website" />
+    <Analytics />
     <script>
       // Remember the language the reader chose, for the root page's redirect. Processed, not
       // is:inline, so Astro hashes it for the pages' Content-Security-Policy.

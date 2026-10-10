@@ -1,0 +1,31 @@
+---
+// The website ID is public; credentials stay on the analytics server.
+const websiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID?.trim();
+if (websiteId && !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(websiteId)) {
+  throw new Error('PUBLIC_UMAMI_WEBSITE_ID must be a UUID');
+}
+---
+{import.meta.env.PROD && websiteId && <meta name="umami-website-id" content={websiteId} />}
+<script>
+  const websiteId = document.querySelector<HTMLMetaElement>('meta[name="umami-website-id"]')?.content;
+  if (websiteId && location.hostname === 'srw64.dreamquest.club') {
+    // Same-origin script and collection: works with the site's existing CSP.
+    const tracker = document.createElement('script');
+    tracker.src = '/analytics/script.js';
+    tracker.defer = true;
+    tracker.dataset.websiteId = websiteId;
+    tracker.dataset.hostUrl = `${location.origin}/analytics`;
+    tracker.dataset.domains = 'srw64.dreamquest.club';
+    tracker.dataset.excludeSearch = 'true';
+    tracker.dataset.excludeHash = 'true';
+    tracker.dataset.doNotTrack = 'true';
+    document.head.append(tracker);
+    // Umami's automatic link handler redirects after tracking. Keep the native
+    // download attribute on the offline guide so it still saves the file.
+    document.addEventListener('click', (event) => {
+      const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('[data-guide-download]') : null;
+      const umami = (window as Window & { umami?: { track: (name: string, data: Record<string, string>) => Promise<void> } }).umami;
+      if (link && umami) void umami.track('download', { platform: 'guide', language: link.dataset.guideDownload!, source: 'guide' });
+    });
+  }
+</script>
