@@ -1,6 +1,7 @@
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
 #include "console_log.hpp"
+#include "crash_dump.hpp"
 // Native integration host, optionally rendered through RT64/Metal.
 #include <atomic>
 #include <cstdio>
@@ -326,6 +327,9 @@ static int run_host(int argc, char** argv) {
     if (std::filesystem::exists(output_dir)) fail("output directory already exists");
     std::filesystem::create_directories(output_dir);
     srw64::console_log::attach(output_dir);
+#ifdef _WIN32
+    srw64::crash_dump::attach(output_dir);
+#endif
     max_vis = std::stoull(argv[3]);
     const bool interactive = std::getenv("SRW64_INTERACTIVE") && std::string(std::getenv("SRW64_INTERACTIVE")) == "1";
     if ((!interactive && max_vis == 0) || max_vis > 216000) fail("VI limit outside diagnostic range");
@@ -585,6 +589,10 @@ int main(int argc, char** argv) {
     // stdout and stderr also into the run's console.log (Android: to logcat, which would
     // otherwise drop them), for a bug report (console_log.hpp).
     srw64::console_log::start();
+#ifdef _WIN32
+    // A crash's minidump into the run directory, for the same report (crash_dump.hpp).
+    srw64::crash_dump::install();
+#endif
 #if defined(__linux__) && !defined(__ANDROID__)
     // Android: bionic has backtrace() only from API 33, and debuggerd's tombstone needs
     // its own handlers, so crashes go to logcat as tombstones.

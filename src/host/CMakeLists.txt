@@ -73,6 +73,10 @@ if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/host.cpp" AND NOT ANDROID)
         "${SRW64_RUNTIME}/librecomp/include/librecomp"
         "${SRW64_RUNTIME}/thirdparty/sse2neon")
     target_link_libraries(srw64-host PRIVATE srw64_cpu librecomp srw64_app)
+    if(WIN32)
+        target_sources(srw64-host PRIVATE windows/crash_dump_windows.cpp)
+        target_link_libraries(srw64-host PRIVATE dbghelp)
+    endif()
 endif()
 
 option(SRW64_ENABLE_RT64 "Build the RT64 graphics host (Metal on macOS, Vulkan on Linux)" OFF)
@@ -163,6 +167,9 @@ if(SRW64_ENABLE_RT64)
         # The menu bar (src/native/ui/app_menu.hpp) and the executable's icon.
         target_sources(srw64-gfx-host PRIVATE windows/app_menu_windows.cpp windows/marchwind64.rc)
         target_link_libraries(srw64-gfx-host PRIVATE comdlg32 user32 ole32)
+        # A crash's minidump into the run directory (crash_dump.hpp, docs/native/bug-report.md).
+        target_sources(srw64-gfx-host PRIVATE windows/crash_dump_windows.cpp)
+        target_link_libraries(srw64-gfx-host PRIVATE dbghelp)
     endif()
     # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md).
     target_sources(srw64-gfx-host PRIVATE update_check.cpp update_http.cpp)

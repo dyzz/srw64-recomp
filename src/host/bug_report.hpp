@@ -3,9 +3,9 @@
 // in <user>/reports with report.json (the version, the system, the graphics, the window,
 // the game's settings in effect: `facts`, gathered by the caller), the settings files of
 // the user directory, and the logs of the runs the user directory keeps (sessions/*:
-// launch.json, console.log and the run's event and state files). Never the ROM or its
-// copy, saves, recorded audio or the debug interface's token; the home folder in every
-// file is written as ~.
+// launch.json, console.log and the run's event and state files, and on Windows a crash's
+// minidump). Never the ROM or its copy, saves, recorded audio or the debug interface's
+// token; the home folder in every text file is written as ~ (a minidump goes as it is).
 #include <filesystem>
 #include <string>
 
