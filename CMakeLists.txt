@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(srw64_runtime_foundation VERSION 0.4.4 LANGUAGES C CXX)
+project(srw64_runtime_foundation VERSION 0.4.5 LANGUAGES C CXX)
 # Base tests are ROM/RT64/Python-free. This is NOT the game build entry.
 include(CTest)
 add_subdirectory(src/native/app)

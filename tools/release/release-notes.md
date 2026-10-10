@@ -1,6 +1,18 @@
 非官方的《超级机器人大战64》原生移植，附全游戏中文与英文翻译。不含 ROM：需要自备日版原版 ROM。
 
-## 本版更新（0.4.4）
+## 本版更新（0.4.5）
+
+- **修复战斗画面天空上出现红黄色块。** 0.4.4 引入的问题，速度线、火焰之类的特效被错当成天空画了出来，所有平台都有。
+- **修复战斗演出刚开始就按结束键会闪退。** 演出一开始马上按结束键（X/B 或 R2），现在会正常结束。
+- **Windows：修复用户名或游戏文件夹带中文时打不开。** 适用于 Windows 10（1903 及以后）和 Windows 11。
+- **新增抗锯齿开关**（选项 → 通用）。关掉可以减轻显卡负担；部分 Intel 核显上界面花屏时也可以关掉试试。重启游戏后生效。
+- **关闭战斗动画时，没打中会显示「未命中」**，地图上的战斗结算也更快了。
+- **对白字号可以在设置里直接选**（选项 → 界面，五档），会记住选择。
+- **开着 HD 时，地图上的单位图标可以单独换回原版**（选项 → 通用）。
+- **安卓：对白时的「回看」按钮回来了**（0.4.4 不小心去掉了），平时在原「返回」键的位置。
+- **Windows：游戏闪退时会留下诊断文件**，用「选项 → 反馈」导出问题报告时会一起带上，方便我排查。
+
+## 0.4.4 的更新
 
 - **宽屏：战斗中画面上方不再露出楼块和黑带。** 镜头拉近时天空会往下移，原版靠上方的黑色遮幅条挡住从底部环绕上来的远景；宽屏去掉遮幅条后，两块 HP 窗之间会露出一条黑带和楼群碎块（所有平台都有）。现在天空整张略微放大（约 7%），顶部露出的是天空本身。4:3 设置保持原版不变。
 - **HD：战斗天空换成高清。** 战斗背景的全部 42 张天空图（91 种配色）放大到 4 倍，保留原版的颗粒感。战斗鉴赏选场景时的缩略图也换成了游戏里实拍的 HD 画面。需要 HD 1.1。
@@ -14,25 +26,6 @@
 - 存档列表和场间关卡栏里，「通关」紧跟在关卡标题后面，不再被拆成两行。
 - 英文界面：胜利条件、失败条件、出击确认窗口的标题缩短，不再被压窄。
 
-## 0.4.3 的更新
-
-- **修复开着 HD 图片时游戏随机卡死。** 所有平台自 0.3.1 起，开着 HD 图片时偶尔会在某个画面永久卡住（有时声音也停），连 Esc 都关不掉，经过多张 HD 地图的开场后更容易遇到。原因是渲染线程释放过期的 HD 地图时把自己锁死了，现已修复。
-- **战斗：在战前确认页施放的精神现在真正生效。** 原先在页面上用了精神后只刷新了显示的命中率：「必中」显示 100%，战斗却仍按施放前掷好的结果演；热血、魂、气合、铁壁、毅力、大毅力、幸运、努力也都没算进这一战。现在施放后按原版流程重新结算，保留已选的应对和反击武器。
-- **安卓：修复部分手机打开就退出。** 显卡驱动较旧的 Mali 手机（如三星 Galaxy A15、A35）提示「找不到兼容的图形设备」后退出，现已修复。安卓包去掉调试断言，体积也小了一点。
-- **安卓：修复骁龙 865/870/888 手机闪退和画面缺失。** Adreno 650（骁龙 865/870，如 POCO F3、Galaxy Tab S7）开始绘制约一秒后闪退；Adreno 660（骁龙 888，如 Galaxy S21 Ultra）一打开就闪退；现已修复。另外修复了安卓上新材质刚出现的头几帧画不出来的问题，在 Adreno 660 上表现为战斗背景、HP/EN 边框缺失和机体拖影。
-- **安卓：游戏卡住时会在日志里记下各线程的位置**，方便通过「选项 → 反馈」导出问题报告后定位。
-- **安卓：触屏按钮恢复成固定的一整套。** 每个画面都有摇杆、确定、返回、L1/R1、L2/R2、设置和 START，不会再缺按钮；PRESS START 画面的 L2/R2 位置是「图鉴」「战斗查看器」。
-- **改造可以一次改多段。** 五项能力改造画面用 ←→ 给各项规划段数，确认一次付清；武器改造的确认画面用 ←→ 选要升几段。价格、上限和联动规则都照原版。
-- **原版画面的翻译不再超出窗口。** 机体指令菜单和场间菜单加宽，译文标签按所在列和整行排版，英文先压窄再缩小。
-- **大屏幕上界面跟着窗口放大。** 以前 1080p、4K 屏上战前确认页、设置窗口、战斗查看器会缩成 Deck 上的一半甚至四分之一挤在中间；现在「界面大小」按窗口高度排版（标准、大、特大），Deck 不变。
-- **Windows：缩放屏幕上画面清晰。** 150%、200% 缩放的屏幕以前整个窗口被系统拉伸发糊，现在按屏幕实际像素绘制。
-- **Windows：程序有了图标，窗口带菜单栏**（设置、重载台词、检查更新、显示选项）；全屏时菜单栏隐藏，鼠标移到屏幕顶边才出现。macOS 应用也换成新图标。
-- **战斗：能力横幅**（暴击、盾牌防御、分身、护罩等）去掉黑底板，透出后面的战斗画面，旁边的数字改用高清绘制。
-- **重复启动更友好。** 刚关掉游戏马上再开时会等它退干净；另一个游戏还开着时，用游戏语言提示，可以选择结束它再开始。
-- **Windows：界面内部检查不再弹出对话框卡住游戏。**
-- 菜单栏的「设置…」在图鉴、战斗查看器、MOD 页面里也能打开设置。
-- 英文界面：「Counterattack Settings」「Weapon Stats」两个标签缩短，不再超出边框。
-
 ## 安卓已测试的芯片
 
 以下芯片的真机都能正常进入游戏（安卓 12–16）。天玑 6100+ 这类入门芯片约 14 FPS，其余基本是 30 FPS。没列出的芯片不代表不能玩，只是还没测过；欢迎在 Issues 反馈。希望天玑 8200 的玩家反馈一下是否能正常运行。
@@ -42,15 +35,7 @@
 - 三星：Exynos 1380（Mali-G68，Galaxy A35）
 - 谷歌：Tensor G2（Mali-G710，Pixel 7）、Tensor G3（Mali-G715，Pixel 8）
 
-## 0.4.2 的更新
-
-- **Windows：修复程序一打开就退出。** 0.4.0 和 0.4.1 在 Windows 上无论双击 `Marchwind64.exe` 还是运行 `Marchwind64.cmd`，窗口都一闪就关、不留任何日志，现已修复，并在 Windows 11 上验证过。0.4.1 说的「双击 exe 开始游戏」从这一版起才真正可用。
-
-## 0.4.1 的更新
-
-- **安卓：修复骁龙手机一进游戏就闪退。** 高通 Adreno 显卡（骁龙 8 Gen 2、8 Gen 3 等，如红米 K70、iQOO 12、vivo Neo9）在游戏开始绘制时崩溃，现已修复，并在 Adreno 740、750、830 的真机上验证过。
-- **安卓：开场序章文字页有了「跳过」按钮**；PRESS START 画面重新显示「图鉴」「战斗查看器」按钮。
-- **Windows：双击 `Marchwind64.exe` 就能开始游戏**，和 `Marchwind64.cmd` 一样找 ROM，找不到时弹出选择框。
+更早版本的更新见[官网博客](https://srw64.dreamquest.club/zh/blog/)。
 
 ## 功能预览
 
@@ -81,7 +66,7 @@
 
 ## English
 
-An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. New in 0.4.4: in widescreen, battle close-ups no longer show a black strip with building pieces above the sky (the sky is drawn a little larger; 4:3 keeps the original); with HD 1.1 the battle skies are in HD, and so are the Battle Viewer's scene pictures; closing the game no longer sometimes hangs; the weapon upgrade screen no longer sometimes crashes or freezes on opening; F12 or Print Screen saves a screenshot to the screenshots folder, and Alt+Enter toggles full screen on Windows and Linux; on Android, one touch skips a story scene (the dialogue buttons become Skip, Auto and Hold to fast-forward), the D-pad stays in the bottom-left corner with adjustable button opacity, and saves and problem reports are exported to Download/Marchwind64 without any storage permission; held fast-forward turns a page every 0.3 seconds; "Cleared" follows the stage title on one line; in English, the victory, defeat and deployment windows' titles are shorter and no longer squeezed. From 0.4.3: a random freeze with HD images on (every platform since 0.3.1; the render thread locked itself when it released an expired HD map) is fixed; spirits cast on the pre-battle page now count in the battle (before, Bullseye showed 100% while the battle played the earlier rolls, and Valor, Soul, Spirit, Wall, Vigor, Guts, Fortune and Gain did not apply); Android phones with older Mali drivers (such as the Galaxy A15 and A35) no longer quit at start with "Unable to find compatible graphics device", and the Android build is a little smaller; Snapdragon 865/870 (Adreno 650, such as the POCO F3 and Galaxy Tab S7) no longer crash a second into drawing and Snapdragon 888 (Adreno 660, Galaxy S21 Ultra) no longer crashes at start, and new materials draw from their first frame on Android (on the Adreno 660, battle backgrounds and HP/EN frames were missing); a stuck game on Android writes every thread's position into its log for problem reports; touch controls are again one fixed full set on every screen, with the Library and Battle Viewer on L2/R2 at the title; the upgrade screens plan several levels with left/right and pay them with one confirm, under the original's prices and rules; translated labels keep inside the original windows, and the unit command and intermission menus are wider; on large screens the pages grow with the window instead of shrinking to half or a quarter of their Deck size; on Windows the picture is sharp on scaled (150%, 200%) screens, Marchwind64.exe has an icon and the window has a menu bar that hides in full screen until the mouse reaches the top edge, and the Mac app has a new icon; the ability banners in battle (Critical, Shield Defense and others) let the battle show through and draw their numbers in HD; starting again right after closing waits for the old game, and when another game holds the user folder it offers to end it and start; on Windows, internal UI checks no longer stop the game with a dialog; Settings… from the menu bar works in the Library, Battle Viewer and MOD pages; two English labels that ran past their frames are shorter. Android chips tested on real phones: Snapdragon 865/870, 888, 8 Gen 1, 8 Gen 2, 8 Gen 3 and 8 Elite; Dimensity 7300 and 6100+ (about 14 FPS); Exynos 1380; Tensor G2 and G3. If you play on a Dimensity 8200 phone, please let us know whether it runs well. From 0.4.2: the game starts on Windows again; 0.4.0 and 0.4.1 closed at once on every launch, from Marchwind64.exe or Marchwind64.cmd, without leaving a log. From 0.4.1: Android no longer crashes on Snapdragon phones (Adreno GPUs) once the game starts drawing; the opening prologue pages have a touch Skip button; on Windows, double-clicking Marchwind64.exe starts the game as Marchwind64.cmd does. 0.4 is the first public release and a feature preview: the whole game is playable, but it is still rough. The Chinese and English translations are mostly machine-translated with one polishing pass and have not been hand-edited line by line yet; expect plenty of bugs; testing beyond macOS has been limited to a few devices. Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues), with the platform info and problem report from Options → Report, and suggest text corrections on the [website](https://srw64.dreamquest.club/en/story/)'s Story and Library pages. Full feature list: [release notes on the website](https://srw64.dreamquest.club/en/blog/v0-4-0/). {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
+An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. New in 0.4.5: red and yellow patches across the battle sky (a 0.4.4 problem on every platform) are gone; ending the battle animation right after it starts no longer crashes; on Windows the game starts when the user name or the game folder is in Chinese (Windows 10 1903 or later, Windows 11); Options → General has an anti-aliasing switch, which lightens the GPU load and may help if the interface looks garbled on some Intel graphics (applies after a restart); with the battle animation off, a missed attack shows MISS on the map, and the map's battle results play faster; Options → Interface offers five dialogue text sizes and remembers the choice; with HD on, the map unit icons can stay original (Options → General); on Android the dialogue Back button is the history button again, which 0.4.4 lost; on Windows a crash leaves a diagnostic file that the problem report from Options → Report includes. From 0.4.4: in widescreen, battle close-ups no longer show a black strip with building pieces above the sky (the sky is drawn a little larger; 4:3 keeps the original); with HD 1.1 the battle skies are in HD, and so are the Battle Viewer's scene pictures; closing the game no longer sometimes hangs; the weapon upgrade screen no longer sometimes crashes or freezes on opening; F12 or Print Screen saves a screenshot to the screenshots folder, and Alt+Enter toggles full screen on Windows and Linux; on Android, one touch skips a story scene (the dialogue buttons become Skip, Auto and Hold to fast-forward), the D-pad stays in the bottom-left corner with adjustable button opacity, and saves and problem reports are exported to Download/Marchwind64 without any storage permission; held fast-forward turns a page every 0.3 seconds; "Cleared" follows the stage title on one line; in English, the victory, defeat and deployment windows' titles are shorter and no longer squeezed. Android chips tested on real phones: Snapdragon 865/870, 888, 8 Gen 1, 8 Gen 2, 8 Gen 3 and 8 Elite; Dimensity 7300 and 6100+ (about 14 FPS); Exynos 1380; Tensor G2 and G3. If you play on a Dimensity 8200 phone, please let us know whether it runs well. Earlier changes are on the [website blog](https://srw64.dreamquest.club/en/blog/). 0.4 is the first public release and a feature preview: the whole game is playable, but it is still rough. The Chinese and English translations are mostly machine-translated with one polishing pass and have not been hand-edited line by line yet; expect plenty of bugs; testing beyond macOS has been limited to a few devices. Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues), with the platform info and problem report from Options → Report, and suggest text corrections on the [website](https://srw64.dreamquest.club/en/story/)'s Story and Library pages. Full feature list: [release notes on the website](https://srw64.dreamquest.club/en/blog/v0-4-0/). {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
 
 ## 校验 / Checksums
 
