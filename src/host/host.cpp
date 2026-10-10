@@ -460,7 +460,7 @@ static int run_host(int argc, char** argv) {
     // -53.2 while the camera slides in or looks askance (pitch 20). Layers that drift on
     // their own (kinds 4-7) wrap by design and keep to the original.
     srw64_game_hooks.background_wrap = [](uint8_t* ram, uint32_t slot, uint32_t) {
-        if (!srw64::frame::wide || !srw64::wide_map::battle_shown()) return 0.f;
+        if (!srw64::frame::wide || !srw64::wide_map::battle_shown() || slot > 4) return 0.f;   // the sky layers, slots 0-4
         const uint32_t kind = srw64::guest::read(ram, 0x800FFA71 + slot * 0xC4, 1);
         if (kind != 2 && kind != 3 && kind != 9) return 0.f;
         float y;

@@ -112,7 +112,11 @@ bool pitch_kind(uint8_t kind) { return kind == 2 || kind == 3 || kind == 9; }
 // copies would meet the picture: only without the bands (automatic aspect,
 // battle_hud.cpp); at 4:3 the top band hides the wrapped rows as in the original, and the
 // sky is drawn as the game draws it.
+// The sky layers are slots 0-4, the ones 80085740 moves by their kind; other slots drawn
+// by 80095974 (the battle's scrolling effect layer, slot 0x19) are no sky, whatever that
+// byte holds.
 bool pitch_layer(const uint8_t* rdram, uint32_t slot) {
+    if (slot > 4) return false;
     const uint8_t kind = layer_kind(rdram, slot);
     return (pitch_kind(kind) || kind == 10 || kind == 11) && frame::wide && wide_map::battle_shown();
 }
