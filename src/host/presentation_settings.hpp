@@ -50,6 +50,10 @@ void set_native_title_ui(bool native);
 // as aspect, "auto" or "4:3"; applies from the next frame.
 bool wide_picture();
 void set_wide_picture(bool wide);
+// Map unit icons may keep their original pixels while the rest of the art is HD.
+// Saved as map_unit_icons ("hd" by default, or "original"); read on the renderer thread.
+bool hd_map_unit_icons();
+void set_hd_map_unit_icons(bool hd);
 // A small readout of the game's frames per second and the longest frame in a corner
 // (frame_rate.hpp, frontend.cpp). Off by default; saved as show_fps.
 bool show_fps();

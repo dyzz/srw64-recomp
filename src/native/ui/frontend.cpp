@@ -1455,7 +1455,7 @@ nlohmann::json report_facts() {
     const auto hd=update::status(update::site_language(localization::catalog().locale)).hd;
     const auto name=[](const std::string& path){return path.empty()?std::string():std::filesystem::path(path).filename().string();};
     return {{"version",SRW64_VERSION},{"locale",localization::catalog().locale},{"ui_size",settings::ui_size_name(settings::ui_size())},
-        {"images",presentation::image_mode.current()==1?"hd":"original"},{"hd_pack",{{"installed",hd.installed},{"version",hd.version}}},
+        {"images",presentation::image_mode.current()==1?"hd":"original"},{"map_unit_icons",settings::hd_map_unit_icons()?"hd":"original"},{"hd_pack",{{"installed",hd.installed},{"version",hd.version}}},
         {"wide",settings::wide_picture()},{"filter",name(settings::filter())},{"bezel",name(settings::bezel())},
         {"rules",rules},{"cheats",cheats_on},{"controller",srw64_pad_name()},{"touch",touch_active()},{"handheld",handheld()},
         {"debug_interface",settings::debug_interface_forced() || settings::debug_interface()},
@@ -2541,7 +2541,7 @@ void settings_sync() {
     report_export_poll();
 #endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::show_fps())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::show_fps())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -2576,6 +2576,7 @@ void settings_sync() {
         body+=settings_row("library_row",button("library-open",label("library_open")));
         body+=settings_row("viewer_row",button("viewer-open",label("viewer_open")));
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
+        body+=settings_choice("settings_map_unit_icons","map-unit-icons",{"original","hd"},settings::hd_map_unit_icons()?"hd":"original",!presentation::image_mode.enabled() || !presentation::image_mode.requested());
         body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
         body+=look_rows();
         // A handheld or a phone plays full screen and has no window to size.
@@ -4220,6 +4221,7 @@ void choose(const std::string& id) {
         if(id.starts_with("cheat-level:"))if(const auto colon=id.find(':',12);colon!=std::string::npos)cheats::request_level(unsigned(std::stoul(id.substr(12,colon-12))),unsigned(std::stoul(id.substr(colon+1))));
         if(id.starts_with("preset:"))for(const auto& preset:rules::presets)if(preset.key==id.substr(7))rules::set_fixes(preset.fixes);
         if(id.starts_with("locale:") && !input.has_composition())settings::request_locale(id.substr(7));
+        if(id.starts_with("map-unit-icons:") && presentation::image_mode.enabled() && presentation::image_mode.requested())settings::set_hd_map_unit_icons(id=="map-unit-icons:hd");
         if(id.starts_with("images:") && presentation::image_mode.enabled())presentation::image_mode.request(id=="images:hd");
         if(id.starts_with("battle-ui:"))settings::set_battle_ui(settings::battle_ui_from(id.substr(10)));
         if(id.starts_with("aspect:"))settings::set_wide_picture(id=="aspect:wide");

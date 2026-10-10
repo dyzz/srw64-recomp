@@ -554,6 +554,13 @@ public:
                 }
                 fprintf(stderr, "SRW64_TEXTURE_PACK_LOADED %s\n", directory);
                 if(art) {
+                    // The compiled/released RT64 manifest keeps each texture's family.
+                    // Only map unit icons are affected by their independent preference.
+                    std::ifstream file(std::filesystem::path(directory) / "rt64.json");
+                    nlohmann::json database;
+                    file >> database;
+                    for(const auto& row:database.at("textures"))if(row.value("kind","")=="icon")
+                        map_icon_hashes.push_back(std::stoull(row.at("hashes").at("rt64").get<std::string>(),nullptr,16));
                     const char* mode=std::getenv("SRW64_IMAGE_MODE");
                     srw64::presentation::image_mode.configure(mode && std::string(mode)=="hd");
                     apply_images();
@@ -710,9 +717,15 @@ private:
         fprintf(stderr, "SRW64_ASPECT width=%.2f window=%ux%u\n", width, w, h);
     }
     float aspect_width = 0;
+    std::vector<uint64_t> map_icon_hashes;
+    int applied_map_icons = -1;
     void apply_images() {
         auto& mode=srw64::presentation::image_mode;
-        if(!mode.enabled() || mode.current()==int(mode.requested()))return;
+        bool hd_icons=true;
+#ifdef SRW64_NATIVE_DIALOGUE
+        hd_icons=srw64::settings::hd_map_unit_icons();
+#endif
+        if(!mode.enabled() || (mode.current()==int(mode.requested()) && applied_map_icons==int(hd_icons)))return;
         const bool hd=mode.requested();
         // Matches RT64's configuration-change drain. A mutex alone would let
         // a workload mix original UV scales with replacement descriptors.
@@ -721,12 +734,26 @@ private:
         app->workloadQueue->waitForIdle();app->presentQueue->waitForIdle();
         {
             std::unique_lock lock(app->textureCache->textureMapMutex);
-            app->textureCache->textureMap.replacementMapEnabled=hd;
+            auto& map=app->textureCache->textureMap;
+            map.replacementMapEnabled=hd;
+            if(applied_map_icons!=int(hd_icons)) {
+                for(const auto hash:map_icon_hashes) {
+                    if(hd_icons)map.replacementBlockedHashes.erase(hash);
+                    else map.replacementBlockedHashes.insert(hash);
+                    // Refresh cached descriptors, including those already seen on this map.
+                    if(const auto it=map.hashMap.find(hash);it!=map.hashMap.end())++map.versions[it->second];
+                }
+                ++map.globalVersion;
+            }
         }
+        applied_map_icons=hd_icons;
         worldmap_verified=0;
         mode.acknowledge(hd);
         nlohmann::json status={{"schema","srw64.image-mode.v1"},{"mode",hd?"hd":"original"},
             {"hd_available",true},
+            {"map_unit_icons",hd && hd_icons?"hd":"original"},
+            {"map_unit_icons_preference",hd_icons?"hd":"original"},
+            {"map_unit_icon_hashes",map_icon_hashes.size()},
             {"model_5600",srw64::marker::replacement_enabled()?"waterdrop":"original"},
             {"vi",srw64_current_vi()},{"workload",app->state->workloadId}};
         const auto pending=capture_directory/"image-mode.pending.json";

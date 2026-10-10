@@ -152,7 +152,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     if(!owned_session)owned_session=std::make_unique<Session>(options);
     auto& session=*owned_session;
     const auto language_file=session.user_dir()/"presentation.json";
-    std::string locale=options.language,battle_ui="native",intermission_ui="native",name_entry_ui="native",title_ui="native",settings_page,ui_size,aspect="auto";
+    std::string locale=options.language,battle_ui="native",intermission_ui="native",name_entry_ui="native",title_ui="native",settings_page,ui_size,aspect="auto",map_unit_icons="hd";
     unsigned touch_opacity=100;
     unsigned dialogue_font_size=data.at("config").value("font_size",13u);
     if(fs::exists(language_file)) {
@@ -170,6 +170,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
             settings_page=saved.value("settings_page","");
             ui_size=saved.value("ui_size","");
             aspect=saved.value("aspect","auto");
+            map_unit_icons=saved.value("map_unit_icons","hd");
             if(saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())
                 touch_opacity=std::clamp(saved["touch_opacity"].get<unsigned>(),25u,100u);
             if(saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())
@@ -190,7 +191,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     if(!options.language.empty()) {
         json settings={{"schema","srw64.presentation-settings.v1"},
             {"locale",locale},{"battle_ui",battle_ui},{"intermission_ui",intermission_ui},{"name_entry_ui",name_entry_ui},{"title_ui",title_ui},{"settings_page",settings_page},{"aspect",aspect},
-            {"touch_opacity",touch_opacity},{"dialogue_font_size",dialogue_font_size}};
+            {"touch_opacity",touch_opacity},{"dialogue_font_size",dialogue_font_size},{"map_unit_icons",map_unit_icons}};
         if(!ui_size.empty())settings["ui_size"]=ui_size;  // absent until the player chooses one
         atomic_write(language_file,settings.dump(2)+"\n");
     }

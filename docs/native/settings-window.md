@@ -113,6 +113,8 @@
 
 **记住分页**：每次换页写入 `presentation.json` 的 `settings_page`（`settings::set_settings_page`），下次打开（包括重启后）回到这一页。启动器用 `--language` 改写这个文件时照样带上它（`launch.cpp`）。
 
+**地图单位图标（2026-10-10）**：「通用」页在「画面」下方增加「原版／高清」，默认高清。整体画面为 HD 时，可以只把战术地图上的单位图标保留为原版像素，下一帧生效；选择存入 `presentation.json` 的 `map_unit_icons`，重启和启动器切换语言后保留。整体为 Original 或没有 HD 包时不可选，切回 HD 后沿用上次选择。三语词条、焦点操作与调试点击共用现有设置行；实机回归脚本为 `tools/recomp/debug/check_map_unit_icon_setting.py`。
+
 **对白字号（2026-10-10）**：「界面」页在「界面大小」下方增加 10／12／13／15／18 五个点选按钮，默认 13。立即重排对白，保留当前页的起始字符；不改变设置窗口自身的界面缩放。原有键盘／手柄字号快捷键仍可在 10–18 间逐级调整，若选到非预设值，设置页会补出该值并显示选中状态。选择存入 `presentation.json` 的 `dialogue_font_size`，重启和启动器切换语言后保留；游戏线程只发布字号，文件由窗口线程写入。
 
 **调试接口**：`ui.click` 按 id 点一个不在当前页的设置控件时，会先翻到它所在的页再点（与玩家的操作一致），所以 `settings-control.json` 的 `press` 和按 id 点击的旧脚本不用改；页签本身的 id 是 `settings-page:<页>`。`ui.key` 送 `q`／`e`／`pageup`，`pad` 方法送 L1／R1 都能换页。

@@ -46,7 +46,7 @@ class SettingsWindowTests(unittest.TestCase):
         # Eight tabs share the row: 6 dp gaps, 6 dp padding each side (frontend.cpp .set-tabs).
         tab = (panel - (len(SETTINGS_PAGES) - 1) * 6) / len(SETTINGS_PAGES) - 12
         runs = lambda text: text.split(" ")
-        choices = {"settings_images": ("original", "hd"), "settings_battle_ui": ("native", "original"),
+        choices = {"settings_map_unit_icons": ("original", "hd"), "settings_images": ("original", "hd"), "settings_battle_ui": ("native", "original"),
                    "settings_ui_size": ("standard", "large", "largest"),
                    "settings_aspect": ("wide", "original"),
                    "settings_intermission_ui": ("native", "original"), "settings_name_entry_ui": ("native", "original"),
@@ -110,7 +110,7 @@ class SettingsWindowTests(unittest.TestCase):
     def test_every_switch_is_rebuilt_when_it_changes(self):
         stamp = self.page[self.page.index("const auto stamp=localization::catalog().locale+"):]
         stamp = stamp[:stamp.index(";")]
-        for call in ("battle_ui", "native_intermission_ui", "native_name_entry_ui", "native_title_ui"):
+        for call in ("battle_ui", "native_intermission_ui", "native_name_entry_ui", "native_title_ui", "hd_map_unit_icons"):
             self.assertIn(f"settings::{call}()", stamp)
         self.assertIn("settings_page", stamp)
 

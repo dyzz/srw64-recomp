@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # tools/, home of 
 from recomp.toolchain.analyze_layout import ROOT
 from recomp.toolchain.native_model_hook_patches import PATCHES as NATIVE_MODEL_PATCHES
 from recomp.toolchain.rt64_android_patches import BY_FILE as ANDROID_PATCHES
+from recomp.toolchain.rt64_texture_filter_patches import BY_FILE as TEXTURE_FILTER_PATCHES
 
 
 def patched_subset(text: str, original: str, steps) -> bool:
@@ -45,7 +46,7 @@ def patch(checkout: Path, relative: str, old: str | None = None, new: str | None
         raise RuntimeError(f"patch context differs in {relative}")
     # Android patches name Plume's files from the RT64 checkout (src/contrib/plume/...).
     android_key = f"src/contrib/plume/{relative}" if checkout.name == "plume" else relative
-    steps = [*([(old, new)] if old is not None else []), *NATIVE_MODEL_PATCHES.get(relative, []), *additional,
+    steps = [*([(old, new)] if old is not None else []), *NATIVE_MODEL_PATCHES.get(relative, []), *TEXTURE_FILTER_PATCHES.get(relative, []), *additional,
              *ANDROID_PATCHES.get(android_key, [])]
     expected = original
     for before, after in steps:
@@ -91,7 +92,7 @@ def main() -> int:
                                            "src/rhi/rt64_render_hooks.cpp", "src/gui/rt64_file_dialog.cpp",
                                            "src/hle/rt64_framebuffer_manager.cpp", "src/hle/rt64_workload_queue.cpp",
                                            "src/hle/rt64_rdp.cpp"}
-                                           | set(NATIVE_MODEL_PATCHES) | set(ANDROID_PATCHES)),
+                                           | set(NATIVE_MODEL_PATCHES) | set(ANDROID_PATCHES) | set(TEXTURE_FILTER_PATCHES)),
                                 (plume, {"plume_metal.cpp", "plume_vulkan.cpp", "plume_d3d12.cpp", "plume_apple.h", "plume_apple.mm"})):
         changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=repository, text=True).splitlines())
         if changed - allowed:
@@ -480,7 +481,7 @@ def main() -> int:
                                      ("        threadRunning = true;\n\n        while (threadRunning) {",
                                       "        while (threadRunning) {")]))
     recorded = {r['path'] for r in records}
-    for relative in [*NATIVE_MODEL_PATCHES, *(r for r in ANDROID_PATCHES if not r.startswith("src/contrib/plume/"))]:
+    for relative in [*NATIVE_MODEL_PATCHES, *TEXTURE_FILTER_PATCHES, *(r for r in ANDROID_PATCHES if not r.startswith("src/contrib/plume/"))]:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:
             recorded.add(str((checkout/relative).relative_to(ROOT)))
             records.append(patch(checkout, relative))
@@ -489,6 +490,7 @@ def main() -> int:
               "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "native_model_hooks_sha256": hashlib.sha256((ROOT/'tools/recomp/toolchain/native_model_hook_patches.py').read_bytes()).hexdigest(),
               "android_patches_sha256": hashlib.sha256((ROOT/'tools/recomp/toolchain/rt64_android_patches.py').read_bytes()).hexdigest(),
+              "texture_filter_patches_sha256": hashlib.sha256((ROOT/'tools/recomp/toolchain/rt64_texture_filter_patches.py').read_bytes()).hexdigest(),
               "purpose": "Metal source compilation, resize descriptor synchronization, main-queue window blocks that outlive their swapchain, workload-matched UI hooks, and opt-in native model callbacks preserving scene transforms and draw order"}
     (ROOT / "build/recomp/graphics-source-patches.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
