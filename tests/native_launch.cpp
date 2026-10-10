@@ -134,12 +134,17 @@ void touch_preferences() {
     Fixture f;
     fs::create_directories(f.options.user_dir);
     atomic_write(f.options.user_dir/"presentation.json",json({{"schema","srw64.presentation-settings.v1"},
-        {"locale","ja"},{"touch_opacity",50},{"dialogue_font_size",18}}).dump());
+        {"locale","ja"},{"touch_opacity",50},{"dialogue_font_size",18},
+        {"filter","filters/crt/zfast-crt.slangp"},{"bezel","bezels/arcade.png"},{"show_fps",true},{"cheats",{"funds"}}}).dump());
     f.options.language="en";
     check(run_standalone(f.options,f.game,[&](int,char**) {
         const auto saved=load(env("SRW64_PRESENTATION_SETTINGS"));
         check(saved.at("touch_opacity")==50,"language override lost touch preferences");
         check(saved.at("dialogue_font_size")==18,"language override lost dialogue text size");
+        check(saved.at("locale")=="en","language override did not set the language");
+        check(saved.value("filter","")=="filters/crt/zfast-crt.slangp" && saved.value("bezel","")=="bezels/arcade.png",
+              "language override lost the filter or bezel");
+        check(saved.value("show_fps",false) && saved.at("cheats")==json({"funds"}),"language override lost the game's own settings");
         return 0;
     })==0,"touch preferences launch failed");
 }

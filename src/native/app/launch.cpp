@@ -155,6 +155,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     std::string locale=options.language,battle_ui="native",intermission_ui="native",name_entry_ui="native",title_ui="native",settings_page,ui_size,aspect="auto",map_unit_icons="hd";
     unsigned touch_opacity=100;
     unsigned dialogue_font_size=data.at("config").value("font_size",13u);
+    json kept=json::object();  // valid saved settings: an explicit --language keeps what it does not set
     if(fs::exists(language_file)) {
         // Unreadable settings count as invalid: an explicit --language replaces them.
         json saved=json::object();
@@ -162,6 +163,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         if(saved.value("schema","")!="srw64.presentation-settings.v1") {
             if(locale.empty())throw std::runtime_error("Invalid language settings; pass --language to replace them explicitly");
         } else {
+            kept=saved;
             if(locale.empty())locale=saved.at("locale").get<std::string>();
             battle_ui=saved.value("battle_ui","native");
             intermission_ui=saved.value("intermission_ui","native");
@@ -189,9 +191,11 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     if(options.rules)atomic_write(rules_file,json({{"schema","srw64.rule-settings.v1"},
         {"rules_version",game.rules_version},{"fixes",rules}}).dump(2)+"\n");
     if(!options.language.empty()) {
-        json settings={{"schema","srw64.presentation-settings.v1"},
+        // The game's own settings (filter, bezel, cheats, FPS and the rest) stay as they were.
+        json settings=kept;
+        settings.update(json{{"schema","srw64.presentation-settings.v1"},
             {"locale",locale},{"battle_ui",battle_ui},{"intermission_ui",intermission_ui},{"name_entry_ui",name_entry_ui},{"title_ui",title_ui},{"settings_page",settings_page},{"aspect",aspect},
-            {"touch_opacity",touch_opacity},{"dialogue_font_size",dialogue_font_size},{"map_unit_icons",map_unit_icons}};
+            {"touch_opacity",touch_opacity},{"dialogue_font_size",dialogue_font_size},{"map_unit_icons",map_unit_icons}});
         if(!ui_size.empty())settings["ui_size"]=ui_size;  // absent until the player chooses one
         atomic_write(language_file,settings.dump(2)+"\n");
     }
