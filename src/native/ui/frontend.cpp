@@ -1455,7 +1455,7 @@ nlohmann::json report_facts() {
     const auto hd=update::status(update::site_language(localization::catalog().locale)).hd;
     const auto name=[](const std::string& path){return path.empty()?std::string():std::filesystem::path(path).filename().string();};
     return {{"version",SRW64_VERSION},{"locale",localization::catalog().locale},{"ui_size",settings::ui_size_name(settings::ui_size())},
-        {"images",presentation::image_mode.current()==1?"hd":"original"},{"map_unit_icons",settings::hd_map_unit_icons()?"hd":"original"},{"hd_pack",{{"installed",hd.installed},{"version",hd.version}}},
+        {"images",presentation::image_mode.current()==1?"hd":"original"},{"map_unit_icons",settings::hd_map_unit_icons()?"hd":"original"},{"msaa",settings::msaa_at_start()},{"hd_pack",{{"installed",hd.installed},{"version",hd.version}}},
         {"wide",settings::wide_picture()},{"filter",name(settings::filter())},{"bezel",name(settings::bezel())},
         {"rules",rules},{"cheats",cheats_on},{"controller",srw64_pad_name()},{"touch",touch_active()},{"handheld",handheld()},
         {"debug_interface",settings::debug_interface_forced() || settings::debug_interface()},
@@ -2541,7 +2541,7 @@ void settings_sync() {
     report_export_poll();
 #endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::show_fps())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -2579,6 +2579,11 @@ void settings_sync() {
         body+=settings_choice("settings_map_unit_icons","map-unit-icons",{"original","hd"},settings::hd_map_unit_icons()?"hd":"original",!presentation::image_mode.enabled() || !presentation::image_mode.requested());
         body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
         body+=look_rows();
+#ifndef __ANDROID__
+        // Android draws without MSAA either way. Taken at start: says so until a restart.
+        body+=settings_row("settings_msaa",button("msaa:on",label("settings_msaa_on"),settings::msaa())+button("msaa:off",label("settings_msaa_off"),!settings::msaa()),
+            settings::msaa()!=settings::msaa_at_start()?"<p class='set-note'>"+label("settings_msaa_restart")+"</p>":std::string());
+#endif
         // A handheld or a phone plays full screen and has no window to size.
         if(!handheld()) {
             const auto window_state=window_menu_state();
@@ -4225,6 +4230,7 @@ void choose(const std::string& id) {
         if(id.starts_with("images:") && presentation::image_mode.enabled())presentation::image_mode.request(id=="images:hd");
         if(id.starts_with("battle-ui:"))settings::set_battle_ui(settings::battle_ui_from(id.substr(10)));
         if(id.starts_with("aspect:"))settings::set_wide_picture(id=="aspect:wide");
+        if(id.starts_with("msaa:"))settings::set_msaa(id=="msaa:on");
         if(id.starts_with("window:") && (id=="window:fullscreen")!=bool(SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN))toggle_fullscreen();
         if(id.starts_with("window-size:"))scale_window(std::stoi(id.substr(12)));
         if(id.starts_with("ui-size:"))for(const auto size:{settings::UiSize::Standard,settings::UiSize::Large,settings::UiSize::Largest})
@@ -5170,7 +5176,7 @@ Rml::Element* find(Rml::Element* root,const std::string& text,bool exact) {
 void require(){if(!context)throw debug::RpcError(debug::ServerError,"shared UI is not ready");}
 }
 void window_init(SDL_Window* value,const std::filesystem::path& path){window=value;output=path;system.SetWindow(window);input.defer_sdl(true);app_menu::attach(window);}
-void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device);ready=true;}
+void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device,settings::msaa_at_start());ready=true;}
 void update(){auto lock=lock_ui();if(!ready)return;SDL_GetWindowSizeInPixels(window,&pixels_w,&pixels_h);int w,h;SDL_GetWindowSize(window,&w,&h);pixel_ratio=w?float(pixels_w)/w:1;if(!initialized)initialize();sync();input.flush_sdl();}
 uint32_t touch_buttons() {
     // Only the UI thread writes the pulse. A polling reader clearing an expired

@@ -54,6 +54,12 @@ void set_wide_picture(bool wide);
 // Saved as map_unit_icons ("hd" by default, or "original"); read on the renderer thread.
 bool hd_map_unit_icons();
 void set_hd_map_unit_icons(bool hd);
+// 4x MSAA for the game picture (RT64) and the UI (frontend.cpp), on by default; Android
+// draws without it whatever this says. Saved as msaa; both renderers take it when they
+// start, so a change applies on the next launch. msaa_at_start is what this run uses.
+bool msaa();
+bool msaa_at_start();
+void set_msaa(bool on);
 // A small readout of the game's frames per second and the longest frame in a corner
 // (frame_rate.hpp, frontend.cpp). Off by default; saved as show_fps.
 bool show_fps();

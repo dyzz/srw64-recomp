@@ -84,6 +84,23 @@ def prepare(fetch: bool = False) -> dict:
                             b"#else\n"
                             b"        const plume::RenderSampleCounts desired_sample_count = plume::RenderSampleCount::COUNT_4;\n"
                             b"#endif")
+    # The player's anti-aliasing switch (settings msaa, read at start): without it the UI
+    # draws straight into the swap chain. The 4x copy garbled every page on a 6th-gen
+    # Intel GPU on Vulkan (driver 31.0.101.2111) while NVIDIA on Vulkan drew it cleanly.
+    multisample = [
+        (b"    RmlRenderInterface_RT64_impl(plume::RenderInterface* interface, plume::RenderDevice* device) {\n",
+         b"    RmlRenderInterface_RT64_impl(plume::RenderInterface* interface, plume::RenderDevice* device, bool multisample) {\n"),
+        (b"        if (device_->getSampleCountsSupported(SwapChainFormat) & desired_sample_count) {\n",
+         b"        if (multisample && (device_->getSampleCountsSupported(SwapChainFormat) & desired_sample_count)) {\n"),
+        (b"void recompui::RmlRenderInterface_RT64::init(plume::RenderInterface* interface, plume::RenderDevice* device) {\n"
+         b"    impl = std::make_unique<RmlRenderInterface_RT64_impl>(interface, device);\n",
+         b"void recompui::RmlRenderInterface_RT64::init(plume::RenderInterface* interface, plume::RenderDevice* device, bool multisample) {\n"
+         b"    impl = std::make_unique<RmlRenderInterface_RT64_impl>(interface, device, multisample);\n"),
+    ]
+    for before, after in multisample:
+        if source.count(before) != 1:
+            raise RuntimeError("Pinned renderer init() no longer matches")
+        source = source.replace(before, after)
     # Two passes on one command list: the pages under a RetroArch filter, then those over it
     # (docs/native/bezels-and-filters.md). The second pass must keep the first's vertices and
     # uploads, which start() would otherwise write over before the GPU reads them.
@@ -113,6 +130,10 @@ def prepare(fetch: bool = False) -> dict:
     if header.count(start) != 1:
         raise RuntimeError("Pinned renderer header start() no longer matches")
     header = header.replace(start, "        void start(plume::RenderCommandList* list, int image_width, int image_height, bool continue_frame = false);")
+    init = "        void init(plume::RenderInterface* interface, plume::RenderDevice* device);"
+    if header.count(init) != 1:
+        raise RuntimeError("Pinned renderer header init() no longer matches")
+    header = header.replace(init, "        void init(plume::RenderInterface* interface, plume::RenderDevice* device, bool multisample = true);")
     write_changed(OUTPUT / "ui_renderer.h", header.encode())
     write_changed(OUTPUT / "ui_renderer.cpp", source)
     report = {"schema": "srw64.frontend-adapter.v1", "commit": lock["commit"],

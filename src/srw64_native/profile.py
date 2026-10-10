@@ -18,6 +18,7 @@ UI_KEYS |= {"options_menu", "rules_menu", "rules_original", "rules_all", "rules_
             "settings_language", "settings_language_note",
             "settings_images", "settings_images_original", "settings_images_hd", "settings_images_note",
             "settings_map_unit_icons", "settings_map_unit_icons_original", "settings_map_unit_icons_hd", "settings_map_unit_icons_note",
+            "settings_msaa", "settings_msaa_on", "settings_msaa_off", "settings_msaa_note", "settings_msaa_restart",
             "settings_aspect", "settings_aspect_wide", "settings_aspect_original", "settings_aspect_note",
             "settings_window", "settings_window_windowed", "settings_window_fullscreen", "settings_window_note",
             "settings_window_size", "settings_window_size_note",

@@ -504,6 +504,10 @@ public:
         app->userConfig.internalColorFormat = RT64::UserConfiguration::InternalColorFormat::Standard;
         app->userConfig.idleWorkActive = false;
 #endif
+#ifdef SRW64_NATIVE_DIALOGUE
+        // The player's switch (settings msaa), read before the device starts.
+        if (!srw64::settings::msaa_at_start()) app->userConfig.antialiasing = RT64::UserConfiguration::Antialiasing::None;
+#endif
         if (const char* msaa = std::getenv("SRW64_MSAA")) {
             const std::string value = msaa;
             app->userConfig.antialiasing = value == "0" ? RT64::UserConfiguration::Antialiasing::None

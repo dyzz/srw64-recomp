@@ -58,6 +58,7 @@ input::Bindings load_bindings(const nlohmann::json& saved) {
 }
 std::atomic<BattleUi> battle{BattleUi::Native};
 std::atomic_bool map_icons_hd{true};
+std::atomic_bool msaa_on{true},msaa_started{true};
 #ifdef __ANDROID__
 // Android is being tuned on the phone (docs/design/android-port.md): the readout starts on.
 constexpr bool fps_default=true;
@@ -77,7 +78,7 @@ std::atomic_bool dialogue_size_changed{};
 void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
-        {"map_unit_icons",map_icons_hd?"hd":"original"},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
+        {"map_unit_icons",map_icons_hd?"hd":"original"},{"msaa",msaa_on.load()},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
         {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
         {"touch_opacity",touch_alpha.load()},{"dialogue_font_size",dialogue_size.load()}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
@@ -135,6 +136,13 @@ void set_wide_picture(bool wide) {
 bool hd_map_unit_icons(){return map_icons_hd.load();}
 void set_hd_map_unit_icons(bool hd) {
     map_icons_hd=hd;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
+bool msaa(){return msaa_on.load();}
+bool msaa_at_start(){return msaa_started.load();}
+void set_msaa(bool on) {
+    msaa_on=on;
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
@@ -306,6 +314,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         const auto saved=nlohmann::json::parse(file,nullptr,false);
         if(saved.is_object()){battle=battle_ui_from(saved.value("battle_ui","native"));native_intermission=saved.value("intermission_ui","native")!="original";native_name_entry=saved.value("name_entry_ui","native")!="original";native_title=saved.value("title_ui","native")!="original";}
         if(saved.is_object())map_icons_hd=saved.value("map_unit_icons","hd")!="original";
+        if(saved.is_object() && saved.contains("msaa") && saved["msaa"].is_boolean())msaa_on=msaa_started=saved["msaa"].get<bool>();
         if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
         if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();

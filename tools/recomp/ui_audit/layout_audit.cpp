@@ -93,6 +93,8 @@ void set_ui_size(UiSize v){size_value=v;} UiSize ui_size(){return size_value;}
 float ui_scale(UiSize s){return s==UiSize::Largest?1.5f:s==UiSize::Large?1.25f:1.f;}
 const char* ui_size_name(UiSize s){return s==UiSize::Largest?"largest":s==UiSize::Large?"large":"standard";}
 void set_wide_picture(bool v){wide=v;} bool wide_picture(){return wide;}
+bool map_icons_hd=true; bool hd_map_unit_icons(){return map_icons_hd;} void set_hd_map_unit_icons(bool v){map_icons_hd=v;}
+bool msaa_on=true; bool msaa(){return msaa_on;} bool msaa_at_start(){return true;} void set_msaa(bool v){msaa_on=v;}
 bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
 bool hints_always=false; bool dialogue_hints_always(){return hints_always;} void set_dialogue_hints_always(bool v){hints_always=v;}
 unsigned touch_alpha=100; unsigned touch_opacity(){return touch_alpha;}

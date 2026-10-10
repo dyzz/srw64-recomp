@@ -48,7 +48,7 @@ class SettingsWindowTests(unittest.TestCase):
         runs = lambda text: text.split(" ")
         choices = {"settings_map_unit_icons": ("original", "hd"), "settings_images": ("original", "hd"), "settings_battle_ui": ("native", "original"),
                    "settings_ui_size": ("standard", "large", "largest"),
-                   "settings_aspect": ("wide", "original"),
+                   "settings_aspect": ("wide", "original"), "settings_msaa": ("on", "off"),
                    "settings_intermission_ui": ("native", "original"), "settings_name_entry_ui": ("native", "original"),
                    "settings_title_ui": ("native", "original"), "settings_language": (),
                    "settings_filter_scale": ("1", "2", "4", "0")}
@@ -74,7 +74,7 @@ class SettingsWindowTests(unittest.TestCase):
             for key in ("settings_bezel_note", "settings_filter_note", "settings_filter_unavailable", "settings_filter_loading"):
                 for run in runs(labels[key]):
                     self.assertLessEqual(em(run) * 12, row, (locale, key, run))
-            for key in ("settings_touch_opacity_note", "settings_save_export_note_android", "settings_dialogue_font_size_note"):
+            for key in ("settings_touch_opacity_note", "settings_save_export_note_android", "settings_dialogue_font_size_note", "settings_msaa_restart"):
                 for run in runs(labels[key]):
                     self.assertLessEqual(em(run) * 12, row, (locale, key, run))
             for key in ("cheats_note", "cheat_levels_note", "cheat_levels_away"):
