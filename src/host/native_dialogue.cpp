@@ -452,9 +452,12 @@ void read_keys() {
     const uint16_t buttons=raw_buttons.load(),directions=Reader::UP|Reader::DOWN|Reader::LEFT|Reader::RIGHT;
     if(buttons&directions&~bar_buttons)show_bar(bar_again_vis);
     bar_buttons=buttons;
-    const bool was_fast=reader.fast,was_pending=reader.pending;
+    const bool was_fast=reader.fast,was_pending=reader.pending,was_skip=reader.skipping;
     const uint64_t was_event=reader.event;const size_t was_page=reader.page;
-    reader.update(raw_buttons.load(),srw64_current_vi());
+    reader.update(buttons,srw64_current_vi());
+    if(was_skip && !reader.skipping && script_skip::active()) {
+        script_skip::end();skip_owner=0;record("skip_cancelled");
+    }
     const json state={{"event",reader.event},{"page",reader.page},{"pending",reader.pending},{"fast",reader.fast},
         {"automatic",reader.auto_read},{"skip",reader.skipping}};
     if(was_fast!=reader.fast)record("fast",state);
@@ -482,8 +485,6 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         if(reading_owner) {skip_owner=reading_owner;script_skip::start(skip_owner);record("skip_start",{{"owner",skip_owner}});}
         else {reader.skipping=false;record("skip_unavailable");}
     }
-    // B or the history ends the skip where it is (Reader::update).
-    if(was_skip && !reader.skipping && script_skip::active()){script_skip::end();skip_owner=0;record("skip_cancelled");}
     if(old_font!=reader.font_size) {
         // The current page keeps its first character; only what follows moves.
         reader.relayout(typeset_body(reader.layout.text,body_size(reader.font_size),reader.stops,{reader.page_start()}));
@@ -493,7 +494,8 @@ bool step(uint8_t* ram,recomp_context* ctx) {
     // How the player reads changed: the bar says so for a while.
     if(old_font!=reader.font_size || old_speed!=reader.speed || was_history!=reader.history_open || was_skip!=reader.skipping ||
        was_auto!=reader.auto_read || was_fast!=reader.fast)show_bar(bar_again_vis);
-    if(was_history!=reader.history_open)record("history",{{"open",reader.history_open},{"entries",reader.history.size()}});
+    if(was_history!=reader.history_open)record("history",{{"open",reader.history_open},{"entries",reader.history.size()},
+        {"buttons",raw_buttons.load()}});
     if(reader.history_open && !was_history) {
         // As the panel lays them out (dialogue_scene.cpp): a name line for each record
         // but a notice, its text, a gap.
@@ -602,6 +604,10 @@ bool reading() {
     std::lock_guard lock(mutex);
     return enabled && reader.active;
 }
+ReadingControls reading_controls() {
+    std::lock_guard lock(mutex);
+    return {enabled && !observe && reader.active, reader.history_open, reader.skipping};
+}
 void configure(const std::filesystem::path& directory) {
     const char* path=std::getenv("SRW64_DIALOGUE_DATA");if(!path)return;
     std::ifstream input(path);json data;input>>data;
@@ -697,7 +703,7 @@ uint16_t input(uint16_t buttons) {
     if(pad&(1u<<19))stick|=Reader::RIGHT;
     raw_buttons=uint16_t(buttons|stick|((pad&srw64::input::pad_r2)?(Reader::R|Reader::A):0));
     consumed_hold &= buttons;
-    if(owns_input)consumed_hold |= buttons & (Reader::A|Reader::B|Reader::START|Reader::UP|Reader::DOWN|Reader::L|Reader::R|Reader::BIGGER|Reader::SMALLER);
+    if(owns_input || script_skip::active())consumed_hold |= buttons & (Reader::A|Reader::B|Reader::START|Reader::UP|Reader::DOWN|Reader::L|Reader::R|Reader::BIGGER|Reader::SMALLER);
     return buttons & ~consumed_hold;
 }
 void overlay_loaded(uint32_t rom) {

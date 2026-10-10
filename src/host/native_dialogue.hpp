@@ -120,6 +120,9 @@ std::shared_ptr<const Frame> presented_frame(uint64_t workload);
 nlohmann::json state();
 // A line is up and waiting to be read (the touch controls' dialogue scene, touch_scene.hpp).
 bool reading();
+// Small synchronized snapshot for touch buttons; avoids copying the history JSON.
+struct ReadingControls { bool active{}, history_open{}, skipping{}; };
+ReadingControls reading_controls();
 // The present hook's dialogue compositor, on any Plume backend (dialogue_plume.cpp).
 void gpu_init(plume::RenderInterface*, plume::RenderDevice*, const std::filesystem::path&);
 void gpu_draw(plume::RenderCommandList*, plume::RenderFramebuffer*, uint64_t workload);

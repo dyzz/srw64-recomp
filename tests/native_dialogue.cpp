@@ -63,9 +63,9 @@ int main() {
     reader.update(Reader::L,122);assert(reader.history_open);
     const auto visible=reader.visible;
     reader.update(Reader::R|Reader::A,180);
-    assert(!reader.history_open && !reader.pending); // Closing cannot advance.
+    assert(reader.history_open && !reader.pending); // Fast is not a close shortcut.
     assert(reader.visible==visible);
-    reader.update(0,181);
+    reader.update(Reader::B,181);assert(!reader.history_open && !reader.pending);
     reader.update(Reader::R|Reader::START,182);
     assert(reader.skipping && reader.pending);
     reader.boundary();
@@ -87,6 +87,34 @@ int main() {
         fresh.toggle_auto(1);assert(fresh.auto_read && fresh.speed==2);
         fresh.update(Reader::L,2);assert(fresh.history_open);
         fresh.toggle_auto(3);assert(fresh.auto_read);
+    }
+    {
+        // A held fast/skip chord cannot close history or resume after B closes it.
+        Reader paused;paused.begin(1,1,u"测试",typeset(text,18),0);
+        paused.update(Reader::R|Reader::A,1);
+        const auto page=paused.page;
+        paused.update(Reader::L|Reader::R|Reader::A,2);
+        assert(paused.history_open && !paused.fast && paused.page==page);
+        for(unsigned vi=3;vi<30;++vi)paused.update(Reader::R|Reader::A,vi);
+        assert(paused.history_open && paused.page==page);
+        paused.update(Reader::B|Reader::R|Reader::A,30);
+        assert(!paused.history_open && !paused.fast && paused.page==page);
+        for(unsigned vi=31;vi<60;++vi)paused.update(Reader::R|Reader::A,vi);
+        assert(!paused.fast && paused.page==page);
+        paused.update(0,60);paused.update(Reader::R|Reader::A,61);
+        assert(paused.fast && paused.page==page+1);
+        paused.update(Reader::L,62);assert(paused.history_open);
+        paused.update(Reader::R|Reader::START,63);
+        assert(paused.history_open && !paused.skipping);
+        paused.update(Reader::B|Reader::R|Reader::START,64);
+        paused.update(Reader::R|Reader::START,65);
+        assert(!paused.history_open && !paused.skipping);
+    }
+    {
+        Reader between;between.skipping=between.auto_read=true;
+        assert(!between.active && between.layout.pages.empty());
+        assert(!between.update(Reader::B,1));
+        assert(!between.skipping && !between.auto_read);
     }
     // Revealing a combining sequence never cuts its UTF-16 representation.
     reader.begin(4,100,u"测试",typeset(utf16("éが甲"),13),200);

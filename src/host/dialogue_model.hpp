@@ -80,6 +80,7 @@ struct Reader {
     static constexpr uint64_t fast_hold_vis=18;    // once held 0.3 s: a shorter press turns one
     size_t page{}, visible{}, history_offset{}, history_scroll_limit{};
     uint16_t previous{};
+    uint16_t history_held{}; // reading chords held in history stay blocked until released
     bool history_open{}, skipping{}, pending{}, active{}, auto_read{}, fast{};
     Layout layout;
     std::deque<Entry> history;
@@ -242,6 +243,13 @@ struct Reader {
     // then sends the original's remaining pages and <END>. No changes to guest
     // pointers, event flags, or game time occur here.
     bool update(uint16_t buttons, uint64_t now) {
+        history_held &= buttons;
+        // Fast/skip are reading actions, never history-close shortcuts. Remember
+        // their held keys through closing, so they cannot resume on the next tick.
+        if(history_open && (buttons&R) && (buttons&(A|START))) {
+            history_held |= buttons&(R|A|START);
+        }
+        buttons &= ~history_held;
         const uint16_t pressed=buttons & ~previous;
         previous=buttons;
         const auto elapsed=now>=tick?std::min<uint64_t>(now-tick,6):0;
@@ -251,13 +259,23 @@ struct Reader {
         // reading is manual: automatic reading ends and the page shown waits for an A.
         // A skip begun with the chord (R2 + Menu) goes on.
         const bool chord=(buttons&(R|A))==(R|A), fresh=chord && !fast;
-        if(fresh)fast_since=now;
-        if(fast && !chord && !skipping)auto_read=false;
-        fast=chord;
+        if(!history_open) {
+            if(fresh)fast_since=now;
+            if(fast && !chord && !skipping)auto_read=false;
+            fast=chord;
+        }
+        // A script skip can be between dialogue boxes. B must still stop it
+        // while no reader page is active.
+        if(skipping && (pressed & B)) { auto_read=skipping=false; }
         if(!active || layout.pages.empty())return false;
         if(pressed & L) {
             history_open=!history_open; history_offset=0; skipping=false;
-            if(!history_open) {page_started+=elapsed;return false;}
+            if(history_open) {
+                history_held |= buttons&(R|A|START);
+                if(fast)auto_read=false;
+                fast=false;
+            }
+            page_started+=elapsed;return false;
         }
         if(history_open) {
             if(pressed & (A|B|START))history_open=false;

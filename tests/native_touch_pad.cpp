@@ -1,6 +1,7 @@
 // Touch controls by scene (src/host/touch_pad.hpp, docs/design/touch-controls.md).
 #include "../src/host/touch_pad.hpp"
 #include "../src/host/touch_scene.hpp"
+#include "../src/host/dialogue_model.hpp"
 #include <cstdio>
 #include <iostream>
 #include <stdexcept>
@@ -49,7 +50,7 @@ void scenes() {
         if (SceneId(i) == SceneId::Hidden) continue;
         check(s[Slot::Top1].bits == bits::Option || SceneId(i) == SceneId::Hidden, "a scene without the settings button");
         // Confirming is always the primary slot; going back always the back slot.
-        if (s[Slot::Back].bits) check(s[Slot::Back].bits == bits::B, "the back slot is not B");
+        if (s[Slot::Back].bits) check(s[Slot::Back].bits == (SceneId(i)==SceneId::FixedDialogue?bits::L:bits::B), "the back/history slot sends the wrong action");
     }
     check(scene(SceneId::Hidden).stick == Stick::None, "the all-touch windows have a stick");
     check(scene(SceneId::Page).stick == Stick::Corner && scene(SceneId::Page)[Slot::Primary].bits == bits::A &&
@@ -156,7 +157,7 @@ void fixed_buttons() {
         if (i == size_t(Slot::Skip)) {
             check(!full.slots[i].filled() && !title.slots[i].filled() && reading.slots[i].filled(), "skip only while reading");
         } else check(full.slots[i].filled() && title.slots[i].filled() && reading.slots[i].filled(), "no empty place");
-        if (i != size_t(Slot::Arc2) && i != size_t(Slot::Arc3) && i != size_t(Slot::Skip))
+        if (i != size_t(Slot::Back) && i != size_t(Slot::Arc2) && i != size_t(Slot::Arc3) && i != size_t(Slot::Skip))
             check(reading.slots[i] == full.slots[i], "reading keeps the top row and other buttons");
     }
     check(reading[Slot::Arc2].bits == bits::L2 && reading[Slot::Arc2].label == "touch_auto" &&
@@ -176,7 +177,55 @@ void fixed_buttons() {
     check(title[Slot::Top3].command == "library-open" && title[Slot::Top4].command == "viewer-open" &&
           title[Slot::Primary].bits == bits::A && title[Slot::Top2].bits == bits::Start, "the title's entries");
 }
+
+void reading_history() {
+    const auto l=layout(width,height,mm);
+    const auto reading=scene(fixed(SceneId::Dialogue),Reading::Active);
+    const auto history=scene(fixed(SceneId::Dialogue),Reading::History);
+    const auto skipping=scene(fixed(SceneId::Dialogue),Reading::Skipping);
+    const auto prologue=scene(fixed(SceneId::Prologue),Reading::Inactive);
+    check(reading[Slot::Back].bits==bits::L && reading[Slot::Back].label=="touch_history", "fixed dialogue has no history entry");
+    check(history[Slot::Back].bits==bits::B && history[Slot::Back].label=="touch_back", "history has no return");
+    check(skipping[Slot::Back].bits==bits::B && skipping[Slot::Back].label=="touch_stop_skip", "skip lost its cancellation");
+    check(prologue[Slot::Back].bits==bits::B && prologue[Slot::Back].label=="touch_back", "prologue offers an unavailable history");
+    for(const auto slot:{Slot::Top1,Slot::Top2,Slot::Top3,Slot::Top4})
+        check(reading[slot]==scene(SceneId::Other)[slot], "reading changed the top row");
+    Fingers fingers;
+    for(const auto slot:{Slot::Arc2,Slot::Arc3,Slot::Skip,Slot::Top3,Slot::Top4}) {
+        const auto& p=l[slot];
+        check(!history[slot].filled() && !fingers.down(l,history,10,p.x,p.y), "a reading action is touchable over history");
+    }
+    using srw64::dialogue::Reader;
+    srw64::dialogue::Layout text;
+    text.text=u"甲乙丙";text.clusters={1,2,3};text.pages={{0,1,{}},{1,2,{}},{2,3,{}}};
+    Reader reader;reader.begin(1,1,u"测试",text,0);
+    const auto send=[&](uint64_t tick) {
+        const auto held=fingers.buttons();
+        return reader.update(uint16_t(held|((held&bits::R2)?Reader::R|Reader::A:0)),tick);
+    };
+    const auto& back=l[Slot::Back];
+    check(fingers.down(l,reading,1,back.x,back.y) && !send(1) && reader.history_open, "touch cannot open history");
+    fingers.reconcile(reading,history);
+    check(fingers.owns(1) && fingers.buttons()==0 && !fingers.pressed(Slot::Back), "opening finger became return");
+    fingers.move(l,history,1,l[Slot::Primary].x,l[Slot::Primary].y);
+    check(!send(2) && reader.history_open, "blocked opening finger rearmed by dragging");
+    fingers.up(1);
+    reader.history_scroll_limit=30;
+    check(fingers.down(l,history,2,l.rest_x,l.rest_y-l.dpad_cell) && !send(3) && reader.history_offset==1, "touch cannot scroll history");
+    fingers.up(2);send(4);
+    check(fingers.down(l,history,3,back.x,back.y) && !send(5) && !reader.history_open && reader.page==0, "return advances the line");
+    fingers.reconcile(history,reading);
+    check(!send(6) && !reader.history_open && reader.page==0, "return finger became a new history press");
+    fingers.up(3);
+    // Cancellation keeps its B semantics and cannot turn into history on release.
+    reader.update(Reader::R|Reader::START,7);check(reader.skipping, "skip did not start");
+    fingers.down(l,skipping,4,back.x,back.y);send(8);
+    check(!reader.skipping && !reader.auto_read, "stop-skip did not cancel");
+    fingers.reconcile(skipping,reading);send(9);
+    check(!reader.history_open && fingers.owns(4), "stop-skip finger became history");
+    fingers.up(4);
+}
 int main() {
-    try { places(); scenes(); buttons(); dpad(); recognition(); fixed_buttons(); std::cout << checks << " checks passed\n"; return 0; }
+    try { places(); scenes(); buttons(); dpad(); recognition(); fixed_buttons(); reading_history(); std::cout << checks << " checks passed\n"; return 0; }
     catch (const std::exception& error) { std::cerr << "FAIL: " << error.what() << "\n"; return 1; }
 }

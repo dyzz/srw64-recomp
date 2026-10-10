@@ -95,6 +95,8 @@ const char* ui_size_name(UiSize s){return s==UiSize::Largest?"largest":s==UiSize
 void set_wide_picture(bool v){wide=v;} bool wide_picture(){return wide;}
 bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
 bool hints_always=false; bool dialogue_hints_always(){return hints_always;} void set_dialogue_hints_always(bool v){hints_always=v;}
+unsigned touch_alpha=100; unsigned touch_opacity(){return touch_alpha;}
+void set_touch_opacity(unsigned v){touch_alpha=std::clamp(v,25u,100u);}
 // On, so the About page is audited with its longest row: the address and the run directory.
 bool debug_on=true; bool debug_interface(){return debug_on;} void set_debug_interface(bool v){debug_on=v;} bool debug_interface_forced(){return false;}
 DebugEndpoint debug_endpoint(){return debug_on?DebugEndpoint{"127.0.0.1:52817","/home/a-rather-long-user-name/.local/share/srw64-recomp/sessions/65d26a293f88c-c10a9e5f/run"}:DebugEndpoint{};}
@@ -121,6 +123,7 @@ Status status(std::string_view){return {};} bool open_url(const std::string&){re
 }
 namespace srw64::dialogue {
 void request_reload(){}
+ReadingControls reading_controls(){return {};}
 fs::path text_overrides_dir(){return "/Users/player/Library/Application Support/SRW64Recomp/dialogue";}
 json text_summary(){return {{"locales",json::object()},{"problems",0}};}
 }

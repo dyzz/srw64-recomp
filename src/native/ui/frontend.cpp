@@ -4411,6 +4411,8 @@ bool touch_supported() {
 }
 bool touch_shown=true,touch_back=false,touch_mouse_eaten=false;
 touch_pad::SceneId touch_scene_id=touch_pad::SceneId::Other;
+touch_pad::Scene touch_controls=touch_pad::scene(touch_pad::SceneId::Other);
+uint64_t touch_controls_revision{};
 touch_pad::Fingers touch_fingers;
 std::atomic<uint32_t> touch_held{0};
 Rml::ElementDocument* touch_doc{};
@@ -4423,10 +4425,13 @@ uint64_t touch_back_at=0;
 std::atomic<uint32_t> touch_linger{0};
 std::atomic<uint64_t> touch_linger_until{0};
 void touch_keep(uint32_t bits,uint64_t down_at) {
+    const uint64_t now=SDL_GetTicks64();
     const uint64_t until=down_at+touch_min_ms;
-    if(!bits || SDL_GetTicks64()>=until)return;
-    touch_linger|=bits;
-    if(touch_linger_until.load()<until)touch_linger_until=until;
+    if(!bits || now>=until)return;
+    const auto previous_until=touch_linger_until.load();
+    const auto previous=now<previous_until?touch_linger.load():0u;
+    touch_linger=previous|bits;
+    touch_linger_until=std::max(until,previous_until);
 }
 bool touch_active(){return touch_supported() && touch_shown && touch_scene_id!=touch_pad::SceneId::Hidden;}
 void set_pad_mode(bool on);
@@ -4467,7 +4472,7 @@ void touch_publish(){touch_held=touch_fingers.buttons()|(touch_back?touch_pad::b
 bool touch_battle_layout(){return touch_pad::by_scene && touch_supported() && touch_shown;}
 // Does the mouse SDL makes from a finger belong to the controls (not to a page under them)?
 bool touch_owns_point(float x,float y) {
-    const auto layout=touch_layout();const auto scene=touch_pad::scene(touch_scene_id);
+    const auto layout=touch_layout();const auto& scene=touch_controls;
     return touch_pad::hit(layout,scene,x,y) || touch_pad::in_stick_area(layout,scene,x,y) || scene.tap_primary;
 }
 // The controls' events; true when they took them.
@@ -4476,20 +4481,20 @@ bool touch_event(const SDL_Event& event) {
     switch(event.type) {
     case SDL_FINGERDOWN: {
         touch_shown=true;touch_hints(true);
-        if(!touch_active() || !touch_fingers.down(touch_layout(),touch_pad::scene(touch_scene_id),event.tfinger.fingerId,
+        if(!touch_active() || !touch_fingers.down(touch_layout(),touch_controls,event.tfinger.fingerId,
                                                   event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
         touch_down_at[event.tfinger.fingerId]=SDL_GetTicks64();
         touch_publish();return true;
     }
     case SDL_FINGERMOTION:
-        if(!touch_fingers.move(touch_layout(),touch_pad::scene(touch_scene_id),event.tfinger.fingerId,event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
+        if(!touch_fingers.move(touch_layout(),touch_controls,event.tfinger.fingerId,event.tfinger.x*pixels_w,event.tfinger.y*pixels_h))return false;
         touch_publish();return true;
     case SDL_FINGERUP: {
         const uint32_t before=touch_fingers.buttons();
         // A button that opens one of our pages does it when let go on it.
         if(const auto* finger=touch_fingers.find(event.tfinger.fingerId);finger && finger->kind==touch_pad::Fingers::Kind::Button) {
-            const auto& action=touch_pad::scene(touch_scene_id)[finger->slot];
-            if(!action.command.empty() && touch_pad::hit(touch_layout(),touch_pad::scene(touch_scene_id),event.tfinger.x*pixels_w,event.tfinger.y*pixels_h)==finger->slot)
+            const auto& action=touch_controls[finger->slot];
+            if(!action.command.empty() && touch_pad::hit(touch_layout(),touch_controls,event.tfinger.x*pixels_w,event.tfinger.y*pixels_h)==finger->slot)
                 choose(std::string(action.command));
         }
         if(!touch_fingers.up(event.tfinger.fingerId))return false;
@@ -4540,13 +4545,23 @@ void touch_sync() {
         if(!touch_fingers.empty()){touch_fingers.clear();touch_publish();}
         document_close(touch_doc);touch_stamp.clear();return;
     }
+    const auto reader=dialogue::reading_controls();
+    const auto reading=reader.skipping?touch_pad::Reading::Skipping:!reader.active?touch_pad::Reading::Inactive:
+        reader.history_open?touch_pad::Reading::History:touch_pad::Reading::Active;
+    // A skip runs through closed boxes and map transitions too.
+    if(reader.skipping)touch_scene_id=touch_pad::SceneId::FixedDialogue;
+    const auto next_controls=touch_pad::scene(touch_scene_id,reading);
+    if(!(next_controls==touch_controls)) {
+        touch_fingers.reconcile(touch_controls,next_controls);touch_controls=next_controls;
+        touch_linger=0;touch_linger_until=0;++touch_controls_revision;touch_publish();
+    }
     const auto layout=touch_layout();
-    const auto scene=touch_pad::scene(touch_scene_id);
+    const auto& scene=touch_controls;
     const auto* stick=touch_fingers.stick();
     const float mm=layout.mm;
     const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
     std::string stamp=frame_stamp()+"/"+std::to_string(mm)+"/"+std::to_string(int(touch_scene_id))+"/"+localization::catalog().locale+"/"+
-        std::to_string(touch_fingers.buttons())+"/"+std::to_string(settings::touch_opacity());
+        std::to_string(touch_fingers.buttons())+"/"+std::to_string(settings::touch_opacity())+"/"+std::to_string(touch_controls_revision);
     for(size_t i=0;i<touch_pad::slot_count;++i)stamp+=touch_fingers.pressed(touch_pad::Slot(i))?'1':'0';
     if(stick)stamp+="/"+std::to_string(int(stick->cx))+","+std::to_string(int(stick->cy))+","+std::to_string(int(stick->x/mm))+","+std::to_string(int(stick->y/mm));
     if(stamp==touch_stamp){if(touch_doc)touch_doc->PullToFront();return;}
@@ -5149,7 +5164,9 @@ void window_init(SDL_Window* value,const std::filesystem::path& path){window=val
 void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device);ready=true;}
 void update(){auto lock=lock_ui();if(!ready)return;SDL_GetWindowSizeInPixels(window,&pixels_w,&pixels_h);int w,h;SDL_GetWindowSize(window,&w,&h);pixel_ratio=w?float(pixels_w)/w:1;if(!initialized)initialize();sync();input.flush_sdl();}
 uint32_t touch_buttons() {
-    const uint32_t linger=SDL_GetTicks64()<touch_linger_until.load()?touch_linger.load():(touch_linger=0,0u);
+    // Only the UI thread writes the pulse. A polling reader clearing an expired
+    // pulse could erase a new tap between its mask and deadline publications.
+    const uint32_t linger=SDL_GetTicks64()<touch_linger_until.load()?touch_linger.load():0u;
     return touch_held.load(std::memory_order_relaxed)|linger;
 }
 bool event(SDL_Event& e){auto lock=lock_ui();bool consumed=dispatch(e);if(e.type==SDL_TEXTEDITING_EXT)SDL_free(e.editExt.text);if(context){context->Update();input.flush_sdl();}return consumed;}

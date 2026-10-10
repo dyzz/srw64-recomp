@@ -66,7 +66,7 @@ enum class SceneId : uint8_t {
     Opening,      // the logo, the works flying past, a demo's unit coming in: START only
     FixedPage,    // fixed buttons: the whole set on our pages, the stick in the corner
     FixedTitle,   // fixed buttons: the whole set at the title, the Library and Battle Viewer for L2 and R2
-    FixedDialogue,// fixed top row; L1/R1 become auto/hold-fast, with skip above R1
+    FixedDialogue,// fixed top row; auto/hold-fast, skip above R1; B position follows reading state
     Count
 };
 
@@ -92,10 +92,13 @@ struct Scene {
     std::array<Action, slot_count> slots{};
     bool tap_primary = false;   // a touch outside the controls is the primary button
     const Action& operator[](Slot s) const { return slots[size_t(s)]; }
+    bool operator==(const Scene&) const = default;
 };
 
+enum class Reading : uint8_t { Inactive, Active, History, Skipping };
+
 // docs/design/touch-controls.md §3.
-inline Scene scene(SceneId id) {
+inline Scene scene(SceneId id, Reading reading = Reading::Active) {
     Scene s;
     auto set = [&](Slot slot, uint32_t b, std::string_view label) { s.slots[size_t(slot)] = {b, label, {}}; };
     auto open = [&](Slot slot, std::string_view command, std::string_view label) { s.slots[size_t(slot)] = {0, label, command}; };
@@ -207,6 +210,14 @@ inline Scene scene(SceneId id) {
     default:
         break;
     }
+    if (id == SceneId::FixedDialogue && reading != Reading::Inactive) {
+        // The former B position opens history; while skipping it keeps B's cancel.
+        set(Slot::Back, reading == Reading::Active ? bits::L : bits::B,
+            reading == Reading::Active ? "touch_history" : reading == Reading::Skipping ? "touch_stop_skip" : "touch_back");
+        if (reading == Reading::History)
+            for (const auto slot : {Slot::Arc2, Slot::Arc3, Slot::Skip, Slot::Top3, Slot::Top4})
+                s.slots[size_t(slot)] = {};
+    }
     return s;
 }
 
@@ -293,7 +304,7 @@ inline uint32_t direction(const Layout& layout, float cx, float cy, float x, flo
 // direction uses the fixed cross; a button finger moving onto another button takes that one.
 class Fingers {
 public:
-    enum class Kind : uint8_t { Button, Stick, Tap };
+    enum class Kind : uint8_t { Button, Stick, Tap, Blocked };
     struct Finger {
         Kind kind{};
         Slot slot{};
@@ -324,6 +335,7 @@ public:
         const auto found = held.find(id);
         if (found == held.end()) return false;
         auto& f = found->second;
+        if (f.kind == Kind::Blocked) return true;
         f.x = x; f.y = y;
         if (f.kind == Kind::Stick) f.bits = direction(layout, f.cx, f.cy, x, y);
         else if (f.kind == Kind::Button)
@@ -331,6 +343,16 @@ public:
         return true;
     }
     bool up(int64_t id) { return held.erase(id) != 0; }
+    // A held finger must not become a different action when the reader changes mode.
+    // Keep ownership until release, so its synthetic mouse-up cannot reach a page.
+    void reconcile(const Scene& before, const Scene& after) {
+        for (auto& [id, f] : held) {
+            const bool changed = f.kind == Kind::Button ? !(before[f.slot] == after[f.slot]) :
+                f.kind == Kind::Tap ? !(before[Slot::Primary] == after[Slot::Primary]) || !after.tap_primary :
+                f.kind == Kind::Stick && after.stick == Stick::None;
+            if (changed) { f.kind = Kind::Blocked; f.bits = 0; }
+        }
+    }
     void clear() { held.clear(); }
     bool owns(int64_t id) const { return held.contains(id); }
     const Finger* find(int64_t id) const { const auto f = held.find(id); return f == held.end() ? nullptr : &f->second; }
@@ -341,7 +363,7 @@ public:
         return out;
     }
     bool pressed(Slot slot) const {
-        for (const auto& [id, f] : held) if (f.kind != Kind::Stick && f.slot == slot) return true;
+        for (const auto& [id, f] : held) if ((f.kind == Kind::Button || f.kind == Kind::Tap) && f.slot == slot) return true;
         return false;
     }
     // The stick finger, for drawing the stick under the thumb.
