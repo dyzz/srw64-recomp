@@ -138,27 +138,23 @@ void on_abort(int signal) {
 }
 
 void flush_now() {
-    // Give a pump that already read a chunk the moment to pass it on.
 #ifdef _WIN32
-    Sleep(30);
+    // Anything done here to a pipe's read end waits for ever: a pump sits in _read on it,
+    // and a synchronous pipe takes one request at a time (PeekNamedPipe included; abort()
+    // hung so until 2026-10-10). The pumps pass on what is waiting instead: a moment for them.
+    Sleep(100);
 #else
+    // Give a pump that already read a chunk the moment to pass it on.
     timespec pause{0, 30'000'000};
     nanosleep(&pause, nullptr);
-#endif
     char buffer[4096];
     for (auto& s : streams) {
         if (s.reader < 0) continue;
         for (int round = 0; round < 64; ++round) {
-#ifdef _WIN32
-            DWORD waiting = 0;
-            if (!PeekNamedPipe(reinterpret_cast<HANDLE>(_get_osfhandle(s.reader)), nullptr, 0, nullptr, &waiting, nullptr) || !waiting) break;
-            const int n = sys_read(s.reader, buffer, std::min<size_t>(waiting, sizeof(buffer)));
-#else
             const int flags = ::fcntl(s.reader, F_GETFL);
             ::fcntl(s.reader, F_SETFL, flags | O_NONBLOCK);
             const int n = sys_read(s.reader, buffer, sizeof(buffer));
             ::fcntl(s.reader, F_SETFL, flags);
-#endif
             if (n <= 0) break;
             if (const int fd = file.load(); fd >= 0) (void)sys_write(fd, buffer, size_t(n));
 #ifdef __ANDROID__
@@ -169,6 +165,7 @@ void flush_now() {
 #endif
         }
     }
+#endif
 }
 
 int original_stderr() { return streams[1].reader >= 0 ? streams[1].original : 2; }

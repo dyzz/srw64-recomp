@@ -35,7 +35,9 @@
 - 覆盖：未处理的 SEH 异常（`SetUnhandledExceptionFilter`：访问违例、栈溢出、非法指令、没接住的 C++ 异常等，之后照旧交给 CRT 的过滤器和 Windows 错误报告，事件查看器的 Application Error 还在）；CRT 无效参数（`_set_invalid_parameter_handler`，0.4.0 的 setvbuf 就是这类，写完照原样 fastfail）；纯虚调用；`abort()`（SIGABRT，先写转储再交给 `console_log` 的处理）；主线程的 `std::terminate`（其他线程的 terminate 走 abort，同样被 SIGABRT 接住）。一个进程只写一份。
 - 不覆盖：`__fastfail`（0xC0000409：/GS 栈 cookie、绕过这些处理的 CRT 快速失败）不经过进程内任何代码；挂着调试器时异常先给调试器。
 - 写法：路径、事件和写转储的线程都在启动时备好；崩溃的线程只把异常指针交给那个线程并最多等 20 秒（栈溢出时崩溃线程已经没有栈可用）。转储类型 `MiniDumpWithIndirectlyReferencedMemory | MiniDumpWithThreadInfo | MiniDumpWithUnloadedModules`：各线程的栈和栈上指针周围 1 KB，不含整块内存。
-- 试：`SRW64_CRASH_TEST=access|stack|abort|invalid|terminate|throw` 让宿主在 `attach` 之后立刻按该方式崩溃。
+- 试：`SRW64_CRASH_TEST=access|stack|abort|invalid|terminate|throw` 让宿主在 `attach` 之后立刻按该方式崩溃（启动时读取，`--play` 清掉 `SRW64_*` 之前；诊断参数和 `--play` 都能用）。
+- 实机发现并修好两个既有问题：Windows 上 `console_log::flush_now` 对管道读端的 `PeekNamedPipe`/`_read` 会排在泵线程阻塞的 `_read` 后面永远等（同步管道一次只办一个请求），所以 `abort()` 一直卡死不退；现在 Windows 只等泵 0.1 秒。导出报告时目录遍历给的文件大小是上次关闭时的值，本次运行还开着的日志在 Windows 上都是 0 而被漏掉；现在用 `fs::file_size` 取实际大小。
+- 实测（GTX 1080 Ti、D3D12）：六种崩溃都写出转储并在 `console.log` 留下 `SRW64_CRASH` 行，各约 170–240 KB，栈溢出约 1.2 MB（栈本身）；标题画面 68 个线程时同样参数的转储约 740 KB；报告 zip 里压缩到约四分之一。
 - 问题报告把每次运行目录里最新的 2 个 `.dmp`（单个不超过 32 MiB）原样放进 zip（二进制，不做 `~` 替换；模块路径里可能有用户名）。
 
 

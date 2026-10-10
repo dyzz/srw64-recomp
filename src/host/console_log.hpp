@@ -11,7 +11,8 @@ void start();
 void attach(const std::filesystem::path& run);
 // For a crash handler (async-signal-safe): pass on what is still in the pipes now, the
 // open console.log (-1 before attach) and the original stderr, to write to directly
-// once the process is dying. start() already does this for abort() and crashes, before
+// once the process is dying (Windows: flush_now gives the pumps a moment, as the pipes
+// cannot be read past them). start() already does this for abort() and crashes, before
 // the handler that was there; a handler installed later calls flush_now itself.
 void flush_now();
 int crash_fd();
