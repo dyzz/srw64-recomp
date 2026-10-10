@@ -1,40 +1,40 @@
 {
   "published": true,
-  "version": "0.4.4",
-  "tag": "v0.4.4",
-  "commit": "b5de4b75471f4474a0b6e2a0419f25fcd6e5f86c",
-  "date": "2026-10-09",
-  "github": "https://github.com/dyzz/srw64-recomp/releases/tag/v0.4.4",
+  "version": "0.4.5",
+  "tag": "v0.4.5",
+  "commit": "44724cd225df78d0372bfa4802116f4b47df07a7",
+  "date": "2026-10-11",
+  "github": "https://github.com/dyzz/srw64-recomp/releases/tag/v0.4.5",
   "quark": "https://pan.quark.cn/s/f6cc81fbe688?pwd=mQx4",
   "baidu": "https://pan.baidu.com/s/1-8lTqekfXPAaDKN3cNYTdw?pwd=tt3b",
   "files": [
     {
       "platform": "macos",
-      "name": "Marchwind64-0.4.4-macos14-arm64.zip",
-      "bytes": 52204207,
-      "sha256": "f7db5e69b6361e2a249222c53773524e3b016674db8c08fb87bb2c607c0b6f3a",
-      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.4/Marchwind64-0.4.4-macos14-arm64.zip"
+      "name": "Marchwind64-0.4.5-macos14-arm64.zip",
+      "bytes": 52219263,
+      "sha256": "16b0891b8284f18288456a48b4a9b9fec9d3dce1e5fb737b0475fc683ff8aa82",
+      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.5/Marchwind64-0.4.5-macos14-arm64.zip"
     },
     {
       "platform": "linux",
-      "name": "Marchwind64-0.4.4-linux-x64.tar.gz",
-      "bytes": 52378207,
-      "sha256": "76b475be0b17cbefac312ca53926b5ac44f83aa7d89da39bde6c3457cbfb5410",
-      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.4/Marchwind64-0.4.4-linux-x64.tar.gz"
+      "name": "Marchwind64-0.4.5-linux-x64.tar.gz",
+      "bytes": 52391992,
+      "sha256": "9c6f651607d316fbd9a90248591c4fc5a99b09f3c80ef809fda80ed33f90e142",
+      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.5/Marchwind64-0.4.5-linux-x64.tar.gz"
     },
     {
       "platform": "windows",
-      "name": "Marchwind64-0.4.4-windows-x64.zip",
-      "bytes": 62065441,
-      "sha256": "2479ec1f7b52fe9244c7026d21662f0933f5cd0ef7c2660c4e48ed14b77ddc41",
-      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.4/Marchwind64-0.4.4-windows-x64.zip"
+      "name": "Marchwind64-0.4.5-windows-x64.zip",
+      "bytes": 62093743,
+      "sha256": "b462f0ed00945aeed3c2775434a111bd0bfd6326fe77bc34801df8350fac86ae",
+      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.5/Marchwind64-0.4.5-windows-x64.zip"
     },
     {
       "platform": "android",
-      "name": "Marchwind64-0.4.4-android-arm64.apk",
-      "bytes": 91112487,
-      "sha256": "b2cb1c34d91e73b3325950eb90502cdb2a9d1135104a7d1a80743b8498913ddd",
-      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.4/Marchwind64-0.4.4-android-arm64.apk"
+      "name": "Marchwind64-0.4.5-android-arm64.apk",
+      "bytes": 91145255,
+      "sha256": "8349a19456529e7b56c4e7de69a1294cebc4aeb8d31e8049c66c910adafc32e8",
+      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.5/Marchwind64-0.4.5-android-arm64.apk"
     }
   ],
   "hd": {
