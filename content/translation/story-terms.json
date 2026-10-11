@@ -1963,14 +1963,18 @@
   "サイコミュ": {
    "kind": "proper",
    "category": "technology",
-   "zh": "精神感应",
+   "zh": "塞可缪",
    "en": "Psycommu",
    "note": "对齐词条表（サイコミュ式=精神感应式）；高达系列中的精神感应系统，已给提示。",
    "status": "draft",
    "occurrences": 5,
    "records": 5,
    "model": "deepseek-v4-pro-0813",
-   "checked": "2026-09-23 Claude 核对"
+   "checked": "2026-09-23 Claude 核对",
+   "srwz_refs": [
+    "technology/psycommu"
+   ],
+   "reviewed": "2026-10-11 沿用 SRWZ approved 定稿；按同一身份迁移。"
   },
   "サイド": {
    "kind": "proper",
@@ -2100,7 +2104,7 @@
   "ザンボット": {
    "kind": "proper",
    "category": "unit",
-   "zh": "赞波",
+   "zh": "赞波特",
    "en": "Zambot",
    "note": "对齐词条表；《无敌超人赞波特3》的机体，已给提示。",
    "status": "draft",
@@ -2108,12 +2112,15 @@
    "records": 10,
    "model": "deepseek-v4-pro-0813",
    "checked": "2026-09-23 Claude 核对",
-   "reviewed": "2026-09-24 官方与通行译名核对：随赞波3"
+   "reviewed": "2026-10-11 沿用 SRWZ approved 定稿；按同一身份迁移。",
+   "srwz_refs": [
+    "unit/zambot"
+   ]
   },
   "ザンボットコンビネーション": {
    "kind": "proper",
    "category": "weapon",
-   "zh": "赞波合体",
+   "zh": "赞波特合体",
    "en": "Zambot Combination",
    "note": "对齐词条表；赞波特3的招式。",
    "status": "draft",
@@ -2121,12 +2128,15 @@
    "records": 4,
    "model": "deepseek-v4-pro-0813",
    "checked": "2026-09-23 Claude 核对",
-   "reviewed": "2026-09-24 官方与通行译名核对：随赞波3；コンビネーション是合体口令，“组合”不自然"
+   "reviewed": "2026-10-11 沿用 SRWZ approved 定稿；按同一身份迁移。",
+   "srwz_refs": [
+    "phrase/zambot-combination"
+   ]
   },
   "ザンボット・ムーン": {
    "kind": "proper",
    "category": "weapon",
-   "zh": "赞波月光",
+   "zh": "赞波特月光",
    "en": "Zambot Moon",
    "note": "对齐词条表；赞波特3的招式，完整为赞波特之月攻击。",
    "status": "draft",
@@ -2134,7 +2144,10 @@
    "records": 2,
    "model": "deepseek-v4-pro-0813",
    "checked": "2026-09-23 Claude 核对",
-   "reviewed": "2026-09-24 官方与通行译名核对：随赞波3；必杀技全称ザンボット・ムーン・アタック"
+   "reviewed": "2026-10-11 沿用 SRWZ approved 定稿；按同一身份迁移。",
+   "srwz_refs": [
+    "unit/zambot"
+   ]
   },
   "システム": {
    "kind": "common",
@@ -2196,14 +2209,17 @@
   "シャイィィィィンスパァァァァク": {
    "kind": "proper",
    "category": "weapon",
-   "zh": "闪光爆烈",
+   "zh": "闪光爆裂",
    "en": "Shine Spark",
-   "note": "闪光高达的招式，拉长音。",
+   "note": "盖塔龙马的闪光爆裂喊招（15171、15174），拉长音；不是闪光高达招式。",
    "status": "draft",
    "occurrences": 2,
    "records": 2,
    "model": "deepseek-v4-pro-0813",
-   "reviewed": "2026-09-24 官方与通行译名核对：与武器シャインスパーク统一；英文 Shining Spark → Shine Spark（通行写法）"
+   "reviewed": "2026-10-11 按 SRW64 战斗说话人与招式核对拉长音或误拼，沿用 SRWZ approved 定稿。",
+   "srwz_refs": [
+    "weapon/0076"
+   ]
   },
   "シャイニング": {
    "kind": "proper",
@@ -2768,14 +2784,18 @@
   "スペシャルボロットパーンチ": {
    "kind": "proper",
    "category": "other",
-   "zh": "特制波罗特拳",
+   "zh": "特制波士飞拳",
    "en": "Special Borot Punch",
    "note": "对齐词条表；波洛特的必杀技名，ボロット为魔神Z系列机体。",
    "status": "draft",
    "occurrences": 2,
    "records": 2,
    "model": "deepseek-v4-pro-0813",
-   "checked": "2026-09-23 Claude 核对"
+   "checked": "2026-09-23 Claude 核对",
+   "srwz_refs": [
+    "weapon/0026"
+   ],
+   "reviewed": "2026-10-11 按 SRW64 战斗说话人与招式核对拉长音或误拼，沿用 SRWZ approved 定稿。"
   },
   "スペースノイド": {
    "kind": "common",
@@ -3137,26 +3157,33 @@
   "ダブルトマホォォォォクブゥゥゥメラン": {
    "kind": "proper",
    "category": "other",
-   "zh": "双战斧回旋镖",
+   "zh": "双重战斧回旋镖",
    "en": "Double Tomahawk Boomerang",
    "note": "盖塔的必杀技名，拉长音喊法。",
    "status": "draft",
    "occurrences": 3,
    "records": 3,
    "model": "deepseek-v4-pro-0813",
-   "reviewed": "2026-09-24 官方与通行译名核对：与武器词条“双战斧回旋镖”统一（现译多了“重”）"
+   "reviewed": "2026-10-11 按 SRW64 战斗说话人与招式核对拉长音或误拼，沿用 SRWZ approved 定稿。",
+   "srwz_refs": [
+    "weapon/0063"
+   ]
   },
   "ダブルバーニングファイヤー": {
    "kind": "proper",
    "category": "other",
-   "zh": "双重燃烧火焰",
+   "zh": "双重爆燃烈焰",
    "en": "Double Burning Fire",
    "note": "对齐词条表；已给提示。",
    "status": "draft",
    "occurrences": 16,
    "records": 16,
    "model": "deepseek-v4-pro-0813",
-   "checked": "2026-09-23 Claude 核对"
+   "checked": "2026-09-23 Claude 核对",
+   "srwz_refs": [
+    "weapon/0008"
+   ],
+   "reviewed": "2026-10-11 沿用 SRWZ approved 定稿；按同一身份迁移。"
   },
   "ダブルライトニングソォォォード": {
    "kind": "proper",
@@ -3173,14 +3200,17 @@
   "ダブル・マジンガーブレード": {
    "kind": "proper",
    "category": "other",
-   "zh": "双重魔神宝剑",
+   "zh": "双重魔神剑",
    "en": "Double Mazinger Blade",
    "note": "与已定“マジンガーブレード/魔神剑”保持一致。",
    "status": "draft",
    "occurrences": 12,
    "records": 12,
    "model": "deepseek-v4-pro-0813",
-   "reviewed": "2026-09-24 官方与通行译名核对：与武器词条统一"
+   "reviewed": "2026-10-11 沿用 SRWZ approved 定稿；按同一身份迁移。",
+   "srwz_refs": [
+    "weapon/0019"
+   ]
   },
   "ダメージ": {
    "kind": "common",
@@ -4389,13 +4419,17 @@
   "ビューティー": {
    "kind": "proper",
    "category": "person",
-   "zh": "比优蒂",
+   "zh": "碧尤蒂",
    "en": "Beauty",
    "note": "比优蒂芙尔·立花的昵称",
    "status": "draft",
    "occurrences": 14,
    "records": 14,
-   "model": "deepseek-v4-pro-0813"
+   "model": "deepseek-v4-pro-0813",
+   "srwz_refs": [
+    "people/speaker-658fa0202e85"
+   ],
+   "reviewed": "2026-10-11 沿用 SRWZ approved 定稿；按同一身份迁移。"
   },
   "ビューナス": {
    "kind": "proper",
@@ -4533,14 +4567,17 @@
   "フィンファンル": {
    "kind": "proper",
    "category": "weapon",
-   "zh": "鳍状浮游炮",
+   "zh": "翼状浮游炮",
    "en": "Fin Funnels",
    "note": "高达系列中的浮游炮",
    "status": "draft",
    "occurrences": 2,
    "records": 2,
    "model": "deepseek-v4-pro-0813",
-   "reviewed": "2026-09-24 官方与通行译名核对：原文是フィンファンネル的误拼，现译只写“浮游炮”与武器名不一致，改为与武器相同的“鳍状浮游炮”／Fin Funnels。"
+   "reviewed": "2026-10-11 按 SRW64 战斗说话人与招式核对拉长音或误拼，沿用 SRWZ approved 定稿。",
+   "srwz_refs": [
+    "weapon/0271"
+   ]
   },
   "フィードバック": {
    "kind": "common",
@@ -5020,14 +5057,18 @@
   "ボロットパーンチ": {
    "kind": "proper",
    "category": "weapon",
-   "zh": "波罗特拳",
+   "zh": "波士飞拳",
    "en": "Borot Punch",
    "note": "对齐词条表；已定“特级波洛特飞拳”，此处为普通版。",
    "status": "draft",
    "occurrences": 6,
    "records": 6,
    "model": "deepseek-v4-pro-0813",
-   "checked": "2026-09-23 Claude 核对"
+   "checked": "2026-09-23 Claude 核对",
+   "srwz_refs": [
+    "weapon/0026"
+   ],
+   "reviewed": "2026-10-11 按 SRW64 战斗说话人与招式核对拉长音或误拼，沿用 SRWZ approved 定稿。"
   },
   "ポイント": {
    "kind": "common",

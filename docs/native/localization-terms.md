@@ -54,7 +54,7 @@ PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --missing  # 列出
 | UFOロボ グレンダイザー | UFO机器人 古连泰沙 | UFO Robot Grendizer |
 | ゲッターロボ／ゲッターロボG | 盖塔机器人／盖塔机器人G | Getter Robo / Getter Robo G |
 | 超電磁ロボ コン・バトラーV | 超电磁机器人 孔巴特拉V | Super Electromagnetic Robot Combattler V |
-| 無敵超人 ザンボット3 | 无敌超人 赞波3 | Invincible Super Man Zambot 3 |
+| 無敵超人 ザンボット3 | 无敌超人 赞波特3 | Invincible Super Man Zambot 3 |
 | 無敵鋼人 ダイターン3 | 无敌钢人 泰坦3 | Invincible Steel Man Daitarn 3 |
 | 戦国魔神ゴーショーグン | 战国魔神 豪将军 | Sengoku Majin GoShogun |
 | 聖戦士ダンバイン | 圣战士丹拜因 | Aura Battler Dunbine |
@@ -175,6 +175,25 @@ PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --missing  # 列出
   - 机体：冈多尔、兹瓦斯、莱内克、莱普拉康、猎犬；
   - 武器：盖亚粉碎、暗黑指、尊者布带、玫瑰呼啸、烈阳闪光弹、旋转飞钻、宇宙雷霆等。
 - 以官方繁中为主要依据的旧改动，也由用户在这一轮逐条定了。
+
+## SRWZ 已确认术语迁移（2026-10-11）
+
+中文词条沿用 SRWZ 全局术语注册表中已经 `approved`、且在 SRW64 中指向同一人物、机体、招式或系统概念的定稿。来源中 `enforce: false` 表示未作为 SRWZ 正文硬约束，并不撤销术语本身的人工确认；`proposed`、`researched` 和 `explicit_only` 条目不自动迁入。
+
+迁移快照在 `content/translation/srwz-terms.json`，保存 SRWZ 提交号、术语组件的 SHA-256、218 个适用术语身份，以及 268 个 SRW64 日文来源绑定。其中 131 个词条或同身份变体改用新译，其余保留原有的一致译法。另将对白简称「グラー」与系统用语「格納庫」分别统一为古拉、机库。简称、全名、带 MAP 的武器名和说明分别绑定；拉长音与误拼依据本作战斗说话人核对，不凭字面相同推断身份。新译包括赞波特3、赞波鸟、赞波牛、赞波ACE、斯派扎、灵·格斯、布莱德、爱玛、碧尤蒂、村雨凤、必闪、翼状浮游炮、塞可缪及强化零件。精神指令「必闪」的窄栏缩写用「闪」，与「必中」区分。
+
+以下同形词保持 SRW64 的译法：英二（雷兹纳）与英司（GRAVION）、天田士郎与兜志郎、修巴鲁兹（G 高达）与施瓦兹（The Big O）、菲·琴卡与飞·心露、雷兹纳电脑雷伊与 SEED 的雷、魔神Z的米涅瓦X与 SEED 的密涅瓦号。艾玛丽也不按「エマ」前缀改为爱玛丽。关卡标题「ムーンアタック」仍为「进攻月球」，仅同名招式采用「赞波特月环攻击」。排除条目及理由也记录在迁移快照中。
+
+词条表、语言目录、中文对白与说话人标注、原生 UI、角色口吻资料和攻略已同步。日文、英文、控制符、动态姓名占位符和原版翻页位置保留；`100mm` 等原文标识继续保留。本作已有审校意见仍作历史记录，注释中引用的旧译不参与运行时显示。`content/translation/renames.json` 已将历史改名直接指向新定稿，后续通过 `tools/translation/write_dialogue.py` 重新生成时沿用新译。
+
+检查命令：
+
+```sh
+PYTHONPATH=src .venv/bin/python tools/content/apply_terms.py --check zh-Hans
+PYTHONPATH=src:tests .venv/bin/python -m unittest test_srwz_terms test_terms test_translation test_dialogue_text test_guide test_docs
+```
+
+这些检查验证术语绑定、同名排除、改名规则、ROM 来源与文本结构、武器列表派生和攻略生成一致性；本次未进行原生游戏的画面或战斗排版验证。语言目录的 `review_status: draft` 沿用现有展开约定，不代表迁入的 SRWZ 术语未经确认，也不代表整句对白已重新审校。
 
 ## 待审校与未验证
 

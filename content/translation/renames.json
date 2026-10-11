@@ -2715,12 +2715,13 @@
    ],
    "zh-Hans": {
     "old": "冈达尔",
-    "new": "甘达尔"
+    "new": "卡达尔"
    },
    "gate": false,
    "sections": [
     "pilots"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -2728,12 +2729,13 @@
    ],
    "zh-Hans": {
     "old": "冈达尔司令",
-    "new": "甘达尔司令"
+    "new": "卡达尔司令"
    },
    "gate": false,
    "sections": [
     "pilot_full_names"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -2848,12 +2850,13 @@
    ],
    "zh-Hans": {
     "old": "加里森时田",
-    "new": "时田·加里森"
+    "new": "加里森时田"
    },
    "gate": false,
    "sections": [
     "pilot_full_names"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3062,12 +3065,13 @@
    ],
    "zh-Hans": {
     "old": "大魔神推进器",
-    "new": "超级喷射机"
+    "new": "大魔神推进器"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3330,12 +3334,13 @@
    ],
    "zh-Hans": {
     "old": "赞博王牌",
-    "new": "赞波王牌"
+    "new": "赞波ACE"
    },
    "gate": false,
    "sections": [
     "units"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3343,12 +3348,13 @@
    ],
    "zh-Hans": {
     "old": "赞博特",
-    "new": "赞波"
+    "new": "赞波特"
    },
    "gate": false,
    "sections": [
     "story"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3356,12 +3362,13 @@
    ],
    "zh-Hans": {
     "old": "赞博特3",
-    "new": "赞波3"
+    "new": "赞波特3"
    },
    "gate": false,
    "sections": [
     "units"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3369,12 +3376,13 @@
    ],
    "zh-Hans": {
     "old": "赞博特切割刃",
-    "new": "赞波切割刃"
+    "new": "赞波特切割刀"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3382,12 +3390,13 @@
    ],
    "zh-Hans": {
     "old": "赞博特格拉普",
-    "new": "赞波格拉普"
+    "new": "赞波特钗"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3395,12 +3404,13 @@
    ],
    "zh-Hans": {
     "old": "赞博特组合",
-    "new": "赞波合体"
+    "new": "赞波特合体"
    },
    "gate": false,
    "sections": [
     "story"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3408,12 +3418,13 @@
    ],
    "zh-Hans": {
     "old": "赞博特破坏者",
-    "new": "赞波破坏者"
+    "new": "赞波特冲击镖"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3421,12 +3432,13 @@
    ],
    "zh-Hans": {
     "old": "赞博特重击",
-    "new": "赞波重击"
+    "new": "赞波特突击枪"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3434,12 +3446,13 @@
    ],
    "zh-Hans": {
     "old": "赞博特之月",
-    "new": "赞波月光"
+    "new": "赞波特月光"
    },
    "gate": false,
    "sections": [
     "story"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3501,12 +3514,16 @@
    ],
    "zh-Hans": {
     "old": "闪光火花",
-    "new": "闪光爆烈"
+    "new": "闪光爆裂"
    },
    "gate": false,
    "sections": [
     "story",
     "weapons"
+   ],
+   "srwz_migration": "2026-10-11",
+   "srwz_refs": [
+    "weapon/0076"
    ]
   },
   {
@@ -3718,12 +3735,13 @@
    ],
    "zh-Hans": {
     "old": "肩部回旋镖",
-    "new": "肩射回旋镖"
+    "new": "肩部回旋镖"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -3984,12 +4002,13 @@
    ],
    "zh-Hans": {
     "old": "旋转飞碟",
-    "new": "旋转飞轮"
+    "new": "旋转飞碟"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4036,12 +4055,13 @@
    ],
    "zh-Hans": {
     "old": "斯佩泽",
-    "new": "飞天神机"
+    "new": "斯派扎"
    },
    "gate": false,
    "sections": [
     "units"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4169,12 +4189,13 @@
    ],
    "zh-Hans": {
     "old": "双刃",
-    "new": "双重切割刃"
+    "new": "双重切割"
    },
    "gate": true,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4182,12 +4203,13 @@
    ],
    "zh-Hans": {
     "old": "双重斯佩泽",
-    "new": "双重飞天神机"
+    "new": "双重斯派扎"
    },
    "gate": false,
    "sections": [
     "units"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4195,11 +4217,14 @@
    ],
    "zh-Hans": {
     "old": "双重战斧回旋镖",
-    "new": "双战斧回旋镖"
+    "new": "双重战斧回旋镖"
    },
    "gate": false,
    "sections": [
     "story"
+   ],
+   "srwz_refs": [
+    "weapon/0063"
    ]
   },
   {
@@ -4208,12 +4233,13 @@
    ],
    "zh-Hans": {
     "old": "双镰刀",
-    "new": "双头新月镰"
+    "new": "双联月牙刃"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4221,12 +4247,13 @@
    ],
    "zh-Hans": {
     "old": "双重燃烧火焰（密涅瓦）",
-    "new": "双重燃烧火焰（米涅瓦）"
+    "new": "双重爆燃烈焰（米涅瓦）"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4248,13 +4275,14 @@
    ],
    "zh-Hans": {
     "old": "双重魔神剑",
-    "new": "双重魔神宝剑"
+    "new": "双重魔神剑"
    },
    "gate": false,
    "sections": [
     "story",
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4684,12 +4712,13 @@
    ],
    "zh-Hans": {
     "old": "钻头斯佩泽",
-    "new": "钻头飞天神机"
+    "new": "钻头斯派扎"
    },
    "gate": false,
    "sections": [
     "units"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4697,12 +4726,13 @@
    ],
    "zh-Hans": {
     "old": "钻头压力飞拳",
-    "new": "旋钻飞拳"
+    "new": "钻击飞拳"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4725,12 +4755,13 @@
    ],
    "zh-Hans": {
     "old": "肚脐导弹",
-    "new": "腹部导弹"
+    "new": "脐部导弹"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -4986,12 +5017,13 @@
    ],
    "zh-Hans": {
     "old": "比优蒂芙尔·立花",
-    "new": "立花美丽"
+    "new": "碧尤蒂·橘"
    },
    "gate": false,
    "sections": [
     "pilot_full_names"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5078,11 +5110,14 @@
    ],
    "zh-Hans": {
     "old": "浮游炮",
-    "new": "鳍状浮游炮"
+    "new": "翼状浮游炮"
    },
    "gate": true,
    "sections": [
     "story"
+   ],
+   "srwz_refs": [
+    "weapon/0271"
    ]
   },
   {
@@ -5104,12 +5139,13 @@
    ],
    "zh-Hans": {
     "old": "费达因步枪",
-    "new": "斗士步枪"
+    "new": "费达因步枪"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5130,13 +5166,14 @@
    ],
    "zh-Hans": {
     "old": "佛·村雨",
-    "new": "凤·村雨"
+    "new": "村雨凤"
    },
    "gate": false,
    "sections": [
     "character_list",
     "pilot_full_names"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5235,13 +5272,14 @@
    ],
    "zh-Hans": {
     "old": "布朗·布鲁塔克",
-    "new": "布兰·布鲁塔克"
+    "new": "布兰·布尔达克"
    },
    "gate": false,
    "sections": [
     "character_list",
     "pilot_full_names"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5315,12 +5353,13 @@
    ],
    "zh-Hans": {
     "old": "亨肯",
-    "new": "汉肯"
+    "new": "亨肯"
    },
    "gate": true,
    "sections": [
     "pilots"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5328,13 +5367,14 @@
    ],
    "zh-Hans": {
     "old": "亨肯·贝克纳",
-    "new": "汉肯·贝克纳"
+    "new": "亨肯·贝克纳"
    },
    "gate": false,
    "sections": [
     "character_list",
     "pilot_full_names"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5355,12 +5395,13 @@
    ],
    "zh-Hans": {
     "old": "维加特隆光束",
-    "new": "贝加能源光束"
+    "new": "贝加特隆光束"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5607,12 +5648,13 @@
    ],
    "zh-Hans": {
     "old": "机炮",
-    "new": "机关加农炮"
+    "new": "机炮"
    },
    "gate": true,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5620,12 +5662,13 @@
    ],
    "zh-Hans": {
     "old": "魔神剑",
-    "new": "魔神宝剑"
+    "new": "魔神剑"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5688,12 +5731,13 @@
    ],
    "zh-Hans": {
     "old": "海洋斯佩泽",
-    "new": "海洋飞天神机"
+    "new": "海洋斯派扎"
    },
    "gate": false,
    "sections": [
     "units"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -5899,12 +5943,13 @@
    ],
    "zh-Hans": {
     "old": "熔解喷雾",
-    "new": "溶解光束"
+    "new": "溶解喷淋"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -6097,12 +6142,13 @@
    ],
    "zh-Hans": {
     "old": "里·卡兹",
-    "new": "灵格斯"
+    "new": "灵·格斯"
    },
    "gate": false,
    "sections": [
     "units"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -6110,12 +6156,13 @@
    ],
    "zh-Hans": {
     "old": "里·卡兹（BWS）",
-    "new": "灵格斯（BWS）"
+    "new": "灵·格斯（BWS）"
    },
    "gate": false,
    "sections": [
     "units"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -6242,12 +6289,13 @@
    ],
    "zh-Hans": {
     "old": "长步枪",
-    "new": "长距离步枪"
+    "new": "长程步枪"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -6477,12 +6525,13 @@
    ],
    "zh-Hans": {
     "old": "巨型维加特隆光束炮",
-    "new": "巨型贝加能源光束炮"
+    "new": "巨型贝加特隆光束炮"
    },
    "gate": false,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -6568,12 +6617,13 @@
    ],
    "zh-Hans": {
     "old": "海蛇",
-    "new": "海蛇鞭"
+    "new": "海蛇"
    },
    "gate": true,
    "sections": [
     "weapons"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -6581,12 +6631,13 @@
    ],
    "zh-Hans": {
     "old": "无敌超人 赞博特3",
-    "new": "无敌超人 赞波3"
+    "new": "无敌超人 赞波特3"
    },
    "gate": false,
    "sections": [
     "series"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -6961,13 +7012,14 @@
    ],
    "zh-Hans": {
     "old": "特别波罗特拳",
-    "new": "特制波罗特拳"
+    "new": "特制波士飞拳"
    },
    "gate": false,
    "sections": [
     "weapons",
     "story"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -6975,13 +7027,14 @@
    ],
    "zh-Hans": {
     "old": "月光攻击",
-    "new": "月光斩"
+    "new": "赞波特月环攻击"
    },
    "gate": true,
    "sections": [
     "weapons",
     "story"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -7003,13 +7056,14 @@
    ],
    "zh-Hans": {
     "old": "双重·魔神剑",
-    "new": "双重魔神宝剑"
+    "new": "双重魔神剑"
    },
    "gate": false,
    "sections": [
     "weapons",
     "story"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -7017,13 +7071,14 @@
    ],
    "zh-Hans": {
     "old": "双重魔神剑",
-    "new": "双重魔神宝剑"
+    "new": "双重魔神剑"
    },
    "gate": false,
    "sections": [
     "weapons",
     "story"
-   ]
+   ],
+   "srwz_migration": "2026-10-11"
   },
   {
    "ja": [
@@ -7328,6 +7383,1942 @@
    "gate": true,
    "sections": [
     "story"
+   ]
+  },
+  {
+   "ja": [
+    "ザンバード"
+   ],
+   "zh-Hans": {
+    "old": "赞伯德",
+    "new": "赞波鸟"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/zambird"
+   ]
+  },
+  {
+   "ja": [
+    "ザンブル"
+   ],
+   "zh-Hans": {
+    "old": "赞布尔",
+    "new": "赞波牛"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/zambull"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボエース"
+   ],
+   "zh-Hans": {
+    "old": "赞波王牌",
+    "new": "赞波ACE"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/zambot-ace"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボット3"
+   ],
+   "zh-Hans": {
+    "old": "赞波3",
+    "new": "赞波特3"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/zambot-three"
+   ]
+  },
+  {
+   "ja": [
+    "スペイザー"
+   ],
+   "zh-Hans": {
+    "old": "飞天神机",
+    "new": "斯派扎"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/spazer"
+   ]
+  },
+  {
+   "ja": [
+    "ダイタンク"
+   ],
+   "zh-Hans": {
+    "old": "泰坦坦克",
+    "new": "泰坦战车"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/dai-tank"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルスペイザー"
+   ],
+   "zh-Hans": {
+    "old": "双重飞天神机",
+    "new": "双重斯派扎"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/double-spazer"
+   ]
+  },
+  {
+   "ja": [
+    "ドリルスペイザー"
+   ],
+   "zh-Hans": {
+    "old": "钻头飞天神机",
+    "new": "钻头斯派扎"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/drill-spazer"
+   ]
+  },
+  {
+   "ja": [
+    "マリンスペイザー"
+   ],
+   "zh-Hans": {
+    "old": "海洋飞天神机",
+    "new": "海洋斯派扎"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/marine-spazer"
+   ]
+  },
+  {
+   "ja": [
+    "リ・ガズィ"
+   ],
+   "zh-Hans": {
+    "old": "灵格斯",
+    "new": "灵·格斯"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/re-gz"
+   ]
+  },
+  {
+   "ja": [
+    "ひらめき"
+   ],
+   "zh-Hans": {
+    "old": "直觉",
+    "new": "必闪"
+   },
+   "gate": true,
+   "sections": [
+    "spirits"
+   ],
+   "srwz_refs": [
+    "spirit/flash"
+   ]
+  },
+  {
+   "ja": [
+    "アポジモーター"
+   ],
+   "zh-Hans": {
+    "old": "姿态调整推进器",
+    "new": "远地点发动机"
+   },
+   "gate": true,
+   "sections": [
+    "parts"
+   ],
+   "srwz_refs": [
+    "part/apogee-motor"
+   ]
+  },
+  {
+   "ja": [
+    "チョバムアーマー"
+   ],
+   "zh-Hans": {
+    "old": "复合装甲",
+    "new": "乔巴姆装甲"
+   },
+   "gate": true,
+   "sections": [
+    "parts"
+   ],
+   "srwz_refs": [
+    "part/chobham-armor"
+   ]
+  },
+  {
+   "ja": [
+    "ハイブリッドアーマー"
+   ],
+   "zh-Hans": {
+    "old": "混合装甲",
+    "new": "混合式装甲"
+   },
+   "gate": true,
+   "sections": [
+    "parts"
+   ],
+   "srwz_refs": [
+    "part/hybrid-armor"
+   ]
+  },
+  {
+   "ja": [
+    "ハロ"
+   ],
+   "zh-Hans": {
+    "old": "哈罗",
+    "new": "哈啰"
+   },
+   "gate": true,
+   "sections": [
+    "parts"
+   ],
+   "srwz_refs": [
+    "part/haro"
+   ]
+  },
+  {
+   "ja": [
+    "バイオセンサー"
+   ],
+   "zh-Hans": {
+    "old": "生物感应器",
+    "new": "生物传感器"
+   },
+   "gate": true,
+   "sections": [
+    "parts"
+   ],
+   "srwz_refs": [
+    "ability/bio-sensor"
+   ]
+  },
+  {
+   "ja": [
+    "プロペラントタンク"
+   ],
+   "zh-Hans": {
+    "old": "推进剂罐",
+    "new": "增装燃料槽"
+   },
+   "gate": true,
+   "sections": [
+    "parts"
+   ],
+   "srwz_refs": [
+    "part/propellant-tank"
+   ]
+  },
+  {
+   "ja": [
+    "マグネットコーティング"
+   ],
+   "zh-Hans": {
+    "old": "磁力涂层",
+    "new": "磁力覆膜"
+   },
+   "gate": true,
+   "sections": [
+    "parts"
+   ],
+   "srwz_refs": [
+    "part/magnetic-coating"
+   ]
+  },
+  {
+   "ja": [
+    "メガブースター"
+   ],
+   "zh-Hans": {
+    "old": "大型推进器",
+    "new": "强化推进器"
+   },
+   "gate": true,
+   "sections": [
+    "parts"
+   ],
+   "srwz_refs": [
+    "part/mega-booster"
+   ]
+  },
+  {
+   "ja": [
+    "リペアキット"
+   ],
+   "zh-Hans": {
+    "old": "修理包",
+    "new": "补修套件"
+   },
+   "gate": true,
+   "sections": [
+    "parts"
+   ],
+   "srwz_refs": [
+    "part/repair-kit"
+   ]
+  },
+  {
+   "ja": [
+    "アームパンチ"
+   ],
+   "zh-Hans": {
+    "old": "臂拳",
+    "new": "重型飞拳"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0138"
+   ]
+  },
+  {
+   "ja": [
+    "アームビームガン"
+   ],
+   "zh-Hans": {
+    "old": "手臂光束枪",
+    "new": "臂部光束枪"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0243"
+   ]
+  },
+  {
+   "ja": [
+    "クモの巣"
+   ],
+   "zh-Hans": {
+    "old": "蛛网",
+    "new": "蜘蛛网"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0254"
+   ]
+  },
+  {
+   "ja": [
+    "クレイバズーカ"
+   ],
+   "zh-Hans": {
+    "old": "克雷火箭筒",
+    "new": "黏土火箭筒"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0238"
+   ]
+  },
+  {
+   "ja": [
+    "クロー"
+   ],
+   "zh-Hans": {
+    "old": "利爪",
+    "new": "钩爪"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0213"
+   ]
+  },
+  {
+   "ja": [
+    "グレートタイフーン"
+   ],
+   "zh-Hans": {
+    "old": "大魔神台风",
+    "new": "巨型台风"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0015"
+   ]
+  },
+  {
+   "ja": [
+    "グレートブースター"
+   ],
+   "zh-Hans": {
+    "old": "超级喷射机",
+    "new": "大魔神推进器"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0022"
+   ]
+  },
+  {
+   "ja": [
+    "サンレーザー"
+   ],
+   "zh-Hans": {
+    "old": "太阳激光",
+    "new": "日轮激光"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/sun-laser-daitarn"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットカッター"
+   ],
+   "zh-Hans": {
+    "old": "赞波切割刃",
+    "new": "赞波特切割刀"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/zambot-cutter"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットグラップ"
+   ],
+   "zh-Hans": {
+    "old": "赞波格拉普",
+    "new": "赞波特钗"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/zambot-grap"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットバスター"
+   ],
+   "zh-Hans": {
+    "old": "赞波破坏者",
+    "new": "赞波特冲击镖"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0134"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットブロー"
+   ],
+   "zh-Hans": {
+    "old": "赞波重击",
+    "new": "赞波特突击枪"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0139"
+   ]
+  },
+  {
+   "ja": [
+    "シャインスパーク",
+    "シャイィィィィンスパァァァァク"
+   ],
+   "zh-Hans": {
+    "old": "闪光爆烈",
+    "new": "闪光爆裂"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0076"
+   ]
+  },
+  {
+   "ja": [
+    "ショルダーブーメラン"
+   ],
+   "zh-Hans": {
+    "old": "肩射回旋镖",
+    "new": "肩部回旋镖"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0037"
+   ]
+  },
+  {
+   "ja": [
+    "スカーレットビーム"
+   ],
+   "zh-Hans": {
+    "old": "猩红光束",
+    "new": "绯红光束"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0014"
+   ]
+  },
+  {
+   "ja": [
+    "ストロングミサイル"
+   ],
+   "zh-Hans": {
+    "old": "强力导弹",
+    "new": "巨人导弹"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0073"
+   ]
+  },
+  {
+   "ja": [
+    "スピンカッター"
+   ],
+   "zh-Hans": {
+    "old": "旋转切割刃",
+    "new": "旋转锯刃"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0062"
+   ]
+  },
+  {
+   "ja": [
+    "スピンソーサー"
+   ],
+   "zh-Hans": {
+    "old": "旋转飞轮",
+    "new": "旋转飞碟"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0029"
+   ]
+  },
+  {
+   "ja": [
+    "スペースサンダー"
+   ],
+   "zh-Hans": {
+    "old": "宇宙雷霆",
+    "new": "宇宙雷鸣"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0033"
+   ]
+  },
+  {
+   "ja": [
+    "ダイターンハンマー"
+   ],
+   "zh-Hans": {
+    "old": "泰坦铁锤",
+    "new": "泰坦链锤"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0162"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルカッター"
+   ],
+   "zh-Hans": {
+    "old": "双重切割刃",
+    "new": "双重切割"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0043"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルトマホーク"
+   ],
+   "zh-Hans": {
+    "old": "双战斧",
+    "new": "双重战斧"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0064"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルトマホークブーメラン",
+    "ダブルトマホォォォォクブゥゥゥメラン"
+   ],
+   "zh-Hans": {
+    "old": "双战斧回旋镖",
+    "new": "双重战斧回旋镖"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0063"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルハーケン"
+   ],
+   "zh-Hans": {
+    "old": "双头新月镰",
+    "new": "双联月牙刃"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0039"
+   ]
+  },
+  {
+   "ja": [
+    "チェーンアタック"
+   ],
+   "zh-Hans": {
+    "old": "锁链攻击",
+    "new": "链锤攻击"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0068"
+   ]
+  },
+  {
+   "ja": [
+    "トレンブルホーン"
+   ],
+   "zh-Hans": {
+    "old": "震颤号角",
+    "new": "震颤角"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0143"
+   ]
+  },
+  {
+   "ja": [
+    "ドリルアーム"
+   ],
+   "zh-Hans": {
+    "old": "钻头臂",
+    "new": "钻头手臂"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0071"
+   ]
+  },
+  {
+   "ja": [
+    "ドリルプレッシャーパンチ"
+   ],
+   "zh-Hans": {
+    "old": "旋钻飞拳",
+    "new": "钻击飞拳"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0018"
+   ]
+  },
+  {
+   "ja": [
+    "ネーブルミサイル"
+   ],
+   "zh-Hans": {
+    "old": "腹部导弹",
+    "new": "脐部导弹"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0016"
+   ]
+  },
+  {
+   "ja": [
+    "バスターミサイル"
+   ],
+   "zh-Hans": {
+    "old": "破坏导弹",
+    "new": "爆破导弹"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0133"
+   ]
+  },
+  {
+   "ja": [
+    "バルカンファランクス"
+   ],
+   "zh-Hans": {
+    "old": "火神炮密集阵",
+    "new": "火神密集阵"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0241"
+   ]
+  },
+  {
+   "ja": [
+    "バードガン"
+   ],
+   "zh-Hans": {
+    "old": "飞鸟枪",
+    "new": "鸟枪"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0142"
+   ]
+  },
+  {
+   "ja": [
+    "ビッグウェッブ"
+   ],
+   "zh-Hans": {
+    "old": "巨型网",
+    "new": "巨型十字飞刃"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/daitarn-big-web"
+   ]
+  },
+  {
+   "ja": [
+    "ファイナルダイナミックスペシャル"
+   ],
+   "zh-Hans": {
+    "old": "终极动力特攻",
+    "new": "终极豪烈特攻"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0011"
+   ]
+  },
+  {
+   "ja": [
+    "フィンファンネル",
+    "フィンファンル"
+   ],
+   "zh-Hans": {
+    "old": "鳍状浮游炮",
+    "new": "翼状浮游炮"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0271"
+   ]
+  },
+  {
+   "ja": [
+    "フェダーインライフル"
+   ],
+   "zh-Hans": {
+    "old": "斗士步枪",
+    "new": "费达因步枪"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0251"
+   ]
+  },
+  {
+   "ja": [
+    "ブレストバーン"
+   ],
+   "zh-Hans": {
+    "old": "胸部烈焰",
+    "new": "胸部火焰"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0020"
+   ]
+  },
+  {
+   "ja": [
+    "ベガトロンビーム"
+   ],
+   "zh-Hans": {
+    "old": "贝加能源光束",
+    "new": "贝加特隆光束"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0054"
+   ]
+  },
+  {
+   "ja": [
+    "ボロットパンチ",
+    "スペシャルボロットパーンチ",
+    "ボロットパーンチ"
+   ],
+   "zh-Hans": {
+    "old": "波罗特拳",
+    "new": "波士飞拳"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0026"
+   ]
+  },
+  {
+   "ja": [
+    "マシンキャノン"
+   ],
+   "zh-Hans": {
+    "old": "机关加农炮",
+    "new": "机炮"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0330"
+   ]
+  },
+  {
+   "ja": [
+    "マジンガーブレード"
+   ],
+   "zh-Hans": {
+    "old": "魔神宝剑",
+    "new": "魔神剑"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0019"
+   ]
+  },
+  {
+   "ja": [
+    "マリンカッター"
+   ],
+   "zh-Hans": {
+    "old": "海洋切割刃",
+    "new": "海洋切割"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0047"
+   ]
+  },
+  {
+   "ja": [
+    "ミサイルポッド"
+   ],
+   "zh-Hans": {
+    "old": "导弹吊舱",
+    "new": "导弹荚舱"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0202"
+   ]
+  },
+  {
+   "ja": [
+    "ムーンアタック"
+   ],
+   "zh-Hans": {
+    "old": "月光斩",
+    "new": "赞波特月环攻击"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0137"
+   ]
+  },
+  {
+   "ja": [
+    "メガビームキャノン"
+   ],
+   "zh-Hans": {
+    "old": "米加光束加农炮",
+    "new": "米加光束加农"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0268"
+   ]
+  },
+  {
+   "ja": [
+    "メルトシャワー"
+   ],
+   "zh-Hans": {
+    "old": "溶解光束",
+    "new": "溶解喷淋"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0031"
+   ]
+  },
+  {
+   "ja": [
+    "ロングライフル"
+   ],
+   "zh-Hans": {
+    "old": "长距离步枪",
+    "new": "长程步枪"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0233"
+   ]
+  },
+  {
+   "ja": [
+    "海ヘビ"
+   ],
+   "zh-Hans": {
+    "old": "海蛇鞭",
+    "new": "海蛇"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0253"
+   ]
+  },
+  {
+   "ja": [
+    "百鬼タイフーン"
+   ],
+   "zh-Hans": {
+    "old": "百鬼台风",
+    "new": "百鬼飓风"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0086"
+   ]
+  },
+  {
+   "ja": [
+    "強化パーツ"
+   ],
+   "zh-Hans": {
+    "old": "强化部件",
+    "new": "强化零件"
+   },
+   "gate": true,
+   "sections": [
+    "intermission"
+   ],
+   "srwz_refs": [
+    "system/enhancement-part"
+   ]
+  },
+  {
+   "ja": [
+    "アーサー"
+   ],
+   "zh-Hans": {
+    "old": "亚瑟",
+    "new": "阿瑟"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ],
+   "srwz_refs": [
+    "people/speaker-56e2adead895"
+   ]
+  },
+  {
+   "ja": [
+    "エマ"
+   ],
+   "zh-Hans": {
+    "old": "艾玛",
+    "new": "爱玛"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ],
+   "srwz_refs": [
+    "people/emma"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダル"
+   ],
+   "zh-Hans": {
+    "old": "甘达尔",
+    "new": "卡达尔"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ],
+   "srwz_refs": [
+    "people/speaker-c76445843ed2"
+   ]
+  },
+  {
+   "ja": [
+    "ビューティ",
+    "ビューティー"
+   ],
+   "zh-Hans": {
+    "old": "比优蒂",
+    "new": "碧尤蒂"
+   },
+   "gate": true,
+   "sections": [
+    "pilots",
+    "story"
+   ],
+   "srwz_refs": [
+    "people/speaker-658fa0202e85"
+   ]
+  },
+  {
+   "ja": [
+    "ブライト"
+   ],
+   "zh-Hans": {
+    "old": "布莱特",
+    "new": "布莱德"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ],
+   "srwz_refs": [
+    "people/speaker-312cbf08471d"
+   ]
+  },
+  {
+   "ja": [
+    "ギャリソン時田"
+   ],
+   "zh-Hans": {
+    "old": "时田·加里森",
+    "new": "加里森时田"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/garrison-tokida-full"
+   ]
+  },
+  {
+   "ja": [
+    "ビューティフル・タチバナ"
+   ],
+   "zh-Hans": {
+    "old": "立花美丽",
+    "new": "碧尤蒂·橘"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/beautiful-tachibana-full"
+   ]
+  },
+  {
+   "ja": [
+    "フォウ・ムラサメ"
+   ],
+   "zh-Hans": {
+    "old": "凤·村雨",
+    "new": "村雨凤"
+   },
+   "gate": true,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/four-murasame-full"
+   ]
+  },
+  {
+   "ja": [
+    "ブラン・ブルターク"
+   ],
+   "zh-Hans": {
+    "old": "布兰·布鲁塔克",
+    "new": "布兰·布尔达克"
+   },
+   "gate": true,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/bran-blutarch-full"
+   ]
+  },
+  {
+   "ja": [
+    "ヘンケン・ベッケナー"
+   ],
+   "zh-Hans": {
+    "old": "汉肯·贝克纳",
+    "new": "亨肯·贝克纳"
+   },
+   "gate": true,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/henken-bekkener-full"
+   ]
+  },
+  {
+   "ja": [
+    "サイコミュ"
+   ],
+   "zh-Hans": {
+    "old": "精神感应",
+    "new": "塞可缪"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "technology/psycommu"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボット"
+   ],
+   "zh-Hans": {
+    "old": "赞波",
+    "new": "赞波特"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "unit/zambot"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボットコンビネーション"
+   ],
+   "zh-Hans": {
+    "old": "赞波合体",
+    "new": "赞波特合体"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "phrase/zambot-combination"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルバーニングファイヤー"
+   ],
+   "zh-Hans": {
+    "old": "双重燃烧火焰",
+    "new": "双重爆燃烈焰"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "weapon/0008"
+   ]
+  },
+  {
+   "ja": [
+    "無敵超人 ザンボット3"
+   ],
+   "zh-Hans": {
+    "old": "无敌超人 赞波3",
+    "new": "无敌超人 赞波特3"
+   },
+   "gate": true,
+   "sections": [
+    "series"
+   ],
+   "srwz_refs": [
+    "work/zambot-three"
+   ]
+  },
+  {
+   "ja": [
+    "無敵超人<BR>ザンボット3"
+   ],
+   "zh-Hans": {
+    "old": "无敌超人<BR>赞波3",
+    "new": "无敌超人<BR>赞波特3"
+   },
+   "gate": true,
+   "sections": [
+    "series"
+   ],
+   "srwz_refs": [
+    "work/zambot-three"
+   ]
+  },
+  {
+   "ja": [
+    "ヘンケン"
+   ],
+   "zh-Hans": {
+    "old": "汉肯",
+    "new": "亨肯"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ],
+   "srwz_refs": [
+    "people/henken-bekkener-full"
+   ]
+  },
+  {
+   "ja": [
+    "リ・ガズィ(BWS)"
+   ],
+   "zh-Hans": {
+    "old": "灵格斯（BWS）",
+    "new": "灵·格斯（BWS）"
+   },
+   "gate": true,
+   "sections": [
+    "units"
+   ],
+   "srwz_refs": [
+    "unit/re-gz"
+   ]
+  },
+  {
+   "ja": [
+    "サイコミュ式ビームソード"
+   ],
+   "zh-Hans": {
+    "old": "精神感应式光束剑",
+    "new": "塞可缪式光束剑"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "technology/psycommu"
+   ]
+  },
+  {
+   "ja": [
+    "スペシャルDXボロットパンチ"
+   ],
+   "zh-Hans": {
+    "old": "特制DX波罗特拳",
+    "new": "特制DX波士飞拳"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0026"
+   ]
+  },
+  {
+   "ja": [
+    "スペシャルボロットパンチ"
+   ],
+   "zh-Hans": {
+    "old": "特制波罗特拳",
+    "new": "特制波士飞拳"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0026"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルバーニングファイヤー（グレート）"
+   ],
+   "zh-Hans": {
+    "old": "双重燃烧火焰（大魔神）",
+    "new": "双重爆燃烈焰（大魔神）"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0008"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルバーニングファイヤー（マジンガー）"
+   ],
+   "zh-Hans": {
+    "old": "双重燃烧火焰（魔神）",
+    "new": "双重爆燃烈焰（魔神）"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0008"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルバーニングファイヤー（ミネルバ）"
+   ],
+   "zh-Hans": {
+    "old": "双重燃烧火焰（米涅瓦）",
+    "new": "双重爆燃烈焰（米涅瓦）"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0008"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルバーニングファイヤー（量グレート）"
+   ],
+   "zh-Hans": {
+    "old": "双重燃烧火焰（量产大魔神）",
+    "new": "双重爆燃烈焰（量产大魔神）"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0008"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルマジンガーブレード",
+    "ダブル・マジンガーブレード"
+   ],
+   "zh-Hans": {
+    "old": "双重魔神宝剑",
+    "new": "双重魔神剑"
+   },
+   "gate": true,
+   "sections": [
+    "story",
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0019"
+   ]
+  },
+  {
+   "ja": [
+    "フィンファンネルMAP"
+   ],
+   "zh-Hans": {
+    "old": "鳍状浮游炮MAP",
+    "new": "翼状浮游炮MAP"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0271"
+   ]
+  },
+  {
+   "ja": [
+    "ブレストバーンMAP"
+   ],
+   "zh-Hans": {
+    "old": "胸部烈焰MAP",
+    "new": "胸部火焰MAP"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0020"
+   ]
+  },
+  {
+   "ja": [
+    "巨大ベガトロンビーム砲"
+   ],
+   "zh-Hans": {
+    "old": "巨型贝加能源光束炮",
+    "new": "巨型贝加特隆光束炮"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0054"
+   ]
+  },
+  {
+   "ja": [
+    "腕部クロー"
+   ],
+   "zh-Hans": {
+    "old": "腕部利爪",
+    "new": "腕部钩爪"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0213"
+   ]
+  },
+  {
+   "ja": [
+    "強化パーツ選択"
+   ],
+   "zh-Hans": {
+    "old": "选择强化部件",
+    "new": "选择强化零件"
+   },
+   "gate": true,
+   "sections": [
+    "intermission"
+   ],
+   "srwz_refs": [
+    "system/enhancement-part"
+   ]
+  },
+  {
+   "ja": [
+    "アーサー・カミングスJR",
+    "アーサー・カミングスJr"
+   ],
+   "zh-Hans": {
+    "old": "亚瑟·卡明斯Jr",
+    "new": "阿瑟·卡明斯Jr"
+   },
+   "gate": true,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/speaker-56e2adead895"
+   ]
+  },
+  {
+   "ja": [
+    "エマ・シーン"
+   ],
+   "zh-Hans": {
+    "old": "艾玛·辛",
+    "new": "爱玛·辛"
+   },
+   "gate": true,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/emma"
+   ]
+  },
+  {
+   "ja": [
+    "ガンダル司令"
+   ],
+   "zh-Hans": {
+    "old": "甘达尔司令",
+    "new": "卡达尔司令"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/speaker-c76445843ed2"
+   ]
+  },
+  {
+   "ja": [
+    "ブライト・ノア"
+   ],
+   "zh-Hans": {
+    "old": "布莱特·诺亚",
+    "new": "布莱德·诺亚"
+   },
+   "gate": true,
+   "sections": [
+    "character_list",
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/speaker-312cbf08471d"
+   ]
+  },
+  {
+   "ja": [
+    "ザンボット・ムーン"
+   ],
+   "zh-Hans": {
+    "old": "赞波月光",
+    "new": "赞波特月光"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "unit/zambot"
+   ]
+  },
+  {
+   "ja": [
+    "シャイィィィィンスパァァァァク"
+   ],
+   "zh-Hans": {
+    "old": "闪光爆烈",
+    "new": "闪光爆裂"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "weapon/0076"
+   ]
+  },
+  {
+   "ja": [
+    "スペシャルボロットパーンチ"
+   ],
+   "zh-Hans": {
+    "old": "特制波罗特拳",
+    "new": "特制波士飞拳"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "weapon/0026"
+   ]
+  },
+  {
+   "ja": [
+    "ダブルトマホォォォォクブゥゥゥメラン"
+   ],
+   "zh-Hans": {
+    "old": "双战斧回旋镖",
+    "new": "双重战斧回旋镖"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "weapon/0063"
+   ]
+  },
+  {
+   "ja": [
+    "フィンファンル"
+   ],
+   "zh-Hans": {
+    "old": "鳍状浮游炮",
+    "new": "翼状浮游炮"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "weapon/0271"
+   ]
+  },
+  {
+   "ja": [
+    "ボロットパーンチ"
+   ],
+   "zh-Hans": {
+    "old": "波罗特拳",
+    "new": "波士飞拳"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "weapon/0026"
+   ]
+  },
+  {
+   "ja": [
+    "グラー博士"
+   ],
+   "zh-Hans": {
+    "old": "格拉博士",
+    "new": "古拉博士"
+   },
+   "gate": true,
+   "sections": [
+    "pilots"
+   ],
+   "srwz_refs": [
+    "people/speaker-13cee73c14bf"
+   ]
+  },
+  {
+   "ja": [
+    "グラー博士"
+   ],
+   "zh-Hans": {
+    "old": "格拉博士",
+    "new": "古拉博士"
+   },
+   "gate": true,
+   "sections": [
+    "pilot_full_names"
+   ],
+   "srwz_refs": [
+    "people/speaker-13cee73c14bf"
+   ]
+  },
+  {
+   "ja": [
+    "27mm機関砲"
+   ],
+   "zh-Hans": {
+    "old": "27mm机炮",
+    "new": "27mm机关炮"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0222"
+   ]
+  },
+  {
+   "ja": [
+    "7連装ミサイルポッド"
+   ],
+   "zh-Hans": {
+    "old": "7连装导弹舱",
+    "new": "7连装导弹荚舱"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0202"
+   ]
+  },
+  {
+   "ja": [
+    "スペースコンビネーションアタック"
+   ],
+   "zh-Hans": {
+    "old": "太空组合攻击",
+    "new": "宇宙组合攻击"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0141"
+   ]
+  },
+  {
+   "ja": [
+    "メガバズーカランチャーMAP"
+   ],
+   "zh-Hans": {
+    "old": "米加火箭筒发射器MAP",
+    "new": "米加火箭发射器MAP"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0239"
+   ]
+  },
+  {
+   "ja": [
+    "有線クローアーム"
+   ],
+   "zh-Hans": {
+    "old": "有线爪臂",
+    "new": "有线钩爪臂"
+   },
+   "gate": true,
+   "sections": [
+    "weapons"
+   ],
+   "srwz_refs": [
+    "weapon/0255"
+   ]
+  },
+  {
+   "ja": [
+    "グラー"
+   ],
+   "zh-Hans": {
+    "old": "格拉",
+    "new": "古拉"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "people/speaker-13cee73c14bf"
+   ]
+  },
+  {
+   "ja": [
+    "格納庫"
+   ],
+   "zh-Hans": {
+    "old": "格纳库",
+    "new": "机库"
+   },
+   "gate": true,
+   "sections": [
+    "story"
+   ],
+   "srwz_refs": [
+    "system/hangar"
    ]
   }
  ]
