@@ -6,8 +6,11 @@ Marchwind64.exe by marchwind64.rc; SDL gives the window the executable's first i
 src/host/macos/Marchwind64.icns (package_macos.py puts it in the app's Resources). A Mac
 icon is a rounded square: the badge stands on a dark plate on Apple's 1024 grid (an 824
 square, 100 from each edge), so macOS shows it as it is instead of putting an odd shape on
-a grey plate. Both outputs are committed; run this again after the badge changes. macOS
-only for the .icns (iconutil).
+a grey plate. Also the Android adaptive icon's layers (tools/release/android/app/res/
+mipmap-*/ic_launcher_{background,foreground,monochrome}.png): the same navy plate, and the
+badge inside the 66 dp circle every launcher shape keeps. All outputs are committed; run
+this again after the badge changes. macOS only for the .icns (iconutil); --android-only
+skips it.
 """
 from __future__ import annotations
 
@@ -24,6 +27,9 @@ ROOT = Path(__file__).resolve().parents[2]
 BADGE = ROOT / 'web/public/brand/m64-icon.png'
 ICO = ROOT / 'src/host/windows/Marchwind64.ico'
 ICNS = ROOT / 'src/host/macos/Marchwind64.icns'
+ANDROID_RES = ROOT / 'tools/release/android/app/res'
+# The adaptive icon's 108 dp layers at each density (mipmap-anydpi-v26/ic_launcher.xml).
+ANDROID_DENSITIES = {'mipmap-mdpi': 108, 'mipmap-hdpi': 162, 'mipmap-xhdpi': 216, 'mipmap-xxhdpi': 324, 'mipmap-xxxhdpi': 432}
 ICO_SIZES = [16, 20, 24, 32, 40, 48, 64, 96, 128, 256]
 # iconutil's names: each size and its @2x.
 ICONSET = [(16, 1), (16, 2), (32, 1), (32, 2), (128, 1), (128, 2), (256, 1), (256, 2), (512, 1), (512, 2)]
@@ -89,6 +95,40 @@ def mac_icon(size: int = 1024) -> Image.Image:
     return icon
 
 
+def android_layers(size: int) -> tuple[Image.Image, Image.Image, Image.Image]:
+    # An adaptive icon is 108 dp; launchers mask it to any shape inside the middle 72 dp
+    # and only the middle 66 dp is sure to show, so the badge stays within that circle.
+    gradient = Image.linear_gradient('L').resize((size, size))
+    top, bottom = (40, 52, 86), (9, 12, 24)
+    background = Image.merge('RGB', [gradient.point(lambda v, a=a, b=b: round(a + (b - a) * v / 255)) for a, b in zip(top, bottom)])
+    glow = Image.new('L', (size, size))
+    ImageDraw.Draw(glow).ellipse((size * .2, size * .12, size * .8, size * .6), fill=70)
+    glow = glow.filter(ImageFilter.GaussianBlur(size * .12))
+    background = Image.composite(Image.new('RGB', (size, size), (70, 110, 170)), background, glow).convert('RGBA')
+    art = badge()
+    room = size * 62 / 108   # the badge is nearly round, so its box may nearly fill the 66 dp circle
+    scale = room / max(art.size)
+    art = art.resize((round(art.width * scale), round(art.height * scale)), Image.LANCZOS)
+    x, y = (size - art.width) // 2, (size - art.height) // 2
+    foreground = Image.new('RGBA', (size, size))
+    drop = Image.new('RGBA', art.size, (0, 0, 0, 0))
+    drop.putalpha(art.getchannel('A').filter(ImageFilter.GaussianBlur(size * 2 / 432)).point(lambda v: v * 55 // 100))
+    foreground.alpha_composite(drop, (x, y + round(size * 3 / 432)))
+    foreground.alpha_composite(art, (x, y))
+    # The themed icon (Android 13): the badge's shape alone, which the launcher tints.
+    monochrome = Image.new('RGBA', (size, size))
+    monochrome.paste((255, 255, 255, 255), (x, y), art.getchannel('A'))
+    return background, foreground, monochrome
+
+
+def write_android() -> None:
+    for folder, size in ANDROID_DENSITIES.items():
+        out = ANDROID_RES / folder
+        out.mkdir(parents=True, exist_ok=True)
+        for name, layer in zip(('background', 'foreground', 'monochrome'), android_layers(size)):
+            layer.save(out / f'ic_launcher_{name}.png', optimize=True)
+
+
 def write_ico() -> None:
     art = square(badge())
     ICO.parent.mkdir(parents=True, exist_ok=True)
@@ -111,7 +151,12 @@ def write_icns() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument('--preview', type=Path, help='also save the 1024 Mac icon as this PNG')
+    parser.add_argument('--android-only', action='store_true', help='only the Android layers (no iconutil needed)')
     args = parser.parse_args()
+    write_android()
+    print(ANDROID_RES.relative_to(ROOT) / 'mipmap-*')
+    if args.android_only:
+        return
     write_ico()
     write_icns()
     if args.preview:
