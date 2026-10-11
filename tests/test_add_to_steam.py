@@ -62,6 +62,25 @@ class AddToSteamTests(unittest.TestCase):
         self.assertEqual(set(MODULE.NAMES), {"zh-Hans", "en", "ja"})
         self.assertIn(MODULE.FIRST_LOCALE, MODULE.NAMES)
 
+    def test_artwork_follows_the_game_language(self):
+        art = ROOT / "tools/release/linux/steam-art"
+        for locale in MODULE.NAMES:
+            for kind in ("capsule", "wide", "logo"):
+                self.assertTrue((art / f"{kind}-{locale}.png").is_file(), (kind, locale))
+        for kind in ("hero", "icon"):
+            self.assertTrue((art / f"{kind}.png").is_file(), kind)
+        with tempfile.TemporaryDirectory() as folder:
+            here = Path(folder)
+            for name in ("capsule-ja.png", "capsule-en.png", "hero.png"):
+                (here / name).write_bytes(b"png")
+            saved, MODULE.HERE = MODULE.HERE, here
+            try:
+                self.assertEqual(MODULE.artwork_source("capsule", "ja"), here / "capsule-ja.png")
+                self.assertEqual(MODULE.artwork_source("hero", "ja"), here / "hero.png")
+                self.assertIsNone(MODULE.artwork_source("capsule", "zh-Hans"))
+            finally:
+                MODULE.HERE = saved
+
 
 if __name__ == "__main__":
     unittest.main()

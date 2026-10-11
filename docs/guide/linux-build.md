@@ -74,7 +74,7 @@ SDL3 运行时才加载 X11/Wayland、PipeWire/PulseAudio/ALSA，Vulkan 由 plum
 3. 等 `userdata/<用户>/config/shortcuts.vdf`（二进制 KeyValues）里出现启动 `marchwind64.sh` 的快捷方式，读出它的 appid（同一文件夹里改名前的 `srw64.sh` 快捷方式也算已在库里，不再重复添加，只提示在 Steam 属性里把目标改成 `marchwind64.sh`）。新版 Steam 的 appid 是随机的，不能事先算；
 4. 把 `steam/` 里的封面复制到 `userdata/<用户>/config/grid/`：`<appid>p.png` 竖版 600×900、`<appid>.png` 横版 920×430、`<appid>_hero.png` 顶部横幅、`<appid>_logo.png`、`<appid>_icon.png`。
 
-已在库里时只刷新封面。封面是仓库里的 `tools/release/linux/steam-art/*.png`，打包时原样拷进去，所以 GitHub Actions 上构建的包也有封面。它们由 `tools/release/linux/steam_art.py` 生成：HD 包的标题 logo（`content/art/stage1-hd.json` 的 `scene_images`）叠在标题火焰上，下方是项目的 MARCHWIND64 标题 logo（`web/public/brand/title-en.webp`），图标是 M64 徽标（`m64-icon.png`），各语言同一套；标题图或品牌图变了就在本机重跑 `steam_art.py --output tools/release/linux/steam-art` 再提交。
+已在库里时只刷新封面。封面是仓库里的 `tools/release/linux/steam-art/*.png`，打包时原样拷进去，所以 GitHub Actions 上构建的包也有封面。它们由 `tools/release/linux/steam_art.py` 从项目的品牌原图（`tools/release/brand`：M64 徽标和三种语言的 Marchwind64 字标）生成：深蓝底板加徽标后的蓝光，竖版、横版封面和 Steam 叠在背景上的标志按游戏语言各一套（`capsule-<语言>.png` 等），`add_to_steam.py` 按游戏当前语言挑选；背景图和图标各语言共用，图标与 Mac、安卓图标同一块底板。品牌图变了就在本机重跑 `steam_art.py --output tools/release/linux/steam-art`（应用图标重跑 `tools/release/app_icons.py`）再提交，PNG 要 `git add -f`。
 
 ## 验证记录
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The application icons, from the project's M64 badge (web/public/brand/m64-icon.png).
+"""The application icons, from the project's M64 badge (tools/release/brand/m64.webp).
 
 Writes src/host/windows/Marchwind64.ico (the badge alone, 16 to 256 pixels, compiled into
 Marchwind64.exe by marchwind64.rc; SDL gives the window the executable's first icon) and
@@ -24,7 +24,7 @@ from pathlib import Path
 from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[2]
-BADGE = ROOT / 'web/public/brand/m64-icon.png'
+BADGE = ROOT / 'tools/release/brand/m64.webp'
 ICO = ROOT / 'src/host/windows/Marchwind64.ico'
 ICNS = ROOT / 'src/host/macos/Marchwind64.icns'
 ANDROID_RES = ROOT / 'tools/release/android/app/res'

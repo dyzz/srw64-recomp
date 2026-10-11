@@ -1,56 +1,63 @@
 #!/usr/bin/env python3
-"""Steam library artwork for the Linux package: the HD title logo over the title flames,
-with the project's MARCHWIND64 logo under it.
+"""Steam library artwork for the Linux package, from the project's marks
+(tools/release/brand): the M64 badge and the Marchwind64 wordmark on the navy plate of
+the application icons, lit from behind in the badge's blue.
 
-Writes capsule.png (600x900), wide.png (920x430), hero.png (3840x1240), logo.png
-(Steam draws it over the hero) and icon.png (256x256) to --output; add_to_steam.py
-copies them into Steam's grid folder under the shortcut's app id. The sources are the
-HD pack's title images (content/art/stage1-hd.json scene_images) and the project's
-brand images in web/public/brand (the English title logo; the icon is app_icons.py's M64 badge on its plate). The art is
-the same in every language; the Steam name follows the game's.
+Writes to --output, for each game language (en, ja, zh-Hans): capsule-<locale>.png
+(600x900, badge over wordmark), wide-<locale>.png (920x430, badge beside wordmark) and
+logo-<locale>.png (the wordmark, which Steam draws over the hero); and, the same in
+every language, hero.png (3840x1240, the badge on the right, the left kept for the logo)
+and icon.png (256x256, app_icons.py's badge on its plate). add_to_steam.py copies them
+into Steam's grid folder under the shortcut's app id, in the game's language.
 """
 from __future__ import annotations
 
 import argparse
-import json
-import sys
 from pathlib import Path
+import sys
 
-from PIL import Image, ImageFilter
+from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[3]
-FLAME = 5  # one frame, tiled: the flame frames repeat seamlessly side by side
+BRAND = ROOT / 'tools/release/brand'
+LOCALES = ('en', 'ja', 'zh-Hans')
+TOP, BOTTOM = (34, 46, 80), (7, 9, 18)   # the icon plate's navy (app_icons.mac_icon), deepened
+LIGHT = (30, 140, 255)                    # the badge's blue accents
 
 
-def sources(root: Path) -> Path:
-    manifest = json.loads((root / 'content/art/stage1-hd.json').read_text(encoding='utf-8'))
-    return root / manifest['scene_images']['path']
+def trimmed(path: Path) -> Image.Image:
+    image = Image.open(path).convert('RGBA')
+    return image.crop(image.getchannel('A').point(lambda a: 255 if a > 8 else 0).getbbox())
 
 
-def background(width: int, height: int) -> Image.Image:
-    # Near black, warming towards the flames.
-    top, bottom = (10, 11, 16), (40, 14, 6)
-    column = Image.new('RGB', (1, height))
-    column.putdata([tuple(round(a + (b - a) * (y / max(1, height - 1)) ** 2.2) for a, b in zip(top, bottom))
-                    for y in range(height)])
-    return column.resize((width, height), Image.NEAREST).convert('RGBA')
+def fit(image: Image.Image, width: float = 1e9, height: float = 1e9) -> Image.Image:
+    scale = min(width / image.width, height / image.height)
+    return image.resize((round(image.width * scale), round(image.height * scale)), Image.LANCZOS)
 
 
-def flames(canvas: Image.Image, frame: Image.Image, height: int) -> None:
-    width = round(frame.width * height / frame.height)
-    tile = frame.resize((width, height), Image.LANCZOS)
-    x = (canvas.width // 2 - width // 2) % width - width
-    while x < canvas.width:
-        canvas.alpha_composite(tile, (x, canvas.height - height))
-        x += width
+def plate(width: int, height: int) -> Image.Image:
+    # The navy, darker downwards, with faint diagonal seams like the badge's steel plates.
+    gradient = Image.linear_gradient('L').resize((width, height))
+    canvas = Image.merge('RGB', [gradient.point(lambda v, a=a, b=b: round(a + (b - a) * v / 255))
+                                 for a, b in zip(TOP, BOTTOM)]).convert('RGBA')
+    seams = Image.new('L', (width, height))
+    draw = ImageDraw.Draw(seams)
+    for x in range(-height, width + height, max(width, height) // 7):
+        draw.line([(x, height), (x + height * 0.55, 0)], fill=28, width=max(2, width // 300))
+    return Image.composite(Image.new('RGBA', (width, height), (90, 120, 170, 255)), canvas, seams)
 
 
-def scaled(image: Image.Image, width: int) -> Image.Image:
-    return image.resize((width, round(image.height * width / image.width)), Image.LANCZOS)
+def glow(canvas: Image.Image, cx: int, cy: int, radius: int, strength: int = 150) -> None:
+    # Screen-blended light behind the badge.
+    mask = Image.new('L', canvas.size)
+    ImageDraw.Draw(mask).ellipse((cx - radius, cy - radius * 0.75, cx + radius, cy + radius * 0.75), fill=strength)
+    mask = mask.filter(ImageFilter.GaussianBlur(radius * 0.4))
+    light = Image.merge('RGB', [mask.point(lambda v, k=k: v * k // 255) for k in LIGHT])
+    canvas.paste(ImageChops.screen(canvas.convert('RGB'), light).convert('RGBA'))
 
 
-def place(canvas: Image.Image, image: Image.Image, cx: int, cy: int, blur: int = 12) -> None:
-    # A soft drop shadow lifts the logo off the flames.
+def place(canvas: Image.Image, image: Image.Image, cx: int, cy: int, blur: int = 10) -> None:
+    # A soft drop shadow lifts the mark off the plate.
     pad = blur * 3
     alpha = Image.new('L', (image.width + 2 * pad, image.height + 2 * pad))
     alpha.paste(image.getchannel('A'), (pad, pad))
@@ -62,16 +69,14 @@ def place(canvas: Image.Image, image: Image.Image, cx: int, cy: int, blur: int =
 
 
 def steam_icon(size: int = 256) -> Image.Image:
+    # The Mac icon's plate with a narrow margin, since Steam shows it small.
     sys.path.insert(0, str(ROOT / 'tools/release'))
     from app_icons import mac_icon
     return mac_icon(1024, inset=24 / 1024).resize((size, size), Image.LANCZOS)
 
 
-def build(output: Path, root: Path = ROOT) -> list[Path]:
-    images = sources(root)
-    logo = Image.open(images / 'title-logo.png').convert('RGBA')
-    brand = Image.open(root / 'web/public/brand/title-en.webp').convert('RGBA')
-    frame = Image.open(images / f'title-flame-{FLAME:02d}.png').convert('RGBA')
+def build(output: Path) -> list[Path]:
+    badge = trimmed(BRAND / 'm64.webp')
     output.mkdir(parents=True, exist_ok=True)
     written = []
 
@@ -79,21 +84,23 @@ def build(output: Path, root: Path = ROOT) -> list[Path]:
         image.save(output / name)
         written.append(output / name)
 
-    capsule = background(600, 900)
-    flames(capsule, frame, 560)
-    place(capsule, scaled(logo, 560), 300, 290)
-    place(capsule, scaled(brand, 400), 300, 455, blur=8)
-    save('capsule.png', capsule.convert('RGB'))
-    wide = background(920, 430)
-    flames(wide, frame, 300)
-    place(wide, scaled(logo, 760), 460, 150)
-    place(wide, scaled(brand, 330), 460, 318, blur=6)
-    save('wide.png', wide.convert('RGB'))
-    hero = background(3840, 1240)
-    flames(hero, frame, 900)
+    for locale in LOCALES:
+        word = trimmed(BRAND / f'marchwind64-{locale}.webp')
+        capsule = plate(600, 900)
+        glow(capsule, 300, 360, 330)
+        place(capsule, fit(badge, 430, 430), 300, 360, 14)
+        place(capsule, fit(word, 540), 300, 720)
+        save(f'capsule-{locale}.png', capsule.convert('RGB'))
+        wide = plate(920, 430)
+        glow(wide, 200, 215, 240)
+        place(wide, fit(badge, 300, 300), 200, 215, 12)
+        place(wide, fit(word, 500, 190), 620, 215)
+        save(f'wide-{locale}.png', wide.convert('RGB'))
+        save(f'logo-{locale}.png', fit(word, 1280))
+    hero = plate(3840, 1240)
+    glow(hero, 2850, 620, 1000, 170)
+    place(hero, fit(badge, 960, 960), 2850, 620, 30)
     save('hero.png', hero.convert('RGB'))
-    save('logo.png', scaled(logo, 1280))
-    # The icon: the M64 badge on the navy plate, as the Mac and Android icons (app_icons.py).
     save('icon.png', steam_icon())
     return written
 

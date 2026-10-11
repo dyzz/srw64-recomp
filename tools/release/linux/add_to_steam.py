@@ -25,9 +25,18 @@ LAUNCHER = HERE.parent / 'marchwind64.sh'
 OLD_LAUNCHER = HERE.parent / 'srw64.sh'           # the launcher's name before Marchwind64
 NAMES = {'zh-Hans': '超级机器人大战64', 'en': 'Super Robot Wars 64', 'ja': 'スーパーロボット大戦64'}
 FIRST_LOCALE = 'zh-Hans'                        # marchwind64.sh starts a first launch in Simplified Chinese
-# Steam's grid names for a shortcut's app id, from the files steam_art.py writes.
-ARTWORK = {'capsule.png': '{}p.png', 'wide.png': '{}.png', 'hero.png': '{}_hero.png',
-           'logo.png': '{}_logo.png', 'icon.png': '{}_icon.png'}
+# Steam's grid names for a shortcut's app id, from the files steam_art.py writes:
+# capsule, wide and logo in each game language (capsule-<locale>.png), hero and icon shared.
+ARTWORK = {'capsule': '{}p.png', 'wide': '{}.png', 'hero': '{}_hero.png',
+           'logo': '{}_logo.png', 'icon': '{}_icon.png'}
+
+
+def artwork_source(kind: str, locale: str) -> Path | None:
+    """The file for one kind of artwork: the game language's, else the shared one."""
+    for name in (f'{kind}-{locale}.png', f'{kind}.png'):
+        if (HERE / name).is_file():
+            return HERE / name
+    return None
 
 
 def data_dir() -> Path:
@@ -133,15 +142,15 @@ def add(entry: Path) -> None:
         pass
 
 
-def copy_artwork(found: dict[Path, list[int]]) -> int:
+def copy_artwork(found: dict[Path, list[int]], locale: str) -> int:
     copied = 0
     for user, ids in found.items():
         grid = user / 'config/grid'
         grid.mkdir(parents=True, exist_ok=True)
         for app_id in ids:
-            for source, pattern in ARTWORK.items():
-                if (HERE / source).is_file():
-                    shutil.copyfile(HERE / source, grid / pattern.format(app_id))
+            for kind, pattern in ARTWORK.items():
+                if source := artwork_source(kind, locale):
+                    shutil.copyfile(source, grid / pattern.format(app_id))
                     copied += 1
     return copied
 
@@ -154,7 +163,7 @@ def main() -> int:
     name = NAMES[locale]
     found = find_shortcuts()
     if found:
-        copy_artwork(found)
+        copy_artwork(found, locale)
         print(f'已在 Steam 库中，封面已更新。\nAlready in the Steam library; the artwork is refreshed.')
         if find_shortcuts(OLD_LAUNCHER) and not OLD_LAUNCHER.exists():
             print(f'这个快捷方式还在启动旧的 srw64.sh：请在 Steam 里打开它的「属性」，把目标改成 {LAUNCHER}。\n'
@@ -173,7 +182,7 @@ def main() -> int:
         print('Steam 没有添加这个游戏。可以在 Steam 里选「添加非 Steam 游戏」手动添加 marchwind64.sh。\n'
               'Steam did not add the game. In Steam, choose Add a Non-Steam Game and pick marchwind64.sh.')
         return 1
-    copy_artwork(found)
+    copy_artwork(found, locale)
     print(f'已添加到 Steam：{name}。回到游戏模式即可在库里启动。\n'
           f'Added to Steam as "{name}". Start it from the library in Game Mode.')
     return 0
