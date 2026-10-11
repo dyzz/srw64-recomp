@@ -145,14 +145,14 @@ void initialize(std::span<const uint8_t> rom) {
 }
 bool ready() { return !rom_bytes.empty(); }
 
-RgbaImage picture_ci4(uint16_t image, uint16_t palette) {
+RgbaImage picture_ci4(uint16_t image, uint16_t palette, bool opaque) {
     RgbaImage out;
     const auto data = extract(image), colours = extract(palette);
     if (!data || !colours || data->size() < 8 || colours->size() < 8 + 32) return out;
     const int kind = (*data)[0] << 8 | (*data)[1], w = (*data)[2] << 8 | (*data)[3], h = (*data)[4] << 8 | (*data)[5];
     if (kind != 5 || w <= 0 || h <= 0 || size_t(8) + size_t(w) * h / 2 > data->size()) return out;
     std::array<uint32_t, 16> rgba{};
-    for (int i = 1; i < 16; ++i) {   // RGBA5551, big-endian; entry 0 stays transparent
+    for (int i = opaque ? 0 : 1; i < 16; ++i) {   // RGBA5551, big-endian; entry 0 transparent unless opaque
         const unsigned v = (*colours)[8 + 2 * i] << 8 | (*colours)[9 + 2 * i];
         const auto c = [&](int shift) { return uint32_t(((v >> shift) & 31) * 255 / 31); };
         rgba[i] = c(11) | c(6) << 8 | c(1) << 16 | 0xFF000000u;

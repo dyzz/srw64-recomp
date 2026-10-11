@@ -38,6 +38,7 @@ constexpr uint32_t kHandles = 0x00160340, kHandleSize = 20, kHandleCount = 200; 
 struct Asset {
     uint16_t image = 0, palette = 0;
     bool rom = false;                          // the original picture, decoded from the ROM (rom_art)
+    bool opaque = false;                       // ... with entry 0 in its colour (a sky's first layer)
     std::filesystem::path file;
     int width = 0, height = 0;                 // the picture's pixels
     // The original's pixels the picture covers: 0, 0, 320, 240, or wider for a picture
@@ -56,6 +57,7 @@ constexpr uint16_t kStarfield = 5582;
 struct Draw {
     uint32_t id = 0;
     int asset = -1;
+    int under = -1;                           // drawn first with the same quads: the original, opaque
     bool wide = false;                        // side quads beyond the original's 320 (the scissor too)
     float prim[4]{1, 1, 1, 1};                // the combiner is TEXEL0 * PRIM (fades)
     std::vector<Quad> quads;
@@ -64,9 +66,10 @@ struct Draw {
 int width = 0, height = 0, source_width = 0, source_height = 0;
 std::vector<Asset> assets;
 std::map<std::pair<uint16_t, uint16_t>, int> by_ids;
-// Original battle skies drawn whole like the HD ones (no HD pack, or the original images):
-// added while playing, into capacity reserved once so the render thread's references hold.
-std::map<std::pair<uint16_t, uint16_t>, int> rom_ids;
+// Original battle skies drawn whole like the HD ones (no HD pack, or the original images),
+// and the opaque originals under the HD first layers: added while playing, into capacity
+// reserved once so the render thread's references hold.
+std::map<std::tuple<uint16_t, uint16_t, bool>, int> rom_ids;
 constexpr size_t kAssetCapacity = 1024;
 bool hooks_set = false;
 std::mutex asset_mutex;
@@ -120,6 +123,11 @@ bool pitch_layer(const uint8_t* rdram, uint32_t slot) {
     const uint8_t kind = layer_kind(rdram, slot);
     return (pitch_kind(kind) || kind == 10 || kind == 11) && frame::wide && wide_map::battle_shown();
 }
+// A battle sky's first layer (slots 0-2; the second is 3/4, the scrolling effects 0x19).
+// The game draws it with entry 0 opaque in its colour, the lit windows of the ruins'
+// towers (6075): drawn see-through, they showed whatever the frame held there before
+// (a unit, a beam) as specks (player report, 2026-10-11).
+bool first_layer(uint32_t slot) { return slot <= 2 && wide_map::battle_shown(); }
 // The picture's (image, palette) asset, or -1.
 int asset_of(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
     if (slot >= 300 || sub >= 4) return -1;
@@ -130,17 +138,17 @@ int asset_of(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
     return found == by_ids.end() ? -1 : found->second;
 }
 // The original picture as an asset of its own, made on first use; -1 without the ROM.
-int rom_asset(uint16_t image, uint16_t palette) {
+int rom_asset(uint16_t image, uint16_t palette, bool opaque) {
     std::lock_guard lock(asset_mutex);
-    if (const auto found = rom_ids.find({image, palette}); found != rom_ids.end()) return found->second;
+    if (const auto found = rom_ids.find({image, palette, opaque}); found != rom_ids.end()) return found->second;
     if (!rom_art::ready() || assets.size() >= assets.capacity()) return -1;
-    if (rom_art::picture_ci4(image, palette).width != source_width) { rom_ids[{image, palette}] = -1; return -1; }
+    if (rom_art::picture_ci4(image, palette).width != source_width) { rom_ids[{image, palette, opaque}] = -1; return -1; }
     Asset asset;
-    asset.image = image; asset.palette = palette; asset.rom = true;
+    asset.image = image; asset.palette = palette; asset.rom = true; asset.opaque = opaque;
     asset.width = source_width; asset.height = source_height;
     asset.extent[2] = float(source_width); asset.extent[3] = float(source_height);
     assets.push_back(std::move(asset));
-    return rom_ids[{image, palette}] = int(assets.size() - 1);
+    return rom_ids[{image, palette, opaque}] = int(assets.size() - 1);
 }
 
 // Premultiplied RGBA with a box-filtered mip chain (any size; odd edges clamp).
@@ -148,7 +156,7 @@ void decode(Asset& asset) {
     int w = 0, h = 0, n = 0;
     std::vector<uint8_t> level;
     if (asset.rom) {
-        auto picture = rom_art::picture_ci4(asset.image, asset.palette);
+        auto picture = rom_art::picture_ci4(asset.image, asset.palette, asset.opaque);
         if (picture.width != asset.width || picture.height != asset.height)
             throw std::runtime_error("Cannot decode the original picture " + std::to_string(asset.image));
         w = picture.width; h = picture.height; level = std::move(picture.rgba);
@@ -209,6 +217,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     }
     if (draw.id != (call.id & 0xFFFF) || draw.asset < 0 || !program || draw.quads.empty()) { ++skipped; return true; }
     auto* textures = textures_for(assets[size_t(draw.asset)], list);
+    auto* under = draw.under >= 0 ? textures_for(assets[size_t(draw.under)], list) : nullptr;
     if (!textures) { ++skipped; return true; }
     // HdBackgroundVS/PS data: resolution, PRIM, then rect and uv per quad.
     std::vector<float> data(8 + draw.quads.size() * 8);
@@ -220,11 +229,14 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     // The side quads lie outside the original's scissor (the whole picture instead).
     RT64::NativeMeshDraw wide = call;
     if (draw.wide) wide.scissor = {0, 0, int32_t(call.viewport.width), int32_t(call.viewport.height)};
-    if (!program->begin(list, framebuffer, wide, state, textures, gpu::push_data(data.data(), data.size() * sizeof(float)))) {
-        ++skipped;
-        return true;
+    for (auto* set : {under, textures}) {
+        if (!set) continue;
+        if (!program->begin(list, framebuffer, wide, state, set, gpu::push_data(data.data(), data.size() * sizeof(float)))) {
+            ++skipped;
+            return true;
+        }
+        list->drawInstanced(4, uint32_t(draw.quads.size()), 0, 0);
     }
-    list->drawInstanced(4, uint32_t(draw.quads.size()), 0, 0);
     ++rendered;
     return true;
 }
@@ -282,7 +294,7 @@ bool battle_sky(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
     const uint32_t record = kSlots + slot * kSlotSize + kSubBase + sub * kSubSize;
     uint16_t image = 0, palette = 0;
     return resource(rdram, int16_t(half(rdram, record + 0xC)), image) && resource(rdram, int16_t(half(rdram, record + 0xE)), palette) &&
-           rom_asset(image, palette) >= 0;
+           rom_asset(image, palette, first_layer(slot)) >= 0;
 }
 
 namespace {
@@ -341,15 +353,19 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     }
     // A sky the pitch places is drawn whole in either image mode: its HD picture, or the
     // original decoded from the ROM; other pictures only in HD.
-    const bool sky = pitch_layer(rdram, draw.slot);
+    const bool sky = pitch_layer(rdram, draw.slot), first = first_layer(draw.slot);
     int chosen = found != by_ids.end() && hd_enabled() ? found->second : -1;
-    if (chosen < 0 && sky) chosen = rom_asset(image, palette);
+    // The HD pictures keep entry 0 transparent: a first layer's original goes under them.
+    const bool plain = chosen >= 0 && assets[size_t(chosen)].extent[0] == 0 && assets[size_t(chosen)].extent[2] == float(source_width);
+    const int under = plain && first ? rom_asset(image, palette, true) : -1;
+    if (chosen < 0 && sky) chosen = rom_asset(image, palette, first);
     if (chosen < 0) return false;
     // The drawer sets PRIM once, then per 32x32 tile: SETTIMG (the picture), LOADTILE of
     // the tile's region (image coordinates), SETTILESIZE to (0,0)-(31,31) and TEXRECT
     // (E4, E1, F1) at the tile's screen position with S/T from the tile's origin.
     Draw record;
     record.asset = chosen;
+    record.under = under;
     float extent[4];
     std::copy(std::begin(assets[size_t(record.asset)].extent), std::end(assets[size_t(record.asset)].extent), extent);
     std::vector<uint32_t> rects;
@@ -424,8 +440,11 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     }
     {
         std::lock_guard lock(asset_mutex);
-        Asset& asset = assets[size_t(record.asset)];
-        if (!asset.textures && asset.levels.empty()) decode(asset);
+        for (const int index : {record.asset, record.under}) {
+            if (index < 0) continue;
+            Asset& asset = assets[size_t(index)];
+            if (!asset.textures && asset.levels.empty()) decode(asset);
+        }
     }
     {
         std::lock_guard lock(ring_mutex);

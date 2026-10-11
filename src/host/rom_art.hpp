@@ -58,6 +58,7 @@ struct RgbaImage { int width = 0, height = 0; std::vector<uint8_t> rgba; };
 RgbaImage flat_image(const FlatSpec& spec);
 
 // A 320x240 CI4 picture (the battle skies) in a 16-colour palette resource, straight-alpha
-// RGBA8 at 1x, entry 0 transparent; empty (width 0) when either does not decode.
-RgbaImage picture_ci4(uint16_t image, uint16_t palette);
+// RGBA8 at 1x, entry 0 transparent unless opaque (its colour then, as the game draws a
+// sky's first layer); empty (width 0) when either does not decode.
+RgbaImage picture_ci4(uint16_t image, uint16_t palette, bool opaque = false);
 }
