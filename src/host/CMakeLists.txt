@@ -75,7 +75,7 @@ if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/host.cpp" AND NOT ANDROID)
     target_link_libraries(srw64-host PRIVATE srw64_cpu librecomp srw64_app)
     if(WIN32)
         target_sources(srw64-host PRIVATE windows/crash_dump_windows.cpp)
-        target_link_libraries(srw64-host PRIVATE dbghelp)
+        target_link_libraries(srw64-host PRIVATE dbghelp synchronization)
     endif()
 endif()
 
@@ -170,7 +170,7 @@ if(SRW64_ENABLE_RT64)
         target_link_libraries(srw64-gfx-host PRIVATE comdlg32 user32 ole32)
         # A crash's minidump into the run directory (crash_dump.hpp, docs/native/bug-report.md).
         target_sources(srw64-gfx-host PRIVATE windows/crash_dump_windows.cpp)
-        target_link_libraries(srw64-gfx-host PRIVATE dbghelp)
+        target_link_libraries(srw64-gfx-host PRIVATE dbghelp synchronization)
     endif()
     # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md).
     target_sources(srw64-gfx-host PRIVATE update_check.cpp update_http.cpp)

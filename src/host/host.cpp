@@ -586,6 +586,12 @@ void crash_backtrace(int signal) {
 
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
+#if defined(_WIN32) && defined(SRW64_WITH_RT64)
+    // A double-click's own console goes first, before any handle exists for FreeConsole
+    // to close by mistake (desktop_windows.cpp).
+    const bool desktop_start = argc == 1 || (argc == 2 && std::string_view(argv[1]) == "--choose-rom");
+    if (desktop_start) srw64::app::windows_release_console();
+#endif
     // stdout and stderr also into the run's console.log (Android: to logcat, which would
     // otherwise drop them), for a bug report (console_log.hpp).
     srw64::console_log::start();
@@ -628,8 +634,7 @@ int main(int argc, char** argv) {
 #if defined(_WIN32) && defined(SRW64_WITH_RT64)
     // Explorer supplies no arguments: start as Marchwind64.cmd does, which stays for
     // its options. --play and the diagnostic ABI below keep their console.
-    if (argc == 1 || (argc == 2 && std::string_view(argv[1]) == "--choose-rom")) {
-        srw64::app::windows_release_console();
+    if (desktop_start) {
         const auto ui = srw64::app::windows_desktop_ui();
         srw64::app::Options options;
         try {

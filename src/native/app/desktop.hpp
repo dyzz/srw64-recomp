@@ -33,7 +33,7 @@ DesktopUi macos_desktop_ui();
 bool macos_choose_another_rom();
 // Windows (src/host/windows/desktop_windows.cpp): the open-file dialog and message box,
 // SRW64_ROM as a path, and closing the console window a double-click opened for the
-// program (a console started from a shell stays).
+// program (a console started from a shell stays), before anything else opens a handle.
 DesktopUi windows_desktop_ui();
 fs::path windows_named_rom();
 void windows_release_console();

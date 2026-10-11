@@ -1,8 +1,11 @@
 // A minidump when the program crashes on Windows (crash_dump.hpp), for the bug report:
 // the stacks of all threads and the memory they point at, a few MB, no full memory.
-// Everything a crash needs is made in install() and attach(): the folder's name, a
+// Everything a crash needs is made in install() and attach(): the folder's name and a
 // thread that writes the dump (a crashed thread may have no stack left, and dbghelp
-// wants plenty), the events it waits on. The crashed thread only hands its exception over.
+// wants plenty). The crashed thread only hands its exception over, through two words
+// waited on with WaitOnAddress: no handle that anything else in the process could close.
+// 0.4.5 waited on events, and on a player's machine the writer woke within a second of
+// starting with no crash to report, then crashed reading it.
 //
 // Not covered: __fastfail (0xC0000409: /GS cookie failures, the CRT's own fast-fail paths
 // past these handlers) ends the process without running anything in it; Event Viewer's
@@ -40,10 +43,11 @@ constexpr DWORD kWait = 20'000;
 
 wchar_t folder[1024];                 // the run directory
 std::atomic<bool> attached{false};
-HANDLE wake{}, finished{};            // to the writer; from it (manual reset)
+bool writer = false;                  // the writer thread is waiting
 DWORD writer_id = 0;
 std::atomic<int> state{0};            // 0 nothing yet, 1 writing, 2 written
-EXCEPTION_POINTERS* crash = nullptr;
+std::atomic<EXCEPTION_POINTERS*> crash{nullptr};   // set: the writer's turn
+std::atomic<LONG> finished{0};        // 1: the report is written
 DWORD crash_thread = 0;
 LPTOP_LEVEL_EXCEPTION_FILTER previous_filter = nullptr;
 _crt_signal_t previous_abort = SIG_DFL;
@@ -113,7 +117,7 @@ void write_report() {
         swprintf(path, std::size(path), L"%ls\\%ls", folder, file);
         const HANDLE out = CreateFileW(path, GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
         if (out != INVALID_HANDLE_VALUE) {
-            MINIDUMP_EXCEPTION_INFORMATION exception{crash_thread, crash, FALSE};
+            MINIDUMP_EXCEPTION_INFORMATION exception{crash_thread, crash.load(), FALSE};
             // Stacks, and 1 KB around what they point at: locals and the objects they use.
             const auto type = MINIDUMP_TYPE(MiniDumpWithIndirectlyReferencedMemory | MiniDumpWithThreadInfo |
                                             MiniDumpWithUnloadedModules | MiniDumpIgnoreInaccessibleMemory);
@@ -125,7 +129,7 @@ void write_report() {
         }
     }
     console_log::flush_now();
-    const EXCEPTION_RECORD& record = *crash->ExceptionRecord;
+    const EXCEPTION_RECORD& record = *crash.load()->ExceptionRecord;
     const auto address = reinterpret_cast<uintptr_t>(record.ExceptionAddress);
     Line line;
     line.add("SRW64_CRASH ");
@@ -172,10 +176,21 @@ void write_report() {
 }
 
 DWORD WINAPI writer_main(void*) {
-    WaitForSingleObject(wake, INFINITE);
+    // WaitOnAddress may return without a change: only an exception handed over counts.
+    EXCEPTION_POINTERS* none = nullptr;
+    while (!crash.load()) WaitOnAddress(&crash, &none, sizeof(none), INFINITE);
     write_report();
-    SetEvent(finished);
+    finished = 1;
+    WakeByAddressAll(&finished);
     return 0;
+}
+
+// The crashed thread's wait for the writer, kWait at most.
+void wait_finished() {
+    const ULONGLONG until = GetTickCount64() + kWait;
+    LONG pending = 0;
+    for (ULONGLONG now; !finished.load() && (now = GetTickCount64()) < until;)
+        WaitOnAddress(&finished, &pending, sizeof(pending), DWORD(until - now));
 }
 
 // Once per process: the first thread to crash hands over and waits; one that crashes
@@ -184,14 +199,14 @@ void report(EXCEPTION_POINTERS* pointers) {
     if (GetCurrentThreadId() == writer_id) return;   // dbghelp itself failed
     int expected = 0;
     if (!state.compare_exchange_strong(expected, 1)) {
-        if (expected == 1) WaitForSingleObject(finished, kWait);
+        if (expected == 1) wait_finished();
         return;
     }
-    crash = pointers;
     crash_thread = GetCurrentThreadId();
-    if (wake) {
-        SetEvent(wake);
-        WaitForSingleObject(finished, kWait);
+    crash = pointers;
+    if (writer) {
+        WakeByAddressSingle(&crash);
+        wait_finished();
     } else {
         write_report();
     }
@@ -278,13 +293,9 @@ void install() {
     if (installed) return;
     installed = true;
     if (const char* kind = std::getenv("SRW64_CRASH_TEST")) test = kind;
-    wake = CreateEventW(nullptr, FALSE, FALSE, nullptr);
-    finished = CreateEventW(nullptr, TRUE, FALSE, nullptr);
-    if (wake && finished) {
-        if (const HANDLE writer = CreateThread(nullptr, 256 << 10, writer_main, nullptr, STACK_SIZE_PARAM_IS_A_RESERVATION, &writer_id))
-            CloseHandle(writer);
-        else
-            wake = nullptr;
+    if (const HANDLE thread = CreateThread(nullptr, 256 << 10, writer_main, nullptr, STACK_SIZE_PARAM_IS_A_RESERVATION, &writer_id)) {
+        CloseHandle(thread);
+        writer = true;
     }
     previous_filter = SetUnhandledExceptionFilter(on_exception);
     _set_invalid_parameter_handler(on_invalid_parameter);
