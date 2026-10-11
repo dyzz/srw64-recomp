@@ -64,8 +64,9 @@ def plate_mask(size: int, inset: float, exponent: float = 5.0) -> Image.Image:
     return mask.resize((size, size), Image.LANCZOS)
 
 
-def mac_icon(size: int = 1024) -> Image.Image:
-    inset = 100 / 1024
+def mac_icon(size: int = 1024, inset: float = 100 / 1024) -> Image.Image:
+    # inset: the plate's margin, as a share of the side (Apple's grid by default; the
+    # Steam icon, shown small in the library, nearly fills its square).
     mask = plate_mask(size, inset)
     # The plate: the website's dark navy, lighter at the top, and a thin light rim.
     gradient = Image.linear_gradient('L').resize((size, size))
@@ -83,7 +84,7 @@ def mac_icon(size: int = 1024) -> Image.Image:
     icon.paste(plate.convert('RGBA'), (0, 0), mask)
     # The badge, as large as the plate allows.
     art = badge()
-    room = size * (824 - 2 * 56) / 1024
+    room = size * ((1 - 2 * inset) - 2 * 56 / 1024)
     scale = room / max(art.size)
     art = art.resize((round(art.width * scale), round(art.height * scale)), Image.LANCZOS)
     art = art.filter(ImageFilter.UnsharpMask(radius=1.2, percent=40, threshold=2))

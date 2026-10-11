@@ -6,13 +6,14 @@ Writes capsule.png (600x900), wide.png (920x430), hero.png (3840x1240), logo.png
 (Steam draws it over the hero) and icon.png (256x256) to --output; add_to_steam.py
 copies them into Steam's grid folder under the shortcut's app id. The sources are the
 HD pack's title images (content/art/stage1-hd.json scene_images) and the project's
-brand images in web/public/brand (the English title logo and the M64 icon). The art is
+brand images in web/public/brand (the English title logo; the icon is app_icons.py's M64 badge on its plate). The art is
 the same in every language; the Steam name follows the game's.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 from PIL import Image, ImageFilter
@@ -60,11 +61,16 @@ def place(canvas: Image.Image, image: Image.Image, cx: int, cy: int, blur: int =
     canvas.alpha_composite(image, (x, y))
 
 
+def steam_icon(size: int = 256) -> Image.Image:
+    sys.path.insert(0, str(ROOT / 'tools/release'))
+    from app_icons import mac_icon
+    return mac_icon(1024, inset=24 / 1024).resize((size, size), Image.LANCZOS)
+
+
 def build(output: Path, root: Path = ROOT) -> list[Path]:
     images = sources(root)
     logo = Image.open(images / 'title-logo.png').convert('RGBA')
     brand = Image.open(root / 'web/public/brand/title-en.webp').convert('RGBA')
-    badge = Image.open(root / 'web/public/brand/m64-icon.png').convert('RGBA')
     frame = Image.open(images / f'title-flame-{FLAME:02d}.png').convert('RGBA')
     output.mkdir(parents=True, exist_ok=True)
     written = []
@@ -87,8 +93,8 @@ def build(output: Path, root: Path = ROOT) -> list[Path]:
     flames(hero, frame, 900)
     save('hero.png', hero.convert('RGB'))
     save('logo.png', scaled(logo, 1280))
-    # The icon: the project's M64 badge, as on the website.
-    save('icon.png', badge.resize((256, 256), Image.LANCZOS))
+    # The icon: the M64 badge on the navy plate, as the Mac and Android icons (app_icons.py).
+    save('icon.png', steam_icon())
     return written
 
 
