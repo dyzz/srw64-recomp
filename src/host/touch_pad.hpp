@@ -24,8 +24,9 @@ inline constexpr uint32_t L2 = input::pad_l2, R2 = input::pad_r2, Option = input
 
 // The places a button can take: the primary bottom right, the back button left of it,
 // two more on the arc above, four small ones along the top edge (the first one always
-// the settings window), plus a dialogue skip button above R1.
-enum class Slot : uint8_t { Primary, Back, Arc2, Arc3, Top1, Top2, Top3, Top4, Skip, Count };
+// the settings window), plus a dialogue skip button above R1 and the 2x speed switch
+// in the top left (user, 2026-10-11).
+enum class Slot : uint8_t { Primary, Back, Arc2, Arc3, Top1, Top2, Top3, Top4, Skip, Speed, Count };
 inline constexpr size_t slot_count = size_t(Slot::Count);
 
 struct Action {
@@ -102,7 +103,8 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active) {
     Scene s;
     auto set = [&](Slot slot, uint32_t b, std::string_view label) { s.slots[size_t(slot)] = {b, label, {}}; };
     auto open = [&](Slot slot, std::string_view command, std::string_view label) { s.slots[size_t(slot)] = {0, label, command}; };
-    const auto settings = [&] { set(Slot::Top1, bits::Option, "touch_settings"); };
+    // The settings window and 2x speed (game_speed.hpp) wherever there are controls.
+    const auto settings = [&] { set(Slot::Top1, bits::Option, "touch_settings"); open(Slot::Speed, "speed-toggle", "touch_speed"); };
     switch (id) {
     case SceneId::Hidden:
         break;
@@ -263,6 +265,7 @@ inline Layout layout(float width, float height, float px_per_mm) {
     // Settings is everywhere but seldom wanted: small, tucked in the corner (user, 2026-10-03).
     bar(Slot::Top1, 6.5f, 3.5f, 10, 4); bar(Slot::Top2, 20.5f, 5, 15, 5);
     bar(Slot::Top3, w - 26.5f, 5, 15, 5); bar(Slot::Top4, w - 9.5f, 5, 15, 5);
+    bar(Slot::Speed, 33.5f, 3.5f, 8, 4);   // small as settings, right of START
     out.stick_radius = 8.5f * m;
     out.rest_x = 14.5f * m; out.rest_y = (h - 13) * m;
     out.wide_right = width * .42f; out.wide_top = 10 * m;

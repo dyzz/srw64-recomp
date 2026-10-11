@@ -20,6 +20,7 @@
 #include "menu_widen.hpp"
 #include "map_miss.hpp"
 #include "ui_text.hpp"
+#include "game_speed.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 namespace rules=srw64::rules;
@@ -58,9 +59,11 @@ void load_000AB160_func_801FB8B4(uint8_t* ram,recomp_context* ctx) {
     srw64::map_miss::round_pushed(ram,handle,damage,reaction,before);
 }
 void load_000AB160_func_801D5064(uint8_t* ram,recomp_context* ctx) {
+    srw64::game_speed::menu_step();
     if(!srw64_game_hooks.battle_step || !srw64_game_hooks.battle_step(ram,ctx,1))srw64_original_battle_confirm_step(ram,ctx);
 }
 void load_000AB160_func_801D5294(uint8_t* ram,recomp_context* ctx) {
+    srw64::game_speed::menu_step();
     if(!srw64_game_hooks.battle_step || !srw64_game_hooks.battle_step(ram,ctx,2))srw64_original_battle_response_step(ram,ctx);
 }
 

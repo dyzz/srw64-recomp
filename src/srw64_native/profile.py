@@ -51,6 +51,8 @@ UI_KEYS |= {"about_link_issues", "about_link_site", "about_link_source", "menu_a
 UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale", "menu_game", "menu_exit"}
 # The frame-rate readout (settings show_fps).
 UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps_note"}
+# 2x speed (frontend.cpp toggle_speed, game_speed.hpp).
+UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_note", "speed_notice_on", "speed_notice_off", "touch_speed"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}
@@ -99,7 +101,7 @@ UI_KEYS |= {"cheats_note", "cheat_levels", "cheat_levels_note", "cheat_levels_op
 UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "en", "sp", "morale")}
 # The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
 CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "animation", "settings",
-                "language", "images", "d_up", "d_down", "d_left", "d_right", "z")
+                "language", "images", "speed", "d_up", "d_down", "d_left", "d_right", "z")
 UI_KEYS |= {f"controls_row_{row}" for row in CONTROL_ROWS}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}

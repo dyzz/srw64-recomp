@@ -28,6 +28,7 @@
 #include "settings_window.hpp"
 #include "game_frame.hpp"
 #include "frame_rate.hpp"
+#include "game_speed.hpp"
 #include "wide_map.hpp"
 #include "notices.hpp"
 #include "guest_memory.hpp"
@@ -132,7 +133,7 @@ uint16_t button_mask(const json& value) {
 // bindings give them (input_bindings.hpp); a remapped controller is not followed.
 uint32_t pad_mask(const std::string& text) {
     static const std::pair<const char*,uint32_t> names[]={{"a",0x8000},{"b",0x4000},{"x",0x0002},{"y",input::pad_animation},
-        {"l3",input::pad_language},{"r3",input::pad_images},
+        {"l3",input::pad_language},{"r3",input::pad_images},{"r4",input::pad_speed},
         {"menu",0x1000},{"up",0x800},{"down",0x400},{"left",0x200},{"right",0x100},{"l1",0x20},{"r1",0x10},
         {"rs_up",8},{"rs_down",4},{"rs_left",2},{"rs_right",1},
         {"ls_up",1u<<16},{"ls_down",1u<<17},{"ls_left",1u<<18},{"ls_right",1u<<19},
@@ -174,6 +175,7 @@ json status(const json& params) {
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"aspect",settings::wide_picture()?"auto":"4:3"},{"picture_width",frame::picture_width.load()},
         {"frame_lists",frame_rate::lists.load()},
+        {"game_speed",{{"double",game_speed::on.load()},{"running",game_speed::running.load()}}},
         {"wide_map",{{"extra",wide_map::extra()},{"shown",wide_map::map_shown()},{"placed",wide_map::placed_draws()},{"map_width",wide_map::map_width_seen()},{"scroll_x",wide_map::scroll_seen()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},

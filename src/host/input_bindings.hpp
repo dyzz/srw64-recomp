@@ -28,6 +28,7 @@ enum class Action : uint8_t {
     Animation,  // the battle animation on / off on the pre-battle screens (Y)
     Language,   // the next reading language (L3; F7 also, a fixed shortcut)
     Images,     // Original / HD pictures (R3; F6 also, a fixed shortcut)
+    Speed,      // 2x speed on / off (R4 behind the Deck; Tab)
     Count
 };
 inline constexpr size_t action_count = size_t(Action::Count);
@@ -42,18 +43,19 @@ inline constexpr std::array<ActionInfo, action_count> actions{{
     {"d_up", 0x0800}, {"d_down", 0x0400}, {"d_left", 0x0200}, {"d_right", 0x0100},
     {"stick_up", 1u << 16}, {"stick_down", 1u << 17}, {"stick_left", 1u << 18}, {"stick_right", 1u << 19},
     {"settings", pad_view}, {"aux_left", pad_l2}, {"aux_right", pad_r2},
-    {"animation", pad_animation}, {"language", pad_language}, {"images", pad_images},
+    {"animation", pad_animation}, {"language", pad_language}, {"images", pad_images}, {"speed", pad_speed},
 }};
 inline constexpr const ActionInfo& info(Action action) { return actions[size_t(action)]; }
 
 namespace scancode {
 inline constexpr int A = 4, D = 7, E = 8, F = 9, G = 10, H = 11, I = 12, J = 13, K = 14, L = 15, Q = 20, S = 22, T = 23,
     W = 26, X = 27, Z = 29, N1 = 30, N2 = 31, N3 = 32, N4 = 33,
-    Return = 40, Escape = 41, Backspace = 42, Space = 44, Right = 79, Left = 80, Down = 81, Up = 82;
+    Return = 40, Escape = 41, Backspace = 42, Tab = 43, Space = 44, Right = 79, Left = 80, Down = 81, Up = 82;
 }
 namespace pad_button {
 inline constexpr uint8_t A = 0, B = 1, X = 2, Y = 3, Back = 4, Guide = 5, Start = 6, LeftStick = 7, RightStick = 8,
-    LeftShoulder = 9, RightShoulder = 10, DUp = 11, DDown = 12, DLeft = 13, DRight = 14, Count = 21;
+    LeftShoulder = 9, RightShoulder = 10, DUp = 11, DDown = 12, DLeft = 13, DRight = 14,
+    Paddle1 = 16, Paddle2 = 17, Paddle3 = 18, Paddle4 = 19, Count = 21;   // the paddles: the Deck's R4 L4 R5 L5
 }
 namespace pad_axis {
 inline constexpr uint8_t LeftX = 0, LeftY = 1, RightX = 2, RightY = 3, TriggerLeft = 4, TriggerRight = 5, Count = 6;
@@ -102,13 +104,17 @@ inline Bindings default_bindings() {
     pads(Action::AuxLeft, {axis(pad_axis::TriggerLeft, 1)}); pads(Action::AuxRight, {axis(pad_axis::TriggerRight, 1)});
     pads(Action::Animation, {button(Y)});
     pads(Action::Language, {button(LeftStick)}); pads(Action::Images, {button(RightStick)});
+    // The back buttons are free (user, 2026-10-11): R4 (SDL's first paddle). Where Steam
+    // Input does not pass the paddles on, its layout can give a back button Tab.
+    pads(Action::Speed, {button(Paddle1)});
     }
     // The keyboard is PCSX2's default layout (pcsx2/Input/InputManager.cpp,
     // GetKeyboardGenericBindingMapping; user, 2026-09-28), which stands a key for each
     // controller button: K L J I the face buttons (south, east, west, north), Q E L1 R1,
     // 1 3 L2 R2, 2 4 L3 R3, Enter and Backspace Menu and View, the arrows the D-pad, WASD
     // the left stick and T F G H the right one. Each key does what its button does above,
-    // so Z has no key here either. The settings window also opens with Ctrl / Cmd + ,
+    // so Z has no key here either. Tab is PCSX2's turbo; our pages keep it for themselves
+    // (frontend.cpp toggles the speed only while none is up). The settings window also opens with Ctrl / Cmd + ,
     // (frontend.cpp).
     using namespace scancode;  // pad_button's names are out of scope here
     keys(Action::A, {K}); keys(Action::B, {L}); keys(Action::Start, {Return});
@@ -120,6 +126,7 @@ inline Bindings default_bindings() {
     keys(Action::AuxLeft, {N1}); keys(Action::AuxRight, {N3});
     keys(Action::Animation, {I});
     keys(Action::Language, {N2}); keys(Action::Images, {N4});
+    keys(Action::Speed, {Tab});
     return b;
 }
 

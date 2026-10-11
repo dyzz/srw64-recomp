@@ -64,6 +64,10 @@ void set_msaa(bool on);
 // (frame_rate.hpp, frontend.cpp). Off by default; saved as show_fps.
 bool show_fps();
 void set_show_fps(bool show);
+// 2x speed on the tactical map, in battle and in the story (game_speed.hpp). Off by
+// default; saved as game_speed, 1 or 2. The Speed button (Tab, R4) toggles it too.
+bool game_speed_double();
+void set_game_speed_double(bool on);
 // The reading controls under the dialogue (dialogue_scene.cpp): hidden 5 s after the
 // dialogue appears and shown again 3 s by a direction key (the default), or always shown.
 // Saved as dialogue_hints, "auto" or "always".

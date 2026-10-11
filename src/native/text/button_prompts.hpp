@@ -6,7 +6,7 @@
 // - Action tokens name an N64 input or a host button: {A} {B} {Z} {Start} {L} {R}, the
 //   C buttons {CUp} {CDown} {CLeft} {CRight}, the D-pad {DUp} {DDown} {DLeft} {DRight},
 //   {Settings}, the trigger functions {AuxL} {AuxR}, {Anim} (battle animation), {Lang},
-//   {Images} (Original / HD); groups {DPad} {DUpDown}
+//   {Images} (Original / HD), {Speed} (2x speed); groups {DPad} {DUpDown}
 //   {DLeftRight} {C} {CUpDown} {Stick}. They show what the player bound to it
 //   (input_bindings.hpp): the controller button's icon, in the controller's own family,
 //   in a controller hint; the key in a keyboard hint (an icon for letters, digits, Enter,
@@ -123,6 +123,7 @@ inline constexpr ActionToken action_tokens[] = {
     {"DLeft", {Action::DLeft}, 1, {}, 0}, {"DRight", {Action::DRight}, 1, {}, 0},
     {"Settings", {Action::Settings}, 1, {}, 0}, {"AuxL", {Action::AuxLeft}, 1, {}, 0}, {"AuxR", {Action::AuxRight}, 1, {}, 0},
     {"Anim", {Action::Animation}, 1, {}, 0}, {"Lang", {Action::Language}, 1, {}, 0}, {"Images", {Action::Images}, 1, {}, 0},
+    {"Speed", {Action::Speed}, 1, {}, 0},
     {"DPad", {Action::DUp, Action::DDown, Action::DLeft, Action::DRight}, 4, same(0xE830), 0xE849},
     {"DUpDown", {Action::DUp, Action::DDown}, 2, same(0xE835), 0},
     {"DLeftRight", {Action::DLeft, Action::DRight}, 2, same(0xE836), 0},
@@ -157,6 +158,13 @@ inline std::string expand_prompts(std::string_view text, const PromptContext& ct
             if (bindings.pads[i].empty()) {out += "\xe2\x80\x94"; return false;}  // em dash: unbound
             const auto& p = bindings.pads[i].front();
             if (const char32_t c = pad_glyph(p, ctx.family)) {append_utf8(out, c); return true;}
+            // The paddles have no icon: the Deck's back buttons by name, else Elite's P1-P4.
+            if (p.kind == input::PadInput::Button && p.index >= input::pad_button::Paddle1 && p.index <= input::pad_button::Paddle4) {
+                const unsigned n = p.index - input::pad_button::Paddle1;
+                static constexpr const char* deck[] = {"R4", "L4", "R5", "L5"};
+                out += ctx.family == PadFamily::Deck ? std::string(deck[n]) : "P" + std::to_string(n + 1);
+                return false;
+            }
             out += p.kind == input::PadInput::Button ? "(" + std::to_string(p.index) + ")" : "(axis)";
             return false;
         }

@@ -319,6 +319,7 @@ button:hover,button:focus {border-color: #9be4f7;} button.on {background-color: 
 button:disabled {opacity: 0.45;} .row {display: flex;}
 .card {width: 28%;} img {width: 86dp; height: 86dp; margin: 8dp;}
 #fps {position: absolute; right: 6dp; top: 6dp; padding: 1dp 6dp; font-size: 12dp; color: #e6f6ff; background-color: #000000a8;}
+#speed-toast {position: absolute; left: 6dp; top: 6dp; padding: 1dp 6dp; font-size: 12dp; color: #e6f6ff; background-color: #000000a8;}
 #notices {width: 86%; margin: 8dp auto; text-align: center;} .banner {padding: 12dp; background-color: #122131ed; border: 1dp #9be4f7; margin-bottom: 6dp;}
 
 .set-shade {position:absolute; left:0; top:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center; background-color:#040712b8;}
@@ -769,6 +770,14 @@ void document_close(Rml::ElementDocument*& doc) {
 }
 bool held();
 void choose(const std::string& id);
+// 2x speed on / off (game_speed.hpp): the Speed button, the phone's 2x button. A small
+// tag in the top left says which for a moment (speed_sync; user: the banner was too big).
+bool speed_toast_pending=false;
+void toggle_speed() {
+    const bool on=!settings::game_speed_double();
+    settings::set_game_speed_double(on);
+    speed_toast_pending=true;
+}
 void battle_buttons(uint32_t pressed,bool tab=false);
 struct Actions : Rml::EventListener {
     void ProcessEvent(Rml::Event& event) override {
@@ -919,7 +928,7 @@ struct ControlRow {const char* id;Action action;};
 constexpr ControlRow control_rows[]={
     {"a",Action::A},{"b",Action::B},{"start",Action::Start},{"l",Action::L},{"r",Action::R},
     {"aux_left",Action::AuxLeft},{"aux_right",Action::AuxRight},{"c_left",Action::CLeft},{"c_up",Action::CUp},{"c_down",Action::CDown},
-    {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},
+    {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},{"speed",Action::Speed},
     {"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
 void start_capture(const std::string& id) {
     for(const auto& row:control_rows)if(id==row.id) {
@@ -2573,7 +2582,7 @@ void settings_sync() {
     report_export_poll();
 #endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+std::to_string(settings::game_speed_double())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -2610,6 +2619,8 @@ void settings_sync() {
         if(mod_entry_shown)body+=settings_row("mod_row",button("mod-open",label("mod_open")));
         body+=settings_row("library_row",button("library-open",label("library_open")));
         body+=settings_row("viewer_row",button("viewer-open",label("viewer_open")));
+        body+=settings_row("settings_speed",button("speed:1x",label("settings_speed_1x"),!settings::game_speed_double())+
+            button("speed:2x",label("settings_speed_2x"),settings::game_speed_double()),{},"settings_speed_note");
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
         body+=settings_choice("settings_map_unit_icons","map-unit-icons",{"original","hd"},settings::hd_map_unit_icons()?"hd":"original",!presentation::image_mode.enabled() || !presentation::image_mode.requested());
         body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
@@ -4084,6 +4095,7 @@ void battle_sync() {
 
 void choose(const std::string& id) {
     if(id=="mini-enter"){mini_stage::hotkey();return;}
+    if(id=="speed-toggle"){toggle_speed();return;}
     if(id=="intermission-funds" || id=="upgrade-funds"){funds_editing=id.substr(0,id.size()-6);return;}
     if(id.ends_with("-funds-input"))return;
     funds_editing.clear();
@@ -4279,6 +4291,7 @@ void choose(const std::string& id) {
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
         if(id.starts_with("fps:"))settings::set_show_fps(id=="fps:on");
+        if(id.starts_with("speed:"))settings::set_game_speed_double(id=="speed:2x");
         if(id.starts_with("dialogue-font:"))settings::set_dialogue_font_size(unsigned(std::stoul(id.substr(14))));
         if(id.starts_with("dialogue-hints:"))settings::set_dialogue_hints_always(id=="dialogue-hints:always");
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
@@ -4463,6 +4476,20 @@ void fps_sync() {
     if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false,true);}
     if(fps_doc)fps_doc->PullToFront();
 }
+// The 2x switch's tag, 1.5 s after each toggle. The phone's own 2x button shows the state.
+Rml::ElementDocument* speed_doc{};
+std::string speed_stamp;
+double speed_toast_until=0;
+bool touch_active();
+void speed_sync() {
+    const double now=system.GetElapsedTime();
+    if(speed_toast_pending){speed_toast_pending=false;speed_toast_until=now+1.5;}
+    const bool shown=now<speed_toast_until && !touch_active();
+    const std::string text=shown?localization::catalog().ui(settings::game_speed_double()?"speed_notice_on":"speed_notice_off"):std::string();
+    const std::string stamp=text+frame_stamp();
+    if(stamp!=speed_stamp){document_close(speed_doc);speed_stamp=stamp;if(!text.empty())speed_doc=document("<div id='speed-toast'>"+escape(text)+"</div>",false,true);}
+    if(speed_doc)speed_doc->PullToFront();
+}
 // Touch controls by scene on a phone (touch_pad.hpp, docs/design/touch-controls.md), or
 // with SRW64_TOUCH_PAD=1 and a mouse anywhere. They show from the first touch and hide when
 // a controller or the keyboard plays. Android's back key (SDL_ANDROID_TRAP_BACK_BUTTON,
@@ -4627,7 +4654,8 @@ void touch_sync() {
     const float mm=layout.mm;
     const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
     std::string stamp=frame_stamp()+"/"+std::to_string(mm)+"/"+std::to_string(int(touch_scene_id))+"/"+localization::catalog().locale+"/"+
-        std::to_string(touch_fingers.buttons())+"/"+std::to_string(settings::touch_opacity())+"/"+std::to_string(touch_controls_revision);
+        std::to_string(touch_fingers.buttons())+"/"+std::to_string(settings::touch_opacity())+"/"+std::to_string(touch_controls_revision)+"/"+
+        std::to_string(settings::game_speed_double());
     for(size_t i=0;i<touch_pad::slot_count;++i)stamp+=touch_fingers.pressed(touch_pad::Slot(i))?'1':'0';
     if(stick)stamp+="/"+std::to_string(int(stick->cx))+","+std::to_string(int(stick->cy))+","+std::to_string(int(stick->x/mm))+","+std::to_string(int(stick->y/mm));
     if(stamp==touch_stamp){if(touch_doc)touch_doc->PullToFront();return;}
@@ -4666,7 +4694,9 @@ void touch_sync() {
             caption="<div style='padding-top:"+px((h-lines*size*1.15f)/2)+";line-height:"+px(size*1.15f)+";'>"+caption+"</div>";
         }
         body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
-              face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+caption+"</div>";
+              face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+
+              // The 2x switch is amber while it is on.
+              (action.command=="speed-toggle" && settings::game_speed_double()?"background-color:#d89a1ec0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+caption+"</div>";
     }
     body+="</div>";
     touch_doc=document(body,false,true);
@@ -4859,7 +4889,7 @@ void sync() {
         // The host's buttons, from the controller or keys bound to them (the keyboard state
         // holds both): the settings window, the next language, Original / HD.
         static uint32_t host_before=0;
-        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images);
+        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images|input::pad_speed);
         const uint32_t host_pressed=host_now&~host_before;host_before=host_now;
         const bool view_pressed=host_pressed&input::pad_view;
         // Page requests stay null until their page first reports.
@@ -4871,6 +4901,12 @@ void sync() {
         const bool capturing=!capture.queue.empty() || capture.release;
         if(!capturing && (host_pressed&input::pad_language))settings::request_locale(localization::next_locale(localization::catalog().locale));
         if(!capturing && (host_pressed&input::pad_images))presentation::image_mode.toggle();
+        // 2x speed: not while the settings window or one of our pages is up, as those use
+        // Tab themselves and keep the original speed anyway.
+        const bool page_up=settings_open || library_open || mod_open || viewer_open || names::request().visible || link_request.visible ||
+            shown(battle_request) || shown(intermission_request) || shown(upgrade_request) || shown(parts_request) || shown(ability_request) ||
+            shown(swap_request) || shown(save_request) || shown(title_request);
+        if(!capturing && !page_up && (host_pressed&input::pad_speed))toggle_speed();
         if(capturing && settings_open){}
         else if(view_pressed)choose(settings_open?"settings-close":"settings-open");
         else if(settings_open)settings_pad(pad_now,pad_pressed);
@@ -4899,7 +4935,7 @@ void sync() {
     // Any page in the settings window's frame (the Library, MOD, the settings themselves)
     // holds the title still under it: no attract demo, no opening story.
     battle_viewer::hold_title(settings_open);
-    settings_sync();notices_sync();fps_sync();touch_sync();context->Update();input.update_rectangle();
+    settings_sync();notices_sync();fps_sync();speed_sync();touch_sync();context->Update();input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
     battle_page::window_claim_input(battle_request.value("visible",false) || (battle_page::owns_input() && held()));

@@ -46,6 +46,7 @@
 #include "game_hooks.hpp"
 #include "native_intro.hpp"
 #include "touch_scene.hpp"
+#include "game_speed.hpp"
 #include "stall_watchdog.hpp"
 #include "guest_memory.hpp"
 #include "native_name_entry.hpp"
@@ -386,6 +387,7 @@ static int run_host(int argc, char** argv) {
     // portraits) stays in the centred 320. Not in the whole-map overview (801027DB == 1).
     srw64_game_hooks.frame_start = [](uint8_t* ram) {
         srw64::wide_map::frame(ram); srw64::battle_hud::frame(ram); srw64::menu_widen::frame_start(ram);
+        srw64::game_speed::frame(ram);   // 2x speed where it applies (game_speed.hpp)
     };
     srw64_game_hooks.map_space_begin = [](uint8_t* ram, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub) {
         if (ram[0x001027DB ^ 3] == 1) return false;

@@ -96,6 +96,7 @@ void set_wide_picture(bool v){wide=v;} bool wide_picture(){return wide;}
 bool map_icons_hd=true; bool hd_map_unit_icons(){return map_icons_hd;} void set_hd_map_unit_icons(bool v){map_icons_hd=v;}
 bool msaa_on=true; bool msaa(){return msaa_on;} bool msaa_at_start(){return true;} void set_msaa(bool v){msaa_on=v;}
 bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
+bool speed_double=false; bool game_speed_double(){return speed_double;} void set_game_speed_double(bool v){speed_double=v;}
 bool hints_always=false; bool dialogue_hints_always(){return hints_always;} void set_dialogue_hints_always(bool v){hints_always=v;}
 unsigned touch_alpha=100; unsigned touch_opacity(){return touch_alpha;}
 void set_touch_opacity(unsigned v){touch_alpha=std::clamp(v,25u,100u);}

@@ -24,4 +24,6 @@ inline constexpr uint32_t pad_r2 = 1u << 22;
 inline constexpr uint32_t pad_animation = 1u << 23;
 inline constexpr uint32_t pad_language = 1u << 24;
 inline constexpr uint32_t pad_images = 1u << 25;
+// 2x speed on / off (game_speed.hpp; Tab, the Deck's R4 back button).
+inline constexpr uint32_t pad_speed = 1u << 26;
 }
