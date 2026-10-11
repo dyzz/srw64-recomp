@@ -120,7 +120,7 @@
 
 ## 另一台机器上的文件
 
-截图、录像的帧和事件日志是宿主写在自己机器上的文件。宿主有两个只限本次运行目录的方法：`file.read {path, offset, size}`（一次最多 4 MiB，base64，回给文件总长和 `eof`）和 `file.remove {path}`（不能删运行目录本身）。`Session.local()` 为假（运行目录里有 `remote.json` 或 `debug.tcp`，即 Deck 或手机）时，`Session.local_file()` 用 `file.read` 分块取回到 `remote-files/`，`Session.record()` 用 `file.remove` 清掉宿主那边的帧目录，`Session.events()` 按 `status.run` 取远端的日志。Deck 不再需要 scp，安卓也能截图和录像。
+截图、录像的帧和事件日志是宿主写在自己机器上的文件。宿主有两个只限本次运行目录的方法：`file.read {path, offset, size}`（一次最多 4 MiB，base64，回给文件总长和 `eof`）和 `file.remove {path}`（不能删运行目录本身）。`Session.local()` 为假（运行目录里有 `remote.json` 或 `debug.tcp`，即 Deck、手机或 Windows 台式机）时，`Session.local_file()` 用 `file.read` 分块取回到 `remote-files/`，按文件在宿主运行目录里的相对路径存放（Windows 宿主的盘符、反斜杠路径按 Windows 路径拆分，例如 `D:\…\run\shots\x.png` → `remote-files/shots/x.png`），录像成片在 `remote-files/record-<vi>.mp4`；`Session.record()` 用 `file.remove` 清掉宿主那边的帧目录，`Session.events()` 按 `status.run` 取远端的日志。Deck 不再需要 scp，安卓也能截图和录像。
 
 ## 在 Steam Deck（或其他 Linux 机器）上
 

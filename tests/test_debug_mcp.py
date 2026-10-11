@@ -3,7 +3,8 @@ from __future__ import annotations
 
 import base64
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
+import shutil
 import socket
 import sys
 import tempfile
@@ -96,6 +97,85 @@ class FakeHost:
 
     def close(self):
         self.listener.close()
+
+
+class ElsewhereHost(FakeHost):
+    """A host on another machine whose run directory it names `host_run` (a Windows desktop's
+    D:\\..., a Deck's /home/deck/...): its files live in `disk`, file.read takes its own names."""
+
+    def __init__(self, run: Path, disk: Path, host_run: str):
+        self.disk, self.host_run, self.removed = disk, host_run, []
+        self.flavour = PureWindowsPath if "\\" in host_run else PurePosixPath
+        super().__init__(run)
+        self.status["run"] = host_run
+        (run / "remote.json").write_text(json.dumps({"run": host_run}))
+
+    def on_disk(self, path: str) -> Path:
+        return self.disk.joinpath(*self.flavour(path).relative_to(self.flavour(self.host_run)).parts)
+
+    def answer(self, method: str, params: dict):
+        named = lambda *parts: str(self.flavour(self.host_run, *parts))
+        if method == "screenshot":
+            (self.disk / "shots").mkdir(exist_ok=True)
+            (self.disk / "shots/shot-1.png").write_bytes(PNG)
+            return {"path": named("shots", "shot-1.png"), "width": 1, "height": 1, "overlays": []}
+        if method == "record.start":
+            return {"directory": named("record-7972"), "vi": 7972}
+        if method == "record.stop":  # two 2x2 frames, as the host's recorder leaves them
+            (self.disk / "record-7972").mkdir(exist_ok=True)
+            (self.disk / "record-7972/frames.rgb").write_bytes(bytes(range(24)))
+            (self.disk / "record-7972/times.txt").write_text("0\n0.5\n")
+            return {"frames_path": named("record-7972", "frames.rgb"), "times_path": named("record-7972", "times.txt"),
+                    "width": 2, "height": 2, "frames": 2}
+        if method == "file.read":
+            data = self.on_disk(params["path"]).read_bytes()
+            part = data[params["offset"]:params["offset"] + 5]
+            return {"data": base64.b64encode(part).decode(), "size": len(data), "eof": params["offset"] + len(part) >= len(data)}
+        if method == "file.remove":
+            self.removed.append(params["path"])
+            return {"removed": 1}
+        return super().answer(method, params)
+
+
+class RemoteFileTests(unittest.TestCase):
+    """Files of a game on another machine land under remote-files/ by their place in its run directory."""
+
+    def attach(self, host_run: str) -> tuple[Session, ElsewhereHost]:
+        here, disk = (Path(tempfile.mkdtemp()) for _ in range(2))
+        for directory in (here, disk):
+            self.addCleanup(__import__("shutil").rmtree, directory, ignore_errors=True)
+        host = ElsewhereHost(here, disk, host_run)
+        self.addCleanup(host.close)
+        session = Session(here)
+        self.addCleanup(session.client.close)
+        self.assertFalse(session.local())
+        return session, host
+
+    def test_a_windows_hosts_files(self):
+        session, _ = self.attach(r"D:\srw64-speed\data\sessions\3fa7a5fb1daef8-707d85a6\run")
+        self.assertEqual(session.remote_relative(r"D:\srw64-speed\data\sessions\3fa7a5fb1daef8-707d85a6\run\record-7972.mp4"),
+                         PureWindowsPath("record-7972.mp4"))
+        self.assertEqual(session.remote_relative(r"d:\SRW64-speed\data\sessions\3fa7a5fb1daef8-707d85a6\run/a\b.txt"),
+                         PureWindowsPath("a/b.txt"))  # Windows names ignore case and take either slash
+        self.assertEqual(session.remote_relative(r"C:\elsewhere\log.txt"), PurePosixPath("log.txt"))
+        shot = session.local_file(session.client.call("screenshot")["path"])
+        self.assertEqual(shot, session.run / "remote-files/shots/shot-1.png")
+        self.assertEqual(shot.read_bytes(), PNG)
+
+    def test_a_decks_files(self):
+        session, _ = self.attach("/home/deck/.local/share/srw64-recomp/sessions/x/run")
+        shot = session.local_file(session.client.call("screenshot")["path"])
+        self.assertEqual((shot, shot.read_bytes()), (session.run / "remote-files/shots/shot-1.png", PNG))
+
+    @unittest.skipUnless(shutil.which("ffmpeg"), "needs ffmpeg")
+    def test_a_windows_hosts_recording(self):
+        session, host = self.attach(r"D:\srw64-speed\data\sessions\3fa7a5fb1daef8-707d85a6\run")
+        session.record_start()
+        result = session.record_stop()
+        self.assertEqual(Path(result["path"]), session.run / "remote-files/record-7972.mp4")
+        self.assertTrue(Path(result["path"]).stat().st_size > 0)
+        self.assertEqual(host.removed, [r"D:\srw64-speed\data\sessions\3fa7a5fb1daef8-707d85a6\run\record-7972"])
+        self.assertEqual(sorted(p.name for p in (session.run / "remote-files").iterdir()), ["record-7972.mp4"])
 
 
 class DebugClientTests(unittest.TestCase):

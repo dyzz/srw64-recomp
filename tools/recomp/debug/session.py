@@ -16,7 +16,7 @@ import math
 import shlex
 import os
 import signal
-from pathlib import Path, PureWindowsPath
+from pathlib import Path, PurePath, PurePosixPath, PureWindowsPath
 import socket
 import subprocess
 import sys
@@ -158,6 +158,14 @@ def rule_fixes(rules) -> str:
     return ",".join(rule_settings.parse(",".join(rules)))
 
 
+def host_path(path: str | Path, windows: bool = False) -> PurePath:
+    """A path as the host names it on its own machine: a Windows one (a drive letter or
+    backslashes, which Path does not split here) or a POSIX one (a Deck, a phone)."""
+    path = str(path)
+    windows = windows or "\\" in path or bool(PureWindowsPath(path).drive)
+    return PureWindowsPath(path) if windows else PurePosixPath(path)
+
+
 class Session:
     def __init__(self, run: Path, process: subprocess.Popen | None = None):
         self.run = Path(run)
@@ -183,14 +191,23 @@ class Session:
             self._host_run = self.client.call("status")["run"]
         return self._host_run
 
+    def remote_relative(self, path: str | Path) -> PurePath:
+        """A path the host named, relative to its run directory (just the name if outside it)."""
+        run = host_path(self.host_run())
+        named = host_path(path, windows=isinstance(run, PureWindowsPath))
+        try:
+            return named.relative_to(run)
+        except ValueError:
+            return PurePosixPath(named.name)
+
     def local_file(self, path: str | Path) -> Path:
         """A file the host wrote, here. Another machine's comes over the connection (the
-        host's file.read, limited to its run directory) into remote-files/."""
+        host's file.read, limited to its run directory) into remote-files/, under the same
+        relative path as in the host's run directory."""
         if self.local():
             return Path(path)
-        # A Windows host names its files with backslashes, which Path does not split here.
-        target = self.run / "remote-files" / PureWindowsPath(path).name
-        target.parent.mkdir(exist_ok=True)
+        target = self.run / "remote-files" / Path(*self.remote_relative(path).parts)
+        target.parent.mkdir(parents=True, exist_ok=True)
         with open(target, "wb") as out:
             offset = 0
             while True:
@@ -386,9 +403,14 @@ class Session:
     def record_stop(self, path: str | Path | None = None, fps: int = 30) -> dict:
         started, self._recording = getattr(self, "_recording", None), None
         result = self.client.call("record.stop")
-        directory = Path(started["directory"]) if started else Path(result["frames_path"]).parent
         local = self.local()
-        target = Path(path) if path else (directory.with_suffix(".mp4") if local else self.run / (directory.name + ".mp4"))
+        if local:
+            directory = Path(started["directory"]) if started else Path(result["frames_path"]).parent
+            target = Path(path) if path else directory.with_suffix(".mp4")
+        else:  # the host's own name for it (perhaps a Windows path), sent back as is to remove it
+            directory = started["directory"] if started else str(host_path(result["frames_path"]).parent)
+            relative = self.remote_relative(directory)
+            target = Path(path) if path else self.run / "remote-files" / Path(*relative.parts).with_suffix(".mp4")
         target.parent.mkdir(parents=True, exist_ok=True)
         w, h, count = result["width"], result["height"], result["frames"]
         frames_path, times_path = self.local_file(result["frames_path"]), self.local_file(result["times_path"])
@@ -431,6 +453,10 @@ class Session:
             directory.rmdir()
         else:
             self.client.call("file.remove", path=str(directory))
+            try:
+                frames_path.parent.rmdir()  # the copies' folder in remote-files/, now empty
+            except OSError:
+                pass
         gaps = [b - a for a, b in zip(times, times[1:])]
         return {"path": str(target), "seconds": round(times[-1], 2), "presents": count, "size": [w, h], "fps": fps,
                 "longest_gap_ms": round(max(gaps) * 1000) if gaps else None,
