@@ -98,7 +98,7 @@
     "settings_msaa": "Anti-aliasing",
     "settings_msaa_on": "On",
     "settings_msaa_off": "Off",
-    "settings_msaa_note": "4x multisampling for the game picture and the interface. Turning it off lightens the load on the GPU, and may help if the interface shows garbled blocks (as on 6th-gen Intel graphics). Applies after restarting the game.",
+    "settings_msaa_note": "4x multisampling for the game picture. Turning it off lightens the load on the GPU. Applies after restarting the game.",
     "settings_msaa_restart": "Applies after restarting the game.",
     "settings_aspect": "Aspect ratio",
     "settings_aspect_wide": "Fit screen",

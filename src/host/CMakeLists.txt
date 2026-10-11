@@ -105,6 +105,11 @@ if(SRW64_ENABLE_RT64)
         # so dialogue and RmlUi render at display pixels instead of window points.
         target_compile_definitions(plume PRIVATE PLUME_APPLE_RETINA_ENABLED)
     endif()
+    # Without NDEBUG Plume turns on the D3D12 debug layer, breaking on every error, and the
+    # Vulkan validation layer, wherever they are installed (Windows' Graphics Tools, a
+    # Vulkan SDK): 0.4.6 broke so at the title on a player's Radeon 8060S. Appended after
+    # the directory's -UNDEBUG, so NDEBUG wins for Plume alone, as for RmlUi.
+    target_compile_options(plume PRIVATE -DNDEBUG)
     if(WIN32)
         # RT64 links the SDL2 it carries on Windows; the host uses the same one.
         set(SRW64_SDL2 "${SRW64_RT64}/src/contrib/mupen64plus-win32-deps/SDL2-2.26.3")

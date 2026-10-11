@@ -5263,7 +5263,7 @@ Rml::Element* find(Rml::Element* root,const std::string& text,bool exact) {
 void require(){if(!context)throw debug::RpcError(debug::ServerError,"shared UI is not ready");}
 }
 void window_init(SDL_Window* value,const std::filesystem::path& path){window=value;output=path;system.SetWindow(window);input.defer_sdl(true);app_menu::attach(window);}
-void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device,settings::msaa_at_start());ready=true;}
+void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device);ready=true;}
 void update(){auto lock=lock_ui();if(!ready)return;SDL_GetWindowSizeInPixels(window,&pixels_w,&pixels_h);int w,h;SDL_GetWindowSize(window,&w,&h);pixel_ratio=w?float(pixels_w)/w:1;if(!initialized)initialize();sync();input.flush_sdl();}
 uint32_t touch_buttons() {
     // Only the UI thread writes the pulse. A polling reader clearing an expired
