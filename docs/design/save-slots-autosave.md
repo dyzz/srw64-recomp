@@ -316,7 +316,7 @@ S2 起的实机运行、S5 的模拟器运行，每次开跑前先问。
 静态／组件检查：`native-save` 新增只有中断区、两栏都空的卡带，验证发布及四种文件导出的全部字节；`test_android_save_export.py` 编译并运行 APK 同一份 Java ZIP 代码，验证四份文件字节、选择器期间的快照隔离、输出失败、缺文件及空文件拒绝。Android C++／Java 编译与 APK 打包另行完成。以上不等于两位玩家的 Android 13／16 设备已实测。
 
 
-### 无存储权限的公共导出（2026-10-09 后续）
+### 无存储权限的公共导出（2026-10-09 后续；2026-10-11 起只在没有存档文件夹时使用，位置改到 Documents，见 §11）
 
 Android 10+ 通过 `MediaStore.Downloads` 写入应用自己的公开下载文件，不申请存储权限。存档 ZIP 在 **内部共享存储/Download/Marchwind64/saves/**，问题报告在 **Download/Marchwind64/reports/**；普通文件管理器可见。每次存档导出用时间戳文件名，不覆盖已有备份。先设置 `IS_PENDING`，输出流和 ZIP 成功关闭后才发布并显示实际路径，失败删除不完整文件。Android 9 用 `ACTION_CREATE_DOCUMENT` 选保存位置，同样不申请存储权限。
 
@@ -325,3 +325,40 @@ Android 10+ 通过 `MediaStore.Downloads` 写入应用自己的公开下载文�
 依据：[Android shared storage](https://developer.android.com/training/data-storage/shared/media)、[Storage Access Framework](https://developer.android.com/training/data-storage/shared/documents-files)。
 
 实机验证（2026-10-09）：Seeker / Android 16，APK 不声明任何 `uses-permission`，未授予管理所有文件权限。存档与报告均写到上述 Download 公共目录，普通 `adb pull` 可取回；系统「文件」能显示报告 ZIP，「打开文件夹」定位正确。解压存档包含四个模拟器文件，ares 文件与安装前 32 KiB 卡带逐字节一致。此证据不代表三星 One UI 5.1 或 OriginOS 6 已实测。本地证据在 `build/android/public-data-qa-20261009/`。
+
+
+## 11. 安卓存档文件夹 Documents/Marchwind64（2026-10-11）
+
+§10 之后存档仍在私有目录：玩家看不到、卸载即丢，导入要先把文件放进私有的 `import/`，设置里显示的 `/data/user/0/…` 路径玩家打不开。改为玩家授权一个文件夹（SAF `ACTION_OPEN_DOCUMENT_TREE` ＋ `takePersistableUriPermission`），默认 **内部存储/Documents/Marchwind64**。不申请任何存储权限，也不申请「管理所有文件」：不授权时应用只能读自己建的文件，玩家用文件管理器放进去的模拟器存档、重装前留下的存档都读不到，所以必须走授权。选 Documents 而不是 Download：Download 常被「清理」类工具当作可删，Documents 是用户文档的约定位置。
+
+```
+Documents/Marchwind64/
+  saves/     存档库的副本：cartridge.sram（＝ares save.ram）、.prev、slots/、auto/、trash/、imports/、settings.json
+  import/    玩家放模拟器存档      export/   四种模拟器文件（不打包）
+  reports/   问题报告              filters/、bezels/   玩家自己的滤镜、边框
+```
+
+HD 包、设置、运行日志、ROM 仍只在私有目录。
+
+**宿主不变，同步在 Java（`PlayerFolder.java`）**：宿主要真实路径（`std::filesystem`、librashader 按路径加载预设），所以私有 `files/user` 仍是工作目录，Java 在两边之间复制，所有传输由一把锁串行：
+
+| 内容 | 方向 | 时机 |
+|---|---|---|
+| `saves/` | 私有 → 文件夹，**私有为准** | 进游戏前；游戏中每 3 秒比对私有库的指纹（文件名、大小、修改时间），变了才传；离开前台时立即传 |
+| `saves/` 恢复 | 文件夹 → 私有 | 只在私有库为空（没有卡带、扩展栏、自动存档）时，进游戏前：重装、清除数据之后 |
+| `import/` | 文件夹 → 私有 `saves/import`，文件夹为准 | 进游戏前、回到前台、点「重新读取」 |
+| `filters/`、`bezels/` | 文件夹 → 私有，文件夹为准（保留宿主写的 README.txt） | 进游戏前、回到前台、打开边框／滤镜选择 |
+| `export/`、`reports/` | 私有 → 文件夹 | 导出、导出报告之后 |
+
+- 比较：大小不同或源比目标新就复制；拉入的文件把修改时间设成文件夹里的，下次不重复。跳过宿主原子写的 `*.tmp-*` 和自己的 `*.srw64-part`。
+- 删除：`saves/` 的子文件夹（slots、auto、trash、imports）跟私有一致，轮换掉的自动存档、进回收站的栏在文件夹里也删；`saves/` 顶层玩家放的其他文件不动。`import/`、`filters/`、`bezels/` 私有一侧跟文件夹一致。
+- 老玩家：第一次授权时私有库整份传过去；文件夹还没有 `filters/`、`bezels/` 时先把私有的传过去，之后以文件夹为准。
+- 授权后第一次传存档（`fresh`）：文件夹里已有 `saves/` 且卡带与私有的不同（多半是重装后先玩了、后授权），先把它改名为 `saves-<时间>` 再写，不覆盖旧进度；需要时把其中的 `cartridge.sram` 放进 `import/` 逐栏导入。
+- 选的是 Documents 本身时在里面建 `Marchwind64`；选别的文件夹也照用，设置显示实际路径（`primary:` 卷显示为相对路径，其他卷前面带卷名）。
+
+**授权的时机**：启动器在 ROM、HD 包之后、进游戏前问一次（中英双语说明＋「选择文件夹」「以后再说」）。选择器的 `EXTRA_INITIAL_URI` 指向 Documents/Marchwind64（Android 11+ 应用能自己建这个文件夹；建不了就指向 Documents）。「以后再说」记住，不再追问；设置 → 存档的「选择文件夹」随时可选。卸载会撤销授权，重装后再问一次，选同一个文件夹即恢复。
+
+**设置（`frontend.cpp` 的 `saves_page`，安卓）**：最上面「存档文件夹」行显示路径和「打开文件夹」「换一个文件夹」，没有时显示提示和「选择文件夹」；导出给模拟器的路径是 `…/export`；导入显示 `…/import`，「重新读取」先同步再扫描；边框、滤镜选择里「我的」显示文件夹里的路径。「打开文件夹」把私有路径或显示路径映射到文件夹里对应的子文件夹，用系统「文件」打开。没有存档文件夹时导出、报告仍走 §10 的 MediaStore 方式，位置改为 Documents/Marchwind64/export、reports（`MediaStore.Files`，同样无需权限）。
+
+JNI（`SRW64Activity`）：`playerFolder()`、`choosePlayerFolder()`、`syncImport()`、`syncLooks()`（后两个阻塞等同步完成，最多 20 秒），`exportSaves`／`exportReport` 有文件夹时直接写进文件夹。
+

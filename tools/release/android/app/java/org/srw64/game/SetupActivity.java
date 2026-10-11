@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.File;
@@ -35,10 +36,10 @@ import java.util.zip.ZipInputStream;
 // with this app from a file manager or browser.
 public class SetupActivity extends Activity {
     static final String IMPORT_HD = "org.srw64.game.IMPORT_HD";
-    private static final int PICK_ROM = 1, PICK_HD = 2;
+    private static final int PICK_ROM = 1, PICK_HD = 2, PICK_FOLDER = 3;
     private LinearLayout page;
     private TextView message;
-    private boolean offerHd;
+    private boolean offerHd, folderSynced;
 
     static File romFile(Activity activity) { return new File(activity.getFilesDir(), "rom.z64"); }
     static File resourceDir(Activity activity) { return new File(activity.getFilesDir(), "resources"); }
@@ -57,7 +58,11 @@ public class SetupActivity extends Activity {
         message.setGravity(Gravity.CENTER);
         message.setTextSize(20);
         page.addView(message);
-        setContentView(page);
+        // A long page (the save folder's) scrolls instead of pushing its buttons off a landscape screen.
+        ScrollView scroll = new ScrollView(this);
+        scroll.setFillViewport(true);
+        scroll.addView(page, new ScrollView.LayoutParams(ScrollView.LayoutParams.MATCH_PARENT, ScrollView.LayoutParams.WRAP_CONTENT));
+        setContentView(scroll);
         show("正在准备…\nPreparing…");
         new Thread(() -> {
             try {
@@ -85,6 +90,11 @@ public class SetupActivity extends Activity {
     private void next() {
         if (romFile(this).isFile()) {
             if (offerHd && !hdDir(this).isDirectory()) { askHd(); return; }
+            if (!folderSynced) {
+                PlayerFolder folder = PlayerFolder.open(this);
+                if (folder != null) { syncFolder(folder); return; }
+                if (!PlayerFolder.declined(this)) { askFolder(); return; }
+            }
             Intent game = new Intent(this, SRW64Activity.class);
             // Development: `adb shell am start ... --esa args a,b` passes extra host arguments.
             if (getIntent().hasExtra("args")) game.putExtra("args", getIntent().getStringArrayExtra("args"));
@@ -110,6 +120,38 @@ public class SetupActivity extends Activity {
         button("跳过，开始游戏\nSkip and play", this::next);
     }
 
+    // The player's folder (PlayerFolder): asked once, before the game; "Not now" is kept
+    // and the settings' Saves page can choose it later.
+    private void askFolder() {
+        show("选择存档文件夹：存档、导入导出、问题报告、滤镜和边框放在「内部存储/" + PlayerFolder.SUGGESTED + "」，"
+                + "文件管理器里能看到，卸载也不会丢。下一步点「使用此文件夹」，再点「允许」。\n"
+                + "Choose the save folder: saves, import and export, reports, filters and bezels go in “" + PlayerFolder.SUGGESTED + "”, "
+                + "visible to any file manager and kept after an uninstall. Next, tap “Use this folder”, then “Allow”.");
+        button("选择文件夹\nChoose the folder", () -> {
+            try { startActivityForResult(PlayerFolder.pick(), PICK_FOLDER); }
+            catch (android.content.ActivityNotFoundException error) { PlayerFolder.decline(this); next(); }
+        });
+        button("以后再说（设置 → 存档里可以再选）\nNot now (Settings → Saves can choose it later)", () -> { PlayerFolder.decline(this); next(); });
+    }
+
+    // Before the game: the saves back after a reinstall, the private ones out, the
+    // player's imports, filters and bezels in. A failure is shown but does not stop play.
+    private void syncFolder(PlayerFolder folder) {
+        show("正在同步存档文件夹…\nSyncing the save folder…");
+        new Thread(() -> {
+            String failure = null;
+            try { folder.everything(userDir(this)); }
+            catch (IOException | RuntimeException error) { failure = String.valueOf(error); }
+            String result = failure;
+            runOnUiThread(() -> {
+                folderSynced = true;
+                if (result == null) { next(); return; }
+                show("存档文件夹同步失败：" + result + "\n存档仍保存在游戏内部。\n\nCould not sync the save folder; the saves are still kept inside the game.");
+                button("继续\nContinue", this::next);
+            });
+        }).start();
+    }
+
     private void pickHd() {
         show("请选择 HD 美术包（Marchwind64-HD-….zip）\nChoose the HD art pack (Marchwind64-HD-….zip)");
         Intent pick = new Intent(Intent.ACTION_OPEN_DOCUMENT);
@@ -122,6 +164,16 @@ public class SetupActivity extends Activity {
     protected void onActivityResult(int request, int result, Intent data) {
         super.onActivityResult(request, result, data);
         Uri uri = result == RESULT_OK && data != null ? data.getData() : null;
+        if (request == PICK_FOLDER) {
+            if (uri == null) { PlayerFolder.decline(this); next(); return; }
+            try { syncFolder(PlayerFolder.remember(this, uri)); }
+            catch (IOException | RuntimeException error) {
+                show("无法使用这个文件夹：" + error + "\nCould not use this folder.");
+                button("重新选择\nChoose again", this::askFolder);
+                button("以后再说\nNot now", () -> { PlayerFolder.decline(this); next(); });
+            }
+            return;
+        }
         if (request == PICK_HD) {
             if (uri == null) {
                 // Not now: carry on to the game if there is a ROM, else stop here.

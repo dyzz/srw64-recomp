@@ -1015,6 +1015,10 @@ std::string save_message,save_force;
 bool android_export_saves(const std::string& folder);
 int android_export_status(const char* method);
 std::string android_export_location(const char* method);
+bool android_call(const char* method);
+// The player's folder (PlayerFolder.java), as the settings show it: Documents/Marchwind64,
+// or empty while the player has not chosen one.
+std::string android_player_folder(){return android_export_location("playerFolder");}
 bool save_export_pending=false;
 void save_export_poll() {
     if(!save_export_pending)return;
@@ -1043,12 +1047,24 @@ std::string saves_page() {
     body+=settings_row("settings_autosave_intermission",intermission)+settings_row("settings_autosave_turn",turn);
     const auto folder=save_store::library_directory();
 #ifdef __ANDROID__
-    body+=settings_row("settings_save_export",button("save-export",label("settings_save_export_button"),false,save_export_pending),{},"settings_save_export_note_android");
+    // Saves, import/export and reports live in the player's folder once there is one; the
+    // game's own copy stays private (PlayerFolder.java).
+    const auto shown=android_player_folder();
+    body+=settings_row("settings_save_folder",shown.empty()?button("save-folder-choose",label("settings_save_folder_choose")):
+        button("save-folder-open",label("settings_browse_open"))+button("save-folder-choose",label("settings_save_folder_change")),
+        "<p class='set-path'>"+(shown.empty()?label("settings_save_folder_none"):escape(shown))+"</p>");
+    body+=settings_row("settings_save_export",button("save-export",label("settings_save_export_button"),false,save_export_pending),
+        shown.empty()?std::string():"<p class='set-path'>"+escape(shown+"/export")+"</p>",shown.empty()?"settings_save_export_note_android":"settings_save_export_note");
 #else
     body+=settings_row("settings_save_export",button("save-export",label("settings_save_export_button")),"<p class='set-path'>"+escape((folder/"export").string())+"</p>");
 #endif
     if(!save_candidates_read){save_candidates=save_store::import_candidates();save_candidates_read=true;}
-    body+=settings_row("settings_save_import",button("save-import-refresh",label("settings_save_import_refresh")),"<p class='set-path'>"+escape((folder/"import").string())+"</p>");
+#ifdef __ANDROID__
+    const auto import_shown=shown.empty()?label("settings_save_import_no_folder"):escape(shown+"/import");
+#else
+    const auto import_shown=escape((folder/"import").string());
+#endif
+    body+=settings_row("settings_save_import",button("save-import-refresh",label("settings_save_import_refresh")),"<p class='set-path'>"+import_shown+"</p>");
     for(const auto& file:save_candidates) {
         const auto name=file.value("file",std::string());
         std::string slots;
@@ -1128,6 +1144,17 @@ int android_export_status(const char* name) {
     env->DeleteLocalRef(type);env->DeleteLocalRef(activity);
     return status;
 }
+bool android_call(const char* name) {
+    auto* env=static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    auto activity=static_cast<jobject>(SDL_AndroidGetActivity());
+    if(!env || !activity)return false;
+    const jclass type=env->GetObjectClass(activity);
+    const jmethodID method=env->GetMethodID(type,name,"()Z");
+    bool done=method && env->CallBooleanMethod(activity,method);
+    if(env->ExceptionCheck()){env->ExceptionClear();done=false;}
+    env->DeleteLocalRef(type);env->DeleteLocalRef(activity);
+    return done;
+}
 std::string android_export_location(const char* name) {
     auto* env=static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
     auto activity=static_cast<jobject>(SDL_AndroidGetActivity());
@@ -1182,7 +1209,12 @@ std::string browser() {
         for(const auto& root:roots) {
             const char* key=root.kind==settings::LookFolder::builtin?"settings_browse_builtin":root.kind==settings::LookFolder::mine?
                 (bezels?"settings_bezel_mine":"settings_filter_mine"):"settings_browse_retroarch";
-            out+=row("browse-dir:"+root.path.string(),label(key)+" <span class='set-note'>"+escape(root.path.string())+"</span>");
+            auto shown=root.path.string();
+#ifdef __ANDROID__
+            // The player's own: the player's folder's copy (PlayerFolder.java mirrors it in).
+            if(root.kind==settings::LookFolder::mine)if(const auto mine=android_player_folder();!mine.empty())shown=mine+"/"+root.path.filename().string();
+#endif
+            out+=row("browse-dir:"+root.path.string(),label(key)+" <span class='set-note'>"+escape(shown)+"</span>");
             // The player's folder opens in the file manager, where there is one to open: on
             // Android the Files app, through the app's UserFilesProvider.
             if(root.kind==settings::LookFolder::mine && can_open_folder())
@@ -2548,6 +2580,9 @@ void settings_sync() {
         // The セーブ page: its choices, the import folder as last read and the last result.
         [&]{const auto c=save_store::settings();return std::to_string(c.autosave)+std::to_string(c.intermission)+std::to_string(c.turn);}()+
         save_candidates.dump()+save_message+save_force+report_message+info_message+
+#ifdef __ANDROID__
+        android_player_folder()+   // chosen from the Saves page while the window is open
+#endif
         // The General page's bezel and filter rows and their picker.
         (settings_pages[settings_page]==std::string("general")?look_stamp():std::string())+
         // The Cheats page: its switches, the levels row and the pilots the menu lists.
@@ -4210,7 +4245,12 @@ void choose(const std::string& id) {
         if(id=="bezel-off"){settings::set_bezel("");browse_kind.clear();}
         if(id=="filter-off"){settings::set_filter("");browse_kind.clear();}
         if(id.starts_with("filter-scale:"))settings::set_filter_scale(unsigned(std::stoul(id.substr(13))));
-        if(id.starts_with("browse:")){const auto kind=id.substr(7);browse_kind=browse_kind==kind?std::string():kind;browse_dir.clear();}
+        if(id.starts_with("browse:")) {
+            const auto kind=id.substr(7);browse_kind=browse_kind==kind?std::string():kind;browse_dir.clear();
+#ifdef __ANDROID__
+            if(!browse_kind.empty())android_call("syncLooks");   // what the player put in the folder's filters/ or bezels/
+#endif
+        }
         if(id.starts_with("open-folder:")){std::error_code error;std::filesystem::create_directories(id.substr(12),error);open_folder(id.substr(12));}
         if(id.starts_with("browse-dir:")){browse_dir=std::filesystem::path(id.substr(11));std::error_code error;std::filesystem::create_directories(browse_dir,error);}
         if(id=="browse-up") {
@@ -4299,7 +4339,18 @@ void choose(const std::string& id) {
             if(const auto at=save_message.find("{n}");at!=std::string::npos)save_message.replace(at,3,std::to_string(files.size()));
 #endif
         }
-        if(id=="save-import-refresh"){save_candidates_read=false;save_message.clear();save_force.clear();}
+        if(id=="save-import-refresh") {
+#ifdef __ANDROID__
+            android_call("syncImport");   // the player's folder's import/ into the library's
+#endif
+            // Read it now: the list is part of the window's stamp, so a rebuild follows only
+            // when it changed.
+            save_candidates=save_store::import_candidates();save_candidates_read=true;save_message.clear();save_force.clear();
+        }
+#ifdef __ANDROID__
+        if(id=="save-folder-choose")android_call("choosePlayerFolder");
+        if(id=="save-folder-open")open_folder(android_player_folder());
+#endif
         if(id.starts_with("save-import:") && id.size()>14) {
             const unsigned index=unsigned(id[12]-'0');const auto file=id.substr(14);
             bool intact=false;

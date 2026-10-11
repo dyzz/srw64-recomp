@@ -12,7 +12,7 @@
 | **我的（自己添加）** | 数据文件夹的 `filters/` | 数据文件夹的 `bezels/` | 第一次打开设置时自动建好，里面放一份三语的 `README.txt` 说明放什么；桌面上列表里有「在文件管理器里打开这个文件夹」 |
 | **RetroArch 自带** | `shaders/shaders_slang` | `overlays/` | 装了 RetroArch 才有：macOS `~/Library/Application Support/RetroArch`，Linux `~/.config/retroarch`、Flatpak `~/.var/app/org.libretro.RetroArch/config/retroarch`、Steam 版，Windows `%APPDATA%\RetroArch` 与 `C:\RetroArch-Win64` |
 
-数据文件夹就是存档旁的那个（macOS `~/Library/Application Support/srw64-recomp`，Linux／Steam Deck `~/.local/share/srw64-recomp`，安卓是应用私有的 `files/user`）。Steam Deck 不显示「在文件管理器里打开」；安卓上它打开系统「文件」App：应用带一个 DocumentsProvider（`UserFilesProvider.java`），把整个数据文件夹（存档、滤镜、框体、HD 包）作为「Marchwind64」位置放进「文件」App 和所有应用的文件选择器，玩家在那里把 RetroArch 的滤镜文件夹、框体图复制进来（文件夹连子目录一起复制），设置里的按钮经 JNI（`SRW64Activity.openUserFolder`）直接打开到对应子文件夹。两者都不显示窗口大小与显示方式。
+数据文件夹就是存档旁的那个（macOS `~/Library/Application Support/srw64-recomp`，Linux／Steam Deck `~/.local/share/srw64-recomp`，安卓是应用私有的 `files/user`）。Steam Deck 不显示「在文件管理器里打开」；安卓上它打开系统「文件」App：应用带一个 DocumentsProvider（`UserFilesProvider.java`），把整个数据文件夹（存档、滤镜、框体、HD 包）作为「Marchwind64」位置放进「文件」App 和所有应用的文件选择器，玩家在那里把 RetroArch 的滤镜文件夹、框体图复制进来（文件夹连子目录一起复制），设置里的按钮经 JNI（`SRW64Activity.openUserFolder`）直接打开到对应子文件夹。两者都不显示窗口大小与显示方式。2026-10-11 起，选了存档文件夹（默认 Documents/Marchwind64，[存档设计 §11](../design/save-slots-autosave.md)）后，玩家的滤镜、框体放在它的 `filters/`、`bezels/`：进游戏前、回到前台和打开选择时同步进私有的 `files/user/filters`、`bezels`（宿主仍按私有路径加载），选择里「我的」显示文件夹里的路径，「打开文件夹」也打开那里。
 
 - **玩家自己加滤镜**：把 RetroArch 的预设（`.slangp`）连同它用到的 `.slang` 和图片一起复制进「我的」`filters/`，保持原来的文件夹结构（很多预设引用 `../include` 或 `../../include`），子文件夹随意。浏览列表每次打开都重新读文件夹，加完不用重启。
 - **玩家自己加框体**：中间有透明窗口的 `.png`，或指向它的 RetroArch overlay `.cfg`（`overlay0_overlay = 图片名.png`），放进「我的」`bezels/`。透明窗口自动对准 4:3 画面（§3）。

@@ -42,8 +42,8 @@
 - 问题报告把每次运行目录里最新的 2 个 `.dmp`（单个不超过 32 MiB）原样放进 zip（二进制，不做 `~` 替换；模块路径里可能有用户名）。
 
 
-## 安卓公共导出（2026-10-09）
+## 安卓公共导出（2026-10-09；2026-10-11 改）
 
-Android 10+ 导出的报告通过 `MediaStore.Downloads` 保存到 **内部共享存储/Download/Marchwind64/reports/**，无需存储权限；反馈页在保存成功后显示实际公共路径，「打开文件夹」进入该目录。Android 9 使用系统文件选择器选择报告 ZIP 的保存位置，同样无需存储权限。发布前保持 pending，输出流关闭失败时删除不完整下载，失败不会显示成功。
+选了存档文件夹（默认 Documents/Marchwind64，[存档设计 §11](../design/save-slots-autosave.md)）时，报告直接复制到它的 `reports/`，反馈页显示 `Documents/Marchwind64/reports/<文件名>`。没有存档文件夹时：Android 10+ 导出的报告通过 `MediaStore.Files` 保存到 **内部共享存储/Documents/Marchwind64/reports/**（2026-10-09 版写在 Download/Marchwind64/reports），无需存储权限；反馈页在保存成功后显示实际公共路径，「打开文件夹」进入该目录。Android 9 使用系统文件选择器选择报告 ZIP 的保存位置，同样无需存储权限。发布前保持 pending，输出流关闭失败时删除不完整下载，失败不会显示成功。
 
 原始运行日志继续位于私有 `files/user/sessions/`，可从系统「文件」的 Marchwind64 入口访问；公共报告仍只包含本页规定的脱敏内容。不申请「管理所有文件」，不要求玩家进入 `Android/data`。

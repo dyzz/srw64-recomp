@@ -723,11 +723,17 @@
     "touch_animation": "Anim",
     "settings_touch_opacity": "Control opacity",
     "settings_touch_opacity_note": "Lower values make the directions, buttons and labels more transparent.",
-    "settings_save_export_note_android": "Android 10+: saves to Download/Marchwind64/saves without storage permission. Android 9: choose a destination. Includes slots 1, 2 and suspend, not extended slots or autosaves.",
+    "settings_save_export_note_android": "Without a save folder: Android 10+ saves a zip to Documents/Marchwind64/export without storage permission; Android 9 asks for a destination. Includes slots 1, 2 and suspend, not extended slots or autosaves.",
     "settings_save_export_choose": "Saving… (Android 9: choose a destination in the system picker.)",
     "settings_save_export_saved": "Saved: {path}",
     "settings_save_export_cancelled": "Export cancelled.",
-    "settings_save_export_failed": "Could not save. Check free space and try again."
+    "settings_save_export_failed": "Could not save. Check free space and try again.",
+    "settings_save_folder": "Save folder",
+    "settings_save_folder_note": "Saves, emulator save import and export, and problem reports live here, where any file manager sees them and an uninstall leaves them. Kept in sync while you play.",
+    "settings_save_folder_choose": "Choose folder",
+    "settings_save_folder_change": "Change folder",
+    "settings_save_folder_none": "None yet: saves are kept only inside the game and an uninstall loses them.",
+    "settings_save_import_no_folder": "Choose a save folder above first, then put emulator saves in its import folder."
   },
   "entries": [
     {

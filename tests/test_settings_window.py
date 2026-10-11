@@ -74,7 +74,8 @@ class SettingsWindowTests(unittest.TestCase):
             for key in ("settings_bezel_note", "settings_filter_note", "settings_filter_unavailable", "settings_filter_loading"):
                 for run in runs(labels[key]):
                     self.assertLessEqual(em(run) * 12, row, (locale, key, run))
-            for key in ("settings_touch_opacity_note", "settings_save_export_note_android", "settings_dialogue_font_size_note", "settings_msaa_restart"):
+            for key in ("settings_touch_opacity_note", "settings_save_export_note_android", "settings_dialogue_font_size_note", "settings_msaa_restart",
+                        "settings_save_folder_note", "settings_save_folder_none", "settings_save_import_no_folder"):
                 for run in runs(labels[key]):
                     self.assertLessEqual(em(run) * 12, row, (locale, key, run))
             for key in ("cheats_note", "cheat_levels_note", "cheat_levels_away"):

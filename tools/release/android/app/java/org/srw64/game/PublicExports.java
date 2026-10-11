@@ -4,19 +4,19 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 
 import java.io.IOException;
 import java.io.OutputStream;
 
-// Android 10+: app-owned downloads need no storage permission. Keep a new export
-// hidden until the writer AND destination close; remove failed/partial downloads.
+// Android 10+, without a player's folder (PlayerFolder): files the app adds to
+// Documents/Marchwind64 need no storage permission. Keep a new export hidden until the
+// writer AND destination close; remove failed/partial files.
 final class PublicExports {
     interface Writer { void write(OutputStream stream) throws IOException; }
 
     static String directory(String kind) {
-        return Environment.DIRECTORY_DOWNLOADS + "/Marchwind64/" + kind;
+        return PlayerFolder.SUGGESTED + "/" + kind;
     }
 
     static String write(Context context, String kind, String name, Writer writer) throws IOException {
@@ -26,17 +26,17 @@ final class PublicExports {
         values.put(MediaStore.MediaColumns.MIME_TYPE, "application/zip");
         values.put(MediaStore.MediaColumns.RELATIVE_PATH, directory(kind) + "/");
         values.put(MediaStore.MediaColumns.IS_PENDING, 1);
-        Uri uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
-        if (uri == null) throw new IOException("Cannot create download");
+        Uri uri = resolver.insert(MediaStore.Files.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY), values);
+        if (uri == null) throw new IOException("Cannot create the export");
         try {
             try (OutputStream stream = resolver.openOutputStream(uri, "w")) {
-                if (stream == null) throw new IOException("Cannot open download");
+                if (stream == null) throw new IOException("Cannot open the export");
                 writer.write(stream);
             }
             values.clear();
             values.put(MediaStore.MediaColumns.IS_PENDING, 0);
             if (resolver.update(uri, values, null, null) != 1)
-                throw new IOException("Cannot publish download");
+                throw new IOException("Cannot publish the export");
             // MediaStore may adjust duplicate names; report the actual destination.
             try (android.database.Cursor cursor = resolver.query(uri,
                     new String[] { MediaStore.MediaColumns.DISPLAY_NAME }, null, null, null)) {

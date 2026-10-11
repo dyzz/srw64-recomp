@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.net.Uri;
 import android.provider.DocumentsContract;
 import android.view.WindowInsets;
@@ -22,6 +25,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 // The game: SDL3's Java glue loads SDL3, sdl2-compat (libSDL2.so) and libmain.so, then
 // runs the host's main with the arguments srw64.sh passes on Linux.
@@ -29,7 +36,15 @@ public class SRW64Activity extends SDLActivity {
     // The host is not re-entrant and runs once per process; the launcher will not swap
     // the HD folder under it (SetupActivity.importHd).
     static volatile boolean running;
-    private static final int EXPORT_DOCUMENT = 6401;
+    private static final int EXPORT_DOCUMENT = 6401, PICK_FOLDER = 6402;
+    // The player's folder (PlayerFolder): one thread for every transfer; the saves go out
+    // every few seconds when they changed and when the game leaves the screen.
+    private final ExecutorService folderSync = Executors.newSingleThreadExecutor();
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private volatile String savesSent = "";
+    private final Runnable savesTick = new Runnable() {
+        @Override public void run() { queueSaves(); handler.postDelayed(this, 3000); }
+    };
     // A pending export is immutable, independent of saves changing while it is written.
     private static final class Export {
         final String kind, name;
@@ -57,9 +72,18 @@ public class SRW64Activity extends SDLActivity {
             File directory = new File(path);
             if (!directory.getCanonicalFile().equals(new File(SetupActivity.userDir(this), "saves/export").getCanonicalFile()))
                 return false;
+            PlayerFolder folder = PlayerFolder.open(this);
+            if (folder != null) {
+                // The four files as they are, into the folder's export/.
+                File[] files = new File[SaveExport.NAMES.length];
+                for (int i = 0; i < files.length; ++i) files[i] = new File(directory, SaveExport.NAMES[i]);
+                saveExport = new Export("export", "", null);
+                toFolder(saveExport, () -> folder.send("export", files));
+                return true;
+            }
             SaveExport snapshot = new SaveExport(directory);
             String stamp = new SimpleDateFormat("yyyyMMdd-HHmmss-SSS", Locale.ROOT).format(new Date());
-            saveExport = new Export("saves", "srw64-saves-" + stamp + ".zip", snapshot::write);
+            saveExport = new Export("export", "srw64-saves-" + stamp + ".zip", snapshot::write);
             startExport(saveExport);
             return true;
         } catch (IOException | RuntimeException error) { return false; }
@@ -72,11 +96,88 @@ public class SRW64Activity extends SDLActivity {
             if (!report.isFile() || !report.getName().endsWith(".zip") ||
                 !report.getParentFile().equals(new File(SetupActivity.userDir(this), "reports").getCanonicalFile()))
                 return false;
+            PlayerFolder folder = PlayerFolder.open(this);
+            if (folder != null) {
+                reportExport = new Export("reports", report.getName(), null);
+                toFolder(reportExport, () -> folder.send("reports", report));
+                return true;
+            }
             // bug_report writes unique, closed archives; no live log is read here.
             reportExport = new Export("reports", report.getName(), stream -> Files.copy(report.toPath(), stream));
             startExport(reportExport);
             return true;
         } catch (IOException | RuntimeException error) { return false; }
+    }
+
+    private interface Send { String run() throws IOException; }
+    private void toFolder(Export job, Send send) {
+        folderSync.execute(() -> {
+            try { job.location = send.run(); job.status = 2; }
+            catch (IOException | RuntimeException error) { Log.w("SRW64", "player folder: " + error); job.status = 4; }
+        });
+    }
+
+    // --- The player's folder, for the settings (src/native/ui/frontend.cpp, over JNI) ---
+
+    // Where it is (Documents/Marchwind64), or empty without one.
+    public String playerFolder() {
+        PlayerFolder folder = PlayerFolder.open(this);
+        return folder == null ? "" : folder.display();
+    }
+
+    // The Saves page's "Choose folder": the system picker; the answer comes to onActivityResult.
+    public boolean choosePlayerFolder() {
+        runOnUiThread(() -> {
+            try { startActivityForResult(PlayerFolder.pick(), PICK_FOLDER); }
+            catch (ActivityNotFoundException | SecurityException error) { Log.w("SRW64", "player folder: " + error); }
+        });
+        return true;
+    }
+
+    // Before the import list is read, and before the bezel or filter picker opens.
+    public boolean syncImport() { return await(folder -> folder.incoming(SetupActivity.userDir(this))); }
+    public boolean syncLooks() { return await(folder -> folder.looks(SetupActivity.userDir(this))); }
+
+    private interface Task { void run(PlayerFolder folder) throws IOException; }
+    private boolean await(Task task) {
+        PlayerFolder folder = PlayerFolder.open(this);
+        if (folder == null) return false;
+        Future<?> job = folderSync.submit(() -> { task.run(folder); return null; });
+        try { job.get(20, TimeUnit.SECONDS); return true; }
+        catch (Exception error) { Log.w("SRW64", "player folder: " + error); return false; }
+    }
+
+    private void queueSaves() {
+        folderSync.execute(() -> {
+            PlayerFolder folder = PlayerFolder.open(this);
+            if (folder == null) return;
+            File user = SetupActivity.userDir(this);
+            String now = PlayerFolder.fingerprint(user);
+            if (now.equals(savesSent)) return;
+            try { folder.saves(user); savesSent = now; }
+            catch (IOException | RuntimeException error) { Log.w("SRW64", "player folder: " + error); }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        handler.removeCallbacks(savesTick);
+        handler.post(savesTick);
+        // Back from a file manager: what the player put in import/, filters/ or bezels/.
+        folderSync.execute(() -> {
+            PlayerFolder folder = PlayerFolder.open(this);
+            if (folder == null) return;
+            try { folder.incoming(SetupActivity.userDir(this)); folder.looks(SetupActivity.userDir(this)); }
+            catch (IOException | RuntimeException error) { Log.w("SRW64", "player folder: " + error); }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        handler.removeCallbacks(savesTick);
+        queueSaves();
+        super.onPause();
     }
 
     private void startExport(Export job) {
@@ -106,6 +207,15 @@ public class SRW64Activity extends SDLActivity {
 
     @Override
     protected void onActivityResult(int request, int result, Intent data) {
+        if (request == PICK_FOLDER) {
+            final Uri tree = result == RESULT_OK && data != null ? data.getData() : null;
+            if (tree == null) return;
+            folderSync.execute(() -> {
+                try { PlayerFolder.remember(this, tree).everything(SetupActivity.userDir(this)); savesSent = ""; }
+                catch (IOException | RuntimeException error) { Log.w("SRW64", "player folder: " + error); }
+            });
+            return;
+        }
         if (request != EXPORT_DOCUMENT) { super.onActivityResult(request, result, data); return; }
         final Export job = pendingDocument;
         pendingDocument = null;
@@ -179,10 +289,18 @@ public class SRW64Activity extends SDLActivity {
     }
 
     // The settings' "open this folder" (src/native/ui/frontend.cpp, over JNI): the system
-    // Files app at a folder of the data folder, through UserFilesProvider. False for a
-    // folder outside it or when no app can show it.
+    // Files app at the player's folder (its saves, import, export, reports, filters or
+    // bezels), else at an export under Documents/Marchwind64, else at a folder of the data
+    // folder through UserFilesProvider. False for a folder outside them or when no app can
+    // show it.
     public boolean openUserFolder(String path) {
-        if (path.equals(PublicExports.directory("reports")) || path.equals(PublicExports.directory("saves"))) {
+        PlayerFolder folder = PlayerFolder.open(this);
+        String id = folder == null ? null : folder.place(SetupActivity.userDir(this), path);
+        if (id != null) {
+            try { startActivity(folder.view(id)); return true; }
+            catch (ActivityNotFoundException | SecurityException error) { return false; }
+        }
+        if (path.startsWith(PublicExports.directory(""))) {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             Uri uri = DocumentsContract.buildDocumentUri("com.android.externalstorage.documents", "primary:" + path);
             intent.setDataAndType(uri, DocumentsContract.Document.MIME_TYPE_DIR);
@@ -191,9 +309,9 @@ public class SRW64Activity extends SDLActivity {
         }
         String relative;
         try {
-            String base = SetupActivity.userDir(this).getCanonicalPath(), folder = new File(path).getCanonicalPath();
-            if (folder.equals(base)) relative = "";
-            else if (folder.startsWith(base + File.separator)) relative = folder.substring(base.length() + 1);
+            String base = SetupActivity.userDir(this).getCanonicalPath(), target = new File(path).getCanonicalPath();
+            if (target.equals(base)) relative = "";
+            else if (target.startsWith(base + File.separator)) relative = target.substring(base.length() + 1);
             else return false;
         } catch (java.io.IOException error) {
             return false;

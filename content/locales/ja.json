@@ -723,11 +723,17 @@
     "touch_animation": "演出",
     "settings_touch_opacity": "ボタン不透明度",
     "settings_touch_opacity_note": "低いほど透明になります。方向キー・ボタン・文字をまとめて調整します。",
-    "settings_save_export_note_android": "Android 10 以降は権限不要で Download/Marchwind64/saves に保存。Android 9 は保存先を選択します。スロット1・2と中断データを含み、拡張枠と自動セーブは含みません。",
+    "settings_save_export_note_android": "セーブフォルダーがないとき： Android 10 以降は権限不要で Documents/Marchwind64/export に zip で保存、 Android 9 は保存先を選択します。 スロット1・2と中断データを含み、 拡張枠と自動セーブは含みません。",
     "settings_save_export_choose": "保存中…（Android 9 はシステム画面で保存先を選んでください）",
     "settings_save_export_saved": "保存しました：{path}",
     "settings_save_export_cancelled": "書き出しをキャンセルしました。",
-    "settings_save_export_failed": "保存できませんでした。空き容量を確認して再試行してください。"
+    "settings_save_export_failed": "保存できませんでした。空き容量を確認して再試行してください。",
+    "settings_save_folder": "セーブフォルダー",
+    "settings_save_folder_note": "セーブデータ、エミュレーター用の取り込み・書き出し、 問題レポートはここに置かれます。 ファイルマネージャーから見え、 アンインストールしても残ります。 プレイ中は自動で同期します。",
+    "settings_save_folder_choose": "フォルダーを選ぶ",
+    "settings_save_folder_change": "別のフォルダーにする",
+    "settings_save_folder_none": "未選択： セーブはゲーム内部にだけあり、 アンインストールすると消えます。",
+    "settings_save_import_no_folder": "先に上でセーブフォルダーを選び、 その import フォルダにエミュレーターのセーブを入れてください。"
   },
   "entries": [],
   "display_name": "日本語"
