@@ -339,14 +339,23 @@ struct Uniforms {
     float rect[4], uv[4], color[4], z[4];
 };
 
-// Blended: the game's depth test, never a depth write; no culling (the chapter card
-// turns its back while it flips).
+// Blended with the game's depth test, no culling (the chapter card turns its back while it
+// flips). Where the game's draw also writes depth (a unit in a battle), a second pass writes
+// the picture's depth, its opaque pixels only, and no colour: drawn later, a model behind the
+// unit (the night bridge's deck, player report 2026-10-11) stays behind it, as with the
+// original's parts.
 bool draw_sprite(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer, const RT64::NativeMeshDraw& call,
                  plume::RenderDescriptorSet* set, const Uniforms& u, bool quad, bool wrap) {
     gpu::State state;
     state.blend = gpu::Blend::premultiplied;
     state.depth_test = call.depthCompare;
-    if (!program->begin(list, framebuffer, call, state, set, gpu::push_data(&u, sizeof(u)), (wrap ? 1u : 0u) | (quad ? 2u : 0u)))
+    const uint32_t flags = (wrap ? 1u : 0u) | (quad ? 2u : 0u);
+    if (!program->begin(list, framebuffer, call, state, set, gpu::push_data(&u, sizeof(u)), flags))
+        return false;
+    list->drawInstanced(4, 1, 0, 0);
+    if (!call.depthWrite) return true;
+    state.depth_write = true;
+    if (!program->begin(list, framebuffer, call, state, set, gpu::push_data(&u, sizeof(u)), flags | 4u))
         return false;
     list->drawInstanced(4, 1, 0, 0);
     return true;
