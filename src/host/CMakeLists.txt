@@ -14,6 +14,20 @@ endif()
 if(SRW64_ASSERTS)
     add_compile_options(-UNDEBUG)
 endif()
+# Every target a third-party directory defines, its subdirectories' too, built with NDEBUG.
+function(srw64_release_targets directory)
+    get_property(targets DIRECTORY "${directory}" PROPERTY BUILDSYSTEM_TARGETS)
+    foreach(target IN LISTS targets)
+        get_target_property(type ${target} TYPE)
+        if(type MATCHES "^(STATIC_LIBRARY|SHARED_LIBRARY|MODULE_LIBRARY|OBJECT_LIBRARY|EXECUTABLE)$")
+            target_compile_options(${target} PRIVATE -DNDEBUG)
+        endif()
+    endforeach()
+    get_property(subdirectories DIRECTORY "${directory}" PROPERTY SUBDIRECTORIES)
+    foreach(subdirectory IN LISTS subdirectories)
+        srw64_release_targets("${subdirectory}")
+    endforeach()
+endfunction()
 add_compile_options(-fno-strict-aliasing)
 # The RSP vector unit needs SSE4.1 on x86-64 (librecomp rsp_vu.hpp); arm64 uses sse2neon.
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|AMD64)$")
@@ -105,11 +119,13 @@ if(SRW64_ENABLE_RT64)
         # so dialogue and RmlUi render at display pixels instead of window points.
         target_compile_definitions(plume PRIVATE PLUME_APPLE_RETINA_ENABLED)
     endif()
-    # Without NDEBUG Plume turns on the D3D12 debug layer, breaking on every error, and the
+    # SRW64_ASSERTS is for our own code. RT64 and what it carries build with NDEBUG:
+    # without it Plume turns on the D3D12 debug layer, breaking on every error, and the
     # Vulkan validation layer, wherever they are installed (Windows' Graphics Tools, a
-    # Vulkan SDK): 0.4.6 broke so at the title on a player's Radeon 8060S. Appended after
-    # the directory's -UNDEBUG, so NDEBUG wins for Plume alone, as for RmlUi.
-    target_compile_options(plume PRIVATE -DNDEBUG)
+    # Vulkan SDK; 0.4.6 broke so at the title on a player's Radeon 8060S), and the rest
+    # keep debug paths no release wants. Appended after the directory's -UNDEBUG, so NDEBUG
+    # wins for these targets alone, as for RmlUi (src/native/ui/CMakeLists.txt).
+    srw64_release_targets("${SRW64_RT64}")
     if(WIN32)
         # RT64 links the SDL2 it carries on Windows; the host uses the same one.
         set(SRW64_SDL2 "${SRW64_RT64}/src/contrib/mupen64plus-win32-deps/SDL2-2.26.3")
