@@ -34,11 +34,12 @@ import java.util.Set;
 //   saves/    the save library, a copy of the private one (the private copy wins)
 //   import/   emulator saves to take in        export/   the four emulator files
 //   reports/  problem reports                   filters/, bezels/   the player's own
+//   logs/     the last runs' logs, for a game that cannot reach its settings to export a report
 //
 // The host keeps reading and writing the private user directory (it needs real paths);
 // this mirrors the two. Saves go out, and come back only into an empty library (after a
-// reinstall or cleared data); import/, filters/ and bezels/ come in; export/ and reports/
-// go out. One lock serialises every transfer.
+// reinstall or cleared data); import/, filters/ and bezels/ come in; export/, reports/ and
+// logs/ go out. One lock serialises every transfer.
 final class PlayerFolder {
     static final String SUGGESTED = Environment.DIRECTORY_DOCUMENTS + "/Marchwind64";
     private static final String STORAGE = "com.android.externalstorage.documents";
@@ -46,6 +47,8 @@ final class PlayerFolder {
     private static final Object LOCK = new Object();
     // Not part of the mirrored library: they have their own folders at the top.
     private static final Set<String> SAVES_SKIP = new HashSet<>(Arrays.asList("import", "export"));
+    // How many runs' logs logs/ keeps, as the problem report does (bug_report.cpp).
+    private static final int LOGS_KEPT = 3;
     // The host writes this into the private filters/ and bezels/ (presentation_settings.cpp).
     private static final Set<String> LOOKS_KEEP = Collections.singleton("README.txt");
 
@@ -137,7 +140,54 @@ final class PlayerFolder {
             saves(user);
             looks(user);
             incoming(user);
+            logs(user);
         }
+    }
+
+    // The last runs' console.log (the host's output, with the stall watchdog's thread
+    // dumps) out to logs/, named by when each run started: a game stuck on a black screen
+    // never reaches the settings that export a problem report. Older ones this wrote go.
+    void logs(File user) throws IOException {
+        synchronized (LOCK) {
+            File[] runs = new File(user, "sessions").listFiles(run -> new File(run, "run/console.log").isFile());
+            if (runs == null) runs = new File[0];
+            Arrays.sort(runs, (a, b) -> Long.compare(new File(b, "run/console.log").lastModified(), new File(a, "run/console.log").lastModified()));
+            String folder = directory(root, "logs", true);
+            Map<String, Entry> there = list(folder);
+            Set<String> kept = new HashSet<>();
+            for (int i = 0; i < Math.min(LOGS_KEPT, runs.length); ++i) {
+                File log = new File(runs[i], "run/console.log");
+                String name = logName(runs[i].getName());
+                kept.add(name);
+                Entry entry = there.get(name);
+                if (entry == null || entry.directory || entry.size != log.length() || log.lastModified() > entry.modified)
+                    put(folder, there, log, name);
+            }
+            for (Entry entry : there.values())
+                if (!entry.directory && entry.name.startsWith("Marchwind64-") && entry.name.endsWith(".log") && !kept.contains(entry.name))
+                    delete(entry);
+        }
+    }
+
+    // A session is <start in microseconds, hex>-<random> (runtime.cpp token()).
+    static String logName(String session) {
+        try {
+            long micros = Long.parseLong(session.substring(0, session.indexOf('-')), 16);
+            return "Marchwind64-" + new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.ROOT).format(new Date(micros / 1000)) + ".log";
+        } catch (RuntimeException error) {
+            return "Marchwind64-" + session + ".log";
+        }
+    }
+
+    // The newest run's log, as the game's periodic check compares it.
+    static String logFingerprint(File user) {
+        File[] runs = new File(user, "sessions").listFiles();
+        long newest = 0, size = 0;
+        if (runs != null) for (File run : runs) {
+            File log = new File(run, "run/console.log");
+            if (log.lastModified() > newest) { newest = log.lastModified(); size = log.length(); }
+        }
+        return newest + ":" + size;
     }
 
     // The private saves out. On the first transfer after a grant, saves already in the
@@ -205,7 +255,7 @@ final class PlayerFolder {
         synchronized (LOCK) {
             String folder = directory(root, kind, true);
             Map<String, Entry> there = list(folder);
-            for (File file : files) put(folder, there, file);
+            for (File file : files) put(folder, there, file, file.getName());
             return display() + "/" + kind + (files.length == 1 ? "/" + files[0].getName() : "");
         }
     }
@@ -330,16 +380,16 @@ final class PlayerFolder {
         }
     }
 
-    // A private file over its namesake in the folder, or as a new one beside them.
-    private void put(String parent, Map<String, Entry> there, File source) throws IOException {
-        Entry entry = there.get(source.getName());
+    // A private file over the folder's file of that name, or as a new one beside them.
+    private void put(String parent, Map<String, Entry> there, File source, String name) throws IOException {
+        Entry entry = there.get(name);
         try {
             if (entry != null && entry.directory) { DocumentsContract.deleteDocument(resolver, uri(entry.id)); entry = null; }
             Uri target = entry != null ? uri(entry.id)
-                    : DocumentsContract.createDocument(resolver, uri(parent), "application/octet-stream", source.getName());
-            if (target == null) throw new IOException("cannot make " + source.getName());
+                    : DocumentsContract.createDocument(resolver, uri(parent), "application/octet-stream", name);
+            if (target == null) throw new IOException("cannot make " + name);
             try (InputStream in = new FileInputStream(source); OutputStream out = resolver.openOutputStream(target, "wt")) {
-                if (out == null) throw new IOException("cannot write " + source.getName());
+                if (out == null) throw new IOException("cannot write " + name);
                 copy(in, out);
             }
         } catch (RuntimeException error) {
@@ -378,7 +428,7 @@ final class PlayerFolder {
                 if (entry != null && !entry.directory) { delete(entry); entry = null; }
                 push(file, entry != null ? entry.id : directory(to, name, true), below, Collections.emptySet(), below);
             } else if (entry == null || entry.directory || entry.size != file.length() || file.lastModified() > entry.modified) {
-                put(to, there, file);
+                put(to, there, file, name);
             }
         }
         if (prune) for (Entry entry : there.values()) if (!here.contains(entry.name)) delete(entry);

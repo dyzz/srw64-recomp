@@ -41,9 +41,16 @@ public class SRW64Activity extends SDLActivity {
     // every few seconds when they changed and when the game leaves the screen.
     private final ExecutorService folderSync = Executors.newSingleThreadExecutor();
     private final Handler handler = new Handler(Looper.getMainLooper());
-    private volatile String savesSent = "";
+    private volatile String savesSent = "", logsSent = "";
+    private int ticks;
     private final Runnable savesTick = new Runnable() {
-        @Override public void run() { queueSaves(); handler.postDelayed(this, 3000); }
+        @Override public void run() {
+            queueSaves();
+            // The log every 10 seconds: it grows all the time, and a stuck game's thread dumps
+            // (written 5 seconds into a stall) should reach logs/ without a restart.
+            if (++ticks % 3 == 0) queueLogs();
+            handler.postDelayed(this, 3000);
+        }
     };
     // A pending export is immutable, independent of saves changing while it is written.
     private static final class Export {
@@ -159,6 +166,18 @@ public class SRW64Activity extends SDLActivity {
         });
     }
 
+    private void queueLogs() {
+        folderSync.execute(() -> {
+            PlayerFolder folder = PlayerFolder.open(this);
+            if (folder == null) return;
+            File user = SetupActivity.userDir(this);
+            String now = PlayerFolder.logFingerprint(user);
+            if (now.equals(logsSent)) return;
+            try { folder.logs(user); logsSent = now; }
+            catch (IOException | RuntimeException error) { Log.w("SRW64", "player folder: " + error); }
+        });
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -177,6 +196,7 @@ public class SRW64Activity extends SDLActivity {
     protected void onPause() {
         handler.removeCallbacks(savesTick);
         queueSaves();
+        queueLogs();
         super.onPause();
     }
 
