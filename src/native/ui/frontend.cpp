@@ -165,6 +165,7 @@ Rml::ElementDocument *settings_doc{}, *link_doc{}, *notice_doc{};
 std::string settings_stamp, link_stamp, notice_stamp;
 json battle_request;
 uint64_t battle_request_serial{};   // the encounter the battle page shows
+std::string battle_focus;           // the page's control the cursor was last on
 Rml::ElementDocument* battle_doc{},*original_doc{};
 std::string battle_stamp,original_stamp;
 json intermission_request,upgrade_request,parts_request,ability_request,swap_request,save_request,title_request;
@@ -4004,6 +4005,22 @@ void battle_sync() {
         return;
     }
     document_close(original_doc);original_stamp.clear();
+    if(battle_doc) {
+        // The cursor (the yellow frame) stays on the page's controls: a tap beside them, on a
+        // pilot panel or a picture, gives it back to the control it was on (user, 2026-10-12).
+        auto* f=context->GetFocusElement();
+        const auto control=[](Rml::Element* e){
+            if(!e)return false;
+            const auto& id=e->GetId();
+            return e->GetTagName()=="button" || id=="battle-confirm" || id=="battle-weapon" || id=="battle-evade" || id=="battle-defend";
+        };
+        if(f && f->GetOwnerDocument()==battle_doc && control(f))battle_focus=f->GetId();
+        else if(!f || f->GetOwnerDocument()==battle_doc) {
+            auto* back=battle_focus.empty()?nullptr:battle_doc->GetElementById(battle_focus);
+            if(!control(back))back=battle_doc->GetElementById(next.value("spirit_menu",false)?"battle-spirit-back":"battle-confirm");
+            if(back)back->Focus();
+        }
+    }
     // With touch the page is laid out for it whatever the style (docs/design/touch-controls.md).
     const bool touch=touch_battle_layout();
     const bool hd_original=next.value("style",std::string())=="hd" && !touch;
@@ -4438,13 +4455,12 @@ void battle_buttons(uint32_t pressed,bool tab) {
         row({"battle-confirm"});row({"battle-counter","battle-evade","battle-defend"});
         row({"battle-weapon","battle-spirits","battle-animation","battle-back"});
         if(rows.empty())return;
-        // A tap on the page beside its buttons takes the focus (and its yellow frame) away:
-        // the keys go on from the button last focused, not from the first row.
-        static std::string last_focus;
+        // Up stops at 開始 and down at the last row; a focus off the buttons goes on from the
+        // button last focused (battle_sync keeps it there), not from the first row.
         size_t y=0,x=0;bool found=false;
         for(size_t r=0;r<rows.size();++r)for(size_t c=0;c<rows[r].size();++c)if(rows[r][c]==focus){y=r;x=c;found=true;}
-        if(!found)for(size_t r=0;r<rows.size();++r)for(size_t c=0;c<rows[r].size();++c)if(rows[r][c]->GetId()==last_focus){y=r;x=c;}
-        const auto focus_at=[&](size_t r,size_t c){last_focus=rows[r][c]->GetId();rows[r][c]->Focus();};
+        if(!found)for(size_t r=0;r<rows.size();++r)for(size_t c=0;c<rows[r].size();++c)if(rows[r][c]->GetId()==battle_focus){y=r;x=c;}
+        const auto focus_at=[&](size_t r,size_t c){battle_focus=rows[r][c]->GetId();rows[r][c]->Focus();};
         const int dy=pressed&(0x0800|(1u<<16))?-1:pressed&(0x0400|(1u<<17))?1:0;
         const int dx=dy?0:pressed&(0x0200|(1u<<18))?-1:1;
         if(dy) {
