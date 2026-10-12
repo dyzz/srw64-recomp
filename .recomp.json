@@ -4,11 +4,24 @@
   "wikidata": "Q1988494",
   "system": "N64",
   "type": "recomp",
-  "original": { "region": "Japan" },
-  "project": "SRW64 Recomp",
-  "status": "playable",
-  "targets": ["macOS"],
-  "toolchain": "N64recomp",
-  "approach": "Static recompilation, RT64 renderer, native RmlUi screens",
-  "notes": "Japanese, Chinese and English text. QoL improvements: battle animation skip, short script skip, dialogue history, remappable controls, widescreen, in-game settings overlay. Optional HD pack for portraits, backgrounds, maps and icons."
+  "original": {
+    "region": "Japan",
+    "revision": "Rev 0",
+    "serial": "NUS-NS4J-JPN",
+    "sha1": "9883aef6e20a46e110560c505999f3e21a1897de"
+  },
+  "project": "Marchwind 64",
+  "status": "released",
+  "targets": ["Windows", "macOS", "Linux", "Steam Deck", "Android"],
+  "toolchain": ["N64recomp", "RT64"],
+  "approach": "Static recompilation with the RT64 renderer; game screens redrawn natively with RmlUi",
+  "maintainers": [
+    { "name": "dyzz", "link": "https://github.com/dyzz" }
+  ],
+  "links": [
+    { "label": "Website", "url": "https://srw64.dreamquest.club/en/" },
+    { "label": "Source", "url": "https://github.com/dyzz/srw64-recomp" }
+  ],
+  "tags": ["translation", "widescreen", "hd-pack"],
+  "notes": "Full English and Chinese translations alongside the original Japanese, switchable in game. Widescreen 4:3 to 16:9 without stretching. Modern dialogue reader (history, auto-play, fast-forward, skip), redesigned pre-battle screen, stoppable battle animations, 2x speed, extra save slots and autosaves, remappable controls, RetroArch filters and bezels, a Library and a Battle Viewer. Original bug fixes with individual toggles. Optional HD art pack for portraits, battles, backgrounds, maps and icons."
 }
