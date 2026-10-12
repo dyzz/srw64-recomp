@@ -2,7 +2,7 @@
   "published": true,
   "version": "0.4.7",
   "tag": "v0.4.7",
-  "commit": "1c9b0a3a381756daca9afad8062669070574f2c4",
+  "commit": "d5840e5107c737126da63dafb1bc7629f237499b",
   "date": "2026-10-12",
   "github": "https://github.com/dyzz/srw64-recomp/releases/tag/v0.4.7",
   "quark": "https://pan.quark.cn/s/f6cc81fbe688?pwd=mQx4",
@@ -11,29 +11,29 @@
     {
       "platform": "macos",
       "name": "Marchwind64-0.4.7-macos14-arm64.zip",
-      "bytes": 52168564,
-      "sha256": "ed88ab15aff48101ade23da8de1c2d36d5f70c0f65e4a7aa21698afceec42b0a",
+      "bytes": 52170865,
+      "sha256": "026855e661ce9227746f8a99c635b8ffad80b0f5ecfe397befd44bf87b183414",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.7/Marchwind64-0.4.7-macos14-arm64.zip"
     },
     {
       "platform": "linux",
       "name": "Marchwind64-0.4.7-linux-x64.tar.gz",
-      "bytes": 56388919,
-      "sha256": "21f708c20f4b79f48267b5ffbcd0efb16594665a1fb433aae7d7717c6a418e79",
+      "bytes": 56392982,
+      "sha256": "e7ad7d08f0bc939e7f5d467763ca3fbbc0968ff1a6d2da1ef8198e33d3a3ea84",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.7/Marchwind64-0.4.7-linux-x64.tar.gz"
     },
     {
       "platform": "windows",
       "name": "Marchwind64-0.4.7-windows-x64.zip",
-      "bytes": 61999909,
-      "sha256": "9c00596a3d43a5464f5370cf7c4adef7b0c47e2cd3aa7fb7e7a56506072ce781",
+      "bytes": 62004709,
+      "sha256": "52f7d7424c79b010d35158042fa7c79820b7f243645daac3fe72a61dc04943f1",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.7/Marchwind64-0.4.7-windows-x64.zip"
     },
     {
       "platform": "android",
       "name": "Marchwind64-0.4.7-android-arm64.apk",
       "bytes": 91458017,
-      "sha256": "bc4b017a5d396c5f51aabed0eb9f10fd72100600bfb649172d2db78cfc97bcf7",
+      "sha256": "218f47a98288675adb7b483b2529553a2d1dfe57b715753e920c98cecda16f17",
       "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.4.7/Marchwind64-0.4.7-android-arm64.apk"
     }
   ],
