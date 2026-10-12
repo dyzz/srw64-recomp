@@ -171,6 +171,12 @@ Shape frame_shape(uint64_t workload) {
 extern "C" int32_t srw64_map_x(int32_t original, int32_t halves) {
     return original + srw64::wide_map::extra() * halves / 2;
 }
+extern "C" int32_t srw64_map_anchor_scroll(int32_t scroll, float unit_x) {
+    // A unit in the wide view's left band would give a negative x, which 801E3BEC's unsigned
+    // compare (x >= 257 becomes 240) sends to the right of the screen: it stops at 0.
+    const int32_t extra = srw64::wide_map::extra();
+    return extra ? std::max(scroll - extra / 2, -int32_t(unit_x)) : scroll;
+}
 extern "C" int32_t srw64_map_x_float(uint32_t bits, int32_t halves) {
     float value;
     std::memcpy(&value, &bits, 4);

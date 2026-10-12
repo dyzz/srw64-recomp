@@ -492,7 +492,7 @@ void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
     srw64::battle_ui_probe::poll(rdram,ctx,owner);
     move_probe.after(rdram,owner);
     skip_polls(rdram,ctx,engine,owner);
-    if (srw64_game_hooks.script_after) srw64_game_hooks.script_after(rdram, owner);
+    if (srw64_game_hooks.script_after) srw64_game_hooks.script_after(rdram, owner, uint16_t(ctx->r2));
 }
 void resident_func_8008FED4(uint8_t* rdram, recomp_context* ctx) {
     // A dialogue command's page (panel a0, text a1; 3D3E-3D43 via 8009F4B4). While the

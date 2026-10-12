@@ -65,7 +65,8 @@ struct SRW64GameHooks {
     void (*map_space_end)(uint8_t*, int32_t cursor){};
     void (*reset)(uint8_t*){};
     bool (*script_before)(uint8_t*, uint32_t){};
-    void (*script_after)(uint8_t*, uint32_t){};
+    // After a poll of the script `owner`: the status the poll returned (0x80: the event ended).
+    void (*script_after)(uint8_t*, uint32_t owner, uint16_t status){};
     void (*choice)(uint8_t*){};
     // 3D44 (8009FA94) runs for the script VM context `vm`. True: the host answered the
     // choice and the original handler does not run (the naming choice, unit_name.hpp).

@@ -4438,18 +4438,23 @@ void battle_buttons(uint32_t pressed,bool tab) {
         row({"battle-confirm"});row({"battle-counter","battle-evade","battle-defend"});
         row({"battle-weapon","battle-spirits","battle-animation","battle-back"});
         if(rows.empty())return;
-        size_t y=0,x=0;
-        for(size_t r=0;r<rows.size();++r)for(size_t c=0;c<rows[r].size();++c)if(rows[r][c]==focus){y=r;x=c;}
+        // A tap on the page beside its buttons takes the focus (and its yellow frame) away:
+        // the keys go on from the button last focused, not from the first row.
+        static std::string last_focus;
+        size_t y=0,x=0;bool found=false;
+        for(size_t r=0;r<rows.size();++r)for(size_t c=0;c<rows[r].size();++c)if(rows[r][c]==focus){y=r;x=c;found=true;}
+        if(!found)for(size_t r=0;r<rows.size();++r)for(size_t c=0;c<rows[r].size();++c)if(rows[r][c]->GetId()==last_focus){y=r;x=c;}
+        const auto focus_at=[&](size_t r,size_t c){last_focus=rows[r][c]->GetId();rows[r][c]->Focus();};
         const int dy=pressed&(0x0800|(1u<<16))?-1:pressed&(0x0400|(1u<<17))?1:0;
         const int dx=dy?0:pressed&(0x0200|(1u<<18))?-1:1;
         if(dy) {
-            if((dy<0 && y==0) || (dy>0 && y+1==rows.size()))return;
+            if((dy<0 && y==0) || (dy>0 && y+1==rows.size())){focus_at(y,x);return;}
             y+=dy;x=0;
             if(rows[y][0]->GetId()==response_ids[0])
                 if(auto* chosen=battle_doc->GetElementById(response_ids[std::clamp(battle_request.value("response",0),0,2)]))
                     x=size_t(std::find(rows[y].begin(),rows[y].end(),chosen)-rows[y].begin())%rows[y].size();
         } else x=size_t(std::clamp(int(x)+dx,0,int(rows[y].size())-1));
-        rows[y][x]->Focus();return;
+        focus_at(y,x);return;
     }
     if(pressed&(0x8000|0x1000)) {
         auto* focus=context->GetFocusElement();

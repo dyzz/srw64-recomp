@@ -202,7 +202,10 @@ MAP_WIDTH_CONSTANTS = {
     ("load_000AB160_func_801CABAC", 0x801CAC6C): ("0XBD", 1),          # terrain panel: which side of x = 189
     ("load_000AB160_func_801CABAC", 0x801CAC74): ("-0X22", -1),        # ...then 34 to the left
     ("load_000AB160_func_801C9D08", 0x801C9D44): ("-0X20", -1),        # a unit's window: 32 to its left
-    ("load_000AB160_func_801E3AE4", 0x801E3B1C): ("MEM_W(ctx->r1, -0XA2C)", "(MEM_W(ctx->r1, -0XA2C) - srw64_map_x(0, 1))"),
+    # The map battle's HP window (801E3AE4, f2 the unit's x; its gauge and damage figure follow
+    # it on the centred 320): the anchor never goes below 0, which 801E3BEC's unsigned compare
+    # (x < 257) took for past the right edge, moving the window to 240 (wide_map.cpp).
+    ("load_000AB160_func_801E3AE4", 0x801E3B1C): ("MEM_W(ctx->r1, -0XA2C)", "srw64_map_anchor_scroll(MEM_W(ctx->r1, -0XA2C), ctx->f2.fl)"),
 }
 
 # 8008AE90 builds each frame's display list by calling every render node's function: sprites
@@ -404,6 +407,7 @@ def main() -> int:
             destination.write("\n".join(f"void {name}(uint8_t*, recomp_context*);" for name in NATIVE_HOOKS.values()) + "\n")
             destination.write("void srw64_original_rom_read(uint8_t*, recomp_context*);\nvoid srw64_original_text_descriptor(uint8_t*, recomp_context*);\n")
             destination.write("int32_t srw64_map_x(int32_t original, int32_t halves);\nint32_t srw64_map_x_float(uint32_t bits, int32_t halves);\n"
+                              "int32_t srw64_map_anchor_scroll(int32_t scroll, float unit_x);\n"
                               "void srw64_render_node(uint8_t* rdram, recomp_context* ctx, int32_t function, int32_t sprite);\n#ifdef __cplusplus\n}\n#endif\n")
         trap = work / "generated/funcs_unsupported.c"
         trap.write_text('#include "recomp.h"\n#include <stdio.h>\n#include <stdlib.h>\n' + "\n".join(

@@ -75,4 +75,7 @@ extern "C" {
 int32_t srw64_map_x(int32_t original, int32_t halves);
 // The same for a float loaded by its upper 16 bits (lui): the bits of the new value.
 int32_t srw64_map_x_float(uint32_t bits, int32_t halves);
+// The map battle's HP window (801E3AE4): the X scroll it adds to the unit's x for a window on
+// the centred 320, half the extra width less, but never putting the window left of its x = 0.
+int32_t srw64_map_anchor_scroll(int32_t scroll, float unit_x);
 }

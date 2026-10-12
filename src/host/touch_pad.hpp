@@ -287,19 +287,27 @@ inline std::optional<Slot> hit(const Layout& layout, const Scene& scene, float x
     return std::nullopt;
 }
 
+// The cross's whole square and a thumb's room: a touch in a gap between the arms is the
+// D-pad's (no direction), never a tap on the page under it, which took the page's focus
+// away (a player, 2026-10-12).
 inline bool in_stick_area(const Layout& layout, const Scene& scene, float x, float y) {
     if (scene.stick == Stick::None) return false;
-    const float dx = std::abs(x - layout.rest_x), dy = std::abs(y - layout.rest_y), half = layout.dpad_cell / 2;
-    return (dx <= half && dy <= 3 * half) || (dy <= half && dx <= 3 * half);
+    const float reach = 1.5f * layout.dpad_cell + 1.5f * layout.mm;
+    return std::abs(x - layout.rest_x) <= reach && std::abs(y - layout.rest_y) <= reach;
 }
 
-// Four fixed arms; the centre, corners and outside the cross release the direction.
-inline uint32_t direction(const Layout& layout, float cx, float cy, float x, float y) {
-    const float dx = x - cx, dy = y - cy, half = layout.dpad_cell / 2;
-    if (std::abs(dx) <= half && std::abs(dy) > half && std::abs(dy) <= 3 * half)
-        return dy < 0 ? bits::Up : bits::Down;
-    if (std::abs(dy) <= half && std::abs(dx) > half && std::abs(dx) <= 3 * half)
-        return dx < 0 ? bits::Left : bits::Right;
+// Four fixed arms; the centre, corners and outside the cross release the direction. A
+// direction held keeps a thumb's room more (1.5 mm) before it lets go, so a thumb rocking on
+// an arm's edge is not a second press (a player, 2026-10-12: one tap moved two rows).
+inline uint32_t direction(const Layout& layout, float cx, float cy, float x, float y, uint32_t held = 0) {
+    const float dx = x - cx, dy = y - cy, half = layout.dpad_cell / 2, room = 1.5f * layout.mm;
+    const auto arm = [&](float along, float across, float more) {
+        return std::abs(across) <= half + more && std::abs(along) > half - more && std::abs(along) <= 3 * half + more;
+    };
+    if ((held & (bits::Up | bits::Down)) && arm(dy, dx, room) && (dy < 0) == bool(held & bits::Up)) return held & (bits::Up | bits::Down);
+    if ((held & (bits::Left | bits::Right)) && arm(dx, dy, room) && (dx < 0) == bool(held & bits::Left)) return held & (bits::Left | bits::Right);
+    if (arm(dy, dx, 0)) return dy < 0 ? bits::Up : bits::Down;
+    if (arm(dx, dy, 0)) return dx < 0 ? bits::Left : bits::Right;
     return 0;
 }
 
@@ -340,7 +348,7 @@ public:
         auto& f = found->second;
         if (f.kind == Kind::Blocked) return true;
         f.x = x; f.y = y;
-        if (f.kind == Kind::Stick) f.bits = direction(layout, f.cx, f.cy, x, y);
+        if (f.kind == Kind::Stick) f.bits = direction(layout, f.cx, f.cy, x, y, f.bits);
         else if (f.kind == Kind::Button)
             if (const auto over = hit(layout, scene, x, y)) { f.slot = *over; f.bits = scene[*over].bits; }
         return true;

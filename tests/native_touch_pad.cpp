@@ -111,7 +111,24 @@ void dpad() {
     check(f.buttons() == bits::A, "outside D-pad did not release");
     f.clear();
     check(!f.down(l, full, 1, width * .3f, height * .5f), "D-pad captured the old floating stick area");
-    check(!f.down(l, page, 1, x + step, y + step), "D-pad corner captured a page touch");
+    // A gap between the arms is the D-pad's, with no direction: not a tap on the page.
+    check(f.down(l, page, 1, x + step, y + step) && f.buttons() == 0, "D-pad corner gap reached the page");
+    f.clear();
+    check(!f.down(l, page, 1, x + 2.5f * step, y), "D-pad took a touch well outside its square");
+    // A held arm keeps 1.5 mm more before letting go: a thumb rocking on the edge is one press.
+    const float edge = step / 2 + .3f * l.mm;
+    check(f.down(l, page, 1, x, y + edge) && f.buttons() == bits::Down, "down arm's inner edge missed");
+    for (int i = 0; i < 6; ++i) {
+        f.move(l, page, 1, x + (i % 2 ? .8f : -.8f) * l.mm, y + edge - (i % 2 ? 1.f : 0.f) * l.mm);
+        check(f.buttons() == bits::Down, "rocking on the down arm's edge released it");
+    }
+    f.move(l, page, 1, x, y + step / 2 - 2 * l.mm);
+    check(f.buttons() == 0, "back in the centre did not release");
+    f.move(l, page, 1, x, y + step / 2 + .5f * l.mm);
+    check(f.buttons() == bits::Down, "down arm again");
+    f.move(l, page, 1, x, y + 1.5f * step + 2 * l.mm);
+    check(f.buttons() == 0, "past the arm's end did not release");
+    f.clear();
     check(!in_stick_area(l, scene(SceneId::Hidden), x, y), "D-pad on an all-touch window");
 }
 }

@@ -52,6 +52,9 @@ bool enabled{}, observe{}, scene_supported{}, display_only{};
 uint32_t overlay{}, executing_owner{}, reading_owner{}, skip_owner{};
 uint64_t generation{}, event_serial{};
 std::array<uint64_t,2> loads{}, events{};
+// Each slot's text came from an event script (8009F4B4). The map's objectives (801C688C), the
+// spirit and ability pages put their own text in the same slots outside any script.
+std::array<bool,2> scripted{};
 std::array<std::pair<uint64_t,unsigned>,2> identities{};
 Reader reader;
 LocaleStatus language_status;
@@ -210,7 +213,9 @@ void refresh(uint8_t* ram,bool create_events) {
         const auto status=byte(ram,p+2), name_status=byte(ram,np+2);
         Box box;box.slot=slot;
         const int x=int32_t(word(ram,p+4)),y=int32_t(word(ram,p+8));
-        if(status<1 || status>3 || name_status!=1 || x<0 || x>135 || y<15 || y>190) {
+        // 作戦目標 fills both slots as dialogue would; a reader taking it held every key, so the
+        // screen never closed (a player, 2026-10-12). Story text is loaded by a script.
+        if(status<1 || status>3 || name_status!=1 || x<0 || x>135 || y<15 || y>190 || !(display_only || scripted[slot])) {
             current[slot]={};continue;
         }
         // Normal script dialogue has a 189 x 61 panel and a speaker name;
@@ -553,7 +558,7 @@ void loaded(uint8_t*,unsigned slot) {
     std::lock_guard lock(mutex);
     if(slot<2) {
         if(reader.skipping && executing_owner && executing_owner!=skip_owner)cancel("script_owner_changed");
-        loads[slot]=++generation;if(executing_owner)reading_owner=executing_owner;
+        loads[slot]=++generation;scripted[slot]=executing_owner!=0;if(executing_owner)reading_owner=executing_owner;
     }
 }
 void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
@@ -660,11 +665,15 @@ void configure(const std::filesystem::path& directory) {
         if(pause)executing_owner=0;
         return pause;
     };
-    srw64_game_hooks.script_after=[](uint8_t* ram,uint32_t owner) {
+    srw64_game_hooks.script_after=[](uint8_t* ram,uint32_t owner,uint16_t status) {
         std::lock_guard lock(mutex);executing_owner=0;
         if(const char* stop=script_skip::take_stop())cancel(stop);
-        if(reading_owner==owner && (!word(ram,(owner&0x1FFFFFFF)+0x1C) || half(ram,(owner&0x1FFFFFFF)+0x24)==0x80))
-            cancel("script_ended");
+        // An event ends two ways: 8009EFDC meeting FFFF clears vm+0x1C and sets +0x24 to 0x80;
+        // the fetch 8009EED0 meeting it (after 8009F0E8 stepped over conditions) leaves +0x1C,
+        // clears +0x24 and only sets the engine's status (+0x97C) to 0x80. 8009E180 then polls
+        // no more, so a skip left on would hold the input on the map (a player, 2026-10-12).
+        const bool ended=status==0x80 || !word(ram,(owner&0x1FFFFFFF)+0x1C) || half(ram,(owner&0x1FFFFFFF)+0x24)==0x80;
+        if(ended && (reading_owner==owner || (reader.skipping && skip_owner==owner)))cancel("script_ended");
     };
     srw64_game_hooks.choice=[](uint8_t*) {std::lock_guard lock(mutex);cancel("choice");};
     // A page the short skip read without showing goes to the history in every language:
@@ -723,7 +732,7 @@ void overlay_loaded(uint32_t rom) {
     // World map and tactical map script dialogue; battle quotes (0x121560) use the
     // same boxes but are only redrawn, never read or paced by the native reader.
     overlay=rom;scene_supported=rom==0xA7EC0 || rom==0xAB160 || rom==0x121560;display_only=rom==0x121560;
-    cancel("overlay_changed");drawings.clear();identities={};loads={};events={};
+    cancel("overlay_changed");drawings.clear();identities={};loads={};events={};scripted={};
 }
 std::shared_ptr<const Frame> take_frame(uint32_t start,uint32_t size,std::vector<uint8_t>& display,const uint8_t* ram) {
     if(!enabled)return {};
