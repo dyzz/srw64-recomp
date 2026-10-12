@@ -14,11 +14,11 @@ int main() {
 
     hold(ram.data(),max_funds);assert(get(funds,4)==99999999);
 
-    // Held counts go to 9; a fitted count is never left above the held one.
-    put(parts+0,2,1);put(parts+1,1,1);put(parts+2*5,12,1);put(parts+2*5+1,12,1);
+    // Held counts go to 15, the most a save keeps; a fitted count is never left above the held one.
+    put(parts+0,2,1);put(parts+1,1,1);put(parts+2*5,17,1);put(parts+2*5+1,17,1);
     hold(ram.data(),max_parts);
-    assert(get(parts,1)==9 && get(parts+1,1)==1);
-    assert(get(parts+2*5,1)==12 && get(parts+2*5+1,1)==12);
+    assert(get(parts,1)==15 && get(parts+1,1)==1);
+    assert(get(parts+2*5,1)==17 && get(parts+2*5+1,1)==17);
     assert(get(parts+2*part_kinds,2)==0);   // E9B4 on (the drop thresholds) untouched
 
     // EN: machines in use only, set to their maximum even when above it.
@@ -28,6 +28,35 @@ int main() {
     put(empty+8,7,2);put(empty+0xA,99,2);
     hold(ram.data(),keep_en);
     assert(get(a+8,2)==200 && get(b+8,2)==200 && get(empty+8,2)==7);
+
+    // Four slots: machines in use only.
+    put(a+unit_slot_count,2,1);put(empty+unit_slot_count,1,1);
+    hold(ram.data(),four_slots);
+    assert(get(a+unit_slot_count,1)==4 && get(empty+unit_slot_count,1)==1);
+
+    // Back to the ROM count: the parts above it return to the inventory, those below stay.
+    // a: two own slots, parts 3 and 5 in slots 0 and 2, part 5 again in slot 3, 0xFF in 1.
+    put(a+unit_parts,3,1);put(a+unit_parts+1,0xFF,1);put(a+unit_parts+2,5,1);put(a+unit_parts+3,5,1);
+    put(a+unit_fitted,3,1);
+    put(parts+2*3,15,1);put(parts+2*3+1,4,1);put(parts+2*5,15,1);put(parts+2*5+1,6,1);
+    assert(release_slots(ram.data(),a,2));
+    assert(get(a+unit_slot_count,1)==2 && get(a+unit_fitted,1)==1);
+    assert(get(a+unit_parts,1)==3 && get(a+unit_parts+2,1)==0xFF && get(a+unit_parts+3,1)==0xFF);
+    assert(get(parts+2*3+1,1)==4 && get(parts+2*5+1,1)==4 && get(parts+2*5,1)==15);
+    // Already at its count, or not in use: nothing to do.
+    assert(!release_slots(ram.data(),a,2) && !release_slots(ram.data(),empty,0));
+    // A form that took the same slots (800A5924) only has its count put back.
+    put(b+unit_slot_count,4,1);put(b+unit_fitted,1,1);
+    for(unsigned n=0;n<4;++n)put(b+unit_parts+n,get(a+unit_parts+n,1),1);
+    assert(release_slots(ram.data(),b,2));
+    assert(get(b+unit_slot_count,1)==2 && get(b+unit_fitted,1)==1 && get(parts+2*5+1,1)==4);
+    // After a load: the count is the ROM's again, but the parts above it came back.
+    put(b+unit_parts+2,9,1);put(b+unit_fitted,2,1);put(parts+2*9+1,3,1);
+    assert(release_slots(ram.data(),b,2));
+    assert(get(b+unit_slot_count,1)==2 && get(b+unit_fitted,1)==1 && get(b+unit_parts+2,1)==0xFF && get(parts+2*9+1,1)==2);
+    // Counts never wrap below zero.
+    put(a+unit_slot_count,4,1);put(a+unit_parts+3,7,1);put(a+unit_fitted,0,1);put(parts+2*7+1,0,1);
+    assert(release_slots(ram.data(),a,2) && get(a+unit_fitted,1)==0 && get(parts+2*7+1,1)==0);
 
     // SP and morale: records in use; morale skips the 0xC0 pilots.
     const uint32_t p=pilots_table,q=pilots_table+pilot_size,unused=pilots_table+2*pilot_size;

@@ -98,7 +98,7 @@ UI_KEYS |= {"settings_bezel", "settings_bezel_note", "settings_filter", "setting
 UI_KEYS |= {f"settings_filter_scale_{n}" for n in (1, 2, 4, 0)}
 # The Cheats page (frontend.cpp cheats_page; the switch ids are cheats.hpp catalog).
 UI_KEYS |= {"cheats_note", "cheat_levels", "cheat_levels_note", "cheat_levels_open", "cheat_levels_close", "cheat_levels_away"}
-UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "en", "sp", "morale")}
+UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "slots", "en", "sp", "morale")}
 # The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
 CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "animation", "settings",
                 "language", "images", "speed", "d_up", "d_down", "d_left", "d_right", "z")

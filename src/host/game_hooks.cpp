@@ -14,6 +14,7 @@
 #include "upgrade_rules.hpp"
 #include "upgrade_refund.hpp"
 #include "parts_carry.hpp"
+#include "cheats.hpp"
 #include "link_battler.hpp"
 #include "script_skip.hpp"
 #include "wide_map.hpp"
@@ -27,6 +28,7 @@ namespace rules=srw64::rules;
 namespace upgrades=srw64::upgrades;
 namespace refund=srw64::refund;
 namespace parts_carry=srw64::parts_carry;
+namespace cheats=srw64::cheats;
 extern "C" {
 void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
     // X ends the presentation early; the settled result lives in the map
@@ -159,10 +161,12 @@ void resident_func_80093278(uint8_t* ram,recomp_context* ctx) {
 }
 void resident_func_800927A4(uint8_t* ram,recomp_context* ctx) {
     srw64_original_intermission_restore(ram,ctx);srw64::state_probe::capture(ram,"intermission-restored");
+    if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);
 }
 void resident_func_800936A0(uint8_t* ram,recomp_context* ctx) {
     const bool from_sram=uint8_t(ctx->r4)!=0;
     srw64_original_tactical_restore(ram,ctx);srw64::state_probe::capture(ram,"tactical-restored");
+    if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);
     if(srw64_game_hooks.tactical_restored)srw64_game_hooks.tactical_restored(ram,from_sram);
 }
 void load_000A7EC0_func_801C517C(uint8_t* rdram,recomp_context* ctx) {
@@ -886,6 +890,8 @@ void resident_func_800AAD28(uint8_t* rdram, recomp_context* ctx) {
     // rule on they go back on the successor once it exists.
     const auto carry = parts_carry::capture(rdram, int16_t(ctx->r4), int16_t(ctx->r5));
     srw64_original_unit_register(rdram, ctx);
+    // The new machine has its ROM slot count until the next frame's cheat write.
+    cheats::hold_slots(rdram);
     if (const auto carried = parts_carry::apply(rdram, carry)) {
         // The same propagation the parts screen runs after a slot changes.
         auto c = *ctx;

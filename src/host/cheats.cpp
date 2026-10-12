@@ -4,6 +4,7 @@
 #include "native_dialogue.hpp"
 #include "funcs.h"
 #include "json/json.hpp"
+#include "librecomp/game.hpp"
 #include <algorithm>
 #include <atomic>
 #include <cstdlib>
@@ -48,9 +49,32 @@ std::vector<Pilot> list(const uint8_t* ram) {
 void frame(uint8_t* ram) {
     if(const unsigned on=switches.load(std::memory_order_relaxed))hold(ram,on);
 }
+// With the four-slot switch off: machines it left above their ROM slot count, after
+// a load (which rebuilds the count from ROM but puts back all four slots) or once
+// the switch is turned off, on the next インターミッション menu step.
+void release(uint8_t* ram,recomp_context* ctx) {
+    if(switches.load(std::memory_order_relaxed)&four_slots)return;
+    const auto rom=recomp::get_rom();
+    for(unsigned i=0;i<unit_count;++i) {
+        const uint32_t unit=units+i*unit_size;
+        const unsigned number=read(ram,unit+unit_number,2);
+        const size_t slots_at=size_t(machine_records)+size_t(number)*machine_record_size+machine_record_slots;
+        if(!read(ram,unit,1) || number>=machine_count || slots_at>=rom.size())continue;
+        const unsigned before=read(ram,unit+unit_fitted,1);
+        if(!release_slots(ram,unit,rom[slots_at]))continue;
+        // The parts screen's propagation (801D4C94 after はずす): the other forms take
+        // these slots, and every form's stats are recomputed.
+        auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);c.r4=int32_t(unit);c.r5=1;
+        resident_func_800A5924(ram,&c);
+        record("slots-released",{{"unit",i},{"number",number},{"slots",rom[slots_at]},
+            {"returned",before-read(ram,unit+unit_fitted,1)}});
+    }
+}
+void restored(uint8_t* ram,recomp_context* ctx){release(ram,ctx);}
 // Runs before every step of the インターミッション menu, original or native.
 void intermission(uint8_t* ram,recomp_context* ctx) {
     menu_vi=srw64_current_vi();
+    release(ram,ctx);
     std::vector<std::pair<unsigned,unsigned>> todo;
     {
         std::lock_guard lock(mutex);
@@ -74,6 +98,7 @@ void intermission(uint8_t* ram,recomp_context* ctx) {
 }
 
 unsigned active(){return switches.load();}
+void hold_slots(uint8_t* ram){hold(ram,switches.load(std::memory_order_relaxed)&four_slots);}
 void set_active(unsigned value) {
     unsigned all=0;
     for(const auto& entry:catalog)all|=entry.bit;
@@ -96,6 +121,7 @@ void configure(const std::filesystem::path& directory) {
     log.open(directory/"cheat-events.jsonl");
     srw64_game_hooks.cheats_frame=frame;
     srw64_game_hooks.cheats_intermission=intermission;
+    srw64_game_hooks.cheats_restored=restored;
     if(const char* names=std::getenv("SRW64_CHEATS")) {
         unsigned value=0;
         std::stringstream list(names);

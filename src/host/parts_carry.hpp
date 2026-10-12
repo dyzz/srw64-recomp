@@ -37,7 +37,7 @@ inline constexpr uint32_t pilots=0x80172F40, pilot_slots=100, pilot_size=0x4C;
 inline constexpr uint32_t pilot_number=0x02, pilot_has_unit=0x37, pilot_unit=0x38;
 // One u16 per part: high byte owned, low byte equipped (801CBB18 draws both).
 inline constexpr uint32_t inventory=0x8015E990, part_count=18;
-inline constexpr unsigned max_slots=8;   // the largest +0x21 in the machine table is 3
+inline constexpr unsigned max_slots=8;   // the machine table goes up to 4 (+0x23..+0x26)
 
 inline bool player_unit(uint32_t unit) {
     return unit>=units && unit<units+unit_slots*unit_size && (unit-units)%unit_size==0;

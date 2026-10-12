@@ -3301,6 +3301,7 @@ void upgrade_sync() {
 // 強化パーツ (parts_page.cpp): the machine list (layout 0x70), the slots with the
 // inventory and stat preview (0x7E) and the owned copies of one part (0x7F), each
 // on the original panel rectangles.
+unsigned parts_holders_first=0;   // the holders list's first shown row
 void parts_sync() {
     const auto next=parts_page::state();parts_request=next;
     if(!next.value("visible",false)){document_close(parts_doc);parts_stamp.clear();return;}
@@ -3385,8 +3386,15 @@ void parts_sync() {
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(mode?"parts_inventory_hint":"parts_slots_hint")+"</div>";
     } else if(screen=="holders") {
         const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
+        // The panel holds nine rows, as many copies as the original could own; with the
+        // parts cheat at 15 the list scrolls to keep the cursor in view.
+        constexpr unsigned shown=9;
+        const unsigned count=unsigned(rows.size());
+        if(cursor<parts_holders_first)parts_holders_first=cursor;
+        if(cursor>=parts_holders_first+shown)parts_holders_first=cursor-shown+1;
+        parts_holders_first=count>shown?std::min(parts_holders_first,count-shown):0;
         std::string list;
-        for(unsigned n=0;n<rows.size();++n) {
+        for(unsigned n=parts_holders_first;n<count && n<parts_holders_first+shown;++n) {
             const auto& r=rows[n];
             const bool free=r.value("free",false);
             list+="<button id='parts:"+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(17)+"; line-height:"+px(17)+"; padding:0 "+px(3)+";'>"+
@@ -3395,7 +3403,9 @@ void parts_sync() {
         body+=box(21,21,299,219,
             "<div style='position:absolute; left:0; top:0; width:100%; height:"+px(42)+"; border-bottom-width:"+px(line)+"; border-bottom-color:#3a78e0;'>"
                 "<span class='im-dim' style='position:absolute; left:"+px(3)+"; top:"+px(3)+"; width:"+px(88)+"; font-size:"+px(lfit(label_of("equipped"),86))+";'>"+escape(label_of("equipped"))+"</span>"+slot_grid(next.at("unit"),3)+"</div>"
-            "<div id='parts-holders' style='margin-top:"+px(43)+";'>"+list+"</div>",face,"parts-panel");
+            "<div id='parts-holders' style='margin-top:"+px(43)+";'>"+list+"</div>"+
+            // A thin bar on the right edge of the rows when they scroll.
+            (count>shown?"<div style='position:absolute; right:"+px(1)+"; top:"+px(43+17.f*shown*parts_holders_first/count)+"; width:"+px(2)+"; height:"+px(17.f*shown*shown/count)+"; background-color:#3a78e0;'></div>":std::string()),face,"parts-panel");
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label("parts_holders_hint")+"</div>";
     }
     body+="</div>";

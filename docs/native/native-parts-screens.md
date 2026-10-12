@@ -56,7 +56,7 @@
 
 **快照**：`status.parts_page`：`screen`（`list`／`slots`／`holders`）、`serial`、`labels`；列表有 `page`（0 起）、`pages`、`cursor`、`rows[]`（`slot`、`number`、`name`、`pilot`、`level`、`parts[]{part,name}`、`en`）；槽位画面有 `unit`（同上）、`cursor`（槽位）、`mode`（0 槽位／1 库存）、`stats[]{key,current,preview}`、`selected`（库存光标下的部件号，0x12＝はずす）、`description[]`、`inventory{page,pages,cursor,rows[]{part,name,remove,equipped,owned}}`；持有者画面有 `unit`、`part{part,name}`、`target_slot`、`cursor`、`rows[]{free,slot,name,pilot}`。事件日志 `parts-page-events.jsonl`。
 
-**页面**：三块布局按上面的矩形；列表每行 16、槽位行 17、库存行 16、持有者行 17；预览列高于现值绿色、低于红色（原版用两种字色）。
+**页面**：三块布局按上面的矩形；列表每行 16、槽位行 17、库存行 16、持有者行 17；预览列高于现值绿色、低于红色（原版用两种字色）。持有者面板放得下 9 行（原版持有上限）；作弊把持有数写到 15 时（[金手指](../gameplay/cheats.md)），列表随光标滚动，右边缘一条 2 像素的滚动条。
 
 **调试**：稳定 ID `parts:N`（当前列表的行：机体列表／库存／持有者；点光标行即确认，点其他行移动）、`parts-slot:N`（槽位行；库存打开时点击先回到槽位）；键盘 ↑↓、←→（翻页）、Enter／Z、Esc／X；等待条件 `parts_page`。
 
