@@ -399,6 +399,10 @@ static int run_host(int argc, char** argv) {
             0x801E4CCC, 0x801E4D10, 0x80209900, 0x800A3AD8};
         if (std::find(std::begin(map_callbacks), std::end(map_callbacks), function) != std::end(map_callbacks)) {
             if (!srw64::wide_map::map_shown()) return false;
+            // 3D44's choice (8009FA94) registers the same callback on the same record (0x23) for
+            // its cursor bar, in the window's own coordinates: it stays centred with the window
+            // (a player, 2026-10-12: the green bar stuck out left of the choice).
+            if (function == 0x800A3AD8 && srw64::guest::read(ram, 0x8015F950 + 0x948 + 0x30, 4) == 0x8009FA94) return false;
         } else {
             // Sprites that scroll with the map (sub-record +2 == 1): the map itself (mode 8,
             // 800945D4), units and the cursor (modes 5 and 6), map effects (modes 12 and 13).
