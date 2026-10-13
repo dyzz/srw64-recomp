@@ -159,9 +159,26 @@ final class PlayerFolder {
                 File log = new File(runs[i], "run/console.log");
                 String name = logName(runs[i].getName());
                 kept.add(name);
+                kept.add(name.replace(".log", "-system.log"));
                 Entry entry = there.get(name);
                 if (entry == null || entry.directory || entry.size != log.length() || log.lastModified() > entry.modified)
                     put(folder, there, log, name);
+            }
+            // This run's own system log beside its console.log: what Android, the GPU driver
+            // and the phone maker's services print in the game's process (window and buffer
+            // changes, MIUI's game services), which the host's output never sees. An app may
+            // read its own process's log without any permission.
+            if (runs.length > 0 && SRW64Activity.running) {
+                File system = new File(context.getCacheDir(), "system.log");
+                try {
+                    new ProcessBuilder("logcat", "-d", "-v", "threadtime", "--pid", String.valueOf(android.os.Process.myPid()))
+                            .redirectErrorStream(true).redirectOutput(system).start().waitFor();
+                    if (system.length() > 0) put(folder, there, system, logName(runs[0].getName()).replace(".log", "-system.log"));
+                } catch (InterruptedException error) {
+                    Thread.currentThread().interrupt();
+                } finally {
+                    system.delete();
+                }
             }
             for (Entry entry : there.values())
                 if (!entry.directory && entry.name.startsWith("Marchwind64-") && entry.name.endsWith(".log") && !kept.contains(entry.name))

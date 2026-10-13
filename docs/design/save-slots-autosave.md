@@ -336,7 +336,7 @@ Documents/Marchwind64/
   saves/     存档库的副本：cartridge.sram（＝ares save.ram）、.prev、slots/、auto/、trash/、imports/、settings.json
   import/    玩家放模拟器存档      export/   四种模拟器文件（不打包）
   reports/   问题报告              filters/、bezels/   玩家自己的滤镜、边框
-  logs/      最近 3 次运行的 console.log（Marchwind64-<开始时间>.log）
+  logs/      最近 3 次运行的 console.log（Marchwind64-<开始时间>.log），本次运行另有本进程 logcat（…-system.log）
 ```
 
 `logs/`（2026-10-12 加）：K60 黑屏时玩家进不了设置，问题报告导不出来，0.4.6 的文件夹里没有任何日志。现在宿主的输出（含卡死看门狗 5 秒后写的各线程栈）自动出现在这里，黑屏后等 10 秒把文件发来即可，不用重开。只删自己写的 `Marchwind64-*.log`。

@@ -287,19 +287,47 @@ public class SRW64Activity extends SDLActivity {
             throw new RuntimeException(error);
         }
         super.onCreate(state);
+        // Before the first layout, so the game's surface starts at its full size: hidden only
+        // on focus, the bars went after the swap chain was made, the surface grew and its
+        // buffers were allocated again, where two Redmi K60s (Adreno 730, MIUI 14) hung for
+        // good in Qualcomm's gralloc (docs/design/android-port.md).
+        hideSystemBars();
+        watchSize();
     }
 
     // Immersive: no status or navigation bar over the game; a swipe shows them for a moment.
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if (hasFocus && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (hasFocus) hideSystemBars();
+    }
+
+    @SuppressWarnings("deprecation")
+    private void hideSystemBars() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             WindowInsetsController controller = getWindow().getInsetsController();
             if (controller != null) {
                 controller.hide(WindowInsets.Type.systemBars());
                 controller.setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
             }
+        } else {
+            getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                    | android.view.View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | android.view.View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
+    }
+
+    // Every size the window and the game's surface take, for the system log in logs/: a
+    // change after the swap chain is made means its buffers are allocated again.
+    private void watchSize() {
+        android.view.View.OnLayoutChangeListener log = (view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            if (right - left != oldRight - oldLeft || bottom - top != oldBottom - oldTop)
+                Log.i("SRW64", "SRW64_WINDOW " + (view == mSurface ? "surface " : "window ") + (right - left) + "x" + (bottom - top)
+                        + " was " + (oldRight - oldLeft) + "x" + (oldBottom - oldTop));
+        };
+        getWindow().getDecorView().addOnLayoutChangeListener(log);
+        if (mSurface != null) mSurface.addOnLayoutChangeListener(log);
     }
 
     // Landscape only: SDL lets a resizable window take any orientation, overriding the manifest.
