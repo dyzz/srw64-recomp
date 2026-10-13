@@ -6,8 +6,8 @@
 #include "update_version.hpp"
 
 // The update check (docs/native/update-check.md): reads the website's /latest.json and
-// says whether a newer release is out. It only reads: no identifier goes with the
-// request, nothing is downloaded or installed, and the player opens the download page
+// says whether a newer release is out. It only reads: the request names this release and
+// platform in its User-Agent and nothing else, nothing is downloaded or installed, and the player opens the download page
 // in their browser. A check on start-up is the player's choice, asked once on the
 // title and kept in update.json (SRW64_UPDATE_STATE), at most one a day; the About page
 // and the macOS application menu check on demand. Not on Android.
@@ -65,5 +65,5 @@ bool open_url(const std::string& url);
 
 // One HTTP GET on the calling thread (update_http.cpp, macos/update_http_macos.mm):
 // the body of a 200, else throws with the reason. Gives up after `timeout_seconds`.
-std::string http_get(const std::string& url, int timeout_seconds);
+std::string http_get(const std::string& url, const std::string& user_agent, int timeout_seconds);
 }

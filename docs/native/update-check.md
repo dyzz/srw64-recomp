@@ -1,11 +1,11 @@
 # 更新检查
 
-2026-10-06。桌面三平台（macOS、Windows、Linux／Steam Deck）的游戏内更新检查：游戏只读官网的 `/latest.json`，不带标识、不下载；首次联网前先问玩家，之后可在设置里关掉。安卓不做（`update::supported()` 为假，「关于」页只有链接行）。
+2026-10-06。桌面三平台（macOS、Windows、Linux／Steam Deck）的游戏内更新检查：游戏只读官网的 `/latest.json`，只报版本和平台、不带标识、不下载；首次联网前先问玩家，之后可在设置里关掉。安卓不做（`update::supported()` 为假，「关于」页只有链接行）。
 
 ## 做什么、不做什么
 
 - 读官网的 `https://srw64.dreamquest.club/latest.json`（网站 `web/src/pages/latest.json.ts` 生成，`schema` 为 `srw64.latest.v1`），把其中的 `version` 与本程序的 `SRW64_VERSION` 比较。
-- 请求不带任何标识（没有 token、没有设备信息），只有一次 GET。
+- 请求不带任何标识（没有 token、没有设备信息），只有一次 GET。2026-10-13 起 User-Agent 是 `Marchwind64/<版本> (<平台>; <架构>)`，平台为 `windows`／`macos`／`linux`／`steamdeck`（`on_steam_deck()`），架构为 `x86_64`／`arm64`，例如 `Marchwind64/0.4.8 (steamdeck; x86_64)`，好让官网的 CDN 日志按版本和平台统计检查次数；之前只有 `Marchwind64`。询问框与设置里的说明（`update_ask_note`、`settings_update_auto_note`）同步写明「只附带版本和平台」。
 - 不下载、不安装：有新版时只给出版本和日期，按钮在系统浏览器里打开对应语言的下载页（`download.<zh|en|ja>`）和更新说明（`notes.<语言>`）。macOS 签名、Deck、Windows 的安装方式各不相同，先只提示。
 
 ## HD 包的版本

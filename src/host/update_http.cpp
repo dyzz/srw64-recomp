@@ -28,7 +28,7 @@ struct Handle {
     throw std::runtime_error(std::string(step) + " failed (" + std::to_string(GetLastError()) + ")");
 }
 }
-std::string http_get(const std::string& url, int timeout_seconds) {
+std::string http_get(const std::string& url, const std::string& user_agent, int timeout_seconds) {
     const auto address = wide(url);
     URL_COMPONENTS parts{};
     parts.dwStructSize = sizeof(parts);
@@ -38,7 +38,7 @@ std::string http_get(const std::string& url, int timeout_seconds) {
     parts.lpszUrlPath = path;
     parts.dwUrlPathLength = DWORD(std::size(path));
     if (!WinHttpCrackUrl(address.c_str(), 0, 0, &parts)) fail("WinHttpCrackUrl");
-    Handle session{WinHttpOpen(L"Marchwind64", WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0)};
+    Handle session{WinHttpOpen(wide(user_agent).c_str(), WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0)};
     if (!session.h) fail("WinHttpOpen");
     const int ms = timeout_seconds * 1000;
     WinHttpSetTimeouts(session.h, ms, ms, ms, ms);
@@ -74,7 +74,7 @@ std::string http_get(const std::string& url, int timeout_seconds) {
 
 #elif defined(__ANDROID__)
 namespace srw64::update {
-std::string http_get(const std::string&, int) { throw std::runtime_error("not on Android"); }
+std::string http_get(const std::string&, const std::string&, int) { throw std::runtime_error("not on Android"); }
 }
 
 #else
@@ -120,7 +120,7 @@ size_t append(char* data, size_t size, size_t count, void* out) {
     return size * count;
 }
 }
-std::string http_get(const std::string& url, int timeout_seconds) {
+std::string http_get(const std::string& url, const std::string& user_agent, int timeout_seconds) {
     const auto& c = curl();
     if (!c.easy_init || !c.easy_setopt || !c.easy_perform || !c.easy_getinfo || !c.easy_strerror || !c.easy_cleanup)
         throw std::runtime_error("libcurl is not installed");
@@ -133,7 +133,7 @@ std::string http_get(const std::string& url, int timeout_seconds) {
     c.easy_setopt(handle, CURLOPT_TIMEOUT, long(timeout_seconds));
     c.easy_setopt(handle, CURLOPT_FOLLOWLOCATION, 1L);
     c.easy_setopt(handle, CURLOPT_NOSIGNAL, 1L);
-    c.easy_setopt(handle, CURLOPT_USERAGENT, "Marchwind64");
+    c.easy_setopt(handle, CURLOPT_USERAGENT, user_agent.c_str());
     const int result = c.easy_perform(handle);
     long code = 0;
     c.easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &code);

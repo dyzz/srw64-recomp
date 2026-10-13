@@ -1,5 +1,6 @@
 #include "update_check.hpp"
 #include "app/runtime.hpp"
+#include "steam_deck.hpp"
 #include "json/json.hpp"
 #include <SDL.h>
 #include <chrono>
@@ -49,15 +50,39 @@ void save(Shared& s) {
         std::fprintf(stderr, "SRW64_UPDATE_SAVE_FAILED %s\n", error.what());
     }
 }
+// "Marchwind64/0.4.8 (windows; x86_64)": the release and the kind of machine, so the
+// website's logs can count checks by version and platform. Nothing about the player.
+std::string user_agent(const std::string& version) {
+#if defined(_WIN32)
+    const char* platform = "windows";
+#elif defined(__APPLE__)
+    const char* platform = "macos";
+#else
+    const char* platform = on_steam_deck() ? "steamdeck" : "linux";
+#endif
+#if defined(__aarch64__) || defined(_M_ARM64)
+    const char* arch = "arm64";
+#elif defined(__x86_64__) || defined(_M_X64)
+    const char* arch = "x86_64";
+#else
+    const char* arch = "other";
+#endif
+    return "Marchwind64/" + version + " (" + platform + "; " + arch + ")";
+}
 void run(bool manual) {
     auto& s = shared();
+    std::string version;
+    {
+        std::lock_guard lock(s.mutex);
+        version = s.version;
+    }
     std::string url = kLatestUrl;
     // A test points the check elsewhere (a local server, a file:// URL).
     if (const char* other = std::getenv("SRW64_UPDATE_URL"); other && *other) url = other;
     json latest;
     std::string error;
     try {
-        latest = json::parse(http_get(url, 15), nullptr, false);
+        latest = json::parse(http_get(url, user_agent(version), 15), nullptr, false);
         if (!latest.is_object() || latest.value("schema", "") != "srw64.latest.v1" || !latest.contains("version") ||
             !latest["version"].is_string())
             error = "not a release description";

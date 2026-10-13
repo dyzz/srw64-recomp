@@ -5,13 +5,14 @@
 #include <stdexcept>
 
 namespace srw64::update {
-std::string http_get(const std::string& url, int timeout_seconds) {
+std::string http_get(const std::string& url, const std::string& user_agent, int timeout_seconds) {
     NSURL* address = [NSURL URLWithString:[NSString stringWithUTF8String:url.c_str()]];
     if (!address) throw std::runtime_error("bad URL");
     NSURLSessionConfiguration* configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     configuration.timeoutIntervalForRequest = timeout_seconds;
     configuration.timeoutIntervalForResource = timeout_seconds;
     configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    configuration.HTTPAdditionalHeaders = @{@"User-Agent": [NSString stringWithUTF8String:user_agent.c_str()]};
     NSURLSession* session = [NSURLSession sessionWithConfiguration:configuration];
     dispatch_semaphore_t done = dispatch_semaphore_create(0);
     __block std::string body, error;
