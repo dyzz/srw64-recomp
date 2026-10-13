@@ -18,7 +18,10 @@ The qualifiers are read from the Chinese text (the reference language) and the
 same segment is cut from every translation, which must say exactly the phrase
 listed below, so a reworded translation fails here instead of showing twice.
 
-    python3 tools/content/export_stage_info.py          # writes content/stage-info/<lang>.json
+content/stage-info/status.json carries the status rules (guide/data/status-rules.json)
+with the scene graph they are judged on (tools/content/stage_status.py).
+
+    python3 tools/content/export_stage_info.py          # writes content/stage-info/*.json
     python3 tools/content/export_stage_info.py --check  # fails when a file is stale
 """
 from __future__ import annotations
@@ -29,11 +32,15 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import stage_status  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[2]
 GUIDE = ROOT / "guide" / "data"
 OUTPUT = ROOT / "content" / "stage-info"
 LANGS = ("zh-Hans", "ja", "en")
 SCHEMA = "srw64.stage-info.v1"
+STATUS_SCHEMA = "srw64.stage-status.v1"
 PROTAGONISTS = ("ark", "serein", "brad", "manami")
 BADGE = re.compile(r"\s*\{[≠+?]\}")
 # How each language ends a note's segment (the guide writes 「A；B」 / "A; B" / 「A。B」 or 「A；B」).
@@ -157,7 +164,22 @@ def export(lang: str) -> dict:
 
 
 def outputs() -> dict[Path, str]:
-    return {OUTPUT / f"{lang}.json": json.dumps(export(lang), ensure_ascii=False, indent=1) + "\n" for lang in LANGS}
+    files = {OUTPUT / f"{lang}.json": json.dumps(export(lang), ensure_ascii=False, indent=1) + "\n" for lang in LANGS}
+    files[OUTPUT / "status.json"] = json.dumps(status(), ensure_ascii=False, indent=1) + "\n"
+    return files
+
+
+def status() -> dict:
+    """The status rules with the scene graph, after checking they fit the guide."""
+    rules, graph = stage_status.load_rules(), stage_status.scene_graph()
+    entries = [e["id"] for e in load("zh-Hans", "hidden-elements.json")["entries"]]
+    errors = stage_status.check_rules(rules["rules"], entries, graph)
+    if errors:
+        raise ValueError("; ".join(errors))
+    return {"schema": STATUS_SCHEMA, "source": "guide/data/status-rules.json (tools/content/export_stage_info.py)",
+            "starts": stage_status.STARTS,
+            "graph": {p: {str(s): t for s, t in g.items()} for p, g in graph.items()},
+            "edge_guards": rules["edge_guards"], "rules": rules["rules"]}
 
 
 def main() -> int:

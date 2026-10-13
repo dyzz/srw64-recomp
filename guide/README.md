@@ -33,7 +33,7 @@
 python3 tools/content/build_guide.py
 ```
 
-游戏内的「本关情报」页也取自这里的数据，改完后一并重新导出（见 [本关情报页](../docs/design/stage-info.md)）：
+游戏内的「本关情报」页也取自这里的数据（隐藏要素的完成状态规则在 `status-rules.json`），改完后一并重新导出（见 [本关情报页](../docs/design/stage-info.md)）：
 
 ```bash
 python3 tools/content/export_stage_info.py

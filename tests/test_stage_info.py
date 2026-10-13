@@ -60,3 +60,82 @@ class StageInfoTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+STATUS_SPEC = importlib.util.spec_from_file_location("stage_status", ROOT / "tools/content/stage_status.py")
+STATUS = importlib.util.module_from_spec(STATUS_SPEC)
+STATUS_SPEC.loader.exec_module(STATUS)
+
+
+class StatusTests(unittest.TestCase):
+    """Saves a player could have, and what the page should say about them."""
+
+    @classmethod
+    def setUpClass(cls):
+        rules = STATUS.load_rules()
+        cls.rules = {r["id"]: r for r in rules["rules"]}
+        cls.guards = rules["edge_guards"]
+        cls.graph = STATUS.scene_graph()
+
+    def status(self, rule, protagonist, scene, **state):
+        s = STATUS.State(protagonist, scene, **state)
+        return STATUS.Evaluator(self.graph, s, self.guards).evaluate(self.rules[rule])
+
+    def test_graph_splits_routes(self):
+        brad = self.graph["brad"]
+        self.assertEqual(brad[30], [31, 46])
+        self.assertNotIn(41, STATUS.reachable(brad, 47))
+        self.assertIn(124, STATUS.reachable(brad, 41))
+        self.assertNotIn(124, STATUS.reachable(self.graph["ark"], 41))
+
+    def test_side_branch_returns_to_its_route(self):
+        # Four's last step is in S128 (Independence Army) or S57 (OZ); Ark's branch S123 sits after both splits.
+        ia = self.status("secret-four", "ark", 123, vars={10: 0, 11: 0, 2: 2})
+        self.assertEqual(ia["state"], "missed")      # S128 is behind and S57 is OZ only
+        oz = self.status("secret-four", "ark", 123, vars={10: 1, 2: 2})
+        self.assertEqual(oz["state"], "step")         # S57 is next
+        # Allenby can still be won back in S129 after the Independence Army branch.
+        self.assertEqual(self.status("secret-allenby", "brad", 124, vars={10: 0, 11: 0, 3: 0})["state"], "step")
+
+    def test_katz(self):
+        self.assertEqual(self.status("secret-katz", "brad", 25)["state"], "not_started")
+        self.assertEqual(self.status("secret-katz", "ark", 25)["state"], "na")
+        self.assertEqual(self.status("secret-katz", "brad", 42, vars={10: 0, 11: 0, 20: 0, 21: 3})["state"], "missed")
+        settle = self.status("secret-katz", "brad", 124, vars={10: 0, 20: 1, 21: 0}, kills={27: 80})
+        self.assertEqual((settle["state"], settle["step"], settle["counter"]), ("step", 2, {"value": 80, "of": 100}))
+        self.assertEqual(self.status("secret-katz", "brad", 42, vars={21: 2}, pilots={31})["state"], "done")
+        self.assertEqual(self.status("secret-katz", "brad", 65, vars={10: 0, 11: 1})["state"], "na")
+
+    def test_garalia_window(self):
+        self.assertEqual(self.status("secret-garalia", "ark", 20)["state"], "not_started")
+        self.assertEqual(self.status("secret-garalia", "ark", 21)["state"], "missed")
+        self.assertEqual(self.status("secret-garalia", "ark", 21, vars={4: 0})["state"], "done")
+
+    def test_paths_follow_the_route(self):
+        # Selain's Rish: before the split the Independence path leads; on OZ only the OZ steps count.
+        self.assertEqual(self.status("secret-reese", "serein", 25)["of"], 3)
+        oz = self.status("secret-reese", "serein", 49, vars={10: 1})
+        self.assertEqual((oz["state"], oz["of"]), ("not_started", 2))
+        self.assertEqual(self.status("secret-reese", "serein", 36, vars={10: 0, 11: 0, 14: 0})["state"], "missed")
+
+    def test_choices(self):
+        self.assertEqual(self.status("secret-route-oz", "ark", 30)["state"], "pending")
+        self.assertEqual(self.status("secret-route-oz", "ark", 31, vars={10: 0})["label"]["en"], "Independence Army route")
+        self.assertEqual(self.status("secret-route-treize", "ark", 74, vars={10: 0, 11: 1})["label"]["en"], "With Treize")
+        self.assertEqual(self.status("secret-route-treize", "ark", 72, vars={10: 0, 11: 1})["label"]["en"], "On your own")
+        self.assertEqual(self.status("secret-route-beast-base", "ark", 81, vars={10: 0})["label"]["en"],
+                         "Stayed with the main force")
+        self.assertEqual(self.status("secret-route-gato-base", "ark", 108, vars={10: 1, 37: 3})["label"]["en"], "Base lost")
+
+    def test_counts(self):
+        trio = self.status("secret-rx-trio", "ark", 15, units={55, 58})
+        self.assertEqual((trio["state"], trio["value"], trio["of"]), ("count", 2, 3))
+        self.assertEqual(self.status("secret-endless-waltz", "brad", 90)["value"], 0)
+
+    def test_every_rule_evaluates(self):
+        for protagonist in STATUS.PROTAGONISTS:
+            for scene in STATUS.reachable(self.graph[protagonist], STATUS.STARTS[protagonist]):
+                for rule in self.rules:
+                    with self.subTest(protagonist=protagonist, scene=scene, rule=rule):
+                        self.assertIn(self.status(rule, protagonist, scene)["state"],
+                                      {"done", "step", "not_started", "missed", "na", "info", "count", "chosen", "pending"})

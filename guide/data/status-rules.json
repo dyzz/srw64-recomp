@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "about": "How the in-game stage info page tells how far each hidden element has got (docs/design/stage-info.md §4). Facts: docs/gameplay/hidden-elements.md §5–6. Exported with the scene graph to content/stage-info/status.json by tools/content/export_stage_info.py.",
+  "edge_guards": [
+    {"from": [123, 124], "to": 42, "when": {"not": {"var": 10, "eq": 1}}},
+    {"from": [123, 124], "to": 57, "when": {"var": 10, "eq": 1}}
+  ],
+  "rules": [
+    {"id": "secret-katz", "kind": "acquire",
+     "applies": {"all": [{"protagonist": ["brad"]}, {"not": {"var": 11, "eq": 1}}]},
+     "done": {"pilot": 31},
+     "steps": [
+       {"when": {"any": [{"var": 20, "in": [0, 1]}, {"var": 21, "in": [0, 1, 2]}]}, "at": [16, 25, 34, 46]},
+       {"when": {"var": 21, "in": [0, 1, 2]}, "at": [41, 56]},
+       {"when": {"pilot": 31}, "at": [124], "counter": {"kills": 27, "of": 100}}]},
+
+    {"id": "secret-aisha", "kind": "acquire",
+     "applies": {"protagonist": ["manami"]},
+     "done": {"pilot": 32},
+     "steps": [
+       {"when": {"var": 13, "in": [0, 1, 2]}, "at": [34, 65, 49, 50]},
+       {"when": {"var": 13, "in": [1, 2]}, "at": [38, 66, 56]},
+       {"when": {"pilot": 32}, "at": [40, 69, 57]}]},
+
+    {"id": "secret-elrich", "kind": "acquire",
+     "applies": {"protagonist": ["ark"]},
+     "done": {"pilot": 29},
+     "paths": [
+       {"applies": {"all": [{"not": {"var": 10, "eq": 1}}, {"not": {"var": 11, "eq": 1}}]},
+        "steps": [
+          {"when": {"var": 9, "eq": 0}, "at": [30]},
+          {"when": {"var": 18, "eq": 2}, "at": [41]},
+          {"when": {"pilot": 29}, "at": [123]}]},
+       {"applies": {"var": 11, "eq": 1},
+        "steps": [{"when": {"pilot": 29}, "at": [66]}]},
+       {"applies": {"var": 10, "eq": 1},
+        "steps": [
+          {"when": {"var": 18, "in": [0, 1, 2]}, "at": [49, 56]},
+          {"when": {"var": 18, "eq": 2}, "at": [56]},
+          {"when": {"pilot": 29}, "at": [123]}]}]},
+
+    {"id": "secret-reese", "kind": "acquire",
+     "applies": {"protagonist": ["serein"]},
+     "done": {"pilot": 30},
+     "paths": [
+       {"applies": {"all": [{"not": {"var": 10, "eq": 1}}, {"not": {"var": 11, "eq": 1}}]},
+        "steps": [
+          {"when": {"var": 14, "in": [1, 2]}, "at": [35]},
+          {"when": {"var": 14, "eq": 2}, "at": [38]},
+          {"when": {"pilot": 30}, "at": [40]}]},
+       {"applies": {"var": 11, "eq": 1},
+        "steps": [
+          {"when": {"var": 14, "in": [1, 2]}, "at": [65]},
+          {"when": {"var": 14, "eq": 2}, "at": [69]},
+          {"when": {"pilot": 30}, "at": [70]}]},
+       {"applies": {"var": 10, "eq": 1},
+        "steps": [
+          {"when": {"var": 14, "in": [1, 2]}, "at": [49, 50]},
+          {"when": {"pilot": 30}, "at": [51, 108]}]}]},
+
+    {"id": "secret-aina", "kind": "acquire",
+     "done": {"pilot": 51},
+     "paths": [
+       {"applies": {"protagonist": ["ark", "serein"]},
+        "steps": [
+          {"when": {"var": 12, "in": [0, 2]}, "at": [11]},
+          {"when": {"pilot": 51}, "at": [24]}]},
+       {"applies": {"protagonist": ["brad", "manami"]},
+        "steps": [{"when": {"pilot": 51}, "at": [24]}]}]},
+
+    {"id": "secret-allenby", "kind": "acquire",
+     "done": {"pilot": 9},
+     "steps": [
+       {"when": {"var": 3, "in": [0, 1, 2]}, "at": [18, 19]},
+       {"when": {"pilot": 9}, "at": [128, 57, 129, 137]}]},
+
+    {"id": "secret-garalia", "kind": "acquire",
+     "done": {"any": [{"pilot": 185}, {"var": 4, "eq": 0}]},
+     "steps": [{"when": {"any": [{"pilot": 185}, {"var": 4, "eq": 0}]}, "at": [20]}]},
+
+    {"id": "secret-sheila-elle", "kind": "choice", "at": [26],
+     "options": [
+       {"when": {"var": 7, "eq": 0}, "label": {"zh-Hans": "席拉＋古兰·加兰", "en": "Ciela + Gran-Garan", "ja": "シーラ＋グラン・ガラン"}},
+       {"when": {"var": 7, "eq": 1}, "label": {"zh-Hans": "艾蕾＋戈拉翁", "en": "Elle + Goraon", "ja": "エレ＋ゴラオン"}}]},
+
+    {"id": "secret-gyuken", "kind": "acquire",
+     "done": {"var": 39, "eq": 0},
+     "steps": [{"when": {"var": 39, "eq": 0}, "at": [25]}]},
+
+    {"id": "secret-endless-waltz", "kind": "count",
+     "count": [{"unit": 121}, {"unit": 129}, {"unit": 131}, {"unit": 125}, {"unit": 116}]},
+
+    {"id": "secret-emma", "kind": "acquire",
+     "applies": {"protagonist": ["brad", "manami"]},
+     "done": {"pilot": 53},
+     "steps": [{"when": {"pilot": 53}, "at": [16]}]},
+
+    {"id": "secret-erika", "kind": "acquire",
+     "applies": {"protagonist": ["brad", "manami"]},
+     "done": {"pilot": 199},
+     "steps": [{"when": {"pilot": 199}, "at": [23]}]},
+
+    {"id": "secret-naida", "kind": "acquire",
+     "applies": {"protagonist": ["brad", "manami"]},
+     "done": {"pilot": 116},
+     "steps": [
+       {"when": {"var": 23, "in": [0, 1]}, "at": [45, 61, 76]},
+       {"when": {"pilot": 116}, "at": [77, 91]}]},
+
+    {"id": "secret-kirika", "kind": "acquire",
+     "applies": {"protagonist": ["brad", "manami"]},
+     "done": {"pilot": 115},
+     "steps": [
+       {"when": {"var": 24, "in": [0, 1]}, "at": [78, 92]},
+       {"when": {"pilot": 115}, "at": [78, 92]}]},
+
+    {"id": "secret-apolly-roberto", "kind": "acquire",
+     "applies": {"protagonist": ["ark", "serein"]},
+     "done": {"all": [{"pilot": 236}, {"pilot": 237}]},
+     "steps": [{"when": {"all": [{"pilot": 236}, {"pilot": 237}]}, "at": [2, 3]}]},
+
+    {"id": "secret-gale", "kind": "acquire",
+     "applies": {"protagonist": ["ark", "serein"]},
+     "done": {"pilot": 206},
+     "steps": [
+       {"when": {"var": 0, "eq": 0}, "at": [12]},
+       {"when": {"pilot": 206}, "at": [32, 52, 53]}]},
+
+    {"id": "secret-gale-escort", "kind": "info"},
+
+    {"id": "secret-rx-trio", "kind": "count",
+     "applies": {"protagonist": ["ark", "serein"]}, "at": [14],
+     "count": [{"unit": 55}, {"unit": 54}, {"unit": 58}]},
+
+    {"id": "secret-escort-bonus", "kind": "info"},
+
+    {"id": "secret-four", "kind": "acquire",
+     "applies": {"protagonist": ["ark", "serein"]},
+     "done": {"pilot": 56},
+     "steps": [
+       {"when": {"var": 2, "in": [0, 1, 2]}, "at": [18]},
+       {"when": {"var": 2, "in": [1, 2]}, "at": [18]},
+       {"when": {"var": 2, "eq": 2}, "at": [20]},
+       {"when": {"pilot": 56}, "at": [128, 57]}]},
+
+    {"id": "secret-ginrei", "kind": "acquire",
+     "done": {"pilot": 154},
+     "paths": [
+       {"applies": {"not": {"var": 10, "eq": 1}},
+        "steps": [{"when": {"pilot": 154}, "at": [32], "counter": {"kills": 156, "of": 20}}]},
+       {"applies": {"var": 10, "eq": 1},
+        "steps": [{"when": {"pilot": 154}, "at": [107], "counter": {"kills": 156, "of": 30}}]}]},
+
+    {"id": "secret-rosamia", "kind": "acquire",
+     "applies": {"all": [{"not": {"var": 10, "eq": 1}}, {"not": {"var": 11, "eq": 1}}]},
+     "done": {"pilot": 59},
+     "steps": [
+       {"when": {"var": 15, "in": [0, 1]}, "at": [37]},
+       {"when": {"pilot": 59}, "at": [41]}]},
+
+    {"id": "secret-hilde", "kind": "acquire",
+     "done": {"pilot": [86, 266]},
+     "steps": [{"when": {"pilot": [86, 266]}, "at": [38, 59, 75]}]},
+
+    {"id": "secret-mk3-methuss", "kind": "acquire",
+     "done": {"unit": 57},
+     "steps": [{"when": {"unit": 57}, "at": [42]}]},
+
+    {"id": "secret-minerva-x", "kind": "acquire",
+     "done": {"unit": 264},
+     "steps": [{"when": {"unit": 264}, "at": [66]}]},
+
+    {"id": "secret-mp-great", "kind": "acquire",
+     "done": {"unit": 157},
+     "steps": [{"when": {"unit": 157}, "at": [135]}]},
+
+    {"id": "secret-gato", "kind": "acquire",
+     "done": {"var": 37, "eq": 0},
+     "steps": [
+       {"when": {"var": 38, "eq": 0}, "at": [107]},
+       {"when": {"var": 37, "eq": 0}, "at": [49]}]},
+
+    {"id": "secret-fa-hyakushiki", "kind": "acquire",
+     "done": {"unit": 295},
+     "steps": [{"when": {"unit": 295}, "at": [59]}]},
+
+    {"id": "secret-zechs-epyon", "kind": "acquire",
+     "done": {"pilot": 286},
+     "steps": [{"when": {"pilot": 286}, "at": [57, 76]}]},
+
+    {"id": "secret-todd-silky", "kind": "acquire",
+     "done": {"pilot": 186},
+     "steps": [
+       {"when": {"var": 6, "in": [0, 1]}, "at": [25]},
+       {"when": {"var": 6, "eq": 1}, "at": [33, 62, 47]},
+       {"when": {"pilot": 186}, "at": [81, 92], "counter": {"kills": 184, "of": 30}}]},
+
+    {"id": "secret-rose", "kind": "acquire",
+     "done": {"pilot": 140},
+     "steps": [
+       {"when": {"var": 26, "in": [0, 1, 2]}, "at": [61, 76, 77]},
+       {"when": {"var": 26, "in": [1, 2]}, "at": [61, 76, 77]},
+       {"when": {"pilot": 140}, "at": [91, 130]}]},
+
+    {"id": "secret-puru", "kind": "acquire",
+     "done": {"pilot": 54},
+     "paths": [
+       {"applies": {"not": {"var": 10, "eq": 1}},
+        "steps": [
+          {"when": {"var": 27, "in": [0, 1]}, "at": [84]},
+          {"when": {"pilot": 54}, "at": [85]}]},
+       {"applies": {"var": 10, "eq": 1},
+        "steps": [{"when": {"pilot": 54}, "at": [98]}]}]},
+
+    {"id": "secret-puru-two", "kind": "acquire",
+     "done": {"pilot": 57},
+     "steps": [
+       {"when": {"var": 27, "eq": 1}, "at": [85, 98]},
+       {"when": {"var": 30, "in": [0, 1, 2]}, "at": [141, 99]},
+       {"when": {"var": 30, "in": [1, 2]}, "at": [87, 100]},
+       {"when": {"pilot": 57}, "at": [132, 101]}]},
+
+    {"id": "secret-mashymre-chara", "kind": "acquire",
+     "applies": {"not": {"var": 10, "eq": 1}},
+     "done": {"pilot": [58, 246]},
+     "steps": [
+       {"when": {"any": [{"var": 29, "in": [0, 1]}, {"var": 32, "in": [0, 1]}]}, "at": [86]},
+       {"when": {"any": [{"var": 29, "eq": 1}, {"var": 32, "eq": 1}]}, "at": [88]},
+       {"when": {"var": 31, "eq": 1}, "at": [89]},
+       {"when": {"pilot": [58, 246]}, "at": [103]}]},
+
+    {"id": "secret-neue-ziel", "kind": "acquire",
+     "applies": {"all": [{"not": {"var": 10, "eq": 1}}, {"not": {"var": 11, "eq": 1}}]},
+     "done": {"unit": 79},
+     "steps": [
+       {"when": {"var": 31, "eq": 1}, "at": [89]},
+       {"when": {"unit": 79}, "at": [103]}]},
+
+    {"id": "secret-schwarz", "kind": "acquire",
+     "done": {"var": 46, "eq": 0},
+     "steps": [{"when": {"var": 46, "eq": 0}, "at": [137]}]},
+
+    {"id": "secret-mp-nu", "kind": "acquire",
+     "applies": {"not": {"var": 10, "eq": 0}},
+     "done": {"unit": [294, 296]},
+     "steps": [{"when": {"unit": [294, 296]}, "at": [137]}]},
+
+    {"id": "secret-tallgeese3", "kind": "acquire",
+     "done": {"unit": 136},
+     "steps": [{"when": {"unit": 136}, "at": [99]}]},
+
+    {"id": "secret-qubeley-color", "kind": "acquire",
+     "done": {"unit": 323},
+     "steps": [
+       {"when": {"all": [{"var": 27, "eq": 1}, {"var": 30, "eq": 2}]}, "at": [132, 101]},
+       {"when": {"unit": 323}, "at": [89, 139]}]},
+
+    {"id": "secret-kyral", "kind": "acquire",
+     "done": {"pilot": 10},
+     "steps": [
+       {"when": {"var": 19, "eq": 0}, "at": [41, 56]},
+       {"when": {"pilot": 10}, "at": [104]}]},
+
+    {"id": "secret-quess", "kind": "acquire",
+     "done": {"any": [{"pilot": 284}, {"var": 47, "eq": 0}]},
+     "steps": [{"when": {"any": [{"pilot": 284}, {"var": 47, "eq": 0}]}, "at": [105]}]},
+
+    {"id": "secret-chizuru", "kind": "choice", "at": [138, 97],
+     "counter": {"kills": 145, "of": 15},
+     "options": [
+       {"when": {"var": 51, "in": [0, 1]}, "label": {"zh-Hans": "进入手术线", "en": "Surgery branch", "ja": "手術ルート"}}],
+     "otherwise": {"zh-Hans": "未进入手术线", "en": "No surgery branch", "ja": "手術ルートなし"}},
+
+    {"id": "secret-unlock-attacks", "kind": "info"},
+    {"id": "secret-story-attacks", "kind": "info"},
+
+    {"id": "secret-route-oz", "kind": "choice", "at": [30],
+     "options": [
+       {"when": {"var": 10, "eq": 1}, "label": {"zh-Hans": "OZ路线", "en": "OZ route", "ja": "OZルート"}},
+       {"when": {"var": 10, "eq": 0}, "label": {"zh-Hans": "独立军路线", "en": "Independence Army route", "ja": "独立軍ルート"}}]},
+
+    {"id": "secret-route-cp", "kind": "choice", "at": [32],
+     "applies": {"not": {"var": 10, "eq": 1}},
+     "options": [
+       {"when": {"var": 11, "eq": 1}, "label": {"zh-Hans": "完全和平路线", "en": "Complete Pacifism route", "ja": "完全平和ルート"}},
+       {"when": {"var": 11, "eq": 0}, "label": {"zh-Hans": "留在独立军路线", "en": "Stayed on the Independence Army route", "ja": "独立軍ルートのまま"}}]},
+
+    {"id": "secret-route-treize", "kind": "choice", "at": [70],
+     "applies": {"not": {"var": 10, "eq": 1}},
+     "options": [
+       {"when": {"any": [{"all": [{"var": 11, "eq": 1}, {"var": 44, "eq": 1}]}, {"all": [{"reach": 76}, {"not": {"reach": 70}}]}]},
+        "label": {"zh-Hans": "随特列斯", "en": "With Treize", "ja": "トレーズにつく"}},
+       {"when": {"any": [{"all": [{"var": 11, "eq": 1}, {"var": 44, "eq": 0}]}, {"all": [{"reach": 136}, {"not": {"reach": 70}}]}]},
+        "label": {"zh-Hans": "独自作战", "en": "On your own", "ja": "独自に戦う"}}]},
+
+    {"id": "secret-route-tallgeese", "kind": "choice", "at": [107],
+     "applies": {"not": {"var": 10, "eq": 0}},
+     "options": [
+       {"when": {"var": 38, "eq": 0}, "label": {"zh-Hans": "罗姆斐拉侧", "en": "Romefeller side", "ja": "ロームフェラ側"}},
+       {"when": {"var": 38, "eq": 1}, "label": {"zh-Hans": "进攻月球侧", "en": "Moon Attack side", "ja": "ムーンアタック側"}}]},
+
+    {"id": "secret-route-gato-base", "kind": "choice", "at": [49],
+     "applies": {"not": {"var": 10, "eq": 0}},
+     "options": [
+       {"when": {"var": 37, "eq": 0}, "label": {"zh-Hans": "守住基地", "en": "Base held", "ja": "基地を守った"}}],
+     "otherwise": {"zh-Hans": "未守住基地", "en": "Base lost", "ja": "基地を守れなかった"}},
+
+    {"id": "secret-route-ark-brad", "kind": "choice", "at": [41, 56],
+     "applies": {"all": [{"protagonist": ["ark", "brad"]}, {"not": {"var": 11, "eq": 1}}]},
+     "options": [
+       {"when": {"all": [{"protagonist": ["ark"]}, {"any": [{"scene": [123]}, {"pilot": 29}]}]},
+        "label": {"zh-Hans": "进入「从此并肩」", "en": "Went to “Together From Here”", "ja": "「ここより共に」へ"}},
+       {"when": {"all": [{"protagonist": ["brad"]}, {"var": 21, "in": [0, 1, 2]}]},
+        "label": {"zh-Hans": "进入「了断之时」", "en": "Went to “Time to Settle It”", "ja": "「決着の時」へ"}}],
+     "otherwise": {"zh-Hans": "未进入支线", "en": "No side branch", "ja": "専用ルートなし"}},
+
+    {"id": "secret-route-lera", "kind": "choice", "at": [30],
+     "applies": {"protagonist": ["ark", "serein"]},
+     "options": [
+       {"when": {"var": 9, "eq": 0}, "label": {"zh-Hans": "支线成立", "en": "Branch open", "ja": "ルート成立"}},
+       {"when": {"var": 9, "eq": 1}, "label": {"zh-Hans": "支线不成立", "en": "Branch closed", "ja": "ルート不成立"}}]},
+
+    {"id": "secret-route-beast-base", "kind": "choice", "at": [78],
+     "applies": {"not": {"var": 10, "eq": 1}},
+     "options": [
+       {"when": {"var": 36, "eq": 0}, "label": {"zh-Hans": "跟多蒙他们走", "en": "Went with Domon", "ja": "ドモンたちと行く"}},
+       {"when": {"var": 36, "eq": 1}, "label": {"zh-Hans": "跟豹马他们走", "en": "Went with Hyoma", "ja": "豹馬たちと行く"}}],
+     "otherwise": {"zh-Hans": "跟本队走", "en": "Stayed with the main force", "ja": "本隊と行く"}},
+
+    {"id": "secret-route-breakthrough", "kind": "choice", "at": [81, 130],
+     "applies": {"not": {"var": 10, "eq": 1}},
+     "options": [
+       {"when": {"scene": [82]}, "label": {"zh-Hans": "两篇都在 10 回合内", "en": "Both parts within 10 turns", "ja": "前後編とも10ターン以内"}},
+       {"when": {"any": [{"scene": [83, 131]}, {"all": [{"var": 52, "eq": 3}, {"not": {"reach": 81}}, {"reach": 130}]}]},
+        "label": {"zh-Hans": "超过 10 回合", "en": "Over 10 turns", "ja": "10ターン超過"}}]},
+
+    {"id": "secret-route-muge", "kind": "choice", "at": [89, 139],
+     "options": [
+       {"when": {"var": 31, "eq": 0}, "label": {"zh-Hans": "前往穆格的宇宙", "en": "To the Muge universe", "ja": "ムゲの宇宙へ"}},
+       {"when": {"var": 31, "eq": 1}, "label": {"zh-Hans": "留在地球圈", "en": "Stayed in the Earth Sphere", "ja": "地球圏に残留"}}]},
+
+    {"id": "secret-janera-beasts", "kind": "info"},
+    {"id": "secret-sortie-limits", "kind": "info"},
+    {"id": "secret-dialogue-branches", "kind": "info"}
+  ]
+}
