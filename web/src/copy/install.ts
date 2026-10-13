@@ -2,6 +2,8 @@ import type { Lang } from '../i18n';
 
 // Steps may contain inline HTML (<code>, <kbd>, <strong>); file names come in through {file}.
 export type Section = { id: string; name: string; summary: string; requires: string; experimental?: boolean; steps: string[]; notes?: string[] };
+// System requirements: one table per platform, rows of [label, value]; notes may contain links.
+type Requirements = { title: string; link: string; lead: string; platforms: { name: string; rows: [string, string][] }[]; notes: string[] };
 type Install = {
   title: string;
   lead: string;
@@ -10,6 +12,7 @@ type Install = {
   experimental: string;
   requires: string;
   sections: Section[];
+  requirements: Requirements;
   downloadsTitle: string;
   downloadsLead: string;
   file: string;
@@ -101,6 +104,50 @@ export const INSTALL: Record<Lang, Install> = {
         notes: ['HD 包有自己的版本号，内容变了才发新版，不必每次更新应用都重新下载。有新版时游戏的更新检查会提示，更新时整体替换旧的 <code>hd</code> 文件夹。包内图像主要由 AI 参考原版画面生成或放大重绘，详见常见问题。'],
       },
     ],
+    requirements: {
+      title: '系统要求',
+      link: '系统要求 →',
+      lead: '以下是可以运行的最低配置。显卡门槛与其他使用 RT64 渲染的重编译项目相同；更旧的硬件没有测试过。',
+      platforms: [
+        { name: 'Windows', rows: [
+          ['系统', 'Windows 10 / 11，64 位'],
+          ['图形接口', 'Direct3D 12（Shader Model 6.0）或 Vulkan 1.2'],
+          ['NVIDIA', 'GeForce GT 630（Kepler）及以上'],
+          ['AMD', 'Radeon HD 7750 及以上'],
+          ['Intel', 'Intel HD Graphics 510（第 6 代酷睿）及以上'],
+          ['CPU', '支持 x86-64-v2 的处理器（Intel 酷睿 i 系列第 1 代、AMD FX 及以后）'],
+          ['驱动', '最新的显卡驱动'],
+        ] },
+        { name: 'macOS', rows: [
+          ['系统', 'macOS 14 及以上'],
+          ['处理器', 'Apple 芯片（M1 及以后），不支持 Intel Mac'],
+          ['图形接口', 'Metal'],
+        ] },
+        { name: 'Linux', rows: [
+          ['系统', '64 位，glibc 2.35 及以上（如 Ubuntu 22.04、Debian 12）'],
+          ['图形接口', 'Vulkan 1.2'],
+          ['显卡', '与 Windows 相同'],
+          ['CPU', '与 Windows 相同'],
+          ['驱动', '最新的 Mesa 或 NVIDIA 驱动'],
+        ] },
+        { name: 'Steam Deck', rows: [
+          ['型号', 'LCD 版与 OLED 版'],
+          ['系统', '最新的 SteamOS'],
+        ] },
+        { name: 'Android', rows: [
+          ['系统', 'Android 9 及以上'],
+          ['处理器', 'arm64（64 位）'],
+          ['图形接口', 'Vulkan 1.1'],
+          ['推荐', '骁龙 865、天玑 1080、Exynos 1380、Tensor G2 及以上，约 30 FPS'],
+          ['入门芯片', '天玑 6100+、天玑 700 等（Mali-G57）可以运行，约 10–14 FPS'],
+        ] },
+      ],
+      notes: [
+        '空间：游戏本体约 150 MB，HD 美术包另需约 550 MB。',
+        '启动闪退、卡住或画面异常时，请先更新显卡驱动，见<a href="/zh/faq/#gpu">常见问题</a>。',
+        '安卓各机型的实测情况见<a href="/zh/blog/android-status/">安卓手机测试情况</a>。',
+      ],
+    },
     downloadsTitle: '全部下载',
     downloadsLead: '可通过 SHA-256 校验下载文件的完整性。',
     file: '文件',
@@ -188,6 +235,50 @@ export const INSTALL: Record<Lang, Install> = {
         notes: ['The HD pack has versions of its own and only gets a new one when its contents change, so you do not need to download it again with every app update. The game’s update check says when there is a new one; replace the whole <code>hd</code> folder when you update. Most images are generated or upscaled with AI using the original graphics as a reference; see the FAQ.'],
       },
     ],
+    requirements: {
+      title: 'System requirements',
+      link: 'System requirements →',
+      lead: 'The minimum hardware the game runs on. The graphics requirements are the same as other recompilations drawn with RT64; older hardware has not been tested.',
+      platforms: [
+        { name: 'Windows', rows: [
+          ['OS', 'Windows 10 / 11, 64-bit'],
+          ['Graphics', 'Direct3D 12 (Shader Model 6.0) or Vulkan 1.2'],
+          ['NVIDIA', 'GeForce GT 630 (Kepler) or newer'],
+          ['AMD', 'Radeon HD 7750 or newer'],
+          ['Intel', 'Intel HD Graphics 510 (6th-gen Core) or newer'],
+          ['CPU', 'An x86-64-v2 processor (1st-gen Intel Core i, AMD FX or newer)'],
+          ['Drivers', 'Up-to-date graphics drivers'],
+        ] },
+        { name: 'macOS', rows: [
+          ['OS', 'macOS 14 or later'],
+          ['Processor', 'Apple silicon (M1 or later); Intel Macs are not supported'],
+          ['Graphics', 'Metal'],
+        ] },
+        { name: 'Linux', rows: [
+          ['OS', '64-bit, glibc 2.35 or later (Ubuntu 22.04, Debian 12 or newer)'],
+          ['Graphics', 'Vulkan 1.2'],
+          ['GPU', 'Same as Windows'],
+          ['CPU', 'Same as Windows'],
+          ['Drivers', 'Up-to-date Mesa or NVIDIA drivers'],
+        ] },
+        { name: 'Steam Deck', rows: [
+          ['Model', 'LCD and OLED'],
+          ['OS', 'Up-to-date SteamOS'],
+        ] },
+        { name: 'Android', rows: [
+          ['OS', 'Android 9 or later'],
+          ['Processor', 'arm64 (64-bit)'],
+          ['Graphics', 'Vulkan 1.1'],
+          ['Recommended', 'Snapdragon 865, Dimensity 1080, Exynos 1380, Tensor G2 or newer, about 30 FPS'],
+          ['Entry-level', 'Dimensity 6100+, Dimensity 700 and similar (Mali-G57) run at about 10–14 FPS'],
+        ] },
+      ],
+      notes: [
+        'Storage: about 150 MB for the game, plus about 550 MB for the HD art pack.',
+        'If the game crashes at start, freezes or draws wrongly, update your graphics drivers first; see the <a href="/en/faq/#gpu">FAQ</a>.',
+        'How each Android phone did in our tests: <a href="/en/blog/android-status/">Android phones tested</a>.',
+      ],
+    },
     downloadsTitle: 'All downloads',
     downloadsLead: 'Use the SHA-256 checksum to verify the downloaded file.',
     file: 'File',
@@ -275,6 +366,50 @@ export const INSTALL: Record<Lang, Install> = {
         notes: ['HD パックにはアプリとは別のバージョン番号があり、内容が変わったときだけ新版を出します。アプリを更新するたびにダウンロードし直す必要はありません。新版はゲームの更新確認が知らせます。更新時は <code>hd</code> フォルダーを丸ごと入れ替えてください。収録画像は主に、オリジナルを参考に AI で生成、または拡大・描き直したものです。詳しくはよくある質問をご覧ください。'],
       },
     ],
+    requirements: {
+      title: '動作環境',
+      link: '動作環境 →',
+      lead: 'ゲームが動作する最低限の構成です。グラフィックスの条件は RT64 で描画するほかのリコンパイル作品と同じで、これより古いハードウェアは未確認です。',
+      platforms: [
+        { name: 'Windows', rows: [
+          ['OS', 'Windows 10 / 11（64 ビット）'],
+          ['グラフィックス', 'Direct3D 12（Shader Model 6.0）または Vulkan 1.2'],
+          ['NVIDIA', 'GeForce GT 630（Kepler）以降'],
+          ['AMD', 'Radeon HD 7750 以降'],
+          ['Intel', 'Intel HD Graphics 510（第 6 世代 Core）以降'],
+          ['CPU', 'x86-64-v2 対応のプロセッサー（第 1 世代 Intel Core i、AMD FX 以降）'],
+          ['ドライバー', '最新のグラフィックスドライバー'],
+        ] },
+        { name: 'macOS', rows: [
+          ['OS', 'macOS 14 以降'],
+          ['プロセッサー', 'Apple シリコン（M1 以降）。Intel Mac には非対応'],
+          ['グラフィックス', 'Metal'],
+        ] },
+        { name: 'Linux', rows: [
+          ['OS', '64 ビット、glibc 2.35 以降（Ubuntu 22.04、Debian 12 など）'],
+          ['グラフィックス', 'Vulkan 1.2'],
+          ['GPU', 'Windows と同じ'],
+          ['CPU', 'Windows と同じ'],
+          ['ドライバー', '最新の Mesa または NVIDIA ドライバー'],
+        ] },
+        { name: 'Steam Deck', rows: [
+          ['モデル', 'LCD 版・OLED 版'],
+          ['OS', '最新の SteamOS'],
+        ] },
+        { name: 'Android', rows: [
+          ['OS', 'Android 9 以降'],
+          ['プロセッサー', 'arm64（64 ビット）'],
+          ['グラフィックス', 'Vulkan 1.1'],
+          ['推奨', 'Snapdragon 865、Dimensity 1080、Exynos 1380、Tensor G2 以降で約 30 FPS'],
+          ['エントリー向け', 'Dimensity 6100+、Dimensity 700 など（Mali-G57）は約 10〜14 FPS で動作'],
+        ] },
+      ],
+      notes: [
+        '空き容量：ゲーム本体が約 150 MB、HD アートパックは別に約 550 MB。',
+        '起動直後に落ちる、止まる、表示がおかしいときは、まずグラフィックスドライバーを更新してください。詳しくは<a href="/ja/faq/#gpu">よくある質問</a>をご覧ください。',
+        'Android 端末ごとの確認状況は<a href="/ja/blog/android-status/">Android 端末の動作確認状況</a>をご覧ください。',
+      ],
+    },
     downloadsTitle: 'ダウンロード一覧',
     downloadsLead: 'SHA-256 チェックサムでダウンロードファイルの完全性を確認できます。',
     file: 'ファイル',

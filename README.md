@@ -199,17 +199,59 @@ each screen.
   platform. The game uses the original pixel art without it; once installed, you can
   switch between the two at any time in game.
 
-## Platforms
+## System requirements
 
-| Platform | Requirements |
+Windows, the Steam Deck and Android are experimental. The graphics requirements are the
+same as other recompilations drawn with [RT64](https://github.com/rt64/rt64); older
+hardware has not been tested.
+
+### Windows (experimental)
+
+| | Requirement |
 | --- | --- |
-| Windows (experimental) | 64-bit Windows |
-| macOS | Apple silicon, macOS 14 or later |
-| Linux | x86-64, glibc 2.35 or later, Vulkan |
-| Steam Deck (experimental) | Add it to Steam with the script, then launch from Game Mode |
-| Android (experimental) | arm64, Android 9 or later, touch controls |
+| OS | Windows 10 / 11, 64-bit |
+| Graphics | Direct3D 12 (Shader Model 6.0) or Vulkan 1.2 |
+| NVIDIA | GeForce GT 630 (Kepler) or newer |
+| AMD | Radeon HD 7750 or newer |
+| Intel | Intel HD Graphics 510 (6th-gen Core) or newer |
+| CPU | An x86-64-v2 processor (1st-gen Intel Core i, AMD FX or newer) |
+| Drivers | Up-to-date graphics drivers |
 
-Step-by-step instructions for each platform are on the
+### macOS
+
+| | Requirement |
+| --- | --- |
+| OS | macOS 14 or later |
+| Processor | Apple silicon (M1 or later); Intel Macs are not supported |
+| Graphics | Metal |
+
+### Linux
+
+| | Requirement |
+| --- | --- |
+| OS | 64-bit, glibc 2.35 or later (Ubuntu 22.04, Debian 12 or newer) |
+| Graphics | Vulkan 1.2 |
+| GPU and CPU | Same as Windows |
+| Drivers | Up-to-date Mesa or NVIDIA drivers |
+
+### Steam Deck (experimental)
+
+LCD and OLED models on an up-to-date SteamOS. It uses the Linux package; a script adds
+it to Steam, and it is played from Game Mode.
+
+### Android (experimental)
+
+| | Requirement |
+| --- | --- |
+| OS | Android 9 or later |
+| Processor | arm64 (64-bit) |
+| Graphics | Vulkan 1.1 |
+| Recommended | Snapdragon 865, Dimensity 1080, Exynos 1380, Tensor G2 or newer, about 30 FPS |
+| Entry-level | Dimensity 6100+, Dimensity 700 and similar (Mali-G57) run at about 10–14 FPS |
+
+The game takes about 150 MB, and the optional HD art pack about 550 MB more. If the game
+crashes at start or freezes, update your graphics drivers first. Step-by-step
+instructions for each platform are on the
 [install page](https://srw64.dreamquest.club/en/install/).
 
 ## Help improve the translation

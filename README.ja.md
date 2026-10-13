@@ -172,17 +172,55 @@ RetroArch の slang シェーダープリセット（.slangp）をそのまま�
 - **追加の HD アートパック。** HD アートパックは別配布で、すべてのプラットフォームで使えます。未導入時はオリジナルの
   ドット絵で表示され、導入後はゲーム中いつでも切り替えられます。
 
-## 対応プラットフォーム
+## 動作環境
 
-| プラットフォーム | 動作環境 |
+Windows、Steam Deck、Android 版は試験的です。グラフィックスの条件は
+[RT64](https://github.com/rt64/rt64) で描画するほかのリコンパイル作品と同じで、これより古いハードウェアは未確認です。
+
+### Windows（試験的）
+
+| 項目 | 条件 |
 | --- | --- |
-| Windows（試験的） | 64 ビット版 Windows |
-| macOS | Apple シリコン、macOS 14 以降 |
-| Linux | x86-64、glibc 2.35 以降、Vulkan が必要 |
-| Steam Deck（試験的） | スクリプトで Steam に追加し、ゲームモードで起動 |
-| Android（試験的） | arm64、Android 9 以降、タッチ操作 |
+| OS | Windows 10 / 11（64 ビット） |
+| グラフィックス | Direct3D 12（Shader Model 6.0）または Vulkan 1.2 |
+| NVIDIA | GeForce GT 630（Kepler）以降 |
+| AMD | Radeon HD 7750 以降 |
+| Intel | Intel HD Graphics 510（第 6 世代 Core）以降 |
+| CPU | x86-64-v2 対応のプロセッサー（第 1 世代 Intel Core i、AMD FX 以降） |
+| ドライバー | 最新のグラフィックスドライバー |
 
-プラットフォームごとの手順は公式サイトの[インストールページ](https://srw64.dreamquest.club/ja/install/)をご覧ください。
+### macOS
+
+| 項目 | 条件 |
+| --- | --- |
+| OS | macOS 14 以降 |
+| プロセッサー | Apple シリコン（M1 以降）。Intel Mac には非対応 |
+| グラフィックス | Metal |
+
+### Linux
+
+| 項目 | 条件 |
+| --- | --- |
+| OS | 64 ビット、glibc 2.35 以降（Ubuntu 22.04、Debian 12 など） |
+| グラフィックス | Vulkan 1.2 |
+| GPU・CPU | Windows と同じ |
+| ドライバー | 最新の Mesa または NVIDIA ドライバー |
+
+### Steam Deck（試験的）
+
+LCD 版・OLED 版、最新の SteamOS。Linux 版のパッケージを使い、スクリプトで Steam に追加してゲームモードで起動します。
+
+### Android（試験的）
+
+| 項目 | 条件 |
+| --- | --- |
+| OS | Android 9 以降 |
+| プロセッサー | arm64（64 ビット） |
+| グラフィックス | Vulkan 1.1 |
+| 推奨 | Snapdragon 865、Dimensity 1080、Exynos 1380、Tensor G2 以降で約 30 FPS |
+| エントリー向け | Dimensity 6100+、Dimensity 700 など（Mali-G57）は約 10〜14 FPS で動作 |
+
+ゲーム本体は約 150 MB、HD アートパックを入れる場合はさらに約 550 MB 必要です。起動直後に落ちる、止まるときは、まずグラフィックスドライバーを更新してください。プラットフォームごとの手順は公式サイトの[インストールページ](https://srw64.dreamquest.club/ja/install/)をご覧ください。
 
 ## シナリオ・図鑑・攻略
 

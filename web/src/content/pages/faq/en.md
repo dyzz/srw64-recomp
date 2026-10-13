@@ -36,6 +36,8 @@ It is a native port built using static recompilation. The N64's MIPS program is 
 | Steam Deck (experimental) | The Linux package; the Deck is recognised automatically |
 | Android (experimental) | arm64, Android 9 or later, Vulkan 1.1 |
 
+The CPU, graphics card and driver needed on each platform are listed under [System requirements](/en/install/#requirements) on the install page.
+
 Keyboards and common controllers are supported, and on-screen button prompts follow the device you used last. On Android, touch controls are available when no controller is connected. Touch the screen to show the buttons needed for the current screen, labelled with their functions, such as “OK”, “Fast” or “Next unit”. You can remap keyboard and controller inputs on the Controls page in settings.
 
 <span id="saves"></span>

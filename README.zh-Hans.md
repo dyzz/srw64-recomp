@@ -159,17 +159,55 @@ Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原
   并标注「确定」「快进」「下个单位」等功能。
 - **可选 HD 美术包。** HD 美术包单独下载，所有平台通用；未安装时使用原版像素画面，安装后可在游戏中随时切换。
 
-## 支持平台
+## 系统要求
 
-| 平台 | 要求 |
+Windows、Steam Deck 和 Android 版为实验性。显卡门槛与其他使用
+[RT64](https://github.com/rt64/rt64) 渲染的重编译项目相同；更旧的硬件没有测试过。
+
+### Windows（实验性）
+
+| 项目 | 要求 |
 | --- | --- |
-| Windows（实验性） | 64 位 Windows |
-| macOS | Apple 芯片，macOS 14 及以上 |
-| Linux | x86-64，glibc 2.35 及以上，需要 Vulkan |
-| Steam Deck（实验性） | 运行脚本加入 Steam 库，在游戏模式启动 |
-| Android（实验性） | arm64，Android 9 及以上，触屏操作 |
+| 系统 | Windows 10 / 11，64 位 |
+| 图形接口 | Direct3D 12（Shader Model 6.0）或 Vulkan 1.2 |
+| NVIDIA | GeForce GT 630（Kepler）及以上 |
+| AMD | Radeon HD 7750 及以上 |
+| Intel | Intel HD Graphics 510（第 6 代酷睿）及以上 |
+| CPU | 支持 x86-64-v2 的处理器（Intel 酷睿 i 系列第 1 代、AMD FX 及以后） |
+| 驱动 | 最新的显卡驱动 |
 
-各平台的安装步骤见官网的[安装页](https://srw64.dreamquest.club/zh/install/)。
+### macOS
+
+| 项目 | 要求 |
+| --- | --- |
+| 系统 | macOS 14 及以上 |
+| 处理器 | Apple 芯片（M1 及以后），不支持 Intel Mac |
+| 图形接口 | Metal |
+
+### Linux
+
+| 项目 | 要求 |
+| --- | --- |
+| 系统 | 64 位，glibc 2.35 及以上（如 Ubuntu 22.04、Debian 12） |
+| 图形接口 | Vulkan 1.2 |
+| 显卡与 CPU | 与 Windows 相同 |
+| 驱动 | 最新的 Mesa 或 NVIDIA 驱动 |
+
+### Steam Deck（实验性）
+
+LCD 版与 OLED 版，SteamOS 保持最新即可。使用 Linux 安装包，运行脚本加入 Steam 库后在游戏模式启动。
+
+### Android（实验性）
+
+| 项目 | 要求 |
+| --- | --- |
+| 系统 | Android 9 及以上 |
+| 处理器 | arm64（64 位） |
+| 图形接口 | Vulkan 1.1 |
+| 推荐 | 骁龙 865、天玑 1080、Exynos 1380、Tensor G2 及以上，约 30 FPS |
+| 入门芯片 | 天玑 6100+、天玑 700 等（Mali-G57）可以运行，约 10–14 FPS |
+
+游戏本体约 150 MB，可选的 HD 美术包另需约 550 MB。启动闪退或卡住时，请先更新显卡驱动。各平台的安装步骤见官网的[安装页](https://srw64.dreamquest.club/zh/install/)。
 
 ## 一起改进译文
 

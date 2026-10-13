@@ -19,7 +19,7 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
       <h1>{c.title}</h1>
       <p>{c.lead}</p>
       <p class="rom" set:html={c.rom} />
-      <p class="rom"><a href={`/${lang}/faq/#saves`}>{c.savesLink}</a></p>
+      <p class="rom head-links"><a href="#requirements">{c.requirements.link}</a><a href={`/${lang}/faq/#saves`}>{c.savesLink}</a></p>
       <Mirrors lang={lang} />
     </header>
 
@@ -60,6 +60,22 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
         </section>
       );
     })}
+
+    <section class="plat" id="requirements">
+      <div class="plat-head">
+        <h2>{c.requirements.title}</h2>
+        <p class="dim">{c.requirements.lead}</p>
+      </div>
+      <div class="req">
+        {c.requirements.platforms.map((p) => (
+          <div class="req-card">
+            <h3>{p.name}</h3>
+            <dl>{p.rows.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+          </div>
+        ))}
+      </div>
+      {c.requirements.notes.map((n) => <p class="req-note" set:html={n} />)}
+    </section>
 
     <section class="plat" id="downloads">
       <div class="plat-head">
@@ -128,8 +144,18 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
   .nowrap { white-space: nowrap; }
   td:first-child { min-width: 240px; }
   td:last-child { min-width: 280px; }
+  .head-links { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+  .req { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .req-card { padding: 16px 18px; background: var(--panel); border: 1px solid var(--line-soft); border-top: 3px solid var(--cyan); }
+  .req-card h3 { font-size: 18px; margin-bottom: 10px; }
+  .req-card dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 16px; margin: 0; font-size: 14px; }
+  .req-card dt { color: var(--muted); font-weight: 600; }
+  .req-card dd { margin: 0; overflow-wrap: anywhere; }
+  .req-note { max-width: 860px; margin-top: 12px; font-size: 14px; color: var(--muted); }
+  .req-note:first-of-type { margin-top: 18px; }
   .links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; font-size: 15px; }
 
   @media (max-width: 1000px) { .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .req { grid-template-columns: 1fr; } }
   @media (max-width: 560px) { .quick { grid-template-columns: 1fr; } .steps li { grid-template-columns: 34px minmax(0, 1fr); padding: 12px; } }
 </style>
