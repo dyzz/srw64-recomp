@@ -21,7 +21,7 @@
 
 `data/<语言>/` 下三个文件，各语言结构与 id 完全一致（中文为基准，`tests/test_guide.py` 检查）：
 
-- `progression.json`：流程图关卡卡片（话数按脚本的关卡衔接推算）
+- `progression.json`：流程图关卡卡片（话数按脚本的关卡衔接推算；`scene` 是场景号，`retreats` 是不掉零件但会撤退的敌人）
 - `hidden-elements.json`：隐藏要素、路线分歧，以及「说服与判定规则」
 - `reference.json`：资料页签
 
@@ -31,4 +31,10 @@
 
 ```bash
 python3 tools/content/build_guide.py
+```
+
+游戏内的「本关情报」页也取自这里的数据，改完后一并重新导出（见 [本关情报页](../docs/design/stage-info.md)）：
+
+```bash
+python3 tools/content/export_stage_info.py
 ```

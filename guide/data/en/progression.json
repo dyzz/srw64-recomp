@@ -44,6 +44,7 @@
   {
    "id": "card-000",
    "stage": "1",
+   "scene": 2,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Ark (Real)",
    "route": "real",
@@ -81,6 +82,7 @@
   {
    "id": "card-001",
    "stage": "1",
+   "scene": 3,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Selain (Real)",
    "route": "real",
@@ -114,6 +116,7 @@
   {
    "id": "card-002",
    "stage": "1",
+   "scene": 0,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Brad (Super)",
    "route": "super",
@@ -140,6 +143,7 @@
   {
    "id": "card-003",
    "stage": "1",
+   "scene": 1,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Manami (Super)",
    "route": "super",
@@ -156,6 +160,7 @@
   {
    "id": "card-004",
    "stage": "2",
+   "scene": 10,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Real",
    "route": "real",
@@ -173,6 +178,12 @@
      "from": "Gale"
     }
    ],
+   "retreats": [
+    {
+     "from": "Karla",
+     "note": "Retreats when Gale is shot down"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-sortie-limits",
@@ -183,6 +194,7 @@
   {
    "id": "card-005",
    "stage": "2",
+   "scene": 4,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Super",
    "route": "super",
@@ -204,6 +216,7 @@
   {
    "id": "card-006",
    "stage": "3",
+   "scene": 11,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Real",
    "route": "real",
@@ -247,6 +260,7 @@
   {
    "id": "card-007",
    "stage": "3",
+   "scene": 5,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Super",
    "route": "super",
@@ -276,6 +290,7 @@
   {
    "id": "card-008",
    "stage": "4",
+   "scene": 12,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Real",
    "route": "real",
@@ -318,6 +333,7 @@
   {
    "id": "card-009",
    "stage": "4",
+   "scene": 6,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Manami",
    "route": "super",
@@ -339,6 +355,7 @@
   {
    "id": "card-010",
    "stage": "5",
+   "scene": 13,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Real",
    "route": "real",
@@ -370,6 +387,7 @@
   {
    "id": "card-011",
    "stage": "5",
+   "scene": 7,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Super",
    "route": "super",
@@ -397,6 +415,7 @@
   {
    "id": "card-012",
    "stage": "5",
+   "scene": 8,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Brad",
    "route": "super",
@@ -417,6 +436,7 @@
   {
    "id": "card-013",
    "stage": "6",
+   "scene": 14,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Real",
    "route": "real",
@@ -469,6 +489,7 @@
   {
    "id": "card-014",
    "stage": "6",
+   "scene": 9,
    "section": "Stages 1–6: the four protagonists and Real / Super",
    "lane": "Super",
    "route": "super",
@@ -500,6 +521,7 @@
   {
    "id": "card-015",
    "stage": "7",
+   "scene": 15,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -543,6 +565,7 @@
   {
    "id": "card-016",
    "stage": "8",
+   "scene": 16,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -578,7 +601,7 @@
     {
      "part": "Minovsky Craft",
      "from": "Kyoji",
-     "note": "Retreats at 50% HP or below"
+     "note": "Retreats at 50% HP or below, and the stage then ends"
     }
    ],
    "secrets": [
@@ -599,6 +622,7 @@
   {
    "id": "card-017",
    "stage": "9",
+   "scene": 17,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -625,6 +649,12 @@
      "from": "Dr. Gura"
     }
    ],
+   "retreats": [
+    {
+     "from": "Tekkoki",
+     "note": "Retreats when 8 or fewer enemies remain, if Dr. Gura is no longer on the map"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-emma",
@@ -635,6 +665,7 @@
   {
    "id": "card-018",
    "stage": "10",
+   "scene": 18,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Real",
    "route": "real",
@@ -685,6 +716,7 @@
   {
    "id": "card-019",
    "stage": "10",
+   "scene": 19,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Super",
    "route": "super",
@@ -726,6 +758,7 @@
   {
    "id": "card-020",
    "stage": "11",
+   "scene": 20,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -779,6 +812,7 @@
   {
    "id": "card-021",
    "stage": "12",
+   "scene": 21,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Real",
    "route": "real",
@@ -825,6 +859,7 @@
   {
    "id": "card-022",
    "stage": "12",
+   "scene": 22,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Super",
    "route": "super",
@@ -845,6 +880,7 @@
   {
    "id": "card-023",
    "stage": "13",
+   "scene": 23,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Super",
    "route": "super",
@@ -883,6 +919,7 @@
   {
    "id": "card-024",
    "stage": "14",
+   "scene": 24,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -932,6 +969,7 @@
   {
    "id": "card-025",
    "stage": "15",
+   "scene": 25,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -969,7 +1007,8 @@
     },
     {
      "part": "Repair Kit",
-     "from": "Gyugaki"
+     "from": "Gyugaki",
+     "note": "Leaves together with Drake when he is at 33% HP or below or is shot down (the stage ends)"
     }
    ],
    "secrets": [
@@ -993,6 +1032,7 @@
   {
    "id": "card-026",
    "stage": "16",
+   "scene": 26,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -1056,6 +1096,7 @@
   {
    "id": "card-027",
    "stage": "17",
+   "scene": 27,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -1103,6 +1144,7 @@
   {
    "id": "card-028",
    "stage": "18",
+   "scene": 28,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -1131,6 +1173,7 @@
   {
    "id": "card-029",
    "stage": "19",
+   "scene": 29,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -1168,6 +1211,7 @@
   {
    "id": "card-030",
    "stage": "20",
+   "scene": 30,
    "section": "Common route: from Blade of Anguish to Operation Daybreak",
    "lane": "Common",
    "route": "common",
@@ -1217,6 +1261,7 @@
   {
    "id": "card-031",
    "stage": "21",
+   "scene": 46,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -1286,6 +1331,7 @@
   {
    "id": "card-032",
    "stage": "21",
+   "scene": 31,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -1321,6 +1367,16 @@
      "from": "Avie-Lu"
     }
    ],
+   "retreats": [
+    {
+     "from": "Allen, Fei",
+     "note": "Retreat when either Drake or Helmut is at 50% HP or below, or when one of them is shot down"
+    },
+    {
+     "from": "Noin, Alex, Mueller",
+     "note": "Retreat when Zechs is shot down"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-oz",
@@ -1334,6 +1390,7 @@
   {
    "id": "card-033",
    "stage": "22",
+   "scene": 47,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -1378,6 +1435,12 @@
      "from": "Jeril"
     }
    ],
+   "retreats": [
+    {
+     "from": "Musy",
+     "note": "Retreats with Gildrome, Helmut and Shot when 15 or fewer enemies remain"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-todd-silky",
@@ -1391,6 +1454,7 @@
   {
    "id": "card-034",
    "stage": "22",
+   "scene": 32,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -1466,6 +1530,7 @@
   {
    "id": "card-035",
    "stage": "23",
+   "scene": 62,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -1503,6 +1568,12 @@
      "note": "Retreats together with Drake when he is at 30% HP or below"
     }
    ],
+   "retreats": [
+    {
+     "from": "Allen, Fei",
+     "note": "Retreat together with Drake when he is at 30% HP or below"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-cp",
@@ -1525,6 +1596,7 @@
   {
    "id": "card-036",
    "stage": "23",
+   "scene": 33,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -1546,7 +1618,8 @@
    "parts": [
     {
      "part": "Booster",
-     "from": "Death Gaia"
+     "from": "Death Gaia",
+     "note": "Retreats when Drake is shot down"
     },
     {
      "part": "Apogee Motor",
@@ -1560,12 +1633,18 @@
     {
      "part": "Bio-Sensor",
      "from": "Tod",
-     "note": "Third party"
+     "note": "Third party; retreats when Drake is shot down"
     },
     {
      "part": "High-Fidelity Radar",
      "from": "Bern",
-     "note": "Third party"
+     "note": "Third party; retreats when Drake is shot down"
+    }
+   ],
+   "retreats": [
+    {
+     "from": "Shot, Musy, Allen, Fei, Black Knight",
+     "note": "Retreat when Drake is shot down"
     }
    ],
    "secrets": [
@@ -1589,6 +1668,7 @@
   {
    "id": "card-oz23",
    "stage": "23",
+   "scene": 48,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -1610,11 +1690,13 @@
     },
     {
      "part": "Apogee Motor",
-     "from": "Tod"
+     "from": "Tod",
+     "note": "Retreats when Drake is shot down"
     },
     {
      "part": "Magnetic Coating",
-     "from": "Bern"
+     "from": "Bern",
+     "note": "Retreats when Drake is shot down"
     },
     {
      "part": "Propellant Tank",
@@ -1623,6 +1705,12 @@
     {
      "part": "Repair Kit",
      "from": "Dark General"
+    }
+   ],
+   "retreats": [
+    {
+     "from": "Black Knight",
+     "note": "Retreats when Drake is shot down"
     }
    ],
    "secrets": [
@@ -1643,6 +1731,7 @@
   {
    "id": "card-oz24",
    "stage": "24",
+   "scene": 140,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -1687,6 +1776,7 @@
   {
    "id": "card-037",
    "stage": "24",
+   "scene": 63,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -1746,6 +1836,7 @@
   {
    "id": "card-038",
    "stage": "24",
+   "scene": 34,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -1809,6 +1900,7 @@
   {
    "id": "card-039",
    "stage": "25",
+   "scene": 107,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -1853,6 +1945,7 @@
   {
    "id": "card-040",
    "stage": "25",
+   "scene": 64,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -1891,6 +1984,7 @@
   {
    "id": "card-041",
    "stage": "25",
+   "scene": 35,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -1940,6 +2034,7 @@
   {
    "id": "card-042",
    "stage": "26",
+   "scene": 65,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -2007,6 +2102,7 @@
   {
    "id": "card-043",
    "stage": "26",
+   "scene": 36,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -2023,6 +2119,12 @@
      "from": "Shapiro"
     }
    ],
+   "retreats": [
+    {
+     "from": "Gildrome",
+     "note": "Retreats when 8 or fewer enemies remain"
+    }
+   ],
    "notes": [
     "Stage 25 on Real, stage 26 on Super {+}",
     "Quattro cannot deploy at the start {+}",
@@ -2032,6 +2134,7 @@
   {
    "id": "card-044",
    "stage": "26",
+   "scene": 49,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route (Romefeller side)",
    "route": "oz",
@@ -2112,6 +2215,7 @@
   {
    "id": "card-045",
    "stage": "26",
+   "scene": 50,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route (Moon Attack side)",
    "route": "oz",
@@ -2139,7 +2243,7 @@
     {
      "part": "Magnetic Coating",
      "from": "Aisha {+}",
-     "note": "Manami's scenario only; third party, appears after Yazan is shot down"
+     "note": "Manami's scenario only; third party; appears after Yazan is shot down"
     },
     {
      "part": "Shuffle Crest",
@@ -2174,6 +2278,7 @@
   {
    "id": "card-046",
    "stage": "27",
+   "scene": 66,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -2252,6 +2357,7 @@
   {
    "id": "card-047",
    "stage": "27",
+   "scene": 37,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -2306,6 +2412,7 @@
   {
    "id": "card-048",
    "stage": "27",
+   "scene": 51,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route (base held)",
    "route": "oz",
@@ -2326,6 +2433,12 @@
      "note": "Only if Shinobu is on the map when Shapiro is shot down does he reappear in the battle machine carrying this part"
     }
    ],
+   "retreats": [
+    {
+     "from": "Gildrome",
+     "note": "Retreats when 8 or fewer enemies remain"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-gato-base",
@@ -2343,6 +2456,7 @@
   {
    "id": "card-049",
    "stage": "27",
+   "scene": 108,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route (base lost)",
    "route": "oz",
@@ -2363,6 +2477,12 @@
      "note": "Only if Shinobu is on the map when Shapiro is shot down does he reappear in the battle machine carrying this part"
     }
    ],
+   "retreats": [
+    {
+     "from": "Gildrome",
+     "note": "Retreats when 8 or fewer enemies remain"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-gato-base",
@@ -2380,6 +2500,7 @@
   {
    "id": "card-050",
    "stage": "28",
+   "scene": 52,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route (base held)",
    "route": "oz",
@@ -2418,6 +2539,12 @@
      "note": "Third party"
     }
    ],
+   "retreats": [
+    {
+     "from": "Baren",
+     "note": "Retreats when Blacky is shot down"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-gale",
@@ -2432,6 +2559,7 @@
   {
    "id": "card-051",
    "stage": "28",
+   "scene": 53,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route (base lost)",
    "route": "oz",
@@ -2455,7 +2583,7 @@
     {
      "part": "Booster",
      "from": "Gato {+}",
-     "note": "Third party; appears after Baren is destroyed"
+     "note": "Third party; appears after Baren is destroyed; retreats with the other third-party units on the player phase 4 turns after Baren is destroyed"
     },
     {
      "part": "Hybrid Armor",
@@ -2464,6 +2592,12 @@
     {
      "part": "Propellant Tank",
      "from": "Dungele"
+    }
+   ],
+   "retreats": [
+    {
+     "from": "Yazan, Ramsus, Dunkel, Gates, Rosamia",
+     "note": "Third party; retreat on the player phase 4 turns after Baren is destroyed"
     }
    ],
    "secrets": [
@@ -2481,6 +2615,7 @@
   {
    "id": "card-052",
    "stage": "28",
+   "scene": 67,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -2503,6 +2638,7 @@
   {
    "id": "card-053",
    "stage": "28",
+   "scene": 38,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -2562,6 +2698,7 @@
   {
    "id": "card-054",
    "stage": "29",
+   "scene": 54,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -2588,6 +2725,12 @@
      "from": "Blacky"
     }
    ],
+   "retreats": [
+    {
+     "from": "Marg",
+     "note": "Leaves when Blacky is shot down (the stage ends)"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-gato-base",
@@ -2602,6 +2745,7 @@
   {
    "id": "card-055",
    "stage": "29",
+   "scene": 68,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -2626,6 +2770,7 @@
   {
    "id": "card-056",
    "stage": "29",
+   "scene": 128,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -2673,6 +2818,7 @@
   {
    "id": "card-057",
    "stage": "30",
+   "scene": 55,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -2730,6 +2876,7 @@
   {
    "id": "card-058",
    "stage": "30",
+   "scene": 135,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -2769,6 +2916,7 @@
   {
    "id": "card-059",
    "stage": "30",
+   "scene": 39,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -2814,6 +2962,7 @@
   {
    "id": "card-060",
    "stage": "31",
+   "scene": 56,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -2896,6 +3045,7 @@
   {
    "id": "card-061",
    "stage": "31",
+   "scene": 69,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -2942,6 +3092,7 @@
   {
    "id": "card-062",
    "stage": "31",
+   "scene": 40,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -2979,6 +3130,7 @@
   {
    "id": "card-065",
    "stage": "31",
+   "scene": 123,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route (Ark branch)",
    "route": "oz",
@@ -3006,6 +3158,7 @@
   {
    "id": "card-063",
    "stage": "32",
+   "scene": 70,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route",
    "route": "cp",
@@ -3064,6 +3217,7 @@
   {
    "id": "card-064",
    "stage": "32",
+   "scene": 41,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -3139,6 +3293,7 @@
   {
    "id": "card-066",
    "stage": "32",
+   "scene": 124,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route (Brad branch)",
    "route": "oz",
@@ -3166,6 +3321,7 @@
   {
    "id": "card-067",
    "stage": "32",
+   "scene": 57,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -3214,6 +3370,12 @@
      "note": "Can be persuaded by Domon (no drop if persuaded)"
     }
    ],
+   "retreats": [
+    {
+     "from": "Jamitov",
+     "note": "Retreats when 10 or fewer enemies remain"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-ark-brad",
@@ -3247,6 +3409,7 @@
   {
    "id": "card-070",
    "stage": "32",
+   "scene": 123,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route (Ark branch)",
    "route": "ia",
@@ -3274,6 +3437,7 @@
   {
    "id": "card-068",
    "stage": "33",
+   "scene": 74,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route (with Treize)",
    "route": "cp",
@@ -3309,6 +3473,12 @@
      "from": "Yazan"
     }
    ],
+   "retreats": [
+    {
+     "from": "Marg",
+     "note": "Retreats when Blacky is shot down"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-treize",
@@ -3323,6 +3493,7 @@
   {
    "id": "card-069",
    "stage": "33",
+   "scene": 71,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route (fighting alone)",
    "route": "cp",
@@ -3347,6 +3518,12 @@
      "note": "Appears after Blacky is shot down"
     }
    ],
+   "retreats": [
+    {
+     "from": "Marg",
+     "note": "Retreats when Blacky is shot down"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-treize",
@@ -3361,6 +3538,7 @@
   {
    "id": "card-071",
    "stage": "33",
+   "scene": 124,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route (Brad branch)",
    "route": "ia",
@@ -3388,6 +3566,7 @@
   {
    "id": "card-072",
    "stage": "33",
+   "scene": 59,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -3424,12 +3603,19 @@
     },
     {
      "part": "Psycoframe",
-     "from": "Scirocco"
+     "from": "Scirocco",
+     "note": "Appears after the enemy is wiped out; retreats with his men when 8 or fewer enemies remain, or on the enemy phase 4 turns after he appears, and the stage ends"
     },
     {
      "part": "Repair Kit",
      "from": "Yazan {+}",
-     "note": "Appears with Scirocco after the enemy is wiped out"
+     "note": "Appears with Scirocco after the enemy is wiped out; retreats with Scirocco (the stage ends)"
+    }
+   ],
+   "retreats": [
+    {
+     "from": "Ramsus, Dunkel, Mouar",
+     "note": "Retreat with Scirocco (the stage ends)"
     }
    ],
    "secrets": [
@@ -3453,6 +3639,7 @@
   {
    "id": "card-075",
    "stage": "33",
+   "scene": 42,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -3481,6 +3668,12 @@
      "from": "Blacky"
     }
    ],
+   "retreats": [
+    {
+     "from": "Marg",
+     "note": "Retreats when Blacky is shot down"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-lera",
@@ -3503,6 +3696,7 @@
   {
    "id": "card-079",
    "stage": "33",
+   "scene": 43,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route (Lera branch)",
    "route": "ia",
@@ -3542,6 +3736,7 @@
   {
    "id": "card-073",
    "stage": "34",
+   "scene": 75,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route (with Treize)",
    "route": "cp",
@@ -3584,6 +3779,12 @@
      "note": "Appears after the enemy is wiped out"
     }
    ],
+   "retreats": [
+    {
+     "from": "Haman",
+     "note": "Third party; retreats when the Gwadan reaches its exit point"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-rose",
@@ -3601,6 +3802,7 @@
   {
    "id": "card-074",
    "stage": "34",
+   "scene": 72,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route (fighting alone)",
    "route": "cp",
@@ -3622,6 +3824,12 @@
      "from": "Dungele"
     }
    ],
+   "retreats": [
+    {
+     "from": "Quinze",
+     "note": "Third party; retreats when Emperor Zuul is shot down"
+    }
+   ],
    "notes": [
     "Stage 33 on Real, stage 34 on Super {+}"
    ]
@@ -3629,6 +3837,7 @@
   {
    "id": "card-076",
    "stage": "34",
+   "scene": 60,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -3662,6 +3871,12 @@
      "note": "Appears as an enemy only if Gato wasn't recruited"
     }
    ],
+   "retreats": [
+    {
+     "from": "Haman",
+     "note": "Third party; retreats when the Gwadan reaches its exit point"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-route-gato-base",
@@ -3675,6 +3890,7 @@
   {
    "id": "card-080",
    "stage": "34",
+   "scene": 44,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route (other cases)",
    "route": "ia",
@@ -3714,6 +3930,7 @@
   {
    "id": "card-077",
    "stage": "35",
+   "scene": 76,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route (with Treize)",
    "route": "cp",
@@ -3774,6 +3991,7 @@
   {
    "id": "card-078",
    "stage": "35",
+   "scene": 73,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route (fighting alone)",
    "route": "cp",
@@ -3805,6 +4023,7 @@
   {
    "id": "card-081",
    "stage": "35",
+   "scene": 61,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "OZ route",
    "route": "oz",
@@ -3858,6 +4077,7 @@
   {
    "id": "card-083",
    "stage": "35",
+   "scene": 45,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Independence Army route",
    "route": "ia",
@@ -3914,6 +4134,7 @@
   {
    "id": "card-082",
    "stage": "36",
+   "scene": 136,
    "section": "Route split: OZ, Independence Army and Complete Pacifism",
    "lane": "Complete Pacifism route (fighting alone)",
    "route": "cp",
@@ -3967,6 +4188,7 @@
   {
    "id": "card-084",
    "stage": "36",
+   "scene": 91,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -4021,6 +4243,7 @@
   {
    "id": "card-085",
    "stage": "36",
+   "scene": 77,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -4082,6 +4305,7 @@
   {
    "id": "card-086",
    "stage": "37",
+   "scene": 92,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -4145,6 +4369,7 @@
   {
    "id": "card-087",
    "stage": "37",
+   "scene": 78,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -4210,6 +4435,7 @@
   {
    "id": "card-088",
    "stage": "38",
+   "scene": 79,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone (option 2)",
    "route": "ia",
@@ -4242,6 +4468,7 @@
   {
    "id": "card-089",
    "stage": "38",
+   "scene": 80,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone (option 3)",
    "route": "ia",
@@ -4283,6 +4510,7 @@
   {
    "id": "card-091",
    "stage": "38",
+   "scene": 93,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -4324,6 +4552,7 @@
   {
    "id": "card-090",
    "stage": "39",
+   "scene": 129,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone (option 2)",
    "route": "ia",
@@ -4396,6 +4625,7 @@
   {
    "id": "card-092",
    "stage": "39",
+   "scene": 81,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -4442,6 +4672,7 @@
   {
    "id": "card-093",
    "stage": "39",
+   "scene": 94,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -4484,6 +4715,7 @@
   {
    "id": "card-094",
    "stage": "40",
+   "scene": 130,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -4530,6 +4762,7 @@
   {
    "id": "card-095",
    "stage": "40",
+   "scene": 95,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -4559,6 +4792,7 @@
   {
    "id": "card-096",
    "stage": "41",
+   "scene": 82,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone (broke through within 10 turns)",
    "route": "ia",
@@ -4598,6 +4832,7 @@
   {
    "id": "card-097",
    "stage": "41",
+   "scene": 83,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone (did not break through within 10 turns)",
    "route": "ia",
@@ -4633,6 +4868,7 @@
   {
    "id": "card-099",
    "stage": "41",
+   "scene": 137,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -4711,6 +4947,7 @@
   {
    "id": "card-098",
    "stage": "42",
+   "scene": 131,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone (did not break through within 10 turns)",
    "route": "ia",
@@ -4742,6 +4979,7 @@
   {
    "id": "card-101",
    "stage": "42",
+   "scene": 96,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -4775,6 +5013,7 @@
   {
    "id": "card-100",
    "stage": "43",
+   "scene": 84,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -4808,7 +5047,7 @@
     {
      "part": "Anti-Beam Coating",
      "from": "Jerid",
-     "note": "Third party"
+     "note": "Third party; leaves when the enemy is wiped out"
     },
     {
      "part": "Psycoframe",
@@ -4818,6 +5057,16 @@
      "part": "Shuffle Crest",
      "from": "Dorothy",
      "note": "Appears only if you went through the Complete Pacifism route"
+    }
+   ],
+   "retreats": [
+    {
+     "from": "Haman",
+     "note": "Appears after the enemy is wiped out; retreats at 50% HP or below or when 6 or fewer enemies remain, her men and Ple leave too, and the stage ends"
+    },
+    {
+     "from": "Treize, Lady",
+     "note": "Third party; leave when the enemy is wiped out"
     }
    ],
    "secrets": [
@@ -4835,6 +5084,7 @@
   {
    "id": "card-103",
    "stage": "43",
+   "scene": 138,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -4852,11 +5102,13 @@
    "parts": [
     {
      "part": "Psycoframe",
-     "from": "Janera"
+     "from": "Janera",
+     "note": "Retreats once Emperor Zuul is finally shot down"
     },
     {
      "part": "Apogee Motor",
-     "from": "Gandal"
+     "from": "Gandal",
+     "note": "Retreats once Emperor Zuul is finally shot down"
     },
     {
      "part": "Super Alloy Z",
@@ -4870,6 +5122,12 @@
     {
      "part": "I-Field Barrier",
      "from": "J-Ren"
+    }
+   ],
+   "retreats": [
+    {
+     "from": "Wahl, Blacky, Warchimedes",
+     "note": "Retreat once Emperor Zuul is finally shot down"
     }
    ],
    "secrets": [
@@ -4890,6 +5148,7 @@
   {
    "id": "card-102",
    "stage": "44",
+   "scene": 85,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -4926,6 +5185,12 @@
      "note": "Can be persuaded by Judau (no drop if persuaded)"
     }
    ],
+   "retreats": [
+    {
+     "from": "Blacky, Dungele",
+     "note": "Retreat when Emperor Zuul is shot down"
+    }
+   ],
    "secrets": [
     {
      "ref": "secret-puru",
@@ -4939,6 +5204,7 @@
   {
    "id": "card-105",
    "stage": "44",
+   "scene": 97,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -4959,7 +5225,8 @@
    "parts": [
     {
      "part": "Propellant Tank",
-     "from": "Yazan"
+     "from": "Yazan",
+     "note": "If Scirocco is on the map, retreats with him on the player phase 2 turns after 10 or fewer enemies remain"
     },
     {
      "part": "Repair Kit",
@@ -4972,7 +5239,14 @@
     },
     {
      "part": "Shuffle Crest",
-     "from": "Scirocco"
+     "from": "Scirocco",
+     "note": "Retreats on the player phase 2 turns after 10 or fewer enemies remain; Yazan, Ramsus and Dunkel leave with him"
+    }
+   ],
+   "retreats": [
+    {
+     "from": "Ramsus, Dunkel",
+     "note": "Retreat with Scirocco"
     }
    ],
    "secrets": [
@@ -4993,6 +5267,7 @@
   {
    "id": "card-104",
    "stage": "45",
+   "scene": 86,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -5041,6 +5316,7 @@
   {
    "id": "card-107",
    "stage": "45",
+   "scene": 98,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -5106,6 +5382,7 @@
   {
    "id": "card-106",
    "stage": "46",
+   "scene": 141,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -5155,6 +5432,7 @@
   {
    "id": "card-109",
    "stage": "46",
+   "scene": 99,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -5208,6 +5486,7 @@
   {
    "id": "card-108",
    "stage": "47",
+   "scene": 87,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -5251,6 +5530,7 @@
   {
    "id": "card-111",
    "stage": "47",
+   "scene": 100,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -5269,7 +5549,8 @@
     },
     {
      "part": "Booster",
-     "from": "Ple-Two"
+     "from": "Ple-Two",
+     "note": "Retreats together with Glemy when he is at 30% HP or below"
     },
     {
      "part": "Anti-Beam Coating",
@@ -5296,6 +5577,7 @@
   {
    "id": "card-110",
    "stage": "48",
+   "scene": 88,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -5333,6 +5615,7 @@
   {
    "id": "card-113",
    "stage": "48",
+   "scene": 101,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -5378,6 +5661,7 @@
   {
    "id": "card-112",
    "stage": "49",
+   "scene": 132,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -5412,6 +5696,7 @@
   {
    "id": "card-115",
    "stage": "49",
+   "scene": 139,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "OZ route / with Treize",
    "route": "oz",
@@ -5442,6 +5727,7 @@
   {
    "id": "card-114",
    "stage": "50",
+   "scene": 133,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -5456,7 +5742,8 @@
     },
     {
      "part": "Super Alloy Z",
-     "from": "Gato"
+     "from": "Gato",
+     "note": "Leaves when Haman is shot down (the stage ends)"
     }
    ],
    "notes": [
@@ -5467,6 +5754,7 @@
   {
    "id": "card-116",
    "stage": "51",
+   "scene": 89,
    "section": "Second half: the OZ line (including with Treize) and the Independence Army line (including fighting alone)",
    "lane": "Independence Army route / fight alone",
    "route": "ia",
@@ -5505,6 +5793,7 @@
   {
    "id": "card-117",
    "stage": "50",
+   "scene": 102,
    "section": "Finale: Muge space, Earth and the final battle",
    "lane": "OZ route / with Treize (heading to Muge space)",
    "route": "oz",
@@ -5542,6 +5831,7 @@
   {
    "id": "card-118",
    "stage": "51",
+   "scene": 103,
    "section": "Finale: Muge space, Earth and the final battle",
    "lane": "All routes (staying in the Earth Sphere)",
    "route": "common",
@@ -5564,7 +5854,8 @@
    "parts": [
     {
      "part": "Propellant Tank",
-     "from": "Gyunei"
+     "from": "Gyunei",
+     "note": "Leaves when Char is at 30% HP or below or is shot down (the stage ends)"
     },
     {
      "part": "Psycoframe",
@@ -5574,16 +5865,17 @@
     {
      "part": "High-Fidelity Radar",
      "from": "Milliardo",
-     "note": "Independence Army route only"
+     "note": "Independence Army route only; leaves when Char is at 30% HP or below or is shot down (the stage ends)"
     },
     {
      "part": "Repair Kit",
-     "from": "Rezin"
+     "from": "Rezin",
+     "note": "Retreats at the start of the turn 4 player phase; also leaves when Char is at 30% HP or below or is shot down"
     },
     {
      "part": "High-Fidelity Radar",
      "from": "Gato",
-     "note": "OZ route only"
+     "note": "OZ route only; leaves when Char is at 30% HP or below or is shot down (the stage ends)"
     }
    ],
    "secrets": [
@@ -5611,6 +5903,7 @@
   {
    "id": "card-119",
    "stage": "52",
+   "scene": 90,
    "section": "Finale: Muge space, Earth and the final battle",
    "lane": "Independence Army route / fight alone (going to Muge space)",
    "route": "ia",
@@ -5647,6 +5940,7 @@
   {
    "id": "card-120",
    "stage": "52",
+   "scene": 104,
    "section": "Finale: Muge space, Earth and the final battle",
    "lane": "Common",
    "route": "common",
@@ -5715,6 +6009,7 @@
   {
    "id": "card-121",
    "stage": "53",
+   "scene": 134,
    "section": "Finale: Muge space, Earth and the final battle",
    "lane": "Common",
    "route": "common",
@@ -5746,6 +6041,7 @@
   {
    "id": "card-122",
    "stage": "54",
+   "scene": 105,
    "section": "Finale: Muge space, Earth and the final battle",
    "lane": "Common",
    "route": "common",
@@ -5800,6 +6096,7 @@
   {
    "id": "card-123",
    "stage": "55",
+   "scene": 106,
    "section": "Finale: Muge space, Earth and the final battle",
    "lane": "Common",
    "route": "common",

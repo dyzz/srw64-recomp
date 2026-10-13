@@ -55,7 +55,7 @@ main{width:min(1280px,calc(100% - 32px));margin:22px auto 64px}.guide-panel{scro
 .conditions{display:grid;grid-template-columns:auto 1fr;gap:3px 9px;margin:9px 0 0;font-size:.76rem}.conditions dt{color:var(--muted);font-weight:650}.conditions dd{margin:0}
 .stage-content{padding:4px 16px 10px}.stage-block{padding:11px 0;border-top:1px solid var(--border)}.stage-block:first-child{border-top:0}
 .stage-block h4{display:flex;align-items:center;gap:7px;margin:0 0 6px;font-size:.76rem;line-height:1.25;font-weight:700;color:var(--muted)}.block-dot{width:7px;height:7px;border-radius:999px;background:var(--muted)}
-.acquisition h4{color:var(--blue)}.acquisition .block-dot{background:var(--blue)}.temporary h4{color:var(--violet)}.temporary .block-dot{background:var(--violet)}.availability h4{color:var(--orange)}.availability .block-dot{background:var(--orange)}.upgrade h4{color:var(--green)}.upgrade .block-dot{background:var(--green)}.parts h4{color:var(--teal)}.parts .block-dot{background:var(--teal)}.hidden-progress h4{color:var(--amber)}.hidden-progress .block-dot{background:var(--amber)}
+.acquisition h4{color:var(--blue)}.acquisition .block-dot{background:var(--blue)}.temporary h4{color:var(--violet)}.temporary .block-dot{background:var(--violet)}.availability h4{color:var(--orange)}.availability .block-dot{background:var(--orange)}.upgrade h4{color:var(--green)}.upgrade .block-dot{background:var(--green)}.parts h4{color:var(--teal)}.parts .block-dot{background:var(--teal)}.hidden-progress h4{color:var(--amber)}.hidden-progress .block-dot{background:var(--amber)}.retreat h4{color:var(--red)}.retreat .block-dot{background:var(--red)}
 .info-list,.hidden-list{list-style:none;padding:0;margin:0}.info-list li,.hidden-list li{position:relative;padding:4px 0 4px 13px;font-size:.81rem;line-height:1.55}.info-list li::before,.hidden-list li::before{content:"";position:absolute;left:1px;top:.78rem;width:3px;height:3px;border-radius:50%;background:var(--dot)}
 .part-from{color:var(--muted)}.part-note{color:var(--muted);font-size:.74rem}
 .hidden-list a{color:var(--amber-ink);font-weight:650;text-decoration:underline;text-decoration-color:var(--amber-line);text-underline-offset:3px}.hidden-list p{margin:2px 0 0;color:var(--muted-strong)}
@@ -115,7 +115,7 @@ UI = {
         "tags": {"diff": "与 Akurasu 不同", "new": "Akurasu 未载", "unverified": "未实机验证"},
         "route_map": "路线总览", "victory": "胜利", "defeat": "败北", "after": "过关后：",
         "b_join": "加入／取得", "b_temp": "临时参战", "b_leave": "离队／无法使用", "b_upgrade": "强化／换机／新武器",
-        "b_parts": "强化部件（击坠掉落）", "b_secret": "隐藏要素与分歧", "b_notes": "备注",
+        "b_parts": "强化部件（击坠掉落）", "b_retreat": "其他会撤退的敌人", "b_secret": "隐藏要素与分歧", "b_notes": "备注",
         "stage": ("第", "话"), "step": "第 {} 话", "all": "全部", "akurasu_box": "与 Akurasu 的差异",
         "sources": "资料来源：", "sep": "；", "paren": "（{}）",
         "map": [("开局", "四主角·真实／超级系"), ("共通路线", "至破晓作战"), ("OZ 路线", "破晓作战选 1"),
@@ -133,7 +133,7 @@ UI = {
         "tags": {"diff": "Akurasu と相違", "new": "Akurasu 未記載", "unverified": "実機未確認"},
         "route_map": "ルート概要", "victory": "勝利", "defeat": "敗北", "after": "クリア後：",
         "b_join": "加入・入手", "b_temp": "スポット参戦", "b_leave": "離脱・使用不可", "b_upgrade": "強化・乗り換え・新武器",
-        "b_parts": "強化パーツ（撃墜で入手）", "b_secret": "隠し要素と分岐", "b_notes": "備考",
+        "b_parts": "強化パーツ（撃墜で入手）", "b_retreat": "その他の撤退する敵", "b_secret": "隠し要素と分岐", "b_notes": "備考",
         "stage": ("第", "話"), "step": "第{}話", "all": "すべて", "akurasu_box": "Akurasu との違い",
         "sources": "出典：", "sep": "／", "paren": "（{}）",
         "map": [("序盤", "主人公4人・リアル／スーパー系"), ("共通ルート", "オペレーション・デイブレイクまで"), ("OZルート", "デイブレイクで選択1"),
@@ -151,7 +151,7 @@ UI = {
         "tags": {"diff": "Differs from Akurasu", "new": "Not on Akurasu", "unverified": "Not verified in game"},
         "route_map": "Routes at a glance", "victory": "Win", "defeat": "Lose", "after": "After the stage: ",
         "b_join": "Joins / obtained", "b_temp": "Guest units", "b_leave": "Leaves / unavailable", "b_upgrade": "Upgrades, new units, new weapons",
-        "b_parts": "Parts (dropped when shot down)", "b_secret": "Secrets and splits", "b_notes": "Notes",
+        "b_parts": "Parts (dropped when shot down)", "b_retreat": "Other enemies that retreat", "b_secret": "Secrets and splits", "b_notes": "Notes",
         "stage": ("Stage", ""), "step": "Stage {}", "all": "All", "akurasu_box": "Differences from Akurasu",
         "sources": "Sources: ", "sep": "; ", "paren": " ({})",
         "map": [("Opening", "Four leads · Real / Super"), ("Common route", "Up to Operation Daybreak"), ("OZ route", "Daybreak: choice 1"),
@@ -248,6 +248,10 @@ class Page:
                 + (f' <span class="part-note">{esc(ui["paren"].format(p["note"]))}</span>' if p.get("note") else "")
                 + "</li>" for p in card["parts"])
             blocks.append(self.block("parts", ui["b_parts"], body))
+        if card.get("retreats"):
+            body = "".join(f'<li>{self.inline(r["from"])} <span class="part-note">{esc(ui["paren"].format(r["note"]))}</span></li>'
+                           for r in card["retreats"])
+            blocks.append(self.block("retreat", ui["b_retreat"], body))
         if card.get("secrets"):
             body = "".join(
                 f'<li><a href="#{esc(s["ref"])}">{esc(secrets.get(s["ref"], {}).get("title", s["ref"]))}</a>'
