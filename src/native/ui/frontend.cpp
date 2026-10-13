@@ -4911,8 +4911,9 @@ void sync() {
         static uint32_t pad_before=0;
         const uint32_t pad_now=srw64_pad_state(),pad_pressed=pad_now&~pad_before;pad_before=pad_now;
         if(pad_pressed){set_pad_mode(true);set_pointer_mode(false);}
-        // New bindings from the Controls page: every hint is rebuilt with them.
-        static uint64_t bindings_seen=input::live_bindings().revision();
+        // New bindings from the Controls page: every hint is rebuilt with them. The first
+        // sync always takes them: input.json was loaded after hint_bindings got the defaults.
+        static uint64_t bindings_seen=~uint64_t{};
         if(const auto revision=input::live_bindings().revision();revision!=bindings_seen) {
             bindings_seen=revision;hint_bindings=input::live_bindings().get();
             for(auto* stamp:all_stamps())stamp->clear();
