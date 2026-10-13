@@ -192,6 +192,8 @@ if(SRW64_ENABLE_RT64)
         # A crash's minidump into the run directory (crash_dump.hpp, docs/native/bug-report.md).
         target_sources(srw64-gfx-host PRIVATE windows/crash_dump_windows.cpp)
         target_link_libraries(srw64-gfx-host PRIVATE dbghelp synchronization)
+        # Each adapter's D3D12 support and the Vulkan loader's, into console.log (gpu_report.hpp).
+        target_sources(srw64-gfx-host PRIVATE windows/gpu_report_windows.cpp)
     endif()
     # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md).
     target_sources(srw64-gfx-host PRIVATE update_check.cpp update_http.cpp)

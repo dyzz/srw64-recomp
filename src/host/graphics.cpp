@@ -18,6 +18,9 @@
 #include "native_background.hpp"
 #include "native_sprite.hpp"
 #include "presentation/image_mode.hpp"
+#include "console_log.hpp"
+#include "gpu_report.hpp"
+#include "startup_failure.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "presentation_settings.hpp"
 #include "settings_window.hpp"
@@ -102,6 +105,38 @@ uint32_t dpc_clock{}, dpc_buffer_busy{}, dpc_pipe_busy{}, dpc_tmem{};
 plume::RenderDevice* capture_device;
 int graphics_api = -1;  // RT64's chosen API (RT64::UserConfiguration::GraphicsAPI), for srw64_graphics_info
 std::filesystem::path capture_directory;
+std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure message
+// The game cannot draw (no window, or no device RT64 can use): tell the player in their
+// language (startup_failure.hpp) and leave, without the crash dump an abort would add to
+// what console.log already says. Tool and test runs, not interactive, keep the abort.
+[[noreturn]] void graphics_failure(const std::string& detail) {
+    const char* interactive = std::getenv("SRW64_INTERACTIVE");
+    if (!interactive || std::string(interactive) != "1") std::abort();
+    std::string locale = "zh-Hans";
+    if (const char* path = std::getenv("SRW64_PRESENTATION_SETTINGS")) {
+        std::ifstream file(std::filesystem::path(reinterpret_cast<const char8_t*>(path)));
+        const auto saved = nlohmann::json::parse(file, nullptr, false);
+        if (saved.is_object() && saved.contains("locale") && saved["locale"].is_string()) locale = saved["locale"].get<std::string>();
+    }
+    std::string log;
+    if (!capture_directory.empty()) {
+        const auto text = (capture_directory / "console.log").u8string();
+        log.assign(text.begin(), text.end());
+    }
+    const auto message = srw64::startup_failure::message(locale, gpu_names, log, detail);
+#ifdef _WIN32
+    // Topmost, over the game's own window. Not owned by it: that window's thread (the main
+    // thread) waits for this one (the renderer's), so it could not take the box's messages.
+    std::wstring text(size_t(MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, nullptr, 0)), L'\0');
+    MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, text.data(), int(text.size()));
+    MessageBoxW(nullptr, text.c_str(), L"Marchwind64", MB_OK | MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
+#else
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Marchwind64", message.c_str(), nullptr);
+#endif
+    fprintf(stderr, "SRW64_GRAPHICS_FAILURE_SHOWN\n");
+    srw64::console_log::flush_now();
+    std::_Exit(3);
+}
 uint64_t presented_frames{};
 std::string capture_clock = "native_vi_at_draw";
 // F12 or Print Screen: the next present goes to screenshots/ in the user folder.
@@ -536,6 +571,7 @@ public:
         if (setup_result != ultramodern::renderer::SetupResult::Success) {
             fprintf(stderr, "SRW64_RT64_SETUP_FAILED result=%d\n", (int)result);
             app.reset();
+            graphics_failure({});
         }
         else {
             if (const char* directory = std::getenv("SRW64_TEXTURE_DUMP")) {
@@ -828,6 +864,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     // window in points as on a Mac (SDL_GetWindowSizeInPixels for the drawable, frontend.cpp).
     SDL_SetHint(SDL_HINT_WINDOWS_DPI_SCALING, "1");
 #endif
+    gpu_names = srw64::gpu_report::log();
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | (srw64_audio_enabled() ? SDL_INIT_AUDIO : 0)) != 0) {
         fprintf(stderr, "SRW64_SDL_INIT_FAILED %s\n", SDL_GetError());
         std::abort();
@@ -835,8 +872,12 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     // UI and dialogue need display pixels regardless of the game's internal render scale.
 #ifdef __APPLE__
     constexpr Uint32 surface = SDL_WINDOW_METAL;
+#elif defined(_WIN32)
+    // Plume makes both the D3D12 and the Vulkan swapchain from the HWND. SDL_WINDOW_VULKAN
+    // would load Vulkan first and fail the window on a PC without a working Vulkan driver
+    // ("doesn't implement the VK_KHR_surface extension"), before RT64 tries D3D12.
+    constexpr Uint32 surface = 0;
 #else
-    // RT64 creates D3D12 swapchains from the HWND; the Vulkan flag is harmless there.
     constexpr Uint32 surface = SDL_WINDOW_VULKAN;
 #endif
     // A handheld fills its screen, Game Mode or Desktop Mode; a desktop opens a window (View
@@ -851,8 +892,9 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
                               (fills_screen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
                               (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0));
     if (!window) {
-        fprintf(stderr, "SRW64_WINDOW_FAILED %s\n", SDL_GetError());
-        std::abort();
+        const std::string error = SDL_GetError();
+        fprintf(stderr, "SRW64_WINDOW_FAILED %s\n", error.c_str());
+        graphics_failure(error);
     }
     SDL_SysWMinfo info{};
     SDL_VERSION(&info.version);

@@ -41,6 +41,14 @@
 - 实测（GTX 1080 Ti、D3D12）：六种崩溃都写出转储并在 `console.log` 留下 `SRW64_CRASH` 行，各约 170–240 KB，栈溢出约 1.2 MB（栈本身）；标题画面 68 个线程时同样参数的转储约 740 KB；报告 zip 里压缩到约四分之一。
 - 问题报告把每次运行目录里最新的 2 个 `.dmp`（单个不超过 32 MiB）原样放进 zip（二进制，不做 `~` 替换；模块路径里可能有用户名）。
 
+## 显卡检测与画不出画面时的提示（Windows，2026-10-13）
+
+玩家反馈（Win10 老笔记本）：0.4.7 第二次起每次报 `SRW64_WINDOW_FAILED Installed Vulkan doesn't implement the VK_KHR_surface extension` 后 abort（第一次没报错是在导入 ROM，窗口还没出来）。原因是 Windows 上建窗口带了 `SDL_WINDOW_VULKAN`，SDL 先加载 `vulkan-1.dll` 并要求它报出 `VK_KHR_surface`；加载器在、背后没有能用的驱动时窗口就建不出来，RT64 的「先 D3D12、不行再 Vulkan」根本没机会运行。plume 在 Windows 上 D3D12 和 Vulkan 都直接用 HWND 建交换链，不需要这个标志，现在 Windows 不再带它（`graphics.cpp`）。
+
+- 建窗口前 `gpu_report::log()`（`src/host/windows/gpu_report_windows.cpp`）把每块显卡写成一行 `SRW64_GPU adapter=<号> name="…" vendor=… device=… driver=… vram_mb=… d3d12 fl=<特性级别> sm=<着色器模型> device8=<yes/no> rt64=<yes/no>`（按 plume 选设备的条件：11_0、SM 6.0、`ID3D12Device8`），再写一行 `SRW64_GPU vulkan=loader version=… extensions=… surface=… win32_surface=…`（没有加载器时 `vulkan=no-loader`）。DLL 都是动态加载，缺了也照样出行。
+- 窗口建不出来，或 RT64 的两条路都失败（`SRW64_RT64_SETUP_FAILED`）时，交互运行（`SRW64_INTERACTIVE=1`，即玩家启动）按保存的语言弹提示（`startup_failure.hpp`：要 DirectX 12 或 Vulkan、去显卡厂商官网装驱动、显卡名、`console.log` 路径），写一行 `SRW64_GRAPHICS_FAILURE_SHOWN`，以退出码 3 退出，不再留崩溃转储。Windows 用 `MessageBoxW` 加 `MB_TOPMOST`：不能以游戏窗口为父窗口，窗口属于主线程，而主线程此时在等渲染线程。工具与测试运行照旧 abort。
+- 实测（GTX 1080 Ti）：在 exe 旁放一个假的 `vulkan-1.dll`（能加载、扩展列表为空、建实例失败）模拟玩家的情况，0.4.7 原包报出与玩家完全相同的错误和地址（`+0x00459B01`）；新版走 D3D12 正常出帧；诊断启动加 `SRW64_GRAPHICS_API=vulkan` 让两条路都失败时，中英日提示都在最上层，关掉后退出码 3、无 `.dmp`；Vulkan 正常时照旧选 D3D12。玩家的启动方式也在假 DLL 下测过：`LOCALAPPDATA` 指到测试目录后双击 exe（含首次导入）11 次、`Marchwind64.cmd` 1 次，每次都是 D3D12 出帧、无转储。窗口建不出来的那条提示路径没有实测（与 RT64 失败共用同一个函数）。`VK_ICD_FILENAMES` 指向不存在的文件复现不了：新版加载器没有驱动也会报 `VK_KHR_surface`。
+
 
 ## 安卓公共导出（2026-10-09；2026-10-11 改）
 
