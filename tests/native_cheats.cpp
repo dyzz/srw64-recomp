@@ -1,4 +1,5 @@
 #include "cheats.hpp"
+#include <algorithm>
 #include <cassert>
 #include <cstdio>
 #include <vector>
@@ -57,6 +58,37 @@ int main() {
     // Counts never wrap below zero.
     put(a+unit_slot_count,4,1);put(a+unit_parts+3,7,1);put(a+unit_fitted,0,1);put(parts+2*7+1,0,1);
     assert(release_slots(ram.data(),a,2) && get(a+unit_fitted,1)==0 && get(parts+2*7+1,1)==0);
+
+    // Level curve: 3 + 0.9 a chapter cleared, at most 50; nothing written while off.
+    assert(curve_level(0)==3 && curve_level(1)==3 && curve_level(10)==12 && curve_level(30)==30);
+    assert(curve_level(52)==49 && curve_level(53)==50 && curve_level(120)==50);
+    put(base_level,41,1);put(chapters_cleared,10,1);
+    hold(ram.data(),max_funds);assert(get(base_level,1)==41);
+    hold(ram.data(),level_curve);assert(get(base_level,1)==12 && get(chapters_cleared,1)==10);
+
+    // Match party: the top 15 in the party with a machine the party has, no cap.
+    {
+        std::vector<uint8_t> keep=ram;
+        std::fill(ram.begin(),ram.end(),0);
+        const uint32_t unit_in=units+10*unit_size,unit_out=units+11*unit_size,getter=units+12*unit_size;
+        put(unit_in+0xC,0x80,1);put(getter+unit_number,0xAB,2);
+        for(unsigned i=0;i<20;++i) {   // levels 99, 98 ... 80 on the party's machine
+            const uint32_t pilot=pilots_table+i*pilot_size;
+            put(pilot,1,1);put(pilot+5,99-i,1);put(pilot+0x37,1,1);put(pilot+0x38,unit_in,4);
+        }
+        const uint32_t away=pilots_table+20*pilot_size,benched=pilots_table+21*pilot_size,getter_pilot=pilots_table+22*pilot_size;
+        put(away,0x81,1);put(away+5,1,1);put(away+0x37,1,1);put(away+0x38,unit_in,4);        // left the party
+        put(benched,1,1);put(benched+5,1,1);put(benched+0x37,1,1);put(benched+0x38,unit_out,4);   // a machine not counted
+        put(getter_pilot,1,1);put(getter_pilot+5,100-1,1);put(getter_pilot+0x37,1,1);put(getter_pilot+0x38,getter,4);
+        assert(party_level(ram.data())==(99+99+98+97+96+95+94+93+92+91+90+89+88+87+86)/15);
+        put(base_level,41,1);put(chapters_cleared,1,1);
+        hold(ram.data(),level_party);assert(get(base_level,1)==party_level(ram.data()));
+        hold(ram.data(),level_party|level_curve);assert(get(base_level,1)==3);   // the curve wins if both
+        std::fill(ram.begin(),ram.end(),0);
+        assert(party_level(ram.data())==1);
+        ram=keep;
+    }
+    assert(!toggle(level_curve) && !toggle(level_party) && toggle(max_parts));
 
     // SP and morale: records in use; morale skips the 0xC0 pilots.
     const uint32_t p=pilots_table,q=pilots_table+pilot_size,unused=pilots_table+2*pilot_size;

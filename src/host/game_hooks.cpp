@@ -159,6 +159,12 @@ void resident_func_80093278(uint8_t* ram,recomp_context* ctx) {
     const unsigned write_sram=uint8_t(ctx->r4);
     srw64_original_tactical_serialize(ram,ctx);srw64::state_probe::save_payload(ram,true,write_sram);
 }
+void resident_func_800A4BE0(uint8_t* ram,recomp_context* ctx) {
+    // The base level, on entering a map; the cheats' party or chapter base replaces it
+    // before the map's first deployment reads it (every frame after that too).
+    srw64_original_base_level(ram,ctx);
+    cheats::hold_base_level(ram);
+}
 void resident_func_800927A4(uint8_t* ram,recomp_context* ctx) {
     srw64_original_intermission_restore(ram,ctx);srw64::state_probe::capture(ram,"intermission-restored");
     if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);

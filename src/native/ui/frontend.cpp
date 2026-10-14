@@ -1097,8 +1097,11 @@ std::string saves_page() {
 bool cheat_levels_open=false;
 std::string cheats_page() {
     std::string body="<p>"+label("cheats_note")+"</p>";
-    for(const auto& entry:cheats::catalog)
+    for(const auto& entry:cheats::catalog)if(cheats::toggle(entry.bit))
         body+=button("cheat:"+std::string(entry.id),"<span class='set-name'>"+label("cheat_"+std::string(entry.id))+"</span><span class='switch'><span></span></span>",settings::cheats()&entry.bit,false,"set-toggle nav");
+    // Enemies' and recruits' base level: three choices (docs/gameplay/cheats.md §6).
+    const unsigned on=settings::cheats();
+    body+=settings_choice("cheat_level_base","cheat-level-base",{"original","party","curve"},on&cheats::level_curve?"curve":on&cheats::level_party?"party":"original");
     body+=settings_row("cheat_levels",button("cheat-levels",label(cheat_levels_open?"cheat_levels_close":"cheat_levels_open"),cheat_levels_open));
     if(!cheat_levels_open)return body;
     const auto pilots=cheats::pilots();
@@ -4302,6 +4305,10 @@ void choose(const std::string& id) {
             browse_kind.clear();
         }
         if(id.starts_with("cheat:"))for(const auto& entry:cheats::catalog)if(entry.id==id.substr(6))settings::set_cheats(settings::cheats()^entry.bit);
+        if(id.starts_with("cheat-level-base:")) {
+            const auto mode=id.substr(17);
+            settings::set_cheats((settings::cheats()&~cheats::level_modes)|(mode=="curve"?cheats::level_curve:mode=="party"?cheats::level_party:0u));
+        }
         if(id.starts_with("cheat-level:"))if(const auto colon=id.find(':',12);colon!=std::string::npos)cheats::request_level(unsigned(std::stoul(id.substr(12,colon-12))),unsigned(std::stoul(id.substr(colon+1))));
         if(id.starts_with("preset:"))for(const auto& preset:rules::presets)if(preset.key==id.substr(7))rules::set_fixes(preset.fixes);
         if(id.starts_with("locale:") && !input.has_composition())settings::request_locale(id.substr(7));

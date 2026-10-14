@@ -99,10 +99,12 @@ void intermission(uint8_t* ram,recomp_context* ctx) {
 
 unsigned active(){return switches.load();}
 void hold_slots(uint8_t* ram){hold(ram,switches.load(std::memory_order_relaxed)&four_slots);}
+void hold_base_level(uint8_t* ram){hold(ram,switches.load(std::memory_order_relaxed)&level_modes);}
 void set_active(unsigned value) {
     unsigned all=0;
     for(const auto& entry:catalog)all|=entry.bit;
     value&=all;
+    if((value&level_modes)==level_modes)value&=~unsigned(level_party);   // one base level
     if(switches.exchange(value)!=value)record("switches",{{"switches",value}});
 }
 std::vector<Pilot> pilots() {

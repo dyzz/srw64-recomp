@@ -12,9 +12,14 @@
 // own state and is saved with it; the switches themselves are not.
 namespace srw64::cheats {
 
-enum Switch : unsigned {max_funds=1,max_parts=2,keep_en=4,keep_sp=8,morale_150=16,four_slots=32};
+enum Switch : unsigned {max_funds=1,max_parts=2,keep_en=4,keep_sp=8,morale_150=16,four_slots=32,level_curve=64,level_party=128};
 struct Entry {Switch bit;const char* id;};
-inline constexpr Entry catalog[]={{max_funds,"funds"},{max_parts,"parts"},{four_slots,"slots"},{keep_en,"en"},{keep_sp,"sp"},{morale_150,"morale"}};
+inline constexpr Entry catalog[]={{max_funds,"funds"},{max_parts,"parts"},{four_slots,"slots"},{keep_en,"en"},{keep_sp,"sp"},{morale_150,"morale"},
+    {level_party,"party"},{level_curve,"curve"}};
+// The base level row offers three choices, not switches: the original, the party's (no
+// cap) or the chapter curve. At most one of the two bits is set.
+inline constexpr unsigned level_modes=level_curve|level_party;
+inline constexpr bool toggle(Switch bit){return !(bit&level_modes);}
 
 unsigned active();
 void set_active(unsigned switches);
@@ -29,6 +34,8 @@ void request_level(unsigned index,unsigned level);
 // The four-slot switch's write, now rather than at the next frame: a machine built
 // this frame (a swap) still has its ROM count when the parts-carry rule fills it.
 void hold_slots(uint8_t* ram);
+// The chosen base level, right after the original computes its own (800A4BE0).
+void hold_base_level(uint8_t* ram);
 
 // Installs the game-thread hooks; SRW64_CHEATS (comma-separated ids) turns
 // switches on for a run, for checks.
@@ -58,6 +65,36 @@ inline constexpr unsigned machine_count=363,slots_max=4;
 inline constexpr uint32_t pilots_table=0x80172F40,pilot_size=0x4C;
 inline constexpr unsigned pilot_count=100,morale_max=150,level_max=99,experience_per_level=500;
 inline constexpr uint16_t text_pilot_names=0x111E;
+// The base level (800A4BE0, on entering every map): the mean of the top 15 player
+// pilots, between 1 and min(99, chapters cleared + 40, 95). New enemies start at it
+// plus their record's offset (8020ABB4), new recruits at it plus the script's (800AAD28).
+// level_party keeps the mean without those caps; level_curve follows the chapters cleared
+// instead: 3 + 0.9 a chapter, at most 50, about what a party of 10-15 sharing every kill
+// reaches (docs/gameplay/cheats.md §6).
+inline constexpr uint32_t base_level=0x8010F5F3,chapters_cleared=0x8010F5EF;
+inline constexpr unsigned curve_start=3,curve_tenths=9,curve_max=50,party_counted=15;
+inline constexpr unsigned curve_level(unsigned cleared){return std::min(curve_max,curve_start+cleared*curve_tenths/10);}
+// 800A4BE0's mean without its caps: pilots in use and in the party (+0 without 0x80)
+// with a machine (+0x37, +0x38) the party has (+0xC bit 0x80, or one of 0xAB-0xB3).
+inline unsigned party_level(const uint8_t* ram) {
+    using namespace guest;
+    std::vector<unsigned> levels;
+    for(unsigned i=0;i<pilot_count;++i) {
+        const uint32_t pilot=pilots_table+i*pilot_size;
+        const unsigned state=read(ram,pilot,1);
+        if(!state || (state&0x80) || !read(ram,pilot+0x37,1))continue;
+        const uint32_t unit=read(ram,pilot+0x38,4);
+        if(!valid(unit,0x54))continue;
+        const unsigned number=read(ram,unit+unit_number,2);
+        if(!(read(ram,unit+0xC,1)&0x80) && !(number>=0xAB && number<0xAB+9))continue;
+        levels.push_back(read(ram,pilot+5,1));
+    }
+    if(levels.empty())return 1;
+    std::sort(levels.rbegin(),levels.rend());
+    levels.resize(std::min<size_t>(levels.size(),party_counted));
+    unsigned sum=0;for(unsigned l:levels)sum+=l;
+    return std::clamp(sum/unsigned(levels.size()),1u,level_max);
+}
 // The intermission's fade: -1 once a screen is idle.
 inline constexpr uint32_t transition=0x8015E9C5;
 // The menu counts as open while its step ran this recently.
@@ -72,6 +109,8 @@ inline void hold(uint8_t* ram,unsigned on) {
         const uint32_t entry=parts+i*2;
         write8(ram,entry,uint8_t(std::max<unsigned>(parts_max,read(ram,entry+1,1))));
     }
+    if(on&level_curve)write8(ram,base_level,uint8_t(curve_level(read(ram,chapters_cleared,1))));
+    else if(on&level_party)write8(ram,base_level,uint8_t(party_level(ram)));
     if(on&four_slots)for(unsigned i=0;i<unit_count;++i) {
         const uint32_t unit=units+i*unit_size;
         if(read(ram,unit,1))write8(ram,unit+unit_slot_count,slots_max);
