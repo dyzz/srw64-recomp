@@ -79,7 +79,7 @@
   - `generate_cpu.py` 写文件时固定 `newline="\n"`，保证生成物的摘要跨平台一致。
 - **验收：**
   - Mac 上 `make`、`make recomp-native-check` 和现有检查脚本全部通过。
-  - 在 Linux 容器里至少能编译纯 CPU 的 `srw64-host` 和根 CMake 测试。本机装有 Docker，但当前没有启动。
+  - 在 Linux 容器里至少能编译纯 CPU 的 `srw64-host` 和根 CMake 测试。本机装有 Docker，但当前没有启动。（纯 CPU 的 `srw64-host` 已于 2026-10-14 删除，宿主只剩图形版。）
 
 ### X1 图形层改走 plume（在 Mac 上完成并验收）
 

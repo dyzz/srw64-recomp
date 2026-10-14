@@ -24,7 +24,6 @@
 #include "rule_fixes.hpp"
 #include "upgrade_refund.hpp"
 #include "parts_carry.hpp"
-#if defined(SRW64_WITH_RT64)
 #include "graphics.hpp"
 #include "app/launch.hpp"
 #include "app/desktop.hpp"
@@ -70,7 +69,6 @@
 #include "settings_window.hpp"
 #include "debug_server.hpp"
 extern uint8_t* srw64_rdram;  // defined below, for debug_server.cpp
-#endif
 
 RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
 
@@ -131,7 +129,6 @@ void on_init(uint8_t* rdram, recomp_context*) {
     srw64::upgrades::configure(output_dir);
     srw64::refund::configure(output_dir);
     srw64::parts_carry::configure(output_dir);
-#if defined(SRW64_WITH_RT64)
     srw64::names::initialize_rom(rom.data(),rom.size());
     srw64::rom_art::initialize({rom.data(),rom.size()});
     // With an HD art pack, BANPRESTO and GAME OVER are upscaled from the ROM here rather
@@ -147,7 +144,6 @@ void on_init(uint8_t* rdram, recomp_context*) {
                 out.rgba=std::move(image.rgba);
                 return out;
             });
-#endif
     // The generic runtime initially loads/registers 1 MiB. Only the resident
     // section belongs at this entrypoint; the game's own loader owns overlays.
     unload_overlays((int32_t)0x80076610, 0x100000);
@@ -214,7 +210,6 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
     const uint64_t live = live_buttons.load();
     if (vi < (live >> 16)) *buttons |= uint16_t(live);
     *x = *y = 0;
-#if defined(SRW64_WITH_RT64)
     srw64_keyboard_input(buttons, x, y);
     if(srw64::battle_page::owns_input() || srw64::intermission_page::owns_input() || srw64::upgrade_page::owns_input() || srw64::parts_page::owns_input() || srw64::ability_page::owns_input() || srw64::swap_page::owns_input() || srw64::save_page::owns_input() || srw64::title_page::owns_input() || srw64::names::owns_input() || srw64::link_page::owns_input() || srw64::settings_window::owns_input())*x=*y=0;
     *buttons = srw64::settings_window::filter_input(*buttons, *buttons != 0);
@@ -238,7 +233,6 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
                                    srw64::guest::read(srw64_rdram, map_sub_address, 1), srw64::intro::title_major(), srw64::dialogue::reading(),
                                    srw64::intro::title_waiting()));
     }
-#endif
     return true;
 }
 
@@ -292,12 +286,10 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
         load_overlays(rom, (int32_t)ram, size);
         loaded_sections.push_back(index);
         srw64::upgrades::patch_copy(rdram, rom, ram, size);
-#if defined(SRW64_WITH_RT64)
         srw64::intro::overlay_loaded(rom,ram,size);
         srw64::title_page::overlay_loaded(rom,ram,size);
         srw64::names::overlay_loaded(rom,ram,size);
         if(ram==0x801C2600)srw64::dialogue::overlay_loaded(rom);
-#endif
         std::fprintf(stderr, "SRW64_OVERLAY rom=%08X ram=%08X size=%08X bytes=verified\n", rom, ram, size);
         return;
     }
@@ -314,7 +306,7 @@ extern "C" void resident_func_8008C510(uint8_t* rdram, recomp_context* ctx) {
 
 static int run_host(int argc, char** argv) {
     if (argc < 4 || argc > 6) {
-        std::fprintf(stderr, "Usage: srw64-host BASELINE_ROM NEW_OUTPUT_DIR MAX_VIS [INPUT_MASKS|-] [INITIAL_SRAM]\n");
+        std::fprintf(stderr, "Usage: srw64-gfx-host BASELINE_ROM NEW_OUTPUT_DIR MAX_VIS [INPUT_MASKS|-] [INITIAL_SRAM]\n");
         return 2;
     }
     output_dir = std::filesystem::absolute(argv[2]);
@@ -377,7 +369,6 @@ static int run_host(int argc, char** argv) {
     cfg.argc = 3;
     cfg.argv = runtime_args;
     cfg.project_version = {0, 0, 1, "cpu-probe"};
-#if defined(SRW64_WITH_RT64)
     srw64_set_capture_directory(output_dir);
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
     srw64::dialogue::configure(output_dir);
@@ -521,39 +512,24 @@ static int run_host(int argc, char** argv) {
         -> std::unique_ptr<ultramodern::renderer::RendererContext> {
         return std::make_unique<RecordingRenderer>(rdram, srw64_create_renderer(rdram, handle));
     };
-#else
-    cfg.gfx_callbacks.create_window = [](void*) { return ultramodern::renderer::WindowHandle{(void*)1, (void*)1}; };
-    cfg.renderer_callbacks.create_render_context = [](uint8_t* rdram, ultramodern::renderer::WindowHandle, bool)
-        -> std::unique_ptr<ultramodern::renderer::RendererContext> { return std::make_unique<RecordingRenderer>(rdram); };
-#endif
     cfg.rsp_callbacks.get_rsp_microcode = get_microcode;
     cfg.audio_callbacks.queue_samples = [](int16_t* samples, size_t count) {
         audio_samples += count;
-#if defined(SRW64_WITH_RT64)
         srw64_queue_audio(samples, count);
-#endif
     };
     cfg.audio_callbacks.get_frames_remaining = []() -> size_t {
-#if defined(SRW64_WITH_RT64)
         return srw64_audio_remaining();
-#else
-        return 0;
-#endif
     };
     cfg.audio_callbacks.set_frequency = [](uint32_t value) {
         frequency = value;
-#if defined(SRW64_WITH_RT64)
         srw64_audio_frequency(value);
-#endif
     };
     cfg.input_callbacks.get_input = get_input;
     cfg.input_callbacks.get_connected_device_info = get_device;
     cfg.events_callbacks.vi_callback = on_vi;
     cfg.error_handling_callbacks.message_box = [](const char* message) { std::fprintf(stderr, "SRW64_RUNTIME_ERROR %s\n", message); };
     recomp::start(cfg);
-#if defined(SRW64_WITH_RT64)
     srw64_destroy_window();
-#endif
     std::ofstream report(output_dir / "native-counters.json");
     report << "{\"schema\":\"srw64.native-cpu-probe-counters.v1\",\"vis\":" << vi_count
            << ",\"graphics_tasks\":" << dl_count << ",\"audio_tasks\":" << audio_tasks
@@ -592,7 +568,7 @@ void crash_backtrace(int signal) {
 
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
-#if defined(_WIN32) && defined(SRW64_WITH_RT64)
+#if defined(_WIN32)
     // A double-click's own console goes first, before any handle exists for FreeConsole
     // to close by mistake (desktop_windows.cpp).
     const bool desktop_start = argc == 1 || (argc == 2 && std::string_view(argv[1]) == "--choose-rom");
@@ -610,7 +586,7 @@ int main(int argc, char** argv) {
     // its own handlers, so crashes go to logcat as tombstones.
     for (int signal : {SIGSEGV, SIGBUS, SIGILL, SIGFPE, SIGABRT}) std::signal(signal, crash_backtrace);
 #endif
-#if defined(__APPLE__) && defined(SRW64_WITH_RT64)
+#if defined(__APPLE__)
     // Finder supplies no arguments. Explicit --play and the diagnostic ABI
     // below remain non-GUI and deterministic for the existing developer tools.
     if (argc == 1 || (argc == 2 && std::string_view(argv[1]) == "--choose-rom")) {
@@ -637,7 +613,7 @@ int main(int argc, char** argv) {
             }, choose_another);
     }
 #endif
-#if defined(_WIN32) && defined(SRW64_WITH_RT64)
+#if defined(_WIN32)
     // Explorer supplies no arguments: start as Marchwind64.cmd does, which stays for
     // its options. --play and the diagnostic ABI below keep their console.
     if (desktop_start) {
@@ -675,7 +651,6 @@ int main(int argc, char** argv) {
         return 0;
     }
     if (argc > 1 && std::string_view(argv[1]) == "--play") {
-#if defined(SRW64_WITH_RT64)
         try {
             if (argc == 3 && std::string_view(argv[2]) == "--help") {
                 std::fputs(srw64::app::usage().c_str(), stdout);
@@ -701,10 +676,6 @@ int main(int argc, char** argv) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
             return 2;
         }
-#else
-        std::fputs("--play requires the graphics host, not the headless probe.\n", stderr);
-        return 2;
-#endif
     }
     return run_host(argc, argv);
 }

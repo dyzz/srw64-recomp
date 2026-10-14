@@ -78,21 +78,6 @@ add_library(srw64_cpu STATIC ${SRW64_CPU_SOURCES})
 target_include_directories(srw64_cpu PUBLIC
     "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}")
 target_compile_options(srw64_cpu PRIVATE -fno-strict-aliasing $<IF:$<BOOL:${MSVC}>,/clang:-fwrapv,-fwrapv> -Wno-unused-variable)
-if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/host.cpp" AND NOT ANDROID)
-    add_executable(srw64-host host.cpp console_log.cpp stall_watchdog.cpp game_hooks.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp "${SRW64_BUILD}/audio-probe/audio.cpp")
-    target_include_directories(srw64-host PRIVATE
-        "${CMAKE_CURRENT_BINARY_DIR}"
-        "${SRW64_BUILD}/upstream/N64Recomp/include"
-        "${SRW64_GENERATED}"
-        "${SRW64_RUNTIME}/librecomp/include/librecomp"
-        "${SRW64_RUNTIME}/thirdparty/sse2neon")
-    target_link_libraries(srw64-host PRIVATE srw64_cpu librecomp srw64_app)
-    if(WIN32)
-        target_sources(srw64-host PRIVATE windows/crash_dump_windows.cpp)
-        target_link_libraries(srw64-host PRIVATE dbghelp synchronization)
-    endif()
-endif()
-
 option(SRW64_ENABLE_RT64 "Build the RT64 graphics host (Metal on macOS, Vulkan on Linux)" OFF)
 option(SRW64_METAL_SOURCE_SHADERS "Compile embedded Metal source at runtime" ON)
 if(SRW64_ENABLE_RT64)
@@ -262,7 +247,6 @@ if(SRW64_ENABLE_RT64)
         # Frame probes replay display lists; they never execute guest CPU code.
         target_link_libraries(${SRW64_HOST_TARGET} PRIVATE librecomp)
     endif()
-    target_compile_definitions(${SRW64_HOST_TARGET} PRIVATE SRW64_WITH_RT64)
     target_include_directories(${SRW64_HOST_TARGET} PRIVATE
         "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_BINARY_DIR}" "${SRW64_ROOT}/src/native"
         "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}"

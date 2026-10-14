@@ -235,8 +235,11 @@ def main() -> int:
         subprocess.run([sys.executable, str(ROOT / "tools/recomp/toolchain/prepare_rt64.py")], check=True, stdout=subprocess.DEVNULL)
     if args.graphics and not args.reuse_build_from and not args.binary:
         subprocess.run([sys.executable, str(ROOT / "tools/recomp/toolchain/prepare_frontend.py"), "--fetch"], check=True, stdout=subprocess.DEVNULL)
-    build = ROOT / ("build/recomp/gfx-build" if args.graphics else "build/recomp/host-build")
-    target = "srw64-gfx-host" if args.graphics else "srw64-host"
+    if not args.graphics:
+        # The CPU-only srw64-host is gone (2026-10-14); every host now draws.
+        raise SystemExit("run_host_probe.py: the CPU-only host was removed; pass --graphics")
+    build = ROOT / "build/recomp/gfx-build"
+    target = "srw64-gfx-host"
     build.mkdir(parents=True, exist_ok=True)
     commands = [[str(ROOT / "build/recomp/tool-build/RSPRecomp"), str(ROOT / "config/recomp/audio-probe.toml")],
                 ["cmake", "-S", str(ROOT / "src/host"), "-B", str(build), "-G", "Ninja",

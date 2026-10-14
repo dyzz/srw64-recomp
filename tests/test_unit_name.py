@@ -38,10 +38,10 @@ class UnitNameSourceTests(unittest.TestCase):
         body = hooks[hooks.index("void resident_func_8009FA94("):]
         body = body[:body.index("\n}\n")]
         self.assertLess(body.index("choice_step(rdram, uint32_t(ctx->r4))) return;"), body.index("srw64_original_dialogue_choice"))
-        # Only the RT64 game host installs them; CPU-only and fixed-frame hosts keep the original flow.
+        # Only the game host installs them; the fixed-frame host keeps the original flow.
         self.assertIn("target_sources(srw64-gfx-host PRIVATE unit_name.cpp)", (ROOT / "src/host/CMakeLists.txt").read_text())
         host = (ROOT / "src/host/host.cpp").read_text()
-        self.assertGreater(host.index("srw64::unit_name::configure(output_dir);"), host.index("#if defined(SRW64_WITH_RT64)\n    srw64_set_capture_directory"))
+        self.assertGreater(host.index("srw64::unit_name::configure(output_dir);"), host.index("srw64_set_capture_directory(output_dir);"))
         # The default is read from the dialogue catalogs, so they must be loaded first.
         self.assertGreater(host.index("srw64::unit_name::configure(output_dir);"), host.index("srw64::dialogue::configure(output_dir);"))
 
