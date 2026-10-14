@@ -156,34 +156,45 @@ final class PlayerFolder {
             Map<String, Entry> there = list(folder);
             Set<String> kept = new HashSet<>();
             for (int i = 0; i < Math.min(LOGS_KEPT, runs.length); ++i) {
-                File log = new File(runs[i], "run/console.log");
                 String name = logName(runs[i].getName());
-                kept.add(name);
-                kept.add(name.replace(".log", "-system.log"));
-                Entry entry = there.get(name);
-                if (entry == null || entry.directory || entry.size != log.length() || log.lastModified() > entry.modified)
-                    put(folder, there, log, name);
-            }
-            // This run's own system log beside its console.log: what Android, the GPU driver
-            // and the phone maker's services print in the game's process (window and buffer
-            // changes, MIUI's game services), which the host's output never sees. An app may
-            // read its own process's log without any permission.
-            if (runs.length > 0 && SRW64Activity.running) {
-                File system = new File(context.getCacheDir(), "system.log");
-                try {
-                    new ProcessBuilder("logcat", "-d", "-v", "threadtime", "--pid", String.valueOf(android.os.Process.myPid()))
-                            .redirectErrorStream(true).redirectOutput(system).start().waitFor();
-                    if (system.length() > 0) put(folder, there, system, logName(runs[0].getName()).replace(".log", "-system.log"));
-                } catch (InterruptedException error) {
-                    Thread.currentThread().interrupt();
-                } finally {
-                    system.delete();
+                // console.log, and the system log captureSystemLog keeps beside it.
+                String[][] files = { { "run/console.log", name }, { "run/system.log", name.replace(".log", "-system.log") } };
+                for (String[] file : files) {
+                    File log = new File(runs[i], file[0]);
+                    kept.add(file[1]);
+                    if (!log.isFile()) continue;
+                    Entry entry = there.get(file[1]);
+                    if (entry == null || entry.directory || entry.size != log.length() || log.lastModified() > entry.modified)
+                        put(folder, there, log, file[1]);
                 }
             }
             for (Entry entry : there.values())
                 if (!entry.directory && entry.name.startsWith("Marchwind64-") && entry.name.endsWith(".log") && !kept.contains(entry.name))
                     delete(entry);
         }
+    }
+
+    // The running game's own system log, as run/system.log beside its console.log, with or
+    // without a player's folder (a problem report and the user folder carry it too): what
+    // Android, the GPU driver and the phone maker's services print in the game's process
+    // (window and buffer changes, MIUI's game services), which the host's output never
+    // sees. An app may read its own process's log without any permission.
+    static void captureSystemLog(File user) {
+        File[] runs = new File(user, "sessions").listFiles(run -> new File(run, "run/console.log").isFile());
+        if (runs == null || runs.length == 0) return;
+        File newest = runs[0];
+        for (File run : runs)
+            if (new File(run, "run/console.log").lastModified() > new File(newest, "run/console.log").lastModified()) newest = run;
+        File target = new File(newest, "run/system.log"), partial = new File(newest, "run/system.log.srw64-part");
+        try {
+            new ProcessBuilder("logcat", "-d", "-v", "threadtime", "--pid", String.valueOf(android.os.Process.myPid()))
+                    .redirectErrorStream(true).redirectOutput(partial).start().waitFor();
+            if (partial.length() > 0 && partial.renameTo(target)) return;
+        } catch (IOException ignored) {
+        } catch (InterruptedException error) {
+            Thread.currentThread().interrupt();
+        }
+        partial.delete();
     }
 
     // A session is <start in microseconds, hex>-<random> (runtime.cpp token()).

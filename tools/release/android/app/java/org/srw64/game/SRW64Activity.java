@@ -168,12 +168,13 @@ public class SRW64Activity extends SDLActivity {
 
     private void queueLogs() {
         folderSync.execute(() -> {
-            PlayerFolder folder = PlayerFolder.open(this);
-            if (folder == null) return;
             File user = SetupActivity.userDir(this);
             String now = PlayerFolder.logFingerprint(user);
             if (now.equals(logsSent)) return;
-            try { folder.logs(user); logsSent = now; }
+            // The system log beside console.log always; both out to logs/ with a folder.
+            PlayerFolder.captureSystemLog(user);
+            PlayerFolder folder = PlayerFolder.open(this);
+            try { if (folder != null) folder.logs(user); logsSent = now; }
             catch (IOException | RuntimeException error) { Log.w("SRW64", "player folder: " + error); }
         });
     }

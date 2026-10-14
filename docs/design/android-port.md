@@ -270,7 +270,7 @@ APK 的 `libmain.so` 必须链接两份由 ROM 生成的代码：`build/recomp/c
 
 两台 Redmi K60（骁龙 8+ Gen 1／Adreno 730，驱动 0x80267000，MIUI 14，安卓 13）都在画完第 2 帧时永久卡住，与 HD 包无关：RT64 Present 线程向窗口要下一张缓冲区（`Surface::dequeueBuffer`），队列此时**新分配**缓冲区，导入时卡在高通 gralloc 的进程全局锁 `BufferManager::RetainBuffer` 上，进程里没有任何线程在 gralloc 内持锁。同驱动的小米 12（安卓 12）、S22 不复现。交换链建好时缓冲区已全部分配，第 3 帧再分配说明窗口或缓冲区参数在启动后变了。最可疑的是系统栏：主题只隐藏状态栏，导航栏原先等拿到焦点才隐藏，那时交换链已建好，窗口随之变大。
 
-处理：`SRW64Activity.onCreate` 在首次布局前就隐藏系统栏（安卓 9／10 用旧的 SYSTEM_UI 标志），拿到焦点时再隐藏一次；窗口和 SDL 表面每次变尺寸都记 `SRW64_WINDOW`。`logs/` 另存本进程的 logcat（`Marchwind64-<时间>-system.log`，应用读自己进程的日志不需要权限），K60 再测时可直接看到启动后有没有尺寸变化、MIUI 的服务做了什么。Seeker 上窗口一开始就是 2670×1200、之后不变，无法在本机证实这个推断。
+处理：`SRW64Activity.onCreate` 在首次布局前就隐藏系统栏（安卓 9／10 用旧的 SYSTEM_UI 标志），拿到焦点时再隐藏一次；窗口和 SDL 表面每次变尺寸都记 `SRW64_WINDOW`。本进程的 logcat 每 10 秒存为运行目录里 console.log 旁的 `system.log`（没选存档文件夹也有，问题报告和整个用户目录都会带上），选了文件夹时再复制到 `logs/`（`Marchwind64-<时间>-system.log`；应用读自己进程的日志不需要权限），K60 再测时可直接看到启动后有没有尺寸变化、MIUI 的服务做了什么。Seeker 上窗口一开始就是 2670×1200、之后不变，无法在本机证实这个推断。
 
 ## 阶段
 
