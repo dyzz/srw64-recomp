@@ -1,0 +1,64 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 15,
+ "title": {
+  "zh-Hans": "苦痛之刃",
+  "ja": "苦しみの刃",
+  "en": "Blade of Anguish"
+ },
+ "title_ja": "苦しみの刃",
+ "cards": [
+  {
+   "guide_card": "card-015",
+   "route": "common",
+   "episode": "7",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "强化推进器",
+      "ja": "メガブースター",
+      "en": "Mega Booster"
+     },
+     "from": {
+      "zh-Hans": "巴斯克",
+      "ja": "バスク",
+      "en": "Bask"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "洗牌同盟纹章",
+      "ja": "シャッフルの紋章",
+      "en": "Shuffle Crest"
+     },
+     "from": {
+      "zh-Hans": "杰克斯",
+      "ja": "ゼクス",
+      "en": "Zechs"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "戈斯特罗",
+      "ja": "ゴステロ",
+      "en": "Gosterro"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

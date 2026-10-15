@@ -214,15 +214,52 @@ def compile_campaign(path: Path) -> dict:
         source = json.loads((path.parent / stage["file"]).read_text())
         source["slot"] = scene
         image = compile_stage(source, spec)
-        compiled.append({"key": key, "scene": scene, "title": stage.get("title"), "image": image})
+        entry = {"key": key, "scene": scene, "title": stage.get("title"), "image": image}
+        if stage.get("meta"):
+            entry["meta"] = stage_meta(path.parent / stage["meta"], scene, key)
+        compiled.append(entry)
     for stage in compiled:
         for target in next_scenes(stage["image"]):
             if target != 500 and target not in scenes:
                 raise ValueError(f"Stage {stage['key']}: 3D4B {target} leads outside the campaign")
-    return {"schema": CAMPAIGN_IMAGE_SCHEMA, "id": document["id"], "name": document.get("name", document["id"]),
-            "description": document.get("description"), "author": str(document.get("author", "")),
-            "version": str(document.get("version", "")), "start_scene": int(stages[document["start"]]["scene"]),
-            "stages": compiled}
+    start = int(stages[document["start"]]["scene"])
+    result = {"schema": CAMPAIGN_IMAGE_SCHEMA, "id": document["id"], "name": document.get("name", document["id"]),
+              "description": document.get("description"), "author": str(document.get("author", "")),
+              "version": str(document.get("version", "")), "start_scene": start, "stages": compiled}
+    if document.get("status"):
+        result["status"] = campaign_status(path.parent / document["status"], compiled, start)
+    return result
+
+
+# The stage info page (docs/design/stage-info.md): a stage's metadata, the same format
+# as the story's content/stages/scene-NNN.json, and the campaign's status rules.
+STAGE_META_SCHEMA = "srw64.stage-meta.v1"
+STATUS_SCHEMA = "srw64.stage-status.v1"
+PROTAGONISTS = ("ark", "serein", "brad", "manami")
+
+
+def stage_meta(path: Path, scene: int, key: str) -> dict:
+    meta = json.loads(path.read_text())
+    if meta.get("schema") != STAGE_META_SCHEMA:
+        raise ValueError(f"Stage {key}: {path.name} is not {STAGE_META_SCHEMA}")
+    if not isinstance(meta.get("cards"), list) or not meta["cards"]:
+        raise ValueError(f"Stage {key}: {path.name} has no cards")
+    meta["scene"] = scene  # the scene the stage borrows, whatever the file said
+    return meta
+
+
+def campaign_status(path: Path, stages: list[dict], start: int) -> dict:
+    """The campaign's status rules; without a scene graph of its own, the one its
+    stages' 3D4B draw, the same for every protagonist."""
+    status = json.loads(path.read_text())
+    if status.get("schema") != STATUS_SCHEMA or not isinstance(status.get("rules"), list):
+        raise ValueError(f"{path.name} is not {STATUS_SCHEMA} with rules")
+    if "graph" not in status:
+        edges = {str(s["scene"]): sorted(t for t in next_scenes(s["image"]) if t != 500) for s in stages}
+        status["graph"] = {p: edges for p in PROTAGONISTS}
+        status.setdefault("starts", {p: start for p in PROTAGONISTS})
+    status.setdefault("edge_guards", [])
+    return status
 
 
 def host_events(run: Path) -> list[dict]:

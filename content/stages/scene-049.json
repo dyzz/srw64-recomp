@@ -1,0 +1,220 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 49,
+ "title": {
+  "zh-Hans": "月球是地狱！",
+  "ja": "月は地獄だ!",
+  "en": "The Moon Is Hell!"
+ },
+ "title_ja": "月は地獄だ!",
+ "cards": [
+  {
+   "guide_card": "card-044",
+   "route": "oz",
+   "episode": "26",
+   "lane": {
+    "zh-Hans": "OZ路线（罗姆斐拉侧）",
+    "ja": "OZルート（ロームフェラ側）",
+    "en": "OZ route (Romefeller side)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-gato-base",
+     "title": {
+      "zh-Hans": "月球是地狱！：守住基地",
+      "ja": "月は地獄だ!：基地を守る",
+      "en": "The Moon Is Hell!: holding the base"
+     },
+     "text": {
+      "zh-Hans": "让我方旗舰先进基地绿色区域，或先灭姆格军再灭黄色部队",
+      "ja": "旗艦を先に基地のグリーンエリアへ（またはムゲ軍→イエロー部隊を全滅）",
+      "en": "Flagship into the Green Area first, or wipe out Muge then Yellow forces"
+     }
+    },
+    {
+     "ref": "secret-gato",
+     "title": {
+      "zh-Hans": "卡多＋GP02A酸浆果",
+      "ja": "ガトー＋GP02Aサイサリス",
+      "en": "Gato + GP02A Physalis"
+     },
+     "text": {
+      "zh-Hans": "守住基地 → 关末卡多＋GP02A酸浆果加入",
+      "ja": "基地を守る→クリア時にガトー＋GP02Aサイサリス加入",
+      "en": "Defend the base → Gato + GP02A Physalis join at stage end"
+     }
+    },
+    {
+     "ref": "secret-aisha",
+     "title": {
+      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "ja": "アイシャ＋エルブルス",
+      "en": "Aisha + Elbulls"
+     },
+     "text": {
+      "zh-Hans": "艾夏登场时玛娜米在场，选「拜托，听我说」或「等等，艾夏」",
+      "ja": "マナミ出撃中に「お願い、話を聞いて」か「待ってアイシャ」を選ぶ",
+      "en": "Have Manami present; pick “Please, hear me out” or “Wait, Aisha”"
+     },
+     "protagonists": [
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-elrich",
+     "title": {
+      "zh-Hans": "埃尔利希＋诺鲁孜",
+      "ja": "エルリッヒ＋ノウルーズ",
+      "en": "Ehrlich + Norouz"
+     },
+     "text": {
+      "zh-Hans": "用阿克说服埃尔利希（第 3 回合或敌方剩 5 台以下登场）",
+      "ja": "アークでエルリッヒを説得（第3ターンか敵残り5機以下で登場）",
+      "en": "Persuade Ehrlich with Ark (appears turn 3 or at ≤5 enemies)"
+     },
+     "protagonists": [
+      "ark"
+     ]
+    },
+    {
+     "ref": "secret-reese",
+     "title": {
+      "zh-Hans": "利修＋西格露恩",
+      "ja": "リッシュ＋シグルーン",
+      "en": "Rish + Sigroon"
+     },
+     "text": {
+      "zh-Hans": "利修出现时塞蕾茵在场，选「回应他」",
+      "ja": "リッシュ登場時にセレインを出撃させ「返答する」",
+      "en": "Have Selain on the map when Rish appears; pick “Answer him”"
+     },
+     "protagonists": [
+      "serein"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "巴斯克",
+      "ja": "バスク",
+      "en": "Bask"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "赫尔马特",
+      "ja": "ヘルマット",
+      "en": "Helmut"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "艾夏",
+      "ja": "アイシャ",
+      "en": "Aisha"
+     },
+     "protagonists": [
+      "manami"
+     ],
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "埃尔利希",
+      "ja": "エルリッヒ",
+      "en": "Ehrlich"
+     },
+     "note": {
+      "zh-Hans": "可被阿克说服（说服后不掉落）",
+      "ja": "アークで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Ark (no drop if persuaded)"
+     },
+     "protagonists": [
+      "ark"
+     ],
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "利修",
+      "ja": "リッシュ",
+      "en": "Rish"
+     },
+     "protagonists": [
+      "serein"
+     ],
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "洗牌同盟纹章",
+      "ja": "シャッフルの紋章",
+      "en": "Shuffle Crest"
+     },
+     "from": {
+      "zh-Hans": "西罗克",
+      "ja": "シロッコ",
+      "en": "Scirocco"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退",
+      "ja": "HP30%以下で撤退",
+      "en": "Retreats at 30% HP or below"
+     },
+     "third_party": true,
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "夏比罗",
+      "ja": "シャピロ",
+      "en": "Shapiro"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退",
+      "ja": "HP30%以下で撤退",
+      "en": "Retreats at 30% HP or below"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

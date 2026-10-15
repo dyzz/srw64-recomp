@@ -1,0 +1,24 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 106,
+ "title": {
+  "zh-Hans": "将未来握在手中",
+  "ja": "未来をこの手に",
+  "en": "The Future in Our Hands"
+ },
+ "title_ja": "未来をこの手に",
+ "cards": [
+  {
+   "guide_card": "card-123",
+   "route": "common",
+   "episode": "55",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [],
+   "enemies": []
+  }
+ ]
+}

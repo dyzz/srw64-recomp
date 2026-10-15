@@ -1,0 +1,38 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 7,
+ "title": {
+  "zh-Hans": "流星坠落之日",
+  "ja": "流星が落ちた日",
+  "en": "The Day the Shooting Star Fell"
+ },
+ "title_ja": "流星が落ちた日",
+ "cards": [
+  {
+   "guide_card": "card-011",
+   "route": "super",
+   "episode": "5",
+   "lane": {
+    "zh-Hans": "超级系",
+    "ja": "スーパー系",
+    "en": "Super"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "盖亚",
+      "ja": "ガイヤー",
+      "en": "Gaia"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

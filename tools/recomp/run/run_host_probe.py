@@ -342,7 +342,7 @@ def main() -> int:
                    "SRW64_INTERACTIVE": "1" if args.interactive else "0",
                    "SRW64_NATIVE_RESOLUTION": "1" if args.native_resolution else "0",
                    "SRW64_RULE_FIXES": ",".join(rule_fixes)}
-    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_NATIVE_MODELS", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_INPUT_SETTINGS", "SRW64_RULE_SETTINGS", "SRW64_DIALOGUE_TEXT", "SRW64_DIALOGUE_OVERRIDES", "SRW64_FONT_DIR"):
+    for name in ("SRW64_TEXTURE_DUMP", "SRW64_FONT_PACK", "SRW64_RESOLUTION_SCALE", "SRW64_DIALOGUE_DATA", "SRW64_NATIVE_MARKER", "SRW64_NATIVE_MODELS", "SRW64_ART_PACK", "SRW64_IMAGE_MODE", "SRW64_HD_AVAILABLE", "SRW64_PRESENTATION_SETTINGS", "SRW64_INPUT_SETTINGS", "SRW64_RULE_SETTINGS", "SRW64_DIALOGUE_TEXT", "SRW64_DIALOGUE_OVERRIDES", "SRW64_FONT_DIR", "SRW64_STAGE_META"):
         environment.pop(name, None)
     if native_marker:
         environment["SRW64_NATIVE_MARKER"] = native_marker["path"]
@@ -352,6 +352,8 @@ def main() -> int:
         environment["SRW64_DIALOGUE_DATA"] = report["native_dialogue"]["path"]
         # Bundled dialogue text from the repository, the player's overrides beside the run.
         environment["SRW64_DIALOGUE_TEXT"] = str(ROOT / "content/dialogue")
+        # Each stage's metadata and the status rules, for the stage info page (docs/design/stage-info.md).
+        environment["SRW64_STAGE_META"] = str(ROOT / "content/stages")
         environment["SRW64_DIALOGUE_OVERRIDES"] = str(args.dialogue_overrides.resolve() if args.dialogue_overrides else output / "dialogue")
         # HarmonyOS Sans and the symbol font, checked against content/fonts/harmonyos-sans.json.
         sys.path.insert(0, str(ROOT / "tools/content"))

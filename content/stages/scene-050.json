@@ -1,0 +1,160 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 50,
+ "title": {
+  "zh-Hans": "进攻月球",
+  "ja": "ムーンアタック",
+  "en": "Moon Attack"
+ },
+ "title_ja": "ムーンアタック",
+ "cards": [
+  {
+   "guide_card": "card-045",
+   "route": "oz",
+   "episode": "26",
+   "lane": {
+    "zh-Hans": "OZ路线（进攻月球侧）",
+    "ja": "OZルート（ムーンアタック側）",
+    "en": "OZ route (Moon Attack side)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-aisha",
+     "title": {
+      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "ja": "アイシャ＋エルブルス",
+      "en": "Aisha + Elbulls"
+     },
+     "text": {
+      "zh-Hans": "关末二选选「叫住艾夏」",
+      "ja": "クリア時の2択で「アイシャを呼びとめる」",
+      "en": "At the end of the stage, pick “Call out to Aisha”"
+     },
+     "protagonists": [
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-reese",
+     "title": {
+      "zh-Hans": "利修＋西格露恩",
+      "ja": "リッシュ＋シグルーン",
+      "en": "Rish + Sigroon"
+     },
+     "text": {
+      "zh-Hans": "关末二选选「再喊他一声」",
+      "ja": "クリア時の2択で「もう一度声をかける」",
+      "en": "At the end of the stage, pick “Call out to him again”"
+     },
+     "protagonists": [
+      "serein"
+     ]
+    },
+    {
+     "ref": "secret-elrich",
+     "title": {
+      "zh-Hans": "埃尔利希＋诺鲁孜",
+      "ja": "エルリッヒ＋ノウルーズ",
+      "en": "Ehrlich + Norouz"
+     },
+     "text": {
+      "zh-Hans": "「特列斯抹杀指令」敌方剩 13 台以下时让阿克在场",
+      "ja": "「トレーズ抹殺指令」で敵残り13機以下の時アークを出撃させる",
+      "en": "Have Ark on map at ≤13 enemies in “Order to Eliminate Treize”"
+     },
+     "protagonists": [
+      "ark"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "巴斯克",
+      "ja": "バスク",
+      "en": "Bask"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "赫尔马特",
+      "ja": "ヘルマット",
+      "en": "Helmut"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "艾夏",
+      "ja": "アイシャ",
+      "en": "Aisha"
+     },
+     "note": {
+      "zh-Hans": "亚赞被击坠后登场",
+      "ja": "ヤザンの撃墜後に登場",
+      "en": "Appears after Yazan is shot down"
+     },
+     "protagonists": [
+      "manami"
+     ],
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "洗牌同盟纹章",
+      "ja": "シャッフルの紋章",
+      "en": "Shuffle Crest"
+     },
+     "from": {
+      "zh-Hans": "西罗克",
+      "ja": "シロッコ",
+      "en": "Scirocco"
+     },
+     "note": {
+      "zh-Hans": "赫尔马特被击坠后登场",
+      "ja": "ヘルマット撃墜後に登場",
+      "en": "Appears after Helmut is shot down"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "夏比罗",
+      "ja": "シャピロ",
+      "en": "Shapiro"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退",
+      "ja": "HP30%以下で撤退",
+      "en": "Retreats at 30% HP or below"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

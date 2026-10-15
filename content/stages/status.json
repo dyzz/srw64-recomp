@@ -2591,20 +2591,27 @@
   {
    "id": "secret-gato",
    "kind": "acquire",
+   "applies": {
+    "all": [
+     {
+      "not": {
+       "var": 10,
+       "eq": 0
+      }
+     },
+     {
+      "not": {
+       "var": 38,
+       "eq": 1
+      }
+     }
+    ]
+   },
    "done": {
     "var": 37,
     "eq": 0
    },
    "steps": [
-    {
-     "when": {
-      "var": 38,
-      "eq": 0
-     },
-     "at": [
-      107
-     ]
-    },
     {
      "when": {
       "var": 37,

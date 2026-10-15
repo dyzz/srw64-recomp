@@ -1,0 +1,61 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 9,
+ "title": {
+  "zh-Hans": "大胆无畏！鲁·凯恩的挑战",
+  "ja": "大胆不敵!ル・カインの挑戦",
+  "en": "Fearless! Le Cain's Challenge"
+ },
+ "title_ja": "大胆不敵!ル・カインの挑戦",
+ "cards": [
+  {
+   "guide_card": "card-014",
+   "route": "super",
+   "episode": "6",
+   "lane": {
+    "zh-Hans": "超级系",
+    "ja": "スーパー系",
+    "en": "Super"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "鲁·凯恩",
+      "ja": "ル・カイン",
+      "en": "Le Cain"
+     },
+     "note": {
+      "zh-Hans": "再次登场后 HP 50% 以下即胜利，须一击击坠",
+      "ja": "再登場後はHP50%以下で勝利、一撃で撃墜",
+      "en": "Reappears; then one-shot it from above 50% HP"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "戈斯特罗",
+      "ja": "ゴステロ",
+      "en": "Gosterro"
+     },
+     "note": {
+      "zh-Hans": "鲁·凯恩第一次被击坠后登场",
+      "ja": "ル・カインの1回目の撃墜後に登場",
+      "en": "Appears after Le Cain is first shot down"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

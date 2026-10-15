@@ -1,0 +1,161 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 103,
+ "title": {
+  "zh-Hans": "夏亚的叛乱",
+  "ja": "シャアの反乱",
+  "en": "Char's Rebellion"
+ },
+ "title_ja": "シャアの反乱",
+ "cards": [
+  {
+   "guide_card": "card-118",
+   "route": "common",
+   "episode": "51",
+   "lane": {
+    "zh-Hans": "全路线（留在地球圈）",
+    "ja": "全ルート（地球圏残留）",
+    "en": "All routes (staying in the Earth Sphere)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-muge",
+     "title": {
+      "zh-Hans": "穆格宇宙或地球圈",
+      "ja": "ムゲ宇宙か地球圏か",
+      "en": "Muge space or Earth"
+     },
+     "text": {
+      "zh-Hans": "上一关关末选「留在地球圈」进入本关",
+      "ja": "前のステージのクリア時に「地球圏に残留する」を選ぶ",
+      "en": "Pick “Remain in the Earth Sphere” at the end of the previous stage"
+     }
+    },
+    {
+     "ref": "secret-mashymre-chara",
+     "title": {
+      "zh-Hans": "马修玛＋扎古Ⅲ改／姬拉＋盖马克",
+      "ja": "マシュマー＋ザクⅢ改／キャラ＋ゲーマルク",
+      "en": "Mashymre + Zaku III Custom / Chara + Geymalk"
+     },
+     "text": {
+      "zh-Hans": "撑到第 8 回合我方阶段，说服过的马修玛或姬拉增援加入",
+      "ja": "第8ターン味方フェイズまでクリアしない（マシュマー／キャラ加入）",
+      "en": "Don't clear before turn 8; persuaded Mashymre or Chara joins then"
+     }
+    },
+    {
+     "ref": "secret-neue-ziel",
+     "title": {
+      "zh-Hans": "诺耶·吉尔",
+      "ja": "ノイエ・ジール",
+      "en": "Neue Ziel"
+     },
+     "text": {
+      "zh-Hans": "无需操作：关末获得诺耶·吉尔（需没走过完全和平路线）",
+      "ja": "操作不要：クリア時ノイエ・ジール入手（完全平和ルート未経由）",
+      "en": "No action: get the Neue Ziel at stage end (not via Complete Pacifism)"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "邱尼",
+      "ja": "ギュネイ",
+      "en": "Gyunei"
+     },
+     "note": {
+      "zh-Hans": "夏亚 HP 30% 以下或被击坠时离场",
+      "ja": "シャアHP30%以下か撃墜で離脱",
+      "en": "Leaves when Char drops to 30% HP or is shot down"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "精神感应框架",
+      "ja": "サイコフレーム",
+      "en": "Psycoframe"
+     },
+     "from": {
+      "zh-Hans": "夏亚",
+      "ja": "シャア",
+      "en": "Char"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退，关卡随即结束",
+      "ja": "HP30%以下で撤退し、そのままステージ終了",
+      "en": "Retreats at 30% HP or below, and the stage ends right away"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "高性能雷达",
+      "ja": "高性能レーダー",
+      "en": "High-Fidelity Radar"
+     },
+     "from": {
+      "zh-Hans": "米利亚尔特",
+      "ja": "ミリアルド",
+      "en": "Milliardo"
+     },
+     "note": {
+      "zh-Hans": "夏亚 HP 30% 以下或被击坠时离场",
+      "ja": "シャアHP30%以下か撃墜で離脱",
+      "en": "Leaves when Char drops to 30% HP or is shot down"
+     },
+     "routes": [
+      "ia"
+     ],
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "蕾森",
+      "ja": "レズン",
+      "en": "Rezin"
+     },
+     "note": {
+      "zh-Hans": "第 4 回合我方阶段开始时撤退",
+      "ja": "第4ターン味方フェイズ開始時に撤退",
+      "en": "Retreats at the start of the turn 4 player phase"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "高性能雷达",
+      "ja": "高性能レーダー",
+      "en": "High-Fidelity Radar"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "note": {
+      "zh-Hans": "夏亚 HP 30% 以下或被击坠时离场",
+      "ja": "シャアHP30%以下か撃墜で離脱",
+      "en": "Leaves when Char drops to 30% HP or is shot down"
+     },
+     "routes": [
+      "oz"
+     ],
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

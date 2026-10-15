@@ -203,11 +203,12 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     atomic_write(dialogue,data.dump()+"\n");
 
     // Do not inherit development probes, scripted inputs or another ROM variant. A test may
-    // point the update check at its own server (update_check.hpp).
-    const char* update_url=std::getenv("SRW64_UPDATE_URL");
-    const std::string kept_update_url=update_url?update_url:"";
+    // point the update check at its own server (update_check.hpp), or show Android's touch
+    // controls on a desktop and play them with the mouse (SRW64_TOUCH_PAD=1, frontend.cpp).
+    std::map<std::string,std::string> inherited;
+    for(const char* key:{"SRW64_UPDATE_URL","SRW64_TOUCH_PAD"})if(const char* value=std::getenv(key);value && *value)inherited[key]=value;
     clear_runtime_environment();
-    if(!kept_update_url.empty())set_environment("SRW64_UPDATE_URL",kept_update_url);
+    for(const auto& [key,value]:inherited)set_environment(key,value);
     for(const auto& [key,value]:std::map<std::string,std::string>{
         {"SRW64_INTERACTIVE","1"},{"SRW64_ROM_VARIANT","jp"},
         {"SRW64_AUDIO_OUTPUT",options.mute?"0":"1"},{"SRW64_NATIVE_NAME_ENTRY","1"},
@@ -224,7 +225,9 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         // The dialogue text shipped with the program, and the player's own edits.
         {"SRW64_DIALOGUE_TEXT",bundled_resource("dialogue").string()},{"SRW64_DIALOGUE_OVERRIDES",(session.user_dir()/"dialogue").string()},
         // HarmonyOS Sans and the symbol font shipped in the bundle.
-        {"SRW64_FONT_DIR",bundled_resource("fonts").string()}})
+        {"SRW64_FONT_DIR",bundled_resource("fonts").string()},
+        // Each stage's metadata and the status rules, for the stage info page (docs/design/stage-info.md).
+        {"SRW64_STAGE_META",bundled_resource("stages").string()}})
         set_environment(key,value);
     // Asked for on the command line, unlike the variables cleared above: the debug interface.
     if(options.debug)set_environment("SRW64_DEBUG","1");

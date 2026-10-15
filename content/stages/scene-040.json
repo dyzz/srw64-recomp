@@ -1,0 +1,57 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 40,
+ "title": {
+  "zh-Hans": "其名为次代",
+  "ja": "その名はエピオン",
+  "en": "Its Name Is Epyon"
+ },
+ "title_ja": "その名はエピオン",
+ "cards": [
+  {
+   "guide_card": "card-062",
+   "route": "ia",
+   "episode": "31",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-aisha",
+     "title": {
+      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "ja": "アイシャ＋エルブルス",
+      "en": "Aisha + Elbulls"
+     },
+     "text": {
+      "zh-Hans": "敌剩 9 台以下时玛娜米须在场",
+      "ja": "敵が残り9機以下になった時点でマナミが戦場にいること",
+      "en": "Have Manami on the map when 9 or fewer enemies remain"
+     },
+     "protagonists": [
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-reese",
+     "title": {
+      "zh-Hans": "利修＋西格露恩",
+      "ja": "リッシュ＋シグルーン",
+      "en": "Rish + Sigroon"
+     },
+     "text": {
+      "zh-Hans": "无需操作：前两步完成则利修＋西格露恩开场加入",
+      "ja": "操作不要：前2段階済みならリッシュ＋シグルーンが開始時に加入",
+      "en": "No action needed: Rish + Sigroon join at start if steps 1–2 done"
+     },
+     "protagonists": [
+      "serein"
+     ]
+    }
+   ],
+   "enemies": []
+  }
+ ]
+}

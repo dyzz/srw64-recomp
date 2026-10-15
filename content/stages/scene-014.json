@@ -1,0 +1,119 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 14,
+ "title": {
+  "zh-Hans": "华丽的鲁·凯恩",
+  "ja": "華麗なるル・カイン",
+  "en": "The Magnificent Le Cain"
+ },
+ "title_ja": "華麗なるル・カイン",
+ "cards": [
+  {
+   "guide_card": "card-013",
+   "route": "real",
+   "episode": "6",
+   "lane": {
+    "zh-Hans": "真实系",
+    "ja": "リアル系",
+    "en": "Real"
+   },
+   "secrets": [
+    {
+     "ref": "secret-rx-trio",
+     "title": {
+      "zh-Hans": "高达、钢加农、钢坦克",
+      "ja": "ガンダム、ガンキャノン、ガンタンク",
+      "en": "Gundam, Guncannon, Guntank"
+     },
+     "text": {
+      "zh-Hans": "别让高达、钢加农、钢坦克被击坠（逃进绿色区域也算）",
+      "ja": "ガンダム・ガンキャノン・ガンタンクを守る（グリーンエリア退避も可）",
+      "en": "Keep the Gundam, Guncannon and Guntank alive (Green Area counts)"
+     }
+    },
+    {
+     "ref": "secret-escort-bonus",
+     "title": {
+      "zh-Hans": "华丽的鲁·凯恩 护送奖金",
+      "ja": "華麗なるル・カイン 護衛ボーナス",
+      "en": "The Magnificent Le Cain escort bonus"
+     },
+     "text": {
+      "zh-Hans": "三台都保住得奖金 +35000，损失越多越少",
+      "ja": "3機とも守ればボーナス+35000、損失ごとに減額",
+      "en": "Lose none of the three for +35000; less for each loss"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "精神感应框架",
+      "ja": "サイコフレーム",
+      "en": "Psycoframe"
+     },
+     "from": {
+      "zh-Hans": "鲁·凯恩",
+      "ja": "ル・カイン",
+      "en": "Le Cain"
+     },
+     "note": {
+      "zh-Hans": "HP 50% 以下即胜利，须从 50% 以上一击击坠",
+      "ja": "HP50%以下で勝利、50%超から一撃で撃墜",
+      "en": "Stage ends at 50% HP; one-shot it from above 50%"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "抗光束涂层",
+      "ja": "対ビームコーティング",
+      "en": "Anti-Beam Coating"
+     },
+     "from": {
+      "zh-Hans": "埃尔利希",
+      "ja": "エルリッヒ",
+      "en": "Ehrlich"
+     },
+     "protagonists": [
+      "ark"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "盖亚",
+      "ja": "ガイヤー",
+      "en": "Gaia"
+     },
+     "protagonists": [
+      "ark",
+      "serein"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "抗光束涂层",
+      "ja": "対ビームコーティング",
+      "en": "Anti-Beam Coating"
+     },
+     "from": {
+      "zh-Hans": "利修",
+      "ja": "リッシュ",
+      "en": "Rish"
+     },
+     "protagonists": [
+      "serein"
+     ],
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

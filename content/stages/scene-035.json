@@ -1,0 +1,100 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 35,
+ "title": {
+  "zh-Hans": "激斗！玫瑰人生号",
+  "ja": "激闘!ラビアンローズ",
+  "en": "Fierce Battle! La Vie en Rose"
+ },
+ "title_ja": "激闘!ラビアンローズ",
+ "cards": [
+  {
+   "guide_card": "card-041",
+   "route": "ia",
+   "episode": "25",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-reese",
+     "title": {
+      "zh-Hans": "利修＋西格露恩",
+      "ja": "リッシュ＋シグルーン",
+      "en": "Rish + Sigroon"
+     },
+     "text": {
+      "zh-Hans": "塞蕾茵与利修战前三选选第 2 或第 3 项",
+      "ja": "セレインとリッシュの交戦前の3択で2番目か3番目を選ぶ",
+      "en": "Before Selain fights Rish, pick option 2 or 3 in the three-way choice"
+     },
+     "protagonists": [
+      "serein"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "盖亚",
+      "ja": "ガイヤー",
+      "en": "Gaia"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "埃尔利希",
+      "ja": "エルリッヒ",
+      "en": "Ehrlich"
+     },
+     "protagonists": [
+      "ark"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "利修",
+      "ja": "リッシュ",
+      "en": "Rish"
+     },
+     "protagonists": [
+      "serein"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "杰利德",
+      "ja": "ジェリド",
+      "en": "Jerid"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

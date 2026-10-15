@@ -1,0 +1,43 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 6,
+ "title": {
+  "zh-Hans": "激烈！厄尔布鲁士的猛攻",
+  "ja": "苛烈!猛攻のエルブルス",
+  "en": "Fierce! Onslaught of the Elbulls"
+ },
+ "title_ja": "苛烈!猛攻のエルブルス",
+ "cards": [
+  {
+   "guide_card": "card-009",
+   "route": "super",
+   "episode": "4",
+   "lane": {
+    "zh-Hans": "玛娜米",
+    "ja": "マナミ",
+    "en": "Manami"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "艾夏",
+      "ja": "アイシャ",
+      "en": "Aisha"
+     },
+     "note": {
+      "zh-Hans": "HP 40% 以下时撤退（关卡随即结束）",
+      "ja": "HP40%以下で撤退（そのままステージ終了）",
+      "en": "Retreats at 40% HP or below (the stage ends right away)"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

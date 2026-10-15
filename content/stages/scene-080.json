@@ -1,0 +1,88 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 80,
+ "title": {
+  "zh-Hans": "女帝加涅拉的人类狩猎",
+  "ja": "女帝ジャネラの人間狩り",
+  "en": "Empress Janera's Human Hunt"
+ },
+ "title_ja": "女帝ジャネラの人間狩り",
+ "cards": [
+  {
+   "guide_card": "card-089",
+   "route": "ia",
+   "episode": "38",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战（选第 3 项）",
+    "ja": "独立軍ルート／単独行動（3番目を選択）",
+    "en": "Independence Army route / fight alone (option 3)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-beast-base",
+     "title": {
+      "zh-Hans": "兽战机基地：三队分头",
+      "ja": "獣戦機基地：3部隊に分かれる",
+      "en": "Cyber Beast Force Base: the three teams split up"
+     },
+     "text": {
+      "zh-Hans": "「兽战机基地 总攻击」关末选「跟豹马他们走」进入",
+      "ja": "「獣戦機基地 総攻撃」で「豹馬たちといく」を選ぶと進入",
+      "en": "Reached by choosing “Go with Hyoma and the others” earlier"
+     }
+    },
+    {
+     "ref": "secret-janera-beasts",
+     "title": {
+      "zh-Hans": "加涅拉线：超兽与增援",
+      "ja": "ジャネラルート：超獣と増援",
+      "en": "Janera branch: Super Beasts and reinforcements"
+     },
+     "text": {
+      "zh-Hans": "加涅拉在场时，先击破哪台 AI 母体决定超兽",
+      "ja": "ジャネラがいる時、先に倒したAI母体で出る超獣が変わる",
+      "en": "With Janera here, the first AI mother destroyed sets the Super Beast"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "超合金Z",
+      "ja": "超合金Z",
+      "en": "Super Alloy Z"
+     },
+     "from": {
+      "zh-Hans": "加涅拉",
+      "ja": "ジャネラ",
+      "en": "Janera"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退",
+      "ja": "HP30%以下で撤退",
+      "en": "Retreats at 30% HP or below"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "瓦基米德",
+      "ja": "ワルキメデス",
+      "en": "Warchimedes"
+     },
+     "note": {
+      "zh-Hans": "加涅拉在场时随延迟增援登场",
+      "ja": "ジャネラが戦場にいると、遅れてくる増援とともに登場",
+      "en": "Appears with the delayed reinforcements when Janera is on the map"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

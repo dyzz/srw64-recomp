@@ -1,0 +1,15 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "note": "The stage info page's data for this stage (docs/design/stage-info.md §3): the same format as the story's content/stages/scene-NNN.json.",
+ "cards": [
+  {
+   "route": "common",
+   "lane": {"ja": "サンプル", "zh-Hans": "示例", "en": "Sample"},
+   "secrets": [
+    {"ref": "sample-ending", "title": {"ja": "結末の分岐", "zh-Hans": "结局分支", "en": "Which ending"},
+     "text": {"ja": "開始時の選択で1つ目→最終話A、2つ目→最終話B", "zh-Hans": "开场选第 1 项→最终话A，选第 2 项→最终话B", "en": "Opening choice: first → Finale A, second → Finale B"}}
+   ],
+   "enemies": []
+  }
+ ]
+}

@@ -1,0 +1,107 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 27,
+ "title": {
+  "zh-Hans": "理想，破灭",
+  "ja": "理想、潰えて",
+  "en": "Ideals, Shattered"
+ },
+ "title_ja": "理想、潰えて",
+ "cards": [
+  {
+   "guide_card": "card-027",
+   "route": "common",
+   "episode": "17",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-lera",
+     "title": {
+      "zh-Hans": "蕾拉支线：那双眼中映不出未来",
+      "ja": "レラ分岐：その瞳に未来は映ることなく",
+      "en": "Lera branch: Those Eyes Reflect No Future"
+     },
+     "text": {
+      "zh-Hans": "开场选「和蕾拉聊聊」或「设法让蕾拉下舰」→蕾拉支线",
+      "ja": "開始時「レラと話をする」か「レラを艦から降ろそうとする」→レラルート",
+      "en": "Pick “Talk with Lera” or “Try to get Lera off the ship”"
+     }
+    },
+    {
+     "ref": "secret-elrich",
+     "title": {
+      "zh-Hans": "埃尔利希＋诺鲁孜",
+      "ja": "エルリッヒ＋ノウルーズ",
+      "en": "Ehrlich + Norouz"
+     },
+     "text": {
+      "zh-Hans": "开场别选「不理她」（埃尔利希需要蕾拉支线）",
+      "ja": "開始時に「無視する」を選ばない（エルリッヒにはレラルートが必要）",
+      "en": "Don't pick “Ignore her” (Ehrlich needs the Lera branch)"
+     },
+     "protagonists": [
+      "ark"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "古拉博士",
+      "ja": "グラー博士",
+      "en": "Dr. Gura"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "基乌拉",
+      "ja": "ギウラ",
+      "en": "Giura"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "杰克斯",
+      "ja": "ゼクス",
+      "en": "Zechs"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "暗黑大将军",
+      "ja": "暗黒大将軍",
+      "en": "Dark General"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

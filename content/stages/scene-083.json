@@ -1,0 +1,78 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 83,
+ "title": {
+  "zh-Hans": "即便如此，也绝不放弃（上）",
+  "ja": "それでもあきらめずに （前）",
+  "en": "Even So, Never Give Up (Part 1)"
+ },
+ "title_ja": "それでもあきらめずに （前）",
+ "cards": [
+  {
+   "guide_card": "card-097",
+   "route": "ia",
+   "episode": "41",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战（未在 10 回合内突破）",
+    "ja": "独立軍ルート／単独行動（10ターン以内に突破できなかった）",
+    "en": "Independence Army route / fight alone (did not break through within 10 turns)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-breakthrough",
+     "title": {
+      "zh-Hans": "决死突破作战：10 回合限时",
+      "ja": "決死の突破作戦：10ターン制限",
+      "en": "Desperate Breakthrough: 10-turn limit"
+     },
+     "text": {
+      "zh-Hans": "「决死突破作战」任一篇超过第 10 回合时进入",
+      "ja": "「決死の突破作戦」のいずれかが第10ターン超過で進入",
+      "en": "Reached if either “Desperate Breakthrough” part runs past turn 10"
+     }
+    },
+    {
+     "ref": "secret-gale-escort",
+     "title": {
+      "zh-Hans": "盖尔护送朱莉娅",
+      "ja": "ゲイルがジュリアを護衛",
+      "en": "Gale escorts Julia"
+     },
+     "text": {
+      "zh-Hans": "无需操作：已招到盖尔时盖尔待命，否则英二待命",
+      "ja": "操作不要：ゲイル加入済みならゲイル、でなければエイジが待機",
+      "en": "No action: Gale sits out if recruited, otherwise Eiji does"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "卡达尔",
+      "ja": "ガンダル",
+      "en": "Gandal"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "戈曼",
+      "ja": "ゴーマン",
+      "en": "Gorman"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

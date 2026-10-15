@@ -1,0 +1,187 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 57,
+ "title": {
+  "zh-Hans": "乞力马扎罗的风暴",
+  "ja": "キリマンジャロの嵐",
+  "en": "Storm of Kilimanjaro"
+ },
+ "title_ja": "キリマンジャロの嵐",
+ "cards": [
+  {
+   "guide_card": "card-067",
+   "route": "oz",
+   "episode": "32",
+   "lane": {
+    "zh-Hans": "OZ路线",
+    "ja": "OZルート",
+    "en": "OZ route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-ark-brad",
+     "title": {
+      "zh-Hans": "阿克／布拉德专属支线",
+      "ja": "アーク／ブラッド専用の分岐",
+      "en": "Ark / Brad exclusive side branch"
+     },
+     "text": {
+      "zh-Hans": "无需操作：从「特列斯抹杀指令」或两条支线来到本关",
+      "ja": "操作不要：「トレーズ抹殺指令」か分岐ステージから本ステージへ",
+      "en": "No action needed: reached from “Order to Eliminate Treize” or a side branch"
+     }
+    },
+    {
+     "ref": "secret-zechs-epyon",
+     "title": {
+      "zh-Hans": "杰克斯＋次代高达",
+      "ja": "ゼクス＋ガンダムエピオン",
+      "en": "Zechs + Gundam Epyon"
+     },
+     "text": {
+      "zh-Hans": "无需操作：杰克斯关末成为次代高达驾驶员，希罗离队",
+      "ja": "操作不要：ゼクスがガンダムエピオンのパイロットに、ヒイロは離脱",
+      "en": "No action needed: Zechs pilots the Gundam Epyon; Heero leaves"
+     }
+    },
+    {
+     "ref": "secret-four",
+     "title": {
+      "zh-Hans": "凤",
+      "ja": "フォウ",
+      "en": "Four"
+     },
+     "text": {
+      "zh-Hans": "用卡缪说服凤（前两步已完成，无等级条件）",
+      "ja": "カミーユでフォウを説得（前2段階済み、レベル条件なし）",
+      "en": "Persuade Four with Kamille (steps 1–2 done, no level check)"
+     },
+     "protagonists": [
+      "ark",
+      "serein"
+     ]
+    },
+    {
+     "ref": "secret-allenby",
+     "title": {
+      "zh-Hans": "阿莲比＋诺贝尔高达",
+      "ja": "アレンビー＋ノーベルガンダム",
+      "en": "Allenby + Noble Gundam"
+     },
+     "text": {
+      "zh-Hans": "用多蒙说服阿莲比（要求第 1 步已完成）",
+      "ja": "ドモンでアレンビーを説得（第1段階済みが条件）",
+      "en": "Persuade Allenby with Domon (requires step 1)"
+     }
+    },
+    {
+     "ref": "secret-aisha",
+     "title": {
+      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "ja": "アイシャ＋エルブルス",
+      "en": "Aisha + Elbulls"
+     },
+     "text": {
+      "zh-Hans": "无需操作：前两步完成则关末艾夏＋厄尔布鲁士加入",
+      "ja": "操作不要：前2段階済みならクリア時にアイシャ＋エルブルスが加入",
+      "en": "No action needed: Aisha + Elbulls join at the end if steps 1–2 done"
+     },
+     "protagonists": [
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-sortie-limits",
+     "title": {
+      "zh-Hans": "隐藏的出击限制",
+      "ja": "隠れた出撃制限",
+      "en": "Hidden deployment restrictions"
+     },
+     "text": {
+      "zh-Hans": "凤线时卡缪开场不能出击；艾夏线时玛娜米不能出击",
+      "ja": "フォウの分岐：カミーユ開始時出撃不可／アイシャの分岐：マナミ出撃不可",
+      "en": "Four's line: no Kamille at start; Aisha's line: no Manami"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "施哲马",
+      "ja": "シジーマ",
+      "en": "Sijima"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "马基特",
+      "ja": "マーキロット",
+      "en": "Markiroot"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "凤",
+      "ja": "フォウ",
+      "en": "Four"
+     },
+     "note": {
+      "zh-Hans": "可被卡缪说服（说服后不掉落）",
+      "ja": "カミーユで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Kamille (no drop if persuaded)"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "阿莲比",
+      "ja": "アレンビー",
+      "en": "Allenby"
+     },
+     "note": {
+      "zh-Hans": "可被多蒙说服（说服后不掉落）",
+      "ja": "ドモンで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Domon (no drop if persuaded)"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "贾米托夫",
+      "ja": "ジャミトフ",
+      "en": "Jamitov"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 10 台以下时撤退",
+      "ja": "敵残り10機以下で撤退",
+      "en": "Retreats when 10 or fewer enemies remain"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

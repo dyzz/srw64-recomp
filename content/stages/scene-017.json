@@ -1,0 +1,79 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 17,
+ "title": {
+  "zh-Hans": "哀·战士们",
+  "ja": "哀・戦士たち",
+  "en": "Soldiers of Sorrow"
+ },
+ "title_ja": "哀・戦士たち",
+ "cards": [
+  {
+   "guide_card": "card-017",
+   "route": "common",
+   "episode": "9",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [
+    {
+     "ref": "secret-emma",
+     "title": {
+      "zh-Hans": "爱玛＋高达Mk-Ⅱ",
+      "ja": "エマ＋ガンダムmkⅡ",
+      "en": "Emma + Gundam Mk-II"
+     },
+     "text": {
+      "zh-Hans": "无需操作：爱玛开场驾驶杰刚加入",
+      "ja": "操作不要：エマが開始時にジェガンで加入",
+      "en": "Nothing to do: Emma joins at the start in the Jegan"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "暗黑大将军",
+      "ja": "暗黒大将軍",
+      "en": "Dark General"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "古拉博士",
+      "ja": "グラー博士",
+      "en": "Dr. Gura"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "铁甲鬼",
+      "ja": "鉄甲鬼",
+      "en": "Tekkoki"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 8 台以下时，若古拉博士已不在场则撤退",
+      "ja": "敵残り8機以下になったとき、グラー博士がもういなければ撤退",
+      "en": "Retreats when 8 or fewer enemies remain, if Dr. Gura is no longer on the map"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

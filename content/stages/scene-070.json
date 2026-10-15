@@ -1,0 +1,107 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 70,
+ "title": {
+  "zh-Hans": "重返战场",
+  "ja": "戦場に帰る",
+  "en": "Return to the Battlefield"
+ },
+ "title_ja": "戦場に帰る",
+ "cards": [
+  {
+   "guide_card": "card-063",
+   "route": "cp",
+   "episode": "32",
+   "lane": {
+    "zh-Hans": "完全和平路线",
+    "ja": "完全平和ルート",
+    "en": "Complete Pacifism route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-treize",
+     "title": {
+      "zh-Hans": "重返战场：随特列斯或独自作战",
+      "ja": "戦場に帰る：トレーズにつくか、自分たちだけで戦うか",
+      "en": "Return to the Battlefield: with Treize or going it alone"
+     },
+     "text": {
+      "zh-Hans": "关末选「投靠特列斯」→「激战的宇宙」；「我们独自战斗」→「银河帝国的威胁」",
+      "ja": "クリア時「トレーズにつく」→「激戦の宇宙」、「自分たちだけで戦う」→「銀河帝国の脅威」",
+      "en": "End choice: “Side with Treize” → “Fierce Fighting in Space”; “Fight on our own” → “The Galactic Empire's Threat”"
+     }
+    },
+    {
+     "ref": "secret-zechs-epyon",
+     "title": {
+      "zh-Hans": "杰克斯＋次代高达",
+      "ja": "ゼクス＋ガンダムエピオン",
+      "en": "Zechs + Gundam Epyon"
+     },
+     "text": {
+      "zh-Hans": "关末选「投靠特列斯」→杰克斯＋次代高达加入",
+      "ja": "「トレーズにつく」を選ぶ→ゼクス＋ガンダムエピオンが加入",
+      "en": "Pick “Side with Treize” → Zechs + Gundam Epyon join"
+     }
+    },
+    {
+     "ref": "secret-reese",
+     "title": {
+      "zh-Hans": "利修＋西格露恩",
+      "ja": "リッシュ＋シグルーン",
+      "en": "Rish + Sigroon"
+     },
+     "text": {
+      "zh-Hans": "无需操作：前两步完成则关末利修＋西格露恩加入",
+      "ja": "操作不要：前2段階済みならクリア時にリッシュ＋シグルーンが加入",
+      "en": "No action needed: Rish + Sigroon join at the end if steps 1–2 done"
+     },
+     "protagonists": [
+      "serein"
+     ]
+    },
+    {
+     "ref": "secret-story-attacks",
+     "title": {
+      "zh-Hans": "剧情解锁的必杀技与合体技",
+      "ja": "ストーリーで解禁される必殺技と合体技",
+      "en": "Story-unlocked finishers and combination attacks"
+     },
+     "text": {
+      "zh-Hans": "无需操作：洗牌同盟四人的必杀技本关解锁",
+      "ja": "操作不要：シャッフル4人の必殺技がこのステージで解禁",
+      "en": "No action needed: Shuffle Alliance finishers unlock here"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "丹格尔",
+      "ja": "ダンゲル",
+      "en": "Dungele"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "巴伦",
+      "ja": "バレン",
+      "en": "Baren"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

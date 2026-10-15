@@ -1,0 +1,147 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 31,
+ "title": {
+  "zh-Hans": "永别了，战士",
+  "ja": "さらば戦士よ",
+  "en": "Farewell, Warrior"
+ },
+ "title_ja": "さらば戦士よ",
+ "cards": [
+  {
+   "guide_card": "card-032",
+   "route": "ia",
+   "episode": "21",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-oz",
+     "title": {
+      "zh-Hans": "破晓作战：OZ 或独立军",
+      "ja": "オペレーション・デイブレイク：OZか独立軍",
+      "en": "Operation Daybreak: OZ or Independence Army"
+     },
+     "text": {
+      "zh-Hans": "「破晓作战」关末选「不能认同OZ的所作所为」",
+      "ja": "「オペレーション・デイブレイク」で「OZの行いを認めるわけにはいかない」",
+      "en": "Choose “We cannot accept what OZ has done” in Operation Daybreak"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "抗光束涂层",
+      "ja": "対ビームコーティング",
+      "en": "Anti-Beam Coating"
+     },
+     "from": {
+      "zh-Hans": "赫尔马特",
+      "ja": "ヘルマット",
+      "en": "Helmut"
+     },
+     "note": {
+      "zh-Hans": "德雷克或赫尔马特 HP 50% 以下时两人一起撤退",
+      "ja": "ドレイクかヘルマットがHP50%以下で2人とも撤退",
+      "en": "Retreats with Drake when either is at 50% HP or below"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "强化推进器",
+      "ja": "メガブースター",
+      "en": "Mega Booster"
+     },
+     "from": {
+      "zh-Hans": "德雷克",
+      "ja": "ドレイク",
+      "en": "Drake"
+     },
+     "note": {
+      "zh-Hans": "德雷克或赫尔马特 HP 50% 以下时两人一起撤退",
+      "ja": "ドレイクかヘルマットがHP50%以下で2人とも撤退",
+      "en": "Retreats with Helmut when either is at 50% HP or below"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "黑骑士",
+      "ja": "黒騎士",
+      "en": "Black Knight"
+     },
+     "note": {
+      "zh-Hans": "德雷克或赫尔马特 HP 50% 以下时一起撤退",
+      "ja": "ドレイクかヘルマットがHP50%以下で一緒に撤退",
+      "en": "Retreats when Drake or Helmut is at 50% HP or below"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "洁丽露",
+      "ja": "ジェリル",
+      "en": "Jeril"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "阿维＝露",
+      "ja": "アヴィ＝ルー",
+      "en": "Avie-Lu"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "艾伦、菲",
+      "ja": "アレン、フェイ",
+      "en": "Allen, Fei"
+     },
+     "note": {
+      "zh-Hans": "德雷克或赫尔马特 HP 50% 以下时一起撤退",
+      "ja": "ドレイクかヘルマットがHP50%以下で一緒に撤退",
+      "en": "Retreat when Drake or Helmut is at 50% HP or below"
+     },
+     "retreat": true
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "诺茵、亚历克斯、穆勒",
+      "ja": "ノイン、アレックス、ミューラー",
+      "en": "Noin, Alex, Mueller"
+     },
+     "note": {
+      "zh-Hans": "杰克斯被击坠时撤退",
+      "ja": "ゼクスが撃墜されると撤退",
+      "en": "Retreat when Zechs is shot down"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

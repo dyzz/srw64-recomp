@@ -1,0 +1,78 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 88,
+ "title": {
+  "zh-Hans": "阿克西斯攻防战（上）",
+  "ja": "アクシズの攻防 （前）",
+  "en": "The Battle for Axis (Part 1)"
+ },
+ "title_ja": "アクシズの攻防 （前）",
+ "cards": [
+  {
+   "guide_card": "card-110",
+   "route": "ia",
+   "episode": "48",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战",
+    "ja": "独立軍ルート／単独行動",
+    "en": "Independence Army route / fight alone"
+   },
+   "secrets": [
+    {
+     "ref": "secret-mashymre-chara",
+     "title": {
+      "zh-Hans": "马修玛＋扎古Ⅲ改／姬拉＋盖马克",
+      "ja": "マシュマー＋ザクⅢ改／キャラ＋ゲーマルク",
+      "en": "Mashymre + Zaku III Custom / Chara + Geymalk"
+     },
+     "text": {
+      "zh-Hans": "用捷度说服马修玛或姬拉之一，之后选「留在地球圈」",
+      "ja": "ジュドーでマシュマーかキャラを説得（後に「地球圏に残留する」）",
+      "en": "Persuade Mashymre or Chara with Judau; later pick “Stay on Earth”"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "拉坎",
+      "ja": "ラカン",
+      "en": "Rakan"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "阿里亚斯",
+      "ja": "アリアス",
+      "en": "Arius"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "德尔",
+      "ja": "デル",
+      "en": "Dale"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

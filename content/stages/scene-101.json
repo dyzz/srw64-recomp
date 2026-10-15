@@ -1,0 +1,96 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 101,
+ "title": {
+  "zh-Hans": "生命，凋零",
+  "ja": "生命、散って",
+  "en": "Lives, Scattered"
+ },
+ "title_ja": "生命、散って",
+ "cards": [
+  {
+   "guide_card": "card-113",
+   "route": "oz",
+   "episode": "48",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-puru-two",
+     "title": {
+      "zh-Hans": "普露兹",
+      "ja": "プルツー",
+      "en": "Ple-Two"
+     },
+     "text": {
+      "zh-Hans": "用捷度说服普露兹，当场入队（仅驾驶员）",
+      "ja": "ジュドーでプルツーを説得、その場で加入（パイロットのみ）",
+      "en": "Persuade Ple-Two with Judau; she joins on the spot (pilot only)"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "超合金Z",
+      "ja": "超合金Z",
+      "en": "Super Alloy Z"
+     },
+     "from": {
+      "zh-Hans": "格雷米",
+      "ja": "グレミー",
+      "en": "Glemy"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "洗牌同盟纹章",
+      "ja": "シャッフルの紋章",
+      "en": "Shuffle Crest"
+     },
+     "from": {
+      "zh-Hans": "普露兹",
+      "ja": "プルツー",
+      "en": "Ple-Two"
+     },
+     "note": {
+      "zh-Hans": "可被捷度说服（说服后不掉落）",
+      "ja": "ジュドーで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Judau (no drop if persuaded)"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "哈啰",
+      "ja": "ハロ",
+      "en": "Haro"
+     },
+     "from": {
+      "zh-Hans": "哈曼",
+      "ja": "ハマーン",
+      "en": "Haman"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

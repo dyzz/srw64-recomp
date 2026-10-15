@@ -1,0 +1,38 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 22,
+ "title": {
+  "zh-Hans": "其名为草间大作",
+  "ja": "その名は草間大作",
+  "en": "His Name Is Daisaku Kusama"
+ },
+ "title_ja": "その名は草間大作",
+ "cards": [
+  {
+   "guide_card": "card-022",
+   "route": "super",
+   "episode": "12",
+   "lane": {
+    "zh-Hans": "超级系",
+    "ja": "スーパー系",
+    "en": "Super"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "暴龙鬼",
+      "ja": "暴竜鬼",
+      "en": "Boryuki"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

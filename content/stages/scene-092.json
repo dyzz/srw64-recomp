@@ -1,0 +1,139 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 92,
+ "title": {
+  "zh-Hans": "看不见的明天",
+  "ja": "見えない明日",
+  "en": "An Unseen Tomorrow"
+ },
+ "title_ja": "見えない明日",
+ "cards": [
+  {
+   "guide_card": "card-086",
+   "route": "oz",
+   "episode": "37",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-todd-silky",
+     "title": {
+      "zh-Hans": "陶德（＋希露奇）",
+      "ja": "トッド（＋シルキー）",
+      "en": "Tod (+ Silky)"
+     },
+     "text": {
+      "zh-Hans": "保住第 3 回合加入的陶德（玛蓓儿击坠 ≥ 30 时希露奇同乘）",
+      "ja": "第3ターン加入のトッドを守る（マーベル30機撃墜でシルキーも）",
+      "en": "Keep Tod alive (joins turn 3); Silky too if Marvel has ≥ 30 kills"
+     }
+    },
+    {
+     "ref": "secret-kirika",
+     "title": {
+      "zh-Hans": "基里卡",
+      "ja": "キリカ",
+      "en": "Kirika"
+     },
+     "text": {
+      "zh-Hans": "基里卡登场后先用杜克、再用玛丽亚说服",
+      "ja": "キリカをデューク→マリアの順で説得",
+      "en": "Persuade Kirika with Duke, then Maria (in that order)"
+     }
+    },
+    {
+     "ref": "secret-story-attacks",
+     "title": {
+      "zh-Hans": "剧情解锁的必杀技与合体技",
+      "ja": "ストーリーで解禁される必殺技と合体技",
+      "en": "Story-unlocked finishers and combination attacks"
+     },
+     "text": {
+      "zh-Hans": "无需操作：关末解锁断空我的断空光牙剑",
+      "ja": "操作不要：クリア時にダンクーガの断空光牙剣が解禁",
+      "en": "No action: Dancouga's Dancou Kougaken unlocks at stage end"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "丹格尔",
+      "ja": "ダンゲル",
+      "en": "Dungele"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "瓦基米德",
+      "ja": "ワルキメデス",
+      "en": "Warchimedes"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "基里卡",
+      "ja": "キリカ",
+      "en": "Kirika"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 15 台以下时登场，说服后不掉落",
+      "ja": "敵残り15機以下で登場、説得時はドロップなし",
+      "en": "Appears at 15 or fewer enemies; no drop if persuaded"
+     },
+     "protagonists": [
+      "brad",
+      "manami"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "加涅拉",
+      "ja": "ジャネラ",
+      "en": "Janera"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

@@ -262,6 +262,7 @@ jobs:
           Copy-Item "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/bin/*.dll" $out
           Copy-Item -Recurse build/fonts "$out/fonts"
           Copy-Item -Recurse content/dialogue "$out/dialogue"
+          Copy-Item -Recurse content/stages "$out/stages"
           Copy-Item tools/release/windows/Marchwind64.cmd $out
           # librashader (D3D12 and Vulkan, compiled unless cached) and the built-in RetroArch filters
           # (docs/native/bezels-and-filters.md).

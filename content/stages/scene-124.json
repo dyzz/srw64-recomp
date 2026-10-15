@@ -1,0 +1,96 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 124,
+ "title": {
+  "zh-Hans": "了断之时",
+  "ja": "決着の時",
+  "en": "Time to Settle It"
+ },
+ "title_ja": "決着の時",
+ "cards": [
+  {
+   "guide_card": "card-066",
+   "route": "oz",
+   "episode": "32",
+   "lane": {
+    "zh-Hans": "OZ路线（布拉德支线）",
+    "ja": "OZルート（ブラッド分岐）",
+    "en": "OZ route (Brad branch)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-ark-brad",
+     "title": {
+      "zh-Hans": "阿克／布拉德专属支线",
+      "ja": "アーク／ブラッド専用の分岐",
+      "en": "Ark / Brad exclusive side branch"
+     },
+     "text": {
+      "zh-Hans": "从「特列斯抹杀指令」满足卡茨条件自动进入",
+      "ja": "「トレーズ抹殺指令」でカーツの条件を満たすと自動で進入",
+      "en": "Auto-entered from “Order to Eliminate Treize” if Kurtz conditions met"
+     }
+    },
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "击破卡茨时布拉德击坠数 ≥ 100 则卡茨加入",
+      "ja": "カーツ撃破時にブラッドの撃墜数100以上ならカーツが加入",
+      "en": "Have Brad at 100+ kills when Kurtz falls so Kurtz joins"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    }
+   ],
+   "enemies": []
+  },
+  {
+   "guide_card": "card-071",
+   "route": "ia",
+   "episode": "33",
+   "lane": {
+    "zh-Hans": "独立军路线（布拉德支线）",
+    "ja": "独立軍ルート（ブラッドの分岐）",
+    "en": "Independence Army route (Brad branch)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-ark-brad",
+     "title": {
+      "zh-Hans": "阿克／布拉德专属支线",
+      "ja": "アーク／ブラッド専用の分岐",
+      "en": "Ark / Brad exclusive side branch"
+     },
+     "text": {
+      "zh-Hans": "从「混沌的地球圈」满足卡茨条件自动进入",
+      "ja": "「混沌の地球圏」でカーツの条件を満たすと自動で進入",
+      "en": "Auto-entered from “Earth Sphere in Chaos” if Kurtz conditions met"
+     }
+    },
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "击破卡茨时布拉德击坠数 ≥ 100 则卡茨加入",
+      "ja": "カーツ撃破時にブラッドの撃墜数100以上ならカーツが加入",
+      "en": "Have Brad at 100+ kills when Kurtz falls so Kurtz joins"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    }
+   ],
+   "enemies": []
+  }
+ ]
+}

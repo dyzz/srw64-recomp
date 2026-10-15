@@ -1,0 +1,57 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 23,
+ "title": {
+  "zh-Hans": "背叛之镇",
+  "ja": "裏切りの町",
+  "en": "Town of Betrayal"
+ },
+ "title_ja": "裏切りの町",
+ "cards": [
+  {
+   "guide_card": "card-023",
+   "route": "super",
+   "episode": "13",
+   "lane": {
+    "zh-Hans": "超级系",
+    "ja": "スーパー系",
+    "en": "Super"
+   },
+   "secrets": [
+    {
+     "ref": "secret-erika",
+     "title": {
+      "zh-Hans": "艾莉卡",
+      "ja": "エリカ",
+      "en": "Erika"
+     },
+     "text": {
+      "zh-Hans": "关末选第 1 项「我觉得没问题」→艾莉卡加入",
+      "ja": "クリア時に「俺は構わないと思うぜ」→エリカ加入",
+      "en": "Choose “Fine by me” at stage end and Erika joins"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "奖励+10000",
+      "ja": "ボーナス+10000",
+      "en": "Bonus +10000"
+     },
+     "from": {
+      "zh-Hans": "雅努斯侯爵",
+      "ja": "ヤヌス侯爵",
+      "en": "Marquis Janus"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 15 台以下时撤退",
+      "ja": "敵残り15機以下で撤退",
+      "en": "Retreats when 15 or fewer enemies remain"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

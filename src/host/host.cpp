@@ -45,6 +45,7 @@
 #include "game_hooks.hpp"
 #include "native_intro.hpp"
 #include "touch_scene.hpp"
+#include "stage_info.hpp"
 #include "game_speed.hpp"
 #include "stall_watchdog.hpp"
 #include "guest_memory.hpp"
@@ -232,6 +233,8 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
         current() = uint8_t(decide(srw64::guest::read(srw64_rdram, mode_address, 1), srw64::guest::read(srw64_rdram, map_state_address, 1),
                                    srw64::guest::read(srw64_rdram, map_sub_address, 1), srw64::intro::title_major(), srw64::dialogue::reading(),
                                    srw64::intro::title_waiting()));
+        // The stage info page's snapshot while it is up (stage_info.hpp).
+        srw64::stage_info::sample(srw64_rdram);
     }
     return true;
 }

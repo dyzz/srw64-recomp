@@ -1,0 +1,114 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 86,
+ "title": {
+  "zh-Hans": "决战宙域（上）",
+  "ja": "決戦宙域 （前）",
+  "en": "Decisive Battle Zone (Part 1)"
+ },
+ "title_ja": "決戦宙域 （前）",
+ "cards": [
+  {
+   "guide_card": "card-104",
+   "route": "ia",
+   "episode": "45",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战",
+    "ja": "独立軍ルート／単独行動",
+    "en": "Independence Army route / fight alone"
+   },
+   "secrets": [
+    {
+     "ref": "secret-mashymre-chara",
+     "title": {
+      "zh-Hans": "马修玛＋扎古Ⅲ改／姬拉＋盖马克",
+      "ja": "マシュマー＋ザクⅢ改／キャラ＋ゲーマルク",
+      "en": "Mashymre + Zaku III Custom / Chara + Geymalk"
+     },
+     "text": {
+      "zh-Hans": "别击坠马修玛和姬拉，两人都撑到关末",
+      "ja": "マシュマーとキャラを2人ともクリア時まで残す",
+      "en": "Keep Mashymre and Chara on the map until stage end"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "瓦尔",
+      "ja": "ワール",
+      "en": "Wahl"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "加涅拉",
+      "ja": "ジャネラ",
+      "en": "Janera"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "戈曼",
+      "ja": "ゴーマン",
+      "en": "Gorman"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "卡达尔",
+      "ja": "ガンダル",
+      "en": "Gandal"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 10 台以下时登场",
+      "ja": "敵残り10機以下で登場",
+      "en": "Appears when 10 or fewer enemies remain"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "超合金Z",
+      "ja": "超合金Z",
+      "en": "Super Alloy Z"
+     },
+     "from": {
+      "zh-Hans": "祖鲁皇帝",
+      "ja": "ズール皇帝",
+      "en": "Emperor Zuul"
+     },
+     "note": {
+      "zh-Hans": "第一形态击坠后登场；非武击坠则再登场多得一个",
+      "ja": "第2形態をタケル以外が撃墜すると再登場しもう1つ",
+      "en": "If not shot down by Takeru, reappears for one more"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

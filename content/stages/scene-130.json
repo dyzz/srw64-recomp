@@ -1,0 +1,109 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 130,
+ "title": {
+  "zh-Hans": "决死突破作战（下）",
+  "ja": "決死の突破作戦 （後）",
+  "en": "Desperate Breakthrough (Part 2)"
+ },
+ "title_ja": "決死の突破作戦 （後）",
+ "cards": [
+  {
+   "guide_card": "card-094",
+   "route": "ia",
+   "episode": "40",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战",
+    "ja": "独立軍ルート／単独行動",
+    "en": "Independence Army route / fight alone"
+   },
+   "secrets": [
+    {
+     "ref": "secret-rose",
+     "title": {
+      "zh-Hans": "罗塞＋泽隆",
+      "ja": "ロゼ＋ゼーロン",
+      "en": "Rose + Zeron"
+     },
+     "text": {
+      "zh-Hans": "用武说服罗塞（此前已击坠玛古并说服罗塞）",
+      "ja": "タケルでロゼを説得（前段階でマーグ撃墜とロゼ説得済み）",
+      "en": "Persuade Rose with Takeru (needs the earlier Marg kill + persuasion)"
+     }
+    },
+    {
+     "ref": "secret-route-breakthrough",
+     "title": {
+      "zh-Hans": "决死突破作战：10 回合限时",
+      "ja": "決死の突破作戦：10ターン制限",
+      "en": "Desperate Breakthrough: 10-turn limit"
+     },
+     "text": {
+      "zh-Hans": "上篇与本关都在第 10 回合内过关 →「扭曲的宇宙」",
+      "ja": "前編と本ステージを第10ターン以内にクリア →「ゆがむ宇宙」",
+      "en": "Clear Part 1 and this stage by turn 10 → “Warped Space”"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "瓦尔",
+      "ja": "ワール",
+      "en": "Wahl"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "罗塞",
+      "ja": "ロゼ",
+      "en": "Rose"
+     },
+     "note": {
+      "zh-Hans": "可被武说服（说服后不掉落）",
+      "ja": "タケルで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Takeru (no drop if persuaded)"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "加涅拉",
+      "ja": "ジャネラ",
+      "en": "Janera"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "丹格尔",
+      "ja": "ダンゲル",
+      "en": "Dungele"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

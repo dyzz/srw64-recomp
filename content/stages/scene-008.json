@@ -1,0 +1,41 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 8,
+ "title": {
+  "zh-Hans": "男子汉的骨气！？诀别之时",
+  "ja": "漢の意地!? 決別のとき",
+  "en": "A Man's Pride!? Time to Part Ways"
+ },
+ "title_ja": "漢の意地!? 決別のとき",
+ "cards": [
+  {
+   "guide_card": "card-012",
+   "route": "super",
+   "episode": "5",
+   "lane": {
+    "zh-Hans": "布拉德",
+    "ja": "ブラッド",
+    "en": "Brad"
+   },
+   "secrets": [
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "无需操作：卡茨本关离队，无法击坠、不计数",
+      "ja": "操作不要：カーツはここで離脱、撃墜不可・カウントなし",
+      "en": "Nothing to do: Kurtz leaves; no shoot-down counts here"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    }
+   ],
+   "enemies": []
+  }
+ ]
+}

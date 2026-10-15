@@ -1,0 +1,134 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 38,
+ "title": {
+  "zh-Hans": "OZ分裂（上）",
+  "ja": "OZ分裂 （前）",
+  "en": "OZ Divided (Part 1)"
+ },
+ "title_ja": "OZ分裂 （前）",
+ "cards": [
+  {
+   "guide_card": "card-053",
+   "route": "ia",
+   "episode": "28",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-hilde",
+     "title": {
+      "zh-Hans": "希尔妲＋陶拉斯",
+      "ja": "ヒルデ＋トーラス",
+      "en": "Hilde + Taurus"
+     },
+     "text": {
+      "zh-Hans": "用迪奥说服希尔妲（无门槛），关末前别让她被击坠",
+      "ja": "デュオでヒルデを説得、クリアまで撃墜させない",
+      "en": "Persuade Hilde with Duo; keep her alive until the stage ends"
+     }
+    },
+    {
+     "ref": "secret-aisha",
+     "title": {
+      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "ja": "アイシャ＋エルブルス",
+      "en": "Aisha + Elbulls"
+     },
+     "text": {
+      "zh-Hans": "用玛娜米说服艾夏（需「虚假的和平」已说服）",
+      "ja": "マナミでアイシャを説得（「偽りの平和」で説得済み）",
+      "en": "Persuade Aisha with Manami (needs the persuade in “False Peace”)"
+     },
+     "protagonists": [
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-reese",
+     "title": {
+      "zh-Hans": "利修＋西格露恩",
+      "ja": "リッシュ＋シグルーン",
+      "en": "Rish + Sigroon"
+     },
+     "text": {
+      "zh-Hans": "用塞蕾茵说服利修（需「激斗！玫瑰人生号」选第 2/3 项）",
+      "ja": "セレインでリッシュを説得（「激闘!ラビアンローズ」で2番目か3番目）",
+      "en": "Persuade Rish with Selain (needs option 2/3 in “Fierce Battle! La Vie en Rose”)"
+     },
+     "protagonists": [
+      "serein"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "亚赞",
+      "ja": "ヤザン",
+      "en": "Yazan"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "希尔妲",
+      "ja": "ヒルデ",
+      "en": "Hilde"
+     },
+     "note": {
+      "zh-Hans": "可被迪奥说服（说服后不掉落）",
+      "ja": "デュオで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Duo (no drop if persuaded)"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "利修",
+      "ja": "リッシュ",
+      "en": "Rish"
+     },
+     "protagonists": [
+      "serein"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "艾夏",
+      "ja": "アイシャ",
+      "en": "Aisha"
+     },
+     "protagonists": [
+      "manami"
+     ],
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

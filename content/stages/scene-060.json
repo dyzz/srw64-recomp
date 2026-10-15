@@ -1,0 +1,124 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 60,
+ "title": {
+  "zh-Hans": "西罗克崛起",
+  "ja": "シロッコ立つ",
+  "en": "Scirocco Rises"
+ },
+ "title_ja": "シロッコ立つ",
+ "cards": [
+  {
+   "guide_card": "card-076",
+   "route": "oz",
+   "episode": "34",
+   "lane": {
+    "zh-Hans": "OZ路线",
+    "ja": "OZルート",
+    "en": "OZ route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-gato-base",
+     "title": {
+      "zh-Hans": "月球是地狱！：守住基地",
+      "ja": "月は地獄だ!：基地を守る",
+      "en": "The Moon Is Hell!: holding the base"
+     },
+     "text": {
+      "zh-Hans": "没招到卡多时，他会作为敌方增援出现",
+      "ja": "ガトーを仲間にしていなければ敵増援として登場",
+      "en": "If Gato wasn't recruited, he shows up as an enemy reinforcement"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "杰利德",
+      "ja": "ジェリド",
+      "en": "Jerid"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "巴斯克",
+      "ja": "バスク",
+      "en": "Bask"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "盖茨",
+      "ja": "ゲーツ",
+      "en": "Gates"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "罗莎米娅",
+      "ja": "ロザミア",
+      "en": "Rosamia"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "高性能雷达",
+      "ja": "高性能レーダー",
+      "en": "High-Fidelity Radar"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "note": {
+      "zh-Hans": "仅没招到卡多时作为敌人登场",
+      "ja": "ガトーが未加入の場合のみ敵として登場",
+      "en": "Appears as an enemy only if Gato wasn't recruited"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "哈曼",
+      "ja": "ハマーン",
+      "en": "Haman"
+     },
+     "note": {
+      "zh-Hans": "格瓦丹抵达撤离点时撤退",
+      "ja": "グワダンが離脱地点に着くと撤退",
+      "en": "Retreats when the Gwadan reaches its exit point"
+     },
+     "third_party": true,
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

@@ -159,7 +159,8 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         // (input_bindings.hpp, Y on the Deck), toggles the battle animation (8015DDA8 & 4
         // set = off). Its A/B/menu handling is untouched.
         static bool animation_before=false;
-        const bool animation_now=srw64_keyboard_state()&input::pad_animation,animation_pressed=animation_now && !animation_before;
+        // Not while the settings window is over it: there the button closes the stage info page.
+        const bool animation_now=srw64_keyboard_state()&input::pad_animation,animation_pressed=animation_now && !animation_before && !settings::owns_input();
         animation_before=animation_now;
         if((read(ram,0x80178A08,2)&0x0004) || animation_pressed)write8(ram,0x8015DDA8,read(ram,0x8015DDA8,1)^4);
         original_animation=(read(ram,0x8015DDA8,1)&4)==0;original_mode=mode;original_vi=srw64_current_vi();

@@ -18,6 +18,10 @@ struct Info {
     uint32_t start{};                              // scene of the first stage
     std::map<uint32_t,nlohmann::json> titles;      // scene -> title, a string or {locale: string}
     std::map<uint32_t,std::string> keys;           // scene -> stage key, for logs
+    // The stage info page (stage_info.hpp): each stage's metadata (srw64.stage-meta.v1)
+    // and the campaign's status rules (srw64.stage-status.v1), when it has them.
+    std::map<uint32_t,nlohmann::json> meta;
+    nlohmann::json status;
 };
 struct State {std::mutex mutex;std::optional<Info> info;};
 inline State& state(){static State s;return s;}
@@ -25,6 +29,21 @@ inline State& state(){static State s;return s;}
 inline bool active(){auto& s=state();std::lock_guard lock(s.mutex);return s.info.has_value();}
 inline std::optional<Info> info(){auto& s=state();std::lock_guard lock(s.mutex);return s.info;}
 inline void set(std::optional<Info> info){auto& s=state();std::lock_guard lock(s.mutex);s.info=std::move(info);}
+// The running campaign's id ("" in the main story), one stage's metadata (null when it
+// has none) and its status rules (null), without copying the rest.
+inline std::string id(){auto& s=state();std::lock_guard lock(s.mutex);return s.info?s.info->id:std::string();}
+inline nlohmann::json stage_meta(uint32_t scene) {
+    auto& s=state();std::lock_guard lock(s.mutex);
+    if(!s.info)return nullptr;
+    const auto found=s.info->meta.find(scene);
+    if(found==s.info->meta.end())return nullptr;
+    auto meta=found->second;
+    // Without a title of its own, the stage's chapter title from campaign.json.
+    if(!meta.contains("title"))
+        if(const auto title=s.info->titles.find(scene);title!=s.info->titles.end())meta["title"]=title->second;
+    return meta;
+}
+inline nlohmann::json status(){auto& s=state();std::lock_guard lock(s.mutex);return s.info?s.info->status:nlohmann::json();}
 
 // The chapter title a stage gives its scene, in the given locale; falls back to ja,
 // then to any language the title has. Nothing when no campaign borrows the scene.

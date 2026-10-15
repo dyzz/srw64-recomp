@@ -1,0 +1,124 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 141,
+ "title": {
+  "zh-Hans": "决战宙域（下）",
+  "ja": "決戦宙域 （後）",
+  "en": "Decisive Battle Zone (Part 2)"
+ },
+ "title_ja": "決戦宙域 （後）",
+ "cards": [
+  {
+   "guide_card": "card-106",
+   "route": "ia",
+   "episode": "46",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战",
+    "ja": "独立軍ルート／単独行動",
+    "en": "Independence Army route / fight alone"
+   },
+   "secrets": [
+    {
+     "ref": "secret-puru-two",
+     "title": {
+      "zh-Hans": "普露兹",
+      "ja": "プルツー",
+      "en": "Ple-Two"
+     },
+     "text": {
+      "zh-Hans": "用捷度说服普露兹（需普露已入队）",
+      "ja": "ジュドーでプルツーを説得（プル加入済みが条件）",
+      "en": "Persuade Ple-Two with Judau (needs Ple on the team)"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "精神感应框架",
+      "ja": "サイコフレーム",
+      "en": "Psycoframe"
+     },
+     "from": {
+      "zh-Hans": "哈曼",
+      "ja": "ハマーン",
+      "en": "Haman"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退，部下一起离场",
+      "ja": "HP30%以下で撤退し、部下も一緒に離脱",
+      "en": "Retreats at 30% HP or below, and the subordinates leave too"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "note": {
+      "zh-Hans": "哈曼 HP 30% 以下或被击坠时一起撤退",
+      "ja": "ハマーンがHP30%以下になるか撃墜されると一緒に撤退",
+      "en": "Retreats together with Haman when she is at 30% HP or below or is shot down"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "拉坎",
+      "ja": "ラカン",
+      "en": "Rakan"
+     },
+     "note": {
+      "zh-Hans": "哈曼 HP 30% 以下或被击坠时一起撤退",
+      "ja": "ハマーンがHP30%以下になるか撃墜されると一緒に撤退",
+      "en": "Retreats together with Haman when she is at 30% HP or below or is shot down"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "普露兹",
+      "ja": "プルツー",
+      "en": "Ple-Two"
+     },
+     "note": {
+      "zh-Hans": "哈曼 HP 30% 以下或被击坠时一起撤退",
+      "ja": "ハマーンがHP30%以下になるか撃墜されると一緒に撤退",
+      "en": "Retreats together with Haman when she is at 30% HP or below or is shot down"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "I力场屏障",
+      "ja": "Iフィールドバリア",
+      "en": "I-Field Barrier"
+     },
+     "from": {
+      "zh-Hans": "杰伊＝伦",
+      "ja": "ジェイ＝レン",
+      "en": "J-Ren"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

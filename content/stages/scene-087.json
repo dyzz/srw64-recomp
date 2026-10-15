@@ -1,0 +1,97 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 87,
+ "title": {
+  "zh-Hans": "野心",
+  "ja": "野心",
+  "en": "Ambition"
+ },
+ "title_ja": "野心",
+ "cards": [
+  {
+   "guide_card": "card-108",
+   "route": "ia",
+   "episode": "47",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战",
+    "ja": "独立軍ルート／単独行動",
+    "en": "Independence Army route / fight alone"
+   },
+   "secrets": [
+    {
+     "ref": "secret-puru-two",
+     "title": {
+      "zh-Hans": "普露兹",
+      "ja": "プルツー",
+      "en": "Ple-Two"
+     },
+     "text": {
+      "zh-Hans": "用捷度说服普露兹（需第 1 步），之后她撤退",
+      "ja": "ジュドーでプルツーを説得（第1段階済み）、その後撤退",
+      "en": "Persuade Ple-Two with Judau (needs step 1); she then retreats"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "马修玛",
+      "ja": "マシュマー",
+      "en": "Mashymre"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "姬拉",
+      "ja": "キャラ",
+      "en": "Chara"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "普露兹",
+      "ja": "プルツー",
+      "en": "Ple-Two"
+     },
+     "note": {
+      "zh-Hans": "可被捷度说服（说服后不掉落）",
+      "ja": "ジュドーで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Judau (no drop if persuaded)"
+     },
+     "third_party": true,
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

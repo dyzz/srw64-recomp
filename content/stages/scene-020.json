@@ -1,0 +1,119 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 20,
+ "title": {
+  "zh-Hans": "来自海与大地之间",
+  "ja": "海と大地の狭間より",
+  "en": "From Between Sea and Land"
+ },
+ "title_ja": "海と大地の狭間より",
+ "cards": [
+  {
+   "guide_card": "card-020",
+   "route": "common",
+   "episode": "11",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [
+    {
+     "ref": "secret-garalia",
+     "title": {
+      "zh-Hans": "卡拉利亚＋巴斯托尔",
+      "ja": "ガラリア＋バストール",
+      "en": "Garalia + Bastole"
+     },
+     "text": {
+      "zh-Hans": "翔别攻击卡拉利亚，被她攻击时防御或回避",
+      "ja": "ショウはガラリアを攻撃せず、攻撃されたら防御か回避",
+      "en": "Show must not attack Garalia; defend or evade her attacks"
+     }
+    },
+    {
+     "ref": "secret-todd-silky",
+     "title": {
+      "zh-Hans": "陶德（＋希露奇）",
+      "ja": "トッド（＋シルキー）",
+      "en": "Tod (+ Silky)"
+     },
+     "text": {
+      "zh-Hans": "卡拉利亚只关系希露奇同乘，与陶德加入无关",
+      "ja": "ガラリアはシルキー同乗の条件のみ、トッド加入とは無関係",
+      "en": "Garalia only decides whether Silky rides along, not Tod"
+     }
+    },
+    {
+     "ref": "secret-four",
+     "title": {
+      "zh-Hans": "凤",
+      "ja": "フォウ",
+      "en": "Four"
+     },
+     "text": {
+      "zh-Hans": "用卡缪说服凤（第 2 步，说服后本关结束）",
+      "ja": "カミーユでフォウを説得（第2段階、説得でステージ終了）",
+      "en": "Persuade Four with Kamille (step 2; ends the stage)"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "米诺夫斯基飞行器",
+      "ja": "ミノフスキークラフト",
+      "en": "Minovsky Craft"
+     },
+     "from": {
+      "zh-Hans": "卡拉利亚",
+      "ja": "ガラリア",
+      "en": "Garalia"
+     },
+     "note": {
+      "zh-Hans": "第 4 回合敌方阶段前击坠才掉落（无法招募）",
+      "ja": "第4ターン敵フェイズ前に撃墜時のみ（加入不可に）",
+      "en": "Drops only if shot down before turn 4 enemy phase"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "巴恩",
+      "ja": "バーン",
+      "en": "Bern"
+     },
+     "note": {
+      "zh-Hans": "卡拉利亚入队或被翔击坠时才登场",
+      "ja": "ガラリア加入かショウが撃墜した場合のみ登場",
+      "en": "Appears only if Garalia joined or Show shot her down"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "凤",
+      "ja": "フォウ",
+      "en": "Four"
+     },
+     "note": {
+      "zh-Hans": "可被卡缪说服（说服后不掉落）",
+      "ja": "カミーユで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Kamille (no drop if persuaded)"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

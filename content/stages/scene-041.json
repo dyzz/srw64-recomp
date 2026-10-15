@@ -1,0 +1,186 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 41,
+ "title": {
+  "zh-Hans": "混沌的地球圈",
+  "ja": "混沌の地球圏",
+  "en": "Earth Sphere in Chaos"
+ },
+ "title_ja": "混沌の地球圏",
+ "cards": [
+  {
+   "guide_card": "card-064",
+   "route": "ia",
+   "episode": "32",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-ark-brad",
+     "title": {
+      "zh-Hans": "阿克／布拉德专属支线",
+      "ja": "アーク／ブラッド専用の分岐",
+      "en": "Ark / Brad exclusive side branch"
+     },
+     "text": {
+      "zh-Hans": "阿克：满足埃尔利希条件选第 2 项→「从此并肩」；布拉德：满足卡茨条件→「了断之时」",
+      "ja": "アーク：エルリッヒの条件＋第2項→「ここより共に」；ブラッド：カーツの条件→「決着の時」",
+      "en": "Ark: Ehrlich + option 2 → “Together from Here On”; Brad: Kurtz → “Time to Settle It”"
+     }
+    },
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "用布拉德亲手击坠卡茨（第 4 回合开始或敌军全灭时登场）",
+      "ja": "ブラッド自身でカーツを撃墜（第4ターン開始時か敵全滅時に登場）",
+      "en": "Shoot down Kurtz with Brad (turn 4 or enemy wiped out)"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    },
+    {
+     "ref": "secret-elrich",
+     "title": {
+      "zh-Hans": "埃尔利希＋诺鲁孜",
+      "ja": "エルリッヒ＋ノウルーズ",
+      "en": "Ehrlich + Norouz"
+     },
+     "text": {
+      "zh-Hans": "蕾拉支线成立时用阿克说服埃尔利希，关末选第 2 项",
+      "ja": "レラの分岐成立時、アークでエルリッヒを説得しクリア時に第2項",
+      "en": "With the Lera branch, persuade Ehrlich with Ark, then option 2"
+     },
+     "protagonists": [
+      "ark"
+     ]
+    },
+    {
+     "ref": "secret-rosamia",
+     "title": {
+      "zh-Hans": "罗莎米娅",
+      "ja": "ロザミア",
+      "en": "Rosamia"
+     },
+     "text": {
+      "zh-Hans": "先击坠盖茨，再用卡缪说服罗莎米娅",
+      "ja": "先にゲーツを撃墜し、カミーユでロザミアを説得",
+      "en": "Shoot down Gates first, then persuade Rosamia with Kamille"
+     }
+    },
+    {
+     "ref": "secret-kyral",
+     "title": {
+      "zh-Hans": "基拉尔＋曼陀罗高达",
+      "ja": "キラル＋マンダラガンダム",
+      "en": "Kyral + Mandala Gundam"
+     },
+     "text": {
+      "zh-Hans": "用多蒙击坠基拉尔（巴伦被击破后第 4 个回合登场）",
+      "ja": "ドモンでキラルを撃墜（バレン撃破から4ターン目に登場）",
+      "en": "Shoot down Kyral with Domon (appears 4 turns after Baren falls)"
+     }
+    },
+    {
+     "ref": "secret-story-attacks",
+     "title": {
+      "zh-Hans": "剧情解锁的必杀技与合体技",
+      "ja": "ストーリーで解禁される必殺技と合体技",
+      "en": "Story-unlocked finishers and combination attacks"
+     },
+     "text": {
+      "zh-Hans": "无需操作：招到阿莲比后即可使用双重神之指",
+      "ja": "操作不要：アレンビー加入後にダブルゴッドフィンガーが使える",
+      "en": "No action needed: Double Burning Finger works once Allenby joins"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "盖茨",
+      "ja": "ゲーツ",
+      "en": "Gates"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "罗莎米娅",
+      "ja": "ロザミア",
+      "en": "Rosamia"
+     },
+     "note": {
+      "zh-Hans": "可被卡缪说服（说服后不掉落）",
+      "ja": "カミーユで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Kamille (no drop if persuaded)"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "巴斯克",
+      "ja": "バスク",
+      "en": "Bask"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "卡茨",
+      "ja": "カーツ",
+      "en": "Kurtz"
+     },
+     "protagonists": [
+      "brad"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "埃尔利希",
+      "ja": "エルリッヒ",
+      "en": "Ehrlich"
+     },
+     "protagonists": [
+      "ark"
+     ],
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

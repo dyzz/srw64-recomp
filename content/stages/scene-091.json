@@ -1,0 +1,113 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 91,
+ "title": {
+  "zh-Hans": "毁灭的序曲",
+  "ja": "破滅への序曲",
+  "en": "Prelude to Ruin"
+ },
+ "title_ja": "破滅への序曲",
+ "cards": [
+  {
+   "guide_card": "card-084",
+   "route": "oz",
+   "episode": "36",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-rose",
+     "title": {
+      "zh-Hans": "罗塞＋泽隆",
+      "ja": "ロゼ＋ゼーロン",
+      "en": "Rose + Zeron"
+     },
+     "text": {
+      "zh-Hans": "用武说服罗塞（此前已击坠玛古并说服罗塞）",
+      "ja": "タケルでロゼを説得（前段階でマーグ撃墜とロゼ説得済み）",
+      "en": "Persuade Rose with Takeru (needs the earlier Marg kill + persuasion)"
+     }
+    },
+    {
+     "ref": "secret-naida",
+     "title": {
+      "zh-Hans": "娜伊达＋双重斯派扎",
+      "ja": "ナイーダ＋ダブルスペイザー",
+      "en": "Naida + Double Spazer"
+     },
+     "text": {
+      "zh-Hans": "已说服娜伊达时开场选「不能就这么放着不管」",
+      "ja": "ナイーダ説得済みなら開始時に「放っておくわけにはいかない」",
+      "en": "If Naida was persuaded, pick “We can't just leave her like this”"
+     },
+     "protagonists": [
+      "brad",
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-route-treize",
+     "title": {
+      "zh-Hans": "重返战场：随特列斯或独自作战",
+      "ja": "戦場に帰る：トレーズにつくか、自分たちだけで戦うか",
+      "en": "Return to the Battlefield: with Treize or going it alone"
+     },
+     "text": {
+      "zh-Hans": "无需操作：OZ 路线与随特列斯一线在此汇合",
+      "ja": "操作不要：OZルートとトレーズにつくルートがここで合流",
+      "en": "No action: the OZ route and “with Treize” branch merge here"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "戈曼",
+      "ja": "ゴーマン",
+      "en": "Gorman"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "卡达尔",
+      "ja": "ガンダル",
+      "en": "Gandal"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "罗塞",
+      "ja": "ロゼ",
+      "en": "Rose"
+     },
+     "note": {
+      "zh-Hans": "可被武说服（说服后不掉落）",
+      "ja": "タケルで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Takeru (no drop if persuaded)"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

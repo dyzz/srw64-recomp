@@ -173,6 +173,8 @@ void fixed_buttons() {
         check(page.slots[i] == full.slots[i], "the page has the whole set");
         if (i == size_t(Slot::Skip)) {
             check(!full.slots[i].filled() && !title.slots[i].filled() && reading.slots[i].filled(), "skip only while reading");
+        } else if (i == size_t(Slot::Info)) {
+            check(full.slots[i].command == "stage-info-open" && !title.slots[i].filled(), "stage info everywhere but the title");
         } else check(full.slots[i].filled() && title.slots[i].filled() && reading.slots[i].filled(), "no empty place");
         if (i != size_t(Slot::Back) && i != size_t(Slot::Arc2) && i != size_t(Slot::Arc3) && i != size_t(Slot::Skip))
             check(reading.slots[i] == full.slots[i], "reading keeps the top row and other buttons");

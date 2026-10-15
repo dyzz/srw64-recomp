@@ -21,6 +21,8 @@
 #include "save_page.hpp"
 #include "save_store.hpp"
 #include "library.hpp"
+#include "stage_info.hpp"
+#include "text_wrap.hpp"
 #include "battle_viewer.hpp"
 #include "native_sprite.hpp"
 #include "title_page.hpp"
@@ -151,6 +153,11 @@ bool update_ask_open{},update_asked{};
 unsigned library_tab{};
 std::array<unsigned,2> library_index{};
 bool library_tab_focus{};
+// The stage info page (stage_info.hpp), in the same frame: which column the controller
+// scrolls, and the paragraphs it breaks into lines after layout.
+std::atomic_bool stage_open{};
+unsigned stage_column{};
+std::vector<std::string> stage_wrap_texts;
 // The last input was a controller: hints use the "_pad" labels (Steam Deck).
 bool pad_mode{};
 // The mouse is in use: hover highlights show only then, not under a pointer left resting
@@ -422,6 +429,39 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .lib-name {font-size:26dp; font-weight:bold; color:#ffffff; white-space:nowrap; line-height:1.15;}
 .lib-sub {font-size:13dp; color:#a4b0d2; white-space:nowrap;}
 .lib-detail p.lib-note {font-size:12dp; color:#a4b0d2; margin:6dp 0 0;}
+/* The stage info page (stage_panel): a header row, then hidden elements and enemies side by side. */
+.si-top {gap:12dp;}
+.si-top h1 {font-size:20dp; overflow:hidden;}
+.si-ep {flex-shrink:0; font-size:13dp; font-weight:bold; color:#0b1230; background-color:#3fd0ff; padding:1dp 8dp; white-space:nowrap;}
+.si-ja {flex-shrink:0; font-size:12dp; color:#7f8fa3; white-space:nowrap;}
+.si-lane {margin-left:auto; flex-shrink:0; font-size:12dp; color:#a4b0d2; border:1dp #3fd0ff80; padding:1dp 8dp; white-space:nowrap;}
+.si-cols {flex:1 1 0; min-height:0; display:flex; gap:14dp;}
+.si-col {flex:1 1 0; min-width:0; overflow-y:auto; padding:0 8dp 0 4dp; border:1dp #00000000;}
+.si-col.focus {border-color:#ffd75e55;}
+body.pointer .si-col.focus {border-color:#00000000;}
+.si-head {margin:2dp 0 2dp; padding:2dp 0 4dp; font-size:14dp; font-weight:bold; color:#3fd0ff; border-bottom:1dp #3fd0ff59; white-space:nowrap;}
+.si-head span {margin-left:8dp; font-size:11dp; font-weight:normal; color:#7f8fa3;}
+.si-secret, .si-enemy {padding:6dp 4dp 7dp; border-bottom:1dp #3fd0ff1f;}
+.si-line {display:flex; align-items:center; gap:6dp; white-space:nowrap;}
+.si-name {font-size:15dp; font-weight:bold; color:#e8eefc; overflow:hidden;}
+.si-chip {margin-left:auto; flex-shrink:0; font-size:11dp; font-weight:bold; padding:0 6dp; color:#a4b0d2; border:1dp #a4b0d260;}
+.si-chip.done {color:#6be3a0; border-color:#6be3a080;}
+.si-chip.step, .si-chip.pending, .si-chip.count {color:#ffd75e; border-color:#ffd75e80;}
+.si-chip.missed {color:#ff8a8a; border-color:#ff8a8a80;}
+.si-chip.na {color:#7f8fa3; border-color:#7f8fa360;}
+.si-chip.chosen {color:#9fe0ff; border-color:#3fd0ff80;}
+p.si-wrap {margin:3dp 0 0; font-size:12dp; line-height:1.45; color:#a4b0d2;}
+p.si-note {color:#8f9bbd;}
+.si-meter {display:flex; align-items:center; gap:6dp; margin-top:4dp; font-size:11dp; color:#ffd75e; white-space:nowrap;}
+.si-bar {width:90dp; height:4dp; background-color:#ffffff22;}
+.si-bar div {height:4dp; background-color:#ffd75e;}
+.si-part {font-size:13dp; font-weight:bold; color:#e8eefc;}
+.si-from {font-size:13dp; color:#a4b0d2; overflow:hidden;}
+.si-tag {flex-shrink:0; font-size:10dp; padding:0 4dp;}
+.si-tag.third {color:#d8b4ff; border:1dp #d8b4ff80;}
+.si-tag.retreat {color:#ffc56b; border:1dp #ffc56b80;}
+.si-none {padding:8dp 2dp; font-size:13dp; color:#7f8fa3;}
+.si-empty {flex:1 1 0; padding:24dp 4dp; font-size:15dp; color:#a4b0d2;}
 .none {color:#5d6890;}
 /* The battle viewer (docs/design/battle-viewer.md §9.4; the canvas design 2026-10-04, after the Z special disc): one page, 反 left, 攻 right; a choice opens a box over the other half */
 .set-panel.vw-panel {position:relative; width:96%; height:94%; max-width:1180dp; max-height:760dp; padding:8dp 14dp 8dp; background-color:#070b1df5;}
@@ -1869,6 +1909,132 @@ void library_move(int dy,int dx) {
     }
     library_select(unsigned(next));
 }
+// The stage info page (stage_info.hpp, docs/design/stage-info.md): this stage's hidden
+// elements with how far each has got, beside its enemies' parts and retreats. It shares
+// the settings window's frame like the Library. Two columns, each scrolling on its own;
+// the text is broken into lines here (text_wrap.hpp), as RmlUi breaks only at spaces.
+std::string stage_text(const char* key,std::initializer_list<std::pair<const char*,std::string>> values={}) {
+    auto text=localization::catalog().ui(key);
+    for(const auto& [name,value]:values)
+        for(auto at=text.find(std::string("{")+name+"}");at!=std::string::npos;at=text.find(std::string("{")+name+"}"))text.replace(at,std::strlen(name)+2,value);
+    return escape(text);
+}
+std::string stage_paragraph(const std::string& text,const std::string& cls) {
+    stage_wrap_texts.push_back(text);
+    return "<p id='siw:"+std::to_string(stage_wrap_texts.size()-1)+"' class='si-wrap "+cls+"'>"+escape(text)+"</p>";
+}
+std::string stage_status_chip(const json& s,const std::string& locale) {
+    const auto state=s.value("state",std::string());
+    std::string text;
+    if(state=="done")text=stage_text("stage_info_done");
+    else if(state=="step")text=stage_text("stage_info_step",{{"n",std::to_string(s.value("step",0)+1)},{"m",std::to_string(s.value("of",0))}});
+    else if(state=="not_started")text=stage_text("stage_info_not_started");
+    else if(state=="missed")text=stage_text("stage_info_missed");
+    else if(state=="na")text=stage_text("stage_info_na");
+    else if(state=="pending")text=stage_text("stage_info_pending");
+    else if(state=="count")text=escape(std::to_string(s.value("value",0))+" / "+std::to_string(s.value("of",0)));
+    else if(state=="chosen" && s.contains("label"))text=escape(s["label"].value(locale,s["label"].value("en",std::string())));
+    return text.empty()?std::string():"<span class='si-chip "+state+"'>"+text+"</span>";
+}
+std::string stage_panel(const json& snap) {
+    stage_wrap_texts.clear();
+    const auto& locale=localization::catalog().locale;
+    std::string body="<div class='set-shade solid'><div class='set-panel lib-panel si-panel'>";
+    const auto foot="<div class='set-foot'><div class='set-hint'>"+label("stage_info_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+    const auto message=[&](const char* key){return body+"<div class='lib-top'><h1>"+label("stage_info_title")+"</h1></div><div class='si-empty'>"+label(key)+"</div>"+foot;};
+    if(!snap.value("available",false))return message("stage_info_unavailable");
+    // The stage's metadata: the story's, or the custom campaign's (stage_info::meta).
+    const auto meta=stage_info::meta(snap.value("scene",-1));
+    if(!meta.is_object() || !meta.contains("cards") || meta["cards"].empty())return message("stage_info_missing");
+    const auto T=[&](const json& v){return escape(stage_info::text(v,locale));};
+    // Two cards share a side-branch stage, one per route.
+    const auto route=snap.value("route",std::string()),protagonist=snap.value("protagonist",std::string());
+    const auto& cards=meta["cards"];
+    const json* card=&cards[0];
+    for(const auto& c:cards)if(c.value("route","")==route)card=&c;
+    const auto& status=snap["status"];
+    const auto mine=[&](const json& item) {
+        if(item.contains("protagonists") && !protagonist.empty()){bool found=false;for(const auto& p:item["protagonists"])found|=p==protagonist;if(!found)return false;}
+        if(item.contains("routes") && !route.empty()){bool found=false;for(const auto& r:item["routes"])found|=r==route;if(!found)return false;}
+        return true;
+    };
+    // A campaign's stage may have no episode number, lane or Japanese title.
+    const auto episode=card->contains("episode")?stage_text("stage_info_episode",{{"n",card->value("episode",std::string())}}):std::string();
+    const auto lane=T(card->value("lane",json()));
+    const auto ja=meta.value("title_ja",std::string());
+    const auto next=snap.value("map",true)?std::string():stage_text("stage_info_next");
+    body+="<div class='lib-top si-top'>"+(next.empty() && episode.empty()?std::string():"<span class='si-ep'>"+next+(next.empty() || episode.empty()?"":" · ")+episode+"</span>")+
+          "<h1>"+T(meta.value("title",json()))+"</h1>"+(locale=="ja" || ja.empty()?std::string():"<span class='si-ja'>"+escape(ja)+"</span>")+
+          (lane.empty() && protagonist.empty()?std::string():"<span class='si-lane'>"+lane+(lane.empty() || protagonist.empty()?"":" · ")+(protagonist.empty()?std::string():label("stage_info_"+protagonist))+"</span>")+
+          "</div><div class='si-cols'>";
+    // Left: the hidden elements.
+    std::string secrets;unsigned shown=0,others=0;
+    for(const auto& s:(*card)["secrets"]) {
+        if(!mine(s)){++others;continue;}
+        ++shown;
+        const auto& st=status.contains(s.value("ref",""))?status[s.value("ref","")]:json::object();
+        secrets+="<div class='si-secret'><div class='si-line'><span class='si-name'>"+T(s.value("title",json()))+"</span>"+stage_status_chip(st,locale)+"</div>"+
+                 stage_paragraph(stage_info::text(s.value("text",json()),locale),"si-body");
+        if(st.contains("counter") && st["counter"].is_object()) {
+            const int value=st["counter"].value("value",0),of=st["counter"].value("of",1);
+            const int percent=std::clamp(of>0?value*100/of:0,0,100);
+            secrets+="<div class='si-meter'><span>"+stage_text("stage_info_kills")+"</span><div class='si-bar'><div style='width:"+std::to_string(percent)+"%;'></div></div><span>"+
+                     std::to_string(value)+" / "+std::to_string(of)+"</span></div>";
+        }
+        secrets+="</div>";
+    }
+    if(!shown)secrets+="<div class='si-none'>"+label("stage_info_no_secrets")+"</div>";
+    body+="<div id='si-col:0' class='si-col'><div class='si-head'>"+label("stage_info_secrets")+
+          (others?"<span>"+stage_text("stage_info_others",{{"n",std::to_string(others)}})+"</span>":std::string())+"</div>"+secrets+"</div>";
+    // Right: the enemies worth knowing about, their parts and retreats in one list.
+    std::string enemies;shown=0;others=0;
+    for(const auto& e:(*card)["enemies"]) {
+        if(!mine(e)){++others;continue;}
+        ++shown;
+        std::string tags;
+        if(e.value("third_party",false))tags+="<span class='si-tag third'>"+label("stage_info_third")+"</span>";
+        if(e.value("retreat",false))tags+="<span class='si-tag retreat'>"+label("stage_info_retreat")+"</span>";
+        const auto part=T(e.value("part",json()));
+        enemies+="<div class='si-enemy'><div class='si-line'>"+(part.empty()?std::string():"<span class='si-part'>"+part+"</span>")+
+                 "<span class='si-from'>"+T(e.value("from",json()))+"</span>"+tags+"</div>"+
+                 (e.contains("note")?stage_paragraph(stage_info::text(e["note"],locale),"si-note"):std::string())+"</div>";
+    }
+    if(!shown)enemies+="<div class='si-none'>"+label("stage_info_no_enemies")+"</div>";
+    body+="<div id='si-col:1' class='si-col'><div class='si-head'>"+label("stage_info_enemies")+
+          (others?"<span>"+stage_text("stage_info_others",{{"n",std::to_string(others)}})+"</span>":std::string())+"</div>"+enemies+"</div></div>";
+    return body+foot;
+}
+// After layout: each paragraph broken into lines that fit its column, in its own font.
+void stage_wrap() {
+    if(!settings_doc)return;
+    auto* engine=Rml::GetFontEngineInterface();
+    const Rml::String language;
+    const Rml::TextShapingContext shaping{language};
+    for(size_t i=0;i<stage_wrap_texts.size();++i) {
+        auto* e=settings_doc->GetElementById("siw:"+std::to_string(i));
+        if(!e)continue;
+        const auto handle=e->GetFontFaceHandle();
+        const float width=e->GetClientWidth();
+        if(!engine || !handle || width<=0)continue;
+        std::string rml;
+        for(const auto& line:text_wrap::lines(stage_wrap_texts[i],width,[&](const std::string& s){return float(engine->GetStringWidth(handle,Rml::StringView(s),shaping));}))
+            rml+=(rml.empty()?"":"<br/>")+escape(line);
+        e->SetInnerRML(rml);
+    }
+    settings_doc->UpdateDocument();
+}
+void stage_mark_column() {
+    for(unsigned i=0;i<2;++i)if(auto* c=settings_doc?settings_doc->GetElementById("si-col:"+std::to_string(i)):nullptr)c->SetClass("focus",i==stage_column);
+}
+// Up and down scroll the chosen column; left, right, L and R choose the other one.
+void stage_scroll_by(float dp) {
+    if(auto* c=settings_doc?settings_doc->GetElementById("si-col:"+std::to_string(stage_column)):nullptr)c->SetScrollTop(c->GetScrollTop()+dp*context->GetDensityIndependentPixelRatio());
+}
+void stage_move(int dy,int dx) {
+    if(dx){stage_column=dx<0?0:1;stage_mark_column();return;}
+    if(dy)stage_scroll_by(dy*48.f);
+}
+void stage_turn(int){stage_column^=1;stage_mark_column();}
 // The battle viewer (battle_viewer.hpp, docs/design/battle-viewer.md §9.4, the canvas design of
 // 2026-10-04 after the Z special disc's): on the title beside Library and MOD. One page: 反
 // (the defender, left, facing right) and 攻 (the attacker, right), each a card (its unit,
@@ -2538,7 +2704,8 @@ void viewer_sync() {
     if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(scroll>=0?Rml::ScrollAlignment::Nearest:Rml::ScrollAlignment::Center));}
 }
 void settings_sync() {
-    if(!settings_open){update_ask_open=false;mod_open=false;library_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    const auto stage_opening=stage_info::want(settings_open && stage_open);
+    if(!settings_open){update_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
     if(viewer_open){viewer_sync();return;}
     if(update_ask_open && !library_open && !mod_open) {
         const auto stamp="update-ask"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
@@ -2559,6 +2726,23 @@ void settings_sync() {
         if(library_tab_focus && tab)tab->Focus();
         else library_select(library_index[library_tab],!pointer_mode);
         library_tab_focus=false;
+        return;
+    }
+    if(stage_open) {
+        const auto snap=stage_info::snapshot();
+        // Only what was read since this opening: never a frame of the last stage's page.
+        if(snap.value("opening",uint64_t{})!=stage_opening){document_close(settings_doc);settings_stamp.clear();return;}
+        const auto stamp="stage"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density)+snap.dump();
+        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+        // Rebuilt when a status changes: each column keeps its place.
+        std::array<float,2> scroll{};
+        for(unsigned i=0;i<2;++i)if(auto* c=settings_doc?settings_doc->GetElementById("si-col:"+std::to_string(i)):nullptr)scroll[i]=c->GetScrollTop();
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        settings_doc=document(stage_panel(snap),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc->UpdateDocument();
+        stage_wrap();
+        for(unsigned i=0;i<2;++i)if(auto* c=settings_doc->GetElementById("si-col:"+std::to_string(i)))c->SetScrollTop(scroll[i]);
+        stage_mark_column();
         return;
     }
     if(mod_open) {
@@ -2622,6 +2806,7 @@ void settings_sync() {
         // The MOD manager, for a controller, which cannot reach the title's button.
         if(mod_entry_shown)body+=settings_row("mod_row",button("mod-open",label("mod_open")));
         body+=settings_row("library_row",button("library-open",label("library_open")));
+        body+=settings_row("stage_info_row",button("stage-info-open",label("stage_info_open")));
         body+=settings_row("viewer_row",button("viewer-open",label("viewer_open")));
         body+=settings_row("settings_speed",button("speed:1x",label("settings_speed_1x"),!settings::game_speed_double())+
             button("speed:2x",label("settings_speed_2x"),settings::game_speed_double()),{},"settings_speed_note");
@@ -2728,6 +2913,7 @@ void settings_turn(int step) {
         return;
     }
     if(library_open){library_turn(step);return;}
+    if(stage_open){stage_turn(step);return;}
     if(mod_open) {   // the MOD manager turns its own pages
         const unsigned count=std::size(mod_pages);
         mod_page=(mod_page+count+step)%count;
@@ -2745,6 +2931,7 @@ void settings_turn(int step) {
 void settings_move(int dy,int dx) {
     if(viewer_open){viewer_move(dy,dx);return;}
     if(library_open){library_move(dy,dx);return;}
+    if(stage_open){stage_move(dy,dx);return;}
     if(!settings_doc)return;
     const auto rows=settings_rows();
     auto* focus=context->GetFocusElement();
@@ -4152,19 +4339,22 @@ void choose(const std::string& id) {
     // From the Library, the battle viewer or MOD (the menu bar's Settings…, Ctrl/Cmd+,), which
     // share the settings window's frame: its own pages, as closing would leave the viewer.
     if(id=="settings-open"){
-        if(library_open || viewer_open || mod_open){library_open=false;viewer_open=false;mod_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);}
+        if(library_open || viewer_open || mod_open || stage_open){library_open=false;viewer_open=false;mod_open=false;stage_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);}
         settings_open=true;settings_release.hold();input.clear();return;
     }
     // The MOD manager. Its campaign page switches campaign (or back to the main game) on the
     // title screen: a switch asks the launcher for the next start and closes the game as
     // the window would.
-    if(id=="library-open"){viewer_open=false;library_open=true;mod_open=false;settings_open=true;settings_release.hold();input.clear();return;}
+    if(id=="library-open"){viewer_open=false;library_open=true;mod_open=false;stage_open=false;settings_open=true;settings_release.hold();input.clear();return;}
+    // The stage info page: Y / I on the map or in the intermission, the touch controls' button, the General page.
+    if(id=="stage-info-open"){viewer_open=false;library_open=false;mod_open=false;update_ask_open=false;stage_open=true;stage_column=0;
+        settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;}
     if(library_open && id.starts_with("lib-tab:")){library_tab=id.back()=='1';library_tab_focus=true;return;}
     if(library_open && id.starts_with("lib-item:")){library_select(unsigned(std::stoul(id.substr(9))),true);return;}
-    if(id=="viewer-open"){viewer_open=true;library_open=false;mod_open=false;viewer_picker.clear();settings_open=true;settings_release.hold();input.clear();return;}
+    if(id=="viewer-open"){viewer_open=true;library_open=false;mod_open=false;stage_open=false;viewer_picker.clear();settings_open=true;settings_release.hold();input.clear();return;}
     if(viewer_open && id=="settings-close" && !viewer_picker.empty()){viewer_cancel_picker();return;}   // B in a box: back to the page as it was
     if(viewer_open && id.starts_with("vw-")){viewer_choose(id);return;}
-    if(id=="mod-open"){viewer_open=false;library_open=false;mod_open=true;settings_open=true;settings_focus="first";settings_release.hold();input.clear();return;}
+    if(id=="mod-open"){viewer_open=false;library_open=false;stage_open=false;mod_open=true;settings_open=true;settings_focus="first";settings_release.hold();input.clear();return;}
     if(mod_open && id.starts_with("mod-page:")) {
         for(unsigned i=0;i<std::size(mod_pages);++i)if(id.substr(9)==mod_pages[i]){mod_page=i;settings_focus=id;}
         return;
@@ -4529,7 +4719,8 @@ void speed_sync() {
     if(speed_doc)speed_doc->PullToFront();
 }
 // Touch controls by scene on a phone (touch_pad.hpp, docs/design/touch-controls.md), or
-// with SRW64_TOUCH_PAD=1 and a mouse anywhere. They show from the first touch and hide when
+// with SRW64_TOUCH_PAD=1 on a touch screen anywhere (finger events only: the mouse does not
+// press them; a Windows test can inject touches). They show from the first touch and hide when
 // a controller or the keyboard plays. Android's back key (SDL_ANDROID_TRAP_BACK_BUTTON,
 // graphics.cpp) is B while held.
 bool touch_supported() {
@@ -4871,6 +5062,7 @@ void settings_pad(uint32_t now,uint32_t pressed) {
     if(pressed&(0x0020|0x0010)){settings_turn(pressed&0x0020?-1:1);return;}
     if((pressed&0x0002) && viewer_open && viewer_kind()=="song"){viewer_choose("vw-listen");return;}   // C-left (the Deck's X)
     if(library_open && (now&(0x0008|0x0004))){library_scroll(now&0x0008?-9.f:9.f);return;}      // C-up / C-down held: the details scroll
+    if(stage_open && (now&(0x0008|0x0004))){stage_scroll_by(now&0x0008?-9.f:9.f);return;}
     uint32_t repeats=0;const uint32_t presses=pad_presses(now,pressed,repeats);
     const int dy=presses&(0x0800|(1u<<16))?-1:presses&(0x0400|(1u<<17))?1:0;
     const int dx=presses&(0x0200|(1u<<18))?-1:presses&(0x0100|(1u<<19))?1:0;
@@ -4928,11 +5120,16 @@ void sync() {
         // The host's buttons, from the controller or keys bound to them (the keyboard state
         // holds both): the settings window, the next language, Original / HD.
         static uint32_t host_before=0;
-        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images|input::pad_speed);
+        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images|input::pad_speed|input::pad_animation);
         const uint32_t host_pressed=host_now&~host_before;host_before=host_now;
         const bool view_pressed=host_pressed&input::pad_view;
         // Page requests stay null until their page first reports.
         const auto shown=[](const json& request){return request.is_object() && request.value("visible",false);};
+        // The battle animation's button (Y, I) opens and closes the stage info page where it
+        // has nothing else to do: not on either pre-battle screen, where it is the animation.
+        // The page opened there (the touch key) closes with it all the same.
+        const bool info_pressed=(host_pressed&input::pad_animation) && (stage_open ||
+            (!shown(battle_request) && !battle_page::original_screen() && !names::request().visible && !link_request.visible));
         // A capture takes the controller's presses itself (capture_event), and once it has one
         // the page ignores the controller until it is let go.
         if(capture.release && !pad_now)capture.release=false;
@@ -4948,6 +5145,7 @@ void sync() {
         if(!capturing && !page_up && (host_pressed&input::pad_speed))toggle_speed();
         if(capturing && settings_open){}
         else if(view_pressed)choose(settings_open?"settings-close":"settings-open");
+        else if(info_pressed && (!settings_open || stage_open))choose(stage_open?"settings-close":"stage-info-open");
         else if(settings_open)settings_pad(pad_now,pad_pressed);
         else if(shown(battle_request)){if(pad_pressed)battle_buttons(pad_pressed);}
         else if(!settings_open && (names::request().visible || link_request.visible || shown(intermission_request) || shown(upgrade_request) || shown(parts_request) || shown(ability_request) || shown(swap_request) || shown(save_request) || shown(title_request)))
@@ -5035,6 +5233,19 @@ bool dispatch(SDL_Event& event) {
     // After a modal closes, game keys must not activate stale UI focus.
     if(!settings_open && !names::request().visible && !link_request.visible && !battle_request.value("visible",false) && !intermission_request.value("visible",false) && !upgrade_request.value("visible",false) && !parts_request.value("visible",false) && !ability_request.value("visible",false) && !swap_request.value("visible",false) && !save_request.value("visible",false) && !title_request.value("visible",false) &&
        (event.type==SDL_KEYDOWN || event.type==SDL_KEYUP))return false;
+    // The stage info page's key (the battle animation's, I) on our intermission and title
+    // pages: while one of them has the keyboard the host buttons get no keys (graphics.cpp),
+    // so the key is taken here as an event. On the pre-battle pages it stays the animation
+    // (K), and the name and Link Battler pages do not open the stage info.
+    if(funds_editing.empty() && event.type==SDL_KEYDOWN && event.key.windowID) {
+        const auto* action=input::action_of_key(hint_bindings,int(event.key.keysym.scancode));
+        const bool our_page=intermission_request.value("visible",false) || upgrade_request.value("visible",false) || parts_request.value("visible",false) ||
+            ability_request.value("visible",false) || swap_request.value("visible",false) || save_request.value("visible",false) || title_request.value("visible",false);
+        if(action && *action==input::Action::Animation && our_page && !battle_request.value("visible",false) && (!settings_open || stage_open)) {
+            if(!event.key.repeat)choose(stage_open?"settings-close":"stage-info-open");
+            return true;
+        }
+    }
     // Typing into the funds box takes the keys as they are. The name page has nothing to
     // type since the names are fixed, so it follows the bindings too.
     if(funds_editing.empty())if(const auto host=follow_bindings(event)) {
@@ -5071,6 +5282,7 @@ bool dispatch(SDL_Event& event) {
             if(k==SDLK_ESCAPE || k==SDLK_x){if(!event.key.repeat)choose("settings-close");return true;}
             if(k==SDLK_q || k==SDLK_PAGEUP || (k==SDLK_TAB && ctrl && shift)){if(!event.key.repeat)settings_turn(-1);return true;}
             if(library_open && (k==SDLK_i || k==SDLK_k)){library_scroll(k==SDLK_i?-60.f:60.f);return true;}   // C-up / C-down
+            if(stage_open && (k==SDLK_i || k==SDLK_k)){stage_scroll_by(k==SDLK_i?-60.f:60.f);return true;}
             if(k==SDLK_e || k==SDLK_PAGEDOWN || (k==SDLK_TAB && ctrl)){if(!event.key.repeat)settings_turn(1);return true;}
             if(k==SDLK_j && viewer_open && viewer_kind()=="song"){if(!event.key.repeat)viewer_choose("vw-listen");return true;}   // C-left
             const int dy=k==SDLK_UP || k==SDLK_w?-1:k==SDLK_DOWN || k==SDLK_s?1:0,dx=k==SDLK_LEFT || k==SDLK_a?-1:k==SDLK_RIGHT || k==SDLK_d?1:0;

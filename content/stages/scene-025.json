@@ -1,0 +1,161 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 25,
+ "title": {
+  "zh-Hans": "夏比罗，转生！",
+  "ja": "シャピロ、転生!",
+  "en": "Shapiro, Reborn!"
+ },
+ "title_ja": "シャピロ、転生!",
+ "cards": [
+  {
+   "guide_card": "card-025",
+   "route": "common",
+   "episode": "15",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [
+    {
+     "ref": "secret-todd-silky",
+     "title": {
+      "zh-Hans": "陶德（＋希露奇）",
+      "ja": "トッド（＋シルキー）",
+      "en": "Tod (+ Silky)"
+     },
+     "text": {
+      "zh-Hans": "用翔说服陶德（德雷克 HP 33% 以下前）",
+      "ja": "ショウでトッドを説得（ドレイクHP33%以下になる前に）",
+      "en": "Persuade Tod with Show before Drake drops to 33% HP"
+     }
+    },
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "用布拉德击坠卡茨（第 4 回合敌方阶段登场）",
+      "ja": "ブラッドでカーツを撃墜（第4ターン敵フェイズ登場）",
+      "en": "Shoot down Kurtz with Brad (appears turn 4 enemy phase)"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    },
+    {
+     "ref": "secret-gyuken",
+     "title": {
+      "zh-Hans": "牛剑鬼复仇（乔巴姆装甲）",
+      "ja": "牛剣鬼の復讐（チョバムアーマー）",
+      "en": "Gyukenki's revenge (Chobham Armor)"
+     },
+     "text": {
+      "zh-Hans": "击破牛饿鬼，下一关牛剑鬼会来复仇",
+      "ja": "牛餓鬼を撃破すると次ステージで牛剣鬼が復讐に来る",
+      "en": "Destroy Gyugaki so Gyukenki seeks revenge next stage"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "米诺夫斯基飞行器",
+      "ja": "ミノフスキークラフト",
+      "en": "Minovsky Craft"
+     },
+     "from": {
+      "zh-Hans": "古拉博士",
+      "ja": "グラー博士",
+      "en": "Dr. Gura"
+     },
+     "note": {
+      "zh-Hans": "第 4 回合我方阶段开始时撤退",
+      "ja": "第4ターン味方フェイズ開始時に撤退",
+      "en": "Retreats at the start of the turn 4 player phase"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "高性能雷达",
+      "ja": "高性能レーダー",
+      "en": "High-Fidelity Radar"
+     },
+     "from": {
+      "zh-Hans": "德雷克",
+      "ja": "ドレイク",
+      "en": "Drake"
+     },
+     "note": {
+      "zh-Hans": "HP 33% 以下时撤退，关卡随即结束",
+      "ja": "HP33%以下で撤退し、そのままステージ終了",
+      "en": "Retreats at 33% HP or below, and the stage ends right away"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "陶德",
+      "ja": "トッド",
+      "en": "Tod"
+     },
+     "note": {
+      "zh-Hans": "德雷克 HP 33% 以下时一起离场（关卡结束）",
+      "ja": "ドレイクがHP33%以下になると一緒に離脱（ステージ終了）",
+      "en": "Leaves together with Drake when he is at 33% HP or below (the stage ends)"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "卡茨",
+      "ja": "カーツ",
+      "en": "Kurtz"
+     },
+     "note": {
+      "zh-Hans": "第 4 回合敌方阶段登场；布拉德不在场时立即离开",
+      "ja": "第4ターン敵フェイズに登場。ブラッドがマップ上にいないとすぐ離脱",
+      "en": "Appears on the enemy phase of turn 4; leaves immediately if Brad isn't on the map"
+     },
+     "protagonists": [
+      "brad"
+     ],
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "牛饿鬼",
+      "ja": "牛餓鬼",
+      "en": "Gyugaki"
+     },
+     "note": {
+      "zh-Hans": "随德雷克撤退（关卡结束）",
+      "ja": "ドレイクと共に撤退（ステージ終了）",
+      "en": "Leaves with Drake (stage ends)"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

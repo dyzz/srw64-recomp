@@ -1,0 +1,153 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 104,
+ "title": {
+  "zh-Hans": "恐怖！恶魔阿克西斯启动！（上）",
+  "ja": "恐怖!デビルアクシズ始動! （前）",
+  "en": "Terror! Dark Axis Activates! (Part 1)"
+ },
+ "title_ja": "恐怖!デビルアクシズ始動! （前）",
+ "cards": [
+  {
+   "guide_card": "card-120",
+   "route": "common",
+   "episode": "52",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [
+    {
+     "ref": "secret-kyral",
+     "title": {
+      "zh-Hans": "基拉尔＋曼陀罗高达",
+      "ja": "キラル＋マンダラガンダム",
+      "en": "Kyral + Mandala Gundam"
+     },
+     "text": {
+      "zh-Hans": "曾用多蒙击坠基拉尔时，保他活到最后一波敌军全灭",
+      "ja": "以前ドモンでキラルを撃墜済みなら、最終波全滅まで彼を生存させる",
+      "en": "If Domon shot Kyral down before, keep him alive until the last wave"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "I力场屏障",
+      "ja": "Iフィールドバリア",
+      "en": "I-Field Barrier"
+     },
+     "from": {
+      "zh-Hans": "夏亚",
+      "ja": "シャア",
+      "en": "Char"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退",
+      "ja": "HP30%以下で撤退",
+      "en": "Withdraws at 30% HP or below"
+     },
+     "routes": [
+      "ia"
+     ],
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "葵丝",
+      "ja": "クェス",
+      "en": "Quess"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "邱尼",
+      "ja": "ギュネイ",
+      "en": "Gyunei"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "蕾森",
+      "ja": "レズン",
+      "en": "Rezin"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "强化推进器",
+      "ja": "メガブースター",
+      "en": "Mega Booster"
+     },
+     "from": {
+      "zh-Hans": "米利亚尔特",
+      "ja": "ミリアルド",
+      "en": "Milliardo"
+     },
+     "routes": [
+      "ia"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "精神感应框架",
+      "ja": "サイコフレーム",
+      "en": "Psycoframe"
+     },
+     "from": {
+      "zh-Hans": "夏亚",
+      "ja": "シャア",
+      "en": "Char"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退",
+      "ja": "HP30%以下で撤退",
+      "en": "Withdraws at 30% HP or below"
+     },
+     "routes": [
+      "cp",
+      "oz"
+     ],
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "强化推进器",
+      "ja": "メガブースター",
+      "en": "Mega Booster"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "routes": [
+      "oz"
+     ],
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

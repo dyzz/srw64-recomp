@@ -1,0 +1,139 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 78,
+ "title": {
+  "zh-Hans": "兽战机基地 总攻击",
+  "ja": "獣戦機基地 総攻撃",
+  "en": "All-Out Attack on the Cyber Beast Force Base"
+ },
+ "title_ja": "獣戦機基地 総攻撃",
+ "cards": [
+  {
+   "guide_card": "card-087",
+   "route": "ia",
+   "episode": "37",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战",
+    "ja": "独立軍ルート／単独行動",
+    "en": "Independence Army route / fight alone"
+   },
+   "secrets": [
+    {
+     "ref": "secret-kirika",
+     "title": {
+      "zh-Hans": "基里卡",
+      "ja": "キリカ",
+      "en": "Kirika"
+     },
+     "text": {
+      "zh-Hans": "基里卡第 3 回合登场，先用杜克、再用玛丽亚说服",
+      "ja": "第3ターン登場のキリカをデューク→マリアの順で説得",
+      "en": "Persuade Kirika (turn 3) with Duke, then Maria, in that order"
+     }
+    },
+    {
+     "ref": "secret-route-beast-base",
+     "title": {
+      "zh-Hans": "兽战机基地：三队分头",
+      "ja": "獣戦機基地：3部隊に分かれる",
+      "en": "Cyber Beast Force Base: the three teams split up"
+     },
+     "text": {
+      "zh-Hans": "关末三选一（本队／多蒙他们／豹马他们）决定支线",
+      "ja": "クリア時の三択（本隊／ドモンたち／豹馬たち）で分岐",
+      "en": "End-of-stage pick: main force, Domon's or Hyoma's group → branch"
+     }
+    },
+    {
+     "ref": "secret-story-attacks",
+     "title": {
+      "zh-Hans": "剧情解锁的必杀技与合体技",
+      "ja": "ストーリーで解禁される必殺技と合体技",
+      "en": "Story-unlocked finishers and combination attacks"
+     },
+     "text": {
+      "zh-Hans": "无需操作：关末解锁断空我的断空光牙剑",
+      "ja": "操作不要：クリア時にダンクーガの断空光牙剣が解禁",
+      "en": "No action: Dancouga's Dancou Kougaken unlocks at stage end"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "伊万",
+      "ja": "イワン",
+      "en": "Ivan"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "Q老大",
+      "ja": "Qボス",
+      "en": "Q Boss"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "瓦基米德",
+      "ja": "ワルキメデス",
+      "en": "Warchimedes"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "戈曼",
+      "ja": "ゴーマン",
+      "en": "Gorman"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "基里卡",
+      "ja": "キリカ",
+      "en": "Kirika"
+     },
+     "note": {
+      "zh-Hans": "第 3 回合我方阶段登场，说服后不掉落",
+      "ja": "第3ターン味方フェイズ登場、説得時はドロップなし",
+      "en": "Appears on turn 3 player phase; no drop if persuaded"
+     },
+     "protagonists": [
+      "brad",
+      "manami"
+     ],
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

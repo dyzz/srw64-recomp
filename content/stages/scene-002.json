@@ -1,0 +1,70 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 2,
+ "title": {
+  "zh-Hans": "流转",
+  "ja": "流転",
+  "en": "Flux"
+ },
+ "title_ja": "流転",
+ "cards": [
+  {
+   "guide_card": "card-000",
+   "route": "real",
+   "episode": "1",
+   "lane": {
+    "zh-Hans": "阿克（真实系）",
+    "ja": "アーク（リアル系）",
+    "en": "Ark (Real)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-apolly-roberto",
+     "title": {
+      "zh-Hans": "阿波利、罗伯托＋疾风迪亚斯",
+      "ja": "アポリー、ロベルト＋シュツルム・ディアス",
+      "en": "Aboly, Roberto + Schuzrum-Dias"
+     },
+     "text": {
+      "zh-Hans": "无需操作：阿波利、罗伯托中途作为增援加入",
+      "ja": "操作不要：アポリー・ロベルトが途中で増援として加入",
+      "en": "Nothing to do: Aboly and Roberto arrive as mid-stage reinforcements"
+     }
+    },
+    {
+     "ref": "secret-dialogue-branches",
+     "title": {
+      "zh-Hans": "只影响对白的分支",
+      "ja": "台詞のみの分岐",
+      "en": "Dialogue-only branches"
+     },
+     "text": {
+      "zh-Hans": "中途的三选只改变台词",
+      "ja": "途中の三択は台詞が変わるだけ",
+      "en": "The mid-stage three-way choice only changes dialogue"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "埃尔利希",
+      "ja": "エルリッヒ",
+      "en": "Ehrlich"
+     },
+     "note": {
+      "zh-Hans": "HP 50% 以下时撤退",
+      "ja": "HP50%以下で撤退",
+      "en": "Retreats at 50% HP or below"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

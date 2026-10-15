@@ -1,0 +1,83 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 11,
+ "title": {
+  "zh-Hans": "时光流逝",
+  "ja": "時は流れた",
+  "en": "Time Has Passed"
+ },
+ "title_ja": "時は流れた",
+ "cards": [
+  {
+   "guide_card": "card-006",
+   "route": "real",
+   "episode": "3",
+   "lane": {
+    "zh-Hans": "真实系",
+    "ja": "リアル系",
+    "en": "Real"
+   },
+   "secrets": [
+    {
+     "ref": "secret-aina",
+     "title": {
+      "zh-Hans": "爱娜＋阿普萨拉斯",
+      "ja": "アイナ＋アプサラス",
+      "en": "Aina + Apsaras"
+     },
+     "text": {
+      "zh-Hans": "士郎与爱娜交战一次后，用士郎说服（第 1 步）",
+      "ja": "シローとアイナを1回交戦後、シローで説得（第1段階）",
+      "en": "Fight Aina once, then persuade her with Shiro (step 1)"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "戈斯特罗",
+      "ja": "ゴステロ",
+      "en": "Gosterro"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "盖尔",
+      "ja": "ゲイル",
+      "en": "Gale"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "抗光束涂层",
+      "ja": "対ビームコーティング",
+      "en": "Anti-Beam Coating"
+     },
+     "from": {
+      "zh-Hans": "爱娜",
+      "ja": "アイナ",
+      "en": "Aina"
+     },
+     "note": {
+      "zh-Hans": "可被士郎说服（说服后不掉落）",
+      "ja": "シローで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Shiro (no drop if persuaded)"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

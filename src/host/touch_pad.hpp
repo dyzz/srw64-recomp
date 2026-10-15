@@ -24,9 +24,9 @@ inline constexpr uint32_t L2 = input::pad_l2, R2 = input::pad_r2, Option = input
 
 // The places a button can take: the primary bottom right, the back button left of it,
 // two more on the arc above, four small ones along the top edge (the first one always
-// the settings window), plus a dialogue skip button above R1 and the 2x speed switch
-// in the top left (user, 2026-10-11).
-enum class Slot : uint8_t { Primary, Back, Arc2, Arc3, Top1, Top2, Top3, Top4, Skip, Speed, Count };
+// the settings window), plus a dialogue skip button above R1, the 2x speed switch
+// in the top left (user, 2026-10-11) and the stage info page beside it (docs/design/stage-info.md).
+enum class Slot : uint8_t { Primary, Back, Arc2, Arc3, Top1, Top2, Top3, Top4, Skip, Speed, Info, Count };
 inline constexpr size_t slot_count = size_t(Slot::Count);
 
 struct Action {
@@ -117,6 +117,8 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active) {
             open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "viewer-open", "viewer_open");
         } else {
             set(Slot::Top3, bits::L2, "touch_l2"); set(Slot::Top4, bits::R2, "touch_r2");
+            // The stage info page: there is a stage everywhere but the title.
+            open(Slot::Info, "stage-info-open", "touch_stage_info");
         }
         if (id == SceneId::FixedDialogue) {
             // Keep START, L2 and R2 in place (user, 2026-10-09). The two round
@@ -266,6 +268,7 @@ inline Layout layout(float width, float height, float px_per_mm) {
     bar(Slot::Top1, 6.5f, 3.5f, 10, 4); bar(Slot::Top2, 20.5f, 5, 15, 5);
     bar(Slot::Top3, w - 26.5f, 5, 15, 5); bar(Slot::Top4, w - 9.5f, 5, 15, 5);
     bar(Slot::Speed, 33.5f, 3.5f, 8, 4);   // small as settings, right of START
+    bar(Slot::Info, 44.5f, 3.5f, 9, 4);    // the stage info page, right of 2x
     out.stick_radius = 8.5f * m;
     out.rest_x = 14.5f * m; out.rest_y = (h - 13) * m;
     out.wide_right = width * .42f; out.wide_top = 10 * m;

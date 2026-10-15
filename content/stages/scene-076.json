@@ -1,0 +1,134 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 76,
+ "title": {
+  "zh-Hans": "兄与弟",
+  "ja": "兄と弟と",
+  "en": "Brothers"
+ },
+ "title_ja": "兄と弟と",
+ "cards": [
+  {
+   "guide_card": "card-077",
+   "route": "cp",
+   "episode": "35",
+   "lane": {
+    "zh-Hans": "完全和平路线（随特列斯）",
+    "ja": "完全平和ルート（トレーズにつく）",
+    "en": "Complete Pacifism route (with Treize)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-zechs-epyon",
+     "title": {
+      "zh-Hans": "杰克斯＋次代高达",
+      "ja": "ゼクス＋ガンダムエピオン",
+      "en": "Zechs + Gundam Epyon"
+     },
+     "text": {
+      "zh-Hans": "无需操作：杰克斯＋次代高达开场加入",
+      "ja": "操作不要：ゼクス＋ガンダムエピオンが開始時に加入",
+      "en": "No action: Zechs + Gundam Epyon join at the start of this stage"
+     }
+    },
+    {
+     "ref": "secret-rose",
+     "title": {
+      "zh-Hans": "罗塞＋泽隆",
+      "ja": "ロゼ＋ゼーロン",
+      "en": "Rose + Zeron"
+     },
+     "text": {
+      "zh-Hans": "罗塞在场时用武击坠玛古，再用武说服罗塞",
+      "ja": "ロゼがいる間にタケルでマーグを撃墜し、ロゼを説得",
+      "en": "With Rose on the map, down Marg with Takeru, then persuade Rose"
+     }
+    },
+    {
+     "ref": "secret-naida",
+     "title": {
+      "zh-Hans": "娜伊达＋双重斯派扎",
+      "ja": "ナイーダ＋ダブルスペイザー",
+      "en": "Naida + Double Spazer"
+     },
+     "text": {
+      "zh-Hans": "用杜克说服娜伊达，下一关开场选第 1 项",
+      "ja": "デュークでナイーダを説得、次ステージ開始時に1番目を選ぶ",
+      "en": "Persuade Naida with Duke; pick option 1 at next stage's start"
+     },
+     "protagonists": [
+      "brad",
+      "manami"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "精神感应框架",
+      "ja": "サイコフレーム",
+      "en": "Psycoframe"
+     },
+     "from": {
+      "zh-Hans": "玛古",
+      "ja": "マーグ",
+      "en": "Marg"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "罗塞",
+      "ja": "ロゼ",
+      "en": "Rose"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "卡达尔",
+      "ja": "ガンダル",
+      "en": "Gandal"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "丹格尔",
+      "ja": "ダンゲル",
+      "en": "Dungele"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

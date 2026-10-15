@@ -1,0 +1,65 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 43,
+ "title": {
+  "zh-Hans": "那双眼中映不出未来",
+  "ja": "その瞳に未来は映ることなく",
+  "en": "Those Eyes Reflect No Future"
+ },
+ "title_ja": "その瞳に未来は映ることなく",
+ "cards": [
+  {
+   "guide_card": "card-079",
+   "route": "ia",
+   "episode": "33",
+   "lane": {
+    "zh-Hans": "独立军路线（蕾拉支线）",
+    "ja": "独立軍ルート（レラの分岐）",
+    "en": "Independence Army route (Lera branch)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-lera",
+     "title": {
+      "zh-Hans": "蕾拉支线：那双眼中映不出未来",
+      "ja": "レラ分岐：その瞳に未来は映ることなく",
+      "en": "Lera branch: Those Eyes Reflect No Future"
+     },
+     "text": {
+      "zh-Hans": "无需操作：蕾拉支线成立时进入，蕾拉在本关战死",
+      "ja": "操作不要：レラの分岐成立時に進入、レラは本ステージで戦死",
+      "en": "No action needed: entered on the Lera branch; Lera dies here"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "奖励+10000",
+      "ja": "ボーナス+10000",
+      "en": "Bonus +10000"
+     },
+     "from": {
+      "zh-Hans": "雅努斯侯爵",
+      "ja": "ヤヌス侯爵",
+      "en": "Marquis Janus"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "杰利德",
+      "ja": "ジェリド",
+      "en": "Jerid"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

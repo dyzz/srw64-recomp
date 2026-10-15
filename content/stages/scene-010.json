@@ -1,0 +1,66 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 10,
+ "title": {
+  "zh-Hans": "蜂拥而至的杀人机器",
+  "ja": "群がる殺人機",
+  "en": "Swarm of Killing Machines"
+ },
+ "title_ja": "群がる殺人機",
+ "cards": [
+  {
+   "guide_card": "card-004",
+   "route": "real",
+   "episode": "2",
+   "lane": {
+    "zh-Hans": "真实系",
+    "ja": "リアル系",
+    "en": "Real"
+   },
+   "secrets": [
+    {
+     "ref": "secret-sortie-limits",
+     "title": {
+      "zh-Hans": "隐藏的出击限制",
+      "ja": "隠れた出撃制限",
+      "en": "Hidden deployment restrictions"
+     },
+     "text": {
+      "zh-Hans": "开场选第 2 项则阿克开局不能出击、稍后赶到",
+      "ja": "開始時に第2項を選ぶとアークは出撃不可、後から駆けつける",
+      "en": "Pick option 2 at the start and Ark only arrives later"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "盖尔",
+      "ja": "ゲイル",
+      "en": "Gale"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "卡尔拉",
+      "ja": "カルラ",
+      "en": "Karla"
+     },
+     "note": {
+      "zh-Hans": "盖尔被击坠时撤退",
+      "ja": "ゲイルが撃墜されると撤退",
+      "en": "Retreats when Gale is shot down"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

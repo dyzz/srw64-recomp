@@ -1,0 +1,10 @@
+{
+ "schema": "srw64.stage-status.v1",
+ "note": "Status rules for the sample's stage info page (docs/design/stage-info.md §4). No graph: the compiler draws it from the stages' 3D4B.",
+ "rules": [
+  {"id": "sample-ending", "kind": "choice", "at": [2],
+   "options": [
+    {"when": {"scene": [3]}, "label": {"ja": "最終話A", "zh-Hans": "最终话A", "en": "Finale A"}},
+    {"when": {"scene": [4]}, "label": {"ja": "最終話B", "zh-Hans": "最终话B", "en": "Finale B"}}]}
+ ]
+}

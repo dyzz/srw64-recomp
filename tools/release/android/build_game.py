@@ -95,6 +95,8 @@ def stage_assets(build: Path, deps: Path) -> Path:
         target = resources / 'dialogue' / path.relative_to(text)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
+    # Each stage's metadata and the status rules (docs/design/stage-info.md).
+    shutil.copytree(ROOT / 'content/stages', resources / 'stages')
     filters = ROOT / 'build/filters'
     shutil.copytree(filters, resources / 'filters', ignore=shutil.ignore_patterns('.commit', *PHONE_SKIPS))
     notice = resources / 'filters/NOTICE.txt'

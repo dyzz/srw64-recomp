@@ -1,0 +1,162 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 33,
+ "title": {
+  "zh-Hans": "宇宙的呼唤",
+  "ja": "宇宙の呼ぶ声",
+  "en": "The Call of Space"
+ },
+ "title_ja": "宇宙の呼ぶ声",
+ "cards": [
+  {
+   "guide_card": "card-036",
+   "route": "ia",
+   "episode": "23",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-todd-silky",
+     "title": {
+      "zh-Hans": "陶德（＋希露奇）",
+      "ja": "トッド（＋シルキー）",
+      "en": "Tod (+ Silky)"
+     },
+     "text": {
+      "zh-Hans": "用翔说服陶德（需「夏比罗，转生！」已说服）",
+      "ja": "ショウでトッドを説得（「シャピロ、転生!」で説得済み）",
+      "en": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)"
+     }
+    },
+    {
+     "ref": "secret-garalia",
+     "title": {
+      "zh-Hans": "卡拉利亚＋巴斯托尔",
+      "ja": "ガラリア＋バストール",
+      "en": "Garalia + Bastole"
+     },
+     "text": {
+      "zh-Hans": "无需操作：卡拉利亚随拜斯顿·威尔组出击",
+      "ja": "操作不要：ガラリアはバイストンウェル組と出撃",
+      "en": "No action needed: Garalia deploys with the Byston Well group"
+     }
+    },
+    {
+     "ref": "secret-dialogue-branches",
+     "title": {
+      "zh-Hans": "只影响对白的分支",
+      "ja": "台詞のみの分岐",
+      "en": "Dialogue-only branches"
+     },
+     "text": {
+      "zh-Hans": "无需操作：战舰命名二选只改变台词",
+      "ja": "操作不要：艦名の二択はセリフが変わるだけ",
+      "en": "No action needed: the ship-naming choice only changes dialogue"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "迪斯盖亚",
+      "ja": "デスガイヤー",
+      "en": "Death Gaia"
+     },
+     "note": {
+      "zh-Hans": "德雷克被击坠时撤退",
+      "ja": "ドレイクが撃墜されると撤退",
+      "en": "Retreats when Drake is shot down"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "夏比罗",
+      "ja": "シャピロ",
+      "en": "Shapiro"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "德雷克",
+      "ja": "ドレイク",
+      "en": "Drake"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "陶德",
+      "ja": "トッド",
+      "en": "Tod"
+     },
+     "note": {
+      "zh-Hans": "德雷克被击坠时撤退",
+      "ja": "ドレイクが撃墜されると撤退",
+      "en": "Retreats when Drake is shot down"
+     },
+     "third_party": true,
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "高性能雷达",
+      "ja": "高性能レーダー",
+      "en": "High-Fidelity Radar"
+     },
+     "from": {
+      "zh-Hans": "巴恩",
+      "ja": "バーン",
+      "en": "Bern"
+     },
+     "note": {
+      "zh-Hans": "德雷克被击坠时撤退",
+      "ja": "ドレイクが撃墜されると撤退",
+      "en": "Retreats when Drake is shot down"
+     },
+     "third_party": true,
+     "retreat": true
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "秀特、缪吉、艾伦、菲、黑骑士",
+      "ja": "ショット、ミュージィ、アレン、フェイ、黒騎士",
+      "en": "Shot, Musy, Allen, Fei, Black Knight"
+     },
+     "note": {
+      "zh-Hans": "德雷克被击坠时撤退",
+      "ja": "ドレイクが撃墜されると撤退",
+      "en": "Retreat when Drake is shot down"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

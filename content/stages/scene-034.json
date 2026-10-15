@@ -1,0 +1,147 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 34,
+ "title": {
+  "zh-Hans": "虚假的和平",
+  "ja": "偽りの平和",
+  "en": "False Peace"
+ },
+ "title_ja": "偽りの平和",
+ "cards": [
+  {
+   "guide_card": "card-038",
+   "route": "ia",
+   "episode": "24",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-aisha",
+     "title": {
+      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "ja": "アイシャ＋エルブルス",
+      "en": "Aisha + Elbulls"
+     },
+     "text": {
+      "zh-Hans": "用玛娜米说服艾夏（第 1 步，无门槛）",
+      "ja": "マナミでアイシャを説得（第1段階、条件なし）",
+      "en": "Persuade Aisha with Manami (step 1, no prerequisite)"
+     },
+     "protagonists": [
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "用布拉德击坠卡茨（计入招回所需次数）",
+      "ja": "ブラッドでカーツを撃墜（呼び戻しに必要な回数に数える）",
+      "en": "Shoot down Kurtz with Brad (counts toward getting him back)"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "赫尔马特",
+      "ja": "ヘルマット",
+      "en": "Helmut"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "巴斯克",
+      "ja": "バスク",
+      "en": "Bask"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "莱拉",
+      "ja": "ライラ",
+      "en": "Lila"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "亚赞",
+      "ja": "ヤザン",
+      "en": "Yazan"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "卡茨",
+      "ja": "カーツ",
+      "en": "Kurtz"
+     },
+     "protagonists": [
+      "brad"
+     ],
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "艾夏",
+      "ja": "アイシャ",
+      "en": "Aisha"
+     },
+     "protagonists": [
+      "manami"
+     ],
+     "third_party": true,
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

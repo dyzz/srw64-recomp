@@ -1,0 +1,105 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 74,
+ "title": {
+  "zh-Hans": "激战的宇宙",
+  "ja": "激戦の宇宙",
+  "en": "Fierce Fighting in Space"
+ },
+ "title_ja": "激戦の宇宙",
+ "cards": [
+  {
+   "guide_card": "card-068",
+   "route": "cp",
+   "episode": "33",
+   "lane": {
+    "zh-Hans": "完全和平路线（随特列斯）",
+    "ja": "完全平和ルート（トレーズにつく）",
+    "en": "Complete Pacifism route (with Treize)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-treize",
+     "title": {
+      "zh-Hans": "重返战场：随特列斯或独自作战",
+      "ja": "戦場に帰る：トレーズにつくか、自分たちだけで戦うか",
+      "en": "Return to the Battlefield: with Treize or going it alone"
+     },
+     "text": {
+      "zh-Hans": "在「重返战场」选「投靠特列斯」进入，之后并入 OZ 后半",
+      "ja": "「戦場に帰る」で「トレーズにつく」を選んで進入、後にOZ後半に合流",
+      "en": "Reached via “Side with Treize”; later joins OZ's second half"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "超合金Z",
+      "ja": "超合金Z",
+      "en": "Super Alloy Z"
+     },
+     "from": {
+      "zh-Hans": "西罗克",
+      "ja": "シロッコ",
+      "en": "Scirocco"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "玛雅",
+      "ja": "マウアー",
+      "en": "Mouar"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "亚赞",
+      "ja": "ヤザン",
+      "en": "Yazan"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "玛古",
+      "ja": "マーグ",
+      "en": "Marg"
+     },
+     "note": {
+      "zh-Hans": "布拉奇被击坠时撤退",
+      "ja": "ブラッキーが撃墜されると撤退",
+      "en": "Retreats when Blacky is shot down"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

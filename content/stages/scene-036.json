@@ -1,0 +1,52 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 36,
+ "title": {
+  "zh-Hans": "野心的终焉",
+  "ja": "野望の終焉",
+  "en": "The End of Ambition"
+ },
+ "title_ja": "野望の終焉",
+ "cards": [
+  {
+   "guide_card": "card-043",
+   "route": "ia",
+   "episode": "26",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "夏比罗",
+      "ja": "シャピロ",
+      "en": "Shapiro"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "吉尔德罗姆",
+      "ja": "ギルドローム",
+      "en": "Gildrome"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 8 台以下时撤退",
+      "ja": "敵残り8機以下で撤退",
+      "en": "Retreats when 8 or fewer enemies remain"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

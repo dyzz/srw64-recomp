@@ -1,0 +1,51 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 79,
+ "title": {
+  "zh-Hans": "死斗！大屿山大决战（上）",
+  "ja": "死闘!ランタオ島大決戦 （前）",
+  "en": "Death Match! Showdown on Lantau Island (Part 1)"
+ },
+ "title_ja": "死闘!ランタオ島大決戦 （前）",
+ "cards": [
+  {
+   "guide_card": "card-088",
+   "route": "ia",
+   "episode": "38",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战（选第 2 项）",
+    "ja": "独立軍ルート／単独行動（2番目を選択）",
+    "en": "Independence Army route / fight alone (option 2)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-beast-base",
+     "title": {
+      "zh-Hans": "兽战机基地：三队分头",
+      "ja": "獣戦機基地：3部隊に分かれる",
+      "en": "Cyber Beast Force Base: the three teams split up"
+     },
+     "text": {
+      "zh-Hans": "「兽战机基地 总攻击」关末选「跟多蒙他们走」进入",
+      "ja": "「獣戦機基地 総攻撃」で「ドモンたちといく」を選ぶと進入",
+      "en": "Reached by choosing “Go with Domon and the others” earlier"
+     }
+    },
+    {
+     "ref": "secret-story-attacks",
+     "title": {
+      "zh-Hans": "剧情解锁的必杀技与合体技",
+      "ja": "ストーリーで解禁される必殺技と合体技",
+      "en": "Story-unlocked finishers and combination attacks"
+     },
+     "text": {
+      "zh-Hans": "无需操作：石破天惊拳在关末解锁",
+      "ja": "操作不要：クリア時に石破天驚拳が解禁",
+      "en": "No action: Sekiha Tenkyoken unlocks at the end of this stage"
+     }
+    }
+   ],
+   "enemies": []
+  }
+ ]
+}

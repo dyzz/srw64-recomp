@@ -1,0 +1,112 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 52,
+ "title": {
+  "zh-Hans": "再度来临的噩梦",
+  "ja": "再び訪れた悪夢",
+  "en": "The Nightmare Returns"
+ },
+ "title_ja": "再び訪れた悪夢",
+ "cards": [
+  {
+   "guide_card": "card-050",
+   "route": "oz",
+   "episode": "28",
+   "lane": {
+    "zh-Hans": "OZ路线（守住基地）",
+    "ja": "OZルート（基地を守った場合）",
+    "en": "OZ route (base held)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-gale",
+     "title": {
+      "zh-Hans": "盖尔＋格莱姆凯撒",
+      "ja": "ゲイル＋グライムカイザル",
+      "en": "Gale + Greimkaiser"
+     },
+     "text": {
+      "zh-Hans": "已在「少女所见的流星」用英二说服盖尔，开场加入",
+      "ja": "「少女が見た流星」でエイジが説得済みなら開始時に加入",
+      "en": "Joins at start if Eiji persuaded Gale in “The Shooting Star the Girl Saw”"
+     },
+     "protagonists": [
+      "ark",
+      "serein"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "西罗克",
+      "ja": "シロッコ",
+      "en": "Scirocco"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "杰利德",
+      "ja": "ジェリド",
+      "en": "Jerid"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "玛雅",
+      "ja": "マウアー",
+      "en": "Mouar"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "巴伦",
+      "ja": "バレン",
+      "en": "Baren"
+     },
+     "note": {
+      "zh-Hans": "布拉奇被击坠时撤退",
+      "ja": "ブラッキーが撃墜されると撤退",
+      "en": "Retreats when Blacky is shot down"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

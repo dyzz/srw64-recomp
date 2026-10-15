@@ -1,0 +1,78 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 135,
+ "title": {
+  "zh-Hans": "突入！摧毁移动要塞！（下）",
+  "ja": "突入!移動要塞を破壊せよ! （後）",
+  "en": "Charge! Destroy the Mobile Fortress! (Part 2)"
+ },
+ "title_ja": "突入!移動要塞を破壊せよ! （後）",
+ "cards": [
+  {
+   "guide_card": "card-058",
+   "route": "cp",
+   "episode": "30",
+   "lane": {
+    "zh-Hans": "完全和平路线",
+    "ja": "完全平和ルート",
+    "en": "Complete Pacifism route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-mp-great",
+     "title": {
+      "zh-Hans": "量产型大魔神",
+      "ja": "量産型グレート",
+      "en": "MP Great Mazinger"
+     },
+     "text": {
+      "zh-Hans": "无需操作：通关得到量产型大魔神（无驾驶员）",
+      "ja": "操作不要：クリアで量産型グレートを入手（パイロットなし）",
+      "en": "No action needed: clear to get the MP Great Mazinger (no pilot)"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "布莱大帝",
+      "ja": "ブライ大帝",
+      "en": "Emperor Burai"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "古拉博士",
+      "ja": "グラー博士",
+      "en": "Dr. Gura"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "地狱大元帅",
+      "ja": "地獄大元帥",
+      "en": "Hell Marshal"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

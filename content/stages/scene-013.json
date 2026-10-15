@@ -1,0 +1,64 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 13,
+ "title": {
+  "zh-Hans": "黑色高达",
+  "ja": "黒いガンダム",
+  "en": "The Black Gundam"
+ },
+ "title_ja": "黒いガンダム",
+ "cards": [
+  {
+   "guide_card": "card-010",
+   "route": "real",
+   "episode": "5",
+   "lane": {
+    "zh-Hans": "真实系",
+    "ja": "リアル系",
+    "en": "Real"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "基乌拉",
+      "ja": "ギウラ",
+      "en": "Giura"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "朱莉娅",
+      "ja": "ジュリア",
+      "en": "Julia"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "戈斯特罗",
+      "ja": "ゴステロ",
+      "en": "Gosterro"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

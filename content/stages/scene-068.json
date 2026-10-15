@@ -1,0 +1,38 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 68,
+ "title": {
+  "zh-Hans": "突入！摧毁移动要塞！（上）",
+  "ja": "突入!移動要塞を破壊せよ! （前）",
+  "en": "Charge! Destroy the Mobile Fortress! (Part 1)"
+ },
+ "title_ja": "突入!移動要塞を破壊せよ! （前）",
+ "cards": [
+  {
+   "guide_card": "card-055",
+   "route": "cp",
+   "episode": "29",
+   "lane": {
+    "zh-Hans": "完全和平路线",
+    "ja": "完全平和ルート",
+    "en": "Complete Pacifism route"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "强化推进器",
+      "ja": "メガブースター",
+      "en": "Mega Booster"
+     },
+     "from": {
+      "zh-Hans": "暗黑大将军",
+      "ja": "暗黒大将軍",
+      "en": "Dark General"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

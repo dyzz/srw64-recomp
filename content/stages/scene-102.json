@@ -1,0 +1,70 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 102,
+ "title": {
+  "zh-Hans": "遥远的赌注",
+  "ja": "遥かなる賭け",
+  "en": "A Distant Gamble"
+ },
+ "title_ja": "遥かなる賭け",
+ "cards": [
+  {
+   "guide_card": "card-117",
+   "route": "oz",
+   "episode": "50",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯（前往穆格宇宙）",
+    "ja": "OZルート／トレーズにつく（ムゲ宇宙へ向かう）",
+    "en": "OZ route / with Treize (heading to Muge space)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-muge",
+     "title": {
+      "zh-Hans": "穆格宇宙或地球圈",
+      "ja": "ムゲ宇宙か地球圏か",
+      "en": "Muge space or Earth"
+     },
+     "text": {
+      "zh-Hans": "「无法醒来的噩梦」关末选「前往穆格的宇宙」进入",
+      "ja": "「醒めない悪夢」クリア時に「ムゲの宇宙へ行く」を選ぶ",
+      "en": "Pick “Go to the Muge universe” at the end of “A Nightmare with No Waking”"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "精神感应框架",
+      "ja": "サイコフレーム",
+      "en": "Psycoframe"
+     },
+     "from": {
+      "zh-Hans": "迪斯盖亚",
+      "ja": "デスガイヤー",
+      "en": "Death Gaia"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "新超合金Z",
+      "ja": "超合金ニューZ",
+      "en": "Super Alloy New Z"
+     },
+     "from": {
+      "zh-Hans": "阿维＝露",
+      "ja": "アヴィ＝ルー",
+      "en": "Avie-Lu"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退并结束关卡",
+      "ja": "HP30%以下で撤退し、ステージ終了",
+      "en": "Retreats at 30% HP or below, ending the stage"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

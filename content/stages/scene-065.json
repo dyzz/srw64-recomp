@@ -1,0 +1,158 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 65,
+ "title": {
+  "zh-Hans": "不会燃尽的流星",
+  "ja": "燃え尽きない流星",
+  "en": "The Shooting Star That Never Burns Out"
+ },
+ "title_ja": "燃え尽きない流星",
+ "cards": [
+  {
+   "guide_card": "card-042",
+   "route": "cp",
+   "episode": "26",
+   "lane": {
+    "zh-Hans": "完全和平路线",
+    "ja": "完全平和ルート",
+    "en": "Complete Pacifism route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-aisha",
+     "title": {
+      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "ja": "アイシャ＋エルブルス",
+      "en": "Aisha + Elbulls"
+     },
+     "text": {
+      "zh-Hans": "用玛娜米说服艾夏（第 1 步，无门槛）",
+      "ja": "マナミでアイシャを説得（第1段階、条件なし）",
+      "en": "Persuade Aisha with Manami (step 1, no prerequisite)"
+     },
+     "protagonists": [
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-reese",
+     "title": {
+      "zh-Hans": "利修＋西格露恩",
+      "ja": "リッシュ＋シグルーン",
+      "en": "Rish + Sigroon"
+     },
+     "text": {
+      "zh-Hans": "塞蕾茵与利修战前三选选第 2 或第 3 项",
+      "ja": "セレインとリッシュの交戦前の3択で2番目か3番目を選ぶ",
+      "en": "Before Selain fights Rish, pick option 2 or 3 in the three-way choice"
+     },
+     "protagonists": [
+      "serein"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "莱拉",
+      "ja": "ライラ",
+      "en": "Lila"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "杰利德",
+      "ja": "ジェリド",
+      "en": "Jerid"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "卡克利康",
+      "ja": "カクリコン",
+      "en": "Kacricon"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "玛雅",
+      "ja": "マウアー",
+      "en": "Mouar"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "埃尔利希",
+      "ja": "エルリッヒ",
+      "en": "Ehrlich"
+     },
+     "protagonists": [
+      "ark"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "利修",
+      "ja": "リッシュ",
+      "en": "Rish"
+     },
+     "protagonists": [
+      "serein"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "艾夏",
+      "ja": "アイシャ",
+      "en": "Aisha"
+     },
+     "protagonists": [
+      "manami"
+     ],
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

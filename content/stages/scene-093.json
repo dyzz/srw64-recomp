@@ -1,0 +1,91 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 93,
+ "title": {
+  "zh-Hans": "库斯科绝对防卫线（上）",
+  "ja": "クスコ絶対防衛線 （前）",
+  "en": "Cusco Absolute Defense Line (Part 1)"
+ },
+ "title_ja": "クスコ絶対防衛線 （前）",
+ "cards": [
+  {
+   "guide_card": "card-091",
+   "route": "oz",
+   "episode": "38",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-gale-escort",
+     "title": {
+      "zh-Hans": "盖尔护送朱莉娅",
+      "ja": "ゲイルがジュリアを護衛",
+      "en": "Gale escorts Julia"
+     },
+     "text": {
+      "zh-Hans": "无需操作：英二不能出击；已招到盖尔时他也不能",
+      "ja": "操作不要：エイジ出撃不可、ゲイル加入済みなら彼も不可",
+      "en": "No action: Eiji can't deploy; Gale can't either, if recruited"
+     }
+    },
+    {
+     "ref": "secret-story-attacks",
+     "title": {
+      "zh-Hans": "剧情解锁的必杀技与合体技",
+      "ja": "ストーリーで解禁される必殺技と合体技",
+      "en": "Story-unlocked finishers and combination attacks"
+     },
+     "text": {
+      "zh-Hans": "无需操作：开场解锁孔巴特拉V的双刃对枪等武器",
+      "ja": "操作不要：開始時にコン・バトラーVのツインランサー等が解禁",
+      "en": "No action: Combattler V's Twin Lancer and more unlock at start"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "卡达尔",
+      "ja": "ガンダル",
+      "en": "Gandal"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "加涅拉",
+      "ja": "ジャネラ",
+      "en": "Janera"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

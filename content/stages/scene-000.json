@@ -1,0 +1,43 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 0,
+ "title": {
+  "zh-Hans": "战斗吧！热血的斗士们",
+  "ja": "戦え!熱き血のファイターたち",
+  "en": "Fight! Hot-Blooded Fighters"
+ },
+ "title_ja": "戦え!熱き血のファイターたち",
+ "cards": [
+  {
+   "guide_card": "card-002",
+   "route": "super",
+   "episode": "1",
+   "lane": {
+    "zh-Hans": "布拉德（超级系）",
+    "ja": "ブラッド（スーパー系）",
+    "en": "Brad (Super)"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "暗黑大将军",
+      "ja": "暗黒大将軍",
+      "en": "Dark General"
+     },
+     "note": {
+      "zh-Hans": "HP 50% 以下时撤退",
+      "ja": "HP50%以下で撤退",
+      "en": "Retreats at 50% HP or below"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

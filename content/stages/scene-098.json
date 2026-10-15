@@ -1,0 +1,144 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 98,
+ "title": {
+  "zh-Hans": "宇宙的漩涡",
+  "ja": "宇宙の渦",
+  "en": "Vortex of Space"
+ },
+ "title_ja": "宇宙の渦",
+ "cards": [
+  {
+   "guide_card": "card-107",
+   "route": "oz",
+   "episode": "45",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-puru",
+     "title": {
+      "zh-Hans": "普露＋卡碧尼Mk-Ⅱ",
+      "ja": "プル＋キュベレイmkⅡ",
+      "en": "Ple + Qubeley Mk-II"
+     },
+     "text": {
+      "zh-Hans": "先击坠格雷米（撤离不算），再用捷度说服普露",
+      "ja": "グレミーを撃墜（撤退は不可）してからジュドーでプルを説得",
+      "en": "Shoot down Glemy first (not retreat), then persuade Ple with Judau"
+     }
+    },
+    {
+     "ref": "secret-fa-hyakushiki",
+     "title": {
+      "zh-Hans": "全装甲百式改",
+      "ja": "フルアーマー百式改",
+      "en": "FA Hyaku-Shiki Kai"
+     },
+     "text": {
+      "zh-Hans": "无需操作：克瓦特罗与卡缪中途增援回来（不能出击）",
+      "ja": "操作不要：クワトロとカミーユが途中で増援として復帰",
+      "en": "No action: Quattro and Kamille return mid-battle"
+     }
+    },
+    {
+     "ref": "secret-route-gato-base",
+     "title": {
+      "zh-Hans": "月球是地狱！：守住基地",
+      "ja": "月は地獄だ!：基地を守る",
+      "en": "The Moon Is Hell!: holding the base"
+     },
+     "text": {
+      "zh-Hans": "无需操作：是否招到过卡多决定他驾驶 GP02A 或诺耶·吉尔",
+      "ja": "操作不要：ガトー加入歴の有無で乗機がGP02Aかノイエ・ジールに",
+      "en": "No action: whether you recruited Gato sets GP02A or Neue Ziel"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "精神感应框架",
+      "ja": "サイコフレーム",
+      "en": "Psycoframe"
+     },
+     "from": {
+      "zh-Hans": "西罗克",
+      "ja": "シロッコ",
+      "en": "Scirocco"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "哈曼",
+      "ja": "ハマーン",
+      "en": "Haman"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退",
+      "ja": "HP30%以下で撤退",
+      "en": "Retreats at 30% HP or below"
+     },
+     "third_party": true,
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "格雷米",
+      "ja": "グレミー",
+      "en": "Glemy"
+     },
+     "third_party": true,
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "普露",
+      "ja": "プル",
+      "en": "Ple"
+     },
+     "note": {
+      "zh-Hans": "可被捷度说服（说服后不掉落）",
+      "ja": "ジュドーで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Judau (no drop if persuaded)"
+     },
+     "third_party": true,
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

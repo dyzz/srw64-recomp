@@ -151,7 +151,9 @@ inline std::pair<campaign::Info,std::map<uint32_t,Image>> parse_campaign(const n
         stages.emplace(scene,std::move(image));
         info.keys[scene]=stage.at("key").get<std::string>();
         if(stage.contains("title") && !stage.at("title").is_null())info.titles[scene]=stage.at("title");
+        if(stage.contains("meta") && stage.at("meta").is_object())info.meta[scene]=stage.at("meta");
     }
+    if(document.contains("status") && document.at("status").is_object())info.status=document.at("status");
     if(!stages.count(info.start))throw std::runtime_error("campaign: no stage borrows the start scene");
     return {std::move(info),std::move(stages)};
 }

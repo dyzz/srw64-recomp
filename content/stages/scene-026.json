@@ -1,0 +1,117 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 26,
+ "title": {
+  "zh-Hans": "染血之路",
+  "ja": "血塗られた道",
+  "en": "The Bloodstained Road"
+ },
+ "title_ja": "血塗られた道",
+ "cards": [
+  {
+   "guide_card": "card-026",
+   "route": "common",
+   "episode": "16",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [
+    {
+     "ref": "secret-sheila-elle",
+     "title": {
+      "zh-Hans": "席拉＋古兰·加兰／艾蕾＋戈拉翁",
+      "ja": "シーラ＋グラン・ガラン／エレ＋ゴラオン",
+      "en": "Ciela + Gran-Garan / Elle + Goraon"
+     },
+     "text": {
+      "zh-Hans": "开场选「前往席拉那边」→席拉，「前往艾蕾那边」→艾蕾",
+      "ja": "開始時「シーラの方へ向かう」でシーラ、「エレの方へ向かう」でエレ",
+      "en": "Opening choice: “Go to Ciela” or “Go to Elle” picks who joins"
+     }
+    },
+    {
+     "ref": "secret-gyuken",
+     "title": {
+      "zh-Hans": "牛剑鬼复仇（乔巴姆装甲）",
+      "ja": "牛剣鬼の復讐（チョバムアーマー）",
+      "en": "Gyukenki's revenge (Chobham Armor)"
+     },
+     "text": {
+      "zh-Hans": "击坠复仇的牛剑鬼（上一关击破牛饿鬼才出现）",
+      "ja": "牛剣鬼を撃墜（前ステージで牛餓鬼撃破時のみ出現）",
+      "en": "Shoot down Gyukenki (only if Gyugaki fell last stage)"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "奖励+10000",
+      "ja": "ボーナス+10000",
+      "en": "Bonus +10000"
+     },
+     "from": {
+      "zh-Hans": "雅努斯侯爵",
+      "ja": "ヤヌス侯爵",
+      "en": "Marquis Janus"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "基乌拉",
+      "ja": "ギウラ",
+      "en": "Giura"
+     },
+     "protagonists": [
+      "ark",
+      "serein",
+      "brad"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "艾夏",
+      "ja": "アイシャ",
+      "en": "Aisha"
+     },
+     "protagonists": [
+      "manami"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "牛剑鬼",
+      "ja": "牛剣鬼",
+      "en": "Gyukenki"
+     },
+     "note": {
+      "zh-Hans": "上一关击破牛饿鬼时，敌全灭后登场",
+      "ja": "前ステージで牛餓鬼撃破時、敵全滅後に登場",
+      "en": "Appears after the wipe if Gyugaki fell last stage"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

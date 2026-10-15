@@ -1,0 +1,103 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 53,
+ "title": {
+  "zh-Hans": "混沌不会终结",
+  "ja": "混沌は終わらない",
+  "en": "The Chaos Never Ends"
+ },
+ "title_ja": "混沌は終わらない",
+ "cards": [
+  {
+   "guide_card": "card-051",
+   "route": "oz",
+   "episode": "28",
+   "lane": {
+    "zh-Hans": "OZ路线（未守住基地）",
+    "ja": "OZルート（基地を守れなかった場合）",
+    "en": "OZ route (base lost)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-gale",
+     "title": {
+      "zh-Hans": "盖尔＋格莱姆凯撒",
+      "ja": "ゲイル＋グライムカイザル",
+      "en": "Gale + Greimkaiser"
+     },
+     "text": {
+      "zh-Hans": "已在「少女所见的流星」用英二说服盖尔，关末加入",
+      "ja": "「少女が見た流星」でエイジが説得済みならクリア時に加入",
+      "en": "Joins at end if Eiji persuaded Gale in “The Shooting Star the Girl Saw”"
+     },
+     "protagonists": [
+      "ark",
+      "serein"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "note": {
+      "zh-Hans": "巴伦被击破后登场，4 回合后我方阶段撤退",
+      "ja": "バレン撃破後に登場、4ターン後の味方フェイズに撤退",
+      "en": "Appears once Baren falls; retreats 4 turns later"
+     },
+     "third_party": true,
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "丹格尔",
+      "ja": "ダンゲル",
+      "en": "Dungele"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "亚赞、拉姆萨斯、邓克尔、盖茨、罗莎米娅",
+      "ja": "ヤザン、ラムサス、ダンケル、ゲーツ、ロザミア",
+      "en": "Yazan, Ramsus, Dunkel, Gates, Rosamia"
+     },
+     "note": {
+      "zh-Hans": "巴伦被击破后第 4 个回合的我方阶段撤退",
+      "ja": "バレン撃破から4ターン後の味方フェイズに撤退",
+      "en": "Retreat on the player phase 4 turns after Baren is destroyed"
+     },
+     "third_party": true,
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

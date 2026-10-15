@@ -1,0 +1,143 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 45,
+ "title": {
+  "zh-Hans": "出击，迎向乱局",
+  "ja": "混迷への出撃",
+  "en": "Sortie into Turmoil"
+ },
+ "title_ja": "混迷への出撃",
+ "cards": [
+  {
+   "guide_card": "card-083",
+   "route": "ia",
+   "episode": "35",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-rose",
+     "title": {
+      "zh-Hans": "罗塞＋泽隆",
+      "ja": "ロゼ＋ゼーロン",
+      "en": "Rose + Zeron"
+     },
+     "text": {
+      "zh-Hans": "可选：用武说服玛古（只影响之后的对白）",
+      "ja": "任意：タケルでマーグを説得（後の会話のみに影響）",
+      "en": "Optional: persuade Marg with Takeru (affects later dialogue only)"
+     }
+    },
+    {
+     "ref": "secret-naida",
+     "title": {
+      "zh-Hans": "娜伊达＋双重斯派扎",
+      "ja": "ナイーダ＋ダブルスペイザー",
+      "en": "Naida + Double Spazer"
+     },
+     "text": {
+      "zh-Hans": "用杜克说服娜伊达（第二波登场），下一关开场选第 1 项",
+      "ja": "第2陣のナイーダをデュークで説得、次ステージ開始時に1番目",
+      "en": "Persuade Naida (2nd wave) with Duke; pick option 1 next stage"
+     },
+     "protagonists": [
+      "brad",
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-hilde",
+     "title": {
+      "zh-Hans": "希尔妲＋陶拉斯",
+      "ja": "ヒルデ＋トーラス",
+      "en": "Hilde + Taurus"
+     },
+     "text": {
+      "zh-Hans": "无需操作：此前招到希尔妲则诺茵带陶拉斯加入",
+      "ja": "操作不要：ヒルデ加入済みならノインがトーラス付きで加入",
+      "en": "No action: Noin brings the Taurus if Hilde was recruited"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "玛古",
+      "ja": "マーグ",
+      "en": "Marg"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "丹格尔",
+      "ja": "ダンゲル",
+      "en": "Dungele"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "巴伦",
+      "ja": "バレン",
+      "en": "Baren"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "强化推进器",
+      "ja": "メガブースター",
+      "en": "Mega Booster"
+     },
+     "from": {
+      "zh-Hans": "娜伊达",
+      "ja": "ナイーダ",
+      "en": "Naida"
+     },
+     "note": {
+      "zh-Hans": "可被杜克说服（说服后不掉落）",
+      "ja": "デュークで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Duke (no drop if persuaded)"
+     },
+     "protagonists": [
+      "brad",
+      "manami"
+     ],
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

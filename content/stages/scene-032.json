@@ -1,0 +1,147 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 32,
+ "title": {
+  "zh-Hans": "梁山泊之战",
+  "ja": "梁山泊の戦い",
+  "en": "The Battle of Ryozanpaku"
+ },
+ "title_ja": "梁山泊の戦い",
+ "cards": [
+  {
+   "guide_card": "card-034",
+   "route": "ia",
+   "episode": "22",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-cp",
+     "title": {
+      "zh-Hans": "梁山泊之战：完全和平路线",
+      "ja": "梁山泊の戦い：完全平和ルート",
+      "en": "The Battle of Ryozanpaku: Complete Pacifism route"
+     },
+     "text": {
+      "zh-Hans": "开场选第 3 项、关末选第 2 项→完全和平路线",
+      "ja": "開始時に3番目、クリア時に2番目→完全平和ルート",
+      "en": "Pick option 3 at the start and option 2 at the end → Complete Pacifism"
+     }
+    },
+    {
+     "ref": "secret-neue-ziel",
+     "title": {
+      "zh-Hans": "诺耶·吉尔",
+      "ja": "ノイエ・ジール",
+      "en": "Neue Ziel"
+     },
+     "text": {
+      "zh-Hans": "留在独立军路线，「夏亚的叛乱」关末得到",
+      "ja": "独立軍ルートに残れば「シャアの反乱」終了時に入手",
+      "en": "Stay on the Independence Army route; get it after “Char's Rebellion”"
+     }
+    },
+    {
+     "ref": "secret-fa-hyakushiki",
+     "title": {
+      "zh-Hans": "全装甲百式改",
+      "ja": "フルアーマー百式改",
+      "en": "FA Hyaku-Shiki Kai"
+     },
+     "text": {
+      "zh-Hans": "走完全和平路线则拿不到，克瓦特罗乘百式回归",
+      "ja": "完全平和ルートでは入手不可（クワトロは百式で復帰）",
+      "en": "Lost on Complete Pacifism: Quattro returns in the Hyaku-Shiki"
+     }
+    },
+    {
+     "ref": "secret-ginrei",
+     "title": {
+      "zh-Hans": "银铃＋银铃机器人TYPE1",
+      "ja": "銀鈴＋銀鈴ロボTYPE1",
+      "en": "Ginrei + Ginrei Robo TYPE1"
+     },
+     "text": {
+      "zh-Hans": "本关结束时大作击坠数 ≥ 20",
+      "ja": "ステージ終了時に大作の撃墜数20以上",
+      "en": "Have Daisaku at 20+ kills by the end of this stage"
+     }
+    },
+    {
+     "ref": "secret-gale",
+     "title": {
+      "zh-Hans": "盖尔＋格莱姆凯撒",
+      "ja": "ゲイル＋グライムカイザル",
+      "en": "Gale + Greimkaiser"
+     },
+     "text": {
+      "zh-Hans": "已在「少女所见的流星」用英二说服盖尔，关末加入",
+      "ja": "「少女が見た流星」でエイジが説得済みならクリア時に加入",
+      "en": "Joins at end if Eiji persuaded Gale in “The Shooting Star the Girl Saw”"
+     },
+     "protagonists": [
+      "ark",
+      "serein"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "布莱大帝",
+      "ja": "ブライ大帝",
+      "en": "Emperor Burai"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "铁甲鬼",
+      "ja": "鉄甲鬼",
+      "en": "Tekkoki"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "地狱大元帅",
+      "ja": "地獄大元帥",
+      "en": "Hell Marshal"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "雅努斯侯爵",
+      "ja": "ヤヌス侯爵",
+      "en": "Marquis Janus"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

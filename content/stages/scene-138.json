@@ -1,0 +1,146 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 138,
+ "title": {
+  "zh-Hans": "决战！对决祖鲁皇帝！（下）",
+  "ja": "決戦!皇帝ズールとの対決! （後）",
+  "en": "Showdown! Face-Off with Emperor Zuul! (Part 2)"
+ },
+ "title_ja": "決戦!皇帝ズールとの対決! （後）",
+ "cards": [
+  {
+   "guide_card": "card-103",
+   "route": "oz",
+   "episode": "43",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-gato",
+     "title": {
+      "zh-Hans": "卡多＋GP02A酸浆果",
+      "ja": "ガトー＋GP02Aサイサリス",
+      "en": "Gato + GP02A Physalis"
+     },
+     "text": {
+      "zh-Hans": "已招到卡多时选「应该与哈曼合作」可多留他一关",
+      "ja": "「ハマーンと協力するべきだ」でガトーの離脱が1ステージ遅れる",
+      "en": "To keep Gato a stage longer, pick “We should cooperate with Haman”"
+     }
+    },
+    {
+     "ref": "secret-chizuru",
+     "title": {
+      "zh-Hans": "千鹤手术支线（孔巴特拉V 能否出击）",
+      "ja": "ちずる手術分岐（コン・バトラーV の出撃可否）",
+      "en": "Chizuru surgery branch (whether Combattler V can deploy)"
+     },
+     "text": {
+      "zh-Hans": "豹马击坠数 ≥ 15 或下一关让他出击 → 千鹤手术支线",
+      "ja": "豹馬の撃墜数15以上か次で出撃 → ちずるの手術イベント",
+      "en": "Hyoma ≥ 15 kills here or deployed next stage → Chizuru surgery"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "精神感应框架",
+      "ja": "サイコフレーム",
+      "en": "Psycoframe"
+     },
+     "from": {
+      "zh-Hans": "加涅拉",
+      "ja": "ジャネラ",
+      "en": "Janera"
+     },
+     "note": {
+      "zh-Hans": "祖鲁皇帝最终被击坠后撤退",
+      "ja": "ズール皇帝が最終的に撃墜されると撤退",
+      "en": "Retreats once Emperor Zuul is finally shot down"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "卡达尔",
+      "ja": "ガンダル",
+      "en": "Gandal"
+     },
+     "note": {
+      "zh-Hans": "祖鲁皇帝最终被击坠后撤退",
+      "ja": "ズール皇帝が最終的に撃墜されると撤退",
+      "en": "Retreats once Emperor Zuul is finally shot down"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "超合金Z",
+      "ja": "超合金Z",
+      "en": "Super Alloy Z"
+     },
+     "from": {
+      "zh-Hans": "祖鲁皇帝",
+      "ja": "ズール皇帝",
+      "en": "Emperor Zuul"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "强化推进器",
+      "ja": "メガブースター",
+      "en": "Mega Booster"
+     },
+     "from": {
+      "zh-Hans": "哈曼",
+      "ja": "ハマーン",
+      "en": "Haman"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下撤退（选不合作时登场）",
+      "ja": "HP30%以下で撤退（協力しない選択時に登場）",
+      "en": "Retreats at 30% HP; appears if you refused Haman"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "I力场屏障",
+      "ja": "Iフィールドバリア",
+      "en": "I-Field Barrier"
+     },
+     "from": {
+      "zh-Hans": "杰伊＝伦",
+      "ja": "ジェイ＝レン",
+      "en": "J-Ren"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "瓦尔、布拉奇、瓦基米德",
+      "ja": "ワール、ブラッキー、ワルキメデス",
+      "en": "Wahl, Blacky, Warchimedes"
+     },
+     "note": {
+      "zh-Hans": "祖鲁皇帝最终被击坠后撤退",
+      "ja": "ズール皇帝が最終的に撃墜されると撤退",
+      "en": "Retreat once Emperor Zuul is finally shot down"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

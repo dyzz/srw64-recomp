@@ -1,0 +1,107 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 12,
+ "title": {
+  "zh-Hans": "少女所见的流星",
+  "ja": "少女が見た流星",
+  "en": "The Shooting Star the Girl Saw"
+ },
+ "title_ja": "少女が見た流星",
+ "cards": [
+  {
+   "guide_card": "card-008",
+   "route": "real",
+   "episode": "4",
+   "lane": {
+    "zh-Hans": "真实系",
+    "ja": "リアル系",
+    "en": "Real"
+   },
+   "secrets": [
+    {
+     "ref": "secret-gale",
+     "title": {
+      "zh-Hans": "盖尔＋格莱姆凯撒",
+      "ja": "ゲイル＋グライムカイザル",
+      "en": "Gale + Greimkaiser"
+     },
+     "text": {
+      "zh-Hans": "用英二说服盖尔（无门槛，日后入队）",
+      "ja": "エイジでゲイルを説得（条件なし、後に加入）",
+      "en": "Persuade Gale with Eiji (no prerequisite; joins later)"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "杰克斯",
+      "ja": "ゼクス",
+      "en": "Zechs"
+     },
+     "note": {
+      "zh-Hans": "第 3 回合我方阶段开始或其他敌人全灭时撤退",
+      "ja": "第3ターン味方フェイズ開始か他の敵全滅で撤退",
+      "en": "Retreats at turn 3 player phase or when others fall"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "高性能雷达",
+      "ja": "高性能レーダー",
+      "en": "High-Fidelity Radar"
+     },
+     "from": {
+      "zh-Hans": "盖尔",
+      "ja": "ゲイル",
+      "en": "Gale"
+     },
+     "note": {
+      "zh-Hans": "可被英二说服（说服后不掉落）",
+      "ja": "エイジで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Eiji (no drop if persuaded)"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "埃尔利希",
+      "ja": "エルリッヒ",
+      "en": "Ehrlich"
+     },
+     "protagonists": [
+      "ark"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "利修",
+      "ja": "リッシュ",
+      "en": "Rish"
+     },
+     "protagonists": [
+      "serein"
+     ],
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

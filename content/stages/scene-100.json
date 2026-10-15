@@ -1,0 +1,108 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 100,
+ "title": {
+  "zh-Hans": "驱使人心的野心",
+  "ja": "駆り立てる野心",
+  "en": "Driving Ambition"
+ },
+ "title_ja": "駆り立てる野心",
+ "cards": [
+  {
+   "guide_card": "card-111",
+   "route": "oz",
+   "episode": "47",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-puru-two",
+     "title": {
+      "zh-Hans": "普露兹",
+      "ja": "プルツー",
+      "en": "Ple-Two"
+     },
+     "text": {
+      "zh-Hans": "格雷米 HP 30% 以下前用捷度说服普露兹",
+      "ja": "グレミーのHP30%以下になる前にジュドーでプルツーを説得",
+      "en": "Persuade Ple-Two with Judau before Glemy drops to 30% HP"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "生物传感器",
+      "ja": "バイオセンサー",
+      "en": "Bio-Sensor"
+     },
+     "from": {
+      "zh-Hans": "格雷米",
+      "ja": "グレミー",
+      "en": "Glemy"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退",
+      "ja": "HP30%以下で撤退",
+      "en": "Retreats at 30% HP or below"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "推进器",
+      "ja": "ブースター",
+      "en": "Booster"
+     },
+     "from": {
+      "zh-Hans": "普露兹",
+      "ja": "プルツー",
+      "en": "Ple-Two"
+     },
+     "note": {
+      "zh-Hans": "格雷米 HP 30% 以下时一起撤退",
+      "ja": "グレミーがHP30%以下になると一緒に撤退",
+      "en": "Retreats together with Glemy when he is at 30% HP or below"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "抗光束涂层",
+      "ja": "対ビームコーティング",
+      "en": "Anti-Beam Coating"
+     },
+     "from": {
+      "zh-Hans": "哈曼",
+      "ja": "ハマーン",
+      "en": "Haman"
+     },
+     "note": {
+      "zh-Hans": "选「两边一起打」时 HP 30% 以下撤退",
+      "ja": "「両方を相手にする」を選んだ場合はHP30%以下で撤退",
+      "en": "Retreats at 30% HP or below if you picked “Fight both sides”"
+     },
+     "third_party": true,
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "third_party": true,
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

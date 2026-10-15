@@ -1,0 +1,43 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 4,
+ "title": {
+  "zh-Hans": "愤怒的甲儿 魔神崛起！",
+  "ja": "怒りの甲児 魔神立つ!",
+  "en": "Koji's Fury: Mazinger Rises!"
+ },
+ "title_ja": "怒りの甲児 魔神立つ!",
+ "cards": [
+  {
+   "guide_card": "card-005",
+   "route": "super",
+   "episode": "2",
+   "lane": {
+    "zh-Hans": "超级系",
+    "ja": "スーパー系",
+    "en": "Super"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "地狱大元帅",
+      "ja": "地獄大元帥",
+      "en": "Hell Marshal"
+     },
+     "note": {
+      "zh-Hans": "HP 30% 以下时撤退",
+      "ja": "HP30%以下で撤退",
+      "en": "Retreats at 30% HP or below"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 28,
+ "title": {
+  "zh-Hans": "重逢，我的师父",
+  "ja": "再会、我が師よ",
+  "en": "Reunion with My Master"
+ },
+ "title_ja": "再会、我が師よ",
+ "cards": [
+  {
+   "guide_card": "card-028",
+   "route": "common",
+   "episode": "18",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "米诺夫斯基飞行器",
+      "ja": "ミノフスキークラフト",
+      "en": "Minovsky Craft"
+     },
+     "from": {
+      "zh-Hans": "鲁·凯恩",
+      "ja": "ル・カイン",
+      "en": "Le Cain"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "戈斯特罗",
+      "ja": "ゴステロ",
+      "en": "Gosterro"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

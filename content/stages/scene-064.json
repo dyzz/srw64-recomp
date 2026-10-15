@@ -1,0 +1,76 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 64,
+ "title": {
+  "zh-Hans": "遥远的和平",
+  "ja": "遠き平和",
+  "en": "Distant Peace"
+ },
+ "title_ja": "遠き平和",
+ "cards": [
+  {
+   "guide_card": "card-040",
+   "route": "cp",
+   "episode": "25",
+   "lane": {
+    "zh-Hans": "完全和平路线",
+    "ja": "完全平和ルート",
+    "en": "Complete Pacifism route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "用布拉德击坠卡茨（敌方剩 6 台以下登场）",
+      "ja": "ブラッドでカーツを撃墜（敵残り6機以下で登場）",
+      "en": "Shoot down Kurtz with Brad (appears at 6 or fewer enemies)"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "奖励+10000",
+      "ja": "ボーナス+10000",
+      "en": "Bonus +10000"
+     },
+     "from": {
+      "zh-Hans": "雅努斯侯爵",
+      "ja": "ヤヌス侯爵",
+      "en": "Marquis Janus"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "卡茨",
+      "ja": "カーツ",
+      "en": "Kurtz"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 6 台以下登场，布拉德不在场即离开",
+      "ja": "敵残り6機以下で登場、ブラッド不在ならすぐ離脱",
+      "en": "Appears at ≤6 enemies; leaves at once without Brad"
+     },
+     "protagonists": [
+      "brad"
+     ],
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

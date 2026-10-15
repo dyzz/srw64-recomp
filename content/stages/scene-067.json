@@ -1,0 +1,24 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 67,
+ "title": {
+  "zh-Hans": "桑古王国，覆灭",
+  "ja": "サンクキングダム、崩壊",
+  "en": "The Sanc Kingdom Falls"
+ },
+ "title_ja": "サンクキングダム、崩壊",
+ "cards": [
+  {
+   "guide_card": "card-052",
+   "route": "cp",
+   "episode": "28",
+   "lane": {
+    "zh-Hans": "完全和平路线",
+    "ja": "完全平和ルート",
+    "en": "Complete Pacifism route"
+   },
+   "secrets": [],
+   "enemies": []
+  }
+ ]
+}

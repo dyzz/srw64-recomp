@@ -1,0 +1,65 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 19,
+ "title": {
+  "zh-Hans": "粉碎卑劣的陷阱！",
+  "ja": "卑劣な罠を破れ!",
+  "en": "Break the Vile Trap!"
+ },
+ "title_ja": "卑劣な罠を破れ!",
+ "cards": [
+  {
+   "guide_card": "card-019",
+   "route": "super",
+   "episode": "10",
+   "lane": {
+    "zh-Hans": "超级系",
+    "ja": "スーパー系",
+    "en": "Super"
+   },
+   "secrets": [
+    {
+     "ref": "secret-allenby",
+     "title": {
+      "zh-Hans": "阿莲比＋诺贝尔高达",
+      "ja": "アレンビー＋ノーベルガンダム",
+      "en": "Allenby + Noble Gundam"
+     },
+     "text": {
+      "zh-Hans": "第 9 回合我方阶段结束前用多蒙说服阿莲比",
+      "ja": "第9ターン味方フェイズ終了までにドモンでアレンビーを説得",
+      "en": "Persuade Allenby with Domon by the turn 9 player phase"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "高性能雷达",
+      "ja": "高性能レーダー",
+      "en": "High-Fidelity Radar"
+     },
+     "from": {
+      "zh-Hans": "凤",
+      "ja": "フォウ",
+      "en": "Four"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "阿莲比",
+      "ja": "アレンビー",
+      "en": "Allenby"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

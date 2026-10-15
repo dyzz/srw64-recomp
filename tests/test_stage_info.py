@@ -45,6 +45,28 @@ class StageInfoTests(unittest.TestCase):
                 self.assertEqual(len({c["route"] for c in cards}), len(cards))
         self.assertEqual(sorted(s for s, c in data["scenes"].items() if len(c) > 1), ["123", "124"])
 
+    def test_stage_meta_files(self):
+        """One file per stage, every text in all three languages; the format a custom
+        campaign's stage carries too (docs/design/custom-campaign.md)."""
+        meta = MODULE.stage_meta()
+        self.assertEqual(len(meta), 124)
+        def texts(value, where):
+            self.assertIsInstance(value, dict, where)
+            self.assertEqual(sorted(value), sorted(MODULE.LANGS), where)
+            self.assertTrue(all(isinstance(v, str) and v for v in value.values()), where)
+        for scene, doc in meta.items():
+            with self.subTest(scene=scene):
+                self.assertEqual((doc["schema"], doc["scene"]), ("srw64.stage-meta.v1", scene))
+                texts(doc["title"], "title")
+                for card in doc["cards"]:
+                    texts(card["lane"], "lane")
+                    for s in card["secrets"]:
+                        texts(s["title"], s["ref"]); texts(s["text"], s["ref"])
+                    for e in card["enemies"]:
+                        texts(e["from"], "from")
+                        if e["part"] is not None: texts(e["part"], "part")
+                        if "note" in e: texts(e["note"], "note")
+
     def test_no_badges_or_qualifiers_left(self):
         for lang in MODULE.LANGS:
             text = json.dumps(MODULE.export(lang)["scenes"], ensure_ascii=False)

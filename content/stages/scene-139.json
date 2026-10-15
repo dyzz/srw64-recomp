@@ -1,0 +1,65 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 139,
+ "title": {
+  "zh-Hans": "无法醒来的噩梦",
+  "ja": "醒めない悪夢",
+  "en": "A Nightmare with No Waking"
+ },
+ "title_ja": "醒めない悪夢",
+ "cards": [
+  {
+   "guide_card": "card-115",
+   "route": "oz",
+   "episode": "49",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-muge",
+     "title": {
+      "zh-Hans": "穆格宇宙或地球圈",
+      "ja": "ムゲ宇宙か地球圏か",
+      "en": "Muge space or Earth"
+     },
+     "text": {
+      "zh-Hans": "选「前往穆格的宇宙」→「遥远的赌注」／「留在地球圈」→「夏亚的叛乱」",
+      "ja": "「ムゲの宇宙へ行く」→「遥かなる賭け」／「地球圏に残留する」→「シャアの反乱」",
+      "en": "“Go to the Muge universe” → A Distant Gamble; stay → Char's Rebellion"
+     }
+    },
+    {
+     "ref": "secret-qubeley-color",
+     "title": {
+      "zh-Hans": "卡碧尼Mk-Ⅱ 改色",
+      "ja": "キュベレイmkⅡ カラー変更",
+      "en": "Qubeley Mk-II recolor"
+     },
+     "text": {
+      "zh-Hans": "普露与普露兹都在队时，选「改成普露兹用的红色」",
+      "ja": "プルとプルツーが在籍なら「プルツー用に赤くする」を選ぶ",
+      "en": "With Ple and Ple-Two on the team, pick “Make it Ple-Two's red”"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "吉尔德罗姆",
+      "ja": "ギルドローム",
+      "en": "Gildrome"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

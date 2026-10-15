@@ -1,0 +1,57 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 3,
+ "title": {
+  "zh-Hans": "硝烟之中",
+  "ja": "硝煙の中で",
+  "en": "Amid the Gunsmoke"
+ },
+ "title_ja": "硝煙の中で",
+ "cards": [
+  {
+   "guide_card": "card-001",
+   "route": "real",
+   "episode": "1",
+   "lane": {
+    "zh-Hans": "塞蕾茵（真实系）",
+    "ja": "セレイン（リアル系）",
+    "en": "Selain (Real)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-apolly-roberto",
+     "title": {
+      "zh-Hans": "阿波利、罗伯托＋疾风迪亚斯",
+      "ja": "アポリー、ロベルト＋シュツルム・ディアス",
+      "en": "Aboly, Roberto + Schuzrum-Dias"
+     },
+     "text": {
+      "zh-Hans": "无需操作：阿波利、罗伯托在敌方剩 10 台以下时增援",
+      "ja": "操作不要：アポリー・ロベルトが敵残り10機以下で増援",
+      "en": "Nothing to do: Aboly and Roberto arrive at 10 or fewer enemies"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "利修",
+      "ja": "リッシュ",
+      "en": "Rish"
+     },
+     "note": {
+      "zh-Hans": "HP 50% 以下时撤退",
+      "ja": "HP50%以下で撤退",
+      "en": "Retreats at 50% HP or below"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,105 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 42,
+ "title": {
+  "zh-Hans": "玛尔斯与玛古",
+  "ja": "マーズとマーグ",
+  "en": "Mars and Marg"
+ },
+ "title_ja": "マーズとマーグ",
+ "cards": [
+  {
+   "guide_card": "card-075",
+   "route": "ia",
+   "episode": "33",
+   "lane": {
+    "zh-Hans": "独立军路线",
+    "ja": "独立軍ルート",
+    "en": "Independence Army route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-lera",
+     "title": {
+      "zh-Hans": "蕾拉支线：那双眼中映不出未来",
+      "ja": "レラ分岐：その瞳に未来は映ることなく",
+      "en": "Lera branch: Those Eyes Reflect No Future"
+     },
+     "text": {
+      "zh-Hans": "真实系且蕾拉支线成立→「那双眼中映不出未来」，否则→「登场！超电磁机器人」",
+      "ja": "リアル系でレラルート成立→「その瞳に未来は映ることなく」、それ以外→「登場!超電磁ロボ」",
+      "en": "Real with Lera branch → “Those Eyes Reflect No Future”; else “Enter! Super Electromagnetic Robo”"
+     }
+    },
+    {
+     "ref": "secret-route-ark-brad",
+     "title": {
+      "zh-Hans": "阿克／布拉德专属支线",
+      "ja": "アーク／ブラッド専用の分岐",
+      "en": "Ark / Brad exclusive side branch"
+     },
+     "text": {
+      "zh-Hans": "无需操作：两条支线打完都回到本关",
+      "ja": "操作不要：どちらの分岐もクリア後は本ステージに戻る",
+      "en": "No action needed: both side branches return here"
+     }
+    },
+    {
+     "ref": "secret-mk3-methuss",
+     "title": {
+      "zh-Hans": "高达Mk-Ⅲ＋梅塔斯改",
+      "ja": "ガンダムmkⅢ＋メタス改",
+      "en": "Gundam Mk-III + Methuss Kai"
+     },
+     "text": {
+      "zh-Hans": "无需操作：通关得到高达Mk-Ⅲ，梅塔斯换为梅塔斯改",
+      "ja": "操作不要：クリアでガンダムmkⅢを入手、メタスがメタス改に",
+      "en": "No action needed: clear for the Gundam Mk-III; Methuss → Methuss Kai"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "布兰",
+      "ja": "ブラン",
+      "en": "Buran"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "玛古",
+      "ja": "マーグ",
+      "en": "Marg"
+     },
+     "note": {
+      "zh-Hans": "布拉奇被击坠时撤退",
+      "ja": "ブラッキーが撃墜されると撤退",
+      "en": "Retreats when Blacky is shot down"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

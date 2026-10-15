@@ -1,0 +1,24 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 1,
+ "title": {
+  "zh-Hans": "出击！斯维姆鲁格",
+  "ja": "出撃!スイームルグ",
+  "en": "Launch! Sweemurg"
+ },
+ "title_ja": "出撃!スイームルグ",
+ "cards": [
+  {
+   "guide_card": "card-003",
+   "route": "super",
+   "episode": "1",
+   "lane": {
+    "zh-Hans": "玛娜米（超级系）",
+    "ja": "マナミ（スーパー系）",
+    "en": "Manami (Super)"
+   },
+   "secrets": [],
+   "enemies": []
+  }
+ ]
+}

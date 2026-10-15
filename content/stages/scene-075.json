@@ -1,0 +1,152 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 75,
+ "title": {
+  "zh-Hans": "从木星归来的男人",
+  "ja": "木星帰りの男",
+  "en": "The Man Back from Jupiter"
+ },
+ "title_ja": "木星帰りの男",
+ "cards": [
+  {
+   "guide_card": "card-073",
+   "route": "cp",
+   "episode": "34",
+   "lane": {
+    "zh-Hans": "完全和平路线（随特列斯）",
+    "ja": "完全平和ルート（トレーズにつく）",
+    "en": "Complete Pacifism route (with Treize)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-rose",
+     "title": {
+      "zh-Hans": "罗塞＋泽隆",
+      "ja": "ロゼ＋ゼーロン",
+      "en": "Rose + Zeron"
+     },
+     "text": {
+      "zh-Hans": "用武说服玛古（只影响对白，可省略）",
+      "ja": "タケルでマーグを説得（会話にしか影響せず、省略可）",
+      "en": "Persuade Marg with Takeru (affects dialogue only, optional)"
+     }
+    },
+    {
+     "ref": "secret-hilde",
+     "title": {
+      "zh-Hans": "希尔妲＋陶拉斯",
+      "ja": "ヒルデ＋トーラス",
+      "en": "Hilde + Taurus"
+     },
+     "text": {
+      "zh-Hans": "无需操作：关末无条件登记希尔妲（仅驾驶员）",
+      "ja": "操作不要：クリア時に無条件でヒルデを登録（パイロットのみ）",
+      "en": "No action needed: Hilde is registered at the end (pilot only)"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "杰利德",
+      "ja": "ジェリド",
+      "en": "Jerid"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "奖励+10000",
+      "ja": "ボーナス+10000",
+      "en": "Bonus +10000"
+     },
+     "from": {
+      "zh-Hans": "巴斯克",
+      "ja": "バスク",
+      "en": "Bask"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 5 台以下时登场",
+      "ja": "敵残り5機以下で登場",
+      "en": "Appears when 5 or fewer enemies remain"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "洗牌同盟纹章",
+      "ja": "シャッフルの紋章",
+      "en": "Shuffle Crest"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 5 台以下时登场",
+      "ja": "敵残り5機以下で登場",
+      "en": "Appears when 5 or fewer enemies remain"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "丹格尔",
+      "ja": "ダンゲル",
+      "en": "Dungele"
+     },
+     "note": {
+      "zh-Hans": "敌军全灭后登场",
+      "ja": "敵全滅後に登場",
+      "en": "Appears after the enemy is wiped out"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "高性能雷达",
+      "ja": "高性能レーダー",
+      "en": "High-Fidelity Radar"
+     },
+     "from": {
+      "zh-Hans": "玛古",
+      "ja": "マーグ",
+      "en": "Marg"
+     },
+     "note": {
+      "zh-Hans": "敌军全灭后登场",
+      "ja": "敵全滅後に登場",
+      "en": "Appears after the enemy is wiped out"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "哈曼",
+      "ja": "ハマーン",
+      "en": "Haman"
+     },
+     "note": {
+      "zh-Hans": "格瓦丹抵达撤离点时撤退",
+      "ja": "グワダンが離脱地点に着くと撤退",
+      "en": "Retreats when the Gwadan reaches its exit point"
+     },
+     "third_party": true,
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,65 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 131,
+ "title": {
+  "zh-Hans": "即便如此，也绝不放弃（下）",
+  "ja": "それでもあきらめずに （後）",
+  "en": "Even So, Never Give Up (Part 2)"
+ },
+ "title_ja": "それでもあきらめずに （後）",
+ "cards": [
+  {
+   "guide_card": "card-098",
+   "route": "ia",
+   "episode": "42",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战（未在 10 回合内突破）",
+    "ja": "独立軍ルート／単独行動（10ターン以内に突破できなかった）",
+    "en": "Independence Army route / fight alone (did not break through within 10 turns)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-gale-escort",
+     "title": {
+      "zh-Hans": "盖尔护送朱莉娅",
+      "ja": "ゲイルがジュリアを護衛",
+      "en": "Gale escorts Julia"
+     },
+     "text": {
+      "zh-Hans": "无需操作：已招到盖尔时由盖尔护送茱莉亚，否则英二",
+      "ja": "操作不要：ジュリア護送はゲイル（加入済み時）かエイジ",
+      "en": "No action: Gale escorts Julia if recruited, otherwise Eiji"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "瓦尔",
+      "ja": "ワール",
+      "en": "Wahl"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "加涅拉",
+      "ja": "ジャネラ",
+      "en": "Janera"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

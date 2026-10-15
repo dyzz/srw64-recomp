@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "about": "How the in-game stage info page tells how far each hidden element has got (docs/design/stage-info.md §4). Facts: docs/gameplay/hidden-elements.md §5–6. Exported with the scene graph to content/stage-info/status.json by tools/content/export_stage_info.py.",
+  "about": "How the in-game stage info page tells how far each hidden element has got (docs/design/stage-info.md §4). Facts: docs/gameplay/hidden-elements.md §5–6. Exported with the scene graph to content/stages/status.json by tools/content/export_stage_info.py.",
   "edge_guards": [
     {"from": [123, 124], "to": 42, "when": {"not": {"var": 10, "eq": 1}}},
     {"from": [123, 124], "to": 57, "when": {"var": 10, "eq": 1}}
@@ -175,10 +175,9 @@
      "steps": [{"when": {"unit": 157}, "at": [135]}]},
 
     {"id": "secret-gato", "kind": "acquire",
+     "applies": {"all": [{"not": {"var": 10, "eq": 0}}, {"not": {"var": 38, "eq": 1}}]},
      "done": {"var": 37, "eq": 0},
-     "steps": [
-       {"when": {"var": 38, "eq": 0}, "at": [107]},
-       {"when": {"var": 37, "eq": 0}, "at": [49]}]},
+     "steps": [{"when": {"var": 37, "eq": 0}, "at": [49]}]},
 
     {"id": "secret-fa-hyakushiki", "kind": "acquire",
      "done": {"unit": 295},

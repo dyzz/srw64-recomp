@@ -148,6 +148,13 @@ class CampaignTests(unittest.TestCase):
                          [("prologue", 1, 1), ("crossroads", 2, 2), ("ending-a", 3, 3), ("ending-b", 4, 4)])
         self.assertEqual([next_scenes(s["image"]) for s in image["stages"]], [[2], [3, 4], [], []])
         self.assertEqual(image["stages"][1]["title"]["zh-Hans"], "第2话　岔路")
+        # The stage info page's metadata rides with its stage, and the status rules get the
+        # scene graph the stages' 3D4B draw.
+        self.assertEqual(image["stages"][1]["meta"]["schema"], "srw64.stage-meta.v1")
+        self.assertEqual(image["stages"][1]["meta"]["scene"], 2)
+        self.assertNotIn("meta", image["stages"][0])
+        self.assertEqual(image["status"]["graph"]["brad"], {"1": [2], "2": [3, 4], "3": [], "4": []})
+        self.assertEqual(image["status"]["starts"]["ark"], 1)
 
     def test_scenes_the_game_treats_specially_cannot_be_borrowed(self):
         self.assertTrue(borrowable(1) and borrowable(142))

@@ -1,0 +1,91 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 94,
+ "title": {
+  "zh-Hans": "库斯科绝对防卫线（下）",
+  "ja": "クスコ絶対防衛線 （後）",
+  "en": "Cusco Absolute Defense Line (Part 2)"
+ },
+ "title_ja": "クスコ絶対防衛線 （後）",
+ "cards": [
+  {
+   "guide_card": "card-093",
+   "route": "oz",
+   "episode": "39",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-gale-escort",
+     "title": {
+      "zh-Hans": "盖尔护送朱莉娅",
+      "ja": "ゲイルがジュリアを護衛",
+      "en": "Gale escorts Julia"
+     },
+     "text": {
+      "zh-Hans": "无需操作：已招到盖尔时格莱姆凯撒也强制出击",
+      "ja": "操作不要：ゲイル加入済みならグライムカイザルも強制出撃",
+      "en": "No action: the Greimkaiser is also forced out if Gale was recruited"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "伊万",
+      "ja": "イワン",
+      "en": "Ivan"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "Q老大",
+      "ja": "Qボス",
+      "en": "Q Boss"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "瓦基米德",
+      "ja": "ワルキメデス",
+      "en": "Warchimedes"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "丹格尔",
+      "ja": "ダンゲル",
+      "en": "Dungele"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

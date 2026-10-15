@@ -30,6 +30,8 @@ mods/<战役>/
   mod.json              名字、作者、版本
   campaign.json         关卡表、开局、标题、所借场景号
   stages/<关>.json      迷你关卡格式（srw64.mini-stage.v1）
+  stages/<关>.meta.json 可选：本关情报页的元数据（srw64.stage-meta.v1，见 stage-info.md §3）
+  status.json           可选：本关情报页的完成状态规则（srw64.stage-status.v1）
   text/<语言>.txt       新台词，台词文本格式，记录号用 mod 段（§5）
   maps/<图>/            新地图：整张底图、地形格、可选水面色号图（§6）
 ```

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export the in-game stage info page's data from the offline guide's data.
+"""Export each stage's metadata, for the in-game stage info page, from the guide's data.
 
 The guide (guide/data/<lang>/) is the one place this text is written. The game's
 stage info page shows one stage at a time: its hidden elements and one table of the
@@ -12,16 +12,23 @@ scene number, for each language:
   and an "OZ route only" one a route list, so the page can show only what the
   player's game can meet; "Third party" becomes a flag;
 - the parts and the retreat-only rows become one list, and a row whose note says
-  the unit leaves the map is marked as a retreat.
+  the unit leaves the map is marked as a retreat;
+- a secret's text is its one-line `short` and a note its `short_note` where the
+  guide has them (the qualifiers still come from the full text).
 
 The qualifiers are read from the Chinese text (the reference language) and the
 same segment is cut from every translation, which must say exactly the phrase
 listed below, so a reworded translation fails here instead of showing twice.
 
-content/stage-info/status.json carries the status rules (guide/data/status-rules.json)
-with the scene graph they are judged on (tools/content/stage_status.py).
+The result is one metadata file per stage, content/stages/scene-NNN.json
+(srw64.stage-meta.v1): its title and, per route that plays it (two for the side-branch
+stages 123 and 124), the episode, the lane, the hidden elements and the enemies, each
+text an object by language. A custom campaign's stages carry the same format
+(docs/design/custom-campaign.md). content/stages/status.json carries the status rules
+(guide/data/status-rules.json) with the scene graph they are judged on
+(tools/content/stage_status.py), for the whole story.
 
-    python3 tools/content/export_stage_info.py          # writes content/stage-info/*.json
+    python3 tools/content/export_stage_info.py          # writes content/stages/*.json
     python3 tools/content/export_stage_info.py --check  # fails when a file is stale
 """
 from __future__ import annotations
@@ -37,9 +44,10 @@ import stage_status  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 GUIDE = ROOT / "guide" / "data"
-OUTPUT = ROOT / "content" / "stage-info"
+OUTPUT = ROOT / "content" / "stages"
 LANGS = ("zh-Hans", "ja", "en")
-SCHEMA = "srw64.stage-info.v1"
+SCHEMA = "srw64.stage-info.v1"     # one language's view, the step before the metadata
+META_SCHEMA = "srw64.stage-meta.v1"
 STATUS_SCHEMA = "srw64.stage-status.v1"
 PROTAGONISTS = ("ark", "serein", "brad", "manami")
 BADGE = re.compile(r"\s*\{[≠+?]\}")
@@ -117,8 +125,11 @@ def split_note(zh: str, note: str, lang: str, row: dict, where: str) -> str:
 
 
 def secret_text(zh: str, text: str, lang: str, row: dict, where: str) -> str:
-    head, sep, _ = zh.partition(PREFIX["zh-Hans"])
+    head, sep, rest = zh.partition(PREFIX["zh-Hans"])
     if not sep or head not in SECRET_QUALIFIERS:
+        return text
+    # A text with a part for another scenario too (「阿克篇：…；布拉德篇：…」) is everyone's.
+    if any(f"{other}{PREFIX['zh-Hans']}" in rest for other in SECRET_QUALIFIERS if other != head):
         return text
     protagonists, *phrases = SECRET_QUALIFIERS[head]
     prefix = (head if lang == "zh-Hans" else wording(tuple(phrases), lang)) + PREFIX[lang]
@@ -144,13 +155,17 @@ def export(lang: str) -> dict:
             owner = [p for k, p in KICKER.items() if k in kicker]
             if owner:
                 row["protagonists"] = owner
-            row["text"] = clean(secret_text(clean(s_zh["text"]), clean(s["text"]), lang, row, f'{card["id"]} {s["ref"]}'))
+            text = clean(secret_text(clean(s_zh["text"]), clean(s["text"]), lang, row, f'{card["id"]} {s["ref"]}'))
+            # The page shows the guide's one-line version where it has one (`short`).
+            row["text"] = clean(s["short"]) if s.get("short") else text
             secrets.append(row)
         enemies = []
         for key in ("parts", "retreats"):
             for p, p_zh in zip(card.get(key) or [], zh.get(key) or []):
                 row = {"part": clean(p["part"]) if key == "parts" else None, "from": clean(p["from"])}
                 note = split_note(clean(p_zh.get("note", "")), clean(p.get("note", "")), lang, row, f'{card["id"]} {key}')
+                if p.get("short_note"):
+                    note = clean(p["short_note"])
                 if note:
                     row["note"] = note
                 row["retreat"] = key == "retreats" or bool(RETREAT.search(p_zh.get("note", "")))
@@ -163,8 +178,45 @@ def export(lang: str) -> dict:
             "protagonists": list(PROTAGONISTS), "scenes": ordered}
 
 
+def stage_meta() -> dict[int, dict]:
+    """The three languages' views joined into one metadata document per scene: every
+    text becomes {language: text}; the rest is the same in all three (tests check)."""
+    views = {lang: export(lang)["scenes"] for lang in LANGS}
+    by = lambda key: lambda rows: {lang: rows[lang][key] for lang in LANGS}
+    meta = {}
+    for scene, cards in views["zh-Hans"].items():
+        out = []
+        for i, card in enumerate(cards):
+            each = {lang: views[lang][scene][i] for lang in LANGS}
+            secrets = []
+            for j, row in enumerate(card["secrets"]):
+                rows = {lang: each[lang]["secrets"][j] for lang in LANGS}
+                item = {"ref": row["ref"], "title": by("title")(rows), "text": by("text")(rows)}
+                if "protagonists" in row:
+                    item["protagonists"] = row["protagonists"]
+                secrets.append(item)
+            enemies = []
+            for j, row in enumerate(card["enemies"]):
+                rows = {lang: each[lang]["enemies"][j] for lang in LANGS}
+                item = {"part": by("part")(rows) if row["part"] is not None else None, "from": by("from")(rows)}
+                if "note" in row:
+                    item["note"] = by("note")(rows)
+                for key in ("protagonists", "routes", "third_party"):
+                    if key in row:
+                        item[key] = row[key]
+                item["retreat"] = row["retreat"]
+                enemies.append(item)
+            out.append({"guide_card": card["card"], "route": card["route"], "episode": card["episode"],
+                        "lane": by("lane")(each), "secrets": secrets, "enemies": enemies})
+        title = {lang: views[lang][scene][0]["title"] for lang in LANGS}
+        meta[int(scene)] = {"schema": META_SCHEMA, "scene": int(scene), "title": title,
+                            "title_ja": cards[0]["title_ja"], "cards": out}
+    return meta
+
+
 def outputs() -> dict[Path, str]:
-    files = {OUTPUT / f"{lang}.json": json.dumps(export(lang), ensure_ascii=False, indent=1) + "\n" for lang in LANGS}
+    files = {OUTPUT / f"scene-{scene:03d}.json": json.dumps(doc, ensure_ascii=False, indent=1) + "\n"
+             for scene, doc in stage_meta().items()}
     files[OUTPUT / "status.json"] = json.dumps(status(), ensure_ascii=False, indent=1) + "\n"
     return files
 
@@ -187,7 +239,16 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="fail when a file differs from the guide data")
     args = parser.parse_args()
     stale = 0
-    for path, text in outputs().items():
+    files = outputs()
+    # A stage that lost its card leaves no file behind.
+    for old in OUTPUT.glob("scene-*.json"):
+        if old not in files:
+            if args.check:
+                print(f"{old.relative_to(ROOT)} is left over; run tools/content/export_stage_info.py", file=sys.stderr)
+                stale = 1
+            else:
+                old.unlink()
+    for path, text in files.items():
         if args.check:
             if not path.exists() or path.read_text(encoding="utf-8") != text:
                 print(f"{path.relative_to(ROOT)} is stale; run tools/content/export_stage_info.py", file=sys.stderr)

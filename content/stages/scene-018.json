@@ -1,0 +1,96 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 18,
+ "title": {
+  "zh-Hans": "悲伤的香港城",
+  "ja": "悲しみのホンコンシティ",
+  "en": "Hong Kong City of Sorrow"
+ },
+ "title_ja": "悲しみのホンコンシティ",
+ "cards": [
+  {
+   "guide_card": "card-018",
+   "route": "real",
+   "episode": "10",
+   "lane": {
+    "zh-Hans": "真实系",
+    "ja": "リアル系",
+    "en": "Real"
+   },
+   "secrets": [
+    {
+     "ref": "secret-allenby",
+     "title": {
+      "zh-Hans": "阿莲比＋诺贝尔高达",
+      "ja": "アレンビー＋ノーベルガンダム",
+      "en": "Allenby + Noble Gundam"
+     },
+     "text": {
+      "zh-Hans": "用多蒙说服阿莲比（第 1 步，无门槛）",
+      "ja": "ドモンでアレンビーを説得（第1段階、条件なし）",
+      "en": "Persuade Allenby with Domon (step 1, no prerequisite)"
+     }
+    },
+    {
+     "ref": "secret-four",
+     "title": {
+      "zh-Hans": "凤",
+      "ja": "フォウ",
+      "en": "Four"
+     },
+     "text": {
+      "zh-Hans": "用卡缪说服凤两次（第 1 步）",
+      "ja": "カミーユでフォウを2回説得（第1段階）",
+      "en": "Persuade Four with Kamille twice (step 1)"
+     }
+    },
+    {
+     "ref": "secret-sortie-limits",
+     "title": {
+      "zh-Hans": "隐藏的出击限制",
+      "ja": "隠れた出撃制限",
+      "en": "Hidden deployment restrictions"
+     },
+     "text": {
+      "zh-Hans": "卡缪、沙罗、雅人、亮开局不能出击",
+      "ja": "カミーユ・沙羅・雅人・亮は開始時に出撃不可",
+      "en": "Kamille, Sara, Masato and Ryo can't deploy at the start"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "高性能雷达",
+      "ja": "高性能レーダー",
+      "en": "High-Fidelity Radar"
+     },
+     "from": {
+      "zh-Hans": "凤",
+      "ja": "フォウ",
+      "en": "Four"
+     },
+     "note": {
+      "zh-Hans": "可被卡缪说服（说服后不掉落）",
+      "ja": "カミーユで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Kamille (no drop if persuaded)"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "阿莲比",
+      "ja": "アレンビー",
+      "en": "Allenby"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

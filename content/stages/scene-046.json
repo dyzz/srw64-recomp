@@ -1,0 +1,141 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 46,
+ "title": {
+  "zh-Hans": "新的道路",
+  "ja": "新しき道",
+  "en": "A New Path"
+ },
+ "title_ja": "新しき道",
+ "cards": [
+  {
+   "guide_card": "card-031",
+   "route": "oz",
+   "episode": "21",
+   "lane": {
+    "zh-Hans": "OZ路线",
+    "ja": "OZルート",
+    "en": "OZ route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-oz",
+     "title": {
+      "zh-Hans": "破晓作战：OZ 或独立军",
+      "ja": "オペレーション・デイブレイク：OZか独立軍",
+      "en": "Operation Daybreak: OZ or Independence Army"
+     },
+     "text": {
+      "zh-Hans": "「破晓作战」关末选「加入OZ，为恢复秩序而努力」",
+      "ja": "「オペレーション・デイブレイク」で「OZに入り、秩序回復に努める」",
+      "en": "Choose “Join OZ and work to restore order” in Operation Daybreak"
+     }
+    },
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "用布拉德击坠卡茨（第 3 回合我方阶段登场）",
+      "ja": "ブラッドでカーツを撃墜（第3ターン味方フェイズ登場）",
+      "en": "Shoot down Kurtz with Brad (appears turn 3 player phase)"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    },
+    {
+     "ref": "secret-dialogue-branches",
+     "title": {
+      "zh-Hans": "只影响对白的分支",
+      "ja": "台詞のみの分岐",
+      "en": "Dialogue-only branches"
+     },
+     "text": {
+      "zh-Hans": "开场给战舰命名与对利修的选项只改变台词",
+      "ja": "艦名の二択とリッシュへの三択はセリフが変わるだけ",
+      "en": "The ship-naming and Rish choices only change dialogue"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "抗光束涂层",
+      "ja": "対ビームコーティング",
+      "en": "Anti-Beam Coating"
+     },
+     "from": {
+      "zh-Hans": "赫尔马特",
+      "ja": "ヘルマット",
+      "en": "Helmut"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "秀特",
+      "ja": "ショット",
+      "en": "Shot"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "强化推进器",
+      "ja": "メガブースター",
+      "en": "Mega Booster"
+     },
+     "from": {
+      "zh-Hans": "古拉博士",
+      "ja": "グラー博士",
+      "en": "Dr. Gura"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "暗黑大将军",
+      "ja": "暗黒大将軍",
+      "en": "Dark General"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "卡茨",
+      "ja": "カーツ",
+      "en": "Kurtz"
+     },
+     "note": {
+      "zh-Hans": "布拉德不在场时登场即离开",
+      "ja": "ブラッドがマップ上にいないと登場してすぐ離脱",
+      "en": "Leaves as soon as it appears if Brad isn't on the map"
+     },
+     "protagonists": [
+      "brad"
+     ],
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

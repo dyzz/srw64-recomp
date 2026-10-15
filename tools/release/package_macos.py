@@ -192,6 +192,9 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
                 target = resources / "dialogue" / path.relative_to(source)
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(path, target)
+            # Each stage's metadata and the status rules, beside it in content/ (docs/design/stage-info.md).
+            if (source.parent / "stages").is_dir():
+                shutil.copytree(source.parent / "stages", resources / "stages")
         if filters is not None:
             # The built-in RetroArch filters (tools/content/fetch_filters.py), listed by the settings.
             shutil.copytree(filters.resolve(strict=True), resources / "filters", symlinks=False,

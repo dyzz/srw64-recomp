@@ -1,0 +1,145 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 48,
+ "title": {
+  "zh-Hans": "人类的胜利，而后……（上）",
+  "ja": "人類の勝利、そして……（前）",
+  "en": "Humanity's Victory, and Then... (Part 1)"
+ },
+ "title_ja": "人類の勝利、そして……（前）",
+ "cards": [
+  {
+   "guide_card": "card-oz23",
+   "route": "oz",
+   "episode": "23",
+   "lane": {
+    "zh-Hans": "OZ路线",
+    "ja": "OZルート",
+    "en": "OZ route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-garalia",
+     "title": {
+      "zh-Hans": "卡拉利亚＋巴斯托尔",
+      "ja": "ガラリア＋バストール",
+      "en": "Garalia + Bastole"
+     },
+     "text": {
+      "zh-Hans": "无需操作：卡拉利亚随奥拉战士暂离，下一关关末回归",
+      "ja": "操作不要：ガラリアは一時出撃不可、次ステージクリア時に復帰",
+      "en": "No action needed: Garalia is benched until the end of the next stage"
+     }
+    },
+    {
+     "ref": "secret-route-lera",
+     "title": {
+      "zh-Hans": "蕾拉支线：那双眼中映不出未来",
+      "ja": "レラ分岐：その瞳に未来は映ることなく",
+      "en": "Lera branch: Those Eyes Reflect No Future"
+     },
+     "text": {
+      "zh-Hans": "无需操作：蕾拉支线只改变本关对话",
+      "ja": "操作不要：レラルートで変わるのは会話だけ",
+      "en": "No action needed: the Lera branch only changes this stage's dialogue"
+     },
+     "protagonists": [
+      "ark",
+      "serein"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "德雷克",
+      "ja": "ドレイク",
+      "en": "Drake"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "陶德",
+      "ja": "トッド",
+      "en": "Tod"
+     },
+     "note": {
+      "zh-Hans": "德雷克被击坠时撤退",
+      "ja": "ドレイクが撃墜されると撤退",
+      "en": "Retreats when Drake is shot down"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "巴恩",
+      "ja": "バーン",
+      "en": "Bern"
+     },
+     "note": {
+      "zh-Hans": "德雷克被击坠时撤退",
+      "ja": "ドレイクが撃墜されると撤退",
+      "en": "Retreats when Drake is shot down"
+     },
+     "retreat": true
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "古拉博士",
+      "ja": "グラー博士",
+      "en": "Dr. Gura"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "暗黑大将军",
+      "ja": "暗黒大将軍",
+      "en": "Dark General"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "黑骑士",
+      "ja": "黒騎士",
+      "en": "Black Knight"
+     },
+     "note": {
+      "zh-Hans": "德雷克被击坠时撤退",
+      "ja": "ドレイクが撃墜されると撤退",
+      "en": "Retreats when Drake is shot down"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

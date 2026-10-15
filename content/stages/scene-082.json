@@ -1,0 +1,91 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 82,
+ "title": {
+  "zh-Hans": "扭曲的宇宙",
+  "ja": "ゆがむ宇宙",
+  "en": "Warped Space"
+ },
+ "title_ja": "ゆがむ宇宙",
+ "cards": [
+  {
+   "guide_card": "card-096",
+   "route": "ia",
+   "episode": "41",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战（10 回合内突破）",
+    "ja": "独立軍ルート／単独行動（10ターン以内に突破）",
+    "en": "Independence Army route / fight alone (broke through within 10 turns)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-breakthrough",
+     "title": {
+      "zh-Hans": "决死突破作战：10 回合限时",
+      "ja": "決死の突破作戦：10ターン制限",
+      "en": "Desperate Breakthrough: 10-turn limit"
+     },
+     "text": {
+      "zh-Hans": "「决死突破作战」两篇都在第 10 回合内过关才会进入",
+      "ja": "「決死の突破作戦」前後編とも第10ターン以内クリアで進入",
+      "en": "Reached only if both “Desperate Breakthrough” parts end by turn 10"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "卡达尔",
+      "ja": "ガンダル",
+      "en": "Gandal"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "加涅拉",
+      "ja": "ジャネラ",
+      "en": "Janera"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "增装燃料槽",
+      "ja": "プロペラントタンク",
+      "en": "Propellant Tank"
+     },
+     "from": {
+      "zh-Hans": "瓦尔",
+      "ja": "ワール",
+      "en": "Wahl"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "戈曼",
+      "ja": "ゴーマン",
+      "en": "Gorman"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

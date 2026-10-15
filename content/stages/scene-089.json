@@ -1,0 +1,91 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 89,
+ "title": {
+  "zh-Hans": "噩梦，再临",
+  "ja": "悪夢、再来",
+  "en": "Nightmare, Once More"
+ },
+ "title_ja": "悪夢、再来",
+ "cards": [
+  {
+   "guide_card": "card-116",
+   "route": "ia",
+   "episode": "51",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战",
+    "ja": "独立軍ルート／単独行動",
+    "en": "Independence Army route / fight alone"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-muge",
+     "title": {
+      "zh-Hans": "穆格宇宙或地球圈",
+      "ja": "ムゲ宇宙か地球圏か",
+      "en": "Muge space or Earth"
+     },
+     "text": {
+      "zh-Hans": "选「前往穆格的宇宙」→「最后的咆哮」／「留在地球圈」→「夏亚的叛乱」",
+      "ja": "「ムゲの宇宙へ行く」→「最後の咆哮」／「地球圏に残留する」→「シャアの反乱」",
+      "en": "“Go to the Muge universe” → The Last Roar; stay → Char's Rebellion"
+     }
+    },
+    {
+     "ref": "secret-mashymre-chara",
+     "title": {
+      "zh-Hans": "马修玛＋扎古Ⅲ改／姬拉＋盖马克",
+      "ja": "マシュマー＋ザクⅢ改／キャラ＋ゲーマルク",
+      "en": "Mashymre + Zaku III Custom / Chara + Geymalk"
+     },
+     "text": {
+      "zh-Hans": "要拿马修玛或姬拉，选「留在地球圈」",
+      "ja": "マシュマーかキャラが欲しいなら「地球圏に残留する」を選ぶ",
+      "en": "To get Mashymre or Chara, pick “Stay on Earth”"
+     }
+    },
+    {
+     "ref": "secret-neue-ziel",
+     "title": {
+      "zh-Hans": "诺耶·吉尔",
+      "ja": "ノイエ・ジール",
+      "en": "Neue Ziel"
+     },
+     "text": {
+      "zh-Hans": "选「留在地球圈」，「夏亚的叛乱」关末获得诺耶·吉尔",
+      "ja": "「地球圏に残留する」→「シャアの反乱」クリア時ノイエ・ジール入手",
+      "en": "Pick “Stay on Earth”; get the Neue Ziel after “Char's Rebellion”"
+     }
+    },
+    {
+     "ref": "secret-qubeley-color",
+     "title": {
+      "zh-Hans": "卡碧尼Mk-Ⅱ 改色",
+      "ja": "キュベレイmkⅡ カラー変更",
+      "en": "Qubeley Mk-II recolor"
+     },
+     "text": {
+      "zh-Hans": "普露与普露兹都在队时，选「改成普露兹用的红色」",
+      "ja": "プルとプルツーが在籍なら「プルツー用に赤くする」を選ぶ",
+      "en": "With Ple and Ple-Two on the team, pick “Make it Ple-Two's red”"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "吉尔德罗姆",
+      "ja": "ギルドローム",
+      "en": "Gildrome"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

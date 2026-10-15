@@ -1,0 +1,38 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 95,
+ "title": {
+  "zh-Hans": "绝望与悲伤之拳（上）",
+  "ja": "絶望と悲しみの拳 （前）",
+  "en": "Fist of Despair and Sorrow (Part 1)"
+ },
+ "title_ja": "絶望と悲しみの拳 （前）",
+ "cards": [
+  {
+   "guide_card": "card-095",
+   "route": "oz",
+   "episode": "40",
+   "lane": {
+    "zh-Hans": "OZ路线／随特列斯",
+    "ja": "OZルート／トレーズにつく",
+    "en": "OZ route / with Treize"
+   },
+   "secrets": [
+    {
+     "ref": "secret-story-attacks",
+     "title": {
+      "zh-Hans": "剧情解锁的必杀技与合体技",
+      "ja": "ストーリーで解禁される必殺技と合体技",
+      "en": "Story-unlocked finishers and combination attacks"
+     },
+     "text": {
+      "zh-Hans": "无需操作：神高达在关末习得石破天惊拳",
+      "ja": "操作不要：クリア時にゴッドガンダムが石破天驚拳を習得",
+      "en": "No action: Burning Gundam learns Sekiha Tenkyoken at stage end"
+     }
+    }
+   ],
+   "enemies": []
+  }
+ ]
+}

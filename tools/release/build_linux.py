@@ -212,6 +212,8 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
     # network, the container has none), listed by the settings as filters/ beside the program.
     run([sys.executable, ROOT / 'tools/content/fetch_filters.py'])
     shutil.copytree(ROOT / 'build/filters', stage / 'filters', ignore=shutil.ignore_patterns('.commit'))
+    # Each stage's metadata and the status rules (docs/design/stage-info.md).
+    shutil.copytree(ROOT / 'content/stages', stage / 'stages')
     source_text = ROOT / 'content/dialogue'
     for path in sorted(source_text.rglob('*.txt')):
         target = stage / 'dialogue' / path.relative_to(source_text)

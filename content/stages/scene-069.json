@@ -1,0 +1,89 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 69,
+ "title": {
+  "zh-Hans": "笼罩地球圈的乌云",
+  "ja": "地球圏を覆う暗雲",
+  "en": "Dark Clouds over the Earth Sphere"
+ },
+ "title_ja": "地球圏を覆う暗雲",
+ "cards": [
+  {
+   "guide_card": "card-061",
+   "route": "cp",
+   "episode": "31",
+   "lane": {
+    "zh-Hans": "完全和平路线",
+    "ja": "完全平和ルート",
+    "en": "Complete Pacifism route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-aisha",
+     "title": {
+      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "ja": "アイシャ＋エルブルス",
+      "en": "Aisha + Elbulls"
+     },
+     "text": {
+      "zh-Hans": "第 3 回合我方阶段或敌剩 7 台以下时玛娜米须在场",
+      "ja": "第3ターン味方フェイズか敵残り7機以下でマナミが戦場にいること",
+      "en": "Have Manami on the map on turn 3 player phase or at 7 or fewer enemies"
+     },
+     "protagonists": [
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-reese",
+     "title": {
+      "zh-Hans": "利修＋西格露恩",
+      "ja": "リッシュ＋シグルーン",
+      "en": "Rish + Sigroon"
+     },
+     "text": {
+      "zh-Hans": "用塞蕾茵说服利修（「不会燃尽的流星」选第 2／3 项）",
+      "ja": "セレインでリッシュを説得（「燃え尽きない流星」で2番目か3番目）",
+      "en": "Persuade Rish with Selain (requires option 2 or 3 in step 1)"
+     },
+     "protagonists": [
+      "serein"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "巴伦",
+      "ja": "バレン",
+      "en": "Baren"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "亚赞",
+      "ja": "ヤザン",
+      "en": "Yazan"
+     },
+     "note": {
+      "zh-Hans": "巴伦被击坠后登场",
+      "ja": "バレン撃墜後に登場",
+      "en": "Appears after Baren is shot down"
+     },
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

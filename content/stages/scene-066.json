@@ -1,0 +1,205 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 66,
+ "title": {
+  "zh-Hans": "战斗的意义何在",
+  "ja": "戦いの意味は",
+  "en": "What We Fight For"
+ },
+ "title_ja": "戦いの意味は",
+ "cards": [
+  {
+   "guide_card": "card-046",
+   "route": "cp",
+   "episode": "27",
+   "lane": {
+    "zh-Hans": "完全和平路线",
+    "ja": "完全平和ルート",
+    "en": "Complete Pacifism route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-minerva-x",
+     "title": {
+      "zh-Hans": "米涅瓦X",
+      "ja": "ミネルバX",
+      "en": "Minerva X"
+     },
+     "text": {
+      "zh-Hans": "用甲儿说服米涅瓦X两次（敌方剩 8 台以下登场）",
+      "ja": "甲児でミネルバXを2回説得（敵残り8機以下で登場）",
+      "en": "Persuade Minerva X twice with Koji (appears at ≤8 enemies)"
+     }
+    },
+    {
+     "ref": "secret-aisha",
+     "title": {
+      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "ja": "アイシャ＋エルブルス",
+      "en": "Aisha + Elbulls"
+     },
+     "text": {
+      "zh-Hans": "用玛娜米说服艾夏（需「不会燃尽的流星」已说服）",
+      "ja": "マナミでアイシャを説得（「燃え尽きない流星」で説得済み）",
+      "en": "Persuade Aisha with Manami (after “The Shooting Star That Never Burns Out”)"
+     },
+     "protagonists": [
+      "manami"
+     ]
+    },
+    {
+     "ref": "secret-elrich",
+     "title": {
+      "zh-Hans": "埃尔利希＋诺鲁孜",
+      "ja": "エルリッヒ＋ノウルーズ",
+      "en": "Ehrlich + Norouz"
+     },
+     "text": {
+      "zh-Hans": "用阿克说服埃尔利希（无门槛），关末加入",
+      "ja": "アークでエルリッヒを説得（条件なし）、クリア時に加入",
+      "en": "Persuade Ehrlich with Ark (no prerequisite); joins at stage end"
+     },
+     "protagonists": [
+      "ark"
+     ]
+    },
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "用布拉德击坠卡茨，累计满两次则交出瓦伊罗斯",
+      "ja": "ブラッドでカーツを撃墜、累計2回でヴァイローズを譲り受ける",
+      "en": "Shoot down Kurtz with Brad; at two total he hands over the Virose"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "古拉博士",
+      "ja": "グラー博士",
+      "en": "Dr. Gura"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "奖励+10000",
+      "ja": "ボーナス+10000",
+      "en": "Bonus +10000"
+     },
+     "from": {
+      "zh-Hans": "雅努斯侯爵",
+      "ja": "ヤヌス侯爵",
+      "en": "Marquis Janus"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "精神感应框架",
+      "ja": "サイコフレーム",
+      "en": "Psycoframe"
+     },
+     "from": {
+      "zh-Hans": "米涅瓦X",
+      "ja": "ミネルバX",
+      "en": "Minerva X"
+     },
+     "note": {
+      "zh-Hans": "可被甲儿说服（说服后不掉落）",
+      "ja": "甲児で説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Koji (no drop if persuaded)"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "埃尔利希",
+      "ja": "エルリッヒ",
+      "en": "Ehrlich"
+     },
+     "note": {
+      "zh-Hans": "可被阿克说服（说服后不掉落）",
+      "ja": "アークで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Ark (no drop if persuaded)"
+     },
+     "protagonists": [
+      "ark"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "利修",
+      "ja": "リッシュ",
+      "en": "Rish"
+     },
+     "protagonists": [
+      "serein"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "艾夏",
+      "ja": "アイシャ",
+      "en": "Aisha"
+     },
+     "protagonists": [
+      "manami"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "混合式装甲",
+      "ja": "ハイブリッドアーマー",
+      "en": "Hybrid Armor"
+     },
+     "from": {
+      "zh-Hans": "卡茨",
+      "ja": "カーツ",
+      "en": "Kurtz"
+     },
+     "note": {
+      "zh-Hans": "敌方剩 14 台以下时登场",
+      "ja": "敵残り14機以下で登場",
+      "en": "Appears when 14 or fewer enemies remain"
+     },
+     "protagonists": [
+      "brad"
+     ],
+     "retreat": false
+    }
+   ]
+  }
+ ]
+}

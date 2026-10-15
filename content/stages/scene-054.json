@@ -1,0 +1,66 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 54,
+ "title": {
+  "zh-Hans": "正因为纯粹",
+  "ja": "純粋であるがゆえに",
+  "en": "Because of That Purity"
+ },
+ "title_ja": "純粋であるがゆえに",
+ "cards": [
+  {
+   "guide_card": "card-054",
+   "route": "oz",
+   "episode": "29",
+   "lane": {
+    "zh-Hans": "OZ路线",
+    "ja": "OZルート",
+    "en": "OZ route"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-gato-base",
+     "title": {
+      "zh-Hans": "月球是地狱！：守住基地",
+      "ja": "月は地獄だ!：基地を守る",
+      "en": "The Moon Is Hell!: holding the base"
+     },
+     "text": {
+      "zh-Hans": "无需操作：卡多是否加入会改变捷度等人的加入方式",
+      "ja": "操作不要：ガトーの加入有無でジュドーたちの加入のしかたが変わる",
+      "en": "No action needed: recruiting Gato changes how Judau and the others join"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "玛古",
+      "ja": "マーグ",
+      "en": "Marg"
+     },
+     "note": {
+      "zh-Hans": "布拉奇被击坠时离场（关卡结束）",
+      "ja": "ブラッキーが撃墜されると離脱（ステージ終了）",
+      "en": "Leaves when Blacky is shot down (the stage ends)"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

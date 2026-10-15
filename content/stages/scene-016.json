@@ -1,0 +1,153 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 16,
+ "title": {
+  "zh-Hans": "引向毁灭的高达",
+  "ja": "破滅を導くガンダム",
+  "en": "The Gundam That Leads to Ruin"
+ },
+ "title_ja": "破滅を導くガンダム",
+ "cards": [
+  {
+   "guide_card": "card-016",
+   "route": "common",
+   "episode": "8",
+   "lane": {
+    "zh-Hans": "共通",
+    "ja": "共通",
+    "en": "Common"
+   },
+   "secrets": [
+    {
+     "ref": "secret-emma",
+     "title": {
+      "zh-Hans": "爱玛＋高达Mk-Ⅱ",
+      "ja": "エマ＋ガンダムmkⅡ",
+      "en": "Emma + Gundam Mk-II"
+     },
+     "text": {
+      "zh-Hans": "用克瓦特罗说服爱玛（恭至 HP 50% 以下前）",
+      "ja": "クワトロでエマを説得（キョウジHP50%以下になる前に）",
+      "en": "Persuade Emma with Quattro before Kyoji drops to 50% HP"
+     }
+    },
+    {
+     "ref": "secret-katz",
+     "title": {
+      "zh-Hans": "卡茨＋瓦伊罗斯（含超级阿斯盖因）",
+      "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
+      "en": "Kurtz + Virose (including Super Earthgain)"
+     },
+     "text": {
+      "zh-Hans": "用布拉德击坠卡茨（第 3 回合我方阶段登场）",
+      "ja": "ブラッドでカーツを撃墜（第3ターン味方フェイズ登場）",
+      "en": "Shoot down Kurtz with Brad (appears turn 3 player phase)"
+     },
+     "protagonists": [
+      "brad"
+     ]
+    },
+    {
+     "ref": "secret-dialogue-branches",
+     "title": {
+      "zh-Hans": "只影响对白的分支",
+      "ja": "台詞のみの分岐",
+      "en": "Dialogue-only branches"
+     },
+     "text": {
+      "zh-Hans": "对艾夏的二选只改变台词",
+      "ja": "アイシャへの二択はセリフが変わるだけ",
+      "en": "The two-way choice about Aisha only changes dialogue"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "莱拉",
+      "ja": "ライラ",
+      "en": "Lila"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "磁力覆膜",
+      "ja": "マグネットコーティング",
+      "en": "Magnetic Coating"
+     },
+     "from": {
+      "zh-Hans": "爱玛",
+      "ja": "エマ",
+      "en": "Emma"
+     },
+     "note": {
+      "zh-Hans": "可被克瓦特罗说服（说服后不掉落）",
+      "ja": "クワトロで説得可能（説得時はドロップなし）",
+      "en": "Can be persuaded by Quattro (no drop if persuaded)"
+     },
+     "protagonists": [
+      "brad",
+      "manami"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "卡茨",
+      "ja": "カーツ",
+      "en": "Kurtz"
+     },
+     "protagonists": [
+      "brad"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "艾夏",
+      "ja": "アイシャ",
+      "en": "Aisha"
+     },
+     "protagonists": [
+      "manami"
+     ],
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "米诺夫斯基飞行器",
+      "ja": "ミノフスキークラフト",
+      "en": "Minovsky Craft"
+     },
+     "from": {
+      "zh-Hans": "京二",
+      "ja": "キョウジ",
+      "en": "Kyoji"
+     },
+     "note": {
+      "zh-Hans": "HP 50% 以下时撤退，关卡随即结束",
+      "ja": "HP50%以下で撤退、そのままステージ終了",
+      "en": "Retreats at 50% HP or below, and the stage then ends"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

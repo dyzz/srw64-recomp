@@ -71,11 +71,13 @@
    "secrets": [
     {
      "ref": "secret-apolly-roberto",
-     "text": "Choosing a Real protagonist automatically gives Aboly, Roberto and two Schuzrum-Dias; they arrive as reinforcements mid-stage; nothing to do"
+     "text": "Choosing a Real protagonist automatically gives Aboly, Roberto and two Schuzrum-Dias; they arrive as reinforcements mid-stage; nothing to do",
+     "short": "Nothing to do: Aboly and Roberto arrive as mid-stage reinforcements"
     },
     {
      "ref": "secret-dialogue-branches",
-     "text": "The mid-stage three-way choice (“Y-yes...” / “Leave me alone!” / “...”) only changes dialogue {+}"
+     "text": "The mid-stage three-way choice (“Y-yes...” / “Leave me alone!” / “...”) only changes dialogue {+}",
+     "short": "The mid-stage three-way choice only changes dialogue"
     }
    ]
   },
@@ -109,7 +111,8 @@
    "secrets": [
     {
      "ref": "secret-apolly-roberto",
-     "text": "Choosing a Real protagonist automatically gives Aboly, Roberto and two Schuzrum-Dias; they arrive as reinforcements when 10 or fewer enemies remain; nothing to do"
+     "text": "Choosing a Real protagonist automatically gives Aboly, Roberto and two Schuzrum-Dias; they arrive as reinforcements when 10 or fewer enemies remain; nothing to do",
+     "short": "Nothing to do: Aboly and Roberto arrive at 10 or fewer enemies"
     }
    ]
   },
@@ -187,7 +190,8 @@
    "secrets": [
     {
      "ref": "secret-sortie-limits",
-     "text": "Opening two-way choice in Ark's scenario: “I’ll go” / “Let me think about it a little longer.” Choosing option 2 means Ark can't deploy at the start; the Gale squad appears on the player phase of turn 4 or when all enemies are destroyed, and then on the player phase of turn 6 or when 6 or fewer enemies remain, Ark arrives in the Soldifar. Neither choice has effects beyond this stage {+}"
+     "text": "Opening two-way choice in Ark's scenario: “I’ll go” / “Let me think about it a little longer.” Choosing option 2 means Ark can't deploy at the start; the Gale squad appears on the player phase of turn 4 or when all enemies are destroyed, and then on the player phase of turn 6 or when 6 or fewer enemies remain, Ark arrives in the Soldifar. Neither choice has effects beyond this stage {+}",
+     "short": "Pick option 2 at the start and Ark only arrives later"
     }
    ]
   },
@@ -253,7 +257,8 @@
    "secrets": [
     {
      "ref": "secret-aina",
-     "text": "First have Shiro and Aina fight once (either can start it); afterwards persuade Aina with Shiro when adjacent (step 1; step 2 is in “Shock at Victoria”) {+}"
+     "text": "First have Shiro and Aina fight once (either can start it); afterwards persuade Aina with Shiro when adjacent (step 1; step 2 is in “Shock at Victoria”) {+}",
+     "short": "Fight Aina once, then persuade her with Shiro (step 1)"
     }
    ]
   },
@@ -305,7 +310,8 @@
     {
      "part": "Bio-Sensor",
      "from": "Zechs",
-     "note": "Retreats at the end of the turn 2 enemy phase (start of the turn 3 player phase), or when all other enemies are wiped out"
+     "note": "Retreats at the end of the turn 2 enemy phase (start of the turn 3 player phase), or when all other enemies are wiped out",
+     "short_note": "Retreats at turn 3 player phase or when others fall"
     },
     {
      "part": "High-Fidelity Radar",
@@ -326,7 +332,8 @@
    "secrets": [
     {
      "ref": "secret-gale",
-     "text": "Persuade Gale with Eiji (no prerequisite). He doesn't join on the spot: on the Independence Army / Complete Pacifism routes he joins with the Greimkaiser (3 upgrade levels) at the end of “The Battle of Ryozanpaku”; on the OZ route he joins at the start of “The Nightmare Returns” or the end of “The Chaos Never Ends” (4 upgrade levels) {≠}"
+     "text": "Persuade Gale with Eiji (no prerequisite). He doesn't join on the spot: on the Independence Army / Complete Pacifism routes he joins with the Greimkaiser (3 upgrade levels) at the end of “The Battle of Ryozanpaku”; on the OZ route he joins at the start of “The Nightmare Returns” or the end of “The Chaos Never Ends” (4 upgrade levels) {≠}",
+     "short": "Persuade Gale with Eiji (no prerequisite; joins later)"
     }
    ]
   },
@@ -429,7 +436,8 @@
    "secrets": [
     {
      "ref": "secret-katz",
-     "text": "Kurtz leaves the party in this stage; he can't be shot down here and nothing counts. He later appears as an enemy several times, and Brad shooting him down is one of the conditions for getting Kurtz back"
+     "text": "Kurtz leaves the party in this stage; he can't be shot down here and nothing counts. He later appears as an enemy several times, and Brad shooting him down is one of the conditions for getting Kurtz back",
+     "short": "Nothing to do: Kurtz leaves; no shoot-down counts here"
     }
    ]
   },
@@ -454,7 +462,8 @@
     {
      "part": "Psycoframe",
      "from": "Le Cain",
-     "note": "At 50% HP or below the stage ends in immediate victory, so to shoot it down you must take it from above 50% in a single attack"
+     "note": "At 50% HP or below the stage ends in immediate victory, so to shoot it down you must take it from above 50% in a single attack",
+     "short_note": "Stage ends at 50% HP; one-shot it from above 50%"
     },
     {
      "part": "Anti-Beam Coating",
@@ -475,11 +484,13 @@
    "secrets": [
     {
      "ref": "secret-rx-trio",
-     "text": "Don't let the guerrillas' Gundam, Guncannon and Guntank be shot down; escaping into the Green Area counts as saved. Each is checked individually: whichever ones you save are yours after the stage, each with 1 upgrade level {≠}"
+     "text": "Don't let the guerrillas' Gundam, Guncannon and Guntank be shot down; escaping into the Green Area counts as saved. Each is checked individually: whichever ones you save are yours after the stage, each with 1 upgrade level {≠}",
+     "short": "Keep the Gundam, Guncannon and Guntank alive (Green Area counts)"
     },
     {
      "ref": "secret-escort-bonus",
-     "text": "At stage clear a bonus is paid by losses: none lost +35000, 1 lost +20000, 2 lost +10000; all three lost, no bonus {+}"
+     "text": "At stage clear a bonus is paid by losses: none lost +35000, 1 lost +20000, 2 lost +10000; all three lost, no bonus {+}",
+     "short": "Lose none of the three for +35000; less for each loss"
     }
    ],
    "notes": [
@@ -506,12 +517,14 @@
     {
      "part": "Bio-Sensor",
      "from": "Le Cain",
-     "note": "Reappears after being shot down the first time; once the reappeared unit is at 50% HP or below the stage ends in victory, so shoot it down from above 50% in a single attack"
+     "note": "Reappears after being shot down the first time; once the reappeared unit is at 50% HP or below the stage ends in victory, so shoot it down from above 50% in a single attack",
+     "short_note": "Reappears; then one-shot it from above 50% HP"
     },
     {
      "part": "Chobham Armor",
      "from": "Gosterro",
-     "note": "Appears after Le Cain is shot down the first time; the stage ends when Le Cain's HP is 50% or below"
+     "note": "Appears after Le Cain is shot down the first time; the stage ends when Le Cain's HP is 50% or below",
+     "short_note": "Appears after Le Cain is first shot down"
     }
    ],
    "notes": [
@@ -607,15 +620,18 @@
    "secrets": [
     {
      "ref": "secret-emma",
-     "text": "Super only: Emma appears on the player phase of turn 3 or when 12 or fewer enemies remain; persuade her with Quattro (no prerequisite). You must persuade her before Kyoji (Dark Gundam) drops to 50% HP or below or is destroyed — the stage ends at that moment {+}"
+     "text": "Super only: Emma appears on the player phase of turn 3 or when 12 or fewer enemies remain; persuade her with Quattro (no prerequisite). You must persuade her before Kyoji (Dark Gundam) drops to 50% HP or below or is destroyed — the stage ends at that moment {+}",
+     "short": "Persuade Emma with Quattro before Kyoji drops to 50% HP"
     },
     {
      "ref": "secret-katz",
-     "text": "Brad's scenario: Kurtz appears in the turn 3 player phase or when the enemy is down to 12 or fewer; shoot him down with Brad, which counts toward getting Kurtz back"
+     "text": "Brad's scenario: Kurtz appears in the turn 3 player phase or when the enemy is down to 12 or fewer; shoot him down with Brad, which counts toward getting Kurtz back",
+     "short": "Shoot down Kurtz with Brad (appears turn 3 player phase)"
     },
     {
      "ref": "secret-dialogue-branches",
-     "text": "In Manami's scenario the two-way choice about Aisha (“Wait, Aisha!” / “What a shame, Aisha”) only changes the dialogue {+}"
+     "text": "In Manami's scenario the two-way choice about Aisha (“Wait, Aisha!” / “What a shame, Aisha”) only changes the dialogue {+}",
+     "short": "The two-way choice about Aisha only changes dialogue"
     }
    ]
   },
@@ -658,7 +674,8 @@
    "secrets": [
     {
      "ref": "secret-emma",
-     "text": "Nothing to do on Real: Emma joins at the start of this stage piloting the Jegan (1 upgrade level), without the Gundam Mk-II {+}"
+     "text": "Nothing to do on Real: Emma joins at the start of this stage piloting the Jegan (1 upgrade level), without the Gundam Mk-II {+}",
+     "short": "Nothing to do: Emma joins at the start in the Jegan"
     }
    ]
   },
@@ -701,15 +718,18 @@
    "secrets": [
     {
      "ref": "secret-allenby",
-     "text": "Persuade Allenby with Domon (step 1, no prerequisite)"
+     "text": "Persuade Allenby with Domon (step 1, no prerequisite)",
+     "short": "Persuade Allenby with Domon (step 1, no prerequisite)"
     },
     {
      "ref": "secret-four",
-     "text": "Persuade Four with Kamille twice (step 1)"
+     "text": "Persuade Four with Kamille twice (step 1)",
+     "short": "Persuade Four with Kamille twice (step 1)"
     },
     {
      "ref": "secret-sortie-limits",
-     "text": "Kamille, Sara, Masato and Ryo cannot deploy at the start; Kamille arrives in the Gundam Mk-II when 5 or fewer enemies remain {+}"
+     "text": "Kamille, Sara, Masato and Ryo cannot deploy at the start; Kamille arrives in the Gundam Mk-II when 5 or fewer enemies remain {+}",
+     "short": "Kamille, Sara, Masato and Ryo can't deploy at the start"
     }
    ]
   },
@@ -748,7 +768,8 @@
    "secrets": [
     {
      "ref": "secret-allenby",
-     "text": "Allenby appears when 5 or fewer enemies remain; persuade her with Domon before the end of the player phase on turn 9 (step 1, no prerequisite) {+}"
+     "text": "Allenby appears when 5 or fewer enemies remain; persuade her with Domon before the end of the player phase on turn 9 (step 1, no prerequisite) {+}",
+     "short": "Persuade Allenby with Domon by the turn 9 player phase"
     }
    ],
    "notes": [
@@ -781,12 +802,14 @@
     {
      "part": "Minovsky Craft",
      "from": "Garalia",
-     "note": "Switches to your side at the start of the turn 4 enemy phase; it drops only if shot down before then (shooting her down means she can't be recruited)"
+     "note": "Switches to your side at the start of the turn 4 enemy phase; it drops only if shot down before then (shooting her down means she can't be recruited)",
+     "short_note": "Drops only if shot down before turn 4 enemy phase"
     },
     {
      "part": "Magnetic Coating",
      "from": "Bern {+}",
-     "note": "Appears only if Garalia joined, or if Show shot down Garalia; doesn't appear if another unit shot her down"
+     "note": "Appears only if Garalia joined, or if Show shot down Garalia; doesn't appear if another unit shot her down",
+     "short_note": "Appears only if Garalia joined or Show shot her down"
     },
     {
      "part": "Chobham Armor",
@@ -797,15 +820,18 @@
    "secrets": [
     {
      "ref": "secret-garalia",
-     "text": "Only fights between Show and Garalia matter: Show must not attack her, and when she attacks Show, have him defend or evade instead. Other units attacking her has no effect (except shooting her down). At the start of the enemy phase on turn 4 she switches to your side on the spot and joins {≠}"
+     "text": "Only fights between Show and Garalia matter: Show must not attack her, and when she attacks Show, have him defend or evade instead. Other units attacking her has no effect (except shooting her down). At the start of the enemy phase on turn 4 she switches to your side on the spot and joins {≠}",
+     "short": "Show must not attack Garalia; defend or evade her attacks"
     },
     {
      "ref": "secret-todd-silky",
-     "text": "Garalia is only the condition for Silky riding along; whether Tod joins later depends only on Show's two persuasions and has nothing to do with Garalia {≠}"
+     "text": "Garalia is only the condition for Silky riding along; whether Tod joins later depends only on Show's two persuasions and has nothing to do with Garalia {≠}",
+     "short": "Garalia only decides whether Silky rides along, not Tod"
     },
     {
      "ref": "secret-four",
-     "text": "Persuade Four with Kamille (step 2, Real only). Persuading her ends the stage in victory immediately {≠}"
+     "text": "Persuade Four with Kamille (step 2, Real only). Persuading her ends the stage in victory immediately {≠}",
+     "short": "Persuade Four with Kamille (step 2; ends the stage)"
     }
    ]
   },
@@ -908,7 +934,8 @@
    "secrets": [
     {
      "ref": "secret-erika",
-     "text": "In the end-of-stage two-way choice, choose option 1 “Fine by me” and Erika joins as a pilot; choose “I’m against it” and she doesn't"
+     "text": "In the end-of-stage two-way choice, choose option 1 “Fine by me” and Erika joins as a pilot; choose “I’m against it” and she doesn't",
+     "short": "Choose “Fine by me” at stage end and Erika joins"
     }
    ],
    "notes": [
@@ -940,7 +967,8 @@
     {
      "part": "Shuffle Crest",
      "from": "Bask",
-     "note": "Retreats at the end of the turn 4 enemy phase (start of the turn 5 player phase), or when 8 or fewer enemies remain"
+     "note": "Retreats at the end of the turn 4 enemy phase (start of the turn 5 player phase), or when 8 or fewer enemies remain",
+     "short_note": "Retreats on turn 5 player phase or at 8 or fewer foes"
     },
     {
      "part": "Booster",
@@ -959,7 +987,8 @@
    "secrets": [
     {
      "ref": "secret-aina",
-     "text": "Aina appears after the second enemy wave (which arrives in the turn 5 player phase or when the enemy is down to 8 or fewer), once the enemy is down to 10 or fewer; persuade her with Shiro and she joins at the end of the stage with the Apsaras. On Real, step 1 must be done in “Time Has Passed”; on Super, this one persuasion is all it takes {+}"
+     "text": "Aina appears after the second enemy wave (which arrives in the turn 5 player phase or when the enemy is down to 8 or fewer), once the enemy is down to 10 or fewer; persuade her with Shiro and she joins at the end of the stage with the Apsaras. On Real, step 1 must be done in “Time Has Passed”; on Super, this one persuasion is all it takes {+}",
+     "short": "Persuade Aina with Shiro (appears at 10 or fewer enemies)"
     }
    ],
    "notes": [
@@ -988,7 +1017,8 @@
     {
      "part": "Minovsky Craft",
      "from": "Dr. Gura",
-     "note": "Retreats at the end of the turn 3 enemy phase (start of the turn 4 player phase); shooting him down keeps his men from retreating; also leaves when Drake is at 33% HP or below or is shot down"
+     "note": "Retreats at the end of the turn 3 enemy phase (start of the turn 4 player phase); shooting him down keeps his men from retreating; also leaves when Drake is at 33% HP or below or is shot down",
+     "short_note": "Retreats at the start of the turn 4 player phase"
     },
     {
      "part": "High-Fidelity Radar",
@@ -1008,21 +1038,25 @@
     {
      "part": "Repair Kit",
      "from": "Gyugaki",
-     "note": "Leaves together with Drake when he is at 33% HP or below or is shot down (the stage ends)"
+     "note": "Leaves together with Drake when he is at 33% HP or below or is shot down (the stage ends)",
+     "short_note": "Leaves with Drake (stage ends)"
     }
    ],
    "secrets": [
     {
      "ref": "secret-todd-silky",
-     "text": "Persuade Tod with Show (step 1, no prerequisite). Tod is in a group with Drake; when Drake's HP drops to 33% or below both leave and the stage ends, so persuade before that"
+     "text": "Persuade Tod with Show (step 1, no prerequisite). Tod is in a group with Drake; when Drake's HP drops to 33% or below both leave and the stage ends, so persuade before that",
+     "short": "Persuade Tod with Show before Drake drops to 33% HP"
     },
     {
      "ref": "secret-katz",
-     "text": "Brad's scenario: Kurtz appears in the turn 4 enemy phase and retreats immediately if Brad isn't on the map. Brad shooting him down counts toward getting Kurtz back: at least once before the branching stage is enough, and Brad must shoot him down once more in the branching stage {≠}"
+     "text": "Brad's scenario: Kurtz appears in the turn 4 enemy phase and retreats immediately if Brad isn't on the map. Brad shooting him down counts toward getting Kurtz back: at least once before the branching stage is enough, and Brad must shoot him down once more in the branching stage {≠}",
+     "short": "Shoot down Kurtz with Brad (appears turn 4 enemy phase)"
     },
     {
      "ref": "secret-gyuken",
-     "text": "After you destroy Gyugaki, Gyukenki comes for revenge with two Mecha Boryuki when all enemies are destroyed in the next stage, “The Bloodstained Road”; Gyukenki carries a Chobham Armor. Gyugaki withdraws along with Drake; whether a withdrawal also counts is unconfirmed {+}{?}"
+     "text": "After you destroy Gyugaki, Gyukenki comes for revenge with two Mecha Boryuki when all enemies are destroyed in the next stage, “The Bloodstained Road”; Gyukenki carries a Chobham Armor. Gyugaki withdraws along with Drake; whether a withdrawal also counts is unconfirmed {+}{?}",
+     "short": "Destroy Gyugaki so Gyukenki seeks revenge next stage"
     }
    ],
    "notes": [
@@ -1075,17 +1109,20 @@
     {
      "part": "Chobham Armor",
      "from": "Gyukenki {+}",
-     "note": "Only if Gyugaki was destroyed in the previous stage; appears with two Mecha Boryuki after all enemies are destroyed"
+     "note": "Only if Gyugaki was destroyed in the previous stage; appears with two Mecha Boryuki after all enemies are destroyed",
+     "short_note": "Appears after the wipe if Gyugaki fell last stage"
     }
    ],
    "secrets": [
     {
      "ref": "secret-sheila-elle",
-     "text": "Opening two-way choice: “Go to Ciela” gets Ciela and the Gran-Garan, “Go to Elle” gets Elle and the Goraon. The choice decides which map you fight on in this stage; the enemy lineup is the same. The side you didn't pick: on the Independence Army route it appears as an ally midway through “The Call of Space” and leaves at the end of that stage; on the Complete Pacifism route it joins at the start of “Spreading Malice” and leaves at the end of “Purification”; on the OZ route it appears in “Humanity's Victory, and Then... (Part 1)” and leaves at the end of that stage {≠}"
+     "text": "Opening two-way choice: “Go to Ciela” gets Ciela and the Gran-Garan, “Go to Elle” gets Elle and the Goraon. The choice decides which map you fight on in this stage; the enemy lineup is the same. The side you didn't pick: on the Independence Army route it appears as an ally midway through “The Call of Space” and leaves at the end of that stage; on the Complete Pacifism route it joins at the start of “Spreading Malice” and leaves at the end of “Purification”; on the OZ route it appears in “Humanity's Victory, and Then... (Part 1)” and leaves at the end of that stage {≠}",
+     "short": "Opening choice: “Go to Ciela” or “Go to Elle” picks who joins"
     },
     {
      "ref": "secret-gyuken",
-     "text": "If Gyugaki was destroyed in the previous stage, Gyukenki comes for revenge with two Mecha Boryuki after all enemies are destroyed; shoot down Gyukenki to get a Chobham Armor. Otherwise these reinforcements don't appear {+}"
+     "text": "If Gyugaki was destroyed in the previous stage, Gyukenki comes for revenge with two Mecha Boryuki after all enemies are destroyed; shoot down Gyukenki to get a Chobham Armor. Otherwise these reinforcements don't appear {+}",
+     "short": "Shoot down Gyukenki (only if Gyugaki fell last stage)"
     }
    ],
    "notes": [
@@ -1130,11 +1167,13 @@
    "secrets": [
     {
      "ref": "secret-route-lera",
-     "text": "Opening three-way choice (Real only): “Talk with Lera” / “Try to get Lera off the ship” / “Ignore her”. Together with the opening choice in Operation Daybreak, it decides the Lera branch: with either of the first two, just choose “Say hello to Lera” there; with “Ignore her”, you must answer correctly once more there {≠}"
+     "text": "Opening three-way choice (Real only): “Talk with Lera” / “Try to get Lera off the ship” / “Ignore her”. Together with the opening choice in Operation Daybreak, it decides the Lera branch: with either of the first two, just choose “Say hello to Lera” there; with “Ignore her”, you must answer correctly once more there {≠}",
+     "short": "Pick “Talk with Lera” or “Try to get Lera off the ship”"
     },
     {
      "ref": "secret-elrich",
-     "text": "This three-way choice indirectly affects Ehrlich via the Lera branch: the persuade in “Earth Sphere in Chaos” on the Independence Army route requires the Lera branch to be active. So options 1 and 2 both work; if you picked “Ignore her,” make up for it in Operation Daybreak {≠}"
+     "text": "This three-way choice indirectly affects Ehrlich via the Lera branch: the persuade in “Earth Sphere in Chaos” on the Independence Army route requires the Lera branch to be active. So options 1 and 2 both work; if you picked “Ignore her,” make up for it in Operation Daybreak {≠}",
+     "short": "Don't pick “Ignore her” (Ehrlich needs the Lera branch)"
     }
    ],
    "notes": [
@@ -1195,12 +1234,14 @@
     {
      "part": "Psycoframe",
      "from": "Master Asia",
-     "note": "Retreats at 30% HP or below, ending the stage; also leaves if Kyoji is shot down or retreats"
+     "note": "Retreats at 30% HP or below, ending the stage; also leaves if Kyoji is shot down or retreats",
+     "short_note": "Retreats at 30% HP or below (stage ends)"
     },
     {
      "part": "High-Fidelity Radar",
      "from": "Kyoji",
-     "note": "Retreats at 50% HP or below, ending the stage; also leaves if Master Asia is shot down or retreats"
+     "note": "Retreats at 50% HP or below, ending the stage; also leaves if Master Asia is shot down or retreats",
+     "short_note": "Retreats at 50% HP or below (stage ends)"
     }
    ],
    "notes": [
@@ -1247,11 +1288,13 @@
    "secrets": [
     {
      "ref": "secret-route-oz",
-     "text": "Two-way choice at the end of the stage: “Join OZ and work to restore order” enters the OZ route (next stage “A New Path”); “We cannot accept what OZ has done” enters the Independence Army route (next stage “Farewell, Warrior”)"
+     "text": "Two-way choice at the end of the stage: “Join OZ and work to restore order” enters the OZ route (next stage “A New Path”); “We cannot accept what OZ has done” enters the Independence Army route (next stage “Farewell, Warrior”)",
+     "short": "End choice: join OZ → OZ route; reject OZ → Independence Army"
     },
     {
      "ref": "secret-route-lera",
-     "text": "At the start (Real only), pick “Say hello to Lera”: if you picked one of the first two options in Ideals, Shattered you go straight into the Lera branch; if you picked “Ignore her” you are asked again, and you enter it only if Ark picks “I was wrong last time” or Selain picks “That’s true, but...”. Picking “Leave her be” skips it. The Lera branch affects all three routes: on the Independence Army route you play “Those Eyes Reflect No Future” after “Mars and Marg” and can recruit Ehrlich; on the Complete Pacifism route Lera leaves in “Purification”; on the OZ route Lera dies in “Humanity's Victory, and Then... (Part 2)” {≠}"
+     "text": "At the start (Real only), pick “Say hello to Lera”: if you picked one of the first two options in Ideals, Shattered you go straight into the Lera branch; if you picked “Ignore her” you are asked again, and you enter it only if Ark picks “I was wrong last time” or Selain picks “That’s true, but...”. Picking “Leave her be” skips it. The Lera branch affects all three routes: on the Independence Army route you play “Those Eyes Reflect No Future” after “Mars and Marg” and can recruit Ehrlich; on the Complete Pacifism route Lera leaves in “Purification”; on the OZ route Lera dies in “Humanity's Victory, and Then... (Part 2)” {≠}",
+     "short": "At the start pick “Say hello to Lera” → Lera branch"
     }
    ],
    "notes": [
@@ -1312,15 +1355,18 @@
    "secrets": [
     {
      "ref": "secret-route-oz",
-     "text": "Choose option 1 “Join OZ and work to restore order” at the end of “Operation Daybreak” → enters the OZ route, starting from this stage"
+     "text": "Choose option 1 “Join OZ and work to restore order” at the end of “Operation Daybreak” → enters the OZ route, starting from this stage",
+     "short": "Choose “Join OZ and work to restore order” in Operation Daybreak"
     },
     {
      "ref": "secret-katz",
-     "text": "Brad's scenario: Kurtz appears in the turn 3 player phase or when the enemy is down to 15 or fewer, and retreats immediately if Brad isn't on the map; Brad shooting him down counts toward getting Kurtz back {+}"
+     "text": "Brad's scenario: Kurtz appears in the turn 3 player phase or when the enemy is down to 15 or fewer, and retreats immediately if Brad isn't on the map; Brad shooting him down counts toward getting Kurtz back {+}",
+     "short": "Shoot down Kurtz with Brad (appears turn 3 player phase)"
     },
     {
      "ref": "secret-dialogue-branches",
-     "text": "The opening two-way choice naming the ship “March Wind” and the three-way choice to Rish in Selain's story only change dialogue; picking option 2, “I don't like it,” opens squad-name entry in the original, while this port fixes the squad name and automatically answers option 1 {+}"
+     "text": "The opening two-way choice naming the ship “March Wind” and the three-way choice to Rish in Selain's story only change dialogue; picking option 2, “I don't like it,” opens squad-name entry in the original, while this port fixes the squad name and automatically answers option 1 {+}",
+     "short": "The ship-naming and Rish choices only change dialogue"
     }
    ],
    "notes": [
@@ -1346,17 +1392,20 @@
     {
      "part": "Anti-Beam Coating",
      "from": "Helmut",
-     "note": "When either Drake or Helmut is at 50% HP or below, both retreat; if one of them is shot down, the other retreats"
+     "note": "When either Drake or Helmut is at 50% HP or below, both retreat; if one of them is shot down, the other retreats",
+     "short_note": "Retreats with Drake when either is at 50% HP or below"
     },
     {
      "part": "Mega Booster",
      "from": "Drake",
-     "note": "When either Drake or Helmut is at 50% HP or below, both retreat; if one of them is shot down, the other retreats"
+     "note": "When either Drake or Helmut is at 50% HP or below, both retreat; if one of them is shot down, the other retreats",
+     "short_note": "Retreats with Helmut when either is at 50% HP or below"
     },
     {
      "part": "Propellant Tank",
      "from": "Black Knight",
-     "note": "Retreats together when either Drake or Helmut is at 50% HP or below, or when one of them is shot down"
+     "note": "Retreats together when either Drake or Helmut is at 50% HP or below, or when one of them is shot down",
+     "short_note": "Retreats when Drake or Helmut is at 50% HP or below"
     },
     {
      "part": "Repair Kit",
@@ -1370,7 +1419,8 @@
    "retreats": [
     {
      "from": "Allen, Fei",
-     "note": "Retreat when either Drake or Helmut is at 50% HP or below, or when one of them is shot down"
+     "note": "Retreat when either Drake or Helmut is at 50% HP or below, or when one of them is shot down",
+     "short_note": "Retreat when Drake or Helmut is at 50% HP or below"
     },
     {
      "from": "Noin, Alex, Mueller",
@@ -1380,7 +1430,8 @@
    "secrets": [
     {
      "ref": "secret-route-oz",
-     "text": "Choose option 2 “We cannot accept what OZ has done” at the end of “Operation Daybreak” → enters the Independence Army route, starting from this stage"
+     "text": "Choose option 2 “We cannot accept what OZ has done” at the end of “Operation Daybreak” → enters the Independence Army route, starting from this stage",
+     "short": "Choose “We cannot accept what OZ has done” in Operation Daybreak"
     }
    ],
    "notes": [
@@ -1413,17 +1464,20 @@
     {
      "part": "Booster",
      "from": "Helmut",
-     "note": "Retreats together (in one group with Gildrome, Helmut and Shot) when 15 or fewer enemies remain"
+     "note": "Retreats together (in one group with Gildrome, Helmut and Shot) when 15 or fewer enemies remain",
+     "short_note": "Retreats when 15 or fewer enemies remain"
     },
     {
      "part": "Apogee Motor",
      "from": "Gildrome",
-     "note": "Retreats together (in one group with Gildrome, Helmut and Shot) when 15 or fewer enemies remain"
+     "note": "Retreats together (in one group with Gildrome, Helmut and Shot) when 15 or fewer enemies remain",
+     "short_note": "Retreats when 15 or fewer enemies remain"
     },
     {
      "part": "Magnetic Coating",
      "from": "Shot",
-     "note": "Retreats together (in one group with Gildrome, Helmut and Shot) when 15 or fewer enemies remain"
+     "note": "Retreats together (in one group with Gildrome, Helmut and Shot) when 15 or fewer enemies remain",
+     "short_note": "Retreats when 15 or fewer enemies remain"
     },
     {
      "part": "Bio-Sensor",
@@ -1438,13 +1492,15 @@
    "retreats": [
     {
      "from": "Musy",
-     "note": "Retreats with Gildrome, Helmut and Shot when 15 or fewer enemies remain"
+     "note": "Retreats with Gildrome, Helmut and Shot when 15 or fewer enemies remain",
+     "short_note": "Retreats when 15 or fewer enemies remain"
     }
    ],
    "secrets": [
     {
      "ref": "secret-todd-silky",
-     "text": "Persuade Tod with Show (step 2, requires the persuade in “Shapiro, Reborn!”). Afterward Tod joins in the Zwauth on the turn 3 player phase of “An Unseen Tomorrow” on the OZ route; unrelated to Garalia {≠}"
+     "text": "Persuade Tod with Show (step 2, requires the persuade in “Shapiro, Reborn!”). Afterward Tod joins in the Zwauth on the turn 3 player phase of “An Unseen Tomorrow” on the OZ route; unrelated to Garalia {≠}",
+     "short": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)"
     }
    ],
    "notes": [
@@ -1504,23 +1560,28 @@
    "secrets": [
     {
      "ref": "secret-route-cp",
-     "text": "Pick option 3 at the start (believing it can come true, e.g. “I want to believe it can come true”), then option 2 at the end of the stage (wanting to help, e.g. “I wish there were something we could do to help”) → next stage “Spreading Malice”, entering the Complete Pacifism route; any other combination → “The Call of Space”, staying on the Independence Army route. The wording differs by protagonist, so just pick by position"
+     "text": "Pick option 3 at the start (believing it can come true, e.g. “I want to believe it can come true”), then option 2 at the end of the stage (wanting to help, e.g. “I wish there were something we could do to help”) → next stage “Spreading Malice”, entering the Complete Pacifism route; any other combination → “The Call of Space”, staying on the Independence Army route. The wording differs by protagonist, so just pick by position",
+     "short": "Pick option 3 at the start and option 2 at the end → Complete Pacifism"
     },
     {
      "ref": "secret-neue-ziel",
-     "text": "Where you go from this stage also decides the Neue Ziel: you get it at the end of “Char's Rebellion” only if you stay on the Independence Army route; the Complete Pacifism route (and the OZ route) never get it {+}"
+     "text": "Where you go from this stage also decides the Neue Ziel: you get it at the end of “Char's Rebellion” only if you stay on the Independence Army route; the Complete Pacifism route (and the OZ route) never get it {+}",
+     "short": "Stay on the Independence Army route; get it after “Char's Rebellion”"
     },
     {
      "ref": "secret-fa-hyakushiki",
-     "text": "On the Complete Pacifism route, you later follow Treize into the second half of OZ, and when Quattro returns in “Vortex of Space” he is in the Hyaku-Shiki, not the FA Hyaku-Shiki Kai {≠}"
+     "text": "On the Complete Pacifism route, you later follow Treize into the second half of OZ, and when Quattro returns in “Vortex of Space” he is in the Hyaku-Shiki, not the FA Hyaku-Shiki Kai {≠}",
+     "short": "Lost on Complete Pacifism: Quattro returns in the Hyaku-Shiki"
     },
     {
      "ref": "secret-ginrei",
-     "text": "Daisaku has ≥ 20 kills at the end of this stage → Ginrei + Ginrei Robo TYPE1 join (checked in this stage on both the Independence Army and Complete Pacifism routes; exactly 20 counts) {≠}"
+     "text": "Daisaku has ≥ 20 kills at the end of this stage → Ginrei + Ginrei Robo TYPE1 join (checked in this stage on both the Independence Army and Complete Pacifism routes; exactly 20 counts) {≠}",
+     "short": "Have Daisaku at 20+ kills by the end of this stage"
     },
     {
      "ref": "secret-gale",
-     "text": "Real: if Eiji persuaded Gale in “The Shooting Star the Girl Saw” → Gale + Greimkaiser join at the end of the stage, with 3 upgrade levels {≠}"
+     "text": "Real: if Eiji persuaded Gale in “The Shooting Star the Girl Saw” → Gale + Greimkaiser join at the end of the stage, with 3 upgrade levels {≠}",
+     "short": "Joins at end if Eiji persuaded Gale in “The Shooting Star the Girl Saw”"
     }
    ],
    "notes": [
@@ -1577,15 +1638,18 @@
    "secrets": [
     {
      "ref": "secret-route-cp",
-     "text": "You arrive here by choosing option 3 at the start and option 2 at the end of “The Battle of Ryozanpaku”, which formally enters the Complete Pacifism route"
+     "text": "You arrive here by choosing option 3 at the start and option 2 at the end of “The Battle of Ryozanpaku”, which formally enters the Complete Pacifism route",
+     "short": "No action needed: entered via the choices in “The Battle of Ryozanpaku”"
     },
     {
      "ref": "secret-todd-silky",
-     "text": "Persuade Tod with Show (step 2, requires the persuade in “Shapiro, Reborn!”). The stage where Tod then joins depends on the route: “Desperate Breakthrough (Part 1)” after fighting alone merges into the Independence Army route, “An Unseen Tomorrow” after following Treize into OZ, both on the turn 3 player phase {≠}"
+     "text": "Persuade Tod with Show (step 2, requires the persuade in “Shapiro, Reborn!”). The stage where Tod then joins depends on the route: “Desperate Breakthrough (Part 1)” after fighting alone merges into the Independence Army route, “An Unseen Tomorrow” after following Treize into OZ, both on the turn 3 player phase {≠}",
+     "short": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)"
     },
     {
      "ref": "secret-dialogue-branches",
-     "text": "The opening two-way choice naming the ship only changes dialogue (this port fixes the squad name and automatically answers option 1) {+}"
+     "text": "The opening two-way choice naming the ship only changes dialogue (this port fixes the squad name and automatically answers option 1) {+}",
+     "short": "No action needed: the ship-naming choice only changes dialogue"
     }
    ],
    "notes": [
@@ -1650,15 +1714,18 @@
    "secrets": [
     {
      "ref": "secret-todd-silky",
-     "text": "Persuade Tod with Show (step 2, requires the persuade in “Shapiro, Reborn!”). Tod then joins in the Sirbine on the turn 3 player phase of “Desperate Breakthrough (Part 1)” {≠}"
+     "text": "Persuade Tod with Show (step 2, requires the persuade in “Shapiro, Reborn!”). Tod then joins in the Sirbine on the turn 3 player phase of “Desperate Breakthrough (Part 1)” {≠}",
+     "short": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)"
     },
     {
      "ref": "secret-garalia",
-     "text": "If Garalia has been recruited, she deploys with the Byston Well group (for her, already in the team, this is just regrouping)"
+     "text": "If Garalia has been recruited, she deploys with the Byston Well group (for her, already in the team, this is just regrouping)",
+     "short": "No action needed: Garalia deploys with the Byston Well group"
     },
     {
      "ref": "secret-dialogue-branches",
-     "text": "The opening two-way choice naming the ship only changes dialogue (this port fixes the squad name and automatically answers option 1) {+}"
+     "text": "The opening two-way choice naming the ship only changes dialogue (this port fixes the squad name and automatically answers option 1) {+}",
+     "short": "No action needed: the ship-naming choice only changes dialogue"
     }
    ],
    "notes": [
@@ -1716,11 +1783,13 @@
    "secrets": [
     {
      "ref": "secret-garalia",
-     "text": "If Garalia has been recruited, she deploys with the Aura Battler, becomes temporarily unable to deploy along with them from the end of the stage, and returns at the end of the next stage"
+     "text": "If Garalia has been recruited, she deploys with the Aura Battler, becomes temporarily unable to deploy along with them from the end of the stage, and returns at the end of the next stage",
+     "short": "No action needed: Garalia is benched until the end of the next stage"
     },
     {
      "ref": "secret-route-lera",
-     "text": "Real: whether the Lera branch is active only changes this stage's dialogue; the lineup is the same {+}"
+     "text": "Real: whether the Lera branch is active only changes this stage's dialogue; the lineup is the same {+}",
+     "short": "No action needed: the Lera branch only changes this stage's dialogue"
     }
    ],
    "notes": [
@@ -1760,11 +1829,13 @@
    "secrets": [
     {
      "ref": "secret-garalia",
-     "text": "If Garalia has been recruited, the Bastole can deploy again at the end of this stage"
+     "text": "If Garalia has been recruited, the Bastole can deploy again at the end of this stage",
+     "short": "No action needed: the Bastole can deploy again after this stage"
     },
     {
      "ref": "secret-route-lera",
-     "text": "Real: the lineup is unchanged, only the story differs: with the Lera branch active, Lera sees through Marquis Janus disguised as Sally, is taken hostage and dies at the end of the stage; otherwise the protagonist sees through it {≠}"
+     "text": "Real: the lineup is unchanged, only the story differs: with the Lera branch active, Lera sees through Marquis Janus disguised as Sally, is taken hostage and dies at the end of the stage; otherwise the protagonist sees through it {≠}",
+     "short": "No action needed: with the Lera branch active, Lera dies at stage end"
     }
    ],
    "notes": [
@@ -1814,17 +1885,20 @@
     {
      "part": "Mega Booster",
      "from": "Black Knight {+}",
-     "note": "Either/or with Bern: if Show shoots down Black Knight while Elle is on the map, the Hyper Gallaba is piloted and carried by Black Knight instead"
+     "note": "Either/or with Bern: if Show shoots down Black Knight while Elle is on the map, the Hyper Gallaba is piloted and carried by Black Knight instead",
+     "short_note": "Only if Show downs him with Elle on the map (else Bern)"
     }
    ],
    "secrets": [
     {
      "ref": "secret-garalia",
-     "text": "If Garalia has been recruited, she deploys with the Byston Well group (for her, already in the team, this is just regrouping)"
+     "text": "If Garalia has been recruited, she deploys with the Byston Well group (for her, already in the team, this is just regrouping)",
+     "short": "No action needed: Garalia deploys with the Byston Well group"
     },
     {
      "ref": "secret-route-lera",
-     "text": "Real: with the Lera branch active, Lera leaves at the start of this stage {+}"
+     "text": "Real: with the Lera branch active, Lera leaves at the start of this stage {+}",
+     "short": "No action needed: with the Lera branch active, Lera leaves at the start"
     }
    ],
    "notes": [
@@ -1885,11 +1959,13 @@
    "secrets": [
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: persuade Aisha with Manami (no prerequisite; Independence Army route step 1)"
+     "text": "Manami's scenario: persuade Aisha with Manami (no prerequisite; Independence Army route step 1)",
+     "short": "Persuade Aisha with Manami (step 1, no prerequisite)"
     },
     {
      "ref": "secret-katz",
-     "text": "Brad's scenario: Kurtz appears as a third party and stays even if Brad isn't on the map; Brad shooting him down counts toward getting Kurtz back"
+     "text": "Brad's scenario: Kurtz appears as a third party and stays even if Brad isn't on the map; Brad shooting him down counts toward getting Kurtz back",
+     "short": "Shoot down Kurtz with Brad (counts toward getting him back)"
     }
    ],
    "notes": [
@@ -1923,19 +1999,23 @@
    "secrets": [
     {
      "ref": "secret-route-tallgeese",
-     "text": "At the end of the stage, choose “I can't obey Romefeller” → “The Moon Is Hell!” (Romefeller side); choose “We act as OZ to the very end” → “Moon Attack”"
+     "text": "At the end of the stage, choose “I can't obey Romefeller” → “The Moon Is Hell!” (Romefeller side); choose “We act as OZ to the very end” → “Moon Attack”",
+     "short": "End: “I can't obey Romefeller” → “The Moon Is Hell!”; else “Moon Attack”"
     },
     {
      "ref": "secret-gato",
-     "text": "To get Gato: at the end of the stage pick “I can't obey Romefeller,” then in the next stage “The Moon Is Hell!” get your flagship into the base's Green Area first (or wipe out both enemy waves in order)"
+     "text": "To get Gato: at the end of the stage pick “I can't obey Romefeller,” then in the next stage “The Moon Is Hell!” get your flagship into the base's Green Area first (or wipe out both enemy waves in order)",
+     "short": "Pick “I can't obey Romefeller,” then defend the base next stage"
     },
     {
      "ref": "secret-ginrei",
-     "text": "The OZ route requires Daisaku's kills ≥ 30, checked at the start of this stage: he must meet it before entering, and kills in this stage don't count. If met, Ginrei + Ginrei Robo TYPE1 join at the start of this stage {≠}"
+     "text": "The OZ route requires Daisaku's kills ≥ 30, checked at the start of this stage: he must meet it before entering, and kills in this stage don't count. If met, Ginrei + Ginrei Robo TYPE1 join at the start of this stage {≠}",
+     "short": "Have Daisaku at 30+ kills before entering this stage"
     },
     {
      "ref": "secret-elrich",
-     "text": "Ark's scenario: Ehrlich can be recruited on both the Romefeller side and the Moon Attack side. The Romefeller side must first persuade him in “The Moon Is Hell!”; on both sides Ark must be on the map in “Order to Eliminate Treize” when 13 or fewer enemies remain {≠}"
+     "text": "Ark's scenario: Ehrlich can be recruited on both the Romefeller side and the Moon Attack side. The Romefeller side must first persuade him in “The Moon Is Hell!”; on both sides Ark must be on the map in “Order to Eliminate Treize” when 13 or fewer enemies remain {≠}",
+     "short": "Nothing here; the Romefeller side must persuade him next stage first"
     }
    ],
    "notes": [
@@ -1967,13 +2047,15 @@
     {
      "part": "Chobham Armor",
      "from": "Kurtz {+}",
-     "note": "Brad's scenario only; appears when 6 or fewer enemies remain, and leaves as soon as it appears if Brad isn't on the map"
+     "note": "Brad's scenario only; appears when 6 or fewer enemies remain, and leaves as soon as it appears if Brad isn't on the map",
+     "short_note": "Appears at ≤6 enemies; leaves at once without Brad"
     }
    ],
    "secrets": [
     {
      "ref": "secret-katz",
-     "text": "Brad's scenario: Kurtz appears when the enemy is down to 6 or fewer and retreats immediately if Brad isn't on the map; Brad shooting him down counts toward getting Kurtz back {+}"
+     "text": "Brad's scenario: Kurtz appears when the enemy is down to 6 or fewer and retreats immediately if Brad isn't on the map; Brad shooting him down counts toward getting Kurtz back {+}",
+     "short": "Shoot down Kurtz with Brad (appears at 6 or fewer enemies)"
     }
    ],
    "notes": [
@@ -2022,7 +2104,8 @@
    "secrets": [
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: in the three-way choice before Selain fights Rish, pick “Hmph. You have strange taste” or “As long as you’re the enemy, there’s nothing to do but fight” (Independence Army route step 1); picking “Enough of your nonsense!” makes persuasion impossible later {≠}"
+     "text": "Selain's scenario: in the three-way choice before Selain fights Rish, pick “Hmph. You have strange taste” or “As long as you’re the enemy, there’s nothing to do but fight” (Independence Army route step 1); picking “Enough of your nonsense!” makes persuasion impossible later {≠}",
+     "short": "Before Selain fights Rish, pick option 2 or 3 in the three-way choice"
     }
    ],
    "notes": [
@@ -2088,11 +2171,13 @@
    "secrets": [
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: persuade Aisha with Manami (no prerequisite; Complete Pacifism route step 1)"
+     "text": "Manami's scenario: persuade Aisha with Manami (no prerequisite; Complete Pacifism route step 1)",
+     "short": "Persuade Aisha with Manami (step 1, no prerequisite)"
     },
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: in the three-way choice before Selain fights Rish, pick “Hmph. You have strange taste” or “As long as you’re the enemy, there’s nothing to do but fight” (Complete Pacifism route step 1); picking the 1st option makes persuasion impossible later"
+     "text": "Selain's scenario: in the three-way choice before Selain fights Rish, pick “Hmph. You have strange taste” or “As long as you’re the enemy, there’s nothing to do but fight” (Complete Pacifism route step 1); picking the 1st option makes persuasion impossible later",
+     "short": "Before Selain fights Rish, pick option 2 or 3 in the three-way choice"
     }
    ],
    "notes": [
@@ -2189,23 +2274,28 @@
    "secrets": [
     {
      "ref": "secret-route-gato-base",
-     "text": "Get your flagship into the base's Green Area first; or wipe out the Muge forces first (after the first wipe-out Shapiro appears around the base with reinforcements, which must also be wiped out), then the Yellow forces → Gato joins, next stage “Where Ambition Leads”. It fails only if Scirocco or Bask himself enters the base first → next stage “The Man Who Could Not Become God”; other Yellow units entering the base don't count {≠}"
+     "text": "Get your flagship into the base's Green Area first; or wipe out the Muge forces first (after the first wipe-out Shapiro appears around the base with reinforcements, which must also be wiped out), then the Yellow forces → Gato joins, next stage “Where Ambition Leads”. It fails only if Scirocco or Bask himself enters the base first → next stage “The Man Who Could Not Become God”; other Yellow units entering the base don't count {≠}",
+     "short": "Flagship into the Green Area first, or wipe out Muge then Yellow forces"
     },
     {
      "ref": "secret-gato",
-     "text": "Defending the base gets you Gato + the GP02A Physalis (3 upgrade levels) at the end of the stage. Gato later leaves with the GP02A: if you choose “We shouldn't cooperate with Haman” at the start of “Showdown! Face-Off with Emperor Zuul! (Part 2)”, he leaves at the end of that stage; if you choose “We should cooperate with Haman”, he leaves at the end of the next stage, “A Future of Life and Death” {≠}"
+     "text": "Defending the base gets you Gato + the GP02A Physalis (3 upgrade levels) at the end of the stage. Gato later leaves with the GP02A: if you choose “We shouldn't cooperate with Haman” at the start of “Showdown! Face-Off with Emperor Zuul! (Part 2)”, he leaves at the end of that stage; if you choose “We should cooperate with Haman”, he leaves at the end of the next stage, “A Future of Life and Death” {≠}",
+     "short": "Defend the base → Gato + GP02A Physalis join at stage end"
     },
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: Aisha appears when the third party is down to 10 or fewer, and the choice only appears if Manami is on the map at that point; pick “Please, hear me out” or “Wait, Aisha” (OZ route step 1) {+}"
+     "text": "Manami's scenario: Aisha appears when the third party is down to 10 or fewer, and the choice only appears if Manami is on the map at that point; pick “Please, hear me out” or “Wait, Aisha” (OZ route step 1) {+}",
+     "short": "Have Manami present; pick “Please, hear me out” or “Wait, Aisha”"
     },
     {
      "ref": "secret-elrich",
-     "text": "Ark's scenario: Ehrlich appears as a third party on the player phase of turn 3 or when 5 or fewer enemies remain; persuade him with Ark (no prerequisite) and he leaves the battlefield. This is step 1 for the Romefeller side; the Moon Attack side doesn't need it {≠}"
+     "text": "Ark's scenario: Ehrlich appears as a third party on the player phase of turn 3 or when 5 or fewer enemies remain; persuade him with Ark (no prerequisite) and he leaves the battlefield. This is step 1 for the Romefeller side; the Moon Attack side doesn't need it {≠}",
+     "short": "Persuade Ehrlich with Ark (appears turn 3 or at ≤5 enemies)"
     },
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: the choice only appears if Selain is on the map when Rish shows up; pick “Answer him” → Rish + Sigroon join at the start of the next stage (3 upgrade levels) {+}"
+     "text": "Selain's scenario: the choice only appears if Selain is on the map when Rish shows up; pick “Answer him” → Rish + Sigroon join at the start of the next stage (3 upgrade levels) {+}",
+     "short": "Have Selain on the map when Rish appears; pick “Answer him”"
     }
    ],
    "notes": [
@@ -2259,15 +2349,18 @@
    "secrets": [
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: in the two-way choice at the end of the stage, pick “Call out to Aisha” (OZ route step 1)"
+     "text": "Manami's scenario: in the two-way choice at the end of the stage, pick “Call out to Aisha” (OZ route step 1)",
+     "short": "At the end of the stage, pick “Call out to Aisha”"
     },
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: in the two-way choice at the end of the stage pick “Call out to him again” → Rish + Sigroon join at the start of the next stage, “The Man Who Could Not Become God” (3 upgrade levels) {+}"
+     "text": "Selain's scenario: in the two-way choice at the end of the stage pick “Call out to him again” → Rish + Sigroon join at the start of the next stage, “The Man Who Could Not Become God” (3 upgrade levels) {+}",
+     "short": "At the end of the stage, pick “Call out to him again”"
     },
     {
      "ref": "secret-elrich",
-     "text": "Ark's scenario: this side needs no prior persuasion; just have Ark on the map in “Order to Eliminate Treize” when 13 or fewer enemies remain {≠}"
+     "text": "Ark's scenario: this side needs no prior persuasion; just have Ark on the map in “Order to Eliminate Treize” when 13 or fewer enemies remain {≠}",
+     "short": "Have Ark on map at ≤13 enemies in “Order to Eliminate Treize”"
     }
    ],
    "notes": [
@@ -2334,19 +2427,23 @@
    "secrets": [
     {
      "ref": "secret-minerva-x",
-     "text": "Minerva X appears when the enemy is down to 8 or fewer; persuade it twice with Koji → it joins at the end of the stage, already upgraded 5 levels"
+     "text": "Minerva X appears when the enemy is down to 8 or fewer; persuade it twice with Koji → it joins at the end of the stage, already upgraded 5 levels",
+     "short": "Persuade Minerva X twice with Koji (appears at ≤8 enemies)"
     },
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: persuade Aisha with Manami (requires having persuaded her in “The Shooting Star That Never Burns Out”; Complete Pacifism route step 2)"
+     "text": "Manami's scenario: persuade Aisha with Manami (requires having persuaded her in “The Shooting Star That Never Burns Out”; Complete Pacifism route step 2)",
+     "short": "Persuade Aisha with Manami (after “The Shooting Star That Never Burns Out”)"
     },
     {
      "ref": "secret-elrich",
-     "text": "Ark's scenario: Ehrlich appears with the rival unit; persuade him with Ark (no prerequisite) and he switches to your side on the spot, joining at the end of the stage with the Norouz (no upgrades). On the Complete Pacifism route this step is all you need"
+     "text": "Ark's scenario: Ehrlich appears with the rival unit; persuade him with Ark (no prerequisite) and he switches to your side on the spot, joining at the end of the stage with the Norouz (no upgrades). On the Complete Pacifism route this step is all you need",
+     "short": "Persuade Ehrlich with Ark (no prerequisite); joins at stage end"
     },
     {
      "ref": "secret-katz",
-     "text": "Brad's scenario: the Complete Pacifism route has no “Time to Settle It”, so he always switches to the Super Earthgain at the end of this stage. If Brad shoots down Kurtz in this stage for a total of two, Kurtz survives and hands over the Virose of his own accord, but doesn't join {+}"
+     "text": "Brad's scenario: the Complete Pacifism route has no “Time to Settle It”, so he always switches to the Super Earthgain at the end of this stage. If Brad shoots down Kurtz in this stage for a total of two, Kurtz survives and hands over the Virose of his own accord, but doesn't join {+}",
+     "short": "Shoot down Kurtz with Brad; at two total he hands over the Virose"
     }
    ],
    "notes": [
@@ -2394,13 +2491,15 @@
     {
      "part": "Shuffle Crest",
      "from": "Gates {+}",
-     "note": "Appears at the end of the turn 4 enemy phase (start of the turn 5 player phase) or when the enemy is wiped out; leaves immediately if Kamille is not on the map"
+     "note": "Appears at the end of the turn 4 enemy phase (start of the turn 5 player phase) or when the enemy is wiped out; leaves immediately if Kamille is not on the map",
+     "short_note": "Appears turn 5 player phase; leaves at once without Kamille"
     }
    ],
    "secrets": [
     {
      "ref": "secret-rosamia",
-     "text": "Rosamia and Gates appear at the start of the turn 5 player phase (or earlier if all enemies are defeated first); Kamille must be on the map at that moment, otherwise both retreat immediately and this element fails. Don't shoot down Rosamia — shoot down Gates instead, and she leaves with him (step 1) {≠}"
+     "text": "Rosamia and Gates appear at the start of the turn 5 player phase (or earlier if all enemies are defeated first); Kamille must be on the map at that moment, otherwise both retreat immediately and this element fails. Don't shoot down Rosamia — shoot down Gates instead, and she leaves with him (step 1) {≠}",
+     "short": "Have Kamille on map at turn 5; shoot down Gates, not Rosamia"
     }
    ],
    "notes": [
@@ -2430,7 +2529,8 @@
     {
      "part": "Bio-Sensor",
      "from": "Shapiro {+}",
-     "note": "Only if Shinobu is on the map when Shapiro is shot down does he reappear in the battle machine carrying this part"
+     "note": "Only if Shinobu is on the map when Shapiro is shot down does he reappear in the battle machine carrying this part",
+     "short_note": "Only if Shinobu is on the map when Shapiro is shot down"
     }
    ],
    "retreats": [
@@ -2442,11 +2542,13 @@
    "secrets": [
     {
      "ref": "secret-route-gato-base",
-     "text": "Reached by defending the base in “The Moon Is Hell!”; Gato has joined"
+     "text": "Reached by defending the base in “The Moon Is Hell!”; Gato has joined",
+     "short": "No action needed: reached by defending the base in “The Moon Is Hell!”"
     },
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: if you picked “Answer him” in the previous stage, Rish + Sigroon join at the start of this stage"
+     "text": "Selain's scenario: if you picked “Answer him” in the previous stage, Rish + Sigroon join at the start of this stage",
+     "short": "No action needed: joins at the start if you picked “Answer him”"
     }
    ],
    "notes": [
@@ -2474,7 +2576,8 @@
     {
      "part": "Bio-Sensor",
      "from": "Shapiro {+}",
-     "note": "Only if Shinobu is on the map when Shapiro is shot down does he reappear in the battle machine carrying this part"
+     "note": "Only if Shinobu is on the map when Shapiro is shot down does he reappear in the battle machine carrying this part",
+     "short_note": "Only if Shinobu is on the map when Shapiro is shot down"
     }
    ],
    "retreats": [
@@ -2486,11 +2589,13 @@
    "secrets": [
     {
      "ref": "secret-route-gato-base",
-     "text": "Reached by failing to defend the base in “The Moon Is Hell!”, or via “Moon Attack”"
+     "text": "Reached by failing to defend the base in “The Moon Is Hell!”, or via “Moon Attack”",
+     "short": "No action needed: reached by losing the base or via “Moon Attack”"
     },
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: if you picked the right option in the previous stage, Rish + Sigroon join at the start of this stage"
+     "text": "Selain's scenario: if you picked the right option in the previous stage, Rish + Sigroon join at the start of this stage",
+     "short": "No action needed: joins at the start if you picked right last stage"
     }
    ],
    "notes": [
@@ -2548,7 +2653,8 @@
    "secrets": [
     {
      "ref": "secret-gale",
-     "text": "Real: if Eiji persuaded Gale in “The Shooting Star the Girl Saw” → Gale + Greimkaiser join at the start of this stage, with 4 upgrade levels {≠}"
+     "text": "Real: if Eiji persuaded Gale in “The Shooting Star the Girl Saw” → Gale + Greimkaiser join at the start of this stage, with 4 upgrade levels {≠}",
+     "short": "Joins at start if Eiji persuaded Gale in “The Shooting Star the Girl Saw”"
     }
    ],
    "notes": [
@@ -2583,7 +2689,8 @@
     {
      "part": "Booster",
      "from": "Gato {+}",
-     "note": "Third party; appears after Baren is destroyed; retreats with the other third-party units on the player phase 4 turns after Baren is destroyed"
+     "note": "Third party; appears after Baren is destroyed; retreats with the other third-party units on the player phase 4 turns after Baren is destroyed",
+     "short_note": "Appears once Baren falls; retreats 4 turns later"
     },
     {
      "part": "Hybrid Armor",
@@ -2603,7 +2710,8 @@
    "secrets": [
     {
      "ref": "secret-gale",
-     "text": "Real: if Eiji persuaded Gale in “The Shooting Star the Girl Saw” → Gale + Greimkaiser join at the end of the stage, with 4 upgrade levels {≠}"
+     "text": "Real: if Eiji persuaded Gale in “The Shooting Star the Girl Saw” → Gale + Greimkaiser join at the end of the stage, with 4 upgrade levels {≠}",
+     "short": "Joins at end if Eiji persuaded Gale in “The Shooting Star the Girl Saw”"
     }
    ],
    "notes": [
@@ -2680,15 +2788,18 @@
    "secrets": [
     {
      "ref": "secret-hilde",
-     "text": "Persuade Hilde with Duo (no prerequisite); she switches to your side on the spot; if she is shot down before the end of the stage, she is lost for good along with the Taurus {≠}"
+     "text": "Persuade Hilde with Duo (no prerequisite); she switches to your side on the spot; if she is shot down before the end of the stage, she is lost for good along with the Taurus {≠}",
+     "short": "Persuade Hilde with Duo; keep her alive until the stage ends"
     },
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: Aisha appears at the start; persuade her with Manami (requires having persuaded her in “False Peace”; Independence Army route step 2)"
+     "text": "Manami's scenario: Aisha appears at the start; persuade her with Manami (requires having persuaded her in “False Peace”; Independence Army route step 2)",
+     "short": "Persuade Aisha with Manami (needs the persuade in “False Peace”)"
     },
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: persuade Rish with Selain (requires the 2nd or 3rd option in “Fierce Battle! La Vie en Rose”; Independence Army route step 2) → Rish joins at the start of “Its Name Is Epyon” {≠}"
+     "text": "Selain's scenario: persuade Rish with Selain (requires the 2nd or 3rd option in “Fierce Battle! La Vie en Rose”; Independence Army route step 2) → Rish joins at the start of “Its Name Is Epyon” {≠}",
+     "short": "Persuade Rish with Selain (needs option 2/3 in “Fierce Battle! La Vie en Rose”)"
     }
    ],
    "notes": [
@@ -2734,7 +2845,8 @@
    "secrets": [
     {
      "ref": "secret-route-gato-base",
-     "text": "Whether you recruited Gato changes how Judau and the others join in this stage"
+     "text": "Whether you recruited Gato changes how Judau and the others join in this stage",
+     "short": "No action needed: recruiting Gato changes how Judau and the others join"
     }
    ],
    "notes": [
@@ -2800,15 +2912,18 @@
    "secrets": [
     {
      "ref": "secret-four",
-     "text": "Real: persuade Four with Kamille (requires both steps in “Hong Kong City of Sorrow” and “From Between Sea and Land”). Levels are compared right after the persuade: if Kamille's current level ≥ Jerid's, Four joins at the end of the stage; otherwise Four is destroyed and lost for good. Jerid's level = the average of the 15 highest-level pilots assigned to units on your team when entering this stage (rounded down, max 95) + 3 {≠}"
+     "text": "Real: persuade Four with Kamille (requires both steps in “Hong Kong City of Sorrow” and “From Between Sea and Land”). Levels are compared right after the persuade: if Kamille's current level ≥ Jerid's, Four joins at the end of the stage; otherwise Four is destroyed and lost for good. Jerid's level = the average of the 15 highest-level pilots assigned to units on your team when entering this stage (rounded down, max 95) + 3 {≠}",
+     "short": "Persuade Four with Kamille; Kamille's level must be ≥ Jerid's"
     },
     {
      "ref": "secret-sortie-limits",
-     "text": "On Four's line (both earlier steps done), Kamille can't deploy at the start and arrives in the Zeta Gundam on the player phase of turn 3 or when 8 or fewer enemies remain {+}"
+     "text": "On Four's line (both earlier steps done), Kamille can't deploy at the start and arrives in the Zeta Gundam on the player phase of turn 3 or when 8 or fewer enemies remain {+}",
+     "short": "On Four's line, Kamille arrives on turn 3 or at 8 or fewer enemies"
     },
     {
      "ref": "secret-allenby",
-     "text": "Persuade Allenby with Domon (requires step 1) → Allenby + Noble Gundam join at the end of the stage"
+     "text": "Persuade Allenby with Domon (requires step 1) → Allenby + Noble Gundam join at the end of the stage",
+     "short": "Persuade Allenby with Domon (requires step 1)"
     }
    ],
    "notes": [
@@ -2865,7 +2980,8 @@
    "secrets": [
     {
      "ref": "secret-story-attacks",
-     "text": "The four Shuffle Alliance members' finishers unlock at the start of this stage {+}"
+     "text": "The four Shuffle Alliance members' finishers unlock at the start of this stage {+}",
+     "short": "No action needed: Shuffle Alliance finishers unlock at start"
     }
    ],
    "notes": [
@@ -2904,7 +3020,8 @@
    "secrets": [
     {
      "ref": "secret-mp-great",
-     "text": "Clearing this stage on the Complete Pacifism route automatically gives you the MP Great Mazinger (no pilot, 3 upgrade levels)"
+     "text": "Clearing this stage on the Complete Pacifism route automatically gives you the MP Great Mazinger (no pilot, 3 upgrade levels)",
+     "short": "No action needed: clear to get the MP Great Mazinger (no pilot)"
     }
    ],
    "notes": [
@@ -2951,7 +3068,8 @@
    "secrets": [
     {
      "ref": "secret-story-attacks",
-     "text": "The four Shuffle Alliance members' finishers unlock at the start of this stage {+}"
+     "text": "The four Shuffle Alliance members' finishers unlock at the start of this stage {+}",
+     "short": "No action needed: Shuffle Alliance finishers unlock at start"
     }
    ],
    "notes": [
@@ -3004,7 +3122,8 @@
     {
      "part": "Propellant Tank",
      "from": "Gaia {+}",
-     "note": "The Gaia trio appears only if Bask is still on the map when 15 or fewer enemies remain"
+     "note": "The Gaia trio appears only if Bask is still on the map when 15 or fewer enemies remain",
+     "short_note": "Appears only if Bask is on the map at 15 or fewer enemies"
     },
     {
      "part": "Chobham Armor",
@@ -3015,27 +3134,33 @@
    "secrets": [
     {
      "ref": "secret-route-ark-brad",
-     "text": "Ark's scenario: meet Ehrlich's conditions and choose option 2 “I don’t know. I don’t know, but...” at the end of the stage → “Together from Here On”; Brad's scenario: meet Kurtz's conditions to go automatically to “Time to Settle It”; otherwise → “Storm of Kilimanjaro”. Both side branches return to “Storm of Kilimanjaro” afterwards"
+     "text": "Ark's scenario: meet Ehrlich's conditions and choose option 2 “I don’t know. I don’t know, but...” at the end of the stage → “Together from Here On”; Brad's scenario: meet Kurtz's conditions to go automatically to “Time to Settle It”; otherwise → “Storm of Kilimanjaro”. Both side branches return to “Storm of Kilimanjaro” afterwards",
+     "short": "Ark: Ehrlich + option 2 → “Together from Here On”; Brad: Kurtz → “Time to Settle It”"
     },
     {
      "ref": "secret-katz",
-     "text": "Brad's scenario: Kurtz appears in the second wave after the enemy is wiped out. In this stage Brad must personally shoot down Kurtz, and this counts toward the “two” — one more in any earlier stage is enough. If the conditions are met, the end of the stage leads automatically into “Time to Settle It” with no choice for Brad; the 100 kills are checked in “Time to Settle It”. If not, he switches to the Super Earthgain at the end of this stage {≠}"
+     "text": "Brad's scenario: Kurtz appears in the second wave after the enemy is wiped out. In this stage Brad must personally shoot down Kurtz, and this counts toward the “two” — one more in any earlier stage is enough. If the conditions are met, the end of the stage leads automatically into “Time to Settle It” with no choice for Brad; the 100 kills are checked in “Time to Settle It”. If not, he switches to the Super Earthgain at the end of this stage {≠}",
+     "short": "Shoot down Kurtz with Brad (appears in the second wave)"
     },
     {
      "ref": "secret-elrich",
-     "text": "Ark's scenario: Ehrlich appears when 13 or fewer enemies remain, and Ark must be on the map at that moment (the Romefeller side also requires having persuaded him in “The Moon Is Hell!”; the Moon Attack side has no such prerequisite). Then persuade him with Ark and choose option 2 in the end-of-stage two-way choice → he joins in “Together from Here On”; option 1 loses him permanently {≠}"
+     "text": "Ark's scenario: Ehrlich appears when 13 or fewer enemies remain, and Ark must be on the map at that moment (the Romefeller side also requires having persuaded him in “The Moon Is Hell!”; the Moon Attack side has no such prerequisite). Then persuade him with Ark and choose option 2 in the end-of-stage two-way choice → he joins in “Together from Here On”; option 1 loses him permanently {≠}",
+     "short": "Have Ark out at 13 or fewer enemies, persuade Ehrlich, pick option 2"
     },
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: Aisha appears when the enemy is down to 13 or fewer; persuade her with Manami (requires step 1; OZ route step 2) → she joins at the end of “Storm of Kilimanjaro” {≠}"
+     "text": "Manami's scenario: Aisha appears when the enemy is down to 13 or fewer; persuade her with Manami (requires step 1; OZ route step 2) → she joins at the end of “Storm of Kilimanjaro” {≠}",
+     "short": "Persuade Aisha with Manami (appears at 13 or fewer enemies)"
     },
     {
      "ref": "secret-kyral",
-     "text": "Shoot down Kyral with Domon (he appears on the player phase after the first enemy wave is wiped out) → he appears as an ally in “Terror! Dark Axis Activates! (Part 1)” and joins only if he is still on the map when the last enemy wave is wiped out {≠}"
+     "text": "Shoot down Kyral with Domon (he appears on the player phase after the first enemy wave is wiped out) → he appears as an ally in “Terror! Dark Axis Activates! (Part 1)” and joins only if he is still on the map when the last enemy wave is wiped out {≠}",
+     "short": "Shoot down Kyral with Domon (appears after the first wave)"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the Burning Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}"
+     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the Burning Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
+     "short": "No action needed: Double Burning Finger works once Allenby joins"
     }
    ],
    "notes": [
@@ -3078,11 +3203,13 @@
    "secrets": [
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: in the turn 3 player phase or when the enemy is down to 7 or fewer (triggers once, whichever comes first), Manami must be on the map → Aisha switches to your side on the spot (Complete Pacifism route step 3); miss that moment and it fails for good {≠}"
+     "text": "Manami's scenario: in the turn 3 player phase or when the enemy is down to 7 or fewer (triggers once, whichever comes first), Manami must be on the map → Aisha switches to your side on the spot (Complete Pacifism route step 3); miss that moment and it fails for good {≠}",
+     "short": "Have Manami on the map on turn 3 player phase or at 7 or fewer enemies"
     },
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: persuade Rish with Selain (requires the 2nd or 3rd option in “The Shooting Star That Never Burns Out”; Complete Pacifism route step 2) → Rish + Sigroon join at the end of “Return to the Battlefield” {≠}"
+     "text": "Selain's scenario: persuade Rish with Selain (requires the 2nd or 3rd option in “The Shooting Star That Never Burns Out”; Complete Pacifism route step 2) → Rish + Sigroon join at the end of “Return to the Battlefield” {≠}",
+     "short": "Persuade Rish with Selain (requires option 2 or 3 in step 1)"
     }
    ],
    "notes": [
@@ -3115,11 +3242,13 @@
    "secrets": [
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: Manami must be on the map when the enemy is down to 9 or fewer → Aisha switches to your side on the spot (Independence Army route step 3); miss that moment and it fails for good {≠}"
+     "text": "Manami's scenario: Manami must be on the map when the enemy is down to 9 or fewer → Aisha switches to your side on the spot (Independence Army route step 3); miss that moment and it fails for good {≠}",
+     "short": "Have Manami on the map when 9 or fewer enemies remain"
     },
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: if the first two steps are done, Rish + Sigroon join at the start of this stage"
+     "text": "Selain's scenario: if the first two steps are done, Rish + Sigroon join at the start of this stage",
+     "short": "No action needed: Rish + Sigroon join at start if steps 1–2 done"
     }
    ],
    "notes": [
@@ -3144,11 +3273,13 @@
    "secrets": [
     {
      "ref": "secret-route-ark-brad",
-     "text": "Ark only: entered from the OZ route's “Order to Eliminate Treize” when the conditions are met; afterwards you return to “Storm of Kilimanjaro”"
+     "text": "Ark only: entered from the OZ route's “Order to Eliminate Treize” when the conditions are met; afterwards you return to “Storm of Kilimanjaro”",
+     "short": "Entered from “Order to Eliminate Treize”; returns to “Storm of Kilimanjaro”"
     },
     {
      "ref": "secret-elrich",
-     "text": "Ark goes alone to rescue Ehrlich's lover; after the guard units are cleared, Bask and Ehrlich appear, and Ehrlich, learning the truth, defects mid-battle. He joins on clearing the stage (Norouz with 4 upgrade levels) {+}"
+     "text": "Ark goes alone to rescue Ehrlich's lover; after the guard units are cleared, Bask and Ehrlich appear, and Ehrlich, learning the truth, defects mid-battle. He joins on clearing the stage (Norouz with 4 upgrade levels) {+}",
+     "short": "No action needed: clear to recruit Ehrlich + Norouz (4 upgrades)"
     }
    ],
    "notes": [
@@ -3193,19 +3324,23 @@
    "secrets": [
     {
      "ref": "secret-route-treize",
-     "text": "Two-way choice at the end of the stage: “Side with Treize” → “Fierce Fighting in Space” (later merging into the second half of OZ at “Prelude to Ruin”); “Fight on our own” → “The Galactic Empire's Threat” (later merging into the second half of the Independence Army at “Galactic Empire Vanguard Fleet”)"
+     "text": "Two-way choice at the end of the stage: “Side with Treize” → “Fierce Fighting in Space” (later merging into the second half of OZ at “Prelude to Ruin”); “Fight on our own” → “The Galactic Empire's Threat” (later merging into the second half of the Independence Army at “Galactic Empire Vanguard Fleet”)",
+     "short": "End choice: “Side with Treize” → “Fierce Fighting in Space”; “Fight on our own” → “The Galactic Empire's Threat”"
     },
     {
      "ref": "secret-zechs-epyon",
-     "text": "If you pick “Side with Treize,” Zechs + Gundam Epyon join at the start of “Brothers”"
+     "text": "If you pick “Side with Treize,” Zechs + Gundam Epyon join at the start of “Brothers”",
+     "short": "Pick “Side with Treize” → Zechs + Gundam Epyon join"
     },
     {
      "ref": "secret-reese",
-     "text": "Selain's scenario: if the first two steps are done, Rish + Sigroon join at the end of this stage (no upgrades) {≠}"
+     "text": "Selain's scenario: if the first two steps are done, Rish + Sigroon join at the end of this stage (no upgrades) {≠}",
+     "short": "No action needed: Rish + Sigroon join at the end if steps 1–2 done"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "The four Shuffle Alliance members' finishers unlock in this stage (Complete Pacifism route) {+}"
+     "text": "The four Shuffle Alliance members' finishers unlock in this stage (Complete Pacifism route) {+}",
+     "short": "No action needed: Shuffle Alliance finishers unlock here"
     }
    ],
    "notes": [
@@ -3262,27 +3397,33 @@
    "secrets": [
     {
      "ref": "secret-route-ark-brad",
-     "text": "Ark's scenario: meet Ehrlich's conditions and choose option 2 “I don’t know... I don’t know, but...” at the end of the stage → “Together from Here On”; Brad's scenario: meet Kurtz's conditions to go automatically to “Time to Settle It”; otherwise → “Mars and Marg”. Both side branches return to “Mars and Marg” afterwards"
+     "text": "Ark's scenario: meet Ehrlich's conditions and choose option 2 “I don’t know... I don’t know, but...” at the end of the stage → “Together from Here On”; Brad's scenario: meet Kurtz's conditions to go automatically to “Time to Settle It”; otherwise → “Mars and Marg”. Both side branches return to “Mars and Marg” afterwards",
+     "short": "Ark: Ehrlich + option 2 → “Together from Here On”; Brad: Kurtz → “Time to Settle It”"
     },
     {
      "ref": "secret-katz",
-     "text": "Brad's scenario: Kurtz appears at the start of turn 4 or when the enemy is wiped out. In this stage Brad must personally shoot down Kurtz, and this counts toward the “two” — one more in any earlier stage is enough. If the conditions are met, the end of the stage leads automatically into “Time to Settle It” with no choice for Brad; the 100 kills are checked in “Time to Settle It”. If not, he switches to the Super Earthgain at the end of this stage {≠}"
+     "text": "Brad's scenario: Kurtz appears at the start of turn 4 or when the enemy is wiped out. In this stage Brad must personally shoot down Kurtz, and this counts toward the “two” — one more in any earlier stage is enough. If the conditions are met, the end of the stage leads automatically into “Time to Settle It” with no choice for Brad; the 100 kills are checked in “Time to Settle It”. If not, he switches to the Super Earthgain at the end of this stage {≠}",
+     "short": "Shoot down Kurtz with Brad (turn 4 or enemy wiped out)"
     },
     {
      "ref": "secret-elrich",
-     "text": "Ark's scenario: Ehrlich appears at the start of turn 4 or when the enemy force is wiped out. The Persuade option only appears if the Lera branch is active (option 1/2 in “Ideals, Shattered” and greeting Lera in “Operation Daybreak”; those who chose “Ignore her” must make up for it in Operation Daybreak). After persuading him, choose option 2 in the end-of-stage two-way choice → “Together from Here On”; option 1 loses him permanently {≠}"
+     "text": "Ark's scenario: Ehrlich appears at the start of turn 4 or when the enemy force is wiped out. The Persuade option only appears if the Lera branch is active (option 1/2 in “Ideals, Shattered” and greeting Lera in “Operation Daybreak”; those who chose “Ignore her” must make up for it in Operation Daybreak). After persuading him, choose option 2 in the end-of-stage two-way choice → “Together from Here On”; option 1 loses him permanently {≠}",
+     "short": "With the Lera branch, persuade Ehrlich with Ark, then option 2"
     },
     {
      "ref": "secret-rosamia",
-     "text": "Rosamia and Gates appear when Baren is destroyed. Shoot down Gates first, then persuade Rosamia with Kamille (requires step 1 in “Defense of Sweetwater”); persuading while Gates is on the map gives only dialogue, and you can't persuade again this stage. On success she joins on the spot (pilot only) {≠}"
+     "text": "Rosamia and Gates appear when Baren is destroyed. Shoot down Gates first, then persuade Rosamia with Kamille (requires step 1 in “Defense of Sweetwater”); persuading while Gates is on the map gives only dialogue, and you can't persuade again this stage. On success she joins on the spot (pilot only) {≠}",
+     "short": "Shoot down Gates first, then persuade Rosamia with Kamille"
     },
     {
      "ref": "secret-kyral",
-     "text": "Shoot down Kyral with Domon (he appears on the enemy phase of the 4th turn after Baren is destroyed) → he appears as an ally in “Terror! Dark Axis Activates! (Part 1)” and joins only if he is still on the map when the last enemy wave is wiped out {≠}"
+     "text": "Shoot down Kyral with Domon (he appears on the enemy phase of the 4th turn after Baren is destroyed) → he appears as an ally in “Terror! Dark Axis Activates! (Part 1)” and joins only if he is still on the map when the last enemy wave is wiped out {≠}",
+     "short": "Shoot down Kyral with Domon (appears 4 turns after Baren falls)"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the Burning Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}"
+     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the Burning Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
+     "short": "No action needed: Double Burning Finger works once Allenby joins"
     }
    ],
    "notes": [
@@ -3307,11 +3448,13 @@
    "secrets": [
     {
      "ref": "secret-route-ark-brad",
-     "text": "Brad's scenario only: entered automatically from “Order to Eliminate Treize” on the OZ route if the Kurtz conditions are met; afterward you return to “Storm of Kilimanjaro”"
+     "text": "Brad's scenario only: entered automatically from “Order to Eliminate Treize” on the OZ route if the Kurtz conditions are met; afterward you return to “Storm of Kilimanjaro”",
+     "short": "Auto-entered from “Order to Eliminate Treize” if Kurtz conditions met"
     },
     {
      "ref": "secret-katz",
-     "text": "Only Brad deploys in this stage, and the game is over if Brad is destroyed. If Brad has ≥ 100 kills at the moment Kurtz is destroyed → Kurtz + Virose (3 upgrade levels) join, and you no longer switch to the Super Earthgain (the Earthgain can use the combination attack “Shorai Tenryu Mametsujin” with the Virose); under 100 → Kurtz dies, and you switch to the Super Earthgain at the start of the next stage. Whether the kill on Kurtz itself already counts toward the 100 is unconfirmed {≠}{?}"
+     "text": "Only Brad deploys in this stage, and the game is over if Brad is destroyed. If Brad has ≥ 100 kills at the moment Kurtz is destroyed → Kurtz + Virose (3 upgrade levels) join, and you no longer switch to the Super Earthgain (the Earthgain can use the combination attack “Shorai Tenryu Mametsujin” with the Virose); under 100 → Kurtz dies, and you switch to the Super Earthgain at the start of the next stage. Whether the kill on Kurtz itself already counts toward the 100 is unconfirmed {≠}{?}",
+     "short": "Have Brad at 100+ kills when Kurtz falls so Kurtz joins"
     }
    ],
    "notes": [
@@ -3379,27 +3522,33 @@
    "secrets": [
     {
      "ref": "secret-route-ark-brad",
-     "text": "Come directly from “Order to Eliminate Treize”, or return here via “Together from Here On” / “Time to Settle It”"
+     "text": "Come directly from “Order to Eliminate Treize”, or return here via “Together from Here On” / “Time to Settle It”",
+     "short": "No action needed: reached from “Order to Eliminate Treize” or a side branch"
     },
     {
      "ref": "secret-zechs-epyon",
-     "text": "OZ route, automatic: Zechs fights in the Wing Zero this stage and is registered as the Gundam Epyon's pilot at the end; Heero leaves along with the Wing Zero {≠}"
+     "text": "OZ route, automatic: Zechs fights in the Wing Zero this stage and is registered as the Gundam Epyon's pilot at the end; Heero leaves along with the Wing Zero {≠}",
+     "short": "No action needed: Zechs pilots the Gundam Epyon; Heero leaves"
     },
     {
      "ref": "secret-four",
-     "text": "Real: persuade Four with Kamille (no level condition on the OZ route); with the first two steps done, she joins at the end of the stage (pilot only)"
+     "text": "Real: persuade Four with Kamille (no level condition on the OZ route); with the first two steps done, she joins at the end of the stage (pilot only)",
+     "short": "Persuade Four with Kamille (steps 1–2 done, no level check)"
     },
     {
      "ref": "secret-allenby",
-     "text": "Persuade Allenby with Domon (requires step 1) → Allenby + Noble Gundam join at the end of the stage"
+     "text": "Persuade Allenby with Domon (requires step 1) → Allenby + Noble Gundam join at the end of the stage",
+     "short": "Persuade Allenby with Domon (requires step 1)"
     },
     {
      "ref": "secret-aisha",
-     "text": "Manami's scenario: if the first two steps are done, Manami can't deploy in this stage, and Aisha + Elbulls join at the end, with Aisha becoming the Sweemurg S's sub-pilot {≠}"
+     "text": "Manami's scenario: if the first two steps are done, Manami can't deploy in this stage, and Aisha + Elbulls join at the end, with Aisha becoming the Sweemurg S's sub-pilot {≠}",
+     "short": "No action needed: Aisha + Elbulls join at the end if steps 1–2 done"
     },
     {
      "ref": "secret-sortie-limits",
-     "text": "On Four's line (both earlier steps done), Kamille can't deploy at the start; on Aisha's line in Manami's scenario, Manami can't deploy in this stage {+}"
+     "text": "On Four's line (both earlier steps done), Kamille can't deploy at the start; on Aisha's line in Manami's scenario, Manami can't deploy in this stage {+}",
+     "short": "Four's line: no Kamille at start; Aisha's line: no Manami"
     }
    ],
    "notes": [
@@ -3423,11 +3572,13 @@
    "secrets": [
     {
      "ref": "secret-route-ark-brad",
-     "text": "Ark only: entered from the Independence Army route's “Earth Sphere in Chaos” when the conditions are met; afterwards you return to “Mars and Marg”"
+     "text": "Ark only: entered from the Independence Army route's “Earth Sphere in Chaos” when the conditions are met; afterwards you return to “Mars and Marg”",
+     "short": "Entered from “Earth Sphere in Chaos”; returns to “Mars and Marg”"
     },
     {
      "ref": "secret-elrich",
-     "text": "Ark goes alone to rescue Ehrlich's lover; after the guard units are cleared, Bask and Ehrlich appear, and Ehrlich, learning the truth, defects mid-battle. He joins on clearing the stage (Norouz with 4 upgrade levels) {+}"
+     "text": "Ark goes alone to rescue Ehrlich's lover; after the guard units are cleared, Bask and Ehrlich appear, and Ehrlich, learning the truth, defects mid-battle. He joins on clearing the stage (Norouz with 4 upgrade levels) {+}",
+     "short": "No action needed: clear to recruit Ehrlich + Norouz (4 upgrades)"
     }
    ],
    "notes": [
@@ -3482,7 +3633,8 @@
    "secrets": [
     {
      "ref": "secret-route-treize",
-     "text": "Reached by choosing “Side with Treize” in “Return to the Battlefield”; this line later merges into the second half of OZ at “Prelude to Ruin”"
+     "text": "Reached by choosing “Side with Treize” in “Return to the Battlefield”; this line later merges into the second half of OZ at “Prelude to Ruin”",
+     "short": "Reached via “Side with Treize”; later joins OZ's second half"
     }
    ],
    "notes": [
@@ -3527,7 +3679,8 @@
    "secrets": [
     {
      "ref": "secret-route-treize",
-     "text": "Reached by choosing “Fight on our own” in “Return to the Battlefield”; later merges into the second half of the Independence Army at “Galactic Empire Vanguard Fleet”"
+     "text": "Reached by choosing “Fight on our own” in “Return to the Battlefield”; later merges into the second half of the Independence Army at “Galactic Empire Vanguard Fleet”",
+     "short": "Reached via “Fight on our own”; merges into the Independence Army"
     }
    ],
    "notes": [
@@ -3552,11 +3705,13 @@
    "secrets": [
     {
      "ref": "secret-route-ark-brad",
-     "text": "Brad's scenario only: entered automatically from “Earth Sphere in Chaos” on the Independence Army route if the Kurtz conditions are met; afterward you return to “Mars and Marg”"
+     "text": "Brad's scenario only: entered automatically from “Earth Sphere in Chaos” on the Independence Army route if the Kurtz conditions are met; afterward you return to “Mars and Marg”",
+     "short": "Auto-entered from “Earth Sphere in Chaos” if Kurtz conditions met"
     },
     {
      "ref": "secret-katz",
-     "text": "Only Brad deploys in this stage, and the game is over if Brad is destroyed. If Brad has ≥ 100 kills at the moment Kurtz is destroyed → Kurtz + Virose (3 upgrade levels) join, and you no longer switch to the Super Earthgain (the Earthgain can use the combination attack “Shorai Tenryu Mametsujin” with the Virose); under 100 → Kurtz dies, and you switch to the Super Earthgain at the start of the next stage. Whether the kill on Kurtz itself already counts toward the 100 is unconfirmed {≠}{?}"
+     "text": "Only Brad deploys in this stage, and the game is over if Brad is destroyed. If Brad has ≥ 100 kills at the moment Kurtz is destroyed → Kurtz + Virose (3 upgrade levels) join, and you no longer switch to the Super Earthgain (the Earthgain can use the combination attack “Shorai Tenryu Mametsujin” with the Virose); under 100 → Kurtz dies, and you switch to the Super Earthgain at the start of the next stage. Whether the kill on Kurtz itself already counts toward the 100 is unconfirmed {≠}{?}",
+     "short": "Have Brad at 100+ kills when Kurtz falls so Kurtz joins"
     }
    ],
    "notes": [
@@ -3604,12 +3759,14 @@
     {
      "part": "Psycoframe",
      "from": "Scirocco",
-     "note": "Appears after the enemy is wiped out; retreats with his men when 8 or fewer enemies remain, or on the enemy phase 4 turns after he appears, and the stage ends"
+     "note": "Appears after the enemy is wiped out; retreats with his men when 8 or fewer enemies remain, or on the enemy phase 4 turns after he appears, and the stage ends",
+     "short_note": "Retreats at 8 or fewer enemies or 4 turns after arriving"
     },
     {
      "part": "Repair Kit",
      "from": "Yazan {+}",
-     "note": "Appears with Scirocco after the enemy is wiped out; retreats with Scirocco (the stage ends)"
+     "note": "Appears with Scirocco after the enemy is wiped out; retreats with Scirocco (the stage ends)",
+     "short_note": "Retreats with Scirocco (stage ends)"
     }
    ],
    "retreats": [
@@ -3621,15 +3778,18 @@
    "secrets": [
     {
      "ref": "secret-fa-hyakushiki",
-     "text": "OZ route, automatic: at the start of this stage the Hyaku-Shiki is replaced by the FA Hyaku-Shiki Kai"
+     "text": "OZ route, automatic: at the start of this stage the Hyaku-Shiki is replaced by the FA Hyaku-Shiki Kai",
+     "short": "No action needed: Hyaku-Shiki becomes the FA Hyaku-Shiki Kai"
     },
     {
      "ref": "secret-rose",
-     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}"
+     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}",
+     "short": "Persuade Marg with Takeru (affects dialogue only, optional)"
     },
     {
      "ref": "secret-hilde",
-     "text": "On the OZ route, Hilde joins automatically at the end of this stage with no conditions (pilot only)"
+     "text": "On the OZ route, Hilde joins automatically at the end of this stage with no conditions (pilot only)",
+     "short": "No action needed: Hilde joins at the end (pilot only)"
     }
    ],
    "notes": [
@@ -3677,15 +3837,18 @@
    "secrets": [
     {
      "ref": "secret-route-lera",
-     "text": "Real with the Lera branch active → “Those Eyes Reflect No Future”; Super, or branch not active → “Enter! Super Electromagnetic Robo”. Lera branch: pick option 1 or 2 in “Ideals, Shattered” and pick “Say hello to Lera” at the start of “Operation Daybreak”; if you picked “Ignore her” in “Ideals, Shattered”, Operation Daybreak needs one more right answer (Ark: “I was wrong last time,” Selain: “That’s true, but...”) {≠}"
+     "text": "Real with the Lera branch active → “Those Eyes Reflect No Future”; Super, or branch not active → “Enter! Super Electromagnetic Robo”. Lera branch: pick option 1 or 2 in “Ideals, Shattered” and pick “Say hello to Lera” at the start of “Operation Daybreak”; if you picked “Ignore her” in “Ideals, Shattered”, Operation Daybreak needs one more right answer (Ark: “I was wrong last time,” Selain: “That’s true, but...”) {≠}",
+     "short": "Real with Lera branch → “Those Eyes Reflect No Future”; else “Enter! Super Electromagnetic Robo”"
     },
     {
      "ref": "secret-route-ark-brad",
-     "text": "Both “Together from Here On” and “Time to Settle It” return to this stage afterwards"
+     "text": "Both “Together from Here On” and “Time to Settle It” return to this stage afterwards",
+     "short": "No action needed: both side branches return here"
     },
     {
      "ref": "secret-mk3-methuss",
-     "text": "Clearing this stage on the Independence Army route automatically gives the Gundam Mk-III (no pilot), and Methuss becomes Methuss Kai"
+     "text": "Clearing this stage on the Independence Army route automatically gives the Gundam Mk-III (no pilot), and Methuss becomes Methuss Kai",
+     "short": "No action needed: clear for the Gundam Mk-III; Methuss → Methuss Kai"
     }
    ],
    "notes": [
@@ -3726,7 +3889,8 @@
    "secrets": [
     {
      "ref": "secret-route-lera",
-     "text": "Real only: if the Lera branch is active, this stage comes after “Mars and Marg”, and Lera dies in it. Either/or with “Enter! Super Electromagnetic Robo”; both stages give the Double Spazer, the Drill Spazer and Maria at the end, and both continue to “Sortie into Turmoil” {+}"
+     "text": "Real only: if the Lera branch is active, this stage comes after “Mars and Marg”, and Lera dies in it. Either/or with “Enter! Super Electromagnetic Robo”; both stages give the Double Spazer, the Drill Spazer and Maria at the end, and both continue to “Sortie into Turmoil” {+}",
+     "short": "No action needed: entered on the Lera branch; Lera dies here"
     }
    ],
    "notes": [
@@ -3788,11 +3952,13 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}"
+     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}",
+     "short": "Persuade Marg with Takeru (affects dialogue only, optional)"
     },
     {
      "ref": "secret-hilde",
-     "text": "Complete Pacifism, with Treize: Hilde is registered unconditionally at the end of the stage (pilot only)"
+     "text": "Complete Pacifism, with Treize: Hilde is registered unconditionally at the end of the stage (pilot only)",
+     "short": "No action needed: Hilde is registered at the end (pilot only)"
     }
    ],
    "notes": [
@@ -3880,7 +4046,8 @@
    "secrets": [
     {
      "ref": "secret-route-gato-base",
-     "text": "If Gato was not recruited, he appears among this stage's enemy reinforcements"
+     "text": "If Gato was not recruited, he appears among this stage's enemy reinforcements",
+     "short": "If Gato wasn't recruited, he shows up as an enemy reinforcement"
     }
    ],
    "notes": [
@@ -3920,7 +4087,8 @@
    "secrets": [
     {
      "ref": "secret-route-lera",
-     "text": "On Super, or on Real without the Lera branch, you play this stage after “Mars and Marg”; it is the alternative to “Those Eyes Reflect No Future”, with the same end-of-stage rewards"
+     "text": "On Super, or on Real without the Lera branch, you play this stage after “Mars and Marg”; it is the alternative to “Those Eyes Reflect No Future”, with the same end-of-stage rewards",
+     "short": "No action needed: played on Super or without the Lera branch"
     }
    ],
    "notes": [
@@ -3973,15 +4141,18 @@
    "secrets": [
     {
      "ref": "secret-zechs-epyon",
-     "text": "Automatic on the with-Treize branch: Zechs + Gundam Epyon join at the start of this stage (3 upgrade levels)"
+     "text": "Automatic on the with-Treize branch: Zechs + Gundam Epyon join at the start of this stage (3 upgrade levels)",
+     "short": "No action: Zechs + Gundam Epyon join at the start of this stage"
     },
     {
      "ref": "secret-rose",
-     "text": "Rose's 2nd stage: with Rose on the map, shoot down Marg with Takeru, then persuade Rose with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}"
+     "text": "Rose's 2nd stage: with Rose on the map, shoot down Marg with Takeru, then persuade Rose with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}",
+     "short": "With Rose on the map, down Marg with Takeru, then persuade Rose"
     },
     {
      "ref": "secret-naida",
-     "text": "Super: persuade Naida with Duke (no prerequisite), then pick option 1 at the start of the next stage “Prelude to Ruin” for her to join; with option 2 she dies"
+     "text": "Super: persuade Naida with Duke (no prerequisite), then pick option 1 at the start of the next stage “Prelude to Ruin” for her to join; with option 2 she dies",
+     "short": "Persuade Naida with Duke; pick option 1 at next stage's start"
     }
    ],
    "notes": [
@@ -4063,11 +4234,13 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Rose's 2nd stage: with Rose on the map, shoot down Marg with Takeru, then persuade Rose with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}"
+     "text": "Rose's 2nd stage: with Rose on the map, shoot down Marg with Takeru, then persuade Rose with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}",
+     "short": "With Rose on the map, down Marg with Takeru, then persuade Rose"
     },
     {
      "ref": "secret-naida",
-     "text": "Super: persuade Naida with Duke (no prerequisite), then pick option 1 at the start of the next stage “Prelude to Ruin” for her to join; with option 2 she dies"
+     "text": "Super: persuade Naida with Duke (no prerequisite), then pick option 1 at the start of the next stage “Prelude to Ruin” for her to join; with option 2 she dies",
+     "short": "Persuade Naida with Duke; pick option 1 at next stage's start"
     }
    ],
    "notes": [
@@ -4116,15 +4289,18 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}"
+     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}",
+     "short": "Optional: persuade Marg with Takeru (affects later dialogue only)"
     },
     {
      "ref": "secret-naida",
-     "text": "Super: Naida appears with the second wave (on the turn 5 player phase, or when you wipe out the first wave within 5 turns); persuade her with Duke (no prerequisite), then pick option 1 at the start of the next stage for her to join; with option 2 she dies {+}"
+     "text": "Super: Naida appears with the second wave (on the turn 5 player phase, or when you wipe out the first wave within 5 turns); persuade her with Duke (no prerequisite), then pick option 1 at the start of the next stage for her to join; with option 2 she dies {+}",
+     "short": "Persuade Naida (2nd wave) with Duke; pick option 1 next stage"
     },
     {
      "ref": "secret-hilde",
-     "text": "Whether you recruited Hilde earlier decides whether Noin joins with the Taurus"
+     "text": "Whether you recruited Hilde earlier decides whether Noin joins with the Taurus",
+     "short": "No action: Noin brings the Taurus if Hilde was recruited"
     }
    ],
    "notes": [
@@ -4173,11 +4349,13 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}"
+     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}",
+     "short": "Optional: persuade Marg with Takeru (affects later dialogue only)"
     },
     {
      "ref": "secret-route-treize",
-     "text": "The fight-alone branch ends here; the next stage “Galactic Empire Vanguard Fleet” merges into the second half of the Independence Army route"
+     "text": "The fight-alone branch ends here; the next stage “Galactic Empire Vanguard Fleet” merges into the second half of the Independence Army route",
+     "short": "No action: fight-alone branch ends; next stage joins Independence Army"
     }
    ],
    "notes": [
@@ -4225,15 +4403,18 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Rose's 3rd stage: persuade Rose with Takeru (requires that in the previous stage you shot down Marg while Rose was on the map and persuaded Rose) → Rose + Zeron (3 upgrade levels) join at the end of the stage {≠}"
+     "text": "Rose's 3rd stage: persuade Rose with Takeru (requires that in the previous stage you shot down Marg while Rose was on the map and persuaded Rose) → Rose + Zeron (3 upgrade levels) join at the end of the stage {≠}",
+     "short": "Persuade Rose with Takeru (needs the earlier Marg kill + persuasion)"
     },
     {
      "ref": "secret-naida",
-     "text": "Super: if Naida was persuaded, in the opening two-way choice pick “We can't just leave her like this” → Naida + Double Spazer join; “Deal with the enemy for now” → she dies, Duke cannot deploy this stage, and the enemy's starting lineup also changes {≠}"
+     "text": "Super: if Naida was persuaded, in the opening two-way choice pick “We can't just leave her like this” → Naida + Double Spazer join; “Deal with the enemy for now” → she dies, Duke cannot deploy this stage, and the enemy's starting lineup also changes {≠}",
+     "short": "If Naida was persuaded, pick “We can't just leave her like this”"
     },
     {
      "ref": "secret-route-treize",
-     "text": "The OZ route and the Complete Pacifism “with Treize” branch merge at this stage"
+     "text": "The OZ route and the Complete Pacifism “with Treize” branch merge at this stage",
+     "short": "No action: the OZ route and “with Treize” branch merge here"
     }
    ],
    "notes": [
@@ -4285,15 +4466,18 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Rose's 2nd stage: with Rose on the map, shoot down Marg with Takeru, then persuade Rose with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}"
+     "text": "Rose's 2nd stage: with Rose on the map, shoot down Marg with Takeru, then persuade Rose with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}",
+     "short": "With Rose on the map, down Marg with Takeru, then persuade Rose"
     },
     {
      "ref": "secret-naida",
-     "text": "Super: if Naida was persuaded, in the opening two-way choice pick “Have Takeru wake him with Shockwave” → Naida + Double Spazer join; “That can wait” → she self-destructs and dies, and Duke cannot deploy this stage {≠}"
+     "text": "Super: if Naida was persuaded, in the opening two-way choice pick “Have Takeru wake him with Shockwave” → Naida + Double Spazer join; “That can wait” → she self-destructs and dies, and Duke cannot deploy this stage {≠}",
+     "short": "If Naida was persuaded, pick “Have Takeru wake him with Shockwave”"
     },
     {
      "ref": "secret-route-treize",
-     "text": "The Independence Army route and the Complete Pacifism solo branch merge in this stage"
+     "text": "The Independence Army route and the Complete Pacifism solo branch merge in this stage",
+     "short": "No action: Independence Army route and solo branch merge here"
     }
    ],
    "notes": [
@@ -4339,7 +4523,8 @@
     {
      "part": "Bio-Sensor",
      "from": "Kirika",
-     "note": "Brad's and Manami's scenarios only; appears when 15 or fewer enemies remain, can be persuaded (no drop if persuaded)"
+     "note": "Brad's and Manami's scenarios only; appears when 15 or fewer enemies remain, can be persuaded (no drop if persuaded)",
+     "short_note": "Appears at 15 or fewer enemies; no drop if persuaded"
     },
     {
      "part": "Hybrid Armor",
@@ -4349,15 +4534,18 @@
    "secrets": [
     {
      "ref": "secret-todd-silky",
-     "text": "If both persuasion steps for Tod are done, he joins as reinforcements in the Zwauth on the player phase of turn 3. If at that moment Garalia has been recruited and Marvel has ≥ 30 kills (kills on turns 1 and 2 count), Silky also joins riding with him. If Tod is shot down in this stage, both are lost permanently {≠}"
+     "text": "If both persuasion steps for Tod are done, he joins as reinforcements in the Zwauth on the player phase of turn 3. If at that moment Garalia has been recruited and Marvel has ≥ 30 kills (kills on turns 1 and 2 count), Silky also joins riding with him. If Tod is shot down in this stage, both are lost permanently {≠}",
+     "short": "Keep Tod alive (joins turn 3); Silky too if Marvel has ≥ 30 kills"
     },
     {
      "ref": "secret-kirika",
-     "text": "Super only: Kirika appears when 15 or fewer enemies remain. Persuade first with Duke, then with Maria (the order can't be reversed); joins at the end of the stage (pilot only) {+}"
+     "text": "Super only: Kirika appears when 15 or fewer enemies remain. Persuade first with Duke, then with Maria (the order can't be reversed); joins at the end of the stage (pilot only) {+}",
+     "short": "Persuade Kirika with Duke, then Maria (in that order)"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Dancouga's Dancou Kougaken unlocks at the end of this stage (OZ route) {+}"
+     "text": "Dancouga's Dancou Kougaken unlocks at the end of this stage (OZ route) {+}",
+     "short": "No action: Dancouga's Dancou Kougaken unlocks at stage end"
     }
    ],
    "notes": [
@@ -4409,21 +4597,25 @@
     {
      "part": "Propellant Tank",
      "from": "Kirika",
-     "note": "Brad's and Manami's scenarios only; appears on the player phase of turn 3, can be persuaded (no drop if persuaded)"
+     "note": "Brad's and Manami's scenarios only; appears on the player phase of turn 3, can be persuaded (no drop if persuaded)",
+     "short_note": "Appears on turn 3 player phase; no drop if persuaded"
     }
    ],
    "secrets": [
     {
      "ref": "secret-kirika",
-     "text": "Super only: Kirika appears on the player phase of turn 3. Persuade first with Duke, then with Maria (the order can't be reversed); joins at the end of the stage (pilot only) {+}"
+     "text": "Super only: Kirika appears on the player phase of turn 3. Persuade first with Duke, then with Maria (the order can't be reversed); joins at the end of the stage (pilot only) {+}",
+     "short": "Persuade Kirika (turn 3) with Duke, then Maria, in that order"
     },
     {
      "ref": "secret-route-beast-base",
-     "text": "Three-way choice at the end of the stage: “Go with the main force” → “Desperate Breakthrough (Part 1)”; “Go with Domon and the others” → “Death Match! Showdown on Lantau Island (Part 1)” and “(Part 2)”, then “Desperate Breakthrough (Part 1)”; “Go with Hyoma and the others” → “Empress Janera's Human Hunt”, then “Desperate Breakthrough (Part 1)”"
+     "text": "Three-way choice at the end of the stage: “Go with the main force” → “Desperate Breakthrough (Part 1)”; “Go with Domon and the others” → “Death Match! Showdown on Lantau Island (Part 1)” and “(Part 2)”, then “Desperate Breakthrough (Part 1)”; “Go with Hyoma and the others” → “Empress Janera's Human Hunt”, then “Desperate Breakthrough (Part 1)”",
+     "short": "End-of-stage pick: main force, Domon's or Hyoma's group → branch"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Dancouga's Dancou Kougaken unlocks at the end of this stage {≠}"
+     "text": "Dancouga's Dancou Kougaken unlocks at the end of this stage {≠}",
+     "short": "No action: Dancouga's Dancou Kougaken unlocks at stage end"
     }
    ],
    "notes": [
@@ -4453,11 +4645,13 @@
    "secrets": [
     {
      "ref": "secret-route-beast-base",
-     "text": "This stage is entered only if you choose “Go with Domon and the others” at the end of “All-Out Attack on the Cyber Beast Force Base”"
+     "text": "This stage is entered only if you choose “Go with Domon and the others” at the end of “All-Out Attack on the Cyber Beast Force Base”",
+     "short": "Reached by choosing “Go with Domon and the others” earlier"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Sekiha Tenkyoken: unlocks at the end of this stage on this branch; the other two branches unlock it at the start of “Desperate Breakthrough (Part 1)”, and the OZ route at the end of “Fist of Despair and Sorrow (Part 1)” {≠}"
+     "text": "Sekiha Tenkyoken: unlocks at the end of this stage on this branch; the other two branches unlock it at the start of “Desperate Breakthrough (Part 1)”, and the OZ route at the end of “Fist of Despair and Sorrow (Part 1)” {≠}",
+     "short": "No action: Sekiha Tenkyoken unlocks at the end of this stage"
     }
    ],
    "notes": [
@@ -4494,11 +4688,13 @@
    "secrets": [
     {
      "ref": "secret-route-beast-base",
-     "text": "This stage is entered only if you choose “Go with Hyoma and the others” at the end of “All-Out Attack on the Cyber Beast Force Base”"
+     "text": "This stage is entered only if you choose “Go with Hyoma and the others” at the end of “All-Out Attack on the Cyber Beast Force Base”",
+     "short": "Reached by choosing “Go with Hyoma and the others” earlier"
     },
     {
      "ref": "secret-janera-beasts",
-     "text": "With Janera on the map, whichever of the two AI mother units is destroyed first decides whether the Super Beast that appears when all enemies are defeated or in the turn 5 player phase is Shishiris Kiba, Shishiris Garo, or both; with Janera on the map, Big Sirius and a Darkron squad are added as well {+}{?}"
+     "text": "With Janera on the map, whichever of the two AI mother units is destroyed first decides whether the Super Beast that appears when all enemies are defeated or in the turn 5 player phase is Shishiris Kiba, Shishiris Garo, or both; with Janera on the map, Big Sirius and a Darkron squad are added as well {+}{?}",
+     "short": "With Janera here, the first AI mother destroyed sets the Super Beast"
     }
    ],
    "notes": [
@@ -4538,11 +4734,13 @@
    "secrets": [
     {
      "ref": "secret-gale-escort",
-     "text": "Eiji can't deploy in this stage; if Gale was recruited, Gale can't deploy either, and he's force-deployed in the next stage {+}"
+     "text": "Eiji can't deploy in this stage; if Gale was recruited, Gale can't deploy either, and he's force-deployed in the next stage {+}",
+     "short": "No action: Eiji can't deploy; Gale can't either, if recruited"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Combattler V's Twin Lancer, V Laser, Big Blast Divider and Grand Dasher unlock at the start of this stage (OZ route) {≠}"
+     "text": "Combattler V's Twin Lancer, V Laser, Big Blast Divider and Grand Dasher unlock at the start of this stage (OZ route) {≠}",
+     "short": "No action: Combattler V's Twin Lancer and more unlock at start"
     }
    ],
    "notes": [
@@ -4586,17 +4784,20 @@
     {
      "part": "Super Alloy Z",
      "from": "Kyoji {≠}",
-     "note": "Once Domon fights him, he's destroyed by the story and drops nothing, so someone else has to shoot him down before that"
+     "note": "Once Domon fights him, he's destroyed by the story and drops nothing, so someone else has to shoot him down before that",
+     "short_note": "Have someone else down him before Domon fights him"
     },
     {
      "part": "Super Alloy Z",
      "from": "Allenby",
-     "note": "Appears after Master Asia is shot down; if Allenby wasn't saved, she pilots the Dark Gundam"
+     "note": "Appears after Master Asia is shot down; if Allenby wasn't saved, she pilots the Dark Gundam",
+     "short_note": "Appears after Master Asia falls if Allenby wasn't saved"
     },
     {
      "part": "Super Alloy Z",
      "from": "Wong",
-     "note": "Appears after Master Asia is shot down; if Allenby was saved, Wong pilots the Dark Gundam"
+     "note": "Appears after Master Asia is shot down; if Allenby was saved, Wong pilots the Dark Gundam",
+     "short_note": "Appears after Master Asia falls, if Allenby was saved"
     },
     {
      "part": "Shuffle Crest",
@@ -4606,15 +4807,18 @@
    "secrets": [
     {
      "ref": "secret-allenby",
-     "text": "Allenby appears as a berserk enemy and withdraws at the start of the enemy phase on turn 5. As long as step 1 was done (step 2 doesn't matter), persuading her first with Domon and then with Rain brings her back, not necessarily in the same turn; once saved she joins at the end of the stage (even if she hadn't joined before). If she was never persuaded, she can't be persuaded {≠}"
+     "text": "Allenby appears as a berserk enemy and withdraws at the start of the enemy phase on turn 5. As long as step 1 was done (step 2 doesn't matter), persuading her first with Domon and then with Rain brings her back, not necessarily in the same turn; once saved she joins at the end of the stage (even if she hadn't joined before). If she was never persuaded, she can't be persuaded {≠}",
+     "short": "Persuade Allenby with Domon, then Rain, before turn 5 enemy phase"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "The combination attack “Sekiha Love Love Tenkyoken” isn't story-unlocked: once the Burning Gundam has learned Sekiha Tenkyoken (at the end of “Lantau (Part 1)” on this line), it can be used with the Rising Gundam whenever the combination conditions are met {≠}{?}"
+     "text": "The combination attack “Sekiha Love Love Tenkyoken” isn't story-unlocked: once the Burning Gundam has learned Sekiha Tenkyoken (at the end of “Lantau (Part 1)” on this line), it can be used with the Rising Gundam whenever the combination conditions are met {≠}{?}",
+     "short": "No action: Sekiha Love Love Tenkyoken needs only combo conditions"
     },
     {
      "ref": "secret-dialogue-branches",
-     "text": "When Domon defeats Master Asia, one of two closing dialogues plays depending on whether they've fought before {+}"
+     "text": "When Domon defeats Master Asia, one of two closing dialogues plays depending on whether they've fought before {+}",
+     "short": "No action: Domon's win lines vs Master Asia depend on past fights"
     }
    ],
    "notes": [
@@ -4653,15 +4857,18 @@
    "secrets": [
     {
      "ref": "secret-todd-silky",
-     "text": "If both persuasion steps for Tod are done, he joins as reinforcements in the Sirbine on the player phase of turn 3. If at that moment Garalia has been recruited and Marvel has ≥ 30 kills (kills on turns 1 and 2 count), Silky also joins riding with him. If Tod is shot down in this stage, both are lost permanently {≠}"
+     "text": "If both persuasion steps for Tod are done, he joins as reinforcements in the Sirbine on the player phase of turn 3. If at that moment Garalia has been recruited and Marvel has ≥ 30 kills (kills on turns 1 and 2 count), Silky also joins riding with him. If Tod is shot down in this stage, both are lost permanently {≠}",
+     "short": "Keep Tod alive (joins turn 3); Silky too if Marvel has ≥ 30 kills"
     },
     {
      "ref": "secret-route-breakthrough",
-     "text": "Both this stage and the next part must be cleared by turn 10 (turn 10 included): get all your units into the Green Area or wipe out the enemy. Do it in both → “Warped Space”, otherwise → “Even So, Never Give Up (Part 1)” {≠}"
+     "text": "Both this stage and the next part must be cleared by turn 10 (turn 10 included): get all your units into the Green Area or wipe out the enemy. Do it in both → “Warped Space”, otherwise → “Even So, Never Give Up (Part 1)” {≠}",
+     "short": "Clear both parts by turn 10 → “Warped Space”"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Combattler V's Twin Lancer, V Laser, Big Blast Divider and Grand Dasher unlock at the start of this stage on all three branches; if you didn't take the Lantau branch, Burning Gundam also learns Sekiha Tenkyoken at the start of this stage {≠}"
+     "text": "Combattler V's Twin Lancer, V Laser, Big Blast Divider and Grand Dasher unlock at the start of this stage on all three branches; if you didn't take the Lantau branch, Burning Gundam also learns Sekiha Tenkyoken at the start of this stage {≠}",
+     "short": "No action: Combattler V attacks unlock; Sekiha Tenkyoken if no Lantau"
     }
    ],
    "notes": [
@@ -4704,7 +4911,8 @@
    "secrets": [
     {
      "ref": "secret-gale-escort",
-     "text": "If Gale has been recruited, the Greimkaiser and New Layzner are forced to deploy; otherwise only the New Layzner. The opening and closing dialogue change accordingly {+}"
+     "text": "If Gale has been recruited, the Greimkaiser and New Layzner are forced to deploy; otherwise only the New Layzner. The opening and closing dialogue change accordingly {+}",
+     "short": "No action: the Greimkaiser is also forced out if Gale was recruited"
     }
    ],
    "notes": [
@@ -4748,11 +4956,13 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Rose's 3rd stage: persuade Rose with Takeru (requires that in the previous step you shot down Marg while Rose was on the map and persuaded Rose) → Rose withdraws, and Rose + Zeron (3 upgrade levels) join at the end of the stage {≠}"
+     "text": "Rose's 3rd stage: persuade Rose with Takeru (requires that in the previous step you shot down Marg while Rose was on the map and persuaded Rose) → Rose withdraws, and Rose + Zeron (3 upgrade levels) join at the end of the stage {≠}",
+     "short": "Persuade Rose with Takeru (needs the earlier Marg kill + persuasion)"
     },
     {
      "ref": "secret-route-breakthrough",
-     "text": "Part 1 and this stage both cleared within 10 turns (turn 10 included) → “Warped Space”; otherwise → “Even So, Never Give Up (Part 1)” {≠}"
+     "text": "Part 1 and this stage both cleared within 10 turns (turn 10 included) → “Warped Space”; otherwise → “Even So, Never Give Up (Part 1)” {≠}",
+     "short": "Clear Part 1 and this stage by turn 10 → “Warped Space”"
     }
    ],
    "notes": [
@@ -4781,7 +4991,8 @@
    "secrets": [
     {
      "ref": "secret-story-attacks",
-     "text": "On the OZ route, Burning Gundam learns Sekiha Tenkyoken at the end of this stage"
+     "text": "On the OZ route, Burning Gundam learns Sekiha Tenkyoken at the end of this stage",
+     "short": "No action: Burning Gundam learns Sekiha Tenkyoken at stage end"
     }
    ],
    "notes": [
@@ -4821,7 +5032,8 @@
    "secrets": [
     {
      "ref": "secret-route-breakthrough",
-     "text": "This stage is entered only if both parts of “Desperate Breakthrough” are cleared within 10 turns (turn 10 included) {≠}"
+     "text": "This stage is entered only if both parts of “Desperate Breakthrough” are cleared within 10 turns (turn 10 included) {≠}",
+     "short": "Reached only if both “Desperate Breakthrough” parts end by turn 10"
     }
    ],
    "notes": [
@@ -4853,11 +5065,13 @@
    "secrets": [
     {
      "ref": "secret-route-breakthrough",
-     "text": "Entered if either part of “Desperate Breakthrough” isn't cleared within 10 turns (turn 10 included) {≠}"
+     "text": "Entered if either part of “Desperate Breakthrough” isn't cleared within 10 turns (turn 10 included) {≠}",
+     "short": "Reached if either “Desperate Breakthrough” part runs past turn 10"
     },
     {
      "ref": "secret-gale-escort",
-     "text": "If Gale has been recruited, Gale is on standby in this stage and can't deploy, and escorts Julia in the next stage; otherwise Eiji is on standby and can't deploy {+}"
+     "text": "If Gale has been recruited, Gale is on standby in this stage and can't deploy, and escorts Julia in the next stage; otherwise Eiji is on standby and can't deploy {+}",
+     "short": "No action: Gale sits out if recruited, otherwise Eiji does"
     }
    ],
    "notes": [
@@ -4896,22 +5110,26 @@
     {
      "part": "Propellant Tank",
      "from": "Allenby",
-     "note": "Appears as an enemy when 12 or fewer enemies remain and can be persuaded (no drop once persuaded); later retreats when the enemy drops to 10 or fewer"
+     "note": "Appears as an enemy when 12 or fewer enemies remain and can be persuaded (no drop once persuaded); later retreats when the enemy drops to 10 or fewer",
+     "short_note": "Retreats at ≤10 enemies again; no drop if persuaded"
     },
     {
      "part": "High-Fidelity Radar",
      "from": "Kyoji {≠}",
-     "note": "Once Domon fights him, he's destroyed by the story and drops nothing, so someone else has to shoot him down before that"
+     "note": "Once Domon fights him, he's destroyed by the story and drops nothing, so someone else has to shoot him down before that",
+     "short_note": "Have someone else down him before Domon fights him"
     },
     {
      "part": "Super Alloy Z",
      "from": "Allenby {+}",
-     "note": "Appears after Master Asia is shot down; if Allenby wasn't saved, she pilots the Dark Gundam"
+     "note": "Appears after Master Asia is shot down; if Allenby wasn't saved, she pilots the Dark Gundam",
+     "short_note": "Appears after Master Asia falls if Allenby wasn't saved"
     },
     {
      "part": "Super Alloy Z",
      "from": "Wong",
-     "note": "Appears after Master Asia is shot down; if Allenby was saved, Wong pilots the Dark Gundam"
+     "note": "Appears after Master Asia is shot down; if Allenby was saved, Wong pilots the Dark Gundam",
+     "short_note": "Appears after Master Asia falls, if Allenby was saved"
     },
     {
      "part": "Shuffle Crest",
@@ -4921,23 +5139,28 @@
    "secrets": [
     {
      "ref": "secret-allenby",
-     "text": "If the recruited Allenby deploys in this stage, she leaves at the start and later appears as an enemy; if she doesn't deploy, she stays in the team. If she hasn't joined but step 1 was done, she also appears as an enemy when 12 or fewer enemies remain. Persuade her first with Domon, then with Rain to save her, not necessarily in the same turn; the first time 10 or fewer enemies remain, 12 reinforcements appear, and when it drops to 10 or fewer again she withdraws. Saved, she joins at the end of the stage; if not, she appears in the Dark Gundam after Master Asia is shot down, and destroying it loses her permanently {≠}"
+     "text": "If the recruited Allenby deploys in this stage, she leaves at the start and later appears as an enemy; if she doesn't deploy, she stays in the team. If she hasn't joined but step 1 was done, she also appears as an enemy when 12 or fewer enemies remain. Persuade her first with Domon, then with Rain to save her, not necessarily in the same turn; the first time 10 or fewer enemies remain, 12 reinforcements appear, and when it drops to 10 or fewer again she withdraws. Saved, she joins at the end of the stage; if not, she appears in the Dark Gundam after Master Asia is shot down, and destroying it loses her permanently {≠}",
+     "short": "Don't deploy recruited Allenby, or persuade her with Domon, then Rain"
     },
     {
      "ref": "secret-schwarz",
-     "text": "Deploy Ryoma at the start (any unit): Schwarz's sacrifice scene still plays, but at stage clear the script no longer removes him and the Shadow Gundam from the roster, so he stays with the team {≠}{?}"
+     "text": "Deploy Ryoma at the start (any unit): Schwarz's sacrifice scene still plays, but at stage clear the script no longer removes him and the Shadow Gundam from the roster, so he stays with the team {≠}{?}",
+     "short": "Deploy Ryoma at the start (any unit) to keep Schwarz"
     },
     {
      "ref": "secret-mp-nu",
-     "text": "Only for players who chose OZ in “Operation Daybreak” (those coming from Complete Pacifism with Treize can't get it). End-of-stage two-way choice: “Funnel type” → MP Nu Gundam F; “Incom type” → MP Nu Gundam I"
+     "text": "Only for players who chose OZ in “Operation Daybreak” (those coming from Complete Pacifism with Treize can't get it). End-of-stage two-way choice: “Funnel type” → MP Nu Gundam F; “Incom type” → MP Nu Gundam I",
+     "short": "End choice: “Funnel type” → MP Nu Gundam F, “Incom type” → I"
     },
     {
      "ref": "secret-story-attacks",
-     "text": "The combination attack “Sekiha Love Love Tenkyoken” isn't story-unlocked: once the Burning Gundam has learned Sekiha Tenkyoken in the previous stage, it can be used with the Rising Gundam whenever the combination conditions are met {≠}{?}"
+     "text": "The combination attack “Sekiha Love Love Tenkyoken” isn't story-unlocked: once the Burning Gundam has learned Sekiha Tenkyoken in the previous stage, it can be used with the Rising Gundam whenever the combination conditions are met {≠}{?}",
+     "short": "No action: Sekiha Love Love Tenkyoken needs only combo conditions"
     },
     {
      "ref": "secret-dialogue-branches",
-     "text": "When Domon defeats Master Asia, one of two closing dialogues plays depending on whether they've fought before {+}"
+     "text": "When Domon defeats Master Asia, one of two closing dialogues plays depending on whether they've fought before {+}",
+     "short": "No action: Domon's win lines vs Master Asia depend on past fights"
     }
    ],
    "notes": [
@@ -4968,7 +5191,8 @@
    "secrets": [
     {
      "ref": "secret-gale-escort",
-     "text": "If Gale has been recruited, Gale escorts Julia: Gale is forced to deploy and the victory/defeat condition switches to Gale's unit; otherwise Eiji takes the role {+}"
+     "text": "If Gale has been recruited, Gale escorts Julia: Gale is forced to deploy and the victory/defeat condition switches to Gale's unit; otherwise Eiji takes the role {+}",
+     "short": "No action: Gale escorts Julia if recruited, otherwise Eiji"
     }
    ],
    "notes": [
@@ -5062,7 +5286,8 @@
    "retreats": [
     {
      "from": "Haman",
-     "note": "Appears after the enemy is wiped out; retreats at 50% HP or below or when 6 or fewer enemies remain, her men and Ple leave too, and the stage ends"
+     "note": "Appears after the enemy is wiped out; retreats at 50% HP or below or when 6 or fewer enemies remain, her men and Ple leave too, and the stage ends",
+     "short_note": "Retreats at 50% HP or 6 enemies left (stage ends)"
     },
     {
      "from": "Treize, Lady",
@@ -5072,7 +5297,8 @@
    "secrets": [
     {
      "ref": "secret-puru",
-     "text": "Step 1: persuade Ple with Judau (no prerequisite); she retreats"
+     "text": "Step 1: persuade Ple with Judau (no prerequisite); she retreats",
+     "short": "Step 1: persuade Ple with Judau (no prerequisite)"
     }
    ],
    "notes": [
@@ -5117,7 +5343,8 @@
     {
      "part": "Mega Booster",
      "from": "Haman",
-     "note": "Appears as a hostile third party only if “We shouldn't cooperate with Haman” was chosen at the start; withdraws at 30% HP or below, taking her subordinates with her"
+     "note": "Appears as a hostile third party only if “We shouldn't cooperate with Haman” was chosen at the start; withdraws at 30% HP or below, taking her subordinates with her",
+     "short_note": "Retreats at 30% HP; appears if you refused Haman"
     },
     {
      "part": "I-Field Barrier",
@@ -5133,11 +5360,13 @@
    "secrets": [
     {
      "ref": "secret-gato",
-     "text": "If Gato has been recruited: choosing “We should cooperate with Haman” → Gato leaves at the end of the next stage, “A Future of Life and Death”; choosing “We shouldn't cooperate with Haman” → he leaves at the end of this stage, and if he deployed here, he also leaves the battlefield on the spot when Haman turns on you {+}"
+     "text": "If Gato has been recruited: choosing “We should cooperate with Haman” → Gato leaves at the end of the next stage, “A Future of Life and Death”; choosing “We shouldn't cooperate with Haman” → he leaves at the end of this stage, and if he deployed here, he also leaves the battlefield on the spot when Haman turns on you {+}",
+     "short": "To keep Gato a stage longer, pick “We should cooperate with Haman”"
     },
     {
      "ref": "secret-chizuru",
-     "text": "If Hyoma has ≥ 15 kills at the end of this stage, or Hyoma deploys in the next stage “A Future of Life and Death”, the Chizuru surgery story triggers and Combattler V cannot deploy in “Haman's Shadow” {≠}{?}"
+     "text": "If Hyoma has ≥ 15 kills at the end of this stage, or Hyoma deploys in the next stage “A Future of Life and Death”, the Chizuru surgery story triggers and Combattler V cannot deploy in “Haman's Shadow” {≠}{?}",
+     "short": "Hyoma ≥ 15 kills here or deployed next stage → Chizuru surgery"
     }
    ],
    "notes": [
@@ -5194,7 +5423,8 @@
    "secrets": [
     {
      "ref": "secret-puru",
-     "text": "Step 2: first get Glemy off the map (shoot him down or have him withdraw), then persuade Ple with Judau (requires step 1); she switches to your side and joins on the spot. Persuading while Glemy is still on the map gets interrupted and can't be retried this stage {≠}"
+     "text": "Step 2: first get Glemy off the map (shoot him down or have him withdraw), then persuade Ple with Judau (requires step 1); she switches to your side and joins on the spot. Persuading while Glemy is still on the map gets interrupted and can't be retried this stage {≠}",
+     "short": "Get Glemy off the map, then persuade Ple with Judau"
     }
    ],
    "notes": [
@@ -5226,7 +5456,8 @@
     {
      "part": "Propellant Tank",
      "from": "Yazan",
-     "note": "If Scirocco is on the map, retreats with him on the player phase 2 turns after 10 or fewer enemies remain"
+     "note": "If Scirocco is on the map, retreats with him on the player phase 2 turns after 10 or fewer enemies remain",
+     "short_note": "Retreats with Scirocco 2 turns after ≤10 enemies remain"
     },
     {
      "part": "Repair Kit",
@@ -5235,12 +5466,14 @@
     {
      "part": "Bio-Sensor",
      "from": "Jerid {+}",
-     "note": "Only if Mouar is already off the map when Jerid is shot down does he reappear in the Baund Doc, carrying this part"
+     "note": "Only if Mouar is already off the map when Jerid is shot down does he reappear in the Baund Doc, carrying this part",
+     "short_note": "Reappears in the Baund Doc if Mouar is already gone"
     },
     {
      "part": "Shuffle Crest",
      "from": "Scirocco",
-     "note": "Retreats on the player phase 2 turns after 10 or fewer enemies remain; Yazan, Ramsus and Dunkel leave with him"
+     "note": "Retreats on the player phase 2 turns after 10 or fewer enemies remain; Yazan, Ramsus and Dunkel leave with him",
+     "short_note": "Retreats player phase 2 turns after ≤10 enemies remain"
     }
    ],
    "retreats": [
@@ -5252,11 +5485,13 @@
    "secrets": [
     {
      "ref": "secret-gato",
-     "text": "If you chose “We should cooperate with Haman” in the previous stage, Gato leaves at the end of this stage"
+     "text": "If you chose “We should cooperate with Haman” in the previous stage, Gato leaves at the end of this stage",
+     "short": "Gato leaves at the end if you chose “We should cooperate with Haman”"
     },
     {
      "ref": "secret-chizuru",
-     "text": "Deploying Hyoma (Combattler V) at the start triggers the Chizuru surgery story, and Combattler V cannot deploy in “Haman's Shadow”; you avoid it by not deploying Hyoma, provided Hyoma had fewer than 15 kills in the previous stage {≠}{?}"
+     "text": "Deploying Hyoma (Combattler V) at the start triggers the Chizuru surgery story, and Combattler V cannot deploy in “Haman's Shadow”; you avoid it by not deploying Hyoma, provided Hyoma had fewer than 15 kills in the previous stage {≠}{?}",
+     "short": "Don't deploy Hyoma to avoid the Chizuru surgery (<15 kills last stage)"
     }
    ],
    "notes": [
@@ -5299,13 +5534,15 @@
     {
      "part": "Super Alloy Z",
      "from": "Emperor Zuul {+}{?}",
-     "note": "Appears after the first form (Wahl's Large Ship) is shot down; if the second form is not shot down by Takeru, it reappears from the same record, so you can get one more"
+     "note": "Appears after the first form (Wahl's Large Ship) is shot down; if the second form is not shot down by Takeru, it reappears from the same record, so you can get one more",
+     "short_note": "If not shot down by Takeru, reappears for one more"
     }
    ],
    "secrets": [
     {
      "ref": "secret-mashymre-chara",
-     "text": "Both must still be on the map at the end of the stage: persuading either one in the next part, “The Battle for Axis (Part 1)”, requires the other to have also made it to the end of this stage"
+     "text": "Both must still be on the map at the end of the stage: persuading either one in the next part, “The Battle for Axis (Part 1)”, requires the other to have also made it to the end of this stage",
+     "short": "Keep Mashymre and Chara on the map until stage end"
     }
    ],
    "notes": [
@@ -5363,15 +5600,18 @@
    "secrets": [
     {
      "ref": "secret-puru",
-     "text": "OZ route: Ple appears with Glemy when the third party is down to 10 or fewer units. Shoot down Glemy first (retreating doesn't count), then persuade Ple with Judau, and she switches to your side and joins on the spot; persuading while Glemy is still on the map gives only dialogue, and you can't try again this stage {≠}"
+     "text": "OZ route: Ple appears with Glemy when the third party is down to 10 or fewer units. Shoot down Glemy first (retreating doesn't count), then persuade Ple with Judau, and she switches to your side and joins on the spot; persuading while Glemy is still on the map gives only dialogue, and you can't try again this stage {≠}",
+     "short": "Shoot down Glemy first (not retreat), then persuade Ple with Judau"
     },
     {
      "ref": "secret-fa-hyakushiki",
-     "text": "Quattro and Kamille return mid-battle as reinforcements and can't be deployed; for players who went through the Complete Pacifism route (later with Treize) Quattro is in the Hyaku-Shiki, for everyone else in the FA Hyaku-Shiki Kai; Quattro leaves again at the end of the stage {≠}"
+     "text": "Quattro and Kamille return mid-battle as reinforcements and can't be deployed; for players who went through the Complete Pacifism route (later with Treize) Quattro is in the Hyaku-Shiki, for everyone else in the FA Hyaku-Shiki Kai; Quattro leaves again at the end of the stage {≠}",
+     "short": "No action: Quattro and Kamille return mid-battle"
     },
     {
      "ref": "secret-route-gato-base",
-     "text": "Whether you ever recruited Gato decides whether he pilots the GP02A or the Neue Ziel in the Axis Forces {+}"
+     "text": "Whether you ever recruited Gato decides whether he pilots the GP02A or the Neue Ziel in the Axis Forces {+}",
+     "short": "No action: whether you recruited Gato sets GP02A or Neue Ziel"
     }
    ],
    "notes": [
@@ -5422,7 +5662,8 @@
    "secrets": [
     {
      "ref": "secret-puru-two",
-     "text": "Step 1: persuade Ple-Two with Judau (requires Ple on the team) {+}"
+     "text": "Step 1: persuade Ple-Two with Judau (requires Ple on the team) {+}",
+     "short": "Persuade Ple-Two with Judau (needs Ple on the team)"
     }
    ],
    "notes": [
@@ -5468,15 +5709,18 @@
    "secrets": [
     {
      "ref": "secret-puru-two",
-     "text": "OZ route step 1: persuade Ple-Two with Judau (requires Ple in the party)"
+     "text": "OZ route step 1: persuade Ple-Two with Judau (requires Ple in the party)",
+     "short": "Persuade Ple-Two with Judau (needs Ple in the party)"
     },
     {
      "ref": "secret-tallgeese3",
-     "text": "Two-way choice at the end of the stage: “Keep the Gundam Epyon” / “Change to the Tallgeese III”; option 2 swaps to the Tallgeese III"
+     "text": "Two-way choice at the end of the stage: “Keep the Gundam Epyon” / “Change to the Tallgeese III”; option 2 swaps to the Tallgeese III",
+     "short": "At stage end pick “Change to the Tallgeese III” to swap"
     },
     {
      "ref": "secret-chizuru",
-     "text": "If the Chizuru surgery story triggers (Hyoma has ≥ 15 kills in “Showdown! Face-Off with Emperor Zuul! (Part 2)”, or Hyoma deploys in “A Future of Life and Death”), Hyoma cannot deploy this stage; otherwise Combattler V is available as usual {≠}{?}"
+     "text": "If the Chizuru surgery story triggers (Hyoma has ≥ 15 kills in “Showdown! Face-Off with Emperor Zuul! (Part 2)”, or Hyoma deploys in “A Future of Life and Death”), Hyoma cannot deploy this stage; otherwise Combattler V is available as usual {≠}{?}",
+     "short": "No action: Hyoma can't deploy if the Chizuru surgery story triggered"
     }
    ],
    "notes": [
@@ -5520,7 +5764,8 @@
    "secrets": [
     {
      "ref": "secret-puru-two",
-     "text": "Step 2: persuade Ple-Two with Judau (requires step 1); she then retreats"
+     "text": "Step 2: persuade Ple-Two with Judau (requires step 1); she then retreats",
+     "short": "Persuade Ple-Two with Judau (needs step 1); she then retreats"
     }
    ],
    "notes": [
@@ -5566,7 +5811,8 @@
    "secrets": [
     {
      "ref": "secret-puru-two",
-     "text": "OZ route step 2: persuade Ple-Two with Judau before Glemy drops to 30% HP — when Glemy retreats, Ple-Two goes with him {≠}"
+     "text": "OZ route step 2: persuade Ple-Two with Judau before Glemy drops to 30% HP — when Glemy retreats, Ple-Two goes with him {≠}",
+     "short": "Persuade Ple-Two with Judau before Glemy drops to 30% HP"
     }
    ],
    "notes": [
@@ -5605,7 +5851,8 @@
    "secrets": [
     {
      "ref": "secret-mashymre-chara",
-     "text": "Persuade either Mashymre or Chara with Judau (requires both to have lasted to the end of the stage in the previous step); persuading one removes the other's persuade option at once. The persuaded one joins on the turn 8 player phase of “Char's Rebellion”, so you must later pick “Stay on Earth”"
+     "text": "Persuade either Mashymre or Chara with Judau (requires both to have lasted to the end of the stage in the previous step); persuading one removes the other's persuade option at once. The persuaded one joins on the turn 8 player phase of “Char's Rebellion”, so you must later pick “Stay on Earth”",
+     "short": "Persuade Mashymre or Chara with Judau; later pick “Stay on Earth”"
     }
    ],
    "notes": [
@@ -5651,7 +5898,8 @@
    "secrets": [
     {
      "ref": "secret-puru-two",
-     "text": "OZ route step 3: persuade Ple-Two with Judau and she joins on the spot (pilot only); this stage has no Glemy restriction"
+     "text": "OZ route step 3: persuade Ple-Two with Judau and she joins on the spot (pilot only); this stage has no Glemy restriction",
+     "short": "Persuade Ple-Two with Judau; she joins on the spot (pilot only)"
     }
    ],
    "notes": [
@@ -5686,7 +5934,8 @@
    "secrets": [
     {
      "ref": "secret-puru-two",
-     "text": "Step 3: persuade Ple-Two with Judau while Glemy is still on the map, and she joins on the spot (pilot only); once Glemy is gone it is dialogue only"
+     "text": "Step 3: persuade Ple-Two with Judau while Glemy is still on the map, and she joins on the spot (pilot only); once Glemy is gone it is dialogue only",
+     "short": "Persuade Ple-Two with Judau while Glemy is still on the map"
     }
    ],
    "notes": [
@@ -5713,11 +5962,13 @@
    "secrets": [
     {
      "ref": "secret-route-muge",
-     "text": "Two-way choice at the end of the stage: “Go to the Muge universe” → “A Distant Gamble”; “Remain in the Earth Sphere” → “Char's Rebellion”. After the split, the other side's members just temporarily can't deploy (they stay in the team) and return at the start of “Terror! Dark Axis Activates! (Part 1)” {≠}"
+     "text": "Two-way choice at the end of the stage: “Go to the Muge universe” → “A Distant Gamble”; “Remain in the Earth Sphere” → “Char's Rebellion”. After the split, the other side's members just temporarily can't deploy (they stay in the team) and return at the start of “Terror! Dark Axis Activates! (Part 1)” {≠}",
+     "short": "“Go to the Muge universe” → A Distant Gamble; stay → Char's Rebellion"
     },
     {
      "ref": "secret-qubeley-color",
-     "text": "After you pick “Stay on Earth,” if both Ple and Ple-Two are on the team, a two-way recolor choice follows: pick “Make it Ple-Two's red” and the Qubeley Mk-II becomes the red version for Ple-Two {≠}"
+     "text": "After you pick “Stay on Earth,” if both Ple and Ple-Two are on the team, a two-way recolor choice follows: pick “Make it Ple-Two's red” and the Qubeley Mk-II becomes the red version for Ple-Two {≠}",
+     "short": "With Ple and Ple-Two on the team, pick “Make it Ple-Two's red”"
     }
    ],
    "notes": [
@@ -5771,19 +6022,23 @@
    "secrets": [
     {
      "ref": "secret-route-muge",
-     "text": "Two-way choice at the end of the stage: “Go to the Muge universe” → “The Last Roar”; “Remain in the Earth Sphere” → “Char's Rebellion”. After the split, the other side's members just temporarily can't deploy (they stay in the team) and return at the start of “Terror! Dark Axis Activates! (Part 1)” {≠}"
+     "text": "Two-way choice at the end of the stage: “Go to the Muge universe” → “The Last Roar”; “Remain in the Earth Sphere” → “Char's Rebellion”. After the split, the other side's members just temporarily can't deploy (they stay in the team) and return at the start of “Terror! Dark Axis Activates! (Part 1)” {≠}",
+     "short": "“Go to the Muge universe” → The Last Roar; stay → Char's Rebellion"
     },
     {
      "ref": "secret-mashymre-chara",
-     "text": "To get Mashymre or Chara, pick “Stay on Earth” here"
+     "text": "To get Mashymre or Chara, pick “Stay on Earth” here",
+     "short": "To get Mashymre or Chara, pick “Stay on Earth”"
     },
     {
      "ref": "secret-neue-ziel",
-     "text": "To get the Neue Ziel, pick “Stay on Earth” here; you get it at the end of “Char's Rebellion” (only players still on the Independence Army route)"
+     "text": "To get the Neue Ziel, pick “Stay on Earth” here; you get it at the end of “Char's Rebellion” (only players still on the Independence Army route)",
+     "short": "Pick “Stay on Earth”; get the Neue Ziel after “Char's Rebellion”"
     },
     {
      "ref": "secret-qubeley-color",
-     "text": "After you pick “Stay on Earth,” if both Ple and Ple-Two are on the team, a two-way recolor choice follows: pick “Make it Ple-Two's red” and the Qubeley Mk-II becomes the red version for Ple-Two {≠}"
+     "text": "After you pick “Stay on Earth,” if both Ple and Ple-Two are on the team, a two-way recolor choice follows: pick “Make it Ple-Two's red” and the Qubeley Mk-II becomes the red version for Ple-Two {≠}",
+     "short": "With Ple and Ple-Two on the team, pick “Make it Ple-Two's red”"
     }
    ],
    "notes": [
@@ -5818,7 +6073,8 @@
    "secrets": [
     {
      "ref": "secret-route-muge",
-     "text": "Enter this stage by choosing “Go to the Muge universe” at the end of “A Nightmare with No Waking”"
+     "text": "Enter this stage by choosing “Go to the Muge universe” at the end of “A Nightmare with No Waking”",
+     "short": "Pick “Go to the Muge universe” at the end of “A Nightmare with No Waking”"
     }
    ],
    "notes": [
@@ -5855,7 +6111,8 @@
     {
      "part": "Propellant Tank",
      "from": "Gyunei",
-     "note": "Leaves when Char is at 30% HP or below or is shot down (the stage ends)"
+     "note": "Leaves when Char is at 30% HP or below or is shot down (the stage ends)",
+     "short_note": "Leaves when Char drops to 30% HP or is shot down"
     },
     {
      "part": "Psycoframe",
@@ -5865,31 +6122,37 @@
     {
      "part": "High-Fidelity Radar",
      "from": "Milliardo",
-     "note": "Independence Army route only; leaves when Char is at 30% HP or below or is shot down (the stage ends)"
+     "note": "Independence Army route only; leaves when Char is at 30% HP or below or is shot down (the stage ends)",
+     "short_note": "Leaves when Char drops to 30% HP or is shot down"
     },
     {
      "part": "Repair Kit",
      "from": "Rezin",
-     "note": "Retreats at the start of the turn 4 player phase; also leaves when Char is at 30% HP or below or is shot down"
+     "note": "Retreats at the start of the turn 4 player phase; also leaves when Char is at 30% HP or below or is shot down",
+     "short_note": "Retreats at the start of the turn 4 player phase"
     },
     {
      "part": "High-Fidelity Radar",
      "from": "Gato",
-     "note": "OZ route only; leaves when Char is at 30% HP or below or is shot down (the stage ends)"
+     "note": "OZ route only; leaves when Char is at 30% HP or below or is shot down (the stage ends)",
+     "short_note": "Leaves when Char drops to 30% HP or is shot down"
     }
    ],
    "secrets": [
     {
      "ref": "secret-route-muge",
-     "text": "Enter this stage by choosing “Remain in the Earth Sphere” at the end of “Nightmare, Once More” / “A Nightmare with No Waking”"
+     "text": "Enter this stage by choosing “Remain in the Earth Sphere” at the end of “Nightmare, Once More” / “A Nightmare with No Waking”",
+     "short": "Pick “Remain in the Earth Sphere” at the end of the previous stage"
     },
     {
      "ref": "secret-mashymre-chara",
-     "text": "If Mashymre or Chara was persuaded earlier, he/she appears as reinforcements on the player phase of turn 8 and stays in the team afterwards; clearing the stage before turn 8 loses them permanently"
+     "text": "If Mashymre or Chara was persuaded earlier, he/she appears as reinforcements on the player phase of turn 8 and stays in the team afterwards; clearing the stage before turn 8 loses them permanently",
+     "short": "Don't clear before turn 8; persuaded Mashymre or Chara joins then"
     },
     {
      "ref": "secret-neue-ziel",
-     "text": "At the end of the stage you get the Neue Ziel (3 upgrade levels). Only for players who stayed on the Independence Army route without going through the Complete Pacifism route; those coming from the OZ route or the Complete Pacifism route can't get it {+}"
+     "text": "At the end of the stage you get the Neue Ziel (3 upgrade levels). Only for players who stayed on the Independence Army route without going through the Complete Pacifism route; those coming from the OZ route or the Complete Pacifism route can't get it {+}",
+     "short": "No action: get the Neue Ziel at stage end (not via Complete Pacifism)"
     }
    ],
    "notes": [
@@ -5928,7 +6191,8 @@
    "secrets": [
     {
      "ref": "secret-route-muge",
-     "text": "Enter this stage by choosing “Go to the Muge universe” at the end of “Nightmare, Once More”"
+     "text": "Enter this stage by choosing “Go to the Muge universe” at the end of “Nightmare, Once More”",
+     "short": "Pick “Go to the Muge universe” at the end of “Nightmare, Once More”"
     }
    ],
    "notes": [
@@ -5997,7 +6261,8 @@
    "secrets": [
     {
      "ref": "secret-kyral",
-     "text": "If Domon shot down Kyral earlier in “Earth Sphere in Chaos” (Independence Army) or “Order to Eliminate Treize” (OZ), he appears as an ally in the Mandala Gundam after the first enemy wave is wiped out; he joins only if he's still on the map when the last enemy wave is wiped out — if he's shot down along the way, you don't get him {≠}"
+     "text": "If Domon shot down Kyral earlier in “Earth Sphere in Chaos” (Independence Army) or “Order to Eliminate Treize” (OZ), he appears as an ally in the Mandala Gundam after the first enemy wave is wiped out; he joins only if he's still on the map when the last enemy wave is wiped out — if he's shot down along the way, you don't get him {≠}",
+     "short": "If Domon shot Kyral down before, keep him alive until the last wave"
     }
    ],
    "notes": [
@@ -6030,7 +6295,8 @@
    "secrets": [
     {
      "ref": "secret-story-attacks",
-     "text": "Neither “Sekiha Love Love Tenkyoken” nor “Shuffle Alliance Fist” is unlocked by the story: combination attacks are evaluated fresh each time by their conditions; Sekiha Love Love Tenkyoken only requires the Burning Gundam to have learned Sekiha Tenkyoken, and Shuffle Alliance Fist has no story prerequisite {≠}{?}"
+     "text": "Neither “Sekiha Love Love Tenkyoken” nor “Shuffle Alliance Fist” is unlocked by the story: combination attacks are evaluated fresh each time by their conditions; Sekiha Love Love Tenkyoken only requires the Burning Gundam to have learned Sekiha Tenkyoken, and Shuffle Alliance Fist has no story prerequisite {≠}{?}",
+     "short": "No action: neither combo attack is unlocked by the story"
     }
    ],
    "notes": [
@@ -6060,7 +6326,8 @@
     {
      "part": "Booster",
      "from": "Quess",
-     "note": "When Char is shot down she's destroyed by the story and drops nothing, so shoot her down before Char (shooting her down means you can't get Quess)"
+     "note": "When Char is shot down she's destroyed by the story and drops nothing, so shoot her down before Char (shooting her down means you can't get Quess)",
+     "short_note": "Shoot her down before Char (you lose Quess)"
     },
     {
      "part": "Propellant Tank",
@@ -6084,7 +6351,8 @@
    "secrets": [
     {
      "ref": "secret-quess",
-     "text": "Don't shoot down Quess; before the 2nd player phase after the Ra Cailum enters the Axis area (any time before it enters also works), shoot down Char with Amuro, with Quess on the map at the time. If Char is shot down by someone else or the timing has passed, Quess is destroyed along with him. At the end of the stage Quess joins with the Jagd Doga (6 upgrade levels)"
+     "text": "Don't shoot down Quess; before the 2nd player phase after the Ra Cailum enters the Axis area (any time before it enters also works), shoot down Char with Amuro, with Quess on the map at the time. If Char is shot down by someone else or the timing has passed, Quess is destroyed along with him. At the end of the stage Quess joins with the Jagd Doga (6 upgrade levels)",
+     "short": "Spare Quess; Amuro downs Char before Ra Cailum's 2nd phase at Axis"
     }
    ],
    "notes": [

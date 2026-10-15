@@ -1,0 +1,84 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 71,
+ "title": {
+  "zh-Hans": "银河帝国的威胁",
+  "ja": "銀河帝国の脅威",
+  "en": "The Galactic Empire's Threat"
+ },
+ "title_ja": "銀河帝国の脅威",
+ "cards": [
+  {
+   "guide_card": "card-069",
+   "route": "cp",
+   "episode": "33",
+   "lane": {
+    "zh-Hans": "完全和平路线（独自作战）",
+    "ja": "完全平和ルート（単独で戦う）",
+    "en": "Complete Pacifism route (fighting alone)"
+   },
+   "secrets": [
+    {
+     "ref": "secret-route-treize",
+     "title": {
+      "zh-Hans": "重返战场：随特列斯或独自作战",
+      "ja": "戦場に帰る：トレーズにつくか、自分たちだけで戦うか",
+      "en": "Return to the Battlefield: with Treize or going it alone"
+     },
+     "text": {
+      "zh-Hans": "在「重返战场」选「我们独自战斗」进入，之后并入独立军后半",
+      "ja": "「戦場に帰る」で「自分たちだけで戦う」を選んで進入、後に独立軍後半に合流",
+      "en": "Reached via “Fight on our own”; merges into the Independence Army"
+     }
+    }
+   ],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "乔巴姆装甲",
+      "ja": "チョバムアーマー",
+      "en": "Chobham Armor"
+     },
+     "from": {
+      "zh-Hans": "布拉奇",
+      "ja": "ブラッキー",
+      "en": "Blacky"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "补修套件",
+      "ja": "リペアキット",
+      "en": "Repair Kit"
+     },
+     "from": {
+      "zh-Hans": "罗塞",
+      "ja": "ロゼ",
+      "en": "Rose"
+     },
+     "note": {
+      "zh-Hans": "布拉奇被击坠后登场",
+      "ja": "ブラッキー撃墜後に登場",
+      "en": "Appears after Blacky is shot down"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "玛古",
+      "ja": "マーグ",
+      "en": "Marg"
+     },
+     "note": {
+      "zh-Hans": "布拉奇被击坠时撤退",
+      "ja": "ブラッキーが撃墜されると撤退",
+      "en": "Retreats when Blacky is shot down"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 72,
+ "title": {
+  "zh-Hans": "白色獠牙",
+  "ja": "ホワイトファング",
+  "en": "White Fang"
+ },
+ "title_ja": "ホワイトファング",
+ "cards": [
+  {
+   "guide_card": "card-074",
+   "route": "cp",
+   "episode": "34",
+   "lane": {
+    "zh-Hans": "完全和平路线（独自作战）",
+    "ja": "完全平和ルート（単独で戦う）",
+    "en": "Complete Pacifism route (fighting alone)"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "超合金Z",
+      "ja": "超合金Z",
+      "en": "Super Alloy Z"
+     },
+     "from": {
+      "zh-Hans": "祖鲁皇帝",
+      "ja": "ズール皇帝",
+      "en": "Emperor Zuul"
+     },
+     "note": {
+      "zh-Hans": "第一形态被击坠后以第二形态登场",
+      "ja": "第1形態が撃墜されると第2形態で登場",
+      "en": "Appears in its second form after the first form is shot down"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "远地点发动机",
+      "ja": "アポジモーター",
+      "en": "Apogee Motor"
+     },
+     "from": {
+      "zh-Hans": "丹格尔",
+      "ja": "ダンゲル",
+      "en": "Dungele"
+     },
+     "retreat": false
+    },
+    {
+     "part": null,
+     "from": {
+      "zh-Hans": "坎斯",
+      "ja": "カーンズ",
+      "en": "Quinze"
+     },
+     "note": {
+      "zh-Hans": "祖鲁皇帝被击坠时撤退",
+      "ja": "ズール皇帝が撃墜されると撤退",
+      "en": "Retreats when Emperor Zuul is shot down"
+     },
+     "third_party": true,
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}

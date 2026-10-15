@@ -1,0 +1,56 @@
+{
+ "schema": "srw64.stage-meta.v1",
+ "scene": 133,
+ "title": {
+  "zh-Hans": "阿克西斯攻防战（下）",
+  "ja": "アクシズの攻防 （後）",
+  "en": "The Battle for Axis (Part 3)"
+ },
+ "title_ja": "アクシズの攻防 （後）",
+ "cards": [
+  {
+   "guide_card": "card-114",
+   "route": "ia",
+   "episode": "50",
+   "lane": {
+    "zh-Hans": "独立军路线／独自作战",
+    "ja": "独立軍ルート／単独行動",
+    "en": "Independence Army route / fight alone"
+   },
+   "secrets": [],
+   "enemies": [
+    {
+     "part": {
+      "zh-Hans": "哈啰",
+      "ja": "ハロ",
+      "en": "Haro"
+     },
+     "from": {
+      "zh-Hans": "哈曼",
+      "ja": "ハマーン",
+      "en": "Haman"
+     },
+     "retreat": false
+    },
+    {
+     "part": {
+      "zh-Hans": "超合金Z",
+      "ja": "超合金Z",
+      "en": "Super Alloy Z"
+     },
+     "from": {
+      "zh-Hans": "卡多",
+      "ja": "ガトー",
+      "en": "Gato"
+     },
+     "note": {
+      "zh-Hans": "哈曼被击坠时离场（关卡结束）",
+      "ja": "ハマーンが撃墜されると離脱（ステージ終了）",
+      "en": "Leaves when Haman is shot down (the stage ends)"
+     },
+     "retreat": true
+    }
+   ]
+  }
+ ]
+}
