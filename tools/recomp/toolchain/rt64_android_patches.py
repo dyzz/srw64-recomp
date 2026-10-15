@@ -657,6 +657,28 @@ endif()'''),
         }
 #   endif
         getWindowSize(width, height);'''),
+    # Two Redmi K60s (Adreno 730, MIUI 14, Android 13) hang at the swap chain's first new
+    # buffer, forever, on Qualcomm gralloc's process-wide lock (BufferManager::RetainBuffer)
+    # that no thread holds. Just before, asking the surface for its formats makes Android
+    # try 4x4 buffers in formats this gralloc does not know (R8 0x38, RGBA10 0x3B: "qdgralloc:
+    # GetSize: Unrecognized pixel format"), and those failures seem to leave the lock taken.
+    # Android's swap chain always offers R8G8B8A8_UNORM in sRGB nonlinear, the format the
+    # app asks for there (rt64_application.cpp above), so it is taken without asking.
+    ('src/contrib/plume/plume_vulkan.cpp', '''        uint32_t surfaceFormatCount = 0;
+        vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, &surfaceFormatCount, nullptr);
+
+        std::vector<VkSurfaceFormatKHR> surfaceFormats(surfaceFormatCount);
+        vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, &surfaceFormatCount, surfaceFormats.data());''', '''#   ifdef __ANDROID__
+        std::vector<VkSurfaceFormatKHR> surfaceFormats = { { toVk(desc.format), VK_COLOR_SPACE_SRGB_NONLINEAR_KHR } };
+        uint32_t surfaceFormatCount = 1;
+        fprintf(stderr, "SRW64_SURFACE_FORMATS skipped: format %d in sRGB nonlinear\\n", int(surfaceFormats[0].format));
+#   else
+        uint32_t surfaceFormatCount = 0;
+        vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, &surfaceFormatCount, nullptr);
+
+        std::vector<VkSurfaceFormatKHR> surfaceFormats(surfaceFormatCount);
+        vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, &surfaceFormatCount, surfaceFormats.data());
+#   endif'''),
 ]
 
 # prepare_rt64.py applies a file's replacements in this order, after its own.

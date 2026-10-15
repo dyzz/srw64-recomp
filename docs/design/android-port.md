@@ -272,6 +272,8 @@ APK 的 `libmain.so` 必须链接两份由 ROM 生成的代码：`build/recomp/c
 
 处理：`SRW64Activity.onCreate` 在首次布局前就隐藏系统栏（安卓 9／10 用旧的 SYSTEM_UI 标志），拿到焦点时再隐藏一次；窗口和 SDL 表面每次变尺寸都记 `SRW64_WINDOW`。本进程的 logcat 每 10 秒存为运行目录里 console.log 旁的 `system.log`（没选存档文件夹也有，问题报告和整个用户目录都会带上），选了文件夹时再复制到 `logs/`（`Marchwind64-<时间>-system.log`；应用读自己进程的日志不需要权限），K60 再测时可直接看到启动后有没有尺寸变化、MIUI 的服务做了什么。Seeker 上窗口一开始就是 2670×1200、之后不变，无法在本机证实这个推断。
 
+10-15 第二台 K60 装测试包后照样卡死；它的 system.log 推翻了上面的推断，也给出新线索：SDL 表面始终 2186×990 没变（窗口 5 秒后才 2310→2400，系统栏提前隐藏在 MIUI 上没立即生效），而交换链建立时本进程连续出现 `qdgralloc: GetSize: Unrecognized pixel format: 0x38`、`Gralloc4: isSupported(1, 1, 56, …) failed with 5`、`GraphicBufferAllocator: Failed to allocate (4 x 4) … format 56 usage b00`（还有 0x3B）——是查询表面格式（`vkGetPhysicalDeviceSurfaceFormatsKHR`）时安卓试分配 R8、RGBA10 小缓冲区，高通 gralloc 不认识。紧接着第一块交换链缓冲区就卡在无人持有的 RetainBuffer 锁上，推测这条失败路径把锁留下了。处理：安卓上不查询，直接用 R8G8B8A8_UNORM＋sRGB 非线性（安卓交换链必然支持，也是这里请求的格式），日志 `SRW64_SURFACE_FORMATS skipped`。Seeker 上原先每次启动都有的 4 条 `mali_gralloc: unsupported format 0x38/0x3b` 随之消失，画面正常、30 帧，说明这几次试分配确实来自格式查询。
+
 ## 阶段
 
 ### A0 可行性验证（不需要 ROM）
