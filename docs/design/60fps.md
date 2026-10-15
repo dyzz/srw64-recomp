@@ -1,6 +1,6 @@
 # 60 帧研究
 
-**状态：远期待办，暂不开工**（2026-10-01 用户决定）。重新开始时从第 7 节的试验做起。
+**状态：2026-10-15 重启，第 7 节的试验已做（第 9 节）**；下一步要定帧节拍的修法和战术地图的做法。
 
 2026-10-01。静态分析（主循环反汇编、全部 overlay 的生成代码、RT64 与 ultramodern 源码、宿主绘制层），没有改代码、没有实机。凡写「推断」「未核实」的都要在第 7 节的试验里确认。
 
@@ -84,7 +84,7 @@
 
 ### 6.1 第一档：矩阵类场景
 
-1. 设置项「帧率：原版 30／跟随显示器」（默认先留 30），`presentation.json` 存；对应 `RefreshRate::Original`／`Display`，切换走现有的 `updateUserConfig`。调试会话固定 30：截图对照脚本（`check_aspect.py` 等「只差动画帧」的比对）和录像都假定一个 workload 一帧。
+1. ~~设置项~~ **已做（2026-10-15）**：「界面」页「帧率：原版 30／60／跟随显示器」，**默认原版 30**（用户 2026-10-15 最终定：三个选项都给，默认不开；之前的「默认跟随显示器」作废），`presentation.json` 的 `refresh_rate`（`original`／`60`／`display`）；60 用 RT64 的 `Manual`（`refreshRateTarget=60`，RT64 自己封顶到屏幕刷新率），跟随显示器用 `Display`；`graphics.cpp` 的 `apply_refresh_rate` 每帧对照设置，变了就 `updateUserConfig`。`SRW64_REFRESH_RATE=display|original|<数字>` 盖过设置（测试用）。帧率读数改成显示「每秒显示帧数 · 最长一帧」（用户不要括号里的游戏帧数）。调试会话没有固定 30：截图可能截到插值帧，静态画面无差别，动画比对本来就只看「只差动画帧」。
 2. `srw64_render_node`（`game_hooks.cpp`）已经包住了每个精灵节点的绘制，并且拿得到（槽, 子）。对模式 0xE/0xF/0x10 和模型节点，在节点绘制前插 `gEXMatrixGroup`（编号＝槽×3＋子＋常数），之后复位。扩展 GBI 已经常开。
 3. 跳过条件：节点本帧新建或换了场景／图集（槽被别的演员复用）、位置跳变超过阈值、镜头硬切、演出状态机换段。对应帧给该组 `G_EX_COMPONENT_SKIP`，镜头则给视图组跳过。
 4. 帧首插 `gEXSetRefreshRate(30)`，免得读盘抖动时来回切换。
@@ -125,4 +125,33 @@
 - 残影（帧回授）与插帧共存的效果。
 - 自动匹配在战斗演出里实际的错配率。
 - Deck（Vulkan）下交换链刷新率的取值，以及 gamescope 限帧时的表现。
-- `D_8010F0C8 = 1` 的 2 倍速是否有逻辑以外的副作用（显示列表缓冲是否够每 VI 一份）。
+- ~~`D_8010F0C8 = 1` 的 2 倍速是否有逻辑以外的副作用~~：已做成 2 倍速开关并实机，每 VI 一份显示列表没问题（[game-speed.md](../native/game-speed.md)）。
+
+## 9. 2026-10-15 试验结果（Mac，Metal，5120×2880 60 Hz 屏）
+
+做法：`graphics.cpp` 加 `SRW64_REFRESH_RATE=display|<数字>`（`RefreshRate::Display`／`Manual`），`frame_rate.hpp` 加呈现计数 `presents`（调试状态 `presents`，帧率读数插帧时显示「30 FPS · 50 Hz · 16 ms」）。启动用 `Session.launch(env={"SRW64_REFRESH_RATE": "display"}, detach=True)`，`srw64_launch` 不传环境变量。量法：`status` 的 `frame_lists`、`presents` 每 0.5 秒差分；`Session.record(fps=60)` 录像后逐帧比较相邻帧是否相同（相同＝该次呈现没有新画面）。
+
+| 场景 | 相邻呈现 | 结论 |
+| --- | --- | --- |
+| 战斗演出：机体平移（ミニフォー 飞过） | 几乎每次呈现都不同；质心每帧前进 4–9 px（960 宽） | **插帧生效**，和 §5 预期一致 |
+| 战斗演出：机体换帧、闪电特效 | 两次呈现一组 | 内容本身 30 帧，不可插，正常 |
+| 关卡标题卡（模式 14 缩放文字＋残影） | 每次呈现都不同 | 插帧生效；残影画面正常，没见错乱 |
+| 战术地图光标移动 | 两次呈现一组（光标质心每个游戏帧前进 6–12 px，即原版 2–4 像素，一格 4–8 帧） | **不插**，和 §5、§6.2 预期一致 |
+| 战术地图空闲 | 只有光标闪烁 | — |
+| 战前确认页、设置等 RmlUi 页面 | 每次呈现都画 | 跟显示器 |
+
+数字：游戏帧稳定 30／秒；**呈现约 50／秒而不是 60**，录像里是「5 帧新画面、1 帧重复」的固定节奏。把渲染倍率降到 1×、关 MSAA 后仍是 50，所以不是显卡负载，是节拍：RT64 呈现线程每帧 `preciseSleepUntil(上次呈现 + 1/60)` 再 `swapChain->wait()` 再垂直同步，加上渲染线程「超过 1/60 就跳过第二张插值帧」（`rt64_workload_queue.cpp` 1129 行）；ultramodern 的 VI 线程按自己的时钟每 1/60 秒发一个 VI，两个 60 Hz 时钟不同源，每 6 帧左右丢一张插值帧。要到满 60 得在 RT64 里改节拍（去掉睡眠只靠垂直同步，或 VI 线程跟呈现对齐）。**Deck（OLED，Vulkan，gamescope）同日实测**：ssh 起的游戏 gamescope 给 90 Hz，呈现约 80；从 Steam 启动时 gamescope 把交换链切到 60 Hz（console.log 里「refresh cycle 16.67ms」），用户看到读数 50 多。两个平台都是「目标帧率 − 约 10」；Deck 上在快捷菜单的性能页把刷新率设成 90、关掉帧率限制能拿到 80。**Windows（GTX 1080 Ti，D3D12，GameViewer 虚拟屏 144 Hz）同日实测**：「60」档稳定 59–62，「跟随显示器」111–118——D3D12 下节拍是满的。所以丢帧出在 Metal（Mac）和 Vulkan＋gamescope（Deck）两条呈现路径。
+
+排除过的嫌疑：`SRW64_PRESENT_HOOK=0`（`graphics.cpp` `capture_frame`，测试用）把宿主在呈现回调里画的界面、对白、滤镜、边框全部关掉，Mac 仍是 50，**宿主自己的绘制不是原因**；塞尔达重编译配 RT64 的方式与我们相同（`rt64_render_context.cpp:163` `RefreshRate::Display`，无额外处理），没有可借鉴的技巧。
+
+机制（全在 RT64 内）：`swapChain->wait()` 在 D3D12（`plume_d3d12.cpp:1400`）等的是 DXGI「交换链可收下一帧」，不阻塞；Vulkan（`plume_vulkan.cpp:2392`，`vkWaitForPresentKHR`）和 Metal（`plume_metal.cpp:1992`，present 命令缓冲完成回调，`maxFrameLatency`＝1）等的是上一帧**真正扫描上屏**。呈现线程先睡 1/目标帧率（`rt64_present_queue.cpp:400`）再等上屏，于是总慢半拍；渲染线程下一个 workload 要用的插值目标尚未呈现，`frameReduction` 把该 workload 的插值帧数减一（`rt64_workload_queue.cpp` 1067、1153 行），每 6 帧左右一次。
+
+**2026-10-15 用户决定：先不处理，记录在案。** 若以后要修，候选：(1) `rt64_present_queue.cpp:400` 有垂直同步（`ext.swapChain->isVsyncEnabled()`）就不睡眠；(2) `rt64_application.cpp:355` Metal 的 `maxFrameLatency` 1→2（Vulkan 已是 2，单靠这条大概不够）。都走 `prepare_rt64.py` 的补丁机制，不改匹配与插值。
+
+延迟、记账：呈现钩子每个 workload 被调两次没出问题（对白、页面、录像都正常）；`srw64_record` 要用 `fps=60` 才看得出插帧；截图可能截到插值帧。
+
+### 9.1 下一步
+
+1. 帧节拍：Windows D3D12 已经满帧；Mac（Metal）和 Deck（Vulkan）差约 10，原因与候选修法见上。**2026-10-15 用户：先不处理。**
+2. 第一档（§6.1）：显式矩阵组编号、切镜跳过——这次演出里没看到配错，先不急。
+3. 第二档（§6.2）：战术地图矩形插值，仍是最大的一块；光标每帧 2–4 原版像素，30 → 60 的观感收益值得做。

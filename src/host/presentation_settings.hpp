@@ -64,6 +64,14 @@ void set_msaa(bool on);
 // (frame_rate.hpp, frontend.cpp). Off by default; saved as show_fps.
 bool show_fps();
 void set_show_fps(bool show);
+// Frames between the game's own (RT64 interpolation, docs/design/60fps.md): the original
+// 30 (the default on every platform, user 2026-10-15), 60, or the display's rate. Saved as
+// refresh_rate, "original", "60" or "display"; graphics.cpp applies a change on the next frame.
+enum class RefreshRate : uint8_t { Original, Sixty, Display };
+RefreshRate refresh_rate();
+void set_refresh_rate(RefreshRate rate);
+const char* refresh_rate_name(RefreshRate rate);
+RefreshRate refresh_rate_from(const std::string& name);
 // 2x speed on the tactical map, in battle and in the story (game_speed.hpp). Off by
 // default; saved as game_speed, 1 or 2. The Speed button (Tab, R4) toggles it too.
 bool game_speed_double();

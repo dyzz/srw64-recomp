@@ -67,6 +67,7 @@ constexpr bool fps_default=true;
 constexpr bool fps_default=false;
 #endif
 std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true},fps_shown{fps_default},debug_on{false},hints_always{false};
+std::atomic<RefreshRate> refresh_choice{RefreshRate::Original};
 std::mutex endpoint_mutex;
 DebugEndpoint endpoint_now;
 std::atomic<int> size_choice{-1};  // UiSize, or -1 until the player chooses
@@ -80,7 +81,7 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
         {"map_unit_icons",map_icons_hd?"hd":"original"},{"msaa",msaa_on.load()},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
-        {"game_speed",srw64::game_speed::on.load()?2:1},
+        {"game_speed",srw64::game_speed::on.load()?2:1},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
         {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
         {"touch_opacity",touch_alpha.load()},{"dialogue_font_size",dialogue_size.load()}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
@@ -151,6 +152,14 @@ void set_msaa(bool on) {
 bool show_fps(){return fps_shown.load();}
 void set_show_fps(bool show) {
     fps_shown=show;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
+const char* refresh_rate_name(RefreshRate rate){return rate==RefreshRate::Original?"original":rate==RefreshRate::Sixty?"60":"display";}
+RefreshRate refresh_rate_from(const std::string& name){return name=="original"?RefreshRate::Original:name=="60"?RefreshRate::Sixty:RefreshRate::Display;}
+RefreshRate refresh_rate(){return refresh_choice.load();}
+void set_refresh_rate(RefreshRate rate) {
+    refresh_choice=rate;
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
@@ -327,6 +336,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();
         if(saved.is_object())srw64::game_speed::on=saved.value("game_speed",1)==2;
+        if(saved.is_object())refresh_choice=refresh_rate_from(saved.value("refresh_rate","original"));
         if(saved.is_object() && saved.contains("debug_interface") && saved["debug_interface"].is_boolean())debug_on=saved["debug_interface"].get<bool>();
         if(saved.is_object())hints_always=saved.value("dialogue_hints","auto")=="always";
         if(saved.is_object() && saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())

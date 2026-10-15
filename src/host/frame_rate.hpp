@@ -10,6 +10,10 @@
 namespace srw64::frame_rate {
 inline std::atomic<uint64_t> lists{0};
 inline std::atomic<uint32_t> longest_us{0};
+// Presents: the frames shown, one per display list as the original runs, more when RT64
+// interpolates between them (SRW64_REFRESH_RATE, docs/design/60fps.md §7).
+inline std::atomic<uint64_t> presents{0};
+inline void present_sent() { presents.fetch_add(1, std::memory_order_relaxed); }
 // Graphics thread, once per display list.
 inline void list_sent() {
     static int64_t last = 0;

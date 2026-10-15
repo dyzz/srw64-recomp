@@ -97,6 +97,9 @@ bool map_icons_hd=true; bool hd_map_unit_icons(){return map_icons_hd;} void set_
 bool msaa_on=true; bool msaa(){return msaa_on;} bool msaa_at_start(){return true;} void set_msaa(bool v){msaa_on=v;}
 bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
 bool speed_double=false; bool game_speed_double(){return speed_double;} void set_game_speed_double(bool v){speed_double=v;}
+RefreshRate rate_choice=RefreshRate::Original; RefreshRate refresh_rate(){return rate_choice;} void set_refresh_rate(RefreshRate v){rate_choice=v;}
+const char* refresh_rate_name(RefreshRate r){return r==RefreshRate::Original?"original":r==RefreshRate::Sixty?"60":"display";}
+RefreshRate refresh_rate_from(const std::string& n){return n=="original"?RefreshRate::Original:n=="60"?RefreshRate::Sixty:RefreshRate::Display;}
 bool hints_always=false; bool dialogue_hints_always(){return hints_always;} void set_dialogue_hints_always(bool v){hints_always=v;}
 unsigned touch_alpha=100; unsigned touch_opacity(){return touch_alpha;}
 void set_touch_opacity(unsigned v){touch_alpha=std::clamp(v,25u,100u);}

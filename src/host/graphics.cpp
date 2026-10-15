@@ -231,6 +231,10 @@ void mask_sides(plume::RenderCommandList* list, plume::RenderFramebuffer* frameb
 void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer) {
     using namespace plume;
     mask_sides(list, framebuffer);
+    // For the frame-pacing test (docs/design/60fps.md §9): SRW64_PRESENT_HOOK=0 draws
+    // nothing of ours in RT64's present, to see what our drawing costs the present thread.
+    static const bool hook_off = std::getenv("SRW64_PRESENT_HOOK") && std::string(std::getenv("SRW64_PRESENT_HOOK")) == "0";
+    if (hook_off) { ++presented_frames; srw64::frame_rate::present_sent(); return; }
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::dialogue::gpu_draw(list, framebuffer, RT64::GetRenderHookWorkloadId());
     // Clear workload-keyed guest naming frames before the shared UI renders.
@@ -276,6 +280,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     });
 #endif
     const uint64_t frame = ++presented_frames;
+    srw64::frame_rate::present_sent();
     const uint64_t vi = srw64_current_vi();
     const std::string clock_name = capture_clock;
     const int image_mode = srw64::presentation::image_mode.current();
@@ -527,7 +532,24 @@ public:
         fprintf(stderr, "SRW64_RENDER_RESOLUTION mode=%d multiplier=%.0f\n",
                 int(app->userConfig.resolution), app->userConfig.resolutionMultiplier);
         configure_aspect(srw64::frame::kWidth);   // the window's shape is known from the first frame
-        app->userConfig.refreshRate = RT64::UserConfiguration::RefreshRate::Original;
+        // Frames between the game's 30 (RT64 interpolation, docs/design/60fps.md): the
+        // player's setting (refresh_rate, the original 30 by default), or for tests
+        // SRW64_REFRESH_RATE=display|original|<rate>.
+        app->userConfig.refreshRate = refresh_rate_setting();
+        app->userConfig.refreshRateTarget = 60;   // the "60" choice (Manual), capped at the display's rate by RT64
+        if (const char* rate = std::getenv("SRW64_REFRESH_RATE")) {
+            const std::string value = rate;
+            char* end = nullptr;
+            const long target = std::strtol(rate, &end, 10);
+            if (value == "display") app->userConfig.refreshRate = RT64::UserConfiguration::RefreshRate::Display;
+            else if (value == "original") app->userConfig.refreshRate = RT64::UserConfiguration::RefreshRate::Original;
+            else if (end != rate && !*end && target >= 10 && target <= 1000) {
+                app->userConfig.refreshRate = RT64::UserConfiguration::RefreshRate::Manual;
+                app->userConfig.refreshRateTarget = int(target);
+            }
+            refresh_rate_fixed = true;
+        }
+        fprintf(stderr, "SRW64_REFRESH_RATE mode=%d target=%d\n", int(app->userConfig.refreshRate), app->userConfig.refreshRateTarget);
         // 4x MSAA; SRW64_MSAA=0/2/4/8 for comparisons. RT64 falls back when the device
         // lacks the sample count; native draws follow the scene target's sample count.
         app->userConfig.antialiasing = RT64::UserConfiguration::Antialiasing::MSAA4X;
@@ -665,6 +687,7 @@ public:
         const auto t1 = Timing::clock::now();
 #endif
         apply_aspect();
+        apply_refresh_rate();
         app->state->rsp->reset();
         app->interpreter->loadUCodeGBI(task->t.ucode & 0x3FFFFFF, task->t.ucode_data & 0x3FFFFFF, true);
         // What this frame fills of the picture, from its draws (wide_map::Shape).
@@ -743,6 +766,26 @@ private:
     }
     // The picture follows the window, and the settings window turns it on or off while
     // the game runs; RT64 reads the configuration again for each workload.
+    // The player's refresh-rate setting as RT64's; follows a change while running.
+    bool refresh_rate_fixed = false;
+    RT64::UserConfiguration::RefreshRate refresh_rate_setting() const {
+        auto rate = srw64::settings::RefreshRate::Original;
+#ifdef SRW64_NATIVE_DIALOGUE
+        rate = srw64::settings::refresh_rate();
+#endif
+        // 60 is RT64's Manual target (refreshRateTarget, set once at start).
+        return rate == srw64::settings::RefreshRate::Original ? RT64::UserConfiguration::RefreshRate::Original :
+               rate == srw64::settings::RefreshRate::Sixty ? RT64::UserConfiguration::RefreshRate::Manual :
+                                                              RT64::UserConfiguration::RefreshRate::Display;
+    }
+    void apply_refresh_rate() {
+        if (refresh_rate_fixed) return;
+        const auto wanted = refresh_rate_setting();
+        if (app->userConfig.refreshRate == wanted) return;
+        app->userConfig.refreshRate = wanted;
+        app->updateUserConfig(false);
+        fprintf(stderr, "SRW64_REFRESH_RATE mode=%d\n", int(wanted));
+    }
     void apply_aspect() {
         uint32_t w, h;
         {

@@ -53,6 +53,7 @@ UI_KEYS |= {"about_link_issues", "about_link_site", "about_link_source", "menu_a
 UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale", "menu_game", "menu_exit"}
 # The frame-rate readout (settings show_fps).
 UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps_note"}
+UI_KEYS |= {"settings_refresh", "settings_refresh_display", "settings_refresh_original", "settings_refresh_60", "settings_refresh_note"}
 # 2x speed (frontend.cpp toggle_speed, game_speed.hpp).
 UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_note", "speed_notice_on", "speed_notice_off", "touch_speed"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).

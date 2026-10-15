@@ -174,7 +174,7 @@ json status(const json& params) {
         {"image_mode",{{"current",presentation::image_mode.current()},{"requested",presentation::image_mode.requested()},
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"aspect",settings::wide_picture()?"auto":"4:3"},{"picture_width",frame::picture_width.load()},
-        {"frame_lists",frame_rate::lists.load()},
+        {"frame_lists",frame_rate::lists.load()},{"presents",frame_rate::presents.load()},
         {"game_speed",{{"double",game_speed::on.load()},{"running",game_speed::running.load()}}},
         {"wide_map",{{"extra",wide_map::extra()},{"shown",wide_map::map_shown()},{"placed",wide_map::placed_draws()},{"map_width",wide_map::map_width_seen()},{"scroll_x",wide_map::scroll_seen()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
@@ -261,6 +261,26 @@ json settings(const json& params) {
         if(aspect!="auto" && aspect!="4:3")throw RpcError(InvalidParams,"aspect must be auto or 4:3");
         on_window([=]{settings::set_wide_picture(aspect=="auto");return json(nullptr);});
         done["aspect"]=aspect;
+    }
+    if(params.contains("refresh_rate")) {
+        const auto rate=params["refresh_rate"].get<std::string>();
+        if(rate!="original" && rate!="60" && rate!="display")throw RpcError(InvalidParams,"refresh_rate must be original, 60 or display");
+        on_window([=]{settings::set_refresh_rate(settings::refresh_rate_from(rate));return json(nullptr);});
+        done["refresh_rate"]=rate;
+    }
+    if(params.contains("show_fps")) {
+        const auto& value=params["show_fps"];   // a bool, or "true" / "false" from a client that sends strings
+        if(!value.is_boolean() && !(value.is_string() && (value=="true" || value=="false")))throw RpcError(InvalidParams,"show_fps must be true or false");
+        const bool show=value.is_boolean()?value.get<bool>():value=="true";
+        on_window([=]{settings::set_show_fps(show);return json(nullptr);});
+        done["show_fps"]=show;
+    }
+    if(params.contains("game_speed")) {
+        const auto& value=params["game_speed"];
+        const int speed=value.is_number()?value.get<int>():value.is_string()?std::atoi(value.get<std::string>().c_str()):0;
+        if(speed!=1 && speed!=2)throw RpcError(InvalidParams,"game_speed must be 1 or 2");
+        on_window([=]{settings::set_game_speed_double(speed==2);return json(nullptr);});
+        done["game_speed"]=speed;
     }
     if(params.contains("ui_size")) {
         const auto size=params["ui_size"].get<std::string>();
