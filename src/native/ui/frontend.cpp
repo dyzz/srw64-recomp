@@ -4868,10 +4868,22 @@ void touch_sync() {
         document_close(touch_doc);touch_stamp.clear();return;
     }
     const auto reader=dialogue::reading_controls();
-    const auto reading=reader.skipping?touch_pad::Reading::Skipping:!reader.active?touch_pad::Reading::Inactive:
+    auto reading=reader.skipping?touch_pad::Reading::Skipping:!reader.active?touch_pad::Reading::Inactive:
         reader.history_open?touch_pad::Reading::History:touch_pad::Reading::Active;
     // A skip runs through closed boxes and map transitions too.
     if(reader.skipping)touch_scene_id=touch_pad::SceneId::FixedDialogue;
+    // Hold to fast-forward runs across lines: between two of them the box closes, for a few
+    // frames or for seconds while the script moves units, and the scene falls to the map's
+    // controls, whose button in that place is another; reconcile() then blocked the held
+    // finger and fast-forward stopped after one line (a player, 2026-10-15). While that
+    // finger stays down and the story still runs, the dialogue controls stay; once the
+    // player has the map again the finger is blocked as before, so R2 never reaches it.
+    const bool holding_fast=touch_fingers.pressed(touch_pad::Slot::Arc3) &&
+        touch_controls[touch_pad::Slot::Arc3].label=="touch_hold_fast";
+    if(holding_fast && touch_scene::story_running().load() &&
+       !(touch_scene_id==touch_pad::SceneId::FixedDialogue && reading!=touch_pad::Reading::Inactive)) {
+        touch_scene_id=touch_pad::SceneId::FixedDialogue;reading=touch_pad::Reading::Active;
+    }
     const auto next_controls=touch_pad::scene(touch_scene_id,reading);
     if(!(next_controls==touch_controls)) {
         touch_fingers.reconcile(touch_controls,next_controls);touch_controls=next_controls;

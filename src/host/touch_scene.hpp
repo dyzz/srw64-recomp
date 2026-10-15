@@ -53,6 +53,21 @@ inline touch_pad::SceneId decide(unsigned mode, unsigned map_state, unsigned map
     return SceneId::Other;
 }
 
+// Whether a story runs: the world map's (modes 12, 13: story only) or a map's event script
+// (script_inject.hpp idle_reason, 0x97C not 0x80, as game_speed.hpp reads it). A held
+// "hold to fast-forward" stays the dialogue's through the gaps between its lines, which
+// can last seconds while the script moves units or the camera (frontend.cpp touch_sync).
+inline constexpr uint32_t script_status_address = 0x8015F950 + 0x97C;
+inline bool story(unsigned mode, unsigned script_status) {
+    if (mode == 12 || mode == 13) return true;
+    if (mode == 3 || mode == 0xB || mode == 0x11 || mode == 0x16 || mode == 0x22) return script_status != 0x80;
+    return false;
+}
+inline std::atomic<bool>& story_running() {
+    static std::atomic<bool> running{false};
+    return running;
+}
+
 inline std::atomic<uint8_t>& current() {
     static std::atomic<uint8_t> scene{uint8_t(touch_pad::SceneId::Other)};
     return scene;

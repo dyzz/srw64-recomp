@@ -154,6 +154,11 @@ void recognition() {
     check(decide(3, 0x39, 0, 0, false) == SceneId::Other, "an unknown map state shows everything");
     check(decide(4, 0, 0, 0, false) == SceneId::Other && decide(4, 0, 0, 0, true) == SceneId::Dialogue, "intermission");
     check(decide(0x20, 0, 0, 0, false) == SceneId::AnyKey, "ending");
+    // A story keeps hold to fast-forward through the gaps between lines (frontend.cpp).
+    using srw64::touch_scene::story;
+    check(story(12, 0x80) && story(13, 0), "the world map is story only");
+    check(story(3, 0x2000) && story(0x11, 0) && !story(3, 0x80), "a map's event script runs; the player's map does not");
+    check(!story(4, 0) && !story(2, 0) && !story(7, 0), "intermission, battle and title are not a map's story");
 }
 
 // Fixed buttons (by_scene off): the whole set everywhere, the stick in the corner on our
