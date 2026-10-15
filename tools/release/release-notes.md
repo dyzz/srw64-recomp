@@ -1,35 +1,30 @@
 非官方的《超级机器人大战64》原生移植，附全游戏中文与英文翻译。不含 ROM：需要自备日版原版 ROM。
 
-## 本版更新（0.4.7）
+## 本版更新（0.4.8）
 
-- **Windows：可能修复部分 AMD 显卡在标题画面闪退。** 有玩家的 Apex（Radeon 8060S）在 0.4.6 标题画面闪退。从闪退诊断文件看，正式版误开了显卡驱动的调试检查（只在装了 Windows「图形工具」或 Vulkan SDK 的电脑上生效），界面绘制时一处设置不匹配就被它中断。这一版关掉了调试检查，界面也改成不再走那条有问题的绘制路径。我手上没有这款显卡，还请遇到的玩家帮忙确认。
-- **部分 Intel 核显界面花屏，很可能也一起修好了**，原因和上一条是同一处界面绘制问题。抗锯齿开关现在只影响游戏画面。
-- **修复剧情短跳过后按键像被一直按住。** 有些剧情的短跳过结束后，触屏按钮停在「停止跳过」，方向键和确定键也像被按住一样。
-- **修复地图上的「作战目标」画面让按键像被一直按住。** 它被误当成了对白。
-- **安卓：触屏方向键在边缘晃动不再算成按两次**（战前确认页会跳行）；点在方向键的缝隙里也不会再抢走页面的焦点。
-- **战前确认页：点按钮旁边（驾驶员面板、图片、数字）不再让黄色焦点框消失。**
-- **关闭战斗动画时，目标在宽屏左侧边缘，HP 窗口不再跑到屏幕右边。**
-- **宽屏：剧情中选项的绿色光标条不再超出窗口左侧。**
-- **金手指新增「全部机体零件槽 4 个」**（选项 → 作弊）。关掉后，多出来的槽上的零件会在回到场间菜单或读档时自动卸回仓库，不会丢。
-- **金手指「强化零件全部」从 9 个改成 15 个**，15 是存档能保存的最大数量，原版和模拟器读档也一致。
-- **安卓：最近 3 次运行的日志放进 Documents/Marchwind64/logs。** 黑屏进不了设置、导不出问题报告时，也能把这些日志发给我。
-- **红米 K60 等机型黑屏：暂时还没能解决。** 遇到的玩家请把 logs 文件夹里的日志发给我。
+- **新增「本关情报」**：列出当前关（在场间时是下一关）的隐藏要素和完成情况，以及敌人带的强化零件和撤退条件。在地图或场间按手柄 Y、键盘 I 打开，安卓点左上角的「情报」，选项 → 通用里也有入口。
+- **新增「帧率」设置**（选项 → 界面）：原版 30（默认）、60、跟随显示器。后两档会在游戏的两帧之间补出中间画面，战斗动画里的机体移动、世界地图和标题文字更顺；战术地图和菜单仍是 30 帧。跟随显示器在高刷新率屏幕上补得更多，也更吃显卡。Windows 上能跑满；Mac 和 Steam Deck 目前比目标少约 10 帧（60Hz 屏上约 50）。
+- **金手指新增「敌人与新同伴等级」**（选项 → 作弊）：原版、跟我方（不设上限）、按话数（3＋已通关话数×0.9，最高 50）三选一。
+- **安卓：红米 K60 等机型黑屏已修复**，K60 玩家已确认能正常游戏。
+- **Windows：没有 Vulkan 驱动的电脑打不开的问题已修复。** 0.4.7 在这类电脑上会直接打不开，现在会用 D3D12 运行；两种都用不了时会提示更新显卡驱动。
+- **安卓：修复「按住快进」只能翻一句。** 0.4.5 起按住快进经常只翻一句就停，现在剧情中按住会一直快进。
+- **修复改键后重启，设置页和按键提示显示成默认键位。** 游戏操作一直用的是改过的键，只是界面上显示不对。
 
-## 0.4.6 的更新
+## 0.4.7 的更新
 
-- **新增 2 倍速**（选项 → 通用 →「游戏速度」，默认原速）。战斗演出、世界地图、地图上的剧情、敌方回合和单位移动都加快一倍；我方的菜单、光标、战前确认和场间画面保持原速，免得光标跑太快。音乐速度不变。键盘按 Tab 一键切换，手柄是 R4 背键，安卓在左上角有 2× 按钮。
-- **Windows：修复双击启动时偶尔闪退。** 0.4.5 双击 `Marchwind64.exe` 大约每三次会闪退一次，现已修复。
-- **修复战斗天空上的红黄斑点。** 废墟等场景的高楼窗户位置会透出机体或光束的颜色，看起来像红黄斑点；现在按原版画法画成不透明。
-- **HD：修复机体下半身被桥面挡住。** 夜间大桥等场景里，后画的桥面会盖住 HD 机体的下半身（原版画面正常），现已修复。
-- **中文译名统一采用《超级机器人大战Z》中文版的叫法**，剧情、界面和攻略同步，例如：赞波特3、斯派扎、灵·格斯，精神「必闪」。
-- **安卓：存档和文件改放在「文档/Marchwind64」。** 第一次启动时（或在 选项 → 存档 里）选一次文件夹，存档、导入导出、问题报告、滤镜和框体都在这里，文件管理器能直接看到，卸载游戏也不会删掉。以前的存档会自动复制过去。
-- **安卓启动图标换成 M64 徽标**；Steam Deck 添加到 Steam 时的封面图和图标也换成了新的品牌图。
+- **Windows：可能修复部分 AMD 显卡在标题画面闪退**，部分 Intel 核显界面花屏很可能也一起修好了。抗锯齿开关现在只影响游戏画面。
+- **修复剧情短跳过后、地图「作战目标」画面之后按键像被一直按住。**
+- **安卓：触屏方向键在边缘晃动不再算成按两次**，点在方向键的缝隙里也不会再抢走页面的焦点。
+- **战前确认页：点按钮旁边不再让黄色焦点框消失。**
+- **关闭战斗动画时，目标在宽屏左侧边缘，HP 窗口不再跑到屏幕右边**；剧情中选项的绿色光标条不再超出窗口左侧。
+- **金手指新增「全部机体零件槽 4 个」，「强化零件全部」改为 15 个。**
+- **安卓：最近 3 次运行的日志放进 Documents/Marchwind64/logs。**
 
 ## 安卓已测试的芯片
 
 以下芯片的真机都能正常进入游戏（安卓 12–16）。天玑 6100+ 这类入门芯片约 14 FPS，其余基本是 30 FPS。没列出的芯片不代表不能玩，只是还没测过；欢迎在 Issues 反馈。希望天玑 8200 的玩家反馈一下是否能正常运行。
 
-- 高通：骁龙 865/870（Adreno 650，Galaxy Tab S7、POCO F3）、骁龙 888（Adreno 660，Galaxy S21 Ultra）、骁龙 8 Gen 1（Adreno 730，Galaxy S22、小米 12）、骁龙 8 Gen 2（Adreno 740，小米 13、Galaxy S23）、骁龙 8 Gen 3（Adreno 750，Galaxy S24 Ultra）、骁龙 8 至尊版（Adreno 830，Galaxy S25）
+- 高通：骁龙 865/870（Adreno 650，Galaxy Tab S7、POCO F3）、骁龙 888（Adreno 660，Galaxy S21 Ultra）、骁龙 8 Gen 1（Adreno 730，Galaxy S22、小米 12）、骁龙 8+ Gen 1（Adreno 730，红米 K60）、骁龙 8 Gen 2（Adreno 740，小米 13、Galaxy S23）、骁龙 8 Gen 3（Adreno 750，Galaxy S24 Ultra）、骁龙 8 至尊版（Adreno 830，Galaxy S25）
 - 联发科：天玑 7300（Mali-G615，Solana Seeker）、天玑 6100+（Mali-G57，Galaxy A15）
 - 三星：Exynos 1380（Mali-G68，Galaxy A35）
 - 谷歌：Tensor G2（Mali-G710，Pixel 7）、Tensor G3（Mali-G715，Pixel 8）
@@ -65,7 +60,7 @@
 
 ## English
 
-An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. New in 0.4.7: on Windows, a crash at the title on some AMD graphics (a Radeon 8060S in an Apex) may be fixed: releases had the graphics driver's debug checks on wherever Windows Graphics Tools or a Vulkan SDK is installed, and one mismatch in drawing the menus stopped the game there; the checks are off and the menus no longer take that path, which most likely also fixes garbled menus on some Intel graphics, and the anti-aliasing switch now applies to the game picture only. After some short story skips, keys no longer stay held and the touch buttons no longer stay on Stop skip; the map's objectives screen no longer holds keys either. On Android, a thumb rocking on the edge of the touch D-pad is one press, and a touch between its arms no longer takes the page's focus; on the pre-battle page, a tap beside the buttons no longer drops the yellow focus frame. With battle animations off in widescreen, the HP window no longer jumps to the right edge for a target on the left; a story choice's green bar stays inside its window. A new cheat gives every unit 4 part slots (Options → Cheats); turned off, the parts in the extra slots go back to storage at the next intermission menu or load. The parts cheat now gives 15 of each part, the most a save keeps. On Android, the last three runs' logs go to Documents/Marchwind64/logs, for phones that cannot reach the settings. The black screen on the Redmi K60 and similar phones is not solved yet; please send those logs. From 0.4.6: a 2x game speed (Options → General → Game speed, off by default) speeds up battle animations, the world map, story events on the map, the enemy phase and units moving, while your menus, the cursor, the pre-battle screens and the intermission keep the original speed, and the music its tempo; Tab, the R4 back button or the 2x button at the top left on Android toggles it. On Windows, double-clicking Marchwind64.exe no longer crashes about one start in three, as 0.4.5 did. Red and yellow specks in some battle skies (the ruins' tower windows) are gone. With HD, units are no longer hidden behind the night bridge's deck. The Chinese names now follow the Chinese edition of Super Robot Wars Z. On Android, saves, imports, exports, problem reports, filters and bezels live in Documents/Marchwind64, a folder you choose once, which file managers see and an uninstall keeps; the launcher icon is the M64 badge, and the Steam art for the Steam Deck is new. Android chips tested on real phones: Snapdragon 865/870, 888, 8 Gen 1, 8 Gen 2, 8 Gen 3 and 8 Elite; Dimensity 7300 and 6100+ (about 14 FPS); Exynos 1380; Tensor G2 and G3. If you play on a Dimensity 8200 phone, please let us know whether it runs well. Earlier changes are on the [website blog](https://srw64.dreamquest.club/en/blog/). 0.4 is the first public release and a feature preview: the whole game is playable, but it is still rough. The Chinese and English translations are mostly machine-translated with one polishing pass and have not been hand-edited line by line yet; expect plenty of bugs; testing beyond macOS has been limited to a few devices. Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues), with the platform info and problem report from Options → Report, and suggest text corrections on the [website](https://srw64.dreamquest.club/en/story/)'s Story and Library pages. Full feature list: [release notes on the website](https://srw64.dreamquest.club/en/blog/v0-4-0/). {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
+An unofficial native port of Super Robot Wars 64 with a full Chinese and English translation. No ROM included: you need your own original Japanese ROM. New in 0.4.8: a Stage info page lists the current stage's hidden elements and how far you are with each, and the enemies' parts and retreat conditions (Y on a controller, I on the keyboard, the Info button at the top left on Android, or Options → General; between stages it shows the next one). A Frame Rate setting (Options → UI): Original 30 (the default), 60 or Display; the last two add frames between the game's own, so units in battle animations, the world map and title lettering move more smoothly, while the tactical map and the menus stay at 30. Windows reaches the full rate; Mac and Steam Deck currently fall about 10 short (about 50 on a 60 Hz screen). A new cheat sets enemy and recruit levels: original, match the party (no cap), or by chapter (3 + 0.9 × chapters cleared, at most 50). The black screen on the Redmi K60 and similar phones is fixed, confirmed by a K60 player. On Windows, a PC with no Vulkan driver starts again (0.4.7 did not open there) and runs on D3D12; with neither available, it asks you to update the graphics driver. On Android, Hold ▶▶ keeps fast-forwarding through a story again instead of stopping after one line, as it had since 0.4.5. After a restart, the settings page and the button hints show your own key bindings, not the defaults (the game itself always used yours). From 0.4.7: a likely fix for a crash at the title on some AMD graphics and for garbled menus on some Intel graphics; keys no longer stay held after some short story skips or the map's objectives screen; on Android, a thumb on the edge of the touch D-pad is one press; the pre-battle page keeps its focus frame; the HP window and story choices stay in place in widescreen; cheats for 4 part slots on every unit and 15 of each part; Android keeps the last three runs' logs in Documents/Marchwind64/logs. Android chips tested on real phones: Snapdragon 865/870, 888, 8 Gen 1, 8+ Gen 1, 8 Gen 2, 8 Gen 3 and 8 Elite; Dimensity 7300 and 6100+ (about 14 FPS); Exynos 1380; Tensor G2 and G3. If you play on a Dimensity 8200 phone, please let us know whether it runs well. Earlier changes are on the [website blog](https://srw64.dreamquest.club/en/blog/). 0.4 is the first public release and a feature preview: the whole game is playable, but it is still rough. The Chinese and English translations are mostly machine-translated with one polishing pass and have not been hand-edited line by line yet; expect plenty of bugs; testing beyond macOS has been limited to a few devices. Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/issues), with the platform info and problem report from Options → Report, and suggest text corrections on the [website](https://srw64.dreamquest.club/en/story/)'s Story and Library pages. Full feature list: [release notes on the website](https://srw64.dreamquest.club/en/blog/v0-4-0/). {packages_en}. The optional HD image pack for every platform is released separately with its own version, currently [HD {hd_version}]({hd_url}). {hd_status_en} The game's update check says when a newer HD pack is out; see its release page for how to install it and where its images come from. This is an unofficial fan work, and the original characters, art and trademarks belong to their owners. The macOS app is not notarized: allow it under System Settings → Privacy & Security. Z+START in battle is the original game's soft reset.
 
 ## 校验 / Checksums
 
