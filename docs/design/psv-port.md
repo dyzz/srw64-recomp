@@ -73,6 +73,17 @@
 | 函数查找表 | `recomp_overlays.inl`：17 段、3,468 项，`unordered_map<int32_t, func*>` | 与指针大小无关，不用改；7,381 处 `LOOKUP_FUNC` 的开销在 444 MHz 上值得看一眼（可换成按地址直接索引） |
 | 宿主线程优先级 | `threads.cpp:100,114-116,151` 三个平台都没生效 | Vita 上同样不设。但 `std::thread` 默认栈要显式给够（pthread-embedded 的默认值待查） |
 
+**V0 实做（2026-10-16，`tools/recomp/toolchain/prepare_vita_runtime.py`）：** 上表的补丁都已写成生成替身（不改上游检出，写到 `build/recomp/vita-runtime/`，带前后哈希的 manifest），加上交叉编译时才暴露的三处头文件平台判断：
+
+| 新发现 | 位置 | 做法 |
+| --- | --- | --- |
+| `WindowHandle` 只为 Win32/Linux/Android/Apple 定义，`__vita__` 下没有类型 | `ultramodern/include/ultramodern/renderer_context.hpp:48-62` | `defined(__vita__)` 走 Linux 的 `SDL_Window*` |
+| moodycamel 信号量只认 `_WIN32`/`__MACH__`/`__unix__`，Vita 不定义 `__unix__` 就 `#error` | `thirdparty/concurrentqueue/lightweightsemaphore.h:27,168` | 加 `__vita__`：newlib 有 `semaphore.h`，POSIX 分支直接可用（`blockingconcurrentqueue.h` 一并复制到替身目录，让它的同目录包含找到补过的头） |
+| newlib 的 libstdc++ 没有 `std::quick_exit` | `ultramodern/src/error_handling.cpp:27` | 与 Apple 分支一样用 `std::_Exit` |
+| `allocation_size = 4 GiB` 在 32 位 `size_t` 上溢出为 0（只是告警） | `librecomp/include/librecomp/addresses.hpp:12` | 替身里的 RDRAM 分配不再用它；整套运行库在 `-Wall -Wextra` 下只有这一条与指针宽度有关的告警（arm-linux-gnueabihf GCC 13，47 条告警里其余是 sign-compare/unused） |
+
+原先列的 `misc_ultra.cpp:12`、`ultra64.h:43,106` 三处 `uintptr_t`/`intptr_t` 转换在 32 位下不产生告警（宽度正好相等），`native_marker.cpp:318-321` 属于 Vita 不编的 GPU 代码。`threads.cpp` 的线程命名只有 Win32/Linux/Apple 三个分支，Vita 下 `set_native_thread_name`/`set_native_thread_priority` 没有定义：静态库能编，链接整机时要补一个空分支（V2）。
+
 ### 渲染：要替换的清单
 
 | 组件 | 现状 | Vita 做法 |
@@ -95,19 +106,29 @@
 | 依赖 | 现状 | Vita |
 | --- | --- | --- |
 | SDL3 3.4.16 + sdl2-compat | tarball 源码构建 | 用 VitaSDK 的 SDL2 包（宿主只调 SDL2 API，79 个符号）。窗口标志 `SDL_WINDOW_VULKAN/METAL`（`graphics.cpp:917-924`）改为无标志，GL 上下文由 vitaGL 管 |
-| FreeType 2.14.3、HarfBuzz 14.2.1 | tarball | VitaSDK 有 freetype 与 harfbuzz 包，版本待核对；否则源码交叉编译 |
-| ICU 78.3 | 只有 `portable_text.cpp` 10 处用（断行等），数据已裁到 0.45 MB | VitaSDK 没有 ICU。两条路：交叉编译 ICU（要先做宿主构建再交叉，重）；或用自写的 UAX#14 子集替换这 10 处。V0 定 |
+| FreeType 2.14.3、HarfBuzz 14.2.1 | tarball | VitaSDK 镜像里是 FreeType 2.13 系（libtool 26.6.20，`libfreetype.a` 0.75 MB）与 HarfBuzz 14.5.0（`libharfbuzz.a` 2.1 MB），2026-10-16 核对；先用它们，字形对照有差异再按本项目钉的版本源码交叉编译 |
+| ICU 78.3 | 只有 `portable_text.cpp` 10 处用（断行等），数据已裁到 0.45 MB | **VitaSDK 镜像里有 ICU 73.2**（`arm-vita-eabi/lib/libicuuc.a`、`libicui18n.a`、`libicudata.a` 与 `include/unicode/`；2026-10-16 核对，本页先前写“没有”是错的）。库可直接链，不用交叉编译也不用改这 10 处；但它的 `libicudata.a` 只有 916 字节（空壳，不带数据），数据要自己给：本项目裁过的数据包（安卓做法，断行/双向/文字系统约 0.45 MB）按 ICU 73 重新生成一份，启动时 `udata_setCommonData` 喂进去。另：VitaSDK 的 FreeType 是 2.13 系（libtool 26.6.20）、HarfBuzz 14.5.0、SDL2 2.x，与本项目钉的 2.14.3 / 14.2.1 不同版本，V2 若对照出字形差异再源码交叉编译 |
 | librashader | 预编译 + `dlopen` | 不要 |
 | nlohmann json、moodycamel、o1heap、miniz、xxHash | 头文件/单文件 | 直接用 |
 | `std::filesystem` | 102 个源文件用 | newlib 的 `std::filesystem` 实现不全（推断，V0 验证）；`src/native/app` 已有 POSIX 路，缺的函数在那里补 |
 | 调试接口 | TCP（`debug_transport.cpp`） | Vita 有 BSD socket，可按 Deck/安卓的 `attach.py` 方式远程接 MCP，值得保留 |
 
-### 体积与内存预算（推断）
+### 体积与内存预算（生成代码与运行库已实测，其余推断）
+
+V0 用 VitaSDK 的 `arm-vita-eabi-gcc` 15.2.0（ARMv7-A+NEON，Thumb-2，`-DNDEBUG`）把重编译代码、音频微码与运行库编成静态库（`tools/release/vita/build.sh`，2026-10-16，Docker 10 核 arm64）：
+
+| 静态库 | `-O2` .text | `-Os` .text | 说明 |
+| --- | --- | --- | --- |
+| `srw64_cpu`（70 个 `funcs_*.c`，30.3 MB 源码） | 3,092,324 B（2.95 MiB） | 2,678,556 B（2.55 MiB） | 原先估的 8–12 MB 高了 3–4 倍：每条 MIPS 指令在 Thumb-2 上平均约 3 字节 |
+| `srw64_audio`（RSP 音频微码，标量路径） | 21,788 B | 13,816 B | |
+| `librecomp`（去 MOD/JIT/堆） | 43,760 B | 30,152 B | `.rodata` 78 KB |
+| `ultramodern` | 44,592 B | 30,112 B | |
+| 合计 | 3,202,464 B（3.05 MiB） | 2,752,636 B（2.63 MiB） | 全部编译 35 s / 29 s（`-j10`） |
 
 | 项 | 数据 | Vita 估计 |
 | --- | --- | --- |
-| 生成代码 | 69 个 `funcs_*.c`，30.3 MB 源码，3,418 个函数；macOS arm64 发布版 `__TEXT` 22.0 MB（含全部宿主、RmlUi 等） | Thumb-2 `-Os` 下重编译部分约 8–12 MB 代码。Vita 没有公开的 ELF 大小上限，V0 实测 |
-| RDRAM | 8 MiB（`osMemSize`），实际用 4 MiB | 16 MiB 分配 |
+| 生成代码 | 见上表 | 约 3 MiB 代码（`-O2`；`-Os` 省 13%，先不用），远在任何 ELF 限制之内，不需要拆模块 |
+| RDRAM | 8 MiB（`osMemSize`），实际用 4 MiB | 16 MiB `calloc`（替身里已这样分配，qemu 下验证可跑） |
 | ROM | 32 MiB 整读进 `std::vector`（`recomp.cpp:206-220`） | 先整读（够用）；紧张时改 `pi.cpp` 走文件流 |
 | 字体 | `HarmonyOS_Sans_SC.ttf` 20.6 MB，RmlUi 与对白各自 `FT_New_Memory_Face`，最坏 5–10 份（`android-port.md:220-224`） | **必须共享一份缓冲**。许可证禁止子集化，不能靠裁字体省内存 |
 | 对白文本 | 786 个文件，20 MB | 按需读，常驻的只是当前关 |
@@ -129,8 +150,8 @@
 
 | 方案 | 优点 | 缺点 | 结论 |
 | --- | --- | --- | --- |
-| A. libultraship Fast3D（MIT）剥出显示列表解释器 + `gfx_opengl` 后端 | F3DEX2 全集、TMEM/贴图格式/组合器→着色器都现成；Vita 上有四个成品 + 两个公开移植的踩坑记录 | 上游版本深度绑了 OTR 资源指针，要加一条“RDRAM 地址模式”；Vita 专用改动（Rinnegatamante 分支）不公开，要照 goldenballoon 自己做；没有帧缓冲回写 | **首选** |
-| B. 自写解释器 | 只实现本作用到的子集（纹理矩形为主、无 Z 缓冲的 billboard、少量 3D），与现有钩子和扩展 GBI 一体设计；无外部代码 | 组合器与 TMEM 细节要自己踩一遍 | V0 统计后若子集很小则改选 B，或 A 的解释器 + 自己的 GL 层 |
+| A. libultraship Fast3D（MIT）剥出显示列表解释器 + `gfx_opengl` 后端 | F3DEX2 全集、TMEM/贴图格式/组合器→着色器都现成；Vita 上有四个成品 + 两个公开移植的踩坑记录 | 上游版本深度绑了 OTR 资源指针，要加一条“RDRAM 地址模式”；Vita 专用改动（Rinnegatamante 分支）不公开，要照 goldenballoon 自己做；没有帧缓冲回写 | 备选；TMEM 装载与贴图解码照它写 |
+| B. 自写解释器 | 只实现本作用到的子集：V0 统计为 7 种组合器、35 种绘制状态、3 种贴图格式、全单周期（[统计](../data/gbi-usage.md)）；着色器写死并预热；与现有钩子和扩展 GBI 一体设计，绘制调用合并可以按本作的列表结构做；无外部代码 | 组合器与 TMEM 细节要自己踩一遍；统计外的状态（后期关卡、未跑到的演出）要在 V1 对照时补 | **V0 后首选** |
 | C. GLideN64 | 精度最高，GLES2 路径成熟 | GPL-2.0 only，与 GPL-3 不兼容；GLSL 动态生成量大 | 排除 |
 | D. DaedalusX64 的 HLE 渲染器 | 为 Vita 调优 | GPL-2.0；与它的模拟器结构耦合 | 排除 |
 | E. 不移植宿主，用 DaedalusX64-vitaGL 跑原 ROM | 零工作量 | 本项目的汉化是运行时文字与页面，不是 ROM 补丁；无翻译、无多存档、无原生页面 | 排除 |
@@ -144,7 +165,7 @@
 
 ### 着色器策略
 
-- 本作的组合器组合是有限集合。V0 用桌面 RT64 版加一个计数钩子，跑一遍现有的 `check_*.py` 场景集（开场、战术地图、战斗演出、场间全部页面、世界地图、结局），导出组合器键列表。
+- 本作的组合器组合是有限集合：V0 用桌面 RT64 版的计数钩子（`src/host/gbi_stats.cpp`）跑了九个场景，7 种组合器取值、28 种 RDP 模式、35 种绘制状态，全部单周期（[统计](../data/gbi-usage.md)）。着色器按这 35 种状态预先写成固定集合（组合器 7 种 × 是否贴图/调色板 × Alpha 比较），不做运行时生成。
 - Vita 上按 SSB64 的做法：启动后、加载资源前预热全部已知组合，落盘缓存带版本头 + 源码哈希 + 负载哈希 + `GL_LINK_STATUS` 校验，失败只重生成那一条。遇到列表之外的组合才惰性编译。
 - 宿主自绘层只需要 2–3 个固定着色器（纹理四边形、带调色板已解码的四边形、纯色），对白合成器与 RmlUi GL2 走固定管线，不进运行时编译器。
 - 不碰 `vglSetupRuntimeShaderCompiler` 的优化档位：社区实测偏离默认值只会把失败变成挂死。
@@ -209,6 +230,14 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
 
 **门槛：** 全部源码在 ARMv7 下编译通过；qemu 下开场前 300 帧的 RDRAM 快照与 macOS 版一致（现有 `srw64_memory` 工具可比对）；组合器清单到手。
 
+**结果（2026-10-16，门槛三项都过）：**
+
+1. 工具在 `tools/release/vita/`：`build.sh` 建镜像（`vitasdk/vitasdk:latest` 加 `gcc-arm-linux-gnueabihf` 与 `qemu-user`）并在容器里跑 `build_probe.py`；`CMakeLists.txt` 是探针工程；`probe_host.cpp` 是无图形宿主。运行库补丁在 `tools/recomp/toolchain/prepare_vita_runtime.py`（生成替身，见「运行库」一节的表）。结果汇总在 `build/recomp/vita/report.json`。
+2. 四个静态库在 `arm-vita-eabi-gcc` 15.2.0 下全部编过，`-O2` 与 `-Os` 各一次，大小见「体积与内存预算」。
+3. 指针宽度告警只有 `addresses.hpp:12` 一条；`-Wall -Wextra` 全开也没有别的（见「运行库」一节）。
+4. 正确性：同一探针宿主（全部原生钩子调原版、地图宽度按 4:3，原版规则）用 `arm-linux-gnueabihf-g++` 13 编成 32 位 ARM，在 qemu-arm 下从开机跑到第 300 个帧边界（`80085F30`，游戏线程上截快照），与 macOS arm64 原生构建比对 8 MiB RDRAM：**只差 4 处共 50 字节，全是 `OSThread.context`（运行库存进客体内存的宿主指针，64 位 8 字节、32 位 4 字节）**；两次 qemu 运行逐字节相同，两次原生运行也只差这几个指针槽。VI 数 300、显示列表 147、音频任务 298 三边一致。做法上有一点要记住：运行库的 VI 线程按墙钟 60 Hz 发中断，游戏线程快慢不同时两边截到的帧相位不同（第一次比对差了 2,165 字节，全在音频合成器的工作区）；探针把 VI 改成「不快于 60 Hz、且游戏过了帧边界才发下一拍」（`build_probe.py` 写出的 `probe_events.cpp`），之后才可逐字节比。qemu 下 300 帧跑 5.3 s，与原生一样跟得上 60 Hz（qemu 是 arm64 上的动态翻译，不代表 Vita 速度）。两处无关 ILP32 的现象：32 位 Linux 要 `-D_FILE_OFFSET_BITS=64`，否则 Docker 挂载卷上 `stat()` 报 EOVERFLOW；qemu-user 下 libstdc++ 的 `copy_file` 失败，运行库每次写存档都报「Failed to write to the save file」（原生 0 次），只影响存档文件，不影响快照。
+5. 显示列表统计：`src/host/gbi_stats.cpp`（宿主调试接口开着并设 `SRW64_GBI_STATS=<文件>` 才工作，在 RT64 读列表之前走一遍，不改渲染）、`tools/recomp/debug/check_gbi_usage.py`（九个场景各一次运行，原版图片、原版画面）、`tools/recomp/analysis/gbi_usage.py`（合并解码成表）。结果在[本作用到的 F3DEX2 指令与组合器](../data/gbi-usage.md)，结论见「待定」。
+
 ### V1 桌面上的 GL 渲染路径
 
 1. `srw64::gl` 层 + GLSL ES 1.00 的 HdSprite/HdMap 边框着色器。
@@ -254,13 +283,13 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
 | R6 没有实机或实机迭代慢 | V2 之后无法推进 | 先确认有破解 Vita；Vita3K 只做早期；调试接口经 Wi-Fi 复用现有 MCP 流程 |
 | R7 ELF 大小 | 加载失败 | 没有公开上限；V0 实测 `.text`，必要时把生成代码拆成多个 `suprx` 模块 |
 | R8 许可 | 引入 GPL-2-only 代码 | 只用 MIT 的 Fast3D 与 LGPL/GPL-3 的 vitaGL；不看 GLideN64/Daedalus 的渲染代码 |
-| R9 ILP32 专有 bug | “像指针的值”被当指针、64 位专用分支成空操作（goldenballoon 两例） | 审 `uintptr_t`/`intptr_t` 三处与 `OSThread.context`（宿主指针存进 RDRAM，32 位下占 4 字节，布局与 N64 原版一致，反而更自然） |
+| R9 ILP32 专有 bug | “像指针的值”被当指针、64 位专用分支成空操作（goldenballoon 两例） | 审 `uintptr_t`/`intptr_t` 三处与 `OSThread.context`（宿主指针存进 RDRAM，32 位下占 4 字节，布局与 N64 原版一致，反而更自然）。**V0 已验：** 同一份源码的 32 位 ARM 构建在 qemu-arm 下跑开场 300 帧，RDRAM 快照与 arm64 原生构建只差 `OSThread.context` 四个槽位（见 V0 一节），生成代码在 ILP32 下没有发现错算 |
 
 ## 待定
 
 - **实机。** 已备好：破解的 Vita 已用 VitaDeploy 的“Quick 3.65 Install”换成 3.65 + Ensō 永久破解（2026-10-16），开机自动生效。`ur0:data/libshacccg.suprx` 已在机上，Vita3K 也放了一份。插件登记在 `ur0:tai/config.txt`：vitacompanion 1.08（常驻 FTP 1337 与命令端口 1338：`launch`/`quit`/`reboot`/`press`/`promote` 等，已验证）、PSVshell（帧率、CPU、内存显示与调频，测性能前要确认在默认频率档）、iTLS。V2 的装包、启动、按键、重启都能在 Mac 上脚本化。机上 Wi-Fi 实测约 1.1 MiB/s，日常只替换变动的 `eboot.bin`，大文件走 VitaShell 的 USB 模式。崩溃时系统在 `ux0:data` 写 `.psp2dmp`，到时在 Mac 上装 vita-parse-core 解析。
-- **Fast3D 还是自写。** 等 V0 的指令/组合器统计。若本作用到的组合器少于约 30 组、3D 只有世界地图与战斗地面，自写解释器反而小。
-- **ICU。** 交叉编译还是替换 10 处用法。
+- **Fast3D 还是自写：自写（V0 定，2026-10-16）。** 九个场景 22,222 帧、9,568 万条指令的统计（[本作用到的 F3DEX2 指令与组合器](../data/gbi-usage.md)）：组合器只有 7 种取值、全部单周期，绘制时的 (othermode, combine, geometry) 组合 35 种，混合式 4 种，贴图格式 3 种（CI4、CI8、RGBA16），没有两周期、雾、LOD、S2DEX、`G_BRANCH_Z`，`G_DL` 最深 2 层，颜色缓冲恒为 320 宽 RGBA16。这远小于 Fast3D 的覆盖面，而且着色器可以按 35 种状态预先写死、启动时全预热，正好绕开 Sony 运行时着色器编译器（R1）。自写要补的硬功夫只有 TMEM 装载/贴图解码（照 Fast3D 的 `gfx_pc.c` 写）与**绘制调用合并**：2D 场景每帧 300–650 条纹理矩形、标题演示战斗与世界地图最多约 2,000，一条一次 draw call 在 Vita 上跑不动，解释器要把连续同贴图同状态的矩形并成一个顶点缓冲，贴图按内容哈希缓存（`G_SETTILE`/`G_LOADTILE` 每帧重复装同样的小贴图）。统计没覆盖全部战斗演出与后期关卡，V1 做桌面 GL 路径时遇到表外的状态按同一套表加。
+- **ICU：链 VitaSDK 自带的 ICU 73.2，数据自己给（V0 定）。** 镜像里有 `libicuuc.a`/`libicui18n.a` 与头文件，但 `libicudata.a` 是 916 字节的空壳；把安卓那套裁过的数据包（`tools/release/android/build_dependencies.py` 的做法，断行/双向/文字系统约 0.45 MB）用 ICU 73 的工具重新生成，启动时 `udata_setCommonData` 喂进去，`portable_text.cpp` 的 10 处用法原样保留。若 73 与 78 的 API 有差异再退到安卓的交叉编译流程（已有脚本，加一个 Vita 目标）。
 - **现代页面默认开还是关。** RmlUi 在 444 MHz 上的布局开销未测；页面不脏时每帧只重绘，推断可以接受。V2 测后定。
 - **分辨率档位。** 1× 原生还是 2× 内部分辨率。
 - **桌面 `gl` 后端是否长期保留。** 本页按“只做开发对照、不进发布包”写；若将来要支持更老的 PC，可以另议。

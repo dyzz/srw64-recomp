@@ -45,6 +45,7 @@
 #include "native_dialogue.hpp"
 #include "post_filter.hpp"
 #include "notices.hpp"
+#include "gbi_stats.hpp"
 #include "ultramodern/ultramodern.hpp"
 #endif
 #include "librecomp/game.hpp"
@@ -717,6 +718,11 @@ public:
 #ifdef __ANDROID__
         const auto t2 = Timing::clock::now();
 #endif
+        // The display list's commands and modes, counted for the Vita study (gbi_stats.hpp;
+        // only with the debug interface and SRW64_GBI_STATS). Before RT64 reads the list:
+        // the game thread, told the RSP is done, may already be rewriting the sub-lists
+        // it keeps at fixed addresses.
+        srw64::gbi_stats::record(native_text ? display_copy.data() : app->core.RDRAM, app->core.RDRAM, start, task->t.data_size);
         app->processDisplayLists(native_text ? display_copy.data() : app->core.RDRAM, start, 0, true);
 #ifdef __ANDROID__
         const auto t3 = Timing::clock::now();
@@ -748,7 +754,7 @@ public:
         app->updateScreen();
 #endif
     }
-    void shutdown() override { if (app) app->end(); }
+    void shutdown() override { srw64::gbi_stats::flush(); if (app) app->end(); }
     uint32_t get_display_framerate() const override { return 60; }
     float get_resolution_scale() const override { return 1.0f; }
 private:

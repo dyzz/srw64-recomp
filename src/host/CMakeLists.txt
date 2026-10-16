@@ -195,6 +195,8 @@ if(SRW64_ENABLE_RT64)
     endif()
     # Debug interface (docs/guide/debug-interface.md), inert unless SRW64_DEBUG=1.
     target_sources(srw64-gfx-host PRIVATE debug_server.cpp debug_transport.cpp)
+    # Display list statistics for the PS Vita study (docs/design/psv-port.md), with SRW64_GBI_STATS.
+    target_sources(srw64-gfx-host PRIVATE gbi_stats.cpp)
     if(WIN32)
         target_link_libraries(srw64-gfx-host PRIVATE ws2_32)
     endif()
