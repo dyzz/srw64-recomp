@@ -1,0 +1,116 @@
+---
+// The Android compatibility list; the rows live in src/data/android.ts.
+import Base from '../../layouts/Base.astro';
+import { UI, langPaths, type Lang } from '../../i18n';
+import { CHIPS, KNOWN_ISSUES, UNCONFIRMED, UNTESTED, asOf, updated, type Chip, type Depth, type Status } from '../../data/android';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = {
+  lead: {
+    zh: '我在真机上测过的芯片和它们在当前版本的情况。没列出的芯片不代表不能玩，只是还没测过。',
+    en: 'The chips I have run on real phones, and how they do in the current version. A chip that is not listed has not been tested yet; that does not mean it will not work.',
+    ja: '実機で確認したチップと、現在のバージョンでの状況です。載っていないチップは未確認というだけで、動かないとは限りません。',
+  },
+  asOf: { zh: `按 ${asOf} 整理，更新于 ${updated}`, en: `As of ${asOf}, checked ${updated}`, ja: `${asOf} 時点、${updated} 更新` },
+  needs: { zh: '最低要求：arm64，Android 9 及以上，支持 Vulkan 1.1。', en: 'Requires an arm64 device with Android 9 or later and Vulkan 1.1.', ja: '動作条件：arm64、Android 9 以降、Vulkan 1.1 対応。' },
+  find: {
+    zh: '手机的处理器可以在「设置 → 关于手机」（小米为「设置 → 我的设备 → 全部参数」）里看到。',
+    en: 'Your phone’s processor is shown under Settings → About phone.',
+    ja: 'スマホのプロセッサーは「設定 → デバイス情報」などで確認できます。',
+  },
+  chip: { zh: '芯片', en: 'Chip', ja: 'チップ' },
+  phones: { zh: '同芯片的常见机型', en: 'Phones with this chip', ja: '同じチップの主な端末' },
+  tested: { zh: '实测机型', en: 'Tested on', ja: '確認した端末' },
+  state: { zh: '状态', en: 'Status', ja: '状況' },
+  unconfirmed: { zh: '待确认的反馈', en: 'Reports not yet confirmed', ja: '未確認の報告' },
+  issues: { zh: '已知问题', en: 'Known issues', ja: '既知の問題' },
+  untested: { zh: '还没测过', en: 'Not tested yet', ja: 'まだ確認していないもの' },
+  report: {
+    zh: '用的是没列出的机型、遇到了问题，或者确认能玩，都欢迎反馈：在游戏里「选项 → 反馈」导出问题报告，到 <a href="https://github.com/dyzz/srw64-recomp/issues">GitHub Issues</a> 提交，并写上手机型号、处理器和游戏版本。',
+    en: 'Whether your phone is missing here, has a problem, or plays fine, please tell me: export a report from Options → Feedback in game and open a <a href="https://github.com/dyzz/srw64-recomp/issues">GitHub issue</a> with the phone model, processor and game version.',
+    ja: '載っていない端末をお使いの方、問題があった方、問題なく遊べた方も、ぜひ教えてください。ゲーム内の「オプション → フィードバック」で問題レポートを書き出し、端末名・プロセッサー・ゲームのバージョンを添えて <a href="https://github.com/dyzz/srw64-recomp/issues">GitHub Issues</a> にお寄せください。',
+  },
+};
+const VENDOR: Record<Chip['vendor'], string> = { qualcomm: 'Qualcomm', mediatek: 'MediaTek', samsung: 'Samsung', google: 'Google' };
+const STATUS: Record<Status, Record<Lang, string>> = {
+  ok: { zh: '正常', en: 'Works', ja: '動作' },
+  slow: { zh: '能玩但慢', en: 'Slow', ja: '低速' },
+  issue: { zh: '有已知问题', en: 'Known issue', ja: '既知の問題あり' },
+};
+const DEPTH: Record<Depth, Record<Lang, string>> = {
+  title: { zh: '测到标题和演示战斗', en: 'Title and demo battle', ja: 'タイトルとデモ戦闘まで' },
+  stage: { zh: '打进第一关', en: 'Into stage 1', ja: '第 1 話まで' },
+  play: { zh: '实际游玩', en: 'Played', ja: '実際にプレイ' },
+};
+const groups = (Object.keys(VENDOR) as Chip['vendor'][]).map((v) => ({ vendor: v, chips: CHIPS.filter((c) => c.vendor === v) }));
+---
+<Base lang={lang} title={UI.nav.android[lang]} description={t.lead[lang]}>
+  <div class="wrap">
+    <header class="page-head">
+      <span class="tag">ANDROID</span>
+      <h1>{UI.nav.android[lang]}</h1>
+      <p>{t.lead[lang]}</p>
+      <p class="dim">{t.asOf[lang]}<br />{t.needs[lang]} {t.find[lang]}</p>
+    </header>
+
+    <table class="chips">
+      <thead>
+        <tr><th>{t.chip[lang]}</th><th>{t.tested[lang]}</th><th>{t.state[lang]}</th><th>{t.phones[lang]}</th></tr>
+      </thead>
+      {groups.map((g) => (
+        <tbody>
+          <tr class="vendor"><th colspan="4">{VENDOR[g.vendor]}</th></tr>
+          {g.chips.map((c) => (
+            <tr>
+              <td class="chip"><strong>{c.chip[lang]}</strong><span class="dim">{c.gpu}</span></td>
+              <td>{c.tested[lang]}<span class="dim">{DEPTH[c.depth][lang]}</span></td>
+              <td>
+                <span class={`st ${c.status}`}>{STATUS[c.status][lang]}</span>{c.fps && <span class="fps latin">{c.fps} FPS</span>}
+                {c.note && <p class="note">{c.note[lang]}</p>}
+              </td>
+              <td class="phones">{c.phones[lang] && <><span class="lbl">{t.phones[lang]} · </span>{c.phones[lang]}</>}</td>
+            </tr>
+          ))}
+        </tbody>
+      ))}
+    </table>
+
+    <section class="prose">
+      <h2>{t.unconfirmed[lang]}</h2>
+      <ul>{UNCONFIRMED.map((x) => <li>{x[lang]}</li>)}</ul>
+      <h2>{t.issues[lang]}</h2>
+      <ul>{KNOWN_ISSUES.map((x) => <li>{x[lang]}</li>)}</ul>
+      <h2>{t.untested[lang]}</h2>
+      <ul>{UNTESTED.map((x) => <li><strong>{x.label[lang]}</strong>{lang === 'en' ? ': ' : '：'}{x.items[lang]}</li>)}</ul>
+      <p set:html={t.report[lang]} />
+    </section>
+  </div>
+</Base>
+
+<style>
+  .chips { width: 100%; max-width: 1040px; border-collapse: collapse; font-size: 15px; margin-bottom: 24px; }
+  .chips th, .chips td { text-align: left; vertical-align: top; padding: 12px 12px; border-bottom: 1px solid var(--line-soft); }
+  .chips thead th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  .chips .vendor th { padding-top: 22px; color: var(--gold); font-size: 14px; letter-spacing: 0.06em; border-bottom: 1px solid var(--line); }
+  .chips td span.dim { display: block; font-size: 13px; margin-top: 2px; }
+  .chip strong { white-space: nowrap; }
+  .phones { color: var(--muted); }
+  .lbl { display: none; }
+  .st { display: inline-block; padding: 1px 8px; font-size: 13px; font-weight: 600; }
+  .st.ok { color: var(--ink); background: var(--green); }
+  .st.slow { color: var(--ink); background: var(--orange); }
+  .st.issue { color: var(--ink); background: var(--pink); }
+  .fps { margin-left: 8px; font-size: 13px; color: var(--muted); }
+  .note { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
+  /* Phones: each row stacks into a card. */
+  @media (max-width: 720px) {
+    .chips thead { display: none; }
+    .chips, .chips tbody, .chips tr, .chips td, .chips th { display: block; }
+    .chips tr:not(.vendor) { padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+    .chips td { padding: 2px 0; border: 0; }
+    .chips .vendor th { padding: 22px 0 6px; }
+    .chips td.phones:empty { display: none; }
+    .lbl { display: inline; color: var(--dim); }
+  }
+</style>

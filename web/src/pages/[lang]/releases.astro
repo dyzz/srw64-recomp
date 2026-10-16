@@ -13,9 +13,9 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const t = {
   lead: {
-    zh: '每个版本改了什么。已知问题、安卓测试机型和下载方式见各版本的完整说明。',
-    en: 'What changed in each version. Known issues, tested Android devices and downloads are in each version’s full notes.',
-    ja: 'バージョンごとの変更点です。既知の問題、動作確認済みの Android 端末、ダウンロード方法は各バージョンの詳細をご覧ください。',
+    zh: '每个版本改了什么。已知问题和下载方式见各版本的完整说明。',
+    en: 'What changed in each version. Known issues and downloads are in each version’s full notes.',
+    ja: 'バージョンごとの変更点です。既知の問題とダウンロード方法は各バージョンの詳細をご覧ください。',
   },
   latest: { zh: '最新', en: 'Latest', ja: '最新' },
   full: { zh: '完整说明', en: 'Full notes', ja: '詳細' },
@@ -53,7 +53,7 @@ const entries = posts.map((p) => {
       <span class="tag">RELEASES</span>
       <h1>{UI.nav.releases[lang]}</h1>
       <p>{t.lead[lang]}</p>
-      <p><a href={`/${lang}/install/`}>{t.download[lang]} · v{release.version} →</a></p>
+      <p class="links"><a href={`/${lang}/install/`}>{t.download[lang]} · v{release.version} →</a><a href={`/${lang}/android/`}>{UI.nav.android[lang]} →</a></p>
     </header>
     <ol class="rels">
       {entries.map((e) => (
@@ -81,5 +81,6 @@ const entries = posts.map((p) => {
   .ver { font-size: 26px; font-weight: 700; color: var(--gold); text-decoration: none !important; }
   .latest { padding: 2px 8px; font-size: 12px; color: var(--bg); background: var(--cyan); }
   .rel h2 { margin: 6px 0 14px; font-size: 20px; line-height: 1.4; }
+  .links { display: flex; flex-wrap: wrap; gap: 6px 20px; }
   .full { display: inline-block; margin-top: 14px; font-size: 14px; }
 </style>

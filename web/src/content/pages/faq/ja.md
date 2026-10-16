@@ -34,7 +34,7 @@ ROM が圧縮ファイルなら先に展開してください。`.n64`・`.v64` 
 | macOS | Apple シリコン、macOS 14 以降 |
 | Linux | x86-64、glibc 2.35 以降、Vulkan ドライバー |
 | Steam Deck（試験的） | Linux 版と同じパッケージ。Deck を自動認識 |
-| Android（試験的） | arm64、Android 9 以降、Vulkan 1.1 |
+| Android（試験的） | arm64、Android 9 以降、Vulkan 1.1。確認済みの端末は [Android 対応状況](/ja/android/) |
 
 プラットフォームごとの CPU・グラフィックス・ドライバーの条件は、インストールページの[動作環境](/ja/install/#requirements)をご覧ください。
 

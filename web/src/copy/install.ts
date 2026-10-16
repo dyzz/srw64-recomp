@@ -145,7 +145,7 @@ export const INSTALL: Record<Lang, Install> = {
       notes: [
         '空间：游戏本体约 150 MB，HD 美术包另需约 550 MB。',
         '启动闪退、卡住或画面异常时，请先更新显卡驱动，见<a href="/zh/faq/#gpu">常见问题</a>。',
-        '安卓各机型的实测情况见<a href="/zh/blog/android-status/">安卓手机测试情况</a>。',
+        '安卓各机型的实测情况见<a href="/zh/android/">安卓兼容列表</a>。',
       ],
     },
     downloadsTitle: '全部下载',
@@ -276,7 +276,7 @@ export const INSTALL: Record<Lang, Install> = {
       notes: [
         'Storage: about 150 MB for the game, plus about 550 MB for the HD art pack.',
         'If the game crashes at start, freezes or draws wrongly, update your graphics drivers first; see the <a href="/en/faq/#gpu">FAQ</a>.',
-        'How each Android phone did in our tests: <a href="/en/blog/android-status/">Android phones tested</a>.',
+        'How each Android phone did in our tests: <a href="/en/android/">Android compatibility</a>.',
       ],
     },
     downloadsTitle: 'All downloads',
@@ -407,7 +407,7 @@ export const INSTALL: Record<Lang, Install> = {
       notes: [
         '空き容量：ゲーム本体が約 150 MB、HD アートパックは別に約 550 MB。',
         '起動直後に落ちる、止まる、表示がおかしいときは、まずグラフィックスドライバーを更新してください。詳しくは<a href="/ja/faq/#gpu">よくある質問</a>をご覧ください。',
-        'Android 端末ごとの確認状況は<a href="/ja/blog/android-status/">Android 端末の動作確認状況</a>をご覧ください。',
+        'Android 端末ごとの確認状況は<a href="/ja/android/">Android 対応状況</a>をご覧ください。',
       ],
     },
     downloadsTitle: 'ダウンロード一覧',

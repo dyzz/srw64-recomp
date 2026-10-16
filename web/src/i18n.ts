@@ -26,6 +26,8 @@ export const UI = {
     blog: { zh: '博客', en: 'Blog', ja: 'ブログ' },
     // Not in the header (full); linked beside the home page download.
     releases: { zh: '更新日志', en: 'Release notes', ja: '更新履歴' },
+    // Not in the header either; linked from the install page and the FAQ.
+    android: { zh: '安卓兼容列表', en: 'Android compatibility', ja: 'Android 対応状況' },
     docs: { zh: '技术文档', en: 'Docs', ja: '技術資料' },
     guide: { zh: '攻略', en: 'Guide', ja: '攻略' },
     story: { zh: '剧情', en: 'Story', ja: 'シナリオ' },

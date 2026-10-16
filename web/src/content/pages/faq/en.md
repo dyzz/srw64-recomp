@@ -34,7 +34,7 @@ It is a native port built using static recompilation. The N64's MIPS program is 
 | macOS | Apple silicon, macOS 14 or later |
 | Linux | x86-64, glibc 2.35 or later, a Vulkan driver |
 | Steam Deck (experimental) | The Linux package; the Deck is recognised automatically |
-| Android (experimental) | arm64, Android 9 or later, Vulkan 1.1 |
+| Android (experimental) | arm64, Android 9 or later, Vulkan 1.1; phones tested: [Android compatibility](/en/android/) |
 
 The CPU, graphics card and driver needed on each platform are listed under [System requirements](/en/install/#requirements) on the install page.
 

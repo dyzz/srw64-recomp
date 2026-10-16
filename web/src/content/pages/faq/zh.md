@@ -34,7 +34,7 @@ ROM 是压缩包的话先解压。`.n64`、`.v64` 格式改名为 `rom.n64`、`r
 | macOS | Apple 芯片，macOS 14 起 |
 | Linux | x86-64，glibc 2.35 起，需要 Vulkan 驱动 |
 | Steam Deck（实验性） | 与 Linux 同一个包，自动识别 Deck |
-| Android（实验性） | arm64，Android 9 起，需要 Vulkan 1.1 |
+| Android（实验性） | arm64，Android 9 起，需要 Vulkan 1.1；实测机型见[安卓兼容列表](/zh/android/) |
 
 各平台对 CPU、显卡和驱动的具体要求见安装页的[系统要求](/zh/install/#requirements)。
 

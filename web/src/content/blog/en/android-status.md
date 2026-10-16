@@ -4,6 +4,8 @@ date: 2026-10-08
 summary: The Android phones we tested, player reports and where each GPU stands, plus the known issues and what we have not tested. Snapdragon 865/870/888, 8 Gen 2/Gen 3 and Mali phones with older drivers are fixed; the Redmi K60's black screen and a flicker with the settings open on a Snapdragon 8 Elite (Android 17) are still being looked into.
 ---
 
+*This is a record from 0.4.4 and does not include later fixes. For the current state, see [Android compatibility](/en/android/).*
+
 *Updated 2026-10-10: the latest version is now 0.4.4; added MediaTek phones played into the first stage, new player reports, the known issues and what we have not tested.*
 
 Since 0.4.0 went public we have had a number of reports of Android phones that would not open, crashed or showed a black screen. This post lists, by GPU, the phones we tested ourselves, what players reported and where things stand, so you can check yours. The latest version, 0.4.4, has every fix below. ⚠️ marks what is not confirmed yet.
