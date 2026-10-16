@@ -239,6 +239,15 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
             write8(ram,0x80227A83,crew);write8(ram,0x80227B60,id);write8(ram,0x80227BCC,0);
             for(unsigned n=0;n<std::min(7u,read(ram,player.unit+0x34,1));++n)
                 write32(ram,0x80227A88+4*n,read(ram,player.unit+0x38+4*n,4));
+            // The map's spirit menu checks the command on the real state as it casts it (801F1B10):
+            // that check also lists the units it acts on (80227B61 count, 80227B62 handles), which
+            // 友情, 愛, かく乱 and the like then walk one by one (801D7778). The check above ran on a
+            // copy, so they walked whatever list was left: on the enemy's turn the cursor went to
+            // an enemy, and an empty one is walked past its end (a player, 0.4.8 on Windows).
+            if(!invoke(ram,ctx,0x801F18A0,player.handle,id)) {
+                for(const auto& b:spirit_return_state)write8(ram,b.address,b.value);
+                spirit_return_state.clear();record("spirit-refused");return true;
+            }
             spirit_running=true;spirit_menu=false;current["spirit_running"]=true;
             current["action"]=action;record("spirit-cast");current["visible"]=false;owning=false;
             lock.unlock();invoke(ram,ctx,0x801D6A68,id,0);return true;

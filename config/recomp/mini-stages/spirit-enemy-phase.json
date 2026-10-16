@@ -1,0 +1,157 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "spirit-enemy-phase",
+  "note": "Pre-battle all-unit spirits on the enemy's turn (友情, 愛, かく乱): before the fix the battle page cast them with the original's target list (80227B61) left from earlier. Nobody here learns 友情, so give the pilots it after loading (pilot +0x0B learned ids, +0x16 SP), end the phase and cast it on the battle page.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001f0f1c",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "タケル / ガイヤー — 超能力"
+    },
+    {
+      "template": "base:stage_deployments:00200a6c",
+      "group": 0,
+      "x": 8,
+      "y": 10,
+      "faction": 0,
+      "note": "マリア / ドリルスペイザー — 超能力"
+    },
+    {
+      "template": "base:stage_deployments:001e40dc",
+      "group": 1,
+      "x": 9,
+      "y": 8,
+      "unit": 170,
+      "faction": 1,
+      "note": "ムゲ兵 in ミニフォー, next to タケル: attacks on the enemy's turn"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D54",
+          "args": [
+            138
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "camera on タケル"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ],
+  "initial_resources": [
+    {
+      "side": 0,
+      "slot": 1,
+      "hp_percent": 35,
+      "en_percent": 100
+    },
+    {
+      "side": 0,
+      "slot": 0,
+      "hp_percent": 60,
+      "en_percent": 100
+    }
+  ]
+}
