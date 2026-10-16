@@ -209,6 +209,15 @@ if(SRW64_ENABLE_RT64)
     endif()
     set(SRW64_HOST_TARGETS srw64-gfx-host)
     if(NOT ANDROID)
+    # The PS Vita renderer replayed offline on the desktop's OpenGL 2.1 against RT64's
+    # pictures (docs/design/psv-port.md, V1; dumps from gbi_stats.hpp). Built on request.
+    find_package(OpenGL)
+    if(OpenGL_FOUND)
+        add_executable(srw64-gl-replay EXCLUDE_FROM_ALL "${SRW64_ROOT}/src/gl/replay.cpp"
+            "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp")
+        target_include_directories(srw64-gl-replay PRIVATE "${SRW64_RT64}/src/contrib")
+        target_link_libraries(srw64-gl-replay PRIVATE SDL2::SDL2 OpenGL::GL)
+    endif()
     list(APPEND SRW64_HOST_TARGETS srw64-frame-host)
     add_executable(srw64-frame-host frame.cpp graphics.cpp audio.cpp)
     add_executable(srw64-content-test "${SRW64_ROOT}/tests/native_content.cpp" "${SRW64_ROOT}/src/native/localization/catalog.cpp")
