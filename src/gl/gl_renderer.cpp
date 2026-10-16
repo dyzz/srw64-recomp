@@ -147,13 +147,18 @@ Renderer::Target& Renderer::target(uint32_t image) {
     return t;
 }
 
-bool Renderer::present(uint32_t origin, int x, int y, int width, int height) {
+uint32_t Renderer::image_at(uint32_t origin) const {
     // The VI scans from somewhat past the colour image's start (a line or so in).
-    const Target* shown = nullptr;
     uint32_t best = 0;
     for (const auto& [image, t] : targets)
-        if (image <= origin && origin - image < uint32_t(kPictureWidth * kPictureHeight * 2) && (!shown || image > best)) { shown = &t; best = image; }
-    if (!shown) return false;
+        if (image <= origin && origin - image < uint32_t(kPictureWidth * kPictureHeight * 2) && image > best) best = image;
+    return best;
+}
+
+bool Renderer::present(uint32_t origin, int x, int y, int width, int height) {
+    const auto found = targets.find(image_at(origin));
+    if (found == targets.end()) return false;
+    const Target* shown = &found->second;
     if (!blit) {
         std::string error;
         const GLuint vs = compile(GL_VERTEX_SHADER, std::string(kPreamble) +
