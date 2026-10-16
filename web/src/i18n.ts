@@ -21,10 +21,11 @@ export const switchLang = (path: string, to: Lang) =>
 
 export const UI = {
   nav: {
-    home: { zh: '首页', en: 'Home', ja: 'ホーム' },
     install: { zh: '安装', en: 'Install', ja: 'インストール' },
     faq: { zh: '常见问题', en: 'FAQ', ja: 'よくある質問' },
     blog: { zh: '博客', en: 'Blog', ja: 'ブログ' },
+    // Not in the header (full); linked beside the home page download.
+    releases: { zh: '更新日志', en: 'Release notes', ja: '更新履歴' },
     docs: { zh: '技术文档', en: 'Docs', ja: '技術資料' },
     guide: { zh: '攻略', en: 'Guide', ja: '攻略' },
     story: { zh: '剧情', en: 'Story', ja: 'シナリオ' },
@@ -33,7 +34,7 @@ export const UI = {
     mods: { zh: 'MOD', en: 'Mods', ja: 'MOD' },
     // The sister project, the Chinese translation of Super Robot Wars Z (PS2).
     srwz: {
-      label: { zh: '机战Z 汉化', en: 'SRW Z (Chinese)', ja: 'スパロボZ 中文化' },
+      label: { zh: '机战Z', en: 'SRW Z', ja: 'スパロボZ' },
       title: {
         zh: '姊妹项目：PS2《超级机器人大战Z》中文化补丁与剧情审阅站',
         en: 'Sister project: the Chinese translation of Super Robot Wars Z (PS2), with its story review site',

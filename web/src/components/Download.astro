@@ -5,7 +5,7 @@
 // pack, one download for every platform, has its own button beside them.
 import { fileFor, hd, mb, release, PLATFORM_LABEL, type Platform } from '../data/release';
 import Mirrors from './Mirrors.astro';
-import type { Lang } from '../i18n';
+import { UI, type Lang } from '../i18n';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = {
@@ -45,6 +45,7 @@ const items = platforms.map((p) => {
 <p class="more">
   <a class="other" href={`/${lang}/install/#downloads`} data-other hidden>{t.other[lang]} →</a>
   {hdFile && <a href={`/${lang}/install/#hd`}>{t.hdHow[lang]} →</a>}
+  <a href={`/${lang}/releases/`}>{UI.nav.releases[lang]} →</a>
 </p>
 
 <script>

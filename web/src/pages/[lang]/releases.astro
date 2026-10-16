@@ -1,0 +1,85 @@
+---
+// Release notes: every version's "what's new", newest first, taken from its release post
+// (a blog post with `version`), so publishing the post is all a release needs. A post shows
+// its opening paragraphs and the section under the what's-new heading; one without that
+// section (0.4.0, the first release) shows its summary. Both link to the full post.
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { UI, langPaths, type Lang } from '../../i18n';
+import { newestFirst } from '../../lib/blog';
+import { release } from '../../data/release';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = {
+  lead: {
+    zh: '每个版本改了什么。已知问题、安卓测试机型和下载方式见各版本的完整说明。',
+    en: 'What changed in each version. Known issues, tested Android devices and downloads are in each version’s full notes.',
+    ja: 'バージョンごとの変更点です。既知の問題、動作確認済みの Android 端末、ダウンロード方法は各バージョンの詳細をご覧ください。',
+  },
+  latest: { zh: '最新', en: 'Latest', ja: '最新' },
+  full: { zh: '完整说明', en: 'Full notes', ja: '詳細' },
+  download: { zh: '下载最新版', en: 'Download the latest version', ja: '最新版をダウンロード' },
+};
+// The what's-new heading each language's release posts use.
+const NEW: Record<Lang, string[]> = { zh: ['本版更新'], en: ["What's new"], ja: ['更新内容', '今回の変更'] };
+const text = (html: string) => html.replace(/<[^>]+>/g, '').replace(/&#39;|&#x27;|&apos;|’/g, "'").trim();
+
+const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft && !!p.data.version)).sort(newestFirst);
+const entries = posts.map((p) => {
+  const html = p.rendered?.html ?? '';
+  const h2s = [...html.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)];
+  const at = h2s.findIndex((m) => NEW[lang].includes(text(m[1])));
+  let body: string | null = null;
+  if (at >= 0) {
+    const start = h2s[at].index! + h2s[at][0].length;
+    const end = h2s[at + 1]?.index ?? html.length;
+    body = html.slice(0, h2s[0].index) + html.slice(start, end);
+  }
+  return {
+    version: p.data.version!,
+    date: p.data.date.toISOString().slice(0, 10),
+    // "Marchwind 64 0.4.8: …" → "…"
+    title: p.data.title.replace(/^Marchwind 64 [\d.]+\s*[:：]\s*/, '').replace(/^[a-z]/, (c) => c.toUpperCase()),
+    summary: p.data.summary,
+    body,
+    href: `/${lang}/blog/${p.id.split('/')[1]}/`,
+  };
+});
+---
+<Base lang={lang} title={UI.nav.releases[lang]} description={t.lead[lang]}>
+  <div class="wrap">
+    <header class="page-head">
+      <span class="tag">RELEASES</span>
+      <h1>{UI.nav.releases[lang]}</h1>
+      <p>{t.lead[lang]}</p>
+      <p><a href={`/${lang}/install/`}>{t.download[lang]} · v{release.version} →</a></p>
+    </header>
+    <ol class="rels">
+      {entries.map((e) => (
+        <li class="rel" id={`v${e.version}`}>
+          <div class="meta">
+            <a class="ver latin" href={`#v${e.version}`}>{e.version}</a>
+            {e.version === release.version && <span class="latest">{t.latest[lang]}</span>}
+            <span class="dim latin">{e.date}</span>
+          </div>
+          <h2>{e.title}</h2>
+          <div class="prose">
+            {e.body ? <Fragment set:html={e.body} /> : <p>{e.summary}</p>}
+          </div>
+          <a class="full" href={e.href}>{t.full[lang]} →</a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .rels { list-style: none; margin: 0; padding: 0; max-width: 820px; }
+  .rel { padding: 28px 0 32px; border-top: 1px solid var(--line-soft); scroll-margin-top: 80px; }
+  .meta { display: flex; align-items: baseline; gap: 12px; }
+  .ver { font-size: 26px; font-weight: 700; color: var(--gold); text-decoration: none !important; }
+  .latest { padding: 2px 8px; font-size: 12px; color: var(--bg); background: var(--cyan); }
+  .rel h2 { margin: 6px 0 14px; font-size: 20px; line-height: 1.4; }
+  .full { display: inline-block; margin-top: 14px; font-size: 14px; }
+</style>

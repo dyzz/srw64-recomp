@@ -3,8 +3,8 @@ import { LANGS, UI, canReview, langInfo, switchLang, type Lang } from '../i18n';
 import Wordmark from './Wordmark.astro';
 interface Props { lang: Lang; path: string; review?: boolean; }
 const { lang, path, review = false } = Astro.props;
+// No Home item: the logo links home, and the row is full in English and Japanese.
 const items = [
-  { href: `/${lang}/`, label: UI.nav.home[lang], match: (p: string) => p === `/${lang}/` },
   { href: `/${lang}/install/`, label: UI.nav.install[lang], match: (p: string) => p.startsWith(`/${lang}/install`) },
   { href: `/${lang}/guide/`, label: UI.nav.guide[lang], match: (p: string) => p.startsWith(`/${lang}/guide`) },
   { href: `/${lang}/story/`, label: UI.nav.story[lang], match: (p: string) => p.startsWith(`/${lang}/story`) },
