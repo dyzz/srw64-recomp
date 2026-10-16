@@ -151,6 +151,7 @@
 | [原生 ROM 首次导入 / P1](design/native-rom-importer.md) | 内嵌元数据、C++ 文本与头像导入、版本化缓存及 Python 对照测试 |
 | [三平台移植计划](design/three-platform-port.md) | Windows／Linux（含 Steam Deck）／macOS 的后端与编译器选择、移植阻塞项审计、X0–X4 阶段与验收、构建步骤分工 |
 | [安卓移植方案](design/android-port.md) | 调研：社区 N64Recomp 安卓移植先例、固定版本 RT64／plume／运行库的安卓缺口与 GPU 门槛、ROM 派生代码与侧载分发、宿主改动清单（构建、入口、生命周期与存档、触屏与手机界面）、A0–A4 阶段与待定事项 |
+| [PS Vita 移植方案](design/psv-port.md) | 调研：Vita 只有 GLES2 级 GPU、RT64/plume 不可用，整条渲染路径要换成 vitaGL 上的 GL2 实现（Fast3D 解释器、宿主自绘层、对白合成器、RmlUi GL2）；运行库 32 位阻塞项与补丁、依赖与内存预算、社区 libultraship 系移植的实机经验、Mac 上的 Vita3K 与 VitaSDK 开发环境、V0–V4 阶段、风险与待定 |
 | [手机触屏操作](design/touch-controls.md) | 按场景显示功能名按钮：MOBA 式左侧任意位置方向区、右下固定的确定／返回、各场景的按钮与识别依据、三语词条、实施顺序 |
 | [触屏界面复盘（2026-10-10）](design/touch-ui-review-20261010.md) | 安卓对白回看入口消失的原因、各版按键布局的离线对照与复用返回键的方案 |
 | [周目继承](design/new-game-plus.md) | 上周目完成的隐藏要素在原入队关之后补登记（33 项、不改变量）与历代记录；为何不继承击坠数（未实现） |
