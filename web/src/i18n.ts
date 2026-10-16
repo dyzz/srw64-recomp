@@ -51,6 +51,7 @@ export const UI = {
       ja: '非公式のファンプロジェクトです。バンダイナムコ、バンプレスト、各作品の権利者とは提携していません。原作のキャラクター・アート・商標は各権利者に帰属します。当サイトでは ROM を配布していません。',
     },
     source: { zh: '源代码', en: 'Source code', ja: 'ソースコード' },
+    stats: { zh: '访问统计', en: 'Site statistics', ja: 'アクセス統計' },
   },
   lang: { zh: '语言', en: 'Language', ja: '言語' },
   readMore: { zh: '阅读全文', en: 'Read more', ja: '続きを読む' },
