@@ -27,6 +27,8 @@ NATIVE_HOOKS = {
     # The animation-off presentation's round queue (src/host/map_miss.hpp): misses the
     # original drops are queued and shown.
     "load_000AB160_func_801FCA78": "srw64_original_map_rounds",
+    # Every end of a unit's action spends one (cheats.hpp unlimited_moves).
+    "load_000AB160_func_801C29DC": "srw64_original_action_spend",
     "load_000AB160_func_801FB8B4": "srw64_original_map_round_push",
     "resident_func_80082334": "srw64_original_random_bound",
     "resident_func_80085F30": "srw64_original_frame_boundary",

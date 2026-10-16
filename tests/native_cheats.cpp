@@ -90,6 +90,11 @@ int main() {
     }
     assert(!toggle(level_curve) && !toggle(level_party) && toggle(max_parts));
 
+    // Unlimited moves: player handles only (0x42 + slot), and only with the switch on.
+    assert(keeps_action(unlimited_moves,0x42) && keeps_action(unlimited_moves,0x42+29));
+    assert(!keeps_action(unlimited_moves,0x60) && !keeps_action(unlimited_moves,0x7E + 3) && !keeps_action(unlimited_moves,0x41));
+    assert(!keeps_action(max_parts,0x42));
+
     // SP and morale: records in use; morale skips the 0xC0 pilots.
     const uint32_t p=pilots_table,q=pilots_table+pilot_size,unused=pilots_table+2*pilot_size;
     put(p,1,1);put(p+0x16,3,2);put(p+0x18,80,2);put(p+0x20,100,2);

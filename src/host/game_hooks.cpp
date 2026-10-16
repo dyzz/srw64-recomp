@@ -160,6 +160,11 @@ void resident_func_80093278(uint8_t* ram,recomp_context* ctx) {
     const unsigned write_sram=uint8_t(ctx->r4);
     srw64_original_tactical_serialize(ram,ctx);srw64::state_probe::save_payload(ram,true,write_sram);
 }
+void load_000AB160_func_801C29DC(uint8_t* ram,recomp_context* ctx) {
+    // A unit's action ends (a0 the handle): with unlimited moves a player unit keeps it.
+    if(cheats::keeps_action(int16_t(ctx->r4)))return;
+    srw64_original_action_spend(ram,ctx);
+}
 void resident_func_800A4BE0(uint8_t* ram,recomp_context* ctx) {
     // The base level, on entering a map; the cheats' party or chapter base replaces it
     // before the map's first deployment reads it (every frame after that too).

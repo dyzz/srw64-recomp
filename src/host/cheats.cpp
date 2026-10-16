@@ -99,6 +99,7 @@ void intermission(uint8_t* ram,recomp_context* ctx) {
 
 unsigned active(){return switches.load();}
 void hold_slots(uint8_t* ram){hold(ram,switches.load(std::memory_order_relaxed)&four_slots);}
+bool keeps_action(int handle){return keeps_action(switches.load(std::memory_order_relaxed),handle);}
 void hold_base_level(uint8_t* ram){hold(ram,switches.load(std::memory_order_relaxed)&level_modes);}
 void set_active(unsigned value) {
     unsigned all=0;

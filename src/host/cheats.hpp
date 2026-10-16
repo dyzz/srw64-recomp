@@ -12,10 +12,11 @@
 // own state and is saved with it; the switches themselves are not.
 namespace srw64::cheats {
 
-enum Switch : unsigned {max_funds=1,max_parts=2,keep_en=4,keep_sp=8,morale_150=16,four_slots=32,level_curve=64,level_party=128};
+enum Switch : unsigned {max_funds=1,max_parts=2,keep_en=4,keep_sp=8,morale_150=16,four_slots=32,level_curve=64,level_party=128,
+    unlimited_moves=256};
 struct Entry {Switch bit;const char* id;};
-inline constexpr Entry catalog[]={{max_funds,"funds"},{max_parts,"parts"},{four_slots,"slots"},{keep_en,"en"},{keep_sp,"sp"},{morale_150,"morale"},
-    {level_party,"party"},{level_curve,"curve"}};
+inline constexpr Entry catalog[]={{max_funds,"funds"},{max_parts,"parts"},{four_slots,"slots"},{unlimited_moves,"moves"},{keep_en,"en"},{keep_sp,"sp"},
+    {morale_150,"morale"},{level_party,"party"},{level_curve,"curve"}};
 // The base level row offers three choices, not switches: the original, the party's (no
 // cap) or the chapter curve. At most one of the two bits is set.
 inline constexpr unsigned level_modes=level_curve|level_party;
@@ -34,6 +35,8 @@ void request_level(unsigned index,unsigned level);
 // The four-slot switch's write, now rather than at the next frame: a machine built
 // this frame (a swap) still has its ROM count when the parts-carry rule fills it.
 void hold_slots(uint8_t* ram);
+// True when the unit with this handle should keep its action (unlimited_moves).
+bool keeps_action(int handle);
 // The chosen base level, right after the original computes its own (800A4BE0).
 void hold_base_level(uint8_t* ram);
 
@@ -95,6 +98,14 @@ inline unsigned party_level(const uint8_t* ram) {
     unsigned sum=0;for(unsigned l:levels)sum+=l;
     return std::clamp(sum/unsigned(levels.size()),1u,level_max);
 }
+// A unit's action ends in 801C29DC(handle), whatever the action (待機, an attack, 説得,
+// 修理/補給...): the pilot's actions left (+0x35, refilled from +0x34 each phase, 2 for
+// a double mover) go down by one, the other pilots' too on 0xAB-0xB3 machines, and at 0
+// 801F94D0 greys the unit out. Handles are 0x42 + roster slot for the player, 0x60 for
+// enemies, 0x7E for the third side (801E514C). With unlimited_moves a player unit
+// spends nothing, so it can move and act again, as a double mover with actions left does.
+inline constexpr int player_handles=0x42,enemy_handles=0x60;
+inline constexpr bool keeps_action(unsigned on,int handle){return (on&unlimited_moves) && handle>=player_handles && handle<enemy_handles;}
 // The intermission's fade: -1 once a screen is idle.
 inline constexpr uint32_t transition=0x8015E9C5;
 // The menu counts as open while its step ran this recently.
