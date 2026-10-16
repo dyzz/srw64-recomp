@@ -40,6 +40,8 @@ public:
     // The image is the VI origin; the target that holds it is found from its address.
     // Returns false if the game has drawn no such picture yet.
     bool present(uint32_t origin, int x, int y, int width, int height);
+    // The colour image a VI origin shows, 0 if none has been drawn.
+    uint32_t image_at(uint32_t origin) const;
     // Every render target black again (a replay's jump between frames apart).
     void clear_targets();
     // Free the textures and targets no frame has used for `frames` frames.

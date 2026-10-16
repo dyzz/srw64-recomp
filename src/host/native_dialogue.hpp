@@ -127,4 +127,8 @@ ReadingControls reading_controls();
 void gpu_init(plume::RenderInterface*, plume::RenderDevice*, const std::filesystem::path&);
 void gpu_draw(plume::RenderCommandList*, plume::RenderFramebuffer*, uint64_t workload);
 void gpu_shutdown();
+// The same on the GL renderer (dialogue_gl.cpp), into the bound window framebuffer of
+// `width` x `height` pixels; the graphics thread, with the GL context current.
+void gl_draw(uint64_t workload, uint32_t width, uint32_t height);
+void gl_shutdown();
 }

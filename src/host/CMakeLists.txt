@@ -255,7 +255,7 @@ if(SRW64_ENABLE_RT64)
         target_sources(${SRW64_HOST_TARGET} PRIVATE game_hooks.cpp)
         # The PS Vita's GL renderer, chosen at run time with SRW64_RENDERER=gl (graphics.cpp).
         if(OpenGL_FOUND)
-            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp")
+            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" dialogue_gl.cpp)
             target_compile_definitions(${SRW64_HOST_TARGET} PRIVATE SRW64_GL_RENDERER)
             target_link_libraries(${SRW64_HOST_TARGET} PRIVATE OpenGL::GL)
         endif()

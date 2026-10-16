@@ -75,6 +75,7 @@ namespace RT64 { extern bool AndroidGpuDriverTooOld; }
 #include <SDL_vulkan.h>
 #endif
 #include <array>
+#include <map>
 #include <atomic>
 #include <cstring>
 #include <ctime>
@@ -973,6 +974,8 @@ public:
         interpreter->run(rdram, start, frame, native_text ? display_copy.data() : nullptr, native_text ? task->t.data_size : 0);
         renderer->draw(frame);
         renderer->collect();
+        // The workload whose overlays go with this colour image when the VI shows it.
+        image_workloads[frame.color_image] = workload;
     }
     void send_dummy_workload(uint32_t) override {}
     void update_screen() override {
@@ -987,6 +990,10 @@ public:
         const int picture_width = std::min(width, height * 4 / 3), picture_height = picture_width * 3 / 4;
         const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
         renderer->present(origin, (width - picture_width) / 2, (height - picture_height) / 2, picture_width, picture_height);
+#ifdef SRW64_NATIVE_DIALOGUE
+        const auto shown = image_workloads.find(renderer->image_at(origin));
+        if (shown != image_workloads.end()) srw64::dialogue::gl_draw(shown->second, uint32_t(width), uint32_t(height));
+#endif
         const uint64_t frame_number = ++presented_frames;
         srw64::frame_rate::present_sent();
         if (const auto shot = srw64::debug::screenshots().take()) {
@@ -1003,7 +1010,14 @@ public:
         }
         SDL_GL_SwapWindow(window);
     }
-    void shutdown() override { srw64::gbi_stats::flush(); renderer.reset(); interpreter.reset(); }
+    void shutdown() override {
+        srw64::gbi_stats::flush();
+#ifdef SRW64_NATIVE_DIALOGUE
+        srw64::dialogue::gl_shutdown();
+#endif
+        renderer.reset();
+        interpreter.reset();
+    }
     uint32_t get_display_framerate() const override { return 60; }
     float get_resolution_scale() const override { return 1.0f; }
 private:
@@ -1013,6 +1027,7 @@ private:
     srw64::n64gl::Frame frame;
     std::vector<uint8_t> display_copy;
     uint64_t workload = 0;
+    std::map<uint32_t, uint64_t> image_workloads;
 };
 }  // namespace
 #endif
