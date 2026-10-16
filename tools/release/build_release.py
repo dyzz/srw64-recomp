@@ -56,11 +56,35 @@ PACKAGE_ROWS = {
     "android": "应用本体（试验）。arm64，Android 9 起，Vulkan 1.1。在设备上安装 APK，首次启动时选择 ROM；"
                "HD 包下载后用 Marchwind64 打开 zip 即可导入。",
 }
-PACKAGE_EN = {"macos": "is the macOS app (Apple Silicon, macOS 14 or later)",
-              "linux": "the Linux x64 / Steam Deck build (glibc 2.35+, Vulkan; run `marchwind64.sh`, see README.txt)",
-              "windows": "the Windows x64 build (Windows 10 2004 / 11; put the ROM next to `Marchwind64.cmd` as `rom.z64` and run it)",
-              "android": "the experimental Android build (arm64, Android 9+, Vulkan 1.1; install the APK and choose the ROM on first "
-                         "launch, open the HD zip with Marchwind64 to import it)"}
+PACKAGE_EN = {
+    "macos": "The app. Apple Silicon, macOS 14 or later. Choose your ROM on first launch.",
+    "linux": "The app. Linux x64 (Steam Deck too), glibc 2.35 or later, Vulkan. Extract and run `marchwind64.sh`; "
+             "put the ROM at `~/.local/share/srw64-recomp/rom.z64` or next to `marchwind64.sh`. On Steam Deck, "
+             "`add-to-steam.sh` adds it to Steam; see README.txt inside.",
+    "windows": "The app. Windows 10 (2004) / 11, x64, D3D12 or Vulkan. Extract, name the ROM `rom.z64` and put it next to "
+               "`Marchwind64.cmd` (or at `%LOCALAPPDATA%\\SRW64Recomp\\rom.z64`), then double-click `Marchwind64.cmd`.",
+    "android": "The app (experimental). arm64, Android 9 or later, Vulkan 1.1. Install the APK and choose the ROM on first "
+               "launch; open the downloaded HD zip with Marchwind64 to import it.",
+}
+PLATFORM_OF = lambda name: next(p for p in ("macos", "linux", "windows", "android") if p in name)  # noqa: E731
+
+
+def render_notes(template: str, version: str, commit: str, packages: list[str], artifacts: dict, hd: dict) -> str:
+    """release-notes.md from its template: the packages (by name, in order), their sizes and checksums, and the
+    HD pack, a direct link to its own release's zip whether or not this release made it (never attached twice)."""
+    mib = lambda size: f"{size / 1048576:.0f} MB"  # noqa: E731
+    rows = lambda table: "\n".join(f"| `{name}` | {mib(artifacts[name]['bytes'])} | {table[PLATFORM_OF(name)]} |"  # noqa: E731
+                                    for name in packages)
+    checksums = [f"{artifacts[name]['sha256']}  {name}" for name in packages]
+    if hd.get("sha256"):
+        checksums.append(f"{hd['sha256']}  {hd['name']}")
+    changed = hd.get("changed", False)
+    return template.format(
+        version=version, tag=f"v{version}", commit=commit, short=commit[:7],
+        hd_version=hd["version"], hd_url=hd["github"], hd_download=hd["url"], hd_name=hd["name"], hd_size=mib(hd["bytes"]),
+        hd_status="这是新版 HD 包。" if changed else "HD 包没有变化，已经装了的不用重新下载。",
+        hd_status_en="This is a new HD pack." if changed else "It has not changed: if you have it, there is nothing to download.",
+        package_rows=rows(PACKAGE_ROWS), package_rows_en=rows(PACKAGE_EN), checksums="\n".join(checksums))
 
 
 def sha256(path: Path) -> str:
@@ -114,7 +138,16 @@ def main() -> int:
                         help="another platform's package built elsewhere: linux=…, windows=… or android=… "
                              "(the build workflow); copied in as Marchwind64-<version>-<platform> and "
                              "listed in release.json and the notes")
+    parser.add_argument("--render-notes", type=Path, metavar="DIR",
+                        help="only rewrite DIR/release-notes.md from DIR/release.json and the template in this checkout "
+                             "(for `gh release edit --notes-file`), building nothing")
     args = parser.parse_args()
+    if args.render_notes:
+        record = json.loads((args.render_notes / "release.json").read_text())
+        (args.render_notes / "release-notes.md").write_text(render_notes(
+            NOTES.read_text(), record["version"], record["commit"], list(record["artifacts"]), record["artifacts"], record["hd"]))
+        print(args.render_notes / "release-notes.md")
+        return 0
 
     commit = subprocess.check_output(["git", "rev-parse", "--verify", f"{args.commit}^{{commit}}"], cwd=ROOT, text=True).strip()
     output = (args.output or ROOT / f"build/release/{args.version}-{commit[:7]}").absolute()
@@ -236,17 +269,8 @@ def main() -> int:
     (output / "release.json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
     notes = source / NOTES.relative_to(ROOT)
     if notes.is_file():
-        mib = {name: f"{row['bytes'] / 1048576:.0f} MB" for name, row in artifacts.items()}
-        rows = "\n".join(f"| `{path.name}` | {mib[path.name]} | {PACKAGE_ROWS[platform]} |" for platform, path in packages)
-        checksums = "\n".join(f"{row['sha256']}  {name}" for name, row in artifacts.items())
-        text = notes.read_text().format(version=args.version, tag=record["tag"], commit=commit, short=commit[:7],
-                                        app_zip=app_zip.name, hd_version=hd["version"], hd_url=hd["github"],
-                                        hd_status="本次随应用发布了新的 HD 包。" if hd_zip else "这次 HD 包没有变化，已经装了的不用重新下载。",
-                                        hd_status_en="This release comes with a new HD pack." if hd_zip else
-                                        "The HD pack has not changed: if you have it, there is nothing to download.",
-                                        package_rows=rows, checksums=checksums,
-                                        packages_en="; ".join(f"`{path.name}` {PACKAGE_EN[platform]}" for platform, path in packages))
-        (output / "release-notes.md").write_text(text)
+        (output / "release-notes.md").write_text(render_notes(notes.read_text(), args.version, commit,
+                                                              [path.name for _, path in packages], artifacts, hd))
     hd_notes = source / HD_NOTES.relative_to(ROOT)
     if hd_zip and hd_notes.is_file():
         text = hd_notes.read_text().format(hd_version=hd["version"], hd_zip=hd_zip.name, hd_size=f"{hd['bytes'] / 1048576:.0f} MB",

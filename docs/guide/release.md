@@ -79,6 +79,8 @@ Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检�
 ## 发布
 
 确认 `release-notes.md` 与两个文件后，执行 `release.json` 里 `publish` 记下的 `gh release create` 命令。
+发布说明英文在前、中文在后（2026-10-16 用户定）；HD 包不重复上传，说明顶部和两张下载表都直接链到它自己发布页上的 zip（`{hd_download}`），校验里也列出它。
+发布后要改说明：改模板，`build_release.py --render-notes build/release/<目录>` 按该目录的 `release.json` 重新生成 `release-notes.md`（不构建），再 `gh release edit v<版本> --notes-file …`。
 标签用 `--target` 钉在构建时的提交上。GitHub 单个附件上限 2 GB，两个文件都远小于此。
 
 ## HD 包的内容与约束
