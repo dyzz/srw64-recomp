@@ -97,8 +97,10 @@ public:
     ~Interpreter();
     // One graphics task: RDRAM as the recompiled runtime keeps it (8 MiB of 32-bit words in
     // host byte order), the display list at the physical address `start`. The RSP and RDP
-    // state carries over from task to task, as on the console.
-    void run(const uint8_t* rdram, uint32_t start, Frame& out);
+    // state carries over from task to task, as on the console. With `list`, the top-level
+    // list's `size` bytes are read from there instead (indexed by physical address, as the
+    // host's edited copy is: the native dialogue takes the original text out of it).
+    void run(const uint8_t* rdram, uint32_t start, Frame& out, const uint8_t* list = nullptr, uint32_t size = 0);
     // The host's tagged draws (Command::native); none by default.
     void classify(Classify hook);
     // Print the texture loads and tile settings as they run (a development aid), or stop.
