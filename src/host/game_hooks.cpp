@@ -24,6 +24,7 @@
 #include "game_speed.hpp"
 
 SRW64GameHooks srw64_game_hooks;
+bool srw64_sound_effects_muted{};
 namespace rules=srw64::rules;
 namespace upgrades=srw64::upgrades;
 namespace refund=srw64::refund;
@@ -524,7 +525,7 @@ void resident_func_8008FED4(uint8_t* rdram, recomp_context* ctx) {
 void resident_func_8007E8A8(uint8_t* rdram, recomp_context* ctx) {
     // A sound effect (a0; -1 stops them). The short skip is silent, as the commands it
     // runs in one frame would otherwise sound together; the music still changes.
-    if (srw64::script_skip::active() && int32_t(ctx->r4) != -1) return;
+    if ((srw64::script_skip::active() || srw64_sound_effects_muted) && int32_t(ctx->r4) != -1) return;
     srw64_original_play_sound(rdram, ctx);
 }
 void resident_func_8009DE7C(uint8_t* rdram, recomp_context* ctx) {

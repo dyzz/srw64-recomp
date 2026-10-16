@@ -82,6 +82,9 @@ struct Reader {
     uint16_t previous{};
     uint16_t history_held{}; // reading chords held in history stay blocked until released
     bool history_open{}, skipping{}, pending{}, active{}, auto_read{}, fast{};
+    // The last update's A press turned a page or confirmed the record (the host plays the
+    // original's confirm sound for it; the As it sends the original are silent).
+    bool pressed_turn{};
     Layout layout;
     std::deque<Entry> history;
     static constexpr size_t history_limit=256;
@@ -243,6 +246,7 @@ struct Reader {
     // then sends the original's remaining pages and <END>. No changes to guest
     // pointers, event flags, or game time occur here.
     bool update(uint16_t buttons, uint64_t now) {
+        pressed_turn=false;
         history_held &= buttons;
         // Fast/skip are reading actions, never history-close shortcuts. Remember
         // their held keys through closing, so they cannot resume on the next tick.
@@ -316,7 +320,7 @@ struct Reader {
         const bool advance = ((pressed&A) && !(buttons&R)) || fast_turn || skipping ||
             (auto_read && visible==p.end && now-page_started>=timing.total_vis());
         if(!advance)return false;
-        last_fast=now;
+        last_fast=now;pressed_turn=(pressed&A) && !(buttons&R);
         // A confirmed page remains readable in history even if its typewriter
         // animation was interrupted. Skip records the whole record: the
         // original shows every page of it before its <END>.

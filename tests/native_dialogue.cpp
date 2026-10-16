@@ -36,13 +36,15 @@ int main() {
     for(size_t i=0;i<pages;++i) {
         const auto result=reader.update(Reader::A,20+i*4);
         assert(result==(i+1==pages));
-        assert(!reader.update(Reader::A,21+i*4));
-        assert(!reader.update(0,22+i*4));
+        assert(reader.pressed_turn);  // each press sounds once (native_dialogue.cpp)
+        assert(!reader.update(Reader::A,21+i*4) && !reader.pressed_turn);
+        assert(!reader.update(0,22+i*4) && !reader.pressed_turn);
     }
     assert(reader.pending);
     assert(reader.history.back().complete);
     reader.history.back().localized={{"ja",u"完了した会話"},{"zh-Hans",text}};
     assert(!reader.update(Reader::A,100)); // Waiting for guest acknowledgement.
+    assert(!reader.pressed_turn);
     reader.begin(2,17412,u"劳伦斯",typeset(u"下一句。",13),101);
     reader.history.back().localized={{"ja",u"まだ読んでいない長い会話"},{"zh-Hans",u"下一句。"}};
     reader.history.back().text=u"下";
@@ -102,7 +104,7 @@ int main() {
         for(unsigned vi=31;vi<60;++vi)paused.update(Reader::R|Reader::A,vi);
         assert(!paused.fast && paused.page==page);
         paused.update(0,60);paused.update(Reader::R|Reader::A,61);
-        assert(paused.fast && paused.page==page+1);
+        assert(paused.fast && paused.page==page+1 && !paused.pressed_turn);  // fast-forward is silent
         paused.update(Reader::L,62);assert(paused.history_open);
         paused.update(Reader::R|Reader::START,63);
         assert(paused.history_open && !paused.skipping);

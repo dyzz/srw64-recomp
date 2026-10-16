@@ -2,6 +2,7 @@
 #include "battle_hud.hpp"
 #include "native_name_entry.hpp"
 #include "game_hooks.hpp"
+#include "funcs.h"
 #include "script_skip.hpp"
 #include "state_probe.hpp"
 #include "presentation_settings.hpp"
@@ -495,6 +496,15 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         record("auto",{{"automatic",reader.auto_read},{"level",reader.speed}});
     }
     read_keys();
+    // The original sounds 0xB7 for every A it takes in an A-wait box (modes 0/1, 8008D924), but
+    // the As below follow its pages, not the player's: a record whose first page here reaches
+    // past a <STOP> sounded again right after the last record's, unpressed, and a page turned
+    // inside one of its pages was silent (a player, 0.4.8). One sound per press instead.
+    if(reader.pressed_turn)
+        for(unsigned i=0;i<2;++i)
+            if(current[i].active && current[i].event==reader.event && byte(ram,body_base+i*stride+0x20E)<2) {
+                auto call=*ctx;call.r4=0xB7;resident_func_8007E8A8(ram,&call);break;
+            }
     if(reader.skipping && !was_skip) {
         if(reading_owner) {skip_owner=reading_owner;script_skip::start(skip_owner);record("skip_start",{{"owner",skip_owner}});}
         else {reader.skipping=false;record("skip_unavailable");}
@@ -540,7 +550,7 @@ bool step(uint8_t* ram,recomp_context* ctx) {
                 uint16_t value=advance?0:std::max<uint16_t>(timers[i],2);std::memcpy(ram+((p+0x210)^2),&value,2);
             }
         }
-        srw64_original_dialogue_step(ram,ctx);
+        srw64_sound_effects_muted=true;srw64_original_dialogue_step(ram,ctx);srw64_sound_effects_muted=false;
         for(unsigned i=0;i<2;++i) {
             const auto p=body_base+i*stride;
             if(current[i].active && byte(ram,p+0x20E)>=2 && !advance)

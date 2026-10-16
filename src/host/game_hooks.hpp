@@ -157,4 +157,7 @@ enum SRW64TitleScreen : unsigned {
     srw64_title_sound, srw64_title_karaoke, srw64_title_sound_exit, srw64_title_karaoke_exit, srw64_title_list_draw,
 };
 extern SRW64GameHooks srw64_game_hooks;
+// The sound effects 8007E8A8 would play are dropped while set (the native dialogue reader
+// runs 8008D748 with an A it sends itself, and plays the confirm sound for the player's press).
+extern bool srw64_sound_effects_muted;
 extern "C" void srw64_original_dialogue_step(uint8_t*, recomp_context*);
