@@ -15,6 +15,8 @@ tables the data page quotes.
                  ending, flow)
   --binary PATH  a built host (build/recomp/gfx-build/srw64-gfx-host); otherwise the launch
                  builds one
+  --dump         also dump frames for the Vita renderer's replay (gbi_stats.hpp, SRW64_GL_DUMP):
+                 build/recomp/gl-dump/<scene>/<n>.{rdram,json,rt64.png}
 """
 import argparse
 import json
@@ -34,6 +36,11 @@ SCENES = ("title", "start", "map", "battle", "intermission", "worldmap", "act", 
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument("--scenes", default=",".join(SCENES))
 parser.add_argument("--binary", default=str(ROOT / "build/recomp/gfx-build/srw64-gfx-host"))
+parser.add_argument("--dump", action="store_true")
+parser.add_argument("--dump-every", type=int, default=45)
+parser.add_argument("--dump-max", type=int, default=30)
+parser.add_argument("--dump-run", type=int, default=1, help="lists in a row per dump (the frame-buffer effects read the last frame)")
+parser.add_argument("--dump-root", default=str(ROOT / "build/recomp/gl-dump"))
 args = parser.parse_args()
 binary = args.binary if Path(args.binary).exists() else None
 OUTPUT.mkdir(parents=True, exist_ok=True)
@@ -44,8 +51,13 @@ def launch(scene: str, **kwargs) -> Session:
     stats = OUTPUT / f"{scene}.json"
     if stats.exists():
         stats.unlink()
-    s = Session.launch(language="zh-Hans", images="original", binary=binary,
-                       env={"SRW64_GBI_STATS": str(stats)}, **kwargs)
+    env = {"SRW64_GBI_STATS": str(stats)}
+    if args.dump:
+        folder = Path(args.dump_root) / scene
+        shutil.rmtree(folder, ignore_errors=True)
+        env.update(SRW64_GL_DUMP=str(folder), SRW64_GL_DUMP_EVERY=str(args.dump_every), SRW64_GL_DUMP_MAX=str(args.dump_max),
+                   SRW64_GL_DUMP_RUN=str(args.dump_run))
+    s = Session.launch(language="zh-Hans", images="original", binary=binary, env=env, **kwargs)
     print("RUN", scene, s.run, flush=True)
     return s
 
@@ -73,6 +85,9 @@ def title_menu(s, timeout=60):
 
 def original_screens(s):
     """The original screens wherever a native page would replace them."""
+    if args.dump:   # RT64's picture 4:3 and the window too, so the replay compares whole
+        s.client.call("settings", aspect="4:3")
+        s.client.call("window", width=1280, height=960)
     for name in ("title_ui", "intermission_ui", "battle_ui", "name_entry_ui"):
         try:
             s.client.call("settings", **{name: "original"})

@@ -299,4 +299,57 @@ void flush() {
     std::lock_guard lock(s.mutex);
     write(s);
 }
+
+namespace {
+struct Dumps {
+    std::mutex mutex;
+    std::filesystem::path folder;
+    uint32_t every = 30, max = 40, run = 1, seen = 0, written = 0;
+    std::map<uint64_t, std::string> shots;   // workload -> PNG path
+};
+Dumps* dumps() {
+    static Dumps* value = []() -> Dumps* {
+        const char* debug = std::getenv("SRW64_DEBUG");
+        const char* folder = std::getenv("SRW64_GL_DUMP");
+        if (!debug || std::string(debug) != "1" || !folder || !*folder) return nullptr;
+        auto* d = new Dumps;
+        d->folder = folder;
+        if (const char* every = std::getenv("SRW64_GL_DUMP_EVERY")) d->every = std::max(1, std::atoi(every));
+        if (const char* max = std::getenv("SRW64_GL_DUMP_MAX")) d->max = std::max(0, std::atoi(max));
+        if (const char* run = std::getenv("SRW64_GL_DUMP_RUN")) d->run = std::max(1, std::atoi(run));
+        std::error_code error;
+        std::filesystem::create_directories(d->folder, error);
+        return d;
+    }();
+    return value;
+}
+}  // namespace
+
+void dump(const uint8_t* list, const uint8_t* rdram, uint32_t start, uint32_t size, uint64_t workload) {
+    Dumps* d = dumps();
+    if (!d) return;
+    std::lock_guard lock(d->mutex);
+    if (d->seen++ % d->every >= d->run || d->written >= d->max) return;
+    constexpr uint32_t ram = 8 * 1024 * 1024;
+    char name[16];
+    std::snprintf(name, sizeof name, "%04u", d->written++);
+    std::vector<uint8_t> image(rdram, rdram + ram);
+    const uint32_t top = start & 0x1FFFFFFF;
+    if (list != rdram && top < ram) std::memcpy(image.data() + top, list + top, std::min(size, ram - top));
+    std::ofstream(d->folder / (std::string(name) + ".rdram"), std::ios::binary).write(reinterpret_cast<const char*>(image.data()), image.size());
+    const nlohmann::json meta = {{"schema", "srw64.gl-dump.v1"}, {"start", start}, {"size", size}, {"workload", workload}, {"list", d->seen - 1}};
+    std::ofstream(d->folder / (std::string(name) + ".json")) << meta.dump(1) << '\n';
+    d->shots[workload] = (d->folder / (std::string(name) + ".rt64.png")).string();
+}
+
+std::string take_shot(uint64_t workload) {
+    Dumps* d = dumps();
+    if (!d) return {};
+    std::lock_guard lock(d->mutex);
+    const auto found = d->shots.find(workload);
+    if (found == d->shots.end()) return {};
+    auto path = std::move(found->second);
+    d->shots.erase(found);
+    return path;
+}
 }  // namespace srw64::gbi_stats

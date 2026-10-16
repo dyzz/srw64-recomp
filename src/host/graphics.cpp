@@ -306,7 +306,12 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     const bool recording = srw64::debug::recording().active();
     // The player's screenshot key (F12, Print Screen) takes this one too, the window as shown.
     const bool player_shot = player_shot_requested.exchange(false);
-    if (!trace && !debug_shot && !recording && !player_shot) return;
+    // The Vita renderer's reference picture of a dumped list (gbi_stats.hpp).
+    std::string dump_shot;
+#ifdef SRW64_NATIVE_DIALOGUE
+    dump_shot = srw64::gbi_stats::take_shot(workload);
+#endif
+    if (!trace && !debug_shot && !recording && !player_shot && dump_shot.empty()) return;
     nlohmann::json dialogue_trace=nullptr;
 #ifdef SRW64_NATIVE_DIALOGUE
     if(trace)if(auto snapshot=srw64::dialogue::presented_frame(workload)) {
@@ -370,7 +375,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     }
     const bool interactive = std::getenv("SRW64_INTERACTIVE") && std::string(std::getenv("SRW64_INTERACTIVE")) == "1";
     const auto path = capture_directory / (interactive ? "present-latest.png" : "present-" + std::to_string(frame) + ".png");
-    srw64_after_gpu(list, [buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, dialogue_trace, debug_shot, recording, player_shot](bool completed) {
+    srw64_after_gpu(list, [buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, dialogue_trace, debug_shot, recording, player_shot, dump_shot](bool completed) {
         if (!completed) {
             fprintf(stderr, "SRW64_CAPTURE_GPU_FAILED\n");
             if (debug_shot) srw64::debug::screenshots().finish(debug_shot->id, {{"error", "GPU capture failed"}});
@@ -414,6 +419,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
                 : nlohmann::json({{"error", "cannot write " + debug_shot->path.string()}}));
         }
         if (player_shot) save_player_screenshot(rgba.data(), width, height);
+        if (!dump_shot.empty()) stbi_write_png(dump_shot.c_str(), width, height, 4, rgba.data(), width * 4);
         if(!anomaly)return;
         if (!stbi_write_png(path.string().c_str(), width, height, 4, rgba.data(), width * 4)) std::abort();
         auto metadata_path = path;
@@ -737,6 +743,7 @@ public:
         // the game thread, told the RSP is done, may already be rewriting the sub-lists
         // it keeps at fixed addresses.
         srw64::gbi_stats::record(native_text ? display_copy.data() : app->core.RDRAM, app->core.RDRAM, start, task->t.data_size);
+        srw64::gbi_stats::dump(native_text ? display_copy.data() : app->core.RDRAM, app->core.RDRAM, start, task->t.data_size, app->state->workloadId+1);
         app->processDisplayLists(native_text ? display_copy.data() : app->core.RDRAM, start, 0, true);
 #ifdef __ANDROID__
         const auto t3 = Timing::clock::now();
