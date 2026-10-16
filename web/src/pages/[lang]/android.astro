@@ -8,9 +8,9 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const t = {
   lead: {
-    zh: '我在真机上测过的芯片和它们在当前版本的情况。没列出的芯片不代表不能玩，只是还没测过。',
-    en: 'The chips I have run on real phones, and how they do in the current version. A chip that is not listed has not been tested yet; that does not mean it will not work.',
-    ja: '実機で確認したチップと、現在のバージョンでの状況です。載っていないチップは未確認というだけで、動かないとは限りません。',
+    zh: '下面这些芯片已在真机上确认能玩（当前版本）。没列出的芯片不代表不能玩，只是还没确认。',
+    en: 'These chips are confirmed working on real phones in the current version. A chip that is not listed has not been confirmed yet; that does not mean it will not work.',
+    ja: '以下のチップは、現在のバージョンで実機での動作を確認済みです。載っていないチップは未確認というだけで、動かないとは限りません。',
   },
   asOf: { zh: `按 ${asOf} 整理，更新于 ${updated}`, en: `As of ${asOf}, checked ${updated}`, ja: `${asOf} 時点、${updated} 更新` },
   needs: { zh: '最低要求：arm64，Android 9 及以上，支持 Vulkan 1.1。', en: 'Requires an arm64 device with Android 9 or later and Vulkan 1.1.', ja: '動作条件：arm64、Android 9 以降、Vulkan 1.1 対応。' },
@@ -21,7 +21,7 @@ const t = {
   },
   chip: { zh: '芯片', en: 'Chip', ja: 'チップ' },
   phones: { zh: '同芯片的常见机型', en: 'Phones with this chip', ja: '同じチップの主な端末' },
-  tested: { zh: '实测机型', en: 'Tested on', ja: '確認した端末' },
+  tested: { zh: '确认机型', en: 'Confirmed on', ja: '確認した端末' },
   state: { zh: '状态', en: 'Status', ja: '状況' },
   unconfirmed: { zh: '待确认的反馈', en: 'Reports not yet confirmed', ja: '未確認の報告' },
   issues: { zh: '已知问题', en: 'Known issues', ja: '既知の問題' },
@@ -34,9 +34,9 @@ const t = {
 };
 const VENDOR: Record<Chip['vendor'], string> = { qualcomm: 'Qualcomm', mediatek: 'MediaTek', samsung: 'Samsung', google: 'Google' };
 const STATUS: Record<Status, Record<Lang, string>> = {
-  ok: { zh: '正常', en: 'Works', ja: '動作' },
-  slow: { zh: '能玩但慢', en: 'Slow', ja: '低速' },
-  issue: { zh: '有已知问题', en: 'Known issue', ja: '既知の問題あり' },
+  ok: { zh: '确认可用', en: 'Confirmed working', ja: '動作確認済み' },
+  slow: { zh: '可用但慢', en: 'Works, but slow', ja: '動作（低速）' },
+  issue: { zh: '可用，有已知问题', en: 'Works, with a known issue', ja: '動作（既知の問題あり）' },
 };
 const DEPTH: Record<Depth, Record<Lang, string>> = {
   title: { zh: '测到标题和演示战斗', en: 'Title and demo battle', ja: 'タイトルとデモ戦闘まで' },
