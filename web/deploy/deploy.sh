@@ -13,9 +13,7 @@
 # The exports read the ROM-derived assets, so this runs on the machine that has them.
 # Visitor statistics (Umami, set up apart, docs in web/README.md): the public website
 # ID comes from PUBLIC_UMAMI_WEBSITE_ID or ~/.config/srw64/site-analytics-id; without
-# one the pages send nothing. The footer's statistics link comes from
-# PUBLIC_STATS_SHARE_URL or ~/.config/srw64/site-analytics-share-combined; without one
-# it is left out.
+# one the pages send nothing.
 #
 # The origin's host name comes from SRW64_DEPLOY_HOST or ~/.config/srw64/site-deploy-host
 # (kept out of the repository). Each deploy is /srv/srw64/releases/<id> (unchanged files
@@ -80,9 +78,6 @@ fi
 
 if [ -z "${PUBLIC_UMAMI_WEBSITE_ID:-}" ] && [ -s ~/.config/srw64/site-analytics-id ]; then
   export PUBLIC_UMAMI_WEBSITE_ID=$(cat ~/.config/srw64/site-analytics-id)
-fi
-if [ -z "${PUBLIC_STATS_SHARE_URL:-}" ] && [ -s ~/.config/srw64/site-analytics-share-combined ]; then
-  export PUBLIC_STATS_SHARE_URL=$(cat ~/.config/srw64/site-analytics-share-combined)
 fi
 (cd "$WEB" && npm run build --silent)
 ID=$(date +%Y%m%d-%H%M%S)-$(git -C "$ROOT" rev-parse --short HEAD)$(git -C "$ROOT" diff --quiet -- web content || echo -dirty)

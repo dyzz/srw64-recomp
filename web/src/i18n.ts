@@ -31,6 +31,15 @@ export const UI = {
     library: { zh: '图鉴', en: 'Library', ja: '図鑑' },
     reviews: { zh: '意见', en: 'Suggestions', ja: '意見' },
     mods: { zh: 'MOD', en: 'Mods', ja: 'MOD' },
+    // The sister project, the Chinese translation of Super Robot Wars Z (PS2).
+    srwz: {
+      label: { zh: '机战Z 汉化', en: 'SRW Z (Chinese)', ja: 'スパロボZ 中文化' },
+      title: {
+        zh: '姊妹项目：PS2《超级机器人大战Z》中文化补丁与剧情审阅站',
+        en: 'Sister project: the Chinese translation of Super Robot Wars Z (PS2), with its story review site',
+        ja: '姉妹プロジェクト：PS2『スーパーロボット大戦Z』中国語化パッチとシナリオ校閲サイト',
+      },
+    },
   },
   // The project is MARCHWIND 64; the game it recompiles is named in descriptions.
   brand: 'MARCHWIND 64',
@@ -51,7 +60,6 @@ export const UI = {
       ja: '非公式のファンプロジェクトです。バンダイナムコ、バンプレスト、各作品の権利者とは提携していません。原作のキャラクター・アート・商標は各権利者に帰属します。当サイトでは ROM を配布していません。',
     },
     source: { zh: '源代码', en: 'Source code', ja: 'ソースコード' },
-    stats: { zh: '访问统计', en: 'Site statistics', ja: 'アクセス統計' },
   },
   lang: { zh: '语言', en: 'Language', ja: '言語' },
   readMore: { zh: '阅读全文', en: 'Read more', ja: '続きを読む' },

@@ -3,11 +3,6 @@ import { TITLE_LOGO, UI, type Lang } from '../i18n';
 import release from '../data/release.json';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
-// The read-only statistics page (Umami share). Set at deploy from ~/.config; unset hides the link.
-const statsUrl = import.meta.env.PUBLIC_STATS_SHARE_URL?.trim();
-if (statsUrl && !/^https:\/\/srw64\.dreamquest\.club\/share\/[A-Za-z0-9]+$/.test(statsUrl)) {
-  throw new Error('PUBLIC_STATS_SHARE_URL must be a https://srw64.dreamquest.club/share/<code> link');
-}
 ---
 <footer class="site-footer">
   <div class="wrap grid">
@@ -21,7 +16,6 @@ if (statsUrl && !/^https:\/\/srw64\.dreamquest\.club\/share\/[A-Za-z0-9]+$/.test
       <li><a href={`/${lang}/faq/`}>{UI.nav.faq[lang]}</a></li>
       <li><a href={`/${lang}/docs/`}>{UI.nav.docs[lang]}</a></li>
       <li><a href="/latest.json">latest.json</a></li>
-      {statsUrl && <li><a href={statsUrl} target="_blank" rel="noopener">{UI.footer.stats[lang]}</a></li>}
     </ul>
   </div>
 </footer>

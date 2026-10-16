@@ -23,6 +23,7 @@ const items = [
     </a>
     <nav class="nav" aria-label="Main">
       {items.map((it) => <a href={it.href} aria-current={it.match(path) ? 'page' : undefined}>{it.label}</a>)}
+      <a class="sister" href="https://srwz.dreamquest.club/" target="_blank" rel="noopener" title={UI.nav.srwz.title[lang]}>{UI.nav.srwz.label[lang]}</a>
     </nav>
     <div class="tools">
       {review && canReview(lang) && <div class="hdr-id" data-identity-chip data-lang={lang}></div>}
@@ -67,6 +68,9 @@ const items = [
   .nav a:hover { color: var(--text); }
   .nav a[aria-current='page'] { color: var(--text); }
   .nav a[aria-current='page']::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; background: var(--gold); }
+  .nav a.sister { color: var(--gold); }
+  .nav a.sister::after { content: ' ↗'; font-size: 12px; }
+  .nav a.sister:hover { color: var(--text); }
   .tools { display: flex; align-items: center; gap: 6px; }
   .gh { display: grid; place-items: center; width: 38px; height: 38px; color: var(--muted); }
   .gh:hover { color: var(--text); }
