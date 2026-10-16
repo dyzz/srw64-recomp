@@ -20,7 +20,7 @@
   2. 运行库 32 位补丁与交叉编译；
   3. Vita 平台层：打包、输入、存档目录、内存与着色器预热、时钟策略；
   4. 宽屏（扩展 GBI 的五条指令要在新解释器里实现）与触屏。
-- **前提：** 一台破解的 Vita（HENkaku/h-encore），并按 vitaGL 要求提取 `libshacccg.suprx`。没有实机就只能走到 Vita3K 模拟器，而社区记录里有一整类 bug 只在实机出现。
+- **前提：** 一台破解的 Vita，并按 vitaGL 要求提取 `libshacccg.suprx`（两者已备好，见「待定」里的实机一条）。没有实机就只能走到 Vita3K 模拟器，而社区记录里有一整类 bug 只在实机出现。
 
 ## 目标与范围
 
@@ -258,7 +258,7 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
 
 ## 待定
 
-- **实机。** 已有破解的 Vita（3.68 + h-encore，每次重启要先跑 h-encore；Ensō 只支持 3.60/3.65，不打算降级）。`libshacccg.suprx` 已导出并放进 Vita3K。实机已装 vitacompanion 1.08（2026-10-16，模块在 `ur0:tai`，登记在 `ux0:tai/config.txt`，原配置备份为 `config.txt.bak`）：重启并跑 h-encore 后（10-16 已验证）常驻 FTP（1337）与命令端口（1338：`launch`/`quit`/`reboot`/`press`/`promote` 等），V2 的装包、启动、按键可以全在 Mac 上脚本化。
+- **实机。** 已备好：破解的 Vita 已用 VitaDeploy 的“Quick 3.65 Install”换成 3.65 + Ensō 永久破解（2026-10-16），开机自动生效。`ur0:data/libshacccg.suprx` 已在机上，Vita3K 也放了一份。插件登记在 `ur0:tai/config.txt`：vitacompanion 1.08（常驻 FTP 1337 与命令端口 1338：`launch`/`quit`/`reboot`/`press`/`promote` 等，已验证）、PSVshell（帧率、CPU、内存显示与调频，测性能前要确认在默认频率档）、iTLS。V2 的装包、启动、按键、重启都能在 Mac 上脚本化。机上 Wi-Fi 实测约 1.1 MiB/s，日常只替换变动的 `eboot.bin`，大文件走 VitaShell 的 USB 模式。崩溃时系统在 `ux0:data` 写 `.psp2dmp`，到时在 Mac 上装 vita-parse-core 解析。
 - **Fast3D 还是自写。** 等 V0 的指令/组合器统计。若本作用到的组合器少于约 30 组、3D 只有世界地图与战斗地面，自写解释器反而小。
 - **ICU。** 交叉编译还是替换 10 处用法。
 - **现代页面默认开还是关。** RmlUi 在 444 MHz 上的布局开销未测；页面不脏时每帧只重绘，推断可以接受。V2 测后定。
