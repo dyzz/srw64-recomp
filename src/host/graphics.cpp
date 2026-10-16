@@ -49,6 +49,10 @@
 #include "ultramodern/ultramodern.hpp"
 #endif
 #include "librecomp/game.hpp"
+#ifdef SRW64_GL_RENDERER
+#include "../gl/display_list.hpp"
+#include "../gl/gl_renderer.hpp"
+#endif
 #include "rt64_render_hooks.h"
 #ifdef __APPLE__
 #include "plume_metal.h"
@@ -903,8 +907,102 @@ private:
 };
 }
 
+#ifdef SRW64_GL_RENDERER
+namespace {
+// The PS Vita's renderer on the desktop (docs/design/psv-port.md, V1): with
+// SRW64_RENDERER=gl the game's display lists go through src/gl's interpreter and an OpenGL
+// 2.1 context on the window instead of RT64. The host's own layers (dialogue text, pages,
+// window frames, HD art) are not drawn yet; the debug interface's screenshots are.
+SDL_GLContext gl_context = nullptr;
+bool gl_mode() {
+    static const bool value = std::getenv("SRW64_RENDERER") && std::string(std::getenv("SRW64_RENDERER")) == "gl";
+    return value;
+}
+
+class GLRenderer final : public ultramodern::renderer::RendererContext {
+public:
+    explicit GLRenderer(uint8_t* rdram) : rdram(rdram) {
+        // The context was made on the window thread (srw64_create_window); it is this
+        // thread's from here on, the graphics thread's, which also presents.
+        if (SDL_GL_MakeCurrent(window, gl_context) != 0) graphics_failure(SDL_GetError());
+        SDL_GL_SetSwapInterval(0);
+        int scale = 3;
+        if (const char* value = std::getenv("SRW64_GL_SCALE")) scale = std::clamp(std::atoi(value), 1, 8);
+        renderer = std::make_unique<srw64::n64gl::Renderer>(srw64::n64gl::kPictureWidth * scale, srw64::n64gl::kPictureHeight * scale);
+        interpreter = std::make_unique<srw64::n64gl::Interpreter>([this](uint64_t key) { return renderer->known(key); });
+        // The host's tagged draws are its own to paint; until they are ported, nothing.
+        interpreter->classify([](uint32_t w0, uint32_t w1) { return (w0 >> 16) == 0x0053 ? (w1 | 1) : 0u; });
+        setup_result = ultramodern::renderer::SetupResult::Success;
+        chosen_api = ultramodern::renderer::GraphicsApi::Auto;
+        fprintf(stderr, "SRW64_GRAPHICS_API gl %s / %s scale=%d\n", (const char*)glGetString(GL_VERSION), (const char*)glGetString(GL_RENDERER), scale);
+    }
+    bool valid() override { return true; }
+    bool update_config(const ultramodern::renderer::GraphicsConfig&, const ultramodern::renderer::GraphicsConfig&) override { return false; }
+    void enable_instant_present() override {}
+    void send_dl(const OSTask* task) override {
+        srw64::frame_rate::list_sent();
+        const uint32_t start = task->t.data_ptr & 0x3FFFFFF;
+        bool native_text = false;
+#ifdef SRW64_NATIVE_DIALOGUE
+        ++workload;
+        auto native_frame = srw64::dialogue::take_frame(start, task->t.data_size, display_copy, rdram);
+        native_text = bool(native_frame);
+        srw64::dialogue::queue_frame(workload, native_frame);
+        srw64::gbi_stats::record(native_text ? display_copy.data() : rdram, rdram, start, task->t.data_size);
+#endif
+        frame.clear();
+        interpreter->run(rdram, start, frame, native_text ? display_copy.data() : nullptr, native_text ? task->t.data_size : 0);
+        renderer->draw(frame);
+        renderer->collect();
+    }
+    void send_dummy_workload(uint32_t) override {}
+    void update_screen() override {
+        int width = 0, height = 0;
+        SDL_GL_GetDrawableSize(window, &width, &height);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(0, 0, width, height);
+        glDisable(GL_SCISSOR_TEST);
+        glClearColor(0, 0, 0, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
+        // The 4:3 picture as large as the window allows, centred.
+        const int picture_width = std::min(width, height * 4 / 3), picture_height = picture_width * 3 / 4;
+        const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
+        renderer->present(origin, (width - picture_width) / 2, (height - picture_height) / 2, picture_width, picture_height);
+        const uint64_t frame_number = ++presented_frames;
+        srw64::frame_rate::present_sent();
+        if (const auto shot = srw64::debug::screenshots().take()) {
+            std::vector<uint8_t> pixels(size_t(width) * height * 4), rows(pixels.size());
+            glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
+            for (int y = 0; y < height; ++y)
+                std::memcpy(rows.data() + size_t(y) * width * 4, pixels.data() + size_t(height - 1 - y) * width * 4, size_t(width) * 4);
+            for (size_t i = 3; i < rows.size(); i += 4) rows[i] = 255;
+            const bool written = stbi_write_png(shot->path.string().c_str(), width, height, 4, rows.data(), width * 4);
+            srw64::debug::screenshots().finish(shot->id, written
+                ? nlohmann::json({{"path", shot->path.string()}, {"present", frame_number}, {"vi", srw64_current_vi()},
+                                  {"width", width}, {"height", height}, {"renderer", "gl"}})
+                : nlohmann::json({{"error", "cannot write " + shot->path.string()}}));
+        }
+        SDL_GL_SwapWindow(window);
+    }
+    void shutdown() override { srw64::gbi_stats::flush(); renderer.reset(); interpreter.reset(); }
+    uint32_t get_display_framerate() const override { return 60; }
+    float get_resolution_scale() const override { return 1.0f; }
+private:
+    uint8_t* rdram;
+    std::unique_ptr<srw64::n64gl::Renderer> renderer;
+    std::unique_ptr<srw64::n64gl::Interpreter> interpreter;
+    srw64::n64gl::Frame frame;
+    std::vector<uint8_t> display_copy;
+    uint64_t workload = 0;
+};
+}  // namespace
+#endif
+
 std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
     uint8_t* rdram, ultramodern::renderer::WindowHandle handle) {
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) return std::make_unique<GLRenderer>(rdram);
+#endif
     return std::make_unique<SRW64Renderer>(rdram, handle);
 }
 
@@ -942,9 +1040,17 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     if (deck) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
     // Android: the activity hides the system bars itself (SRW64Activity).
     const bool fills_screen = deck;
+    Uint32 surface_flags = surface;
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) {
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+        surface_flags = SDL_WINDOW_OPENGL;
+    }
+#endif
     // A Steam Deck's 1280 x 800 is the reference (game_frame.hpp); the Deck fills its screen.
     window = SDL_CreateWindow("Marchwind64", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              1280, 800, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
+                              1280, 800, surface_flags | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
                               (fills_screen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
                               (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0));
     if (!window) {
@@ -958,6 +1064,21 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::ui::window_init(window,capture_directory);
     srw64::settings::window_init(window,capture_directory);
+#endif
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) {
+        // Made here, on the window thread, and handed to the graphics thread (GLRenderer).
+        gl_context = SDL_GL_CreateContext(window);
+        if (!gl_context) graphics_failure(SDL_GetError());
+        SDL_GL_MakeCurrent(window, nullptr);
+#if defined(__APPLE__)
+        return {info.info.cocoa.window, nullptr};
+#elif defined(_WIN32)
+        return {info.info.win.window, GetCurrentThreadId()};
+#else
+        return window;
+#endif
+    }
 #endif
 #if defined(__APPLE__)
     view = SDL_Metal_CreateView(window);
@@ -1163,6 +1284,10 @@ nlohmann::json srw64_window_status() {
     if (!window) return nullptr;
     int width = 0, height = 0, pixel_width = 0, pixel_height = 0;
     SDL_GetWindowSize(window, &width, &height);
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) SDL_GL_GetDrawableSize(window, &pixel_width, &pixel_height);
+    else
+#endif
 #ifdef __APPLE__
     SDL_Metal_GetDrawableSize(window, &pixel_width, &pixel_height);
 #else
@@ -1237,8 +1362,11 @@ void srw64_destroy_window() {
     keyboard_state = 0;
     if (pad) { SDL_GameControllerClose(pad); pad = nullptr; }
     srw64_close_audio();
+#ifdef SRW64_GL_RENDERER
+    if (gl_context) { SDL_GL_DeleteContext(gl_context); gl_context = nullptr; }
+#endif
 #ifdef __APPLE__
-    SDL_Metal_DestroyView(view);
+    if (view) SDL_Metal_DestroyView(view);
 #endif
     SDL_DestroyWindow(window);
     SDL_Quit();

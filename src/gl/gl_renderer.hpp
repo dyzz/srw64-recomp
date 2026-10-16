@@ -35,6 +35,11 @@ public:
     GLuint picture(uint32_t image) const;
     int width() const { return target_width; }
     int height() const { return target_height; }
+    // Draw a colour image's picture into the rectangle (x, y, width, height) of the bound
+    // framebuffer (window coordinates, origin bottom left), filtered: the host's present.
+    // The image is the VI origin; the target that holds it is found from its address.
+    // Returns false if the game has drawn no such picture yet.
+    bool present(uint32_t origin, int x, int y, int width, int height);
     // Every render target black again (a replay's jump between frames apart).
     void clear_targets();
     // Free the textures and targets no frame has used for `frames` frames.
@@ -69,7 +74,8 @@ private:
     std::unordered_map<uint64_t, Texture> textures;
     std::unordered_map<uint32_t, Target> targets;
     int target_width, target_height;
-    GLuint buffer = 0, depth = 0, copy = 0, black = 0;
+    GLuint buffer = 0, depth = 0, copy = 0, black = 0, blit = 0;
+    GLint blit_texture = -1;
     uint32_t frame_number = 0, calls = 0;
     std::string last_error;
 };

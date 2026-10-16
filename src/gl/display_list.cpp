@@ -117,6 +117,12 @@ struct Interpreter::State {
     const uint8_t* rdram = nullptr;
     Frame* frame = nullptr;
     std::FILE* log = nullptr;
+    const uint8_t* list = nullptr;   // the top-level list's copy, from list_start for list_size bytes
+    uint32_t list_start = 0, list_size = 0;
+    uint32_t command(uint32_t a) const {
+        if (list && a - list_start < list_size) { uint32_t v; std::memcpy(&v, list + a, 4); return v; }
+        return rd32(a);
+    }
     Classify classify;
     uint32_t tag_w0 = 0, tag_w1 = 0;   // the command before the one running
     uint32_t tagged() const { return classify && tag_w0 >> 24 == 0 ? classify(tag_w0, tag_w1) : 0; }
@@ -617,7 +623,7 @@ struct Interpreter::State {
         int call_depth = 0;
         uint32_t cursor = start & 0x1FFFFFFF;
         for (uint32_t guard = 0; guard < 1000000 && cursor + 8 <= kRam; ++guard) {
-            const uint32_t w0 = rd32(cursor), w1 = rd32(cursor + 4);
+            const uint32_t w0 = command(cursor), w1 = command(cursor + 4);
             const uint8_t op = uint8_t(w0 >> 24);
             if (log && (op == G_SETTIMG || op == G_SETTILE || op == G_SETTILESIZE || op == G_LOADBLOCK || op == G_LOADTILE ||
                         op == G_LOADTLUT || op == G_TEXRECT || op == G_SETOTHERMODE_H || op == G_SETCOMBINE))
@@ -684,8 +690,8 @@ struct Interpreter::State {
             case G_RDPSETOTHERMODE: othermode_h = w0 & 0x00FFFFFF; othermode_l = w1; break;
             case G_TEXRECT: case G_TEXRECTFLIP: {
                 // F3DEX2 sends the rectangle's texture coordinates in the next two commands.
-                half1 = rd32(cursor + 4);
-                half2 = rd32(cursor + 12);
+                half1 = command(cursor + 4);
+                half2 = command(cursor + 12);
                 cursor += 16;
                 if (const uint32_t id = tagged()) {
                     float ulx, uly, lrx, lry;
@@ -746,7 +752,7 @@ struct Interpreter::State {
                 const uint32_t sub = w0 & 0x00FFFFFF;
                 const int words = extended_words(sub);
                 if (words == 0) return;
-                const uint32_t w2 = rd32(cursor), w3 = rd32(cursor + 4);
+                const uint32_t w2 = command(cursor), w3 = command(cursor + 4);
                 cursor += uint32_t(words - 2) * 4;
                 switch (sub) {
                 case 0x05: {   // G_EX_SETSCISSOR: left and right origins, corners
@@ -790,8 +796,11 @@ void Interpreter::trace(std::FILE* into) { state->log = into; }
 
 void Interpreter::classify(Classify hook) { state->classify = std::move(hook); }
 
-void Interpreter::run(const uint8_t* rdram, uint32_t start, Frame& out) {
+void Interpreter::run(const uint8_t* rdram, uint32_t start, Frame& out, const uint8_t* list, uint32_t size) {
     state->rdram = rdram;
+    state->list = list;
+    state->list_start = start & 0x1FFFFFFF;
+    state->list_size = size;
     state->frame = &out;
     state->added.clear();
     state->captured = 0;

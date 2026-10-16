@@ -122,6 +122,7 @@ Renderer::~Renderer() {
     glDeleteTextures(1, &black);
     glDeleteRenderbuffers(1, &depth);
     glDeleteBuffers(1, &buffer);
+    if (blit) glDeleteProgram(blit);
 }
 
 Renderer::Target& Renderer::target(uint32_t image) {
@@ -144,6 +145,49 @@ Renderer::Target& Renderer::target(uint32_t image) {
     }
     t.used = frame_number;
     return t;
+}
+
+bool Renderer::present(uint32_t origin, int x, int y, int width, int height) {
+    // The VI scans from somewhat past the colour image's start (a line or so in).
+    const Target* shown = nullptr;
+    uint32_t best = 0;
+    for (const auto& [image, t] : targets)
+        if (image <= origin && origin - image < uint32_t(kPictureWidth * kPictureHeight * 2) && (!shown || image > best)) { shown = &t; best = image; }
+    if (!shown) return false;
+    if (!blit) {
+        std::string error;
+        const GLuint vs = compile(GL_VERTEX_SHADER, std::string(kPreamble) +
+            "attribute vec2 a_position;\nvarying vec2 v_uv;\n"
+            "void main() {\n  gl_Position = vec4(a_position * 2.0 - 1.0, 0.0, 1.0);\n  v_uv = a_position;\n}\n", error);
+        const GLuint fs = compile(GL_FRAGMENT_SHADER, std::string(kPreamble) +
+            "uniform sampler2D u_texture;\nvarying vec2 v_uv;\n"
+            "void main() {\n  gl_FragColor = vec4(texture2D(u_texture, v_uv).rgb, 1.0);\n}\n", error);
+        if (!vs || !fs) { last_error = error; return false; }
+        blit = glCreateProgram();
+        glAttachShader(blit, vs);
+        glAttachShader(blit, fs);
+        glBindAttribLocation(blit, attribute_position, "a_position");
+        glLinkProgram(blit);
+        glDeleteShader(vs);
+        glDeleteShader(fs);
+        blit_texture = glGetUniformLocation(blit, "u_texture");
+    }
+    static const float corners[8] = {0, 0, 1, 0, 0, 1, 1, 1};
+    glViewport(x, y, width, height);
+    glDisable(GL_SCISSOR_TEST);
+    glDisable(GL_BLEND);
+    glDisable(GL_DEPTH_TEST);
+    glUseProgram(blit);
+    glUniform1i(blit_texture, 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, shown->texture);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glEnableVertexAttribArray(attribute_position);
+    glVertexAttribPointer(attribute_position, 2, GL_FLOAT, GL_FALSE, 0, corners);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glDisableVertexAttribArray(attribute_position);
+    glUseProgram(0);
+    return true;
 }
 
 void Renderer::clear_targets() {
