@@ -252,8 +252,12 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
 
 1. **解释器与 GL 后端（`src/gl/`，已做）。** `display_list.cpp` 是自写的 F3DEX2 子集解释器：RSP 矩阵、视口、光照、背面剔除；TMEM 照 RDP 的存法保存（奇数行 32 位字互换，LOADTILE/LOADBLOCK/LOADTLUT），按内容哈希解码成 RGBA8，只解一次；单周期组合器键、混合器的两种结果（alpha 混合，或不混合时按 alpha 比较/覆盖率裁掉）、Z 缓冲、纹理矩形与填充矩形；宿主写进列表的 RT64 扩展指令（裁剪栈、矩形对齐，按原点换算）；从颜色缓冲装的贴图改读那张画面（标题速度线、转场漩涡、战斗残影都是「上一帧整张以 78% 叠回」的反馈效果）；宿主打了标签的绘制（`G_NOOP` 带 SDW/SBG/SPT/SSN，窗框、剧情文字等）输出成「原生绘制」命令交给宿主。`gl_renderer.cpp` 只用 OpenGL 2.1 与 ES 2.0 的交集：每个颜色缓冲一个渲染目标（共享深度），组合器键各生成一个程序，小贴图装进 1024² 图集页（顶点带夹取边界，wrap/mirror 的单周期绘制折回 [0,1]），**标题画面约 400 个矩形每帧 5–6 次 draw call**。
 2. **离线对照（已做）。** 宿主 `SRW64_GL_DUMP` 每隔 N 个列表转储整份 RDRAM 与列表（`SRW64_GL_DUMP_RUN` 连续几帧），同时存下 RT64 呈现同一 workload 的截图；`check_gbi_usage.py --dump` 在 4:3 窗口里跑各场景，`srw64-gl-replay` 离屏回放成 PNG（`--trace` 打印逐条命令、TMEM 装载与解出的贴图），`compare_gl_replay.py` 拼成「RT64 | GL | 差异」。八个场景 239 帧：世界地图 3D、战术地图、幕间、战前确认与连续帧的标题/剧情关与 RT64 只差宿主自绘层（文字、窗框）；每帧 draw call 中位数 4、p90 6、最大 40；桌面上解释一帧 0.2–0.75 ms。连续帧里第一帧缺「上一帧」（反馈效果偏暗），属转储方式，不是渲染错误。
-3. **宿主接入（部分）。** 同一个桌面宿主加运行时开关 `SRW64_RENDERER=gl`（不是编译开关：这样调试接口、MCP 截图和检查脚本原样可用）：`graphics.cpp` 的 `GLRenderer` 在窗口线程建 GL 2.1 上下文、交给图形线程；顶层列表读原生对白改过的副本；按 VI origin 找到颜色缓冲 4:3 居中呈现；调试截图用 `glReadPixels`。**原生对白已移植**（`dialogue_gl.cpp`：同一套 CPU 光栅，补丁 `glTexSubImage2D`、预乘混合）。实跑：开场序章、标题、迷你关的世界地图对白（中文）、战术地图都正常。
-4. **还没做：** RmlUi 的 GL2 后端（设置面板、原生页面，`ui.click` 现在报 shared UI not ready，进迷你关改用 F8）；宿主的标签绘制在 GL 下的实现（窗框 `native_map` 的 mode 9、剧情/标题文字 `native_sprite`，原版界面文字覆盖层 `ui_text`）；战斗演出的 3D 与光照还只在世界地图验证过；字体缓冲共享；用现有 `check_*.py` 在 GL 下整套过一遍。
+3. **宿主接入（桌面已通）。** 同一个桌面宿主加运行时开关 `SRW64_RENDERER=gl`（不是编译开关：这样调试接口、MCP 截图和检查脚本原样可用）：`graphics.cpp` 的 `GLRenderer` 在窗口线程建 GL 2.1 上下文、交给图形线程；顶层列表读原生对白改过的副本；按 VI origin 找到颜色缓冲 4:3 居中呈现；调试截图用 `glReadPixels`；固定原版图片（`image_mode.configure(false)`；`original_only()` 在 HD 图层看来等于「HD 能开就开」）、固定 4:3。
+   - **原生对白**（`dialogue_gl.cpp`）：同一套 CPU 光栅，补丁 `glTexSubImage2D`、预乘混合。
+   - **RmlUi**（`src/native/ui/ui_renderer_gl.cpp`）：照 Plume 适配器做（非预乘混合、0 号白/1 号透明纹理、按名字排队的图片用 stb_image 解码）；RmlUi 可能在窗口线程建/释放纹理，所以 GL 调用全推迟到图形线程的 start…end。设置窗口、标题原生按钮、原生页面、`ui.click` 都可用。
+   - **宿主标签绘制**（`native_quads.hpp`、`native_gl.cpp`）：模块报告「标签 id 画什么」——预乘 RGBA 像素加屏幕矩形或模型空间四边形；`native_map` 提供窗框（底图按当前调色板在 CPU 上平移，即 HdMapPS 的逐像素运算，按「资产＋调色板」缓存），`native_sprite` 提供剧情/标题/原版界面文字。解释器的原生命令带上三角形的变换与深度标志，GL 渲染器在帧内原位置回调宿主再恢复自身状态。坑：标签第二个字就是绘制 id（RT64 的 classify 这样读），先前为保证非零写成 `w1|1`，相邻两个记录撞号，标题环上「读取」画成了「继续」。
+   - **实跑对照（10-17，同一脚本 RT64 与 GL 各跑一遍）：** 标题环形菜单、原版幕间菜单（窗框＋中文）、机体改造页、4:3 下的战斗演出（3D、立绘、原生台词、HUD）两边一致。
+4. **还没做：** 宿主标签绘制的深度写入那一遍（HD 机体图才用，Vita 不带 HD）；字体缓冲共享；用现有 `check_*.py` 在 GL 下整套过一遍（含存档读档、全部原生页面）；GL 下的宽屏（扩展指令按原点换算已有，呈现与宿主图层还按 4:3）；把 plume 依赖从 GL 构建里剔除（V2 交叉编译的前提：`native_gpu`、`native_map`/`native_sprite` 里的 Plume 部分、`dialogue_plume`、Plume 版 RmlUi 适配器要能不编），以及 stb_image 的实现目前借用 RT64 的。
 
 ### V2 Vita 跑通
 
