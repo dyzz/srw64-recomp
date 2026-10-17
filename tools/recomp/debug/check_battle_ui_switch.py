@@ -31,9 +31,19 @@ def main():
         assert passed, name
         print(name, 'PASS', flush=True)
 
-    def buttons(*values):
+    def buttons(*values):  # the game's controller: the map, menus and the original screen
         for value in values:
             s.client.call('buttons', buttons=value, vis=6)
+            time.sleep(.7)
+
+    # The native pages take their buttons from the controller and the keyboard, as a
+    # player's, and swallow the game's own input, which the debug 'buttons' method feeds.
+    # So on them: the virtual controller (C-down is the right stick's down).
+    pad_names = {'c_down': 'rs_down'}
+
+    def page_buttons(*values):
+        for value in values:
+            s.client.call('pad', press=pad_names.get(value, value), hold_ms=100)
             time.sleep(.7)
 
     def wait(predicate, timeout=30):
@@ -53,11 +63,12 @@ def main():
         check(f'{ui}-persisted', saved['battle_ui'] == ui and saved['locale'] == 'zh-Hans')
 
     def toggle_animation(p, shown, name):
+        press = page_buttons if shown == 'visible' else buttons
         animation = p['animation']
-        buttons('c_down')
+        press('c_down')
         wait(lambda p: p.get(shown) and p['animation'] != animation)
         check(f'{name}-cdown-toggles-animation', True)
-        buttons('c_down')
+        press('c_down')
         wait(lambda p: p.get(shown) and p['animation'] == animation)
 
     def attack():  # after backing out of a confirmation: weapon, target, confirm
@@ -83,7 +94,9 @@ def main():
     check('native-page', p['mode'] == 1 and p['style'] == 'native' and not p.get('original_images'))
     s.client.call('screenshot', path=str(s.run / 'native-confirm.png'))
     toggle_animation(p, 'visible', 'native')
-    buttons('b', 'b')
+    page_buttons('b')
+    wait(lambda p: not p.get('visible'))
+    buttons('b')
     time.sleep(.5)
 
     # The HD original: a native page in the original layout; B goes back as there.
@@ -95,7 +108,7 @@ def main():
     (s.run / 'hd-confirm-tree.json').write_text(json.dumps(tree, ensure_ascii=False, indent=2))
     s.client.call('screenshot', path=str(s.run / 'hd-confirm.png'))
     toggle_animation(p, 'visible', 'hd')
-    buttons('b')
+    page_buttons('b')
     wait(lambda p: not p.get('visible'))
     check('hd-back', page().get('action') == 'back')
     buttons('b')
@@ -105,24 +118,24 @@ def main():
     attack()
     p = wait(lambda p: p.get('visible') and p['style'] == 'hd')
     if p['animation']:
-        buttons('c_down')
+        page_buttons('c_down')
         p = wait(lambda p: p.get('visible') and not p['animation'])
     before = s.client.call('status')['vi']
-    buttons('a')
+    page_buttons('a')
     check('hd-a-starts', page().get('action') == 'confirm')
     s.wait(vi=before + 600, timeout=60)
     buttons('right', 'right', 'right', 'right', 'a', 'a', 'a')
     p = wait(lambda p: p.get('visible') and p['mode'] == 2, timeout=120)
     check('hd-menu', p['style'] == 'hd' and focus() == 'battle-confirm')
     s.client.call('screenshot', path=str(s.run / 'hd-menu.png'))
-    buttons('down', 'down', 'down')
+    page_buttons('down', 'down', 'down')
     check('hd-menu-cursor', focus() == 'battle-defend')
-    buttons('a')
+    page_buttons('a')
     q = wait(lambda q: q.get('visible') and q['serial'] > p['serial'])
     check('hd-defend-redraws', q['mode'] == 2 and q['response'] == 2 and q['defender']['weapon'] == -1 and
           focus() == 'battle-confirm')
     s.client.call('screenshot', path=str(s.run / 'hd-defend.png'))
-    buttons('b')
+    page_buttons('b')
     check('hd-b-weapon-list', not page()['visible'] and page().get('action') == 'weapon')
     # The original list rejects out-of-range weapons; walk down until one is accepted.
     r = None

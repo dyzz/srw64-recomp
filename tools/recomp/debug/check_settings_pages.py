@@ -14,7 +14,7 @@ import time
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from recomp.debug.session import Session, run_keys
 
-PAGES = ("general", "interface", "rules", "saves", "controls", "about")
+PAGES = ("general", "interface", "rules", "cheats", "saves", "controls", "feedback", "about")
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--reuse-build', action='store_true')
 args = parser.parse_args()
@@ -134,8 +134,11 @@ time.sleep(.5)
 key('down')
 check('down-leaves-the-tabs', lambda: focused() == 'locale:zh-Hans', lambda: {'focus': focused()})
 key('e')
-# 界面 starts with the interface size, then the pre-battle page (native / hd / original).
+# 界面 starts with the interface size, the dialogue text size, then the pre-battle page
+# (native / hd / original).
 check('e-turns-to-interface', lambda: shown_page() == 'interface' and (focused() or '').startswith('ui-size:'), lambda: {'page': shown_page(), 'focus': focused()})
+key('down')
+check('down-to-dialogue-font', lambda: (focused() or '').startswith('dialogue-font:'), lambda: {'focus': focused()})
 key('down')
 check('down-to-battle-ui', lambda: focused() == 'battle-ui:native', lambda: {'focus': focused()})
 key('right')
@@ -183,15 +186,19 @@ check('reopens-on-saved-page', lambda: shown_page() == 'rules' and saved('settin
 
 # The controller: hints follow it, L1/R1 turn, B closes, View opens.
 pad('r1')
-check('r1-turns', lambda: shown_page() == 'saves', lambda: {'page': shown_page()})
+check('r1-turns', lambda: shown_page() == 'cheats', lambda: {'page': shown_page()})
+pad('r1')
+check('r1-turns-again', lambda: shown_page() == 'saves', lambda: {'page': shown_page()})
 # The hints show the controller's buttons as PromptFont icons (button_prompts), not as words.
 check('pad-hints', lambda: any('切换分类' in row.get('text', '') and '{' not in row.get('text', '') for row in nodes()))
 shot('settings-pad-saves-960.png')
 pad('l1')
 pad('l1')
+pad('l1')
 # A debug run has no save library, so 存档 has nothing to choose: the focus sat on the
-# tabs and stays there.
+# tabs and stays there back through 作弊 and 规则.
 check('l1-turns-back', lambda: shown_page() == 'interface' and focused() == 'settings-page:interface', lambda: {'page': shown_page(), 'focus': focused()})
+pad('down')
 pad('down')
 pad('down')
 pad('down')

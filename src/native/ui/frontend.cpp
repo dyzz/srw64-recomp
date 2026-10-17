@@ -141,8 +141,9 @@ std::atomic_bool settings_open{}, physical_held{};
 // (campaigns, art, dialogue, music) instead of the settings'; closing it ends that.
 std::atomic_bool mod_open{};
 // Its entries are hidden for now (2026-10-03, user: MOD stays at the design stage,
-// docs/design/mod-packages.md); the manager itself stays and opens by id.
-constexpr bool mod_entry_shown=false;
+// docs/design/mod-packages.md); the manager itself stays and opens by id. Development
+// runs with SRW64_MOD_ENTRY=1 (check_mod.py) show them again.
+bool mod_entry_shown(){static const bool on=std::getenv("SRW64_MOD_ENTRY") && std::string(std::getenv("SRW64_MOD_ENTRY"))=="1";return on;}
 constexpr const char* mod_pages[]={"campaigns","art","dialogue","audio"};
 unsigned mod_page{};
 // The Library opened from the title's corner beside MOD (library.hpp), in the same frame:
@@ -2896,7 +2897,7 @@ void settings_sync() {
         for(const auto& [locale,catalog]:localization::registered())locales+=button("locale:"+locale,escape(localization::display_name(locale)),locale==localization::catalog().locale,settings::owns_input());
         body+=settings_row("settings_language",locales);
         // The MOD manager, for a controller, which cannot reach the title's button.
-        if(mod_entry_shown)body+=settings_row("mod_row",button("mod-open",label("mod_open")));
+        if(mod_entry_shown())body+=settings_row("mod_row",button("mod-open",label("mod_open")));
         body+=settings_row("library_row",button("library-open",label("library_open")));
         body+=settings_row("stage_info_row",button("stage-info-open",label("stage_info_open")));
         body+=settings_row("viewer_row",button("viewer-open",label("viewer_open")));
@@ -4342,7 +4343,7 @@ void home_sync() {
     const float pw=frame::width(pixels_w,pixels_h)*u,ph=frame::kHeight*u;
     // Inside the page's border (document()), which already keeps a 4:3 picture's bars out.
     const auto corner="right:"+std::to_string(int((pixels_w-pw)/2-page_area().x+pw*.06f))+"px; bottom:"+std::to_string(int((pixels_h-ph)/2-page_area().y+ph*.06f))+"px;";
-    if(!touch)home_doc=document("<div class='home-corner' style='"+corner+"'>"+lettered("library-open","library_open")+lettered("viewer-open","viewer_open")+(mod_entry_shown?lettered("mod-open","mod_open"):std::string())+"</div>",false);
+    if(!touch)home_doc=document("<div class='home-corner' style='"+corner+"'>"+lettered("library-open","library_open")+lettered("viewer-open","viewer_open")+(mod_entry_shown()?lettered("mod-open","mod_open"):std::string())+"</div>",false);
     std::string chrome="<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
     if(settings_entry && !touch)chrome+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
     // A newer release, found by the update check: a word in the corner that opens the About page.
