@@ -22,6 +22,7 @@
 #include "save_store.hpp"
 #include "library.hpp"
 #include "stage_info.hpp"
+#include "quick_load.hpp"
 #include "text_wrap.hpp"
 #include "battle_viewer.hpp"
 #include "native_sprite.hpp"
@@ -150,6 +151,8 @@ std::atomic_bool library_open{};
 // The question, once, whether to check for updates on start-up (update_check.hpp), in the
 // settings window's frame on the title; asked: put this run.
 bool update_ask_open{},update_asked{};
+// The question before a quick load of the suspend save (quick_load.hpp): the touch key and the stage info page ask it.
+bool quick_load_ask_open{};
 unsigned library_tab{};
 std::array<unsigned,2> library_index{};
 bool library_tab_focus{};
@@ -1601,6 +1604,17 @@ std::string update_ask_panel() {
         button("update-ask:on",label("update_ask_on"),true)+button("update-ask:off",label("update_ask_off"))+"</div></div></div>"
         "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
 }
+// Whether to go back to the suspend save: its turn and funds, and that the map as it is now is lost.
+std::string quick_load_ask_panel() {
+    const auto saved=quick_load::saved();
+    auto text=localization::catalog().ui("quick_load_text");
+    for(const auto& [key,value]:{std::pair<std::string,std::string>{"{n}",std::to_string(saved.turn)},{"{funds}",std::to_string(saved.funds)}})
+        if(const auto at=text.find(key);at!=std::string::npos)text.replace(at,key.size(),value);
+    return "<div class='set-shade'><div class='set-panel set-ask'><h1>"+label("quick_load_title")+"</h1><div id='set-body' class='set-body'>"
+        "<div class='set-row nav'><div class='set-name'>"+escape(text)+"</div><p>"+label("quick_load_note")+"</p><div class='set-seg'>"+
+        button("quick-load:yes",label("quick_load_yes"),true)+button("quick-load:no",label("quick_load_no"))+"</div></div></div>"
+        "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+}
 // A page in the system browser; a notice with the address when there is none.
 void open_page(const std::string& url) {
     if(url.empty() || update::open_url(url))return;
@@ -1944,7 +1958,9 @@ std::string stage_panel(const json& snap) {
     stage_wrap_texts.clear();
     const auto& locale=localization::catalog().locale;
     std::string body="<div class='set-shade solid'><div class='set-panel lib-panel si-panel'>";
-    const auto foot="<div class='set-foot'><div class='set-hint'>"+label("stage_info_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+    // On the map or in a battle, the way back to the suspend save (asked first, quick_load.hpp).
+    const auto load=quick_load::usable()?button("quick-load-ask",label("quick_load_open")):std::string();
+    const auto foot="<div class='set-foot'><div class='set-hint'>"+label("stage_info_hint")+"</div>"+load+button("settings-close",label("settings_close"))+"</div></div></div>";
     const auto message=[&](const char* key){return body+"<div class='lib-top'><h1>"+label("stage_info_title")+"</h1></div><div class='si-empty'>"+label(key)+"</div>"+foot;};
     if(!snap.value("available",false))return message("stage_info_unavailable");
     // The stage's metadata: the story's, or the custom campaign's (stage_info::meta).
@@ -2714,8 +2730,17 @@ void viewer_sync() {
 }
 void settings_sync() {
     const auto stage_opening=stage_info::want(settings_open && stage_open);
-    if(!settings_open){update_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(!settings_open){update_ask_open=false;quick_load_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
     if(viewer_open){viewer_sync();return;}
+    if(quick_load_ask_open) {
+        const auto stamp="quick-load"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        settings_doc=document(quick_load_ask_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc->UpdateDocument();
+        if(!pointer_mode)settings_focus_first();
+        return;
+    }
     if(update_ask_open && !library_open && !mod_open) {
         const auto stamp="update-ask"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -2741,7 +2766,7 @@ void settings_sync() {
         const auto snap=stage_info::snapshot();
         // Only what was read since this opening: never a frame of the last stage's page.
         if(snap.value("opening",uint64_t{})!=stage_opening){document_close(settings_doc);settings_stamp.clear();return;}
-        const auto stamp="stage"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density)+snap.dump();
+        const auto stamp="stage"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density)+std::to_string(quick_load::usable())+snap.dump();
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
         // Rebuilt when a status changes: each column keeps its place.
         std::array<float,2> scroll{};
@@ -2902,13 +2927,13 @@ void settings_show(unsigned page,const std::string& focus) {
 // The settings window on its About page (the application menu, the title's update hint).
 void open_about(const std::string& focus) {
     const unsigned about=unsigned(std::size(settings_pages)-1);
-    if(settings_open && !library_open && !mod_open && !viewer_open && !update_ask_open) {
+    if(settings_open && !library_open && !mod_open && !viewer_open && !update_ask_open && !quick_load_ask_open) {
         if(settings_page!=about)settings_show(about,focus);
         else settings_focus=focus;
         return;
     }
     settings::set_settings_page(settings_pages[about]);
-    update_ask_open=false;library_open=false;mod_open=false;viewer_open=false;
+    update_ask_open=false;quick_load_ask_open=false;library_open=false;mod_open=false;viewer_open=false;
     settings_open=true;settings_built=-1;settings_focus=focus;settings_release.hold();input.clear();
 }
 // L1/R1, Q/E and the page keys: the next or previous page, wrapping round. The focus
@@ -4396,6 +4421,19 @@ void choose(const std::string& id) {
     if(id.ends_with("-funds-input"))return;
     funds_editing.clear();
     // The update check (update_check.hpp): the start-up question, the About page, the title's hint.
+    // A quick load: asked first, refused at once without a suspend save of this stage.
+    if(id=="quick-load-ask") {
+        const auto saved=quick_load::saved();
+        if(!quick_load::usable()){notices::post("quick-load",localization::catalog().ui("quick_load_unavailable"));return;}
+        if(!saved.exists){notices::post("quick-load",localization::catalog().ui("quick_load_none"));return;}
+        if(!saved.this_stage){notices::post("quick-load",localization::catalog().ui("quick_load_other_stage"));return;}
+        viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;quick_load_ask_open=true;
+        settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;
+    }
+    if(id.starts_with("quick-load:") || (quick_load_ask_open && id=="settings-close")) {
+        if(id=="quick-load:yes")quick_load::request();
+        quick_load_ask_open=false;physical_held=held();settings_open=false;return;
+    }
     if(id.starts_with("update-ask:") || (update_ask_open && id=="settings-close")) {
         update::set_automatic(id=="update-ask:on");
         update_ask_open=false;physical_held=held();settings_open=false;return;
@@ -4970,7 +5008,9 @@ void touch_sync() {
        !(touch_scene_id==touch_pad::SceneId::FixedDialogue && reading!=touch_pad::Reading::Inactive)) {
         touch_scene_id=touch_pad::SceneId::FixedDialogue;reading=touch_pad::Reading::Active;
     }
-    const auto next_controls=touch_pad::scene(touch_scene_id,reading);
+    auto next_controls=touch_pad::scene(touch_scene_id,reading);
+    // The quick load key only where the game takes it: on the map and in a battle.
+    if(!quick_load::usable())next_controls.slots[size_t(touch_pad::Slot::Load)]={};
     if(!(next_controls==touch_controls)) {
         touch_fingers.reconcile(touch_controls,next_controls);touch_controls=next_controls;
         touch_linger=0;touch_linger_until=0;++touch_controls_revision;touch_publish();

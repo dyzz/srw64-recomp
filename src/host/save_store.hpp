@@ -25,6 +25,8 @@ fs::path main_library();
 void switch_library(const fs::path& root);
 // The library's card file (cartridge.sram), empty without a library.
 fs::path cartridge_path();
+// The card as the game last wrote it (the library's copy), empty without a library.
+std::vector<uint8_t> cartridge_bytes(uint32_t offset,uint32_t length);
 // 80090E5C (game thread): true when the store answered the transfer itself.
 bool transfer(uint8_t* ram,unsigned direction,uint32_t cart,uint32_t buffer,uint32_t length);
 // While it lives, the game's slot `index` (0/1) is the slot record `record`.

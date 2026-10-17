@@ -66,6 +66,7 @@
 #include "save_page.hpp"
 #include "save_store.hpp"
 #include "autosave.hpp"
+#include "quick_load.hpp"
 #include "legacy.hpp"
 #include "title_page.hpp"
 #include "battle_viewer.hpp"
@@ -237,6 +238,9 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
     *buttons = srw64::intro::input(*buttons);
     *buttons = srw64::mini_stage::input(*buttons);
     *buttons = srw64::dialogue::input(*buttons);
+    // A running quick load presses Z + START itself, last: the settings window's release
+    // gate above would hold its buttons back as keys never let go (quick_load.hpp).
+    *buttons = uint16_t(srw64::quick_load::filter_input(*buttons));
     // The scene for the phone's touch controls (touch_scene.hpp).
     if (srw64_rdram) {
         using namespace srw64::touch_scene;
@@ -446,6 +450,7 @@ static int run_host(int argc, char** argv) {
         srw64::wide_map::frame(ram);
         if (!overlay_loading) { srw64::battle_hud::frame(ram); srw64::menu_widen::frame_start(ram); }
         srw64::game_speed::frame(ram);   // 2x speed where it applies (game_speed.hpp)
+        srw64::quick_load::frame(ram);   // a confirmed load of the suspend save (quick_load.hpp)
     };
     srw64_game_hooks.map_space_begin = [](uint8_t* ram, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub) {
         if (ram[0x001027DB ^ 3] == 1) return false;
@@ -566,6 +571,7 @@ static int run_host(int argc, char** argv) {
     srw64::save_store::configure(output_dir, initial_sram);
     if (srw64::save_store::enabled()) srw64_game_hooks.sram_transfer = srw64::save_store::transfer;
     srw64::autosave::configure(output_dir);
+    srw64::quick_load::configure(output_dir);
     srw64::legacy::configure(output_dir);
     srw64::save_page::configure(output_dir);
     srw64::title_page::configure(output_dir);

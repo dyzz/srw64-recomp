@@ -103,6 +103,11 @@ void switch_library(const fs::path& root) {
     record("switch",{{"library",root.string()},{"card",sram::problems(card).empty()},{"extended",library->slots()}});
 }
 fs::path cartridge_path(){std::lock_guard lock(mutex);return library?library->cartridge():fs::path();}
+std::vector<uint8_t> cartridge_bytes(uint32_t offset,uint32_t length) {
+    std::lock_guard lock(mutex);
+    if(!library || offset>sram::size || length>sram::size-offset)return {};
+    return {card.begin()+offset,card.begin()+offset+length};
+}
 bool enabled(){return library.has_value();}
 fs::path library_directory(){return library?library->directory():fs::path();}
 bool transfer(uint8_t* ram,unsigned direction,uint32_t cart,uint32_t buffer,uint32_t length) {
