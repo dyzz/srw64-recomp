@@ -127,9 +127,10 @@ def package(build: Path, libraries: list[Path], dex: Path, android_jar: Path, to
         for item in source.infolist():
             target.writestr(item, source.read(item.filename))
         target.write(dex, 'classes.dex', compress_type=zipfile.ZIP_DEFLATED)
-        # extractNativeLibs=false: the loader maps them straight from the APK.
+        # Compressed, with extractNativeLibs=true: the download is about 40 MB smaller (libmain.so
+        # 55 to 21 MB), and Android unpacks them when it installs the app (user, 2026-10-17).
         for library in libraries:
-            target.write(library, f'lib/arm64-v8a/{library.name}', compress_type=zipfile.ZIP_STORED)
+            target.write(library, f'lib/arm64-v8a/{library.name}', compress_type=zipfile.ZIP_DEFLATED)
     aligned = build / 'aligned.apk'
     run(tools / 'zipalign', '-f', '-P', '16', '4', unaligned, aligned)
     # The release key lets a build install over any other (and keep the player's files):

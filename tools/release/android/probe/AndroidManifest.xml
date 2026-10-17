@@ -9,7 +9,7 @@
     <application android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:allowBackup="false"
-        android:extractNativeLibs="false"
+        android:extractNativeLibs="true"
         android:hardwareAccelerated="true">
         <activity android:name=".ProbeActivity"
             android:label="@string/app_name"
