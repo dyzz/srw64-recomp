@@ -270,6 +270,7 @@ public class SRW64Activity extends SDLActivity {
             home.mkdirs();
             Os.setenv("HOME", home.getPath(), true);
             Os.setenv("TMPDIR", getCacheDir().getPath(), true);
+            GraphicsGuard.prepare(this);
             // Development: `am start ... --ez debug true` opens the debug interface
             // (src/host/debug_server.cpp, tools/release/android/attach.py).
             if (getIntent().getBooleanExtra("debug", false)) {

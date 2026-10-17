@@ -4,6 +4,7 @@
 // seconds while the VI clock still runs, every thread's stack goes into the log
 // (console.log), down to the driver's functions, as module offsets a symbolizer reads.
 // Android on arm64 only (frame-pointer walk from a signal); elsewhere these do nothing.
+// The display-list count also clears the start marker of GraphicsGuard.java.
 #include <cstdint>
 
 namespace srw64::stall {

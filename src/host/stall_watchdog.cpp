@@ -22,6 +22,9 @@ namespace {
 std::atomic<uint64_t> frames{0};
 std::atomic<bool> started{false};
 bool test_stall = false;    // SRW64_STALL_TEST=1 (development): the render thread stops at frame 120
+// SRW64_START_MARKER: the file GraphicsGuard.java writes before the game starts; gone after
+// 300 display lists, the start counts as one that drew.
+std::string start_marker;
 
 // One thread at a time: the watchdog names it, its handler fills the frames.
 constexpr int kMaxFrames = 48;
@@ -134,6 +137,7 @@ void start() {
     if (started.exchange(true)) return;
     const char* test = std::getenv("SRW64_STALL_TEST");
     test_stall = test && std::strcmp(test, "1") == 0;
+    if (const char* marker = std::getenv("SRW64_START_MARKER")) start_marker = marker;
     struct sigaction action{};
     action.sa_sigaction = sample;
     action.sa_flags = SA_SIGINFO | SA_RESTART;
@@ -143,7 +147,9 @@ void start() {
 }
 
 void frame_done() {
-    if (frames.fetch_add(1, std::memory_order_relaxed) + 1 == 120 && test_stall) {
+    const uint64_t done = frames.fetch_add(1, std::memory_order_relaxed) + 1;
+    if (done == 300 && !start_marker.empty()) unlink(start_marker.c_str());
+    if (done == 120 && test_stall) {
         std::fprintf(stderr, "SRW64_STALL_TEST: the render thread stops here\n");
         for (;;) std::this_thread::sleep_for(std::chrono::seconds(1));
     }

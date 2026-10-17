@@ -420,7 +420,8 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
     # and skips both, as here: skipping one moves the crash to the other. The Adreno 640
     # crashes there too (issue #7, a Poco X3 Pro; Pixel 4, Galaxy S10 and Tab S6 on 0.4.8,
     # 2026-10-17). Only these, by their exact names (user: no other GPU gets it until one
-    # is seen to need it). The
+    # is seen to need it). Any other GPU gets it after a start that crashed before drawing
+    # (SRW64_FRAMEBUFFER_SYNC=0 from GraphicsGuard.java). The
     # barriers and readback copies around them stay; what the game reads back of a frame
     # or draws into one itself is then not exact.
     ('src/render/rt64_native_target.cpp', '''#include "rt64_render_worker.h"
@@ -452,6 +453,11 @@ namespace RT64 {
         AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 640" || deviceDescription.name == "Adreno (TM) 650";
         if (AndroidFramebufferSyncDisabled) {
             fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 640/650 driver workaround: framebuffer effects are not exact)\\n");
+        }
+        // GraphicsGuard.java, after a start that crashed before drawing.
+        else if (const char *sync = getenv("SRW64_FRAMEBUFFER_SYNC"); sync != nullptr && strcmp(sync, "0") == 0) {
+            AndroidFramebufferSyncDisabled = true;
+            fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (the last start crashed: framebuffer effects are not exact)\\n");
         }
 #   endif'''),
     # The Adreno 660's shader compiler (Galaxy S21 Ultra, driver 0x80212000, 2026-10-08)
@@ -559,7 +565,7 @@ endif()'''),
                 PSBlobSize = uint32_t(useMSAA ? std::size(RasterPSDynamicMSUniformTilesBlobSPIRV) : std::size(RasterPSDynamicUniformTilesBlobSPIRV));
             }
 #       endif'''),
-    ('src/hle/rt64_application.cpp', '''        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 650";''', '''        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 650";
+    ('src/hle/rt64_application.cpp', '''        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 640" || deviceDescription.name == "Adreno (TM) 650";''', '''        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 640" || deviceDescription.name == "Adreno (TM) 650";
         extern bool AndroidUniformTileSampling;
         AndroidUniformTileSampling = deviceDescription.name == "Adreno (TM) 660";
         if (AndroidUniformTileSampling) {
