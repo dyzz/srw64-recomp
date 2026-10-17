@@ -166,7 +166,8 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         original_animation=(read(ram,0x8015DDA8,1)&4)==0;original_mode=mode;original_vi=srw64_current_vi();
         return false;
     }
-    if(!current.value("visible",false) || current.value("mode",0u)!=mode) {
+    // The page's snapshot of the exchange, settled as the original has it now.
+    const auto build=[&](const rule_probe::Combatant& a,const rule_probe::Combatant& d) {
         scratch.assign(ram,ram+0x800000);auto call=*ctx;
         generation_rules=rules::active_fixes();
         auto left=combatant(scratch.data(),&call,a,d,0),right=combatant(scratch.data(),&call,d,a,1);
@@ -187,7 +188,8 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         // cleanup removes slots 0x27..0x34, preserving battlefield unit sprites.
         auto cleanup=*ctx;resident_func_8009DB8C(ram,&cleanup);
         owning=true;pending.clear();record("open");
-    }
+    };
+    if(!current.value("visible",false) || current.value("mode",0u)!=mode)build(a,d);
     else if(owning && current.value("visible",false)) {
         // The original screen rebuilds its HUD sprites on some frames (seen as the
         // original cards showing through the native page); clear them every frame.
@@ -263,6 +265,20 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
     if((action=="evade" || action=="defend") && mode!=2)return true;
     if(action=="weapon" && mode==1 && !current.value("can_cancel",false))return true;
     if(action!="confirm" && action!="back" && action!="weapon" && action!="evade" && action!="defend")return true;
+    if(mode==2 && (action=="evade" || action=="defend")) {
+        // 801D5294 takes the new response, settles the exchange again (801F7D6C) and redraws
+        // its own cards (801D4CCC) within this one call, and stays on this screen. The page
+        // stays up and shows the new numbers; closed until the next frame reopened it, the
+        // original screen showed through for a few frames (a player, 0.4.8).
+        current["action"]=action;record("action");
+        const auto old=read(ram,0x80178A08,2);
+        write16(ram,0x80178A08,0x8000);write8(ram,0x80227A81,action=="evade"?2:3);
+        lock.unlock();srw64_original_battle_response_step(ram,ctx);lock.lock();
+        write16(ram,0x80178A08,old);
+        // It also clears the counter weapon (8018B74C): the participants are read again.
+        build(combat_preview::participant(ram,0),combat_preview::participant(ram,1));
+        return true;
+    }
     current["action"]=action;record("action");current["visible"]=false;owning=false;
     lock.unlock();
     // Feed the original menu's A/B edge and selected entry exactly once. Its
