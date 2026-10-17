@@ -778,6 +778,7 @@
     "touch_animation": "Anim",
     "touch_speed": "2×",
     "touch_stage_info": "Info",
+    "touch_rewind": "Rewind",
     "speed_notice_on": "2× speed on",
     "speed_notice_off": "2× speed off",
     "rewind_notice_done": "Rewound one step",

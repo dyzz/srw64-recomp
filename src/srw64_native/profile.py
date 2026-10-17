@@ -59,7 +59,7 @@ UI_KEYS |= {"settings_refresh", "settings_refresh_display", "settings_refresh_or
 # 2x speed (frontend.cpp toggle_speed, game_speed.hpp).
 UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_note", "speed_notice_on", "speed_notice_off", "touch_speed"}
 # Rewind on the tactical map (rewind.hpp, docs/design/rewind.md).
-UI_KEYS |= {"settings_rewind", "settings_rewind_off", "settings_rewind_on", "settings_rewind_note", "rewind_notice_done", "rewind_notice_none", "rewind_notice_off"}
+UI_KEYS |= {"settings_rewind", "settings_rewind_off", "settings_rewind_on", "settings_rewind_note", "rewind_notice_done", "rewind_notice_none", "rewind_notice_off", "touch_rewind"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}

@@ -4322,6 +4322,7 @@ void battle_sync() {
 void choose(const std::string& id) {
     if(id=="mini-enter"){mini_stage::hotkey();return;}
     if(id=="speed-toggle"){toggle_speed();return;}
+    if(id=="rewind"){rewind::request();return;}   // the touch button (touch_pad.hpp), as the key
     if(id=="intermission-funds" || id=="upgrade-funds"){funds_editing=id.substr(0,id.size()-6);return;}
     if(id.ends_with("-funds-input"))return;
     funds_editing.clear();
@@ -4898,7 +4899,8 @@ void touch_sync() {
        !(touch_scene_id==touch_pad::SceneId::FixedDialogue && reading!=touch_pad::Reading::Inactive)) {
         touch_scene_id=touch_pad::SceneId::FixedDialogue;reading=touch_pad::Reading::Active;
     }
-    const auto next_controls=touch_pad::scene(touch_scene_id,reading);
+    // Rewind shows while its setting is on and the game is where it can act.
+    const auto next_controls=touch_pad::scene(touch_scene_id,reading,settings::rewind_on() && touch_scene::at_rewind_place().load());
     if(!(next_controls==touch_controls)) {
         touch_fingers.reconcile(touch_controls,next_controls);touch_controls=next_controls;
         touch_linger=0;touch_linger_until=0;++touch_controls_revision;touch_publish();

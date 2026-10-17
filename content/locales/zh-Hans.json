@@ -778,6 +778,7 @@
     "touch_animation": "动画",
     "touch_speed": "2×",
     "touch_stage_info": "情报",
+    "touch_rewind": "回溯",
     "speed_notice_on": "2 倍速：开",
     "speed_notice_off": "2 倍速：关",
     "rewind_notice_done": "已回溯一步",

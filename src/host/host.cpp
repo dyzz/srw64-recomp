@@ -237,6 +237,7 @@ bool get_input(int port, uint16_t* buttons, float* x, float* y) {
                                    srw64::intro::title_waiting()));
         story_running() = story(srw64::guest::read(srw64_rdram, mode_address, 1),
                                 srw64::guest::read(srw64_rdram, script_status_address, 2));
+        at_rewind_place() = rewind_place(srw64::guest::read(srw64_rdram, mode_address, 1));
         // The stage info page's snapshot while it is up (stage_info.hpp).
         srw64::stage_info::sample(srw64_rdram);
     }
