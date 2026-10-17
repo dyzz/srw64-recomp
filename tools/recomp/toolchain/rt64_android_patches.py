@@ -346,6 +346,11 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
 #   ifdef __ANDROID__
         AndroidDebugUtilsEnabled = supportedOptionalExtensions.count(VK_EXT_DEBUG_UTILS_EXTENSION_NAME) > 0;
 #   endif'''),
+    # gettid() for the pipeline log below.
+    ('src/contrib/plume/plume_vulkan.cpp', '''#include <climits>''', '''#include <climits>
+#ifdef __ANDROID__
+#include <unistd.h>
+#endif'''),
     # Which shaders a pipeline the driver fails to build was made of (Adreno 660 fails
     # some graphics pipelines with VK_ERROR_UNKNOWN, 2026-10-08): each module's SPIR-V
     # size and FNV-1a hash, matched against the build's .spv files, and the pipeline's
@@ -368,6 +373,29 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
                 fprintf(stderr, "%s%u=%u", j > 0 ? "," : "", spec->pMapEntries[j].constantID, value);
             }
             fprintf(stderr, "\\n");
+        }
+    }
+
+    // The first pipelines, before and after the driver builds them, with the thread: where
+    // the shader compiler itself crashes (Adreno 615/630 on Android 10, 640 on Android 9,
+    // 2026-10-17: before the first frame, stack corruption in libllvm-glnext), the last
+    // "begin" of the crashed thread without its "done" names the shaders.
+    static std::atomic<uint32_t> AndroidPipelineCount{0};
+
+    static uint32_t androidLogPipelineBegin(const char *kind, const VkPipelineShaderStageCreateInfo *stages, uint32_t count) {
+        const uint32_t index = AndroidPipelineCount.fetch_add(1);
+        if (index < 120) {
+            fprintf(stderr, "SRW64_PIPELINE %u begin %s tid=%d\\n", index, kind, int(gettid()));
+            androidLogFailedStages(kind, stages, count);
+            fflush(stderr);
+        }
+        return index;
+    }
+
+    static void androidLogPipelineDone(uint32_t index) {
+        if (index < 120) {
+            fprintf(stderr, "SRW64_PIPELINE %u done\\n", index);
+            fflush(stderr);
         }
     }
 #   endif
@@ -401,6 +429,20 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
         }
 #   endif
         if (vk != VK_NULL_HANDLE) {'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''        VkResult res = vkCreateComputePipelines(device->vk, VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &vk);''', '''#   ifdef __ANDROID__
+        const uint32_t androidPipeline = androidLogPipelineBegin("compute", &stageInfo, 1);
+#   endif
+        VkResult res = vkCreateComputePipelines(device->vk, VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &vk);
+#   ifdef __ANDROID__
+        androidLogPipelineDone(androidPipeline);
+#   endif'''),
+    ('src/contrib/plume/plume_vulkan.cpp', '''        VkResult res = vkCreateGraphicsPipelines(device->vk, VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &vk);''', '''#   ifdef __ANDROID__
+        const uint32_t androidPipeline = androidLogPipelineBegin("graphics", stages.data(), uint32_t(stages.size()));
+#   endif
+        VkResult res = vkCreateGraphicsPipelines(device->vk, VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &vk);
+#   ifdef __ANDROID__
+        androidLogPipelineDone(androidPipeline);
+#   endif'''),
     ('src/contrib/plume/plume_vulkan.cpp', '''            fprintf(stderr, "vkCreateComputePipelines failed with error code 0x%X.\\n", res);
             return;''', '''            fprintf(stderr, "vkCreateComputePipelines failed with error code 0x%X.\\n", res);
 #       ifdef __ANDROID__
@@ -418,10 +460,10 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
     # under NativeTarget::copyToNative, a second after the game starts drawing; a POCO F3
     # player too). Goemon64Recomp-Android met it on the Adreno 630 (ogdanimal/rt64 40b3011)
     # and skips both, as here: skipping one moves the crash to the other. The Adreno 640
-    # crashes there too (issue #7, a Poco X3 Pro; Pixel 4, Galaxy S10 and Tab S6 on 0.4.8,
-    # 2026-10-17). Only these, by their exact names (user: no other GPU gets it until one
-    # is seen to need it). Any other GPU gets it after a start that crashed before drawing
-    # (SRW64_FRAMEBUFFER_SYNC=0 from GraphicsGuard.java). The
+    # (issue #7, a Poco X3 Pro; Pixel 4 on 0.4.8), 618 (Pixel 4a) and 620 (Pixel 5) crash
+    # there too (Device Farm, 2026-10-17), so every Adreno 6xx skips them but the 660, which
+    # runs them (user: by the GPU's generation). Any other GPU skips them after a start that
+    # crashed before drawing (SRW64_FRAMEBUFFER_SYNC=0 from GraphicsGuard.java). The
     # barriers and readback copies around them stay; what the game reads back of a frame
     # or draws into one itself is then not exact.
     ('src/render/rt64_native_target.cpp', '''#include "rt64_render_worker.h"
@@ -450,9 +492,9 @@ namespace RT64 {
     ('src/hle/rt64_application.cpp', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);''', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);
 #   ifdef __ANDROID__
         extern bool AndroidFramebufferSyncDisabled;
-        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 640" || deviceDescription.name == "Adreno (TM) 650";
+        AndroidFramebufferSyncDisabled = deviceDescription.name.rfind("Adreno (TM) 6", 0) == 0 && deviceDescription.name != "Adreno (TM) 660";
         if (AndroidFramebufferSyncDisabled) {
-            fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 640/650 driver workaround: framebuffer effects are not exact)\\n");
+            fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 6xx driver workaround: framebuffer effects are not exact)\\n");
         }
         // GraphicsGuard.java, after a start that crashed before drawing.
         else if (const char *sync = getenv("SRW64_FRAMEBUFFER_SYNC"); sync != nullptr && strcmp(sync, "0") == 0) {
@@ -467,7 +509,9 @@ namespace RT64 {
     # the arithmetic. With UNIFORM_TILE_SAMPLING each texture samples every tile of the
     # draw in a loop, the tile the same for the whole draw, and keeps the one LOD picked:
     # the same result, a few more lookups where LOD is on. Android builds these variants as
-    # well; RT64 uses them when the device's name is exactly Adreno (TM) 660.
+    # well; RT64 uses them when the device's name is exactly Adreno (TM) 660, or 642L
+    # (Galaxy A73, driver 0x80212000 like the S21 Ultra's: RasterPSDynamic fails the same
+    # way, 2026-10-17).
     ('src/shaders/RasterPS.hlsl', '''    float4 texVal1 = float4(0.0f, 0.0f, 0.0f, 1.0f);
     if (renderFlagUsesTexture0(rp.flags)) {''', '''    float4 texVal1 = float4(0.0f, 0.0f, 0.0f, 1.0f);
 #if defined(UNIFORM_TILE_SAMPLING)
@@ -565,11 +609,11 @@ endif()'''),
                 PSBlobSize = uint32_t(useMSAA ? std::size(RasterPSDynamicMSUniformTilesBlobSPIRV) : std::size(RasterPSDynamicUniformTilesBlobSPIRV));
             }
 #       endif'''),
-    ('src/hle/rt64_application.cpp', '''        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 640" || deviceDescription.name == "Adreno (TM) 650";''', '''        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 640" || deviceDescription.name == "Adreno (TM) 650";
+    ('src/hle/rt64_application.cpp', '''        AndroidFramebufferSyncDisabled = deviceDescription.name.rfind("Adreno (TM) 6", 0) == 0 && deviceDescription.name != "Adreno (TM) 660";''', '''        AndroidFramebufferSyncDisabled = deviceDescription.name.rfind("Adreno (TM) 6", 0) == 0 && deviceDescription.name != "Adreno (TM) 660";
         extern bool AndroidUniformTileSampling;
-        AndroidUniformTileSampling = deviceDescription.name == "Adreno (TM) 660";
+        AndroidUniformTileSampling = deviceDescription.name == "Adreno (TM) 660" || deviceDescription.name == "Adreno (TM) 642L";
         if (AndroidUniformTileSampling) {
-            fprintf(stdout, "SRW64_UNIFORM_TILE_SAMPLING on (Adreno 660 shader compiler workaround)\\n");
+            fprintf(stdout, "SRW64_UNIFORM_TILE_SAMPLING on (Adreno 660/642L shader compiler workaround)\\n");
         }'''),
     # On the Adreno 660 the specialized raster shaders still fail for some materials after
     # specialization (VK_ERROR_UNKNOWN from vkCreateGraphicsPipelines, then a crash drawing

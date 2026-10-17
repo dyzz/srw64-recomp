@@ -33,7 +33,7 @@ final class GraphicsGuard {
         File marker = new File(context.getFilesDir(), "render-start");
         SharedPreferences prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         long version = version(context);
-        if (prefs.getLong("sync_off_version", -1) != version && marker.exists() && crashed(context)) {
+        if (prefs.getLong("sync_off_version", -1) != version && marker.exists() && crashed(context, marker)) {
             prefs.edit().putLong("sync_off_version", version).apply();
             Log.w("SRW64", "SRW64_GRAPHICS_GUARD the last start crashed before drawing " + STARTED_FRAMES
                     + " display lists: framebuffer sync off for this version");
@@ -41,22 +41,32 @@ final class GraphicsGuard {
         if (prefs.getLong("sync_off_version", -1) == version)
             Os.setenv("SRW64_FRAMEBUFFER_SYNC", "0", true);
         try {
-            marker.createNewFile();
+            if (!marker.createNewFile()) marker.setLastModified(System.currentTimeMillis());
             Os.setenv("SRW64_START_MARKER", marker.getPath(), true);
         } catch (IOException error) {
             Log.w("SRW64", "SRW64_GRAPHICS_GUARD no start marker: " + error);
         }
     }
 
-    // Whether the app's last process ended in a crash; before Android 11 there is no
-    // record, and a marker left behind counts as one.
-    private static boolean crashed(Context context) {
+    // Whether a process of the app crashed since the marker was written; before Android 11
+    // there is no record, and a marker left behind counts as one. Not only the latest exit:
+    // that alone missed a Galaxy A73's crash (Android 12, Device Farm, 2026-10-17).
+    private static boolean crashed(Context context, File marker) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return true;
         ActivityManager manager = context.getSystemService(ActivityManager.class);
-        List<ApplicationExitInfo> exits = manager.getHistoricalProcessExitReasons(context.getPackageName(), 0, 1);
-        if (exits.isEmpty()) return false;
-        int reason = exits.get(0).getReason();
-        return reason == ApplicationExitInfo.REASON_CRASH_NATIVE || reason == ApplicationExitInfo.REASON_CRASH;
+        List<ApplicationExitInfo> exits = manager.getHistoricalProcessExitReasons(context.getPackageName(), 0, 8);
+        long since = marker.lastModified() - 1000;
+        StringBuilder seen = new StringBuilder();
+        boolean crash = false;
+        for (ApplicationExitInfo exit : exits) {
+            if (exit.getTimestamp() < since) break;
+            int reason = exit.getReason();
+            seen.append(' ').append(reason).append('/').append(exit.getStatus());
+            crash |= reason == ApplicationExitInfo.REASON_CRASH_NATIVE || reason == ApplicationExitInfo.REASON_CRASH
+                    || (reason == ApplicationExitInfo.REASON_SIGNALED && exit.getStatus() != 9);
+        }
+        Log.i("SRW64", "SRW64_GRAPHICS_GUARD marker left; exits since (reason/status):" + seen + (crash ? ", a crash" : ", no crash"));
+        return crash;
     }
 
     private static long version(Context context) {

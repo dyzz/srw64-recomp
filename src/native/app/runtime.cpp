@@ -349,8 +349,10 @@ void clear_runtime_environment() {
         if (value.starts_with("SRW64_")) keys.push_back(value.substr(0,value.find('=')));
     }
 #endif
-    // Set by the Android app for bundled_resource, not a development probe.
-    std::erase(keys,std::string("SRW64_RESOURCE_DIR"));
+    // Set by the Android app for bundled_resource and its graphics guard
+    // (GraphicsGuard.java), not development probes.
+    for (const char* kept:{"SRW64_RESOURCE_DIR","SRW64_FRAMEBUFFER_SYNC","SRW64_START_MARKER"})
+        std::erase(keys,std::string(kept));
 #ifdef __ANDROID__
     // A development launch (--ez debug true) keeps the variables it set (--esa env).
     if (std::getenv("SRW64_DEBUG")) return;
