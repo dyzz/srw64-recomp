@@ -511,7 +511,10 @@ namespace RT64 {
     # the same result, a few more lookups where LOD is on. Android builds these variants as
     # well; RT64 uses them when the device's name is exactly Adreno (TM) 660, or 642L
     # (Galaxy A73, driver 0x80212000 like the S21 Ultra's: RasterPSDynamic fails the same
-    # way, 2026-10-17).
+    # way, 2026-10-17), or any Adreno 6xx with a driver before 0x801ea000, whose compiler
+    # crashes on RasterPSDynamic before the first frame (stack corruption in libllvm-glnext:
+    # Pixel 3/3a on Android 10, Galaxy S10 and Tab S6 on Android 9; the Pixel 4/4a/5 on
+    # 0x801ea000 build it).
     ('src/shaders/RasterPS.hlsl', '''    float4 texVal1 = float4(0.0f, 0.0f, 0.0f, 1.0f);
     if (renderFlagUsesTexture0(rp.flags)) {''', '''    float4 texVal1 = float4(0.0f, 0.0f, 0.0f, 1.0f);
 #if defined(UNIFORM_TILE_SAMPLING)
@@ -611,9 +614,12 @@ endif()'''),
 #       endif'''),
     ('src/hle/rt64_application.cpp', '''        AndroidFramebufferSyncDisabled = deviceDescription.name.rfind("Adreno (TM) 6", 0) == 0 && deviceDescription.name != "Adreno (TM) 660";''', '''        AndroidFramebufferSyncDisabled = deviceDescription.name.rfind("Adreno (TM) 6", 0) == 0 && deviceDescription.name != "Adreno (TM) 660";
         extern bool AndroidUniformTileSampling;
-        AndroidUniformTileSampling = deviceDescription.name == "Adreno (TM) 660" || deviceDescription.name == "Adreno (TM) 642L";
+        // The 660 and 642L fail RasterPSDynamic; older Adreno 6xx drivers (before 0x801ea000,
+        // Android 9 and 10) crash compiling it.
+        AndroidUniformTileSampling = deviceDescription.name == "Adreno (TM) 660" || deviceDescription.name == "Adreno (TM) 642L" ||
+            (deviceDescription.name.rfind("Adreno (TM) 6", 0) == 0 && deviceDescription.driverVersion < 0x801ea000);
         if (AndroidUniformTileSampling) {
-            fprintf(stdout, "SRW64_UNIFORM_TILE_SAMPLING on (Adreno 660/642L shader compiler workaround)\\n");
+            fprintf(stdout, "SRW64_UNIFORM_TILE_SAMPLING on (Adreno 6xx shader compiler workaround)\\n");
         }'''),
     # On the Adreno 660 the specialized raster shaders still fail for some materials after
     # specialization (VK_ERROR_UNKNOWN from vkCreateGraphicsPipelines, then a crash drawing
