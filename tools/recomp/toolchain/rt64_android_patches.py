@@ -417,8 +417,10 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
     # a framebuffer between RDRAM and the GPU (Galaxy Tab S7, 2026-10-08: in vkCmdDispatch
     # under NativeTarget::copyToNative, a second after the game starts drawing; a POCO F3
     # player too). Goemon64Recomp-Android met it on the Adreno 630 (ogdanimal/rt64 40b3011)
-    # and skips both, as here: skipping one moves the crash to the other. Only the 650,
-    # by its exact name (user: no other GPU gets it until one is seen to need it). The
+    # and skips both, as here: skipping one moves the crash to the other. The Adreno 640
+    # crashes there too (issue #7, a Poco X3 Pro; Pixel 4, Galaxy S10 and Tab S6 on 0.4.8,
+    # 2026-10-17). Only these, by their exact names (user: no other GPU gets it until one
+    # is seen to need it). The
     # barriers and readback copies around them stay; what the game reads back of a frame
     # or draws into one itself is then not exact.
     ('src/render/rt64_native_target.cpp', '''#include "rt64_render_worker.h"
@@ -447,9 +449,9 @@ namespace RT64 {
     ('src/hle/rt64_application.cpp', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);''', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);
 #   ifdef __ANDROID__
         extern bool AndroidFramebufferSyncDisabled;
-        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 650";
+        AndroidFramebufferSyncDisabled = deviceDescription.name == "Adreno (TM) 640" || deviceDescription.name == "Adreno (TM) 650";
         if (AndroidFramebufferSyncDisabled) {
-            fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 650 driver workaround: framebuffer effects are not exact)\\n");
+            fprintf(stdout, "SRW64_FRAMEBUFFER_SYNC off (Adreno 640/650 driver workaround: framebuffer effects are not exact)\\n");
         }
 #   endif'''),
     # The Adreno 660's shader compiler (Galaxy S21 Ultra, driver 0x80212000, 2026-10-08)
