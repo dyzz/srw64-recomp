@@ -309,7 +309,9 @@ std::string cap_legend(unsigned original,unsigned cap) {
     if(!original || cap<=original)return {};
     auto text=localization::catalog().ui("upgrade_cap_original");
     if(const auto at=text.find("{n}");at!=std::string::npos)text.replace(at,3,std::to_string(original));
-    return escape(text);
+    text=escape(text);
+    if(const auto at=text.find("{extra}");at!=std::string::npos)text.replace(at,7,"<span class='im-gauge'><i>▶▷</i></span>");
+    return text;
 }
 const char* css=R"(
 scrollbarvertical { width: 12dp; } scrollbarhorizontal { height: 12dp; }
@@ -3363,11 +3365,12 @@ float original_side(const json& owner,float most){
     const auto& art=owner.value("art",json::object());
     return std::min(most,std::max(art.value("width",96.f),art.value("height",96.f)));
 }
-// A gauge string from upgrade_page.cpp: reached ▶ / ●, planned in green, open ▷ / ☆.
+// A gauge string from upgrade_page.cpp: reached ▶, planned in green, open ▷; the cells
+// past the original cap are the same triangles in yellow.
 // A plan the funds do not cover shows as open cells.
 std::string gauge_html(const std::string& cells,bool plan_shown=true) {
     std::string gauge;
-    for(char c:cells)gauge+=c=='>'?"▶":c=='.'?"▷":c=='+'?(plan_shown?"<em>▶</em>":"▷"):c=='#'?(plan_shown?"<em>●</em>":"<i>☆</i>"):c=='*'?"<i>●</i>":"<i>☆</i>";
+    for(char c:cells)gauge+=c=='>'?"▶":c=='.'?"▷":c=='+'?(plan_shown?"<em>▶</em>":"▷"):c=='#'?(plan_shown?"<em>▶</em>":"<i>▷</i>"):c=='*'?"<i>▶</i>":"<i>▷</i>";
     return gauge;
 }
 void upgrade_sync() {

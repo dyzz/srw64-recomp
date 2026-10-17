@@ -488,7 +488,7 @@
     "upgrade_unified_hint_pad": "{DLeftRight} Levels   ·   {A} Upgrade   ·   {B} Back",
     "upgrade_unified_hint_pages": "{KeyLeft}{KeyRight} Levels   ·   {KeyUp}{KeyDown} Page   ·   {Enter} / {A} Upgrade   ·   {Esc} / {B} Back",
     "upgrade_unified_hint_pages_pad": "{DLeftRight} Levels   ·   {DUpDown} Page   ·   {A} Upgrade   ·   {B} Back",
-    "upgrade_cap_original": "Original cap {n} ▶▷   ·   Beyond it ●☆",
+    "upgrade_cap_original": "Original cap {n} ▶▷   ·   Beyond it {extra}",
     "parts_list_hint": "{KeyUp}{KeyDown} Select   ·   {Enter} / {A}: Confirm   ·   {Esc} / {B}: Back",
     "parts_list_hint_pad": "{DUpDown} Select   ·   {A}: Confirm   ·   {B}: Back",
     "parts_list_hint_pages": "{KeyUp}{KeyDown} Select   ·   {KeyLeft}{KeyRight} Page   ·   {Enter} / {A}: Confirm   ·   {Esc} / {B}: Back",

@@ -22,7 +22,7 @@ the message names both weapons and the bonus weapon is there at that level; with
 
 --cap-break turns on the rule upgrade-cap-break (every unit to 15 levels) and plans
 straight to 15 with the funds at 9999999: every weapon reaches 15, the levels past the
-unit's own cap show as ●／☆ cells, and the page then says it can go no further."""
+unit's own cap show as the yellow ▶／▷ cells, and the page then says it can go no further."""
 import argparse
 import json
 from pathlib import Path

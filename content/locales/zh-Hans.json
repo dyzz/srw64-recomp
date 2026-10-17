@@ -488,7 +488,7 @@
     "upgrade_unified_hint_pad": "{DLeftRight} 段数   ·   {A} 改造   ·   {B} 返回",
     "upgrade_unified_hint_pages": "{KeyLeft}{KeyRight} 段数   ·   {KeyUp}{KeyDown} 翻页   ·   {Enter} / {A} 改造   ·   {Esc} / {B} 返回",
     "upgrade_unified_hint_pages_pad": "{DLeftRight} 段数   ·   {DUpDown} 翻页   ·   {A} 改造   ·   {B} 返回",
-    "upgrade_cap_original": "固有上限 {n} 段 ▶▷   ·   突破部分 ●☆",
+    "upgrade_cap_original": "固有上限 {n} 段 ▶▷   ·   突破部分 {extra}",
     "parts_list_hint": "{KeyUp}{KeyDown} 选择   ·   {Enter} / {A} 确定   ·   {Esc} / {B} 返回",
     "parts_list_hint_pad": "{DUpDown} 选择   ·   {A} 确定   ·   {B} 返回",
     "parts_list_hint_pages": "{KeyUp}{KeyDown} 选择   ·   {KeyLeft}{KeyRight} 翻页   ·   {Enter} / {A} 确定   ·   {Esc} / {B} 返回",
