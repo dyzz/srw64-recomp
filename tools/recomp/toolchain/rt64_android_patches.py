@@ -455,6 +455,13 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
             androidLogFailedStages("graphics", stages.data(), uint32_t(stages.size()));
 #       endif
             return;'''),
+    # Adreno 6xx drivers before 0x801a0000 (Galaxy S10 0x80163000 and Tab S6 0x80191000 on
+    # Android 9, Pixel 3a 0x80180000 and Pixel 3 0x8019f000 on Android 10; Device Farm,
+    # 2026-10-17) crash in their shader compiler (stack corruption in libllvm-glnext's
+    # updateUAVTexSamUsage) building RasterPSDynamic, the ubershader, and its uniform tile
+    # variant too. Without the ubershader nothing can be drawn, so setup stops there and
+    # the game asks the player to update Android (user: no fix for these). 0x801ea000
+    # (Pixel 4/4a/5, Android 11) builds it.
     # The Adreno 650's driver crashes while recording the two compute dispatches that move
     # a framebuffer between RDRAM and the GPU (Galaxy Tab S7, 2026-10-08: in vkCmdDispatch
     # under NativeTarget::copyToNative, a second after the game starts drawing; a POCO F3
@@ -474,6 +481,9 @@ namespace RT64 {
 #ifdef __ANDROID__
     // Set at setup from the device's name (rt64_application.cpp).
     bool AndroidFramebufferSyncDisabled = false;
+    // An Adreno 6xx driver whose shader compiler crashes on the ubershader: setup stops,
+    // and the game tells the player to update Android (graphics.cpp).
+    bool AndroidGpuDriverTooOld = false;
 #endif'''),
     ('src/render/rt64_native_target.cpp', '''        worker->commandList->setComputePushConstants(0, &nativeCB);
         worker->commandList->dispatch(dispatchX, dispatchY, 1);
@@ -491,6 +501,12 @@ namespace RT64 {
         worker->commandList->dispatch(dispatchX, dispatchY, 1);'''),
     ('src/hle/rt64_application.cpp', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);''', '''        fprintf(stdout, "Driver Version: 0x%" PRIx64 "\\n", deviceDescription.driverVersion);
 #   ifdef __ANDROID__
+        extern bool AndroidGpuDriverTooOld;
+        AndroidGpuDriverTooOld = deviceDescription.name.rfind("Adreno (TM) 6", 0) == 0 && deviceDescription.driverVersion < 0x801a0000;
+        if (AndroidGpuDriverTooOld) {
+            fprintf(stdout, "SRW64_GPU_DRIVER_TOO_OLD the shader compiler of this driver crashes on the ubershader\\n");
+            return SetupResult::GraphicsDeviceNotFound;
+        }
         extern bool AndroidFramebufferSyncDisabled;
         AndroidFramebufferSyncDisabled = deviceDescription.name.rfind("Adreno (TM) 6", 0) == 0 && deviceDescription.name != "Adreno (TM) 660";
         if (AndroidFramebufferSyncDisabled) {

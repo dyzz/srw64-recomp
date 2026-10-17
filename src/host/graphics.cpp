@@ -56,6 +56,8 @@
 #include <android/native_window.h>
 // Plume's Vulkan swap chain asks for the activity's current window (rt64_android_patches.py).
 namespace plume { extern ANativeWindow *(*AndroidCurrentWindow)(); }
+// Set when RT64's setup stops on an Adreno driver too old to build its shaders.
+namespace RT64 { extern bool AndroidGpuDriverTooOld; }
 #endif
 #define STB_IMAGE_WRITE_STATIC
 #define STB_IMAGE_WRITE_IMPLEMENTATION
@@ -123,7 +125,10 @@ std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure m
         const auto text = (capture_directory / "console.log").u8string();
         log.assign(text.begin(), text.end());
     }
-    const auto message = srw64::startup_failure::message(locale, gpu_names, log, detail);
+    auto message = srw64::startup_failure::message(locale, gpu_names, log, detail);
+#ifdef __ANDROID__
+    if (RT64::AndroidGpuDriverTooOld) message = srw64::startup_failure::old_android_driver(locale);
+#endif
 #ifdef _WIN32
     // Topmost, over the game's own window. Not owned by it: that window's thread (the main
     // thread) waits for this one (the renderer's), so it could not take the box's messages.

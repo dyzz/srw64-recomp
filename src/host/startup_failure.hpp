@@ -8,6 +8,19 @@
 #include <vector>
 
 namespace srw64::startup_failure {
+// Android: an Adreno 6xx whose driver (Android 9 and 10) crashes compiling the game's
+// shaders (rt64_android_patches.py). Newer drivers, which come with Android 11, work.
+inline std::string old_android_driver(const std::string& locale) {
+    if (locale == "ja")
+        return "Marchwind64 を起動できません。この端末のグラフィックドライバーは古く、ゲーム画面のシェーダーを作る途中で強制終了してしまいます。\n"
+               "Android 11 以降にアップデートしてから、もう一度起動してください。同じ機種でも、アップデート後は動作しています。";
+    if (locale == "en")
+        return "Unable to start Marchwind64: this phone's graphics driver is too old and crashes while building the game's shaders.\n"
+               "Update to Android 11 or later and start the game again. The same phones run it after the update.";
+    return "无法启动 Marchwind64：这台手机的显卡驱动太旧，在生成游戏画面所需的着色器时会崩溃。\n"
+           "请把系统升级到安卓 11 或更高版本，然后重新启动。同款手机升级系统后可以正常运行。";
+}
+
 inline std::string message(const std::string& locale, const std::vector<std::string>& gpus,
                            const std::string& log, const std::string& detail) {
     // An adapter can be listed twice (a second output, a virtual display): each name once.
