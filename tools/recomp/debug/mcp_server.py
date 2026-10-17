@@ -51,7 +51,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {
          "press": {"type": "string"}, "hold_ms": {"type": "integer"},
          "steps": {"type": "array", "items": {"type": "object"}}}}},
-    {"name": "srw64_pad", "description": "A virtual controller merged into the real one every frame (controller hints, native pages, and the host keys View, L2, R2). Names follow the Steam Deck and press what its default bindings give (x: C-left, y: battle animation, l3: language, r3: Original/HD, r4: 2x speed, l4: rewind): a b x y menu view l1 r1 l2 r2 l3 r3 r4 l4 up down left right ls_up ls_down ls_left ls_right rs_up rs_down rs_left rs_right; combine with +. {press, hold_ms} or {down} / {up} / {release_all: true}.",
+    {"name": "srw64_pad", "description": "A virtual controller merged into the real one every frame (controller hints, native pages, and the host keys View, L2, R2). Names follow the Steam Deck and press what its default bindings give (x: C-left, y: battle animation, l3: language, r3: Original/HD, r4: 2x speed): a b x y menu view l1 r1 l2 r2 l3 r3 r4 up down left right ls_up ls_down ls_left ls_right rs_up rs_down rs_left rs_right; combine with +. {press, hold_ms} or {down} / {up} / {release_all: true}.",
      "inputSchema": {"type": "object", "properties": {
          "press": {"type": "string", "description": "e.g. \"r2\" or \"r1+menu\""}, "hold_ms": {"type": "integer", "minimum": 0, "maximum": 10000},
          "down": {"type": "string"}, "up": {"type": "string"}, "release_all": {"type": "boolean"}}}},
@@ -80,9 +80,9 @@ TOOLS = [
     {"name": "srw64_window", "description": "Resize the game window (640..2560 x 480..1600 points), bring it to the front (needed only to exercise physical-focus behaviour or real mouse events), or press its close button (the game then exits as a player closing the window would).",
      "inputSchema": {"type": "object", "properties": {"width": {"type": "integer"}, "height": {"type": "integer"}, "front": {"type": "boolean"},
          "close": {"type": "boolean"}}}},
-    {"name": "srw64_settings", "description": "Change rules (preset or id list), language, image mode, the interface size, the UI modes, the refresh rate (original 30, 60 or the display's: RT64 interpolation), the frame-rate readout, the 2x game speed or rewind directly.",
+    {"name": "srw64_settings", "description": "Change rules (preset or id list), language, image mode, the interface size, the UI modes, the refresh rate (original 30, 60 or the display's: RT64 interpolation), the frame-rate readout or the 2x game speed directly.",
      "inputSchema": {"type": "object", "properties": {"rules": {"type": ["string", "array"]},
-         "refresh_rate": {"type": "string", "enum": ["original", "60", "display"]}, "show_fps": {"type": "boolean"}, "game_speed": {"type": "integer", "enum": [1, 2]}, "rewind": {"type": "boolean"},
+         "refresh_rate": {"type": "string", "enum": ["original", "60", "display"]}, "show_fps": {"type": "boolean"}, "game_speed": {"type": "integer", "enum": [1, 2]},
          "locale": {"type": "string", "enum": ["ja", "zh-Hans", "en"]}, "images": {"type": "string", "enum": ["original", "hd"]},
          "battle_ui": {"type": "string", "enum": ["native", "hd", "original"]},
          "ui_size": {"type": "string", "enum": ["standard", "large", "largest"]},

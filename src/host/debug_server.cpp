@@ -19,7 +19,6 @@
 #include "ui_text.hpp"
 #include "move_jump.hpp"
 #include "enemy_cycle.hpp"
-#include "rewind.hpp"
 #include "input_mode.hpp"
 #include "mini_stage.hpp"
 #include "presentation_settings.hpp"
@@ -134,7 +133,7 @@ uint16_t button_mask(const json& value) {
 // bindings give them (input_bindings.hpp); a remapped controller is not followed.
 uint32_t pad_mask(const std::string& text) {
     static const std::pair<const char*,uint32_t> names[]={{"a",0x8000},{"b",0x4000},{"x",0x0002},{"y",input::pad_animation},
-        {"l3",input::pad_language},{"r3",input::pad_images},{"r4",input::pad_speed},{"l4",input::pad_rewind},
+        {"l3",input::pad_language},{"r3",input::pad_images},{"r4",input::pad_speed},
         {"menu",0x1000},{"up",0x800},{"down",0x400},{"left",0x200},{"right",0x100},{"l1",0x20},{"r1",0x10},
         {"rs_up",8},{"rs_down",4},{"rs_left",2},{"rs_right",1},
         {"ls_up",1u<<16},{"ls_down",1u<<17},{"ls_left",1u<<18},{"ls_right",1u<<19},
@@ -180,7 +179,7 @@ json status(const json& params) {
         {"wide_map",{{"extra",wide_map::extra()},{"shown",wide_map::map_shown()},{"placed",wide_map::placed_draws()},{"map_width",wide_map::map_width_seen()},{"scroll_x",wide_map::scroll_seen()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
-        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"battle_viewer",battle_viewer::state()},{"move_jump",move_jump::state()},{"enemy_cycle",enemy_cycle::state()},{"rewind",rewind::state()},{"pad_held",pad().load()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
+        {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"battle_viewer",battle_viewer::state()},{"move_jump",move_jump::state()},{"enemy_cycle",enemy_cycle::state()},{"pad_held",pad().load()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
                     {"settings_window",settings_window::visible()},{"ui",debug_ui::summary()},
@@ -288,12 +287,6 @@ json settings(const json& params) {
         if(speed!=1 && speed!=2)throw RpcError(InvalidParams,"game_speed must be 1 or 2");
         on_window([=]{settings::set_game_speed_double(speed==2);return json(nullptr);});
         done["game_speed"]=speed;
-    }
-    if(params.contains("rewind")) {
-        if(!params["rewind"].is_boolean())throw RpcError(InvalidParams,"rewind must be true or false");
-        const bool on=params["rewind"].get<bool>();
-        on_window([=]{settings::set_rewind_on(on);return json(nullptr);});
-        done["rewind"]=on;
     }
     if(params.contains("ui_size")) {
         const auto size=params["ui_size"].get<std::string>();

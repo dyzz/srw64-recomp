@@ -94,7 +94,7 @@ recomp-content-test:
 # Native components require the pinned toolchain/generated headers. Keep this
 # separate from the ROM-independent Python `check` target.
 .PHONY: recomp-native-check recomp-timer-test recomp-replay-test
-recomp-native-check: recomp-input-bindings-test recomp-button-prompts-test recomp-game-speed-test recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-script-skip-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-cheats-test recomp-bezel-test recomp-rom-art-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test recomp-unit-name-test recomp-stage-info-test recomp-rewind-test
+recomp-native-check: recomp-input-bindings-test recomp-button-prompts-test recomp-game-speed-test recomp-battle-preview-test recomp-audio-queue-test recomp-intro-test recomp-name-entry-test recomp-content-test recomp-timer-test recomp-guest-shutdown-test recomp-replay-test recomp-state-probe-test recomp-script-inject-test recomp-script-skip-test recomp-mini-stage-test recomp-rule-fixes-test recomp-base-fixes-test recomp-upgrade-rules-test recomp-upgrade-refund-test recomp-parts-carry-test recomp-cheats-test recomp-bezel-test recomp-rom-art-test recomp-link-battler-test recomp-debug-protocol-test recomp-intermission-test recomp-unit-name-test recomp-stage-info-test
 
 .PHONY: recomp-state-probe-test
 recomp-state-probe-test:
@@ -129,12 +129,6 @@ recomp-game-speed-test:
 	mkdir -p $(RECOMP_BUILD)
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host tests/native_game_speed.cpp -o $(RECOMP_BUILD)/game-speed-test
 	$(RECOMP_BUILD)/game-speed-test
-
-.PHONY: recomp-rewind-test
-recomp-rewind-test:
-	mkdir -p $(RECOMP_BUILD)
-	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_rewind.cpp -o $(RECOMP_BUILD)/rewind-test
-	$(RECOMP_BUILD)/rewind-test
 
 .PHONY: recomp-button-prompts-test
 recomp-button-prompts-test:

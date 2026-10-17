@@ -23,7 +23,6 @@
 #include "map_miss.hpp"
 #include "ui_text.hpp"
 #include "game_speed.hpp"
-#include "rewind.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 bool srw64_sound_effects_muted{};
@@ -37,7 +36,6 @@ void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
     // X ends the presentation early; the settled result lives in the map
     // overlay's participant table and is applied when the map is back.
     srw64::battle_animation_probe::step(ram,ctx);
-    srw64::rewind::battle_frame(ram,ctx);   // the Rewind button: the original's abort, to mode 0x11
     srw64::wide_map::mark_battle();   // the sky is drawn to each side (background_sides)
     srw64_original_battle_animation_step(ram,ctx);
 }
@@ -46,8 +44,6 @@ void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {
     // 4) and runs the animation-off branch of the fork instead, so the map
     // presents the result as it does with the animation switched off.
     srw64::battle_animation_probe::map_step(ram,ctx);
-    // The map's recent states, and going back to one (docs/design/rewind.md).
-    srw64::rewind::map_frame(ram,ctx);
     // With the animation off: a MISS for a missed attack, and a faster presentation.
     srw64::map_miss::map_step(ram,ctx);
     srw64_original_map_dispatch(ram,ctx);
@@ -115,7 +111,6 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     if(srw64_game_hooks.swap_frame)srw64_game_hooks.swap_frame(ram);
     if(srw64_game_hooks.save_frame)srw64_game_hooks.save_frame(ram);
     if(srw64_game_hooks.cheats_frame)srw64_game_hooks.cheats_frame(ram);
-    srw64::rewind::frame(ram);
     if(srw64::mini_stage::take_direct_entry()) {
         // The title overlay's own exit (801CAA34..801CAA80) with the mode the
         // intermission's next-stage exit selects (801D8D94).

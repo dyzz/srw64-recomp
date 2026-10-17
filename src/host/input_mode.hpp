@@ -26,6 +26,4 @@ inline constexpr uint32_t pad_language = 1u << 24;
 inline constexpr uint32_t pad_images = 1u << 25;
 // 2x speed on / off (game_speed.hpp; Tab, the Deck's R4 back button).
 inline constexpr uint32_t pad_speed = 1u << 26;
-// Rewind: the tactical map back one state (rewind.hpp; R, the Deck's L4 back button).
-inline constexpr uint32_t pad_rewind = 1u << 27;
 }

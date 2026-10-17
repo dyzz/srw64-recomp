@@ -7,7 +7,6 @@
 #include "window_test_control.hpp"
 #include "input_mode.hpp"
 #include "input_bindings.hpp"
-#include "rewind.hpp"
 #include "steam_deck.hpp"
 #include "game_frame.hpp"
 #include "frame_rate.hpp"
@@ -1214,7 +1213,6 @@ void srw64_keyboard_input(uint16_t* buttons, float* x, float* y) {
 #ifdef SRW64_NATIVE_DIALOGUE
     state=srw64::settings::filter_input(state);
 #endif
-    state=srw64::rewind::filter_input(state);   // nothing reaches the game while a rewind leaves
     // START held while the original boots opens its Controller Pak manager, whose
     // osPfs calls the runtime lacks (the host aborts). A START that is down in the
     // first two seconds is ignored until it has been released.

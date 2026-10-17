@@ -180,8 +180,6 @@ void fixed_buttons() {
             check(!full.slots[i].filled() && !title.slots[i].filled() && reading.slots[i].filled(), "skip only while reading");
         } else if (i == size_t(Slot::Info)) {
             check(full.slots[i].command == "stage-info-open" && !title.slots[i].filled(), "stage info everywhere but the title");
-        } else if (i == size_t(Slot::Rewind)) {
-            check(!full.slots[i].filled() && !title.slots[i].filled() && !reading.slots[i].filled(), "rewind only when asked for");
         } else check(full.slots[i].filled() && title.slots[i].filled() && reading.slots[i].filled(), "no empty place");
         if (i != size_t(Slot::Back) && i != size_t(Slot::Arc2) && i != size_t(Slot::Arc3) && i != size_t(Slot::Skip))
             check(reading.slots[i] == full.slots[i], "reading keeps the top row and other buttons");
@@ -202,32 +200,6 @@ void fixed_buttons() {
     check(!f.down(l, full, 1, l[Slot::Skip].x, l[Slot::Skip].y), "skip area consumes touches outside dialogue");
     check(title[Slot::Top3].command == "library-open" && title[Slot::Top4].command == "viewer-open" &&
           title[Slot::Primary].bits == bits::A && title[Slot::Top2].bits == bits::Start, "the title's entries");
-}
-
-// Rewind (rewind.hpp): offered only where it can act, on the map's screens and in the battle
-// animation, and only when the caller says the setting is on; it opens nothing, it asks.
-void rewind_button() {
-    using srw64::touch_scene::rewind_place;
-    check(rewind_place(3) && rewind_place(0xB) && rewind_place(2) && rewind_place(0x11), "the map and the battle animation");
-    check(!rewind_place(4) && !rewind_place(7) && !rewind_place(12) && !rewind_place(0x1A), "intermission, title, world map, demo battle");
-    for (size_t i = 0; i < size_t(SceneId::Count); ++i) check(!scene(SceneId(i))[Slot::Rewind].filled(), "rewind with the setting off");
-    for (const auto id : {SceneId::Other, SceneId::MapIdle, SceneId::MapMenu, SceneId::MoveSelect, SceneId::TargetList,
-                          SceneId::InfoWindow, SceneId::GridList, SceneId::BattleScene}) {
-        const auto s = scene(id, Reading::Active, true);
-        check(s[Slot::Rewind].command == "rewind" && s[Slot::Rewind].label == "touch_rewind" && !s[Slot::Rewind].bits, "no rewind on the map");
-        auto without = s; without.slots[size_t(Slot::Rewind)] = {};
-        check(without == scene(id), "rewind moved another button");
-    }
-    for (const auto id : {SceneId::Hidden, SceneId::Page, SceneId::FixedPage, SceneId::BattlePage, SceneId::BattleSpirits,
-                          SceneId::Dialogue, SceneId::FixedDialogue, SceneId::Choice, SceneId::Prologue, SceneId::AnyKey,
-                          SceneId::FixedTitle, SceneId::TitleRing, SceneId::Attract, SceneId::Opening})
-        check(!scene(id, Reading::Active, true)[Slot::Rewind].filled(), "rewind while reading, on a page or at the title");
-    const auto l = layout(width, height, mm);
-    const auto map = scene(SceneId::Other, Reading::Active, true);
-    Fingers f;
-    check(f.down(l, map, 1, l[Slot::Rewind].x, l[Slot::Rewind].y) && f.buttons() == 0 && f.pressed(Slot::Rewind), "rewind takes its touch");
-    f.clear();
-    check(!f.down(l, scene(SceneId::Other), 1, l[Slot::Rewind].x, l[Slot::Rewind].y), "the empty rewind place took a touch");
 }
 
 void reading_history() {
@@ -278,6 +250,6 @@ void reading_history() {
     fingers.up(4);
 }
 int main() {
-    try { places(); scenes(); buttons(); dpad(); recognition(); fixed_buttons(); rewind_button(); reading_history(); std::cout << checks << " checks passed\n"; return 0; }
+    try { places(); scenes(); buttons(); dpad(); recognition(); fixed_buttons(); reading_history(); std::cout << checks << " checks passed\n"; return 0; }
     catch (const std::exception& error) { std::cerr << "FAIL: " << error.what() << "\n"; return 1; }
 }

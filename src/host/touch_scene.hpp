@@ -68,14 +68,6 @@ inline std::atomic<bool>& story_running() {
     return running;
 }
 
-// Where the Rewind button can act (rewind.hpp leavable, battle_abortable): the tactical map
-// (modes 3, 0xB), its restore a rewind passes through (0x11) and the battle animation (2).
-inline bool rewind_place(unsigned mode) { return mode == 3 || mode == 0xB || mode == 0x11 || mode == 2; }
-inline std::atomic<bool>& at_rewind_place() {
-    static std::atomic<bool> at{false};
-    return at;
-}
-
 inline std::atomic<uint8_t>& current() {
     static std::atomic<uint8_t> scene{uint8_t(touch_pad::SceneId::Other)};
     return scene;

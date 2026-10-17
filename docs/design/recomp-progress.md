@@ -212,6 +212,23 @@ ROM `0x15BF80`，属于 `load_00121560`。补入按装载范围区分的候选�
 `build/libretro/start-scan/screenshots/frame-000900.png` 内容一致。二者的输出像素
 比例不同，这里只记录直接查看得到的场景/文字对应关系。
 
+### overlay 读入期间的帧钩子（2026-10-17）
+
+`8007F704` 按至多 0x400 字节一块读 overlay，每块都等 DMA 消息；等待期间帧边界 `80085F30` 照常运行。有两个帧钩子会把 overlay 里的原版字节改成我们的版本：
+
+- `menu_widen` 把地图 overlay 的 `D_80217B1C[0]` 从 0xEE 改成 0xDE；
+- `battle_hud` 改战斗 overlay `80222D78` 处的色带。
+
+它们的判断条件（`801C9D70` 已是地图指令、`80217B1C` 仍是原值）在 overlay 才读进一半时就已成立，于是提前改了。后面的块读完一比，就和 ROM 对不上，触发「overlay DMA byte mismatch」中止。桌面上整段读取在一帧之内完成，几乎碰不到；安卓上块与块之间空档长，会撞上：10-15 有一次普通进战斗时的停机；在 `rewind` 分支上做战斗中途回溯（中止演出后切回地图）时，Seeker 上 29 场停了 3 场。
+
+修法（`host.cpp`）：
+
+- `8007F704` 读取期间设 `overlay_loading`，`battle_hud::frame` 和 `menu_widen::frame_start` 这两项等读完的下一帧再改；读完后菜单夹限照常是 0xDE。
+- 校验不一致时，日志写出每段不同字节的地址、实际值与 ROM 值、当时的模式，并在 100 ms 后再比一次。
+- 开发时设 `SRW64_OVERLAY_REPAIR=1`，会按 ROM 修回并继续运行，用来在手机上连续抓现场。
+
+修后在 Seeker 上连续 30 场战斗中途回溯，没有再停。
+
 ## 音频微码与任务对照
 
 已观察的 boot 微码位于 ROM `0x4DEA0` / RAM `0x800C34B0`，大小 `0xD0`。
