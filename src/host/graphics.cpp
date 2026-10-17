@@ -1,5 +1,7 @@
 #define HLSL_CPU
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_application.h"
+#endif
 #include "graphics.hpp"
 #include "mini_stage.hpp"
 #include "debug_protocol.hpp"
@@ -13,7 +15,9 @@
 #include "wide_map.hpp"
 #include "native_marker.hpp"
 #include "native_map.hpp"
+#ifndef SRW64_GL_ONLY
 #include "native_gpu.hpp"
+#endif
 #include "native_portrait.hpp"
 #include "native_background.hpp"
 #include "native_sprite.hpp"
@@ -28,9 +32,11 @@
 #include "debug_ui.hpp"
 #include "ui/frontend.hpp"
 #endif
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
 #include "../include/rt64_extended_gbi.h"
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "native_name_entry.hpp"
 #include "link_page.hpp"
@@ -54,9 +60,11 @@
 #include "../gl/gl_renderer.hpp"
 #include "native_gl.hpp"
 #endif
+#ifndef SRW64_GL_ONLY
 #include "rt64_render_hooks.h"
 #ifdef __APPLE__
 #include "plume_metal.h"
+#endif
 #endif
 #ifdef __ANDROID__
 #include <android/native_window.h>
@@ -111,7 +119,9 @@ std::array<uint8_t, 0x1000> dmem{}, imem{};
 std::array<uint8_t, 0x40> header{};
 uint32_t mi_interrupt{}, dpc_start{}, dpc_end{}, dpc_current{}, dpc_status{};
 uint32_t dpc_clock{}, dpc_buffer_busy{}, dpc_pipe_busy{}, dpc_tmem{};
+#ifndef SRW64_GL_ONLY
 plume::RenderDevice* capture_device;
+#endif
 int graphics_api = -1;  // RT64's chosen API (RT64::UserConfiguration::GraphicsAPI), for srw64_graphics_info
 std::filesystem::path capture_directory;
 std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure message
@@ -226,6 +236,8 @@ SDL_Scancode virtual_scancode(srw64::debug::Key key) {
 // (docs/design/deck-16x10.md) the sides are black, like the 4:3 picture's pillarbox.
 // Each frame says how much of the picture it fills (wide_map::Shape): all of it, the band a
 // widened tactical map's view covers, or the original's 4:3 (art not yet drawn wider).
+// RT64: the scene picture, its present hook and the renderer (none in the GL-only host).
+#ifndef SRW64_GL_ONLY
 void mask_sides(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer) {
     const float width = float(framebuffer->getWidth()), height = float(framebuffer->getHeight());
     const float scale = srw64::frame::scale(width, height), picture = srw64::frame::width(width, height);
@@ -926,6 +938,7 @@ private:
     unsigned worldmap_tile_size=0;
     std::vector<uint8_t> display_copy;
 };
+#endif  // SRW64_GL_ONLY
 }
 
 #ifdef SRW64_GL_RENDERER
@@ -936,9 +949,14 @@ namespace {
 // window frames, HD art) are not drawn yet; the debug interface's screenshots are.
 SDL_GLContext gl_context = nullptr;
 bool gl_mode() {
+#ifdef SRW64_GL_ONLY
+    return true;
+#else
     static const bool value = std::getenv("SRW64_RENDERER") && std::string(std::getenv("SRW64_RENDERER")) == "gl";
     return value;
+#endif
 }
+std::string gl_device;   // GL_RENDERER, for srw64_graphics_info
 
 class GLRenderer final : public ultramodern::renderer::RendererContext {
 public:
@@ -956,6 +974,7 @@ public:
         setup_result = ultramodern::renderer::SetupResult::Success;
         chosen_api = ultramodern::renderer::GraphicsApi::Auto;
         fprintf(stderr, "SRW64_GRAPHICS_API gl %s / %s scale=%d\n", (const char*)glGetString(GL_VERSION), (const char*)glGetString(GL_RENDERER), scale);
+        gl_device = std::string((const char*)glGetString(GL_VERSION)) + " / " + (const char*)glGetString(GL_RENDERER);
 #ifdef SRW64_NATIVE_DIALOGUE
         srw64::ui::render_init_gl();
 #endif
@@ -1079,7 +1098,12 @@ std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
 #ifdef SRW64_GL_RENDERER
     if (gl_mode()) return std::make_unique<GLRenderer>(rdram);
 #endif
+#ifdef SRW64_GL_ONLY
+    (void)handle;
+    return nullptr;
+#else
     return std::make_unique<SRW64Renderer>(rdram, handle);
+#endif
 }
 
 ultramodern::renderer::WindowHandle srw64_create_window(void*) {
@@ -1156,11 +1180,13 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #endif
     }
 #endif
-#if defined(__APPLE__)
+#if defined(__APPLE__) && !defined(SRW64_GL_ONLY)
     view = SDL_Metal_CreateView(window);
     if (!view) std::abort();
     static_cast<CA::MetalLayer*>(SDL_Metal_GetLayer(view))->setFramebufferOnly(false);
     return {info.info.cocoa.window, SDL_Metal_GetLayer(view)};
+#elif defined(__APPLE__)
+    return {info.info.cocoa.window, nullptr};
 #elif defined(_WIN32)
     return {info.info.win.window, GetCurrentThreadId()};
 #else
@@ -1169,7 +1195,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 }
 
 void srw64_after_gpu(plume::RenderCommandList* list, std::function<void(bool completed)> callback) {
-#ifdef __APPLE__
+#if defined(__APPLE__) && !defined(SRW64_GL_ONLY)
     if (metal_backend) {
         static_cast<plume::MetalCommandList*>(list)->mtl->addCompletedHandler([callback = std::move(callback)](MTL::CommandBuffer* command) {
             callback(command->status() == MTL::CommandBufferStatusCompleted);
@@ -1363,12 +1389,16 @@ nlohmann::json srw64_window_status() {
     SDL_GetWindowSize(window, &width, &height);
 #ifdef SRW64_GL_RENDERER
     if (gl_mode()) SDL_GL_GetDrawableSize(window, &pixel_width, &pixel_height);
+#endif
+#ifndef SRW64_GL_ONLY
+#ifdef SRW64_GL_RENDERER
     else
 #endif
 #ifdef __APPLE__
     SDL_Metal_GetDrawableSize(window, &pixel_width, &pixel_height);
 #else
     SDL_Vulkan_GetDrawableSize(window, &pixel_width, &pixel_height);
+#endif
 #endif
     return {{"focused", SDL_GetKeyboardFocus() == window}, {"width", width}, {"height", height},
             {"fullscreen", (SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN) != 0},
@@ -1377,6 +1407,12 @@ nlohmann::json srw64_window_status() {
 
 // The graphics API and the GPU as plume describes it, for a bug report (bug_report.hpp).
 nlohmann::json srw64_graphics_info() {
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) return {{"api", "OpenGL"}, {"device", gl_device}};
+#endif
+#ifdef SRW64_GL_ONLY
+    return {{"api", "none"}};
+#else
     using API = RT64::UserConfiguration::GraphicsAPI;
     const char* api = graphics_api < 0 ? "none" : graphics_api == int(API::D3D12) ? "D3D12" :
                       graphics_api == int(API::Vulkan) ? "Vulkan" : graphics_api == int(API::Metal) ? "Metal" : "other";
@@ -1391,6 +1427,7 @@ nlohmann::json srw64_graphics_info() {
         info["video_memory_mb"] = d.dedicatedVideoMemory >> 20;
     }
     return info;
+#endif
 }
 
 nlohmann::json srw64_window_control(const nlohmann::json& params) {

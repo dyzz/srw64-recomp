@@ -280,3 +280,57 @@ if(SRW64_ENABLE_RT64)
     endif()
     endforeach()
 endif()
+# The PS Vita's host without RT64 or Plume (docs/design/psv-port.md, V1 → V2): the GL
+# renderer (src/gl), RmlUi on GL, the native dialogue and the host's tagged draws, built on
+# the desktop's OpenGL 2.1 here and on vitaGL there. The HD layers, the RetroArch filters and
+# the Plume adapters are not compiled (gl_only_stubs.cpp answers for them).
+option(SRW64_GL_ONLY "Build srw64-gl-host: the GL renderer only, no RT64" OFF)
+if(SRW64_GL_ONLY)
+    if(SRW64_ENABLE_RT64)
+        message(FATAL_ERROR "SRW64_GL_ONLY and SRW64_ENABLE_RT64 build different hosts: use separate build folders")
+    endif()
+    if(APPLE)
+        enable_language(OBJCXX)
+    endif()
+    # Header-only libraries that live in RT64's checkout (json, stb); nothing of RT64 is built.
+    set(SRW64_RT64 "${SRW64_BUILD}/upstream/RT64")
+    srw64_add_launch("${SRW64_RT64}/src/contrib")
+    include("${SRW64_ROOT}/cmake/DialogueCpu.cmake")
+    srw64_add_dialogue_cpu("${SRW64_RT64}/src/contrib")
+    if(NOT TARGET SDL2::SDL2)
+        find_package(SDL2 REQUIRED)
+    endif()
+    find_package(OpenGL REQUIRED)
+    add_subdirectory("${SRW64_ROOT}/src/native/ui" ui-probe)
+    add_executable(srw64-gl-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp"
+        native_dialogue.cpp native_intro.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp"
+        sprite_text.cpp ui_text.cpp title_page.cpp battle_viewer.cpp move_jump.cpp enemy_cycle.cpp unit_name.cpp
+        native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp"
+        update_check.cpp update_http.cpp console_log.cpp bug_report.cpp stall_watchdog.cpp
+        debug_server.cpp debug_transport.cpp gbi_stats.cpp
+        link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp
+        cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp stage_info.cpp
+        rom_art.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"
+        native_map.cpp native_sprite.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp game_hooks.cpp
+        "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" dialogue_gl.cpp native_gl.cpp
+        "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp" gl_only_stubs.cpp)
+    target_compile_definitions(srw64-gl-host PRIVATE SRW64_NATIVE_DIALOGUE SRW64_GL_RENDERER SRW64_GL_ONLY)
+    set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${SRW64_ROOT}/CMakeLists.txt")
+    file(STRINGS "${SRW64_ROOT}/CMakeLists.txt" SRW64_PROJECT_LINE REGEX "^project\\(.* VERSION ")
+    string(REGEX REPLACE ".* VERSION ([0-9.]+).*" "\\1" SRW64_VERSION "${SRW64_PROJECT_LINE}")
+    set_property(SOURCE "${SRW64_ROOT}/src/native/ui/frontend.cpp" APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
+    if(APPLE)
+        target_sources(srw64-gl-host PRIVATE macos/app_menu.mm macos/update_http_macos.mm)
+        set_source_files_properties(macos/app_menu.mm macos/update_http_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
+        target_link_libraries(srw64-gl-host PRIVATE "-framework Cocoa" "-framework QuartzCore")
+    elseif(NOT WIN32)
+        target_link_libraries(srw64-gl-host PRIVATE ${CMAKE_DL_LIBS})
+    endif()
+    target_include_directories(srw64-gl-host PRIVATE
+        "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_BINARY_DIR}" "${SRW64_ROOT}/src/native"
+        "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}"
+        "${SRW64_RUNTIME}/librecomp/include/librecomp" "${SRW64_RUNTIME}/thirdparty/sse2neon"
+        "${SRW64_RUNTIME}/thirdparty/concurrentqueue" "${SRW64_RT64}/src/contrib" "${SRW64_RT64}/include")
+    target_link_libraries(srw64-gl-host PRIVATE srw64_launch srw64_ui_pages srw64_dialogue_cpu srw64_cpu librecomp
+        SDL2::SDL2 OpenGL::GL)
+endif()

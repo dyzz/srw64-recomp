@@ -7,7 +7,9 @@
 #include "slant_decorator.hpp"
 #include "name_page.hpp"
 #include "text_input.hpp"
+#ifndef SRW64_GL_ONLY
 #include "ui_renderer.h"
+#endif
 #ifdef SRW64_GL_RENDERER
 #include "ui_renderer_gl.hpp"
 #endif
@@ -79,7 +81,9 @@ std::condition_variable completed;
 bool in_flight{}, ready{}, initialized{};
 SDL_Window* window{};
 std::filesystem::path output;
+#ifndef SRW64_GL_ONLY
 std::unique_ptr<recompui::RmlRenderInterface_RT64> renderer;
+#endif
 #ifdef SRW64_GL_RENDERER
 // The PS Vita's GL path (SRW64_RENDERER=gl, graphics.cpp): in place of the Plume adapter.
 std::unique_ptr<recompui::RmlRenderInterface_GL> gl_renderer;
@@ -89,19 +93,31 @@ void queue_file(const std::string& name,const std::vector<char>& bytes) {
 #ifdef SRW64_GL_RENDERER
     if(gl_renderer){gl_renderer->queue_image_from_bytes_file(name,bytes);return;}
 #endif
+#ifndef SRW64_GL_ONLY
     renderer->queue_image_from_bytes_file(name,bytes);
+#else
+    (void)name;(void)bytes;
+#endif
 }
 void queue_rgba(const std::string& name,const std::vector<char>& bytes,uint32_t width,uint32_t height) {
 #ifdef SRW64_GL_RENDERER
     if(gl_renderer){gl_renderer->queue_image_from_bytes_rgba32(name,bytes,width,height);return;}
 #endif
+#ifndef SRW64_GL_ONLY
     renderer->queue_image_from_bytes_rgba32(name,bytes,width,height);
+#else
+    (void)name;(void)bytes;(void)width;(void)height;
+#endif
 }
 Rml::RenderInterface* rml_renderer() {
 #ifdef SRW64_GL_RENDERER
     if(gl_renderer)return gl_renderer->get_rml_interface();
 #endif
+#ifndef SRW64_GL_ONLY
     return renderer->get_rml_interface();
+#else
+    return nullptr;
+#endif
 }
 // All access, including Render(), holds mutex. SDL callbacks are deferred to the
 // window thread, including text deactivation during render-device teardown.
@@ -6352,7 +6368,9 @@ Rml::Element* find(Rml::Element* root,const std::string& text,bool exact) {
 void require(){if(!context)throw debug::RpcError(debug::ServerError,"shared UI is not ready");}
 }
 void window_init(SDL_Window* value,const std::filesystem::path& path){window=value;output=path;system.SetWindow(window);input.defer_sdl(true);app_menu::attach(window);}
+#ifndef SRW64_GL_ONLY
 void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device);ready=true;}
+#endif
 // A minimised window keeps the last layout. On Windows SDL 2.26 reads the pixel size from the
 // client area, 0 x 0 while minimised, but keeps the size in points: the ratio was 0, the dp
 // NaN, and a page laid out then (the settings window, the battle page) kept RmlUi in its layout
@@ -6370,6 +6388,7 @@ uint32_t touch_buttons() {
     return touch_held.load(std::memory_order_relaxed)|linger;
 }
 bool event(SDL_Event& e){auto lock=lock_ui();bool consumed=dispatch(e);if(e.type==SDL_TEXTEDITING_EXT)SDL_free(e.editExt.text);if(context){context->Update();input.flush_sdl();}return consumed;}
+#ifndef SRW64_GL_ONLY
 // Set while this present's first pass is in flight: its second pass is part of the same
 // frame and must not wait for it (lock_ui waits for the previous frame's pages).
 bool first_pass_drawn=false;
@@ -6395,6 +6414,7 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     first_pass_drawn=layer==0;
     in_flight=true;return true;
 }
+#endif
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
 #ifdef SRW64_GL_RENDERER
 void render_init_gl(){auto lock=lock_ui();gl_renderer=std::make_unique<recompui::RmlRenderInterface_GL>();ready=true;}
@@ -6416,7 +6436,9 @@ void render_shutdown_gl(){
     gl_renderer.reset();
 }
 #endif
+#ifndef SRW64_GL_ONLY
 void render_shutdown(){auto lock=lock_ui();ready=false;pictures::stop();if(initialized){name_page.reset();sheet.reset();sheet_text.clear();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
+#endif
 void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);swap_page::window_claim_input(false);title_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;

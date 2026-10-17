@@ -4,8 +4,10 @@
 #include "native_marker.hpp"
 #include "native_quads.hpp"
 #include "presentation/image_mode.hpp"
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
+#endif
 #include "native_gpu.hpp"
 #include "menu_widen.hpp"
 #include "rom_art.hpp"
@@ -84,9 +86,11 @@ int last_colony_frame = -1, last_colony_layout = -1, last_colony_mode = -1;
 std::array<Draw, kRing> ring;
 std::mutex ring_mutex;
 uint32_t next_id = 1;
+#ifndef SRW64_GL_ONLY
 RT64::NativeMeshClassify *previous_classify{};
 RT64::NativeMeshRender *previous_render{};
-std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdMap{VS,PS}.hlsl
+std::unique_ptr<gpu::Program> program;
+#endif      // src/host/shaders/HdMap{VS,PS}.hlsl
 std::mutex asset_mutex;                      // Asset::state and the decode queue
 std::condition_variable decode_wake, decoded_wake;
 std::atomic<uint64_t> draw_clock{};          // counts HD map draws, for evicting maps not drawn lately
@@ -272,6 +276,7 @@ bool hd_enabled() {
 
 std::atomic<bool (*)(uint16_t)> original_frames{};
 
+#ifndef SRW64_GL_ONLY  // RT64's hooks
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -341,6 +346,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     if (!render_quad(list, framebuffer, call, asset, draw)) return true;
     ++rendered;
     if (asset.lazy && rendered % 64 == 0) evict_stale(size_t(draw.asset));
+
     for (const auto& xy : asset.colonies) {
         Draw overlay = draw;
         if (!project_overlay(draw.rect, draw.uv, asset.width, asset.height,
@@ -352,6 +358,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     }
     return true;
 }
+#endif
 }
 
 namespace {
@@ -454,13 +461,16 @@ void configure(const std::filesystem::path& directory) {
     assets.reserve(assets.size() + 512);     // frames join later: no reallocation under the renderer
     // The widened menus' frames come from the ROM with or without the pack, so this runs always.
     decoder = std::thread(decode_loop);
+#ifndef SRW64_GL_ONLY
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
+#endif
     native_quads::add(gl_quads);
     fprintf(stderr, "SRW64_HD_MAPS loaded %zu map(s)%s\n", assets.size(), rom_frames ? ", window frames from the ROM" : "");
 }
 
+#ifndef SRW64_GL_ONLY
 void gpu_init() {
     // The textures upload on first draw, on RT64's workload command list.
     {
@@ -472,6 +482,7 @@ void gpu_init() {
     // One linear clamp sampler after the base and index textures.
     program = std::make_unique<gpu::Program>("HdMap", 2, std::vector<gpu::Sampler>{{true, true}});
 }
+#endif
 
 void set_original_frames(bool (*keep)(uint16_t)) { original_frames = keep; }
 
@@ -693,6 +704,8 @@ void shutdown() {
         frame.textures.reset(); frame.base_texture.reset(); frame.index_texture.reset();
     }
     colony_events.close();
+#ifndef SRW64_GL_ONLY
     program.reset();
+#endif
 }
 }

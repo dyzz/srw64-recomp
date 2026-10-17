@@ -235,6 +235,9 @@ class Session:
         detach keeps it running for later commands, as `srw64ctl.py launch` does.
         """
         DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+        # SRW64_HOST_BINARY: a built host for every launch that names none (the GL-only
+        # srw64-gl-host of docs/design/psv-port.md, say), so the check scripts run on it.
+        binary = binary or os.environ.get("SRW64_HOST_BINARY") or None
         run = DEBUG_DIR / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
         command = [sys.executable, str(ROOT / "tools/recomp/run/run_host_probe.py"), "--graphics", "--interactive",
                    "--profile", str(PROFILE), "--output", str(run)]
