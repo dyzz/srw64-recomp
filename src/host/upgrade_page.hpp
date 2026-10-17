@@ -1,5 +1,6 @@
 #pragma once
 #include "json/json.hpp"
+#include "recomp.h"
 #include <cstdint>
 #include <filesystem>
 #include <string>
@@ -16,8 +17,13 @@ nlohmann::json state();
 // Window thread, for page `serial`: list "move:R", "page:P", "choose", "back";
 // stats "move:S", "more:S" / "less:S" (plan one level more or less), "choose:S",
 // "confirm", "cancel", "dismiss", "back" (drops a plan first); weapon confirm
-// "move:0/1", "more" / "less", "confirm", "cancel", "dismiss", "back".
+// "move:0/1", "more" / "less", "confirm", "cancel", "dismiss", "back"; the unified
+// weapon page (settings::unified_weapon_upgrades) "more" / "less", "page:P", "choose",
+// "confirm", "cancel", "dismiss", "back".
 void answer(uint64_t serial,const std::string& action);
+// After the インターミッション is entered (801D8F74): with unified weapon upgrades, weapons
+// below their unit's unified level come up to it for free.
+void entered(uint8_t* ram,recomp_context* ctx);
 bool owns_input();
 void window_claim_input(bool);
 uint16_t input(uint16_t buttons);

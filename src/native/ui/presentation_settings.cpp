@@ -67,6 +67,7 @@ constexpr bool fps_default=true;
 #else
 constexpr bool fps_default=false;
 #endif
+std::atomic_bool unified_weapons{true};
 std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true},fps_shown{fps_default},debug_on{false},hints_always{false};
 std::atomic<RefreshRate> refresh_choice{RefreshRate::Original};
 std::mutex endpoint_mutex;
@@ -80,7 +81,7 @@ std::atomic<unsigned> dialogue_size{13};
 std::atomic_bool dialogue_size_changed{};
 void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
-        {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"name_entry_ui",native_name_entry?"native":"original"},
+        {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"weapon_upgrade",unified_weapons?"unified":"single"},{"name_entry_ui",native_name_entry?"native":"original"},
         {"map_unit_icons",map_icons_hd?"hd":"original"},{"msaa",msaa_on.load()},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
         {"game_speed",srw64::game_speed::on.load()?2:1},{"rewind",srw64::rewind::on.load()},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
         {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
@@ -294,6 +295,12 @@ void set_native_intermission_ui(bool native) {
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
+bool unified_weapon_upgrades(){return unified_weapons.load();}
+void set_unified_weapon_upgrades(bool unified) {
+    unified_weapons=unified;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
 bool native_name_entry_ui(){return native_name_entry.load();}
 void set_native_name_entry_ui(bool native) {
     native_name_entry=native;
@@ -338,6 +345,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         const auto saved=nlohmann::json::parse(file,nullptr,false);
         if(saved.is_object()){battle=battle_ui_from(saved.value("battle_ui","native"));native_intermission=saved.value("intermission_ui","native")!="original";native_name_entry=saved.value("name_entry_ui","native")!="original";native_title=saved.value("title_ui","native")!="original";}
         if(saved.is_object())map_icons_hd=saved.value("map_unit_icons","hd")!="original";
+        if(saved.is_object())unified_weapons=saved.value("weapon_upgrade","unified")!="single";
         if(saved.is_object() && saved.contains("msaa") && saved["msaa"].is_boolean())msaa_on=msaa_started=saved["msaa"].get<bool>();
         if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
         if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";

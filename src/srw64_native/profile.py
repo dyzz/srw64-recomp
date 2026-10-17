@@ -122,7 +122,9 @@ UI_KEYS |= {"settings_save_folder", "settings_save_folder_note", "settings_save_
             "settings_save_folder_none", "settings_save_import_no_folder"}
 # Battle HUD banners and response badges drawn natively (sprite_text.cpp).
 UI_KEYS |= {"hud_counter", "hud_defend", "hud_evade", "hud_shield_defense", "hud_critical", "hud_dummy"}
-UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_weapon_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original"}
+UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_weapon_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original",
+            "upgrade_unified_title", "upgrade_unified_level", "upgrade_unified_ask", "upgrade_unified_none", "upgrade_unified_hint", "upgrade_unified_hint_pages",
+            "settings_weapon_upgrade", "settings_weapon_upgrade_unified", "settings_weapon_upgrade_single", "settings_weapon_upgrade_note"}
 UI_KEYS |= {"parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "parts_free", "parts_equipped_count"}
 UI_KEYS |= {"ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint"}
 UI_KEYS |= {"swap_list_hint", "swap_confirm_hint"}
@@ -153,7 +155,7 @@ UI_KEYS |= {
     "battle_response", "battle_response_hint", "battle_title", "battle_weapon",
 }
 # Controller versions of the key hints ("_pad"), shown after controller input (Steam Deck).
-PAD_HINT_KEYS = {"settings_open", "controls", "history_controls", "select_keyboard_hint", "review_keyboard_hint", "link_keyboard_hint", "battle_hint", "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint", "intermission_hint", "intermission_swap_hint", "upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_weapon_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint", "swap_list_hint", "swap_confirm_hint", "save_choice_hint", "save_slots_hint", "save_confirm_hint", "save_message_hint", "funds_edit_hint", "save_slots_hint_pages", "title_load_hint_pages", "save_slots_hint_delete", "title_load_hint_delete"}
+PAD_HINT_KEYS = {"settings_open", "controls", "history_controls", "select_keyboard_hint", "review_keyboard_hint", "link_keyboard_hint", "battle_hint", "title_load_hint", "title_options_hint", "title_sound_hint", "title_karaoke_hint", "intermission_hint", "intermission_swap_hint", "upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_weapon_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "upgrade_unified_hint", "upgrade_unified_hint_pages", "parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint", "swap_list_hint", "swap_confirm_hint", "save_choice_hint", "save_slots_hint", "save_confirm_hint", "save_message_hint", "funds_edit_hint", "save_slots_hint_pages", "title_load_hint_pages", "save_slots_hint_delete", "title_load_hint_delete"}
 UI_KEYS |= {key + "_pad" for key in PAD_HINT_KEYS}
 
 

@@ -35,6 +35,11 @@ BattleUi battle_ui_from(std::string_view name);
 // SRW64_NATIVE_INTERMISSION=0 / SRW64_NATIVE_UPGRADE=0 force the original for a run.
 bool native_intermission_ui();
 void set_native_intermission_ui(bool native);
+// 武器改造 on the native pages: every weapon of a unit (all its forms) raised together to
+// one level (default), or one weapon at a time as the original. Saved as weapon_upgrade
+// ("unified" / "single"); docs/design/quick-load-and-unified-weapons.md §2.
+bool unified_weapon_upgrades();
+void set_unified_weapon_upgrades(bool unified);
 // Protagonist selection and name entry on a new game: the native pages (default)
 // or the original screens. Read on the game thread when a page would open; saved as
 // name_entry_ui. SRW64_NATIVE_NAME_ENTRY=0 forces the original for a run.

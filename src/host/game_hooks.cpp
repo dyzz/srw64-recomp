@@ -13,6 +13,7 @@
 #include "base_fixes.hpp"
 #include "upgrade_rules.hpp"
 #include "upgrade_refund.hpp"
+#include "upgrade_page.hpp"
 #include "parts_carry.hpp"
 #include "cheats.hpp"
 #include "link_battler.hpp"
@@ -981,6 +982,7 @@ void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
 void load_0008F4B0_func_801D8F74(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.intermission_enter) srw64_game_hooks.intermission_enter(rdram, uint8_t(ctx->r4));
     srw64_original_intermission_enter(rdram, ctx);
+    srw64::upgrade_page::entered(rdram, ctx);   // unified weapon levels (upgrade_page.hpp)
 }
 void load_0008F4B0_func_801D70FC(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.link_step && srw64_game_hooks.link_step(rdram, ctx)) return;

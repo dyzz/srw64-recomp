@@ -84,6 +84,7 @@ BattleUi battle_ui_from(std::string_view v){return v=="hd"?BattleUi::HD:v=="orig
 const char* battle_ui_name(BattleUi ui){return ui==BattleUi::HD?"hd":ui==BattleUi::Original?"original":"native";}
 bool failed(){return false;} bool owns_input(){return false;}
 std::string key_display_name(int key){return SDL_GetScancodeName(SDL_Scancode(key));}
+bool unified_flag=true; bool unified_weapon_upgrades(){return unified_flag;} void set_unified_weapon_upgrades(bool v){unified_flag=v;}
 bool native_intermission_ui(){return intermission;} bool native_name_entry_ui(){return name_entry;} bool native_title_ui(){return title;}
 void request_locale(const std::string& locale){if(auto c=localization::find(locale))localization::activate(c);}
 void set_battle_ui(BattleUi v){battle_value=v;} void set_native_intermission_ui(bool v){intermission=v;}

@@ -800,6 +800,7 @@ body.pointer .im-funds:hover,.im-funds:focus {background-color:#00c80055; border
 .im-gauge em {font-style:normal; color:#7ff0a0;} .im-plan {color:#7ff0a0;}
 .im-panel button.on .im-plan,.im-panel button.on .im-gauge em {color:#06205a;} .im-poor {color:#ff8d8d;}
 .im-up {color:#7dff8a;} .im-down {color:#ff8d8d;}
+.im-panel button.im-step {display:inline-block; width:auto; text-align:center; color:#9eafc3;}
 .im-badge {display:inline-block; text-align:center; vertical-align:middle; border-radius:6dp; border-width:1dp; border-color:#e8f0ff; color:#ffffff; font-weight:bold; margin-right:1dp; overflow:hidden;}
 .im-mark {color:#ffffff; vertical-align:middle;} .im-mark.map {color:#de416a;}
 .im-badge.melee {background-color:#c8501e;} .im-badge.ranged {background-color:#2d6fd8;} .im-badge.post {background-color:#2a9a4a;} .im-badge.beam {background-color:#a04fd0;} .im-badge.map {background-color:#c09a1a; border-radius:3dp;} .im-bar {position:absolute; height:2dp; background-color:#00c800;} .im-bar-back {position:absolute; height:2dp; background-color:#123a2a;} .im-panel button.dim {background-color:#00c80055;}
@@ -2777,7 +2778,7 @@ void settings_sync() {
     save_export_poll();
     report_export_poll();
 #endif
-    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
+    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_double())+std::to_string(settings::rewind_on())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
@@ -2846,6 +2847,8 @@ void settings_sync() {
         body+=settings_row("settings_dialogue_font_size",font_sizes,{},"settings_dialogue_font_size_note");
         body+=settings_choice("settings_battle_ui","battle-ui",{"native","hd","original"},settings::battle_ui_name(settings::battle_ui()));
         body+=settings_choice("settings_intermission_ui","intermission-ui",{"native","original"},settings::native_intermission_ui()?"native":"original");
+        // Unified upgrades live on the native weapon pages: with the original screens it is per weapon.
+        body+=settings_choice("settings_weapon_upgrade","weapon-upgrade",{"unified","single"},settings::unified_weapon_upgrades()?"unified":"single",!settings::native_intermission_ui());
         body+=settings_choice("settings_name_entry_ui","name-entry-ui",{"native","original"},settings::native_name_entry_ui()?"native":"original");
         body+=settings_choice("settings_title_ui","title-ui",{"native","original"},settings::native_title_ui()?"native":"original");
         body+=settings_choice("settings_refresh","refresh",{"original","60","display"},settings::refresh_rate_name(settings::refresh_rate()));
@@ -3449,6 +3452,54 @@ void upgrade_sync() {
                 escape(b.value("upgraded",std::string()))+"<br/>"+escape(bl[0].get<std::string>())+"<br/>"+escape(bl[1].get<std::string>())+"<br/>"+escape(b.value("unlocked",std::string()))+"<br/>"+escape(bl[2].get<std::string>())+"</button>",10.f,"upgrade-bonus");
         }
         const char* hint=confirm?(window=="confirm"?"upgrade_weapon_confirm_hint":"upgrade_message_hint"):window=="bonus"?"upgrade_message_hint":next.value("pages",1u)>1?"upgrade_weapons_hint_pages":"upgrade_weapons_hint";
+        body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";
+    } else if(screen=="unified") {
+        // Unified weapon upgrade (upgrade_page.cpp): the unit, one level for all its weapons
+        // with ◀ ▶ and the gauge, the plan's price, then every weapon's power and the power
+        // the plan reaches.
+        const auto& unit=next.at("unit");const auto& rows=next.at("rows");
+        const unsigned level=next.value("level",0u),cap=next.value("cap",0u),plan=next.value("plan",0u);
+        const uint32_t money=next.value("funds",0u),price=plan?next.value("plan_cost",0u):next.value("next_price",0u);
+        const bool priced=plan || next.contains("next_price");
+        const std::string title=label("upgrade_unified_title");
+        body+=box(21,10,299,58,
+            "<div class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(4)+";'>"+span(unit.value("name",std::string()),150,"",fit(unit.value("name",std::string()),146))+
+                span(title,118,"im-dim im-right",std::min(10.f,fit(title,118)))+"</div>"
+            "<button id='upgrade-go' class='im-row' style='height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(4)+";'>"+span(label("upgrade_unified_level"),52,"im-dim",std::min(10.f,fit(label("upgrade_unified_level"),50)))+
+                span(std::to_string(plan?level+plan:level)+"/"+std::to_string(cap),36,plan?"im-right im-plan":"im-right")+
+                "<span class='im-gauge' style='width:"+px(160)+"; margin-left:"+px(10)+"; font-size:"+px(9)+";'>"+gauge_html(next.value("gauge",std::string()))+"</span></button>",10.5f,"upgrade-unified-head");
+        body+=box(21,59,299,79,"<div class='im-row' style='height:"+px(20)+"; line-height:"+px(20)+"; padding:0 "+px(4)+";'>"+
+                "<button id='upgrade-less' class='im-step' style='width:"+px(18)+";'>◀</button><button id='upgrade-more' class='im-step' style='width:"+px(18)+";'>▶</button>"+
+                span(label_of("price"),36,"im-dim",0,8)+span(priced?std::to_string(price):std::string("-----"),62,price>money?"im-right im-poor":plan?"im-right im-plan":"im-right")+
+                span(label_of("funds"),36,"im-dim",0,14)+funds_field("upgrade",money,px(64),px(10.5f),px(20))+"</div>",10.f,"upgrade-unified-money");
+        {
+            const auto& W=next.at("weapon_labels");
+            const auto page=next.value("pages",1u)>1?std::to_string(next.value("page",0u)+1)+"/"+std::to_string(next.value("pages",1u)):std::string();
+            std::string lines="<div class='im-row im-dim' style='height:"+px(14)+"; line-height:"+px(14)+"; padding:0 "+px(4)+";'>"+span(W.value("weapon",std::string()),176,"im-dim")+
+                span(W.value("power",std::string()),40,"im-dim im-right",std::min(10.f,fit(W.value("power",std::string()),40)))+span(page,54,"im-dim im-right")+"</div>";
+            for(const auto& r:rows) {
+                const bool raised=r.contains("target");
+                lines+="<div class='im-row' style='height:"+px(14)+"; line-height:"+px(14)+"; padding:0 "+px(4)+";'>"+span(r.value("name",std::string()),150,"",std::min(10.f,fit(r.value("name",std::string()),146)))+
+                    span("Lv"+std::to_string(r.value("level",0u)),26,"im-dim im-right")+span(number(r.at("power")),40,"im-right")+span(raised?"▶":"",14,"im-dim")+span(raised?number(r.at("target")):std::string(),40,"im-right im-plan")+"</div>";
+            }
+            body+=box(21,80,299,219,lines,10.f,"upgrade-unified-rows");
+        }
+        const auto window=next.value("window",std::string());
+        if(window=="confirm") {
+            std::string ask=label("upgrade_unified_ask");
+            if(const auto at=ask.find("{level}");at!=std::string::npos)ask.replace(at,7,std::to_string(std::min(level+plan,cap)));
+            body+="<div class='im-shade'></div>"+box(53,101,267,139,"<div style='padding:"+px(3)+" "+px(4)+";'>"+escape(ask)+"</div>"
+                "<div class='im-row' style='padding:0 "+px(4)+";'>"+span(label_of("price"),50,"im-dim")+span(number(next.value("plan_cost",0u)),70,"im-right im-plan")+"</div>",std::min(10.f,fit(ask,206)),"upgrade-window")+
+                box(221,139,251,163,"<button id='upgrade-confirm' class='on' style='height:"+px(12)+"; line-height:"+px(12)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='upgrade-cancel' style='height:"+px(12)+"; line-height:"+px(12)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",7.5f,"upgrade-choice");
+        } else if(window=="poor" || window=="maxed") {
+            const std::string message=window=="poor"?label_of("poor"):next.value("weapons",0u)?label_of("maxed"):label("upgrade_unified_none");
+            body+="<div class='im-shade'></div>"+box(85,61,235,83,"<button id='upgrade-dismiss' class='fit' style='height:"+px(22)+"; line-height:"+px(22)+"; text-align:center;'>"+escape(message)+"</button>",fit(message,146),"upgrade-message");
+        } else if(window=="bonus") {
+            const auto& b=next.at("bonus");const auto& bl=next.at("bonus_labels");
+            body+="<div class='im-shade'></div>"+box(29,77,291,179,"<button id='upgrade-dismiss' style='height:"+px(100)+"; padding:"+px(6)+" "+px(8)+"; line-height:"+px(18)+";'>"+
+                escape(b.value("upgraded",std::string()))+"<br/>"+escape(bl[0].get<std::string>())+"<br/>"+escape(bl[1].get<std::string>())+"<br/>"+escape(b.value("unlocked",std::string()))+"<br/>"+escape(bl[2].get<std::string>())+"</button>",10.f,"upgrade-bonus");
+        }
+        const char* hint=window=="confirm"?"upgrade_confirm_hint":!window.empty()?"upgrade_message_hint":next.value("pages",1u)>1?"upgrade_unified_hint_pages":"upgrade_unified_hint";
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";
     } else if(screen=="stats") {
         const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);const auto& unit=next.at("unit");
@@ -4395,6 +4446,8 @@ void choose(const std::string& id) {
     if(id=="settings-close"){physical_held=held();settings_open=false;return;}
     if(id.starts_with("upgrade") && upgrade_request.value("visible",false) && !settings_open) {
         const auto serial=upgrade_request.at("serial").get<uint64_t>();const auto screen=upgrade_request.value("screen",std::string());const bool list=screen=="list" || screen=="weapons";
+        if(id=="upgrade-less" || id=="upgrade-more"){upgrade_page::answer(serial,id.substr(8));return;}
+        if(id=="upgrade-go"){upgrade_page::answer(serial,"choose");return;}
         if(id.starts_with("upgrade:")) {
             // A click on the cursor row confirms, elsewhere it moves the cursor.
             const unsigned n=unsigned(std::atoi(id.c_str()+8));
@@ -4522,6 +4575,7 @@ void choose(const std::string& id) {
         if(id.starts_with("ui-size:"))for(const auto size:{settings::UiSize::Standard,settings::UiSize::Large,settings::UiSize::Largest})
             if(id.substr(8)==settings::ui_size_name(size))settings::set_ui_size(size);
         if(id.starts_with("intermission-ui:"))settings::set_native_intermission_ui(id=="intermission-ui:native");
+        if(id.starts_with("weapon-upgrade:"))settings::set_unified_weapon_upgrades(id=="weapon-upgrade:unified");
         if(id.starts_with("name-entry-ui:"))settings::set_native_name_entry_ui(id=="name-entry-ui:native");
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
         if(id.starts_with("fps:"))settings::set_show_fps(id=="fps:on");
@@ -5342,6 +5396,26 @@ bool dispatch(SDL_Event& event) {
             const auto k=event.key.keysym.sym;const auto serial=upgrade_request.at("serial").get<uint64_t>();
             const auto screen=upgrade_request.value("screen",std::string());const bool list=screen=="list" || screen=="weapons",confirm=screen=="weapon";
             const auto window=upgrade_request.value("window",std::string());
+            if(screen=="unified"){
+                // Unified weapon upgrade: ←→ levels (held, they repeat), ↑↓ pages, A plans / confirms.
+                if(!window.empty()){
+                    if(event.key.repeat)return true;
+                    const bool yes=k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE,no=k==SDLK_ESCAPE || k==SDLK_x;
+                    if(window=="confirm" && (yes || no))upgrade_page::answer(serial,yes?"confirm":"cancel");
+                    else if(yes || no)upgrade_page::answer(serial,"dismiss");
+                    return true;
+                }
+                if(k==SDLK_LEFT || k==SDLK_RIGHT){upgrade_page::answer(serial,k==SDLK_LEFT?"less":"more");return true;}
+                if(k==SDLK_UP || k==SDLK_DOWN){
+                    const unsigned pages=upgrade_request.value("pages",1u),page=upgrade_request.value("page",0u);
+                    if(pages>1)upgrade_page::answer(serial,"page:"+std::to_string((page+(k==SDLK_UP?pages-1:1))%pages));
+                    return true;
+                }
+                if(event.key.repeat)return true;
+                if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){upgrade_page::answer(serial,"choose");return true;}
+                if(k==SDLK_ESCAPE || k==SDLK_x){upgrade_page::answer(serial,"back");return true;}
+                return true;
+            }
             const unsigned count=confirm?2:unsigned(upgrade_request.at("rows").size()),at=upgrade_request.value("cursor",0u);
             if(confirm){
                 if(window=="confirm" && (k==SDLK_UP || k==SDLK_DOWN)){upgrade_page::answer(serial,"move:"+std::to_string(at^1));return true;}

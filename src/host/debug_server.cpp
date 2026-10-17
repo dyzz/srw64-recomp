@@ -257,6 +257,12 @@ json settings(const json& params) {
         on_window([=]{settings::set_battle_ui(settings::battle_ui_from(ui));return json(nullptr);});
         done["battle_ui"]=ui;
     }
+    if(params.contains("weapon_upgrade")) {
+        const auto mode=params["weapon_upgrade"].get<std::string>();
+        if(mode!="unified" && mode!="single")throw RpcError(InvalidParams,"weapon_upgrade must be unified or single");
+        on_window([=]{settings::set_unified_weapon_upgrades(mode=="unified");return json(nullptr);});
+        done["weapon_upgrade"]=mode;
+    }
     if(params.contains("aspect")) {
         const auto aspect=params["aspect"].get<std::string>();
         if(aspect!="auto" && aspect!="4:3")throw RpcError(InvalidParams,"aspect must be auto or 4:3");

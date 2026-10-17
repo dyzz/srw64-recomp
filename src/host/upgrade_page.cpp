@@ -101,6 +101,8 @@ void hide(const char* reason) {
 }
 std::string text(const uint8_t* ram,uint16_t id){return dialogue::ui_text(ram,id);}
 void fit_plans(uint32_t money);
+void unified_refresh(uint8_t* ram);
+uint32_t unified_plan_cost(const uint8_t* ram,unsigned plan);
 // Typed funds apply to whichever screen is up; the stat window decisions read the
 // new figure live, and a standing plan shrinks to what the new figure covers.
 bool set_funds(uint8_t* ram,const std::string& action) {
@@ -108,6 +110,10 @@ bool set_funds(uint8_t* ram,const std::string& action) {
     if(!intermission_page::parse_funds(action,value))return false;
     write32(ram,funds,value);current["funds"]=value;record("funds",{{"funds",value}});
     fit_plans(value);
+    if(current.value("screen",std::string())=="unified") {
+        while(weapon_plan && unified_plan_cost(ram,weapon_plan)>value)--weapon_plan;
+        unified_refresh(ram);
+    }
     return true;
 }
 
@@ -236,6 +242,11 @@ json bonus_json(const uint8_t* ram,unsigned upgraded,unsigned unlocked);
 void relocalize(uint8_t* ram,recomp_context* ctx) {
     if(locale==localization::catalog().locale)return;
     const auto screen=current.value("screen",std::string());
+    if(screen=="unified") {
+        unified_refresh(ram);labels(ram);
+        if(current.contains("bonus")){const auto& ids=current["bonus"]["numbers"];current["bonus"]=bonus_json(ram,ids[0].get<unsigned>(),ids[1].get<unsigned>());}
+        return;
+    }
     const json next=screen=="list"?list_page_json(ram,ctx):screen=="stats"?stats_json(ram,ctx):screen=="weapons"?weapon_list_json(ram):json::object();
     for(const char* key:{"unit","rows"})if(next.contains(key))current[key]=next[key];
     if(screen=="weapon"){current["weapon"]=chosen_weapon(ram);current["unit"]["name"]=text(ram,text_unit_names+current["unit"].value("number",0u));}
@@ -504,6 +515,9 @@ json bonus_json(const uint8_t* ram,unsigned upgraded,unsigned unlocked) {
     return {{"upgraded",text(ram,uint16_t(text_weapon_pure_names+upgraded))},{"unlocked",text(ram,uint16_t(text_weapon_pure_names+unlocked))},
         {"numbers",{upgraded,unlocked}}};
 }
+bool unified_on();
+bool unified_build(uint8_t* ram,recomp_context* ctx);
+bool unified_step(uint8_t* ram,recomp_context* ctx,std::unique_lock<std::mutex>& lock,const std::string& action);
 json weapon_list_json(uint8_t* ram) {
     const uint32_t slot=read(ram,screen_unit,4),unit=up::unit_at(slot);
     const unsigned count=read(ram,weapon_count,2),page=unsigned(std::max<int16_t>(1,int16_t(read(ram,weapon_page,2))))-1;
@@ -521,6 +535,7 @@ bool weapon_list_build(uint8_t* ram,recomp_context* ctx) {
     if(original_screens())return false;
     call(ram,ctx,resident_func_80085B94,0,1);
     call(ram,ctx,weapon_list_build_fn);
+    if(unified_on())return unified_build(ram,ctx);
     const unsigned unlocked=read(ram,bonus_unlocked,2),upgraded=read(ram,bonus_upgraded,2);
     const bool bonus=unlocked!=999;
     write32(ram,mode,bonus?1:0);
@@ -539,11 +554,13 @@ bool weapon_list_build(uint8_t* ram,recomp_context* ctx) {
 }
 bool weapon_list_step(uint8_t* ram,recomp_context* ctx) {
     std::unique_lock lock(mutex);
-    if(!active || current.value("screen",std::string())!="weapons")return false;
+    const auto screen=current.value("screen",std::string());
+    if(!active || (screen!="weapons" && screen!="unified"))return false;
     relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     if(set_funds(ram,action))return false;
+    if(screen=="unified")return unified_step(ram,ctx,lock,action);
     const auto window=current.value("window",std::string());
     const unsigned count=read(ram,weapon_count,2),pages=(count+weapon_rows_per_page-1)/weapon_rows_per_page;
     unsigned page=unsigned(std::max<int16_t>(1,int16_t(read(ram,weapon_page,2))))-1,row=unsigned(int16_t(read(ram,weapon_cursor,2)));
@@ -662,6 +679,242 @@ bool weapon_confirm_step(uint8_t* ram,recomp_context* ctx) {
     }
     return false;
 }
+// --- Unified weapon upgrades (docs/design/quick-load-and-unified-weapons.md §2) ------
+//
+// A unit's forms share one weapon array (+0x30, +0x2C entries); each weapon names the unit
+// numbers that use it (+0x18, five s16) and +0x22 & 0x600 hides it (a full-upgrade bonus
+// not yet unlocked, 801C7254). The unified level is the level most of the shown weapons
+// of types 1–4 have (the higher on a tie), so a weapon that joined later at 0 does not
+// pull it down; such weapons, hidden ones included, are brought up to it free.
+
+constexpr uint32_t weapon_forms=0x18,weapon_hidden=0x22;
+constexpr unsigned weapon_form_slots=5,unified_rows_per_page=9;
+unsigned weapon_total(const uint8_t* ram,uint32_t unit){return read(ram,unit+0x2C,1);}
+bool upgradable(const uint8_t* ram,uint32_t w){const unsigned type=read(ram,w+up::weapon_type,1);return type>=1 && type<=up::weapon_type_count;}
+bool shown(const uint8_t* ram,uint32_t w){return !(read(ram,w+weapon_hidden,2)&0x600);}
+unsigned unified_level(const uint8_t* ram,uint32_t unit) {
+    std::array<unsigned,up::levels+1> counts{};
+    for(unsigned i=0;i<weapon_total(ram,unit);++i) {
+        const uint32_t w=weapon_at(ram,unit,i);
+        if(upgradable(ram,w) && shown(ram,w))++counts[std::min<unsigned>(read(ram,w+0x16,1),up::levels)];
+    }
+    unsigned best=0;
+    for(unsigned l=0;l<=up::levels;++l)if(counts[l] && counts[l]>=counts[best])best=l;
+    return best;
+}
+// Free: every weapon of types 1–4 below the unified level goes up to it, and the
+// original's recompute (800A5254, as the list rows call it) sets the power from the levels.
+unsigned sync_unit(uint8_t* ram,recomp_context* ctx,uint32_t unit) {
+    if(!valid(read(ram,unit+up::unit_weapon_list,4),up::weapon_size))return 0;
+    const unsigned level=std::min<unsigned>(unified_level(ram,unit),up::allowed_cap(uint16_t(read(ram,unit+up::unit_number,2))));
+    unsigned raised=0;
+    for(unsigned i=0;i<weapon_total(ram,unit);++i) {
+        const uint32_t w=weapon_at(ram,unit,i);
+        if(upgradable(ram,w) && read(ram,w+0x16,1)<level){write8(ram,w+0x16,uint8_t(level));++raised;}
+    }
+    if(raised)call(ram,ctx,resident_func_800A5254,unit,2);
+    return raised;
+}
+bool unified_on(){return settings::unified_weapon_upgrades();}
+// Every unit in the instance table, once per weapon array.
+void sync_all(uint8_t* ram,recomp_context* ctx) {
+    std::vector<uint32_t> seen;
+    unsigned raised=0;
+    for(uint32_t slot=0;slot<up::unit_slots;++slot) {
+        const uint32_t unit=up::unit_at(slot),list=read(ram,unit+up::unit_weapon_list,4);
+        if(!read(ram,unit,1) || !valid(list,up::weapon_size) || std::find(seen.begin(),seen.end(),list)!=seen.end())continue;
+        seen.push_back(list);raised+=sync_unit(ram,ctx,unit);
+    }
+    if(raised)record("unified-sync",{{"weapons",raised}});
+}
+// The machine list row (D_801DD210) of a form that uses weapon `w`, for the original's
+// confirm branch, which reads the screen unit's number and cap; else the shown unit.
+uint32_t form_slot(const uint8_t* ram,uint32_t w,uint32_t fallback) {
+    const uint32_t list=read(ram,up::unit_at(fallback)+up::unit_weapon_list,4);
+    for(unsigned n=0;n<list_size(ram);++n) {
+        const uint32_t slot=read(ram,list_slots+n*2,2),unit=up::unit_at(slot);
+        if(read(ram,unit+up::unit_weapon_list,4)!=list)continue;
+        const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
+        for(unsigned f=0;f<weapon_form_slots;++f)if(read(ram,w+weapon_forms+f*2,2)==number)return slot;
+    }
+    return fallback;
+}
+// What raising every shown weapon to `target` costs: each one's missing levels at its own
+// type's price, up to the cap of the form that upgrades it.
+struct UnifiedCost{uint32_t price{};unsigned weapons{};};
+UnifiedCost unified_cost(const uint8_t* ram,uint32_t slot,unsigned target) {
+    const uint32_t unit=up::unit_at(slot);
+    UnifiedCost cost;
+    for(unsigned i=0;i<weapon_total(ram,unit);++i) {
+        const uint32_t w=weapon_at(ram,unit,i);
+        if(!upgradable(ram,w) || !shown(ram,w))continue;
+        const unsigned type=read(ram,w+up::weapon_type,1),cap=up::allowed_cap(uint16_t(read(ram,up::unit_at(form_slot(ram,w,slot))+up::unit_number,2)));
+        bool any=false;
+        for(unsigned l=read(ram,w+0x16,1);l<target && l<cap && l<up::levels;++l){cost.price+=read(ram,up::weapon_prices[type-1]+l*4,4);any=true;}
+        cost.weapons+=any;
+    }
+    return cost;
+}
+uint32_t unified_plan_cost(const uint8_t* ram,unsigned plan) {
+    const uint32_t slot=read(ram,screen_unit,4),unit=up::unit_at(slot);
+    return unified_cost(ram,slot,unified_level(ram,unit)+plan).price;
+}
+json unified_json(uint8_t* ram) {
+    const uint32_t slot=read(ram,screen_unit,4),unit=up::unit_at(slot);
+    const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
+    const unsigned original=up::original_cap(number),allowed=up::allowed_cap(number),level=std::min(unified_level(ram,unit),allowed);
+    const unsigned plan=std::min(weapon_plan,allowed-level),target=level+plan;
+    json rows=json::array();
+    for(unsigned i=0;i<weapon_total(ram,unit);++i) {
+        const uint32_t w=weapon_at(ram,unit,i);
+        if(!upgradable(ram,w) || !shown(ram,w))continue;
+        json row=weapon_row(ram,unit,i);
+        // The power once the plan is paid, the cap of the form that upgrades it applied.
+        const unsigned type=read(ram,w+up::weapon_type,1),cap=up::allowed_cap(uint16_t(read(ram,up::unit_at(form_slot(ram,w,slot))+up::unit_number,2)));
+        uint32_t power=read(ram,w+6,2);
+        for(unsigned l=read(ram,w+0x16,1);l<target && l<cap && l<up::levels;++l)power+=read(ram,up::weapon_previews[type-1]+l*2,2);
+        if(plan && power!=read(ram,w+6,2))row["target"]=power;
+        rows.push_back(row);
+    }
+    const unsigned pages=std::max<unsigned>(1,(unsigned(rows.size())+unified_rows_per_page-1)/unified_rows_per_page);
+    const unsigned page=std::min(current.value("screen",std::string())=="unified"?current.value("page",0u):0u,pages-1);
+    json shown_rows=json::array();
+    for(unsigned n=page*unified_rows_per_page;n<rows.size() && n<(page+1)*unified_rows_per_page;++n)shown_rows.push_back(rows[n]);
+    json page_json={{"screen","unified"},{"kind","weapons"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)}}},
+        {"level",level},{"cap",allowed},{"original_cap",original},{"plan",plan},{"gauge",gauge_cells(original,allowed,level,plan)},
+        {"weapons",rows.size()},{"rows",shown_rows},{"page",page},{"pages",pages},{"plan_cost",unified_cost(ram,slot,target).price}};
+    if(level<allowed)page_json["next_price"]=unified_cost(ram,slot,level+1).price;
+    if(plan)page_json["target"]=target;
+    return page_json;
+}
+// A rebuilt snapshot keeps the page's own state: window, serial, funds and labels.
+void unified_refresh(uint8_t* ram) {
+    auto next=unified_json(ram);
+    for(const char* key:{"visible","serial","funds","title","labels","weapon_labels","bonus_labels","window","bonus"})if(current.contains(key))next[key]=current[key];
+    current=std::move(next);
+}
+bool unified_build(uint8_t* ram,recomp_context* ctx) {
+    sync_all(ram,ctx);
+    const unsigned unlocked=read(ram,bonus_unlocked,2),upgraded=read(ram,bonus_upgraded,2);
+    const bool bonus=unlocked!=999;
+    write32(ram,mode,bonus?1:0);
+    write16(ram,bonus_upgraded,999);write16(ram,bonus_unlocked,999);
+    std::lock_guard lock(mutex);
+    weapon_plan=0;planned=false;
+    current["screen"]="";
+    auto page=unified_json(ram);
+    page["window"]=bonus?"bonus":"";
+    if(bonus)page["bonus"]=bonus_json(ram,upgraded,unlocked);
+    open(std::move(page),ram);
+    call(ram,ctx,resident_func_80099814,4,2,0);
+    return true;
+}
+// One paid level of weapon `index` through the original confirm branch (801D1100): the
+// list's first row names the weapon, the screen unit is a form that uses it, the price
+// and previewed power are set as its build would, as in weapon_confirm_step.
+void pay_weapon_level(uint8_t* ram,recomp_context* ctx,uint32_t slot,unsigned index,uint32_t price,bool first) {
+    const uint32_t w=weapon_at(ram,up::unit_at(slot),index);
+    const unsigned type=read(ram,w+up::weapon_type,1),level=read(ram,w+0x16,1);
+    write32(ram,screen_unit,slot);
+    write16(ram,weapon_rows,uint16_t(index));write16(ram,weapon_page,1);write16(ram,weapon_row_copy,0);
+    write32(ram,stat_price,price);write16(ram,weapon_preview,uint16_t(read(ram,w+6,2)+read(ram,up::weapon_previews[type-1]+level*2,2)));
+    write32(ram,mode,0);write16(ram,confirm_cursor,0);
+    if(!first)write8(ram,transition,0xFF);
+    feed(ram,ctx,srw64_original_upgrade_weapon_step,button_a);
+}
+bool unified_step(uint8_t* ram,recomp_context* ctx,std::unique_lock<std::mutex>& lock,const std::string& action) {
+    const auto window=current.value("window",std::string());
+    const uint32_t slot=read(ram,screen_unit,4);
+    const unsigned level=current.value("level",0u),cap=current.value("cap",0u);
+    if(action=="dismiss" && !window.empty()) {
+        if(window=="bonus")write32(ram,mode,0);   // as A on the message (801D09C0)
+        if(planned){weapon_plan=0;planned=false;}
+        current["window"]="";unified_refresh(ram);
+        lock.unlock();sound(ram,ctx,sound_cancel);return false;
+    }
+    if(action=="cancel" && window=="confirm") {
+        if(planned){weapon_plan=0;planned=false;}
+        current["window"]="";unified_refresh(ram);
+        lock.unlock();sound(ram,ctx,sound_cancel);return false;
+    }
+    if(!window.empty() && action!="confirm")return false;
+    if((action=="more" || action=="less") && window.empty()) {
+        // ←→: one level more or less, as far as the cap and the funds go.
+        bool changed=false;planned=false;
+        if(action=="more") {
+            if(level+weapon_plan<cap && unified_cost(ram,slot,level+weapon_plan+1).price<=read(ram,funds,4)){++weapon_plan;changed=true;}
+        } else if(weapon_plan){--weapon_plan;changed=true;}
+        unified_refresh(ram);
+        record("unified-plan",{{"plan",weapon_plan},{"cost",current["plan_cost"]}});
+        lock.unlock();sound(ram,ctx,changed?sound_move:sound_cancel);return false;
+    }
+    if(action.starts_with("page:") && window.empty()) {
+        const unsigned value=unsigned(std::atoi(action.c_str()+5));
+        if(value>=current.value("pages",1u) || value==current.value("page",0u))return false;
+        current["page"]=value;unified_refresh(ram);
+        lock.unlock();sound(ram,ctx,sound_move);return false;
+    }
+    if(action=="choose" && window.empty()) {
+        // A: the はい/いいえ window for the plan; a bare A plans one level. Nothing to
+        // raise or nothing affordable gets the original's messages.
+        const bool none=current.value("weapons",0u)==0 || level>=cap;
+        if(!none && !weapon_plan && unified_cost(ram,slot,level+1).price<=read(ram,funds,4)){weapon_plan=1;planned=true;}
+        current["window"]=none?"maxed":weapon_plan?"confirm":"poor";
+        unified_refresh(ram);
+        record("unified-window",{{"window",current["window"]}});
+        lock.unlock();sound(ram,ctx,weapon_plan?sound_confirm:sound_cancel);return false;
+    }
+    if(action=="confirm" && window=="confirm") {
+        // はい: every shown weapon below the target, level by level through the original's
+        // paid branch, each from a form that uses it. A full-upgrade bonus (next screen 11)
+        // keeps its message for the rebuilt page; the original sends the rest back to the
+        // confirm screen (12), so the page asks for the list (11) itself.
+        const unsigned target=std::min(level+weapon_plan,cap);
+        const uint32_t unit=up::unit_at(slot);
+        std::vector<std::pair<unsigned,uint32_t>> weapons;
+        for(unsigned i=0;i<weapon_total(ram,unit);++i) {
+            const uint32_t w=weapon_at(ram,unit,i);
+            if(upgradable(ram,w) && shown(ram,w) && read(ram,w+0x16,1)<target)weapons.push_back({i,form_slot(ram,w,slot)});
+        }
+        const json plan_record={{"plan",weapon_plan},{"target",target},{"cost",current["plan_cost"]}};
+        lock.unlock();
+        unsigned paid=0;uint32_t spent=0;
+        for(const auto& [index,form]:weapons) {
+            const uint32_t w=weapon_at(ram,unit,index);
+            const unsigned form_cap=up::allowed_cap(uint16_t(read(ram,up::unit_at(form)+up::unit_number,2)));
+            for(unsigned l=read(ram,w+0x16,1);l<target && l<form_cap && l<up::levels;l=read(ram,w+0x16,1)) {
+                const uint32_t price=read(ram,up::weapon_prices[read(ram,w+up::weapon_type,1)-1]+l*4,4);
+                if(read(ram,funds,4)<price)goto done;
+                const uint32_t before=read(ram,funds,4);
+                pay_weapon_level(ram,ctx,form,index,price,paid==0);
+                if(read(ram,w+0x16,1)==l)goto done;   // the branch refused; stop rather than loop
+                spent+=before-read(ram,funds,4);++paid;
+            }
+        }
+        done:
+        write32(ram,screen_unit,slot);
+        if(paid)write32(ram,next_screen,11);
+        const bool left=!idle(ram);
+        lock.lock();
+        record("unified-confirm",{{"request",plan_record},{"paid",paid},{"spent",spent},{"left",left}});
+        weapon_plan=0;planned=false;
+        if(left)hide("close");else{current["window"]="";unified_refresh(ram);}
+        return true;
+    }
+    if(action=="back" && window.empty()) {
+        // B first drops a standing plan, then leaves as the original list's B.
+        if(weapon_plan) {
+            weapon_plan=0;unified_refresh(ram);record("plan-clear");
+            lock.unlock();sound(ram,ctx,sound_cancel);return false;
+        }
+        lock.unlock();
+        const bool left=feed(ram,ctx,srw64_original_weapon_screen_step,button_b);
+        lock.lock();record("back",{{"left",left}});
+        if(left)hide("close");
+        return true;
+    }
+    return false;
+}
 void frame(uint8_t* ram) {
     std::lock_guard lock(mutex);
     // Any other screen taking over (the EW swap, the menu) closes the page.
@@ -669,6 +922,13 @@ void frame(uint8_t* ram) {
 }
 }
 
+// Entering the インターミッション: weapons that joined since (a new unit's, a story
+// upgrade's, a bonus unlocked) come up to their unit's unified level for free.
+void entered(uint8_t* ram,recomp_context* ctx) {
+    if(!settings::native_intermission_ui() || !unified_on())return;
+    std::lock_guard lock(mutex);
+    sync_all(ram,ctx);
+}
 void configure(const std::filesystem::path& directory) {
     if(const char* v=std::getenv("SRW64_NATIVE_UPGRADE");v && std::string_view(v)=="0")return;
     if(!std::getenv("SRW64_DIALOGUE_DATA"))return;
