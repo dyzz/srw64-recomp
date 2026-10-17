@@ -58,7 +58,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     if(game.save_file.empty() || game.save_file.find_first_of("/\\:")!=std::string::npos ||
        game.save_file=="." || game.save_file=="..")throw std::runtime_error("Invalid game save filename");
     // A .v64 or .n64 dump loads through a .z64 copy (rom_order.hpp).
-    options.rom=z64_rom(options.rom,fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir),game.rom_sha256);
+    options.rom=z64_rom(options.rom,absolute_path(options.user_dir.empty()?default_user_dir():options.user_dir),game.rom_sha256);
     auto content=options.content;
     std::unique_ptr<Session> owned_session;
     if(content.empty()) {
@@ -69,7 +69,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         content=importer ? importer(options.rom,cache,game.rom_sha256)
                          : prepare_rom_content(options.rom,cache,embedded_import_spec(),game.rom_sha256);
     }
-    const auto root=fs::canonical(content);
+    const auto root=canonical_path(content);
     const auto manifest_path=content_path(root,"manifest.json");
     const auto manifest=read_json(manifest_path,1024*1024);
     if(manifest.value("schema","")!="srw64.standalone-content.v1" ||
@@ -108,7 +108,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     // the user directory as hd/, or as hd/ in the game's own folder (beside the .app
     // on macOS, beside the program elsewhere); a full-HD build bundles it as
     // Contents/Resources/hd. The first of these that exists is used.
-    const auto installed=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir)/"hd";
+    const auto installed=absolute_path(options.user_dir.empty()?default_user_dir():options.user_dir)/"hd";
     const auto beside=beside_game("hd");
     const auto hd=fs::exists(installed)?installed:!beside.empty()?beside:bundled_resource("hd");
     if(!hd.empty() && fs::exists(hd)) {

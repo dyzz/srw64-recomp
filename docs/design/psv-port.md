@@ -259,7 +259,7 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
    - **实跑对照（10-17，同一脚本 RT64 与 GL 各跑一遍）：** 标题环形菜单、原版幕间菜单（窗框＋中文）、机体改造页、4:3 下的战斗演出（3D、立绘、原生台词、HUD）两边一致。
    - **检查脚本（10-17）：** 检查脚本经 `Session.launch` 继承环境，`export SRW64_RENDERER=gl` 后照常运行即走 GL。与原版画面相关的 33 个（存档 4 个、标题菜单、幕间与其原版/原生切换、改造 4 个、部件、换乘、能力、资金、战前页 5 个、战斗演出、对白与快进、短跳过、原版界面文字、两段本地化、设置页、姓名页切换、部队名、移动跳格、敌机轮巡、作弊、MOD）GL 下 27 个通过；其余 6 个（cap_break、battle_ui_switch、settings_pages、unit_name、cheats、mod）在 RT64 下以相同断言失败，是 main 上已有的问题或脚本过时（如作弊部件已改 15 件、MOD 入口 0.3.4 起隐藏、界面页新增对白字号行），与渲染器无关。battle_animation 要调用者设 `SRW64_BATTLE_ANIMATION_PROBE=1`。调试接口的录像与玩家 F12 截图在 GL 呈现里也已接上。
    - **不带 RT64/Plume 的宿主（10-17）：** CMake 选项 `SRW64_GL_ONLY`（单独的构建目录，如 `build/recomp/gl-build`）产出 `srw64-gl-host`：不编 RT64、Plume、DXC 着色器与 RmlUi 的 Plume 适配器；HD 背景、头像、5600 标记、RetroArch 滤镜不编（`gl_only_stubs.cpp` 给出它们的空入口，原画面照旧）；`native_map`/`native_sprite` 的 RT64 钩子部分加 `SRW64_GL_ONLY` 守卫，`native_gpu.hpp` 换成只存 CPU 像素的替身（`native_gpu_cpu.hpp`）；stb_image 的实现自带一份。RT64 宿主照常编译。json、stb 仍从 RT64 检出里取头文件（不编译 RT64）。macOS 版链接的只有 SDL2、OpenGL、FreeType、HarfBuzz、ICU，18 MB（RT64 宿主 29 MB）。检查脚本用它：`export SRW64_HOST_BINARY=<srw64-gl-host>`（`Session.launch` 没指定宿主时用它）。先前 GL 下通过的 27 个检查（含 battle_animation）在它上面全部通过（10-17）。
-4. **还没做：** 宿主标签绘制的深度写入那一遍（HD 机体图才用，Vita 不带 HD）；字体缓冲共享；GL 下的宽屏（扩展指令按原点换算已有，呈现与宿主图层还按 4:3）；把 `srw64-gl-host` 交给 VitaSDK 交叉编译（V2 第一步：vitaGL 头文件分支、SDL2 窗口与上下文、`std::filesystem` 缺口）。
+4. **还没做：** 宿主标签绘制的深度写入那一遍（HD 机体图才用，Vita 不带 HD）；字体缓冲共享；GL 下的宽屏（扩展指令按原点换算已有，呈现与宿主图层还按 4:3）；把 `srw64-gl-host` 交给 VitaSDK 交叉编译（已做，见 V2 进度）。
 
 ### V2 Vita 跑通
 
@@ -270,6 +270,20 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
 5. 测量：帧时间（现有帧率读数）、`sceKernelGetFreeMemorySize`、音频欠载次数、各线程 CPU 占比。
 
 **门槛：** 实机上第 1 话全程、一次战斗演出、一次存档读档；战术地图与场间页面稳定 30 帧（原版逻辑帧率）；开机到标题不超过 15 秒（含预热）。
+
+**进度（2026-10-17，`vita` 分支）：** `srw64-gl-host` 已用 VitaSDK 交叉编译、打成 VPK，在 Vita3K 里从开机跑到标题、开新游戏、序章、主角选择、第一段剧情对白，满速（每秒 30 个显示列表）。实机还没装。
+
+1. **构建（`tools/release/vita/`）。** `build_game.sh` 在 Docker（`srw64-vita-build:vitasdk`）里配置并编译 `eboot.bin` 与 `param.sfo`（Title ID `MWND00064`、`ATTRIBUTE2=12`），再由 `package_vpk.py` 打成 `build/recomp/vita-build/Marchwind64.vpk`（约 34 MB，含字体、内容缓存的原料与 ICU 数据）。`src/host/CMakeLists.txt` 的 `VITA` 分支：运行库换成 `prepare_vita_runtime.py` 写的 32 位版本；OpenGL 换成 vitaGL 及其桩库组成的接口目标；SDL2 静态库只管输入与音频；`-Wl,--whole-archive -lpthread`（否则 `std::thread` 报「Enable multithreading」）。
+2. **ICU：自己交叉编译 78.3（推翻 V0 的「用 VitaSDK 的 73.2」）。** VitaSDK 的 ICU 没有断行迭代器，`build_icu.sh` 编 ICU 78.3 静态库，`icu_trim.py` 用 icupkg 把数据从 33 MB 裁到 5.3 MB（保留断行/双向/文字系统及其依赖的 `.dict`），`icu_patch.py` 绕开 newlib 上失败的 `std::call_once`。
+3. **平台缺口（`src/host/vita/vita_platform.cpp` 等）。** newlib 的 `std::filesystem` 把 `ux0:` 这类设备路径当相对路径：`app::absolute_path`/`canonical_path` 对设备路径原样返回，可执行文件取 `app0:/eboot.bin`。玩家目录 `ux0:data/Marchwind64`（ROM 放 `rom.z64`）。`flockfile`/`flock` 空实现；主线程栈 4 MB、pthread 默认 1 MB；未捕获异常先把类型与内存写进 console.log 再 abort（Vita3K 只报「未定义指令」）。
+4. **内存。** 第一个剧情画面时 newlib 堆用到约 200 MB；200 MB 的堆在 RmlUi 载入 20 MB 字体时 `bad_alloc`（字体缓冲共享还没做），现为 320 MB。vitaGL 用固定大小的池（主内存 24 MB、CDRAM 96 MB、phycont 16 MB）：给阈值的初始化会吃掉阈值以上的全部内存，Vita3K 在第一帧就倒下。vitaGL 自带的启动画面线程要在初始化后立刻交换一帧黑屏结束掉，否则游戏迟迟不出第一帧时 Vita3K 崩溃。
+5. **同步原语：moodycamel 信号量改用内核信号量。** 运行库的 N64 线程交接、消息队列、计时器都靠 moodycamel 的 `LightweightSemaphore`。它在 POSIX 上走 pthread-embedded 的 `sem_timedwait`，游戏会在开机几百帧内整体停住（显示列表与音频任务同时停，VI 照走）。改成 `sceKernelWaitSema`（相对超时，微秒）后不再出现。另做过探针：pthread-embedded 的 `sem_timedwait`、`pthread_cond_timedwait`、`condition_variable::wait_for` 单独超时时长都对，但带着这个探针启动 7 次有 6 次卡在第一个显示列表，去掉探针后恢复——推断是它的定时等待一旦超时就会弄坏内部状态。宿主还有两处带超时的等待（`native_map` 首次解码等 400 ms、调试接口等窗口线程 5 s），目前未见出事，记作风险。
+6. **画面。** 内部渲染目标 2 倍（640×480），4:3 居中呈现到 960×544。Vita3K 里帧开头对默认帧缓冲的 `glClear` 不显示（两侧留白），呈现改为整屏绘制、画面外由着色器出黑。SDL 窗口按 960×544 建（RmlUi 按窗口像素尺寸排版，1280×800 时页面不画）。
+7. **对白层性能。** Vita3K 里遇到对白，图形线程每帧要花约 100 ms，游戏显得卡死。原因在 `dialogue_scene.cpp` 每帧建场景：转场黑线空闲时每行在画面两侧各画 1 像素且逐行交替，合并不了，每帧两百多个绘制步骤外加同样多的 JSON 报告记录；短标签（说话人、底栏状态、按键提示）每帧重新排版。改为增量光栅不生成报告、转场黑线合成一个步骤（键为各段边界的哈希）、`layout_text` 结果按（语言、字体、版本、文本、字号、宽高）缓存；每帧降到约 2 ms，像素不变（`dialogue-raster` 单元测试通过）。
+8. **调试接口。** `ux0:data/Marchwind64/debug` 存在时加载网络模块并开启调试接口，Vita 上监听所有地址（Vita3K 映射到 Mac 本机端口，`debug.json` 在会话目录），MCP 的 `srw64_attach` 指向 Vita3K 文件系统里的会话目录即可驱动。Vita 的 `poll()` 对套接字不报就绪、Vita3K 的 `accept` 不接受空地址：监听改非阻塞轮询、传真实地址。调试截图（`glReadPixels` 读默认帧缓冲）在 Vita3K 里是黑的，用窗口截图代替。
+9. **Vita3K 用法与坑。** 安装：`Vita3K --console <vpk>`；运行：`Vita3K --console --frontend sdl --log-level 2 -r MWND00064`；卡死时 Vita3K 不理 SIGTERM，要 `kill -9`。开 gdbstub 后它停在模块加载等调试器，gdb 断开一次后就不再应答，不实用。后台向 Vita3K 发键盘事件进不了 SDL，键入要靠调试接口。
+
+**还没做：** 实机安装与测量（帧时间、内存、音频欠载、时钟）；Vita 手柄键位（SDL 读到「PSVita Controller」，按键映射未验证）；主角选择页等 RmlUi 页面在 Vita 上的显示（窗口尺寸修好后未再看到）；LiveArea 图片；着色器预热（vitaGL 运行时编译每种组合器一次）；字体缓冲共享；宿主其余带超时的等待是否也要改内核原语。
 
 ### V3 掌机化与发布
 
@@ -302,7 +316,7 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
 
 - **实机。** 已备好：破解的 Vita 已用 VitaDeploy 的“Quick 3.65 Install”换成 3.65 + Ensō 永久破解（2026-10-16），开机自动生效。`ur0:data/libshacccg.suprx` 已在机上，Vita3K 也放了一份。插件登记在 `ur0:tai/config.txt`：vitacompanion 1.08（常驻 FTP 1337 与命令端口 1338：`launch`/`quit`/`reboot`/`press`/`promote` 等，已验证）、PSVshell（帧率、CPU、内存显示与调频，测性能前要确认在默认频率档）、iTLS。V2 的装包、启动、按键、重启都能在 Mac 上脚本化。机上 Wi-Fi 实测约 1.1 MiB/s，日常只替换变动的 `eboot.bin`，大文件走 VitaShell 的 USB 模式。崩溃时系统在 `ux0:data` 写 `.psp2dmp`，到时在 Mac 上装 vita-parse-core 解析。
 - **Fast3D 还是自写：自写（V0 定，2026-10-16）。** 九个场景 22,222 帧、9,568 万条指令的统计（[本作用到的 F3DEX2 指令与组合器](../data/gbi-usage.md)）：组合器只有 7 种取值、全部单周期，绘制时的 (othermode, combine, geometry) 组合 35 种，混合式 4 种，贴图格式 3 种（CI4、CI8、RGBA16），没有两周期、雾、LOD、S2DEX、`G_BRANCH_Z`，`G_DL` 最深 2 层，颜色缓冲恒为 320 宽 RGBA16。这远小于 Fast3D 的覆盖面，而且着色器可以按 35 种状态预先写死、启动时全预热，正好绕开 Sony 运行时着色器编译器（R1）。自写要补的硬功夫只有 TMEM 装载/贴图解码（照 Fast3D 的 `gfx_pc.c` 写）与**绘制调用合并**：2D 场景每帧 300–650 条纹理矩形、标题演示战斗与世界地图最多约 2,000，一条一次 draw call 在 Vita 上跑不动，解释器要把连续同贴图同状态的矩形并成一个顶点缓冲，贴图按内容哈希缓存（`G_SETTILE`/`G_LOADTILE` 每帧重复装同样的小贴图）。统计没覆盖全部战斗演出与后期关卡，V1 做桌面 GL 路径时遇到表外的状态按同一套表加。
-- **ICU：链 VitaSDK 自带的 ICU 73.2，数据自己给（V0 定）。** 镜像里有 `libicuuc.a`/`libicui18n.a` 与头文件，但 `libicudata.a` 是 916 字节的空壳；把安卓那套裁过的数据包（`tools/release/android/build_dependencies.py` 的做法，断行/双向/文字系统约 0.45 MB）用 ICU 73 的工具重新生成，启动时 `udata_setCommonData` 喂进去，`portable_text.cpp` 的 10 处用法原样保留。若 73 与 78 的 API 有差异再退到安卓的交叉编译流程（已有脚本，加一个 Vita 目标）。
+- **ICU：链 VitaSDK 自带的 ICU 73.2，数据自己给（V0 定；V2 推翻，见 V2 进度第 2 条：自编 78.3）。** 镜像里有 `libicuuc.a`/`libicui18n.a` 与头文件，但 `libicudata.a` 是 916 字节的空壳；把安卓那套裁过的数据包（`tools/release/android/build_dependencies.py` 的做法，断行/双向/文字系统约 0.45 MB）用 ICU 73 的工具重新生成，启动时 `udata_setCommonData` 喂进去，`portable_text.cpp` 的 10 处用法原样保留。若 73 与 78 的 API 有差异再退到安卓的交叉编译流程（已有脚本，加一个 Vita 目标）。
 - **现代页面默认开还是关。** RmlUi 在 444 MHz 上的布局开销未测；页面不脏时每帧只重绘，推断可以接受。V2 测后定。
 - **分辨率档位。** 1× 原生还是 2× 内部分辨率。
 - **桌面 `gl` 后端是否长期保留。** 本页按“只做开发对照、不进发布包”写；若将来要支持更老的 PC，可以另议。

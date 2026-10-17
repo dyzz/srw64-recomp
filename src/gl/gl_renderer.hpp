@@ -37,10 +37,12 @@ public:
     int width() const { return target_width; }
     int height() const { return target_height; }
     // Draw a colour image's picture into the rectangle (x, y, width, height) of the bound
-    // framebuffer (window coordinates, origin bottom left), filtered: the host's present.
-    // The image is the VI origin; the target that holds it is found from its address.
-    // Returns false if the game has drawn no such picture yet.
-    bool present(uint32_t origin, int x, int y, int width, int height);
+    // framebuffer (window coordinates, origin bottom left), filtered, and the rest of the
+    // window_width x window_height window black: the host's present. (The bars are drawn,
+    // not cleared: Vita3K shows no glClear of the vitaGL screen.) The image is the VI
+    // origin; the target that holds it is found from its address. Returns false if the
+    // game has drawn no such picture yet.
+    bool present(uint32_t origin, int x, int y, int width, int height, int window_width, int window_height);
     // The colour image a VI origin shows, 0 if none has been drawn.
     uint32_t image_at(uint32_t origin) const;
     // The host's tagged draws (Command::native), called in their place in the frame with the
@@ -82,7 +84,7 @@ private:
     std::unordered_map<uint32_t, Target> targets;
     int target_width, target_height;
     GLuint buffer = 0, depth = 0, copy = 0, black = 0, blit = 0;
-    GLint blit_texture = -1;
+    GLint blit_texture = -1, blit_rect = -1;
     uint32_t frame_number = 0, calls = 0;
     std::string last_error;
     NativeHook native;

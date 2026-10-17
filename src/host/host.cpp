@@ -5,6 +5,7 @@
 // Native integration host, optionally rendered through RT64/Metal.
 #include <atomic>
 #include <cstdio>
+#include <typeinfo>
 #include <cstdlib>
 #include <cmath>
 #include <cstring>
@@ -309,12 +310,16 @@ extern "C" void resident_func_8008C510(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_text_descriptor(rdram,ctx);
 }
 
+#ifdef __vita__
+void srw64_vita_terminate();                 // vita/vita_platform.cpp
+bool srw64_vita_network();                   // vita/vita_platform.cpp
+#endif
 static int run_host(int argc, char** argv) {
     if (argc < 4 || argc > 6) {
         std::fprintf(stderr, "Usage: srw64-gfx-host BASELINE_ROM NEW_OUTPUT_DIR MAX_VIS [INPUT_MASKS|-] [INITIAL_SRAM]\n");
         return 2;
     }
-    output_dir = std::filesystem::absolute(argv[2]);
+    output_dir = srw64::app::absolute_path(argv[2]);
     const char* variant_key = std::getenv("SRW64_ROM_VARIANT");
     if (!variant_key) variant_key = "jp";
     const NativeRomVariant* variant = nullptr;
@@ -649,6 +654,37 @@ int main(int argc, char** argv) {
                     return run_host(count, values);
                 });
             }, argc == 2);
+    }
+#endif
+#ifdef __vita__
+    // The PS Vita (docs/design/psv-port.md): the player's folder ux0:data/Marchwind64 holds
+    // the ROM (rom.z64) and everything the game keeps; the program's files are in app0:.
+    if (argc <= 1) {
+        std::set_terminate(srw64_vita_terminate);
+        srw64::app::Options options;
+        options.user_dir = "ux0:data/Marchwind64";
+        std::error_code error;
+        std::filesystem::create_directories(options.user_dir, error);
+        options.rom = options.user_dir / "rom.z64";
+        if (!std::filesystem::exists(options.user_dir / "presentation.json", error)) options.language = "zh-Hans";
+        // ux0:data/Marchwind64/mute (an empty file): no sound, for Vita3K's sake while the port is brought up.
+        options.mute = std::filesystem::exists(options.user_dir / "mute", error);
+        // ux0:data/Marchwind64/debug (an empty file): the debug interface, on every address
+        // (a Vita's own loopback is out of the computer's reach), its debug.json in the session.
+        if (std::filesystem::exists(options.user_dir / "debug", error) && srw64_vita_network()) options.debug = true;
+        srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
+            native_rom_variants[0].save_file, srw64::rules::version, {}};
+        for (const auto& rule : srw64::rules::catalog)
+            game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
+        try {
+            return srw64::app::run_standalone(options, game, run_host);
+        } catch (const std::system_error& failure) {
+            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s (%s %d)\n", failure.what(), failure.code().category().name(), failure.code().value());
+            return 2;
+        } catch (const std::exception& failure) {
+            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s (%s)\n", failure.what(), typeid(failure).name());
+            return 2;
+        }
     }
 #endif
     if (argc == 2 && std::string_view(argv[1]) == "--help") {

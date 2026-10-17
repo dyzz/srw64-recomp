@@ -33,7 +33,12 @@
 #include <netinet/in.h>
 #include <poll.h>
 #include <sys/socket.h>
+#ifdef __vita__
+#include <fcntl.h>
+#endif
+#ifdef __ANDROID__
 #include <sys/un.h>
+#endif
 #include <unistd.h>
 #endif
 
@@ -176,7 +181,11 @@ Socket listen_loopback(int& port) {
 #endif
     sockaddr_in address{};
     address.sin_family=AF_INET;
+#ifdef __vita__
+    address.sin_addr.s_addr=htonl(INADDR_ANY);  // the token keeps others out
+#else
     address.sin_addr.s_addr=htonl(INADDR_LOOPBACK);
+#endif
     address.sin_port=0;  // the system picks a free port
     socklen_t length=sizeof address;
     if(::bind(listener,reinterpret_cast<sockaddr*>(&address),sizeof address)!=0 || ::listen(listener,4)!=0 ||
@@ -211,6 +220,21 @@ void remove_endpoint() {
 
 // Accepts until stop(): polls so it can see the request, then lets go of the socket.
 void accept_loop(Socket listener) {
+#ifdef __vita__
+    // The Vita's poll() never reports a socket ready: the listener is non-blocking and
+    // asked again every 50 ms; a connection blocks as everywhere else. (Its accept wants
+    // somewhere to put the peer's address.)
+    ::fcntl(listener,F_SETFL,O_NONBLOCK);
+    while(!stopping) {
+        sockaddr_in peer{};
+        socklen_t peer_length=sizeof peer;
+        const Socket client=::accept(listener,reinterpret_cast<sockaddr*>(&peer),&peer_length);
+        if(client==invalid){std::this_thread::sleep_for(std::chrono::milliseconds(50));continue;}
+        ::fcntl(client,F_SETFL,0);
+        {std::lock_guard lock(clients_mutex);clients.insert(client);}
+        std::thread(serve,client,token).detach();
+    }
+#else
     while(!stopping) {
         const int ready=wait_readable(listener,200);
         if(ready<0) {
@@ -225,6 +249,7 @@ void accept_loop(Socket listener) {
         {std::lock_guard lock(clients_mutex);clients.insert(client);}
         std::thread(serve,client,token).detach();
     }
+#endif
     close_socket(listener);
     looping=false;
 }

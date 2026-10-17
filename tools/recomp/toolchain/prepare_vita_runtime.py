@@ -18,9 +18,10 @@ manifest with before/after hashes. build/recomp/vita-runtime/ then holds:
   include/ultramodern/renderer_context.hpp
                               the window handle for the Vita (an SDL_Window*, as on Linux)
   include/lightweightsemaphore.h, include/blockingconcurrentqueue.h
-                              moodycamel's POSIX semaphore on the Vita too (newlib has
-                              semaphore.h); the queue header copied so its sibling include
-                              finds the patched one
+                              moodycamel's semaphore on the Vita's kernel semaphores
+                              (relative timeouts; pthread-embedded's sem_timedwait never
+                              ended a short wait); the queue header copied so its sibling
+                              include finds the patched one
   error_handling.cpp          std::_Exit where newlib has no std::quick_exit
 
 The include directory goes before the upstream ones (the probe's CMakeLists.txt does this).
@@ -247,10 +248,69 @@ def adapt_renderer_context(source: str) -> str:
         using WindowHandle = SDL_Window*;''')
 
 
+VITA_SEMAPHORE = """#elif defined(__vita__)
+//---------------------------------------------------------
+// Semaphore (PS Vita): the kernel's own, with a relative timeout. pthread-embedded's
+// sem_timedwait takes an absolute CLOCK_REALTIME time that its own clock reads hours
+// apart from newlib's, so a short wait (an N64 timer) never ended.
+//---------------------------------------------------------
+class Semaphore
+{
+private:
+	SceUID m_sema;
+
+	Semaphore(const Semaphore& other) MOODYCAMEL_DELETE_FUNCTION;
+	Semaphore& operator=(const Semaphore& other) MOODYCAMEL_DELETE_FUNCTION;
+
+public:
+	Semaphore(int initialCount = 0)
+	{
+		assert(initialCount >= 0);
+		m_sema = sceKernelCreateSema("moodycamel", 0, initialCount, 0x7fffffff, nullptr);
+		assert(m_sema >= 0);
+	}
+
+	~Semaphore()
+	{
+		sceKernelDeleteSema(m_sema);
+	}
+
+	bool wait()
+	{
+		return sceKernelWaitSema(m_sema, 1, nullptr) == 0;
+	}
+
+	bool try_wait()
+	{
+		return sceKernelPollSema(m_sema, 1) == 0;
+	}
+
+	bool timed_wait(std::uint64_t usecs)
+	{
+		SceUInt timeout = usecs > 0xffffffffu ? 0xffffffffu : static_cast<SceUInt>(usecs);
+		return sceKernelWaitSema(m_sema, 1, &timeout) == 0;
+	}
+
+	void signal()
+	{
+		sceKernelSignalSema(m_sema, 1);
+	}
+
+	void signal(int count)
+	{
+		if (count > 0) sceKernelSignalSema(m_sema, count);
+	}
+};
+"""
+
+
 def adapt_semaphore(source: str) -> str:
     if source.count("#elif defined(__unix__)") != 2:
         raise RuntimeError("Pinned lightweightsemaphore.h differs")
-    return source.replace("#elif defined(__unix__)", "#elif defined(__unix__) || defined(__vita__)")
+    source = replace_once(source, "#elif defined(__unix__)\n#include <semaphore.h>",
+                          "#elif defined(__vita__)\n#include <psp2/kernel/threadmgr.h>\n"
+                          "#elif defined(__unix__)\n#include <semaphore.h>")
+    return replace_once(source, "#elif defined(__unix__)\n//----", VITA_SEMAPHORE + "#elif defined(__unix__)\n//----")
 
 
 def adapt_error_handling(source: str) -> str:

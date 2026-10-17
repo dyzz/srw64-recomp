@@ -155,18 +155,20 @@ uint32_t Renderer::image_at(uint32_t origin) const {
     return best;
 }
 
-bool Renderer::present(uint32_t origin, int x, int y, int width, int height) {
+bool Renderer::present(uint32_t origin, int x, int y, int width, int height, int window_width, int window_height) {
     const auto found = targets.find(image_at(origin));
     if (found == targets.end()) return false;
     const Target* shown = &found->second;
     if (!blit) {
         std::string error;
         const GLuint vs = compile(GL_VERTEX_SHADER, std::string(kPreamble) +
-            "attribute vec2 a_position;\nvarying vec2 v_uv;\n"
-            "void main() {\n  gl_Position = vec4(a_position * 2.0 - 1.0, 0.0, 1.0);\n  v_uv = a_position;\n}\n", error);
+            "attribute vec2 a_position;\nuniform vec4 u_rect;\nvarying vec2 v_uv;\n"
+            "void main() {\n  gl_Position = vec4(a_position * 2.0 - 1.0, 0.0, 1.0);\n"
+            "  v_uv = (a_position - u_rect.xy) / u_rect.zw;\n}\n", error);
         const GLuint fs = compile(GL_FRAGMENT_SHADER, std::string(kPreamble) +
             "uniform sampler2D u_texture;\nvarying vec2 v_uv;\n"
-            "void main() {\n  gl_FragColor = vec4(texture2D(u_texture, v_uv).rgb, 1.0);\n}\n", error);
+            "void main() {\n  bool inside = all(greaterThanEqual(v_uv, vec2(0.0))) && all(lessThanEqual(v_uv, vec2(1.0)));\n"
+            "  gl_FragColor = inside ? vec4(texture2D(u_texture, v_uv).rgb, 1.0) : vec4(0.0, 0.0, 0.0, 1.0);\n}\n", error);
         if (!vs || !fs) { last_error = error; return false; }
         blit = glCreateProgram();
         glAttachShader(blit, vs);
@@ -176,14 +178,17 @@ bool Renderer::present(uint32_t origin, int x, int y, int width, int height) {
         glDeleteShader(vs);
         glDeleteShader(fs);
         blit_texture = glGetUniformLocation(blit, "u_texture");
+        blit_rect = glGetUniformLocation(blit, "u_rect");
     }
     static const float corners[8] = {0, 0, 1, 0, 0, 1, 1, 1};
-    glViewport(x, y, width, height);
+    glViewport(0, 0, window_width, window_height);
     glDisable(GL_SCISSOR_TEST);
     glDisable(GL_BLEND);
     glDisable(GL_DEPTH_TEST);
     glUseProgram(blit);
     glUniform1i(blit_texture, 0);
+    glUniform4f(blit_rect, float(x) / window_width, float(y) / window_height,
+                float(width) / window_width, float(height) / window_height);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, shown->texture);
     glBindBuffer(GL_ARRAY_BUFFER, 0);

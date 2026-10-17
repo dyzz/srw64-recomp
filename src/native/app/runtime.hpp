@@ -52,6 +52,11 @@ inline constexpr char campaign_dir_separator=':';
 #endif
 void atomic_write(const fs::path& path, std::string_view text);
 // The running program's file; empty when the system does not say.
+// std::filesystem's absolute and canonical, except that on the PS Vita a path that starts with
+// a device ("ux0:data/...", "app0:/...") already is one, where newlib's std::filesystem
+// sees a relative path and puts the working directory (app0:) in front.
+fs::path absolute_path(const fs::path& path);
+fs::path canonical_path(const fs::path& path);
 fs::path executable_path();
 // A file or directory shipped with the program: Contents/Resources/<name> in a
 // macOS bundle, else <name> beside the executable; empty when there is none.

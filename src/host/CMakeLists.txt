@@ -55,8 +55,19 @@ string(JSON SRW64_JP_HASH GET "${SRW64_VARIANTS_JSON}" variants jp xxh3_64)
 string(JSON SRW64_JP_SHA256 GET "${SRW64_VARIANTS_JSON}" variants jp sha256)
 string(JSON SRW64_JP_ID GET "${SRW64_VARIANTS_JSON}" variants jp game_id)
 configure_file(rom_variants.hpp.in rom_variants.hpp @ONLY)
-add_subdirectory("${SRW64_RUNTIME}" runtime EXCLUDE_FROM_ALL)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
+if(VITA)
+    # The PS Vita (docs/design/psv-port.md, V2): the runtime's 32-bit counterparts that
+    # tools/recomp/toolchain/prepare_vita_runtime.py writes (no mods, live recompiler or
+    # recompiled heap), as tools/release/vita/CMakeLists.txt builds them for the V0 probe.
+    set(SRW64_VITA_RUNTIME "${SRW64_BUILD}/vita-runtime")
+    set(SRW64_LIBRECOMP_SOURCE "${SRW64_RUNTIME}/librecomp")
+    add_subdirectory("${SRW64_RUNTIME}/ultramodern" ultramodern EXCLUDE_FROM_ALL)
+    target_include_directories(ultramodern BEFORE PUBLIC "${SRW64_VITA_RUNTIME}/include")
+    add_subdirectory("${SRW64_VITA_RUNTIME}/librecomp" librecomp EXCLUDE_FROM_ALL)
+else()
+    add_subdirectory("${SRW64_RUNTIME}" runtime EXCLUDE_FROM_ALL)
+endif()
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
     "${SRW64_ROOT}/tools/recomp/toolchain/prepare_runtime_lifecycle.py"
     "${SRW64_ROOT}/src/host/runtime-support/shutdown_trace.hpp"
@@ -64,19 +75,25 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
 execute_process(COMMAND "${Python3_EXECUTABLE}" "${SRW64_ROOT}/tools/recomp/toolchain/prepare_runtime_lifecycle.py"
     COMMAND_ERROR_IS_FATAL ANY)
 get_target_property(SRW64_TIMER_SOURCES ultramodern SOURCES)
+if(VITA)
+    list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/error_handling\\.cpp$")
+    list(APPEND SRW64_TIMER_SOURCES "${SRW64_VITA_RUNTIME}/error_handling.cpp")
+endif()
 list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling)\\.cpp$")
 set_property(TARGET ultramodern PROPERTY SOURCES ${SRW64_TIMER_SOURCES}
     "${SRW64_BUILD}/runtime-lifecycle/timer.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/threads.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/mesgqueue.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/scheduling.cpp")
-get_target_property(SRW64_RUNTIME_SOURCES librecomp SOURCES)
-list(FILTER SRW64_RUNTIME_SOURCES EXCLUDE REGEX "/recomp\\.cpp$")
-set_property(TARGET librecomp PROPERTY SOURCES ${SRW64_RUNTIME_SOURCES} "${SRW64_BUILD}/runtime-lifecycle/recomp.cpp")
+if(NOT VITA)   # the Vita's librecomp names its own recomp.cpp
+    get_target_property(SRW64_RUNTIME_SOURCES librecomp SOURCES)
+    list(FILTER SRW64_RUNTIME_SOURCES EXCLUDE REGEX "/recomp\\.cpp$")
+    set_property(TARGET librecomp PROPERTY SOURCES ${SRW64_RUNTIME_SOURCES} "${SRW64_BUILD}/runtime-lifecycle/recomp.cpp")
+endif()
 file(GLOB SRW64_CPU_SOURCES CONFIGURE_DEPENDS "${SRW64_GENERATED}/funcs_*.c")
 add_library(srw64_cpu STATIC ${SRW64_CPU_SOURCES})
 target_include_directories(srw64_cpu PUBLIC
-    "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}")
+    $<$<BOOL:${VITA}>:${SRW64_BUILD}/vita-runtime/include> "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}")
 target_compile_options(srw64_cpu PRIVATE -fno-strict-aliasing $<IF:$<BOOL:${MSVC}>,/clang:-fwrapv,-fwrapv> -Wno-unused-variable)
 option(SRW64_ENABLE_RT64 "Build the RT64 graphics host (Metal on macOS, Vulkan on Linux)" OFF)
 option(SRW64_METAL_SOURCE_SHADERS "Compile embedded Metal source at runtime" ON)
@@ -299,8 +316,21 @@ if(SRW64_GL_ONLY)
     srw64_add_dialogue_cpu("${SRW64_RT64}/src/contrib")
     if(NOT TARGET SDL2::SDL2)
         find_package(SDL2 REQUIRED)
+        if(VITA AND NOT TARGET SDL2::SDL2 AND TARGET SDL2::SDL2-static)
+            add_library(SDL2::SDL2 ALIAS SDL2::SDL2-static)
+        endif()
     endif()
-    find_package(OpenGL REQUIRED)
+    if(VITA)
+        # vitaGL (OpenGL ES 2 over sceGxm) and the system modules it and SDL2 call.
+        add_library(srw64_gl INTERFACE)
+        target_link_libraries(srw64_gl INTERFACE vitaGL vitashark SceShaccCgExt mathneon taihen_stub
+            SceShaccCg_stub SceKernelDmacMgr_stub SceGxm_stub SceDisplay_stub SceAppMgr_stub SceAppUtil_stub
+            SceCommonDialog_stub SceIme_stub SceSysmodule_stub SceCtrl_stub SceTouch_stub SceHid_stub SceMotion_stub
+            SceAudio_stub ScePower_stub SceNet_stub SceNetCtl_stub SceRtc_stub SceKernelThreadMgr_stub)
+        add_library(OpenGL::GL ALIAS srw64_gl)
+    else()
+        find_package(OpenGL REQUIRED)
+    endif()
     add_subdirectory("${SRW64_ROOT}/src/native/ui" ui-probe)
     add_executable(srw64-gl-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp"
         native_dialogue.cpp native_intro.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp"
@@ -323,8 +353,17 @@ if(SRW64_GL_ONLY)
         target_sources(srw64-gl-host PRIVATE macos/app_menu.mm macos/update_http_macos.mm)
         set_source_files_properties(macos/app_menu.mm macos/update_http_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
         target_link_libraries(srw64-gl-host PRIVATE "-framework Cocoa" "-framework QuartzCore")
+    elseif(VITA)
+        target_sources(srw64-gl-host PRIVATE vita/vita_platform.cpp)
+        # Static libraries that others need, after all of them on the link line. pthread
+        # whole: libstdc++ asks for its symbols weakly, and without them std::thread and
+        # std::call_once take the program for single-threaded ("Enable multithreading").
+        set(CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_STANDARD_LIBRARIES} -lpng16 -lz -lbz2 -lSceSblSsMgr_stub -Wl,--whole-archive -lpthread -Wl,--no-whole-archive")
     elseif(NOT WIN32)
         target_link_libraries(srw64-gl-host PRIVATE ${CMAKE_DL_LIBS})
+    endif()
+    if(VITA)   # the runtime's 32-bit headers ahead of upstream's (recomp.h, the semaphore)
+        target_include_directories(srw64-gl-host BEFORE PRIVATE "${SRW64_VITA_RUNTIME}/include")
     endif()
     target_include_directories(srw64-gl-host PRIVATE
         "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_BINARY_DIR}" "${SRW64_ROOT}/src/native"
@@ -333,4 +372,29 @@ if(SRW64_GL_ONLY)
         "${SRW64_RUNTIME}/thirdparty/concurrentqueue" "${SRW64_RT64}/src/contrib" "${SRW64_RT64}/include")
     target_link_libraries(srw64-gl-host PRIVATE srw64_launch srw64_ui_pages srw64_dialogue_cpu srw64_cpu librecomp
         SDL2::SDL2 OpenGL::GL)
+    if(VITA)
+        # eboot.bin and param.sfo; tools/release/vita/package_vpk.py puts them in the VPK with
+        # the dialogue text, the fonts and the stages' metadata (build_game.sh).
+        include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
+        vita_create_self(eboot.bin srw64-gl-host UNSAFE)
+        set(SRW64_VITA_TITLEID "MWND00064" CACHE STRING "The Vita application's title id")
+        string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1" SRW64_VITA_MAJOR "${SRW64_VERSION}")
+        string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\2" SRW64_VITA_MINOR "${SRW64_VERSION}")
+        math(EXPR SRW64_VITA_MAJOR "${SRW64_VITA_MAJOR}")
+        math(EXPR SRW64_VITA_MINOR "${SRW64_VITA_MINOR}")
+        string(LENGTH "${SRW64_VITA_MAJOR}" length)
+        if(length EQUAL 1)
+            set(SRW64_VITA_MAJOR "0${SRW64_VITA_MAJOR}")
+        endif()
+        string(LENGTH "${SRW64_VITA_MINOR}" length)
+        if(length EQUAL 1)
+            set(SRW64_VITA_MINOR "0${SRW64_VITA_MINOR}")
+        endif()
+        # ATTRIBUTE2=12: the whole user partition (365 MiB), not the default 256.
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/param.sfo"
+            COMMAND ${VITA_MKSFOEX} -s TITLE_ID=${SRW64_VITA_TITLEID} -s APP_VER=${SRW64_VITA_MAJOR}.${SRW64_VITA_MINOR}
+                -d ATTRIBUTE2=12 Marchwind64 "${CMAKE_CURRENT_BINARY_DIR}/param.sfo"
+            VERBATIM)
+        add_custom_target(srw64-vita-sfo ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/param.sfo")
+    endif()
 endif()

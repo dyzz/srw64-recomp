@@ -944,9 +944,28 @@ public:
     explicit GLRenderer(uint8_t* rdram) : rdram(rdram) {
         // The context was made on the window thread (srw64_create_window); it is this
         // thread's from here on, the graphics thread's, which also presents.
+#ifdef __vita__
+        // vitaGL owns the screen (SDL's window only carries input): 960 x 544, the shader
+        // compiler of libshacccg.suprx. Its pools have fixed sizes: given a threshold
+        // instead, it takes every byte above it, and the game's threads and the system's
+        // own allocations have nothing left (Vita3K fell over at the first frame).
+        vglInitWithCustomSizes(0, 960, 544, 24 * 1024 * 1024, 96 * 1024 * 1024, 16 * 1024 * 1024, 0, SCE_GXM_MULTISAMPLE_NONE);
+        vglWaitVblankStart(GL_FALSE);
+        // VitaSDK's vitaGL draws its own splash screen from a thread until the first frame is
+        // presented; the game takes a while to its first picture, and Vita3K falls over under
+        // that thread. A black frame now ends it.
+        glClearColor(0, 0, 0, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
+        vglSwapBuffers(GL_FALSE);
+#else
         if (SDL_GL_MakeCurrent(window, gl_context) != 0) graphics_failure(SDL_GetError());
         SDL_GL_SetSwapInterval(0);
+#endif
+#ifdef __vita__
+        int scale = 2;   // 640 x 480 targets, shown 725 x 544
+#else
         int scale = 3;
+#endif
         if (const char* value = std::getenv("SRW64_GL_SCALE")) scale = std::clamp(std::atoi(value), 1, 8);
         renderer = std::make_unique<srw64::n64gl::Renderer>(srw64::n64gl::kPictureWidth * scale, srw64::n64gl::kPictureHeight * scale);
         interpreter = std::make_unique<srw64::n64gl::Interpreter>([this](uint64_t key) { return renderer->known(key); });
@@ -1000,7 +1019,11 @@ public:
     void update_screen() override {
         srw64::frame::wide = false;
         int width = 0, height = 0;
+#ifdef __vita__
+        width = 960; height = 544;
+#else
         SDL_GL_GetDrawableSize(window, &width, &height);
+#endif
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, width, height);
         glDisable(GL_SCISSOR_TEST);
@@ -1009,7 +1032,7 @@ public:
         // The 4:3 picture as large as the window allows, centred.
         const int picture_width = std::min(width, height * 4 / 3), picture_height = picture_width * 3 / 4;
         const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
-        renderer->present(origin, (width - picture_width) / 2, (height - picture_height) / 2, picture_width, picture_height);
+        renderer->present(origin, (width - picture_width) / 2, (height - picture_height) / 2, picture_width, picture_height, width, height);
 #ifdef SRW64_NATIVE_DIALOGUE
         const auto shown = image_workloads.find(renderer->image_at(origin));
         const uint64_t shown_workload = shown != image_workloads.end() ? shown->second : 0;
@@ -1046,7 +1069,11 @@ public:
                     : nlohmann::json({{"error", "cannot write " + shot->path.string()}}));
             }
         }
+#ifdef __vita__
+        vglSwapBuffers(GL_FALSE);
+#else
         SDL_GL_SwapWindow(window);
+#endif
     }
     void shutdown() override {
         srw64::gbi_stats::flush();
@@ -1128,10 +1155,19 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
         surface_flags = SDL_WINDOW_OPENGL;
     }
+#ifdef __vita__
+    surface_flags = 0;   // vitaGL, not SDL, draws (GLRenderer)
+#endif
 #endif
     // A Steam Deck's 1280 x 800 is the reference (game_frame.hpp); the Deck fills its screen.
+    // The Vita's window is its screen, 960 x 544, which the shared UI lays out for.
+#ifdef __vita__
+    constexpr int window_width = 960, window_height = 544;
+#else
+    constexpr int window_width = 1280, window_height = 800;
+#endif
     window = SDL_CreateWindow("Marchwind64", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              1280, 800, surface_flags | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
+                              window_width, window_height, surface_flags | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
                               (fills_screen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
                               (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0));
     if (!window) {
@@ -1141,7 +1177,9 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     }
     SDL_SysWMinfo info{};
     SDL_VERSION(&info.version);
+#ifndef __vita__   // the Vita's SDL has no window-manager details to give
     if (!SDL_GetWindowWMInfo(window, &info)) std::abort();
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::ui::window_init(window,capture_directory);
     srw64::settings::window_init(window,capture_directory);
@@ -1149,9 +1187,11 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #ifdef SRW64_GL_RENDERER
     if (gl_mode()) {
         // Made here, on the window thread, and handed to the graphics thread (GLRenderer).
+#ifndef __vita__
         gl_context = SDL_GL_CreateContext(window);
         if (!gl_context) graphics_failure(SDL_GetError());
         SDL_GL_MakeCurrent(window, nullptr);
+#endif
 #if defined(__APPLE__)
         return {info.info.cocoa.window, nullptr};
 #elif defined(_WIN32)

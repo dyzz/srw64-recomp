@@ -24,6 +24,25 @@
 #include <android/log.h>
 #endif
 
+#ifdef __vita__
+// The Vita (docs/design/psv-port.md): no pipes to pump; stdout and stderr go straight to
+// the run's console.log once it is known, unbuffered.
+namespace srw64::console_log {
+void start() {
+    std::setvbuf(stdout, nullptr, _IOLBF, 0);
+    std::setvbuf(stderr, nullptr, _IONBF, 0);
+}
+void attach(const std::filesystem::path& run) {
+    const auto path = (run / "console.log").string();
+    std::freopen(path.c_str(), "a", stdout);
+    std::freopen(path.c_str(), "a", stderr);
+    std::setvbuf(stderr, nullptr, _IONBF, 0);
+}
+void flush_now() { std::fflush(stdout); std::fflush(stderr); }
+int crash_fd() { return -1; }
+int original_stderr() { return 2; }
+}  // namespace srw64::console_log
+#else
 namespace srw64::console_log {
 namespace {
 #ifdef _WIN32
@@ -224,3 +243,4 @@ void attach(const std::filesystem::path& run) {
 
 int crash_fd() { return file.load(); }
 }
+#endif  // __vita__

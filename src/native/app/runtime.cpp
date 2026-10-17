@@ -159,8 +159,8 @@ Options parse_options(std::span<const std::string_view> args) {
         if (!options.rom.empty() || !options.content.empty() || options.new_game || !options.import_save.empty() ||
             !options.language.empty() || options.rules || options.resolution_scale || options.mute || options.debug || !options.campaign.empty())
             throw std::runtime_error("--export-save only takes --export-format and --user-dir");
-        options.export_save=fs::absolute(options.export_save);
-        if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
+        options.export_save=absolute_path(options.export_save);
+        if (!options.user_dir.empty()) options.user_dir=absolute_path(options.user_dir);
         return options;
     }
     // --import-save alone takes the card in and starts nothing.
@@ -168,23 +168,23 @@ Options parse_options(std::span<const std::string_view> args) {
         if (!options.content.empty() || options.new_game || !options.language.empty() || options.rules || options.resolution_scale || options.mute ||
             options.debug || !options.campaign.empty())
             throw std::runtime_error("--import-save without --rom only takes --user-dir");
-        options.import_save=fs::absolute(options.import_save);
-        if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
+        options.import_save=absolute_path(options.import_save);
+        if (!options.user_dir.empty()) options.user_dir=absolute_path(options.user_dir);
         return options;
     }
     if (options.rom.empty()) throw std::runtime_error("--rom is required");
     if (options.new_game && !options.import_save.empty()) throw std::runtime_error("Choose --new-game or --import-save, not both");
     if (!options.campaign.empty() && !options.import_save.empty()) throw std::runtime_error("A campaign keeps its own saves; --import-save is for the main game");
-    options.rom=fs::absolute(options.rom);
-    if (!options.campaign.empty()) options.campaign=fs::absolute(options.campaign);
-    if (!options.content.empty()) options.content=fs::absolute(options.content);
-    if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
-    if (!options.import_save.empty()) options.import_save=fs::absolute(options.import_save);
+    options.rom=absolute_path(options.rom);
+    if (!options.campaign.empty()) options.campaign=absolute_path(options.campaign);
+    if (!options.content.empty()) options.content=absolute_path(options.content);
+    if (!options.user_dir.empty()) options.user_dir=absolute_path(options.user_dir);
+    if (!options.import_save.empty()) options.import_save=absolute_path(options.import_save);
     return options;
 }
 
 std::string import_save(const Options& options) {
-    const auto root=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir);
+    const auto root=absolute_path(options.user_dir.empty()?default_user_dir():options.user_dir);
     fs::create_directories(root);
     UserLock lock(root);
     const auto imported=SaveLibrary(root/"saves").import_cartridge(options.import_save);
@@ -240,8 +240,8 @@ fs::path content_path(const fs::path& root,const std::string& relative) {
     if (relative.empty() || relative.find('\\')!=std::string::npos || relative.find(':')!=std::string::npos || path.is_absolute())
         throw std::runtime_error("Content paths must be portable and relative");
     for (const auto& part:path) if (part==".." || part==".") throw std::runtime_error("Content path traversal");
-    const auto base=fs::canonical(root);
-    const auto target=fs::canonical(base/path);
+    const auto base=canonical_path(root);
+    const auto target=canonical_path(base/path);
     const auto within=target.lexically_relative(base);
     if (within.empty() || *within.begin()==".." || !fs::is_regular_file(target))
         throw std::runtime_error("Content file escapes its directory or is not a file");
@@ -270,6 +270,23 @@ void atomic_write(const fs::path& path,std::string_view text) {
         replace_file(temporary,path);
     } catch (...) { std::error_code ignored;fs::remove(temporary,ignored);throw; }
 }
+namespace {
+bool device_path(const fs::path& path) {
+#ifdef __vita__
+    const auto text=path.generic_string();
+    const auto colon=text.find(':');
+    return colon!=std::string::npos && text.find('/')>colon;
+#else
+    (void)path;return false;
+#endif
+}
+}
+fs::path absolute_path(const fs::path& path) { return device_path(path)?path.lexically_normal():fs::absolute(path); }
+fs::path canonical_path(const fs::path& path) {
+    if(!device_path(path))return fs::canonical(path);
+    if(!fs::exists(path))throw fs::filesystem_error("canonical",path,std::make_error_code(std::errc::no_such_file_or_directory));
+    return path.lexically_normal();
+}
 fs::path executable_path() {
 #ifdef _WIN32
     std::wstring buffer(32768,L'\0');
@@ -282,6 +299,9 @@ fs::path executable_path() {
     if(_NSGetExecutablePath(buffer.data(),&size)!=0)return {};
     std::error_code error;auto path=fs::canonical(buffer.c_str(),error);
     return error?fs::path{}:path;
+#elif defined(__vita__)
+    // The installed application's own folder, where the VPK's files are.
+    return fs::path("app0:/eboot.bin");
 #else
     std::error_code error;auto path=fs::read_symlink("/proc/self/exe",error);
     return error?fs::path{}:path;
@@ -477,7 +497,7 @@ bool end_play_lock_holder(const PlayLockHolder& holder) {
 #endif
 }
 Session::Session(const Options& options) {
-    root=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir);
+    root=absolute_path(options.user_dir.empty()?default_user_dir():options.user_dir);
     fs::create_directories(root);
     lock=std::make_unique<UserLock>(root);
     // The card lives in saves/ (save_library.hpp); sessions/ keeps each run's copy. A

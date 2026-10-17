@@ -34,7 +34,7 @@ std::string saved_locale(const fs::path& user_dir) {
 fs::path validate_rom(const fs::path& path, const std::string& expected) {
     // Bound IO before hashing. The authoritative, exact identity/size checks
     // remain in run_standalone and the importer, on their own read buffer.
-    const auto resolved = fs::canonical(path);
+    const auto resolved = canonical_path(path);
     if (!fs::is_regular_file(resolved) || fs::file_size(resolved) > 64u * 1024u * 1024u)
         throw std::runtime_error("Select a regular Super Robot Wars 64 ROM file.");
     // Any byte order (.z64, .v64, .n64); the launch loads a .z64 copy (rom_order.hpp).
@@ -105,7 +105,7 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
         return chosen.empty() ? std::string("zh-Hans") : chosen;
     };
     try {
-        options.user_dir = fs::absolute(options.user_dir.empty() ? default_user_dir() : options.user_dir);
+        options.user_dir = absolute_path(options.user_dir.empty() ? default_user_dir() : options.user_dir);
         const auto preference = options.user_dir / "last-rom.txt";
         if (choose_another_rom) options.rom.clear();
         else if (options.rom.empty() && (fs::exists(preference) || fs::is_symlink(preference))) {
