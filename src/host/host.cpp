@@ -5,6 +5,7 @@
 // Native integration host, optionally rendered through RT64/Metal.
 #include <atomic>
 #include <cstdio>
+#include <chrono>
 #include <cstdlib>
 #include <cmath>
 #include <cstring>
@@ -12,6 +13,8 @@
 #include <fstream>
 #include <memory>
 #include <optional>
+#include <string>
+#include <thread>
 #include <vector>
 
 #include "librecomp/game.hpp"
@@ -86,6 +89,12 @@ std::vector<uint16_t> input_buttons;
 std::atomic<uint64_t> live_buttons{}; // Upper bits: exclusive end VI; lower 16: N64 mask.
 uint64_t last_control_sequence{};
 std::atomic_bool control_quit{};
+// An overlay is being copied in (resident_func_8007F704). The original waits on each 0x400-byte
+// DMA, so the frame boundary (80085F30) can run in the middle; the frame hooks that patch an
+// overlay's own bytes (battle_hud's bands, menu_widen's clamp) wait for the copy to end, or
+// they patch the half-loaded overlay and the byte check below stops the game. On Android the
+// copy spans frames (the Seeker, 2026-10-17: 3 of 29 battles ended by Rewind stopped here).
+std::atomic_bool overlay_loading{};
 
 [[noreturn]] void fail(const char* text) {
     std::fprintf(stderr, "SRW64_HOST_FAILURE %s\n", text);
@@ -271,17 +280,68 @@ void srw64_debug_quit() {
     ultramodern::quit();
 }
 
+// The overlay's bytes against the ROM's: how many differ. (A 64-bit index: MEM_B needs the
+// address sign-extended.)
+static size_t overlay_mismatch(uint8_t* rdram, uint32_t ram, const uint8_t* expected, uint32_t size) {
+    size_t differing = 0;
+    for (size_t i = 0; i < size; ++i) differing += (uint8_t)MEM_B(i, (int32_t)ram) != expected[i];
+    return differing;
+}
+// Where an overlay differs from the ROM (runs of differing bytes, gaps under 16 joined),
+// what was written there, and whether it is still being written 100 ms later.
+static void report_overlay_mismatch(uint8_t* rdram, uint32_t rom, uint32_t ram, uint32_t size, const uint8_t* expected) {
+    std::vector<uint8_t> now(size);
+    for (size_t i = 0; i < size; ++i) now[i] = (uint8_t)MEM_B(i, (int32_t)ram);
+    std::vector<std::pair<uint32_t, uint32_t>> runs;
+    size_t differing = 0;
+    for (size_t i = 0; i < size; ++i) {
+        if (now[i] == expected[i]) continue;
+        ++differing;
+        if (!runs.empty() && i - runs.back().second < 16) runs.back().second = uint32_t(i + 1);
+        else runs.push_back({uint32_t(i), uint32_t(i + 1)});
+    }
+    std::fprintf(stderr, "SRW64_OVERLAY_MISMATCH rom=%08X ram=%08X size=%08X bytes=%zu runs=%zu vi=%llu mode=%X map_state=%X\n",
+                 rom, ram, size, differing, runs.size(), (unsigned long long)vi_count.load(),
+                 srw64::guest::read(rdram, 0x8015DA02, 1), srw64::guest::read(rdram, 0x80172EB0, 1));
+    for (size_t r = 0; r < runs.size() && r < 12; ++r) {
+        const auto [start, end] = runs[r];
+        char seen[97] = {}, wanted[97] = {};
+        for (uint32_t i = 0; i < 48 && start + i < end; ++i) {
+            std::snprintf(seen + 2 * i, 3, "%02X", now[start + i]);
+            std::snprintf(wanted + 2 * i, 3, "%02X", expected[start + i]);
+        }
+        std::fprintf(stderr, "SRW64_OVERLAY_MISMATCH run %08X-%08X (+%X, %X bytes) ram %s rom %s\n",
+                     ram + start, ram + end, start, end - start, seen, wanted);
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    size_t later = 0;
+    uint32_t later_first = 0;
+    for (size_t i = 0; i < size; ++i)
+        if ((uint8_t)MEM_B(i, (int32_t)ram) != now[i]) { if (!later) later_first = uint32_t(i); ++later; }
+    std::fprintf(stderr, "SRW64_OVERLAY_MISMATCH 100 ms later: %zu more bytes changed%s", later, later ? "" : "\n");
+    if (later) std::fprintf(stderr, ", first at %08X\n", ram + later_first);
+}
+
 extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t rom = ctx->r4, ram = ctx->r5, size = ctx->r6;
     if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
+    overlay_loading = true;
     srw64_original_rom_read(rdram, ctx);
+    overlay_loading = false;
     for (size_t index = 1; index < num_sections; ++index) {
         const auto& section = section_table[index];
         if (section.rom_addr != rom || section.size != size || (uint32_t)section.ram_addr != ram) continue;
         const auto rom_bytes = recomp::get_rom();
         if ((uint64_t)rom + size > rom_bytes.size()) fail("overlay outside ROM");
-        for (size_t i = 0; i < size; ++i) {
-            if ((uint8_t)MEM_B(i, (int32_t)ram) != rom_bytes[rom + i]) fail("overlay DMA byte mismatch");
+        if (const auto differing = overlay_mismatch(rdram, ram, rom_bytes.data() + rom, size); differing) {
+            // Something wrote the overlay while the original copied it in (it waits on each
+            // 0x400-byte DMA, so other threads run): say what and where, then stop, or put the
+            // ROM's bytes back and go on with SRW64_OVERLAY_REPAIR=1.
+            report_overlay_mismatch(rdram, rom, ram, size, rom_bytes.data() + rom);
+            const char* repair = std::getenv("SRW64_OVERLAY_REPAIR");
+            if (!repair || std::string(repair) != "1") fail("overlay DMA byte mismatch");
+            for (size_t i = 0; i < size; ++i) MEM_B(i, (int32_t)ram) = int8_t(rom_bytes[rom + i]);
+            std::fprintf(stderr, "SRW64_OVERLAY_MISMATCH repaired rom=%08X\n", rom);
         }
         for (auto it = loaded_sections.begin(); it != loaded_sections.end();) {
             const auto& old = section_table[*it];
@@ -385,7 +445,8 @@ static int run_host(int argc, char** argv) {
     // the map overlay's own callbacks go in the widened view; the rest (windows, banners,
     // portraits) stays in the centred 320. Not in the whole-map overview (801027DB == 1).
     srw64_game_hooks.frame_start = [](uint8_t* ram) {
-        srw64::wide_map::frame(ram); srw64::battle_hud::frame(ram); srw64::menu_widen::frame_start(ram);
+        srw64::wide_map::frame(ram);
+        if (!overlay_loading) { srw64::battle_hud::frame(ram); srw64::menu_widen::frame_start(ram); }
         srw64::game_speed::frame(ram);   // 2x speed where it applies (game_speed.hpp)
     };
     srw64_game_hooks.map_space_begin = [](uint8_t* ram, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub) {
