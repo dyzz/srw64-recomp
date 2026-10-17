@@ -11,6 +11,15 @@ level, the funds down by exactly that. A weapon set back to level 0 (as one that
 later) comes back up free when the page opens again. With the setting per weapon the
 original weapon list returns.
 
+--bonus checks the full-upgrade bonus (D_801DC87C) on ダイターン3, which has none of
+its own: two of its weapons are entered in the table in RAM as unlocking two others (as
+マジンガーZ(JS) has two), and those are hidden (+0x22 bit 0x400) as bonus weapons are
+until then. One payment reaching the cap unlocks both: two messages, one after the other. The original unlock
+(801D0AE4), its message and the rule's timing then run as they would for ν's フィン
+ファンネル. Levels to one below the original cap: no bonus; one more to the original cap:
+the message names both weapons and the bonus weapon is there at that level; with
+--cap-break, on to 15: no second unlock.
+
 --cap-break turns on the rule upgrade-cap-break (every unit to 15 levels) and plans
 straight to 15 with the funds at 9999999: every weapon reaches 15, the levels past the
 unit's own cap show as ●／☆ cells, and the page then says it can go no further."""
@@ -31,6 +40,8 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--reuse-build', action='store_true')
 parser.add_argument('--language', default='ja')
 parser.add_argument('--cap-break', action='store_true')
+parser.add_argument('--bonus', action='store_true')
+parser.add_argument('--direct', action='store_true', help='with --bonus: one payment from 0 straight to the cap (15 with --cap-break)')
 parser.add_argument('--run', help='attach to a game already at the title (another machine, attach.py) instead of launching one; '
                     'its slot 1 must hold the save')
 parser.add_argument('--save', default='build/recomp/save-recovery-check/intermission-cold-1.source.sram')
@@ -124,7 +135,7 @@ for _ in range(8):
     keys('z', pause=1.5)
 s.wait(intermission_page=True, timeout=30)
 call('settings', weapon_upgrade='unified')
-funds = 9999999 if args.cap_break else 900000
+funds = 9999999 if args.cap_break or args.bonus else 900000
 edit_funds('intermission', str(funds))
 
 # 武器改造 → the first unit (ダイターン3): the unified page.
@@ -142,6 +153,90 @@ check('unified-open', p['level'] == mode and p['plan'] == 0 and p['weapons'] == 
       and p.get('next_price') == expected_cost(before, mode + 1, p['cap']),
       {'page': p, 'levels': levels, 'other_forms_only': [w['number'] for w in others]})
 shot('unified-open.png')
+
+UNLOCKS = 0x801DC87C
+def pay(levels):
+    """Plan `levels` more and pay them; the rebuilt page."""
+    keys(*['right'] * levels, pause=.25)
+    keys('z', pause=.6)
+    keys('z', pause=.6)
+    time.sleep(3)
+    return wait_page('unified')
+if args.bonus:
+    own = [w for w in counted(before) if number in w['forms']]   # the table names this form, so its own weapons
+    pairs = [(own[0], own[-1]), (own[1], own[-2])]
+    source, bonus = pairs[0]
+    for n, (a, b) in enumerate(pairs):
+        call('memory.write', address=UNLOCKS + 6 * n, hex=b''.join(v.to_bytes(2, 'big') for v in (number, a['number'], b['number'])).hex())
+        call('memory.write', address=b['address'] + 0x22, hex=(u(b['address'] + 0x22, 2) | 0x400).to_bytes(2, 'big').hex())
+    keys('x')
+    wait_page('list')
+    keys('z')
+    p = wait_page('unified')
+    time.sleep(1.5)
+    original = p['original_cap']
+    if args.direct:
+        # One plan from 0 to the cap, past the original cap with the rule on: both bonuses come
+        # from that one payment; the bonus weapons, hidden while it was paid, cost nothing and
+        # are at the new level when the page opens again.
+        check('bonus-hidden', p['weapons'] == len(counted(before)) - 2 and p['level'] == 0, {'weapons': p['weapons']})
+        top = p['cap']
+        hidden_now = weapons(slot)
+        cost = expected_cost(hidden_now, top, top)
+        p = pay(top)
+        after = weapons(slot)
+        firsts = [next(w for w in after if w['index'] == b['index']) for _, b in pairs]
+        check('direct-bonus-1', p['window'] == 'bonus' and p['bonus']['numbers'] == [pairs[0][0]['number'], pairs[0][1]['number']]
+              and p['funds'] == funds - cost == u(0x8010F5F4, 4),
+              {'window': p['window'], 'bonus': p.get('bonus'), 'funds': p['funds'], 'expected': funds - cost})
+        shot('direct-bonus-1.png')
+        keys('z', pause=.8)
+        p = page()
+        check('direct-bonus-2', p['window'] == 'bonus' and p['bonus']['numbers'] == [pairs[1][0]['number'], pairs[1][1]['number']], {'window': p['window'], 'bonus': p.get('bonus')})
+        keys('z', pause=.8)
+        p = page()
+        after = weapons(slot)
+        check('direct-levels', p['window'] == '' and p['level'] == top and p['weapons'] == len(counted(before))
+              and all(w['level'] == top for w in counted(after)) and all(not w['hidden'] and w['level'] == top for w in
+              (next(a for a in after if a['index'] == b['index']) for _, b in pairs)),
+              {'level': p['level'], 'levels': [(w['number'], w['level'], w['hidden']) for w in after]})
+        shot('direct-after.png')
+        print('ALL', len(checks), 'PASS', flush=True)
+        if not args.run:
+            print('exit', s.quit().get('exit_code'))
+        sys.exit(0)
+    check('bonus-hidden', p['weapons'] == len(counted(before)) - 2 and p['level'] == 0, {'weapons': p['weapons'], 'source': source['number'], 'bonus': bonus['number']})
+    p = pay(original - 1)
+    hidden = next(w for w in weapons(slot) if w['index'] == bonus['index'])
+    check('bonus-not-yet', p['window'] == '' and p['level'] == original - 1 and hidden['hidden'], {'window': p['window'], 'level': p['level'], 'bonus': hidden})
+    p = pay(1)
+    shown = next(w for w in weapons(slot) if w['index'] == bonus['index'])
+    check('bonus-at-original-cap', p['window'] == 'bonus' and p['bonus']['numbers'] == [source['number'], bonus['number']] and not shown['hidden']
+          and shown['level'] == original and p['level'] == original,
+          {'window': p['window'], 'bonus': p.get('bonus'), 'weapon': shown, 'level': p['level']})
+    shot('bonus-message.png')
+    keys('z', pause=.8)
+    p = page()
+    second = next(w for w in weapons(slot) if w['index'] == pairs[1][1]['index'])
+    check('bonus-second', p['window'] == 'bonus' and p['bonus']['numbers'] == [pairs[1][0]['number'], pairs[1][1]['number']]
+          and not second['hidden'] and second['level'] == original, {'window': p['window'], 'bonus': p.get('bonus'), 'weapon': second})
+    shot('bonus-message-2.png')
+    keys('z', pause=.8)
+    p = page()
+    check('bonus-listed', p['window'] == '' and p['weapons'] == len(counted(before)) and p['level'] == original,
+          {'weapons': p['weapons'], 'level': p['level'], 'rows': [(r['number'], r['level']) for r in p['rows']]})
+    shot('bonus-listed.png')
+    if args.cap_break:
+        call('ui.click', text='upgrade-funds')   # keep the funds ample for the rest
+        time.sleep(.5); call('ui.type', text='9999999'); time.sleep(.2); call('ui.key', key='return'); time.sleep(1)
+        p = pay(15)
+        check('bonus-once', p['window'] == '' and p['level'] == 15 and all(w['level'] == 15 for w in counted(weapons(slot))),
+              {'window': p['window'], 'level': p['level'], 'levels': [(w['number'], w['level']) for w in weapons(slot)]})
+        shot('bonus-15.png')
+    print('ALL', len(checks), 'PASS', flush=True)
+    if not args.run:
+        print('exit', s.quit().get('exit_code'))
+    sys.exit(0)
 
 # ←→: three levels, then four and back to three; with the cap broken, every level to 15.
 if args.cap_break:

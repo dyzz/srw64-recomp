@@ -3277,20 +3277,10 @@ void intermission_sync() {
 const char* marker_glyph(const std::string& token) {
     return token=="格"?"\uE0F4":token=="射"?"\uE0F3":token=="P"?"\uE0F1":token=="B"?"\uE0F2":token=="MAP"?"\uE23F":nullptr;
 }
-std::string weapon_table(const json& next,const std::string& id_prefix,float u,float line,const std::string& page_text) {
+// A weapon's menu name as the weapon screens draw it: 格／射 badges in front, the name
+// shrinking into the room the badges leave, P／B／MAP behind (weapon_markers splits them).
+std::string weapon_name_html(const json& r,const json& W,float u,float width) {
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
-    // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
-    // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
-    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
-        const bool name=cls.empty();
-        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
-    const auto cell=[&](float x0,float x1,float y0,float y1,const std::string& content,const std::string& extra=""){
-        return "<div style='position:absolute; left:"+px(x0-21)+"; top:"+px(y0-21)+"; width:"+px(x1-x0)+"; height:"+px(y1-y0)+"; border-width:"+px(line)+"; border-color:#3a78e0; box-sizing:border-box; line-height:"+px(y1-y0-2*line)+"; white-space:nowrap; overflow:hidden;"+extra+"'>"+content+"</div>";
-    };
-    const auto& W=next.at("weapon_labels");const auto wl=[&](const char* key){return W.value(key,std::string());};
-    const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("---");};
-    const auto signed_number=[](const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):n<0?std::to_string(n):std::string("\u00b1 0");};
-    const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"\uff5e"+std::to_string(b);};
     // HD images: the symbol font's markers (U+E000 + ROM glyph id, drawn after the ROM
     // icons, build_symbol_font.py). Original images: the icons cut from the ROM font
     // (battle_assets.py) at their pixel size. A text badge only when neither is there.
@@ -3309,6 +3299,30 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
         const float w=token=="MAP"?22.f:10.f;
         return "<span class='im-badge "+std::string(cls)+"' style='width:"+px(w)+"; height:"+px(11)+"; line-height:"+px(11)+"; font-size:"+px(token=="MAP"?6.f:7.f)+";'>"+escape(token)+"</span>";
     };
+    std::string name;
+    const auto markers=r.value("markers",json::array());
+    for(const auto& m:markers)if(m=="格" || m=="射")name+=badge(m.get<std::string>());
+    // The name keeps to the room its marker icons leave and shrinks there (fit_lines), rather than the
+    // column clipping the P／B／MAP icon.
+    float room=width;for(const auto& m:markers)room-=m=="MAP"?26:15;
+    name+="<span class='fit' data-fit-min='0.5' style='max-width:"+px(room)+"; vertical-align:middle;'>"+escape(r.value("display_name",r.value("name",std::string())))+"</span>";
+    for(const auto& m:markers)if(m!="格" && m!="射")name+=badge(m.get<std::string>());
+    return name;
+}
+std::string weapon_table(const json& next,const std::string& id_prefix,float u,float line,const std::string& page_text) {
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    // A plain name cell gives 4 of its units to a margin on its right, so a name that fills its
+    // column (and shrinks to it) still parts from the next column, as the original's half-width text did.
+    const auto span=[&](const std::string& text,float width,const std::string& cls="",float font=0,float gap=0){
+        const bool name=cls.empty();
+        return "<span class='fit "+cls+"' style='width:"+px(name?width-4:width)+";"+(name?" margin-right:"+px(4)+";":"")+(font?" font-size:"+px(font)+";":"")+(gap?" margin-left:"+px(gap)+";":"")+"'>"+escape(text)+"</span>";};
+    const auto cell=[&](float x0,float x1,float y0,float y1,const std::string& content,const std::string& extra=""){
+        return "<div style='position:absolute; left:"+px(x0-21)+"; top:"+px(y0-21)+"; width:"+px(x1-x0)+"; height:"+px(y1-y0)+"; border-width:"+px(line)+"; border-color:#3a78e0; box-sizing:border-box; line-height:"+px(y1-y0-2*line)+"; white-space:nowrap; overflow:hidden;"+extra+"'>"+content+"</div>";
+    };
+    const auto& W=next.at("weapon_labels");const auto wl=[&](const char* key){return W.value(key,std::string());};
+    const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("---");};
+    const auto signed_number=[](const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):n<0?std::to_string(n):std::string("\u00b1 0");};
+    const auto range=[](const json& r){const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u);return a==b?std::to_string(a):std::to_string(a)+"\uff5e"+std::to_string(b);};
     const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
     std::string body=cell(21,68,21,44,"<div style='text-align:right; padding-right:"+px(4)+";'>"+escape(page_text)+"</div>")+
         cell(68,164,21,44,"<div style='text-align:center;' class='im-dim fit'>"+escape(wl("weapon"))+"</div>")+
@@ -3318,14 +3332,7 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     std::string list;
     for(unsigned n=0;n<rows.size();++n) {
         const auto& r=rows[n];
-        std::string name;
-        const auto markers=r.value("markers",json::array());
-        for(const auto& m:markers)if(m=="格" || m=="射")name+=badge(m.get<std::string>());
-        // The name keeps to the room its marker icons leave and shrinks there (fit_lines), rather than the
-        // column clipping the P／B／MAP icon.
-        float room=146;for(const auto& m:markers)room-=m=="MAP"?26:15;
-        name+="<span class='fit' data-fit-min='0.5' style='max-width:"+px(room)+"; vertical-align:middle;'>"+escape(r.value("display_name",r.value("name",std::string())))+"</span>";
-        for(const auto& m:markers)if(m!="格" && m!="射")name+=badge(m.get<std::string>());
+        const std::string name=weapon_name_html(r,W,u,146);
         list+="<button id='"+id_prefix+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"
             "<span style='width:"+px(146)+"; white-space:nowrap; overflow:hidden;'>"+name+"</span>"+span(number(r.at("power")),40,"im-right")+span(range(r),44,"im-right")+span(signed_number(r.value("hit",json())),40,"im-right")+"</button>";
     }
@@ -3387,6 +3394,21 @@ void upgrade_sync() {
     const auto& L=next.at("labels");const auto label_of=[&](const char* key){return L.value(key,std::string());};
     const auto number=[](const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-----");};
     const std::string screen=next.value("screen",std::string());
+    // The full-upgrade bonus (the original's layout 0x8C breaks it into five short lines):
+    // two sentences, the weapons picked out, each line shrinking to the box if it must.
+    // 「X を最大まで改造したので、」「特別ボーナスとして Y が追加されます」; English parts by spaces.
+    const auto bonus_box=[&]{
+        const auto& b=next.at("bonus");const auto& bl=next.at("bonus_labels");
+        const std::string gap=localization::catalog().locale=="en"?" ":"";
+        const auto name=[&](const char* key){return "<span style='color:#ffd75e;'>"+escape(b.value(key,std::string()))+"</span>";};
+        const std::string first=b.value("upgraded",std::string())+gap+bl[0].get<std::string>(),second=bl[1].get<std::string>()+gap+b.value("unlocked",std::string())+gap+bl[2].get<std::string>();
+        // One size for both lines: the longer one decides it.
+        const float size=std::min(11.f,232.f/std::max({1.f,text_units(first),text_units(second)}));
+        const auto line=[&](const std::string& html,const std::string&){
+            return "<div class='fit' style='text-align:center; height:"+px(22)+"; line-height:"+px(22)+"; font-size:"+px(size)+";'>"+html+"</div>";};
+        return "<div class='im-shade'></div>"+box(39,92,281,152,"<button id='upgrade-dismiss' style='height:"+px(60)+"; padding:"+px(7)+" "+px(6)+";'>"+
+            line(name("upgraded")+gap+escape(bl[0].get<std::string>()),first)+line(escape(bl[1].get<std::string>())+gap+name("unlocked")+gap+escape(bl[2].get<std::string>()),second)+"</button>",10.5f,"upgrade-bonus");
+    };
     std::string body="<div class='im-root' id='upgrade' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
     if(screen=="list") {
         const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
@@ -3445,9 +3467,7 @@ void upgrade_sync() {
             else body+=box(85,61,235,83,"<button id='upgrade-dismiss' class='fit' style='height:"+px(22)+"; line-height:"+px(22)+"; text-align:center;'>"+escape(label_of(window=="poor"?"poor":"maxed"))+"</button>",fit(label_of(window=="poor"?"poor":"maxed"),146),"upgrade-message");
         } else if(window=="bonus") {
             // Layout 0x8C: 「X を最大まで改造したので、特別ボーナスとして Y が追加されます」.
-            const auto& b=next.at("bonus");const auto& bl=next.at("bonus_labels");
-            body+="<div class='im-shade'></div>"+box(29,77,291,179,"<button id='upgrade-dismiss' style='height:"+px(100)+"; padding:"+px(6)+" "+px(8)+"; line-height:"+px(18)+";'>"+
-                escape(b.value("upgraded",std::string()))+"<br/>"+escape(bl[0].get<std::string>())+"<br/>"+escape(bl[1].get<std::string>())+"<br/>"+escape(b.value("unlocked",std::string()))+"<br/>"+escape(bl[2].get<std::string>())+"</button>",10.f,"upgrade-bonus");
+            body+=bonus_box();
         }
         const char* hint=confirm?(window=="confirm"?"upgrade_weapon_confirm_hint":"upgrade_message_hint"):window=="bonus"?"upgrade_message_hint":next.value("pages",1u)>1?"upgrade_weapons_hint_pages":"upgrade_weapons_hint";
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";
@@ -3477,7 +3497,7 @@ void upgrade_sync() {
                 span(W.value("power",std::string()),40,"im-dim im-right",std::min(10.f,fit(W.value("power",std::string()),40)))+span(page,54,"im-dim im-right")+"</div>";
             for(const auto& r:rows) {
                 const bool raised=r.contains("target");
-                lines+="<div class='im-row' style='height:"+px(14)+"; line-height:"+px(14)+"; padding:0 "+px(4)+";'>"+span(r.value("name",std::string()),150,"",std::min(10.f,fit(r.value("name",std::string()),146)))+
+                lines+="<div class='im-row' style='height:"+px(14)+"; line-height:"+px(14)+"; padding:0 "+px(4)+";'>"+"<span style='width:"+px(150)+"; white-space:nowrap; overflow:hidden;'>"+weapon_name_html(r,W,u,146)+"</span>"+
                     span("Lv"+std::to_string(r.value("level",0u)),26,"im-dim im-right")+span(number(r.at("power")),40,"im-right")+span(raised?"▶":"",14,"im-dim")+span(raised?number(r.at("target")):std::string(),40,"im-right im-plan")+"</div>";
             }
             body+=box(21,80,299,219,lines,10.f,"upgrade-unified-rows");
@@ -3493,9 +3513,7 @@ void upgrade_sync() {
             const std::string message=window=="poor"?label_of("poor"):next.value("weapons",0u)?label_of("maxed"):label("upgrade_unified_none");
             body+="<div class='im-shade'></div>"+box(85,61,235,83,"<button id='upgrade-dismiss' class='fit' style='height:"+px(22)+"; line-height:"+px(22)+"; text-align:center;'>"+escape(message)+"</button>",fit(message,146),"upgrade-message");
         } else if(window=="bonus") {
-            const auto& b=next.at("bonus");const auto& bl=next.at("bonus_labels");
-            body+="<div class='im-shade'></div>"+box(29,77,291,179,"<button id='upgrade-dismiss' style='height:"+px(100)+"; padding:"+px(6)+" "+px(8)+"; line-height:"+px(18)+";'>"+
-                escape(b.value("upgraded",std::string()))+"<br/>"+escape(bl[0].get<std::string>())+"<br/>"+escape(bl[1].get<std::string>())+"<br/>"+escape(b.value("unlocked",std::string()))+"<br/>"+escape(bl[2].get<std::string>())+"</button>",10.f,"upgrade-bonus");
+            body+=bonus_box();
         }
         const char* hint=window=="confirm"?"upgrade_confirm_hint":!window.empty()?"upgrade_message_hint":next.value("pages",1u)>1?"upgrade_unified_hint_pages":"upgrade_unified_hint";
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";

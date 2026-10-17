@@ -74,6 +74,9 @@ uint16_t held{};
 std::array<unsigned,up::stat_count> plans{};
 unsigned weapon_plan{};
 bool planned{};
+// Full-upgrade bonuses one unified payment unlocked (upgraded, unlocked weapon numbers):
+// the original keeps one in D_801DD20A / D_801DEC5A, and マジンガーZ(JS) has two.
+std::vector<std::pair<unsigned,unsigned>> bonuses;
 std::ofstream log;
 
 void record(const char* kind,json extra=json::object()) {
@@ -728,16 +731,25 @@ void sync_all(uint8_t* ram,recomp_context* ctx) {
     if(raised)record("unified-sync",{{"weapons",raised}});
 }
 // The machine list row (D_801DD210) of a form that uses weapon `w`, for the original's
-// confirm branch, which reads the screen unit's number and cap; else the shown unit.
+// confirm branch, which reads the screen unit's number and cap. Its full-upgrade bonus
+// (D_801DC87C) names one form, so a form the table names for this weapon comes first,
+// then the shown unit, then any form that uses it; else the shown unit.
 uint32_t form_slot(const uint8_t* ram,uint32_t w,uint32_t fallback) {
     const uint32_t list=read(ram,up::unit_at(fallback)+up::unit_weapon_list,4);
+    const uint16_t weapon=uint16_t(read(ram,w+2,2));
+    uint32_t shown=up::unit_slots,any=up::unit_slots;
     for(unsigned n=0;n<list_size(ram);++n) {
         const uint32_t slot=read(ram,list_slots+n*2,2),unit=up::unit_at(slot);
         if(read(ram,unit+up::unit_weapon_list,4)!=list)continue;
         const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
-        for(unsigned f=0;f<weapon_form_slots;++f)if(read(ram,w+weapon_forms+f*2,2)==number)return slot;
+        bool uses=false;
+        for(unsigned f=0;f<weapon_form_slots;++f)uses|=read(ram,w+weapon_forms+f*2,2)==number;
+        if(!uses)continue;
+        if(up::unlocks(ram,number,weapon))return slot;
+        if(slot==fallback)shown=slot;
+        if(any==up::unit_slots)any=slot;
     }
-    return fallback;
+    return shown!=up::unit_slots?shown:any!=up::unit_slots?any:fallback;
 }
 // What raising every shown weapon to `target` costs: each one's missing levels at its own
 // type's price, up to the cap of the form that upgrades it.
@@ -796,15 +808,16 @@ void unified_refresh(uint8_t* ram) {
 bool unified_build(uint8_t* ram,recomp_context* ctx) {
     sync_all(ram,ctx);
     const unsigned unlocked=read(ram,bonus_unlocked,2),upgraded=read(ram,bonus_upgraded,2);
-    const bool bonus=unlocked!=999;
-    write32(ram,mode,bonus?1:0);
     write16(ram,bonus_upgraded,999);write16(ram,bonus_unlocked,999);
     std::lock_guard lock(mutex);
+    if(unlocked!=999 && std::find(bonuses.begin(),bonuses.end(),std::pair{upgraded,unlocked})==bonuses.end())bonuses.push_back({upgraded,unlocked});
+    const bool bonus=!bonuses.empty();
+    write32(ram,mode,bonus?1:0);
     weapon_plan=0;planned=false;
     current["screen"]="";
     auto page=unified_json(ram);
     page["window"]=bonus?"bonus":"";
-    if(bonus)page["bonus"]=bonus_json(ram,upgraded,unlocked);
+    if(bonus)page["bonus"]=bonus_json(ram,bonuses.front().first,bonuses.front().second);
     open(std::move(page),ram);
     call(ram,ctx,resident_func_80099814,4,2,0);
     return true;
@@ -832,8 +845,13 @@ bool unified_step(uint8_t* ram,recomp_context* ctx,std::unique_lock<std::mutex>&
     const auto window=current.value("window",std::string());
     const uint32_t slot=read(ram,screen_unit,4);
     const unsigned level=current.value("level",0u),cap=current.value("cap",0u);
+    if(action=="dismiss" && window=="bonus" && bonuses.size()>1) {
+        bonuses.erase(bonuses.begin());
+        current["bonus"]=bonus_json(ram,bonuses.front().first,bonuses.front().second);
+        lock.unlock();sound(ram,ctx,sound_cancel);return false;
+    }
     if(action=="dismiss" && !window.empty()) {
-        if(window=="bonus")write32(ram,mode,0);   // as A on the message (801D09C0)
+        if(window=="bonus"){write32(ram,mode,0);bonuses.clear();}   // as A on the message (801D09C0)
         if(planned){weapon_plan=0;planned=false;}
         current["window"]="";unified_refresh(ram);
         lock.unlock();sound(ram,ctx,sound_cancel);return false;
@@ -893,6 +911,12 @@ bool unified_step(uint8_t* ram,recomp_context* ctx,std::unique_lock<std::mutex>&
                 if(read(ram,funds,4)<price)goto done;
                 const uint32_t before=read(ram,funds,4);
                 if(!pay_weapon_level(ram,ctx,form,index,price,paid==0))break;   // its cap: on to the next weapon
+                if(const unsigned unlocked=read(ram,bonus_unlocked,2);unlocked!=999) {
+                    // 801D0AE4 named a bonus; keep it before the next one overwrites it.
+                    std::lock_guard bonus_lock(mutex);
+                    bonuses.push_back({read(ram,bonus_upgraded,2),unlocked});
+                    write16(ram,bonus_upgraded,999);write16(ram,bonus_unlocked,999);
+                }
                 spent+=before-read(ram,funds,4);++paid;
             }
         }
