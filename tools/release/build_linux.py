@@ -179,6 +179,12 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
         shutil.copyfile(found.resolve(strict=True), target)
         bundled[soname] = target
         pending += needed(target)
+    # ICU's data cut to what the game uses (tools/release/icu_data.py): 1.1 of 31.6 MB.
+    icu_data = [target for soname, target in bundled.items() if soname.startswith('libicudata.so.')]
+    if len(icu_data) != 1:
+        raise SystemExit(f'Expected one ICU data library, bundled {len(icu_data)}')
+    icu_data[0].unlink()
+    run([sys.executable, ROOT / 'tools/release/icu_data.py', 'library', '--out', icu_data[0], '--archives', ARCHIVES])
     # Strip before patchelf: stripping a patched file misaligns its segments.
     for library in bundled.values():
         run(['strip', '--strip-unneeded', library])

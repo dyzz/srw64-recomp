@@ -260,6 +260,13 @@ jobs:
           Copy-Item build/recomp/upstream/RT64/src/contrib/mupen64plus-win32-deps/SDL2-2.26.3/lib/x64/SDL2.dll $out
           Get-ChildItem -Recurse build/recomp/gfx-build -Include dxcompiler.dll,dxil.dll | Select-Object -First 2 | Copy-Item -Destination $out
           Copy-Item "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows/bin/*.dll" $out
+          # ICU's data cut to what the game uses (tools/release/icu_data.py): 1.1 of 31.6 MB,
+          # built with MSVC as a data-only DLL. Its symbol carries the pinned ICU's version: a
+          # vcpkg ICU of another one would fail the start below.
+          $icu = @(Get-ChildItem "$out/icudt*.dll")
+          if ($icu.Count -ne 1) { Write-Error "expected one ICU data DLL, found $($icu.Count)"; exit 1 }
+          .venv/Scripts/python.exe tools/release/icu_data.py library --out $icu[0].FullName
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           Copy-Item -Recurse build/fonts "$out/fonts"
           Copy-Item -Recurse content/dialogue "$out/dialogue"
           Copy-Item -Recurse content/stages "$out/stages"

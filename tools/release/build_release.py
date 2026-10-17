@@ -207,9 +207,14 @@ def main() -> int:
     steps.run("librashader", [python, "tools/recomp/toolchain/fetch_librashader.py"], source, env)
     steps.run("filters", [python, "tools/content/fetch_filters.py"], source, env)
     librashader = source / "build/recomp/thirdparty/librashader/darwin"
+    # ICU's data cut to what the game uses (1.1 of 31.6 MB) for the bundled libicudata.
+    icu_subset = work / "icudt-subset.dat"
+    steps.run("icu-data", [python, "tools/release/icu_data.py", "subset", "--out", str(icu_subset),
+        "--archives", str(DEPS.parents[1] / "sources")], source, env)
     app_dir = output / "app"
     app_dir.mkdir()
     steps.run("package", [python, "tools/release/package_macos.py", "--binary", str(build / "srw64-gfx-host"),
+        "--icu-data", str(icu_subset),
         "--runtime-library", str(librashader / "librashader.dylib"), "--license-file", str(librashader / "LICENSE.md"),
         "--output", str(app_dir / "Marchwind64.app"), "--version", args.version, "--minimum-macos", "14.0",
         "--search-dir", str(DEPS / "lib"), "--runtime-library", str(DEPS / "lib/libSDL3.dylib"),

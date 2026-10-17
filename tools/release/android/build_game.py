@@ -40,13 +40,17 @@ def native(build: Path, source: dict[str, Path], prefix: Path, file_to_c: Path, 
     cmake = cmake_bin()
     if prepare:
         run(sys.executable, ROOT / 'tools/recomp/toolchain/prepare_rt64.py', stdout=subprocess.DEVNULL)
+    # ICU's data cut to what the game uses (1.1 of 31.6 MB), linked in place of libicudata.a.
+    build.mkdir(parents=True, exist_ok=True)
+    icu_data = build / 'icu_data.c'
+    run(sys.executable, ROOT / 'tools/release/icu_data.py', 'c-source', '--out', icu_data, '--archives', ARCHIVES)
     run(cmake / 'cmake', '-S', GAME, '-B', build, '-G', 'Ninja',
         f'-DCMAKE_MAKE_PROGRAM={cmake / "ninja"}',
         f'-DCMAKE_TOOLCHAIN_FILE={ndk_root / "build/cmake/android.toolchain.cmake"}',
         '-DANDROID_ABI=arm64-v8a', f'-DANDROID_PLATFORM=android-{MIN_SDK}', '-DCMAKE_BUILD_TYPE=RelWithDebInfo',
         f'-DSRW64_SDL3_SOURCE={source["sdl3"]}', f'-DSRW64_SDL2_COMPAT_SOURCE={source["sdl2-compat"]}',
         f'-DSRW64_ANDROID_PREFIX={prefix}', f'-DRT64_FILE_TO_C={file_to_c}', f'-DPython3_EXECUTABLE={sys.executable}',
-        f'-DSRW64_ASSERTS={"ON" if asserts else "OFF"}')
+        f'-DSRW64_ASSERTS={"ON" if asserts else "OFF"}', f'-DSRW64_ICU_DATA_SOURCE={icu_data}')
     jobs = str(os.cpu_count() or 8)
     if quiet_game_code:
         # The code generated from the ROM stays out of the log (a public CI log): its

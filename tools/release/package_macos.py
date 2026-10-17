@@ -107,11 +107,24 @@ def sign_bundle(bundle: Path, files: list[Path], identity: str) -> None:
     run(["/usr/bin/codesign", "--verify", "--deep", "--strict", str(bundle)])
 
 
+def replace_icu_data(bundle: Path, data: Path, minimum: str) -> None:
+    """ICU's data library rebuilt from the subset the game uses (icu_data.py), same install name."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import icu_data
+    found = [path for path in (bundle / "Contents/Frameworks").glob("libicudata.*.dylib") if not path.is_symlink()]
+    if len(found) != 1:
+        raise ValueError(f"Expected one ICU data library in the bundle, found {len(found)}")
+    install_name = run(["/usr/bin/otool", "-D", str(found[0])]).splitlines()[-1].strip()
+    major = found[0].name.split(".")[1]
+    found[0].unlink()
+    icu_data.library(data.read_bytes(), major, found[0], install_name, minimum)
+
+
 def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum: str = "14.0",
                  identity: str = "-", notices: tuple[Path, ...] = (), cmake: str = "cmake",
                  search_dirs: tuple[Path, ...] = (), runtime_libraries: tuple[Path, ...] = (),
                  dialogue: Path | None = None, fonts: Path | None = None, hd: Path | None = None, filters: Path | None = None,
-                 rom: Path | None = None) -> Path:
+                 rom: Path | None = None, icu_data: Path | None = None) -> Path:
     if sys.platform != "darwin":
         raise ValueError("macOS packaging must run on macOS")
     version_tuple(version)
@@ -224,6 +237,8 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
         run([cmake, f"-DBUNDLE:PATH={staged}",
              "-DSEARCH_DIRS:STRING=" + ";".join(str(path) for path in dict.fromkeys(searches)),
              "-DEXTRA_LIBS:STRING=" + ";".join(extra_libraries), "-P", str(script)])
+        if icu_data is not None:
+            replace_icu_data(staged, icu_data, minimum)
         payloads = macho_files(staged)
         if executable not in payloads:
             raise ValueError("Bundle has no native main executable")
@@ -258,13 +273,15 @@ def main() -> int:
     parser.add_argument("--rom", type=Path, help="internal test builds only: bundle this ROM, so the app starts without asking for one")
     parser.add_argument("--runtime-library", type=Path, action="append", default=[],
                         help="Explicit Mach-O dylib loaded via dlopen, copied under its supplied basename")
+    parser.add_argument("--icu-data", type=Path,
+                        help="ICU data subset (tools/release/icu_data.py subset) for the bundled libicudata")
     args = parser.parse_args()
     try:
         result = stage_bundle(args.binary, args.output, version=args.version, minimum=args.minimum_macos,
                               identity=args.sign_identity, notices=tuple(args.license_file), cmake=args.cmake,
                               search_dirs=tuple(args.search_dir), runtime_libraries=tuple(args.runtime_library),
                               dialogue=args.dialogue if args.dialogue.is_dir() else None, fonts=args.fonts, hd=args.hd, rom=args.rom,
-                              filters=args.filters if args.filters.is_dir() else None)
+                              filters=args.filters if args.filters.is_dir() else None, icu_data=args.icu_data)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         detail = error.stdout if isinstance(error, subprocess.CalledProcessError) else str(error)
         parser.exit(1, f"Bundle staging failed: {detail}\n")
