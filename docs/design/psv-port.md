@@ -267,4 +267,4 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
 
 ## 不在本计划内
 
-Vita 版的 HD 美术、滤镜、插帧、录像、MOD；Nintendo 3DS/Switch 等其他主机（3DS 比 Vita 更弱，Switch 有 Vulkan 可走 plume，是另一个计划）；把 Vita 的 GL 路径合并进桌面发布包。
+Vita 版的 HD 美术、滤镜、插帧、录像、MOD；Nintendo 3DS/Switch 等其他主机（3DS 比 Vita 更弱；Switch 是另一个计划，见 [Switch 移植方案](switch-port.md)：自制系统没有 Vulkan，devkitPro 只有 Mesa 20.1 的 GL/GLES 与 deko3d，RT64/plume 同样用不上，Switch 版复用本页的 GL 路径；社区的 NVK 移植只列为实验）；把 Vita 的 GL 路径合并进桌面发布包。

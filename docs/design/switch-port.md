@@ -215,17 +215,56 @@ HOME 与截图键归系统，不可用。
 
 模拟器的局限（推断）：Mesa 自制程序向 nvdrv 提交的是 Maxwell 3D 命令，模拟器按 GPU 命令级模拟，原理上能跑；SDL2 + Mesa 的 DevilutionX 2023 年在 Ryujinx 上跑过（[devilutionX#6740](https://github.com/diasurgical/devilutionX/issues/6740)，2023-10-24），但**没有找到任何 libultraship 或 N64Recomp NRO 在模拟器上运行的报告**。模拟器的内存大小可调、不模拟时钟、不模拟 nvdrv 限额与时序，直接加载的 NRO 多半按应用身份运行，所以小程序模式检查也测不出来。只能当冒烟测试。
 
-### 实机验收环境（用户计划购买）
+### 实机
 
-全部来自 [NH Switch Guide](https://switch.hacks.guide/)（源码 nh-server/switch-guide，各页最后修改 2026-05 至 2026-10）：
+验收只认实机，环境与日常流程见下一节。初代 Erista 的默认 CPU/GPU 频率与 Mariko 相同，测性能有代表性；它超频余量小、功耗高，正好作为「不靠超频」的基准。
 
-1. **买之前确认未修补。** 设置 → 系统 → 序列号信息（比机身标签准），对照指南「Getting Started」页的序列号表与在线检查器：如 XAW1 在 XAW10065000000 以下未修补、到 XAW10120000000 为「可能已修补」、以上已修补；XAW9 与 XAK 只有「可能」；表外序列号都不可利用（[getting_started](https://switch.hacks.guide/user_guide/getting_started)，2026-05-15）。2018 年中起出货的已是修补机；Lite/OLED 与新款续航版（Mariko）都要改芯片。二手机要请卖家拍设置里的序列号。
-2. **进 RCM：** 短接器（jig）短接右 Joy-Con 导轨的 10 号针与地，**别碰 4 号针（5 V）**，不要用回形针或锡纸（[entering_rcm](https://switch.hacks.guide/user_guide/rcm/entering_rcm)，2026-09-28）。
-3. **从 Mac 注入载荷：** 指南现用 **OmniRCM**（`OmniRCM-osx.zip`，v1.1.1 2026-08-09），备选是 Chromium 浏览器里的 WebUSB 注入器 `omnircm.nintendohomebrew.com/web/`；TegraRcmGUI 只有 Windows（[sending_payload](https://switch.hacks.guide/user_guide/rcm/sending_payload)，2026-09-02）。
-4. **Hekate + Atmosphère：** 当前 hekate v6.5.4 / Nyx 1.9.4（2026-09-28）、Atmosphère 1.12.1（2026-10-16，支持固件 23.0.0）、自带 hbloader 2.4.5 与 hbmenu 3.6.1。先用 hekate 备份 NAND 与密钥。
-5. **emuMMC，永远离线：** 在 SD 卡上建 emuMMC（分区式），配 `emummc.txt` DNS-MITM 屏蔽任天堂服务器；指南明说「emuMMC 保持离线就没有封机风险」「emuMMC 与 sysMMC 都联网迟早会被封」（[cfw_environment](https://switch.hacks.guide/user_guide/all/cfw_environment)，2026-09-16；[launching_cfw](https://switch.hacks.guide/user_guide/all/launching_cfw)，2026-10-16）。sysMMC 保持原样可正常联网玩正版。
-6. **开发循环：** 在 emuMMC 里按住 R 启动任意游戏进 hbmenu（应用模式）。Mac 上 `nxlink -s Marchwind64.nro` 经 Wi-Fi 推送并启动，stdout 回到终端；调试接口经 Wi-Fi 用 `attach.py` 接 MCP（与 Deck、安卓、Vita 同一流程）；大文件（HD 包）用 SD 卡读卡器或 ftpd。崩溃时 Atmosphère 在 `sdmc:/atmosphere/crash_reports/` 写报告，可解析出模块偏移。
-7. **Erista 的代表性：** 默认 CPU/GPU 频率与 Mariko 相同，测性能有代表性；Erista 超频余量小、功耗高，正好作为「不靠超频」的基准。
+## 开发环境与开发流程
+
+本节的 Switch 端步骤除特别标注外都来自 [NH Switch Guide](https://switch.hacks.guide/) 的源码（[nh-server/switch-guide](https://github.com/nh-server/switch-guide)，各页最后修改日期见括号），工具行为读的是各自仓库的源码，2026-10-17 查证。
+
+### Switch 端一次性配置
+
+1. **买之前确认未修补（已查证）。** 设置 → 系统 → 序列号信息（指南说比机身标签准），对照 [Getting Started](https://switch.hacks.guide/user_guide/getting_started)（2026-05-15）的序列号表与在线检查器：如 XAW1 在 XAW10065000000 以下未修补、到 XAW10120000000 为「可能已修补」、以上已修补；XAW9 与全部 XAK 只有「可能」；表外序列号都不可利用。2018 年中起出货的已是修补机；Lite、OLED 与续航版（Mariko）都要改芯片。买二手要请卖家拍设置里的序列号。
+2. **SD 卡：FAT32，64 GB 起，建议 128 GB（容量是推断）。** hekate 分区时把 emuMMC 滑块设成「29 FULL」（OLED 是 58），其余空间是 hekate 建的 FAT32 分区（[partitioning_sd](https://switch.hacks.guide/user_guide/all/partitioning_sd)，2026-07-01）。备份 NAND 时 RAW GPP 先写到 SD 卡上，指南要求至少 32 GB 空闲，否则分块备份（[making_essential_backups](https://switch.hacks.guide/user_guide/all/making_essential_backups)，2026-03-02）。29 GB emuMMC＋29 GB 临时备份＋HD 包与日志，64 GB 是下限。Mac 上看到 emuMMC 分区「无法读取」时**不要格式化**（指南原话的同类警告）。
+3. **进 RCM、从 Mac 注入（已查证）。** 短接器（jig）插右 Joy-Con 导轨，短接 10 号针与地，**别碰 4 号针（5 V）**，不要用回形针或锡纸（[entering_rcm](https://switch.hacks.guide/user_guide/rcm/entering_rcm)，2026-09-28）。按住音量＋再按电源进 RCM，屏幕保持黑。USB-C 线接 Mac，用 **OmniRCM**（`OmniRCM-osx.zip`，v1.1.1 2026-08-09）注入 hekate；备选是 Chromium 浏览器里的 WebUSB 注入器 `omnircm.nintendohomebrew.com/web/`（[sending_payload](https://switch.hacks.guide/user_guide/rcm/sending_payload)，2026-09-02）。
+4. **先备份 NAND（已查证）。** hekate → Tools → Backup eMMC：先「eMMC BOOT0 & BOOT1」，再「eMMC RAW GPP」（即 rawnand，耗时长），完成后拷到 Mac 另存（[making_essential_backups](https://switch.hacks.guide/user_guide/all/making_essential_backups)）。这份备份是变砖后唯一的恢复手段，不进仓库、不上传。
+5. **导出密钥（可选，按需）。** 开发循环本身不需要密钥。需要的场合只有两个：Ryubing 等模拟器启动时要 `prod.keys`（推断，模拟器的通行要求），以及自己做 NSP 前导。工具是 Lockpick_RCM：原仓库 shchmue/Lockpick_RCM 2023-05-08 因任天堂的 DMCA 被 GitHub 封禁（已查证，HTTP 451），现在由社区分支维护（GitHub 上 2026-10 仍有更新）；NH 指南已不教这一步，只在 emuMMC 的用途里提到「导出加密密钥」（[cfw_environment](https://switch.hacks.guide/user_guide/all/cfw_environment)）。密钥是这台机器的私有数据，只放本机。
+6. **建 emuMMC，永远离线（已查证）。** hekate → emuMMC → Create emuMMC → SD Partition（分区式）→ Change emuMMC 选中它（[partitioning_sd](https://switch.hacks.guide/user_guide/all/partitioning_sd)）。按 [sd_preparation](https://switch.hacks.guide/user_guide/all/sd_preparation)（2026-09-02）放 Atmosphère、hekate 与 `atmosphere/hosts/emummc.txt`（DNS-MITM，屏蔽任天堂服务器）。指南：「emuMMC 保持离线就没有封机风险」「emuMMC 与 sysMMC 都联网迟早会被封」（[cfw_environment](https://switch.hacks.guide/user_guide/all/cfw_environment)；[launching_cfw](https://switch.hacks.guide/user_guide/all/launching_cfw)，2026-10-16）。sysMMC 保持原样，照常联网玩正版。版本：hekate v6.5.4 / Nyx 1.9.4（2026-09-28）、Atmosphère 1.12.1（2026-10-16，支持固件 23.0.0）。
+7. **未修补机关机后要重新注入（已查证）。** 指南：主机彻底关机、没电或进了原版系统后自制系统就失效，要重新进 RCM 注入 hekate（[launching_cfw](https://switch.hacks.guide/user_guide/all/launching_cfw)）。平时用睡眠，开发期间基本不用重新注入；在自制系统里用电源菜单「重新启动」或 hbmenu 的 reboot to payload 会回到 hekate，不用短接器。**AutoRCM 默认不开**：它让主机以为自己变砖、每次开机直接进 RCM，从此离不开注入器，误用会造成真损坏，电量耗尽后在 RCM 里充电极慢（[autorcm](https://switch.hacks.guide/extras/autorcm)，2026-03-30）。
+8. **应用模式的入口。** 指南：按住 R 启动「任意游戏（包括体验版、卡带）或应用（如 YouTube）」即进 hbmenu 的应用模式；从相簿进是小程序模式，内存少得多（[launching_cfw](https://switch.hacks.guide/user_guide/all/launching_cfw)，已查证）。离线 emuMMC 里可能没有可启动的游戏：emuMMC 是建立时从 sysMMC 复制的，装在主机内存里的游戏会跟过来；装在 SD 卡上的要把 `Nintendo` 文件夹再拷一份到 `sd:/emuMMC/RAWX/`（已查证，sd_preparation）；数字版在离线时能否通过授权检查取决于这台是不是该账号的主用机（推断）。**最省事是插一张实体卡带**，卡带不依赖授权与安装（「卡带算数」是已查证的，「最省事」是推断）。
+9. **常用工具（已查证）。** ftpd（指南的 SD 准备步骤已放进 `switch/` 文件夹，[ftpd](https://switch.hacks.guide/homebrew/ftpd)）用来在 Mac 与 SD 卡之间传文件，不用每次拔卡。sys-clk（[sys-clk](https://switch.hacks.guide/homebrew/sys-clk)）可选：测性能时用它确认、锁定在默认 1020 MHz，而不是用来超频。
+
+### 开发循环
+
+| 步骤 | 做法 | 依据 |
+| --- | --- | --- |
+| 功能验证（主力） | Mac 上的 `srw64-gl-host`（`SRW64_GL_ONLY` 构建，与 Switch 版同源）配 MCP 与检查脚本；`export SRW64_HOST_BINARY=<srw64-gl-host>` 后 `Session.launch` 都走它 | `vita` 分支 V1 记录，27 个检查已通过。平台无关的问题都在这一步解决 |
+| 编 NRO | Docker `devkitpro/devkita64`（`tools/release/switch/build.sh`，S0 新建），产出 `.nro` 与带符号的 `.elf`（崩溃定位要用，每次构建一起留存） | 先例项目 CI 同样用这个镜像（已查证 Starship/Ghostship `switch.yml`） |
+| 冒烟 | Ryubing 加载 NRO（需本机密钥与固件，推断） | 见上一节模拟器的局限 |
+| 推到实机 | Switch 上 hbmenu 按 **Y** 进 NetLoader（已查证 nx-hbmenu `nx_main/main.c`）；Mac 上 `nxlink -a <Switch IP> -p switch/Marchwind64/Marchwind64.nro -s Marchwind64.nro`：上传后在 SD 上落到该路径并启动，`-s` 留在原地接收程序的 stdout/stderr（程序里调 `nxlinkStdio()`） | nxlink 选项读 [switch-tools `src/nxlink.c`](https://github.com/switchbrew/switch-tools/blob/master/src/nxlink.c)：上传端口 28280，回连端口 28771 |
+| nxlink 装在 Mac 本机 | **不要在 Docker 里跑 nxlink。** hbmenu 把「上传连接的源地址」记作回连地址（`loadnro` 里 `ad->nxlink_host = remote`，已查证 nx-hbmenu `common/netloader.c`），程序再连回这个地址的 28771 端口。Docker Desktop 下容器出站经 NAT，Switch 看到的源地址是 Mac，而 28771 在容器里监听，不发布端口就收不到；不带 `-a` 时的 UDP 广播发现也出不了容器的网络（推断）。nxlink 来自 devkitPro 的 `switch-tools`：Mac 上装 devkitPro pacman（`devkitpro-pacman-installer.pkg`，[devkitPro/pacman 发布页](https://github.com/devkitPro/pacman/releases)，v6.0.2）后装 `switch-tools`，或直接从 switch-tools 源码编（只依赖 zlib） | 已查证工具来源；NAT 行为是推断 |
+| 调试接口接 MCP | 见下「调试接口的局域网模式」：Mac 上 `tools/release/switch/attach.py --host <Switch IP>` 写出本地会话的 `debug.json`，之后 `srw64_attach`、`srw64ctl.py`、检查脚本照常用 | 与 Deck（ssh）、安卓（adb）同一套 `Session.attach()` |
+| 拷大文件 | ROM：`sdmc:/switch/Marchwind64/rom.z64`，一次性放好；HD 包、存档、日志走 ftpd 或读卡器 | — |
+| 崩溃 | 见下「崩溃与调试」 | — |
+
+### 调试接口的局域网模式（S0/S1 的工作项）
+
+现状（本仓库，已查证）：`src/host/debug_transport.cpp` 在桌面上只监听回环地址（`listen_loopback`，系统挑端口，`INADDR_LOOPBACK`），首行必须带 `debug.json` 里的令牌；安卓走抽象 Unix 套接字、不带令牌，靠 `adb forward`；Deck 靠 ssh 端口转发（`tools/release/linux/attach.py`）。`vita` 分支为 Vita3K 改成了监听所有地址（psv-port.md V2 第 8 条）。**Switch 上没有 adb 也没有 ssh，回环地址从 Mac 根本连不到。**
+
+要做的（推断的设计，S0 在桌面上先实现并测，S1 在实机上用）：
+
+- `__SWITCH__`（以及 Vita 实机）下，调试接口开启时监听 `INADDR_ANY` 的一个固定端口，**令牌必须要**（不能沿用安卓的无令牌做法：局域网里任何人都能连）。
+- 开启条件与桌面一致：关于页的「AI 调试接口」开关或 `sdmc:/switch/Marchwind64/debug` 标记文件；默认关。开着时在屏幕角落显示「调试接口已开启 IP:端口」，避免玩家无意中开着。
+- 令牌照旧写进 SD 卡上的 `debug.json`，同时打到 nxlink 的 stdout。Switch 版的 `attach.py` 从 ftpd 取 `debug.json`（或解析 nxlink 输出），把 IP、端口、令牌写进 `build/recomp/debug/switch-<时间>/debug.json` 并设为当前会话；截图、录像、事件日志沿用现有「经同一连接取回」（`Session.local_file`）的做法。
+- 套接字用 libnx 的 BSD socket（`socketInitializeDefault`），Vita 上踩到的 `poll()` 与 `accept` 问题在 Switch 上要再验一次。
+
+### 崩溃与调试
+
+- **崩溃报告（已查证）。** Atmosphère 的 creport 把报告写到 `sdmc:/atmosphere/crash_reports/<时间戳>_<程序ID>.log`（另有 `dumps/` 下的线程信息），列出各模块起始地址与崩溃线程的回溯（[creport](https://github.com/Atmosphere-NX/Atmosphere/blob/master/docs/components/modules/creport.md)；`stratosphere/creport/source/creport_crash_report.cpp`）。用 ftpd 拉回 Mac，地址减去 NRO 模块的起始地址就是 ELF 里的地址，`aarch64-none-elf-addr2line -fCe Marchwind64.elf <偏移>` 查函数与行号（Docker 镜像里有这个工具）。
+- **自己的异常处理（已查证先例）。** libnx 允许程序定义 `__libnx_exception_handler` 并给 `__nx_exception_stack`（`nx/source/runtime/init.c`、`exception.s`）。DK64Recomp-NX 用它把 pc/lr 与回溯按模块偏移打进自己的日志，注释里就是同一条 addr2line 命令（`switch/crash_switch.c`）。本项目照做，写进 `sdmc:/switch/Marchwind64/logs/`，问题报告 zip 一并收走。
+- **gdbstub（已查证）。** Atmosphère 自带 dmnt.gen2 的独立 gdbstub：在 `sdmc:/atmosphere/config/system_settings.ini` 的 `[atmosphere]` 下设 `enable_standalone_gdbstub = u8!0x1`（同时保持 `enable_htc = u8!0x0`，默认就是 0），重启后经 Wi-Fi 在端口 **22225** 上提供 GDB 远程协议；Mac 上用 devkitPro 的 `aarch64-none-elf-gdb`，`target extended-remote <Switch IP>:22225`，`info os processes` 列进程、`attach <pid>`；`monitor wait application` 让下一个启动的应用挂起等附加（1.2.3 起，[changelog](https://github.com/Atmosphere-NX/Atmosphere/blob/master/docs/changelog.md)；默认值见 `stratosphere/ams_mitm/source/set_mitm/settings_sd_kvs.cpp`，源码注释称「这个设置将来可能消失」）。注意：hbmenu 启动的 NRO 跑在被接管的游戏进程里；调试会用到网络的进程可能卡住（changelog 原话的意思）；gdb 附加时 libnx 的自定义异常处理不会接管。只在 emuMMC 里开。
+- **日志。** 平时靠 nxlink 的 stdout 和 SD 上的日志文件；调试接口的事件日志照常可用。
 
 ## 阶段
 
@@ -234,14 +273,15 @@ HOME 与截图键归系统，不可用。
 1. `tools/release/switch/`：Dockerfile（基于 `devkitpro/devkita64`，加 switch-sdl2、switch-mesa、switch-glad）与构建脚本，照 `tools/release/vita/`。
 2. `prepare_switch_runtime.py`：上表的运行库补丁（`mmap`→16 MiB 分配、MOD 空实现、线程分支、信号量、`WindowHandle`、`quick_exit`）+ 链接选项 `--wrap=pthread_detach`。
 3. 交叉编译 `srw64_cpu`（全部 `funcs_*.c`）+ 运行库 + `srw64-gl-host` 的源码（`gl_api.hpp` 加 `__SWITCH__`；FreeType/HarfBuzz/ICU 源码交叉编译）。记录 `.text`、编译警告、`__ANDROID__`/`__linux__` 分支的去向。
-4. 平台层最小版：入口、应用模式检查、romfs、`sdmc:/switch/Marchwind64/` 路径、GLES 上下文（对照 GL 2.1 兼容）、nxlink 日志。
-5. 出 NRO，在 Ryubing 上加载。
+4. 平台层最小版：入口、应用模式检查、romfs、`sdmc:/switch/Marchwind64/` 路径、GLES 上下文（对照 GL 2.1 兼容）、nxlink 日志、`__libnx_exception_handler`。
+5. 调试接口的局域网模式（带令牌、监听所有地址）先在桌面宿主上实现并测；写 `tools/release/switch/attach.py`。
+6. 出 NRO，在 Ryubing 上加载。
 
 **门槛：** NRO 能编出来；模拟器上进到标题画面（若模拟器跑不了 Mesa 程序，记录原因，门槛降为「能加载并写出日志」）。
 
 ### S1 实机跑通（需要实机）
 
-1. 应用模式启动；nxlink 日志；调试接口经 Wi-Fi 接 MCP。
+1. 应用模式启动；nxlink 推送与日志；调试接口的局域网模式在实机上接通 MCP（`attach.py`），验证 libnx socket 的 `poll`/`accept`。
 2. 启动时预热已知的组合器程序，记录每个程序的编译时间与开机到标题的总时间。
 3. 实测：默认 1020 MHz 下各场景帧时间（现有帧率读数）、进程堆占用峰值、音频欠载次数、最大线程栈深。
 4. 在实机上跑 `vita` 分支已通过的 27 个检查脚本（4:3、原版画面）。
@@ -289,6 +329,7 @@ HOME 与截图键归系统，不可用。
 | R8 nvdrv 传输内存 | 纹理多时 `GL_OUT_OF_MEMORY`（DK64Recomp-NX 先例） | 图集减少纹理对象；HD 阶段按需调大 libnx 的弱符号 `__nx_nv_transfermem_size`（默认 0x800000，已查证 `nv.c`） |
 | R9 封机 | 用户的主机或账号被封 | 只在离线 emuMMC 上测；不发 NSP |
 | R10 许可 | 引入 GPL-2-only 代码 | 不用 GLideN64；Mesa、libnx、SDL2 都与 GPL-3 兼容；社区 NVK 移植（无许可证文件）只做实验、不进发布包 |
+| R11 调试接口暴露在局域网 | 同一网络里的人能驱动游戏 | 令牌必须、默认关、开着时屏幕常显提示 |
 
 ## 待定
 
