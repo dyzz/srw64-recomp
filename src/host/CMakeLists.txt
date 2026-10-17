@@ -233,7 +233,7 @@ if(SRW64_ENABLE_RT64)
     target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/native/ui/window_test_control.cpp")
     # The HD layers draw through Plume (native_gpu.cpp, shaders in src/host/shaders).
     target_sources(${SRW64_HOST_TARGET} PRIVATE native_gpu.cpp native_map.cpp native_background.cpp native_marker.cpp
-        native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp)
+        native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp)
     # RetroArch shader presets through librashader, loaded at run time (post_filter.hpp);
     # tools/recomp/toolchain/fetch_librashader.py puts the library beside the host.
     target_sources(${SRW64_HOST_TARGET} PRIVATE post_filter.cpp)
@@ -255,7 +255,8 @@ if(SRW64_ENABLE_RT64)
         target_sources(${SRW64_HOST_TARGET} PRIVATE game_hooks.cpp)
         # The PS Vita's GL renderer, chosen at run time with SRW64_RENDERER=gl (graphics.cpp).
         if(OpenGL_FOUND)
-            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" dialogue_gl.cpp)
+            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" dialogue_gl.cpp native_gl.cpp
+                "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp")
             target_compile_definitions(${SRW64_HOST_TARGET} PRIVATE SRW64_GL_RENDERER)
             target_link_libraries(${SRW64_HOST_TARGET} PRIVATE OpenGL::GL)
         endif()

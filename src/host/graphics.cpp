@@ -52,6 +52,7 @@
 #ifdef SRW64_GL_RENDERER
 #include "../gl/display_list.hpp"
 #include "../gl/gl_renderer.hpp"
+#include "native_gl.hpp"
 #endif
 #include "rt64_render_hooks.h"
 #ifdef __APPLE__
@@ -629,7 +630,7 @@ public:
             const char* art = std::getenv("SRW64_ART_PACK");
             const char* hd_available = std::getenv("SRW64_HD_AVAILABLE");
             if (hd_available && std::string(hd_available)=="0") {
-                srw64::presentation::image_mode.original_only();
+                srw64::presentation::image_mode.configure(false);
                 const nlohmann::json status={{"schema","srw64.image-mode.v1"},{"mode","original"},
                     {"hd_available",false},{"model_5600","original"},{"vi",srw64_current_vi()}};
                 std::ofstream(capture_directory/"image-mode.json")<<status.dump(2)<<'\n';
@@ -950,11 +951,27 @@ public:
         if (const char* value = std::getenv("SRW64_GL_SCALE")) scale = std::clamp(std::atoi(value), 1, 8);
         renderer = std::make_unique<srw64::n64gl::Renderer>(srw64::n64gl::kPictureWidth * scale, srw64::n64gl::kPictureHeight * scale);
         interpreter = std::make_unique<srw64::n64gl::Interpreter>([this](uint64_t key) { return renderer->known(key); });
-        // The host's tagged draws are its own to paint; until they are ported, nothing.
-        interpreter->classify([](uint32_t w0, uint32_t w1) { return (w0 >> 16) == 0x0053 ? (w1 | 1) : 0u; });
+        // The host's tagged draws: the tag's second word is the draw's id (two letters and a number).
+        interpreter->classify([](uint32_t w0, uint32_t w1) { return (w0 >> 16) == 0x0053 ? w1 : 0u; });
         setup_result = ultramodern::renderer::SetupResult::Success;
         chosen_api = ultramodern::renderer::GraphicsApi::Auto;
         fprintf(stderr, "SRW64_GRAPHICS_API gl %s / %s scale=%d\n", (const char*)glGetString(GL_VERSION), (const char*)glGetString(GL_RENDERER), scale);
+#ifdef SRW64_NATIVE_DIALOGUE
+        srw64::ui::render_init_gl();
+#endif
+        // The original pictures: the Vita carries no HD art (docs/design/psv-port.md). Not
+        // original_only(), which the HD layers read as "no switch", that is HD where they can.
+        srw64::presentation::image_mode.configure(false);
+        // The host's tagged draws (window frames, story and title text) from the modules that
+        // tag them, as SRW64Renderer configures them; HD layers beyond these stay off here.
+        srw64::hdmap::configure(capture_directory);
+        const char* art = std::getenv("SRW64_ART_PACK");
+        srw64::sprites::configure(art ? std::filesystem::path(art) : std::filesystem::path(), capture_directory);
+        renderer->native_hook([](const srw64::n64gl::Command& command, int width, int height) {
+            srw64::native_gl::draw(command, width, height);
+        });
+        // The picture stays 4:3 on this path for now: the host's layers follow it.
+        srw64::frame::wide = false;
     }
     bool valid() override { return true; }
     bool update_config(const ultramodern::renderer::GraphicsConfig&, const ultramodern::renderer::GraphicsConfig&) override { return false; }
@@ -968,17 +985,20 @@ public:
         auto native_frame = srw64::dialogue::take_frame(start, task->t.data_size, display_copy, rdram);
         native_text = bool(native_frame);
         srw64::dialogue::queue_frame(workload, native_frame);
+        srw64::names::queue_cover(workload, srw64::names::request().visible);
         srw64::gbi_stats::record(native_text ? display_copy.data() : rdram, rdram, start, task->t.data_size);
 #endif
         frame.clear();
         interpreter->run(rdram, start, frame, native_text ? display_copy.data() : nullptr, native_text ? task->t.data_size : 0);
         renderer->draw(frame);
         renderer->collect();
+        srw64::native_gl::end_frame();
         // The workload whose overlays go with this colour image when the VI shows it.
         image_workloads[frame.color_image] = workload;
     }
     void send_dummy_workload(uint32_t) override {}
     void update_screen() override {
+        srw64::frame::wide = false;
         int width = 0, height = 0;
         SDL_GL_GetDrawableSize(window, &width, &height);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -992,7 +1012,16 @@ public:
         renderer->present(origin, (width - picture_width) / 2, (height - picture_height) / 2, picture_width, picture_height);
 #ifdef SRW64_NATIVE_DIALOGUE
         const auto shown = image_workloads.find(renderer->image_at(origin));
-        if (shown != image_workloads.end()) srw64::dialogue::gl_draw(shown->second, uint32_t(width), uint32_t(height));
+        const uint64_t shown_workload = shown != image_workloads.end() ? shown->second : 0;
+        if (shown_workload) srw64::dialogue::gl_draw(shown_workload, uint32_t(width), uint32_t(height));
+        // The name page's cover, then the shared UI's pages over everything (capture_frame's order).
+        const bool name_cover = shown_workload && srw64::names::frame_cover(shown_workload);
+        if (name_cover) {
+            glClearColor(.028f, .045f, .07f, 1.f);
+            glClear(GL_COLOR_BUFFER_BIT);
+        }
+        if (srw64::ui::draw_gl(width, height, name_cover)) srw64::ui::presented();
+        if (shown_workload) srw64::names::cover_presented(shown_workload, name_cover);
 #endif
         const uint64_t frame_number = ++presented_frames;
         srw64::frame_rate::present_sent();
@@ -1013,8 +1042,12 @@ public:
     void shutdown() override {
         srw64::gbi_stats::flush();
 #ifdef SRW64_NATIVE_DIALOGUE
+        srw64::ui::render_shutdown_gl();
         srw64::dialogue::gl_shutdown();
 #endif
+        srw64::native_gl::shutdown();
+        srw64::sprites::shutdown();
+        srw64::hdmap::shutdown();
         renderer.reset();
         interpreter.reset();
     }

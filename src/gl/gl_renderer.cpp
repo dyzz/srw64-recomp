@@ -361,7 +361,6 @@ void Renderer::draw(const Frame& frame) {
     batches.reserve(frame.commands.size());
     staging.resize(frame.vertices.size());
     for (const auto& command : frame.commands) {
-        if (command.kind == Command::native) continue;   // the host's (Renderer::draw's caller)
         if (command.kind != Command::draw) { batches.push_back({&command, 0, 0, 0}); continue; }
         const DrawState& s = command.state;
         GLuint bound = 0;
@@ -436,17 +435,23 @@ void Renderer::draw(const Frame& frame) {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depth);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, GLsizeiptr(staging.size() * sizeof(GpuVertex)), staging.data(), GL_STREAM_DRAW);
-    for (GLuint a : {attribute_position, attribute_uv, attribute_shade, attribute_prim, attribute_bounds}) glEnableVertexAttribArray(a);
-    glVertexAttribPointer(attribute_position, 4, GL_FLOAT, GL_FALSE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, x)));
-    glVertexAttribPointer(attribute_uv, 2, GL_FLOAT, GL_FALSE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, u)));
-    glVertexAttribPointer(attribute_bounds, 4, GL_FLOAT, GL_FALSE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, bounds)));
-    glVertexAttribPointer(attribute_shade, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, shade)));
-    glVertexAttribPointer(attribute_prim, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, prim)));
-    glViewport(0, 0, width, height);
-    glEnable(GL_SCISSOR_TEST);
-    glDisable(GL_CULL_FACE);
-    glDepthFunc(GL_LEQUAL);
-    glActiveTexture(GL_TEXTURE0);
+    // The vertex layout and fixed state, again after a host draw changed them.
+    auto bind = [&] {
+        glBindFramebuffer(GL_FRAMEBUFFER, into.framebuffer);
+        glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        for (GLuint a : {attribute_position, attribute_uv, attribute_shade, attribute_prim, attribute_bounds}) glEnableVertexAttribArray(a);
+        glVertexAttribPointer(attribute_position, 4, GL_FLOAT, GL_FALSE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, x)));
+        glVertexAttribPointer(attribute_uv, 2, GL_FLOAT, GL_FALSE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, u)));
+        glVertexAttribPointer(attribute_bounds, 4, GL_FLOAT, GL_FALSE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, bounds)));
+        glVertexAttribPointer(attribute_shade, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, shade)));
+        glVertexAttribPointer(attribute_prim, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, prim)));
+        glViewport(0, 0, width, height);
+        glEnable(GL_SCISSOR_TEST);
+        glDisable(GL_CULL_FACE);
+        glDepthFunc(GL_LEQUAL);
+        glActiveTexture(GL_TEXTURE0);
+    };
+    bind();
 
     const Program* current = nullptr;
     uint32_t current_key = ~0u;
@@ -470,6 +475,17 @@ void Renderer::draw(const Frame& frame) {
             glDepthMask(GL_TRUE);
             depth_mode = -1;
             glClear(GL_DEPTH_BUFFER_BIT);
+            continue;
+        }
+        if (command.kind == Command::native) {
+            if (!native) continue;
+            for (GLuint a : {attribute_position, attribute_uv, attribute_shade, attribute_prim, attribute_bounds}) glDisableVertexAttribArray(a);
+            native(command, width, height);
+            bind();
+            current = nullptr; current_key = ~0u; bound_texture = ~0u; blend = -1; depth_mode = -1;
+            std::fill(scissor, scissor + 4, int16_t(-1));
+            glDisable(GL_BLEND);
+            glUseProgram(0);
             continue;
         }
         if (command.kind == Command::capture) {   // the picture so far, for draws that read it

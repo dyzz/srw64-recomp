@@ -20,6 +20,11 @@ void render_init(plume::RenderInterface*, plume::RenderDevice*);
 bool draw(plume::RenderCommandList*, plume::RenderFramebuffer*, bool name_cover, int layer = -1);
 void presented();
 void render_shutdown();
+// The same on the GL renderer (SRW64_RENDERER=gl): the graphics thread with the GL context
+// current, into the bound window framebuffer of width x height pixels.
+void render_init_gl();
+bool draw_gl(int width, int height, bool name_cover);
+void render_shutdown_gl();
 nlohmann::json tree();
 nlohmann::json click(const nlohmann::json&);
 nlohmann::json key(const nlohmann::json&);
