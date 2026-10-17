@@ -4,7 +4,8 @@
 The quick-load mini stage (タケル at 8,8 with three foes next to him) with a fresh save
 library whose card has no suspend save:
 
-1. The stage info page's load button says there is no suspend save.
+1. The stage info page's load button says there is no suspend save (or, on a card with
+   the first episode's, that it is another stage's).
 2. The map menu's 中断 (保存) with はい, then はい to go on: the map stays, and the card's
    suspend record is this stage's, turn 1.
 3. With the stage's title changed in RAM the record is another stage's: refused.
@@ -13,6 +14,9 @@ library whose card has no suspend save:
    タケル has not acted.
 5. He attacks again to the end; on the idle map the same: back before the attack.
 
+Local: launches its own session with a fresh save library. --run RUN attaches to a game
+started elsewhere (the Windows desktop through an ssh forward), whose card must have no
+suspend save, and --stage (a path on that machine) loads the stage from the title menu.
 Writes quick-load-checks.json and screenshots to the run."""
 import argparse
 import json
@@ -35,13 +39,19 @@ TAKERU, ROZE = (0, 0), (1, 0)
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument('--language', default='zh-Hans')
 parser.add_argument('--reuse-build', action='store_true')
+parser.add_argument('--run', help='attach to this run instead of launching')
+parser.add_argument('--stage', help="with --run: the stage definition on the game's machine")
 args = parser.parse_args()
 
-work = ROOT / 'build/recomp/quick-load-check' / time.strftime('%Y%m%dT%H%M%S')
-(work / 'saves').mkdir(parents=True)
-shutil.copyfile(SOURCE, work / 'saves' / 'cartridge.sram')
-s = Session.launch(language=args.language, images='original', mini_stage=str(STAGE), reuse_build=args.reuse_build,
-                   env={'SRW64_SAVE_LIBRARY': str(work / 'saves')})
+if args.run:
+    s = Session.attach(args.run)
+    s.client.call('settings', locale=args.language)
+else:
+    work = ROOT / 'build/recomp/quick-load-check' / time.strftime('%Y%m%dT%H%M%S')
+    (work / 'saves').mkdir(parents=True)
+    shutil.copyfile(SOURCE, work / 'saves' / 'cartridge.sram')
+    s = Session.launch(language=args.language, images='original', mini_stage=str(STAGE), reuse_build=args.reuse_build,
+                       env={'SRW64_SAVE_LIBRARY': str(work / 'saves')})
 out = Path(s.run)
 print('RUN', s.run, flush=True)
 checks = []
@@ -187,7 +197,13 @@ def text(key):
 
 
 try:
-    s.enter_mini_stage(timeout=180)
+    if args.run:
+        until(lambda: status()['intro'].get('title_major') == 3 or keys('return', pause=.6), 180, 'the title menu')
+        time.sleep(2)
+        s.client.call('mini_stage.load', path=args.stage)
+        until(lambda: status()['mini_stage'].get('ready'), 120, 'the stage')
+    else:
+        s.enter_mini_stage(timeout=180)
     until(idle(), 240, 'the idle')
     time.sleep(1)
     shot('01-idle')
@@ -195,9 +211,11 @@ try:
     # 1. No suspend save yet.
     before = notice_count()
     check('usable-on-map', status()['quick_load']['usable'], status()['quick_load'])
+    # The card's own suspend save, if any, is another stage's (the first episode's at turn 5).
+    first = status()['quick_load']['saved']
     ask()
-    until(noticed(before, text('quick_load_none')), 10, 'no suspend save')
-    check('none', not status()['quick_load']['saved']['exists'], status()['quick_load'])
+    until(noticed(before, text('quick_load_other_stage' if first['exists'] else 'quick_load_none')), 10, 'no suspend save of this stage')
+    check('none-here', not first['exists'] or not first['this_stage'], status()['quick_load'])
     if status()['settings_window']:
         keys('x', pause=.8)
     until(idle(), 20, 'the idle again')
@@ -253,4 +271,5 @@ try:
     shot('05-after-idle-load')
     check('idle-load', not acted(TAKERU) and present(ROZE) and mem(TURN, 2) == 0, where())
 finally:
-    print('EXIT', s.quit().get('exit_code'), flush=True)
+    if not args.run:
+        print('EXIT', s.quit().get('exit_code'), flush=True)
