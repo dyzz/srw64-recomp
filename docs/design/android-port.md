@@ -274,6 +274,18 @@ APK 的 `libmain.so` 必须链接两份由 ROM 生成的代码：`build/recomp/c
 
 10-15 第二台 K60 装测试包后照样卡死；它的 system.log 推翻了上面的推断，也给出新线索：SDL 表面始终 2186×990 没变（窗口 5 秒后才 2310→2400，系统栏提前隐藏在 MIUI 上没立即生效），而交换链建立时本进程连续出现 `qdgralloc: GetSize: Unrecognized pixel format: 0x38`、`Gralloc4: isSupported(1, 1, 56, …) failed with 5`、`GraphicBufferAllocator: Failed to allocate (4 x 4) … format 56 usage b00`（还有 0x3B）——是查询表面格式（`vkGetPhysicalDeviceSurfaceFormatsKHR`）时安卓试分配 R8、RGBA10 小缓冲区，高通 gralloc 不认识。紧接着第一块交换链缓冲区就卡在无人持有的 RetainBuffer 锁上，推测这条失败路径把锁留下了。处理：安卓上不查询，直接用 R8G8B8A8_UNORM＋sRGB 非线性（安卓交换链必然支持，也是这里请求的格式），日志 `SRW64_SURFACE_FORMATS skipped`。Seeker 上原先每次启动都有的 4 条 `mali_gralloc: unsupported format 0x38/0x3b` 随之消失，画面正常、30 帧，说明这几次试分配确实来自格式查询。
 
+### Adreno 6xx 启动闪退（2026-10-17，issue #7）
+
+玩家的 Poco X3 Pro（骁龙 860／Adreno 640）在 0.4.8 一启动就退出。Device Farm 上同显卡的 Pixel 4、Galaxy S10、Tab S6 全部复现，于是把能借到的 6xx 各代都跑了一遍（每台连续启动两次，第二次检验自动兜底）。Qualcomm 的驱动按代际和系统版本分成三种情况：
+
+- **帧缓冲同步派发崩溃：** 618（Pixel 4a）、620（Pixel 5）、640（Pixel 4，安卓 11）在 `NativeTarget::copyToNative` 的计算派发里崩，和 650 是同一个问题（Goemon 在 630 上也遇到过）。原先只按精确名字对 650 跳过这两个派发，现在按代际：名字以 `Adreno (TM) 6` 开头的都跳过，只有 660 除外（它的新驱动能正常执行）。
+- **通用着色器编译失败：** 642L（Galaxy A73，驱动 0x80212000，与 S21 Ultra 同一版）`RasterPSDynamic` 返回 VK_ERROR_UNKNOWN，和 660 一样，套用 660 的统一贴图槽采样变体。能玩，但很多特化着色器编不过，退回通用着色器，只有 14–22 FPS。
+- **编译器自身崩溃：** 安卓 9／10 的老驱动（S10 0x80163000、Tab S6 0x80191000、Pixel 3a 0x80180000、Pixel 3 0x8019f000）在第一帧之前编译 `RasterPSDynamic` 时，驱动的编译器 `libllvm-glnext.so`（`updateUAVTexSamUsage`）把自己的栈写坏；统一贴图槽变体也一样崩。通用着色器是所有画面的退路，编不过就什么都画不了。用户决定不修：驱动版本低于 0x801a0000 的 Adreno 6xx 在 RT64 初始化时、编译任何着色器之前就停下，按玩家选的语言提示「显卡驱动太旧，请把系统升级到安卓 11 或更高版本」。这时不销毁显卡设备，因为 Pixel 3 的驱动在 `vkDestroyDevice` 里也会崩。安卓 11 的驱动（0x801ea000，Pixel 4/4a/5）能正常编译。
+
+**自动兜底（GraphicsGuard.java）：** 遇到没测过的显卡，不必等新版本把它的名字加进去。游戏启动前写 `files/render-start`，渲染线程画满 300 个显示列表后删除（`stall_watchdog.cpp`）。下次启动时如果标记还在，并且标记之后有崩溃退出记录（安卓 11 起看 `ApplicationExitInfo`，更老的系统只看标记），就对当前版本设置 `SRW64_FRAMEBUFFER_SYNC=0`；换新版本后会重新尝试。注意原生运行时会清空 `SRW64_*` 环境变量（`clear_runtime_environment`），安卓传进来的变量要加白名单。
+
+**管线日志：** plume 对前 120 个管线在驱动编译前后各记一行（`SRW64_PIPELINE n begin/done`，带线程号和每个阶段的 SPIR-V 大小与 FNV-1a 哈希）。崩溃线程最后一个只有 begin、没有 done 的管线，就是让驱动崩溃的着色器，哈希可以对照 `build/android/game/src/shaders/*.spv`。
+
 ## 阶段
 
 ### A0 可行性验证（不需要 ROM）
