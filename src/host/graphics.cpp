@@ -597,6 +597,10 @@ public:
             ? ultramodern::renderer::SetupResult::Success : ultramodern::renderer::SetupResult::GraphicsDeviceNotFound;
         if (setup_result != ultramodern::renderer::SetupResult::Success) {
             fprintf(stderr, "SRW64_RT64_SETUP_FAILED result=%d\n", (int)result);
+#ifdef __ANDROID__
+            // The Pixel 3's old driver crashes destroying the device; the game leaves anyway.
+            if (!RT64::AndroidGpuDriverTooOld)
+#endif
             app.reset();
             graphics_failure({});
         }
