@@ -108,7 +108,7 @@ UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "slots", "moves",
 UI_KEYS |= {"cheat_level_base", "cheat_level_base_note"} | {f"cheat_level_base_{mode}" for mode in ("original", "party", "curve")}
 # The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
 CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "animation", "settings",
-                "language", "images", "speed", "d_up", "d_down", "d_left", "d_right", "z")
+                "language", "images", "speed", "quick_load", "d_up", "d_down", "d_left", "d_right", "z")
 UI_KEYS |= {f"controls_row_{row}" for row in CONTROL_ROWS}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}

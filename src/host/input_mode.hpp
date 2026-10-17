@@ -26,4 +26,7 @@ inline constexpr uint32_t pad_language = 1u << 24;
 inline constexpr uint32_t pad_images = 1u << 25;
 // 2x speed on / off (game_speed.hpp; Tab, the Deck's R4 back button).
 inline constexpr uint32_t pad_speed = 1u << 26;
+// Back to the map's suspend save, asked first (quick_load.hpp; F9). Bit 27 is the rewind
+// branch's.
+inline constexpr uint32_t pad_quick_load = 1u << 28;
 }

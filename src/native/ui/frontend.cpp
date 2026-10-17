@@ -977,7 +977,7 @@ constexpr ControlRow control_rows[]={
     {"a",Action::A},{"b",Action::B},{"start",Action::Start},{"l",Action::L},{"r",Action::R},
     {"aux_left",Action::AuxLeft},{"aux_right",Action::AuxRight},{"c_left",Action::CLeft},{"c_up",Action::CUp},{"c_down",Action::CDown},
     {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},{"speed",Action::Speed},
-    {"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
+    {"quick_load",Action::QuickLoad},{"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
 void start_capture(const std::string& id) {
     for(const auto& row:control_rows)if(id==row.id) {
         capture=Capture{};
@@ -5258,7 +5258,7 @@ void sync() {
         // The host's buttons, from the controller or keys bound to them (the keyboard state
         // holds both): the settings window, the next language, Original / HD.
         static uint32_t host_before=0;
-        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images|input::pad_speed|input::pad_animation);
+        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images|input::pad_speed|input::pad_animation|input::pad_quick_load);
         const uint32_t host_pressed=host_now&~host_before;host_before=host_now;
         const bool view_pressed=host_pressed&input::pad_view;
         // Page requests stay null until their page first reports.
@@ -5281,6 +5281,8 @@ void sync() {
             shown(battle_request) || shown(intermission_request) || shown(upgrade_request) || shown(parts_request) || shown(ability_request) ||
             shown(swap_request) || shown(save_request) || shown(title_request);
         if(!capturing && !page_up && (host_pressed&input::pad_speed))toggle_speed();
+        // The quick load's key (F9): the same question as its touch key and the stage info page's button.
+        if(!capturing && !settings_open && (host_pressed&input::pad_quick_load))choose("quick-load-ask");
         if(capturing && settings_open){}
         else if(view_pressed)choose(settings_open?"settings-close":"settings-open");
         else if(info_pressed && (!settings_open || stage_open))choose(stage_open?"settings-close":"stage-info-open");
