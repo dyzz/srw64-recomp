@@ -123,7 +123,7 @@ inline constexpr ActionToken action_tokens[] = {
     {"DLeft", {Action::DLeft}, 1, {}, 0}, {"DRight", {Action::DRight}, 1, {}, 0},
     {"Settings", {Action::Settings}, 1, {}, 0}, {"AuxL", {Action::AuxLeft}, 1, {}, 0}, {"AuxR", {Action::AuxRight}, 1, {}, 0},
     {"Anim", {Action::Animation}, 1, {}, 0}, {"Lang", {Action::Language}, 1, {}, 0}, {"Images", {Action::Images}, 1, {}, 0},
-    {"Speed", {Action::Speed}, 1, {}, 0},
+    {"Speed", {Action::Speed}, 1, {}, 0}, {"Rewind", {Action::Rewind}, 1, {}, 0},
     {"DPad", {Action::DUp, Action::DDown, Action::DLeft, Action::DRight}, 4, same(0xE830), 0xE849},
     {"DUpDown", {Action::DUp, Action::DDown}, 2, same(0xE835), 0},
     {"DLeftRight", {Action::DLeft, Action::DRight}, 2, same(0xE836), 0},

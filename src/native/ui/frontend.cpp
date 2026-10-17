@@ -36,6 +36,7 @@
 #include "steam_deck.hpp"
 #include "rule_fixes.hpp"
 #include "cheats.hpp"
+#include "rewind.hpp"
 #include "bezel.hpp"
 #include "post_filter.hpp"
 #include "notices.hpp"
@@ -969,7 +970,7 @@ struct ControlRow {const char* id;Action action;};
 constexpr ControlRow control_rows[]={
     {"a",Action::A},{"b",Action::B},{"start",Action::Start},{"l",Action::L},{"r",Action::R},
     {"aux_left",Action::AuxLeft},{"aux_right",Action::AuxRight},{"c_left",Action::CLeft},{"c_up",Action::CUp},{"c_down",Action::CDown},
-    {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},{"speed",Action::Speed},
+    {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},{"speed",Action::Speed},{"rewind",Action::Rewind},
     {"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
 void start_capture(const std::string& id) {
     for(const auto& row:control_rows)if(id==row.id) {
@@ -1095,6 +1096,7 @@ std::string saves_page() {
         turn+=button("autosave-turn:"+std::to_string(n),std::to_string(n),n==choices.turn,!choices.autosave);
     }
     body+=settings_row("settings_autosave_intermission",intermission)+settings_row("settings_autosave_turn",turn);
+    body+=settings_choice("settings_rewind","rewind",{"on","off"},settings::rewind_on()?"on":"off");
     const auto folder=save_store::library_directory();
 #ifdef __ANDROID__
     // Saves, import/export and reports live in the player's folder once there is one; the
@@ -2770,7 +2772,7 @@ void settings_sync() {
     report_export_poll();
 #endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_double())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_double())+std::to_string(settings::rewind_on())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -4518,6 +4520,7 @@ void choose(const std::string& id) {
         if(id.starts_with("fps:"))settings::set_show_fps(id=="fps:on");
         if(id.starts_with("refresh:"))settings::set_refresh_rate(settings::refresh_rate_from(id.substr(8)));
         if(id.starts_with("speed:"))settings::set_game_speed_double(id=="speed:2x");
+        if(id.starts_with("rewind:"))settings::set_rewind_on(id=="rewind:on");
         if(id.starts_with("dialogue-font:"))settings::set_dialogue_font_size(unsigned(std::stoul(id.substr(14))));
         if(id.starts_with("dialogue-hints:"))settings::set_dialogue_hints_always(id=="dialogue-hints:always");
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
@@ -5137,7 +5140,7 @@ void sync() {
         // The host's buttons, from the controller or keys bound to them (the keyboard state
         // holds both): the settings window, the next language, Original / HD.
         static uint32_t host_before=0;
-        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images|input::pad_speed|input::pad_animation);
+        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images|input::pad_speed|input::pad_animation|input::pad_rewind);
         const uint32_t host_pressed=host_now&~host_before;host_before=host_now;
         const bool view_pressed=host_pressed&input::pad_view;
         // Page requests stay null until their page first reports.
@@ -5160,6 +5163,8 @@ void sync() {
             shown(battle_request) || shown(intermission_request) || shown(upgrade_request) || shown(parts_request) || shown(ability_request) ||
             shown(swap_request) || shown(save_request) || shown(title_request);
         if(!capturing && !page_up && (host_pressed&input::pad_speed))toggle_speed();
+        // Rewind: the game thread waits for a point the map can be left at (rewind.hpp).
+        if(!capturing && !settings_open && (host_pressed&input::pad_rewind))rewind::request();
         if(capturing && settings_open){}
         else if(view_pressed)choose(settings_open?"settings-close":"settings-open");
         else if(info_pressed && (!settings_open || stage_open))choose(stage_open?"settings-close":"stage-info-open");

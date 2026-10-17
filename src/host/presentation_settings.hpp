@@ -76,6 +76,10 @@ RefreshRate refresh_rate_from(const std::string& name);
 // default; saved as game_speed, 1 or 2. The Speed button (Tab, R4) toggles it too.
 bool game_speed_double();
 void set_game_speed_double(bool on);
+// Rewind on the tactical map (rewind.hpp, docs/design/rewind.md). Off by default; saved
+// as rewind. The Rewind button (R, L4) goes back one state while it is on.
+bool rewind_on();
+void set_rewind_on(bool on);
 // The reading controls under the dialogue (dialogue_scene.cpp): hidden 5 s after the
 // dialogue appears and shown again 3 s by a direction key (the default), or always shown.
 // Saved as dialogue_hints, "auto" or "always".

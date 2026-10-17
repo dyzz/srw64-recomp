@@ -29,6 +29,7 @@ enum class Action : uint8_t {
     Language,   // the next reading language (L3; F7 also, a fixed shortcut)
     Images,     // Original / HD pictures (R3; F6 also, a fixed shortcut)
     Speed,      // 2x speed on / off (R4 behind the Deck; Tab)
+    Rewind,     // the tactical map back one state (L4 behind the Deck; R)
     Count
 };
 inline constexpr size_t action_count = size_t(Action::Count);
@@ -44,11 +45,12 @@ inline constexpr std::array<ActionInfo, action_count> actions{{
     {"stick_up", 1u << 16}, {"stick_down", 1u << 17}, {"stick_left", 1u << 18}, {"stick_right", 1u << 19},
     {"settings", pad_view}, {"aux_left", pad_l2}, {"aux_right", pad_r2},
     {"animation", pad_animation}, {"language", pad_language}, {"images", pad_images}, {"speed", pad_speed},
+    {"rewind", pad_rewind},
 }};
 inline constexpr const ActionInfo& info(Action action) { return actions[size_t(action)]; }
 
 namespace scancode {
-inline constexpr int A = 4, D = 7, E = 8, F = 9, G = 10, H = 11, I = 12, J = 13, K = 14, L = 15, Q = 20, S = 22, T = 23,
+inline constexpr int A = 4, D = 7, E = 8, F = 9, G = 10, H = 11, I = 12, J = 13, K = 14, L = 15, Q = 20, R = 21, S = 22, T = 23,
     W = 26, X = 27, Z = 29, N1 = 30, N2 = 31, N3 = 32, N4 = 33,
     Return = 40, Escape = 41, Backspace = 42, Tab = 43, Space = 44, Right = 79, Left = 80, Down = 81, Up = 82;
 }
@@ -107,6 +109,7 @@ inline Bindings default_bindings() {
     // The back buttons are free (user, 2026-10-11): R4 (SDL's first paddle). Where Steam
     // Input does not pass the paddles on, its layout can give a back button Tab.
     pads(Action::Speed, {button(Paddle1)});
+    pads(Action::Rewind, {button(Paddle2)});   // L4, beside it
     }
     // The keyboard is PCSX2's default layout (pcsx2/Input/InputManager.cpp,
     // GetKeyboardGenericBindingMapping; user, 2026-09-28), which stands a key for each
@@ -127,6 +130,7 @@ inline Bindings default_bindings() {
     keys(Action::Animation, {I});
     keys(Action::Language, {N2}); keys(Action::Images, {N4});
     keys(Action::Speed, {Tab});
+    keys(Action::Rewind, {R});   // free in PCSX2's layout
     return b;
 }
 

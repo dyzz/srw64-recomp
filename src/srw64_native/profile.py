@@ -56,6 +56,8 @@ UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps
 UI_KEYS |= {"settings_refresh", "settings_refresh_display", "settings_refresh_original", "settings_refresh_60", "settings_refresh_note"}
 # 2x speed (frontend.cpp toggle_speed, game_speed.hpp).
 UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_note", "speed_notice_on", "speed_notice_off", "touch_speed"}
+# Rewind on the tactical map (rewind.hpp, docs/design/rewind.md).
+UI_KEYS |= {"settings_rewind", "settings_rewind_off", "settings_rewind_on", "settings_rewind_note", "rewind_notice_done", "rewind_notice_none", "rewind_notice_off"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}
@@ -105,7 +107,7 @@ UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "slots", "moves",
 UI_KEYS |= {"cheat_level_base", "cheat_level_base_note"} | {f"cheat_level_base_{mode}" for mode in ("original", "party", "curve")}
 # The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
 CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "animation", "settings",
-                "language", "images", "speed", "d_up", "d_down", "d_left", "d_right", "z")
+                "language", "images", "speed", "rewind", "d_up", "d_down", "d_left", "d_right", "z")
 UI_KEYS |= {f"controls_row_{row}" for row in CONTROL_ROWS}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}

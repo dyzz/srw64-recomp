@@ -63,6 +63,7 @@
 #include "save_page.hpp"
 #include "save_store.hpp"
 #include "autosave.hpp"
+#include "rewind.hpp"
 #include "title_page.hpp"
 #include "battle_viewer.hpp"
 #include "move_jump.hpp"
@@ -504,6 +505,7 @@ static int run_host(int argc, char** argv) {
     srw64::save_store::configure(output_dir, initial_sram);
     if (srw64::save_store::enabled()) srw64_game_hooks.sram_transfer = srw64::save_store::transfer;
     srw64::autosave::configure(output_dir);
+    srw64::rewind::configure(output_dir);
     srw64::save_page::configure(output_dir);
     srw64::title_page::configure(output_dir);
     srw64::battle_viewer::install(output_dir);
