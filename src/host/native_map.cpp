@@ -2,6 +2,7 @@
 #include "native_map.hpp"
 #include "native_map_geometry.hpp"
 #include "native_marker.hpp"
+#include "native_quads.hpp"
 #include "presentation/image_mode.hpp"
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
@@ -349,6 +350,55 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 }
 }
 
+namespace {
+// The GL renderer's view of a tag (native_quads.hpp): the asset's base moved to the live
+// palette on the CPU (what HdMapPS does per pixel), once per asset and palette.
+struct Composed { uint64_t palette = 0; std::shared_ptr<const std::vector<uint8_t>> pixels; };
+std::map<int, Composed> composed;
+bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
+    if ((id & 0xFFFF0000u) != kIdBase) return false;
+    Draw draw;
+    {
+        std::lock_guard lock(ring_mutex);
+        draw = ring[id % kRing];
+    }
+    if (draw.id != (id & 0xFFFF) || draw.asset < 0) return true;
+    std::lock_guard lock(asset_mutex);
+    Asset& asset = assets[size_t(draw.asset)];
+    if (asset.state != Asset::State::ready || !asset.base_texture || !asset.index_texture) return true;
+    const auto* base = asset.base_texture->pixels();
+    const auto* index = asset.index_texture->pixels();
+    if (!base || !index) return true;
+    uint64_t palette = 1469598103934665603ull;
+    for (uint32_t c : draw.live) palette = (palette ^ c) * 1099511628211ull;
+    Composed& made = composed[draw.asset];
+    if (!made.pixels || made.palette != palette) {
+        auto pixels = std::make_shared<std::vector<uint8_t>>(base->size());
+        auto& p = *pixels;
+        for (size_t i = 0; i < index->size() && i * 4 + 3 < base->size(); ++i) {
+            const uint32_t live = draw.live[(*index)[i]], reference = asset.reference[(*index)[i]];
+            const uint8_t* b = base->data() + i * 4;
+            const float a = asset.alpha ? b[3] / 255.f : 1.f;
+            for (int k = 0; k < 3; ++k) {
+                const float shift = (float((live >> (8 * k)) & 0xFF) - float((reference >> (8 * k)) & 0xFF)) / 255.f;
+                const float straight = asset.alpha ? (a > 0 ? b[k] / 255.f / a : 0.f) : b[k] / 255.f;
+                p[i * 4 + k] = uint8_t(std::clamp(straight + shift, 0.f, 1.f) * a * 255.f + .5f);
+            }
+            p[i * 4 + 3] = asset.alpha ? b[3] : 255;
+        }
+        made = {palette, std::move(pixels)};
+    }
+    native_quads::Quad q;
+    q.pixels = made.pixels;
+    q.width = uint32_t(asset.width * asset.scale);
+    q.height = uint32_t(asset.height * asset.scale);
+    std::copy(draw.rect, draw.rect + 4, q.rect);
+    std::copy(draw.uv, draw.uv + 4, q.uv);
+    out.push_back(std::move(q));
+    return true;
+}
+}  // namespace
+
 // Where the maps are: SRW64_HD_MAPS (development), else the HD art pack's tactical map
 // index (compile_art writes srw64-tactical-maps.json; its root is relative to the pack).
 std::filesystem::path maps_root() {
@@ -403,6 +453,7 @@ void configure(const std::filesystem::path& directory) {
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
+    native_quads::add(gl_quads);
     fprintf(stderr, "SRW64_HD_MAPS loaded %zu map(s)%s\n", assets.size(), rom_frames ? ", window frames from the ROM" : "");
 }
 

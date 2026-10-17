@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #include "native_sprite.hpp"
+#include "native_quads.hpp"
 #include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/rgba_file.hpp"
@@ -59,6 +60,7 @@ struct Asset {
     std::vector<std::vector<uint8_t>> levels;  // premultiplied RGBA8 mips, dropped after upload
     std::unique_ptr<gpu::Texture> texture;
     std::unique_ptr<plume::RenderDescriptorSet> set;
+    std::shared_ptr<const std::vector<uint8_t>> gl_pixels;   // the GL renderer's (gl_quads)
     Clock::time_point used{};
 };
 struct Image {
@@ -446,6 +448,64 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     return true;
 }
 
+// The GL renderer's view of a tag (native_quads.hpp): the same pictures and places as render(),
+// from the CPU pixels, which that renderer never hands to Plume.
+std::shared_ptr<const std::vector<uint8_t>> pixels_of(Asset& asset) {
+    if (asset.state != Asset::ready) return nullptr;
+    if (!asset.gl_pixels && !asset.levels.empty()) asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(asset.levels[0]));
+    return asset.gl_pixels;
+}
+bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
+    if ((id & 0xFFFF0000u) != kIdBase) return false;
+    Draw draw;
+    {
+        std::lock_guard lock(ring_mutex);
+        draw = ring[id % kRing];
+    }
+    if (draw.id != (id & 0xFFFF) || draw.asset < 0) return true;
+    std::lock_guard lock(asset_mutex);
+    if (!draw.items.empty()) {
+        for (const auto& item : draw.items) {
+            if (item.asset < 0) continue;
+            Asset& asset = *assets[size_t(item.asset)];
+            native_quads::Quad q;
+            if (!(q.pixels = pixels_of(asset))) continue;
+            q.width = asset.width; q.height = asset.height;
+            q.rect[0] = item.at[0] - asset.origin[0]; q.rect[1] = item.at[1] - asset.origin[1];
+            q.rect[2] = q.rect[0] + asset.units[0]; q.rect[3] = q.rect[1] + asset.units[1];
+            q.color[0] = item.tint[0]; q.color[1] = item.tint[1]; q.color[2] = item.tint[2];
+            q.label = asset.key;
+            out.push_back(std::move(q));
+        }
+        return true;
+    }
+    Asset& asset = *assets[size_t(draw.asset)];
+    native_quads::Quad q;
+    if (!(q.pixels = pixels_of(asset))) return true;
+    q.width = asset.width; q.height = asset.height;
+    float rect[4] = {draw.rect[0], draw.rect[1], draw.rect[2], draw.rect[3]};
+    if (draw.text && draw.anchor == TextJob::Anchor::origin) {
+        rect[0] = draw.at[0] - asset.origin[0]; rect[1] = draw.at[1] - asset.origin[1];
+        rect[2] = rect[0] + asset.units[0]; rect[3] = rect[1] + asset.units[1];
+    } else if (draw.text) {
+        const float cx = (rect[0] + rect[2]) / 2, w = asset.units[0], h = asset.units[1];
+        rect[0] = cx - w / 2; rect[2] = cx + w / 2;
+        const float sign = draw.quad ? -1.f : 1.f;
+        const float top = draw.anchor == TextJob::Anchor::top ? rect[1] : (rect[1] + rect[3]) / 2 - sign * h / 2;
+        rect[1] = top; rect[3] = top + sign * h;
+    }
+    std::copy(rect, rect + 4, q.rect);
+    std::copy(draw.uv, draw.uv + 4, q.uv);
+    std::copy(draw.color, draw.color + 4, q.color);
+    q.model = draw.quad;
+    q.z = draw.z;
+    q.wrap = draw.wrap;
+    q.whole = draw.wide;
+    q.label = asset.key;
+    out.push_back(std::move(q));
+    return true;
+}
+
 bool identify(const uint8_t* rdram, const SceneDraw& draw, SceneId& id) {
     if (draw.slot >= 300 || draw.sub >= 4) return false;
     const uint32_t sub = kSlots + draw.slot * kSlotSize + kSubBase + draw.sub * kSubSize;
@@ -540,6 +600,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
+    native_quads::add(gl_quads);
 }
 
 void add_generated_image(uint16_t scene, uint16_t atlas, uint16_t palette, std::vector<uint8_t> frames,

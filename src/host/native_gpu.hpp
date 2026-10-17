@@ -76,6 +76,8 @@ public:
     plume::RenderTexture* get() const { return texture.get(); }
     uint32_t width() const { return width_; }
     uint32_t height() const { return height_; }
+    // The top level's pixels while not uploaded (the GL renderer never uploads: native_quads.hpp).
+    const std::vector<uint8_t>* pixels() const { return texture || levels.empty() ? nullptr : &levels[0]; }
 private:
     uint32_t width_, height_;
     plume::RenderFormat format;

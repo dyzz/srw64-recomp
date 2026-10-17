@@ -10,6 +10,7 @@
 // samples that target, and the host shows the one the VI scans out.
 #pragma once
 #include <cstdint>
+#include <functional>
 #include <string>
 #include <unordered_map>
 
@@ -42,6 +43,10 @@ public:
     bool present(uint32_t origin, int x, int y, int width, int height);
     // The colour image a VI origin shows, 0 if none has been drawn.
     uint32_t image_at(uint32_t origin) const;
+    // The host's tagged draws (Command::native), called in their place in the frame with the
+    // frame's render target bound and its size; the hook may change any GL state.
+    using NativeHook = std::function<void(const Command&, int width, int height)>;
+    void native_hook(NativeHook hook) { native = std::move(hook); }
     // Every render target black again (a replay's jump between frames apart).
     void clear_targets();
     // Free the textures and targets no frame has used for `frames` frames.
@@ -80,6 +85,7 @@ private:
     GLint blit_texture = -1;
     uint32_t frame_number = 0, calls = 0;
     std::string last_error;
+    NativeHook native;
 };
 
 // The fragment and vertex shader sources of a key (the Vita's warm-up compiles these).

@@ -644,6 +644,20 @@ struct Interpreter::State {
                         box[0] = std::min(box[0], x); box[1] = std::min(box[1], y); box[2] = std::max(box[2], x); box[3] = std::max(box[3], y);
                     }
                     native(id, box[0], box[1], box[2], box[3]);
+                    Command& c = frame->commands.back();
+                    c.model = true;
+                    if (mvp_dirty) { mvp = multiply(modelview[depth], projection); mvp_dirty = false; }
+                    const float kx = vscale[0] / (4.f * kPictureWidth / 2), tx = vtrans[0] / (4.f * kPictureWidth / 2) - 1;
+                    const float ky = vscale[1] / (4.f * kPictureHeight / 2), ty = 1 - vtrans[1] / (4.f * kPictureHeight / 2);
+                    for (int r = 0; r < 4; ++r) {
+                        c.mvp[r * 4 + 0] = mvp.m[r][0] * kx + mvp.m[r][3] * tx;
+                        c.mvp[r * 4 + 1] = mvp.m[r][1] * ky + mvp.m[r][3] * ty;
+                        c.mvp[r * 4 + 2] = mvp.m[r][2];
+                        c.mvp[r * 4 + 3] = mvp.m[r][3];
+                    }
+                    c.state = draw_state(false, false);
+                    std::memcpy(c.state.scissor, scissor, sizeof scissor);
+                    c.depth = c.state.depth;
                     break;
                 }
                 triangle(indices[0], indices[1], indices[2]);

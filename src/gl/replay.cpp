@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
         int64_t previous = -2;
         Interpreter interpreter([&](uint64_t key) { return renderer.known(key); });
         // The host's tagged draws (window frames, story text) are its own: not drawn here.
-        interpreter.classify([](uint32_t w0, uint32_t w1) { return (w0 >> 16) == 0x0053 ? (w1 | 1) : 0u; });
+        interpreter.classify([](uint32_t w0, uint32_t w1) { return (w0 >> 16) == 0x0053 ? w1 : 0u; });
         Frame frame;
         std::vector<uint8_t> rdram(8 * 1024 * 1024);
         std::vector<uint8_t> pixels(size_t(width) * height * 4), flipped(pixels.size());

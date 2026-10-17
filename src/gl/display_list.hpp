@@ -64,6 +64,12 @@ struct Command {
     uint32_t first = 0, count = 0;   // vertices, three per triangle
     uint32_t native_id = 0;
     float rect[4] = {};              // native: left, top, right, bottom in picture pixels
+    // native, from triangles: model space to the picture's clip space (row vectors, the
+    // viewport folded in, as the interpreter's own vertices) and the game's depth test and
+    // write for the draw (bit 0, bit 1).
+    bool model = false;
+    float mvp[16] = {};
+    uint8_t depth = 0;
 };
 
 // The host's tags: the command before a draw, a G_NOOP whose words name it. Returns the

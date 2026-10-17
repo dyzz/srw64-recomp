@@ -8,6 +8,9 @@
 #include "name_page.hpp"
 #include "text_input.hpp"
 #include "ui_renderer.h"
+#ifdef SRW64_GL_RENDERER
+#include "ui_renderer_gl.hpp"
+#endif
 #include "RmlUi_Platform_SDL.h"
 #include "native_dialogue.hpp"
 #include "link_page.hpp"
@@ -73,6 +76,29 @@ bool in_flight{}, ready{}, initialized{};
 SDL_Window* window{};
 std::filesystem::path output;
 std::unique_ptr<recompui::RmlRenderInterface_RT64> renderer;
+#ifdef SRW64_GL_RENDERER
+// The PS Vita's GL path (SRW64_RENDERER=gl, graphics.cpp): in place of the Plume adapter.
+std::unique_ptr<recompui::RmlRenderInterface_GL> gl_renderer;
+#endif
+// A named image for RmlUi, to whichever renderer draws.
+void queue_file(const std::string& name,const std::vector<char>& bytes) {
+#ifdef SRW64_GL_RENDERER
+    if(gl_renderer){gl_renderer->queue_image_from_bytes_file(name,bytes);return;}
+#endif
+    renderer->queue_image_from_bytes_file(name,bytes);
+}
+void queue_rgba(const std::string& name,const std::vector<char>& bytes,uint32_t width,uint32_t height) {
+#ifdef SRW64_GL_RENDERER
+    if(gl_renderer){gl_renderer->queue_image_from_bytes_rgba32(name,bytes,width,height);return;}
+#endif
+    renderer->queue_image_from_bytes_rgba32(name,bytes,width,height);
+}
+Rml::RenderInterface* rml_renderer() {
+#ifdef SRW64_GL_RENDERER
+    if(gl_renderer)return gl_renderer->get_rml_interface();
+#endif
+    return renderer->get_rml_interface();
+}
 // All access, including Render(), holds mutex. SDL callbacks are deferred to the
 // window thread, including text deactivation during render-device teardown.
 // An RmlUi assert that still fires (inline in its headers, built here without NDEBUG) is a
@@ -880,7 +906,7 @@ std::string image(const std::string& path) {
         // A released HD portrait: JPEG colour with its alpha beside it.
         auto rgba=presentation::load_rgba(path);
         const auto name="portrait-"+std::to_string(images.size());
-        renderer->queue_image_from_bytes_rgba32(name,std::vector<char>(rgba.pixels.begin(),rgba.pixels.end()),uint32_t(rgba.width),uint32_t(rgba.height));
+        queue_rgba(name,std::vector<char>(rgba.pixels.begin(),rgba.pixels.end()),uint32_t(rgba.width),uint32_t(rgba.height));
         return images[path]=name;
     }
     std::ifstream file(path,std::ios::binary);
@@ -888,7 +914,7 @@ std::string image(const std::string& path) {
     // RmlUi normalizes leading slashes in URLs. Stable relative resource keys
     // avoid platform-specific filesystem paths leaking into its URL resolver.
     const auto name="portrait-"+std::to_string(images.size());
-    renderer->queue_image_from_bytes_file(name,{std::istreambuf_iterator<char>(file),{}});images[path]=name;return name;
+    queue_file(name,{std::istreambuf_iterator<char>(file),{}});images[path]=name;return name;
 }
 // Page portraits: the whole HD image while the applied image mode is HD and the asset
 // carries one (docs/native/native-portraits-hd.md), otherwise the ROM original.
@@ -935,7 +961,7 @@ std::string image(const std::string& path,int width) {
         bytes[i*4+3]=char(std::clamp(int(a*255+.5f),0,255));
     }
     const auto name="portrait-"+std::to_string(images.size());
-    renderer->queue_image_from_bytes_rgba32(name,bytes,uint32_t(ow),uint32_t(oh));
+    queue_rgba(name,bytes,uint32_t(ow),uint32_t(oh));
     return images[key]=name;
 }
 int dp_pixels(float dp){return int(dp*ui_density+.5f);}
@@ -4962,7 +4988,7 @@ void initialize() {
     // The update check's state and, if the player chose it, the day's check (update_check.hpp).
     static const bool update_started=[]{update::init(SRW64_VERSION);update::check_on_start();return true;}();
     (void)update_started;
-    layered=std::make_unique<LayeredRender>(renderer->get_rml_interface());
+    layered=std::make_unique<LayeredRender>(rml_renderer());
     Rml::SetSystemInterface(&system);Rml::SetRenderInterface(layered.get());
     if(!Rml::Initialise())throw std::runtime_error("Cannot initialize shared UI");
     initialized=true;
@@ -5566,6 +5592,26 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
+#ifdef SRW64_GL_RENDERER
+void render_init_gl(){auto lock=lock_ui();gl_renderer=std::make_unique<recompui::RmlRenderInterface_GL>();ready=true;}
+bool draw_gl(int width,int height,bool name_cover){
+    auto lock=lock_ui();
+    if(!context || !gl_renderer || width!=pixels_w || height!=pixels_h)return false;
+    if(names::request().visible && !name_cover)return false;
+    bool shown=false;
+    for(int i=0;i<context->GetNumDocuments() && !shown;++i)shown=context->GetDocument(i)->IsVisible();
+    if(!shown)return false;
+    layer_pass=-1;layer_now=0;
+    gl_renderer->start(width,height);context->Render();gl_renderer->end();
+    return true;
+}
+void render_shutdown_gl(){
+    auto lock=lock_ui();ready=false;
+    if(initialized){name_page.reset();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}
+    if(gl_renderer)gl_renderer->release_gl();
+    gl_renderer.reset();
+}
+#endif
 void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
 void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);swap_page::window_claim_input(false);title_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
