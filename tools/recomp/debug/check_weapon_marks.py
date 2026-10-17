@@ -100,6 +100,7 @@ try:
             break
         keys('z', pause=1.5)
     s.wait(intermission_page=True, timeout=60)
+    s.client.call('settings', weapon_upgrade='single')   # the per-weapon screens (unified is the default)
     print('image mode', status()['image_mode'], flush=True)
     for mode in ('hd', 'original'):
         s.client.call('settings', images=mode)

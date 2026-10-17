@@ -81,6 +81,7 @@ for _ in range(8):
         break
     keys('z', pause=1.5)
 s.wait(intermission_page=True, timeout=30)
+s.client.call('settings', weapon_upgrade='single')   # the per-weapon screens (unified is the default)
 rules = status().get('rules')
 note('rules', rules)
 edit_funds('intermission', '900000')
@@ -167,7 +168,8 @@ for level in range(8):
     w = p['weapon']
     check(f'weapon-level-{level+1}', w['level'] == level+1 and w['power'] == preview and p['funds'] == funds, {'funds': p['funds'], 'price': price, 'weapon': w})
 w = page()['weapon']
-check('weapon-past-original-cap', w['level'] == 8 and w['gauge'] == '>'*7 + '*' + 'o'*7 and w['power'] > power and 'price' in w, w)
+# The confirm screen plans one level when it opens (the ←→ plan, 2026-10-08): its cell shows as '#'.
+check('weapon-past-original-cap', w['level'] == 8 and w['gauge'] == '>'*7 + '*' + '#' + 'o'*6 and w['power'] > power and 'price' in w, w)
 shot('cap-break-weapon-confirm-8.png')
 # いいえ back to the list: the full-upgrade bonus window if the unlock table names this weapon.
 keys('down', 'z')

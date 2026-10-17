@@ -811,16 +811,22 @@ bool unified_build(uint8_t* ram,recomp_context* ctx) {
 }
 // One paid level of weapon `index` through the original confirm branch (801D1100): the
 // list's first row names the weapon, the screen unit is a form that uses it, the price
-// and previewed power are set as its build would, as in weapon_confirm_step.
-void pay_weapon_level(uint8_t* ram,recomp_context* ctx,uint32_t slot,unsigned index,uint32_t price,bool first) {
-    const uint32_t w=weapon_at(ram,up::unit_at(slot),index);
+// and previewed power are set as its build would, as in weapon_confirm_step. The branch
+// runs in the weapon cap scope its own wrapper gives it (game_hooks.cpp), so the
+// cap-break rule's 15 holds here too; it takes the money before it tests the cap, so a
+// level the cap refuses is not paid for. False when nothing was bought.
+bool pay_weapon_level(uint8_t* ram,recomp_context* ctx,uint32_t slot,unsigned index,uint32_t price,bool first) {
+    const uint32_t unit=up::unit_at(slot),w=weapon_at(ram,unit,index);
     const unsigned type=read(ram,w+up::weapon_type,1),level=read(ram,w+0x16,1);
     write32(ram,screen_unit,slot);
     write16(ram,weapon_rows,uint16_t(index));write16(ram,weapon_page,1);write16(ram,weapon_row_copy,0);
+    up::Scope scope(ram,up::Policy::weapon);
+    if(level>=read(ram,unit+up::unit_cap,1))return false;
     write32(ram,stat_price,price);write16(ram,weapon_preview,uint16_t(read(ram,w+6,2)+read(ram,up::weapon_previews[type-1]+level*2,2)));
     write32(ram,mode,0);write16(ram,confirm_cursor,0);
     if(!first)write8(ram,transition,0xFF);
     feed(ram,ctx,srw64_original_upgrade_weapon_step,button_a);
+    return read(ram,w+0x16,1)>level;
 }
 bool unified_step(uint8_t* ram,recomp_context* ctx,std::unique_lock<std::mutex>& lock,const std::string& action) {
     const auto window=current.value("window",std::string());
@@ -886,8 +892,7 @@ bool unified_step(uint8_t* ram,recomp_context* ctx,std::unique_lock<std::mutex>&
                 const uint32_t price=read(ram,up::weapon_prices[read(ram,w+up::weapon_type,1)-1]+l*4,4);
                 if(read(ram,funds,4)<price)goto done;
                 const uint32_t before=read(ram,funds,4);
-                pay_weapon_level(ram,ctx,form,index,price,paid==0);
-                if(read(ram,w+0x16,1)==l)goto done;   // the branch refused; stop rather than loop
+                if(!pay_weapon_level(ram,ctx,form,index,price,paid==0))break;   // its cap: on to the next weapon
                 spent+=before-read(ram,funds,4);++paid;
             }
         }

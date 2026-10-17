@@ -68,6 +68,7 @@ for _ in range(8):
         break
     keys('z', pause=1.5)
 s.wait(intermission_page=True, timeout=30)
+s.client.call('settings', weapon_upgrade='single')   # the per-weapon screens (unified is the default)
 
 # ユニット改造: the list of the three stage-one machines.
 s.client.call('ui.click', text='intermission:1')

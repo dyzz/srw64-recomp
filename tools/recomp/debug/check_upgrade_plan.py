@@ -76,6 +76,7 @@ for _ in range(8):
         break
     keys('z', pause=1.5)
 s.wait(intermission_page=True, timeout=30)
+s.client.call('settings', weapon_upgrade='single')   # the per-weapon screens (unified is the default)
 edit_funds('intermission', '900000')
 funds = 900000
 

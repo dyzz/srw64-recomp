@@ -63,6 +63,7 @@ for _ in range(8):
         break
     keys('z', pause=1.5)
 s.wait(intermission_page=True, timeout=30)
+s.client.call('settings', weapon_upgrade='single')   # the per-weapon screens (unified is the default)
 
 s.client.call('ui.click', text='intermission:2')
 wait_page('list')

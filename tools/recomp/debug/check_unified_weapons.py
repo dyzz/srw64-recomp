@@ -9,7 +9,11 @@ weapon records and the overlay's price tables here, not from the page); はい p
 one go and every such weapon, those only the other forms use included, is at the new
 level, the funds down by exactly that. A weapon set back to level 0 (as one that joined
 later) comes back up free when the page opens again. With the setting per weapon the
-original weapon list returns."""
+original weapon list returns.
+
+--cap-break turns on the rule upgrade-cap-break (every unit to 15 levels) and plans
+straight to 15 with the funds at 9999999: every weapon reaches 15, the levels past the
+unit's own cap show as ●／☆ cells, and the page then says it can go no further."""
 import argparse
 import json
 from pathlib import Path
@@ -26,9 +30,17 @@ WEAPON_PRICES = {1: 0x801DC7BC, 2: 0x801DC77C, 3: 0x801DC73C, 4: 0x801DC6FC}
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--reuse-build', action='store_true')
 parser.add_argument('--language', default='ja')
+parser.add_argument('--cap-break', action='store_true')
+parser.add_argument('--run', help='attach to a game already at the title (another machine, attach.py) instead of launching one; '
+                    'its slot 1 must hold the save')
 parser.add_argument('--save', default='build/recomp/save-recovery-check/intermission-cold-1.source.sram')
 args = parser.parse_args()
-s = Session.launch(language=args.language, images='original', rules=list(rule_settings.CORRECTIONS), save=args.save, reuse_build=args.reuse_build)
+rules = list(rule_settings.CORRECTIONS) + (['upgrade-cap-break'] if args.cap_break else [])
+if args.run:
+    s = Session.attach(args.run)
+    s.client.call('settings', locale=args.language, rules=rules)
+else:
+    s = Session.launch(language=args.language, images='original', rules=rules, save=args.save, reuse_build=args.reuse_build)
 print('RUN', s.run, flush=True)
 checks = []
 def call(method, **params):
@@ -57,7 +69,11 @@ def check(name, passed, state):
     assert passed, (name, state)
     print(name, 'PASS', flush=True)
 def shot(name):
-    call('screenshot', path=str(s.run/name))
+    if args.run:   # the host writes on its own machine; fetch it
+        import shutil
+        shutil.copy(s.local_file(call('screenshot')['path']), s.run/name)
+    else:
+        call('screenshot', path=str(s.run/name))
 def edit_funds(page_id, text):
     call('ui.click', text=page_id + '-funds')
     time.sleep(.5)
@@ -88,6 +104,9 @@ def expected_cost(rows, target, cap):
 
 # Title ring to the load screen, as check_upgrade_plan.py does.
 s.wait(vi=600)
+if args.run:
+    s.wait(timeout=240, title_major=2)   # past the opening; START earlier starts the prologue
+    time.sleep(2)
 for _ in range(8):
     keys('return', pause=.5)
     try:
@@ -105,8 +124,8 @@ for _ in range(8):
     keys('z', pause=1.5)
 s.wait(intermission_page=True, timeout=30)
 call('settings', weapon_upgrade='unified')
-edit_funds('intermission', '900000')
-funds = 900000
+funds = 9999999 if args.cap_break else 900000
+edit_funds('intermission', str(funds))
 
 # 武器改造 → the first unit (ダイターン3): the unified page.
 call('ui.click', text='intermission:2')
@@ -124,12 +143,21 @@ check('unified-open', p['level'] == mode and p['plan'] == 0 and p['weapons'] == 
       {'page': p, 'levels': levels, 'other_forms_only': [w['number'] for w in others]})
 shot('unified-open.png')
 
-# ←→: three levels, then four and back to three.
-keys('right', 'right', 'right', 'right', 'left')
-p = page()
-cost = expected_cost(before, mode + 3, p['cap'])
-check('unified-plan-3', p['plan'] == 3 and p['target'] == mode + 3 and p['plan_cost'] == cost and p['gauge'].count('+') + p['gauge'].count('#') == 3
-      and all('target' in r for r in p['rows'] if r['level'] < mode + 3), p)
+# ←→: three levels, then four and back to three; with the cap broken, every level to 15.
+if args.cap_break:
+    keys(*['right'] * 20, pause=.25)
+    p = page()
+    plan = p['cap'] - mode
+    check('cap-break-page', p['cap'] == 15 and p['original_cap'] < 15 and p['plan'] == plan and '#' in p['gauge'],
+          {'cap': p['cap'], 'original_cap': p['original_cap'], 'plan': p['plan'], 'gauge': p['gauge']})
+else:
+    keys('right', 'right', 'right', 'right', 'left')
+    p = page()
+    plan = 3
+target = mode + plan
+cost = expected_cost(before, target, p['cap'])
+check('unified-plan', p['plan'] == plan and p['target'] == target and p['plan_cost'] == cost and p['gauge'].count('+') + p['gauge'].count('#') == plan
+      and all('target' in r for r in p['rows'] if r['level'] < target), {k: p[k] for k in ('plan', 'target', 'plan_cost', 'gauge')} | {'expected_cost': cost})
 shot('unified-plan.png')
 
 # A: the window; はい pays every missing level.
@@ -143,13 +171,13 @@ p = wait_page('unified')
 after = weapons(slot)
 funds -= cost
 raised = [w for w in counted(after)]
-check('unified-paid', p['level'] == mode + 3 and p['funds'] == funds == u(0x8010F5F4, 4)
-      and all(w['level'] >= min(mode + 3, p['cap']) for w in raised)
+check('unified-paid', p['level'] == target and p['funds'] == funds == u(0x8010F5F4, 4)
+      and all(w['level'] >= min(target, p['cap']) for w in raised)
       and all(a['level'] == b['level'] for a, b in zip(after, before) if not (1 <= b['type'] <= 4) or b['hidden'])
-      and all(a['power'] > b['power'] for a, b in zip(after, before) if 1 <= b['type'] <= 4 and not b['hidden'] and b['level'] < mode + 3),
+      and all(a['power'] > b['power'] for a, b in zip(after, before) if 1 <= b['type'] <= 4 and not b['hidden'] and b['level'] < target),
       {'funds': p['funds'], 'expected': funds, 'levels': [(w['number'], w['level'], w['power']) for w in after]})
 if others:
-    check('unified-other-forms', all(next(a for a in after if a['index'] == w['index'])['level'] >= mode + 3 for w in others),
+    check('unified-other-forms', all(next(a for a in after if a['index'] == w['index'])['level'] >= target for w in others),
           [(w['number'], w['forms']) for w in others])
 shot('unified-paid.png')
 
@@ -162,8 +190,14 @@ keys('z')
 p = wait_page('unified')
 time.sleep(1.5)
 synced = next(w for w in weapons(slot) if w['index'] == victim['index'])
-check('unified-free-sync', synced['level'] == victim['level'] and synced['power'] == victim['power'] and p['funds'] == funds and p['level'] == mode + 3,
+check('unified-free-sync', synced['level'] == victim['level'] and synced['power'] == victim['power'] and p['funds'] == funds and p['level'] == target,
       {'victim': victim, 'synced': synced, 'funds': p['funds']})
+
+if args.cap_break:
+    keys('z', pause=.6)
+    p = page()
+    check('cap-break-maxed', p['window'] == 'maxed' and p['level'] == 15 and 'next_price' not in p, {'window': p['window'], 'level': p['level']})
+    keys('z', pause=.6)
 
 # Per weapon: the original weapon list again.
 call('settings', weapon_upgrade='single')
@@ -174,5 +208,6 @@ p = wait_page('weapons')
 check('single-list', p['screen'] == 'weapons' and len(p['rows']) > 0, {'screen': p['screen'], 'rows': len(p['rows'])})
 call('settings', weapon_upgrade='unified')
 print('ALL', len(checks), 'PASS', flush=True)
-report = s.quit()
-print('exit', report.get('exit_code'))
+if not args.run:
+    report = s.quit()
+    print('exit', report.get('exit_code'))

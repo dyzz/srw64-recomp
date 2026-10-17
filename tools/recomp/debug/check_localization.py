@@ -148,6 +148,7 @@ def intermission():
             break
         keys('z', pause=1.5)
     s.wait(intermission_page=True, timeout=30)
+    s.client.call('settings', weapon_upgrade='single')   # the per-weapon screens (unified is the default)
     units = ['ダイターン3', 'スイームルグ', 'ドール']
     pilots = {}
 
