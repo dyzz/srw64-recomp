@@ -24,19 +24,22 @@ inline constexpr std::array<const char*,4> protagonists{"ark","serein","brad","m
 struct State {
     std::string protagonist;            // "ark" … "manami", empty before the name page
     int scene=-1;                       // 8010F5F0: this stage on the map, the next one in the intermission
+    int cleared=-1;                     // 8010F5F1: the stage last cleared (the intermission's own)
     std::array<uint8_t,200> vars{};     // the 2-bit script variables (8015E818)
     std::set<int> pilots,units;         // the player's pilot and machine numbers
     std::map<int,int> kills;            // pilot number → shot down
     State(){vars.fill(3);}
 };
 
-// The rules and the scene graph of status.json.
+// The rules and the scene graph of status.json, with the grants that carry finished
+// elements into a later playthrough (legacy.hpp; a campaign's status has none).
 struct Rules {
-    json rules=json::array(),edge_guards=json::array();
+    json rules=json::array(),edge_guards=json::array(),grants=json::array();
     std::map<std::string,std::map<int,std::vector<int>>> graph;
     static Rules parse(const json& status) {
         Rules r;
         r.rules=status.at("rules");r.edge_guards=status.value("edge_guards",json::array());
+        r.grants=status.value("grants",json::array());
         for(const auto& [who,edges]:status.at("graph").items())
             for(const auto& [from,to]:edges.items())r.graph[who][std::stoi(from)]=to.get<std::vector<int>>();
         return r;
@@ -161,4 +164,10 @@ inline std::string text(const json& value,const std::string& locale) {
 }
 // Game thread, each time the game reads the controller.
 void sample(const uint8_t* ram);
+// Game thread: the rules in play (the story's or the running campaign's), null when
+// there are none, and the State they are judged on.
+const Rules* rules();
+State read_state(const uint8_t* ram);
+// The intermission (mode 4, or 0x12-0x15 after the title's Load).
+bool in_intermission(unsigned mode);
 }

@@ -154,7 +154,7 @@
 | [PS Vita 移植方案](design/psv-port.md) | 调研：Vita 只有 GLES2 级 GPU、RT64/plume 不可用，整条渲染路径要换成 vitaGL 上的 GL2 实现（Fast3D 解释器、宿主自绘层、对白合成器、RmlUi GL2）；运行库 32 位阻塞项与补丁、依赖与内存预算、社区 libultraship 系移植的实机经验、Mac 上的 Vita3K 与 VitaSDK 开发环境、V0–V4 阶段、风险与待定 |
 | [手机触屏操作](design/touch-controls.md) | 按场景显示功能名按钮：MOBA 式左侧任意位置方向区、右下固定的确定／返回、各场景的按钮与识别依据、三语词条、实施顺序 |
 | [触屏界面复盘（2026-10-10）](design/touch-ui-review-20261010.md) | 安卓对白回看入口消失的原因、各版按键布局的离线对照与复用返回键的方案 |
-| [周目继承](design/new-game-plus.md) | 上周目完成的隐藏要素在原入队关之后补登记（33 项、不改变量）与历代记录；为何不继承击坠数（未实现） |
+| [周目继承](design/new-game-plus.md) | 上周目完成的隐藏要素在原入队关之后补登记（33 项、不改变量）与历代记录；规则 `inherit-hidden`；为何不继承击坠数（已实现，Windows 实机过） |
 | [本关情报页](design/stage-info.md) | 游戏内查看当前关的隐藏要素与完成进度、敌人掉落零件与撤退；数据来源、按键、每关 metadata 与完成状态规则 |
 | [宽屏画面](design/deck-16x10.md) | 以 Steam Deck 1280×800 为基准、随屏幕 4:3–16:9：RT64 按画面宽度渲染加扩展指令、宿主绘制层映射、两侧清黑、各场景做法、战术地图放宽的改动点、阶段、实机验收与未知项 |
 | [战斗演出渲染机制](design/battle-animation-rendering.md) | 战斗演出怎样画出来：背景、3D 地面与模型、机体精灵、特效、cut-in 与遮框；HD 路线（机体姿势、烘焙光照城市、实时水面）与实机验收 |

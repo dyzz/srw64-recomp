@@ -196,3 +196,119 @@ def check_rules(rules: list[dict], entry_ids: list[str], graph: dict) -> list[st
         if rule["kind"] == "choice" and not rule.get("at"):
             errors.append(f"{rule['id']}: a choice rule needs its scenes")
     return errors
+
+
+# Hidden elements carried into a later playthrough (docs/design/new-game-plus.md).
+# The record (saves/legacy/legacy.json) maps each acquire rule a playthrough finished to
+# the pilot and machine numbers it had for it; a later playthrough, in the intermission
+# right after (or before) the stage of the original join, runs that join's commands
+# when the player lacks it. The game's version is src/host/legacy.hpp.
+GRANTS = ROOT / "guide/data/inherit-grants.json"
+NOBODY = 999   # 3D5A's "no pilot" / "no machine"
+REGISTER, KEEP_MODES = "3D5A", (500, 999)   # 3D5A modes that are not a swap from an old machine
+
+
+def load_grants() -> dict:
+    return json.loads(GRANTS.read_text(encoding="utf-8"))
+
+
+def grant_ids(entries: list[dict]) -> tuple[set[int], set[int]]:
+    """The pilot and machine numbers the entries' 3D5A commands register."""
+    pilots, units = set(), set()
+    for entry in entries:
+        for command in entry["commands"]:
+            if command[0] == REGISTER:
+                if command[1] != NOBODY:
+                    pilots.add(command[1])
+                if command[3] != NOBODY:
+                    units.add(command[3])
+    return pilots, units
+
+
+def owned(entry: dict) -> dict:
+    """What says the player already has an entry's element: its own `owned`, else the
+    first registered pilot, else that command's machine."""
+    if "owned" in entry:
+        return entry["owned"]
+    first = next(c for c in entry["commands"] if c[0] == REGISTER)
+    return {"pilot": first[1]} if first[1] != NOBODY else {"unit": first[3]}
+
+
+def ids_of(predicate) -> tuple[set[int], set[int]]:
+    pilots, units = set(), set()
+    if isinstance(predicate, dict):
+        for key, value in predicate.items():
+            if key in ("pilot", "unit"):
+                (pilots if key == "pilot" else units).update(value if isinstance(value, list) else [value])
+            else:
+                p, u = ids_of(value)
+                pilots |= p
+                units |= u
+    elif isinstance(predicate, list):
+        for item in predicate:
+            p, u = ids_of(item)
+            pilots |= p
+            units |= u
+    return pilots, units
+
+
+def record(legacy: dict, rules: list[dict], grants: dict, evaluator: "Evaluator") -> dict:
+    """LEGACY with every acquire rule this state finishes added: the rule's own pilot and
+    machine numbers and the ones its grants register, those the player has."""
+    out = {key: {"pilots": list(v["pilots"]), "units": list(v["units"])} for key, v in legacy.items()}
+    by_id = {g["id"]: g["entries"] for g in grants["grants"]}
+    s = evaluator.state
+    for rule in rules:
+        if rule["kind"] != "acquire" or evaluator.evaluate(rule)["state"] != "done":
+            continue
+        pilots, units = ids_of(rule["done"])
+        gp, gu = grant_ids(by_id.get(rule["id"], []))
+        have = out.setdefault(rule["id"], {"pilots": [], "units": []})
+        have["pilots"] = sorted(set(have["pilots"]) | ((pilots | gp) & s.pilots))
+        have["units"] = sorted(set(have["units"]) | ((units | gu) & s.units))
+    return out
+
+
+def due(legacy: dict, rules: list[dict], grants: dict, evaluator: "Evaluator", cleared: int, upcoming: int) -> list[tuple[str, dict]]:
+    """The (rule id, entry) pairs to run in this intermission: CLEARED is the stage just
+    played (8010F5F1), UPCOMING the next one (8010F5F0). At most one entry per element."""
+    by_rule = {r["id"]: r for r in rules}
+    out = []
+    for grant in grants["grants"]:
+        have = legacy.get(grant["id"])
+        rule = by_rule.get(grant["id"])
+        if have is None or rule is None:
+            continue
+        if "applies" in rule and not evaluator.test(rule["applies"]):
+            continue
+        # The variant is judged on what was recorded, not on this game.
+        who = evaluator.state.protagonist
+        recorded = Evaluator({who: {}}, State(who, -1, pilots=set(have["pilots"]), units=set(have["units"])))
+        for entry in grant["entries"]:
+            if cleared not in entry.get("after", []) and upcoming not in entry.get("before", []):
+                continue
+            if "applies" in entry and not evaluator.test(entry["applies"]):
+                continue
+            if "variant" in entry and not recorded.test(entry["variant"]):
+                continue
+            if evaluator.test(owned(entry)):
+                continue
+            out.append((grant["id"], entry))
+            break
+    return out
+
+
+def runnable(command: list, units: set[int]) -> bool:
+    """A 3D5A swapping from an old machine (mode below 2000, not 500/999) runs only when
+    the player has that machine; everything else always runs."""
+    return not (command[0] == REGISTER and command[4] not in KEEP_MODES and command[4] < 2000
+                and command[4] not in units)
+
+
+def inherited(legacy: dict, grants: dict, rule: dict, evaluator: "Evaluator") -> bool:
+    """A finished-before element the player has now although its rule says otherwise:
+    the page shows it as done (inherited). Gato's rule reads var 37, which a grant leaves."""
+    if rule["id"] not in legacy:
+        return False
+    entries = next((g["entries"] for g in grants["grants"] if g["id"] == rule["id"]), [])
+    return any(evaluator.test(owned(e)) for e in entries)

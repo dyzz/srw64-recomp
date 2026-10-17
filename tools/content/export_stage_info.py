@@ -26,7 +26,9 @@ stages 123 and 124), the episode, the lane, the hidden elements and the enemies,
 text an object by language. A custom campaign's stages carry the same format
 (docs/design/custom-campaign.md). content/stages/status.json carries the status rules
 (guide/data/status-rules.json) with the scene graph they are judged on
-(tools/content/stage_status.py), for the whole story.
+(tools/content/stage_status.py), for the whole story, and the grants that carry
+finished hidden elements into a later playthrough (guide/data/inherit-grants.json,
+docs/design/new-game-plus.md).
 
     python3 tools/content/export_stage_info.py          # writes content/stages/*.json
     python3 tools/content/export_stage_info.py --check  # fails when a file is stale
@@ -226,12 +228,15 @@ def status() -> dict:
     rules, graph = stage_status.load_rules(), stage_status.scene_graph()
     entries = [e["id"] for e in load("zh-Hans", "hidden-elements.json")["entries"]]
     errors = stage_status.check_rules(rules["rules"], entries, graph)
+    grants = stage_status.load_grants()["grants"]
+    acquire = {r["id"] for r in rules["rules"] if r["kind"] == "acquire"}
+    errors += [f"{g['id']}: inherit-grants.json names no acquire rule" for g in grants if g["id"] not in acquire]
     if errors:
         raise ValueError("; ".join(errors))
     return {"schema": STATUS_SCHEMA, "source": "guide/data/status-rules.json (tools/content/export_stage_info.py)",
             "starts": stage_status.STARTS,
             "graph": {p: {str(s): t for s, t in g.items()} for p, g in graph.items()},
-            "edge_guards": rules["edge_guards"], "rules": rules["rules"]}
+            "edge_guards": rules["edge_guards"], "rules": rules["rules"], "grants": grants}
 
 
 def main() -> int:

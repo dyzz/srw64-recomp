@@ -972,6 +972,7 @@ void load_0008F4B0_func_801CDFB0(uint8_t* rdram, recomp_context* ctx) {
 void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
     quiet_latch(rdram);
     if (srw64_game_hooks.cheats_intermission) srw64_game_hooks.cheats_intermission(rdram, ctx);
+    if (srw64_game_hooks.legacy_intermission) srw64_game_hooks.legacy_intermission(rdram, ctx);
     if (!srw64_game_hooks.intermission_step || !srw64_game_hooks.intermission_step(rdram, ctx))
         srw64_original_intermission_menu_step(rdram, ctx);
     if (srw64_game_hooks.intermission_after_step) srw64_game_hooks.intermission_after_step(rdram, ctx);

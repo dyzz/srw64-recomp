@@ -138,6 +138,9 @@ struct SRW64GameHooks {
     // after a save is restored (800927A4 and 800936A0).
     void (*cheats_frame)(uint8_t*){};
     void (*cheats_intermission)(uint8_t*, recomp_context*){};
+    // Before every インターミッション menu step, after the cheats: finished hidden elements
+    // of earlier playthroughs join (legacy.hpp, docs/design/new-game-plus.md).
+    void (*legacy_intermission)(uint8_t*, recomp_context*){};
     void (*cheats_restored)(uint8_t*, recomp_context*){};
     // Tactical map, choosing a move destination (docs/native/move-jump.md): 801CBB04 runs
     // (state 0xC, sub-state 0); true: the host handled this frame and the original does not

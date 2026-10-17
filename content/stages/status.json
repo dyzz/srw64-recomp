@@ -3670,5 +3670,1223 @@
    "id": "secret-dialogue-branches",
    "kind": "info"
   }
+ ],
+ "grants": [
+  {
+   "id": "secret-katz",
+   "entries": [
+    {
+     "after": [
+      124
+     ],
+     "commands": [
+      [
+       "3D5A",
+       31,
+       0,
+       35,
+       500
+      ]
+     ],
+     "source": "event:001e31fc@344"
+    }
+   ]
+  },
+  {
+   "id": "secret-aisha",
+   "entries": [
+    {
+     "after": [
+      40
+     ],
+     "commands": [
+      [
+       "3D5A",
+       32,
+       3,
+       37,
+       500
+      ],
+      [
+       "3D6C",
+       37,
+       7
+      ]
+     ],
+     "source": "deploy:001f0ccc"
+    },
+    {
+     "after": [
+      69
+     ],
+     "commands": [
+      [
+       "3D5A",
+       32,
+       2,
+       37,
+       500
+      ],
+      [
+       "3D6C",
+       37,
+       5
+      ]
+     ],
+     "source": "deploy:001fc294"
+    },
+    {
+     "after": [
+      57
+     ],
+     "commands": [
+      [
+       "3D5A",
+       32,
+       0,
+       37,
+       500
+      ],
+      [
+       "3D5A",
+       28,
+       0,
+       307,
+       36
+      ],
+      [
+       "3D64",
+       500,
+       500
+      ]
+     ],
+     "source": "event:001c7984@656"
+    }
+   ]
+  },
+  {
+   "id": "secret-elrich",
+   "entries": [
+    {
+     "after": [
+      66
+     ],
+     "commands": [
+      [
+       "3D5A",
+       29,
+       0,
+       327,
+       500
+      ]
+     ],
+     "source": "event:001b6ccc@362"
+    },
+    {
+     "after": [
+      123
+     ],
+     "commands": [
+      [
+       "3D5A",
+       29,
+       0,
+       327,
+       500
+      ]
+     ],
+     "source": "event:001e2f44@108"
+    }
+   ]
+  },
+  {
+   "id": "secret-reese",
+   "entries": [
+    {
+     "before": [
+      40
+     ],
+     "commands": [
+      [
+       "3D5A",
+       30,
+       0,
+       328,
+       500
+      ]
+     ],
+     "source": "event:001b0638@246"
+    },
+    {
+     "after": [
+      70
+     ],
+     "commands": [
+      [
+       "3D5A",
+       30,
+       0,
+       328,
+       500
+      ]
+     ],
+     "source": "event:001b912c@888"
+    },
+    {
+     "before": [
+      51
+     ],
+     "commands": [
+      [
+       "3D5A",
+       30,
+       0,
+       328,
+       500
+      ]
+     ],
+     "source": "event:001c10f8@1066"
+    },
+    {
+     "before": [
+      108
+     ],
+     "commands": [
+      [
+       "3D5A",
+       30,
+       0,
+       328,
+       500
+      ]
+     ],
+     "source": "event:001c1b94@1438"
+    }
+   ]
+  },
+  {
+   "id": "secret-aina",
+   "entries": [
+    {
+     "after": [
+      24
+     ],
+     "commands": [
+      [
+       "3D5A",
+       51,
+       0,
+       84,
+       500
+      ]
+     ],
+     "source": "event:001a6470@488"
+    }
+   ]
+  },
+  {
+   "id": "secret-allenby",
+   "entries": [
+    {
+     "after": [
+      128
+     ],
+     "commands": [
+      [
+       "3D5A",
+       9,
+       0,
+       6,
+       500
+      ]
+     ],
+     "source": "event:001b4e40@184"
+    },
+    {
+     "after": [
+      57
+     ],
+     "commands": [
+      [
+       "3D5A",
+       9,
+       0,
+       6,
+       500
+      ]
+     ],
+     "source": "event:001c7984@450"
+    },
+    {
+     "after": [
+      129
+     ],
+     "commands": [
+      [
+       "3D5A",
+       9,
+       0,
+       6,
+       500
+      ]
+     ],
+     "source": "event:001d3acc@294"
+    },
+    {
+     "after": [
+      137
+     ],
+     "commands": [
+      [
+       "3D5A",
+       9,
+       0,
+       6,
+       500
+      ]
+     ],
+     "source": "event:001d849c@576"
+    }
+   ]
+  },
+  {
+   "id": "secret-garalia",
+   "entries": [
+    {
+     "after": [
+      20
+     ],
+     "commands": [
+      [
+       "3D5A",
+       185,
+       1,
+       250,
+       500
+      ]
+     ],
+     "source": "deploy:001e8d68"
+    }
+   ]
+  },
+  {
+   "id": "secret-emma",
+   "entries": [
+    {
+     "after": [
+      16
+     ],
+     "commands": [
+      [
+       "3D5A",
+       53,
+       0,
+       56,
+       500
+      ]
+     ],
+     "source": "event:001a22fc@194"
+    }
+   ]
+  },
+  {
+   "id": "secret-erika",
+   "entries": [
+    {
+     "after": [
+      23
+     ],
+     "commands": [
+      [
+       "3D5A",
+       199,
+       0,
+       999,
+       999
+      ]
+     ],
+     "source": "event:001a5c04@128"
+    }
+   ]
+  },
+  {
+   "id": "secret-naida",
+   "entries": [
+    {
+     "before": [
+      77
+     ],
+     "commands": [
+      [
+       "3D5A",
+       116,
+       0,
+       163,
+       500
+      ]
+     ],
+     "source": "event:001cad14@1754"
+    },
+    {
+     "before": [
+      91
+     ],
+     "commands": [
+      [
+       "3D5A",
+       116,
+       0,
+       163,
+       500
+      ]
+     ],
+     "source": "event:001d4e78@2896"
+    }
+   ]
+  },
+  {
+   "id": "secret-kirika",
+   "entries": [
+    {
+     "after": [
+      78
+     ],
+     "commands": [
+      [
+       "3D5A",
+       115,
+       0,
+       999,
+       999
+      ]
+     ],
+     "source": "event:001cc858@174"
+    },
+    {
+     "after": [
+      92
+     ],
+     "commands": [
+      [
+       "3D5A",
+       115,
+       0,
+       999,
+       999
+      ]
+     ],
+     "source": "event:001d662c@182"
+    }
+   ]
+  },
+  {
+   "id": "secret-apolly-roberto",
+   "entries": [
+    {
+     "after": [
+      2
+     ],
+     "owned": {
+      "all": [
+       {
+        "pilot": 236
+       },
+       {
+        "pilot": 237
+       }
+      ]
+     },
+     "commands": [
+      [
+       "3D5A",
+       236,
+       2,
+       345,
+       500
+      ],
+      [
+       "3D5A",
+       237,
+       2,
+       346,
+       500
+      ]
+     ],
+     "source": "deploy:001e46e8,001e4704"
+    },
+    {
+     "after": [
+      3
+     ],
+     "owned": {
+      "all": [
+       {
+        "pilot": 236
+       },
+       {
+        "pilot": 237
+       }
+      ]
+     },
+     "commands": [
+      [
+       "3D5A",
+       236,
+       2,
+       345,
+       500
+      ],
+      [
+       "3D5A",
+       237,
+       2,
+       346,
+       500
+      ]
+     ],
+     "source": "deploy:001e49fc,001e4a18"
+    }
+   ]
+  },
+  {
+   "id": "secret-gale",
+   "entries": [
+    {
+     "after": [
+      32
+     ],
+     "commands": [
+      [
+       "3D5A",
+       206,
+       0,
+       274,
+       500
+      ]
+     ],
+     "source": "event:001ab4a0@300"
+    },
+    {
+     "before": [
+      52
+     ],
+     "commands": [
+      [
+       "3D5A",
+       206,
+       0,
+       274,
+       500
+      ]
+     ],
+     "source": "event:001c283c@242"
+    },
+    {
+     "after": [
+      53
+     ],
+     "commands": [
+      [
+       "3D5A",
+       206,
+       0,
+       274,
+       500
+      ]
+     ],
+     "source": "event:001c3658@652"
+    }
+   ]
+  },
+  {
+   "id": "secret-four",
+   "entries": [
+    {
+     "after": [
+      128
+     ],
+     "commands": [
+      [
+       "3D5A",
+       56,
+       0,
+       999,
+       500
+      ]
+     ],
+     "source": "event:001b4e40@118"
+    },
+    {
+     "after": [
+      57
+     ],
+     "commands": [
+      [
+       "3D5A",
+       56,
+       0,
+       999,
+       500
+      ]
+     ],
+     "source": "event:001c7984@28"
+    }
+   ]
+  },
+  {
+   "id": "secret-ginrei",
+   "entries": [
+    {
+     "after": [
+      32
+     ],
+     "commands": [
+      [
+       "3D5A",
+       154,
+       0,
+       208,
+       500
+      ]
+     ],
+     "source": "event:001ab4a0@102"
+    },
+    {
+     "before": [
+      107
+     ],
+     "commands": [
+      [
+       "3D5A",
+       154,
+       0,
+       208,
+       500
+      ]
+     ],
+     "source": "event:001bebd4@400"
+    }
+   ]
+  },
+  {
+   "id": "secret-rosamia",
+   "entries": [
+    {
+     "after": [
+      41
+     ],
+     "commands": [
+      [
+       "3D5A",
+       59,
+       0,
+       999,
+       500
+      ]
+     ],
+     "source": "event:001b15cc@132"
+    }
+   ]
+  },
+  {
+   "id": "secret-hilde",
+   "entries": [
+    {
+     "after": [
+      38
+     ],
+     "owned": {
+      "pilot": [
+       86,
+       266
+      ]
+     },
+     "commands": [
+      [
+       "3D5A",
+       266,
+       0,
+       352,
+       500
+      ]
+     ],
+     "source": "event:001af8e8@126"
+    },
+    {
+     "after": [
+      59
+     ],
+     "owned": {
+      "pilot": [
+       86,
+       266
+      ]
+     },
+     "commands": [
+      [
+       "3D5A",
+       266,
+       0,
+       999,
+       500
+      ]
+     ],
+     "source": "event:001c85d8@726"
+    },
+    {
+     "after": [
+      75
+     ],
+     "owned": {
+      "pilot": [
+       86,
+       266
+      ]
+     },
+     "commands": [
+      [
+       "3D5A",
+       266,
+       0,
+       999,
+       500
+      ]
+     ],
+     "source": "event:001bb4d8@216"
+    }
+   ]
+  },
+  {
+   "id": "secret-mk3-methuss",
+   "entries": [
+    {
+     "after": [
+      42
+     ],
+     "commands": [
+      [
+       "3D5A",
+       999,
+       0,
+       57,
+       500
+      ],
+      [
+       "3D5A",
+       999,
+       0,
+       67,
+       65
+      ]
+     ],
+     "source": "event:001b20c8@436"
+    }
+   ]
+  },
+  {
+   "id": "secret-minerva-x",
+   "entries": [
+    {
+     "after": [
+      66
+     ],
+     "commands": [
+      [
+       "3D5A",
+       999,
+       0,
+       264,
+       500
+      ],
+      [
+       "3D6C",
+       264,
+       5
+      ]
+     ],
+     "source": "event:001b6ccc@162"
+    }
+   ]
+  },
+  {
+   "id": "secret-mp-great",
+   "entries": [
+    {
+     "after": [
+      135
+     ],
+     "commands": [
+      [
+       "3D5A",
+       999,
+       0,
+       157,
+       500
+      ],
+      [
+       "3D6C",
+       157,
+       3
+      ]
+     ],
+     "source": "event:001bbd3c@336"
+    }
+   ]
+  },
+  {
+   "id": "secret-gato",
+   "entries": [
+    {
+     "after": [
+      49
+     ],
+     "commands": [
+      [
+       "3D5A",
+       52,
+       0,
+       75,
+       500
+      ],
+      [
+       "3D6C",
+       75,
+       3
+      ]
+     ],
+     "source": "event:001bff5c@676"
+    }
+   ]
+  },
+  {
+   "id": "secret-fa-hyakushiki",
+   "entries": [
+    {
+     "before": [
+      59
+     ],
+     "commands": [
+      [
+       "3D5A",
+       999,
+       0,
+       295,
+       73
+      ]
+     ],
+     "source": "event:001c7ce4@626"
+    }
+   ]
+  },
+  {
+   "id": "secret-zechs-epyon",
+   "entries": [
+    {
+     "after": [
+      57
+     ],
+     "commands": [
+      [
+       "3D5A",
+       286,
+       0,
+       123,
+       500
+      ]
+     ],
+     "source": "event:001c7984@248"
+    },
+    {
+     "before": [
+      76
+     ],
+     "commands": [
+      [
+       "3D5A",
+       286,
+       0,
+       123,
+       500
+      ]
+     ],
+     "source": "event:001b7918@288"
+    }
+   ]
+  },
+  {
+   "id": "secret-todd-silky",
+   "entries": [
+    {
+     "after": [
+      81
+     ],
+     "commands": [
+      [
+       "3D5A",
+       186,
+       2,
+       245,
+       500
+      ],
+      [
+       "3D5A",
+       182,
+       0,
+       999,
+       500
+      ],
+      [
+       "3D70",
+       186,
+       182
+      ]
+     ],
+     "source": "deploy:00200f78;event:001cdf8c@50"
+    },
+    {
+     "after": [
+      92
+     ],
+     "commands": [
+      [
+       "3D5A",
+       186,
+       2,
+       246,
+       500
+      ],
+      [
+       "3D5A",
+       182,
+       0,
+       999,
+       500
+      ],
+      [
+       "3D70",
+       186,
+       182
+      ]
+     ],
+     "source": "deploy:00205c64;event:001d63f0@50"
+    }
+   ]
+  },
+  {
+   "id": "secret-rose",
+   "entries": [
+    {
+     "after": [
+      91
+     ],
+     "commands": [
+      [
+       "3D5A",
+       140,
+       0,
+       188,
+       500
+      ]
+     ],
+     "source": "event:001d5c48@492"
+    },
+    {
+     "after": [
+      130
+     ],
+     "commands": [
+      [
+       "3D5A",
+       140,
+       0,
+       188,
+       500
+      ]
+     ],
+     "source": "event:001d3eb4@284"
+    }
+   ]
+  },
+  {
+   "id": "secret-puru",
+   "entries": [
+    {
+     "after": [
+      85
+     ],
+     "commands": [
+      [
+       "3D5A",
+       54,
+       1,
+       77,
+       500
+      ]
+     ],
+     "source": "deploy:002026a4"
+    },
+    {
+     "after": [
+      98
+     ],
+     "commands": [
+      [
+       "3D5A",
+       54,
+       2,
+       77,
+       500
+      ]
+     ],
+     "source": "deploy:00208d30"
+    }
+   ]
+  },
+  {
+   "id": "secret-puru-two",
+   "entries": [
+    {
+     "after": [
+      132
+     ],
+     "commands": [
+      [
+       "3D5A",
+       57,
+       0,
+       999,
+       500
+      ]
+     ],
+     "source": "event:001d47fc@162"
+    },
+    {
+     "after": [
+      101
+     ],
+     "commands": [
+      [
+       "3D5A",
+       57,
+       0,
+       999,
+       500
+      ]
+     ],
+     "source": "event:001dc7a4@152"
+    }
+   ]
+  },
+  {
+   "id": "secret-mashymre-chara",
+   "entries": [
+    {
+     "after": [
+      103
+     ],
+     "variant": {
+      "pilot": 58
+     },
+     "owned": {
+      "pilot": [
+       58,
+       246
+      ]
+     },
+     "commands": [
+      [
+       "3D5A",
+       58,
+       2,
+       78,
+       500
+      ]
+     ],
+     "source": "deploy:0020b2b0"
+    },
+    {
+     "after": [
+      103
+     ],
+     "variant": {
+      "pilot": 246
+     },
+     "owned": {
+      "pilot": [
+       58,
+       246
+      ]
+     },
+     "commands": [
+      [
+       "3D5A",
+       246,
+       2,
+       94,
+       500
+      ]
+     ],
+     "source": "deploy:0020b2cc"
+    }
+   ]
+  },
+  {
+   "id": "secret-neue-ziel",
+   "entries": [
+    {
+     "after": [
+      103
+     ],
+     "commands": [
+      [
+       "3D5A",
+       999,
+       0,
+       79,
+       500
+      ],
+      [
+       "3D6C",
+       79,
+       3
+      ]
+     ],
+     "source": "event:001dfb88@634"
+    }
+   ]
+  },
+  {
+   "id": "secret-mp-nu",
+   "entries": [
+    {
+     "after": [
+      137
+     ],
+     "variant": {
+      "unit": 294
+     },
+     "owned": {
+      "unit": [
+       294,
+       296
+      ]
+     },
+     "commands": [
+      [
+       "3D5A",
+       999,
+       0,
+       294,
+       500
+      ]
+     ],
+     "source": "event:001d849c@1596"
+    },
+    {
+     "after": [
+      137
+     ],
+     "variant": {
+      "unit": 296
+     },
+     "owned": {
+      "unit": [
+       294,
+       296
+      ]
+     },
+     "commands": [
+      [
+       "3D5A",
+       999,
+       0,
+       296,
+       500
+      ]
+     ],
+     "source": "event:001d849c@1614"
+    }
+   ]
+  },
+  {
+   "id": "secret-tallgeese3",
+   "entries": [
+    {
+     "after": [
+      99
+     ],
+     "owned": {
+      "unit": 136
+     },
+     "commands": [
+      [
+       "3D5A",
+       286,
+       0,
+       136,
+       123
+      ]
+     ],
+     "source": "event:001db8d8@336"
+    }
+   ]
+  },
+  {
+   "id": "secret-kyral",
+   "entries": [
+    {
+     "after": [
+      104
+     ],
+     "commands": [
+      [
+       "3D5A",
+       10,
+       2,
+       17,
+       500
+      ],
+      [
+       "3D6C",
+       17,
+       3
+      ]
+     ],
+     "source": "deploy:0020c194"
+    }
+   ]
+  },
+  {
+   "id": "secret-quess",
+   "entries": [
+    {
+     "after": [
+      105
+     ],
+     "commands": [
+      [
+       "3D5A",
+       284,
+       0,
+       999,
+       999
+      ],
+      [
+       "3D5A",
+       999,
+       0,
+       80,
+       500
+      ],
+      [
+       "3D6C",
+       80,
+       6
+      ]
+     ],
+     "source": "event:001e1b18@1190"
+    }
+   ]
+  }
  ]
 }

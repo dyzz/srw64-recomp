@@ -158,7 +158,7 @@ key('down')   # the presets row, then the rules
 for _ in range(14):
     key('down', pause=.2)
 last = focused()
-check('down-reaches-last-rule', lambda: last == 'rule:parts-carry-over', lambda: {'focus': last})
+check('down-reaches-last-rule', lambda: last == 'rule:inherit-hidden', lambda: {'focus': last})
 frame = element(last)['frame']
 body = element('set-body')['frame']
 check('last-rule-in-view', lambda: body[1] <= frame[1] and frame[1] + frame[3] <= body[1] + body[3] + 1, lambda: {'rule': frame, 'body': body})

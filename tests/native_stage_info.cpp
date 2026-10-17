@@ -1,6 +1,9 @@
 // The stage info page's evaluator (src/host/stage_info.hpp) against the rules shipped in
 // content/stages/status.json, on the saves tests/test_stage_info.py walks with the
-// reference evaluator; and the page's line breaking (src/native/ui/text_wrap.hpp).
+// reference evaluator; the grants that carry finished elements into a later playthrough
+// (src/host/legacy.hpp, as tests/test_inherit_grants.py); and the page's line breaking
+// (src/native/ui/text_wrap.hpp).
+#include "legacy.hpp"
 #include "stage_info.hpp"
 #include "ui/text_wrap.hpp"
 #include <cstdio>
@@ -77,6 +80,52 @@ int main(int argc,char** argv) {
     for(const auto& [who,start]:std::map<std::string,int>{{"ark",2},{"serein",3},{"brad",0},{"manami",1}})
         for(const auto& r:rules.rules)
             check(eval(rules,r.at("id"),who.c_str(),start)["state"]!="missed",who+" "+r.at("id").get<std::string>()+" missed at the start");
+
+    // Carried over from an earlier playthrough (docs/design/new-game-plus.md).
+    {
+        check(rules.grants.size()==33 && legacy::grantable(rules)==33,"33 elements can be carried over");
+        const auto state=[](const char* who,int cleared,int next,std::map<int,int> vars={},std::set<int> pilots={},std::set<int> units={}) {
+            stage_info::State s;s.protagonist=who;s.cleared=cleared;s.scene=next;
+            for(const auto& [n,v]:vars)s.vars[size_t(n)]=uint8_t(v);
+            s.pilots=pilots;s.units=units;return s;
+        };
+        const auto due=[&](const legacy::Record& record,const stage_info::State& s) {
+            std::vector<std::pair<std::string,json>> out;
+            for(const auto& [id,entry]:legacy::due(record,rules,stage_info::Evaluator(rules,s),s))out.emplace_back(id,entry->at("commands"));
+            return out;
+        };
+        const legacy::Record katz{{"secret-katz",{{31},{35}}}};
+        const auto katz_now=due(katz,state("brad",124,42));
+        check(katz_now.size()==1 && katz_now[0].first=="secret-katz" && katz_now[0].second==json::parse("[[\"3D5A\",31,0,35,500]]"),"Kurtz right after S124");
+        check(due(katz,state("brad",41,124)).empty(),"Kurtz not before S124 is played");
+        check(due(katz,state("brad",124,42,{},{31})).empty(),"Kurtz not twice");
+        check(due(katz,state("ark",124,42)).empty(),"Kurtz is Brad's");
+        check(due({},state("brad",124,42)).empty(),"nothing never finished");
+        const legacy::Record reese{{"secret-reese",{{30},{328}}}};
+        check(due(reese,state("serein",39,40)).size()==1,"Rish before her opening join");
+        const legacy::Record chara{{"secret-mashymre-chara",{{246},{}}}};
+        const auto chara_now=due(chara,state("ark",103,104));
+        check(chara_now.size()==1 && chara_now[0].second==json::parse("[[\"3D5A\",246,2,94,500]]"),"the recorded variant: Chara");
+        const legacy::Record nu{{"secret-mp-nu",{{},{296}}}};
+        check(due(nu,state("ark",137,138,{{10,1}},{},{294})).empty(),"one mass-produced ν is enough");
+        check(!legacy::runnable(json::parse("[\"3D5A\",286,0,136,123]"),{57}) && legacy::runnable(json::parse("[\"3D5A\",286,0,136,123]"),{123}),
+              "a swap needs the old machine");
+        check(legacy::runnable(json::parse("[\"3D5A\",284,0,999,999]"),{}) && legacy::runnable(json::parse("[\"3D6C\",80,6]"),{}),"other commands always run");
+        // The record: what a finished element had, only ever added to.
+        const auto finished=state("brad",-1,42,{{21,2}},{31,27},{35});
+        const auto recorded=legacy::record({},rules,stage_info::Evaluator(rules,finished),finished);
+        check(recorded.contains("secret-katz") && recorded.at("secret-katz")==legacy::Ids{{31},{35}},"Kurtz recorded with his machine");
+        const auto later=state("brad",-1,42);
+        check(legacy::record(recorded,rules,stage_info::Evaluator(rules,later),later)==recorded,"the record keeps what a later game lacks");
+        check(legacy::from_json(legacy::to_json(recorded))==recorded,"the record survives its file");
+        // Gato: the grant leaves var 37, which his rule reads.
+        const legacy::Record gato{{"secret-gato",{{52},{75}}}};
+        const auto with_him=state("ark",-1,51,{{10,1},{37,3}},{52});
+        check(eval(rules,"secret-gato","ark",51,{{10,1},{37,3}},{52})["state"]!="done","Gato's rule alone says not done");
+        check(legacy::inherited(gato,rules,rule(rules,"secret-gato"),stage_info::Evaluator(rules,with_him)),"Gato shows as inherited");
+        const auto without=state("ark",-1,51,{{10,1}});
+        check(!legacy::inherited(gato,rules,rule(rules,"secret-gato"),stage_info::Evaluator(rules,without)),"not without him");
+    }
 
     // Line breaking, with every character one unit wide.
     const auto width=[](const std::string& s){size_t n=0;for(size_t i=0;i<s.size();){text_wrap::decode(s,i);++n;}return float(n);};

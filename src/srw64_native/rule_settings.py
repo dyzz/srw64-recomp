@@ -26,6 +26,7 @@ RULE_FIXES = {
     "upgrade-cap-break": "改造上限突破：所有机体可改到 15 段（原作上限 6～15），换装、追加武器仍按原作上限",
     "upgrade-refund": "剧情让机体离开部队（离队、换乘后旧机消失、合体）时，按现价退回玩家花在该机体上的改造资金；换机被继承的段数和剧情赠送的段数不退",
     "parts-carry-over": "换机时把旧机体装着的强化部件直接装到新机体上（原版一律卸回仓库）；新机体槽位不够时多出来的仍留在仓库",
+    "inherit-hidden": "周目继承：以前任何一个周目完成过的隐藏要素，这一周目打完原入队关后的场间直接加入（照抄原版登记，不改剧情变量）",
 }
 # Bug fixes; a first launch turns these on.
 CORRECTIONS = ("esp-level", "seisenshi-level", "limit-cap", "potential-bands", "potential-half",

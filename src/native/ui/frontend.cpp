@@ -460,6 +460,7 @@ p.si-note {color:#8f9bbd;}
 .si-from {font-size:13dp; color:#a4b0d2; overflow:hidden;}
 .si-tag {flex-shrink:0; font-size:10dp; padding:0 4dp;}
 .si-tag.third {color:#d8b4ff; border:1dp #d8b4ff80;}
+.si-tag.ever {margin-left:4dp; color:#6be3a0; border:1dp #6be3a050;}
 .si-tag.retreat {color:#ffc56b; border:1dp #ffc56b80;}
 .si-none {padding:8dp 2dp; font-size:13dp; color:#7f8fa3;}
 .si-empty {flex:1 1 0; padding:24dp 4dp; font-size:15dp; color:#a4b0d2;}
@@ -1928,7 +1929,7 @@ std::string stage_paragraph(const std::string& text,const std::string& cls) {
 std::string stage_status_chip(const json& s,const std::string& locale) {
     const auto state=s.value("state",std::string());
     std::string text;
-    if(state=="done")text=stage_text("stage_info_done");
+    if(state=="done")text=stage_text(s.value("inherited",false)?"stage_info_done_inherited":"stage_info_done");
     else if(state=="step")text=stage_text("stage_info_step",{{"n",std::to_string(s.value("step",0)+1)},{"m",std::to_string(s.value("of",0))}});
     else if(state=="not_started")text=stage_text("stage_info_not_started");
     else if(state=="missed")text=stage_text("stage_info_missed");
@@ -1969,13 +1970,17 @@ std::string stage_panel(const json& snap) {
           "<h1>"+T(meta.value("title",json()))+"</h1>"+(locale=="ja" || ja.empty()?std::string():"<span class='si-ja'>"+escape(ja)+"</span>")+
           (lane.empty() && protagonist.empty()?std::string():"<span class='si-lane'>"+lane+(lane.empty() || protagonist.empty()?"":" · ")+(protagonist.empty()?std::string():label("stage_info_"+protagonist))+"</span>")+
           "</div><div class='si-cols'>";
-    // Left: the hidden elements.
+    // Left: the hidden elements, each marked when any playthrough finished it (legacy.hpp).
+    const auto& legacy=snap.contains("legacy")?snap["legacy"]:json::object();
+    std::set<std::string> ever;
+    for(const auto& id:legacy.value("ever",json::array()))ever.insert(id.get<std::string>());
     std::string secrets;unsigned shown=0,others=0;
     for(const auto& s:(*card)["secrets"]) {
         if(!mine(s)){++others;continue;}
         ++shown;
         const auto& st=status.contains(s.value("ref",""))?status[s.value("ref","")]:json::object();
-        secrets+="<div class='si-secret'><div class='si-line'><span class='si-name'>"+T(s.value("title",json()))+"</span>"+stage_status_chip(st,locale)+"</div>"+
+        const auto mark=ever.contains(s.value("ref",""))?"<span class='si-tag ever'>"+label("stage_info_ever")+"</span>":std::string();
+        secrets+="<div class='si-secret'><div class='si-line'><span class='si-name'>"+T(s.value("title",json()))+"</span>"+stage_status_chip(st,locale)+mark+"</div>"+
                  stage_paragraph(stage_info::text(s.value("text",json()),locale),"si-body");
         if(st.contains("counter") && st["counter"].is_object()) {
             const int value=st["counter"].value("value",0),of=st["counter"].value("of",1);
@@ -1986,8 +1991,9 @@ std::string stage_panel(const json& snap) {
         secrets+="</div>";
     }
     if(!shown)secrets+="<div class='si-none'>"+label("stage_info_no_secrets")+"</div>";
+    const auto finished=legacy.value("of",0)?"<span>"+stage_text("stage_info_legacy",{{"n",std::to_string(legacy.value("count",0))},{"m",std::to_string(legacy.value("of",0))}})+"</span>":std::string();
     body+="<div id='si-col:0' class='si-col'><div class='si-head'>"+label("stage_info_secrets")+
-          (others?"<span>"+stage_text("stage_info_others",{{"n",std::to_string(others)}})+"</span>":std::string())+"</div>"+secrets+"</div>";
+          (others?"<span>"+stage_text("stage_info_others",{{"n",std::to_string(others)}})+"</span>":std::string())+finished+"</div>"+secrets+"</div>";
     // Right: the enemies worth knowing about, their parts and retreats in one list.
     std::string enemies;shown=0;others=0;
     for(const auto& e:(*card)["enemies"]) {

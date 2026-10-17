@@ -1,5 +1,6 @@
 #include "stage_info.hpp"
 #include "campaign.hpp"
+#include "legacy.hpp"
 #include "guest_memory.hpp"
 #include <filesystem>
 #include <atomic>
@@ -35,7 +36,7 @@ std::optional<Rules> parse_rules(const json& data) {
 }
 // The status rules in play: the story's (status.json) or the running campaign's, kept
 // per campaign. Game thread only.
-const Rules* rules() {
+const Rules* rules_in_play() {
     static const auto story=parse_rules(read_json(folder()/"status.json"));
     if(const auto id=campaign::id();!id.empty()) {
         static std::string loaded_for;
@@ -47,13 +48,10 @@ const Rules* rules() {
 }
 
 // Guest addresses (docs/design/stage-info.md §4).
-constexpr uint32_t mode=0x8015DA02,scene=0x8010F5F0,engine=0x8015F950,route_marker=engine+0x99E,campaign_vars=0x8015E818;
+constexpr uint32_t mode=0x8015DA02,scene=0x8010F5F0,cleared=0x8010F5F1,engine=0x8015F950,route_marker=engine+0x99E,campaign_vars=0x8015E818;
 constexpr uint32_t pilots=0x80172F40,pilot_size=0x4C,pilot_slots=100,pilot_number=0x02,pilot_kills=0x14;
 constexpr uint32_t units=0x8016A210,unit_size=0x54,unit_slots=140,unit_number=0x02;
 
-// The intermission: reached from a stage it is mode 4; from the title's Load it stays in
-// the load mode, 0x12 + slot (docs/gameplay/original-controls.md §3).
-bool in_intermission(unsigned m){return m==4 || (m>=0x12 && m<=0x15);}
 // The tactical map and its battles, the world map before a stage, the intermission.
 bool in_stage(unsigned m) {
     switch(m) {
@@ -62,9 +60,10 @@ bool in_stage(unsigned m) {
     }
 }
 
-State read_state(const uint8_t* ram) {
+State read_state_from(const uint8_t* ram) {
     State s;
     s.scene=int(read(ram,scene,1));
+    s.cleared=int(read(ram,cleared,1));
     const unsigned marker=read(ram,route_marker,2);
     if(marker>=0x3DD1 && marker<=0x3DD4)s.protagonist=protagonists[marker-0x3DD1];
     for(unsigned i=0;i<s.vars.size();++i)s.vars[i]=uint8_t((read(ram,campaign_vars+2*(i/8),2)>>(2*(i%8)))&3);
@@ -89,6 +88,12 @@ std::atomic_bool wanted{false};
 std::atomic<uint64_t> opening{0};
 uint64_t last_vi=~uint64_t{};
 }
+
+// The intermission: reached from a stage it is mode 4; from the title's Load it stays in
+// the load mode, 0x12 + slot (docs/gameplay/original-controls.md §3).
+bool in_intermission(unsigned m){return m==4 || (m>=0x12 && m<=0x15);}
+const Rules* rules(){return rules_in_play();}
+State read_state(const uint8_t* ram){return read_state_from(ram);}
 
 json snapshot(){std::lock_guard guard(lock);return published;}
 uint64_t want(bool on) {
@@ -122,18 +127,31 @@ void sample(const uint8_t* ram) {
     if(last_vi!=~uint64_t{} && vi<last_vi+10)return;
     last_vi=vi;
     json next={{"available",false}};
-    const auto* r=rules();
+    const auto* r=rules_in_play();
     if(r && in_stage(read(ram,mode,1))) {
-        const auto state=read_state(ram);
+        const auto state=read_state_from(ram);
         // Before the name page (a mini stage entered from the title) there is no
         // protagonist: the stage's text without statuses or filtering.
-        json status=json::object();
+        json status=json::object(),ever=json::array();
+        size_t ever_granted=0;
         if(!state.protagonist.empty()) {
             const Evaluator evaluator(*r,state);
-            for(const auto& rule:r->rules)status[rule.at("id").get<std::string>()]=evaluator.evaluate(rule);
+            // What this game finishes joins the cross-playthrough record (legacy.hpp).
+            legacy::observe(ram,*r,state,evaluator);
+            const auto record=legacy::current();
+            for(const auto& rule:r->rules) {
+                auto result=evaluator.evaluate(rule);
+                // A grant leaves the variables, so a rule that reads them (Gato) would say
+                // missed: the player has it, from an earlier playthrough.
+                if(result.at("state")!="done" && rule.at("kind")=="acquire" && legacy::inherited(record,*r,rule,evaluator))
+                    result={{"state","done"},{"inherited",true}};
+                status[rule.at("id").get<std::string>()]=std::move(result);
+            }
+            for(const auto& g:r->grants)if(record.contains(g.at("id").get<std::string>())){ever.push_back(g.at("id"));++ever_granted;}
         }
         next={{"available",true},{"scene",state.scene},{"protagonist",state.protagonist},{"route",route(state)},
-              {"map",!in_intermission(read(ram,mode,1))},{"status",std::move(status)}};
+              {"map",!in_intermission(read(ram,mode,1))},{"status",std::move(status)},
+              {"legacy",{{"ever",std::move(ever)},{"count",ever_granted},{"of",legacy::grantable(*r)}}}};
     }
     next["opening"]=opening.load();
     std::lock_guard guard(lock);
