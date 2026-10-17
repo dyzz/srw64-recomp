@@ -4,9 +4,11 @@
 #include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/rgba_file.hpp"
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_state.h"
 #include "hle/rt64_workload.h"
 #include "rhi/rt64_render_hooks.h"
+#endif
 #include "native_gpu.hpp"
 #include "game_frame.hpp"
 #include "json/json.hpp"
@@ -99,9 +101,11 @@ bool stopping = false;
 std::array<Draw, kRing> ring;
 std::mutex ring_mutex;
 uint32_t next_id = 1;
+#ifndef SRW64_GL_ONLY
 RT64::NativeMeshClassify* previous_classify{};
 RT64::NativeMeshRender* previous_render{};
-std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdSprite{VS,PS}.hlsl
+std::unique_ptr<gpu::Program> program;
+#endif      // src/host/shaders/HdSprite{VS,PS}.hlsl
 std::atomic<uint64_t> rewritten{}, rendered{}, pending{}, skipped{}, unexpected{}, decoded{}, released{}, failures{};
 std::atomic<uint64_t> text_placed{}, text_waiting{};
 std::mutex log_mutex;
@@ -303,6 +307,7 @@ int text_asset(const TextJob& job) {
     return by_key[job.key] = int(assets.size() - 1);
 }
 
+#ifndef SRW64_GL_ONLY  // RT64's hooks
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -447,6 +452,8 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     ++rendered;
     return true;
 }
+
+#endif
 
 // The GL renderer's view of a tag (native_quads.hpp): the same pictures and places as render(),
 // from the CPU pixels, which that renderer never hands to Plume.
@@ -597,9 +604,11 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     if (!output.empty()) log.open(output / "scene-sprites.jsonl");
     worker = std::thread(work);
     // Chain after marker/hdmap/portraits, which install their hooks first.
+#ifndef SRW64_GL_ONLY
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
+#endif
     native_quads::add(gl_quads);
 }
 
@@ -625,12 +634,14 @@ void add_generated_image(uint16_t scene, uint16_t atlas, uint16_t palette, std::
 
 void set_text(Describe value) { describe = value; }
 
+#ifndef SRW64_GL_ONLY
 void gpu_init() {
     // The picture, a clamped sampler, and one that repeats across (clamped vertically).
     program = std::make_unique<gpu::Program>("HdSprite", std::vector<gpu::Slot>{{gpu::Slot::texture},
         {gpu::Slot::sampler, {.linear = true, .mipmaps = true}},
         {gpu::Slot::sampler, {.linear = true, .mipmaps = true, .repeat_u = true}}});
 }
+#endif
 
 bool repeats_across(const uint8_t* rdram, const SceneDraw& draw) {
     SceneId id;
@@ -949,7 +960,9 @@ void shutdown() {
             {"released", released.load()}, {"resident_at_exit", resident}}).dump(2) << '\n';
     }
     for (auto& asset : assets) { asset->set.reset(); asset->texture.reset(); }
+#ifndef SRW64_GL_ONLY
     program.reset();
+#endif
 }
 std::string viewer_scene_image(const std::string& key) {
     std::lock_guard lock(scene_thumb_mutex);

@@ -7,6 +7,9 @@
 // relies on RT64 waiting for each workload's GPU work before recording the next
 // (rt64_workload_queue.cpp): data and uploads recorded for one workload are done
 // before a later workload runs.
+#ifdef SRW64_GL_ONLY
+#include "native_gpu_cpu.hpp"
+#else
 #include "plume_render_interface.h"
 #include "rhi/rt64_render_hooks.h"
 #include <cstdint>
@@ -134,3 +137,4 @@ private:
     void create() const;
 };
 }
+#endif  // SRW64_GL_ONLY

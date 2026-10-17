@@ -258,7 +258,8 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
    - **宿主标签绘制**（`native_quads.hpp`、`native_gl.cpp`）：模块报告「标签 id 画什么」——预乘 RGBA 像素加屏幕矩形或模型空间四边形；`native_map` 提供窗框（底图按当前调色板在 CPU 上平移，即 HdMapPS 的逐像素运算，按「资产＋调色板」缓存），`native_sprite` 提供剧情/标题/原版界面文字。解释器的原生命令带上三角形的变换与深度标志，GL 渲染器在帧内原位置回调宿主再恢复自身状态。坑：标签第二个字就是绘制 id（RT64 的 classify 这样读），先前为保证非零写成 `w1|1`，相邻两个记录撞号，标题环上「读取」画成了「继续」。
    - **实跑对照（10-17，同一脚本 RT64 与 GL 各跑一遍）：** 标题环形菜单、原版幕间菜单（窗框＋中文）、机体改造页、4:3 下的战斗演出（3D、立绘、原生台词、HUD）两边一致。
    - **检查脚本（10-17）：** 检查脚本经 `Session.launch` 继承环境，`export SRW64_RENDERER=gl` 后照常运行即走 GL。与原版画面相关的 33 个（存档 4 个、标题菜单、幕间与其原版/原生切换、改造 4 个、部件、换乘、能力、资金、战前页 5 个、战斗演出、对白与快进、短跳过、原版界面文字、两段本地化、设置页、姓名页切换、部队名、移动跳格、敌机轮巡、作弊、MOD）GL 下 27 个通过；其余 6 个（cap_break、battle_ui_switch、settings_pages、unit_name、cheats、mod）在 RT64 下以相同断言失败，是 main 上已有的问题或脚本过时（如作弊部件已改 15 件、MOD 入口 0.3.4 起隐藏、界面页新增对白字号行），与渲染器无关。battle_animation 要调用者设 `SRW64_BATTLE_ANIMATION_PROBE=1`。调试接口的录像与玩家 F12 截图在 GL 呈现里也已接上。
-4. **还没做：** 宿主标签绘制的深度写入那一遍（HD 机体图才用，Vita 不带 HD）；字体缓冲共享；GL 下的宽屏（扩展指令按原点换算已有，呈现与宿主图层还按 4:3）；把 plume 依赖从 GL 构建里剔除（V2 交叉编译的前提：`native_gpu`、`native_map`/`native_sprite` 里的 Plume 部分、`dialogue_plume`、Plume 版 RmlUi 适配器要能不编），以及 stb_image 的实现目前借用 RT64 的。
+   - **不带 RT64/Plume 的宿主（10-17）：** CMake 选项 `SRW64_GL_ONLY`（单独的构建目录，如 `build/recomp/gl-build`）产出 `srw64-gl-host`：不编 RT64、Plume、DXC 着色器与 RmlUi 的 Plume 适配器；HD 背景、头像、5600 标记、RetroArch 滤镜不编（`gl_only_stubs.cpp` 给出它们的空入口，原画面照旧）；`native_map`/`native_sprite` 的 RT64 钩子部分加 `SRW64_GL_ONLY` 守卫，`native_gpu.hpp` 换成只存 CPU 像素的替身（`native_gpu_cpu.hpp`）；stb_image 的实现自带一份。RT64 宿主照常编译。json、stb 仍从 RT64 检出里取头文件（不编译 RT64）。macOS 版链接的只有 SDL2、OpenGL、FreeType、HarfBuzz、ICU，18 MB（RT64 宿主 29 MB）。检查脚本用它：`export SRW64_HOST_BINARY=<srw64-gl-host>`（`Session.launch` 没指定宿主时用它）。先前 GL 下通过的 27 个检查（含 battle_animation）在它上面全部通过（10-17）。
+4. **还没做：** 宿主标签绘制的深度写入那一遍（HD 机体图才用，Vita 不带 HD）；字体缓冲共享；GL 下的宽屏（扩展指令按原点换算已有，呈现与宿主图层还按 4:3）；把 `srw64-gl-host` 交给 VitaSDK 交叉编译（V2 第一步：vitaGL 头文件分支、SDL2 窗口与上下文、`std::filesystem` 缺口）。
 
 ### V2 Vita 跑通
 
