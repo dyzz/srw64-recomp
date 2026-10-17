@@ -257,7 +257,8 @@ HD 包与全部 HD 图层（地图、背景、头像、5600 标记、世界地�
    - **RmlUi**（`src/native/ui/ui_renderer_gl.cpp`）：照 Plume 适配器做（非预乘混合、0 号白/1 号透明纹理、按名字排队的图片用 stb_image 解码）；RmlUi 可能在窗口线程建/释放纹理，所以 GL 调用全推迟到图形线程的 start…end。设置窗口、标题原生按钮、原生页面、`ui.click` 都可用。
    - **宿主标签绘制**（`native_quads.hpp`、`native_gl.cpp`）：模块报告「标签 id 画什么」——预乘 RGBA 像素加屏幕矩形或模型空间四边形；`native_map` 提供窗框（底图按当前调色板在 CPU 上平移，即 HdMapPS 的逐像素运算，按「资产＋调色板」缓存），`native_sprite` 提供剧情/标题/原版界面文字。解释器的原生命令带上三角形的变换与深度标志，GL 渲染器在帧内原位置回调宿主再恢复自身状态。坑：标签第二个字就是绘制 id（RT64 的 classify 这样读），先前为保证非零写成 `w1|1`，相邻两个记录撞号，标题环上「读取」画成了「继续」。
    - **实跑对照（10-17，同一脚本 RT64 与 GL 各跑一遍）：** 标题环形菜单、原版幕间菜单（窗框＋中文）、机体改造页、4:3 下的战斗演出（3D、立绘、原生台词、HUD）两边一致。
-4. **还没做：** 宿主标签绘制的深度写入那一遍（HD 机体图才用，Vita 不带 HD）；字体缓冲共享；用现有 `check_*.py` 在 GL 下整套过一遍（含存档读档、全部原生页面）；GL 下的宽屏（扩展指令按原点换算已有，呈现与宿主图层还按 4:3）；把 plume 依赖从 GL 构建里剔除（V2 交叉编译的前提：`native_gpu`、`native_map`/`native_sprite` 里的 Plume 部分、`dialogue_plume`、Plume 版 RmlUi 适配器要能不编），以及 stb_image 的实现目前借用 RT64 的。
+   - **检查脚本（10-17）：** 检查脚本经 `Session.launch` 继承环境，`export SRW64_RENDERER=gl` 后照常运行即走 GL。与原版画面相关的 33 个（存档 4 个、标题菜单、幕间与其原版/原生切换、改造 4 个、部件、换乘、能力、资金、战前页 5 个、战斗演出、对白与快进、短跳过、原版界面文字、两段本地化、设置页、姓名页切换、部队名、移动跳格、敌机轮巡、作弊、MOD）GL 下 27 个通过；其余 6 个（cap_break、battle_ui_switch、settings_pages、unit_name、cheats、mod）在 RT64 下以相同断言失败，是 main 上已有的问题或脚本过时（如作弊部件已改 15 件、MOD 入口 0.3.4 起隐藏、界面页新增对白字号行），与渲染器无关。battle_animation 要调用者设 `SRW64_BATTLE_ANIMATION_PROBE=1`。调试接口的录像与玩家 F12 截图在 GL 呈现里也已接上。
+4. **还没做：** 宿主标签绘制的深度写入那一遍（HD 机体图才用，Vita 不带 HD）；字体缓冲共享；GL 下的宽屏（扩展指令按原点换算已有，呈现与宿主图层还按 4:3）；把 plume 依赖从 GL 构建里剔除（V2 交叉编译的前提：`native_gpu`、`native_map`/`native_sprite` 里的 Plume 部分、`dialogue_plume`、Plume 版 RmlUi 适配器要能不编），以及 stb_image 的实现目前借用 RT64 的。
 
 ### V2 Vita 跑通
 

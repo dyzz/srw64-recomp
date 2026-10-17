@@ -1006,17 +1006,26 @@ public:
 #endif
         const uint64_t frame_number = ++presented_frames;
         srw64::frame_rate::present_sent();
-        if (const auto shot = srw64::debug::screenshots().take()) {
+        // The window as shown, read back for the debug interface's screenshot and recording
+        // and the player's F12, as capture_frame does on RT64.
+        const auto shot = srw64::debug::screenshots().take();
+        const bool recording = srw64::debug::recording().active();
+        const bool player_shot = player_shot_requested.exchange(false);
+        if (shot || recording || player_shot) {
             std::vector<uint8_t> pixels(size_t(width) * height * 4), rows(pixels.size());
             glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
             for (int y = 0; y < height; ++y)
                 std::memcpy(rows.data() + size_t(y) * width * 4, pixels.data() + size_t(height - 1 - y) * width * 4, size_t(width) * 4);
             for (size_t i = 3; i < rows.size(); i += 4) rows[i] = 255;
-            const bool written = stbi_write_png(shot->path.string().c_str(), width, height, 4, rows.data(), width * 4);
-            srw64::debug::screenshots().finish(shot->id, written
-                ? nlohmann::json({{"path", shot->path.string()}, {"present", frame_number}, {"vi", srw64_current_vi()},
-                                  {"width", width}, {"height", height}, {"renderer", "gl"}})
-                : nlohmann::json({{"error", "cannot write " + shot->path.string()}}));
+            if (recording) srw64::debug::recording().add(rows.data(), uint32_t(width), uint32_t(height));
+            if (player_shot) save_player_screenshot(rows.data(), uint32_t(width), uint32_t(height));
+            if (shot) {
+                const bool written = stbi_write_png(shot->path.string().c_str(), width, height, 4, rows.data(), width * 4);
+                srw64::debug::screenshots().finish(shot->id, written
+                    ? nlohmann::json({{"path", shot->path.string()}, {"present", frame_number}, {"vi", srw64_current_vi()},
+                                      {"width", width}, {"height", height}, {"renderer", "gl"}})
+                    : nlohmann::json({{"error", "cannot write " + shot->path.string()}}));
+            }
         }
         SDL_GL_SwapWindow(window);
     }
