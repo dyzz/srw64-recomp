@@ -23,6 +23,7 @@
 #include "map_miss.hpp"
 #include "ui_text.hpp"
 #include "game_speed.hpp"
+#include "enemy_pilot_page.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 bool srw64_sound_effects_muted{};
@@ -160,6 +161,12 @@ void resident_func_800924D8(uint8_t* ram,recomp_context* ctx) {
 void resident_func_80093278(uint8_t* ram,recomp_context* ctx) {
     const unsigned write_sram=uint8_t(ctx->r4);
     srw64_original_tactical_serialize(ram,ctx);srw64::state_probe::save_payload(ram,true,write_sram);
+}
+void load_000AB160_func_801E6C5C(uint8_t* ram,recomp_context* ctx) {
+    // The pilot page (crew, side, roster slot): an enemy's spirits and SP instead of ?????.
+    const unsigned crew=uint8_t(ctx->r4),side=uint32_t(ctx->r5),slot=uint32_t(ctx->r6);
+    srw64_original_pilot_page(ram,ctx);
+    srw64::enemy_pilot_page::reveal(ram,ctx,crew,side,slot);
 }
 void load_000AB160_func_801C29DC(uint8_t* ram,recomp_context* ctx) {
     // A unit's action ends (a0 the handle): with unlimited moves a player unit keeps it.

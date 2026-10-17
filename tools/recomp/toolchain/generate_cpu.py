@@ -30,6 +30,9 @@ NATIVE_HOOKS = {
     # Every end of a unit's action spends one (cheats.hpp unlimited_moves).
     "load_000AB160_func_801C29DC": "srw64_original_action_spend",
     "load_000AB160_func_801FB8B4": "srw64_original_map_round_push",
+    # The map's pilot page: an enemy's learned spirits and SP drawn over its ?????
+    # (src/host/enemy_pilot_page.hpp).
+    "load_000AB160_func_801E6C5C": "srw64_original_pilot_page",
     "resident_func_80082334": "srw64_original_random_bound",
     "resident_func_80085F30": "srw64_original_frame_boundary",
     "resident_func_800821B0": "srw64_original_rng_seed",
