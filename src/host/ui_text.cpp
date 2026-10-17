@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <array>
 #include <atomic>
+#include <cctype>
 #include <chrono>
 #include <cstdio>
 #include <cstdlib>
@@ -39,6 +40,10 @@ constexpr unsigned kLine = 14, kNarrow = 8, kWide = 14, kWideFirst = 0x13B, kCel
 // translation starts that much in, off the frame its window draws (Will on the map panel).
 constexpr int kInset = 1;
 constexpr uint16_t kLongDash = 0xD3;   // ー: the minus sign of printed numbers
+constexpr uint16_t kWaveDash = 0xDA;   // ～: between a weapon's least and greatest range
+// The minus as the font has it: as wide as its plus, where the hyphen is narrower and sits
+// off its digits ("- 10" under "+20" in a weapon list's 命中 column).
+constexpr const char* kMinus = "\u2212";
 
 std::mutex mutex;
 bool installed = false, disabled = false;
@@ -536,7 +541,9 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 const auto& c = l.cells[k];
                 if (c.icon) continue;
                 const std::string name = dialogue::glyph_string(c.code);
-                const bool narrow = !icon(c.code).empty() || name.empty() || uint8_t(name[0]) < 0x80;
+                // ー is drawn as a minus or a hyphen: as narrow as the digits beside it, so "ー10"
+                // keeps its cells instead of being squeezed one share each.
+                const bool narrow = !icon(c.code).empty() || name.empty() || uint8_t(name[0]) < 0x80 || c.code == kLongDash;
                 glyphs.push_back({i, k, c.x, c.y, c.width, narrow ? .6 : 1.0});
             }
         }
@@ -608,16 +615,35 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         } else if (l.id == 0) {
             // Text the caller printed (numbers, sprintf): each glyph in its own cell keeps
             // the columns.
+            // A range printed "%d～%2d" leaves a blank cell before a one-digit end ("1～ 3"),
+            // which the font's small ～ turns into a hole: the start and its ～ move up to
+            // the end, so the range reads as one and keeps to the right like the lone "1".
+            std::vector<int> shift(l.cells.size(), 0);
+            for (size_t k = 0; k + 1 < l.cells.size(); ++k) {
+                const auto& c = l.cells[k];
+                const auto& next = l.cells[k + 1];
+                if (c.icon || c.code != kWaveDash || next.y != c.y) continue;
+                const int gap = next.x - (c.x + c.width);
+                if (gap < int(kCell)) continue;
+                for (size_t m = k + 1; m-- > 0;) {
+                    shift[m] = gap;
+                    if (m == 0 || l.cells[m - 1].y != c.y || l.cells[m - 1].x + l.cells[m - 1].width != l.cells[m].x) break;
+                }
+            }
             for (size_t k = 0; k < l.cells.size(); ++k) {
                 const auto& c = l.cells[k];
                 if (c.icon) continue;
                 std::string glyph = icon(c.code);
-                if (glyph.empty()) glyph = c.code == kLongDash ? std::string("-") : dialogue::glyph_string(c.code);
+                // ー before a digit is a minus; in a run of them (Ammo --/--) a placeholder,
+                // where the hyphen keeps them apart.
+                const bool sign = k + 1 < l.cells.size() && l.cells[k + 1].y == c.y &&
+                                  std::isdigit(uint8_t(dialogue::glyph_string(l.cells[k + 1].code)[0]));
+                if (glyph.empty()) glyph = c.code != kLongDash ? dialogue::glyph_string(c.code) : sign ? kMinus : "-";
                 // Cell by cell the regular face in every language: Condensed digits leave gaps.
                 if (const auto fit = fitted.find({i, k}); fit != fitted.end())
-                    items.push_back(placed(fit->second.style, "ja", glyph, "glyph", fit->second.x, float(c.y), tint));
+                    items.push_back(placed(fit->second.style, "ja", glyph, "glyph", fit->second.x + shift[k], float(c.y), tint));
                 else {
-                    float x = c.x + c.width / 2.f;
+                    float x = c.x + shift[k] + c.width / 2.f;
                     if (k == 0) if (const auto moved = sign_x.find(i); moved != sign_x.end()) x = moved->second;
                     items.push_back(placed(label_style("ja", 0, true), "ja", glyph, "glyph", x, float(c.y), tint));
                 }
