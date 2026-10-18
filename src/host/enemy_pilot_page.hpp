@@ -125,7 +125,7 @@ inline void reveal(uint8_t* ram,recomp_context* ctx,unsigned crew,unsigned side,
         // The engine prints the digits; the native text shows them small as "Lv12". The
         // ROM's font (Japanese original mode) has no letters and no room for more.
         const std::string level=std::to_string(entry.level),shown="Lv"+level;
-        const unsigned digits=native?unsigned(shown.size())*5:unsigned(level.size())*8,room=56-digits-2;
+        const unsigned digits=native?unsigned(shown.size())*4+1:unsigned(level.size())*8,room=56-digits-2;
         const unsigned lx=x+std::min(room,name_width(dialogue::ui_text(ram,uint16_t(text_spirits+entry.id)),native)+2);
         if(n>=2)if(const int8_t handle=print(ram,ctx,handle_levels+(n-2),level,lx,y,palette_level);handle>=0 && native)
             ui_text::mark_small(unsigned(handle),int(lx),int(y),level,shown);

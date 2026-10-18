@@ -619,7 +619,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                    mark->second.x == l.x && mark->second.y == l.y && mark->second.text == l.drawn) {
             // A learning level: small, yellow and raised beside the name it follows.
             Style style = number_style(true);
-            style.size = style.min_size = 8; style.origin = Style::Origin::left;
+            style.size = style.min_size = 7; style.origin = Style::Origin::left;
             const float yellow[3] = {1.f, .84f, .37f};
             items.push_back(placed(style, locale, mark->second.shown, "level", float(l.cells.front().x), float(l.cells.front().y) - 1, yellow));
             for (size_t k = 0; k < l.cells.size(); ++k) take(k);

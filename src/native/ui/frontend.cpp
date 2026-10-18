@@ -799,7 +799,7 @@ body.pointer .im-funds:hover,.im-funds:focus {background-color:#00c80055; border
 .im-funds-input {display:inline-block; text-align:right; color:#ffffff; font-weight:bold; background-color:#122131; border:0; border-radius:0; margin:0; padding:0 2dp; tab-index:auto;}
 .im-funds-input selection {color:#0b1421; background-color:#9be4f7;}
 .im-row {display:flex; align-items:center;} .im-row span {display:inline-block; white-space:nowrap; overflow:hidden;}
-.im-right {text-align:right;} .im-center {text-align:center;} .im-dim {color:#9eafc3;} .im-later {color:#6f7d8f;} .im-level {color:#ffd75e; font-size:0.7em;}
+.im-right {text-align:right;} .im-center {text-align:center;} .im-dim {color:#9eafc3;} .im-later {color:#6f7d8f;} .im-level {color:#ffd75e;}
 .im-gauge {font-family: srw64-ui; letter-spacing:0;} .im-gauge b {font-weight:normal; color:#ff6fa8;} .im-gauge i {font-style:normal; color:#ffd75e;}
 .im-gauge em {font-style:normal; color:#7ff0a0;} .im-plan {color:#7ff0a0;}
 .im-panel button.on .im-plan,.im-panel button.on .im-gauge em {color:#06205a;} .im-poor {color:#ff8d8d;}
@@ -4119,9 +4119,12 @@ void ability_sync() {
             if(n<sp.size())spirits+=at(x,y,escape(sp[n].get<std::string>()),"fit",10.5f,w);
             else if(n-sp.size()<later.size()) {
                 const auto& l=later[n-sp.size()];
-                // The level right after the name, both narrowing together to the slot.
-                spirits+=at(x,y,"<span class='im-later'>"+escape(l.value("name",std::string()))+"</span><span class='im-level'> Lv"+
-                            std::to_string(l.value("level",0))+"</span>","fit",10.5f,w);
+                // The level small and raised right after the name, as on the map's pilot page
+                // (enemy_pilot_page.hpp): the name narrows to what the level leaves.
+                const std::string name=l.value("name",std::string()),level="Lv"+std::to_string(l.value("level",0));
+                const float lw=float(level.size())*4+1,nw=std::min(w-lw-1,text_units(name)*10.5f);
+                spirits+=at(x,y,"<span class='im-later'>"+escape(name)+"</span>","fit",10.5f,w-lw-1);
+                spirits+=at(x+nw+1,y-4,level,"im-level",6.5f,lw);
             } else spirits+=at(x,y,"---","fit",10.5f,w);
         }
         std::string skills;

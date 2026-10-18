@@ -6845,63 +6845,63 @@
     {
       "key": "base:t00_01031",
       "source_sha256": "e99907bf62917c194df5effb848029f27a18560cea2f29a4f27e154f71aad7e2",
-      "target": "S防御L1<END>",
+      "target": "盾防L1<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01032",
       "source_sha256": "ac00b9c9c320a3f423649062e2091ab8704e2461025618ca19673c5213559e5b",
-      "target": "S防御L2<END>",
+      "target": "盾防L2<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01033",
       "source_sha256": "49ee6b66fba29527aa8eff48bd3561a3da5de1c08d2d87e2c0a10f0231801620",
-      "target": "S防御L3<END>",
+      "target": "盾防L3<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01034",
       "source_sha256": "c36c0f5356aaacb69eb4c1beeeb8b19fe36d4e8709a3bd712e6df77f318a813a",
-      "target": "S防御L4<END>",
+      "target": "盾防L4<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01035",
       "source_sha256": "fc722e6a023b5ad3d7f2cb63eba640ee5c81bb7bce626bf0e9f2faf7eed448e9",
-      "target": "S防御L5<END>",
+      "target": "盾防L5<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01036",
       "source_sha256": "30b6229bf6a5a9114b3fa8700f6e2cfeb20e7408de0569213eadf5672839e6c9",
-      "target": "S防御L6<END>",
+      "target": "盾防L6<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01037",
       "source_sha256": "0faf23769a1b12c70c608a74faf7daca3eb2fc2c6f81a956f30bcf62c95853fc",
-      "target": "S防御L7<END>",
+      "target": "盾防L7<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01038",
       "source_sha256": "7175a920ff08870a0db36cc8c4d33a9c66b50b1d9b5e341c7fdd107f023f96c1",
-      "target": "S防御L8<END>",
+      "target": "盾防L8<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_01039",
       "source_sha256": "9c17fece1ac8263bc9bd337ea13d378d1b79be7821d9a2cbf5a67c8f6de1badc",
-      "target": "S防御L9<END>",
+      "target": "盾防L9<END>",
       "review_status": "draft",
       "origin": "terms"
     },
