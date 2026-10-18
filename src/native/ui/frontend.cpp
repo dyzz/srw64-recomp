@@ -334,12 +334,12 @@ button:disabled {opacity: 0.45;} .row {display: flex;}
 .lk-page {position: absolute; left: 0; top: 0; right: 0; bottom: 0; padding: 20dp 4% 16dp; display: flex; flex-direction: column;}
 .lk-head {display: flex; align-items: baseline;} .lk-head h1 {margin: 0 20dp 0 0; font-size: 28dp;} .lk-hint {flex: 1 1 auto; margin: 0;}
 .lk-body {display: flex; flex: 1 1 auto; margin-top: 14dp;}
-.lk-list {width: 32%; display: flex; flex-direction: column; margin-right: 18dp;}
+.lk-list {width: 35%; display: flex; flex-direction: column; margin-right: 18dp;}
 button.lk-item {display: flex; align-items: center; margin: 0 0 10dp; padding: 10dp 12dp; text-align: left; background-color: #132235; border: 2dp #243a50; border-radius: 0;}
 button.lk-item img {width: 64dp; height: 64dp; margin: 0 12dp 0 0; background-color: #0b1421;}
 button.lk-item.cur {background-color: #1d4560; border-color: #ffd75e;} button.lk-item.joined {opacity: 0.55;}
-.lk-text {flex: 1 1 auto;} .lk-name {font-size: 18dp; color: #ffffff;} .lk-sub {font-size: 14dp; color: #9eafc3; margin-top: 4dp;}
-.lk-box {min-width: 30dp; height: 30dp; line-height: 30dp; text-align: center; font-size: 18dp; color: transparent; border: 2dp #4a6680; padding: 0 2dp;}
+.lk-text {flex: 1 1 0; min-width: 0; margin-right: 8dp; overflow: hidden;} .lk-name {font-size: 18dp; color: #ffffff; white-space: nowrap;} .lk-sub {font-size: 14dp; color: #9eafc3; margin-top: 4dp; white-space: nowrap;}
+.lk-box {flex: 0 0 auto; white-space: nowrap; min-width: 30dp; height: 30dp; line-height: 30dp; text-align: center; font-size: 18dp; color: transparent; border: 2dp #4a6680; padding: 0 2dp;}
 button.lk-item.on .lk-box {background-color: #ffd75e; color: #0b1421; border-color: #ffd75e;}
 .lk-tick {display: inline-block; width: 7dp; height: 13dp; margin-top: 5dp; border-right: 3dp #0b1421; border-bottom: 3dp #0b1421; transform: rotate(45deg);}
 button.lk-item.fixed .lk-box {font-size: 13dp; padding: 0 6dp; color: #0b1421; background-color: #9eafc3; border-color: #9eafc3;}
@@ -348,10 +348,10 @@ button.lk-item.fixed .lk-box {font-size: 13dp; padding: 0 6dp; color: #0b1421; b
 .lk-detail {display: none; flex: 1 1 auto; flex-direction: column; padding: 0 26dp 22dp; background-color: #132235; border: 2dp #243a50;}
 .lk-detail.shown {display: flex;}
 .lk-stripe {height: 6dp; margin: 0 -26dp 18dp;} .lk-kana {font-size: 14dp; letter-spacing: 3dp;} .lk-title {font-size: 30dp; color: #ffffff; margin-top: 4dp;}
-.lk-units {flex: 1 1 auto; display: flex; align-items: center; justify-content: center; margin: 10dp 0 18dp;} .lk-units img {margin: 0 8dp;}
+.lk-units {flex: 1 1 auto; display: flex; align-items: center; justify-content: center; margin: 6dp 0 12dp;} .lk-units img {margin: 0 8dp;}
 .lk-foot-row {display: flex; align-items: flex-end;} .lk-faces {display: flex; margin-right: 22dp;}
-.lk-faces img {width: 88dp; height: 88dp; margin: 0 10dp 0 0; background-color: #0b1421; border: 2dp #304859;}
-.lk-info div {font-size: 17dp; margin: 3dp 0;} .lk-info span {display: inline-block; width: 56dp; color: #6f8399;}
+.lk-faces img {width: 76dp; height: 76dp; margin: 0 10dp 0 0; background-color: #0b1421; border: 2dp #304859;}
+.lk-info div {font-size: 17dp; margin: 3dp 0; white-space: nowrap;} .lk-info span {display: inline-block; width: 56dp; color: #6f8399;}
 .lk-foot {display: flex; justify-content: flex-end; margin-top: 14dp;}
 button.lk-go {background-color: #ffd75e; color: #0b1421; border-color: #ffd75e;}
 #fps {position: absolute; right: 6dp; top: 6dp; padding: 1dp 6dp; font-size: 12dp; color: #e6f6ff; background-color: #000000a8;}
@@ -3098,9 +3098,12 @@ void link_sync() {
         Rml::ElementList pictures;panel->QuerySelectorAll(pictures,".lk-units img");
         const float n=float(std::max<size_t>(1,pictures.size()));
         // A clear band above the pilots and below the title (the units never touch them).
-        const float size=std::min({room-36,(width-16*n)/n,400.f});
+        const float size=std::min({room-4,(width-16*n)/n,400.f});
         for(auto* img:pictures){const auto px=std::to_string(size>=40?size:0.f)+"dp";img->SetProperty("width",px);img->SetProperty("height",px);}
     }
+    // The rows' names shrink to what their status tags leave (those come after the first fit).
+    link_doc->UpdateDocument();
+    fit_lines(link_doc);
 }
 std::string battle_number(int value,bool sign=false){return (sign && value>=0?"+":"")+std::to_string(value);}
 // Abilities the unit really has. A skill without its equipment or level is left
