@@ -24,7 +24,7 @@ export interface Chip {
 }
 
 export const asOf = '0.4.8';
-export const updated = '2026-10-16';
+export const updated = '2026-10-18';
 
 const same = (s: string): L => ({ zh: s, en: s, ja: s });
 const snapdragon = (n: string): L => ({ zh: `骁龙 ${n}`, en: `Snapdragon ${n}`, ja: `Snapdragon ${n}` });
@@ -82,6 +82,53 @@ export const CHIPS: Chip[] = [
     tested: { zh: 'Galaxy Tab S7（安卓 11）、POCO F3（玩家）', en: 'Galaxy Tab S7 (Android 11), POCO F3 (a player)', ja: 'Galaxy Tab S7（Android 11）、POCO F3（プレイヤー）' },
     depth: 'play', status: 'ok', fps: 30,
     note: { zh: '闪退，0.4.3 起修好。少数读回画面的特效可能不准。', en: 'Crashed; fixed since 0.4.3. A few effects that read the screen back may be off.', ja: '強制終了、0.4.3 で修正。画面を読み戻す一部の演出は正確でない場合があります。' },
+  },
+  {
+    vendor: 'qualcomm', chip: snapdragon('855 / 860'), gpu: 'Adreno 640',
+    phones: { zh: '小米 9、红米 K20 Pro、Poco X3 Pro、一加 7', en: 'Xiaomi Mi 9, Redmi K20 Pro, Poco X3 Pro, OnePlus 7', ja: 'Xiaomi Mi 9、Redmi K20 Pro、Poco X3 Pro、OnePlus 7' },
+    tested: { zh: 'Pixel 4（安卓 11）、Poco X3 Pro（安卓 12，玩家）', en: 'Pixel 4 (Android 11), Poco X3 Pro (Android 12, a player)', ja: 'Pixel 4（Android 11）、Poco X3 Pro（Android 12、プレイヤー）' },
+    depth: 'title', status: 'issue', fps: 30,
+    note: {
+      zh: '0.4.8 启动即闪退，下一版修好，玩家已用测试版确认。安卓 9、10 的旧驱动编译画面时会崩溃，下一版起会提示升级到安卓 11 以上。',
+      en: 'Crashes at start in 0.4.8; fixed in the next release, confirmed by a player on a test build. On Android 9 and 10 the old driver crashes building the graphics; from the next release the game asks to update to Android 11 or later.',
+      ja: '0.4.8 では起動直後に強制終了します。次のバージョンで修正し、プレイヤーがテスト版で確認済みです。Android 9・10 の古いドライバーは描画の準備中に強制終了するため、次のバージョンからは Android 11 以降へのアップデートを案内します。',
+    },
+  },
+  {
+    vendor: 'qualcomm', chip: snapdragon('778G'), gpu: 'Adreno 642L',
+    phones: { zh: '小米 Civi、荣耀 50、Galaxy A52s', en: 'Xiaomi Civi, Honor 50, Galaxy A52s', ja: 'Xiaomi Civi、Honor 50、Galaxy A52s' },
+    tested: { zh: 'Galaxy A73（安卓 12）', en: 'Galaxy A73 (Android 12)', ja: 'Galaxy A73（Android 12）' },
+    depth: 'title', status: 'issue', fps: 18,
+    note: {
+      zh: '0.4.8 启动即闪退，下一版修好，但只有 14–22 帧。',
+      en: 'Crashes at start in 0.4.8; fixed in the next release, but runs at only 14–22 FPS.',
+      ja: '0.4.8 では起動直後に強制終了します。次のバージョンで修正しますが、14〜22 FPS しか出ません。',
+    },
+  },
+  {
+    vendor: 'qualcomm', chip: snapdragon('765G'), gpu: 'Adreno 620',
+    phones: { zh: '红米 K30 5G、一加 Nord', en: 'Redmi K30 5G, OnePlus Nord', ja: 'Redmi K30 5G、OnePlus Nord' },
+    tested: { zh: 'Pixel 5（安卓 12）', en: 'Pixel 5 (Android 12)', ja: 'Pixel 5（Android 12）' },
+    depth: 'title', status: 'issue', fps: 30,
+    note: { zh: '0.4.8 启动即闪退，下一版修好。', en: 'Crashes at start in 0.4.8; fixed in the next release.', ja: '0.4.8 では起動直後に強制終了します。次のバージョンで修正。' },
+  },
+  {
+    vendor: 'qualcomm', chip: snapdragon('730 / 732G'), gpu: 'Adreno 618',
+    phones: { zh: '红米 K20、Poco X3 NFC、Galaxy A71', en: 'Redmi K20, Poco X3 NFC, Galaxy A71', ja: 'Redmi K20、Poco X3 NFC、Galaxy A71' },
+    tested: { zh: 'Pixel 4a（安卓 11）', en: 'Pixel 4a (Android 11)', ja: 'Pixel 4a（Android 11）' },
+    depth: 'title', status: 'issue', fps: 30,
+    note: { zh: '0.4.8 启动即闪退，下一版修好。', en: 'Crashes at start in 0.4.8; fixed in the next release.', ja: '0.4.8 では起動直後に強制終了します。次のバージョンで修正。' },
+  },
+  {
+    vendor: 'qualcomm', chip: snapdragon('845 / 670'), gpu: 'Adreno 630 / 615',
+    phones: { zh: '小米 8、Poco F1、一加 6', en: 'Xiaomi Mi 8, Poco F1, OnePlus 6', ja: 'Xiaomi Mi 8、Poco F1、OnePlus 6' },
+    tested: { zh: 'Pixel 3、Pixel 3a（安卓 10）', en: 'Pixel 3, Pixel 3a (Android 10)', ja: 'Pixel 3、Pixel 3a（Android 10）' },
+    depth: 'title', status: 'issue',
+    note: {
+      zh: '安卓 10 的驱动在编译画面时崩溃，没法修；下一版起会提示升级到安卓 11 以上。升级过系统的这代手机没测过。',
+      en: 'Android 10’s driver crashes building the graphics, which cannot be worked around; from the next release the game asks to update to Android 11 or later. Phones of this generation on newer Android are untested.',
+      ja: 'Android 10 のドライバーは描画の準備中に強制終了し、回避できません。次のバージョンからは Android 11 以降へのアップデートを案内します。アップデート済みの同世代の端末は未確認です。',
+    },
   },
   {
     vendor: 'mediatek', chip: dimensity('7300'), gpu: 'Mali-G615',
@@ -163,9 +210,9 @@ export const UNTESTED: { label: L; items: L }[] = [
   {
     label: { zh: 'GPU', en: 'GPUs', ja: 'GPU' },
     items: {
-      zh: '天玑 9200/9300 的 Immortalis（红米 K60 至尊版、K70 至尊版、iQOO Neo9 Pro）、天玑 1200 的 Mali-G77、骁龙 8 至尊版第五代、三星 Exynos 的 Xclipse、Pixel 10 的 PowerVR、骁龙 6/7 系的中低端 Adreno',
-      en: 'Immortalis on the Dimensity 9200/9300 (Redmi K60 Ultra, K70 Ultra, iQOO Neo9 Pro), Mali-G77 on the Dimensity 1200, Snapdragon 8 Elite Gen 5, Samsung’s Xclipse, PowerVR on the Pixel 10, mid- and low-end Adreno on the Snapdragon 6 and 7 series',
-      ja: 'Dimensity 9200/9300 の Immortalis（Redmi K60 Ultra、K70 Ultra、iQOO Neo9 Pro）、Dimensity 1200 の Mali-G77、Snapdragon 8 Elite Gen 5、Samsung Exynos の Xclipse、Pixel 10 の PowerVR、Snapdragon 6/7 シリーズの中・低価格帯 Adreno',
+      zh: '天玑 9200/9300 的 Immortalis（红米 K60 至尊版、K70 至尊版、iQOO Neo9 Pro）、天玑 1200 的 Mali-G77、骁龙 8 至尊版第五代、三星 Exynos 的 Xclipse、Pixel 10 的 PowerVR、骁龙 7 Gen 系列和 6/4 系的 Adreno',
+      en: 'Immortalis on the Dimensity 9200/9300 (Redmi K60 Ultra, K70 Ultra, iQOO Neo9 Pro), Mali-G77 on the Dimensity 1200, Snapdragon 8 Elite Gen 5, Samsung’s Xclipse, PowerVR on the Pixel 10, Adreno on the Snapdragon 7 Gen series and the 6 and 4 series',
+      ja: 'Dimensity 9200/9300 の Immortalis（Redmi K60 Ultra、K70 Ultra、iQOO Neo9 Pro）、Dimensity 1200 の Mali-G77、Snapdragon 8 Elite Gen 5、Samsung Exynos の Xclipse、Pixel 10 の PowerVR、Snapdragon 7 Gen シリーズと 6/4 シリーズの Adreno',
     },
   },
   {
