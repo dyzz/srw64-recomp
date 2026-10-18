@@ -12,7 +12,7 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = HOME[lang];
 // Dialogue first, the modern screens and controls second, bug fixes third (user, 2026-10-05).
-const ORDER = ['history', 'prebattle', 'settings', 'filters', 'library', 'viewer'];
+const ORDER = ['history', 'prebattle', 'settings', 'filters', 'library', 'viewer', 'link'];
 const shows = ORDER.map((k) => c.shows.find((x) => x.key === k)!).filter(Boolean);
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft))
   .sort(newestFirst)
