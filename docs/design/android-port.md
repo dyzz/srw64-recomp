@@ -274,9 +274,9 @@ APK 的 `libmain.so` 必须链接两份由 ROM 生成的代码：`build/recomp/c
 
 10-15 第二台 K60 装测试包后照样卡死；它的 system.log 推翻了上面的推断，也给出新线索：SDL 表面始终 2186×990 没变（窗口 5 秒后才 2310→2400，系统栏提前隐藏在 MIUI 上没立即生效），而交换链建立时本进程连续出现 `qdgralloc: GetSize: Unrecognized pixel format: 0x38`、`Gralloc4: isSupported(1, 1, 56, …) failed with 5`、`GraphicBufferAllocator: Failed to allocate (4 x 4) … format 56 usage b00`（还有 0x3B）——是查询表面格式（`vkGetPhysicalDeviceSurfaceFormatsKHR`）时安卓试分配 R8、RGBA10 小缓冲区，高通 gralloc 不认识。紧接着第一块交换链缓冲区就卡在无人持有的 RetainBuffer 锁上，推测这条失败路径把锁留下了。处理：安卓上不查询，直接用 R8G8B8A8_UNORM＋sRGB 非线性（安卓交换链必然支持，也是这里请求的格式），日志 `SRW64_SURFACE_FORMATS skipped`。Seeker 上原先每次启动都有的 4 条 `mali_gralloc: unsupported format 0x38/0x3b` 随之消失，画面正常、30 帧，说明这几次试分配确实来自格式查询。
 
-### Adreno 6xx 启动闪退（2026-10-17，issue #7）
+### Adreno 6xx 启动闪退（2026-10-17，issue #7；10-18 玩家确认测试包能启动）
 
-玩家的 Poco X3 Pro（骁龙 860／Adreno 640）在 0.4.8 一启动就退出。Device Farm 上同显卡的 Pixel 4、Galaxy S10、Tab S6 全部复现，于是把能借到的 6xx 各代都跑了一遍（每台连续启动两次，第二次检验自动兜底）。Qualcomm 的驱动按代际和系统版本分成三种情况：
+玩家的 Poco X3 Pro（骁龙 860／Adreno 640，安卓 12，MIUI Global 13.0.3）在 0.4.8 一启动就退出，装测试包（0301fa68）后能正常启动。Device Farm 上同显卡的 Pixel 4、Galaxy S10、Tab S6 全部复现，于是把能借到的 6xx 各代都跑了一遍（每台连续启动两次，第二次检验自动兜底）。Qualcomm 的驱动按代际和系统版本分成三种情况：
 
 - **帧缓冲同步派发崩溃：** 618（Pixel 4a）、620（Pixel 5）、640（Pixel 4，安卓 11）在 `NativeTarget::copyToNative` 的计算派发里崩，和 650 是同一个问题（Goemon 在 630 上也遇到过）。原先只按精确名字对 650 跳过这两个派发，现在按代际：名字以 `Adreno (TM) 6` 开头的都跳过，只有 660 除外（它的新驱动能正常执行）。
 - **通用着色器编译失败：** 642L（Galaxy A73，驱动 0x80212000，与 S21 Ultra 同一版）`RasterPSDynamic` 返回 VK_ERROR_UNKNOWN，和 660 一样，套用 660 的统一贴图槽采样变体。能玩，但很多特化着色器编不过，退回通用着色器，只有 14–22 FPS。
