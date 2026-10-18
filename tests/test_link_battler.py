@@ -44,6 +44,8 @@ class LinkSourceTests(unittest.TestCase):
         from srw64_native.profile import UI_KEYS
         # Controller variants ("_pad") are chosen by label() and need no call of their own.
         keys = {key for key in UI_KEYS if key.startswith("link_") and not key.endswith("_pad")}
+        # link_ticked: since the list-and-detail page (42ca26a2) a ticked work shows a tick, not the word.
+        keys.discard("link_ticked")
         # Per series: name, lead pilot, machines, the pilots who come along.
         for field in ("series", "lead", "units", "crew"):
             self.assertLessEqual({f"link_{field}_{name}" for name in ("f91", "goshogun", "zambot")}, keys)

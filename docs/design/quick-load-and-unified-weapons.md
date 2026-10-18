@@ -34,7 +34,7 @@
 
 ### 1.3 实现
 
-- `src/host/quick_load.hpp/.cpp`：`usable()`、`saved()`（有存档库读 `save_store::cartridge_bytes`，没有读运行时的存档文件）、`request()`、`frame()`（`host.cpp` 的 `frame_start`）、`filter_input()`。
+- `src/host/quick_load.hpp`、`src/host/quick_load.cpp`：`usable()`、`saved()`（有存档库读 `save_store::cartridge_bytes`，没有读运行时的存档文件）、`request()`、`frame()`（`host.cpp` 的 `frame_start`）、`filter_input()`。
   - 阶段：按 Z → 按 Z+START → 只按 START → 读档中 → 地图界面回来后提示。「被接受」在地图上是模式变 1（`801DFE0C`），在战斗演出里是中止标志 `80225810` 变 1（`801C9A18`，演出不切模式 1，淡出结束直接 `0x11`）。8 帧没被接受就松开重来；1200 VI 没完成就放弃。
   - **输入过滤必须放在 `get_input` 整条链的最后**：确认窗关闭时设置窗口的「松键闸门」（`settings_window::filter_input`）要等所有键松开才放行，组合放在它前面就一直按着、永远过不了闸门。第一次实机就卡在这里。
 - 前端：`quick_load_ask_open` 确认窗（仿首次启动的更新询问窗），`choose("quick-load-ask")` 先查能不能用、有没有档、是不是本关。触屏 `touch_pad::Slot::Load`（55.5 mm，宽 9 mm），`usable()` 为假时清掉。
