@@ -83,6 +83,7 @@ RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
 #ifdef __vita__
 void srw64_vita_perf_thread(const char* label);  // vita/vita_platform.cpp
 void srw64_vita_graphics_begin();                // graphics.cpp
+void srw64_vita_like_console();                  // vita/vita_platform.cpp
 #endif
 namespace {
 std::atomic<uint64_t> vi_count{}, dl_count{}, audio_tasks{}, audio_samples{};
@@ -787,6 +788,8 @@ int main(int argc, char** argv) {
         // for Vita3K's sake) and debug (the debug interface on every address, a Vita's own
         // loopback being out of the computer's reach; its debug.json in run/).
         const auto present = srw64::app::list_names(options.user_dir);
+        // like-console: Vita3K with no more memory left than a console has (vita_platform.cpp).
+        if (present.contains("like-console")) srw64_vita_like_console();
         options.mute = present.contains("mute");
         if (present.contains("debug") && srw64_vita_network()) options.debug = true;
         srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,

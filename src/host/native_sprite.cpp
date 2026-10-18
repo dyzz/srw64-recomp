@@ -279,7 +279,9 @@ void work() {
         asset.origin[0] = origin[0]; asset.origin[1] = origin[1];
         asset.levels.clear();
         asset.levels.push_back(std::move(pixels));
+#ifndef SRW64_GL_ONLY   // the GL renderer draws level 0 only
         add_mips(asset);
+#endif
         asset.state = Asset::ready;
         ++decoded;
     }
@@ -457,10 +459,32 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 #endif
 
 // The GL renderer's view of a tag (native_quads.hpp): the same pictures and places as render(),
-// from the CPU pixels, which that renderer never hands to Plume.
+// from the CPU pixels, which that renderer never hands to Plume. As texture_for does for
+// RT64, pixels idle long enough go once more than kResident are held, and are decoded again
+// when drawn again: kept for good, the title cards and story text grew the PS Vita's heap by
+// 150 MB in two minutes, until a decode failed. Caller holds asset_mutex.
 std::shared_ptr<const std::vector<uint8_t>> pixels_of(Asset& asset) {
     if (asset.state != Asset::ready) return nullptr;
-    if (!asset.gl_pixels && !asset.levels.empty()) asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(asset.levels[0]));
+    if (!asset.gl_pixels && !asset.levels.empty()) {
+        asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(asset.levels[0]));
+        asset.levels.clear();
+        asset.levels.shrink_to_fit();
+    }
+    const auto now = Clock::now();
+    asset.used = now;
+    static Clock::time_point swept{};
+    if (now - swept > std::chrono::seconds(1)) {
+        swept = now;
+        size_t held = 0;
+        for (const auto& other : assets) held += other->gl_pixels != nullptr;
+        if (held > kResident)
+            for (auto& other : assets)
+                if (other->gl_pixels && now - other->used > kIdle) {
+                    other->gl_pixels.reset();
+                    other->state = Asset::idle;
+                    ++released;
+                }
+    }
     return asset.gl_pixels;
 }
 bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {

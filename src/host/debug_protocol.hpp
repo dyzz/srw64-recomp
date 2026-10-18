@@ -111,6 +111,11 @@ public:
         }
         return result;
     }
+    // Whether a capture waits (a present must not be skipped then).
+    bool wanted() {
+        std::lock_guard lock(mutex);
+        return pending.has_value();
+    }
     // Render thread, once per present: the capture wanted now, if any.
     std::optional<Pending> take() {
         std::lock_guard lock(mutex);

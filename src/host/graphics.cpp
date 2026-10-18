@@ -98,6 +98,7 @@ bool srw64_vita_perf_enabled();
 uint64_t srw64_vita_perf_now();
 void srw64_vita_perf_list(uint64_t microseconds);
 void srw64_vita_perf_screen(uint64_t draw_microseconds, uint64_t swap_microseconds);
+void srw64_vita_perf_skipped();
 void srw64_vita_progress_end();
 #endif
 
@@ -1072,7 +1073,31 @@ public:
     void update_screen() override {
         srw64::frame::wide = false;
         int width = 0, height = 0;
+        const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
+#ifdef SRW64_NATIVE_DIALOGUE
+        const auto shown = image_workloads.find(renderer->image_at(origin));
+        const uint64_t shown_workload = shown != image_workloads.end() ? shown->second : 0;
+#endif
 #ifdef __vita__
+        // The game shows a new picture every second or third VI; the rest of the time the
+        // screen would be drawn again as it is (the graphics thread's 9 ms a VI on a console).
+        // The same colour image not drawn since, the same dialogue frame, no page of the shared
+        // UI up and no capture wanted: the screen keeps the last swap.
+        {
+            const uint32_t image = renderer->image_at(origin);
+            const ScreenKey key{image, renderer->drawn_at(image),
+#ifdef SRW64_NATIVE_DIALOGUE
+                                shown_workload};
+#else
+                                0};
+#endif
+            if (key == last_screen && !srw64::ui::shown() && !srw64::debug::screenshots().wanted() &&
+                !srw64::debug::recording().active() && !player_shot_requested.load()) {
+                srw64_vita_perf_skipped();
+                return;
+            }
+            last_screen = key;
+        }
         const uint64_t measured = srw64_vita_perf_enabled() ? srw64_vita_perf_now() : 0;
         width = 960; height = 544;
 #else
@@ -1085,11 +1110,8 @@ public:
         glClear(GL_COLOR_BUFFER_BIT);
         // The 4:3 picture as large as the window allows, centred.
         const int picture_width = std::min(width, height * 4 / 3), picture_height = picture_width * 3 / 4;
-        const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
         renderer->present(origin, (width - picture_width) / 2, (height - picture_height) / 2, picture_width, picture_height, width, height);
 #ifdef SRW64_NATIVE_DIALOGUE
-        const auto shown = image_workloads.find(renderer->image_at(origin));
-        const uint64_t shown_workload = shown != image_workloads.end() ? shown->second : 0;
         if (shown_workload) srw64::dialogue::gl_draw(shown_workload, uint32_t(width), uint32_t(height));
         // The name page's cover, then the shared UI's pages over everything (capture_frame's order).
         const bool name_cover = shown_workload && srw64::names::frame_cover(shown_workload);
@@ -1153,6 +1175,16 @@ private:
     std::vector<uint8_t> display_copy;
     uint64_t workload = 0;
     std::map<uint32_t, uint64_t> image_workloads;
+#ifdef __vita__
+    // What the last swap showed (update_screen): the colour image, the frame that drew it,
+    // the dialogue frame over it.
+    struct ScreenKey {
+        uint32_t image = 0, drawn = 0;
+        uint64_t workload = 0;
+        bool operator==(const ScreenKey&) const = default;
+    };
+    ScreenKey last_screen{~0u, 0, 0};
+#endif
 };
 }  // namespace
 #ifdef __vita__

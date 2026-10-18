@@ -17,6 +17,10 @@ std::vector<size_t> grapheme_ends(std::u16string_view text);
 // weight 0 keeps the face's default instance; otherwise a variable font opens
 // at the named instance nearest to it on the wght axis (HarmonyOS Sans Bold is 706).
 struct FontSource { std::filesystem::path path; long face_index=0; int weight=0; };
+// A font file's bytes, read once for the whole program and kept: every FontSet (one per
+// locale and weight) and the shared UI's RmlUi open their faces on the same bytes.
+// HarmonyOS Sans SC alone is 20 MB, and each had read its own copy (the PS Vita ran out).
+std::shared_ptr<const std::vector<uint8_t>> font_file(const std::filesystem::path& path);
 struct TextLine {
     size_t start{}, end{};
     double width{};

@@ -97,14 +97,24 @@ std::vector<uint8_t> read_font(const std::filesystem::path& path) {
     require(bool(file.read(reinterpret_cast<char*>(bytes.data()),size)),"Could not read complete font file");
     return bytes;
 }
+}
+std::shared_ptr<const std::vector<uint8_t>> font_file(const std::filesystem::path& path) {
+    static std::mutex mutex;
+    static std::map<std::filesystem::path,std::shared_ptr<const std::vector<uint8_t>>> files;
+    std::lock_guard lock(mutex);
+    auto& bytes=files[path];
+    if(!bytes)bytes=std::make_shared<const std::vector<uint8_t>>(read_font(path));
+    return bytes;
+}
+namespace {
 struct Face {
-    std::vector<uint8_t> bytes;
+    std::shared_ptr<const std::vector<uint8_t>> bytes;
     std::unique_ptr<std::remove_pointer_t<FT_Face>,decltype(&FT_Done_Face)> ft{nullptr,FT_Done_Face};
     std::unique_ptr<hb_font_t,decltype(&hb_font_destroy)> hb{nullptr,hb_font_destroy};
-    Face(FT_Library lib,const FontSource& source):bytes(read_font(source.path)) {
+    Face(FT_Library lib,const FontSource& source):bytes(font_file(source.path)) {
         require(source.face_index>=0 && source.face_index<=65535,"Invalid font face index");
         FT_Face raw=nullptr;
-        require(FT_New_Memory_Face(lib,bytes.data(),static_cast<FT_Long>(bytes.size()),source.face_index,&raw)==0,
+        require(FT_New_Memory_Face(lib,bytes->data(),static_cast<FT_Long>(bytes->size()),source.face_index,&raw)==0,
                 "FreeType could not open font face");
         ft.reset(raw);
         if(source.weight>0)instance(lib,raw,source.weight);
@@ -148,7 +158,7 @@ struct FontSet::State {
         FT_Library raw=nullptr;require(FT_Init_FreeType(&raw)==0,"FreeType initialization failed");lib.reset(raw);
         size_t total=0;
         for(const auto& source:sources) {
-            auto face=std::make_unique<Face>(lib.get(),source);total+=face->bytes.size();
+            auto face=std::make_unique<Face>(lib.get(),source);total+=face->bytes->size();
             require(total<=2*max_font_bytes,"Portable font set exceeds memory budget");
             faces.push_back(std::move(face));
         }

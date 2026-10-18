@@ -71,6 +71,27 @@ void report_memory() {
 }
 }
 
+// ux0:data/Marchwind64/like-console (an empty file, for Vita3K): the memory left as a console
+// leaves it. Vita3K leaves the program 34 MiB more user memory than a PS Vita does once the
+// heap is taken (65 MiB free at start against 31, a PCH-1000 on 3.65, 2026-10-17); this
+// takes the difference, so that running short shows in Vita3K as it does on the console.
+// The video memory left is the same on both (110 MiB).
+void srw64_vita_like_console() {
+    constexpr int console_free = 31 * 1024 * 1024;
+    SceKernelFreeMemorySizeInfo before{};
+    before.size = sizeof before;
+    sceKernelGetFreeMemorySize(&before);
+    const int extra = (before.size_user - console_free) & ~(64 * 1024 - 1);
+    SceUID block = -1;
+    if (extra > 0) block = sceKernelAllocMemBlock("srw64_like_console", SCE_KERNEL_MEMBLOCK_TYPE_USER_RW, extra, nullptr);
+    SceKernelFreeMemorySizeInfo after{};
+    after.size = sizeof after;
+    sceKernelGetFreeMemorySize(&after);
+    std::fprintf(stderr, "SRW64_VITA_LIKE_CONSOLE took=%d KiB (%s) free user=%d KiB then %d KiB cdram=%d KiB phycont=%d KiB\n",
+                 extra > 0 ? extra / 1024 : 0, block >= 0 ? "ok" : "none", before.size_user / 1024, after.size_user / 1024,
+                 after.size_cdram / 1024, after.size_phycont / 1024);
+}
+
 // An exception that leaves a thread ends the program with abort(), which Vita3K and the
 // console report only as an undefined instruction: name it in console.log first.
 void srw64_vita_terminate() {
@@ -98,6 +119,7 @@ struct PerfWindow {
     SceUInt64 start = 0;
     uint64_t lists = 0, list_us = 0, list_max = 0;
     uint64_t screens = 0, draw_us = 0, draw_max = 0, swap_us = 0;
+    uint64_t skipped = 0;  // screens kept as they were (graphics.cpp)
 };
 PerfWindow perf;
 // The threads whose CPU time each line reports, with their run time at the window's start.
@@ -141,6 +163,8 @@ void srw64_vita_perf_list(uint64_t microseconds) {
     perf.list_max = std::max(perf.list_max, microseconds);
 }
 
+void srw64_vita_perf_skipped() { ++perf.skipped; }
+
 void srw64_vita_perf_screen(uint64_t draw_microseconds, uint64_t swap_microseconds) {
     srw64_vita_perf_thread("gfx");
     const SceUInt64 now = sceKernelGetProcessTimeWide();
@@ -149,16 +173,16 @@ void srw64_vita_perf_screen(uint64_t draw_microseconds, uint64_t swap_microsecon
     perf.draw_us += draw_microseconds;
     perf.draw_max = std::max(perf.draw_max, draw_microseconds);
     perf.swap_us += swap_microseconds;
-    if (perf.screens < 300) return;
+    if (perf.screens + perf.skipped < 300) return;
     const double seconds = double(now - perf.start) / 1e6;
     const struct mallinfo heap = mallinfo();
     SceKernelFreeMemorySizeInfo free{};
     free.size = sizeof free;
     sceKernelGetFreeMemorySize(&free);
     std::fprintf(stderr,
-                 "SRW64_VITA_PERF seconds=%.2f screens_per_s=%.1f lists_per_s=%.1f list_ms=%.2f/%.2f screen_ms=%.2f/%.2f swap_ms=%.2f "
+                 "SRW64_VITA_PERF seconds=%.2f screens_per_s=%.1f kept_per_s=%.1f lists_per_s=%.1f list_ms=%.2f/%.2f screen_ms=%.2f/%.2f swap_ms=%.2f "
                  "heap=%d KiB free_user=%d KiB free_cdram=%d KiB free_phycont=%d KiB\n",
-                 seconds, perf.screens / seconds, perf.lists / seconds,
+                 seconds, perf.screens / seconds, perf.skipped / seconds, perf.lists / seconds,
                  perf.lists ? perf.list_us / 1000.0 / perf.lists : 0.0, perf.list_max / 1000.0,
                  perf.draw_us / 1000.0 / perf.screens, perf.draw_max / 1000.0, perf.swap_us / 1000.0 / perf.screens,
                  heap.uordblks / 1024, free.size_user / 1024, free.size_cdram / 1024, free.size_phycont / 1024);

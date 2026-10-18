@@ -55,6 +55,7 @@
 #include "touch_scene.hpp"
 #include "presentation/rgba_file.hpp"
 #include "text/button_prompts.hpp"
+#include "text/portable_text.hpp"
 #include "stb/stb_image.h"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include <algorithm>
@@ -174,7 +175,10 @@ public:
 };
 std::unique_ptr<LayeredRender> layered;
 std::map<std::string,std::array<int,5>> art_bounds;  // opaque bounds and file width of unit art, by path
-std::vector<Rml::byte> font, chinese_font, english_font, symbol_font, prompt_font;
+// The UI's main and English faces share their bytes with the game text's (text::font_file).
+std::shared_ptr<const std::vector<uint8_t>> font, english_font;
+std::vector<Rml::byte> chinese_font, symbol_font, prompt_font;
+Rml::Span<const Rml::byte> span(const std::shared_ptr<const std::vector<uint8_t>>& bytes){return {bytes->data(),bytes->size()};}
 std::map<std::string,std::string> images;
 std::atomic_bool settings_open{}, physical_held{};
 // The settings window opened from the title's MOD entry is the MOD manager: its own pages
@@ -5024,13 +5028,13 @@ void initialize() {
     }
     else for(const auto* candidate:{"/System/Library/Fonts/Supplemental/Arial Unicode.ttf","C:/Windows/Fonts/msyh.ttc","/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"})
         if(std::filesystem::is_regular_file(candidate)){path=candidate;break;}
-    font=bytes(path);
-    if(font.empty() || !Rml::LoadFontFace(font,"srw64-ui",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))
+    try{font=text::font_file(path);}catch(const std::exception&){font.reset();}
+    if(!font || !Rml::LoadFontFace(span(font),"srw64-ui",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))
         throw std::runtime_error("Shared UI needs a CJK font: set SRW64_UI_FONT to a local TTF/OTF/TTC file");
     if(!std::getenv("SRW64_UI_FONT") && font_dir && *font_dir) {
         const std::filesystem::path dir(font_dir);
-        english_font=bytes(dir/"HarmonyOS_Sans_Condensed.ttf");symbol_font=bytes(dir/"SRW64Symbols.ttf");
-        if(Rml::LoadFontFace(english_font,"srw64-ui-en",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,false))
+        english_font=text::font_file(dir/"HarmonyOS_Sans_Condensed.ttf");symbol_font=bytes(dir/"SRW64Symbols.ttf");
+        if(Rml::LoadFontFace(span(english_font),"srw64-ui-en",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,false))
             english_font_family()="srw64-ui-en";
         if(!Rml::LoadFontFace(symbol_font,"srw64-ui-symbols",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))
             throw std::runtime_error("Cannot load the symbol font");
@@ -5612,6 +5616,12 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
 #ifdef SRW64_GL_RENDERER
 void render_init_gl(){auto lock=lock_ui();gl_renderer=std::make_unique<recompui::RmlRenderInterface_GL>();ready=true;}
+bool shown(){
+    auto lock=lock_ui();
+    if(!context)return false;
+    for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())return true;
+    return false;
+}
 bool draw_gl(int width,int height,bool name_cover){
     auto lock=lock_ui();
     if(!context || !gl_renderer || width!=pixels_w || height!=pixels_h)return false;

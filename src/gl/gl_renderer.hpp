@@ -45,6 +45,12 @@ public:
     bool present(uint32_t origin, int x, int y, int width, int height, int window_width, int window_height);
     // The colour image a VI origin shows, 0 if none has been drawn.
     uint32_t image_at(uint32_t origin) const;
+    // The frame that last drew into a colour image (0 if none): a picture with the same
+    // number shows what it showed before.
+    uint32_t drawn_at(uint32_t image) const {
+        const auto found = targets.find(image);
+        return found == targets.end() ? 0 : found->second.used;
+    }
     // The host's tagged draws (Command::native), called in their place in the frame with the
     // frame's render target bound and its size; the hook may change any GL state.
     using NativeHook = std::function<void(const Command&, int width, int height)>;
