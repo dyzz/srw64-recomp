@@ -3,6 +3,7 @@
 #include "hle/rt64_application.h"
 #endif
 #include "graphics.hpp"
+#include "app/runtime.hpp"
 #include "mini_stage.hpp"
 #include "debug_protocol.hpp"
 #include "audio.hpp"
@@ -87,6 +88,16 @@ namespace plume { extern ANativeWindow *(*AndroidCurrentWindow)(); }
 #include <cstring>
 #include <ctime>
 #include <fstream>
+
+#ifdef __vita__
+#include <psp2/kernel/sysmem.h>
+// vita/vita_platform.cpp: the measurements ux0:data/Marchwind64/perf turns on.
+bool srw64_vita_perf_enabled();
+uint64_t srw64_vita_perf_now();
+void srw64_vita_perf_list(uint64_t microseconds);
+void srw64_vita_perf_screen(uint64_t draw_microseconds, uint64_t swap_microseconds);
+void srw64_vita_progress_end();
+#endif
 
 namespace {
 #ifdef __ANDROID__
@@ -949,7 +960,18 @@ public:
         // compiler of libshacccg.suprx. Its pools have fixed sizes: given a threshold
         // instead, it takes every byte above it, and the game's threads and the system's
         // own allocations have nothing left (Vita3K fell over at the first frame).
-        vglInitWithCustomSizes(0, 960, 544, 24 * 1024 * 1024, 96 * 1024 * 1024, 16 * 1024 * 1024, 0, SCE_GXM_MULTISAMPLE_NONE);
+        // The video memory pool is what the console has left, less a margin: a console
+        // has 96 MiB of it free, minus the boot screen's buffer still shown, and a pool
+        // asked for larger than that is not made at all; vitaGL then fits every texture
+        // in the RAM pools and waits a second at each allocation it cannot (the opening
+        // text took 4 s a frame).
+        srw64::app::boot_step("graphics init");
+        SceKernelFreeMemorySizeInfo free_memory{};
+        free_memory.size = sizeof free_memory;
+        sceKernelGetFreeMemorySize(&free_memory);
+        const int cdram_pool = std::max(free_memory.size_cdram - 4 * 1024 * 1024, 16 * 1024 * 1024) & ~(256 * 1024 - 1);
+        vglInitWithCustomSizes(0, 960, 544, 12 * 1024 * 1024, cdram_pool, 16 * 1024 * 1024, 0, SCE_GXM_MULTISAMPLE_NONE);
+        std::fprintf(stderr, "SRW64_VITA_GL_POOLS cdram=%d MiB of %d MiB free\n", cdram_pool >> 20, free_memory.size_cdram >> 20);
         vglWaitVblankStart(GL_FALSE);
         // VitaSDK's vitaGL draws its own splash screen from a thread until the first frame is
         // presented; the game takes a while to its first picture, and Vita3K falls over under
@@ -957,6 +979,8 @@ public:
         glClearColor(0, 0, 0, 1);
         glClear(GL_COLOR_BUFFER_BIT);
         vglSwapBuffers(GL_FALSE);
+        srw64_vita_progress_end();   // vitaGL's frames are on the screen now, not the import's bar
+        srw64::app::boot_step("graphics ready");
 #else
         if (SDL_GL_MakeCurrent(window, gl_context) != 0) graphics_failure(SDL_GetError());
         SDL_GL_SetSwapInterval(0);
@@ -997,6 +1021,9 @@ public:
     void enable_instant_present() override {}
     void send_dl(const OSTask* task) override {
         srw64::frame_rate::list_sent();
+#ifdef __vita__
+        const uint64_t measured = srw64_vita_perf_enabled() ? srw64_vita_perf_now() : 0;
+#endif
         const uint32_t start = task->t.data_ptr & 0x3FFFFFF;
         bool native_text = false;
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -1014,12 +1041,16 @@ public:
         srw64::native_gl::end_frame();
         // The workload whose overlays go with this colour image when the VI shows it.
         image_workloads[frame.color_image] = workload;
+#ifdef __vita__
+        if (measured) srw64_vita_perf_list(srw64_vita_perf_now() - measured);
+#endif
     }
     void send_dummy_workload(uint32_t) override {}
     void update_screen() override {
         srw64::frame::wide = false;
         int width = 0, height = 0;
 #ifdef __vita__
+        const uint64_t measured = srw64_vita_perf_enabled() ? srw64_vita_perf_now() : 0;
         width = 960; height = 544;
 #else
         SDL_GL_GetDrawableSize(window, &width, &height);
@@ -1070,7 +1101,9 @@ public:
             }
         }
 #ifdef __vita__
+        const uint64_t drawn = measured ? srw64_vita_perf_now() : 0;
         vglSwapBuffers(GL_FALSE);
+        if (measured) srw64_vita_perf_screen(drawn - measured, srw64_vita_perf_now() - drawn);
 #else
         SDL_GL_SwapWindow(window);
 #endif

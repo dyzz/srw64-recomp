@@ -1,4 +1,5 @@
 #include "battle_viewer.hpp"
+#include "run_files.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
 #include "native_dialogue.hpp"
@@ -200,7 +201,7 @@ void filled_records(uint8_t* ram) {
 }
 
 void install(const std::filesystem::path& output) {
-    if(!output.empty())log.open(output/"battle-viewer-events.jsonl");
+    if(!output.empty())srw64::open_run_log(log,output/"battle-viewer-events.jsonl");
     srw64_game_hooks.viewer_start=start;
     srw64_game_hooks.demo_battle_filled=filled_records;
 }

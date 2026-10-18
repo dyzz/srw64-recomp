@@ -1,4 +1,5 @@
 #include "ui_text.hpp"
+#include "run_files.hpp"
 #include "map_miss.hpp"
 #include "menu_widen.hpp"
 #include "battle_page.hpp"
@@ -865,7 +866,7 @@ void configure(const std::filesystem::path& output) {
     if (installed) return;
     installed = true;
     if (const char* value = std::getenv("SRW64_NATIVE_UI_TEXT"); value && std::string(value) == "0") disabled = true;
-    if (!output.empty()) log.open(output / "ui-text.jsonl");
+    if (!output.empty()) srw64::open_run_log(log,output / "ui-text.jsonl");
     srw64_game_hooks.ui_text_drawn = drawn;
     srw64_game_hooks.damage_drawn = damage_drawn;
     srw64_game_hooks.banner_number_drawn = banner_number_drawn;

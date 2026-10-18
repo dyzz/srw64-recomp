@@ -1,4 +1,5 @@
 #include "parts_page.hpp"
+#include "run_files.hpp"
 #include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
 #include "intermission_page.hpp"
@@ -399,7 +400,7 @@ void frame(uint8_t* ram) {
 void configure(const std::filesystem::path& directory) {
     if(const char* v=std::getenv("SRW64_NATIVE_PARTS");v && std::string_view(v)=="0")return;
     if(!std::getenv("SRW64_DIALOGUE_DATA"))return; // Legacy unprofiled runs keep the original screens.
-    log.open(directory/"parts-page-events.jsonl");
+    srw64::open_run_log(log,directory/"parts-page-events.jsonl");
     auto& h=srw64_game_hooks;
     h.parts_build=build;h.parts_step=step;h.parts_frame=frame;
 }

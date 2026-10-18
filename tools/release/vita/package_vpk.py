@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """The PS Vita package (docs/design/psv-port.md, V2): eboot.bin and param.sfo from
-build_game.sh's build, the icon from the website's M64 badge, and beside the program what
-the Linux package carries beside its own (build_linux.py): the dialogue text, the fonts and
-the stages' metadata. A VPK is a zip; the Vita installs it as is.
+build_game.sh's build, the icon from the website's M64 badge, and beside the program the
+fonts and the stages' metadata. The dialogue text is not in it: prepare_data.py lays it
+into the prepared dialogue data. A VPK is a zip; the Vita installs it as is.
 
   package_vpk.py [--build build/recomp/vita-build] [--output build/recomp/vita-build/Marchwind64.vpk]
 """
@@ -28,9 +28,9 @@ png = io.BytesIO()
 plate.convert("RGB").quantize(256).save(png, format="PNG")
 
 files = [(args.build / "eboot.bin", "eboot.bin"), (args.build / "param.sfo", "sce_sys/param.sfo")]
-for folder, name in ((ROOT / "content/dialogue", "dialogue"), (ROOT / "build/fonts", "fonts"), (ROOT / "content/stages", "stages")):
+for folder, name in ((ROOT / "build/fonts", "fonts"), (ROOT / "content/stages", "stages")):
     for path in sorted(folder.resolve().rglob("*")):
-        if path.is_file() and not path.name.startswith(".") and (name != "dialogue" or path.suffix == ".txt"):
+        if path.is_file() and not path.name.startswith("."):
             files.append((path, f"{name}/{path.relative_to(folder.resolve()).as_posix()}"))
 output.parent.mkdir(parents=True, exist_ok=True)
 temporary = output.with_suffix(".tmp")

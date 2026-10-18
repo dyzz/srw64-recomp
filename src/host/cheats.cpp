@@ -1,4 +1,5 @@
 #include "cheats.hpp"
+#include "run_files.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
 #include "native_dialogue.hpp"
@@ -121,7 +122,7 @@ void request_level(unsigned index,unsigned level) {
 }
 
 void configure(const std::filesystem::path& directory) {
-    log.open(directory/"cheat-events.jsonl");
+    srw64::open_run_log(log,directory/"cheat-events.jsonl");
     srw64_game_hooks.cheats_frame=frame;
     srw64_game_hooks.cheats_intermission=intermission;
     srw64_game_hooks.cheats_restored=restored;

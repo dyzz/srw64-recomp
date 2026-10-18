@@ -1,4 +1,5 @@
 #include "save_store.hpp"
+#include "run_files.hpp"
 #include "app/runtime.hpp"
 #include "app/save_library.hpp"
 #include "guest_memory.hpp"
@@ -46,6 +47,7 @@ sram::Bytes read_file(const fs::path& path,size_t size) {
     return bytes;
 }
 json read_json(const fs::path& path) {
+    if(!app::present(path))return json::object();
     std::ifstream file(path);
     auto value=json::parse(file,nullptr,false);
     return value.is_object()?value:json::object();
@@ -84,7 +86,7 @@ void configure(const fs::path& directory,const std::optional<fs::path>& initial)
     choices.autosave=saved.value("autosave",true);
     choices.intermission=std::clamp(saved.value("autosave_intermission",3u),1u,20u);
     choices.turn=std::clamp(saved.value("autosave_turn",5u),1u,20u);
-    log.open(directory/"save-store-events.jsonl");
+    srw64::open_run_log(log,directory/"save-store-events.jsonl");
     record("open",{{"library",root},{"initial",initial.has_value()},{"extended",library->slots()}});
 }
 fs::path main_library(){const char* root=std::getenv("SRW64_SAVE_LIBRARY");return root && *root?fs::path(root):fs::path();}

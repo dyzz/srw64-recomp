@@ -1,4 +1,6 @@
 #include "link_page.hpp"
+#include "dialogue_data.hpp"
+#include "run_files.hpp"
 #include "link_battler.hpp"
 #include "game_hooks.hpp"
 #include "presentation_settings.hpp"
@@ -87,10 +89,9 @@ bool step(uint8_t* ram,recomp_context* ctx) {
 void configure(const std::filesystem::path& directory) {
     if(std::getenv("SRW64_NATIVE_LINK") && std::string(std::getenv("SRW64_NATIVE_LINK"))=="0")return;
     // Pilot portraits come with the name page's assets in the native dialogue data.
-    if(const char* path=std::getenv("SRW64_DIALOGUE_DATA")) {
-        std::ifstream source(path);
-        const auto data=nlohmann::json::parse(source,nullptr,false);
-        if(!data.is_discarded() && data.contains("name_entry_assets")) {
+    if(const auto* document=dialogue_data::document()) {
+        const auto& data=*document;
+        if(data.contains("name_entry_assets")) {
             const auto& art=data.at("name_entry_assets");
             for(unsigned n=0;n<portraits.size() && n<art.value("link_faces",nlohmann::json::array()).size();++n)
                 for(const auto& face:art.at("link_faces").at(n)) {
@@ -102,7 +103,7 @@ void configure(const std::filesystem::path& directory) {
                 }
         }
     }
-    log.open(directory/"link-events.jsonl");
+    srw64::open_run_log(log,directory/"link-events.jsonl");
     srw64_game_hooks.link_begin=begin;srw64_game_hooks.link_step=step;
 }
 Request request() {std::lock_guard lock(mutex);return current;}

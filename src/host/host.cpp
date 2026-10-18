@@ -1,6 +1,7 @@
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
 #include "console_log.hpp"
+#include "dialogue_data.hpp"
 #include "crash_dump.hpp"
 // Native integration host, optionally rendered through RT64/Metal.
 #include <atomic>
@@ -26,7 +27,9 @@
 #include "upgrade_refund.hpp"
 #include "parts_carry.hpp"
 #include "graphics.hpp"
+#include "run_files.hpp"
 #include "app/launch.hpp"
+#include "app/rom_import.hpp"
 #include "app/desktop.hpp"
 #include "audio.hpp"
 #include "native_dialogue.hpp"
@@ -36,6 +39,9 @@
 #include "battle_hud.hpp"
 #include "game_frame.hpp"
 #include <algorithm>
+#include <chrono>
+#include <thread>
+#include <mutex>
 #include <iterator>
 #include "native_portrait.hpp"
 #include "native_background.hpp"
@@ -74,6 +80,9 @@ extern uint8_t* srw64_rdram;  // defined below, for debug_server.cpp
 
 RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
 
+#ifdef __vita__
+void srw64_vita_perf_thread(const char* label);  // vita/vita_platform.cpp
+#endif
 namespace {
 std::atomic<uint64_t> vi_count{}, dl_count{}, audio_tasks{}, audio_samples{};
 std::atomic<uint32_t> frequency{};
@@ -170,8 +179,18 @@ void on_init(uint8_t* rdram, recomp_context*) {
 }
 
 void on_vi() {
+#ifdef __vita__
+    srw64_vita_perf_thread("vi");
+#endif
     const uint64_t vi = ++vi_count;
-    if (vi % 6 == 0) {
+#ifdef __vita__
+    // The PS Vita is driven through the debug interface only: no control.txt to read (its
+    // absence, ten times a second, would be ten lookups of a missing file) or live state.
+    const bool run_files = false;
+#else
+    const bool run_files = srw64_run_files();
+#endif
+    if (run_files && vi % 6 == 0) {
         srw64::script_inject::poll_file(output_dir);
         std::ifstream command(output_dir / "control.txt");
         std::string magic, extra;
@@ -190,7 +209,7 @@ void on_vi() {
             }
         }
     }
-    if (vi % 60 == 0) {
+    if (run_files && vi % 60 == 0) {
         const auto temporary = output_dir / "live-state.tmp";
         {
             std::ofstream state(temporary);
@@ -251,6 +270,9 @@ RspUcodeFunc* get_microcode(const OSTask* task) {
     if (task->t.type != 2 || (uint32_t)task->t.ucode != 0x800C4910 ||
         (uint32_t)task->t.ucode_data != 0x800CF4D0) return nullptr;
     ++audio_tasks;
+#ifdef __vita__
+    srw64_vita_perf_thread("rsp");
+#endif
     return srw64_audio_probe;
 }
 }
@@ -311,8 +333,63 @@ extern "C" void resident_func_8008C510(uint8_t* rdram, recomp_context* ctx) {
 }
 
 #ifdef __vita__
+// The Vita's hang watchdog (docs/design/psv-port.md, V2): no display list for 8 seconds,
+// and console.log gets each N64 thread's state, from the threads ultramodern names as they
+// start: in the run queue, waiting on a message queue (with that queue's fill), or neither
+// (the one running, a stopped one, or one held in host code).
+namespace vita_watchdog {
+std::mutex threads_mutex;
+std::vector<const OSThread*> threads;
+std::string name_thread(const OSThread* t) {
+    // Called on the thread itself as it starts (ultramodern threads.cpp).
+    srw64_vita_perf_thread(("n64-" + std::to_string(t->id)).c_str());
+    {
+        std::lock_guard lock(threads_mutex);
+        if (std::find(threads.begin(), threads.end(), t) == threads.end()) threads.push_back(t);
+    }
+    return std::to_string(t->id);
+}
+void dump(uint64_t seconds) {
+    std::fprintf(stderr, "SRW64_VITA_STALL no display list for %llu s: lists=%llu vi=%llu audio=%llu\n",
+                 (unsigned long long)seconds, (unsigned long long)dl_count.load(), (unsigned long long)vi_count.load(),
+                 (unsigned long long)audio_tasks.load());
+    std::lock_guard lock(threads_mutex);
+    for (const OSThread* t : threads) {
+        const uint32_t queue = uint32_t(t->queue);
+        std::fprintf(stderr, "SRW64_VITA_THREAD id=%d priority=%d at=%08X", int(t->id), int(t->priority),
+                     uint32_t(reinterpret_cast<const uint8_t*>(t) - srw64_rdram) | 0x80000000u);
+        if (t->queue == ultramodern::running_queue) std::fprintf(stderr, " runnable");
+        else if (!queue) std::fprintf(stderr, " in-no-queue");
+        else {
+            // blocked_on_recv is the queue's first member, blocked_on_send its second.
+            const bool send = (queue & 7) == 4;
+            const uint32_t mq_address = send ? queue - 4 : queue;
+            const auto* mq = reinterpret_cast<const OSMesgQueue*>(srw64_rdram + (mq_address & 0x3FFFFFF));
+            std::fprintf(stderr, " waits-to-%s mq=%08X messages=%d/%d", send ? "send" : "receive", mq_address,
+                         int(mq->validCount), int(mq->msgCount));
+        }
+        std::fprintf(stderr, "\n");
+    }
+    std::fflush(stderr);
+}
+void start() {
+    std::thread([] {
+        uint64_t last = dl_count.load(), still = 0;
+        bool reported = false;
+        for (;;) {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            const uint64_t now = dl_count.load();
+            if (now != last) { last = now; still = 0; reported = false; continue; }
+            if (++still >= 8 && !reported) { dump(still); reported = true; }
+        }
+    }).detach();
+}
+}
+#endif
+#ifdef __vita__
 void srw64_vita_terminate();                 // vita/vita_platform.cpp
 bool srw64_vita_network();                   // vita/vita_platform.cpp
+void srw64_vita_boot_line(const char* line);
 #endif
 static int run_host(int argc, char** argv) {
     if (argc < 4 || argc > 6) {
@@ -327,7 +404,10 @@ static int run_host(int argc, char** argv) {
         if (std::string(variant_key) == known.key) variant = &known;
     }
     if (!variant) fail("unknown ROM variant");
+#ifndef __vita__
     if (std::filesystem::exists(output_dir)) fail("output directory already exists");
+#endif
+    // The PS Vita runs in the same folder each time, prepared with its data (run_prepared).
     std::filesystem::create_directories(output_dir);
     srw64::console_log::attach(output_dir);
 #ifdef _WIN32
@@ -350,7 +430,8 @@ static int run_host(int argc, char** argv) {
         if (std::filesystem::file_size(argv[5]) != 0x8000) fail("initial SRAM must be exactly 32 KiB");
         const auto saves = output_dir / "runtime-data/saves";
         std::filesystem::create_directories(saves);
-        if (!std::filesystem::copy_file(argv[5], saves / variant->save_file)) fail("initial SRAM copy failed");
+        std::error_code copied;
+        if (!srw64::app::copy_file(argv[5], saves / variant->save_file, false, copied)) fail("initial SRAM copy failed");
         std::fprintf(stderr, "SRW64_INITIAL_SRAM copied=32768\n");
         initial_sram = saves / variant->save_file;
     }
@@ -381,7 +462,9 @@ static int run_host(int argc, char** argv) {
     cfg.project_version = {0, 0, 1, "cpu-probe"};
     srw64_set_capture_directory(output_dir);
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
+    srw64::app::boot_step("dialogue load");
     srw64::dialogue::configure(output_dir);
+    srw64::app::boot_step("host setup");
     // The tactical map wider than the original (docs/design/deck-16x10.md §5). Sprites that
     // scroll with the map (sub-record +2 == 1: the map, units and cursor, map effects) and
     // the map overlay's own callbacks go in the widened view; the rest (windows, banners,
@@ -495,6 +578,7 @@ static int run_host(int argc, char** argv) {
                srw64::sprites::repeats_across(ram, {begin, end, slot, sub, false});
     };
     srw64::sprites::set_text(srw64::sprite_text::describe);
+    srw64::app::boot_step("text pages");
     srw64::ui_text::configure(output_dir);
     srw64::names::configure(output_dir);
     srw64::unit_name::configure(output_dir);
@@ -537,7 +621,14 @@ static int run_host(int argc, char** argv) {
     cfg.input_callbacks.get_input = get_input;
     cfg.input_callbacks.get_connected_device_info = get_device;
     cfg.events_callbacks.vi_callback = on_vi;
+#ifdef __vita__
+    cfg.threads_callbacks.get_game_thread_name = vita_watchdog::name_thread;
+    vita_watchdog::start();
+#endif
     cfg.error_handling_callbacks.message_box = [](const char* message) { std::fprintf(stderr, "SRW64_RUNTIME_ERROR %s\n", message); };
+    // Every module has taken what it keeps from the dialogue data.
+    srw64::dialogue_data::release();
+    srw64::app::boot_step("game start");
     recomp::start(cfg);
     srw64_destroy_window();
     std::ofstream report(output_dir / "native-counters.json");
@@ -658,26 +749,29 @@ int main(int argc, char** argv) {
 #endif
 #ifdef __vita__
     // The PS Vita (docs/design/psv-port.md): the player's folder ux0:data/Marchwind64 holds
-    // the ROM (rom.z64) and everything the game keeps; the program's files are in app0:.
+    // the data prepared on a computer (game/: the ROM, the art pack, the dialogue data) and
+    // everything the game keeps; the program's files are in app0:.
     if (argc <= 1) {
+        // What the launch prints goes to ux0:data/Marchwind64/boot.log until the run's
+        // console.log takes over. The folder is there: the prepared data came in it.
+        if (std::freopen("ux0:data/Marchwind64/boot.log", "w", stderr)) std::setvbuf(stderr, nullptr, _IONBF, 0);
         std::set_terminate(srw64_vita_terminate);
+        srw64::app::set_boot_listener(srw64_vita_boot_line);
+        srw64_vita_perf_thread("main");
         srw64::app::Options options;
         options.user_dir = "ux0:data/Marchwind64";
-        std::error_code error;
-        std::filesystem::create_directories(options.user_dir, error);
-        options.rom = options.user_dir / "rom.z64";
-        if (!std::filesystem::exists(options.user_dir / "presentation.json", error)) options.language = "zh-Hans";
-        // ux0:data/Marchwind64/mute (an empty file): no sound, for Vita3K's sake while the port is brought up.
-        options.mute = std::filesystem::exists(options.user_dir / "mute", error);
-        // ux0:data/Marchwind64/debug (an empty file): the debug interface, on every address
-        // (a Vita's own loopback is out of the computer's reach), its debug.json in the session.
-        if (std::filesystem::exists(options.user_dir / "debug", error) && srw64_vita_network()) options.debug = true;
+        // Switches for bringing the port up, as empty files in the folder: mute (no sound,
+        // for Vita3K's sake) and debug (the debug interface on every address, a Vita's own
+        // loopback being out of the computer's reach; its debug.json in run/).
+        const auto present = srw64::app::list_names(options.user_dir);
+        options.mute = present.contains("mute");
+        if (present.contains("debug") && srw64_vita_network()) options.debug = true;
         srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
             native_rom_variants[0].save_file, srw64::rules::version, {}};
         for (const auto& rule : srw64::rules::catalog)
             game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
         try {
-            return srw64::app::run_standalone(options, game, run_host);
+            return srw64::app::run_prepared(options, game, run_host);
         } catch (const std::system_error& failure) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s (%s %d)\n", failure.what(), failure.code().category().name(), failure.code().value());
             return 2;

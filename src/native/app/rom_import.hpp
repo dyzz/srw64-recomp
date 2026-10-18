@@ -1,8 +1,12 @@
 #pragma once
 #include "runtime.hpp"
+#include <functional>
 namespace srw64::app {
 // Empty only in a deliberately metadata-free test build.
 std::string_view embedded_import_spec();
+// Each step of an import as it goes (done of total), from the importing thread: the PS Vita
+// draws a progress bar from it before its graphics start.
+void set_import_progress(std::function<void(size_t done,size_t total)> report);
 // Caller must hold the user-directory Session lock. No interpreter/downloads.
 // spec is build-time metadata, never a user-supplied override in the game CLI.
 fs::path prepare_rom_content(const fs::path& rom,const fs::path& cache_root,

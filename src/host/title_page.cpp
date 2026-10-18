@@ -1,4 +1,5 @@
 #include "title_page.hpp"
+#include "run_files.hpp"
 #include "save_page.hpp"
 #include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
@@ -238,7 +239,7 @@ void frame(uint8_t* ram) {
 }
 
 void configure(const std::filesystem::path& directory) {
-    log.open(directory/"title-page-events.jsonl");
+    srw64::open_run_log(log,directory/"title-page-events.jsonl");
     auto& h=srw64_game_hooks;
     h.title_build=build;h.title_step=step;h.title_frame=frame;
 }

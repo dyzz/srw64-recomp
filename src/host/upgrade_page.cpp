@@ -1,4 +1,6 @@
 #include "upgrade_page.hpp"
+#include "dialogue_data.hpp"
+#include "run_files.hpp"
 #include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
 #include "upgrade_rules.hpp"
@@ -671,11 +673,9 @@ void frame(uint8_t* ram) {
 
 void configure(const std::filesystem::path& directory) {
     if(const char* v=std::getenv("SRW64_NATIVE_UPGRADE");v && std::string_view(v)=="0")return;
-    if(!std::getenv("SRW64_DIALOGUE_DATA"))return;
-    std::ifstream source(std::getenv("SRW64_DIALOGUE_DATA"));
-    const auto data=json::parse(source,nullptr,false);
-    if(!data.is_discarded() && data.contains("battle_assets"))art=data.at("battle_assets");
-    log.open(directory/"upgrade-page-events.jsonl");
+    if(!dialogue_data::document())return;
+    if(!dialogue_data::battle_assets().empty())art=dialogue_data::battle_assets();
+    srw64::open_run_log(log,directory/"upgrade-page-events.jsonl");
     auto& h=srw64_game_hooks;
     h.upgrade_list_build=[](uint8_t* ram,recomp_context* ctx,bool weapons){return list_build(ram,ctx,weapons);};
     h.upgrade_list_step=[](uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_context*)){return list_step(ram,ctx,step);};

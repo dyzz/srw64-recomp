@@ -1,4 +1,5 @@
 #include "save_page.hpp"
+#include "run_files.hpp"
 #include "presentation_settings.hpp"
 #include "intermission_page.hpp"
 #include "native_dialogue.hpp"
@@ -630,7 +631,7 @@ void configure(const std::filesystem::path& directory) {
     std::ifstream source(std::getenv("SRW64_DIALOGUE_DATA"));
     const auto data=json::parse(source,nullptr,false);
     if(!data.is_discarded() && data.contains("name_entry_assets"))art=data.at("name_entry_assets");
-    log.open(directory/"save-page-events.jsonl");
+    srw64::open_run_log(log,directory/"save-page-events.jsonl");
     auto& h=srw64_game_hooks;
     h.save_build=build;h.save_step=step;h.save_frame=frame;
 }

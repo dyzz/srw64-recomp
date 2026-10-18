@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 #include <chrono>
 #include <cstdint>
 #include <filesystem>
@@ -51,12 +52,30 @@ inline constexpr char campaign_dir_separator=';';
 inline constexpr char campaign_dir_separator=':';
 #endif
 void atomic_write(const fs::path& path, std::string_view text);
-// The running program's file; empty when the system does not say.
 // std::filesystem's absolute and canonical, except that on the PS Vita a path that starts with
 // a device ("ux0:data/...", "app0:/...") already is one, where newlib's std::filesystem
 // sees a relative path and puts the working directory (app0:) in front.
 fs::path absolute_path(const fs::path& path);
 fs::path canonical_path(const fs::path& path);
+// One line of a launch's progress in the log (SRW64_BOOT): the step, the seconds since the
+// program started and, on the PS Vita, the heap in use and the memory the system has left.
+void boot_step(const std::string& what);
+// Each step's line as boot_step makes it ("content 26.6 s free 31 MiB"): the PS Vita shows
+// them on its screen before the graphics start.
+void set_boot_listener(void (*listener)(const char* line));
+// std::filesystem::remove_all, except on the PS Vita: newlib removes a directory as a file
+// there (sceIoRemove), which always fails, and libstdc++'s remove_all retried it forever.
+void remove_tree(const fs::path& path, std::error_code& error);
+// The names in a folder, from one listing; empty when it cannot be read. On the PS Vita it
+// stands in for exists(): Vita3K reports every lookup of a missing file as an error.
+std::set<std::string> list_names(const fs::path& folder);
+// exists(), from the folder's listing on the PS Vita (list_names), fs::exists elsewhere.
+bool present(const fs::path& path);
+// std::filesystem::copy_file, except on the PS Vita, where libstdc++'s fails with EINVAL
+// (and under qemu-user): the bytes read and written through streams there.
+bool copy_file(const fs::path& from, const fs::path& to, bool overwrite, std::error_code& error);
+void copy_file(const fs::path& from, const fs::path& to, bool overwrite=false);
+// The running program's file; empty when the system does not say.
 fs::path executable_path();
 // A file or directory shipped with the program: Contents/Resources/<name> in a
 // macOS bundle, else <name> beside the executable; empty when there is none.

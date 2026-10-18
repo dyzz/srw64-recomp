@@ -1,4 +1,5 @@
 #include "move_jump.hpp"
+#include "run_files.hpp"
 #include "game_hooks.hpp"
 #include "graphics.hpp"
 #include "guest_memory.hpp"
@@ -245,7 +246,7 @@ void range_drawn(uint8_t* ram, uint32_t list) {
 }
 
 void configure(const std::filesystem::path& output) {
-    if (!output.empty()) log.open(output / "move-jump-events.jsonl");
+    if (!output.empty()) srw64::open_run_log(log,output / "move-jump-events.jsonl");
     srw64_game_hooks.move_select = select;
     srw64_game_hooks.move_range_drawn = range_drawn;
 }

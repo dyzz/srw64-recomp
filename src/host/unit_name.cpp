@@ -1,4 +1,5 @@
 #include "unit_name.hpp"
+#include "run_files.hpp"
 #include "game_hooks.hpp"
 #include "native_name_entry.hpp"
 #include "localization/catalog.hpp"
@@ -19,7 +20,7 @@ void record(nlohmann::json row) {
 }
 }
 void configure(const std::filesystem::path& output) {
-    if(!output.empty())log.open(output/"unit-name-events.jsonl");
+    if(!output.empty())srw64::open_run_log(log,output/"unit-name-events.jsonl");
     // Registered whether or not the name pages are native: dialogue shows the name too.
     std::map<std::string,std::string> by_locale;
     for(const auto& [locale,catalog]:localization::registered())if(catalog)by_locale[locale]=catalog->ui("unit_default_name");

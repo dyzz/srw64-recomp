@@ -1,4 +1,5 @@
 #include "native_intro.hpp"
+#include "run_files.hpp"
 #include "intro_controls.hpp"
 #include "game_hooks.hpp"
 #include "state_probe.hpp"
@@ -60,7 +61,7 @@ void step(uint8_t* rdram,recomp_context* ctx) {
     }
     const auto vi=srw64_current_vi();
     latest=state;latest["vi"]=vi;
-    if(vi>=last_report+30) {
+    if(vi>=last_report+30 && srw64_run_files()) {
         state["schema"]="srw64.native-intro-state.v1";state["vi"]=vi;
         std::ofstream(output/"intro-state.tmp")<<state.dump(2)<<'\n';
         std::filesystem::rename(output/"intro-state.tmp",output/"intro-state.json");
@@ -88,7 +89,7 @@ void request_skip() {
     if(controls.active)controls.pending=true;
 }
 void configure(const std::filesystem::path& directory) {
-    output=directory;log.open(output/"intro-events.jsonl");
+    output=directory;srw64::open_run_log(log,output/"intro-events.jsonl");
     srw64_game_hooks.intro_step=step;
 }
 uint16_t input(uint16_t buttons) {

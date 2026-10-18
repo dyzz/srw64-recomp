@@ -1,4 +1,6 @@
 #include "native_dialogue.hpp"
+#include "dialogue_data.hpp"
+#include "run_files.hpp"
 #include "battle_hud.hpp"
 #include "native_name_entry.hpp"
 #include "game_hooks.hpp"
@@ -352,7 +354,7 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
         for(auto problem:result.problems){problem.path=locale+"/"+problem.path;problems.push_back(std::move(problem));}
         summary[locale]={{"entries",result.targets.size()},{"intro",result.intro.size()},{"files",result.files},{"problems",result.problems.size()}};
         entries[locale]=result.targets.size();
-        next[locale]=result.targets.empty()?base:base->with_translations(result.targets,"dialogue-text");
+        next[locale]=result.targets.empty()?base:base->with_translations(std::move(result.targets),"dialogue-text");
         for(auto& [key,value]:result.intro)pages[locale][key]=std::move(value);
         for(auto& [key,value]:result.intro_source)pages["ja"].try_emplace(key,std::move(value));
     }
@@ -634,8 +636,8 @@ ReadingControls reading_controls() {
     return {enabled && !observe && reader.active, reader.history_open, reader.skipping};
 }
 void configure(const std::filesystem::path& directory) {
-    const char* path=std::getenv("SRW64_DIALOGUE_DATA");if(!path)return;
-    std::ifstream input(path);json data;input>>data;
+    const auto* document=dialogue_data::document();if(!document)return;
+    const json& data=*document;
     localization::initialize(data);
     base_catalogs=localization::registered();
     for(const auto& [locale,catalog]:localization::registered()) {
@@ -646,7 +648,7 @@ void configure(const std::filesystem::path& directory) {
     settings::set_dialogue_font_size(reader.font_size,false);
     for(const auto& [key,value]:data.at("glyphs").items())glyphs.emplace(std::stoul(key),value.get<std::string>());
     enabled=true;observe=data.at("config").value("mode","replace")=="observe";
-    output=directory;log.open(directory/"dialogue-events.jsonl");
+    output=directory;srw64::open_run_log(log,directory/"dialogue-events.jsonl");
     {
         // The protagonists' and partners' defaults in every reading language.
         std::vector<std::string> locales;
@@ -660,7 +662,12 @@ void configure(const std::filesystem::path& directory) {
     }
     if(const char* value=std::getenv("SRW64_DIALOGUE_TEXT"))text_bundled=value;
     if(const char* value=std::getenv("SRW64_DIALOGUE_OVERRIDES"))text_overrides=value;
-    {
+    if(data.contains("intro_pages")) {
+        // Prepared data (the PS Vita's, tools/release/vita/prepare_data.cpp): the dialogue
+        // text files are already in the catalogs, their intro pages here.
+        std::lock_guard lock(page_mutex);
+        page_texts=data.at("intro_pages").get<decltype(page_texts)>();
+    } else {
         const auto [entries,problems]=load_text();
         localization::activate(localization::find(localization::snapshot()->locale));
         if(problems)announce_text(entries,problems);

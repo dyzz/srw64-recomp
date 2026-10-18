@@ -1,4 +1,5 @@
 #include "battle_page.hpp"
+#include "run_files.hpp"
 #include "battle_effects.hpp"
 #include "native_dialogue.hpp"
 #include "localization/catalog.hpp"
@@ -289,7 +290,7 @@ void configure(const std::filesystem::path& directory) {
     std::ifstream source(std::getenv("SRW64_DIALOGUE_DATA"));
     const auto data=json::parse(source);
     if(data.contains("battle_assets"))art=data.at("battle_assets");
-    log.open(directory/"battle-page-events.jsonl");srw64_game_hooks.battle_step=step;srw64_game_hooks.battle_spirit_return=return_from_spirit;
+    srw64::open_run_log(log,directory/"battle-page-events.jsonl");srw64_game_hooks.battle_step=step;srw64_game_hooks.battle_spirit_return=return_from_spirit;
 }
 json state() {
     std::lock_guard lock(mutex);

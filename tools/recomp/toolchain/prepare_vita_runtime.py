@@ -11,18 +11,23 @@ manifest with before/after hashes. build/recomp/vita-runtime/ then holds:
                               header compiles where it is still included
   recomp.cpp                  the lifecycle recomp.cpp (prepare_runtime_lifecycle.py) with
                               RDRAM from calloc (16 MiB, no 4 GiB reservation), without the
-                              mod system, the live recompiler and the recompiled heap
+                              mod system, the live recompiler and the recompiled heap, and
+                              the ROM read once into memory (no hash, no stored copy)
   librecomp/CMakeLists.txt    librecomp without mods.cpp, mod_*.cpp, config*.cpp, heap.cpp,
                               o1heap and the N64Recomp/LiveRecomp targets; its sources named
                               from the upstream checkout, recomp.cpp from here
   include/ultramodern/renderer_context.hpp
                               the window handle for the Vita (an SDL_Window*, as on Linux)
   include/lightweightsemaphore.h, include/blockingconcurrentqueue.h
-                              moodycamel's semaphore on the Vita's kernel semaphores
-                              (relative timeouts; pthread-embedded's sem_timedwait never
-                              ended a short wait); the queue header copied so its sibling
-                              include finds the patched one
+                              moodycamel's semaphores, the lightweight one too, straight on
+                              the Vita's kernel semaphores (pthread-embedded's timed waits
+                              and the lightweight one's atomic count both lost wake-ups);
+                              the queue header copied so its sibling include finds the
+                              patched one
   error_handling.cpp          std::_Exit where newlib has no std::quick_exit
+  files.cpp                   the save file's backup and publication copied through streams:
+                              libstdc++'s copy_file fails on the Vita (EINVAL), and every
+                              save the game wrote was reported as failed
 
 The include directory goes before the upstream ones (the probe's CMakeLists.txt does this).
 
@@ -233,11 +238,45 @@ std::unique_ptr<recomp::mods::ModContext> mod_context = std::make_unique<recomp:
 ''', '''    std::free(rdram);
     bool free_failed = false;
 ''')
+    source = adapt_rom_loading(source)
     return replace_once(source, 'enum GameStatus {', f'''// docs/design/psv-port.md: RDRAM on the 32-bit targets.
 constexpr size_t srw64_rdram_bytes = {RDRAM_BYTES};
 
 enum GameStatus {{''')
 
+
+def adapt_rom_loading(source: str) -> str:
+    """The ROM read once: its data was prepared on a computer (tools/release/vita), which
+    checked it. Upstream hashes it, writes a copy beside the saves, then reads and hashes
+    that copy twice (on the console, 15 s and 32 MiB written at every start)."""
+    source = remove_between(source, """    if (!check_hash(rom_data, game_entry.rom_hash)) {
+        const std::string_view name{""", """    write_file(config_path / game_entry.stored_filename(), rom_data);""",
+                            '3915038df5eb55df74751167cb8e5130ca6c71cb6657c484a4c206f859df7c50')
+    source = replace_once(source, """    write_file(config_path / game_entry.stored_filename(), rom_data);
+    
+    return recomp::RomValidationError::Good;""", """    // Checked when the PS Vita's data was prepared (tools/release/vita/prepare_data.cpp).
+    valid_game_roms.insert(game_id);
+    recomp::set_rom_contents(std::move(rom_data));
+    return recomp::RomValidationError::Good;""")
+    source = replace_once(source, """void recomp::check_all_stored_roms() {
+    for (const auto& cur_rom_entry: game_roms) {
+        if (check_stored_rom(cur_rom_entry.second)) {
+            valid_game_roms.insert(cur_rom_entry.first);
+        }
+    }
+}""", """void recomp::check_all_stored_roms() {
+    // select_rom keeps the ROM in memory and marks it valid; nothing is stored.
+}""")
+    return replace_once(source, """    std::vector<uint8_t> stored_rom_data = read_file(config_path / find_it->second.stored_filename());
+
+    if (!check_hash(stored_rom_data, find_it->second.rom_hash)) {
+        // The ROM no longer has the right hash, delete it.
+        std::filesystem::remove(config_path / find_it->second.stored_filename());
+        return false;
+    }
+
+    recomp::set_rom_contents(std::move(stored_rom_data));
+    return true;""", """    return recomp::is_rom_loaded();""")
 
 def adapt_renderer_context(source: str) -> str:
     # Its neighbours by their include-path names: this copy lives in another directory.
@@ -304,19 +343,100 @@ public:
 """
 
 
+VITA_LIGHTWEIGHT = """#if defined(__vita__)
+// The PS Vita: every operation is the kernel semaphore's own. The atomic count and the
+// spinning in front of it (the class below, elsewhere) lost wake-ups there: the idle thread
+// slept on in pause_self while the VI's messages came in.
+class LightweightSemaphore
+{
+public:
+	typedef std::make_signed<std::size_t>::type ssize_t;
+
+private:
+	SceUID m_sema;
+
+public:
+	LightweightSemaphore(ssize_t initialCount = 0, int = 10000)
+	{
+		m_sema = sceKernelCreateSema("moodycamel", 0, int(initialCount), 0x7fffffff, nullptr);
+		assert(m_sema >= 0);
+	}
+	~LightweightSemaphore() { sceKernelDeleteSema(m_sema); }
+	LightweightSemaphore(const LightweightSemaphore&) = delete;
+	LightweightSemaphore& operator=(const LightweightSemaphore&) = delete;
+
+	bool tryWait() { return sceKernelPollSema(m_sema, 1) == 0; }
+	bool wait() { return sceKernelWaitSema(m_sema, 1, nullptr) == 0; }
+	bool wait(std::int64_t timeout_usecs)
+	{
+		if (timeout_usecs < 0) return wait();
+		SceUInt timeout = timeout_usecs > 0xffffffff ? 0xffffffffu : static_cast<SceUInt>(timeout_usecs);
+		return sceKernelWaitSema(m_sema, 1, &timeout) == 0;
+	}
+	ssize_t tryWaitMany(ssize_t max)
+	{
+		ssize_t taken = 0;
+		while (taken < max && tryWait()) ++taken;
+		return taken;
+	}
+	ssize_t waitMany(ssize_t max, std::int64_t timeout_usecs)
+	{
+		if (max <= 0 || !wait(timeout_usecs)) return 0;
+		return 1 + tryWaitMany(max - 1);
+	}
+	ssize_t waitMany(ssize_t max) { return waitMany(max, -1); }
+	void signal(ssize_t count = 1)
+	{
+		if (count > 0) sceKernelSignalSema(m_sema, static_cast<int>(count));
+	}
+	std::size_t availableApprox() const
+	{
+		SceKernelSemaInfo info{};
+		info.size = sizeof info;
+		return sceKernelGetSemaInfo(m_sema, &info) == 0 && info.currentCount > 0 ? static_cast<std::size_t>(info.currentCount) : 0;
+	}
+};
+"""
+
+
 def adapt_semaphore(source: str) -> str:
     if source.count("#elif defined(__unix__)") != 2:
         raise RuntimeError("Pinned lightweightsemaphore.h differs")
     source = replace_once(source, "#elif defined(__unix__)\n#include <semaphore.h>",
                           "#elif defined(__vita__)\n#include <psp2/kernel/threadmgr.h>\n"
                           "#elif defined(__unix__)\n#include <semaphore.h>")
-    return replace_once(source, "#elif defined(__unix__)\n//----", VITA_SEMAPHORE + "#elif defined(__unix__)\n//----")
+    source = replace_once(source, "#elif defined(__unix__)\n//----", VITA_SEMAPHORE + "#elif defined(__unix__)\n//----")
+    source = replace_once(source, "class LightweightSemaphore\n{", VITA_LIGHTWEIGHT + "#else\nclass LightweightSemaphore\n{")
+    return replace_once(source, "\t}\n};\n\n}   // end namespace moodycamel", "\t}\n};\n#endif\n\n}   // end namespace moodycamel")
 
 
 def adapt_error_handling(source: str) -> str:
     return replace_once(source, '''#ifdef __APPLE__
     std::_Exit(exit_status);''', '''#if defined(__APPLE__) || defined(__vita__)
     std::_Exit(exit_status);''')
+
+
+FILES_HELPER = '''
+namespace {
+// std::filesystem::copy_file through streams (libstdc++'s fails with EINVAL on the Vita).
+void copy_through_streams(const std::filesystem::path& from, const std::filesystem::path& to, std::error_code& ec) {
+    ec.clear();
+    std::ifstream input{from, std::ios::binary};
+    std::ofstream output{to, std::ios::binary | std::ios::trunc};
+    if (!input || !output || !(output << input.rdbuf()) || !output.flush()) {
+        ec = std::make_error_code(std::errc::io_error);
+    }
+}
+}
+'''
+
+
+def adapt_files(source: str) -> str:
+    source = replace_once(source, '#include "files.hpp"\n', '#include "files.hpp"\n' + FILES_HELPER)
+    source = replace_once(source, "std::filesystem::copy_file(filepath, backup_path, std::filesystem::copy_options::overwrite_existing, ec);",
+                          "copy_through_streams(filepath, backup_path, ec);")
+    return replace_once(source, "std::filesystem::copy_file(temp_path, filepath, std::filesystem::copy_options::overwrite_existing, ec);",
+                        "copy_through_streams(temp_path, filepath, ec);")
 
 
 def adapt_librecomp_cmake(source: str) -> str:
@@ -326,6 +446,8 @@ def adapt_librecomp_cmake(source: str) -> str:
     source = replace_once(source, '    "${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/o1heap/o1heap/o1heap.c"\n', '')
     source = replace_once(source, '    "${CMAKE_CURRENT_SOURCE_DIR}/src/recomp.cpp"\n',
                           '    "${SRW64_VITA_RUNTIME}/recomp.cpp"\n')
+    source = replace_once(source, '    "${CMAKE_CURRENT_SOURCE_DIR}/src/files.cpp"\n',
+                          '    "${SRW64_VITA_RUNTIME}/files.cpp"\n')
     source = source.replace('${CMAKE_CURRENT_SOURCE_DIR}', '${SRW64_LIBRECOMP_SOURCE}')
     source = source.replace('${PROJECT_SOURCE_DIR}/..', '${SRW64_LIBRECOMP_SOURCE}/..')
     source = replace_once(source, '''target_include_directories(librecomp PUBLIC
@@ -367,6 +489,7 @@ def main() -> None:
         ("include/lightweightsemaphore.h", runtime, "thirdparty/concurrentqueue/lightweightsemaphore.h", adapt_semaphore),
         ("include/blockingconcurrentqueue.h", runtime, "thirdparty/concurrentqueue/blockingconcurrentqueue.h", lambda text: text),
         ("error_handling.cpp", runtime, "ultramodern/src/error_handling.cpp", adapt_error_handling),
+        ("files.cpp", runtime, "librecomp/src/files.cpp", adapt_files),
     ]
     records = []
     for name, checkout, relative, adapt in inputs:

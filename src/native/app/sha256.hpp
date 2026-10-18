@@ -27,11 +27,12 @@ class Sha256 {
     size_t used{};
     uint64_t bytes{};
     static uint32_t rotate(uint32_t x, unsigned n) { return (x >> n) | (x << (32 - n)); }
-    void compress() {
+    void compress() { compress(block.data()); }
+    void compress(const uint8_t* input) {
         std::array<uint32_t, 64> w{};
         for (size_t i=0; i<16; ++i)
-            w[i]=(uint32_t(block[4*i])<<24)|(uint32_t(block[4*i+1])<<16)|
-                 (uint32_t(block[4*i+2])<<8)|block[4*i+3];
+            w[i]=(uint32_t(input[4*i])<<24)|(uint32_t(input[4*i+1])<<16)|
+                 (uint32_t(input[4*i+2])<<8)|input[4*i+3];
         for (size_t i=16; i<64; ++i) {
             const auto a=w[i-15], b=w[i-2];
             w[i]=w[i-16]+(rotate(a,7)^rotate(a,18)^(a>>3))+w[i-7]+(rotate(b,17)^rotate(b,19)^(b>>10));
@@ -46,9 +47,14 @@ class Sha256 {
         state[4]+=e; state[5]+=f; state[6]+=g; state[7]+=h;
     }
 public:
+    // Whole blocks straight from the input: a byte at a time through the block cost a slow
+    // CPU (the PS Vita's) minutes over a launch's ROM and content.
     void update(std::span<const uint8_t> data) {
         bytes+=data.size();
-        for (auto byte:data) { block[used++]=byte; if (used==64) { compress(); used=0; } }
+        size_t at=0;
+        while (used && at<data.size()) { block[used++]=data[at++]; if (used==64) { compress(); used=0; } }
+        for (; data.size()-at>=64; at+=64) compress(data.data()+at);
+        while (at<data.size()) block[used++]=data[at++];
     }
     std::string finish() const {
         auto copy=*this;
