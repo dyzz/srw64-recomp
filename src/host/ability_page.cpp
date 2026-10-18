@@ -1,4 +1,5 @@
 #include "ability_page.hpp"
+#include "spirit_learning.hpp"
 #include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
 #include "intermission_page.hpp"
@@ -382,7 +383,13 @@ json pilot_json(uint8_t* ram,recomp_context* ctx) {
         over["hit"]=limit<int(read(ram,pilot+pilot_hit,2))+mobility;over["evade"]=limit<int(read(ram,pilot+pilot_evade,2))+mobility;
     }
     json spirits=json::array();
-    for(unsigned n=0;n<std::min<unsigned>(read(ram,pilot+pilot_spirit_count,1),6);++n)spirits.push_back(text(ram,uint16_t(text_spirits+read(ram,pilot+pilot_spirits+n,1))));
+    const unsigned learned=std::min<unsigned>(read(ram,pilot+pilot_spirit_count,1),6);
+    for(unsigned n=0;n<learned;++n)spirits.push_back(text(ram,uint16_t(text_spirits+read(ram,pilot+pilot_spirits+n,1))));
+    // The ones it learns at a later level, with that level (spirit_learning.hpp; user,
+    // 2026-10-17); the slots past its learning table read ---.
+    json later=json::array();
+    const auto table=spirit_learning::table(read(ram,pilot+2,2));
+    for(size_t n=learned;n<table.size() && n<6;++n)later.push_back({{"name",text(ram,uint16_t(text_spirits+table[n].id))},{"level",table[n].level}});
     json skills=json::array();
     const unsigned skill_flags=read(ram,pilot+pilot_skill_flags,1),skill_level=read(ram,pilot+pilot_skill_level,1);
     if(skill_flags&0x04)skills.push_back(text(ram,uint16_t(0x433+skill_level)));
@@ -396,7 +403,7 @@ json pilot_json(uint8_t* ram,recomp_context* ctx) {
     std::string terrain;
     for(unsigned n=0;n<4;++n)terrain+=terrain_letter(read(ram,pilot+pilot_terrain+n,1));
     json page={{"screen","pilot"},{"pilot",p},{"unit",u},{"morale",read(ram,pilot+pilot_morale,2)},{"sp",read(ram,pilot+pilot_sp,2)},{"sp_max",read(ram,pilot+pilot_sp_max,2)},
-        {"stats",stats},{"over",over},{"mobility",mobility},{"spirits",spirits},{"skills",skills},{"terrain",terrain},{"index",list_index(ram)},{"count",list_size(ram,true)}};
+        {"stats",stats},{"over",over},{"mobility",mobility},{"spirits",spirits},{"spirits_later",later},{"skills",skills},{"terrain",terrain},{"index",list_index(ram)},{"count",list_size(ram,true)}};
     // Experience to the next level (8008407C of +0x12); none at level 99.
     if(level!=99)page["next"]=call(ram,ctx,resident_func_8008407C,read(ram,pilot+pilot_exp,2))&0xFFFF;
     return page;

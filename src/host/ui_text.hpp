@@ -17,4 +17,10 @@ nlohmann::json state();
 // Whether the original's numbers and labels are drawn natively now (what the map's MISS
 // figure needs, map_miss.hpp).
 bool native_numbers();
+// A learning level on the pilot page (enemy_pilot_page.hpp): the text engine's label in
+// pool slot `slot`, printed at (x, y), is drawn as `shown` (small and yellow) beside its
+// spirit's name while the slot still prints `text` there (the engine's ASCII has digits but
+// no letters, so "Lv" is the host's). clear_small() drops the marks of a page.
+void mark_small(unsigned slot, int x, int y, const std::string& text, const std::string& shown);
+void clear_small();
 }

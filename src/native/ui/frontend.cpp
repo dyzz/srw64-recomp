@@ -799,7 +799,7 @@ body.pointer .im-funds:hover,.im-funds:focus {background-color:#00c80055; border
 .im-funds-input {display:inline-block; text-align:right; color:#ffffff; font-weight:bold; background-color:#122131; border:0; border-radius:0; margin:0; padding:0 2dp; tab-index:auto;}
 .im-funds-input selection {color:#0b1421; background-color:#9be4f7;}
 .im-row {display:flex; align-items:center;} .im-row span {display:inline-block; white-space:nowrap; overflow:hidden;}
-.im-right {text-align:right;} .im-center {text-align:center;} .im-dim {color:#9eafc3;}
+.im-right {text-align:right;} .im-center {text-align:center;} .im-dim {color:#9eafc3;} .im-later {color:#6f7d8f;} .im-level {color:#ffd75e; font-size:0.7em;}
 .im-gauge {font-family: srw64-ui; letter-spacing:0;} .im-gauge b {font-weight:normal; color:#ff6fa8;} .im-gauge i {font-style:normal; color:#ffd75e;}
 .im-gauge em {font-style:normal; color:#7ff0a0;} .im-plan {color:#7ff0a0;}
 .im-panel button.on .im-plan,.im-panel button.on .im-gauge em {color:#06205a;} .im-poor {color:#ff8d8d;}
@@ -4111,8 +4111,19 @@ void ability_sync() {
         std::string spirits;
         const auto& sp=next.value("spirits",json::array());
         // Cells 56 apart; the last column has only the 36 left before the frame.
-        for(unsigned n=0;n<6;++n)spirits+=at(spirit_at[n][0]-18,spirit_at[n][1]-138,n<sp.size()?escape(sp[n].get<std::string>()):escape(label_of("unknown")),"fit",10.5f,
-                                             std::min(54.f,208-(spirit_at[n][0]-18)));
+        // Learned by name; learned at a later level dark with that level small and yellow
+        // beside it; nothing in the learning table --- (user, 2026-10-17).
+        const auto& later=next.value("spirits_later",json::array());
+        for(unsigned n=0;n<6;++n) {
+            const float x=spirit_at[n][0]-18,y=spirit_at[n][1]-138,w=std::min(54.f,208-x);
+            if(n<sp.size())spirits+=at(x,y,escape(sp[n].get<std::string>()),"fit",10.5f,w);
+            else if(n-sp.size()<later.size()) {
+                const auto& l=later[n-sp.size()];
+                // The level right after the name, both narrowing together to the slot.
+                spirits+=at(x,y,"<span class='im-later'>"+escape(l.value("name",std::string()))+"</span><span class='im-level'> Lv"+
+                            std::to_string(l.value("level",0))+"</span>","fit",10.5f,w);
+            } else spirits+=at(x,y,"---","fit",10.5f,w);
+        }
         std::string skills;
         const auto& sk=next.value("skills",json::array());
         // Three slots as the original (no pilot has more): one wide line, then two halves.
