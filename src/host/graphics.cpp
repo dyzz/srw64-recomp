@@ -59,6 +59,7 @@
 #ifdef SRW64_GL_RENDERER
 #include "../gl/display_list.hpp"
 #include "../gl/gl_renderer.hpp"
+#include "../gl/program_cache.hpp"
 #include "native_gl.hpp"
 #endif
 #ifndef SRW64_GL_ONLY
@@ -88,6 +89,7 @@ namespace plume { extern ANativeWindow *(*AndroidCurrentWindow)(); }
 #include <cstring>
 #include <ctime>
 #include <fstream>
+#include <thread>
 
 #ifdef __vita__
 #include <psp2/kernel/sysmem.h>
@@ -950,37 +952,49 @@ bool gl_mode() {
 }
 std::string gl_device;   // GL_RENDERER, for srw64_graphics_info
 
+#ifdef __vita__
+// vitaGL's start: on its own thread from the host's beginning (srw64_vita_graphics_begin), so
+// that the shader compiler's loading and the pools overlap the dialogue data's; the
+// renderer waits for it.
+std::thread vita_graphics;
+void vita_graphics_init() {
+    // vitaGL owns the screen (SDL's window only carries input): 960 x 544, the shader
+    // compiler of libshacccg.suprx. Its pools have fixed sizes: given a threshold
+    // instead, it takes every byte above it, and the game's threads and the system's
+    // own allocations have nothing left (Vita3K fell over at the first frame).
+    // The video memory pool is what the console has left, less a margin: a console
+    // has 96 MiB of it free, minus the boot screen's buffer still shown, and a pool
+    // asked for larger than that is not made at all; vitaGL then fits every texture
+    // in the RAM pools and waits a second at each allocation it cannot (the opening
+    // text took 4 s a frame).
+    srw64::app::boot_step("graphics init");
+    SceKernelFreeMemorySizeInfo free_memory{};
+    free_memory.size = sizeof free_memory;
+    sceKernelGetFreeMemorySize(&free_memory);
+    const int cdram_pool = std::max(free_memory.size_cdram - 4 * 1024 * 1024, 16 * 1024 * 1024) & ~(256 * 1024 - 1);
+    vglInitWithCustomSizes(0, 960, 544, 12 * 1024 * 1024, cdram_pool, 16 * 1024 * 1024, 0, SCE_GXM_MULTISAMPLE_NONE);
+    std::fprintf(stderr, "SRW64_VITA_GL_POOLS cdram=%d MiB of %d MiB free\n", cdram_pool >> 20, free_memory.size_cdram >> 20);
+    vglWaitVblankStart(GL_FALSE);
+    // VitaSDK's vitaGL draws its own splash screen from a thread until the first frame is
+    // presented; the game takes a while to its first picture, and Vita3K falls over under
+    // that thread. A black frame now ends it.
+    glClearColor(0, 0, 0, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    vglSwapBuffers(GL_FALSE);
+    srw64_vita_progress_end();   // vitaGL's frames are on the screen now, not the boot screen
+    srw64::app::boot_step("graphics ready");
+}
+#endif
+
 class GLRenderer final : public ultramodern::renderer::RendererContext {
 public:
     explicit GLRenderer(uint8_t* rdram) : rdram(rdram) {
         // The context was made on the window thread (srw64_create_window); it is this
         // thread's from here on, the graphics thread's, which also presents.
 #ifdef __vita__
-        // vitaGL owns the screen (SDL's window only carries input): 960 x 544, the shader
-        // compiler of libshacccg.suprx. Its pools have fixed sizes: given a threshold
-        // instead, it takes every byte above it, and the game's threads and the system's
-        // own allocations have nothing left (Vita3K fell over at the first frame).
-        // The video memory pool is what the console has left, less a margin: a console
-        // has 96 MiB of it free, minus the boot screen's buffer still shown, and a pool
-        // asked for larger than that is not made at all; vitaGL then fits every texture
-        // in the RAM pools and waits a second at each allocation it cannot (the opening
-        // text took 4 s a frame).
-        srw64::app::boot_step("graphics init");
-        SceKernelFreeMemorySizeInfo free_memory{};
-        free_memory.size = sizeof free_memory;
-        sceKernelGetFreeMemorySize(&free_memory);
-        const int cdram_pool = std::max(free_memory.size_cdram - 4 * 1024 * 1024, 16 * 1024 * 1024) & ~(256 * 1024 - 1);
-        vglInitWithCustomSizes(0, 960, 544, 12 * 1024 * 1024, cdram_pool, 16 * 1024 * 1024, 0, SCE_GXM_MULTISAMPLE_NONE);
-        std::fprintf(stderr, "SRW64_VITA_GL_POOLS cdram=%d MiB of %d MiB free\n", cdram_pool >> 20, free_memory.size_cdram >> 20);
-        vglWaitVblankStart(GL_FALSE);
-        // VitaSDK's vitaGL draws its own splash screen from a thread until the first frame is
-        // presented; the game takes a while to its first picture, and Vita3K falls over under
-        // that thread. A black frame now ends it.
-        glClearColor(0, 0, 0, 1);
-        glClear(GL_COLOR_BUFFER_BIT);
-        vglSwapBuffers(GL_FALSE);
-        srw64_vita_progress_end();   // vitaGL's frames are on the screen now, not the import's bar
-        srw64::app::boot_step("graphics ready");
+        // vitaGL started with the host, on a thread of its own (srw64_vita_graphics_begin).
+        if (vita_graphics.joinable()) vita_graphics.join();
+        else vita_graphics_init();
 #else
         if (SDL_GL_MakeCurrent(window, gl_context) != 0) graphics_failure(SDL_GetError());
         SDL_GL_SetSwapInterval(0);
@@ -993,6 +1007,14 @@ public:
         if (const char* value = std::getenv("SRW64_GL_SCALE")) scale = std::clamp(std::atoi(value), 1, 8);
         renderer = std::make_unique<srw64::n64gl::Renderer>(srw64::n64gl::kPictureWidth * scale, srw64::n64gl::kPictureHeight * scale);
         interpreter = std::make_unique<srw64::n64gl::Interpreter>([this](uint64_t key) { return renderer->known(key); });
+#ifdef __vita__
+        // The shader programs compiled on earlier runs, and where this run's go (prepare_data.cpp
+        // makes the folder): every program of the renderer, the host's layers and the UI.
+        {
+            const std::filesystem::path kept = "ux0:data/Marchwind64/shaders";
+            srw64::n64gl::keep_programs(kept, srw64::app::list_names(kept));
+        }
+#endif
         // The host's tagged draws: the tag's second word is the draw's id (two letters and a number).
         interpreter->classify([](uint32_t w0, uint32_t w1) { return (w0 >> 16) == 0x0053 ? w1 : 0u; });
         setup_result = ultramodern::renderer::SetupResult::Success;
@@ -1022,6 +1044,7 @@ public:
     void send_dl(const OSTask* task) override {
         srw64::frame_rate::list_sent();
 #ifdef __vita__
+        if (static bool first = true; first) { first = false; srw64::app::boot_step("first display list"); }
         const uint64_t measured = srw64_vita_perf_enabled() ? srw64_vita_perf_now() : 0;
 #endif
         const uint32_t start = task->t.data_ptr & 0x3FFFFFF;
@@ -1132,6 +1155,9 @@ private:
     std::map<uint32_t, uint64_t> image_workloads;
 };
 }  // namespace
+#ifdef __vita__
+void srw64_vita_graphics_begin() { vita_graphics = std::thread(vita_graphics_init); }
+#endif
 #endif
 
 std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(

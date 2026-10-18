@@ -13,6 +13,7 @@
 #include <unordered_map>
 
 #include "../gl/gl_api.hpp"
+#include "../gl/program_cache.hpp"
 
 namespace srw64::native_gl {
 namespace {
@@ -28,36 +29,16 @@ GLint color_uniform = -1, texture_uniform = -1;
 uint64_t frame_count = 0;
 std::vector<native_quads::Quad> quads;
 
-GLuint compile(GLenum type, const std::string& source) {
-    const GLuint shader = glCreateShader(type);
-    const char* text = source.c_str();
-    glShaderSource(shader, 1, &text, nullptr);
-    glCompileShader(shader);
-    GLint ok = 0;
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &ok);
-    if (!ok) {
-        char log[1024] = {};
-        glGetShaderInfoLog(shader, sizeof log, nullptr, log);
-        throw std::runtime_error(std::string("Native GL shader: ") + log);
-    }
-    return shader;
-}
 
 void make_program() {
-    const GLuint vs = compile(GL_VERTEX_SHADER, std::string(kPreamble) +
+    std::string error;
+    program = n64gl::link_program(std::string(kPreamble) +
         "attribute vec4 a_position;\nattribute vec2 a_uv;\nvarying vec2 v_uv;\n"
-        "void main() {\n  gl_Position = a_position;\n  v_uv = a_uv;\n}\n");
-    const GLuint fs = compile(GL_FRAGMENT_SHADER, std::string(kPreamble) +
+        "void main() {\n  gl_Position = a_position;\n  v_uv = a_uv;\n}\n", std::string(kPreamble) +
         "uniform sampler2D u_texture;\nuniform vec4 u_color;\nvarying vec2 v_uv;\n"
-        "void main() {\n  vec4 c = texture2D(u_texture, v_uv);\n  gl_FragColor = vec4(c.rgb * u_color.rgb, c.a) * u_color.a;\n}\n");
-    program = glCreateProgram();
-    glAttachShader(program, vs);
-    glAttachShader(program, fs);
-    glBindAttribLocation(program, 0, "a_position");
-    glBindAttribLocation(program, 1, "a_uv");
-    glLinkProgram(program);
-    glDeleteShader(vs);
-    glDeleteShader(fs);
+        "void main() {\n  vec4 c = texture2D(u_texture, v_uv);\n  gl_FragColor = vec4(c.rgb * u_color.rgb, c.a) * u_color.a;\n}\n",
+        {{0, "a_position"}, {1, "a_uv"}}, error);
+    if (!program) throw std::runtime_error("Native GL " + error);
     color_uniform = glGetUniformLocation(program, "u_color");
     texture_uniform = glGetUniformLocation(program, "u_texture");
 }

@@ -25,6 +25,11 @@ manifest with before/after hashes. build/recomp/vita-runtime/ then holds:
                               the queue header copied so its sibling include finds the
                               patched one
   error_handling.cpp          std::_Exit where newlib has no std::quick_exit
+  mesgqueue.cpp               the lifecycle mesgqueue.cpp, counting the host's messages for
+                              the stall report
+  events.cpp                  the VI thread's swap of the VI states under the setters' lock
+                              (a VI event set at the wrong moment was lost for good), and
+                              the stall report's view of the VI thread
   files.cpp                   the save file's backup and publication copied through streams:
                               libstdc++'s copy_file fails on the Vita (EINVAL), and every
                               save the game wrote was reported as failed
@@ -439,6 +444,82 @@ def adapt_files(source: str) -> str:
                         "copy_through_streams(temp_path, filepath, ec);")
 
 
+def adapt_events(source: str) -> str:
+    """The VI thread's swap of the VI states under the lock the game's osViSetEvent and the
+    other setters take, and the stall report's view of the VI thread (host.cpp). Unlocked, a
+    game thread that set its VI event between the swap and the copy of the shown state into
+    the next one had it overwritten with the old state (mq 0): no VI message ever again, and
+    the game waited for one at boot (one start in three or four in Vita3K, where the VI
+    thread's priority stays the default)."""
+    source = replace_once(source, """        // Update VI registers and swap VI modes.
+        events_context.vi.update_vi();
+""", """        // Update VI registers and swap VI modes, under the lock the setters take.
+        {
+            std::lock_guard lock{ events_context.message_mutex };
+            events_context.vi.update_vi();
+        }
+""")
+    source = replace_once(source, "    int remaining_retraces = 1;\n", "    remaining_retraces = 1;\n")
+    source = replace_once(source, "        ultramodern::sleep_until(next);\n", "        ultramodern::sleep_until(next);\n        ++srw64_vi_loops;\n")
+    source = replace_once(source, """                    ultramodern::enqueue_external_message_src(cur_state->mq, cur_state->msg, false, ultramodern::EventMessageSource::Vi);
+""", """                    ultramodern::enqueue_external_message_src(cur_state->mq, cur_state->msg, false, ultramodern::EventMessageSource::Vi);
+                    ++srw64_vi_sent;
+""")
+    return replace_once(source, "void vi_thread_func() {\n", """static int remaining_retraces = 1;
+static std::atomic<uint64_t> srw64_vi_loops{0}, srw64_vi_sent{0};
+extern "C" void srw64_vi_thread_counts(uint64_t* loops, uint64_t* sent) {
+    *loops = srw64_vi_loops.load();
+    *sent = srw64_vi_sent.load();
+}
+extern "C" void srw64_vi_event_state(uint32_t* cur_mq, int* cur_retraces, uint32_t* next_mq, int* next_retraces, int* remaining, int* started) {
+    std::lock_guard lock{ events_context.message_mutex };
+    *cur_mq = uint32_t(events_context.vi.get_cur_state()->mq);
+    *cur_retraces = events_context.vi.get_cur_state()->retrace_count;
+    *next_mq = uint32_t(events_context.vi.get_next_state()->mq);
+    *next_retraces = events_context.vi.get_next_state()->retrace_count;
+    *remaining = remaining_retraces;
+    *started = ultramodern::is_game_started();
+}
+
+void vi_thread_func() {
+""")
+
+
+def adapt_mesgqueue(source: str) -> str:
+    """The lifecycle mesgqueue.cpp with counts for the Vita's stall report (host.cpp): the
+    messages the host's threads (VI, SP, DP, AI, PI, SI) put in, those the game's threads
+    took out, and whether the idle thread is waiting for more."""
+    source = replace_once(source, "#include <bitset>\n", "#include <atomic>\n#include <bitset>\n")
+    source = replace_once(source, "static moodycamel::BlockingConcurrentQueue<QueuedMessage> external_messages {};\n",
+                          """static moodycamel::BlockingConcurrentQueue<QueuedMessage> external_messages {};
+static std::atomic<uint64_t> srw64_external_in{0}, srw64_external_out{0};
+static std::atomic<int> srw64_external_waiting{0};
+extern "C" void srw64_external_message_state(uint64_t* in, uint64_t* out, size_t* pending, int* waiting) {
+    *in = srw64_external_in.load();
+    *out = srw64_external_out.load();
+    *pending = external_messages.size_approx();
+    *waiting = srw64_external_waiting.load();
+}
+""")
+    source = replace_once(source, "    external_messages.enqueue({mq, msg, jam, requeue_enabled[static_cast<int>(src)]});",
+                          "    ++srw64_external_in;\n    external_messages.enqueue({mq, msg, jam, requeue_enabled[static_cast<int>(src)]});")
+    source = replace_once(source, "    external_messages.enqueue({mq, msg, jam, requeue_if_blocked});",
+                          "    ++srw64_external_in;\n    external_messages.enqueue({mq, msg, jam, requeue_if_blocked});")
+    source = replace_once(source, """    while (external_messages.try_dequeue(to_send)) {
+        srw64_guest_checkpoint();""", """    while (external_messages.try_dequeue(to_send)) {
+        ++srw64_external_out;
+        srw64_guest_checkpoint();""")
+    source = replace_once(source, """    external_messages.wait_dequeue(to_send);
+    srw64_guest_checkpoint();""", """    srw64_external_waiting = 1;
+    external_messages.wait_dequeue(to_send);
+    srw64_external_waiting = 0;
+    ++srw64_external_out;
+    srw64_guest_checkpoint();""")
+    return replace_once(source, """    if (external_messages.wait_dequeue_timed(to_send, std::chrono::milliseconds{millis})) {
+        srw64_guest_checkpoint();""", """    if (external_messages.wait_dequeue_timed(to_send, std::chrono::milliseconds{millis})) {
+        ++srw64_external_out;
+        srw64_guest_checkpoint();""")
+
 def adapt_librecomp_cmake(source: str) -> str:
     for removed in ("mods.cpp", "mod_events.cpp", "mod_hooks.cpp", "mod_manifest.cpp", "mod_config_api.cpp",
                     "config_option.cpp", "config.cpp", "heap.cpp"):
@@ -477,6 +558,7 @@ def main() -> None:
     if lifecycle["revision"] != lock["N64ModernRuntime"]["commit"]:
         raise RuntimeError("Runtime lifecycle sources were generated from another revision")
     lifecycle_recomp = next(c for c in lifecycle["changes"] if c["source"] == "librecomp/src/recomp.cpp")
+    lifecycle_mesgqueue = next(c for c in lifecycle["changes"] if c["source"] == "ultramodern/src/mesgqueue.cpp")
     lifecycle_source = (ROOT / lifecycle_recomp["generated"]).read_text()
     if sha256(lifecycle_source) != lifecycle_recomp["after_sha256"]:
         raise RuntimeError("Runtime lifecycle recomp.cpp differs from its manifest")
@@ -490,16 +572,23 @@ def main() -> None:
         ("include/blockingconcurrentqueue.h", runtime, "thirdparty/concurrentqueue/blockingconcurrentqueue.h", lambda text: text),
         ("error_handling.cpp", runtime, "ultramodern/src/error_handling.cpp", adapt_error_handling),
         ("files.cpp", runtime, "librecomp/src/files.cpp", adapt_files),
+        ("mesgqueue.cpp", "lifecycle", lifecycle_mesgqueue["generated"], adapt_mesgqueue),
+        ("events.cpp", runtime, "ultramodern/src/events.cpp", adapt_events),
     ]
     records = []
     for name, checkout, relative, adapt in inputs:
-        source = lifecycle_source if checkout is None else pinned(checkout, relative)
+        if checkout is None:
+            source = lifecycle_source
+        elif checkout == "lifecycle":
+            source = (ROOT / relative).read_text()
+        else:
+            source = pinned(checkout, relative)
         adapted = adapt(source)
         destination = OUTPUT / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         if not destination.exists() or destination.read_text() != adapted:
             destination.write_text(adapted)
-        records.append({"source": relative if checkout is None else f"{checkout.name}/{relative}",
+        records.append({"source": relative if checkout in (None, "lifecycle") else f"{checkout.name}/{relative}",
                         "generated": str(destination.relative_to(ROOT)),
                         "before_sha256": sha256(source), "after_sha256": sha256(adapted)})
     (OUTPUT / "manifest.json").write_text(json.dumps({

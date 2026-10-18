@@ -638,7 +638,7 @@ ReadingControls reading_controls() {
 void configure(const std::filesystem::path& directory) {
     const auto* document=dialogue_data::document();if(!document)return;
     const json& data=*document;
-    localization::initialize(data);
+    localization::initialize(data,dialogue_data::tables());
     base_catalogs=localization::registered();
     for(const auto& [locale,catalog]:localization::registered()) {
         localization::Scope scope(catalog);typeset(u"Aa 日本語 简体中文",13);
@@ -662,11 +662,13 @@ void configure(const std::filesystem::path& directory) {
     }
     if(const char* value=std::getenv("SRW64_DIALOGUE_TEXT"))text_bundled=value;
     if(const char* value=std::getenv("SRW64_DIALOGUE_OVERRIDES"))text_overrides=value;
-    if(data.contains("intro_pages")) {
+    if(const auto* tables=dialogue_data::tables()) {
         // Prepared data (the PS Vita's, tools/release/vita/prepare_data.cpp): the dialogue
-        // text files are already in the catalogs, their intro pages here.
+        // text files are already in the catalogs, their intro pages in the string tables.
         std::lock_guard lock(page_mutex);
-        page_texts=data.at("intro_pages").get<decltype(page_texts)>();
+        constexpr std::string_view intro="intro/";
+        for(const auto& [name,table]:*tables)
+            if(name.starts_with(intro))page_texts[name.substr(intro.size())]=*table;
     } else {
         const auto [entries,problems]=load_text();
         localization::activate(localization::find(localization::snapshot()->locale));

@@ -189,6 +189,8 @@ namespace {
 SceUID progress_block = -1;
 uint32_t* progress_pixels = nullptr;
 bool boot_screen_over = false;  // vitaGL has the display
+// vitaGL starts on a thread of its own (graphics.cpp) while the host's steps still come in.
+std::mutex boot_screen_mutex;
 std::vector<std::string> boot_lines;
 constexpr int screen_width = 960, screen_height = 544;
 // 5 x 7 capitals, digits and a few signs, a row of bits each; a letter shows as its capital.
@@ -246,6 +248,7 @@ constexpr int lines_x = 180, lines_y = 140, line_height = 22, lines_shown = 12;
 }
 
 void srw64_vita_boot_line(const char* line) {
+    std::lock_guard lock(boot_screen_mutex);
     if (!boot_screen()) return;
     boot_lines.emplace_back(line);
     if (boot_lines.size() > size_t(lines_shown)) boot_lines.erase(boot_lines.begin());
@@ -256,6 +259,7 @@ void srw64_vita_boot_line(const char* line) {
 }
 
 void srw64_vita_progress_end() {
+    std::lock_guard lock(boot_screen_mutex);
     boot_screen_over = true;
     if (progress_block < 0) return;
     // Two vertical blanks: the display has taken vitaGL's frame buffer by then.

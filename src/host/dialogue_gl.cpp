@@ -5,8 +5,10 @@
 #include "dialogue_raster.hpp"
 #include "game_frame.hpp"
 #include "../gl/gl_api.hpp"
+#include "../gl/program_cache.hpp"
 #include <algorithm>
 #include <sstream>
+#include <stdexcept>
 #include <string>
 
 namespace srw64::dialogue {
@@ -23,35 +25,16 @@ constexpr const char* kPreamble = "#version 100\nprecision mediump float;\n";
 constexpr const char* kPreamble = "#version 120\n";
 #endif
 
-GLuint compile(GLenum type, const std::string& source) {
-    const GLuint shader = glCreateShader(type);
-    const char* text = source.c_str();
-    glShaderSource(shader, 1, &text, nullptr);
-    glCompileShader(shader);
-    GLint ok = 0;
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &ok);
-    if (!ok) {
-        char log[1024] = {};
-        glGetShaderInfoLog(shader, sizeof log, nullptr, log);
-        throw std::runtime_error(std::string("Dialogue GL shader: ") + log);
-    }
-    return shader;
-}
 
 void make_program() {
-    const GLuint vs = compile(GL_VERTEX_SHADER, std::string(kPreamble) +
+    std::string error;
+    program = n64gl::link_program(std::string(kPreamble) +
         "attribute vec2 a_position;\nvarying vec2 v_uv;\n"
-        "void main() {\n  gl_Position = vec4(a_position.x * 2.0 - 1.0, 1.0 - a_position.y * 2.0, 0.0, 1.0);\n  v_uv = a_position;\n}\n");
-    const GLuint fs = compile(GL_FRAGMENT_SHADER, std::string(kPreamble) +
+        "void main() {\n  gl_Position = vec4(a_position.x * 2.0 - 1.0, 1.0 - a_position.y * 2.0, 0.0, 1.0);\n  v_uv = a_position;\n}\n", std::string(kPreamble) +
         "uniform sampler2D u_texture;\nvarying vec2 v_uv;\n"
-        "void main() {\n  gl_FragColor = texture2D(u_texture, v_uv);\n}\n");
-    program = glCreateProgram();
-    glAttachShader(program, vs);
-    glAttachShader(program, fs);
-    glBindAttribLocation(program, 0, "a_position");
-    glLinkProgram(program);
-    glDeleteShader(vs);
-    glDeleteShader(fs);
+        "void main() {\n  gl_FragColor = texture2D(u_texture, v_uv);\n}\n",
+        {{0, "a_position"}}, error);
+    if (!program) throw std::runtime_error("Dialogue GL " + error);
     canvas_sampler = glGetUniformLocation(program, "u_texture");
 }
 }  // namespace

@@ -82,6 +82,7 @@ RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
 
 #ifdef __vita__
 void srw64_vita_perf_thread(const char* label);  // vita/vita_platform.cpp
+void srw64_vita_graphics_begin();                // graphics.cpp
 #endif
 namespace {
 std::atomic<uint64_t> vi_count{}, dl_count{}, audio_tasks{}, audio_samples{};
@@ -130,6 +131,7 @@ private:
 };
 
 void on_init(uint8_t* rdram, recomp_context*) {
+    srw64::app::boot_step("game init");
     srw64_rdram = rdram;
     srw64::stall::start();
     srw64::state_probe::directory=output_dir;
@@ -159,6 +161,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
     // section belongs at this entrypoint; the game's own loader owns overlays.
     unload_overlays((int32_t)0x80076610, 0x100000);
     load_overlays(0x1000, (int32_t)0x80076610, 0x5AC30);
+    srw64::app::boot_step("game entry");
     loaded_sections = {0};
     // The runtime has already copied the resident section; a rules file's table
     // changes go in before any guest code runs.
@@ -337,6 +340,9 @@ extern "C" void resident_func_8008C510(uint8_t* rdram, recomp_context* ctx) {
 // and console.log gets each N64 thread's state, from the threads ultramodern names as they
 // start: in the run queue, waiting on a message queue (with that queue's fill), or neither
 // (the one running, a stopped one, or one held in host code).
+extern "C" void srw64_external_message_state(uint64_t* in, uint64_t* out, size_t* pending, int* waiting);  // mesgqueue.cpp
+extern "C" void srw64_vi_event_state(uint32_t* cur_mq, int* cur_retraces, uint32_t* next_mq, int* next_retraces, int* remaining, int* started);  // events.cpp
+extern "C" void srw64_vi_thread_counts(uint64_t* loops, uint64_t* sent);  // events.cpp
 namespace vita_watchdog {
 std::mutex threads_mutex;
 std::vector<const OSThread*> threads;
@@ -350,9 +356,21 @@ std::string name_thread(const OSThread* t) {
     return std::to_string(t->id);
 }
 void dump(uint64_t seconds) {
-    std::fprintf(stderr, "SRW64_VITA_STALL no display list for %llu s: lists=%llu vi=%llu audio=%llu\n",
+    uint64_t in = 0, out = 0;
+    size_t pending = 0;
+    int waiting = 0;
+    srw64_external_message_state(&in, &out, &pending, &waiting);
+    std::fprintf(stderr, "SRW64_VITA_STALL no display list for %llu s: lists=%llu vi=%llu audio=%llu "
+                 "host messages in=%llu out=%llu pending=%u idle_waiting=%d\n",
                  (unsigned long long)seconds, (unsigned long long)dl_count.load(), (unsigned long long)vi_count.load(),
-                 (unsigned long long)audio_tasks.load());
+                 (unsigned long long)audio_tasks.load(), (unsigned long long)in, (unsigned long long)out, unsigned(pending), waiting);
+    uint32_t cur_mq = 0, next_mq = 0;
+    int cur_retraces = 0, next_retraces = 0, remaining = 0, started = 0;
+    srw64_vi_event_state(&cur_mq, &cur_retraces, &next_mq, &next_retraces, &remaining, &started);
+    uint64_t loops = 0, sent = 0;
+    srw64_vi_thread_counts(&loops, &sent);
+    std::fprintf(stderr, "SRW64_VITA_VI event mq=%08X retraces=%d next mq=%08X retraces=%d remaining=%d started=%d loops=%llu sent=%llu\n",
+                 cur_mq, cur_retraces, next_mq, next_retraces, remaining, started, (unsigned long long)loops, (unsigned long long)sent);
     std::lock_guard lock(threads_mutex);
     for (const OSThread* t : threads) {
         const uint32_t queue = uint32_t(t->queue);
@@ -375,12 +393,11 @@ void dump(uint64_t seconds) {
 void start() {
     std::thread([] {
         uint64_t last = dl_count.load(), still = 0;
-        bool reported = false;
         for (;;) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
             const uint64_t now = dl_count.load();
-            if (now != last) { last = now; still = 0; reported = false; continue; }
-            if (++still >= 8 && !reported) { dump(still); reported = true; }
+            if (now != last) { last = now; still = 0; continue; }
+            if (++still % 8 == 0) dump(still);  // again every 8 s while it lasts
         }
     }).detach();
 }
@@ -396,6 +413,12 @@ static int run_host(int argc, char** argv) {
         std::fprintf(stderr, "Usage: srw64-gfx-host BASELINE_ROM NEW_OUTPUT_DIR MAX_VIS [INPUT_MASKS|-] [INITIAL_SRAM]\n");
         return 2;
     }
+    // The dialogue data, and on the PS Vita its graphics, start on threads of their own:
+    // they overlap the ROM's loading and each other.
+    srw64::dialogue_data::preload();
+#ifdef __vita__
+    srw64_vita_graphics_begin();
+#endif
     output_dir = srw64::app::absolute_path(argv[2]);
     const char* variant_key = std::getenv("SRW64_ROM_VARIANT");
     if (!variant_key) variant_key = "jp";
