@@ -888,9 +888,11 @@ void fit_lines(Rml::ElementDocument* doc) {
 }
 // chrome: drawn over a RetroArch filter instead of under it (LayerMark above).
 // A page (not chrome) keeps to page_area() by a transparent border on its body: the body's
-// background stays inside it (RmlUi paints backgrounds in the padding box), and what a page
-// places absolutely, in window pixels (the original's 320x240 coordinates), stays where it
-// was (an unpositioned body is not their containing block; the window is).
+// background stays inside it (RmlUi paints backgrounds in the padding box). The body is the
+// containing block of what a page places absolutely, so those positions are inside the
+// border: a page in the original's 320x240 coordinates puts its root at the frame's offset
+// less page_area()'s (with 4:3 kept in a wider window the root sat twice the offset to the
+// right, a player 2026-10-18).
 Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=false) {
     std::string inset;
     if(!chrome){const auto a=page_area();if(a.x>=1 || a.y>=1)inset="box-sizing: border-box; border-width: "+std::to_string(int(a.y))+"px "+std::to_string(int(a.x))+"px; border-color: #00000000; ";}
@@ -3361,7 +3363,7 @@ void intermission_sync() {
     auto episode=localization::catalog().ui("intermission_episode");
     if(const auto at=episode.find("{n}");at!=std::string::npos)episode.replace(at,3,std::to_string(next.value("episode",0u)));
     const auto footer=episode+" "+next.value("scene_title",std::string())+" "+next.value("clear_label",std::string());
-    std::string body="<div class='im-root' id='intermission' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>"+
+    std::string body="<div class='im-root' id='intermission' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>"+
         panel(120,25,199,39,"<div style='text-align:center;'>"+escape(title)+"</div>",fit(title,76),"intermission-title")+
         panel(33,41,103,restricted?71:183,menu,item_font,"intermission-menu")+
         panel(145,49,287,79,info,info_font,"intermission-info")+
@@ -3522,7 +3524,7 @@ void upgrade_sync() {
         return "<div class='im-shade'></div>"+box(39,92,281,152,"<button id='upgrade-dismiss' style='height:"+px(60)+"; padding:"+px(7)+" "+px(6)+";'>"+
             line(name("upgraded")+gap+escape(bl[0].get<std::string>()),first)+line(escape(bl[1].get<std::string>())+gap+name("unlocked")+gap+escape(bl[2].get<std::string>()),second)+"</button>",10.5f,"upgrade-bonus");
     };
-    std::string body="<div class='im-root' id='upgrade' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    std::string body="<div class='im-root' id='upgrade' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
     if(screen=="list") {
         const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
         std::string list;
@@ -3714,7 +3716,7 @@ void parts_sync() {
         return out;
     };
     const std::string screen=next.value("screen",std::string());
-    std::string body="<div class='im-root' id='parts' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    std::string body="<div class='im-root' id='parts' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
     if(screen=="list") {
         const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
         std::string list;
@@ -3830,7 +3832,7 @@ void swap_sync() {
         return box(x0,y0,x1,y1,"<button id='"+prefix+"-yes' class='"+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='"+prefix+"-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,prefix+"-choice");
     };
     const std::string screen=next.value("screen",std::string());
-    std::string body="<div class='im-root' id='swap' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    std::string body="<div class='im-root' id='swap' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
     if(screen=="pilots" || screen=="fairies") {
         const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
         std::string list;
@@ -3939,7 +3941,7 @@ void save_sync() {
     const auto multiline=[&](const std::string& text){std::string out;for(const char c:text)out+=c=='\n'?std::string("<br/>"):escape(std::string(1,c));return out;};
     const std::string screen=next.value("screen",std::string());
     const std::string media[2]={label_of("rom"),label_of("pak")};
-    std::string body="<div class='im-root' id='save' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    std::string body="<div class='im-root' id='save' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
     if(screen=="choice") {
         const unsigned cursor=next.value("cursor",0u);
         std::string items;
@@ -4048,7 +4050,7 @@ void title_sync() {
         return "<div style='position:absolute; left:"+px(x)+"; top:"+px(y)+"; width:"+px(w)+"; height:"+px(h)+"; line-height:"+px(h)+";"+extra+"'>"+content+"</div>";};
     const auto hint=[&](const char* key){return "<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(key)+"</div>";};
     const std::string screen=next.value("screen",std::string()),title=next.value("title",std::string());
-    std::string body="<div class='im-root' id='title-page' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    std::string body="<div class='im-root' id='title-page' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
     if(screen=="options") {
         body+=box(133,21,187,43,at(0,3,54,16,escape(title),"text-align:center;"),fit(title,50),"tp-title");
         const auto& items=next.at("items");const unsigned cursor=next.value("cursor",0u);
@@ -4122,7 +4124,7 @@ void ability_sync() {
         return "<img src='"+escape(image(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
     };
     const std::string screen=next.value("screen",std::string());
-    std::string body="<div class='im-root' id='ability' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    std::string body="<div class='im-root' id='ability' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
     if(screen=="units" || screen=="pilots") {
         const bool pilots=screen=="pilots";
         const auto& rows=next.at("rows");const unsigned cursor=next.value("cursor",0u);
@@ -4284,7 +4286,8 @@ void home_sync() {
     // The lettering belongs to the title picture: its corner is the picture's, so a 4:3
     // picture keeps it inside (under a bezel's frame otherwise), and a filter reaches it.
     const float pw=frame::width(pixels_w,pixels_h)*u,ph=frame::kHeight*u;
-    const auto corner="right:"+std::to_string(int((pixels_w-pw)/2+pw*.06f))+"px; bottom:"+std::to_string(int((pixels_h-ph)/2+ph*.06f))+"px;";
+    // Inside the page's border (document()), which already keeps a 4:3 picture's bars out.
+    const auto corner="right:"+std::to_string(int((pixels_w-pw)/2-page_area().x+pw*.06f))+"px; bottom:"+std::to_string(int((pixels_h-ph)/2-page_area().y+ph*.06f))+"px;";
     if(!touch)home_doc=document("<div class='home-corner' style='"+corner+"'>"+lettered("library-open","library_open")+lettered("viewer-open","viewer_open")+(mod_entry_shown?lettered("mod-open","mod_open"):std::string())+"</div>",false);
     std::string chrome="<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
     if(settings_entry && !touch)chrome+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
@@ -4359,7 +4362,7 @@ std::string battle_hd_page(const json& next) {
         return b;
     };
     const bool player_attacks=next.at("attacker").at("side")==0;
-    std::string body="<div class='im-root' id='battle-hd' style='left:"+px(ox/u)+"; top:"+px(oy/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
+    std::string body="<div class='im-root' id='battle-hd' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
     body+="<div id='battle-card-left'>"+panel(next.at(player_attacks?"defender":"attacker"),0,player_attacks)+"</div>";
     body+="<div id='battle-card-right'>"+panel(next.at(player_attacks?"attacker":"defender"),144,!player_attacks)+"</div>";
     if(next.value("mode",0)==2) {
