@@ -895,7 +895,7 @@ void fit_lines(Rml::ElementDocument* doc) {
 // right, a player 2026-10-18).
 Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=false) {
     std::string inset;
-    if(!chrome){const auto a=page_area();if(a.x>=1 || a.y>=1)inset="box-sizing: border-box; border-width: "+std::to_string(int(a.y))+"px "+std::to_string(int(a.x))+"px; border-color: #00000000; ";}
+    if(!chrome){const auto a=page_area();if(a.x>=1 || a.y>=1)inset="box-sizing: border-box; border-width: "+std::to_string(a.y)+"px "+std::to_string(a.x)+"px; border-color: #00000000; ";}
     auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='"+inset+"pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"<layer-mark class='layer-end'/></body></rml>");
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
     if(chrome)doc->SetAttribute("data-chrome","1");
