@@ -60,8 +60,9 @@ input::Bindings load_bindings(const nlohmann::json& saved) {
 std::atomic<BattleUi> battle{BattleUi::Native};
 std::atomic_bool map_icons_hd{true};
 std::atomic_bool msaa_on{true},msaa_started{true};
-#ifdef __ANDROID__
-// Android is being tuned on the phone (docs/design/android-port.md): the readout starts on.
+#if defined(__ANDROID__) || defined(__vita__)
+// Android is being tuned on the phone (docs/design/android-port.md), the PS Vita on the
+// console (psv-port.md): the readout starts on.
 constexpr bool fps_default=true;
 #else
 constexpr bool fps_default=false;

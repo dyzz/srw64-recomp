@@ -118,7 +118,9 @@ namespace {
 struct PerfWindow {
     SceUInt64 start = 0;
     uint64_t lists = 0, list_us = 0, list_max = 0;
+    uint64_t prepare_us = 0, decode_us = 0, gl_us = 0;  // a list's parts: dialogue frame, interpreter, GL draws
     uint64_t screens = 0, draw_us = 0, draw_max = 0, swap_us = 0;
+    uint64_t blit_us = 0, overlay_us = 0;  // a screen's parts: the game's picture, the dialogue and UI over it
     uint64_t skipped = 0;  // screens kept as they were (graphics.cpp)
 };
 PerfWindow perf;
@@ -157,15 +159,22 @@ bool srw64_vita_perf_enabled() {
 
 uint64_t srw64_vita_perf_now() { return sceKernelGetProcessTimeWide(); }
 
-void srw64_vita_perf_list(uint64_t microseconds) {
+void srw64_vita_perf_list(uint64_t prepare_microseconds, uint64_t decode_microseconds, uint64_t draw_microseconds) {
+    const uint64_t microseconds = prepare_microseconds + decode_microseconds + draw_microseconds;
     ++perf.lists;
     perf.list_us += microseconds;
     perf.list_max = std::max(perf.list_max, microseconds);
+    perf.prepare_us += prepare_microseconds;
+    perf.decode_us += decode_microseconds;
+    perf.gl_us += draw_microseconds;
 }
 
 void srw64_vita_perf_skipped() { ++perf.skipped; }
 
-void srw64_vita_perf_screen(uint64_t draw_microseconds, uint64_t swap_microseconds) {
+void srw64_vita_perf_screen(uint64_t blit_microseconds, uint64_t overlay_microseconds, uint64_t swap_microseconds) {
+    const uint64_t draw_microseconds = blit_microseconds + overlay_microseconds;
+    perf.blit_us += blit_microseconds;
+    perf.overlay_us += overlay_microseconds;
     srw64_vita_perf_thread("gfx");
     const SceUInt64 now = sceKernelGetProcessTimeWide();
     if (!perf.start) perf.start = now;
@@ -180,11 +189,15 @@ void srw64_vita_perf_screen(uint64_t draw_microseconds, uint64_t swap_microsecon
     free.size = sizeof free;
     sceKernelGetFreeMemorySize(&free);
     std::fprintf(stderr,
-                 "SRW64_VITA_PERF seconds=%.2f screens_per_s=%.1f kept_per_s=%.1f lists_per_s=%.1f list_ms=%.2f/%.2f screen_ms=%.2f/%.2f swap_ms=%.2f "
+                 "SRW64_VITA_PERF seconds=%.2f screens_per_s=%.1f kept_per_s=%.1f lists_per_s=%.1f list_ms=%.2f/%.2f "
+                 "(prepare %.2f decode %.2f gl %.2f) screen_ms=%.2f/%.2f (blit %.2f overlay %.2f) swap_ms=%.2f "
                  "heap=%d KiB free_user=%d KiB free_cdram=%d KiB free_phycont=%d KiB\n",
                  seconds, perf.screens / seconds, perf.skipped / seconds, perf.lists / seconds,
                  perf.lists ? perf.list_us / 1000.0 / perf.lists : 0.0, perf.list_max / 1000.0,
-                 perf.draw_us / 1000.0 / perf.screens, perf.draw_max / 1000.0, perf.swap_us / 1000.0 / perf.screens,
+                 perf.lists ? perf.prepare_us / 1000.0 / perf.lists : 0.0, perf.lists ? perf.decode_us / 1000.0 / perf.lists : 0.0,
+                 perf.lists ? perf.gl_us / 1000.0 / perf.lists : 0.0,
+                 perf.draw_us / 1000.0 / perf.screens, perf.draw_max / 1000.0,
+                 perf.blit_us / 1000.0 / perf.screens, perf.overlay_us / 1000.0 / perf.screens, perf.swap_us / 1000.0 / perf.screens,
                  heap.uordblks / 1024, free.size_user / 1024, free.size_cdram / 1024, free.size_phycont / 1024);
     // Each watched thread's share of the window, and the core it last ran on.
     {

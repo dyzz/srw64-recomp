@@ -59,6 +59,7 @@
 #include "stb/stb_image.h"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include <algorithm>
+#include <atomic>
 #include <array>
 #include <cmath>
 #include <cstdlib>
@@ -4734,9 +4735,12 @@ void battle_buttons(uint32_t pressed,bool tab) {
 // frame over the last half second (frame_rate.hpp), in the top right corner.
 Rml::ElementDocument* fps_doc{};
 std::string fps_stamp;
+// Each time the readout's document is made or closed: the screen keeper (graphics.cpp) draws
+// once more then, the readout not counting as a page that is up (shown()).
+std::atomic<uint64_t> fps_changes{0};
 struct {double at=-1;uint64_t lists=0,presents=0;std::string text;} fps_window;
 void fps_sync() {
-    if(!settings::show_fps()){document_close(fps_doc);fps_stamp.clear();fps_window.at=-1;return;}
+    if(!settings::show_fps()){if(fps_doc)++fps_changes;document_close(fps_doc);fps_stamp.clear();fps_window.at=-1;return;}
     const double now=system.GetElapsedTime();
     const uint64_t lists=frame_rate::lists.load(),presents=frame_rate::presents.load();
     if(fps_window.at<0){fps_window={now,lists,presents,""};frame_rate::longest_us.exchange(0);}
@@ -4750,7 +4754,7 @@ void fps_sync() {
         fps_window={now,lists,presents,text};
     }
     const std::string stamp=fps_window.text+frame_stamp();
-    if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false,true);}
+    if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false,true);++fps_changes;}
     if(fps_doc)fps_doc->PullToFront();
 }
 // The 2x switch's tag, 1.5 s after each toggle. The phone's own 2x button shows the state.
@@ -5619,9 +5623,11 @@ void render_init_gl(){auto lock=lock_ui();gl_renderer=std::make_unique<recompui:
 bool shown(){
     auto lock=lock_ui();
     if(!context)return false;
-    for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())return true;
+    for(int i=0;i<context->GetNumDocuments();++i)
+        if(const auto* document=context->GetDocument(i);document!=fps_doc && document->IsVisible())return true;
     return false;
 }
+uint64_t readout_changes(){return fps_changes.load();}
 bool draw_gl(int width,int height,bool name_cover){
     auto lock=lock_ui();
     if(!context || !gl_renderer || width!=pixels_w || height!=pixels_h)return false;

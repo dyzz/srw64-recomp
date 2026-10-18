@@ -96,8 +96,8 @@ namespace plume { extern ANativeWindow *(*AndroidCurrentWindow)(); }
 // vita/vita_platform.cpp: the measurements ux0:data/Marchwind64/perf turns on.
 bool srw64_vita_perf_enabled();
 uint64_t srw64_vita_perf_now();
-void srw64_vita_perf_list(uint64_t microseconds);
-void srw64_vita_perf_screen(uint64_t draw_microseconds, uint64_t swap_microseconds);
+void srw64_vita_perf_list(uint64_t prepare_microseconds, uint64_t decode_microseconds, uint64_t draw_microseconds);
+void srw64_vita_perf_screen(uint64_t blit_microseconds, uint64_t overlay_microseconds, uint64_t swap_microseconds);
 void srw64_vita_perf_skipped();
 void srw64_vita_progress_end();
 #endif
@@ -1058,15 +1058,21 @@ public:
         srw64::names::queue_cover(workload, srw64::names::request().visible);
         srw64::gbi_stats::record(native_text ? display_copy.data() : rdram, rdram, start, task->t.data_size);
 #endif
+#ifdef __vita__
+        const uint64_t prepared = measured ? srw64_vita_perf_now() : 0;
+#endif
         frame.clear();
         interpreter->run(rdram, start, frame, native_text ? display_copy.data() : nullptr, native_text ? task->t.data_size : 0);
+#ifdef __vita__
+        const uint64_t decoded = measured ? srw64_vita_perf_now() : 0;
+#endif
         renderer->draw(frame);
         renderer->collect();
         srw64::native_gl::end_frame();
         // The workload whose overlays go with this colour image when the VI shows it.
         image_workloads[frame.color_image] = workload;
 #ifdef __vita__
-        if (measured) srw64_vita_perf_list(srw64_vita_perf_now() - measured);
+        if (measured) srw64_vita_perf_list(prepared - measured, decoded - prepared, srw64_vita_perf_now() - decoded);
 #endif
     }
     void send_dummy_workload(uint32_t) override {}
@@ -1081,15 +1087,15 @@ public:
 #ifdef __vita__
         // The game shows a new picture every second or third VI; the rest of the time the
         // screen would be drawn again as it is (the graphics thread's 9 ms a VI on a console).
-        // The same colour image not drawn since, the same dialogue frame, no page of the shared
-        // UI up and no capture wanted: the screen keeps the last swap.
+        // The same colour image not drawn since, the same dialogue frame and frame-rate readout,
+        // no page of the shared UI up and no capture wanted: the screen keeps the last swap.
         {
             const uint32_t image = renderer->image_at(origin);
             const ScreenKey key{image, renderer->drawn_at(image),
 #ifdef SRW64_NATIVE_DIALOGUE
-                                shown_workload};
+                                shown_workload, srw64::ui::readout_changes()};
 #else
-                                0};
+                                0, 0};
 #endif
             if (key == last_screen && !srw64::ui::shown() && !srw64::debug::screenshots().wanted() &&
                 !srw64::debug::recording().active() && !player_shot_requested.load()) {
@@ -1111,6 +1117,9 @@ public:
         // The 4:3 picture as large as the window allows, centred.
         const int picture_width = std::min(width, height * 4 / 3), picture_height = picture_width * 3 / 4;
         renderer->present(origin, (width - picture_width) / 2, (height - picture_height) / 2, picture_width, picture_height, width, height);
+#ifdef __vita__
+        const uint64_t blitted = measured ? srw64_vita_perf_now() : 0;
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
         if (shown_workload) srw64::dialogue::gl_draw(shown_workload, uint32_t(width), uint32_t(height));
         // The name page's cover, then the shared UI's pages over everything (capture_frame's order).
@@ -1148,7 +1157,7 @@ public:
 #ifdef __vita__
         const uint64_t drawn = measured ? srw64_vita_perf_now() : 0;
         vglSwapBuffers(GL_FALSE);
-        if (measured) srw64_vita_perf_screen(drawn - measured, srw64_vita_perf_now() - drawn);
+        if (measured) srw64_vita_perf_screen(blitted - measured, drawn - blitted, srw64_vita_perf_now() - drawn);
 #else
         SDL_GL_SwapWindow(window);
 #endif
@@ -1180,10 +1189,10 @@ private:
     // the dialogue frame over it.
     struct ScreenKey {
         uint32_t image = 0, drawn = 0;
-        uint64_t workload = 0;
+        uint64_t workload = 0, readout = 0;  // readout: the frame-rate readout's changes
         bool operator==(const ScreenKey&) const = default;
     };
-    ScreenKey last_screen{~0u, 0, 0};
+    ScreenKey last_screen{~0u, 0, 0, 0};
 #endif
 };
 }  // namespace
