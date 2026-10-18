@@ -27,7 +27,7 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 - **A new cheat: unlimited actions** for your units.
 - **Pilot pages show the spirits still to learn**, with their levels. An enemy's pilot page shows its learned spirits and SP, and every enemy's numbers can be seen from the start of the stage.
 - **The Link page is a list of works with a detail panel** for the chosen one's units and pilots.
-- **Smaller downloads**: every package is about 30 MB smaller, and the Android APK about 40 MB more.
+- **Smaller downloads**: the desktop packages are about 12 MB smaller, and the Android APK went from 88 MB to 34 MB.
 
 ## From 0.4.8
 
@@ -92,7 +92,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 - **金手指新增「我方无限行动」。**
 - **驾驶员能力页显示还没学会的精神和学习等级。** 敌方驾驶员页显示已学会的精神和 SP，地图上的敌人从一开始就能看到数值。
 - **联动画面改版**：左边是作品列表，右边显示选中作品的机体和驾驶员。
-- **安装包变小**：各平台约小 30 MB，安卓 APK 再小约 40 MB。
+- **安装包变小**：电脑版各小约 12 MB，安卓 APK 从 88 MB 减到 34 MB。
 
 ### 0.4.8 的更新
 
