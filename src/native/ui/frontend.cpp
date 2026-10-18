@@ -331,6 +331,29 @@ button:hover,button:focus {border-color: #9be4f7;} button.on {background-color: 
 .pad button:focus {border-color: #ffd75e; background-color: #2c4a63;}
 button:disabled {opacity: 0.45;} .row {display: flex;}
 .card {width: 28%;} img {width: 86dp; height: 86dp; margin: 8dp;}
+.lk-page {position: absolute; left: 0; top: 0; right: 0; bottom: 0; padding: 20dp 4% 16dp; display: flex; flex-direction: column;}
+.lk-head {display: flex; align-items: baseline;} .lk-head h1 {margin: 0 20dp 0 0; font-size: 28dp;} .lk-hint {flex: 1 1 auto; margin: 0;}
+.lk-body {display: flex; flex: 1 1 auto; margin-top: 14dp;}
+.lk-list {width: 32%; display: flex; flex-direction: column; margin-right: 18dp;}
+button.lk-item {display: flex; align-items: center; margin: 0 0 10dp; padding: 10dp 12dp; text-align: left; background-color: #132235; border: 2dp #243a50; border-radius: 0;}
+button.lk-item img {width: 64dp; height: 64dp; margin: 0 12dp 0 0; background-color: #0b1421;}
+button.lk-item.cur {background-color: #1d4560; border-color: #ffd75e;} button.lk-item.joined {opacity: 0.55;}
+.lk-text {flex: 1 1 auto;} .lk-name {font-size: 18dp; color: #ffffff;} .lk-sub {font-size: 14dp; color: #9eafc3; margin-top: 4dp;}
+.lk-box {min-width: 30dp; height: 30dp; line-height: 30dp; text-align: center; font-size: 18dp; color: transparent; border: 2dp #4a6680; padding: 0 2dp;}
+button.lk-item.on .lk-box {background-color: #ffd75e; color: #0b1421; border-color: #ffd75e;}
+.lk-tick {display: inline-block; width: 7dp; height: 13dp; margin-top: 5dp; border-right: 3dp #0b1421; border-bottom: 3dp #0b1421; transform: rotate(45deg);}
+button.lk-item.fixed .lk-box {font-size: 13dp; padding: 0 6dp; color: #0b1421; background-color: #9eafc3; border-color: #9eafc3;}
+.lk-list .lk-fill {flex: 1 1 auto;} .lk-keys {margin: 8dp 0 0; font-size: 14dp;}
+.lk-panels {flex: 1 1 auto; display: flex;}
+.lk-detail {display: none; flex: 1 1 auto; flex-direction: column; padding: 0 26dp 22dp; background-color: #132235; border: 2dp #243a50;}
+.lk-detail.shown {display: flex;}
+.lk-stripe {height: 6dp; margin: 0 -26dp 18dp;} .lk-kana {font-size: 14dp; letter-spacing: 3dp;} .lk-title {font-size: 30dp; color: #ffffff; margin-top: 4dp;}
+.lk-units {flex: 1 1 auto; display: flex; align-items: center; justify-content: center; margin: 10dp 0 18dp;} .lk-units img {margin: 0 8dp;}
+.lk-foot-row {display: flex; align-items: flex-end;} .lk-faces {display: flex; margin-right: 22dp;}
+.lk-faces img {width: 88dp; height: 88dp; margin: 0 10dp 0 0; background-color: #0b1421; border: 2dp #304859;}
+.lk-info div {font-size: 17dp; margin: 3dp 0;} .lk-info span {display: inline-block; width: 56dp; color: #6f8399;}
+.lk-foot {display: flex; justify-content: flex-end; margin-top: 14dp;}
+button.lk-go {background-color: #ffd75e; color: #0b1421; border-color: #ffd75e;}
 #fps {position: absolute; right: 6dp; top: 6dp; padding: 1dp 6dp; font-size: 12dp; color: #e6f6ff; background-color: #000000a8;}
 #speed-toast {position: absolute; left: 6dp; top: 6dp; padding: 1dp 6dp; font-size: 12dp; color: #e6f6ff; background-color: #000000a8;}
 #notices {width: 86%; margin: 8dp auto; text-align: center;} .banner {padding: 12dp; background-color: #122131ed; border: 1dp #9be4f7; margin-bottom: 6dp;}
@@ -2995,6 +3018,33 @@ void settings_move(int dy,int dx) {
     if(next==0 && page_body)page_body->SetScrollTop(0);
     settings_focus_row(rows[next],dy);
 }
+// The Link Battler page (link_page.hpp), layout B of the 2026-10-18 design: the three
+// works as a list on the left (portrait, title, units, check box), the chosen one in a large
+// panel on the right (its units as large as the panel allows, its pilots and crew). Built
+// once per request, language and window; moving the cursor or ticking a work only changes
+// classes and the status lines, so nothing moves or reloads (a player, 2026-10-18).
+void link_state() {
+    if(!link_doc)return;
+    const auto& r=link_request;
+    unsigned count=0;
+    for(unsigned i=0;i<3;++i) {
+        const bool fixed=r.joined[i] || r.scheduled[i],on=!r.joined[i] && (ticked[i] || r.scheduled[i]);
+        count+=on;
+        if(auto* row=link_doc->GetElementById("link:"+std::to_string(i))) {
+            row->SetClass("cur",i==link_focus);row->SetClass("on",on);row->SetClass("joined",r.joined[i]);
+            if(link_waiting)row->SetAttribute("disabled","");else row->RemoveAttribute("disabled");
+            row->SetClass("fixed",fixed);
+        }
+        if(auto* box=link_doc->GetElementById("link-box:"+std::to_string(i)))
+            box->SetInnerRML(r.joined[i]?label("link_joined"):r.scheduled[i]?label("link_scheduled"):on?"<span class='lk-tick'></span>":"");
+        if(auto* panel=link_doc->GetElementById("link-detail:"+std::to_string(i)))panel->SetClass("shown",i==link_focus);
+    }
+    if(auto* b=link_doc->GetElementById("link-next")) {
+        if(link_waiting)b->SetAttribute("disabled","");else b->RemoveAttribute("disabled");
+        if(auto* n=link_doc->GetElementById("link-count"))n->SetInnerRML(count?" ("+std::to_string(count)+")":"");
+    }
+    if(auto* b=link_doc->GetElementById("link-back")){if(link_waiting)b->SetAttribute("disabled","");else b->RemoveAttribute("disabled");}
+}
 void link_sync() {
     const auto next=link_page::request();
     if(!next.visible){link_request=next;document_close(link_doc);link_stamp.clear();return;}
@@ -3003,22 +3053,54 @@ void link_sync() {
         for(unsigned i=0;i<3;++i)if(!next.joined[i] && !next.scheduled[i]){link_focus=i;break;}
     }
     link_request=next;
-    std::string stamp=std::to_string(next.serial)+localization::catalog().locale+std::to_string(link_focus)+std::to_string(link_waiting)+std::to_string(hd_portraits());
-    for(bool value:ticked)stamp+=value?'1':'0';
-    if(link_doc && link_stamp==stamp)return;
+    const std::string stamp=std::to_string(next.serial)+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+
+        std::to_string(ui_density)+std::to_string(pad_mode);
+    if(link_doc && link_stamp==stamp){link_state();return;}
     document_close(link_doc);link_stamp=stamp;
-    // The hints are one line each in Japanese (no spaces to break at, rmlui-cjk-wrap), so they shrink to fit.
-    std::string body="<div class='page'><h1>"+label("link_title")+"</h1><p class='fit'>"+label("link_hint")+"</p><div class='row'>";
     const char* keys[]={"f91","goshogun","zambot"};
-    for(unsigned i=0;i<3;++i){
-        std::string content;
-        for(const auto& path:hd_portraits()?next.portraits_hd[i]:next.portraits[i]){content+="<img src='"+image(path,dp_pixels(86))+"'/>";}
-        content+="<h2 class='fit'>"+label(std::string("link_series_")+keys[i])+"</h2><p>"+label(std::string("link_lead_")+keys[i])+"</p><p>"+label(std::string("link_units_")+keys[i])+"</p><p>"+label(std::string("link_crew_")+keys[i])+"</p>";
-        if(next.joined[i] || next.scheduled[i] || ticked[i])content+="<p>"+label(next.joined[i]?"link_joined":next.scheduled[i]?"link_scheduled":"link_ticked")+"</p>";
-        body+=button("link:"+std::to_string(i),content,ticked[i] || i==link_focus,link_waiting || next.joined[i] || next.scheduled[i],"card");
+    const char* kana[]={"GUNDAM F91","GOSHOGUN","ZAMBOT 3"};
+    const char* stripe[]={"#3fd0ff","#ff8a5b","#ff6fa8"};
+    const auto faces=[&](unsigned i){return hd_portraits()?next.portraits_hd[i]:next.portraits[i];};
+    // The hints are one line each in Japanese (no spaces to break at, rmlui-cjk-wrap), so they shrink to fit.
+    std::string body="<div class='lk-page'><div class='lk-head'><h1>"+label("link_title")+"</h1><p class='fit lk-hint'>"+label("link_hint")+"</p></div><div class='lk-body'><div class='lk-list'>";
+    for(unsigned i=0;i<3;++i) {
+        const auto f=faces(i);
+        std::string row=(f.empty()?std::string():"<img src='"+image(f.front(),dp_pixels(64))+"'/>")+
+            "<div class='lk-text'><div class='lk-name fit'>"+label(std::string("link_series_")+keys[i])+"</div><div class='lk-sub fit'>"+
+            label(std::string("link_lead_")+keys[i])+" · "+label(std::string("link_units_")+keys[i])+"</div></div><div id='link-box:"+std::to_string(i)+"' class='lk-box'></div>";
+        body+=button("link:"+std::to_string(i),row,false,false,"lk-item");
     }
-    body+="</div><p class='fit'>"+label("link_keyboard_hint")+"</p>"+button("link-back",label("link_back"),false,link_waiting)+button("link-next",label("link_confirm"),true,link_waiting)+"</div>";
+    body+="<div class='lk-fill'></div><p class='fit lk-keys'>"+label("link_keyboard_hint")+"</p></div><div class='lk-panels'>";
+    for(unsigned i=0;i<3;++i) {
+        std::string panel="<div id='link-detail:"+std::to_string(i)+"' class='lk-detail'><div class='lk-stripe' style='background-color:"+stripe[i]+";'></div>"
+            "<div class='lk-kana' style='color:"+stripe[i]+";'>"+kana[i]+"</div><div class='lk-title fit'>"+label(std::string("link_series_")+keys[i])+"</div><div class='lk-units'>";
+        for(const auto& path:hd_portraits()?next.units_hd[i]:next.units[i])
+            panel+="<img src='"+image(path,dp_pixels(400))+"' style='width:0; height:0;'/>";
+        panel+="</div><div class='lk-foot-row'><div class='lk-faces'>";
+        for(const auto& path:faces(i))panel+="<img src='"+image(path,dp_pixels(96))+"'/>";
+        panel+="</div><div class='lk-info'><div><span>"+label("link_lead_label")+"</span>"+label(std::string("link_lead_")+keys[i])+"</div><div><span>"+label("link_units_label")+"</span>"+
+            label(std::string("link_units_")+keys[i])+"</div><div><span>"+label("link_crew_label")+"</span>"+label(std::string("link_crew_")+keys[i])+"</div></div></div></div>";
+        body+=panel;
+    }
+    body+="</div></div><div class='lk-foot'>"+button("link-back",label("link_back"))+
+        button("link-next",label("link_confirm")+"<span id='link-count'></span>",true,false,"lk-go")+"</div></div>";
     link_doc=document(body,true);
+    link_state();
+    // The units: as large as the shown panel's free height allows; each panel has the same
+    // layout, so the same size serves the others (one unit up to 400, two side by side).
+    link_doc->UpdateDocument();
+    float room=0,width=0;
+    if(auto* area=link_doc->GetElementById("link-detail:"+std::to_string(link_focus))) {
+        Rml::ElementList units;area->QuerySelectorAll(units,".lk-units");
+        if(!units.empty()){room=units.front()->GetBox().GetSize().y/ui_density;width=units.front()->GetBox().GetSize().x/ui_density;}
+    }
+    for(unsigned i=0;i<3;++i)if(auto* panel=link_doc->GetElementById("link-detail:"+std::to_string(i))) {
+        Rml::ElementList pictures;panel->QuerySelectorAll(pictures,".lk-units img");
+        const float n=float(std::max<size_t>(1,pictures.size()));
+        // A clear band above the pilots and below the title (the units never touch them).
+        const float size=std::min({room-36,(width-16*n)/n,400.f});
+        for(auto* img:pictures){const auto px=std::to_string(size>=40?size:0.f)+"dp";img->SetProperty("width",px);img->SetProperty("height",px);}
+    }
 }
 std::string battle_number(int value,bool sign=false){return (sign && value>=0?"+":"")+std::to_string(value);}
 // Abilities the unit really has. A skill without its equipment or level is left

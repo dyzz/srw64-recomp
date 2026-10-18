@@ -16,7 +16,10 @@ namespace {
 constexpr uint32_t next_screen=0x801DECB8;
 std::mutex mutex;
 Request current;
-std::array<std::vector<std::string>,3> portraits, portraits_hd;
+std::array<std::vector<std::string>,3> portraits, portraits_hd, units, units_hd;
+// The units each series brings (docs/gameplay/link-battler.md): F91 and ビギナ・ギナ,
+// ゴーショーグン, ザンボット3.
+const std::array<std::vector<unsigned>,3> series_units{{{42,289},{184},{206}}};
 uint64_t serial{};
 bool waiting{},answered{},confirmed{},closed{};
 unsigned chosen{};
@@ -43,7 +46,7 @@ bool begin(uint8_t* ram) {
     if(!settings::native_intermission_ui())return false;
     std::lock_guard lock(mutex);
     const auto status=link::status(ram);
-    current={++serial,true,status.joined,status.scheduled,portraits,portraits_hd};
+    current={++serial,true,status.joined,status.scheduled,portraits,portraits_hd,units,units_hd};
     waiting=true;answered=confirmed=closed=false;chosen=0;owning=true;
     if(campaign::active()) {
         // A Link Battler stage would move the next scene (801D9F80) out of the
@@ -100,6 +103,15 @@ void configure(const std::filesystem::path& directory) {
                     portraits[n].push_back(row.at("original").get<std::string>());
                     portraits_hd[n].push_back(row.value("hd",row.at("original").get<std::string>()));
                 }
+        }
+        if(!data.is_discarded() && data.contains("battle_assets") && data.at("battle_assets").contains("units")) {
+            const auto& art=data.at("battle_assets").at("units");
+            for(unsigned n=0;n<series_units.size();++n)
+                for(const unsigned number:series_units[n])
+                    if(const auto row=art.find(std::to_string(number));row!=art.end() && row->contains("path")) {
+                        units[n].push_back(row->at("path").get<std::string>());
+                        units_hd[n].push_back(row->value("hd",row->at("path").get<std::string>()));
+                    }
         }
     }
     log.open(directory/"link-events.jsonl");

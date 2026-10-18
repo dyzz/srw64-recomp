@@ -20,6 +20,8 @@ struct Request {
     // Portrait paths per series, the lead pilot first (name-entry assets, original art),
     // and the same with whole HD portraits where the assets have them.
     std::array<std::vector<std::string>,3> portraits, portraits_hd;
+    // The series' units (battle assets, original and HD art), as the stage deploys them.
+    std::array<std::vector<std::string>,3> units, units_hd;
 };
 void configure(const std::filesystem::path& directory);
 Request request();
