@@ -41,6 +41,8 @@
 - 调试状态 `quick_load`（阶段、能否使用、卡带记录），事件 `quick-load-events.jsonl`。
 - F9：`input::Action::QuickLoad`，宿主位 `pad_quick_load`（bit 28，27 留给回溯分支的 `pad_rewind`），操作页一行 `controls_row_quick_load`；frontend 在设置窗口没开时按下即 `choose("quick-load-ask")`。
 
+- **战前确认页上读档（0.4.9 的问题，2026-10-19 修）**：战前页只在它自己的 step 里关闭，而 step 只在原版确认画面在时才调。从战前页读档后游戏离开了地图，页面状态（`visible`、`owning`）留着：页面盖在读回的地图上、吞掉所有按键，点「战斗开始」只记下一个再也不会执行的动作（安卓玩家反馈）。现在 `battle_page::frame`（`frame_start`）在模式切到 1／7／0x11 时清掉页面和精神施放的返回状态。只做了静态分析，未实机。
+
 ### 1.4 以后再做
 
 - 手柄组合键：用户要仿 PS 系的按法、并兼顾安卓触屏。PS 版机战软重置是 L1＋L2＋R1＋R2＋START＋SELECT，触屏按不出来；手柄上 SELECT（View）会开设置窗口，要改成松开时才开。

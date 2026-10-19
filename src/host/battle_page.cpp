@@ -298,6 +298,24 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
     return true;
 }
 }
+// The page closes itself only from its own step, which runs while the original confirmation
+// is up. A load of the suspend save from the page (quick_load.cpp: the original's Z+START)
+// leaves the map with the page still open: it stayed over the reloaded map, held every button
+// and took the next 戦闘開始 for a step that no longer came (a player, 0.4.9 on Android). So
+// leaving the map for the title (1, 7) or into a load (0x11) ends the page, and a cast spirit's
+// return with it.
+void frame(const uint8_t* ram) {
+    static unsigned before{};
+    const unsigned now=read(ram,0x8015DA02,1);
+    const bool left=now!=before && (now==1 || now==7 || now==0x11);
+    before=now;
+    if(!left)return;
+    std::lock_guard lock(mutex);
+    if(!current.value("visible",false) && !owning && !spirit_running && !spirit_menu)return;
+    record("abandoned");
+    current={{"visible",false}};owning=false;pending.clear();
+    spirit_running=false;spirit_menu=false;spirit_return_state.clear();
+}
 void configure(const std::filesystem::path& directory) {
     hdmap::set_original_frames(keep_original_frame);
     if(const char* v=std::getenv("SRW64_NATIVE_BATTLE_UI");v && std::string_view(v)=="0")return;

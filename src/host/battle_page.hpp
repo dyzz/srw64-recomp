@@ -5,6 +5,8 @@
 namespace srw64::battle_page {
 void configure(const std::filesystem::path&);
 nlohmann::json state();
+// Every frame (host.cpp frame_start): ends a page the game left without it (a load).
+void frame(const uint8_t* ram);
 void answer(uint64_t serial,const std::string& action);
 bool owns_input();
 void window_claim_input(bool);
