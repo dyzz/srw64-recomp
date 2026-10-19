@@ -45,7 +45,9 @@ and data-directory behavior.
 Linux uses the existing optional `kdialog` or `zenity` desktop utilities for ROM
 selection, errors and confirmation. Arguments are passed with `posix_spawnp`,
 never interpolated into a shell. If neither utility is usable, fixed-name ROM
-lookup and explicit `--rom` still work; a replacement requiring confirmation is
+lookup and explicit `--rom` still work, errors appear in the game's own SDL
+message box, and with no ROM found the box says where to copy `rom.z64` instead
+of the game closing without a word; a replacement requiring confirmation is
 refused and reported on stderr / console.log. Install either utility for the
 complete interactive workflow. Steam Deck Game Mode dialog focus still needs
 real-device testing. The shell keeps the Steam on-screen keyboard environment

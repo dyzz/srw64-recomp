@@ -98,6 +98,30 @@ inline std::string rom_refused_message(RomProblem problem, const std::filesystem
     return std::string("无法启动 Marchwind64。\n") + why + "\n\n文件：" + file;
 }
 
+// No ROM was found and no file picker can open (a Linux without kdialog or zenity, or one
+// that cannot show them, such as the Steam Deck's Game Mode): where to put the ROM.
+inline std::string rom_needed_message(const std::string& locale, const std::filesystem::path& rom) {
+    const auto u8 = rom.u8string();
+    const std::string file(reinterpret_cast<const char*>(u8.data()), u8.size());
+    if (locale == "ja")
+        return "Marchwind64 を起動できません。\nROM が見つからず、ファイルを選ぶウィンドウも開けません。"
+               "スーパーロボット大戦64（日本版 Rev 0）の ROM を次の名前でここにコピーしてから、もう一度起動してください：\n" + file;
+    if (locale == "en")
+        return "Unable to start Marchwind64.\nNo ROM was found and no file picker can open. Copy your Super Robot "
+               "Taisen 64 ROM (Japan, Rev 0) here, under this name, then start the game again:\n" + file;
+    return "无法启动 Marchwind64。\n找不到 ROM，也无法打开选择文件的窗口。请把超级机器人大战 64（日版 Rev 0）的 ROM "
+           "按下面的文件名复制到这里，然后重新启动：\n" + file;
+}
+
+// What follows a refusal where the player can pick again: another file now, or the
+// remembered ROM again (it was moved or its preference is damaged).
+inline std::string rom_choose_again(const std::string& locale, bool remembered = false) {
+    if (locale == "ja")
+        return remembered ? "ROM をもう一度選んでください。セーブデータは変更されていません。" : "別のファイルを選ぶか、キャンセルしてください。";
+    if (locale == "en") return remembered ? "Select the ROM again; saves are unchanged." : "Select another file or Cancel.";
+    return remembered ? "请重新选择 ROM，存档不受影响。" : "请选择其他文件，或者取消。";
+}
+
 // The path to load: the file itself when it is already .z64, else a .z64 copy kept in the
 // user directory (rom-z64.z64), written once and reused while it still matches.
 inline std::filesystem::path z64_rom(const std::filesystem::path& path, const std::filesystem::path& user_dir,

@@ -5,10 +5,15 @@ namespace srw64::app {
 // Callbacks are invoked on the main/window thread. The controller has no GUI,
 // renderer, interpreter or subprocess dependency; each platform supplies its UI.
 struct DesktopUi {
+    // The chosen file, nullopt when the player cancels; throws DesktopPickerUnavailable when
+    // no picker can open at all, which is not a cancel.
     std::function<std::optional<fs::path>()> choose_rom;
     std::function<void(const std::string&)> show_error;
     // A yes/no question; the labels name the two buttons where the platform lets them.
     std::function<bool(const std::string& message, const std::string& accept, const std::string& cancel)> confirm;
+};
+struct DesktopPickerUnavailable : std::runtime_error {
+    DesktopPickerUnavailable() : std::runtime_error("No file picker is available") {}
 };
 // The existing standalone bootstrap calls ready once, AFTER ROM/content/save
 // validation and while its Session still holds the user-directory lock, directly
@@ -42,8 +47,10 @@ Options prepare_windows_launch(Options options, const fs::path& game_dir,
 Options prepare_linux_launch(Options options, const fs::path& game_dir,
                              const EnvironmentLookup& lookup = {}, const fs::path& named_rom = {});
 // Linux uses kdialog or zenity through argument vectors, never a shell. Missing helpers
-// never authorize replacement; --rom still permits play without a picker.
-DesktopUi linux_desktop_ui();
+// never authorize replacement; --rom still permits play without a picker. Without them the
+// picker throws DesktopPickerUnavailable and errors go to `fallback` (the game's own box),
+// so the player is never left with a game that closed without a word.
+DesktopUi linux_desktop_ui(std::function<void(const std::string&)> fallback = {});
 fs::path linux_named_rom();
 // macOS implementation only; tests of run_desktop inject deterministic UI.
 DesktopUi macos_desktop_ui();

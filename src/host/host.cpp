@@ -697,7 +697,8 @@ int main(int argc, char** argv) {
     const auto prepare_launcher=srw64::app::prepare_windows_launch;
     const auto named_rom=srw64::app::windows_named_rom;
 #else
-    const auto native_ui=srw64::app::linux_desktop_ui();
+    // Without kdialog or zenity, errors still reach the player in the game's own box.
+    const auto native_ui=srw64::app::linux_desktop_ui(srw64_error_box);
     const auto prepare_launcher=srw64::app::prepare_linux_launch;
     const auto named_rom=srw64::app::linux_named_rom;
 #endif

@@ -65,10 +65,10 @@ fs::path validate_rom(const fs::path& path, const std::string& expected, const s
     const auto resolved = fs::canonical(path, missing);
     if (missing || !fs::is_regular_file(resolved, missing))
         throw std::runtime_error(rom_refused_message(RomProblem::missing, path, locale));
-    if (fs::file_size(resolved) > 64u * 1024u * 1024u)
-        throw std::runtime_error(rom_refused_message(RomProblem::wrong_size, resolved, locale));
-    // Any byte order (.z64, .v64, .n64); the launch loads a .z64 copy (rom_order.hpp).
-    if (!rom_matches_any_order(resolved, expected))
+    // Any byte order (.z64, .v64, .n64); the launch loads a .z64 copy (rom_order.hpp). Only a
+    // 32 MB file can match, so a bigger one is not hashed; rom_problem names what it is (an
+    // archive is "not an N64 ROM" whatever its size), as on every other platform.
+    if (fs::file_size(resolved) > 64u * 1024u * 1024u || !rom_matches_any_order(resolved, expected))
         throw std::runtime_error(rom_refused_message(rom_problem(resolved), resolved, locale));
     return resolved;
 }
@@ -191,20 +191,26 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
         else if (options.rom.empty() && (fs::exists(preference) || fs::is_symlink(preference))) {
             try { options.rom = remembered_rom(preference); }
             catch (const std::exception& error) {
-                ui.show_error(std::string(error.what()) + "\nSelect the ROM again; saves are unchanged.");
+                ui.show_error(std::string(error.what()) + "\n" + rom_choose_again(locale(), true));
             }
         }
         // Only ROM selection may retry. Import, save and host failures below
         // must NOT restart a possibly already-initialized game in this process.
         for (;;) {
             if (options.rom.empty()) {
-                const auto selected = ui.choose_rom();
+                std::optional<fs::path> selected;
+                try { selected = ui.choose_rom(); }
+                catch (const DesktopPickerUnavailable&) {
+                    // Not a cancel: say where the ROM goes, or the game just closes (Game Mode).
+                    ui.show_error(rom_needed_message(locale(), options.user_dir / "rom.z64"));
+                    return 1;
+                }
                 if (!selected) return 0; // Cancel: no directories or preferences written.
                 options.rom = *selected;
             }
             try { options.rom = validate_rom(options.rom, expected_rom_sha256, locale()); break; }
             catch (const std::exception& error) {
-                ui.show_error(std::string(error.what()) + "\nSelect another file or Cancel.");
+                ui.show_error(std::string(error.what()) + "\n" + rom_choose_again(locale()));
                 options.rom.clear();
             }
         }

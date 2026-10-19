@@ -63,14 +63,14 @@ constexpr const char* missing="Install kdialog or zenity for file selection and 
 fs::path linux_named_rom() {
     const auto* value=std::getenv("SRW64_ROM");return value && *value?fs::path(value):fs::path{};
 }
-DesktopUi linux_desktop_ui() {
+DesktopUi linux_desktop_ui(std::function<void(const std::string&)> fallback) {
     return {
         []() -> std::optional<fs::path> {
             auto result=dialog({"kdialog","--title","Marchwind64 — Select ROM (Japan, Rev 0)",
                 "--getopenfilename",fs::current_path().string(),"*.z64 *.v64 *.n64|N64 ROM"});
             if(!finished(result))result=dialog({"zenity","--file-selection","--title=Marchwind64 — Select ROM (Japan, Rev 0)",
                 "--file-filter=N64 ROM | *.z64 *.v64 *.n64"});
-            if(!finished(result)){std::fputs(missing,stderr);return std::nullopt;}
+            if(!finished(result)){std::fputs(missing,stderr);throw DesktopPickerUnavailable();}
             if(result.code!=0)return std::nullopt;
             if(!result.output.empty() && result.output.back()=='\n')result.output.pop_back();
             if(!result.output.empty() && result.output.back()=='\r')result.output.pop_back();
@@ -78,12 +78,15 @@ DesktopUi linux_desktop_ui() {
                !fs::path(result.output).is_absolute())throw std::runtime_error("Invalid ROM picker result");
             return fs::path(result.output);
         },
-        [](const std::string& message) {
+        [fallback](const std::string& message) {
             std::fprintf(stderr,"Marchwind64: %s\n",message.c_str());
+            bool shown=false;
             try {
-                const auto result=dialog({"kdialog","--title","Marchwind64","--error",message});
-                if(!finished(result))dialog({"zenity","--error","--no-markup","--title=Marchwind64","--text="+message});
+                auto result=dialog({"kdialog","--title","Marchwind64","--error",message});
+                if(!finished(result))result=dialog({"zenity","--error","--no-markup","--title=Marchwind64","--text="+message});
+                shown=finished(result);
             }catch(const std::exception&){} // The error is already available on stderr/console.log.
+            if(!shown && fallback)fallback(message);
         },
         [](const std::string& message,const std::string& accept,const std::string& cancel) {
             auto result=dialog({"kdialog","--title","Marchwind64","--warningcontinuecancel",message,

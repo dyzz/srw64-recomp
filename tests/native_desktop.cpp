@@ -172,12 +172,23 @@ void ending_the_holder(const char* self) {
 #endif
 }
 }
+// No picker at all (Linux without kdialog or zenity, or Game Mode): not a cancel. The player
+// is told where the ROM goes, the game does not start, and nothing is written.
+void picker_unavailable() {
+    Fixture f;f.options.language="ja";
+    const auto ui=f.ui();
+    DesktopUi none{[]() -> std::optional<fs::path> { throw DesktopPickerUnavailable(); },ui.show_error,ui.confirm};
+    const int result=run_desktop(f.options,f.hash,none,[&](const Options&,const DesktopReady&){++f.launches;return 0;});
+    check(result==1 && f.launches==0,"no picker launched or exited quietly");
+    check(f.errors.size()==1 && f.errors[0]==rom_needed_message("ja",fs::absolute(f.options.user_dir)/"rom.z64"),"no-picker message");
+    check(!fs::exists(f.options.user_dir/"last-rom.txt"),"no picker wrote a preference");
+}
 int main(int argc, char** argv) {
     if (argc==3 && std::string_view(argv[1])=="--hold") {   // the other game in ending_the_holder
         UserLock held{fs::path(argv[2])};
         for (;;) std::this_thread::sleep_for(std::chrono::seconds(60));
     }
-    try {cancel_and_resume();missing_and_wrong_rom();errors_never_retry_host_or_replace_progress();launcher_rom_order();relocated_working_directory_and_lock();ending_the_holder(argv[0]);
+    try {cancel_and_resume();missing_and_wrong_rom();picker_unavailable();errors_never_retry_host_or_replace_progress();launcher_rom_order();relocated_working_directory_and_lock();ending_the_holder(argv[0]);
         std::cout<<checks<<" desktop checks passed\n";return 0;}
     catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
 }
