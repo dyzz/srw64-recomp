@@ -285,6 +285,18 @@ void rom_byte_orders() {
     check(copy==dir/"user"/"rom-z64.z64" && read_text(copy,64)==z64,"n64 converted to a z64 copy");
     bool threw=false;try{z64_rom(dir/"game.n64",dir/"user",sha256_bytes("other"));}catch(const std::runtime_error&){threw=true;}
     check(threw,"wrong game rejected");
+    // Why a file is refused, for the player's message: an archive, a cut file, another game.
+    RomProblem problem{};
+    try{z64_rom(dir/"game.n64",dir/"user",sha256_bytes("other"));}catch(const RomRefused& e){problem=e.problem;}
+    check(problem==RomProblem::wrong_size,"a short dump is the wrong size");
+    atomic_write(dir/"game.zip",std::string("PK\x03\x04",4)+std::string(60,'\0'));
+    check(rom_problem(dir/"game.zip")==RomProblem::not_n64,"an archive is not an N64 ROM");
+    std::string other(supported_rom_size,'\0');other.replace(0,4,z64.substr(0,4));
+    atomic_write(dir/"other.z64",other);
+    check(rom_problem(dir/"other.z64")==RomProblem::wrong_game,"a full-size dump of something else is another game");
+    check(rom_refused_message(RomProblem::not_n64,dir/"game.zip","zh-Hans").find("解压")!=std::string::npos &&
+          rom_refused_message(RomProblem::wrong_game,dir/"game.zip","en").find("Japan, Rev 0")!=std::string::npos &&
+          rom_refused_message(RomProblem::wrong_size,dir/"game.zip","ja").find("32 MB")!=std::string::npos,"messages in each language");
     fs::remove_all(dir);
 }
 

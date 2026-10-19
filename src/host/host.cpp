@@ -30,6 +30,7 @@
 #include "graphics.hpp"
 #include "app/launch.hpp"
 #include "app/desktop.hpp"
+#include "app/rom_order.hpp"
 #include "audio.hpp"
 #include "native_dialogue.hpp"
 #include "native_map.hpp"
@@ -728,6 +729,7 @@ int main(int argc, char** argv) {
         return 0;
     }
     if (argc > 1 && std::string_view(argv[1]) == "--play") {
+        srw64::app::Options options;
         try {
             if (argc == 3 && std::string_view(argv[2]) == "--help") {
                 std::fputs(srw64::app::usage().c_str(), stdout);
@@ -735,7 +737,7 @@ int main(int argc, char** argv) {
             }
             std::vector<std::string_view> args;
             for (int i = 2; i < argc; ++i) args.emplace_back(argv[i]);
-            const auto options = srw64::app::parse_options(args);
+            options = srw64::app::parse_options(args);
             if (!options.export_save.empty()) {
                 std::fprintf(stderr, "SRW64_SAVE_EXPORT %s\n", srw64::app::export_save(options).string().c_str());
                 return 0;
@@ -749,6 +751,14 @@ int main(int argc, char** argv) {
             for (const auto& rule : srw64::rules::catalog)
                 game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
             return srw64::app::run_standalone(options, game, run_host);
+        } catch (const srw64::app::RomRefused& error) {
+            // Not the supported ROM: the game stops before it opens a window, which from a
+            // launcher with no console (Marchwind64.cmd double-clicked, marchwind64.sh in the
+            // Deck's Game Mode, Android) looked like a crash. Say why (a player, 0.4.9).
+            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
+            srw64::console_log::flush_now();
+            srw64_error_box(srw64::app::rom_refused_message(error.problem, error.path, srw64::app::player_locale(options)));
+            return 2;
         } catch (const std::exception& error) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
             return 2;

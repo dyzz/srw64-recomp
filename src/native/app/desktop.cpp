@@ -31,7 +31,7 @@ std::string saved_locale(const fs::path& user_dir) {
     } catch (const std::exception&) {}
     return {};
 }
-fs::path validate_rom(const fs::path& path, const std::string& expected) {
+fs::path validate_rom(const fs::path& path, const std::string& expected, const std::string& locale) {
     // Bound IO before hashing. The authoritative, exact identity/size checks
     // remain in run_standalone and the importer, on their own read buffer.
     const auto resolved = fs::canonical(path);
@@ -39,10 +39,18 @@ fs::path validate_rom(const fs::path& path, const std::string& expected) {
         throw std::runtime_error("Select a regular Super Robot Wars 64 ROM file.");
     // Any byte order (.z64, .v64, .n64); the launch loads a .z64 copy (rom_order.hpp).
     if (!rom_matches_any_order(resolved, expected))
-        throw std::runtime_error("The ROM does not match Super Robot Wars 64 (Japan, Rev 0).\n"
-                                 "Use an unmodified dump of your own game (.z64, .v64 or .n64).");
+        throw std::runtime_error(rom_refused_message(rom_problem(resolved), resolved, locale));
     return resolved;
 }
+}
+
+std::string player_locale(const Options& options) {
+    if (!options.language.empty()) return options.language;
+    try {
+        const auto saved = saved_locale(options.user_dir.empty() ? default_user_dir() : options.user_dir);
+        if (!saved.empty()) return saved;
+    } catch (const std::exception&) {}
+    return "zh-Hans";
 }
 
 fs::path launcher_rom(const fs::path& named, const fs::path& user_dir, const fs::path& game_dir) {
@@ -122,7 +130,7 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
                 if (!selected) return 0; // Cancel: no directories or preferences written.
                 options.rom = *selected;
             }
-            try { options.rom = validate_rom(options.rom, expected_rom_sha256); break; }
+            try { options.rom = validate_rom(options.rom, expected_rom_sha256, locale()); break; }
             catch (const std::exception& error) {
                 ui.show_error(std::string(error.what()) + "\nSelect another file or Cancel.");
                 options.rom.clear();

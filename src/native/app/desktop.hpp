@@ -21,6 +21,9 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
 // What the player sees when another game holds the user directory, in their language
 // (zh-Hans, en or ja; anything else gets Simplified Chinese): the notice, and the question
 // with its two buttons when that game can be ended.
+// The player's language for a message before the game runs: --language, else the one
+// saved in the user directory, else Simplified Chinese.
+std::string player_locale(const Options& options);
 std::string play_lock_message(const std::string& locale);
 struct PlayLockQuestion { std::string message, accept, cancel; };
 PlayLockQuestion play_lock_question(const std::string& locale);
