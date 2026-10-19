@@ -5,8 +5,11 @@
 namespace srw64::battle_page {
 void configure(const std::filesystem::path&);
 nlohmann::json state();
-// Every frame (host.cpp frame_start): ends a page the game left without it (a load).
+// Every frame (host.cpp frame_start): ends a page the game left without it (a load, the
+// title), or one whose step stopped running.
 void frame(const uint8_t* ram);
+// Ends the page now: the quick load, as the original takes its Z+START (quick_load.cpp).
+void abandon(const char* why);
 void answer(uint64_t serial,const std::string& action);
 bool owns_input();
 void window_claim_input(bool);

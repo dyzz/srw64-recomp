@@ -73,6 +73,21 @@ bool return_from_spirit(uint8_t* ram,recomp_context* ctx) {
     spirit_menu=true;return true;
 }
 
+// The game's mode (80080188 writes it): 1 the title and its fade, 7 the title, 0x11 the map
+// loaded from the suspend save. 1 or 7 while the map still runs: it is on its way out (not
+// 0x11, which stays the map's mode for the rest of a loaded stage).
+constexpr uint32_t game_mode=0x8015DA02;
+// Game frames since the step last ran (frame() counts, step() clears).
+std::atomic<unsigned> frames_without_step{};
+bool leaving(const uint8_t* ram){const unsigned m=read(ram,game_mode,1);return m==1 || m==7;}
+// Ends the page and a cast spirit's return; the caller holds the mutex.
+void end_page(const char* why) {
+    if(!current.value("visible",false) && !owning && !spirit_running && !spirit_menu && pending.empty())return;
+    if(log){auto row=current;row["kind"]="abandoned";row["why"]=why;row["vi"]=srw64_current_vi();log<<row.dump()<<'\n';log.flush();}
+    current={{"visible",false}};owning=false;pending.clear();
+    spirit_running=false;spirit_menu=false;spirit_return_state.clear();
+}
+
 json art={{"units",json::object()},{"portraits",json::object()}};
 json active_spirits(const uint8_t* ram,uint32_t flags) {
     json result=json::array();
@@ -147,7 +162,15 @@ json combatant(uint8_t* copy,recomp_context* ctx,const rule_probe::Combatant& a,
         {"morale_required",read(copy,a.weapon+0xE,1)}};
 }
 bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
-    screen_vi=srw64_current_vi();
+    screen_vi=srw64_current_vi();frames_without_step=0;
+    // The original's Z+START (the quick load presses it) fades the map out while this screen
+    // still runs: no page is opened again for those frames, and the original screen stays
+    // still under the fade, as it was under the page. The original style's screen runs as ever.
+    if(leaving(ram) && settings::battle_ui()!=settings::BattleUi::Original) {
+        std::lock_guard lock(mutex);end_page("leaving");
+        auto cleanup=*ctx;resident_func_8009DB8C(ram,&cleanup);
+        return true;
+    }
     const auto a=combat_preview::participant(ram,0),d=combat_preview::participant(ram,1);
     // Forced/scripted battles and AI-vs-AI exchanges retain their original flow.
     if((a.side!=0 && d.side!=0) || read(ram,0x802279E8,1)!=0 || !valid(a.unit,0x54) || !valid(d.unit,0x54))return false;
@@ -300,22 +323,26 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
 }
 // The page closes itself only from its own step, which runs while the original confirmation
 // is up. A load of the suspend save from the page (quick_load.cpp: the original's Z+START)
-// leaves the map with the page still open: it stayed over the reloaded map, held every button
-// and took the next 戦闘開始 for a step that no longer came (a player, 0.4.9 on Android). So
-// leaving the map for the title (1, 7) or into a load (0x11) ends the page, and a cast spirit's
-// return with it.
+// left the map with the page still open: it stayed over the reloaded map, held every button
+// and took the next 戦闘開始 for a step that no longer came (a player, 0.4.9 on Android). Two
+// nets here, whatever takes the game away next (the rewind branch, a script):
+// - the game going to the title (1, 7) or into a load (0x11) ends the page;
+// - a page whose step has not run for 30 game frames ends too. The step runs every game frame
+//   while the confirmation is up; counted in the game's own frames (this hook), not VIs, so a
+//   paused game (the settings window), a hitch or an app in the background ends nothing. A page
+//   ended by mistake comes back at the next step, which builds it again.
+constexpr unsigned stale_frames=30;
 void frame(const uint8_t* ram) {
     static unsigned before{};
-    const unsigned now=read(ram,0x8015DA02,1);
+    const unsigned now=read(ram,game_mode,1);
     const bool left=now!=before && (now==1 || now==7 || now==0x11);
     before=now;
-    if(!left)return;
     std::lock_guard lock(mutex);
-    if(!current.value("visible",false) && !owning && !spirit_running && !spirit_menu)return;
-    record("abandoned");
-    current={{"visible",false}};owning=false;pending.clear();
-    spirit_running=false;spirit_menu=false;spirit_return_state.clear();
+    if(left){end_page("mode");return;}
+    const unsigned missed=++frames_without_step;
+    if(owning && current.value("visible",false) && missed>stale_frames)end_page("stale");
 }
+void abandon(const char* why){std::lock_guard lock(mutex);end_page(why);}
 void configure(const std::filesystem::path& directory) {
     hdmap::set_original_frames(keep_original_frame);
     if(const char* v=std::getenv("SRW64_NATIVE_BATTLE_UI");v && std::string_view(v)=="0")return;
