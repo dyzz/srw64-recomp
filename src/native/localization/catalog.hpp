@@ -36,6 +36,8 @@ void replace(std::map<std::string,Snapshot> value);
 // Cycles in the profile's locale_options order, independent of map sorting.
 std::string next_locale(const std::string& current);
 std::string display_name(const std::string& locale);
+// Every locale in that order, with its display name (each in its own language).
+std::vector<std::pair<std::string,std::string>> locale_options();
 std::string language_choices();
 void initialize(const nlohmann::json& data);
 void activate(Snapshot value);

@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <utility>
+#include <vector>
 
 struct SDL_Window;
 
@@ -9,12 +11,16 @@ namespace srw64::app_menu {
 // opens the settings and reads the dialogue text files again (F5); its About entry opens
 // the settings window's About page, and Check for Updates that page with a check started
 // (update_check.hpp). A View menu toggles full screen and sets the window to a whole
-// multiple of the original's 240 lines.
+// multiple of the original's 240 lines. A Language menu lists the game's languages, each
+// by its own name, the current one checked; choosing one switches as the settings window does.
 struct Labels {
     std::string settings, reload;
     std::string view, fullscreen, window_scale;  // window_scale: "{n}" becomes 1..4
     std::string about, check_updates;
     std::string game, exit;  // Windows: the first menu's title and its Exit entry
+    std::string language;    // the Language menu's title
+    std::vector<std::pair<std::string, std::string>> languages;  // locale, display name
+    std::string locale;      // the current one
 };
 // What the View menu shows: full screen checked; the scale whose size the window has
 // checked (0 for none); scales up to `largest` fit the screen, none while full screen.
@@ -33,7 +39,8 @@ inline void attach(SDL_Window*) {}
 void update(const Labels& labels, const WindowState& state);
 bool available();
 bool activate_settings();
-// Presses the entry of this title in the View menu as a player would (debug interface).
+// Presses the entry of this title in the View or Language menu as a player would (debug
+// interface).
 bool activate(const std::string& title);
 bool take_settings_request();
 bool take_reload_request();
@@ -41,6 +48,7 @@ bool take_fullscreen_request();
 int take_scale_request();  // 0 when none
 bool take_about_request();
 bool take_update_request();
+std::string take_language_request();  // the locale chosen; empty when none
 void shutdown();
 #else
 inline void update(const Labels&, const WindowState&) {}
@@ -53,6 +61,7 @@ inline bool take_fullscreen_request() { return false; }
 inline int take_scale_request() { return 0; }
 inline bool take_about_request() { return false; }
 inline bool take_update_request() { return false; }
+inline std::string take_language_request() { return {}; }
 inline void shutdown() {}
 #endif
 }

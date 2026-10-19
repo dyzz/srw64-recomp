@@ -1,10 +1,17 @@
 #import <AppKit/AppKit.h>
 #include "app_menu.hpp"
 #include <atomic>
+#include <mutex>
+#include <string>
+#include <utility>
+#include <vector>
 
 namespace {
 std::atomic_bool requested{}, reload{}, fullscreen{}, installed{}, about{}, updates{};
 std::atomic_int scale{};
+std::vector<std::string> locales;  // the Language menu's entries by tag (main thread)
+std::mutex chosen_lock;
+std::string chosen;  // a Language entry chosen, until taken
 void on_main(dispatch_block_t work) {
     if ([NSThread isMainThread]) work();
     else dispatch_sync(dispatch_get_main_queue(), work);
@@ -18,6 +25,7 @@ void on_main(dispatch_block_t work) {
 - (void)scaleWindow:(id)sender;
 - (void)openAbout:(id)sender;
 - (void)checkForUpdates:(id)sender;
+- (void)chooseLanguage:(id)sender;
 @end
 @implementation SRW64AppMenuTarget
 - (void)openSettings:(id)sender { requested = true; }
@@ -26,6 +34,12 @@ void on_main(dispatch_block_t work) {
 - (void)scaleWindow:(id)sender { scale = int([sender tag]); }
 - (void)openAbout:(id)sender { about = true; }
 - (void)checkForUpdates:(id)sender { updates = true; }
+- (void)chooseLanguage:(id)sender {
+    const auto index = size_t([sender tag]);
+    if (index >= locales.size()) return;
+    std::lock_guard lock(chosen_lock);
+    chosen = locales[index];
+}
 @end
 
 namespace srw64::app_menu {
@@ -35,6 +49,7 @@ NSMenuItem* item;
 NSMenuItem* reload_item;
 NSMenuItem* separator;
 NSMenuItem* view_item;  // the View menu's entry in the menu bar
+NSMenuItem* language_item;  // the Language menu's
 NSMenuItem* fullscreen_item;
 NSMenuItem* scale_items[kScales];
 NSMenuItem* about_item;    // SDL's About entry, turned to the settings window's About page
@@ -50,8 +65,13 @@ std::string scale_title(const std::string& pattern, int n) {
 }
 }
 void update(const Labels& labels, const WindowState& state) {
-    const std::string title = labels.settings + "\n" + labels.reload + "\n" + labels.view + "\n" + labels.fullscreen + "\n" + labels.window_scale +
-                              "\n" + labels.about + "\n" + labels.check_updates;
+    std::string title = labels.settings + "\n" + labels.reload + "\n" + labels.view + "\n" + labels.fullscreen + "\n" + labels.window_scale +
+                              "\n" + labels.about + "\n" + labels.check_updates + "\n" + labels.language + "\n" + labels.locale;
+    std::vector<std::string> now;
+    for (const auto& [locale, name] : labels.languages) {
+        title += "\n" + locale + "=" + name;
+        now.push_back(locale);
+    }
     if (installed && title == last_title && state.fullscreen == last_state.fullscreen &&
         state.scale == last_state.scale && state.largest == last_state.largest) return;
     on_main(^{
@@ -103,6 +123,11 @@ void update(const Labels& labels, const WindowState& state) {
             view_item = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
             view_item.submenu = view;
             [NSApp.mainMenu insertItem:view_item atIndex:1];
+            NSMenu* language = [[NSMenu alloc] initWithTitle:@""];
+            language.autoenablesItems = NO;
+            language_item = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
+            language_item.submenu = language;
+            [NSApp.mainMenu insertItem:language_item atIndex:2];
             // SDL's Window menu has its own English Toggle Full Screen on the same keys.
             for (NSMenuItem* entry in NSApp.windowsMenu.itemArray)
                 if (entry.action == @selector(toggleFullScreen:)) entry.hidden = YES;
@@ -113,6 +138,23 @@ void update(const Labels& labels, const WindowState& state) {
         reload_item.title = text(labels.reload);
         view_item.title = text(labels.view);
         view_item.submenu.title = text(labels.view);
+        language_item.title = text(labels.language);
+        language_item.submenu.title = text(labels.language);
+        // The entries again when the list changed; the check follows the current language.
+        if (now != locales) {
+            [language_item.submenu removeAllItems];
+            for (size_t i = 0; i < labels.languages.size(); ++i) {
+                NSMenuItem* entry = [[NSMenuItem alloc] initWithTitle:text(labels.languages[i].second)
+                                                               action:@selector(chooseLanguage:) keyEquivalent:@""];
+                entry.target = target;
+                entry.tag = NSInteger(i);
+                [language_item.submenu addItem:entry];
+            }
+            locales = now;
+        }
+        for (NSMenuItem* entry in language_item.submenu.itemArray)
+            entry.state = size_t(entry.tag) < locales.size() && locales[size_t(entry.tag)] == labels.locale
+                              ? NSControlStateValueOn : NSControlStateValueOff;
         fullscreen_item.title = text(labels.fullscreen);
         fullscreen_item.state = state.fullscreen ? NSControlStateValueOn : NSControlStateValueOff;
         for (int n = 1; n <= kScales; ++n) {
@@ -139,13 +181,13 @@ bool activate(const std::string& title) {
     NSString* wanted = text(title);
     __block bool activated = false;
     on_main(^{
-        NSMenu* view = view_item.submenu;
-        for (NSMenuItem* entry in view.itemArray)
-            if ([entry.title isEqualToString:wanted] && entry.enabled && entry.action) {
-                [view performActionForItemAtIndex:[view indexOfItem:entry]];
-                activated = true;
-                return;
-            }
+        for (NSMenu* menu in @[ view_item.submenu ?: [NSMenu new], language_item.submenu ?: [NSMenu new] ])
+            for (NSMenuItem* entry in menu.itemArray)
+                if ([entry.title isEqualToString:wanted] && entry.enabled && entry.action) {
+                    [menu performActionForItemAtIndex:[menu indexOfItem:entry]];
+                    activated = true;
+                    return;
+                }
     });
     return activated;
 }
@@ -155,12 +197,19 @@ bool take_update_request() { return updates.exchange(false); }
 bool take_reload_request() { return reload.exchange(false); }
 bool take_fullscreen_request() { return fullscreen.exchange(false); }
 int take_scale_request() { return scale.exchange(0); }
+std::string take_language_request() {
+    std::lock_guard lock(chosen_lock);
+    return std::exchange(chosen, std::string());
+}
 void shutdown() {
     on_main(^{
         [item.menu removeItem:item];
         [reload_item.menu removeItem:reload_item];
         [separator.menu removeItem:separator];
         [view_item.menu removeItem:view_item];
+        [language_item.menu removeItem:language_item];
+        language_item = nil;
+        locales.clear();
         [updates_item.menu removeItem:updates_item];
         if (about_item) {
             about_item.target = nil;
@@ -172,6 +221,7 @@ void shutdown() {
         target = nil;
     });
     installed = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false;
+    { std::lock_guard lock(chosen_lock); chosen.clear(); }
     last_title.clear(); last_state = {false, -1, -1};
 }
 }

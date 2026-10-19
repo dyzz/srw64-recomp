@@ -7,16 +7,22 @@
 #include <SDL_syswm.h>
 #include <atomic>
 #include <iterator>
+#include <mutex>
 #include <string>
+#include <utility>
+#include <vector>
 #include <windows.h>
 
 namespace srw64::app_menu {
 namespace {
-enum : UINT { kSettings = 1, kReload, kUpdates, kAbout, kExit, kFullscreen = 10, kScale1 = 11 };
+enum : UINT { kSettings = 1, kReload, kUpdates, kAbout, kExit, kFullscreen = 10, kScale1 = 11, kLanguage1 = 100 };
 std::atomic_bool requested{}, reload{}, fullscreen{}, about{}, updates{};
 std::atomic_int scale{};
 HWND hwnd{};
-HMENU bar{}, game{}, view{};
+HMENU bar{}, game{}, view{}, languages{};
+std::vector<std::string> locales;  // the Language menu's entries, by id from kLanguage1
+std::mutex chosen_lock;
+std::string chosen;  // a Language entry chosen, until taken
 WNDPROC sdl_proc{};
 bool installed = false;
 bool bar_shown = false;
@@ -72,6 +78,11 @@ LRESULT CALLBACK proc(HWND window, UINT message, WPARAM w, LPARAM l) {
     if (message == WM_COMMAND && HIWORD(w) == 0) {
         const UINT id = LOWORD(w);
         if (id >= kScale1 && id < kScale1 + kScales) { scale = int(id - kScale1 + 1); return 0; }
+        if (id >= kLanguage1 && id < kLanguage1 + locales.size()) {
+            std::lock_guard lock(chosen_lock);
+            chosen = locales[id - kLanguage1];
+            return 0;
+        }
         switch (id) {
         case kSettings: requested = true; return 0;
         case kReload: reload = true; return 0;
@@ -95,6 +106,7 @@ void attach(SDL_Window* window) {
     bar = CreateMenu();
     game = CreatePopupMenu();
     view = CreatePopupMenu();
+    languages = CreatePopupMenu();  // its entries come with update()
     // Titles come with the first update(); the bar is here before the renderer sizes its
     // swap chain, so the picture never starts under it.
     AppendMenuW(game, MF_STRING, kSettings, L"Settings");
@@ -109,6 +121,7 @@ void attach(SDL_Window* window) {
     for (int n = 1; n <= kScales; ++n) AppendMenuW(view, MF_STRING, kScale1 + n - 1, std::to_wstring(n).c_str());
     AppendMenuW(bar, MF_POPUP, UINT_PTR(game), L"Marchwind64");
     AppendMenuW(bar, MF_POPUP, UINT_PTR(view), L"View");
+    AppendMenuW(bar, MF_POPUP, UINT_PTR(languages), L"Language");
     sdl_proc = WNDPROC(SetWindowLongPtrW(hwnd, GWLP_WNDPROC, LONG_PTR(&proc)));
     show_bar(true, !(SDL_GetWindowFlags(window) & (SDL_WINDOW_FULLSCREEN | SDL_WINDOW_MAXIMIZED)));
 }
@@ -118,10 +131,25 @@ void update(const Labels& labels, const WindowState& state) {
     show_bar(bar_wanted(state.fullscreen), !state.fullscreen && !IsZoomed(hwnd));
     const std::string title = labels.game + "\n" + labels.settings + "\n" + labels.reload + "\n" + labels.view + "\n" + labels.fullscreen +
                               "\n" + labels.window_scale + "\n" + labels.about + "\n" + labels.check_updates + "\n" + labels.exit;
-    if (installed && title == last_title && state.fullscreen == last_state.fullscreen &&
+    std::string language_list = labels.language + "\n" + labels.locale;
+    for (const auto& [locale, name] : labels.languages) language_list += "\n" + locale + "=" + name;
+    const std::string all = title + "\n" + language_list;
+    if (installed && all == last_title && state.fullscreen == last_state.fullscreen &&
         state.scale == last_state.scale && state.largest == last_state.largest) return;
     set_text(bar, 0, labels.game, true);
     set_text(bar, 1, labels.view, true);
+    set_text(bar, 2, labels.language, true);
+    // The entries again when the list changed; the check follows the current language.
+    std::vector<std::string> now;
+    for (const auto& entry : labels.languages) now.push_back(entry.first);
+    if (now != locales) {
+        while (GetMenuItemCount(languages) > 0) DeleteMenu(languages, 0, MF_BYPOSITION);
+        for (size_t i = 0; i < labels.languages.size(); ++i)
+            AppendMenuW(languages, MF_STRING, kLanguage1 + UINT(i), wide(labels.languages[i].second).c_str());
+        locales = std::move(now);
+    }
+    for (size_t i = 0; i < locales.size(); ++i)
+        CheckMenuItem(languages, kLanguage1 + UINT(i), locales[i] == labels.locale ? MF_CHECKED : MF_UNCHECKED);
     set_text(game, kSettings, labels.settings + "\tCtrl+,");
     set_text(game, kReload, labels.reload + "\tF5");
     set_text(game, kUpdates, labels.check_updates);
@@ -137,7 +165,7 @@ void update(const Labels& labels, const WindowState& state) {
     }
     DrawMenuBar(hwnd);
     installed = true;
-    last_title = title;
+    last_title = all;
     last_state = state;
 }
 bool available() { return installed; }
@@ -149,19 +177,21 @@ bool activate_settings() {
 bool activate(const std::string& title) {
     if (!installed) return false;
     const std::wstring wanted = wide(title);
-    for (int i = 0, count = GetMenuItemCount(view); i < count; ++i) {
-        wchar_t text[256]{};
-        MENUITEMINFOW info{};
-        info.cbSize = sizeof(info);
-        info.fMask = MIIM_STRING | MIIM_ID | MIIM_STATE | MIIM_FTYPE;
-        info.dwTypeData = text;
-        info.cch = UINT(std::size(text) - 1);
-        if (!GetMenuItemInfoW(view, UINT(i), TRUE, &info) || (info.fType & MFT_SEPARATOR) || (info.fState & MFS_DISABLED)) continue;
-        std::wstring name(text);
-        name = name.substr(0, name.find(L'\t'));  // without the shortcut
-        if (name != wanted) continue;
-        SendMessageW(hwnd, WM_COMMAND, info.wID, 0);
-        return true;
+    for (HMENU menu : {view, languages}) {
+        for (int i = 0, count = GetMenuItemCount(menu); i < count; ++i) {
+            wchar_t text[256]{};
+            MENUITEMINFOW info{};
+            info.cbSize = sizeof(info);
+            info.fMask = MIIM_STRING | MIIM_ID | MIIM_STATE | MIIM_FTYPE;
+            info.dwTypeData = text;
+            info.cch = UINT(std::size(text) - 1);
+            if (!GetMenuItemInfoW(menu, UINT(i), TRUE, &info) || (info.fType & MFT_SEPARATOR) || (info.fState & MFS_DISABLED)) continue;
+            std::wstring name(text);
+            name = name.substr(0, name.find(L'\t'));  // without the shortcut
+            if (name != wanted) continue;
+            SendMessageW(hwnd, WM_COMMAND, info.wID, 0);
+            return true;
+        }
     }
     return false;
 }
@@ -171,6 +201,10 @@ bool take_update_request() { return updates.exchange(false); }
 bool take_reload_request() { return reload.exchange(false); }
 bool take_fullscreen_request() { return fullscreen.exchange(false); }
 int take_scale_request() { return scale.exchange(0); }
+std::string take_language_request() {
+    std::lock_guard lock(chosen_lock);
+    return std::exchange(chosen, std::string());
+}
 void shutdown() {
     // A destroyed window took its menu with it.
     if (hwnd && IsWindow(hwnd)) {
@@ -178,7 +212,9 @@ void shutdown() {
         SetMenu(hwnd, nullptr);
         DestroyMenu(bar);  // with its popups
     }
-    hwnd = nullptr; bar = game = view = nullptr; sdl_proc = nullptr;
+    hwnd = nullptr; bar = game = view = languages = nullptr; sdl_proc = nullptr;
+    locales.clear();
+    { std::lock_guard lock(chosen_lock); chosen.clear(); }
     installed = false; bar_shown = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false;
     last_title.clear(); last_state = {false, -1, -1};
 }

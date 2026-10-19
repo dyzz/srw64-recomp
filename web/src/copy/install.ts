@@ -46,7 +46,7 @@ export const INSTALL: Record<Lang, Install> = {
         steps: [
           '下载 <code>{windows}</code>，右键选「全部解压缩」，得到一个 <code>Marchwind64-windows-x64</code> 文件夹。不要在压缩包里直接双击运行。',
           '<strong>把 ROM 改名为 <code>rom.z64</code>，放进这个 <code>Marchwind64-windows-x64</code> 文件夹</strong>（里面有 <code>Marchwind64.cmd</code> 和 <code>Marchwind64.exe</code>）。ROM 是压缩包的话先解压。也可以放在 <code>%LOCALAPPDATA%\\SRW64Recomp\\rom.z64</code>（在资源管理器地址栏输入 <code>%LOCALAPPDATA%</code> 回车，新建 <code>SRW64Recomp</code> 文件夹）。',
-          '<strong>双击 <code>Marchwind64.exe</code> 启动</strong>（双击 <code>Marchwind64.cmd</code> 也一样）。首次启动跟随系统语言（中文系统用简体中文，日文系统用日语，其他用英语），可在设置窗口中切换。',
+          '<strong>双击 <code>Marchwind64.exe</code> 启动</strong>（双击 <code>Marchwind64.cmd</code> 也一样）。首次启动跟随系统语言（中文系统用简体中文，日文系统用日语，其他用英语），可在窗口的「语言」菜单或设置窗口中切换。',
         ],
         notes: ['改名时注意扩展名：Windows 默认隐藏扩展名，容易改成 <code>rom.z64.z64</code>。先在资源管理器的「查看」里勾选「文件扩展名」再改。找不到 ROM 时，启动会弹窗说明该放在哪里。', '如果 Windows 显示安全提示，选择「更多信息」→「仍要运行」。', '便携模式：在 <code>Marchwind64.exe</code> 旁边新建一个空的 <code>portable.txt</code>，存档和设置就放在同一文件夹的 <code>data</code> 里，不写进 <code>%LOCALAPPDATA%</code>。整个文件夹可以放在 U 盘或移动硬盘上，换盘符、换电脑都能接着玩。'],
       },
@@ -177,7 +177,7 @@ export const INSTALL: Record<Lang, Install> = {
         steps: [
           'Download <code>{windows}</code>, right-click it and choose “Extract All”. You get a <code>Marchwind64-windows-x64</code> folder; do not run the game from inside the zip.',
           '<strong>Rename your ROM to <code>rom.z64</code> and put it in that <code>Marchwind64-windows-x64</code> folder</strong> (the one with <code>Marchwind64.cmd</code> and <code>Marchwind64.exe</code>). Unzip the ROM first if it is in an archive. It can also go in <code>%LOCALAPPDATA%\\SRW64Recomp\\rom.z64</code> (type <code>%LOCALAPPDATA%</code> in File Explorer’s address bar and create a <code>SRW64Recomp</code> folder).',
-          '<strong>Double-click <code>Marchwind64.exe</code></strong> (<code>Marchwind64.cmd</code> does the same). The first launch follows the system language (Simplified Chinese on a Chinese system, Japanese on a Japanese one, English otherwise); change it in the settings window.',
+          '<strong>Double-click <code>Marchwind64.exe</code></strong> (<code>Marchwind64.cmd</code> does the same). The first launch follows the system language (Simplified Chinese on a Chinese system, Japanese on a Japanese one, English otherwise); change it in the window’s Language menu or the settings window.',
         ],
         notes: ['Watch the extension when renaming: Windows hides extensions by default, so the file can end up as <code>rom.z64.z64</code>. Turn on “File name extensions” under View in File Explorer first. If no ROM is found, the game says where to put it.', 'If Windows shows a security prompt, choose “More info” → “Run anyway”.', 'Portable mode: create an empty <code>portable.txt</code> next to <code>Marchwind64.exe</code>, and saves and settings go in a <code>data</code> folder there instead of <code>%LOCALAPPDATA%</code>. The whole folder can live on a USB stick or external drive and keeps working under another drive letter or on another computer.'],
       },
@@ -308,7 +308,7 @@ export const INSTALL: Record<Lang, Install> = {
         steps: [
           '<code>{windows}</code> をダウンロードし、右クリックして「すべて展開」を選びます。<code>Marchwind64-windows-x64</code> フォルダーができます。zip の中から直接起動しないでください。',
           '<strong>ROM の名前を <code>rom.z64</code> に変更し、この <code>Marchwind64-windows-x64</code> フォルダーに置きます</strong>（<code>Marchwind64.cmd</code> と <code>Marchwind64.exe</code> があるフォルダーです）。ROM が圧縮ファイルなら先に展開してください。<code>%LOCALAPPDATA%\\SRW64Recomp\\rom.z64</code> に置くこともできます（エクスプローラーのアドレスバーに <code>%LOCALAPPDATA%</code> と入力し、<code>SRW64Recomp</code> フォルダーを作成）。',
-          '<strong><code>Marchwind64.exe</code> をダブルクリックして起動します</strong>（<code>Marchwind64.cmd</code> でも同じです）。初回はシステムの言語で起動します（中国語のシステムでは簡体字中国語、日本語では日本語、それ以外は英語）。設定ウィンドウで変更できます。',
+          '<strong><code>Marchwind64.exe</code> をダブルクリックして起動します</strong>（<code>Marchwind64.cmd</code> でも同じです）。初回はシステムの言語で起動します（中国語のシステムでは簡体字中国語、日本語では日本語、それ以外は英語）。ウィンドウの「言語」メニューか設定ウィンドウで変更できます。',
         ],
         notes: ['名前を変えるときは拡張子に注意してください。Windows は既定で拡張子を隠すため、<code>rom.z64.z64</code> になりがちです。エクスプローラーの「表示」で「ファイル名拡張子」をオンにしてから変更してください。ROM が見つからない場合は、起動時に置き場所が表示されます。', 'Windows のセキュリティ警告が表示されたら、「詳細情報」→「実行」を選んでください。', 'ポータブルモード：<code>Marchwind64.exe</code> と同じ場所に空の <code>portable.txt</code> を作ると、セーブと設定は <code>%LOCALAPPDATA%</code> ではなく同じフォルダーの <code>data</code> に保存されます。フォルダーごと USB メモリや外付けドライブに置けば、ドライブ文字が変わっても、別の PC でも続きから遊べます。'],
       },
