@@ -124,15 +124,16 @@ bool pitch_layer(const uint8_t* rdram, uint32_t slot) {
     return (pitch_kind(kind) || kind == 10 || kind == 11) && frame::wide && wide_map::battle_shown();
 }
 // A sky layer that drifts up or down on its own (kinds 4-7, the space and other-world
-// starfields): wider than 4:3 the game draws it a period to each side (game_hooks.cpp),
-// in the original's art. In HD only its own draw was replaced, so the sides kept the
-// original and a seam showed at the 4:3 edges (a player's recording, 2026-10-19). With
-// an HD picture it is drawn whole like a pitch-placed sky, repeating every 320 by 240 as
-// the game wraps it.
+// starfields) or stands still (kind 8, 80085328 zeroes both speeds: the vortex 6107 and
+// the streaks 6097): wider than 4:3 the game draws it a period to each side
+// (game_hooks.cpp), in the original's art. In HD only its own draw was replaced, so the
+// sides kept the original and a seam showed at the 4:3 edges (a player's recording,
+// 2026-10-19). With an HD picture it is drawn whole like a pitch-placed sky, repeating
+// every 320 by 240 as the game wraps it.
 bool drift_layer(const uint8_t* rdram, uint32_t slot) {
     if (slot > 4) return false;
     const uint8_t kind = layer_kind(rdram, slot);
-    return kind >= 4 && kind <= 7 && frame::wide && wide_map::battle_shown();
+    return kind >= 4 && kind <= 8 && frame::wide && wide_map::battle_shown();
 }
 // A battle sky's first layer (slots 0-2; the second is 3/4, the scrolling effects 0x19).
 // The game draws it with entry 0 opaque in its colour, the lit windows of the ruins'
