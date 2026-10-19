@@ -15,6 +15,10 @@ using namespace srw64::app;
 namespace {
 unsigned checks{};
 void check(bool value, const char* label) { ++checks; if (!value) throw std::runtime_error(label); }
+template<class F> void rejects(F&& f, const char* label) {
+    try { f(); } catch (const std::exception&) { ++checks; return; }
+    throw std::runtime_error(label);
+}
 std::string utf8(const fs::path& path) {
     const auto value=path.u8string();return {reinterpret_cast<const char*>(value.data()),value.size()};
 }
@@ -83,6 +87,28 @@ void missing_and_wrong_rom() {
     atomic_write(f.options.user_dir/"last-rom.txt",std::string("bad\0path",8));
     f.selections.push_back(std::nullopt);
     check(f.run()==0 && f.launches==1,"NUL preference launched game");
+}
+// Portable mode: a ROM in the game's folder is remembered relative to it, and found in
+// the folder's new place; nothing else is ever relative.
+void portable_rom_preference() {
+    Fixture f;
+    const auto game=f.root/fs::path(u8"便携"),moved=f.root/"moved";
+    fs::create_directories(game/"roms");atomic_write(game/"roms/my rom.z64","r");
+    const auto inside=fs::canonical(game/"roms/my rom.z64");
+    check(rom_preference(inside,game)=="roms/my rom.z64","portable ROM not relative");
+    check(rom_preference(inside,{})==utf8(inside),"ROM relative without portable mode");
+    check(rom_preference(fs::canonical(f.rom),game)==utf8(fs::canonical(f.rom)),"ROM outside the game kept relative");
+    const auto file=f.root/"last-rom.txt";
+    atomic_write(file,rom_preference(inside,game));
+    fs::rename(game,moved);
+    check(remembered_rom(file,moved)==moved/"roms/my rom.z64","moved portable ROM not found");
+    rejects([&]{remembered_rom(file,{});},"relative ROM accepted without portable mode");
+    for(const std::string text:{"../outside.z64","roms/../../x.z64"}) {
+        atomic_write(file,text);
+        rejects([&]{remembered_rom(file,moved);},"ROM outside the portable game accepted");
+    }
+    atomic_write(file,utf8(f.rom));
+    check(remembered_rom(file,moved)==f.rom,"absolute ROM not kept in portable mode");
 }
 void errors_never_retry_host_or_replace_progress() {
     Fixture f;f.selections={f.rom};
@@ -155,7 +181,8 @@ void ending_the_holder(const char* self) {
     for (int i=0;i<200 && !(holder=play_lock_holder(f.options.user_dir));++i) std::this_thread::sleep_for(std::chrono::milliseconds(25));
     check(holder && holder->pid==child_id,"lock holder not recorded");
     check(f.run()==0 && f.launches==0 && f.questions.size()==1,"declined question started the game");
-    check(f.questions.back()==play_lock_question("zh-Hans").message && alive(),"declining ended the holder");
+    // Nothing saved yet: the system's language, as the first launch's.
+    check(f.questions.back()==play_lock_question(system_language()).message && alive(),"declining ended the holder");
     f.end_holder=true;
     check(f.run()==0 && f.launches==1 && f.questions.size()==2,"ending the holder did not start the game");
 #ifdef _WIN32
@@ -172,7 +199,7 @@ int main(int argc, char** argv) {
         UserLock held{fs::path(argv[2])};
         for (;;) std::this_thread::sleep_for(std::chrono::seconds(60));
     }
-    try {cancel_and_resume();missing_and_wrong_rom();errors_never_retry_host_or_replace_progress();launcher_rom_order();relocated_working_directory_and_lock();ending_the_holder(argv[0]);
+    try {cancel_and_resume();missing_and_wrong_rom();errors_never_retry_host_or_replace_progress();launcher_rom_order();portable_rom_preference();relocated_working_directory_and_lock();ending_the_holder(argv[0]);
         std::cout<<checks<<" desktop checks passed\n";return 0;}
     catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
 }

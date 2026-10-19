@@ -179,8 +179,13 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
                 dialogue_font_size=std::clamp(saved["dialogue_font_size"].get<unsigned>(),10u,18u);
         }
     }
-    if(locale.empty())locale=data.at("config").at("locale").get<std::string>();
     const auto catalogs=data.at("locale_catalogs");
+    // No setting yet (the first launch): the system's language, as long as the player has
+    // not chosen one in the settings window; the content's own when it has no such catalog.
+    if(locale.empty()) {
+        locale=system_language();
+        if(!catalogs.contains(locale))locale=data.at("config").at("locale").get<std::string>();
+    }
     if(!catalogs.contains(locale))throw std::runtime_error("Locale is not available in this content: "+locale);
     for(const auto& [key,value]:catalogs.at(locale).items())data[key]=value;
     if(data.at("config").at("locale")!=locale)throw std::runtime_error("Locale registry identity mismatch");

@@ -24,6 +24,12 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
 std::string play_lock_message(const std::string& locale);
 struct PlayLockQuestion { std::string message, accept, cancel; };
 PlayLockQuestion play_lock_question(const std::string& locale);
+// last-rom.txt, the ROM a desktop start remembers. An absolute path, except that with a
+// portable game (portable_user_dir) a ROM in its folder is kept relative to that folder,
+// portable_root: one that stays inside it, '/'-separated. Reading refuses any other
+// relative path.
+std::string rom_preference(const fs::path& rom, const fs::path& portable_root);
+fs::path remembered_rom(const fs::path& file, const fs::path& portable_root);
 // Where Marchwind64.cmd looks for the ROM, in its order: `named` (SRW64_ROM), then
 // rom.z64, rom.n64 and rom.v64, each in the user directory before the game's folder.
 // Empty when none of them is a file.

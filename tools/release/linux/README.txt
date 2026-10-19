@@ -41,6 +41,8 @@ Marchwind64, Steam Deck edition (experimental). English below.
 存档与设置
   ~/.local/share/srw64-recomp（sessions/ 里保留每次游玩的存档）。
   从 Steam 菜单选「退出游戏」会正常保存退出。
+  便携模式：在 marchwind64.sh 旁边新建空文件 portable.txt，存档和设置就放在本文件夹的
+  data/ 里（ROM 也可以放在 data/rom.z64）。
 
 HD 画面
   HD 素材包与 macOS 版是同一个下载。把它解压成
@@ -84,6 +86,8 @@ interface size (Largest by default on a Steam Deck). Hints follow the last devic
 you used.
 
 Saves: ~/.local/share/srw64-recomp. Quitting from the Steam menu saves normally.
+Portable mode: an empty portable.txt next to marchwind64.sh keeps saves and settings
+in data/ in this folder instead (the ROM can go in data/rom.z64 too).
 HD: unpack the HD pack (the same download as for macOS) as
 ~/.local/share/srw64-recomp/hd or as hd/ in this folder, next to marchwind64.sh
 (hd.json and art/ directly inside; the first wins when both exist); the game then

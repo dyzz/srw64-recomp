@@ -707,9 +707,8 @@ int main(int argc, char** argv) {
             ui.show_error(std::string("Unable to start Marchwind64.\n") + error.what());
             return 2;
         }
-        // First launch starts in Simplified Chinese; the settings window changes it.
-        std::error_code missing;
-        if (!std::filesystem::exists(options.user_dir / "presentation.json", missing)) options.language = "zh-Hans";
+        // No --language: the first launch speaks the system's language, later ones the
+        // player's choice (launch.cpp).
         srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
             native_rom_variants[0].save_file, srw64::rules::version, {}};
         for (const auto& rule : srw64::rules::catalog)

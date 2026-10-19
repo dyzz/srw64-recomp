@@ -7,6 +7,9 @@ here=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 data=${XDG_DATA_HOME:-}
 case $data in /*) ;; *) data=$HOME/.local/share ;; esac
 data=$data/srw64-recomp
+# Portable mode: portable.txt here keeps saves and settings in the data folder beside it
+# (the program finds it itself); --user-dir names another.
+if [ -f "$here/portable.txt" ]; then data=$here/data; fi
 
 fail() {
     echo "marchwind64: $1" >&2
@@ -17,12 +20,14 @@ fail() {
     exit 1
 }
 
-given_rom=no given_language=no
+given_rom=no given_language=no previous=
 for argument in "$@"; do
     case $argument in
         --rom) given_rom=yes ;;
         --language) given_language=yes ;;
     esac
+    if [ "$previous" = --user-dir ] && [ -n "$argument" ]; then data=$argument; fi
+    previous=$argument
 done
 if [ $given_rom = no ]; then
     rom=

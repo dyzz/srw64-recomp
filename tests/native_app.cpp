@@ -99,6 +99,20 @@ void parser_and_paths() {
     check(default_user_dir(Platform::Linux,get)==temp.path/"xdg/srw64-recomp","XDG override ignored");
     env.clear();rejects([&]{default_user_dir(Platform::MacOS,get);},"missing HOME accepted");
     rejects([&]{default_user_dir(Platform::Windows,get);},"missing LOCALAPPDATA accepted");
+    // Portable: portable.txt (a file) in the game's folder, the data folder beside it.
+    check(portable_user_dir(temp.path).empty() && portable_user_dir({}).empty(),"portable without portable.txt");
+    fs::create_directory(temp.path/"portable.txt");
+    check(portable_user_dir(temp.path).empty(),"a portable.txt folder made the game portable");
+    fs::remove(temp.path/"portable.txt");atomic_write(temp.path/"portable.txt","");
+    check(portable_user_dir(temp.path)==temp.path/"data","portable user directory");
+    fs::remove(temp.path/"portable.txt");
+    using Names=std::vector<std::string>;
+    check(first_language(Names{"zh-Hans-US"})=="zh-Hans" && first_language(Names{"zh-TW"})=="zh-Hans" &&
+          first_language(Names{"zh_CN.UTF-8"})=="zh-Hans","Chinese first language");
+    check(first_language(Names{"ja-JP"})=="ja" && first_language(Names{"en-US","zh-Hans-US"})=="en","first language order");
+    check(first_language(Names{"fr-FR","ja"})=="ja" && first_language(Names{"de_DE.UTF-8"})=="en" &&
+          first_language(Names{"C"})=="en" && first_language({})=="en","other first languages");
+    check(first_language(Names{"jav-ID"})=="en","a longer code taken for Japanese");
     fs::create_directory(temp.path/"content");
     atomic_write(temp.path/"content/a.txt","a");atomic_write(temp.path/"outside.txt","outside");
     check(content_path(temp.path/"content","a.txt")==fs::canonical(temp.path/"content/a.txt"),"content resolution");

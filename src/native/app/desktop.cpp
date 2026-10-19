@@ -1,6 +1,7 @@
 #include "desktop.hpp"
 #include "rom_order.hpp"
 #include "sha256.hpp"
+#include <algorithm>
 #include <regex>
 #include <stdexcept>
 
@@ -9,17 +10,6 @@ namespace {
 std::string path_utf8(const fs::path& path) {
     const auto value = path.u8string();
     return {reinterpret_cast<const char*>(value.data()), value.size()};
-}
-fs::path remembered_rom(const fs::path& file) {
-    // A broken preference can be replaced by explicit selection, but it must
-    // never be interpreted as a relative path, shell command or multiple lines.
-    if (fs::is_symlink(file)) throw std::runtime_error("The saved ROM preference is a symlink.");
-    const auto bytes = read_text(file, 16384);
-    if (bytes.empty() || bytes.find('\0') != std::string::npos)
-        throw std::runtime_error("The saved ROM preference is invalid.");
-    const auto path = fs::path(std::u8string(reinterpret_cast<const char8_t*>(bytes.data()), bytes.size()));
-    if (!path.is_absolute()) throw std::runtime_error("The saved ROM path is not absolute.");
-    return path;
 }
 // The language the player chose (presentation.json, written by launch.cpp); empty when
 // there is none or it cannot be read.
@@ -43,6 +33,36 @@ fs::path validate_rom(const fs::path& path, const std::string& expected) {
                                  "Use an unmodified dump of your own game (.z64, .v64 or .n64).");
     return resolved;
 }
+}
+
+fs::path remembered_rom(const fs::path& file, const fs::path& portable_root) {
+    // A broken preference can be replaced by explicit selection, but it must never be
+    // interpreted as a shell command, as several lines, or as a path relative to anything
+    // but the portable game's folder.
+    if (fs::is_symlink(file)) throw std::runtime_error("The saved ROM preference is a symlink.");
+    const auto bytes = read_text(file, 16384);
+    if (bytes.empty() || bytes.find('\0') != std::string::npos)
+        throw std::runtime_error("The saved ROM preference is invalid.");
+    const auto path = fs::path(std::u8string(reinterpret_cast<const char8_t*>(bytes.data()), bytes.size()));
+    if (path.is_absolute()) return path;
+    const bool inside = !portable_root.empty() && !path.has_root_name() && !path.has_root_directory() &&
+        std::none_of(path.begin(), path.end(), [](const fs::path& part) { return part == ".."; });
+    if (!inside) throw std::runtime_error("The saved ROM path is not absolute.");
+    return portable_root / path;
+}
+std::string rom_preference(const fs::path& rom, const fs::path& portable_root) {
+    // In the portable game's folder: relative to it, so another drive letter or a moved
+    // folder finds it again.
+    if (!portable_root.empty()) {
+        std::error_code error;
+        const auto root = fs::weakly_canonical(portable_root, error);
+        const auto relative = error ? fs::path{} : rom.lexically_relative(root);
+        if (!relative.empty() && !relative.is_absolute() && *relative.begin() != ".." && relative != ".") {
+            const auto text = relative.generic_u8string();  // '/' on every system
+            return {reinterpret_cast<const char*>(text.data()), text.size()};
+        }
+    }
+    return path_utf8(rom);
 }
 
 fs::path launcher_rom(const fs::path& named, const fs::path& user_dir, const fs::path& game_dir) {
@@ -99,17 +119,27 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
                 const DesktopUi& ui, const DesktopLaunch& launch, bool choose_another_rom) {
     if (!ui.choose_rom || !ui.show_error || !launch)
         throw std::invalid_argument("Incomplete desktop callbacks");
-    // The first launch has no settings yet and starts in Simplified Chinese (host.cpp).
+    // The first launch has no settings yet and speaks the system's language (launch.cpp).
     const auto locale = [&] {
         auto chosen = options.language.empty() ? saved_locale(options.user_dir) : options.language;
-        return chosen.empty() ? std::string("zh-Hans") : chosen;
+        return chosen.empty() ? system_language() : chosen;
     };
     try {
         options.user_dir = fs::absolute(options.user_dir.empty() ? default_user_dir() : options.user_dir);
         const auto preference = options.user_dir / "last-rom.txt";
+        // Portable (portable.txt): ROMs in the game's folder are remembered relative to it.
+        const auto portable_root = [&] {
+            const auto folder = game_folder();
+            const auto portable = portable_user_dir(folder);
+            std::error_code error;
+            const bool same = !portable.empty() &&
+                (fs::absolute(portable).lexically_normal() == options.user_dir.lexically_normal() ||
+                 fs::equivalent(portable, options.user_dir, error));
+            return same ? folder : fs::path{};
+        }();
         if (choose_another_rom) options.rom.clear();
         else if (options.rom.empty() && (fs::exists(preference) || fs::is_symlink(preference))) {
-            try { options.rom = remembered_rom(preference); }
+            try { options.rom = remembered_rom(preference, portable_root); }
             catch (const std::exception& error) {
                 ui.show_error(std::string(error.what()) + "\nSelect the ROM again; saves are unchanged.");
             }
@@ -146,7 +176,7 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
             if (ready_called) throw std::logic_error("Desktop bootstrap entered the game twice");
             // The bootstrap owns Session's lock here. Keep this separate from
             // the save pointer; remembering a ROM cannot change game progress.
-            atomic_write(preference, path_utf8(options.rom));
+            atomic_write(preference, rom_preference(options.rom, portable_root));
             ready_called = true;
         });
         if (result != 0)

@@ -148,6 +148,17 @@ void touch_preferences() {
         return 0;
     })==0,"touch preferences launch failed");
 }
+// No --language and nothing saved (the first launch): the system's language when the
+// content has it (here ja and en, ja its own), and nothing written for it.
+void first_launch_language() {
+    Fixture f;
+    const auto expected=f.data["locale_catalogs"].contains(system_language())?system_language():std::string("ja");
+    check(run_standalone(f.options,f.game,[&](int,char**) {
+        check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")==expected,"first launch not in the system's language");
+        return 0;
+    })==0,"first launch failed");
+    check(!fs::exists(f.options.user_dir/"presentation.json"),"the first launch's language saved as a choice");
+}
 // A full-HD bundle (tools/release/prepare_hd_bundle.py): the launcher looks for hd
 // beside the executable when it is not inside a .app.
 void make_pack(const fs::path& hd) {
@@ -229,6 +240,6 @@ void campaigns() {
     rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"a campaign id with a path was accepted");
 }
 }
-int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();touch_preferences();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
+int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();touch_preferences();first_launch_language();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
     std::cout<<checks<<" bootstrap checks passed\n";return 0;}
 catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}}
