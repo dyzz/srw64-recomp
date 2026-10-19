@@ -63,6 +63,14 @@ std::vector<FontSource> game_font_sources(const std::string& locale,int weight) 
     const long face=path.filename()=="NotoSansCJK-Regular.ttc" && locale=="zh-Hans"?2:0;
     return {{path,face}};
 }
+std::vector<FontSource> title_font_sources(const std::string& locale,int weight) {
+    auto sources=game_font_sources(locale,weight);
+    const char* dir=std::getenv("SRW64_FONT_DIR");
+    if(std::getenv("SRW64_TEXT_FONT") || !dir || !*dir)return sources;
+    const auto path=utf8_path(dir)/(locale=="ja"?"SRW64ChapterTitle.ttf":"MaShanZheng-Regular.ttf");
+    if(std::filesystem::is_regular_file(path))sources.insert(sources.begin(),{path,0,0});
+    return sources;
+}
 std::shared_ptr<const FontSet> game_fonts(const std::string& locale,int weight) {
     const auto sources=game_font_sources(locale,weight);
     static std::mutex mutex;

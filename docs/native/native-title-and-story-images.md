@@ -139,6 +139,8 @@
 - 高清图的解码和文字栅格化都在后台线程完成。没准备好时，高清帧这一次照画原图，文字则先不画（多为缩放刚开始的几帧）。纹理为预乘 Alpha，带 mipmap；常驻超过 48 张后，释放闲置 20 秒以上的。
 - [`sprite_text.cpp`](../../src/host/sprite_text.cpp)（只在游戏宿主）判断每个精灵显示哪段文字，并排字、描边、加阴影：
   - 菜单与标题卡用 HarmonyOS Sans 2.040 可变字体的 **Bold** 实例（wght 706，`game_font_sources(locale, 700)`），没有单独的粗体文件；英文先用 Condensed，再用 SC，符号字体垫后；
+  - 章节标题卡（第N話、标题、结局「終」）前面再垫一款毛笔字体（`title_font_sources`，`Style::title`）：日文是从原版标题卡描出的 SRW64ChapterTitle.ttf（344 字，字距照原版，em 即原版 24 行字格），中文和英文是裁剪过的马善政毛笔楷书；缺字回落到 HarmonyOS Sans Bold。两款都由 `tools/content/build_title_fonts.py` 生成。
+  - 日文标题卡照原版排：`tools/content/text_images.py header` 从 ROM 量出每张卡的大小、分行（第几个字后断行；卡面多出的空格后面的字从哪里起，单独成段放回原处；（前）→「前編」单独一行）和每行首字左缘、字格顶（`story_cards::layouts`），`laid_out` 按这些位置拼成和原卡一样大的图，居中放回原帧；「第N話」的「第」「話」位置固定，数字在中间居中（`number_*`）。记录和卡面用字不同的两张（第 8、89 张）、占位卡和自定义战役仍按普通排法。中文、英文也照卡面的结构：原卡分两行的，译文在第一个「！」「，」后换行；（上）(Part 1) 单独一行。
   - 序章和结局页用 Regular，宽 256，放不下时逐步缩小字号；
   - 描边由距离变换得到，字面带竖向渐变。
 - 日志：运行目录的 `scene-sprites.jsonl` 记录每种（场景, 图集, 调色板, 帧）第一次的处理方式和 VI；退出时写 `scene-sprite-summary.json`。

@@ -2,7 +2,7 @@
   "schema": "srw64.font-package.v1",
   "name": "HarmonyOS Sans",
   "version": "2.040",
-  "note": "Dialogue and native UI fonts. Both files are variable fonts (wght 40-900): text uses the default Regular instance, and the title menu and chapter title cards use the Bold instance (FontSource::weight). The licence allows redistributing them unmodified with software, not on their own, so the official files and licence are in this directory, byte for byte as in the official archive; tools/content/prepare_fonts.py checks them against these hashes (or extracts them from the archive when they are absent). Never subset or edit them.",
+  "note": "Dialogue and native UI fonts. Both files are variable fonts (wght 40-900): text uses the default Regular instance, and the title menu, and the chapter title cards for characters their brush fonts lack, use the Bold instance (FontSource::weight). The licence allows redistributing them unmodified with software, not on their own, so the official files and licence are in this directory, byte for byte as in the official archive; tools/content/prepare_fonts.py checks them against these hashes (or extracts them from the archive when they are absent). Never subset or edit them.",
   "url": "https://developer.huawei.com/consumer/cn/design/resource/",
   "archive_sha256": "5440a3d9337828eda72e35f48fbb246873bca26e89644d433a8b01b85e45ef85",
   "files": {
@@ -10,5 +10,6 @@
     "HarmonyOS_Sans_Condensed.ttf": {"member": "HarmonyOS Sans/HarmonyOS_Sans_Condensed.ttf", "sha256": "a07c6bd4e6ebe6f44c55350985295c779a2cdce70de21f4361c67d21a8f341c1"},
     "LICENSE-HarmonyOS-Sans.txt": {"member": "HarmonyOS Sans/LICENSE-update.txt", "sha256": "7d7acf8e3ac928ae7f34aaa9f8e348dd0476dbb52caaa058e402894d4f6efe73"}
   },
-  "bundled": ["SRW64Symbols.ttf", "LICENSE-SRW64Symbols.txt", "SRW64Prompts.ttf", "LICENSE-SRW64Prompts.txt"]
+  "bundled": ["SRW64Symbols.ttf", "LICENSE-SRW64Symbols.txt", "SRW64Prompts.ttf", "LICENSE-SRW64Prompts.txt",
+              "SRW64ChapterTitle.ttf", "LICENSE-SRW64ChapterTitle.txt", "MaShanZheng-Regular.ttf", "LICENSE-MaShanZheng.txt"]
 }

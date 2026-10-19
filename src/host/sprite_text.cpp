@@ -5,14 +5,17 @@
 #include "localization/catalog.hpp"
 #include "text/game_fonts.hpp"
 #include "text/portable_text.hpp"
+#include "text/unicode.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <iterator>
+#include <string_view>
 #include <limits>
 #include <map>
+#include <tuple>
 #include <mutex>
 
 namespace srw64::sprite_text {
@@ -96,14 +99,27 @@ std::vector<std::u16string> paragraphs(std::string text) {
 }
 
 // Fonts for the worker thread only, apart from the dialogue's own FontSets.
-std::shared_ptr<const text::FontSet> fonts(const std::string& locale, bool bold) {
+std::shared_ptr<const text::FontSet> fonts(const std::string& locale, bool bold, bool title) {
     static std::mutex mutex;
-    static std::map<std::pair<std::string, bool>, std::shared_ptr<const text::FontSet>> cache;
+    static std::map<std::tuple<std::string, bool, bool>, std::shared_ptr<const text::FontSet>> cache;
     std::lock_guard lock(mutex);
-    auto& set = cache[{locale, bold}];
+    auto& set = cache[{locale, bold, title}];
     if (set) return set;
     // Bold is the variable fonts' Bold instance; the symbol font stays in the chain.
-    return set = std::make_shared<const text::FontSet>(text::game_font_sources(locale, bold ? 700 : 0));
+    const int weight = bold ? 700 : 0;
+    return set = std::make_shared<const text::FontSet>(title ? text::title_font_sources(locale, weight)
+                                                             : text::game_font_sources(locale, weight));
+}
+
+// The Japanese cards' own lettering alone (title_font_sources puts it first), for the
+// cards laid out as the originals: its em is their 24-row glyph cell. Null without it.
+std::shared_ptr<const text::FontSet> lettering() {
+    static const auto set = []() -> std::shared_ptr<const text::FontSet> {
+        const auto sources = text::title_font_sources("ja");
+        if (sources.empty() || sources.front().path.filename() != "SRW64ChapterTitle.ttf") return nullptr;
+        return std::make_shared<const text::FontSet>(std::vector<text::FontSource>{sources.front()});
+    }();
+    return set;
 }
 
 // Squared Euclidean distance transform of one row or column (Felzenszwalb & Huttenlocher).
@@ -180,6 +196,7 @@ Style banner_style(bool badge, const std::string& locale) {
 }
 Style card_style(double size) {
     Style s;
+    s.title = true;
     s.size = size; s.min_size = 11; s.pitch = 1.3;
     s.fill_bottom[0] = .80f; s.fill_bottom[1] = .83f; s.fill_bottom[2] = .90f;
     s.outline[0] = s.outline[1] = s.outline[2] = .03f;
@@ -267,7 +284,7 @@ std::string record(const uint8_t* rdram, uint16_t id) {
 // Hash for cache keys: the style's numbers and the text.
 std::string style_key(const Style& s) {
     char buffer[160];
-    std::snprintf(buffer, sizeof buffer, "%d%d%d/%.2f/%.2f/%.3f/%.1f/%.1f/%.1f/%.2f/%.2f/%.2f/%.2f/%.2f", s.bold, s.center, int(s.origin), s.size,
+    std::snprintf(buffer, sizeof buffer, "%d%d%d%d/%.2f/%.2f/%.3f/%.1f/%.1f/%.1f/%.2f/%.2f/%.2f/%.2f/%.2f", s.bold, s.center, s.title, int(s.origin), s.size,
                   s.min_size, s.pitch, s.width, s.max_width, s.max_height, s.outline_px, s.shadow_px, s.outline_alpha, s.shadow_alpha,
                   s.condense_min);
     return buffer;
@@ -294,8 +311,8 @@ float brightest(const sprites::SceneId& id, int channel) {
 
 std::string key(const Style& style) { return style_key(style); }
 
-sprites::TextImage draw(const Style& style, const std::string& locale, const std::string& body, double density) {
-    const auto set = fonts(locale, style.bold);
+sprites::TextImage render(const text::FontSet& set, const Style& style, const std::string& locale,
+                          const std::string& body, double density) {
     const auto source = paragraphs(body);
     std::vector<Line> lines;
     double size = style.size, block_width = 0;
@@ -304,7 +321,7 @@ sprites::TextImage draw(const Style& style, const std::string& locale, const std
         bool overflow = false;
         for (const auto& paragraph : source) {
             if (paragraph.empty()) { lines.push_back({{}, 0, 0, true}); continue; }
-            auto layout = set->layout(paragraph, size, style.width > 0 ? style.width : 100000, locale);
+            auto layout = set.layout(paragraph, size, style.width > 0 ? style.width : 100000, locale);
             for (size_t i = 0; i < layout.lines().size(); ++i) {
                 const auto& line = layout.lines()[i];
                 overflow = overflow || line.overflow || (style.max_width > 0 && line.width * style.condense_min > style.max_width);
@@ -337,7 +354,7 @@ sprites::TextImage draw(const Style& style, const std::string& locale, const std
     image.height = uint32_t(std::ceil(image.units[1] * density));
     if (image.width > 4096 || image.height > 4096) {
         const double fit = std::min(4096.0 / image.width, 4096.0 / image.height);
-        return draw(style, locale, body, density * fit);
+        return render(set, style, locale, body, density * fit);
     }
     presentation::Bgra8Surface surface(image.width, image.height);
     std::vector<float> top_of(image.height, -1);    // texel row -> top of its glyph line, in texels
@@ -424,6 +441,84 @@ sprites::TextImage draw(const Style& style, const std::string& locale, const std
     return image;
 }
 
+sprites::TextImage draw(const Style& style, const std::string& locale, const std::string& body, double density) {
+    return render(*fonts(locale, style.bold, style.title), style, locale, body, density);
+}
+
+namespace {
+// A Japanese title card in the cards' own lettering, each piece where the original card puts
+// it (story_cards.hpp): x is the piece's first letter (centre: the middle of its letters), y
+// the top of its 24-row glyph cell, in card units. The image is the card's size plus an even
+// margin, so centred on the original frame every piece lands where the original's does.
+struct Placed { std::string text; double x, y; bool centre = false; };
+TextImage laid_out(const std::vector<Placed>& pieces, double width, double height) {
+    constexpr double density = 8;
+    Style style = card_style(24);
+    style.center = false;
+    style.pitch = 1.22;   // the layout's own pitch: the glyph cell starts at the image origin
+    const double pad = style.outline_px + style.shadow_px + 1;
+    TextImage out;
+    out.units[0] = float(width + 2 * pad); out.units[1] = float(height + 2 * pad);
+    out.width = uint32_t(std::ceil(out.units[0] * density)); out.height = uint32_t(std::ceil(out.units[1] * density));
+    out.rgba.assign(size_t(out.width) * out.height * 4, 0);
+    for (const auto& piece : pieces) {
+        const auto image = render(*lettering(), style, "ja", piece.text, density);
+        // The letters' extent: the opaque outline runs outline_px outside them (the shadow is fainter).
+        int first = int(image.width), last = -1;
+        for (int y = 0; y < int(image.height); ++y)
+            for (int x = 0; x < int(image.width); ++x)
+                if (image.rgba[(size_t(y) * image.width + x) * 4 + 3] > 200) { first = std::min(first, x); last = std::max(last, x); }
+        if (last < 0) continue;
+        const double ink_left = first / density + style.outline_px, ink_right = (last + 1) / density - style.outline_px;
+        const double x = piece.centre ? piece.x - (ink_right - ink_left) / 2 : piece.x;
+        const int dx = int(std::lround((pad + x - ink_left) * density));
+        const int dy = int(std::lround((pad + piece.y - image.origin[1]) * density));
+        for (int y = 0; y < int(image.height); ++y) {
+            if (dy + y < 0 || dy + y >= int(out.height)) continue;
+            for (int x = 0; x < int(image.width); ++x) {
+                if (dx + x < 0 || dx + x >= int(out.width)) continue;
+                const uint8_t* src = &image.rgba[(size_t(y) * image.width + x) * 4];
+                uint8_t* dst = &out.rgba[(size_t(dy + y) * out.width + dx + x) * 4];
+                const float keep = 1 - src[3] / 255.f;
+                for (int c = 0; c < 4; ++c) dst[c] = uint8_t(std::min(255.f, src[c] + dst[c] * keep + .5f));
+            }
+        }
+    }
+    return out;
+}
+
+// The card's lines for a record (戦え!熱き血のファイターたち, OZ分裂 （前）) as story_cards.hpp
+// lays them out; empty when the record does not fit the layout.
+std::vector<Placed> card_lines(const story_cards::Layout& layout, const std::string& record) {
+    std::u16string words = text::to_utf16(record), part;
+    if (const auto open = words.rfind(u'\uFF08'); open != std::u16string::npos && open + 3 == words.size() &&
+        words[open + 2] == u'\uFF09' && std::u16string_view(u"\u524D\u4E2D\u5F8C").find(words[open + 1]) != std::u16string_view::npos) {
+        part = std::u16string{words[open + 1], u'\u7DE8'};   // （前） -> 前編
+        words.resize(open);
+    }
+    std::erase_if(words, [](char16_t c) { return c == u' ' || c == u'\u3000'; });
+    if ((layout.lines == (layout.split ? 3 : 2)) != !part.empty() || layout.split >= words.size() || layout.gap >= words.size())
+        return {};
+    std::vector<std::u16string> lines;
+    if (layout.split) lines = {u"\u300C" + words.substr(0, layout.split), words.substr(layout.split) + u"\u300D"};
+    else lines = {u"\u300C" + words + u"\u300D"};
+    if (!part.empty()) lines.push_back(part);
+    const uint8_t xs[] = {layout.x0, layout.x1, layout.x2}, ys[] = {layout.y0, layout.y1, layout.y2};
+    std::vector<Placed> pieces;
+    for (size_t i = 0; i < lines.size(); ++i) pieces.push_back({text::to_utf8(lines[i]), double(xs[i]), double(ys[i])});
+    // The card's space: the words after it are a piece of their own, where the card starts them.
+    if (layout.gap_x) {
+        const bool second = layout.split && layout.gap >= layout.split;
+        auto& line = lines[second ? 1 : 0];
+        const size_t at = (second ? layout.gap - layout.split : layout.gap) + (second ? 0 : 1);   // past 「
+        if (at == 0 || at >= line.size()) return {};
+        pieces[second ? 1 : 0].text = text::to_utf8(line.substr(0, at));
+        pieces.push_back({text::to_utf8(line.substr(at)), double(layout.gap_x), double(ys[second ? 1 : 0])});
+    }
+    return pieces;
+}
+}
+
 bool describe(const uint8_t* rdram, const sprites::SceneId& id, TextJob& job) {
     const auto catalog = localization::snapshot();
     const std::string locale = catalog->locale;
@@ -485,26 +580,79 @@ bool describe(const uint8_t* rdram, const sprites::SceneId& id, TextJob& job) {
         const bool number = id.scene >= story_cards::number_first && id.scene <= story_cards::number_last;
         uint16_t record = 0;
         if (number && id.slot != kTitleSlot) {
+            const std::string n = std::to_string(id.scene - story_cards::number_first + 1);
+            if (locale == "ja" && lettering()) {
+                // As the card: 第 and 話 in place, the digits centred between them.
+                using namespace story_cards;
+                const std::vector<Placed> pieces{{"\xE7\xAC\xAC", number_dai, number_y},   // 第
+                                                 {n, number_digits_x2 / 2.0, number_digit_y, true},
+                                                 {"\xE8\xA9\xB1", number_wa, number_y}};  // 話
+                job.key = "chapter-number-card|" + n;
+                job.render = [pieces] { return laid_out(pieces, number_width, number_height); };
+                return true;
+            }
             std::string label = catalog->ui("intermission_episode");
             const auto at = label.find("{n}");
-            if (at != std::string::npos) label.replace(at, 3, std::to_string(id.scene - story_cards::number_first + 1));
+            if (at != std::string::npos) label.replace(at, 3, n);
             job_for(job, card_style(24), locale, label, "chapter-number");
             return true;
         }
+        const story_cards::Layout* layout = nullptr;
         if (number || campaign::title(rdram[kStageScene ^ 3], locale)) {
             // The two 第１話 placeholder cards: the stage's own title record. A
             // campaign stage's title replaces whichever card its scene shows.
             record = uint16_t(281 + rdram[kStageScene ^ 3]);
         } else {
-            for (const auto& card : story_cards::cards)
-                if (card.scene == id.scene) { record = card.text; break; }
+            for (size_t i = 0; i < std::size(story_cards::cards); ++i)
+                if (story_cards::cards[i].scene == id.scene) {
+                    record = story_cards::cards[i].text; layout = &story_cards::layouts[i];
+                    break;
+                }
         }
         if (!record) return false;
         std::string title = dialogue::ui_text(rdram, record);
         if (title.empty()) return false;
+        // Japanese: the card's own lines in its own lettering, where the card puts them.
+        if (locale == "ja" && layout && layout->lines && lettering()) {
+            if (auto pieces = card_lines(*layout, title); !pieces.empty()) {
+                job.key = "chapter-title-card|" + title;
+                job.render = [pieces, w = layout->width, h = layout->height] { return laid_out(pieces, w, h); };
+                return true;
+            }
+        }
+        // As the card has them: the part ((上), (Part 2)) on a line of its own, and where the card
+        // breaks after its first ！, a break after the translation's first ！ or ，.
+        std::string part;
+        if (layout && layout->lines > (layout->split ? 2 : 1) && (title.ends_with(")") || title.ends_with("\xEF\xBC\x89"))) {
+            size_t open = std::string::npos;
+            for (const std::string mark : {"(", "\xEF\xBC\x88"})   // ( （
+                if (const auto found = title.rfind(mark); found != std::string::npos && (open == std::string::npos || found > open))
+                    open = found;
+            if (open != std::string::npos && open > 0) {
+                part = title.substr(open);
+                title.erase(title.find_last_not_of(' ', open - 1) + 1);
+            }
+        }
+        if (layout && layout->split) {
+            const std::string marks[] = {"\xEF\xBC\x81", "!", "\xEF\xBC\x9F", "?", "\xEF\xBC\x8C", ","};   // ！ ! ？ ? ， ,
+            size_t at = std::string::npos;
+            for (const auto& mark : marks)
+                if (const auto found = title.find(mark); found < at) at = found;
+            if (at != std::string::npos) {
+                size_t after = at;
+                for (bool more = true; more;) {   // past a run of marks (!?)
+                    more = false;
+                    for (const auto& mark : marks)
+                        if (title.compare(after, mark.size(), mark) == 0) { after += mark.size(); more = true; break; }
+                }
+                if (const auto next = title.find_first_not_of(' ', after); next != std::string::npos)
+                    title = title.substr(0, after) + "<BR>" + title.substr(next);
+            }
+        }
         if (cjk) title = "\xE3\x80\x8C" + title + "\xE3\x80\x8D";   // 「」
+        if (!part.empty()) title += "<BR>" + part;
         Style style = card_style(cjk ? 19 : 17);
-        style.width = 280; style.max_height = 64;
+        style.width = 280; style.max_height = 84;
         job_for(job, style, locale, title, "chapter-title");
         job.anchor = TextJob::Anchor::top;
         return true;
