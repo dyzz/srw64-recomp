@@ -633,6 +633,7 @@
     "stage_info_na": "Not on this route",
     "stage_info_pending": "Undecided",
     "stage_info_kills": "Kills",
+    "ability_kills": "Kills",
     "stage_info_third": "Third party",
     "stage_info_retreat": "Retreats",
     "stage_info_ark": "Ark",

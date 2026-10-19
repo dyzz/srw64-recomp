@@ -808,6 +808,10 @@ void load_0008F4B0_func_801D2378(uint8_t* rdram, recomp_context* ctx) {
 void load_0008F4B0_func_801D2480(uint8_t* rdram, recomp_context* ctx) {
     if (native_built(srw64_game_hooks.ability_build && srw64_game_hooks.ability_build(rdram, ctx, 15))) return;
     srw64_original_ability_pilot_open(rdram, ctx);
+    // The original page (801C936C) is drawn: the pilot's kills left of the LRZ hint.
+    srw64::ui_text::clear_small();
+    const uint32_t pilot = 0x80172F40 + srw64::guest::read(rdram, 0x801DEC5C, 4) * 0x4C;
+    srw64::pilot_kills::draw(rdram, ctx, pilot, 0x78, 0x10, 70, [&] { return srw64::pilot_kills::intermission_handle(rdram, ctx); });
 }
 void load_0008F4B0_func_801D24C8(uint8_t* rdram, recomp_context* ctx) {
     quiet_latch(rdram);

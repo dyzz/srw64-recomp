@@ -39,7 +39,7 @@ constexpr uint32_t unit_en=0x08,unit_en_max=0x0A,unit_size_flags=0x0C,unit_move_
 constexpr uint32_t display_hp=0x801DEB08,display_move=0x801DD14C,display_mobility=0x801DD14E,display_armor=0x801DEB06,display_limit=0x801DEB04,air_override=0x801DDA06;
 // Pilot records: 100 of 0x4C bytes at 0x80172F40.
 constexpr uint32_t pilots=0x80172F40,pilot_size=0x4C,pilot_number=0x02,pilot_flags=0x04,pilot_level=0x05,pilot_skill_level=0x06,pilot_skill2=0x07,pilot_skill3=0x08,
-    pilot_spirit_count=0x0A,pilot_spirits=0x0B,pilot_exp=0x12,pilot_sp=0x16,pilot_sp_max=0x18,pilot_morale=0x20,pilot_melee=0x22,pilot_ranged=0x24,pilot_evade=0x26,pilot_hit=0x28,
+    pilot_spirit_count=0x0A,pilot_spirits=0x0B,pilot_exp=0x12,pilot_kills=0x14,pilot_sp=0x16,pilot_sp_max=0x18,pilot_morale=0x20,pilot_melee=0x22,pilot_ranged=0x24,pilot_evade=0x26,pilot_hit=0x28,
     pilot_reaction=0x2A,pilot_skill=0x2C,pilot_terrain=0x2E,pilot_skill_flags=0x36,pilot_has_unit=0x37,pilot_unit_field=0x38;
 constexpr unsigned pilot_count=100;
 // Tables in the overlay: movement icons, the special-ability list {mask u32, text u16, width u8}.
@@ -406,6 +406,10 @@ json pilot_json(uint8_t* ram,recomp_context* ctx) {
         {"stats",stats},{"over",over},{"mobility",mobility},{"spirits",spirits},{"spirits_later",later},{"skills",skills},{"terrain",terrain},{"index",list_index(ram)},{"count",list_size(ram,true)}};
     // Experience to the next level (8008407C of +0x12); none at level 99.
     if(level!=99)page["next"]=call(ram,ctx,resident_func_8008407C,read(ram,pilot+pilot_exp,2))&0xFFFF;
+    // Kills (+0x14, u16): the original shows them only in the map's 部隊表 (撃墜数表示,
+    // 801EC3A0); this page adds them (user, 2026-10-19). Every pilot here is ours, so the
+    // field is not an enemy's dummy count (battle-formulas.md §7).
+    page["kills"]=read(ram,pilot+pilot_kills,2);
     return page;
 }
 bool pilot_build(uint8_t* ram,recomp_context* ctx) {

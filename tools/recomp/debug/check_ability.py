@@ -131,6 +131,8 @@ keys('z', pause=1.5)
 p = wait_page('pilot')
 first = names[0]
 check('pilot-page', p['pilot']['name'] == first and p['pilot']['level'] >= 1 and p['sp_max'] > 0 and p['morale'] == 100 and p['stats']['melee'] > 0 and all(k in p['stats'] for k in ('melee', 'ranged', 'hit', 'evade', 'skill', 'reaction')) and len(p['terrain']) == 4 and p['spirits'], p)
+# Kills (+0x14), which the original shows only in the map's 部隊表: 万丈 has six after stage one.
+check('pilot-page-kills', p['pilot']['name'] == '万丈' and p.get('kills') == 6, {'name': p['pilot']['name'], 'kills': p.get('kills')})
 note('pilot-page-detail', {k: p[k] for k in ('morale', 'sp', 'sp_max', 'spirits', 'skills', 'terrain', 'over') if k in p} | {'next': p.get('next')})
 shot('ability-pilot.png')
 keys('e', pause=1.5)

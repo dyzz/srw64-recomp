@@ -44,6 +44,8 @@ UI_KEYS |= {"library_open", "library_title", "library_tab_units", "library_tab_p
 # The stage info page (src/native/ui/frontend.cpp, docs/design/stage-info.md).
 UI_KEYS |= {"touch_quick_load", "quick_load_open", "quick_load_title", "quick_load_text", "quick_load_note", "quick_load_yes", "quick_load_no", "quick_load_none", "quick_load_other_stage", "quick_load_unavailable", "quick_load_done", "quick_load_failed"}
 UI_KEYS |= {"touch_stage_info", "stage_info_ark", "stage_info_brad", "stage_info_done", "stage_info_enemies", "stage_info_episode", "stage_info_hint", "stage_info_hint_pad", "stage_info_kills", "stage_info_manami", "stage_info_missed", "stage_info_missing", "stage_info_na", "stage_info_next", "stage_info_no_enemies", "stage_info_no_secrets", "stage_info_not_started", "stage_info_open", "stage_info_others", "stage_info_pending", "stage_info_retreat", "stage_info_row", "stage_info_row_note", "stage_info_secrets", "stage_info_serein", "stage_info_step", "stage_info_third", "stage_info_title", "stage_info_unavailable"}
+# The pilot ability page's kill count (frontend.cpp ability pages).
+UI_KEYS |= {"ability_kills"}
 # Carrying finished hidden elements into a later playthrough (legacy.cpp, frontend.cpp stage_panel).
 UI_KEYS |= {"stage_info_done_inherited", "stage_info_ever", "stage_info_legacy", "legacy_joined"}
 # The battle viewer on the title (docs/design/battle-viewer.md).

@@ -633,6 +633,7 @@
     "stage_info_na": "このルートでは対象外",
     "stage_info_pending": "未決定",
     "stage_info_kills": "撃墜数",
+    "ability_kills": "撃墜数",
     "stage_info_third": "第三勢力",
     "stage_info_retreat": "撤退",
     "stage_info_ark": "アーク",

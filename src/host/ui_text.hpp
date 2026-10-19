@@ -22,5 +22,10 @@ bool native_numbers();
 // spirit's name while the slot still prints `text` there (the engine's ASCII has digits but
 // no letters, so "Lv" is the host's). clear_small() drops the marks of a page.
 void mark_small(unsigned slot, int x, int y, const std::string& text, const std::string& shown);
+// A figure the host adds to an original page with a label of its own (pilot_kills.hpp):
+// the number `text` that pool slot `slot` prints at (x, y) is drawn as the reading
+// language's UI string `key`, a space and the number, in the label face from (x, y),
+// squeezed into `width`. clear_small() drops it too.
+void mark_label(unsigned slot, int x, int y, const std::string& text, const std::string& key, int width);
 void clear_small();
 }
