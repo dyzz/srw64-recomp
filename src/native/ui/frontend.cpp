@@ -5397,7 +5397,7 @@ void sync() {
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_view"),
                       language->ui("menu_fullscreen"),language->ui("menu_window_scale"),language->ui("menu_about"),language->ui("menu_check_updates"),
-                      language->ui("menu_game"),language->ui("menu_exit")},window_menu_state());
+                      language->ui("menu_game"),language->ui("menu_exit"),language->ui("menu_tools"),language->ui("menu_screenshot")},window_menu_state());
     if(app_menu::take_settings_request())choose("settings-open");
     if(app_menu::take_about_request())open_about("");
     if(app_menu::take_update_request()){open_about("update-check");update::check(true);}

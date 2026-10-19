@@ -3,7 +3,7 @@
 #include <atomic>
 
 namespace {
-std::atomic_bool requested{}, reload{}, fullscreen{}, installed{}, about{}, updates{};
+std::atomic_bool requested{}, reload{}, fullscreen{}, installed{}, about{}, updates{}, screenshot{};
 std::atomic_int scale{};
 void on_main(dispatch_block_t work) {
     if ([NSThread isMainThread]) work();
@@ -18,6 +18,7 @@ void on_main(dispatch_block_t work) {
 - (void)scaleWindow:(id)sender;
 - (void)openAbout:(id)sender;
 - (void)checkForUpdates:(id)sender;
+- (void)saveScreenshot:(id)sender;
 @end
 @implementation SRW64AppMenuTarget
 - (void)openSettings:(id)sender { requested = true; }
@@ -26,6 +27,7 @@ void on_main(dispatch_block_t work) {
 - (void)scaleWindow:(id)sender { scale = int([sender tag]); }
 - (void)openAbout:(id)sender { about = true; }
 - (void)checkForUpdates:(id)sender { updates = true; }
+- (void)saveScreenshot:(id)sender { screenshot = true; }
 @end
 
 namespace srw64::app_menu {
@@ -39,6 +41,8 @@ NSMenuItem* fullscreen_item;
 NSMenuItem* scale_items[kScales];
 NSMenuItem* about_item;    // SDL's About entry, turned to the settings window's About page
 NSMenuItem* updates_item;
+NSMenuItem* tools_item;  // the Tools menu's entry in the menu bar
+NSMenuItem* screenshot_item;
 std::string last_title;
 WindowState last_state{false, -1, -1};
 
@@ -51,7 +55,7 @@ std::string scale_title(const std::string& pattern, int n) {
 }
 void update(const Labels& labels, const WindowState& state) {
     const std::string title = labels.settings + "\n" + labels.reload + "\n" + labels.view + "\n" + labels.fullscreen + "\n" + labels.window_scale +
-                              "\n" + labels.about + "\n" + labels.check_updates;
+                              "\n" + labels.about + "\n" + labels.check_updates + "\n" + labels.tools + "\n" + labels.screenshot;
     if (installed && title == last_title && state.fullscreen == last_state.fullscreen &&
         state.scale == last_state.scale && state.largest == last_state.largest) return;
     on_main(^{
@@ -103,6 +107,19 @@ void update(const Labels& labels, const WindowState& state) {
             view_item = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
             view_item.submenu = view;
             [NSApp.mainMenu insertItem:view_item atIndex:1];
+
+            // F12 as the key the game takes too (graphics.cpp); the menu shows it.
+            NSMenu* tools = [[NSMenu alloc] initWithTitle:@""];
+            tools.autoenablesItems = NO;
+            const unichar f12 = NSF12FunctionKey;
+            screenshot_item = [[NSMenuItem alloc] initWithTitle:@"" action:@selector(saveScreenshot:)
+                                                  keyEquivalent:[NSString stringWithCharacters:&f12 length:1]];
+            screenshot_item.keyEquivalentModifierMask = 0;
+            screenshot_item.target = target;
+            [tools addItem:screenshot_item];
+            tools_item = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
+            tools_item.submenu = tools;
+            [NSApp.mainMenu insertItem:tools_item atIndex:2];
             // SDL's Window menu has its own English Toggle Full Screen on the same keys.
             for (NSMenuItem* entry in NSApp.windowsMenu.itemArray)
                 if (entry.action == @selector(toggleFullScreen:)) entry.hidden = YES;
@@ -114,6 +131,9 @@ void update(const Labels& labels, const WindowState& state) {
         view_item.title = text(labels.view);
         view_item.submenu.title = text(labels.view);
         fullscreen_item.title = text(labels.fullscreen);
+        tools_item.title = text(labels.tools);
+        tools_item.submenu.title = text(labels.tools);
+        screenshot_item.title = text(labels.screenshot);
         fullscreen_item.state = state.fullscreen ? NSControlStateValueOn : NSControlStateValueOff;
         for (int n = 1; n <= kScales; ++n) {
             scale_items[n - 1].title = text(scale_title(labels.window_scale, n));
@@ -139,19 +159,20 @@ bool activate(const std::string& title) {
     NSString* wanted = text(title);
     __block bool activated = false;
     on_main(^{
-        NSMenu* view = view_item.submenu;
-        for (NSMenuItem* entry in view.itemArray)
-            if ([entry.title isEqualToString:wanted] && entry.enabled && entry.action) {
-                [view performActionForItemAtIndex:[view indexOfItem:entry]];
-                activated = true;
-                return;
-            }
+        for (NSMenu* menu in @[ view_item.submenu ?: [NSMenu new], tools_item.submenu ?: [NSMenu new] ])
+            for (NSMenuItem* entry in menu.itemArray)
+                if ([entry.title isEqualToString:wanted] && entry.enabled && entry.action) {
+                    [menu performActionForItemAtIndex:[menu indexOfItem:entry]];
+                    activated = true;
+                    return;
+                }
     });
     return activated;
 }
 bool take_settings_request() { return requested.exchange(false); }
 bool take_about_request() { return about.exchange(false); }
 bool take_update_request() { return updates.exchange(false); }
+bool take_screenshot_request() { return screenshot.exchange(false); }
 bool take_reload_request() { return reload.exchange(false); }
 bool take_fullscreen_request() { return fullscreen.exchange(false); }
 int take_scale_request() { return scale.exchange(0); }
@@ -161,6 +182,7 @@ void shutdown() {
         [reload_item.menu removeItem:reload_item];
         [separator.menu removeItem:separator];
         [view_item.menu removeItem:view_item];
+        [tools_item.menu removeItem:tools_item];
         [updates_item.menu removeItem:updates_item];
         if (about_item) {
             about_item.target = nil;
@@ -168,10 +190,11 @@ void shutdown() {
         }
         about_item = nil; updates_item = nil;
         item = nil; reload_item = nil; separator = nil; view_item = nil; fullscreen_item = nil;
+        tools_item = nil; screenshot_item = nil;
         for (auto& entry : scale_items) entry = nil;
         target = nil;
     });
-    installed = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false;
+    installed = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false; screenshot = false;
     last_title.clear(); last_state = {false, -1, -1};
 }
 }

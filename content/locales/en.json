@@ -646,6 +646,8 @@
     "menu_window_scale": "Window Size {n}×",
     "menu_game": "Game",
     "menu_exit": "Exit",
+    "menu_tools": "Tools",
+    "menu_screenshot": "Screenshot",
     "font_credit": "Font: HarmonyOS Sans",
     "viewer_open": "Battle Viewer",
     "viewer_title": "Battle Viewer",

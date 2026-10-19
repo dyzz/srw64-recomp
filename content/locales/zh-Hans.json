@@ -646,6 +646,8 @@
     "menu_window_scale": "窗口大小 {n}×",
     "menu_game": "游戏",
     "menu_exit": "退出",
+    "menu_tools": "工具",
+    "menu_screenshot": "截图",
     "font_credit": "字体：HarmonyOS Sans",
     "viewer_open": "战斗鉴赏",
     "viewer_title": "战斗鉴赏",

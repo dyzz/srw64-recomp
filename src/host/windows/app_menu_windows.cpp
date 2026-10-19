@@ -1,7 +1,7 @@
 // The Windows menu bar (app_menu.hpp): always on a window; in full screen it comes down when
 // the mouse reaches the top of the screen and goes away when the mouse leaves it. SDL turns
 // Alt and F10 away from menus, so the bar answers the mouse; the shortcuts it names (Ctrl+,
-// F5, F11) are frontend.cpp's own keys. Everything runs on the window's thread.
+// F5, F11) are frontend.cpp's own keys, F12 graphics.cpp's. Everything runs on the window's thread.
 #include "app_menu.hpp"
 #include <SDL.h>
 #include <SDL_syswm.h>
@@ -12,11 +12,11 @@
 
 namespace srw64::app_menu {
 namespace {
-enum : UINT { kSettings = 1, kReload, kUpdates, kAbout, kExit, kFullscreen = 10, kScale1 = 11 };
-std::atomic_bool requested{}, reload{}, fullscreen{}, about{}, updates{};
+enum : UINT { kSettings = 1, kReload, kUpdates, kAbout, kExit, kFullscreen = 10, kScale1 = 11, kScreenshot = 20 };
+std::atomic_bool requested{}, reload{}, fullscreen{}, about{}, updates{}, screenshot{};
 std::atomic_int scale{};
 HWND hwnd{};
-HMENU bar{}, game{}, view{};
+HMENU bar{}, game{}, view{}, tools{};
 WNDPROC sdl_proc{};
 bool installed = false;
 bool bar_shown = false;
@@ -78,6 +78,7 @@ LRESULT CALLBACK proc(HWND window, UINT message, WPARAM w, LPARAM l) {
         case kUpdates: updates = true; return 0;
         case kAbout: about = true; return 0;
         case kFullscreen: fullscreen = true; return 0;
+        case kScreenshot: screenshot = true; return 0;
         // As the window's close button: SDL's own close event, then its quit.
         case kExit: PostMessageW(window, WM_CLOSE, 0, 0); return 0;
         }
@@ -95,6 +96,7 @@ void attach(SDL_Window* window) {
     bar = CreateMenu();
     game = CreatePopupMenu();
     view = CreatePopupMenu();
+    tools = CreatePopupMenu();
     // Titles come with the first update(); the bar is here before the renderer sizes its
     // swap chain, so the picture never starts under it.
     AppendMenuW(game, MF_STRING, kSettings, L"Settings");
@@ -108,7 +110,9 @@ void attach(SDL_Window* window) {
     AppendMenuW(view, MF_SEPARATOR, 0, nullptr);
     for (int n = 1; n <= kScales; ++n) AppendMenuW(view, MF_STRING, kScale1 + n - 1, std::to_wstring(n).c_str());
     AppendMenuW(bar, MF_POPUP, UINT_PTR(game), L"Marchwind64");
+    AppendMenuW(tools, MF_STRING, kScreenshot, L"Screenshot");
     AppendMenuW(bar, MF_POPUP, UINT_PTR(view), L"View");
+    AppendMenuW(bar, MF_POPUP, UINT_PTR(tools), L"Tools");
     sdl_proc = WNDPROC(SetWindowLongPtrW(hwnd, GWLP_WNDPROC, LONG_PTR(&proc)));
     show_bar(true, !(SDL_GetWindowFlags(window) & (SDL_WINDOW_FULLSCREEN | SDL_WINDOW_MAXIMIZED)));
 }
@@ -117,17 +121,20 @@ void update(const Labels& labels, const WindowState& state) {
     // Leaving full screen, SDL sized the window without the bar: it comes back with its height.
     show_bar(bar_wanted(state.fullscreen), !state.fullscreen && !IsZoomed(hwnd));
     const std::string title = labels.game + "\n" + labels.settings + "\n" + labels.reload + "\n" + labels.view + "\n" + labels.fullscreen +
-                              "\n" + labels.window_scale + "\n" + labels.about + "\n" + labels.check_updates + "\n" + labels.exit;
+                              "\n" + labels.window_scale + "\n" + labels.about + "\n" + labels.check_updates + "\n" + labels.exit +
+                              "\n" + labels.tools + "\n" + labels.screenshot;
     if (installed && title == last_title && state.fullscreen == last_state.fullscreen &&
         state.scale == last_state.scale && state.largest == last_state.largest) return;
     set_text(bar, 0, labels.game, true);
     set_text(bar, 1, labels.view, true);
+    set_text(bar, 2, labels.tools, true);
     set_text(game, kSettings, labels.settings + "\tCtrl+,");
     set_text(game, kReload, labels.reload + "\tF5");
     set_text(game, kUpdates, labels.check_updates);
     set_text(game, kAbout, labels.about);
     set_text(game, kExit, labels.exit + "\tAlt+F4");
     set_text(view, kFullscreen, labels.fullscreen + "\tF11");
+    set_text(tools, kScreenshot, labels.screenshot + "\tF12");
     CheckMenuItem(view, kFullscreen, state.fullscreen ? MF_CHECKED : MF_UNCHECKED);
     for (int n = 1; n <= kScales; ++n) {
         const UINT id = kScale1 + n - 1;
@@ -149,14 +156,15 @@ bool activate_settings() {
 bool activate(const std::string& title) {
     if (!installed) return false;
     const std::wstring wanted = wide(title);
-    for (int i = 0, count = GetMenuItemCount(view); i < count; ++i) {
+    for (HMENU menu : {view, tools})
+    for (int i = 0, count = GetMenuItemCount(menu); i < count; ++i) {
         wchar_t text[256]{};
         MENUITEMINFOW info{};
         info.cbSize = sizeof(info);
         info.fMask = MIIM_STRING | MIIM_ID | MIIM_STATE | MIIM_FTYPE;
         info.dwTypeData = text;
         info.cch = UINT(std::size(text) - 1);
-        if (!GetMenuItemInfoW(view, UINT(i), TRUE, &info) || (info.fType & MFT_SEPARATOR) || (info.fState & MFS_DISABLED)) continue;
+        if (!GetMenuItemInfoW(menu, UINT(i), TRUE, &info) || (info.fType & MFT_SEPARATOR) || (info.fState & MFS_DISABLED)) continue;
         std::wstring name(text);
         name = name.substr(0, name.find(L'\t'));  // without the shortcut
         if (name != wanted) continue;
@@ -168,6 +176,7 @@ bool activate(const std::string& title) {
 bool take_settings_request() { return requested.exchange(false); }
 bool take_about_request() { return about.exchange(false); }
 bool take_update_request() { return updates.exchange(false); }
+bool take_screenshot_request() { return screenshot.exchange(false); }
 bool take_reload_request() { return reload.exchange(false); }
 bool take_fullscreen_request() { return fullscreen.exchange(false); }
 int take_scale_request() { return scale.exchange(0); }
@@ -178,8 +187,8 @@ void shutdown() {
         SetMenu(hwnd, nullptr);
         DestroyMenu(bar);  // with its popups
     }
-    hwnd = nullptr; bar = game = view = nullptr; sdl_proc = nullptr;
-    installed = false; bar_shown = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false;
+    hwnd = nullptr; bar = game = view = tools = nullptr; sdl_proc = nullptr;
+    installed = false; bar_shown = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false; screenshot = false;
     last_title.clear(); last_state = {false, -1, -1};
 }
 }
