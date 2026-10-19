@@ -110,13 +110,15 @@ std::string usage() {
            "(by default from the extension: .ram/.sav ares, .sra project64, .srm retroarch).\n"
            "Without --content, imports the matching ROM into a versioned local cache.\n"
            "--content keeps the developer-only prepared-content path.\n"
+           "Windows/Linux: an existing user-data folder beside the EXE uses local settings/saves,\n"
+           "with system user-data synchronization after normal exit. --user-dir keeps data isolated.\n"
            "--campaign plays a compiled custom campaign (mini_stage.py campaign) with its own\n"
            "saves in DIR/campaigns/<id>/saves.\n"
            "--debug opens the debug interface for tools/recomp/debug (MCP) or tools/release/linux/attach.py:\n"
            "loopback TCP, with the port and token in debug.json in the session's run directory.\n"
            "This entry never runs Python, Git, CMake, Ninja or the recompilers.\n";
 }
-Options parse_options(std::span<const std::string_view> args) {
+Options parse_options(std::span<const std::string_view> args, bool allow_rom_picker) {
     Options options;
     std::vector<std::string_view> seen;
     for (size_t i=0;i<args.size();++i) {
@@ -172,10 +174,10 @@ Options parse_options(std::span<const std::string_view> args) {
         if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
         return options;
     }
-    if (options.rom.empty()) throw std::runtime_error("--rom is required");
+    if (options.rom.empty() && !allow_rom_picker) throw std::runtime_error("--rom is required");
     if (options.new_game && !options.import_save.empty()) throw std::runtime_error("Choose --new-game or --import-save, not both");
     if (!options.campaign.empty() && !options.import_save.empty()) throw std::runtime_error("A campaign keeps its own saves; --import-save is for the main game");
-    options.rom=fs::absolute(options.rom);
+    if (!options.rom.empty()) options.rom=fs::absolute(options.rom);
     if (!options.campaign.empty()) options.campaign=fs::absolute(options.campaign);
     if (!options.content.empty()) options.content=fs::absolute(options.content);
     if (!options.user_dir.empty()) options.user_dir=fs::absolute(options.user_dir);
@@ -214,6 +216,14 @@ fs::path default_user_dir(Platform platform,const EnvironmentLookup& lookup) {
     if (home.empty() || !home.is_absolute()) throw std::runtime_error("HOME is unavailable; pass --user-dir");
     return platform==Platform::MacOS ? home/"Library/Application Support/SRW64Recomp" : home/".local/share/srw64-recomp";
 }
+fs::path desktop_user_dir(const fs::path& game_dir, Platform platform, const EnvironmentLookup& lookup) {
+    if (fs::exists(game_dir/"user-data") || fs::is_symlink(game_dir/"user-data")) {
+        if (fs::is_symlink(game_dir/"user-data")) throw std::runtime_error("user-data must not be a symlink");
+        if (!fs::is_directory(game_dir/"user-data")) throw std::runtime_error("user-data must be a directory");
+        return fs::absolute(game_dir/"user-data");
+    }
+    return default_user_dir(platform,lookup);
+}
 fs::path default_user_dir() {
 #ifdef _WIN32
     constexpr auto platform=Platform::Windows;
@@ -222,7 +232,7 @@ fs::path default_user_dir() {
 #else
     constexpr auto platform=Platform::Linux;
 #endif
-    return default_user_dir(platform,[](const char* key){
+    const EnvironmentLookup lookup=[](const char* key){
 #ifdef _WIN32
         const std::wstring name(key,key+std::char_traits<char>::length(key));
         const auto* value=_wgetenv(name.c_str());
@@ -232,7 +242,8 @@ fs::path default_user_dir() {
 #else
         const auto* value=std::getenv(key);return value?std::string(value):std::string{};
 #endif
-    });
+    };
+    return default_user_dir(platform,lookup);
 }
 fs::path content_path(const fs::path& root,const std::string& relative) {
     const auto path=utf8_path(relative);

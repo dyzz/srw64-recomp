@@ -1,4 +1,4 @@
-add_library(srw64_app STATIC runtime.cpp desktop.cpp sram.cpp save_library.cpp)
+add_library(srw64_app STATIC runtime.cpp desktop.cpp user_sync.cpp sram.cpp save_library.cpp)
 target_compile_features(srw64_app PUBLIC cxx_std_20)
 target_include_directories(srw64_app PUBLIC "${CMAKE_CURRENT_LIST_DIR}/..")
 if(MSVC)
@@ -56,3 +56,7 @@ function(srw64_add_launch json_include)
         target_compile_options(srw64_launch PRIVATE -Wall -Wextra -Wpedantic)
     endif()
 endfunction()
+
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT ANDROID)
+    target_sources(srw64_app PRIVATE desktop_linux.cpp)
+endif()

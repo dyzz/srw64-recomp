@@ -1,4 +1,5 @@
 #include "app/launch.hpp"
+#include "app/desktop.hpp"
 #include "app/sha256.hpp"
 #include "app/sram.hpp"
 #include "json/json.hpp"
@@ -34,7 +35,7 @@ struct Fixture {
         fs::create_directories(options.content/"name-entry");
         atomic_write(options.content/"name-entry/face-27.png","synthetic portrait");
         json catalogs=json::object();
-        for(const std::string locale:{"ja","en"})catalogs[locale]={
+        for(const std::string locale:{"ja","en","zh-Hans"})catalogs[locale]={
             {"config",{{"locale",locale},{"font","test-font"},{"font_size",14},{"mode","replace"}}},
             {"entries",json::object()},{"ui",json::object()},{"catalog_sha256",std::string(64,'b')}};
         data=catalogs["ja"];
@@ -96,6 +97,77 @@ void relocated_boot_and_resume() {
     })==7,"host error code lost");
     check(read_text(f.options.user_dir/"last-session.txt",128)==pointer,"failed host replaced latest save");
     check(load(f.options.content/"dialogue.json").at("config").at("locale")=="ja","bootstrap mutated source content");
+}
+// Exercise the actual bootstrap/settings/SRAM code after moving a complete portable tree.
+void portable_bootstrap_and_move(Platform platform) {
+    Fixture f;
+    fs::create_directory(f.root/"user-data");
+    const EnvironmentLookup lookup=[&](const char*){return f.root.string();};
+    auto options=prepare_desktop_launch({},f.root,platform,lookup);
+    options.rom=f.options.rom;options.content=f.options.content;
+    const DesktopUi ui{[]() -> std::optional<fs::path>{throw std::runtime_error("portable opened picker");},
+                       [](const std::string& error){throw std::runtime_error(error);},{}};
+    const auto launch=[&](const Options& selected,const DesktopReady& ready) {
+        return run_standalone(selected,f.game,[&](int,char** argv){
+            ready();
+            check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")=="en","portable did not boot in English");
+            atomic_write(env("SRW64_PRESENTATION_SETTINGS"),json({{"schema","srw64.presentation-settings.v1"},
+                {"locale","ja"},{"show_fps",true}}).dump());
+            const auto output=fs::path(argv[2]);fs::create_directories(output/"runtime-data/saves");
+            atomic_write(output/"runtime-data/saves"/f.game.save_file,formatted_card);
+            return 0;
+        });
+    };
+    check(run_desktop(options,f.game.rom_sha256,ui,launch)==0,"portable first boot failed");
+    const auto before=f.root,after=fs::path(f.root.string()+"-moved");
+    fs::rename(before,after);f.root=after;
+    options=prepare_desktop_launch({},after,platform,lookup);options.content=after/"content";
+    check(options.language.empty(),"portable saved language was forced");
+    check(run_desktop(options,f.game.rom_sha256,ui,[&](const Options& selected,const DesktopReady& ready){
+        return run_standalone(selected,f.game,[&](int count,char** argv){
+            ready();
+            check(count==6 && read_text(argv[5],32768)==formatted_card,"moved portable SRAM not restored");
+            check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")=="ja","moved portable language not restored");
+            check(load(env("SRW64_PRESENTATION_SETTINGS")).value("show_fps",false),"moved portable settings lost");
+            check(fs::path(argv[1])==after/"a game.z64","moved portable ROM path stale");
+            return 0;
+        });
+    })==0,"moved portable boot failed");
+}
+void installed_and_imported_languages(Platform platform) {
+    Fixture f;
+    const EnvironmentLookup lookup=[&](const char*){return f.root.string();};
+    Options requested;requested.rom=f.options.rom;requested.content=f.options.content;
+    auto options=prepare_desktop_launch(requested,f.root,platform,lookup);
+    const DesktopUi ui{[]() -> std::optional<fs::path>{throw std::runtime_error("unexpected picker");},
+                       [](const std::string& error){throw std::runtime_error(error);},{}};
+    const auto run=[&](const Options& selected,const std::string& expected,bool change_language) {
+        return run_desktop(selected,f.game.rom_sha256,ui,[&](const Options& chosen,const DesktopReady& ready){
+            return run_standalone(chosen,f.game,[&](int,char**){
+                ready();
+                check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")==expected,"Windows language policy did not reach bootstrap");
+                if(change_language)atomic_write(env("SRW64_PRESENTATION_SETTINGS"),json({
+                    {"schema","srw64.presentation-settings.v1"},{"locale","en"},{"show_fps",true}}).dump());
+                return 0;
+            });
+        });
+    };
+    check(run(options,"zh-Hans",true)==0,"ordinary first language changed");
+    options=prepare_desktop_launch(requested,f.root,platform,lookup);
+    check(run(options,"en",false)==0,"ordinary saved language not restored");
+    const auto appdata=options.user_dir;
+    const auto original=read_text(appdata/"presentation.json",65536);
+    // Creating an empty local folder imports the existing English settings before defaults.
+    fs::create_directory(f.root/"user-data");
+    options=prepare_desktop_launch(requested,f.root,platform,lookup);
+    check(run(options,"en",false)==0,"first local launch overwrote imported English with its default");
+    check(read_text(appdata/"presentation.json",65536)==original,"portable import changed installed settings");
+    check(load(options.user_dir/"presentation.json").value("show_fps",false),"portable import lost other settings");
+    // An explicit user directory stays isolated even with the local folder present.
+    requested.user_dir=f.root/"custom";fs::create_directory(requested.user_dir);
+    atomic_write(requested.user_dir/"presentation.json",json({{"schema","srw64.presentation-settings.v1"},{"locale","ja"}}).dump());
+    options=prepare_desktop_launch(requested,f.root,platform,lookup);
+    check(run(options,"ja",false)==0 && !options.sync_system,"custom directory was not isolated");
 }
 void fail_closed() {
     Fixture f;
@@ -229,6 +301,7 @@ void campaigns() {
     rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"a campaign id with a path was accepted");
 }
 }
-int main(int,char** argv){try{relocated_boot_and_resume();fail_closed();touch_preferences();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
+int main(int,char** argv){try{relocated_boot_and_resume();portable_bootstrap_and_move(Platform::Windows);portable_bootstrap_and_move(Platform::Linux);
+    installed_and_imported_languages(Platform::Windows);installed_and_imported_languages(Platform::Linux);fail_closed();touch_preferences();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
     std::cout<<checks<<" bootstrap checks passed\n";return 0;}
 catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}}

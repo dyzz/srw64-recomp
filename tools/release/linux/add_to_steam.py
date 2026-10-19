@@ -24,7 +24,7 @@ HERE = Path(__file__).resolve().parent          # <game>/steam
 LAUNCHER = HERE.parent / 'marchwind64.sh'
 OLD_LAUNCHER = HERE.parent / 'srw64.sh'           # the launcher's name before Marchwind64
 NAMES = {'zh-Hans': '超级机器人大战64', 'en': 'Super Robot Wars 64', 'ja': 'スーパーロボット大戦64'}
-FIRST_LOCALE = 'zh-Hans'                        # marchwind64.sh starts a first launch in Simplified Chinese
+FIRST_LOCALE = 'zh-Hans'                        # Ordinary installation's first language; portable starts in English
 # Steam's grid names for a shortcut's app id, from the files steam_art.py writes:
 # capsule, wide and logo in each game language (capsule-<locale>.png), hero and icon shared.
 ARTWORK = {'capsule': '{}p.png', 'wide': '{}.png', 'hero': '{}_hero.png',
@@ -39,17 +39,32 @@ def artwork_source(kind: str, locale: str) -> Path | None:
     return None
 
 
-def data_dir() -> Path:
+def system_data_dir() -> Path:
     base = os.environ.get('XDG_DATA_HOME', '')
     return (Path(base) if base.startswith('/') else Path.home() / '.local/share') / 'srw64-recomp'
 
 
+def data_dir() -> Path:
+    local = LAUNCHER.parent / 'user-data'
+    if local.exists() or local.is_symlink():
+        if local.is_symlink() or not local.is_dir():
+            raise ValueError('user-data must be a real directory')
+        return local
+    return system_data_dir()
+
+
 def game_locale() -> str:
+    directory = data_dir()
+    local = directory == LAUNCHER.parent / 'user-data'
+    settings = directory / 'presentation.json'
+    # The first portable launch imports missing settings before applying its default.
+    if local and not settings.exists() and not settings.is_symlink():
+        settings = system_data_dir() / 'presentation.json'
     try:
-        locale = json.loads((data_dir() / 'presentation.json').read_text(encoding='utf-8')).get('locale')
-    except (OSError, ValueError):
+        locale = json.loads(settings.read_text(encoding='utf-8')).get('locale')
+    except (OSError, ValueError, AttributeError):
         locale = None
-    return locale if locale in NAMES else FIRST_LOCALE
+    return locale if isinstance(locale, str) and locale in NAMES else ('en' if local else FIRST_LOCALE)
 
 
 def parse_vdf(data: bytes, at: int = 0) -> tuple[dict, int]:

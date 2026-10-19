@@ -89,3 +89,23 @@ HD: unpack the HD pack (the same download as for macOS) as
 (hd.json and art/ directly inside; the first wins when both exist); the game then
 starts in HD, and the settings window switches back to Original.
 Runs on other x86-64 Linux too (glibc 2.35+, a Vulkan driver).
+
+
+便携设置与存档 / Portable settings and saves
+  退出游戏，在 srw64 旁新建 user-data 文件夹即可启用便携模式。
+  本地数据优先，缺少的数据从 XDG_DATA_HOME/srw64-recomp 或
+  ~/.local/share/srw64-recomp 补入。正常退出后同步回系统用户目录：
+  不同存档覆盖前会询问，确认后旧数据留在该目录的 sync-backups/<id>。
+  取消则保留两份，不同步。ROM 放在游戏目录内，和 user-data 一起移动。
+  便携全新数据默认英语，已有语言设置照常恢复。没有 user-data 的旧安装行为不变。
+  文件选择与覆盖提示需要 kdialog 或 zenity；缺少时不会自动批准覆盖。
+
+  Close the game and create user-data beside srw64 to enable portable data.
+  Local settings and saves take precedence; missing groups import from the system
+  user-data directory (absolute XDG_DATA_HOME, else ~/.local/share/srw64-recomp).
+  Normal exit mirrors back to that directory. Different saves require confirmation;
+  replaced data is kept in sync-backups/<id>. Cancel keeps both copies without syncing.
+  Keep the ROM inside the game folder and move the complete folder together.
+  New portable data starts in English; existing/imported language settings are restored.
+  Ordinary installations without user-data stay unchanged. Install kdialog or zenity
+  for file selection and replacement dialogs. --user-dir stays isolated from auto-sync.
