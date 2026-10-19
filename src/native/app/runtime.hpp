@@ -15,6 +15,10 @@ namespace srw64::app {
 namespace fs = std::filesystem;
 struct Options {
     fs::path rom, content, user_dir, import_save, export_save;
+    // Set by the Windows/Linux launcher; ROMs inside this tree can be remembered relatively.
+    fs::path portable_root, sync_user_dir;
+    std::string first_language;
+    bool sync_system{};
     // A compiled custom campaign (srw64.campaign-image.v1, docs/design/custom-campaign.md);
     // it plays from its own save library, user_dir/campaigns/<id>/saves.
     fs::path campaign;
@@ -28,7 +32,7 @@ struct Options {
     // directory; docs/guide/debug-interface.md).
     bool debug{};
 };
-Options parse_options(std::span<const std::string_view> args);
+Options parse_options(std::span<const std::string_view> args, bool allow_rom_picker = false);
 std::string usage();
 // --export-save: writes the saved card for an emulator and returns the file; no ROM
 // or game is needed.
@@ -40,6 +44,8 @@ enum class Platform { Windows, MacOS, Linux };
 using EnvironmentLookup = std::function<std::string(const char*)>;
 fs::path default_user_dir(Platform platform, const EnvironmentLookup& lookup);
 fs::path default_user_dir();
+// An existing user-data directory beside the executable opts into local storage.
+fs::path desktop_user_dir(const fs::path& game_dir, Platform platform, const EnvironmentLookup& lookup);
 fs::path content_path(const fs::path& root, const std::string& relative);
 std::string read_text(const fs::path& path, size_t limit);
 // A campaign id names its save directory: 1-64 letters, digits, '.', '_' or '-'.

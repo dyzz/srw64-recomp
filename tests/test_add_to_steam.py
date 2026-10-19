@@ -2,6 +2,8 @@
 import importlib.util
 from pathlib import Path
 import struct
+import json
+from unittest.mock import patch
 import tempfile
 import unittest
 
@@ -23,6 +25,31 @@ def shortcut(index, app_id, name, exe):
 
 
 class AddToSteamTests(unittest.TestCase):
+    def test_portable_shortcut_language_matches_the_native_launcher(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            game, system = root / "game", root / "xdg/srw64-recomp"
+            game.mkdir()
+            system.mkdir(parents=True)
+            with patch.object(MODULE, "LAUNCHER", game / "marchwind64.sh"), patch.dict(MODULE.os.environ, {"XDG_DATA_HOME": str(system.parent)}):
+                self.assertEqual(MODULE.data_dir(), system)
+                self.assertEqual(MODULE.game_locale(), "zh-Hans")
+                (system / "presentation.json").write_text(json.dumps({"locale": "ja"}))
+                self.assertEqual(MODULE.game_locale(), "ja")
+                local = game / "user-data"
+                local.mkdir()
+                self.assertEqual(MODULE.data_dir(), local)
+                self.assertEqual(MODULE.game_locale(), "ja")  # settings will be imported on first boot
+                (local / "presentation.json").write_text(json.dumps({"locale": "en"}))
+                self.assertEqual(MODULE.game_locale(), "en")
+                (local / "presentation.json").unlink()
+                (system / "presentation.json").unlink()
+                self.assertEqual(MODULE.game_locale(), "en")
+                local.rmdir()
+                local.write_text("not a directory")
+                with self.assertRaisesRegex(ValueError, "real directory"):
+                    MODULE.data_dir()
+
     def test_finds_the_shortcut_that_starts_the_launcher(self):
         launcher = Path("/home/deck/Games/SRW64/marchwind64.sh")
         data = (b"\x00shortcuts\0" + shortcut(0, 2186587176, "Other", '"/usr/bin/other"')

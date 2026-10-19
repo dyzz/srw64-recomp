@@ -28,6 +28,20 @@ PlayLockQuestion play_lock_question(const std::string& locale);
 // rom.z64, rom.n64 and rom.v64, each in the user directory before the game's folder.
 // Empty when none of them is a file.
 fs::path launcher_rom(const fs::path& named, const fs::path& user_dir, const fs::path& game_dir);
+// Shared Windows/Linux policy for desktop and --play (scripts delegate to --play).
+// Existing game_dir/user-data opts in; missing settings/save groups import from the system user directory,
+// and normal desktop exit mirrors back with backup/confirmation. Explicit --user-dir stays
+// isolated. Save-only commands retain their previous system-directory default.
+Options prepare_desktop_launch(Options options, const fs::path& game_dir, Platform platform,
+                               const EnvironmentLookup& lookup = {}, const fs::path& named_rom = {});
+Options prepare_windows_launch(Options options, const fs::path& game_dir,
+                               const EnvironmentLookup& lookup = {}, const fs::path& named_rom = {});
+Options prepare_linux_launch(Options options, const fs::path& game_dir,
+                             const EnvironmentLookup& lookup = {}, const fs::path& named_rom = {});
+// Linux uses kdialog or zenity through argument vectors, never a shell. Missing helpers
+// never authorize replacement; --rom still permits play without a picker.
+DesktopUi linux_desktop_ui();
+fs::path linux_named_rom();
 // macOS implementation only; tests of run_desktop inject deterministic UI.
 DesktopUi macos_desktop_ui();
 bool macos_choose_another_rom();
