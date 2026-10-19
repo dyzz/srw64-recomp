@@ -123,6 +123,17 @@ bool pitch_layer(const uint8_t* rdram, uint32_t slot) {
     const uint8_t kind = layer_kind(rdram, slot);
     return (pitch_kind(kind) || kind == 10 || kind == 11) && frame::wide && wide_map::battle_shown();
 }
+// A sky layer that drifts up or down on its own (kinds 4-7, the space and other-world
+// starfields): wider than 4:3 the game draws it a period to each side (game_hooks.cpp),
+// in the original's art. In HD only its own draw was replaced, so the sides kept the
+// original and a seam showed at the 4:3 edges (a player's recording, 2026-10-19). With
+// an HD picture it is drawn whole like a pitch-placed sky, repeating every 320 by 240 as
+// the game wraps it.
+bool drift_layer(const uint8_t* rdram, uint32_t slot) {
+    if (slot > 4) return false;
+    const uint8_t kind = layer_kind(rdram, slot);
+    return kind >= 4 && kind <= 7 && frame::wide && wide_map::battle_shown();
+}
 // A battle sky's first layer (slots 0-2; the second is 3/4, the scrolling effects 0x19).
 // The game draws it with entry 0 opaque in its colour, the lit windows of the ruins'
 // towers (6075): drawn see-through, they showed whatever the frame held there before
@@ -288,6 +299,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
 }
 
 bool battle_sky(const uint8_t* rdram, uint32_t slot, uint32_t sub) {
+    if (drift_layer(rdram, slot)) return hd_enabled() && asset_of(rdram, slot, sub) >= 0;
     if (!pitch_layer(rdram, slot)) return false;
     if (hd_enabled() && asset_of(rdram, slot, sub) >= 0) return true;
     if (slot >= 300 || sub >= 4) return false;
@@ -332,6 +344,17 @@ void sky_quads(Draw& record, float origin_x, float origin_y, float zoom) {
     }
     record.wide = true;
 }
+// A drifting sky: the picture repeated across the screen and down it from its origin, every
+// 320 by 240, as the game's drawer wraps it.
+void wrap_quads(Draw& record, float origin_x, float origin_y) {
+    const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
+    const float w = source_width, h = source_height;
+    record.quads.clear();
+    for (float y = origin_y - h * std::ceil(origin_y / h); y < frame::kHeight; y += h)
+        for (float x = origin_x - w * std::ceil((origin_x + side) / w); x < frame::kWidth + side; x += w)
+            record.quads.push_back({{x, y, x + w, y + h}, {0, 0, 1, 1}});
+    record.wide = true;
+}
 }  // namespace
 
 void gpu_init() {
@@ -355,6 +378,8 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     // original decoded from the ROM; other pictures only in HD.
     const bool sky = pitch_layer(rdram, draw.slot), first = first_layer(draw.slot);
     int chosen = found != by_ids.end() && hd_enabled() ? found->second : -1;
+    // A drifting sky is drawn whole only with its HD picture (battle_sky).
+    const bool drift = !sky && chosen >= 0 && drift_layer(rdram, draw.slot);
     // The HD pictures keep entry 0 transparent: a first layer's original goes under them.
     const bool plain = chosen >= 0 && assets[size_t(chosen)].extent[0] == 0 && assets[size_t(chosen)].extent[2] == float(source_width);
     const int under = plain && first ? rom_asset(image, palette, true) : -1;
@@ -418,10 +443,15 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         if (oy <= -source_height / 2.f) oy += source_height;
         // Still skies keep their size; the ones the pitch places are enlarged (kSkyZoom).
         sky_quads(record, unwrapped_x(draw.slot, ox), oy, pitch_kind(layer_kind(rdram, draw.slot)) ? kSkyZoom : 1.f);
+    } else if (drift) {
+        float ox = std::fmod(origin[0], float(source_width)), oy = std::fmod(origin[1], float(source_height));
+        if (ox < 0) ox += source_width;
+        if (oy < 0) oy += source_height;
+        wrap_quads(record, ox, oy);
     }
     const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
     const bool whole = x0 == 0 && x1 >= int32_t(frame::kWidth * 4) - 4;
-    if (sky) {
+    if (sky || drift) {
     } else if (side > 0 && whole && -extent[0] >= side - 0.5f && extent[2] - source_width >= side - 0.5f) {
         // A picture drawn out past 4:3: its own sides fill the picture's.
         const float top = y0 / 4.f, bottom = y1 / 4.f;
