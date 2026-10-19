@@ -40,6 +40,8 @@ public class SetupActivity extends Activity {
     private LinearLayout page;
     private TextView message;
     private boolean offerHd, folderSynced;
+    // Set when the kept rom.z64 was not the supported ROM and was removed (RomCheck).
+    private String romRefused;
 
     static File romFile(Activity activity) { return new File(activity.getFilesDir(), "rom.z64"); }
     static File resourceDir(Activity activity) { return new File(activity.getFilesDir(), "resources"); }
@@ -71,6 +73,7 @@ public class SetupActivity extends Activity {
                 runOnUiThread(() -> show("无法解出资源：" + error));
                 return;
             }
+            checkInstalledRom();
             runOnUiThread(this::begin);
         }).start();
     }
@@ -104,11 +107,54 @@ public class SetupActivity extends Activity {
             finish();
             return;
         }
+        if (romRefused != null) {
+            // The kept file was refused at this start: say why before the picker opens.
+            String why = romRefused;
+            romRefused = null;
+            refuseRom(why);
+            return;
+        }
+        pickRom();
+    }
+
+    private void pickRom() {
         show("请选择超级机器人大战 64 的 ROM（日版 Rev 0，.z64）\nChoose your Super Robot Taisen 64 ROM (Japan, Rev 0)");
         Intent pick = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         pick.addCategory(Intent.CATEGORY_OPENABLE);
         pick.setType("*/*");
-        startActivityForResult(pick, PICK_ROM);
+        try { startActivityForResult(pick, PICK_ROM); }
+        catch (android.content.ActivityNotFoundException error) {
+            show("这台设备没有可用的文件选择器，无法选择 ROM。\nThis device has no file picker to choose the ROM with.");
+        }
+    }
+
+    private void refuseRom(String why) {
+        show(why);
+        button("重新选择 ROM\nChoose the ROM again", this::pickRom);
+    }
+
+    // A rom.z64 kept by an earlier version is checked once (then by its size and time):
+    // a wrong one is removed, so the launcher asks again instead of the game closing.
+    private void checkInstalledRom() {
+        File rom = romFile(this), stamp = new File(getFilesDir(), "rom.checked");
+        if (!rom.isFile()) return;
+        String identity = rom.length() + ":" + rom.lastModified();
+        try {
+            if (stamp.isFile() && new String(Files.readAllBytes(stamp.toPath()), StandardCharsets.UTF_8).equals(identity)) return;
+        } catch (IOException ignored) {
+            // Checked again below.
+        }
+        RomCheck.Result checked = RomCheck.installed(rom);
+        if (checked == RomCheck.Result.OK) {
+            try { Files.write(stamp.toPath(), identity.getBytes(StandardCharsets.UTF_8)); }
+            catch (IOException ignored) { /* checked again next time */ }
+            return;
+        }
+        rom.delete();
+        stamp.delete();
+        romRefused = "之前选择的 ROM 不能用，游戏因此一启动就退出。请重新选择。\n"
+                + "The ROM chosen before cannot be used, so the game closed at once. Please choose it again.\n\n"
+                + RomCheck.explain(checked);
     }
 
     // Once, right after the ROM: the HD pack is optional and can come later.
@@ -157,7 +203,11 @@ public class SetupActivity extends Activity {
         Intent pick = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         pick.addCategory(Intent.CATEGORY_OPENABLE);
         pick.setType("*/*");
-        startActivityForResult(pick, PICK_HD);
+        try { startActivityForResult(pick, PICK_HD); }
+        catch (android.content.ActivityNotFoundException error) {
+            show("这台设备没有可用的文件选择器。\nThis device has no file picker.");
+            if (romFile(this).isFile()) button("开始游戏\nPlay", this::next);
+        }
     }
 
     @Override
@@ -186,23 +236,41 @@ public class SetupActivity extends Activity {
         }
         if (request != PICK_ROM) return;
         if (uri == null) {
-            show("没有选择 ROM。重新打开应用再选一次。\nNo ROM chosen; open the app again to choose one.");
+            show("没有选择 ROM。\nNo ROM chosen.");
+            button("选择 ROM\nChoose the ROM", this::pickRom);
             return;
         }
-        show("正在复制 ROM…\nCopying the ROM…");
+        show("正在检查并复制 ROM…\nChecking and copying the ROM…");
         new Thread(() -> {
             File target = romFile(this), partial = new File(getFilesDir(), "rom.z64.part");
+            RomCheck.Result checked;
             try (InputStream in = getContentResolver().openInputStream(uri); OutputStream out = new FileOutputStream(partial)) {
-                copy(in, out);
-            } catch (IOException error) {
+                if (in == null) throw new IOException("no data");
+                checked = RomCheck.copy(in, out);
+            } catch (IOException | RuntimeException error) {
                 partial.delete();
-                runOnUiThread(() -> show("无法读取 ROM：" + error));
+                runOnUiThread(() -> {
+                    show("无法读取 ROM：" + error + "\nCould not read the ROM.");
+                    button("重新选择 ROM\nChoose the ROM again", this::pickRom);
+                });
                 return;
             }
-            // The host checks the ROM itself and says when it is not the supported one.
+            if (checked != RomCheck.Result.OK) {
+                partial.delete();
+                RomCheck.Result why = checked;
+                runOnUiThread(() -> refuseRom(RomCheck.explain(why)));
+                return;
+            }
             if (!partial.renameTo(target)) {
+                partial.delete();
                 runOnUiThread(() -> show("无法保存 ROM\nCould not save the ROM"));
                 return;
+            }
+            try {
+                Files.write(new File(getFilesDir(), "rom.checked").toPath(),
+                        (target.length() + ":" + target.lastModified()).getBytes(StandardCharsets.UTF_8));
+            } catch (IOException ignored) {
+                // Checked again at the next start.
             }
             offerHd = true;
             runOnUiThread(this::next);
