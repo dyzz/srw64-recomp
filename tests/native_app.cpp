@@ -294,9 +294,16 @@ void rom_byte_orders() {
     std::string other(supported_rom_size,'\0');other.replace(0,4,z64.substr(0,4));
     atomic_write(dir/"other.z64",other);
     check(rom_problem(dir/"other.z64")==RomProblem::wrong_game,"a full-size dump of something else is another game");
+    problem=RomProblem::wrong_game;
+    try{z64_rom(dir/"gone.z64",dir/"user",expected);}catch(const RomRefused& e){problem=e.problem;}
+    check(problem==RomProblem::missing,"a missing file is refused as missing");
+    problem=RomProblem::wrong_game;
+    try{z64_rom(dir/"user",dir/"user",expected);}catch(const RomRefused& e){problem=e.problem;}
+    check(problem==RomProblem::missing,"a folder is refused as missing");
     check(rom_refused_message(RomProblem::not_n64,dir/"game.zip","zh-Hans").find("解压")!=std::string::npos &&
           rom_refused_message(RomProblem::wrong_game,dir/"game.zip","en").find("Japan, Rev 0")!=std::string::npos &&
-          rom_refused_message(RomProblem::wrong_size,dir/"game.zip","ja").find("32 MB")!=std::string::npos,"messages in each language");
+          rom_refused_message(RomProblem::wrong_size,dir/"game.zip","ja").find("32 MB")!=std::string::npos &&
+          rom_refused_message(RomProblem::missing,dir/"gone.z64","zh-Hans").find("找不到")!=std::string::npos,"messages in each language");
     fs::remove_all(dir);
 }
 

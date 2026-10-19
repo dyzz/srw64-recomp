@@ -1,4 +1,5 @@
 #include "app/desktop.hpp"
+#include "app/rom_order.hpp"
 #include "app/sha256.hpp"
 #include <chrono>
 #include <iostream>
@@ -76,6 +77,10 @@ void missing_and_wrong_rom() {
     f.selections={wrong,f.rom};
     check(f.run()==0 && f.launches==1,"ROM retry failed");
     check(f.errors.size()==2 && f.picked==2,"missing/bad ROM not reported");
+    // In the player's words: the moved file is missing, the other is not an N64 ROM.
+    const auto locale=player_locale(f.options);
+    check(f.errors[0].starts_with(rom_refused_message(RomProblem::missing,f.root/"moved.z64",locale)),"moved ROM message");
+    check(f.errors[1].starts_with(rom_refused_message(RomProblem::not_n64,fs::canonical(wrong),locale)),"wrong file message");
     // Corrupt preferences do not get treated as a path relative to the app.
     atomic_write(f.options.user_dir/"last-rom.txt","relative.z64");
     f.selections.push_back(std::nullopt);

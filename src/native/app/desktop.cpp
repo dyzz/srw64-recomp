@@ -34,9 +34,14 @@ std::string saved_locale(const fs::path& user_dir) {
 fs::path validate_rom(const fs::path& path, const std::string& expected, const std::string& locale) {
     // Bound IO before hashing. The authoritative, exact identity/size checks
     // remain in run_standalone and the importer, on their own read buffer.
-    const auto resolved = fs::canonical(path);
-    if (!fs::is_regular_file(resolved) || fs::file_size(resolved) > 64u * 1024u * 1024u)
-        throw std::runtime_error("Select a regular Super Robot Wars 64 ROM file.");
+    // A remembered ROM that was moved or deleted, or a folder: the player's message, not
+    // the file system's.
+    std::error_code missing;
+    const auto resolved = fs::canonical(path, missing);
+    if (missing || !fs::is_regular_file(resolved, missing))
+        throw std::runtime_error(rom_refused_message(RomProblem::missing, path, locale));
+    if (fs::file_size(resolved) > 64u * 1024u * 1024u)
+        throw std::runtime_error(rom_refused_message(RomProblem::wrong_size, resolved, locale));
     // Any byte order (.z64, .v64, .n64); the launch loads a .z64 copy (rom_order.hpp).
     if (!rom_matches_any_order(resolved, expected))
         throw std::runtime_error(rom_refused_message(rom_problem(resolved), resolved, locale));
