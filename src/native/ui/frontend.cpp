@@ -5854,7 +5854,16 @@ void require(){if(!context)throw debug::RpcError(debug::ServerError,"shared UI i
 }
 void window_init(SDL_Window* value,const std::filesystem::path& path){window=value;output=path;system.SetWindow(window);input.defer_sdl(true);app_menu::attach(window);}
 void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device);ready=true;}
-void update(){auto lock=lock_ui();if(!ready)return;SDL_GetWindowSizeInPixels(window,&pixels_w,&pixels_h);int w,h;SDL_GetWindowSize(window,&w,&h);pixel_ratio=w?float(pixels_w)/w:1;if(!initialized)initialize();sync();input.flush_sdl();}
+// A minimised window keeps the last layout. On Windows SDL 2.26 reads the pixel size from the
+// client area, 0 x 0 while minimised, but keeps the size in points: the ratio was 0, the dp
+// NaN, and a page laid out then (the settings window, the battle page) kept RmlUi in its layout
+// for good on this thread, the window's: Windows called it not responding (a player, 0.4.9;
+// reproduced on a Windows desktop with the settings window open, and gone with this).
+void update(){auto lock=lock_ui();if(!ready)return;
+    int pw=0,ph=0,w=0,h=0;SDL_GetWindowSizeInPixels(window,&pw,&ph);SDL_GetWindowSize(window,&w,&h);
+    if(pw<=0 || ph<=0 || w<=0 || h<=0 || (SDL_GetWindowFlags(window)&SDL_WINDOW_MINIMIZED)){input.flush_sdl();return;}
+    pixels_w=pw;pixels_h=ph;pixel_ratio=float(pw)/w;
+    if(!initialized)initialize();sync();input.flush_sdl();}
 uint32_t touch_buttons() {
     // Only the UI thread writes the pulse. A polling reader clearing an expired
     // pulse could erase a new tap between its mask and deadline publications.
