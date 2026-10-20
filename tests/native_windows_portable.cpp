@@ -28,7 +28,7 @@ void seed(const fs::path& root) {
     const auto rom=root/"roms"/fs::path(u8"日本語 ROM.z64");
     atomic_write(rom,rom_bytes);
     auto options=prepare_windows_launch({},root,[&](const char*){return utf8(root.parent_path()/"AppData");});
-    check(options.language.empty() && options.first_language=="en","portable first launch not English");
+    check(options.language.empty() && options.first_language==system_language(),"portable first launch not in the system's language");
     options.rom=rom;
     bool launched=false;
     const DesktopUi ui{[]() -> std::optional<fs::path> {throw std::runtime_error("unexpected picker");},
@@ -62,7 +62,7 @@ void policy() {
     const EnvironmentLookup lookup=[&](const char* key){check(std::string_view(key)=="LOCALAPPDATA","unexpected environment key");return utf8(appdata);};
     auto options=prepare_windows_launch({},game,lookup);
     check(options.user_dir==appdata/"SRW64Recomp" && !options.sync_system,"installed directory changed");
-    check(options.first_language=="zh-Hans","installed first language changed");
+    check(options.first_language==system_language(),"installed first launch not in the system's language");
     fs::create_directories(options.user_dir/"saves");
     atomic_write(options.user_dir/"presentation.json",settings);
     atomic_write(options.user_dir/"saves/keep.txt","AppData progress");
@@ -216,7 +216,7 @@ void exit_synchronization() {
         [&](const std::string&){++errors;},[&](const std::string&,const std::string&,const std::string&){++prompts;return allow;}};
     const auto launch=[&](const Options& selected,const DesktopReady& ready) {
         Session session(selected);ready();
-        check(selected.language=="en","new portable language missing");
+        check(selected.language==system_language(),"new portable language missing");
         atomic_write(selected.user_dir/"saves/progress.txt","portable progress");return 0;
     };
     check(run_desktop(options,rom_hash(),ui,launch)==0 && prompts==1 && errors==0,"exit did not offer conflict choice");

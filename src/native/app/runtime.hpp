@@ -46,6 +46,19 @@ fs::path default_user_dir(Platform platform, const EnvironmentLookup& lookup);
 fs::path default_user_dir();
 // An existing user-data directory beside the executable opts into local storage.
 fs::path desktop_user_dir(const fs::path& game_dir, Platform platform, const EnvironmentLookup& lookup);
+// The first launch's language, before the player picks one: the first of the system's
+// preferred languages (BCP 47 or POSIX names, most preferred first) that is Chinese (any
+// script or region: zh-Hans), Japanese or English; English when none is.
+// SRW64_SYSTEM_LANGUAGE, when set, stands for the system's list (tests).
+std::string first_language(const std::vector<std::string>& preferred);
+std::vector<std::string> preferred_languages();
+// Steam's own interface language from its registry.vdf text, as a language code for
+// first_language ("schinese" and "tchinese" zh, "japanese" ja, "english" en, any other
+// Steam name as it is); empty when the text names none. On Linux a game Steam started
+// (SteamGameId or SteamAppId set) puts it before the locale: SteamOS runs games in
+// en_US whatever language Steam shows.
+std::string steam_language(std::string_view registry);
+inline std::string system_language() { return first_language(preferred_languages()); }
 fs::path content_path(const fs::path& root, const std::string& relative);
 std::string read_text(const fs::path& path, size_t limit);
 // A campaign id names its save directory: 1-64 letters, digits, '.', '_' or '-'.
@@ -62,9 +75,11 @@ fs::path executable_path();
 // A file or directory shipped with the program: Contents/Resources/<name> in a
 // macOS bundle, else <name> beside the executable; empty when there is none.
 fs::path bundled_resource(const std::string& name);
-// <name> in the folder the player put the game in: beside the .app on macOS, beside
-// the executable elsewhere; empty when there is none (and on Android, which has no
-// such folder).
+// The folder the player put the game in: the one holding the .app on macOS, the
+// executable's elsewhere; empty when the system does not say, and on Android, which has
+// no such folder.
+fs::path game_folder();
+// <name> in game_folder(); empty when there is none.
 fs::path beside_game(const std::string& name);
 void set_environment(const std::string& key, const std::string& value);
 void clear_runtime_environment();

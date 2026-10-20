@@ -110,7 +110,7 @@ void portable_bootstrap_and_move(Platform platform) {
     const auto launch=[&](const Options& selected,const DesktopReady& ready) {
         return run_standalone(selected,f.game,[&](int,char** argv){
             ready();
-            check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")=="en","portable did not boot in English");
+            check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")==system_language(),"portable did not boot in the system's language");
             atomic_write(env("SRW64_PRESENTATION_SETTINGS"),json({{"schema","srw64.presentation-settings.v1"},
                 {"locale","ja"},{"show_fps",true}}).dump());
             const auto output=fs::path(argv[2]);fs::create_directories(output/"runtime-data/saves");
@@ -152,7 +152,7 @@ void installed_and_imported_languages(Platform platform) {
             });
         });
     };
-    check(run(options,"zh-Hans",true)==0,"ordinary first language changed");
+    check(run(options,system_language(),true)==0,"ordinary first launch not in the system's language");
     options=prepare_desktop_launch(requested,f.root,platform,lookup);
     check(run(options,"en",false)==0,"ordinary saved language not restored");
     const auto appdata=options.user_dir;
@@ -219,6 +219,17 @@ void touch_preferences() {
         check(saved.value("show_fps",false) && saved.at("cheats")==json({"funds"}),"language override lost the game's own settings");
         return 0;
     })==0,"touch preferences launch failed");
+}
+// No --language and nothing saved (the first launch): the system's language when the
+// content has it (here ja and en, ja its own), and nothing written for it.
+void first_launch_language() {
+    Fixture f;
+    const auto expected=f.data["locale_catalogs"].contains(system_language())?system_language():std::string("ja");
+    check(run_standalone(f.options,f.game,[&](int,char**) {
+        check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")==expected,"first launch not in the system's language");
+        return 0;
+    })==0,"first launch failed");
+    check(!fs::exists(f.options.user_dir/"presentation.json"),"the first launch's language saved as a choice");
 }
 // A full-HD bundle (tools/release/prepare_hd_bundle.py): the launcher looks for hd
 // beside the executable when it is not inside a .app.
@@ -302,6 +313,6 @@ void campaigns() {
 }
 }
 int main(int,char** argv){try{relocated_boot_and_resume();portable_bootstrap_and_move(Platform::Windows);portable_bootstrap_and_move(Platform::Linux);
-    installed_and_imported_languages(Platform::Windows);installed_and_imported_languages(Platform::Linux);fail_closed();touch_preferences();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
+    installed_and_imported_languages(Platform::Windows);installed_and_imported_languages(Platform::Linux);fail_closed();touch_preferences();first_launch_language();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
     std::cout<<checks<<" bootstrap checks passed\n";return 0;}
 catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}}

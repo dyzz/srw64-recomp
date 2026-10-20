@@ -72,6 +72,11 @@ std::string next_locale(const std::string& current) {
 std::string display_name(const std::string& locale) {
     auto it=locale_names.find(locale);return it==locale_names.end()?locale:it->second;
 }
+std::vector<std::pair<std::string,std::string>> locale_options() {
+    std::vector<std::pair<std::string,std::string>> result;
+    for(const auto& locale:locale_order)result.emplace_back(locale,display_name(locale));
+    return result;
+}
 std::string language_choices() {
     std::string result;
     for(const auto& locale:locale_order){if(!result.empty())result+=" / ";result+=display_name(locale);}

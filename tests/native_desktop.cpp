@@ -16,6 +16,10 @@ using namespace srw64::app;
 namespace {
 unsigned checks{};
 void check(bool value, const char* label) { ++checks; if (!value) throw std::runtime_error(label); }
+template<class F> void rejects(F&& f, const char* label) {
+    try { f(); } catch (const std::exception&) { ++checks; return; }
+    throw std::runtime_error(label);
+}
 std::string utf8(const fs::path& path) {
     const auto value=path.u8string();return {reinterpret_cast<const char*>(value.data()),value.size()};
 }
@@ -160,7 +164,8 @@ void ending_the_holder(const char* self) {
     for (int i=0;i<200 && !(holder=play_lock_holder(f.options.user_dir));++i) std::this_thread::sleep_for(std::chrono::milliseconds(25));
     check(holder && holder->pid==child_id,"lock holder not recorded");
     check(f.run()==0 && f.launches==0 && f.questions.size()==1,"declined question started the game");
-    check(f.questions.back()==play_lock_question("zh-Hans").message && alive(),"declining ended the holder");
+    // Nothing saved yet: the system's language, as the first launch's.
+    check(f.questions.back()==play_lock_question(system_language()).message && alive(),"declining ended the holder");
     f.end_holder=true;
     check(f.run()==0 && f.launches==1 && f.questions.size()==2,"ending the holder did not start the game");
 #ifdef _WIN32

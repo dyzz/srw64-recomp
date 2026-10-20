@@ -80,7 +80,7 @@ std::string player_locale(const Options& options) {
         const auto saved = saved_locale(options.user_dir.empty() ? default_user_dir() : options.user_dir);
         if (!saved.empty()) return saved;
     } catch (const std::exception&) {}
-    return "zh-Hans";
+    return system_language();
 }
 
 fs::path launcher_rom(const fs::path& named, const fs::path& user_dir, const fs::path& game_dir) {
@@ -113,7 +113,8 @@ Options prepare_desktop_launch(Options options, const fs::path& game_dir, Platfo
     }
     options.user_dir=fs::absolute(options.user_dir);
     if (save_only) return options;
-    options.first_language=options.portable_root.empty() ? "zh-Hans" : "en";
+    // Nothing saved yet: the system's language, in either place (issue 8).
+    options.first_language=system_language();
     if (options.rom.empty()) options.rom=launcher_rom(named_rom,options.user_dir,game_dir);
     return options;
 }
@@ -182,7 +183,7 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
     // Default language is applied only after any missing local settings have been imported.
     const auto locale = [&] {
         auto chosen = options.language.empty() ? saved_locale(options.user_dir) : options.language;
-        return chosen.empty() ? (options.first_language.empty()?std::string("zh-Hans"):options.first_language) : chosen;
+        return chosen.empty() ? (options.first_language.empty()?system_language():options.first_language) : chosen;
     };
     try {
         options.user_dir = fs::absolute(options.user_dir.empty() ? default_user_dir() : options.user_dir);

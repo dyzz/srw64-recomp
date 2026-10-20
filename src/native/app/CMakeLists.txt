@@ -6,6 +6,10 @@ if(MSVC)
 else()
     target_compile_options(srw64_app PRIVATE -Wall -Wextra -Wpedantic)
 endif()
+if(APPLE)
+    # The system's preferred languages (preferred_languages, runtime.cpp).
+    target_link_libraries(srw64_app PUBLIC "-framework CoreFoundation")
+endif()
 
 # Keep Cocoa in a separate adapter; the controller/session layer stays portable.
 if(APPLE)

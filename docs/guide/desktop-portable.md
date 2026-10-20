@@ -15,10 +15,10 @@ default: its presence is the player's opt-in.
 
 | Situation | Behavior |
 | --- | --- |
-| No `user-data` folder | Existing system user-data directory; first launch in Simplified Chinese |
+| No `user-data` folder | Existing system user-data directory |
 | `user-data` exists, including an empty folder | Local data takes precedence; missing settings and entire missing save groups are imported from the system user-data directory |
-| Neither location has language settings | First portable launch uses English |
-| Language settings already exist locally or are imported | Restore that language; do not force English or Chinese |
+| Neither location has language settings | The first launch uses the system's preferred language: Chinese (any variant) → Simplified Chinese, Japanese → Japanese, anything else → English |
+| Language settings already exist locally or are imported | Restore that language; the system's language does not replace it |
 | Explicit `--language en` / `ja` / `zh-Hans` | Apply the requested language, retaining the other valid settings |
 | Explicit `--user-dir DIR` | Use only DIR; no automatic import or synchronization |
 | Save-only `--import-save` / `--export-save` | Retain their original system-directory default; add `--user-dir user-data` to operate on portable data |
@@ -113,7 +113,7 @@ Windows 和 Linux 都是在游戏程序旁新建 `user-data` 文件夹后使用�
 不同存档覆盖前询问，确认后备份旧数据；取消则两边都保留，不同步。
 同步失败不影响游戏目录中已经保存的进度。Linux 交互窗口需要 kdialog 或 zenity，
 缺少这些工具时不会自动批准覆盖。没有 `user-data` 的普通安装保持原行为；显式
-`--user-dir` 不参与自动同步。便携全新数据默认英语，已有或导入的语言照常恢复。
+`--user-dir` 不参与自动同步。没有语言设置时按系统语言启动（中文系统→简体中文，日文→日语，其他→英语），已有或导入的语言照常恢复。
 
 ## Automated regression checks
 
@@ -139,7 +139,7 @@ user directories, first-language policy, moving a complete tree, relative and
 legacy absolute ROM preferences, missing-data imports, conflict refusal and
 acceptance, full backups, deletion propagation, campaigns, busy-directory locks,
 backup failures and skipping sync after a failed host. `tests/native_launch.cpp`
-also exercises first English/Chinese boots, imported and saved language
+also exercises first boots in the system's language, imported and saved language
 restoration, other settings and actual SRAM restoration after relocation.
 
 On Windows, CTest additionally runs `tests/test_windows_launcher.py` with its

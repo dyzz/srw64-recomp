@@ -21,7 +21,7 @@ void directory_policy() {
     };
     auto options=prepare_linux_launch({},game,lookup);
     check(options.user_dir==f.root/"xdg/srw64-recomp" && !options.sync_system,"absolute XDG default changed");
-    check(options.first_language=="zh-Hans","installed Linux first language changed");
+    check(options.first_language==system_language(),"installed Linux first launch not in the system's language");
     xdg="relative-xdg";
     check(prepare_linux_launch({},game,lookup).user_dir==f.root/"home/.local/share/srw64-recomp","relative XDG not ignored");
     xdg.clear();
@@ -29,7 +29,7 @@ void directory_policy() {
     xdg=(f.root/"xdg").string();
     fs::create_directory(game/"user-data");
     options=prepare_linux_launch({},game,lookup);
-    check(options.user_dir==game/"user-data" && options.sync_system && options.first_language=="en","Linux local directory not preferred");
+    check(options.user_dir==game/"user-data" && options.sync_system && options.first_language==system_language(),"Linux local directory not preferred");
     check(options.sync_user_dir==f.root/"xdg/srw64-recomp","Linux sync target is not XDG");
     check(!fs::exists(options.sync_user_dir),"policy wrote system data before launch");
     Options explicit_options;explicit_options.user_dir=game/"custom";explicit_options.language="ja";

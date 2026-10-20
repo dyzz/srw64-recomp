@@ -8,6 +8,7 @@
 #include <chrono>
 #include <cstdio>
 #include <cstdlib>
+#include <cwchar>
 #include <fstream>
 #include <optional>
 #include <random>
@@ -30,6 +31,7 @@
 extern char** environ;
 #endif
 #ifdef __APPLE__
+#include <CoreFoundation/CoreFoundation.h>
 #include <libproc.h>
 #include <mach-o/dyld.h>
 #endif
@@ -216,6 +218,88 @@ fs::path default_user_dir(Platform platform,const EnvironmentLookup& lookup) {
     if (home.empty() || !home.is_absolute()) throw std::runtime_error("HOME is unavailable; pass --user-dir");
     return platform==Platform::MacOS ? home/"Library/Application Support/SRW64Recomp" : home/".local/share/srw64-recomp";
 }
+std::string first_language(const std::vector<std::string>& preferred) {
+    for(const auto& name:preferred) {
+        // "zh-Hans-US", "zh_CN.UTF-8", "ja-JP", "en": the language is what comes first.
+        std::string language;
+        for(const char c:name) {
+            if(!std::isalpha(static_cast<unsigned char>(c)))break;
+            language+=char(std::tolower(static_cast<unsigned char>(c)));
+        }
+        if(language=="zh")return "zh-Hans";
+        if(language=="ja" || language=="en")return language;
+    }
+    return "en";
+}
+std::string steam_language(std::string_view registry) {
+    // ... "Steam" { ... "language"		"schinese" ... }: the first such key and value.
+    for(size_t at=registry.find("\"language\"");at!=std::string_view::npos;at=registry.find("\"language\"",at+1)) {
+        size_t open=at+10;
+        while(open<registry.size() && (registry[open]==' ' || registry[open]=='\t'))++open;
+        if(open>=registry.size() || registry[open]!='"')continue;
+        const size_t close=registry.find('"',open+1);
+        if(close==std::string_view::npos)break;
+        std::string name(registry.substr(open+1,close-open-1));
+        for(auto& c:name)c=char(std::tolower(static_cast<unsigned char>(c)));
+        if(name.empty())continue;
+        if(name=="schinese" || name=="tchinese")return "zh";
+        if(name=="japanese")return "ja";
+        if(name=="english")return "en";
+        return name;
+    }
+    return {};
+}
+std::vector<std::string> preferred_languages() {
+    // A fixed answer, for tests that must not depend on the machine's languages.
+    if(const char* fixed=std::getenv("SRW64_SYSTEM_LANGUAGE");fixed && *fixed)return {fixed};
+    std::vector<std::string> names;
+#ifdef _WIN32
+    // The display languages in the player's order (Settings → Time & language).
+    ULONG count=0,size=0;
+    if(GetUserPreferredUILanguages(MUI_LANGUAGE_NAME,&count,nullptr,&size) && size) {
+        std::wstring buffer(size,L'\0');
+        if(GetUserPreferredUILanguages(MUI_LANGUAGE_NAME,&count,buffer.data(),&size))
+            for(const wchar_t* item=buffer.c_str();*item;item+=std::wcslen(item)+1) {
+                std::string name;  // language tags are ASCII
+                for(const wchar_t* c=item;*c;++c)name+=static_cast<char>(*c);
+                names.push_back(name);
+            }
+    }
+#elif defined(__APPLE__)
+    // System Settings → General → Language & Region, in its order.
+    if(const CFArrayRef list=CFLocaleCopyPreferredLanguages()) {
+        for(CFIndex i=0;i<CFArrayGetCount(list);++i) {
+            char buffer[64];
+            if(CFStringGetCString(static_cast<CFStringRef>(CFArrayGetValueAtIndex(list,i)),buffer,sizeof buffer,kCFStringEncodingUTF8))
+                names.emplace_back(buffer);
+        }
+        CFRelease(list);
+    }
+#else
+#ifndef __ANDROID__
+    // Started by Steam (Game Mode, or a library shortcut): Steam's language first.
+    const auto set=[](const char* key){const char* value=std::getenv(key);return value && *value;};
+    if((set("SteamGameId") || set("SteamAppId")) && set("HOME")) {
+        try {
+            const auto language=steam_language(read_text(fs::path(std::getenv("HOME"))/".steam/registry.vdf",4u<<20));
+            if(!language.empty())names.push_back(language);
+        } catch(const std::exception&) {}
+    }
+#endif
+    // POSIX: LANGUAGE lists several (GNU), then the locale that sets messages.
+    if(const char* value=std::getenv("LANGUAGE");value && *value) {
+        std::string list(value);
+        for(size_t start=0;start<=list.size();) {
+            const auto end=std::min(list.find(':',start),list.size());
+            if(end>start)names.push_back(list.substr(start,end-start));
+            start=end+1;
+        }
+    }
+    for(const char* key:{"LC_ALL","LC_MESSAGES","LANG"})
+        if(const char* value=std::getenv(key);value && *value){names.emplace_back(value);break;}
+#endif
+    return names;
+}
 fs::path desktop_user_dir(const fs::path& game_dir, Platform platform, const EnvironmentLookup& lookup) {
     if (fs::exists(game_dir/"user-data") || fs::is_symlink(game_dir/"user-data")) {
         if (fs::is_symlink(game_dir/"user-data")) throw std::runtime_error("user-data must not be a symlink");
@@ -316,12 +400,11 @@ fs::path bundled_resource(const std::string& name) {
         if(fs::exists(candidate,error))return candidate;
     return {};
 }
-fs::path beside_game(const std::string& name) {
+fs::path game_folder() {
 #ifdef __ANDROID__
     return {};
 #else
     auto folder=executable_path().parent_path();
-    if(folder.empty())return {};
 #ifdef __APPLE__
     // <folder>/Marchwind64.app/Contents/MacOS/<executable>. A downloaded app that was
     // not moved runs translocated (a read-only copy elsewhere), with nothing beside it.
@@ -329,10 +412,15 @@ fs::path beside_game(const std::string& name) {
        && folder.parent_path().parent_path().extension()==".app")
         folder=folder.parent_path().parent_path().parent_path();
 #endif
+    return folder;
+#endif
+}
+fs::path beside_game(const std::string& name) {
+    const auto folder=game_folder();
+    if(folder.empty())return {};
     std::error_code error;
     const auto candidate=folder/name;
     return fs::exists(candidate,error)?candidate:fs::path{};
-#endif
 }
 void set_environment(const std::string& key,const std::string& value) {
 #ifdef _WIN32

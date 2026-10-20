@@ -166,8 +166,9 @@ class NativeImporterTests(unittest.TestCase):
 
     def test_native_first_boot_and_resume(self):
         user = self.root / "user data"
-        first = json.loads(self.run_probe("bootstrap", user).stdout)
-        self.assertEqual(first, {"argc": 5, "texts": 2, "locale": "ja", "portraits": 16})
+        # Nothing saved: the first boot speaks the system's language (here fixed to English).
+        first = json.loads(self.run_probe("bootstrap", user, env=dict(os.environ, SRW64_SYSTEM_LANGUAGE="en-US")).stdout)
+        self.assertEqual(first, {"argc": 5, "texts": 2, "locale": "en", "portraits": 16})
         second = self.run_probe("bootstrap", user)
         self.assertEqual(json.loads(second.stdout)["argc"], 6)
         self.assertNotIn("SRW64_ROM_IMPORT_BEGIN", second.stderr)
