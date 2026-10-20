@@ -231,6 +231,24 @@ std::string first_language(const std::vector<std::string>& preferred) {
     }
     return "en";
 }
+std::string steam_language(std::string_view registry) {
+    // ... "Steam" { ... "language"		"schinese" ... }: the first such key and value.
+    for(size_t at=registry.find("\"language\"");at!=std::string_view::npos;at=registry.find("\"language\"",at+1)) {
+        size_t open=at+10;
+        while(open<registry.size() && (registry[open]==' ' || registry[open]=='\t'))++open;
+        if(open>=registry.size() || registry[open]!='"')continue;
+        const size_t close=registry.find('"',open+1);
+        if(close==std::string_view::npos)break;
+        std::string name(registry.substr(open+1,close-open-1));
+        for(auto& c:name)c=char(std::tolower(static_cast<unsigned char>(c)));
+        if(name.empty())continue;
+        if(name=="schinese" || name=="tchinese")return "zh";
+        if(name=="japanese")return "ja";
+        if(name=="english")return "en";
+        return name;
+    }
+    return {};
+}
 std::vector<std::string> preferred_languages() {
     // A fixed answer, for tests that must not depend on the machine's languages.
     if(const char* fixed=std::getenv("SRW64_SYSTEM_LANGUAGE");fixed && *fixed)return {fixed};
@@ -258,6 +276,16 @@ std::vector<std::string> preferred_languages() {
         CFRelease(list);
     }
 #else
+#ifndef __ANDROID__
+    // Started by Steam (Game Mode, or a library shortcut): Steam's language first.
+    const auto set=[](const char* key){const char* value=std::getenv(key);return value && *value;};
+    if((set("SteamGameId") || set("SteamAppId")) && set("HOME")) {
+        try {
+            const auto language=steam_language(read_text(fs::path(std::getenv("HOME"))/".steam/registry.vdf",4u<<20));
+            if(!language.empty())names.push_back(language);
+        } catch(const std::exception&) {}
+    }
+#endif
     // POSIX: LANGUAGE lists several (GNU), then the locale that sets messages.
     if(const char* value=std::getenv("LANGUAGE");value && *value) {
         std::string list(value);

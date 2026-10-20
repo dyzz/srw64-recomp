@@ -52,6 +52,12 @@ fs::path desktop_user_dir(const fs::path& game_dir, Platform platform, const Env
 // SRW64_SYSTEM_LANGUAGE, when set, stands for the system's list (tests).
 std::string first_language(const std::vector<std::string>& preferred);
 std::vector<std::string> preferred_languages();
+// Steam's own interface language from its registry.vdf text, as a language code for
+// first_language ("schinese" and "tchinese" zh, "japanese" ja, "english" en, any other
+// Steam name as it is); empty when the text names none. On Linux a game Steam started
+// (SteamGameId or SteamAppId set) puts it before the locale: SteamOS runs games in
+// en_US whatever language Steam shows.
+std::string steam_language(std::string_view registry);
 inline std::string system_language() { return first_language(preferred_languages()); }
 fs::path content_path(const fs::path& root, const std::string& relative);
 std::string read_text(const fs::path& path, size_t limit);

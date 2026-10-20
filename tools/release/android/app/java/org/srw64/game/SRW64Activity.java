@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.LocaleList;
 import android.os.Looper;
 import android.util.Log;
 import android.net.Uri;
@@ -387,6 +388,18 @@ public class SRW64Activity extends SDLActivity {
         return "main";
     }
 
+    // The first launch's language, as on the desktop (runtime.cpp first_language): the first
+    // of the phone's languages that is Chinese (any variant), Japanese or English; else English.
+    static String firstLanguage() {
+        LocaleList preferred = LocaleList.getDefault();
+        for (int i = 0; i < preferred.size(); ++i) {
+            String language = preferred.get(i).getLanguage();
+            if (language.equals("zh")) return "zh-Hans";
+            if (language.equals("ja") || language.equals("en")) return language;
+        }
+        return "en";
+    }
+
     @Override
     protected String[] getArguments() {
         File user = SetupActivity.userDir(this);
@@ -398,7 +411,7 @@ public class SRW64Activity extends SDLActivity {
         arguments.add(user.getPath());
         if (!new File(user, "presentation.json").isFile()) {
             arguments.add("--language");
-            arguments.add("zh-Hans");
+            arguments.add(firstLanguage());
         }
         String[] extra = getIntent().getStringArrayExtra("args");
         if (extra != null) for (String argument : extra) arguments.add(argument);

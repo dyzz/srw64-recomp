@@ -106,6 +106,13 @@ void parser_and_paths() {
     check(first_language(Names{"fr-FR","ja"})=="ja" && first_language(Names{"de_DE.UTF-8"})=="en" &&
           first_language(Names{"C"})=="en" && first_language({})=="en","other first languages");
     check(first_language(Names{"jav-ID"})=="en","a longer code taken for Japanese");
+    const auto registry=std::string("\"Registry\"\n{\n\t\"HKCU\"\n\t{\n\t\t\"Software\"\n\t\t{\n\t\t\t\"Valve\"\n\t\t\t{\n")+
+        "\t\t\t\t\"Steam\"\n\t\t\t\t{\n\t\t\t\t\t\"AutoLoginUser\"\t\t\"deck\"\n\t\t\t\t\t\"language\"\t\t\"";
+    check(steam_language(registry+"schinese\"\n")=="zh" && steam_language(registry+"tchinese\"")=="zh" &&
+          steam_language(registry+"japanese\"")=="ja" && steam_language(registry+"english\"")=="en","Steam language");
+    check(first_language(Names{steam_language(registry+"schinese\""),"en_US.UTF-8"})=="zh-Hans","Steam language not before the locale");
+    check(first_language(Names{steam_language(registry+"french\""),"ja_JP.UTF-8"})=="ja","another Steam language taken");
+    check(steam_language("\"Steam\" { }").empty() && steam_language("\"language\" \"").empty(),"no Steam language");
     set_environment("SRW64_SYSTEM_LANGUAGE","ja-JP");
     check(system_language()=="ja","SRW64_SYSTEM_LANGUAGE ignored");
     set_environment("SRW64_SYSTEM_LANGUAGE","");
