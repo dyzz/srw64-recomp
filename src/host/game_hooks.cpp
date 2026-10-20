@@ -636,6 +636,7 @@ void resident_func_800AA8F4(uint8_t* rdram, recomp_context* ctx) {
     const int count = int16_t(ctx->r6);
     srw64_original_weapon_inherit(rdram, ctx);
     rules::inherit_missing_weapons(rdram, unit, saved, count);
+    srw64::upgrade_page::inherited(rdram, unit, saved, count);   // unified weapon levels (upgrade_page.hpp)
 }
 // Upgrade limits (upgrade_rules.hpp, docs/gameplay/upgrade-limits.md). With the cap-break
 // rule off and no unit above its cap, every scope below leaves memory unchanged.

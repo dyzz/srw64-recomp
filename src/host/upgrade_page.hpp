@@ -24,6 +24,10 @@ void answer(uint64_t serial,const std::string& action);
 // After the インターミッション is entered (801D8F74): with unified weapon upgrades, weapons
 // below their unit's unified level come up to it for free.
 void entered(uint8_t* ram,recomp_context* ctx);
+// A machine swap's inheritance (800AA8F4, after the original and the rule's gaps): with
+// unified weapon upgrades the successor's weapons come up to the predecessor's unified
+// level at once, free.
+void inherited(uint8_t* ram,uint32_t unit,uint32_t saved,int count);
 bool owns_input();
 void window_claim_input(bool);
 uint16_t input(uint16_t buttons);

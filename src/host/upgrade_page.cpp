@@ -2,6 +2,7 @@
 #include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
 #include "upgrade_rules.hpp"
+#include "rule_fixes.hpp"
 #include "native_dialogue.hpp"
 #include "localization/catalog.hpp"
 #include "game_hooks.hpp"
@@ -957,6 +958,56 @@ void entered(uint8_t* ram,recomp_context* ctx) {
     if(!settings::native_intermission_ui() || !unified_on())return;
     std::lock_guard lock(mutex);
     sync_all(ram,ctx);
+}
+// A story swap or an EW change (800AA8F4: a0 the new machine, a1 the predecessor's saved
+// weapons as number/level/flags, a2 their count). The original moves only the levels its
+// map D_800CB5E8 lists (and the rule's three gaps); the successor's other weapons start at
+// 0. Waiting for the next インターミッション left them at 0 for the stage of the swap (the
+// フルアーマー百式改 swaps run in stage openings), and there the unified level, the
+// level most weapons have, could come out 0: 3 of 6 inherited against 3 new, or the
+// inherited ones at mixed levels (スヴァンヒルド → ラーズグリーズ is 3 against 4). So the
+// predecessor's unified level is taken from the weapons that did carry over (the level
+// most of them had, the higher on a tie), and every upgradable weapon of the successor
+// below it comes up to it now, free, within the successor's cap. The caller's 800AAB5C
+// recomputes the power right after.
+void inherited(uint8_t* ram,uint32_t unit,uint32_t saved,int count) {
+    if(!settings::native_intermission_ui() || !unified_on() || count<=0)return;
+    if(!valid(unit,0x54) || !valid(saved,uint32_t(count)*rules::saved_size))return;
+    if(!valid(read(ram,unit+up::unit_weapon_list,4),up::weapon_size))return;
+    constexpr uint32_t weapon_map=0x800CB5E8; constexpr unsigned weapon_map_size=114;
+    const auto successor_of=[&](uint16_t from)->int {
+        for(unsigned i=0;i<weapon_map_size;++i)
+            if(read(ram,weapon_map+i*4,2)==from)return int(read(ram,weapon_map+i*4+2,2));
+        if(rules::enabled(rules::weapon_inherit_map))
+            for(const auto& pair:rules::inherit_gaps)if(pair.from==from)return pair.to;
+        return -1;
+    };
+    const auto carries=[&](int number) {
+        for(unsigned i=0;i<weapon_total(ram,unit);++i) {
+            const uint32_t w=weapon_at(ram,unit,i);
+            if(int(read(ram,w+rules::weapon_number,2))==number)return upgradable(ram,w);
+        }
+        return false;
+    };
+    std::array<unsigned,up::levels+1> counts{};
+    unsigned carried=0;
+    for(int i=0;i<count;++i) {
+        const uint32_t entry=saved+uint32_t(i)*rules::saved_size;
+        const int to=successor_of(uint16_t(read(ram,entry+rules::saved_number,2)));
+        if(to<0 || !carries(to))continue;
+        ++counts[std::min<unsigned>(read(ram,entry+rules::saved_level,1),up::levels)];++carried;
+    }
+    if(!carried)return;
+    unsigned best=0;
+    for(unsigned l=0;l<=up::levels;++l)if(counts[l] && counts[l]>=counts[best])best=l;
+    const unsigned level=std::min<unsigned>(best,up::allowed_cap(uint16_t(read(ram,unit+up::unit_number,2))));
+    unsigned raised=0;
+    for(unsigned i=0;i<weapon_total(ram,unit);++i) {
+        const uint32_t w=weapon_at(ram,unit,i);
+        if(upgradable(ram,w) && read(ram,w+0x16,1)<level){write8(ram,w+0x16,uint8_t(level));++raised;}
+    }
+    std::lock_guard lock(mutex);
+    record("unified-inherit",{{"unit",read(ram,unit+up::unit_number,2)},{"carried",carried},{"level",level},{"raised",raised}});
 }
 void configure(const std::filesystem::path& directory) {
     if(const char* v=std::getenv("SRW64_NATIVE_UPGRADE");v && std::string_view(v)=="0")return;
