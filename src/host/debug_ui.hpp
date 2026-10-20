@@ -24,6 +24,8 @@ nlohmann::json key(const nlohmann::json& params);
 nlohmann::json type(const nlohmann::json& params);
 // {path: ["选项","游戏性调整"]}: presses the item, or lists a submenu; {} lists the bar.
 nlohmann::json menu(const nlohmann::json& params);
+// {path}: a file dropped on the game window (SDL_DROPFILE), as from the desktop.
+nlohmann::json drop(const nlohmann::json& params);
 // Shared UI is already part of the GPU screenshot; reports that no overlay pass is needed.
 nlohmann::json compose(const std::filesystem::path& png);
 // Legacy separate-window capture reports that callers must use the game surface.

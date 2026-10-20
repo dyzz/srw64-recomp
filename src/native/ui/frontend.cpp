@@ -30,6 +30,7 @@
 #include "mini_stage.hpp"
 #include "campaign_library.hpp"
 #include "campaign_switch.hpp"
+#include "mod_library.hpp"
 #include "settings_window.hpp"
 #include "presentation_settings.hpp"
 #include "game_frame.hpp"
@@ -63,6 +64,7 @@
 #include <fstream>
 #include <map>
 #include <set>
+#include <thread>
 #include <tuple>
 
 namespace srw64::ui {
@@ -139,11 +141,18 @@ std::atomic_bool settings_open{}, physical_held{};
 // The settings window opened from the title's MOD entry is the MOD manager: its own pages
 // (campaigns, art, dialogue, music) instead of the settings'; closing it ends that.
 std::atomic_bool mod_open{};
-// Its entries are hidden for now (2026-10-03, user: MOD stays at the design stage,
-// docs/design/mod-packages.md); the manager itself stays and opens by id.
-constexpr bool mod_entry_shown=false;
-constexpr const char* mod_pages[]={"campaigns","art","dialogue","audio"};
+// Its entries show again with MOD packages (docs/design/mod-packages.md): the first page
+// lists the installed packages; a package file dropped on the window installs.
+constexpr bool mod_entry_shown=true;
+constexpr const char* mod_pages[]={"installed","campaigns","art","dialogue","audio"};
 unsigned mod_page{};
+// The installed packages (mod_library.hpp), read again whenever the revision moves: an
+// install (on its own thread), a switch or a removal.
+std::atomic<unsigned> mod_revision{1};
+unsigned mod_list_revision{};
+std::vector<srw64::mods::Package> mod_list;
+std::atomic_bool mod_installing{};
+std::string mod_remove_pending;      // the package whose removal waits for a second press
 // The Library opened from the title's corner beside MOD (library.hpp), in the same frame:
 // units or characters in a list, the chosen one's details beside it. The list keeps its
 // place per tab; the details follow the choice without rebuilding the window.
@@ -1479,6 +1488,113 @@ std::string mod_art_page() {
     else body+="<p>"+label("mod_art_missing")+"</p>";
     return body+"<p class='dlc-meta'>"+label("mod_art_note")+"</p>";
 }
+// The game's own version, for the packages' "game" requirement.
+srw64::mods::Version game_version() {
+    static const auto v=srw64::mods::leading_version(SRW64_VERSION).value_or(srw64::mods::Version{});
+    return v;
+}
+const std::vector<srw64::mods::Package>& installed_mods() {
+    if(const unsigned now=mod_revision.load();now!=mod_list_revision){mod_list=srw64::mods::installed(game_version());mod_list_revision=now;}
+    return mod_list;
+}
+// A label with {name}-style marks filled in.
+std::string filled(const char* key,std::initializer_list<std::pair<const char*,std::string>> values) {
+    auto text=localization::catalog().ui(key);
+    for(const auto& [mark,value]:values)
+        for(auto at=text.find(mark);at!=std::string::npos;at=text.find(mark,at+value.size()))text.replace(at,std::strlen(mark),value);
+    return text;
+}
+std::string mod_problem_text(const srw64::mods::Problem& p) {
+    static const std::set<std::string> manifest_codes{"manifest","field","schema","id","version","name","description","authors","requires","optional","conflicts"};
+    static const std::set<std::string> archive_codes{"open","archive","archive_size","archive_path"};
+    const std::string code=manifest_codes.contains(p.code)?"manifest":archive_codes.contains(p.code)?"archive":p.code;
+    const auto key="mod_error_"+code;
+    if(!localization::catalog().ui_labels().contains(key))return filled("mod_error_other",{{"{detail}",p.code+" "+p.detail}});
+    return filled(key.c_str(),{{"{detail}",p.detail.empty()?p.code:p.detail}});
+}
+std::string mod_contents_text(const srw64::mods::Contents& c) {
+    std::vector<std::string> parts;
+    const auto add=[&](unsigned n,const char* key){if(n)parts.push_back(filled(key,{{"{n}",std::to_string(n)}}));};
+    add(c.music,"mod_has_music");add(c.voices,"mod_has_voices");add(c.art,"mod_has_art");add(c.dialogue,"mod_has_dialogue");add(c.data,"mod_has_data");
+    for(const auto& [flag,key]:{std::pair{c.campaign,"mod_has_campaign"},std::pair{c.challenge,"mod_has_challenge"},std::pair{c.story,"mod_has_story"},std::pair{c.rules,"mod_has_rules"}})
+        if(flag)parts.push_back(localization::catalog().ui(key));
+    std::string out;
+    for(const auto& part:parts)out+=(out.empty()?"":"  ·  ")+part;
+    return out.empty()?localization::catalog().ui("mod_has_nothing"):out;
+}
+// The installed packages, the one that wins on top (docs/design/mod-packages.md §3).
+std::string mod_installed_page() {
+    const auto locale=localization::catalog().locale;
+    std::string body="<p>"+label("mod_install_note")+"</p>";
+#ifndef __ANDROID__
+    if(!srw64::mods::directory().empty())body+=settings_row("mod_folder_row",button("mod-folder",label("mod_folder_open")),"<p class='set-path'>"+escape(srw64::mods::directory().string())+"</p>");
+#endif
+    if(mod_installing)body+="<p class='dlc-meta'>"+label("mod_installing")+"</p>";
+    const auto& list=installed_mods();
+    if(list.empty())body+="<p>"+label("mod_none")+"</p>";
+    for(auto it=list.rbegin();it!=list.rend();++it) {
+        const auto& p=*it;
+        const auto id=p.id();
+        std::string name=p.manifest?campaign_library::text(p.manifest->name,locale):id;
+        std::string meta;
+        if(p.manifest) {
+            meta="v"+srw64::mods::version_text(p.manifest->version);
+            for(const auto& author:p.manifest->authors)meta+="  ·  "+author;
+        }
+        const bool usable=p.manifest.has_value();
+        const std::string status=!p.problem.code.empty()?filled("mod_status_problem",{{"{reason}",mod_problem_text(p.problem)}}):
+            localization::catalog().ui(p.active?"mod_status_on":"mod_status_off");
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(name)+"</div><div class='set-seg'>"+
+            button("mod-toggle:"+id,label(p.enabled?"mod_turn_off":"mod_turn_on"),false,!usable)+
+            button("mod-remove:"+id,label(mod_remove_pending==id?"mod_remove_confirm":"mod_remove"))+"</div></div>";
+        if(p.manifest)if(const auto description=campaign_library::text(p.manifest->description,locale);!description.empty())body+="<p>"+escape(description)+"</p>";
+        body+="<p class='dlc-meta'>"+escape(meta.empty()?id:meta+"  ·  "+id)+"</p>";
+        body+="<p class='dlc-meta'>"+escape(mod_contents_text(p.contents))+"</p>";
+        body+="<p class='dlc-meta'>"+escape(status)+"</p></div>";
+    }
+    // Nothing in a package takes effect yet; this version installs and keeps them.
+    if(!list.empty())body+="<p class='dlc-meta'>"+label("mod_not_applied")+"</p>";
+    return body;
+}
+// A package dropped on the window or chosen: installed on its own thread, then announced.
+bool mod_package_path(const std::filesystem::path& path) {
+    std::error_code error;
+    if(std::filesystem::is_directory(path,error))return std::filesystem::is_regular_file(path/"mod.json",error);
+    auto ext=path.extension().string();
+    std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char c){return char(std::tolower(c));});
+    return ext==srw64::mods::package_extension || ext==".zip";
+}
+void mod_install(const std::filesystem::path& path) {
+    if(mod_installing.exchange(true)){notices::post("mod",localization::catalog().ui("mod_install_busy"));return;}
+    ++mod_revision;
+    std::thread([path]{
+        const auto result=srw64::mods::install(path);
+        std::string text;
+        if(!result.ok)text=filled("mod_install_failed",{{"{reason}",mod_problem_text(result.problem)}});
+        else if(result.replaced)text=filled("mod_updated",{{"{id}",result.id},{"{old}",srw64::mods::version_text(*result.replaced)},{"{version}",srw64::mods::version_text(result.version)}});
+        else text=filled("mod_installed",{{"{id}",result.id},{"{version}",srw64::mods::version_text(result.version)}});
+        notices::post("mod",text);
+        mod_installing=false;
+        ++mod_revision;
+    }).detach();
+}
+void open_page(const std::string& url);
+// The packages folder in the system's file manager, created first.
+void mod_open_folder() {
+    const auto folder=srw64::mods::directory();
+    if(folder.empty())return;
+    std::error_code error;
+    std::filesystem::create_directories(folder,error);
+    std::string url="file://";
+    auto text=folder.generic_string();
+    if(!text.starts_with("/"))url+="/";
+    static const char* hex="0123456789ABCDEF";
+    for(const unsigned char c:text) {
+        if(std::isalnum(c) || c=='/' || c=='-' || c=='_' || c=='.' || c=='~' || c==':')url+=char(c);
+        else{url+='%';url+=hex[c>>4];url+=hex[c&15];}
+    }
+    open_page(url);
+}
 std::string mod_dialogue_page() {
     const auto folder=dialogue::text_overrides_dir();
     std::string body=settings_row("mod_dialogue_reload",button("mod-dialogue-reload",label("dialogue_reload")),
@@ -1658,7 +1774,8 @@ std::string mod_panel() {
     for(unsigned i=0;i<std::size(mod_pages);++i)body+=button("mod-page:"+std::string(mod_pages[i]),label("mod_page_"+std::string(mod_pages[i])),i==mod_page,false,"set-tab");
     body+="</div><div id='set-body' class='set-body'>";
     const std::string page=mod_pages[mod_page];
-    if(page=="campaigns")body+=mod_campaigns_page();
+    if(page=="installed")body+=mod_installed_page();
+    else if(page=="campaigns")body+=mod_campaigns_page();
     else if(page=="art")body+=mod_art_page();
     else if(page=="dialogue")body+=mod_dialogue_page();
     else body+="<p>"+label("mod_audio_note")+"</p>";
@@ -2811,7 +2928,8 @@ void settings_sync() {
         return;
     }
     if(mod_open) {
-        const auto stamp="mod"+std::to_string(mod_page)+localization::catalog().locale+window_stamp()+std::to_string(on_title())+
+        const auto stamp="mod"+std::to_string(mod_page)+"-"+std::to_string(mod_revision.load())+std::to_string(mod_installing.load())+mod_remove_pending+
+            localization::catalog().locale+window_stamp()+std::to_string(on_title())+
             std::to_string(presentation::image_mode.requested())+std::to_string(presentation::image_mode.enabled())+dialogue::text_summary().dump();
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
         auto* focused=context->GetFocusElement();
@@ -4602,6 +4720,20 @@ void choose(const std::string& id) {
         return;
     }
     if(mod_open && id=="mod-dialogue-reload"){dialogue::request_reload();settings_focus=id;return;}
+    // The installed packages (mod_installed_page): a switch, a removal asked twice, the folder.
+    if(mod_open && id=="mod-folder"){mod_open_folder();settings_focus=id;return;}
+    if(mod_open && id.starts_with("mod-toggle:")) {
+        const auto pid=id.substr(11);
+        for(const auto& p:installed_mods())if(p.id()==pid)srw64::mods::set_enabled(pid,!p.enabled);
+        mod_remove_pending.clear();++mod_revision;settings_focus=id;return;
+    }
+    if(mod_open && id.starts_with("mod-remove:")) {
+        const auto pid=id.substr(11);
+        if(mod_remove_pending!=pid){mod_remove_pending=pid;settings_focus=id;return;}
+        mod_remove_pending.clear();
+        notices::post("mod",filled(srw64::mods::remove(pid)?"mod_removed":"mod_remove_failed",{{"{id}",pid}}));
+        ++mod_revision;settings_focus="first";return;
+    }
     // Entering or leaving swaps the game's saves for the campaign's (campaign_switch.hpp)
     // and closes the manager on the title, where the campaign starts.
     const auto switched=[&](const std::function<void()>& change,const std::string& notice) {
@@ -5526,6 +5658,21 @@ void sync() {
     save_page::window_claim_input(save_request.value("visible",false) || (save_page::owns_input() && held()));
     title_page::window_claim_input(title_request.value("visible",false) || (title_page::owns_input() && held()));
 }
+// A file or folder dropped on the window (window thread).
+void dropped(const std::string& path) {
+    // A MOD package (a .srw64mod file or a folder with mod.json) installs, and the MOD
+    // manager opens on its list.
+    if(mod_package_path(std::filesystem::path(path))) {
+        mod_install(std::filesystem::path(path));
+        viewer_open=false;library_open=false;stage_open=false;mod_open=true;mod_page=0;settings_open=true;settings_focus="first";
+        return;
+    }
+    // Debug aid: a mini-stage file dropped on the title menu loads and enters, only while
+    // the debug interface is on; otherwise mini stages come in through it (mini_stage.load).
+    if(!settings::debug_interface() && !settings::debug_interface_forced())return;
+    try {notices::post("mini-stage",mini_stage::load_file(path));}
+    catch(const std::exception& error){notices::post("mini-stage-error",error.what());}
+}
 bool dispatch(SDL_Event& event) {
     if(!context)return false;
     if(touch_event(event))return true;
@@ -5533,12 +5680,8 @@ bool dispatch(SDL_Event& event) {
     // A capture on the Controls page takes the next key or controller input.
     if(!capture.queue.empty() && settings_open && capture_event(event))return true;
     if(event.type==SDL_DROPFILE) {
-        // Debug aid: a mini-stage file dropped on the title menu loads and enters, only while
-        // the debug interface is on; otherwise mini stages come in through it (mini_stage.load).
         const std::string path=event.drop.file?event.drop.file:"";SDL_free(event.drop.file);
-        if(!settings::debug_interface() && !settings::debug_interface_forced())return true;
-        try {notices::post("mini-stage",mini_stage::load_file(path));}
-        catch(const std::exception& error){notices::post("mini-stage-error",error.what());}
+        dropped(path);
         return true;
     }
     // The keyboard (window keys, not the controller bridge's) and the mouse or touch
@@ -6021,6 +6164,12 @@ nlohmann::json click(const nlohmann::json& p){return ui::click(p);}
 nlohmann::json key(const nlohmann::json& p){return ui::key(p);}
 nlohmann::json type(const nlohmann::json& p){return ui::type(p);}
 nlohmann::json menu(const nlohmann::json& p){return ui::menu(p);}
+nlohmann::json drop(const nlohmann::json& p) {
+    // What a file dragged from the desktop does (SDL_DROPFILE), for testing MOD installs.
+    const auto path=p.at("path").get<std::string>();
+    ui::dropped(path);
+    return {{"dropped",path}};
+}
 nlohmann::json compose(const std::filesystem::path&){return {{"backend","SDL2/RmlUi"},{"composited",false},{"reason","UI is already in the GPU frame"}};}
 nlohmann::json capture(const nlohmann::json&,const std::filesystem::path&){throw debug::RpcError(debug::InvalidParams,"Shared settings use the game surface; request a game screenshot");}
 }

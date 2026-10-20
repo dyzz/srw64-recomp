@@ -293,6 +293,10 @@ class Session:
             environment["SRW64_CAMPAIGN_SAVES"] = str(run.parent / (run.name + ".campaign-saves"))
             if not campaign:
                 environment["SRW64_SAVE_LIBRARY"] = str(run.parent / (run.name + ".saves"))
+        # MOD packages (mod_library.hpp): a debug run keeps its own folder beside the run,
+        # never the player's, unless the caller names one.
+        if not (env or {}).get("SRW64_MODS_DIR"):
+            environment["SRW64_MODS_DIR"] = str(run.parent / (run.name + ".mods"))
         environment.pop("SRW64_DEBUG_OWNER_FD", None)
         owner = lease = None
         if not detach:

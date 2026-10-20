@@ -94,6 +94,8 @@ TOOLS = [
      "inputSchema": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}},
     {"name": "srw64_viewer_start", "description": "Start one battle animation in the Battle Viewer from the title (docs/design/battle-viewer.md): choice {attacker: {unit, pilot, ...}, defender: {unit, pilot, ...}, scene: [left, right], song} as the viewer page sends it, or raw writes [{side, offset, hex}] into the demo's participant records; optional song. State is in srw64_status (battle_viewer).",
      "inputSchema": {"type": "object", "properties": {"choice": {"type": "object"}, "writes": {"type": "array", "items": {"type": "object"}}, "song": {"type": "integer"}}}},
+    {"name": "srw64_drop", "description": "Drop a file or folder on the game window (SDL_DROPFILE), as dragging it from the desktop does: a .srw64mod file or a MOD folder installs and opens the MOD manager (docs/design/mod-packages.md). The path is on the machine the game runs on.",
+     "inputSchema": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}},
     {"name": "srw64_memory", "description": "Read guest RAM as hex (address such as 0x8015F950, size up to 0x10000). A view while the game runs, not a snapshot.",
      "inputSchema": {"type": "object", "required": ["address"], "properties": {"address": {"type": "integer"}, "size": {"type": "integer"}}}},
     {"name": "srw64_memory_write", "description": "Write bytes (hex) into guest RAM at an address, between the game's own writes, for probes such as forcing a battle background. Debug sessions only; at most 4096 bytes.",
@@ -172,6 +174,8 @@ class Server:
             return text(client.call("mini_stage.load", path=args["path"]))
         if name == "srw64_viewer_start":
             return text(client.call("viewer.start", **args))
+        if name == "srw64_drop":
+            return text(client.call("ui.drop", path=args["path"]))
         if name == "srw64_memory":
             return text(client.call("memory.read", address=int(args["address"]), size=int(args.get("size", 4))))
         if name == "srw64_memory_write":

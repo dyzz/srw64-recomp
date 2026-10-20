@@ -136,7 +136,7 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active) {
         settings();
         break;
     // The title's corner buttons (the Library, the Battle Viewer) become touch buttons along the top;
-    // MOD is hidden for now (frontend.cpp mod_entry_shown).
+    // MOD has no touch button yet: packages install by dropping a file on a desktop window.
     case SceneId::Attract:
         set(Slot::Primary, bits::Start, "touch_start"); settings();
         open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "viewer-open", "viewer_open");
