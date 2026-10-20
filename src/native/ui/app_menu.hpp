@@ -17,6 +17,9 @@ struct Labels {
     std::string settings, reload;
     std::string about, check_updates;
     std::string game, exit;  // Windows: the first menu's title and its Exit entry
+    // Return to Title Screen, after Reload (quick_load.hpp); enabled where the game takes it.
+    std::string title_return;
+    bool title_enabled = false;
 };
 constexpr int kScales = 4;  // View's window sizes, 1x to 4x the original's 240 lines
 // macOS key equivalents' modifiers (mac_mods).

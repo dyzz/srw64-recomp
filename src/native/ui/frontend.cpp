@@ -23,6 +23,7 @@
 #include "library.hpp"
 #include "stage_info.hpp"
 #include "quick_load.hpp"
+#include "map_menu.hpp"
 #include "text_wrap.hpp"
 #include "battle_viewer.hpp"
 #include "native_sprite.hpp"
@@ -153,6 +154,11 @@ std::atomic_bool library_open{};
 bool update_ask_open{},update_asked{};
 // The question before a quick load of the suspend save (quick_load.hpp): the touch key and the stage info page ask it.
 bool quick_load_ask_open{};
+// The question before a return to the title screen (quick_load.hpp): the same entries ask it.
+bool title_return_ask_open{};
+// The intermission menu's own last row, 返回标题画面 (not one of the original's items):
+// selected below the original's cursor, confirmed as the title question.
+bool intermission_title_row{};
 unsigned library_tab{};
 std::array<unsigned,2> library_index{};
 bool library_tab_focus{};
@@ -1009,7 +1015,7 @@ constexpr ControlRow control_rows[]={
     {"a",Action::A},{"b",Action::B},{"start",Action::Start},{"l",Action::L},{"r",Action::R},
     {"aux_left",Action::AuxLeft},{"aux_right",Action::AuxRight},{"c_left",Action::CLeft},{"c_up",Action::CUp},{"c_down",Action::CDown},
     {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},{"speed",Action::Speed},
-    {"quick_load",Action::QuickLoad},{"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
+    {"quick_load",Action::QuickLoad},{"title_return",Action::TitleReturn},{"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
 void start_capture(const std::string& id) {
     for(const auto& row:control_rows)if(id==row.id) {
         capture=Capture{};
@@ -1650,6 +1656,13 @@ std::string quick_load_ask_panel() {
         button("quick-load:yes",label("quick_load_yes"),true)+button("quick-load:no",label("quick_load_no"))+"</div></div></div>"
         "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
 }
+// Whether to go back to the title screen: what is not saved is lost.
+std::string title_return_ask_panel() {
+    return "<div class='set-shade'><div class='set-panel set-ask'><h1>"+label("title_return_title")+"</h1><div id='set-body' class='set-body'>"
+        "<div class='set-row nav'><div class='set-name'>"+label("title_return_text")+"</div><p>"+label("title_return_note")+"</p><div class='set-seg'>"+
+        button("title-return:yes",label("title_return_yes"),true)+button("title-return:no",label("title_return_no"))+"</div></div></div>"
+        "<div class='set-foot'><div class='set-hint'></div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
+}
 // A page in the system browser; a notice with the address when there is none.
 void open_page(const std::string& url) {
     if(url.empty() || update::open_url(url))return;
@@ -1994,7 +2007,8 @@ std::string stage_panel(const json& snap) {
     const auto& locale=localization::catalog().locale;
     std::string body="<div class='set-shade solid'><div class='set-panel lib-panel si-panel'>";
     // On the map or in a battle, the way back to the suspend save (asked first, quick_load.hpp).
-    const auto load=quick_load::usable()?button("quick-load-ask",label("quick_load_open")):std::string();
+    const auto load=(quick_load::usable()?button("quick-load-ask",label("quick_load_open")):std::string())+
+        (quick_load::usable_title()?button("title-return-ask",label("title_return_open")):std::string());
     const auto foot="<div class='set-foot'><div class='set-hint'>"+label("stage_info_hint")+"</div>"+load+button("settings-close",label("settings_close"))+"</div></div></div>";
     const auto message=[&](const char* key){return body+"<div class='lib-top'><h1>"+label("stage_info_title")+"</h1></div><div class='si-empty'>"+label(key)+"</div>"+foot;};
     if(!snap.value("available",false))return message("stage_info_unavailable");
@@ -2765,8 +2779,17 @@ void viewer_sync() {
 }
 void settings_sync() {
     const auto stage_opening=stage_info::want(settings_open && stage_open);
-    if(!settings_open){update_ask_open=false;quick_load_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+    if(!settings_open){update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
     if(viewer_open){viewer_sync();return;}
+    if(title_return_ask_open) {
+        const auto stamp="title-return"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        settings_doc=document(title_return_ask_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
+        settings_doc->UpdateDocument();
+        if(!pointer_mode)settings_focus_first();
+        return;
+    }
     if(quick_load_ask_open) {
         const auto stamp="quick-load"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -2962,13 +2985,13 @@ void settings_show(unsigned page,const std::string& focus) {
 // The settings window on its About page (the application menu, the title's update hint).
 void open_about(const std::string& focus) {
     const unsigned about=unsigned(std::size(settings_pages)-1);
-    if(settings_open && !library_open && !mod_open && !viewer_open && !update_ask_open && !quick_load_ask_open) {
+    if(settings_open && !library_open && !mod_open && !viewer_open && !update_ask_open && !quick_load_ask_open && !title_return_ask_open) {
         if(settings_page!=about)settings_show(about,focus);
         else settings_focus=focus;
         return;
     }
     settings::set_settings_page(settings_pages[about]);
-    update_ask_open=false;quick_load_ask_open=false;library_open=false;mod_open=false;viewer_open=false;
+    update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;library_open=false;mod_open=false;viewer_open=false;
     settings_open=true;settings_built=-1;settings_focus=focus;settings_release.hold();input.clear();
 }
 // L1/R1, Q/E and the page keys: the next or previous page, wrapping round. The focus
@@ -3346,7 +3369,7 @@ float text_units(const std::string& text) {
 }
 void intermission_sync() {
     const auto next=intermission_page::state();intermission_request=next;
-    if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();return;}
+    if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();intermission_title_row=false;return;}
     const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing;
     if(intermission_doc && intermission_stamp==stamp)return;
     document_close(intermission_doc);intermission_stamp=stamp;
@@ -3361,10 +3384,14 @@ void intermission_sync() {
     const auto& items=next.at("items");const bool restricted=next.value("restricted",false),submenu=next.value("submenu",false);
     const unsigned cursor=next.value("cursor",0u);
     float item_font=10.5f;for(const auto& item:items)item_font=std::min(item_font,fit(item.get<std::string>(),67));
-    const float row=(restricted?31.f:143.f)/items.size();
+    // Our title row makes ten in the nine-item panel's own height (the footer sits right
+    // under it); the two-item menu grows by a row instead.
+    const float row=restricted?31.f/items.size():143.f/(items.size()+1);
     std::string menu;
     for(unsigned n=0;n<items.size();++n)
-        menu+="<button id='intermission:"+std::to_string(n)+"' class='"+(n==cursor?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+escape(items[n].get<std::string>())+"</button>";
+        menu+="<button id='intermission:"+std::to_string(n)+"' class='"+(n==cursor && !intermission_title_row?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+escape(items[n].get<std::string>())+"</button>";
+    // Our own row after the original's: back to the title screen (quick_load.hpp), asked first.
+    menu+="<button id='intermission:title' class='"+std::string(intermission_title_row?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+label("title_return_open")+"</button>";
     const auto title=next.value("title",std::string());
     const auto turns_label=next.value("turns_label",std::string()),funds_label=next.value("funds_label",std::string());
     const float info_font=std::min(fit(turns_label,78),fit(funds_label,78));
@@ -3375,7 +3402,7 @@ void intermission_sync() {
     const auto footer=episode+" "+next.value("scene_title",std::string())+" "+next.value("clear_label",std::string());
     std::string body="<div class='im-root' id='intermission' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>"+
         panel(120,25,199,39,"<div style='text-align:center;'>"+escape(title)+"</div>",fit(title,76),"intermission-title")+
-        panel(33,41,103,restricted?71:183,menu,item_font,"intermission-menu")+
+        panel(33,41,103,restricted?int(71+row):183,menu,item_font,"intermission-menu")+
         panel(145,49,287,79,info,info_font,"intermission-info")+
         panel(34,193,287,207,"<div id='intermission-scene' style='padding:0 "+px(1)+";'>"+escape(footer)+"</div>",fit(footer,250),"intermission-footer");
     if(submenu) {
@@ -4556,8 +4583,18 @@ void choose(const std::string& id) {
         if(!quick_load::usable()){notices::post("quick-load",localization::catalog().ui("quick_load_unavailable"));return;}
         if(!saved.exists){notices::post("quick-load",localization::catalog().ui("quick_load_none"));return;}
         if(!saved.this_stage){notices::post("quick-load",localization::catalog().ui("quick_load_other_stage"));return;}
-        viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;quick_load_ask_open=true;
+        viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;title_return_ask_open=false;quick_load_ask_open=true;
         settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;
+    }
+    // Back to the title screen: asked first, refused at once where the game would not take it.
+    if(id=="title-return-ask") {
+        if(!quick_load::usable_title()){notices::post("quick-load",localization::catalog().ui("title_return_unavailable"));return;}
+        viewer_open=false;library_open=false;mod_open=false;stage_open=false;update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=true;
+        settings_open=true;settings_stamp.clear();settings_release.hold();input.clear();return;
+    }
+    if(id.starts_with("title-return:") || (title_return_ask_open && id=="settings-close")) {
+        if(id=="title-return:yes")quick_load::request_title();
+        title_return_ask_open=false;physical_held=held();settings_open=false;return;
     }
     if(id.starts_with("quick-load:") || (quick_load_ask_open && id=="settings-close")) {
         if(id=="quick-load:yes")quick_load::request();
@@ -4704,6 +4741,7 @@ void choose(const std::string& id) {
     if(id.starts_with("intermission") && intermission_request.value("visible",false) && !settings_open) {
         // Item ids are "intermission:N" and "intermission-swap:N"; a click confirms.
         const auto serial=intermission_request.at("serial").get<uint64_t>();
+        if(id=="intermission:title"){choose("title-return-ask");return;}
         if(id.starts_with("intermission:"))intermission_page::answer(serial,"choose:"+id.substr(13));
         else if(id.starts_with("intermission-swap:"))intermission_page::answer(serial,"swap:"+id.substr(18));
         return;
@@ -5449,7 +5487,7 @@ void sync() {
         // The host's buttons, from the controller or keys bound to them (the keyboard state
         // holds both): the settings window, the next language, Original / HD.
         static uint32_t host_before=0;
-        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images|input::pad_speed|input::pad_animation|input::pad_quick_load);
+        const uint32_t host_now=srw64_keyboard_state()&(input::pad_view|input::pad_language|input::pad_images|input::pad_speed|input::pad_animation|input::pad_quick_load|input::pad_title_return);
         const uint32_t host_pressed=host_now&~host_before;host_before=host_now;
         const bool view_pressed=host_pressed&input::pad_view;
         // Page requests stay null until their page first reports.
@@ -5474,6 +5512,7 @@ void sync() {
         if(!capturing && !page_up && (host_pressed&input::pad_speed))toggle_speed();
         // The quick load's key (F9): the same question as its touch key and the stage info page's button.
         if(!capturing && !settings_open && (host_pressed&input::pad_quick_load))choose("quick-load-ask");
+        if(!capturing && !settings_open && (host_pressed&input::pad_title_return))choose("title-return-ask");
         if(capturing && settings_open){}
         else if(view_pressed)choose(settings_open?"settings-close":"settings-open");
         else if(info_pressed && (!settings_open || stage_open))choose(stage_open?"settings-close":"stage-info-open");
@@ -5483,9 +5522,10 @@ void sync() {
             pad_keys(pad_now,pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
+    if(map_menu::take_chosen() && !settings_open)choose("title-return-ask");
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_about"),language->ui("menu_check_updates"),
-                      language->ui("menu_game"),language->ui("menu_exit")},menu_bar(language),window && (SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN));
+                      language->ui("menu_game"),language->ui("menu_exit"),language->ui("menu_title_return"),quick_load::usable_title() && !settings_open},menu_bar(language),window && (SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN));
     for(auto id=app_menu::take_request();!id.empty();id=app_menu::take_request()){
         if(id=="fullscreen")toggle_fullscreen();
         else if(id.starts_with("scale:"))scale_window(std::stoi(id.substr(6)));
@@ -5494,6 +5534,7 @@ void sync() {
         else if(id=="speed")toggle_speed();
         else if(id=="stage-info")choose(stage_open?"settings-close":"stage-info-open");
         else if(id=="quick-load")choose("quick-load-ask");
+        else if(id=="title-return")choose("title-return-ask");
         else if(id.starts_with("locale:"))settings::request_locale(id.substr(7));
         else if(id.starts_with("about-link:"))choose(id);
         else if(id=="info-copy") {
@@ -5826,9 +5867,17 @@ bool dispatch(SDL_Event& event) {
             const unsigned at=intermission_request.value(submenu?"swap_cursor":"cursor",0u);
             const std::string prefix=submenu?"swap-":"";
             const bool reverse=k==SDLK_UP || (k==SDLK_TAB && (event.key.keysym.mod&KMOD_SHIFT));
-            if(k==SDLK_UP || k==SDLK_DOWN || k==SDLK_TAB){intermission_page::answer(serial,prefix+"move:"+std::to_string((at+(reverse?count-1:1))%count));return true;}
+            // Our title row sits after the original's last item and before its first on the wrap.
+            if(k==SDLK_UP || k==SDLK_DOWN || k==SDLK_TAB){
+                if(!submenu && intermission_title_row){intermission_title_row=false;intermission_page::answer(serial,"move:"+std::to_string(reverse?count-1:0));intermission_stamp.clear();return true;}
+                if(!submenu && ((reverse && at==0) || (!reverse && at+1==count))){intermission_title_row=true;intermission_stamp.clear();return true;}
+                intermission_page::answer(serial,prefix+"move:"+std::to_string((at+(reverse?count-1:1))%count));return true;
+            }
             if(event.key.repeat)return true;
-            if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){intermission_page::answer(serial,(submenu?"swap:":"choose:")+std::to_string(at));return true;}
+            if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){
+                if(!submenu && intermission_title_row){choose("title-return-ask");return true;}
+                intermission_page::answer(serial,(submenu?"swap:":"choose:")+std::to_string(at));return true;
+            }
             if((k==SDLK_ESCAPE || k==SDLK_x) && submenu){intermission_page::answer(serial,"swap-close");return true;}
         }
     } else if(link_request.visible){

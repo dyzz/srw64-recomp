@@ -25,6 +25,7 @@
 #include "ui_text.hpp"
 #include "game_speed.hpp"
 #include "enemy_pilot_page.hpp"
+#include "map_menu.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 bool srw64_sound_effects_muted{};
@@ -181,6 +182,16 @@ void load_000AB160_func_801E6C5C(uint8_t* ram,recomp_context* ctx) {
     const unsigned crew=uint8_t(ctx->r4),side=uint32_t(ctx->r5),slot=uint32_t(ctx->r6);
     srw64_original_pilot_page(ram,ctx);
     srw64::enemy_pilot_page::reveal(ram,ctx,crew,side,slot);
+}
+void load_000AB160_func_801D13C0(uint8_t* ram,recomp_context* ctx) {
+    // The map's blank-tile menu opens: a row of ours after the original's (map_menu.hpp).
+    srw64_original_map_menu_open(ram,ctx);
+    srw64::map_menu::opened(ram);
+}
+void load_000AB160_func_801D17AC(uint8_t* ram,recomp_context* ctx) {
+    // A on a row of that menu (a0 the index): the eighth is ours, the title question.
+    if(srw64::map_menu::choose(uint8_t(ctx->r4)))return;
+    srw64_original_map_menu_choose(ram,ctx);
 }
 void load_000AB160_func_801C29DC(uint8_t* ram,recomp_context* ctx) {
     // A unit's action ends (a0 the handle): with unlimited moves a player unit keeps it.

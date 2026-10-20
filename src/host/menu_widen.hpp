@@ -17,6 +17,12 @@ namespace srw64::menu_widen {
 // right by delta.
 struct Columns { int top = 0, bottom = 0, stretch = 0, shift = 0, shift_end = 0, delta = 0; };
 std::optional<Columns> columns(uint16_t scene);
+// Cells of a grid scene to make taller (the map's blank-tile menu, map_menu.hpp): in columns
+// left..right, the cell at y = stretch is drawn 16 + delta tall and those at shift <= y < shift_end
+// move down by delta.
+struct Rows { int left = 0, right = 0, stretch = 0, shift = 0, shift_end = 0, delta = 0; };
+std::optional<Rows> rows(uint16_t scene);       // while that menu is open with its extra row
+std::optional<Rows> rows_spec(uint16_t scene);  // the scene's stretch whenever it is drawn tall
 
 // Game thread, each frame: the RAM patches (they check the original values first).
 void frame_start(uint8_t* rdram);

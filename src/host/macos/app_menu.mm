@@ -42,6 +42,7 @@ namespace {
 SRW64AppMenuTarget* target;
 NSMenuItem* item;
 NSMenuItem* reload_item;
+NSMenuItem* title_item;   // Return to Title Screen, chosen as "title-return" (take_request)
 NSMenuItem* separator;
 NSMenuItem* about_item;    // SDL's About entry, turned to the settings window's About page
 NSMenuItem* updates_item;
@@ -166,7 +167,8 @@ const Item* titled(const std::vector<Item>& items, const std::string& title) {
 }
 }
 void update(const Labels& labels, const std::vector<Menu>& menus, bool) {
-    const std::string label_text = labels.settings + "\n" + labels.reload + "\n" + labels.about + "\n" + labels.check_updates;
+    const std::string label_text = labels.settings + "\n" + labels.reload + "\n" + labels.about + "\n" + labels.check_updates +
+        "\n" + labels.title_return + (labels.title_enabled ? "+" : "-");
     std::string all, shape;
     for (const auto& menu : menus) {
         all += menu.title + "\x1f" + menu.icon + "[";
@@ -189,6 +191,9 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool) {
             reload_item = [[NSMenuItem alloc] initWithTitle:@"" action:@selector(reloadDialogue:) keyEquivalent:@"r"];
             reload_item.keyEquivalentModifierMask = NSEventModifierFlagCommand;
             reload_item.target = target;
+            title_item = [[NSMenuItem alloc] initWithTitle:@"" action:@selector(chooseEntry:) keyEquivalent:@""];
+            title_item.target = target;
+            title_item.representedObject = @"title-return";
             separator = [NSMenuItem separatorItem];
             // SDL's About shows the system panel; ours has the links and the update check.
             for (NSMenuItem* entry in menu.itemArray)
@@ -205,7 +210,9 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool) {
             NSInteger index = MIN(after_about + 2, menu.numberOfItems);
             [menu insertItem:item atIndex:index];
             [menu insertItem:reload_item atIndex:index + 1];
-            [menu insertItem:separator atIndex:index + 2];
+            [menu insertItem:title_item atIndex:index + 2];
+            [menu insertItem:separator atIndex:index + 3];
+            menu.autoenablesItems = NO;   // title_item is enabled by the game's state
             // SDL's Window menu has its own English Toggle Full Screen on View's keys.
             for (NSMenuItem* entry in NSApp.windowsMenu.itemArray)
                 if (entry.action == @selector(toggleFullScreen:)) entry.hidden = YES;
@@ -214,6 +221,8 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool) {
         if (about_item) about_item.title = text(labels.about);
         updates_item.title = text(labels.check_updates);
         reload_item.title = text(labels.reload);
+        title_item.title = text(labels.title_return);
+        title_item.enabled = labels.title_enabled;
         if (rebuild) {
             for (NSMenuItem* old in bar_items) [old.menu removeItem:old];
             bar_items = [NSMutableArray new];

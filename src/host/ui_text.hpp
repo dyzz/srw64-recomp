@@ -28,6 +28,10 @@ void mark_small(unsigned slot, int x, int y, const std::string& text, const std:
 // squeezed into `width`. clear_small() drops it too.
 void mark_label(unsigned slot, int x, int y, const std::string& text, const std::string& key, int width);
 void clear_small();
+// A label of the host's own among the game's (the blank-tile menu's eighth row, map_menu.hpp):
+// drawn in the labels' face at x, y (original pixels) within width, as long as it is set.
+void set_extra(const std::string& id, int x, int y, const std::string& key, int width);
+void clear_extra(const std::string& id);
 // Damage past 65535 (overkill.hpp): the game draws its figure as 65535, and the next map
 // figure (banner false) or battle banner number (true) that reads 65535 is drawn as `real`
 // instead, in as many cells as it takes (the map's to the left, the banner's to the right).

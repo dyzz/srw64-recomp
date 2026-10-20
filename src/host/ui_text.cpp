@@ -49,7 +49,9 @@ std::mutex mutex;
 bool installed = false, disabled = false;
 // Labels set small (mark_small): pool slot -> where and what they print.
 struct Small { int x, y; std::string text, shown; int width = 0; bool label = false; };   // label: shown is a UI key
+struct Extra { int x, y; std::string key; int width; };   // set_extra: a label of the host's own
 std::map<unsigned, Small> small;
+std::map<std::string, Extra> extras;
 std::ofstream log;
 std::set<std::string> logged;
 json last[2] = {json::array(), json::array()};
@@ -755,6 +757,14 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 return t.job.key.rfind("number|", 0) == 0; }), items.end());
         }
     }
+    // The host's own labels (set_extra), with the back pass's labels.
+    if (!front)
+        for (const auto& [id, e] : extras) {
+            const float white[3] = {1, 1, 1};
+            const auto text = localization::catalog().ui(e.key);
+            items.push_back(placed(label_style(locale, e.width, false), locale, text, "label", float(e.x), float(e.y), white));
+            shown.push_back({{"extra", id}, {"x", e.x}, {"y", e.y}, {"text", text}});
+        }
     last[front] = shown;
     if (items.empty() || replaced.empty()) return;
     std::sort(replaced.begin(), replaced.end());
@@ -946,6 +956,8 @@ void mark_label(unsigned slot, int x, int y, const std::string& text, const std:
     std::lock_guard lock(mutex); small[slot] = {x, y, text, key, width, true};
 }
 void clear_small() { std::lock_guard lock(mutex); small.clear(); }
+void set_extra(const std::string& id, int x, int y, const std::string& key, int width) { std::lock_guard lock(mutex); extras[id] = {x, y, key, width}; }
+void clear_extra(const std::string& id) { std::lock_guard lock(mutex); extras.erase(id); }
 bool native_numbers() { return active(); }
 void real_figure(bool banner, uint64_t real) { (banner ? real_banner : real_map).store(real); }
 void configure(const std::filesystem::path& output) {
