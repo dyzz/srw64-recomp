@@ -654,6 +654,8 @@
     "menu_speed": "2× Speed",
     "menu_quick_load": "Load Suspend Save…",
     "menu_export_logs": "Export Logs",
+    "menu_help": "Help",
+    "menu_info_copied": "Platform info copied to the clipboard",
     "font_credit": "Font: HarmonyOS Sans",
     "viewer_open": "Battle Viewer",
     "viewer_title": "Battle Viewer",

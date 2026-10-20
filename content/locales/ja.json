@@ -654,6 +654,8 @@
     "menu_speed": "2 倍速",
     "menu_quick_load": "中断セーブをロード…",
     "menu_export_logs": "ログを書き出す",
+    "menu_help": "ヘルプ",
+    "menu_info_copied": "プラットフォーム情報をコピーしました",
     "font_credit": "フォント：HarmonyOS Sans",
     "viewer_open": "バトルビューア",
     "viewer_title": "バトルビューア",

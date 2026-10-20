@@ -5367,7 +5367,23 @@ std::vector<app_menu::Menu> menu_bar(const auto& language){
     std::vector<Item> languages;
     for(const auto& [locale,name]:localization::locale_options())
         languages.push_back({"locale:"+locale,name,"","",0,locale==language->locale});
-    return {{language->ui("menu_view"),view},{language->ui("menu_tools"),tools},{language->ui("settings_language"),languages,"globe"}};
+    // The About page's links; Windows also has About and Check for Updates here, where a Mac
+    // has them in the application menu.
+    std::vector<Item> help{
+        {"about-link:site",language->ui("about_link_site")},
+        {"about-link:source",language->ui("about_link_source")},
+        {"about-link:issues",language->ui("about_link_issues")},
+        {},
+        {"info-copy",language->ui("settings_info_copy")},
+    };
+#ifdef _WIN32
+    help.push_back({});
+    help.push_back({"update-check",language->ui("menu_check_updates"),"","",0,false,update::supported()});
+    help.push_back({"about",language->ui("menu_about")});
+#endif
+    app_menu::Menu help_menu{language->ui("menu_help"),help};
+    help_menu.help=true;
+    return {{language->ui("menu_view"),view},{language->ui("menu_tools"),tools},{language->ui("settings_language"),languages,"globe"},help_menu};
 }
 void sync() {
     physical_held=held();
@@ -5467,6 +5483,13 @@ void sync() {
         else if(id=="stage-info")choose(stage_open?"settings-close":"stage-info-open");
         else if(id=="quick-load")choose("quick-load-ask");
         else if(id.starts_with("locale:"))settings::request_locale(id.substr(7));
+        else if(id.starts_with("about-link:"))choose(id);
+        else if(id=="info-copy") {
+            SDL_SetClipboardText(bug_report::summary(report_facts()).c_str());
+            notices::post("info",localization::catalog().ui("menu_info_copied"));
+        }
+        else if(id=="about")open_about("");
+        else if(id=="update-check"){open_about("update-check");update::check(true);}
         // The About page's report (logs and settings, bug_report.hpp), shown selected in its folder.
         else if(id=="export-logs") {
             const auto result=bug_report::write(settings::data_folder(),output,report_facts());

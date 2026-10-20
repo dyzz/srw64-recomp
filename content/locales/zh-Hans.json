@@ -654,6 +654,8 @@
     "menu_speed": "2 倍速",
     "menu_quick_load": "读取中途存档…",
     "menu_export_logs": "导出日志",
+    "menu_help": "帮助",
+    "menu_info_copied": "平台信息已复制到剪贴板",
     "font_credit": "字体：HarmonyOS Sans",
     "viewer_open": "战斗鉴赏",
     "viewer_title": "战斗鉴赏",

@@ -10,9 +10,9 @@ namespace srw64::app_menu {
 // (macOS) or the window's menu bar (Windows, macos/app_menu.mm and windows/app_menu_windows.cpp)
 // opens the settings and reads the dialogue text files again (F5); its About entry opens
 // the settings window's About page, and Check for Updates that page with a check started
-// (update_check.hpp). After it come the menus frontend.cpp describes (View, Tools): each
-// entry is an id the frontend takes back when it is chosen, shown with the key that does
-// the same.
+// (update_check.hpp); Windows has those two in Help instead. After it come the menus
+// frontend.cpp describes (View, Tools, Language, Help): each entry is an id the frontend
+// takes back when it is chosen, shown with the key that does the same.
 struct Labels {
     std::string settings, reload;
     std::string about, check_updates;
@@ -37,6 +37,7 @@ struct Menu {
     std::vector<Item> items;
     // Shown in the bar before the title: "globe".
     std::string icon;
+    bool help = false;  // the Help menu: macOS puts it last, after Window
 };
 #ifdef _WIN32
 // Puts the menu bar on the window, before the renderer starts (frontend window_init).

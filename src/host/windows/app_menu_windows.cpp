@@ -17,8 +17,9 @@
 namespace srw64::app_menu {
 namespace {
 // The first menu's own entries; update()'s entries are kFirstEntry + their place in `ids`.
-enum : UINT { kSettings = 1, kReload, kUpdates, kAbout, kExit, kFirstEntry = 100 };
-std::atomic_bool requested{}, reload{}, about{}, updates{};
+// About and Check for Updates are Help's entries here, as Windows applications have them.
+enum : UINT { kSettings = 1, kReload, kExit, kFirstEntry = 100 };
+std::atomic_bool requested{}, reload{};
 std::deque<std::string> chosen;  // ids of entries chosen, for take_request()
 std::vector<std::string> ids;    // by command id - kFirstEntry
 HWND hwnd{};
@@ -122,8 +123,6 @@ LRESULT CALLBACK proc(HWND window, UINT message, WPARAM w, LPARAM l) {
         switch (id) {
         case kSettings: requested = true; return 0;
         case kReload: reload = true; return 0;
-        case kUpdates: updates = true; return 0;
-        case kAbout: about = true; return 0;
         // As the window's close button: SDL's own close event, then its quit.
         case kExit: PostMessageW(window, WM_CLOSE, 0, 0); return 0;
         }
@@ -145,9 +144,6 @@ void attach(SDL_Window* window) {
     AppendMenuW(game, MF_STRING, kSettings, L"Settings");
     AppendMenuW(game, MF_STRING, kReload, L"Reload");
     AppendMenuW(game, MF_SEPARATOR, 0, nullptr);
-    AppendMenuW(game, MF_STRING, kUpdates, L"Updates");
-    AppendMenuW(game, MF_STRING, kAbout, L"About");
-    AppendMenuW(game, MF_SEPARATOR, 0, nullptr);
     AppendMenuW(game, MF_STRING, kExit, L"Exit");
     AppendMenuW(bar, MF_POPUP, UINT_PTR(game), L"Marchwind64");
     sdl_proc = WNDPROC(SetWindowLongPtrW(hwnd, GWLP_WNDPROC, LONG_PTR(&proc)));
@@ -157,8 +153,7 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool fullscree
     if (!hwnd) return;
     // Leaving full screen, SDL sized the window without the bar: it comes back with its height.
     show_bar(bar_wanted(fullscreen), !fullscreen && !IsZoomed(hwnd));
-    const std::string label_text = labels.game + "\n" + labels.settings + "\n" + labels.reload + "\n" + labels.about + "\n" +
-                                   labels.check_updates + "\n" + labels.exit;
+    const std::string label_text = labels.game + "\n" + labels.settings + "\n" + labels.reload + "\n" + labels.exit;
     std::string all, shape;
     for (const auto& menu : menus) {
         all += menu.title + "\x1f" + menu.icon + "[";
@@ -169,8 +164,6 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool fullscree
     set_text(bar, 0, labels.game, true);
     set_text(game, kSettings, labels.settings + "\tCtrl+,");
     set_text(game, kReload, labels.reload + "\tF5");
-    set_text(game, kUpdates, labels.check_updates);
-    set_text(game, kAbout, labels.about);
     set_text(game, kExit, labels.exit + "\tAlt+F4");
     if (!installed || shape != last_shape) {
         // The first menu stays; the others are made again (DeleteMenu destroys their popups).
@@ -213,8 +206,8 @@ bool activate(const std::string& title) {
     return false;
 }
 bool take_settings_request() { return requested.exchange(false); }
-bool take_about_request() { return about.exchange(false); }
-bool take_update_request() { return updates.exchange(false); }
+bool take_about_request() { return false; }   // Help's entries, by take_request()
+bool take_update_request() { return false; }
 bool take_reload_request() { return reload.exchange(false); }
 std::string take_request() {
     if (chosen.empty()) return {};
@@ -236,7 +229,7 @@ void shutdown() {
         DestroyMenu(bar);  // with its popups
     }
     hwnd = nullptr; bar = game = nullptr; sdl_proc = nullptr;
-    installed = false; bar_shown = false; requested = false; reload = false; about = false; updates = false;
+    installed = false; bar_shown = false; requested = false; reload = false;
     chosen.clear(); ids.clear(); model.clear();
     last_labels.clear(); last_menus.clear(); last_shape.clear();
 }

@@ -170,7 +170,7 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool) {
     std::string all, shape;
     for (const auto& menu : menus) {
         all += menu.title + "\x1f" + menu.icon + "[";
-        shape += "[";
+        shape += menu.help ? "?[" : "[";
         describe(menu.items, all, shape);
     }
     if (installed && label_text == last_labels && all == last_menus) return;
@@ -221,7 +221,12 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool) {
                 NSMenuItem* top = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
                 top.submenu = [[NSMenu alloc] initWithTitle:@""];
                 fill(top.submenu, wanted[n].items);
-                [NSApp.mainMenu insertItem:top atIndex:NSInteger(n) + 1];
+                // Help after Window, as every Mac application has it (with the menu search).
+                if (wanted[n].help) {
+                    [NSApp.mainMenu addItem:top];
+                    NSApp.helpMenu = top.submenu;
+                } else
+                    [NSApp.mainMenu insertItem:top atIndex:NSInteger(n) + 1];
                 [bar_items addObject:top];
             }
         }
