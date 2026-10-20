@@ -5346,11 +5346,12 @@ std::vector<app_menu::Menu> menu_bar(const auto& language){
         {"stage-info",language->ui("stage_info_title"),bound_key(bindings,input::Action::Animation),"",0,bool(stage_open),stage},
         {"quick-load",language->ui("menu_quick_load"),bound_key(bindings,input::Action::QuickLoad),"",0,false,quick_load::usable() && !settings_open},
     };
-    // Each language by its own name, the current one checked.
+    // Each language by its own name, the current one checked, under a globe that reads the
+    // same in every language.
     std::vector<Item> languages;
     for(const auto& [locale,name]:localization::locale_options())
         languages.push_back({"locale:"+locale,name,"","",0,locale==language->locale});
-    return {{language->ui("menu_view"),view},{language->ui("menu_tools"),tools},{language->ui("settings_language"),languages}};
+    return {{language->ui("menu_view"),view},{language->ui("menu_tools"),tools},{language->ui("settings_language"),languages,"globe"}};
 }
 void sync() {
     physical_held=held();

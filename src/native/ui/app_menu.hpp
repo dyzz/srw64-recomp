@@ -34,6 +34,8 @@ struct Item {
 struct Menu {
     std::string title;
     std::vector<Item> items;
+    // Shown in the bar in place of the title, which stays its accessible name: "globe".
+    std::string icon;
 };
 #ifdef _WIN32
 // Puts the menu bar on the window, before the renderer starts (frontend window_init).

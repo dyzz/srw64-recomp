@@ -148,7 +148,7 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool) {
     const std::string label_text = labels.settings + "\n" + labels.reload + "\n" + labels.about + "\n" + labels.check_updates;
     std::string all, shape;
     for (const auto& menu : menus) {
-        all += menu.title + "[";
+        all += menu.title + "\x1f" + menu.icon + "[";
         shape += "[";
         describe(menu.items, all, shape);
     }
@@ -205,7 +205,15 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool) {
             }
         }
         for (size_t n = 0; n < wanted.size() && n < bar_items.count; ++n) {
-            bar_items[n].title = text(wanted[n].title);
+            // An icon is the system's symbol, described by the title for VoiceOver.
+            if (!wanted[n].icon.empty()) {
+                bar_items[n].image = [NSImage imageWithSystemSymbolName:text(wanted[n].icon)
+                                                accessibilityDescription:text(wanted[n].title)];
+                bar_items[n].title = @"";
+            } else {
+                bar_items[n].image = nil;
+                bar_items[n].title = text(wanted[n].title);
+            }
             bar_items[n].submenu.title = text(wanted[n].title);
             apply(bar_items[n].submenu, wanted[n].items);
         }

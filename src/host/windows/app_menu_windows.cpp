@@ -101,6 +101,11 @@ void apply(HMENU menu, const std::vector<Item>& items) {
         if (HMENU sub = GetSubMenu(menu, int(n))) apply(sub, i.items);
     }
 }
+// A menu bar entry has text only: an icon is its character, as the menu font shows it.
+std::string bar_title(const Menu& menu) {
+    if (menu.icon == "globe") return "\xF0\x9F\x8C\x90";  // U+1F310 GLOBE WITH MERIDIANS
+    return menu.title;
+}
 const Item* titled(const std::vector<Item>& items, const std::string& title) {
     for (const auto& i : items) {
         if (!i.id.empty() && i.items.empty() && i.title == title) return &i;
@@ -154,7 +159,7 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool fullscree
                                    labels.check_updates + "\n" + labels.exit;
     std::string all, shape;
     for (const auto& menu : menus) {
-        all += menu.title + "[";
+        all += menu.title + "\x1f" + menu.icon + "[";
         shape += "[";
         describe(menu.items, all, shape);
     }
@@ -176,7 +181,7 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool fullscree
         }
     }
     for (UINT n = 0; n < menus.size(); ++n) {
-        set_text(bar, n + 1, menus[n].title, true);
+        set_text(bar, n + 1, bar_title(menus[n]), true);
         if (HMENU popup = GetSubMenu(bar, int(n + 1))) apply(popup, menus[n].items);
     }
     DrawMenuBar(hwnd);
