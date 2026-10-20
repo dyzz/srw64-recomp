@@ -60,6 +60,7 @@ struct Draw {
     int under = -1;                           // drawn first with the same quads: the original, opaque
     bool wide = false;                        // side quads beyond the original's 320 (the scissor too)
     float prim[4]{1, 1, 1, 1};                // the combiner is TEXEL0 * PRIM (fades)
+    float sample_extent[4]{};                 // source coordinates used to sample the HD image
     std::vector<Quad> quads;
 };
 
@@ -243,6 +244,16 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     if (draw.wide) wide.scissor = {0, 0, int32_t(call.viewport.width), int32_t(call.viewport.height)};
     for (auto* set : {under, textures}) {
         if (!set) continue;
+        // The opaque ROM underlay has 4:3 UVs even when its HD overlay is wider.
+        // Only transparent pixels reveal it; the outpainted margins are opaque.
+        std::memcpy(&data[8], draw.quads.data(), draw.quads.size() * sizeof(Quad));
+        if (set == under) {
+            const auto& e = draw.sample_extent;
+            for (size_t q = 0; q < draw.quads.size(); ++q) {
+                for (int c : {4, 6}) data[8 + q * 8 + c] = (e[0] + data[8 + q * 8 + c] * (e[2] - e[0])) / source_width;
+                for (int c : {5, 7}) data[8 + q * 8 + c] = (e[1] + data[8 + q * 8 + c] * (e[3] - e[1])) / source_height;
+            }
+        }
         if (!program->begin(list, framebuffer, wide, state, set, gpu::push_data(data.data(), data.size() * sizeof(float)))) {
             ++skipped;
             return true;
@@ -382,8 +393,9 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     // A drifting sky is drawn whole only with its HD picture (battle_sky).
     const bool drift = !sky && chosen >= 0 && drift_layer(rdram, draw.slot);
     // The HD pictures keep entry 0 transparent: a first layer's original goes under them.
+    const bool still = draw.slot <= 4 && layer_kind(rdram, draw.slot) == 8;
     const bool plain = chosen >= 0 && assets[size_t(chosen)].extent[0] == 0 && assets[size_t(chosen)].extent[2] == float(source_width);
-    const int under = plain && first ? rom_asset(image, palette, true) : -1;
+    const int under = chosen >= 0 && first && (plain || still) ? rom_asset(image, palette, true) : -1;
     if (chosen < 0 && sky) chosen = rom_asset(image, palette, first);
     if (chosen < 0) return false;
     // The drawer sets PRIM once, then per 32x32 tile: SETTIMG (the picture), LOADTILE of
@@ -394,6 +406,17 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
     record.under = under;
     float extent[4];
     std::copy(std::begin(assets[size_t(record.asset)].extent), std::end(assets[size_t(record.asset)].extent), extent);
+    if (!frame::wide && still && extent[0] < 0 && extent[2] > source_width) {
+        // Integer outpaint canvases round the ideal 16:9 width (1708 rather than
+        // 1706 2/3 at 4x). At 4:3 sample the exact original-sized centre crop.
+        const auto& asset = assets[size_t(record.asset)];
+        const float scale = float(asset.height) / source_height;
+        const float side = (asset.width / scale - source_width) / 2;
+        if (std::abs(side + extent[0]) < 0.5f && std::abs(side - extent[2] + source_width) < 0.5f) {
+            extent[0] = -side; extent[2] = source_width + side;
+        }
+    }
+    std::copy(std::begin(extent), std::end(extent), record.sample_extent);
     std::vector<uint32_t> rects;
     float load[4]{}, tile[2]{};
     float columns = 1;  // picture pixels per loaded texel: 2 when CI4 is loaded as 8-bit (starfield)
@@ -448,7 +471,18 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         float ox = std::fmod(origin[0], float(source_width)), oy = std::fmod(origin[1], float(source_height));
         if (ox < 0) ox += source_width;
         if (oy < 0) oy += source_height;
-        wrap_quads(record, ox, oy);
+        const float side = (float(frame::picture_width) - frame::kWidth) / 2;
+        if (still && -extent[0] >= side - 0.5f &&
+            extent[2] - source_width >= side - 0.5f) {
+            // A still sky outpainted to the screen's width is one picture, not a
+            // 320-pixel period. Keep the game's vertical wrap from its origin.
+            record.quads.clear();
+            for (float y = oy - source_height * std::ceil(oy / source_height); y < frame::kHeight; y += source_height)
+                record.quads.push_back({{ox + extent[0], y, ox + extent[2], y + source_height}, {0, 0, 1, 1}});
+            record.wide = true;
+        } else {
+            wrap_quads(record, ox, oy);
+        }
     }
     const float side = frame::wide ? (float(frame::picture_width) - frame::kWidth) / 2 : 0;
     const bool whole = x0 == 0 && x1 >= int32_t(frame::kWidth * 4) - 4;

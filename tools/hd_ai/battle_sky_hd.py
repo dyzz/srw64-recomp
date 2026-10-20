@@ -7,7 +7,9 @@ three periods side by side so the middle one wraps seamlessly, and a quarter of 
 original's nearest-neighbour enlargement goes back over it for the original's grain.
 Index 0 stays transparent. The host draws the skies that follow the camera's pitch a
 little enlarged so the rows the camera uncovers above them are real picture
-(docs/design/battle-animation-rendering.md §5); the pictures themselves stay 4:3.
+(docs/design/battle-animation-rendering.md §5). Still vortex layers 6107/6213 and
+6106/6212 have separate image_gen outpaints: wide-prepare and wide-compose retain
+the exact source RGBA in the centre (docs/design/battle-vortex-wide.md).
 
     build/esrgan-venv/bin/python -m tools.hd_ai.battle_sky_hd build --output assets/hd-ai/battle-skies/v1
     .venv/bin/python -m tools.hd_ai.battle_sky_hd merge --skies assets/hd-ai/battle-skies/v1 \\
@@ -164,8 +166,20 @@ def main() -> None:
     command.add_argument('--output', type=Path, required=True)
     command = commands.add_parser('sheet')
     command.add_argument('--skies', type=Path, required=True)
+    from tools.hd_ai import battle_sky_wide
+    for name in ('wide-prepare', 'wide-compose'):
+        command = commands.add_parser(name)
+        command.add_argument('--source', type=Path, default=battle_sky_wide.SOURCE)
+        command.add_argument('--output', type=Path, required=True)
+        if name == 'wide-compose':
+            command.add_argument('--generated', type=Path, required=True)
+            command.add_argument('--base', type=Path, default=ROOT / 'assets/hd-ai/backgrounds/whole-v4')
+            command.add_argument('--feather', type=int, default=48)
+            command.add_argument('--transparent-margins', action='store_true',
+                                 help='preserve generated alpha in the new sides of an overlay sky')
     args = parser.parse_args()
-    {'build': build, 'merge': merge, 'sheet': sheet}[args.command](args)
+    {'build': build, 'merge': merge, 'sheet': sheet,
+     'wide-prepare': battle_sky_wide.prepare, 'wide-compose': battle_sky_wide.compose}[args.command](args)
 
 
 if __name__ == '__main__':

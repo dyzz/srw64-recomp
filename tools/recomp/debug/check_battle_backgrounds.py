@@ -46,19 +46,25 @@ for b in range(23):
         if key in seen or b not in block_env: continue
         seen.add(key); chosen.append({"block": b, "terrain": t, "env": block_env[b], "key": list(map(str, key))})
 todo = [c for c in chosen if not (OUT / f"bg-{c['block']:02}-{c['terrain']:03}-a.png").exists()]
+if "--only" in sys.argv:
+    only = sys.argv[sys.argv.index("--only") + 1]
+    chosen = [c for c in chosen if f"bg-{c['block']:02}-{c['terrain']:03}" == only]
+    if not chosen: raise ValueError(f"unknown background class: {only}")
+    todo = [c for c in todo if c in chosen]
+aspect = sys.argv[sys.argv.index("--aspect") + 1] if "--aspect" in sys.argv else "auto"
 print(len(chosen), "classes,", len(todo), "to go", flush=True)
 (OUT / "chosen.json").write_text(json.dumps(chosen, indent=1))
 
 def session_run(batch):
     s = Session.launch(language="zh-Hans", images="hd", binary=str(ROOT / "build/recomp/gfx-build/srw64-gfx-host"),
-                       mini_stage=str(ROOT / "config/recomp/mini-stages/battle-ui.json"))
+                       mini_stage=str(ROOT / "config/recomp/mini-stages/battle-ui.json"), env={"SRW64_ASPECT": aspect})
     st = lambda: s.client.call("status")
     try:
         s.client.call("window", width=window[0], height=window[1])
         s.wait(vi=600, timeout=300)
         s.enter_mini_stage(); time.sleep(4)
         for key in ["up", "z", "z", "z"]:
-            s.client.call("keys", press=key, hold_ms=100); time.sleep(0.8)
+            s.client.call("keys", press=key, hold_ms=250); time.sleep(1.2)
         for c in batch:
             end = time.monotonic() + 90
             while not st()["battle_page"].get("visible"):
