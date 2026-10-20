@@ -173,7 +173,7 @@ if(SRW64_ENABLE_RT64)
         # The menu bar (src/native/ui/app_menu.hpp), the executable's icon, and the manifest
         # that makes UTF-8 its code page (CMake embeds a listed .manifest).
         target_sources(srw64-gfx-host PRIVATE windows/app_menu_windows.cpp windows/marchwind64.rc windows/marchwind64.manifest)
-        target_link_libraries(srw64-gfx-host PRIVATE comdlg32 user32 ole32)
+        target_link_libraries(srw64-gfx-host PRIVATE comdlg32 user32 ole32 shell32)
         # A crash's minidump into the run directory (crash_dump.hpp, docs/native/bug-report.md).
         target_sources(srw64-gfx-host PRIVATE windows/crash_dump_windows.cpp)
         target_link_libraries(srw64-gfx-host PRIVATE dbghelp synchronization)

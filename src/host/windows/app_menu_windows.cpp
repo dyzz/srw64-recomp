@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <windows.h>
+#include <shellapi.h>
 
 namespace srw64::app_menu {
 namespace {
@@ -101,9 +102,10 @@ void apply(HMENU menu, const std::vector<Item>& items) {
         if (HMENU sub = GetSubMenu(menu, int(n))) apply(sub, i.items);
     }
 }
-// A menu bar entry has text only: an icon is its character, as the menu font shows it.
+// A menu bar entry has text only: an icon is a character before the title, as the menu
+// font shows it.
 std::string bar_title(const Menu& menu) {
-    if (menu.icon == "globe") return "\xF0\x9F\x8C\x90";  // U+1F310 GLOBE WITH MERIDIANS
+    if (menu.icon == "globe") return "\xF0\x9F\x8C\x90 " + menu.title;  // U+1F310 GLOBE WITH MERIDIANS
     return menu.title;
 }
 const Item* titled(const std::vector<Item>& items, const std::string& title) {
@@ -219,6 +221,12 @@ std::string take_request() {
     std::string id = std::move(chosen.front());
     chosen.pop_front();
     return id;
+}
+bool reveal(const std::filesystem::path& file) {
+    std::error_code error;
+    if (!std::filesystem::exists(file, error)) return false;
+    const std::wstring arguments = L"/select,\"" + file.wstring() + L"\"";
+    return INT_PTR(ShellExecuteW(hwnd, L"open", L"explorer.exe", arguments.c_str(), nullptr, SW_SHOWNORMAL)) > 32;
 }
 void shutdown() {
     // A destroyed window took its menu with it.

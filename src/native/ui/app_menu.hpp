@@ -1,4 +1,5 @@
 #pragma once
+#include <filesystem>
 #include <string>
 #include <vector>
 
@@ -34,7 +35,7 @@ struct Item {
 struct Menu {
     std::string title;
     std::vector<Item> items;
-    // Shown in the bar in place of the title, which stays its accessible name: "globe".
+    // Shown in the bar before the title: "globe".
     std::string icon;
 };
 #ifdef _WIN32
@@ -57,6 +58,8 @@ bool take_reload_request();
 bool take_about_request();
 bool take_update_request();
 std::string take_request();  // an entry chosen since, oldest first; empty for none
+// Shows the file selected in its folder: Finder, or Explorer. False when it could not.
+bool reveal(const std::filesystem::path& file);
 void shutdown();
 #else
 inline void update(const Labels&, const std::vector<Menu>&, bool) {}
@@ -68,6 +71,7 @@ inline bool take_reload_request() { return false; }
 inline bool take_about_request() { return false; }
 inline bool take_update_request() { return false; }
 inline std::string take_request() { return {}; }
+inline bool reveal(const std::filesystem::path&) { return false; }
 inline void shutdown() {}
 #endif
 }

@@ -5359,9 +5359,11 @@ std::vector<app_menu::Menu> menu_bar(const auto& language){
         {},
         {"stage-info",language->ui("stage_info_title"),bound_key(bindings,input::Action::Animation),"",0,bool(stage_open),stage},
         {"quick-load",language->ui("menu_quick_load"),bound_key(bindings,input::Action::QuickLoad),"",0,false,quick_load::usable() && !settings_open},
+        {},
+        {"export-logs",language->ui("menu_export_logs")},
     };
     // Each language by its own name, the current one checked, under a globe that reads the
-    // same in every language.
+    // same in every language before the title.
     std::vector<Item> languages;
     for(const auto& [locale,name]:localization::locale_options())
         languages.push_back({"locale:"+locale,name,"","",0,locale==language->locale});
@@ -5465,6 +5467,15 @@ void sync() {
         else if(id=="stage-info")choose(stage_open?"settings-close":"stage-info-open");
         else if(id=="quick-load")choose("quick-load-ask");
         else if(id.starts_with("locale:"))settings::request_locale(id.substr(7));
+        // The About page's report (logs and settings, bug_report.hpp), shown selected in its folder.
+        else if(id=="export-logs") {
+            const auto result=bug_report::write(settings::data_folder(),output,report_facts());
+            auto text=localization::catalog().ui(result.zip.empty()?"settings_report_failed":"settings_report_done");
+            const std::string mark=result.zip.empty()?"{error}":"{path}";
+            if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),result.zip.empty()?result.error:short_path(result.zip.string()));
+            notices::post("report",text);
+            if(!result.zip.empty()){report_zip=result.zip;if(!app_menu::reveal(result.zip))open_folder(result.zip.parent_path().string());}
+        }
     }
     if(app_menu::take_settings_request())choose("settings-open");
     if(app_menu::take_about_request())open_about("");

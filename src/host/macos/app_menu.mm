@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <atomic>
 #include <cctype>
+#include <cmath>
 #include <deque>
 #include <mutex>
 
@@ -79,6 +80,26 @@ NSAttributedString* with_key(const std::string& title, const std::string& key, C
     style.tabStops = @[[[NSTextTab alloc] initWithTextAlignment:NSTextAlignmentRight location:column options:@{}]];
     return [[NSAttributedString alloc] initWithString:text(title + "\t" + key)
                                            attributes:@{NSFontAttributeName: [NSFont menuFontOfSize:0], NSParagraphStyleAttributeName: style}];
+}
+// A bar entry with an icon: the system's symbol and the title drawn as one template image
+// (the bar shows an entry's image alone, without its title, and ignores attributed titles),
+// semibold to sit near the bar's own titles; the title stays the entry's accessible name.
+NSImage* icon_with_title(const std::string& icon, const std::string& title) {
+    NSFont* font = [NSFont systemFontOfSize:[NSFont menuBarFontOfSize:0].pointSize weight:NSFontWeightSemibold];
+    NSImage* symbol = [[NSImage imageWithSystemSymbolName:text(icon) accessibilityDescription:nil]
+        imageWithSymbolConfiguration:[NSImageSymbolConfiguration configurationWithPointSize:font.pointSize weight:NSFontWeightSemibold]];
+    NSDictionary* attributes = @{NSFontAttributeName: font, NSForegroundColorAttributeName: NSColor.blackColor};
+    NSString* words = text(" " + title);
+    const NSSize room = [words sizeWithAttributes:attributes];
+    const CGFloat height = std::ceil(std::max(room.height, symbol.size.height));
+    NSImage* image = [NSImage imageWithSize:NSMakeSize(std::ceil(symbol.size.width + room.width), height) flipped:NO
+                             drawingHandler:^BOOL(NSRect) {
+        [symbol drawInRect:NSMakeRect(0, (height - symbol.size.height) / 2, symbol.size.width, symbol.size.height)];
+        [words drawAtPoint:NSMakePoint(symbol.size.width, (height - room.height) / 2) withAttributes:attributes];
+        return YES;
+    }];
+    [image setTemplate:YES];
+    return image;
 }
 // What the entries say and whether they are on (last_menus), and their ids and keys alone
 // (last_shape): a change of shape builds the menus again, any other is set in place.
@@ -205,15 +226,8 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool) {
             }
         }
         for (size_t n = 0; n < wanted.size() && n < bar_items.count; ++n) {
-            // An icon is the system's symbol, described by the title for VoiceOver.
-            if (!wanted[n].icon.empty()) {
-                bar_items[n].image = [NSImage imageWithSystemSymbolName:text(wanted[n].icon)
-                                                accessibilityDescription:text(wanted[n].title)];
-                bar_items[n].title = @"";
-            } else {
-                bar_items[n].image = nil;
-                bar_items[n].title = text(wanted[n].title);
-            }
+            bar_items[n].title = text(wanted[n].title);
+            bar_items[n].image = wanted[n].icon.empty() ? nil : icon_with_title(wanted[n].icon, wanted[n].title);
             bar_items[n].submenu.title = text(wanted[n].title);
             apply(bar_items[n].submenu, wanted[n].items);
         }
@@ -266,6 +280,12 @@ std::string take_request() {
     std::string id = std::move(chosen.front());
     chosen.pop_front();
     return id;
+}
+bool reveal(const std::filesystem::path& file) {
+    NSURL* url = [NSURL fileURLWithPath:text(file.string())];
+    if (![url checkResourceIsReachableAndReturnError:nil]) return false;
+    on_main(^{ [NSWorkspace.sharedWorkspace activateFileViewerSelectingURLs:@[url]]; });
+    return true;
 }
 void shutdown() {
     on_main(^{

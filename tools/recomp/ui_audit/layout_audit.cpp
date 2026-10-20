@@ -123,7 +123,7 @@ namespace srw64::post_filter { Status status(){return {};} }
 namespace srw64::app_menu {
 void update(const Labels&,const std::vector<Menu>&,bool){} bool available(){return false;} bool activate_settings(){return false;}
 bool activate(const std::string&){return false;} bool take_settings_request(){return false;} bool take_reload_request(){return false;}
-std::string take_request(){return {};} void shutdown(){}
+std::string take_request(){return {};} bool reveal(const std::filesystem::path&){return false;} void shutdown(){}
 bool take_about_request(){return false;} bool take_update_request(){return false;}
 }
 // The update check as a first launch sees it: never checked, the start-up question unanswered.

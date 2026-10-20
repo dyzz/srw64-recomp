@@ -22,6 +22,8 @@
 
 导出后这一行显示文件位置；能打开文件夹的平台（桌面和安卓）给「打开所在文件夹」，安卓打开「文件」App 里的 `reports` 文件夹；Steam Deck 游戏模式、触屏和掌机上给「复制文件路径」。
 
+Mac 和 Windows 的菜单栏「工具 → 导出日志」（2026-10-20）导出同一个 zip，顶部提示文件位置，并在 Finder／资源管理器里打开 `reports` 文件夹、选中这个文件（`app_menu::reveal`：Mac 用 `NSWorkspace activateFileViewerSelectingURLs`，Windows 用 `explorer /select,`），失败时退回只打开文件夹。
+
 ## console.log
 
 此前玩家这边没有任何日志文件：宿主的 `SRW64_*` 行和 RT64 的输出只到 stderr，macOS 从访达打开时直接丢掉，Windows 只在控制台窗口里。现在 `main` 一开始调用 `console_log::start()`（`src/host/console_log.cpp`）：stdout、stderr 各接一根管道，读出来的内容照旧写回原来的地方（终端；安卓转到 logcat，取代原来的 `forward_output_to_logcat`），同时写进本次运行目录的 `console.log`。运行目录在 `run_host` 里才知道（`console_log::attach`），之前的输出先存在内存里（最多 1 MiB），接上后先写。退出时最多等 0.2 秒让管道排空。Linux 的崩溃处理（`crash_backtrace`）除了 stderr，还把回溯直接写进 `console.log`，因为进程正在崩溃时管道不一定还会被读。
