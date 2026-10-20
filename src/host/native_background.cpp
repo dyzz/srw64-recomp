@@ -472,13 +472,23 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         if (ox < 0) ox += source_width;
         if (oy < 0) oy += source_height;
         const float side = (float(frame::picture_width) - frame::kWidth) / 2;
-        if (still && -extent[0] >= side - 0.5f &&
-            extent[2] - source_width >= side - 0.5f) {
-            // A still sky outpainted to the screen's width is one picture, not a
-            // 320-pixel period. Keep the game's vertical wrap from its origin.
+        if (still && side > 0.25f) {
+            // A still sky (kind 8) does not move with the camera: wider than 4:3 its picture
+            // is enlarged about the screen's centre until it spans the width, and its top and
+            // bottom rows are cut. No copy meets another, so no seam shows (the vortex 6107
+            // and its arms 6106 do not wrap at their edges). Both layers take the same scale,
+            // so they stay aligned. This needs no wider art: the HD pack's own 4:3 pictures
+            // serve (2026-10-20, chosen over outpainted sides, which still showed a join);
+            // a picture with a wider extent gives only its 4:3 part.
+            if (ox > source_width / 2.f) ox -= source_width;
+            if (oy > source_height / 2.f) oy -= source_height;
+            const float zoom = (frame::kWidth + 2 * side) / frame::kWidth, cx = frame::kWidth / 2.f, cy = frame::kHeight / 2.f;
+            const auto u = [&](float x) { return (x - extent[0]) / (extent[2] - extent[0]); };
+            const auto v = [&](float y) { return (y - extent[1]) / (extent[3] - extent[1]); };
             record.quads.clear();
-            for (float y = oy - source_height * std::ceil(oy / source_height); y < frame::kHeight; y += source_height)
-                record.quads.push_back({{ox + extent[0], y, ox + extent[2], y + source_height}, {0, 0, 1, 1}});
+            record.quads.push_back({{cx + (ox - cx) * zoom, cy + (oy - cy) * zoom,
+                                     cx + (ox + source_width - cx) * zoom, cy + (oy + source_height - cy) * zoom},
+                                    {u(0), v(0), u(float(source_width)), v(float(source_height))}});
             record.wide = true;
         } else {
             wrap_quads(record, ox, oy);
