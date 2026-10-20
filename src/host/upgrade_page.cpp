@@ -418,26 +418,45 @@ bool stats_step(uint8_t* ram,recomp_context* ctx) {
         // The window's はい branch, once for every planned level: it pays the price the
         // step computed when it drew it (D_801DEBCC, set here instead), adds the preview,
         // raises the level, propagates to the unit's forms, runs the EW check, and
-        // re-enters the screen. Prices and funds are read again before each level; an
-        // EW swap (next screen no longer 10) ends the plan where it stands.
-        const uint32_t unit=up::unit_at(read(ram,screen_unit,4));
-        const unsigned allowed=up::allowed_cap(uint16_t(read(ram,unit+up::unit_number,2))),cursor=current.value("cursor",0u);
+        // re-enters the screen. Prices and funds are read again before each level.
+        // An EW swap (next screen 2, the new machine's number in D_801DECD4) comes at
+        // the original cap, which with upgrade-cap-break is short of a plan to 15: the
+        // rest of the plan goes on to the new machine, which inherited the five levels,
+        // and the swap screen is put back once it is paid.
+        const uint32_t slot=read(ram,screen_unit,4);
+        uint32_t unit=up::unit_at(slot);
+        unsigned allowed=up::allowed_cap(uint16_t(read(ram,unit+up::unit_number,2)));
+        const unsigned cursor=current.value("cursor",0u);
         const auto chosen=plans;
         lock.unlock();
-        unsigned paid=0;
+        unsigned paid=0,carried=0;
+        std::optional<std::pair<uint32_t,uint32_t>> swap;   // next screen and D_801DECD4 of the EW swap
         for(unsigned stat=0;stat<up::stat_count;++stat)
             for(unsigned n=0;n<chosen[stat];++n) {
+                if(paid && !swap && read(ram,next_screen,4)==2) {
+                    const uint16_t number=uint16_t(read(ram,list_remembered,2));
+                    uint32_t to=up::unit_slots;
+                    for(uint32_t s=0;s<up::unit_slots;++s)
+                        if(read(ram,up::unit_at(s),1) && read(ram,up::unit_at(s)+up::unit_number,2)==number){to=s;break;}
+                    if(to==up::unit_slots)goto done;
+                    swap.emplace(read(ram,next_screen,4),read(ram,list_remembered,2));
+                    write32(ram,screen_unit,to);up::apply(ram);   // the decide scope's cap for the new unit too
+                    unit=up::unit_at(to);allowed=up::allowed_cap(number);
+                }
                 const unsigned level=read(ram,unit+up::unit_levels+stat,1);
                 if(level>=allowed || level>=up::levels)break;
                 const uint32_t price=read(ram,up::stat_prices+stat*up::stat_prices_stride+level*4,4);
-                if(read(ram,funds,4)<price || (paid && read(ram,next_screen,4)!=10))goto done;
+                if(read(ram,funds,4)<price || (paid && read(ram,next_screen,4)!=10 && !swap))goto done;
+                if(swap && read(ram,next_screen,4)!=10 && read(ram,next_screen,4)!=swap->first)goto done;
                 pay_stat_level(ram,ctx,stat,price,paid==0);++paid;
+                if(swap)++carried;
             }
         done:
+        if(swap){write32(ram,screen_unit,slot);write32(ram,next_screen,swap->first);write16(ram,list_remembered,uint16_t(swap->second));up::apply(ram);}
         // The re-entered screen keeps the player's row.
         if(read(ram,next_screen,4)==10){write16(ram,stat_cursor,uint16_t(cursor));write32(ram,stat_drawn,cursor);}
         const bool left=!idle(ram);
-        lock.lock();record("confirm",{{"plans",chosen},{"paid",paid},{"left",left},{"next",read(ram,next_screen,4)}});
+        lock.lock();record("confirm",{{"plans",chosen},{"paid",paid},{"carried",carried},{"left",left},{"next",read(ram,next_screen,4)}});
         if(left)hide("close");else{write32(ram,mode,0);current["window"]="";planned=false;}
         return true;
     }
