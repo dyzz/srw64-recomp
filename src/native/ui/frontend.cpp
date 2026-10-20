@@ -3550,7 +3550,21 @@ void upgrade_sync() {
             "<div class='im-row' style='position:absolute; left:0; top:"+px(176)+"; width:100%; box-sizing:border-box; height:"+px(22)+"; line-height:"+px(22)+"; padding:0 "+px(3)+"; border-top-width:"+px(line)+"; border-top-color:#3a78e0;'>"+
                 span(label_of("pilot"),52,"im-dim")+span(pilot.empty()?"--------":pilot,100,"",0,6)+span(label_of("funds"),40,"im-dim",0,10)+funds_field("upgrade",next.value("funds",0u),px(60),px(10.5f),px(22))+"</div>",
             face,"upgrade-panel");
-        const std::string hint=next.value("pages",1u)>1?"upgrade_list_hint_pages":"upgrade_list_hint";
+        if(next.value("window",std::string())=="refitted") {
+            // An EW swap the last payment made (upgrade_page.cpp): the original has no message,
+            // only the new name in the row. Both machine names picked out as in the bonus box.
+            const auto& r=next.at("refitted");
+            auto plain=localization::catalog().ui("upgrade_refitted");
+            std::string html=escape(plain);
+            for(const char* key:{"from","to"}) {
+                const std::string mark=std::string("{")+key+"}",name=r.value(key,std::string());
+                if(const auto at=plain.find(mark);at!=std::string::npos)plain.replace(at,mark.size(),name);
+                if(const auto at=html.find(mark);at!=std::string::npos)html.replace(at,mark.size(),"<span style='color:#ffd75e;'>"+escape(name)+"</span>");
+            }
+            body+="<div class='im-shade'></div>"+box(39,98,281,130,"<button id='upgrade-dismiss' class='fit' style='height:"+px(32)+"; line-height:"+px(32)+"; text-align:center;'>"+html+"</button>",
+                std::min(11.f,232.f/std::max(1.f,text_units(plain))),"upgrade-refitted");
+        }
+        const std::string hint=next.value("window",std::string())=="refitted"?"upgrade_message_hint":next.value("pages",1u)>1?"upgrade_list_hint_pages":"upgrade_list_hint";
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(hint)+"</div>";
     } else if(screen=="weapons" || screen=="weapon") {
         // Weapon list (layout 0x77): name / power / range / hit rows, the selected

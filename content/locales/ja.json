@@ -492,6 +492,7 @@
     "upgrade_unified_hint_pages": "{KeyLeft}{KeyRight} 段階   ·   {KeyUp}{KeyDown} ページ   ·   {Enter} / {A} 改造   ·   {Esc} / {B} 戻る",
     "upgrade_unified_hint_pages_pad": "{DLeftRight} 段階   ·   {DUpDown} ページ   ·   {A} 改造   ·   {B} 戻る",
     "upgrade_cap_original": "本来の上限 {n}段階 ▶▷   ·   上限突破 {extra}",
+    "upgrade_refitted": "{from}は{to}に換装されました",
     "parts_list_hint": "{KeyUp}{KeyDown} 選択   ·   {Enter} / {A} 決定   ·   {Esc} / {B} 戻る",
     "parts_list_hint_pad": "{DUpDown} 選択   ·   {A} 決定   ·   {B} 戻る",
     "parts_list_hint_pages": "{KeyUp}{KeyDown} 選択   ·   {KeyLeft}{KeyRight} ページ   ·   {Enter} / {A} 決定   ·   {Esc} / {B} 戻る",

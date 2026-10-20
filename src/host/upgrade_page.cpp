@@ -78,6 +78,9 @@ bool planned{};
 // Full-upgrade bonuses one unified payment unlocked (upgraded, unlocked weapon numbers):
 // the original keeps one in D_801DD20A / D_801DEC5A, and マジンガーZ(JS) has two.
 std::vector<std::pair<unsigned,unsigned>> bonuses;
+// An EW swap the last five-stat payment made (old, new machine number): the original
+// only goes back to the list with the new name in the row, so the list says so.
+std::optional<std::pair<unsigned,unsigned>> refitted;
 std::ofstream log;
 
 void record(const char* kind,json extra=json::object()) {
@@ -256,6 +259,8 @@ void relocalize(uint8_t* ram,recomp_context* ctx) {
     if(screen=="weapon"){current["weapon"]=chosen_weapon(ram);current["unit"]["name"]=text(ram,text_unit_names+current["unit"].value("number",0u));}
     show_plans();
     if(current.contains("bonus")){const auto& ids=current["bonus"]["numbers"];current["bonus"]=bonus_json(ram,ids[0].get<unsigned>(),ids[1].get<unsigned>());}
+    if(current.contains("refitted"))for(const auto& [key,n]:{std::pair{"from",0},std::pair{"to",1}})
+        current["refitted"][key]=text(ram,uint16_t(text_unit_names+current["refitted"]["numbers"][n].get<unsigned>()));
     labels(ram);
 }
 
@@ -298,6 +303,12 @@ bool list_build(uint8_t* ram,recomp_context* ctx,bool weapons) {
     std::lock_guard lock(mutex);
     current["kind"]=weapons?"weapons":"stats";
     json page=list_page_json(ram,ctx);page["kind"]=weapons?"weapons":"stats";
+    if(refitted && !weapons) {
+        page["window"]="refitted";
+        page["refitted"]={{"from",text(ram,uint16_t(text_unit_names+refitted->first))},{"to",text(ram,uint16_t(text_unit_names+refitted->second))},
+            {"numbers",{refitted->first,refitted->second}}};
+    }
+    refitted.reset();
     open(std::move(page),ram);
     call(ram,ctx,resident_func_80099814,4,2,0);
     return true;
@@ -309,6 +320,11 @@ bool list_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_cont
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
     if(set_funds(ram,action))return false;
+    if(current.contains("window") && current["window"]=="refitted") {
+        if(action!="dismiss")return false;
+        current["window"]="";current.erase("refitted");record("refitted-dismiss");
+        lock.unlock();sound(ram,ctx,sound_cancel);return false;
+    }
     const unsigned count=list_size(ram),pages=(count+rows_per_page-1)/rows_per_page;
     unsigned page=unsigned(std::max<int16_t>(1,int16_t(read(ram,list_page,2))))-1,row=unsigned(int16_t(read(ram,list_row,2)));
     if(action.starts_with("move:") || action.starts_with("page:")) {
@@ -426,6 +442,7 @@ bool stats_step(uint8_t* ram,recomp_context* ctx) {
         // the old one's slot and five levels, and then that return is put back.
         const uint32_t slot=read(ram,screen_unit,4);
         uint32_t unit=up::unit_at(slot);
+        const unsigned before=read(ram,unit+up::unit_number,2);
         unsigned allowed=up::allowed_cap(uint16_t(read(ram,unit+up::unit_number,2)));
         const unsigned cursor=current.value("cursor",0u);
         const auto chosen=plans;
@@ -454,10 +471,12 @@ bool stats_step(uint8_t* ram,recomp_context* ctx) {
             }
         done:
         if(swap){write32(ram,screen_unit,slot);write32(ram,next_screen,swap->first);write16(ram,list_remembered,uint16_t(swap->second));up::apply(ram);}
+        // A swap on the last paid level shows the same way: the list next, a new number in the slot.
+        if(const unsigned after=read(ram,up::unit_at(slot)+up::unit_number,2);paid && read(ram,next_screen,4)==2 && after!=before)refitted.emplace(before,after);
         // The re-entered screen keeps the player's row.
         if(read(ram,next_screen,4)==10){write16(ram,stat_cursor,uint16_t(cursor));write32(ram,stat_drawn,cursor);}
         const bool left=!idle(ram);
-        lock.lock();record("confirm",{{"plans",chosen},{"paid",paid},{"carried",carried},{"left",left},{"next",read(ram,next_screen,4)}});
+        lock.lock();record("confirm",{{"plans",chosen},{"paid",paid},{"carried",carried},{"refitted",refitted?int(refitted->second):-1},{"left",left},{"next",read(ram,next_screen,4)}});
         if(left)hide("close");else{write32(ram,mode,0);current["window"]="";planned=false;}
         return true;
     }

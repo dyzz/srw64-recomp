@@ -123,7 +123,7 @@ UI_KEYS |= {"settings_save_folder", "settings_save_folder_note", "settings_save_
             "settings_save_folder_none", "settings_save_import_no_folder"}
 # Battle HUD banners and response badges drawn natively (sprite_text.cpp).
 UI_KEYS |= {"hud_counter", "hud_defend", "hud_evade", "hud_shield_defense", "hud_critical", "hud_dummy"}
-UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_weapon_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original",
+UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint", "upgrade_confirm_hint", "upgrade_weapon_confirm_hint", "upgrade_message_hint", "upgrade_weapons_hint", "upgrade_weapons_hint_pages", "funds_edit_hint", "upgrade_cap_original", "upgrade_refitted",
             "upgrade_unified_title", "upgrade_unified_level", "upgrade_unified_ask", "upgrade_unified_none", "upgrade_unified_hint", "upgrade_unified_hint_pages",
             "settings_weapon_upgrade", "settings_weapon_upgrade_unified", "settings_weapon_upgrade_single", "settings_weapon_upgrade_note"}
 UI_KEYS |= {"parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "parts_free", "parts_equipped_count"}
