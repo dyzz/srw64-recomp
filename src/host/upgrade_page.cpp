@@ -419,10 +419,11 @@ bool stats_step(uint8_t* ram,recomp_context* ctx) {
         // step computed when it drew it (D_801DEBCC, set here instead), adds the preview,
         // raises the level, propagates to the unit's forms, runs the EW check, and
         // re-enters the screen. Prices and funds are read again before each level.
-        // An EW swap (next screen 2, the new machine's number in D_801DECD4) comes at
-        // the original cap, which with upgrade-cap-break is short of a plan to 15: the
-        // rest of the plan goes on to the new machine, which inherited the five levels,
-        // and the swap screen is put back once it is paid.
+        // An EW swap comes at the original cap, which with upgrade-cap-break is short of
+        // a plan to 15. The original shows nothing for it: it goes back to the unit list
+        // (next screen 2) with the new machine's number in D_801DECD4, the list's
+        // remembered row. The rest of the plan goes on to the new machine, which took
+        // the old one's slot and five levels, and then that return is put back.
         const uint32_t slot=read(ram,screen_unit,4);
         uint32_t unit=up::unit_at(slot);
         unsigned allowed=up::allowed_cap(uint16_t(read(ram,unit+up::unit_number,2)));
