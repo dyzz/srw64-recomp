@@ -9,32 +9,32 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 {package_rows_en}
 | [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}), the same for every platform. |
 
-## What's new in 0.4.9
+## What's new in 0.4.10
 
 ### Fixes
 
-- **Android: Snapdragon 855/860, 778G, 765G and 730/732G phones no longer close at start** (Poco X3 Pro, Pixel 4/4a/5, Galaxy A73); on the older Snapdragon phones still on Android 9 or 10, the game asks you to update Android instead of closing.
-- A crash when casting 友情 or similar spirits on the battle page during the enemy's turn.
-- A flash when choosing Evade or Defend on the battle page.
-- An extra confirm sound in dialogue with nothing pressed.
-- Misaligned weapon ranges and negative hit modifiers in the original-style screens.
+- **Windows: the game stopped responding after the window was minimised** with the settings window or the pre-battle page open.
+- **Loading the suspend save from the pre-battle page left the page over the map, holding every button.**
+- **A wrong ROM closed the game without a word, like a crash.** Every platform now shows a message saying what is wrong with the file, in the game's language; the Android launcher lets you choose again, and a Steam Deck in Game Mode says where to put rom.z64.
+- **A line at the 4:3 edges of battle skies on a widescreen.** Every sky layer is drawn whole from its HD picture; the HD pack itself has not changed.
+- **With 4:3 kept in a wider window, the title's load menu and other pages sat off to the right.**
+- **Unified weapon upgrades: at a machine swap in a stage opening, the new machine's extra weapons started at level 0.** They now take the old machine's level.
+- **A five-stat upgrade that reached the EW swap dropped the rest of the plan.** It now goes on with the new machine, and the unit list says which machine it became.
 
 ### New features
 
-- **Unified weapon upgrades** (Options → UI → Weapon upgrades; on by default): all of a unit's weapons, every form included, go up together to one level, for the same total price as one by one; weapons that join later catch up for free. The full-upgrade bonuses show one after another, and levels past the original cap show as yellow triangles. Choose Per weapon for the original's way.
-- **Load the suspend save from the map**: the Load button beside Info on Android, a button on the stage info page, or F9 on the keyboard. It asks first, showing the save's turn and funds, and works in the middle of a battle too.
-- **Carry finished hidden elements into the next playthrough** (a new difficulty rule, off by default): a hidden element finished in an earlier playthrough joins right after the stage where it would have joined.
-- **A new cheat: unlimited actions** for your units.
-- **Pilot pages show the spirits still to learn**, with their levels. An enemy's pilot page shows its learned spirits and SP, and every enemy's numbers can be seen from the start of the stage.
-- **The Link page is a list of works with a detail panel** for the chosen one's units and pilots.
-- **Smaller downloads**: the desktop packages are about 12 MB smaller, and the Android APK went from 88 MB to 34 MB.
+- **Portable mode (Windows and Linux)**: create an empty folder named user-data beside Marchwind64.exe (srw64 on Linux) and saves and settings live there. The first launch copies in what is already in the system folder; a normal exit syncs back, asking first when the saves differ and backing up the old ones.
+- **The first launch follows the system language** on every platform; a game started from Steam follows Steam's language.
+- **Menu bar (Windows and macOS)**: Language (a globe), Tools (Screenshot, 2× Speed, Stage Info, Load Suspend Save, Export Logs) and Help (website, source code, issue tracker, Copy Platform Info) menus; View gains HD Pictures. Each entry shows its key.
+- **Three new cheats**: real damage past 65535, EXP and money ×2/×5/×10, and an ally morale cap of 150/200/300/999.
+- **Pilot pages show kills** (not for enemies).
+- **Chapter title cards in brush lettering**: Japanese traced from the original cards; Chinese and English in Ma Shan Zheng.
+- **Return to the title screen** from the map's menu, the intermission menu, the application menu, F10 or the stage info page; it asks first.
 
-## From 0.4.8
+## From 0.4.9
 
-- Stage info: hidden elements, enemy parts and retreat conditions for the current stage.
-- An experimental Frame Rate setting (30 by default).
-- A cheat for enemy and recruit levels.
-- The Redmi K60 black screen fixed; Windows starts without a Vulkan driver; Hold ▶▶ on Android keeps fast-forwarding; your own key bindings show after a restart.
+- Unified weapon upgrades (on by default), loading the suspend save from the map (F9), carrying finished hidden elements into the next playthrough, unlimited actions, the spirits still to learn on pilot pages, a new Link page and smaller downloads.
+- More Snapdragon phones start (855/860, 778G, 765G, 730/732G); a crash with 友情 on the battle page fixed.
 
 ## Android chips tested
 
@@ -74,32 +74,32 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 {package_rows}
 | [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），各平台通用。 |
 
-### 本版更新（0.4.9）
+### 本版更新（0.4.10）
 
 #### 修复
 
-- **安卓：骁龙 855/860、778G、765G、730/732G 的手机不再一启动就退出**（Poco X3 Pro、Pixel 4/4a/5、Galaxy A73 等）；还停在安卓 9／10 的较老骁龙手机，会提示升级系统而不是直接退出。
-- 敌方回合在战斗页使用「友情」等精神时闪退。
-- 战斗页选「回避」「防御」时画面闪一下。
-- 对白里没按键也会多响一声确认音。
-- 原版画面里武器射程和负数命中修正的数字没对齐。
+- **Windows：设置窗口或战前确认页开着时最小化，游戏无响应。**
+- **从战前确认页读取中途存档后，页面留在地图上，所有按键失灵。**
+- **ROM 文件不对时游戏直接退出，看起来像闪退。** 现在各平台都弹窗说明原因，用游戏的语言显示；安卓启动器可以重新选择，Steam Deck 游戏模式下会提示把 rom.z64 放在哪里。
+- **宽屏下战斗背景在 4:3 边缘有一道竖线。** 所有天空层都改用整张 HD 图绘制；HD 包本身没有变化。
+- **宽屏保留 4:3 时，标题的读档菜单等页面向右偏。**
+- **武器统一改造：在关卡开场换机时，新机体多出来的武器从 0 段起算。** 现在继承原机的段数。
+- **五项一次改造碰上 EW 换机时，剩下的改造被丢弃。** 现在换机后在新机上继续，机体列表会提示换成了哪台机体。
 
 #### 新功能
 
-- **武器统一改造**（选项 → 界面 →「武器改造」，默认「统一」）：一台机体（含所有形态）的武器一起改到同一段数，费用和逐件改造相同；之后加入的武器自动免费补到同一段数。改满奖励会依次提示，超过原版上限的段数显示为黄色三角。选「逐件（原版）」就是原来的改法。
-- **在地图上读取中途存档**：安卓点「情报」旁的「读档」，本关情报页里有按钮，键盘按 F9。会先确认，显示存档的回合和资金，战斗中也能用。
-- **周目继承**（新的难度规则，默认关）：上周目完成过的隐藏要素，在原本入队的那一关之后直接加入。
-- **金手指新增「我方无限行动」。**
-- **驾驶员能力页显示还没学会的精神和学习等级。** 敌方驾驶员页显示已学会的精神和 SP，地图上的敌人从一开始就能看到数值。
-- **联动画面改版**：左边是作品列表，右边显示选中作品的机体和驾驶员。
-- **安装包变小**：电脑版各小约 12 MB，安卓 APK 从 88 MB 减到 34 MB。
+- **便携模式（Windows、Linux）**：在 Marchwind64.exe（Linux 是 srw64）旁边新建空文件夹 user-data，存档和设置就放在里面。第一次启动会把系统目录里已有的设置和存档复制进来；正常退出时同步回系统目录，两边存档不一致会先询问，覆盖前备份旧的。
+- **首次启动跟随系统语言**，各平台都是；从 Steam 启动的按 Steam 的界面语言。
+- **菜单栏（Windows、macOS）**：新增「语言」（地球图标）、「工具」（截图、2 倍速、本关情报、读取中途存档、导出日志）、「帮助」（官网、源码、问题反馈、复制平台信息）菜单，「显示」菜单加了 HD 图片开关。每项旁边显示当前按键。
+- **金手指新增三项**：伤害照实显示（超过 65535 也照算）、经验与资金倍率 ×2／×5／×10、我方气力上限 150／200／300／999。
+- **驾驶员页显示击坠数**（敌方不显示）。
+- **章节标题卡改为毛笔字**：日文照原版标题卡字形制作，中文和英文用马善政字体。
+- **返回标题画面**：地图菜单、场间菜单、系统菜单、键盘 F10、本关情报页都能进，会先确认。
 
-### 0.4.8 的更新
+### 0.4.9 的更新
 
-- 本关情报：当前关的隐藏要素、敌人的强化零件和撤退条件。
-- 试验性的「帧率」设置（默认 30）。
-- 金手指新增「敌人与新同伴等级」。
-- 红米 K60 黑屏修复；Windows 没有 Vulkan 驱动也能启动；安卓「按住快进」恢复连续快进；改键后重启显示正确。
+- 武器统一改造（默认开）、在地图上读取中途存档（F9）、周目继承、我方无限行动、驾驶员页显示还没学会的精神、联动画面改版、安装包变小。
+- 更多骁龙手机能启动（855/860、778G、765G、730/732G）；修复战斗页使用「友情」时闪退。
 
 ### 安卓已测试的芯片
 
