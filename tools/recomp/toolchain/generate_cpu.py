@@ -29,6 +29,12 @@ NATIVE_HOOKS = {
     "load_000AB160_func_801FCA78": "srw64_original_map_rounds",
     # Every end of a unit's action spends one (cheats.hpp unlimited_moves).
     "load_000AB160_func_801C29DC": "srw64_original_action_spend",
+    # A battle's EXP and kill money (cheats.hpp reward modes), and the steps after the
+    # damage: special defenses and てかげん (overkill.hpp).
+    "load_000AB160_func_801F60D4": "srw64_original_battle_exp",
+    "load_000AB160_func_801F6588": "srw64_original_battle_funds",
+    "load_000AB160_func_801F7204": "srw64_original_battle_defense",
+    "load_000AB160_func_801F5B78": "srw64_original_battle_spare",
     "load_000AB160_func_801FB8B4": "srw64_original_map_round_push",
     # The map's pilot page: an enemy's learned spirits and SP drawn over its ?????
     # (src/host/enemy_pilot_page.hpp).
@@ -214,6 +220,35 @@ MAP_WIDTH_CONSTANTS = {
     # (x < 257) took for past the right edge, moving the window to 240 (wide_map.cpp).
     ("load_000AB160_func_801E3AE4", 0x801E3B1C): ("MEM_W(ctx->r1, -0XA2C)", "srw64_map_anchor_scroll(MEM_W(ctx->r1, -0XA2C), ctx->f2.fl)"),
 }
+
+# The cheats ride on the same rewrite. Morale stops at 150 in eight places, all reading
+# the pilot record (cheats.hpp morale modes; srw64_morale_cap(pilot) is 150 for anyone
+# outside the player's table): a spirit's raise (801E1380, which sign-extends cap - morale
+# to a byte, so the cap is kept within 127 of the morale), the 精神 menu's "morale is full"
+# tests (pilot = unit + 0x38 + 4 * a2), and the battle's three raises (801FAC24: the
+# side's, the other side's and the damaged pilots'), each a test against 151 and a store
+# of 150. 801F5ACC caps the damage at 65535.0; the uncapped value in $f22 goes to
+# overkill.hpp first, which also gives the figures on screen the damage uncut.
+SPIRIT_PILOT = "MEM_W(0X38, ADD32(S32(ctx->r6 << 2), ctx->r3))"
+MAP_WIDTH_CONSTANTS.update({
+    ("load_000AB160_func_801E1380", 0x801E1460): ("0X96", "srw64_morale_room(ctx->r4, ctx->r3)"),
+    ("load_000AB160_func_801EFDE4", 0x801EFEA4): ("0X96", f"srw64_morale_cap({SPIRIT_PILOT})"),
+    ("load_000AB160_func_801EFDE4", 0x801F0018): ("0X96", f"srw64_morale_cap({SPIRIT_PILOT})"),
+    ("load_000AB160_func_801F1094", 0x801F112C): ("0X96", f"srw64_morale_cap({SPIRIT_PILOT})"),
+    ("load_000AB160_func_801FAC24", 0x801FAD5C): ("0X97", "(srw64_morale_cap(ctx->r3) + 1)"),
+    ("load_000AB160_func_801FAC24", 0x801FAD64): ("ctx->r13", "srw64_morale_cap(ctx->r3)"),
+    ("load_000AB160_func_801FAC24", 0x801FAEA4): ("0X97", "(srw64_morale_cap(ctx->r4) + 1)"),
+    ("load_000AB160_func_801FAC24", 0x801FAEB4): ("ctx->r14", "srw64_morale_cap(ctx->r4)"),
+    ("load_000AB160_func_801FAC24", 0x801FAFA8): ("0X97", "(srw64_morale_cap(ctx->r3) + 1)"),
+    ("load_000AB160_func_801FAC24", 0x801FAFB0): ("ctx->r8", "srw64_morale_cap(ctx->r3)"),
+    ("srw64_original_battle_damage", 0x801F5ACC): ("S32(0X477F << 16)", "srw64_damage_real(ctx->f22.fl, S32(0X477F << 16))"),
+    # The damage figures, cut to the HP left; each read here only draws the digits (the HP
+    # drains from copies taken earlier): the map's float (sub-state 5 of 0x4B, 801FCC6C) and
+    # the battle animation's number (8009B1EC(0x17, ...)).
+    ("load_000AB160_func_801D8BB0", 0x801D8CB0): ("MEM_HU(ctx->r1, 0X7862)", "srw64_map_figure(rdram, MEM_HU(ctx->r1, 0X7862))"),
+    ("load_00121560_func_801C8E1C", 0x801C8F20): ("MEM_HU(ctx->r16, 0X1C)", "srw64_battle_figure(rdram, MEM_HU(ctx->r16, 0X1C))"),
+    ("load_00121560_func_801C8F4C", 0x801C9184): ("MEM_HU(ctx->r16, 0X1C)", "srw64_battle_figure(rdram, MEM_HU(ctx->r16, 0X1C))"),
+})
 
 # 8008AE90 builds each frame's display list by calling every render node's function: sprites
 # at 8008B3FC (cursor, slot, sub), callbacks at 8008B3E0 (cursor). Both calls go through the
@@ -415,6 +450,9 @@ def main() -> int:
             destination.write("void srw64_original_rom_read(uint8_t*, recomp_context*);\nvoid srw64_original_text_descriptor(uint8_t*, recomp_context*);\n")
             destination.write("int32_t srw64_map_x(int32_t original, int32_t halves);\nint32_t srw64_map_x_float(uint32_t bits, int32_t halves);\n"
                               "int32_t srw64_map_anchor_scroll(int32_t scroll, float unit_x);\n"
+                              "uint32_t srw64_morale_cap(uint64_t pilot);\nuint32_t srw64_morale_room(uint64_t pilot, uint64_t morale);\n"
+                              "int32_t srw64_damage_real(float damage, int32_t cap_bits);\n"
+                              "uint32_t srw64_map_figure(uint8_t* rdram, uint32_t shown);\nuint32_t srw64_battle_figure(uint8_t* rdram, uint32_t shown);\n"
                               "void srw64_render_node(uint8_t* rdram, recomp_context* ctx, int32_t function, int32_t sprite);\n#ifdef __cplusplus\n}\n#endif\n")
         trap = work / "generated/funcs_unsupported.c"
         trap.write_text('#include "recomp.h"\n#include <stdio.h>\n#include <stdlib.h>\n' + "\n".join(

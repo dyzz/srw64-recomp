@@ -6,21 +6,32 @@
 #include <string>
 #include <vector>
 
-// The settings' cheats page (docs/gameplay/cheats.md). Six switches the game thread
-// holds every frame, and setting a pilot's level, which waits for the インターミッション
+// The settings' cheats page (docs/gameplay/cheats.md). Switches the game thread holds
+// every frame, rules the battle code asks for (the base level, rewards, morale cap,
+// damage past 65535), and setting a pilot's level, which waits for the インターミッション
 // menu. The values come from the original's own limits. What they write is the game's
 // own state and is saved with it; the switches themselves are not.
 namespace srw64::cheats {
 
-enum Switch : unsigned {max_funds=1,max_parts=2,keep_en=4,keep_sp=8,morale_150=16,four_slots=32,level_curve=64,level_party=128,
-    unlimited_moves=256};
+enum Switch : unsigned {max_funds=1,max_parts=2,keep_en=4,keep_sp=8,keep_morale=16,four_slots=32,level_curve=64,level_party=128,
+    unlimited_moves=256,reward_x2=512,reward_x5=1024,reward_x10=2048,morale_200=4096,morale_300=8192,morale_999=16384,
+    real_damage=32768};
 struct Entry {Switch bit;const char* id;};
 inline constexpr Entry catalog[]={{max_funds,"funds"},{max_parts,"parts"},{four_slots,"slots"},{unlimited_moves,"moves"},{keep_en,"en"},{keep_sp,"sp"},
-    {morale_150,"morale"},{level_party,"party"},{level_curve,"curve"}};
-// The base level row offers three choices, not switches: the original, the party's (no
-// cap) or the chapter curve. At most one of the two bits is set.
-inline constexpr unsigned level_modes=level_curve|level_party;
-inline constexpr bool toggle(Switch bit){return !(bit&level_modes);}
+    {keep_morale,"morale"},{real_damage,"damage"},{level_party,"party"},{level_curve,"curve"},{reward_x2,"x2"},{reward_x5,"x5"},{reward_x10,"x10"},
+    {morale_200,"morale200"},{morale_300,"morale300"},{morale_999,"morale999"}};
+// Three rows offer choices, not switches: the base level (the original, the party's with
+// no cap, or the chapter curve), the EXP and money multiplier, and the morale cap. At most
+// one bit of each group is set; none is the original.
+inline constexpr unsigned level_modes=level_curve|level_party,reward_modes=reward_x2|reward_x5|reward_x10,
+    morale_modes=morale_200|morale_300|morale_999;
+inline constexpr bool toggle(Switch bit){return !(bit&(level_modes|reward_modes|morale_modes));}
+// The lowest bit of each group, the others cleared.
+inline constexpr unsigned one_per_group(unsigned value) {
+    for(const unsigned group:{level_modes,reward_modes,morale_modes})
+        if(const unsigned set=value&group)value=(value&~group)|(set&(0u-set));
+    return value;
+}
 
 unsigned active();
 void set_active(unsigned switches);
@@ -64,9 +75,21 @@ inline constexpr unsigned machine_count=363,slots_max=4;
 // The player's pilots: 100 records of 0x4C (800A84F8). +0 in use, 0x80 set for one
 // the menus leave out (801C549C); +4 bits 0xC0 mark a pilot whose morale the game
 // never resets (801F12D0); +5 level, +0x12 experience, +0x16 SP, +0x18 its maximum,
-// +0x20 morale, capped at 150 by every raise (801FAD58, 801E1460).
+// +0x20 morale, capped at 150 by every raise (801FAC24, 801E1380) and the 精神 menu's
+// "full" tests (801EFDE4, 801F1094); a u16 the screens print in three digits.
 inline constexpr uint32_t pilots_table=0x80172F40,pilot_size=0x4C;
 inline constexpr unsigned pilot_count=100,morale_max=150,level_max=99,experience_per_level=500;
+// The morale cap for the player's pilots; everyone else keeps 150.
+inline constexpr unsigned morale_cap(unsigned on){return on&morale_999?999:on&morale_300?300:on&morale_200?200:morale_max;}
+inline constexpr bool player_pilot(uint32_t pilot){return pilot>=pilots_table && pilot<pilots_table+pilot_count*pilot_size && (pilot-pilots_table)%pilot_size==0;}
+inline constexpr unsigned morale_cap(unsigned on,uint32_t pilot){return player_pilot(pilot)?morale_cap(on):morale_max;}
+// What 801E1380 subtracts the morale from: it keeps cap - morale in a signed byte, so a
+// cap more than 127 above the morale would wrap. The raise is at most that room anyway.
+inline constexpr unsigned morale_room(unsigned on,uint32_t pilot,unsigned morale){return std::min(morale_cap(on,pilot),morale+127);}
+// A battle's EXP (801F60D4, per crew member) and kill money (801F6588) are u16s, taken by
+// 801FC160 (EXP stops at 49000 a pilot, money adds to the u32 at 8010F5F4).
+inline constexpr unsigned reward_multiplier(unsigned on){return on&reward_x10?10:on&reward_x5?5:on&reward_x2?2:1;}
+inline constexpr uint32_t multiplied(unsigned on,uint32_t reward){return std::min<uint32_t>(0xFFFF,(reward&0xFFFF)*reward_multiplier(on));}
 inline constexpr uint16_t text_pilot_names=0x111E;
 // The base level (800A4BE0, on entering every map): the mean of the top 15 player
 // pilots, between 1 and min(99, chapters cleared + 40, 95). New enemies start at it
@@ -132,11 +155,11 @@ inline void hold(uint8_t* ram,unsigned on) {
         const uint32_t unit=units+i*unit_size;
         if(read(ram,unit,1))write16(ram,unit+8,uint16_t(read(ram,unit+0xA,2)));
     }
-    if(on&(keep_sp|morale_150))for(unsigned i=0;i<pilot_count;++i) {
+    if(on&(keep_sp|keep_morale))for(unsigned i=0;i<pilot_count;++i) {
         const uint32_t pilot=pilots_table+i*pilot_size;
         if(!read(ram,pilot,1))continue;
         if(on&keep_sp)write16(ram,pilot+0x16,uint16_t(read(ram,pilot+0x18,2)));
-        if((on&morale_150) && !(read(ram,pilot+4,1)&0xC0))write16(ram,pilot+0x20,morale_max);
+        if((on&keep_morale) && !(read(ram,pilot+4,1)&0xC0))write16(ram,pilot+0x20,uint16_t(morale_cap(on)));
     }
 }
 // With the four-slot switch off, a machine still showing more slots than its ROM

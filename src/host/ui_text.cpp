@@ -772,6 +772,13 @@ namespace {
 // 80228530, a shown flag at 80228536 and x, y words at 80228548. Cell indices: 0 blank,
 // 1 '+', 2 '-', 3-12 the outlined digits, 13-22 the shadowed ones.
 constexpr uint32_t kDamageCells = 0x228530, kDamageShown = 0x228536, kDamagePlaces = 0x228548;
+// The real damage behind a figure the game draws as 65535 (real_figure).
+std::atomic<uint64_t> real_map{0}, real_banner{0};
+bool beyond(const std::string& figure) {
+    std::string digits;
+    for (const char c : figure) if (std::isdigit(static_cast<unsigned char>(c))) digits += c;
+    return digits == "65535";
+}
 // A missed attack's figure (map_miss.hpp): the word in the reading language, in the
 // figure's own style, centred on the cells it was given and moving with them.
 bool miss_drawn(uint8_t* ram, const std::vector<uint32_t>& rects) {
@@ -819,6 +826,8 @@ void damage_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
     float bounds[4] = {1e9f, 1e9f, -1e9f, -1e9f};
     size_t next = 0;
     std::string figure;
+    struct Cell { float x, y; bool outlined; };
+    std::vector<Cell> cells;   // the drawn ones, sign first
     for (uint32_t k = 0; k < 6; ++k) {
         if (!byte(ram, kDamageShown + k)) continue;
         if (next >= rects.size()) return;
@@ -836,8 +845,22 @@ void damage_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
         if (glyph.empty()) continue;
         const float white[3] = {1, 1, 1};
         items.push_back(placed(number_style(cell <= 12), "ja", glyph, "number", x + kCell / 2.f, float(y), white));
+        cells.push_back({x + kCell / 2.f, float(y), cell <= 12});
     }
     if (next != rects.size() || items.empty()) return;
+    // Damage past 65535: the sign and every digit, right-aligned on the last cell.
+    if (const uint64_t real = real_map.load(); real > 65535 && beyond(figure)) {
+        const char sign = figure.find('-') != std::string::npos ? '-' : figure.find('+') != std::string::npos ? '+' : 0;
+        const std::string text = (sign ? std::string(1, sign) : std::string()) + std::to_string(real);
+        const Cell last = cells.back();
+        const float white[3] = {1, 1, 1};
+        items.clear();
+        for (size_t k = 0; k < text.size(); ++k)
+            items.push_back(placed(number_style(k == 0 && sign ? cells.front().outlined : last.outlined), "ja", std::string(1, text[k]), "number",
+                                   last.x - kCell * float(text.size() - 1 - k), last.y, white));
+        bounds[0] -= kCell * float(text.size() > cells.size() ? text.size() - cells.size() : 0);
+        figure = text;
+    }
     if (!sprites::place_texts(ram, rects.front(), bounds, items)) return;
     for (const uint32_t rect : rects)
         if (rect != rects.front())
@@ -878,6 +901,7 @@ void banner_number_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
     float bounds[4] = {1e9f, 1e9f, -1e9f, -1e9f};
     uint32_t load = 0;
     std::string figure;
+    float first_x = 0, first_y = 0;
     for (uint32_t p = from; p + 24 <= end; p += 8) {
         const uint32_t w0 = word(ram, p);
         if (w0 >> 24 == 0xF4) { load = w0; continue; }
@@ -891,11 +915,22 @@ void banner_number_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
         bounds[0] = std::min(bounds[0], x0 / 4.f); bounds[1] = std::min(bounds[1], y0 / 4.f);
         bounds[2] = std::max(bounds[2], ((w0 >> 12) & 0xFFF) / 4.f); bounds[3] = std::max(bounds[3], (w0 & 0xFFF) / 4.f);
         const std::string glyph(1, char('0' + (s - 144) / 8));
+        if (figure.empty()) { first_x = x0 / 4.f + kCell / 2.f; first_y = y0 / 4.f; }
         figure += glyph;
         const float white[3] = {1, 1, 1};
         items.push_back(placed(banner_digit_style(), "ja", glyph, "banner-digit", x0 / 4.f + kCell / 2.f, y0 / 4.f, white));
         rects.push_back(p);
         p += 16;
+    }
+    // Damage past 65535: every digit, from the first cell on.
+    if (const uint64_t real = real_banner.load(); real > 65535 && figure == "65535") {
+        const std::string text = std::to_string(real);
+        const float white[3] = {1, 1, 1};
+        items.clear();
+        for (size_t k = 0; k < text.size(); ++k)
+            items.push_back(placed(banner_digit_style(), "ja", std::string(1, text[k]), "banner-digit", first_x + kCell * float(k), first_y, white));
+        bounds[2] += kCell * float(text.size() - figure.size());
+        figure = text;
     }
     if (items.empty() || !sprites::place_texts(ram, rects.front(), bounds, items)) return;
     for (const uint32_t rect : rects)
@@ -912,6 +947,7 @@ void mark_label(unsigned slot, int x, int y, const std::string& text, const std:
 }
 void clear_small() { std::lock_guard lock(mutex); small.clear(); }
 bool native_numbers() { return active(); }
+void real_figure(bool banner, uint64_t real) { (banner ? real_banner : real_map).store(real); }
 void configure(const std::filesystem::path& output) {
     if (installed) return;
     installed = true;

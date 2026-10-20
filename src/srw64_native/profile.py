@@ -106,8 +106,10 @@ UI_KEYS |= {"settings_bezel", "settings_bezel_note", "settings_filter", "setting
 UI_KEYS |= {f"settings_filter_scale_{n}" for n in (1, 2, 4, 0)}
 # The Cheats page (frontend.cpp cheats_page; the switch ids are cheats.hpp catalog).
 UI_KEYS |= {"cheats_note", "cheat_levels", "cheat_levels_note", "cheat_levels_open", "cheat_levels_close", "cheat_levels_away"}
-UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "slots", "moves", "en", "sp", "morale")}
+UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "slots", "moves", "en", "sp", "morale", "damage")}
 UI_KEYS |= {"cheat_level_base", "cheat_level_base_note"} | {f"cheat_level_base_{mode}" for mode in ("original", "party", "curve")}
+UI_KEYS |= {"cheat_reward", "cheat_reward_note"} | {f"cheat_reward_{mode}" for mode in ("x1", "x2", "x5", "x10")}
+UI_KEYS |= {"cheat_morale_cap", "cheat_morale_cap_note"} | {f"cheat_morale_cap_{cap}" for cap in ("150", "200", "300", "999")}
 # The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
 CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "animation", "settings",
                 "language", "images", "speed", "quick_load", "d_up", "d_down", "d_left", "d_right", "z")

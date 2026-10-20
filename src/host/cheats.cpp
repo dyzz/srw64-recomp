@@ -105,7 +105,7 @@ void set_active(unsigned value) {
     unsigned all=0;
     for(const auto& entry:catalog)all|=entry.bit;
     value&=all;
-    if((value&level_modes)==level_modes)value&=~unsigned(level_party);   // one base level
+    value=one_per_group(value);
     if(switches.exchange(value)!=value)record("switches",{{"switches",value}});
 }
 std::vector<Pilot> pilots() {
@@ -118,6 +118,12 @@ void request_level(unsigned index,unsigned level) {
     std::erase_if(requests,[&](const auto& r){return r.first==index;});
     requests.emplace_back(index,std::clamp(level,1u,level_max));
     for(auto& pilot:listed)if(pilot.index==index)pilot.level=std::clamp(level,1u,level_max);
+}
+
+// The generated morale tests (generate_cpu.py): the cap for the pilot record at `pilot`.
+extern "C" uint32_t srw64_morale_cap(uint64_t pilot){return morale_cap(switches.load(std::memory_order_relaxed),uint32_t(pilot));}
+extern "C" uint32_t srw64_morale_room(uint64_t pilot,uint64_t morale) {
+    return morale_room(switches.load(std::memory_order_relaxed),uint32_t(pilot),unsigned(morale&0xFFFF));
 }
 
 void configure(const std::filesystem::path& directory) {

@@ -727,6 +727,7 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 .bp-clash-side {flex:1; min-width:0;} .bp-clash-side.left {text-align:right;}
 .bp-damage {font-size:46dp; line-height:48dp; font-weight:bold; color:#ffd75e;}
 .bp-damage.d5 {font-size:42dp;} .narrow .bp-damage.d4 {font-size:42dp;} .narrow .bp-damage.d5 {font-size:36dp;}
+.bp-damage.d6 {font-size:36dp;} .narrow .bp-damage.d6 {font-size:30dp;}
 .narrow .bp-clash {padding:9dp 14dp;}
 .bp-caption {font-size:10dp; color:#a4b0d2;}
 .bp-arrow {width:62dp; text-align:center; padding-bottom:16dp; font-size:8dp; line-height:10dp; color:#ffd75e;}
@@ -1169,8 +1170,8 @@ std::string saves_page() {
     if(!save_message.empty())body+="<p class='set-message'>"+escape(save_message)+"</p>";
     return body;
 }
-// The Cheats page (docs/gameplay/cheats.md): five switches, then each pilot's level
-// behind a row that opens the list; levels change only while the インターミッション
+// The Cheats page (docs/gameplay/cheats.md): the switches, three rows of choices, then
+// each pilot's level behind a row that opens the list; levels change only while the インターミッション
 // menu is up.
 bool cheat_levels_open=false;
 std::string cheats_page() {
@@ -1180,6 +1181,9 @@ std::string cheats_page() {
     // Enemies' and recruits' base level: three choices (docs/gameplay/cheats.md §6).
     const unsigned on=settings::cheats();
     body+=settings_choice("cheat_level_base","cheat-level-base",{"original","party","curve"},on&cheats::level_curve?"curve":on&cheats::level_party?"party":"original");
+    // A battle's EXP and kill money, and the player's morale cap (§8, §9).
+    body+=settings_choice("cheat_reward","cheat-reward",{"x1","x2","x5","x10"},"x"+std::to_string(cheats::reward_multiplier(on)));
+    body+=settings_choice("cheat_morale_cap","cheat-morale-cap",{"150","200","300","999"},std::to_string(cheats::morale_cap(on)));
     body+=settings_row("cheat_levels",button("cheat-levels",label(cheat_levels_open?"cheat_levels_close":"cheat_levels_open"),cheat_levels_open));
     if(!cheat_levels_open)return body;
     const auto pilots=cheats::pilots();
@@ -3308,7 +3312,7 @@ std::string battle_clash(const json& enemy,const json& player,bool player_first,
     const auto critical=[&](const json& c){return armed(c) && c.at("critical").get<int>()>0?battle_number(c.at("critical_damage")):std::string("—");};
     // Four and five digits step the figure down so it stays inside its half of the panel
     // (on the Deck the panel also gives up some side padding); `fit` catches any width left over.
-    const auto damage=[&](const json& c){const auto text=value(c,"damage");return "<div class='bp-damage fit"+std::string(text.size()>=5?" d5":text.size()==4?" d4":"")+"'>"+text+"</div>";};
+    const auto damage=[&](const json& c){const auto text=value(c,"damage");return "<div class='bp-damage fit"+std::string(text.size()>=6?" d6":text.size()==5?" d5":text.size()==4?" d4":"")+"'>"+text+"</div>";};
     std::string body="<div class='bp-center'><div class='bp-clash'><div class='bp-clash-side left'>"+damage(enemy)+"<div class='bp-caption'>"+label("battle_damage_if_hit")+"</div></div>";
     body+="<div class='bp-arrow'><div>"+std::string(player_first?"◀━━":"━━▶")+"</div>"+label(player_first?"battle_first_player":"battle_first_enemy")+"</div>";
     body+="<div class='bp-clash-side right'>"+damage(player)+"<div class='bp-caption'>"+label("battle_damage_if_hit")+"</div></div></div>";
@@ -4742,6 +4746,14 @@ void choose(const std::string& id) {
         if(id.starts_with("cheat-level-base:")) {
             const auto mode=id.substr(17);
             settings::set_cheats((settings::cheats()&~cheats::level_modes)|(mode=="curve"?cheats::level_curve:mode=="party"?cheats::level_party:0u));
+        }
+        if(id.starts_with("cheat-reward:")) {
+            const auto mode=id.substr(13);
+            settings::set_cheats((settings::cheats()&~cheats::reward_modes)|(mode=="x10"?cheats::reward_x10:mode=="x5"?cheats::reward_x5:mode=="x2"?cheats::reward_x2:0u));
+        }
+        if(id.starts_with("cheat-morale-cap:")) {
+            const auto mode=id.substr(17);
+            settings::set_cheats((settings::cheats()&~cheats::morale_modes)|(mode=="999"?cheats::morale_999:mode=="300"?cheats::morale_300:mode=="200"?cheats::morale_200:0u));
         }
         if(id.starts_with("cheat-level:"))if(const auto colon=id.find(':',12);colon!=std::string::npos)cheats::request_level(unsigned(std::stoul(id.substr(12,colon-12))),unsigned(std::stoul(id.substr(colon+1))));
         if(id.starts_with("preset:"))for(const auto& preset:rules::presets)if(preset.key==id.substr(7))rules::set_fixes(preset.fixes);
