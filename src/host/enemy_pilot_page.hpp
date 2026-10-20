@@ -13,6 +13,7 @@
 #include "guest_memory.hpp"
 #include "recomp.h"
 #include "funcs.h"
+#include "pilot_kills.hpp"
 #include "spirit_learning.hpp"
 #include "ui_text.hpp"
 #include "native_dialogue.hpp"
@@ -33,10 +34,17 @@ inline constexpr uint32_t text_spirits=0x3C9,unknown_format=0x8021ECB0,none_form
 // whole each time a page of the tactical overlay is drawn, 801E61C4 / 801E642C) has its
 // last few unused: four of them hold the levels of the second row's slots, two the first's.
 inline constexpr uint32_t handle_levels=0x802271FD;
+// Our pilot's kills (pilot_kills.hpp) take the array's last two, left of the top box where
+// A:サブパイロット (0xE6, 0x14) leaves room.
+inline constexpr uint32_t handle_kills=0x80227203;
 // Palettes of the text engine (ui_text.cpp kPaletteHandles): 0 white, 1 the grey of a
-// spirit short of SP, 2 the dark grey of resource 4, 3 the yellow the levels take when the
-// ROM's font draws them.
-inline constexpr unsigned palette_dark=2,palette_level=3;
+// spirit short of SP, 2 the dark grey of resource 4, 5 a yellow ramp like 0's white (e0b818
+// down), which the levels take when the ROM's font draws them. 3 is no text colour: its
+// glyph face is near black, the ROM's digits came out as a few yellow dots (user, 2026-10-19).
+inline constexpr unsigned palette_dark=2,palette_level=5;
+// The spirit box's right frame (the terrain box): the last column's slots, at 192, have
+// only 48 before it, not the 56 between slots.
+inline constexpr unsigned spirits_right=240,slot_pitch=56;
 inline void call(uint8_t* ram,recomp_context* ctx,void(*function)(uint8_t*,recomp_context*),
                  uint32_t a0=0,uint32_t a1=0,uint32_t a2=0,uint32_t a3=0,uint32_t stack0=0,uint32_t* result=nullptr) {
     auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);
@@ -71,13 +79,16 @@ inline void mark_fought(uint8_t* ram) {
     }
 }
 // About how wide a spirit's name is drawn, in N64 pixels: the native font's 12.5 a full-width
-// glyph and about half that a Latin one, the ROM's 14 and 8.
+// glyph and about half that a Latin one, the ROM's 14 and 8. The ROM's spirit names spell
+// their kana half-width, 8 like a Latin letter (ひらめき is 30 wide on screen, not 56).
 inline unsigned name_width(const std::string& text,bool native) {
     unsigned wide=0,narrow=0;
     for(size_t i=0;i<text.size();) {
         const uint8_t c=uint8_t(text[i]);
         const size_t n=c<0x80?1:c<0xE0?2:c<0xF0?3:4;
-        (c<0x80?narrow:wide)++;i+=n;
+        // U+3040..30FF: E3 81 80 .. E3 83 BF.
+        const bool kana=n==3 && c==0xE3 && i+1<text.size() && uint8_t(text[i+1])>=0x81 && uint8_t(text[i+1])<=0x83;
+        (c<0x80 || (kana && !native)?narrow:wide)++;i+=n;
     }
     return native?unsigned(wide*12.5+narrow*6.5):wide*14+narrow*8;
 }
@@ -117,7 +128,8 @@ inline void reveal(uint8_t* ram,recomp_context* ctx,unsigned crew,unsigned side,
             continue;
         }
         // Learned later: the name in dark grey, its level at the slot's right, small (native
-        // text) or in the ROM's font (Japanese original mode). Slots are 56 apart.
+        // text) or in the ROM's font (Japanese original mode). Slots are 56 apart, the last
+        // column 48 wide.
         const auto& entry=table[n];
         if(const int8_t handle=renew(ram,ctx,at);handle>=0)
             call(ram,ctx,resident_func_8008D0E8,uint32_t(int32_t(handle)),text_spirits+entry.id,x,y,palette_dark);
@@ -125,14 +137,19 @@ inline void reveal(uint8_t* ram,recomp_context* ctx,unsigned crew,unsigned side,
         // The engine prints the digits; the native text shows them small as "Lv12". The
         // ROM's font (Japanese original mode) has no letters and no room for more.
         const std::string level=std::to_string(entry.level),shown="Lv"+level;
-        const unsigned digits=native?unsigned(shown.size())*4+1:unsigned(level.size())*8,room=56-digits-2;
+        const unsigned slot=x<spirits_right?std::min(slot_pitch,spirits_right-x):slot_pitch;
+        const unsigned digits=native?unsigned(shown.size())*4+1:unsigned(level.size())*8,room=slot>digits+2?slot-digits-2:0;
         const unsigned lx=x+std::min(room,name_width(dialogue::ui_text(ram,uint16_t(text_spirits+entry.id)),native)+2);
         if(n>=2)if(const int8_t handle=print(ram,ctx,handle_levels+(n-2),level,lx,y,palette_level);handle>=0 && native)
             ui_text::mark_small(unsigned(handle),int(lx),int(y),level,shown);
         if(n<2)if(const int8_t handle=print(ram,ctx,handle_levels+4+n,level,lx,y,palette_level);handle>=0 && native)
             ui_text::mark_small(unsigned(handle),int(lx),int(y),level,shown);
     }
-    if(side==0)return;
+    if(side==0) {
+        uint32_t next=handle_kills;
+        pilot_kills::draw(ram,ctx,pilot,0x78,0x14,104,[&]{return renew(ram,ctx,next++);});
+        return;
+    }
     call(ram,ctx,resident_func_800B4950,text_buffer,sp_format,sp,read(ram,pilot+0x18,2));
     if(const int8_t handle=renew(ram,ctx,handle_sp);handle>=0)call(ram,ctx,resident_func_8008D3C4,uint32_t(int32_t(handle)),0xF4,0x46,0);
 }

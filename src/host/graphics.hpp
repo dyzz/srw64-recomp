@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "ultramodern/renderer_context.hpp"
 #include "json/json.hpp"
 #include <filesystem>
@@ -10,6 +11,8 @@ std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
     uint8_t* rdram, ultramodern::renderer::WindowHandle handle);
 ultramodern::renderer::WindowHandle srw64_create_window(void*);
 void srw64_update_window(void*);
+// A modal error message for the player (Windows: topmost MessageBoxW; elsewhere SDL's box).
+void srw64_error_box(const std::string& message);
 void srw64_keyboard_input(uint16_t* buttons, float* x, float* y);
 // Controller buttons as the N64 mask (bits 16-19: stick up/down/left/right; bits
 // 20-22: View, L2, R2, input_mode.hpp), for native pages that own the pad.

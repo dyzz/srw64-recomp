@@ -27,6 +27,7 @@
 #include "debug_server.hpp"
 #include "debug_ui.hpp"
 #include "ui/frontend.hpp"
+#include "ui/app_menu.hpp"
 #endif
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
@@ -108,6 +109,19 @@ plume::RenderDevice* capture_device;
 int graphics_api = -1;  // RT64's chosen API (RT64::UserConfiguration::GraphicsAPI), for srw64_graphics_info
 std::filesystem::path capture_directory;
 std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure message
+}  // namespace
+void srw64_error_box(const std::string& message) {
+#ifdef _WIN32
+    // Topmost, over the game's own window. Not owned by it: that window's thread (the main
+    // thread) waits for this one (the renderer's), so it could not take the box's messages.
+    std::wstring text(size_t(MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, nullptr, 0)), L'\0');
+    MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, text.data(), int(text.size()));
+    MessageBoxW(nullptr, text.c_str(), L"Marchwind64", MB_OK | MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
+#else
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Marchwind64", message.c_str(), nullptr);
+#endif
+}
+namespace {
 // The game cannot draw (no window, or no device RT64 can use): tell the player in their
 // language (startup_failure.hpp) and leave, without the crash dump an abort would add to
 // what console.log already says. Tool and test runs, not interactive, keep the abort.
@@ -129,15 +143,7 @@ std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure m
 #ifdef __ANDROID__
     if (RT64::AndroidGpuDriverTooOld) message = srw64::startup_failure::old_android_driver(locale);
 #endif
-#ifdef _WIN32
-    // Topmost, over the game's own window. Not owned by it: that window's thread (the main
-    // thread) waits for this one (the renderer's), so it could not take the box's messages.
-    std::wstring text(size_t(MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, nullptr, 0)), L'\0');
-    MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, text.data(), int(text.size()));
-    MessageBoxW(nullptr, text.c_str(), L"Marchwind64", MB_OK | MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
-#else
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Marchwind64", message.c_str(), nullptr);
-#endif
+    srw64_error_box(message);
     fprintf(stderr, "SRW64_GRAPHICS_FAILURE_SHOWN\n");
     srw64::console_log::flush_now();
     std::_Exit(3);
@@ -1086,6 +1092,10 @@ void srw64_update_window(void*) {
             ultramodern::quit();
         }
     }
+#ifdef SRW64_NATIVE_DIALOGUE
+    // Tools > Screenshot in the menu bar (app_menu.hpp), as F12.
+    if (srw64::app_menu::take_screenshot_request()) player_shot_requested = true;
+#endif
     const uint32_t virtual_keys = srw64::debug::keyboard().held();
     uint32_t state = 0;
 #ifdef SRW64_NATIVE_DIALOGUE

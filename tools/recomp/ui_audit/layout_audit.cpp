@@ -29,6 +29,8 @@
 #include "battle_viewer.hpp"
 #include "campaign_switch.hpp"
 #include "library.hpp"
+#include "quick_load.hpp"
+#include "stage_info.hpp"
 #include "native_dialogue.hpp"
 #include "native_intro.hpp"
 #include "native_sprite.hpp"
@@ -165,6 +167,9 @@ bool take_returned(){return false;} bool busy(){return false;}
 }
 namespace srw64::sprites { std::string viewer_scene_image(const std::string&){return {};} }
 namespace srw64::campaign_switch { bool available(){return false;} void enter(const campaign_library::Entry&){} void leave(){} }
+namespace srw64::battle_page { bool original_screen(){return false;} }
+namespace srw64::quick_load { bool usable(){return false;} Saved saved(){return {};} void request(){} }
+namespace srw64::stage_info { json snapshot(){return json::object();} uint64_t want(bool){return 0;} json meta(int){return json::object();} }
 uint32_t srw64_pad_state(){return 0;}
 uint32_t srw64_keyboard_state(){return 0;}
 std::string srw64_pad_name(){return "Steam Deck Controller";}

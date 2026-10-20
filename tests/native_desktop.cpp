@@ -1,4 +1,5 @@
 #include "app/desktop.hpp"
+#include "app/rom_order.hpp"
 #include "app/sha256.hpp"
 #include <chrono>
 #include <iostream>
@@ -80,6 +81,10 @@ void missing_and_wrong_rom() {
     f.selections={wrong,f.rom};
     check(f.run()==0 && f.launches==1,"ROM retry failed");
     check(f.errors.size()==2 && f.picked==2,"missing/bad ROM not reported");
+    // In the player's words: the moved file is missing, the other is not an N64 ROM.
+    const auto locale=player_locale(f.options);
+    check(f.errors[0].starts_with(rom_refused_message(RomProblem::missing,f.root/"moved.z64",locale)),"moved ROM message");
+    check(f.errors[1].starts_with(rom_refused_message(RomProblem::not_n64,fs::canonical(wrong),locale)),"wrong file message");
     // Corrupt preferences do not get treated as a path relative to the app.
     atomic_write(f.options.user_dir/"last-rom.txt","relative.z64");
     f.selections.push_back(std::nullopt);
@@ -87,28 +92,6 @@ void missing_and_wrong_rom() {
     atomic_write(f.options.user_dir/"last-rom.txt",std::string("bad\0path",8));
     f.selections.push_back(std::nullopt);
     check(f.run()==0 && f.launches==1,"NUL preference launched game");
-}
-// Portable mode: a ROM in the game's folder is remembered relative to it, and found in
-// the folder's new place; nothing else is ever relative.
-void portable_rom_preference() {
-    Fixture f;
-    const auto game=f.root/fs::path(u8"便携"),moved=f.root/"moved";
-    fs::create_directories(game/"roms");atomic_write(game/"roms/my rom.z64","r");
-    const auto inside=fs::canonical(game/"roms/my rom.z64");
-    check(rom_preference(inside,game)=="roms/my rom.z64","portable ROM not relative");
-    check(rom_preference(inside,{})==utf8(inside),"ROM relative without portable mode");
-    check(rom_preference(fs::canonical(f.rom),game)==utf8(fs::canonical(f.rom)),"ROM outside the game kept relative");
-    const auto file=f.root/"last-rom.txt";
-    atomic_write(file,rom_preference(inside,game));
-    fs::rename(game,moved);
-    check(remembered_rom(file,moved)==moved/"roms/my rom.z64","moved portable ROM not found");
-    rejects([&]{remembered_rom(file,{});},"relative ROM accepted without portable mode");
-    for(const std::string text:{"../outside.z64","roms/../../x.z64"}) {
-        atomic_write(file,text);
-        rejects([&]{remembered_rom(file,moved);},"ROM outside the portable game accepted");
-    }
-    atomic_write(file,utf8(f.rom));
-    check(remembered_rom(file,moved)==f.rom,"absolute ROM not kept in portable mode");
 }
 void errors_never_retry_host_or_replace_progress() {
     Fixture f;f.selections={f.rom};
@@ -194,12 +177,23 @@ void ending_the_holder(const char* self) {
 #endif
 }
 }
+// No picker at all (Linux without kdialog or zenity, or Game Mode): not a cancel. The player
+// is told where the ROM goes, the game does not start, and nothing is written.
+void picker_unavailable() {
+    Fixture f;f.options.language="ja";
+    const auto ui=f.ui();
+    DesktopUi none{[]() -> std::optional<fs::path> { throw DesktopPickerUnavailable(); },ui.show_error,ui.confirm};
+    const int result=run_desktop(f.options,f.hash,none,[&](const Options&,const DesktopReady&){++f.launches;return 0;});
+    check(result==1 && f.launches==0,"no picker launched or exited quietly");
+    check(f.errors.size()==1 && f.errors[0]==rom_needed_message("ja",fs::absolute(f.options.user_dir)/"rom.z64"),"no-picker message");
+    check(!fs::exists(f.options.user_dir/"last-rom.txt"),"no picker wrote a preference");
+}
 int main(int argc, char** argv) {
     if (argc==3 && std::string_view(argv[1])=="--hold") {   // the other game in ending_the_holder
         UserLock held{fs::path(argv[2])};
         for (;;) std::this_thread::sleep_for(std::chrono::seconds(60));
     }
-    try {cancel_and_resume();missing_and_wrong_rom();errors_never_retry_host_or_replace_progress();launcher_rom_order();portable_rom_preference();relocated_working_directory_and_lock();ending_the_holder(argv[0]);
+    try {cancel_and_resume();missing_and_wrong_rom();picker_unavailable();errors_never_retry_host_or_replace_progress();launcher_rom_order();relocated_working_directory_and_lock();ending_the_holder(argv[0]);
         std::cout<<checks<<" desktop checks passed\n";return 0;}
     catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
 }

@@ -1,4 +1,5 @@
 #include "quick_load.hpp"
+#include "battle_page.hpp"
 #include "guest_memory.hpp"
 #include "notices.hpp"
 #include "save_store.hpp"
@@ -110,7 +111,12 @@ void frame(uint8_t* ram) {
     // Taken: the map asks for mode 1 and fades (801DFE0C); the battle animation sets its
     // abort flag and fades (801C9A18), and only while no fade runs.
     case Stage::press_both:
-        if(m==1 || (m==2 && read(ram,battle_abort,1)==1)){set(Stage::hold_start);record("taken",{{"mode",m}});}
+        if(m==1 || (m==2 && read(ram,battle_abort,1)==1)) {
+            set(Stage::hold_start);record("taken",{{"mode",m}});
+            // The map is leaving: a pre-battle page over it goes now, not with a step that no
+            // longer runs (battle_page.cpp has its own nets as well; 0.4.9 left it up).
+            battle_page::abandon("quick-load");
+        }
         else if(frames>=8) {   // not taken (a fade, a busy frame): again
             record("retry",{{"mode",m},{"held",read(ram,0x8015D9FA,2)},{"pressed",read(ram,0x8015CAF0,2)},{"battle_state",int8_t(read(ram,battle_state,1))}});
             set(Stage::press_z);

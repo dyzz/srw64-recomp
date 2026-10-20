@@ -18,6 +18,22 @@ class AndroidRomIdentityTests(unittest.TestCase):
         self.assertEqual(re.search(r'SHA256 = "([0-9a-f]{64})"', text).group(1), rom["sha256"])
         self.assertEqual(int(re.search(r"SIZE = (\d+)L", text).group(1)), rom["size"])
 
+    def test_refusals_read_as_on_computers(self):
+        """explain() is rom_refused_message's Chinese, a newline, then its English, per problem."""
+        native = (ROOT / "src/native/app/rom_order.hpp").read_text(encoding="utf-8")
+        body = native[native.index("inline std::string rom_refused_message"):]
+        english = body[body.index('if (locale == "en") {'):body.index('return std::string("Unable to start')]
+        chinese = body[body.index('return std::string("Unable to start'):body.index('return std::string("无法启动')]
+        literal = re.compile(r'"((?:[^"\\]|\\.)*)"')
+        en, zh = literal.findall(english)[1:], literal.findall(chinese)[2:]   # past "en" / the English return's two
+        self.assertEqual(len(en), 4)
+        self.assertEqual(len(zh), 4)
+        text = SOURCE.read_text(encoding="utf-8")
+        for index, case in enumerate(("MISSING", "NOT_N64", "WRONG_SIZE", "default")):
+            label = "default:" if case == "default" else f"case {case}:"
+            block = text[text.index(label, text.index("static String explain")):]
+            parts = literal.findall(block[:block.index(";\n")])
+            self.assertEqual(parts, [zh[index] + "\\n", en[index]], case)
 
 @unittest.skipUnless(shutil.which("javac") and shutil.which("java"), "JDK unavailable")
 class AndroidRomCheckTests(unittest.TestCase):

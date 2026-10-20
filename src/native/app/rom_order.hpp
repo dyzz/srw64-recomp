@@ -8,6 +8,7 @@
 
 #include <cstdint>
 #include <filesystem>
+#include <fstream>
 #include <span>
 #include <stdexcept>
 #include <string>
@@ -43,13 +44,96 @@ inline bool rom_matches_any_order(const std::filesystem::path& path, const std::
     return !z64.empty() && sha256_bytes(z64) == expected;
 }
 
+// Why a file is not the supported ROM, for the message the player sees: no file there (or one
+// that cannot be read), an archive or other
+// file (a .zip or .7z is the usual one), the wrong size (cut short or padded), or another or a
+// patched game.
+enum class RomProblem { missing, not_n64, wrong_size, wrong_game };
+struct RomRefused : std::runtime_error {
+    RomProblem problem;
+    std::filesystem::path path;
+    RomRefused(RomProblem problem, std::filesystem::path path)
+        : std::runtime_error("ROM does not match the supported baseline: " + path.string()), problem(problem), path(std::move(path)) {}
+};
+inline constexpr uintmax_t supported_rom_size = 32u << 20;
+inline RomProblem rom_problem(const std::filesystem::path& path) {
+    std::error_code error;
+    if (!std::filesystem::is_regular_file(path, error)) return RomProblem::missing;
+    const auto size = std::filesystem::file_size(path, error);
+    std::string head(4, '\0');
+    std::ifstream file(path, std::ios::binary);
+    if (!file) return RomProblem::missing;
+    if (!file.read(head.data(), 4) || rom_big_endian(head).empty()) return RomProblem::not_n64;
+    return !error && size == supported_rom_size ? RomProblem::wrong_game : RomProblem::wrong_size;
+}
+// The player's message for a refused ROM, in their language (zh-Hans, ja or en; anything
+// else gets Simplified Chinese). Android's launcher says the same (RomCheck.java).
+inline std::string rom_refused_message(RomProblem problem, const std::filesystem::path& path, const std::string& locale) {
+    const auto u8 = path.u8string();
+    const std::string file(reinterpret_cast<const char*>(u8.data()), u8.size());
+    if (locale == "ja") {
+        const char* why = problem == RomProblem::missing
+            ? "ROM ファイルが見つからないか、読み込めません。場所を移動・削除していないか確認してください。"
+            : problem == RomProblem::not_n64
+            ? "N64 の ROM ファイルではありません。.zip や .7z などの圧縮ファイルなら、先に展開して中の .z64／.v64／.n64 を使ってください。"
+            : problem == RomProblem::wrong_size ? "ROM のサイズが違います（32 MB のはずです）。ファイルが壊れているか、改変されている可能性があります。"
+            : "対応している ROM ではありません。改変していないスーパーロボット大戦64（日本版 Rev 0）が必要です（翻訳パッチ版や他のゲームは使えません）。";
+        return std::string("Marchwind64 を起動できません。\n") + why + "\n\nファイル：" + file;
+    }
+    if (locale == "en") {
+        const char* why = problem == RomProblem::missing
+            ? "The ROM file is missing or cannot be read; check that it was not moved or deleted."
+            : problem == RomProblem::not_n64
+            ? "This is not an N64 ROM. If you have a .zip or .7z archive, extract it first and use the .z64, .v64 or .n64 file inside."
+            : problem == RomProblem::wrong_size ? "The ROM has the wrong size (it should be 32 MB); the file may be incomplete or modified."
+            : "This is not the supported ROM: it must be an unmodified Super Robot Taisen 64 (Japan, Rev 0), not a translated or patched one, nor another game.";
+        return std::string("Unable to start Marchwind64.\n") + why + "\n\nFile: " + file;
+    }
+    const char* why = problem == RomProblem::missing
+        ? "找不到 ROM 文件，或者无法读取它。请确认文件没有被移动或删除。"
+        : problem == RomProblem::not_n64
+        ? "这不是 N64 ROM 文件。如果是 .zip、.7z 等压缩包，请先解压，再用里面的 .z64／.v64／.n64 文件。"
+        : problem == RomProblem::wrong_size ? "ROM 大小不对（应为 32 MB），文件可能不完整或被改过。"
+        : "这不是支持的 ROM：需要未修改的超级机器人大战 64 日版 Rev 0（不能是汉化版、补丁版或其他游戏）。";
+    return std::string("无法启动 Marchwind64。\n") + why + "\n\n文件：" + file;
+}
+
+// No ROM was found and no file picker can open (a Linux without kdialog or zenity, or one
+// that cannot show them, such as the Steam Deck's Game Mode): where to put the ROM.
+inline std::string rom_needed_message(const std::string& locale, const std::filesystem::path& rom) {
+    const auto u8 = rom.u8string();
+    const std::string file(reinterpret_cast<const char*>(u8.data()), u8.size());
+    if (locale == "ja")
+        return "Marchwind64 を起動できません。\nROM が見つからず、ファイルを選ぶウィンドウも開けません。"
+               "スーパーロボット大戦64（日本版 Rev 0）の ROM を次の名前でここにコピーしてから、もう一度起動してください：\n" + file;
+    if (locale == "en")
+        return "Unable to start Marchwind64.\nNo ROM was found and no file picker can open. Copy your Super Robot "
+               "Taisen 64 ROM (Japan, Rev 0) here, under this name, then start the game again:\n" + file;
+    return "无法启动 Marchwind64。\n找不到 ROM，也无法打开选择文件的窗口。请把超级机器人大战 64（日版 Rev 0）的 ROM "
+           "按下面的文件名复制到这里，然后重新启动：\n" + file;
+}
+
+// What follows a refusal where the player can pick again: another file now, or the
+// remembered ROM again (it was moved or its preference is damaged).
+inline std::string rom_choose_again(const std::string& locale, bool remembered = false) {
+    if (locale == "ja")
+        return remembered ? "ROM をもう一度選んでください。セーブデータは変更されていません。" : "別のファイルを選ぶか、キャンセルしてください。";
+    if (locale == "en") return remembered ? "Select the ROM again; saves are unchanged." : "Select another file or Cancel.";
+    return remembered ? "请重新选择 ROM，存档不受影响。" : "请选择其他文件，或者取消。";
+}
+
 // The path to load: the file itself when it is already .z64, else a .z64 copy kept in the
 // user directory (rom-z64.z64), written once and reused while it still matches.
 inline std::filesystem::path z64_rom(const std::filesystem::path& path, const std::filesystem::path& user_dir,
                                      const std::string& expected) {
-    if (sha256_file(path) == expected) return path;
-    const auto z64 = rom_big_endian(read_text(path, 64u << 20));
-    if (z64.empty() || sha256_bytes(z64) != expected) throw std::runtime_error("ROM does not match the supported baseline");
+    // Missing or unreadable: the same message box as a wrong file, not a bare exception.
+    std::string hash;
+    try { hash = sha256_file(path); } catch (const std::exception&) { throw RomRefused(RomProblem::missing, path); }
+    if (hash == expected) return path;
+    std::string bytes;
+    try { bytes = read_text(path, 64u << 20); } catch (const std::exception&) { throw RomRefused(rom_problem(path), path); }
+    const auto z64 = rom_big_endian(std::move(bytes));
+    if (z64.empty() || sha256_bytes(z64) != expected) throw RomRefused(rom_problem(path), path);
     const auto copy = user_dir / "rom-z64.z64";
     std::error_code error;
     if (!(std::filesystem::is_regular_file(copy, error) && sha256_file(copy) == expected)) {

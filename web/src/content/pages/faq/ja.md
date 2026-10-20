@@ -46,7 +46,7 @@ ROM が圧縮ファイルなら先に展開してください。`.n64`・`.v64` 
 
 セーブデータはユーザーディレクトリの `saves` フォルダーにあります。
 
-- **Windows**：`%LOCALAPPDATA%\SRW64Recomp\saves`。エクスプローラーのアドレスバーに入力して Enter で開けます。ポータブルモード（`Marchwind64.exe` と同じ場所に空の `portable.txt`）では、ゲームのフォルダーの `data\saves` です。
+- **Windows**：`%LOCALAPPDATA%\SRW64Recomp\saves`。エクスプローラーのアドレスバーに入力して Enter で開けます。ポータブルモード（`Marchwind64.exe` と同じ場所に `user-data` フォルダー）では、ゲームのフォルダーの `user-data\saves` です。
 - **macOS**：`~/Library/Application Support/SRW64Recomp/saves`。Finder で ⇧⌘G を押してパスを入力します。
 - **Linux／Steam Deck**：`~/.local/share/srw64-recomp/saves`。
 - **Android**：システムの「ファイル」アプリで「Marchwind64」を開き、その中の `saves` です。

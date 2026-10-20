@@ -15,6 +15,10 @@ namespace srw64::app {
 namespace fs = std::filesystem;
 struct Options {
     fs::path rom, content, user_dir, import_save, export_save;
+    // Set by the Windows/Linux launcher; ROMs inside this tree can be remembered relatively.
+    fs::path portable_root, sync_user_dir;
+    std::string first_language;
+    bool sync_system{};
     // A compiled custom campaign (srw64.campaign-image.v1, docs/design/custom-campaign.md);
     // it plays from its own save library, user_dir/campaigns/<id>/saves.
     fs::path campaign;
@@ -28,7 +32,7 @@ struct Options {
     // directory; docs/guide/debug-interface.md).
     bool debug{};
 };
-Options parse_options(std::span<const std::string_view> args);
+Options parse_options(std::span<const std::string_view> args, bool allow_rom_picker = false);
 std::string usage();
 // --export-save: writes the saved card for an emulator and returns the file; no ROM
 // or game is needed.
@@ -39,16 +43,13 @@ std::string import_save(const Options& options);
 enum class Platform { Windows, MacOS, Linux };
 using EnvironmentLookup = std::function<std::string(const char*)>;
 fs::path default_user_dir(Platform platform, const EnvironmentLookup& lookup);
-// The user directory when nothing names one: the portable one if there is (below), else
-// this system's default above.
 fs::path default_user_dir();
-// Portable mode: portable.txt in the game's folder keeps saves and settings in the data
-// folder beside it instead of the system's place. Found again from where the program is at
-// each start, so a moved folder or a changed drive letter keeps them. Empty otherwise.
-fs::path portable_user_dir(const fs::path& folder);
+// An existing user-data directory beside the executable opts into local storage.
+fs::path desktop_user_dir(const fs::path& game_dir, Platform platform, const EnvironmentLookup& lookup);
 // The first launch's language, before the player picks one: the first of the system's
 // preferred languages (BCP 47 or POSIX names, most preferred first) that is Chinese (any
 // script or region: zh-Hans), Japanese or English; English when none is.
+// SRW64_SYSTEM_LANGUAGE, when set, stands for the system's list (tests).
 std::string first_language(const std::vector<std::string>& preferred);
 std::vector<std::string> preferred_languages();
 inline std::string system_language() { return first_language(preferred_languages()); }

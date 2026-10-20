@@ -1,0 +1,11 @@
+SRW64 Chapter Title (content/fonts/SRW64ChapterTitle.ttf)
+=========================================================
+
+The brush lettering of the Super Robot Taisen 64 chapter title cards as a font,
+for the Japanese title cards the host draws natively. Every glyph is traced from
+the cards' own images in the game ROM: tools/content/build_title_fonts.py cuts
+the cards into characters by their transcription and traces each with potrace.
+It holds only the 344 characters the cards use.
+
+The lettering is part of Super Robot Taisen 64 (c) BANPRESTO 1999; it is not
+covered by this project's GPL licence.

@@ -63,7 +63,7 @@ SDL3 运行时才加载 X11/Wayland、PipeWire/PulseAudio/ALSA，Vulkan 由 plum
 2. 把 ROM 放到 `~/.local/share/srw64-recomp/rom.z64`，或者放在 `marchwind64.sh` 旁边、命名为 `rom.z64`。
 3. 运行 `./marchwind64.sh`。
 
-`marchwind64.sh` 先找 ROM，第一次启动时默认简体中文，然后执行 `srw64 --play`。找不到 ROM 时，用 `kdialog`（SteamOS 桌面自带）或 `zenity` 弹出说明，因为 Deck 的游戏模式里看不到终端输出。存档和设置在 `~/.local/share/srw64-recomp`，与 macOS 版的目录结构相同。
+`marchwind64.sh` 直接执行 `srw64 --play`，找 ROM、语言和数据目录都由程序自己决定（和 Windows 一样，见 desktop-portable.md）。找不到 ROM 时用 `kdialog`（SteamOS 桌面自带）或 `zenity` 打开选择窗口；两者都用不了时（例如 Deck 的游戏模式），改用游戏自己的提示框说明把 `rom.z64` 放到哪里，不会无声退出。ROM 不对的提示也一样会弹出来。存档和设置在 `~/.local/share/srw64-recomp`，与 macOS 版的目录结构相同。
 
 在 Steam Deck 上：进入桌面模式，打开 Steam，双击 `add-to-steam.sh`。之后就能从游戏模式启动。手柄映射见 `graphics.cpp` 的控制器段，README 里有列表。
 

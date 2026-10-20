@@ -9,6 +9,7 @@ bool describe(const uint8_t* rdram, const sprites::SceneId& id, sprites::TextJob
 // Styled text as the worker draws it; exposed for the component test.
 struct Style {
     bool bold = true, center = true;
+    bool title = false;   // the chapter title cards' brush face first (text::title_font_sources)
     double size = 14, min_size = 9, pitch = 1.25;    // N64 px; line pitch / size
     double width = 0, max_width = 0, max_height = 0; // wrap width (0: one line per paragraph), limits
     // Over max_width a line is first narrowed horizontally down to this share of its width;

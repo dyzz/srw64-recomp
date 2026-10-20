@@ -1,15 +1,50 @@
 #include "desktop.hpp"
 #include "rom_order.hpp"
 #include "sha256.hpp"
+#include "user_sync.hpp"
 #include <algorithm>
 #include <regex>
 #include <stdexcept>
+#include <utility>
 
 namespace srw64::app {
 namespace {
-std::string path_utf8(const fs::path& path) {
-    const auto value = path.u8string();
+std::string path_utf8(const fs::path& path, bool generic = false) {
+    const auto value = generic ? path.generic_u8string() : path.u8string();
     return {reinterpret_cast<const char*>(value.data()), value.size()};
+}
+constexpr std::string_view relative_rom_header="srw64.rom-relative.v1\n";
+bool inside(const fs::path& path, const fs::path& root) {
+    const auto relative=path.lexically_relative(root);
+    return !relative.empty() && !relative.has_root_path() && *relative.begin()!="..";
+}
+std::string rom_preference(const Options& options) {
+    if (!options.portable_root.empty() && inside(options.rom,fs::weakly_canonical(options.portable_root))) {
+        const auto relative=options.rom.lexically_relative(fs::weakly_canonical(options.user_dir));
+        const auto portable=path_utf8(relative,true);
+        if (!relative.empty() && !relative.has_root_path() && portable.find('\\')==std::string::npos)
+            return std::string(relative_rom_header)+portable;
+    }
+    return path_utf8(options.rom);
+}
+fs::path remembered_rom(const fs::path& file) {
+    // A broken preference can be replaced by explicit selection, but it must
+    // never be interpreted as an unversioned relative path or shell command.
+    if (fs::is_symlink(file)) throw std::runtime_error("The saved ROM preference is a symlink.");
+    auto bytes = read_text(file, 16384);
+    const bool relative=bytes.starts_with(relative_rom_header);
+    if (relative) bytes.erase(0,relative_rom_header.size());
+    if (bytes.empty() || bytes.find_first_of(std::string("\0\r\n",3)) != std::string::npos)
+        throw std::runtime_error("The saved ROM preference is invalid.");
+    // Versioned preferences use portable separators, including older Windows-written files.
+    if (relative) std::replace(bytes.begin(),bytes.end(),'\\','/');
+    const auto path = fs::path(std::u8string(reinterpret_cast<const char8_t*>(bytes.data()), bytes.size()));
+    if (relative) {
+        if (path.has_root_path()) throw std::runtime_error("The relative ROM preference is rooted.");
+        return (file.parent_path()/path).lexically_normal();
+    }
+    if (!path.is_absolute()) throw std::runtime_error("The saved ROM path is not absolute.");
+    return path;
 }
 // The language the player chose (presentation.json, written by launch.cpp); empty when
 // there is none or it cannot be read.
@@ -21,48 +56,31 @@ std::string saved_locale(const fs::path& user_dir) {
     } catch (const std::exception&) {}
     return {};
 }
-fs::path validate_rom(const fs::path& path, const std::string& expected) {
+fs::path validate_rom(const fs::path& path, const std::string& expected, const std::string& locale) {
     // Bound IO before hashing. The authoritative, exact identity/size checks
     // remain in run_standalone and the importer, on their own read buffer.
-    const auto resolved = fs::canonical(path);
-    if (!fs::is_regular_file(resolved) || fs::file_size(resolved) > 64u * 1024u * 1024u)
-        throw std::runtime_error("Select a regular Super Robot Wars 64 ROM file.");
-    // Any byte order (.z64, .v64, .n64); the launch loads a .z64 copy (rom_order.hpp).
-    if (!rom_matches_any_order(resolved, expected))
-        throw std::runtime_error("The ROM does not match Super Robot Wars 64 (Japan, Rev 0).\n"
-                                 "Use an unmodified dump of your own game (.z64, .v64 or .n64).");
+    // A remembered ROM that was moved or deleted, or a folder: the player's message, not
+    // the file system's.
+    std::error_code missing;
+    const auto resolved = fs::canonical(path, missing);
+    if (missing || !fs::is_regular_file(resolved, missing))
+        throw std::runtime_error(rom_refused_message(RomProblem::missing, path, locale));
+    // Any byte order (.z64, .v64, .n64); the launch loads a .z64 copy (rom_order.hpp). Only a
+    // 32 MB file can match, so a bigger one is not hashed; rom_problem names what it is (an
+    // archive is "not an N64 ROM" whatever its size), as on every other platform.
+    if (fs::file_size(resolved) > 64u * 1024u * 1024u || !rom_matches_any_order(resolved, expected))
+        throw std::runtime_error(rom_refused_message(rom_problem(resolved), resolved, locale));
     return resolved;
 }
 }
 
-fs::path remembered_rom(const fs::path& file, const fs::path& portable_root) {
-    // A broken preference can be replaced by explicit selection, but it must never be
-    // interpreted as a shell command, as several lines, or as a path relative to anything
-    // but the portable game's folder.
-    if (fs::is_symlink(file)) throw std::runtime_error("The saved ROM preference is a symlink.");
-    const auto bytes = read_text(file, 16384);
-    if (bytes.empty() || bytes.find('\0') != std::string::npos)
-        throw std::runtime_error("The saved ROM preference is invalid.");
-    const auto path = fs::path(std::u8string(reinterpret_cast<const char8_t*>(bytes.data()), bytes.size()));
-    if (path.is_absolute()) return path;
-    const bool inside = !portable_root.empty() && !path.has_root_name() && !path.has_root_directory() &&
-        std::none_of(path.begin(), path.end(), [](const fs::path& part) { return part == ".."; });
-    if (!inside) throw std::runtime_error("The saved ROM path is not absolute.");
-    return portable_root / path;
-}
-std::string rom_preference(const fs::path& rom, const fs::path& portable_root) {
-    // In the portable game's folder: relative to it, so another drive letter or a moved
-    // folder finds it again.
-    if (!portable_root.empty()) {
-        std::error_code error;
-        const auto root = fs::weakly_canonical(portable_root, error);
-        const auto relative = error ? fs::path{} : rom.lexically_relative(root);
-        if (!relative.empty() && !relative.is_absolute() && *relative.begin() != ".." && relative != ".") {
-            const auto text = relative.generic_u8string();  // '/' on every system
-            return {reinterpret_cast<const char*>(text.data()), text.size()};
-        }
-    }
-    return path_utf8(rom);
+std::string player_locale(const Options& options) {
+    if (!options.language.empty()) return options.language;
+    try {
+        const auto saved = saved_locale(options.user_dir.empty() ? default_user_dir() : options.user_dir);
+        if (!saved.empty()) return saved;
+    } catch (const std::exception&) {}
+    return system_language();
 }
 
 fs::path launcher_rom(const fs::path& named, const fs::path& user_dir, const fs::path& game_dir) {
@@ -75,27 +93,70 @@ fs::path launcher_rom(const fs::path& named, const fs::path& user_dir, const fs:
     return {};
 }
 
+Options prepare_desktop_launch(Options options, const fs::path& game_dir, Platform platform,
+                               const EnvironmentLookup& lookup, const fs::path& named_rom) {
+    const auto installed=[&]{return lookup ? default_user_dir(platform,lookup) : default_user_dir();};
+    const bool local_requested=fs::exists(game_dir/"user-data") || fs::is_symlink(game_dir/"user-data");
+    const bool save_only=!options.export_save.empty() || (options.rom.empty() && !options.import_save.empty());
+    if (options.user_dir.empty()) {
+        options.user_dir=(!save_only && local_requested)
+            ? desktop_user_dir(game_dir,platform,lookup) : installed();
+        if (!save_only && local_requested) {
+            options.portable_root=fs::absolute(game_dir);
+            options.sync_system=true;
+            // Local use still works without a system directory; report skipped sync on exit.
+            try {options.sync_user_dir=fs::weakly_canonical(installed());}catch(const std::runtime_error&){}
+        }
+    } else if (inside(fs::weakly_canonical(options.user_dir),fs::weakly_canonical(game_dir))) {
+        // Explicit --user-dir always stays isolated, even inside the game's tree.
+        options.portable_root=fs::absolute(game_dir);
+    }
+    options.user_dir=fs::absolute(options.user_dir);
+    if (save_only) return options;
+    // Nothing saved yet: the system's language, in either place (issue 8).
+    options.first_language=system_language();
+    if (options.rom.empty()) options.rom=launcher_rom(named_rom,options.user_dir,game_dir);
+    return options;
+}
+
+Options prepare_windows_launch(Options options, const fs::path& game_dir,
+                               const EnvironmentLookup& lookup, const fs::path& named_rom) {
+    return prepare_desktop_launch(std::move(options),game_dir,Platform::Windows,lookup,named_rom);
+}
+Options prepare_linux_launch(Options options, const fs::path& game_dir,
+                             const EnvironmentLookup& lookup, const fs::path& named_rom) {
+    return prepare_desktop_launch(std::move(options),game_dir,Platform::Linux,lookup,named_rom);
+}
+
 std::string play_lock_message(const std::string& locale) {
 #ifdef __APPLE__
-    const bool mac = true;
+    constexpr const char* monitor_ja="アクティビティモニタ";
+    constexpr const char* monitor_en="Activity Monitor";
+    constexpr const char* monitor_zh="活动监视器";
+#elif defined(_WIN32)
+    constexpr const char* monitor_ja="タスクマネージャー";
+    constexpr const char* monitor_en="Task Manager";
+    constexpr const char* monitor_zh="任务管理器";
 #else
-    const bool mac = false;
+    constexpr const char* monitor_ja="システムモニター";
+    constexpr const char* monitor_en="System Monitor";
+    constexpr const char* monitor_zh="系统监视器";
 #endif
     if (locale == "ja")
         return std::string("Marchwind64 を起動できません。\n"
                            "Marchwind64 はすでに起動しているか、終了したゲームがまだ完全に閉じていません。\n"
                            "開いているゲームのウィンドウに切り替えてください。見つからない場合は、") +
-               (mac ? "アクティビティモニタ" : "タスクマネージャー") +
+               monitor_ja +
                "で Marchwind64 を終了してから、もう一度起動してください。\nセーブデータは変更されていません。";
     if (locale == "en")
         return std::string("Unable to start Marchwind64.\n"
                            "Marchwind64 is already running, or a game you just closed has not finished exiting.\n"
                            "Switch to the open game window. If there is none, end Marchwind64 in ") +
-               (mac ? "Activity Monitor" : "Task Manager") + " and start it again.\nYour saves have not been changed.";
+               monitor_en + " and start it again.\nYour saves have not been changed.";
     return std::string("无法启动 Marchwind64。\n"
                        "Marchwind64 已经在运行，或者刚关闭的游戏还没有完全退出。\n"
                        "请切换到已打开的游戏窗口；如果找不到窗口，请在") +
-           (mac ? "活动监视器" : "任务管理器") + "中结束 Marchwind64 后重新启动。\n存档没有被改动。";
+           monitor_zh + "中结束 Marchwind64 后重新启动。\n存档没有被改动。";
 }
 
 PlayLockQuestion play_lock_question(const std::string& locale) {
@@ -119,42 +180,38 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
                 const DesktopUi& ui, const DesktopLaunch& launch, bool choose_another_rom) {
     if (!ui.choose_rom || !ui.show_error || !launch)
         throw std::invalid_argument("Incomplete desktop callbacks");
-    // The first launch has no settings yet and speaks the system's language (launch.cpp).
+    // Default language is applied only after any missing local settings have been imported.
     const auto locale = [&] {
         auto chosen = options.language.empty() ? saved_locale(options.user_dir) : options.language;
-        return chosen.empty() ? system_language() : chosen;
+        return chosen.empty() ? (options.first_language.empty()?system_language():options.first_language) : chosen;
     };
     try {
         options.user_dir = fs::absolute(options.user_dir.empty() ? default_user_dir() : options.user_dir);
         const auto preference = options.user_dir / "last-rom.txt";
-        // Portable (portable.txt): ROMs in the game's folder are remembered relative to it.
-        const auto portable_root = [&] {
-            const auto folder = game_folder();
-            const auto portable = portable_user_dir(folder);
-            std::error_code error;
-            const bool same = !portable.empty() &&
-                (fs::absolute(portable).lexically_normal() == options.user_dir.lexically_normal() ||
-                 fs::equivalent(portable, options.user_dir, error));
-            return same ? folder : fs::path{};
-        }();
         if (choose_another_rom) options.rom.clear();
         else if (options.rom.empty() && (fs::exists(preference) || fs::is_symlink(preference))) {
-            try { options.rom = remembered_rom(preference, portable_root); }
+            try { options.rom = remembered_rom(preference); }
             catch (const std::exception& error) {
-                ui.show_error(std::string(error.what()) + "\nSelect the ROM again; saves are unchanged.");
+                ui.show_error(std::string(error.what()) + "\n" + rom_choose_again(locale(), true));
             }
         }
         // Only ROM selection may retry. Import, save and host failures below
         // must NOT restart a possibly already-initialized game in this process.
         for (;;) {
             if (options.rom.empty()) {
-                const auto selected = ui.choose_rom();
+                std::optional<fs::path> selected;
+                try { selected = ui.choose_rom(); }
+                catch (const DesktopPickerUnavailable&) {
+                    // Not a cancel: say where the ROM goes, or the game just closes (Game Mode).
+                    ui.show_error(rom_needed_message(locale(), options.user_dir / "rom.z64"));
+                    return 1;
+                }
                 if (!selected) return 0; // Cancel: no directories or preferences written.
                 options.rom = *selected;
             }
-            try { options.rom = validate_rom(options.rom, expected_rom_sha256); break; }
+            try { options.rom = validate_rom(options.rom, expected_rom_sha256, locale()); break; }
             catch (const std::exception& error) {
-                ui.show_error(std::string(error.what()) + "\nSelect another file or Cancel.");
+                ui.show_error(std::string(error.what()) + "\n" + rom_choose_again(locale()));
                 options.rom.clear();
             }
         }
@@ -171,18 +228,33 @@ int run_desktop(Options options, const std::string& expected_rom_sha256,
                 if (!end_play_lock_holder(*holder)) throw;
             }
         }
+        if (options.sync_system && !options.sync_user_dir.empty())
+            import_missing_user_data(options.user_dir,options.sync_user_dir);
+        if (options.language.empty() && !options.first_language.empty() &&
+            !fs::exists(options.user_dir/"presentation.json")) options.language=options.first_language;
         bool ready_called = false;
         const int result = launch(options, [&] {
             if (ready_called) throw std::logic_error("Desktop bootstrap entered the game twice");
             // The bootstrap owns Session's lock here. Keep this separate from
             // the save pointer; remembering a ROM cannot change game progress.
-            atomic_write(preference, rom_preference(options.rom, portable_root));
+            atomic_write(preference, rom_preference(options));
             ready_called = true;
         });
         if (result != 0)
             ui.show_error("The game stopped with exit code " + std::to_string(result) +
                           ".\nYour last committed save has not been replaced.\nUser data: " +
                           path_utf8(options.user_dir));
+        if (result==0 && ready_called && options.sync_system) {
+            try {
+                if (options.sync_user_dir.empty()) throw std::runtime_error("The system user-data directory is unavailable");
+                const auto saved=saved_locale(options.user_dir);
+                sync_user_data(options.user_dir,options.sync_user_dir,saved.empty()?locale():saved,ui.confirm);
+            } catch (const std::exception& error) {
+                // The game's own save is already committed. A failed backup must never reset it.
+                ui.show_error(std::string("System user-data synchronization was not completed.\n")+error.what()+
+                              "\nYour game-directory saves are kept in: "+path_utf8(options.user_dir));
+            }
+        }
         return result;
     } catch (const PlayLockHeld&) {
         ui.show_error(play_lock_message(locale()));

@@ -4226,7 +4226,10 @@ void ability_sync() {
             box(111,36,299,101,at(9,4,escape(p.value("full_name",std::string())),"",fit(p.value("full_name",std::string()),170))+
                 at(17,28,dim("morale"),"fit",10,27)+at(46,28,number(next.value("morale",json())),"im-right",10.5f,28)+at(81,28,dim("level"),"fit",10,18)+at(100,28,number(p.value("level",json())),"im-right",10.5f,20)+
                 at(129,28,dim("next"),"fit",10,24)+at(154,28,next.contains("next")?number(next.at("next")):std::string("---"),"im-right",10.5f,30)+
-                at(17,46,dim("sp"),"",10)+at(90,46,number(next.value("sp",json()))+"/ "+number(next.value("sp_max",json())),"im-right",10.5f,60),10.f,"ability-name")+
+                // SP's value moves left to leave the row's right end to the kills, which
+                // the original page does not show (user, 2026-10-19).
+                at(17,46,dim("sp"),"",10)+at(80,46,number(next.value("sp",json()))+"/ "+number(next.value("sp_max",json())),"im-right",10.5f,44)+
+                at(128,46,"<span class='im-dim'>"+label("ability_kills")+"</span>","fit",10,32)+at(162,46,number(next.value("kills",json())),"im-right",10.5f,22),10.f,"ability-name")+
             box(18,102,299,137,at(6,4,dim("melee"))+at(40,4,stat_value("melee"),"im-right",0,32)+at(94,4,dim("evade"))+at(126,4,plus_value("evade"),cls("evade"),0,70)+at(214,4,dim("reaction"))+at(248,4,stat_value("reaction"),"im-right",0,32)+
                 at(6,20,dim("ranged"))+at(40,20,stat_value("ranged"),"im-right",0,32)+at(94,20,dim("hit"))+at(126,20,plus_value("hit"),cls("hit"),0,70)+at(214,20,dim("skill"))+at(248,20,stat_value("skill"),"im-right",0,32),10.f,"ability-stats")+
             box(18,138,230,177,at(6,6,dim("spirits"),"",fit(label_of("spirits"),86))+spirits,10.f,"ability-spirits")+
@@ -5397,8 +5400,8 @@ void sync() {
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_view"),
                       language->ui("menu_fullscreen"),language->ui("menu_window_scale"),language->ui("menu_about"),language->ui("menu_check_updates"),
-                      language->ui("menu_game"),language->ui("menu_exit"),language->ui("settings_language"),
-                      localization::locale_options(),language->locale},window_menu_state());
+                      language->ui("menu_game"),language->ui("menu_exit"),language->ui("menu_tools"),language->ui("menu_screenshot"),
+                      language->ui("settings_language"),localization::locale_options(),language->locale},window_menu_state());
     if(const auto locale=app_menu::take_language_request();!locale.empty())settings::request_locale(locale);
     if(app_menu::take_settings_request())choose("settings-open");
     if(app_menu::take_about_request())open_about("");

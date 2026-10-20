@@ -202,7 +202,7 @@ def fixtures(text):
         add('ability-unit-page-long', {'ability_page': unit_page})
         add('ability-unit-page-longest-abilities', {'ability_page': {**unit_page, 'abilities': text.longest(loc, 1019, 1030, 3)}})
         pilot_page = at(states['ability']['pilot-page'])
-        pilot_page.update(skills=text.longest(loc, 1031, 1099, 6), spirits=text.longest(loc, 969, 998, 6), sp=999, sp_max=999, next=99999, morale=150,
+        pilot_page.update(skills=text.longest(loc, 1031, 1099, 6), spirits=text.longest(loc, 969, 998, 6), sp=999, sp_max=999, next=99999, morale=150, kills=999,
                           stats={k: 999 for k in pilot_page['stats']})
         pilot_page['pilot'] = {**pilot_page['pilot'], 'full_name': text.longest(loc, 4743, 5103, 1)[0], 'name': pilots[0], 'level': 99}
         pilot_page['unit'] = {**pilot_page['unit'], 'name': units[0]}

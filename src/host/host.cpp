@@ -30,6 +30,7 @@
 #include "graphics.hpp"
 #include "app/launch.hpp"
 #include "app/desktop.hpp"
+#include "app/rom_order.hpp"
 #include "audio.hpp"
 #include "native_dialogue.hpp"
 #include "native_map.hpp"
@@ -690,25 +691,30 @@ int main(int argc, char** argv) {
             }, choose_another);
     }
 #endif
-#if defined(_WIN32)
+#if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
+#ifdef _WIN32
+    const auto native_ui=srw64::app::windows_desktop_ui();
+    const auto prepare_launcher=srw64::app::prepare_windows_launch;
+    const auto named_rom=srw64::app::windows_named_rom;
+#else
+    // Without kdialog or zenity, errors still reach the player in the game's own box.
+    const auto native_ui=srw64::app::linux_desktop_ui(srw64_error_box);
+    const auto prepare_launcher=srw64::app::prepare_linux_launch;
+    const auto named_rom=srw64::app::linux_named_rom;
+#endif
     // Explorer supplies no arguments: start as Marchwind64.cmd does, which stays for
     // its options. --play and the diagnostic ABI below keep their console.
-    if (desktop_start) {
-        const auto ui = srw64::app::windows_desktop_ui();
+    if (argc==1 || (argc==2 && std::string_view(argv[1])=="--choose-rom")) {
+        const auto& ui = native_ui;
         srw64::app::Options options;
         try {
-            options.user_dir = srw64::app::default_user_dir();
-            // The .cmd's places and order (SRW64_ROM, rom.z64/.n64/.v64 in the user
-            // directory, then beside the program); else the remembered or a chosen file.
-            if (argc == 1)
-                options.rom = srw64::app::launcher_rom(srw64::app::windows_named_rom(), options.user_dir,
-                                                       srw64::app::executable_path().parent_path());
+            options = prepare_launcher(options,
+                srw64::app::executable_path().parent_path(), {},
+                argc == 1 ? named_rom() : std::filesystem::path{});
         } catch (const std::exception& error) {
             ui.show_error(std::string("Unable to start Marchwind64.\n") + error.what());
             return 2;
         }
-        // No --language: the first launch speaks the system's language, later ones the
-        // player's choice (launch.cpp).
         srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
             native_rom_variants[0].save_file, srw64::rules::version, {}};
         for (const auto& rule : srw64::rules::catalog)
@@ -727,6 +733,7 @@ int main(int argc, char** argv) {
         return 0;
     }
     if (argc > 1 && std::string_view(argv[1]) == "--play") {
+        srw64::app::Options options;
         try {
             if (argc == 3 && std::string_view(argv[2]) == "--help") {
                 std::fputs(srw64::app::usage().c_str(), stdout);
@@ -734,7 +741,12 @@ int main(int argc, char** argv) {
             }
             std::vector<std::string_view> args;
             for (int i = 2; i < argc; ++i) args.emplace_back(argv[i]);
-            const auto options = srw64::app::parse_options(args);
+#if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
+            options = prepare_launcher(srw64::app::parse_options(args, true),
+                srw64::app::executable_path().parent_path(), {}, named_rom());
+#else
+            options = srw64::app::parse_options(args);
+#endif
             if (!options.export_save.empty()) {
                 std::fprintf(stderr, "SRW64_SAVE_EXPORT %s\n", srw64::app::export_save(options).string().c_str());
                 return 0;
@@ -747,7 +759,25 @@ int main(int argc, char** argv) {
                 native_rom_variants[0].save_file, srw64::rules::version, {}};
             for (const auto& rule : srw64::rules::catalog)
                 game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
+#if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
+            return srw64::app::run_desktop(options, game.rom_sha256, native_ui,
+                [&](const srw64::app::Options& selected, const srw64::app::DesktopReady& ready) {
+                    return srw64::app::run_standalone(selected, game, [&](int count, char** values) {
+                        ready();
+                        return run_host(count, values);
+                    });
+                });
+#else
             return srw64::app::run_standalone(options, game, run_host);
+#endif
+        } catch (const srw64::app::RomRefused& error) {
+            // Not the supported ROM: the game stops before it opens a window, which from a
+            // launcher with no console (Marchwind64.cmd double-clicked, marchwind64.sh in the
+            // Deck's Game Mode, Android) looked like a crash. Say why (a player, 0.4.9).
+            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
+            srw64::console_log::flush_now();
+            srw64_error_box(srw64::app::rom_refused_message(error.problem, error.path, srw64::app::player_locale(options)));
+            return 2;
         } catch (const std::exception& error) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
             return 2;

@@ -249,10 +249,7 @@ public class SetupActivity extends Activity {
                 checked = RomCheck.copy(in, out);
             } catch (IOException | RuntimeException error) {
                 partial.delete();
-                runOnUiThread(() -> {
-                    show("无法读取 ROM：" + error + "\nCould not read the ROM.");
-                    button("重新选择 ROM\nChoose the ROM again", this::pickRom);
-                });
+                runOnUiThread(() -> refuseRom(RomCheck.explain(RomCheck.Result.MISSING)));
                 return;
             }
             if (checked != RomCheck.Result.OK) {

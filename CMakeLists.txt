@@ -63,3 +63,35 @@ if(BUILD_TESTING)
         add_subdirectory(tests/macos_bundle)
     endif()
 endif()
+
+if(BUILD_TESTING)
+    add_executable(srw64-windows-portable-test tests/native_windows_portable.cpp)
+    target_link_libraries(srw64-windows-portable-test PRIVATE srw64_app)
+    if(MSVC)
+        target_compile_options(srw64-windows-portable-test PRIVATE /W4 /utf-8)
+        target_link_options(srw64-windows-portable-test PRIVATE /MANIFEST:EMBED
+            "/MANIFESTINPUT:${CMAKE_CURRENT_SOURCE_DIR}/src/host/windows/marchwind64.manifest")
+    else()
+        target_compile_options(srw64-windows-portable-test PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
+    add_test(NAME native-windows-portable COMMAND srw64-windows-portable-test)
+    if(WIN32)
+        find_package(Python3 3.11 COMPONENTS Interpreter REQUIRED)
+        add_test(NAME windows-launcher-integration COMMAND "${Python3_EXECUTABLE}"
+                 "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_windows_launcher.py"
+                 --probe "$<TARGET_FILE:srw64-windows-portable-test>")
+    endif()
+endif()
+
+if(BUILD_TESTING AND CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT ANDROID)
+    add_executable(srw64-linux-portable-test tests/native_linux_portable.cpp)
+    target_link_libraries(srw64-linux-portable-test PRIVATE srw64_app)
+    target_compile_options(srw64-linux-portable-test PRIVATE -Wall -Wextra -Wpedantic)
+    add_test(NAME native-linux-portable COMMAND srw64-linux-portable-test)
+    find_package(Python3 3.11 COMPONENTS Interpreter QUIET)
+    if(Python3_FOUND)
+        add_test(NAME linux-launcher-integration COMMAND "${Python3_EXECUTABLE}"
+                 "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_linux_launcher.py"
+                 --probe "$<TARGET_FILE:srw64-linux-portable-test>")
+    endif()
+endif()

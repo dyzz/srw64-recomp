@@ -1,7 +1,7 @@
 // The Windows menu bar (app_menu.hpp): always on a window; in full screen it comes down when
 // the mouse reaches the top of the screen and goes away when the mouse leaves it. SDL turns
 // Alt and F10 away from menus, so the bar answers the mouse; the shortcuts it names (Ctrl+,
-// F5, F11) are frontend.cpp's own keys. Everything runs on the window's thread.
+// F5, F11) are frontend.cpp's own keys, F12 graphics.cpp's. Everything runs on the window's thread.
 #include "app_menu.hpp"
 #include <SDL.h>
 #include <SDL_syswm.h>
@@ -15,11 +15,11 @@
 
 namespace srw64::app_menu {
 namespace {
-enum : UINT { kSettings = 1, kReload, kUpdates, kAbout, kExit, kFullscreen = 10, kScale1 = 11, kLanguage1 = 100 };
-std::atomic_bool requested{}, reload{}, fullscreen{}, about{}, updates{};
+enum : UINT { kSettings = 1, kReload, kUpdates, kAbout, kExit, kFullscreen = 10, kScale1 = 11, kScreenshot = 20, kLanguage1 = 100 };
+std::atomic_bool requested{}, reload{}, fullscreen{}, about{}, updates{}, screenshot{};
 std::atomic_int scale{};
 HWND hwnd{};
-HMENU bar{}, game{}, view{}, languages{};
+HMENU bar{}, game{}, view{}, tools{}, languages{};
 std::vector<std::string> locales;  // the Language menu's entries, by id from kLanguage1
 std::mutex chosen_lock;
 std::string chosen;  // a Language entry chosen, until taken
@@ -89,6 +89,7 @@ LRESULT CALLBACK proc(HWND window, UINT message, WPARAM w, LPARAM l) {
         case kUpdates: updates = true; return 0;
         case kAbout: about = true; return 0;
         case kFullscreen: fullscreen = true; return 0;
+        case kScreenshot: screenshot = true; return 0;
         // As the window's close button: SDL's own close event, then its quit.
         case kExit: PostMessageW(window, WM_CLOSE, 0, 0); return 0;
         }
@@ -106,6 +107,7 @@ void attach(SDL_Window* window) {
     bar = CreateMenu();
     game = CreatePopupMenu();
     view = CreatePopupMenu();
+    tools = CreatePopupMenu();
     languages = CreatePopupMenu();  // its entries come with update()
     // Titles come with the first update(); the bar is here before the renderer sizes its
     // swap chain, so the picture never starts under it.
@@ -120,7 +122,9 @@ void attach(SDL_Window* window) {
     AppendMenuW(view, MF_SEPARATOR, 0, nullptr);
     for (int n = 1; n <= kScales; ++n) AppendMenuW(view, MF_STRING, kScale1 + n - 1, std::to_wstring(n).c_str());
     AppendMenuW(bar, MF_POPUP, UINT_PTR(game), L"Marchwind64");
+    AppendMenuW(tools, MF_STRING, kScreenshot, L"Screenshot");
     AppendMenuW(bar, MF_POPUP, UINT_PTR(view), L"View");
+    AppendMenuW(bar, MF_POPUP, UINT_PTR(tools), L"Tools");
     AppendMenuW(bar, MF_POPUP, UINT_PTR(languages), L"Language");
     sdl_proc = WNDPROC(SetWindowLongPtrW(hwnd, GWLP_WNDPROC, LONG_PTR(&proc)));
     show_bar(true, !(SDL_GetWindowFlags(window) & (SDL_WINDOW_FULLSCREEN | SDL_WINDOW_MAXIMIZED)));
@@ -130,7 +134,8 @@ void update(const Labels& labels, const WindowState& state) {
     // Leaving full screen, SDL sized the window without the bar: it comes back with its height.
     show_bar(bar_wanted(state.fullscreen), !state.fullscreen && !IsZoomed(hwnd));
     const std::string title = labels.game + "\n" + labels.settings + "\n" + labels.reload + "\n" + labels.view + "\n" + labels.fullscreen +
-                              "\n" + labels.window_scale + "\n" + labels.about + "\n" + labels.check_updates + "\n" + labels.exit;
+                              "\n" + labels.window_scale + "\n" + labels.about + "\n" + labels.check_updates + "\n" + labels.exit +
+                              "\n" + labels.tools + "\n" + labels.screenshot;
     std::string language_list = labels.language + "\n" + labels.locale;
     for (const auto& [locale, name] : labels.languages) language_list += "\n" + locale + "=" + name;
     const std::string all = title + "\n" + language_list;
@@ -138,7 +143,8 @@ void update(const Labels& labels, const WindowState& state) {
         state.scale == last_state.scale && state.largest == last_state.largest) return;
     set_text(bar, 0, labels.game, true);
     set_text(bar, 1, labels.view, true);
-    set_text(bar, 2, labels.language, true);
+    set_text(bar, 2, labels.tools, true);
+    set_text(bar, 3, labels.language, true);
     // The entries again when the list changed; the check follows the current language.
     std::vector<std::string> now;
     for (const auto& entry : labels.languages) now.push_back(entry.first);
@@ -156,6 +162,7 @@ void update(const Labels& labels, const WindowState& state) {
     set_text(game, kAbout, labels.about);
     set_text(game, kExit, labels.exit + "\tAlt+F4");
     set_text(view, kFullscreen, labels.fullscreen + "\tF11");
+    set_text(tools, kScreenshot, labels.screenshot + "\tF12");
     CheckMenuItem(view, kFullscreen, state.fullscreen ? MF_CHECKED : MF_UNCHECKED);
     for (int n = 1; n <= kScales; ++n) {
         const UINT id = kScale1 + n - 1;
@@ -177,7 +184,7 @@ bool activate_settings() {
 bool activate(const std::string& title) {
     if (!installed) return false;
     const std::wstring wanted = wide(title);
-    for (HMENU menu : {view, languages}) {
+    for (HMENU menu : {view, tools, languages}) {
         for (int i = 0, count = GetMenuItemCount(menu); i < count; ++i) {
             wchar_t text[256]{};
             MENUITEMINFOW info{};
@@ -198,6 +205,7 @@ bool activate(const std::string& title) {
 bool take_settings_request() { return requested.exchange(false); }
 bool take_about_request() { return about.exchange(false); }
 bool take_update_request() { return updates.exchange(false); }
+bool take_screenshot_request() { return screenshot.exchange(false); }
 bool take_reload_request() { return reload.exchange(false); }
 bool take_fullscreen_request() { return fullscreen.exchange(false); }
 int take_scale_request() { return scale.exchange(0); }
@@ -212,10 +220,10 @@ void shutdown() {
         SetMenu(hwnd, nullptr);
         DestroyMenu(bar);  // with its popups
     }
-    hwnd = nullptr; bar = game = view = languages = nullptr; sdl_proc = nullptr;
+    hwnd = nullptr; bar = game = view = tools = languages = nullptr; sdl_proc = nullptr;
     locales.clear();
     { std::lock_guard lock(chosen_lock); chosen.clear(); }
-    installed = false; bar_shown = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false;
+    installed = false; bar_shown = false; requested = false; reload = false; fullscreen = false; scale = 0; about = false; updates = false; screenshot = false;
     last_title.clear(); last_state = {false, -1, -1};
 }
 }

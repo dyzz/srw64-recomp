@@ -207,6 +207,11 @@ hardware has not been tested.
 
 ### Windows (experimental)
 
+To keep settings and saves with the game, create a `user-data` folder beside the
+EXE. Local data takes precedence; normal exit syncs back to AppData, asking and
+backing up before replacing different saves. Without this folder, existing
+AppData behavior is unchanged. See [desktop portable data](docs/guide/desktop-portable.md).
+
 | | Requirement |
 | --- | --- |
 | OS | Windows 10 / 11, 64-bit |
@@ -226,6 +231,10 @@ hardware has not been tested.
 | Graphics | Metal |
 
 ### Linux
+
+Like Windows, an existing `user-data` folder beside `srw64` enables portable
+settings and saves with confirmed, backed-up synchronization to the system user
+directory on normal exit. See [desktop portable data](docs/guide/desktop-portable.md).
 
 | | Requirement |
 | --- | --- |

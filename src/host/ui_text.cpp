@@ -48,7 +48,7 @@ constexpr const char* kMinus = "\u2212";
 std::mutex mutex;
 bool installed = false, disabled = false;
 // Labels set small (mark_small): pool slot -> where and what they print.
-struct Small { int x, y; std::string text, shown; };
+struct Small { int x, y; std::string text, shown; int width = 0; bool label = false; };   // label: shown is a UI key
 std::map<unsigned, Small> small;
 std::ofstream log;
 std::set<std::string> logged;
@@ -617,13 +617,21 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             for (size_t k = 0; k < l.cells.size(); ++k) take(k);
         } else if (const auto mark = small.find(l.slot); l.id == 0 && mark != small.end() && !l.cells.empty() &&
                    mark->second.x == l.x && mark->second.y == l.y && mark->second.text == l.drawn) {
-            // A learning level: small, yellow and raised beside the name it follows.
-            Style style = number_style(true);
-            style.size = style.min_size = 7; style.origin = Style::Origin::left;
-            const float yellow[3] = {1.f, .84f, .37f};
-            items.push_back(placed(style, locale, mark->second.shown, "level", float(l.cells.front().x), float(l.cells.front().y) - 1, yellow));
-            for (size_t k = 0; k < l.cells.size(); ++k) take(k);
-            text = mark->second.shown;
+            if (mark->second.label) {
+                // A labelled figure (mark_label): "label number" in the page's label face.
+                text = localization::catalog().ui(mark->second.shown) + " " + mark->second.text;
+                const Style style = label_style(locale, mark->second.width, false);
+                items.push_back(placed(style, locale, text, "label", float(l.x), float(l.y), tint));
+                for (size_t k = 0; k < l.cells.size(); ++k) take(k);
+            } else {
+                // A learning level: small, yellow and raised beside the name it follows.
+                Style style = number_style(true);
+                style.size = style.min_size = 7; style.origin = Style::Origin::left;
+                const float yellow[3] = {1.f, .84f, .37f};
+                items.push_back(placed(style, locale, mark->second.shown, "level", float(l.cells.front().x), float(l.cells.front().y) - 1, yellow));
+                for (size_t k = 0; k < l.cells.size(); ++k) take(k);
+                text = mark->second.shown;
+            }
         } else if (l.id == 0) {
             // Text the caller printed (numbers, sprintf): each glyph in its own cell keeps
             // the columns.
@@ -899,6 +907,9 @@ void banner_number_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
 }
 
 void mark_small(unsigned slot, int x, int y, const std::string& text, const std::string& shown) { std::lock_guard lock(mutex); small[slot] = {x, y, text, shown}; }
+void mark_label(unsigned slot, int x, int y, const std::string& text, const std::string& key, int width) {
+    std::lock_guard lock(mutex); small[slot] = {x, y, text, key, width, true};
+}
 void clear_small() { std::lock_guard lock(mutex); small.clear(); }
 bool native_numbers() { return active(); }
 void configure(const std::filesystem::path& output) {

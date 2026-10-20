@@ -46,7 +46,7 @@ Keyboards and common controllers are supported, and on-screen button prompts fol
 
 Saves are in the `saves` folder of the user directory:
 
-- **Windows**: `%LOCALAPPDATA%\SRW64Recomp\saves`; type it in File Explorer’s address bar and press Enter. In portable mode (an empty `portable.txt` next to `Marchwind64.exe`), `data\saves` in the game’s folder.
+- **Windows**: `%LOCALAPPDATA%\SRW64Recomp\saves`; type it in File Explorer’s address bar and press Enter. In portable mode (a `user-data` folder next to `Marchwind64.exe`), `user-data\saves` in the game’s folder.
 - **macOS**: `~/Library/Application Support/SRW64Recomp/saves`; press ⇧⌘G in Finder and paste it.
 - **Linux and Steam Deck**: `~/.local/share/srw64-recomp/saves`.
 - **Android**: open “Marchwind64” in the system Files app, then `saves`.

@@ -46,7 +46,7 @@ ROM 是压缩包的话先解压。`.n64`、`.v64` 格式改名为 `rom.n64`、`r
 
 存档都在用户目录的 `saves` 文件夹里：
 
-- **Windows**：`%LOCALAPPDATA%\SRW64Recomp\saves`，在资源管理器地址栏输入这个路径回车即可打开。便携模式（`Marchwind64.exe` 旁边有空的 `portable.txt`）下是游戏文件夹里的 `data\saves`。
+- **Windows**：`%LOCALAPPDATA%\SRW64Recomp\saves`，在资源管理器地址栏输入这个路径回车即可打开。便携模式（`Marchwind64.exe` 旁边有 `user-data` 文件夹）下是游戏文件夹里的 `user-data\saves`。
 - **macOS**：`~/Library/Application Support/SRW64Recomp/saves`，在访达里按 ⇧⌘G 输入路径。
 - **Linux／Steam Deck**：`~/.local/share/srw64-recomp/saves`。
 - **Android**：在系统「文件」应用里找到「Marchwind64」，打开里面的 `saves`。
