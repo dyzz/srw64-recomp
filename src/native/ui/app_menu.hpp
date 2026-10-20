@@ -1,36 +1,40 @@
 #pragma once
 #include <string>
-#include <utility>
 #include <vector>
 
 struct SDL_Window;
 
 namespace srw64::app_menu {
-// Native menu entries only; the settings page stays in SDL/RmlUi. The application menu
+// Native menu entries only; the pages themselves stay in SDL/RmlUi. The application menu
 // (macOS) or the window's menu bar (Windows, macos/app_menu.mm and windows/app_menu_windows.cpp)
 // opens the settings and reads the dialogue text files again (F5); its About entry opens
 // the settings window's About page, and Check for Updates that page with a check started
-// (update_check.hpp). A View menu toggles full screen and sets the window to a whole
-// multiple of the original's 240 lines. A Tools menu saves a screenshot as F12 does
-// (graphics.cpp takes the request). A Language menu lists the game's languages, each by its
-// own name, the current one checked; choosing one switches as the settings window does.
+// (update_check.hpp). After it come the menus frontend.cpp describes (View, Tools): each
+// entry is an id the frontend takes back when it is chosen, shown with the key that does
+// the same.
 struct Labels {
     std::string settings, reload;
-    std::string view, fullscreen, window_scale;  // window_scale: "{n}" becomes 1..4
     std::string about, check_updates;
     std::string game, exit;  // Windows: the first menu's title and its Exit entry
-    std::string tools, screenshot;
-    std::string language;    // the Language menu's title
-    std::vector<std::pair<std::string, std::string>> languages;  // locale, display name
-    std::string locale;      // the current one
 };
-// What the View menu shows: full screen checked; the scale whose size the window has
-// checked (0 for none); scales up to `largest` fit the screen, none while full screen.
-struct WindowState {
-    bool fullscreen = false;
-    int scale = 0, largest = 0;
+constexpr int kScales = 4;  // View's window sizes, 1x to 4x the original's 240 lines
+// macOS key equivalents' modifiers (mac_mods).
+enum Mods : unsigned { Command = 1, Control = 2 };
+struct Item {
+    std::string id;        // empty: a separator
+    std::string title;
+    std::string shortcut;  // the key shown beside the title ("F12", the bound "Tab")
+    // macOS: a key equivalent in place of the shown key ("F6", "f", "1"), only for a key
+    // the menu may take before the game sees it: fixed keys, never bound ones.
+    std::string mac_key;
+    unsigned mac_mods = 0;
+    bool checked = false, enabled = true;
+    std::vector<Item> items;  // a submenu
 };
-constexpr int kScales = 4;
+struct Menu {
+    std::string title;
+    std::vector<Item> items;
+};
 #ifdef _WIN32
 // Puts the menu bar on the window, before the renderer starts (frontend window_init).
 void attach(SDL_Window* window);
@@ -38,34 +42,30 @@ void attach(SDL_Window* window);
 inline void attach(SDL_Window*) {}
 #endif
 #if defined(__APPLE__) || defined(_WIN32)
-void update(const Labels& labels, const WindowState& state);
+// Window thread, every frame; the menus are built again only when their entries change.
+// fullscreen: Windows shows the bar there only while the mouse is at the screen's top.
+void update(const Labels& labels, const std::vector<Menu>& menus, bool fullscreen);
 bool available();
 bool activate_settings();
-// Presses the entry of this title in the View, Tools or Language menu as a player would
+// Presses the entry of this title in the menus update() describes, as a player would
 // (debug interface).
 bool activate(const std::string& title);
 bool take_settings_request();
 bool take_reload_request();
-bool take_fullscreen_request();
-int take_scale_request();  // 0 when none
 bool take_about_request();
 bool take_update_request();
-bool take_screenshot_request();
-std::string take_language_request();  // the locale chosen; empty when none
+std::string take_request();  // an entry chosen since, oldest first; empty for none
 void shutdown();
 #else
-inline void update(const Labels&, const WindowState&) {}
+inline void update(const Labels&, const std::vector<Menu>&, bool) {}
 inline bool available() { return false; }
 inline bool activate_settings() { return false; }
 inline bool activate(const std::string&) { return false; }
 inline bool take_settings_request() { return false; }
 inline bool take_reload_request() { return false; }
-inline bool take_fullscreen_request() { return false; }
-inline int take_scale_request() { return 0; }
 inline bool take_about_request() { return false; }
 inline bool take_update_request() { return false; }
-inline bool take_screenshot_request() { return false; }
-inline std::string take_language_request() { return {}; }
+inline std::string take_request() { return {}; }
 inline void shutdown() {}
 #endif
 }

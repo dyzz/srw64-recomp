@@ -121,9 +121,9 @@ std::vector<LookFolder> bezel_roots(){return {};} std::vector<LookFolder> filter
 namespace srw64::cheats { std::vector<Pilot> pilots(){return {};} void request_level(unsigned,unsigned){} }
 namespace srw64::post_filter { Status status(){return {};} }
 namespace srw64::app_menu {
-void update(const Labels&,const WindowState&){} bool available(){return false;} bool activate_settings(){return false;}
+void update(const Labels&,const std::vector<Menu>&,bool){} bool available(){return false;} bool activate_settings(){return false;}
 bool activate(const std::string&){return false;} bool take_settings_request(){return false;} bool take_reload_request(){return false;}
-bool take_fullscreen_request(){return false;} int take_scale_request(){return 0;} void shutdown(){}
+std::string take_request(){return {};} void shutdown(){}
 bool take_about_request(){return false;} bool take_update_request(){return false;}
 }
 // The update check as a first launch sees it: never checked, the start-up question unanswered.
@@ -172,6 +172,7 @@ namespace srw64::quick_load { bool usable(){return false;} Saved saved(){return 
 namespace srw64::stage_info { json snapshot(){return json::object();} uint64_t want(bool){return 0;} json meta(int){return json::object();} }
 uint32_t srw64_pad_state(){return 0;}
 uint32_t srw64_keyboard_state(){return 0;}
+void srw64_request_screenshot(){}
 std::string srw64_pad_name(){return "Steam Deck Controller";}
 json srw64_window_status(){return json::object();}
 json srw64_graphics_info(){return json::object();}

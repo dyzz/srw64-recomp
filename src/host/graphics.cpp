@@ -27,7 +27,6 @@
 #include "debug_server.hpp"
 #include "debug_ui.hpp"
 #include "ui/frontend.hpp"
-#include "ui/app_menu.hpp"
 #endif
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
@@ -1092,10 +1091,6 @@ void srw64_update_window(void*) {
             ultramodern::quit();
         }
     }
-#ifdef SRW64_NATIVE_DIALOGUE
-    // Tools > Screenshot in the menu bar (app_menu.hpp), as F12.
-    if (srw64::app_menu::take_screenshot_request()) player_shot_requested = true;
-#endif
     const uint32_t virtual_keys = srw64::debug::keyboard().held();
     uint32_t state = 0;
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -1164,6 +1159,7 @@ std::string srw64_pad_name() {
     return name;
 }
 uint32_t srw64_keyboard_state() { return keyboard_state.load(std::memory_order_relaxed); }
+void srw64_request_screenshot() { player_shot_requested = true; }
 
 nlohmann::json srw64_window_status() {
     if (!window) return nullptr;

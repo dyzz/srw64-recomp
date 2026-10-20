@@ -23,6 +23,8 @@ std::string srw64_pad_name();
 // dialogue reader filters them: for host features that must see a button the game
 // is not shown.
 uint32_t srw64_keyboard_state();
+// The next present goes to screenshots/ in the user folder, as F12 does (any thread).
+void srw64_request_screenshot();
 void srw64_destroy_window();
 void srw64_set_capture_directory(const std::filesystem::path& path);
 void srw64_set_capture_clock(const char* name);

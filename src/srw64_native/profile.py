@@ -55,7 +55,7 @@ UI_KEYS |= {"about_link_issues", "about_link_site", "about_link_source", "menu_a
             "settings_update_hd", "update_hd_installed", "update_hd_unknown", "update_hd_missing", "update_hd_available",
             "update_hd_download", "update_title_hint_hd"}
 # The View menu and the Windows menu bar (src/native/ui/app_menu.hpp).
-UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale", "menu_game", "menu_exit", "menu_tools", "menu_screenshot"}
+UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale", "menu_game", "menu_exit", "menu_tools", "menu_screenshot", "menu_images_hd", "menu_speed", "menu_quick_load"}
 # The frame-rate readout (settings show_fps).
 UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps_note"}
 UI_KEYS |= {"settings_refresh", "settings_refresh_display", "settings_refresh_original", "settings_refresh_60", "settings_refresh_note"}

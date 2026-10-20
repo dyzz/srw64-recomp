@@ -225,8 +225,14 @@ SDL_Rect window_room(int& top){
     top=0;SDL_GetWindowBordersSize(window,&top,nullptr,nullptr,nullptr);
     return room;
 }
-app_menu::WindowState window_menu_state(){
-    app_menu::WindowState state;
+// What View shows (menu_bar): full screen checked; the scale whose size the window has
+// checked (0 for none); scales up to `largest` fit the screen, none while full screen.
+struct WindowState {
+    bool fullscreen=false;
+    int scale=0,largest=0;
+};
+WindowState window_menu_state(){
+    WindowState state;
     if(!window)return state;
     state.fullscreen=SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN;
     int w,h,top;SDL_GetWindowSize(window,&w,&h);const SDL_Rect room=window_room(top);
@@ -5311,6 +5317,41 @@ void settings_pad(uint32_t now,uint32_t pressed) {
     const int dx=presses&(0x0200|(1u<<18))?-1:presses&(0x0100|(1u<<19))?1:0;
     if(dy || dx)settings_move(dy,dy?0:dx);
 }
+// The menus after the application menu (app_menu.hpp): View, Tools and Language. Each entry
+// shows the key that does the same, a host button's as it is bound now.
+std::string bound_key(const input::Bindings& bindings,input::Action action){
+    const auto& keys=bindings.keys[size_t(action)];
+    return keys.empty()?std::string():settings::key_display_name(keys.front());
+}
+std::vector<app_menu::Menu> menu_bar(const auto& language){
+    using app_menu::Item;
+    const auto size=window_menu_state();
+    const auto bindings=input::live_bindings().get();
+    std::vector<Item> view{{"fullscreen",language->ui("menu_fullscreen"),"F11","f",app_menu::Command|app_menu::Control,size.fullscreen},{}};
+    for(int n=1;n<=app_menu::kScales;++n){
+        std::string title=language->ui("menu_window_scale");
+        if(const size_t at=title.find("{n}");at!=std::string::npos)title.replace(at,3,std::to_string(n));
+        view.push_back({"scale:"+std::to_string(n),title,"",std::to_string(n),app_menu::Command,size.scale==n,!size.fullscreen && n<=size.largest});
+    }
+    view.push_back({});
+    view.push_back({"images",language->ui("menu_images_hd"),"F6","F6",0,presentation::image_mode.requested(),presentation::image_mode.enabled()});
+    // The stage info where its key opens it: not on the pre-battle screens (there the key
+    // is the battle animation's), the name page or the Link Battler page.
+    const bool battle=battle_request.value("visible",false) || battle_page::original_screen();
+    const bool stage=stage_open || (!battle && !names::request().visible && !link_request.visible);
+    std::vector<Item> tools{
+        {"screenshot",language->ui("menu_screenshot"),"F12","F12"},
+        {"speed",language->ui("menu_speed"),bound_key(bindings,input::Action::Speed),"",0,settings::game_speed_double()},
+        {},
+        {"stage-info",language->ui("stage_info_title"),bound_key(bindings,input::Action::Animation),"",0,bool(stage_open),stage},
+        {"quick-load",language->ui("menu_quick_load"),bound_key(bindings,input::Action::QuickLoad),"",0,false,quick_load::usable() && !settings_open},
+    };
+    // Each language by its own name, the current one checked.
+    std::vector<Item> languages;
+    for(const auto& [locale,name]:localization::locale_options())
+        languages.push_back({"locale:"+locale,name,"","",0,locale==language->locale});
+    return {{language->ui("menu_view"),view},{language->ui("menu_tools"),tools},{language->ui("settings_language"),languages}};
+}
 void sync() {
     physical_held=held();
     // The pages follow the window, measured in points (the screen after the system's scaling):
@@ -5398,11 +5439,18 @@ void sync() {
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
-    app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_view"),
-                      language->ui("menu_fullscreen"),language->ui("menu_window_scale"),language->ui("menu_about"),language->ui("menu_check_updates"),
-                      language->ui("menu_game"),language->ui("menu_exit"),language->ui("menu_tools"),language->ui("menu_screenshot"),
-                      language->ui("settings_language"),localization::locale_options(),language->locale},window_menu_state());
-    if(const auto locale=app_menu::take_language_request();!locale.empty())settings::request_locale(locale);
+    app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_about"),language->ui("menu_check_updates"),
+                      language->ui("menu_game"),language->ui("menu_exit")},menu_bar(language),window && (SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN));
+    for(auto id=app_menu::take_request();!id.empty();id=app_menu::take_request()){
+        if(id=="fullscreen")toggle_fullscreen();
+        else if(id.starts_with("scale:"))scale_window(std::stoi(id.substr(6)));
+        else if(id=="images")presentation::image_mode.toggle();
+        else if(id=="screenshot")srw64_request_screenshot();
+        else if(id=="speed")toggle_speed();
+        else if(id=="stage-info")choose(stage_open?"settings-close":"stage-info-open");
+        else if(id=="quick-load")choose("quick-load-ask");
+        else if(id.starts_with("locale:"))settings::request_locale(id.substr(7));
+    }
     if(app_menu::take_settings_request())choose("settings-open");
     if(app_menu::take_about_request())open_about("");
     if(app_menu::take_update_request()){open_about("update-check");update::check(true);}
@@ -5411,8 +5459,6 @@ void sync() {
         update_asked=true;update_ask_open=true;settings_open=true;settings_release.hold();input.clear();
     }
     if(app_menu::take_reload_request())srw64::dialogue::request_reload();
-    if(app_menu::take_fullscreen_request())toggle_fullscreen();
-    if(const int n=app_menu::take_scale_request())scale_window(n);
     // A viewer battle back on the title opens the page again with the same choices.
     if(viewer_title() && battle_viewer::take_returned()){viewer_open=true;library_open=false;mod_open=false;settings_open=true;settings_release.hold();input.clear();}
     battle_viewer::set_page_open(settings_open && viewer_open);
