@@ -22,6 +22,7 @@
 #include "quick_load.hpp"
 #include "input_mode.hpp"
 #include "mini_stage.hpp"
+#include "music.hpp"
 #include "presentation_settings.hpp"
 #include "post_filter.hpp"
 #include "presentation/image_mode.hpp"
@@ -187,6 +188,7 @@ json status(const json& params) {
                     {"filter",[]{const auto f=post_filter::status();return json{{"available",f.available},{"loading",f.loading},{"preset",f.preset},{"error",f.error}};}()}};
     });
     state.update(window);
+    state["music"]=music::status();   // MOD music (music.hpp)
     return state;
 }
 

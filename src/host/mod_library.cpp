@@ -1,5 +1,6 @@
 #include "mod_library.hpp"
 #include "miniz.h"
+#include <atomic>
 #include <chrono>
 #include <cstdlib>
 #include <fstream>
@@ -9,6 +10,8 @@
 namespace srw64::mods {
 namespace {
 std::recursive_mutex mutex;
+std::atomic<unsigned> changes{1};
+std::atomic<uint64_t> game_packed{0};
 
 // Archive limits: a music pack is large, but nothing a player would make comes near these.
 constexpr uint64_t max_total=uint64_t(4)<<30;
@@ -217,6 +220,7 @@ InstallResult install(const fs::path& source) {
     state.disabled.erase(result.id);
     if(std::find(state.order.begin(),state.order.end(),result.id)==state.order.end())state.order.push_back(result.id);
     write_state(state);
+    ++changes;
     return result;
 }
 
@@ -226,6 +230,7 @@ bool set_enabled(const std::string& id,bool on) {
     auto state=read_state();
     if(on)state.disabled.erase(id);else state.disabled.insert(id);
     if(std::find(state.order.begin(),state.order.end(),id)==state.order.end())state.order.push_back(id);
+    ++changes;
     return write_state(state);
 }
 
@@ -239,6 +244,13 @@ bool remove(const std::string& id) {
     auto state=read_state();
     state.disabled.erase(id);
     std::erase(state.order,id);
+    ++changes;
     return write_state(state);
+}
+unsigned revision(){return changes.load();}
+void set_game_version(const Version& v){game_packed=(uint64_t(v.major)<<40)|(uint64_t(v.minor)<<20)|uint64_t(v.patch);}
+Version game_version() {
+    const uint64_t p=game_packed.load();
+    return {int(p>>40),int((p>>20)&0xFFFFF),int(p&0xFFFFF)};
 }
 }

@@ -1490,7 +1490,11 @@ std::string mod_art_page() {
 }
 // The game's own version, for the packages' "game" requirement.
 srw64::mods::Version game_version() {
-    static const auto v=srw64::mods::leading_version(SRW64_VERSION).value_or(srw64::mods::Version{});
+    static const auto v=[]{
+        const auto parsed=srw64::mods::leading_version(SRW64_VERSION).value_or(srw64::mods::Version{});
+        srw64::mods::set_game_version(parsed);   // for the game thread's readers (music.cpp)
+        return parsed;
+    }();
     return v;
 }
 const std::vector<srw64::mods::Package>& installed_mods() {
@@ -4217,7 +4221,9 @@ void title_sync() {
             const unsigned n=top+r;const auto& song=songs[n];
             content+="<button id='tp-song:"+std::to_string(n)+"' class='"+std::string(n==current && !exit?"on":"")+(song.value("playing",false)?" tp-playing":"")+"' style='position:absolute; left:"+px(1)+"; top:"+px(30+16*r)+"; width:"+px(275)+
                 "; height:"+px(16)+"; line-height:"+px(16)+"; padding:0 0 0 "+px(58)+"; font-size:"+px(font)+";'>"+
-                (song.value("playing",false)?"<span style='position:absolute; left:"+px(42)+"; top:0; font-size:"+px(7)+";'>&#x25B6;</span>":std::string())+escape(song.value("text",std::string()))+"</button>";
+                (song.value("playing",false)?"<span style='position:absolute; left:"+px(42)+"; top:0; font-size:"+px(7)+";'>&#x25B6;</span>":std::string())+escape(song.value("text",std::string()))+
+                // A MOD package's song in this place (music.hpp).
+                (song.value("replaced",false)?"<span style='position:absolute; right:"+px(4)+"; top:0; font-size:"+px(7)+"; color:#9be4f7;'>MOD</span>":std::string())+"</button>";
         }
         if(top>0)content+=at(129,22,20,9,"&#x25B2;","text-align:center; color:#e0402a; font-size:"+px(7)+";");
         if(top+rows<count)content+=at(129,189,20,9,"&#x25BC;","text-align:center; color:#e0402a; font-size:"+px(7)+";");
@@ -5338,7 +5344,7 @@ void notices_sync() {
 }
 void initialize() {
     // The update check's state and, if the player chose it, the day's check (update_check.hpp).
-    static const bool update_started=[]{update::init(SRW64_VERSION);update::check_on_start();return true;}();
+    static const bool update_started=[]{update::init(SRW64_VERSION);game_version();update::check_on_start();return true;}();
     (void)update_started;
     layered=std::make_unique<LayeredRender>(renderer->get_rml_interface());
     Rml::SetSystemInterface(&system);Rml::SetRenderInterface(layered.get());

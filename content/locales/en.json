@@ -586,7 +586,7 @@
     "mod_turn_off": "Turn off",
     "mod_remove": "Remove",
     "mod_remove_confirm": "Confirm removal",
-    "mod_not_applied": "This version only installs and manages MODs; their contents (music and so on) do not take effect yet.",
+    "mod_not_applied": "For now only music replacements take effect; other contents (stories, art, dialogue, voices) do not yet.",
     "mod_install_busy": "Another MOD is being installed; please wait",
     "mod_install_failed": "Could not install: {reason}",
     "mod_installed": "MOD installed: {id} {version}",

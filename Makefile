@@ -173,6 +173,12 @@ recomp-mod-library-test:
 		tests/native_mod_library.cpp src/host/mod_library.cpp build/recomp/mod-library-test/miniz*.o -o build/recomp/mod-library-test/test
 	build/recomp/mod-library-test/test build/recomp/mod-library-test/run
 
+.PHONY: recomp-music-test
+recomp-music-test:
+	mkdir -p build/recomp/music-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Isrc/host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_music.cpp -o build/recomp/music-test/test
+	build/recomp/music-test/test build/recomp/music-test/run
+
 .PHONY: recomp-stage-info-test
 recomp-stage-info-test:
 	mkdir -p build/recomp/stage-info-test

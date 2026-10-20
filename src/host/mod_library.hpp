@@ -212,8 +212,9 @@ inline std::vector<Package> resolve(std::vector<Package> packages,const State& s
     std::sort(rest.begin(),rest.end(),[&](size_t a,size_t b){return packages[a].id()<packages[b].id();});
     base.insert(base.end(),rest.begin(),rest.end());
     // Checks that need only the package and the game.
+    // An unknown game version (0.0.0) checks nothing.
     for(auto& p:packages) {
-        if(!p.manifest || !p.problem.code.empty())continue;
+        if(!p.manifest || !p.problem.code.empty() || game==Version{})continue;
         if(!satisfies(game,p.manifest->game))p.problem={"game",p.manifest->game};
     }
     // Requirements, repeated until nothing changes: a package whose requirement is not
@@ -285,7 +286,7 @@ inline Contents summarize(const fs::path& folder) {
         }
         return n;
     };
-    c.music=count(folder/"audio"/"music",{".ogg",".mp3",".flac",".wav"});
+    c.music=count(folder/"audio"/"music",{".ogg"});
     c.voices=count(folder/"audio"/"voice",{".ogg",".mp3",".flac",".wav"});
     c.art=count(folder/"art",{".png",".webp",".dds",".json"});
     c.dialogue=count(folder/"dialogue",{".txt"});
@@ -333,5 +334,10 @@ InstallResult install(const fs::path& source);
 bool set_enabled(const std::string& id,bool on);
 // Moves the package to <mods>/.trash.
 bool remove(const std::string& id);
+// Moves on every install, switch and removal, so readers of the packages know to look again.
+unsigned revision();
+// The game's version, for the packages' "game" requirement (the window thread sets it).
+void set_game_version(const Version& v);
+Version game_version();
 }
 

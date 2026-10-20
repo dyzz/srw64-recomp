@@ -1,0 +1,162 @@
+#pragma once
+// Music replacement (docs/design/audio-mods.md): an Ogg file in an enabled MOD package's
+// audio/music/<song>.ogg takes the place of the original's song everywhere 8007E810 plays
+// it. The original is stopped and the host mixes the decoded file into the game's own
+// audio stream (audio.cpp), so it follows the game's audio clock. This header holds the
+// parts tested without a game (tests/native_music.cpp): which file wins for a song and how
+// a decoded track is played into a buffer.
+#include "mod_library.hpp"
+#include "recomp.h"
+#include "json/json.hpp"
+#include <algorithm>
+#include <cctype>
+#include <cmath>
+#include <cstdint>
+#include <filesystem>
+#include <functional>
+#include <map>
+#include <memory>
+#include <optional>
+#include <string>
+#include <vector>
+
+namespace srw64::music {
+namespace fs=std::filesystem;
+using json=nlohmann::json;
+
+// The enemy reinforcement jingle (0x26): the map waits for it to end (801E076C) before
+// the stage music comes back, so a replacement plays once unless music.json says loop.
+inline constexpr int jingle_song=0x26;
+
+struct Track {
+    fs::path file;
+    std::string package;
+    std::optional<std::pair<uint64_t,uint64_t>> loop;   // samples at the file's rate, [start, end)
+    std::optional<bool> once;                           // music.json "loop": false
+    double gain_db{};
+    json title;                                         // a string or {locale: string}
+};
+
+// A package's audio/music.json (optional): {"schema": "srw64.music.v1", "tracks": {"7":
+// {"loop": [start, end], "loop": false, "gain": -2.0, "title": {...}}}}. Fields of the
+// wrong type are ignored rather than refusing the package's files.
+inline std::map<int,Track> settings(const json& data) {
+    std::map<int,Track> out;
+    if(!data.is_object() || data.value("schema","")!="srw64.music.v1" || !data.contains("tracks") || !data["tracks"].is_object())return out;
+    for(const auto& [key,v]:data["tracks"].items()) {
+        int song=0;
+        try{song=std::stoi(key);}catch(...){continue;}
+        if(!v.is_object())continue;
+        Track t;
+        if(v.contains("loop")) {
+            const auto& loop=v["loop"];
+            if(loop.is_boolean())t.once=!loop.get<bool>();
+            else if(loop.is_array() && loop.size()==2 && loop[0].is_number_unsigned() && loop[1].is_number_unsigned() && loop[0].get<uint64_t>()<loop[1].get<uint64_t>())
+                t.loop=std::pair{loop[0].get<uint64_t>(),loop[1].get<uint64_t>()};
+        }
+        if(v.contains("gain") && v["gain"].is_number())t.gain_db=v["gain"].get<double>();
+        if(v.contains("title") && (v["title"].is_string() || v["title"].is_object()))t.title=v["title"];
+        out[song]=t;
+    }
+    return out;
+}
+
+// The replacement for each song from the active packages, bottom first, so the package
+// higher in the list wins. Files are audio/music/<decimal song>.ogg.
+inline std::map<int,Track> collect(const std::vector<mods::Package>& packages,
+                                   const std::function<json(const fs::path&)>& read_json) {
+    std::map<int,Track> out;
+    for(const auto& p:packages) {
+        if(!p.active)continue;
+        const auto dir=p.folder/"audio"/"music";
+        std::error_code error;
+        if(!fs::is_directory(dir,error))continue;
+        const auto extra=settings(read_json(p.folder/"audio"/"music.json"));
+        for(const auto& item:fs::directory_iterator(dir,error)) {
+            if(!item.is_regular_file(error))continue;
+            auto ext=item.path().extension().string();
+            std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char c){return char(std::tolower(c));});
+            if(ext!=".ogg")continue;
+            const auto stem=item.path().stem().string();
+            if(stem.empty() || stem.size()>3 || !std::all_of(stem.begin(),stem.end(),[](unsigned char c){return std::isdigit(c);}))continue;
+            const int song=std::stoi(stem);
+            if(song<1 || song>255)continue;
+            Track t=extra.contains(song)?extra.at(song):Track{};
+            t.file=item.path();t.package=p.id();
+            out[song]=t;
+        }
+    }
+    return out;
+}
+
+// A decoded track: interleaved stereo at its own rate.
+struct Pcm {
+    std::vector<int16_t> samples;
+    unsigned rate{44100};
+    uint64_t frames() const {return samples.size()/2;}
+};
+
+// One track playing into the output: position, loop, gain and fade. The mixer reads it on
+// the audio thread under the engine's lock.
+struct Voice {
+    std::shared_ptr<const Pcm> pcm;
+    double position{};
+    uint64_t loop_start{},loop_end{};   // 0, 0: the whole track
+    bool once{},finished{};
+    double gain{1.0};
+    uint64_t fade_total{},fade_left{};  // output frames
+    bool fading() const {return fade_total!=0;}
+};
+
+// Adds `frames` stereo frames of the voice at `rate` to `out`, clamped; returns false once
+// the voice has nothing more to play (ended or faded out).
+inline bool mix(Voice& v,int16_t* out,size_t frames,unsigned rate,bool mono) {
+    if(v.finished)return false;
+    if(!v.pcm || v.pcm->frames()<2)return true;   // still decoding: silence, keep the place
+    const auto& s=v.pcm->samples;
+    const uint64_t total=v.pcm->frames();
+    const uint64_t end=v.loop_end && v.loop_end<=total?v.loop_end:total;
+    const uint64_t start=v.loop_end?std::min(v.loop_start,end-1):0;
+    const double step=double(v.pcm->rate)/double(rate ? rate : 44100);
+    for(size_t i=0;i<frames;++i) {
+        if(v.position>=double(end)) {
+            if(v.once){v.finished=true;return false;}
+            v.position-=double(end-start);
+            if(v.position<double(start))v.position=double(start);
+        }
+        const uint64_t a=uint64_t(v.position);
+        const uint64_t b=a+1<end?a+1:(v.once?a:start);
+        const double t=v.position-double(a);
+        double l=s[2*a]+(s[2*b]-s[2*a])*t,r=s[2*a+1]+(s[2*b+1]-s[2*a+1])*t;
+        double g=v.gain;
+        if(v.fade_total) {
+            if(v.fade_left==0){v.finished=true;return false;}
+            g*=double(v.fade_left)/double(v.fade_total);
+            --v.fade_left;
+        }
+        l*=g;r*=g;
+        if(mono)l=r=(l+r)/2;
+        const auto add=[](int16_t& o,double x){const double y=o+x;o=int16_t(y>32767?32767:y<-32768?-32768:y);};
+        add(out[2*i],l);add(out[2*i+1],r);
+        v.position+=step;
+    }
+    return true;
+}
+
+inline double gain_of(double db){return std::pow(10.0,db/20.0);}
+
+// music.cpp: the game-thread hooks and the engine.
+void configure();
+// 8007E810 (a0 the song): true when the host plays a replacement and the original must
+// not run; the original has then been stopped and D_800FFA6C holds the song.
+bool play(uint8_t* ram,recomp_context* ctx);
+// 8007E87C: the host fades its track too (the original still runs).
+void fade(uint8_t* ram,recomp_context* ctx);
+// 80077AD0: true when the host answered whether its track is still playing (v0).
+bool playing(uint8_t* ram,recomp_context* ctx);
+// The sound test's view of a song: replaced, and the package's title in the locale.
+struct Shown {bool replaced{};std::string title;};
+Shown shown(int song,const std::string& locale);
+// The state for the debug status.
+json status();
+}

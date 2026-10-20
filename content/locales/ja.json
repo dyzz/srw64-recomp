@@ -586,7 +586,7 @@
     "mod_turn_off": "無効にする",
     "mod_remove": "削除",
     "mod_remove_confirm": "本当に削除",
-    "mod_not_applied": "このバージョンはインストールと管理のみで、MOD の内容（音楽など）はまだ反映されません。",
+    "mod_not_applied": "現在反映されるのは音楽の差し替えのみで、ほかの内容（シナリオ・グラフィック・台詞・ボイス）はまだ反映されません。",
     "mod_install_busy": "別の MOD をインストール中です。しばらくお待ちください",
     "mod_install_failed": "インストールできませんでした：{reason}",
     "mod_installed": "MOD をインストールしました：{id} {version}",

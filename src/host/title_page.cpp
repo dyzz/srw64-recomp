@@ -3,6 +3,7 @@
 #include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
 #include "native_dialogue.hpp"
+#include "music.hpp"
 #include "localization/catalog.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
@@ -134,7 +135,14 @@ json list_json(const uint8_t* ram,bool karaoke) {
     for(unsigned n=0;n<count;++n) {
         const unsigned index=read(ram,list_items+2*n,2);
         const unsigned song=read(ram,table+4*index+2,2);
-        songs.push_back({{"text",text(ram,uint16_t(read(ram,table+4*index,2)))},{"song",song},{"playing",!karaoke && song==now}});
+        json row={{"text",text(ram,uint16_t(read(ram,table+4*index,2)))},{"song",song},{"playing",!karaoke && song==now}};
+        // A MOD package's song in its place (music.hpp), with its own title when it has one;
+        // カラオケ keeps the original.
+        if(!karaoke)if(const auto mod=music::shown(int(song),localization::catalog().locale);mod.replaced) {
+            row["replaced"]=true;
+            if(!mod.title.empty())row["text"]=mod.title;
+        }
+        songs.push_back(row);
     }
     return {{"screen",karaoke?"karaoke":"sound"},{"title",text(ram,karaoke?text_karaoke:text_sound_select)},{"exit",text(ram,text_exit)},
         {"songs",songs},{"current",read(ram,list_current,2)},{"top",read(ram,list_top,2)},{"rows",list_rows},

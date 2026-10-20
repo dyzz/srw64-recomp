@@ -124,7 +124,7 @@ int main(int argc,char** argv) {
         check(r.ok && r.id=="test.music" && !r.replaced,"a package file installs: "+r.problem.code+" "+r.problem.detail);
         check(fs::is_regular_file(library/"test.music"/"audio"/"music"/"7.ogg") && !fs::exists(library/"test.music"/"__MACOSX"),"unpacked under its id, junk left out");
         auto list=mods::installed(game);
-        check(list.size()==1 && list[0].active && list[0].contents.music==2,"listed with its music");
+        check(list.size()==1 && list[0].active && list[0].contents.music==1,"listed with its music (only Ogg counts)");
         // A newer version replaces it; the old one is kept in .trash.
         zip_file(root/"music2.zip",{{"mod.json",manifest("test.music","1.1.0").dump()},{"audio/music/7.ogg","ogg2"}});
         r=mods::install(root/"music2.zip");
