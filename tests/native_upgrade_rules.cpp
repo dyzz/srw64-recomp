@@ -215,6 +215,58 @@ int main(int argc,char** argv) {
     steer_unlock(ram.data(),unit,list);                                          // outside the screen
     assert(get(unit+unit_cap,1)==7);
 
+    // Bonuses a level written past the paid step had left locked (grant_bonuses), read
+    // from the ROM's table whatever sits at its RAM address.
+    {
+        for(uint32_t row=0;row<19;++row)put(unlock_table+row*6,999,2);
+        // マジンガーZ(JS) (263, cap 13) in slot 2: ロケットパンチ 1032 -> 大車輪 1037,
+        // ブレストファイヤー 1036 -> MAP 1038; 1037 / 1038 still hidden, plus a combination
+        // attack's bit (0x02) that must stay.
+        const uint32_t js=unit_at(2), weapons=0x80179400;
+        const uint16_t numbers[]={1032,1036,1037,1038,1033};
+        put(js,1,1);put(js+unit_number,263,2);put(js+unit_weapon_count,5,1);put(js+unit_weapon_list,weapons,4);
+        for(uint32_t i=0;i<5;++i){put(weapons+i*weapon_size+weapon_number,numbers[i],2);put(weapons+i*weapon_size+weapon_level,12,1);}
+        put(weapons+2*weapon_size+weapon_flags,flag_unrevealed,1);put(weapons+3*weapon_size+weapon_flags,flag_unrevealed|0x02,1);
+        assert(grant_bonuses(ram.data(),weapons).empty());                       // 12 < 13: nothing yet
+        assert(get(weapons+2*weapon_size+weapon_flags,1)==flag_unrevealed);
+        put(weapons+weapon_level,14,1);                                          // carried from Z at 14
+        auto granted=grant_bonuses(ram.data(),weapons);
+        assert(granted.size()==1 && granted[0].upgraded==1032 && granted[0].unlocked==1037);
+        assert(get(weapons+2*weapon_size+weapon_flags,1)==0 && get(weapons+3*weapon_size+weapon_flags,1)==(flag_unrevealed|0x02));
+        put(weapons+weapon_size+weapon_level,13,1);                              // exactly the cap counts too
+        granted=grant_bonuses(ram.data(),weapons);
+        assert(granted.size()==1 && granted[0].upgraded==1036 && granted[0].unlocked==1038);
+        assert(get(weapons+3*weapon_size+weapon_flags,1)==0x02);
+        assert(grant_bonuses(ram.data(),weapons).empty());                       // once only
+        // A form sharing the array checks under its own number: ウイングゼロ (119) and
+        // its バード form (120), cap 7, ツインバスターライフルMAP 484 -> 2MAP 486.
+        const uint32_t zero=unit_at(3), bird=unit_at(4), zero_weapons=0x80179600;
+        put(zero,1,1);put(zero+unit_number,119,2);put(zero+unit_weapon_count,2,1);put(zero+unit_weapon_list,zero_weapons,4);
+        put(bird,1,1);put(bird+unit_number,120,2);put(bird+unit_weapon_count,2,1);put(bird+unit_weapon_list,zero_weapons,4);
+        put(zero_weapons+weapon_number,484,2);put(zero_weapons+weapon_level,7,1);
+        put(zero_weapons+weapon_size+weapon_number,486,2);put(zero_weapons+weapon_size+weapon_flags,flag_unrevealed,1);
+        put(zero,0,1);                                                           // only the バード form in use
+        granted=grant_bonuses(ram.data(),zero_weapons);
+        assert(granted.size()==1 && granted[0].unlocked==486 && get(zero_weapons+weapon_size+weapon_flags,1)==0);
+        // A unit the table does not name, or an unused slot, is left alone.
+        put(zero_weapons+weapon_size+weapon_flags,flag_unrevealed,1);
+        put(bird,0,1);
+        assert(grant_bonuses(ram.data(),zero_weapons).empty() && get(zero_weapons+weapon_size+weapon_flags,1)==flag_unrevealed);
+        put(bird,1,1);put(bird+unit_number,54,2);
+        assert(grant_bonuses(ram.data(),zero_weapons).empty() && get(zero_weapons+weapon_size+weapon_flags,1)==flag_unrevealed);
+        // Under its own cap: νガンダム (cap 7) at 6 is not full, at 7 it is.
+        put(bird,0,1);
+        const uint32_t nu=unit_at(5), nu_weapons=0x80179800;
+        put(nu,1,1);put(nu+unit_number,50,2);put(nu+unit_weapon_count,2,1);put(nu+unit_weapon_list,nu_weapons,4);
+        put(nu_weapons+weapon_number,209,2);put(nu_weapons+weapon_level,6,1);
+        put(nu_weapons+weapon_size+weapon_number,208,2);put(nu_weapons+weapon_size+weapon_flags,flag_unrevealed,1);
+        assert(grant_bonuses(ram.data(),nu_weapons).empty());
+        put(nu_weapons+weapon_level,7,1);
+        granted=grant_bonuses(ram.data(),nu_weapons);
+        assert(granted.size()==1 && granted[0].upgraded==209 && granted[0].unlocked==208);
+        for(uint32_t slot=2;slot<6;++slot)put(unit_at(slot),0,1);
+    }
+
     // Sale price: base + 20000 at most, as the s16 the routine returns.
     put(sale_rows+5*4+2,15000,2);
     assert(clamp_sale_price(ram.data(),5,15000+12345)==15000+12345);
