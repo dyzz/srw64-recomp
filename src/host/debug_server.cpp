@@ -23,6 +23,7 @@
 #include "input_mode.hpp"
 #include "mini_stage.hpp"
 #include "forced_game_over.hpp"
+#include "script_inject.hpp"
 #include "presentation_settings.hpp"
 #include "post_filter.hpp"
 #include "presentation/image_mode.hpp"
@@ -354,6 +355,27 @@ json game_over(const json& params) {
     return {{"vi",forced_game_over::applied()}};
 }
 
+// A won stage: an event of one 3D4A (the stage's result screens, then its end event, type 14)
+// run by the script injection at the next idle frame of the player's phase, waited for until
+// the script engine has taken it.
+json victory(const json& params) {
+    const auto deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(params.value("timeout_ms",10000));
+    const auto sequence=script_inject::queue({0,0,0,0,0,0x3D4A,0xFFFF});
+    if(!sequence)throw RpcError(ServerError,"another injected script is waiting or running");
+    for(std::string waiting;;) {
+        const auto where=script_inject::progress(sequence,&waiting);
+        if(where=="running" || where=="done")return {{"vi",srw64_current_vi()},{"script",where}};
+        if(where=="dropped")throw RpcError(ServerError,"the script injection dropped it");
+        if(std::chrono::steady_clock::now()>=deadline) {
+            script_inject::withdraw(sequence);
+            const auto now=script_inject::progress(sequence);
+            if(now=="running" || now=="done")return {{"vi",srw64_current_vi()},{"script",now}};
+            throw RpcError(ServerError,"no idle frame on the player's phase: "+(waiting.empty()?std::string("not yet checked"):waiting));
+        }
+        std::this_thread::sleep_for(5ms);
+    }
+}
+
 json wait_vi(const json& params) {
     const auto target=params.value("vi",uint64_t{0});
     const auto deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(params.value("timeout_ms",10000));
@@ -438,6 +460,7 @@ json dispatch(const std::string& method,const json& params) {
     });
     if(method=="wait_vi")return wait_vi(params);
     if(method=="game_over")return game_over(params);
+    if(method=="victory")return victory(params);
     if(method=="mini_stage.load")return {{"name",mini_stage::load_file(params.at("path").get<std::string>())}};
     if(method=="memory.read") {
         // Guest RAM as hex, read without stopping the game (a debugging view, not a snapshot).
@@ -473,7 +496,7 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","settings","window","wait_vi","game_over","mini_stage.load","memory.read","memory.write","viewer.start","file.read","file.remove",
+                                 "menu","settings","window","wait_vi","game_over","victory","mini_stage.load","memory.read","memory.write","viewer.start","file.read","file.remove",
                                  "quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }
