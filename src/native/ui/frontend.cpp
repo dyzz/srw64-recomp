@@ -907,10 +907,23 @@ void fit_lines(Rml::ElementDocument* doc) {
 // border: a page in the original's 320x240 coordinates puts its root at the frame's offset
 // less page_area()'s (with 4:3 kept in a wider window the root sat twice the offset to the
 // right, a player 2026-10-18).
+// Every page shares one parsed style sheet, made again only when the locale's font rules
+// change it: a <style> head made each page parse the whole sheet on every rebuild, about
+// 1.4 ms on an M-series Mac and several times that on a phone, once per cursor step on the
+// intermission pages. The plugin hands it to a page as it loads, before its first layout.
+std::string sheet_text;
+Rml::SharedPtr<Rml::StyleSheetContainer> sheet,sheet_pending;
+struct SheetPlugin:Rml::Plugin {
+    int GetEventClasses() override {return EVT_DOCUMENT;}
+    void OnDocumentLoad(Rml::ElementDocument* doc) override {if(sheet_pending)doc->SetStyleSheetContainer(sheet_pending);}
+} sheet_plugin;
 Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=false) {
     std::string inset;
     if(!chrome){const auto a=page_area();if(a.x>=1 || a.y>=1)inset="box-sizing: border-box; border-width: "+std::to_string(a.y)+"px "+std::to_string(a.x)+"px; border-color: #00000000; ";}
-    auto* doc=context->LoadDocumentFromMemory("<rml><head><style>"+std::string(css)+locale_font_css(localization::catalog().locale)+"</style></head><body style='"+inset+"pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"<layer-mark class='layer-end'/></body></rml>");
+    if(auto text=std::string(css)+locale_font_css(localization::catalog().locale);!sheet || text!=sheet_text){sheet=Rml::Factory::InstanceStyleSheetString(text);sheet_text=std::move(text);}
+    sheet_pending=sheet;
+    auto* doc=context->LoadDocumentFromMemory("<rml><head></head><body style='"+inset+"pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"<layer-mark class='layer-end'/></body></rml>");
+    sheet_pending.reset();
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
     if(chrome)doc->SetAttribute("data-chrome","1");
     doc->AddEventListener("click",&actions);doc->AddEventListener("change",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);
@@ -5265,6 +5278,7 @@ void initialize() {
     Rml::SetSystemInterface(&system);Rml::SetRenderInterface(layered.get());
     if(!Rml::Initialise())throw std::runtime_error("Cannot initialize shared UI");
     initialized=true;
+    Rml::RegisterPlugin(&sheet_plugin);
     Rml::Factory::RegisterElementInstancer("layer-mark",&layer_mark_instancer);
     slant_instancer=std::make_unique<SlantInstancer>();Rml::Factory::RegisterDecoratorInstancer("slant",slant_instancer.get());
     const auto bytes=[](const std::filesystem::path& file){std::ifstream input(file,std::ios::binary);return std::vector<Rml::byte>{std::istreambuf_iterator<char>(input),{}};};
@@ -5984,7 +5998,7 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
-void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
+void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();sheet.reset();sheet_text.clear();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
 void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);swap_page::window_claim_input(false);title_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
