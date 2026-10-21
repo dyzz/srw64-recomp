@@ -1,0 +1,195 @@
+{
+ "schema": "srw64.mini-stage.v1",
+ "name": "retry-reinforce",
+ "note": "GAME OVER retry after reinforcements (docs/design/save-slots-autosave.md, GAME OVER 重试与回合自动存档): タケル alone; on turn 2's player phase ガラリア arrives as reinforcements; on turn 2's enemy phase 3D4C ends the game. The retry restores the snapshot at 800FBEF0 with every event unexecuted and the variables of the opening; the turn autosave used to replace that snapshot during turn 2, so the reinforcement event ran again over a map that already had ガラリア.",
+ "map": 20,
+ "deployments": [
+  {
+   "template": "base:stage_deployments:001f0f1c",
+   "group": 0,
+   "x": 8,
+   "y": 8,
+   "faction": 0,
+   "note": "タケル / ガイヤー"
+  },
+  {
+   "template": "base:stage_deployments:001f2720",
+   "group": 1,
+   "x": 20,
+   "y": 20,
+   "faction": 1,
+   "note": "ロゼ / ゼーロン — far away"
+  },
+  {
+   "template": "base:stage_deployments:001e8d68",
+   "group": 2,
+   "x": 12,
+   "y": 8,
+   "faction": 1,
+   "note": "ガラリア / バストール — the reinforcement, a named enemy"
+  }
+ ],
+ "events": [
+  {
+   "name": "opening",
+   "type": 12,
+   "header": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "commands": [
+    {
+     "op": "3DD0"
+    },
+    {
+     "op": "3D32",
+     "args": [
+      4
+     ]
+    },
+    {
+     "op": "3D4D"
+    },
+    {
+     "op": "3D65",
+     "args": [
+      17,
+      31
+     ]
+    },
+    {
+     "op": "3D3B",
+     "args": [
+      1
+     ]
+    },
+    {
+     "op": "3D45",
+     "args": [
+      0
+     ]
+    },
+    {
+     "op": "3D45",
+     "args": [
+      1
+     ]
+    },
+    {
+     "op": "3D38",
+     "args": [
+      30
+     ]
+    },
+    {
+     "op": "3D54",
+     "args": [
+      138
+     ]
+    },
+    {
+     "op": "3D35",
+     "args": [
+      16384,
+      0
+     ],
+     "note": "camera on タケル"
+    },
+    {
+     "op": "3D38",
+     "args": [
+      30
+     ]
+    },
+    {
+     "op": "3D47"
+    },
+    {
+     "op": "3D48"
+    }
+   ]
+  },
+  {
+   "name": "reinforcements",
+   "type": 0,
+   "header": [
+    1,
+    1,
+    0,
+    0
+   ],
+   "note": "turn 2 (raw 1), player phase",
+   "commands": [
+    {
+     "op": "3DD0"
+    },
+    {
+     "op": "3D45",
+     "args": [
+      2
+     ]
+    },
+    {
+     "op": "3D38",
+     "args": [
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "doom",
+   "type": 0,
+   "header": [
+    1,
+    2,
+    0,
+    0
+   ],
+   "note": "turn 2, enemy phase: GAME OVER",
+   "commands": [
+    {
+     "op": "3DD0"
+    },
+    {
+     "op": "3D38",
+     "args": [
+      30
+     ]
+    },
+    {
+     "op": "3D4C"
+    }
+   ]
+  },
+  {
+   "name": "ending",
+   "type": 14,
+   "header": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "commands": [
+    {
+     "op": "3DD0"
+    },
+    {
+     "op": "3D3A",
+     "args": [
+      48
+     ]
+    },
+    {
+     "op": "3D4B",
+     "args": [
+      4
+     ]
+    }
+   ]
+  }
+ ]
+}

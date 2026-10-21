@@ -5,6 +5,7 @@
 #include "save_store.hpp"
 #include "script_inject.hpp"
 #include "funcs.h"
+#include <algorithm>
 #include <chrono>
 #include <ctime>
 #include <fstream>
@@ -22,6 +23,17 @@ constexpr uint32_t exit_code=0x801DD540;
 // 80092678(slot) writes the intermission's state to a slot; 80093278(1) the map's to
 // the suspend area (docs/design/save-slots-autosave.md §1.2-1.3).
 constexpr uint32_t write_slot=0x80092678,write_suspend=0x80093278;
+// 80093278 serializes into the buffer at 800FBEF0 before it writes the card, and that buffer
+// is also the GAME OVER retry's snapshot: taken as the opening ends (8009EDB8, with the story
+// variables backed up beside it by 800A47D4(0)), restored by 800936A0(0) on A at GAME OVER,
+// after which 8009DD58(scene, 2) leaves every event unexecuted and the variables as at the
+// opening. The original's own 中断 never reaches that retry: it sets 80172F09, and a GAME
+// OVER after it returns to the title for コンティニュー. A turn autosave sets nothing, so
+// before this the retry restored that turn's map with the opening's events: reinforcements
+// already on the map came again, the same named enemy twice on one unit record (shared HP,
+// a crash once one was destroyed; a player, 0.4.10). The buffer is put back after our
+// write, so a GAME OVER restarts the stage, as without autosaves.
+constexpr uint32_t retry_snapshot=0x800FBEF0,retry_snapshot_size=0x3AE0;
 // The map's main state (5 idle), the progress block (+2 turn from 0, +9 title, +4
 // total turns, +0xC funds) and the random numbers (state_probe's game_rng).
 constexpr uint32_t map_state=0x80172EB0,progress=0x8010F5E8,rng=0x800D49D0;
@@ -119,8 +131,12 @@ void map_idle(uint8_t* ram,recomp_context* ctx) {
     info["rng"]=hex(numbers);
     const bool saved=save_store::autosave(true,choices.turn,info,[&](const std::filesystem::path& path) {
         {
+            // Word aligned, so the raw bytes copy back as they were (see retry_snapshot).
+            uint8_t* buffer=ram+(retry_snapshot-0x80000000u);
+            const std::vector<uint8_t> retry(buffer,buffer+retry_snapshot_size);
             save_store::SuspendWindow target(path);
             call(ram,ctx,write_suspend,1);
+            std::copy(retry.begin(),retry.end(),buffer);
         }
         info["record_sha256"]=digest(path);
     });
