@@ -26,6 +26,7 @@
 #include "ui_text.hpp"
 #include "game_speed.hpp"
 #include "enemy_pilot_page.hpp"
+#include "map_combo.hpp"
 #include "map_menu.hpp"
 
 SRW64GameHooks srw64_game_hooks;
@@ -183,6 +184,24 @@ void load_000AB160_func_801E6C5C(uint8_t* ram,recomp_context* ctx) {
     const unsigned crew=uint8_t(ctx->r4),side=uint32_t(ctx->r5),slot=uint32_t(ctx->r6);
     srw64_original_pilot_page(ram,ctx);
     srw64::enemy_pilot_page::reveal(ram,ctx,crew,side,slot);
+    srw64::map_combo::reset();
+}
+void load_000AB160_func_801E6410(uint8_t* ram,recomp_context* ctx) {
+    // The weapon page: the unit's combination attacks listed whatever their partners are
+    // up to, the unusable ones grey with a line on why (map_combo.hpp).
+    const auto page=srw64::map_combo::prepare(ram,ctx);
+    srw64_original_weapon_page(ram,ctx);
+    srw64::map_combo::finish(ram,ctx,page);
+}
+void load_000AB160_func_801E61BC(uint8_t* ram,recomp_context* ctx) {
+    srw64_original_page_reset(ram,ctx);
+    srw64::map_combo::reset();
+}
+void load_000AB160_func_801E7430(uint8_t* ram,recomp_context* ctx) {
+    // The status pages' dispatcher (unit, pilot, weapons): a page change drops the lines;
+    // the weapon page sets them again inside (801E6410).
+    srw64::map_combo::reset();
+    srw64_original_status_pages(ram,ctx);
 }
 void load_000AB160_func_801D13C0(uint8_t* ram,recomp_context* ctx) {
     // The map's blank-tile menu opens: a row of ours after the original's (map_menu.hpp).

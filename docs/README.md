@@ -57,6 +57,7 @@
 | [金手指](gameplay/cheats.md) | 设置「作弊」页的六项：资金、部件、EN、SP、气力 150、改机师等级；地址与上限依据、为什么不用 libretro 的码 |
 | [框体与滤镜](native/bezels-and-filters.md) | RetroArch 的 overlay 框体（仅 4:3）与 slang 滤镜（librashader，目前只接了 Metal）：用法、接在哪一步、透明窗口对位、验证 |
 | [改造继承分析](gameplay/upgrade-inheritance.md) | 换机时改造段数如何搬运、前任表与武器映射、疑似漏项（静态分析） |
+| [合体技](gameplay/combination-attacks.md) | 25 件合体技的参加者表、相邻与驾驶员组合判定、威力平均×倍率；各画面显示条件与能力页「一直显示＋提示缺的搭档」的做法 |
 | [隐藏要素](gameplay/hidden-elements.md) | 隐藏机体／驾驶员、说服与分歧条件在脚本中的实现，与攻略对照（静态分析） |
 | [Link Battler 联动](gameplay/link-battler.md) | F91、ゴーショーグン、ザンボット3 的开放判定、插入关、等级对齐与 GB 数据块格式；原生版用联动页勾选代替卡带 |
 | [原版按键绑定](gameplay/original-controls.md) | 采样层与三张输入表、连发时序、摇杆折算、Z＋START 与开机 START、各画面每个键的用途、调试菜单与调试 overlay（静态分析） |

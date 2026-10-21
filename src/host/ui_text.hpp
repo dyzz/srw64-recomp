@@ -31,6 +31,11 @@ void clear_small();
 // A label of the host's own among the game's (the blank-tile menu's eighth row, map_menu.hpp):
 // drawn in the labels' face at x, y (original pixels) within width, as long as it is set.
 void set_extra(const std::string& id, int x, int y, const std::string& key, int width);
+// The same in several colours (the map's combination line, map_combo.hpp): the segments
+// drawn left to right from x, each its text (as is, not a key) in its tint; a line wider
+// than `width` is squeezed as one. clear_extra drops it too.
+struct Segment { std::string text; float tint[3]{1, 1, 1}; };
+void set_extra_line(const std::string& id, int x, int y, int width, const std::vector<Segment>& segments);
 void clear_extra(const std::string& id);
 // Damage past 65535 (overkill.hpp): the game draws its figure as 65535, and the next map
 // figure (banner false) or battle banner number (true) that reads 65535 is drawn as `real`

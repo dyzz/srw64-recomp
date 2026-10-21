@@ -39,6 +39,11 @@ NATIVE_HOOKS = {
     # The map's pilot page: an enemy's learned spirits and SP drawn over its ?????
     # (src/host/enemy_pilot_page.hpp).
     "load_000AB160_func_801E6C5C": "srw64_original_pilot_page",
+    # The map's weapon page lists the unit's combination attacks whatever their partners
+    # are up to, and its page reset drops the host's lines (src/host/map_combo.hpp).
+    "load_000AB160_func_801E6410": "srw64_original_weapon_page",
+    "load_000AB160_func_801E61BC": "srw64_original_page_reset",
+    "load_000AB160_func_801E7430": "srw64_original_status_pages",
     "resident_func_80082334": "srw64_original_random_bound",
     "resident_func_80085F30": "srw64_original_frame_boundary",
     "resident_func_800821B0": "srw64_original_rng_seed",

@@ -1,6 +1,7 @@
 #include "library.hpp"
 #include "native_dialogue.hpp"
 #include "upgrade_page.hpp"
+#include "combo_attacks.hpp"
 #include "localization/catalog.hpp"
 #include "librecomp/game.hpp"
 #include <algorithm>
@@ -174,6 +175,17 @@ json unit(unsigned id,const std::vector<unsigned>& numbers) {
         auto w=weapon(number,u8(at+0x20));
         for(uint32_t row=unlock_table;s16(row)!=999 && row<rom.size();row+=6)
             if(u16(row)==id && u16(row+4)==number)w["unlock"]=text(uint16_t(text_weapon_pure+u16(row+2)));
+        // A combination attack: who joins it (combo_attacks.hpp), by unit or, where the
+        // rows go by pilot, every pilot of the rows; a form no row names shows the forms that lead it.
+        if(w.value("combo",false))if(const auto a=combo_attacks::find(rom,uint16_t(number))) {
+            json names=json::array();std::vector<int> seen;
+            const auto add=[&](int who,bool pilot){if(who<0 || std::find(seen.begin(),seen.end(),who)!=seen.end())return;seen.push_back(who);names.push_back(text(uint16_t((pilot?text_pilot_names:text_unit_names)+who)));};
+            const bool by_pilot=!a->rows.empty() && a->rows.front().by_pilot;
+            const auto row=std::find_if(a->rows.begin(),a->rows.end(),[&](const combo_attacks::Row& r){return (by_pilot?r.unit:r.id)==int(id);});
+            if(row==a->rows.end()){for(const auto& r:a->rows)add(by_pilot?r.unit:r.id,false);w["combo_forms"]=names;}
+            else if(by_pilot){for(const auto& r:a->rows){add(r.id,true);for(const auto p:r.partners)add(p,true);}w["combo_with"]=names;}
+            else{for(const auto p:row->partners)add(p,false);w["combo_with"]=names;}
+        }
         weapons.push_back(std::move(w));
     }
     json u={{"id",id},{"name",text(uint16_t(text_unit_names+id))},{"hp",u16(at)},{"en",u16(at+2)},{"move",u8(at+6)},{"mobility",u16(at+8)},{"armor",u16(at+0xA)},

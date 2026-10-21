@@ -70,6 +70,7 @@
 #include "quick_load.hpp"
 #include "map_menu.hpp"
 #include "enemy_pilot_page.hpp"
+#include "map_combo.hpp"
 #include "legacy.hpp"
 #include "title_page.hpp"
 #include "battle_viewer.hpp"
@@ -457,6 +458,7 @@ static int run_host(int argc, char** argv) {
         srw64::map_menu::frame(ram);     // the blank-tile menu's eighth row (map_menu.hpp)
         srw64::battle_page::frame(ram);  // a battle page the game left by a load (battle_page.hpp)
         srw64::enemy_pilot_page::mark_fought(ram);   // every enemy counts as fought (enemy_pilot_page.hpp)
+        srw64::map_combo::frame(ram);    // the weapon page's combination lines go with the map (map_combo.hpp)
     };
     srw64_game_hooks.map_space_begin = [](uint8_t* ram, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub) {
         if (ram[0x001027DB ^ 3] == 1) return false;

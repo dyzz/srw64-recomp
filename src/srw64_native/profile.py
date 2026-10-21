@@ -130,7 +130,8 @@ UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint"
             "upgrade_unified_title", "upgrade_unified_level", "upgrade_unified_ask", "upgrade_unified_none", "upgrade_unified_hint", "upgrade_unified_hint_pages",
             "settings_weapon_upgrade", "settings_weapon_upgrade_unified", "settings_weapon_upgrade_single", "settings_weapon_upgrade_note"}
 UI_KEYS |= {"parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "parts_free", "parts_equipped_count"}
-UI_KEYS |= {"ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint"}
+UI_KEYS |= {"ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint",
+            "ability_combo", "ability_combo_with", "ability_combo_forms", "ability_combo_pilots", "ability_combo_sep", "ability_combo_range"}
 UI_KEYS |= {"swap_list_hint", "swap_confirm_hint"}
 UI_KEYS |= {"save_choice_hint", "save_slots_hint", "save_confirm_hint", "save_message_hint",
             "save_slots_hint_pages", "title_load_hint_pages", "save_cartridge",

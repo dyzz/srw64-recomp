@@ -11,6 +11,8 @@
 #include "guest_memory.hpp"
 #include "funcs.h"
 #include "focus_lines.hpp"
+#include "combo_attacks.hpp"
+#include "librecomp/game.hpp"
 #include <atomic>
 #include <fstream>
 #include <mutex>
@@ -312,12 +314,109 @@ bool page_step(uint8_t* ram,recomp_context* ctx,const char* screen,void(*step)(u
 
 // --- Weapon list (screen 14) ------------------------------------------------------
 
+// The rows the screen lists: the original's (801C7254, which leaves every combination
+// attack out, locked or not) and then the unit's combination attacks, shown whatever
+// their partners are up to, with who they need (user, 2026-10-21; combo_attacks.hpp).
+std::vector<unsigned> weapon_indexes(const uint8_t* ram,uint32_t unit) {
+    std::vector<unsigned> rows;
+    const unsigned count=read(ram,weapon_count,2);
+    for(unsigned n=0;n<count;++n)rows.push_back(read(ram,weapon_rows+n*2,2));
+    const unsigned number=read(ram,unit+up::unit_number,2),n=read(ram,unit+up::unit_weapon_count,1);
+    const uint32_t list=read(ram,unit+up::unit_weapon_list,4);
+    if(!n || !valid(list,n*up::weapon_size))return rows;
+    for(unsigned i=0;i<n;++i) {
+        const uint32_t w=list+i*up::weapon_size;
+        if(!(read(ram,w+0x22,1)&combo_attacks::flag_combo))continue;
+        bool own=false;
+        for(unsigned s=0;s<5;++s)own|=read(ram,w+0x18+s*2,2)==number;
+        if(own && std::find(rows.begin(),rows.end(),i)==rows.end())rows.push_back(i);
+    }
+    return rows;
+}
+// A unit the 機体能力 list shows (801C4FB0): present, without 0x40 in +0xC.
+bool in_party(const uint8_t* ram,uint32_t unit){return read(ram,unit,1) && !(read(ram,unit+unit_size_flags,1)&0x40);}
+uint32_t party_unit(const uint8_t* ram,int number) {
+    for(unsigned s=0;s<up::unit_slots;++s)if(const uint32_t u=up::unit_at(s);in_party(ram,u) && int(read(ram,u+up::unit_number,2))==number)return u;
+    return 0;
+}
+int lead_pilot_number(const uint8_t* ram,uint32_t unit) {
+    const uint32_t pilot=read(ram,unit+unit_pilot,4);
+    return pilot && valid(pilot,pilot_size)?int(read(ram,pilot+pilot_number,2)):-1;
+}
+// The unit a pilot leads, when the pilot is in the party and that unit is unit `number`.
+uint32_t party_pilot_unit(uint8_t* ram,recomp_context* ctx,int pilot,int number) {
+    for(unsigned i=0;i<pilot_count;++i) {
+        const uint32_t p=pilot_at(i);
+        if(!read(ram,p,1) || int(read(ram,p+pilot_number,2))!=pilot)continue;
+        const uint32_t unit=pilot_unit(ram,ctx,p);
+        return unit && in_party(ram,unit) && int(read(ram,unit+up::unit_number,2))==number?unit:0;
+    }
+    return 0;
+}
+constexpr uint32_t rom_weapons=0x74E90,rom_weapon_size=16;
+// What the map's check (80200530) would find for this unit's combination attack, as far
+// as the intermission can tell: the partners and whether each is in the party, the pilot
+// pairing (not the unlock 石破ラブラブ天驚拳 also needs; user, 2026-10-21), and the power the check would write
+// (every member's component at its current power; a member not in the party at the
+// ROM's base). On the map the partners must also stand together with EN and morale.
+json combo_json(uint8_t* ram,recomp_context* ctx,uint32_t unit,uint32_t w) {
+    json c={{"ok",false}};
+    const auto rom=recomp::get_rom();
+    const auto attack=combo_attacks::find(rom,uint16_t(read(ram,w+2,2)));
+    if(!attack)return c;
+    const int number=read(ram,unit+up::unit_number,2),lead=lead_pilot_number(ram,unit);
+    const auto* row=combo_attacks::lead_row(*attack,number,lead);
+    if(!row) {
+        // This form never leads the attack: the forms that do.
+        json forms=json::array();std::vector<int> seen;
+        for(const auto& r:attack->rows) {
+            const int form=r.by_pilot?r.unit:r.id;
+            if(form>=0 && std::find(seen.begin(),seen.end(),form)==seen.end()){seen.push_back(form);forms.push_back(text(ram,uint16_t(text_unit_names+form)));}
+        }
+        c["forms"]=forms;
+        return c;
+    }
+    bool all=true;json partners=json::array();std::vector<int> leads={lead};std::vector<std::pair<int,uint32_t>> members={{number,unit}};
+    for(const int16_t id:row->partners) {
+        json p;uint32_t found=0;
+        if(row->by_pilot){p["name"]=text(ram,uint16_t(text_pilot_names+id));p["pilot"]=true;found=party_pilot_unit(ram,ctx,id,row->unit);}
+        else{p["name"]=text(ram,uint16_t(text_unit_names+id));found=party_unit(ram,id);}
+        p["present"]=found!=0;all&=found!=0;
+        if(found){leads.push_back(lead_pilot_number(ram,found));members.push_back({int(read(ram,found+up::unit_number,2)),found});}
+        else members.push_back({row->by_pilot?int(row->unit):int(id),0u});
+        partners.push_back(std::move(p));
+    }
+    c["partners"]=partners;
+    const bool pilots_ok=combo_attacks::pilots_met(*attack,leads);
+    c["pilots_ok"]=pilots_ok;all&=pilots_ok;
+    float sum=0;unsigned n=0;bool known=true;
+    for(const auto& [member,instance]:members) {
+        const auto component=combo_attacks::component(*attack,member);
+        if(!component){known=false;break;}
+        unsigned power=0;
+        if(instance){const uint32_t cw=combo_attacks::unit_weapon(ram,instance,*component);if(!cw){known=false;break;}power=read(ram,cw+6,2);}
+        else power=combo_attacks::rom_u8(rom,rom_weapons+*component*rom_weapon_size+1)*100;
+        sum+=float(power);++n;
+    }
+    if(known && n)c["power"]=unsigned(sum/float(n)*attack->multiplier);
+    c["ok"]=all;
+    return c;
+}
 json weapons_json(uint8_t* ram,recomp_context* ctx) {
     const uint32_t slot=read(ram,screen_subject,4),unit=up::unit_at(slot);
     refresh_display(ram,ctx,unit);
-    const unsigned count=read(ram,weapon_count,2),page=unsigned(std::max<int16_t>(1,int16_t(read(ram,weapon_page,2))))-1;
+    const auto indexes=weapon_indexes(ram,unit);
+    const unsigned count=unsigned(indexes.size()),page=unsigned(std::max<int16_t>(1,int16_t(read(ram,weapon_page,2))))-1;
     json rows=json::array();
-    for(unsigned n=page*weapon_rows_per_page;n<count && n<(page+1)*weapon_rows_per_page;++n)rows.push_back(upgrade_page::weapon_row_json(ram,unit,read(ram,weapon_rows+n*2,2)));
+    for(unsigned n=page*weapon_rows_per_page;n<count && n<(page+1)*weapon_rows_per_page;++n) {
+        json row=upgrade_page::weapon_row_json(ram,unit,indexes[n]);
+        if(const uint32_t w=read(ram,unit+up::unit_weapon_list,4)+indexes[n]*up::weapon_size;read(ram,w+0x22,1)&combo_attacks::flag_combo) {
+            json combo=combo_json(ram,ctx,unit,w);
+            if(combo.contains("power"))row["power"]=combo["power"];
+            row["combo"]=std::move(combo);
+        }
+        rows.push_back(std::move(row));
+    }
     json u=unit_brief(ram,unit);u["slot"]=slot;u["en"]=read(ram,unit+unit_en,2);
     const uint32_t pilot=read(ram,unit+unit_pilot,4);
     u["morale"]=pilot && valid(pilot,pilot_size)?int(read(ram,pilot+pilot_morale,2)):-1;
@@ -338,7 +437,7 @@ bool weapons_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_c
     relocalize(ram,ctx);
     if(pending.empty() || !idle(ram))return false;
     const auto action=std::move(pending);pending.clear();
-    const unsigned count=read(ram,weapon_count,2),pages=std::max(1u,(count+weapon_rows_per_page-1)/weapon_rows_per_page);
+    const unsigned count=unsigned(weapon_indexes(ram,up::unit_at(read(ram,screen_subject,4))).size()),pages=std::max(1u,(count+weapon_rows_per_page-1)/weapon_rows_per_page);
     unsigned page=unsigned(std::max<int16_t>(1,int16_t(read(ram,weapon_page,2))))-1,row=unsigned(int16_t(read(ram,weapon_cursor,2)));
     if(action.starts_with("move:") || action.starts_with("page:")) {
         const unsigned value=unsigned(std::atoi(action.c_str()+5));

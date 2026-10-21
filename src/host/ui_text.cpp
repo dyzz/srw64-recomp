@@ -49,7 +49,7 @@ std::mutex mutex;
 bool installed = false, disabled = false;
 // Labels set small (mark_small): pool slot -> where and what they print.
 struct Small { int x, y; std::string text, shown; int width = 0; bool label = false; };   // label: shown is a UI key
-struct Extra { int x, y; std::string key; int width; };   // set_extra: a label of the host's own
+struct Extra { int x, y; std::string key; int width; std::vector<Segment> segments; };   // set_extra: a label of the host's own; segments: set_extra_line
 std::map<unsigned, Small> small;
 std::map<std::string, Extra> extras;
 std::ofstream log;
@@ -122,6 +122,21 @@ Style label_style(const std::string& locale, double max_width, bool single) {
     for (int c = 0; c < 3; ++c) { s.fill_top[c] = s.fill_bottom[c] = 1; s.outline[c] = 0; }
     s.outline_px = .8; s.outline_alpha = .65; s.shadow_px = .7; s.shadow_alpha = .45;
     return s;
+}
+// How wide a label's text comes out in N64 pixels, drawn once and remembered (the host's
+// multi-colour lines lay their segments out by it).
+// The image is wider than its glyphs by the outline and shadow on both sides, the same
+// for every text: that margin, measured once as width(ab) - width(a) - width(b), comes off
+// each segment so the next starts where the ink ends.
+std::map<std::string, float> measured;
+float image_width(const std::string& locale, const std::string& text) {
+    const std::string key = locale + "|" + text;
+    if (const auto found = measured.find(key); found != measured.end()) return found->second;
+    return measured[key] = sprite_text::draw(label_style(locale, 0, false), locale, text).units[0];
+}
+float segment_width(const std::string& locale, const std::string& text) {
+    const float margin = std::max(0.f, image_width(locale, "a") + image_width(locale, "b") - image_width(locale, "ab"));
+    return std::max(0.f, image_width(locale, text) - margin);
 }
 // The number pool's two digit sets in 1159: white with a black outline (types 1, 2, 7, 8),
 // white with a grey shadow (the others).
@@ -761,9 +776,26 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
     if (!front)
         for (const auto& [id, e] : extras) {
             const float white[3] = {1, 1, 1};
-            const auto text = localization::catalog().ui(e.key);
-            items.push_back(placed(label_style(locale, e.width, false), locale, text, "label", float(e.x), float(e.y), white));
-            shown.push_back({{"extra", id}, {"x", e.x}, {"y", e.y}, {"text", text}});
+            if (e.segments.empty()) {
+                const auto text = localization::catalog().ui(e.key);
+                items.push_back(placed(label_style(locale, e.width, false), locale, text, "label", float(e.x), float(e.y), white));
+                shown.push_back({{"extra", id}, {"x", e.x}, {"y", e.y}, {"text", text}});
+                continue;
+            }
+            // Several colours on one line: each segment at its natural width after the one
+            // before, the whole line squeezed in the same share when it is wider than the room.
+            std::vector<float> widths;
+            float total = 0;
+            for (const auto& seg : e.segments) { widths.push_back(segment_width(locale, seg.text)); total += widths.back(); }
+            const float share = e.width > 0 && total > float(e.width) ? float(e.width) / total : 1;
+            float x = float(e.x);
+            std::string joined;
+            for (size_t k = 0; k < e.segments.size(); ++k) {
+                const float w = widths[k] * share;
+                items.push_back(placed(label_style(locale, share < 1 ? w : 0, false), locale, e.segments[k].text, "label", x, float(e.y), e.segments[k].tint));
+                x += w; joined += e.segments[k].text;
+            }
+            shown.push_back({{"extra", id}, {"x", e.x}, {"y", e.y}, {"text", joined}});
         }
     last[front] = shown;
     if (items.empty() || replaced.empty()) return;
@@ -957,6 +989,7 @@ void mark_label(unsigned slot, int x, int y, const std::string& text, const std:
 }
 void clear_small() { std::lock_guard lock(mutex); small.clear(); }
 void set_extra(const std::string& id, int x, int y, const std::string& key, int width) { std::lock_guard lock(mutex); extras[id] = {x, y, key, width}; }
+void set_extra_line(const std::string& id, int x, int y, int width, const std::vector<Segment>& segments) { std::lock_guard lock(mutex); extras[id] = {x, y, {}, width, segments}; }
 void clear_extra(const std::string& id) { std::lock_guard lock(mutex); extras.erase(id); }
 bool native_numbers() { return active(); }
 void real_figure(bool banner, uint64_t real) { (banner ? real_banner : real_map).store(real); }

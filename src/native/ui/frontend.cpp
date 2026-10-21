@@ -677,6 +677,7 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 .lib-wrow .c.full {color:#8fe4ff;} .lib-wrow .c.ty {width:34dp;}
 .lu-flag {display:inline-block; white-space:nowrap; margin-left:2dp; padding:0 5dp; font-size:10dp; font-weight:bold; color:#e8eefc; background-color:#2c3a66;}
 .lu-flag.unlock {color:#0b1230; background-color:#ffd75e;}
+.lu-note {white-space:nowrap; margin-left:4dp; font-size:11dp; color:#a4b0d2;}
 .lu-type {display:inline-block; width:22dp; height:16dp; line-height:16dp; text-align:center; font-size:11dp; font-weight:bold; color:#0b1230;}
 .lu-type.t1 {background-color:#3fd0ff;} .lu-type.t2 {background-color:#5fd08a;} .lu-type.t3 {background-color:#c49bff;} .lu-type.t4 {background-color:#ffb46b;}
 .lu-legend {display:flex; flex-wrap:wrap; align-items:center; gap:4dp 14dp; margin-top:7dp; font-size:11dp; color:#a4b0d2;}
@@ -1706,6 +1707,21 @@ const nlohmann::json& library_entries(){return library::contents().at(library_ta
 std::string library_number(const json& v){return v.is_number()?std::to_string(v.get<long long>()):std::string("-");}
 std::string library_signed(const json& v){const int n=v.is_number()?v.get<int>():0;return n>0?"+"+std::to_string(n):std::to_string(n);}
 // A label with a number filled in for "{n}".
+// A label naming several units or pilots: "{names}" / "{forms}" in the catalog's text,
+// joined with the locale's separator; a name may already be HTML (a partner marked missing).
+std::string combo_note(const char* key,const std::vector<std::string>& names_html) {
+    const auto& C=localization::catalog();
+    std::string joined;
+    for(const auto& n:names_html){if(!joined.empty())joined+=escape(C.ui("ability_combo_sep"));joined+=n;}
+    std::string text=escape(C.ui(key));
+    for(const char* token:{"{names}","{forms}"})if(const auto at=text.find(token);at!=std::string::npos)text.replace(at,std::strlen(token),joined);
+    return text;
+}
+std::string combo_note(const char* key,const json& names) {
+    std::vector<std::string> html;
+    for(const auto& n:names)html.push_back(escape(n.get<std::string>()));
+    return combo_note(key,html);
+}
 std::string library_with(const char* key,const std::string& n) {
     auto text=localization::catalog().ui(key);
     if(const auto at=text.find("{n}");at!=std::string::npos)text.replace(at,3,n);
@@ -1806,7 +1822,11 @@ std::string library_unit(const json& u,const json& L,const json& W,const json& t
         // The tags may wrap under the name in a narrow table (a Steam Deck at the Largest size).
         std::string flags;
         if(r.contains("unlock"))flags+=" <span class='lu-flag unlock'>"+label("library_unlock")+"</span>";
-        if(r.value("combo",false))flags+=" <span class='lu-flag'>"+label("library_combo")+"</span>";
+        if(r.value("combo",false)) {
+            flags+=" <span class='lu-flag'>"+label("library_combo")+"</span>";
+            const char* key=r.contains("combo_with")?"combo_with":r.contains("combo_forms")?"combo_forms":nullptr;
+            if(key)flags+=" <span class='lu-note'>"+combo_note(key[6]=='w'?"ability_combo_with":"ability_combo_forms",r.at(key))+"</span>";
+        }
         const unsigned a=r.value("range_min",0u),b=r.value("range_max",0u),type=r.value("type",0u);
         if(type)present.insert(type);
         body+="<div class='lib-wrow'><span class='n'><span class='name'>"+before+escape(r.value("display_name",r.value("name",std::string())))+after+"</span>"+flags+"</span>"
@@ -3500,12 +3520,37 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
     for(unsigned n=0;n<rows.size();++n) {
         const auto& r=rows[n];
         const std::string name=weapon_name_html(r,W,u,146);
+        // A combination attack the party cannot use yet (a partner missing, the pilots, an unlock) in the dim face.
+        const bool dim=r.contains("combo") && !r.at("combo").value("ok",false);
         list+="<button id='"+id_prefix+std::to_string(n)+"' class='im-row "+(n==cursor?"on":"")+"' style='height:"+px(16)+"; line-height:"+px(16)+"; padding:0 "+px(3)+";'>"
-            "<span style='width:"+px(146)+"; white-space:nowrap; overflow:hidden;'>"+name+"</span>"+span(number(r.at("power")),40,"im-right")+span(range(r),44,"im-right")+span(signed_number(r.value("hit",json())),40,"im-right")+"</button>";
+            "<span class='"+(dim?"im-dim":"")+"' style='width:"+px(146)+"; white-space:nowrap; overflow:hidden;'>"+name+"</span>"+span(number(r.at("power")),40,dim?"im-right im-dim":"im-right")+span(range(r),44,dim?"im-right im-dim":"im-right")+span(signed_number(r.value("hit",json())),40,dim?"im-right im-dim":"im-right")+"</button>";
     }
     body+="<div id='"+id_prefix.substr(0,id_prefix.size()-1)+"-list' style='position:absolute; left:0; top:"+px(24)+"; width:100%;'>"+list+"</div>";
     const auto& sel=rows.empty()?json::object():rows[std::min<unsigned>(cursor,rows.size()-1)];
     const auto& unit=next.at("unit");
+    // Under the six rows, for a combination attack: the partners (one not in the party in
+    // red, so marked), then what else the attack needs, or that it is a matter of standing
+    // together on the map. The details' skill cell names it a combination attack.
+    if(sel.contains("combo")) {
+        const auto& c=sel.at("combo");
+        std::string first,second;
+        if(c.contains("forms"))first=combo_note("ability_combo_forms",c.at("forms"));
+        else {
+            // The partners' names in red, last how close they must stand; the pilot pairing
+            // on a second line when that is what fails (user, 2026-10-21).
+            std::vector<std::string> names;
+            for(const auto& p:c.value("partners",json::array()))names.push_back("<span class='im-down'>"+escape(p.value("name",std::string()))+"</span>");
+            std::string range=escape(localization::catalog().ui("ability_combo_range"));
+            if(const auto at=range.find("{n}");at!=std::string::npos)range.replace(at,3,"1");
+            first=combo_note("ability_combo_with",names)+range;
+            if(!c.value("pilots_ok",true))second=label("ability_combo_pilots");
+        }
+        if(!c.value("ok",false)){first="<span class='im-dim'>"+first+"</span>";if(!second.empty())second="<span class='im-dim'>"+second+"</span>";}
+        // The six rows end at 141 and the details start at 160: two small lines in between.
+        const auto note=[&](float y,const std::string& html){return "<div class='fit' style='position:absolute; left:"+px(4)+"; top:"+px(y-21)+"; width:"+px(270)+"; height:"+px(9.5f)+"; line-height:"+px(9.5f)+"; font-size:"+px(7)+"; white-space:nowrap; overflow:hidden;'>"+html+"</div>";};
+        body+=note(141.5f,first);
+        if(!second.empty())body+=note(151,second);
+    }
     const auto need=[](const json& v,int have){return (v.is_number()&&v.get<int>()?std::to_string(v.get<int>()):std::string("---"))+"("+(have>=0?std::to_string(have):std::string("---"))+")";};
     const std::string ammo=sel.contains("ammo")?std::to_string(sel.value("ammo",0u))+"/"+std::to_string(sel.value("ammo_max",0u)):std::string("--/--");
     const std::string terrain=sel.value("terrain",std::string("----"));
@@ -3516,7 +3561,7 @@ std::string weapon_table(const json& next,const std::string& id_prefix,float u,f
         letter(140,180,"air",terrain.substr(0,1))+letter(180,220,"land",terrain.substr(1,1))+letter(220,260,"sea",terrain.substr(2,1))+letter(260,299,"space",terrain.substr(3,1))+
         cell(21,164,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("morale"),60,"im-dim")+span(need(sel.value("morale",json()),unit.value("morale",-1)),76,low_morale?"im-right im-down":"im-right")+"</div>"
             "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("en"),60,"im-dim")+span(need(sel.value("en",json()),unit.value("en",-1)),76,low_en?"im-right im-down":"im-right")+"</div>","line-height:"+px(19)+";")+
-        cell(164,299,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("skill"),56,"im-dim")+span(sel.value("skill_name",std::string()),72)+"</div>"
+        cell(164,299,180,220,"<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("skill"),56,"im-dim")+span(sel.contains("skill_name")?sel.value("skill_name",std::string()):sel.contains("combo")?localization::catalog().ui("ability_combo"):std::string(),72)+"</div>"
             "<div class='im-row' style='height:"+px(19)+"; line-height:"+px(19)+"; padding:0 "+px(3)+";'>"+span(wl("critical"),80,"im-dim",std::min(10.5f,78/std::max(1.f,text_units(wl("critical")))))+span(signed_number(sel.value("critical",json()))+"%",48,"im-right")+"</div>","line-height:"+px(19)+";");
     return body;
 }
