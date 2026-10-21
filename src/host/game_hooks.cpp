@@ -4,6 +4,7 @@
 #include "funcs.h"
 #include "script_trace.hpp"
 #include "script_inject.hpp"
+#include "forced_game_over.hpp"
 #include "mini_stage.hpp"
 #include "script_move_probe.hpp"
 #include "state_probe.hpp"
@@ -313,6 +314,11 @@ void load_000AB160_func_801CBB04(uint8_t* rdram, recomp_context* ctx) {
     if (!srw64_game_hooks.move_select || !srw64_game_hooks.move_select(rdram, ctx)) srw64_original_move_select(rdram, ctx);
 }
 void load_000AB160_func_801C8B04(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64::forced_game_over::due(rdram)) {
+        auto c = *ctx; c.r29 = int32_t(uint32_t(ctx->r29) - 0x200);
+        load_000AB160_func_801DF280(rdram, &c);
+        return;
+    }
     if (srw64_game_hooks.turn_idle) srw64_game_hooks.turn_idle(rdram, ctx);
     if (!srw64_game_hooks.map_idle || !srw64_game_hooks.map_idle(rdram, ctx)) srw64_original_map_idle(rdram, ctx);
 }
