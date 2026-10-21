@@ -190,8 +190,11 @@ void load_000AB160_func_801D13C0(uint8_t* ram,recomp_context* ctx) {
     srw64::map_menu::opened(ram);
 }
 void load_000AB160_func_801D17AC(uint8_t* ram,recomp_context* ctx) {
-    // A on a row of that menu (a0 the index): the eighth is ours, the title question.
-    if(srw64::map_menu::choose(uint8_t(ctx->r4)))return;
+    // A on a row of that menu (a0 the index): the seventh is ours, the title question; the
+    // eighth is the original's seventh.
+    uint64_t index=uint8_t(ctx->r4);
+    if(srw64::map_menu::choose(index))return;
+    ctx->r4=int32_t(index);
     srw64_original_map_menu_choose(ram,ctx);
 }
 void load_000AB160_func_801C29DC(uint8_t* ram,recomp_context* ctx) {

@@ -3389,10 +3389,12 @@ void intermission_sync() {
     // under it); the two-item menu grows by a row instead.
     const float row=restricted?31.f/items.size():143.f/(items.size()+1);
     std::string menu;
-    for(unsigned n=0;n<items.size();++n)
+    for(unsigned n=0;n<items.size();++n) {
+        // Our own row before the original's last: back to the title screen (quick_load.hpp), asked first.
+        if(n+1==items.size())
+            menu+="<button id='intermission:title' class='"+std::string(intermission_title_row?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+label("title_return_open")+"</button>";
         menu+="<button id='intermission:"+std::to_string(n)+"' class='"+(n==cursor && !intermission_title_row?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+escape(items[n].get<std::string>())+"</button>";
-    // Our own row after the original's: back to the title screen (quick_load.hpp), asked first.
-    menu+="<button id='intermission:title' class='"+std::string(intermission_title_row?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+label("title_return_open")+"</button>";
+    }
     const auto title=next.value("title",std::string());
     const auto turns_label=next.value("turns_label",std::string()),funds_label=next.value("funds_label",std::string());
     const float info_font=std::min(fit(turns_label,78),fit(funds_label,78));
@@ -5868,10 +5870,10 @@ bool dispatch(SDL_Event& event) {
             const unsigned at=intermission_request.value(submenu?"swap_cursor":"cursor",0u);
             const std::string prefix=submenu?"swap-":"";
             const bool reverse=k==SDLK_UP || (k==SDLK_TAB && (event.key.keysym.mod&KMOD_SHIFT));
-            // Our title row sits after the original's last item and before its first on the wrap.
+            // Our title row sits between the original's last two items.
             if(k==SDLK_UP || k==SDLK_DOWN || k==SDLK_TAB){
-                if(!submenu && intermission_title_row){intermission_title_row=false;intermission_page::answer(serial,"move:"+std::to_string(reverse?count-1:0));intermission_stamp.clear();return true;}
-                if(!submenu && ((reverse && at==0) || (!reverse && at+1==count))){intermission_title_row=true;intermission_stamp.clear();return true;}
+                if(!submenu && intermission_title_row){intermission_title_row=false;intermission_page::answer(serial,"move:"+std::to_string(count-(reverse?2:1)));intermission_stamp.clear();return true;}
+                if(!submenu && count>=2 && at==count-(reverse?1:2)){intermission_title_row=true;intermission_stamp.clear();return true;}
                 intermission_page::answer(serial,prefix+"move:"+std::to_string((at+(reverse?count-1:1))%count));return true;
             }
             if(event.key.repeat)return true;

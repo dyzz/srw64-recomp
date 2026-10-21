@@ -7,8 +7,8 @@ the BANPRESTO logo and the title, never at a load of the suspend save:
 
 1. On the idle map the stage info page's button asks; はい: the game fades, the mode goes
    to 1 (the logo) and then 7 (the title), the host's combination is idle again.
-2. Entered again: the blank-tile menu's eighth row (ours, under the original's window)
-   asks the same; はい: the title.
+2. Entered again: the blank-tile menu's seventh row (ours, before the original's 中断,
+   which moves to the eighth) asks the same; はい: the title.
 3. Entered again: the map menu's 中断 (保存) stores a suspend save; the
    return still ends at the title, not at the suspend save.
 4. Entered again: タケル attacks ロゼ; in the middle of the animation the page's button
@@ -226,8 +226,8 @@ if args.intermission:
         load_intermission()
         shot('05-intermission')
         check('usable-in-intermission', status()['quick_load']['usable_title'] and mem(MODE) in INTERMISSION, where())
-        # The menu's own last row: up from the first item lands on it, A asks.
-        keys('up', pause=.8)
+        # Our row before the menu's last: up twice from the first item lands on it, A asks.
+        keys('up', 'up', pause=.8)
         shot('05-row')
         keys('z', pause=1)
         until(lambda: status()['settings_window'], 10, 'the title question from the menu row')
@@ -272,13 +272,14 @@ try:
     shot('01-title')
     check('map-to-title', state['mode'] == 7 and state['quick_load']['stage'] == 'idle', state)
 
-    # 2. The blank-tile menu's own row: up from フェイズ終了 wraps onto it (the eighth), A asks.
+    # 2. The blank-tile menu's own row: up from フェイズ終了 wraps onto 中断 (the eighth),
+    # up again onto ours (the seventh), A asks.
     enter()
     keys('up', pause=.8)
     keys('z', pause=1)
     until(lambda: mem(MAP_STATE) == 0x16 and mem(0x80172ED4) == 8, 10, 'the blank-tile menu with eight rows')
-    keys('up', pause=.8)
-    check('menu-row-reached', mem(0x80172ED6) == 7, {'cursor': mem(0x80172ED6), 'rows': mem(0x80172ED4)})
+    keys('up', 'up', pause=.8)
+    check('menu-row-reached', mem(0x80172ED6) == 6, {'cursor': mem(0x80172ED6), 'rows': mem(0x80172ED4)})
     shot('02-menu')
     keys('z', pause=1)
     until(lambda: status()['settings_window'], 10, 'the title question from the menu')
@@ -288,10 +289,11 @@ try:
     check('menu-to-title', state['mode'] == 7 and state['quick_load']['stage'] == 'idle', state)
 
     # 3. With a suspend save on the card the return still ends at the title. 中断 (保存) is
-    # the seventh row: up twice from the first, past the eighth row of ours.
+    # the eighth row now, after ours: up once from the first.
     enter()
     keys('up', 'z', pause=1)
-    keys('up', 'up', 'z', pause=1)
+    shot('02-menu-suspend')
+    keys('up', 'z', pause=1)
     keys('z', pause=2)
     keys('z', pause=1.5)
     until(idle(), 20, 'the map after saving')
