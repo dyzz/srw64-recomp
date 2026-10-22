@@ -209,9 +209,10 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
 
     // Do not inherit development probes, scripted inputs or another ROM variant. A test may
     // point the update check at its own server (update_check.hpp), or show Android's touch
-    // controls on a desktop and play them with the mouse (SRW64_TOUCH_PAD=1, frontend.cpp).
+    // controls on a desktop and play them with the mouse (SRW64_TOUCH_PAD=1, frontend.cpp), or
+    // build the pages as before to compare (SRW64_PAGE_REBUILD, SRW64_SYNC_PAGE_IMAGES, frontend.cpp).
     std::map<std::string,std::string> inherited;
-    for(const char* key:{"SRW64_UPDATE_URL","SRW64_TOUCH_PAD"})if(const char* value=std::getenv(key);value && *value)inherited[key]=value;
+    for(const char* key:{"SRW64_UPDATE_URL","SRW64_TOUCH_PAD","SRW64_PAGE_REBUILD","SRW64_SYNC_PAGE_IMAGES"})if(const char* value=std::getenv(key);value && *value)inherited[key]=value;
     clear_runtime_environment();
     for(const auto& [key,value]:inherited)set_environment(key,value);
     for(const auto& [key,value]:std::map<std::string,std::string>{

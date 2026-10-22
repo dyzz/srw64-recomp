@@ -64,7 +64,9 @@
 #include <fstream>
 #include <map>
 #include <set>
+#include <thread>
 #include <tuple>
+#include <unordered_map>
 
 namespace srw64::ui {
 namespace {
@@ -851,8 +853,10 @@ body.pointer .im-funds:hover,.im-funds:focus {background-color:#00c80055; border
 
 
 )";
+// The RML each document was built from, for refresh() below.
+std::unordered_map<Rml::ElementDocument*,std::string> document_sources;
 void document_close(Rml::ElementDocument*& doc) {
-    if(doc){doc->Close();doc=nullptr;}
+    if(doc){document_sources.erase(doc);doc->Close();doc=nullptr;}
 }
 bool held();
 void choose(const std::string& id);
@@ -918,17 +922,175 @@ struct SheetPlugin:Rml::Plugin {
     int GetEventClasses() override {return EVT_DOCUMENT;}
     void OnDocumentLoad(Rml::ElementDocument* doc) override {if(sheet_pending)doc->SetStyleSheetContainer(sheet_pending);}
 } sheet_plugin;
-Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=false) {
+void update_sheet() {
+    if(auto text=std::string(css)+locale_font_css(localization::catalog().locale);!sheet || text!=sheet_text){sheet=Rml::Factory::InstanceStyleSheetString(text);sheet_text=std::move(text);}
+}
+std::string document_source(const std::string& body,bool modal,bool chrome) {
     std::string inset;
     if(!chrome){const auto a=page_area();if(a.x>=1 || a.y>=1)inset="box-sizing: border-box; border-width: "+std::to_string(a.y)+"px "+std::to_string(a.x)+"px; border-color: #00000000; ";}
-    if(auto text=std::string(css)+locale_font_css(localization::catalog().locale);!sheet || text!=sheet_text){sheet=Rml::Factory::InstanceStyleSheetString(text);sheet_text=std::move(text);}
+    return "<rml><head></head><body style='"+inset+"pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"<layer-mark class='layer-end'/></body></rml>";
+}
+Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=false) {
+    update_sheet();
+    auto source=document_source(body,modal,chrome);
     sheet_pending=sheet;
-    auto* doc=context->LoadDocumentFromMemory("<rml><head></head><body style='"+inset+"pointer-events: "+std::string(modal?"auto":"none")+";' class='"+(modal?"modal":"")+(pointer_mode?" pointer":"")+"'>"+(chrome?"<layer-mark chrome='1'/>":"<layer-mark/>")+body+"<layer-mark class='layer-end'/></body></rml>");
+    auto* doc=context->LoadDocumentFromMemory(source);
     sheet_pending.reset();
     if(!doc)throw std::runtime_error("Cannot create shared UI document");
     if(chrome)doc->SetAttribute("data-chrome","1");
     doc->AddEventListener("click",&actions);doc->AddEventListener("change",&actions);doc->Show(Rml::ModalFlag::None,Rml::FocusFlag::None);
-    doc->UpdateDocument();fit_lines(doc);return doc;
+    doc->UpdateDocument();fit_lines(doc);
+    document_sources[doc]=std::move(source);
+    return doc;
+}
+// Pages that redraw on every cursor step (the pre-battle page, the intermission pages) keep
+// their document and take only what changed between the RML it was built from and the new
+// one: attributes and text set in place, a subtree whose shape changed built again, the
+// rest untouched. A whole rebuild cost the parse, the elements and their styles again:
+// 1.7 ms a step on the pre-battle page on an M-series Mac, 2.4 ms on an i7-8700K; in place
+// 0.05 ms and 2.1 ms (2026-10-22). On that Windows machine the layout RmlUi makes of the
+// whole page after any change is most of it (1.8 ms), with or without this.
+// Our RML is simple (no comments, no data bindings, every element closed), so a small
+// parser reads it; anything else, or a DOM that does not match the old source, rebuilds.
+struct RmlNode {
+    std::string tag;                                         // empty: a text run
+    std::vector<std::pair<std::string,std::string>> attributes;
+    std::string text;
+    std::vector<RmlNode> children;
+    size_t begin=0,end=0,inner_begin=0,inner_end=0;          // outer and inner source
+};
+bool parse_rml(const std::string& s,size_t& at,RmlNode& node) {
+    while(at<s.size()) {
+        if(s[at]!='<') {
+            const size_t next=s.find('<',at);const size_t stop=next==std::string::npos?s.size():next;
+            std::string text=s.substr(at,stop-at);
+            // RmlUi drops text that is only white space; braces would be a data expression.
+            if(text.find('{')!=std::string::npos)return false;
+            if(!std::all_of(text.begin(),text.end(),[](char c){return c==' ' || c=='\t' || c=='\n' || c=='\r';})) {
+                RmlNode run;run.text=std::move(text);run.begin=at;run.end=stop;node.children.push_back(std::move(run));
+            }
+            at=stop;continue;
+        }
+        if(s.compare(at,2,"</")==0) {
+            const size_t close=s.find('>',at);
+            if(close==std::string::npos || s.compare(at+2,close-at-2,node.tag)!=0)return false;
+            node.inner_end=at;node.end=close+1;at=close+1;return true;
+        }
+        if(s.compare(at,2,"<!")==0 || s.compare(at,2,"<?")==0)return false;
+        RmlNode child;child.begin=at;++at;
+        const size_t name_end=s.find_first_of(" \t\n/>",at);
+        if(name_end==std::string::npos)return false;
+        child.tag=s.substr(at,name_end-at);at=name_end;
+        for(;;) {
+            while(at<s.size() && (s[at]==' ' || s[at]=='\t' || s[at]=='\n'))++at;
+            if(at>=s.size())return false;
+            if(s[at]=='>'){++at;child.inner_begin=at;if(!parse_rml(s,at,child))return false;break;}
+            if(s.compare(at,2,"/>")==0){at+=2;child.inner_begin=child.inner_end=child.end=at;break;}
+            const size_t key_end=s.find_first_of(" \t\n=/>",at);
+            if(key_end==std::string::npos)return false;
+            std::string key=s.substr(at,key_end-at),value;at=key_end;
+            if(at<s.size() && s[at]=='=') {
+                ++at;
+                if(at>=s.size() || (s[at]!='\'' && s[at]!='"'))return false;
+                const char quote=s[at];const size_t value_end=s.find(quote,at+1);
+                if(value_end==std::string::npos)return false;
+                value=s.substr(at+1,value_end-at-1);at=value_end+1;
+            }
+            child.attributes.emplace_back(std::move(key),std::move(value));
+        }
+        node.children.push_back(std::move(child));
+    }
+    return node.tag.empty();  // the top level ends with the string
+}
+const RmlNode* find_rml(const RmlNode& node,const std::string& tag) {
+    if(node.tag==tag)return &node;
+    for(const auto& child:node.children)if(const auto* found=find_rml(child,tag))return found;
+    return nullptr;
+}
+struct RmlPatch {
+    const std::string& old_source;
+    const std::string& source;  // the new RML
+    std::vector<Rml::Element*> changed;
+    bool same(const RmlNode& o,const RmlNode& n) const {return o.end-o.begin==n.end-n.begin && old_source.compare(o.begin,o.end-o.begin,source,n.begin,n.end-n.begin)==0;}
+    // The element `old` again from the new source, in its place.
+    bool replace(Rml::Element* parent,Rml::Element* old,const RmlNode& node) {
+        // Built inside the page so its images find the render manager, then moved into place.
+        auto* holder=parent->InsertBefore(parent->GetOwnerDocument()->CreateElement("div"),old);
+        holder->SetInnerRML(source.substr(node.begin,node.end-node.begin));
+        const bool one=holder->GetNumChildren()==1;
+        if(one)changed.push_back(parent->InsertBefore(holder->RemoveChild(holder->GetChild(0)),old));
+        parent->RemoveChild(holder);
+        if(one)parent->RemoveChild(old);
+        return one;
+    }
+    // false: the DOM is not the old source, rebuild the page.
+    bool element(Rml::Element* e,const RmlNode& before,const RmlNode& after) {
+        const auto attributes=[](const RmlNode& n){return std::map<std::string,std::string>(n.attributes.begin(),n.attributes.end());};
+        const auto a=attributes(before),b=attributes(after);
+        if(a!=b) {
+            for(const auto& [key,value]:b)if(auto found=a.find(key);found==a.end() || found->second!=value)e->SetAttribute(key,Rml::StringUtilities::DecodeRml(value));
+            for(const auto& [key,value]:a)if(!b.count(key))e->RemoveAttribute(key);
+            changed.push_back(e);
+        }
+        if(e->GetNumChildren()!=int(before.children.size()))return false;
+        bool same_shape=before.children.size()==after.children.size();
+        for(size_t i=0;same_shape && i<before.children.size();++i)same_shape=before.children[i].tag==after.children[i].tag;
+        if(!same_shape) {
+            e->SetInnerRML(source.substr(after.inner_begin,after.inner_end-after.inner_begin));
+            changed.push_back(e);return true;
+        }
+        for(size_t i=0;i<before.children.size();++i) {
+            auto* child=e->GetChild(int(i));
+            const auto& o=before.children[i];const auto& n=after.children[i];
+            if(o.tag.empty()) {
+                auto* text=dynamic_cast<Rml::ElementText*>(child);
+                if(!text)return false;
+                if(o.text!=n.text){text->SetText(Rml::StringUtilities::DecodeRml(n.text));changed.push_back(e);}
+                continue;
+            }
+            if(child->GetTagName()!=o.tag)return false;
+            if(same(o,n))continue;
+            // A new inline style would keep the old one's properties (RmlUi only sets those it
+            // reads), and form controls hold widgets of their own: those are built again.
+            const auto style=[](const RmlNode& n){for(const auto& [k,v]:n.attributes)if(k=="style")return v;return std::string();};
+            if(style(o)!=style(n) || o.tag=="input" || o.tag=="select" || o.tag=="textarea"){if(!replace(e,child,n))return false;continue;}
+            if(!element(child,o,n))return false;
+        }
+        return true;
+    }
+};
+// The fit class's smaller faces (fit_lines) come off what changed and what holds it, so they
+// are measured again as on a new page.
+void unfit(Rml::Element* e,bool descendants) {
+    if(e->GetAttribute("data-fit-from")) {
+        e->RemoveProperty("font-size");e->RemoveAttribute("data-fit-from");
+        if(const auto* style=e->GetAttribute("style"))e->SetAttribute("style",style->Get<std::string>());
+    }
+    if(descendants)for(int i=0;i<e->GetNumChildren();++i)unfit(e->GetChild(i),true);
+}
+// `doc` again with `body`, in place where it can be (above), else a new document.
+// SRW64_PAGE_REBUILD=1 builds every page again as before, to compare with.
+Rml::ElementDocument* refresh(Rml::ElementDocument*& doc,const std::string& body,bool modal,bool chrome=false) {
+    static const bool rebuild=[]{const char* v=std::getenv("SRW64_PAGE_REBUILD");return v && *v=='1';}();
+    update_sheet();
+    const auto found=doc?document_sources.find(doc):document_sources.end();
+    if(rebuild || found==document_sources.end() || doc->GetStyleSheetContainer()!=sheet.get() || !!doc->GetAttribute("data-chrome")!=chrome) {
+        document_close(doc);return doc=document(body,modal,chrome);
+    }
+    auto source=document_source(body,modal,chrome);
+    if(source==found->second)return doc;
+    RmlNode before,after;size_t a=0,b=0;
+    const RmlNode* old_body=parse_rml(found->second,a,before)?find_rml(before,"body"):nullptr;
+    const RmlNode* new_body=parse_rml(source,b,after)?find_rml(after,"body"):nullptr;
+    RmlPatch patch{found->second,source};
+    const auto attributes=[](const RmlNode* n){return std::map<std::string,std::string>(n->attributes.begin(),n->attributes.end());};
+    if(!old_body || !new_body || attributes(old_body).at("style")!=attributes(new_body).at("style") || !patch.element(doc,*old_body,*new_body)) {
+        document_close(doc);return doc=document(body,modal,chrome);
+    }
+    for(auto* e:patch.changed){unfit(e,true);for(auto* up=e->GetParentNode();up;up=up->GetParentNode())unfit(up,false);}
+    doc->UpdateDocument();fit_lines(doc);
+    found->second=std::move(source);
+    return doc;
 }
 std::string button(const std::string& id,const std::string& text,bool on=false,bool disabled=false,const std::string& cls="") {
     return "<button id='"+escape(id)+"' class='"+cls+(on?" on":"")+"'"+(disabled?" disabled":"")+">"+text+"</button>";
@@ -960,15 +1122,11 @@ std::string portrait_path(const json& art) {
 // without mipmaps, so a straight minification aliases; resample once per displayed
 // width with an area filter (premultiplied, so edges keep their colour). Images at or
 // below the width, such as the 96 px originals, load unchanged.
-std::string image(const std::string& path,int width) {
-    if(path.empty() || width<=0)return image(path);
-    const auto key=path+"@"+std::to_string(width);
-    if(auto found=images.find(key);found!=images.end())return found->second;
-    const auto file=presentation::load_rgba(path);
+// The area filter below, to `width` pixels across; straight RGBA bytes, `oh` rows.
+std::vector<char> resample(const presentation::RgbaFile& file,int width,int& oh) {
     const int w=file.width,h=file.height;
     const uint8_t* data=file.pixels.data();
-    if(width>=w)return images[key]=image(path);
-    const int ow=width,oh=std::max(1,int(float(h)*width/w+.5f));
+    const int ow=width;oh=std::max(1,int(float(h)*width/w+.5f));
     std::vector<float> row(size_t(ow)*h*4),out(size_t(ow)*oh*4);
     const float sx=float(w)/ow,sy=float(h)/oh;
     auto premultiplied=[&](int x,int y,int c){const uint8_t* p=data+(size_t(y)*w+x)*4;return c==3?p[3]/255.f:p[c]/255.f*p[3]/255.f;};
@@ -994,9 +1152,110 @@ std::string image(const std::string& path,int width) {
         for(int c=0;c<3;++c)bytes[i*4+c]=char(std::clamp(int((a>0?out[i*4+c]/a:0)*255+.5f),0,255));
         bytes[i*4+3]=char(std::clamp(int(a*255+.5f),0,255));
     }
+    return bytes;
+}
+std::string image(const std::string& path,int width) {
+    if(path.empty() || width<=0)return image(path);
+    const auto key=path+"@"+std::to_string(width);
+    if(auto found=images.find(key);found!=images.end())return found->second;
+    const auto file=presentation::load_rgba(path);
+    if(width>=file.width)return images[key]=image(path);
+    int oh=0;const auto bytes=resample(file,width,oh);
     const auto name="portrait-"+std::to_string(images.size());
-    renderer->queue_image_from_bytes_rgba32(name,bytes,uint32_t(ow),uint32_t(oh));
+    renderer->queue_image_from_bytes_rgba32(name,bytes,uint32_t(width),uint32_t(oh));
     return images[key]=name;
+}
+// Opaque bounds of unit art and its file width: faint alpha (upscaler residue) does not count.
+std::array<int,5> opaque_bounds(const presentation::RgbaFile& file) {
+    int x0=file.width,y0=file.height,x1=0,y1=0;
+    for(int y=0;y<file.height;++y)for(int x=0;x<file.width;++x)if(file.pixels[(size_t(y)*file.width+x)*4+3]>=16){x0=std::min(x0,x);y0=std::min(y0,y);x1=std::max(x1,x+1);y1=std::max(y1,y+1);}
+    if(x1<=x0 || y1<=y0){x0=0;y0=0;x1=file.width;y1=file.height;}
+    return {x0,y0,x1-x0,y1-y0,file.width};
+}
+// Page pictures decoded off the UI thread. The pre-battle and intermission pages ask with
+// image_async and leave the picture out until a worker has read (and resampled) the file;
+// image_drain (every sync) hands the pixels to the renderer and counts them in image_serial,
+// which those pages keep in their stamps. On the map the art of every unit there is asked
+// for ahead (prefetch_map_art), so the pre-battle page's first open finds it ready: it read
+// two 768 px portraits and two poses, the poses twice, on the UI thread before, 52 ms of the
+// opening frame on an i7-8700K, 13 ms now. SRW64_SYNC_PAGE_IMAGES=1 (the layout audit) reads
+// them at once.
+namespace pictures {
+struct Job {std::string key,path;int width=0;};
+struct Done {std::string key,path;std::vector<char> rgba;uint32_t width=0,height=0;std::array<int,5> bounds{};bool full=false,ok=false;};
+std::mutex mutex;
+std::condition_variable wake;
+std::deque<Job> jobs;
+std::deque<Done> done;
+bool stopping=false;
+std::thread worker;
+std::set<std::string> asked;  // UI thread
+uint64_t serial=0;            // pictures that arrived, for the page stamps
+const bool at_once=[]{const char* v=std::getenv("SRW64_SYNC_PAGE_IMAGES");return v && *v=='1';}();
+void run() {
+    for(;;) {
+        Job job;
+        {std::unique_lock lock(mutex);wake.wait(lock,[]{return stopping || !jobs.empty();});if(stopping)return;job=std::move(jobs.front());jobs.pop_front();}
+        Done d{job.key,job.path};
+        try {
+            const auto file=presentation::load_rgba(job.path);
+            if(job.width>0 && job.width<file.width){int oh=0;d.rgba=resample(file,job.width,oh);d.width=uint32_t(job.width);d.height=uint32_t(oh);}
+            else {d.rgba.assign(file.pixels.begin(),file.pixels.end());d.width=uint32_t(file.width);d.height=uint32_t(file.height);d.full=job.width<=0;if(d.full)d.bounds=opaque_bounds(file);}
+            d.ok=true;
+        } catch(const std::exception& error) {
+            fprintf(stderr,"SRW64_UI_PICTURE_FAILED %s\n",error.what());
+        }
+        std::lock_guard lock(mutex);done.push_back(std::move(d));
+    }
+}
+void ask(const std::string& key,const std::string& path,int width) {
+    if(!asked.insert(key).second)return;
+    std::lock_guard lock(mutex);
+    if(!worker.joinable()){stopping=false;worker=std::thread(run);}
+    jobs.push_back({key,path,width});wake.notify_one();
+}
+void stop() {
+    {std::lock_guard lock(mutex);stopping=true;jobs.clear();done.clear();}
+    wake.notify_all();
+    if(worker.joinable())worker.join();
+    asked.clear();
+}
+}
+// "" until the picture has arrived (above). A full file when width is 0. A page asking for
+// one that was not read ahead says so once in the log (SRW64_UI_PICTURE_LATE).
+std::string image_async(const std::string& path,int width=0,bool ahead=false) {
+    if(path.empty())return {};
+    if(pictures::at_once)return width>0?image(path,width):image(path);
+    const auto key=width>0?path+"@"+std::to_string(width):path;
+    if(auto found=images.find(key);found!=images.end())return found->second;
+    static std::set<std::string> late;
+    if(!ahead && late.insert(key).second)fprintf(stderr,"SRW64_UI_PICTURE_LATE %s\n",key.c_str());
+    pictures::ask(key,path,width);
+    return {};
+}
+// A unit picture's opaque bounds, or nullptr while its file is still being read.
+const std::array<int,5>* art_bounds_async(const std::string& path,bool ahead=false) {
+    if(auto found=art_bounds.find(path);found!=art_bounds.end())return &found->second;
+    if(pictures::at_once)return &art_bounds.emplace(path,opaque_bounds(presentation::load_rgba(path))).first->second;
+    // The picture itself may already be there from a synchronous image(): its bounds alone then.
+    if(images.count(path))pictures::ask("#"+path,path,0);
+    else image_async(path,0,ahead);
+    return nullptr;
+}
+void image_drain() {
+    std::deque<pictures::Done> ready;
+    {std::lock_guard lock(pictures::mutex);ready.swap(pictures::done);}
+    for(auto& d:ready) {
+        if(!d.ok)continue;
+        if(d.full)art_bounds.emplace(d.path,d.bounds);
+        const auto key=d.key[0]=='#'?d.path:d.key;
+        if(!images.count(key)) {
+            const auto name="portrait-"+std::to_string(images.size());
+            renderer->queue_image_from_bytes_rgba32(name,d.rgba,d.width,d.height);
+            images[key]=name;
+        }
+        ++pictures::serial;
+    }
 }
 int dp_pixels(float dp){return int(dp*ui_density+.5f);}
 
@@ -3238,16 +3497,11 @@ std::string battle_unit(const json& c,bool left) {
     if(const auto unit=c.value("unit_art",json::object());unit.contains("path")) {
         // The whole HD pose (8x, docs/design/unit-pose-hd.md) in HD mode, else the ROM pose.
         const auto path=portrait_path(unit);
-        auto found=art_bounds.find(path);
-        if(found==art_bounds.end()) {
-            const auto file=presentation::load_rgba(path);
-            int x0=file.width,y0=file.height,x1=0,y1=0;
-            // Bounds of the visible pixels; faint alpha (upscaler residue) does not count.
-            for(int y=0;y<file.height;++y)for(int x=0;x<file.width;++x)if(file.pixels[(size_t(y)*file.width+x)*4+3]>=16){x0=std::min(x0,x);y0=std::min(y0,y);x1=std::max(x1,x+1);y1=std::max(y1,y+1);}
-            if(x1<=x0 || y1<=y0){x0=0;y0=0;x1=file.width;y1=file.height;}
-            found=art_bounds.emplace(path,std::array<int,5>{x0,y0,x1-x0,y1-y0,file.width}).first;
-        }
-        const auto [x,y,w,h,file_w]=found->second;
+        // Read off the UI thread (image_async); the picture joins the page when it is there.
+        const auto* bounds=art_bounds_async(path);
+        const auto picture=bounds?image_async(path):std::string();
+        if(picture.empty())return body+"</div>";
+        const auto [x,y,w,h,file_w]=*bounds;
         const float logical_w=page_area().w/ui_density,logical_h=page_area().h/ui_density;
         const float limit_w=logical_w*.31f-8,limit_h=std::clamp(logical_h-436,120.f,360.f);
         // At most 6x the ROM pixels, whichever file is drawn. The file loads unresampled: `rect` is in its pixels.
@@ -3258,7 +3512,7 @@ std::string battle_unit(const json& c,bool left) {
         const float part=share[std::clamp(c.value("size",4),0,4)];
         const float scale=std::min({limit_w*part/w,limit_h*part/h,6.f*rom_px});
         // A first guess at the room; battle_fit_units sizes it again to the laid-out middle row.
-        body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(image(path))+"' rect='"+std::to_string(x)+" "+std::to_string(y)+" "+std::to_string(w)+" "+std::to_string(h)+"' style='width:"+std::to_string(w*scale)+"dp;height:"+std::to_string(h*scale)+"dp;'"+
+        body+="<img class='"+std::string(left?"face-right":"face-left")+"' src='"+escape(picture)+"' rect='"+std::to_string(x)+" "+std::to_string(y)+" "+std::to_string(w)+" "+std::to_string(h)+"' style='width:"+std::to_string(w*scale)+"dp;height:"+std::to_string(h*scale)+"dp;'"+
             " data-w='"+std::to_string(w)+"' data-h='"+std::to_string(h)+"' data-part='"+std::to_string(part)+"' data-max='"+std::to_string(6.f*rom_px)+"'/>";
     }
     return body+"</div>";
@@ -3332,7 +3586,7 @@ PilotRoom battle_pilot_room(const json& a,const json& b,bool narrow) {
 std::string battle_pilot(const json& c,bool left,const PilotRoom& room) {
     const std::string side=left?"left":"right";
     std::string body="<div id='battle-pilot-"+side+"' class='bp-side bp-pilot "+side+"'><div class='bp-pilot-head'>";
-    if(const auto face=c.value("portrait",json::object());face.contains("path"))body+="<img src='"+escape(image(portrait_path(face),dp_pixels(96)))+"'/>";
+    if(const auto face=c.value("portrait",json::object());face.contains("path"))body+="<img src='"+escape(image_async(portrait_path(face),dp_pixels(96)))+"'/>";
     body+="<div class='bp-pilot-info'><div class='bp-pilot-name'><span>"+escape(c.at("pilot_name").get<std::string>())+"</span><span class='level'>Lv "+battle_number(c.at("level"))+"</span></div>";
     body+="<div class='bp-stats'><div class='bp-stat'><span>"+label("battle_morale")+"</span><b>"+battle_number(c.at("morale"))+"</b></div>";
     body+="<div class='bp-stat'><span>SP</span><b class='"+std::string(c.at("sp").get<int>()<c.at("max_sp").get<int>()?"spent":"")+"'>"+battle_number(c.at("sp"))+" / "+battle_number(c.at("max_sp"))+"</b></div></div>"
@@ -3406,7 +3660,7 @@ void intermission_sync() {
     if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();intermission_title_row=false;return;}
     const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing;
     if(intermission_doc && intermission_stamp==stamp)return;
-    document_close(intermission_doc);intermission_stamp=stamp;
+    intermission_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;   // the border, one original pixel
@@ -3451,7 +3705,7 @@ void intermission_sync() {
     }
     const auto hint=label(next.value("swap_refused",false)?"intermission_swap_refused":submenu?"intermission_swap_hint":funds_editing=="intermission"?"funds_edit_hint":"intermission_hint");
     body+="<div class='im-hint"+std::string(next.value("swap_refused",false)?" im-refused":"")+"' style='left:0; top:"+px(222)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+hint+"</div></div>";
-    intermission_doc=document(body,true);intermission_doc->SetClass("modal",false);focus_funds(intermission_doc,"intermission");
+    refresh(intermission_doc,body,true);intermission_doc->SetClass("modal",false);focus_funds(intermission_doc,"intermission");
 }
 // ユニット改造 / 武器改造: the machine list (layout 0x6B) and the five-stat screen
 // (0x75), in the original's 320x240 coordinates like the intermission menu.
@@ -3586,9 +3840,9 @@ std::string gauge_html(const std::string& cells,bool plan_shown=true) {
 void upgrade_sync() {
     const auto next=upgrade_page::state();upgrade_request=next;
     if(!next.value("visible",false)){document_close(upgrade_doc);upgrade_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing;
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing+"#"+std::to_string(pictures::serial);
     if(upgrade_doc && upgrade_stamp==stamp)return;
-    document_close(upgrade_doc);upgrade_stamp=stamp;
+    upgrade_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -3770,7 +4024,7 @@ void upgrade_sync() {
         std::string art;
         if(unit.contains("art") && unit.at("art").contains("path")) {
             const float w=unit.at("art").value("width",96.f),h=unit.at("art").value("height",96.f),scale=std::min(1.f,std::min(118.f/w,118.f/h));
-            art="<img src='"+escape(image(portrait_path(unit.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+            art="<img src='"+escape(image_async(portrait_path(unit.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
         }
         body+=box(176,8,302,132,art,10.f,"upgrade-art",std::string("display:flex; align-items:center; justify-content:center; background-color:")+kLinesPanel+";")+
             box(21,133,302,219,lines,10.5f,"upgrade-rows");
@@ -3788,7 +4042,7 @@ void upgrade_sync() {
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label(window.empty()?"upgrade_stats_hint":window=="confirm"?"upgrade_confirm_hint":"upgrade_message_hint")+"</div>";
     }
     body+="</div>";
-    upgrade_doc=document(body,true);upgrade_doc->SetClass("modal",false);focus_funds(upgrade_doc,"upgrade");
+    refresh(upgrade_doc,body,true);upgrade_doc->SetClass("modal",false);focus_funds(upgrade_doc,"upgrade");
 }
 
 // 強化パーツ (parts_page.cpp): the machine list (layout 0x70), the slots with the
@@ -3798,9 +4052,9 @@ unsigned parts_holders_first=0;   // the holders list's first shown row
 void parts_sync() {
     const auto next=parts_page::state();parts_request=next;
     if(!next.value("visible",false)){document_close(parts_doc);parts_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp();
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+"#"+std::to_string(pictures::serial);
     if(parts_doc && parts_stamp==stamp)return;
-    document_close(parts_doc);parts_stamp=stamp;
+    parts_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -3902,7 +4156,7 @@ void parts_sync() {
         body+="<div class='im-hint' style='left:0; top:"+px(224)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+label("parts_holders_hint")+"</div>";
     }
     body+="</div>";
-    parts_doc=document(body,true);parts_doc->SetClass("modal",false);
+    refresh(parts_doc,body,true);parts_doc->SetClass("modal",false);
 }
 
 // のりかえ (swap_page.cpp): the pilot / fairy lists (layouts 0x6F / 0x88), the target
@@ -3911,9 +4165,9 @@ void parts_sync() {
 void swap_sync() {
     const auto next=swap_page::state();swap_request=next;
     if(!next.value("visible",false)){document_close(swap_doc);swap_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(swap_doc && swap_stamp==stamp)return;
-    document_close(swap_doc);swap_stamp=stamp;
+    swap_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -3938,7 +4192,7 @@ void swap_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return "<img src='"+escape(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
     };
     const auto yes_no=[&](const std::string& prefix,unsigned cursor,float x0,float y0,float x1,float y1,float row){
         return box(x0,y0,x1,y1,"<button id='"+prefix+"-yes' class='"+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='"+prefix+"-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,prefix+"-choice");
@@ -4012,7 +4266,7 @@ void swap_sync() {
         body+=hint("swap_confirm_hint");
     }
     body+="</div>";
-    swap_doc=document(body,true);swap_doc->SetClass("modal",false);
+    refresh(swap_doc,body,true);swap_doc->SetClass("modal",false);
 }
 
 // データセーブ (save_page.cpp): the medium choice (layout 0x6A with the 0x72 pause box)
@@ -4024,7 +4278,7 @@ void save_sync() {
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
     const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
     if(save_doc && save_stamp==stamp)return;
-    document_close(save_doc);save_stamp=stamp;
+    save_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -4045,7 +4299,7 @@ void save_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return "<img src='"+escape(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
     };
     const auto yes_no=[&](unsigned cursor,float x0,float y0,float x1,float y1,float row){
         return box(x0,y0,x1,y1,std::string("<button id='save-yes' class='")+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='save-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,"save-choice");
@@ -4138,7 +4392,7 @@ void save_sync() {
                    erase?"save_slots_hint_delete":count>2?"save_slots_hint_pages":"save_slots_hint");
     }
     body+="</div>";
-    save_doc=document(body,true);save_doc->SetClass("modal",false);
+    refresh(save_doc,body,true);save_doc->SetClass("modal",false);
 }
 
 // Title screen pages (title_page.cpp): オプション (layout 0x5A) and the サウンドセレクト /
@@ -4207,9 +4461,9 @@ void title_sync() {
 void ability_sync() {
     const auto next=ability_page::state();ability_request=next;
     if(!next.value("visible",false)){document_close(ability_doc);ability_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(ability_doc && ability_stamp==stamp)return;
-    document_close(ability_doc);ability_stamp=stamp;
+    ability_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const float line=std::max(1.f,float(int(u+0.5f)))/u;
@@ -4233,7 +4487,7 @@ void ability_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return "<img src='"+escape(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
     };
     const std::string screen=next.value("screen",std::string());
     std::string body="<div class='im-root' id='ability' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
@@ -4355,7 +4609,7 @@ void ability_sync() {
         body+=hint("ability_pilot_hint");
     }
     body+="</div>";
-    ability_doc=document(body,true);ability_doc->SetClass("modal",false);
+    refresh(ability_doc,body,true);ability_doc->SetClass("modal",false);
 }
 void mini_sync() {
     const auto state=mini_stage::snapshot();
@@ -4513,6 +4767,16 @@ void battle_hd_buttons(uint32_t pressed) {
 }
 bool touch_battle_layout();
 touch_pad::Layout touch_layout();
+// The pre-battle page's pictures of every unit on the map, read ahead (image_async above):
+// each pilot's face at the page's size and each unit's whole pose with its bounds.
+void prefetch_map_art() {
+    static unsigned frames=0;
+    if(pictures::at_once || ++frames%30 || battle_page::state().value("visible",false))return;
+    for(const auto& row:battle_page::map_art()) {
+        if(const auto face=row.value("portrait",json::object());face.contains("path"))image_async(portrait_path(face),dp_pixels(96),true);
+        if(const auto unit=row.value("unit_art",json::object());unit.contains("path"))art_bounds_async(portrait_path(unit),true);
+    }
+}
 void battle_sync() {
     const auto next=battle_page::state();battle_request=next;
     if(!next.value("visible",false)) {
@@ -4546,14 +4810,14 @@ void battle_sync() {
     const bool touch=touch_battle_layout();
     const bool hd_original=next.value("style",std::string())=="hd" && !touch;
     // The window and the interface size set the unit pictures' room (ui_density).
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"")+(touch?"+touch":"");
+    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"")+(touch?"+touch":"")+"#"+std::to_string(pictures::serial);
     if(battle_doc && battle_stamp==stamp)return;
     if(hd_original) {
         // The menu cursor stays where it was when the same encounter redraws.
         auto* focus=battle_doc && context->GetFocusElement() && context->GetFocusElement()->GetOwnerDocument()==battle_doc?context->GetFocusElement():nullptr;
         const auto kept=focus && battle_request_serial==next.value("serial",uint64_t{})?focus->GetId():std::string("battle-confirm");
-        document_close(battle_doc);battle_stamp=stamp;battle_request_serial=next.value("serial",uint64_t{});
-        battle_doc=document(battle_hd_page(next),true);battle_doc->SetClass("modal",false);
+        battle_stamp=stamp;battle_request_serial=next.value("serial",uint64_t{});
+        refresh(battle_doc,battle_hd_page(next),true);battle_doc->SetClass("modal",false);
         if(auto* e=battle_doc->GetElementById(kept))e->Focus();
         return;
     }
@@ -4565,7 +4829,7 @@ void battle_sync() {
     const bool same=battle_request_serial==next.value("serial",uint64_t{}) && spirit_menu_before==next.value("spirit_menu",false);
     const auto kept=focus && same?focus->GetId():std::string();
     battle_request_serial=next.value("serial",uint64_t{});spirit_menu_before=next.value("spirit_menu",false);
-    document_close(battle_doc);battle_stamp=stamp;
+    battle_stamp=stamp;
     // Keep our unit on the right, matching the original battle HUD. Direction
     // follows screen position, not attacker/defender role or faction arithmetic.
     const bool player_attacks=next.at("attacker").at("side")==0,responding=next.value("mode",0)==2;
@@ -4624,7 +4888,7 @@ void battle_sync() {
         }
         body+="</div><div class='spirit-footer'>"+button("battle-spirit-back",label("battle_spirit_back"))+"</div></div>";
     }
-    battle_doc=document(body,true);battle_doc->SetClass("modal",false);
+    refresh(battle_doc,body,true);battle_doc->SetClass("modal",false);
     if(auto* first=kept.empty()?nullptr:battle_doc->GetElementById(kept))first->Focus();
     else if(auto* first=battle_doc->GetElementById(selecting_spirit?"battle-spirit-back":touch?(responding?"battle-counter":""):"battle-confirm"))first->Focus();
     battle_doc->UpdateDocument();battle_fit_units(battle_doc);
@@ -5585,6 +5849,7 @@ void sync() {
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     if(map_menu::take_chosen() && !settings_open)choose("title-return-ask");
+    image_drain();prefetch_map_art();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_about"),language->ui("menu_check_updates"),
                       language->ui("menu_game"),language->ui("menu_exit"),language->ui("menu_title_return"),quick_load::usable_title() && !settings_open},menu_bar(language),window && (SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN));
@@ -6043,7 +6308,7 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
-void render_shutdown(){auto lock=lock_ui();ready=false;if(initialized){name_page.reset();sheet.reset();sheet_text.clear();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
+void render_shutdown(){auto lock=lock_ui();ready=false;pictures::stop();if(initialized){name_page.reset();sheet.reset();sheet_text.clear();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
 void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);swap_page::window_claim_input(false);title_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
