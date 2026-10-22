@@ -1793,7 +1793,7 @@ std::string filled(const char* key,std::initializer_list<std::pair<const char*,s
     return text;
 }
 std::string mod_problem_text(const srw64::mods::Problem& p) {
-    static const std::set<std::string> manifest_codes{"manifest","field","schema","id","version","name","description","authors","requires","optional","conflicts"};
+    static const std::set<std::string> manifest_codes{"manifest","field","schema","id","version","name","description","authors","license","requires","optional","conflicts"};
     static const std::set<std::string> archive_codes{"open","archive","archive_size","archive_path"};
     const std::string code=manifest_codes.contains(p.code)?"manifest":archive_codes.contains(p.code)?"archive":p.code;
     const auto key="mod_error_"+code;
@@ -1828,6 +1828,7 @@ std::string mod_installed_page() {
         if(p.manifest) {
             meta="v"+srw64::mods::version_text(p.manifest->version);
             for(const auto& author:p.manifest->authors)meta+="  ·  "+author;
+            if(!p.manifest->license.empty())meta+="  ·  "+p.manifest->license;
         }
         const bool usable=p.manifest.has_value();
         const std::string status=!p.problem.code.empty()?filled("mod_status_problem",{{"{reason}",mod_problem_text(p.problem)}}):

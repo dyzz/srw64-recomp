@@ -67,6 +67,14 @@ int main(int argc,char** argv) {
     check(problem_of(manifest("a.b","1.0",{{"requires",{{"a.b","*"}}}}))=="requires","a package does not require itself");
     check(problem_of(manifest("a.b","1.0",{{"game","newer"}}))=="game","a game requirement is a requirement");
     check(problem_of(json{{"schema","srw64.mod.v2"}})=="schema","the schema is v1");
+    check(problem_of(manifest("a.b","1.0",{{"license","CC-BY-NC-4.0"}})).empty() && problem_of(manifest("a.b","1.0",{{"license","All rights reserved"}}))=="license","a licence is one of the list");
+    // The manifest cases shared with tools/mods/validate.py (tests/mods/manifests.json).
+    if(argc>2) {
+        json cases;std::ifstream(argv[2])>>cases;
+        unsigned n=0;
+        for(const auto& c:cases["cases"]){check(problem_of(c["manifest"])==c["problem"].get<std::string>(),"fixture "+c["case"].get<std::string>()+": got \""+problem_of(c["manifest"])+"\"");++n;}
+        check(n>=10,"the shared manifest cases were read");
+    } else std::fprintf(stderr,"note: no manifest fixture given\n");
 
     // Resolving: dependencies below their dependents whatever the player's order.
     {

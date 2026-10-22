@@ -24,6 +24,11 @@ using json=nlohmann::json;
 inline constexpr const char* manifest_schema="srw64.mod.v1";
 inline constexpr const char* state_schema="srw64.mods-state.v1";
 inline constexpr const char* package_extension=".srw64mod";
+// The licences a package may carry (docs/design/mod-packages.md §13.4): ones that allow
+// the package to be passed on. The field is optional here; the submission check
+// (tools/mods/validate.py) requires it.
+inline constexpr const char* licenses[]={"CC-BY-4.0","CC-BY-SA-4.0","CC-BY-NC-4.0","CC-BY-NC-SA-4.0","CC0-1.0","MIT","GPL-3.0-or-later"};
+inline bool valid_license(const std::string& text){return std::find(std::begin(licenses),std::end(licenses),text)!=std::end(licenses);}
 
 // A version: up to three numbers, "1", "1.2" or "1.2.3" (missing parts are 0).
 struct Version {
@@ -114,6 +119,7 @@ struct Manifest {
     Version version;
     json name,description;              // a string or {locale: string}
     std::vector<std::string> authors;
+    std::string license;                // one of `licenses`, or empty
     std::string game="*";
     std::map<std::string,std::string> needs,follows,conflicts;   // "requires", "optional", "conflicts"
 };
@@ -121,7 +127,7 @@ struct Manifest {
 // mod.json, strictly: unknown fields are errors (docs/design/mod-packages.md §2).
 inline std::variant<Manifest,Problem> parse_manifest(const json& data) {
     if(!data.is_object())return Problem{"manifest","not an object"};
-    static const std::set<std::string> known{"schema","id","version","name","description","authors","game","requires","optional","conflicts"};
+    static const std::set<std::string> known{"schema","id","version","name","description","authors","license","game","requires","optional","conflicts"};
     for(const auto& [key,value]:data.items())if(!known.contains(key))return Problem{"field",key};
     if(data.value("schema","")!=manifest_schema)return Problem{"schema",data.contains("schema") && data["schema"].is_string()?data["schema"].get<std::string>():""};
     Manifest m;
@@ -149,6 +155,10 @@ inline std::variant<Manifest,Problem> parse_manifest(const json& data) {
             if(!a.is_string())return Problem{"authors",""};
             m.authors.push_back(a.get<std::string>());
         }
+    }
+    if(data.contains("license")) {
+        if(!data["license"].is_string() || !valid_license(data["license"].get<std::string>()))return Problem{"license",data["license"].is_string()?data["license"].get<std::string>():""};
+        m.license=data["license"].get<std::string>();
     }
     if(data.contains("game")) {
         if(!data["game"].is_string() || !valid_requirement(data["game"].get<std::string>()))return Problem{"game",""};

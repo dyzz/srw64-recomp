@@ -171,7 +171,7 @@ recomp-mod-library-test:
 		$(MINIZ_DIR)/$$c.c -o build/recomp/mod-library-test/$$c.o || exit 1; done
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -I$(RECOMP_BUILD)/upstream/RT64/src/contrib -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
 		tests/native_mod_library.cpp src/host/mod_library.cpp build/recomp/mod-library-test/miniz*.o -o build/recomp/mod-library-test/test
-	build/recomp/mod-library-test/test build/recomp/mod-library-test/run
+	build/recomp/mod-library-test/test build/recomp/mod-library-test/run tests/mods/manifests.json
 
 .PHONY: recomp-music-test
 recomp-music-test:
