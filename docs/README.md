@@ -24,6 +24,7 @@
 | 原版怎么读手柄、每个键在每个画面里做什么（重映射前先看） | [原版按键绑定](gameplay/original-controls.md) |
 | 翻译名称、界面标签与系统提示（词条表） | [数据文本汉化](native/localization-terms.md) |
 | 修改或翻译剧情与战斗台词（纯文本，玩家可改） | [台词文本文件](guide/dialogue-text.md) |
+| 做音乐替换或战斗语音 MOD：包格式与歌号、人物、台词记录号对应表 | [音乐与战斗语音 MOD](guide/audio-mods/README.md) |
 | 全部文本的分类导出，剧情与战斗台词的中英机翻（DeepSeek）、审校、台词文件与后续阶段 | [全文本地化规划](design/translation-plan.md) |
 | 对白框怎样多显示字、少翻页：字体、字号、整条连排与翻页位置 | [对白排版](design/dialogue-typesetting.md) |
 | 接下来要做的功能 | [后续路线图](design/roadmap.md) |
@@ -42,6 +43,7 @@
 | [发布构建](guide/release.md) | 从一个提交构建应用与单独的 HD 包、HD 包的安装与声明、手动发布 |
 | [Linux 与 Steam Deck 构建](guide/linux-build.md) | 在 Mac 上用 Docker 构建 Linux x64 包、随包依赖与链接检查、Deck 安装、与 macOS 的差别和验证记录 |
 | [台词文本文件](guide/dialogue-text.md) | 剧情、选择肢与战斗台词的纯文本格式、附带文件与用户目录覆盖、F5 重新载入与错误报告 |
+| [音乐与战斗语音 MOD](guide/audio-mods/README.md) | 给 MOD 作者（及其 AI）的格式说明，附 49 首歌、人物、机体、11548 句战斗台词的 CSV 对应表 |
 | [原生存档恢复](guide/native-save-recovery.md) | 历史存档列表与显式恢复、完整性回退、通关档冷启动证据 |
 | [本地输入与来源记录](guide/provenance.md) | 原 ROM 身份、日文字形表、固定工具链与参考资料 |
 
@@ -57,6 +59,7 @@
 | [金手指](gameplay/cheats.md) | 设置「作弊」页的六项：资金、部件、EN、SP、气力 150、改机师等级；地址与上限依据、为什么不用 libretro 的码 |
 | [框体与滤镜](native/bezels-and-filters.md) | RetroArch 的 overlay 框体（仅 4:3）与 slang 滤镜（librashader，目前只接了 Metal）：用法、接在哪一步、透明窗口对位、验证 |
 | [改造继承分析](gameplay/upgrade-inheritance.md) | 换机时改造段数如何搬运、前任表与武器映射、疑似漏项（静态分析） |
+| [合体技](gameplay/combination-attacks.md) | 25 件合体技的参加者表、相邻与驾驶员组合判定、威力平均×倍率；各画面显示条件与能力页「一直显示＋提示缺的搭档」的做法 |
 | [隐藏要素](gameplay/hidden-elements.md) | 隐藏机体／驾驶员、说服与分歧条件在脚本中的实现，与攻略对照（静态分析） |
 | [Link Battler 联动](gameplay/link-battler.md) | F91、ゴーショーグン、ザンボット3 的开放判定、插入关、等级对齐与 GB 数据块格式；原生版用联动页勾选代替卡带 |
 | [原版按键绑定](gameplay/original-controls.md) | 采样层与三张输入表、连发时序、摇杆折算、Z＋START 与开机 START、各画面每个键的用途、调试菜单与调试 overlay（静态分析） |
@@ -158,7 +161,7 @@
 | [周目继承](design/new-game-plus.md) | 上周目完成的隐藏要素在原入队关之后补登记（33 项、不改变量）与历代记录；规则 `inherit-hidden`；为何不继承击坠数（已实现，Windows 实机过） |
 | [周目继承：下一步](design/new-game-plus-next.md) | 设计目标与现实困境：变量跨路线共用、决定路线的三个变量、按人物号的身份冲突与 `3D59` 冲突关、现阶段能落地的组合与待定项（未实现） |
 | [本关情报页](design/stage-info.md) | 游戏内查看当前关的隐藏要素与完成进度、敌人掉落零件与撤退；数据来源、按键、每关 metadata 与完成状态规则 |
-| [快速读档与统一武器改造](design/quick-load-and-unified-weapons.md) | 地图上读手动中断存档（触屏键、本关情报页按钮、F9）与一台机体的武器统一改造：原版事实、方案与实机核对 |
+| [快速读档与统一武器改造](design/quick-load-and-unified-weapons.md) | 地图上读手动中断存档（触屏键、本关情报页按钮、F9）、返回标题画面（系统菜单、场间菜单、地图空格菜单、F10、情报页按钮）与一台机体的武器统一改造：原版事实、方案与实机核对 |
 | [宽屏画面](design/deck-16x10.md) | 以 Steam Deck 1280×800 为基准、随屏幕 4:3–16:9：RT64 按画面宽度渲染加扩展指令、宿主绘制层映射、两侧清黑、各场景做法、战术地图放宽的改动点、阶段、实机验收与未知项 |
 | [战斗演出渲染机制](design/battle-animation-rendering.md) | 战斗演出怎样画出来：背景、3D 地面与模型、机体精灵、特效、cut-in 与遮框；HD 路线（机体姿势、烘焙光照城市、实时水面）与实机验收 |
 | [漩涡天空宽图](design/battle-vortex-wide.md) | 6107/6106 外扩试验（未采用）；最终改为宽屏下静止天空整张放大、上下裁切 |

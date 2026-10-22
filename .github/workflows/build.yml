@@ -75,7 +75,11 @@ jobs:
           find build/recomp/upstream -name .git -prune | while read -r g; do
             d=$(dirname "$g"); git -C "$d" rev-parse HEAD > "$d/.srw64-revision"
           done
+          # Without zstd's tests: their two symlinks (bin/unzstd, bin/zstdcat -> zstd) are the only
+          # ones upstream, and Git's tar on Windows copies a link's target, so it failed whenever
+          # the archive listed a link before its target (2026-10-22).
           tar -czf "$RUNNER_TEMP/generated.tgz" --exclude=.git \
+            --exclude=build/recomp/upstream/RT64/src/contrib/zstd/tests \
             build/recomp/cpu-bound build/recomp/audio-probe build/fonts build/recomp/upstream \
             build/recomp/graphics-source-patches.json
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY \

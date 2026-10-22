@@ -759,16 +759,29 @@ unsigned sync_unit(uint8_t* ram,recomp_context* ctx,uint32_t unit) {
     return raised;
 }
 bool unified_on(){return settings::unified_weapon_upgrades();}
-// Every unit in the instance table, once per weapon array.
-void sync_all(uint8_t* ram,recomp_context* ctx) {
+// Full-upgrade bonuses a level written past the paid step had left locked
+// (upgrade_rules.hpp grant_bonuses), with where the levels came from.
+std::vector<up::Bonus> granted(uint8_t* ram,uint32_t list,const char* source) {
+    auto bonuses=up::grant_bonuses(ram,list);
+    for(const auto& b:bonuses)record("bonus-granted",{{"source",source},{"upgraded",b.upgraded},{"unlocked",b.unlocked}});
+    return bonuses;
+}
+// Every unit in the instance table, once per weapon array: with `sync` the unified
+// levels first, then the bonuses either way.
+std::vector<up::Bonus> sync_all(uint8_t* ram,recomp_context* ctx,bool sync=true) {
     std::vector<uint32_t> seen;
+    std::vector<up::Bonus> found;
     unsigned raised=0;
     for(uint32_t slot=0;slot<up::unit_slots;++slot) {
         const uint32_t unit=up::unit_at(slot),list=read(ram,unit+up::unit_weapon_list,4);
         if(!read(ram,unit,1) || !valid(list,up::weapon_size) || std::find(seen.begin(),seen.end(),list)!=seen.end())continue;
-        seen.push_back(list);raised+=sync_unit(ram,ctx,unit);
+        seen.push_back(list);
+        if(sync)raised+=sync_unit(ram,ctx,unit);
+        const auto more=granted(ram,list,sync?"unified-sync":"intermission");
+        found.insert(found.end(),more.begin(),more.end());
     }
     if(raised)record("unified-sync",{{"weapons",raised}});
+    return found;
 }
 // The machine list row (D_801DD210) of a form that uses weapon `w`, for the original's
 // confirm branch, which reads the screen unit's number and cap. Its full-upgrade bonus
@@ -846,11 +859,13 @@ void unified_refresh(uint8_t* ram) {
     current=std::move(next);
 }
 bool unified_build(uint8_t* ram,recomp_context* ctx) {
-    sync_all(ram,ctx);
+    const auto synced=sync_all(ram,ctx);
     const unsigned unlocked=read(ram,bonus_unlocked,2),upgraded=read(ram,bonus_upgraded,2);
     write16(ram,bonus_upgraded,999);write16(ram,bonus_unlocked,999);
     std::lock_guard lock(mutex);
     if(unlocked!=999 && std::find(bonuses.begin(),bonuses.end(),std::pair{upgraded,unlocked})==bonuses.end())bonuses.push_back({upgraded,unlocked});
+    for(const auto& b:synced)   // the free sync's own, after the paid ones
+        if(std::find(bonuses.begin(),bonuses.end(),std::pair<unsigned,unsigned>{b.upgraded,b.unlocked})==bonuses.end())bonuses.push_back({b.upgraded,b.unlocked});
     const bool bonus=!bonuses.empty();
     write32(ram,mode,bonus?1:0);
     weapon_plan=0;planned=false;
@@ -992,11 +1007,14 @@ void frame(uint8_t* ram) {
 }
 
 // Entering the インターミッション: weapons that joined since (a new unit's, a story
-// upgrade's, a bonus unlocked) come up to their unit's unified level for free.
+// upgrade's, a bonus unlocked) come up to their unit's unified level for free. With
+// either that or the cap-break rule on, a bonus an earlier level write left locked
+// (a save from before grant_bonuses) unlocks here too; there is no message to show it.
 void entered(uint8_t* ram,recomp_context* ctx) {
-    if(!settings::native_intermission_ui() || !unified_on())return;
+    const bool sync=settings::native_intermission_ui() && unified_on();
+    if(!sync && !up::breaking())return;
     std::lock_guard lock(mutex);
-    sync_all(ram,ctx);
+    sync_all(ram,ctx,sync);
 }
 // A story swap or an EW change (800AA8F4: a0 the new machine, a1 the predecessor's saved
 // weapons as number/level/flags, a2 their count). The original moves only the levels its
@@ -1009,10 +1027,9 @@ void entered(uint8_t* ram,recomp_context* ctx) {
 // most of them had, the higher on a tie), and every upgradable weapon of the successor
 // below it comes up to it now, free, within the successor's cap. The caller's 800AAB5C
 // recomputes the power right after.
-void inherited(uint8_t* ram,uint32_t unit,uint32_t saved,int count) {
+void inherit_unified(uint8_t* ram,uint32_t unit,uint32_t saved,int count) {
     if(!settings::native_intermission_ui() || !unified_on() || count<=0)return;
-    if(!valid(unit,0x54) || !valid(saved,uint32_t(count)*rules::saved_size))return;
-    if(!valid(read(ram,unit+up::unit_weapon_list,4),up::weapon_size))return;
+    if(!valid(saved,uint32_t(count)*rules::saved_size))return;
     constexpr uint32_t weapon_map=0x800CB5E8; constexpr unsigned weapon_map_size=114;
     const auto successor_of=[&](uint16_t from)->int {
         for(unsigned i=0;i<weapon_map_size;++i)
@@ -1047,6 +1064,18 @@ void inherited(uint8_t* ram,uint32_t unit,uint32_t saved,int count) {
     }
     std::lock_guard lock(mutex);
     record("unified-inherit",{{"unit",read(ram,unit+up::unit_number,2)},{"carried",carried},{"level",level},{"raised",raised}});
+}
+// After the swap's levels are in (the original's, the rule's gaps, the unified level),
+// a full-upgrade bonus whose weapon came over at or past the successor's original cap
+// unlocks: no paid level will land on that cap again. Always on: in the original's own
+// data a level that reaches the successor's cap brings its bonus along anyway (the
+// キュベレイmkⅡ swap carries 314's unlock bit), and only マジンガーZ 12 -> マジンガーZ(JS)
+// 13 raises the cap. The swap runs in a script, so no message.
+void inherited(uint8_t* ram,uint32_t unit,uint32_t saved,int count) {
+    if(!valid(unit,0x54) || !valid(read(ram,unit+up::unit_weapon_list,4),up::weapon_size))return;
+    inherit_unified(ram,unit,saved,count);
+    std::lock_guard lock(mutex);
+    granted(ram,read(ram,unit+up::unit_weapon_list,4),"swap");
 }
 void configure(const std::filesystem::path& directory) {
     if(const char* v=std::getenv("SRW64_NATIVE_UPGRADE");v && std::string_view(v)=="0")return;

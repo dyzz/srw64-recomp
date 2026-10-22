@@ -1,0 +1,132 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "combo-apart",
+  "note": "Combination attacks on the map's weapon page (docs/gameplay/combination-attacks.md): マジンガーZ(JS) and グレートマジンガー three tiles apart, グレンダイザー away; the page lists the attacks grey with the partner line.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001e93fc",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "faction": 0,
+      "level_offset": 0,
+      "note": "甲児 / マジンガーZ(JS) 263"
+    },
+    {
+      "template": "base:stage_deployments:001ea35c",
+      "group": 0,
+      "x": 13,
+      "y": 10,
+      "faction": 0,
+      "level_offset": 0,
+      "note": "鉄也 / グレートマジンガー 150"
+    },
+    {
+      "template": "base:stage_deployments:001ff428",
+      "group": 0,
+      "x": 10,
+      "y": 14,
+      "faction": 0,
+      "note": "デューク / グレンダイザー 158, apart"
+    },
+    {
+      "template": "base:stage_deployments:001f2720",
+      "group": 1,
+      "x": 20,
+      "y": 5,
+      "faction": 1,
+      "note": "ロゼ / ゼーロン — one enemy"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

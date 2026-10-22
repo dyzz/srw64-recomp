@@ -1,8 +1,9 @@
 ---
 // Release notes: every version's "what's new", newest first, taken from its release post
 // (a blog post with `version`), so publishing the post is all a release needs. A post shows
-// its opening paragraphs and the section under the what's-new heading; one without that
-// section (0.4.0, the first release) shows its summary. Both link to the full post.
+// its opening paragraphs and the section under the what's-new heading, or, since 0.4.9, the
+// run of Fixes / New features sections with their headings; one without either (0.4.0, the
+// first release) shows its summary. Both link to the full post.
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { UI, langPaths, type Lang } from '../../i18n';
@@ -21,8 +22,10 @@ const t = {
   full: { zh: '完整说明', en: 'Full notes', ja: '詳細' },
   download: { zh: '下载最新版', en: 'Download the latest version', ja: '最新版をダウンロード' },
 };
-// The what's-new heading each language's release posts use.
+// The what's-new heading each language's release posts use, and the sections that take its
+// place since 0.4.9 (shown one after another, each under its own heading).
 const NEW: Record<Lang, string[]> = { zh: ['本版更新'], en: ["What's new"], ja: ['更新内容', '今回の変更'] };
+const PARTS: Record<Lang, string[]> = { zh: ['修复', '新功能'], en: ['Fixes', 'New features'], ja: ['修正', '新機能'] };
 const text = (html: string) => html.replace(/<[^>]+>/g, '').replace(/&#39;|&#x27;|&apos;|’/g, "'").trim();
 
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft && !!p.data.version)).sort(newestFirst);
@@ -30,11 +33,18 @@ const entries = posts.map((p) => {
   const html = p.rendered?.html ?? '';
   const h2s = [...html.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)];
   const at = h2s.findIndex((m) => NEW[lang].includes(text(m[1])));
+  const part = h2s.findIndex((m) => PARTS[lang].includes(text(m[1])));
   let body: string | null = null;
   if (at >= 0) {
     const start = h2s[at].index! + h2s[at][0].length;
     const end = h2s[at + 1]?.index ?? html.length;
     body = html.slice(0, h2s[0].index) + html.slice(start, end);
+  } else if (part >= 0) {
+    let last = part;
+    while (last + 1 < h2s.length && PARTS[lang].includes(text(h2s[last + 1][1]))) last++;
+    const end = h2s[last + 1]?.index ?? html.length;
+    // The page's own h2 is the version's title: the sections sit under it as h3.
+    body = html.slice(0, h2s[0].index) + html.slice(h2s[part].index, end).replace(/<(\/?)h2\b/g, '<$1h3');
   }
   return {
     version: p.data.version!,

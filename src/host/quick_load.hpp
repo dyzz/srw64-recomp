@@ -24,6 +24,12 @@ bool usable();
 Saved saved();
 // Any thread: load it as soon as the game takes the combination (confirmed by the player).
 void request();
+// Back to the title screen: the same combination with START let go as soon as the game
+// takes it, so the fade ends at the BANPRESTO logo and the title instead of a load. The
+// original tests it on the tactical map (with its UI up), the world map, the intermission
+// and in a battle animation; usable_title() says whether the game stands in one of them.
+bool usable_title();
+void request_title();
 // Game thread, every frame boundary (80085F30).
 void frame(uint8_t* ram);
 // The input callback (host.cpp get_input), after every other filter: while a load runs,

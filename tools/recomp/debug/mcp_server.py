@@ -96,6 +96,10 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {"choice": {"type": "object"}, "writes": {"type": "array", "items": {"type": "object"}}, "song": {"type": "integer"}}}},
     {"name": "srw64_drop", "description": "Drop a file or folder on the game window (SDL_DROPFILE), as dragging it from the desktop does: a .srw64mod file or a MOD folder installs and opens the MOD manager (docs/design/mod-packages.md). The path is on the machine the game runs on.",
      "inputSchema": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}},
+    {"name": "srw64_game_over", "description": "End the stage in GAME OVER, as the script command 3D4C does, at the next idle frame of the player's phase on the tactical map (no event running); waits for it (timeout_ms, default 10000) and says why not otherwise. For tests of the retry and the turn autosave.",
+     "inputSchema": {"type": "object", "properties": {"timeout_ms": {"type": "integer"}}}},
+    {"name": "srw64_victory", "description": "Win the stage, as the script command 3D4A does (the result screens, then the stage's end event): an event of that one command run by the original script engine at the next idle frame of the player's phase on the tactical map (no event running); waits until the engine has taken it (timeout_ms, default 10000) and says why not otherwise.",
+     "inputSchema": {"type": "object", "properties": {"timeout_ms": {"type": "integer"}}}},
     {"name": "srw64_memory", "description": "Read guest RAM as hex (address such as 0x8015F950, size up to 0x10000). A view while the game runs, not a snapshot.",
      "inputSchema": {"type": "object", "required": ["address"], "properties": {"address": {"type": "integer"}, "size": {"type": "integer"}}}},
     {"name": "srw64_memory_write", "description": "Write bytes (hex) into guest RAM at an address, between the game's own writes, for probes such as forcing a battle background. Debug sessions only; at most 4096 bytes.",
@@ -176,6 +180,10 @@ class Server:
             return text(client.call("viewer.start", **args))
         if name == "srw64_drop":
             return text(client.call("ui.drop", path=args["path"]))
+        if name == "srw64_game_over":
+            return text(client.call("game_over", **args))
+        if name == "srw64_victory":
+            return text(client.call("victory", **args))
         if name == "srw64_memory":
             return text(client.call("memory.read", address=int(args["address"]), size=int(args.get("size", 4))))
         if name == "srw64_memory_write":

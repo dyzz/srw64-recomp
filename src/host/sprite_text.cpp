@@ -651,7 +651,7 @@ bool describe(const uint8_t* rdram, const sprites::SceneId& id, TextJob& job) {
         }
         if (cjk) title = "\xE3\x80\x8C" + title + "\xE3\x80\x8D";   // 「」
         if (!part.empty()) title += "<BR>" + part;
-        Style style = card_style(cjk ? 19 : 17);
+        Style style = card_style(cjk ? 19 : 22);   // English larger (user, 2026-10-20); a tall title shrinks to the height
         style.width = 280; style.max_height = 84;
         job_for(job, style, locale, title, "chapter-title");
         job.anchor = TextJob::Anchor::top;

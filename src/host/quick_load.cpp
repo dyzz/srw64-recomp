@@ -26,12 +26,16 @@ constexpr uint32_t battle_state=0x80250000,battle_fade=0x80250205,battle_abort=0
 // The suspend area on the card and the progress block in its record (save_page.cpp).
 constexpr uint32_t suspend_offset=0x3E10,record_progress=0x26C;
 constexpr uint32_t button_z=0x2000,button_start=0x1000;
+// The intermission's exit code (D_801DD540: 1 the reset pair, 2 次のマップへ; intermission_page.cpp).
+constexpr uint32_t intermission_exit=0x801DD540;
 constexpr uint64_t limit=1200;   // VIs: a fade and a restore take well under one second
 
-enum class Stage : uint8_t {idle,press_z,press_both,hold_start,loading};
+enum class Stage : uint8_t {idle,press_z,press_both,hold_start,loading,release};
+enum class Kind : uint8_t {load,title};
 std::mutex mutex;
 std::atomic<Stage> stage{Stage::idle};
-std::atomic_bool asked{},can{};
+std::atomic_bool asked{},can{},asked_title{},can_title{};
+std::atomic<Kind> kind{Kind::load};
 std::atomic<unsigned> title_now{0xFFFF};
 uint64_t since{};
 unsigned frames{};
@@ -50,6 +54,11 @@ void notice(const std::string& key,unsigned turn=0) {
     notices::post("quick-load",text);
 }
 bool tactical(unsigned m){return m==3 || m==0xB || m==0x11 || m==0x16 || m==0x22;}
+// Where the original tests Z + START for the reset (original-controls.md §2): the world
+// map (801C28E4), the intermission's screens (801D8D20), the sell screen (801C3788); the
+// tactical map and the battle animation as for the load.
+// The intermission runs as mode 4 after a clear and as 0x12-0x15 after a load from the title.
+bool title_screen(unsigned m){return m==4 || (m>=0x12 && m<=0x15) || m==12 || m==13 || m==0x21;}
 bool usable_in(const uint8_t* ram) {
     const unsigned m=read(ram,mode,1);
     if(tactical(m))return read(ram,map_state,1)!=0;
@@ -67,6 +76,7 @@ std::vector<uint8_t> suspend_head() {
     return bytes;
 }
 void set(Stage next){stage=next;frames=0;}
+bool usable_title_in(const uint8_t* ram){return title_screen(read(ram,mode,1)) || usable_in(ram);}
 }
 
 void configure(const std::filesystem::path& run_directory) {
@@ -74,6 +84,7 @@ void configure(const std::filesystem::path& run_directory) {
     log.open(run_directory/"quick-load-events.jsonl");
 }
 bool usable(){return can.load();}
+bool usable_title(){return can_title.load();}
 Saved saved() {
     const auto bytes=suspend_head();
     Saved s;
@@ -87,6 +98,7 @@ Saved saved() {
     return s;
 }
 void request(){asked=true;}
+void request_title(){asked_title=true;}
 
 void frame(uint8_t* ram) {
     std::lock_guard lock(mutex);
@@ -94,13 +106,19 @@ void frame(uint8_t* ram) {
     const bool on_map=tactical(m) || m==2;
     if(on_map && m!=2)title_now=read(ram,progress+9,1);
     can=stage.load()==Stage::idle && usable_in(ram);
+    can_title=stage.load()==Stage::idle && usable_title_in(ram);
     const uint64_t vi=srw64_current_vi();
     if(asked.exchange(false) && stage.load()==Stage::idle) {
         const auto s=saved();
         if(!usable_in(ram)){notice("quick_load_unavailable");record("refused",{{"mode",m}});}
         else if(!s.exists){notice("quick_load_none");record("refused",{{"why","none"}});}
         else if(!s.this_stage){notice("quick_load_other_stage");record("refused",{{"why","stage"}});}
-        else{since=vi;set(Stage::press_z);record("asked",{{"mode",m},{"turn",s.turn}});}
+        else{since=vi;kind=Kind::load;set(Stage::press_z);record("asked",{{"mode",m},{"turn",s.turn}});}
+        return;
+    }
+    if(asked_title.exchange(false) && stage.load()==Stage::idle) {
+        if(!usable_title_in(ram)){notice("title_return_unavailable");record("refused",{{"kind","title"},{"mode",m}});}
+        else{since=vi;kind=Kind::title;set(Stage::press_z);record("asked",{{"kind","title"},{"mode",m}});}
         return;
     }
     ++frames;
@@ -111,11 +129,16 @@ void frame(uint8_t* ram) {
     // Taken: the map asks for mode 1 and fades (801DFE0C); the battle animation sets its
     // abort flag and fades (801C9A18), and only while no fade runs.
     case Stage::press_both:
-        if(m==1 || (m==2 && read(ram,battle_abort,1)==1)) {
-            set(Stage::hold_start);record("taken",{{"mode",m}});
+        // The intermission keeps its mode through the fade: its dispatcher (801D8D20) writes
+        // exit code 1 for the pair and only resets at the fade's end, where a START still
+        // held would load the suspend save instead; so its exit code is the taking there.
+        if(m==1 || (m==2 && read(ram,battle_abort,1)==1) || (kind.load()==Kind::title && title_screen(m) && read(ram,intermission_exit,1)==1)) {
+            // The title: everything let go now, so the fade ends at the logo (mode 1) and
+            // not at a load; the game needs nothing more from the host.
+            set(kind.load()==Kind::title?Stage::release:Stage::hold_start);record("taken",{{"mode",m},{"kind",kind.load()==Kind::title?"title":"load"}});
             // The map is leaving: a pre-battle page over it goes now, not with a step that no
             // longer runs (battle_page.cpp has its own nets as well; 0.4.9 left it up).
-            battle_page::abandon("quick-load");
+            battle_page::abandon(kind.load()==Kind::title?"title-return":"quick-load");
         }
         else if(frames>=8) {   // not taken (a fade, a busy frame): again
             record("retry",{{"mode",m},{"held",read(ram,0x8015D9FA,2)},{"pressed",read(ram,0x8015CAF0,2)},{"battle_state",int8_t(read(ram,battle_state,1))}});
@@ -128,6 +151,10 @@ void frame(uint8_t* ram) {
         else if(m==7){set(Stage::idle);notice("quick_load_failed");record("failed",{{"mode",m}});}
         break;
     // Back on the map at the record's state, its UI up again.
+    // The title: the combination let go for a few frames, then the player's input again.
+    case Stage::release:
+        if(frames>=10){set(Stage::idle);record("released",{{"mode",m}});}
+        break;
     case Stage::loading:
         if(tactical(m) && read(ram,map_state,1)!=0) {
             const unsigned turn=read(ram,progress+2,2)+1;
@@ -137,7 +164,7 @@ void frame(uint8_t* ram) {
     }
     if(stage.load()!=Stage::idle && vi-since>limit) {
         record("timeout",{{"mode",m},{"abort",read(ram,battle_abort,1)},{"battle_state",int8_t(read(ram,battle_state,1))}});
-        set(Stage::idle);notice("quick_load_failed");
+        set(Stage::idle);notice(kind.load()==Kind::title?"title_return_failed":"quick_load_failed");
     }
 }
 uint32_t filter_input(uint32_t buttons) {
@@ -146,14 +173,16 @@ uint32_t filter_input(uint32_t buttons) {
     case Stage::press_both: return button_z|button_start;
     case Stage::hold_start: return button_start;
     case Stage::loading: return 0;
+    case Stage::release: return 0;
     default: return buttons;
     }
 }
 json state() {
     std::lock_guard lock(mutex);
-    static constexpr const char* names[]={"idle","press_z","press_both","hold_start","loading"};
+    static constexpr const char* names[]={"idle","press_z","press_both","hold_start","loading","release"};
     const auto s=saved();
-    return {{"stage",names[size_t(stage.load())]},{"usable",can.load()},{"last",last},
+    return {{"stage",names[size_t(stage.load())]},{"usable",can.load()},{"usable_title",can_title.load()},
+            {"kind",kind.load()==Kind::title?"title":"load"},{"last",last},
             {"saved",{{"exists",s.exists},{"this_stage",s.this_stage},{"turn",s.turn},{"funds",s.funds}}}};
 }
 }

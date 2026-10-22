@@ -11,6 +11,17 @@ add_subdirectory("${FRONTEND}/lib/RmlUi" rmlui EXCLUDE_FROM_ALL)
 # RmlUi assert opens a modal box, then breaks into a debugger that is not there.
 # Appended after the directory's -UNDEBUG, so NDEBUG wins for RmlUi alone.
 target_compile_options(rmlui_core PRIVATE -DNDEBUG)
+# Two layout files from the adapter instead: shrink-to-fit widths kept for one layout
+# (prepare_frontend.py).
+get_target_property(rmlui_sources rmlui_core SOURCES)
+list(TRANSFORM rmlui_sources REPLACE "^.*/Layout/(LayoutDetails|LayoutEngine)\\.cpp$" "${ADAPTER}/rmlui/\\1.cpp")
+set(rmlui_adapted ${rmlui_sources})
+list(FILTER rmlui_adapted INCLUDE REGEX "frontend-adapter/rmlui/Layout")
+list(LENGTH rmlui_adapted rmlui_adapted_count)
+if(NOT rmlui_adapted_count EQUAL 2)
+    message(FATAL_ERROR "RmlUi's layout sources moved; the adapted copies do not replace them")
+endif()
+set_target_properties(rmlui_core PROPERTIES SOURCES "${rmlui_sources}")
 add_library(srw64_ui_renderer STATIC "${ADAPTER}/ui_renderer.cpp")
 target_compile_definitions(srw64_ui_renderer PRIVATE HLSL_CPU)
 target_include_directories(srw64_ui_renderer PUBLIC "${ADAPTER}")

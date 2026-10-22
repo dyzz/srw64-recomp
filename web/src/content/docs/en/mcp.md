@@ -3,7 +3,7 @@ title: Driving the game with an AI agent (MCP)
 summary: Connect Claude Code or any other MCP client to the running game to read its state, take screenshots, press keys, work the menus and read or write memory.
 section: tools
 order: 1
-updated: 2026-10-06
+updated: 2026-10-21
 ---
 
 Marchwind 64 has a built-in debug interface. Turn it on in the options and the game opens a port on your computer. The MCP server in the source repository connects to that port and offers the game as a set of tools to any client that speaks the [Model Context Protocol](https://modelcontextprotocol.io/), such as Claude Code, Codex or Cursor.
@@ -127,6 +127,7 @@ Agents usually read `srw64_status` and a screenshot to work out where they are, 
 | `srw64_settings` | Set the rules, language, image mode, interface size, aspect ratio and the original/modern mode of each screen directly. |
 | `srw64_mini_stage_load` | Load a compiled mini stage image and enter it; see [Mini stages](../mini-stage/). |
 | `srw64_viewer_start` | Play a chosen battle animation in the Battle Viewer. |
+| `srw64_game_over` / `srw64_victory` | End the current stage in GAME OVER, or win it, the same way the stage script's defeat and clear commands do (the GAME OVER screen and retry, the results and the ending event are the game's own). Works only on the player phase with the tactical map idle and no event running; otherwise it says why. |
 | `srw64_memory` / `srw64_memory_write` | Read or write game memory as hex. Writes are limited to 4096 bytes at a time. |
 | `srw64_quit` | Quit the game normally and return the run report. |
 
@@ -136,6 +137,7 @@ When a tool fails it returns an error result; the MCP server keeps running.
 
 - **This is your real game and your real saves.** The agent connects to the game you play, with your usual saves and settings, so an agent that saves or changes settings really changes them. To experiment safely, back up `saves/` in your user folder first, or point `--user-dir` at a separate folder and copy in the saves you need.
 - **`srw64_memory_write` can break the game.** It changes memory behind the game's back. Use it only when you know what you're doing.
+- **`srw64_game_over` and `srw64_victory` really end the stage.** On your own game a win goes on to the intermission, where you can save, and a GAME OVER is a real one; use a separate `--user-dir` for tests.
 - **The interface is local only.** The game listens on `127.0.0.1`, so other devices on your network can't reach it, and other programs on your computer also need the token in `debug.json`. Don't share that file. Remote use goes through ssh forwarding (see below).
 - **`srw64_quit` closes the game.** To disconnect and keep playing, turn the switch off in **Options → About** instead.
 - **Turn the switch off when you're done.** It stays saved, which is what the notice at startup is for.

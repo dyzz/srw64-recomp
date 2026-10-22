@@ -1,4 +1,5 @@
 #include "cheats.hpp"
+#include "overkill.hpp"
 #include <algorithm>
 #include <cassert>
 #include <cstdio>
@@ -100,9 +101,79 @@ int main() {
     put(p,1,1);put(p+0x16,3,2);put(p+0x18,80,2);put(p+0x20,100,2);
     put(q,1,1);put(q+4,0x40,1);put(q+0x20,100,2);
     put(unused+0x20,55,2);
-    hold(ram.data(),keep_sp|morale_150);
+    hold(ram.data(),keep_sp|keep_morale);
     assert(get(p+0x16,2)==80 && get(p+0x20,2)==150);
     assert(get(q+0x20,2)==100 && get(unused+0x20,2)==55);
+    hold(ram.data(),keep_morale|morale_300);assert(get(p+0x20,2)==300);
+
+    // The morale cap: the player's pilot records only, the rest keep 150; the spirit raise's
+    // room stays within a signed byte.
+    assert(morale_cap(0)==150 && morale_cap(morale_200)==200 && morale_cap(morale_300)==300 && morale_cap(morale_999)==999);
+    assert(morale_cap(morale_999,p)==999 && morale_cap(morale_999,pilots_table+99*pilot_size)==999);
+    assert(morale_cap(morale_999,pilots_table+100*pilot_size)==150 && morale_cap(morale_999,p+0x20)==150 && morale_cap(morale_999,0x80190000)==150);
+    assert(morale_room(0,p,100)==150 && morale_room(morale_999,p,100)==227 && morale_room(morale_999,p,950)==999);
+    assert(morale_room(morale_999,0x80190000,100)==150);
+
+    // Exclusive rows: one bit of each group stays, the lowest.
+    assert(one_per_group(reward_x2|reward_x10|max_funds)==(reward_x2|max_funds));
+    assert(one_per_group(morale_300|morale_999|level_party|level_curve)==(morale_300|level_curve));
+    assert(!toggle(reward_x5) && !toggle(morale_200) && toggle(real_damage) && toggle(keep_morale));
+
+    // EXP and money: multiplied, kept within the u16 the settlement stores.
+    assert(reward_multiplier(0)==1 && reward_multiplier(reward_x2)==2 && reward_multiplier(reward_x5)==5 && reward_multiplier(reward_x10)==10);
+    assert(multiplied(0,1234)==1234 && multiplied(reward_x5,1234)==6170 && multiplied(reward_x10,9000)==0xFFFF);
+    assert(multiplied(reward_x2,0xFFFF0010)==0x20);   // only the u16 counts
+
+    // Damage past 65535: kept per slot with the switch on, taken through the defenses.
+    {
+        namespace ok=srw64::overkill;
+        ok::begin();ok::seen(150000.7f);ok::end(0,true);assert(ok::real(0)==150000);
+        assert(ok::held(0,0xFFFF)==0xFFFF);
+        assert(ok::defended(0,0xFFFF,0xFFFF-5000)==0xFFFF && ok::real(0)==145000);   // a barrier
+        assert(ok::defended(0,0xFFFF,ok::halved(0xFFFF))==0xFFFF && ok::real(0)==72500);   // S防御
+        assert(ok::defended(0,0xFFFF,ok::halved(0xFFFF))==36250 && ok::real(0)==36250);   // below the cap again
+        ok::begin();ok::seen(70000);ok::end(1,false);assert(ok::real(1)==0);   // switch off
+        ok::begin();ok::seen(60000);ok::end(1,true);assert(ok::real(1)==0);    // under the cap
+        assert(ok::defended(1,30000,15000)==15000);
+        ok::begin();ok::seen(80000);ok::end(1,true);ok::spared(1,0xFFFF,0xFFFF);assert(ok::real(1)==80000);
+        ok::spared(1,0xFFFF,1234);assert(ok::real(1)==0 && ok::held(1,1234)==1234);
+        ok::begin();ok::seen(80000);ok::end(1,true);
+        assert(ok::defended(1,0xFFFF,0)==0 && ok::real(1)==0);   // absorbed
+        assert(ok::halved(15)==10 && ok::halved(65535)==32760);
+    }
+    {
+        // The figures: the map's queue matched by target and queued value, the battle's dealt damage.
+        namespace ok=srw64::overkill;
+        const uint32_t unit=units+5*unit_size,ward=units+6*unit_size;
+        put(ok::roster+ok::roster_side+3*ok::roster_entry+ok::roster_unit,unit,4);put(unit+2,40,2);   // enemy 0x63
+        put(ok::roster+ok::roster_side+4*ok::roster_entry+ok::roster_unit,ward,4);put(ward+2,0xB9,2);  // ガイヤー 0x64
+        put(ok::round_count,1,1);put(ok::round_cells,0x63,1);put(ok::round_damage,1200,2);
+        ok::queued(ram.data(),0x63,9000,0);
+        put(ok::round_count,2,1);put(ok::round_cells+1,0x64,1);put(ok::round_damage+2,790,2);
+        ok::queued(ram.data(),0x64,5000,1);
+        put(ok::round_index,0,4);assert(ok::map_figure(ram.data(),1200)==9000);
+        put(ok::round_index,1,4);assert(ok::map_figure(ram.data(),790)==790);
+        put(ok::round_index,0,4);assert(ok::map_figure(ram.data(),1300)==1300);   // no such entry
+        ok::queued(ram.data(),0x63,9000,0);assert(ok::figures().empty());           // a new queue, nothing pushed
+        put(ok::battle_target,0,2);put(ok::battle_records+ok::battle_record_size+ok::battle_record_damage,30000,2);
+        assert(ok::battle_figure(ram.data(),800)==30000 && ok::battle_figure(ram.data(),0)==0);
+        put(ok::battle_target,1,2);put(ok::battle_records+ok::battle_record_damage,500,2);
+        assert(ok::battle_figure(ram.data(),800)==800);
+
+        // Past 65535: the attacker's kept damage (row 0 attacks the target in row 1).
+        put(ok::participants,0x42,2);put(ok::participants+ok::participant_size,0x63,2);
+        ok::begin();ok::seen(123456);ok::end(0,true);ok::begin();ok::seen(500);ok::end(1,true);
+        put(ok::round_count,1,1);put(ok::round_cells,0x63,1);put(ok::round_damage,3000,2);
+        ok::queued(ram.data(),0x63,0xFFFF,0);
+        put(ok::round_index,0,4);assert(ok::map_figure(ram.data(),3000)==123456);
+        put(ok::field(0),0xFFFF,2);put(ok::field(1),500,2);
+        put(ok::battle_target,1,2);put(ok::battle_records+ok::battle_record_damage,0xFFFF,2);
+        assert(ok::battle_figure(ram.data(),3000)==123456);
+        // Both rows past it: the record row 0 was copied into (D_80178C78) decides.
+        ok::begin();ok::seen(99999);ok::end(1,true);put(ok::field(1),0xFFFF,2);
+        put(ok::battle_row0_record,0,2);assert(ok::battle_figure(ram.data(),3000)==123456);
+        put(ok::battle_row0_record,1,2);assert(ok::battle_figure(ram.data(),3000)==99999);
+    }
 
     // A level and the experience 800AC220 gives it; out-of-range levels are clamped.
     write_level(ram.data(),p,12);assert(get(p+5,1)==12 && get(p+0x12,2)==5500);

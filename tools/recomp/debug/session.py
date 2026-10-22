@@ -276,7 +276,7 @@ class Session:
             image.write_text(json.dumps(compile_campaign(Path(campaign)), ensure_ascii=False) + "\n")
             environment["SRW64_CAMPAIGN"] = str(image)
             environment["SRW64_SAVE_LIBRARY"] = str(run / "campaign-saves")
-        for key in ("SRW64_CAMPAIGN_DIRS", "SRW64_CAMPAIGN_SAVES"):
+        for key in ("SRW64_CAMPAIGN_DIRS", "SRW64_CAMPAIGN_SAVES", "SRW64_MOD_ENTRY"):
             environment.pop(key, None)
         if campaigns:
             # The MOD manager's extra scenarios, as the launcher offers them: every campaign
@@ -291,6 +291,8 @@ class Session:
                 (installed / image["id"] / "campaign.json").write_text(json.dumps(image, ensure_ascii=False) + "\n")
             environment["SRW64_CAMPAIGN_DIRS"] = str(installed)
             environment["SRW64_CAMPAIGN_SAVES"] = str(run.parent / (run.name + ".campaign-saves"))
+            # The title's MOD entry, hidden from players for now (frontend.cpp mod_entry_shown).
+            environment["SRW64_MOD_ENTRY"] = "1"
             if not campaign:
                 environment["SRW64_SAVE_LIBRARY"] = str(run.parent / (run.name + ".saves"))
         # MOD packages (mod_library.hpp): a debug run keeps its own folder beside the run,

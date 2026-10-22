@@ -22,11 +22,13 @@ nlohmann::json state();
 // "confirm", "cancel", "dismiss", "back".
 void answer(uint64_t serial,const std::string& action);
 // After the インターミッション is entered (801D8F74): with unified weapon upgrades, weapons
-// below their unit's unified level come up to it for free.
+// below their unit's unified level come up to it for free; with that or the cap-break
+// rule on, a full-upgrade bonus whose weapon is already at its original cap unlocks.
 void entered(uint8_t* ram,recomp_context* ctx);
 // A machine swap's inheritance (800AA8F4, after the original and the rule's gaps): with
 // unified weapon upgrades the successor's weapons come up to the predecessor's unified
-// level at once, free.
+// level at once, free; then, always, a full-upgrade bonus whose weapon came over at or
+// past the successor's original cap unlocks (upgrades::grant_bonuses).
 void inherited(uint8_t* ram,uint32_t unit,uint32_t saved,int count);
 bool owns_input();
 void window_claim_input(bool);

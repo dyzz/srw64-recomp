@@ -1,4 +1,5 @@
 #include "menu_widen.hpp"
+#include "map_menu.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstring>
@@ -53,6 +54,15 @@ int widen_fills(uint8_t* rdram, uint32_t begin, uint32_t end, int x0, int delta,
 }
 }
 
+// The blank-tile menu's frame (scene 1198, 80 x 128: a 16-pixel border row at the top and
+// at y 112, six interior rows): one row taller for the eighth entry while that menu is
+// open with it (map_menu::tall()).
+constexpr uint16_t kMapMenuScene = 1198;
+std::optional<Rows> rows_spec(uint16_t scene) {
+    if (scene == kMapMenuScene) return Rows{0, 64, 96, 112, 128, int(map_menu::row_pitch)};
+    return std::nullopt;
+}
+std::optional<Rows> rows(uint16_t scene) { return map_menu::tall() ? rows_spec(scene) : std::nullopt; }
 std::optional<Columns> columns(uint16_t scene) {
     if (scene >= kUnitFirst && scene <= kUnitLast) return Columns{0, 176, 16, 32, 48, kUnitDelta};
     if (scene == 1177) return Columns{32, 176, 80, 96, 112, kMenuDelta};
@@ -74,6 +84,37 @@ void frame_start(uint8_t* rdram) {
 }
 
 void frame_drawn(uint8_t* rdram, uint32_t dl_begin, uint32_t dl_end, uint16_t scene, int origin_x, int origin_y) {
+    if (const auto r = rows(scene); r && dl_end > dl_begin) {
+        // The same rewrite down the scene: the stretched cell sampled at 16 / (16 + delta) in t.
+        for (uint32_t p = dl_begin; p + 24 <= dl_end; p += 8) {
+            const uint32_t w0 = word(rdram, p), op = w0 >> 24;
+            if ((op != 0xE4 && op != 0xE5) || (word(rdram, p + 8) >> 24) != 0xE1 || (word(rdram, p + 16) >> 24) != 0xF1) continue;
+            const uint32_t w1 = word(rdram, p + 4);
+            uint32_t yl = w1 & 0xFFF, yh = w0 & 0xFFF;
+            const int x = int(std::lround(((w1 >> 12) & 0xFFF) / 4.f)) - origin_x, y = int(std::lround(yl / 4.f)) - origin_y;
+            if (x >= r->left && x <= r->right) {
+                if (y == r->stretch) {
+                    yh += uint32_t(r->delta) * 4;
+                    const uint32_t f1 = word(rdram, p + 20);
+                    const int dtdy = int16_t(f1 & 0xFFFF);
+                    const int scaled = int(std::lround(dtdy * 16.0 / (16 + r->delta)));
+                    put(rdram, p + 20, (f1 & 0xFFFF0000u) | (uint32_t(scaled) & 0xFFFF));
+                } else if (y >= r->shift && y < r->shift_end) {
+                    yl += uint32_t(r->delta) * 4; yh += uint32_t(r->delta) * 4;
+                }
+                yl = std::min<uint32_t>(yl, 0xFFF); yh = std::min<uint32_t>(yh, 0xFFF);
+                put(rdram, p, (w0 & ~0xFFFu) | yh);
+                put(rdram, p + 4, (w1 & ~0xFFFu) | yl);
+            }
+            p += 16;
+        }
+        std::lock_guard lock(mutex);
+        // The text's room: the panel's inner edge at x + 75, down to the eighth row.
+        Window window{float(origin_x + 4), float(origin_y + 4), float(origin_x + 75), float(origin_y + 4 + 119 + r->delta)};
+        std::erase_if(seen, [&](const Seen& s) { return !recent(s.frame) || (s.window.x0 == window.x0 && s.window.y0 == window.y0); });
+        seen.push_back({window, frame_number});
+        return;
+    }
     const auto c = columns(scene);
     if (!c || dl_end <= dl_begin) return;
     float y0 = 1e9f, y1 = -1e9f;
@@ -125,6 +166,17 @@ void callback_drawn(uint8_t* rdram, uint32_t function, uint32_t dl_begin, uint32
         break;
     case 0x801E4160:                        // the green cursor bar, 40 wide on the unit menu only
         if (tactical) widen_fills(rdram, dl_begin, dl_end, -1, kUnitDelta, -1, 40);
+        break;
+    case 0x8009CDF0:                        // a window's dark panel: the blank-tile menu's, one row taller
+        if (tactical && map_menu::tall())
+            for (uint32_t p = dl_begin; p + 8 <= dl_end; p += 8) {
+                const uint32_t w0 = word(rdram, p);
+                if ((w0 >> 24) != 0xF6) continue;
+                const uint32_t w1 = word(rdram, p + 4);
+                // The menu's own panel: 119 tall (its y + 4 to y + 123), unlike the other windows'.
+                if (std::abs(int((w0 & 0xFFF) / 4) - int((w1 & 0xFFF) / 4) - 119) > 1) continue;
+                put(rdram, p, (w0 & ~0xFFFu) | std::min<uint32_t>((w0 & 0xFFF) + uint32_t(map_menu::row_pitch) * 4, 0xFFF));
+            }
         break;
     case 0x801C45F4:                        // the intermission menu's bar, (33, y)-(103, y + 15)
         widen_fills(rdram, dl_begin, dl_end, 33 * 4, kMenuDelta, int(kPanelEdge));

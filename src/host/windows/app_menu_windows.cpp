@@ -18,7 +18,7 @@ namespace srw64::app_menu {
 namespace {
 // The first menu's own entries; update()'s entries are kFirstEntry + their place in `ids`.
 // About and Check for Updates are Help's entries here, as Windows applications have them.
-enum : UINT { kSettings = 1, kReload, kExit, kFirstEntry = 100 };
+enum : UINT { kSettings = 1, kReload, kTitle, kExit, kFirstEntry = 100 };
 std::atomic_bool requested{}, reload{};
 std::deque<std::string> chosen;  // ids of entries chosen, for take_request()
 std::vector<std::string> ids;    // by command id - kFirstEntry
@@ -123,6 +123,7 @@ LRESULT CALLBACK proc(HWND window, UINT message, WPARAM w, LPARAM l) {
         switch (id) {
         case kSettings: requested = true; return 0;
         case kReload: reload = true; return 0;
+        case kTitle: chosen.push_back("title-return"); return 0;
         // As the window's close button: SDL's own close event, then its quit.
         case kExit: PostMessageW(window, WM_CLOSE, 0, 0); return 0;
         }
@@ -143,6 +144,7 @@ void attach(SDL_Window* window) {
     // here before the renderer sizes its swap chain, so the picture never starts under it.
     AppendMenuW(game, MF_STRING, kSettings, L"Settings");
     AppendMenuW(game, MF_STRING, kReload, L"Reload");
+    AppendMenuW(game, MF_STRING, kTitle, L"Title");
     AppendMenuW(game, MF_SEPARATOR, 0, nullptr);
     AppendMenuW(game, MF_STRING, kExit, L"Exit");
     AppendMenuW(bar, MF_POPUP, UINT_PTR(game), L"Marchwind64");
@@ -153,7 +155,8 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool fullscree
     if (!hwnd) return;
     // Leaving full screen, SDL sized the window without the bar: it comes back with its height.
     show_bar(bar_wanted(fullscreen), !fullscreen && !IsZoomed(hwnd));
-    const std::string label_text = labels.game + "\n" + labels.settings + "\n" + labels.reload + "\n" + labels.exit;
+    const std::string label_text = labels.game + "\n" + labels.settings + "\n" + labels.reload + "\n" + labels.exit +
+        "\n" + labels.title_return + (labels.title_enabled ? "+" : "-");
     std::string all, shape;
     for (const auto& menu : menus) {
         all += menu.title + "\x1f" + menu.icon + "[";
@@ -164,6 +167,8 @@ void update(const Labels& labels, const std::vector<Menu>& menus, bool fullscree
     set_text(bar, 0, labels.game, true);
     set_text(game, kSettings, labels.settings + "\tCtrl+,");
     set_text(game, kReload, labels.reload + "\tF5");
+    set_text(game, kTitle, labels.title_return + "\tF10");
+    EnableMenuItem(game, kTitle, MF_BYCOMMAND | (labels.title_enabled ? MF_ENABLED : MF_GRAYED));
     set_text(game, kExit, labels.exit + "\tAlt+F4");
     if (!installed || shape != last_shape) {
         // The first menu stays; the others are made again (DeleteMenu destroys their popups).

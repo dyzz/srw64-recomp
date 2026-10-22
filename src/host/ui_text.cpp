@@ -49,7 +49,9 @@ std::mutex mutex;
 bool installed = false, disabled = false;
 // Labels set small (mark_small): pool slot -> where and what they print.
 struct Small { int x, y; std::string text, shown; int width = 0; bool label = false; };   // label: shown is a UI key
+struct Extra { int x, y; std::string key; int width; std::vector<Segment> segments; };   // set_extra: a label of the host's own; segments: set_extra_line
 std::map<unsigned, Small> small;
+std::map<std::string, Extra> extras;
 std::ofstream log;
 std::set<std::string> logged;
 json last[2] = {json::array(), json::array()};
@@ -120,6 +122,21 @@ Style label_style(const std::string& locale, double max_width, bool single) {
     for (int c = 0; c < 3; ++c) { s.fill_top[c] = s.fill_bottom[c] = 1; s.outline[c] = 0; }
     s.outline_px = .8; s.outline_alpha = .65; s.shadow_px = .7; s.shadow_alpha = .45;
     return s;
+}
+// How wide a label's text comes out in N64 pixels, drawn once and remembered (the host's
+// multi-colour lines lay their segments out by it).
+// The image is wider than its glyphs by the outline and shadow on both sides, the same
+// for every text: that margin, measured once as width(ab) - width(a) - width(b), comes off
+// each segment so the next starts where the ink ends.
+std::map<std::string, float> measured;
+float image_width(const std::string& locale, const std::string& text) {
+    const std::string key = locale + "|" + text;
+    if (const auto found = measured.find(key); found != measured.end()) return found->second;
+    return measured[key] = sprite_text::draw(label_style(locale, 0, false), locale, text).units[0];
+}
+float segment_width(const std::string& locale, const std::string& text) {
+    const float margin = std::max(0.f, image_width(locale, "a") + image_width(locale, "b") - image_width(locale, "ab"));
+    return std::max(0.f, image_width(locale, text) - margin);
 }
 // The number pool's two digit sets in 1159: white with a black outline (types 1, 2, 7, 8),
 // white with a grey shadow (the others).
@@ -755,6 +772,31 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 return t.job.key.rfind("number|", 0) == 0; }), items.end());
         }
     }
+    // The host's own labels (set_extra), with the back pass's labels.
+    if (!front)
+        for (const auto& [id, e] : extras) {
+            const float white[3] = {1, 1, 1};
+            if (e.segments.empty()) {
+                const auto text = localization::catalog().ui(e.key);
+                items.push_back(placed(label_style(locale, e.width, false), locale, text, "label", float(e.x), float(e.y), white));
+                shown.push_back({{"extra", id}, {"x", e.x}, {"y", e.y}, {"text", text}});
+                continue;
+            }
+            // Several colours on one line: each segment at its natural width after the one
+            // before, the whole line squeezed in the same share when it is wider than the room.
+            std::vector<float> widths;
+            float total = 0;
+            for (const auto& seg : e.segments) { widths.push_back(segment_width(locale, seg.text)); total += widths.back(); }
+            const float share = e.width > 0 && total > float(e.width) ? float(e.width) / total : 1;
+            float x = float(e.x);
+            std::string joined;
+            for (size_t k = 0; k < e.segments.size(); ++k) {
+                const float w = widths[k] * share;
+                items.push_back(placed(label_style(locale, share < 1 ? w : 0, false), locale, e.segments[k].text, "label", x, float(e.y), e.segments[k].tint));
+                x += w; joined += e.segments[k].text;
+            }
+            shown.push_back({{"extra", id}, {"x", e.x}, {"y", e.y}, {"text", joined}});
+        }
     last[front] = shown;
     if (items.empty() || replaced.empty()) return;
     std::sort(replaced.begin(), replaced.end());
@@ -772,6 +814,13 @@ namespace {
 // 80228530, a shown flag at 80228536 and x, y words at 80228548. Cell indices: 0 blank,
 // 1 '+', 2 '-', 3-12 the outlined digits, 13-22 the shadowed ones.
 constexpr uint32_t kDamageCells = 0x228530, kDamageShown = 0x228536, kDamagePlaces = 0x228548;
+// The real damage behind a figure the game draws as 65535 (real_figure).
+std::atomic<uint64_t> real_map{0}, real_banner{0};
+bool beyond(const std::string& figure) {
+    std::string digits;
+    for (const char c : figure) if (std::isdigit(static_cast<unsigned char>(c))) digits += c;
+    return digits == "65535";
+}
 // A missed attack's figure (map_miss.hpp): the word in the reading language, in the
 // figure's own style, centred on the cells it was given and moving with them.
 bool miss_drawn(uint8_t* ram, const std::vector<uint32_t>& rects) {
@@ -819,6 +868,8 @@ void damage_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
     float bounds[4] = {1e9f, 1e9f, -1e9f, -1e9f};
     size_t next = 0;
     std::string figure;
+    struct Cell { float x, y; bool outlined; };
+    std::vector<Cell> cells;   // the drawn ones, sign first
     for (uint32_t k = 0; k < 6; ++k) {
         if (!byte(ram, kDamageShown + k)) continue;
         if (next >= rects.size()) return;
@@ -836,8 +887,22 @@ void damage_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
         if (glyph.empty()) continue;
         const float white[3] = {1, 1, 1};
         items.push_back(placed(number_style(cell <= 12), "ja", glyph, "number", x + kCell / 2.f, float(y), white));
+        cells.push_back({x + kCell / 2.f, float(y), cell <= 12});
     }
     if (next != rects.size() || items.empty()) return;
+    // Damage past 65535: the sign and every digit, right-aligned on the last cell.
+    if (const uint64_t real = real_map.load(); real > 65535 && beyond(figure)) {
+        const char sign = figure.find('-') != std::string::npos ? '-' : figure.find('+') != std::string::npos ? '+' : 0;
+        const std::string text = (sign ? std::string(1, sign) : std::string()) + std::to_string(real);
+        const Cell last = cells.back();
+        const float white[3] = {1, 1, 1};
+        items.clear();
+        for (size_t k = 0; k < text.size(); ++k)
+            items.push_back(placed(number_style(k == 0 && sign ? cells.front().outlined : last.outlined), "ja", std::string(1, text[k]), "number",
+                                   last.x - kCell * float(text.size() - 1 - k), last.y, white));
+        bounds[0] -= kCell * float(text.size() > cells.size() ? text.size() - cells.size() : 0);
+        figure = text;
+    }
     if (!sprites::place_texts(ram, rects.front(), bounds, items)) return;
     for (const uint32_t rect : rects)
         if (rect != rects.front())
@@ -878,6 +943,7 @@ void banner_number_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
     float bounds[4] = {1e9f, 1e9f, -1e9f, -1e9f};
     uint32_t load = 0;
     std::string figure;
+    float first_x = 0, first_y = 0;
     for (uint32_t p = from; p + 24 <= end; p += 8) {
         const uint32_t w0 = word(ram, p);
         if (w0 >> 24 == 0xF4) { load = w0; continue; }
@@ -891,11 +957,22 @@ void banner_number_drawn(uint8_t* ram, uint32_t begin, uint32_t end) {
         bounds[0] = std::min(bounds[0], x0 / 4.f); bounds[1] = std::min(bounds[1], y0 / 4.f);
         bounds[2] = std::max(bounds[2], ((w0 >> 12) & 0xFFF) / 4.f); bounds[3] = std::max(bounds[3], (w0 & 0xFFF) / 4.f);
         const std::string glyph(1, char('0' + (s - 144) / 8));
+        if (figure.empty()) { first_x = x0 / 4.f + kCell / 2.f; first_y = y0 / 4.f; }
         figure += glyph;
         const float white[3] = {1, 1, 1};
         items.push_back(placed(banner_digit_style(), "ja", glyph, "banner-digit", x0 / 4.f + kCell / 2.f, y0 / 4.f, white));
         rects.push_back(p);
         p += 16;
+    }
+    // Damage past 65535: every digit, from the first cell on.
+    if (const uint64_t real = real_banner.load(); real > 65535 && figure == "65535") {
+        const std::string text = std::to_string(real);
+        const float white[3] = {1, 1, 1};
+        items.clear();
+        for (size_t k = 0; k < text.size(); ++k)
+            items.push_back(placed(banner_digit_style(), "ja", std::string(1, text[k]), "banner-digit", first_x + kCell * float(k), first_y, white));
+        bounds[2] += kCell * float(text.size() - figure.size());
+        figure = text;
     }
     if (items.empty() || !sprites::place_texts(ram, rects.front(), bounds, items)) return;
     for (const uint32_t rect : rects)
@@ -911,7 +988,11 @@ void mark_label(unsigned slot, int x, int y, const std::string& text, const std:
     std::lock_guard lock(mutex); small[slot] = {x, y, text, key, width, true};
 }
 void clear_small() { std::lock_guard lock(mutex); small.clear(); }
+void set_extra(const std::string& id, int x, int y, const std::string& key, int width) { std::lock_guard lock(mutex); extras[id] = {x, y, key, width}; }
+void set_extra_line(const std::string& id, int x, int y, int width, const std::vector<Segment>& segments) { std::lock_guard lock(mutex); extras[id] = {x, y, {}, width, segments}; }
+void clear_extra(const std::string& id) { std::lock_guard lock(mutex); extras.erase(id); }
 bool native_numbers() { return active(); }
+void real_figure(bool banner, uint64_t real) { (banner ? real_banner : real_map).store(real); }
 void configure(const std::filesystem::path& output) {
     if (installed) return;
     installed = true;

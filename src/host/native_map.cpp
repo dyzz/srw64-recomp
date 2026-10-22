@@ -158,14 +158,18 @@ Asset load_meta(const std::filesystem::path& folder) {
 // = scene | kPixels). Drawn from the ROM even then, since the menu_widen.cpp display list
 // stretch alone smears its widened column.
 constexpr uint16_t kPixels = 0x8000;
+// The blank-tile menu's frame drawn a row taller (menu_widen::rows): its own asset.
+constexpr uint16_t kTall = 0x4000;
 
 // A frame scene's spec: the widened menus (menu_widen.hpp) as drawn, wider than the ROM's.
 std::optional<rom_art::FrameSpec> frame_spec(uint16_t layout) {
-    const uint16_t scene = layout & uint16_t(~kPixels);
+    const uint16_t scene = layout & uint16_t(~(kPixels | kTall));
     const auto c = menu_widen::columns(scene);
-    if (!c) return rom_art::frame(scene);
+    const auto r = (layout & kTall) ? menu_widen::rows_spec(scene) : std::nullopt;
+    if (!c && !r) return rom_art::frame(scene);
     auto spec = rom_art::line_frame(scene);
-    spec.widen = {c->top, c->bottom, c->stretch, c->shift, c->shift_end, c->delta};
+    if (c) spec.widen = {c->top, c->bottom, c->stretch, c->shift, c->shift_end, c->delta};
+    if (r) spec.taller = {r->left, r->right, r->stretch, r->shift, r->shift_end, r->delta};
     return spec;
 }
 
@@ -421,11 +425,12 @@ void gpu_init() {
 void set_original_frames(bool (*keep)(uint16_t)) { original_frames = keep; }
 
 void rewrite(uint8_t* rdram, const MapDraw& draw) {
-    const bool widened = menu_widen::columns(draw.layout).has_value();
+    const bool tall = menu_widen::rows(draw.layout).has_value();
+    const bool widened = menu_widen::columns(draw.layout).has_value() || tall;
     if (assets.empty() && !rom_frames && !widened) return;
     // A widened menu draws from the ROM in either picture mode: HD strokes with the pack in
     // the HD mode, its original pixels otherwise.
-    const uint16_t key = widened && !(rom_frames && hd_enabled()) ? uint16_t(draw.layout | kPixels) : draw.layout;
+    const uint16_t key = uint16_t((widened && !(rom_frames && hd_enabled()) ? uint16_t(draw.layout | kPixels) : draw.layout) | (tall ? kTall : 0));
     int asset_index = find_asset(key);
     if (asset_index < 0 && (rom_frames || widened) && rom_art::ready() && frame_spec(key) && assets.size() < assets.capacity()) {
         // A window frame drawn for the first time: its asset joins, made on the decoder thread.

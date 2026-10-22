@@ -861,6 +861,10 @@ private:
     }
     void audit_worldmap() {
         if (worldmap_hashes.empty() || worldmap_verified == worldmap_hashes.size()) return;
+        // Once a second: a play session rarely sees all 213 tiles, so this would otherwise
+        // take RT64's texture-map lock and walk the table on every display list, battles included.
+        if (++worldmap_audit_lists < 30) return;
+        worldmap_audit_lists = 0;
         nlohmann::json observed = nlohmann::json::array();
         {
             // Read the exact cache values consumed by RT64's GPU tile builder.
@@ -898,6 +902,7 @@ private:
     std::unique_ptr<RT64::Application> app;
     nlohmann::json worldmap_spec;
     std::vector<uint64_t> worldmap_hashes;
+    unsigned worldmap_audit_lists = 0;
     size_t worldmap_verified=0;
     unsigned worldmap_tile_size=0;
     std::vector<uint8_t> display_copy;

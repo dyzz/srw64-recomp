@@ -5,6 +5,7 @@
 #include "funcs.h"
 #include "script_trace.hpp"
 #include "script_inject.hpp"
+#include "forced_game_over.hpp"
 #include "mini_stage.hpp"
 #include "script_move_probe.hpp"
 #include "state_probe.hpp"
@@ -17,6 +18,7 @@
 #include "upgrade_page.hpp"
 #include "parts_carry.hpp"
 #include "cheats.hpp"
+#include "overkill.hpp"
 #include "link_battler.hpp"
 #include "script_skip.hpp"
 #include "wide_map.hpp"
@@ -25,6 +27,8 @@
 #include "ui_text.hpp"
 #include "game_speed.hpp"
 #include "enemy_pilot_page.hpp"
+#include "map_combo.hpp"
+#include "map_menu.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 bool srw64_sound_effects_muted{};
@@ -62,7 +66,20 @@ void load_000AB160_func_801FB8B4(uint8_t* ram,recomp_context* ctx) {
     const uint32_t handle=uint32_t(ctx->r4),damage=uint32_t(ctx->r5),reaction=uint32_t(ctx->r7);
     const unsigned before=srw64::guest::read(ram,srw64::map_miss::round_count,1);
     srw64_original_map_round_push(ram,ctx);
+    if(cheats::active()&cheats::real_damage)srw64::overkill::queued(ram,handle,damage,before);
     srw64::map_miss::round_pushed(ram,handle,damage,reaction,before);
+}
+// 801D8CB0 and the battle animation's 801C8F20/801C9184, generated: the figure to draw.
+// Up to 65535 the game draws it; past that it draws 65535 and ui_text the real number.
+uint32_t srw64_map_figure(uint8_t* ram,uint32_t shown) {
+    const uint32_t real=cheats::active()&cheats::real_damage?srw64::overkill::map_figure(ram,shown):shown;
+    srw64::ui_text::real_figure(false,real>0xFFFF?real:0);
+    return std::min<uint32_t>(real,0xFFFF);
+}
+uint32_t srw64_battle_figure(uint8_t* ram,uint32_t shown) {
+    const uint32_t real=cheats::active()&cheats::real_damage?srw64::overkill::battle_figure(ram,shown):shown;
+    srw64::ui_text::real_figure(true,real>0xFFFF?real:0);
+    return std::min<uint32_t>(real,0xFFFF);
 }
 void load_000AB160_func_801D5064(uint8_t* ram,recomp_context* ctx) {
     srw64::game_speed::menu_step();
@@ -168,6 +185,37 @@ void load_000AB160_func_801E6C5C(uint8_t* ram,recomp_context* ctx) {
     const unsigned crew=uint8_t(ctx->r4),side=uint32_t(ctx->r5),slot=uint32_t(ctx->r6);
     srw64_original_pilot_page(ram,ctx);
     srw64::enemy_pilot_page::reveal(ram,ctx,crew,side,slot);
+    srw64::map_combo::reset();
+}
+void load_000AB160_func_801E6410(uint8_t* ram,recomp_context* ctx) {
+    // The weapon page: the unit's combination attacks listed whatever their partners are
+    // up to, the unusable ones grey with a line on why (map_combo.hpp).
+    const auto page=srw64::map_combo::prepare(ram,ctx);
+    srw64_original_weapon_page(ram,ctx);
+    srw64::map_combo::finish(ram,ctx,page);
+}
+void load_000AB160_func_801E61BC(uint8_t* ram,recomp_context* ctx) {
+    srw64_original_page_reset(ram,ctx);
+    srw64::map_combo::reset();
+}
+void load_000AB160_func_801E7430(uint8_t* ram,recomp_context* ctx) {
+    // The status pages' dispatcher (unit, pilot, weapons): a page change drops the lines;
+    // the weapon page sets them again inside (801E6410).
+    srw64::map_combo::reset();
+    srw64_original_status_pages(ram,ctx);
+}
+void load_000AB160_func_801D13C0(uint8_t* ram,recomp_context* ctx) {
+    // The map's blank-tile menu opens: a row of ours after the original's (map_menu.hpp).
+    srw64_original_map_menu_open(ram,ctx);
+    srw64::map_menu::opened(ram);
+}
+void load_000AB160_func_801D17AC(uint8_t* ram,recomp_context* ctx) {
+    // A on a row of that menu (a0 the index): the seventh is ours, the title question; the
+    // eighth is the original's seventh.
+    uint64_t index=uint8_t(ctx->r4);
+    if(srw64::map_menu::choose(index))return;
+    ctx->r4=int32_t(index);
+    srw64_original_map_menu_choose(ram,ctx);
 }
 void load_000AB160_func_801C29DC(uint8_t* ram,recomp_context* ctx) {
     // A unit's action ends (a0 the handle): with unlimited moves a player unit keeps it.
@@ -289,6 +337,11 @@ void load_000AB160_func_801CBB04(uint8_t* rdram, recomp_context* ctx) {
     if (!srw64_game_hooks.move_select || !srw64_game_hooks.move_select(rdram, ctx)) srw64_original_move_select(rdram, ctx);
 }
 void load_000AB160_func_801C8B04(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64::forced_game_over::due(rdram)) {
+        auto c = *ctx; c.r29 = int32_t(uint32_t(ctx->r29) - 0x200);
+        load_000AB160_func_801DF280(rdram, &c);
+        return;
+    }
     if (srw64_game_hooks.turn_idle) srw64_game_hooks.turn_idle(rdram, ctx);
     if (!srw64_game_hooks.map_idle || !srw64_game_hooks.map_idle(rdram, ctx)) srw64_original_map_idle(rdram, ctx);
 }
@@ -592,7 +645,40 @@ void load_000AB160_func_801F5628(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t weapon = rules::read(rdram, base + 0x08, 4), pilot = rules::read(rdram, base + 0x0C, 4);
     const uint32_t bonus = rules::enabled(rules::aura_slash_power) ? rules::aura_slash_bonus(rdram, pilot, weapon) : 0;
     rules::WeaponPower power(rdram, weapon, bonus);
+    const unsigned slot = uint32_t(ctx->r4) & 0xFF;
+    srw64::overkill::begin();
     srw64_original_battle_damage(rdram, ctx);
+    srw64::overkill::end(slot, cheats::active() & cheats::real_damage);
+}
+// 801F5ACC, generated (generate_cpu.py): the damage before the 65535 cap.
+int32_t srw64_damage_real(float damage, int32_t cap_bits) {
+    srw64::overkill::seen(damage);
+    return cap_bits;
+}
+void load_000AB160_func_801F7204(uint8_t* rdram, recomp_context* ctx) {
+    // The special defenses (a0 the defender, a1 the attacker) on the attacker's damage.
+    const unsigned slot = uint32_t(ctx->r5) & 0xFF;
+    const uint32_t field = srw64::overkill::field(slot);
+    const uint32_t before = srw64::guest::read(rdram, field, 2);
+    srw64_original_battle_defense(rdram, ctx);
+    const uint32_t after = srw64::guest::read(rdram, field, 2), held = srw64::overkill::defended(slot, before, after);
+    if (held != after) srw64::guest::write16(rdram, field, uint16_t(held));
+}
+void load_000AB160_func_801F5B78(uint8_t* rdram, recomp_context* ctx) {
+    // てかげん and the scripted survivals (a0 the attacker, a2 the damage, returned).
+    const unsigned slot = uint32_t(ctx->r4) & 0xFF, before = uint32_t(ctx->r6) & 0xFFFF;
+    srw64_original_battle_spare(rdram, ctx);
+    srw64::overkill::spared(slot, before, uint32_t(ctx->r2) & 0xFFFF);
+}
+void load_000AB160_func_801F60D4(uint8_t* rdram, recomp_context* ctx) {
+    // One crew member's EXP from a battle (cheats.hpp reward modes).
+    srw64_original_battle_exp(rdram, ctx);
+    ctx->r2 = int32_t(cheats::multiplied(cheats::active(), uint32_t(ctx->r2)));
+}
+void load_000AB160_func_801F6588(uint8_t* rdram, recomp_context* ctx) {
+    // A kill's money.
+    srw64_original_battle_funds(rdram, ctx);
+    ctx->r2 = int32_t(cheats::multiplied(cheats::active(), uint32_t(ctx->r2)));
 }
 void load_000AB160_func_80203418(uint8_t* rdram, recomp_context* ctx) {
     // Damage estimate for AI target and weapon choice: a1 weapon, a2 attacker pilot.

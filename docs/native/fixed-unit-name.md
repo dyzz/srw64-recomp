@@ -40,6 +40,6 @@
 
 - 组件测试 `make recomp-unit-name-test`（`tests/native_unit_name.cpp`，ASan＋UBSan）：三处选择都答第 1 项并完成命令；别的选择、非 2 项、非首帧、坏指针不动内存；钩子与事件日志；默认名登记与各语言显示。`make recomp-name-entry-test` 顺带补上了测试缺的设置函数桩（2026-09-23 加姓名页开关后这个目标一直链接失败）。
 - `tests/test_unit_name.py`：钩子接线、只在游戏宿主里配置且在对白目录之后、三语默认名；有 ROM 时核对三处选择的命令字节与选项文本、`3D5E` 只在第 2 项分支、`8009FA94` 的确定路径、`3D5E` 的处理、默认名字形。
-- 实机：迷你关卡 `config/recomp/mini-stages/unit-name.json`（重放第 33 场景的选择与两条分支，再单独执行一次 `3D5E`，之后 忍 的台词印出部队名），检查脚本 `tools/recomp/debug/check_unit_name.py`。**尚未实机运行。**
+- 实机：迷你关卡 `config/recomp/mini-stages/unit-name.json`（重放第 33 场景的选择与两条分支，再单独执行一次 `3D5E`，之后 忍 的台词印出部队名），检查脚本 `tools/recomp/debug/check_unit_name.py`。2026-10-17 头一次跑：忍 那句的部队名是一串空白——迷你关卡直接进入不走新游戏的姓名页，`8010F698` 全零。现在直接进入时（`mini_stage.hpp` 的 `direct_scene`）缓冲为空就照 `801C5FCC` 写入 マーチウィンド，`tests/test_unit_name.py` 核对这组字形与 ROM 一致。正常新游戏由 `801C5FCC` 写入，不受影响。
 
 另：[迷你关卡](../script/mini-stage.md)一节此前记下预填是「アーチウィンド」，按 ROM 两张表都是 マーチウィンド，已更正。

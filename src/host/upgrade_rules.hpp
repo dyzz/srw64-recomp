@@ -388,6 +388,46 @@ inline void steer_unlock(uint8_t* ram,uint32_t unit,uint32_t weapon) {
     if(level==original && cap!=original)write8(ram,unit+unit_cap,original);
     else if(level==cap && level!=original)write8(ram,unit+unit_cap,uint8_t(level+1));
 }
+// The original grants a full-upgrade bonus only on the paid level that lands on the cap
+// (801D1100 -> 801D0AE4). A level written past that step leaves the bonus locked for
+// good: a swap carrying levels above the successor's original cap (マジンガーZ 12 ->
+// マジンガーZ(JS) 13 with the cap-break rule on), the unified levels' free sync. After
+// such writes a weapon at or above its form's original cap unlocks what the table names
+// for it, as 801D0AE4 does: 0x04 of +0x22 cleared on the weapons of the unlocked number.
+// Every form sharing the weapon array `list` is checked under its own number and cap.
+// The table is read from the ROM: swaps run on the map, where another overlay sits at
+// its address.
+struct Bonus{uint16_t upgraded,unlocked;};
+inline constexpr uint32_t weapon_flags=0x22;
+inline constexpr uint8_t flag_unrevealed=0x04;
+inline std::vector<Bonus> grant_bonuses(uint8_t* ram,uint32_t list) {
+    std::vector<Bonus> granted;
+    for(uint32_t slot=0;slot<unit_slots;++slot) {
+        const uint32_t unit=unit_at(slot), count=read(ram,unit+unit_weapon_count,1);
+        if(!read(ram,unit,1) || read(ram,unit+unit_weapon_list,4)!=list || !count || !valid(list,count*weapon_size))continue;
+        const uint16_t number=uint16_t(read(ram,unit+unit_number,2));
+        const uint8_t cap=original_cap(number);
+        if(cap<min_cap)continue;
+        for(uint32_t at=overlay_rom_of(unlock_table);int16_t(rom_read(at,2))!=999;at+=6) {
+            if(rom_read(at,2)!=number)continue;
+            const uint16_t upgraded=uint16_t(rom_read(at+2,2)), unlocked=uint16_t(rom_read(at+4,2));
+            bool full=false, any=false;
+            for(uint32_t i=0;i<count;++i) {
+                const uint32_t w=list+i*weapon_size;
+                full|=read(ram,w+weapon_number,2)==upgraded && read(ram,w+weapon_level,1)>=cap;
+            }
+            if(!full)continue;
+            for(uint32_t i=0;i<count;++i) {
+                const uint32_t w=list+i*weapon_size;
+                const uint8_t flags=uint8_t(read(ram,w+weapon_flags,1));
+                if(read(ram,w+weapon_number,2)!=unlocked || !(flags&flag_unrevealed))continue;
+                write8(ram,w+weapon_flags,uint8_t(flags&~flag_unrevealed));any=true;
+            }
+            if(any)granted.push_back({upgraded,unlocked});
+        }
+    }
+    return granted;
+}
 
 // Sale price (load_00107BF0 801C2600): base + 20000 x upgraded share of the cap,
 // returned as s16. Levels above the original cap would push the share past 1.

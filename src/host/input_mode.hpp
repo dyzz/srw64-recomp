@@ -29,4 +29,6 @@ inline constexpr uint32_t pad_speed = 1u << 26;
 // Back to the map's suspend save, asked first (quick_load.hpp; F9). Bit 27 is the rewind
 // branch's.
 inline constexpr uint32_t pad_quick_load = 1u << 28;
+// Back to the title screen, asked first (quick_load.hpp; F10): the original's Z + START.
+inline constexpr uint32_t pad_title_return = 1u << 29;
 }

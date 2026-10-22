@@ -99,9 +99,9 @@ export const INSTALL: Record<Lang, Install> = {
         steps: [
           '下载 <code>{hd}</code>，解压得到 <code>hd</code> 文件夹，其根目录应包含 <code>hd.json</code> 和 <code>art/</code>。',
           '将文件夹放入应用的用户数据目录：macOS 为 <code>~/Library/Application Support/SRW64Recomp/hd</code>，Linux／Steam Deck 为 <code>~/.local/share/srw64-recomp/hd</code>，Windows 为 <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code>。也可以放在游戏所在的文件夹里，与 <code>Marchwind64.app</code>、<code>marchwind64.sh</code> 或 <code>Marchwind64.exe</code> 放在一起；两处都有时用用户数据目录里的。macOS 上放在应用旁边时，应用要先在访达里移动过一次（例如拖进「应用程序」）。Android 不用手动解压，按上面 Android 一节的说明在应用里导入即可。',
-          '启动游戏后默认使用 HD，可在设置窗口的「画面」中切换原版与 HD。',
+          '启动游戏，装好 HD 包后会自动使用 HD 画面。要确认是否装好，可以看设置窗口「关于」页的「HD 包」一行，那里显示已安装的版本。',
         ],
-        notes: ['HD 包有自己的版本号，内容变了才发新版，不必每次更新应用都重新下载。有新版时游戏的更新检查会提示，更新时整体替换旧的 <code>hd</code> 文件夹。包内图像主要由 AI 参考原版画面生成或放大重绘，详见常见问题。'],
+        notes: ['随时切换原版与 HD：设置窗口「通用」页的「画面」，或按快捷键（默认键盘 4 或 F6、手柄按下右摇杆）；Windows 和 macOS 的菜单栏里也有「HD 画面」。切换立即生效，不影响存档。这个选择不会保存，每次启动都从 HD 开始。', 'HD 画面下，地图上的单位图标可以单独换回原版：设置「通用」页的「地图单位图标」，这一项会记住。', 'HD 包有自己的版本号，内容变了才发新版，不必每次更新应用都重新下载。有新版时游戏的更新检查会提示，更新时整体替换旧的 <code>hd</code> 文件夹。包内图像主要由 AI 参考原版画面生成或放大重绘，详见常见问题。'],
       },
     ],
     requirements: {
@@ -230,9 +230,9 @@ export const INSTALL: Record<Lang, Install> = {
         steps: [
           'Download <code>{hd}</code> and extract the <code>hd</code> folder. It should contain <code>hd.json</code> and <code>art/</code> directly inside.',
           'Place the folder in the app’s user data directory: <code>~/Library/Application Support/SRW64Recomp/hd</code> on macOS, <code>~/.local/share/srw64-recomp/hd</code> on Linux and Steam Deck, or <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code> on Windows. It can also go in the game’s own folder, next to <code>Marchwind64.app</code>, <code>marchwind64.sh</code> or <code>Marchwind64.exe</code>; when both have one, the user data directory’s is used. On macOS, next to the app works once the app has been moved in Finder (into Applications, say). On Android there is nothing to unzip: import it in the app as described in the Android section.',
-          'The game starts in HD. Switch between original and HD art under “Images” in the settings window.',
+          'Start the game: with the HD pack installed it uses the HD art by itself. To check that it is installed, look at the “HD Pack” line on the About page of the settings window, which shows the installed version.',
         ],
-        notes: ['The HD pack has versions of its own and only gets a new one when its contents change, so you do not need to download it again with every app update. The game’s update check says when there is a new one; replace the whole <code>hd</code> folder when you update. Most images are generated or upscaled with AI using the original graphics as a reference; see the FAQ.'],
+        notes: ['Switch between original and HD art at any time under “Images” on the General page of the settings window, or with the shortcut (by default 4 or F6 on the keyboard, or pressing the right stick on a controller); the Windows and macOS menu bars also have “HD Pictures”. It takes effect at once and does not touch your saves. The choice is not saved: the game always starts in HD.', 'In HD you can keep the original unit icons on the map: “Map unit icons” on the General page. This one is remembered.', 'The HD pack has versions of its own and only gets a new one when its contents change, so you do not need to download it again with every app update. The game’s update check says when there is a new one; replace the whole <code>hd</code> folder when you update. Most images are generated or upscaled with AI using the original graphics as a reference; see the FAQ.'],
       },
     ],
     requirements: {
@@ -361,9 +361,9 @@ export const INSTALL: Record<Lang, Install> = {
         steps: [
           '<code>{hd}</code> をダウンロードして展開し、<code>hd</code> フォルダーの直下に <code>hd.json</code> と <code>art/</code> があることを確認します。',
           'アプリのユーザーデータフォルダーに配置します。macOS は <code>~/Library/Application Support/SRW64Recomp/hd</code>、Linux／Steam Deck は <code>~/.local/share/srw64-recomp/hd</code>、Windows は <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code>。ゲーム本体のフォルダー（<code>Marchwind64.app</code>、<code>marchwind64.sh</code>、<code>Marchwind64.exe</code> と同じ場所）にも置けます。両方にある場合はユーザーデータフォルダーのものを使います。macOS でアプリの隣に置く場合は、先にアプリを Finder で一度移動してください（「アプリケーション」へドラッグするなど）。Android では展開不要で、上の Android の項目のとおりアプリ内で導入します。',
-          'ゲームは HD で起動します。設定ウィンドウの「画面」で、オリジナルと HD を切り替えられます。',
+          'ゲームを起動すると、HD パックが入っていれば自動で HD 画面になります。導入できたかどうかは、設定ウィンドウ「情報」ページの「HD パック」の行で、導入済みのバージョンを確認できます。',
         ],
-        notes: ['HD パックにはアプリとは別のバージョン番号があり、内容が変わったときだけ新版を出します。アプリを更新するたびにダウンロードし直す必要はありません。新版はゲームの更新確認が知らせます。更新時は <code>hd</code> フォルダーを丸ごと入れ替えてください。収録画像は主に、オリジナルを参考に AI で生成、または拡大・描き直したものです。詳しくはよくある質問をご覧ください。'],
+        notes: ['オリジナルと HD はいつでも切り替えられます。設定ウィンドウ「一般」ページの「画面」か、ショートカット（初期設定ではキーボードの 4 または F6、コントローラーは右スティック押し込み）を使います。Windows と macOS のメニューバーにも「HD 画面」があります。切り替えはすぐ反映され、セーブデータには影響しません。この選択は保存されず、起動時は常に HD です。', 'HD 画面でも、マップ上のユニットアイコンだけをオリジナルに戻せます（「一般」ページの「マップユニット」）。こちらは設定が保存されます。', 'HD パックにはアプリとは別のバージョン番号があり、内容が変わったときだけ新版を出します。アプリを更新するたびにダウンロードし直す必要はありません。新版はゲームの更新確認が知らせます。更新時は <code>hd</code> フォルダーを丸ごと入れ替えてください。収録画像は主に、オリジナルを参考に AI で生成、または拡大・描き直したものです。詳しくはよくある質問をご覧ください。'],
       },
     ],
     requirements: {

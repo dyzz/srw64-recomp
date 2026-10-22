@@ -110,6 +110,11 @@ class UnitNameRomTests(unittest.TestCase):
         # 801C5FCC copies it into 8010F698 with a 0xFFFF end on a new game.
         self.assertEqual(self.word(overlay(0x801C5FF8)), 0x3C04801C)
         self.assertEqual(self.word(overlay(0x801C5FFC)), 0x24846F54)
+        # A directly entered mini stage skips that and writes the same glyphs itself.
+        source = (ROOT / "src/host/mini_stage.hpp").read_text()
+        seeded = re.search(r"uint16_t unit\[\]=\{([^}]*)\}", source).group(1).split(",")
+        self.assertEqual([int(code, 16) for code in seeded],
+                         [self.word(overlay(0x801C6F54) + 2 * i, 2) for i in range(7)] + [0xFFFF])
 
 
 if __name__ == "__main__":

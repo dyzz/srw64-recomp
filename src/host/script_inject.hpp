@@ -3,6 +3,7 @@
 #include "json/json.hpp"
 #include <filesystem>
 #include <fstream>
+#include <atomic>
 #include <mutex>
 #include <optional>
 #include <sstream>
@@ -35,6 +36,9 @@ struct State {
     std::string last_defer;
 };
 inline State& state(){static State s;return s;}
+// A request from the debug interface (queue below) runs the same way with the switch off.
+inline std::atomic<bool>& armed(){static std::atomic<bool> a{};return a;}
+inline bool serving(){return enabled() || armed().load();}
 
 using guest::write8;
 using guest::write16;
@@ -84,6 +88,32 @@ inline void poll_file(const std::filesystem::path& directory) {
     log({{"action","queued"},{"sequence",sequence},{"at_vi",request->at_vi},{"words",request->words.size()}});
 }
 
+// Any thread: a script from the debug interface (words as in parse: header, instructions,
+// FFFF), applied at the next idle frame like a request file's; its sequence, 0 when busy.
+inline uint64_t queue(std::vector<uint16_t> words) {
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    if(s.pending || s.active)return 0;
+    Request r;r.sequence=++s.last_sequence;r.at_vi=srw64_current_vi();r.words=std::move(words);
+    s.pending=r;s.last_defer.clear();armed()=true;
+    log({{"action","queued"},{"sequence",r.sequence},{"at_vi",r.at_vi},{"words",r.words.size()},{"from","debug"}});
+    return r.sequence;
+}
+// Any thread: where the request of that sequence stands: "pending" (with why it waits),
+// "running", "done", or "dropped" (rejected, or withdrawn by withdraw).
+inline std::string progress(uint64_t sequence,std::string* waiting=nullptr) {
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    if(s.pending && s.pending->sequence==sequence){if(waiting)*waiting=s.last_defer;return "pending";}
+    if(s.active && s.active->sequence==sequence)return "running";
+    return s.completed_sequence==sequence?"done":"dropped";
+}
+inline void withdraw(uint64_t sequence) {
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    if(s.pending && s.pending->sequence==sequence){log({{"action","rejected"},{"sequence",sequence},{"reason","withdrawn"}});s.pending.reset();}
+}
+
 inline std::string idle_reason(const uint8_t* ram) {
     if(read(ram,engine+4,2)!=0xC0)return "engine-phase";
     if(read(ram,engine+0x97C,2)!=0x80)return "event-running";
@@ -105,7 +135,7 @@ inline nlohmann::json snapshot_json(const uint8_t* ram) {
 
 // Game thread: frame boundary. Applies a due request when the map is idle.
 inline void service(uint8_t* ram) {
-    if(!enabled())return;
+    if(!serving())return;
     auto& s=state();
     std::lock_guard lock(s.mutex);
     if(!s.pending || s.active)return;
@@ -139,7 +169,7 @@ inline void service(uint8_t* ram) {
 // Game thread: after every original 8009EFDC poll. Detects completion, keeps
 // the registered-event counter and returns the scratch region to zero.
 inline void observe(uint8_t* ram) {
-    if(!enabled())return;
+    if(!serving())return;
     auto& s=state();
     std::lock_guard lock(s.mutex);
     if(!s.active)return;

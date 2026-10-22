@@ -25,6 +25,9 @@ struct FrameSpec {
     // A menu drawn wider than the ROM's (menu_widen.hpp): in cell rows top..bottom, the cell
     // at x = stretch is drawn 16 + delta wide and those at shift <= x < shift_end move right.
     struct Widen { int top = 0, bottom = -1, stretch = -1, shift = -1, shift_end = -1, delta = 0; } widen;
+    // A menu drawn taller (menu_widen::rows): in cell columns left..right, the cell row at
+    // stretch 16 + delta tall, the rows shift <= y < shift_end moved down by delta.
+    struct Taller { int left = 0, right = -1, stretch = -1, shift = -1, shift_end = -1, delta = 0; } taller;
 };
 // The frame scenes and the atlas and palette each is drawn with.
 const std::vector<FrameSpec>& frames();

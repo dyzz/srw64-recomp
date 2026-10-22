@@ -2,6 +2,8 @@
 #include "rule_probe.hpp"
 #include "critical_probability.hpp"
 #include "defense_preview.hpp"
+#include "cheats.hpp"
+#include "overkill.hpp"
 #include <cmath>
 #include <cstring>
 
@@ -56,13 +58,26 @@ inline nlohmann::json damage_preview(uint8_t* copy,recomp_context* ctx,const rul
     const int command=read(copy,rules::participants+(1-slot)*rules::participant_size+0x10,1);
     const auto old_critical=read(copy,row+0x16,1);
     const int previous_roll=test_roll;test_roll=1000000;
-    const int raw=uint16_t(original_call(copy,ctx,0x801F5628,slot,1-slot,command==2));
+    // With damage past 65535 (cheats.hpp real_damage) the value before 801F5628's cap. The
+    // settled values the figures still need are kept aside meanwhile.
+    const bool real=cheats::active()&cheats::real_damage;
+    const auto settled=overkill::state();
+    struct Restore {const overkill::State& s;~Restore(){overkill::state()=s;}} restore{settled};
+    const auto damage=[&]{
+        const int capped=uint16_t(original_call(copy,ctx,0x801F5628,slot,1-slot,command==2));
+        return real && capped==0xFFFF?int(std::min(overkill::uncapped(),2.0e9)):capped;
+    };
+    const int raw=damage();
     test_roll=0;
-    const int critical_raw=uint16_t(original_call(copy,ctx,0x801F5628,slot,1-slot,command==2));
+    const int critical_raw=damage();
     test_roll=previous_roll;write8(copy,row+0x16,old_critical);
     const auto b=barrier_for(copy,a,d,raw,command),cb=barrier_for(copy,a,d,critical_raw,command);
     // Mercy and scripted survival restrictions apply after special defenses.
-    const auto finish=[&](int damage){return uint16_t(original_call(copy,ctx,0x801F5B78,slot,1-slot,damage));};
+    // Past 65535: the game's value only where it lowers the u16 (overkill.hpp spared).
+    const auto finish=[&](int damage)->int{
+        const int capped=uint16_t(original_call(copy,ctx,0x801F5B78,slot,1-slot,std::min(damage,0xFFFF)));
+        return damage>0xFFFF && capped==0xFFFF?damage:capped;
+    };
     return {{"damage",finish(b.damage)},{"damage_raw",raw},{"critical_damage",finish(cb.damage)},
         {"damage_if_shield",finish(shield_damage(b.damage))},
         {"barrier",{{"kind",b.kind},{"status",b.status},{"strength",b.strength},{"en_cost",b.en_cost},{"blocks_shield",b.blocks_shield}}}};

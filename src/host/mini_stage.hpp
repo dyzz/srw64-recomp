@@ -8,6 +8,7 @@
 #include "json/json.hpp"
 #include <filesystem>
 #include <fstream>
+#include <iterator>
 #include <mutex>
 #include <optional>
 #include <stdexcept>
@@ -321,6 +322,13 @@ inline void direct_scene(uint8_t* ram) {
     const auto info=campaign::info();
     const uint32_t scene=info?info->start:s.image->slot?*s.image->slot:0;
     write8(ram,0x8010F5F0,uint8_t(scene));write8(ram,0x8010F5EF,1);
+    // The 部隊名 a new game writes after its name pages (801C5FCC: 12 halfwords cleared,
+    // マーチウィンド from 801C6F54, 0xFFFF). The entry skips those pages, and the
+    // dialogue's <G:012C> would print the empty buffer (docs/native/fixed-unit-name.md).
+    if(!read(ram,0x8010F698,2)) {
+        constexpr uint16_t unit[]={0x93,0xD3,0x85,0x77,0xA4,0xA2,0xBA,0xFFFF};
+        for(uint32_t i=0;i<12;++i)guest::write16(ram,0x8010F698+2*i,i<std::size(unit)?unit[i]:0);
+    }
     log({{"action","direct-entry"},{"scene",scene}});
 }
 

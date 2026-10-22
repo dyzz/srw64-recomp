@@ -143,11 +143,10 @@ bool resource(const uint8_t* rdram, int16_t handle, uint16_t& id, uint32_t& data
     return data != 0 && data < 0x800000;
 }
 
-// Box-filtered mips of premultiplied RGBA8, any size.
-void add_mips(Asset& asset) {
-    uint32_t w = asset.width, h = asset.height;
+// Box-filtered mips of premultiplied RGBA8, any size, after the full image in levels[0].
+void add_mips(std::vector<std::vector<uint8_t>>& levels, uint32_t w, uint32_t h) {
     while (w > 1 || h > 1) {
-        const auto& src = asset.levels.back();
+        const auto& src = levels.back();
         const uint32_t dw = std::max(1u, w / 2), dh = std::max(1u, h / 2);
         std::vector<uint8_t> next(size_t(dw) * dh * 4);
         for (uint32_t y = 0; y < dh; ++y)
@@ -159,7 +158,7 @@ void add_mips(Asset& asset) {
                     next[(size_t(y) * dw + x) * 4 + c] = uint8_t((at(2 * x, 2 * y) + at(2 * x + 1, 2 * y) +
                                                                   at(2 * x, 2 * y + 1) + at(2 * x + 1, 2 * y + 1) + 2) / 4);
                 }
-        asset.levels.push_back(std::move(next));
+        levels.push_back(std::move(next));
         w = dw; h = dh;
     }
 }
@@ -264,15 +263,17 @@ void work() {
         } catch (const std::exception& error) {
             fprintf(stderr, "SRW64_SCENE_SPRITE_FAILED %s\n", error.what());
         }
+        // The mips before the lock: the game thread takes it for every sprite and text item,
+        // RT64's workload thread for every native draw, and a full HD frame's mips take milliseconds.
+        std::vector<std::vector<uint8_t>> levels;
+        if (ok) { levels.push_back(std::move(pixels)); add_mips(levels, w, h); }
         std::lock_guard lock(asset_mutex);
         Asset& asset = *assets[size_t(index)];
         if (!ok) { asset.state = Asset::failed; ++failures; continue; }
         asset.width = w; asset.height = h;
         asset.units[0] = units[0]; asset.units[1] = units[1];
         asset.origin[0] = origin[0]; asset.origin[1] = origin[1];
-        asset.levels.clear();
-        asset.levels.push_back(std::move(pixels));
-        add_mips(asset);
+        asset.levels = std::move(levels);
         asset.state = Asset::ready;
         ++decoded;
     }

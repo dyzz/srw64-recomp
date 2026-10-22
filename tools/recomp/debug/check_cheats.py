@@ -141,7 +141,7 @@ for switch in switches:
 time.sleep(1)
 check('funds', read(FUNDS, 4) == 99999999, {'funds': read(FUNDS, 4)})
 parts = [(read(PARTS + 2*i, 1), read(PARTS + 2*i + 1, 1)) for i in range(18)]
-check('parts', all(held == max(9, fitted) for held, fitted in parts), {'parts': parts})
+check('parts', all(held == max(15, fitted) for held, fitted in parts), {'parts': parts})
 unit = next(UNITS + i*UNIT_SIZE for i in range(140) if read(UNITS + i*UNIT_SIZE, 1))
 write(unit + 8, 5, 2)
 p = PILOTS + index * PILOT_SIZE

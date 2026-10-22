@@ -332,8 +332,27 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
 //   paused game (the settings window), a hitch or an app in the background ends nothing. A page
 //   ended by mistake comes back at the next step, which builds it again.
 constexpr unsigned stale_frames=30;
+// The art of every unit on the map, for the page's pictures to be decoded ahead (frontend.cpp
+// prefetch_map_art): roster 8015E100, three sides of 30 slots of 0x14 (+0 status, 1 on the
+// map; +0xC unit), the pilot at unit +0x38. Read every 30 frames.
+std::mutex map_art_mutex;
+json map_art_now=json::array();
+void read_map_art(const uint8_t* ram) {
+    constexpr uint32_t roster=0x8015E100,side_stride=0x258,slot_stride=0x14;
+    json list=json::array();
+    for(unsigned side=0;side<3;++side)for(unsigned slot=0;slot<30;++slot) {
+        const uint32_t entry=roster+side*side_stride+slot*slot_stride,unit=read(ram,entry+0xC,4);
+        if(read(ram,entry,1)!=1 || !valid(unit,0x54))continue;
+        json row={{"unit_art",art["units"].value(std::to_string(read(ram,unit+2,2)),json::object())}};
+        if(const uint32_t pilot=read(ram,unit+0x38,4);valid(pilot,0x40))row["portrait"]=art["portraits"].value(std::to_string(read(ram,pilot+2,2)),json::object());
+        list.push_back(std::move(row));
+    }
+    std::lock_guard lock(map_art_mutex);map_art_now=std::move(list);
+}
+json map_art(){std::lock_guard lock(map_art_mutex);return map_art_now;}
 void frame(const uint8_t* ram) {
-    static unsigned before{};
+    static unsigned before{},tick{};
+    if(++tick%30==0)read_map_art(ram);
     const unsigned now=read(ram,game_mode,1);
     const bool left=now!=before && (now==1 || now==7 || now==0x11);
     before=now;

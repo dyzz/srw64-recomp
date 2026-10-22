@@ -42,6 +42,7 @@ UI_KEYS |= {"library_open", "library_title", "library_tab_units", "library_tab_p
             "library_growth_note", "library_no_stats", "library_no_weapons", "library_work_other", "library_double_move", "library_spirit_note",
             "library_cap", "library_cap_value", "library_slots", "library_full", "library_type", "library_critical", "library_morale", "library_unlock", "library_combo", "library_full_note", "library_type_line", "library_ally", "library_enemy", "library_sub_pilot", "library_fairy", "library_love", "library_love_mutual", "library_love_one_way", "library_spirit_cost", "library_skill_note", "library_row", "library_row_note", "viewer_row", "viewer_row_note"}
 # The stage info page (src/native/ui/frontend.cpp, docs/design/stage-info.md).
+UI_KEYS |= {"title_return_open", "title_return_title", "title_return_text", "title_return_note", "title_return_yes", "title_return_no", "title_return_unavailable", "title_return_failed", "menu_title_return"}
 UI_KEYS |= {"touch_quick_load", "quick_load_open", "quick_load_title", "quick_load_text", "quick_load_note", "quick_load_yes", "quick_load_no", "quick_load_none", "quick_load_other_stage", "quick_load_unavailable", "quick_load_done", "quick_load_failed"}
 UI_KEYS |= {"touch_stage_info", "stage_info_ark", "stage_info_brad", "stage_info_done", "stage_info_enemies", "stage_info_episode", "stage_info_hint", "stage_info_hint_pad", "stage_info_kills", "stage_info_manami", "stage_info_missed", "stage_info_missing", "stage_info_na", "stage_info_next", "stage_info_no_enemies", "stage_info_no_secrets", "stage_info_not_started", "stage_info_open", "stage_info_others", "stage_info_pending", "stage_info_retreat", "stage_info_row", "stage_info_row_note", "stage_info_secrets", "stage_info_serein", "stage_info_step", "stage_info_third", "stage_info_title", "stage_info_unavailable"}
 # MOD packages (frontend.cpp mod_installed_page, mod_library.hpp).
@@ -108,11 +109,13 @@ UI_KEYS |= {"settings_bezel", "settings_bezel_note", "settings_filter", "setting
 UI_KEYS |= {f"settings_filter_scale_{n}" for n in (1, 2, 4, 0)}
 # The Cheats page (frontend.cpp cheats_page; the switch ids are cheats.hpp catalog).
 UI_KEYS |= {"cheats_note", "cheat_levels", "cheat_levels_note", "cheat_levels_open", "cheat_levels_close", "cheat_levels_away"}
-UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "slots", "moves", "en", "sp", "morale")}
+UI_KEYS |= {f"cheat_{switch}" for switch in ("funds", "parts", "slots", "moves", "en", "sp", "morale", "damage")}
 UI_KEYS |= {"cheat_level_base", "cheat_level_base_note"} | {f"cheat_level_base_{mode}" for mode in ("original", "party", "curve")}
+UI_KEYS |= {"cheat_reward", "cheat_reward_note"} | {f"cheat_reward_{mode}" for mode in ("x1", "x2", "x5", "x10")}
+UI_KEYS |= {"cheat_morale_cap", "cheat_morale_cap_note"} | {f"cheat_morale_cap_{cap}" for cap in ("150", "200", "300", "999")}
 # The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
 CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "animation", "settings",
-                "language", "images", "speed", "quick_load", "d_up", "d_down", "d_left", "d_right", "z")
+                "language", "images", "speed", "quick_load", "title_return", "d_up", "d_down", "d_left", "d_right", "z")
 UI_KEYS |= {f"controls_row_{row}" for row in CONTROL_ROWS}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}
@@ -129,7 +132,8 @@ UI_KEYS |= {"upgrade_list_hint", "upgrade_list_hint_pages", "upgrade_stats_hint"
             "upgrade_unified_title", "upgrade_unified_level", "upgrade_unified_ask", "upgrade_unified_none", "upgrade_unified_hint", "upgrade_unified_hint_pages",
             "settings_weapon_upgrade", "settings_weapon_upgrade_unified", "settings_weapon_upgrade_single", "settings_weapon_upgrade_note"}
 UI_KEYS |= {"parts_list_hint", "parts_list_hint_pages", "parts_slots_hint", "parts_inventory_hint", "parts_holders_hint", "parts_free", "parts_equipped_count"}
-UI_KEYS |= {"ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint"}
+UI_KEYS |= {"ability_list_hint", "ability_unit_hint", "ability_weapons_hint", "ability_pilot_hint",
+            "ability_combo", "ability_combo_with", "ability_combo_forms", "ability_combo_pilots", "ability_combo_sep", "ability_combo_range"}
 UI_KEYS |= {"swap_list_hint", "swap_confirm_hint"}
 UI_KEYS |= {"save_choice_hint", "save_slots_hint", "save_confirm_hint", "save_message_hint",
             "save_slots_hint_pages", "title_load_hint_pages", "save_cartridge",

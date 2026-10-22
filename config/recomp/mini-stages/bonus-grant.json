@@ -1,0 +1,48 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "bonus-grant",
+  "note": "Full-upgrade bonus after a swap (upgrades::grant_bonuses). Step 1: Mazinger Z at 12 (its cap) becomes Mazinger Z(JS) (cap 13): 1032/1036 arrive at 12, 1037/1038 stay hidden (control). Then a long wait in which the checker writes Z's weapon levels to 14, as the cap-break rule allows. Step 2: the pilot leaves and rejoins the existing JS while Z still exists, so the predecessor's levels are written again: 1032/1036 arrive at 14, past JS's cap 13, and 1037/1038 must be unlocked.",
+  "map": 20,
+  "deployments": [
+    {"template": "base:stage_deployments:001e4a38", "group": 0, "x": 14, "y": 8, "faction": 0, "note": "甲児 / マジンガーZ"},
+    {"template": "base:stage_deployments:001e4268", "group": 1, "x": 22, "y": 5, "note": "マナミ — protagonist"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D32", "args": [4]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 31]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [0]},
+        {"op": "3D45", "args": [1]},
+        {"op": "3D38", "args": [30]},
+
+        {"op": "3D6C", "args": [262, 12], "note": "Z body and weapons to its cap 12"},
+        {"op": "3D38", "args": [20]},
+        {"op": "3D5A", "args": [196, 0, 263, 500], "note": "step 1: Z at 12 -> JS (control)"},
+        {"op": "3D38", "args": [300], "note": "window: the checker writes Z's weapons to 14"},
+        {"op": "3D38", "args": [300]},
+        {"op": "3D38", "args": [300]},
+        {"op": "3D38", "args": [300]},
+        {"op": "3D38", "args": [300]},
+        {"op": "3D38", "args": [300]},
+        {"op": "3D5A", "args": [196, 0, 999, 2000], "note": "pilot leaves, JS stays"},
+        {"op": "3D38", "args": [30]},
+        {"op": "3D5A", "args": [196, 0, 263, 500], "note": "step 2: rejoin onto JS while Z (now 14) still exists"},
+        {"op": "3D38", "args": [300]},
+        {"op": "3D38", "args": [300]},
+
+        {"op": "3D47", "note": "sole appearance: early exit"},
+        {"op": "3D48"}
+      ]
+    },
+    {"name": "turn-1", "type": 0, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D38", "args": [30]}, {"op": "3D4A"}]},
+    {"name": "defeat", "type": 2, "header": [0, 28, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D4E"}, {"op": "3D4C"}]},
+    {"name": "ending", "type": 14, "header": [0, 0, 0, 0], "commands": [{"op": "3DD0"}, {"op": "3D3A", "args": [48]}, {"op": "3D4B", "args": [4]}]}
+  ]
+}
