@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 
@@ -114,6 +115,72 @@ def prepare(fetch: bool = False) -> dict:
     header = header.replace(start, "        void start(plume::RenderCommandList* list, int image_width, int image_height, bool continue_frame = false);")
     write_changed(OUTPUT / "ui_renderer.h", header.encode())
     write_changed(OUTPUT / "ui_renderer.cpp", source)
+    # RmlUi: shrink-to-fit widths kept for one layout. A flex item without a definite size is
+    # measured by laying its whole subtree out apart, and nested flex rows ask again at every
+    # level: a stat box of the pre-battle page 16 times a layout, the text in it 64 times, most of
+    # the page's 1.8 ms layout on an i7-8700K (2026-10-22). Within one LayoutEngine::FormatElement
+    # the answer for an element and containing block does not change. The two files are compiled
+    # from here in place of the pinned ones (src/native/ui/CMakeLists.txt).
+    layout = rml / "Source/Core/Layout"
+    rml_edits = {
+        "LayoutDetails.cpp": [
+            ("#include <float.h>", "#include <float.h>\n#include <unordered_map>"),
+            ("float LayoutDetails::GetShrinkToFitWidth(Element* element, Vector2f containing_block)\n{",
+             "static float ShrinkToFitWidthUncached(Element* element, Vector2f containing_block)\n{"),
+            ("\treturn shrink_to_fit_width;\n}\n",
+             "\treturn shrink_to_fit_width;\n}\n\n"
+             "// SRW64: kept until the next LayoutEngine::FormatElement (prepare_frontend.py).\n"
+             "unsigned srw64_layout_generation = 1;\n"
+             "namespace {\n"
+             "struct ShrinkToFitKey {\n"
+             "\tElement* element;\n"
+             "\tfloat x, y;\n"
+             "\tbool operator==(const ShrinkToFitKey& o) const { return element == o.element && x == o.x && y == o.y; }\n"
+             "};\n"
+             "struct ShrinkToFitHash {\n"
+             "\tsize_t operator()(const ShrinkToFitKey& k) const\n"
+             "\t{\n"
+             "\t\treturn std::hash<Element*>()(k.element) ^ (std::hash<float>()(k.x) * 31) ^ (std::hash<float>()(k.y) * 131);\n"
+             "\t}\n"
+             "};\n"
+             "std::unordered_map<ShrinkToFitKey, float, ShrinkToFitHash> shrink_to_fit_widths;\n"
+             "unsigned shrink_to_fit_generation = 0;\n"
+             "} // namespace\n\n"
+             "float LayoutDetails::GetShrinkToFitWidth(Element* element, Vector2f containing_block)\n"
+             "{\n"
+             "\tif (shrink_to_fit_generation != srw64_layout_generation)\n"
+             "\t{\n"
+             "\t\tshrink_to_fit_widths.clear();\n"
+             "\t\tshrink_to_fit_generation = srw64_layout_generation;\n"
+             "\t}\n"
+             "\tconst ShrinkToFitKey key{element, containing_block.x, containing_block.y};\n"
+             "\tif (auto found = shrink_to_fit_widths.find(key); found != shrink_to_fit_widths.end())\n"
+             "\t\treturn found->second;\n"
+             "\tconst float width = ShrinkToFitWidthUncached(element, containing_block);\n"
+             "\tshrink_to_fit_widths.emplace(key, width);\n"
+             "\treturn width;\n"
+             "}\n"),
+        ],
+        "LayoutEngine.cpp": [
+            ("namespace Rml {\n", "namespace Rml {\n\nextern unsigned srw64_layout_generation;\n"),
+            ("void LayoutEngine::FormatElement(Element* element, Vector2f containing_block)\n{\n"
+             "\tRMLUI_ASSERT(element && containing_block.x >= 0 && containing_block.y >= 0);\n",
+             "void LayoutEngine::FormatElement(Element* element, Vector2f containing_block)\n{\n"
+             "\tRMLUI_ASSERT(element && containing_block.x >= 0 && containing_block.y >= 0);\n"
+             "\t// SRW64: a new layout; the last one's shrink-to-fit widths go (LayoutDetails.cpp).\n"
+             "\t++srw64_layout_generation;\n"),
+        ],
+    }
+    (OUTPUT / "rmlui").mkdir(exist_ok=True)
+    for name, edits in rml_edits.items():
+        text = (layout / name).read_text()
+        for before, after in edits:
+            if text.count(before) != 1:
+                raise RuntimeError(f"Pinned RmlUi {name} no longer matches")
+            text = text.replace(before, after)
+        # The copy lives in the adapter: its quoted includes point back into the pinned tree.
+        text = re.sub(r'#include "([^"]+)"', lambda m: f'#include "{(layout / m[1]).resolve().as_posix()}"', text)
+        write_changed(OUTPUT / "rmlui" / name, text.encode())
     report = {"schema": "srw64.frontend-adapter.v1", "commit": lock["commit"],
               "rmlui_commit": lock["rmlui_commit"],
               "renderer_sha256": hashlib.sha256(source).hexdigest(),

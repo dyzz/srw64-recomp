@@ -14,6 +14,10 @@ Windows/Linux 游戏可玩。
   错误版本或脏上游，不自动更新已有 checkout。默认不访问网络。
 - 原型使用上游 `RmlRenderInterface_RT64` 的完整渲染实现。准备工具仅将其头文件的
   launcher umbrella include 改为 RmlUi/Plume 的最小依赖；生成副本及摘要留在本地。
+- RmlUi 的 `Layout/LayoutDetails.cpp`、`Layout/LayoutEngine.cpp` 也由准备工具生成改过的副本
+  （`frontend-adapter/rmlui/`），`src/native/ui/CMakeLists.txt` 用它们替换原文件编进 `rmlui_core`：
+  一次排版内同一元素、同一包含块的 shrink-to-fit 宽度只算一次。嵌套的弹性行原来层层重算，
+  战前页的能力格一次排版要算 16 遍、格里文字 64 遍（2026-10-22）。上游 checkout 不改。
   不接入完整 launcher、MOD 菜单、配置、recompinput 或上游的 macOS 全局 swizzle。
 - `src/native/ui/name_page.*` 使用现有 `names::Request` 和带 serial 的语义回调。
   页面只处理展示与输入，不接触游戏内存；真正游戏侧的验证、写回与状态推进仍由

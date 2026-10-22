@@ -948,8 +948,8 @@ Rml::ElementDocument* document(const std::string& body,bool modal,bool chrome=fa
 // one: attributes and text set in place, a subtree whose shape changed built again, the
 // rest untouched. A whole rebuild cost the parse, the elements and their styles again:
 // 1.7 ms a step on the pre-battle page on an M-series Mac, 2.4 ms on an i7-8700K; in place
-// 0.05 ms and 2.1 ms (2026-10-22). On that Windows machine the layout RmlUi makes of the
-// whole page after any change is most of it (1.8 ms), with or without this.
+// 0.05 ms and 2.1 ms (2026-10-22). The rest there was RmlUi's layout of the whole page,
+// which its shrink-to-fit widths dominated (prepare_frontend.py keeps them for one layout).
 // Our RML is simple (no comments, no data bindings, every element closed), so a small
 // parser reads it; anything else, or a DOM that does not match the old source, rebuilds.
 struct RmlNode {
@@ -3517,6 +3517,14 @@ std::string battle_unit(const json& c,bool left) {
     }
     return body+"</div>";
 }
+// An inline size in dp, set only when it changes: RmlUi lays the whole page out again after
+// any SetProperty, the same value too, and the pre-battle page sized its unit pictures again
+// on every redraw: a second layout per key press, 3.7 ms of the 6.2 a step cost on an
+// i7-8700K, 1.8 ms with this and the shrink-to-fit widths kept (2026-10-22).
+void set_dp(Rml::Element* e,const char* name,float dp) {
+    if(const auto* p=e->GetLocalProperty(name);p && p->unit==Rml::Unit::DP && std::abs(p->Get<float>()-dp)<.001f)return;
+    e->SetProperty(name,std::to_string(dp)+"dp");
+}
 // The unit pictures, sized again once the page is laid out: as large as the middle row
 // between the banners and the pilot panels allows (at most 360 dp, 6x the ROM pixels),
 // by the same size-class share as battle_unit's first guess.
@@ -3529,7 +3537,7 @@ void battle_fit_units(Rml::ElementDocument* doc) {
         const float w=img->GetAttribute<float>("data-w",0),h=img->GetAttribute<float>("data-h",0),part=img->GetAttribute<float>("data-part",1);
         if(w<=0 || h<=0)continue;
         const float scale=std::min({limit_w*part/w,room*part/h,img->GetAttribute<float>("data-max",6)});
-        img->SetProperty("width",std::to_string(w*scale)+"dp");img->SetProperty("height",std::to_string(h*scale)+"dp");
+        set_dp(img,"width",w*scale);set_dp(img,"height",h*scale);
     }
 }
 // What the two pilot panels keep room for, the same on both sides so they line up: the
