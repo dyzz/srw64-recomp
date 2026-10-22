@@ -301,7 +301,7 @@ inline Contents summarize(const fs::path& folder) {
     c.art=count(folder/"art",{".png",".webp",".dds",".json"});
     c.dialogue=count(folder/"dialogue",{".txt"});
     c.data=count(folder/"data",{".json"});
-    c.campaign=fs::is_directory(folder/"campaign",error);
+    c.campaign=fs::is_regular_file(folder/"campaign"/"campaign.json",error);
     c.challenge=fs::is_directory(folder/"challenge",error);
     c.story=fs::is_directory(folder/"story",error);
     c.rules=fs::is_regular_file(folder/"rules.json",error);

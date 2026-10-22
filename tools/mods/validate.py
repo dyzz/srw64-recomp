@@ -30,6 +30,7 @@ from pathlib import Path
 from typing import Callable
 
 SCHEMA = "srw64.mod.v1"
+CAMPAIGN_IMAGE_SCHEMA = "srw64.campaign-image.v1"
 PACKAGE_EXTENSION = ".srw64mod"
 # src/host/mod_library.hpp `licenses`: the ones that allow the package to be passed on.
 LICENSES = ("CC-BY-4.0", "CC-BY-SA-4.0", "CC-BY-NC-4.0", "CC-BY-NC-SA-4.0", "CC0-1.0", "MIT", "GPL-3.0-or-later")
@@ -61,6 +62,7 @@ SUBMISSION_TEXT = {
     "missing": "A required MOD is not listed: {detail}",
     "owner": "The id's prefix belongs to someone else ({detail})",
     "no_owner": "The id's prefix is not registered in owners.json ({detail})",
+    "campaign": "campaign/campaign.json is not a compiled campaign of this package ({detail})",
 }
 
 
@@ -286,8 +288,11 @@ def open_package(path: Path) -> tuple[Package, Problem | None]:
 
 def contents_of(entries: list[Entry]) -> list[str]:
     """The §2 folders and files the package actually has, in §2 order."""
+    names = {e.name for e in entries}
     tops = {e.name.split("/", 1)[0] for e in entries}
-    return [d for d in CONTENT_DIRS if d in tops] + [f for f in TOP_FILES if f in tops and f != "mod.json"]
+    # A campaign counts when its image is there (mod_library.hpp summarize).
+    return [d for d in CONTENT_DIRS if d in tops and (d != "campaign" or "campaign/campaign.json" in names)] + \
+        [f for f in TOP_FILES if f in tops and f != "mod.json"]
 
 
 def sha256_of(path: Path) -> str:
@@ -344,6 +349,18 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             problems.append(Problem("file_type", e.name))
     if not summary["contents"]:
         problems.append(Problem("empty"))
+    for e in package.entries:
+        if e.name != "campaign/campaign.json":
+            continue
+        try:
+            image = json.loads(e.read().decode("utf-8"))
+        except (ValueError, UnicodeDecodeError) as error:
+            problems.append(Problem("campaign", str(error)))
+            continue
+        if not isinstance(image, dict) or image.get("schema") != CAMPAIGN_IMAGE_SCHEMA:
+            problems.append(Problem("campaign", "not " + CAMPAIGN_IMAGE_SCHEMA))
+        elif image.get("id") != m["id"]:
+            problems.append(Problem("campaign", f"id {image.get('id')!r}, the package is {m['id']!r}"))
     if original_hashes:
         for e in package.entries:
             if e.name != "mod.json" and hashlib.sha256(e.read()).hexdigest() in original_hashes:

@@ -6,15 +6,18 @@
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
+#include <optional>
 #include <set>
 #include <string>
 #include <vector>
 
 // Installed custom campaigns, offered as additional scenarios (DLC) in the title's MOD
-// manager (docs/design/custom-campaign.md §8). Each is a compiled campaign at
-// <dir>/<id>/campaign.json in one of SRW64_CAMPAIGN_DIRS (the user's campaigns folder
-// first, then the bundled ones); each plays from its own saves, in
-// SRW64_CAMPAIGN_SAVES/<id>/saves (campaign_switch.hpp).
+// manager (docs/design/custom-campaign.md §8). A campaign is a compiled image: in a MOD
+// package it is <mods>/<id>/campaign/campaign.json (docs/design/mod-packages.md §2; the
+// frontend lists those from the active packages, mod_library.hpp), and the older
+// <dir>/<id>/campaign.json in one of SRW64_CAMPAIGN_DIRS still counts for ids no package
+// holds. Each plays from its own saves, in SRW64_CAMPAIGN_SAVES/<id>/saves
+// (campaign_switch.hpp).
 namespace srw64::campaign_library {
 namespace fs=std::filesystem;
 struct Entry {
@@ -55,12 +58,31 @@ inline std::string text(const nlohmann::json& field,const std::string& locale) {
     return {};
 }
 
-// Every installed campaign, the first directory's copy of an id winning; a file that is
-// not a compiled campaign is left out.
+// Whether the campaign's save library holds a card (SRW64_CAMPAIGN_SAVES/<id>/saves).
+inline bool has_saves(const std::string& id) {
+    std::error_code error;
+    const char* saves_root=std::getenv("SRW64_CAMPAIGN_SAVES");
+    return saves_root && fs::is_regular_file(fs::path(saves_root)/id/"saves"/"cartridge.sram",error);
+}
+// One compiled campaign image, or nothing when the file is not one. `saves` is left
+// for the caller, which knows the id the campaign plays under.
+inline std::optional<Entry> read(const fs::path& path) {
+    std::ifstream file(path);
+    const auto document=nlohmann::json::parse(file,nullptr,false);
+    if(document.is_discarded() || document.value("schema","")!="srw64.campaign-image.v1" || !document.contains("id") || !document.at("id").is_string())return std::nullopt;
+    Entry entry;
+    entry.id=document.at("id").get<std::string>();
+    entry.path=path;entry.version=document.value("version","");entry.author=document.value("author","");
+    entry.name=document.value("name",nlohmann::json(entry.id));
+    entry.description=document.value("description",nlohmann::json());
+    entry.stages=unsigned(document.value("stages",nlohmann::json::array()).size());
+    return entry;
+}
+// Every campaign in the legacy folders, the first directory's copy of an id winning; a
+// file that is not a compiled campaign is left out.
 inline std::vector<Entry> list() {
     std::vector<Entry> entries;
     std::set<std::string> seen;
-    const char* saves_root=std::getenv("SRW64_CAMPAIGN_SAVES");
     for(const auto& dir:directories()) {
         std::error_code error;
         if(!fs::is_directory(dir,error))continue;
@@ -68,18 +90,10 @@ inline std::vector<Entry> list() {
         for(const auto& item:fs::directory_iterator(dir,error))if(fs::is_regular_file(item.path()/"campaign.json",error))found.push_back(item.path()/"campaign.json");
         std::sort(found.begin(),found.end());
         for(const auto& path:found) {
-            std::ifstream file(path);
-            const auto document=nlohmann::json::parse(file,nullptr,false);
-            if(document.is_discarded() || document.value("schema","")!="srw64.campaign-image.v1" || !document.contains("id"))continue;
-            Entry entry;
-            entry.id=document.at("id").get<std::string>();
-            if(!seen.insert(entry.id).second)continue;
-            entry.path=path;entry.version=document.value("version","");entry.author=document.value("author","");
-            entry.name=document.value("name",nlohmann::json(entry.id));
-            entry.description=document.value("description",nlohmann::json());
-            entry.stages=unsigned(document.value("stages",nlohmann::json::array()).size());
-            entry.saves=saves_root && fs::is_regular_file(fs::path(saves_root)/entry.id/"saves"/"cartridge.sram",error);
-            entries.push_back(std::move(entry));
+            auto entry=read(path);
+            if(!entry || !seen.insert(entry->id).second)continue;
+            entry->saves=has_saves(entry->id);
+            entries.push_back(std::move(*entry));
         }
     }
     return entries;

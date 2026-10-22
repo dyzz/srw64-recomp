@@ -1729,8 +1729,29 @@ void settings_focus_first() {
     if(!rows.empty())settings_focus_row(rows[rows.size()>1?1:0],0);
 }
 // Installed campaigns, read once: they do not change while the game runs.
+const std::vector<srw64::mods::Package>& installed_mods();
+// The campaigns offered: the one in each active package's campaign/campaign.json (played
+// under the package's id and version), then the legacy campaigns folders for ids no
+// package holds. Read again whenever the packages change.
 const std::vector<campaign_library::Entry>& installed_campaigns() {
-    static const auto entries=campaign_library::list();
+    static std::vector<campaign_library::Entry> entries;
+    static unsigned read_at{};
+    if(const unsigned now=mod_revision.load();now!=read_at) {
+        entries.clear();
+        std::set<std::string> seen;
+        for(const auto& p:installed_mods()) {
+            if(!p.active || !p.contents.campaign || !p.manifest)continue;
+            auto entry=campaign_library::read(p.folder/"campaign"/"campaign.json");
+            if(!entry)continue;
+            entry->id=p.id();
+            entry->version=srw64::mods::version_text(p.manifest->version);
+            if(entry->author.empty())for(const auto& author:p.manifest->authors)entry->author+=(entry->author.empty()?"":", ")+author;
+            entry->saves=campaign_library::has_saves(entry->id);
+            if(seen.insert(entry->id).second)entries.push_back(std::move(*entry));
+        }
+        for(auto& entry:campaign_library::list())if(seen.insert(entry.id).second)entries.push_back(std::move(entry));
+        read_at=now;
+    }
     return entries;
 }
 // A campaign is entered or left on the title's ring menu only, where nothing unsaved is

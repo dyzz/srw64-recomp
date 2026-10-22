@@ -279,17 +279,16 @@ class Session:
         for key in ("SRW64_CAMPAIGN_DIRS", "SRW64_CAMPAIGN_SAVES", "SRW64_MOD_ENTRY"):
             environment.pop(key, None)
         if campaigns:
-            # The MOD manager's extra scenarios, as the launcher offers them: every campaign
-            # under config/recomp/campaigns compiled beside the run, a save library for the
-            # main game (switching needs one to come back to) and one folder per campaign.
+            # The MOD manager's extra scenarios: every campaign under config/recomp/campaigns
+            # that has a mod.json is built into a package folder in the run's mods folder
+            # (tools/mods/pack.py), plus a save library for the main game (switching needs
+            # one to come back to) and one folder per campaign.
             sys.path.insert(0, str(ROOT / "tools"))
-            from recomp.script_lab.mini_stage import compile_campaign
-            installed = run.parent / (run.name + ".campaigns")
-            for source in sorted((ROOT / "config/recomp/campaigns").glob("*/campaign.json")):
-                image = compile_campaign(source)
-                (installed / image["id"]).mkdir(parents=True, exist_ok=True)
-                (installed / image["id"] / "campaign.json").write_text(json.dumps(image, ensure_ascii=False) + "\n")
-            environment["SRW64_CAMPAIGN_DIRS"] = str(installed)
+            from mods.pack import build_package
+            installed = run.parent / (run.name + ".mods")
+            for source in sorted((ROOT / "config/recomp/campaigns").glob("*/mod.json")):
+                build_package(source.parent, installed, archive=False)
+            environment["SRW64_MODS_DIR"] = str(installed)
             environment["SRW64_CAMPAIGN_SAVES"] = str(run.parent / (run.name + ".campaign-saves"))
             # The title's MOD entry, hidden from players for now (frontend.cpp mod_entry_shown).
             environment["SRW64_MOD_ENTRY"] = "1"

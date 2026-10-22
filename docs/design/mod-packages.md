@@ -172,7 +172,8 @@ audio/      音乐与语音
 - **测试**：`tests/native_mod_library.cpp`（`make recomp-mod-library-test`）覆盖清单规则、版本要求、依赖与顺序、冲突、危险路径，以及在临时目录里实际安装、更新、停用、删除和自动解压。
 - **实机（2026-10-20，Mac，分支构建）**：用调试接口的 `ui.drop`（MCP `srw64_drop`，走的是桌面拖放的同一段代码）依次拖入音乐包（`.srw64mod`，包在一个顶层文件夹里）、依赖它的语音包（文件夹）和缺依赖的包：三个都装进 `mods/<id>/`，顶上提示安装完成，列表显示内容统计和状态（缺依赖的写明缺哪个、几版）；停用音乐包后语音包显示「需要的 MOD 未启用」；删除按两次确认后移进 `.trash`。
 - **校验工具**（2026-10-22）：`tools/mods/validate.py` 按宿主的清单与归档规则（同一套问题码，`--locale` 用游戏自己的文案）加上投稿规则（文件名 `<id>-<版本>.srw64mod`、100 MB 上限、`license` 必填、只许 §2 的目录与文件类型、不含原版数据 `--original-hashes`、对照索引的版本递增与依赖 `--index`、作者前缀所有权 `--owners --owner`）检查一个包，`--json` 给 CI，`--summary` 输出索引条目要抄的字段。`tests/mods/manifests.json` 是两边共用的清单用例，`tests/native_mod_library.cpp` 与 `tests/test_mod_validate.py` 都跑它。
-- **还没做**：音乐以外的内容生效；手动调整顺序；安卓（没有拖放，以后放进玩家文件夹）；原版数据哈希清单的生成脚本；包的预览图与发布页。
+- **战役走包格式**（2026-10-22）：包里 `campaign/campaign.json` 是编译好的战役镜像；`tools/mods/pack.py <源目录> -o build/mods` 从带 `mod.json` 的战役源编译并打成包文件（可复现：固定日期、排序条目），打完用 `validate.py` 检查。`frontend.cpp` 的 `installed_campaigns()` 先列启用的包里的战役（id、版本取包的），再补旧 `campaigns/` 目录里的；`campaign_library::read` 读单个镜像。`config/recomp/campaigns/sample`、`retry` 各加了 `mod.json`（`srw64.sample`、`srw64.retry`，CC-BY-NC-4.0）；调试会话 `campaigns=True` 改为把它们建成包放进运行的 `mods/`（`check_mod.py` 随之改，未重跑）。`tests/test_mod_pack.py`。
+- **还没做**：音乐、战役以外的内容生效；手动调整顺序；安卓（没有拖放，以后放进玩家文件夹）；原版数据哈希清单的生成脚本；包的预览图与发布页；程序自带的「内置」包目录。
 
 ## 11. 待核实
 

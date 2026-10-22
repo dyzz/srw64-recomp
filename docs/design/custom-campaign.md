@@ -25,9 +25,13 @@
 
 ## 3. 战役包
 
+2026-10-22 起战役以 [MOD 包](mod-packages.md)交付：包里 `campaign/campaign.json` 是编译好的镜像（`srw64.campaign-image.v1`，自包含，关卡都在里面），由 `tools/mods/pack.py` 从下面的源目录编译并打成 `<id>-<版本>.srw64mod`；`mod.json` 的 `id` 就是战役的 id（存档目录名），镜像的 `id` 必须与之相同（`validate.py` 查）。宿主从启用的包里列战役（`frontend.cpp` 的 `installed_campaigns()`，版本取包的版本），旧的 `campaigns/<id>/campaign.json` 目录仍认，只补包里没有的 id。示例战役的源在 `config/recomp/campaigns/sample/`（含 `mod.json`）。
+
+源目录：
+
 ```text
-mods/<战役>/
-  mod.json              名字、作者、版本
+<源>/
+  mod.json              包清单（mod-packages.md §2：名字、作者、版本、许可证）
   campaign.json         关卡表、开局、标题、所借场景号
   stages/<关>.json      迷你关卡格式（srw64.mini-stage.v1）
   stages/<关>.meta.json 可选：本关情报页的元数据（srw64.stage-meta.v1，见 stage-info.md §3）

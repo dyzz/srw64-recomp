@@ -154,6 +154,17 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(self.codes(newer, owners=owners, owner="github:other")[0], ["owner"])
         self.assertEqual(self.codes(newer, owners={}, owner="github:someone")[0], ["no_owner"])
 
+    def test_a_campaign_image_must_be_the_packages(self):
+        files = {"mod.json": json.dumps(manifest()), "campaign/campaign.json": json.dumps({"schema": "srw64.campaign-image.v1", "id": "a.b", "stages": []})}
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        files["campaign/campaign.json"] = json.dumps({"schema": "srw64.campaign-image.v1", "id": "c.d", "stages": []})
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["campaign"])
+        files["campaign/campaign.json"] = json.dumps({"schema": "srw64.campaign.v1", "id": "a.b"})
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["campaign"])
+        # A campaign folder without its image is not a campaign (and the package is empty).
+        files = {"mod.json": json.dumps(manifest()), "campaign/readme.txt": "x"}
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["empty"])
+
     def test_wording_uses_the_games_text(self):
         labels = json.loads((ROOT / "content/locales/zh-Hans.json").read_text(encoding="utf-8"))
         self.assertEqual(validate.wording(validate.Problem("field", "colour"), labels), "mod.json 有误（colour）")
