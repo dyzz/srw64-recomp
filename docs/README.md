@@ -24,6 +24,7 @@
 | 原版怎么读手柄、每个键在每个画面里做什么（重映射前先看） | [原版按键绑定](gameplay/original-controls.md) |
 | 翻译名称、界面标签与系统提示（词条表） | [数据文本汉化](native/localization-terms.md) |
 | 修改或翻译剧情与战斗台词（纯文本，玩家可改） | [台词文本文件](guide/dialogue-text.md) |
+| 做音乐替换或战斗语音 MOD：包格式与歌号、人物、台词记录号对应表 | [音乐与战斗语音 MOD](guide/audio-mods/README.md) |
 | 全部文本的分类导出，剧情与战斗台词的中英机翻（DeepSeek）、审校、台词文件与后续阶段 | [全文本地化规划](design/translation-plan.md) |
 | 对白框怎样多显示字、少翻页：字体、字号、整条连排与翻页位置 | [对白排版](design/dialogue-typesetting.md) |
 | 接下来要做的功能 | [后续路线图](design/roadmap.md) |
@@ -42,6 +43,7 @@
 | [发布构建](guide/release.md) | 从一个提交构建应用与单独的 HD 包、HD 包的安装与声明、手动发布 |
 | [Linux 与 Steam Deck 构建](guide/linux-build.md) | 在 Mac 上用 Docker 构建 Linux x64 包、随包依赖与链接检查、Deck 安装、与 macOS 的差别和验证记录 |
 | [台词文本文件](guide/dialogue-text.md) | 剧情、选择肢与战斗台词的纯文本格式、附带文件与用户目录覆盖、F5 重新载入与错误报告 |
+| [音乐与战斗语音 MOD](guide/audio-mods/README.md) | 给 MOD 作者（及其 AI）的格式说明，附 49 首歌、人物、机体、11548 句战斗台词的 CSV 对应表 |
 | [原生存档恢复](guide/native-save-recovery.md) | 历史存档列表与显式恢复、完整性回退、通关档冷启动证据 |
 | [本地输入与来源记录](guide/provenance.md) | 原 ROM 身份、日文字形表、固定工具链与参考资料 |
 
