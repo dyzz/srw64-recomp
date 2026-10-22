@@ -16,6 +16,10 @@
 #include <string>
 #include <thread>
 #include <vector>
+#ifdef __ANDROID__
+#include <SDL_system.h>  // not SDL.h: its SDL_main.h renames main, which SDL looks up
+#include <jni.h>
+#endif
 
 #include "librecomp/game.hpp"
 #include "librecomp/overlays.hpp"
@@ -620,6 +624,36 @@ static int run_host(int argc, char** argv) {
     return dl_count > 0 && audio_tasks > 0 ? 0 : 3;
 }
 
+#ifdef __ANDROID__
+namespace {
+// The variables SRW64Activity set (its resource folder, HOME, the debug switch...) into
+// this C library too: the arm64 game run by ARM translation on an x86 device or emulator
+// has its own, which never sees Java's Os.setenv (HostEnvironment.java).
+void import_java_environment() {
+    auto* env = static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    auto activity = static_cast<jobject>(SDL_AndroidGetActivity());
+    if (!env || !activity) return;
+    const jclass type = env->GetObjectClass(activity);
+    const jmethodID method = env->GetMethodID(type, "hostEnvironment", "()[Ljava/lang/String;");
+    auto pairs = method ? static_cast<jobjectArray>(env->CallObjectMethod(activity, method)) : nullptr;
+    if (env->ExceptionCheck()) { env->ExceptionClear(); pairs = nullptr; }
+    for (jsize i = 0, count = pairs ? env->GetArrayLength(pairs) : 0; i < count; ++i) {
+        auto pair = static_cast<jstring>(env->GetObjectArrayElement(pairs, i));
+        if (const char* text = pair ? env->GetStringUTFChars(pair, nullptr) : nullptr) {
+            const std::string_view value(text);
+            if (const auto equals = value.find('='); equals != std::string_view::npos && equals > 0)
+                setenv(std::string(value.substr(0, equals)).c_str(), text + equals + 1, 1);
+            env->ReleaseStringUTFChars(pair, text);
+        }
+        if (pair) env->DeleteLocalRef(pair);
+    }
+    if (pairs) env->DeleteLocalRef(pairs);
+    env->DeleteLocalRef(type);
+    env->DeleteLocalRef(activity);
+}
+}
+#endif
+
 #if defined(__linux__) && !defined(__ANDROID__)
 // A crash leaves its stack on stderr and in the run's console.log, for reports from
 // Linux and the Steam Deck: addresses resolve with addr2line on the unstripped build.
@@ -650,6 +684,9 @@ void crash_backtrace(int signal) {
 
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
+#ifdef __ANDROID__
+    import_java_environment();
+#endif
 #if defined(_WIN32)
     // A double-click's own console goes first, before any handle exists for FreeConsole
     // to close by mistake (desktop_windows.cpp).

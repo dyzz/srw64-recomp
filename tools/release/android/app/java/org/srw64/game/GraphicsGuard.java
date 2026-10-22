@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.system.ErrnoException;
-import android.system.Os;
 import android.util.Log;
 
 import java.io.File;
@@ -39,10 +38,10 @@ final class GraphicsGuard {
                     + " display lists: framebuffer sync off for this version");
         }
         if (prefs.getLong("sync_off_version", -1) == version)
-            Os.setenv("SRW64_FRAMEBUFFER_SYNC", "0", true);
+            HostEnvironment.set("SRW64_FRAMEBUFFER_SYNC", "0");
         try {
             if (!marker.createNewFile()) marker.setLastModified(System.currentTimeMillis());
-            Os.setenv("SRW64_START_MARKER", marker.getPath(), true);
+            HostEnvironment.set("SRW64_START_MARKER", marker.getPath());
         } catch (IOException error) {
             Log.w("SRW64", "SRW64_GRAPHICS_GUARD no start marker: " + error);
         }
