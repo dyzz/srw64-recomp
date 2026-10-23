@@ -30,8 +30,10 @@ Special condition codes (``func_8022245C``):
     900 + weapon      own weapon, low priority (generic line may replace it)
     2600 + weapon     own weapon, normal priority
     5000              the opponent's pilot is female (pilot flags bit 1)
-    8000 + n          combination attack (weapon canonical id 1222–1229 → base 8000–8700),
-                      n = partner table [main pilot][partner]; needs battle mode 3
+    8000 + n          combination attack: the weapon's canonical id picks the base through
+                      func_802219A0's jump table, not in order (COMBO_BASE_OF_CANON; 1229
+                      スペースコンビネーションアタック has none); n = partner table
+                      [main pilot][partner]; needs battle mode 3
     10000 + 2500·s + k  situation s with condition k: k < 400 own unit id; 400–999 as c below
 
 c values (``func_80221F5C``): < 400 opponent unit id; 400–699 opponent voice + 400;
@@ -69,8 +71,11 @@ WEAPON_TABLE = 0x119970
 WEAPON_RECORD = 14
 PARTNER_TABLES = {8000: 0x8022308C, 8100: 0x80223154, 8200: 0x8022321C, 8300: 0x8022308C,
                   8400: 0x8022308C, 8500: 0x8022308C, 8600: 0x8022308C, 8700: 0x802232E4}
-COMBO_BASE_OF_CANON = {1222: 8000, 1223: 8100, 1224: 8200, 1225: 8300, 1226: 8400, 1227: 8500,
-                       1228: 8600, 1229: 8700}
+# func_802219A0 (jump table D_80225620 by canonical id − 1222): ダブルバーニングファイヤー,
+# ダブルライトニングバスター, ツインビーム, マジンガートルネード, ファイナルダイナミックスペシャル,
+# トリプルマジンガーパンチ, ダブルマジンガーブレード, ツインオーラアタック; 1229 gives -1.
+COMBO_BASE_OF_CANON = {1222: 8000, 1223: 8100, 1228: 8200, 1224: 8300, 1225: 8400, 1226: 8500,
+                       1227: 8600, 1230: 8700}
 # func_80221A3C: actor → partner-table index
 PARTNER_INDEX = {196: 0, 108: 1, 113: 2, 195: 3, 197: 4, 107: 5, 114: 6, 112: 7, 116: 8, 124: 9}
 AURA_PARTNER_INDEX = {181: 0, 184: 1, 185: 2, 186: 3}  # +4 when the partner unit carries チャム (183)
