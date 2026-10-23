@@ -33,7 +33,9 @@
 #include <netinet/in.h>
 #include <poll.h>
 #include <sys/socket.h>
+#ifdef __ANDROID__
 #include <sys/un.h>
+#endif
 #include <unistd.h>
 #endif
 
@@ -176,7 +178,13 @@ Socket listen_loopback(int& port) {
 #endif
     sockaddr_in address{};
     address.sin_family=AF_INET;
+#ifdef __SWITCH__
+    // A Switch's own loopback is out of the computer's reach: every address, and the token
+    // keeps others out (docs/design/switch-port.md, the debug interface on the LAN).
+    address.sin_addr.s_addr=htonl(INADDR_ANY);
+#else
     address.sin_addr.s_addr=htonl(INADDR_LOOPBACK);
+#endif
     address.sin_port=0;  // the system picks a free port
     socklen_t length=sizeof address;
     if(::bind(listener,reinterpret_cast<sockaddr*>(&address),sizeof address)!=0 || ::listen(listener,4)!=0 ||

@@ -515,7 +515,7 @@ unsigned long current_pid() {
     return (unsigned long)getpid();
 #endif
 }
-std::string holder_record() {
+[[maybe_unused]] std::string holder_record() {   // not on the Switch (no lock)
     const auto start=process_start(current_pid());
     auto record=start?std::to_string(current_pid())+" "+std::to_string(*start)+"\n":std::string("\n");
     record.resize(holder_size,' ');
@@ -539,6 +539,9 @@ struct UserLock::Handle {
         WriteFile(handle,record.data(),DWORD(record.size()),&written,&at);   // only for ending this game from another
     }
     ~Handle() { if(handle!=INVALID_HANDLE_VALUE){OVERLAPPED offset{};UnlockFileEx(handle,0,1,0,&offset);CloseHandle(handle);} }
+#elif defined(__SWITCH__)
+    // One program runs at a time on the Switch, and its newlib has no flock: nothing to lock.
+    Handle(const fs::path&,std::chrono::milliseconds) {}
 #else
     int fd=-1;
     Handle(const fs::path& path,std::chrono::milliseconds wait) {

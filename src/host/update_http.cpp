@@ -77,6 +77,12 @@ namespace srw64::update {
 std::string http_get(const std::string&, const std::string&, int) { throw std::runtime_error("not on Android"); }
 }
 
+#elif defined(__SWITCH__)
+// No update check on the Switch (docs/design/switch-port.md).
+namespace srw64::update {
+std::string http_get(const std::string&, const std::string&, int) { throw std::runtime_error("not on the Switch"); }
+}
+
 #else
 #include <dlfcn.h>
 

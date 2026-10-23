@@ -3,6 +3,10 @@ project(srw64_native_probe LANGUAGES C CXX)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if(NINTENDO_SWITCH)
+    # libnx has no libdl; FindICU would name it for ICU::uc.
+    set(CMAKE_DL_LIBS "")
+endif()
 # assert() stays on in the desktop hosts. Android ships with NDEBUG (2026-10-08): a failed
 # assert closes the game, and Plume without NDEBUG names Vulkan objects (VK_EXT_debug_utils)
 # and looks for the validation layer. SRW64_ASSERTS=ON keeps them (build_game.py --validation).
@@ -55,8 +59,21 @@ string(JSON SRW64_JP_HASH GET "${SRW64_VARIANTS_JSON}" variants jp xxh3_64)
 string(JSON SRW64_JP_SHA256 GET "${SRW64_VARIANTS_JSON}" variants jp sha256)
 string(JSON SRW64_JP_ID GET "${SRW64_VARIANTS_JSON}" variants jp game_id)
 configure_file(rom_variants.hpp.in rom_variants.hpp @ONLY)
-add_subdirectory("${SRW64_RUNTIME}" runtime EXCLUDE_FROM_ALL)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
+if(NINTENDO_SWITCH)
+    # The Switch (docs/design/switch-port.md, S0): the runtime's counterparts that
+    # tools/recomp/toolchain/prepare_switch_runtime.py writes (no mods, live recompiler or
+    # recompiled heap; RDRAM from calloc).
+    set(SRW64_SWITCH_RUNTIME "${SRW64_BUILD}/switch-runtime")
+    # newlib hides POSIX and BSD declarations (posix_memalign for sse2neon) under strict ISO.
+    add_compile_definitions(_GNU_SOURCE)
+    set(SRW64_LIBRECOMP_SOURCE "${SRW64_RUNTIME}/librecomp")
+    add_subdirectory("${SRW64_RUNTIME}/ultramodern" ultramodern EXCLUDE_FROM_ALL)
+    target_include_directories(ultramodern BEFORE PUBLIC "${SRW64_SWITCH_RUNTIME}/include")
+    add_subdirectory("${SRW64_SWITCH_RUNTIME}/librecomp" librecomp EXCLUDE_FROM_ALL)
+else()
+    add_subdirectory("${SRW64_RUNTIME}" runtime EXCLUDE_FROM_ALL)
+endif()
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
     "${SRW64_ROOT}/tools/recomp/toolchain/prepare_runtime_lifecycle.py"
     "${SRW64_ROOT}/src/host/runtime-support/shutdown_trace.hpp"
@@ -64,15 +81,21 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
 execute_process(COMMAND "${Python3_EXECUTABLE}" "${SRW64_ROOT}/tools/recomp/toolchain/prepare_runtime_lifecycle.py"
     COMMAND_ERROR_IS_FATAL ANY)
 get_target_property(SRW64_TIMER_SOURCES ultramodern SOURCES)
+if(NINTENDO_SWITCH)
+    list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/error_handling\\.cpp$")
+    list(APPEND SRW64_TIMER_SOURCES "${SRW64_SWITCH_RUNTIME}/error_handling.cpp")
+endif()
 list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling)\\.cpp$")
 set_property(TARGET ultramodern PROPERTY SOURCES ${SRW64_TIMER_SOURCES}
     "${SRW64_BUILD}/runtime-lifecycle/timer.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/threads.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/mesgqueue.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/scheduling.cpp")
-get_target_property(SRW64_RUNTIME_SOURCES librecomp SOURCES)
-list(FILTER SRW64_RUNTIME_SOURCES EXCLUDE REGEX "/recomp\\.cpp$")
-set_property(TARGET librecomp PROPERTY SOURCES ${SRW64_RUNTIME_SOURCES} "${SRW64_BUILD}/runtime-lifecycle/recomp.cpp")
+if(NOT NINTENDO_SWITCH)   # the Switch's librecomp names its own recomp.cpp
+    get_target_property(SRW64_RUNTIME_SOURCES librecomp SOURCES)
+    list(FILTER SRW64_RUNTIME_SOURCES EXCLUDE REGEX "/recomp\\.cpp$")
+    set_property(TARGET librecomp PROPERTY SOURCES ${SRW64_RUNTIME_SOURCES} "${SRW64_BUILD}/runtime-lifecycle/recomp.cpp")
+endif()
 file(GLOB SRW64_CPU_SOURCES CONFIGURE_DEPENDS "${SRW64_GENERATED}/funcs_*.c")
 add_library(srw64_cpu STATIC ${SRW64_CPU_SOURCES})
 target_include_directories(srw64_cpu PUBLIC
@@ -300,7 +323,15 @@ if(SRW64_GL_ONLY)
     if(NOT TARGET SDL2::SDL2)
         find_package(SDL2 REQUIRED)
     endif()
-    find_package(OpenGL REQUIRED)
+    if(NINTENDO_SWITCH)
+        # OpenGL ES 2 on devkitPro's Mesa (nouveau) through EGL; src/gl/gl_api.hpp takes the
+        # GLES headers there.
+        find_package(PkgConfig REQUIRED)
+        pkg_check_modules(SRW64_SWITCH_GL REQUIRED IMPORTED_TARGET glesv2 egl)
+        add_library(OpenGL::GL ALIAS PkgConfig::SRW64_SWITCH_GL)
+    else()
+        find_package(OpenGL REQUIRED)
+    endif()
     add_subdirectory("${SRW64_ROOT}/src/native/ui" ui-probe)
     add_executable(srw64-gl-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp"
         native_dialogue.cpp native_intro.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp"
@@ -323,8 +354,13 @@ if(SRW64_GL_ONLY)
         target_sources(srw64-gl-host PRIVATE macos/app_menu.mm macos/update_http_macos.mm)
         set_source_files_properties(macos/app_menu.mm macos/update_http_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
         target_link_libraries(srw64-gl-host PRIVATE "-framework Cocoa" "-framework QuartzCore")
+    elseif(NINTENDO_SWITCH)
+        target_sources(srw64-gl-host PRIVATE switch/switch_platform.cpp)
     elseif(NOT WIN32)
         target_link_libraries(srw64-gl-host PRIVATE ${CMAKE_DL_LIBS})
+    endif()
+    if(NINTENDO_SWITCH)   # the runtime's Switch headers ahead of upstream's (the semaphore)
+        target_include_directories(srw64-gl-host BEFORE PRIVATE "${SRW64_SWITCH_RUNTIME}/include")
     endif()
     target_include_directories(srw64-gl-host PRIVATE
         "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_BINARY_DIR}" "${SRW64_ROOT}/src/native"
@@ -333,4 +369,9 @@ if(SRW64_GL_ONLY)
         "${SRW64_RUNTIME}/thirdparty/concurrentqueue" "${SRW64_RT64}/src/contrib" "${SRW64_RT64}/include")
     target_link_libraries(srw64-gl-host PRIVATE srw64_launch srw64_ui_pages srw64_dialogue_cpu srw64_cpu librecomp
         SDL2::SDL2 OpenGL::GL)
+    if(NINTENDO_SWITCH)
+        # Marchwind64.nro: the NACP (name, author, version) and the default icon for now.
+        nx_generate_nacp(Marchwind64.nacp NAME "Marchwind64" AUTHOR "Marchwind64" VERSION "${SRW64_VERSION}")
+        nx_create_nro(srw64-gl-host OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Marchwind64.nro" NACP Marchwind64.nacp)
+    endif()
 endif()

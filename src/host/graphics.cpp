@@ -1143,8 +1143,15 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     Uint32 surface_flags = surface;
 #ifdef SRW64_GL_RENDERER
     if (gl_mode()) {
+#ifdef __SWITCH__
+        // OpenGL ES 2 on the Switch's Mesa (src/gl/gl_api.hpp); it gives ES 3.2.
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+#else
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+#endif
         surface_flags = SDL_WINDOW_OPENGL;
     }
 #endif

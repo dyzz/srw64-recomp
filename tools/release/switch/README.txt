@@ -2,11 +2,20 @@ Nintendo Switch（docs/design/switch-port.md）
 
   tools/release/switch/build.sh smoke    在 Docker 里（devkitpro/devkita64，固定摘要）编工具链检查程序，
                                          产出 build/recomp/switch-smoke/srw64-smoke.nro
+  tools/release/switch/build.sh game     游戏本体：srw64-gl-host（SRW64_GL_ONLY）交叉编译成
+                                         build/recomp/switch-build/Marchwind64.nro；加 -k 遇错继续
+  tools/release/switch/build_icu.sh      ICU 78.3 静态库（devkitPro 没有）与数据子集的 C 源码，
+                                         build.sh game 缺了会自动跑；到 build/recomp/switch-deps
+
+  先在仓库根目录 make（生成 CPU 代码、拉固定版本上游、RSP 音频）。worktree 里 build/ 的内容软链到
+  主工作区（cpu-bound、runtime-lifecycle、audio-probe、frontend-adapter 留本地），build.sh 会把
+  主工作区一起挂进容器。
 
 文件
   Dockerfile        镜像：官方 devkitA64，已带 libnx、switch-sdl2、switch-mesa、switch-glad、
                     FreeType、HarfBuzz、switch-tools
   build.sh          宿主侧入口：建镜像、把仓库按同一绝对路径挂进容器再编
+  build_icu.sh      ICU 交叉编译（配置照 mh-linux）；数据换成 tools/release/icu_data.py 的子集
   smoke/            检查程序：打印小程序类型、掌机/底座、进程内存、GLES 2.0 与 GL 2.1 兼容上下文
                     各自的建立耗时与驱动字符串，然后清屏变色 20 秒（按 + 提前退出）
 

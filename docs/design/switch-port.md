@@ -292,6 +292,14 @@ HOME 与截图键归系统，不可用。
 
 **门槛：** NRO 能编出来；模拟器上进到标题画面（若模拟器跑不了 Mesa 程序，记录原因，门槛降为「能加载并写出日志」）。
 
+**S0 进度（2026-10-23，`switch` 分支）：** 第 1–3 步做完，`tools/release/switch/build.sh game` 链接出 `build/recomp/switch-build/Marchwind64.nro`（22.9 MB；ELF `.text` 21.2 MB，含 RmlUi、ICU、FreeType、HarfBuzz、SDL2、Mesa）。没上实机，也没进模拟器。
+
+- **GL 路径：** 从 `vita` 分支摘了 V0 统计与 V1 的六个提交（到 `srw64-gl-host` 为止，不含 Vita 自己的工具与文档），在 main 上重放，冲突只在 `frontend.cpp` 与 UI 的 CMake；GL-only 宿主补上 main 后来加的 `legacy.cpp`、`quick_load.cpp`，Mac 上照常编出 `srw64-gl-host`。Vita 后来的提交（数据预先准备、着色器缓存、跳过重复呈现等）没摘。
+- **运行库：** `prepare_switch_runtime.py` 写到 `build/recomp/switch-runtime/`：RDRAM 用 16 MiB `calloc`、去掉 MOD/LiveRecomp/重编译堆、`WindowHandle`、moodycamel 信号量走 POSIX（newlib 有 `semaphore.h` 但不定义 `__unix__`）、`std::_Exit`、存档复制改流。64 位所以 Vita 的 `DMULT` 与 `mods.hpp` 补丁都不要。ROM 仍按上游读取与校验。线程命名/优先级在 `src/host/switch/switch_platform.cpp` 里空实现；`pthread_detach` 没出问题，没加 `--wrap`。
+- **依赖：** devkitPro 没有 ICU，`build_icu.sh` 交叉编译 ICU 78.3 静态库；数据不用 ICU 自己的库，而是 `icu_data.py c-source` 的 1.1 MB 子集（与安卓同一路，ICU 的数据构建会拒收裁过的 `.dat`）。FreeType、HarfBuzz、SDL2、Mesa 用镜像里的包。
+- **宿主上的改动（都按 `__SWITCH__` 分支）：** GLES 2 头文件与 ES 上下文；`_GNU_SOURCE`（newlib 在严格 ISO 下藏起 `posix_memalign`）；去掉 `-ldl`（FindICU 会加）；日志不走管道（有 nxlink 时留在 nxlink，否则写 `console.log`）；无更新检查；调试接口监听所有地址（仍要令牌）；不要单实例锁（newlib 无 `flock`）。
+- **还没做：** 第 4 步的入口（`sdmc:/switch/Marchwind64/` 用户目录、应用模式检查、romfs、异常处理）——现在 `main` 不带参数时走桌面的选 ROM 流程，上机会停在那里；第 5、6 步。
+
 ### S1 实机跑通（需要实机）
 
 1. 应用模式启动；nxlink 推送与日志；调试接口的局域网模式在实机上接通 MCP（`attach.py`），验证 libnx socket 的 `poll`/`accept`。
