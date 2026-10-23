@@ -516,11 +516,16 @@ public:
         using GraphicsAPI = RT64::UserConfiguration::GraphicsAPI;
 #ifdef __APPLE__
         app->userConfig.graphicsAPI = GraphicsAPI::Metal;
+#elif defined(_WIN32)
+        // Test build for issue #12 (AMD integrated GPUs whose driver resets under D3D12):
+        // Vulkan unless SRW64_GRAPHICS_API=d3d12 picks D3D12 again.
+        app->userConfig.graphicsAPI = GraphicsAPI::Vulkan;
 #else
-        // RT64 picks Vulkan on Linux, and D3D12 with a Vulkan fallback on Windows.
+        // RT64 picks Vulkan on Linux.
         app->userConfig.graphicsAPI = GraphicsAPI::Automatic;
 #endif
-        // For tests only: SRW64_GRAPHICS_API=vulkan (MoltenVK on a Mac), d3d12 or metal.
+        // SRW64_GRAPHICS_API=vulkan (MoltenVK on a Mac), d3d12 or metal: for tests, and on
+        // Windows for players whose GPU fails under one of them (the launcher passes it, launch.cpp).
         if (const char* api = std::getenv("SRW64_GRAPHICS_API")) {
             const std::string name = api;
             if (name == "vulkan") app->userConfig.graphicsAPI = GraphicsAPI::Vulkan;
