@@ -90,9 +90,10 @@ NATIVE_HOOKS = {
     "load_000AB160_func_80209900": "srw64_original_map_damage_draw",
     "load_000AB160_func_801CBB04": "srw64_original_move_select",
     "load_000AB160_func_801C8B04": "srw64_original_map_idle",
-    # The map's blank-tile menu (state 0x16): its open and its A dispatch, for the native
-    # 返回标题画面 row after the original's seven (map_menu.hpp).
+    # The map's blank-tile menu (state 0x16): its open, its labels (8009D684 builds a window
+    # table entry's) and its A dispatch, for the 返回标题画面 row before 中断 (map_menu.hpp).
     "load_000AB160_func_801D13C0": "srw64_original_map_menu_open",
+    "resident_func_8009D684": "srw64_original_window_labels",
     "load_000AB160_func_801D17AC": "srw64_original_map_menu_choose",
     "load_000AB160_func_801E4760": "srw64_original_move_range_draw",
     "resident_func_800945D4": "srw64_original_map_draw",

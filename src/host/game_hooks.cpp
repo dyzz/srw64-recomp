@@ -28,6 +28,7 @@
 #include "enemy_pilot_page.hpp"
 #include "map_combo.hpp"
 #include "map_menu.hpp"
+#include "pilot_kills.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 bool srw64_sound_effects_muted{};
@@ -203,8 +204,28 @@ void load_000AB160_func_801E7430(uint8_t* ram,recomp_context* ctx) {
     srw64::map_combo::reset();
     srw64_original_status_pages(ram,ctx);
 }
+void resident_func_8009D684(uint8_t* ram,recomp_context* ctx) {
+    // A window table entry's labels (a0 the entry, a1/a2 the window's place): the map's
+    // blank-tile menu (entry 0) gets the row of ours before 中断 (map_menu.hpp).
+    const int16_t entry=int16_t(ctx->r4);const int x=int16_t(ctx->r5),y=int16_t(ctx->r6);
+    srw64_original_window_labels(ram,ctx);
+    if(entry!=0)return;
+    namespace m=srw64::map_menu;
+    const int lx=x+m::label_x,ly=y+m::label_y+int(m::row_pitch*m::our_row);
+    m::move_suspend(ram,lx,ly);
+    // Ours as the list's own rows are made (a handle, 8008D0E8 with a record, place and flag
+    // 0), then given our record number and glyphs.
+    uint32_t handle=0;srw64::pilot_kills::call(ram,ctx,resident_func_80083F70,0,0,0,0,0,&handle);
+    if(int8_t(handle)<0)return;
+    srw64::pilot_kills::call(ram,ctx,resident_func_8008D0E8,uint32_t(int32_t(int8_t(handle))),m::record_suspend,uint32_t(lx),uint32_t(ly),0);
+    const uint32_t slot=m::labels+uint32_t(int8_t(handle))*m::label_size;
+    srw64::guest::write16(ram,slot,m::record_title);
+    uint32_t p=slot+0xC;
+    for(const uint16_t g:m::glyphs){srw64::guest::write16(ram,p,g);p+=2;}
+    srw64::guest::write16(ram,p,0xFFFF);
+}
 void load_000AB160_func_801D13C0(uint8_t* ram,recomp_context* ctx) {
-    // The map's blank-tile menu opens: a row of ours after the original's (map_menu.hpp).
+    // The map's blank-tile menu opens: one row more for the cursor (map_menu.hpp).
     srw64_original_map_menu_open(ram,ctx);
     srw64::map_menu::opened(ram);
 }

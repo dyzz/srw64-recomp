@@ -160,22 +160,26 @@ def enter():
     time.sleep(1)
 
 
-def menu_row():
-    """Our label among the text the back pass drew last, or None."""
-    back = status()['ui_text'].get('back') or []
-    return next((e for e in back if e.get('extra') == 'map-menu-title'), None)
-
-
-def menu_rows():
-    """The y of our label, システム (record 525) and 中断 (526) in the label pool."""
+def pool():
+    """The text engine's live labels: record -> y (the first one of each)."""
     raw = bytes.fromhex(s.client.call('memory.read', address=0x8015CB00, size=60 * 0x34)['hex'])
     found = {}
     for n in range(60):
         e = raw[n * 0x34:(n + 1) * 0x34]
         if 1 <= e[2] <= 3:
             found.setdefault(struct.unpack('>H', e[0:2])[0], struct.unpack('>i', e[8:12])[0])
-    row = menu_row()
-    return {'ours': row and row['y'], 'system': found.get(525), 'suspend': found.get(526)}
+    return found
+
+
+def menu_row():
+    """Our label's y (record 0xF001, map_menu.hpp), or None."""
+    return pool().get(0xF001)
+
+
+def menu_rows():
+    """The y of our label, システム (record 525) and 中断 (526)."""
+    found = pool()
+    return {'ours': found.get(0xF001), 'system': found.get(525), 'suspend': found.get(526)}
 
 
 def cursor():
@@ -305,7 +309,7 @@ try:
         until(lambda: mem(0x80172EB2) != 0, 10, f'the {name} sub-screen')
         time.sleep(.5)
         shot(f'02-{name}')
-        check(f'no-row-under-{name}', not menu_row(), {'row': menu_row(), 'sub': mem(0x80172EB2)})
+        check(f'no-row-under-{name}', menu_row() is None, {'row': menu_row(), 'sub': mem(0x80172EB2)})
         keys('x', pause=1.5)
         until(lambda: mem(0x80172EB2) == 0, 10, 'the menu again')
         time.sleep(.5)
@@ -313,6 +317,15 @@ try:
         rows = menu_rows()
         check(f'rows-after-{name}', rows['ours'] is not None and rows['system'] is not None and rows['suspend'] is not None
               and rows['ours'] - rows['system'] == 16 and rows['suspend'] - rows['ours'] == 16, rows)
+    # Closed with B the row goes with the original's labels; opened again it is back.
+    keys('x', pause=1)
+    until(lambda: mem(MAP_STATE) == 5, 10, 'the map after closing the menu')
+    check('row-freed-on-close', menu_row() is None and 526 not in pool(), menu_rows())
+    keys('z', pause=1)
+    until(lambda: mem(MAP_STATE) == 0x16 and mem(0x80172ED4) == 8, 10, 'the menu again')
+    time.sleep(.5)
+    rows = menu_rows()
+    check('rows-reopened', rows['ours'] is not None and rows['suspend'] - rows['ours'] == 16 and rows['ours'] - rows['system'] == 16, rows)
     # Back to フェイズ終了, then up past 中断 onto ours.
     for _ in range(mem(0x80172ED6)):
         keys('up', pause=.4)

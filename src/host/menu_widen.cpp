@@ -55,14 +55,14 @@ int widen_fills(uint8_t* rdram, uint32_t begin, uint32_t end, int x0, int delta,
 }
 
 // The blank-tile menu's frame (scene 1198, 80 x 128: a 16-pixel border row at the top and
-// at y 112, six interior rows): one row taller for the eighth entry while that menu is
-// open with it (map_menu::tall()).
+// at y 112, six interior rows; no other window draws it): always one row taller, for its
+// eighth row (map_menu.hpp).
 constexpr uint16_t kMapMenuScene = 1198;
 std::optional<Rows> rows_spec(uint16_t scene) {
     if (scene == kMapMenuScene) return Rows{0, 64, 96, 112, 128, int(map_menu::row_pitch)};
     return std::nullopt;
 }
-std::optional<Rows> rows(uint16_t scene) { return map_menu::tall() ? rows_spec(scene) : std::nullopt; }
+std::optional<Rows> rows(uint16_t scene) { return rows_spec(scene); }
 std::optional<Columns> columns(uint16_t scene) {
     if (scene >= kUnitFirst && scene <= kUnitLast) return Columns{0, 176, 16, 32, 48, kUnitDelta};
     if (scene == 1177) return Columns{32, 176, 80, 96, 112, kMenuDelta};
@@ -167,8 +167,8 @@ void callback_drawn(uint8_t* rdram, uint32_t function, uint32_t dl_begin, uint32
     case 0x801E4160:                        // the green cursor bar, 40 wide on the unit menu only
         if (tactical) widen_fills(rdram, dl_begin, dl_end, -1, kUnitDelta, -1, 40);
         break;
-    case 0x8009CDF0:                        // a window's dark panel: the blank-tile menu's, one row taller
-        if (tactical && map_menu::tall())
+    case 0x8009CDF0:                        // the blank-tile menu's dark panel (its window entry's own), one row taller
+        if (tactical)
             for (uint32_t p = dl_begin; p + 8 <= dl_end; p += 8) {
                 const uint32_t w0 = word(rdram, p);
                 if ((w0 >> 24) != 0xF6) continue;
