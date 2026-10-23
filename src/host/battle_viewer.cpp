@@ -1,4 +1,5 @@
 #include "battle_viewer.hpp"
+#include "combo_attacks.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
 #include "native_dialogue.hpp"
@@ -75,6 +76,75 @@ void note(const json& event){if(log.is_open()){log<<event.dump()<<'\n';log.flush
 std::span<const uint8_t> rom(){return recomp::get_rom();}
 unsigned rom16(uint32_t at){const auto r=rom();return at+1<r.size()?unsigned(r[at])<<8|r[at+1]:0;}
 unsigned rom8(uint32_t at){const auto r=rom();return at<r.size()?r[at]:0;}
+
+// Who may fly each unit and its default pilot (src/native/ui/frontend.cpp lists the same).
+struct Crew{unsigned unit,pilot;std::vector<unsigned> actors;};
+const Crew crews[]={
+#include "battle_viewer_pilots.inc"
+};
+const Crew* crew_of(unsigned unit) {
+    for(const auto& c:crews)if(c.unit==unit)return &c;
+    return nullptr;
+}
+bool flies(unsigned actor,unsigned unit) {
+    const auto* c=crew_of(unit);
+    return c && std::find(c->actors.begin(),c->actors.end(),actor)!=c->actors.end();
+}
+
+// The demo battle (docs/data/battle-quotes.md): the quote pick tests codes 5000-9999 (a
+// female opponent, the combination attacks) only after a map, and 80221ACC finds a
+// combination attack's pair in the map's participant slot. While a viewer battle plays the
+// pick skips those checks (game_hooks.hpp quote_demo, generate_cpu.py) and the pair is the
+// speaking side's lead and the partners chosen here; nothing of the game's state changes.
+constexpr unsigned max_partners=4;
+std::array<std::vector<unsigned>,2> partners;   // per side, its weapon's partners' characters
+uint32_t speaking=0;                            // the record whose quote is being picked, 0 none
+
+// The characters joining a combination attack: the row its unit leads (by unit, or by its
+// pilot, whose partners are then characters). Partner units take the others of the first
+// pilot pairing with the lead pilot in it whose members fly them all (Mazinger's 甲児 +
+// 鉄也 + デューク, ショウ + マーベル), one each; a unit left over its default pilot.
+std::vector<unsigned> partners_of(unsigned unit,unsigned actor,unsigned weapon) {
+    std::vector<unsigned> out;
+    const auto attack=combo_attacks::find(rom(),uint16_t(weapon));
+    if(!attack)return out;
+    const auto* row=combo_attacks::lead_row(*attack,int(unit),int(actor));
+    if(!row)return out;
+    const size_t count=std::min<size_t>(row->partners.size(),max_partners);
+    if(row->by_pilot){for(size_t n=0;n<count;++n)out.push_back(unsigned(row->partners[n]));return out;}
+    std::vector<int> pilots(count,-1);
+    const auto used=[&](int p){return unsigned(p)==actor || std::find(pilots.begin(),pilots.end(),p)!=pilots.end();};
+    for(const auto& pairing:attack->pilots) {
+        if(std::find(pairing.begin(),pairing.end(),int16_t(actor))==pairing.end())continue;
+        std::vector<int> tried(count,-1);
+        for(size_t n=0;n<count;++n)
+            for(const int16_t p:pairing)
+                if(tried[n]<0 && unsigned(p)!=actor && std::find(tried.begin(),tried.end(),p)==tried.end() && flies(unsigned(p),unsigned(row->partners[n])))tried[n]=p;
+        if(std::find(tried.begin(),tried.end(),-1)==tried.end()){pilots=tried;break;}
+    }
+    for(size_t n=0;n<count;++n) {
+        if(pilots[n]>=0)continue;
+        const auto* c=crew_of(unsigned(row->partners[n]));
+        if(!c)continue;
+        if(!used(int(c->pilot)))pilots[n]=int(c->pilot);
+        else for(const unsigned p:c->actors)if(pilots[n]<0 && !used(int(p)))pilots[n]=int(p);
+    }
+    for(const int p:pilots)if(p>=0)out.push_back(unsigned(p));
+    return out;
+}
+
+bool quote_demo(uint8_t* ram){return running && read(ram,mode,1)==demo_mode;}
+void quote_pick(uint8_t*,uint32_t record){speaking=record;}
+int quote_participants(uint8_t* ram,unsigned* actors,unsigned max) {
+    if(!quote_demo(ram))return -1;
+    const unsigned s=speaking==records?0:speaking==records+record_size?1:2;
+    std::lock_guard lock(mutex);
+    if(s>1 || !choice.is_object() || partners[s].empty() || !max)return 0;
+    unsigned n=0;
+    actors[n++]=choice.at(s?"defender":"attacker").at("pilot").get<unsigned>();
+    for(const unsigned p:partners[s])if(n<max)actors[n++]=p;
+    return int(n);
+}
 
 // The battle music (801E085C, docs/design/battle-viewer.md §6.7): a player unit plays its
 // pilot's song (s16 per character, ROM 0x7D6A0), except the forms its super mode makes
@@ -191,10 +261,19 @@ void filled_records(uint8_t* ram) {
     if(!armed)return;
     armed=false;++filled;
     const auto writes=choice.is_object()?compute(ram,choice):raw;
+    // A combination attack's partners, for its quotes (quote_participants); the defender's only
+    // when it counters.
+    for(unsigned s=0;s<2;++s) {
+        partners[s].clear();
+        if(!choice.is_object() || (s && !choice.value("counter",false)))continue;
+        const auto& side=choice.at(s?"defender":"attacker");
+        if(side.contains("weapon") && side.at("weapon").is_number())
+            partners[s]=partners_of(side.at("unit").get<unsigned>(),side.at("pilot").get<unsigned>(),side.at("weapon").get<unsigned>());
+    }
     for(const auto& w:writes)
         for(size_t i=0;i<w.bytes.size();++i)write8(ram,records+w.side*record_size+w.offset+uint32_t(i),w.bytes[i]);
     last={{"event","filled"},{"vi",srw64_current_vi()},{"mode",read(ram,mode,1)},{"previous_mode",read(ram,previous_mode,1)},
-          {"writes",writes.size()},{"choice",choice}};
+          {"writes",writes.size()},{"choice",choice},{"partners",partners}};
     note(last);
 }
 }
@@ -203,6 +282,9 @@ void install(const std::filesystem::path& output) {
     if(!output.empty())log.open(output/"battle-viewer-events.jsonl");
     srw64_game_hooks.viewer_start=start;
     srw64_game_hooks.demo_battle_filled=filled_records;
+    srw64_game_hooks.quote_demo=quote_demo;
+    srw64_game_hooks.quote_pick=quote_pick;
+    srw64_game_hooks.quote_participants=quote_participants;
 }
 
 json request(const json& params) {

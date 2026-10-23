@@ -61,6 +61,14 @@ struct SRW64GameHooks {
     // demo's participant records, the viewer writes its own choices over them.
     bool (*viewer_start)(uint8_t*, int* song){};
     void (*demo_battle_filled)(uint8_t*){};
+    // The battle viewer's demo battle (battle_viewer.hpp): true while one plays, when the
+    // battle quote pick skips its after-a-map checks (generate_cpu.py). The pick (8022245C)
+    // says whose quote it chooses (the participant record, 0 after), and a combination
+    // attack's pair (80221ACC) asks for the speaking side's characters, the lead first:
+    // their count, or -1 outside the demo battle (the original reads the map's slot).
+    bool (*quote_demo)(uint8_t*){};
+    void (*quote_pick)(uint8_t*, uint32_t record){};
+    int (*quote_participants)(uint8_t*, unsigned* actors, unsigned max){};
     bool (*map_space_begin)(uint8_t*, int32_t cursor, uint32_t function, uint32_t slot, uint32_t sub){};
     void (*map_space_end)(uint8_t*, int32_t cursor){};
     void (*reset)(uint8_t*){};

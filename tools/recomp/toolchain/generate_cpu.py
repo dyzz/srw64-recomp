@@ -107,6 +107,11 @@ NATIVE_HOOKS = {
     # The title demo battle's participant records (8009C2DC); the battle viewer rewrites
     # them after the original fills its defaults (battle_viewer.hpp).
     "resident_func_8009C2DC": "srw64_original_demo_battle_fill",
+    # A battle quote's pick and a combination attack's pair (battle overlay): in the battle
+    # viewer's demo battle the pick skips its after-a-map checks and the pair comes from the
+    # viewer's choice (battle_viewer.hpp; the checks are rewritten below).
+    "load_00121560_func_8022245C": "srw64_original_battle_quote_pick",
+    "load_00121560_func_80221ACC": "srw64_original_combo_quote_pair",
     "resident_func_8008F5C8": "srw64_original_dialogue_reset",
     "resident_func_8009EFDC": "srw64_original_script_step",
     # The short skip (script_skip.hpp): a skipped dialogue page reads as finished, and
@@ -264,6 +269,13 @@ MAP_WIDTH_CONSTANTS.update({
     ("srw64_original_intermission_menu_step", 0x801CE1D0): ("0X8", "0X9"),
     ("srw64_original_intermission_menu_step", 0x801CE234): ("0X1", "0X2"),
     ("srw64_original_intermission_menu_step", 0x801CE1E8): ("MEM_H(ctx->r2, -0X2AB8)", "(MEM_H(ctx->r2, -0X2AB8) == 9 ? 8 : MEM_H(ctx->r2, -0X2AB8))"),
+    # The battle quote pick's codes 5000-9999 (a female opponent, the combination attacks) are
+    # tested only after a map (the previous mode D_8015DD60 is 3), and the female test reads
+    # the opponent's unit -> pilot -> flags, a stand-in in a demo battle. In the battle
+    # viewer's demo battle (srw64_quote_demo) the test runs and finds no female opponent.
+    ("srw64_original_battle_quote_pick", 0x80222564): ("MEM_B(ctx->r3, -0X22A0)", "(srw64_quote_demo(rdram) ? 3 : MEM_B(ctx->r3, -0X22A0))"),
+    ("srw64_original_battle_quote_pick", 0x802225D8): ("MEM_W(ctx->r2, 0X38)", "(srw64_quote_demo(rdram) ? 0 : MEM_W(ctx->r2, 0X38))"),
+    ("srw64_original_battle_quote_pick", 0x802225DC): ("MEM_BU(ctx->r2, 0X4)", "(srw64_quote_demo(rdram) ? 0 : MEM_BU(ctx->r2, 0X4))"),
 })
 
 # 8008AE90 builds each frame's display list by calling every render node's function: sprites
@@ -469,6 +481,7 @@ def main() -> int:
                               "uint32_t srw64_morale_cap(uint64_t pilot);\nuint32_t srw64_morale_room(uint64_t pilot, uint64_t morale);\n"
                               "int32_t srw64_damage_real(float damage, int32_t cap_bits);\n"
                               "uint32_t srw64_map_figure(uint8_t* rdram, uint32_t shown);\nuint32_t srw64_battle_figure(uint8_t* rdram, uint32_t shown);\n"
+                              "int srw64_quote_demo(uint8_t* rdram);\n"
                               "void srw64_render_node(uint8_t* rdram, recomp_context* ctx, int32_t function, int32_t sprite);\n#ifdef __cplusplus\n}\n#endif\n")
         trap = work / "generated/funcs_unsupported.c"
         trap.write_text('#include "recomp.h"\n#include <stdio.h>\n#include <stdlib.h>\n' + "\n".join(

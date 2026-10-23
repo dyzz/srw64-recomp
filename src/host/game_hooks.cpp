@@ -491,6 +491,48 @@ void resident_func_8009C2DC(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_demo_battle_fill(rdram, ctx);
     if (srw64_game_hooks.demo_battle_filled) srw64_game_hooks.demo_battle_filled(rdram);
 }
+// The battle viewer's demo battle (battle_viewer.hpp): the quote pick's rewritten checks.
+int srw64_quote_demo(uint8_t* rdram) {
+    return srw64_game_hooks.quote_demo && srw64_game_hooks.quote_demo(rdram);
+}
+void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, uint32_t(ctx->r4));
+    srw64_original_battle_quote_pick(rdram, ctx);
+    if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, 0);
+}
+// 80221ACC(table, code, base): code when a combination attack's pair says it, else -1
+// (docs/data/battle-quotes.md). The original gathers the pair from the map's participant
+// slot (8018B6E8 + D_8025020A x 0x5C, +0x48: unit instances, +0x38 the pilot, +2 the
+// character, 0 ends); in the viewer's demo battle the characters come from its choice and
+// the rest goes as the original: each one's index (80221A3C; one without ends the list),
+// 7 and 9 left out for bases 8300, 8400 and 8500, the table's entry
+// [first x stride + second] (stride 10, 8 for 8700, whose sub pilot is not staged) added to
+// base, and 0x10 none.
+void load_00121560_func_80221ACC(uint8_t* rdram, recomp_context* ctx) {
+    unsigned actors[5];
+    const int count = srw64_game_hooks.quote_participants ? srw64_game_hooks.quote_participants(rdram, actors, 5) : -1;
+    if (count < 0) { srw64_original_combo_quote_pair(rdram, ctx); return; }
+    const uint32_t table = uint32_t(ctx->r4);
+    const int16_t code = int16_t(ctx->r5), base = int16_t(ctx->r6);
+    const bool keep_7_9 = base != 0x206C && base != 0x20D0 && base != 0x2134;
+    const int stride = base == 0x21FC ? 8 : 10;
+    int list[6], listed = 0;
+    for (int n = 0; n < count && listed < 6; ++n) {
+        recomp_context c = *ctx;
+        c.r4 = int32_t(actors[n]);
+        load_00121560_func_80221A3C(rdram, &c);
+        const int index = int16_t(c.r2);
+        if (index == -1) break;
+        if ((index == 7 || index == 9) && !keep_7_9) continue;
+        list[listed++] = index;
+    }
+    int32_t result = -1;
+    if (listed >= 2 && listed < 6) {
+        const int16_t offset = int16_t(srw64::guest::read(rdram, table + 2 * uint32_t(int16_t(list[0] * stride + list[1])), 2));
+        if (offset != 0x10 && code == base + offset) result = code;
+    }
+    ctx->r2 = result;
+}
 void resident_func_8008F5C8(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_dialogue_reset(rdram, ctx);
     if (srw64_game_hooks.reset) srw64_game_hooks.reset(rdram);
