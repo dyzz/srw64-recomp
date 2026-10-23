@@ -242,8 +242,8 @@ HOME 与截图键归系统，不可用。
 | 功能验证（主力） | Mac 上的 `srw64-gl-host`（`SRW64_GL_ONLY` 构建，与 Switch 版同源）配 MCP 与检查脚本；`export SRW64_HOST_BINARY=<srw64-gl-host>` 后 `Session.launch` 都走它 | `vita` 分支 V1 记录，27 个检查已通过。平台无关的问题都在这一步解决 |
 | 编 NRO | Docker `devkitpro/devkita64`（`tools/release/switch/build.sh`，S0 新建），产出 `.nro` 与带符号的 `.elf`（崩溃定位要用，每次构建一起留存） | 先例项目 CI 同样用这个镜像（已查证 Starship/Ghostship `switch.yml`） |
 | 冒烟 | Ryubing 加载 NRO（需本机密钥与固件，推断） | 见上一节模拟器的局限 |
-| 推到实机 | Switch 上 hbmenu 按 **Y** 进 NetLoader（已查证 nx-hbmenu `nx_main/main.c`）；Mac 上 `nxlink -a <Switch IP> -p switch/Marchwind64/Marchwind64.nro -s Marchwind64.nro`：上传后在 SD 上落到该路径并启动，`-s` 留在原地接收程序的 stdout/stderr（程序里调 `nxlinkStdio()`） | nxlink 选项读 [switch-tools `src/nxlink.c`](https://github.com/switchbrew/switch-tools/blob/master/src/nxlink.c)：上传端口 28280，回连端口 28771 |
-| nxlink 装在 Mac 本机 | **不要在 Docker 里跑 nxlink。** hbmenu 把「上传连接的源地址」记作回连地址（`loadnro` 里 `ad->nxlink_host = remote`，已查证 nx-hbmenu `common/netloader.c`），程序再连回这个地址的 28771 端口。Docker Desktop 下容器出站经 NAT，Switch 看到的源地址是 Mac，而 28771 在容器里监听，不发布端口就收不到；不带 `-a` 时的 UDP 广播发现也出不了容器的网络（推断）。nxlink 来自 devkitPro 的 `switch-tools`：Mac 上装 devkitPro pacman（`devkitpro-pacman-installer.pkg`，[devkitPro/pacman 发布页](https://github.com/devkitPro/pacman/releases)，v6.0.2）后装 `switch-tools`，或直接从 switch-tools 源码编（只依赖 zlib） | 已查证工具来源；NAT 行为是推断 |
+| 推到实机 | Switch 上 hbmenu 按 **Y** 进 NetLoader（已查证 nx-hbmenu `nx_main/main.c`）；Mac 上 `nxlink -a <Switch IP> -s Marchwind64.nro`：上传后落到 `sdmc:/switch/Marchwind64.nro` 并启动。`-p` 是相对 hbmenu 当前目录（`sdmc:/switch`）的路径，hbmenu 不建目录，目录不存在时屏幕报 `open: err=2`、nxlink 只得到回应 255（2026-10-23 实机），`-s` 留在原地接收程序的 stdout/stderr（程序里调 `nxlinkStdio()`） | nxlink 选项读 [switch-tools `src/nxlink.c`](https://github.com/switchbrew/switch-tools/blob/master/src/nxlink.c)：上传端口 28280，回连端口 28771 |
+| nxlink 装在 Mac 本机 | **不要在 Docker 里跑 nxlink。** hbmenu 把「上传连接的源地址」记作回连地址（`loadnro` 里 `ad->nxlink_host = remote`，已查证 nx-hbmenu `common/netloader.c`），程序再连回这个地址的 28771 端口。Docker Desktop 下容器出站经 NAT，Switch 看到的源地址是 Mac，而 28771 在容器里监听，不发布端口就收不到；不带 `-a` 时的 UDP 广播发现也出不了容器的网络（推断）。nxlink 来自 devkitPro 的 `switch-tools`：Mac 上装 devkitPro pacman（`devkitpro-pacman-installer.pkg`，[devkitPro/pacman 发布页](https://github.com/devkitPro/pacman/releases)，v6.0.2）后装 `switch-tools`，或直接从 switch-tools 源码编（只依赖 zlib；本机做法见 `tools/release/switch/README.txt`）。macOS 上不带 `-a` 的广播报 `sendto: No route to host`，一律带 `-a`。NetLoader 只接受一次连接：别用 `nc` 之类探端口，空连接会让它报 `error getting name length err=11` 并退出 | 已查证工具来源；NAT 行为是推断 |
 | 调试接口接 MCP | 见下「调试接口的局域网模式」：Mac 上 `tools/release/switch/attach.py --host <Switch IP>` 写出本地会话的 `debug.json`，之后 `srw64_attach`、`srw64ctl.py`、检查脚本照常用 | 与 Deck（ssh）、安卓（adb）同一套 `Session.attach()` |
 | 拷大文件 | ROM：`sdmc:/switch/Marchwind64/rom.z64`，一次性放好；HD 包、存档、日志走 ftpd 或读卡器 | — |
 | 崩溃 | 见下「崩溃与调试」 | — |
@@ -265,6 +265,19 @@ HOME 与截图键归系统，不可用。
 - **自己的异常处理（已查证先例）。** libnx 允许程序定义 `__libnx_exception_handler` 并给 `__nx_exception_stack`（`nx/source/runtime/init.c`、`exception.s`）。DK64Recomp-NX 用它把 pc/lr 与回溯按模块偏移打进自己的日志，注释里就是同一条 addr2line 命令（`switch/crash_switch.c`）。本项目照做，写进 `sdmc:/switch/Marchwind64/logs/`，问题报告 zip 一并收走。
 - **gdbstub（已查证）。** Atmosphère 自带 dmnt.gen2 的独立 gdbstub：在 `sdmc:/atmosphere/config/system_settings.ini` 的 `[atmosphere]` 下设 `enable_standalone_gdbstub = u8!0x1`（同时保持 `enable_htc = u8!0x0`，默认就是 0），重启后经 Wi-Fi 在端口 **22225** 上提供 GDB 远程协议；Mac 上用 devkitPro 的 `aarch64-none-elf-gdb`，`target extended-remote <Switch IP>:22225`，`info os processes` 列进程、`attach <pid>`；`monitor wait application` 让下一个启动的应用挂起等附加（1.2.3 起，[changelog](https://github.com/Atmosphere-NX/Atmosphere/blob/master/docs/changelog.md)；默认值见 `stratosphere/ams_mitm/source/set_mitm/settings_sd_kvs.cpp`，源码注释称「这个设置将来可能消失」）。注意：hbmenu 启动的 NRO 跑在被接管的游戏进程里；调试会用到网络的进程可能卡住（changelog 原话的意思）；gdb 附加时 libnx 的自定义异常处理不会接管。只在 emuMMC 里开。
 - **日志。** 平时靠 nxlink 的 stdout 和 SD 上的日志文件；调试接口的事件日志照常可用。
+
+### 实机冒烟结果（2026-10-23）
+
+`tools/release/switch/build.sh smoke` 编出的 `srw64-smoke.nro`（6 MB）经 nxlink 推到用户的初代机（掌机模式），输出：
+
+| 项目 | 结果 |
+| --- | --- |
+| 小程序类型 | library applet：这次是从相簿进的 hbmenu，进程总内存只有 369 MiB（已用 233）。正式测试要按住 R 启动游戏进应用模式 |
+| GL 2.1 兼容上下文 | 4.9 ms 建成；实际给的是 `4.3 (Compatibility Profile) Mesa 20.1.0-rc3`，nouveau / NV120，GLSL 4.30 |
+| GLES 2.0 上下文 | 2.1 ms 建成；实际给 `OpenGL ES 3.2`，GLSL ES 3.20 |
+| 呈现 | 只清屏时 20 s 呈现 1203 帧（60.1/s），垂直同步正常 |
+
+结论：两种上下文都能建，兼容档是 4.3，客户端顶点数组可用；S0 的「GLES 还是 GL 2.1」不再是阻塞项。
 
 ## 阶段
 

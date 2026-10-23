@@ -16,5 +16,10 @@ Nintendo Switch（docs/design/switch-port.md）
     cc -O2 -o ~/.local/bin/nxlink ~/.local/share/switch-tools/src/nxlink.c -lz
   Switch 上按住 R 启动任意游戏进 hbmenu（应用模式），按 Y 进 NetLoader，屏幕上会显示 IP。
     cd build/recomp/switch-smoke
-    nxlink -a <Switch IP> -p switch/Marchwind64/srw64-smoke.nro -s srw64-smoke.nro
+    nxlink -a <Switch IP> -s srw64-smoke.nro
+  文件落到 sdmc:/switch/srw64-smoke.nro。-p 是相对 sdmc:/switch 的路径，hbmenu 不建目录，
+  目录不存在时屏幕报 "open: err=2"。
   不带 -a 时 nxlink 发 255.255.255.255 广播，macOS 上报 "sendto: No route to host"，所以总是带 -a。
+  NetLoader 只接受一次连接：别用 nc 探端口，空连接会让它报 "error getting name length err=11"。
+  本机的 nxlink 加了一行：Switch 回未知错误码时打印出来（原版直接静默退出 1）。
+  按住 R 启动游戏进的 hbmenu 才是应用模式；从相簿进只有约 370 MiB 内存。
