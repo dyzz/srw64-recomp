@@ -310,7 +310,7 @@ if(SRW64_GL_ONLY)
         debug_server.cpp debug_transport.cpp gbi_stats.cpp
         link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp
         cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp stage_info.cpp
-        rom_art.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"
+        rom_art.cpp legacy.cpp quick_load.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"
         native_map.cpp native_sprite.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp game_hooks.cpp
         "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" dialogue_gl.cpp native_gl.cpp
         "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp" gl_only_stubs.cpp)
