@@ -45,7 +45,10 @@ void NamePage::sync(const names::Request& next,const std::map<std::string,std::s
     const int w=int(area_w/density+.5f),h=int(area_h/density+.5f),ix=int(area_x),iy=int(area_y);
     const bool rebuild=art_changed || !document || next.serial!=request.serial || next.person!=request.person || next.visible!=request.visible || next_locale!=locale || w!=page_w || h!=page_h || ix!=inset_x || iy!=inset_y;
     if(next.serial!=request.serial || next.revision!=request.revision)waiting=false;
-    request=next;labels=next_labels;locale=next_locale;art_changed=false;page_w=w;page_h=h;inset_x=ix;inset_y=iy;
+    // The labels only while the page is up, and only when they changed: a copy of all ~850
+    // every frame was a quarter of the UI thread on a phone (2026-10-23).
+    if(next.visible && labels!=next_labels)labels=next_labels;
+    request=next;locale=next_locale;art_changed=false;page_w=w;page_h=h;inset_x=ix;inset_y=iy;
     if(!request.visible){if(document && document->IsVisible())document->Hide();return;}
     if(rebuild)build();
     for(unsigned i=0;i<4;++i)if(auto* card=document->GetElementById("route"+std::to_string(i))){

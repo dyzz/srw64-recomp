@@ -76,6 +76,7 @@ inline State& state(){static State s;return s;}
 inline bool quick_start() {
     auto& s=state();std::lock_guard lock(s.mutex);return s.image && s.armed && !s.applied;
 }
+inline bool armed(){auto& s=state();std::lock_guard lock(s.mutex);return s.armed;}
 inline nlohmann::json snapshot() {
     auto& s=state();std::lock_guard lock(s.mutex);
     nlohmann::json result={{"available",bool(s.image)},{"name",s.image?s.image->name:""},{"entering",s.armed},

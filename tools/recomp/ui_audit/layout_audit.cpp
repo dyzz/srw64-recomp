@@ -167,7 +167,7 @@ bool take_returned(){return false;} bool busy(){return false;}
 }
 namespace srw64::sprites { std::string viewer_scene_image(const std::string&){return {};} }
 namespace srw64::campaign_switch { bool available(){return false;} void enter(const campaign_library::Entry&){} void leave(){} }
-namespace srw64::battle_page { bool original_screen(){return false;} nlohmann::json map_art(){return nlohmann::json::array();} }
+namespace srw64::battle_page { bool original_screen(){return false;} nlohmann::json map_art(){return nlohmann::json::array();} uint64_t map_art_revision(){return 0;} std::string state_key(){return fixture::get("battle_page").dump();} }
 namespace srw64::quick_load { bool usable(){return false;} Saved saved(){return {};} void request(){} bool usable_title(){return false;} void request_title(){} }
 namespace srw64::stage_info { json snapshot(){return json::object();} uint64_t want(bool){return 0;} json meta(int){return json::object();} }
 uint32_t srw64_pad_state(){return 0;}

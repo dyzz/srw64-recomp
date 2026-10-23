@@ -278,6 +278,7 @@ std::string escape(const std::string& text){return Rml::StringUtilities::EncodeR
 // controller in use or keys (text/button_prompts.hpp, the SRW64Prompts font).
 text::PadFamily pad_family(){return text::PadFamily(input::pad_family.load());}
 input::Bindings hint_bindings=input::live_bindings().get();  // refreshed with the hints (sync)
+uint64_t hint_generation=0;  // counts those refreshes
 text::PromptContext prompt_context(bool pad){return {pad,pad_family(),&hint_bindings,settings::key_display_name};}
 // The native pages follow the player's bindings (input_bindings.hpp): a key bound to an N64
 // button reads as that button's default key, which the page code knows (Z for A, Q for L,
@@ -4620,6 +4621,9 @@ void ability_sync() {
     refresh(ability_doc,body,true);ability_doc->SetClass("modal",false);
 }
 void mini_sync() {
+    // Off the title menu and with no stage being entered there is nothing to show: no snapshot
+    // (a JSON object, with a campaign's every stage) on those frames.
+    if(intro::title_major()!=3 && !mini_stage::armed()){document_close(mini_doc);mini_stamp.clear();return;}
     const auto state=mini_stage::snapshot();
     const bool entering=state.value("entering",false);
     const bool available=state.value("available",false) && !state.value("applied",0u) && intro::title_major()==3;
@@ -4779,14 +4783,19 @@ touch_pad::Layout touch_layout();
 // each pilot's face at the page's size and each unit's whole pose with its bounds.
 void prefetch_map_art() {
     static unsigned frames=0;
-    if(pictures::at_once || ++frames%30 || battle_page::state().value("visible",false))return;
+    static uint64_t seen=0;
+    if(pictures::at_once || ++frames%30 || battle_page::map_art_revision()==seen || battle_page::state().value("visible",false))return;
+    seen=battle_page::map_art_revision();
     for(const auto& row:battle_page::map_art()) {
         if(const auto face=row.value("portrait",json::object());face.contains("path"))image_async(portrait_path(face),dp_pixels(96),true);
         if(const auto unit=row.value("unit_art",json::object());unit.contains("path"))art_bounds_async(portrait_path(unit),true);
     }
 }
 void battle_sync() {
-    const auto next=battle_page::state();battle_request=next;
+    // The state is copied only when it changed (battle_page::state_key): a copy, a second copy
+    // and a dump of it every frame were most of the UI thread on a phone while the page was up.
+    static std::string state_seen;static json next;
+    if(auto key=battle_page::state_key();key!=state_seen || !next.is_object()){state_seen=std::move(key);next=battle_page::state();battle_request=next;}
     if(!next.value("visible",false)) {
         document_close(battle_doc);battle_stamp.clear();
         // Original HUD: only the animation state and its toggle key, top centre.
@@ -4818,7 +4827,7 @@ void battle_sync() {
     const bool touch=touch_battle_layout();
     const bool hd_original=next.value("style",std::string())=="hd" && !touch;
     // The window and the interface size set the unit pictures' room (ui_density).
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"")+(touch?"+touch":"")+"#"+std::to_string(pictures::serial);
+    const auto stamp=state_seen+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"")+(touch?"+touch":"")+"#"+std::to_string(pictures::serial);
     if(battle_doc && battle_stamp==stamp)return;
     if(hd_original) {
         // The menu cursor stays where it was when the same encounter redraws.
@@ -5801,10 +5810,18 @@ void sync() {
     for(auto& person:request.names){shown(names::Field::Name,person[0]);shown(names::Field::Surname,person[1]);shown(names::Field::Nick,person[2]);}
     name_page->set_hd(presentation::image_mode.current()==1);
     {const auto a=page_area();name_page->set_area(a.x,a.y,a.w,a.h);}
-    // Catalog owns all labels. No duplicate translation table in the frontend.
-    auto labels=language->ui_labels();
-    if(pad_mode)for(auto& [key,text]:labels)if(auto pad=labels.find(key+"_pad");pad!=labels.end())text=pad->second;
-    for(auto& [key,value]:labels)value=text::expand_prompts(value,prompt_context(pad_mode));
+    // Catalog owns all labels. No duplicate translation table in the frontend. The name page's
+    // copy, with the controller wording and the button prompts filled in, is made again only
+    // when one of those changes: copying and expanding all ~850 every frame was most of the
+    // UI thread on a phone (with the name page's own copy, about half a Seeker core at the
+    // title and on the map, 2026-10-23).
+    static std::map<std::string,std::string> labels;
+    static std::tuple<const void*,bool,int,uint64_t> labels_for{};
+    if(const auto key=std::make_tuple(static_cast<const void*>(language.get()),pad_mode,int(pad_family()),hint_generation);key!=labels_for || labels.empty()) {
+        labels_for=key;labels=language->ui_labels();
+        if(pad_mode)for(auto& [key,text]:labels)if(auto pad=labels.find(key+"_pad");pad!=labels.end())text=pad->second;
+        for(auto& [key,value]:labels)value=text::expand_prompts(value,prompt_context(pad_mode));
+    }
     name_page->sync(request,labels,language->locale);
     {
         // Controller edges; a button already down when a page opens is not a press.
@@ -5815,7 +5832,7 @@ void sync() {
         // sync always takes them: input.json was loaded after hint_bindings got the defaults.
         static uint64_t bindings_seen=~uint64_t{};
         if(const auto revision=input::live_bindings().revision();revision!=bindings_seen) {
-            bindings_seen=revision;hint_bindings=input::live_bindings().get();
+            bindings_seen=revision;hint_bindings=input::live_bindings().get();++hint_generation;
             for(auto* stamp:all_stamps())stamp->clear();
         }
         // The host's buttons, from the controller or keys bound to them (the keyboard state
@@ -5859,8 +5876,12 @@ void sync() {
     if(map_menu::take_chosen() && !settings_open)choose("title-return-ask");
     image_drain();prefetch_map_art();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
+#if defined(__APPLE__) || defined(_WIN32)
+    // The menu bar, rebuilt in full every frame; Linux and Android have none, where building it
+    // anyway was a fifth of the UI thread on a phone (2026-10-23).
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_about"),language->ui("menu_check_updates"),
                       language->ui("menu_game"),language->ui("menu_exit"),language->ui("menu_title_return"),quick_load::usable_title() && !settings_open},menu_bar(language),window && (SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN));
+#endif
     for(auto id=app_menu::take_request();!id.empty();id=app_menu::take_request()){
         if(id=="fullscreen")toggle_fullscreen();
         else if(id.starts_with("scale:"))scale_window(std::stoi(id.substr(6)));

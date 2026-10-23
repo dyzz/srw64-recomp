@@ -17,6 +17,10 @@ using namespace guest;
 using json=nlohmann::json;
 std::mutex mutex;
 json current={{"visible",false}};
+// Bumped with every change of current: the frontend copies and serializes the state only
+// when state_key() changes (a copy and a dump of it every frame were most of the UI thread
+// on a phone while the page was up, 2026-10-23).
+std::atomic<uint64_t> changes{0};
 uint64_t serial{};
 std::string pending;
 std::atomic_bool owning{},window_owning{};
@@ -69,7 +73,7 @@ bool return_from_spirit(uint8_t* ram,recomp_context* ctx) {
     // The response (8018B754) and counter weapon (8018B74C) stay as chosen (801D5294, 801D5404).
     else invoke(ram,ctx,0x801F7D6C,a.handle,d.handle,1);
     invoke(ram,ctx,0x801F3578);
-    std::lock_guard lock(mutex);current["visible"]=false;current["spirit_running"]=false;
+    std::lock_guard lock(mutex);current["visible"]=false;current["spirit_running"]=false;++changes;
     spirit_menu=true;return true;
 }
 
@@ -84,7 +88,7 @@ bool leaving(const uint8_t* ram){const unsigned m=read(ram,game_mode,1);return m
 void end_page(const char* why) {
     if(!current.value("visible",false) && !owning && !spirit_running && !spirit_menu && pending.empty())return;
     if(log){auto row=current;row["kind"]="abandoned";row["why"]=why;row["vi"]=srw64_current_vi();log<<row.dump()<<'\n';log.flush();}
-    current={{"visible",false}};owning=false;pending.clear();
+    current={{"visible",false}};++changes;owning=false;pending.clear();
     spirit_running=false;spirit_menu=false;spirit_return_state.clear();
 }
 
@@ -207,6 +211,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
             {"can_cancel",mode==1 && read(ram,0x8010F5E8,1)==1},{"turn",read(ram,0x8010F5EA,2)},
             {"can_counter",mode==2},{"rules",generation_rules},{"spirit_menu",spirit_menu},
             {"spirit_options",spirit_options(scratch.data(),&call,a.side==0?a:d)},{"words",screen_words(scratch.data())}};
+        ++changes;
         // The native cards replace the original HUD sprites/text. This original
         // cleanup removes slots 0x27..0x34, preserving battlefield unit sprites.
         auto cleanup=*ctx;resident_func_8009DB8C(ram,&cleanup);
@@ -232,7 +237,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         scratch.assign(ram,ram+0x800000);auto call=*ctx;
         current["spirit_options"]=spirit_options(scratch.data(),&call,a.side==0?a:d);
         current["words"]=screen_words(ram);
-        current["locale"]=language->locale;
+        current["locale"]=language->locale;++changes;
     }
     if(pending.empty())return true;
     auto action=std::exchange(pending,{});
@@ -243,7 +248,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         action="weapon";
     }
     if(action=="spirits" || action=="spirit-back" || (action=="back" && spirit_menu)) {
-        spirit_menu=action=="spirits";current["spirit_menu"]=spirit_menu;return true;
+        spirit_menu=action=="spirits";current["spirit_menu"]=spirit_menu;++changes;return true;
     }
     if(action.starts_with("cast:")) {
         if(!spirit_menu)return true;
@@ -274,7 +279,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
                 spirit_return_state.clear();record("spirit-refused");return true;
             }
             spirit_running=true;spirit_menu=false;current["spirit_running"]=true;
-            current["action"]=action;record("spirit-cast");current["visible"]=false;owning=false;
+            current["action"]=action;record("spirit-cast");current["visible"]=false;++changes;owning=false;
             lock.unlock();invoke(ram,ctx,0x801D6A68,id,0);return true;
         }
         return true;
@@ -282,7 +287,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
     if(spirit_menu)return true;
     if(action=="animation") {
         write8(ram,0x8015DDA8,read(ram,0x8015DDA8,1)^4);
-        current["animation"]=(read(ram,0x8015DDA8,1)&4)==0;record("animation");return true;
+        current["animation"]=(read(ram,0x8015DDA8,1)&4)==0;++changes;record("animation");return true;
     }
     if(action=="back" && !current.value("can_cancel",false))return true;
     if((action=="evade" || action=="defend") && mode!=2)return true;
@@ -293,7 +298,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         // its own cards (801D4CCC) within this one call, and stays on this screen. The page
         // stays up and shows the new numbers; closed until the next frame reopened it, the
         // original screen showed through for a few frames (a player, 0.4.8).
-        current["action"]=action;record("action");
+        current["action"]=action;++changes;record("action");
         const auto old=read(ram,0x80178A08,2);
         write16(ram,0x80178A08,0x8000);write8(ram,0x80227A81,action=="evade"?2:3);
         lock.unlock();srw64_original_battle_response_step(ram,ctx);lock.lock();
@@ -302,7 +307,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         build(combat_preview::participant(ram,0),combat_preview::participant(ram,1));
         return true;
     }
-    current["action"]=action;record("action");current["visible"]=false;owning=false;
+    current["action"]=action;record("action");current["visible"]=false;++changes;owning=false;
     lock.unlock();
     // Feed the original menu's A/B edge and selected entry exactly once. Its
     // validation, weapon chooser, battle events and state transitions stay intact.
@@ -337,6 +342,7 @@ constexpr unsigned stale_frames=30;
 // map; +0xC unit), the pilot at unit +0x38. Read every 30 frames.
 std::mutex map_art_mutex;
 json map_art_now=json::array();
+std::atomic<uint64_t> map_art_changes{0};  // bumped when the list changes
 void read_map_art(const uint8_t* ram) {
     constexpr uint32_t roster=0x8015E100,side_stride=0x258,slot_stride=0x14;
     json list=json::array();
@@ -347,9 +353,11 @@ void read_map_art(const uint8_t* ram) {
         if(const uint32_t pilot=read(ram,unit+0x38,4);valid(pilot,0x40))row["portrait"]=art["portraits"].value(std::to_string(read(ram,pilot+2,2)),json::object());
         list.push_back(std::move(row));
     }
-    std::lock_guard lock(map_art_mutex);map_art_now=std::move(list);
+    std::lock_guard lock(map_art_mutex);
+    if(list!=map_art_now){map_art_now=std::move(list);++map_art_changes;}
 }
 json map_art(){std::lock_guard lock(map_art_mutex);return map_art_now;}
+uint64_t map_art_revision(){return map_art_changes.load();}
 void frame(const uint8_t* ram) {
     static unsigned before{},tick{};
     if(++tick%30==0)read_map_art(ram);
@@ -379,6 +387,11 @@ json state() {
     if(result["original"].get<bool>()){result["animation"]=original_animation.load();result["mode"]=original_mode.load();}
     result["original_images"]=original_screen();
     return result;
+}
+std::string state_key() {
+    const auto vi=srw64_current_vi(),seen=original_vi.load();
+    const bool original=seen && vi>=seen && vi-seen<=3;
+    return std::to_string(changes.load())+(original?"o"+std::to_string(original_animation.load())+std::to_string(original_mode.load()):"")+(original_screen()?"i":"");
 }
 bool original_screen() {
     if(settings::battle_ui()!=settings::BattleUi::Original)return false;
