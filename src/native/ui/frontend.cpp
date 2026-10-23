@@ -2415,6 +2415,8 @@ void stage_turn(int){stage_column^=1;stage_mark_column();}
 // barrier its kind of weapon). Damage leaves 10 HP unless set. 戦闘開始 plays it through
 // the title demo's own path; the page opens again when the battle is over.
 std::atomic_bool viewer_open{};
+// unit and weapon index the Library's lists; pilot is the actor itself, since the Library
+// lists a repeated pilot record once and the battle plays that actor's own quotes.
 struct ViewerSide{unsigned unit=0,pilot=0,weapon=0;};
 std::array<ViewerSide,2> viewer_side{};   // 0 attacks (攻), 1 defends (反)
 // What happens to each side when it is hit: side 1 by the attack, side 0 by the counter.
@@ -2454,7 +2456,35 @@ bool viewer_flies_any(unsigned actor) {
 const json& viewer_units(){return library::contents().at("units");}
 const json& viewer_pilots(){return library::contents().at("pilots");}
 const json& viewer_unit(unsigned s){return viewer_units()[std::min<size_t>(viewer_side[s].unit,viewer_units().size()-1)];}
-const json& viewer_pilot(unsigned s){return viewer_pilots()[std::min<size_t>(viewer_side[s].pilot,viewer_pilots().size()-1)];}
+// The Library entry an actor shows as: its own, or the one its record repeats ("twins").
+const json* viewer_twin(const json& entry,unsigned actor) {
+    const auto twins=entry.find("twins");
+    if(twins==entry.end())return nullptr;
+    for(const auto& t:*twins)if(t.value("actor",~0u)==actor)return &t;
+    return nullptr;
+}
+int viewer_pilot_index(unsigned actor) {
+    const auto& list=viewer_pilots();
+    for(size_t i=0;i<list.size();++i)if(list[i].value("actor",~0u)==actor || viewer_twin(list[i],actor))return int(i);
+    return -1;
+}
+// A repeated record shows as a copy of its entry with its own portrait (kept per language,
+// as the Library rebuilds its contents).
+const json& viewer_pilot_entry(unsigned actor) {
+    static std::map<unsigned,json> copies;
+    static std::string locale;
+    const auto& entry=viewer_pilots()[size_t(std::max(viewer_pilot_index(actor),0))];
+    const auto* twin=viewer_twin(entry,actor);
+    if(!twin)return entry;
+    if(locale!=localization::catalog().locale){copies.clear();locale=localization::catalog().locale;}
+    auto [copy,added]=copies.try_emplace(actor);
+    if(added) {
+        copy->second=entry;copy->second["actor"]=actor;copy->second.erase("twins");copy->second.erase("art");
+        if(twin->contains("art"))copy->second["art"]=twin->at("art");
+    }
+    return copy->second;
+}
+const json& viewer_pilot(unsigned s){return viewer_pilot_entry(viewer_side[s].pilot);}
 // A unit's weapons without the map weapons (a map attack has no battle animation).
 std::vector<const json*> viewer_weapons(unsigned s) {
     std::vector<const json*> list;
@@ -2476,17 +2506,11 @@ void viewer_default_weapon(unsigned s) {
     if(s==0){viewer_side[s].weapon=unsigned(list.size()-1);return;}
     for(size_t i=0;i<list.size();++i)if(list[i]->value("power",0u)>list[viewer_side[s].weapon]->value("power",0u))viewer_side[s].weapon=unsigned(i);
 }
-// An entry's index by its id ("id" of a unit, "actor" of a pilot), or -1.
-int viewer_index(const json& list,const char* field,unsigned id) {
-    for(size_t i=0;i<list.size();++i)if(list[i].value(field,~0u)==id)return int(i);
-    return -1;
-}
 // A new unit keeps its pilot if they may fly it, else takes its default one.
 void viewer_fit_pilot(unsigned s) {
     const unsigned unit=viewer_unit(s).value("id",0u);
     const auto* crew=viewer_crew(unit);
-    if(!crew || viewer_flies(viewer_pilot(s).value("actor",~0u),unit))return;
-    if(const int i=viewer_index(viewer_pilots(),"actor",crew->pilot);i>=0)viewer_side[s].pilot=unsigned(i);
+    if(crew && !viewer_flies(viewer_side[s].pilot,unit))viewer_side[s].pilot=crew->pilot;
 }
 // The first time: ゴッドガンダム and ドモン against マスターガンダム and 東方不敗.
 void viewer_defaults() {
@@ -2496,8 +2520,8 @@ void viewer_defaults() {
         for(size_t i=0;i<list.size();++i)if(list[i].value(field,~0u)==id)return unsigned(i);
         return 0u;
     };
-    viewer_side[0]={find(viewer_units(),"id",1),find(viewer_pilots(),"actor",4),0};
-    viewer_side[1]={find(viewer_units(),"id",28),find(viewer_pilots(),"actor",18),0};
+    viewer_side[0]={find(viewer_units(),"id",1),4,0};
+    viewer_side[1]={find(viewer_units(),"id",28),18,0};
     viewer_default_weapon(0);viewer_default_weapon(1);
 }
 // Side t hit by the other side's weapon: the locale key of why a reaction cannot be shown,
@@ -2551,7 +2575,7 @@ int viewer_code(unsigned t) {
 json viewer_choice() {
     json c;
     for(unsigned s=0;s<2;++s) {
-        json side={{"unit",viewer_unit(s).at("id")},{"pilot",viewer_pilot(s).at("actor")}};
+        json side={{"unit",viewer_unit(s).at("id")},{"pilot",viewer_side[s].pilot}};
         if(const auto* w=viewer_weapon(s))side["weapon"]=w->at("number");
         c[s?"defender":"attacker"]=side;
     }
@@ -2592,14 +2616,14 @@ std::string viewer_skills(const json& p) {
 }
 // The song the attacker brings (no song chosen), its row's text.
 std::string viewer_attacker_song() {
-    const int number=battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_pilot(0).value("actor",0u));
+    const int number=battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_side[0].pilot);
     for(const auto& row:battle_viewer::songs())if(row.value("song",-2)==number)return escape(row.value("text",std::string()));
     return label("viewer_song_keep");
 }
 int viewer_song_number(int row) {
     const auto songs=battle_viewer::songs();
     if(row>=0 && row<int(songs.size()))return songs[size_t(row)].value("song",-1);
-    return battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_pilot(0).value("actor",0u));
+    return battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_side[0].pilot);
 }
 std::string viewer_scene_key(unsigned i) {
     const auto scenes=battle_viewer::scenes();
@@ -2651,9 +2675,13 @@ int viewer_work_of(unsigned unit) {
 }
 // The BGM list by work: a song belongs to the work whose pilots and units play it (the
 // pilots' table for those who fly, the units' table and the super modes' songs,
-// battle_viewer.cpp); the songs nobody plays (the map and story music) go last under
-// 其他. In the list's order.
+// battle_viewer.cpp). The songs no one brings to a battle are placed by hand: 愛の金字塔
+// is ゴッドマーズ's, and the map and story music (30-49) is the game's own, so オリジナル;
+// ゲッターロボ's theme goes to ゲッターロボ, though G's pilots carry it. Anything else goes
+// last under 其他. In the list's order.
 struct ViewerSongGroup{int work;std::string name;std::vector<size_t> rows;};
+constexpr std::pair<int,int> viewer_song_works[]={{14,13},{24,23},{30,15},{31,15},{32,15},{33,15},{35,15},{36,15},{37,15},{38,15},
+    {39,15},{40,15},{41,15},{42,15},{43,15},{44,15},{45,15},{46,15},{47,15},{48,15},{49,15}};
 std::vector<ViewerSongGroup> viewer_song_groups() {
     static std::vector<ViewerSongGroup> cache;
     static std::string cached;
@@ -2670,6 +2698,11 @@ std::vector<ViewerSongGroup> viewer_song_groups() {
     for(const auto& u:viewer_units()) {
         const int work=u.value("work",-1),song=battle_viewer::default_song(u.value("id",~0u),~0u);
         if(work>=0 && song>0){votes[song][work]+=1;names[work]=u.value("work_name",std::string());}
+    }
+    for(const auto& [song,work]:viewer_song_works) {
+        votes[song]={{work,1}};
+        if(!names.contains(work))
+            for(const auto& p:viewer_pilots())if(p.value("work",-1)==work){names[work]=p.value("work_name",std::string());break;}
     }
     std::vector<ViewerSongGroup> groups;
     ViewerSongGroup other{-1,localization::catalog().ui("library_work_other"),{}};
@@ -2796,14 +2829,22 @@ std::string viewer_popup() {
     } else if(kind=="pilot") {
         const auto* crew=viewer_crew(viewer_unit(s).value("id",0u));
         const size_t count=crew?crew->actors.size():0;
-        title=viewer_fill(label("viewer_choose_pilot_crew"),viewer_name(viewer_unit(s)),std::to_string(count));
+        size_t rows=0;
+        // A row per actor, with its own face. A repeated record whose main one flies the unit
+        // too has the same name and figures, so it has a row only as the unit's default or the
+        // pilot being shown.
         for(size_t n=0;n<count;++n) {
-            const int i=viewer_index(viewer_pilots(),"actor",crew->actors[n]);
+            const unsigned actor=crew->actors[n];
+            const int i=viewer_pilot_index(actor);
             if(i<0)continue;
-            const auto& e=viewer_pilots()[size_t(i)];
-            const bool now=unsigned(i)==viewer_saved.side[s].pilot;
-            list+=viewer_li(i,"",viewer_icon(e,30),viewer_name(e),escape(viewer_skills(e)),now?label("viewer_badge_now"):crew->actors[n]==crew->pilot?label("viewer_badge_default"):std::string(),unsigned(i)==viewer_side[s].pilot);
+            const auto& e=viewer_pilot_entry(actor);
+            const unsigned main=viewer_pilots()[size_t(i)].value("actor",~0u);
+            if(main!=actor && viewer_flies(main,crew->unit) && actor!=crew->pilot && actor!=viewer_side[s].pilot && actor!=viewer_saved.side[s].pilot)continue;
+            const bool now=actor==viewer_saved.side[s].pilot;
+            list+=viewer_li(int(actor),"",viewer_icon(e,30),viewer_name(e),escape(viewer_skills(e)),now?label("viewer_badge_now"):actor==crew->pilot?label("viewer_badge_default"):std::string(),actor==viewer_side[s].pilot);
+            ++rows;
         }
+        title=viewer_fill(label("viewer_choose_pilot_crew"),viewer_name(viewer_unit(s)),std::to_string(rows));
     } else if(kind=="weapon") {
         title=label(s?"viewer_choose_counter_weapon":"viewer_choose_weapon");
         const auto weapons=viewer_weapons(s);
