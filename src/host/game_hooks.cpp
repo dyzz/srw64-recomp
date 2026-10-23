@@ -28,6 +28,7 @@
 #include "enemy_pilot_page.hpp"
 #include "map_combo.hpp"
 #include "map_menu.hpp"
+#include "intermission_row.hpp"
 #include "pilot_kills.hpp"
 
 SRW64GameHooks srw64_game_hooks;
@@ -204,6 +205,20 @@ void load_000AB160_func_801E7430(uint8_t* ram,recomp_context* ctx) {
     srw64::map_combo::reset();
     srw64_original_status_pages(ram,ctx);
 }
+// The 返回标题画面 row (title_row.hpp) at (x, y), made as a menu's own rows are: a handle,
+// 8008D0E8 with a record of the menu's (`borrow`), the place and flag 0; then given its
+// record number and glyphs.
+static void make_title_row(uint8_t* ram,recomp_context* ctx,uint16_t borrow,int x,int y) {
+    namespace t=srw64::title_row;
+    uint32_t handle=0;srw64::pilot_kills::call(ram,ctx,resident_func_80083F70,0,0,0,0,0,&handle);
+    if(int8_t(handle)<0)return;
+    srw64::pilot_kills::call(ram,ctx,resident_func_8008D0E8,uint32_t(int32_t(int8_t(handle))),borrow,uint32_t(x),uint32_t(y),0);
+    const uint32_t slot=t::labels+uint32_t(int8_t(handle))*t::label_size;
+    srw64::guest::write16(ram,slot,t::record);
+    uint32_t p=slot+0xC;
+    for(const uint16_t g:t::glyphs){srw64::guest::write16(ram,p,g);p+=2;}
+    srw64::guest::write16(ram,p,0xFFFF);
+}
 void resident_func_8009D684(uint8_t* ram,recomp_context* ctx) {
     // A window table entry's labels (a0 the entry, a1/a2 the window's place): the map's
     // blank-tile menu (entry 0) gets the row of ours before 中断 (map_menu.hpp).
@@ -212,17 +227,8 @@ void resident_func_8009D684(uint8_t* ram,recomp_context* ctx) {
     if(entry!=0)return;
     namespace m=srw64::map_menu;
     const int lx=x+m::label_x,ly=y+m::label_y+int(m::row_pitch*m::our_row);
-    m::move_suspend(ram,lx,ly);
-    // Ours as the list's own rows are made (a handle, 8008D0E8 with a record, place and flag
-    // 0), then given our record number and glyphs.
-    uint32_t handle=0;srw64::pilot_kills::call(ram,ctx,resident_func_80083F70,0,0,0,0,0,&handle);
-    if(int8_t(handle)<0)return;
-    srw64::pilot_kills::call(ram,ctx,resident_func_8008D0E8,uint32_t(int32_t(int8_t(handle))),m::record_suspend,uint32_t(lx),uint32_t(ly),0);
-    const uint32_t slot=m::labels+uint32_t(int8_t(handle))*m::label_size;
-    srw64::guest::write16(ram,slot,m::record_title);
-    uint32_t p=slot+0xC;
-    for(const uint16_t g:m::glyphs){srw64::guest::write16(ram,p,g);p+=2;}
-    srw64::guest::write16(ram,p,0xFFFF);
+    srw64::title_row::move_labels(ram,m::record_suspend,lx,ly,int(m::row_pitch));
+    make_title_row(ram,ctx,m::record_suspend,lx,ly);
 }
 void load_000AB160_func_801D13C0(uint8_t* ram,recomp_context* ctx) {
     // The map's blank-tile menu opens: one row more for the cursor (map_menu.hpp).
@@ -1083,13 +1089,21 @@ void load_0008F4B0_func_801CDFB0(uint8_t* rdram, recomp_context* ctx) {
     // インターミッション menu build: panels, numbers, cursor. The native page shows them.
     if (native_built(srw64_game_hooks.intermission_build && srw64_game_hooks.intermission_build(rdram, ctx))) return;
     srw64_original_intermission_menu_build(rdram, ctx);
+    // The row of ours before 次のマップへ (intermission_row.hpp).
+    namespace im = srw64::intermission_row;
+    make_title_row(rdram, ctx, im::text_next, im::label_x, im::make_room(rdram));
 }
 void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
     quiet_latch(rdram);
     if (srw64_game_hooks.cheats_intermission) srw64_game_hooks.cheats_intermission(rdram, ctx);
     if (srw64_game_hooks.legacy_intermission) srw64_game_hooks.legacy_intermission(rdram, ctx);
+    // A on the row of ours asks for the title instead (intermission_row.hpp).
+    const uint16_t buttons = uint16_t(srw64::guest::read(rdram, srw64::intermission_row::pressed, 2));
+    const bool title = srw64::intermission_row::take_a(rdram);
+    if (title) srw64::pilot_kills::call(rdram, ctx, resident_func_8007E8A8, 0xB7);   // the menu's confirm sound
     if (!srw64_game_hooks.intermission_step || !srw64_game_hooks.intermission_step(rdram, ctx))
         srw64_original_intermission_menu_step(rdram, ctx);
+    if (title) srw64::guest::write16(rdram, srw64::intermission_row::pressed, buttons);
     if (srw64_game_hooks.intermission_after_step) srw64_game_hooks.intermission_after_step(rdram, ctx);
 }
 // Entering the intermission: 0 after a map or a story scene, 1-2 loading slot 1-2.

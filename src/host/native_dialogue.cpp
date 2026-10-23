@@ -15,7 +15,7 @@
 #include "localization/dialogue_text.hpp"
 #include "presentation/display_list_snapshots.hpp"
 #include "json/json.hpp"
-#include "map_menu.hpp"
+#include "title_row.hpp"
 #include <algorithm>
 #include <atomic>
 #include <ctime>
@@ -799,8 +799,8 @@ std::string label_text(const uint8_t* ram,uint32_t label) {
     const auto shown=decode(ram,label+12,64);
     const uint16_t id=half(ram,label);
     if(const auto* slot=entered_name(id))return shown_name(shown,*slot,localization::catalog().locale);
-    // The host's own row in the map's blank-tile menu (map_menu.hpp).
-    if(id==map_menu::record_title)return localization::catalog().ui("title_return_open");
+    // The host's own row in the map's blank-tile menu and the intermission menu (title_row.hpp).
+    if(id==title_row::record)return localization::catalog().ui("title_return_open");
     const auto japanese=localization::find("ja");
     if(!id || !japanese || record_text(ram,*japanese,id)!=shown)return shown;
     return record_text(ram,localization::catalog(),id);

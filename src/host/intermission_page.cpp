@@ -4,6 +4,7 @@
 #include "localization/catalog.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
+#include "intermission_row.hpp"
 #include "funcs.h"
 #include <atomic>
 #include <fstream>
@@ -49,9 +50,11 @@ void call(uint8_t* ram,recomp_context* ctx,void(*function)(uint8_t*,recomp_conte
 bool idle(const uint8_t* ram){return int8_t(read(ram,transition,1))==-1;}
 void labels(const uint8_t* ram) {
     const bool restricted=current.value("restricted",false);
+    // With the row of ours before 次のマップへ, on the original's cursor (intermission_row.hpp).
+    const auto title=localization::catalog().ui("title_return_open");
     json items=json::array();
-    if(restricted)items={dialogue::ui_text(ram,text_items),dialogue::ui_text(ram,text_next)};
-    else for(unsigned n=0;n<9;++n)items.push_back(dialogue::ui_text(ram,text_items+n));
+    if(restricted)items={dialogue::ui_text(ram,text_items),title,dialogue::ui_text(ram,text_next)};
+    else{for(unsigned n=0;n<8;++n)items.push_back(dialogue::ui_text(ram,text_items+n));items.push_back(title);items.push_back(dialogue::ui_text(ram,text_next));}
     const auto info=dialogue::ui_text(ram,text_info);const auto line=info.find('\n');
     current["title"]=dialogue::ui_text(ram,text_title);current["items"]=items;
     current["turns_label"]=info.substr(0,line);current["funds_label"]=line==std::string::npos?"":info.substr(line+1);
@@ -102,7 +105,8 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         write32(ram,funds,value);current["funds"]=value;record("funds",{{"funds",value}});return false;
     }
     const auto number=[&](size_t prefix){return action.size()==prefix+1 && action[prefix]>='0' && action[prefix]<='9'?unsigned(action[prefix]-'0'):99u;};
-    const unsigned count=current.value("restricted",false)?2:9;
+    const bool two=current.value("restricted",false);
+    const unsigned count=intermission_row::rows(two);
     const bool submenu=current.value("submenu",false);
     if(action.starts_with("move:") && !submenu) {
         const auto index=number(5);
@@ -114,7 +118,12 @@ bool step(uint8_t* ram,recomp_context* ctx) {
         const auto index=number(7);
         if(index>=count)return false;
         write16(ram,cursor,uint16_t(index));current["cursor"]=index;
-        if(count==9 && index==swap_item) {
+        if(index==intermission_row::title_index(two)) {
+            // The title question, the frontend's; the menu stays as it is under it.
+            title_row::choose();record("title");
+            lock.unlock();call(ram,ctx,resident_func_8007E8A8,sound_confirm);return false;
+        }
+        if(!two && index==swap_item) {
             // The original opens its パイロット/妖精 window here; the page shows its own.
             current["submenu"]=true;current["swap_cursor"]=0;current["swap_refused"]=false;record("swap-open");
             lock.unlock();call(ram,ctx,resident_func_8007E8A8,sound_confirm);return false;

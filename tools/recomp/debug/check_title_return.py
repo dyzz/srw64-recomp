@@ -16,8 +16,12 @@ the BANPRESTO logo and the title, never at a load of the suspend save:
 5. On the title the function is refused ("not here").
 
 With --intermission (the stage-one-clear save loaded through the title ring, check_intermission.py):
-5. On the インターミッション menu the stage info page's button asks; はい: the title.
+5. On the インターミッション menu its row before 次のマップへ asks; はい: the title. The stage
+   info page's button too.
 6. Loaded again, on the 改造 sub-screen: the title again.
+7. With the original intermission screens: the menu's labels (ours where 次のマップへ was, it
+   and the chapter line 16 lower), our row asks and いいえ stays, and 次のマップへ below it
+   still goes on to the next map.
 
 Local: launches its own session with a fresh save library. --run RUN attaches to a game
 started elsewhere, and --stage (a path on that machine) loads the stage from the title
@@ -41,6 +45,7 @@ INTERMISSION = (4, 0x12, 0x13, 0x14, 0x15)   # after a clear; after a load from 
 
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument('--language', default='zh-Hans')
+parser.add_argument('--images', default='original', help='original or hd: the window frames drawn from the ROM or redrawn in HD')
 parser.add_argument('--reuse-build', action='store_true')
 parser.add_argument('--run', help='attach to this run instead of launching')
 parser.add_argument('--stage', help="with --run: the stage definition on the game's machine")
@@ -55,9 +60,9 @@ else:
     (work / 'saves').mkdir(parents=True)
     shutil.copyfile(SOURCE, work / 'saves' / 'cartridge.sram')
     if args.intermission:
-        s = Session.launch(language=args.language, images='original', save=str(SOURCE), reuse_build=args.reuse_build)
+        s = Session.launch(language=args.language, images=args.images, save=str(SOURCE), reuse_build=args.reuse_build)
     else:
-        s = Session.launch(language=args.language, images='original', mini_stage=str(STAGE), reuse_build=args.reuse_build,
+        s = Session.launch(language=args.language, images=args.images, mini_stage=str(STAGE), reuse_build=args.reuse_build,
                            env={'SRW64_SAVE_LIBRARY': str(work / 'saves')})
 out = Path(s.run)
 print('RUN', s.run, flush=True)
@@ -227,8 +232,9 @@ def attack():
     keys('z', pause=1)
 
 
-def load_intermission():
-    """Title ring: ロード is three to the right of スタート; ROM cartridge, slot 1, yes (check_intermission.py)."""
+def load_intermission(original=False):
+    """Title ring: ロード is three to the right of スタート; ROM cartridge, slot 1, yes (check_intermission.py).
+    With the original screens the menu is the game's: wait for its build (801DEC50)."""
     until(lambda: status()['intro'].get('title_major') == 3 or keys('return', pause=.5), 180, 'the title menu')
     time.sleep(2.5)
     keys('right', 'right', 'right', pause=1.5)
@@ -238,7 +244,10 @@ def load_intermission():
         if st['intermission_page'].get('visible') or st['intro'].get('title_major') != 7:
             break
         keys('z', pause=1.5)
-    until(lambda: status()['intermission_page'].get('visible'), 60, 'the intermission menu')
+    if original:
+        until(lambda: mem(MODE) in INTERMISSION and mem(0x801DEC50, 4) == 1 and mem(0x8015E9C5) == 0xFF, 60, 'the original intermission menu')
+    else:
+        until(lambda: status()['intermission_page'].get('visible'), 60, 'the intermission menu')
     time.sleep(1)
 
 
@@ -273,6 +282,28 @@ if args.intermission:
         state = returned()
         shot('06-title')
         check('sub-screen-to-title', state['mode'] == 7 and state['quick_load']['stage'] == 'idle', state)
+        # 7. The original menu, drawn by the game.
+        s.client.call('settings', intermission_ui='original')
+        load_intermission(original=True)
+        found = pool()
+        shot('07-original')
+        bodies = bytes.fromhex(s.client.call('memory.read', address=0x800FBAB0, size=2 * 0x218)['hex'])
+        title_y = next((struct.unpack_from('>i', bodies, n * 0x218 + 8)[0] for n in range(2)
+                        if 1 <= bodies[n * 0x218 + 2] <= 3 and struct.unpack_from('>i', bodies, n * 0x218 + 4)[0] == 82), None)
+        check('original-labels', (found.get(0xF001), found.get(0xFD5), found.get(0xFD7), found.get(0xFE0), title_y) == (169, 185, 209, 209, 209), dict(found, title=title_y))
+        keys('up', 'up', pause=.8)
+        check('original-row-reached', mem(0x801DD548, 2) == 8, {'cursor': mem(0x801DD548, 2)})
+        shot('07-original-row')
+        keys('z', pause=1)
+        until(lambda: status()['settings_window'], 10, 'the title question from the original menu')
+        s.client.call('ui.click', id='title-return:no')
+        time.sleep(1)
+        check('original-no-stays', mem(MODE) in INTERMISSION and mem(0x801DD540) == 0 and mem(0x801DD548, 2) == 8, where())
+        keys('down', pause=.8)
+        keys('z', pause=.5)
+        # Exit code 2, cleared again once the next map's mode (12) has begun.
+        state = until(lambda: (mem(0x801DD540) == 2 or mem(MODE) == 12) and where(), 20, 'the next map from the original menu')
+        check('original-next-map', True, state)
         print('ALL PASS', len(checks), flush=True)
     finally:
         shot('end')

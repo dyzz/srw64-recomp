@@ -23,7 +23,7 @@
 #include "library.hpp"
 #include "stage_info.hpp"
 #include "quick_load.hpp"
-#include "map_menu.hpp"
+#include "title_row.hpp"
 #include "text_wrap.hpp"
 #include "battle_viewer.hpp"
 #include "native_sprite.hpp"
@@ -161,7 +161,6 @@ bool quick_load_ask_open{};
 bool title_return_ask_open{};
 // The intermission menu's own last row, 返回标题画面 (not one of the original's items):
 // selected below the original's cursor, confirmed as the title question.
-bool intermission_title_row{};
 unsigned library_tab{};
 std::array<unsigned,2> library_index{};
 bool library_tab_focus{};
@@ -3666,7 +3665,7 @@ float text_units(const std::string& text) {
 }
 void intermission_sync() {
     const auto next=intermission_page::state();intermission_request=next;
-    if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();intermission_title_row=false;return;}
+    if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();return;}
     const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing;
     if(intermission_doc && intermission_stamp==stamp)return;
     intermission_stamp=stamp;
@@ -3681,16 +3680,14 @@ void intermission_sync() {
     const auto& items=next.at("items");const bool restricted=next.value("restricted",false),submenu=next.value("submenu",false);
     const unsigned cursor=next.value("cursor",0u);
     float item_font=10.5f;for(const auto& item:items)item_font=std::min(item_font,fit(item.get<std::string>(),67));
-    // Our title row makes ten in the nine-item panel's own height (the footer sits right
-    // under it); the two-item menu grows by a row instead.
-    const float row=restricted?31.f/items.size():143.f/(items.size()+1);
+    // The original's panels with the row it gets (intermission_row.hpp): the menu a row
+    // taller, (33,41)-(103,199) or (33,41)-(103,87), and the nine-item menu's chapter panel
+    // 16 lower; the items include 返回标题画面 before 次のマップへ.
+    const float menu_bottom=restricted?87.f:199.f,chapter_y=restricted?193.f:209.f;
+    const float row=(menu_bottom-41)/items.size();
     std::string menu;
-    for(unsigned n=0;n<items.size();++n) {
-        // Our own row before the original's last: back to the title screen (quick_load.hpp), asked first.
-        if(n+1==items.size())
-            menu+="<button id='intermission:title' class='"+std::string(intermission_title_row?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+label("title_return_open")+"</button>";
-        menu+="<button id='intermission:"+std::to_string(n)+"' class='"+(n==cursor && !intermission_title_row?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+escape(items[n].get<std::string>())+"</button>";
-    }
+    for(unsigned n=0;n<items.size();++n)
+        menu+="<button id='intermission:"+std::to_string(n)+"' class='"+(n==cursor?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+escape(items[n].get<std::string>())+"</button>";
     const auto title=next.value("title",std::string());
     const auto turns_label=next.value("turns_label",std::string()),funds_label=next.value("funds_label",std::string());
     const float info_font=std::min(fit(turns_label,78),fit(funds_label,78));
@@ -3701,9 +3698,9 @@ void intermission_sync() {
     const auto footer=episode+" "+next.value("scene_title",std::string())+" "+next.value("clear_label",std::string());
     std::string body="<div class='im-root' id='intermission' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>"+
         panel(120,25,199,39,"<div style='text-align:center;'>"+escape(title)+"</div>",fit(title,76),"intermission-title")+
-        panel(33,41,103,restricted?int(71+row):183,menu,item_font,"intermission-menu")+
+        panel(33,41,103,menu_bottom,menu,item_font,"intermission-menu")+
         panel(145,49,287,79,info,info_font,"intermission-info")+
-        panel(34,193,287,207,"<div id='intermission-scene' style='padding:0 "+px(1)+";'>"+escape(footer)+"</div>",fit(footer,250),"intermission-footer");
+        panel(34,chapter_y,287,chapter_y+14,"<div id='intermission-scene' style='padding:0 "+px(1)+";'>"+escape(footer)+"</div>",fit(footer,250),"intermission-footer");
     if(submenu) {
         const auto& swap=next.at("swap_items");const unsigned chosen=next.value("swap_cursor",0u);
         float swap_font=10.5f;std::string options;
@@ -3713,7 +3710,7 @@ void intermission_sync() {
         body+=panel(109,121,155,160,options,swap_font,"intermission-swap");
     }
     const auto hint=label(next.value("swap_refused",false)?"intermission_swap_refused":submenu?"intermission_swap_hint":funds_editing=="intermission"?"funds_edit_hint":"intermission_hint");
-    body+="<div class='im-hint"+std::string(next.value("swap_refused",false)?" im-refused":"")+"' style='left:0; top:"+px(222)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+hint+"</div></div>";
+    body+="<div class='im-hint"+std::string(next.value("swap_refused",false)?" im-refused":"")+"' style='left:0; top:"+px(restricted?222:228)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+hint+"</div></div>";
     refresh(intermission_doc,body,true);intermission_doc->SetClass("modal",false);focus_funds(intermission_doc,"intermission");
 }
 // ユニット改造 / 武器改造: the machine list (layout 0x6B) and the five-stat screen
@@ -5083,7 +5080,6 @@ void choose(const std::string& id) {
     if(id.starts_with("intermission") && intermission_request.value("visible",false) && !settings_open) {
         // Item ids are "intermission:N" and "intermission-swap:N"; a click confirms.
         const auto serial=intermission_request.at("serial").get<uint64_t>();
-        if(id=="intermission:title"){choose("title-return-ask");return;}
         if(id.starts_with("intermission:"))intermission_page::answer(serial,"choose:"+id.substr(13));
         else if(id.starts_with("intermission-swap:"))intermission_page::answer(serial,"swap:"+id.substr(18));
         return;
@@ -5873,7 +5869,7 @@ void sync() {
             pad_keys(pad_now,pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
-    if(map_menu::take_chosen() && !settings_open)choose("title-return-ask");
+    if(title_row::take_chosen() && !settings_open)choose("title-return-ask");
     image_drain();prefetch_map_art();
     link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
 #if defined(__APPLE__) || defined(_WIN32)
@@ -6223,15 +6219,11 @@ bool dispatch(SDL_Event& event) {
             const unsigned at=intermission_request.value(submenu?"swap_cursor":"cursor",0u);
             const std::string prefix=submenu?"swap-":"";
             const bool reverse=k==SDLK_UP || (k==SDLK_TAB && (event.key.keysym.mod&KMOD_SHIFT));
-            // Our title row sits between the original's last two items.
             if(k==SDLK_UP || k==SDLK_DOWN || k==SDLK_TAB){
-                if(!submenu && intermission_title_row){intermission_title_row=false;intermission_page::answer(serial,"move:"+std::to_string(count-(reverse?2:1)));intermission_stamp.clear();return true;}
-                if(!submenu && count>=2 && at==count-(reverse?1:2)){intermission_title_row=true;intermission_stamp.clear();return true;}
                 intermission_page::answer(serial,prefix+"move:"+std::to_string((at+(reverse?count-1:1))%count));return true;
             }
             if(event.key.repeat)return true;
             if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){
-                if(!submenu && intermission_title_row){choose("title-return-ask");return true;}
                 intermission_page::answer(serial,(submenu?"swap:":"choose:")+std::to_string(at));return true;
             }
             if((k==SDLK_ESCAPE || k==SDLK_x) && submenu){intermission_page::answer(serial,"swap-close");return true;}

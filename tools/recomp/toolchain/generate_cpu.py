@@ -258,6 +258,12 @@ MAP_WIDTH_CONSTANTS.update({
     ("load_000AB160_func_801D8BB0", 0x801D8CB0): ("MEM_HU(ctx->r1, 0X7862)", "srw64_map_figure(rdram, MEM_HU(ctx->r1, 0X7862))"),
     ("load_00121560_func_801C8E1C", 0x801C8F20): ("MEM_HU(ctx->r16, 0X1C)", "srw64_battle_figure(rdram, MEM_HU(ctx->r16, 0X1C))"),
     ("load_00121560_func_801C8F4C", 0x801C9184): ("MEM_HU(ctx->r16, 0X1C)", "srw64_battle_figure(rdram, MEM_HU(ctx->r16, 0X1C))"),
+    # The intermission menu's 返回标题画面 row before its last (intermission_row.hpp): the
+    # cursor (801C4A20's last index) one row further in the nine-item and the two-item menu,
+    # and the nine-item menu's tenth row read as its ninth for the next screen (cursor + 1).
+    ("srw64_original_intermission_menu_step", 0x801CE1D0): ("0X8", "0X9"),
+    ("srw64_original_intermission_menu_step", 0x801CE234): ("0X1", "0X2"),
+    ("srw64_original_intermission_menu_step", 0x801CE1E8): ("MEM_H(ctx->r2, -0X2AB8)", "(MEM_H(ctx->r2, -0X2AB8) == 9 ? 8 : MEM_H(ctx->r2, -0X2AB8))"),
 })
 
 # 8008AE90 builds each frame's display list by calling every render node's function: sprites

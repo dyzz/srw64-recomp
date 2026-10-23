@@ -201,15 +201,16 @@ IndexImage frame_image(const FrameSpec& spec, bool strokes) {
             const int flags = u16(offset + k * 6);
             int x = u16(offset + k * 6 + 2), y = u16(offset + k * 6 + 4), cells = 16, rows = 16;
             if (flags < 0 || x < 0 || y < 0) return {};
+            const int rom_x = x, rom_y = y;   // both stretches test the cell's place in the ROM
             // As menu_widen.cpp draws it: one column wider (sampled at 16 / (16 + delta)), the next ones over.
-            if (widen.delta > 0 && y >= widen.top && y <= widen.bottom) {
-                if (x == widen.stretch) cells = 16 + widen.delta;
-                else if (x >= widen.shift && x < widen.shift_end) x += widen.delta;
+            if (widen.delta > 0 && rom_y >= widen.top && rom_y <= widen.bottom) {
+                if (rom_x == widen.stretch) cells = 16 + widen.delta;
+                else if (rom_x >= widen.shift && rom_x < widen.shift_end) x += widen.delta;
             }
             // And one row taller (menu_widen.cpp rows): sampled at 16 / (16 + delta) in t.
-            if (taller.delta > 0 && x >= taller.left && x <= taller.right) {
-                if (y == taller.stretch) rows = 16 + taller.delta;
-                else if (y >= taller.shift && y < taller.shift_end) y += taller.delta;
+            if (taller.delta > 0 && rom_x >= taller.left && rom_x <= taller.right) {
+                if (rom_y == taller.stretch) rows = 16 + taller.delta;
+                else if (rom_y >= taller.shift && rom_y < taller.shift_end) y += taller.delta;
             }
             for (int r = 0; r < rows; ++r)
                 for (int c = 0; c < cells; ++c) {
