@@ -160,6 +160,24 @@ def enter():
     time.sleep(1)
 
 
+def menu_row():
+    """Our label among the text the back pass drew last, or None."""
+    back = status()['ui_text'].get('back') or []
+    return next((e for e in back if e.get('extra') == 'map-menu-title'), None)
+
+
+def menu_rows():
+    """The y of our label, システム (record 525) and 中断 (526) in the label pool."""
+    raw = bytes.fromhex(s.client.call('memory.read', address=0x8015CB00, size=60 * 0x34)['hex'])
+    found = {}
+    for n in range(60):
+        e = raw[n * 0x34:(n + 1) * 0x34]
+        if 1 <= e[2] <= 3:
+            found.setdefault(struct.unpack('>H', e[0:2])[0], struct.unpack('>i', e[8:12])[0])
+    row = menu_row()
+    return {'ours': row and row['y'], 'system': found.get(525), 'suspend': found.get(526)}
+
+
 def cursor():
     raw = bytes.fromhex(s.client.call('memory.read', address=0x80102308, size=8)['hex'])
     x, y = struct.unpack('>ff', raw)
@@ -273,11 +291,31 @@ try:
     check('map-to-title', state['mode'] == 7 and state['quick_load']['stage'] == 'idle', state)
 
     # 2. The blank-tile menu's own row: up from フェイズ終了 wraps onto 中断 (the eighth),
-    # up again onto ours (the seventh), A asks.
+    # up again onto ours (the seventh), A asks. First its sub-screens: under 部隊表 and
+    # 作戦目的 the row is not drawn, and back on the menu (which can come back lower) it
+    # sits between システム and 中断.
     enter()
     keys('up', pause=.8)
     keys('z', pause=1)
     until(lambda: mem(MAP_STATE) == 0x16 and mem(0x80172ED4) == 8, 10, 'the blank-tile menu with eight rows')
+    for index, name in ((1, 'units'), (3, 'goal')):
+        for _ in range((index - mem(0x80172ED6)) % 8):
+            keys('down', pause=.4)
+        keys('z', pause=1.5)
+        until(lambda: mem(0x80172EB2) != 0, 10, f'the {name} sub-screen')
+        time.sleep(.5)
+        shot(f'02-{name}')
+        check(f'no-row-under-{name}', not menu_row(), {'row': menu_row(), 'sub': mem(0x80172EB2)})
+        keys('x', pause=1.5)
+        until(lambda: mem(0x80172EB2) == 0, 10, 'the menu again')
+        time.sleep(.5)
+        shot(f'02-{name}-back')
+        rows = menu_rows()
+        check(f'rows-after-{name}', rows['ours'] is not None and rows['system'] is not None and rows['suspend'] is not None
+              and rows['ours'] - rows['system'] == 16 and rows['suspend'] - rows['ours'] == 16, rows)
+    # Back to フェイズ終了, then up past 中断 onto ours.
+    for _ in range(mem(0x80172ED6)):
+        keys('up', pause=.4)
     keys('up', 'up', pause=.8)
     check('menu-row-reached', mem(0x80172ED6) == 6, {'cursor': mem(0x80172ED6), 'rows': mem(0x80172ED4)})
     shot('02-menu')
