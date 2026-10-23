@@ -763,7 +763,7 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 .bp-stats {display:flex; gap:4dp; margin-top:3dp;}
 .bp-stat {flex:1 1 auto; display:flex; justify-content:space-between; gap:6dp; padding:3dp 7dp; font-size:13dp; white-space:nowrap; background-color:#ff6fa81f;} .right .bp-stat {background-color:#3fd0ff1f;}
 .bp-stat span {color:#a4b0d2;} .bp-stat b.spent {color:#ffd75e;}
-.battle-spirits {display:flex; flex-wrap:wrap; margin-top:5dp; height:46dp; overflow-y:auto; font-size:12dp; gap:3dp;}
+.battle-spirits {display:flex; flex-wrap:wrap; align-content:flex-start; margin-top:5dp; height:46dp; overflow-y:auto; font-size:12dp; gap:3dp;}
 .right .battle-spirits {justify-content:flex-end;}
 .battle-spirits span {display:inline-block; padding:1dp 5dp; height:16dp; color:#7e88a8; border:1dp #4a5578; background-color:#ffffff0a;}
 .battle-spirits span.active {color:#ffd75e; border-color:#ffd75e; background-color:#ffd75e2e; font-weight:bold;}
@@ -3612,6 +3612,8 @@ float text_units(const std::string& text);
 // Rows the spirit tags take in a pilot panel's info column (12 dp text with 12 dp of
 // padding and border each, 3 dp apart), a little pessimistic so a second row is never
 // hidden: the column is the panel (31% of the page) less its padding, the face and a gap.
+// The box gets 3 dp more than the rows: borders round to whole pixels (1.5 px → 2 at
+// 1080p), so a tag can come out a pixel taller and two exact rows would scroll.
 int battle_spirit_rows(const json& c,bool narrow) {
     const float page=std::min(page_area().w/ui_density,1500.f)-36,width=(page*.31f-22-(narrow?68:100)-8)*.95f;
     int rows=1;float x=0;
@@ -3639,7 +3641,7 @@ std::string battle_pilot(const json& c,bool left,const PilotRoom& room) {
     body+="<div class='bp-pilot-info'><div class='bp-pilot-name'><span>"+escape(c.at("pilot_name").get<std::string>())+"</span><span class='level'>Lv "+battle_number(c.at("level"))+"</span></div>";
     body+="<div class='bp-stats'><div class='bp-stat'><span>"+label("battle_morale")+"</span><b>"+battle_number(c.at("morale"))+"</b></div>";
     body+="<div class='bp-stat'><span>SP</span><b class='"+std::string(c.at("sp").get<int>()<c.at("max_sp").get<int>()?"spent":"")+"'>"+battle_number(c.at("sp"))+" / "+battle_number(c.at("max_sp"))+"</b></div></div>"
-        "<div class='battle-spirits' style='height:"+std::to_string(room.spirit_rows*23-2)+"dp;'>";
+        "<div class='battle-spirits' style='height:"+std::to_string(room.spirit_rows*23+1)+"dp;'>";
     const auto spirits=c.value("spirit_grid",json::array());
     if(spirits.empty())body+="<span class='muted'>"+label("battle_spirits_none")+"</span>";
     for(const auto& spirit:spirits) {
