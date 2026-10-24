@@ -297,10 +297,16 @@ bool Renderer::place(Texture& texture, uint16_t width, uint16_t height, bool lin
     }
     if (chosen < 0) return false;
     Page& page = pages[chosen];
-    const GLint filter = linear ? GL_LINEAR : GL_NEAREST;
-    glBindTexture(GL_TEXTURE_2D, page.id);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
+    // The filter only when the page's changes (a new page, or one started over for the other
+    // kind): on the Switch's Mesa setting it on a page the GPU still reads waited for the GPU,
+    // as an upload did, and it was set for every texture placed (4 s of 5 at the title).
+    if (page.filter != (linear ? 1 : 0)) {
+        const GLint filter = linear ? GL_LINEAR : GL_NEAREST;
+        glBindTexture(GL_TEXTURE_2D, page.id);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
+        page.filter = linear ? 1 : 0;
+    }
     page.used = frame_number;
     texture.page = int16_t(chosen);
     texture.id = page.id;
