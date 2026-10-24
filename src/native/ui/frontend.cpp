@@ -5790,6 +5790,35 @@ void send_key(SDL_Keycode key,bool repeat,Uint16 mod=KMOD_NONE) {
 // input::classic_keys), which follow_bindings turns the player's keys into.
 // A controller drives them with the same keys, so a Steam Deck needs no keyboard.
 // Funds entry and the name page take A as Enter and B as Esc.
+// The title's corner (Library, the battle viewer, MOD) for a controller, which the ring
+// menu's directions never reach: Down from the ring takes the cursor there, Left and Right
+// move along it, A or START opens, B or Up gives the ring back. The game sees none of it
+// meanwhile (settings_window::filter_input).
+int home_focus=-1;
+bool home_pad(uint32_t pressed) {
+    const uint32_t up=0x0800|(1u<<16),down=0x0400|(1u<<17),left=0x0200|(1u<<18),right=0x0100|(1u<<19);
+    std::vector<Rml::Element*> buttons;
+    if(home_doc && home_doc->IsVisible() && intro::title_major()==3)
+        for(const char* id:{"library-open","viewer-open","mod-open"})if(auto* e=home_doc->GetElementById(id))buttons.push_back(e);
+    if(buttons.empty()){home_focus=-1;return false;}
+    if(home_focus<0) {
+        if(!(pressed&down))return false;
+        home_focus=0;
+    } else if(pressed&(up|0x4000)) {
+        home_focus=-1;
+        if(auto* f=context->GetFocusElement())f->Blur();
+        settings_release.hold();
+        return true;
+    } else if(pressed&(0x8000|0x1000)) {
+        const std::string id=buttons[std::min<size_t>(size_t(home_focus),buttons.size()-1)]->GetId();
+        home_focus=-1;
+        choose(id);
+        return true;
+    } else if(pressed&left)home_focus=std::max(0,home_focus-1);
+    else if(pressed&right)home_focus=std::min(int(buttons.size())-1,home_focus+1);
+    buttons[std::min<size_t>(size_t(home_focus),buttons.size()-1)]->Focus();
+    return true;
+}
 void pad_keys(uint32_t now,uint32_t pressed) {
     const bool text=names::request().visible || !funds_editing.empty();
     const std::pair<uint32_t,SDL_Keycode> keys[]={{0x8000,text?SDLK_RETURN:SDLK_z},{0x4000,text?SDLK_ESCAPE:SDLK_x},
@@ -5968,7 +5997,8 @@ void sync() {
         if(!capturing && !settings_open && (host_pressed&input::pad_quick_load))choose("quick-load-ask");
         if(!capturing && !settings_open && (host_pressed&input::pad_title_return))choose("title-return-ask");
         if(capturing && settings_open){}
-        else if(view_pressed)choose(settings_open?"settings-close":"settings-open");
+        else if(view_pressed){home_focus=-1;choose(settings_open?"settings-close":"settings-open");}
+        else if(!settings_open && home_pad(pad_pressed)){}
         else if(info_pressed && (!settings_open || stage_open))choose(stage_open?"settings-close":"stage-info-open");
         else if(settings_open)settings_pad(pad_now,pad_pressed);
         else if(shown(battle_request)){if(pad_pressed)battle_buttons(pad_pressed);}
@@ -6426,7 +6456,36 @@ uint32_t touch_buttons() {
     const uint32_t linger=SDL_GetTicks64()<touch_linger_until.load()?touch_linger.load():0u;
     return touch_held.load(std::memory_order_relaxed)|linger;
 }
-bool event(SDL_Event& e){auto lock=lock_ui();bool consumed=dispatch(e);if(e.type==SDL_TEXTEDITING_EXT)SDL_free(e.editExt.text);if(context){context->Update();input.flush_sdl();}return consumed;}
+#ifdef __SWITCH__
+// The Switch's SDL makes no mouse of the touch screen (handheld): the first finger points
+// and clicks on the pages, as SDL's own touch mouse does elsewhere (SDL_TOUCH_MOUSEID).
+bool finger_pointer(const SDL_Event& e) {
+    static SDL_FingerID primary=0;static bool down=false;
+    if(e.type!=SDL_FINGERDOWN && e.type!=SDL_FINGERMOTION && e.type!=SDL_FINGERUP)return false;
+    if(e.type==SDL_FINGERDOWN && !down){primary=e.tfinger.fingerId;down=true;}
+    else if(!down || e.tfinger.fingerId!=primary)return true;
+    int w=0,h=0;SDL_GetWindowSize(window,&w,&h);
+    const int x=int(e.tfinger.x*float(w)),y=int(e.tfinger.y*float(h));
+    SDL_Event m{};
+    m.type=SDL_MOUSEMOTION;m.motion.which=SDL_TOUCH_MOUSEID;m.motion.windowID=SDL_GetWindowID(window);
+    m.motion.x=x;m.motion.y=y;m.motion.xrel=int(e.tfinger.dx*float(w));m.motion.yrel=int(e.tfinger.dy*float(h));
+    m.motion.state=e.type==SDL_FINGERDOWN?0u:SDL_BUTTON_LMASK;
+    dispatch(m);
+    if(e.type!=SDL_FINGERMOTION) {
+        SDL_Event b{};
+        b.type=e.type==SDL_FINGERDOWN?SDL_MOUSEBUTTONDOWN:SDL_MOUSEBUTTONUP;b.button.which=SDL_TOUCH_MOUSEID;b.button.windowID=SDL_GetWindowID(window);
+        b.button.button=SDL_BUTTON_LEFT;b.button.state=e.type==SDL_FINGERDOWN?SDL_PRESSED:SDL_RELEASED;b.button.clicks=1;b.button.x=x;b.button.y=y;
+        dispatch(b);
+        if(e.type==SDL_FINGERUP)down=false;
+    }
+    return true;
+}
+#endif
+bool event(SDL_Event& e){auto lock=lock_ui();
+#ifdef __SWITCH__
+    if(!touch_supported() && finger_pointer(e)){if(context){context->Update();input.flush_sdl();}return true;}
+#endif
+    bool consumed=dispatch(e);if(e.type==SDL_TEXTEDITING_EXT)SDL_free(e.editExt.text);if(context){context->Update();input.flush_sdl();}return consumed;}
 #ifndef SRW64_GL_ONLY
 // Set while this present's first pass is in flight: its second pass is part of the same
 // frame and must not wait for it (lock_ui waits for the previous frame's pages).
@@ -6558,8 +6617,8 @@ namespace srw64::settings_window {
 void open(){ui::settings_open=true;ui::settings_release.hold();}
 void close(){ui::physical_held=ui::held();ui::settings_open=false;}
 bool visible(){return ui::settings_open;}
-bool owns_input(){return ui::settings_open || ui::settings_release.pending();}
-uint16_t filter_input(uint16_t buttons,bool held){return uint16_t(ui::settings_release.filter(buttons,ui::settings_open,held || ui::physical_held.load()));}
+bool owns_input(){return ui::settings_open || ui::home_focus>=0 || ui::settings_release.pending();}
+uint16_t filter_input(uint16_t buttons,bool held){return uint16_t(ui::settings_release.filter(buttons,ui::settings_open || ui::home_focus>=0,held || ui::physical_held.load()));}
 void update(){}
 void shutdown(){close();}
 void control(const std::filesystem::path& directory){
