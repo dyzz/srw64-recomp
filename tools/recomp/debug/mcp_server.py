@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import base64
 import json
+import re
 from pathlib import Path
 import sys
 
@@ -111,6 +112,15 @@ TOOLS = [
     {"name": "srw64_events", "description": "Rows of an event log from a cursor. Logs: " + ", ".join(EVENT_LOGS) + ".",
      "inputSchema": {"type": "object", "required": ["log"], "properties": {"log": {"type": "string", "enum": list(EVENT_LOGS)},
          "since": {"type": "integer"}, "kinds": {"type": "array", "items": {"type": "string"}}}}},
+    {"name": "srw64_log", "description": "The run's console.log (stdout and stderr), newest lines last: the last `lines` (default 80) "
+        "that contain `grep` (a substring; several separated by |), without the per-frame SRW64_GFX task lines unless asked. "
+        "Works for a game on another machine too (a Deck, a phone, a Switch: there the log's tail comes from the game's memory).",
+     "inputSchema": {"type": "object", "properties": {"lines": {"type": "integer"}, "grep": {"type": "string"},
+         "frames": {"type": "boolean", "description": "keep the SRW64_GFX task lines"}}}},
+    {"name": "srw64_perf", "description": "The performance and start-up lines the game wrote (SRW64_PERF every 5 s where it measures, "
+        "SRW64_BOOT, SRW64_SHADERS, SRW64_STALL): the last `count` perf lines (default 6) as text and with their key=value "
+        "fields, and every boot, shader and stall line.",
+     "inputSchema": {"type": "object", "properties": {"count": {"type": "integer"}}}},
     {"name": "srw64_quit", "description": "Quit the game normally and return the run report summary.",
      "inputSchema": {"type": "object", "properties": {}}},
 ]
@@ -193,6 +203,21 @@ class Server:
         if name == "srw64_events":
             rows, cursor = session.events(args["log"], int(args.get("since", 0)), args.get("kinds"))
             return text({"rows": rows, "next": cursor})
+        if name in ("srw64_log", "srw64_perf"):
+            path = session.local_file(str(Path(session.host_run()) / "console.log")) if not session.local() \
+                else Path(session.host_run()) / "console.log"
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+            if name == "srw64_log":
+                if not args.get("frames"):
+                    lines = [line for line in lines if not line.startswith("SRW64_GFX task")]
+                if args.get("grep"):
+                    wanted = [part for part in str(args["grep"]).split("|") if part]
+                    lines = [line for line in lines if any(part in line for part in wanted)]
+                return text("\n".join(lines[-int(args.get("lines", 80)):]))
+            perf = [line for line in lines if line.startswith("SRW64_PERF")][-int(args.get("count", 6)):]
+            return text({"perf": [{"line": line, "fields": perf_fields(line)} for line in perf],
+                         "boot": [line for line in lines if line.startswith(("SRW64_BOOT", "SRW64_SHADERS"))],
+                         "stalls": [line for line in lines if line.startswith("SRW64_STALL")]})
         if name == "srw64_quit":
             report = session.quit()
             self.session = None
@@ -227,6 +252,11 @@ class Server:
         except Exception as error:  # a protocol bug must not kill the server
             return {"jsonrpc": "2.0", "id": ident, "error": {"code": -32603, "message": str(error)}}
         return {"jsonrpc": "2.0", "id": ident, "result": result}
+
+
+def perf_fields(line: str) -> dict:
+    """The key=value words of a performance line (lists=21.0/s, list=14.62ms(...), cpu=0:100%), as text."""
+    return dict(re.findall(r"(\w+)=((?:[^\s(]|\([^)]*\))+)", line))
 
 
 def text(value) -> list[dict]:
