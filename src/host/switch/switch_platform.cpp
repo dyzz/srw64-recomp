@@ -3,6 +3,7 @@
 #include <switch.h>
 
 #include <cstdio>
+#include <malloc.h>
 #include <cstring>
 #include <mutex>
 #include <string>
@@ -13,6 +14,7 @@
 #include <iterator>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <vector>
 
 #include "ultramodern/ultramodern.hpp"
 
@@ -21,8 +23,39 @@
 // DK64Recomp-NX port, which runs the same runtime): the graphics thread goes to core 2,
 // the game's threads (one runs at a time), the VI, timer and RSP task threads to core 1,
 // and core 0 stays with the main thread and the audio.
+// Every thread the program makes, for the performance lines' CPU time per thread
+// (srw64_switch_perf_system): its handle, the name ultramodern gives it, else where it was
+// made (return addresses into the NRO, for addr2line on the matching ELF).
+namespace {
+struct Watched { Handle handle; char name[24]; uintptr_t made[4]; u64 last; };
+std::mutex watched_mutex;
+std::vector<Watched> watched;
+uintptr_t module_base() {
+    static const uintptr_t base = [] {
+        MemoryInfo info{};
+        u32 page = 0;
+        svcQueryMemory(&info, &page, reinterpret_cast<u64>(&module_base));
+        return uintptr_t(info.addr);
+    }();
+    return base;
+}
+void watch_thread(Handle handle, const char* name, const uintptr_t* made) {
+    std::lock_guard lock(watched_mutex);
+    for (auto& entry : watched)
+        if (entry.handle == handle) {
+            if (name) std::snprintf(entry.name, sizeof entry.name, "%s", name);
+            return;
+        }
+    Watched entry{handle, {}, {}, 0};
+    if (name) std::snprintf(entry.name, sizeof entry.name, "%s", name);
+    if (made) std::memcpy(entry.made, made, sizeof entry.made);
+    watched.push_back(entry);
+}
+}
+
 namespace ultramodern {
 void set_native_thread_name(const std::string& name) {
+    watch_thread(threadGetCurHandle(), name.c_str(), nullptr);
     int core = -1;
     if (name == "Gfx Thread") core = 2;
     else for (const char* game_side : {"VI Thread", "Timer Thread", "SP Task Thread", "Game"})
@@ -135,7 +168,11 @@ std::string srw64_switch_perf_system() {
     static u64 last_tick = 0, last_idle[3] = {};
     const u64 tick = armGetSystemTick();
     char text[160];
-    int length = std::snprintf(text, sizeof text, "memory=%llu/%lluMiB cpu", (unsigned long long)(used >> 20), (unsigned long long)(total >> 20));
+    // libnx takes the whole heap at start (used is nearly total): malloc's own count is what the
+    // program holds.
+    const struct mallinfo heap = mallinfo();
+    int length = std::snprintf(text, sizeof text, "heap=%dMiB of %lluMiB cpu", int(heap.uordblks >> 20), (unsigned long long)(total >> 20));
+    (void)used;
     for (int core = 0; core < 3; ++core) {
         u64 idle = 0;
         svcGetInfo(&idle, InfoType_IdleTickCount, INVALID_HANDLE, u64(core));
@@ -144,7 +181,25 @@ std::string srw64_switch_perf_system() {
         last_idle[core] = idle;
     }
     last_tick = tick;
-    return text;
+    // The threads that took more than 3% of a core since the last line.
+    std::string line = text;
+    std::lock_guard lock(watched_mutex);
+    static u64 last_line_tick = 0;
+    const u64 span = last_line_tick && tick > last_line_tick ? tick - last_line_tick : 0;
+    last_line_tick = tick;
+    for (auto& entry : watched) {
+        u64 ticks = 0;
+        if (R_FAILED(svcGetInfo(&ticks, InfoType_ThreadTickCount, entry.handle, TickCountInfo_Total))) continue;
+        const double share = span ? 100.0 * double(ticks - entry.last) / double(span) : 0.0;
+        entry.last = ticks;
+        if (share < 3) continue;
+        char part[96];
+        if (entry.name[0]) std::snprintf(part, sizeof part, " [%s %.0f%%]", entry.name, share);
+        else std::snprintf(part, sizeof part, " [%lx/%lx/%lx %.0f%%]", (unsigned long)entry.made[0], (unsigned long)entry.made[1],
+                           (unsigned long)entry.made[2], share);
+        line += part;
+    }
+    return line;
 }
 
 // Started as an application (a game held R on, or the title override) and not from the
@@ -199,7 +254,23 @@ u32 __nx_nv_transfermem_size = 32 * 1024 * 1024;
 int __real___syscall_thread_create(struct __pthread_t** thread, void* (*function)(void*), void* argument, void* stack, size_t size);
 int __wrap___syscall_thread_create(struct __pthread_t** thread, void* (*function)(void*), void* argument, void* stack, size_t size) {
     if (!stack && !size) size = 1024 * 1024;
-    return __real___syscall_thread_create(thread, function, argument, stack, size);
+    const int result = __real___syscall_thread_create(thread, function, argument, stack, size);
+    if (result == 0 && thread && *thread) {
+        // Where it was made: the frame records' return addresses above this call, as offsets.
+        uintptr_t made[4] = {};
+        const uintptr_t base = module_base();
+        auto* frame = static_cast<uintptr_t*>(__builtin_frame_address(0));
+        for (int depth = 0, kept = 0; frame && depth < 12 && kept < 4; ++depth) {
+            const uintptr_t at = frame[1];
+            if (at > base && at - base < (64u << 20) && depth >= 2) made[kept++] = at - base;
+            auto* next = reinterpret_cast<uintptr_t*>(frame[0]);
+            if (next <= frame) break;
+            frame = next;
+        }
+        // libnx's struct __pthread_t starts with its Thread, whose first member is the handle.
+        watch_thread(*reinterpret_cast<const Handle*>(*thread), nullptr, made);
+    }
+    return result;
 }
 int __syscall_thread_detach(struct __pthread_t*) { return 0; }
 
@@ -238,6 +309,7 @@ void __wrap_abort() {
 // Before main and after it (libnx's weak hooks): the sockets, and stdout and stderr to
 // nxlink on the Mac that pushed the NRO (tools/release/switch/README.txt).
 void userAppInit() {
+    watch_thread(threadGetCurHandle(), "main", nullptr);
     // The socket only: the log device (above) sends to it, never waiting on the Mac (a
     // blocked write, the console's Wi-Fi asleep, stopped the thread that logged in
     // MegaMan64Recomp-NX). A line may be lost instead.
