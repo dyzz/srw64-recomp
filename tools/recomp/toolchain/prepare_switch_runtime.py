@@ -19,9 +19,10 @@ manifest with before/after hashes. build/recomp/switch-runtime/ then holds:
   include/ultramodern/renderer_context.hpp
                               the window handle for the Switch (an SDL_Window*, as on Linux)
   include/lightweightsemaphore.h, include/blockingconcurrentqueue.h
-                              moodycamel's POSIX semaphores for the Switch too (devkitA64's
-                              newlib has semaphore.h but does not define __unix__); the
-                              queue header copied so its sibling include finds the patched one
+                              moodycamel's semaphores, the lightweight one too, as a count
+                              under a mutex with a condition variable: its POSIX path over
+                              newlib lost wake-ups (as the PS Vita's did); the queue header
+                              copied so its sibling include finds the patched one
   events.cpp                  the VI thread's swap of the VI states under the setters' lock,
                               as on the PS Vita (prepare_vita_runtime.py): unlocked, a VI event
                               the game set between the swap and the copy was overwritten
@@ -244,10 +245,126 @@ def adapt_renderer_context(source: str) -> str:
         using WindowHandle = SDL_Window*;''')
 
 
+SWITCH_SEMAPHORE = """#elif defined(__SWITCH__)
+//---------------------------------------------------------
+// Semaphore (Switch): a count under a mutex with a condition variable, waits measured on the
+// steady clock. moodycamel's POSIX path (newlib's sem_* over libnx) lost wake-ups: the game's
+// idle thread slept on in pause_self while the VI's messages came in, and every game thread
+// waited in osRecvMesg (creport, 2026-10-24) -- as the PS Vita's did on its own semaphores.
+//---------------------------------------------------------
+class Semaphore
+{
+private:
+	std::mutex m_mutex;
+	std::condition_variable m_condition;
+	int m_count;
+
+	Semaphore(const Semaphore& other) MOODYCAMEL_DELETE_FUNCTION;
+	Semaphore& operator=(const Semaphore& other) MOODYCAMEL_DELETE_FUNCTION;
+
+public:
+	Semaphore(int initialCount = 0) : m_count(initialCount)
+	{
+		assert(initialCount >= 0);
+	}
+
+	bool wait()
+	{
+		std::unique_lock<std::mutex> lock(m_mutex);
+		m_condition.wait(lock, [this] { return m_count > 0; });
+		--m_count;
+		return true;
+	}
+
+	bool try_wait()
+	{
+		std::lock_guard<std::mutex> lock(m_mutex);
+		if (m_count == 0) return false;
+		--m_count;
+		return true;
+	}
+
+	bool timed_wait(std::uint64_t usecs)
+	{
+		std::unique_lock<std::mutex> lock(m_mutex);
+		if (!m_condition.wait_for(lock, std::chrono::microseconds(usecs), [this] { return m_count > 0; })) return false;
+		--m_count;
+		return true;
+	}
+
+	void signal()
+	{
+		{
+			std::lock_guard<std::mutex> lock(m_mutex);
+			++m_count;
+		}
+		m_condition.notify_one();
+	}
+
+	void signal(int count)
+	{
+		if (count <= 0) return;
+		{
+			std::lock_guard<std::mutex> lock(m_mutex);
+			m_count += count;
+		}
+		if (count == 1) m_condition.notify_one();
+		else m_condition.notify_all();
+	}
+};
+"""
+
+
+SWITCH_LIGHTWEIGHT = """#if defined(__SWITCH__)
+// The Switch: every operation is the counted semaphore's own (above). The atomic count and
+// the spinning in front of it (the class below, elsewhere) is what lost wake-ups.
+class LightweightSemaphore
+{
+public:
+	typedef std::make_signed<std::size_t>::type ssize_t;
+
+private:
+	details::Semaphore m_sema;
+
+public:
+	LightweightSemaphore(ssize_t initialCount = 0, int = 10000) : m_sema(int(initialCount)) {}
+	LightweightSemaphore(const LightweightSemaphore&) = delete;
+	LightweightSemaphore& operator=(const LightweightSemaphore&) = delete;
+
+	bool tryWait() { return m_sema.try_wait(); }
+	bool wait() { return m_sema.wait(); }
+	bool wait(std::int64_t timeout_usecs)
+	{
+		if (timeout_usecs < 0) return wait();
+		return m_sema.timed_wait(std::uint64_t(timeout_usecs));
+	}
+	ssize_t tryWaitMany(ssize_t max)
+	{
+		ssize_t taken = 0;
+		while (taken < max && tryWait()) ++taken;
+		return taken;
+	}
+	ssize_t waitMany(ssize_t max, std::int64_t timeout_usecs)
+	{
+		if (max <= 0 || !wait(timeout_usecs)) return 0;
+		return 1 + tryWaitMany(max - 1);
+	}
+	ssize_t waitMany(ssize_t max) { return waitMany(max, -1); }
+	void signal(ssize_t count = 1) { m_sema.signal(int(count)); }
+	std::size_t availableApprox() const { return 0; }
+};
+"""
+
+
 def adapt_semaphore(source: str) -> str:
     if source.count("#elif defined(__unix__)") != 2:
         raise RuntimeError("Pinned lightweightsemaphore.h differs")
-    return source.replace("#elif defined(__unix__)", "#elif defined(__unix__) || defined(__SWITCH__)")
+    source = replace_once(source, "#elif defined(__unix__)\n#include <semaphore.h>",
+                          "#elif defined(__SWITCH__)\n#include <chrono>\n#include <condition_variable>\n#include <mutex>\n"
+                          "#elif defined(__unix__)\n#include <semaphore.h>")
+    source = replace_once(source, "#elif defined(__unix__)\n//----", SWITCH_SEMAPHORE + "#elif defined(__unix__)\n//----")
+    source = replace_once(source, "class LightweightSemaphore\n{", SWITCH_LIGHTWEIGHT + "#else\nclass LightweightSemaphore\n{")
+    return replace_once(source, "\t}\n};\n\n}   // end namespace moodycamel", "\t}\n};\n#endif\n\n}   // end namespace moodycamel")
 
 
 def adapt_error_handling(source: str) -> str:
