@@ -336,12 +336,14 @@ def main() -> int:
     # last one shown is under three quarters of a refresh old: on a 60 Hz display every other
     # picture, on a 120 Hz one none. No sleeping: a sleep to the next refresh lands the
     # present half a refresh late on Metal (docs/design/60fps.md §9, 50 instead of 60).
-    # Interpolation keeps its own pacing. SRW64_PRESENT_PACE=0 turns it off for comparison.
+    # Interpolation keeps its own pacing. Only with SRW64_VI_RATE=120, so the default build
+    # presents as before; SRW64_PRESENT_PACE=0 turns it off there for comparison.
     present_pace = [("                if (skipPresent) {\n"
                      "                    skipInterpolation();\n",
                      "                static const bool presentPace = [] {\n"
+                     "                    const char* vi = std::getenv(\"SRW64_VI_RATE\");\n"
                      "                    const char* pace = std::getenv(\"SRW64_PRESENT_PACE\");\n"
-                     "                    return !(pace && std::string_view(pace) == \"0\");\n"
+                     "                    return vi && std::string_view(vi) == \"120\" && !(pace && std::string_view(pace) == \"0\");\n"
                      "                }();\n"
                      "                if (!skipPresent && presentPace && (presentTimestamp != Timestamp())) {\n"
                      "                    uint32_t displayRate, originalRate, intendedRate;\n"
