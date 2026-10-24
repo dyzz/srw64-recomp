@@ -93,6 +93,7 @@ RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
 
 #ifdef __vita__
 void srw64_vita_perf_thread(const char* label);  // vita/vita_platform.cpp
+void srw64_vita_graphics_begin();                // graphics.cpp
 #endif
 namespace {
 std::atomic<uint64_t> vi_count{}, dl_count{}, audio_tasks{}, audio_samples{};
@@ -147,6 +148,7 @@ private:
 };
 
 void on_init(uint8_t* rdram, recomp_context*) {
+    srw64::app::boot_step("game init");
     srw64_rdram = rdram;
     srw64::stall::start();
     srw64::state_probe::directory=output_dir;
@@ -176,6 +178,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
     // section belongs at this entrypoint; the game's own loader owns overlays.
     unload_overlays((int32_t)0x80076610, 0x100000);
     load_overlays(0x1000, (int32_t)0x80076610, 0x5AC30);
+    srw64::app::boot_step("game entry");
     loaded_sections = {0};
     // The runtime has already copied the resident section; a rules file's table
     // changes go in before any guest code runs.
@@ -450,7 +453,13 @@ static int run_host(int argc, char** argv) {
         std::fprintf(stderr, "Usage: srw64-gfx-host BASELINE_ROM NEW_OUTPUT_DIR MAX_VIS [INPUT_MASKS|-] [INITIAL_SRAM]\n");
         return 2;
     }
-    output_dir = std::filesystem::absolute(argv[2]);
+    // The dialogue data, and on the PS Vita its graphics, start on threads of their own:
+    // they overlap the ROM's loading and each other.
+    srw64::dialogue_data::preload();
+#ifdef __vita__
+    srw64_vita_graphics_begin();
+#endif
+    output_dir = srw64::app::absolute_path(argv[2]);
     const char* variant_key = std::getenv("SRW64_ROM_VARIANT");
     if (!variant_key) variant_key = "jp";
     const NativeRomVariant* variant = nullptr;

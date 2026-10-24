@@ -111,6 +111,8 @@ public:
         }
         return result;
     }
+    // Whether a capture is waiting (the PS Vita's and the Switch's screen keeper draw then).
+    bool wanted() { std::lock_guard lock(mutex); return pending.has_value(); }
     // Render thread, once per present: the capture wanted now, if any.
     std::optional<Pending> take() {
         std::lock_guard lock(mutex);

@@ -24,6 +24,10 @@ void render_shutdown();
 // current, into the bound window framebuffer of width x height pixels.
 void render_init_gl();
 bool draw_gl(int width, int height, bool name_cover);
+// Whether any page of the shared UI is up (it may change each frame: the screen is redrawn).
+// The frame-rate readout does not count: it changes twice a second, as readout_changes() counts.
+bool shown();
+uint64_t readout_changes();
 void render_shutdown_gl();
 nlohmann::json tree();
 nlohmann::json click(const nlohmann::json&);

@@ -43,6 +43,12 @@ public:
     bool present(uint32_t origin, int x, int y, int width, int height);
     // The colour image a VI origin shows, 0 if none has been drawn.
     uint32_t image_at(uint32_t origin) const;
+    // The frame that last drew into a colour image (0 if none): a picture with the same
+    // number shows what it showed before.
+    uint32_t drawn_at(uint32_t image) const {
+        const auto found = targets.find(image);
+        return found == targets.end() ? 0 : found->second.used;
+    }
     // The host's tagged draws (Command::native), called in their place in the frame with the
     // frame's render target bound and its size; the hook may change any GL state.
     using NativeHook = std::function<void(const Command&, int width, int height)>;
@@ -54,6 +60,10 @@ public:
     // The last frame's GL draw calls; programs and textures held.
     uint32_t draw_calls() const { return calls; }
     size_t programs_held() const { return programs.size(); }
+    // The combiner keys of the programs linked so far, and linking those of an earlier run
+    // ahead of the frames that need them (a first compile is a frame's stall).
+    std::vector<uint32_t> program_keys() const;
+    void prewarm(const std::vector<uint32_t>& keys);
     size_t textures_held() const { return textures.size(); }
     // Where a texture is: "page N x,y wxh", "own wxh", or "-" (for traces).
     std::string describe(uint64_t key) const;

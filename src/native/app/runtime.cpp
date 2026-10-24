@@ -15,6 +15,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <system_error>
+#include <mutex>
 #include <thread>
 #include <vector>
 #ifdef __SWITCH__
@@ -403,9 +404,13 @@ fs::path canonical_path(const fs::path& path) {
 namespace {
 const auto program_start=std::chrono::steady_clock::now();
 }
-namespace { void (*boot_listener)(const char*)=nullptr; }
+namespace {
+void (*boot_listener)(const char*)=nullptr;
+std::mutex boot_mutex;  // steps from more than one thread (the PS Vita's graphics); newlib's stdio has no lock
+}
 void set_boot_listener(void (*listener)(const char* line)) { boot_listener=listener; }
 void boot_step(const std::string& what) {
+    std::lock_guard lock(boot_mutex);
     const double seconds=std::chrono::duration<double>(std::chrono::steady_clock::now()-program_start).count();
     char line[160];
 #ifdef __vita__

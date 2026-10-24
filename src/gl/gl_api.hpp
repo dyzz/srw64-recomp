@@ -6,7 +6,9 @@
 #include <vitaGL.h>
 #define SRW64_GLES 1
 #elif defined(__SWITCH__)
-#include <GLES2/gl2.h>
+// GLES 3 headers over the ES 2 subset the renderer uses: Mesa there gives an ES 3.2 context,
+// and the program cache needs ES 3's program binaries.
+#include <GLES3/gl3.h>
 #include <GLES2/gl2ext.h>
 #define SRW64_GLES 1
 #elif defined(__APPLE__)

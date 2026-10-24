@@ -1,4 +1,5 @@
 #include "gl_renderer.hpp"
+#include "program_cache.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -46,22 +47,6 @@ const char* alpha_c(uint8_t i) {
     return t[i & 7];
 }
 
-GLuint compile(GLenum type, const std::string& source, std::string& error) {
-    const GLuint shader = glCreateShader(type);
-    const char* text = source.c_str();
-    glShaderSource(shader, 1, &text, nullptr);
-    glCompileShader(shader);
-    GLint ok = 0;
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &ok);
-    if (!ok) {
-        char log[2048] = {};
-        glGetShaderInfoLog(shader, sizeof log, nullptr, log);
-        error = std::string("shader: ") + log + "\n" + source;
-        glDeleteShader(shader);
-        return 0;
-    }
-    return shader;
-}
 }  // namespace
 
 std::string vertex_source() {
@@ -161,20 +146,13 @@ bool Renderer::present(uint32_t origin, int x, int y, int width, int height) {
     const Target* shown = &found->second;
     if (!blit) {
         std::string error;
-        const GLuint vs = compile(GL_VERTEX_SHADER, std::string(kPreamble) +
+        blit = link_program(std::string(kPreamble) +
             "attribute vec2 a_position;\nvarying vec2 v_uv;\n"
-            "void main() {\n  gl_Position = vec4(a_position * 2.0 - 1.0, 0.0, 1.0);\n  v_uv = a_position;\n}\n", error);
-        const GLuint fs = compile(GL_FRAGMENT_SHADER, std::string(kPreamble) +
+            "void main() {\n  gl_Position = vec4(a_position * 2.0 - 1.0, 0.0, 1.0);\n  v_uv = a_position;\n}\n", std::string(kPreamble) +
             "uniform sampler2D u_texture;\nvarying vec2 v_uv;\n"
-            "void main() {\n  gl_FragColor = vec4(texture2D(u_texture, v_uv).rgb, 1.0);\n}\n", error);
-        if (!vs || !fs) { last_error = error; return false; }
-        blit = glCreateProgram();
-        glAttachShader(blit, vs);
-        glAttachShader(blit, fs);
-        glBindAttribLocation(blit, attribute_position, "a_position");
-        glLinkProgram(blit);
-        glDeleteShader(vs);
-        glDeleteShader(fs);
+            "void main() {\n  gl_FragColor = vec4(texture2D(u_texture, v_uv).rgb, 1.0);\n}\n",
+            {{attribute_position, "a_position"}}, error);
+        if (!blit) { last_error = error; return false; }
         blit_texture = glGetUniformLocation(blit, "u_texture");
     }
     static const float corners[8] = {0, 0, 1, 0, 0, 1, 1, 1};
@@ -218,38 +196,30 @@ GLuint Renderer::picture(uint32_t image) const {
 const Renderer::Program* Renderer::program(uint32_t key) {
     if (auto found = programs.find(key); found != programs.end()) return found->second.id ? &found->second : nullptr;
     Program p;
-    const GLuint vs = compile(GL_VERTEX_SHADER, vertex_source(), last_error);
-    const GLuint fs = vs ? compile(GL_FRAGMENT_SHADER, fragment_source(key), last_error) : 0;
-    if (vs && fs) {
-        p.id = glCreateProgram();
-        glAttachShader(p.id, vs);
-        glAttachShader(p.id, fs);
-        glBindAttribLocation(p.id, attribute_position, "a_position");
-        glBindAttribLocation(p.id, attribute_uv, "a_uv");
-        glBindAttribLocation(p.id, attribute_shade, "a_shade");
-        glBindAttribLocation(p.id, attribute_prim, "a_prim");
-        glBindAttribLocation(p.id, attribute_bounds, "a_bounds");
-        glLinkProgram(p.id);
-        GLint ok = 0;
-        glGetProgramiv(p.id, GL_LINK_STATUS, &ok);
-        if (!ok) {
-            char log[2048] = {};
-            glGetProgramInfoLog(p.id, sizeof log, nullptr, log);
-            last_error = std::string("link: ") + log;
-            glDeleteProgram(p.id);
-            p.id = 0;
-        } else {
-            p.texture = glGetUniformLocation(p.id, "u_texture");
-            p.env = glGetUniformLocation(p.id, "u_env");
-            p.alpha_ref = glGetUniformLocation(p.id, "u_alpha_ref");
-            glUseProgram(p.id);
-            if (p.texture >= 0) glUniform1i(p.texture, 0);
-        }
+    p.id = link_program(vertex_source(), fragment_source(key),
+                        {{attribute_position, "a_position"}, {attribute_uv, "a_uv"}, {attribute_shade, "a_shade"},
+                         {attribute_prim, "a_prim"}, {attribute_bounds, "a_bounds"}}, last_error);
+    if (p.id) {
+        p.texture = glGetUniformLocation(p.id, "u_texture");
+        p.env = glGetUniformLocation(p.id, "u_env");
+        p.alpha_ref = glGetUniformLocation(p.id, "u_alpha_ref");
+        glUseProgram(p.id);
+        if (p.texture >= 0) glUniform1i(p.texture, 0);
     }
-    if (vs) glDeleteShader(vs);
-    if (fs) glDeleteShader(fs);
     auto& stored = programs[key] = p;
     return stored.id ? &stored : nullptr;
+}
+
+std::vector<uint32_t> Renderer::program_keys() const {
+    std::vector<uint32_t> keys;
+    for (const auto& [key, p] : programs)
+        if (p.id) keys.push_back(key);
+    std::sort(keys.begin(), keys.end());
+    return keys;
+}
+
+void Renderer::prewarm(const std::vector<uint32_t>& keys) {
+    for (const uint32_t key : keys) program(key);
 }
 
 bool Renderer::place(Texture& texture, uint16_t width, uint16_t height, bool linear) {

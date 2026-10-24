@@ -333,11 +333,17 @@ int run_prepared(const Options& options,const GameIdentity& game,const HostMain&
         std::error_code error;
         fs::remove(stale/game.save_file,error);
     }
+    // console.log is opened to append (a new session folder each run elsewhere).
+    if(list_names(run).contains("console.log")) {
+        std::error_code error;
+        fs::remove(run/"console.log",error);
+    }
     clear_runtime_environment();
     for(const auto& [key,value]:std::map<std::string,std::string>{
         {"SRW64_INTERACTIVE","1"},{"SRW64_ROM_VARIANT","jp"},
         {"SRW64_AUDIO_OUTPUT",options.mute?"0":"1"},{"SRW64_NATIVE_NAME_ENTRY","1"},
-        {"SRW64_DIALOGUE_DATA",(data/"dialogue.json").string()},{"SRW64_LOCALE",locale},
+        {"SRW64_DIALOGUE_DATA",(data/"dialogue.json").string()},{"SRW64_DIALOGUE_TABLES",(data/"dialogue.bin").string()},
+        {"SRW64_LOCALE",locale},
         {"SRW64_PRESENTATION_SETTINGS",language_file.string()},
         {"SRW64_INPUT_SETTINGS",(root/"input.json").string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},

@@ -408,6 +408,25 @@ extern "C" void srw64_vi_report(char* out, size_t size) {
 
 void vi_thread_func() {
 """)
+    # The graphics thread presents with the swap that waits for the display: presenting every
+    # screen update drains its queue at the VI rate, and a backlog built behind one slow display
+    # list never shrank while the game's lists waited in it (DK64Recomp-NX and
+    # MegaMan64Recomp-NX do the same). An update with a newer one queued behind it is skipped.
+    source = replace_once(source, "        events_context.action_queue.enqueue(ScreenUpdateAction{ events_context.vi.regs });\n",
+                          "        srw64_pending_screen_updates.fetch_add(1);\n"
+                          "        events_context.action_queue.enqueue(ScreenUpdateAction{ events_context.vi.regs });\n")
+    source = replace_once(source, """            else if (const auto* screen_update_action = std::get_if<ScreenUpdateAction>(&action)) {
+""", """            else if (const auto* screen_update_action = std::get_if<ScreenUpdateAction>(&action)) {
+                if (srw64_pending_screen_updates.fetch_sub(1) > 1) {
+                    ++srw64_screen_updates_skipped;
+                    continue;
+                }
+""")
+    source = replace_once(source, "static int remaining_retraces = 1;\n", """static int remaining_retraces = 1;
+static std::atomic<int> srw64_pending_screen_updates{0};
+static std::atomic<uint64_t> srw64_screen_updates_skipped{0};
+extern "C" uint64_t srw64_screen_updates_skipped_count() { return srw64_screen_updates_skipped.load(); }
+""")
     return replace_once(source, """        // Update VI registers and swap VI modes.
         events_context.vi.update_vi();
 """, """        // Update VI registers and swap VI modes, under the lock the setters take.

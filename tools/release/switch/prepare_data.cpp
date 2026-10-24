@@ -9,18 +9,23 @@
 // the game (content/dialogue). OUT gets what goes into /switch/Marchwind64 on the SD card as it is:
 //   game/rom.z64          the ROM, big-endian, checked against the supported one
 //   game/art.pack         the importer's images
-//   game/dialogue.json    the importer's dialogue data with the shipped dialogue text in its
-//                         catalogs and their intro pages (intro_pages), and its images named
-//                         where the console finds them (/switch/Marchwind64/game/art.pack)
+//   game/dialogue.json    the importer's dialogue data without its large string tables, its
+//                         images named where the console finds them
+//                         (/switch/Marchwind64/game/art.pack)
+//   game/dialogue.bin     those tables (string_tables.hpp): the original records, and each
+//                         locale's translations with the shipped dialogue text laid over them
+//                         and its intro pages
 //   game/prepared.json    what run_prepared reads first: the format, the ROM, the locales
 //   game/blank.sram       a card of zeros, what the game starts from before it has saved
 //                         (as the runtime fills a missing save file)
-//   run/runtime-data/saves/, saves/slots/   the folders the game writes into
+//   run/runtime-data/saves/, saves/slots/, shaders/   the folders the game writes into
+//                         (shaders/: the GL renderer's compiled programs, kept between runs)
 // The output is derived from the ROM: it is the player's own, never a release asset.
 #include "app/launch.hpp"
 #include "app/rom_import.hpp"
 #include "app/rom_order.hpp"
 #include "localization/dialogue_text.hpp"
+#include "localization/string_tables.hpp"
 #include "json/json.hpp"
 #include <cstdio>
 #include <iostream>
@@ -96,8 +101,23 @@ int main(int argc, char** argv) {
             for (const char* group : {"units", "portraits"})
                 for (auto& [id, art] : data["battle_assets"].at(group).items()) art["path"] = on_console(art.at("path").get<std::string>());
         const auto problems = merge_dialogue_text(data, text);
+        // The large string tables apart, read on the console without JSON.
+        using Table = localization::string_tables::Table;
+        std::map<std::string, Table> tables;
+        tables["source"] = data.at("source_entries").get<Table>();
+        data.erase("source_entries");
+        data.erase("entries");  // the base locale's, in its row too
+        for (auto& [locale, row] : data.at("locale_catalogs").items()) {
+            tables["entries/" + locale] = row.at("entries").get<Table>();
+            row.erase("entries");
+        }
+        for (const auto& [locale, pages] : data.at("intro_pages").items()) tables["intro/" + locale] = pages.get<Table>();
+        data.erase("intro_pages");
+        std::map<std::string, const Table*> written;
+        for (const auto& [name, table] : tables) written.emplace(name, &table);
         fs::rename(content / "art.pack", game / "art.pack");
         atomic_write(game / "dialogue.json", data.dump() + "\n");
+        atomic_write(game / "dialogue.bin", localization::string_tables::write(written));
         remove_tree(cache, ignored);
         json locales = json::array();
         for (const auto& [locale, catalog] : data.at("locale_catalogs").items()) locales.push_back(locale);
@@ -105,7 +125,7 @@ int main(int argc, char** argv) {
                      json({{"schema", prepared_schema}, {"format", prepared_format}, {"rom_sha256", expected},
                            {"locale", "zh-Hans"}, {"locales", locales},
                            {"resolution_scale", manifest.at("resolution_scale")}}).dump(2) + "\n");
-        for (const auto& folder : {out / "run" / "runtime-data" / "saves", out / "saves" / "slots"}) fs::create_directories(folder);
+        for (const auto& folder : {out / "run" / "runtime-data" / "saves", out / "saves" / "slots", out / "shaders"}) fs::create_directories(folder);
         std::printf("SRW64_SWITCH_PREPARED %s (%zu dialogue text problems)\n", out.string().c_str(), problems);
         return problems ? 1 : 0;
     } catch (const std::exception& error) {

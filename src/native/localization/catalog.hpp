@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <memory>
 #include "json/json.hpp"
+#include "localization/string_tables.hpp"
 
 namespace srw64::localization {
 struct TextKey {
@@ -25,8 +26,10 @@ public:
     Catalog();
     void load(const nlohmann::json& data);
     // A locale's row of locale_catalogs over the rest of the data, with the original
-    // records already read from it.
-    void load(const nlohmann::json& data,const nlohmann::json& row,std::shared_ptr<const Table> source_records);
+    // records already read from it, and its translations when they come apart from the JSON
+    // (string_tables.hpp).
+    void load(const nlohmann::json& data,const nlohmann::json& row,std::shared_ptr<const Table> source_records,
+              std::shared_ptr<const Table> translations=nullptr);
     const std::string* resolve(const TextKey& key) const;
     // The original record, whatever this catalog translates it to.
     const std::string* source_text(const TextKey& key) const;
@@ -49,7 +52,9 @@ std::string display_name(const std::string& locale);
 // Every locale in that order, with its display name (each in its own language).
 std::vector<std::pair<std::string,std::string>> locale_options();
 std::string language_choices();
-void initialize(const nlohmann::json& data);
+// With `tables` (prepared data, string_tables.hpp), the original records and the
+// translations come from them instead of the JSON.
+void initialize(const nlohmann::json& data,const string_tables::Tables* tables=nullptr);
 void activate(Snapshot value);
 class Scope {
     Snapshot previous;

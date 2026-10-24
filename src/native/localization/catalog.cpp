@@ -26,7 +26,8 @@ Catalog::Catalog():translated(empty_table()),source(empty_table()),labels(empty_
 void Catalog::load(const nlohmann::json& data) {
     load(data,nlohmann::json::object(),std::make_shared<const Table>(data.at("source_entries").get<Table>()));
 }
-void Catalog::load(const nlohmann::json& data,const nlohmann::json& row,std::shared_ptr<const Table> source_records) {
+void Catalog::load(const nlohmann::json& data,const nlohmann::json& row,std::shared_ptr<const Table> source_records,
+                   std::shared_ptr<const Table> translations) {
     // A key of the locale's row wins over the same key of the data.
     const auto field=[&](const char* key)->const nlohmann::json& {return row.contains(key)?row.at(key):data.at(key);};
     if(data.at("schema")!="srw64.native-dialogue-data.v2")throw std::runtime_error("Unsupported text catalog");
@@ -34,9 +35,13 @@ void Catalog::load(const nlohmann::json& data,const nlohmann::json& row,std::sha
     locale=config.value("locale","zh-Hans");
     font=config.at("font").get<std::string>();
     revision=row.contains("catalog_sha256")?row.at("catalog_sha256").get<std::string>():data.value("catalog_sha256","legacy");
-    auto entries=std::make_shared<Table>();
-    for(const auto& [key,value]:field("entries").items())entries->emplace(key,value.get<std::string>());
-    translated=std::move(entries);
+    if(translations) {
+        translated=std::move(translations);
+    } else {
+        auto entries=std::make_shared<Table>();
+        for(const auto& [key,value]:field("entries").items())entries->emplace(key,value.get<std::string>());
+        translated=std::move(entries);
+    }
     source=std::move(source_records);
     labels=std::make_shared<const Table>(field("ui").get<Table>());
     layered=empty_table();
@@ -103,14 +108,21 @@ std::string language_choices() {
     return result;
 }
 void activate(Snapshot value){if(!value)throw std::runtime_error("Unknown locale");std::atomic_store(&active,std::move(value));}
-void initialize(const nlohmann::json& data) {
+void initialize(const nlohmann::json& data,const string_tables::Tables* tables) {
     std::map<std::string,Snapshot> next;
+    const auto table=[&](const std::string& name)->std::shared_ptr<const Catalog::Table> {
+        if(!tables)return nullptr;
+        const auto found=tables->find(name);
+        if(found==tables->end())throw std::runtime_error("String tables lack "+name);
+        return found->second;
+    };
     if(data.contains("locale_catalogs")) {
         // The original records once, for every locale (a row may have its own).
-        const auto shared=std::make_shared<const Catalog::Table>(data.at("source_entries").get<Catalog::Table>());
+        const auto shared=tables?table("source"):std::make_shared<const Catalog::Table>(data.at("source_entries").get<Catalog::Table>());
         for(const auto& [locale,row]:data.at("locale_catalogs").items()) {
             auto value=std::make_shared<Catalog>();
-            value->load(data,row,row.contains("source_entries")?std::make_shared<const Catalog::Table>(row.at("source_entries").get<Catalog::Table>()):shared);
+            value->load(data,row,row.contains("source_entries")?std::make_shared<const Catalog::Table>(row.at("source_entries").get<Catalog::Table>()):shared,
+                        table("entries/"+locale));
             if(value->locale!=locale)throw std::runtime_error("Locale registry identity mismatch");
             next.emplace(locale,std::move(value));
         }

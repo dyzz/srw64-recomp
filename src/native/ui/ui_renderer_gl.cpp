@@ -5,9 +5,12 @@
 
 #include <cstring>
 #include <mutex>
+#include <stdexcept>
+#include <string>
 #include <unordered_map>
 
 #include "../../gl/gl_api.hpp"
+#include "../../gl/program_cache.hpp"
 #include "stb/stb_image.h"   // the implementation is in RT64's texture cache on the desktop
 
 namespace recompui {
@@ -18,20 +21,6 @@ constexpr const char* kPreamble = "#version 100\nprecision highp float;\n";
 constexpr const char* kPreamble = "#version 120\n";
 #endif
 
-GLuint compile(GLenum type, const std::string& source) {
-    const GLuint shader = glCreateShader(type);
-    const char* text = source.c_str();
-    glShaderSource(shader, 1, &text, nullptr);
-    glCompileShader(shader);
-    GLint ok = 0;
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &ok);
-    if (!ok) {
-        char log[1024] = {};
-        glGetShaderInfoLog(shader, sizeof log, nullptr, log);
-        throw std::runtime_error(std::string("RmlUi GL shader: ") + log);
-    }
-    return shader;
-}
 }  // namespace
 
 struct RmlRenderInterface_GL::Impl final : Rml::RenderInterfaceCompatibility {
@@ -59,23 +48,16 @@ struct RmlRenderInterface_GL::Impl final : Rml::RenderInterfaceCompatibility {
     }
 
     void make_program() {
-        const GLuint vs = compile(GL_VERTEX_SHADER, std::string(kPreamble) +
+        std::string error;
+        program = srw64::n64gl::link_program(std::string(kPreamble) +
             "uniform mat4 u_mvp;\nuniform vec2 u_translation;\n"
             "attribute vec2 a_position;\nattribute vec4 a_colour;\nattribute vec2 a_uv;\n"
             "varying vec4 v_colour;\nvarying vec2 v_uv;\n"
-            "void main() {\n  gl_Position = u_mvp * vec4(a_position + u_translation, 0.0, 1.0);\n  v_colour = a_colour;\n  v_uv = a_uv;\n}\n");
-        const GLuint fs = compile(GL_FRAGMENT_SHADER, std::string(kPreamble) +
+            "void main() {\n  gl_Position = u_mvp * vec4(a_position + u_translation, 0.0, 1.0);\n  v_colour = a_colour;\n  v_uv = a_uv;\n}\n", std::string(kPreamble) +
             "uniform sampler2D u_texture;\nvarying vec4 v_colour;\nvarying vec2 v_uv;\n"
-            "void main() {\n  gl_FragColor = texture2D(u_texture, v_uv) * v_colour;\n}\n");
-        program = glCreateProgram();
-        glAttachShader(program, vs);
-        glAttachShader(program, fs);
-        glBindAttribLocation(program, 0, "a_position");
-        glBindAttribLocation(program, 1, "a_colour");
-        glBindAttribLocation(program, 2, "a_uv");
-        glLinkProgram(program);
-        glDeleteShader(vs);
-        glDeleteShader(fs);
+            "void main() {\n  gl_FragColor = texture2D(u_texture, v_uv) * v_colour;\n}\n",
+            {{0, "a_position"}, {1, "a_colour"}, {2, "a_uv"}}, error);
+        if (!program) throw std::runtime_error("UI GL " + error);
         mvp_uniform = glGetUniformLocation(program, "u_mvp");
         translation_uniform = glGetUniformLocation(program, "u_translation");
         texture_uniform = glGetUniformLocation(program, "u_texture");

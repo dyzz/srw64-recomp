@@ -15,7 +15,7 @@ int run_standalone(const Options&, const GameIdentity&, const HostMain&, const C
 // (tools/release/vita/prepare_data.py) and copied into the player's folder, game/ holding
 // the ROM, the art pack and the dialogue data as the host reads them. Nothing is checked,
 // imported or rewritten at start; the run's files go in run/, the same folder each time.
-inline constexpr unsigned prepared_format=1;
+inline constexpr unsigned prepared_format=2;  // 2: the string tables in dialogue.bin
 inline constexpr const char* prepared_schema="srw64.prepared-data.v1";
 int run_prepared(const Options&, const GameIdentity&, const HostMain&);
 }

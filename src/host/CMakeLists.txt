@@ -86,10 +86,16 @@ if(NINTENDO_SWITCH)
     list(APPEND SRW64_TIMER_SOURCES "${SRW64_SWITCH_RUNTIME}/error_handling.cpp" "${SRW64_SWITCH_RUNTIME}/events.cpp")
 endif()
 list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling)\\.cpp$")
+if(VITA)   # the lifecycle file with the stall report's counts (prepare_vita_runtime.py)
+    set(SRW64_MESGQUEUE "${SRW64_VITA_RUNTIME}/mesgqueue.cpp")
+    target_include_directories(ultramodern PRIVATE "${SRW64_BUILD}/runtime-lifecycle")
+else()
+    set(SRW64_MESGQUEUE "${SRW64_BUILD}/runtime-lifecycle/mesgqueue.cpp")
+endif()
 set_property(TARGET ultramodern PROPERTY SOURCES ${SRW64_TIMER_SOURCES}
     "${SRW64_BUILD}/runtime-lifecycle/timer.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/threads.cpp"
-    "${SRW64_BUILD}/runtime-lifecycle/mesgqueue.cpp"
+    "${SRW64_MESGQUEUE}"
     "${SRW64_BUILD}/runtime-lifecycle/scheduling.cpp")
 if(NOT NINTENDO_SWITCH)   # the Switch's librecomp names its own recomp.cpp
     get_target_property(SRW64_RUNTIME_SOURCES librecomp SOURCES)
@@ -237,7 +243,7 @@ if(SRW64_ENABLE_RT64)
     find_package(OpenGL)
     if(OpenGL_FOUND)
         add_executable(srw64-gl-replay EXCLUDE_FROM_ALL "${SRW64_ROOT}/src/gl/replay.cpp"
-            "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp")
+            "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp")
         target_include_directories(srw64-gl-replay PRIVATE "${SRW64_RT64}/src/contrib")
         target_link_libraries(srw64-gl-replay PRIVATE SDL2::SDL2 OpenGL::GL)
     endif()
@@ -278,7 +284,7 @@ if(SRW64_ENABLE_RT64)
         target_sources(${SRW64_HOST_TARGET} PRIVATE game_hooks.cpp)
         # The PS Vita's GL renderer, chosen at run time with SRW64_RENDERER=gl (graphics.cpp).
         if(OpenGL_FOUND)
-            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" dialogue_gl.cpp native_gl.cpp
+            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp
                 "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp")
             target_compile_definitions(${SRW64_HOST_TARGET} PRIVATE SRW64_GL_RENDERER)
             target_link_libraries(${SRW64_HOST_TARGET} PRIVATE OpenGL::GL)
@@ -343,7 +349,7 @@ if(SRW64_GL_ONLY)
         cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp stage_info.cpp
         rom_art.cpp legacy.cpp quick_load.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"
         native_map.cpp native_sprite.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp game_hooks.cpp
-        "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" dialogue_gl.cpp native_gl.cpp
+        "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp
         "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp" gl_only_stubs.cpp)
     target_compile_definitions(srw64-gl-host PRIVATE SRW64_NATIVE_DIALOGUE SRW64_GL_RENDERER SRW64_GL_ONLY)
     set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${SRW64_ROOT}/CMakeLists.txt")

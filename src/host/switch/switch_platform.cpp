@@ -126,6 +126,27 @@ void srw64_switch_boot_end() {
     boot = Boot::Over;
 }
 
+// The system's side of a performance line (graphics.cpp, SwitchPerf): the process's memory and
+// each application core's load since the last line (from the kernel's idle tick counts).
+std::string srw64_switch_perf_system() {
+    u64 total = 0, used = 0;
+    svcGetInfo(&total, InfoType_TotalMemorySize, CUR_PROCESS_HANDLE, 0);
+    svcGetInfo(&used, InfoType_UsedMemorySize, CUR_PROCESS_HANDLE, 0);
+    static u64 last_tick = 0, last_idle[3] = {};
+    const u64 tick = armGetSystemTick();
+    char text[160];
+    int length = std::snprintf(text, sizeof text, "memory=%llu/%lluMiB cpu", (unsigned long long)(used >> 20), (unsigned long long)(total >> 20));
+    for (int core = 0; core < 3; ++core) {
+        u64 idle = 0;
+        svcGetInfo(&idle, InfoType_IdleTickCount, INVALID_HANDLE, u64(core));
+        const double busy = last_tick && tick > last_tick ? 100.0 * (1.0 - double(idle - last_idle[core]) / double(tick - last_tick)) : 0.0;
+        length += std::snprintf(text + length, sizeof text - length, "%s%d:%.0f%%", core ? " " : "=", core, busy);
+        last_idle[core] = idle;
+    }
+    last_tick = tick;
+    return text;
+}
+
 // Started as an application (a game held R on, or the title override) and not from the
 // album, where a library applet gets about 370 MiB in all (switch-port.md, the smoke run).
 bool srw64_switch_application() {

@@ -58,6 +58,7 @@
 #ifdef SRW64_GL_RENDERER
 #include "../gl/display_list.hpp"
 #include "../gl/gl_renderer.hpp"
+#include "../gl/program_cache.hpp"
 #include "native_gl.hpp"
 #endif
 #ifndef SRW64_GL_ONLY
@@ -89,6 +90,8 @@ namespace RT64 { extern bool AndroidGpuDriverTooOld; }
 #include <cstring>
 #include <ctime>
 #include <fstream>
+#include <set>
+#include <thread>
 
 namespace {
 #ifdef __ANDROID__
@@ -127,6 +130,7 @@ std::filesystem::path capture_directory;
 std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure message
 }  // namespace
 #ifdef __SWITCH__
+std::string srw64_switch_perf_system();   // switch/switch_platform.cpp: memory and core loads
 void srw64_switch_error(const std::string& message, const std::string& details);
 void srw64_switch_boot_end();   // switch/switch_platform.cpp: the launch's text console goes
 #endif
@@ -964,6 +968,85 @@ bool gl_mode() {
 }
 std::string gl_device;   // GL_RENDERER, for srw64_graphics_info
 
+#ifdef __vita__
+// vitaGL's start: on its own thread from the host's beginning (srw64_vita_graphics_begin), so
+// that the shader compiler's loading and the pools overlap the dialogue data's; the
+// renderer waits for it.
+std::thread vita_graphics;
+void vita_graphics_init() {
+    // vitaGL owns the screen (SDL's window only carries input): 960 x 544, the shader
+    // compiler of libshacccg.suprx. Its pools have fixed sizes: given a threshold
+    // instead, it takes every byte above it, and the game's threads and the system's
+    // own allocations have nothing left (Vita3K fell over at the first frame).
+    // The video memory pool is what the console has left, less a margin: a console
+    // has 96 MiB of it free, minus the boot screen's buffer still shown, and a pool
+    // asked for larger than that is not made at all; vitaGL then fits every texture
+    // in the RAM pools and waits a second at each allocation it cannot (the opening
+    // text took 4 s a frame).
+    srw64::app::boot_step("graphics init");
+    SceKernelFreeMemorySizeInfo free_memory{};
+    free_memory.size = sizeof free_memory;
+    sceKernelGetFreeMemorySize(&free_memory);
+    const int cdram_pool = std::max(free_memory.size_cdram - 4 * 1024 * 1024, 16 * 1024 * 1024) & ~(256 * 1024 - 1);
+    vglInitWithCustomSizes(0, 960, 544, 12 * 1024 * 1024, cdram_pool, 16 * 1024 * 1024, 0, SCE_GXM_MULTISAMPLE_NONE);
+    std::fprintf(stderr, "SRW64_VITA_GL_POOLS cdram=%d MiB of %d MiB free\n", cdram_pool >> 20, free_memory.size_cdram >> 20);
+    vglWaitVblankStart(GL_FALSE);
+    // VitaSDK's vitaGL draws its own splash screen from a thread until the first frame is
+    // presented; the game takes a while to its first picture, and Vita3K falls over under
+    // that thread. A black frame now ends it.
+    glClearColor(0, 0, 0, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    vglSwapBuffers(GL_FALSE);
+    srw64_vita_progress_end();   // vitaGL's frames are on the screen now, not the boot screen
+    srw64::app::boot_step("graphics ready");
+}
+#endif
+
+#ifdef __SWITCH__
+// A folder's names, from one listing (the program cache looks up no file that is not there).
+std::set<std::string> list_folder(const std::filesystem::path& folder) {
+    std::set<std::string> names;
+    std::error_code error;
+    for (std::filesystem::directory_iterator entry(folder, error), end; !error && entry != end; entry.increment(error))
+        names.insert(entry->path().filename().string());
+    return names;
+}
+extern "C" uint64_t srw64_screen_updates_skipped_count();   // switch-runtime events.cpp
+// The Switch's performance lines (docs/design/switch-port.md): every 5 s on stderr (console.log,
+// nxlink, the debug interface's console.log), what the graphics thread did with its time.
+struct SwitchPerf {
+    using clock = std::chrono::steady_clock;
+    clock::time_point window = clock::now();
+    unsigned lists = 0, presents = 0, kept = 0;
+    double interpret = 0, draw = 0, dialogue_take = 0, list_max = 0;
+    double picture = 0, overlays = 0, ui = 0, readback = 0, swap = 0, present_max = 0, swap_max = 0;
+    uint64_t skipped_at = 0;
+    srw64::n64gl::ProgramStats programs_at{};
+    static double ms(clock::time_point from, clock::time_point to) { return std::chrono::duration<double, std::milli>(to - from).count(); }
+    void report(size_t programs_held) {
+        const auto now = clock::now();
+        const double seconds = std::chrono::duration<double>(now - window).count();
+        if (seconds < 5) return;
+        const uint64_t skipped = srw64_screen_updates_skipped_count();
+        const auto programs = srw64::n64gl::program_stats();
+        const auto per = [](double total, unsigned count) { return count ? total / count : 0.0; };
+        std::fprintf(stderr,
+            "SRW64_PERF %.1fs lists=%.1f/s list=%.2fms(interp %.2f draw %.2f dlg %.2f max %.1f) "
+            "presents=%.1f/s kept=%u skipped=%llu present=%.2fms(picture %.2f overlays %.2f ui %.2f read %.2f swap %.2f; max %.1f swap max %.1f) "
+            "programs=%zu linked+%u(%.0fms) loaded+%u(%.0fms) %s\n",
+            seconds, lists / seconds, per(interpret + draw + dialogue_take, lists), per(interpret, lists), per(draw, lists),
+            per(dialogue_take, lists), list_max, presents / seconds, kept, (unsigned long long)(skipped - skipped_at),
+            per(picture + overlays + ui + readback + swap, presents), per(picture, presents), per(overlays, presents), per(ui, presents),
+            per(readback, presents), per(swap, presents), present_max, swap_max, programs_held,
+            programs.linked - programs_at.linked, programs.link_ms - programs_at.link_ms,
+            programs.loaded - programs_at.loaded, programs.load_ms - programs_at.load_ms, ::srw64_switch_perf_system().c_str());
+        *this = SwitchPerf{};
+        skipped_at = skipped;
+        programs_at = programs;
+    }
+};
+#endif
+
 class GLRenderer final : public ultramodern::renderer::RendererContext {
 public:
     explicit GLRenderer(uint8_t* rdram) : rdram(rdram) {
@@ -975,6 +1058,35 @@ public:
         if (const char* value = std::getenv("SRW64_GL_SCALE")) scale = std::clamp(std::atoi(value), 1, 8);
         renderer = std::make_unique<srw64::n64gl::Renderer>(srw64::n64gl::kPictureWidth * scale, srw64::n64gl::kPictureHeight * scale);
         interpreter = std::make_unique<srw64::n64gl::Interpreter>([this](uint64_t key) { return renderer->known(key); });
+#ifdef __vita__
+        // The shader programs compiled on earlier runs, and where this run's go (prepare_data.cpp
+        // makes the folder): every program of the renderer, the host's layers and the UI.
+        {
+            const std::filesystem::path kept = "ux0:data/Marchwind64/shaders";
+            srw64::n64gl::keep_programs(kept, list_folder(kept));
+        }
+#endif
+#ifdef __SWITCH__
+        // Every program compiled on earlier runs: kept as binaries when Mesa gives them
+        // (program_cache.cpp), and the game's combiner programs linked now, ahead of the frames
+        // that need them (Mesa here keeps no shader cache of its own; a first compile stalled
+        // the frame that needed it). shaders/combiners.txt lists the keys, one a line.
+        {
+            const std::filesystem::path kept = "/switch/Marchwind64/shaders";
+            std::error_code ignored;
+            std::filesystem::create_directories(kept, ignored);
+            srw64::n64gl::keep_programs(kept, list_folder(kept));
+            std::vector<uint32_t> keys;
+            std::ifstream listed(kept / "combiners.txt");
+            for (std::string line; std::getline(listed, line);)
+                if (!line.empty()) keys.push_back(uint32_t(std::stoul(line, nullptr, 16)));
+            const auto start = SwitchPerf::clock::now();
+            renderer->prewarm(keys);
+            combiner_keys = renderer->program_keys();
+            std::fprintf(stderr, "SRW64_SHADERS prewarmed %zu of %zu combiner programs in %.0f ms\n", combiner_keys.size(),
+                         keys.size(), SwitchPerf::ms(start, SwitchPerf::clock::now()));
+        }
+#endif
         // The host's tagged draws: the tag's second word is the draw's id (two letters and a number).
         interpreter->classify([](uint32_t w0, uint32_t w1) { return (w0 >> 16) == 0x0053 ? w1 : 0u; });
         setup_result = ultramodern::renderer::SetupResult::Success;
@@ -1005,6 +1117,9 @@ public:
         srw64::frame_rate::list_sent();
         const uint32_t start = task->t.data_ptr & 0x3FFFFFF;
         bool native_text = false;
+#ifdef __SWITCH__
+        const auto t0 = SwitchPerf::clock::now();
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
         ++workload;
         auto native_frame = srw64::dialogue::take_frame(start, task->t.data_size, display_copy, rdram);
@@ -1013,11 +1128,33 @@ public:
         srw64::names::queue_cover(workload, srw64::names::request().visible);
         srw64::gbi_stats::record(native_text ? display_copy.data() : rdram, rdram, start, task->t.data_size);
 #endif
+#ifdef __SWITCH__
+        const auto t1 = SwitchPerf::clock::now();
+#endif
         frame.clear();
         interpreter->run(rdram, start, frame, native_text ? display_copy.data() : nullptr, native_text ? task->t.data_size : 0);
+#ifdef __SWITCH__
+        const auto t2 = SwitchPerf::clock::now();
+#endif
         renderer->draw(frame);
         renderer->collect();
         srw64::native_gl::end_frame();
+#ifdef __SWITCH__
+        const auto t3 = SwitchPerf::clock::now();
+        perf.dialogue_take += SwitchPerf::ms(t0, t1);
+        perf.interpret += SwitchPerf::ms(t1, t2);
+        perf.draw += SwitchPerf::ms(t2, t3);
+        perf.list_max = std::max(perf.list_max, SwitchPerf::ms(t0, t3));
+        ++perf.lists;
+        // A combiner program first linked in this frame: the list for the next start.
+        if (renderer->programs_held() != combiner_keys.size()) {
+            combiner_keys = renderer->program_keys();
+            std::string text;
+            for (const uint32_t key : combiner_keys) { char line[16]; std::snprintf(line, sizeof line, "%08x\n", key); text += line; }
+            std::ofstream("/switch/Marchwind64/shaders/combiners.txt", std::ios::trunc) << text;
+        }
+        perf.report(renderer->programs_held());
+#endif
         // The workload whose overlays go with this colour image when the VI shows it.
         image_workloads[frame.color_image] = workload;
     }
@@ -1025,6 +1162,28 @@ public:
     void update_screen() override {
         srw64::frame::wide = false;
         int width = 0, height = 0;
+#ifdef __SWITCH__
+        // The game shows a new picture every second or third VI; the rest of the time the
+        // screen would be drawn again as it is (as on the PS Vita, where that was 9 ms a VI).
+        // The same colour image not drawn since, the same dialogue frame, no page of the shared
+        // UI up (the frame-rate readout aside, unless it changed) and no capture wanted: the
+        // screen keeps the last swap.
+        {
+            const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
+            const uint32_t image = renderer->image_at(origin);
+            const auto found = image_workloads.find(image);
+            const ScreenKey key{image, renderer->drawn_at(image), found != image_workloads.end() ? found->second : 0,
+                                srw64::ui::readout_changes()};
+            if (key == last_screen && !srw64::ui::shown() && !srw64::debug::screenshots().wanted() &&
+                !srw64::debug::recording().active() && !player_shot_requested.load()) {
+                ++perf.kept;
+                perf.report(renderer->programs_held());
+                return;
+            }
+            last_screen = key;
+        }
+        const auto p0 = SwitchPerf::clock::now();
+#endif
         SDL_GL_GetDrawableSize(window, &width, &height);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, width, height);
@@ -1035,10 +1194,17 @@ public:
         const int picture_width = std::min(width, height * 4 / 3), picture_height = picture_width * 3 / 4;
         const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
         renderer->present(origin, (width - picture_width) / 2, (height - picture_height) / 2, picture_width, picture_height);
+#ifdef __SWITCH__
+        const auto p1 = SwitchPerf::clock::now();
+        SwitchPerf::clock::time_point p2 = p1;
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
         const auto shown = image_workloads.find(renderer->image_at(origin));
         const uint64_t shown_workload = shown != image_workloads.end() ? shown->second : 0;
         if (shown_workload) srw64::dialogue::gl_draw(shown_workload, uint32_t(width), uint32_t(height));
+#ifdef __SWITCH__
+        p2 = SwitchPerf::clock::now();
+#endif
         // The name page's cover, then the shared UI's pages over everything (capture_frame's order).
         const bool name_cover = shown_workload && srw64::names::frame_cover(shown_workload);
         if (name_cover) {
@@ -1047,6 +1213,9 @@ public:
         }
         if (srw64::ui::draw_gl(width, height, name_cover)) srw64::ui::presented();
         if (shown_workload) srw64::names::cover_presented(shown_workload, name_cover);
+#endif
+#ifdef __SWITCH__
+        const auto p3 = SwitchPerf::clock::now();
 #endif
         const uint64_t frame_number = ++presented_frames;
         srw64::frame_rate::present_sent();
@@ -1071,7 +1240,22 @@ public:
                     : nlohmann::json({{"error", "cannot write " + shot->path.string()}}));
             }
         }
+#ifdef __SWITCH__
+        const auto p4 = SwitchPerf::clock::now();
+#endif
         SDL_GL_SwapWindow(window);
+#ifdef __SWITCH__
+        const auto p5 = SwitchPerf::clock::now();
+        perf.picture += SwitchPerf::ms(p0, p1);
+        perf.overlays += SwitchPerf::ms(p1, p2);
+        perf.ui += SwitchPerf::ms(p2, p3);
+        perf.readback += SwitchPerf::ms(p3, p4);
+        perf.swap += SwitchPerf::ms(p4, p5);
+        perf.present_max = std::max(perf.present_max, SwitchPerf::ms(p0, p5));
+        perf.swap_max = std::max(perf.swap_max, SwitchPerf::ms(p4, p5));
+        ++perf.presents;
+        perf.report(renderer->programs_held());
+#endif
     }
     void shutdown() override {
         srw64::gbi_stats::flush();
@@ -1095,8 +1279,23 @@ private:
     std::vector<uint8_t> display_copy;
     uint64_t workload = 0;
     std::map<uint32_t, uint64_t> image_workloads;
+#ifdef __SWITCH__
+    // What the last swap showed (update_screen): the colour image, the frame that drew it,
+    // the dialogue frame over it and the readout's version.
+    struct ScreenKey {
+        uint32_t image = 0, drawn = 0;
+        uint64_t workload = 0, readout = 0;
+        bool operator==(const ScreenKey&) const = default;
+    };
+    ScreenKey last_screen{};
+    SwitchPerf perf;
+    std::vector<uint32_t> combiner_keys;
+#endif
 };
 }  // namespace
+#ifdef __vita__
+void srw64_vita_graphics_begin() { vita_graphics = std::thread(vita_graphics_init); }
+#endif
 #endif
 
 std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
