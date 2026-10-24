@@ -281,6 +281,11 @@ bool Renderer::place(Texture& texture, uint16_t width, uint16_t height, bool lin
 }
 
 void Renderer::upload(const Frame::Texture& t) {
+    const auto start = std::chrono::steady_clock::now();
+    struct Count {
+        std::chrono::steady_clock::time_point start; size_t bytes;
+        ~Count() { auto& s = gl_stats(); ++s.uploads; s.upload_bytes += bytes; s.upload_ms += gl_ms_since(start); }
+    } count{start, t.rgba.size()};
     Texture texture;
     texture.width = t.width;
     texture.height = t.height;
@@ -459,8 +464,11 @@ void Renderer::draw(const Frame& frame) {
             continue;
         }
         if (command.kind == Command::capture) {   // the picture so far, for draws that read it
+            const auto copied = std::chrono::steady_clock::now();
             glBindTexture(GL_TEXTURE_2D, copy);
             glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0, width, height);
+            ++gl_stats().copies;
+            gl_stats().copy_ms += gl_ms_since(copied);
             bound_texture = copy;
             continue;
         }

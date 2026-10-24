@@ -50,7 +50,12 @@ GLuint texture_for(const native_quads::Quad& q) {
         glGenTextures(1, &t.id);
         glBindTexture(GL_TEXTURE_2D, t.id);
         glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+        const auto start = std::chrono::steady_clock::now();
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, GLsizei(q.width), GLsizei(q.height), 0, GL_RGBA, GL_UNSIGNED_BYTE, q.pixels->data());
+        auto& stats = n64gl::gl_stats();
+        ++stats.quads;
+        stats.quad_bytes += uint64_t(q.width) * q.height * 4;
+        stats.quad_ms += n64gl::gl_ms_since(start);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);

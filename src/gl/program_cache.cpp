@@ -64,6 +64,11 @@ void keep_programs(std::filesystem::path path, std::set<std::string> listed) {
     kept = std::move(listed);
 }
 
+GlStats& gl_stats() {
+    static GlStats value;
+    return value;
+}
+
 ProgramStats program_stats() {
     std::lock_guard lock(mutex);
     return stats;

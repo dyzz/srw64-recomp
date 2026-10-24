@@ -1018,7 +1018,7 @@ struct SwitchPerf {
     using clock = std::chrono::steady_clock;
     clock::time_point window = clock::now();
     unsigned lists = 0, presents = 0, kept = 0;
-    double interpret = 0, draw = 0, dialogue_take = 0, list_max = 0;
+    double interpret = 0, draw = 0, dialogue_take = 0, list_max = 0, gl_draw = 0, gl_collect = 0, host_layers = 0;
     double picture = 0, overlays = 0, ui = 0, readback = 0, swap = 0, present_max = 0, swap_max = 0;
     uint64_t skipped_at = 0;
     srw64::n64gl::ProgramStats programs_at{};
@@ -1029,17 +1029,24 @@ struct SwitchPerf {
         if (seconds < 5) return;
         const uint64_t skipped = srw64_screen_updates_skipped_count();
         const auto programs = srw64::n64gl::program_stats();
+        auto& gl = srw64::n64gl::gl_stats();
         const auto per = [](double total, unsigned count) { return count ? total / count : 0.0; };
         std::fprintf(stderr,
             "SRW64_PERF %.1fs lists=%.1f/s list=%.2fms(interp %.2f draw %.2f dlg %.2f max %.1f) "
             "presents=%.1f/s kept=%u skipped=%llu present=%.2fms(picture %.2f overlays %.2f ui %.2f read %.2f swap %.2f; max %.1f swap max %.1f) "
-            "programs=%zu linked+%u(%.0fms) loaded+%u(%.0fms) %s\n",
+            "programs=%zu linked+%u(%.0fms) loaded+%u(%.0fms) "
+            "gl(draw %.0fms collect %.0fms layers %.0fms; uploads %u %.1fMB %.0fms; copies %u %.0fms; dialogue raster %.0fms patches %u %.1fMB %.0fms; "
+            "quads %u %.1fMB %.0fms) %s\n",
             seconds, lists / seconds, per(interpret + draw + dialogue_take, lists), per(interpret, lists), per(draw, lists),
             per(dialogue_take, lists), list_max, presents / seconds, kept, (unsigned long long)(skipped - skipped_at),
             per(picture + overlays + ui + readback + swap, presents), per(picture, presents), per(overlays, presents), per(ui, presents),
             per(readback, presents), per(swap, presents), present_max, swap_max, programs_held,
             programs.linked - programs_at.linked, programs.link_ms - programs_at.link_ms,
-            programs.loaded - programs_at.loaded, programs.load_ms - programs_at.load_ms, ::srw64_switch_perf_system().c_str());
+            programs.loaded - programs_at.loaded, programs.load_ms - programs_at.load_ms,
+            gl_draw, gl_collect, host_layers, gl.uploads, gl.upload_bytes / 1048576.0, gl.upload_ms, gl.copies, gl.copy_ms,
+            gl.raster_ms, gl.patches, gl.patch_bytes / 1048576.0, gl.patch_ms, gl.quads, gl.quad_bytes / 1048576.0, gl.quad_ms,
+            ::srw64_switch_perf_system().c_str());
+        gl = {};
         *this = SwitchPerf{};
         skipped_at = skipped;
         programs_at = programs;
@@ -1137,10 +1144,19 @@ public:
         const auto t2 = SwitchPerf::clock::now();
 #endif
         renderer->draw(frame);
+#ifdef __SWITCH__
+        const auto t2a = SwitchPerf::clock::now();
+#endif
         renderer->collect();
+#ifdef __SWITCH__
+        const auto t2b = SwitchPerf::clock::now();
+#endif
         srw64::native_gl::end_frame();
 #ifdef __SWITCH__
         const auto t3 = SwitchPerf::clock::now();
+        perf.gl_draw += SwitchPerf::ms(t2, t2a);
+        perf.gl_collect += SwitchPerf::ms(t2a, t2b);
+        perf.host_layers += SwitchPerf::ms(t2b, t3);
         perf.dialogue_take += SwitchPerf::ms(t0, t1);
         perf.interpret += SwitchPerf::ms(t1, t2);
         perf.draw += SwitchPerf::ms(t2, t3);

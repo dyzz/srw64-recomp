@@ -57,7 +57,10 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
     }
     std::ostringstream context;
     context << localization::catalog().locale << ',' << localization::catalog().font << ',' << localization::catalog().revision;
+    const auto rastered = std::chrono::steady_clock::now();
     auto update = raster.update(*frame, width, height, srw64::frame::width(float(width), float(height)), context.str());
+    n64gl::gl_stats().raster_ms += n64gl::gl_ms_since(rastered);
+    const auto patched = std::chrono::steady_clock::now();
     glBindTexture(GL_TEXTURE_2D, canvas);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
     for (const auto& patch : update.patches) {
@@ -69,7 +72,10 @@ void gl_draw(uint64_t workload, uint32_t width, uint32_t height) {
         }
         glTexSubImage2D(GL_TEXTURE_2D, 0, patch.rect.left, patch.rect.top, GLsizei(patch.pixels.width), GLsizei(patch.pixels.height),
                         GL_RGBA, GL_UNSIGNED_BYTE, rgba.data());
+        ++n64gl::gl_stats().patches;
+        n64gl::gl_stats().patch_bytes += rgba.size();
     }
+    n64gl::gl_stats().patch_ms += n64gl::gl_ms_since(patched);
     if (update.drawn.empty()) return;
     // Premultiplied: the raster has applied alpha already.
     glEnable(GL_BLEND);
