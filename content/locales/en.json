@@ -150,7 +150,7 @@
     "settings_intermission_ui": "Intermission screens",
     "settings_intermission_ui_native": "New",
     "settings_intermission_ui_original": "Original",
-    "settings_intermission_ui_note": "Applies from the next screen opened: the main menu, save, upgrades, abilities, pilot swaps, parts and link.",
+    "settings_intermission_ui_note": "Applies from the next screen opened: the main menu, save, upgrades, abilities, pilot swaps and parts. Link's series picker has no original screen, so it always shows.",
     "settings_weapon_upgrade": "Weapon upgrades",
     "settings_weapon_upgrade_unified": "Unified",
     "settings_weapon_upgrade_single": "Per weapon (original)",

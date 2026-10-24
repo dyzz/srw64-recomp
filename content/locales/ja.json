@@ -150,7 +150,7 @@
     "settings_intermission_ui": "インターミッション画面",
     "settings_intermission_ui_native": "新版",
     "settings_intermission_ui_original": "オリジナル",
-    "settings_intermission_ui_note": "次に開く画面から有効。 メインメニューとデータセーブ、改造、能力、のりかえ、強化パーツ、リンクの各画面が対象。",
+    "settings_intermission_ui_note": "次に開く画面から有効。 メインメニューとデータセーブ、改造、能力、のりかえ、強化パーツの各画面が対象。リンクの作品選択は原版にない画面のため常に表示。",
     "settings_weapon_upgrade": "武器改造",
     "settings_weapon_upgrade_unified": "一括",
     "settings_weapon_upgrade_single": "個別（オリジナル）",

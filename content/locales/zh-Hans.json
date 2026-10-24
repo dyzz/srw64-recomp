@@ -150,7 +150,7 @@
     "settings_intermission_ui": "场间画面",
     "settings_intermission_ui_native": "新版",
     "settings_intermission_ui_original": "原版",
-    "settings_intermission_ui_note": "下一次打开画面时生效。覆盖主菜单与存档、改造、能力、换乘、强化零件、联动各画面。",
+    "settings_intermission_ui_note": "下一次打开画面时生效。覆盖主菜单与存档、改造、能力、换乘、强化零件各画面。联动的作品选择页原版没有，两种模式都会出现。",
     "settings_weapon_upgrade": "武器改造",
     "settings_weapon_upgrade_unified": "统一",
     "settings_weapon_upgrade_single": "逐件（原版）",
