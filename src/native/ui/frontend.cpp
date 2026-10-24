@@ -5868,6 +5868,13 @@ std::vector<app_menu::Menu> menu_bar(const auto& language){
     return {{language->ui("menu_view"),view},{language->ui("menu_tools"),tools},{language->ui("settings_language"),languages,"globe"},help_menu};
 }
 void sync() {
+    // An update over 20 ms says where its time went (SRW64_UI_SLOW): it holds the UI lock the
+    // render thread's draw waits for.
+    struct Parts {
+        UiClock::time_point start=UiClock::now(),last=start;std::string text;
+        void mark(const char* name){const auto now=UiClock::now();char part[48];std::snprintf(part,sizeof part," %s=%.1f",name,ui_ms(last,now));text+=part;last=now;}
+        ~Parts(){const double total=ui_ms(start,UiClock::now());if(total>20)std::fprintf(stderr,"SRW64_UI_SLOW %.1fms%s\n",total,text.c_str());}
+    } parts;
     physical_held=held();
     // The pages follow the window, measured in points (the screen after the system's scaling):
     // each Interface size gives them a height in dp, Standard 720, Large 620, Largest 540, and
@@ -5912,6 +5919,7 @@ void sync() {
         for(auto& [key,value]:labels)value=text::expand_prompts(value,prompt_context(pad_mode));
     }
     name_page->sync(request,labels,language->locale);
+    parts.mark("name");
     {
         // Controller edges; a button already down when a page opens is not a press.
         static uint32_t pad_before=0;
@@ -5963,8 +5971,11 @@ void sync() {
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     if(title_row::take_chosen() && !settings_open)choose("title-return-ask");
+    parts.mark("input");
     image_drain();prefetch_map_art();
-    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
+    parts.mark("art");
+    link_sync();battle_sync();parts.mark("battle");intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();parts.mark("pages");
+    title_sync();mini_sync();home_sync();bezel_sync();parts.mark("title");
 #if defined(__APPLE__) || defined(_WIN32)
     // The menu bar, rebuilt in full every frame; Linux and Android have none, where building it
     // anyway was a fifth of the UI thread on a phone (2026-10-23).
@@ -6012,7 +6023,9 @@ void sync() {
     // Any page in the settings window's frame (the Library, MOD, the settings themselves)
     // holds the title still under it: no attract demo, no opening story.
     battle_viewer::hold_title(settings_open);
-    settings_sync();notices_sync();fps_sync();speed_sync();touch_sync();context->Update();input.update_rectangle();
+    parts.mark("menus");
+    settings_sync();parts.mark("settings");notices_sync();fps_sync();speed_sync();touch_sync();parts.mark("hud");
+    context->Update();parts.mark("layout");input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
     battle_page::window_claim_input(battle_request.value("visible",false) || (battle_page::owns_input() && held()));

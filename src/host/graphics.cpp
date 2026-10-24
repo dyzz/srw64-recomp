@@ -1490,6 +1490,21 @@ void srw64_after_gpu(plume::RenderCommandList* list, std::function<void(bool com
 }
 
 void srw64_update_window(void*) {
+#ifdef __SWITCH__
+    // The runtime calls this every millisecond. On the Switch the shared UI's update took
+    // 0.15-0.4 ms a time, 13-36% of a core, and held the UI lock the render thread's draw
+    // waits for (200-600 ms of every 5 s); 125 times a second keeps input and pages prompt.
+    {
+        using clock = std::chrono::steady_clock;
+        static clock::time_point next{};
+        const auto now = clock::now();
+        if (now < next) {
+            std::this_thread::sleep_for(next - now);
+            return;
+        }
+        next = now + std::chrono::milliseconds(8);
+    }
+#endif
     srw64::qa::update_window(window, capture_directory, srw64_current_vi());
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::settings::update();
