@@ -2265,12 +2265,28 @@ std::string library_panel() {
                                     :"<span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"+(e.contains("model")?"<span class='m'>"+escape(e.at("model").get<std::string>())+"</span>":std::string());
         body+=button("lib-item:"+std::to_string(i),text,i==library_index[library_tab],false,"lib-item");
     }
-    body+="</div><div id='lib-detail' class='lib-detail'>"+library_detail()+"</div></div>"
+    body+="</div><div id='lib-detail' class='lib-detail'></div></div>"
         "<div class='set-foot'><div class='set-hint'>"+label("library_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
     return body;
 }
 // Chooses entry `index` of the tab: the list marks and shows it, the details are redrawn.
 uint64_t library_pictures=0;   // pictures::serial when the Library's details were last made
+// The details float over #lib-detail in a document of their own: RmlUi lays a document out
+// whole when anything in it changes, and with the list of every unit and pilot beside them a
+// step took two layouts of 130-160 ms each on the Switch (SRW64_LIBRARY_STEP). Their own
+// document lays out the details alone.
+Rml::ElementDocument* library_detail_doc{};
+Rml::Element* library_detail_element(){return library_detail_doc?library_detail_doc->GetElementById("lib-detail-float"):nullptr;}
+void library_detail_open() {
+    document_close(library_detail_doc);
+    auto* place=settings_doc?settings_doc->GetElementById("lib-detail"):nullptr;
+    if(!place)return;
+    const auto at=place->GetAbsoluteOffset();const auto size=place->GetBox().GetSize();
+    const auto px=[](float v){return std::to_string(int(v+.5f))+"px";};
+    library_detail_doc=document("<div id='lib-detail-float' class='lib-detail' style='position:absolute; flex:none; left:"+px(at.x)+"; top:"+px(at.y)+
+        "; width:"+px(size.x)+"; height:"+px(size.y)+";'>"+library_detail()+"</div>",false,true);
+    library_detail_doc->PullToFront();
+}
 void library_select(unsigned index,bool focus=true) {
     if(!settings_doc)return;
     const auto& entries=library_entries();
@@ -2294,18 +2310,18 @@ void library_select(unsigned index,bool focus=true) {
     const auto t0=Clock::now();
     const auto rml=library_detail();
     const auto t1=Clock::now();
-    if(auto* detail=settings_doc->GetElementById("lib-detail")){detail->SetInnerRML(rml);detail->SetScrollTop(0);}
+    if(auto* detail=library_detail_element()){detail->SetInnerRML(rml);detail->SetScrollTop(0);}
     const auto t2=Clock::now();
-    settings_doc->UpdateDocument();
+    if(library_detail_doc)library_detail_doc->UpdateDocument();
     const auto t3=Clock::now();
-    fit_lines(settings_doc);
+    if(library_detail_doc)fit_lines(library_detail_doc);
     const auto t4=Clock::now();
     const auto ms=[](Clock::time_point a,Clock::time_point b){return std::chrono::duration<double,std::milli>(b-a).count();};
     if(ms(t0,t4)>20)std::fprintf(stderr,"SRW64_LIBRARY_STEP %.1fms build=%.1f parse=%.1f layout=%.1f fit=%.1f\n",ms(t0,t4),ms(t0,t1),ms(t1,t2),ms(t2,t3),ms(t3,t4));
 }
 // Scrolls the details by `dp` (C-up / C-down, held: a little every frame).
 void library_scroll(float dp) {
-    if(auto* detail=settings_doc?settings_doc->GetElementById("lib-detail"):nullptr)detail->SetScrollTop(detail->GetScrollTop()+dp*context->GetDensityIndependentPixelRatio());
+    if(auto* detail=library_detail_element())detail->SetScrollTop(detail->GetScrollTop()+dp*context->GetDensityIndependentPixelRatio());
 }
 // Left and right jump between works: to the next work's first entry, or back to this
 // work's first entry and from there to the previous work's.
@@ -3188,6 +3204,7 @@ void viewer_sync() {
 }
 void settings_sync() {
     const auto stage_opening=stage_info::want(settings_open && stage_open);
+    if(!settings_open || !library_open)document_close(library_detail_doc);
     if(!settings_open){update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
     if(viewer_open){viewer_sync();return;}
     if(title_return_ask_open) {
@@ -3225,7 +3242,7 @@ void settings_sync() {
             // Pictures that arrived since (library_art): only their places are filled.
             if(library_pictures!=pictures::serial) {
                 library_pictures=pictures::serial;
-                Rml::ElementList pending;settings_doc->QuerySelectorAll(pending,".lib-pending");
+                Rml::ElementList pending;if(library_detail_doc)library_detail_doc->QuerySelectorAll(pending,".lib-pending");
                 for(auto* place:pending) {
                     const auto key=place->GetAttribute<Rml::String>("data-key","");
                     const auto found=images.find(key);
@@ -3234,11 +3251,14 @@ void settings_sync() {
                     place->SetInnerRML("<img src='"+escape(found->second)+"' style='width:100%; height:100%;'/>");
                 }
             }
-            settings_doc->PullToFront();return;
+            settings_doc->PullToFront();
+            if(library_detail_doc)library_detail_doc->PullToFront();
+            return;
         }
         document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();library_pictures=pictures::serial;
         settings_doc=document(library_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
         settings_doc->UpdateDocument();
+        library_detail_open();
         auto* tab=settings_doc->GetElementById("lib-tab:"+std::to_string(library_tab));
         if(library_tab_focus && tab)tab->Focus();
         else library_select(library_index[library_tab],!pointer_mode);
