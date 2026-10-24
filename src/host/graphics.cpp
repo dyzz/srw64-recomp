@@ -136,6 +136,7 @@ std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure m
 #ifdef __SWITCH__
 std::string srw64_switch_perf_system();   // switch/switch_platform.cpp: memory and core loads
 extern "C" void srw64_switch_background_thread();   // the same: the lowest priority for a helper thread
+std::string srw64_switch_hd_art();   // the same: the HD pack's art folder, "" for none
 void srw64_switch_error(const std::string& message, const std::string& details);
 void srw64_switch_boot_end();   // switch/switch_platform.cpp: the launch's text console goes
 #endif
@@ -1147,7 +1148,7 @@ public:
         // default, the settings' switch back to the originals; SRW64_HD_ART elsewhere.
         {
 #ifdef __SWITCH__
-            std::filesystem::path hd_art = "romfs:/hd/art";
+            std::filesystem::path hd_art = srw64_switch_hd_art();
 #else
             const char* hd_env = std::getenv("SRW64_HD_ART");
             std::filesystem::path hd_art = hd_env ? hd_env : "";

@@ -85,7 +85,10 @@ def remove_tree(ftp: ftplib.FTP, path: str) -> None:
         pass
 
 
-def upload(host: str, debug: bool, clean: bool = False) -> None:
+HD = ROOT / 'build/recomp/switch-romfs/hd'
+
+
+def upload(host: str, debug: bool, clean: bool = False, hd: bool = False) -> None:
     """Only the files whose digest differs from the last upload (switch-package/uploaded.json):
     ftpd has no checksum command, and the dialogue alone is 1,000 files."""
     record_path = PACKAGE.parent / 'uploaded.json'
@@ -122,8 +125,12 @@ def upload(host: str, debug: bool, clean: bool = False) -> None:
     for folder in ('run/runtime-data/saves', 'saves/slots'):
         mkdirs(f'{REMOTE}/{folder}')
     sent = 0
-    for path in sorted(p for p in PACKAGE.rglob('*') if p.is_file()):
-        relative = path.relative_to(PACKAGE).as_posix()
+    # With hd: the prepared HD pack beside the NRO too (a development NRO built without it,
+    # SRW64_SWITCH_EMBED_HD=OFF build.sh game), recorded like the rest: sent once.
+    files = [(p, p.relative_to(PACKAGE).as_posix()) for p in sorted(PACKAGE.rglob('*')) if p.is_file()]
+    if hd:
+        files += [(p, 'hd/' + p.relative_to(HD).as_posix()) for p in sorted(HD.rglob('*')) if p.is_file()]
+    for path, relative in files:
         value = digest(path)
         if record['files'].get(relative) == value:
             continue
@@ -151,11 +158,12 @@ def main() -> None:
     parser.add_argument('--upload', metavar='IP', help="the Switch's address, ftpd running")
     parser.add_argument('--debug', action='store_true', help='with --upload: open the debug interface')
     parser.add_argument('--clean', action='store_true', help='with --upload: remove the old launch data')
+    parser.add_argument('--hd', action='store_true', help='with --upload: send the prepared HD pack beside the NRO')
     args = parser.parse_args()
     stage()
     print(PACKAGE)
     if args.upload:
-        upload(args.upload, args.debug, args.clean)
+        upload(args.upload, args.debug, args.clean, args.hd)
 
 
 if __name__ == '__main__':

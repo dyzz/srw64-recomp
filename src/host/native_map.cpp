@@ -33,6 +33,7 @@
 uint64_t srw64_current_vi();
 #ifdef __SWITCH__
 extern "C" void srw64_switch_background_thread();   // host/switch/switch_platform.cpp
+std::string srw64_switch_hd_art();
 #endif
 
 namespace srw64::hdmap {
@@ -293,7 +294,9 @@ void decode_loop() {
         }
         std::lock_guard lock(asset_mutex);
         // An asset that does not decode stays original: waiting again would retry forever.
-        assets[index].state = assets[index].index.empty() ? Asset::State::queued : Asset::State::decoded;
+        // (The prepared copies leave their indices in gl_index.)
+        const bool made = !assets[index].index.empty() || assets[index].gl_index;
+        assets[index].state = made ? Asset::State::decoded : Asset::State::queued;
         decoded_wake.notify_all();
     }
 }
@@ -452,10 +455,10 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
 std::filesystem::path maps_root() {
     if (const char* root = std::getenv("SRW64_HD_MAPS"); root && *root) return root;
 #ifdef __SWITCH__
-    // The HD pack the NRO carries, prepared for the GPU (tools/release/switch/prepare-hd).
-    std::string art_string = "romfs:/hd/art";
+    // The HD pack prepared for the GPU (tools/release/switch/prepare-hd): the NRO's or beside it.
+    std::string art_string = srw64_switch_hd_art();
     std::error_code missing;
-    if (!std::filesystem::exists(art_string + "/srw64-tactical-maps.json", missing)) art_string.clear();
+    if (art_string.empty() || !std::filesystem::exists(art_string + "/srw64-tactical-maps.json", missing)) art_string.clear();
     const char* art = art_string.empty() ? nullptr : art_string.c_str();
 #else
     const char* art = std::getenv("SRW64_ART_PACK");

@@ -7,6 +7,7 @@
 #include <cstring>
 #include <chrono>
 #include <condition_variable>
+#include <filesystem>
 #include <mutex>
 #include <thread>
 #include <string>
@@ -148,6 +149,16 @@ extern char** __system_argv;
 // The NRO's path without its device: "/switch/Marchwind64/Marchwind64.nro". sdmc: is the
 // default device, and a path without one is absolute to std::filesystem (a "sdmc:/" path
 // is relative there, and fs::absolute would put the working folder in front of it).
+// Where the HD pack prepared for the GPU is: the NRO's romfs (a release), else beside the NRO
+// in hd/ (development: package.py --hd sends it once, the NRO stays small); "" for none.
+std::string srw64_switch_program_path();
+std::string srw64_switch_hd_art() {
+    std::error_code missing;
+    if (std::filesystem::exists("romfs:/hd/art/srw64-portraits-hd.json", missing)) return "romfs:/hd/art";
+    const auto beside = std::filesystem::path(srw64_switch_program_path()).parent_path() / "hd" / "art";
+    if (std::filesystem::exists(beside / "srw64-portraits-hd.json", missing)) return beside.string();
+    return {};
+}
 std::string srw64_switch_program_path() {
     if (__system_argc < 1 || !__system_argv || !__system_argv[0]) return {};
     std::string path = __system_argv[0];

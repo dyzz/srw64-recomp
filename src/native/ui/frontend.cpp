@@ -2049,9 +2049,12 @@ std::string library_art(const json& entry,float box) {
     // Read on the picture thread, not here under the UI lock: a unit's art decoded and resampled
     // as the cursor moved held the screen and the sound up on the Switch. The page shows it
     // when it arrives (library_pictures; the viewer's stamp).
-    const auto src=image_async(portrait_path(art),int(w*scale*ui_density+.5f),true);
-    if(src.empty())return "<div style='width:"+std::to_string(w*scale)+"dp; height:"+std::to_string(h*scale)+"dp;'></div>";
-    return "<img src='"+escape(src)+"' style='width:"+std::to_string(w*scale)+"dp; height:"+std::to_string(h*scale)+"dp;'/>";
+    const std::string path=portrait_path(art);const int px=int(w*scale*ui_density+.5f);
+    const std::string size="width:"+std::to_string(w*scale)+"dp; height:"+std::to_string(h*scale)+"dp;";
+    const auto src=image_async(path,px,true);
+    // Still being read: a place of its size that library_pictures fills when it comes.
+    if(src.empty())return "<div class='lib-pending' data-key='"+escape(path+"@"+std::to_string(px))+"' style='"+size+"'></div>";
+    return "<img src='"+escape(src)+"' style='"+size+"'/>";
 }
 // 格／射 before a weapon's name and P／B／MAP after it, as the weapon pages draw them.
 std::string library_marker(const std::string& token,const json& icons) {
@@ -2286,8 +2289,19 @@ void library_select(unsigned index,bool focus=true) {
         }
     }
     if(!changed)return;
-    if(auto* detail=settings_doc->GetElementById("lib-detail")){detail->SetInnerRML(library_detail());detail->SetScrollTop(0);}
-    settings_doc->UpdateDocument();fit_lines(settings_doc);
+    // Where the time goes on a slow device (SRW64_UI_SLOW reported 140-160 ms a step on the Switch).
+    using Clock=std::chrono::steady_clock;
+    const auto t0=Clock::now();
+    const auto rml=library_detail();
+    const auto t1=Clock::now();
+    if(auto* detail=settings_doc->GetElementById("lib-detail")){detail->SetInnerRML(rml);detail->SetScrollTop(0);}
+    const auto t2=Clock::now();
+    settings_doc->UpdateDocument();
+    const auto t3=Clock::now();
+    fit_lines(settings_doc);
+    const auto t4=Clock::now();
+    const auto ms=[](Clock::time_point a,Clock::time_point b){return std::chrono::duration<double,std::milli>(b-a).count();};
+    if(ms(t0,t4)>20)std::fprintf(stderr,"SRW64_LIBRARY_STEP %.1fms build=%.1f parse=%.1f layout=%.1f fit=%.1f\n",ms(t0,t4),ms(t0,t1),ms(t1,t2),ms(t2,t3),ms(t3,t4));
 }
 // Scrolls the details by `dp` (C-up / C-down, held: a little every frame).
 void library_scroll(float dp) {
@@ -3208,11 +3222,16 @@ void settings_sync() {
         if(settings_doc && stamp==settings_stamp) {
             // Pictures that arrived since the details were made (library_art): the details again,
             // where they were scrolled to.
+            // Pictures that arrived since (library_art): only their places are filled.
             if(library_pictures!=pictures::serial) {
                 library_pictures=pictures::serial;
-                if(auto* detail=settings_doc->GetElementById("lib-detail")) {
-                    const float top=detail->GetScrollTop();
-                    detail->SetInnerRML(library_detail());settings_doc->UpdateDocument();detail->SetScrollTop(top);fit_lines(settings_doc);
+                Rml::ElementList pending;settings_doc->QuerySelectorAll(pending,".lib-pending");
+                for(auto* place:pending) {
+                    const auto key=place->GetAttribute<Rml::String>("data-key","");
+                    const auto found=images.find(key);
+                    if(found==images.end())continue;
+                    place->SetClass("lib-pending",false);
+                    place->SetInnerRML("<img src='"+escape(found->second)+"' style='width:100%; height:100%;'/>");
                 }
             }
             settings_doc->PullToFront();return;

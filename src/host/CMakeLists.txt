@@ -385,7 +385,8 @@ if(SRW64_GL_ONLY)
         # The HD pack prepared for the Switch's GPU (tools/release/switch/prepare-hd) in the
         # NRO's romfs, when it has been made: one file to copy, the art read where it lies.
         set(SRW64_SWITCH_ROMFS "${SRW64_BUILD}/switch-romfs")
-        if(EXISTS "${SRW64_SWITCH_ROMFS}/hd")
+        option(SRW64_SWITCH_EMBED_HD "Put the prepared HD pack in the NRO (off: package.py --hd sends it beside the NRO)" ON)
+        if(SRW64_SWITCH_EMBED_HD AND EXISTS "${SRW64_SWITCH_ROMFS}/hd")
             nx_create_nro(srw64-gl-host OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Marchwind64.nro" NACP Marchwind64.nacp
                           ICON "${CMAKE_CURRENT_SOURCE_DIR}/../../tools/release/switch/icon.jpg" ROMFS "${SRW64_SWITCH_ROMFS}")
         else()
