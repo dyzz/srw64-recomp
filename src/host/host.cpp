@@ -299,6 +299,47 @@ RspUcodeFunc* get_microcode(const OSTask* task) {
 }
 
 uint64_t srw64_current_vi() { return vi_count.load(); }
+
+#ifdef __SWITCH__
+// The Switch's stall report (stall_watchdog.cpp, as the PS Vita's watchdog in psv-port.md):
+// each N64 thread's state, from the threads ultramodern names as they start: in the run
+// queue, waiting on a message queue (with that queue's fill and its first message), or
+// neither (the one running, a stopped one, or one held in host code). The name keeps its
+// "Game" prefix, which places the thread on its core (switch/switch_platform.cpp).
+namespace game_threads {
+std::mutex threads_mutex;
+std::vector<const OSThread*> threads;
+std::string name_thread(const OSThread* t) {
+    {
+        std::lock_guard lock(threads_mutex);
+        if (std::find(threads.begin(), threads.end(), t) == threads.end()) threads.push_back(t);
+    }
+    return "Game Thread " + std::to_string(t->id);
+}
+}
+extern "C" void srw64_game_threads_report() {
+    std::fprintf(stderr, "SRW64_STALL_COUNTS lists=%llu vi=%llu audio=%llu\n", (unsigned long long)dl_count.load(),
+                 (unsigned long long)vi_count.load(), (unsigned long long)audio_tasks.load());
+    std::lock_guard lock(game_threads::threads_mutex);
+    for (const OSThread* t : game_threads::threads) {
+        const uint32_t queue = uint32_t(t->queue);
+        std::fprintf(stderr, "SRW64_STALL_THREAD id=%d priority=%d state=%d at=%08X", int(t->id), int(t->priority), int(t->state),
+                     uint32_t(reinterpret_cast<const uint8_t*>(t) - srw64_rdram) | 0x80000000u);
+        if (t->queue == ultramodern::running_queue) std::fprintf(stderr, " runnable");
+        else if (!queue) std::fprintf(stderr, " in-no-queue");
+        else {
+            // blocked_on_recv is the queue's first member, blocked_on_send its second.
+            const bool send = (queue & 7) == 4;
+            const uint32_t mq_address = send ? queue - 4 : queue;
+            const auto* mq = reinterpret_cast<const OSMesgQueue*>(srw64_rdram + (mq_address & 0x3FFFFFF));
+            std::fprintf(stderr, " waits-to-%s mq=%08X messages=%d/%d", send ? "send" : "receive", mq_address,
+                         int(mq->validCount), int(mq->msgCount));
+        }
+        std::fprintf(stderr, "\n");
+    }
+    std::fflush(stderr);
+}
+#endif
 // Guest RDRAM, for the debug interface's read-only memory view (debug_server.cpp).
 uint8_t* srw64_rdram = nullptr;
 
@@ -645,6 +686,9 @@ static int run_host(int argc, char** argv) {
 #ifdef __vita__
     cfg.threads_callbacks.get_game_thread_name = vita_watchdog::name_thread;
     vita_watchdog::start();
+#endif
+#ifdef __SWITCH__
+    cfg.threads_callbacks.get_game_thread_name = game_threads::name_thread;
 #endif
     cfg.error_handling_callbacks.message_box = [](const char* message) { std::fprintf(stderr, "SRW64_RUNTIME_ERROR %s\n", message); };
     // Every module has taken what it keeps from the dialogue data.

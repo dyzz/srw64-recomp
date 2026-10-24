@@ -168,6 +168,7 @@ void frame_done() {
 
 uint64_t srw64_current_vi();
 extern "C" void srw64_vi_report(char* out, size_t size);   // prepare_switch_runtime.py, events.cpp
+extern "C" void srw64_game_threads_report();                // host.cpp: each N64 thread's state
 
 namespace srw64::stall {
 namespace {
@@ -186,6 +187,7 @@ void watch() {
             srw64_vi_report(report, sizeof report);
             std::fprintf(stderr, "SRW64_STALL vi=%llu frames=%llu stalled=%.1fs %s: breaking for creport\n",
                          (unsigned long long)vi, (unsigned long long)f, seconds, report);
+            srw64_game_threads_report();
             std::fflush(stderr);
             svcBreak(BreakReason_Panic, 0, 0);
         }
