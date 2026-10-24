@@ -13,10 +13,13 @@
 namespace srw64::n64gl {
 
 // The picture the game draws into: the colour image is always 320 wide (gbi-usage.md).
+// The picture drawn can be wider (Interpreter::picture_width, docs/design/deck-16x10.md):
+// the original's 320 sits in its middle, and what the host widens reaches its sides, the
+// way RT64 draws it with its extended commands and the Expand aspect ratio.
 constexpr int kPictureWidth = 320, kPictureHeight = 240;
 
 struct Vertex {
-    float x, y, z, w;      // clip space of the 320x240 picture, GL's convention (y up)
+    float x, y, z, w;      // clip space of the picture (as wide as the frame's), GL's convention (y up)
     float u, v;            // normalised texture coordinates
     uint8_t shade[4];      // the RSP's vertex colour (lit or not)
     uint8_t prim[4];       // the primitive colour at the draw; fill colour for fills
@@ -29,7 +32,7 @@ struct DrawState {
     uint32_t shader = 0;      // shader_key(): the combiner and the fragment's discard rules
     uint64_t texture = 0;     // a Frame::Texture key, 0 when the combiner reads no texel
     uint32_t env = 0;         // environment colour, RGBA
-    int16_t scissor[4] = {};  // left, top, right, bottom in picture pixels
+    int16_t scissor[4] = {};  // left, top, right, bottom in pixels of the picture (Frame::picture_width wide)
     uint8_t blend = blend_opaque;
     uint8_t depth = 0;        // bit 0 test, bit 1 write
     uint8_t alpha_ref = 0;    // the blend colour's alpha: alpha compare's threshold
@@ -70,6 +73,9 @@ struct Command {
     bool model = false;
     float mvp[16] = {};
     uint8_t depth = 0;
+    // native, not from triangles: where its x (the game's, original pixels) and y land in the
+    // picture, as the tagged rectangle would have (x * place[0] + place[1], y + place[2]).
+    float place[3] = {1, 0, 0};
 };
 
 // The host's tags: the command before a draw, a G_NOOP whose words name it. Returns the
@@ -89,6 +95,7 @@ struct Frame {
     };
     std::vector<Texture> textures;
     uint32_t color_image = 0;              // where the frame's colour image is (the VI origin)
+    float picture_width = kPictureWidth;   // the picture's width in original pixels
     uint32_t triangles = 0, rectangles = 0, fills = 0, depth_clears = 0, natives = 0;
     void clear() {
         vertices.clear(); commands.clear(); textures.clear();
@@ -109,6 +116,9 @@ public:
     void run(const uint8_t* rdram, uint32_t start, Frame& out, const uint8_t* list = nullptr, uint32_t size = 0);
     // The host's tagged draws (Command::native); none by default.
     void classify(Classify hook);
+    // The picture's width in original pixels from the next task on: 320 for 4:3, up to 426.7
+    // at 16:9.
+    void picture_width(float width);
     // Print the texture loads and tile settings as they run (a development aid), or stop.
     void trace(std::FILE* into);
 private:

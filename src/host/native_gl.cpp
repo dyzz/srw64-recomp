@@ -6,6 +6,7 @@
 #include "native_gl.hpp"
 
 #include <algorithm>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <stdexcept>
@@ -90,13 +91,17 @@ void draw(const n64gl::Command& command, int width, int height) {
     glDepthMask(GL_FALSE);
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    // The picture's width in original pixels (the target is 240 of them tall): the pieces are
+    // in the original's coordinates, placed in it as the tagged draw says (Command::place).
+    const float picture = n64gl::kPictureHeight * float(width) / float(height);
+    const int picture_px = int(std::ceil(picture - 1e-3f));
     for (const auto& q : quads) {
         if (!q.pixels || q.pixels->size() < size_t(q.width) * q.height * 4 || !q.width || !q.height) continue;
         // The scissor in the target's pixels (GL's origin at the bottom).
-        int16_t s[4] = {0, 0, n64gl::kPictureWidth, n64gl::kPictureHeight};
+        int16_t s[4] = {0, 0, int16_t(picture_px), n64gl::kPictureHeight};
         if (!q.whole) std::copy(command.state.scissor, command.state.scissor + 4, s);
-        const int x0 = std::clamp<int>(s[0], 0, n64gl::kPictureWidth) * width / n64gl::kPictureWidth;
-        const int x1 = std::clamp<int>(s[2], 0, n64gl::kPictureWidth) * width / n64gl::kPictureWidth;
+        const int x0 = int(std::clamp<int>(s[0], 0, picture_px) * width / picture);
+        const int x1 = int(std::clamp<int>(s[2], 0, picture_px) * width / picture + 0.5f);
         const int y0 = (n64gl::kPictureHeight - std::clamp<int>(s[3], 0, n64gl::kPictureHeight)) * height / n64gl::kPictureHeight;
         const int y1 = (n64gl::kPictureHeight - std::clamp<int>(s[1], 0, n64gl::kPictureHeight)) * height / n64gl::kPictureHeight;
         glEnable(GL_SCISSOR_TEST);
@@ -110,7 +115,8 @@ void draw(const n64gl::Command& command, int width, int height) {
                 const float* m = command.mvp;
                 for (int j = 0; j < 4; ++j) p[j] = x * m[j] + y * m[4 + j] + q.z * m[8 + j] + m[12 + j];
             } else {
-                p[0] = x / (n64gl::kPictureWidth / 2.f) - 1; p[1] = 1 - y / (n64gl::kPictureHeight / 2.f); p[2] = 0; p[3] = 1;
+                const float px = x * command.place[0] + command.place[1], py = y + command.place[2];
+                p[0] = px / (picture / 2) - 1; p[1] = 1 - py / (n64gl::kPictureHeight / 2.f); p[2] = 0; p[3] = 1;
             }
             uv[corner * 2] = q.uv[0] + (q.uv[2] - q.uv[0]) * cx;
             uv[corner * 2 + 1] = q.uv[1] + (q.uv[3] - q.uv[1]) * cy;

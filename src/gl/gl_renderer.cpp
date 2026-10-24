@@ -110,6 +110,26 @@ Renderer::Renderer(int width, int height) : target_width(width), target_height(h
     make(copy, width, height, nullptr);
 }
 
+void Renderer::resize(float picture) {
+    const int width = std::max(1, int(std::lround(picture * target_height / float(kPictureHeight))));
+    picture_width = picture;
+    if (width == target_width) return;
+    // Every target, the copy and the depth buffer at the new width: the pictures drawn so far
+    // go (a frame or two black as the screen's shape or the setting changes).
+    for (auto& [key, t] : targets) { glDeleteFramebuffers(1, &t.framebuffer); glDeleteTextures(1, &t.texture); }
+    targets.clear();
+    target_width = width;
+    glBindRenderbuffer(GL_RENDERBUFFER, depth);
+#ifdef SRW64_GLES
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, target_width, target_height);
+#else
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, target_width, target_height);
+#endif
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+    glBindTexture(GL_TEXTURE_2D, copy);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, target_width, target_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+}
+
 Renderer::~Renderer() {
     for (auto& [key, p] : programs) glDeleteProgram(p.id);
     for (auto& [key, t] : textures) {
@@ -412,6 +432,7 @@ GLuint Renderer::own_texture(Texture& t) {
 }
 
 void Renderer::draw(const Frame& frame) {
+    if (frame.picture_width != picture_width) resize(frame.picture_width);
     ++frame_number;
     const int width = target_width, height = target_height;
     calls = 0;
@@ -534,16 +555,17 @@ void Renderer::draw(const Frame& frame) {
     auto set_scissor = [&](const int16_t* s) {
         if (std::equal(s, s + 4, scissor)) return;
         std::copy(s, s + 4, scissor);
-        const int left = std::clamp<int>(s[0], 0, kPictureWidth), right = std::clamp<int>(s[2], 0, kPictureWidth);
+        const int edge = int(std::ceil(picture_width - 1e-3f));
+        const int left = std::clamp<int>(s[0], 0, edge), right = std::clamp<int>(s[2], 0, edge);
         const int top = std::clamp<int>(s[1], 0, kPictureHeight), bottom = std::clamp<int>(s[3], 0, kPictureHeight);
-        const int x0 = left * width / kPictureWidth, x1 = right * width / kPictureWidth;
+        const int x0 = int(std::lround(left * width / picture_width)), x1 = int(std::lround(right * width / picture_width));
         const int y0 = (kPictureHeight - bottom) * height / kPictureHeight, y1 = (kPictureHeight - top) * height / kPictureHeight;
         glScissor(x0, y0, std::max(0, x1 - x0), std::max(0, y1 - y0));
     };
     for (const auto& batch : batches) {
         const Command& command = *batch.command;
         if (command.kind == Command::clear_depth) {
-            const int16_t whole[4] = {0, 0, kPictureWidth, kPictureHeight};
+            const int16_t whole[4] = {0, 0, int16_t(std::ceil(picture_width - 1e-3f)), kPictureHeight};
             set_scissor(whole);
             glDepthMask(GL_TRUE);
             depth_mode = -1;

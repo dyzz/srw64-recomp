@@ -35,6 +35,9 @@ public:
     GLuint framebuffer(uint32_t image) const;
     GLuint picture(uint32_t image) const;
     int width() const { return target_width; }
+    // The picture's width in original pixels (Frame::picture_width): the targets are that
+    // many times the height's scale wide.
+    float picture() const { return picture_width; }
     int height() const { return target_height; }
     // Draw a colour image's picture into the rectangle (x, y, width, height) of the bound
     // framebuffer (window coordinates, origin bottom left), filtered: the host's present.
@@ -102,7 +105,9 @@ private:
     std::unordered_map<uint32_t, Program> programs;
     std::unordered_map<uint64_t, Texture> textures;
     std::unordered_map<uint32_t, Target> targets;
+    void resize(float picture);
     int target_width, target_height;
+    float picture_width = kPictureWidth;
     GLuint buffer = 0, depth = 0, copy = 0, black = 0, blit = 0;
     GLint blit_texture = -1;
     uint32_t frame_number = 0, calls = 0;

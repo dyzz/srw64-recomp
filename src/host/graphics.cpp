@@ -1140,8 +1140,6 @@ public:
         renderer->native_hook([](const srw64::n64gl::Command& command, int width, int height) {
             srw64::native_gl::draw(command, width, height);
         });
-        // The picture stays 4:3 on this path for now: the host's layers follow it.
-        srw64::frame::wide = false;
     }
     bool valid() override { return true; }
     bool update_config(const ultramodern::renderer::GraphicsConfig&, const ultramodern::renderer::GraphicsConfig&) override { return false; }
@@ -1165,6 +1163,18 @@ public:
         const auto t1 = SwitchPerf::clock::now();
 #endif
         frame.clear();
+        // The picture follows the screen's shape, 4:3 to 16:9 (game_frame.hpp), as RT64's does
+        // (at 16:9, 426.7 original pixels: 1280 target pixels at the scale of 3, the original
+        // 160 in from each side). The game thread sizes the tactical map's view from it
+        // (wide_map.cpp), the host's layers place themselves by it (frame::scale).
+        {
+            int w = 0, h = 0;
+            SDL_GL_GetDrawableSize(window, &w, &h);
+            const float picture = srw64::frame::width(float(w), float(h));
+            srw64::frame::picture_width = picture;
+            interpreter->picture_width(picture);
+        }
+        const auto shape = srw64::wide_map::take_shape();
         interpreter->run(rdram, start, frame, native_text ? display_copy.data() : nullptr, native_text ? task->t.data_size : 0);
 #ifdef __SWITCH__
         const auto t2 = SwitchPerf::clock::now();
@@ -1197,12 +1207,13 @@ public:
         }
         perf.report(renderer->programs_held());
 #endif
-        // The workload whose overlays go with this colour image when the VI shows it.
+        // The workload whose overlays go with this colour image when the VI shows it, and how
+        // much of the picture it fills (wide_map::Shape).
         image_workloads[frame.color_image] = workload;
+        image_shapes[frame.color_image] = shape;
     }
     void send_dummy_workload(uint32_t) override {}
     void update_screen() override {
-        srw64::frame::wide = false;
         int width = 0, height = 0;
 #ifdef __SWITCH__
         // The game shows a new picture every second or third VI; the rest of the time the
@@ -1232,10 +1243,31 @@ public:
         glDisable(GL_SCISSOR_TEST);
         glClearColor(0, 0, 0, 1);
         glClear(GL_COLOR_BUFFER_BIT);
-        // The 4:3 picture as large as the window allows, centred.
-        const int picture_width = std::min(width, height * 4 / 3), picture_height = picture_width * 3 / 4;
+        // The picture (4:3 to 16:9) as large as the window allows, centred.
+        const float picture = renderer->picture();
+        const int picture_width = std::min(width, int(std::lround(height * picture / srw64::n64gl::kPictureHeight)));
+        const int picture_height = int(std::lround(picture_width * srw64::n64gl::kPictureHeight / picture));
+        const int picture_x = (width - picture_width) / 2, picture_y = (height - picture_height) / 2;
         const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
-        renderer->present(origin, (width - picture_width) / 2, (height - picture_height) / 2, picture_width, picture_height);
+        renderer->present(origin, picture_x, picture_y, picture_width, picture_height);
+        // Black beside what the frame fills: a scene not yet drawn wider keeps the original's
+        // 4:3, a narrow tactical map its view (mask_sides on RT64).
+        if (picture > srw64::n64gl::kPictureWidth) {
+            const auto found = image_shapes.find(renderer->image_at(origin));
+            const auto shape = found == image_shapes.end() ? srw64::wide_map::Shape{} : found->second;
+            if (shape.fill != srw64::wide_map::Shape::Fill::whole) {
+                float band_left = (picture - srw64::n64gl::kPictureWidth) / 2, band_right = (picture + srw64::n64gl::kPictureWidth) / 2;
+                if (shape.fill == srw64::wide_map::Shape::Fill::view) { band_left = shape.left; band_right = shape.right; }
+                const float per = picture_width / picture;
+                const int left = std::max(0, int(std::lround(picture_x + band_left * per)));
+                const int right = std::min(width, int(std::lround(picture_x + band_right * per)));
+                glEnable(GL_SCISSOR_TEST);
+                glClearColor(0, 0, 0, 1);
+                if (left > 0) { glScissor(0, 0, left, height); glClear(GL_COLOR_BUFFER_BIT); }
+                if (right < width) { glScissor(right, 0, width - right, height); glClear(GL_COLOR_BUFFER_BIT); }
+                glDisable(GL_SCISSOR_TEST);
+            }
+        }
 #ifdef __SWITCH__
         const auto p1 = SwitchPerf::clock::now();
         SwitchPerf::clock::time_point p2 = p1;
@@ -1332,6 +1364,7 @@ private:
     std::vector<uint8_t> display_copy;
     uint64_t workload = 0;
     std::map<uint32_t, uint64_t> image_workloads;
+    std::map<uint32_t, srw64::wide_map::Shape> image_shapes;
 #ifdef __SWITCH__
     // What the last swap showed (update_screen): the colour image, the frame that drew it,
     // the dialogue frame over it and the readout's version.

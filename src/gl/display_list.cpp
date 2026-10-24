@@ -126,12 +126,15 @@ struct Interpreter::State {
     Classify classify;
     uint32_t tag_w0 = 0, tag_w1 = 0;   // the command before the one running
     uint32_t tagged() const { return classify && tag_w0 >> 24 == 0 ? classify(tag_w0, tag_w1) : 0; }
-    void native(uint32_t id, float left, float top, float right, float bottom) {
+    // A tagged draw: its rectangle in the picture's pixels, the scissor it is drawn in
+    // (stretched across the picture or not, as the rectangle) and where the game's x lands.
+    void native(uint32_t id, float left, float top, float right, float bottom, bool stretched = false, const float* place = nullptr) {
         Command c;
         c.kind = Command::native;
         c.native_id = id;
-        std::memcpy(c.state.scissor, scissor, sizeof scissor);
+        placed_scissor(stretched, c.state.scissor);
         c.rect[0] = left; c.rect[1] = top; c.rect[2] = right; c.rect[3] = bottom;
+        if (place) std::copy(place, place + 3, c.place);
         frame->commands.push_back(c);
         ++frame->natives;
     }
@@ -164,16 +167,74 @@ struct Interpreter::State {
     struct PictureLoad { uint32_t image = 0; int x = 0, y = 0; };
     PictureLoad picture_loads[512];
     uint32_t captured = 0;   // the colour image last captured in this task
-    int16_t scissor[4] = {0, 0, kPictureWidth, kPictureHeight};
     // RT64's extended commands that the host writes into the lists (wide_map.cpp,
-    // battle_hud.cpp): a scissor stack, and rectangles moved from an origin and by offsets
-    // (quarter pixels). An origin is a fraction of the picture's width, 0x400 its right edge.
-    int16_t scissor_stack[8][4] = {};
+    // battle_hud.cpp, game_hooks.cpp): a scissor stack, rectangles moved from an origin and by
+    // offsets (quarter pixels), and the rule that stretches rectangles across a wider picture.
+    // An origin is a fraction of the picture's width, 0x400 its right edge, 0x800 none (the
+    // game's own coordinates). Coordinates are kept as RT64 keeps them: quarter pixels of the
+    // original's 320, moved by their origin (from_origin); place_x puts them in the picture.
+    struct Scissor { int32_t q[4] = {0, 0, kPictureWidth * 4, kPictureHeight * 4}; uint16_t origin[2] = {0x800, 0x800}; };
+    Scissor scissor;
+    Scissor scissor_stack[8];
     int scissor_depth = 0;
     uint16_t rect_origin[2] = {0x800, 0x800};
     int32_t rect_offset[4] = {};
+    uint8_t rect_aspect = 0;          // G_EX_SETRECTASPECT: 0 automatic, 1 stretch, 2 adjust (keep 4:3)
+    float W = kPictureWidth;          // the picture's width in original pixels
+    bool vertices_wide = false;       // the last vertices' viewport spans the picture: their 3D widens
     static int32_t from_origin(int32_t x, uint32_t origin) {   // quarter pixels
         return origin < 0x800 ? x + int32_t(origin) * kPictureWidth * 4 / 0x400 : x;
+    }
+    // A moved x (original pixels) in the picture: centred, the original's 320 in the middle
+    // and an origin's edge at the picture's (rt64_framebuffer_renderer.cpp, k = 320 / W), or
+    // stretched across the whole picture (k = 1).
+    float place_x(float x, uint32_t origin, bool stretched) const {
+        if (W <= kPictureWidth) return x;
+        const float o = origin < 0x800 ? origin * float(kPictureWidth) / 0x400 : kPictureWidth / 2.f, f = W / kPictureWidth;
+        return stretched ? x * f : o * f + (x - o);
+    }
+    void placed_scissor(bool stretched, int16_t out[4]) const {
+        out[0] = int16_t(std::floor(place_x(float(scissor.q[0] / 4), scissor.origin[0], stretched) + 1e-3f));
+        out[1] = int16_t(scissor.q[1] / 4);
+        out[2] = int16_t(std::ceil(place_x(float(scissor.q[2] / 4), scissor.origin[1], stretched) - 1e-3f));
+        out[3] = int16_t(scissor.q[3] / 4);
+    }
+    // What RT64 clears with each workload (rt64_state.cpp): the extended rectangle and scissor
+    // rules; the scissor itself stays.
+    void reset_extended() {
+        rect_origin[0] = rect_origin[1] = 0x800;
+        std::fill(rect_offset, rect_offset + 4, 0);
+        rect_aspect = 0;
+        scissor.origin[0] = scissor.origin[1] = 0x800;
+    }
+    // RT64's automatic rule: a rectangle in the game's coordinates as wide as the screen (a
+    // fade, a flash, a letterbox bar) or one that reads an earlier picture stretches across
+    // the picture; the rest keeps the original's place. STRETCH and ADJUST force either.
+    bool stretched_rect(float ulx, float right, bool reads_picture) const {
+        if (W <= kPictureWidth) return false;
+        const bool covers = rect_origin[0] == 0x800 && rect_origin[1] == 0x800 && ulx <= 0 && right >= kPictureWidth;
+        return (reads_picture || covers || rect_aspect == 1) && rect_aspect != 2;
+    }
+    // RT64's fixRectLR (as prepare_rt64.py patches it): an edge within a pixel of the
+    // scissor's goes to it, the right one only in the same origin's coordinates.
+    void fix_edges(float ulx, float uly, float& right, float& bottom) const {
+        const float sr = float(scissor.q[2]) / 4, sb = float(scissor.q[3]) / 4;
+        const bool same = rect_origin[1] == 0x800 || rect_origin[1] == scissor.origin[1];
+        if (same && std::fabs(sr - right) <= 1 && ulx < sr) right = sr;
+        if (std::fabs(sb - bottom) <= 1 && uly < sb) bottom = sb;
+    }
+    // The viewport folded into clip space: x_ndc = x_clip * kx + w * tx in the picture. A
+    // viewport whose rectangle within the scissor spans the original's width (and is wider
+    // than tall) widens as RT64's Expand does (rt64_projection_processor.cpp): the same
+    // scale, more of the scene at the sides; any other stays in the centred 4:3.
+    void viewport_x(float& kx, float& tx) {
+        const float vs = std::fabs(vscale[0] / 4.f), vt = vtrans[0] / 4.f;
+        const float vsy = std::fabs(vscale[1] / 4.f), vty = vtrans[1] / 4.f;
+        const float left = std::max(vt - vs, float(scissor.q[0] / 4)), right = std::min(vt + vs, float(scissor.q[2] / 4));
+        const float top = std::max(vty - vsy, float(scissor.q[1] / 4)), bottom = std::min(vty + vsy, float(scissor.q[3] / 4));
+        vertices_wide = W > kPictureWidth && left <= 0 && right >= kPictureWidth && right - left > bottom - top;
+        kx = vscale[0] / (2.f * W);
+        tx = vertices_wide ? vtrans[0] / (2.f * kPictureWidth) - 1 : (vtrans[0] / 2.f - kPictureWidth) / W;
     }
     Tile tiles[8];
     uint8_t tmem[4096] = {};
@@ -228,7 +289,8 @@ struct Interpreter::State {
             }
         }
         // The viewport, folded into clip space: x_screen = trans + ndc * scale (quarter pixels).
-        const float kx = vscale[0] / (4.f * kPictureWidth / 2), tx = vtrans[0] / (4.f * kPictureWidth / 2) - 1;
+        float kx, tx;
+        viewport_x(kx, tx);
         const float ky = vscale[1] / (4.f * kPictureHeight / 2), ty = 1 - vtrans[1] / (4.f * kPictureHeight / 2);
         for (uint32_t i = 0; i < count; ++i) {
             const uint32_t at = address + i * 16;
@@ -463,10 +525,10 @@ struct Interpreter::State {
     }
 
     // The draw's state from the RDP's modes. `rect`: rectangles take no depth.
-    DrawState draw_state(bool textured_allowed, bool rect) {
+    DrawState draw_state(bool textured_allowed, bool rect, bool stretched = false) {
         DrawState s;
         const uint32_t cycle = (othermode_h >> 20) & 3;
-        std::memcpy(s.scissor, scissor, sizeof scissor);
+        placed_scissor(stretched, s.scissor);
         s.env = env;
         if (cycle == 3) {   // fill: the fill colour, written as it is
             s.shader = 0x3 << 13 | 0x3 << 25 | 0x1F << 8 | 0x7 << 22 | 0xF | 0xF << 4 | 0x7 << 16 | 0x7 << 19;   // D = PRIM, alpha D = PRIM
@@ -520,7 +582,7 @@ struct Interpreter::State {
             if (cull == G_CULL_FRONT && cross <= 0) return;
             if (cull == G_CULL_BACK && cross >= 0) return;
         }
-        const DrawState state_base = draw_state(texture_on, false);
+        const DrawState state_base = draw_state(texture_on, false, vertices_wide);
         DrawState state = state_base;
         Bound bound;
         if (state.shader & shader_textured) { bound = texture(texture_tile); state.texture = bound.key; }
@@ -547,7 +609,7 @@ struct Interpreter::State {
     // A rectangle in picture pixels (corners), with texel coordinates at its corners.
     void rectangle(const DrawState& state, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, uint32_t color) {
         if (x1 <= x0 || y1 <= y0) return;
-        const float X0 = x0 / (kPictureWidth / 2.f) - 1, X1 = x1 / (kPictureWidth / 2.f) - 1;
+        const float X0 = x0 / (W / 2) - 1, X1 = x1 / (W / 2) - 1;
         const float Y0 = 1 - y0 / (kPictureHeight / 2.f), Y1 = 1 - y1 / (kPictureHeight / 2.f);
         Vertex c[4];
         const float xs[4] = {X0, X1, X0, X1}, ys[4] = {Y0, Y0, Y1, Y1}, us[4] = {u0, u1, u0, u1}, vs[4] = {v0, v0, v1, v1};
@@ -578,9 +640,12 @@ struct Interpreter::State {
         const uint32_t cycle = (othermode_h >> 20) & 3;
         float right = lrx, bottom = lry;
         if (cycle >= 2) { right += 1; bottom += 1; if (cycle == 2) dsdx /= 4; }   // copy and fill include the far edge
+        fix_edges(ulx, uly, right, bottom);
         DrawState state = draw_state(true, true);
         Bound bound;
         if (state.shader & shader_textured) { bound = texture(tile); state.texture = bound.key; }
+        const bool stretched = stretched_rect(ulx, right, bound.picture);
+        placed_scissor(stretched, state.scissor);
         // GL samples at pixel centres; the RDP samples the first pixel at (s, t) exactly,
         // with texel centres on whole numbers when it filters.
         const float half = bound.linear ? 0.5f : 0.f;
@@ -591,7 +656,8 @@ struct Interpreter::State {
         ++frame->rectangles;
         v0 /= bound.height; v1 /= bound.height;
         if (bound.picture) { v0 = 1 - v0; v1 = 1 - v1; }
-        rectangle(state, ulx, uly, right, bottom, u0 / bound.width, v0, u1 / bound.width, v1, prim);
+        rectangle(state, place_x(ulx, rect_origin[0], stretched), uly, place_x(right, rect_origin[1], stretched), bottom,
+                  u0 / bound.width, v0, u1 / bound.width, v1, prim);
     }
 
     void fill_rectangle(uint32_t w0, uint32_t w1) {
@@ -607,15 +673,24 @@ struct Interpreter::State {
                 return;
             }
             lrx += 1; lry += 1;
+            fix_edges(ulx, uly, lrx, lry);
             // The fill colour as the 16-bit picture holds it (both halves the same pixel).
             const uint32_t c = expand5551(uint16_t(fill >> 16));
             const uint32_t rgba = (c & 0xFF) << 24 | ((c >> 8) & 0xFF) << 16 | ((c >> 16) & 0xFF) << 8 | 0xFF;
             ++frame->fills;
-            rectangle(draw_state(false, true), ulx, uly, lrx, lry, 0, 0, 0, 0, rgba);
+            // RT64 draws a fill as a clear: across the picture when it spans the game's width
+            // (whatever its origins), and without the scissor.
+            const bool stretched = W > kPictureWidth && ulx <= 0 && lrx >= kPictureWidth;
+            DrawState state = draw_state(false, true);
+            state.scissor[0] = 0; state.scissor[1] = 0; state.scissor[2] = int16_t(std::ceil(W)); state.scissor[3] = kPictureHeight;
+            rectangle(state, place_x(ulx, rect_origin[0], stretched), uly, place_x(lrx, rect_origin[1], stretched), lry, 0, 0, 0, 0, rgba);
             return;
         }
+        fix_edges(ulx, uly, lrx, lry);
+        const bool stretched = stretched_rect(ulx, lrx, false);
         ++frame->fills;
-        rectangle(draw_state(false, true), ulx, uly, lrx, lry, 0, 0, 0, 0, prim);
+        rectangle(draw_state(false, true, stretched), place_x(ulx, rect_origin[0], stretched), uly, place_x(lrx, rect_origin[1], stretched), lry,
+                  0, 0, 0, 0, prim);
     }
 
     void run(uint32_t start) {
@@ -640,14 +715,16 @@ struct Interpreter::State {
                     for (int i = 0; i < count; ++i) {
                         const RspVertex& v = vertices[indices[i] & 63];
                         if (v.w <= 0) continue;
-                        const float x = (v.x / v.w + 1) * kPictureWidth / 2, y = (1 - v.y / v.w) * kPictureHeight / 2;
+                        const float x = (v.x / v.w + 1) * W / 2, y = (1 - v.y / v.w) * kPictureHeight / 2;
                         box[0] = std::min(box[0], x); box[1] = std::min(box[1], y); box[2] = std::max(box[2], x); box[3] = std::max(box[3], y);
                     }
-                    native(id, box[0], box[1], box[2], box[3]);
+                    const float place[3] = {1, (W - kPictureWidth) / 2, 0};
+                    native(id, box[0], box[1], box[2], box[3], vertices_wide, place);
                     Command& c = frame->commands.back();
                     c.model = true;
                     if (mvp_dirty) { mvp = multiply(modelview[depth], projection); mvp_dirty = false; }
-                    const float kx = vscale[0] / (4.f * kPictureWidth / 2), tx = vtrans[0] / (4.f * kPictureWidth / 2) - 1;
+                    float kx, tx;
+                    viewport_x(kx, tx);
                     const float ky = vscale[1] / (4.f * kPictureHeight / 2), ty = 1 - vtrans[1] / (4.f * kPictureHeight / 2);
                     for (int r = 0; r < 4; ++r) {
                         c.mvp[r * 4 + 0] = mvp.m[r][0] * kx + mvp.m[r][3] * tx;
@@ -655,8 +732,7 @@ struct Interpreter::State {
                         c.mvp[r * 4 + 2] = mvp.m[r][2];
                         c.mvp[r * 4 + 3] = mvp.m[r][3];
                     }
-                    c.state = draw_state(false, false);
-                    std::memcpy(c.state.scissor, scissor, sizeof scissor);
+                    c.state = draw_state(false, false, vertices_wide);
                     c.depth = c.state.depth;
                     break;
                 }
@@ -710,15 +786,21 @@ struct Interpreter::State {
                 if (const uint32_t id = tagged()) {
                     float ulx, uly, lrx, lry;
                     aligned((w1 >> 12) & 0xFFF, w1 & 0xFFF, (w0 >> 12) & 0xFFF, w0 & 0xFFF, ulx, uly, lrx, lry);
-                    native(id, ulx, uly, lrx, lry);
+                    // The rectangle placed as RT64 would; the host's pieces of it are in the
+                    // original's coordinates with their own moves (battle_hud.cpp), centred as
+                    // RT64's native layers place them (NativeFrame).
+                    const bool stretched = stretched_rect(ulx, lrx, false);
+                    const float place[3] = {1, (W - kPictureWidth) / 2, 0};
+                    native(id, place_x(ulx, rect_origin[0], stretched), uly, place_x(lrx, rect_origin[1], stretched), lry, stretched, place);
                     break;
                 }
                 texture_rectangle(w0, w1, op == G_TEXRECTFLIP);
                 break;
             }
-            case G_SETSCISSOR:
-                scissor[0] = int16_t(((w0 >> 12) & 0xFFF) / 4); scissor[1] = int16_t((w0 & 0xFFF) / 4);
-                scissor[2] = int16_t(((w1 >> 12) & 0xFFF) / 4); scissor[3] = int16_t((w1 & 0xFFF) / 4);
+            case G_SETSCISSOR:   // the game's own: no origins
+                scissor.q[0] = int32_t((w0 >> 12) & 0xFFF); scissor.q[1] = int32_t(w0 & 0xFFF);
+                scissor.q[2] = int32_t((w1 >> 12) & 0xFFF); scissor.q[3] = int32_t(w1 & 0xFFF);
+                scissor.origin[0] = scissor.origin[1] = 0x800;
                 break;
             case G_LOADTLUT: load_tlut(w0, w1); break;
             case G_SETTILESIZE: {
@@ -771,10 +853,11 @@ struct Interpreter::State {
                 switch (sub) {
                 case 0x05: {   // G_EX_SETSCISSOR: left and right origins, corners
                     const uint32_t left = (w1 >> 2) & 0xFFF, right = (w1 >> 14) & 0xFFF;
-                    scissor[0] = int16_t(from_origin(int16_t(w2 >> 16), left) / 4);
-                    scissor[1] = int16_t(int16_t(w2) / 4);
-                    scissor[2] = int16_t(from_origin(int16_t(w3 >> 16), right) / 4);
-                    scissor[3] = int16_t(int16_t(w3) / 4);
+                    scissor.q[0] = from_origin(int16_t(w2 >> 16), left);
+                    scissor.q[1] = int16_t(w2);
+                    scissor.q[2] = from_origin(int16_t(w3 >> 16), right);
+                    scissor.q[3] = int16_t(w3);
+                    scissor.origin[0] = uint16_t(left); scissor.origin[1] = uint16_t(right);
                     break;
                 }
                 case 0x06:     // G_EX_SETRECTALIGN: origins, then offsets
@@ -783,15 +866,19 @@ struct Interpreter::State {
                     rect_offset[2] = int16_t(w3 >> 16); rect_offset[3] = int16_t(w3);
                     break;
                 case 0x17:     // G_EX_PUSHSCISSOR
-                    if (scissor_depth < 8) std::memcpy(scissor_stack[scissor_depth++], scissor, sizeof scissor);
+                    if (scissor_depth < 8) scissor_stack[scissor_depth++] = scissor;
                     break;
                 case 0x18:     // G_EX_POPSCISSOR
-                    if (scissor_depth > 0) std::memcpy(scissor, scissor_stack[--scissor_depth], sizeof scissor);
+                    if (scissor_depth > 0) scissor = scissor_stack[--scissor_depth];
                     break;
-                default: break;   // the aspect hint and the rest change nothing in a 4:3 picture
+                case 0x33:     // G_EX_SETRECTASPECT
+                    rect_aspect = uint8_t(w1 & 3);
+                    break;
+                default: break;   // the viewport alignment (never sent) and the rest
                 }
                 break;
             }
+            case 0xE9: reset_extended(); break;   // G_RDPFULLSYNC: the workload's end
             default: break;   // syncs, no-ops, culling and the commands the game never sends
             }
             tag_w0 = w0; tag_w1 = w1;
@@ -810,6 +897,8 @@ void Interpreter::trace(std::FILE* into) { state->log = into; }
 
 void Interpreter::classify(Classify hook) { state->classify = std::move(hook); }
 
+void Interpreter::picture_width(float width) { state->W = std::max(float(kPictureWidth), width); }
+
 void Interpreter::run(const uint8_t* rdram, uint32_t start, Frame& out, const uint8_t* list, uint32_t size) {
     state->rdram = rdram;
     state->list = list;
@@ -818,6 +907,8 @@ void Interpreter::run(const uint8_t* rdram, uint32_t start, Frame& out, const ui
     state->frame = &out;
     state->added.clear();
     state->captured = 0;
+    state->reset_extended();
+    out.picture_width = state->W;
     state->run(start);
     state->frame = nullptr;
 }
