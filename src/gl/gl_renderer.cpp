@@ -2,6 +2,7 @@
 #include "program_cache.hpp"
 
 #include <algorithm>
+#include <cstring>
 #include <cmath>
 #include <cstddef>
 #include <cstdio>
@@ -18,6 +19,15 @@ constexpr const char* kPreamble = "#version 120\n";
 
 enum Attribute : GLuint { attribute_position = 0, attribute_uv = 1, attribute_shade = 2, attribute_prim = 3, attribute_bounds = 4 };
 constexpr int kPageSize = 1024, kPages = 6, kAtlasLargest = 128;
+#ifdef __SWITCH__
+// The Switch's Mesa waits for the GPU to finish with a page before each glTexSubImage2D into
+// it: a frame's few hundred small textures took 3 ms each, 1.7 s of every 5 s while the
+// first stage's map scrolled (SRW64_PERF). They gather in a copy of the page instead, and
+// the rows they touched go up once a frame (flush_pages).
+constexpr bool kBatchPageUploads = true;
+#else
+constexpr bool kBatchPageUploads = false;
+#endif
 
 // The combiner's inputs (one cycle; COMBINED and the LOD inputs are zero there, the game
 // uses none of them, nor NOISE, K4, K5 or TEXEL1, which reads TEXEL0's tile here).
@@ -222,6 +232,22 @@ void Renderer::prewarm(const std::vector<uint32_t>& keys) {
     for (const uint32_t key : keys) program(key);
 }
 
+void Renderer::flush_pages() {
+    if (!kBatchPageUploads) return;
+    for (Page& page : pages) {
+        if (page.dirty_bottom <= page.dirty_top) continue;
+        const auto start = std::chrono::steady_clock::now();
+        glBindTexture(GL_TEXTURE_2D, page.id);
+        glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+        // Whole rows: one contiguous run of the copy, with no row length to set.
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, page.dirty_top, kPageSize, page.dirty_bottom - page.dirty_top, GL_RGBA, GL_UNSIGNED_BYTE,
+                        page.shadow.data() + size_t(page.dirty_top) * kPageSize * 4);
+        gl_stats().upload_ms += gl_ms_since(start);
+        ++gl_stats().page_flushes;
+        page.dirty_top = page.dirty_bottom = 0;
+    }
+}
+
 bool Renderer::place(Texture& texture, uint16_t width, uint16_t height, bool linear) {
     auto fit = [&](Page& page) {
         if (page.cursor + width > kPageSize) {
@@ -247,6 +273,7 @@ bool Renderer::place(Texture& texture, uint16_t width, uint16_t height, bool lin
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, kPageSize, kPageSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        if (kBatchPageUploads) page.shadow.assign(size_t(kPageSize) * kPageSize * 4, 0);
         pages.push_back(std::move(page));
         if (fit(pages.back())) chosen = int(pages.size() - 1);
     }
@@ -295,9 +322,18 @@ void Renderer::upload(const Frame::Texture& t) {
     texture.wrap_t = t.wrap_t;
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
     const bool placed = t.width <= kAtlasLargest && t.height <= kAtlasLargest && place(texture, t.width, t.height, t.linear);
-    if (placed) {
+    if (placed && kBatchPageUploads) {
+        Page& page = pages[texture.page];
+        const size_t row = size_t(t.width) * 4;
+        for (uint16_t y = 0; y < t.height; ++y)
+            std::memcpy(page.shadow.data() + (size_t(texture.y + y) * kPageSize + texture.x) * 4, t.rgba.data() + y * row, row);
+        if (page.dirty_bottom <= page.dirty_top) { page.dirty_top = texture.y; page.dirty_bottom = texture.y + t.height; }
+        else { page.dirty_top = std::min<int>(page.dirty_top, texture.y); page.dirty_bottom = std::max<int>(page.dirty_bottom, texture.y + t.height); }
+    } else if (placed) {
         glBindTexture(GL_TEXTURE_2D, texture.id);
         glTexSubImage2D(GL_TEXTURE_2D, 0, texture.x, texture.y, t.width, t.height, GL_RGBA, GL_UNSIGNED_BYTE, t.rgba.data());
+    }
+    if (placed) {
         pages[texture.page].keys.push_back(t.key);
         if (!texture.wraps) { textures[t.key] = texture; return; }
     }
@@ -327,6 +363,7 @@ void Renderer::draw(const Frame& frame) {
         }
     }
     for (const auto& t : frame.textures) upload(t);
+    flush_pages();
     if (frame.commands.empty()) return;
 
     // The vertices in the bound texture's coordinates, and the batches: draws one after the

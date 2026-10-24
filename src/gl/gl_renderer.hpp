@@ -76,7 +76,10 @@ private:
     // A wrapping texture placed in a page keeps a texture of its own too, for the draws whose
     // coordinates leave it (the game sets wrap on many tiles it never repeats).
     struct Texture { GLuint id = 0, own = 0; uint32_t used = 0; int16_t page = -1; uint16_t x = 0, y = 0, width = 0, height = 0; bool wraps = false; uint8_t wrap_s = 0, wrap_t = 0; };
-    struct Page { GLuint id = 0; bool linear = false; uint16_t shelf_y = 0, shelf_height = 0, cursor = 0; uint32_t used = 0; std::vector<uint64_t> keys; };
+    struct Page { GLuint id = 0; bool linear = false; uint16_t shelf_y = 0, shelf_height = 0, cursor = 0; uint32_t used = 0; std::vector<uint64_t> keys;
+                  // Where batched uploads gather (kBatchPageUploads): the page's pixels, and the rows written since the last upload.
+                  std::vector<uint8_t> shadow; int dirty_top = 0, dirty_bottom = 0; };
+    void flush_pages();
     struct Target { GLuint framebuffer = 0, texture = 0; uint32_t used = 0; };
     // The vertex as the GPU takes it: texture coordinates in the bound texture, and the
     // rectangle they clamp to (a tile's edge inside its atlas page).

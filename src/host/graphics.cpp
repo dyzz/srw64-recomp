@@ -1035,7 +1035,7 @@ struct SwitchPerf {
             "SRW64_PERF %.1fs lists=%.1f/s list=%.2fms(interp %.2f draw %.2f dlg %.2f max %.1f) "
             "presents=%.1f/s kept=%u skipped=%llu present=%.2fms(picture %.2f overlays %.2f ui %.2f read %.2f swap %.2f; max %.1f swap max %.1f) "
             "programs=%zu linked+%u(%.0fms) loaded+%u(%.0fms) "
-            "gl(draw %.0fms collect %.0fms layers %.0fms; uploads %u %.1fMB %.0fms; copies %u %.0fms; dialogue raster %.0fms patches %u %.1fMB %.0fms; "
+            "gl(draw %.0fms collect %.0fms layers %.0fms; uploads %u %.1fMB %.0fms in %u page flushes; copies %u %.0fms; dialogue raster %.0fms patches %u %.1fMB %.0fms; "
             "quads %u %.1fMB %.0fms) %s\n",
             seconds, lists / seconds, per(interpret + draw + dialogue_take, lists), per(interpret, lists), per(draw, lists),
             per(dialogue_take, lists), list_max, presents / seconds, kept, (unsigned long long)(skipped - skipped_at),
@@ -1043,7 +1043,7 @@ struct SwitchPerf {
             per(readback, presents), per(swap, presents), present_max, swap_max, programs_held,
             programs.linked - programs_at.linked, programs.link_ms - programs_at.link_ms,
             programs.loaded - programs_at.loaded, programs.load_ms - programs_at.load_ms,
-            gl_draw, gl_collect, host_layers, gl.uploads, gl.upload_bytes / 1048576.0, gl.upload_ms, gl.copies, gl.copy_ms,
+            gl_draw, gl_collect, host_layers, gl.uploads, gl.upload_bytes / 1048576.0, gl.upload_ms, gl.page_flushes, gl.copies, gl.copy_ms,
             gl.raster_ms, gl.patches, gl.patch_bytes / 1048576.0, gl.patch_ms, gl.quads, gl.quad_bytes / 1048576.0, gl.quad_ms,
             ::srw64_switch_perf_system().c_str());
         gl = {};

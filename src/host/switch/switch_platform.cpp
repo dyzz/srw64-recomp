@@ -165,22 +165,14 @@ std::string srw64_switch_perf_system() {
     u64 total = 0, used = 0;
     svcGetInfo(&total, InfoType_TotalMemorySize, CUR_PROCESS_HANDLE, 0);
     svcGetInfo(&used, InfoType_UsedMemorySize, CUR_PROCESS_HANDLE, 0);
-    static u64 last_tick = 0, last_idle[3] = {};
     const u64 tick = armGetSystemTick();
     char text[160];
     // libnx takes the whole heap at start (used is nearly total): malloc's own count is what the
-    // program holds.
+    // program holds. (A core's idle count is only given for the asking thread's own core, so
+    // the load is per thread below.)
     const struct mallinfo heap = mallinfo();
-    int length = std::snprintf(text, sizeof text, "heap=%dMiB of %lluMiB cpu", int(heap.uordblks >> 20), (unsigned long long)(total >> 20));
+    std::snprintf(text, sizeof text, "heap=%dMiB of %lluMiB threads", int(heap.uordblks >> 20), (unsigned long long)(total >> 20));
     (void)used;
-    for (int core = 0; core < 3; ++core) {
-        u64 idle = 0;
-        svcGetInfo(&idle, InfoType_IdleTickCount, INVALID_HANDLE, u64(core));
-        const double busy = last_tick && tick > last_tick ? 100.0 * (1.0 - double(idle - last_idle[core]) / double(tick - last_tick)) : 0.0;
-        length += std::snprintf(text + length, sizeof text - length, "%s%d:%.0f%%", core ? " " : "=", core, busy);
-        last_idle[core] = idle;
-    }
-    last_tick = tick;
     // The threads that took more than 3% of a core since the last line.
     std::string line = text;
     std::lock_guard lock(watched_mutex);
