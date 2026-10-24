@@ -72,6 +72,14 @@ void set_native_thread_name(const std::string& name) {
 void set_native_thread_priority(ThreadPriority) {}
 }
 
+// A helper thread that must never hold up the ones it serves (the UI's picture reader, the
+// screenshot writer, the log writer): the lowest priority, so on the core it shares with the
+// window thread it runs only while that one waits. Unpinned threads share core 0; the UI's
+// update waited 30-40 ms for the picture reader's decodes there (SRW64_UI_SLOW drain=).
+extern "C" void srw64_switch_background_thread() {
+    svcSetThreadPriority(CUR_THREAD_HANDLE, 0x3F);
+}
+
 // stdout and stderr (console_log.hpp): one device for both that keeps the last 512 KiB in
 // memory (the debug interface serves it as console.log: Horizon will not open or even stat a
 // file another handle is writing), appends to the run's console.log once it is known, and
@@ -95,7 +103,9 @@ ssize_t log_write(struct _reent*, void*, const char* data, size_t size) {
     if (nxlink_socket >= 0) ::send(nxlink_socket, data, size, MSG_DONTWAIT);
     return ssize_t(size);
 }
+extern "C" void srw64_switch_background_thread();
 void write_log_file() {
+    srw64_switch_background_thread();
     std::unique_lock lock(log_mutex);
     for (;;) {
         log_wake.wait_for(lock, std::chrono::milliseconds(250));

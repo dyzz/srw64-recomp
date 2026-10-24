@@ -76,6 +76,9 @@
 #include <tuple>
 #include <unordered_map>
 
+#ifdef __SWITCH__
+extern "C" void srw64_switch_background_thread();   // host/switch/switch_platform.cpp
+#endif
 namespace srw64::ui {
 namespace {
 using json=nlohmann::json;
@@ -1242,6 +1245,9 @@ std::set<std::string> asked;  // UI thread
 uint64_t serial=0;            // pictures that arrived, for the page stamps
 const bool at_once=[]{const char* v=std::getenv("SRW64_SYNC_PAGE_IMAGES");return v && *v=='1';}();
 void run() {
+#ifdef __SWITCH__
+    srw64_switch_background_thread();
+#endif
     for(;;) {
         Job job;
         {std::unique_lock lock(mutex);wake.wait(lock,[]{return stopping || !jobs.empty();});if(stopping)return;job=std::move(jobs.front());jobs.pop_front();}

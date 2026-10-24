@@ -135,6 +135,7 @@ std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure m
 }  // namespace
 #ifdef __SWITCH__
 std::string srw64_switch_perf_system();   // switch/switch_platform.cpp: memory and core loads
+extern "C" void srw64_switch_background_thread();   // the same: the lowest priority for a helper thread
 void srw64_switch_error(const std::string& message, const std::string& details);
 void srw64_switch_boot_end();   // switch/switch_platform.cpp: the launch's text console goes
 #endif
@@ -189,6 +190,9 @@ void run_in_background(std::function<void()> job) {
     static std::condition_variable wake;
     static std::deque<std::function<void()>> jobs;
     static std::thread* worker = new std::thread([] {   // never joined: it lives as long as the program
+#ifdef __SWITCH__
+        srw64_switch_background_thread();
+#endif
         for (;;) {
             std::function<void()> next;
             {
