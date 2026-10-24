@@ -99,7 +99,7 @@ void set_wide_picture(bool v){wide=v;} bool wide_picture(){return wide;}
 bool map_icons_hd=true; bool hd_map_unit_icons(){return map_icons_hd;} void set_hd_map_unit_icons(bool v){map_icons_hd=v;}
 bool msaa_on=true; bool msaa(){return msaa_on;} bool msaa_at_start(){return true;} void set_msaa(bool v){msaa_on=v;}
 bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
-bool speed_double=false; bool game_speed_double(){return speed_double;} void set_game_speed_double(bool v){speed_double=v;}
+unsigned speed_level=1; unsigned game_speed_level(){return speed_level;} unsigned game_speed_top(){return 4;} void set_game_speed_level(unsigned v){speed_level=v;} bool game_speed_double(){return speed_level>1;}
 RefreshRate rate_choice=RefreshRate::Original; RefreshRate refresh_rate(){return rate_choice;} void set_refresh_rate(RefreshRate v){rate_choice=v;}
 const char* refresh_rate_name(RefreshRate r){return r==RefreshRate::Original?"original":r==RefreshRate::Sixty?"60":"display";}
 RefreshRate refresh_rate_from(const std::string& n){return n=="original"?RefreshRate::Original:n=="60"?RefreshRate::Sixty:RefreshRate::Display;}

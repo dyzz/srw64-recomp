@@ -106,7 +106,7 @@
 | [剧情短跳过](native/script-skip.md) | 现代机战式 R + START：宿主在一帧内连续执行事件脚本，对白不显示、等待与演出当帧完成，停在选择肢、出击选择、切往战场或脚本结束；脚本轮询契约、各指令的完成办法、与逐句读完的状态逐字节对照 |
 | [战斗演出中途退出](native/battle-animation-skip.md) | 进战斗后按 X 中止演出回地图：演出状态机 `D_80250000` 与收尾状态 21、原版 Z+START 是标题路线不能用；伤害其实由地图状态 0x4B 链的子状态 2（`801FBBD4`）计算，开动画时整条链被跳过；两个 overlay 地址重叠与未完成部分 |
 | [L2 / R2 切换敌方机体](native/enemy-cycle.md) | 现代机战式操作：地图空闲时用手柄扳机遍历敌方与第三方机体；空闲状态 `801C8B04` 里原版 L/R 切换我方的静态分析与接管方式 |
-| [2 倍速](native/game-speed.md) | 设置项与一键切换（Tab／R4／安卓左上角 2×）：每个 VI 按场景改写帧间隔 `D_8010F0C8`，战斗演出、剧情、敌方回合加速，我方菜单与场间原速 |
+| [游戏速度](native/game-speed.md) | 原速／2／3／4 倍速，设置项与一键依次切换（Tab／R4／安卓左上角速度键）：每个 VI 按场景改写帧间隔 `D_8010F0C8`，战斗演出、剧情、敌方回合加速，我方菜单与场间原速；3、4 倍速靠 120 Hz 调度 |
 | [改键](native/controls-remapping.md) | 设置窗口「操作」页：Steam Deck 按键图写着每个键的作用，按功能改键（键盘与手柄各一套，按下即绑定），手柄默认按功能重排，`input.json`；提示与原生页面跟随绑定 |
 | [模型替换](native/native-model-replacement.md) | 5600 原生 HD 标记（保留原版棱角的倒角金色八面体）与 Original/HD 切换 |
 | [世界地图过场模型 HD](native/native-ship-model.md) | 世界地图模型表、`3D72` 载具与场景地标、15 个舰船／地标按设定重建、平滑航迹与实机对照 |
@@ -168,7 +168,7 @@
 | [战斗鉴赏](design/battle-viewer.md) | 标题上的 Battle Viewer：原版演示战斗（模式 0x1C、8009C2DC）直接播一场演出，选攻守双方机体与驾驶员、武器、反击、防御反应、伤害、击坠、背景与 BGM |
 | [多存档栏与自动存档](design/save-slots-autosave.md) | 原版 SRAM 布局与校验、卡带文件与模拟器互通、扩展栏和自动存档改道原版 SRAM 传输、导入导出与格式识别、阶段与待核实项 |
 | [60 帧研究](design/60fps.md) | 远期待办，只有静态研究。原版逻辑固定 30 帧的依据、RT64 显示插帧的机制与前提、各场景能否插值（矩阵类能、矩形类不能）、战术地图的两条做法、试验计划与未核实项 |
-| [120 Hz 调度与 4 倍速](design/120hz-scheduler.md) | 实验，默认关闭（`SRW64_VI_RATE=120`）。60 Hz 下 2 倍速是结构上限的依据、音频隔拍、宿主钩子审计、2x 换画面节拍与呈现降频、Mac／Windows／Seeker 实测 |
+| [120 Hz 调度与 4 倍速](design/120hz-scheduler.md) | 默认开启（`SRW64_VI_RATE=60` 退回 60 Hz）。60 Hz 下 2 倍速是结构上限的依据、音频隔拍、宿主钩子审计、2x 换画面节拍与呈现降频、Mac／Windows／Seeker 实测 |
 | [Steam Deck 键位与按键图标](design/steam-deck-controls.md) | 默认手柄模板下的全部键位、标题与场间的设置入口、设置界面分页改版、待定键位、自绘图标字体方案与验证计划 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |

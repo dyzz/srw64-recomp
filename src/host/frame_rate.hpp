@@ -13,7 +13,7 @@ inline std::atomic<uint32_t> longest_us{0};
 // Presents: the frames shown, one per display list as the original runs, more when RT64
 // interpolates between them (SRW64_REFRESH_RATE, docs/design/60fps.md §7).
 inline std::atomic<uint64_t> presents{0};
-// The gaps between presents, for the 120 Hz experiment's pacing: under 6 ms, 6-12, 12-20,
+// The gaps between presents, for the 120 Hz scheduler's pacing: under 6 ms, 6-12, 12-20,
 // 20-28, 28 and over.
 inline std::atomic<uint64_t> present_gaps[5]{};
 // How many workloads apart two presents are: the same one again, the next, every other, more.
@@ -34,7 +34,7 @@ inline void present_sent() {
     last = now;
     presents.fetch_add(1, std::memory_order_relaxed);
 }
-// RT64's idea of the game's own frame rate (its VI history), for the 120 Hz experiment.
+// RT64's idea of the game's own frame rate (its VI history), for the 120 Hz scheduler.
 inline std::atomic<uint32_t> original_rate{0};
 // Graphics thread, once per display list.
 inline void list_sent() {

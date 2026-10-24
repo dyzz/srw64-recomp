@@ -82,7 +82,7 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"weapon_upgrade",unified_weapons?"unified":"single"},{"name_entry_ui",native_name_entry?"native":"original"},
         {"map_unit_icons",map_icons_hd?"hd":"original"},{"msaa",msaa_on.load()},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
-        {"game_speed",srw64::game_speed::on.load()?2:1},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
+        {"game_speed",srw64::game_speed::level.load()},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
         {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
         {"touch_opacity",touch_alpha.load()},{"dialogue_font_size",dialogue_size.load()}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
@@ -164,12 +164,15 @@ void set_refresh_rate(RefreshRate rate) {
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
-bool game_speed_double(){return srw64::game_speed::on.load();}
-void set_game_speed_double(bool on) {
-    srw64::game_speed::on=on;
+unsigned game_speed_level(){return srw64::game_speed::level.load();}
+unsigned game_speed_top(){return srw64::game_speed::top_level();}
+bool game_speed_double(){return game_speed_level()>1;}
+void set_game_speed_level(unsigned level) {
+    srw64::game_speed::level=std::clamp(level,1u,game_speed_top());
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
+
 bool dialogue_hints_always(){return hints_always.load();}
 void set_dialogue_hints_always(bool always) {
     hints_always=always;
@@ -343,7 +346,8 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
         if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();
-        if(saved.is_object())srw64::game_speed::on=saved.value("game_speed",1)==2;
+        if(saved.is_object() && saved.contains("game_speed") && saved["game_speed"].is_number_unsigned())
+            srw64::game_speed::level=std::clamp(saved["game_speed"].get<unsigned>(),1u,srw64::game_speed::top_level());
         if(saved.is_object())refresh_choice=refresh_rate_from(saved.value("refresh_rate","original"));
         if(saved.is_object() && saved.contains("debug_interface") && saved["debug_interface"].is_boolean())debug_on=saved["debug_interface"].get<bool>();
         if(saved.is_object())hints_always=saved.value("dialogue_hints","auto")=="always";

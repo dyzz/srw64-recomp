@@ -336,14 +336,14 @@ def main() -> int:
     # last one shown is under three quarters of a refresh old: on a 60 Hz display every other
     # picture, on a 120 Hz one none. No sleeping: a sleep to the next refresh lands the
     # present half a refresh late on Metal (docs/design/60fps.md §9, 50 instead of 60).
-    # Interpolation keeps its own pacing. Only with SRW64_VI_RATE=120, so the default build
-    # presents as before; SRW64_PRESENT_PACE=0 turns it off there for comparison.
+    # Interpolation keeps its own pacing. Off with SRW64_VI_RATE=60 (the original's 60 Hz, which
+    # never presents faster than a display) or SRW64_PRESENT_PACE=0 (comparisons).
     present_pace = [("                if (skipPresent) {\n"
                      "                    skipInterpolation();\n",
                      "                static const bool presentPace = [] {\n"
                      "                    const char* vi = std::getenv(\"SRW64_VI_RATE\");\n"
                      "                    const char* pace = std::getenv(\"SRW64_PRESENT_PACE\");\n"
-                     "                    return vi && std::string_view(vi) == \"120\" && !(pace && std::string_view(pace) == \"0\");\n"
+                     "                    return !(vi && std::string_view(vi) == \"60\") && !(pace && std::string_view(pace) == \"0\");\n"
                      "                }();\n"
                      "                if (!skipPresent && presentPace && (presentTimestamp != Timestamp())) {\n"
                      "                    uint32_t displayRate, originalRate, intendedRate;\n"
@@ -512,7 +512,7 @@ def main() -> int:
                                       "        }\n"),
                                      ("        threadRunning = true;\n\n        while (threadRunning) {",
                                       "        while (threadRunning) {")]))
-    # 120 Hz scheduler experiment (src/host/sched_rate.hpp): the VI history counts screen
+    # The 120 Hz scheduler (src/host/sched_rate.hpp): the VI history counts screen
     # updates, which come at 120 Hz there, so a frame every 4 of them is 30, not 15.
     # SRW64_RT64_BASE=60 keeps the original base for comparison.
     records.append(patch(checkout, "src/hle/rt64_vi.cpp",
@@ -521,7 +521,7 @@ def main() -> int:
                          "                const char* vi = std::getenv(\"SRW64_VI_RATE\");\n"
                          "                const char* base = std::getenv(\"SRW64_RT64_BASE\");\n"
                          "                if (base && std::string_view(base) == \"60\") return 60u;\n"
-                         "                return vi && std::string_view(vi) == \"120\" ? 120u : 60u;\n"
+                         "                return vi && std::string_view(vi) == \"60\" ? 60u : 120u;\n"
                          "            }();\n",
                          [('#include "rt64_vi.h"\n', '#include "rt64_vi.h"\n\n#include <cstdlib>\n#include <string_view>\n')]))
     recorded = {r['path'] for r in records}

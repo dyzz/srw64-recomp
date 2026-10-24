@@ -61,7 +61,7 @@ UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale", "menu_game", "m
 UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps_note"}
 UI_KEYS |= {"settings_refresh", "settings_refresh_display", "settings_refresh_original", "settings_refresh_60", "settings_refresh_note"}
 # 2x speed (frontend.cpp toggle_speed, game_speed.hpp).
-UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_note", "speed_notice_on", "speed_notice_off", "touch_speed"}
+UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_3x", "settings_speed_4x", "settings_speed_note", "speed_notice_1x", "speed_notice_2x", "speed_notice_3x", "speed_notice_4x", "touch_speed"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}

@@ -1,4 +1,5 @@
-// 2x speed: which scenes it hurries (src/host/game_speed.hpp, docs/native/game-speed.md).
+// Game speed: which scenes it hurries and how often the logic steps at each speed
+// (src/host/game_speed.hpp, docs/native/game-speed.md).
 #include "../src/host/game_speed.hpp"
 #include <cstdio>
 #include <stdexcept>
@@ -60,24 +61,59 @@ void scenes() {
     check(!game_speed::hurried(ram.data(), true), "the pre-battle screen is hurried");
 }
 
+// At 120 Hz (the default, sched_rate.hpp): the original speed is every 4th retrace.
 void interval() {
     Ram ram;
-    game_speed::on = true;
+    game_speed::level = 2;
     guest::write8(ram.data(), game_speed::mode, 2);
     game_speed::frame(ram.data());
     check(guest::read(ram.data(), game_speed::interval, 4) == 0, "written before the game set it");
     guest::write32(ram.data(), game_speed::interval, 2);
     game_speed::frame(ram.data());
-    check(guest::read(ram.data(), game_speed::interval, 4) == 1 && game_speed::running, "not hurried in battle");
+    check(guest::read(ram.data(), game_speed::interval, 4) == 2 && game_speed::running, "not hurried in battle");
     game_speed::menu_step();
     game_speed::frame(ram.data());
-    check(guest::read(ram.data(), game_speed::interval, 4) == 2, "hurried right after a pre-battle step");
+    check(guest::read(ram.data(), game_speed::interval, 4) == 4, "hurried right after a pre-battle step");
     vi_now += 4;
     game_speed::frame(ram.data());
-    check(guest::read(ram.data(), game_speed::interval, 4) == 1, "the pre-battle screen's hold outlasts it");
-    game_speed::on = false;
+    check(guest::read(ram.data(), game_speed::interval, 4) == 2, "the pre-battle screen's hold outlasts it");
+    game_speed::level = 4;
     game_speed::frame(ram.data());
-    check(guest::read(ram.data(), game_speed::interval, 4) == 2 && !game_speed::running, "off still hurries");
+    check(guest::read(ram.data(), game_speed::interval, 4) == 1, "4x is not every retrace");
+    game_speed::level = 1;
+    game_speed::frame(ram.data());
+    check(guest::read(ram.data(), game_speed::interval, 4) == 4 && !game_speed::running, "off still hurries");
+}
+
+// Logic steps in 120 retraces (one second) at each speed, the gate as 8008163C runs it:
+// the scheduler raises the count after the frame boundary, a step clears it.
+unsigned steps_per_second(unsigned speed) {
+    Ram ram;
+    game_speed::level = speed;
+    guest::write8(ram.data(), game_speed::mode, 2);
+    guest::write32(ram.data(), game_speed::interval, 4);
+    unsigned steps = 0, gaps[4] = {};
+    uint64_t last = 0;
+    for (uint64_t tick = 1; tick <= 120 + 12; ++tick) {
+        game_speed::frame(ram.data());
+        const uint32_t count = guest::read(ram.data(), sched_rate::logic_count, 4) + 1;
+        guest::write32(ram.data(), sched_rate::logic_count, count);
+        if (count < guest::read(ram.data(), game_speed::interval, 4)) continue;
+        guest::write32(ram.data(), sched_rate::logic_count, 0);
+        if (tick <= 12) { last = tick; continue; }   // settle into the speed first
+        ++steps;
+        if (last && tick - last <= 4) ++gaps[tick - last - 1];
+        last = tick;
+    }
+    if (speed == 3) check(gaps[0] == 60 && gaps[1] == 30, "3x is not steps 1, 1 and 2 retraces apart");
+    return steps;
+}
+
+void speeds() {
+    check(steps_per_second(1) == 30, "1x is not 30 steps a second");
+    check(steps_per_second(2) == 60, "2x is not 60 steps a second");
+    check(steps_per_second(3) == 90, "3x is not 90 steps a second");
+    check(steps_per_second(4) == 120, "4x is not 120 steps a second");
 }
 }  // namespace
 
@@ -85,6 +121,7 @@ int main() {
     try {
         scenes();
         interval();
+        speeds();
     } catch (const std::exception& error) {
         std::fprintf(stderr, "FAIL %s\n", error.what());
         return 1;

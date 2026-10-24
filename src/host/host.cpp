@@ -188,7 +188,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
 }
 
 void on_vi() {
-    // The 120 Hz experiment keeps the host's VI count in 60 Hz units (sched_rate.hpp).
+    // At 120 Hz the host's VI count keeps 60 Hz units (sched_rate.hpp).
     static uint64_t ticks = 0;
     if (++ticks % srw64::sched_rate::factor()) return;
     const uint64_t vi = ++vi_count;

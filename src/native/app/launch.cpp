@@ -215,8 +215,8 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     // some AMD integrated GPUs reset their driver under D3D12 (issue #12).
     std::map<std::string,std::string> inherited;
     for(const char* key:{"SRW64_UPDATE_URL","SRW64_TOUCH_PAD","SRW64_PAGE_REBUILD","SRW64_SYNC_PAGE_IMAGES","SRW64_GRAPHICS_API",
-                         // The 120 Hz scheduler experiment (src/host/sched_rate.hpp).
-                         "SRW64_VI_RATE","SRW64_VI_AUDIO","SRW64_FAST_INTERVAL","SRW64_FORCE_FAST","SRW64_RT64_BASE","SRW64_PRESENT_PACE"})
+                         // The 120 Hz scheduler's fallback and comparisons (src/host/sched_rate.hpp).
+                         "SRW64_VI_RATE","SRW64_VI_AUDIO","SRW64_FORCE_FAST","SRW64_RT64_BASE","SRW64_PRESENT_PACE"})
         if(const char* value=std::getenv(key);value && *value)inherited[key]=value;
     clear_runtime_environment();
     for(const auto& [key,value]:inherited)set_environment(key,value);

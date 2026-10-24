@@ -1,12 +1,12 @@
 #pragma once
-// 120 Hz scheduler experiment (docs/design/120hz-scheduler.md), off unless SRW64_VI_RATE=120.
+// The 120 Hz scheduler (docs/design/120hz-scheduler.md), on by default for 3x and 4x;
+// SRW64_VI_RATE=60 runs the original's 60 Hz instead (comparisons, a fallback).
 // The VI thread then retraces at 120 Hz (prepare_runtime_lifecycle.py: the runtime's speed
 // multiplier, which only the VI thread reads), the game's logic interval doubles so 1x
 // stays 30 steps a second, the host's own VI count keeps 60 Hz units, and the audio
 // thread hears every other retrace so it synthesizes 60 times a second as before.
 //
-// SRW64_VI_AUDIO=all sends the audio thread every retrace (the A/B for the audio claim);
-// SRW64_FAST_INTERVAL=1|2 is the hurried interval at 120 Hz (default 1, 4x).
+// SRW64_VI_AUDIO=all sends the audio thread every retrace (the A/B for the audio claim).
 #include "guest_memory.hpp"
 #include <algorithm>
 #include <atomic>
@@ -24,14 +24,15 @@ inline uint32_t env_number(const char* name,uint32_t fallback) {
     const char* v=std::getenv(name);
     return v && *v ? uint32_t(std::strtoul(v,nullptr,10)) : fallback;
 }
+// 2 (120 Hz), unless SRW64_VI_RATE=60 brings back the original's 60 Hz for a run.
 inline uint32_t factor() {
-    static const uint32_t f=env_number("SRW64_VI_RATE",60)==120 ? 2 : 1;
+    static const uint32_t f=env_number("SRW64_VI_RATE",120)==60 ? 1 : 2;
     return f;
 }
-inline uint32_t fast_interval() {
-    static const uint32_t i=env_number("SRW64_FAST_INTERVAL",1)==2 ? 2 : 1;
-    return i;
-}
+// The logic gate's count: retraces since the last step (8008163C).
+constexpr uint32_t logic_count=0x80172D0C;
+// 3x steps 1, 1 and 2 retraces apart (game_speed.hpp): no even-tick latch then.
+inline std::atomic_bool uneven{false};
 inline bool gate_audio() {
     static const bool g=[]{const char* v=std::getenv("SRW64_VI_AUDIO");return !(v && std::string_view(v)=="all");}();
     return g;
@@ -56,7 +57,7 @@ inline bool latch_paced() {
 // on the 120 Hz grid (60 presents on Mac instead of 54); 4x draws on every tick.
 inline std::atomic<uint64_t> latch_slow_spells{0};
 inline bool latch(const uint8_t* ram,uint64_t tick) {
-    if(factor()==1 || !latch_paced() || !ram || guest::read(ram,0x8010F0C8,4)!=2)return true;
+    if(factor()==1 || !latch_paced() || !ram || uneven.load() || guest::read(ram,0x8010F0C8,4)!=2)return true;
     static uint64_t last_change=0,free_until=0;
     static unsigned changes=0,late=0;
     if(tick<free_until)return true;
@@ -83,7 +84,7 @@ template<class F> void retrace(uint8_t* ram,uint32_t sc,F&& original) {
         // The logic gate's count (D_80172D0C) is 1 on the first tick after a step reset it.
         static uint64_t last_logic=0,last_picture=0;
         static uint32_t picture=0;
-        if(guest::read(ram,0x80172D0C,4)==1) {
+        if(guest::read(ram,logic_count,4)==1) {
             if(last_logic)++logic_ticks[std::min<uint64_t>(tick-last_logic,6)-1];
             last_logic=tick;
         }

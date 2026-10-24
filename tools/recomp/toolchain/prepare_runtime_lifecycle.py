@@ -125,12 +125,12 @@ def adapt_timer(source: str) -> str:
          "        timer_context.action_queue.enqueue(StopTimerAction{});\n"
          "        timer_context.thread.join();\n"
          "    }\n}\n\nuint32_t ultramodern::get_speed_multiplier() {", 1),
-        # 120 Hz scheduler experiment (docs/design/120hz-scheduler.md): only the VI thread reads the
+        # The 120 Hz scheduler (docs/design/120hz-scheduler.md): only the VI thread reads the
         # multiplier; the timer counts above keep the constexpr rate.
         ("    return speed_multiplier;",
          "    static const uint32_t vi_factor = [] {\n"
          "        const char* rate = std::getenv(\"SRW64_VI_RATE\");\n"
-         "        return rate && std::string_view(rate) == \"120\" ? 2u : 1u;\n"
+         "        return rate && std::string_view(rate) == \"60\" ? 1u : 2u;\n"
          "    }();\n"
          "    return speed_multiplier * vi_factor;", 1),
         ("#include <thread>\n", "#include <cstdlib>\n#include <string_view>\n#include <thread>\n", 1),
@@ -143,7 +143,7 @@ def adapt_timer(source: str) -> str:
 
 
 def adapt_events(source: str) -> str:
-    """120 Hz scheduler experiment (src/host/sched_rate.hpp latch()): a new picture latches
+    """The 120 Hz scheduler (src/host/sched_rate.hpp latch()): a new picture latches
     on the VI ticks the host allows (in 2x every other one), so a frame drawn every second
     tick shows every second tick, not after one or three as the GPU's finish falls."""
     source = '#include <cstdint>\nextern "C" bool srw64_vi_latch(uint64_t tick);\n' + source

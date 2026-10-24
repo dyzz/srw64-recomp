@@ -859,12 +859,13 @@ void document_close(Rml::ElementDocument*& doc) {
 }
 bool held();
 void choose(const std::string& id);
-// 2x speed on / off (game_speed.hpp): the Speed button, the phone's 2x button. A small
-// tag in the top left says which for a moment (speed_sync; user: the banner was too big).
+// The next game speed (game_speed.hpp): the Speed button, the phone's speed button step
+// 1x, 2x (3x, 4x with the 120 Hz scheduler) and back to 1x. A small tag in the top left
+// says which for a moment (speed_sync; user: the banner was too big).
 bool speed_toast_pending=false;
 void toggle_speed() {
-    const bool on=!settings::game_speed_double();
-    settings::set_game_speed_double(on);
+    const unsigned next=settings::game_speed_level()+1;
+    settings::set_game_speed_level(next>settings::game_speed_top()?1:next);
     speed_toast_pending=true;
 }
 void battle_buttons(uint32_t pressed,bool tab=false);
@@ -3200,7 +3201,7 @@ void settings_sync() {
     report_export_poll();
 #endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_double())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -3238,8 +3239,13 @@ void settings_sync() {
         body+=settings_row("library_row",button("library-open",label("library_open")));
         body+=settings_row("stage_info_row",button("stage-info-open",label("stage_info_open")));
         body+=settings_row("viewer_row",button("viewer-open",label("viewer_open")));
-        body+=settings_row("settings_speed",button("speed:1x",label("settings_speed_1x"),!settings::game_speed_double())+
-            button("speed:2x",label("settings_speed_2x"),settings::game_speed_double()),{},"settings_speed_note");
+        {
+            std::string speeds;
+            for(unsigned speed=1;speed<=settings::game_speed_top();++speed)
+                speeds+=button("speed:"+std::to_string(speed)+"x",label("settings_speed_"+std::to_string(speed)+"x"),settings::game_speed_level()==speed);
+            body+=settings_row("settings_speed",speeds,{},"settings_speed_note");
+        }
+
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
         body+=settings_choice("settings_map_unit_icons","map-unit-icons",{"original","hd"},settings::hd_map_unit_icons()?"hd":"original",!presentation::image_mode.enabled() || !presentation::image_mode.requested());
         body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
@@ -5208,7 +5214,7 @@ void choose(const std::string& id) {
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
         if(id.starts_with("fps:"))settings::set_show_fps(id=="fps:on");
         if(id.starts_with("refresh:"))settings::set_refresh_rate(settings::refresh_rate_from(id.substr(8)));
-        if(id.starts_with("speed:"))settings::set_game_speed_double(id=="speed:2x");
+        if(id.starts_with("speed:"))settings::set_game_speed_level(unsigned(id[6]-'0'));
         if(id.starts_with("dialogue-font:"))settings::set_dialogue_font_size(unsigned(std::stoul(id.substr(14))));
         if(id.starts_with("dialogue-hints:"))settings::set_dialogue_hints_always(id=="dialogue-hints:always");
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
@@ -5409,7 +5415,7 @@ void speed_sync() {
     const double now=system.GetElapsedTime();
     if(speed_toast_pending){speed_toast_pending=false;speed_toast_until=now+1.5;}
     const bool shown=now<speed_toast_until && !touch_active();
-    const std::string text=shown?localization::catalog().ui(settings::game_speed_double()?"speed_notice_on":"speed_notice_off"):std::string();
+    const std::string text=shown?localization::catalog().ui("speed_notice_"+std::to_string(settings::game_speed_level())+"x"):std::string();
     const std::string stamp=text+frame_stamp();
     if(stamp!=speed_stamp){document_close(speed_doc);speed_stamp=stamp;if(!text.empty())speed_doc=document("<div id='speed-toast'>"+escape(text)+"</div>",false,true);}
     if(speed_doc)speed_doc->PullToFront();
@@ -5594,7 +5600,7 @@ void touch_sync() {
     const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
     std::string stamp=frame_stamp()+"/"+std::to_string(mm)+"/"+std::to_string(int(touch_scene_id))+"/"+localization::catalog().locale+"/"+
         std::to_string(touch_fingers.buttons())+"/"+std::to_string(settings::touch_opacity())+"/"+std::to_string(touch_controls_revision)+"/"+
-        std::to_string(settings::game_speed_double());
+        std::to_string(settings::game_speed_level());
     for(size_t i=0;i<touch_pad::slot_count;++i)stamp+=touch_fingers.pressed(touch_pad::Slot(i))?'1':'0';
     if(stick)stamp+="/"+std::to_string(int(stick->cx))+","+std::to_string(int(stick->cy))+","+std::to_string(int(stick->x/mm))+","+std::to_string(int(stick->y/mm));
     if(stamp==touch_stamp){if(touch_doc)touch_doc->PullToFront();return;}
@@ -5623,7 +5629,8 @@ void touch_sync() {
         if(!action.filled())continue;
         const auto& place=layout.slots[i];
         const float w=place.round?2*place.r:place.w,h=place.round?2*place.r:place.h;
-        std::string text=label(std::string(action.label));
+        // The speed button names the speed now (1×, 2×, ...).
+        std::string text=action.command=="speed-toggle"?std::to_string(settings::game_speed_level())+"×":label(std::string(action.label));
         if(action.command=="battle-animation")text+=" "+label(battle_request.value("animation",true)?"battle_on":"battle_off");
         const float size=touch_label_size(text,w*(place.round?.76f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?3.8f:2.8f)*mm:std::min(2.4f*mm,h*.5f));
         const auto lines=1+std::count(text.begin(),text.end(),'\n');
@@ -5634,7 +5641,7 @@ void touch_sync() {
         }
         body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
               face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+
-              // The 2x switch is amber while it is on.
+              // The speed button is amber while above 1x.
               (action.command=="speed-toggle" && settings::game_speed_double()?"background-color:#d89a1ec0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+caption+"</div>";
     }
     body+="</div>";
