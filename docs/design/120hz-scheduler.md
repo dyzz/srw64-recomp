@@ -144,7 +144,19 @@ Linux 包（Debian 上原生编译），在 Deck 上与玩家自己的安装并�
 | 3x | 89.6 | 89.6 | 88.2 |
 | 4x | 112.1 | 83.9（按额度四帧三帧；按时间判断时 57.8） | 70.3 |
 
-各档 RT64 都拿到了帧率，没有音频恢复。音频队列 37–63 ms，60 Hz 下 37–41 ms，120 Hz 下偶尔更长，待查。
+各档 RT64 都拿到了帧率，没有音频恢复。
+
+### 5.5 音频队列
+
+Deck、Seeker 上曾看到 120 Hz 时音频队列长 20–40 ms。那是 `audio-live.json` 的单个瞬时值：它记的是某一次入队刚完成时的设备队列，随设备取数的相位锯齿式变化，不能拿来比较。调试状态加了 `audio_stats`（入队时已排队的帧、游戏询问剩余量时的队列与得到的回答、两次入队的间隔分布），取 15 秒平均：
+
+| 平台、情况 | 入队时已排队 | 询问时队列 | 告诉游戏 | 入队间隔落在 15.5–18 ms |
+| --- | --- | --- | --- | --- |
+| Mac 60 Hz／120 Hz，1x | 14.1／13.9 ms | 30.7／30.5 ms | 13.5／13.4 ms | 50%／86% |
+| Seeker 60 Hz／120 Hz，1x（各两次） | 21.3–21.5／21.5–21.6 ms | 37.8–38.0／38.0–38.1 ms | 14.8–14.9／14.9–15.0 ms | 55%／92% |
+| Seeker 60 Hz 2x／120 Hz 2x／120 Hz 4x | 21.6／21.6／21.6 ms | 38.2／38.1／38.0 ms | 15.0／15.0／14.9 ms | 59%／89%／91% |
+
+两种频率下队列一样深，每秒都是 60 次合成；120 Hz 下合成的间隔反而更均匀（音频线程只在偶数拍听回扫，抖动小）。
 
 ## 6. 开关与调试状态
 
@@ -158,9 +170,9 @@ Linux 包（Debian 上原生编译），在 Deck 上与玩家自己的安装并�
 | `SRW64_PRESENT_PACE=0` | 关掉呈现降频 |
 | `SRW64_RT64_RATE_HINT=0` | 不把逻辑步频交给 RT64，让它按 VI 历史猜（对照） |
 
-调试状态：`sched`（`factor`、`retraces`、`audio_skipped`、`interval`、`rendered`、`sync_mode`、`logic_ticks`、`picture_ticks`、`latch_slow_spells`）、`rt64_original_rate`、`lists_without_rate`（RT64 没有帧率时送出的显示列表数）、`present_gaps`（呈现间隔分布）、`present_steps`（相邻呈现隔几个 workload）。安卓用 `attach.py --env`，桌面 `--play` 启动器已放行这些变量。
+调试状态：`sched`（`factor`、`retraces`、`audio_skipped`、`interval`、`rendered`、`sync_mode`、`logic_ticks`、`picture_ticks`、`latch_slow_spells`）、`rt64_original_rate`、`lists_without_rate`（RT64 没有帧率时送出的显示列表数）、`audio_stats`（§5.5）、`present_gaps`（呈现间隔分布）、`present_steps`（相邻呈现隔几个 workload）。安卓用 `attach.py --env`，桌面 `--play` 启动器已放行这些变量。
 
 ## 7. 没做
 
 - 正式做法应由宿主把 VI 频率告诉 RT64，而不是读环境变量。
-- Deck、Seeker 上 120 Hz 时音频队列偶尔比 60 Hz 长 20 ms 左右（没有断音），原因未查。
+- Deck 上没用 `audio_stats` 复测音频队列（Mac 与 Seeker 已证实 60／120 Hz 相同，见 §5.5）。
