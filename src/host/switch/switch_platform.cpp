@@ -5,7 +5,10 @@
 #include <cstdio>
 #include <malloc.h>
 #include <cstring>
+#include <chrono>
+#include <condition_variable>
 #include <mutex>
+#include <thread>
 #include <string>
 #include <sys/iosupport.h>
 #include <sys/socket.h>
@@ -72,21 +75,38 @@ void set_native_thread_priority(ThreadPriority) {}
 // stdout and stderr (console_log.hpp): one device for both that keeps the last 512 KiB in
 // memory (the debug interface serves it as console.log: Horizon will not open or even stat a
 // file another handle is writing), appends to the run's console.log once it is known, and
-// sends to nxlink when the NRO was pushed with it.
+// sends to nxlink when the NRO was pushed with it. The file is written by a thread of its own
+// a quarter second at a time: a write to the SD card took up to most of a second now and
+// then, and the thread that printed (the render thread's SRW64_PERF, the UI's) waited it out.
 static int nxlink_socket = -1;
 bool srw64_switch_nxlink() { return nxlink_socket >= 0; }
 namespace {
 std::mutex log_mutex;
-std::string log_tail;
+std::condition_variable log_wake;
+std::string log_tail, log_pending;
 int log_file = -1;
+bool log_writer = false;
 constexpr size_t log_keep = 512 * 1024;
 ssize_t log_write(struct _reent*, void*, const char* data, size_t size) {
     std::lock_guard lock(log_mutex);
     log_tail.append(data, size);
     if (log_tail.size() > log_keep + log_keep / 4) log_tail.erase(0, log_tail.size() - log_keep);
-    if (log_file >= 0) (void)!::write(log_file, data, size);
+    if (log_file >= 0 && log_pending.size() < log_keep) log_pending.append(data, size);
     if (nxlink_socket >= 0) ::send(nxlink_socket, data, size, MSG_DONTWAIT);
     return ssize_t(size);
+}
+void write_log_file() {
+    std::unique_lock lock(log_mutex);
+    for (;;) {
+        log_wake.wait_for(lock, std::chrono::milliseconds(250));
+        if (log_pending.empty() || log_file < 0) continue;
+        std::string chunk;
+        chunk.swap(log_pending);
+        const int file = log_file;
+        lock.unlock();
+        (void)!::write(file, chunk.data(), chunk.size());
+        lock.lock();
+    }
 }
 const devoptab_t log_device = {.name = "log", .write_r = log_write};
 void install_log() {
@@ -99,6 +119,10 @@ void srw64_switch_log_to(const char* path) {
     if (log_file >= 0) ::close(log_file);
     log_file = ::open(path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (log_file >= 0) (void)!::write(log_file, log_tail.data(), log_tail.size());
+    if (!log_writer) {
+        log_writer = true;
+        std::thread(write_log_file).detach();   // lives as long as the program
+    }
 }
 std::string srw64_switch_log_tail() {
     std::lock_guard lock(log_mutex);
