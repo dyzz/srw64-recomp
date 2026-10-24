@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <map>
 #include <mutex>
+#include <set>
 #include <stdexcept>
 #include <tuple>
 #include <vector>
@@ -19,11 +20,19 @@ std::vector<FontSource> packaged(const std::filesystem::path& dir,const std::str
     if(locale=="en")names={"HarmonyOS_Sans_Condensed.ttf","HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"};
     else names={"HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"};
     std::vector<FontSource> sources;
+    // Each file is looked for once: every text layout asks for the fonts, and on the Switch a
+    // lookup is a request to the SD card's file system (a stack sampled in the world map's
+    // dialogue was in one).
+    static std::mutex checked_mutex;
+    static std::set<std::filesystem::path> checked;
     for(const auto& name:names) {
         const auto path=dir/name;
+        std::lock_guard lock(checked_mutex);
+        if(checked.contains(path)){sources.push_back({path,0,name.starts_with("SRW64")?0:weight});continue;}
         if(!std::filesystem::is_regular_file(path))
             throw std::runtime_error("Missing font "+path.string()+": run tools/content/prepare_fonts.py "
                 "(HarmonyOS Sans 2.040 comes from https://developer.huawei.com/consumer/cn/design/resource/)");
+        checked.insert(path);
         // The symbol and prompt fonts have one weight.
         sources.push_back({path,0,name.starts_with("SRW64")?0:weight});
     }

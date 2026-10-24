@@ -167,6 +167,7 @@ void frame_done() {
 #include <switch.h>
 
 uint64_t srw64_current_vi();
+extern "C" void srw64_vi_report(char* out, size_t size);   // prepare_switch_runtime.py, events.cpp
 
 namespace srw64::stall {
 namespace {
@@ -181,8 +182,10 @@ void watch() {
         if (f != last_frames) { last_frames = f; last_vi = vi; since = now; continue; }
         const double seconds = std::chrono::duration<double>(now - since).count();
         if (f > 0 && seconds >= 10 && vi >= last_vi + 300) {
-            std::fprintf(stderr, "SRW64_STALL vi=%llu frames=%llu stalled=%.1fs: breaking for creport\n",
-                         (unsigned long long)vi, (unsigned long long)f, seconds);
+            char report[256];
+            srw64_vi_report(report, sizeof report);
+            std::fprintf(stderr, "SRW64_STALL vi=%llu frames=%llu stalled=%.1fs %s: breaking for creport\n",
+                         (unsigned long long)vi, (unsigned long long)f, seconds, report);
             std::fflush(stderr);
             svcBreak(BreakReason_Panic, 0, 0);
         }

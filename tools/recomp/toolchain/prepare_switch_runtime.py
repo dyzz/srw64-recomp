@@ -374,6 +374,34 @@ def adapt_error_handling(source: str) -> str:
 
 
 def adapt_events(source: str) -> str:
+    # A VI state whose retrace count is 0 (one the game had not set yet, swapped in) left the
+    # countdown at 0; the next VI took it to -1, it never met 0 again, and no VI message was
+    # sent for the rest of the run while the VI went on: the hang that stayed after the lock
+    # (on the Switch, and on the PS Vita, psv-port.md "the second kind").
+    source = replace_once(source, """            if (remaining_retraces == 0) {""", """            if (remaining_retraces <= 0) {""")
+    source = replace_once(source, """                remaining_retraces = cur_state->retrace_count;""",
+                          """                remaining_retraces = cur_state->retrace_count > 0 ? cur_state->retrace_count : 1;""")
+    # The VI thread's state for the stall report (stall_watchdog.cpp): VIs looped and sent,
+    # and the countdown with the current and next states' queue and retrace count.
+    source = replace_once(source, "    int remaining_retraces = 1;\n", "    remaining_retraces = 1;\n")
+    source = replace_once(source, "        ultramodern::sleep_until(next);\n", "        ultramodern::sleep_until(next);\n        ++srw64_vi_loops;\n")
+    source = replace_once(source, """                    ultramodern::enqueue_external_message_src(cur_state->mq, cur_state->msg, false, ultramodern::EventMessageSource::Vi);
+""", """                    ultramodern::enqueue_external_message_src(cur_state->mq, cur_state->msg, false, ultramodern::EventMessageSource::Vi);
+                    ++srw64_vi_sent;
+""")
+    source = replace_once(source, "void vi_thread_func() {\n", """static int remaining_retraces = 1;
+static std::atomic<uint64_t> srw64_vi_loops{0}, srw64_vi_sent{0};
+extern "C" void srw64_vi_report(char* out, size_t size) {
+    std::lock_guard lock{ events_context.message_mutex };
+    snprintf(out, size, "loops=%llu sent=%llu remaining=%d cur_mq=%08X cur_retraces=%d next_mq=%08X next_retraces=%d started=%d",
+             (unsigned long long)srw64_vi_loops.load(), (unsigned long long)srw64_vi_sent.load(), remaining_retraces,
+             uint32_t(events_context.vi.get_cur_state()->mq), events_context.vi.get_cur_state()->retrace_count,
+             uint32_t(events_context.vi.get_next_state()->mq), events_context.vi.get_next_state()->retrace_count,
+             int(ultramodern::is_game_started()));
+}
+
+void vi_thread_func() {
+""")
     return replace_once(source, """        // Update VI registers and swap VI modes.
         events_context.vi.update_vi();
 """, """        // Update VI registers and swap VI modes, under the lock the setters take.
