@@ -389,6 +389,7 @@ button.lk-go {background-color: #ffd75e; color: #0b1421; border-color: #ffd75e;}
 .set-path {margin:2dp 0 0; font-size:13dp; color:#7f8fa3;}
 .set-message {margin:10dp 12dp; color:#9fe0ff;}
 .set-note {font-size:13dp; color:#7f8fa3;}
+.set-body p.set-warn {color:#ffd75e;}
 .set-line {display:flex; align-items:center; gap:18dp;} .set-line .set-name {flex:1 1 0; min-width:0;}
 .set-seg {display:flex; flex-shrink:0; border:2dp #3fd0ff; background-color:#0c122ceb;}
 .set-seg button {margin:0; padding:7dp 16dp; border:0; border-radius:0; font-size:14dp; font-weight:bold; white-space:nowrap; color:#e8eefc; background-color:transparent;}
@@ -871,10 +872,12 @@ struct Actions : Rml::EventListener {
     void ProcessEvent(Rml::Event& event) override {
         if(event.GetType()=="change") {
             if(event.GetTargetElement()->GetId()=="touch-opacity") {
-                const auto value=unsigned(std::clamp(int(std::lround(event.GetParameter<float>("value",100))),25,100));
+                const auto value=unsigned(std::clamp(int(std::lround(event.GetParameter<float>("value",100))),0,100));
                 settings::set_touch_opacity(value);
-                if(auto* doc=event.GetTargetElement()->GetOwnerDocument())
+                if(auto* doc=event.GetTargetElement()->GetOwnerDocument()) {
                     if(auto* label=doc->GetElementById("touch-opacity-value"))label->SetInnerRML(std::to_string(value)+"%");
+                    if(auto* warn=doc->GetElementById("touch-opacity-hidden"))warn->SetProperty("display",value==0?"block":"none");
+                }
             }
             return;
         }
@@ -1353,7 +1356,10 @@ std::string controls_page() {
     if(touch_supported()) {
         body+=settings_row("settings_touch_opacity",
             "<input id='touch-opacity' type='range' min='0' max='100' step='1' value='"+std::to_string(settings::touch_opacity())+"'/>"
-            "<span id='touch-opacity-value'>"+std::to_string(settings::touch_opacity())+"%</span>",{},"settings_touch_opacity_note");
+            "<span id='touch-opacity-value'>"+std::to_string(settings::touch_opacity())+"%</span>",
+            // At 0% the controls still work but nothing shows where they are.
+            "<p id='touch-opacity-hidden' class='set-warn' style='display:"+std::string(settings::touch_opacity()==0?"block":"none")+";'>"+
+                label("settings_touch_opacity_hidden")+"</p>","settings_touch_opacity_note");
     }
     const auto pad_name=srw64_pad_name();
     auto found=pad_name.empty()?label("controls_no_pad"):label("controls_detected");

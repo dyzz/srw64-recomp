@@ -842,6 +842,7 @@
     "speed_notice_off": "2 倍速：オフ",
     "settings_touch_opacity": "ボタン不透明度",
     "settings_touch_opacity_note": "低いほど透明になります。方向キー・ボタン・文字をまとめて調整します。",
+    "settings_touch_opacity_hidden": "0% ではボタンが見えなくなりますが、操作はできます。",
     "settings_save_export_note_android": "セーブフォルダーがないとき： Android 10 以降は権限不要で Documents/Marchwind64/export に zip で保存、 Android 9 は保存先を選択します。 スロット1・2と中断データを含み、 拡張枠と自動セーブは含みません。",
     "settings_save_export_choose": "保存中…（Android 9 はシステム画面で保存先を選んでください）",
     "settings_save_export_saved": "保存しました：{path}",
