@@ -331,13 +331,14 @@ def main() -> int:
                       "                    if (RenderHookPresented *presentedHook = GetRenderHookPresented()) {\n"
                       "                        presentedHook(present.workloadId);\n"
                       "                    }\n")
-    # Presents that come faster than the display refreshes (the 120 Hz scheduler's 4x,
-    # src/host/sched_rate.hpp: a new picture every 120th of a second) are skipped while the
-    # last one shown is under three quarters of a refresh old: on a 60 Hz display every other
-    # picture, on a 120 Hz one none. No sleeping: a sleep to the next refresh lands the
-    # present half a refresh late on Metal (docs/design/60fps.md §9, 50 instead of 60).
-    # Interpolation keeps its own pacing. Off with SRW64_VI_RATE=60 (the original's 60 Hz, which
-    # never presents faster than a display) or SRW64_PRESENT_PACE=0 (comparisons).
+    # Presents that come faster than the display refreshes (4x at 120 Hz, src/host/sched_rate.hpp:
+    # a new picture every 120th of a second) are thinned to the display's rate, evenly: each
+    # picture earns display/original of a present, and one goes once a whole one is earned,
+    # every other on a 60 Hz display, three of four at 90 Hz (the Deck), all at 144. A time
+    # rule (skip under 0.75 of a refresh since the last) gave only 58 at 90 Hz, its threshold
+    # being the pictures' own spacing; sleeping to the next refresh lands half a refresh late on
+    # Metal (docs/design/60fps.md §9). Interpolation keeps its own pacing. Off with
+    # SRW64_VI_RATE=60 (never faster than a display) or SRW64_PRESENT_PACE=0 (comparisons).
     present_pace = [("                if (skipPresent) {\n"
                      "                    skipInterpolation();\n",
                      "                static const bool presentPace = [] {\n"
@@ -345,7 +346,8 @@ def main() -> int:
                      "                    const char* pace = std::getenv(\"SRW64_PRESENT_PACE\");\n"
                      "                    return !(vi && std::string_view(vi) == \"60\") && !(pace && std::string_view(pace) == \"0\");\n"
                      "                }();\n"
-                     "                if (!skipPresent && presentPace && (presentTimestamp != Timestamp())) {\n"
+                     "                static float presentCredit = 1.0f;\n"
+                     "                if (!skipPresent && presentPace) {\n"
                      "                    uint32_t displayRate, originalRate, intendedRate;\n"
                      "                    {\n"
                      "                        std::scoped_lock<std::mutex> configurationLock(ext.sharedResources->configurationMutex);\n"
@@ -354,15 +356,23 @@ def main() -> int:
                      "                        intendedRate = ext.sharedResources->targetRate;\n"
                      "                    }\n"
                      "                    const bool interpolating = (intendedRate > 0) && (intendedRate > originalRate);\n"
-                     "                    if (!interpolating && (displayRate > 0) && (originalRate > displayRate) &&\n"
-                     "                        (Timer::current() < presentTimestamp + std::chrono::nanoseconds(750'000'000 / displayRate))) {\n"
-                     "                        skipPresent = true;\n"
+                     "                    if (!interpolating && (displayRate > 0) && (originalRate > displayRate)) {\n"
+                     "                        presentCredit = std::min(presentCredit + float(displayRate) / float(originalRate), 1.5f);\n"
+                     "                        if (presentCredit < 1.0f) {\n"
+                     "                            skipPresent = true;\n"
+                     "                        }\n"
+                     "                        else {\n"
+                     "                            presentCredit -= 1.0f;\n"
+                     "                        }\n"
+                     "                    }\n"
+                     "                    else {\n"
+                     "                        presentCredit = 1.0f;\n"
                      "                    }\n"
                      "                }\n\n"
                      "                if (skipPresent) {\n"
                      "                    skipInterpolation();\n"),
                     ('#include "rt64_present_queue.h"\n',
-                     '#include "rt64_present_queue.h"\n\n#include <cstdlib>\n#include <string_view>\n')]
+                     '#include "rt64_present_queue.h"\n\n#include <algorithm>\n#include <cstdlib>\n#include <string_view>\n')]
     records += [patch(checkout, "src/rhi/rt64_render_hooks.h",
                       "    RenderHookInit *GetRenderHookInit();",
                       "    void SetRenderHookWorkloadId(unsigned long long id);\n"
