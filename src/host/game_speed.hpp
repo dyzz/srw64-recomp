@@ -86,6 +86,9 @@ inline uint32_t fast_interval(const uint8_t* ram,unsigned speed) {
     return turn%3==2 ? 2 : 1;
 }
 
+// Logic steps a second now: 30, or 30 times the speed while hurried.
+inline unsigned step_rate(){return running.load() ? 30*std::min(level.load(),top_level()) : 30;}
+
 // Game thread, every VI (the frame boundary). Writes the interval once the game has set
 // it, so the boot runs as it always did.
 inline void frame(uint8_t* ram) {

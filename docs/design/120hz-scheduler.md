@@ -118,7 +118,18 @@
 | 120 Hz 2x（HD / 原版＋关 MSAA） | 54 / 48.5 |
 | 120 Hz 4x | 约 49–51 |
 
-卡住 Seeker 的不是画质：每帧比一个 60 Hz VI 稍长，60 Hz 下要等两个 VI；120 Hz 下三拍（25 ms）就能显示。120 Hz 下插帧（跟 120 Hz 屏）呈现 44，比 60 Hz 的 54 差，原因未查。
+卡住 Seeker 的不是画质：每帧比一个 60 Hz VI 稍长，60 Hz 下要等两个 VI；120 Hz 下三拍（25 ms）就能显示。
+
+插帧（跟 120 Hz 屏）：RT64 按 VI 历史猜游戏帧率，只看最近 3 个画面间隔、必须全相等，否则给 0、不插帧（`rt64_vi.h`）。120 Hz 下 Seeker 的 GPU 完成时刻落在 8 ms 拍边界两侧，1x 的间隔常是 3、5 拍，于是 70% 的帧没有帧率（60 Hz 下也有 53%）。现在宿主在每个显示列表前把逻辑步频（`game_speed::step_rate()`：30，加速时 30×档位）用 `State::setRefreshRate` 交给 RT64（`graphics.cpp` `send_dl`；RT64 每个 workload 后清掉）：
+
+| Seeker，插帧跟屏幕 | 无帧率的帧 | 呈现/秒 | 游戏帧/秒 |
+| --- | --- | --- | --- |
+| 60 Hz 1x | 53% | 55.9 | 29.4 |
+| 120 Hz 1x，不给帧率 | 70% | 47.3 | 29.8 |
+| **120 Hz 1x，给帧率** | 0 | **81.1** | 29.9 |
+| 120 Hz 2x，不给／给帧率 | 100%／0 | 57.3／70.2 | 53.8／51.4 |
+
+Mac 上 1x 插帧仍是 60 次呈现、4x 不受影响。慢设备上 2x 插帧会多花一点 GPU（游戏帧 53.8→51.4，在 Seeker 本身的波动范围内）。
 
 ## 6. 开关与调试状态
 
@@ -130,12 +141,12 @@
 | `SRW64_VI_LATCH=0` | 关掉 2x 换画面节拍 |
 | `SRW64_RT64_BASE=60` | RT64 基准帧率退回 60（对照） |
 | `SRW64_PRESENT_PACE=0` | 关掉呈现降频 |
+| `SRW64_RT64_RATE_HINT=0` | 不把逻辑步频交给 RT64，让它按 VI 历史猜（对照） |
 
-调试状态：`sched`（`factor`、`retraces`、`audio_skipped`、`interval`、`rendered`、`sync_mode`、`logic_ticks`、`picture_ticks`、`latch_slow_spells`）、`rt64_original_rate`、`present_gaps`（呈现间隔分布）、`present_steps`（相邻呈现隔几个 workload）。安卓用 `attach.py --env`，桌面 `--play` 启动器已放行这些变量。
+调试状态：`sched`（`factor`、`retraces`、`audio_skipped`、`interval`、`rendered`、`sync_mode`、`logic_ticks`、`picture_ticks`、`latch_slow_spells`）、`rt64_original_rate`、`lists_without_rate`（RT64 没有帧率时送出的显示列表数）、`present_gaps`（呈现间隔分布）、`present_steps`（相邻呈现隔几个 workload）。安卓用 `attach.py --env`，桌面 `--play` 启动器已放行这些变量。
 
 ## 7. 没做
 
 - 正式做法应由宿主把 VI 频率告诉 RT64，而不是读环境变量。
 - 设置项与显示文字；慢设备上 4x 不能标成"4 倍"。
 - Linux／Deck 没构建、没实测（这次替换了运行库的 `events.cpp`）；Deck 90 Hz 屏上 0.75 周期的降频阈值正好撞上 120 Hz 帧间隔。
-- Seeker 上 120 Hz 插帧变差。

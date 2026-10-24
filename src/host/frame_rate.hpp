@@ -36,6 +36,8 @@ inline void present_sent() {
 }
 // RT64's idea of the game's own frame rate (its VI history), for the 120 Hz scheduler.
 inline std::atomic<uint32_t> original_rate{0};
+// Display lists sent while RT64 had no rate for the last workload (it does not interpolate).
+inline std::atomic<uint64_t> lists_without_rate{0};
 // Graphics thread, once per display list.
 inline void list_sent() {
     static int64_t last = 0;

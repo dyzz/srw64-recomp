@@ -10,6 +10,7 @@
 #include "steam_deck.hpp"
 #include "game_frame.hpp"
 #include "frame_rate.hpp"
+#include "game_speed.hpp"
 #include "wide_map.hpp"
 #include "native_marker.hpp"
 #include "native_map.hpp"
@@ -689,7 +690,19 @@ public:
 #endif
     void send_dl(const OSTask* task) override {
         srw64::frame_rate::list_sent();
-        srw64::frame_rate::original_rate.store(app->sharedQueueResources->viOriginalRate, std::memory_order_relaxed);
+        const uint32_t original_rate = app->sharedQueueResources->viOriginalRate;
+        srw64::frame_rate::original_rate.store(original_rate, std::memory_order_relaxed);
+        if (!original_rate) srw64::frame_rate::lists_without_rate.fetch_add(1, std::memory_order_relaxed);
+        // RT64 guesses the game's frame rate from its VI history, three equal gaps between
+        // pictures or none; at 120 Hz a GPU finishing either side of an 8 ms tick rarely gives
+        // three (the Seeker: half the gaps 3 or 5 ticks at 1x), and without a rate it does not
+        // interpolate. The step rate is known here (game_speed.hpp); RT64 clears it after each
+        // workload. SRW64_RT64_RATE_HINT=0 leaves the guess to RT64 for comparison.
+        static const bool rate_hint = [] {
+            const char* hint = std::getenv("SRW64_RT64_RATE_HINT");
+            return !(hint && std::string(hint) == "0");
+        }();
+        if (rate_hint && srw64::sched_rate::factor() == 2) app->state->setRefreshRate(uint16_t(srw64::game_speed::step_rate()));
 #ifdef __ANDROID__
         const auto t0 = Timing::clock::now();
         if (timing.last != Timing::clock::time_point{}) {
