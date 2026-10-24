@@ -105,7 +105,7 @@ const char* refresh_rate_name(RefreshRate r){return r==RefreshRate::Original?"or
 RefreshRate refresh_rate_from(const std::string& n){return n=="original"?RefreshRate::Original:n=="60"?RefreshRate::Sixty:RefreshRate::Display;}
 bool hints_always=false; bool dialogue_hints_always(){return hints_always;} void set_dialogue_hints_always(bool v){hints_always=v;}
 unsigned touch_alpha=100; unsigned touch_opacity(){return touch_alpha;}
-void set_touch_opacity(unsigned v){touch_alpha=std::clamp(v,25u,100u);}
+void set_touch_opacity(unsigned v){touch_alpha=std::clamp(v,0u,100u);}
 unsigned dialogue_size=13; unsigned dialogue_font_size(){return dialogue_size;}
 void set_dialogue_font_size(unsigned v,bool){dialogue_size=std::clamp(v,10u,18u);}
 // On, so the About page is audited with its longest row: the address and the run directory.

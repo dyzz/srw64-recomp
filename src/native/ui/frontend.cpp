@@ -1352,7 +1352,7 @@ std::string controls_page() {
     std::string body;
     if(touch_supported()) {
         body+=settings_row("settings_touch_opacity",
-            "<input id='touch-opacity' type='range' min='25' max='100' step='1' value='"+std::to_string(settings::touch_opacity())+"'/>"
+            "<input id='touch-opacity' type='range' min='0' max='100' step='1' value='"+std::to_string(settings::touch_opacity())+"'/>"
             "<span id='touch-opacity-value'>"+std::to_string(settings::touch_opacity())+"%</span>",{},"settings_touch_opacity_note");
     }
     const auto pad_name=srw64_pad_name();

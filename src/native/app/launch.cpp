@@ -174,7 +174,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
             aspect=saved.value("aspect","auto");
             map_unit_icons=saved.value("map_unit_icons","hd");
             if(saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())
-                touch_opacity=std::clamp(saved["touch_opacity"].get<unsigned>(),25u,100u);
+                touch_opacity=std::clamp(saved["touch_opacity"].get<unsigned>(),0u,100u);
             if(saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())
                 dialogue_font_size=std::clamp(saved["dialogue_font_size"].get<unsigned>(),10u,18u);
         }

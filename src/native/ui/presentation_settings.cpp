@@ -193,7 +193,7 @@ void save_now() {
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
 unsigned touch_opacity(){return touch_alpha.load();}
-void set_touch_opacity(unsigned percent){touch_alpha=std::clamp(percent,25u,100u);save_now();}
+void set_touch_opacity(unsigned percent){touch_alpha=std::clamp(percent,0u,100u);save_now();}
 unsigned dialogue_font_size(){return dialogue_size.load();}
 void set_dialogue_font_size(unsigned size,bool remember) {
     if(dialogue_size.exchange(std::clamp(size,10u,18u))!=std::clamp(size,10u,18u) && remember)
@@ -350,7 +350,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())
             dialogue_size=std::clamp(saved["dialogue_font_size"].get<unsigned>(),10u,18u);
         if(saved.is_object() && saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())
-            touch_alpha=std::clamp(saved["touch_opacity"].get<unsigned>(),25u,100u);
+            touch_alpha=std::clamp(saved["touch_opacity"].get<unsigned>(),0u,100u);
         if(saved.is_object()) {
             std::lock_guard lock(look_mutex);
             if(saved.contains("bezel") && saved["bezel"].is_string())bezel_path=saved["bezel"].get<std::string>();
