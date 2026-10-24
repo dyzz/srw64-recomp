@@ -2,15 +2,16 @@
 """Attach to the game on a Switch through its debug interface (docs/design/switch-port.md,
 "The debug interface on the LAN").
 
-The game opens the interface when /switch/Marchwind64/debug exists on the SD card (an empty
-file; package.py --debug puts it there). On the Switch it listens on every address (the
-token keeps others out) and prints its debug.json as an SRW64_DEBUG_ENDPOINT line, which
-nxlink brings back: the SD card is out of reach while the game runs. This reads that line
-from the nxlink log, writes build/recomp/debug/switch-<time>/debug.json (the Switch's
-address, the game's port and token) in the main checkout and makes it the current run, so
-srw64ctl.py, Session.attach() and the srw64_* MCP tools reach the Switch.
+The game opens the interface when /switch/Marchwind64/debug exists on the SD card;
+package.py --upload IP --debug puts it there with a token, kept here in
+build/recomp/switch-package/debug-token. On the Switch the game listens on every address
+at port 46464 (the token keeps others out), so this reaches it however it was started, from
+hbmenu too. Without the token file it reads the endpoint from the nxlink log instead (the
+SRW64_DEBUG_ENDPOINT line). It writes build/recomp/debug/switch-<time>/debug.json in the
+main checkout and makes it the current run, so srw64ctl.py, Session.attach() and the
+srw64_* MCP tools reach the Switch; the run's console.log comes over the same connection.
 
-  tools/release/switch/attach.py --host 192.168.1.236 [--log build/recomp/switch-build/nxlink.log]
+  tools/release/switch/attach.py --host 192.168.1.236
 """
 from __future__ import annotations
 
@@ -53,7 +54,11 @@ def main() -> int:
     parser.add_argument("--timeout", type=float, default=300, help="seconds to wait for the endpoint line")
     args = parser.parse_args()
     deadline = time.monotonic() + args.timeout
-    while not (remote := endpoint_from(args.log)):
+    token_file = ROOT / "build/recomp/switch-package/debug-token"
+    if token_file.exists():
+        remote = {"schema": "srw64.debug-endpoint.v2", "transport": "tcp", "port": 46464,
+                  "token": token_file.read_text().strip(), "pid": -1}
+    while not (token_file.exists() or (remote := endpoint_from(args.log))):
         if time.monotonic() > deadline:
             raise SystemExit(f"no SRW64_DEBUG_ENDPOINT line in {args.log}: is /switch/Marchwind64/debug on the SD card?")
         time.sleep(2)

@@ -18,7 +18,9 @@ from __future__ import annotations
 import argparse
 import ftplib
 import hashlib
+import io
 import json
+import secrets
 from pathlib import Path
 import shutil
 
@@ -26,6 +28,7 @@ ROOT = Path(__file__).resolve().parents[3]
 BUILD = ROOT / 'build/recomp/switch-build'
 PACKAGE = ROOT / 'build/recomp/switch-package/Marchwind64'
 REMOTE = '/switch/Marchwind64'
+TOKEN = PACKAGE.parent / 'debug-token'
 
 
 def stage() -> None:
@@ -99,7 +102,12 @@ def upload(host: str, debug: bool) -> None:
         sent += 1
         print('rom.z64 sent')
     if debug:
-        ftp.storbinary(f'STOR {REMOTE}/debug', __import__('io').BytesIO(b''))
+        # The debug file holds the token the game then uses, so attach.py reaches it at its
+        # fixed port without the game's debug.json (from hbmenu there is no nxlink log).
+        token = secrets.token_hex(32)
+        ftp.storbinary(f'STOR {REMOTE}/debug', io.BytesIO(token.encode() + b'\n'))
+        TOKEN.write_text(token + '\n')
+        TOKEN.chmod(0o600)
         print('debug interface on')
     ftp.quit()
     print(f'{sent} files sent to {host}:{REMOTE}')
