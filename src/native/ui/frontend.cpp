@@ -5738,7 +5738,7 @@ void initialize() {
     context=Rml::CreateContext("game-ui",{pixels_w,pixels_h},nullptr,&input);
     if(!context)throw std::runtime_error("Cannot create shared UI context");input.bind(*context);
     name_page=std::make_unique<NamePage>(*context,NameActions{names::select,names::choose,names::review,
-        [](const std::string& path,int dp){return image(path,dp_pixels(dp));}});
+        [](const std::string& path,int dp){return image(path,dp_pixels(dp));},fit_lines});
     std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()},{"english_font",english_font_family()}}).dump(2)<<'\n';
 }
 bool held() {
@@ -5972,7 +5972,7 @@ void sync() {
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
     if(title_row::take_chosen() && !settings_open)choose("title-return-ask");
     parts.mark("input");
-    image_drain();prefetch_map_art();
+    image_drain();parts.mark("drain");prefetch_map_art();
     parts.mark("art");
     link_sync();battle_sync();parts.mark("battle");intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();parts.mark("pages");
     title_sync();mini_sync();home_sync();bezel_sync();parts.mark("title");

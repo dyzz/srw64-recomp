@@ -118,8 +118,9 @@ void set_battle_ui(BattleUi ui) {
 }
 UiSize ui_size() {
     const int choice=size_choice.load();
-#ifdef __ANDROID__
-    // A phone or handheld screen, like the Deck's (docs/design/android-port.md).
+#if defined(__ANDROID__) || defined(__SWITCH__)
+    // A phone or handheld screen, like the Deck's (docs/design/android-port.md); the Switch
+    // too, docked or not (switch-port.md).
     return choice>=0?UiSize(choice):UiSize::Largest;
 #else
     return choice>=0?UiSize(choice):on_steam_deck()?UiSize::Largest:UiSize::Standard;

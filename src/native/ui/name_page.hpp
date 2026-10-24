@@ -13,6 +13,8 @@ struct NameActions {
     std::function<void(uint64_t,bool)> review;
     // An image file as an RmlUi resource, resampled for the given width in dp.
     std::function<std::string(const std::string&,int)> image;
+    // Shrinks the page's one-line texts marked 'fit' that run past their box (frontend.cpp fit_lines).
+    std::function<void(Rml::ElementDocument*)> fit;
 };
 // The protagonist selection and the review of both names (docs/native/native-name-entry.md).
 // Consumes an immutable Request whose names are already in the reading language, and
