@@ -312,7 +312,7 @@ void Renderer::upload(const Frame::Texture& t) {
     struct Count {
         std::chrono::steady_clock::time_point start; size_t bytes;
         ~Count() { auto& s = gl_stats(); ++s.uploads; s.upload_bytes += bytes; s.upload_ms += gl_ms_since(start); }
-    } count{start, t.rgba.size()};
+    } count{start, t.rgba.size() * sizeof(t.rgba[0])};
     Texture texture;
     texture.width = t.width;
     texture.height = t.height;
@@ -326,7 +326,8 @@ void Renderer::upload(const Frame::Texture& t) {
         Page& page = pages[texture.page];
         const size_t row = size_t(t.width) * 4;
         for (uint16_t y = 0; y < t.height; ++y)
-            std::memcpy(page.shadow.data() + (size_t(texture.y + y) * kPageSize + texture.x) * 4, t.rgba.data() + y * row, row);
+            std::memcpy(page.shadow.data() + (size_t(texture.y + y) * kPageSize + texture.x) * 4,
+                        reinterpret_cast<const uint8_t*>(t.rgba.data()) + y * row, row);
         if (page.dirty_bottom <= page.dirty_top) { page.dirty_top = texture.y; page.dirty_bottom = texture.y + t.height; }
         else { page.dirty_top = std::min<int>(page.dirty_top, texture.y); page.dirty_bottom = std::max<int>(page.dirty_bottom, texture.y + t.height); }
     } else if (placed) {
