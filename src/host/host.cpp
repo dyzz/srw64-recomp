@@ -55,6 +55,7 @@
 #include "touch_scene.hpp"
 #include "stage_info.hpp"
 #include "game_speed.hpp"
+#include "sched_rate.hpp"
 #include "stall_watchdog.hpp"
 #include "guest_memory.hpp"
 #include "native_name_entry.hpp"
@@ -187,6 +188,9 @@ void on_init(uint8_t* rdram, recomp_context*) {
 }
 
 void on_vi() {
+    // The 120 Hz experiment keeps the host's VI count in 60 Hz units (sched_rate.hpp).
+    static uint64_t ticks = 0;
+    if (++ticks % srw64::sched_rate::factor()) return;
     const uint64_t vi = ++vi_count;
     if (vi % 6 == 0) {
         srw64::script_inject::poll_file(output_dir);
@@ -278,6 +282,8 @@ RspUcodeFunc* get_microcode(const OSTask* task) {
 uint64_t srw64_current_vi() { return vi_count.load(); }
 // Guest RDRAM, for the debug interface's read-only memory view (debug_server.cpp).
 uint8_t* srw64_rdram = nullptr;
+// The runtime's VI thread asks before each picture latches (sched_rate.hpp latch()).
+extern "C" bool srw64_vi_latch(uint64_t tick) { return srw64::sched_rate::latch(srw64_rdram, tick); }
 
 // Debug interface hooks (debug_server.cpp): a button pulse that starts now
 // rather than at the next control-file poll, and a quit reported like SRWQ1.

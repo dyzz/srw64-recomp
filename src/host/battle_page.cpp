@@ -3,6 +3,7 @@
 #include "native_dialogue.hpp"
 #include "localization/catalog.hpp"
 #include "presentation_settings.hpp"
+#include "sched_rate.hpp"
 #include "native_map.hpp"
 #include "game_hooks.hpp"
 #include "funcs.h"
@@ -354,7 +355,8 @@ void frame(const uint8_t* ram) {
     std::lock_guard lock(mutex);
     if(left){end_page("mode");return;}
     const unsigned missed=++frames_without_step;
-    if(owning && current.value("visible",false) && missed>stale_frames)end_page("stale");
+    // Frame boundaries: at 120 Hz (sched_rate.hpp) two to each 60 Hz one.
+    if(owning && current.value("visible",false) && missed>stale_frames*sched_rate::factor())end_page("stale");
 }
 void abandon(const char* why){std::lock_guard lock(mutex);end_page(why);}
 void configure(const std::filesystem::path& directory) {

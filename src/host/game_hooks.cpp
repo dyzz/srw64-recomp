@@ -25,6 +25,7 @@
 #include "map_miss.hpp"
 #include "ui_text.hpp"
 #include "game_speed.hpp"
+#include "sched_rate.hpp"
 #include "enemy_pilot_page.hpp"
 #include "map_combo.hpp"
 #include "map_menu.hpp"
@@ -118,6 +119,10 @@ void srw64_render_node(uint8_t* rdram,recomp_context* ctx,int32_t function,int32
     srw64::menu_widen::callback_drawn(rdram,uint32_t(function),begin,MEM_W(0,cursor));   // the widened menus' fills
     if(wide)srw64_game_hooks.map_space_end(rdram,cursor);
     else srw64::battle_hud::after_draw(rdram,cursor,uint32_t(function),slot,sub,begin);
+}
+
+void resident_func_80080A14(uint8_t* ram,recomp_context* ctx) {
+    srw64::sched_rate::retrace(ram,uint32_t(ctx->r4),[&]{srw64_original_retrace(ram,ctx);});
 }
 
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {

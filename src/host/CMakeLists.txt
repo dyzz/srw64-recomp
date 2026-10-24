@@ -64,12 +64,13 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
 execute_process(COMMAND "${Python3_EXECUTABLE}" "${SRW64_ROOT}/tools/recomp/toolchain/prepare_runtime_lifecycle.py"
     COMMAND_ERROR_IS_FATAL ANY)
 get_target_property(SRW64_TIMER_SOURCES ultramodern SOURCES)
-list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling)\\.cpp$")
+list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling|events)\\.cpp$")
 set_property(TARGET ultramodern PROPERTY SOURCES ${SRW64_TIMER_SOURCES}
     "${SRW64_BUILD}/runtime-lifecycle/timer.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/threads.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/mesgqueue.cpp"
-    "${SRW64_BUILD}/runtime-lifecycle/scheduling.cpp")
+    "${SRW64_BUILD}/runtime-lifecycle/scheduling.cpp"
+    "${SRW64_BUILD}/runtime-lifecycle/events.cpp")
 get_target_property(SRW64_RUNTIME_SOURCES librecomp SOURCES)
 list(FILTER SRW64_RUNTIME_SOURCES EXCLUDE REGEX "/recomp\\.cpp$")
 set_property(TARGET librecomp PROPERTY SOURCES ${SRW64_RUNTIME_SOURCES} "${SRW64_BUILD}/runtime-lifecycle/recomp.cpp")

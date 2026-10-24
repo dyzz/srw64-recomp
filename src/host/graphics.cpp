@@ -295,6 +295,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     const std::string clock_name = capture_clock;
     const int image_mode = srw64::presentation::image_mode.current();
     const uint64_t workload = RT64::GetRenderHookWorkloadId();
+    srw64::frame_rate::present_workload(workload);
     // Opt-in temporal QA: sample every completed frame, so a single bad present is visible;
     // a frame that changes sharply is also saved whole.
     static const uint64_t trace_begin = std::getenv("SRW64_FRAME_TRACE_FROM") ? std::stoull(std::getenv("SRW64_FRAME_TRACE_FROM")) : UINT64_MAX;
@@ -688,6 +689,7 @@ public:
 #endif
     void send_dl(const OSTask* task) override {
         srw64::frame_rate::list_sent();
+        srw64::frame_rate::original_rate.store(app->sharedQueueResources->viOriginalRate, std::memory_order_relaxed);
 #ifdef __ANDROID__
         const auto t0 = Timing::clock::now();
         if (timing.last != Timing::clock::time_point{}) {

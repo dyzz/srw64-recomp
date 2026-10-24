@@ -11,6 +11,7 @@
 // screens keep the original speed, as their key repeats count frames too.
 #include "guest_memory.hpp"
 #include "script_skip.hpp"
+#include "sched_rate.hpp"
 #include <atomic>
 #include <cstdint>
 
@@ -30,6 +31,9 @@ constexpr uint32_t interval=0x8010F0C8, mode=0x8015DA02, map_state=0x80172EB0, p
 // frame they are up (801D5064 / 801D5294, game_hooks.cpp). They are menus wherever they
 // come, the enemy phase too.
 inline void menu_step(){menu_vi=srw64_current_vi();}
+
+// Experiment: SRW64_FORCE_FAST=1 hurries every frame while the setting is on.
+inline bool force_fast(){static const bool f=sched_rate::env_number("SRW64_FORCE_FAST",0)==1;return f;}
 
 // The tactical UI's states that wait for the player (docs/gameplay/original-controls.md §3):
 // the idle cursor and its motion, the unit menus, the move grid, the weapon and spirit
@@ -70,10 +74,12 @@ inline bool hurried(const uint8_t* ram,bool menu) {
 // it, so the boot runs as it always did.
 inline void frame(uint8_t* ram) {
     const uint32_t now=read(ram,interval,4);
-    if(now!=1 && now!=2){running=false;return;}
+    if(now!=1 && now!=2 && now!=4){running=false;return;}
     const uint64_t vi=srw64_current_vi();
-    const bool fast=on.load() && hurried(ram,vi-menu_vi.load()<4);
+    const bool fast=on.load() && (force_fast() || hurried(ram,vi-menu_vi.load()<4));
     running=fast;
-    if(now!=(fast?1u:2u))guest::write32(ram,interval,fast?1:2);
+    // At 120 Hz (sched_rate.hpp) the original speed is every 4th retrace.
+    const uint32_t f=sched_rate::factor(), want=fast ? (f==1 ? 1 : sched_rate::fast_interval()) : 2*f;
+    if(now!=want)guest::write32(ram,interval,want);
 }
 }  // namespace srw64::game_speed

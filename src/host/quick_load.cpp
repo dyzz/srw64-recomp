@@ -3,6 +3,7 @@
 #include "guest_memory.hpp"
 #include "notices.hpp"
 #include "save_store.hpp"
+#include "sched_rate.hpp"
 #include "localization/catalog.hpp"
 #include "ultramodern/ultramodern.hpp"
 #include <atomic>
@@ -121,11 +122,11 @@ void frame(uint8_t* ram) {
         else{since=vi;kind=Kind::title;set(Stage::press_z);record("asked",{{"kind","title"},{"mode",m}});}
         return;
     }
-    ++frames;
+    ++frames;   // frame boundaries: at 120 Hz (sched_rate.hpp) two to a 60 Hz VI
     switch(stage.load()) {
     case Stage::idle: return;
     // Z alone for a frame, then START with it: 80085EF8 wants START's press edge with Z held.
-    case Stage::press_z: if(frames>=2)set(Stage::press_both); break;
+    case Stage::press_z: if(frames>=2*sched_rate::factor())set(Stage::press_both); break;
     // Taken: the map asks for mode 1 and fades (801DFE0C); the battle animation sets its
     // abort flag and fades (801C9A18), and only while no fade runs.
     case Stage::press_both:
@@ -140,7 +141,7 @@ void frame(uint8_t* ram) {
             // longer runs (battle_page.cpp has its own nets as well; 0.4.9 left it up).
             battle_page::abandon(kind.load()==Kind::title?"title-return":"quick-load");
         }
-        else if(frames>=8) {   // not taken (a fade, a busy frame): again
+        else if(frames>=8*sched_rate::factor()) {   // not taken (a fade, a busy frame): again
             record("retry",{{"mode",m},{"held",read(ram,0x8015D9FA,2)},{"pressed",read(ram,0x8015CAF0,2)},{"battle_state",int8_t(read(ram,battle_state,1))}});
             set(Stage::press_z);
         }
@@ -153,7 +154,7 @@ void frame(uint8_t* ram) {
     // Back on the map at the record's state, its UI up again.
     // The title: the combination let go for a few frames, then the player's input again.
     case Stage::release:
-        if(frames>=10){set(Stage::idle);record("released",{{"mode",m}});}
+        if(frames>=10*sched_rate::factor()){set(Stage::idle);record("released",{{"mode",m}});}
         break;
     case Stage::loading:
         if(tactical(m) && read(ram,map_state,1)!=0) {
