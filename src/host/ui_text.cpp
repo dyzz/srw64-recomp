@@ -39,6 +39,10 @@ constexpr unsigned kLine = 14, kNarrow = 8, kWide = 14, kWideFirst = 0x13B, kCel
 // The ROM's glyphs carry a pixel of space on their left, the font's capitals hardly any: a
 // translation starts that much in, off the frame its window draws (Will on the map panel).
 constexpr int kInset = 1;
+// The script VM's current handler and 3D44's; the choice's cursor bar ends this far right
+// of its text window's x (measured: window x 19, bar 22-198).
+constexpr uint32_t kScriptHandler = 0x8015F950 + 0x948 + 0x30, kChoiceHandler = 0x8009FA94;
+constexpr int kChoiceBarEnd = 177;
 constexpr uint16_t kLongDash = 0xD3;   // ー: the minus sign of printed numbers
 constexpr uint16_t kWaveDash = 0xDA;   // ～: between a weapon's least and greatest range
 // The minus as the font has it: as wide as its plus, where the hyphen is narrower and sits
@@ -179,6 +183,19 @@ std::string catalog_form(const std::string& text) {
         if (c == '\n') out += "<BR>";
         else if (c == '\f') break;
         else out += c;
+    }
+    return out;
+}
+// Each <BR> line without the half- and full-width spaces it starts with.
+std::string without_leading_blanks(const std::string& text) {
+    std::string out;
+    bool start = true;
+    for (size_t i = 0; i < text.size();) {
+        if (start && text[i] == ' ') { ++i; continue; }
+        if (start && text.compare(i, 3, "\xE3\x80\x80") == 0) { i += 3; continue; }
+        if (text.compare(i, 4, "<BR>") == 0) { out += "<BR>"; i += 4; start = true; continue; }
+        out += text[i++];
+        start = false;
     }
     return out;
 }
@@ -352,21 +369,37 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         const std::string text = dialogue::body_page(ram, body.address);
         if (text.empty()) continue;
         // The widest line, and the widest up to its last glyph: titles come padded with
-        // blanks up to the column a following label keeps.
-        int widest = 0, inked = 0, line = 0;
+        // blanks up to the column a following label keeps. Lead: the blank every inked line
+        // starts with (a choice's options leave one for the cursor bar, 「 OZに入り…」).
+        int widest = 0, inked = 0, line = 0, lead = 1 << 20;
+        bool started = false;
         for (unsigned k2 = 0; k2 < 256; ++k2) {
             const uint16_t code = half(ram, body.address + 0xC + 2 * k2);
             if (code == 0xFFFF) break;
-            if (code == 0xFFFE || code == 0xFFFD) { line = 0; continue; }
+            if (code == 0xFFFE || code == 0xFFFD) { line = 0; started = false; continue; }
+            if (code && !started) { lead = std::min(lead, line); started = true; }
             line += code == 0 || code < kWideFirst ? kNarrow : kWide;
             widest = std::max(widest, line);
             if (code) inked = std::max(inked, line);
         }
+        if (lead > widest) lead = 0;
         Style style = label_style(locale, 0, false);
+        // The translation keeps the original's indent: its lines start where the original's
+        // ink does, without blanks of their own.
         std::string shown_text = catalog_form(text);
-        float body_x = float(body.x);
+        if (lead) shown_text = without_leading_blanks(shown_text);
+        float body_x = float(body.x + lead);
         style.pitch = 16 / style.size;
-        style.width = widest * 1.1 + 6;
+        style.width = (widest - lead) * 1.1 + 6;
+        // A choice (3D44): each option on its own row of the cursor bar, 16 apart, and only
+        // squeezed (never smaller, a long one narrowing the others) to end where the bar does.
+        const bool choice = word(ram, kScriptHandler) == kChoiceHandler;
+        if (choice) {
+            style.width = 0;
+            style.max_width = body.x + kChoiceBarEnd - body_x;
+            style.min_size = style.size;
+            style.condense_min = .55;
+        }
         // A label the original prints after a one-line body on the same line (発進！スイームルグ
         // クリア, 二大勢力 クリア: the original puts クリア after the title wherever it ends) joins
         // it as one sentence on the labels' line pitch, so it shares their baseline. It runs up
@@ -393,15 +426,25 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 // does the translation, a space after its own last word.
                 style.pitch = kLine / style.size;
                 style.width = 0;
-                body_x = float(body.x + inset);
+                body_x = float(body.x + lead + inset);
                 shown_text += (locale == "en" ? " " : "") + (next->text.empty() ? next->drawn : next->text);
-                style.max_width = std::max(end - trailing_blank(next->drawn), after) - body.x - inset;
+                style.max_width = std::max(end - trailing_blank(next->drawn), after) - body.x - lead - inset;
                 next->consumed = true;
             }
         }
         float tint[3];
         colour(ram, body.palette, tint);
-        items.push_back(placed(style, locale, shown_text, "body", body_x, float(body.y), tint));
+        if (choice) {
+            float row_y = float(body.y);
+            for (size_t from = 0;; row_y += 16) {
+                const size_t to = shown_text.find("<BR>", from);
+                const std::string row = shown_text.substr(from, to == std::string::npos ? std::string::npos : to - from);
+                if (!row.empty()) items.push_back(placed(style, locale, row, "body", body_x, row_y, tint));
+                if (to == std::string::npos) break;
+                from = to + 4;
+            }
+        } else
+            items.push_back(placed(style, locale, shown_text, "body", body_x, float(body.y), tint));
         for (const uint32_t rect : body.record->rects) { replaced.push_back(rect); cover(rect); }
         shown.push_back({{"body", body.address}, {"x", body.x}, {"y", body.y}, {"text", text}});
         note("body:" + locale + ":" + text, {{"kind", "body"}, {"record", half(ram, body.address)}, {"text", text}});
