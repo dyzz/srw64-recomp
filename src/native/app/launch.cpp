@@ -59,14 +59,14 @@ static std::string read_campaign_id(const fs::path& campaign) {
 }
 
 int run_standalone(const Options& requested,const GameIdentity& game,const HostMain& host,const ContentImporter& importer) {
-    SWITCH_MARK("launch");
+    SWITCH_MARK("Starting");
     Options options=requested;
     if(!options.campaign.empty())options.campaign_id=read_campaign_id(options.campaign);
     if(game.save_file.empty() || game.save_file.find_first_of("/\\:")!=std::string::npos ||
        game.save_file=="." || game.save_file=="..")throw std::runtime_error("Invalid game save filename");
     // A .v64 or .n64 dump loads through a .z64 copy (rom_order.hpp).
     options.rom=z64_rom(options.rom,fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir),game.rom_sha256);
-    SWITCH_MARK("rom checked");
+    SWITCH_MARK("ROM checked");
     auto content=options.content;
     std::unique_ptr<Session> owned_session;
     if(content.empty()) {
@@ -77,7 +77,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         content=importer ? importer(options.rom,cache,game.rom_sha256)
                          : prepare_rom_content(options.rom,cache,embedded_import_spec(),game.rom_sha256);
     }
-    SWITCH_MARK("import cache checked");
+    SWITCH_MARK("Game data ready");
     const auto root=fs::canonical(content);
     const auto manifest_path=content_path(root,"manifest.json");
     const auto manifest=read_json(manifest_path,1024*1024);
@@ -92,7 +92,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         if(sha256_file(path)!=digest.get<std::string>())throw std::runtime_error("Content integrity check failed: "+relative);
         verified.emplace(relative,path);
     }
-    SWITCH_MARK("content verified");
+    SWITCH_MARK("Game data checked");
     const auto dialogue_name=manifest.at("dialogue").get<std::string>();
     if(!verified.contains(dialogue_name))throw std::runtime_error("Dialogue is absent from the content inventory");
     auto data=read_json(verified.at(dialogue_name));
@@ -215,9 +215,9 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         atomic_write(language_file,settings.dump(2)+"\n");
     }
     const auto dialogue=session.session_dir()/"dialogue.json";
-    SWITCH_MARK("settings read");
+    SWITCH_MARK("Settings read");
     atomic_write(dialogue,data.dump()+"\n");
-    SWITCH_MARK("dialogue written");
+    SWITCH_MARK("Dialogue prepared");
 
     // Do not inherit development probes, scripted inputs or another ROM variant. A test may
     // point the update check at its own server (update_check.hpp), or show Android's touch

@@ -12,6 +12,9 @@
 #include "srw64_import_spec.hpp"
 #endif
 
+#ifdef __SWITCH__
+void srw64_switch_mark(const char* label);   // src/host/switch/switch_platform.cpp
+#endif
 namespace srw64::app {
 std::string_view embedded_import_spec() {
 #ifdef SRW64_EMBEDDED_IMPORT_SPEC
@@ -143,6 +146,9 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
     if(staging.empty())throw std::runtime_error("Cannot create import staging directory");
     try {
         std::fprintf(stderr,"SRW64_ROM_IMPORT_BEGIN %s\n",destination.string().c_str());
+#ifdef __SWITCH__
+        ::srw64_switch_mark("First launch: reading the game's text and pictures from the ROM...");
+#endif
         auto data=compile_text(rom,spec);json inventory=json::object(),portraits=json::object();
         fs::create_directory(staging/"name-entry");
         auto publish=[&](const std::string& relative,Bytes content) {

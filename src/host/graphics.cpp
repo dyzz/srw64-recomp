@@ -128,6 +128,7 @@ std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure m
 }  // namespace
 #ifdef __SWITCH__
 void srw64_switch_error(const std::string& message, const std::string& details);
+void srw64_switch_boot_end();   // switch/switch_platform.cpp: the launch's text console goes
 #endif
 void srw64_error_box(const std::string& message) {
 #ifdef _WIN32
@@ -1124,6 +1125,9 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     SDL_SetHint(SDL_HINT_WINDOWS_DPI_SCALING, "1");
 #endif
     gpu_names = srw64::gpu_report::log();
+#ifdef __SWITCH__
+    srw64_switch_boot_end();   // the screen is the window's from here
+#endif
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | (srw64_audio_enabled() ? SDL_INIT_AUDIO : 0)) != 0) {
         fprintf(stderr, "SRW64_SDL_INIT_FAILED %s\n", SDL_GetError());
         std::abort();

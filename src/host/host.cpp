@@ -444,7 +444,7 @@ static int run_host(int argc, char** argv) {
     recomp::check_all_stored_roms();
     if (!recomp::is_rom_valid(game.game_id)) fail("stored ROM readback failed");
 #ifdef __SWITCH__
-    srw64_switch_mark("rom in the runtime");
+    srw64_switch_mark("ROM loaded, opening the screen");
 #endif
     char game_option[] = "--game", game_name[] = "srw64";
     char* runtime_args[] = {argv[0], game_option, game_name};

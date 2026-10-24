@@ -65,10 +65,31 @@ std::string srw64_switch_language() {
     return language;
 }
 
-// Startup timing (S1): milliseconds since the process started, to find what a launch
-// waits for (SRW64_SWITCH_TIME lines on nxlink).
+// The launch on screen until the game's window takes it: libnx's text console, one line a
+// step with the seconds since start (the same steps go to nxlink as SRW64_SWITCH_TIME).
+// The console takes stdout; srw64_switch_boot_end gives it back to nxlink.
+namespace {
+enum class Boot { Off, Shown, Over };
+Boot boot = Boot::Off;
+}
 void srw64_switch_mark(const char* label) {
-    std::fprintf(stderr, "SRW64_SWITCH_TIME %llu ms %s\n", (unsigned long long)armTicksToNs(armGetSystemTick()) / 1000000ull, label);
+    const unsigned long long ms = armTicksToNs(armGetSystemTick()) / 1000000ull;
+    std::fprintf(stderr, "SRW64_SWITCH_TIME %llu ms %s\n", ms, label);
+    if (boot == Boot::Over) return;
+    if (boot == Boot::Off) {
+        consoleInit(nullptr);
+        std::printf("\n  Marchwind64\n\n");
+        boot = Boot::Shown;
+    }
+    std::printf("  %5.1f s  %s\n", ms / 1000.0, label);
+    consoleUpdate(nullptr);
+}
+void srw64_switch_boot_end() {
+    if (boot == Boot::Shown) {
+        consoleExit(nullptr);
+        if (nxlink_socket >= 0) dup2(nxlink_socket, STDOUT_FILENO);
+    }
+    boot = Boot::Over;
 }
 
 // Started as an application (a game held R on, or the title override) and not from the
