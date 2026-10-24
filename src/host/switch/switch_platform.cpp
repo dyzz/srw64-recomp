@@ -372,6 +372,7 @@ void userAppInit() {
     // MegaMan64Recomp-NX). A line may be lost instead.
     if (R_SUCCEEDED(socketInitializeDefault())) nxlink_socket = nxlinkConnectToHost(false, false);
     install_log();
+    romfsInit();   // the HD pack the NRO carries (hd_texture.hpp), when it does
     apm_open = R_SUCCEEDED(apmInitialize());
     raise_gpu();
     appletHook(&focus_cookie, on_focus, nullptr);
@@ -379,6 +380,7 @@ void userAppInit() {
 
 void userAppExit() {
     appletUnhook(&focus_cookie);
+    romfsExit();
     restore_gpu();
     if (apm_open) apmExit();
     if (nxlink_socket >= 0) close(nxlink_socket);

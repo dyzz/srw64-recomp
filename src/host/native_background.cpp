@@ -1,9 +1,13 @@
 #define HLSL_CPU
 #include "native_background.hpp"
 #include "presentation/image_mode.hpp"
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
+#endif
 #include "native_gpu.hpp"
+#include "native_quads.hpp"
+#include "hd_texture.hpp"
 #include "rom_art.hpp"
 #include "game_frame.hpp"
 #include "wide_map.hpp"
@@ -48,6 +52,9 @@ struct Asset {
     std::vector<std::pair<int, int>> sizes;
     std::unique_ptr<gpu::Texture> texture;
     std::unique_ptr<plume::RenderDescriptorSet> textures;
+    // The GL renderer's (gl_quads): the picture as it uploads it, compressed or RGBA8.
+    std::shared_ptr<const std::vector<uint8_t>> gl_pixels;
+    uint32_t gl_format = 0, gl_levels = 1;
 };
 
 struct Quad { float rect[4], uv[4]; };        // N64 screen pixels; normalised picture coordinates
@@ -77,9 +84,11 @@ std::mutex asset_mutex;
 std::array<Draw, kRing> ring;
 std::mutex ring_mutex;
 uint32_t next_id = 1;
+#ifndef SRW64_GL_ONLY
 RT64::NativeMeshClassify *previous_classify{};
 RT64::NativeMeshRender *previous_render{};
 std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdBackground{VS,PS}.hlsl
+#endif
 std::atomic<uint64_t> rewritten{}, rendered{}, skipped{}, unexpected{}, decoded{};
 std::ofstream dump;          // SRW64_BG_DUMP: the first draw of each picture without HD, for new layouts
 std::set<std::pair<uint16_t, uint16_t>> dumped;
@@ -200,6 +209,59 @@ void decode(Asset& asset) {
     ++decoded;
 }
 
+#ifdef SRW64_GL_ONLY
+// The GL renderer's picture: the prepared, compressed copy where there is one (the Switch,
+// hd_texture.hpp), else the decoded level 0 (the original pictures from the ROM too).
+void gl_prepare(Asset& asset) {
+    hd_texture::Compressed c;
+    if (!asset.rom && hd_texture::load(asset.file, c) && int(c.width) == asset.width && int(c.height) == asset.height) {
+        asset.gl_pixels = c.data; asset.gl_format = c.format; asset.gl_levels = c.levels;
+        ++decoded;
+        return;
+    }
+    decode(asset);
+    asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(asset.levels.front()));
+    asset.gl_format = 0; asset.gl_levels = 1;
+    asset.levels.clear(); asset.sizes.clear();
+}
+
+// What render() draws, as the GL renderer's quads: the opaque original first (its UVs in
+// the 4:3 picture), then the HD picture, PRIM as the tint.
+bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
+    if ((id & 0xFFFF0000u) != kIdBase) return false;
+    Draw draw;
+    {
+        std::lock_guard lock(ring_mutex);
+        draw = ring[id % kRing];
+    }
+    if (draw.id != (id & 0xFFFF) || draw.asset < 0 || draw.quads.empty()) return true;
+    std::lock_guard lock(asset_mutex);
+    const auto emit = [&](const Asset& asset, bool under) {
+        if (!asset.gl_pixels) return;
+        for (const auto& quad : draw.quads) {
+            native_quads::Quad q;
+            q.pixels = asset.gl_pixels;
+            q.width = uint32_t(asset.width); q.height = uint32_t(asset.height);
+            q.format = asset.gl_format; q.levels = asset.gl_levels;
+            std::copy(quad.rect, quad.rect + 4, q.rect);
+            std::copy(quad.uv, quad.uv + 4, q.uv);
+            if (under) {
+                const auto& e = draw.sample_extent;
+                for (int c : {0, 2}) q.uv[c] = (e[0] + q.uv[c] * (e[2] - e[0])) / source_width;
+                for (int c : {1, 3}) q.uv[c] = (e[1] + q.uv[c] * (e[3] - e[1])) / source_height;
+            }
+            std::copy(draw.prim, draw.prim + 4, q.color);
+            q.whole = draw.wide;
+            q.label = under ? "background-under" : "background";
+            out.push_back(std::move(q));
+        }
+    };
+    if (draw.under >= 0) emit(assets[size_t(draw.under)], true);
+    emit(assets[size_t(draw.asset)], false);
+    ++rendered;
+    return true;
+}
+#else
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -263,6 +325,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     ++rendered;
     return true;
 }
+#endif
 }
 
 void initialize(const std::filesystem::path& directory) {
@@ -271,9 +334,13 @@ void initialize(const std::filesystem::path& directory) {
     output = directory;
     assets.reserve(kAssetCapacity);
     if (!source_width) { source_width = int(frame::kWidth); source_height = int(frame::kHeight); }
+#ifdef SRW64_GL_ONLY
+    native_quads::add(gl_quads);
+#else
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
+#endif
 }
 
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& directory) {
@@ -301,7 +368,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
         if (asset.width <= 0 || asset.height <= 0 || asset.width > 8192 || asset.height > 8192 ||
             asset.extent[0] > 0 || asset.extent[1] > 0 || asset.extent[2] < source_width || asset.extent[3] < source_height)
             throw std::runtime_error("Unsupported HD background size or extent: " + asset.file.string());
-        if (!std::filesystem::exists(asset.file)) throw std::runtime_error("Missing HD background " + asset.file.string());
+        if (!hd_texture::exists(asset.file)) throw std::runtime_error("Missing HD background " + asset.file.string());
         if (!by_ids.emplace(std::make_pair(asset.image, asset.palette), int(assets.size())).second)
             throw std::runtime_error("Duplicate HD background identity");
         if (assets.size() >= assets.capacity()) throw std::runtime_error("Too many HD backgrounds");
@@ -370,8 +437,10 @@ void wrap_quads(Draw& record, float origin_x, float origin_y) {
 }  // namespace
 
 void gpu_init() {
+#ifndef SRW64_GL_ONLY
     // One linear, mipmapped, clamped sampler after the picture.
     program = std::make_unique<gpu::Program>("HdBackground", 1, std::vector<gpu::Sampler>{{.linear = true, .mipmaps = true}});
+#endif
 }
 
 bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
@@ -518,7 +587,11 @@ bool rewrite(uint8_t* rdram, const BackgroundDraw& draw) {
         for (const int index : {record.asset, record.under}) {
             if (index < 0) continue;
             Asset& asset = assets[size_t(index)];
+#ifdef SRW64_GL_ONLY
+            if (!asset.gl_pixels) gl_prepare(asset);
+#else
             if (!asset.textures && asset.levels.empty()) decode(asset);
+#endif
         }
     }
     {
@@ -559,7 +632,9 @@ void shutdown() {
             {"native_draws", rendered.load()}, {"skipped", skipped.load()}, {"unexpected_layout", unexpected.load()},
             {"decoded", decoded.load()}, {"resident_at_exit", resident}}).dump(2) << '\n';
     }
-    for (auto& asset : assets) { asset.textures.reset(); asset.texture.reset(); }
+    for (auto& asset : assets) { asset.textures.reset(); asset.texture.reset(); asset.gl_pixels.reset(); }
+#ifndef SRW64_GL_ONLY
     program.reset();
+#endif
 }
 }

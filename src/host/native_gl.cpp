@@ -4,6 +4,7 @@
 // own transform; the game's depth test is kept (its second, depth-writing pass is not yet).
 #include "native_quads.hpp"
 #include "native_gl.hpp"
+#include "hd_texture.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -26,7 +27,7 @@ constexpr const char* kPreamble = "#version 120\n";
 struct Texture { GLuint id = 0; std::shared_ptr<const std::vector<uint8_t>> pixels; uint64_t used = 0; bool wrap = false; };
 std::unordered_map<const void*, Texture> textures;
 GLuint program = 0;
-GLint color_uniform = -1, texture_uniform = -1;
+GLint color_uniform = -1, texture_uniform = -1, fill_uniform = -1;
 uint64_t frame_count = 0;
 std::vector<native_quads::Quad> quads;
 
@@ -36,12 +37,14 @@ void make_program() {
     program = n64gl::link_program(std::string(kPreamble) +
         "attribute vec4 a_position;\nattribute vec2 a_uv;\nvarying vec2 v_uv;\n"
         "void main() {\n  gl_Position = a_position;\n  v_uv = a_uv;\n}\n", std::string(kPreamble) +
-        "uniform sampler2D u_texture;\nuniform vec4 u_color;\nvarying vec2 v_uv;\n"
-        "void main() {\n  vec4 c = texture2D(u_texture, v_uv);\n  gl_FragColor = vec4(c.rgb * u_color.rgb, c.a) * u_color.a;\n}\n",
+        "uniform sampler2D u_texture;\nuniform vec4 u_color;\nuniform vec4 u_fill;\nvarying vec2 v_uv;\n"
+        "void main() {\n  vec4 c = texture2D(u_texture, v_uv);\n"
+        "  gl_FragColor = vec4(mix(c.rgb * u_color.rgb, u_fill.rgb * c.a, u_fill.a), c.a) * u_color.a;\n}\n",
         {{0, "a_position"}, {1, "a_uv"}}, error);
     if (!program) throw std::runtime_error("Native GL " + error);
     color_uniform = glGetUniformLocation(program, "u_color");
     texture_uniform = glGetUniformLocation(program, "u_texture");
+    fill_uniform = glGetUniformLocation(program, "u_fill");
 }
 
 GLuint texture_for(const native_quads::Quad& q) {
@@ -52,12 +55,23 @@ GLuint texture_for(const native_quads::Quad& q) {
         glBindTexture(GL_TEXTURE_2D, t.id);
         glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
         const auto start = std::chrono::steady_clock::now();
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, GLsizei(q.width), GLsizei(q.height), 0, GL_RGBA, GL_UNSIGNED_BYTE, q.pixels->data());
+        uint64_t bytes = 0;
+        if (q.format) {   // every level as it was prepared (hd_texture.hpp)
+            const uint8_t* at = q.pixels->data();
+            for (uint32_t level = 0, w = q.width, h = q.height; level < q.levels; ++level, w = std::max(1u, w / 2), h = std::max(1u, h / 2)) {
+                const size_t size = hd_texture::level_bytes(q.format, w, h);
+                glCompressedTexImage2D(GL_TEXTURE_2D, GLint(level), q.format, GLsizei(w), GLsizei(h), 0, GLsizei(size), at);
+                at += size; bytes += size;
+            }
+        } else {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, GLsizei(q.width), GLsizei(q.height), 0, GL_RGBA, GL_UNSIGNED_BYTE, q.pixels->data());
+            bytes = uint64_t(q.width) * q.height * 4;
+        }
         auto& stats = n64gl::gl_stats();
         ++stats.quads;
-        stats.quad_bytes += uint64_t(q.width) * q.height * 4;
+        stats.quad_bytes += bytes;
         stats.quad_ms += n64gl::gl_ms_since(start);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, q.levels > 1 ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     }
@@ -96,7 +110,8 @@ void draw(const n64gl::Command& command, int width, int height) {
     const float picture = n64gl::kPictureHeight * float(width) / float(height);
     const int picture_px = int(std::ceil(picture - 1e-3f));
     for (const auto& q : quads) {
-        if (!q.pixels || q.pixels->size() < size_t(q.width) * q.height * 4 || !q.width || !q.height) continue;
+        if (!q.pixels || !q.width || !q.height) continue;
+        if (!q.format && q.pixels->size() < size_t(q.width) * q.height * 4) continue;
         // The scissor in the target's pixels (GL's origin at the bottom).
         int16_t s[4] = {0, 0, int16_t(picture_px), n64gl::kPictureHeight};
         if (!q.whole) std::copy(command.state.scissor, command.state.scissor + 4, s);
@@ -123,6 +138,7 @@ void draw(const n64gl::Command& command, int width, int height) {
         }
         texture_for(q);
         glUniform4f(color_uniform, q.color[0], q.color[1], q.color[2], q.color[3]);
+        glUniform4f(fill_uniform, q.fill[0], q.fill[1], q.fill[2], q.fill[3]);
         glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, position);
         glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, uv);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);

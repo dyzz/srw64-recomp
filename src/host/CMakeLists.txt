@@ -262,7 +262,7 @@ if(SRW64_ENABLE_RT64)
     target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/native/ui/window_test_control.cpp")
     # The HD layers draw through Plume (native_gpu.cpp, shaders in src/host/shaders).
     target_sources(${SRW64_HOST_TARGET} PRIVATE native_gpu.cpp native_map.cpp native_background.cpp native_marker.cpp
-        native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp)
+        native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp hd_texture.cpp)
     # RetroArch shader presets through librashader, loaded at run time (post_filter.hpp);
     # tools/recomp/toolchain/fetch_librashader.py puts the library beside the host.
     target_sources(${SRW64_HOST_TARGET} PRIVATE post_filter.cpp)
@@ -349,6 +349,7 @@ if(SRW64_GL_ONLY)
         cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp stage_info.cpp
         rom_art.cpp legacy.cpp quick_load.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"
         native_map.cpp native_sprite.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp game_hooks.cpp
+        native_portrait.cpp native_background.cpp hd_texture.cpp
         "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp
         "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp" gl_only_stubs.cpp)
     target_compile_definitions(srw64-gl-host PRIVATE SRW64_NATIVE_DIALOGUE SRW64_GL_RENDERER SRW64_GL_ONLY)
@@ -363,6 +364,7 @@ if(SRW64_GL_ONLY)
     elseif(NINTENDO_SWITCH)
         target_sources(srw64-gl-host PRIVATE switch/switch_platform.cpp)
         target_link_options(srw64-gl-host PRIVATE -Wl,--wrap=abort,--wrap=rename,--wrap=__syscall_thread_create,--wrap=fchmod,--wrap=chmod)
+        target_link_libraries(srw64-gl-host PRIVATE zstd)   # the NRO's HD pictures (hd_texture.cpp)
     elseif(NOT WIN32)
         target_link_libraries(srw64-gl-host PRIVATE ${CMAKE_DL_LIBS})
     endif()
@@ -380,7 +382,15 @@ if(SRW64_GL_ONLY)
         # Marchwind64.nro: the NACP (name, author, version) and the default icon for now.
         nx_generate_nacp(Marchwind64.nacp NAME "Marchwind64" AUTHOR "Marchwind64" VERSION "${SRW64_VERSION}")
         # hbmenu's icon: the M64 badge on the Steam icon's navy, 256 x 256 (tools/release/switch/icon.jpg).
-        nx_create_nro(srw64-gl-host OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Marchwind64.nro" NACP Marchwind64.nacp
-                      ICON "${CMAKE_CURRENT_SOURCE_DIR}/../../tools/release/switch/icon.jpg")
+        # The HD pack prepared for the Switch's GPU (tools/release/switch/prepare_hd.py) in the
+        # NRO's romfs, when it has been made: one file to copy, the art read where it lies.
+        set(SRW64_SWITCH_ROMFS "${SRW64_BUILD}/switch-romfs")
+        if(EXISTS "${SRW64_SWITCH_ROMFS}/hd")
+            nx_create_nro(srw64-gl-host OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Marchwind64.nro" NACP Marchwind64.nacp
+                          ICON "${CMAKE_CURRENT_SOURCE_DIR}/../../tools/release/switch/icon.jpg" ROMFS "${SRW64_SWITCH_ROMFS}")
+        else()
+            nx_create_nro(srw64-gl-host OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Marchwind64.nro" NACP Marchwind64.nacp
+                          ICON "${CMAKE_CURRENT_SOURCE_DIR}/../../tools/release/switch/icon.jpg")
+        endif()
     endif()
 endif()

@@ -3,9 +3,13 @@
 #include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/rgba_file.hpp"
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
+#endif
 #include "native_gpu.hpp"
+#include "native_quads.hpp"
+#include "hd_texture.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
@@ -42,6 +46,9 @@ struct Asset {
     std::unique_ptr<gpu::Texture> texture;
     std::unique_ptr<plume::RenderDescriptorSet> set;
     Clock::time_point used{};
+    // The GL renderer's (gl_quads): the picture as it uploads it, compressed or RGBA8.
+    std::shared_ptr<const std::vector<uint8_t>> gl_pixels;
+    uint32_t gl_format = 0, gl_levels = 1;
 };
 
 struct Draw {
@@ -62,9 +69,11 @@ std::mutex asset_mutex;                      // decoded levels and textures cros
 std::array<Draw, kRing> ring;
 std::mutex ring_mutex;
 uint32_t next_id = 1;
+#ifndef SRW64_GL_ONLY
 RT64::NativeMeshClassify *previous_classify{};
 RT64::NativeMeshRender *previous_render{};
 std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdPortrait{VS,PS}.hlsl
+#endif
 std::atomic<uint64_t> rewritten{}, rendered{}, skipped{}, unexpected{}, unknown{}, decoded{}, released{};
 std::map<std::string, uint64_t> unexpected_shapes;  // "rects/width/height/texture width" of draws left original
 std::mutex shape_mutex;
@@ -119,6 +128,55 @@ void decode(Asset& asset) {
     ++decoded;
 }
 
+#ifdef SRW64_GL_ONLY
+// The GL renderer's picture: the prepared, compressed copy where there is one (the Switch,
+// hd_texture.hpp), else the decoded level 0. Idle ones beyond kResident go again.
+void gl_prepare(Asset& asset) {
+    const auto now = Clock::now();
+    size_t resident = 0;
+    for (const auto& other : assets) resident += other.gl_pixels != nullptr;
+    if (resident >= kResident)
+        for (auto& other : assets)
+            if (other.gl_pixels && now - other.used > kIdle) { other.gl_pixels.reset(); ++released; }
+    asset.used = now;
+    hd_texture::Compressed c;
+    if (hd_texture::load(asset.file, c) && c.width == uint32_t(size) && c.height == uint32_t(size)) {
+        asset.gl_pixels = c.data; asset.gl_format = c.format; asset.gl_levels = c.levels;
+        ++decoded;
+        return;
+    }
+    decode(asset);
+    asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(asset.levels.front()));
+    asset.gl_format = 0; asset.gl_levels = 1;
+    asset.levels.clear();
+}
+
+bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
+    if ((id & 0xFFFF0000u) != kIdBase) return false;
+    Draw draw;
+    {
+        std::lock_guard lock(ring_mutex);
+        draw = ring[id % kRing];
+    }
+    if (draw.id != (id & 0xFFFF) || draw.asset < 0) return true;
+    std::lock_guard lock(asset_mutex);
+    Asset& asset = assets[size_t(draw.asset)];
+    if (!asset.gl_pixels) return true;
+    asset.used = Clock::now();
+    native_quads::Quad q;
+    q.pixels = asset.gl_pixels;
+    q.width = q.height = uint32_t(size);
+    q.format = asset.gl_format; q.levels = asset.gl_levels;
+    std::copy(draw.rect, draw.rect + 4, q.rect);
+    q.uv[0] = draw.flip ? 1.f : 0.f; q.uv[1] = 0; q.uv[2] = draw.flip ? 0.f : 1.f; q.uv[3] = 1;
+    if (draw.silhouette) { std::copy(silhouette_rgb, silhouette_rgb + 3, q.fill); q.fill[3] = 1; }
+    q.label = "portrait";
+    out.push_back(std::move(q));
+    ++rendered;
+    return true;
+}
+
+#else
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -173,6 +231,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     ++rendered;
     return true;
 }
+#endif
 }
 
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& directory) {
@@ -191,7 +250,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
         Asset asset;
         asset.image = row.at("image").get<uint16_t>();
         asset.file = art_directory / row.at("file").get<std::string>();
-        if (!std::filesystem::exists(asset.file)) throw std::runtime_error("Missing HD portrait " + asset.file.string());
+        if (!hd_texture::exists(asset.file)) throw std::runtime_error("Missing HD portrait " + asset.file.string());
         const uint64_t pixels = hex64(row.at("pixels_fnv1a64"));
         if (!by_content.emplace(std::make_pair(pixels, hex64(row.at("palette_fnv1a64"))), std::make_pair(int(assets.size()), false)).second)
             throw std::runtime_error("Duplicate HD portrait identity");
@@ -199,16 +258,22 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
         assets.push_back(std::move(asset));
     }
     if (assets.empty()) return;
+#ifdef SRW64_GL_ONLY
+    native_quads::add(gl_quads);
+#else
     // Chain after marker/hdmap, which install their hooks first.
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
+#endif
     fprintf(stderr, "SRW64_HD_PORTRAITS loaded %zu portrait(s) at %dpx\n", assets.size(), size);
 }
 
 void gpu_init() {
+#ifndef SRW64_GL_ONLY
     // A linear, mipmapped, clamped sampler after the portrait.
     program = std::make_unique<gpu::Program>("HdPortrait", 1, std::vector<gpu::Sampler>{{.linear = true, .mipmaps = true}});
+#endif
 }
 
 void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
@@ -250,7 +315,11 @@ void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
     Asset& asset = assets[size_t(found->second.first)];
     {
         std::lock_guard lock(asset_mutex);
+#ifdef SRW64_GL_ONLY
+        if (!asset.gl_pixels) gl_prepare(asset);
+#else
         if (!asset.set && asset.levels.empty()) decode(asset);
+#endif
     }
     Draw record;
     record.asset = found->second.first;
@@ -296,7 +365,9 @@ void shutdown() {
             {"decoded", decoded.load()}, {"released", released.load()}, {"resident_at_exit", resident},
             {"unexpected_shapes", [] { std::lock_guard lock(shape_mutex); return json(unexpected_shapes); }()}}).dump(2) << '\n';
     }
-    for (auto& asset : assets) { asset.set.reset(); asset.texture.reset(); }
+    for (auto& asset : assets) { asset.set.reset(); asset.texture.reset(); asset.gl_pixels.reset(); }
+#ifndef SRW64_GL_ONLY
     program.reset();
+#endif
 }
 }

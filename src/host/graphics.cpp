@@ -1130,12 +1130,38 @@ public:
         chosen_api = ultramodern::renderer::GraphicsApi::Auto;
         fprintf(stderr, "SRW64_GRAPHICS_API gl %s / %s scale=%d\n", (const char*)glGetString(GL_VERSION), (const char*)glGetString(GL_RENDERER), scale);
         gl_device = std::string((const char*)glGetString(GL_VERSION)) + " / " + (const char*)glGetString(GL_RENDERER);
+        {   // Whether the GPU takes the HD pictures' ASTC as it is (hd_texture.hpp).
+            GLint count = 0;
+            glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &count);
+            std::vector<GLint> formats(size_t(std::max(0, count)));
+            if (count > 0) glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats.data());
+            const auto has = [&](GLint f) { return std::find(formats.begin(), formats.end(), f) != formats.end(); };
+            fprintf(stderr, "SRW64_GL_COMPRESSED formats=%d astc4x4=%d astc6x6=%d bptc=%d\n", count, has(0x93B0), has(0x93B4), has(0x8E8C));
+        }
 #ifdef SRW64_NATIVE_DIALOGUE
         srw64::ui::render_init_gl();
 #endif
         // The original pictures: the Vita carries no HD art (docs/design/psv-port.md). Not
         // original_only(), which the HD layers read as "no switch", that is HD where they can.
-        srw64::presentation::image_mode.configure(false);
+        // The Switch's NRO carries the HD pack, prepared for its GPU (prepare_hd.py): HD by
+        // default, the settings' switch back to the originals; SRW64_HD_ART elsewhere.
+        {
+#ifdef __SWITCH__
+            std::filesystem::path hd_art = "romfs:/hd/art";
+#else
+            const char* hd_env = std::getenv("SRW64_HD_ART");
+            std::filesystem::path hd_art = hd_env ? hd_env : "";
+#endif
+            std::error_code missing;
+            const bool hd = !hd_art.empty() && std::filesystem::exists(hd_art / "srw64-portraits-hd.json", missing);
+            if (hd) {
+                srw64::backgrounds::initialize(capture_directory);
+                srw64::portraits::configure(hd_art, capture_directory);
+                srw64::backgrounds::configure(hd_art, capture_directory);
+                fprintf(stderr, "SRW64_HD_ART %s\n", hd_art.string().c_str());
+            }
+            srw64::presentation::image_mode.configure(hd);
+        }
         // The host's tagged draws (window frames, story and title text) from the modules that
         // tag them, as SRW64Renderer configures them; HD layers beyond these stay off here.
         srw64::hdmap::configure(capture_directory);
@@ -1167,6 +1193,11 @@ public:
         const auto t1 = SwitchPerf::clock::now();
 #endif
         frame.clear();
+        // The originals or HD as the settings ask (nothing to drain here, unlike RT64's cache).
+        {
+            auto& mode = srw64::presentation::image_mode;
+            if (mode.enabled() && mode.current() != int(mode.requested())) mode.acknowledge(mode.requested());
+        }
         // The picture follows the screen's shape, 4:3 to 16:9 (game_frame.hpp), as RT64's does
         // (at 16:9, 426.7 original pixels: 1280 target pixels at the scale of 3, the original
         // 160 in from each side). The game thread sizes the tactical map's view from it
