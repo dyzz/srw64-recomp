@@ -8,12 +8,16 @@
 // SRW64_VI_AUDIO=all sends the audio thread every retrace (the A/B for the audio claim);
 // SRW64_FAST_INTERVAL=1|2 is the hurried interval at 120 Hz (default 1, 4x).
 #include "guest_memory.hpp"
-#include "ultramodern/ultra64.h"
 #include <algorithm>
 #include <atomic>
 #include <cstdint>
 #include <cstdlib>
 #include <string_view>
+
+// The runtime's VI state (ultramodern/ultra64.h, a guest address), declared here so the
+// unit tests that include game_speed.hpp need no runtime headers.
+extern "C" int32_t osViGetCurrentFramebuffer();
+extern "C" int32_t osViGetNextFramebuffer();
 
 namespace srw64::sched_rate {
 inline uint32_t env_number(const char* name,uint32_t fallback) {
