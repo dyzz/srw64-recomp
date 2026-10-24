@@ -1,4 +1,5 @@
 #include "library.hpp"
+#include "dialogue_data.hpp"
 #include "native_dialogue.hpp"
 #include "upgrade_page.hpp"
 #include "combo_attacks.hpp"
@@ -104,16 +105,7 @@ std::string terrain(uint32_t at) {
 bool placeholder(const std::string& name) {
     return name.empty() || std::all_of(name.begin(),name.end(),[](char c){return c=='?' || c==' ' || (c>='0' && c<='9');});
 }
-const json& battle_assets() {
-    static const json art=[] {
-        const char* path=std::getenv("SRW64_DIALOGUE_DATA");
-        if(!path)return json::object();
-        std::ifstream source(path);
-        auto data=json::parse(source,nullptr,false);
-        return !data.is_discarded() && data.contains("battle_assets")?data.at("battle_assets"):json::object();
-    }();
-    return art;
-}
+const json& battle_assets() { return dialogue_data::battle_assets(); }
 void add_art(json& entry,const char* group,unsigned key) {
     const auto& art=battle_assets();
     if(art.contains(group) && art.at(group).contains(std::to_string(key)))entry["art"]=art.at(group).at(std::to_string(key));

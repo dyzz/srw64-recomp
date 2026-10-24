@@ -34,7 +34,7 @@ fs::path unused_stamped(const fs::path& directory,const std::string& suffix) {
     char stamp[32];std::strftime(stamp,sizeof stamp,"%Y%m%dT%H%M%SZ",&utc);
     for(unsigned n=1;n<1000;++n) {
         auto path=directory/(std::string(stamp)+(n>1?"-"+std::to_string(n):"")+suffix);
-        if(!fs::exists(path))return path;
+        if(!present(path))return path;
     }
     throw std::runtime_error("No free name in "+directory.string());
 }
@@ -55,14 +55,14 @@ bool session_token(std::string_view value) {
 SaveLibrary::SaveLibrary(fs::path directory):root(std::move(directory)) {}
 
 std::optional<sram::Bytes> SaveLibrary::read_cartridge() const {
-    if(!fs::exists(cartridge()))return std::nullopt;
+    if(!present(cartridge()))return std::nullopt;
     auto card=read_bytes(cartridge(),sram::size);
     require_usable(card,cartridge().string(),"; restore cartridge.sram.prev or another save with --import-save");
     return card;
 }
 void SaveLibrary::publish_cartridge(std::span<const uint8_t> card) {
     require_usable(card,"The new cartridge");
-    if(fs::exists(cartridge())) {
+    if(present(cartridge())) {
         const auto old=read_bytes(cartridge(),sram::size);
         if(std::equal(old.begin(),old.end(),card.begin(),card.end()))return;
         write_bytes(fs::path(cartridge())+=".prev",old);
@@ -75,9 +75,18 @@ fs::path SaveLibrary::slot_path(unsigned number) const {
     char name[16];std::snprintf(name,sizeof name,"%03u.rec",number);
     return root/"slots"/name;
 }
+// One listing of slots/, not a look for each of the 97 names (a slow memory card's, and
+// every miss a line in Vita3K's log).
 std::vector<unsigned> SaveLibrary::slots() const {
     std::vector<unsigned> found;
-    for(unsigned n=first_slot;n<=last_slot;++n)if(fs::exists(slot_path(n)))found.push_back(n);
+    std::error_code error;
+    for(fs::directory_iterator entry(root/"slots",error),end;!error && entry!=end;entry.increment(error)) {
+        const auto name=entry->path().filename().string();
+        if(name.size()!=7 || name.compare(3,4,".rec")!=0 || !std::all_of(name.begin(),name.begin()+3,[](char c){return c>='0' && c<='9';}))continue;
+        const auto n=unsigned(std::stoul(name.substr(0,3)));
+        if(n>=first_slot && n<=last_slot)found.push_back(n);
+    }
+    std::sort(found.begin(),found.end());
     return found;
 }
 sram::Bytes SaveLibrary::read_slot(unsigned number) const {
@@ -89,7 +98,8 @@ void SaveLibrary::write_slot(unsigned number,std::span<const uint8_t> record) {
     write_record(slot_path(number),record,sram::slot_size);
 }
 unsigned SaveLibrary::next_free_slot() const {
-    for(unsigned n=first_slot;n<=last_slot;++n)if(!fs::exists(slot_path(n)))return n;
+    const auto used=slots();
+    for(unsigned n=first_slot;n<=last_slot;++n)if(!std::binary_search(used.begin(),used.end(),n))return n;
     throw std::runtime_error("All extended slots 3-99 are in use");
 }
 void SaveLibrary::write_record(const fs::path& path,std::span<const uint8_t> record,size_t size) {
@@ -101,7 +111,7 @@ fs::path SaveLibrary::trash(const fs::path& record) {
     const auto target=unused_stamped(root/"trash","-"+record.filename().string());
     fs::create_directories(target.parent_path());
     auto beside=record;beside.replace_extension(".json");
-    if(fs::exists(beside)){auto moved=target;moved.replace_extension(".json");fs::rename(beside,moved);}
+    if(present(beside)){auto moved=target;moved.replace_extension(".json");fs::rename(beside,moved);}
     fs::rename(record,target);
     return target;
 }
@@ -152,7 +162,7 @@ unsigned SaveLibrary::keep(std::span<const uint8_t> record) {
 
 std::vector<unsigned> SaveLibrary::keep_cartridge_slots(std::span<const uint8_t> next) {
     std::vector<unsigned> kept;
-    if(!fs::exists(cartridge()))return kept;
+    if(!present(cartridge()))return kept;
     const auto old=read_bytes(cartridge(),sram::size);
     if(!sram::formatted(old))return kept;
     const auto held=[&](std::span<const uint8_t> record) {
@@ -169,7 +179,7 @@ SaveLibrary::Imported SaveLibrary::import_cartridge(const fs::path& file) {
     Imported result{*sram::detect(bytes),{},{}};
     require_usable(card,file.string());
     // The old card may be the damaged one being replaced: keep what is intact.
-    if(fs::exists(cartridge())) {
+    if(present(cartridge())) {
         const auto old=read_bytes(cartridge(),sram::size);
         if(std::equal(old.begin(),old.end(),card.begin(),card.end()))return result;
         result.backup=unused_stamped(root/"imports",".sram");
@@ -214,7 +224,7 @@ fs::path SaveLibrary::export_cartridge(const fs::path& destination,sram::Format 
 }
 
 bool SaveLibrary::migrate_sessions(const fs::path& user_dir) {
-    if(fs::exists(cartridge()) || !fs::exists(user_dir/"last-session.txt"))return false;
+    if(present(cartridge()) || !fs::exists(user_dir/"last-session.txt"))return false;
     auto previous=read_text(user_dir/"last-session.txt",128);
     if(!previous.empty() && previous.back()=='\n')previous.pop_back();
     if(!session_token(previous))throw std::runtime_error(std::string("Invalid last-session pointer")+recover);

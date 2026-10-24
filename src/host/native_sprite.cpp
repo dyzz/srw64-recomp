@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #include "native_sprite.hpp"
+#include "run_files.hpp"
 #include "native_quads.hpp"
 #include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
@@ -602,7 +603,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     }
     if (installed) return;
     installed = true;
-    if (!output.empty()) log.open(output / "scene-sprites.jsonl");
+    if (!output.empty()) srw64::open_run_log(log,output / "scene-sprites.jsonl");
     worker = std::thread(work);
     // Chain after marker/hdmap/portraits, which install their hooks first.
 #ifndef SRW64_GL_ONLY

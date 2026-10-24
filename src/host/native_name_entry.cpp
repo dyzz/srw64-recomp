@@ -1,4 +1,6 @@
 #include "native_name_entry.hpp"
+#include "dialogue_data.hpp"
+#include "run_files.hpp"
 #include "native_dialogue.hpp"
 #include "game_adapter/name_codec.hpp"
 #include "game_hooks.hpp"
@@ -217,9 +219,9 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned person) {
 }
 DefaultNames& default_names() {static DefaultNames table;return table;}
 void configure(const std::filesystem::path& directory) {
-    const char* path=std::getenv("SRW64_DIALOGUE_DATA");
-    if(!path || (std::getenv("SRW64_NATIVE_NAME_ENTRY") && std::string(std::getenv("SRW64_NATIVE_NAME_ENTRY"))=="0"))return;
-    std::ifstream source(path);nlohmann::json data;source>>data;
+    const auto* document=dialogue_data::document();
+    if(!document || (std::getenv("SRW64_NATIVE_NAME_ENTRY") && std::string(std::getenv("SRW64_NATIVE_NAME_ENTRY"))=="0"))return;
+    const auto& data=*document;
     for(const auto& [key,value]:data.at("glyphs").items())codec.add(std::stoul(key),dialogue::utf16(value.get<std::string>()));
     if(data.contains("battle_assets") && data.at("battle_assets").contains("units"))unit_art=data.at("battle_assets").at("units");
     if(data.contains("name_entry_assets")) {
@@ -229,7 +231,7 @@ void configure(const std::filesystem::path& directory) {
             portrait_paths[p][route]={row.at("original").get<std::string>(),row.value("hd",row.at("original").get<std::string>())};
         }
     }
-    enabled=true;log.open(directory/"name-entry-events.jsonl");
+    enabled=true;srw64::open_run_log(log,directory/"name-entry-events.jsonl");
     srw64_game_hooks.name_begin=begin;srw64_game_hooks.name_step=step;
 }
 void initialize_rom(const uint8_t* rom,size_t size) {

@@ -1,4 +1,5 @@
 #include "intermission_page.hpp"
+#include "run_files.hpp"
 #include "presentation_settings.hpp"
 #include "native_dialogue.hpp"
 #include "localization/catalog.hpp"
@@ -171,7 +172,7 @@ void frame(uint8_t* ram) {
 void configure(const std::filesystem::path& directory) {
     if(const char* v=std::getenv("SRW64_NATIVE_INTERMISSION");v && std::string_view(v)=="0")return;
     if(!std::getenv("SRW64_DIALOGUE_DATA"))return; // Legacy unprofiled runs keep the original menu.
-    log.open(directory/"intermission-events.jsonl");
+    srw64::open_run_log(log,directory/"intermission-events.jsonl");
     srw64_game_hooks.intermission_build=build;srw64_game_hooks.intermission_step=step;srw64_game_hooks.intermission_frame=frame;
 }
 json state(){std::lock_guard lock(mutex);return current;}

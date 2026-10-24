@@ -34,6 +34,13 @@ std::string srw64_switch_language();
 #include <unistd.h>
 extern char** environ;
 #endif
+#ifdef __vita__
+#include <malloc.h>
+#include <psp2/kernel/sysmem.h>
+#include <psp2/io/dirent.h>
+#include <psp2/io/fcntl.h>
+#include <psp2/io/stat.h>
+#endif
 #ifdef __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
 #include <libproc.h>
@@ -86,7 +93,7 @@ void prune_sessions(const fs::path& user_dir, const fs::path& current) {
     for (size_t i=0;i<older.size();++i) {
         const auto& path=older[i].second;
         if (i<keep || path.filename()==pointed) remove_rom_copies(path/"run");
-        else fs::remove_all(path,error);
+        else remove_tree(path,error);
     }
 }
 void require_save(const fs::path& path) {
@@ -351,9 +358,13 @@ fs::path content_path(const fs::path& root,const std::string& relative) {
 }
 std::string read_text(const fs::path& path,size_t limit) {
     if (!fs::is_regular_file(path) || fs::file_size(path)>limit) throw std::runtime_error("Invalid or oversized file: "+path.string());
+    // One read into a string of the file's size: a character at a time through the
+    // stream took a slow CPU (the PS Vita's) many seconds for the ROM.
     std::ifstream file(path,std::ios::binary);
-    std::string data((std::istreambuf_iterator<char>(file)),{});
-    if (!file || data.size()>limit) throw std::runtime_error("Cannot read file: "+path.string());
+    std::string data(size_t(fs::file_size(path)),'\0');
+    file.read(data.data(),std::streamsize(data.size()));
+    if (!file || size_t(file.gcount())!=data.size() || file.peek()!=std::ifstream::traits_type::eof())
+        throw std::runtime_error("Cannot read file: "+path.string());
     return data;
 }
 bool valid_campaign_id(const std::string& id) {
@@ -371,6 +382,108 @@ void atomic_write(const fs::path& path,std::string_view text) {
         file.write(text.data(),static_cast<std::streamsize>(text.size())); file.flush(); file.close();
         replace_file(temporary,path);
     } catch (...) { std::error_code ignored;fs::remove(temporary,ignored);throw; }
+}
+namespace {
+bool device_path(const fs::path& path) {
+#ifdef __vita__
+    const auto text=path.generic_string();
+    const auto colon=text.find(':');
+    return colon!=std::string::npos && text.find('/')>colon;
+#else
+    (void)path;return false;
+#endif
+}
+}
+fs::path absolute_path(const fs::path& path) { return device_path(path)?path.lexically_normal():fs::absolute(path); }
+fs::path canonical_path(const fs::path& path) {
+    if(!device_path(path))return fs::canonical(path);
+    if(!fs::exists(path))throw fs::filesystem_error("canonical",path,std::make_error_code(std::errc::no_such_file_or_directory));
+    return path.lexically_normal();
+}
+namespace {
+const auto program_start=std::chrono::steady_clock::now();
+}
+namespace { void (*boot_listener)(const char*)=nullptr; }
+void set_boot_listener(void (*listener)(const char* line)) { boot_listener=listener; }
+void boot_step(const std::string& what) {
+    const double seconds=std::chrono::duration<double>(std::chrono::steady_clock::now()-program_start).count();
+    char line[160];
+#ifdef __vita__
+    const struct mallinfo heap=mallinfo();
+    SceKernelFreeMemorySizeInfo free{};
+    free.size=sizeof free;
+    sceKernelGetFreeMemorySize(&free);
+    std::fprintf(stderr,"SRW64_BOOT %s %.2f s heap=%d MiB free=%d MiB\n",what.c_str(),seconds,
+                 heap.uordblks>>20,free.size_user>>20);
+    std::snprintf(line,sizeof line,"%s %.1f s heap %d MiB free %d MiB",what.c_str(),seconds,heap.uordblks>>20,free.size_user>>20);
+#else
+    std::fprintf(stderr,"SRW64_BOOT %s %.2f s\n",what.c_str(),seconds);
+    std::snprintf(line,sizeof line,"%s %.1f s",what.c_str(),seconds);
+#endif
+    std::fflush(stderr);
+    if(boot_listener)boot_listener(line);
+}
+void remove_tree(const fs::path& path, std::error_code& error) {
+#ifdef __vita__
+    // The system's own calls: newlib's directory listing and removal hung on the console
+    // (never in Vita3K) when the first old session was pruned.
+    error.clear();
+    const std::string name=path.string();
+    SceIoStat stat{};
+    if (sceIoGetstat(name.c_str(),&stat)<0) return;  // already gone
+    if (!SCE_S_ISDIR(stat.st_mode)) {
+        if (sceIoRemove(name.c_str())<0) error=std::make_error_code(std::errc::io_error);
+        return;
+    }
+    std::vector<std::string> entries;
+    const SceUID dir=sceIoDopen(name.c_str());
+    if (dir<0) { error=std::make_error_code(std::errc::io_error); return; }
+    SceIoDirent entry{};
+    while (sceIoDread(dir,&entry)>0) {
+        const std::string child=entry.d_name;
+        if (child!="." && child!="..") entries.push_back(child);
+    }
+    sceIoDclose(dir);
+    for (const auto& child:entries) { remove_tree(path/child,error); if (error) return; }
+    if (sceIoRmdir(name.c_str())<0) error=std::make_error_code(std::errc::io_error);
+#else
+    fs::remove_all(path,error);
+#endif
+}
+std::set<std::string> list_names(const fs::path& folder) {
+    std::set<std::string> names;
+    std::error_code error;
+    for (fs::directory_iterator entry(folder,error),end;!error && entry!=end;entry.increment(error))
+        names.insert(entry->path().filename().string());
+    return names;
+}
+bool present(const fs::path& path) {
+#ifdef __vita__
+    return list_names(path.parent_path()).contains(path.filename().string());
+#else
+    return fs::exists(path);
+#endif
+}
+bool copy_file(const fs::path& from, const fs::path& to, bool overwrite, std::error_code& error) {
+#ifdef __vita__
+    error.clear();
+    if (!overwrite && present(to)) { error=std::make_error_code(std::errc::file_exists); return false; }
+    std::ifstream input(from,std::ios::binary);
+    if (!input) { error=std::make_error_code(std::errc::no_such_file_or_directory); return false; }
+    const std::string bytes((std::istreambuf_iterator<char>(input)),{});
+    if (input.bad()) { error=std::make_error_code(std::errc::io_error); return false; }
+    std::ofstream output(to,std::ios::binary|std::ios::trunc);
+    output.write(bytes.data(),std::streamsize(bytes.size()));
+    output.close();
+    if (!output) { error=std::make_error_code(std::errc::io_error); return false; }
+    return true;
+#else
+    return fs::copy_file(from,to,overwrite?fs::copy_options::overwrite_existing:fs::copy_options::none,error);
+#endif
+}
+void copy_file(const fs::path& from, const fs::path& to, bool overwrite) {
+    std::error_code error;
+    if (!copy_file(from,to,overwrite,error)) throw fs::filesystem_error("cannot copy file",from,to,error);
 }
 fs::path executable_path() {
 #ifdef _WIN32
@@ -393,6 +506,11 @@ fs::path executable_path() {
 #endif
 }
 fs::path bundled_resource(const std::string& name) {
+#ifdef __vita__
+    // The VPK's files, in app0: as packaged (tools/release/vita/package_vpk.py).
+    static const auto packaged=list_names("app0:/");
+    return packaged.contains(name)?fs::path("app0:/"+name):fs::path{};
+#endif
 #ifdef __ANDROID__
     // No program file beside its resources: the app unpacks them from the APK and names
     // the folder (tools/release/android, SRW64Activity).
@@ -411,7 +529,7 @@ fs::path bundled_resource(const std::string& name) {
     return {};
 }
 fs::path game_folder() {
-#ifdef __ANDROID__
+#if defined(__ANDROID__) || defined(__vita__)
     return {};
 #else
     auto folder=executable_path().parent_path();
@@ -594,6 +712,7 @@ Session::Session(const Options& options) {
     root=fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir);
     fs::create_directories(root);
     lock=std::make_unique<UserLock>(root);
+    boot_step("saves");
     // The card lives in saves/ (save_library.hpp); sessions/ keeps each run's copy. A
     // campaign's saves name scenes its stages borrow, so they live apart from the game's.
     if (!options.campaign.empty() && !valid_campaign_id(options.campaign_id))
@@ -622,10 +741,11 @@ Session::Session(const Options& options) {
         directory.clear();
     }
     if (directory.empty()) throw std::runtime_error("Cannot allocate a unique play session");
+    boot_step("old sessions");
     prune_sessions(root,directory);   // under the user lock: no other game uses them
     if (source) {
         initial=directory/"initial.bin";
-        fs::copy_file(*source,*initial);
+        app::copy_file(*source,*initial);
         require_save(*initial);
         if (sha256_file(*initial)!=source_hash) throw std::runtime_error("Save changed during staging");
     }
@@ -642,7 +762,7 @@ bool Session::commit_save(const fs::path& host_save) {
     Sha256 digest;digest.update(card);
     const auto expected=digest.finish();
     const auto save=directory/"save.bin";
-    fs::copy_file(host_save,save);
+    app::copy_file(host_save,save);
     require_save(save);
     if (sha256_file(save)!=expected) throw std::runtime_error("Host save changed before publication");
     SaveLibrary(saves_root).publish_cartridge(card);

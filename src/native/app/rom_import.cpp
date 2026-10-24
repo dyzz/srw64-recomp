@@ -5,6 +5,7 @@
 #include "sha256.hpp"
 #include "json/json.hpp"
 #include <charconv>
+#include <functional>
 #include <random>
 #include <regex>
 #include <set>
@@ -12,9 +13,6 @@
 #include "srw64_import_spec.hpp"
 #endif
 
-#ifdef __SWITCH__
-void srw64_switch_mark(const char* label);   // src/host/switch/switch_platform.cpp
-#endif
 namespace srw64::app {
 std::string_view embedded_import_spec() {
 #ifdef SRW64_EMBEDDED_IMPORT_SPEC
@@ -26,7 +24,10 @@ std::string_view embedded_import_spec() {
 namespace {
 using json=nlohmann::json;
 using rom_import::Bytes;
-constexpr unsigned importer_version=3;
+constexpr unsigned importer_version=4;
+// Version 4: the images in one art.pack, referred to as "art.pack#<offset>:<size>" (a slow
+// memory card took minutes over 700 small files, and the PS Vita's stopped part-way).
+std::function<void(size_t,size_t)> progress;
 std::string hash(Bytes data){Sha256 value;value.update(data);return value.finish();}
 Bytes bytes(std::string_view text){return {reinterpret_cast<const uint8_t*>(text.data()),text.size()};}
 std::string hash(std::string_view text){return hash(bytes(text));}
@@ -115,6 +116,7 @@ json compile_text(Bytes rom,const json& spec) {
     return data;
 }
 }
+void set_import_progress(std::function<void(size_t done,size_t total)> report){progress=std::move(report);}
 fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root,
                              std::string_view spec_text,const std::string& expected_rom_hash) {
     if(spec_text.empty())throw std::runtime_error("This build has no embedded importer metadata; rebuild with SRW64_EMBED_IMPORT_SPEC or pass --content");
@@ -146,14 +148,25 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
     if(staging.empty())throw std::runtime_error("Cannot create import staging directory");
     try {
         std::fprintf(stderr,"SRW64_ROM_IMPORT_BEGIN %s\n",destination.string().c_str());
-#ifdef __SWITCH__
-        ::srw64_switch_mark("First launch: reading the game's text and pictures from the ROM...");
-#endif
+        if(progress)progress(0,1);
+        boot_step("import: text");
+        constexpr size_t unit_rows=365,portrait_rows=361;
+        size_t done=0,total=0;
+        const auto advance=[&](const char* what) {
+            ++done;
+            if(progress)progress(done,total);
+            if(what)boot_step(what);
+        };
         auto data=compile_text(rom,spec);json inventory=json::object(),portraits=json::object();
-        fs::create_directory(staging/"name-entry");
+        // The images, each once by its name, packed in art.pack.
+        std::string pack;std::map<std::string,std::pair<std::string,std::string>> packed;  // name -> (reference, sha256)
         auto publish=[&](const std::string& relative,Bytes content) {
-            atomic_write(staging/relative,{reinterpret_cast<const char*>(content.data()),content.size()});
-            inventory[relative]=hash(content);
+            if(!packed.contains(relative)) {
+                const auto reference="art.pack#"+std::to_string(pack.size())+":"+std::to_string(content.size());
+                pack.append(reinterpret_cast<const char*>(content.data()),content.size());
+                packed[relative]={reference,hash(content)};
+            }
+            return packed.at(relative);
         };
         constexpr size_t route_offset=0x1090a0+0x801c6bf0-0x801c2600;
         constexpr std::array<unsigned,8> routes{27,28,25,26,31,32,29,30};
@@ -161,19 +174,22 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
         for(size_t i=0;i<routes.size();++i)
             if(rom_import::be16(rom,route_offset+i*2)!=routes[i])throw std::runtime_error("Opening portrait table changed");
         std::set<unsigned> faces(routes.begin(),routes.end());faces.insert(linked.begin(),linked.end());
+        total=1+faces.size()+(spec.value("battle_art",false)?unit_rows+portrait_rows:0)+2;
+        advance("import: name entry faces");
         for(const auto face:faces) {
             const auto image_id=rom_import::be16(rom,0x84220+size_t(face)*4),palette_id=rom_import::be16(rom,0x84222+size_t(face)*4);
             const auto image=rom_import::resource(rom,0xa20bd0,image_id),palette=rom_import::resource(rom,0xa20bd0,palette_id);
             const auto pixels=rom_import::portrait(image.bytes,palette.bytes);
             const auto png=rom_import::portrait_png(pixels);
-            const auto relative="name-entry/face-"+std::to_string(face)+".png";publish(relative,png);
-            portraits[std::to_string(face)]={{"original",relative},{"original_sha256",inventory.at(relative)},
+            const auto [reference,digest]=publish("name-entry/face-"+std::to_string(face)+".png",png);
+            portraits[std::to_string(face)]={{"original",reference},{"original_sha256",digest},
                 {"resource_id",image_id},{"palette_id",palette_id}};
+            advance(nullptr);
         }
         data["name_entry_assets"]={{"schema","srw64.name-entry-assets.v1"},{"portraits",portraits},
             {"route_faces",{{27,28,25,26},{31,32,29,30}}},{"link_faces",{{41,230},{133,131,132},{152,151,153}}},{"source_sha256",nullptr}};
         if(spec.value("battle_art",false)) {
-        fs::create_directory(staging/"battle");
+        boot_step("import: unit images");
         json battle={{"schema","srw64.battle-assets.v1"},{"units",json::object()},{"portraits",json::object()}};
         std::map<unsigned,std::vector<uint8_t>> resource_cache;
         auto resource=[&](unsigned id)->rom_import::Bytes {
@@ -181,10 +197,11 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
             return resource_cache.at(id);
         };
         auto save_art=[&](const std::string& path,const rom_import::Portrait& pixels) {
-            if(!inventory.contains(path))publish(path,rom_import::portrait_png(pixels));
-            return json{{"path",path},{"sha256",inventory.at(path)},{"width",pixels.width},{"height",pixels.height}};
+            const auto [reference,digest]=packed.contains(path)?packed.at(path):publish(path,rom_import::portrait_png(pixels));
+            return json{{"path",reference},{"sha256",digest},{"width",pixels.width},{"height",pixels.height}};
         };
-        for(unsigned id=0;id<365;++id) {
+        for(unsigned id=0;id<unit_rows;++id) {
+            advance(nullptr);
             const auto scene=rom_import::be16(rom,0x84e40+id*6),atlas=rom_import::be16(rom,0x84e42+id*6),palette=rom_import::be16(rom,0x84e44+id*6);
             if(!scene)continue;
             const auto pixels=rom_import::battle_pose(resource(scene),rom_import::battle_atlas(resource(atlas),resource(palette)));
@@ -192,7 +209,9 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
             // The launcher finds a bundled HD pose by this triplet (docs/design/unit-pose-hd.md).
             entry["facing"]="left";entry["resources"]={scene,atlas,palette};battle["units"][std::to_string(id)]=entry;
         }
-        for(unsigned id=0;id<361;++id) {
+        boot_step("import: battle faces");
+        for(unsigned id=0;id<portrait_rows;++id) {
+            advance(nullptr);
             const auto image=rom_import::be16(rom,0x84220+id*4),palette=rom_import::be16(rom,0x84222+id*4);
             auto entry=save_art("battle/face-"+std::to_string(image)+"-"+std::to_string(palette)+".png",
                 rom_import::battle_atlas(resource(image),resource(palette)));
@@ -200,19 +219,23 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
             entry["resources"]={image,palette};battle["portraits"][std::to_string(id)]=entry;
         }
         data["battle_assets"]=battle;
+        boot_step("import: write");
         }
+        atomic_write(staging/"art.pack",pack);inventory["art.pack"]=hash(pack);
         const auto dialogue=data.dump()+"\n";
         if(dialogue.size()>32*1024*1024)throw std::runtime_error("Dialogue output exceeds bootstrap budget");
-        publish("dialogue.json",bytes(dialogue));
+        atomic_write(staging/"dialogue.json",dialogue);inventory["dialogue.json"]=hash(dialogue);
+        advance("import: verify");
         const auto scale=integer(spec.at("resolution_scale"),8,"resolution scale");if(!scale)throw std::runtime_error("Invalid resolution scale");
         const json manifest={{"schema","srw64.standalone-content.v1"},{"baseline","srw64-jp-rev0"},{"rom_sha256",expected_rom_hash},
             {"dialogue","dialogue.json"},{"resolution_scale",scale},{"files",inventory},{"distribution","local-only-rom-derived-content"},
             {"importer_version",importer_version},{"import_key",key},{"spec_sha256",hash(spec_text)}};
         atomic_write(staging/"manifest.json",manifest.dump(2)+"\n");verify_cached(staging,key,expected_rom_hash);
+        advance("import: done");
         // The caller holds the Session lock; no reader observes a partial cache.
         fs::rename(staging,destination);
-        std::fprintf(stderr,"SRW64_ROM_IMPORT_COMPLETE %zu text records, %zu portraits\n",data.at("source_entries").size(),portraits.size());
+        std::fprintf(stderr,"SRW64_ROM_IMPORT_COMPLETE %u text records, %u images\n",unsigned(data.at("source_entries").size()),unsigned(packed.size()));
         return destination;
-    } catch(...) {std::error_code ignored;fs::remove_all(staging,ignored);throw;}
+    } catch(...) {std::error_code ignored;remove_tree(staging,ignored);throw;}
 }
 }

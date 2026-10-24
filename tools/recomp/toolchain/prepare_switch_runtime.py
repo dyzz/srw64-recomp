@@ -22,6 +22,11 @@ manifest with before/after hashes. build/recomp/switch-runtime/ then holds:
                               moodycamel's POSIX semaphores for the Switch too (devkitA64's
                               newlib has semaphore.h but does not define __unix__); the
                               queue header copied so its sibling include finds the patched one
+  events.cpp                  the VI thread's swap of the VI states under the setters' lock,
+                              as on the PS Vita (prepare_vita_runtime.py): unlocked, a VI event
+                              the game set between the swap and the copy was overwritten
+                              (mq 0), no VI message came again, and every game thread waited
+                              in osRecvMesg (the world map hang, 2026-10-24, creport)
   error_handling.cpp          std::_Exit: libstdc++ there has no std::quick_exit
   files.cpp                   the save file's backup and publication copied through streams:
                               libstdc++'s copy_file sets the copy's mode, which the SD card
@@ -251,6 +256,17 @@ def adapt_error_handling(source: str) -> str:
     std::_Exit(exit_status);''')
 
 
+def adapt_events(source: str) -> str:
+    return replace_once(source, """        // Update VI registers and swap VI modes.
+        events_context.vi.update_vi();
+""", """        // Update VI registers and swap VI modes, under the lock the setters take.
+        {
+            std::lock_guard lock{ events_context.message_mutex };
+            events_context.vi.update_vi();
+        }
+""")
+
+
 FILES_HELPER = '''
 namespace {
 // std::filesystem::copy_file through streams: libstdc++'s sets the copy's mode, which the
@@ -322,6 +338,7 @@ def main() -> None:
         ("include/lightweightsemaphore.h", runtime, "thirdparty/concurrentqueue/lightweightsemaphore.h", adapt_semaphore),
         ("include/blockingconcurrentqueue.h", runtime, "thirdparty/concurrentqueue/blockingconcurrentqueue.h", lambda text: text),
         ("error_handling.cpp", runtime, "ultramodern/src/error_handling.cpp", adapt_error_handling),
+        ("events.cpp", runtime, "ultramodern/src/events.cpp", adapt_events),
         ("files.cpp", runtime, "librecomp/src/files.cpp", adapt_files),
     ]
     records = []

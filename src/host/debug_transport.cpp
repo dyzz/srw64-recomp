@@ -11,6 +11,8 @@
 #include <atomic>
 #include <chrono>
 #include <cctype>
+#include <vector>
+#include <memory>
 #include <fstream>
 #include <mutex>
 #include <random>
@@ -245,7 +247,20 @@ void accept_loop(Socket listener) {
         const Socket client=::accept(listener,nullptr,nullptr);
         if(client==invalid)continue;
         {std::lock_guard lock(clients_mutex);clients.insert(client);}
+#ifdef __SWITCH__
+        // libnx never frees a detached thread (its stack, its handle): each connection left
+        // one behind, and after enough of them the next std::thread failed and ended the game
+        // (creport, 2026-10-24). Joined here once they have served.
+        static std::vector<std::pair<std::thread,std::shared_ptr<std::atomic<bool>>>> served;
+        std::erase_if(served,[](auto& entry){
+            if(!entry.second->load())return false;
+            entry.first.join();return true;
+        });
+        auto done=std::make_shared<std::atomic<bool>>(false);
+        served.emplace_back(std::thread([client,expected=token,done]{serve(client,expected);*done=true;}),done);
+#else
         std::thread(serve,client,token).detach();
+#endif
     }
     close_socket(listener);
     looping=false;

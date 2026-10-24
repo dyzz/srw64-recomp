@@ -7,6 +7,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import importlib.util
+import io
 import json
 import os
 from pathlib import Path
@@ -24,6 +25,16 @@ if "--probe" in sys.argv:
     pos = sys.argv.index("--probe")
     PROBE = sys.argv[pos + 1]
     del sys.argv[pos:pos + 2]
+
+
+def image_bytes(folder, reference):
+    """An imported image: a file of its own, or a range of the art pack ("art.pack#<offset>:<size>")."""
+    name, _, span = reference.partition("#")
+    data = (Path(folder) / name).read_bytes()
+    if not span:
+        return data
+    offset, size = (int(part) for part in span.split(":"))
+    return data[offset:offset + size]
 
 
 def sha(data):
@@ -126,9 +137,9 @@ class NativeImporterTests(unittest.TestCase):
             colors = [tuple(round(((v >> s) & 31) * 255 / 31) for s in (11,6,1)) + (255 * (v & 1),)
                       for (v,) in struct.iter_unpack(">H", palette[8:])]
             expected = bytes(c for i in image[8:] for c in colors[i])
-            with Image.open(path / row["original"]) as png:
+            with Image.open(io.BytesIO(image_bytes(path, row["original"]))) as png:
                 self.assertEqual(png.convert("RGBA").tobytes(), expected)
-            self.assertEqual(sha((path / row["original"]).read_bytes()), row["original_sha256"])
+            self.assertEqual(sha(image_bytes(path, row["original"])), row["original_sha256"])
 
     def test_cache_reuse_and_versioned_metadata(self):
         first = Path(self.run_probe().stdout.strip())
@@ -141,10 +152,10 @@ class NativeImporterTests(unittest.TestCase):
 
     def test_corrupt_cache_fails_closed(self):
         first = Path(self.run_probe().stdout.strip())
-        (first / "name-entry/face-27.png").write_bytes(b"broken")
+        (first / "art.pack").write_bytes(b"broken")
         failed = self.run_probe(okay=False)
         self.assertIn("Cached import is invalid", failed.stderr)
-        self.assertEqual((first / "name-entry/face-27.png").read_bytes(), b"broken")
+        self.assertEqual((first / "art.pack").read_bytes(), b"broken")
 
     def test_bad_translation_and_failed_import_keep_previous(self):
         good = Path(self.run_probe().stdout.strip()); before = (good / "manifest.json").read_bytes()
@@ -219,14 +230,14 @@ class NativeImporterTests(unittest.TestCase):
             self.assertEqual(data["locale_catalogs"][locale["locale"]]["entries"], compile_locale(locale, sources, hashes))
         original = prepare_name_assets(self.rom.read_bytes(), self.root / "python-portraits")
         for face, row in original["portraits"].items():
-            with Image.open(row["original"]) as a, Image.open(native / data["name_entry_assets"]["portraits"][face]["original"]) as b:
+            with Image.open(row["original"]) as a, Image.open(io.BytesIO(image_bytes(native, data["name_entry_assets"]["portraits"][face]["original"]))) as b:
                 self.assertEqual(a.convert("RGBA").tobytes(), b.convert("RGBA").tobytes())
         from srw64_native.battle_assets import prepare_battle_assets
         battle = prepare_battle_assets(ROOT, self.rom.read_bytes(), self.root / "python-battle")
         for group in ("units", "portraits"):
             self.assertEqual(set(battle[group]), set(data["battle_assets"][group]))
             for identity, art in battle[group].items():
-                with self.subTest(group=group, identity=identity), Image.open(art["path"]) as a, Image.open(native / data["battle_assets"][group][identity]["path"]) as b:
+                with self.subTest(group=group, identity=identity), Image.open(art["path"]) as a, Image.open(io.BytesIO(image_bytes(native, data["battle_assets"][group][identity]["path"]))) as b:
                     self.assertEqual(a.size, b.size)
                     self.assertEqual(a.convert("RGBA").tobytes(), b.convert("RGBA").tobytes())
 

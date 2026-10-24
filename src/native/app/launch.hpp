@@ -11,4 +11,11 @@ using HostMain = std::function<int(int, char**)>;
 // Injection seam for ROM-free tests. The game CLI never accepts import metadata.
 using ContentImporter = std::function<fs::path(const fs::path&, const fs::path&, const std::string&)>;
 int run_standalone(const Options&, const GameIdentity&, const HostMain&, const ContentImporter& = {});
+// The PS Vita (docs/design/psv-port.md): its data is prepared on a computer
+// (tools/release/vita/prepare_data.py) and copied into the player's folder, game/ holding
+// the ROM, the art pack and the dialogue data as the host reads them. Nothing is checked,
+// imported or rewritten at start; the run's files go in run/, the same folder each time.
+inline constexpr unsigned prepared_format=1;
+inline constexpr const char* prepared_schema="srw64.prepared-data.v1";
+int run_prepared(const Options&, const GameIdentity&, const HostMain&);
 }

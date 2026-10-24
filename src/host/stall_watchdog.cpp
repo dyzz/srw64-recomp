@@ -155,6 +155,43 @@ void frame_done() {
     }
 }
 }
+#elif defined(__SWITCH__)
+// The Switch (docs/design/switch-port.md, S1): no signals to sample a thread with. A stall
+// of the display lists while the VI goes on breaks into the kernel instead: Atmosphère's
+// creport then writes every thread's stack (sdmc:/atmosphere/crash_reports), which is what
+// the hang on the world map needs. The game ends; it was not drawing anyway.
+#include <atomic>
+#include <chrono>
+#include <cstdio>
+#include <thread>
+#include <switch.h>
+
+uint64_t srw64_current_vi();
+
+namespace srw64::stall {
+namespace {
+std::atomic<uint64_t> frames{0};
+void watch() {
+    uint64_t last_frames = frames.load(), last_vi = srw64_current_vi();
+    auto since = std::chrono::steady_clock::now();
+    for (;;) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        const uint64_t f = frames.load(), vi = srw64_current_vi();
+        const auto now = std::chrono::steady_clock::now();
+        if (f != last_frames) { last_frames = f; last_vi = vi; since = now; continue; }
+        const double seconds = std::chrono::duration<double>(now - since).count();
+        if (f > 0 && seconds >= 10 && vi >= last_vi + 300) {
+            std::fprintf(stderr, "SRW64_STALL vi=%llu frames=%llu stalled=%.1fs: breaking for creport\n",
+                         (unsigned long long)vi, (unsigned long long)f, seconds);
+            std::fflush(stderr);
+            svcBreak(BreakReason_Panic, 0, 0);
+        }
+    }
+}
+}
+void start() { std::thread(watch).detach(); }
+void frame_done() { frames.fetch_add(1, std::memory_order_relaxed); }
+}
 #else
 namespace srw64::stall {
 void start() {}

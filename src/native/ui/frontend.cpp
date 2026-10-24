@@ -1147,12 +1147,10 @@ std::string image(const std::string& path) {
         queue_rgba(name,std::vector<char>(rgba.pixels.begin(),rgba.pixels.end()),uint32_t(rgba.width),uint32_t(rgba.height));
         return images[path]=name;
     }
-    std::ifstream file(path,std::ios::binary);
-    if(!file)throw std::runtime_error("Cannot load shared UI portrait: "+path);
     // RmlUi normalizes leading slashes in URLs. Stable relative resource keys
     // avoid platform-specific filesystem paths leaking into its URL resolver.
     const auto name="portrait-"+std::to_string(images.size());
-    queue_file(name,{std::istreambuf_iterator<char>(file),{}});images[path]=name;return name;
+    queue_file(name,presentation::read_image_bytes(path));images[path]=name;return name;
 }
 // Page portraits: the whole HD image while the applied image mode is HD and the asset
 // carries one (docs/native/native-portraits-hd.md), otherwise the ROM original.

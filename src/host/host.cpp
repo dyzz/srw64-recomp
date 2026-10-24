@@ -1,6 +1,7 @@
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
 #include "console_log.hpp"
+#include "dialogue_data.hpp"
 #include "crash_dump.hpp"
 // Native integration host, optionally rendered through RT64/Metal.
 #include <atomic>
@@ -32,7 +33,9 @@
 #include "upgrade_refund.hpp"
 #include "parts_carry.hpp"
 #include "graphics.hpp"
+#include "run_files.hpp"
 #include "app/launch.hpp"
+#include "app/rom_import.hpp"
 #include "app/desktop.hpp"
 #include "app/rom_order.hpp"
 #include "audio.hpp"
@@ -42,10 +45,10 @@
 #include "wide_map.hpp"
 #include "battle_hud.hpp"
 #include "game_frame.hpp"
-#ifdef __SWITCH__
-void srw64_switch_mark(const char* label);   // switch/switch_platform.cpp: startup timing
-#endif
 #include <algorithm>
+#include <chrono>
+#include <thread>
+#include <mutex>
 #include <iterator>
 #include "native_portrait.hpp"
 #include "native_background.hpp"
@@ -88,6 +91,9 @@ extern uint8_t* srw64_rdram;  // defined below, for debug_server.cpp
 
 RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
 
+#ifdef __vita__
+void srw64_vita_perf_thread(const char* label);  // vita/vita_platform.cpp
+#endif
 namespace {
 std::atomic<uint64_t> vi_count{}, dl_count{}, audio_tasks{}, audio_samples{};
 std::atomic<uint32_t> frequency{};
@@ -190,8 +196,19 @@ void on_init(uint8_t* rdram, recomp_context*) {
 }
 
 void on_vi() {
+#ifdef __vita__
+    srw64_vita_perf_thread("vi");
+#endif
     const uint64_t vi = ++vi_count;
-    if (vi % 6 == 0) {
+#if defined(__vita__) || defined(__SWITCH__)
+    // The PS Vita and the Switch are driven through the debug interface only: no control.txt
+    // to read (its absence, ten times a second, would be ten lookups of a missing file on a
+    // memory card) or live state.
+    const bool run_files = false;
+#else
+    const bool run_files = srw64_run_files();
+#endif
+    if (run_files && vi % 6 == 0) {
         srw64::script_inject::poll_file(output_dir);
         std::ifstream command(output_dir / "control.txt");
         std::string magic, extra;
@@ -210,7 +227,7 @@ void on_vi() {
             }
         }
     }
-    if (vi % 60 == 0) {
+    if (run_files && vi % 60 == 0) {
         const auto temporary = output_dir / "live-state.tmp";
         {
             std::ofstream state(temporary);
@@ -274,6 +291,9 @@ RspUcodeFunc* get_microcode(const OSTask* task) {
     if (task->t.type != 2 || (uint32_t)task->t.ucode != 0x800C4910 ||
         (uint32_t)task->t.ucode_data != 0x800CF4D0) return nullptr;
     ++audio_tasks;
+#ifdef __vita__
+    srw64_vita_perf_thread("rsp");
+#endif
     return srw64_audio_probe;
 }
 }
@@ -397,7 +417,11 @@ static int run_host(int argc, char** argv) {
         if (std::string(variant_key) == known.key) variant = &known;
     }
     if (!variant) fail("unknown ROM variant");
+#if !defined(__vita__) && !defined(__SWITCH__)
     if (std::filesystem::exists(output_dir)) fail("output directory already exists");
+#endif
+    // The PS Vita and the Switch run in the same folder each time, prepared with their data
+    // (run_prepared).
     std::filesystem::create_directories(output_dir);
     srw64::console_log::attach(output_dir);
 #ifdef _WIN32
@@ -420,7 +444,8 @@ static int run_host(int argc, char** argv) {
         if (std::filesystem::file_size(argv[5]) != 0x8000) fail("initial SRAM must be exactly 32 KiB");
         const auto saves = output_dir / "runtime-data/saves";
         std::filesystem::create_directories(saves);
-        if (!std::filesystem::copy_file(argv[5], saves / variant->save_file)) fail("initial SRAM copy failed");
+        std::error_code copied;
+        if (!srw64::app::copy_file(argv[5], saves / variant->save_file, false, copied)) fail("initial SRAM copy failed");
         std::fprintf(stderr, "SRW64_INITIAL_SRAM copied=32768\n");
         initial_sram = saves / variant->save_file;
     }
@@ -443,9 +468,6 @@ static int run_host(int argc, char** argv) {
     if (recomp::select_rom(argv[1], game.game_id) != recomp::RomValidationError::Good) fail("baseline ROM validation failed");
     recomp::check_all_stored_roms();
     if (!recomp::is_rom_valid(game.game_id)) fail("stored ROM readback failed");
-#ifdef __SWITCH__
-    srw64_switch_mark("ROM loaded, opening the screen");
-#endif
     char game_option[] = "--game", game_name[] = "srw64";
     char* runtime_args[] = {argv[0], game_option, game_name};
     recomp::Configuration cfg{};
@@ -454,7 +476,9 @@ static int run_host(int argc, char** argv) {
     cfg.project_version = {0, 0, 1, "cpu-probe"};
     srw64_set_capture_directory(output_dir);
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
+    srw64::app::boot_step("dialogue load");
     srw64::dialogue::configure(output_dir);
+    srw64::app::boot_step("host setup");
     // The tactical map wider than the original (docs/design/deck-16x10.md §5). Sprites that
     // scroll with the map (sub-record +2 == 1: the map, units and cursor, map effects) and
     // the map overlay's own callbacks go in the widened view; the rest (windows, banners,
@@ -573,6 +597,7 @@ static int run_host(int argc, char** argv) {
                srw64::sprites::repeats_across(ram, {begin, end, slot, sub, false});
     };
     srw64::sprites::set_text(srw64::sprite_text::describe);
+    srw64::app::boot_step("text pages");
     srw64::ui_text::configure(output_dir);
     srw64::names::configure(output_dir);
     srw64::unit_name::configure(output_dir);
@@ -617,7 +642,14 @@ static int run_host(int argc, char** argv) {
     cfg.input_callbacks.get_input = get_input;
     cfg.input_callbacks.get_connected_device_info = get_device;
     cfg.events_callbacks.vi_callback = on_vi;
+#ifdef __vita__
+    cfg.threads_callbacks.get_game_thread_name = vita_watchdog::name_thread;
+    vita_watchdog::start();
+#endif
     cfg.error_handling_callbacks.message_box = [](const char* message) { std::fprintf(stderr, "SRW64_RUNTIME_ERROR %s\n", message); };
+    // Every module has taken what it keeps from the dialogue data.
+    srw64::dialogue_data::release();
+    srw64::app::boot_step("game start");
     recomp::start(cfg);
     srw64_destroy_window();
     std::ofstream report(output_dir / "native-counters.json");
@@ -688,6 +720,7 @@ void crash_backtrace(int signal) {
 
 #ifdef __SWITCH__
 bool srw64_switch_application();                                                   // switch/switch_platform.cpp
+void srw64_switch_boot_line(const char* line);
 void srw64_switch_error(const std::string& message, const std::string& details);
 #endif
 
@@ -781,31 +814,33 @@ int main(int argc, char** argv) {
 #ifdef __SWITCH__
     // The Switch (docs/design/switch-port.md): hbmenu passes only the NRO's path. Its folder,
     // /switch/Marchwind64 on the SD card, holds the program's files beside it (fonts,
-    // dialogue, stages: tools/release/switch/package.py), the player's ROM (rom.z64) and
-    // everything the game keeps.
+    // dialogue, stages) and the data prepared on a computer (game/: the ROM, the art pack,
+    // the dialogue data; tools/release/switch/prepare_data.py), as on the PS Vita: nothing is
+    // checked, imported or rewritten at start. The game keeps its saves and runs there too.
     if (argc <= 1) {
         // From the album (a library applet) a homebrew program gets about 370 MiB, as much as
         // the PS Vita build lives in; an application (R held on a game) gets about 3 GiB.
         // Allowed while the port is brought up on a console with no game to hold R on.
         if (!srw64_switch_application())
             std::fprintf(stderr, "SRW64_SWITCH_APPLET started from the album: library applet memory\n");
+        srw64::app::set_boot_listener(srw64_switch_boot_line);
         srw64::app::Options options;
         options.user_dir = srw64::app::executable_path().parent_path();
         if (options.user_dir.empty()) options.user_dir = "/switch/Marchwind64";
-        options.rom = options.user_dir / "rom.z64";
-        // /switch/Marchwind64/debug (an empty file): the debug interface, on every address
-        // (debug_transport.cpp), its debug.json in the run directory.
-        std::error_code missing;
-        options.debug = std::filesystem::exists(options.user_dir / "debug", missing);
+        // /switch/Marchwind64/debug: the debug interface, on every address at port 46464
+        // with the token in that file (debug_transport.cpp, tools/release/switch/attach.py).
+        const auto present = srw64::app::list_names(options.user_dir);
+        options.mute = present.contains("mute");
+        options.debug = present.contains("debug");
         srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
             native_rom_variants[0].save_file, srw64::rules::version, {}};
         for (const auto& rule : srw64::rules::catalog)
             game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
         try {
-            return srw64::app::run_standalone(options, game, run_host);
-        } catch (const srw64::app::RomRefused& error) {
-            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
-            srw64_error_box(srw64::app::rom_refused_message(error.problem, error.path, srw64::app::player_locale(options)));
+            return srw64::app::run_prepared(options, game, run_host);
+        } catch (const std::system_error& failure) {
+            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s (%s %d)\n", failure.what(), failure.code().category().name(), failure.code().value());
+            srw64_switch_error("Marchwind64 could not start.", failure.what());
             return 2;
         } catch (const std::exception& error) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());

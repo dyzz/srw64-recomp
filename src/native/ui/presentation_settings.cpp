@@ -275,8 +275,13 @@ void make_folder(const std::filesystem::path& folder,const char* readme) {
     if(!error && !std::filesystem::exists(folder/"README.txt",error))std::ofstream(folder/"README.txt")<<readme;
 }
 }
+#if defined(__vita__) || defined(__SWITCH__)
+std::vector<LookFolder> bezel_roots(){return {};}
+std::vector<LookFolder> filter_roots(){return {};}
+#else
 std::vector<LookFolder> bezel_roots(){return roots("bezels","overlays");}
 std::vector<LookFolder> filter_roots(){return roots("filters","shaders/shaders_slang");}
+#endif
 unsigned cheats(){return srw64::cheats::active();}
 void set_cheats(unsigned switches) {
     srw64::cheats::set_active(switches);
@@ -332,8 +337,11 @@ void update() {
 void window_init(SDL_Window* window,const std::filesystem::path& directory) {
     output=directory;
     if(const auto* path=std::getenv("SRW64_PRESENTATION_SETTINGS"))destination=path;
-    // The player's filters/ and bezels/ (docs/native/bezels-and-filters.md).
+    // The player's filters/ and bezels/ (docs/native/bezels-and-filters.md); the PS Vita
+    // has neither.
+#if !defined(__vita__) && !defined(__SWITCH__)
     if(!destination.empty()){make_folder(user_folder()/"filters",kFiltersReadme);make_folder(user_folder()/"bezels",kBezelsReadme);}
+#endif
     if(!destination.empty()) {
         std::ifstream file(destination);
         const auto saved=nlohmann::json::parse(file,nullptr,false);
@@ -371,7 +379,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
     // For comparisons: SRW64_ASPECT=4:3 or auto for a run, saved only if changed.
     if(const auto* aspect=std::getenv("SRW64_ASPECT"))frame::wide=std::string(aspect)!="4:3";
     if(const auto* path=std::getenv("SRW64_INPUT_SETTINGS"))input_destination=path;
-    if(!input_destination.empty() && std::filesystem::exists(input_destination)) {
+    if(!input_destination.empty() && srw64::app::present(input_destination)) {
         std::ifstream file(input_destination);
         input::live_bindings().set(load_bindings(nlohmann::json::parse(file,nullptr,false)),false);
     }

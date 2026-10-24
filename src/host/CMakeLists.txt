@@ -82,8 +82,8 @@ execute_process(COMMAND "${Python3_EXECUTABLE}" "${SRW64_ROOT}/tools/recomp/tool
     COMMAND_ERROR_IS_FATAL ANY)
 get_target_property(SRW64_TIMER_SOURCES ultramodern SOURCES)
 if(NINTENDO_SWITCH)
-    list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/error_handling\\.cpp$")
-    list(APPEND SRW64_TIMER_SOURCES "${SRW64_SWITCH_RUNTIME}/error_handling.cpp")
+    list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(error_handling|events)\\.cpp$")
+    list(APPEND SRW64_TIMER_SOURCES "${SRW64_SWITCH_RUNTIME}/error_handling.cpp" "${SRW64_SWITCH_RUNTIME}/events.cpp")
 endif()
 list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling)\\.cpp$")
 set_property(TARGET ultramodern PROPERTY SOURCES ${SRW64_TIMER_SOURCES}
@@ -164,7 +164,7 @@ if(SRW64_ENABLE_RT64)
     srw64_add_pixel_compositor("${SRW64_RT64}")
     target_link_libraries(srw64-gfx-host PRIVATE srw64_pixel_compositor)
     target_sources(srw64-gfx-host PRIVATE dialogue_plume.cpp)
-    target_sources(srw64-gfx-host PRIVATE native_dialogue.cpp native_intro.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp")
+    target_sources(srw64-gfx-host PRIVATE native_dialogue.cpp native_intro.cpp dialogue_data.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp")
     # Story text drawn as images, redrawn natively (docs/native/native-title-and-story-images.md).
     target_sources(srw64-gfx-host PRIVATE sprite_text.cpp)
     # The original UI's labels and numbers drawn natively (docs/native/native-ui-text.md).
@@ -334,7 +334,7 @@ if(SRW64_GL_ONLY)
     endif()
     add_subdirectory("${SRW64_ROOT}/src/native/ui" ui-probe)
     add_executable(srw64-gl-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp"
-        native_dialogue.cpp native_intro.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp"
+        native_dialogue.cpp native_intro.cpp dialogue_data.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp"
         sprite_text.cpp ui_text.cpp title_page.cpp battle_viewer.cpp move_jump.cpp enemy_cycle.cpp unit_name.cpp
         native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp"
         update_check.cpp update_http.cpp console_log.cpp bug_report.cpp stall_watchdog.cpp

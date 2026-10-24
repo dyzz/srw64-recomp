@@ -72,16 +72,15 @@ namespace {
 enum class Boot { Off, Shown, Over };
 Boot boot = Boot::Off;
 }
-void srw64_switch_mark(const char* label) {
-    const unsigned long long ms = armTicksToNs(armGetSystemTick()) / 1000000ull;
-    std::fprintf(stderr, "SRW64_SWITCH_TIME %llu ms %s\n", ms, label);
+// app::boot_step's lines ("dialogue read 1.2 s"), which also go to stderr as SRW64_BOOT.
+void srw64_switch_boot_line(const char* line) {
     if (boot == Boot::Over) return;
     if (boot == Boot::Off) {
         consoleInit(nullptr);
         std::printf("\n  Marchwind64\n\n");
         boot = Boot::Shown;
     }
-    std::printf("  %5.1f s  %s\n", ms / 1000.0, label);
+    std::printf("  %s\n", line);
     consoleUpdate(nullptr);
 }
 void srw64_switch_boot_end() {

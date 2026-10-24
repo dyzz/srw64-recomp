@@ -1,4 +1,5 @@
 #include "autosave.hpp"
+#include "run_files.hpp"
 #include "app/sha256.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
@@ -170,7 +171,7 @@ void seeded(uint8_t* ram) {
 
 void configure(const std::filesystem::path& directory) {
     if(!save_store::enabled())return;
-    log.open(directory/"autosave-events.jsonl");
+    srw64::open_run_log(log,directory/"autosave-events.jsonl");
     auto& h=srw64_game_hooks;
     h.intermission_enter=entered_intermission;h.intermission_after_step=intermission_step;
     h.turn_idle=map_idle;h.tactical_restored=restored;h.rng_seeded=seeded;

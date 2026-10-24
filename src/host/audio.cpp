@@ -1,4 +1,5 @@
 #include "audio.hpp"
+#include "run_files.hpp"
 #include "audio_timing.hpp"
 #include "debug_protocol.hpp"
 #include <SDL.h>
@@ -111,7 +112,7 @@ void srw64_queue_audio(int16_t* samples, size_t count) {
     queued_samples += count;
     const uint64_t device_frames = SDL_GetQueuedAudioSize(device) / 4;
     max_queued_frames = std::max(max_queued_frames, device_frames);
-    if (++queue_calls == 1 || queue_calls % 60 == 0) {
+    if (srw64_run_files() && (++queue_calls == 1 || queue_calls % 60 == 0)) {
         const auto temporary = output / "audio-live.tmp";
         {
             std::ofstream live(temporary);
@@ -125,6 +126,7 @@ void srw64_queue_audio(int16_t* samples, size_t count) {
     }
     // Keep a bounded copy of the actual post-channel-swap device input. With a VI
     // window the copy covers exactly that span; otherwise the first 30 seconds.
+    if (!srw64_run_files()) return;
     const auto action = capture_window.act(srw64_current_vi(), capture.is_open());
     if (action == Srw64AudioCaptureWindow::Action::Close) { capture.close(); return; }
     if (action == Srw64AudioCaptureWindow::Action::Skip) return;
