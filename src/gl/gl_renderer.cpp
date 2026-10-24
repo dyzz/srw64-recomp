@@ -567,6 +567,9 @@ std::string Renderer::describe(uint64_t key) const {
 }
 
 void Renderer::collect(uint32_t frames) {
+    // Every 32nd frame: a pass over every texture held took 2.3 ms a frame on the Switch, and
+    // what goes is what has not been used for `frames` frames anyway.
+    if (frame_number % 32) return;
     for (auto it = targets.begin(); it != targets.end();) {
         if (frame_number - it->second.used > frames) {
             glDeleteFramebuffers(1, &it->second.framebuffer);
