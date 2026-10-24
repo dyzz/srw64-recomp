@@ -1,5 +1,5 @@
 #pragma once
-// HD pictures as the Switch's NRO carries them (tools/release/switch/prepare_hd.py): beside
+// HD pictures as the Switch's NRO carries them (tools/release/switch/prepare-hd): beside
 // each picture of the HD pack, <stem>.mwtex holds it premultiplied, with its mip chain, in a
 // GPU-compressed format (ASTC 4x4, or 6x6 for the large ones), zstd-packed. The GL renderer
 // uploads the levels as they are (native_gl.cpp); a quarter of RGBA8's memory or less, and no
@@ -11,7 +11,7 @@
 
 namespace srw64::hd_texture {
 struct Compressed {
-    uint32_t format = 0;          // the GL internal format (GL_COMPRESSED_RGBA_ASTC_4x4_KHR, ...)
+    uint32_t format = 0;          // the GL internal format (GL_COMPRESSED_RGBA_ASTC_4x4_KHR, ...; GL_R8 for indices)
     uint32_t width = 0, height = 0, levels = 0;
     std::shared_ptr<const std::vector<uint8_t>> data;   // level 0 first, each level's blocks in a row
 };

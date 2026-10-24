@@ -9,6 +9,7 @@
 #include "rhi/rt64_render_hooks.h"
 #endif
 #include "native_gpu.hpp"
+#include "hd_texture.hpp"
 #include "menu_widen.hpp"
 #include "rom_art.hpp"
 #include "json/json.hpp"
@@ -30,6 +31,9 @@
 #include <vector>
 
 uint64_t srw64_current_vi();
+#ifdef __SWITCH__
+extern "C" void srw64_switch_background_thread();   // host/switch/switch_platform.cpp
+#endif
 
 namespace srw64::hdmap {
 namespace {
@@ -65,6 +69,10 @@ struct Asset {
     std::unique_ptr<gpu::Texture> base_texture, index_texture;
     std::unique_ptr<plume::RenderDescriptorSet> textures;
     std::vector<std::array<int, 2>> colonies;
+    // The GL renderer's (gl_quads): the base as it uploads it (ASTC from the Switch's romfs,
+    // hd_texture.hpp, or RGBA8) and the palette indices.
+    std::shared_ptr<const std::vector<uint8_t>> gl_base, gl_index;
+    uint32_t gl_format = 0, gl_levels = 1;
 };
 
 struct Draw {
@@ -204,6 +212,16 @@ void decode(Asset& asset) {
     if (asset.from_rom) { generate(asset); return; }
     const auto& folder = asset.folder;
     const int w = asset.width * asset.scale, h = asset.height * asset.scale;
+#ifdef SRW64_GL_ONLY
+    // The prepared copies (the Switch): the base ASTC-compressed with its mips, the indices raw.
+    hd_texture::Compressed base, index;
+    if (hd_texture::load(folder / asset.base_file, base) && hd_texture::load(folder / "index.png", index) &&
+        base.width == uint32_t(w) && base.height == uint32_t(h) && index.format == 0x8229 && index.width == uint32_t(w) && index.height == uint32_t(h)) {
+        asset.gl_base = base.data; asset.gl_format = base.format; asset.gl_levels = base.levels;
+        asset.gl_index = index.data;
+        return;
+    }
+#endif
     auto read = [&](const char* name, int channels, std::vector<uint8_t>& out) {
         int x = 0, y = 0, n = 0;
         uint8_t* pixels = stbi_load((folder / name).string().c_str(), &x, &y, &n, channels);
@@ -228,6 +246,18 @@ void decode(Asset& asset) {
 }
 
 void make_textures(Asset& asset) {
+#ifdef SRW64_GL_ONLY
+    // Nothing for the GPU here: native_gl uploads what gl_quads hands it.
+    if (!asset.gl_base) {
+        if (asset.base_levels.empty()) asset.base_levels.push_back(std::move(asset.base));   // ROM frames
+        asset.gl_base = std::make_shared<const std::vector<uint8_t>>(std::move(asset.base_levels.front()));
+        asset.gl_format = 0; asset.gl_levels = 1;
+        asset.gl_index = std::make_shared<const std::vector<uint8_t>>(std::move(asset.index));
+    }
+    asset.base_levels.clear(); asset.base.clear(); asset.index.clear();
+    asset.state = Asset::State::ready;
+    return;
+#endif
     const auto level = [](std::vector<uint8_t>& pixels) {
         std::vector<std::vector<uint8_t>> levels;
         levels.push_back(std::move(pixels));
@@ -242,6 +272,9 @@ void make_textures(Asset& asset) {
 }
 
 void decode_loop() {
+#ifdef __SWITCH__
+    srw64_switch_background_thread();   // never ahead of the window thread and the sound on core 0
+#endif
     for (;;) {
         size_t index;
         {
@@ -362,10 +395,22 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 }
 
 namespace {
-// The GL renderer's view of a tag (native_quads.hpp): the asset's base moved to the live
-// palette on the CPU (what HdMapPS does per pixel), once per asset and palette.
-struct Composed { uint64_t palette = 0; std::shared_ptr<const std::vector<uint8_t>> pixels; };
-std::map<int, Composed> composed;
+// The GL renderer's view of a tag (native_quads.hpp): the base and its indices, and the live
+// palette's shift from the reference per index, which native_gl applies per pixel (HdMapPS).
+// Maps not drawn for evict_after draws give their pictures back, as evict_stale does.
+uint64_t gl_draws = 0;
+void gl_evict(size_t keep) {
+    const uint64_t now = draw_clock.load();
+    for (size_t i = 0; i < assets.size(); ++i) {
+        Asset& old = assets[i];
+        if (i == keep || !old.lazy || old.state != Asset::State::ready) continue;
+        if (now - load_atomic(old.last_draw) < evict_after) continue;
+        old.gl_base.reset(); old.gl_index.reset();
+        old.state = Asset::State::waiting;
+        old.waited = false;
+        ++evicted;
+    }
+}
 bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     if ((id & 0xFFFF0000u) != kIdBase) return false;
     Draw draw;
@@ -376,36 +421,28 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     if (draw.id != (id & 0xFFFF) || draw.asset < 0) return true;
     std::lock_guard lock(asset_mutex);
     Asset& asset = assets[size_t(draw.asset)];
-    if (asset.state != Asset::State::ready || !asset.base_texture || !asset.index_texture) return true;
-    const auto* base = asset.base_texture->pixels();
-    const auto* index = asset.index_texture->pixels();
-    if (!base || !index) return true;
-    uint64_t palette = 1469598103934665603ull;
-    for (uint32_t c : draw.live) palette = (palette ^ c) * 1099511628211ull;
-    Composed& made = composed[draw.asset];
-    if (!made.pixels || made.palette != palette) {
-        auto pixels = std::make_shared<std::vector<uint8_t>>(base->size());
-        auto& p = *pixels;
-        for (size_t i = 0; i < index->size() && i * 4 + 3 < base->size(); ++i) {
-            const uint32_t live = draw.live[(*index)[i]], reference = asset.reference[(*index)[i]];
-            const uint8_t* b = base->data() + i * 4;
-            const float a = asset.alpha ? b[3] / 255.f : 1.f;
-            for (int k = 0; k < 3; ++k) {
-                const float shift = (float((live >> (8 * k)) & 0xFF) - float((reference >> (8 * k)) & 0xFF)) / 255.f;
-                const float straight = asset.alpha ? (a > 0 ? b[k] / 255.f / a : 0.f) : b[k] / 255.f;
-                p[i * 4 + k] = uint8_t(std::clamp(straight + shift, 0.f, 1.f) * a * 255.f + .5f);
-            }
-            p[i * 4 + 3] = asset.alpha ? b[3] : 255;
+    if (asset.state != Asset::State::ready || !asset.gl_base || !asset.gl_index) return true;
+    auto shift = std::make_shared<std::vector<uint8_t>>(1024);
+    for (size_t i = 0; i < 256; ++i) {
+        const uint32_t live = draw.live[i], reference = asset.reference[i];
+        for (int k = 0; k < 3; ++k) {
+            const int d = int((live >> (8 * k)) & 0xFF) - int((reference >> (8 * k)) & 0xFF);
+            (*shift)[i * 4 + k] = uint8_t(std::clamp(128 + (d >= 0 ? (d + 1) / 2 : -((1 - d) / 2)), 0, 255));
         }
-        made = {palette, std::move(pixels)};
+        (*shift)[i * 4 + 3] = 255;
     }
     native_quads::Quad q;
-    q.pixels = made.pixels;
+    q.pixels = asset.gl_base;
+    q.format = asset.gl_format; q.levels = asset.gl_levels;
+    q.index = asset.gl_index;
+    q.shift = std::move(shift);
     q.width = uint32_t(asset.width * asset.scale);
     q.height = uint32_t(asset.height * asset.scale);
     std::copy(draw.rect, draw.rect + 4, q.rect);
     std::copy(draw.uv, draw.uv + 4, q.uv);
+    q.label = "map";
     out.push_back(std::move(q));
+    if (asset.lazy && ++gl_draws % 64 == 0) gl_evict(size_t(draw.asset));
     return true;
 }
 }  // namespace
@@ -414,7 +451,15 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
 // index (compile_art writes srw64-tactical-maps.json; its root is relative to the pack).
 std::filesystem::path maps_root() {
     if (const char* root = std::getenv("SRW64_HD_MAPS"); root && *root) return root;
+#ifdef __SWITCH__
+    // The HD pack the NRO carries, prepared for the GPU (tools/release/switch/prepare-hd).
+    std::string art_string = "romfs:/hd/art";
+    std::error_code missing;
+    if (!std::filesystem::exists(art_string + "/srw64-tactical-maps.json", missing)) art_string.clear();
+    const char* art = art_string.empty() ? nullptr : art_string.c_str();
+#else
     const char* art = std::getenv("SRW64_ART_PACK");
+#endif
     if (!art || !*art) return {};
     const auto index = std::filesystem::path(art) / "srw64-tactical-maps.json";
     std::ifstream stream(index);

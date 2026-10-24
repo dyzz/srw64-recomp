@@ -29,6 +29,7 @@ void block_size(uint32_t format, uint32_t& width, uint32_t& height) {
 }
 
 size_t level_bytes(uint32_t format, uint32_t width, uint32_t height) {
+    if (format == 0x8229) return size_t(width) * height;   // GL_R8: a map's palette indices
     uint32_t bw, bh;
     block_size(format, bw, bh);
     if (!bw) return 0;

@@ -24,6 +24,10 @@ struct Quad {
     float z = 0;
     float color[4]{1, 1, 1, 1};   // tint, and the alpha everything is multiplied by
     float fill[4]{};              // a colour (rgb) that replaces the picture's by fill[3] (a silhouette)
+    // A tactical map's palette shift (HdMapPS): one palette index per texel (width x height),
+    // and per index the live palette's difference from the reference, 128 + d / 2 in RGB.
+    std::shared_ptr<const std::vector<uint8_t>> index;
+    std::shared_ptr<const std::vector<uint8_t>> shift;   // 256 x RGBA8
     bool wrap = false;            // repeats across
     bool whole = false;           // drawn past the original's 320: not held to the scissor
     std::string label;            // what it is, for traces

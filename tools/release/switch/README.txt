@@ -7,6 +7,13 @@ Nintendo Switch（docs/design/switch-port.md）
   tools/release/switch/build_icu.sh      ICU 78.3 静态库（devkitPro 没有）与数据子集的 C 源码，
                                          build.sh game 缺了会自动跑；到 build/recomp/switch-deps
 
+  HD（默认开，整包打进 NRO 的 romfs）：先把发布用的 HD 包转成 Switch GPU 用的格式，再 build.sh game。
+    cargo run --release --manifest-path tools/release/switch/prepare-hd/Cargo.toml \
+        --target-dir build/recomp/prepare-hd-target -- [--pack build/release/<版本>/pack/hd] [--layers portraits,backgrounds,maps]
+  需要 astcenc（ARM astc-encoder，$ASTCENC 或 PATH）。产出 build/recomp/switch-romfs/hd：清单原样，
+  每张图旁边一个 .mwtex（预乘、带缩小链、ASTC 4×4／6×6、zstd；地图索引图是原样 8 位）。目录存在时
+  build.sh game 把它打进 NRO；不在就是不带 HD 的 NRO。全量（头像、背景、地图）约 1 分钟、535 MiB。
+
   先在仓库根目录 make（生成 CPU 代码、拉固定版本上游、RSP 音频）。worktree 里 build/ 的内容软链到
   主工作区（cpu-bound、runtime-lifecycle、audio-probe、frontend-adapter 留本地），build.sh 会把
   主工作区一起挂进容器。
@@ -16,6 +23,7 @@ Nintendo Switch（docs/design/switch-port.md）
                     FreeType、HarfBuzz、switch-tools
   build.sh          宿主侧入口：建镜像、把仓库按同一绝对路径挂进容器再编
   build_icu.sh      ICU 交叉编译（配置照 mh-linux）；数据换成 tools/release/icu_data.py 的子集
+  prepare-hd/       HD 包转码（Rust）：src/host/hd_texture.hpp 读的 .mwtex
   smoke/            检查程序：打印小程序类型、掌机/底座、进程内存、GLES 2.0 与 GL 2.1 兼容上下文
                     各自的建立耗时与驱动字符串，然后清屏变色 20 秒（按 + 提前退出）
 

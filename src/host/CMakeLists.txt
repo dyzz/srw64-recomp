@@ -382,7 +382,7 @@ if(SRW64_GL_ONLY)
         # Marchwind64.nro: the NACP (name, author, version) and the default icon for now.
         nx_generate_nacp(Marchwind64.nacp NAME "Marchwind64" AUTHOR "Marchwind64" VERSION "${SRW64_VERSION}")
         # hbmenu's icon: the M64 badge on the Steam icon's navy, 256 x 256 (tools/release/switch/icon.jpg).
-        # The HD pack prepared for the Switch's GPU (tools/release/switch/prepare_hd.py) in the
+        # The HD pack prepared for the Switch's GPU (tools/release/switch/prepare-hd) in the
         # NRO's romfs, when it has been made: one file to copy, the art read where it lies.
         set(SRW64_SWITCH_ROMFS "${SRW64_BUILD}/switch-romfs")
         if(EXISTS "${SRW64_SWITCH_ROMFS}/hd")

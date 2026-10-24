@@ -1143,7 +1143,7 @@ public:
 #endif
         // The original pictures: the Vita carries no HD art (docs/design/psv-port.md). Not
         // original_only(), which the HD layers read as "no switch", that is HD where they can.
-        // The Switch's NRO carries the HD pack, prepared for its GPU (prepare_hd.py): HD by
+        // The Switch's NRO carries the HD pack, prepared for its GPU (tools/release/switch/prepare-hd): HD by
         // default, the settings' switch back to the originals; SRW64_HD_ART elsewhere.
         {
 #ifdef __SWITCH__
