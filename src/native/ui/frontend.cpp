@@ -2046,7 +2046,12 @@ std::string library_art(const json& entry,float box) {
     if(!entry.contains("art") || !entry.at("art").contains("path"))return {};
     const auto& art=entry.at("art");
     const float w=art.value("width",96.f),h=art.value("height",96.f),scale=std::min(box/w,box/h);
-    return "<img src='"+escape(image(portrait_path(art),int(w*scale*ui_density+.5f)))+"' style='width:"+std::to_string(w*scale)+"dp; height:"+std::to_string(h*scale)+"dp;'/>";
+    // Read on the picture thread, not here under the UI lock: a unit's art decoded and resampled
+    // as the cursor moved held the screen and the sound up on the Switch. The page shows it
+    // when it arrives (library_pictures; the viewer's stamp).
+    const auto src=image_async(portrait_path(art),int(w*scale*ui_density+.5f),true);
+    if(src.empty())return "<div style='width:"+std::to_string(w*scale)+"dp; height:"+std::to_string(h*scale)+"dp;'></div>";
+    return "<img src='"+escape(src)+"' style='width:"+std::to_string(w*scale)+"dp; height:"+std::to_string(h*scale)+"dp;'/>";
 }
 // 格／射 before a weapon's name and P／B／MAP after it, as the weapon pages draw them.
 std::string library_marker(const std::string& token,const json& icons) {
@@ -2262,6 +2267,7 @@ std::string library_panel() {
     return body;
 }
 // Chooses entry `index` of the tab: the list marks and shows it, the details are redrawn.
+uint64_t library_pictures=0;   // pictures::serial when the Library's details were last made
 void library_select(unsigned index,bool focus=true) {
     if(!settings_doc)return;
     const auto& entries=library_entries();
@@ -3144,7 +3150,7 @@ void viewer_move(int dy,int dx) {
 }
 void viewer_sync() {
     viewer_defaults();
-    const auto stamp="viewer"+viewer_stamp()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+    const auto stamp="viewer"+viewer_stamp()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density)+"#"+std::to_string(pictures::serial);
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     auto* focused=context->GetFocusElement();
     const std::string focus_id=!viewer_focus.empty()?viewer_focus:settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
@@ -3199,8 +3205,19 @@ void settings_sync() {
     }
     if(library_open) {
         const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
-        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
-        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        if(settings_doc && stamp==settings_stamp) {
+            // Pictures that arrived since the details were made (library_art): the details again,
+            // where they were scrolled to.
+            if(library_pictures!=pictures::serial) {
+                library_pictures=pictures::serial;
+                if(auto* detail=settings_doc->GetElementById("lib-detail")) {
+                    const float top=detail->GetScrollTop();
+                    detail->SetInnerRML(library_detail());settings_doc->UpdateDocument();detail->SetScrollTop(top);fit_lines(settings_doc);
+                }
+            }
+            settings_doc->PullToFront();return;
+        }
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();library_pictures=pictures::serial;
         settings_doc=document(library_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
         settings_doc->UpdateDocument();
         auto* tab=settings_doc->GetElementById("lib-tab:"+std::to_string(library_tab));
