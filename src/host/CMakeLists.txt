@@ -379,6 +379,8 @@ if(SRW64_GL_ONLY)
     if(NINTENDO_SWITCH)
         # Marchwind64.nro: the NACP (name, author, version) and the default icon for now.
         nx_generate_nacp(Marchwind64.nacp NAME "Marchwind64" AUTHOR "Marchwind64" VERSION "${SRW64_VERSION}")
-        nx_create_nro(srw64-gl-host OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Marchwind64.nro" NACP Marchwind64.nacp)
+        # hbmenu's icon: the M64 badge on the Steam icon's navy, 256 x 256 (tools/release/switch/icon.jpg).
+        nx_create_nro(srw64-gl-host OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Marchwind64.nro" NACP Marchwind64.nacp
+                      ICON "${CMAKE_CURRENT_SOURCE_DIR}/../../tools/release/switch/icon.jpg")
     endif()
 endif()
