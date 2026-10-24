@@ -62,7 +62,9 @@
 #include <algorithm>
 #include <atomic>
 #include <array>
+#include <chrono>
 #include <cmath>
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <condition_variable>
@@ -315,6 +317,12 @@ float ui_density=1;  // screen pixels per dp, as set on the RmlUi context
 std::unique_lock<std::mutex> lock_ui() {
     std::unique_lock lock(mutex);completed.wait(lock,[]{return !in_flight;});return lock;
 }
+// Where the UI's time goes, for perf_line(): the window thread's update and the render
+// thread's draw, each its wait for the UI lock and its work under it, with the longest.
+struct UiTimes{double update_wait=0,update_work=0,update_max=0,draw_wait=0,draw_work=0,draw_max=0;unsigned updates=0,draws=0;};
+std::mutex ui_times_mutex;UiTimes ui_times;
+using UiClock=std::chrono::steady_clock;
+double ui_ms(UiClock::time_point a,UiClock::time_point b){return std::chrono::duration<double,std::milli>(b-a).count();}
 std::string escape(const std::string& text){return Rml::StringUtilities::EncodeRml(text);}
 // Button tokens ("{A}", "{Esc}") become what the player bound to them, as icons of the
 // controller in use or keys (text/button_prompts.hpp, the SRW64Prompts font).
@@ -6378,11 +6386,21 @@ void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto l
 // NaN, and a page laid out then (the settings window, the battle page) kept RmlUi in its layout
 // for good on this thread, the window's: Windows called it not responding (a player, 0.4.9;
 // reproduced on a Windows desktop with the settings window open, and gone with this).
-void update(){auto lock=lock_ui();if(!ready)return;
+void update(){const auto asked=UiClock::now();auto lock=lock_ui();if(!ready)return;
+    const auto locked=UiClock::now();
     int pw=0,ph=0,w=0,h=0;SDL_GetWindowSizeInPixels(window,&pw,&ph);SDL_GetWindowSize(window,&w,&h);
     if(pw<=0 || ph<=0 || w<=0 || h<=0 || (SDL_GetWindowFlags(window)&SDL_WINDOW_MINIMIZED)){input.flush_sdl();return;}
     pixels_w=pw;pixels_h=ph;pixel_ratio=float(pw)/w;
-    if(!initialized)initialize();sync();input.flush_sdl();}
+    if(!initialized)initialize();sync();input.flush_sdl();
+    const auto done=UiClock::now();
+    std::lock_guard times(ui_times_mutex);
+    ui_times.update_wait+=ui_ms(asked,locked);ui_times.update_work+=ui_ms(locked,done);
+    ui_times.update_max=std::max(ui_times.update_max,ui_ms(asked,done));++ui_times.updates;}
+std::string perf_line(){
+    std::lock_guard times(ui_times_mutex);
+    char text[200];std::snprintf(text,sizeof text,"ui(update %u wait %.0fms work %.0fms max %.1f; draw %u wait %.0fms work %.0fms max %.1f)",
+        ui_times.updates,ui_times.update_wait,ui_times.update_work,ui_times.update_max,ui_times.draws,ui_times.draw_wait,ui_times.draw_work,ui_times.draw_max);
+    ui_times=UiTimes{};return text;}
 uint32_t touch_buttons() {
     // Only the UI thread writes the pulse. A polling reader clearing an expired
     // pulse could erase a new tap between its mask and deadline publications.
@@ -6429,7 +6447,9 @@ bool shown(){
 }
 uint64_t readout_changes(){return fps_changes.load();}
 bool draw_gl(int width,int height,bool name_cover){
+    const auto asked=UiClock::now();
     auto lock=lock_ui();
+    const auto locked=UiClock::now();
     if(!context || !gl_renderer || width!=pixels_w || height!=pixels_h)return false;
     if(names::request().visible && !name_cover)return false;
     bool shown=false;
@@ -6437,6 +6457,10 @@ bool draw_gl(int width,int height,bool name_cover){
     if(!shown)return false;
     layer_pass=-1;layer_now=0;
     gl_renderer->start(width,height);context->Render();gl_renderer->end();
+    const auto done=UiClock::now();
+    std::lock_guard times(ui_times_mutex);
+    ui_times.draw_wait+=ui_ms(asked,locked);ui_times.draw_work+=ui_ms(locked,done);
+    ui_times.draw_max=std::max(ui_times.draw_max,ui_ms(asked,done));++ui_times.draws;
     return true;
 }
 void render_shutdown_gl(){

@@ -92,6 +92,10 @@ namespace RT64 { extern bool AndroidGpuDriverTooOld; }
 #include <fstream>
 #include <set>
 #include <thread>
+#include <condition_variable>
+#include <deque>
+#include <functional>
+#include <mutex>
 
 namespace {
 #ifdef __ANDROID__
@@ -178,6 +182,28 @@ uint64_t presented_frames{};
 std::string capture_clock = "native_vi_at_draw";
 // F12 or Print Screen: the next present goes to screenshots/ in the user folder.
 std::atomic<bool> player_shot_requested{};
+// Work the GL render thread hands off, in order on one thread of its own: a debug screenshot's
+// PNG took a second on the Switch, a second the game stood still.
+void run_in_background(std::function<void()> job) {
+    static std::mutex mutex;
+    static std::condition_variable wake;
+    static std::deque<std::function<void()>> jobs;
+    static std::thread* worker = new std::thread([] {   // never joined: it lives as long as the program
+        for (;;) {
+            std::function<void()> next;
+            {
+                std::unique_lock lock(mutex);
+                wake.wait(lock, [] { return !jobs.empty(); });
+                next = std::move(jobs.front());
+                jobs.pop_front();
+            }
+            next();
+        }
+    });
+    (void)worker;
+    { std::lock_guard lock(mutex); jobs.push_back(std::move(job)); }
+    wake.notify_one();
+}
 // The Enter of an Alt + Enter (full screen, frontend.cpp) is not START until it is let go,
 // whichever key comes up first.
 SDL_Scancode alt_enter_key = SDL_SCANCODE_UNKNOWN;
@@ -1036,7 +1062,7 @@ struct SwitchPerf {
             "presents=%.1f/s kept=%u skipped=%llu present=%.2fms(picture %.2f overlays %.2f ui %.2f read %.2f swap %.2f; max %.1f swap max %.1f) "
             "programs=%zu linked+%u(%.0fms) loaded+%u(%.0fms) "
             "gl(draw %.0fms collect %.0fms layers %.0fms; uploads %u %.1fMB %.0fms in %u page flushes; copies %u %.0fms; dialogue raster %.0fms patches %u %.1fMB %.0fms; "
-            "quads %u %.1fMB %.0fms) %s\n",
+            "quads %u %.1fMB %.0fms) %s %s\n",
             seconds, lists / seconds, per(interpret + draw + dialogue_take, lists), per(interpret, lists), per(draw, lists),
             per(dialogue_take, lists), list_max, presents / seconds, kept, (unsigned long long)(skipped - skipped_at),
             per(picture + overlays + ui + readback + swap, presents), per(picture, presents), per(overlays, presents), per(ui, presents),
@@ -1045,7 +1071,7 @@ struct SwitchPerf {
             programs.loaded - programs_at.loaded, programs.load_ms - programs_at.load_ms,
             gl_draw, gl_collect, host_layers, gl.uploads, gl.upload_bytes / 1048576.0, gl.upload_ms, gl.page_flushes, gl.copies, gl.copy_ms,
             gl.raster_ms, gl.patches, gl.patch_bytes / 1048576.0, gl.patch_ms, gl.quads, gl.quad_bytes / 1048576.0, gl.quad_ms,
-            ::srw64_switch_perf_system().c_str());
+            srw64::ui::perf_line().c_str(), ::srw64_switch_perf_system().c_str());
         gl = {};
         *this = SwitchPerf{};
         skipped_at = skipped;
@@ -1241,19 +1267,30 @@ public:
         const bool recording = srw64::debug::recording().active();
         const bool player_shot = player_shot_requested.exchange(false);
         if (shot || recording || player_shot) {
-            std::vector<uint8_t> pixels(size_t(width) * height * 4), rows(pixels.size());
+            std::vector<uint8_t> pixels(size_t(width) * height * 4);
             glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
-            for (int y = 0; y < height; ++y)
-                std::memcpy(rows.data() + size_t(y) * width * 4, pixels.data() + size_t(height - 1 - y) * width * 4, size_t(width) * 4);
-            for (size_t i = 3; i < rows.size(); i += 4) rows[i] = 255;
-            if (recording) srw64::debug::recording().add(rows.data(), uint32_t(width), uint32_t(height));
-            if (player_shot) save_player_screenshot(rows.data(), uint32_t(width), uint32_t(height));
+            auto upright = [width, height](const std::vector<uint8_t>& pixels) {
+                std::vector<uint8_t> rows(pixels.size());
+                for (int y = 0; y < height; ++y)
+                    std::memcpy(rows.data() + size_t(y) * width * 4, pixels.data() + size_t(height - 1 - y) * width * 4, size_t(width) * 4);
+                for (size_t i = 3; i < rows.size(); i += 4) rows[i] = 255;
+                return rows;
+            };
+            if (recording || player_shot) {
+                const auto rows = upright(pixels);
+                if (recording) srw64::debug::recording().add(rows.data(), uint32_t(width), uint32_t(height));
+                if (player_shot) save_player_screenshot(rows.data(), uint32_t(width), uint32_t(height));
+            }
             if (shot) {
-                const bool written = stbi_write_png(shot->path.string().c_str(), width, height, 4, rows.data(), width * 4);
-                srw64::debug::screenshots().finish(shot->id, written
-                    ? nlohmann::json({{"path", shot->path.string()}, {"present", frame_number}, {"vi", srw64_current_vi()},
-                                      {"width", width}, {"height", height}, {"renderer", "gl"}})
-                    : nlohmann::json({{"error", "cannot write " + shot->path.string()}}));
+                const auto vi = srw64_current_vi();
+                run_in_background([shot = *shot, pixels = std::move(pixels), upright, width, height, frame_number, vi] {
+                    const auto rows = upright(pixels);
+                    const bool written = stbi_write_png(shot.path.string().c_str(), width, height, 4, rows.data(), width * 4);
+                    srw64::debug::screenshots().finish(shot.id, written
+                        ? nlohmann::json({{"path", shot.path.string()}, {"present", frame_number}, {"vi", vi},
+                                          {"width", width}, {"height", height}, {"renderer", "gl"}})
+                        : nlohmann::json({{"error", "cannot write " + shot.path.string()}}));
+                });
             }
         }
 #ifdef __SWITCH__

@@ -300,6 +300,37 @@ void __wrap_abort() {
 
 // Before main and after it (libnx's weak hooks): the sockets, and stdout and stderr to
 // nxlink on the Mac that pushed the NRO (tools/release/switch/README.txt).
+namespace {
+// The GPU at its docked clock in handheld too, as DK64Recomp-NX's "docked GPU" profile does:
+// apm's configuration for the normal (handheld) mode, 768 MHz, else its fallback (460.8 MHz,
+// RAM 1600 MHz). Docked runs the boost mode's configuration and is left alone. The console's
+// own configuration comes back while the game is out of focus (the HOME menu) and at exit.
+constexpr u32 kApmDockedGpu = 0x00010001, kApmDockedGpuFallback = 0x92220007;
+bool apm_open = false, apm_changed = false;
+u32 apm_original = 0;
+AppletHookCookie focus_cookie;
+
+void raise_gpu() {
+    if (!apm_open || apm_changed || R_FAILED(apmGetPerformanceConfiguration(ApmPerformanceMode_Normal, &apm_original))) return;
+    Result rc = apmSetPerformanceConfiguration(ApmPerformanceMode_Normal, kApmDockedGpu);
+    if (R_FAILED(rc)) rc = apmSetPerformanceConfiguration(ApmPerformanceMode_Normal, kApmDockedGpuFallback);
+    apm_changed = R_SUCCEEDED(rc);
+    std::printf("SRW64_SWITCH apm handheld GPU raised: 0x%x (was 0x%08x)\n", rc, apm_original);
+}
+
+void restore_gpu() {
+    if (!apm_changed) return;
+    apmSetPerformanceConfiguration(ApmPerformanceMode_Normal, apm_original);
+    apm_changed = false;
+}
+
+void on_focus(AppletHookType type, void*) {
+    if (type != AppletHookType_OnFocusState) return;
+    if (appletGetFocusState() == AppletFocusState_InFocus) raise_gpu();
+    else restore_gpu();
+}
+}  // namespace
+
 void userAppInit() {
     watch_thread(threadGetCurHandle(), "main", nullptr);
     // The socket only: the log device (above) sends to it, never waiting on the Mac (a
@@ -307,9 +338,15 @@ void userAppInit() {
     // MegaMan64Recomp-NX). A line may be lost instead.
     if (R_SUCCEEDED(socketInitializeDefault())) nxlink_socket = nxlinkConnectToHost(false, false);
     install_log();
+    apm_open = R_SUCCEEDED(apmInitialize());
+    raise_gpu();
+    appletHook(&focus_cookie, on_focus, nullptr);
 }
 
 void userAppExit() {
+    appletUnhook(&focus_cookie);
+    restore_gpu();
+    if (apm_open) apmExit();
     if (nxlink_socket >= 0) close(nxlink_socket);
     socketExit();
 }

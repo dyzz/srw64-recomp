@@ -73,15 +73,22 @@ private:
     struct Program { GLuint id = 0; GLint texture = -1, env = -1, alpha_ref = -1; };
     // A decoded texture: a texture of its own (wrapping ones, the large ones) or a place in
     // an atlas page, so the game's many small tiles draw in few calls.
-    // A wrapping texture placed in a page keeps a texture of its own too, for the draws whose
-    // coordinates leave it (the game sets wrap on many tiles it never repeats).
+    // A wrapping texture placed in a page has a texture of its own too, for the draws whose
+    // coordinates leave it (the game sets wrap on many tiles it never repeats); with batched
+    // uploads it is made from the page's pixels the first time such a draw comes.
     struct Texture { GLuint id = 0, own = 0; uint32_t used = 0; int16_t page = -1; uint16_t x = 0, y = 0, width = 0, height = 0; bool wraps = false; uint8_t wrap_s = 0, wrap_t = 0; };
     struct Page { GLuint id = 0; bool linear = false; uint16_t shelf_y = 0, shelf_height = 0, cursor = 0; uint32_t used = 0; std::vector<uint64_t> keys;
                   // Where batched uploads gather (kBatchPageUploads): the page's pixels, and the rows written since the last upload.
                   std::vector<uint8_t> shadow; int dirty_top = 0, dirty_bottom = 0;
-                  int filter = -1;   // the filter set on it: 0 nearest, 1 linear, -1 none yet
+                  int filter = -1;   // the filter its textures want: 0 nearest, 1 linear, -1 none yet
+                  // With batched uploads the page is several GL textures taken in turn (`id` is the
+                  // one draws bind now), so an upload never writes one the GPU may still read: each
+                  // keeps the rows written since it was last brought up to date, and its filter.
+                  struct Copy { GLuint id = 0; int filter = -1, pending_top = 0, pending_bottom = 0; uint32_t current_at = 0; };
+                  std::vector<Copy> copies; size_t current = 0;
     };
     void flush_pages();
+    GLuint own_texture(Texture& texture);
     struct Target { GLuint framebuffer = 0, texture = 0; uint32_t used = 0; };
     // The vertex as the GPU takes it: texture coordinates in the bound texture, and the
     // rectangle they clamp to (a tile's edge inside its atlas page).

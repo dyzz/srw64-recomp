@@ -23,10 +23,15 @@ constexpr int kPageSize = 1024, kPages = 6, kAtlasLargest = 128;
 // The Switch's Mesa waits for the GPU to finish with a page before each glTexSubImage2D into
 // it: a frame's few hundred small textures took 3 ms each, 1.7 s of every 5 s while the
 // first stage's map scrolled (SRW64_PERF). They gather in a copy of the page instead, and
-// the rows they touched go up once a frame (flush_pages).
+// the rows they touched go up once a frame (flush_pages). Even so it waited whenever the GPU
+// still read the page (a frame or two behind): ~1 s scene changes of a thousand textures. A
+// page is three GL textures taken in turn, so an upload goes into one no frame has drawn with
+// for two frames, the way GLideN64's Switch ports never write a texture already drawn with.
 constexpr bool kBatchPageUploads = true;
+constexpr size_t kPageCopies = 3;
 #else
 constexpr bool kBatchPageUploads = false;
+constexpr size_t kPageCopies = 1;
 #endif
 
 // The combiner's inputs (one cycle; COMBINED and the LOD inputs are zero there, the game
@@ -111,7 +116,8 @@ Renderer::~Renderer() {
         if (t.page < 0) glDeleteTextures(1, &t.id);
         if (t.own) glDeleteTextures(1, &t.own);
     }
-    for (auto& page : pages) glDeleteTextures(1, &page.id);
+    for (auto& page : pages)
+        for (auto& c : page.copies) glDeleteTextures(1, &c.id);
     for (auto& [key, t] : targets) { glDeleteFramebuffers(1, &t.framebuffer); glDeleteTextures(1, &t.texture); }
     glDeleteTextures(1, &copy);
     glDeleteTextures(1, &black);
@@ -237,14 +243,33 @@ void Renderer::flush_pages() {
     for (Page& page : pages) {
         if (page.dirty_bottom <= page.dirty_top) continue;
         const auto start = std::chrono::steady_clock::now();
-        glBindTexture(GL_TEXTURE_2D, page.id);
+        for (auto& c : page.copies) {
+            if (c.pending_bottom <= c.pending_top) { c.pending_top = page.dirty_top; c.pending_bottom = page.dirty_bottom; }
+            else { c.pending_top = std::min(c.pending_top, page.dirty_top); c.pending_bottom = std::max(c.pending_bottom, page.dirty_bottom); }
+        }
+        page.dirty_top = page.dirty_bottom = 0;
+        // The copy drawn with longest ago becomes the page.
+        size_t next = page.current;
+        for (size_t i = 0; i < page.copies.size(); ++i)
+            if (i != page.current && (next == page.current || page.copies[i].current_at < page.copies[next].current_at)) next = i;
+        auto& c = page.copies[next];
+        glBindTexture(GL_TEXTURE_2D, c.id);
+        if (c.filter != page.filter) {
+            const GLint filter = page.filter == 1 ? GL_LINEAR : GL_NEAREST;
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
+            c.filter = page.filter;
+        }
         glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
         // Whole rows: one contiguous run of the copy, with no row length to set.
-        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, page.dirty_top, kPageSize, page.dirty_bottom - page.dirty_top, GL_RGBA, GL_UNSIGNED_BYTE,
-                        page.shadow.data() + size_t(page.dirty_top) * kPageSize * 4);
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, c.pending_top, kPageSize, c.pending_bottom - c.pending_top, GL_RGBA, GL_UNSIGNED_BYTE,
+                        page.shadow.data() + size_t(c.pending_top) * kPageSize * 4);
+        c.pending_top = c.pending_bottom = 0;
+        c.current_at = frame_number;
+        page.current = next;
+        page.id = c.id;
         gl_stats().upload_ms += gl_ms_since(start);
         ++gl_stats().page_flushes;
-        page.dirty_top = page.dirty_bottom = 0;
     }
 }
 
@@ -268,11 +293,15 @@ bool Renderer::place(Texture& texture, uint16_t width, uint16_t height, bool lin
     if (chosen < 0 && pages.size() < kPages) {
         Page page;
         page.linear = linear;
-        glGenTextures(1, &page.id);
-        glBindTexture(GL_TEXTURE_2D, page.id);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, kPageSize, kPageSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        page.copies.resize(kPageCopies);
+        for (auto& c : page.copies) {
+            glGenTextures(1, &c.id);
+            glBindTexture(GL_TEXTURE_2D, c.id);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, kPageSize, kPageSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        }
+        page.id = page.copies[0].id;
         if (kBatchPageUploads) page.shadow.assign(size_t(kPageSize) * kPageSize * 4, 0);
         pages.push_back(std::move(page));
         if (fit(pages.back())) chosen = int(pages.size() - 1);
@@ -300,7 +329,9 @@ bool Renderer::place(Texture& texture, uint16_t width, uint16_t height, bool lin
     // The filter only when the page's changes (a new page, or one started over for the other
     // kind): on the Switch's Mesa setting it on a page the GPU still reads waited for the GPU,
     // as an upload did, and it was set for every texture placed (4 s of 5 at the title).
-    if (page.filter != (linear ? 1 : 0)) {
+    // Batched, each copy takes it as it is brought up to date (flush_pages).
+    if (kBatchPageUploads) page.filter = linear ? 1 : 0;
+    else if (page.filter != (linear ? 1 : 0)) {
         const GLint filter = linear ? GL_LINEAR : GL_NEAREST;
         glBindTexture(GL_TEXTURE_2D, page.id);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
@@ -342,7 +373,7 @@ void Renderer::upload(const Frame::Texture& t) {
     }
     if (placed) {
         pages[texture.page].keys.push_back(t.key);
-        if (!texture.wraps) { textures[t.key] = texture; return; }
+        if (!texture.wraps || kBatchPageUploads) { textures[t.key] = texture; return; }
     }
     GLuint& own = placed ? texture.own : texture.id;
     glGenTextures(1, &own);
@@ -355,6 +386,29 @@ void Renderer::upload(const Frame::Texture& t) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap(t.wrap_s));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap(t.wrap_t));
     textures[t.key] = texture;
+}
+
+GLuint Renderer::own_texture(Texture& t) {
+    if (t.own || t.page < 0 || !kBatchPageUploads) return t.own;
+    const auto start = std::chrono::steady_clock::now();
+    const Page& page = pages[t.page];
+    std::vector<uint8_t> pixels(size_t(t.width) * t.height * 4);
+    const size_t row = size_t(t.width) * 4;
+    for (uint16_t y = 0; y < t.height; ++y)
+        std::memcpy(pixels.data() + y * row, page.shadow.data() + (size_t(t.y + y) * kPageSize + t.x) * 4, row);
+    glGenTextures(1, &t.own);
+    glBindTexture(GL_TEXTURE_2D, t.own);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, t.width, t.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
+    const GLint filter = page.filter == 1 ? GL_LINEAR : GL_NEAREST;
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
+    auto wrap = [](uint8_t mode) { return GLint(mode == 1 ? GL_REPEAT : mode == 2 ? GL_MIRRORED_REPEAT : GL_CLAMP_TO_EDGE); };
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap(t.wrap_s));
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap(t.wrap_t));
+    auto& s = gl_stats();
+    ++s.uploads; s.upload_bytes += pixels.size(); s.upload_ms += gl_ms_since(start);
+    return t.own;
 }
 
 void Renderer::draw(const Frame& frame) {
@@ -392,8 +446,8 @@ void Renderer::draw(const Frame& frame) {
                 const auto found = targets.find(image);
                 bound = image == frame.color_image ? copy : found != targets.end() ? found->second.texture : black;
             } else if (auto found = textures.find(s.texture); found != textures.end()) {
-                const Texture& t = found->second;
-                bound = t.id;
+                Texture& t = found->second;
+                bound = t.page >= 0 ? pages[t.page].id : t.id;
                 // A wrapping texture in a page: a draw within one period of it (a tile drawn
                 // from its second, mirrored copy, say) takes the period back to [0, 1]; one
                 // that crosses a period's edge repeats, from the texture of its own.
@@ -415,7 +469,7 @@ void Renderer::draw(const Frame& frame) {
                         remap[axis][1] = flip ? period + 1 : -period;
                     }
                 }
-                if (leaves) bound = t.own;
+                if (leaves) bound = own_texture(t);
                 else if (t.page >= 0) {
                     scale_u = float(t.width) / kPageSize; scale_v = float(t.height) / kPageSize;
                     offset_u = float(t.x) / kPageSize; offset_v = float(t.y) / kPageSize;

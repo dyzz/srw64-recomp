@@ -11,7 +11,7 @@ SRW64_DEBUG_ENDPOINT line). It writes build/recomp/debug/switch-<time>/debug.jso
 main checkout and makes it the current run, so srw64ctl.py, Session.attach() and the
 srw64_* MCP tools reach the Switch; the run's console.log comes over the same connection.
 
-  tools/release/switch/attach.py --host 192.168.1.236
+  tools/release/switch/attach.py --host <switch-ip>
 """
 from __future__ import annotations
 

@@ -24,6 +24,9 @@ void render_shutdown();
 // current, into the bound window framebuffer of width x height pixels.
 void render_init_gl();
 bool draw_gl(int width, int height, bool name_cover);
+// The window thread's updates and the render thread's draws since the last call: their waits
+// for the UI lock and their work (SRW64_PERF), and the counters start again.
+std::string perf_line();
 // Whether any page of the shared UI is up (it may change each frame: the screen is redrawn).
 // The frame-rate readout does not count: it changes twice a second, as readout_changes() counts.
 bool shown();
