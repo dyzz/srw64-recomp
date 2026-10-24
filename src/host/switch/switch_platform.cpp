@@ -4,7 +4,10 @@
 
 #include <cstdio>
 #include <cstring>
+#include <mutex>
 #include <string>
+#include <sys/iosupport.h>
+#include <sys/socket.h>
 #include <cerrno>
 #include <fcntl.h>
 #include <iterator>
@@ -33,9 +36,41 @@ void set_native_thread_name(const std::string& name) {
 void set_native_thread_priority(ThreadPriority) {}
 }
 
-// Whether stdout and stderr go to nxlink (console_log.cpp keeps them there).
+// stdout and stderr (console_log.hpp): one device for both that keeps the last 512 KiB in
+// memory (the debug interface serves it as console.log: Horizon will not open or even stat a
+// file another handle is writing), appends to the run's console.log once it is known, and
+// sends to nxlink when the NRO was pushed with it.
 static int nxlink_socket = -1;
 bool srw64_switch_nxlink() { return nxlink_socket >= 0; }
+namespace {
+std::mutex log_mutex;
+std::string log_tail;
+int log_file = -1;
+constexpr size_t log_keep = 512 * 1024;
+ssize_t log_write(struct _reent*, void*, const char* data, size_t size) {
+    std::lock_guard lock(log_mutex);
+    log_tail.append(data, size);
+    if (log_tail.size() > log_keep + log_keep / 4) log_tail.erase(0, log_tail.size() - log_keep);
+    if (log_file >= 0) (void)!::write(log_file, data, size);
+    if (nxlink_socket >= 0) ::send(nxlink_socket, data, size, MSG_DONTWAIT);
+    return ssize_t(size);
+}
+const devoptab_t log_device = {.name = "log", .write_r = log_write};
+void install_log() {
+    devoptab_list[STD_OUT] = &log_device;
+    devoptab_list[STD_ERR] = &log_device;
+}
+}
+void srw64_switch_log_to(const char* path) {
+    std::lock_guard lock(log_mutex);
+    if (log_file >= 0) ::close(log_file);
+    log_file = ::open(path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (log_file >= 0) (void)!::write(log_file, log_tail.data(), log_tail.size());
+}
+std::string srw64_switch_log_tail() {
+    std::lock_guard lock(log_mutex);
+    return log_tail;
+}
 
 extern "C" {
 // libnx's own: the arguments hbmenu passed, argv[0] the NRO's path ("sdmc:/switch/...").
@@ -67,7 +102,7 @@ std::string srw64_switch_language() {
 
 // The launch on screen until the game's window takes it: libnx's text console, one line a
 // step with the seconds since start (the same steps go to nxlink as SRW64_SWITCH_TIME).
-// The console takes stdout; srw64_switch_boot_end gives it back to nxlink.
+// The console takes stdout; srw64_switch_boot_end gives it back to the log device.
 namespace {
 enum class Boot { Off, Shown, Over };
 Boot boot = Boot::Off;
@@ -86,7 +121,7 @@ void srw64_switch_boot_line(const char* line) {
 void srw64_switch_boot_end() {
     if (boot == Boot::Shown) {
         consoleExit(nullptr);
-        if (nxlink_socket >= 0) dup2(nxlink_socket, STDOUT_FILENO);
+        install_log();
     }
     boot = Boot::Over;
 }
@@ -140,12 +175,12 @@ u32 __nx_nv_transfermem_size = 32 * 1024 * 1024;
 // recompiled code's frames; 1 MiB, as on the desktop's smallest. And it cannot detach a
 // thread (std::thread::detach threw ENOSYS): a detached thread here lives until the
 // program ends anyway, so detaching succeeds without freeing anything.
-int __real___syscall_thread_create(void* thread, void* (*function)(void*), void* argument, void* stack, size_t size);
-int __wrap___syscall_thread_create(void* thread, void* (*function)(void*), void* argument, void* stack, size_t size) {
+int __real___syscall_thread_create(struct __pthread_t** thread, void* (*function)(void*), void* argument, void* stack, size_t size);
+int __wrap___syscall_thread_create(struct __pthread_t** thread, void* (*function)(void*), void* argument, void* stack, size_t size) {
     if (!stack && !size) size = 1024 * 1024;
     return __real___syscall_thread_create(thread, function, argument, stack, size);
 }
-int __syscall_thread_detach(void*) { return 0; }
+int __syscall_thread_detach(struct __pthread_t*) { return 0; }
 
 // The save files and the run's state are written to a temporary name and renamed over
 // the old file; FAT on the SD card refuses to rename onto an existing file
@@ -182,10 +217,11 @@ void __wrap_abort() {
 // Before main and after it (libnx's weak hooks): the sockets, and stdout and stderr to
 // nxlink on the Mac that pushed the NRO (tools/release/switch/README.txt).
 void userAppInit() {
-    if (R_SUCCEEDED(socketInitializeDefault())) nxlink_socket = nxlinkStdio();
-    // Never wait on the Mac: a blocked write (the console's Wi-Fi asleep) stopped the thread
-    // that logged (MegaMan64Recomp-NX). A line may be lost instead.
-    if (nxlink_socket >= 0) fcntl(nxlink_socket, F_SETFL, fcntl(nxlink_socket, F_GETFL, 0) | O_NONBLOCK);
+    // The socket only: the log device (above) sends to it, never waiting on the Mac (a
+    // blocked write, the console's Wi-Fi asleep, stopped the thread that logged in
+    // MegaMan64Recomp-NX). A line may be lost instead.
+    if (R_SUCCEEDED(socketInitializeDefault())) nxlink_socket = nxlinkConnectToHost(false, false);
+    install_log();
 }
 
 void userAppExit() {

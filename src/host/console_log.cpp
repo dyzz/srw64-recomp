@@ -25,21 +25,17 @@
 #endif
 
 #ifdef __SWITCH__
-// The Switch (docs/design/switch-port.md): no pipes to pump. stdout and stderr go to nxlink
-// on the Mac that pushed the NRO (switch/switch_platform.cpp) or, without it, straight to
-// the run's console.log once it is known, unbuffered.
-bool srw64_switch_nxlink();
+// The Switch (docs/design/switch-port.md): no pipes to pump. stdout and stderr go to one
+// device (switch/switch_platform.cpp) that keeps their tail in memory, writes the run's
+// console.log once it is known and sends to nxlink when there is one.
+void srw64_switch_log_to(const char* path);
 namespace srw64::console_log {
 void start() {
     std::setvbuf(stdout, nullptr, _IOLBF, 0);
     std::setvbuf(stderr, nullptr, _IONBF, 0);
 }
 void attach(const std::filesystem::path& run) {
-    if (srw64_switch_nxlink()) return;
-    const auto path = (run / "console.log").string();
-    std::freopen(path.c_str(), "a", stdout);
-    std::freopen(path.c_str(), "a", stderr);
-    std::setvbuf(stderr, nullptr, _IONBF, 0);
+    srw64_switch_log_to((run / "console.log").string().c_str());
 }
 void flush_now() { std::fflush(stdout); std::fflush(stderr); }
 int crash_fd() { return -1; }

@@ -52,6 +52,9 @@
 
 extern uint8_t* srw64_rdram;  // host.cpp
 
+#ifdef __SWITCH__
+std::string srw64_switch_log_tail();   // switch/switch_platform.cpp: console.log's tail
+#endif
 namespace srw64::debug {
 namespace {
 using json=nlohmann::json;
@@ -413,6 +416,19 @@ std::filesystem::path run_file(const json& params) {
 }
 // {path, offset, size}: up to 4 MiB from offset, as base64; size in the reply is the file's.
 json read_run_file(const json& params) {
+#ifdef __SWITCH__
+    // Horizon opens or stats no file another handle is writing: console.log comes from the
+    // log's own tail in memory (the last 512 KiB), the other open logs not at all.
+    if(params.contains("path") && params["path"].is_string() &&
+       std::filesystem::path(params["path"].get<std::string>()).filename()=="console.log") {
+        const auto tail=::srw64_switch_log_tail();
+        const uint64_t offset=params.value("offset",uint64_t{0});
+        const uint64_t wanted=std::min<uint64_t>(params.value("size",uint64_t{1}<<20),uint64_t{4}<<20);
+        const auto data=offset<tail.size()?tail.substr(size_t(offset),size_t(wanted)):std::string();
+        return {{"path",(output/"console.log").string()},{"offset",offset},{"size",tail.size()},
+                {"data",base64(data)},{"eof",offset+data.size()>=tail.size()}};
+    }
+#endif
     const auto path=run_file(params);
     std::error_code error;
     const auto total=std::filesystem::file_size(path,error);
