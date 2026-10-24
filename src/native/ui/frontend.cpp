@@ -3584,7 +3584,7 @@ void battle_fit_units(Rml::ElementDocument* doc) {
 // unit has one, whatever the weapon, so changing weapons does not move the page) and the
 // ability lines. Sized for this encounter, not for the most any pilot could need (user,
 // 2026-09-28: the empty room crowded the unit pictures on a Steam Deck).
-struct PilotRoom {int spirit_rows=0;bool defenses=false;int effect_lines=0;};
+struct PilotRoom {int spirit_rows=1;bool defenses=false;int effect_lines=0;};
 struct PilotDefenses {std::string line,conditions;};
 PilotDefenses battle_defenses(const json& c) {
     const auto& d=c.at("defense");
@@ -3628,9 +3628,8 @@ json battle_buffs(const json& c) {
 // 1080p), so a tag can come out a pixel taller and two exact rows would scroll.
 int battle_spirit_rows(const json& c,bool narrow) {
     const float page=std::min(page_area().w/ui_density,1500.f)-36,width=(page*.31f-22-(narrow?68:100)-8)*.95f;
-    const auto buffs=battle_buffs(c);if(buffs.empty())return 0;
     int rows=1;float x=0;
-    for(const auto& spirit:buffs) {
+    for(const auto& spirit:battle_buffs(c)) {
         const float w=text_units(spirit.at("name").get<std::string>())*12+12;
         if(x>0 && x+3+w>width){++rows;x=w;}else x+=(x>0?3:0)+w;
     }
@@ -3654,9 +3653,9 @@ std::string battle_pilot(const json& c,bool left,const PilotRoom& room) {
     body+="<div class='bp-pilot-info'><div class='bp-pilot-name'><span>"+escape(c.at("pilot_name").get<std::string>())+"</span><span class='level'>Lv "+battle_number(c.at("level"))+"</span></div>";
     body+="<div class='bp-stats'><div class='bp-stat'><span>"+label("battle_morale")+"</span><b>"+battle_number(c.at("morale"))+"</b></div>";
     body+="<div class='bp-stat'><span>SP</span><b class='"+std::string(c.at("sp").get<int>()<c.at("max_sp").get<int>()?"spent":"")+"'>"+battle_number(c.at("sp"))+" / "+battle_number(c.at("max_sp"))+"</b></div></div>"
-        "<div class='battle-spirits' style='"+(room.spirit_rows?"height:"+std::to_string(room.spirit_rows*23+1)+"dp;":std::string("height:0;margin-top:0;"))+"'>";
-    // What can still be cast is in the spirit menu; buffs gold, debuffs red. Without any on
-    // either side the bar takes no room.
+        "<div class='battle-spirits' style='height:"+std::to_string(room.spirit_rows*23+1)+"dp;'>";
+    // What can still be cast is in the spirit menu; buffs gold, debuffs red. The bar keeps its
+    // row when empty.
     for(const auto& spirit:battle_buffs(c))
         body+="<span"+std::string(spirit.at("debuff").get<bool>()?" class='debuff'":"")+">"+escape(spirit.at("name").get<std::string>())+"</span>";
     const auto defenses=battle_defenses(c);
