@@ -520,7 +520,8 @@ public:
         // RT64 picks Vulkan on Linux, and D3D12 with a Vulkan fallback on Windows.
         app->userConfig.graphicsAPI = GraphicsAPI::Automatic;
 #endif
-        // For tests only: SRW64_GRAPHICS_API=vulkan (MoltenVK on a Mac), d3d12 or metal.
+        // SRW64_GRAPHICS_API=vulkan (MoltenVK on a Mac), d3d12 or metal: for tests, and on
+        // Windows for players whose GPU fails under D3D12 (the launcher passes it, launch.cpp).
         if (const char* api = std::getenv("SRW64_GRAPHICS_API")) {
             const std::string name = api;
             if (name == "vulkan") app->userConfig.graphicsAPI = GraphicsAPI::Vulkan;
