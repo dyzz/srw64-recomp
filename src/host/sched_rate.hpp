@@ -42,13 +42,29 @@ inline bool latch_paced() {
     return p;
 }
 // VI thread, every tick: whether the next picture may latch now. In 2x at 120 Hz (interval 2)
-// on even ticks only: a frame drawn every second tick then shows every second tick, as at
-// 60 Hz, not after one or three as the GPU's finish falls either side of a tick. 1x (a frame
-// every 4 ticks) keeps its cadence without this, and its interpolation is smoother on the
-// 120 Hz grid (60 presents on Mac instead of 54); 4x draws on every tick.
+// a new picture waits for an even tick: a frame drawn every second tick then shows every
+// second tick, not after one or three as the GPU's finish falls either side of a tick (Mac).
+// A GPU slower than two ticks a frame (the Seeker) only loses by the wait: each picture held
+// for an even tick holds back the next frame's start (80080C94), 46 a second instead of 53.
+// So one already three ticks late goes at once, and when 4 of the last 32 changes came that
+// late the device is taken to be slow and pictures latch freely for 10 seconds.
+// 1x (a frame every 4 ticks) keeps its cadence without this, and its interpolation is smoother
+// on the 120 Hz grid (60 presents on Mac instead of 54); 4x draws on every tick.
+inline std::atomic<uint64_t> latch_slow_spells{0};
 inline bool latch(const uint8_t* ram,uint64_t tick) {
-    if(factor()==1 || !latch_paced() || !ram)return true;
-    return guest::read(ram,0x8010F0C8,4)!=2 || tick%2==0;
+    if(factor()==1 || !latch_paced() || !ram || guest::read(ram,0x8010F0C8,4)!=2)return true;
+    static uint64_t last_change=0,free_until=0;
+    static unsigned changes=0,late=0;
+    if(tick<free_until)return true;
+    if(osViGetNextFramebuffer()==osViGetCurrentFramebuffer())return true;   // nothing new to show
+    if(tick%2!=0 && tick-last_change<3)return false;
+    if(tick-last_change>=3)++late;
+    if(++changes==32) {
+        if(late>=4){free_until=tick+1200;++latch_slow_spells;}
+        changes=late=0;
+    }
+    last_change=tick;
+    return true;
 }
 
 // The original's scheduler (osScheduler at 8015D730) sends each retrace to every client in
