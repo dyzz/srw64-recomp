@@ -190,7 +190,6 @@
     "battle_hint_pad": "{DUpDown} 选择 · {A} 确认 · {B} 返回",
     "battle_response_hint": "选择反击武器、回避或防御后，再确认开始战斗。",
     "battle_response": "当前应对",
-    "battle_spirits_none": "无精神状态",
     "battle_defense_note": "切／盾防／分身为各自判定时的几率，依次判定，不相加。",
     "battle_critical_damage": "暴击时伤害",
     "battle_target_barrier": "对方护罩",

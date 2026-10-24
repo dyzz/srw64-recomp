@@ -261,12 +261,15 @@ def fixtures(text):
         for side in ('attacker', 'defender'):
             four[side].update(damage=8888, critical_damage=8888)
         add('battle-4digit-native', {'battle_page': four})
-        # Shinobu's seven spirits, 熱血 and 努力 cast: two rows that must not scroll.
-        seven = copy.deepcopy(states['battle'][2])
-        seven['defender']['spirit_grid'] = [{'id': i, 'name': r(969 + i), 'active': i in (11, 16)} for i in (3, 5, 11, 12, 13, 16, 25)]
-        for side in ('attacker', 'defender'):   # with faces, so the info columns are as narrow as in a game
-            seven[side]['portrait'] = {'path': 'assets/hd-ai/portrait-batch/whole-v1/portrait-169.png', 'width': 96, 'height': 96}
-        add('battle-spirits-native', {'battle_page': at(seven)})
+        # The pilot panels' buff bars (frontend.cpp battle_buffs): every buff but 魂 on one side
+        # (加速 手加減 集中 必閃 必中 鉄壁 みがわり 熱血 幸運 努力 隠れ身); 魂 鉄壁 and the two
+        # debuffs 挑発 かく乱 on the other. The rows must not scroll.
+        buffs = copy.deepcopy(states['battle'][2])
+        for side, ids in (('defender', (2, 3, 4, 5, 7, 9, 10, 11, 14, 16, 18)), ('attacker', (9, 17, 21, 23))):
+            buffs[side]['active_spirits'] = [{'id': i, 'name': r(969 + i)} for i in ids]
+            # with faces, so the info columns are as narrow as in a game
+            buffs[side]['portrait'] = {'path': 'assets/hd-ai/portrait-batch/whole-v1/portrait-169.png', 'width': 96, 'height': 96}
+        add('battle-spirits-native', {'battle_page': at(buffs)})
         imports = {'save_store': {'visible': True, 'import': [
             {'file': 'Super Robot Wars 64 (Japan).sra', 'format': '32-bit swapped', 'slots': [{'used': True, 'intact': True}, {'used': True, 'intact': False}]},
             {'file': 'SRW64.srm', 'format': '32-bit swapped .srm', 'slots': [{'used': True, 'intact': True}, {'used': False, 'intact': False}]},

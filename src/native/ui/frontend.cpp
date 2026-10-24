@@ -765,10 +765,8 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 .bp-stat span {color:#a4b0d2;} .bp-stat b.spent {color:#ffd75e;}
 .battle-spirits {display:flex; flex-wrap:wrap; align-content:flex-start; margin-top:5dp; height:46dp; overflow-y:auto; font-size:12dp; gap:3dp;}
 .right .battle-spirits {justify-content:flex-end;}
-.battle-spirits span {display:inline-block; padding:1dp 5dp; height:16dp; color:#7e88a8; border:1dp #4a5578; background-color:#ffffff0a;}
-.battle-spirits span.active {color:#ffd75e; border-color:#ffd75e; background-color:#ffd75e2e; font-weight:bold;}
-.battle-spirits span.defensive {color:#57e389; border-color:#57e389; background-color:#57e3892e; font-weight:bold;}
-.battle-spirits .muted {border:0; color:#7e88a8;}
+.battle-spirits span {display:inline-block; padding:1dp 5dp; height:16dp; color:#ffd75e; border:1dp #ffd75e; background-color:#ffd75e2e; font-weight:bold;}
+.battle-spirits span.debuff {color:#ff5c6c; border-color:#ff5c6c; background-color:#ff5c6c2e;}
 .battle-defenses {border-top:1dp #ff6fa859; margin-top:6dp; padding-top:4dp; height:18dp; font-size:13dp; color:#57e389;} .right .battle-defenses {border-color:#3fd0ff59;}
 .battle-defense-note {font-size:11dp; white-space:normal; color:#a4b0d2; margin-top:2dp;}
 .battle-defense-conditions {height:14dp; overflow:hidden; white-space:nowrap;}
@@ -3586,7 +3584,7 @@ void battle_fit_units(Rml::ElementDocument* doc) {
 // unit has one, whatever the weapon, so changing weapons does not move the page) and the
 // ability lines. Sized for this encounter, not for the most any pilot could need (user,
 // 2026-09-28: the empty room crowded the unit pictures on a Steam Deck).
-struct PilotRoom {int spirit_rows=1;bool defenses=false;int effect_lines=0;};
+struct PilotRoom {int spirit_rows=0;bool defenses=false;int effect_lines=0;};
 struct PilotDefenses {std::string line,conditions;};
 PilotDefenses battle_defenses(const json& c) {
     const auto& d=c.at("defense");
@@ -3609,15 +3607,30 @@ PilotDefenses battle_defenses(const json& c) {
     return out;
 }
 float text_units(const std::string& text);
-// Rows the spirit tags take in a pilot panel's info column (12 dp text with 12 dp of
+// The buff bar: every spirit flag in effect on this unit's lead pilot (docs/gameplay/battle-formulas.md §6),
+// buffs first, then the debuffs the other side cast on it. Each entry gains "debuff".
+// Buffs: 加速 move +3, 手加減 leaves 10 HP, 集中 hit ±30, ひらめき hit 0, 必中 hit 100, 鉄壁
+// armor ×2, みがわり (on the ally being covered) the caster fights in its place, 熱血 damage ×2,
+// 幸運 funds ×2, 努力 experience ×2, 魂 damage ×3, 隠れ身 cannot be targeted.
+// Debuffs: 挑発 targets only the caster, かく乱 own hit ÷2. Instant ones (気合, 根性, …) leave no flag.
+json battle_buffs(const json& c) {
+    json out=json::array();
+    for(const bool debuff:{false,true})
+        for(const unsigned id:debuff?std::initializer_list<unsigned>{21,23}:std::initializer_list<unsigned>{2,3,4,5,7,9,10,11,14,16,17,18})
+            for(const auto& spirit:c.value("active_spirits",json::array()))
+                if(spirit.at("id")==id){auto tag=spirit;tag["debuff"]=debuff;out.push_back(tag);}
+    return out;
+}
+// Rows the buff tags take in a pilot panel's info column (12 dp text with 12 dp of
 // padding and border each, 3 dp apart), a little pessimistic so a second row is never
 // hidden: the column is the panel (31% of the page) less its padding, the face and a gap.
 // The box gets 3 dp more than the rows: borders round to whole pixels (1.5 px → 2 at
 // 1080p), so a tag can come out a pixel taller and two exact rows would scroll.
 int battle_spirit_rows(const json& c,bool narrow) {
     const float page=std::min(page_area().w/ui_density,1500.f)-36,width=(page*.31f-22-(narrow?68:100)-8)*.95f;
+    const auto buffs=battle_buffs(c);if(buffs.empty())return 0;
     int rows=1;float x=0;
-    for(const auto& spirit:c.value("spirit_grid",json::array())) {
+    for(const auto& spirit:buffs) {
         const float w=text_units(spirit.at("name").get<std::string>())*12+12;
         if(x>0 && x+3+w>width){++rows;x=w;}else x+=(x>0?3:0)+w;
     }
@@ -3629,7 +3642,7 @@ int battle_effect_lines(const json& c) {
     return lines;
 }
 PilotRoom battle_pilot_room(const json& a,const json& b,bool narrow) {
-    return {std::max({1,battle_spirit_rows(a,narrow),battle_spirit_rows(b,narrow)}),
+    return {std::max(battle_spirit_rows(a,narrow),battle_spirit_rows(b,narrow)),
             !battle_defenses(a).line.empty() || !battle_defenses(b).line.empty(),
             std::max(battle_effect_lines(a),battle_effect_lines(b))};
 }
@@ -3641,13 +3654,11 @@ std::string battle_pilot(const json& c,bool left,const PilotRoom& room) {
     body+="<div class='bp-pilot-info'><div class='bp-pilot-name'><span>"+escape(c.at("pilot_name").get<std::string>())+"</span><span class='level'>Lv "+battle_number(c.at("level"))+"</span></div>";
     body+="<div class='bp-stats'><div class='bp-stat'><span>"+label("battle_morale")+"</span><b>"+battle_number(c.at("morale"))+"</b></div>";
     body+="<div class='bp-stat'><span>SP</span><b class='"+std::string(c.at("sp").get<int>()<c.at("max_sp").get<int>()?"spent":"")+"'>"+battle_number(c.at("sp"))+" / "+battle_number(c.at("max_sp"))+"</b></div></div>"
-        "<div class='battle-spirits' style='height:"+std::to_string(room.spirit_rows*23+1)+"dp;'>";
-    const auto spirits=c.value("spirit_grid",json::array());
-    if(spirits.empty())body+="<span class='muted'>"+label("battle_spirits_none")+"</span>";
-    for(const auto& spirit:spirits) {
-        const bool active=spirit.at("active");const unsigned id=spirit.at("id");
-        body+="<span class='"+std::string(!active?"":id==5 || id==9 || id==18?"defensive":"active")+"'>"+escape(spirit.at("name").get<std::string>())+"</span>";
-    }
+        "<div class='battle-spirits' style='"+(room.spirit_rows?"height:"+std::to_string(room.spirit_rows*23+1)+"dp;":std::string("height:0;margin-top:0;"))+"'>";
+    // What can still be cast is in the spirit menu; buffs gold, debuffs red. Without any on
+    // either side the bar takes no room.
+    for(const auto& spirit:battle_buffs(c))
+        body+="<span"+std::string(spirit.at("debuff").get<bool>()?" class='debuff'":"")+">"+escape(spirit.at("name").get<std::string>())+"</span>";
     const auto defenses=battle_defenses(c);
     // Without a defenses line on either side only its rule stays, as the divider.
     body+="</div></div></div><div class='battle-defenses'"+std::string(room.defenses?"":" style='height:0;padding-top:0;'")+">"+defenses.line+"</div>"

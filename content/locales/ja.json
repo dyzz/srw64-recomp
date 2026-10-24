@@ -190,7 +190,6 @@
     "battle_hint_pad": "{DUpDown} 選択 · {A} 決定 · {B} 戻る",
     "battle_response_hint": "反撃武器・回避・防御を選び、戦闘を開始します。",
     "battle_response": "現在の対応",
-    "battle_spirits_none": "精神効果なし",
     "battle_defense_note": "特殊防御の確率は各判定時の値。合算不可。",
     "battle_critical_damage": "会心時ダメージ",
     "battle_target_barrier": "相手バリア",

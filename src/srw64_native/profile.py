@@ -150,7 +150,6 @@ UI_KEYS |= {
     "battle_spirit_back",
     "battle_spirit_hint", "battle_damage_if_hit", "battle_first", "battle_second",
     "battle_first_player", "battle_first_enemy", "battle_phase_enemy", "battle_phase_player", "battle_barrier",
-    "battle_spirits_none",
     "battle_ammo", "battle_animation", "battle_attacker", "battle_back",
     "battle_change_weapon", "battle_confirm", "battle_cost", "battle_counter",
     "battle_crit_mod", "battle_critical", "battle_critical_note", "battle_damage",

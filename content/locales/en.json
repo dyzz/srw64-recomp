@@ -190,7 +190,6 @@
     "battle_hint_pad": "{DUpDown} select · {A} confirm · {B} back",
     "battle_response_hint": "Choose a counter weapon, evade or defend, then confirm the battle.",
     "battle_response": "Current response",
-    "battle_spirits_none": "No active spirits",
     "battle_defense_note": "Defense rates are conditional checks, not additive.",
     "battle_critical_damage": "Critical damage",
     "battle_target_barrier": "Target barrier",

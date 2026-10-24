@@ -129,18 +129,6 @@ json screen_words(const uint8_t* ram) {
         words[key]=dialogue::ui_text(ram,id);
     return words;
 }
-json spirit_grid(const uint8_t* ram,const rule_probe::Combatant& c) {
-    json result=json::array();const auto flags=read(ram,c.pilot+0x1C,4);
-    for(unsigned id=0;id<30;++id) {
-        bool learned=false;
-        for(unsigned crew=0;crew<std::min(7u,read(ram,c.unit+0x34,1));++crew) {
-            const auto pilot=read(ram,c.unit+0x38+4*crew,4);if(!valid(pilot,0x4C))continue;
-            for(unsigned n=0;n<std::min(6u,read(ram,pilot+0xA,1));++n)learned|=read(ram,pilot+0xB+n,1)==id;
-        }
-        if(learned || (flags&(1u<<id)))result.push_back({{"id",id},{"name",dialogue::ui_text(ram,969+id)},{"active",bool(flags&(1u<<id))}});
-    }
-    return result;
-}
 
 void record(const char* kind) {
     if(log){auto row=current;row["kind"]=kind;row["vi"]=srw64_current_vi();log<<row.dump()<<'\n';log.flush();}
@@ -150,7 +138,7 @@ json combatant(uint8_t* copy,recomp_context* ctx,const rule_probe::Combatant& a,
     const auto flags=read(copy,a.pilot+0x1C,4);
     return {{"unit_name",dialogue::ui_text(copy,527+read(copy,a.unit+2,2))},{"pilot_name",dialogue::ui_text(copy,4382+read(copy,a.pilot+2,2))},{"weapon_name",a.weapon?dialogue::ui_text(copy,1370+read(copy,a.weapon+2,2)):std::string{}},{"side",a.side},{"handle",a.handle},{"unit",read(copy,a.unit+2,2)},{"pilot",read(copy,a.pilot+2,2)},
         {"weapon",a.weapon?int(read(copy,a.weapon+2,2)):-1},{"level",read(copy,a.pilot+5,1)},
-        {"sp",read(copy,a.pilot+0x16,2)},{"max_sp",read(copy,a.pilot+0x18,2)},{"spirit_grid",spirit_grid(copy,a)},{"hp",read(copy,a.unit+4,2)},{"max_hp",read(copy,a.unit+6,2)},{"en",read(copy,a.unit+8,2)},{"max_en",read(copy,a.unit+10,2)},
+        {"sp",read(copy,a.pilot+0x16,2)},{"max_sp",read(copy,a.pilot+0x18,2)},{"hp",read(copy,a.unit+4,2)},{"max_hp",read(copy,a.unit+6,2)},{"en",read(copy,a.unit+8,2)},{"max_en",read(copy,a.unit+10,2)},
         {"unit_art",art["units"].value(std::to_string(read(copy,a.unit+2,2)),json::object())},
         {"size",[&]{const unsigned f=read(copy,a.unit+0x0C,1);return f&1?0:f&2?1:f&4?2:f&8?3:4;}()},  // SS..LL, as ability_page
         // What the original screen tells (801E7A28): an enemy's HP/EN and level only once known.
@@ -228,7 +216,6 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
     if(current.value("locale",std::string{})!=language->locale) {
         for(const auto& pair:{std::pair{"attacker",a},std::pair{"defender",d}}) {
             auto& card=current[pair.first];const auto& c=pair.second;
-            card["spirit_grid"]=spirit_grid(ram,c);
             card["active_spirits"]=active_spirits(ram,card.at("spirits").get<uint32_t>());
             card["unit_name"]=dialogue::ui_text(ram,527+read(ram,c.unit+2,2));
             card["pilot_name"]=dialogue::ui_text(ram,4382+read(ram,c.pilot+2,2));
