@@ -9,7 +9,10 @@ manifest with before/after hashes. build/recomp/switch-runtime/ then holds:
                               RDRAM from calloc (16 MiB: libnx has no mmap, so no 4 GiB
                               reservation and no guard pages), without the mod system, the
                               live recompiler and the recompiled heap (dlopen and executable
-                              memory, neither of which a homebrew NRO has)
+                              memory, neither of which a homebrew NRO has), and the ROM read
+                              once into memory: the launcher has checked it (rom_order.hpp,
+                              rom_import.cpp), and upstream wrote a 32 MiB copy into every
+                              session on the SD card, then read and hashed it twice
   librecomp/CMakeLists.txt    librecomp without mods.cpp, mod_*.cpp, config*.cpp, heap.cpp,
                               o1heap and the N64Recomp/LiveRecomp targets; its sources named
                               from the upstream checkout, recomp.cpp and files.cpp from here
@@ -188,10 +191,43 @@ std::unique_ptr<recomp::mods::ModContext> mod_context = std::make_unique<recomp:
 ''', '''    std::free(rdram);
     bool free_failed = false;
 ''')
+    source = adapt_rom_loading(source)
     return replace_once(source, 'enum GameStatus {', f'''// docs/design/switch-port.md: RDRAM as one allocation.
 constexpr size_t srw64_rdram_bytes = {RDRAM_BYTES};
 
 enum GameStatus {{''')
+
+
+def adapt_rom_loading(source: str) -> str:
+    """The ROM read once, as the PS Vita's build does (prepare_vita_runtime.py)."""
+    source = remove_between(source, """    if (!check_hash(rom_data, game_entry.rom_hash)) {
+        const std::string_view name{""", """    write_file(config_path / game_entry.stored_filename(), rom_data);""",
+                            '3915038df5eb55df74751167cb8e5130ca6c71cb6657c484a4c206f859df7c50')
+    source = replace_once(source, """    write_file(config_path / game_entry.stored_filename(), rom_data);
+    
+    return recomp::RomValidationError::Good;""", """    // Checked by the launcher (rom_order.hpp, rom_import.cpp) before the game starts.
+    valid_game_roms.insert(game_id);
+    recomp::set_rom_contents(std::move(rom_data));
+    return recomp::RomValidationError::Good;""")
+    source = replace_once(source, """void recomp::check_all_stored_roms() {
+    for (const auto& cur_rom_entry: game_roms) {
+        if (check_stored_rom(cur_rom_entry.second)) {
+            valid_game_roms.insert(cur_rom_entry.first);
+        }
+    }
+}""", """void recomp::check_all_stored_roms() {
+    // select_rom keeps the ROM in memory and marks it valid; nothing is stored.
+}""")
+    return replace_once(source, """    std::vector<uint8_t> stored_rom_data = read_file(config_path / find_it->second.stored_filename());
+
+    if (!check_hash(stored_rom_data, find_it->second.rom_hash)) {
+        // The ROM no longer has the right hash, delete it.
+        std::filesystem::remove(config_path / find_it->second.stored_filename());
+        return false;
+    }
+
+    recomp::set_rom_contents(std::move(stored_rom_data));
+    return true;""", """    return recomp::is_rom_loaded();""")
 
 
 def adapt_renderer_context(source: str) -> str:

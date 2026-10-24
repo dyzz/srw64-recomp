@@ -48,7 +48,13 @@ void srw64_audio_frequency(uint32_t frequency) {
     wanted.freq = frequency;
     wanted.format = AUDIO_S16SYS;
     wanted.channels = 2;
+#ifdef __SWITCH__
+    // The Switch's backend takes a buffer about every 10 ms: 512 frames at 44.1 kHz left the
+    // queue growing past its limit (SRW64_AUDIO_LATENCY_RECOVERY every few seconds).
+    wanted.samples = 1024;
+#else
     wanted.samples = 512;
+#endif
     device = SDL_OpenAudioDevice(nullptr, 0, &wanted, &obtained, 0);
     if (!device) {
         fprintf(stderr, "SRW64_AUDIO_SILENT no output device: %s\n", SDL_GetError());

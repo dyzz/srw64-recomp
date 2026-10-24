@@ -284,6 +284,11 @@ Endpoint listen(const fs::path& run,Handler handle) {
     (void)once;
     try{write_endpoint(run,endpoint);}
     catch(...){close_socket(listener);throw;}
+#ifdef __SWITCH__
+    // The Mac reads it from the log nxlink brings back (tools/release/switch/attach.py):
+    // the SD card is out of reach while the game runs.
+    std::fprintf(stderr,"SRW64_DEBUG_ENDPOINT %s\n",endpoint.dump().c_str());
+#endif
     endpoint_file=run/"debug.json";
     stopping=false;accepting=true;looping=true;
     std::thread(accept_loop,listener).detach();

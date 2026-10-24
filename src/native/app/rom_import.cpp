@@ -121,18 +121,20 @@ fs::path prepare_rom_content(const fs::path& rom_path,const fs::path& cache_root
        spec.at("rom_sha256")!=expected_rom_hash)throw std::runtime_error("Import metadata does not match the game");
     const size_t size=size_t(integer(spec.at("rom_size"),32*1024*1024,"ROM size"));
     if(!size || fs::file_size(rom_path)!=size)throw std::runtime_error("Incorrect ROM size");
-    const auto raw=read_text(rom_path,size);const auto rom=bytes(raw);
-    // Decode and hash the SAME immutable bytes, not a second unverified read.
-    if(raw.size()!=size || hash(rom)!=expected_rom_hash)throw std::runtime_error("ROM identity check failed before import");
     const auto key=hash(expected_rom_hash+":"+std::to_string(importer_version)+":"+hash(spec_text));
     if(fs::is_symlink(cache_root))throw std::runtime_error("Refusing a symlinked import cache");
-    fs::create_directories(cache_root);
     const auto destination=cache_root/key;
     if(fs::exists(destination) || fs::is_symlink(destination)) {
         try{verify_cached(destination,key,expected_rom_hash);}
         catch(const std::exception& e){throw std::runtime_error("Cached import is invalid; remove only "+destination.string()+" to rebuild: "+e.what());}
         return destination;
     }
+    // The ROM is read only to import: a cached import needs only its digest, which the
+    // launcher has checked (rom_order.hpp). Decode and hash the SAME immutable bytes, not a
+    // second unverified read.
+    const auto raw=read_text(rom_path,size);const auto rom=bytes(raw);
+    if(raw.size()!=size || hash(rom)!=expected_rom_hash)throw std::runtime_error("ROM identity check failed before import");
+    fs::create_directories(cache_root);
     fs::path staging;
     for(unsigned attempt=0;attempt<16;++attempt) {
         const auto candidate=cache_root/(key+".tmp-"+std::to_string(std::random_device{}()));

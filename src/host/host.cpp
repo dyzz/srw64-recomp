@@ -42,6 +42,9 @@
 #include "wide_map.hpp"
 #include "battle_hud.hpp"
 #include "game_frame.hpp"
+#ifdef __SWITCH__
+void srw64_switch_mark(const char* label);   // switch/switch_platform.cpp: startup timing
+#endif
 #include <algorithm>
 #include <iterator>
 #include "native_portrait.hpp"
@@ -440,6 +443,9 @@ static int run_host(int argc, char** argv) {
     if (recomp::select_rom(argv[1], game.game_id) != recomp::RomValidationError::Good) fail("baseline ROM validation failed");
     recomp::check_all_stored_roms();
     if (!recomp::is_rom_valid(game.game_id)) fail("stored ROM readback failed");
+#ifdef __SWITCH__
+    srw64_switch_mark("rom in the runtime");
+#endif
     char game_option[] = "--game", game_name[] = "srw64";
     char* runtime_args[] = {argv[0], game_option, game_name};
     recomp::Configuration cfg{};
@@ -680,6 +686,11 @@ void crash_backtrace(int signal) {
 #endif
 
 
+#ifdef __SWITCH__
+bool srw64_switch_application();                                                   // switch/switch_platform.cpp
+void srw64_switch_error(const std::string& message, const std::string& details);
+#endif
+
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
 int main(int argc, char** argv) {
 #ifdef __ANDROID__
@@ -765,6 +776,42 @@ int main(int argc, char** argv) {
                     return run_host(count, values);
                 });
             }, argc == 2);
+    }
+#endif
+#ifdef __SWITCH__
+    // The Switch (docs/design/switch-port.md): hbmenu passes only the NRO's path. Its folder,
+    // /switch/Marchwind64 on the SD card, holds the program's files beside it (fonts,
+    // dialogue, stages: tools/release/switch/package.py), the player's ROM (rom.z64) and
+    // everything the game keeps.
+    if (argc <= 1) {
+        // From the album (a library applet) a homebrew program gets about 370 MiB, as much as
+        // the PS Vita build lives in; an application (R held on a game) gets about 3 GiB.
+        // Allowed while the port is brought up on a console with no game to hold R on.
+        if (!srw64_switch_application())
+            std::fprintf(stderr, "SRW64_SWITCH_APPLET started from the album: library applet memory\n");
+        srw64::app::Options options;
+        options.user_dir = srw64::app::executable_path().parent_path();
+        if (options.user_dir.empty()) options.user_dir = "/switch/Marchwind64";
+        options.rom = options.user_dir / "rom.z64";
+        // /switch/Marchwind64/debug (an empty file): the debug interface, on every address
+        // (debug_transport.cpp), its debug.json in the run directory.
+        std::error_code missing;
+        options.debug = std::filesystem::exists(options.user_dir / "debug", missing);
+        srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
+            native_rom_variants[0].save_file, srw64::rules::version, {}};
+        for (const auto& rule : srw64::rules::catalog)
+            game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
+        try {
+            return srw64::app::run_standalone(options, game, run_host);
+        } catch (const srw64::app::RomRefused& error) {
+            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
+            srw64_error_box(srw64::app::rom_refused_message(error.problem, error.path, srw64::app::player_locale(options)));
+            return 2;
+        } catch (const std::exception& error) {
+            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
+            srw64_switch_error("Marchwind64 could not start.", error.what());
+            return 2;
+        }
     }
 #endif
     if (argc == 2 && std::string_view(argv[1]) == "--help") {

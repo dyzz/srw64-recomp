@@ -126,6 +126,9 @@ int graphics_api = -1;  // RT64's chosen API (RT64::UserConfiguration::GraphicsA
 std::filesystem::path capture_directory;
 std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure message
 }  // namespace
+#ifdef __SWITCH__
+void srw64_switch_error(const std::string& message, const std::string& details);
+#endif
 void srw64_error_box(const std::string& message) {
 #ifdef _WIN32
     // Topmost, over the game's own window. Not owned by it: that window's thread (the main
@@ -133,6 +136,8 @@ void srw64_error_box(const std::string& message) {
     std::wstring text(size_t(MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, nullptr, 0)), L'\0');
     MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, text.data(), int(text.size()));
     MessageBoxW(nullptr, text.c_str(), L"Marchwind64", MB_OK | MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
+#elif defined(__SWITCH__)
+    srw64_switch_error(message, {});   // the system's error box (switch/switch_platform.cpp)
 #else
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Marchwind64", message.c_str(), nullptr);
 #endif
@@ -1123,6 +1128,14 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
         fprintf(stderr, "SRW64_SDL_INIT_FAILED %s\n", SDL_GetError());
         std::abort();
     }
+#ifdef __SWITCH__
+    // The Switch's controllers by their labels, not by position (SDL's own mapping puts A on
+    // the bottom button, Nintendo's B): A confirms and B goes back as in every Switch game,
+    // and the hints show the letters (pad_family stays 0, lettered A B X Y).
+    SDL_GameControllerAddMapping("000038f853776974636820436f6e7400,Switch Controller,"
+        "a:b0,b:b1,x:b2,y:b3,back:b11,start:b10,leftshoulder:b6,rightshoulder:b7,lefttrigger:b8,righttrigger:b9,"
+        "leftstick:b4,rightstick:b5,dpup:b13,dpdown:b15,dpleft:b12,dpright:b14,leftx:a0,lefty:a1,rightx:a2,righty:a3,");
+#endif
     // UI and dialogue need display pixels regardless of the game's internal render scale.
 #ifdef __APPLE__
     constexpr Uint32 surface = SDL_WINDOW_METAL;
@@ -1139,7 +1152,11 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     const bool deck = srw64::on_steam_deck();
     if (deck) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
     // Android: the activity hides the system bars itself (SRW64Activity).
+#ifdef __SWITCH__
+    const bool fills_screen = true;   // the screen's 1280 x 720, or the TV's when docked
+#else
     const bool fills_screen = deck;
+#endif
     Uint32 surface_flags = surface;
 #ifdef SRW64_GL_RENDERER
     if (gl_mode()) {
@@ -1167,7 +1184,9 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     }
     SDL_SysWMinfo info{};
     SDL_VERSION(&info.version);
+#ifndef __SWITCH__   // the Switch's SDL has no window-manager info, nor needs it (the window is returned)
     if (!SDL_GetWindowWMInfo(window, &info)) std::abort();
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::ui::window_init(window,capture_directory);
     srw64::settings::window_init(window,capture_directory);

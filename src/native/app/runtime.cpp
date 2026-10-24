@@ -17,6 +17,10 @@
 #include <system_error>
 #include <thread>
 #include <vector>
+#ifdef __SWITCH__
+std::string srw64_switch_program_path();   // src/host/switch/switch_platform.cpp
+std::string srw64_switch_language();
+#endif
 #ifdef _WIN32
 #ifndef NOMINMAX
 #define NOMINMAX
@@ -275,6 +279,9 @@ std::vector<std::string> preferred_languages() {
         }
         CFRelease(list);
     }
+#elif defined(__SWITCH__)
+    // System Settings → Language (switch/switch_platform.cpp).
+    if(auto language=srw64_switch_language();!language.empty())names.push_back(language);
 #else
 #ifndef __ANDROID__
     // Started by Steam (Game Mode, or a library shortcut): Steam's language first.
@@ -371,6 +378,9 @@ fs::path executable_path() {
     const auto size=GetModuleFileNameW(nullptr,buffer.data(),DWORD(buffer.size()));
     if(!size || size>=buffer.size())return {};
     buffer.resize(size);return fs::path(buffer);
+#elif defined(__SWITCH__)
+    // argv[0] from hbmenu, without its sdmc: device (switch/switch_platform.cpp).
+    return fs::path(srw64_switch_program_path());
 #elif defined(__APPLE__)
     uint32_t size=0;_NSGetExecutablePath(nullptr,&size);
     std::string buffer(size,'\0');

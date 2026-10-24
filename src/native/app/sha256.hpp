@@ -9,6 +9,13 @@
 #include <span>
 #include <sstream>
 #include <stdexcept>
+#ifdef __SWITCH__
+#include <cstdio>
+#include <mutex>
+#include <string>
+#include <sys/stat.h>
+#include <unordered_map>
+#endif
 
 namespace srw64::app {
 class Sha256 {
@@ -64,7 +71,63 @@ public:
         return text.str();
     }
 };
+#ifdef __SWITCH__
+// The Switch (docs/design/switch-port.md): every launch hashed the 32 MiB ROM twice and the
+// 688 files of the content cache twice, about a minute on the SD card. Files nothing
+// rewrites (the ROM, the content cache) keep their digest in /switch/Marchwind64/hash-memo.txt
+// by size and modification time; anything else (saves, sessions) is always read.
+namespace hash_memo {
+inline constexpr const char* file = "/switch/Marchwind64/hash-memo.txt";
+inline bool applies(const std::string& path) {
+    return path.find("/content-cache/") != std::string::npos || path.ends_with("/rom.z64");
+}
+struct Memo {
+    std::mutex mutex;
+    bool loaded = false;
+    std::unordered_map<std::string, std::pair<std::string, std::string>> entries;   // path: stamp, digest
+};
+inline Memo& memo() { static Memo m; return m; }
+inline std::string stamp(const std::string& path) {
+    struct stat info{};
+    if (stat(path.c_str(), &info) != 0) return {};
+    return std::to_string(info.st_size) + ":" + std::to_string(info.st_mtime);
+}
+}
+#endif
+inline std::string sha256_file_read(const std::filesystem::path& path);
 inline std::string sha256_file(const std::filesystem::path& path) {
+#ifdef __SWITCH__
+    const auto name = path.string();
+    if (hash_memo::applies(name)) {
+        auto& memo = hash_memo::memo();
+        const auto stamp = hash_memo::stamp(name);
+        std::lock_guard lock(memo.mutex);
+        if (!memo.loaded) {
+            memo.loaded = true;
+            std::ifstream saved(hash_memo::file);
+            std::string line;
+            while (std::getline(saved, line)) {
+                const auto first = line.find(' '), second = line.find(' ', first + 1);
+                if (first == std::string::npos || second == std::string::npos) continue;
+                memo.entries[line.substr(second + 1)] = {line.substr(0, first), line.substr(first + 1, second - first - 1)};
+            }
+        }
+        if (const auto found = memo.entries.find(name); !stamp.empty() && found != memo.entries.end() && found->second.first == stamp)
+            return found->second.second;
+        auto digest = sha256_file_read(path);
+        if (!stamp.empty()) {
+            memo.entries[name] = {stamp, digest};
+            if (FILE* out = std::fopen(hash_memo::file, "a")) {
+                std::fprintf(out, "%s %s %s\n", stamp.c_str(), digest.c_str(), name.c_str());
+                std::fclose(out);
+            }
+        }
+        return digest;
+    }
+#endif
+    return sha256_file_read(path);
+}
+inline std::string sha256_file_read(const std::filesystem::path& path) {
     std::ifstream file(path,std::ios::binary);
     if (!file) throw std::runtime_error("Cannot read file for SHA-256: "+path.string());
     Sha256 hash;
