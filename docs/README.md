@@ -168,6 +168,7 @@
 | [战斗鉴赏](design/battle-viewer.md) | 标题上的 Battle Viewer：原版演示战斗（模式 0x1C、8009C2DC）直接播一场演出，选攻守双方机体与驾驶员、武器、反击、防御反应、伤害、击坠、背景与 BGM |
 | [多存档栏与自动存档](design/save-slots-autosave.md) | 原版 SRAM 布局与校验、卡带文件与模拟器互通、扩展栏和自动存档改道原版 SRAM 传输、导入导出与格式识别、阶段与待核实项 |
 | [60 帧研究](design/60fps.md) | 远期待办，只有静态研究。原版逻辑固定 30 帧的依据、RT64 显示插帧的机制与前提、各场景能否插值（矩阵类能、矩形类不能）、战术地图的两条做法、试验计划与未核实项 |
+| [120 Hz 调度与 4 倍速](design/120hz-scheduler.md) | 实验，默认关闭（`SRW64_VI_RATE=120`）。60 Hz 下 2 倍速是结构上限的依据、音频隔拍、宿主钩子审计、2x 换画面节拍与呈现降频、Mac／Windows／Seeker 实测 |
 | [Steam Deck 键位与按键图标](design/steam-deck-controls.md) | 默认手柄模板下的全部键位、标题与场间的设置入口、设置界面分页改版、待定键位、自绘图标字体方案与验证计划 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |

@@ -1,5 +1,5 @@
 #pragma once
-// 120 Hz scheduler experiment (docs/design/60fps.md §10), off unless SRW64_VI_RATE=120.
+// 120 Hz scheduler experiment (docs/design/120hz-scheduler.md), off unless SRW64_VI_RATE=120.
 // The VI thread then retraces at 120 Hz (prepare_runtime_lifecycle.py: the runtime's speed
 // multiplier, which only the VI thread reads), the game's logic interval doubles so 1x
 // stays 30 steps a second, the host's own VI count keeps 60 Hz units, and the audio

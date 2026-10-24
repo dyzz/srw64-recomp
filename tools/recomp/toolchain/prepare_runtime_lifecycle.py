@@ -125,7 +125,7 @@ def adapt_timer(source: str) -> str:
          "        timer_context.action_queue.enqueue(StopTimerAction{});\n"
          "        timer_context.thread.join();\n"
          "    }\n}\n\nuint32_t ultramodern::get_speed_multiplier() {", 1),
-        # 120 Hz scheduler experiment (docs/design/60fps.md §10): only the VI thread reads the
+        # 120 Hz scheduler experiment (docs/design/120hz-scheduler.md): only the VI thread reads the
         # multiplier; the timer counts above keep the constexpr rate.
         ("    return speed_multiplier;",
          "    static const uint32_t vi_factor = [] {\n"

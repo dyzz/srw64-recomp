@@ -31,6 +31,10 @@ Tab 在战前确认页、场间画面里原本就用来换选项，所以只在�
 
 Steam Deck 在 Steam Input 模板下不一定把背键交给游戏。SDL 看不到 R4 时，可以在 Steam 的控制器设置里把一个背键映射成键盘 Tab。
 
+## 4 倍速实验（120 Hz）
+
+60 Hz 下 2 倍速是结构上限：原版调度器每个 VI 最多放行一帧画面，游戏又要等画面交出去才跑下一步。`SRW64_VI_RATE=120` 把 VI 提到 120 Hz、间隔改成 4/2/1，加速时默认 4 倍（`SRW64_FAST_INTERVAL=2` 为 2 倍），音频隔拍、宿主计数保持 60 Hz 单位。默认关闭，没有设置项。做法、钩子审计和各平台实测见 [120hz-scheduler.md](../design/120hz-scheduler.md)。
+
 ## 调试与验证
 
 - 调试状态 `game_speed`：`double` 是设置值，`running` 表示这一帧是否在 2 倍速。
