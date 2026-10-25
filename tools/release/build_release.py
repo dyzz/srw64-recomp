@@ -148,9 +148,11 @@ def main() -> int:
     parser.add_argument("--jobs", type=int, default=8)
     parser.add_argument("--hd-version", help="the version for a changed HD pack (default: the listed one's last number "
                         "one up, 1.0 → 1.1; give 2.0 for a large change)")
-    parser.add_argument("--switch-hd", action="store_true",
-                        help="also the HD pack in the Switch's format (tools/release/switch/prepare-hd, about 7 minutes): "
-                             "Marchwind64-HD-<HD version>-switch.zip, published beside the HD pack in its release")
+    parser.add_argument("--switch-hd", nargs="?", const=True, metavar="ZIP",
+                        help="also the HD pack in the Switch's format, Marchwind64-HD-<HD version>-switch.zip, published "
+                             "beside the HD pack in its release: made here (tools/release/switch/prepare-hd, about 7 "
+                             "minutes), or ZIP, one made before (the file already on the net disks), if it holds this "
+                             "release's HD pack")
     parser.add_argument("--attach", action="append", default=[], metavar="PLATFORM=FILE",
                         help="another platform's package built elsewhere: linux=…, windows=… or android=… "
                              "(the build workflow); copied in as Marchwind64-<version>-<platform> and "
@@ -269,7 +271,15 @@ def main() -> int:
     # The Switch's HD pack: this release's HD folder in the GPU formats the console reads
     # (BC7, prepare-hd at this commit), as switch/Marchwind64/hd/ to unzip at the SD card's root.
     switch_hd = None
-    if args.switch_hd:
+    if isinstance(args.switch_hd, str):
+        given = Path(args.switch_hd)
+        with zipfile.ZipFile(given) as archive:
+            about = json.loads(archive.read("switch/Marchwind64/hd/hd.json"))
+        if about.get("content_sha256") != hd_about["content_sha256"]:
+            raise SystemExit(f"{given} is not this release's HD pack")
+        switch_hd = output / f"Marchwind64-HD-{hd['version']}-switch.zip"
+        shutil.copyfile(given, switch_hd)
+    elif args.switch_hd:
         steps.run("switch-hd", ["cargo", "run", "--release", "--manifest-path", "tools/release/switch/prepare-hd/Cargo.toml",
                                 "--target-dir", str(ROOT / "build/recomp/prepare-hd-target"), "--",
                                 "--pack", str(pack_dir / "hd")], source)
@@ -282,6 +292,7 @@ def main() -> int:
                 if path.is_file():   # the pictures are zstd frames already: stored, the manifests deflated
                     archive.write(path, "switch/Marchwind64/hd/" + path.relative_to(prepared).as_posix(),
                                   zipfile.ZIP_STORED if path.suffix == ".mwtex" else zipfile.ZIP_DEFLATED)
+    if switch_hd:
         hd["switch"] = {"name": switch_hd.name, "bytes": switch_hd.stat().st_size, "sha256": sha256(switch_hd),
                         "url": f"https://github.com/{REPO}/releases/download/{hd.get('tag', 'hd-' + hd['version'])}/{switch_hd.name}"}
 
