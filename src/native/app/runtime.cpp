@@ -451,6 +451,19 @@ void remove_tree(const fs::path& path, std::error_code& error) {
     sceIoDclose(dir);
     for (const auto& child:entries) { remove_tree(path/child,error); if (error) return; }
     if (sceIoRmdir(name.c_str())<0) error=std::make_error_code(std::errc::io_error);
+#elif defined(__SWITCH__)
+    // newlib's remove() is unlink, which takes files only: std::filesystem emptied the first
+    // launch's import cache and left its folders standing. Folders go with rmdir.
+    error.clear();
+    std::error_code missing;
+    const auto status=fs::symlink_status(path,missing);
+    if (missing || !fs::exists(status)) return;
+    if (!fs::is_directory(status)) { fs::remove(path,error); return; }
+    std::vector<fs::path> children;
+    for (const auto& entry:fs::directory_iterator(path,error)) children.push_back(entry.path());
+    if (error) return;
+    for (const auto& child:children) { remove_tree(child,error); if (error) return; }
+    if (::rmdir(path.string().c_str())!=0) error=std::error_code(errno,std::generic_category());
 #else
     fs::remove_all(path,error);
 #endif

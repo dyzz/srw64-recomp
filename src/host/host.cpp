@@ -34,6 +34,7 @@
 #include "parts_carry.hpp"
 #include "graphics.hpp"
 #include "run_files.hpp"
+#include "app/console_data.hpp"
 #include "app/launch.hpp"
 #include "app/rom_import.hpp"
 #include "app/desktop.hpp"
@@ -867,9 +868,10 @@ int main(int argc, char** argv) {
 #ifdef __SWITCH__
     // The Switch (docs/design/switch-port.md): hbmenu passes only the NRO's path. Its folder,
     // /switch/Marchwind64 on the SD card, holds the program's files beside it (fonts,
-    // dialogue, stages) and the data prepared on a computer (game/: the ROM, the art pack,
-    // the dialogue data; tools/release/switch/prepare_data.py), as on the PS Vita: nothing is
-    // checked, imported or rewritten at start. The game keeps its saves and runs there too.
+    // dialogue, stages), the player's rom.z64 and the data made from it on the first launch
+    // (game/: the ROM, the art pack, the dialogue data; app/console_data.hpp). After that,
+    // nothing is checked, imported or rewritten at start. The game keeps its saves and runs
+    // there too.
     if (argc <= 1) {
         // From the album (a library applet) a homebrew program gets about 370 MiB, as much as
         // the PS Vita build lives in; an application (R held on a game) gets about 3 GiB.
@@ -890,6 +892,20 @@ int main(int argc, char** argv) {
         for (const auto& rule : srw64::rules::catalog)
             game.rules.push_back({std::string(rule.id), rule.kind == srw64::rules::Kind::correction});
         try {
+            // The first launch, or the first of another release: the data from the player's ROM
+            // (rom.z64 in the folder; once made, the copy in game/ serves the next release).
+            if (!srw64::app::console_data_current(options.user_dir, game.rom_sha256)) {
+                auto rom = options.user_dir / "rom.z64";
+                if (!present.contains("rom.z64")) rom = options.user_dir / "game" / "rom.z64";
+                if (!srw64::app::list_names(rom.parent_path()).contains("rom.z64"))
+                    throw std::runtime_error("Put the game's ROM (Super Robot Taisen 64, Japan) in " +
+                                             options.user_dir.string() + " as rom.z64.");
+                const auto text = srw64::app::bundled_resource("dialogue");
+                if (text.empty()) throw std::runtime_error("The dialogue folder beside Marchwind64.nro is missing.");
+                srw64::app::boot_step("prepare: start");
+                const size_t problems = srw64::app::prepare_console_data(rom, options.user_dir, text, options.user_dir.string());
+                if (problems) std::fprintf(stderr, "SRW64_SWITCH_PREPARED with %zu dialogue text problems\n", problems);
+            }
             return srw64::app::run_prepared(options, game, run_host);
         } catch (const std::system_error& failure) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s (%s %d)\n", failure.what(), failure.code().category().name(), failure.code().value());

@@ -31,8 +31,11 @@ set(SRW64_APP_JSON_INCLUDE_DIR "" CACHE PATH "Directory containing the pinned RT
 if(SRW64_APP_JSON_INCLUDE_DIR)
     srw64_add_launch("${SRW64_APP_JSON_INCLUDE_DIR}")
     # The Switch's data from the player's ROM, made on a computer (tools/release/switch/prepare_data.py).
-    add_executable(srw64-switch-prepare tools/release/switch/prepare_data.cpp src/native/localization/catalog.cpp)
+    add_executable(srw64-switch-prepare tools/release/switch/prepare_data.cpp src/native/app/console_data.cpp
+                   src/native/localization/catalog.cpp)
     target_include_directories(srw64-switch-prepare PRIVATE "${SRW64_APP_JSON_INCLUDE_DIR}")
+    # The release its data names (console_data.cpp), the same the console's program checks.
+    set_property(SOURCE src/native/app/console_data.cpp APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${PROJECT_VERSION}\"")
     target_link_libraries(srw64-switch-prepare PRIVATE srw64_launch)
     if(BUILD_TESTING)
         find_package(Python3 3.11 COMPONENTS Interpreter REQUIRED)

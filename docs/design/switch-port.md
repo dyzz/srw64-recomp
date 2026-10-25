@@ -198,6 +198,10 @@ HOME 与截图键归系统，不可用。
 
 - **NRO：** devkitPro 的 CMake（`/opt/devkitpro/cmake/Switch.cmake`，`nx_generate_nacp` + `nx_create_nro`）生成，NACP 写名称「Marchwind64」、作者、版本，图标用 M64 徽标（256×256 JPEG），romfs 装随包内容。
 - **ROM：** 玩家把自己的 `rom.z64` 放进 `sdmc:/switch/Marchwind64/`，沿用现有的哈希校验与三语错误提示。包内只有 ROM 派生的重编译代码，不含 ROM 数据，与安卓、Vita 同一侧载口径。
+- **ROM 在主机上导入（2026-10-25，`switch-import` 分支）：** 没有 `game/prepared.json`，或它的 `build`（版本号＋导入元数据摘要）不是本程序的，宿主就在启动时用 `rom.z64` 导入（之后的版本没有 `rom.z64` 时用 `game/rom.z64` 那份），再照常 `run_prepared`。导入代码与电脑上的 `prepare_data.py` 是同一份（`src/native/app/console_data.cpp`），两边输出逐字节相同，只有图片路径带各自的文件夹名。`game/` 里有 ROM 本身和从 ROM 解出的图片、日文原文，所以不能由我们预先做好发出去。`prepared.json` 最后写，导入中途断了下次重做。每步秒数记在 `prepared.json` 的 `seconds` 里。
+  - **实测（初代机、应用模式、空文件夹、Release NRO）：** 共 32.8 s——读校验 ROM 2.1、导入 9.8、合并对白文本 20.2（约 800 个小文件从 SD 卡读）、写入 0.7；Mac 上同样四步 1.18 s。导入之后到标题画面与平常一样。一次性的，用户认为可以接受。
+  - **可选的提速：** 对白文本那 20 s 与 ROM 无关，可以在打包时合成一个文件放进 romfs；当前没做。
+  - **顺带修了：** Switch 上 `std::filesystem::remove_all` 只删文件、留下空目录（newlib 的 `remove` 是 `unlink`），`remove_tree` 在 Switch 上改为目录用 `rmdir`。
 - **HD 包（S3 起）：** 玩家把 HD zip 解压到 `sdmc:/switch/Marchwind64/hd/`，或由宿主首次启动时从 zip 解出（安卓有同样的导入逻辑可参考）。SD 卡可能是 FAT32：单文件 4 GiB 上限对 533 MB 的 zip 无影响。
 - **NSP 前导：** 不发官方 NSP。理由：前导依赖 sigpatches，NH 指南把安装自制 NSP 列为封机风险之一（[FAQ](https://switch.hacks.guide/faq)，2026-03-01），HarbourMasters 也不支持（[Ghostship#213](https://github.com/HarbourMasters/Ghostship/issues/213)，2026-06-16，其中前导丢工作目录导致找不到资源）。玩家自己做前导时，绝对路径保证照样能用。
 - **官网：** 下载页与系统要求加 Switch 一行（「需已破解、运行 Atmosphère 的主机，按住 R 启动」），三语 README 同步；措辞与安卓/Vita 的侧载说明一致。

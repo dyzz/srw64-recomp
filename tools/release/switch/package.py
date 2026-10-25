@@ -2,9 +2,9 @@
 """The Switch's folder (docs/design/switch-port.md): build/recomp/switch-package/Marchwind64,
 copied as it is to sdmc:/switch/Marchwind64 on the SD card. It holds the NRO and, beside it,
 what bundled_resource() looks for there (src/host/host.cpp, the Switch entry): the fonts,
-the dialogue text and the stages' metadata; and game/, the data prepared from the player's
-ROM on this computer (prepare_data.py: the ROM, the art pack, the dialogue data), which the
-game reads as it is. The game keeps its saves, settings and run in the same folder.
+the dialogue text and the stages' metadata; and game/, the data from the player's ROM (the
+ROM, the art pack, the dialogue data), which the console makes from rom.z64 on its first
+launch, or, in development, prepare_data.py made on this computer. The game keeps its saves, settings and run in the same folder.
 
   tools/release/switch/package.py           after build.sh game
   tools/release/switch/package.py --upload IP
@@ -56,10 +56,11 @@ def stage() -> None:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
     shutil.copytree(ROOT / 'content/stages', PACKAGE / 'stages')
+    # The data from the ROM, when it was prepared on this computer: without it the console
+    # makes it from rom.z64 on its first launch (about half a minute, app/console_data.hpp).
     data = ROOT / 'build/recomp/switch-data/game'
-    if not (data / 'prepared.json').exists():
-        raise SystemExit(f'{data} is missing: run tools/release/switch/prepare_data.py ROM')
-    shutil.copytree(data, PACKAGE / 'game')
+    if (data / 'prepared.json').exists():
+        shutil.copytree(data, PACKAGE / 'game')
 
 
 def digest(path: Path) -> str:
