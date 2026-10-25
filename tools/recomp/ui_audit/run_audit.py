@@ -141,6 +141,10 @@ def fixtures(text):
         menus, weapons, skills = text.longest(loc, 2699, 4027), text.longest(loc, 1370, 2698, 1), text.longest(loc, 4028, 4043, 1)
         # Intermission menu, with the longest episode title and figures.
         menu = at(states['intermission'])
+        # 返回标题画面 before 次のマップへ (intermission_row.hpp), in the page's language like the page.
+        title_row = json.loads((ROOT / f'content/locales/{loc}.json').read_text())['ui']['title_return_open']
+        if title_row not in menu['items']:
+            menu['items'] = menu['items'][:-1] + [title_row] + menu['items'][-1:]
         add('intermission', {'intermission_page': menu})
         add('intermission-long', {'intermission_page': {**menu, 'scene_title': stages[0], 'funds': 9999999, 'turns': 999, 'episode': 60}})
         add('intermission-swap', {'intermission_page': {**menu, 'submenu': True}})
