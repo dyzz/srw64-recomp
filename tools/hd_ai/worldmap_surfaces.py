@@ -24,6 +24,9 @@ samples.json holds them); `restyle` redraws the other surfaces from run-5 toward
 the same style. `pack --extra-run` joins the runs, and the pack-v6 tiles leave the pack.
 The user preferred image_gen over both: `imagegen` composes the Codex image_gen kit
 (assets/hd-ai/imagegen-kit), a whole picture and 3:2 windows per surface.
+`repeat-kit` / `repeat`: the source repeats a few tiles where the composed surface
+differs, so `pack` keeps them original; Codex draws each one seamless and `repeat`
+colour-matches it to its surroundings and adds it to the pack.
 """
 from __future__ import annotations
 
@@ -897,6 +900,145 @@ def pack(args: argparse.Namespace) -> None:
         print('bound', path.relative_to(ROOT), len(rows), 'textures')
 
 
+def repeat_placements(table: ResourceTable, rid: int, key: str) -> tuple[bytes, list[dict]]:
+    xxh = hasher()
+    d = table.extract(rid)[0]
+    _, tiles = assemble(d)
+    return d, [t for t in tiles if map_hash(d[t['tex']:t['tex'] + 2048], d[t['pal']:t['pal'] + 32], xxh) == key]
+
+
+def repeat_kit(args: argparse.Namespace) -> None:
+    """Kit for Codex image_gen: the tiles `pack` keeps original because the source repeats
+    them where the composed surface differs (its `conflicts_kept_original`), one seamless
+    tile each. Per tile the source (16x), the source 3x3, and the composed surface around
+    each group of placements with the placements outlined."""
+    table = ResourceTable((ROOT / 'rom.z64').read_bytes())
+    out = args.output
+    (out / 'outputs').mkdir(parents=True, exist_ok=True)
+    conflicts = json.loads((args.base_pack / 'pack-report.json').read_text())['conflicts_kept_original']
+    names = {r['resource']: n for n, r in json.loads((args.base / 'samples.json').read_text())['surfaces'].items()}
+    manifest = {}
+    for key, places in conflicts.items():
+        rid = places[0][0]
+        d, hits = repeat_placements(table, rid, key)
+        t = hits[0]
+        tile = indexed(d[t['tex']:t['tex'] + 2048], (64, 64), rgba16(d[t['pal']:t['pal'] + 32]), 4).convert('RGB')
+        if t['flip'][0]: tile = tile.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+        if t['flip'][1]: tile = tile.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+        name = f'{names[rid]}-{key[:6]}'
+        tile.resize((1024, 1024), Image.Resampling.NEAREST).save(out / f'{name}-source.png')
+        grid = Image.new('RGB', (192, 192))
+        for i in range(9): grid.paste(tile, (i % 3 * 64, i // 3 * 64))
+        grid.resize((1536, 1536), Image.Resampling.NEAREST).save(out / f'{name}-source-tiled.png')
+        hd = Image.open(args.base / 'compose' / f'{names[rid]}.png').convert('RGB')
+        groups: list[list[dict]] = []
+        for h in hits:
+            group = next((g for g in groups if any(abs(h['xy'][0] - o['xy'][0]) <= 64 and abs(h['xy'][1] - o['xy'][1]) <= 64 for o in g)), None)
+            group.append(h) if group else groups.append([h])
+        contexts = []
+        for n, group in enumerate(groups):
+            box = (max(0, min(h['xy'][0] for h in group) - 64), max(0, min(h['xy'][1] for h in group) - 64),
+                   min(hd.width // SCALE, max(h['xy'][0] for h in group) + 128), min(hd.height // SCALE, max(h['xy'][1] for h in group) + 128))
+            ctx = hd.crop(tuple(v * SCALE for v in box))
+            s = 1600 / max(ctx.size)
+            ctx = ctx.resize((round(ctx.width * s), round(ctx.height * s)), Image.Resampling.LANCZOS)
+            draw = ImageDraw.Draw(ctx)
+            for h in group:
+                x, y = (h['xy'][0] - box[0]) * SCALE * s, (h['xy'][1] - box[1]) * SCALE * s
+                draw.rectangle([x, y, x + 64 * SCALE * s - 1, y + 64 * SCALE * s - 1], outline=(255, 0, 0), width=4)
+            file = f'{name}-context{"-" + str(n + 1) if n else ""}.png'
+            ctx.save(out / file)
+            contexts.append(file)
+        manifest[name] = {'resource': rid, 'rt64': key, 'placements': [h['xy'] for h in hits], 'flip': t['flip'],
+                          'contexts': contexts, 'output': f'outputs/{name}-out.png'}
+    (out / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+    print({n: len(m['placements']) for n, m in manifest.items()})
+
+
+def match_colour(tile: Image.Image, reference: Image.Image) -> Image.Image:
+    """In YCbCr: luma's median moved to the reference's and its interquartile spread scaled
+    toward the reference's (0.7-1.15); each chroma axis scaled about grey by the ratio of
+    the medians' distances from grey (0.5-1.5), so that dark rocks and trees keep their hue
+    instead of taking an offset. image_gen draws a lone tile brighter and more saturated
+    than the composed surface around it. Medians, so that mountains in the reference band
+    don't darken a plain."""
+    def quartiles(histogram: list[int]) -> list[int]:
+        total, run, found = sum(histogram), 0, []
+        for value, count in enumerate(histogram):
+            run += count
+            while len(found) < 3 and run >= total * (len(found) + 1) / 4:
+                found.append(value)
+        return found
+    ref = reference.convert('RGBA')
+    mask = ref.getchannel('A').point(lambda v: 255 if v > 200 else 0)
+    bands = []
+    for c, (band, ref_band) in enumerate(zip(tile.convert('YCbCr').split(), ref.convert('RGB').convert('YCbCr').split())):
+        tq, rq = quartiles(band.histogram()), quartiles(ref_band.histogram(mask))
+        if c == 0:
+            k = min(1.15, max(0.7, (rq[2] - rq[0]) / max(1, tq[2] - tq[0])))
+            curve = lambda v, tq=tq, rq=rq, k=k: (v - tq[1]) * k + rq[1]
+        elif abs(tq[1] - 128) < 4:
+            curve = lambda v, tq=tq, rq=rq: v + rq[1] - tq[1]
+        else:
+            k = min(1.5, max(0.5, (rq[1] - 128) / (tq[1] - 128)))
+            curve = lambda v, k=k: 128 + (v - 128) * k
+        bands.append(band.point(lambda v, curve=curve: max(0, min(255, round(curve(v))))))
+    return Image.merge('YCbCr', bands).convert('RGB')
+
+
+def repeat(args: argparse.Namespace) -> None:
+    """The kit's drawn tiles into a copy of the pack: colour-matched to the composed surface
+    around their placements (outside them), cut to 512, flipped to texture orientation."""
+    kit, target = args.kit, args.pack_output
+    manifest = json.loads((kit / 'manifest.json').read_text())
+    table = ResourceTable((ROOT / 'rom.z64').read_bytes())
+    names = {r['resource']: n for n, r in json.loads((args.base / 'samples.json').read_text())['surfaces'].items()}
+    shutil.copytree(args.base_pack, target)
+    database = json.loads((target / 'rt64.json').read_text())
+    report = json.loads((target / 'pack-report.json').read_text())
+    for name, job in manifest.items():
+        hd = Image.open(args.base / 'compose' / f'{names[job["resource"]]}.png').convert('RGBA')
+        ring = Image.new('RGBA', hd.size)
+        for x, y in job['placements']:
+            box = tuple(v * SCALE for v in (max(0, x - 16), max(0, y - 16), x + 80, y + 80))
+            ring.paste(hd.crop(box), box[:2])
+        for x, y in job['placements']:
+            ring.paste((0, 0, 0, 0), tuple(v * SCALE for v in (x, y, x + 64, y + 64)))
+        tile = Image.open(kit / job['output']).convert('RGB').resize((64 * SCALE, 64 * SCALE), Image.Resampling.LANCZOS)
+        tile = match_colour(tile, ring.crop(ring.getbbox()))
+        tile.save(kit / 'outputs' / f'{name}-matched.png')
+        if job['flip'][0]: tile = tile.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+        if job['flip'][1]: tile = tile.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+        file = f'map-{job["rt64"]}.png'
+        tile.convert('RGBA').save(target / file)
+        database['textures'] = [e for e in database['textures'] if e['hashes']['rt64'] != job['rt64']] + [{'hashes': {'rt64': job['rt64']}, 'path': file}]
+        report['conflicts_kept_original'].pop(job['rt64'], None)
+        report.setdefault('repeats_drawn', {})[job['rt64']] = str((kit / job['output']).resolve().relative_to(ROOT))
+        # The placements with the tile in place, to look at.
+        hd_check = hd.copy()
+        for x, y in job['placements']:
+            hd_check.paste(tile.transpose(Image.Transpose.FLIP_TOP_BOTTOM) if job['flip'][1] else tile, (x * SCALE, y * SCALE))
+        for n, (x, y) in enumerate(job['placements'][:1] + [p for p in job['placements'] if abs(p[1] - job['placements'][0][1]) > 64][:1]):
+            box = (max(0, x - 96) * SCALE, max(0, y - 96) * SCALE, min(hd.width, (x + 160) * SCALE), min(hd.height, (y + 160) * SCALE))
+            hd_check.crop(box).convert('RGB').resize(((box[2] - box[0]) // 2, (box[3] - box[1]) // 2), Image.Resampling.LANCZOS) \
+                .save(kit / 'outputs' / f'{name}-placed-{n + 1}.png')
+    database['textures'].sort(key=lambda e: e['hashes']['rt64'])
+    (target / 'rt64.json').write_text(json.dumps(database, indent=2) + '\n')
+    (target / 'pack-report.json').write_text(json.dumps(report, indent=2) + '\n')
+    print({'drawn': list(manifest), 'conflicts_left': len(report['conflicts_kept_original'])})
+    if args.bind:
+        path = ROOT / 'content/art/stage1-hd.json'
+        art = json.loads(path.read_text())
+        hashes = sorted(set(art['worldmap']['hashes']) | {job['rt64'] for job in manifest.values()})
+        art['worldmap']['hashes'] = hashes
+        rows = [r for r in art['textures'] if not (r['kind'] == 'worldmap' and r['hash'] in {job['rt64'] for job in manifest.values()})]
+        rows += [{'hash': job['rt64'], 'kind': 'worldmap', 'sha256': sha(target / f'map-{job["rt64"]}.png')} for job in manifest.values()]
+        art['textures'] = rows
+        art['source'] = {'path': str(target.resolve().relative_to(ROOT)), 'manifest_sha256': sha(target / 'rt64.json')}
+        path.write_text(json.dumps(art, ensure_ascii=False, indent=2) + '\n')
+        print('bound', path.relative_to(ROOT), len(rows), 'textures')
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     commands = parser.add_subparsers(dest='command', required=True)
@@ -926,9 +1068,19 @@ def main() -> None:
             sub.add_argument('--pack-output', type=Path, required=True)
             sub.add_argument('--extra-run', type=Path, action='append', help='another run folder whose surfaces join the pack')
             sub.add_argument('--bind', action='store_true')
+    sub = commands.add_parser('repeat-kit')
+    sub.add_argument('--output', type=Path, required=True)
+    sub.add_argument('--base', type=Path, required=True, help='composed run the pack was cut from')
+    sub.add_argument('--base-pack', type=Path, required=True, help='pack whose pack-report.json lists the kept tiles')
+    sub = commands.add_parser('repeat')
+    sub.add_argument('--kit', type=Path, required=True)
+    sub.add_argument('--base', type=Path, required=True)
+    sub.add_argument('--base-pack', type=Path, required=True)
+    sub.add_argument('--pack-output', type=Path, required=True)
+    sub.add_argument('--bind', action='store_true')
     args = parser.parse_args()
     {'prepare': prepare, 'restyle': restyle, 'run': run, 'compose': compose, 'imagegen': imagegen,
-     'closeup-kit': closeup_kit, 'closeup': closeup, 'pack': pack}[args.command](args)
+     'closeup-kit': closeup_kit, 'closeup': closeup, 'pack': pack, 'repeat-kit': repeat_kit, 'repeat': repeat}[args.command](args)
 
 
 if __name__ == '__main__':

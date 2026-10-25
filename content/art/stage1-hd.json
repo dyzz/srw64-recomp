@@ -3,8 +3,8 @@
   "id": "srw64.stage1-art",
   "locale": "neutral",
   "source": {
-    "path": "assets/hd-ai/worldmap-surfaces/pack-v8",
-    "manifest_sha256": "3e963925db3230c1f76ba79a7bc8bcec3adadb0ec6d0e4d311fa84435e6d0851"
+    "path": "assets/hd-ai/worldmap-surfaces/pack-v9",
+    "manifest_sha256": "c22c93f4882b53adfbb2fa0352685c77e7085287c6def973fbf73b114754b666"
   },
   "textures": [
     {
@@ -14731,6 +14731,16 @@
       "hash": "fff0f41eeb56f6d8",
       "kind": "battle",
       "sha256": "de8beaa173c6249128c9d721d2e9b648dfd2a63267fb625e4a11fb0812ecf09c"
+    },
+    {
+      "hash": "b820c653dd7fc5ec",
+      "kind": "worldmap",
+      "sha256": "e4ffcd3fe4a6b5ffb81f7e398828e39e34e623a40e2291883744ae4193a7a901"
+    },
+    {
+      "hash": "66a20d35dfcd3141",
+      "kind": "worldmap",
+      "sha256": "5c91973b93998f900261ab4d686dfa40d471f07d1a2556196e521928be5839e8"
     }
   ],
   "worldmap": {
@@ -14820,6 +14830,7 @@
       "636c82e21bef96d2",
       "64c3fc3954ec356d",
       "669d65a0f0691899",
+      "66a20d35dfcd3141",
       "678b9f55ff4f5c38",
       "68fdeb2093d972d0",
       "6a31de260490617c",
@@ -14892,6 +14903,7 @@
       "b67f80a3be8afa2d",
       "b73b6a7580ef2082",
       "b7a5b96571adacdd",
+      "b820c653dd7fc5ec",
       "b8e81c6be8652b68",
       "bb6ca53ebd98d7cf",
       "bbdce31fd9918ce0",
