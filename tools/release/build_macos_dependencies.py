@@ -26,6 +26,7 @@ LOCK = ROOT / 'config/recomp/macos-dependencies.json'
 
 def source(name: str, entry: dict, directory: Path) -> Path:
     archive = directory / entry['url'].rsplit('/', 1)[1]
+    directory.mkdir(parents=True, exist_ok=True)   # a fresh checkout (the Switch job) has none
     if not archive.exists():
         partial = archive.with_suffix(archive.suffix + '.part')
         subprocess.run(['curl', '--fail', '--location', '--retry', '2',
