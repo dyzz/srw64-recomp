@@ -454,10 +454,14 @@ def collect(args: argparse.Namespace) -> None:
     for entry in report:
         print(entry)
 
-# Faction tones (bright, dark) from the icon palettes 1011-1013, entries 2 and 4. The
+# Faction tones (bright, dark) from the icon palettes 1011 and 1012, entries 2 and 4. The
 # player's side (1010) carries no mark: an unmarked icon is the player's.
-FACTION_TONES = {1011: ((222, 123, 123), (156, 25, 25)), 1012: ((222, 206, 25), (140, 132, 8)),
-                 1013: ((132, 123, 132), (74, 66, 74))}
+FACTION_TONES = {1011: ((222, 123, 123), (156, 25, 25)), 1012: ((222, 206, 25), (140, 132, 8))}
+# 1013 is not a side: every map icon sprite holds it as its second palette (80098678 slot 2 in
+# 801C60A4 and 801E04DC) and draws with it once the unit has acted. The original turns grey
+# but for the fixed colours (eyes); the HD icon turns wholly grey at 85% brightness.
+ACTED = 1013
+ACTED_BRIGHTNESS = 0.85
 
 
 def outside_ring(alpha: np.ndarray) -> np.ndarray:
@@ -473,7 +477,12 @@ def outside_ring(alpha: np.ndarray) -> np.ndarray:
 
 def faction_mark(master: Image.Image, palette: int) -> Image.Image:
     """The sprite in its own colours inside a two-pixel ring of its faction's tones,
-    bright then dark (about one screen pixel at the default scale 4)."""
+    bright then dark (about one screen pixel at the default scale 4); grey when acted."""
+    if palette == ACTED:
+        rgba = np.asarray(master.convert("RGBA")).astype(np.float32)
+        grey = (rgba[:, :, :3] @ np.array([0.299, 0.587, 0.114], np.float32)) * ACTED_BRIGHTNESS
+        rgba[:, :, :3] = np.clip(grey, 0, 255)[:, :, None]
+        return Image.fromarray(rgba.astype(np.uint8), "RGBA")
     if palette not in FACTION_TONES:
         return master
     rgba = np.asarray(master.convert("RGBA")).copy()
@@ -485,10 +494,10 @@ def faction_mark(master: Image.Image, palette: int) -> Image.Image:
 def pack(args: argparse.Namespace) -> None:
     """The collected masters into a copy of the RT64 pack, replacing its icon textures.
 
-    Each icon is keyed four times, once per faction palette (1010 + faction, the parameter
-    the map passes; docs/data/hd-asset-inventory.md), since the hash covers the palette.
-    The sprites keep their real colours; the other sides get faction_mark (2026-10-25 user
-    decision, after no mark, a thicker ring, a tint and a base were compared)."""
+    Each icon is keyed four times, once per palette (1010-1012 for the three sides, 1013
+    once acted; docs/data/hd-asset-inventory.md), since the hash covers the palette.
+    The sprites keep their real colours; the other sides get a ring and acted units turn
+    grey (faction_mark; 2026-10-25 user decisions, each from a sheet of options)."""
     from srw64_native.catalog import sha
     from srw64_rom.resources import ResourceTable
     from tools.hd_ai.esrgan_pose import fill_transparent
