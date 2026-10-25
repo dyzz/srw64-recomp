@@ -24,7 +24,7 @@ const repo = 'dyzz/srw64-recomp';
 const date = execFileSync('git', ['log', '-1', '--format=%cs', build.commit], { encoding: 'utf8' }).trim();
 
 const platformOf = (name) =>
-  /macos/.test(name) ? 'macos' : /linux/.test(name) ? 'linux' : /windows/.test(name) ? 'windows' : /android|\.apk$/.test(name) ? 'android' : 'other';
+  /macos/.test(name) ? 'macos' : /linux/.test(name) ? 'linux' : /windows/.test(name) ? 'windows' : /android|\.apk$/.test(name) ? 'android' : /switch/.test(name) ? 'switch' : 'other';
 
 const files = Object.entries(build.artifacts).map(([name, a]) => ({
   platform: platformOf(name),
@@ -34,7 +34,8 @@ const files = Object.entries(build.artifacts).map(([name, a]) => ({
   url: `https://github.com/${repo}/releases/download/${build.tag}/${name}`,
 }));
 
-// The HD pack (build_release.py), without its build-only flag.
+// The HD pack (build_release.py), without its build-only flag; hd.switch, when there is one,
+// is the Switch's pack in the same release.
 const { changed: _changed, ...hd } = build.hd;
 if (!hd.version || !hd.content_sha256 || !hd.url) throw new Error('release.json has no versioned HD pack');
 

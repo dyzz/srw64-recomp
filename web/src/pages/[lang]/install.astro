@@ -9,8 +9,8 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = INSTALL[lang];
 const fill = (s: string) =>
-  s.replace(/\{(windows|macos|linux|hd)\}/g, (_, p: Platform) => (p === 'hd' ? release.hd : release.files.find((f) => f.platform === p))!.name);
-const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', linux: 'linux', 'steam-deck': 'linux', android: 'android', hd: 'hd' };
+  s.replace(/\{(windows|macos|linux|switch|hd|switch-hd)\}/g, (_, p: Platform) => fileFor(p)?.name ?? `Marchwind64-…-${p}.zip`);
+const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', linux: 'linux', 'steam-deck': 'linux', android: 'android', switch: 'switch', hd: 'hd' };
 ---
 <Base lang={lang} title={c.title}>
   <div class="wrap">
@@ -48,8 +48,13 @@ const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', l
                 <span>{f.name}<small>{s.id === 'hd' && hd.version ? `HD ${hd.version} · ` : ''}{mb(f.bytes)}</small></span>
               </a>
             ) : <p class="nofile">{published ? c.noFile : c.notReleased}</p>}
+            {f && s.id === 'switch' && fileFor('switch-hd') && (
+              <a class="btn ghost" href={fileFor('switch-hd')!.url} data-umami-event="download" data-umami-event-platform="switch-hd" data-umami-event-language={lang} data-umami-event-source={s.id}>
+                <span>{fileFor('switch-hd')!.name}<small>HD {hd.version} · {mb(fileFor('switch-hd')!.bytes)}</small></span>
+              </a>
+            )}
             {f && <Mirrors lang={lang} compact />}
-            {f && s.id !== 'hd' && fileFor('hd') && <p class="hd-hint"><a href="#hd">{c.hdHint}</a></p>}
+            {f && s.id !== 'hd' && s.id !== 'switch' && fileFor('hd') && <p class="hd-hint"><a href="#hd">{c.hdHint}</a></p>}
           </div>
           <ol class="steps">
             {s.steps.map((step, i) => (

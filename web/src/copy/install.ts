@@ -33,7 +33,7 @@ const ROM_SHA = 'ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13
 export const INSTALL: Record<Lang, Install> = {
   zh: {
     title: '安装',
-    lead: '电脑和 Steam Deck 安装分为下载、解压和添加 ROM 三步；Android 则安装 APK 后在应用中选择 ROM。HD 美术包为独立的可选下载，所有平台通用。',
+    lead: '电脑和 Steam Deck 安装分为下载、解压和添加 ROM 三步；Android 则安装 APK 后在应用中选择 ROM；Switch 解压到 SD 卡后从 hbmenu 打开。HD 美术包为独立的可选下载，电脑与 Android 通用，Switch 另有一份。',
     rom: `所有平台都需要《超级机器人大战64》日版 Rev 0 的 ROM。<code>.z64</code>、<code>.v64</code>、<code>.n64</code> 三种字节序都可以，游戏会自动识别（按 <code>.z64</code> 计算的 SHA-256 为 <code class="hash">${ROM_SHA}</code>）。下面的文件名写作 <code>rom.z64</code>，<code>.n64</code>、<code>.v64</code> 的文件也可以命名为 <code>rom.n64</code>、<code>rom.v64</code>。`,
     viewSteps: '查看步骤',
     experimental: '实验性',
@@ -93,6 +93,18 @@ export const INSTALL: Record<Lang, Install> = {
         notes: ['触摸屏幕时显示当前画面需要的按键；切换到手柄或键盘操作时自动隐藏。点击顶边的「设置」按钮可打开设置窗口。', 'HD 美术包：长按应用图标选「导入 HD 包」，或在文件管理器里用 Marchwind64 打开下载的 HD 包 zip，应用会自动解压安装。首次选择 ROM 后也会询问一次。'],
       },
       {
+        id: 'switch', name: 'Nintendo Switch', experimental: true,
+        summary: '解压到 SD 卡根目录，放好 ROM，按住 R 启动任意游戏进 hbmenu 后打开。',
+        requires: '已安装 Atmosphère 自制系统和 hbmenu 的 Switch',
+        steps: [
+          '下载 <code>{switch}</code>，解压到 SD 卡根目录，得到 <code>/switch/Marchwind64/Marchwind64.nro</code> 和旁边的几个文件夹。用读卡器或 ftpd 等工具拷进去都可以。',
+          '<strong>把 ROM 改名为 <code>rom.z64</code>，放进 <code>/switch/Marchwind64/</code></strong>。',
+          '可选：下载 Switch 版 HD 包 <code>{switch-hd}</code>，同样解压到 SD 卡根目录，得到 <code>/switch/Marchwind64/hd/</code>。电脑版的 HD 包在 Switch 上不能用。',
+          '<strong>按住 R 键启动任意一个游戏</strong>（插一张实体卡带最省事），进入 hbmenu 后选 Marchwind64。第一次启动会先在主机上从 ROM 导入游戏数据，约半分钟，屏幕上有进度；之后每次启动只要几秒。',
+        ],
+        notes: ['只支持应用模式：从相簿打开的 hbmenu 内存不够，游戏会提示改用按住 R 的方式。', '更新时删掉旧的 <code>fonts</code>、<code>dialogue</code>、<code>stages</code>、<code>splash</code> 四个文件夹，再解压新版；存档、设置和 <code>game</code> 文件夹保留，新版第一次启动会自动重新导入一次。HD 包出新版时整体替换 <code>hd</code> 文件夹。', 'Switch 版没有游戏内的更新提示，新版本请留意本页或 GitHub。', '本项目只提供 NRO 自制程序，不提供 NSP，也不需要签名补丁。'],
+      },
+      {
         id: 'hd', name: 'HD 美术包',
         summary: '可选下载。电脑上解压后放入用户数据目录或游戏所在的文件夹，Android 在应用里导入。',
         requires: '有独立的版本号，有新版时游戏会提示',
@@ -101,7 +113,7 @@ export const INSTALL: Record<Lang, Install> = {
           '将文件夹放入应用的用户数据目录：macOS 为 <code>~/Library/Application Support/SRW64Recomp/hd</code>，Linux／Steam Deck 为 <code>~/.local/share/srw64-recomp/hd</code>，Windows 为 <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code>。也可以放在游戏所在的文件夹里，与 <code>Marchwind64.app</code>、<code>marchwind64.sh</code> 或 <code>Marchwind64.exe</code> 放在一起；两处都有时用用户数据目录里的。macOS 上放在应用旁边时，应用要先在访达里移动过一次（例如拖进「应用程序」）。Android 不用手动解压，按上面 Android 一节的说明在应用里导入即可。',
           '启动游戏，装好 HD 包后会自动使用 HD 画面。要确认是否装好，可以看设置窗口「关于」页的「HD 包」一行，那里显示已安装的版本。',
         ],
-        notes: ['随时切换原版与 HD：设置窗口「通用」页的「画面」，或按快捷键（默认键盘 4 或 F6、手柄按下右摇杆）；Windows 和 macOS 的菜单栏里也有「HD 画面」。切换立即生效，不影响存档。这个选择不会保存，每次启动都从 HD 开始。', 'HD 画面下，地图上的单位图标可以单独换回原版：设置「通用」页的「地图单位图标」，这一项会记住。', 'HD 包有自己的版本号，内容变了才发新版，不必每次更新应用都重新下载。有新版时游戏的更新检查会提示，更新时整体替换旧的 <code>hd</code> 文件夹。包内图像主要由 AI 参考原版画面生成或放大重绘，详见常见问题。'],
+        notes: ['Switch 用单独的 Switch 版 HD 包，下载和安装见上面的 Nintendo Switch 一节。', '随时切换原版与 HD：设置窗口「通用」页的「画面」，或按快捷键（默认键盘 4 或 F6、手柄按下右摇杆）；Windows 和 macOS 的菜单栏里也有「HD 画面」。切换立即生效，不影响存档。这个选择不会保存，每次启动都从 HD 开始。', 'HD 画面下，地图上的单位图标可以单独换回原版：设置「通用」页的「地图单位图标」，这一项会记住。', 'HD 包有自己的版本号，内容变了才发新版，不必每次更新应用都重新下载。有新版时游戏的更新检查会提示，更新时整体替换旧的 <code>hd</code> 文件夹。包内图像主要由 AI 参考原版画面生成或放大重绘，详见常见问题。'],
       },
     ],
     requirements: {
@@ -141,6 +153,11 @@ export const INSTALL: Record<Lang, Install> = {
           ['推荐', '骁龙 865、天玑 1080、Exynos 1380、Tensor G2 及以上，约 30 FPS'],
           ['入门芯片', '天玑 6100+、天玑 700 等（Mali-G57）可以运行，约 10–14 FPS'],
         ] },
+        { name: 'Nintendo Switch', rows: [
+          ['主机', '能运行 Atmosphère 自制系统的 Switch（初代机型上测试）'],
+          ['系统', 'Atmosphère 与 hbmenu，应用模式（按住 R 启动游戏）'],
+          ['空间', 'SD 卡约 150 MB，Switch 版 HD 包另需约 1.3 GB'],
+        ] },
       ],
       notes: [
         '空间：游戏本体约 150 MB，HD 美术包另需约 550 MB。',
@@ -156,15 +173,15 @@ export const INSTALL: Record<Lang, Install> = {
     quark: '夸克网盘',
     baidu: '百度网盘',
     passcode: '（提取码 {p}）',
-    hdHint: '另有可选的 HD 美术包，各平台通用 →',
+    hdHint: '另有可选的 HD 美术包，电脑与 Android 通用 →',
     savesLink: '存档在哪里、怎么备份 →',
     verify: '校验',
-    noFile: '此版本暂未提供 Android 安装包。',
+    noFile: '此版本暂未提供这个平台的安装包。',
     notReleased: '0.4.0 正在准备中，暂未开放下载。安装步骤可以先看。',
   },
   en: {
     title: 'Install',
-    lead: 'On computers and Steam Deck, download the package, unzip it and add your ROM. On Android, install the APK and select your ROM in the app. The optional HD art pack is a separate download that works on every platform.',
+    lead: 'On computers and Steam Deck, download the package, unzip it and add your ROM. On Android, install the APK and select your ROM in the app. On the Switch, extract it to the SD card and open it from hbmenu. The optional HD art pack is a separate download for computers and Android; the Switch has one of its own.',
     rom: `Every platform needs a Super Robot Wars 64 ROM, Japan Rev 0. Any byte order works (<code>.z64</code>, <code>.v64</code> or <code>.n64</code>); the game recognises it (SHA-256 of the <code>.z64</code> form: <code class="hash">${ROM_SHA}</code>). The steps below name the file <code>rom.z64</code>; a <code>.n64</code> or <code>.v64</code> file can be named <code>rom.n64</code> or <code>rom.v64</code>.`,
     viewSteps: 'View steps',
     experimental: 'Experimental',
@@ -224,6 +241,18 @@ export const INSTALL: Record<Lang, Install> = {
         notes: ['Touching the screen brings up the buttons needed for the current screen. They hide when you switch to a controller or keyboard. Tap Settings along the top to open the settings window.', 'HD art pack: long-press the app icon and choose “Import HD pack”, or open the downloaded HD zip with Marchwind64 from a file manager; the app unpacks and installs it. You are also asked once after choosing the ROM.'],
       },
       {
+        id: 'switch', name: 'Nintendo Switch', experimental: true,
+        summary: 'Extract to the SD card’s root, add the ROM, then open it from hbmenu started by holding R on any game.',
+        requires: 'A Switch running Atmosphère custom firmware, with hbmenu',
+        steps: [
+          'Download <code>{switch}</code> and extract it to the root of the SD card, giving <code>/switch/Marchwind64/Marchwind64.nro</code> and the folders beside it. A card reader or ftpd both work.',
+          '<strong>Rename the ROM to <code>rom.z64</code> and put it in <code>/switch/Marchwind64/</code></strong>.',
+          'Optional: download the Switch HD pack <code>{switch-hd}</code> and extract it to the SD card’s root too, giving <code>/switch/Marchwind64/hd/</code>. The computers’ HD pack does not work on the Switch.',
+          '<strong>Hold R while starting any game</strong> (a game card is easiest) to open hbmenu, and pick Marchwind64. The first launch imports the game data from the ROM on the console in about half a minute, with its progress on screen; later launches take a few seconds.',
+        ],
+        notes: ['Application mode only: hbmenu opened from the Album has too little memory, and the game tells you to hold R instead.', 'To update, delete the old <code>fonts</code>, <code>dialogue</code>, <code>stages</code> and <code>splash</code> folders and extract the new version; saves, settings and the <code>game</code> folder stay, and the new version imports once more on its first launch. A new HD pack replaces the whole <code>hd</code> folder.', 'The Switch version has no in-game update notice: watch this page or GitHub for new versions.', 'This project releases an NRO homebrew program only: no NSP, and no signature patches needed.'],
+      },
+      {
         id: 'hd', name: 'HD art pack',
         summary: 'Optional download. On computers, unzip it into the user data directory or the game’s own folder; on Android, import it in the app.',
         requires: 'Versioned separately; the game says when there is a new one',
@@ -232,7 +261,7 @@ export const INSTALL: Record<Lang, Install> = {
           'Place the folder in the app’s user data directory: <code>~/Library/Application Support/SRW64Recomp/hd</code> on macOS, <code>~/.local/share/srw64-recomp/hd</code> on Linux and Steam Deck, or <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code> on Windows. It can also go in the game’s own folder, next to <code>Marchwind64.app</code>, <code>marchwind64.sh</code> or <code>Marchwind64.exe</code>; when both have one, the user data directory’s is used. On macOS, next to the app works once the app has been moved in Finder (into Applications, say). On Android there is nothing to unzip: import it in the app as described in the Android section.',
           'Start the game: with the HD pack installed it uses the HD art by itself. To check that it is installed, look at the “HD Pack” line on the About page of the settings window, which shows the installed version.',
         ],
-        notes: ['Switch between original and HD art at any time under “Images” on the General page of the settings window, or with the shortcut (by default 4 or F6 on the keyboard, or pressing the right stick on a controller); the Windows and macOS menu bars also have “HD Pictures”. It takes effect at once and does not touch your saves. The choice is not saved: the game always starts in HD.', 'In HD you can keep the original unit icons on the map: “Map unit icons” on the General page. This one is remembered.', 'The HD pack has versions of its own and only gets a new one when its contents change, so you do not need to download it again with every app update. The game’s update check says when there is a new one; replace the whole <code>hd</code> folder when you update. Most images are generated or upscaled with AI using the original graphics as a reference; see the FAQ.'],
+        notes: ['The Switch takes a Switch HD pack of its own: see the Nintendo Switch section above for the download and how to install it.', 'Switch between original and HD art at any time under “Images” on the General page of the settings window, or with the shortcut (by default 4 or F6 on the keyboard, or pressing the right stick on a controller); the Windows and macOS menu bars also have “HD Pictures”. It takes effect at once and does not touch your saves. The choice is not saved: the game always starts in HD.', 'In HD you can keep the original unit icons on the map: “Map unit icons” on the General page. This one is remembered.', 'The HD pack has versions of its own and only gets a new one when its contents change, so you do not need to download it again with every app update. The game’s update check says when there is a new one; replace the whole <code>hd</code> folder when you update. Most images are generated or upscaled with AI using the original graphics as a reference; see the FAQ.'],
       },
     ],
     requirements: {
@@ -272,6 +301,11 @@ export const INSTALL: Record<Lang, Install> = {
           ['Recommended', 'Snapdragon 865, Dimensity 1080, Exynos 1380, Tensor G2 or newer, about 30 FPS'],
           ['Entry-level', 'Dimensity 6100+, Dimensity 700 and similar (Mali-G57) run at about 10–14 FPS'],
         ] },
+        { name: 'Nintendo Switch', rows: [
+          ['Console', 'A Switch that runs Atmosphère custom firmware (tested on the original model)'],
+          ['System', 'Atmosphère and hbmenu, in application mode (hold R while starting a game)'],
+          ['Space', 'About 150 MB on the SD card, plus about 1.3 GB for the Switch HD pack'],
+        ] },
       ],
       notes: [
         'Storage: about 150 MB for the game, plus about 550 MB for the HD art pack.',
@@ -287,15 +321,15 @@ export const INSTALL: Record<Lang, Install> = {
     quark: 'Quark Drive',
     baidu: 'Baidu Netdisk',
     passcode: ' (passcode {p})',
-    hdHint: 'Optional HD art pack, for every platform →',
+    hdHint: 'Optional HD art pack, for computers and Android →',
     savesLink: 'Where your saves are and how to back them up →',
     verify: 'Checksum',
-    noFile: 'An Android package is not yet available for this version.',
+    noFile: 'This version has no package for this platform yet.',
     notReleased: '0.4.0 is being prepared and cannot be downloaded yet. The installation steps are below.',
   },
   ja: {
     title: 'インストール',
-    lead: 'パソコンと Steam Deck は、ダウンロード・展開・ROM の追加の 3 ステップで準備できます。Android は APK をインストールし、アプリ内で ROM を選択します。HD アートパックは別配布のオプションで、すべてのプラットフォーム共通です。',
+    lead: 'パソコンと Steam Deck は、ダウンロード・展開・ROM の追加の 3 ステップで準備できます。Android は APK をインストールし、アプリ内で ROM を選択します。Switch は SD カードに展開して hbmenu から起動します。HD アートパックは別配布のオプションで、パソコンと Android 共通、Switch には専用のものがあります。',
     rom: `すべてのプラットフォームで『スーパーロボット大戦64』日本版 Rev 0 の ROM が必要です。<code>.z64</code>・<code>.v64</code>・<code>.n64</code> のどのバイトオーダーでもゲームが自動で判別します（<code>.z64</code> 形式での SHA-256 は <code class="hash">${ROM_SHA}</code>）。以下の手順ではファイル名を <code>rom.z64</code> としていますが、<code>.n64</code>・<code>.v64</code> は <code>rom.n64</code>・<code>rom.v64</code> でもかまいません。`,
     viewSteps: '手順を見る',
     experimental: '試験的',
@@ -355,6 +389,18 @@ export const INSTALL: Record<Lang, Install> = {
         notes: ['画面に触れると、現在の画面で使うタッチボタンが表示されます。コントローラーやキーボードの操作に切り替えると自動で隠れます。上端の「設定」ボタンで設定ウィンドウを開きます。', 'HD アートパック：アプリアイコンを長押しして「HD パックを導入」を選ぶか、ダウンロードした HD パックの zip をファイルマネージャーから Marchwind64 で開くと、自動で展開して導入します。初回の ROM 選択後にも一度確認されます。'],
       },
       {
+        id: 'switch', name: 'Nintendo Switch', experimental: true,
+        summary: 'SD カードのルートに展開して ROM を置き、R を押しながら任意のゲームを起動して開いた hbmenu から起動します。',
+        requires: 'Atmosphère（カスタムファームウェア）と hbmenu を導入した Switch',
+        steps: [
+          '<code>{switch}</code> をダウンロードし、SD カードのルートに展開します。<code>/switch/Marchwind64/Marchwind64.nro</code> と横のフォルダーができます。カードリーダーでも ftpd などでも構いません。',
+          '<strong>ROM の名前を <code>rom.z64</code> に変えて <code>/switch/Marchwind64/</code> に置きます</strong>。',
+          '任意：Switch 版 HD パック <code>{switch-hd}</code> をダウンロードし、同じく SD カードのルートに展開します（<code>/switch/Marchwind64/hd/</code> になります）。パソコン版の HD パックは Switch では使えません。',
+          '<strong>R ボタンを押しながら任意のゲームを起動</strong>し（ゲームカードを挿すのがいちばん簡単です）、開いた hbmenu で Marchwind64 を選びます。初回は本体で ROM からゲームデータを読み込むため 30 秒ほどかかり、画面に進み具合が出ます。2 回目以降は数秒で起動します。',
+        ],
+        notes: ['アプリケーションモードのみ対応です。アルバムから開いた hbmenu ではメモリが足りず、R を押しながら起動するよう案内が出ます。', '更新するときは古い <code>fonts</code>・<code>dialogue</code>・<code>stages</code>・<code>splash</code> フォルダーを削除してから新しい版を展開します。セーブ・設定・<code>game</code> フォルダーはそのまま残り、新しい版の初回起動時に自動でもう一度読み込みます。HD パックの新版は <code>hd</code> フォルダーごと入れ替えます。', 'Switch 版にはゲーム内の更新通知がありません。新しい版はこのページか GitHub でご確認ください。', '配布するのは NRO 形式の自作プログラムだけで、NSP は提供しません。署名パッチも不要です。'],
+      },
+      {
         id: 'hd', name: 'HD アートパック',
         summary: '任意で導入できます。パソコンでは展開してユーザーデータフォルダーかゲーム本体のフォルダーに配置し、Android ではアプリ内で導入します。',
         requires: 'アプリとは別のバージョン。新版はゲームが通知',
@@ -363,7 +409,7 @@ export const INSTALL: Record<Lang, Install> = {
           'アプリのユーザーデータフォルダーに配置します。macOS は <code>~/Library/Application Support/SRW64Recomp/hd</code>、Linux／Steam Deck は <code>~/.local/share/srw64-recomp/hd</code>、Windows は <code>%LOCALAPPDATA%\\SRW64Recomp\\hd</code>。ゲーム本体のフォルダー（<code>Marchwind64.app</code>、<code>marchwind64.sh</code>、<code>Marchwind64.exe</code> と同じ場所）にも置けます。両方にある場合はユーザーデータフォルダーのものを使います。macOS でアプリの隣に置く場合は、先にアプリを Finder で一度移動してください（「アプリケーション」へドラッグするなど）。Android では展開不要で、上の Android の項目のとおりアプリ内で導入します。',
           'ゲームを起動すると、HD パックが入っていれば自動で HD 画面になります。導入できたかどうかは、設定ウィンドウ「情報」ページの「HD パック」の行で、導入済みのバージョンを確認できます。',
         ],
-        notes: ['オリジナルと HD はいつでも切り替えられます。設定ウィンドウ「一般」ページの「画面」か、ショートカット（初期設定ではキーボードの 4 または F6、コントローラーは右スティック押し込み）を使います。Windows と macOS のメニューバーにも「HD 画面」があります。切り替えはすぐ反映され、セーブデータには影響しません。この選択は保存されず、起動時は常に HD です。', 'HD 画面でも、マップ上のユニットアイコンだけをオリジナルに戻せます（「一般」ページの「マップユニット」）。こちらは設定が保存されます。', 'HD パックにはアプリとは別のバージョン番号があり、内容が変わったときだけ新版を出します。アプリを更新するたびにダウンロードし直す必要はありません。新版はゲームの更新確認が知らせます。更新時は <code>hd</code> フォルダーを丸ごと入れ替えてください。収録画像は主に、オリジナルを参考に AI で生成、または拡大・描き直したものです。詳しくはよくある質問をご覧ください。'],
+        notes: ['Switch では専用の Switch 版 HD パックを使います。ダウンロードと導入方法は上の Nintendo Switch の項目をご覧ください。', 'オリジナルと HD はいつでも切り替えられます。設定ウィンドウ「一般」ページの「画面」か、ショートカット（初期設定ではキーボードの 4 または F6、コントローラーは右スティック押し込み）を使います。Windows と macOS のメニューバーにも「HD 画面」があります。切り替えはすぐ反映され、セーブデータには影響しません。この選択は保存されず、起動時は常に HD です。', 'HD 画面でも、マップ上のユニットアイコンだけをオリジナルに戻せます（「一般」ページの「マップユニット」）。こちらは設定が保存されます。', 'HD パックにはアプリとは別のバージョン番号があり、内容が変わったときだけ新版を出します。アプリを更新するたびにダウンロードし直す必要はありません。新版はゲームの更新確認が知らせます。更新時は <code>hd</code> フォルダーを丸ごと入れ替えてください。収録画像は主に、オリジナルを参考に AI で生成、または拡大・描き直したものです。詳しくはよくある質問をご覧ください。'],
       },
     ],
     requirements: {
@@ -403,6 +449,11 @@ export const INSTALL: Record<Lang, Install> = {
           ['推奨', 'Snapdragon 865、Dimensity 1080、Exynos 1380、Tensor G2 以降で約 30 FPS'],
           ['エントリー向け', 'Dimensity 6100+、Dimensity 700 など（Mali-G57）は約 10〜14 FPS で動作'],
         ] },
+        { name: 'Nintendo Switch', rows: [
+          ['本体', 'Atmosphère（カスタムファームウェア）が動く Switch（初代モデルで確認）'],
+          ['システム', 'Atmosphère と hbmenu、アプリケーションモード（R を押しながらゲームを起動）'],
+          ['容量', 'SD カードに約 150 MB、Switch 版 HD パックは別に約 1.3 GB'],
+        ] },
       ],
       notes: [
         '空き容量：ゲーム本体が約 150 MB、HD アートパックは別に約 550 MB。',
@@ -418,10 +469,10 @@ export const INSTALL: Record<Lang, Install> = {
     quark: 'Quark ドライブ',
     baidu: 'Baidu ネットディスク',
     passcode: '（パスコード {p}）',
-    hdHint: '全プラットフォーム共通の HD アートパック（任意）→',
+    hdHint: 'パソコンと Android 共通の HD アートパック（任意）→',
     savesLink: 'セーブデータの場所とバックアップ方法 →',
     verify: 'チェックサム',
-    noFile: 'このバージョンの Android パッケージは現在提供していません。',
+    noFile: 'このバージョンにはこのプラットフォーム向けのパッケージがまだありません。',
     notReleased: '0.4.0 は公開準備中のため、まだダウンロードできません。インストール手順は先にご覧いただけます。',
   },
 };

@@ -19,12 +19,13 @@ lead: インストール、操作、セーブに関するよくある質問を�
 - **Windows**：ROM の名前を `rom.z64` に変更し、展開した `Marchwind64-windows-x64` フォルダーに置いて、`Marchwind64.cmd` をダブルクリックします（`Marchwind64.exe` ではありません）。`%LOCALAPPDATA%\SRW64Recomp\rom.z64` に置くこともできます。Windows は既定で拡張子を隠すため、`rom.z64.z64` になりがちです。エクスプローラーの「表示」で「ファイル名拡張子」をオンにしてから変更してください。
 - **Linux／Steam Deck**：`rom.z64` に名前を変更して `marchwind64.sh` と同じ場所、または `~/.local/share/srw64-recomp/rom.z64` に置きます。
 - **macOS・Android**：名前の変更は不要です。初回起動時に表示される画面で ROM を選択します。
+- **Nintendo Switch**：`rom.z64` という名前にして SD カードの `/switch/Marchwind64/` に置きます。初回起動時に本体で読み込み、30 秒ほどかかります。
 
 ROM が圧縮ファイルなら先に展開してください。`.n64`・`.v64` 形式は `rom.n64`・`rom.v64` でもかまいません。詳しくは[インストール](/ja/install/)をご覧ください。
 
 ## エミュレーターですか？
 
-静的リコンパイルによるネイティブ移植です。N64 の MIPS プログラムを C に変換し、Windows・macOS・Linux・Android のネイティブアプリとしてビルドしています。描画には [RT64](https://github.com/rt64/rt64) を使用します。BIOS やプラグイン、エミュレーターの設定は不要で、原作をもとに画面の変更や機能の追加も行えます。
+静的リコンパイルによるネイティブ移植です。N64 の MIPS プログラムを C に変換し、Windows・macOS・Linux・Android・Switch のネイティブアプリとしてビルドしています。描画には [RT64](https://github.com/rt64/rt64) を使用します（Switch では独自の OpenGL レンダラー）。BIOS やプラグイン、エミュレーターの設定は不要で、原作をもとに画面の変更や機能の追加も行えます。
 
 ## 対応プラットフォームとコントローラーは？
 
@@ -35,6 +36,7 @@ ROM が圧縮ファイルなら先に展開してください。`.n64`・`.v64` 
 | Linux | x86-64、glibc 2.35 以降、Vulkan ドライバー |
 | Steam Deck（試験的） | Linux 版と同じパッケージ。Deck を自動認識 |
 | Android（試験的） | arm64、Android 9 以降、Vulkan 1.1。確認済みの端末は [Android 対応状況](/ja/android/) |
+| Nintendo Switch（試験的） | Atmosphère（カスタムファームウェア）と hbmenu、アプリケーションモード。配布は NRO のみで NSP はありません |
 
 プラットフォームごとの CPU・グラフィックス・ドライバーの条件は、インストールページの[動作環境](/ja/install/#requirements)をご覧ください。
 
@@ -50,6 +52,7 @@ ROM が圧縮ファイルなら先に展開してください。`.n64`・`.v64` 
 - **macOS**：`~/Library/Application Support/SRW64Recomp/saves`。Finder で ⇧⌘G を押してパスを入力します。
 - **Linux／Steam Deck**：`~/.local/share/srw64-recomp/saves`。
 - **Android**：システムの「ファイル」アプリで「Marchwind64」を開き、その中の `saves` です。
+- **Nintendo Switch**：SD カードの `/switch/Marchwind64/saves` です。カードリーダーや ftpd でコピーできます。
 
 `cartridge.sram` がカートリッジのセーブ（セーブ 1・2）、`slots/` がセーブ 3 以降、`auto/` がオートセーブです。バックアップは `saves` フォルダーごとコピーし、戻すときはゲームを終了してから元の場所に置きます。別のパソコンやプラットフォームへの移行も同じ方法です。
 
@@ -65,7 +68,7 @@ ROM が圧縮ファイルなら先に展開してください。`.n64`・`.v64` 
 
 ## HD パックとは？
 
-ゲームの画像を差し替える、別途ダウンロードできる任意のパックです。未導入ならオリジナルの画面で遊べます。導入後はゲーム中いつでもオリジナルと HD を切り替えられます。Android では、アプリアイコンを長押しして「HD パックを導入」を選ぶか、ダウンロードした zip を SRW64 で開いて導入します。
+ゲームの画像を差し替える、別途ダウンロードできる任意のパックです。未導入ならオリジナルの画面で遊べます。導入後はゲーム中いつでもオリジナルと HD を切り替えられます。Android では、アプリアイコンを長押しして「HD パックを導入」を選ぶか、ダウンロードした zip を SRW64 で開いて導入します。Switch では専用の Switch 版 HD パックを SD カードのルートに展開します。パソコン版のパックは Switch では使えません。
 
 画像は主に次の 2 つの方法で制作しており、パック内の説明とリリースノートにも出典を記載しています。
 

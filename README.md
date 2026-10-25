@@ -18,7 +18,7 @@
 </p>
 
 Marchwind 64 is an unofficial native recompilation project for Super Robot Wars 64.
-It runs natively on Windows, macOS, Linux, Steam Deck and Android, with full English
+It runs natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English
 and Chinese translations and widescreen support, plus an optional HD art pack.
 
 > **Requires your own Japanese ROM** (Super Robot Taisen 64, Rev 0). Neither this
@@ -195,14 +195,14 @@ each screen.
   button layout with a large interface by default. On Android, touch controls show the
   buttons needed for the current screen, labelled with their functions, such as “OK”,
   “Fast” and “Next unit”.
-- **Optional HD art pack.** The HD art pack is a separate download that works on every
-  platform. The game uses the original pixel art without it; once installed, you can
+- **Optional HD art pack.** The HD art pack is a separate download for computers and
+  Android, with one of its own for the Switch. The game uses the original pixel art without it; once installed, you can
   switch between the two at any time in game.
 
 ## System requirements
 
-Windows, the Steam Deck and Android are experimental. The graphics requirements are the
-same as other recompilations drawn with [RT64](https://github.com/rt64/rt64); older
+Windows, the Steam Deck, Android and the Switch are experimental. On computers the graphics
+requirements are the same as other recompilations drawn with [RT64](https://github.com/rt64/rt64); older
 hardware has not been tested.
 
 ### Windows (experimental)
@@ -257,6 +257,18 @@ it to Steam, and it is played from Game Mode.
 | Graphics | Vulkan 1.1 |
 | Recommended | Snapdragon 865, Dimensity 1080, Exynos 1380, Tensor G2 or newer, about 30 FPS |
 | Entry-level | Dimensity 6100+, Dimensity 700 and similar (Mali-G57) run at about 10–14 FPS |
+
+### Nintendo Switch (experimental)
+
+| | Requirement |
+| --- | --- |
+| Console | A Switch that runs Atmosphère custom firmware (tested on the original model) |
+| System | Atmosphère and hbmenu, in application mode (hold R while starting any game) |
+| Space | About 150 MB on the SD card, plus about 1.3 GB for the Switch HD pack |
+
+Extract it to the SD card's root and put the ROM in `/switch/Marchwind64/` as `rom.z64`. The
+first launch imports it on the console in about half a minute. It is an NRO homebrew program,
+with no NSP; the computers' HD pack does not work on the Switch.
 
 The game takes about 150 MB, and the optional HD art pack about 550 MB more. If the game
 crashes at start or freezes, update your graphics drivers first. Step-by-step
