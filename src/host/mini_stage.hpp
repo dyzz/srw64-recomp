@@ -5,6 +5,7 @@
 #include "state_probe.hpp"
 #include "campaign.hpp"
 #include "notices.hpp"
+#include "sched_rate.hpp"
 #include "json/json.hpp"
 #include <filesystem>
 #include <fstream>
@@ -427,8 +428,9 @@ inline uint16_t input(uint16_t buttons) {
     if(major==3 && !s.direct) {
         // The menu may still be fading when the native button is clicked.
         // Retry a released START edge until its state confirms leaving the menu.
-        const unsigned sample=s.start_samples++%32;
-        return sample<4?uint16_t(buttons|0x1000):uint16_t(buttons&~0x1000);
+        // Polls come once a retrace: twice as often at 120 Hz (sched_rate.hpp).
+        const unsigned f=sched_rate::factor(),sample=s.start_samples++%(32*f);
+        return sample<4*f?uint16_t(buttons|0x1000):uint16_t(buttons&~0x1000);
     }
     if(major==13) {
         srw64::intro::request_skip();

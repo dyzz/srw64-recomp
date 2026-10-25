@@ -29,7 +29,8 @@ manifest with before/after hashes. build/recomp/switch-runtime/ then holds:
                               into the external queue, the VI's message queue was empty and its
                               thread waited on it, and the idle thread waited on an empty
                               external queue. (The pinned header is generated over, not used.)
-  events.cpp                  the VI thread's swap of the VI states under the setters' lock,
+  events.cpp                  the lifecycle events.cpp (the 120 Hz latch) with the VI thread's
+                              swap of the VI states under the setters' lock,
                               as on the PS Vita (prepare_vita_runtime.py): unlocked, a VI event
                               the game set between the swap and the copy was overwritten
                               (mq 0), no VI message came again, and every game thread waited
@@ -427,10 +428,11 @@ static std::atomic<int> srw64_pending_screen_updates{0};
 static std::atomic<uint64_t> srw64_screen_updates_skipped{0};
 extern "C" uint64_t srw64_screen_updates_skipped_count() { return srw64_screen_updates_skipped.load(); }
 """)
-    return replace_once(source, """        // Update VI registers and swap VI modes.
-        events_context.vi.update_vi();
-""", """        // Update VI registers and swap VI modes, under the lock the setters take.
-        {
+    # The swap the lifecycle's 120 Hz latch allows (prepare_runtime_lifecycle.py), under the lock.
+    return replace_once(source, """        if (!ultramodern::is_game_started() || srw64_vi_latch(srw64_latch_tick++)) {
+            events_context.vi.update_vi();
+        }
+""", """        if (!ultramodern::is_game_started() || srw64_vi_latch(srw64_latch_tick++)) {
             std::lock_guard lock{ events_context.message_mutex };
             events_context.vi.update_vi();
         }
@@ -583,23 +585,29 @@ def main() -> None:
     lifecycle = json.loads((ROOT / "build/recomp/runtime-lifecycle/manifest.json").read_text())
     if lifecycle["revision"] != lock["N64ModernRuntime"]["commit"]:
         raise RuntimeError("Runtime lifecycle sources were generated from another revision")
-    lifecycle_recomp = next(c for c in lifecycle["changes"] if c["source"] == "librecomp/src/recomp.cpp")
-    lifecycle_source = (ROOT / lifecycle_recomp["generated"]).read_text()
-    if sha256(lifecycle_source) != lifecycle_recomp["after_sha256"]:
-        raise RuntimeError("Runtime lifecycle recomp.cpp differs from its manifest")
+    # recomp.cpp and events.cpp: the lifecycle's (prepare_runtime_lifecycle.py), with the
+    # Switch's changes over them.
+    lifecycle_sources = {}
+    for relative in ("librecomp/src/recomp.cpp", "ultramodern/src/events.cpp"):
+        change = next(c for c in lifecycle["changes"] if c["source"] == relative)
+        text = (ROOT / change["generated"]).read_text()
+        if sha256(text) != change["after_sha256"]:
+            raise RuntimeError(f"Runtime lifecycle {relative} differs from its manifest")
+        lifecycle_sources[change["generated"]] = text
+    lifecycle_recomp, lifecycle_events = lifecycle_sources
     inputs = [
-        ("recomp.cpp", None, lifecycle_recomp["generated"], adapt_recomp_cpp),
+        ("recomp.cpp", None, lifecycle_recomp, adapt_recomp_cpp),
         ("librecomp/CMakeLists.txt", runtime, "librecomp/CMakeLists.txt", adapt_librecomp_cmake),
         ("include/ultramodern/renderer_context.hpp", runtime, "ultramodern/include/ultramodern/renderer_context.hpp", adapt_renderer_context),
         ("include/lightweightsemaphore.h", runtime, "thirdparty/concurrentqueue/lightweightsemaphore.h", adapt_semaphore),
         ("include/blockingconcurrentqueue.h", runtime, "thirdparty/concurrentqueue/blockingconcurrentqueue.h", lambda text: SWITCH_QUEUE),
         ("error_handling.cpp", runtime, "ultramodern/src/error_handling.cpp", adapt_error_handling),
-        ("events.cpp", runtime, "ultramodern/src/events.cpp", adapt_events),
+        ("events.cpp", None, lifecycle_events, adapt_events),
         ("files.cpp", runtime, "librecomp/src/files.cpp", adapt_files),
     ]
     records = []
     for name, checkout, relative, adapt in inputs:
-        source = lifecycle_source if checkout is None else pinned(checkout, relative)
+        source = lifecycle_sources[relative] if checkout is None else pinned(checkout, relative)
         adapted = adapt(source)
         destination = OUTPUT / name
         destination.parent.mkdir(parents=True, exist_ok=True)

@@ -191,7 +191,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
             aspect=saved.value("aspect","auto");
             map_unit_icons=saved.value("map_unit_icons","hd");
             if(saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())
-                touch_opacity=std::clamp(saved["touch_opacity"].get<unsigned>(),25u,100u);
+                touch_opacity=std::clamp(saved["touch_opacity"].get<unsigned>(),0u,100u);
             if(saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())
                 dialogue_font_size=std::clamp(saved["dialogue_font_size"].get<unsigned>(),10u,18u);
         }
@@ -234,8 +234,13 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     // point the update check at its own server (update_check.hpp), or show Android's touch
     // controls on a desktop and play them with the mouse (SRW64_TOUCH_PAD=1, frontend.cpp), or
     // build the pages as before to compare (SRW64_PAGE_REBUILD, SRW64_SYNC_PAGE_IMAGES, frontend.cpp).
+    // A player may also pick the graphics API (SRW64_GRAPHICS_API=vulkan or d3d12, graphics.cpp):
+    // some AMD integrated GPUs reset their driver under D3D12 (issue #12).
     std::map<std::string,std::string> inherited;
-    for(const char* key:{"SRW64_UPDATE_URL","SRW64_TOUCH_PAD","SRW64_PAGE_REBUILD","SRW64_SYNC_PAGE_IMAGES"})if(const char* value=std::getenv(key);value && *value)inherited[key]=value;
+    for(const char* key:{"SRW64_UPDATE_URL","SRW64_TOUCH_PAD","SRW64_PAGE_REBUILD","SRW64_SYNC_PAGE_IMAGES","SRW64_GRAPHICS_API",
+                         // The 120 Hz scheduler's fallback and comparisons (src/host/sched_rate.hpp).
+                         "SRW64_VI_RATE","SRW64_VI_AUDIO","SRW64_FORCE_FAST","SRW64_RT64_BASE","SRW64_PRESENT_PACE","SRW64_RT64_RATE_HINT"})
+        if(const char* value=std::getenv(key);value && *value)inherited[key]=value;
     clear_runtime_environment();
     for(const auto& [key,value]:inherited)set_environment(key,value);
     for(const auto& [key,value]:std::map<std::string,std::string>{
@@ -351,7 +356,10 @@ int run_prepared(const Options& options,const GameIdentity& game,const HostMain&
         {"SRW64_HD_AVAILABLE","0"},{"SRW64_IMAGE_MODE","original"},
         {"SRW64_RESOLUTION_SCALE",std::to_string(about.value("resolution_scale",2u))},
         {"SRW64_FONT_DIR",bundled_resource("fonts").string()},
-        {"SRW64_STAGE_META",bundled_resource("stages").string()}})
+        {"SRW64_STAGE_META",bundled_resource("stages").string()},
+        // The original's 60 Hz: the consoles' displays are 60 Hz, and the 120 Hz scheduler
+        // (docs/design/120hz-scheduler.md) has not been tried on them. Speeds go to 2x.
+        {"SRW64_VI_RATE","60"}})
         set_environment(key,value);
     if(options.debug)set_environment("SRW64_DEBUG","1");
     std::vector<std::string> arguments={"srw64-gfx-host",(data/"rom.z64").string(),run.string(),"0","-"};

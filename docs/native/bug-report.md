@@ -57,3 +57,9 @@ Mac 和 Windows 的菜单栏「工具 → 导出日志」（2026-10-20）导出�
 选了存档文件夹（默认 Documents/Marchwind64，[存档设计 §11](../design/save-slots-autosave.md)）时，报告直接复制到它的 `reports/`，反馈页显示 `Documents/Marchwind64/reports/<文件名>`。没有存档文件夹时：Android 10+ 导出的报告通过 `MediaStore.Files` 保存到 **内部共享存储/Documents/Marchwind64/reports/**（2026-10-09 版写在 Download/Marchwind64/reports），无需存储权限；反馈页在保存成功后显示实际公共路径，「打开文件夹」进入该目录。Android 9 使用系统文件选择器选择报告 ZIP 的保存位置，同样无需存储权限。发布前保持 pending，输出流关闭失败时删除不完整下载，失败不会显示成功。
 
 原始运行日志继续位于私有 `files/user/sessions/`，可从系统「文件」的 Marchwind64 入口访问；公共报告仍只包含本页规定的脱敏内容。不申请「管理所有文件」，不要求玩家进入 `Android/data`。
+
+## 玩家强制 Vulkan（issue #12）
+
+2026-10-24。issue #12 的 Ryzen 5 5600G（核显 Vega 7，驱动 31.0.21925.1001＝Polaris/Vega 分支 Adrenalin 26.5.2）在 D3D12 下黑屏后驱动重置；转储显示崩溃发生在 RT64 纹理缓存上传线程：`D3D12Buffer::map` 不检查 `Map()` 的返回值，设备被移除后返回空指针，`rt64_texture_cache.cpp:1085` 的 memcpy 往空指针写。同一驱动号在 LEGO Dimensions Recompiled #41（5600GT，`DEVICE_HUNG`）、Solidcraft #3321（5600U/5700G/5400U）上也是 D3D12 挂起、Vulkan 正常。
+
+此前启动器（`launch.cpp`）在启动渲染器前清掉所有 `SRW64_` 环境变量，玩家没有办法改图形接口（RT64 的 `rt64.json` 也被 `useConfigurationFile=false` 关掉）。现在放行 `SRW64_GRAPHICS_API`（`vulkan`／`d3d12`），玩家在 cmd 里先 `set SRW64_GRAPHICS_API=vulkan` 再运行 `Marchwind64.exe` 即可。1080 Ti 实测：`SRW64_GRAPHICS_API 1`（Vulkan），标题、战斗鉴赏的合体技对白画面与 D3D12 一致。AMD 核显上的 Vulkan 没有实测机器。

@@ -51,7 +51,7 @@ class SettingsWindowTests(unittest.TestCase):
                    "settings_aspect": ("wide", "original"), "settings_msaa": ("on", "off"),
                    "settings_intermission_ui": ("native", "original"), "settings_name_entry_ui": ("native", "original"),
                    "settings_title_ui": ("native", "original"), "settings_language": (),
-                   "settings_filter_scale": ("1", "2", "4", "0")}
+                   "settings_filter_scale": ("1", "2", "4", "0"), "settings_speed": ("1x", "2x", "3x", "4x")}
         for locale in LOCALES:
             labels = ui(locale)
             for page in SETTINGS_PAGES:

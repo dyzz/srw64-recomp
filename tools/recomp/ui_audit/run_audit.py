@@ -141,6 +141,10 @@ def fixtures(text):
         menus, weapons, skills = text.longest(loc, 2699, 4027), text.longest(loc, 1370, 2698, 1), text.longest(loc, 4028, 4043, 1)
         # Intermission menu, with the longest episode title and figures.
         menu = at(states['intermission'])
+        # 返回标题画面 before 次のマップへ (intermission_row.hpp), in the page's language like the page.
+        title_row = json.loads((ROOT / f'content/locales/{loc}.json').read_text())['ui']['title_return_open']
+        if title_row not in menu['items']:
+            menu['items'] = menu['items'][:-1] + [title_row] + menu['items'][-1:]
         add('intermission', {'intermission_page': menu})
         add('intermission-long', {'intermission_page': {**menu, 'scene_title': stages[0], 'funds': 9999999, 'turns': 999, 'episode': 60}})
         add('intermission-swap', {'intermission_page': {**menu, 'submenu': True}})
@@ -261,6 +265,15 @@ def fixtures(text):
         for side in ('attacker', 'defender'):
             four[side].update(damage=8888, critical_damage=8888)
         add('battle-4digit-native', {'battle_page': four})
+        # The pilot panels' buff bars (frontend.cpp battle_buffs): every buff but 魂 on one side
+        # (加速 手加減 集中 必閃 必中 鉄壁 みがわり 熱血 幸運 努力 隠れ身); 魂 鉄壁 and the two
+        # debuffs 挑発 かく乱 on the other. The rows must not scroll.
+        buffs = copy.deepcopy(states['battle'][2])
+        for side, ids in (('defender', (2, 3, 4, 5, 7, 9, 10, 11, 14, 16, 18)), ('attacker', (9, 17, 21, 23))):
+            buffs[side]['active_spirits'] = [{'id': i, 'name': r(969 + i)} for i in ids]
+            # with faces, so the info columns are as narrow as in a game
+            buffs[side]['portrait'] = {'path': 'assets/hd-ai/portrait-batch/whole-v1/portrait-169.png', 'width': 96, 'height': 96}
+        add('battle-spirits-native', {'battle_page': at(buffs)})
         imports = {'save_store': {'visible': True, 'import': [
             {'file': 'Super Robot Wars 64 (Japan).sra', 'format': '32-bit swapped', 'slots': [{'used': True, 'intact': True}, {'used': True, 'intact': False}]},
             {'file': 'SRW64.srm', 'format': '32-bit swapped .srm', 'slots': [{'used': True, 'intact': True}, {'used': False, 'intact': False}]},

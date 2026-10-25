@@ -62,6 +62,7 @@
 #include "touch_scene.hpp"
 #include "stage_info.hpp"
 #include "game_speed.hpp"
+#include "sched_rate.hpp"
 #include "stall_watchdog.hpp"
 #include "guest_memory.hpp"
 #include "native_name_entry.hpp"
@@ -203,6 +204,9 @@ void on_vi() {
 #ifdef __vita__
     srw64_vita_perf_thread("vi");
 #endif
+    // At 120 Hz the host's VI count keeps 60 Hz units (sched_rate.hpp).
+    static uint64_t ticks = 0;
+    if (++ticks % srw64::sched_rate::factor()) return;
     const uint64_t vi = ++vi_count;
 #if defined(__vita__) || defined(__SWITCH__)
     // The PS Vita and the Switch are driven through the debug interface only: no control.txt
@@ -346,6 +350,8 @@ extern "C" void srw64_game_threads_report() {
 #endif
 // Guest RDRAM, for the debug interface's read-only memory view (debug_server.cpp).
 uint8_t* srw64_rdram = nullptr;
+// The runtime's VI thread asks before each picture latches (sched_rate.hpp latch()).
+extern "C" bool srw64_vi_latch(uint64_t tick) { return srw64::sched_rate::latch(srw64_rdram, tick); }
 
 // Debug interface hooks (debug_server.cpp): a button pulse that starts now
 // rather than at the next control-file poll, and a quit reported like SRWQ1.

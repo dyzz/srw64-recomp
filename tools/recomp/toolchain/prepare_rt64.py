@@ -91,7 +91,7 @@ def main() -> int:
                                            "src/hle/rt64_present_queue.cpp", "src/rhi/rt64_render_hooks.h",
                                            "src/rhi/rt64_render_hooks.cpp", "src/gui/rt64_file_dialog.cpp",
                                            "src/hle/rt64_framebuffer_manager.cpp", "src/hle/rt64_workload_queue.cpp",
-                                           "src/hle/rt64_rdp.cpp"}
+                                           "src/hle/rt64_rdp.cpp", "src/hle/rt64_vi.cpp"}
                                            | set(NATIVE_MODEL_PATCHES) | set(ANDROID_PATCHES) | set(TEXTURE_FILTER_PATCHES)),
                                 (plume, {"plume_metal.cpp", "plume_vulkan.cpp", "plume_d3d12.cpp", "plume_apple.h", "plume_apple.mm"})):
         changed = set(subprocess.check_output(["git", "diff", "--name-only", "HEAD"], cwd=repository, text=True).splitlines())
@@ -331,6 +331,48 @@ def main() -> int:
                       "                    if (RenderHookPresented *presentedHook = GetRenderHookPresented()) {\n"
                       "                        presentedHook(present.workloadId);\n"
                       "                    }\n")
+    # Presents that come faster than the display refreshes (4x at 120 Hz, src/host/sched_rate.hpp:
+    # a new picture every 120th of a second) are thinned to the display's rate, evenly: each
+    # picture earns display/original of a present, and one goes once a whole one is earned,
+    # every other on a 60 Hz display, three of four at 90 Hz (the Deck), all at 144. A time
+    # rule (skip under 0.75 of a refresh since the last) gave only 58 at 90 Hz, its threshold
+    # being the pictures' own spacing; sleeping to the next refresh lands half a refresh late on
+    # Metal (docs/design/60fps.md §9). Interpolation keeps its own pacing. Off with
+    # SRW64_VI_RATE=60 (never faster than a display) or SRW64_PRESENT_PACE=0 (comparisons).
+    present_pace = [("                if (skipPresent) {\n"
+                     "                    skipInterpolation();\n",
+                     "                static const bool presentPace = [] {\n"
+                     "                    const char* vi = std::getenv(\"SRW64_VI_RATE\");\n"
+                     "                    const char* pace = std::getenv(\"SRW64_PRESENT_PACE\");\n"
+                     "                    return !(vi && std::string_view(vi) == \"60\") && !(pace && std::string_view(pace) == \"0\");\n"
+                     "                }();\n"
+                     "                static float presentCredit = 1.0f;\n"
+                     "                if (!skipPresent && presentPace) {\n"
+                     "                    uint32_t displayRate, originalRate, intendedRate;\n"
+                     "                    {\n"
+                     "                        std::scoped_lock<std::mutex> configurationLock(ext.sharedResources->configurationMutex);\n"
+                     "                        displayRate = ext.sharedResources->swapChainRate;\n"
+                     "                        originalRate = ext.sharedResources->viOriginalRate;\n"
+                     "                        intendedRate = ext.sharedResources->targetRate;\n"
+                     "                    }\n"
+                     "                    const bool interpolating = (intendedRate > 0) && (intendedRate > originalRate);\n"
+                     "                    if (!interpolating && (displayRate > 0) && (originalRate > displayRate)) {\n"
+                     "                        presentCredit = std::min(presentCredit + float(displayRate) / float(originalRate), 1.5f);\n"
+                     "                        if (presentCredit < 1.0f) {\n"
+                     "                            skipPresent = true;\n"
+                     "                        }\n"
+                     "                        else {\n"
+                     "                            presentCredit -= 1.0f;\n"
+                     "                        }\n"
+                     "                    }\n"
+                     "                    else {\n"
+                     "                        presentCredit = 1.0f;\n"
+                     "                    }\n"
+                     "                }\n\n"
+                     "                if (skipPresent) {\n"
+                     "                    skipInterpolation();\n"),
+                    ('#include "rt64_present_queue.h"\n',
+                     '#include "rt64_present_queue.h"\n\n#include <algorithm>\n#include <cstdlib>\n#include <string_view>\n')]
     records += [patch(checkout, "src/rhi/rt64_render_hooks.h",
                       "    RenderHookInit *GetRenderHookInit();",
                       "    void SetRenderHookWorkloadId(unsigned long long id);\n"
@@ -345,7 +387,7 @@ def main() -> int:
                 patch(checkout, "src/hle/rt64_present_queue.cpp",
                       "                    drawHook(commandList, swapChainFramebuffer);",
                       "                    SetRenderHookWorkloadId(present.workloadId);\n"
-                      "                    drawHook(commandList, swapChainFramebuffer);", [presented_call, swapchain_call])]
+                      "                    drawHook(commandList, swapChainFramebuffer);", [presented_call, swapchain_call, *present_pace])]
     # RT64 quits the file-dialog library even when it failed to start (no D-Bus session
     # bus, as in containers): the xdg-portal build then aborts in dbus_connection_unref.
     records.append(patch(checkout, "src/gui/rt64_file_dialog.cpp",
@@ -480,6 +522,18 @@ def main() -> int:
                                       "        }\n"),
                                      ("        threadRunning = true;\n\n        while (threadRunning) {",
                                       "        while (threadRunning) {")]))
+    # The 120 Hz scheduler (src/host/sched_rate.hpp): the VI history counts screen
+    # updates, which come at 120 Hz there, so a frame every 4 of them is 30, not 15.
+    # SRW64_RT64_BASE=60 keeps the original base for comparison.
+    records.append(patch(checkout, "src/hle/rt64_vi.cpp",
+                         "            const uint32_t FullRate = 60; // TODO: PAL support.\n",
+                         "            static const uint32_t FullRate = [] {\n"
+                         "                const char* vi = std::getenv(\"SRW64_VI_RATE\");\n"
+                         "                const char* base = std::getenv(\"SRW64_RT64_BASE\");\n"
+                         "                if (base && std::string_view(base) == \"60\") return 60u;\n"
+                         "                return vi && std::string_view(vi) == \"60\" ? 60u : 120u;\n"
+                         "            }();\n",
+                         [('#include "rt64_vi.h"\n', '#include "rt64_vi.h"\n\n#include <cstdlib>\n#include <string_view>\n')]))
     recorded = {r['path'] for r in records}
     for relative in [*NATIVE_MODEL_PATCHES, *TEXTURE_FILTER_PATCHES, *(r for r in ANDROID_PATCHES if not r.startswith("src/contrib/plume/"))]:
         if str((checkout/relative).relative_to(ROOT)) not in recorded:

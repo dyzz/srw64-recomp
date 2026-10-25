@@ -46,6 +46,8 @@ NATIVE_HOOKS = {
     "load_000AB160_func_801E7430": "srw64_original_status_pages",
     "resident_func_80082334": "srw64_original_random_bound",
     "resident_func_80085F30": "srw64_original_frame_boundary",
+    # The scheduler's retrace handler, for the 120 Hz experiment (src/host/sched_rate.hpp).
+    "resident_func_80080A14": "srw64_original_retrace",
     "resident_func_800821B0": "srw64_original_rng_seed",
     "resident_func_800822D8": "srw64_original_rng_next",
     # Every SRAM transfer, for extended slots and autosaves (save_store.cpp).

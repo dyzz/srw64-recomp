@@ -12,6 +12,7 @@
 #include "steam_deck.hpp"
 #include "game_frame.hpp"
 #include "frame_rate.hpp"
+#include "game_speed.hpp"
 #include "wide_map.hpp"
 #include "native_marker.hpp"
 #include "native_map.hpp"
@@ -355,6 +356,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     const std::string clock_name = capture_clock;
     const int image_mode = srw64::presentation::image_mode.current();
     const uint64_t workload = RT64::GetRenderHookWorkloadId();
+    srw64::frame_rate::present_workload(workload);
     // Opt-in temporal QA: sample every completed frame, so a single bad present is visible;
     // a frame that changes sharply is also saved whole.
     static const uint64_t trace_begin = std::getenv("SRW64_FRAME_TRACE_FROM") ? std::stoull(std::getenv("SRW64_FRAME_TRACE_FROM")) : UINT64_MAX;
@@ -586,7 +588,8 @@ public:
         // RT64 picks Vulkan on Linux, and D3D12 with a Vulkan fallback on Windows.
         app->userConfig.graphicsAPI = GraphicsAPI::Automatic;
 #endif
-        // For tests only: SRW64_GRAPHICS_API=vulkan (MoltenVK on a Mac), d3d12 or metal.
+        // SRW64_GRAPHICS_API=vulkan (MoltenVK on a Mac), d3d12 or metal: for tests, and on
+        // Windows for players whose GPU fails under D3D12 (the launcher passes it, launch.cpp).
         if (const char* api = std::getenv("SRW64_GRAPHICS_API")) {
             const std::string name = api;
             if (name == "vulkan") app->userConfig.graphicsAPI = GraphicsAPI::Vulkan;
@@ -753,6 +756,19 @@ public:
 #endif
     void send_dl(const OSTask* task) override {
         srw64::frame_rate::list_sent();
+        const uint32_t original_rate = app->sharedQueueResources->viOriginalRate;
+        srw64::frame_rate::original_rate.store(original_rate, std::memory_order_relaxed);
+        if (!original_rate) srw64::frame_rate::lists_without_rate.fetch_add(1, std::memory_order_relaxed);
+        // RT64 guesses the game's frame rate from its VI history, three equal gaps between
+        // pictures or none; at 120 Hz a GPU finishing either side of an 8 ms tick rarely gives
+        // three (the Seeker: half the gaps 3 or 5 ticks at 1x), and without a rate it does not
+        // interpolate. The step rate is known here (game_speed.hpp); RT64 clears it after each
+        // workload. SRW64_RT64_RATE_HINT=0 leaves the guess to RT64 for comparison.
+        static const bool rate_hint = [] {
+            const char* hint = std::getenv("SRW64_RT64_RATE_HINT");
+            return !(hint && std::string(hint) == "0");
+        }();
+        if (rate_hint && srw64::sched_rate::factor() == 2) app->state->setRefreshRate(uint16_t(srw64::game_speed::step_rate()));
 #ifdef __ANDROID__
         const auto t0 = Timing::clock::now();
         if (timing.last != Timing::clock::time_point{}) {

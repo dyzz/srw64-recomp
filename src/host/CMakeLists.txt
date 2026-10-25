@@ -81,11 +81,14 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
 execute_process(COMMAND "${Python3_EXECUTABLE}" "${SRW64_ROOT}/tools/recomp/toolchain/prepare_runtime_lifecycle.py"
     COMMAND_ERROR_IS_FATAL ANY)
 get_target_property(SRW64_TIMER_SOURCES ultramodern SOURCES)
-if(NINTENDO_SWITCH)
-    list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(error_handling|events)\\.cpp$")
-    list(APPEND SRW64_TIMER_SOURCES "${SRW64_SWITCH_RUNTIME}/error_handling.cpp" "${SRW64_SWITCH_RUNTIME}/events.cpp")
+list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling|events)\\.cpp$")
+if(NINTENDO_SWITCH)   # events.cpp: the lifecycle's with the Switch's changes over it (prepare_switch_runtime.py)
+    list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/error_handling\\.cpp$")
+    list(APPEND SRW64_TIMER_SOURCES "${SRW64_SWITCH_RUNTIME}/error_handling.cpp")
+    set(SRW64_EVENTS "${SRW64_SWITCH_RUNTIME}/events.cpp")
+else()
+    set(SRW64_EVENTS "${SRW64_BUILD}/runtime-lifecycle/events.cpp")
 endif()
-list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling)\\.cpp$")
 if(VITA)   # the lifecycle file with the stall report's counts (prepare_vita_runtime.py)
     set(SRW64_MESGQUEUE "${SRW64_VITA_RUNTIME}/mesgqueue.cpp")
     target_include_directories(ultramodern PRIVATE "${SRW64_BUILD}/runtime-lifecycle")
@@ -96,7 +99,8 @@ set_property(TARGET ultramodern PROPERTY SOURCES ${SRW64_TIMER_SOURCES}
     "${SRW64_BUILD}/runtime-lifecycle/timer.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/threads.cpp"
     "${SRW64_MESGQUEUE}"
-    "${SRW64_BUILD}/runtime-lifecycle/scheduling.cpp")
+    "${SRW64_BUILD}/runtime-lifecycle/scheduling.cpp"
+    "${SRW64_EVENTS}")
 if(NOT NINTENDO_SWITCH)   # the Switch's librecomp names its own recomp.cpp
     get_target_property(SRW64_RUNTIME_SOURCES librecomp SOURCES)
     list(FILTER SRW64_RUNTIME_SOURCES EXCLUDE REGEX "/recomp\\.cpp$")

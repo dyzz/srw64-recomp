@@ -4,6 +4,7 @@
 #include "debug_protocol.hpp"
 #include <SDL.h>
 #include <algorithm>
+#include <chrono>
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
@@ -22,6 +23,8 @@ bool silent{};
 uint32_t rate;
 uint64_t queued_samples{}, max_queued_frames{}, captured_samples{};
 uint64_t queue_calls{}, latency_recoveries{}, max_feedback_frames{};
+Srw64AudioStats stats;
+std::chrono::steady_clock::time_point last_queue{};
 std::ofstream capture;
 // Optional VI window for the bounded capture; see Srw64AudioCaptureWindow.
 Srw64AudioCaptureWindow capture_window;
@@ -81,6 +84,16 @@ void srw64_queue_audio(int16_t* samples, size_t count) {
         std::abort();
     }
     const size_t old_frames = SDL_GetQueuedAudioSize(device) / 4;
+    {
+        ++stats.queues;
+        stats.queued_before_frames += old_frames;
+        const auto now = std::chrono::steady_clock::now();
+        if (last_queue != std::chrono::steady_clock::time_point{}) {
+            const double ms = std::chrono::duration<double, std::milli>(now - last_queue).count();
+            ++stats.gaps[ms < 12 ? 0 : ms < 15.5 ? 1 : ms < 18 ? 2 : ms < 21.5 ? 3 : 4];
+        }
+        last_queue = now;
+    }
     if (old_frames > srw64_audio_queue_limit(rate)) {
         // Recover after a suspended/stalled device instead of retaining seconds
         // of stale audio. Record every recovery; ordinary playback should use none.
@@ -151,9 +164,21 @@ size_t srw64_audio_remaining() {
     if (!enabled) return 0;
     std::lock_guard lock(audio_mutex);
     if (!device) return 0;
-    const size_t remaining = srw64_audio_feedback_frames(SDL_GetQueuedAudioSize(device) / 4, rate);
+    const size_t queued = SDL_GetQueuedAudioSize(device) / 4;
+    const size_t remaining = srw64_audio_feedback_frames(queued, rate);
     max_feedback_frames = std::max(max_feedback_frames, uint64_t(remaining));
+    ++stats.asks;
+    stats.asked_queue_frames += queued;
+    stats.told_frames += remaining;
+    if (remaining == rate / 60) ++stats.told_capped;
     return remaining;
+}
+
+Srw64AudioStats srw64_audio_stats() {
+    std::lock_guard lock(audio_mutex);
+    auto now = stats;
+    now.rate = rate;
+    return now;
 }
 
 void srw64_close_audio() {

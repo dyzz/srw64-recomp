@@ -3,6 +3,7 @@
 #include "debug_transport.hpp"
 #include "debug_ui.hpp"
 #include "graphics.hpp"
+#include "audio.hpp"
 #include "native_dialogue.hpp"
 #include "native_intro.hpp"
 #include "native_name_entry.hpp"
@@ -180,8 +181,9 @@ json status(const json& params) {
         {"image_mode",{{"current",presentation::image_mode.current()},{"requested",presentation::image_mode.requested()},
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"aspect",settings::wide_picture()?"auto":"4:3"},{"picture_width",frame::picture_width.load()},
-        {"frame_lists",frame_rate::lists.load()},{"presents",frame_rate::presents.load()},
-        {"game_speed",{{"double",game_speed::on.load()},{"running",game_speed::running.load()}}},
+        {"frame_lists",frame_rate::lists.load()},{"presents",frame_rate::presents.load()},{"rt64_original_rate",frame_rate::original_rate.load()},{"lists_without_rate",frame_rate::lists_without_rate.load()},{"audio_stats",[]{const auto a=srw64_audio_stats();return json{{"rate",a.rate},{"queues",a.queues},{"queued_before_frames",a.queued_before_frames},{"asks",a.asks},{"asked_queue_frames",a.asked_queue_frames},{"told_frames",a.told_frames},{"told_capped",a.told_capped},{"gaps",std::vector<uint64_t>(std::begin(a.gaps),std::end(a.gaps))}};}()},{"present_steps",{frame_rate::present_steps[0].load(),frame_rate::present_steps[1].load(),frame_rate::present_steps[2].load(),frame_rate::present_steps[3].load()}},{"present_gaps",{frame_rate::present_gaps[0].load(),frame_rate::present_gaps[1].load(),frame_rate::present_gaps[2].load(),frame_rate::present_gaps[3].load(),frame_rate::present_gaps[4].load()}},
+        {"game_speed",{{"double",settings::game_speed_double()},{"level",game_speed::level.load()},{"top",game_speed::top_level()},{"running",game_speed::running.load()}}},
+        {"sched",{{"latch_slow_spells",sched_rate::latch_slow_spells.load()},{"logic_ticks",std::vector<uint64_t>(std::begin(sched_rate::logic_ticks),std::end(sched_rate::logic_ticks))},{"picture_ticks",std::vector<uint64_t>(std::begin(sched_rate::picture_ticks),std::end(sched_rate::picture_ticks))},{"factor",sched_rate::factor()},{"retraces",sched_rate::retraces.load()},{"audio_skipped",sched_rate::audio_skipped.load()},{"interval",srw64_rdram?guest::read(srw64_rdram,0x8010F0C8,4):0},{"rendered",srw64_rdram?guest::read(srw64_rdram,0x8010E09C,4):0},{"sync_mode",srw64_rdram?guest::read(srw64_rdram,0x8010F5DC,1):0}}},
         {"wide_map",{{"extra",wide_map::extra()},{"shown",wide_map::map_shown()},{"placed",wide_map::placed_draws()},{"map_width",wide_map::map_width_seen()},{"scroll_x",wide_map::scroll_seen()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
         {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
@@ -290,8 +292,8 @@ json settings(const json& params) {
     if(params.contains("game_speed")) {
         const auto& value=params["game_speed"];
         const int speed=value.is_number()?value.get<int>():value.is_string()?std::atoi(value.get<std::string>().c_str()):0;
-        if(speed!=1 && speed!=2)throw RpcError(InvalidParams,"game_speed must be 1 or 2");
-        on_window([=]{settings::set_game_speed_double(speed==2);return json(nullptr);});
+        if(speed<1 || speed>int(settings::game_speed_top()))throw RpcError(InvalidParams,"game_speed must be 1 to "+std::to_string(settings::game_speed_top()));
+        on_window([=]{settings::set_game_speed_level(unsigned(speed));return json(nullptr);});
         done["game_speed"]=speed;
     }
     if(params.contains("ui_size")) {

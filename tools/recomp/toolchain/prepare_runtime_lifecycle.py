@@ -125,12 +125,35 @@ def adapt_timer(source: str) -> str:
          "        timer_context.action_queue.enqueue(StopTimerAction{});\n"
          "        timer_context.thread.join();\n"
          "    }\n}\n\nuint32_t ultramodern::get_speed_multiplier() {", 1),
+        # The 120 Hz scheduler (docs/design/120hz-scheduler.md): only the VI thread reads the
+        # multiplier; the timer counts above keep the constexpr rate.
+        ("    return speed_multiplier;",
+         "    static const uint32_t vi_factor = [] {\n"
+         "        const char* rate = std::getenv(\"SRW64_VI_RATE\");\n"
+         "        return rate && std::string_view(rate) == \"60\" ? 1u : 2u;\n"
+         "    }();\n"
+         "    return speed_multiplier * vi_factor;", 1),
+        ("#include <thread>\n", "#include <cstdlib>\n#include <string_view>\n#include <thread>\n", 1),
     ]
     for old, new, count in replacements:
         if source.count(old) != count:
             raise RuntimeError("Pinned timer lifecycle source differs")
         source = source.replace(old, new)
     return source
+
+
+def adapt_events(source: str) -> str:
+    """The 120 Hz scheduler (src/host/sched_rate.hpp latch()): a new picture latches
+    on the VI ticks the host allows (in 2x every other one), so a frame drawn every second
+    tick shows every second tick, not after one or three as the GPU's finish falls."""
+    source = '#include <cstdint>\nextern "C" bool srw64_vi_latch(uint64_t tick);\n' + source
+    return replace_once(source,
+        "        // Update VI registers and swap VI modes.\n        events_context.vi.update_vi();\n",
+        "        // Update VI registers and swap VI modes, on the ticks the host allows.\n"
+        "        static uint64_t srw64_latch_tick = 0;\n"
+        "        if (!ultramodern::is_game_started() || srw64_vi_latch(srw64_latch_tick++)) {\n"
+        "            events_context.vi.update_vi();\n"
+        "        }\n")
 
 
 def main() -> None:
@@ -152,7 +175,7 @@ def main() -> None:
     records = []
     for relative in ("ultramodern/src/timer.cpp", "ultramodern/src/threads.cpp",
                      "ultramodern/src/mesgqueue.cpp", "ultramodern/src/scheduling.cpp",
-                     "librecomp/src/recomp.cpp"):
+                     "ultramodern/src/events.cpp", "librecomp/src/recomp.cpp"):
         source = ((checkout / relative).read_text() if exported
                   else subprocess.check_output(["git", "show", f"HEAD:{relative}"], cwd=checkout, text=True))
         if (checkout / relative).read_text() != source:
@@ -163,6 +186,8 @@ def main() -> None:
             adapted = adapt_threads(source)
         elif relative.endswith("mesgqueue.cpp"):
             adapted = adapt_messages(source)
+        elif relative.endswith("events.cpp"):
+            adapted = adapt_events(source)
         elif relative.endswith("scheduling.cpp"):
             adapted = '#include "guest_shutdown.hpp"\n' + replace_once(source,
                 'void ultramodern::check_running_queue(RDRAM_ARG1) {',

@@ -61,7 +61,7 @@ UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale", "menu_game", "m
 UI_KEYS |= {"settings_fps", "settings_fps_off", "settings_fps_on", "settings_fps_note"}
 UI_KEYS |= {"settings_refresh", "settings_refresh_display", "settings_refresh_original", "settings_refresh_60", "settings_refresh_note"}
 # 2x speed (frontend.cpp toggle_speed, game_speed.hpp).
-UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_note", "speed_notice_on", "speed_notice_off", "touch_speed"}
+UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_3x", "settings_speed_4x", "settings_speed_note", "speed_notice_1x", "speed_notice_2x", "speed_notice_3x", "speed_notice_4x", "touch_speed"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}
@@ -119,7 +119,7 @@ UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_pr
             "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}
 # The Controls page's remapping (frontend.cpp controls_page).
 UI_KEYS |= {"controls_cancel", "controls_capture", "controls_capture_note", "controls_controller", "controls_detected", "controls_fixed", "controls_fixed_list", "controls_keyboard", "controls_keyboard_note", "controls_list_note", "controls_no_pad", "controls_reserved", "controls_reset"}
-UI_KEYS |= {"settings_touch_opacity", "settings_touch_opacity_note", "settings_save_export_note_android", "settings_save_export_choose",
+UI_KEYS |= {"settings_touch_opacity", "settings_touch_opacity_note", "settings_touch_opacity_hidden", "settings_save_export_note_android", "settings_save_export_choose",
             "settings_save_export_saved", "settings_save_export_cancelled", "settings_save_export_failed"}
 # The Saves page's player folder on Android (frontend.cpp saves_page, PlayerFolder.java).
 UI_KEYS |= {"settings_save_folder", "settings_save_folder_note", "settings_save_folder_choose", "settings_save_folder_change",
@@ -150,7 +150,6 @@ UI_KEYS |= {
     "battle_spirit_back",
     "battle_spirit_hint", "battle_damage_if_hit", "battle_first", "battle_second",
     "battle_first_player", "battle_first_enemy", "battle_phase_enemy", "battle_phase_player", "battle_barrier",
-    "battle_spirits_none",
     "battle_ammo", "battle_animation", "battle_attacker", "battle_back",
     "battle_change_weapon", "battle_confirm", "battle_cost", "battle_counter",
     "battle_crit_mod", "battle_critical", "battle_critical_note", "battle_damage",

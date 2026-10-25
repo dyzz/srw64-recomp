@@ -24,6 +24,9 @@ samples.json holds them); `restyle` redraws the other surfaces from run-5 toward
 the same style. `pack --extra-run` joins the runs, and the pack-v6 tiles leave the pack.
 The user preferred image_gen over both: `imagegen` composes the Codex image_gen kit
 (assets/hd-ai/imagegen-kit), a whole picture and 3:2 windows per surface.
+`repeat-kit` / `repeat`: the source repeats a few tiles where the composed surface
+differs, so `pack` keeps them original; Codex draws each one seamless and `repeat`
+colour-matches it to its surroundings and adds it to the pack.
 """
 from __future__ import annotations
 
@@ -70,6 +73,7 @@ SURFACE_INDEX = {13: 5602, 17: 5603, 18: 5604, 19: 5605, 20: 5606}  # location t
 SURFACE_WRAP = {17: 256}
 ATLAS_OF = {5602: 'earth', 5603: 'earth', 5604: 'europe', 5605: 'central-asia', 5606: 'coast'}
 SCALE = 8                                 # HD px per source texel; 512 px tiles
+MIRROR_BAND = 32                          # HD px of mirrored continuation against a repeat tile's edge (feather_neighbours)
 WINDOW, OVERLAP = 256, 48                 # source px
 MODEL = 'qwen-image-3.0-pro'
 UNIT = 611 / 64                           # world units per texel
@@ -897,6 +901,238 @@ def pack(args: argparse.Namespace) -> None:
         print('bound', path.relative_to(ROOT), len(rows), 'textures')
 
 
+def repeat_placements(table: ResourceTable, rid: int, key: str) -> tuple[bytes, list[dict]]:
+    xxh = hasher()
+    d = table.extract(rid)[0]
+    _, tiles = assemble(d)
+    return d, [t for t in tiles if map_hash(d[t['tex']:t['tex'] + 2048], d[t['pal']:t['pal'] + 32], xxh) == key]
+
+
+def repeat_kit(args: argparse.Namespace) -> None:
+    """Kit for Codex image_gen: the tiles `pack` keeps original because the source repeats
+    them where the composed surface differs (its `conflicts_kept_original`), one seamless
+    tile each. Per tile the source (16x), the source 3x3, and the composed surface around
+    each group of placements with the placements outlined."""
+    table = ResourceTable((ROOT / 'rom.z64').read_bytes())
+    out = args.output
+    (out / 'outputs').mkdir(parents=True, exist_ok=True)
+    conflicts = json.loads((args.base_pack / 'pack-report.json').read_text())['conflicts_kept_original']
+    names = {r['resource']: n for n, r in json.loads((args.base / 'samples.json').read_text())['surfaces'].items()}
+    manifest = {}
+    for key, places in conflicts.items():
+        rid = places[0][0]
+        d, hits = repeat_placements(table, rid, key)
+        t = hits[0]
+        tile = indexed(d[t['tex']:t['tex'] + 2048], (64, 64), rgba16(d[t['pal']:t['pal'] + 32]), 4).convert('RGB')
+        if t['flip'][0]: tile = tile.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+        if t['flip'][1]: tile = tile.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+        name = f'{names[rid]}-{key[:6]}'
+        tile.resize((1024, 1024), Image.Resampling.NEAREST).save(out / f'{name}-source.png')
+        grid = Image.new('RGB', (192, 192))
+        for i in range(9): grid.paste(tile, (i % 3 * 64, i // 3 * 64))
+        grid.resize((1536, 1536), Image.Resampling.NEAREST).save(out / f'{name}-source-tiled.png')
+        hd = Image.open(args.base / 'compose' / f'{names[rid]}.png').convert('RGB')
+        groups: list[list[dict]] = []
+        for h in hits:
+            group = next((g for g in groups if any(abs(h['xy'][0] - o['xy'][0]) <= 64 and abs(h['xy'][1] - o['xy'][1]) <= 64 for o in g)), None)
+            group.append(h) if group else groups.append([h])
+        contexts = []
+        for n, group in enumerate(groups):
+            box = (max(0, min(h['xy'][0] for h in group) - 64), max(0, min(h['xy'][1] for h in group) - 64),
+                   min(hd.width // SCALE, max(h['xy'][0] for h in group) + 128), min(hd.height // SCALE, max(h['xy'][1] for h in group) + 128))
+            ctx = hd.crop(tuple(v * SCALE for v in box))
+            s = 1600 / max(ctx.size)
+            ctx = ctx.resize((round(ctx.width * s), round(ctx.height * s)), Image.Resampling.LANCZOS)
+            draw = ImageDraw.Draw(ctx)
+            for h in group:
+                x, y = (h['xy'][0] - box[0]) * SCALE * s, (h['xy'][1] - box[1]) * SCALE * s
+                draw.rectangle([x, y, x + 64 * SCALE * s - 1, y + 64 * SCALE * s - 1], outline=(255, 0, 0), width=4)
+            file = f'{name}-context{"-" + str(n + 1) if n else ""}.png'
+            ctx.save(out / file)
+            contexts.append(file)
+        manifest[name] = {'resource': rid, 'rt64': key, 'placements': [h['xy'] for h in hits], 'flip': t['flip'],
+                          'contexts': contexts, 'output': f'outputs/{name}-out.png'}
+    (out / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+    print({n: len(m['placements']) for n, m in manifest.items()})
+
+
+def match_colour(tile: Image.Image, reference: Image.Image) -> Image.Image:
+    """In YCbCr: luma's median moved to the reference's and its interquartile spread scaled
+    toward the reference's (0.7-1.15); each chroma axis scaled about grey by the ratio of
+    the medians' distances from grey (0.5-1.5), so that dark rocks and trees keep their hue
+    instead of taking an offset. image_gen draws a lone tile brighter and more saturated
+    than the composed surface around it. Medians, so that mountains in the reference band
+    don't darken a plain."""
+    def quartiles(histogram: list[int]) -> list[int]:
+        total, run, found = sum(histogram), 0, []
+        for value, count in enumerate(histogram):
+            run += count
+            while len(found) < 3 and run >= total * (len(found) + 1) / 4:
+                found.append(value)
+        return found
+    ref = reference.convert('RGBA')
+    mask = ref.getchannel('A').point(lambda v: 255 if v > 200 else 0)
+    bands = []
+    for c, (band, ref_band) in enumerate(zip(tile.convert('YCbCr').split(), ref.convert('RGB').convert('YCbCr').split())):
+        tq, rq = quartiles(band.histogram()), quartiles(ref_band.histogram(mask))
+        if c == 0:
+            k = min(1.15, max(0.7, (rq[2] - rq[0]) / max(1, tq[2] - tq[0])))
+            curve = lambda v, tq=tq, rq=rq, k=k: (v - tq[1]) * k + rq[1]
+        elif abs(tq[1] - 128) < 4:
+            curve = lambda v, tq=tq, rq=rq: v + rq[1] - tq[1]
+        else:
+            k = min(1.5, max(0.5, (rq[1] - 128) / (tq[1] - 128)))
+            curve = lambda v, k=k: 128 + (v - 128) * k
+        bands.append(band.point(lambda v, curve=curve: max(0, min(255, round(curve(v))))))
+    return Image.merge('YCbCr', bands).convert('RGB')
+
+
+def feather_neighbours(table: ResourceTable, job: dict, hd: Image.Image, tile: Image.Image, width: int) -> tuple[dict, list, Image.Image]:
+    """The tiles around a repeat tile's placements, their edges faded into the drawing's
+    continuation so that no square edge shows: within `width` HD px of a placement the
+    composed surface is blended toward the drawing carried on past that edge (a raised
+    cosine, 1 at the edge). Each placement is worked at the size the game shows it, its
+    `tile_span` (rows are 62-63 texels apart, so the drawing is squeezed there and the
+    tiles below and above are cut from the same squeezed rows). Only tiles whose key is
+    used once are rewritten; a shared key would carry the fade elsewhere. Returns {key:
+    texture in pack orientation}, the keys left alone and the surface with the fade."""
+    d = table.extract(job['resource'])[0]
+    _, tiles = assemble(d)
+    xxh = hasher()
+    keys = [map_hash(d[t['tex']:t['tex'] + 2048], d[t['pal']:t['pal'] + 32], xxh) for t in tiles]
+    uses = Counter(keys)
+    atlas = (hd.width // SCALE, hd.height // SCALE)
+    band = min(MIRROR_BAND, width)
+
+    def outside(i: int, inner: int) -> int:
+        """How far index i of an axis padded by `width` lies outside the inner run (0 inside)."""
+        return width - i if i < width else max(0, i - width - inner + 1)
+
+    def axis(inner: int, value) -> Image.Image:
+        line = Image.new('L', (inner + 2 * width, 1))
+        line.putdata([value(outside(i, inner)) for i in range(inner + 2 * width)])
+        return line
+
+    def grid(row: Image.Image, column: Image.Image, combine) -> Image.Image:
+        size = (row.width, column.width)
+        return combine(row.resize(size, Image.Resampling.NEAREST),
+                       column.transpose(Image.Transpose.ROTATE_90).resize(size, Image.Resampling.NEAREST))
+
+    fade = lambda o: 255 if o == 0 else round(255 * 0.5 * (1 + math.cos(math.pi * o / width)))
+    # Past each edge the drawing continues as itself, except in a narrow band against the
+    # edge where its mirror image takes over: the drawing's opposite edges need not meet (the
+    # desert's top and bottom rows differ three times as much as neighbouring rows), its
+    # mirror image does, and a wider mirror shows as a kaleidoscope.
+    mirror_near = lambda o: 0 if o == 0 else max(0, round(255 * (1 - o / band)))
+
+    def continuation(drawing: Image.Image) -> Image.Image:
+        w, h = drawing.size
+        pair = []
+        for mirror in (True, False):
+            out = Image.new('RGBA', (3 * w, 3 * h))
+            for i in range(9):
+                copy = drawing
+                if mirror and i % 3 != 1: copy = copy.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+                if mirror and i // 3 != 1: copy = copy.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+                out.paste(copy, (i % 3 * w, i // 3 * h))
+            pair.append(out.crop((w - width, h - width, 2 * w + width, 2 * h + width)))
+        near = grid(axis(w, mirror_near), axis(h, mirror_near), ImageChops.lighter)
+        return Image.composite(pair[0], pair[1], near)
+
+    placed = []
+    for x, y in job['placements']:
+        t = next(t for t in tiles if tuple(t['xy']) == (x, y))
+        x0, y0, x1, y1 = (v * SCALE for v in tile_span(tiles, t, atlas))
+        drawing = tile.convert('RGBA').resize((x1 - x0, y1 - y0), Image.Resampling.LANCZOS)
+        placed.append(((x0, y0, x1, y1), drawing))
+    canvas = hd.copy()
+    for (x0, y0, x1, y1), drawing in placed:
+        mask = grid(axis(x1 - x0, fade), axis(y1 - y0, fade), ImageChops.multiply)
+        box = (x0 - width, y0 - width, x1 + width, y1 + width)
+        canvas.paste(Image.composite(continuation(drawing), canvas.crop(box), mask), box[:2])
+    for box, drawing in placed:
+        canvas.paste(drawing, box[:2])  # the game shows the drawing there
+    zones = [(x0 - width, y0 - width, x1 + width, y1 + width) for (x0, y0, x1, y1), _ in placed]
+    out, shared = {}, []
+    for t, key in zip(tiles, keys):
+        if key == job['rt64'] or not any(d[t['tex']:t['tex'] + 2048]):
+            continue
+        tx, ty, nx, ny = (v * SCALE for v in tile_span(tiles, t, atlas))
+        if not any(tx < z[2] and z[0] < nx and ty < z[3] and z[1] < ny for z in zones):
+            continue
+        if uses[key] > 1:
+            shared.append(key)
+            continue
+        image = cut_tile(canvas, tiles, t)
+        if t['flip'][0]: image = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+        if t['flip'][1]: image = image.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+        out[key] = image
+    return out, shared, canvas
+
+
+def repeat(args: argparse.Namespace) -> None:
+    """The kit's drawn tiles into a copy of the pack: colour-matched to the composed surface
+    around their placements (outside them), cut to 512, flipped to texture orientation."""
+    kit, target = args.kit, args.pack_output
+    manifest = json.loads((kit / 'manifest.json').read_text())
+    table = ResourceTable((ROOT / 'rom.z64').read_bytes())
+    names = {r['resource']: n for n, r in json.loads((args.base / 'samples.json').read_text())['surfaces'].items()}
+    shutil.copytree(args.base_pack, target)
+    database = json.loads((target / 'rt64.json').read_text())
+    report = json.loads((target / 'pack-report.json').read_text())
+    feathered: dict[str, Image.Image] = {}
+    for name, job in manifest.items():
+        hd = Image.open(args.base / 'compose' / f'{names[job["resource"]]}.png').convert('RGBA')
+        ring = Image.new('RGBA', hd.size)
+        for x, y in job['placements']:
+            box = tuple(v * SCALE for v in (max(0, x - 16), max(0, y - 16), x + 80, y + 80))
+            ring.paste(hd.crop(box), box[:2])
+        for x, y in job['placements']:
+            ring.paste((0, 0, 0, 0), tuple(v * SCALE for v in (x, y, x + 64, y + 64)))
+        tile = Image.open(kit / job['output']).convert('RGB').resize((64 * SCALE, 64 * SCALE), Image.Resampling.LANCZOS)
+        tile = match_colour(tile, ring.crop(ring.getbbox()))
+        tile.save(kit / 'outputs' / f'{name}-matched.png')
+        if args.feather:
+            faded, shared, faded_surface = feather_neighbours(table, job, hd, tile, args.feather)
+            for key, image in faded.items():
+                image.convert('RGBA').save(target / f'map-{key}.png')
+            feathered.update(faded)
+            report.setdefault('feathered', {})[job['rt64']] = {'width': args.feather, 'tiles': sorted(faded), 'shared_left': shared}
+        if job['flip'][0]: tile = tile.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+        if job['flip'][1]: tile = tile.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+        file = f'map-{job["rt64"]}.png'
+        tile.convert('RGBA').save(target / file)
+        database['textures'] = [e for e in database['textures'] if e['hashes']['rt64'] != job['rt64']] + [{'hashes': {'rt64': job['rt64']}, 'path': file}]
+        report['conflicts_kept_original'].pop(job['rt64'], None)
+        report.setdefault('repeats_drawn', {})[job['rt64']] = str((kit / job['output']).resolve().relative_to(ROOT))
+        # The placements with the tile in place, to look at.
+        hd_check = faded_surface if args.feather else hd.copy()
+        for x, y in ([] if args.feather else job['placements']):
+            hd_check.paste(tile.transpose(Image.Transpose.FLIP_TOP_BOTTOM) if job['flip'][1] else tile, (x * SCALE, y * SCALE))
+        for n, (x, y) in enumerate(job['placements'][:1] + [p for p in job['placements'] if abs(p[1] - job['placements'][0][1]) > 64][:1]):
+            box = (max(0, x - 96) * SCALE, max(0, y - 96) * SCALE, min(hd.width, (x + 160) * SCALE), min(hd.height, (y + 160) * SCALE))
+            hd_check.crop(box).convert('RGB').resize(((box[2] - box[0]) // 2, (box[3] - box[1]) // 2), Image.Resampling.LANCZOS) \
+                .save(kit / 'outputs' / f'{name}-placed-{n + 1}.png')
+    database['textures'].sort(key=lambda e: e['hashes']['rt64'])
+    (target / 'rt64.json').write_text(json.dumps(database, indent=2) + '\n')
+    (target / 'pack-report.json').write_text(json.dumps(report, indent=2) + '\n')
+    print({'drawn': list(manifest), 'conflicts_left': len(report['conflicts_kept_original'])})
+    if args.bind:
+        path = ROOT / 'content/art/stage1-hd.json'
+        art = json.loads(path.read_text())
+        hashes = sorted(set(art['worldmap']['hashes']) | {job['rt64'] for job in manifest.values()})
+        art['worldmap']['hashes'] = hashes
+        for r in art['textures']:
+            if r['hash'] in feathered:
+                r['sha256'] = sha(target / f'map-{r["hash"]}.png')
+        rows = [r for r in art['textures'] if not (r['kind'] == 'worldmap' and r['hash'] in {job['rt64'] for job in manifest.values()})]
+        rows += [{'hash': job['rt64'], 'kind': 'worldmap', 'sha256': sha(target / f'map-{job["rt64"]}.png')} for job in manifest.values()]
+        art['textures'] = rows
+        art['source'] = {'path': str(target.resolve().relative_to(ROOT)), 'manifest_sha256': sha(target / 'rt64.json')}
+        path.write_text(json.dumps(art, ensure_ascii=False, indent=2) + '\n')
+        print('bound', path.relative_to(ROOT), len(rows), 'textures')
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     commands = parser.add_subparsers(dest='command', required=True)
@@ -926,9 +1162,20 @@ def main() -> None:
             sub.add_argument('--pack-output', type=Path, required=True)
             sub.add_argument('--extra-run', type=Path, action='append', help='another run folder whose surfaces join the pack')
             sub.add_argument('--bind', action='store_true')
+    sub = commands.add_parser('repeat-kit')
+    sub.add_argument('--output', type=Path, required=True)
+    sub.add_argument('--base', type=Path, required=True, help='composed run the pack was cut from')
+    sub.add_argument('--base-pack', type=Path, required=True, help='pack whose pack-report.json lists the kept tiles')
+    sub = commands.add_parser('repeat')
+    sub.add_argument('--kit', type=Path, required=True)
+    sub.add_argument('--base', type=Path, required=True)
+    sub.add_argument('--base-pack', type=Path, required=True)
+    sub.add_argument('--pack-output', type=Path, required=True)
+    sub.add_argument('--feather', type=int, default=0, help='HD px over which the tiles around each placement fade into the drawing (0: off)')
+    sub.add_argument('--bind', action='store_true')
     args = parser.parse_args()
     {'prepare': prepare, 'restyle': restyle, 'run': run, 'compose': compose, 'imagegen': imagegen,
-     'closeup-kit': closeup_kit, 'closeup': closeup, 'pack': pack}[args.command](args)
+     'closeup-kit': closeup_kit, 'closeup': closeup, 'pack': pack, 'repeat-kit': repeat_kit, 'repeat': repeat}[args.command](args)
 
 
 if __name__ == '__main__':

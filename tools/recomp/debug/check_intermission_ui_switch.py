@@ -82,11 +82,12 @@ keys('x', pause=3)
 p = pages()
 check('original-menu', not p['menu'] and not p['upgrade'], p)
 shot('ui-switch-original-menu.png')
-# リンク (item 7) on the original menu opens the original link screen, not the native page.
+# リンク (item 7) on the original menu still opens the series picker: the original has no
+# screen for it (the cartridge chose), so the picker is not part of the switch.
 keys('down', 'down', 'down', 'down', 'down', 'down', pause=.3)
 keys('z', pause=4)
 st = status()
-check('original-link', not st['link_page'].get('visible') and not st['intermission_page'].get('visible'), {'link': st['link_page'], 'vi': st.get('vi')})
+check('original-link', st['link_page'].get('visible') and not st['intermission_page'].get('visible'), {'link': st['link_page'], 'vi': st.get('vi')})
 shot('ui-switch-original-link.png')
 keys('x', pause=3)
 keys('up', 'up', 'up', 'up', 'up', 'up', pause=.3)

@@ -3,7 +3,6 @@
 #include "run_files.hpp"
 #include "link_battler.hpp"
 #include "game_hooks.hpp"
-#include "presentation_settings.hpp"
 #include "campaign.hpp"
 #include "notices.hpp"
 #include "funcs.h"
@@ -44,8 +43,8 @@ void record(const char* kind,const uint8_t* ram,nlohmann::json extra=nlohmann::j
 }
 
 bool begin(uint8_t* ram) {
-    // 場間画面 set to the original: the original リンク screen with an empty block.
-    if(!settings::native_intermission_ui())return false;
+    // Shown whatever the 場間画面 setting: the original has no screen for this (the
+    // cartridge chose), so without the page the original リンク screen has nothing.
     std::lock_guard lock(mutex);
     const auto status=link::status(ram);
     current={++serial,true,status.joined,status.scheduled,portraits,portraits_hd,units,units_hd};
