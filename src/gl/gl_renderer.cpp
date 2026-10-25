@@ -377,6 +377,8 @@ void Renderer::upload(const Frame::Texture& t) {
     texture.wraps = t.wrap_s || t.wrap_t;
     texture.wrap_s = t.wrap_s;
     texture.wrap_t = t.wrap_t;
+    texture.linear = t.linear;
+    texture.replacement = t.replacement;
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
     const bool placed = t.width <= kAtlasLargest && t.height <= kAtlasLargest && place(texture, t.width, t.height, t.linear);
     if (placed && kBatchPageUploads) {
@@ -469,6 +471,17 @@ void Renderer::draw(const Frame& frame) {
             } else if (auto found = textures.find(s.texture); found != textures.end()) {
                 Texture& t = found->second;
                 bound = t.page >= 0 ? pages[t.page].id : t.id;
+                // The HD picture over the same coordinates, a texture of its own (RT64's
+                // replacement: the tile's texels scaled to the picture's).
+                uint16_t hd_width = 0, hd_height = 0;
+                if (const GLuint hd = t.replacement && replacement ? replacement(t.replacement, t.wrap_s, t.wrap_t, t.linear, hd_width, hd_height) : 0) {
+                    bound = hd;
+                    if (!t.wraps) {
+                        bounds[0] = 0.5f / hd_width; bounds[1] = 0.5f / hd_height;
+                        bounds[2] = 1 - 0.5f / hd_width; bounds[3] = 1 - 0.5f / hd_height;
+                    }
+                    goto placed;
+                }
                 // A wrapping texture in a page: a draw within one period of it (a tile drawn
                 // from its second, mirrored copy, say) takes the period back to [0, 1]; one
                 // that crosses a period's edge repeats, from the texture of its own.
@@ -502,6 +515,7 @@ void Renderer::draw(const Frame& frame) {
                 }
             } else bound = black;
         }
+    placed:
         for (uint32_t i = command.first; i < command.first + command.count; ++i) {
             const Vertex& in = frame.vertices[i];
             GpuVertex& out = staging[i];

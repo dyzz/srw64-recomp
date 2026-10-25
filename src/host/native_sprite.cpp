@@ -1,7 +1,9 @@
 #define HLSL_CPU
 #include "native_sprite.hpp"
+#include "app/runtime.hpp"
 #include "run_files.hpp"
 #include "native_quads.hpp"
+#include "hd_texture.hpp"
 #include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/rgba_file.hpp"
@@ -64,6 +66,7 @@ struct Asset {
     std::unique_ptr<gpu::Texture> texture;
     std::unique_ptr<plume::RenderDescriptorSet> set;
     std::shared_ptr<const std::vector<uint8_t>> gl_pixels;   // the GL renderer's (gl_quads)
+    uint32_t gl_format = 0, gl_levels = 1;                     // a prepared copy's (hd_texture.hpp)
     Clock::time_point used{};
 };
 struct Image {
@@ -250,8 +253,14 @@ void work() {
         uint32_t w = 0, h = 0;
         float units[2]{}, origin[2]{};
         bool ok = false;
+        hd_texture::Compressed prepared;
         try {
-            if (render) {
+            if (!render && !recolor && hd_texture::load(file, prepared)) {
+                // The Switch's copy, already premultiplied with its mips (hd_texture.hpp); a
+                // recoloured frame still starts from the picture.
+                w = prepared.width; h = prepared.height;
+                ok = true;
+            } else if (render) {
                 auto image = render();
                 w = image.width; h = image.height; units[0] = image.units[0]; units[1] = image.units[1];
                 origin[0] = image.origin[0]; origin[1] = image.origin[1];
@@ -273,11 +282,32 @@ void work() {
         // The mips before the lock: the game thread takes it for every sprite and text item,
         // RT64's workload thread for every native draw, and a full HD frame's mips take milliseconds.
         std::vector<std::vector<uint8_t>> levels;
-        if (ok) { levels.push_back(std::move(pixels)); add_mips(levels, w, h); }
+        if (ok && !prepared.data) { levels.push_back(std::move(pixels)); add_mips(levels, w, h); }
         std::lock_guard lock(asset_mutex);
         Asset& asset = *assets[size_t(index)];
         if (!ok) { asset.state = Asset::failed; ++failures; continue; }
         asset.width = w; asset.height = h;
+        asset.gl_pixels = prepared.data; asset.gl_format = prepared.format; asset.gl_levels = prepared.data ? prepared.levels : 1;
+#ifdef SRW64_GL_ONLY
+        // The GL renderer has no upload step to release at: pictures idle long enough beyond
+        // kResident go here, and are made again when next drawn.
+        const auto now = Clock::now();
+        // Text made here (a glyph, a label) is small and slow to make again on the Switch:
+        // it stays, or a battle's digits went blank for a few frames each time they returned.
+        constexpr size_t kSmallText = 256 << 10;
+        const auto evictable = [](const Asset& a) {
+            if (!a.gl_pixels && a.levels.empty()) return false;
+            return !a.render || (a.gl_pixels ? a.gl_pixels->size() : a.levels.front().size()) > kSmallText;
+        };
+        size_t resident = 0;
+        for (const auto& other : assets) resident += evictable(*other);
+        if (resident >= kResident)
+            for (auto& other : assets)
+                if (other->state == Asset::ready && evictable(*other) && now - other->used > kIdle) {
+                    other->gl_pixels.reset(); other->levels.clear(); other->state = Asset::idle; ++released;
+                }
+        asset.used = now;
+#endif
         asset.units[0] = units[0]; asset.units[1] = units[1];
         asset.origin[0] = origin[0]; asset.origin[1] = origin[1];
         asset.levels = std::move(levels);
@@ -461,7 +491,12 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 // from the CPU pixels, which that renderer never hands to Plume.
 std::shared_ptr<const std::vector<uint8_t>> pixels_of(Asset& asset) {
     if (asset.state != Asset::ready) return nullptr;
-    if (!asset.gl_pixels && !asset.levels.empty()) asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(asset.levels[0]));
+    if (!asset.gl_pixels && !asset.levels.empty()) {
+        asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(asset.levels[0]));
+        asset.gl_format = 0; asset.gl_levels = 1;
+        asset.levels.clear();
+    }
+    asset.used = Clock::now();
     return asset.gl_pixels;
 }
 bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
@@ -479,7 +514,7 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
             Asset& asset = *assets[size_t(item.asset)];
             native_quads::Quad q;
             if (!(q.pixels = pixels_of(asset))) continue;
-            q.width = asset.width; q.height = asset.height;
+            q.width = asset.width; q.height = asset.height; q.format = asset.gl_format; q.levels = asset.gl_levels;
             q.rect[0] = item.at[0] - asset.origin[0]; q.rect[1] = item.at[1] - asset.origin[1];
             q.rect[2] = q.rect[0] + asset.units[0]; q.rect[3] = q.rect[1] + asset.units[1];
             q.color[0] = item.tint[0]; q.color[1] = item.tint[1]; q.color[2] = item.tint[2];
@@ -491,7 +526,7 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     Asset& asset = *assets[size_t(draw.asset)];
     native_quads::Quad q;
     if (!(q.pixels = pixels_of(asset))) return true;
-    q.width = asset.width; q.height = asset.height;
+    q.width = asset.width; q.height = asset.height; q.format = asset.gl_format; q.levels = asset.gl_levels;
     float rect[4] = {draw.rect[0], draw.rect[1], draw.rect[2], draw.rect[3]};
     if (draw.text && draw.anchor == TextJob::Anchor::origin) {
         rect[0] = draw.at[0] - asset.origin[0]; rect[1] = draw.at[1] - asset.origin[1];
@@ -534,11 +569,12 @@ bool identify(const uint8_t* rdram, const SceneDraw& draw, SceneId& id) {
 }
 }
 
+void warm(const TextJob& job) { ready(text_asset(job)); }
+
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& directory) {
     output = directory;
     if (!art_directory.empty() && std::filesystem::exists(art_directory / "srw64-scene-images.json")) {
-        std::ifstream stream(art_directory / "srw64-scene-images.json");
-        const json spec = json::parse(stream);
+        const json spec = json::parse(app::read_text(art_directory / "srw64-scene-images.json", 64u << 20));
         if (spec.at("schema") != "srw64.scene-images.v1") throw std::runtime_error("Unsupported scene image specification");
         for (const auto& row : spec.at("images")) {
             Image image;
@@ -548,7 +584,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             image.wrap = row.at("wrap");
             auto asset = std::make_unique<Asset>();
             asset->file = art_directory / row.at("file").get<std::string>();
-            if (!std::filesystem::exists(asset->file)) throw std::runtime_error("Missing scene image " + asset->file.string());
+            if (!hd_texture::exists(asset->file)) throw std::runtime_error("Missing scene image " + asset->file.string());
             asset->key = "image:" + row.at("file").get<std::string>();
             {
                 std::lock_guard lock(asset_mutex);
@@ -567,8 +603,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     // (docs/design/battle-animation-rendering.md §12-13).
     const auto load_units = [&](const char* name, const char* schema, bool frames) {
         if (art_directory.empty() || !std::filesystem::exists(art_directory / name)) return;
-        std::ifstream stream(art_directory / name);
-        const json spec = json::parse(stream);
+        const json spec = json::parse(app::read_text(art_directory / name, 64u << 20));
         if (spec.at("schema") != schema) throw std::runtime_error(std::string("Unsupported ") + name);
         size_t count = 0;
         for (const auto& row : spec.at("images")) {
@@ -577,7 +612,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             image.frames.insert(frames ? row.at("frame").get<uint8_t>() : uint8_t(0));
             auto asset = std::make_unique<Asset>();
             asset->file = art_directory / row.at("file").get<std::string>();
-            if (!std::filesystem::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
+            if (!hd_texture::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
             asset->key = "unit:" + row.at("file").get<std::string>();
             {
                 std::lock_guard lock(asset_mutex);
@@ -595,8 +630,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     // Other battle sprites, ordinary actors drawn the same way: the cut-ins (tools/hd_ai/cutin_hd.py).
     load_units("srw64-battle-sprites-hd.json", "srw64.unit-extra-images.v1", true);
     if (!art_directory.empty() && std::filesystem::exists(art_directory / "srw64-battle-sprites-hd.json")) {
-        std::ifstream stream(art_directory / "srw64-battle-sprites-hd.json");
-        const json spec = json::parse(stream);
+        const json spec = json::parse(app::read_text(art_directory / "srw64-battle-sprites-hd.json", 64u << 20));
         std::lock_guard lock(scene_thumb_mutex);
         for (const auto& row : spec.value("scenes", json::array()))
             scene_thumbs[row.at("key").get<std::string>()] = (art_directory / row.at("file").get<std::string>()).string();

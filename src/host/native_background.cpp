@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #include "native_background.hpp"
+#include "app/runtime.hpp"
 #include "presentation/image_mode.hpp"
 #ifndef SRW64_GL_ONLY
 #include "hle/rt64_state.h"
@@ -349,8 +350,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     if (std::getenv("SRW64_BG_DUMP")) dump.open(directory / "background-draws.jsonl");
     const auto spec_path = art_directory / "srw64-backgrounds-hd.json";
     if (!std::filesystem::exists(spec_path)) return;
-    std::ifstream stream(spec_path);
-    const json spec = json::parse(stream);
+    const json spec = json::parse(app::read_text(spec_path, 64u << 20));
     if (spec.at("schema") != "srw64.background-images.v1") throw std::runtime_error("Unsupported HD background specification");
     width = spec.at("size")[0]; height = spec.at("size")[1];
     source_width = spec.at("source_size")[0]; source_height = spec.at("source_size")[1];

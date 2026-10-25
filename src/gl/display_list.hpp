@@ -73,6 +73,9 @@ struct Command {
     bool model = false;
     float mvp[16] = {};
     uint8_t depth = 0;
+    // native, from triangles: the game's model-view and its view as RT64 separates the view
+    // from the projection (row vectors; normals and view positions of the host's meshes).
+    float modelview[16] = {};
     // native, not from triangles: where its x (the game's, original pixels) and y land in the
     // picture, as the tagged rectangle would have (x * place[0] + place[1], y + place[2]).
     float place[3] = {1, 0, 0};
@@ -81,6 +84,12 @@ struct Command {
 // The host's tags: the command before a draw, a G_NOOP whose words name it. Returns the
 // draw's native id, 0 for an ordinary draw.
 using Classify = std::function<uint32_t(uint32_t tag_w0, uint32_t tag_w1)>;
+
+// The host's models (native_marker.cpp): triangles recognised by where their command is in
+// the model the game called (segment 4 points at it), as RT64's NativeMeshClassify does.
+// `id` names the draw that takes the model's place (`draw`) or a part of it whose triangles go.
+struct MeshTag { uint32_t id = 0; bool draw = false; };
+using ClassifyMesh = std::function<MeshTag(const uint8_t* rdram, uint32_t address, uint32_t segment4)>;
 
 struct Frame {
     std::vector<Vertex> vertices;
@@ -92,6 +101,7 @@ struct Frame {
         uint8_t wrap_s = 0, wrap_t = 0;   // 0 clamp, 1 repeat, 2 mirror
         bool linear = false;
         std::vector<uint32_t> rgba;       // bytes R, G, B, A in memory order
+        uint64_t replacement = 0;         // the RT64 pack key of an HD picture the host has for it
     };
     std::vector<Texture> textures;
     uint32_t color_image = 0;              // where the frame's colour image is (the VI origin)
@@ -116,6 +126,10 @@ public:
     void run(const uint8_t* rdram, uint32_t start, Frame& out, const uint8_t* list = nullptr, uint32_t size = 0);
     // The host's tagged draws (Command::native); none by default.
     void classify(Classify hook);
+    void classify_meshes(ClassifyMesh hook);
+    // Whether the host has an HD picture for an RT64 texture-pack key (TMEMHasher, version 5):
+    // the textures it has one for carry it (Frame::Texture::replacement). None by default.
+    void replacements(std::function<bool(uint64_t)> has);
     // The picture's width in original pixels from the next task on: 320 for 4:3, up to 426.7
     // at 16:9.
     void picture_width(float width);

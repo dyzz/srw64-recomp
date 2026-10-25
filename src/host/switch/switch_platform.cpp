@@ -21,6 +21,7 @@
 #include <vector>
 
 #include "ultramodern/ultramodern.hpp"
+#include "stb/stb_image.h"
 
 // Horizon has no call to name a thread; the name places it instead. libnx starts every
 // thread on core 0, where SDL's audio thread then got about half of real time (the
@@ -65,8 +66,13 @@ void set_native_thread_name(const std::string& name) {
     else for (const char* game_side : {"VI Thread", "Timer Thread", "SP Task Thread", "Game"})
         if (name.rfind(game_side, 0) == 0) core = 1;
     if (core >= 0) svcSetThreadCoreMask(CUR_THREAD_HANDLE, core, 1u << core);
+    // One above the helpers that share its core (srw64_switch_background_thread): time-sliced
+    // with them, a frame's work waited behind a glyph or a decode (an 80 ms "upload" of an
+    // 82 x 100 glyph). It blocks between frames (about a third of the core), so they still run.
+    if (name == "Gfx Thread") svcSetThreadPriority(CUR_THREAD_HANDLE, 0x3A);
 }
-// Priorities stay libnx's default for new threads, 0x3B: the level Horizon time-slices.
+// Priorities stay libnx's default for new threads, 0x3B: the level Horizon time-slices (the
+// Gfx thread alone goes one above, over its core's helpers).
 // Ranked as the desktop does (0x2C-0x30 for VI, timer and game), a thread that waited by
 // yielding never let a less urgent one on its core run again, and the game stopped at its
 // first dialogue on the world map while the VI went on.
@@ -74,11 +80,14 @@ void set_native_thread_priority(ThreadPriority) {}
 }
 
 // A helper thread that must never hold up the ones it serves (the UI's picture reader, the
-// screenshot writer, the log writer): the lowest priority, so on the core it shares with the
-// window thread it runs only while that one waits. Unpinned threads share core 0; the UI's
-// update waited 30-40 ms for the picture reader's decodes there (SRW64_UI_SLOW drain=).
+// screenshot writer, the log writer, the HD decoders): on the Gfx thread's core 2, away from
+// the window thread on core 0, at the priority Horizon time-slices (0x3B) so it shares the core
+// rather than waits for it. On core 0 the UI's update waited 30-40 ms for the picture reader's
+// decodes; at the lowest priority (0x3F), on either core, a busy thread starved it: pages never
+// got their HD pictures, and the UI waited 35 ms a frame on the lock it held when preempted.
 extern "C" void srw64_switch_background_thread() {
-    svcSetThreadPriority(CUR_THREAD_HANDLE, 0x3F);
+    svcSetThreadCoreMask(CUR_THREAD_HANDLE, 2, 1u << 2);
+    svcSetThreadPriority(CUR_THREAD_HANDLE, 0x3B);
 }
 
 // stdout and stderr (console_log.hpp): one device for both that keeps the last 512 KiB in
@@ -178,31 +187,120 @@ std::string srw64_switch_language() {
     return language;
 }
 
-// The launch on screen until the game's window takes it: libnx's text console, one line a
-// step with the seconds since start (the same steps go to nxlink as SRW64_SWITCH_TIME).
-// The console takes stdout; srw64_switch_boot_end gives it back to the log device.
+// The launch on screen until the game's window takes it: the loading screen staged beside the
+// NRO (tools/release/switch/splash.py: splash/base-<locale>.png, the language's logo on the
+// Steam art's navy, and step-<locale>-<n>.png, what is loading, in the game's language), blitted into libnx's framebuffer with a
+// bar under it, a step at a time (app::boot_step, which also logs SRW64_BOOT). Without the
+// pictures, the screen stays as it is. srw64_switch_boot_end gives the screen to the window.
 namespace {
 enum class Boot { Off, Shown, Over };
 Boot boot = Boot::Off;
+Framebuffer boot_frame;
+struct Picture { std::vector<uint32_t> pixels; int width = 0, height = 0; };
+Picture boot_base;
+std::string boot_locale;
+constexpr const char* kBootSteps[] = {"host start", "dialogue load", "host setup", "text pages", "game start"};
+constexpr int kBootStepCount = int(sizeof kBootSteps / sizeof kBootSteps[0]);
+Picture load_picture(const std::string& path) {
+    Picture picture;
+    int channels = 0;
+    if (unsigned char* data = stbi_load(path.c_str(), &picture.width, &picture.height, &channels, 4)) {
+        picture.pixels.assign(reinterpret_cast<const uint32_t*>(data), reinterpret_cast<const uint32_t*>(data) + size_t(picture.width) * picture.height);
+        stbi_image_free(data);
+    }
+    return picture;
 }
-// app::boot_step's lines ("dialogue read 1.2 s"), which also go to stderr as SRW64_BOOT.
+// The game's language: the settings run_prepared reads (it sets SRW64_LOCALE before the host
+// starts, after this screen is up), else the console's.
+std::string boot_language() {
+    std::string locale;
+    if (const char* chosen = std::getenv("SRW64_LOCALE"); chosen && *chosen) locale = chosen;
+    else {
+        const auto settings = std::filesystem::path(srw64_switch_program_path()).parent_path() / "presentation.json";
+        if (FILE* file = std::fopen(settings.string().c_str(), "rb")) {
+            char text[4096] = {};
+            const size_t got = std::fread(text, 1, sizeof text - 1, file);
+            std::fclose(file);
+            const std::string json(text, got);
+            if (const auto at = json.find("\"locale\""); at != std::string::npos)
+                if (const auto open = json.find('"', json.find(':', at)); open != std::string::npos)
+                    locale = json.substr(open + 1, json.find('"', open + 1) - open - 1);
+        }
+        if (locale.empty()) locale = srw64_switch_language();
+    }
+    if (locale.rfind("zh", 0) == 0) return "zh-Hans";
+    if (locale.rfind("ja", 0) == 0) return "ja";
+    return "en";
+}
+// One premultiplied-alpha "over" of a straight RGBA pixel (bytes R, G, B, A) onto an opaque one.
+inline uint32_t over(uint32_t below, uint32_t above) {
+    const uint32_t a = above >> 24;
+    if (a == 255) return above | 0xFF000000u;
+    if (a == 0) return below;
+    uint32_t out = 0xFF000000u;
+    for (int shift = 0; shift < 24; shift += 8) {
+        const uint32_t s = (above >> shift) & 0xFF, d = (below >> shift) & 0xFF;
+        out |= ((s * a + d * (255 - a) + 127) / 255) << shift;
+    }
+    return out;
+}
+std::vector<uint32_t> boot_last;   // the last step's screen, for the window until the game draws
+// One step's screen into `frame` (1280 x 720, `row` pixels a line).
+void compose_boot(int step, uint32_t* frame, size_t row) {
+    const std::string folder = std::filesystem::path(srw64_switch_program_path()).parent_path().string() + "/splash/";
+    const Picture text = load_picture(folder + "step-" + boot_locale + "-" + std::to_string(step) + ".png");
+    for (int y = 0; y < 720; ++y) std::memcpy(frame + size_t(y) * row, boot_base.pixels.data() + size_t(y) * 1280, 1280 * 4);
+    if (text.width == 1280)
+        for (int y = 0; y < text.height && 560 + y < 720; ++y)
+            for (int x = 0; x < 1280; ++x) {
+                uint32_t& at = frame[size_t(560 + y) * row + x];
+                at = over(at, text.pixels[size_t(y) * 1280 + x]);
+            }
+    // The bar: a faint track, filled to this step.
+    const int left = 440, width = 400, filled = width * (step + 1) / kBootStepCount;
+    for (int y = 640; y < 644; ++y)
+        for (int x = left; x < left + width; ++x) {
+            uint32_t& at = frame[size_t(y) * row + x];
+            at = x < left + filled ? 0xFF28C8FFu : over(at, 0x28FFFFFFu);   // amber (R 255, G 200, B 40); white at 16 %
+        }
+}
+void draw_boot(int step) {
+    if (boot_base.width != 1280 || boot_base.height != 720) return;
+    u32 stride = 0;
+    auto* frame = static_cast<uint32_t*>(framebufferBegin(&boot_frame, &stride));
+    compose_boot(step, frame, stride / 4);
+    framebufferEnd(&boot_frame);
+    if (step == kBootStepCount - 1) {
+        boot_last.resize(1280 * 720);
+        compose_boot(step, boot_last.data(), 1280);
+    }
+}
+}
+// app::boot_step's lines ("dialogue load 0.9 s"), which also go to stderr as SRW64_BOOT.
 void srw64_switch_boot_line(const char* line) {
     if (boot == Boot::Over) return;
     if (boot == Boot::Off) {
-        consoleInit(nullptr);
-        std::printf("\n  Marchwind64\n\n");
+        const std::string folder = std::filesystem::path(srw64_switch_program_path()).parent_path().string() + "/splash/";
+        boot_locale = boot_language();
+        boot_base = load_picture(folder + "base-" + boot_locale + ".png");
+        if (boot_base.width != 1280 || boot_base.height != 720) { boot = Boot::Over; return; }
+        if (R_FAILED(framebufferCreate(&boot_frame, nwindowGetDefault(), 1280, 720, PIXEL_FORMAT_RGBA_8888, 2))) { boot = Boot::Over; return; }
+        framebufferMakeLinear(&boot_frame);
         boot = Boot::Shown;
     }
-    std::printf("  %s\n", line);
-    consoleUpdate(nullptr);
+    const std::string text = line;
+    for (int n = 0; n < kBootStepCount; ++n)
+        if (text.rfind(kBootSteps[n], 0) == 0) draw_boot(n);
 }
 void srw64_switch_boot_end() {
-    if (boot == Boot::Shown) {
-        consoleExit(nullptr);
-        install_log();
-    }
+    if (boot == Boot::Shown) framebufferClose(&boot_frame);
+    boot_base = {};
     boot = Boot::Over;
 }
+// The loading screen's last step (1280 x 720, bytes R G B A), for the game's window to show
+// until the game shows a picture (graphics.cpp); empty when there was none, or once dropped.
+const std::vector<uint32_t>& srw64_switch_splash() { return boot_last; }
+void srw64_switch_drop_splash() { boot_last = {}; boot_last.shrink_to_fit(); }
 
 // The system's side of a performance line (graphics.cpp, SwitchPerf): the process's memory and
 // each application core's load since the last line (from the kernel's idle tick counts).
@@ -212,11 +310,11 @@ std::string srw64_switch_perf_system() {
     svcGetInfo(&used, InfoType_UsedMemorySize, CUR_PROCESS_HANDLE, 0);
     const u64 tick = armGetSystemTick();
     char text[160];
-    // libnx takes the whole heap at start (used is nearly total): malloc's own count is what the
-    // program holds. (A core's idle count is only given for the asking thread's own core, so
-    // the load is per thread below.)
-    const struct mallinfo heap = mallinfo();
-    std::snprintf(text, sizeof text, "heap=%dMiB of %lluMiB threads", int(heap.uordblks >> 20), (unsigned long long)(total >> 20));
+    // libnx takes the whole heap at start (used is nearly total). malloc's own count
+    // (mallinfo) would say what the program holds, but it locks the allocator and walks the
+    // whole heap: ~30 ms in which every thread that allocates stalls, once a line. (A core's
+    // idle count is only given for the asking thread's own core, so the load is per thread below.)
+    std::snprintf(text, sizeof text, "memory=%lluMiB threads", (unsigned long long)(total >> 20));
     (void)used;
     // The threads that took more than 3% of a core since the last line.
     std::string line = text;

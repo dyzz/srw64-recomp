@@ -1,4 +1,5 @@
 #include "hd_texture.hpp"
+#include "app/runtime.hpp"
 
 #include <algorithm>
 #include <cstdio>
@@ -24,12 +25,14 @@ void block_size(uint32_t format, uint32_t& width, uint32_t& height) {
     case 0x93B0: width = 4; height = 4; break;   // GL_COMPRESSED_RGBA_ASTC_4x4_KHR
     case 0x93B4: width = 6; height = 6; break;   // GL_COMPRESSED_RGBA_ASTC_6x6_KHR
     case 0x93B7: width = 8; height = 8; break;   // GL_COMPRESSED_RGBA_ASTC_8x8_KHR
+    case 0x8E8C: width = 4; height = 4; break;   // GL_COMPRESSED_RGBA_BPTC_UNORM (BC7)
     default: width = height = 0; break;
     }
 }
 
 size_t level_bytes(uint32_t format, uint32_t width, uint32_t height) {
     if (format == 0x8229) return size_t(width) * height;   // GL_R8: a map's palette indices
+    if (format == 0x8058) return size_t(width) * height * 4;   // GL_RGBA8: pixel art, uncompressed
     uint32_t bw, bh;
     block_size(format, bw, bh);
     if (!bw) return 0;
@@ -37,15 +40,21 @@ size_t level_bytes(uint32_t format, uint32_t width, uint32_t height) {
 }
 
 bool exists(const std::filesystem::path& picture) {
+#ifdef __SWITCH__
+    // The pack the NRO carries or that sits beside it is whole as prepare-hd made it; a lookup on
+    // the SD card costs milliseconds and the layers name some 1,700 pictures at start.
+    (void)picture;
+    return true;
+#endif
     std::error_code error;
     return std::filesystem::exists(picture, error) || std::filesystem::exists(prepared(picture), error);
 }
 
 bool load(const std::filesystem::path& picture, Compressed& out) {
 #ifdef __SWITCH__
-    std::ifstream stream(prepared(picture), std::ios::binary);
-    if (!stream) return false;
-    std::vector<uint8_t> file((std::istreambuf_iterator<char>(stream)), std::istreambuf_iterator<char>());
+    std::error_code missing;
+    if (!std::filesystem::is_regular_file(prepared(picture), missing)) return false;
+    const std::string file = app::read_text(prepared(picture), 512u << 20);   // whole, not a byte at a time
     uint32_t head[6];
     if (file.size() < sizeof head) return false;
     std::memcpy(head, file.data(), sizeof head);

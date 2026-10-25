@@ -53,6 +53,38 @@ static std::string read_campaign_id(const fs::path& campaign) {
     return id;
 }
 
+// The HD pack's pictures for the pages (the battle page, the name page, the Library), beside
+// the originals in the dialogue data: page portraits by (image, palette) and whole unit poses by
+// (scene, atlas, palette), as profile.py's unit_lookup. `folder` is the pack's art folder.
+void attach_hd_art(json& data,const fs::path& folder) {
+    auto& portraits=data.at("name_entry_assets").at("portraits");
+    const auto pages=read_json(folder/"srw64-page-portraits.json");
+    if(pages.value("schema","")!="srw64.page-portraits.v1")throw std::runtime_error("Unsupported HD page portraits");
+    const auto& index=pages.at("portraits");
+    const auto attach=[&](json& row,unsigned image,unsigned palette) {
+        const auto key=std::to_string(image)+":"+std::to_string(palette);
+        if(index.contains(key))row["hd"]=(folder/index.at(key).get<std::string>()).string();
+    };
+    for(auto& [id,portrait]:portraits.items())
+        attach(portrait,portrait.at("resource_id").get<unsigned>(),portrait.at("palette_id").get<unsigned>());
+    if(data.contains("battle_assets"))for(auto& [id,art]:data["battle_assets"].at("portraits").items())
+        attach(art,art.at("resources").at(0).get<unsigned>(),art.at("resources").at(1).get<unsigned>());
+    // Whole HD unit poses by (scene, atlas, palette), as profile.py's unit_lookup.
+    if(const auto units_index=folder/"srw64-units-hd.json";fs::is_regular_file(units_index) && data.contains("battle_assets")) {
+        const auto poses=read_json(units_index);
+        if(poses.value("schema","")!="srw64.unit-images.v1")throw std::runtime_error("Unsupported HD unit poses");
+        std::map<std::string,std::string> by_triplet;
+        for(const auto& row:poses.at("images"))
+            by_triplet[std::to_string(row.at("scene").get<unsigned>())+":"+std::to_string(row.at("atlas").get<unsigned>())+":"+std::to_string(row.at("palette").get<unsigned>())]=row.at("file").get<std::string>();
+        for(auto& [id,art]:data["battle_assets"].at("units").items()) {
+            if(!art.contains("resources"))continue;
+            const auto& r=art.at("resources");
+            const auto key=std::to_string(r.at(0).get<unsigned>())+":"+std::to_string(r.at(1).get<unsigned>())+":"+std::to_string(r.at(2).get<unsigned>());
+            if(const auto found=by_triplet.find(key);found!=by_triplet.end())art["hd"]=(folder/found->second).string();
+        }
+    }
+}
+
 int run_standalone(const Options& requested,const GameIdentity& game,const HostMain& host,const ContentImporter& importer) {
     boot_step("rom check");
     Options options=requested;
@@ -135,33 +167,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
                                      "replace it with the pack for this release, or remove it to play in Original");
     }
     const bool hd_art=!hd.empty() && fs::exists(hd);
-    if(hd_art) {
-        const auto pages=read_json(hd/"art"/"srw64-page-portraits.json");
-        if(pages.value("schema","")!="srw64.page-portraits.v1")throw std::runtime_error("Unsupported HD page portraits");
-        const auto& index=pages.at("portraits");
-        const auto attach=[&](json& row,unsigned image,unsigned palette) {
-            const auto key=std::to_string(image)+":"+std::to_string(palette);
-            if(index.contains(key))row["hd"]=(hd/"art"/index.at(key).get<std::string>()).string();
-        };
-        for(auto& [id,portrait]:portraits.items())
-            attach(portrait,portrait.at("resource_id").get<unsigned>(),portrait.at("palette_id").get<unsigned>());
-        if(data.contains("battle_assets"))for(auto& [id,art]:data["battle_assets"].at("portraits").items())
-            attach(art,art.at("resources").at(0).get<unsigned>(),art.at("resources").at(1).get<unsigned>());
-        // Whole HD unit poses by (scene, atlas, palette), as profile.py's unit_lookup.
-        if(const auto units_index=hd/"art"/"srw64-units-hd.json";fs::is_regular_file(units_index) && data.contains("battle_assets")) {
-            const auto poses=read_json(units_index);
-            if(poses.value("schema","")!="srw64.unit-images.v1")throw std::runtime_error("Unsupported HD unit poses");
-            std::map<std::string,std::string> by_triplet;
-            for(const auto& row:poses.at("images"))
-                by_triplet[std::to_string(row.at("scene").get<unsigned>())+":"+std::to_string(row.at("atlas").get<unsigned>())+":"+std::to_string(row.at("palette").get<unsigned>())]=row.at("file").get<std::string>();
-            for(auto& [id,art]:data["battle_assets"].at("units").items()) {
-                if(!art.contains("resources"))continue;
-                const auto& r=art.at("resources");
-                const auto key=std::to_string(r.at(0).get<unsigned>())+":"+std::to_string(r.at(1).get<unsigned>())+":"+std::to_string(r.at(2).get<unsigned>());
-                if(const auto found=by_triplet.find(key);found!=by_triplet.end())art["hd"]=(hd/"art"/found->second).string();
-            }
-        }
-    }
+    if(hd_art)attach_hd_art(data,hd/"art");
     unsigned scale=options.resolution_scale ? options.resolution_scale : manifest.at("resolution_scale").get<unsigned>();
     if(scale<1 || scale>8)throw std::runtime_error("Resolution scale must be in 1..8");
 

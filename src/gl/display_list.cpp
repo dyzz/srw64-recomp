@@ -5,6 +5,9 @@
 #include <cmath>
 #include <cstring>
 #include <unordered_set>
+#include <vector>
+#define XXH_INLINE_ALL
+#include "xxHash/xxhash.h"
 
 namespace srw64::n64gl {
 namespace {
@@ -58,6 +61,20 @@ Matrix identity() {
     Matrix r{};
     for (int i = 0; i < 4; ++i) r.m[i][i] = 1;
     return r;
+}
+const Matrix kIdentity = identity();
+
+// RT64's matrixDecomposeViewProj (rt64_math.cpp): the view of a loaded view-projection, or
+// none when it is a projection alone.
+Matrix view_of(const Matrix& vp) {
+    if (std::fabs(vp.m[3][3]) < 1e-6f || std::fabs(1 - vp.m[3][3]) < 1e-6f) return identity();
+    Matrix v = identity();
+    for (int r = 0; r < 4; ++r) v.m[r][2] = -vp.m[r][3];
+    const float sx = std::sqrt(vp.m[0][0] * vp.m[0][0] + vp.m[1][0] * vp.m[1][0] + vp.m[2][0] * vp.m[2][0]);
+    const float sy = std::sqrt(vp.m[0][1] * vp.m[0][1] + vp.m[1][1] * vp.m[1][1] + vp.m[2][1] * vp.m[2][1]);
+    for (int r = 0; r < 4; ++r) { v.m[r][0] = vp.m[r][0] / sx; v.m[r][1] = vp.m[r][1] / sy; }
+    for (const auto& row : v.m) for (const float x : row) if (!std::isfinite(x)) return identity();
+    return v;
 }
 
 struct Tile {
@@ -124,6 +141,8 @@ struct Interpreter::State {
         return rd32(a);
     }
     Classify classify;
+    ClassifyMesh classify_mesh;
+    std::function<bool(uint64_t)> replaced;
     uint32_t tag_w0 = 0, tag_w1 = 0;   // the command before the one running
     uint32_t tagged() const { return classify && tag_w0 >> 24 == 0 ? classify(tag_w0, tag_w1) : 0; }
     // A tagged draw: its rectangle in the picture's pixels, the scissor it is drawn in
@@ -145,6 +164,9 @@ struct Interpreter::State {
     Matrix modelview[18] = {};
     int depth = 0;
     Matrix projection = identity(), mvp = identity();
+    // The view inside the projection, as RT64 takes it out (rt64_rsp.cpp matrixCommon): a
+    // loaded view-projection decomposed, an affine matrix multiplied onto it.
+    Matrix view = identity();
     bool mvp_dirty = true;
     uint32_t geometry = 0;
     int16_t vscale[4] = {640, 480, 511, 0}, vtrans[4] = {640, 480, 511, 0};
@@ -263,6 +285,9 @@ struct Interpreter::State {
         load_matrix(segmented(w1), m);
         if (params & 4) {   // projection
             projection = (params & 2) ? m : multiply(m, projection);
+            if (params & 2) view = view_of(m);
+            else if (m.m[0][3] == 0 && m.m[1][3] == 0 && m.m[2][3] == 0 && m.m[3][3] == 1 && std::memcmp(&m, &kIdentity, sizeof m))
+                view = multiply(m, view);
         } else {
             if ((params & 1) && depth < 17) { modelview[depth + 1] = modelview[depth]; ++depth; }
             modelview[depth] = (params & 2) ? m : multiply(m, modelview[depth]);
@@ -376,12 +401,10 @@ struct Interpreter::State {
             ++tmem_version;
             return;
         }
-        const uint32_t row_bytes = bytes_of(lrs - uls + 1, timg_siz), stride = tile.line * 8;
-        for (uint32_t row = 0; row <= lrt - ult; ++row) {
-            const uint32_t source = timg_addr + bytes_of((ult + row) * timg_width + uls, timg_siz);
-            const uint32_t destination = tile.tmem * 8 + row * stride, swap = (row & 1) ? 4 : 0;
-            for (uint32_t i = 0; i < row_bytes; ++i) tmem[((destination + i) ^ swap) & 4095] = rd8(source + i);
-        }
+        // RT64's arithmetic (loadTileOperation), from the command's 10.2 corners.
+        const uint32_t start = timg_addr + ((uls << timg_siz) >> 1) + ((timg_width << timg_siz) >> 1) * ult;
+        load_words(start, (timg_width << timg_siz) >> 1, tile.tmem * 8, tile.line * 8, ((lrs - uls) >> (4 - tile.siz)) + 1,
+                   lrt - ult + 1, tile.siz == G_IM_SIZ_32b && tile.fmt == G_IM_FMT_RGBA);
         ++tmem_version;
     }
 
@@ -390,13 +413,53 @@ struct Interpreter::State {
         const uint32_t uls = (w0 >> 12) & 0xFFF, ult = w0 & 0xFFF, lrs = (w1 >> 12) & 0xFFF, dxt = w1 & 0xFFF;
         if (lrs < uls) return;
         picture_loads[tile.tmem & 511].image = 0;
-        const uint32_t bytes = (bytes_of(lrs - uls + 1, timg_siz) + 7) & ~7u;
-        const uint32_t source = timg_addr + bytes_of(ult * timg_width + uls, timg_siz), destination = tile.tmem * 8;
-        for (uint32_t q = 0; q * 8 < bytes; ++q) {
-            const uint32_t swap = (((q * dxt) >> 11) & 1) ? 4 : 0;
-            for (uint32_t b = 0; b < 8; ++b) tmem[((destination + q * 8 + b) ^ swap) & 4095] = rd8(source + q * 8 + b);
-        }
+        const uint32_t start = timg_addr + ((uls << timg_siz) >> 1) + ((timg_width << timg_siz) >> 1) * ult;
+        load_words(start, 0, tile.tmem * 8, tile.line * 8, ((lrs - uls) >> (4 - tile.siz)) + 1, 1,
+                   tile.siz == G_IM_SIZ_32b && tile.fmt == G_IM_FMT_RGBA, true, dxt);
         ++tmem_version;
+    }
+
+    // TMEM as RT64 fills it (rt64_rdp.cpp loadToTMEMCommon), byte for byte, for its
+    // replacement hashes: whole 64-bit words, odd rows (a block's odd lines by its dxt) with
+    // their 32-bit halves swapped, a 32-bit RGBA word split between TMEM's halves.
+    void load_words(uint32_t texture_row, uint32_t texture_stride, uint32_t tmem_start, uint32_t tmem_stride, uint32_t words,
+                    uint32_t rows, bool rgba32, bool block = false, uint32_t dxt = 0) {
+        const uint32_t mask = rgba32 ? 2047 : 4095, advance = rgba32 ? 4 : 8;
+        uint32_t tmem_row = tmem_start & mask, xor_mask = 0, dxt_counter = 0;
+        // Rows a large load writes over again are skipped, as RT64 does.
+        if (tmem_stride > 0 && words * advance <= tmem_stride) {
+            const int32_t skip = int32_t(rows) - int32_t((mask + tmem_stride) / tmem_stride);
+            if (skip > 0) {
+                tmem_row += (tmem_row + tmem_stride * uint32_t(skip)) & mask;
+                texture_row += texture_stride * uint32_t(skip);
+                xor_mask = uint32_t(skip & 1) << 2;
+                rows -= uint32_t(skip);
+            }
+        }
+        for (; rows > 0; --rows) {
+            uint32_t texture_at = texture_row, tmem_at = tmem_row;
+            for (uint32_t w = 0; w < words; ++w) {
+                if (rgba32) {
+                    static constexpr uint8_t low[4] = {0, 1, 4, 5}, high[4] = {2, 3, 6, 7};
+                    for (uint32_t i = 0; i < 4; ++i) {
+                        tmem[((tmem_at + i) ^ xor_mask) & 4095] = rd8(texture_at + low[i]);
+                        tmem[(((tmem_at + i) ^ xor_mask) | 2048) & 4095] = rd8(texture_at + high[i]);
+                    }
+                } else {
+                    for (uint32_t i = 0; i < 8; ++i) tmem[((tmem_at + i) ^ xor_mask) & 4095] = rd8(texture_at + i);
+                }
+                if (block)
+                    for (dxt_counter += dxt; dxt_counter >= 0x800; dxt_counter -= 0x800) {
+                        tmem_at = (tmem_at + tmem_stride) & mask;
+                        xor_mask ^= 4;
+                    }
+                texture_at += 8;
+                tmem_at = (tmem_at + advance) & mask;
+            }
+            tmem_row = (tmem_row + tmem_stride) & mask;
+            texture_row += texture_stride;
+            xor_mask ^= 4;
+        }
     }
 
     void load_tlut(uint32_t w0, uint32_t w1) {
@@ -464,9 +527,73 @@ struct Interpreter::State {
             texture.wrap_t = wrap_t ? ((tile.cmt & 1) ? 2 : 1) : 0;
             texture.linear = linear;
             decode(tile, tlut, width, height, texture.rgba);
+            if (replaced) {
+                const uint64_t hash = rt64_key(tile);
+                if (hash && replaced(hash)) texture.replacement = hash;
+            }
             frame->textures.push_back(std::move(texture));
         }
         return bound;
+    }
+
+    // The key an RT64 texture pack names the tile's picture by (TMEMHasher::hash, version 5,
+    // rt64_tmem_hasher.h; the tile as rt64_state.cpp samples it): XXH3 of the TMEM bytes it
+    // reads, row by row where its lines are wider, the palette entries those bytes use, then
+    // its size, TLUT mode, line, size and format. 0 for a tile RT64 keys by the whole TMEM.
+    uint64_t rt64_key(const Tile& t) const {
+        if (!t.line) return 0;
+        const uint32_t tlut = othermode_h & (3u << 14);
+        const bool clamp_s = t.masks == 0 || (t.cms & 2), clamp_t = t.maskt == 0 || (t.cmt & 2);
+        const int32_t tile_w = clamp_s ? std::max((int32_t(t.lrs) - int32_t(t.uls) + 4) / 4, 1) : 0xFFFF;
+        const int32_t tile_h = clamp_t ? std::max((int32_t(t.lrt) - int32_t(t.ult) + 4) / 4, 1) : 0xFFFF;
+        const uint16_t width = uint16_t(std::min<int32_t>(tile_w, t.masks ? 1 << t.masks : 0xFFFF));
+        const uint16_t height = uint16_t(std::min<int32_t>(tile_h, t.maskt ? 1 << t.maskt : 0xFFFF));
+        const bool rgba32 = t.siz == G_IM_SIZ_32b && t.fmt == G_IM_FMT_RGBA, half = rgba32 || tlut;
+        const uint32_t size = half ? 2048 : 4096, mask = size - 1, stride = uint32_t(t.line) * 8;
+        if (stride * (height - 1u) + ((uint32_t(width) << std::min<uint8_t>(t.siz, G_IM_SIZ_16b)) >> 1) > size) return 0;
+        const uint32_t row = std::max((uint32_t(width) << (rgba32 ? G_IM_SIZ_16b : t.siz)) >> 1, 1u);
+        const uint32_t address = (uint32_t(t.tmem) * 8) & mask;
+        std::vector<uint8_t> bytes;
+        bytes.reserve(4096 + 2048 + 12);
+        uint64_t used[4] = {};
+        auto put = [&](uint32_t at, uint32_t count) {
+            for (uint32_t i = 0; i < count; ++i) {
+                const uint8_t b = tmem[(at + i) & 4095];
+                bytes.push_back(b);
+                if (!tlut) continue;
+                if (t.siz == G_IM_SIZ_4b) used[0] |= 1ull << (b & 0xF) | 1ull << (b >> 4);
+                else used[b >> 6] |= 1ull << (b & 0x3F);
+            }
+        };
+        auto span = [&](uint32_t base, uint32_t upper, uint32_t count, bool odd) {
+            if (base + count > size) {
+                put(base | upper, size - base);
+                count = std::min(count - (size - base), base);
+                base = 0;
+            }
+            if (!odd) { put(base | upper, count); return; }
+            const uint32_t whole = count / 8 * 8;
+            put(base | upper, whole);
+            base += whole; count -= whole;
+            if (count > 4) { put(base | upper, count - 4); put((base + 4) | upper, 4); }
+            else if (count > 0) put((base + 4) | upper, count);
+        };
+        const int halves = rgba32 ? 2 : 1;
+        if (stride > row) {
+            for (int h = 0; h < halves; ++h)
+                for (uint32_t i = 0; i < height; ++i) span((address + i * stride) & mask, h ? size : 0, row, i & 1);
+        } else {
+            for (int h = 0; h < halves; ++h) span(address, h ? size : 0, stride * (height - 1u) + row, false);
+        }
+        if (tlut) {
+            const uint32_t palette = 2048 + (t.siz == G_IM_SIZ_4b ? uint32_t(t.palette) << 7 : 0);
+            for (uint32_t index = 0; index < 256; ++index)
+                if (used[index >> 6] >> (index & 63) & 1)
+                    for (uint32_t b = 0; b < 8; ++b) bytes.push_back(tmem[(palette + index * 8 + b) & 4095]);
+        }
+        auto append = [&](const void* value, size_t n) { const auto* b = static_cast<const uint8_t*>(value); bytes.insert(bytes.end(), b, b + n); };
+        append(&width, 2); append(&height, 2); append(&tlut, 4); append(&t.line, 2); append(&t.siz, 1); append(&t.fmt, 1);
+        return XXH3_64bits(bytes.data(), bytes.size());
     }
 
     void decode(const Tile& tile, uint32_t tlut, uint32_t width, uint32_t height, std::vector<uint32_t>& out) const {
@@ -710,7 +837,13 @@ struct Interpreter::State {
                 const uint32_t indices[6] = {((w0 >> 16) & 0xFF) / 2, ((w0 >> 8) & 0xFF) / 2, (w0 & 0xFF) / 2,
                                              ((w1 >> 16) & 0xFF) / 2, ((w1 >> 8) & 0xFF) / 2, (w1 & 0xFF) / 2};
                 const int count = op == G_TRI1 ? 3 : 6;
-                if (const uint32_t id = tagged()) {
+                uint32_t id = tagged();
+                if (!id && classify_mesh) {
+                    const MeshTag mesh = classify_mesh(rdram, cursor - 8, segmented(0x04000000));
+                    if (mesh.id && !mesh.draw) break;   // a part of a model drawn in its place
+                    id = mesh.id;
+                }
+                if (id) {
                     float box[4] = {1e9f, 1e9f, -1e9f, -1e9f};
                     for (int i = 0; i < count; ++i) {
                         const RspVertex& v = vertices[indices[i] & 63];
@@ -734,6 +867,8 @@ struct Interpreter::State {
                     }
                     c.state = draw_state(false, false, vertices_wide);
                     c.depth = c.state.depth;
+                    const Matrix mv = multiply(modelview[depth], view);
+                    for (int r = 0; r < 4; ++r) for (int k = 0; k < 4; ++k) c.modelview[r * 4 + k] = mv.m[r][k];
                     break;
                 }
                 triangle(indices[0], indices[1], indices[2]);
@@ -896,6 +1031,10 @@ Interpreter::~Interpreter() { delete state; }
 void Interpreter::trace(std::FILE* into) { state->log = into; }
 
 void Interpreter::classify(Classify hook) { state->classify = std::move(hook); }
+
+void Interpreter::classify_meshes(ClassifyMesh hook) { state->classify_mesh = std::move(hook); }
+
+void Interpreter::replacements(std::function<bool(uint64_t)> has) { state->replaced = std::move(has); }
 
 void Interpreter::picture_width(float width) { state->W = std::max(float(kPictureWidth), width); }
 

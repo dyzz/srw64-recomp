@@ -1002,6 +1002,14 @@ void configure(const std::filesystem::path& output) {
     srw64_game_hooks.ui_text_drawn = drawn;
     srw64_game_hooks.damage_drawn = damage_drawn;
     srw64_game_hooks.banner_number_drawn = banner_number_drawn;
+    // The digits every battle draws, made now: on the Switch a glyph took several frames,
+    // in which its place in the HP stayed blank.
+    const float white[3] = {1, 1, 1};
+    for (char digit = '0'; digit <= '9'; ++digit) {
+        const std::string glyph(1, digit);
+        for (bool outlined : {false, true}) sprites::warm(placed(number_style(outlined), "ja", glyph, "number", 0, 0, white).job);
+        sprites::warm(placed(banner_digit_style(), "ja", glyph, "banner-digit", 0, 0, white).job);
+    }
 }
 
 json state() {

@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #include "native_map.hpp"
+#include "app/runtime.hpp"
 #include "native_map_geometry.hpp"
 #include "native_marker.hpp"
 #include "native_quads.hpp"
@@ -70,7 +71,7 @@ struct Asset {
     std::unique_ptr<gpu::Texture> base_texture, index_texture;
     std::unique_ptr<plume::RenderDescriptorSet> textures;
     std::vector<std::array<int, 2>> colonies;
-    // The GL renderer's (gl_quads): the base as it uploads it (ASTC from the Switch's romfs,
+    // The GL renderer's (gl_quads): the base as it uploads it (BC7 from the Switch's romfs,
     // hd_texture.hpp, or RGBA8) and the palette indices.
     std::shared_ptr<const std::vector<uint8_t>> gl_base, gl_index;
     uint32_t gl_format = 0, gl_levels = 1;
@@ -136,10 +137,10 @@ uint32_t rgba5551(uint16_t v) {
     return c((v >> 11) & 31) | c((v >> 6) & 31) << 8 | c((v >> 1) & 31) << 16 | (v & 1 ? 0xFFu : 0u) << 24;
 }
 
-Asset load_meta(const std::filesystem::path& folder) {
-    std::ifstream stream(folder / "meta.json");
-    if (!stream) throw std::runtime_error("HD map without meta.json: " + folder.string());
-    const json meta = json::parse(stream);
+// A map's runtime description: its folder's meta.json, or that text as the combined index
+// gives it (`given`).
+Asset load_meta(const std::filesystem::path& folder, const json* given = nullptr) {
+    const json meta = given ? *given : json::parse(app::read_text(folder / "meta.json", 16u << 20));
     if (meta.at("schema") != "srw64.hd-map-runtime.v0") throw std::runtime_error("Unknown HD map schema in " + folder.string());
     Asset asset;
     asset.layout = meta.at("layout").get<uint16_t>();
@@ -214,7 +215,7 @@ void decode(Asset& asset) {
     const auto& folder = asset.folder;
     const int w = asset.width * asset.scale, h = asset.height * asset.scale;
 #ifdef SRW64_GL_ONLY
-    // The prepared copies (the Switch): the base ASTC-compressed with its mips, the indices raw.
+    // The prepared copies (the Switch): the base BC7-compressed with its mips, the indices raw.
     hd_texture::Compressed base, index;
     if (hd_texture::load(folder / asset.base_file, base) && hd_texture::load(folder / "index.png", index) &&
         base.width == uint32_t(w) && base.height == uint32_t(h) && index.format == 0x8229 && index.width == uint32_t(w) && index.height == uint32_t(h)) {
@@ -274,7 +275,7 @@ void make_textures(Asset& asset) {
 
 void decode_loop() {
 #ifdef __SWITCH__
-    srw64_switch_background_thread();   // never ahead of the window thread and the sound on core 0
+    srw64_switch_background_thread();   // core 2, only while the Gfx thread waits
 #endif
     for (;;) {
         size_t index;
@@ -443,6 +444,7 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     q.height = uint32_t(asset.height * asset.scale);
     std::copy(draw.rect, draw.rect + 4, q.rect);
     std::copy(draw.uv, draw.uv + 4, q.uv);
+    q.left = draw.view_left;   // the widened view's x = 0, as render() sets HdMapPS's frame edge
     q.label = "map";
     out.push_back(std::move(q));
     if (asset.lazy && ++gl_draws % 64 == 0) gl_evict(size_t(draw.asset));
@@ -465,9 +467,9 @@ std::filesystem::path maps_root() {
 #endif
     if (!art || !*art) return {};
     const auto index = std::filesystem::path(art) / "srw64-tactical-maps.json";
-    std::ifstream stream(index);
-    if (!stream) return {};
-    const json runtime = json::parse(stream);
+    std::error_code absent;
+    if (!std::filesystem::is_regular_file(index, absent)) return {};
+    const json runtime = json::parse(app::read_text(index, 16u << 20));
     if (runtime.value("schema", "") != "srw64.tactical-maps-runtime.v1") throw std::runtime_error("Unknown tactical map index in " + index.string());
     std::filesystem::path root = runtime.at("root").get<std::string>();
     if (root.is_relative()) root = std::filesystem::path(art) / root;
@@ -482,23 +484,43 @@ void configure(const std::filesystem::path& directory) {
     if (const auto found = maps_root(); !found.empty()) {
         const std::string root_string = found.string();
         const char* root = root_string.c_str();
-        for (const auto& entry : std::filesystem::directory_iterator(root))
-            if (entry.is_directory() && std::filesystem::exists(entry.path() / "meta.json")) {
-                assets.push_back(load_meta(entry.path()));
-                assets.back().lazy = true;
-            }
+        // Every meta.json at once when the pack has the combined index (the Switch's,
+        // tools/release/switch/prepare-hd): one read instead of a lookup per folder.
+        json index;
+        std::error_code absent;
+        if (std::filesystem::is_regular_file(found / "metas.json", absent)) {
+            index = json::parse(app::read_text(found / "metas.json", 64u << 20));
+            if (index.value("schema", "") != "srw64.hd-map-metas.v1") index = json();
+        }
+        if (index.is_object()) {
+            for (const auto& [folder, meta] : index.at("maps").items())
+                if (folder.find('/') == std::string::npos) {
+                    assets.push_back(load_meta(found / folder, &meta));
+                    assets.back().lazy = true;
+                }
+        } else {
+            for (const auto& entry : std::filesystem::directory_iterator(root))
+                if (entry.is_directory() && std::filesystem::exists(entry.path() / "meta.json")) {
+                    assets.push_back(load_meta(entry.path()));
+                    assets.back().lazy = true;
+                }
+        }
         colonies_loaded = std::any_of(assets.begin(), assets.end(), [](const Asset& a) { return !a.colonies.empty(); });
         if (colonies_loaded) {
             for (size_t i = 0; i < colony_frames.size(); ++i) {
-                colony_frames[i] = load_meta(std::filesystem::path(root) / "colony" / ("frame-0" + std::to_string(i)));
+                const std::string name = "colony/frame-0" + std::to_string(i);
+                colony_frames[i] = index.is_object() && index.at("maps").contains(name)
+                    ? load_meta(found / name, &index.at("maps").at(name)) : load_meta(found / name);
                 auto& frame = colony_frames[i];
                 if (frame.width != 64 || frame.height != 48 || !frame.alpha || !frame.colonies.empty())
                     throw std::runtime_error("Invalid colony frame metadata");
                 for (const auto& map : assets)
                     if (!map.colonies.empty() && frame.reference != map.reference)
                         throw std::runtime_error("Colony and map reference palettes differ");
+#ifndef SRW64_GL_ONLY   // the GL renderer draws no colony overlay yet: nothing to decode at start
                 decode(frame);
                 frame.state = Asset::State::decoded;
+#endif
             }
             colony_events.open(output / "hd-colony-events.jsonl");
         }

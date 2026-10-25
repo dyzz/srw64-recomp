@@ -44,6 +44,11 @@ game)
     keep=""
     [ "${2:-}" = "-k" ] && keep="-- -k 0"
     out=build/recomp/switch-build
+    # The NRO rule depends on the program only: a romfs that changed since (prepare-hd)
+    # makes it pack again.
+    if [ -f "$out/Marchwind64.nro" ] && [ -n "$(find build/recomp/switch-romfs -newer "$out/Marchwind64.nro" -print -quit 2>/dev/null)" ]; then
+        rm "$out/Marchwind64.nro"
+    fi
     run sh -c "set -e
         /opt/devkitpro/portlibs/switch/bin/aarch64-none-elf-cmake -S src/host -B $out -G Ninja \
             -DCMAKE_BUILD_TYPE=Release -DSRW64_GL_ONLY=ON -DSRW64_ASSERTS=OFF -DSRW64_SWITCH_EMBED_HD=${SRW64_SWITCH_EMBED_HD:-ON} \

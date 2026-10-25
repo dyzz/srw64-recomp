@@ -1,5 +1,6 @@
 #define HLSL_CPU
 #include "native_portrait.hpp"
+#include "app/runtime.hpp"
 #include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/rgba_file.hpp"
@@ -238,8 +239,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     const auto spec_path = art_directory / "srw64-portraits-hd.json";
     if (!std::filesystem::exists(spec_path)) return;
     output = directory;
-    std::ifstream stream(spec_path);
-    const json spec = json::parse(stream);
+    const json spec = json::parse(app::read_text(spec_path, 64u << 20));
     if (spec.at("schema") != "srw64.portrait-images.v1" || spec.at("source_size") != 96)
         throw std::runtime_error("Unsupported HD portrait specification");
     size = spec.at("size").get<int>();
