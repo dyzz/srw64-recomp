@@ -4,36 +4,43 @@
 //! one at build/release/<version>/pack/hd) and writes build/recomp/switch-romfs/hd/: the pack's
 //! manifests as they are, and beside each picture of the layers the Switch draws in HD its
 //! <stem>.mwtex: premultiplied RGBA with a 2 x 2 box-filtered mip chain (as the layers' own
-//! decode() makes it), each level ASTC-compressed (astcenc, LDR, -medium), all levels in one
-//! zstd frame. The large pictures (backgrounds, maps) take 6 x 6 blocks, the rest 4 x 4: a
-//! quarter of RGBA8's memory or less, with no visible loss at the sizes the game shows them
-//! (docs/design/switch-port.md, S3). A tactical map's index.png goes raw (GL_R8): its palette
-//! indices pick each texel's palette shift on the GPU. The JPEGs and PNGs stay out of the romfs.
+//! decode() makes it), each level BC7-compressed (Intel's ISPC encoder), all levels in one zstd
+//! frame: a quarter of RGBA8's memory, uploaded as it is. Not ASTC: the Switch's Mesa (nouveau,
+//! 20.1) lists ASTC but decodes it on the CPU at upload, some 70 ms for a 512 x 576 picture with
+//! its mips; BC7 the GPU reads itself (docs/design/switch-port.md, S3). A tactical map's index.png goes raw (GL_R8): its palette
+//! indices pick each texel's palette shift on the GPU. The JPEGs and PNGs stay out of the romfs,
+//! except the portraits (the pages show them too) and the sprite layer's (units, unit extras,
+//! battle sprites, scene images): a frame the game recolours (a hit flash, a gold mode) is made
+//! from the picture (native_sprite.cpp), and the battle scenes' thumbnails are shown as they are. The RT64 texture pack (rt64.json: map
+//! unit icons, the dialogue frame, the world map, space, battle grounds and props) keeps straight
+//! alpha, as RT64 samples it (src/host/hd_replace.cpp): its pixel-art icons and frame as RGBA8,
+//! the rest BC7, each with mips averaged by alpha.
 //!
 //!   cargo run --release --manifest-path tools/release/switch/prepare-hd/Cargo.toml -- \
-//!       [--pack DIR] [--layers portraits,backgrounds,maps] [--jobs N]
+//!       [--pack DIR] [--layers portraits,backgrounds,maps,sprites,rt64] [--jobs N]
 //!
-//! Needs astcenc (ARM's astc-encoder) as $ASTCENC or on PATH. Pictures already prepared and
-//! newer than their source are left as they are.
+//! Pictures already prepared and newer than their source are left as they are; after a change
+//! of format, remove build/recomp/switch-romfs/hd first.
 
 use rayon::prelude::*;
 use serde_json::Value;
 use std::fs;
 use std::path::{Path, PathBuf};
-use std::process::{exit, Command};
+use std::process::exit;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
 const MAGIC: u32 = 0x5854_574D;
 const VERSION: u32 = 1;
-const ASTC_4X4: u32 = 0x93B0;
-const ASTC_6X6: u32 = 0x93B4;
+const BC7: u32 = 0x8E8C;   // GL_COMPRESSED_RGBA_BPTC_UNORM
 const R8: u32 = 0x8229;
+const RGBA8: u32 = 0x8058;
 
 type Result<T> = std::result::Result<T, String>;
 
 #[derive(Clone)]
 enum Kind {
-    Astc { format: u32, block: &'static str },
+    Bc7 { straight: bool },
+    Rgba,
     Index,
 }
 
@@ -110,36 +117,57 @@ fn write(target: &Path, format: u32, width: u32, height: u32, levels: u32, data:
     fs::write(target, file).map_err(|e| format!("{}: {e}", target.display()))
 }
 
-static SCRATCH: AtomicUsize = AtomicUsize::new(0);
+/// The mips with straight alpha again: level 0 as it was, the smaller ones averaged by alpha.
+fn straight_mips(image: image::RgbaImage) -> Vec<(u32, u32, Vec<u8>)> {
+    let original = image.as_raw().clone();
+    let mut levels = mips(image);
+    levels[0].2 = original;
+    for (_, _, level) in levels.iter_mut().skip(1) {
+        for px in level.chunks_exact_mut(4) {
+            let a = px[3] as u32;
+            for c in 0..3 {
+                px[c] = if a == 0 { 0 } else { ((px[c] as u32 * 255 + a / 2) / a).min(255) as u8 };
+            }
+        }
+    }
+    levels
+}
 
-/// Each level through astcenc (an uncompressed TGA in, its blocks out, the .astc header off).
-fn encode(astcenc: &str, job: &Job, format: u32, block: &str) -> Result<usize> {
+/// Uncompressed straight RGBA8 with its mips (pixel art that blocks would smear).
+fn raw(job: &Job) -> Result<usize> {
     let image = rgba(&job.picture)?;
     let (w, h) = image.dimensions();
-    let levels = mips(image);
-    let scratch = std::env::temp_dir().join(format!("prepare-hd-{}-{}", std::process::id(), SCRATCH.fetch_add(1, Ordering::Relaxed)));
-    fs::create_dir_all(&scratch).map_err(|e| e.to_string())?;
+    let levels = straight_mips(image);
+    let data: Vec<u8> = levels.iter().flat_map(|(_, _, l)| l.iter().copied()).collect();
+    write(&job.target, RGBA8, w, h, levels.len() as u32, &data)?;
+    Ok(data.len())
+}
+
+/// Each level as BC7 blocks (Intel's ISPC encoder), the level padded to whole blocks by
+/// repeating its edge.
+fn encode(job: &Job, straight: bool) -> Result<usize> {
+    let image = rgba(&job.picture)?;
+    let (w, h) = image.dimensions();
+    let opaque = image.pixels().all(|p| p[3] == 255);
+    let levels = if straight { straight_mips(image) } else { mips(image) };
+    let settings = if opaque { intel_tex_2::bc7::opaque_basic_settings() } else { intel_tex_2::bc7::alpha_basic_settings() };
     let mut blocks = Vec::new();
-    let result = (|| -> Result<()> {
-        for (n, (lw, lh, level)) in levels.iter().enumerate() {
-            let tga = scratch.join(format!("{n}.tga"));
-            let astc = scratch.join(format!("{n}.astc"));
-            image::save_buffer(&tga, level, *lw, *lh, image::ExtendedColorType::Rgba8).map_err(|e| e.to_string())?;
-            let status = Command::new(astcenc)
-                .args(["-cl", tga.to_str().unwrap(), astc.to_str().unwrap(), block, "-medium", "-silent", "-j", "1"])
-                .status()
-                .map_err(|e| format!("{astcenc}: {e}"))?;
-            if !status.success() {
-                return Err(format!("astcenc failed on {}", job.picture.display()));
+    for (lw, lh, level) in &levels {
+        let (pw, ph) = ((lw + 3) / 4 * 4, (lh + 3) / 4 * 4);
+        let mut padded = vec![0u8; (pw * ph * 4) as usize];
+        for y in 0..ph {
+            let sy = y.min(lh - 1);
+            for x in 0..pw {
+                let sx = x.min(lw - 1);
+                let from = ((sy * lw + sx) * 4) as usize;
+                let to = ((y * pw + x) * 4) as usize;
+                padded[to..to + 4].copy_from_slice(&level[from..from + 4]);
             }
-            let bytes = fs::read(&astc).map_err(|e| e.to_string())?;
-            blocks.extend_from_slice(&bytes[16..]);
         }
-        Ok(())
-    })();
-    let _ = fs::remove_dir_all(&scratch);
-    result?;
-    write(&job.target, format, w, h, levels.len() as u32, &blocks)?;
+        let surface = intel_tex_2::RgbaSurface { data: &padded, width: pw, height: ph, stride: pw * 4 };
+        blocks.extend_from_slice(&intel_tex_2::bc7::compress_blocks(&settings, &surface));
+    }
+    write(&job.target, BC7, w, h, levels.len() as u32, &blocks)?;
     Ok(blocks.len())
 }
 
@@ -191,6 +219,16 @@ fn meta_files(folder: &Path, out: &mut Vec<PathBuf>) {
     }
 }
 
+/// The picture as it is (and its alpha beside it), for what reads it as a picture.
+fn copy_picture(picture: &Path, target: &Path) {
+    for (from, to) in [(picture.to_path_buf(), target.to_path_buf()), (picture.with_extension("alpha.png"), target.with_extension("alpha.png"))] {
+        if from.exists() && stale(&from, &to) {
+            fs::create_dir_all(to.parent().unwrap()).unwrap_or_else(|e| fail(&e.to_string()));
+            fs::copy(&from, &to).unwrap_or_else(|e| fail(&format!("{}: {e}", from.display())));
+        }
+    }
+}
+
 fn stale(picture: &Path, target: &Path) -> bool {
     let time = |p: &Path| fs::metadata(p).and_then(|m| m.modified()).ok();
     match (time(picture), time(target)) {
@@ -199,14 +237,10 @@ fn stale(picture: &Path, target: &Path) -> bool {
     }
 }
 
-fn which(name: &str) -> Option<String> {
-    std::env::var_os("PATH")?.to_str()?.split(':').map(|d| Path::new(d).join(name)).find(|p| p.is_file()).map(|p| p.display().to_string())
-}
-
 fn main() {
     let root = root();
     let mut pack = None;
-    let mut layers = "portraits,backgrounds,maps".to_string();
+    let mut layers = "portraits,backgrounds,maps,sprites,rt64".to_string();
     let mut jobs_wanted = 0usize;
     let mut args = std::env::args().skip(1);
     while let Some(arg) = args.next() {
@@ -218,7 +252,6 @@ fn main() {
         }
     }
     let pack = pack.unwrap_or_else(|| latest_pack(&root));
-    let astcenc = std::env::var("ASTCENC").ok().or_else(|| which("astcenc")).unwrap_or_else(|| fail("needs astcenc ($ASTCENC or PATH)"));
     let art = pack.join("art");
     let out = root.join("build/recomp/switch-romfs/hd");
     let out_art = out.join("art");
@@ -226,6 +259,20 @@ fn main() {
     for name in ["hd.json", "NOTICE.txt"] {
         if pack.join(name).exists() {
             fs::copy(pack.join(name), out.join(name)).unwrap_or_else(|e| fail(&e.to_string()));
+        }
+    }
+    // The model packs as they are (native_marker.cpp reads them).
+    for folder in ["native-marker", "native-models"] {
+        let mut stack = vec![pack.join(folder)];
+        while let Some(dir) = stack.pop() {
+            for entry in fs::read_dir(&dir).into_iter().flatten().flatten() {
+                let path = entry.path();
+                if path.is_dir() {
+                    stack.push(path);
+                } else {
+                    copy_picture(&path, &out.join(path.strip_prefix(&pack).unwrap()));
+                }
+            }
         }
     }
     for entry in fs::read_dir(&art).unwrap_or_else(|e| fail(&format!("{}: {e}", art.display()))).flatten() {
@@ -236,17 +283,34 @@ fn main() {
     }
 
     let mut jobs = Vec::new();
+    // The baked battle scenery's atlas (16 MB of PNG for 5598) as BC7 too.
+    let models = pack.join("native-models");
+    if models.join("manifest.json").exists() {
+        for row in json(&models.join("manifest.json"))["models"].as_array().unwrap_or(&Vec::new()) {
+            if let Some(texture) = row["texture"].as_str() {
+                let picture = models.join(texture);
+                let target = out.join("native-models").join(texture).with_extension("mwtex");
+                if stale(&picture, &target) {
+                    jobs.push(Job { picture, target, kind: Kind::Bc7 { straight: true } });
+                }
+            }
+        }
+    }
     for layer in layers.split(',').filter(|l| !l.is_empty()) {
         match layer {
             "portraits" | "backgrounds" => {
                 let (spec, kind) = if layer == "portraits" {
-                    ("srw64-portraits-hd.json", Kind::Astc { format: ASTC_4X4, block: "4x4" })
+                    ("srw64-portraits-hd.json", Kind::Bc7 { straight: false })
                 } else {
-                    ("srw64-backgrounds-hd.json", Kind::Astc { format: ASTC_6X6, block: "6x6" })
+                    ("srw64-backgrounds-hd.json", Kind::Bc7 { straight: false })
                 };
                 for row in json(&art.join(spec))["images"].as_array().unwrap_or(&Vec::new()) {
                     let file = row["file"].as_str().unwrap_or_else(|| fail("an image without a file"));
                     let picture = art.join(file);
+                    // The pages show the portraits too, decoded as they are (launch.cpp attach_hd_art).
+                    if layer == "portraits" {
+                        copy_picture(&picture, &out_art.join(file));
+                    }
                     let target = out_art.join(file).with_extension("mwtex");
                     if stale(&picture, &target) {
                         jobs.push(Job { picture, target, kind: kind.clone() });
@@ -258,6 +322,17 @@ fn main() {
                 let maps = art.join(index_json["root"].as_str().unwrap_or("maps"));
                 let mut metas = Vec::new();
                 meta_files(&maps, &mut metas);
+                // Every map's meta.json in one file as well (native_map.cpp reads it at start
+                // instead of 131 folders' worth of lookups on the SD card).
+                let mut all = serde_json::Map::new();
+                for meta_path in &metas {
+                    let folder = meta_path.parent().unwrap().strip_prefix(&maps).unwrap();
+                    all.insert(folder.to_string_lossy().replace('\\', "/"), json(meta_path));
+                }
+                let out_maps = out_art.join(maps.strip_prefix(&art).unwrap());
+                fs::create_dir_all(&out_maps).unwrap_or_else(|e| fail(&e.to_string()));
+                let index = serde_json::json!({"schema": "srw64.hd-map-metas.v1", "maps": all});
+                fs::write(out_maps.join("metas.json"), index.to_string()).unwrap_or_else(|e| fail(&e.to_string()));
                 for meta_path in metas {
                     let folder = meta_path.parent().unwrap();
                     let out_folder = out_art.join(folder.strip_prefix(&art).unwrap());
@@ -267,7 +342,7 @@ fn main() {
                     let base = folder.join(meta["base"].as_str().unwrap_or("base.png"));
                     let base_target = out_folder.join(base.file_name().unwrap()).with_extension("mwtex");
                     if stale(&base, &base_target) {
-                        jobs.push(Job { picture: base, target: base_target, kind: Kind::Astc { format: ASTC_6X6, block: "6x6" } });
+                        jobs.push(Job { picture: base, target: base_target, kind: Kind::Bc7 { straight: false } });
                     }
                     let index_picture = folder.join("index.png");
                     let index_target = out_folder.join("index.mwtex");
@@ -276,7 +351,39 @@ fn main() {
                     }
                 }
             }
-            _ => fail(&format!("unknown layer {layer} (portraits, backgrounds, maps)")),
+            "sprites" => {
+                for spec in ["srw64-units-hd.json", "srw64-unit-extras-hd.json", "srw64-battle-sprites-hd.json", "srw64-scene-images.json"] {
+                    let spec = json(&art.join(spec));
+                    for row in spec["images"].as_array().unwrap_or(&Vec::new()) {
+                        let file = row["file"].as_str().unwrap_or_else(|| fail("an image without a file"));
+                        let picture = art.join(file);
+                        copy_picture(&picture, &out_art.join(file));
+                        let target = out_art.join(file).with_extension("mwtex");
+                        if stale(&picture, &target) {
+                            jobs.push(Job { picture, target, kind: Kind::Bc7 { straight: false } });
+                        }
+                    }
+                    for row in spec["scenes"].as_array().unwrap_or(&Vec::new()) {
+                        let file = row["file"].as_str().unwrap_or_else(|| fail("a scene without a file"));
+                        copy_picture(&art.join(file), &out_art.join(file));
+                    }
+                }
+            }
+            "rt64" => {
+                for row in json(&art.join("rt64.json"))["textures"].as_array().unwrap_or(&Vec::new()) {
+                    let file = row["path"].as_str().unwrap_or_else(|| fail("a texture without a path"));
+                    let picture = art.join(file);
+                    let target = out_art.join(file).with_extension("mwtex");
+                    let kind = match row["kind"].as_str() {
+                        Some("icon") | Some("frame") => Kind::Rgba,
+                        _ => Kind::Bc7 { straight: true },
+                    };
+                    if stale(&picture, &target) {
+                        jobs.push(Job { picture, target, kind });
+                    }
+                }
+            }
+            _ => fail(&format!("unknown layer {layer} (portraits, backgrounds, maps, sprites, rt64)")),
         }
     }
 
@@ -290,7 +397,8 @@ fn main() {
         .par_iter()
         .map(|job| {
             let made = match &job.kind {
-                Kind::Astc { format, block } => encode(&astcenc, job, *format, block),
+                Kind::Bc7 { straight } => encode(job, *straight),
+                Kind::Rgba => raw(job),
                 Kind::Index => index(job),
             };
             let n = done.fetch_add(1, Ordering::Relaxed) + 1;
