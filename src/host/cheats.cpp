@@ -135,8 +135,7 @@ void configure(const std::filesystem::path& directory) {
     if(const char* names=std::getenv("SRW64_CHEATS")) {
         unsigned value=0;
         std::stringstream list(names);
-        for(std::string id;std::getline(list,id,',');)
-            for(const auto& entry:catalog)if(id==entry.id)value|=entry.bit;
+        for(std::string id;std::getline(list,id,',');)value|=bits_of(id);
         set_active(value);
     }
 }

@@ -1526,8 +1526,11 @@ std::string cheats_page() {
     // Enemies' and recruits' base level: three choices (docs/gameplay/cheats.md §6).
     const unsigned on=settings::cheats();
     body+=settings_choice("cheat_level_base","cheat-level-base",{"original","party","curve"},on&cheats::level_curve?"curve":on&cheats::level_party?"party":"original");
-    // A battle's EXP and kill money, and the player's morale cap (§8, §9).
-    body+=settings_choice("cheat_reward","cheat-reward",{"x1","x2","x5","x10"},"x"+std::to_string(cheats::reward_multiplier(on)));
+    // A battle's EXP and kill money, each its own multiplier (issue #14), and the player's
+    // morale cap (§8, §9). Choices are halves: 3 is ×1.5.
+    const auto times=[](unsigned halves){return halves==3?std::string("x1.5"):"x"+std::to_string(halves/2);};
+    body+=settings_choice("cheat_exp","cheat-exp",{"x1","x1.5","x2","x3","x5","x10"},times(cheats::exp_halves(on)));
+    body+=settings_choice("cheat_money","cheat-money",{"x1","x1.5","x2","x3","x5","x10"},times(cheats::money_halves(on)));
     body+=settings_choice("cheat_morale_cap","cheat-morale-cap",{"150","200","300","999"},std::to_string(cheats::morale_cap(on)));
     body+=settings_row("cheat_levels",button("cheat-levels",label(cheat_levels_open?"cheat_levels_close":"cheat_levels_open"),cheat_levels_open));
     if(!cheat_levels_open)return body;
@@ -5305,9 +5308,12 @@ void choose(const std::string& id) {
             const auto mode=id.substr(17);
             settings::set_cheats((settings::cheats()&~cheats::level_modes)|(mode=="curve"?cheats::level_curve:mode=="party"?cheats::level_party:0u));
         }
-        if(id.starts_with("cheat-reward:")) {
-            const auto mode=id.substr(13);
-            settings::set_cheats((settings::cheats()&~cheats::reward_modes)|(mode=="x10"?cheats::reward_x10:mode=="x5"?cheats::reward_x5:mode=="x2"?cheats::reward_x2:0u));
+        if(id.starts_with("cheat-exp:") || id.starts_with("cheat-money:")) {
+            const bool exp=id.starts_with("cheat-exp:");
+            const auto mode=id.substr(id.find(':')+1);
+            // "x1.5" is the id "exp1.5" / "money1.5"; x1 none.
+            const unsigned bit=mode=="x1"?0u:cheats::bits_of((exp?"exp":"money")+mode.substr(1));
+            settings::set_cheats((settings::cheats()&~(exp?cheats::exp_modes:cheats::money_modes))|bit);
         }
         if(id.starts_with("cheat-morale-cap:")) {
             const auto mode=id.substr(17);

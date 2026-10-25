@@ -373,7 +373,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         }
         if(saved.is_object() && saved.contains("cheats") && saved["cheats"].is_array() && !std::getenv("SRW64_CHEATS")) {
             unsigned value=0;
-            for(const auto& id:saved["cheats"])for(const auto& entry:srw64::cheats::catalog)if(id.is_string() && id.get<std::string>()==entry.id)value|=entry.bit;
+            for(const auto& id:saved["cheats"])if(id.is_string())value|=srw64::cheats::bits_of(id.get<std::string>());
             srw64::cheats::set_active(value);
         }
         if(saved.is_object() && saved.contains("ui_size") && saved["ui_size"].is_string()) {

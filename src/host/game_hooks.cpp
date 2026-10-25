@@ -746,12 +746,12 @@ void load_000AB160_func_801F5B78(uint8_t* rdram, recomp_context* ctx) {
 void load_000AB160_func_801F60D4(uint8_t* rdram, recomp_context* ctx) {
     // One crew member's EXP from a battle (cheats.hpp reward modes).
     srw64_original_battle_exp(rdram, ctx);
-    ctx->r2 = int32_t(cheats::multiplied(cheats::active(), uint32_t(ctx->r2)));
+    ctx->r2 = int32_t(cheats::multiplied(cheats::exp_halves(cheats::active()), uint32_t(ctx->r2)));
 }
 void load_000AB160_func_801F6588(uint8_t* rdram, recomp_context* ctx) {
     // A kill's money.
     srw64_original_battle_funds(rdram, ctx);
-    ctx->r2 = int32_t(cheats::multiplied(cheats::active(), uint32_t(ctx->r2)));
+    ctx->r2 = int32_t(cheats::multiplied(cheats::money_halves(cheats::active()), uint32_t(ctx->r2)));
 }
 void load_000AB160_func_80203418(uint8_t* rdram, recomp_context* ctx) {
     // Damage estimate for AI target and weapon choice: a1 weapon, a2 attacker pilot.

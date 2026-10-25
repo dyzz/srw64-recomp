@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <filesystem>
 #include <string>
+#include <string_view>
 #include <vector>
 
 // The settings' cheats page (docs/gameplay/cheats.md). Switches the game thread holds
@@ -13,22 +14,36 @@
 // own state and is saved with it; the switches themselves are not.
 namespace srw64::cheats {
 
+// 512, 1024 and 2048 were one multiplier for EXP and money together (saved as x2, x5, x10;
+// `legacy` reads them as both rows, issue #14).
 enum Switch : unsigned {max_funds=1,max_parts=2,keep_en=4,keep_sp=8,keep_morale=16,four_slots=32,level_curve=64,level_party=128,
-    unlimited_moves=256,reward_x2=512,reward_x5=1024,reward_x10=2048,morale_200=4096,morale_300=8192,morale_999=16384,
-    real_damage=32768};
+    unlimited_moves=256,morale_200=4096,morale_300=8192,morale_999=16384,real_damage=32768,
+    exp_x1_5=1u<<16,exp_x2=1u<<17,exp_x3=1u<<18,exp_x5=1u<<19,exp_x10=1u<<20,
+    money_x1_5=1u<<21,money_x2=1u<<22,money_x3=1u<<23,money_x5=1u<<24,money_x10=1u<<25};
 struct Entry {Switch bit;const char* id;};
 inline constexpr Entry catalog[]={{max_funds,"funds"},{max_parts,"parts"},{four_slots,"slots"},{unlimited_moves,"moves"},{keep_en,"en"},{keep_sp,"sp"},
-    {keep_morale,"morale"},{real_damage,"damage"},{level_party,"party"},{level_curve,"curve"},{reward_x2,"x2"},{reward_x5,"x5"},{reward_x10,"x10"},
+    {keep_morale,"morale"},{real_damage,"damage"},{level_party,"party"},{level_curve,"curve"},
+    {exp_x1_5,"exp1.5"},{exp_x2,"exp2"},{exp_x3,"exp3"},{exp_x5,"exp5"},{exp_x10,"exp10"},
+    {money_x1_5,"money1.5"},{money_x2,"money2"},{money_x3,"money3"},{money_x5,"money5"},{money_x10,"money10"},
     {morale_200,"morale200"},{morale_300,"morale300"},{morale_999,"morale999"}};
-// Three rows offer choices, not switches: the base level (the original, the party's with
-// no cap, or the chapter curve), the EXP and money multiplier, and the morale cap. At most
-// one bit of each group is set; none is the original.
-inline constexpr unsigned level_modes=level_curve|level_party,reward_modes=reward_x2|reward_x5|reward_x10,
-    morale_modes=morale_200|morale_300|morale_999;
-inline constexpr bool toggle(Switch bit){return !(bit&(level_modes|reward_modes|morale_modes));}
+// Saved ids of earlier versions, read but no longer written.
+struct Legacy {const char* id;unsigned bits;};
+inline constexpr Legacy legacy[]={{"x2",exp_x2|money_x2},{"x5",exp_x5|money_x5},{"x10",exp_x10|money_x10}};
+// The bits a saved id stands for, 0 when it names none.
+inline constexpr unsigned bits_of(std::string_view id) {
+    for(const auto& entry:catalog)if(id==entry.id)return entry.bit;
+    for(const auto& entry:legacy)if(id==entry.id)return entry.bits;
+    return 0;
+}
+// Four rows offer choices, not switches: the base level (the original, the party's with
+// no cap, or the chapter curve), the EXP multiplier, the money multiplier and the morale
+// cap. At most one bit of each group is set; none is the original.
+inline constexpr unsigned level_modes=level_curve|level_party,exp_modes=exp_x1_5|exp_x2|exp_x3|exp_x5|exp_x10,
+    money_modes=money_x1_5|money_x2|money_x3|money_x5|money_x10,morale_modes=morale_200|morale_300|morale_999;
+inline constexpr bool toggle(Switch bit){return !(bit&(level_modes|exp_modes|money_modes|morale_modes));}
 // The lowest bit of each group, the others cleared.
 inline constexpr unsigned one_per_group(unsigned value) {
-    for(const unsigned group:{level_modes,reward_modes,morale_modes})
+    for(const unsigned group:{level_modes,exp_modes,money_modes,morale_modes})
         if(const unsigned set=value&group)value=(value&~group)|(set&(0u-set));
     return value;
 }
@@ -88,8 +103,11 @@ inline constexpr unsigned morale_cap(unsigned on,uint32_t pilot){return player_p
 inline constexpr unsigned morale_room(unsigned on,uint32_t pilot,unsigned morale){return std::min(morale_cap(on,pilot),morale+127);}
 // A battle's EXP (801F60D4, per crew member) and kill money (801F6588) are u16s, taken by
 // 801FC160 (EXP stops at 49000 a pilot, money adds to the u32 at 8010F5F4).
-inline constexpr unsigned reward_multiplier(unsigned on){return on&reward_x10?10:on&reward_x5?5:on&reward_x2?2:1;}
-inline constexpr uint32_t multiplied(unsigned on,uint32_t reward){return std::min<uint32_t>(0xFFFF,(reward&0xFFFF)*reward_multiplier(on));}
+// The multipliers in halves (×1.5 is 3), one row each.
+inline constexpr unsigned exp_halves(unsigned on){return on&exp_x10?20:on&exp_x5?10:on&exp_x3?6:on&exp_x2?4:on&exp_x1_5?3:2;}
+inline constexpr unsigned money_halves(unsigned on){return on&money_x10?20:on&money_x5?10:on&money_x3?6:on&money_x2?4:on&money_x1_5?3:2;}
+// A reward times halves/2, rounded down, kept within the u16.
+inline constexpr uint32_t multiplied(unsigned halves,uint32_t reward){return std::min<uint32_t>(0xFFFF,(reward&0xFFFF)*halves/2);}
 inline constexpr uint16_t text_pilot_names=0x111E;
 // The base level (800A4BE0, on entering every map): the mean of the top 15 player
 // pilots, between 1 and min(99, chapters cleared + 40, 95). New enemies start at it
