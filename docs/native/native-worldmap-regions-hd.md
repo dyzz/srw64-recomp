@@ -156,6 +156,18 @@
   --pack-output assets/hd-ai/worldmap-surfaces/pack-v9 --bind
 ```
 
+**边界羽化（2026-10-25，HD 1.2）**：实机在伊朗高原地点 63 的镜头下，沙漠那块的方形边界仍看得出来。原因有两个：一是画稿的纹理和亮度跟周围不同；二是画稿自己的上下边就接不上（首末行差 22，正常相邻行约 7）。`repeat --feather 128` 会改写每个放置位四周的邻块：在离边缘 128 HD 像素内，把合成图按升余弦渐变到画稿的延续，边缘处完全是画稿。延续以平铺为主，只在贴着边缘的 32 像素里改用镜像（`MIRROR_BAND`），这样画稿上下边接不上的地方不会露出来；整片都镜像的话，会出现明显的万花筒式对称图案，欧洲那块尤其难看。
+
+每个放置位都按游戏实际显示的大小来做，也就是它的 `tile_span`：网格行距只有 62–63 个原像素，游戏把每块都压进这个高度。照 64 行去做的话，邻块切出来再拉伸，行会错开，实机看还是有一条硬线。只改写在本地图里只出现一次的键，改共用的键会把渐变带到别处。两种贴图一共改写 18 块邻块（东欧 6 块、沙漠 12 块），记在 `pack-report.json` 的 `feathered`。接缝处相邻两列的差从 16–35 降到 0.3–0.7。实机在地点 63 看，原尺寸截图里已经找不到边界。
+
+```sh
+.venv/bin/python -m tools.hd_ai.worldmap_surfaces repeat --kit assets/hd-ai/imagegen-repeat-kit \
+  --base assets/hd-ai/worldmap-surfaces/imagegen-3 --base-pack assets/hd-ai/worldmap-surfaces/pack-v8 \
+  --pack-output assets/hd-ai/worldmap-surfaces/pack-v11 --feather 128 --bind
+```
+
+地图机体图标再叠在 pack-v11 上，打成 `pack-v12`（见 [机体标识 HD](../design/unit-icon-hd.md)）。
+
 ## 花费
 
 - 地球地表：34 次，17.68 元。其中 3 个试验窗口 5 次、其余 20 个窗口 27 次（含 7 次自动重画）、补 5604 一次、青藏高原第四张一次。
