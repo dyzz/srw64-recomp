@@ -15,6 +15,7 @@
 #include "game_speed.hpp"
 #include "wide_map.hpp"
 #include "native_marker.hpp"
+#include "hd_replace.hpp"
 #include "native_map.hpp"
 #ifndef SRW64_GL_ONLY
 #include "native_gpu.hpp"
@@ -138,6 +139,8 @@ std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure m
 std::string srw64_switch_perf_system();   // switch/switch_platform.cpp: memory and core loads
 extern "C" void srw64_switch_background_thread();   // the same: the lowest priority for a helper thread
 std::string srw64_switch_hd_art();   // the same: the HD pack's art folder, "" for none
+const std::vector<uint32_t>& srw64_switch_splash();   // the same: the loading screen's last step
+void srw64_switch_drop_splash();
 void srw64_switch_error(const std::string& message, const std::string& details);
 void srw64_switch_boot_end();   // switch/switch_platform.cpp: the launch's text console goes
 #endif
@@ -1101,6 +1104,63 @@ struct SwitchPerf {
 };
 #endif
 
+#ifdef __SWITCH__
+// The loading screen's last step over the whole window (srw64_switch_splash), until the game
+// shows a picture of its own: from the window's first frame, through the game's first frames
+// and the BANPRESTO logo's fade from black. False when there is none.
+struct Splash {
+    GLuint texture = 0, framebuffer = 0;
+    bool draw(int width, int height) {
+        if (!framebuffer) {
+            const auto& pixels = srw64_switch_splash();
+            if (pixels.size() != size_t(1280) * 720) return false;
+            glGenTextures(1, &texture);
+            glBindTexture(GL_TEXTURE_2D, texture);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1280, 720, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
+            glGenFramebuffers(1, &framebuffer);
+            glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+        }
+        // Rows top first in the picture, bottom first in GL: flipped by the blit.
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, framebuffer);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+        glBlitFramebuffer(0, 0, 1280, 720, 0, height, width, 0, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        return true;
+    }
+    void release() {
+        if (framebuffer) { glDeleteFramebuffers(1, &framebuffer); glDeleteTextures(1, &texture); }
+        framebuffer = texture = 0;
+    }
+};
+// Whether the window's back buffer holds more than black: read back at 32 x 18 (a blit, then
+// 2.3 KB), only while the splash still waits for the game.
+bool shows_picture(int width, int height) {
+    static GLuint texture = 0, framebuffer = 0;
+    if (!framebuffer) {
+        glGenTextures(1, &texture);
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 18, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+        glGenFramebuffers(1, &framebuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+    }
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebuffer);
+    glBlitFramebuffer(0, 0, width, height, 0, 0, 32, 18, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    uint8_t pixels[32 * 18 * 4];
+    glReadPixels(0, 0, 32, 18, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    int lit = 0;
+    for (size_t i = 0; i < sizeof pixels; i += 4) lit += std::max({pixels[i], pixels[i + 1], pixels[i + 2]}) > 40;
+    if (lit < 20) return false;   // a few lit cells: a fade's first frames, a stray sprite
+    glDeleteFramebuffers(1, &framebuffer); glDeleteTextures(1, &texture);
+    framebuffer = texture = 0;
+    return true;
+}
+#endif
+
 class GLRenderer final : public ultramodern::renderer::RendererContext {
 public:
     explicit GLRenderer(uint8_t* rdram) : rdram(rdram) {
@@ -1147,7 +1207,7 @@ public:
         chosen_api = ultramodern::renderer::GraphicsApi::Auto;
         fprintf(stderr, "SRW64_GRAPHICS_API gl %s / %s scale=%d\n", (const char*)glGetString(GL_VERSION), (const char*)glGetString(GL_RENDERER), scale);
         gl_device = std::string((const char*)glGetString(GL_VERSION)) + " / " + (const char*)glGetString(GL_RENDERER);
-        {   // Whether the GPU takes the HD pictures' ASTC as it is (hd_texture.hpp).
+        {   // The compressed formats the driver lists (ASTC there is decoded on the CPU: hd_texture.hpp).
             GLint count = 0;
             glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &count);
             std::vector<GLint> formats(size_t(std::max(0, count)));
@@ -1162,29 +1222,65 @@ public:
         // original_only(), which the HD layers read as "no switch", that is HD where they can.
         // The Switch's NRO carries the HD pack, prepared for its GPU (tools/release/switch/prepare-hd): HD by
         // default, the settings' switch back to the originals; SRW64_HD_ART elsewhere.
+        std::filesystem::path hd_art;
         {
 #ifdef __SWITCH__
-            std::filesystem::path hd_art = srw64_switch_hd_art();
+            hd_art = srw64_switch_hd_art();
 #else
             const char* hd_env = std::getenv("SRW64_HD_ART");
-            std::filesystem::path hd_art = hd_env ? hd_env : "";
+            hd_art = hd_env ? hd_env : "";
 #endif
             std::error_code missing;
             const bool hd = !hd_art.empty() && std::filesystem::exists(hd_art / "srw64-portraits-hd.json", missing);
+            if (!hd) hd_art.clear();
+            // Each HD layer's start, timed (SRW64_BOOT_HD).
+            auto layer_start = std::chrono::steady_clock::now();
+            const auto timed = [&](const char* name) {
+                const auto now = std::chrono::steady_clock::now();
+                fprintf(stderr, "SRW64_BOOT_HD %s %.0f ms\n", name, std::chrono::duration<double, std::milli>(now - layer_start).count());
+                layer_start = now;
+            };
             if (hd) {
                 srw64::backgrounds::initialize(capture_directory);
                 srw64::portraits::configure(hd_art, capture_directory);
+                timed("portraits");
                 srw64::backgrounds::configure(hd_art, capture_directory);
+                timed("backgrounds");
+                // The RT64 texture pack: the interpreter keys tiles as RT64 does, the renderer
+                // draws the pack's picture in their place.
+                srw64::hd_replace::configure(hd_art);
+                timed("rt64");
+#ifdef SRW64_GL_ONLY
+                // The world map's models and marker, the battle's baked scenery and water
+                // (native_marker.cpp), recognised by the interpreter as RT64 recognises them.
+                srw64::marker::configure(capture_directory, hd_art.parent_path() / "native-marker", hd_art.parent_path() / "native-models");
+                timed("models");
+                interpreter->classify_meshes([](const uint8_t* rdram, uint32_t address, uint32_t segment4) {
+                    return srw64::marker::classify_gl(rdram, address, segment4);
+                });
+#endif
+                interpreter->replacements([](uint64_t key) { return srw64::hd_replace::has(key); });
+                renderer->replacement_hook([](uint64_t key, uint8_t wrap_s, uint8_t wrap_t, bool linear, uint16_t& w, uint16_t& h) {
+                    return GLuint(srw64::hd_replace::texture(key, wrap_s, wrap_t, linear, w, h));
+                });
                 fprintf(stderr, "SRW64_HD_ART %s\n", hd_art.string().c_str());
             }
             srw64::presentation::image_mode.configure(hd);
         }
         // The host's tagged draws (window frames, story and title text) from the modules that
-        // tag them, as SRW64Renderer configures them; HD layers beyond these stay off here.
+        // tag them, as SRW64Renderer configures them; the sprite layer's HD frames (title, units,
+        // battle sprites) from the same art.
+        const auto sprites_start = std::chrono::steady_clock::now();
         srw64::hdmap::configure(capture_directory);
+        const auto maps_done = std::chrono::steady_clock::now();
         const char* art = std::getenv("SRW64_ART_PACK");
-        srw64::sprites::configure(art ? std::filesystem::path(art) : std::filesystem::path(), capture_directory);
+        srw64::sprites::configure(!hd_art.empty() ? hd_art : art ? std::filesystem::path(art) : std::filesystem::path(), capture_directory);
+        fprintf(stderr, "SRW64_BOOT_HD maps %.0f ms sprites %.0f ms\n", std::chrono::duration<double, std::milli>(maps_done - sprites_start).count(),
+                std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - maps_done).count());
         renderer->native_hook([](const srw64::n64gl::Command& command, int width, int height) {
+#ifdef SRW64_GL_ONLY
+            if (srw64::marker::draw_gl(command, width, height)) return;
+#endif
             srw64::native_gl::draw(command, width, height);
         });
     }
@@ -1232,6 +1328,7 @@ public:
         const auto t2 = SwitchPerf::clock::now();
 #endif
         renderer->draw(frame);
+        srw64::hd_replace::end_frame();
 #ifdef __SWITCH__
         const auto t2a = SwitchPerf::clock::now();
 #endif
@@ -1302,6 +1399,14 @@ public:
         const int picture_x = (width - picture_width) / 2, picture_y = (height - picture_height) / 2;
         const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
         renderer->present(origin, picture_x, picture_y, picture_width, picture_height);
+#ifdef __SWITCH__
+        // Until the game's picture is more than black, the splash instead of it.
+        if (!splash_done && (splash_done = shows_picture(width, height))) { splash.release(); srw64_switch_drop_splash(); }
+        if (!splash_done) {
+            if (!splash.draw(width, height)) splash_done = true;
+            else { SDL_GL_SwapWindow(window); return; }
+        }
+#endif
         // Black beside what the frame fills: a scene not yet drawn wider keeps the original's
         // 4:3, a narrow tactical map its view (mask_sides on RT64).
         if (picture > srw64::n64gl::kPictureWidth) {
@@ -1411,6 +1516,13 @@ public:
 private:
     uint8_t* rdram;
     std::unique_ptr<srw64::n64gl::Renderer> renderer;
+#ifdef __SWITCH__
+    // The loading screen's last step (switch_platform.cpp), on the window from its first swap
+    // until the game draws a picture of its own (the BANPRESTO logo): the game's first second
+    // or two is black frames.
+    Splash splash;
+    bool splash_done = false;   // the game has shown a picture of its own
+#endif
     std::unique_ptr<srw64::n64gl::Interpreter> interpreter;
     srw64::n64gl::Frame frame;
     std::vector<uint8_t> display_copy;
@@ -1528,6 +1640,18 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #ifndef __SWITCH__   // the Switch's SDL has no window-manager info, nor needs it (the window is returned)
     if (!SDL_GetWindowWMInfo(window, &info)) std::abort();
 #endif
+#ifdef __SWITCH__
+    // The GL context before the UI's start (its fonts and pages take a while), and the loading
+    // screen in it at once: the window was black from here to the game's first frame.
+    gl_context = SDL_GL_CreateContext(window);
+    if (!gl_context) graphics_failure(SDL_GetError());
+    {
+        int w = 0, h = 0;
+        SDL_GL_GetDrawableSize(window, &w, &h);
+        Splash first;
+        if (first.draw(w, h)) { SDL_GL_SwapWindow(window); first.release(); }
+    }
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::ui::window_init(window,capture_directory);
     srw64::settings::window_init(window,capture_directory);
@@ -1535,8 +1659,10 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 #ifdef SRW64_GL_RENDERER
     if (gl_mode()) {
         // Made here, on the window thread, and handed to the graphics thread (GLRenderer).
+#ifndef __SWITCH__
         gl_context = SDL_GL_CreateContext(window);
         if (!gl_context) graphics_failure(SDL_GetError());
+#endif
         SDL_GL_MakeCurrent(window, nullptr);
 #if defined(__APPLE__)
         return {info.info.cocoa.window, nullptr};

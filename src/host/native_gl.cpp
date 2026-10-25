@@ -130,7 +130,11 @@ GLuint texture_for(const native_quads::Quad& q) {
         auto& stats = n64gl::gl_stats();
         ++stats.quads;
         stats.quad_bytes += bytes;
-        stats.quad_ms += n64gl::gl_ms_since(start);
+        const double ms = n64gl::gl_ms_since(start);
+        stats.quad_ms += ms;
+        if (ms > 10)
+            std::fprintf(stderr, "SRW64_GL_SLOW_UPLOAD %s format=%04X %ux%u levels=%u %.1f ms\n", q.label.c_str(), q.format, q.width,
+                         q.height, q.levels, ms);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, q.levels > 1 ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -190,7 +194,7 @@ void draw(const n64gl::Command& command, int width, int height) {
                 const float* m = command.mvp;
                 for (int j = 0; j < 4; ++j) p[j] = x * m[j] + y * m[4 + j] + q.z * m[8 + j] + m[12 + j];
             } else {
-                const float px = x * command.place[0] + command.place[1], py = y + command.place[2];
+                const float px = q.left >= 0 ? x + q.left : x * command.place[0] + command.place[1], py = y + command.place[2];
                 p[0] = px / (picture / 2) - 1; p[1] = 1 - py / (n64gl::kPictureHeight / 2.f); p[2] = 0; p[3] = 1;
             }
             uv[corner * 2] = q.uv[0] + (q.uv[2] - q.uv[0]) * cx;

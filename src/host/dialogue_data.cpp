@@ -1,11 +1,16 @@
 #include "dialogue_data.hpp"
 #include "app/runtime.hpp"
+#include "app/launch.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
 #include <memory>
 #include <mutex>
 #include <thread>
+
+#ifdef __SWITCH__
+std::string srw64_switch_hd_art();   // switch/switch_platform.cpp
+#endif
 
 namespace srw64::dialogue_data {
 namespace {
@@ -42,6 +47,17 @@ void load() {
             return;
         }
     }
+#ifdef __SWITCH__
+    // The data was prepared on a computer without the HD pack (tools/release/switch): its page
+    // pictures are attached here, from the pack the NRO carries or the one beside it.
+    if (const auto art = srw64_switch_hd_art(); !art.empty()) {
+        try {
+            app::attach_hd_art(*parsed, art);
+        } catch (const std::exception& error) {
+            std::fprintf(stderr, "SRW64_HD_PAGE_ART_FAILED %s\n", error.what());
+        }
+    }
+#endif
     if (parsed->contains("battle_assets")) battle = parsed->at("battle_assets");
     data = std::move(parsed);
 }

@@ -30,6 +30,8 @@ struct Quad {
     std::shared_ptr<const std::vector<uint8_t>> shift;   // 256 x RGBA8
     bool wrap = false;            // repeats across
     bool whole = false;           // drawn past the original's 320: not held to the scissor
+    float left = -1;              // >= 0: where the rectangle's x = 0 is in the picture (a widened
+                                  // map's view, wide_map.hpp), instead of the command's place
     std::string label;            // what it is, for traces
 };
 // True when the id is the provider's (out holds what it paints, maybe nothing yet).

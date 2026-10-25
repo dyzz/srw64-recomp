@@ -1290,6 +1290,11 @@ std::string image_async(const std::string& path,int width=0,bool ahead=false) {
     pictures::ask(key,path,width);
     return {};
 }
+// An <img> of a picture image_async() gave, or while it is still being read an empty box
+// of the same style: an <img> without a source draws white.
+std::string picture_or_gap(const std::string& src,const std::string& style) {
+    return src.empty()?"<div style='"+style+"'></div>":"<img src='"+escape(src)+"' style='"+style+"'/>";
+}
 // A unit picture's opaque bounds, or nullptr while its file is still being read.
 const std::array<int,5>* art_bounds_async(const std::string& path,bool ahead=false) {
     if(auto found=art_bounds.find(path);found!=art_bounds.end())return &found->second;
@@ -4206,7 +4211,7 @@ void upgrade_sync() {
         std::string art;
         if(unit.contains("art") && unit.at("art").contains("path")) {
             const float w=unit.at("art").value("width",96.f),h=unit.at("art").value("height",96.f),scale=std::min(1.f,std::min(118.f/w,118.f/h));
-            art="<img src='"+escape(image_async(portrait_path(unit.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+            art=picture_or_gap(image_async(portrait_path(unit.at("art")),int(w*scale*u+.5f)),"width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;");
         }
         body+=box(176,8,302,132,art,10.f,"upgrade-art",std::string("display:flex; align-items:center; justify-content:center; background-color:")+kLinesPanel+";")+
             box(21,133,302,219,lines,10.5f,"upgrade-rows");
@@ -4374,7 +4379,7 @@ void swap_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return picture_or_gap(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)),"width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;");
     };
     const auto yes_no=[&](const std::string& prefix,unsigned cursor,float x0,float y0,float x1,float y1,float row){
         return box(x0,y0,x1,y1,"<button id='"+prefix+"-yes' class='"+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='"+prefix+"-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,prefix+"-choice");
@@ -4458,7 +4463,8 @@ void swap_sync() {
 void save_sync() {
     const auto next=save_page::state();save_request=next;
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
+    // The pictures' arrival too (image_async): a slot's portrait comes after the page is made.
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(save_doc && save_stamp==stamp)return;
     save_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
@@ -4481,7 +4487,7 @@ void save_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return picture_or_gap(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)),"width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;");
     };
     const auto yes_no=[&](unsigned cursor,float x0,float y0,float x1,float y1,float row){
         return box(x0,y0,x1,y1,std::string("<button id='save-yes' class='")+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='save-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,"save-choice");
@@ -4669,7 +4675,7 @@ void ability_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return picture_or_gap(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)),"width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;");
     };
     const std::string screen=next.value("screen",std::string());
     std::string body="<div class='im-root' id='ability' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";

@@ -288,7 +288,7 @@ if(SRW64_ENABLE_RT64)
         target_sources(${SRW64_HOST_TARGET} PRIVATE game_hooks.cpp)
         # The PS Vita's GL renderer, chosen at run time with SRW64_RENDERER=gl (graphics.cpp).
         if(OpenGL_FOUND)
-            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp
+            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp hd_replace.cpp
                 "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp")
             target_compile_definitions(${SRW64_HOST_TARGET} PRIVATE SRW64_GL_RENDERER)
             target_link_libraries(${SRW64_HOST_TARGET} PRIVATE OpenGL::GL)
@@ -353,8 +353,8 @@ if(SRW64_GL_ONLY)
         cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp stage_info.cpp
         rom_art.cpp legacy.cpp quick_load.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"
         native_map.cpp native_sprite.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp game_hooks.cpp
-        native_portrait.cpp native_background.cpp hd_texture.cpp
-        "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp
+        native_portrait.cpp native_background.cpp hd_texture.cpp hd_replace.cpp native_marker.cpp
+        "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp hd_replace.cpp
         "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp" gl_only_stubs.cpp)
     target_compile_definitions(srw64-gl-host PRIVATE SRW64_NATIVE_DIALOGUE SRW64_GL_RENDERER SRW64_GL_ONLY)
     set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${SRW64_ROOT}/CMakeLists.txt")

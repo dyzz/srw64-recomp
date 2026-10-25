@@ -9,10 +9,12 @@ Nintendo Switch（docs/design/switch-port.md）
 
   HD（默认开，整包打进 NRO 的 romfs）：先把发布用的 HD 包转成 Switch GPU 用的格式，再 build.sh game。
     cargo run --release --manifest-path tools/release/switch/prepare-hd/Cargo.toml \
-        --target-dir build/recomp/prepare-hd-target -- [--pack build/release/<版本>/pack/hd] [--layers portraits,backgrounds,maps]
-  需要 astcenc（ARM astc-encoder，$ASTCENC 或 PATH）。产出 build/recomp/switch-romfs/hd：清单原样，
-  每张图旁边一个 .mwtex（预乘、带缩小链、ASTC 4×4／6×6、zstd；地图索引图是原样 8 位）。目录存在时
-  build.sh game 把它打进 NRO；不在就是不带 HD 的 NRO。全量（头像、背景、地图）约 1 分钟、535 MiB。
+        --target-dir build/recomp/prepare-hd-target -- [--pack build/release/<版本>/pack/hd]
+        [--layers portraits,backgrounds,maps,sprites,rt64]
+  产出 build/recomp/switch-romfs/hd：清单原样，每张图旁边一个 .mwtex（带缩小链、BC7、zstd；地图索引图是
+  原样 8 位，地图机体图标与对白框是 RGBA8），另带模型包、头像与精灵层的原图。不用 ASTC：Switch 的 Mesa
+  在 CPU 上解码它。目录存在时 build.sh game 把它打进 NRO；不在就是不带 HD 的 NRO。全量约 6.5 分钟、1.2 GiB。
+  换格式后先删掉 build/recomp/switch-romfs/hd（已转的图只按时间跳过）。
 
   先在仓库根目录 make（生成 CPU 代码、拉固定版本上游、RSP 音频）。worktree 里 build/ 的内容软链到
   主工作区（cpu-bound、runtime-lifecycle、audio-probe、frontend-adapter 留本地），build.sh 会把

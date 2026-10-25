@@ -31,7 +31,13 @@ inline std::vector<char> read_image_bytes(const std::string& path) {
     const auto mark = path.rfind('#');
     std::ifstream input(mark == std::string::npos ? path : path.substr(0, mark), std::ios::binary);
     if (!input) throw std::runtime_error("Cannot read image " + path);
-    if (mark == std::string::npos) return {std::istreambuf_iterator<char>(input), {}};
+    if (mark == std::string::npos) {   // whole, not a byte at a time through the stream
+        input.seekg(0, std::ios::end);
+        std::vector<char> bytes(size_t(input.tellg()));
+        input.seekg(0);
+        input.read(bytes.data(), std::streamsize(bytes.size()));
+        return bytes;
+    }
     const auto colon = path.find(':', mark);
     if (colon == std::string::npos) throw std::runtime_error("Invalid image range " + path);
     const auto offset = std::stoull(path.substr(mark + 1, colon - mark - 1)), size = std::stoull(path.substr(colon + 1));

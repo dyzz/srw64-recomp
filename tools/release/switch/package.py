@@ -2,9 +2,10 @@
 """The Switch's folder (docs/design/switch-port.md): build/recomp/switch-package/Marchwind64,
 copied as it is to sdmc:/switch/Marchwind64 on the SD card. It holds the NRO and, beside it,
 what bundled_resource() looks for there (src/host/host.cpp, the Switch entry): the fonts,
-the dialogue text and the stages' metadata; and game/, the data from the player's ROM (the
-ROM, the art pack, the dialogue data), which the console makes from rom.z64 on its first
-launch, or, in development, prepare_data.py made on this computer. The game keeps its saves, settings and run in the same folder.
+the dialogue text and the stages' metadata; splash/, the loading screen (splash.py); and game/,
+the data from the player's ROM (the ROM, the art pack, the dialogue data), which the console
+makes from rom.z64 on its first launch, or, in development, prepare_data.py made on this
+computer. The game keeps its saves, settings and run in the same folder.
 
   tools/release/switch/package.py           after build.sh game
   tools/release/switch/package.py --upload IP
@@ -50,6 +51,9 @@ def stage() -> None:
             shutil.copyfile(path, fonts / path.name)
     if not (fonts / 'HarmonyOS_Sans_SC.ttf').exists():
         raise SystemExit('build/fonts has no HarmonyOS Sans: run tools/content/prepare_fonts.py')
+    # The loading screen the console shows while the game starts (splash.py).
+    import splash
+    splash.make(PACKAGE / 'splash', fonts)
     text = ROOT / 'content/dialogue'
     for path in sorted(text.rglob('*.txt')):
         target = PACKAGE / 'dialogue' / path.relative_to(text)
