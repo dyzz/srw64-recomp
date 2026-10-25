@@ -78,7 +78,7 @@ size_t prepare_console_data(const fs::path& rom, const fs::path& out, const fs::
     boot_step("prepare: rom");
     const auto bytes = rom_big_endian(read_text(rom, 64u << 20));
     if (bytes.empty() || sha256_bytes(bytes) != expected)
-        throw std::runtime_error("Not the supported ROM (Super Robot Taisen 64, Japan): " + rom.string());
+        throw UnsupportedRom("Not the supported ROM (Super Robot Taisen 64, Japan): " + rom.string());
     if (rom != game / "rom.z64") atomic_write(game / "rom.z64", bytes);
     atomic_write(game / "blank.sram", std::string(32768, '\0'));
     // The importer's cache, in the output only while it is made.

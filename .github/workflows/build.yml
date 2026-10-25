@@ -1,6 +1,6 @@
-# Windows x64, Linux x64 (Steam Deck) and Android arm64 builds (docs/design/three-platform-port.md,
-# docs/design/android-port.md; the macOS app and the HD pack are built on the Mac by
-# tools/release/build_release.py).
+# Windows x64, Linux x64 (Steam Deck), Android arm64 and Nintendo Switch builds
+# (docs/design/three-platform-port.md, docs/design/android-port.md, docs/design/switch-port.md;
+# the macOS app and the HD packs are built on the Mac by tools/release/build_release.py).
 #
 # The game code is recompiled from the ROM, which never enters this public repository:
 # the generate job reads it from the private dyzz/srw64-ci-inputs through a read-only
@@ -404,6 +404,72 @@ jobs:
         with:
           name: Marchwind64-linux-x64-encrypted
           path: Marchwind64-linux-x64.tar.gz.enc
+          retention-days: 7
+
+  # The Switch's NRO (tools/release/switch/build.sh) in the pinned devkitA64 image, on an
+  # arm64 runner as on the Mac the port is built on. Without the HD pack: that is a download
+  # of its own (prepare-hd, on the Mac).
+  switch:
+    needs: generate
+    if: ${{ !inputs.android_only }}
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: generated-encrypted
+
+      - name: Decrypt the generated inputs
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass env:KEY -in generated.tgz.enc -out generated.tgz
+          tar -xzf generated.tgz
+          rm generated.tgz.enc generated.tgz
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Tools
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install -q -e . -r requirements.lock
+
+      # ICU cross-compiled for the Switch (build_icu.sh, from the pinned sources): devkitPro has none.
+      - name: ICU cache
+        uses: actions/cache@v5
+        with:
+          path: |
+            build/recomp/switch-deps/prefix
+            build/recomp/switch-deps/icudt78_dat.c
+          key: switch-icu-${{ hashFiles('config/recomp/macos-dependencies.json', 'tools/release/switch/build_icu.sh', 'tools/release/icu_data.py', 'tools/release/switch/Dockerfile') }}-v1
+
+      - name: ICU sources
+        run: |
+          if [ ! -f build/recomp/switch-deps/prefix/lib/libicuuc.a ]; then
+            PYTHONPATH=tools/release .venv/bin/python -c "import json; from pathlib import Path; \
+              from build_macos_dependencies import source; \
+              print(source('icu', json.load(open('config/recomp/macos-dependencies.json'))['sources']['icu'], Path('build/macos-deps/sources')))"
+          fi
+
+      - name: Build the NRO
+        run: |
+          SRW64_SWITCH_EMBED_HD=OFF tools/release/switch/build.sh game
+          ls -l build/recomp/switch-build/Marchwind64.nro
+
+      - name: Package and encrypt
+        env:
+          KEY: ${{ secrets.CI_ARTIFACT_KEY }}
+        run: |
+          .venv/bin/python tools/release/switch/package.py --zip Marchwind64-switch.zip
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:KEY -in Marchwind64-switch.zip -out Marchwind64-switch.zip.enc
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: Marchwind64-switch-encrypted
+          path: Marchwind64-switch.zip.enc
           retention-days: 7
 
   android:

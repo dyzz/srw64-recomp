@@ -18,6 +18,10 @@ computer. The game keeps its saves, settings and run in the same folder.
   tools/release/switch/package.py --upload IP --debug
                                             and the empty debug file that opens the debug
                                             interface (attach.py)
+  tools/release/switch/package.py --zip FILE
+                                            the release's package: the folder as
+                                            switch/Marchwind64/ (unzipped at the SD card's
+                                            root), with README.txt and licenses/, never game/
 """
 from __future__ import annotations
 
@@ -29,6 +33,7 @@ import json
 import secrets
 from pathlib import Path
 import shutil
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[3]
 BUILD = ROOT / 'build/recomp/switch-build'
@@ -37,7 +42,7 @@ REMOTE = '/switch/Marchwind64'
 TOKEN = PACKAGE.parent / 'debug-token'
 
 
-def stage() -> None:
+def stage(prepared: bool = True) -> None:
     nro = BUILD / 'Marchwind64.nro'
     if not nro.exists():
         raise SystemExit(f'{nro} is missing: run tools/release/switch/build.sh game')
@@ -63,8 +68,33 @@ def stage() -> None:
     # The data from the ROM, when it was prepared on this computer: without it the console
     # makes it from rom.z64 on its first launch (about half a minute, app/console_data.hpp).
     data = ROOT / 'build/recomp/switch-data/game'
-    if (data / 'prepared.json').exists():
+    if prepared and (data / 'prepared.json').exists():
         shutil.copytree(data, PACKAGE / 'game')
+
+
+ARCHIVES = ROOT / 'build/macos-deps/sources'   # the pinned sources (build_macos_dependencies.py)
+
+
+def release_zip(archive: Path) -> None:
+    """The staged folder as switch/Marchwind64/ in a zip, with the player's README.txt and the
+    licenses: the program's and those of the pinned sources it links that are on this
+    computer. game/ is never staged for it: that is made from the player's own ROM."""
+    (PACKAGE / 'README.txt').write_bytes((Path(__file__).resolve().parent / 'player-README.txt').read_bytes())
+    licenses = PACKAGE / 'licenses'
+    licenses.mkdir()
+    shutil.copyfile(ROOT / 'LICENSE', licenses / 'Marchwind64-LICENSE')
+    for name, pattern in (('icu', 'LICENSE'), ('freetype', 'LICENSE.TXT'), ('harfbuzz', 'COPYING')):
+        found = sorted((ARCHIVES / name).glob(f'*/{pattern}'))
+        if found:
+            shutil.copyfile(found[0], licenses / f'{name}-{pattern}')
+    if (PACKAGE / 'game').exists():
+        raise SystemExit('game/ holds data from a ROM: it never goes into a release')
+    archive.unlink(missing_ok=True)
+    with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as out:
+        for path in sorted(PACKAGE.rglob('*')):
+            if path.is_file():
+                out.write(path, 'switch/Marchwind64/' + path.relative_to(PACKAGE).as_posix())
+    print(archive)
 
 
 def digest(path: Path) -> str:
@@ -164,8 +194,14 @@ def main() -> None:
     parser.add_argument('--debug', action='store_true', help='with --upload: open the debug interface')
     parser.add_argument('--clean', action='store_true', help='with --upload: remove the old launch data')
     parser.add_argument('--hd', action='store_true', help='with --upload: send the prepared HD pack beside the NRO')
+    parser.add_argument('--zip', type=Path, metavar='FILE', help="the release's package (no game/, no HD)")
     args = parser.parse_args()
-    stage()
+    if args.zip and args.upload:
+        raise SystemExit('--zip makes a release package; upload a development folder without it')
+    stage(prepared=not args.zip)
+    if args.zip:
+        release_zip(args.zip.resolve())
+        return
     print(PACKAGE)
     if args.upload:
         upload(args.upload, args.debug, args.clean, args.hd)

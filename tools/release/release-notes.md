@@ -1,14 +1,14 @@
 An unofficial native port of **Super Robot Wars 64** with full English and Chinese translations. No ROM included: you need your own original Japanese ROM. 中文说明见下方。
 
-> **HD pack {hd_version}** (optional, every platform): **[Download {hd_name} ({hd_size})]({hd_download})**. {hd_status_en} How to install it and where its images come from: [the HD {hd_version} release]({hd_url}).
+> **HD pack {hd_version}** (optional; the Switch has a pack of its own, in the same release): **[Download {hd_name} ({hd_size})]({hd_download})**. {hd_status_en} How to install it and where its images come from: [the HD {hd_version} release]({hd_url}).
 
 ## Downloads
 
 | File | Size | What it is |
 | --- | --- | --- |
 {package_rows_en}
-| [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}), the same for every platform. |
-
+| [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}) for macOS, Windows, Linux and Android. |
+{switch_hd_row_en}
 ## What's new in 0.4.10
 
 ### Fixes
@@ -65,15 +65,15 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 非官方的《超级机器人大战64》原生移植，附全游戏中文与英文翻译。不含 ROM：需要自备日版原版 ROM。
 
-> **HD 包 {hd_version}**（可选，各平台通用）：**[下载 {hd_name}（{hd_size}）]({hd_download})**。{hd_status}安装方法和图片来源见 [HD {hd_version} 发布页]({hd_url})。以后 HD 包出新版本时，游戏的更新检查会提示。
+> **HD 包 {hd_version}**（可选；Switch 用单独的一份，在同一个发布页）：**[下载 {hd_name}（{hd_size}）]({hd_download})**。{hd_status}安装方法和图片来源见 [HD {hd_version} 发布页]({hd_url})。以后 HD 包出新版本时，游戏的更新检查会提示。
 
 ### 下载
 
 | 文件 | 大小 | 内容 |
 | --- | --- | --- |
 {package_rows}
-| [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），各平台通用。 |
-
+| [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），macOS、Windows、Linux、安卓通用。 |
+{switch_hd_row}
 ### 本版更新（0.4.10）
 
 #### 修复

@@ -45,14 +45,14 @@
   - 上游 Mesa 20.1 的 `nvc0_screen.c` 报 `GLSL_FEATURE_LEVEL` 430（兼容档同样 430），补丁没改：**上限是 GL 4.3（核心/兼容）、GLSL 4.30、GLES 3.2**。
   - **没有着色器磁盘缓存**：Meson 把 `horizon` 当 Windows 处理关掉了 shader cache。每次启动所有着色器重新编译。
   - switchbrew 官方示例（[switch-examples `graphics/opengl`](https://github.com/switchbrew/switch-examples/tree/master/graphics/opengl)，最后提交 2026-02-01）统一用 `eglBindAPI(EGL_OPENGL_API)`、4.3 核心档、RGBA8/D24S8，着色器 `#version 330 core`（`textured_cube` 用 `320 es`）；`es2gears` 用 `EGL_CONTEXT_CLIENT_VERSION 2`。链接 `-lglad -lEGL -lglapi -ldrm_nouveau -lnx`。
-- **编译开销（二手）。** SwitchWakerHD 在自己加了磁盘缓存的 Mesa 上测得首次每个程序链接约 180 ms，命中缓存约 13 ms（[SwitchWakerHD `docs/switch-port.md`](https://github.com/centollOS/SwitchWakerHD/blob/main/docs/switch-port.md)，2026-10-16）。DK64Recomp-NX 记录首次见到房间时贴图与着色器造成 33–72 ms 的卡顿，启动黑屏约 10 秒（[DK64Recomp-NX README](https://github.com/Trinalord777/DK64Recomp-NX)，v1.1.2，2026-10-11）。
+- **编译开销（二手）。** SwitchWakerHD 在自己加了磁盘缓存的 Mesa 上测得首次每个程序链接约 180 ms，命中缓存约 13 ms（[SwitchWakerHD 的 docs/switch-port.md](https://github.com/centollOS/SwitchWakerHD/blob/main/docs/switch-port.md)，2026-10-16）。DK64Recomp-NX 记录首次见到房间时贴图与着色器造成 33–72 ms 的卡顿，启动黑屏约 10 秒（[DK64Recomp-NX README](https://github.com/Trinalord777/DK64Recomp-NX)，v1.1.2，2026-10-11）。
 - **deko3d（已查证）。** devkitPro 的底层 API（[devkitPro/deko3d](https://github.com/devkitPro/deko3d)，v0.5.0 2023-11-26，最后推送 2026-02-18），没有运行时 GLSL 编译器，着色器用 [uam](https://github.com/devkitPro/uam)（基于 Mesa 19 的 GLSL/TGSI + nv50_ir）离线编译。SwitchWakerHD 2026-10-07 从 Mesa GL 换到 deko3d，报告帧率持平或更好、少一个 Mesa GL 线程（二手，同上）。
 - **社区 NVK（已查证仓库存在，成熟度未知）。** [danfromtico/mesa-switch](https://github.com/danfromtico/mesa-switch)（2026-09-10 建，2026-10-13 推送，无许可证文件）：Mesa 26.2 + 对 libnx 写的 Horizon 后端，静态链接的 NVK（README 称 Vulkan 1.3）与 NVC0/Zink 上的 GL/GLES。自述限制里有「不能创建固定地址或保留的 CPU 映射」、没有 `VK_EXT_map_memory_placed`，EGL 配置标为非一致。同类还有 NaGaa95/mesa-switch、HayatoG/switch-nvk、PalindromicBreadLoaf/nxvk。已发布的使用者：[StevensND/nfsmw-nx](https://github.com/StevensND/nfsmw-nx)（Xbox 360 静态重编译，2026-09-27 建，229★，二手：默认频率 30 帧，管线缓存存 SD 卡，「第一场比赛会卡几秒」）。
 
 ### SDL（已查证）
 
 - `switch-sdl2` 2.28.5-4（[PKGBUILD](https://github.com/devkitPro/pacman-packages/blob/master/switch/SDL2/PKGBUILD)，2024-03-24）：同时定义 `SDL_VIDEO_OPENGL_EGL`、`SDL_VIDEO_OPENGL`、`SDL_VIDEO_OPENGL_ES2`，默认 ES 2.0，桌面 GL 走 SDL 的通用 EGL 路径，建窗口前设 `SDL_GL_CONTEXT_PROFILE_MASK` 即可（读代码，推断可用）。libultraship 的 Switch 分支就是 SDL2 + glad + 请求 GL 2.1 上下文。手柄走 libnx HID（Joy-Con 双持/掌机/Pro，带震动），触屏 `hidGetTouchScreenStates`，音频 audren，pthread 开、filesystem 模块关。
-- SDL3：官方 Switch/Switch 2 支持在**只对 NDA 开发者开放的单独仓库**（[SDL `docs/README-switch.md`](https://github.com/libsdl-org/SDL/blob/main/docs/README-switch.md)，2025-10-14）。devkitPro 自己有未打包的 libnx SDL3 分支 `switch-sdl-3.4`（最后提交 2026-02-01），不能指望。本项目桌面用 SDL3 + sdl2-compat，宿主只调 SDL2 API，Switch 直接链 SDL2 即可。
+- SDL3：官方 Switch/Switch 2 支持在**只对 NDA 开发者开放的单独仓库**（[SDL 的 docs/README-switch.md](https://github.com/libsdl-org/SDL/blob/main/docs/README-switch.md)，2025-10-14）。devkitPro 自己有未打包的 libnx SDL3 分支 `switch-sdl-3.4`（最后提交 2026-02-01），不能指望。本项目桌面用 SDL3 + sdl2-compat，宿主只调 SDL2 API，Switch 直接链 SDL2 即可。
 
 ### CPU、线程与内存映射（已查证，除特别标注）
 
@@ -119,7 +119,7 @@ HD 包 1.1：zip 533 MB，3,646 张图（1,815 PNG + 1,831 JPG）。全部解码
 
 ### 运行库：libnx 上的阻塞项
 
-Vita 的补丁走 `tools/recomp/toolchain/prepare_vita_runtime.py`（`vita` 分支，生成替身到 `build/recomp/vita-runtime/`，不改上游检出）。Switch 照同一机制写 `prepare_switch_runtime.py`，大部分条目比 Vita 少：
+Vita 的补丁走 vita 分支的 tools/recomp/toolchain/prepare_vita_runtime.py（生成替身到 `build/recomp/vita-runtime/`，不改上游检出）。Switch 照同一机制写 `prepare_switch_runtime.py`，大部分条目比 Vita 少：
 
 | 项 | 位置 | Switch 做法 |
 | --- | --- | --- |
@@ -246,7 +246,7 @@ HOME 与截图键归系统，不可用。
 | 功能验证（主力） | Mac 上的 `srw64-gl-host`（`SRW64_GL_ONLY` 构建，与 Switch 版同源）配 MCP 与检查脚本；`export SRW64_HOST_BINARY=<srw64-gl-host>` 后 `Session.launch` 都走它 | `vita` 分支 V1 记录，27 个检查已通过。平台无关的问题都在这一步解决 |
 | 编 NRO | Docker `devkitpro/devkita64`（`tools/release/switch/build.sh`，S0 新建），产出 `.nro` 与带符号的 `.elf`（崩溃定位要用，每次构建一起留存） | 先例项目 CI 同样用这个镜像（已查证 Starship/Ghostship `switch.yml`） |
 | 冒烟 | Ryubing 加载 NRO（需本机密钥与固件，推断） | 见上一节模拟器的局限 |
-| 推到实机 | Switch 上 hbmenu 按 **Y** 进 NetLoader（已查证 nx-hbmenu `nx_main/main.c`）；Mac 上 `nxlink -a <Switch IP> -s Marchwind64.nro`：上传后落到 `sdmc:/switch/Marchwind64.nro` 并启动。`-p` 是相对 hbmenu 当前目录（`sdmc:/switch`）的路径，hbmenu 不建目录，目录不存在时屏幕报 `open: err=2`、nxlink 只得到回应 255（2026-10-23 实机），`-s` 留在原地接收程序的 stdout/stderr（程序里调 `nxlinkStdio()`） | nxlink 选项读 [switch-tools `src/nxlink.c`](https://github.com/switchbrew/switch-tools/blob/master/src/nxlink.c)：上传端口 28280，回连端口 28771 |
+| 推到实机 | Switch 上 hbmenu 按 **Y** 进 NetLoader（已查证 nx-hbmenu `nx_main/main.c`）；Mac 上 `nxlink -a <Switch IP> -s Marchwind64.nro`：上传后落到 `sdmc:/switch/Marchwind64.nro` 并启动。`-p` 是相对 hbmenu 当前目录（`sdmc:/switch`）的路径，hbmenu 不建目录，目录不存在时屏幕报 `open: err=2`、nxlink 只得到回应 255（2026-10-23 实机），`-s` 留在原地接收程序的 stdout/stderr（程序里调 `nxlinkStdio()`） | nxlink 选项读 [switch-tools 的 src/nxlink.c](https://github.com/switchbrew/switch-tools/blob/master/src/nxlink.c)：上传端口 28280，回连端口 28771 |
 | nxlink 装在 Mac 本机 | **不要在 Docker 里跑 nxlink。** hbmenu 把「上传连接的源地址」记作回连地址（`loadnro` 里 `ad->nxlink_host = remote`，已查证 nx-hbmenu `common/netloader.c`），程序再连回这个地址的 28771 端口。Docker Desktop 下容器出站经 NAT，Switch 看到的源地址是 Mac，而 28771 在容器里监听，不发布端口就收不到；不带 `-a` 时的 UDP 广播发现也出不了容器的网络（推断）。nxlink 来自 devkitPro 的 `switch-tools`：Mac 上装 devkitPro pacman（`devkitpro-pacman-installer.pkg`，[devkitPro/pacman 发布页](https://github.com/devkitPro/pacman/releases)，v6.0.2）后装 `switch-tools`，或直接从 switch-tools 源码编（只依赖 zlib；本机做法见 `tools/release/switch/README.txt`）。macOS 上不带 `-a` 的广播报 `sendto: No route to host`，一律带 `-a`。NetLoader 只接受一次连接：别用 `nc` 之类探端口，空连接会让它报 `error getting name length err=11` 并退出 | 已查证工具来源；NAT 行为是推断 |
 | 调试接口接 MCP | 见下「调试接口的局域网模式」：Mac 上 `tools/release/switch/attach.py --host <Switch IP>` 写出本地会话的 `debug.json`，之后 `srw64_attach`、`srw64ctl.py`、检查脚本照常用 | 与 Deck（ssh）、安卓（adb）同一套 `Session.attach()` |
 | 拷大文件 | ROM：`sdmc:/switch/Marchwind64/rom.z64`，一次性放好；HD 包、存档、日志走 ftpd 或读卡器 | — |
@@ -287,7 +287,7 @@ HOME 与截图键归系统，不可用。
 
 ### S0 编译与冒烟（Docker 与模拟器，不需要实机）
 
-1. `tools/release/switch/`：Dockerfile（基于 `devkitpro/devkita64`，加 switch-sdl2、switch-mesa、switch-glad）与构建脚本，照 `tools/release/vita/`。
+1. `tools/release/switch/`：Dockerfile（基于 `devkitpro/devkita64`，加 switch-sdl2、switch-mesa、switch-glad）与构建脚本，照 vita 分支的 tools/release/vita/。
 2. `prepare_switch_runtime.py`：上表的运行库补丁（`mmap`→16 MiB 分配、MOD 空实现、线程分支、信号量、`WindowHandle`、`quick_exit`）+ 链接选项 `--wrap=pthread_detach`。
 3. 交叉编译 `srw64_cpu`（全部 `funcs_*.c`）+ 运行库 + `srw64-gl-host` 的源码（`gl_api.hpp` 加 `__SWITCH__`；FreeType/HarfBuzz/ICU 源码交叉编译）。记录 `.text`、编译警告、`__ANDROID__`/`__linux__` 分支的去向。
 4. 平台层最小版：入口、应用模式检查、romfs、`sdmc:/switch/Marchwind64/` 路径、GLES 上下文（对照 GL 2.1 兼容）、nxlink 日志、`__libnx_exception_handler`。

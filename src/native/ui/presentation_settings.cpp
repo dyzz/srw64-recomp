@@ -60,9 +60,9 @@ input::Bindings load_bindings(const nlohmann::json& saved) {
 std::atomic<BattleUi> battle{BattleUi::Native};
 std::atomic_bool map_icons_hd{true};
 std::atomic_bool msaa_on{true},msaa_started{true};
-#if defined(__ANDROID__) || defined(__SWITCH__)
-// Android is being tuned on the phone (docs/design/android-port.md), the Switch on the
-// console (switch-port.md): the readout starts on.
+#if defined(__ANDROID__)
+// Android is being tuned on the phone (docs/design/android-port.md): the readout starts on.
+// The Switch's starts off as the desktop's: it covered the pages' top right corner there.
 constexpr bool fps_default=true;
 #else
 constexpr bool fps_default=false;

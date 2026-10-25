@@ -33,6 +33,7 @@ import subprocess
 import sys
 import time
 import tomllib
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
 DEPS = ROOT / "build/macos-deps/14.0-arm64/prefix"
@@ -46,7 +47,7 @@ CLONED = ("upstream", "tool-build", "cpu-scan")
 CLONED_ASSETS = ("fonts", "hd-ai", "models")
 # --attach: the other platforms' packages and their lines in the notes.
 ATTACH_NAMES = {"linux": "Marchwind64-{version}-linux-x64.tar.gz", "windows": "Marchwind64-{version}-windows-x64.zip",
-                "android": "Marchwind64-{version}-android-arm64.apk"}
+                "android": "Marchwind64-{version}-android-arm64.apk", "switch": "Marchwind64-{version}-switch.zip"}
 PACKAGE_ROWS = {
     "macos": "应用本体。Apple Silicon，macOS 14 起。首次启动时选择你的 ROM。",
     "linux": "应用本体。Linux x64（含 Steam Deck），glibc 2.35 起，Vulkan。解压后运行 `marchwind64.sh`；"
@@ -55,6 +56,8 @@ PACKAGE_ROWS = {
                "（或 `%LOCALAPPDATA%\\SRW64Recomp\\rom.z64`），双击 `Marchwind64.cmd`。",
     "android": "应用本体（试验）。arm64，Android 9 起，Vulkan 1.1。在设备上安装 APK，首次启动时选择 ROM；"
                "HD 包下载后用 Marchwind64 打开 zip 即可导入。",
+    "switch": "应用本体（试验）。Nintendo Switch 自制系统（Atmosphère＋hbmenu），只支持应用模式（按住 R 启动任意游戏进 hbmenu）。"
+              "解压到 SD 卡根目录，把 ROM 命名为 `rom.z64` 放进 `/switch/Marchwind64/`；首次启动在主机上导入约半分钟。详见包内 README.txt。",
 }
 PACKAGE_EN = {
     "macos": "The app. Apple Silicon, macOS 14 or later. Choose your ROM on first launch.",
@@ -65,8 +68,12 @@ PACKAGE_EN = {
                "`Marchwind64.cmd` (or at `%LOCALAPPDATA%\\SRW64Recomp\\rom.z64`), then double-click `Marchwind64.cmd`.",
     "android": "The app (experimental). arm64, Android 9 or later, Vulkan 1.1. Install the APK and choose the ROM on first "
                "launch; open the downloaded HD zip with Marchwind64 to import it.",
+    "switch": "The app (experimental). A Nintendo Switch with custom firmware (Atmosphère and hbmenu), application mode only "
+              "(hold R while starting any game to open hbmenu). Extract to the SD card's root and put the ROM in "
+              "`/switch/Marchwind64/` as `rom.z64`; the first launch imports it on the console in about half a minute. "
+              "See README.txt inside.",
 }
-PLATFORM_OF = lambda name: next(p for p in ("macos", "linux", "windows", "android") if p in name)  # noqa: E731
+PLATFORM_OF = lambda name: next(p for p in ("macos", "linux", "windows", "android", "switch") if p in name)  # noqa: E731
 
 
 def render_notes(template: str, version: str, commit: str, packages: list[str], artifacts: dict, hd: dict) -> str:
@@ -78,13 +85,20 @@ def render_notes(template: str, version: str, commit: str, packages: list[str], 
     checksums = [f"{artifacts[name]['sha256']}  {name}" for name in packages]
     if hd.get("sha256"):
         checksums.append(f"{hd['sha256']}  {hd['name']}")
+    # The Switch's HD pack (prepare-hd's format), beside the HD pack in its release.
+    switch = hd.get("switch") or {}
+    if switch.get("sha256"):
+        checksums.append(f"{switch['sha256']}  {switch['name']}")
+    switch_row = (lambda text: f"| [`{switch['name']}`]({switch['url']}) | {mib(switch['bytes'])} | {text} |\n" if switch else "")  # noqa: E731
     changed = hd.get("changed", False)
     return template.format(
         version=version, tag=f"v{version}", commit=commit, short=commit[:7],
         hd_version=hd["version"], hd_url=hd["github"], hd_download=hd["url"], hd_name=hd["name"], hd_size=mib(hd["bytes"]),
         hd_status="这是新版 HD 包。" if changed else "HD 包没有变化，已经装了的不用重新下载。",
         hd_status_en="This is a new HD pack." if changed else "It has not changed: if you have it, there is nothing to download.",
-        package_rows=rows(PACKAGE_ROWS), package_rows_en=rows(PACKAGE_EN), checksums="\n".join(checksums))
+        package_rows=rows(PACKAGE_ROWS), package_rows_en=rows(PACKAGE_EN), checksums="\n".join(checksums),
+        switch_hd_row=switch_row(f"Switch 版的 HD 图片包（HD {hd['version']}），解压到 SD 卡根目录。"),
+        switch_hd_row_en=switch_row(f"The HD images for the Switch (HD {hd['version']}): extract to the SD card's root."))
 
 
 def sha256(path: Path) -> str:
@@ -134,6 +148,9 @@ def main() -> int:
     parser.add_argument("--jobs", type=int, default=8)
     parser.add_argument("--hd-version", help="the version for a changed HD pack (default: the listed one's last number "
                         "one up, 1.0 → 1.1; give 2.0 for a large change)")
+    parser.add_argument("--switch-hd", action="store_true",
+                        help="also the HD pack in the Switch's format (tools/release/switch/prepare-hd, about 7 minutes): "
+                             "Marchwind64-HD-<HD version>-switch.zip, published beside the HD pack in its release")
     parser.add_argument("--attach", action="append", default=[], metavar="PLATFORM=FILE",
                         help="another platform's package built elsewhere: linux=…, windows=… or android=… "
                              "(the build workflow); copied in as Marchwind64-<version>-<platform> and "
@@ -249,12 +266,31 @@ def main() -> int:
               "github": f"https://github.com/{REPO}/releases/tag/{tag}", "name": hd_zip.name, "bytes": hd_zip.stat().st_size,
               "sha256": sha256(hd_zip), "url": f"https://github.com/{REPO}/releases/download/{tag}/{hd_zip.name}", "changed": True}
 
+    # The Switch's HD pack: this release's HD folder in the GPU formats the console reads
+    # (BC7, prepare-hd at this commit), as switch/Marchwind64/hd/ to unzip at the SD card's root.
+    switch_hd = None
+    if args.switch_hd:
+        steps.run("switch-hd", ["cargo", "run", "--release", "--manifest-path", "tools/release/switch/prepare-hd/Cargo.toml",
+                                "--target-dir", str(ROOT / "build/recomp/prepare-hd-target"), "--",
+                                "--pack", str(pack_dir / "hd")], source)
+        prepared = source / "build/recomp/switch-romfs/hd"
+        if json.loads((prepared / "hd.json").read_text()).get("content_sha256") != hd_about["content_sha256"]:
+            raise SystemExit(f"{prepared} is not this release's HD pack")
+        switch_hd = output / f"Marchwind64-HD-{hd['version']}-switch.zip"
+        with zipfile.ZipFile(switch_hd, "w") as archive:
+            for path in sorted(prepared.rglob("*")):
+                if path.is_file():   # the pictures are zstd frames already: stored, the manifests deflated
+                    archive.write(path, "switch/Marchwind64/hd/" + path.relative_to(prepared).as_posix(),
+                                  zipfile.ZIP_STORED if path.suffix == ".mwtex" else zipfile.ZIP_DEFLATED)
+        hd["switch"] = {"name": switch_hd.name, "bytes": switch_hd.stat().st_size, "sha256": sha256(switch_hd),
+                        "url": f"https://github.com/{REPO}/releases/download/{hd.get('tag', 'hd-' + hd['version'])}/{switch_hd.name}"}
+
     # Packages of the other platforms, under the release's names, between the app and the HD pack.
     attached = []
     for item in args.attach:
         platform, _, source_file = item.partition("=")
         if platform not in ATTACH_NAMES or not Path(source_file).is_file():
-            raise SystemExit(f"--attach {item}: expected linux=FILE, windows=FILE or android=FILE")
+            raise SystemExit(f"--attach {item}: expected linux=FILE, windows=FILE, android=FILE or switch=FILE")
         target = output / ATTACH_NAMES[platform].format(version=args.version)
         shutil.copyfile(source_file, target)
         attached.append((platform, target))
@@ -270,7 +306,10 @@ def main() -> int:
         # Published first, so the app's notes link to it; never the repository's latest release.
         record["publish_hd"] = ["gh", "release", "create", hd["tag"], "--repo", REPO, "--target", commit, "--latest=false",
                                 "--title", f"Marchwind64 HD {hd['version']}", "--notes-file", str(output / "hd-release-notes.md"),
-                                str(hd_zip)]
+                                str(hd_zip), *([str(switch_hd)] if switch_hd else [])]
+    elif switch_hd:
+        # The HD pack is unchanged: its release takes the Switch's pack (again) beside it.
+        record["publish_switch_hd"] = ["gh", "release", "upload", hd.get("tag", f"hd-{hd['version']}"), "--repo", REPO, "--clobber", str(switch_hd)]
     (output / "release.json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
     notes = source / NOTES.relative_to(ROOT)
     if notes.is_file():
@@ -278,8 +317,11 @@ def main() -> int:
                                                               [path.name for _, path in packages], artifacts, hd))
     hd_notes = source / HD_NOTES.relative_to(ROOT)
     if hd_zip and hd_notes.is_file():
+        checksum = f"{hd['sha256']}  {hd_zip.name}" + (f"\n{hd['switch']['sha256']}  {switch_hd.name}" if switch_hd else "")
+        switch_rows = (f"| `{switch_hd.name}` | {hd['switch']['bytes'] / 1048576:.0f} MB |\n" if switch_hd else "")
         text = hd_notes.read_text().format(hd_version=hd["version"], hd_zip=hd_zip.name, hd_size=f"{hd['bytes'] / 1048576:.0f} MB",
-                                           checksum=f"{hd['sha256']}  {hd_zip.name}", commit=commit, version=args.version)
+                                           checksum=checksum, commit=commit, version=args.version,
+                                           switch_hd_zip=switch_hd.name if switch_hd else "", switch_rows=switch_rows)
         (output / "hd-release-notes.md").write_text(text)
     if not args.keep_source:
         subprocess.run(["git", "worktree", "remove", "--force", str(source)], cwd=ROOT, check=True)

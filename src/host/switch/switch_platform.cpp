@@ -199,8 +199,12 @@ Framebuffer boot_frame;
 struct Picture { std::vector<uint32_t> pixels; int width = 0, height = 0; };
 Picture boot_base;
 std::string boot_locale;
-constexpr const char* kBootSteps[] = {"host start", "dialogue load", "host setup", "text pages", "game start"};
+// The first launch's import of the ROM first (app/console_data.cpp, about half a minute), then
+// every launch's start; each part fills the bar on its own.
+constexpr const char* kBootSteps[] = {"prepare: start", "import: text", "prepare: dialogue",
+                                      "host start", "dialogue load", "host setup", "text pages", "game start"};
 constexpr int kBootStepCount = int(sizeof kBootSteps / sizeof kBootSteps[0]);
+constexpr int kImportSteps = 3;
 Picture load_picture(const std::string& path) {
     Picture picture;
     int channels = 0;
@@ -257,7 +261,8 @@ void compose_boot(int step, uint32_t* frame, size_t row) {
                 at = over(at, text.pixels[size_t(y) * 1280 + x]);
             }
     // The bar: a faint track, filled to this step.
-    const int left = 440, width = 400, filled = width * (step + 1) / kBootStepCount;
+    const int part = step < kImportSteps ? kImportSteps : kBootStepCount - kImportSteps;
+    const int left = 440, width = 400, filled = width * ((step < kImportSteps ? step : step - kImportSteps) + 1) / part;
     for (int y = 640; y < 644; ++y)
         for (int x = left; x < left + width; ++x) {
             uint32_t& at = frame[size_t(y) * row + x];

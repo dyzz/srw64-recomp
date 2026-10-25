@@ -782,6 +782,7 @@ void crash_backtrace(int signal) {
 bool srw64_switch_application();                                                   // switch/switch_platform.cpp
 void srw64_switch_boot_line(const char* line);
 void srw64_switch_error(const std::string& message, const std::string& details);
+std::string srw64_switch_language();
 #endif
 
 // Keep the diagnostic positional ABI untouched for play_native.py and all probes.
@@ -879,11 +880,12 @@ int main(int argc, char** argv) {
     // nothing is checked, imported or rewritten at start. The game keeps its saves and runs
     // there too.
     if (argc <= 1) {
-        // From the album (a library applet) a homebrew program gets about 370 MiB, as much as
-        // the PS Vita build lives in; an application (R held on a game) gets about 3 GiB.
-        // Allowed while the port is brought up on a console with no game to hold R on.
-        if (!srw64_switch_application())
-            std::fprintf(stderr, "SRW64_SWITCH_APPLET started from the album: library applet memory\n");
+        // What the player reads when the game cannot start, in the console's language.
+        const std::string language = srw64_switch_language();
+        const auto say = [&](const char* zh, const char* ja, const char* en) -> std::string {
+            return language.rfind("zh", 0) == 0 ? zh : language.rfind("ja", 0) == 0 ? ja : en;
+        };
+        const std::string cannot_start = say("Marchwind64 无法启动。", "Marchwind64 を起動できませんでした。", "Marchwind64 could not start.");
         srw64::app::set_boot_listener(srw64_switch_boot_line);
         srw64::app::Options options;
         options.user_dir = srw64::app::executable_path().parent_path();
@@ -893,6 +895,21 @@ int main(int argc, char** argv) {
         const auto present = srw64::app::list_names(options.user_dir);
         options.mute = present.contains("mute");
         options.debug = present.contains("debug");
+        // From the album (a library applet) a homebrew program gets about 370 MiB, as much as
+        // the PS Vita build lives in; an application (R held on a game) gets about 3 GiB.
+        // Allowed with the debug file, for a console with no game to hold R on.
+        if (!srw64_switch_application()) {
+            std::fprintf(stderr, "SRW64_SWITCH_APPLET started from the album: library applet memory\n");
+            if (!options.debug) {
+                srw64_switch_error(cannot_start, say(
+                    "请按住 R 键启动任意一个游戏，在打开的 hbmenu 里再启动 Marchwind64。从相簿打开的 hbmenu 内存不够。",
+                    "R ボタンを押しながら任意のゲームを起動し、開いた hbmenu から Marchwind64 を起動してください。"
+                    "アルバムから開いた hbmenu ではメモリが足りません。",
+                    "Hold R while starting any game, then start Marchwind64 from the hbmenu that opens. "
+                    "hbmenu opened from the Album has too little memory."));
+                return 2;
+            }
+        }
         srw64::app::GameIdentity game{"srw64-jp-rev0", native_jp_sha256,
             native_rom_variants[0].save_file, srw64::rules::version, {}};
         for (const auto& rule : srw64::rules::catalog)
@@ -903,9 +920,14 @@ int main(int argc, char** argv) {
             if (!srw64::app::console_data_current(options.user_dir, game.rom_sha256)) {
                 auto rom = options.user_dir / "rom.z64";
                 if (!present.contains("rom.z64")) rom = options.user_dir / "game" / "rom.z64";
-                if (!srw64::app::list_names(rom.parent_path()).contains("rom.z64"))
-                    throw std::runtime_error("Put the game's ROM (Super Robot Taisen 64, Japan) in " +
-                                             options.user_dir.string() + " as rom.z64.");
+                if (!srw64::app::list_names(rom.parent_path()).contains("rom.z64")) {
+                    std::fprintf(stderr, "SRW64_PLAY_FAILURE no rom.z64 in %s\n", options.user_dir.string().c_str());
+                    srw64_switch_error(cannot_start, say("没有找到 ROM。请把日版《超级机器人大战 64》的 ROM 命名为 rom.z64，放进 ",
+                        "ROM が見つかりません。日本版『スーパーロボット大戦64』の ROM を rom.z64 という名前で次のフォルダに置いてください：",
+                        "No ROM found. Name the ROM of Super Robot Taisen 64 (Japan) rom.z64 and put it in ") +
+                        options.user_dir.string() + say("。", "", "."));
+                    return 2;
+                }
                 const auto text = srw64::app::bundled_resource("dialogue");
                 if (text.empty()) throw std::runtime_error("The dialogue folder beside Marchwind64.nro is missing.");
                 srw64::app::boot_step("prepare: start");
@@ -913,13 +935,19 @@ int main(int argc, char** argv) {
                 if (problems) std::fprintf(stderr, "SRW64_SWITCH_PREPARED with %zu dialogue text problems\n", problems);
             }
             return srw64::app::run_prepared(options, game, run_host);
+        } catch (const srw64::app::UnsupportedRom& refused) {
+            std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", refused.what());
+            srw64_switch_error(cannot_start, say("rom.z64 不是支持的版本，需要日版 Rev 0（任意字节序）。",
+                "rom.z64 は対応していないバージョンです。日本版 Rev 0（バイト順は問いません）が必要です。",
+                "rom.z64 is not the supported version: it must be the Japanese Rev 0 (any byte order)."));
+            return 2;
         } catch (const std::system_error& failure) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s (%s %d)\n", failure.what(), failure.code().category().name(), failure.code().value());
-            srw64_switch_error("Marchwind64 could not start.", failure.what());
+            srw64_switch_error(cannot_start, failure.what());
             return 2;
         } catch (const std::exception& error) {
             std::fprintf(stderr, "SRW64_PLAY_FAILURE %s\n", error.what());
-            srw64_switch_error("Marchwind64 could not start.", error.what());
+            srw64_switch_error(cannot_start, error.what());
             return 2;
         }
     }

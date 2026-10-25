@@ -1,5 +1,6 @@
 #pragma once
 #include "runtime.hpp"
+#include <stdexcept>
 namespace srw64::app {
 // The data run_prepared reads, made from the player's ROM by the importer the other platforms
 // run on their first launch (docs/design/switch-port.md). The Switch makes it on its first
@@ -25,6 +26,8 @@ namespace srw64::app {
 // dialogue text lines had problems (each on stderr).
 size_t prepare_console_data(const fs::path& rom, const fs::path& out, const fs::path& dialogue_text,
                             const std::string& folder);
+// The ROM given is not the supported one (prepare_console_data).
+struct UnsupportedRom : std::runtime_error { using std::runtime_error::runtime_error; };
 // Whether OUT/game holds data that run_prepared takes for this ROM and this program.
 bool console_data_current(const fs::path& out, const std::string& rom_sha256);
 }

@@ -21,12 +21,16 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[3]
 ART = ROOT / 'tools/release/linux/steam-art'
 WIDTH, HEIGHT = 1280, 720
-# What app::boot_step names on the Switch, in order (run_prepared, host.cpp), and what the
+# What app::boot_step names on the Switch, in order (the first launch's import, console_data.cpp;
+# then every launch's, run_prepared and host.cpp), and what the
 # screen says meanwhile.
 STEPS = {
-    'zh-Hans': ['正在启动', '正在载入剧情与文本', '正在准备画面', '正在准备界面', '正在启动游戏'],
-    'ja': ['起動しています', 'シナリオとテキストを読み込んでいます', '画面を準備しています', 'インターフェースを準備しています', 'ゲームを起動しています'],
-    'en': ['Starting', 'Loading the story and text', 'Preparing the screens', 'Preparing the interface', 'Starting the game'],
+    'zh-Hans': ['首次启动：正在检查 ROM（约需半分钟）', '首次启动：正在从 ROM 导入文字与图片', '首次启动：正在整理剧情文本',
+                '正在启动', '正在载入剧情与文本', '正在准备画面', '正在准备界面', '正在启动游戏'],
+    'ja': ['初回起動：ROM を確認しています（30 秒ほどかかります）', '初回起動：ROM から文字と画像を読み込んでいます',
+           '初回起動：シナリオのテキストを整理しています', '起動しています', 'シナリオとテキストを読み込んでいます', '画面を準備しています', 'インターフェースを準備しています', 'ゲームを起動しています'],
+    'en': ['First launch: checking the ROM (about half a minute)', 'First launch: importing text and pictures from the ROM',
+           'First launch: arranging the story text', 'Starting', 'Loading the story and text', 'Preparing the screens', 'Preparing the interface', 'Starting the game'],
 }
 
 

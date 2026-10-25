@@ -140,6 +140,7 @@
 | [战术地图清单](data/tactical-maps.md) | 158 张战术地图逐张的尺寸、图集、初始场景与动态效果（水面等调色板循环、殖民地、3D34 换图） |
 | [HD 资产盘点](data/hd-asset-inventory.md) | 全 ROM 逐资源分类与各类现状、战术地图水面等动态效果、每类的阿里云模型选择与费用粗估 |
 | [模型查看器](data/native-model-viewer.md) | 本地模型资源浏览与 5600 验证 |
+| [F3DEX2 指令与组合器](data/gbi-usage.md) | 本作显示列表用到的 F3DEX2/RDP 指令、组合器、RDP 模式与贴图格式，GL 解释器（Vita、Switch）要支持的范围 |
 
 ## 规划与历史实验（design/）
 
