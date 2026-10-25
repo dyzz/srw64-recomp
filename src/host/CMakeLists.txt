@@ -287,7 +287,8 @@ if(SRW64_ENABLE_RT64)
     if(SRW64_HOST_TARGET STREQUAL "srw64-gfx-host")
         target_sources(${SRW64_HOST_TARGET} PRIVATE game_hooks.cpp)
         # The PS Vita's GL renderer, chosen at run time with SRW64_RENDERER=gl (graphics.cpp).
-        if(OpenGL_FOUND)
+        # Not on Windows: its SDK's GL/gl.h needs <windows.h> first and has no GL/glext.h.
+        if(OpenGL_FOUND AND NOT WIN32)
             target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp hd_replace.cpp
                 "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp")
             target_compile_definitions(${SRW64_HOST_TARGET} PRIVATE SRW64_GL_RENDERER)
