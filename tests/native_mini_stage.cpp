@@ -88,7 +88,8 @@ int main(int argc,char** argv) {
     state().applied=0;state().bound.reset();
     major_state=2;hotkey();current_vi=200;assert(input(0)==0 && !state().armed);
     major_state=3;hotkey();current_vi=210;assert(input(0)==0x1000 && state().armed);
-    for(int i=0;i<3;++i)assert(input(0)==0x1000); // held across four polls
+    // Held across four polls a 60 Hz retrace: eight at 120 Hz, where polls come twice as often.
+    for(unsigned i=1;i<4*srw64::sched_rate::factor();++i)assert(input(0)==0x1000);
     assert(input(0)==0);
     major_state=13;current_vi=300;input(0);input(0);assert(skip_requests==2 && state().skips==1);
     major_state=5;input(0);major_state=13;input(0);assert(state().skips==2);
