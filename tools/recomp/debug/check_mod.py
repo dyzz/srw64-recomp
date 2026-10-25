@@ -172,11 +172,11 @@ check('saved-in-sample', slot.get('title') == '序章　启程' and (sample_libr
       {k: v for k, v in slot.items() if k != 'art'})
 keys('x', pause=2)
 keys('x', pause=3)
-s.client.call('ui.click', id='intermission:8')
+s.client.call('ui.click', id=f"intermission:{len(s.client.call('status')['intermission_page']['items']) - 1}")   # 次のマップへ, the last row
 time.sleep(2)
 # Crossroads (A takes the choice's first option) back to the intermission, then ending-a.
 play_to(lambda st: st['intermission_page'].get('visible') and st['intermission_page'].get('scene') == 2)
-s.client.call('ui.click', id='intermission:8')
+s.client.call('ui.click', id=f"intermission:{len(s.client.call('status')['intermission_page']['items']) - 1}")   # 次のマップへ, the last row
 wait_for(lambda st: len(mini_events('applied')) >= 3, timeout=120)
 play_to(lambda st: (st.get('intro') or {}).get('title_major') == 3, pause=2.0)
 

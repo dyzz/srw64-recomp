@@ -56,14 +56,16 @@ for _ in range(40):
 time.sleep(2)
 s.client.call('ui.click', id='mini-enter')
 
-# A through every line until the stage is on the battlefield (ready); note each line
+# A through every line until the stage is done (on the battlefield, ready, or on to the
+# intermission, as this one goes); note each line
 # shown, and that no name page ever opens.
 seen, texts, page_opened, shot_taken = [], {}, False, False
 end = time.monotonic() + 900
 while time.monotonic() < end:
     st = status()
     page_opened |= bool(st['name_page'].get('visible'))
-    if (st.get('mini_stage') or {}).get('ready'):
+    # The stage ends with its dialogue: it goes on to the intermission, never to an idle map.
+    if (st.get('mini_stage') or {}).get('ready') or (st.get('intermission_page') or {}).get('visible'):
         break
     boxes = [box for box in (st.get('dialogue') or {}).get('boxes', []) if box.get('active')]
     for box in boxes:
