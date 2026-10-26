@@ -25,7 +25,7 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 
 - **Install a MOD package by dropping it on the game window**, or put it in the MOD folder. The MOD manager (the title screen's corner button, or Settings → General → MOD) lists the installed packages and enables, disables, orders and removes them. A package is a folder, or a `.srw64mod` zip of it, holding data only. Not on Android yet.
 - **Music mods are supported**: a package's Ogg Vorbis files can replace any of the 49 songs, with loop points, volume and titles, and a battle song per pilot or unit. We ship no music package, only the tool to make one: the website's [BGM mod maker](https://srw64.dreamquest.club/en/mods/bgm/) builds the package in your browser from mp3, wav, flac, m4a or ogg files, nothing uploaded. Settings → General turns MOD music off or sets its volume; the sound test marks the replaced songs. Guides: [Mod packages](https://srw64.dreamquest.club/en/docs/mods/), [Music mods](https://srw64.dreamquest.club/en/docs/mod-music/).
-- **Number mods change the terrain ranks** of units and pilots (`data/units.json`, `data/pilots.json`). A demo package, Main Cast: Space A, raises space to A for the 20 pilots and 21 units of the main cast below it (the Mazinger team, GoShogun and others); it is in the repository at `config/recomp/mods/space-a`. See [Number mods](https://srw64.dreamquest.club/en/docs/mod-data/) and the [unit and pilot ID table](https://srw64.dreamquest.club/en/mods/ids/).
+- **Number mods change the terrain ranks** of units and pilots (`data/units.json`, `data/pilots.json`). A demo package, Main Cast: Space A, raises space to A for the 20 pilots and 21 units of the main cast below it (the Mazinger team, GoShogun and others); download it from [the website's MOD page](https://srw64.dreamquest.club/en/mods/#srw64.space-a). See [Number mods](https://srw64.dreamquest.club/en/docs/mod-data/) and the [unit and pilot ID table](https://srw64.dreamquest.club/en/mods/ids/).
 
 ### Other changes
 
@@ -87,7 +87,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 - **把 MOD 包拖进游戏窗口就能安装**，也可以放进 MOD 文件夹。MOD 管理（标题画面右下角的「MOD」，或设置 → 通用 → MOD）列出已装的包，可以启用、停用、排序和删除。包是一个只放数据的文件夹，或把它压缩成的 `.srw64mod`。安卓版暂时不能安装。
 - **支持音乐 MOD**：包里的 Ogg Vorbis 文件可以替换 49 首曲子中的任意几首，设循环点、音量和曲名，还能指定某个人物或机体打仗时放哪首。我们不提供现成的音乐包，只提供制作工具：官网的 [BGM MOD 制作](https://srw64.dreamquest.club/zh/mods/bgm/)在浏览器里把 mp3、wav、flac、m4a、ogg 做成音乐包，音频不会上传。设置 → 通用 可以关掉 MOD 音乐或调音量；音乐鉴赏里被替换的曲目有标记。说明见 [MOD 包](https://srw64.dreamquest.club/zh/docs/mods/)和[音乐 MOD](https://srw64.dreamquest.club/zh/docs/mod-music/)。
-- **数值 MOD 可以改机体和驾驶员的地形适应**（`data/units.json`、`data/pilots.json`）。做了一个示例包「主力宇宙适应 A」，把魔神系、豪将军等我方主力里宇宙不到 A 的 20 名驾驶员和 21 台机体改成 A，在仓库的 `config/recomp/mods/space-a`。说明见[数值 MOD](https://srw64.dreamquest.club/zh/docs/mod-data/)，编号查[机体与人物 ID 表](https://srw64.dreamquest.club/zh/mods/ids/)。
+- **数值 MOD 可以改机体和驾驶员的地形适应**（`data/units.json`、`data/pilots.json`）。做了一个示例包「主力宇宙适应 A」，把魔神系、豪将军等我方主力里宇宙不到 A 的 20 名驾驶员和 21 台机体改成 A，可以在[官网的 MOD 下载页](https://srw64.dreamquest.club/zh/mods/#srw64.space-a)下载。说明见[数值 MOD](https://srw64.dreamquest.club/zh/docs/mod-data/)，编号查[机体与人物 ID 表](https://srw64.dreamquest.club/zh/mods/ids/)。
 
 #### 其他
 
