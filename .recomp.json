@@ -12,7 +12,7 @@
   },
   "project": "Marchwind 64",
   "status": "released",
-  "targets": ["Windows", "macOS", "Linux", "Steam Deck", "Android"],
+  "targets": ["Windows", "macOS", "Linux", "Steam Deck", "Android", "Switch"],
   "toolchain": ["N64recomp", "RT64"],
   "approach": "Static recompilation with the RT64 renderer; game screens redrawn natively with RmlUi",
   "maintainers": [
