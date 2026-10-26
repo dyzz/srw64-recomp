@@ -51,8 +51,11 @@ inline std::map<int,Track> settings(const json& data) {
         if(v.contains("loop")) {
             const auto& loop=v["loop"];
             if(loop.is_boolean())t.once=!loop.get<bool>();
-            else if(loop.is_array() && loop.size()==2 && loop[0].is_number_unsigned() && loop[1].is_number_unsigned() && loop[0].get<uint64_t>()<loop[1].get<uint64_t>())
+            else if(loop.is_array() && loop.size()==2 && loop[0].is_number_unsigned() && loop[1].is_number_unsigned() && loop[0].get<uint64_t>()<loop[1].get<uint64_t>()) {
+                // A section to loop loops, the reinforcement jingle's too.
                 t.loop=std::pair{loop[0].get<uint64_t>(),loop[1].get<uint64_t>()};
+                t.once=false;
+            }
         }
         if(v.contains("gain") && v["gain"].is_number())t.gain_db=v["gain"].get<double>();
         if(v.contains("title") && (v["title"].is_string() || v["title"].is_object()))t.title=v["title"];

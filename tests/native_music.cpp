@@ -39,6 +39,7 @@ int main(int argc,char** argv) {
             "7":{"loop":[100,2000],"gain":-6,"title":{"en":"Main"}},"38":{"loop":false},"x":{},"9":{"loop":[5,5]}}})"));
         check(s.size()==3 && s.at(7).loop==std::pair<uint64_t,uint64_t>{100,2000} && s.at(7).gain_db==-6 && s.at(7).title["en"]=="Main","a track's settings");
         check(s.at(38).once==true && !s.at(9).loop,"loop false plays once; an empty loop is ignored");
+        check(s.at(7).once==false && !s.at(9).once,"a section to loop loops (the jingle's too); an ignored one leaves the default");
         check(music::settings(json::parse(R"({"schema":"other","tracks":{"7":{}}})")).empty(),"another schema reads nothing");
     }
     // Which file wins: the package higher in the list (later), active ones only.
