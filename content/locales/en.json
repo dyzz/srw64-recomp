@@ -4112,14 +4112,14 @@
     {
       "key": "base:t00_00622",
       "source_sha256": "1ec074fd6a7e129cd6c41f5ec097c0bfe806d4b486a3bf79f7029085f58fd7dc",
-      "target": "Psyco Gundam<END>",
+      "target": "Psycho Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00623",
       "source_sha256": "132493a1fb0d88fc2d6955b737080da97bda750e19b57fe601106a91f696c792",
-      "target": "Psyco Gundam Mk-II<END>",
+      "target": "Psycho Gundam Mk-II<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4231,7 +4231,7 @@
     {
       "key": "base:t00_00639",
       "source_sha256": "3d68dca62821edc005e7a8d018bd92413fa6a85c27567b9ba77afae41eef1650",
-      "target": "ReGelg<END>",
+      "target": "ReGelgu<END>",
       "review_status": "draft",
       "origin": "terms"
     },

@@ -1183,7 +1183,7 @@ myself. But you will provide some troops.”
 # 审校：全局：弯撇号／弯引号
 > 「サイコガンダムを使わない者に
 >  あの感覚がわかってたまるか
-“Someone who doesn’t pilot the Psyco Gundam could never understand that feeling!
+“Someone who doesn’t pilot the Psycho Gundam could never understand that feeling!
 ---
 >  わかるのか、お前に!
 >  ヘビが頭をのたうつような感覚が!?」

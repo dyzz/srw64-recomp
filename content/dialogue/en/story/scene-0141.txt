@@ -155,7 +155,7 @@ then there is nothing for it. Mashymre Cello, engaging!”
 @41962 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「あれは……サイコガンダムmkⅡ!?」
-“That’s... the Psyco Gundam Mk-II?!”
+“That’s... the Psycho Gundam Mk-II?!”
 
 @41963 Four · フォウ
 > 「あ……あぁ……いや、カミーユ……」
@@ -173,7 +173,7 @@ take you over.”
 @41965 Ple · プル
 > 「なに……この感触……
 >  サイコガンダム……?」
-“What... is this feeling... the Psyco Gundam...?”
+“What... is this feeling... the Psycho Gundam...?”
 
 @41966 Judau · ジュドー
 > 「くっ、なんなんだよ、これは!」
@@ -208,7 +208,7 @@ take you over.”
 # 审校：全局：弯撇号／弯引号
 > 「ジュドー、わかったよ、
 >  サイコガンダムのパイロットが」
-“Judau, I know now who the Psyco Gundam’s pilot is.”
+“Judau, I know now who the Psycho Gundam’s pilot is.”
 
 @41973 Ple-Two · プルツー
 # 审校：统一“不快”母题，英文去掉生硬的 wretch
@@ -269,7 +269,7 @@ parts left, aren’t you?! I’m Elpeo Ple!”
 @41982 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「あれは……サイコガンダムmkⅡ!?」
-“That’s... the Psyco Gundam Mk-II?!”
+“That’s... the Psycho Gundam Mk-II?!”
 
 @41983 Four · フォウ
 > 「あ……あぁ……いや、カミーユ……」

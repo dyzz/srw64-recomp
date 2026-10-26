@@ -710,7 +710,7 @@ What do you say?”
 ---
 >  サイコガンダムという
 >  ニュータイプ用のマシーンだ」
-A machine for Newtypes called the Psyco Gundam.”
+A machine for Newtypes called the Psycho Gundam.”
 
 @47072 Glemy · グレミー
 # 审校：全局：弯撇号／弯引号
@@ -782,7 +782,7 @@ I am not reproaching you.”
 @47084 Glemy · グレミー
 # 审校：全局：弯撇号／弯引号
 > 「サイコガンダムというマシーンだ。できるな」
-“It’s a machine called the Psyco Gundam. You can handle it.”
+“It’s a machine called the Psycho Gundam. You can handle it.”
 
 @47085 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号
@@ -1112,12 +1112,12 @@ I’ll finish you off right here, {HeroMech}!”
 @47129 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
 > 「あれは……サイコガンダムmkⅡ!?」
-“That’s... the Psyco Gundam Mk-II?!”
+“That’s... the Psycho Gundam Mk-II?!”
 
 @47130 Ple · プル
 > 「なに……この感触……
 >  サイコガンダム……?」
-“What... is this feeling... the Psyco Gundam...?”
+“What... is this feeling... the Psycho Gundam...?”
 
 @47131 Judau · ジュドー
 > 「くっ、なんなんだよ、これは!?」
@@ -1151,7 +1151,7 @@ I’ll finish you off right here, {HeroMech}!”
 @47137 Ple · プル
 > 「ジュドー、わかったよ、
 >  サイコガンダムのパイロットが」
-“Judau, I figured it out. The pilot of the Psyco Gundam.”
+“Judau, I figured it out. The pilot of the Psycho Gundam.”
 
 @47138 Ple-Two · プルツー
 > 「くっ……不愉快な奴が!!」

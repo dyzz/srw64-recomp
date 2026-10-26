@@ -204,7 +204,7 @@ Major. What say you?”
 “OZ was using it. A machine for Newtypes,
 ---
 >  ニュータイプ用のマシーンだ」
-called the Psyco Gundam.”
+called the Psycho Gundam.”
 
 @41786 Glemy · グレミー
 # 审校：全局：弯撇号／弯引号
@@ -260,7 +260,7 @@ I am not reproaching you.”
 @41794 Glemy · グレミー
 # 审校：全局：弯撇号／弯引号
 > 「サイコガンダムというマシーンだ。できるな」
-“It’s a machine called the Psyco Gundam. You can handle it, yes?”
+“It’s a machine called the Psycho Gundam. You can handle it, yes?”
 
 @41795 Ple-Two · プルツー
 # 审校：全局：弯撇号／弯引号

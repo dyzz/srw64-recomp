@@ -1260,7 +1260,7 @@ I hate men who cower, but I don’t like the aggressive type either...”
 # 审校：全局：弯撇号／弯引号
 > 「カミーユ、サイコガンダムには近づくな。
 >  あれは危険だ」
-“Kamille, don’t go near the Psyco Gundam. It’s dangerous.”
+“Kamille, don’t go near the Psycho Gundam. It’s dangerous.”
 
 @20254 Kamille · カミーユ
 > 「なぜ、そんなことがわかるんです!」

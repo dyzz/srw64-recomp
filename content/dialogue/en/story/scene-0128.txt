@@ -42,7 +42,7 @@
 # 审校：全局：弯撇号／弯引号
 > 「サイコガンダム!? フォウ……なのか!?
 >  いや……あそこにはいない……
-“The Psyco Gundam?! Is that Four...?! No... she’s not there...
+“The Psycho Gundam?! Is that Four...?! No... she’s not there...
 ---
 >  基地の方か?」
 Is she at the base?”
@@ -135,7 +135,7 @@ I knew you’d come to see me.”
 # 审校：全局：弯撇号／弯引号
 > 「あはははは。ずっと好きよ。でもあたしは
 >  変わってしまうの。サイコガンダムに
-“Ahahahaha. I’ve always loved you. But I change. When I get in the Psyco Gundam,
+“Ahahahaha. I’ve always loved you. But I change. When I get in the Psycho Gundam,
 ---
 >  乗ると。頭がカラッポになって、別の
 >  私が入り込んでくる。だから……」
@@ -390,7 +390,7 @@ recognized as a core warrior of the {HeroMech}.”
 
 @28096 Amuro · アムロ
 > 「サイコガンダム!?」
-“The Psyco Gundam?!”
+“The Psycho Gundam?!”
 
 @28097 Quattro · クワトロ
 # 审校：原文“あそこか”是确认地点，初稿译成问句语气不对，改为感叹句。
@@ -411,7 +411,7 @@ recognized as a core warrior of the {HeroMech}.”
 # 审校：全局：弯撇号／弯引号
 > 「あれは……サイコガンダム!?
 >  乗っているのはフォウなのか?」
-“That’s... the Psyco Gundam?! Is Four the one piloting it?”
+“That’s... the Psycho Gundam?! Is Four the one piloting it?”
 
 @28101 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -427,7 +427,7 @@ recognized as a core warrior of the {HeroMech}.”
 @28103 Amuro · アムロ
 > 「サイコガンダム!?
 >  ネオホンコンのときと同じ奴か?」
-“The Psyco Gundam?! The same one from Neo Hong Kong?”
+“The Psycho Gundam?! The same one from Neo Hong Kong?”
 
 @28104 Quattro · クワトロ
 # 审校：全局：弯撇号／弯引号
@@ -519,7 +519,7 @@ Answer me, Four!”
 “Four, are you awake now? Good, open your cockpit.
 ---
 >  サイコガンダムにいてはいけない。はやく!」
-You can’t stay in the Psyco Gundam. Hurry!”
+You can’t stay in the Psycho Gundam. Hurry!”
 
 @28120 Four · フォウ
 > 「あっ!?」
@@ -840,7 +840,7 @@ We can make as many memories as we want...”
 # 审校：全局：弯撇号／弯引号
 > 「カミーユ、サイコガンダムは破壊した。
 >  大丈夫だとは思うが
-“Kamille, I destroyed the Psyco Gundam. I don’t expect any trouble, but
+“Kamille, I destroyed the Psycho Gundam. I don’t expect any trouble, but
 ---
 >  薬物の問題もある。
 >  ハサン先生にみてもらえ」

@@ -9320,6 +9320,45 @@
    "srwz_refs": [
     "system/hangar"
    ]
+  },
+  {
+   "ja": [
+    "サイコガンダム"
+   ],
+   "en": {
+    "old": "Psyco Gundam",
+    "new": "Psycho Gundam"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "サイコガンダムmkⅡ"
+   ],
+   "en": {
+    "old": "Psyco Gundam Mk-II",
+    "new": "Psycho Gundam Mk-II"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "リゲルグ"
+   ],
+   "en": {
+    "old": "ReGelg",
+    "new": "ReGelgu"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
   }
  ]
 }

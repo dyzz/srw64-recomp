@@ -185,10 +185,10 @@
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈サイコガンダム〉
 > 「このサイコガンダムに、そんな攻撃が
 >  通用するか!」
-“You think that attack can hurt the Psyco Gundam?!”
+“You think that attack can hurt the Psycho Gundam?!”
 
 @14631 Four · フォウ
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈サイコガンダムmkⅡ〉
 > 「このサイコガンダムに、そんな攻撃が
 >  通用するか!」
-“You think that attack can hurt the Psyco Gundam?!”
+“You think that attack can hurt the Psycho Gundam?!”

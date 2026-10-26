@@ -8830,8 +8830,8 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 14627,75,ブラン,布兰,Buran,61,使用〈フィンファンネル〉,「フィンファンネルっ!!」,“翼状浮游炮！！”,“Fin Funnels!!”
 14628,75,ブラン,布兰,Buran,61,被击坠，乘坐〈アッシマー〉,「アッシマーがぁーっ!?」,“亚希玛——！？”,“The Asshimar?!”
 14629,75,ブラン,布兰,Buran,61,轻伤（剩余 HP 90% 以上），乘坐〈アッシマー〉,「アッシマーの装甲を甘くみるな!」,“别小看亚希玛的装甲！”,“Don’t underestimate the Asshimar’s armor!”
-14630,251,フォウ,凤,Four,61,轻伤（剩余 HP 90% 以上），乘坐〈サイコガンダム〉,「このサイコガンダムに、そんな攻撃が 通用するか!」,“这种攻击，对这台精神感应高达可没用！”,“You think that attack can hurt the Psyco Gundam?!”
-14631,251,フォウ,凤,Four,61,轻伤（剩余 HP 90% 以上），乘坐〈サイコガンダムmkⅡ〉,「このサイコガンダムに、そんな攻撃が 通用するか!」,“这种攻击，对这台精神感应高达可没用！”,“You think that attack can hurt the Psyco Gundam?!”
+14630,251,フォウ,凤,Four,61,轻伤（剩余 HP 90% 以上），乘坐〈サイコガンダム〉,「このサイコガンダムに、そんな攻撃が 通用するか!」,“这种攻击，对这台精神感应高达可没用！”,“You think that attack can hurt the Psycho Gundam?!”
+14631,251,フォウ,凤,Four,61,轻伤（剩余 HP 90% 以上），乘坐〈サイコガンダムmkⅡ〉,「このサイコガンダムに、そんな攻撃が 通用するか!」,“这种攻击，对这台精神感应高达可没用！”,“You think that attack can hurt the Psycho Gundam?!”
 14632,56,フォウ,凤,Four,43,使用〈ファンネル／マザーファンネル〉,「ファンネルッ!!」,“浮游炮！！”,“Funnels!!”
 14633,56,フォウ,凤,Four,43,使用〈ファンネル／マザーファンネル〉,「いけっ、ファンネル!!」,“上啊，浮游炮！！”,"“Go, Funnels!!”"
 14634,56,フォウ,凤,Four,43,使用〈フィンファンネル〉,「フィンファンネル!!」,“翼状浮游炮！！”,“Fin Funnels!!”
@@ -10602,8 +10602,8 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 16399,54,プル,普露,Ple,41,使用〈フィンファンネル〉,「いっけぇーっ!! フィンファンネル!!」,“去吧——！！翼状浮游炮！！”,“Gooo!! Fin Funnels!!”
 16400,54,プル,普露,Ple,41,使用〈フィンファンネル〉,「いけっ! フィンファンネルたち!!」,“去吧！翼状浮游炮们！！”,“Go! Fin Funnels!!”
 16401,54,プル,普露,Ple,41,使用〈ハイメガキャノン〉（低优先，可能被通用台词顶掉）,「エネルギー充填…… いけっ! ハイメガキャノン!!」,“能量填充……去吧！高能米加加农炮！！”,“Charging energy... go! High Mega Cannon!!”
-16402,57,プルツー,普露兹,Ple-Two,44,攻击，乘坐〈サイコガンダム〉,「サイコガンダムの前には、赤子も 同然だな」,“在精神感应高达面前，你跟婴儿没两样。”,"“Against the Psyco Gundam, you’re no better than a baby.”"
-16403,57,プルツー,普露兹,Ple-Two,44,攻击，乘坐〈サイコガンダムmkⅡ〉,「サイコガンダムの前には、赤子も 同然だな」,“在精神感应高达面前，你跟婴儿没两样。”,"“Against the Psyco Gundam, you’re no better than a baby.”"
+16402,57,プルツー,普露兹,Ple-Two,44,攻击，乘坐〈サイコガンダム〉,「サイコガンダムの前には、赤子も 同然だな」,“在精神感应高达面前，你跟婴儿没两样。”,"“Against the Psycho Gundam, you’re no better than a baby.”"
+16403,57,プルツー,普露兹,Ple-Two,44,攻击，乘坐〈サイコガンダムmkⅡ〉,「サイコガンダムの前には、赤子も 同然だな」,“在精神感应高达面前，你跟婴儿没两样。”,"“Against the Psycho Gundam, you’re no better than a baby.”"
 16404,57,プルツー,普露兹,Ple-Two,44,使用〈ファンネル／マザーファンネル〉,「いけっ! ファンネルたち!」,“去吧！浮游炮们！”,“Go! Funnels!”
 16405,57,プルツー,普露兹,Ple-Two,44,使用〈ファンネル／マザーファンネル〉,「いっけぇーっ!! ファンネル!!」,“去吧——！！浮游炮！！”,“Gooo!! Funnel!!”
 16406,57,プルツー,普露兹,Ple-Two,44,使用〈フィンファンネル〉,「いっけぇーっ!! フィンファンネル!!」,“去吧——！！翼状浮游炮！！”,“Gooo!! Fin Funnels!!”

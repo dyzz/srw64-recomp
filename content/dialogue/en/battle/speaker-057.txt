@@ -179,14 +179,14 @@
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「サイコガンダムの前には、赤子も
 >  同然だな」
-“Against the Psyco Gundam, you’re no better than a baby.”
+“Against the Psycho Gundam, you’re no better than a baby.”
 
 @16403 Ple-Two · プルツー
 # 触发：攻击，乘坐〈サイコガンダムmkⅡ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「サイコガンダムの前には、赤子も
 >  同然だな」
-“Against the Psyco Gundam, you’re no better than a baby.”
+“Against the Psycho Gundam, you’re no better than a baby.”
 
 @16404 Ple-Two · プルツー
 # 触发：使用〈ファンネル／マザーファンネル〉
