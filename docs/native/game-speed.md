@@ -2,7 +2,7 @@
 
 设置「通用」页的「游戏速度」：原速／2 倍速／3 倍速／4 倍速，默认原速，存进 presentation.json 的 `game_speed`（1–4；旧版的 1、2 照读）。一键切换的是改键表里的「切换游戏速度」：键盘默认 Tab，手柄默认 R4 背键（SDL 的第一个 paddle），安卓触屏在左上角「开始」右边有一个速度按钮，显示当前倍数（1×–4×），高于原速时显示琥珀色。每按一次依次切到下一档，4 倍速之后回到原速。切换后左上角出现一个小标签（「游戏速度：3 倍」）约 1.5 秒；安卓上不显示，按钮本身就是状态。
 
-3、4 倍速要设备每秒画出 90、120 帧，达不到时实际速度会低一些（Seeker 上约 1.7 倍，见 [120hz-scheduler.md](../design/120hz-scheduler.md) §5.3），设置说明里有写。
+3、4 倍速要设备每秒画出 90、120 帧，达不到时实际速度会低一些，设置说明里有写。画不过来的设备（加速时连续两秒不到应有步数的四分之三）只画 3 帧中的 1 帧，逻辑照常每帧跑；Seeker 上这样 3x/4x 比 2x 快约 1.47 倍（[120hz-scheduler.md](../design/120hz-scheduler.md) §3.5、§5.3）。
 
 代码：`src/host/game_speed.hpp`（判定与写入）、`src/host/sched_rate.hpp`（120 Hz 调度）、`src/host/host.cpp` 的 `frame_start`（每个 VI 调用）、`src/host/game_hooks.cpp`（战前画面的步进记号）、`src/native/ui/frontend.cpp` 的 `toggle_speed`。
 
@@ -48,7 +48,7 @@ Steam Deck 在 Steam Input 模板下不一定把背键交给游戏。SDL 看不�
 
 - 调试状态 `game_speed`：`level` 是档位（1–4），`top` 是这次运行的最高档（120 Hz 为 4，60 Hz 为 2），`double` 表示高于原速，`running` 表示这一帧是否在加速；调试接口 `settings game_speed=1..4` 直接设档位。
 - 虚拟手柄键名 `r4` 按的是速度开关（`srw64_pad`）。
-- 单元测试 `tests/native_game_speed.cpp`（`make recomp-game-speed-test`）覆盖场景判定、写入时机，以及按 8008163C 的计数规则模拟一秒 120 拍：四档分别 30/60/90/120 步，3 倍速是 60 个隔 1 拍加 30 个隔 2 拍。
+- 单元测试 `tests/native_game_speed.cpp`（`make recomp-game-speed-test`）覆盖场景判定、写入时机，以及按 8008163C 的计数规则模拟一秒 120 拍：四档分别 30/60/90/120 步，3 倍速是 60 个隔 1 拍加 30 个隔 2 拍。还有隔帧不画：跟得上的设备不判慢、慢一秒不算、两秒才算，慢设备上 3 个列表画 1 个，读画面的列表和之后 60 个照画，2 倍速不跳。
 - Mac 实测（2026-10-24，标题演示战斗，`SRW64_FORCE_FAST=1`）：四档 29.9／59.9／90.0／116.8 帧/秒；R4 依次切到 2、3、4、原速；`SRW64_VI_RATE=60` 下最高 2 倍。
 
 还没实机看过的点：每个 VI 一份显示列表时 RT64 的缓冲是否够用；背键在 Deck 的 Steam Input 下能否被 SDL 看到。

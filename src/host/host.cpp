@@ -353,6 +353,8 @@ extern "C" void srw64_game_threads_report() {
 uint8_t* srw64_rdram = nullptr;
 // The runtime's VI thread asks before each picture latches (sched_rate.hpp latch()).
 extern "C" bool srw64_vi_latch(uint64_t tick) { return srw64::sched_rate::latch(srw64_rdram, tick); }
+// The swap after a display list left undrawn latches at once (draw_skip.hpp, runtime events.cpp).
+extern "C" bool srw64_vi_swap_now() { return srw64::draw_skip::swap_now.exchange(false); }
 
 // Debug interface hooks (debug_server.cpp): a button pulse that starts now
 // rather than at the next control-file poll, and a quit reported like SRWQ1.

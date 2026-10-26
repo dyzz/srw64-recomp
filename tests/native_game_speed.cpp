@@ -115,6 +115,60 @@ void speeds() {
     check(steps_per_second(3) == 90, "3x is not 90 steps a second");
     check(steps_per_second(4) == 120, "4x is not 120 steps a second");
 }
+// Pictures left undrawn (draw_skip.hpp): two seconds at 4x on a device that steps only every
+// other retrace mark it slow, and then one display list in three is drawn. GAP: retraces
+// between the steps the device manages.
+void run_hurried(unsigned gap, unsigned seconds) {
+    Ram ram;
+    game_speed::level = 4;
+    guest::write8(ram.data(), game_speed::mode, 2);
+    guest::write32(ram.data(), game_speed::interval, 4);
+    for (uint64_t tick = 1; tick <= 120 * seconds; ++tick) {
+        game_speed::frame(ram.data());
+        const uint32_t count = guest::read(ram.data(), sched_rate::logic_count, 4) + 1;
+        guest::write32(ram.data(), sched_rate::logic_count, count);
+        if (count >= guest::read(ram.data(), game_speed::interval, 4) && tick % gap == 0)
+            guest::write32(ram.data(), sched_rate::logic_count, 0);
+    }
+}
+
+void skipping() {
+    Ram lists;
+    const uint32_t plain = 0x80100000, sampling = 0x80100100;
+    auto command = [&](uint32_t at, uint32_t w0, uint32_t w1) { guest::write32(lists.data(), at, w0); guest::write32(lists.data(), at + 4, w1); };
+    command(plain, 0xFF10013F, 0x80300000);         // G_SETCIMG: 16-bit, 320 wide
+    command(plain + 8, 0xFD100000, 0x80200000);     // G_SETTIMG: a texture
+    command(plain + 16, 0xDF000000, 0);             // G_ENDDL
+    command(sampling, 0xFF10013F, 0x80325800);
+    command(sampling + 8, 0xDE010000, 0x80100200);  // G_DL, no push: a branch
+    command(0x80100200, 0xFD100000, 0x80300100);    // a texture inside the first picture
+    command(0x80100208, 0xDF000000, 0);
+    const uint32_t physical = plain & 0x1FFFFFFF, sampled = sampling & 0x1FFFFFFF;
+
+    run_hurried(1, 5);
+    check(!draw_skip::slow && draw_skip::every == 1, "a device that keeps up at 4x is taken to be slow");
+    check(!draw_skip::skip(lists.data(), physical), "a list goes undrawn on a device that keeps up");
+    run_hurried(2, 1);
+    check(!draw_skip::slow, "one slow second marks the device slow");
+    run_hurried(2, 3);
+    check(draw_skip::slow && draw_skip::every == 3, "4x on a slow device draws other than one list in three");
+    unsigned drawn = 0;
+    for (int i = 0; i < 9; ++i) {
+        if (draw_skip::skip(lists.data(), physical)) check(draw_skip::swap_now.exchange(false), "an undrawn list's swap waits for a tick");
+        else ++drawn;
+    }
+    check(drawn == 3, "not one list in three drawn");
+    check(game_speed::picture_rate() == 40, "RT64 is not told 40 pictures a second");
+    check(!draw_skip::skip(lists.data(), sampled) && draw_skip::holds == 1, "a list sampling a picture goes undrawn");
+    for (int i = 0; i < 60; ++i) check(!draw_skip::skip(lists.data(), physical), "a list goes undrawn right after a sampled picture");
+    check(draw_skip::skip(lists.data(), physical) || draw_skip::skip(lists.data(), physical), "lists drawn long after a sampled picture");
+    game_speed::level = 2;
+    Ram ram;
+    guest::write8(ram.data(), game_speed::mode, 2);
+    guest::write32(ram.data(), game_speed::interval, 2);
+    game_speed::frame(ram.data());
+    check(draw_skip::every == 1 && !draw_skip::skip(lists.data(), physical), "2x leaves lists undrawn");
+}
 }  // namespace
 
 int main() {
@@ -122,6 +176,7 @@ int main() {
         scenes();
         interval();
         speeds();
+        skipping();
     } catch (const std::exception& error) {
         std::fprintf(stderr, "FAIL %s\n", error.what());
         return 1;

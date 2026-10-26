@@ -9,6 +9,7 @@
 // player (scripts, the enemy phase, units moving), the battle animation and the world
 // map's story. The player's menus and cursor, the intermission, the title and the other
 // screens keep the original speed, as their key repeats count frames too.
+#include "draw_skip.hpp"
 #include "guest_memory.hpp"
 #include "script_skip.hpp"
 #include "sched_rate.hpp"
@@ -88,17 +89,20 @@ inline uint32_t fast_interval(const uint8_t* ram,unsigned speed) {
 
 // Logic steps a second now: 30, or 30 times the speed while hurried.
 inline unsigned step_rate(){return running.load() ? 30*std::min(level.load(),top_level()) : 30;}
+// Pictures a second RT64 gets: fewer than the steps while some go undrawn (draw_skip.hpp).
+inline unsigned picture_rate(){return step_rate()/std::max(draw_skip::every.load(),1u);}
 
 // Game thread, every VI (the frame boundary). Writes the interval once the game has set
 // it, so the boot runs as it always did.
 inline void frame(uint8_t* ram) {
     const uint32_t now=read(ram,interval,4);
-    if(now!=1 && now!=2 && now!=4){running=false;return;}
+    if(now!=1 && now!=2 && now!=4){running=false;draw_skip::observe(ram,false,1);return;}
     const uint64_t vi=srw64_current_vi();
     const unsigned speed=std::min(level.load(),top_level());
     const bool fast=speed>1 && (force_fast() || hurried(ram,vi-menu_vi.load()<4));
     running=fast;
     sched_rate::uneven=fast && speed==3;
+    draw_skip::observe(ram,fast,speed);
     const uint32_t want=fast ? fast_interval(ram,speed) : 2*sched_rate::factor();
     if(now!=want)guest::write32(ram,interval,want);
 }

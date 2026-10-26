@@ -53,19 +53,6 @@ const char* opcode_name(uint8_t op) {
     }
 }
 
-// Words each RT64 extended command occupies (rt64_gbi_extended.cpp); 0 for the ones whose
-// length is not known here (none of them is emitted by this host).
-int extended_words(uint32_t op) {
-    switch (op) {
-    case 0x02: return 6;               // texrect
-    case 0x03: case 0x04: case 0x05: case 0x06: case 0x07: return 4;  // fillrect, viewport, scissor, rect align, viewport align
-    case 0x08: return 6;               // scissor align
-    case 0x0C: case 0x13: case 0x14: return 4;  // matrix group, edit group by address, vertex
-    case 0x2D: case 0x2E: case 0x30: return 0;  // float matrices: unknown here
-    default: return op < 0x34 ? 2 : 0;
-    }
-}
-
 struct Stats {
     std::mutex mutex;
     std::string path;

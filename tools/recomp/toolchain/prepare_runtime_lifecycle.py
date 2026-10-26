@@ -145,13 +145,23 @@ def adapt_timer(source: str) -> str:
 def adapt_events(source: str) -> str:
     """The 120 Hz scheduler (src/host/sched_rate.hpp latch()): a new picture latches
     on the VI ticks the host allows (in 2x every other one), so a frame drawn every second
-    tick shows every second tick, not after one or three as the GPU's finish falls."""
-    source = '#include <cstdint>\nextern "C" bool srw64_vi_latch(uint64_t tick);\n' + source
+    tick shows every second tick, not after one or three as the GPU's finish falls.
+    A frame the host left undrawn (src/host/draw_skip.hpp) latches when the game swaps,
+    so the next one need not wait for a tick; both latches take the message lock."""
+    source = ('#include <cstdint>\nextern "C" bool srw64_vi_latch(uint64_t tick);\n'
+              'extern "C" bool srw64_vi_swap_now();\n' + source)
+    source = replace_once(source,
+        "    events_context.vi.get_next_state()->framebuffer = frameBufPtr;\n}\n",
+        "    events_context.vi.get_next_state()->framebuffer = frameBufPtr;\n"
+        "    if (srw64_vi_swap_now()) {\n"
+        "        events_context.vi.update_vi();\n"
+        "    }\n}\n")
     return replace_once(source,
         "        // Update VI registers and swap VI modes.\n        events_context.vi.update_vi();\n",
         "        // Update VI registers and swap VI modes, on the ticks the host allows.\n"
         "        static uint64_t srw64_latch_tick = 0;\n"
         "        if (!ultramodern::is_game_started() || srw64_vi_latch(srw64_latch_tick++)) {\n"
+        "            std::lock_guard lock{ events_context.message_mutex };\n"
         "            events_context.vi.update_vi();\n"
         "        }\n")
 
