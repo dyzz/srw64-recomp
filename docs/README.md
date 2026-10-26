@@ -173,6 +173,7 @@
 | [60 帧研究](design/60fps.md) | 远期待办，只有静态研究。原版逻辑固定 30 帧的依据、RT64 显示插帧的机制与前提、各场景能否插值（矩阵类能、矩形类不能）、战术地图的两条做法、试验计划与未核实项 |
 | [120 Hz 调度与 4 倍速](design/120hz-scheduler.md) | 默认开启（`SRW64_VI_RATE=60` 退回 60 Hz）。60 Hz 下 2 倍速是结构上限的依据、音频隔拍、宿主钩子审计、2x 换画面节拍与呈现降频、Mac／Windows／Seeker 实测 |
 | [Steam Deck 键位与按键图标](design/steam-deck-controls.md) | 默认手柄模板下的全部键位、标题与场间的设置入口、设置界面分页改版、待定键位、自绘图标字体方案与验证计划 |
+| [振动设计方案](design/rumble.md) | 原版没有振动（振动包驱动没链接）；宿主直接用 SDL 振动，只在画面已有的冲击处短而轻地震，菜单与对白不震；触发点与各平台方案，仅方案、代码未动 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
