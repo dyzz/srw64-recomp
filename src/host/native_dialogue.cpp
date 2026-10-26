@@ -405,7 +405,10 @@ void reload_text(uint8_t* ram) {
     }
 }
 void service_locale(uint8_t* ram) {
-    std::lock_guard lock(mutex);
+    // Also the scheduler thread's presentation step (game_hooks.cpp, 80085F30): the game
+    // thread's step holds this lock across the original's calls, so only when free; a
+    // reload or a locale switch then waits for the next frame.
+    std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
     if(reload_requested.exchange(false))reload_text(ram);
     if(language_status.request==language_status.completed)return;
     refresh(ram,true);

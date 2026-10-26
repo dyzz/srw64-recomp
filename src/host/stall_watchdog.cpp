@@ -1,6 +1,7 @@
 #include "stall_watchdog.hpp"
 
 #if defined(__ANDROID__) && defined(__aarch64__)
+#include <algorithm>
 #include <atomic>
 #include <chrono>
 #include <csignal>
@@ -9,7 +10,10 @@
 #include <cstring>
 #include <dirent.h>
 #include <dlfcn.h>
+#include <iterator>
 #include <string>
+#include <utility>
+#include <vector>
 #include <sys/syscall.h>
 #include <thread>
 #include <ucontext.h>
@@ -19,7 +23,7 @@ uint64_t srw64_current_vi();
 
 namespace srw64::stall {
 namespace {
-std::atomic<uint64_t> frames{0};
+std::atomic<uint64_t> frames{0}, presents{0};
 std::atomic<bool> started{false};
 bool test_stall = false;    // SRW64_STALL_TEST=1 (development): the render thread stops at frame 120
 // SRW64_START_MARKER: the file GraphicsGuard.java writes before the game starts; gone after
@@ -73,16 +77,30 @@ std::string name_of(const char* tid) {
     return name;
 }
 
-void dump(double seconds) {
-    std::fprintf(stderr, "SRW64_STALL vi=%llu frames=%llu stalled=%.1fs: thread stacks follow\n",
-                 (unsigned long long)srw64_current_vi(), (unsigned long long)frames.load(), seconds);
+void dump(const char* what, double seconds) {
+    std::fprintf(stderr, "SRW64_STALL %s vi=%llu frames=%llu presents=%llu stalled=%.1fs: thread stacks follow\n", what,
+                 (unsigned long long)srw64_current_vi(), (unsigned long long)frames.load(),
+                 (unsigned long long)presents.load(), seconds);
     const int self = int(syscall(SYS_gettid));
     DIR* dir = opendir("/proc/self/task");
     if (!dir) return;
-    int threads = 0;
+    // Ours first (the game threads, the window, the present, the display lists, the VI),
+    // then the rest up to 80: a dump of the driver's and the system's threads once lost
+    // the game threads of a hang (a Seeker, 2026-10-26).
+    std::vector<std::pair<int, std::string>> tids;
     while (dirent* entry = readdir(dir)) {
         const int tid = std::atoi(entry->d_name);
-        if (tid <= 0 || tid == self || ++threads > 80) continue;
+        if (tid > 0 && tid != self) tids.emplace_back(tid, name_of(entry->d_name));
+    }
+    closedir(dir);
+    const auto rank = [](const std::string& name) {
+        static const char* const first[] = {"Game Thread", "SDLThread", "RT64 Present", "Gfx Thread", "VI Thread", "SP Task"};
+        for (size_t i = 0; i < std::size(first); ++i) if (name.rfind(first[i], 0) == 0) return int(i);
+        return int(std::size(first));
+    };
+    std::stable_sort(tids.begin(), tids.end(), [&](const auto& a, const auto& b) { return rank(a.second) < rank(b.second); });
+    if (tids.size() > 80) tids.resize(80);
+    for (const auto& [tid, name] : tids) {
         depth.store(-1);
         target.store(tid);
         if (syscall(SYS_tgkill, getpid(), tid, SIGUSR2) != 0) continue;
@@ -90,7 +108,7 @@ void dump(double seconds) {
         const int n = depth.load();
         target.store(0);
         if (n < 0) continue;
-        std::fprintf(stderr, "SRW64_STALL thread %d \"%s\"\n", tid, name_of(entry->d_name).c_str());
+        std::fprintf(stderr, "SRW64_STALL thread %d \"%s\"\n", tid, name.c_str());
         for (int i = 0; i < n; ++i) {
             Dl_info info{};
             if (dladdr(reinterpret_cast<void*>(pcs[i]), &info) && info.dli_fname) {
@@ -105,19 +123,28 @@ void dump(double seconds) {
             }
         }
     }
-    closedir(dir);
     std::fflush(stderr);
 }
 
 void watch() {
     uint64_t last_frames = frames.load(), last_vi = srw64_current_vi();
-    auto since = std::chrono::steady_clock::now();
+    uint64_t last_presents = presents.load(), present_vi = last_vi, present_frames = last_frames;
+    auto since = std::chrono::steady_clock::now(), present_since = since;
     int dumps = 0;
-    bool dumped = false;
+    bool dumped = false, present_dumped = false;
     for (;;) {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        const uint64_t f = frames.load(), vi = srw64_current_vi();
+        const uint64_t f = frames.load(), p = presents.load(), vi = srw64_current_vi();
         const auto now = std::chrono::steady_clock::now();
+        if (p != last_presents) {               // presenting again: re-arm
+            last_presents = p; present_vi = vi; present_frames = f; present_since = now; present_dumped = false;
+        } else if (!present_dumped && dumps < 3 && p > 0 && f >= present_frames + 60 && vi >= present_vi + 120 &&
+                   std::chrono::duration<double>(now - present_since).count() >= 5) {
+            // The lists are drawn but no screen comes out of them.
+            dump("present", std::chrono::duration<double>(now - present_since).count());
+            present_dumped = true;
+            ++dumps;
+        }
         if (f != last_frames) {                 // drawing again: re-arm
             last_frames = f; last_vi = vi; since = now; dumped = false;
             continue;
@@ -125,7 +152,7 @@ void watch() {
         const double seconds = std::chrono::duration<double>(now - since).count();
         // The game runs on (a paused app stops the VI clock too) but nothing is drawn.
         if (!dumped && dumps < 3 && f > 0 && seconds >= 5 && vi >= last_vi + 120) {
-            dump(seconds);
+            dump("lists", seconds);
             dumped = true;
             ++dumps;
         }
@@ -154,6 +181,7 @@ void frame_done() {
         for (;;) std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
+void present_done() { presents.fetch_add(1, std::memory_order_relaxed); }
 }
 #elif defined(__SWITCH__)
 // The Switch (docs/design/switch-port.md, S1): no signals to sample a thread with. A stall
@@ -196,10 +224,12 @@ void watch() {
 }
 void start() { std::thread(watch).detach(); }
 void frame_done() { frames.fetch_add(1, std::memory_order_relaxed); }
+void present_done() {}
 }
 #else
 namespace srw64::stall {
 void start() {}
 void frame_done() {}
+void present_done() {}
 }
 #endif

@@ -85,7 +85,7 @@ namespace {
 using json=nlohmann::json;
 std::mutex mutex;
 std::condition_variable completed;
-bool in_flight{}, ready{}, initialized{};
+bool in_flight{}, ready{}, initialized{}, present_lost{};
 SDL_Window* window{};
 std::filesystem::path output;
 #ifndef SRW64_GL_ONLY
@@ -325,8 +325,18 @@ std::string window_stamp(){
     return "w"+std::to_string(state.fullscreen)+std::to_string(state.scale)+std::to_string(state.largest);
 }
 float ui_density=1;  // screen pixels per dp, as set on the RmlUi context
+// The previous frame's pages are in flight until its present reports back (presented). A
+// present that never does — Android took the surface away and the driver held the present
+// thread (a Seeker, 0.5.0, on the save page) — kept every later lock waiting, and with it the
+// window thread: the game ran on behind a frozen screen. After a second the pages go on.
 std::unique_lock<std::mutex> lock_ui() {
-    std::unique_lock lock(mutex);completed.wait(lock,[]{return !in_flight;});return lock;
+    std::unique_lock lock(mutex);
+    if(!completed.wait_for(lock,std::chrono::seconds(1),[]{return !in_flight;})) {
+        // Once per spell: a present stays away for as long as Android keeps the surface.
+        if(!present_lost)std::fprintf(stderr,"SRW64_UI_PRESENT_LOST the last pages' present did not report back in 1 s\n");
+        present_lost=true;in_flight=false;
+    }
+    return lock;
 }
 // Where the UI's time goes, for perf_line(): the window thread's update and the render
 // thread's draw, each its wait for the UI lock and its work under it, with the longest.
@@ -6804,7 +6814,7 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     in_flight=true;return true;
 }
 #endif
-void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
+void presented(){std::lock_guard lock(mutex);if(present_lost){std::fprintf(stderr,"SRW64_UI_PRESENT_BACK the pages' present reports again\n");present_lost=false;}in_flight=false;completed.notify_all();}
 #ifdef SRW64_GL_RENDERER
 void render_init_gl(){auto lock=lock_ui();gl_renderer=std::make_unique<recompui::RmlRenderInterface_GL>();ready=true;}
 bool shown(){

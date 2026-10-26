@@ -128,6 +128,12 @@ void resident_func_80080A14(uint8_t* ram,recomp_context* ctx) {
     srw64::sched_rate::retrace(ram,uint32_t(ctx->r4),[&]{srw64_original_retrace(ram,ctx);});
 }
 
+// The frame boundary runs on its own game thread, also while another is parked in an
+// original wait: a page step holding its page's lock across 80092678's SRAM transfer
+// (osRecvMesg). A frame hook that then waited for that lock held the boundary's thread,
+// the transfer's message was never handed over, and the window thread and the present
+// waited behind them: the save hung on an iQOO 12 and a Seeker (0.5.0); a unit upgrade
+// hang showed the same locks. So the page frame hooks below take theirs only when free.
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
     if(srw64_game_hooks.frame_start)srw64_game_hooks.frame_start(ram);

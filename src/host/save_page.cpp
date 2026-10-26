@@ -339,10 +339,14 @@ bool slots_build(uint8_t* ram,recomp_context* ctx) {
 }
 // The original A path: SRAM or Controller Pak write, then the screen again or the
 // message when the pak status is non-zero. An extended slot is the game's slot 1 seen
-// through the store.
-void write_slot(uint8_t* ram,recomp_context* ctx,const Entry& e) {
+// through the store. The write runs with the page's lock let go: the store writes the
+// cartridge and the record files first and the original's transfer then waits on the
+// PI (osRecvMesg), which can hand the game to the scheduler thread's frame hooks and to
+// the window thread (game_hooks.cpp, 80085F30); neither should wait behind the disk.
+void write_slot(uint8_t* ram,recomp_context* ctx,const Entry& e,std::unique_lock<std::mutex>& lock) {
     const unsigned slot=game_slot(e),number=e.number;
     write8(ram,pak_status,0);
+    lock.unlock();
     if(read(ram,medium,2)==0) {
         std::optional<save_store::Window> extended;
         if(number>2)extended.emplace(0,e.record());
@@ -353,6 +357,7 @@ void write_slot(uint8_t* ram,recomp_context* ctx,const Entry& e) {
         write8(ram,pak_status,uint8_t(status));
         if(status<2)call(ram,ctx,write_pak,slot);
     }
+    lock.lock();
     const unsigned status=read(ram,pak_status,1);
     record("write",{{"slot",number},{"medium",read(ram,medium,2)},{"status",status}});
     if(status==0)fade_out(ram,ctx,9);
@@ -365,8 +370,11 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
     if(!idle(ram))return true;
     const unsigned m=read(ram,medium,2);
     unsigned state=read(ram,mode,4);
-    if(state==2)call(ram,ctx,pak_poll);
-    else if(m && call(ram,ctx,pak_removed)) {
+    // The Pak polls wait on the SI: outside the lock, as the write below.
+    bool removed=false;
+    if(state==2){lock.unlock();call(ram,ctx,pak_poll);lock.lock();}
+    else if(m){lock.unlock();removed=call(ram,ctx,pak_removed)!=0;lock.lock();}
+    if(removed) {
         write8(ram,pak_status,2);write32(ram,mode,2);state=2;
         republish(slots_json(ram));record("pak-removed");
     }
@@ -388,7 +396,7 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
         if(action=="choose") {
             sound(ram,ctx,sound_confirm);
             if(slot_used(ram,slots,e)){write32(ram,mode,1);write16(ram,window_cursor,0);record("window-open",{{"slot",e.number}});}
-            else write_slot(ram,ctx,e);
+            else write_slot(ram,ctx,e,lock);
             republish(slots_json(ram));return true;
         }
         if(action=="back"){sound(ram,ctx,sound_cancel);fade_out(ram,ctx,1);record("back");return true;}
@@ -401,7 +409,7 @@ bool slots_step(uint8_t* ram,recomp_context* ctx) {
             write16(ram,window_cursor,uint16_t(index));republish(slots_json(ram));
             lock.unlock();sound(ram,ctx,sound_move);return true;
         }
-        if(action=="choose" && read(ram,window_cursor,2)==0){sound(ram,ctx,sound_confirm);write_slot(ram,ctx,e);republish(slots_json(ram));return true;}
+        if(action=="choose" && read(ram,window_cursor,2)==0){sound(ram,ctx,sound_confirm);write_slot(ram,ctx,e,lock);republish(slots_json(ram));return true;}
         if(action=="choose" || action=="cancel"){sound(ram,ctx,action=="choose"?sound_confirm:sound_cancel);write32(ram,mode,0);republish(slots_json(ram));record("window-close");return true;}
         return true;
     }
@@ -594,7 +602,7 @@ bool title_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)
     }
 }
 void title_frame(uint8_t* ram) {
-    std::lock_guard lock(mutex);
+    std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;   // as frame() below
     if(!active || !title)return;
     const unsigned major=read(ram,t_major,1),sub=read(ram,t_sub,1);
     // Back at the ring (0xD) or any other title state: the page closes.
@@ -620,7 +628,8 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)(uint8
     }
 }
 void frame(uint8_t* ram) {
-    std::lock_guard lock(mutex);
+    // Held by a step across the original's own waits (game_hooks.cpp, 80085F30): next frame.
+    std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
     if(title)return;
     if(active && !idle(ram) && read(ram,next_screen,4)!=read(ram,current_screen,4))hide("left");
 }
@@ -639,7 +648,14 @@ bool title_screen_build(uint8_t* ram,recomp_context* ctx,unsigned screen){return
 bool title_screen_step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)(uint8_t*,recomp_context*)){return title_step(ram,ctx,screen,original);}
 void title_screen_frame(uint8_t* ram){title_frame(ram);}
 void title_overlay_changed(){std::lock_guard lock(mutex);if(title){hide("overlay");title=false;}}
-json state(){std::lock_guard lock(mutex);return current;}
+// The window thread's read every UI frame (and the debug thread's). A step holds the page's
+// lock across the original's own waits (game_hooks.cpp, 80085F30): the window, and the
+// present waiting behind its UI lock, get the last snapshot then rather than wait.
+std::mutex snapshot_mutex;json snapshot;
+json state() {
+    if(std::unique_lock lock(mutex,std::try_to_lock);lock){std::lock_guard s(snapshot_mutex);snapshot=current;}
+    std::lock_guard s(snapshot_mutex);return snapshot;
+}
 void answer(uint64_t id,const std::string& action) {
     std::lock_guard lock(mutex);
     if(current.value("visible",false) && current.value("serial",uint64_t{})==id && pending.empty())pending=action;

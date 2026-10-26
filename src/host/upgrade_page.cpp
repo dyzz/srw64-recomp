@@ -1002,7 +1002,8 @@ bool unified_step(uint8_t* ram,recomp_context* ctx,std::unique_lock<std::mutex>&
     return false;
 }
 void frame(uint8_t* ram) {
-    std::lock_guard lock(mutex);
+    // Held by a step across the original's own waits (game_hooks.cpp, 80085F30): next frame.
+    std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
     // Any other screen taking over (the EW swap, the menu) closes the page.
     if(active && !idle(ram) && read(ram,next_screen,4)!=read(ram,current_screen,4))hide("left");
 }
@@ -1102,7 +1103,14 @@ json weapon_labels_json(const uint8_t* ram) {
     wl["icons"]=art.value("weapon_markers",json::object());
     return wl;
 }
-json state(){std::lock_guard lock(mutex);return current;}
+// The window thread's read every UI frame (and the debug thread's). A step holds the page's
+// lock across the original's own waits (game_hooks.cpp, 80085F30): the window, and the
+// present waiting behind its UI lock, get the last snapshot then rather than wait.
+std::mutex snapshot_mutex;json snapshot;
+json state() {
+    if(std::unique_lock lock(mutex,std::try_to_lock);lock){std::lock_guard s(snapshot_mutex);snapshot=current;}
+    std::lock_guard s(snapshot_mutex);return snapshot;
+}
 void answer(uint64_t id,const std::string& action) {
     std::lock_guard lock(mutex);
     if(current.value("visible",false) && current.value("serial",uint64_t{})==id && pending.empty())pending=action;

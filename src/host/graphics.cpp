@@ -12,6 +12,7 @@
 #include "steam_deck.hpp"
 #include "game_frame.hpp"
 #include "frame_rate.hpp"
+#include "stall_watchdog.hpp"
 #include "big_cores.hpp"
 #include "game_speed.hpp"
 #include "wide_map.hpp"
@@ -348,7 +349,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     // For the frame-pacing test (docs/design/60fps.md §9): SRW64_PRESENT_HOOK=0 draws
     // nothing of ours in RT64's present, to see what our drawing costs the present thread.
     static const bool hook_off = std::getenv("SRW64_PRESENT_HOOK") && std::string(std::getenv("SRW64_PRESENT_HOOK")) == "0";
-    if (hook_off) { ++presented_frames; srw64::frame_rate::present_sent(); return; }
+    if (hook_off) { ++presented_frames; srw64::frame_rate::present_sent(); srw64::stall::present_done(); return; }
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::dialogue::gpu_draw(list, framebuffer, RT64::GetRenderHookWorkloadId());
     // Clear workload-keyed guest naming frames before the shared UI renders.
@@ -395,6 +396,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
 #endif
     const uint64_t frame = ++presented_frames;
     srw64::frame_rate::present_sent();
+    srw64::stall::present_done();
     const uint64_t vi = srw64_current_vi();
     const std::string clock_name = capture_clock;
     const int image_mode = srw64::presentation::image_mode.current();
@@ -1502,6 +1504,7 @@ public:
 #endif
         const uint64_t frame_number = ++presented_frames;
         srw64::frame_rate::present_sent();
+        srw64::stall::present_done();
         // The window as shown, read back for the debug interface's screenshot and recording
         // and the player's F12, as capture_frame does on RT64.
         const auto shot = srw64::debug::screenshots().take();

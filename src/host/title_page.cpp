@@ -238,8 +238,7 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned screen,void(*original)(uint8
 }
 void frame(uint8_t* ram) {
     save_page::title_screen_frame(ram);
-    std::lock_guard lock(mutex);
-    if(!active)return;
+    std::unique_lock lock(mutex,std::try_to_lock);if(!lock || !active)return;   // as save_page.cpp's frame
     const unsigned major=read(ram,major_state,1);
     const auto kind=current.value("screen",std::string());
     if((kind=="options" && major!=5) || (kind=="sound" && major!=8) || (kind=="karaoke" && major!=11))hide("left");
@@ -251,7 +250,14 @@ void configure(const std::filesystem::path& directory) {
     auto& h=srw64_game_hooks;
     h.title_build=build;h.title_step=step;h.title_frame=frame;
 }
-json state(){std::lock_guard lock(mutex);return current;}
+// The window thread's read every UI frame (and the debug thread's). A step holds the page's
+// lock across the original's own waits (game_hooks.cpp, 80085F30): the window, and the
+// present waiting behind its UI lock, get the last snapshot then rather than wait.
+std::mutex snapshot_mutex;json snapshot;
+json state() {
+    if(std::unique_lock lock(mutex,std::try_to_lock);lock){std::lock_guard s(snapshot_mutex);snapshot=current;}
+    std::lock_guard s(snapshot_mutex);return snapshot;
+}
 void answer(uint64_t id,const std::string& action) {
     std::lock_guard lock(mutex);
     if(current.value("visible",false) && current.value("serial",uint64_t{})==id && pending.empty())pending=action;
