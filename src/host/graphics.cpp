@@ -1,5 +1,7 @@
 #define HLSL_CPU
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_application.h"
+#endif
 #include "graphics.hpp"
 #include "mini_stage.hpp"
 #include "debug_protocol.hpp"
@@ -10,10 +12,14 @@
 #include "steam_deck.hpp"
 #include "game_frame.hpp"
 #include "frame_rate.hpp"
+#include "game_speed.hpp"
 #include "wide_map.hpp"
 #include "native_marker.hpp"
+#include "hd_replace.hpp"
 #include "native_map.hpp"
+#ifndef SRW64_GL_ONLY
 #include "native_gpu.hpp"
+#endif
 #include "native_portrait.hpp"
 #include "native_background.hpp"
 #include "native_sprite.hpp"
@@ -28,9 +34,11 @@
 #include "debug_ui.hpp"
 #include "ui/frontend.hpp"
 #endif
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_workload_queue.h"
 #include "hle/rt64_present_queue.h"
 #include "../include/rt64_extended_gbi.h"
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "native_name_entry.hpp"
 #include "link_page.hpp"
@@ -45,15 +53,25 @@
 #include "native_dialogue.hpp"
 #include "post_filter.hpp"
 #include "notices.hpp"
+#include "gbi_stats.hpp"
 #include "ultramodern/ultramodern.hpp"
 #endif
 #include "librecomp/game.hpp"
+#ifdef SRW64_GL_RENDERER
+#include "../gl/display_list.hpp"
+#include "../gl/gl_renderer.hpp"
+#include "../gl/program_cache.hpp"
+#include "native_gl.hpp"
+#endif
+#ifndef SRW64_GL_ONLY
 #include "rt64_render_hooks.h"
 #ifdef __APPLE__
 #include "plume_metal.h"
 #endif
+#endif
 #ifdef __ANDROID__
 #include <android/native_window.h>
+#include <jni.h>
 // Plume's Vulkan swap chain asks for the activity's current window (rt64_android_patches.py).
 namespace plume { extern ANativeWindow *(*AndroidCurrentWindow)(); }
 // Set when RT64's setup stops on an Adreno driver too old to build its shaders.
@@ -70,10 +88,17 @@ namespace RT64 { extern bool AndroidGpuDriverTooOld; }
 #include <SDL_vulkan.h>
 #endif
 #include <array>
+#include <map>
 #include <atomic>
 #include <cstring>
 #include <ctime>
 #include <fstream>
+#include <set>
+#include <thread>
+#include <condition_variable>
+#include <deque>
+#include <functional>
+#include <mutex>
 
 namespace {
 #ifdef __ANDROID__
@@ -104,11 +129,22 @@ std::array<uint8_t, 0x1000> dmem{}, imem{};
 std::array<uint8_t, 0x40> header{};
 uint32_t mi_interrupt{}, dpc_start{}, dpc_end{}, dpc_current{}, dpc_status{};
 uint32_t dpc_clock{}, dpc_buffer_busy{}, dpc_pipe_busy{}, dpc_tmem{};
+#ifndef SRW64_GL_ONLY
 plume::RenderDevice* capture_device;
+#endif
 int graphics_api = -1;  // RT64's chosen API (RT64::UserConfiguration::GraphicsAPI), for srw64_graphics_info
 std::filesystem::path capture_directory;
 std::vector<std::string> gpu_names;  // gpu_report's adapters, for the failure message
 }  // namespace
+#ifdef __SWITCH__
+std::string srw64_switch_perf_system();   // switch/switch_platform.cpp: memory and core loads
+extern "C" void srw64_switch_background_thread();   // the same: the lowest priority for a helper thread
+std::string srw64_switch_hd_art();   // the same: the HD pack's art folder, "" for none
+const std::vector<uint32_t>& srw64_switch_splash();   // the same: the loading screen's last step
+void srw64_switch_drop_splash();
+void srw64_switch_error(const std::string& message, const std::string& details);
+void srw64_switch_boot_end();   // switch/switch_platform.cpp: the launch's text console goes
+#endif
 void srw64_error_box(const std::string& message) {
 #ifdef _WIN32
     // Topmost, over the game's own window. Not owned by it: that window's thread (the main
@@ -116,6 +152,8 @@ void srw64_error_box(const std::string& message) {
     std::wstring text(size_t(MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, nullptr, 0)), L'\0');
     MultiByteToWideChar(CP_UTF8, 0, message.c_str(), -1, text.data(), int(text.size()));
     MessageBoxW(nullptr, text.c_str(), L"Marchwind64", MB_OK | MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
+#elif defined(__SWITCH__)
+    srw64_switch_error(message, {});   // the system's error box (switch/switch_platform.cpp)
 #else
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Marchwind64", message.c_str(), nullptr);
 #endif
@@ -149,11 +187,64 @@ namespace {
 }
 uint64_t presented_frames{};
 std::string capture_clock = "native_vi_at_draw";
-// F12 or Print Screen: the next present goes to screenshots/ in the user folder.
+// The screenshot key (F12 or Print Screen unless rebound) asks; the shared UI first takes the
+// touch controls and the frame-rate readout off the screen, then arms the shot, and the next
+// present goes to screenshots/ in the user folder (srw64_take_screenshot_request).
 std::atomic<bool> player_shot_requested{};
+std::atomic<bool> player_shot_armed{};
+// Work the GL render thread hands off, in order on one thread of its own: a debug screenshot's
+// PNG took a second on the Switch, a second the game stood still.
+void run_in_background(std::function<void()> job) {
+    static std::mutex mutex;
+    static std::condition_variable wake;
+    static std::deque<std::function<void()>> jobs;
+    static std::thread* worker = new std::thread([] {   // never joined: it lives as long as the program
+#ifdef __SWITCH__
+        srw64_switch_background_thread();
+#endif
+        for (;;) {
+            std::function<void()> next;
+            {
+                std::unique_lock lock(mutex);
+                wake.wait(lock, [] { return !jobs.empty(); });
+                next = std::move(jobs.front());
+                jobs.pop_front();
+            }
+            next();
+        }
+    });
+    (void)worker;
+    { std::lock_guard lock(mutex); jobs.push_back(std::move(job)); }
+    wake.notify_one();
+}
 // The Enter of an Alt + Enter (full screen, frontend.cpp) is not START until it is let go,
 // whichever key comes up first.
 SDL_Scancode alt_enter_key = SDL_SCANCODE_UNKNOWN;
+#ifdef __ANDROID__
+// SRW64Activity.publishScreenshot over JNI: where the PNG went as the player sees it, or empty.
+std::string publish_android_screenshot(const std::filesystem::path& path) {
+    auto* env = static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    auto activity = static_cast<jobject>(SDL_AndroidGetActivity());
+    if (!env || !activity) return {};
+    std::string shown;
+    const jclass type = env->GetObjectClass(activity);
+    if (const jmethodID method = env->GetMethodID(type, "publishScreenshot", "(Ljava/lang/String;)Ljava/lang/String;")) {
+        const jstring argument = env->NewStringUTF(path.string().c_str());
+        if (auto value = static_cast<jstring>(env->CallObjectMethod(activity, method, argument))) {
+            if (const char* chars = env->GetStringUTFChars(value, nullptr)) {
+                shown = chars;
+                env->ReleaseStringUTFChars(value, chars);
+            }
+            env->DeleteLocalRef(value);
+        }
+        env->DeleteLocalRef(argument);
+    }
+    if (env->ExceptionCheck()) { env->ExceptionClear(); shown.clear(); }
+    env->DeleteLocalRef(type);
+    env->DeleteLocalRef(activity);
+    return shown;
+}
+#endif
 // GPU completion thread: writes the picture as a dated PNG and says where it went.
 void save_player_screenshot(const uint8_t* rgba, uint32_t width, uint32_t height) {
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -180,6 +271,16 @@ void save_player_screenshot(const uint8_t* rgba, uint32_t width, uint32_t height
     for (size_t i = 3; i < opaque.size(); i += 4) opaque[i] = 255;
     const bool written = stbi_write_png(path.string().c_str(), width, height, 4, opaque.data(), width * 4);
     fprintf(stderr, "SRW64_SCREENSHOT %s %s\n", written ? "saved" : "failed", path.string().c_str());
+#ifdef __ANDROID__
+    // The private folder is out of a player's reach: out to Documents/Marchwind64/screenshots
+    // (SRW64Activity.publishScreenshot), and the notice names that.
+    if (written) {
+        if (const auto shown = publish_android_screenshot(path); !shown.empty()) {
+            path = shown;
+            fprintf(stderr, "SRW64_SCREENSHOT published %s\n", shown.c_str());
+        }
+    }
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
     auto text = srw64::localization::catalog().ui(written ? "screenshot_saved" : "screenshot_failed");
     if (const auto at = text.find("{path}"); at != std::string::npos) text.replace(at, 6, path.string());
@@ -219,6 +320,8 @@ SDL_Scancode virtual_scancode(srw64::debug::Key key) {
 // (docs/design/deck-16x10.md) the sides are black, like the 4:3 picture's pillarbox.
 // Each frame says how much of the picture it fills (wide_map::Shape): all of it, the band a
 // widened tactical map's view covers, or the original's 4:3 (art not yet drawn wider).
+// RT64: the scene picture, its present hook and the renderer (none in the GL-only host).
+#ifndef SRW64_GL_ONLY
 void mask_sides(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffer) {
     const float width = float(framebuffer->getWidth()), height = float(framebuffer->getHeight());
     const float scale = srw64::frame::scale(width, height), picture = srw64::frame::width(width, height);
@@ -295,6 +398,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     const std::string clock_name = capture_clock;
     const int image_mode = srw64::presentation::image_mode.current();
     const uint64_t workload = RT64::GetRenderHookWorkloadId();
+    srw64::frame_rate::present_workload(workload);
     // Opt-in temporal QA: sample every completed frame, so a single bad present is visible;
     // a frame that changes sharply is also saved whole.
     static const uint64_t trace_begin = std::getenv("SRW64_FRAME_TRACE_FROM") ? std::stoull(std::getenv("SRW64_FRAME_TRACE_FROM")) : UINT64_MAX;
@@ -303,9 +407,14 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     // A debug-interface screenshot request takes this present; a recording takes every one.
     const auto debug_shot = srw64::debug::screenshots().take();
     const bool recording = srw64::debug::recording().active();
-    // The player's screenshot key (F12, Print Screen) takes this one too, the window as shown.
-    const bool player_shot = player_shot_requested.exchange(false);
-    if (!trace && !debug_shot && !recording && !player_shot) return;
+    // The player's screenshot key (F12, Print Screen unless rebound) takes this one too, the window as shown.
+    const bool player_shot = player_shot_armed.exchange(false);
+    // The Vita renderer's reference picture of a dumped list (gbi_stats.hpp).
+    std::string dump_shot;
+#ifdef SRW64_NATIVE_DIALOGUE
+    dump_shot = srw64::gbi_stats::take_shot(workload);
+#endif
+    if (!trace && !debug_shot && !recording && !player_shot && dump_shot.empty()) return;
     nlohmann::json dialogue_trace=nullptr;
 #ifdef SRW64_NATIVE_DIALOGUE
     if(trace)if(auto snapshot=srw64::dialogue::presented_frame(workload)) {
@@ -369,7 +478,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     }
     const bool interactive = std::getenv("SRW64_INTERACTIVE") && std::string(std::getenv("SRW64_INTERACTIVE")) == "1";
     const auto path = capture_directory / (interactive ? "present-latest.png" : "present-" + std::to_string(frame) + ".png");
-    srw64_after_gpu(list, [buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, dialogue_trace, debug_shot, recording, player_shot](bool completed) {
+    srw64_after_gpu(list, [buffer, width, height, row_pixels, bgra, path, frame, vi, clock_name, image_mode, workload, trace, dialogue_trace, debug_shot, recording, player_shot, dump_shot](bool completed) {
         if (!completed) {
             fprintf(stderr, "SRW64_CAPTURE_GPU_FAILED\n");
             if (debug_shot) srw64::debug::screenshots().finish(debug_shot->id, {{"error", "GPU capture failed"}});
@@ -413,6 +522,7 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
                 : nlohmann::json({{"error", "cannot write " + debug_shot->path.string()}}));
         }
         if (player_shot) save_player_screenshot(rgba.data(), width, height);
+        if (!dump_shot.empty()) stbi_write_png(dump_shot.c_str(), width, height, 4, rgba.data(), width * 4);
         if(!anomaly)return;
         if (!stbi_write_png(path.string().c_str(), width, height, 4, rgba.data(), width * 4)) std::abort();
         auto metadata_path = path;
@@ -520,7 +630,8 @@ public:
         // RT64 picks Vulkan on Linux, and D3D12 with a Vulkan fallback on Windows.
         app->userConfig.graphicsAPI = GraphicsAPI::Automatic;
 #endif
-        // For tests only: SRW64_GRAPHICS_API=vulkan (MoltenVK on a Mac), d3d12 or metal.
+        // SRW64_GRAPHICS_API=vulkan (MoltenVK on a Mac), d3d12 or metal: for tests, and on
+        // Windows for players whose GPU fails under D3D12 (the launcher passes it, launch.cpp).
         if (const char* api = std::getenv("SRW64_GRAPHICS_API")) {
             const std::string name = api;
             if (name == "vulkan") app->userConfig.graphicsAPI = GraphicsAPI::Vulkan;
@@ -617,7 +728,7 @@ public:
             const char* art = std::getenv("SRW64_ART_PACK");
             const char* hd_available = std::getenv("SRW64_HD_AVAILABLE");
             if (hd_available && std::string(hd_available)=="0") {
-                srw64::presentation::image_mode.original_only();
+                srw64::presentation::image_mode.configure(false);
                 const nlohmann::json status={{"schema","srw64.image-mode.v1"},{"mode","original"},
                     {"hd_available",false},{"model_5600","original"},{"vi",srw64_current_vi()}};
                 std::ofstream(capture_directory/"image-mode.json")<<status.dump(2)<<'\n';
@@ -687,6 +798,19 @@ public:
 #endif
     void send_dl(const OSTask* task) override {
         srw64::frame_rate::list_sent();
+        const uint32_t original_rate = app->sharedQueueResources->viOriginalRate;
+        srw64::frame_rate::original_rate.store(original_rate, std::memory_order_relaxed);
+        if (!original_rate) srw64::frame_rate::lists_without_rate.fetch_add(1, std::memory_order_relaxed);
+        // RT64 guesses the game's frame rate from its VI history, three equal gaps between
+        // pictures or none; at 120 Hz a GPU finishing either side of an 8 ms tick rarely gives
+        // three (the Seeker: half the gaps 3 or 5 ticks at 1x), and without a rate it does not
+        // interpolate. The step rate is known here (game_speed.hpp); RT64 clears it after each
+        // workload. SRW64_RT64_RATE_HINT=0 leaves the guess to RT64 for comparison.
+        static const bool rate_hint = [] {
+            const char* hint = std::getenv("SRW64_RT64_RATE_HINT");
+            return !(hint && std::string(hint) == "0");
+        }();
+        if (rate_hint && srw64::sched_rate::factor() == 2) app->state->setRefreshRate(uint16_t(srw64::game_speed::step_rate()));
 #ifdef __ANDROID__
         const auto t0 = Timing::clock::now();
         if (timing.last != Timing::clock::time_point{}) {
@@ -731,6 +855,12 @@ public:
 #ifdef __ANDROID__
         const auto t2 = Timing::clock::now();
 #endif
+        // The display list's commands and modes, counted for the Vita study (gbi_stats.hpp;
+        // only with the debug interface and SRW64_GBI_STATS). Before RT64 reads the list:
+        // the game thread, told the RSP is done, may already be rewriting the sub-lists
+        // it keeps at fixed addresses.
+        srw64::gbi_stats::record(native_text ? display_copy.data() : app->core.RDRAM, app->core.RDRAM, start, task->t.data_size);
+        srw64::gbi_stats::dump(native_text ? display_copy.data() : app->core.RDRAM, app->core.RDRAM, start, task->t.data_size, app->state->workloadId+1);
         app->processDisplayLists(native_text ? display_copy.data() : app->core.RDRAM, start, 0, true);
 #ifdef __ANDROID__
         const auto t3 = Timing::clock::now();
@@ -762,7 +892,7 @@ public:
         app->updateScreen();
 #endif
     }
-    void shutdown() override { if (app) app->end(); }
+    void shutdown() override { srw64::gbi_stats::flush(); if (app) app->end(); }
     uint32_t get_display_framerate() const override { return 60; }
     float get_resolution_scale() const override { return 1.0f; }
 private:
@@ -907,11 +1037,567 @@ private:
     unsigned worldmap_tile_size=0;
     std::vector<uint8_t> display_copy;
 };
+#endif  // SRW64_GL_ONLY
 }
+
+#ifdef SRW64_GL_RENDERER
+namespace {
+// The PS Vita's renderer on the desktop (docs/design/psv-port.md, V1): with
+// SRW64_RENDERER=gl the game's display lists go through src/gl's interpreter and an OpenGL
+// 2.1 context on the window instead of RT64. The host's own layers (dialogue text, pages,
+// window frames, HD art) are not drawn yet; the debug interface's screenshots are.
+SDL_GLContext gl_context = nullptr;
+bool gl_mode() {
+#ifdef SRW64_GL_ONLY
+    return true;
+#else
+    static const bool value = std::getenv("SRW64_RENDERER") && std::string(std::getenv("SRW64_RENDERER")) == "gl";
+    return value;
+#endif
+}
+std::string gl_device;   // GL_RENDERER, for srw64_graphics_info
+
+#ifdef __vita__
+// vitaGL's start: on its own thread from the host's beginning (srw64_vita_graphics_begin), so
+// that the shader compiler's loading and the pools overlap the dialogue data's; the
+// renderer waits for it.
+std::thread vita_graphics;
+void vita_graphics_init() {
+    // vitaGL owns the screen (SDL's window only carries input): 960 x 544, the shader
+    // compiler of libshacccg.suprx. Its pools have fixed sizes: given a threshold
+    // instead, it takes every byte above it, and the game's threads and the system's
+    // own allocations have nothing left (Vita3K fell over at the first frame).
+    // The video memory pool is what the console has left, less a margin: a console
+    // has 96 MiB of it free, minus the boot screen's buffer still shown, and a pool
+    // asked for larger than that is not made at all; vitaGL then fits every texture
+    // in the RAM pools and waits a second at each allocation it cannot (the opening
+    // text took 4 s a frame).
+    srw64::app::boot_step("graphics init");
+    SceKernelFreeMemorySizeInfo free_memory{};
+    free_memory.size = sizeof free_memory;
+    sceKernelGetFreeMemorySize(&free_memory);
+    const int cdram_pool = std::max(free_memory.size_cdram - 4 * 1024 * 1024, 16 * 1024 * 1024) & ~(256 * 1024 - 1);
+    vglInitWithCustomSizes(0, 960, 544, 12 * 1024 * 1024, cdram_pool, 16 * 1024 * 1024, 0, SCE_GXM_MULTISAMPLE_NONE);
+    std::fprintf(stderr, "SRW64_VITA_GL_POOLS cdram=%d MiB of %d MiB free\n", cdram_pool >> 20, free_memory.size_cdram >> 20);
+    vglWaitVblankStart(GL_FALSE);
+    // VitaSDK's vitaGL draws its own splash screen from a thread until the first frame is
+    // presented; the game takes a while to its first picture, and Vita3K falls over under
+    // that thread. A black frame now ends it.
+    glClearColor(0, 0, 0, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    vglSwapBuffers(GL_FALSE);
+    srw64_vita_progress_end();   // vitaGL's frames are on the screen now, not the boot screen
+    srw64::app::boot_step("graphics ready");
+}
+#endif
+
+#ifdef __SWITCH__
+// A folder's names, from one listing (the program cache looks up no file that is not there).
+std::set<std::string> list_folder(const std::filesystem::path& folder) {
+    std::set<std::string> names;
+    std::error_code error;
+    for (std::filesystem::directory_iterator entry(folder, error), end; !error && entry != end; entry.increment(error))
+        names.insert(entry->path().filename().string());
+    return names;
+}
+extern "C" uint64_t srw64_screen_updates_skipped_count();   // switch-runtime events.cpp
+// The Switch's performance lines (docs/design/switch-port.md): every 5 s on stderr (console.log,
+// nxlink, the debug interface's console.log), what the graphics thread did with its time.
+struct SwitchPerf {
+    using clock = std::chrono::steady_clock;
+    clock::time_point window = clock::now();
+    unsigned lists = 0, presents = 0, kept = 0;
+    double interpret = 0, draw = 0, dialogue_take = 0, list_max = 0, gl_draw = 0, gl_collect = 0, host_layers = 0;
+    double picture = 0, overlays = 0, ui = 0, readback = 0, swap = 0, present_max = 0, swap_max = 0;
+    uint64_t skipped_at = 0;
+    srw64::n64gl::ProgramStats programs_at{};
+    static double ms(clock::time_point from, clock::time_point to) { return std::chrono::duration<double, std::milli>(to - from).count(); }
+    void report(size_t programs_held) {
+        const auto now = clock::now();
+        const double seconds = std::chrono::duration<double>(now - window).count();
+        if (seconds < 5) return;
+        const uint64_t skipped = srw64_screen_updates_skipped_count();
+        const auto programs = srw64::n64gl::program_stats();
+        auto& gl = srw64::n64gl::gl_stats();
+        const auto per = [](double total, unsigned count) { return count ? total / count : 0.0; };
+        std::fprintf(stderr,
+            "SRW64_PERF %.1fs lists=%.1f/s list=%.2fms(interp %.2f draw %.2f dlg %.2f max %.1f) "
+            "presents=%.1f/s kept=%u skipped=%llu present=%.2fms(picture %.2f overlays %.2f ui %.2f read %.2f swap %.2f; max %.1f swap max %.1f) "
+            "programs=%zu linked+%u(%.0fms) loaded+%u(%.0fms) "
+            "gl(draw %.0fms collect %.0fms layers %.0fms; uploads %u %.1fMB %.0fms in %u page flushes; copies %u %.0fms; dialogue raster %.0fms patches %u %.1fMB %.0fms; "
+            "quads %u %.1fMB %.0fms) %s %s\n",
+            seconds, lists / seconds, per(interpret + draw + dialogue_take, lists), per(interpret, lists), per(draw, lists),
+            per(dialogue_take, lists), list_max, presents / seconds, kept, (unsigned long long)(skipped - skipped_at),
+            per(picture + overlays + ui + readback + swap, presents), per(picture, presents), per(overlays, presents), per(ui, presents),
+            per(readback, presents), per(swap, presents), present_max, swap_max, programs_held,
+            programs.linked - programs_at.linked, programs.link_ms - programs_at.link_ms,
+            programs.loaded - programs_at.loaded, programs.load_ms - programs_at.load_ms,
+            gl_draw, gl_collect, host_layers, gl.uploads, gl.upload_bytes / 1048576.0, gl.upload_ms, gl.page_flushes, gl.copies, gl.copy_ms,
+            gl.raster_ms, gl.patches, gl.patch_bytes / 1048576.0, gl.patch_ms, gl.quads, gl.quad_bytes / 1048576.0, gl.quad_ms,
+            srw64::ui::perf_line().c_str(), ::srw64_switch_perf_system().c_str());
+        gl = {};
+        *this = SwitchPerf{};
+        skipped_at = skipped;
+        programs_at = programs;
+    }
+};
+#endif
+
+#ifdef __SWITCH__
+// The loading screen's last step over the whole window (srw64_switch_splash), until the game
+// shows a picture of its own: from the window's first frame, through the game's first frames
+// and the BANPRESTO logo's fade from black. False when there is none.
+struct Splash {
+    GLuint texture = 0, framebuffer = 0;
+    bool draw(int width, int height) {
+        if (!framebuffer) {
+            const auto& pixels = srw64_switch_splash();
+            if (pixels.size() != size_t(1280) * 720) return false;
+            glGenTextures(1, &texture);
+            glBindTexture(GL_TEXTURE_2D, texture);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1280, 720, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
+            glGenFramebuffers(1, &framebuffer);
+            glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+        }
+        // Rows top first in the picture, bottom first in GL: flipped by the blit.
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, framebuffer);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+        glBlitFramebuffer(0, 0, 1280, 720, 0, height, width, 0, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        return true;
+    }
+    void release() {
+        if (framebuffer) { glDeleteFramebuffers(1, &framebuffer); glDeleteTextures(1, &texture); }
+        framebuffer = texture = 0;
+    }
+};
+// Whether the window's back buffer holds more than black: read back at 32 x 18 (a blit, then
+// 2.3 KB), only while the splash still waits for the game.
+bool shows_picture(int width, int height) {
+    static GLuint texture = 0, framebuffer = 0;
+    if (!framebuffer) {
+        glGenTextures(1, &texture);
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 18, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+        glGenFramebuffers(1, &framebuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+    }
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebuffer);
+    glBlitFramebuffer(0, 0, width, height, 0, 0, 32, 18, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    uint8_t pixels[32 * 18 * 4];
+    glReadPixels(0, 0, 32, 18, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    int lit = 0;
+    for (size_t i = 0; i < sizeof pixels; i += 4) lit += std::max({pixels[i], pixels[i + 1], pixels[i + 2]}) > 40;
+    if (lit < 20) return false;   // a few lit cells: a fade's first frames, a stray sprite
+    glDeleteFramebuffers(1, &framebuffer); glDeleteTextures(1, &texture);
+    framebuffer = texture = 0;
+    return true;
+}
+#endif
+
+class GLRenderer final : public ultramodern::renderer::RendererContext {
+public:
+    explicit GLRenderer(uint8_t* rdram) : rdram(rdram) {
+        // The context was made on the window thread (srw64_create_window); it is this
+        // thread's from here on, the graphics thread's, which also presents.
+        if (SDL_GL_MakeCurrent(window, gl_context) != 0) graphics_failure(SDL_GetError());
+        SDL_GL_SetSwapInterval(0);
+        int scale = 3;
+        if (const char* value = std::getenv("SRW64_GL_SCALE")) scale = std::clamp(std::atoi(value), 1, 8);
+        renderer = std::make_unique<srw64::n64gl::Renderer>(srw64::n64gl::kPictureWidth * scale, srw64::n64gl::kPictureHeight * scale);
+        interpreter = std::make_unique<srw64::n64gl::Interpreter>([this](uint64_t key) { return renderer->known(key); });
+#ifdef __vita__
+        // The shader programs compiled on earlier runs, and where this run's go (prepare_data.cpp
+        // makes the folder): every program of the renderer, the host's layers and the UI.
+        {
+            const std::filesystem::path kept = "ux0:data/Marchwind64/shaders";
+            srw64::n64gl::keep_programs(kept, list_folder(kept));
+        }
+#endif
+#ifdef __SWITCH__
+        // Every program compiled on earlier runs: kept as binaries when Mesa gives them
+        // (program_cache.cpp), and the game's combiner programs linked now, ahead of the frames
+        // that need them (Mesa here keeps no shader cache of its own; a first compile stalled
+        // the frame that needed it). shaders/combiners.txt lists the keys, one a line.
+        {
+            const std::filesystem::path kept = "/switch/Marchwind64/shaders";
+            std::error_code ignored;
+            std::filesystem::create_directories(kept, ignored);
+            srw64::n64gl::keep_programs(kept, list_folder(kept));
+            std::vector<uint32_t> keys;
+            std::ifstream listed(kept / "combiners.txt");
+            for (std::string line; std::getline(listed, line);)
+                if (!line.empty()) keys.push_back(uint32_t(std::stoul(line, nullptr, 16)));
+            const auto start = SwitchPerf::clock::now();
+            renderer->prewarm(keys);
+            combiner_keys = renderer->program_keys();
+            std::fprintf(stderr, "SRW64_SHADERS prewarmed %zu of %zu combiner programs in %.0f ms\n", combiner_keys.size(),
+                         keys.size(), SwitchPerf::ms(start, SwitchPerf::clock::now()));
+        }
+#endif
+        // The host's tagged draws: the tag's second word is the draw's id (two letters and a number).
+        interpreter->classify([](uint32_t w0, uint32_t w1) { return (w0 >> 16) == 0x0053 ? w1 : 0u; });
+        setup_result = ultramodern::renderer::SetupResult::Success;
+        chosen_api = ultramodern::renderer::GraphicsApi::Auto;
+        fprintf(stderr, "SRW64_GRAPHICS_API gl %s / %s scale=%d\n", (const char*)glGetString(GL_VERSION), (const char*)glGetString(GL_RENDERER), scale);
+        gl_device = std::string((const char*)glGetString(GL_VERSION)) + " / " + (const char*)glGetString(GL_RENDERER);
+        {   // The compressed formats the driver lists (ASTC there is decoded on the CPU: hd_texture.hpp).
+            GLint count = 0;
+            glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &count);
+            std::vector<GLint> formats(size_t(std::max(0, count)));
+            if (count > 0) glGetIntegerv(GL_COMPRESSED_TEXTURE_FORMATS, formats.data());
+            const auto has = [&](GLint f) { return std::find(formats.begin(), formats.end(), f) != formats.end(); };
+            fprintf(stderr, "SRW64_GL_COMPRESSED formats=%d astc4x4=%d astc6x6=%d bptc=%d\n", count, has(0x93B0), has(0x93B4), has(0x8E8C));
+        }
+#ifdef SRW64_NATIVE_DIALOGUE
+        srw64::ui::render_init_gl();
+#endif
+        // The original pictures: the Vita carries no HD art (docs/design/psv-port.md). Not
+        // original_only(), which the HD layers read as "no switch", that is HD where they can.
+        // The Switch's NRO carries the HD pack, prepared for its GPU (tools/release/switch/prepare-hd): HD by
+        // default, the settings' switch back to the originals; SRW64_HD_ART elsewhere.
+        std::filesystem::path hd_art;
+        {
+#ifdef __SWITCH__
+            hd_art = srw64_switch_hd_art();
+#else
+            const char* hd_env = std::getenv("SRW64_HD_ART");
+            hd_art = hd_env ? hd_env : "";
+#endif
+            std::error_code missing;
+            const bool hd = !hd_art.empty() && std::filesystem::exists(hd_art / "srw64-portraits-hd.json", missing);
+            if (!hd) hd_art.clear();
+            // Each HD layer's start, timed (SRW64_BOOT_HD).
+            auto layer_start = std::chrono::steady_clock::now();
+            const auto timed = [&](const char* name) {
+                const auto now = std::chrono::steady_clock::now();
+                fprintf(stderr, "SRW64_BOOT_HD %s %.0f ms\n", name, std::chrono::duration<double, std::milli>(now - layer_start).count());
+                layer_start = now;
+            };
+            if (hd) {
+                srw64::backgrounds::initialize(capture_directory);
+                srw64::portraits::configure(hd_art, capture_directory);
+                timed("portraits");
+                srw64::backgrounds::configure(hd_art, capture_directory);
+                timed("backgrounds");
+                // The RT64 texture pack: the interpreter keys tiles as RT64 does, the renderer
+                // draws the pack's picture in their place.
+                srw64::hd_replace::configure(hd_art);
+                timed("rt64");
+#ifdef SRW64_GL_ONLY
+                // The world map's models and marker, the battle's baked scenery and water
+                // (native_marker.cpp), recognised by the interpreter as RT64 recognises them.
+                srw64::marker::configure(capture_directory, hd_art.parent_path() / "native-marker", hd_art.parent_path() / "native-models");
+                timed("models");
+                interpreter->classify_meshes([](const uint8_t* rdram, uint32_t address, uint32_t segment4) {
+                    return srw64::marker::classify_gl(rdram, address, segment4);
+                });
+#endif
+                interpreter->replacements([](uint64_t key) { return srw64::hd_replace::has(key); });
+                renderer->replacement_hook([](uint64_t key, uint8_t wrap_s, uint8_t wrap_t, bool linear, uint16_t& w, uint16_t& h) {
+                    return GLuint(srw64::hd_replace::texture(key, wrap_s, wrap_t, linear, w, h));
+                });
+                fprintf(stderr, "SRW64_HD_ART %s\n", hd_art.string().c_str());
+            }
+            srw64::presentation::image_mode.configure(hd);
+        }
+        // The host's tagged draws (window frames, story and title text) from the modules that
+        // tag them, as SRW64Renderer configures them; the sprite layer's HD frames (title, units,
+        // battle sprites) from the same art.
+        const auto sprites_start = std::chrono::steady_clock::now();
+        srw64::hdmap::configure(capture_directory);
+        const auto maps_done = std::chrono::steady_clock::now();
+        const char* art = std::getenv("SRW64_ART_PACK");
+        srw64::sprites::configure(!hd_art.empty() ? hd_art : art ? std::filesystem::path(art) : std::filesystem::path(), capture_directory);
+        fprintf(stderr, "SRW64_BOOT_HD maps %.0f ms sprites %.0f ms\n", std::chrono::duration<double, std::milli>(maps_done - sprites_start).count(),
+                std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - maps_done).count());
+        renderer->native_hook([](const srw64::n64gl::Command& command, int width, int height) {
+#ifdef SRW64_GL_ONLY
+            if (srw64::marker::draw_gl(command, width, height)) return;
+#endif
+            srw64::native_gl::draw(command, width, height);
+        });
+    }
+    bool valid() override { return true; }
+    bool update_config(const ultramodern::renderer::GraphicsConfig&, const ultramodern::renderer::GraphicsConfig&) override { return false; }
+    void enable_instant_present() override {}
+    void send_dl(const OSTask* task) override {
+        srw64::frame_rate::list_sent();
+        const uint32_t start = task->t.data_ptr & 0x3FFFFFF;
+        bool native_text = false;
+#ifdef __SWITCH__
+        const auto t0 = SwitchPerf::clock::now();
+#endif
+#ifdef SRW64_NATIVE_DIALOGUE
+        ++workload;
+        auto native_frame = srw64::dialogue::take_frame(start, task->t.data_size, display_copy, rdram);
+        native_text = bool(native_frame);
+        srw64::dialogue::queue_frame(workload, native_frame);
+        srw64::names::queue_cover(workload, srw64::names::request().visible);
+        srw64::gbi_stats::record(native_text ? display_copy.data() : rdram, rdram, start, task->t.data_size);
+#endif
+#ifdef __SWITCH__
+        const auto t1 = SwitchPerf::clock::now();
+#endif
+        frame.clear();
+        // The originals or HD as the settings ask (nothing to drain here, unlike RT64's cache).
+        {
+            auto& mode = srw64::presentation::image_mode;
+            if (mode.enabled() && mode.current() != int(mode.requested())) mode.acknowledge(mode.requested());
+        }
+        // The picture follows the screen's shape, 4:3 to 16:9 (game_frame.hpp), as RT64's does
+        // (at 16:9, 426.7 original pixels: 1280 target pixels at the scale of 3, the original
+        // 160 in from each side). The game thread sizes the tactical map's view from it
+        // (wide_map.cpp), the host's layers place themselves by it (frame::scale).
+        {
+            int w = 0, h = 0;
+            SDL_GL_GetDrawableSize(window, &w, &h);
+            const float picture = srw64::frame::width(float(w), float(h));
+            srw64::frame::picture_width = picture;
+            interpreter->picture_width(picture);
+        }
+        const auto shape = srw64::wide_map::take_shape();
+        interpreter->run(rdram, start, frame, native_text ? display_copy.data() : nullptr, native_text ? task->t.data_size : 0);
+#ifdef __SWITCH__
+        const auto t2 = SwitchPerf::clock::now();
+#endif
+        renderer->draw(frame);
+        srw64::hd_replace::end_frame();
+#ifdef __SWITCH__
+        const auto t2a = SwitchPerf::clock::now();
+#endif
+        renderer->collect();
+#ifdef __SWITCH__
+        const auto t2b = SwitchPerf::clock::now();
+#endif
+        srw64::native_gl::end_frame();
+#ifdef __SWITCH__
+        const auto t3 = SwitchPerf::clock::now();
+        perf.gl_draw += SwitchPerf::ms(t2, t2a);
+        perf.gl_collect += SwitchPerf::ms(t2a, t2b);
+        perf.host_layers += SwitchPerf::ms(t2b, t3);
+        perf.dialogue_take += SwitchPerf::ms(t0, t1);
+        perf.interpret += SwitchPerf::ms(t1, t2);
+        perf.draw += SwitchPerf::ms(t2, t3);
+        perf.list_max = std::max(perf.list_max, SwitchPerf::ms(t0, t3));
+        ++perf.lists;
+        // A combiner program first linked in this frame: the list for the next start.
+        if (renderer->programs_held() != combiner_keys.size()) {
+            combiner_keys = renderer->program_keys();
+            std::string text;
+            for (const uint32_t key : combiner_keys) { char line[16]; std::snprintf(line, sizeof line, "%08x\n", key); text += line; }
+            std::ofstream("/switch/Marchwind64/shaders/combiners.txt", std::ios::trunc) << text;
+        }
+        perf.report(renderer->programs_held());
+#endif
+        // The workload whose overlays go with this colour image when the VI shows it, and how
+        // much of the picture it fills (wide_map::Shape).
+        image_workloads[frame.color_image] = workload;
+        image_shapes[frame.color_image] = shape;
+    }
+    void send_dummy_workload(uint32_t) override {}
+    void update_screen() override {
+        int width = 0, height = 0;
+#ifdef __SWITCH__
+        // The game shows a new picture every second or third VI; the rest of the time the
+        // screen would be drawn again as it is (as on the PS Vita, where that was 9 ms a VI).
+        // The same colour image not drawn since, the same dialogue frame, no page of the shared
+        // UI up (the frame-rate readout aside, unless it changed) and no capture wanted: the
+        // screen keeps the last swap.
+        {
+            const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
+            const uint32_t image = renderer->image_at(origin);
+            const auto found = image_workloads.find(image);
+            const ScreenKey key{image, renderer->drawn_at(image), found != image_workloads.end() ? found->second : 0,
+                                srw64::ui::readout_changes()};
+            if (key == last_screen && !srw64::ui::shown() && !srw64::debug::screenshots().wanted() &&
+                !srw64::debug::recording().active() && !player_shot_armed.load()) {
+                ++perf.kept;
+                perf.report(renderer->programs_held());
+                return;
+            }
+            last_screen = key;
+        }
+        const auto p0 = SwitchPerf::clock::now();
+#endif
+        SDL_GL_GetDrawableSize(window, &width, &height);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(0, 0, width, height);
+        glDisable(GL_SCISSOR_TEST);
+        glClearColor(0, 0, 0, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
+        // The picture (4:3 to 16:9) as large as the window allows, centred.
+        const float picture = renderer->picture();
+        const int picture_width = std::min(width, int(std::lround(height * picture / srw64::n64gl::kPictureHeight)));
+        const int picture_height = int(std::lround(picture_width * srw64::n64gl::kPictureHeight / picture));
+        const int picture_x = (width - picture_width) / 2, picture_y = (height - picture_height) / 2;
+        const uint32_t origin = ultramodern::renderer::get_vi_regs()->VI_ORIGIN_REG & 0x3FFFFFF;
+        renderer->present(origin, picture_x, picture_y, picture_width, picture_height);
+#ifdef __SWITCH__
+        // Until the game's picture is more than black, the splash instead of it.
+        if (!splash_done && (splash_done = shows_picture(width, height))) { splash.release(); srw64_switch_drop_splash(); }
+        if (!splash_done) {
+            if (!splash.draw(width, height)) splash_done = true;
+            else { SDL_GL_SwapWindow(window); return; }
+        }
+#endif
+        // Black beside what the frame fills: a scene not yet drawn wider keeps the original's
+        // 4:3, a narrow tactical map its view (mask_sides on RT64).
+        if (picture > srw64::n64gl::kPictureWidth) {
+            const auto found = image_shapes.find(renderer->image_at(origin));
+            const auto shape = found == image_shapes.end() ? srw64::wide_map::Shape{} : found->second;
+            if (shape.fill != srw64::wide_map::Shape::Fill::whole) {
+                float band_left = (picture - srw64::n64gl::kPictureWidth) / 2, band_right = (picture + srw64::n64gl::kPictureWidth) / 2;
+                if (shape.fill == srw64::wide_map::Shape::Fill::view) { band_left = shape.left; band_right = shape.right; }
+                const float per = picture_width / picture;
+                const int left = std::max(0, int(std::lround(picture_x + band_left * per)));
+                const int right = std::min(width, int(std::lround(picture_x + band_right * per)));
+                glEnable(GL_SCISSOR_TEST);
+                glClearColor(0, 0, 0, 1);
+                if (left > 0) { glScissor(0, 0, left, height); glClear(GL_COLOR_BUFFER_BIT); }
+                if (right < width) { glScissor(right, 0, width - right, height); glClear(GL_COLOR_BUFFER_BIT); }
+                glDisable(GL_SCISSOR_TEST);
+            }
+        }
+#ifdef __SWITCH__
+        const auto p1 = SwitchPerf::clock::now();
+        SwitchPerf::clock::time_point p2 = p1;
+#endif
+#ifdef SRW64_NATIVE_DIALOGUE
+        const auto shown = image_workloads.find(renderer->image_at(origin));
+        const uint64_t shown_workload = shown != image_workloads.end() ? shown->second : 0;
+        if (shown_workload) srw64::dialogue::gl_draw(shown_workload, uint32_t(width), uint32_t(height));
+#ifdef __SWITCH__
+        p2 = SwitchPerf::clock::now();
+#endif
+        // The name page's cover, then the shared UI's pages over everything (capture_frame's order).
+        const bool name_cover = shown_workload && srw64::names::frame_cover(shown_workload);
+        if (name_cover) {
+            glClearColor(.028f, .045f, .07f, 1.f);
+            glClear(GL_COLOR_BUFFER_BIT);
+        }
+        if (srw64::ui::draw_gl(width, height, name_cover)) srw64::ui::presented();
+        if (shown_workload) srw64::names::cover_presented(shown_workload, name_cover);
+#endif
+#ifdef __SWITCH__
+        const auto p3 = SwitchPerf::clock::now();
+#endif
+        const uint64_t frame_number = ++presented_frames;
+        srw64::frame_rate::present_sent();
+        // The window as shown, read back for the debug interface's screenshot and recording
+        // and the player's F12, as capture_frame does on RT64.
+        const auto shot = srw64::debug::screenshots().take();
+        const bool recording = srw64::debug::recording().active();
+        const bool player_shot = player_shot_armed.exchange(false);
+        if (shot || recording || player_shot) {
+            std::vector<uint8_t> pixels(size_t(width) * height * 4);
+            glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
+            auto upright = [width, height](const std::vector<uint8_t>& pixels) {
+                std::vector<uint8_t> rows(pixels.size());
+                for (int y = 0; y < height; ++y)
+                    std::memcpy(rows.data() + size_t(y) * width * 4, pixels.data() + size_t(height - 1 - y) * width * 4, size_t(width) * 4);
+                for (size_t i = 3; i < rows.size(); i += 4) rows[i] = 255;
+                return rows;
+            };
+            if (recording || player_shot) {
+                const auto rows = upright(pixels);
+                if (recording) srw64::debug::recording().add(rows.data(), uint32_t(width), uint32_t(height));
+                if (player_shot) save_player_screenshot(rows.data(), uint32_t(width), uint32_t(height));
+            }
+            if (shot) {
+                const auto vi = srw64_current_vi();
+                run_in_background([shot = *shot, pixels = std::move(pixels), upright, width, height, frame_number, vi] {
+                    const auto rows = upright(pixels);
+                    const bool written = stbi_write_png(shot.path.string().c_str(), width, height, 4, rows.data(), width * 4);
+                    srw64::debug::screenshots().finish(shot.id, written
+                        ? nlohmann::json({{"path", shot.path.string()}, {"present", frame_number}, {"vi", vi},
+                                          {"width", width}, {"height", height}, {"renderer", "gl"}})
+                        : nlohmann::json({{"error", "cannot write " + shot.path.string()}}));
+                });
+            }
+        }
+#ifdef __SWITCH__
+        const auto p4 = SwitchPerf::clock::now();
+#endif
+        SDL_GL_SwapWindow(window);
+#ifdef __SWITCH__
+        const auto p5 = SwitchPerf::clock::now();
+        perf.picture += SwitchPerf::ms(p0, p1);
+        perf.overlays += SwitchPerf::ms(p1, p2);
+        perf.ui += SwitchPerf::ms(p2, p3);
+        perf.readback += SwitchPerf::ms(p3, p4);
+        perf.swap += SwitchPerf::ms(p4, p5);
+        perf.present_max = std::max(perf.present_max, SwitchPerf::ms(p0, p5));
+        perf.swap_max = std::max(perf.swap_max, SwitchPerf::ms(p4, p5));
+        ++perf.presents;
+        perf.report(renderer->programs_held());
+#endif
+    }
+    void shutdown() override {
+        srw64::gbi_stats::flush();
+#ifdef SRW64_NATIVE_DIALOGUE
+        srw64::ui::render_shutdown_gl();
+        srw64::dialogue::gl_shutdown();
+#endif
+        srw64::native_gl::shutdown();
+        srw64::sprites::shutdown();
+        srw64::hdmap::shutdown();
+        renderer.reset();
+        interpreter.reset();
+    }
+    uint32_t get_display_framerate() const override { return 60; }
+    float get_resolution_scale() const override { return 1.0f; }
+private:
+    uint8_t* rdram;
+    std::unique_ptr<srw64::n64gl::Renderer> renderer;
+#ifdef __SWITCH__
+    // The loading screen's last step (switch_platform.cpp), on the window from its first swap
+    // until the game draws a picture of its own (the BANPRESTO logo): the game's first second
+    // or two is black frames.
+    Splash splash;
+    bool splash_done = false;   // the game has shown a picture of its own
+#endif
+    std::unique_ptr<srw64::n64gl::Interpreter> interpreter;
+    srw64::n64gl::Frame frame;
+    std::vector<uint8_t> display_copy;
+    uint64_t workload = 0;
+    std::map<uint32_t, uint64_t> image_workloads;
+    std::map<uint32_t, srw64::wide_map::Shape> image_shapes;
+#ifdef __SWITCH__
+    // What the last swap showed (update_screen): the colour image, the frame that drew it,
+    // the dialogue frame over it and the readout's version.
+    struct ScreenKey {
+        uint32_t image = 0, drawn = 0;
+        uint64_t workload = 0, readout = 0;
+        bool operator==(const ScreenKey&) const = default;
+    };
+    ScreenKey last_screen{};
+    SwitchPerf perf;
+    std::vector<uint32_t> combiner_keys;
+#endif
+};
+}  // namespace
+#ifdef __vita__
+void srw64_vita_graphics_begin() { vita_graphics = std::thread(vita_graphics_init); }
+#endif
+#endif
 
 std::unique_ptr<ultramodern::renderer::RendererContext> srw64_create_renderer(
     uint8_t* rdram, ultramodern::renderer::WindowHandle handle) {
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) return std::make_unique<GLRenderer>(rdram);
+#endif
+#ifdef SRW64_GL_ONLY
+    (void)handle;
+    return nullptr;
+#else
     return std::make_unique<SRW64Renderer>(rdram, handle);
+#endif
 }
 
 ultramodern::renderer::WindowHandle srw64_create_window(void*) {
@@ -927,10 +1613,21 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     SDL_SetHint(SDL_HINT_WINDOWS_DPI_SCALING, "1");
 #endif
     gpu_names = srw64::gpu_report::log();
+#ifdef __SWITCH__
+    srw64_switch_boot_end();   // the screen is the window's from here
+#endif
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | (srw64_audio_enabled() ? SDL_INIT_AUDIO : 0)) != 0) {
         fprintf(stderr, "SRW64_SDL_INIT_FAILED %s\n", SDL_GetError());
         std::abort();
     }
+#ifdef __SWITCH__
+    // The Switch's controllers by their labels, not by position (SDL's own mapping puts A on
+    // the bottom button, Nintendo's B): A confirms and B goes back as in every Switch game,
+    // and the hints show the letters (pad_family stays 0, lettered A B X Y).
+    SDL_GameControllerAddMapping("000038f853776974636820436f6e7400,Switch Controller,"
+        "a:b0,b:b1,x:b2,y:b3,back:b11,start:b10,leftshoulder:b6,rightshoulder:b7,lefttrigger:b8,righttrigger:b9,"
+        "leftstick:b4,rightstick:b5,dpup:b13,dpdown:b15,dpleft:b12,dpright:b14,leftx:a0,lefty:a1,rightx:a2,righty:a3,");
+#endif
     // UI and dialogue need display pixels regardless of the game's internal render scale.
 #ifdef __APPLE__
     constexpr Uint32 surface = SDL_WINDOW_METAL;
@@ -947,10 +1644,29 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     const bool deck = srw64::on_steam_deck();
     if (deck) srw64::input::pad_family = 1;  // Deck icons before the controller has reported
     // Android: the activity hides the system bars itself (SRW64Activity).
+#ifdef __SWITCH__
+    const bool fills_screen = true;   // the screen's 1280 x 720, or the TV's when docked
+#else
     const bool fills_screen = deck;
+#endif
+    Uint32 surface_flags = surface;
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) {
+#ifdef __SWITCH__
+        // OpenGL ES 2 on the Switch's Mesa (src/gl/gl_api.hpp); it gives ES 3.2.
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+#else
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+#endif
+        surface_flags = SDL_WINDOW_OPENGL;
+    }
+#endif
     // A Steam Deck's 1280 x 800 is the reference (game_frame.hpp); the Deck fills its screen.
     window = SDL_CreateWindow("Marchwind64", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              1280, 800, surface | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
+                              1280, 800, surface_flags | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |
                               (fills_screen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0) |
                               (std::getenv("SRW64_BACKGROUND") && std::string(std::getenv("SRW64_BACKGROUND")) == "1" ? SDL_WINDOW_HIDDEN : 0));
     if (!window) {
@@ -960,16 +1676,49 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
     }
     SDL_SysWMinfo info{};
     SDL_VERSION(&info.version);
+#ifndef __SWITCH__   // the Switch's SDL has no window-manager info, nor needs it (the window is returned)
     if (!SDL_GetWindowWMInfo(window, &info)) std::abort();
+#endif
+#ifdef __SWITCH__
+    // The GL context before the UI's start (its fonts and pages take a while), and the loading
+    // screen in it at once: the window was black from here to the game's first frame.
+    gl_context = SDL_GL_CreateContext(window);
+    if (!gl_context) graphics_failure(SDL_GetError());
+    {
+        int w = 0, h = 0;
+        SDL_GL_GetDrawableSize(window, &w, &h);
+        Splash first;
+        if (first.draw(w, h)) { SDL_GL_SwapWindow(window); first.release(); }
+    }
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::ui::window_init(window,capture_directory);
     srw64::settings::window_init(window,capture_directory);
 #endif
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) {
+        // Made here, on the window thread, and handed to the graphics thread (GLRenderer).
+#ifndef __SWITCH__
+        gl_context = SDL_GL_CreateContext(window);
+        if (!gl_context) graphics_failure(SDL_GetError());
+#endif
+        SDL_GL_MakeCurrent(window, nullptr);
 #if defined(__APPLE__)
+        return {info.info.cocoa.window, nullptr};
+#elif defined(_WIN32)
+        return {info.info.win.window, GetCurrentThreadId()};
+#else
+        return window;
+#endif
+    }
+#endif
+#if defined(__APPLE__) && !defined(SRW64_GL_ONLY)
     view = SDL_Metal_CreateView(window);
     if (!view) std::abort();
     static_cast<CA::MetalLayer*>(SDL_Metal_GetLayer(view))->setFramebufferOnly(false);
     return {info.info.cocoa.window, SDL_Metal_GetLayer(view)};
+#elif defined(__APPLE__)
+    return {info.info.cocoa.window, nullptr};
 #elif defined(_WIN32)
     return {info.info.win.window, GetCurrentThreadId()};
 #else
@@ -978,7 +1727,7 @@ ultramodern::renderer::WindowHandle srw64_create_window(void*) {
 }
 
 void srw64_after_gpu(plume::RenderCommandList* list, std::function<void(bool completed)> callback) {
-#ifdef __APPLE__
+#if defined(__APPLE__) && !defined(SRW64_GL_ONLY)
     if (metal_backend) {
         static_cast<plume::MetalCommandList*>(list)->mtl->addCompletedHandler([callback = std::move(callback)](MTL::CommandBuffer* command) {
             callback(command->status() == MTL::CommandBufferStatusCompleted);
@@ -991,7 +1740,25 @@ void srw64_after_gpu(plume::RenderCommandList* list, std::function<void(bool com
 }
 
 void srw64_update_window(void*) {
+#ifdef __SWITCH__
+    // The runtime calls this every millisecond. On the Switch the shared UI's update took
+    // 0.15-0.4 ms a time, 13-36% of a core, and held the UI lock the render thread's draw
+    // waits for (200-600 ms of every 5 s); 125 times a second keeps input and pages prompt.
+    {
+        using clock = std::chrono::steady_clock;
+        static clock::time_point next{};
+        const auto now = clock::now();
+        if (now < next) {
+            std::this_thread::sleep_for(next - now);
+            return;
+        }
+        next = now + std::chrono::milliseconds(8);
+    }
+#endif
     srw64::qa::update_window(window, capture_directory, srw64_current_vi());
+#ifndef SRW64_NATIVE_DIALOGUE
+    if (player_shot_requested.exchange(false)) player_shot_armed = true;
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::settings::update();
     srw64::settings::control(window,capture_directory);
@@ -1016,6 +1783,14 @@ void srw64_update_window(void*) {
     if(failed!=title_error || error_label!=title_label) {
         title_error=failed;title_label=error_label;
         SDL_SetWindowTitle(window,(std::string("Marchwind64")+(failed?" | "+error_label:"")).c_str());
+    }
+    // The bindings, copied again only when the Controls page changes them (the screenshot
+    // key below, the held inputs after the events).
+    static srw64::input::Bindings bindings = srw64::input::live_bindings().get();
+    static uint64_t bindings_revision = srw64::input::live_bindings().revision();
+    if (const auto revision = srw64::input::live_bindings().revision(); revision != bindings_revision) {
+        bindings = srw64::input::live_bindings().get();
+        bindings_revision = revision;
     }
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -1043,11 +1818,22 @@ void srw64_update_window(void*) {
         if(event.type==SDL_KEYDOWN && (event.key.keysym.mod & KMOD_ALT) &&
            (event.key.keysym.scancode==SDL_SCANCODE_RETURN || event.key.keysym.scancode==SDL_SCANCODE_KP_ENTER))
             alt_enter_key=event.key.keysym.scancode;
-        // Screenshots on every screen, the settings window and our pages included.
-        if(event.type==SDL_KEYDOWN && !event.key.repeat && (event.key.keysym.sym==SDLK_F12 || event.key.keysym.sym==SDLK_PRINTSCREEN) &&
-           !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))) {
-            player_shot_requested=true;
-            continue;
+        // Screenshots on every screen, the settings window and our pages included, by the
+        // keys bound to them (F12 and Print Screen unless rebound). A key event, not the held
+        // state below: Windows hands Print Screen over as a press and release at once. Not
+        // while the Controls page waits for a key, nor a key that types while text is entered.
+        if(event.type==SDL_KEYDOWN && !event.key.repeat && !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))
+#ifdef SRW64_NATIVE_DIALOGUE
+           && !srw64::ui::capturing_input()
+#endif
+           ) {
+            const auto key=event.key.keysym.scancode;
+            const auto* action=srw64::input::action_of_key(bindings,int(key));
+            const bool function_key=(key>=SDL_SCANCODE_F1 && key<=SDL_SCANCODE_F12) || (key>=SDL_SCANCODE_F13 && key<=SDL_SCANCODE_F24) || key==SDL_SCANCODE_PRINTSCREEN;
+            if(action && *action==srw64::input::Action::Screenshot && (function_key || !SDL_IsTextInputActive())) {
+                player_shot_requested=true;
+                continue;
+            }
         }
 #ifdef SRW64_NATIVE_DIALOGUE
         if(event.type!=SDL_QUIT && srw64::ui::event(event))continue;
@@ -1105,13 +1891,6 @@ void srw64_update_window(void*) {
     if(virtual_keys)keys_released=false;
     srw64::settings::release_input_when(keys_released);
 #endif
-    // The bindings, copied again only when the Controls page changes them.
-    static srw64::input::Bindings bindings = srw64::input::live_bindings().get();
-    static uint64_t bindings_revision = srw64::input::live_bindings().revision();
-    if (const auto revision = srw64::input::live_bindings().revision(); revision != bindings_revision) {
-        bindings = srw64::input::live_bindings().get();
-        bindings_revision = revision;
-    }
     if (!editing_name) {
         const Uint8* keys = SDL_GetKeyboardState(nullptr);
         if (alt_enter_key != SDL_SCANCODE_UNKNOWN && !keys[alt_enter_key]) alt_enter_key = SDL_SCANCODE_UNKNOWN;
@@ -1148,6 +1927,15 @@ void srw64_update_window(void*) {
     // The on-screen controller on a phone (touch_pad.hpp), as a controller.
     buttons |= srw64::ui::touch_buttons();
 #endif
+    // A controller button bound to the screenshot, on its press (the keys go by their events above).
+    static bool shot_held = false;
+    const bool shot_now = (buttons & srw64::input::pad_screenshot) != 0;
+#ifdef SRW64_NATIVE_DIALOGUE
+    if (shot_now && !shot_held && !srw64::ui::capturing_input()) player_shot_requested = true;
+#else
+    if (shot_now && !shot_held) player_shot_requested = true;
+#endif
+    shot_held = shot_now;
     // Controller play hides the pointer; the mouse or touch screen brings it back.
     static int cursor=-1;
     const int wanted=srw64::input::pad_hints ? SDL_DISABLE : SDL_ENABLE;
@@ -1165,15 +1953,26 @@ std::string srw64_pad_name() {
 }
 uint32_t srw64_keyboard_state() { return keyboard_state.load(std::memory_order_relaxed); }
 void srw64_request_screenshot() { player_shot_requested = true; }
+bool srw64_take_screenshot_request() { return player_shot_requested.exchange(false); }
+void srw64_arm_screenshot() { player_shot_armed = true; }
+bool srw64_screenshot_armed() { return player_shot_armed.load(); }
 
 nlohmann::json srw64_window_status() {
     if (!window) return nullptr;
     int width = 0, height = 0, pixel_width = 0, pixel_height = 0;
     SDL_GetWindowSize(window, &width, &height);
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) SDL_GL_GetDrawableSize(window, &pixel_width, &pixel_height);
+#endif
+#ifndef SRW64_GL_ONLY
+#ifdef SRW64_GL_RENDERER
+    else
+#endif
 #ifdef __APPLE__
     SDL_Metal_GetDrawableSize(window, &pixel_width, &pixel_height);
 #else
     SDL_Vulkan_GetDrawableSize(window, &pixel_width, &pixel_height);
+#endif
 #endif
     return {{"focused", SDL_GetKeyboardFocus() == window}, {"width", width}, {"height", height},
             {"fullscreen", (SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN) != 0},
@@ -1182,6 +1981,12 @@ nlohmann::json srw64_window_status() {
 
 // The graphics API and the GPU as plume describes it, for a bug report (bug_report.hpp).
 nlohmann::json srw64_graphics_info() {
+#ifdef SRW64_GL_RENDERER
+    if (gl_mode()) return {{"api", "OpenGL"}, {"device", gl_device}};
+#endif
+#ifdef SRW64_GL_ONLY
+    return {{"api", "none"}};
+#else
     using API = RT64::UserConfiguration::GraphicsAPI;
     const char* api = graphics_api < 0 ? "none" : graphics_api == int(API::D3D12) ? "D3D12" :
                       graphics_api == int(API::Vulkan) ? "Vulkan" : graphics_api == int(API::Metal) ? "Metal" : "other";
@@ -1196,6 +2001,7 @@ nlohmann::json srw64_graphics_info() {
         info["video_memory_mb"] = d.dedicatedVideoMemory >> 20;
     }
     return info;
+#endif
 }
 
 nlohmann::json srw64_window_control(const nlohmann::json& params) {
@@ -1244,8 +2050,11 @@ void srw64_destroy_window() {
     keyboard_state = 0;
     if (pad) { SDL_GameControllerClose(pad); pad = nullptr; }
     srw64_close_audio();
+#ifdef SRW64_GL_RENDERER
+    if (gl_context) { SDL_GL_DeleteContext(gl_context); gl_context = nullptr; }
+#endif
 #ifdef __APPLE__
-    SDL_Metal_DestroyView(view);
+    if (view) SDL_Metal_DestroyView(view);
 #endif
     SDL_DestroyWindow(window);
     SDL_Quit();

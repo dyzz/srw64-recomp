@@ -9,6 +9,7 @@ the page's own prediction, and the HP the battle actually took.
 """
 import json
 from pathlib import Path
+import struct
 import sys
 import time
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -66,6 +67,17 @@ def main():
         for value in values:
             call('buttons', buttons=value, vis=6)
             time.sleep(.7)
+
+    def cursor_on(x, y):
+        """The map cursor (f32 at 80102308/0C, tile = (v - 32) >> 4) and the camera's target
+        (80172EB4/B8) on a tile, once the map stands idle (main state 5 at 80172EB0)."""
+        deadline = time.monotonic() + 60
+        while mem(0x80172EB0, 1)[0] != 5:
+            assert time.monotonic() < deadline, 'map not idle'
+            time.sleep(.2)
+        for address, tile in ((0x80102308, x), (0x8010230C, y), (0x80172EB4, x), (0x80172EB8, y)):
+            write(address, struct.pack('>f', float(tile * 16 + 32)))
+        time.sleep(.7)
 
     def check(name, passed, **detail):
         checks.append({'check': name, 'passed': bool(passed), **detail})
@@ -141,8 +153,10 @@ def main():
           hp=hp, lost=lost, settled=settled)
 
     # Attacking: 甲児 on ガラリア. Re-choose the target until the pre-rolled attack misses,
-    # then 必中 must turn it into a hit; 鉄壁 must reach the counter.
-    buttons('up', 'up', 'right', 'a', 'down', 'a', 'a', 'right', 'a')
+    # then 必中 must turn it into a hit; 鉄壁 must reach the counter. Where the cursor stands
+    # after a battle has changed with the map's menus: put it on 甲児 (10, 8) instead.
+    cursor_on(10, 8)
+    buttons('a', 'down', 'a', 'a', 'right', 'a')
     p = wait_page(p['serial'])
     check('koji-entry', p['mode'] == 1 and p['attacker']['pilot'] == 196 and p['attacker']['hit'] < 100,
           hit=p['attacker']['hit'])

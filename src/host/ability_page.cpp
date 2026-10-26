@@ -1,5 +1,7 @@
 #include "ability_page.hpp"
 #include "spirit_learning.hpp"
+#include "dialogue_data.hpp"
+#include "run_files.hpp"
 #include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
 #include "intermission_page.hpp"
@@ -189,9 +191,11 @@ json list_json(uint8_t* ram,recomp_context* ctx,bool pilots_list) {
         if(pilots_list) {
             const uint32_t pilot=pilot_at(entry);
             json row=pilot_brief(ram,pilot);row["index"]=entry;
-            // The unit name takes the Getter form offset 801C8E50 adds for its pilots.
-            if(const uint32_t unit=pilot_unit(ram,ctx,pilot))row["unit"]=text(ram,uint16_t(text_unit_names+read(ram,unit+up::unit_number,2)+call(ram,ctx,getter_form,pilot)));
-            else row["unit"]=std::string();
+            // As 801C8DD8: the pilot's own unit (+0x38) and the Getter form offset 801C8E50 reads
+            // off it. 801C924C's unit is already the pilot's own form, and the offset on top of
+            // it named ハヤト's ゲッター3 and ムサシ's ポセイドン (issue #13).
+            const uint32_t unit=read(ram,pilot+pilot_has_unit,1)?read(ram,pilot+pilot_unit_field,4):0;
+            row["unit"]=unit && valid(unit,0x54)?text(ram,uint16_t(text_unit_names+read(ram,unit+up::unit_number,2)+call(ram,ctx,getter_form,pilot))):std::string();
             rows.push_back(row);
         } else {
             const uint32_t unit=up::unit_at(entry);
@@ -491,7 +495,10 @@ json pilot_json(uint8_t* ram,recomp_context* ctx) {
     for(size_t n=learned;n<table.size() && n<6;++n)later.push_back({{"name",text(ram,uint16_t(text_spirits+table[n].id))},{"level",table[n].level}});
     json skills=json::array();
     const unsigned skill_flags=read(ram,pilot+pilot_skill_flags,1),skill_level=read(ram,pilot+pilot_skill_level,1);
-    if(skill_flags&0x04)skills.push_back(text(ram,uint16_t(0x433+skill_level)));
+    // Level 0 is a skill not learned yet: the original prints base + 0 anyway, the previous
+    // group's L9 (S防御L9 for ファ・ユイリィ's 0x08 at level 0, issue #13), so it is left out.
+    if(!skill_level){}
+    else if(skill_flags&0x04)skills.push_back(text(ram,uint16_t(0x433+skill_level)));
     else if(skill_flags&0x08)skills.push_back(text(ram,uint16_t(0x40F+skill_level)));
     else if(skill_flags&0x10)skills.push_back(text(ram,uint16_t(0x418+skill_level)));
     else if(skill_flags&0x20)skills.push_back(text(ram,uint16_t(0x421+skill_level)));
@@ -548,11 +555,9 @@ void frame(uint8_t* ram) {
 
 void configure(const std::filesystem::path& directory) {
     if(const char* v=std::getenv("SRW64_NATIVE_ABILITY");v && std::string_view(v)=="0")return;
-    if(!std::getenv("SRW64_DIALOGUE_DATA"))return; // Legacy unprofiled runs keep the original screens.
-    std::ifstream source(std::getenv("SRW64_DIALOGUE_DATA"));
-    const auto data=json::parse(source,nullptr,false);
-    if(!data.is_discarded() && data.contains("battle_assets"))art=data.at("battle_assets");
-    log.open(directory/"ability-page-events.jsonl");
+    if(!dialogue_data::document())return; // Legacy unprofiled runs keep the original screens.
+    if(!dialogue_data::battle_assets().empty())art=dialogue_data::battle_assets();
+    srw64::open_run_log(log,directory/"ability-page-events.jsonl");
     auto& h=srw64_game_hooks;
     h.ability_build=build;h.ability_step=step;h.ability_frame=frame;
 }

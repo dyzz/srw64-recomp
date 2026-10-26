@@ -2,7 +2,8 @@
 // The big download button. Every platform's button is rendered; a small script
 // shows the one for the reader's system (all of them stay visible without it).
 // A platform the current release has no file for links to its install steps. The HD
-// pack, one download for every platform, has its own button beside them.
+// pack, one download for the computers and Android, has its own button beside them (the
+// Switch's own pack is on the install page).
 import { fileFor, hd, mb, release, PLATFORM_LABEL, type Platform } from '../data/release';
 import Mirrors from './Mirrors.astro';
 import { UI, type Lang } from '../i18n';
@@ -12,7 +13,7 @@ const t = {
   other: { zh: '其他平台', en: 'Other platforms', ja: 'ほかのプラットフォーム' },
   steps: { zh: '查看安装方法', en: 'Installation instructions', ja: 'インストール方法を見る' },
   hd: { zh: '下载 HD 美术包', en: 'Download the HD art pack', ja: 'HD アートパックをダウンロード' },
-  hdNote: { zh: '可选，各平台通用', en: 'optional, every platform', ja: '任意・全プラットフォーム共通' },
+  hdNote: { zh: '可选，电脑与 Android 通用', en: 'optional, computers and Android', ja: '任意・パソコンと Android 共通' },
   hdHow: { zh: 'HD 包怎么装', en: 'Installing the HD pack', ja: 'HD パックの入れ方' },
 };
 const hdFile = fileFor('hd');

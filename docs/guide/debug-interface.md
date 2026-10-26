@@ -24,7 +24,7 @@
 | F7 语言 | SDL 键盘事件，组字期间交给输入法 | `keys f7`：进入相同的 SDL 组字／repeat 门控 |
 | N64 手柄（绕过键盘层） | 无（诊断用） | `buttons` |
 | 主角选择页：四张卡片、←→、Enter／Z | SDL 鼠标与键盘 | `ui.click --text <主角全名>`（高亮后按继续或 Enter）、`ui.key right`／`return`；`status.name_page` 给出 `route` 与四个选项 |
-| 场间主菜单：九项（「（前）」场景后两项）、のりかえ 二级菜单 | SDL 鼠标与键盘 | `ui.click --text intermission:N`（或可见文字）确认第 N 项，`intermission-swap:0|1` 选驾驶员／妖精；`ui.key up`／`down`／`return`／`escape`；`status.intermission_page` 给出 `cursor`、`submenu`、`swap_refused`、回合数与资金 |
+| 场间主菜单：十项（「（前）」场景后三项；倒数第二项是返回标题，最后一项是「次のマップへ」）、のりかえ 二级菜单 | SDL 鼠标与键盘 | `ui.click --text intermission:N`（或可见文字）确认第 N 项，`intermission-swap:0|1` 选驾驶员／妖精；`ui.key up`／`down`／`return`／`escape`；`status.intermission_page` 给出 `cursor`、`submenu`、`swap_refused`、回合数与资金 |
 | 改造画面：机体列表、五项改造、确认窗与消息 | SDL 鼠标与键盘 | `ui.click --text upgrade:N`（当前行确认、其他行移动）、`upgrade-confirm`／`upgrade-cancel`／`upgrade-dismiss`；`ui.key up`／`down`／`left`／`right`／`return`／`escape`；`status.upgrade_page` 给出 `screen`、`rows`、`window`、`funds`；資金直接修改：`ui.click --text upgrade-funds`（主菜单 `intermission-funds`）、`ui.type <数字>`、`ui.key return` |
 | 联动页：三张作品卡片、←→、空格／Z、Enter、Esc／X | SDL 鼠标与键盘 | `ui.click --text <作品名>`（每次切换勾选）、`ui.click --text <继续按钮>`、`ui.key right`／`space`／`return`；`status.link_page` 给出 `joined` 与 `scheduled` |
 | 选角与确认页：卡片、按钮、←→／Enter／Esc | SDL 鼠标与键盘 | `ui.click`、`ui.key`；`status.name_page` 给出 `person`（3 选角、2 确认）与选角页的四条路线 |

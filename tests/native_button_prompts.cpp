@@ -33,6 +33,13 @@ int main(){
     assert(expand_prompts("{AuxL}",keys)==u8(0xE871));                // the 1 key
     assert(expand_prompts("{Settings}",keys)==u8(0xE87A));            // Backspace
     assert(expand_prompts("{Z}",keys)=="\xe2\x80\x94");              // no key, as no button
+    // Every action has its own token: the Controls page shows each row's binding by it.
+    for(size_t i=0;i<in::action_count;++i){
+        bool found=false;
+        for(const auto& t:action_tokens)found|=t.count==1 && t.members[0]==in::Action(i);
+        assert(found || (in::Action(i)>=in::Action::StickUp && in::Action(i)<=in::Action::StickRight));
+    }
+    assert(expand_prompts("{Screenshot}",xbox)=="\xe2\x80\x94");   // no controller button by default
     // Rebinding moves the hint with it.
     auto b=in::default_bindings();
     in::assign_key(b,in::Action::A,in::scancode::G);

@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <map>
+#include <optional>
 #include <set>
 #include <stdexcept>
 
@@ -52,24 +53,62 @@ static std::string read_campaign_id(const fs::path& campaign) {
     return id;
 }
 
+// The HD pack's pictures for the pages (the battle page, the name page, the Library), beside
+// the originals in the dialogue data: page portraits by (image, palette) and whole unit poses by
+// (scene, atlas, palette), as profile.py's unit_lookup. `folder` is the pack's art folder.
+void attach_hd_art(json& data,const fs::path& folder) {
+    auto& portraits=data.at("name_entry_assets").at("portraits");
+    const auto pages=read_json(folder/"srw64-page-portraits.json");
+    if(pages.value("schema","")!="srw64.page-portraits.v1")throw std::runtime_error("Unsupported HD page portraits");
+    const auto& index=pages.at("portraits");
+    const auto attach=[&](json& row,unsigned image,unsigned palette) {
+        const auto key=std::to_string(image)+":"+std::to_string(palette);
+        if(index.contains(key))row["hd"]=(folder/index.at(key).get<std::string>()).string();
+    };
+    for(auto& [id,portrait]:portraits.items())
+        attach(portrait,portrait.at("resource_id").get<unsigned>(),portrait.at("palette_id").get<unsigned>());
+    if(data.contains("battle_assets"))for(auto& [id,art]:data["battle_assets"].at("portraits").items())
+        attach(art,art.at("resources").at(0).get<unsigned>(),art.at("resources").at(1).get<unsigned>());
+    // Whole HD unit poses by (scene, atlas, palette), as profile.py's unit_lookup.
+    if(const auto units_index=folder/"srw64-units-hd.json";fs::is_regular_file(units_index) && data.contains("battle_assets")) {
+        const auto poses=read_json(units_index);
+        if(poses.value("schema","")!="srw64.unit-images.v1")throw std::runtime_error("Unsupported HD unit poses");
+        std::map<std::string,std::string> by_triplet;
+        for(const auto& row:poses.at("images"))
+            by_triplet[std::to_string(row.at("scene").get<unsigned>())+":"+std::to_string(row.at("atlas").get<unsigned>())+":"+std::to_string(row.at("palette").get<unsigned>())]=row.at("file").get<std::string>();
+        for(auto& [id,art]:data["battle_assets"].at("units").items()) {
+            if(!art.contains("resources"))continue;
+            const auto& r=art.at("resources");
+            const auto key=std::to_string(r.at(0).get<unsigned>())+":"+std::to_string(r.at(1).get<unsigned>())+":"+std::to_string(r.at(2).get<unsigned>());
+            if(const auto found=by_triplet.find(key);found!=by_triplet.end())art["hd"]=(folder/found->second).string();
+        }
+    }
+}
+
 int run_standalone(const Options& requested,const GameIdentity& game,const HostMain& host,const ContentImporter& importer) {
+    boot_step("rom check");
     Options options=requested;
     if(!options.campaign.empty())options.campaign_id=read_campaign_id(options.campaign);
     if(game.save_file.empty() || game.save_file.find_first_of("/\\:")!=std::string::npos ||
        game.save_file=="." || game.save_file=="..")throw std::runtime_error("Invalid game save filename");
     // A .v64 or .n64 dump loads through a .z64 copy (rom_order.hpp).
-    options.rom=z64_rom(options.rom,fs::absolute(options.user_dir.empty()?default_user_dir():options.user_dir),game.rom_sha256);
+    options.rom=z64_rom(options.rom,absolute_path(options.user_dir.empty()?default_user_dir():options.user_dir),game.rom_sha256);
+    boot_step("session");
     auto content=options.content;
     std::unique_ptr<Session> owned_session;
+    // The importer has just checked its cache's every file against the manifest.
+    const bool imported=content.empty() && !importer;
     if(content.empty()) {
         // Lock before importing. Two launches cannot create/consume a partial
         // cache, and an import failure cannot update the committed save pointer.
         owned_session=std::make_unique<Session>(options);
         const auto cache=owned_session->user_dir()/"content-cache";
+        boot_step("content cache");
         content=importer ? importer(options.rom,cache,game.rom_sha256)
                          : prepare_rom_content(options.rom,cache,embedded_import_spec(),game.rom_sha256);
     }
-    const auto root=fs::canonical(content);
+    boot_step("content verify");
+    const auto root=canonical_path(content);
     const auto manifest_path=content_path(root,"manifest.json");
     const auto manifest=read_json(manifest_path,1024*1024);
     if(manifest.value("schema","")!="srw64.standalone-content.v1" ||
@@ -80,28 +119,37 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     std::map<std::string,fs::path> verified;
     for(const auto& [relative,digest]:files.items()) {
         const auto path=content_path(root,relative);
-        if(sha256_file(path)!=digest.get<std::string>())throw std::runtime_error("Content integrity check failed: "+relative);
+        if(!imported && sha256_file(path)!=digest.get<std::string>())throw std::runtime_error("Content integrity check failed: "+relative);
         verified.emplace(relative,path);
     }
+    boot_step("dialogue read");
     const auto dialogue_name=manifest.at("dialogue").get<std::string>();
     if(!verified.contains(dialogue_name))throw std::runtime_error("Dialogue is absent from the content inventory");
     auto data=read_json(verified.at(dialogue_name));
+    boot_step("dialogue setup");
     if(data.value("schema","")!="srw64.native-dialogue-data.v2" || data.at("rom_sha256")!=game.rom_sha256)
         throw std::runtime_error("Unsupported native dialogue data");
+    // An image is a verified file of its own, or a range of one ("art.pack#<offset>:<size>",
+    // the importer's since version 4; the pack's digest covers it).
+    const auto resolve=[&](const std::string& reference,const json& digest)->std::optional<std::string> {
+        const auto mark=reference.find('#');
+        const auto file=reference.substr(0,mark);
+        if(!verified.contains(file))return std::nullopt;
+        if(mark==std::string::npos)return digest==files.at(file)?std::optional(verified.at(file).string()):std::nullopt;
+        return verified.at(file).string()+reference.substr(mark);
+    };
     auto& portraits=data.at("name_entry_assets").at("portraits");
     for(auto& [id,portrait]:portraits.items()) {
-        const auto relative=portrait.at("original").get<std::string>();
-        if(!verified.contains(relative) || portrait.at("original_sha256")!=files.at(relative))
-            throw std::runtime_error("Portrait is absent from the verified inventory: "+id);
+        const auto path=resolve(portrait.at("original").get<std::string>(),portrait.at("original_sha256"));
+        if(!path)throw std::runtime_error("Portrait is absent from the verified inventory: "+id);
         if(portrait.contains("hd"))throw std::runtime_error("This standalone milestone supports Original content only");
-        portrait["original"]=verified.at(relative).string();
+        portrait["original"]=*path;
     }
     if(data.contains("battle_assets"))for(const char* group:{"units","portraits"})
         for(auto& [id,art]:data["battle_assets"].at(group).items()) {
-            const auto relative=art.at("path").get<std::string>();
-            if(!verified.contains(relative) || art.at("sha256")!=files.at(relative))
-                throw std::runtime_error("Battle art is absent from the verified inventory: "+id);
-            art["path"]=verified.at(relative).string();
+            const auto path=resolve(art.at("path").get<std::string>(),art.at("sha256"));
+            if(!path)throw std::runtime_error("Battle art is absent from the verified inventory: "+id);
+            art["path"]=*path;
         }
     // The HD pack (tools/release/prepare_hd_bundle.py): the compiled art, the page
     // portraits by (image, palette), and the model packs. A downloaded pack goes in
@@ -119,37 +167,12 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
                                      "replace it with the pack for this release, or remove it to play in Original");
     }
     const bool hd_art=!hd.empty() && fs::exists(hd);
-    if(hd_art) {
-        const auto pages=read_json(hd/"art"/"srw64-page-portraits.json");
-        if(pages.value("schema","")!="srw64.page-portraits.v1")throw std::runtime_error("Unsupported HD page portraits");
-        const auto& index=pages.at("portraits");
-        const auto attach=[&](json& row,unsigned image,unsigned palette) {
-            const auto key=std::to_string(image)+":"+std::to_string(palette);
-            if(index.contains(key))row["hd"]=(hd/"art"/index.at(key).get<std::string>()).string();
-        };
-        for(auto& [id,portrait]:portraits.items())
-            attach(portrait,portrait.at("resource_id").get<unsigned>(),portrait.at("palette_id").get<unsigned>());
-        if(data.contains("battle_assets"))for(auto& [id,art]:data["battle_assets"].at("portraits").items())
-            attach(art,art.at("resources").at(0).get<unsigned>(),art.at("resources").at(1).get<unsigned>());
-        // Whole HD unit poses by (scene, atlas, palette), as profile.py's unit_lookup.
-        if(const auto units_index=hd/"art"/"srw64-units-hd.json";fs::is_regular_file(units_index) && data.contains("battle_assets")) {
-            const auto poses=read_json(units_index);
-            if(poses.value("schema","")!="srw64.unit-images.v1")throw std::runtime_error("Unsupported HD unit poses");
-            std::map<std::string,std::string> by_triplet;
-            for(const auto& row:poses.at("images"))
-                by_triplet[std::to_string(row.at("scene").get<unsigned>())+":"+std::to_string(row.at("atlas").get<unsigned>())+":"+std::to_string(row.at("palette").get<unsigned>())]=row.at("file").get<std::string>();
-            for(auto& [id,art]:data["battle_assets"].at("units").items()) {
-                if(!art.contains("resources"))continue;
-                const auto& r=art.at("resources");
-                const auto key=std::to_string(r.at(0).get<unsigned>())+":"+std::to_string(r.at(1).get<unsigned>())+":"+std::to_string(r.at(2).get<unsigned>());
-                if(const auto found=by_triplet.find(key);found!=by_triplet.end())art["hd"]=(hd/"art"/found->second).string();
-            }
-        }
-    }
+    if(hd_art)attach_hd_art(data,hd/"art");
     unsigned scale=options.resolution_scale ? options.resolution_scale : manifest.at("resolution_scale").get<unsigned>();
     if(scale<1 || scale>8)throw std::runtime_error("Resolution scale must be in 1..8");
 
     if(!owned_session)owned_session=std::make_unique<Session>(options);
+    boot_step("settings");
     auto& session=*owned_session;
     const auto language_file=session.user_dir()/"presentation.json";
     std::string locale=options.language,battle_ui="native",intermission_ui="native",name_entry_ui="native",title_ui="native",settings_page,ui_size,aspect="auto",map_unit_icons="hd";
@@ -174,7 +197,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
             aspect=saved.value("aspect","auto");
             map_unit_icons=saved.value("map_unit_icons","hd");
             if(saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())
-                touch_opacity=std::clamp(saved["touch_opacity"].get<unsigned>(),25u,100u);
+                touch_opacity=std::clamp(saved["touch_opacity"].get<unsigned>(),0u,100u);
             if(saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())
                 dialogue_font_size=std::clamp(saved["dialogue_font_size"].get<unsigned>(),10u,18u);
         }
@@ -205,14 +228,25 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         atomic_write(language_file,settings.dump(2)+"\n");
     }
     const auto dialogue=session.session_dir()/"dialogue.json";
-    atomic_write(dialogue,data.dump()+"\n");
+    boot_step("dialogue write");
+    {
+        auto text=data.dump();
+        text+='\n';
+        atomic_write(dialogue,text);
+    }
+    boot_step("host start");
 
     // Do not inherit development probes, scripted inputs or another ROM variant. A test may
     // point the update check at its own server (update_check.hpp), or show Android's touch
     // controls on a desktop and play them with the mouse (SRW64_TOUCH_PAD=1, frontend.cpp), or
     // build the pages as before to compare (SRW64_PAGE_REBUILD, SRW64_SYNC_PAGE_IMAGES, frontend.cpp).
+    // A player may also pick the graphics API (SRW64_GRAPHICS_API=vulkan or d3d12, graphics.cpp):
+    // some AMD integrated GPUs reset their driver under D3D12 (issue #12).
     std::map<std::string,std::string> inherited;
-    for(const char* key:{"SRW64_UPDATE_URL","SRW64_TOUCH_PAD","SRW64_PAGE_REBUILD","SRW64_SYNC_PAGE_IMAGES"})if(const char* value=std::getenv(key);value && *value)inherited[key]=value;
+    for(const char* key:{"SRW64_UPDATE_URL","SRW64_TOUCH_PAD","SRW64_PAGE_REBUILD","SRW64_SYNC_PAGE_IMAGES","SRW64_GRAPHICS_API",
+                         // The 120 Hz scheduler's fallback and comparisons (src/host/sched_rate.hpp).
+                         "SRW64_VI_RATE","SRW64_VI_AUDIO","SRW64_FORCE_FAST","SRW64_RT64_BASE","SRW64_PRESENT_PACE","SRW64_RT64_RATE_HINT"})
+        if(const char* value=std::getenv(key);value && *value)inherited[key]=value;
     clear_runtime_environment();
     for(const auto& [key,value]:inherited)set_environment(key,value);
     for(const auto& [key,value]:std::map<std::string,std::string>{
@@ -269,5 +303,79 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     report["status"]=result==0?"complete":"host-failed";report["exit_code"]=result;report["save_committed"]=committed;
     atomic_write(session.session_dir()/"launch.json",report.dump(2)+"\n");
     return result;
+}
+int run_prepared(const Options& options,const GameIdentity& game,const HostMain& host) {
+    const auto root=options.user_dir;
+    const auto data=root/"game";
+    const auto about=read_json(data/"prepared.json",65536);
+    if(about.value("schema","")!=prepared_schema || about.value("format",0u)!=prepared_format ||
+       about.value("rom_sha256","")!=game.rom_sha256)
+        throw std::runtime_error("The game data in "+data.string()+" is for another version of Marchwind64: "
+                                 "prepare it again with tools/release/vita/prepare_data.py");
+    // What the player's folder holds, from one listing each: nothing is looked up that may
+    // be missing (Vita3K reports every such lookup as an error).
+    const auto files=list_names(root);
+    const auto language_file=root/"presentation.json";
+    std::string locale=options.language;
+    if(files.contains("presentation.json")) {
+        json saved=json::object();
+        try{saved=read_json(language_file,65536);}catch(const std::exception&){}
+        if(locale.empty() && saved.value("schema","")=="srw64.presentation-settings.v1")locale=saved.value("locale","");
+    }
+    if(locale.empty())locale=about.value("locale","zh-Hans");
+    const auto& locales=about.at("locales");
+    if(std::find(locales.begin(),locales.end(),locale)==locales.end())throw std::runtime_error("Locale is not available in this content: "+locale);
+    if(!files.contains("presentation.json"))
+        atomic_write(language_file,json({{"schema","srw64.presentation-settings.v1"},{"locale",locale}}).dump(2)+"\n");
+    const auto rules_file=root/"rules.json";
+    Options settled=options;
+    if(!options.rules && !files.contains("rules.json"))settled.rules="fixed";  // the defaults, as selected_rules gives them
+    const auto rules=selected_rules(settled,game,rules_file);
+    std::string rule_names;
+    for(const auto& id:rules){if(!rule_names.empty())rule_names+=',';rule_names+=id;}
+    if(settled.rules)atomic_write(rules_file,json({{"schema","srw64.rule-settings.v1"},
+        {"rules_version",game.rules_version},{"fixes",rules}}).dump(2)+"\n");
+    // The run's folder is the same each time; the last run's copy of the card goes, so the
+    // game starts from saves/ (where the host publishes each card as the game saves it), or
+    // from a blank card: the runtime then never looks for a save file that is not there.
+    const auto run=root/"run";
+    const auto saves=root/"saves";
+    auto card=saves/"cartridge.sram";
+    if(!present(card))card=data/"blank.sram";
+    if(const auto stale=run/"runtime-data"/"saves";list_names(stale).contains(game.save_file)) {
+        std::error_code error;
+        fs::remove(stale/game.save_file,error);
+    }
+    // console.log is opened to append (a new session folder each run elsewhere).
+    if(list_names(run).contains("console.log")) {
+        std::error_code error;
+        fs::remove(run/"console.log",error);
+    }
+    clear_runtime_environment();
+    for(const auto& [key,value]:std::map<std::string,std::string>{
+        {"SRW64_INTERACTIVE","1"},{"SRW64_ROM_VARIANT","jp"},
+        {"SRW64_AUDIO_OUTPUT",options.mute?"0":"1"},{"SRW64_NATIVE_NAME_ENTRY","1"},
+        {"SRW64_DIALOGUE_DATA",(data/"dialogue.json").string()},{"SRW64_DIALOGUE_TABLES",(data/"dialogue.bin").string()},
+        {"SRW64_LOCALE",locale},
+        {"SRW64_PRESENTATION_SETTINGS",language_file.string()},
+        {"SRW64_INPUT_SETTINGS",(root/"input.json").string()},
+        {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
+        {"SRW64_SAVE_LIBRARY",saves.string()},
+        {"SRW64_HD_AVAILABLE","0"},{"SRW64_IMAGE_MODE","original"},
+        {"SRW64_RESOLUTION_SCALE",std::to_string(about.value("resolution_scale",2u))},
+        {"SRW64_FONT_DIR",bundled_resource("fonts").string()},
+        {"SRW64_STAGE_META",bundled_resource("stages").string()},
+        // The original's 60 Hz: the consoles' displays are 60 Hz, and the 120 Hz scheduler
+        // (docs/design/120hz-scheduler.md) has not been tried on them. Speeds go to 2x.
+        {"SRW64_VI_RATE","60"}})
+        set_environment(key,value);
+    if(options.debug)set_environment("SRW64_DEBUG","1");
+    std::vector<std::string> arguments={"srw64-gfx-host",(data/"rom.z64").string(),run.string(),"0","-"};
+    arguments.push_back(card.string());
+    std::vector<char*> argv;
+    for(auto& argument:arguments)argv.push_back(argument.data());
+    argv.push_back(nullptr);
+    boot_step("host start");
+    return host(static_cast<int>(arguments.size()),argv.data());
 }
 }

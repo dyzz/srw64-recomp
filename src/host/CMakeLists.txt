@@ -3,6 +3,10 @@ project(srw64_native_probe LANGUAGES C CXX)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if(NINTENDO_SWITCH)
+    # libnx has no libdl; FindICU would name it for ICU::uc.
+    set(CMAKE_DL_LIBS "")
+endif()
 # assert() stays on in the desktop hosts. Android ships with NDEBUG (2026-10-08): a failed
 # assert closes the game, and Plume without NDEBUG names Vulkan objects (VK_EXT_debug_utils)
 # and looks for the validation layer. SRW64_ASSERTS=ON keeps them (build_game.py --validation).
@@ -55,8 +59,21 @@ string(JSON SRW64_JP_HASH GET "${SRW64_VARIANTS_JSON}" variants jp xxh3_64)
 string(JSON SRW64_JP_SHA256 GET "${SRW64_VARIANTS_JSON}" variants jp sha256)
 string(JSON SRW64_JP_ID GET "${SRW64_VARIANTS_JSON}" variants jp game_id)
 configure_file(rom_variants.hpp.in rom_variants.hpp @ONLY)
-add_subdirectory("${SRW64_RUNTIME}" runtime EXCLUDE_FROM_ALL)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
+if(NINTENDO_SWITCH)
+    # The Switch (docs/design/switch-port.md, S0): the runtime's counterparts that
+    # tools/recomp/toolchain/prepare_switch_runtime.py writes (no mods, live recompiler or
+    # recompiled heap; RDRAM from calloc).
+    set(SRW64_SWITCH_RUNTIME "${SRW64_BUILD}/switch-runtime")
+    # newlib hides POSIX and BSD declarations (posix_memalign for sse2neon) under strict ISO.
+    add_compile_definitions(_GNU_SOURCE)
+    set(SRW64_LIBRECOMP_SOURCE "${SRW64_RUNTIME}/librecomp")
+    add_subdirectory("${SRW64_RUNTIME}/ultramodern" ultramodern EXCLUDE_FROM_ALL)
+    target_include_directories(ultramodern BEFORE PUBLIC "${SRW64_SWITCH_RUNTIME}/include")
+    add_subdirectory("${SRW64_SWITCH_RUNTIME}/librecomp" librecomp EXCLUDE_FROM_ALL)
+else()
+    add_subdirectory("${SRW64_RUNTIME}" runtime EXCLUDE_FROM_ALL)
+endif()
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
     "${SRW64_ROOT}/tools/recomp/toolchain/prepare_runtime_lifecycle.py"
     "${SRW64_ROOT}/src/host/runtime-support/shutdown_trace.hpp"
@@ -64,15 +81,31 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
 execute_process(COMMAND "${Python3_EXECUTABLE}" "${SRW64_ROOT}/tools/recomp/toolchain/prepare_runtime_lifecycle.py"
     COMMAND_ERROR_IS_FATAL ANY)
 get_target_property(SRW64_TIMER_SOURCES ultramodern SOURCES)
-list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling)\\.cpp$")
+list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/(timer|threads|mesgqueue|scheduling|events)\\.cpp$")
+if(NINTENDO_SWITCH)   # events.cpp: the lifecycle's with the Switch's changes over it (prepare_switch_runtime.py)
+    list(FILTER SRW64_TIMER_SOURCES EXCLUDE REGEX "/error_handling\\.cpp$")
+    list(APPEND SRW64_TIMER_SOURCES "${SRW64_SWITCH_RUNTIME}/error_handling.cpp")
+    set(SRW64_EVENTS "${SRW64_SWITCH_RUNTIME}/events.cpp")
+else()
+    set(SRW64_EVENTS "${SRW64_BUILD}/runtime-lifecycle/events.cpp")
+endif()
+if(VITA)   # the lifecycle file with the stall report's counts (prepare_vita_runtime.py)
+    set(SRW64_MESGQUEUE "${SRW64_VITA_RUNTIME}/mesgqueue.cpp")
+    target_include_directories(ultramodern PRIVATE "${SRW64_BUILD}/runtime-lifecycle")
+else()
+    set(SRW64_MESGQUEUE "${SRW64_BUILD}/runtime-lifecycle/mesgqueue.cpp")
+endif()
 set_property(TARGET ultramodern PROPERTY SOURCES ${SRW64_TIMER_SOURCES}
     "${SRW64_BUILD}/runtime-lifecycle/timer.cpp"
     "${SRW64_BUILD}/runtime-lifecycle/threads.cpp"
-    "${SRW64_BUILD}/runtime-lifecycle/mesgqueue.cpp"
-    "${SRW64_BUILD}/runtime-lifecycle/scheduling.cpp")
-get_target_property(SRW64_RUNTIME_SOURCES librecomp SOURCES)
-list(FILTER SRW64_RUNTIME_SOURCES EXCLUDE REGEX "/recomp\\.cpp$")
-set_property(TARGET librecomp PROPERTY SOURCES ${SRW64_RUNTIME_SOURCES} "${SRW64_BUILD}/runtime-lifecycle/recomp.cpp")
+    "${SRW64_MESGQUEUE}"
+    "${SRW64_BUILD}/runtime-lifecycle/scheduling.cpp"
+    "${SRW64_EVENTS}")
+if(NOT NINTENDO_SWITCH)   # the Switch's librecomp names its own recomp.cpp
+    get_target_property(SRW64_RUNTIME_SOURCES librecomp SOURCES)
+    list(FILTER SRW64_RUNTIME_SOURCES EXCLUDE REGEX "/recomp\\.cpp$")
+    set_property(TARGET librecomp PROPERTY SOURCES ${SRW64_RUNTIME_SOURCES} "${SRW64_BUILD}/runtime-lifecycle/recomp.cpp")
+endif()
 file(GLOB SRW64_CPU_SOURCES CONFIGURE_DEPENDS "${SRW64_GENERATED}/funcs_*.c")
 add_library(srw64_cpu STATIC ${SRW64_CPU_SOURCES})
 target_include_directories(srw64_cpu PUBLIC
@@ -141,7 +174,7 @@ if(SRW64_ENABLE_RT64)
     srw64_add_pixel_compositor("${SRW64_RT64}")
     target_link_libraries(srw64-gfx-host PRIVATE srw64_pixel_compositor)
     target_sources(srw64-gfx-host PRIVATE dialogue_plume.cpp)
-    target_sources(srw64-gfx-host PRIVATE native_dialogue.cpp native_intro.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp")
+    target_sources(srw64-gfx-host PRIVATE native_dialogue.cpp native_intro.cpp dialogue_data.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp")
     # Story text drawn as images, redrawn natively (docs/native/native-title-and-story-images.md).
     target_sources(srw64-gfx-host PRIVATE sprite_text.cpp)
     # The original UI's labels and numbers drawn natively (docs/native/native-ui-text.md).
@@ -195,6 +228,8 @@ if(SRW64_ENABLE_RT64)
     endif()
     # Debug interface (docs/guide/debug-interface.md), inert unless SRW64_DEBUG=1.
     target_sources(srw64-gfx-host PRIVATE debug_server.cpp debug_transport.cpp)
+    # Display list statistics for the PS Vita study (docs/design/psv-port.md), with SRW64_GBI_STATS.
+    target_sources(srw64-gfx-host PRIVATE gbi_stats.cpp)
     if(WIN32)
         target_link_libraries(srw64-gfx-host PRIVATE ws2_32)
     endif()
@@ -207,6 +242,15 @@ if(SRW64_ENABLE_RT64)
     endif()
     set(SRW64_HOST_TARGETS srw64-gfx-host)
     if(NOT ANDROID)
+    # The PS Vita renderer replayed offline on the desktop's OpenGL 2.1 against RT64's
+    # pictures (docs/design/psv-port.md, V1; dumps from gbi_stats.hpp). Built on request.
+    find_package(OpenGL)
+    if(OpenGL_FOUND)
+        add_executable(srw64-gl-replay EXCLUDE_FROM_ALL "${SRW64_ROOT}/src/gl/replay.cpp"
+            "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp")
+        target_include_directories(srw64-gl-replay PRIVATE "${SRW64_RT64}/src/contrib")
+        target_link_libraries(srw64-gl-replay PRIVATE SDL2::SDL2 OpenGL::GL)
+    endif()
     list(APPEND SRW64_HOST_TARGETS srw64-frame-host)
     add_executable(srw64-frame-host frame.cpp graphics.cpp audio.cpp)
     add_executable(srw64-content-test "${SRW64_ROOT}/tests/native_content.cpp" "${SRW64_ROOT}/src/native/localization/catalog.cpp")
@@ -222,7 +266,7 @@ if(SRW64_ENABLE_RT64)
     target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/native/ui/window_test_control.cpp")
     # The HD layers draw through Plume (native_gpu.cpp, shaders in src/host/shaders).
     target_sources(${SRW64_HOST_TARGET} PRIVATE native_gpu.cpp native_map.cpp native_background.cpp native_marker.cpp
-        native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp)
+        native_sprite.cpp native_portrait.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp hd_texture.cpp)
     # RetroArch shader presets through librashader, loaded at run time (post_filter.hpp);
     # tools/recomp/toolchain/fetch_librashader.py puts the library beside the host.
     target_sources(${SRW64_HOST_TARGET} PRIVATE post_filter.cpp)
@@ -242,6 +286,15 @@ if(SRW64_ENABLE_RT64)
     endif()
     if(SRW64_HOST_TARGET STREQUAL "srw64-gfx-host")
         target_sources(${SRW64_HOST_TARGET} PRIVATE game_hooks.cpp)
+        # The PS Vita's GL renderer, chosen at run time with SRW64_RENDERER=gl (graphics.cpp),
+        # on the Mac only, for developing the consoles' renderer: the Windows SDK's GL/gl.h needs
+        # <windows.h> first and has no GL/glext.h, and the Linux package may not link libOpenGL.
+        if(OpenGL_FOUND AND APPLE)
+            target_sources(${SRW64_HOST_TARGET} PRIVATE "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp hd_replace.cpp
+                "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp")
+            target_compile_definitions(${SRW64_HOST_TARGET} PRIVATE SRW64_GL_RENDERER)
+            target_link_libraries(${SRW64_HOST_TARGET} PRIVATE OpenGL::GL)
+        endif()
         target_link_libraries(${SRW64_HOST_TARGET} PRIVATE srw64_cpu librecomp)
     else()
         # Frame probes replay display lists; they never execute guest CPU code.
@@ -261,4 +314,92 @@ if(SRW64_ENABLE_RT64)
         target_link_directories(${SRW64_HOST_TARGET} PRIVATE "${SRW64_SDL2}/lib/x64")
     endif()
     endforeach()
+endif()
+# The PS Vita's host without RT64 or Plume (docs/design/psv-port.md, V1 → V2): the GL
+# renderer (src/gl), RmlUi on GL, the native dialogue and the host's tagged draws, built on
+# the desktop's OpenGL 2.1 here and on vitaGL there. The HD layers, the RetroArch filters and
+# the Plume adapters are not compiled (gl_only_stubs.cpp answers for them).
+option(SRW64_GL_ONLY "Build srw64-gl-host: the GL renderer only, no RT64" OFF)
+if(SRW64_GL_ONLY)
+    if(SRW64_ENABLE_RT64)
+        message(FATAL_ERROR "SRW64_GL_ONLY and SRW64_ENABLE_RT64 build different hosts: use separate build folders")
+    endif()
+    if(APPLE)
+        enable_language(OBJCXX)
+    endif()
+    # Header-only libraries that live in RT64's checkout (json, stb); nothing of RT64 is built.
+    set(SRW64_RT64 "${SRW64_BUILD}/upstream/RT64")
+    srw64_add_launch("${SRW64_RT64}/src/contrib")
+    include("${SRW64_ROOT}/cmake/DialogueCpu.cmake")
+    srw64_add_dialogue_cpu("${SRW64_RT64}/src/contrib")
+    if(NOT TARGET SDL2::SDL2)
+        find_package(SDL2 REQUIRED)
+    endif()
+    if(NINTENDO_SWITCH)
+        # OpenGL ES 2 on devkitPro's Mesa (nouveau) through EGL; src/gl/gl_api.hpp takes the
+        # GLES headers there.
+        find_package(PkgConfig REQUIRED)
+        pkg_check_modules(SRW64_SWITCH_GL REQUIRED IMPORTED_TARGET glesv2 egl)
+        add_library(OpenGL::GL ALIAS PkgConfig::SRW64_SWITCH_GL)
+    else()
+        find_package(OpenGL REQUIRED)
+    endif()
+    add_subdirectory("${SRW64_ROOT}/src/native/ui" ui-probe)
+    add_executable(srw64-gl-host host.cpp graphics.cpp audio.cpp "${SRW64_BUILD}/audio-probe/audio.cpp"
+        native_dialogue.cpp native_intro.cpp dialogue_data.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp"
+        sprite_text.cpp ui_text.cpp title_page.cpp battle_viewer.cpp move_jump.cpp enemy_cycle.cpp unit_name.cpp
+        native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp"
+        update_check.cpp update_http.cpp console_log.cpp bug_report.cpp stall_watchdog.cpp
+        debug_server.cpp debug_transport.cpp gbi_stats.cpp
+        link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp
+        cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp stage_info.cpp
+        rom_art.cpp legacy.cpp quick_load.cpp "${SRW64_ROOT}/src/native/ui/window_test_control.cpp"
+        native_map.cpp native_sprite.cpp wide_map.cpp battle_hud.cpp menu_widen.cpp native_quads.cpp game_hooks.cpp
+        native_portrait.cpp native_background.cpp hd_texture.cpp hd_replace.cpp native_marker.cpp
+        "${SRW64_ROOT}/src/gl/display_list.cpp" "${SRW64_ROOT}/src/gl/gl_renderer.cpp" "${SRW64_ROOT}/src/gl/program_cache.cpp" dialogue_gl.cpp native_gl.cpp hd_replace.cpp
+        "${SRW64_ROOT}/src/native/ui/ui_renderer_gl.cpp" gl_only_stubs.cpp)
+    target_compile_definitions(srw64-gl-host PRIVATE SRW64_NATIVE_DIALOGUE SRW64_GL_RENDERER SRW64_GL_ONLY)
+    set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${SRW64_ROOT}/CMakeLists.txt")
+    file(STRINGS "${SRW64_ROOT}/CMakeLists.txt" SRW64_PROJECT_LINE REGEX "^project\\(.* VERSION ")
+    string(REGEX REPLACE ".* VERSION ([0-9.]+).*" "\\1" SRW64_VERSION "${SRW64_PROJECT_LINE}")
+    set_property(SOURCE "${SRW64_ROOT}/src/native/ui/frontend.cpp" APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
+    if(APPLE)
+        target_sources(srw64-gl-host PRIVATE macos/app_menu.mm macos/update_http_macos.mm)
+        set_source_files_properties(macos/app_menu.mm macos/update_http_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
+        target_link_libraries(srw64-gl-host PRIVATE "-framework Cocoa" "-framework QuartzCore")
+    elseif(NINTENDO_SWITCH)
+        # console_data.cpp: the game data made from the player's ROM on the first launch.
+        target_sources(srw64-gl-host PRIVATE switch/switch_platform.cpp "${SRW64_ROOT}/src/native/app/console_data.cpp")
+        set_property(SOURCE "${SRW64_ROOT}/src/native/app/console_data.cpp" APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
+        target_link_options(srw64-gl-host PRIVATE -Wl,--wrap=abort,--wrap=rename,--wrap=__syscall_thread_create,--wrap=fchmod,--wrap=chmod)
+        target_link_libraries(srw64-gl-host PRIVATE zstd)   # the NRO's HD pictures (hd_texture.cpp)
+    elseif(NOT WIN32)
+        target_link_libraries(srw64-gl-host PRIVATE ${CMAKE_DL_LIBS})
+    endif()
+    if(NINTENDO_SWITCH)   # the runtime's Switch headers ahead of upstream's (the semaphore)
+        target_include_directories(srw64-gl-host BEFORE PRIVATE "${SRW64_SWITCH_RUNTIME}/include")
+    endif()
+    target_include_directories(srw64-gl-host PRIVATE
+        "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_BINARY_DIR}" "${SRW64_ROOT}/src/native"
+        "${SRW64_BUILD}/upstream/N64Recomp/include" "${SRW64_GENERATED}"
+        "${SRW64_RUNTIME}/librecomp/include/librecomp" "${SRW64_RUNTIME}/thirdparty/sse2neon"
+        "${SRW64_RUNTIME}/thirdparty/concurrentqueue" "${SRW64_RT64}/src/contrib" "${SRW64_RT64}/include")
+    target_link_libraries(srw64-gl-host PRIVATE srw64_launch srw64_ui_pages srw64_dialogue_cpu srw64_cpu librecomp
+        SDL2::SDL2 OpenGL::GL)
+    if(NINTENDO_SWITCH)
+        # Marchwind64.nro: the NACP (name, author, version) and the default icon for now.
+        nx_generate_nacp(Marchwind64.nacp NAME "Marchwind64" AUTHOR "Marchwind64" VERSION "${SRW64_VERSION}")
+        # hbmenu's icon: the M64 badge on the Steam icon's navy, 256 x 256 (tools/release/switch/icon.jpg).
+        # The HD pack prepared for the Switch's GPU (tools/release/switch/prepare-hd) in the
+        # NRO's romfs, when it has been made: one file to copy, the art read where it lies.
+        set(SRW64_SWITCH_ROMFS "${SRW64_BUILD}/switch-romfs")
+        option(SRW64_SWITCH_EMBED_HD "Put the prepared HD pack in the NRO (off: package.py --hd sends it beside the NRO)" ON)
+        if(SRW64_SWITCH_EMBED_HD AND EXISTS "${SRW64_SWITCH_ROMFS}/hd")
+            nx_create_nro(srw64-gl-host OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Marchwind64.nro" NACP Marchwind64.nacp
+                          ICON "${CMAKE_CURRENT_SOURCE_DIR}/../../tools/release/switch/icon.jpg" ROMFS "${SRW64_SWITCH_ROMFS}")
+        else()
+            nx_create_nro(srw64-gl-host OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Marchwind64.nro" NACP Marchwind64.nacp
+                          ICON "${CMAKE_CURRENT_SOURCE_DIR}/../../tools/release/switch/icon.jpg")
+        endif()
+    endif()
 endif()

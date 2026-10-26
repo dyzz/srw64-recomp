@@ -60,8 +60,9 @@ input::Bindings load_bindings(const nlohmann::json& saved) {
 std::atomic<BattleUi> battle{BattleUi::Native};
 std::atomic_bool map_icons_hd{true};
 std::atomic_bool msaa_on{true},msaa_started{true};
-#ifdef __ANDROID__
+#if defined(__ANDROID__)
 // Android is being tuned on the phone (docs/design/android-port.md): the readout starts on.
+// The Switch's starts off as the desktop's: it covered the pages' top right corner there.
 constexpr bool fps_default=true;
 #else
 constexpr bool fps_default=false;
@@ -82,7 +83,7 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
     auto saved=nlohmann::json({{"schema","srw64.presentation-settings.v1"},{"locale",locale},
         {"battle_ui",battle_ui_name(battle)},{"intermission_ui",native_intermission?"native":"original"},{"weapon_upgrade",unified_weapons?"unified":"single"},{"name_entry_ui",native_name_entry?"native":"original"},
         {"map_unit_icons",map_icons_hd?"hd":"original"},{"msaa",msaa_on.load()},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
-        {"game_speed",srw64::game_speed::on.load()?2:1},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
+        {"game_speed",srw64::game_speed::level.load()},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
         {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
         {"touch_opacity",touch_alpha.load()},{"dialogue_font_size",dialogue_size.load()}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
@@ -117,8 +118,9 @@ void set_battle_ui(BattleUi ui) {
 }
 UiSize ui_size() {
     const int choice=size_choice.load();
-#ifdef __ANDROID__
-    // A phone or handheld screen, like the Deck's (docs/design/android-port.md).
+#if defined(__ANDROID__) || defined(__SWITCH__)
+    // A phone or handheld screen, like the Deck's (docs/design/android-port.md); the Switch
+    // too, docked or not (switch-port.md).
     return choice>=0?UiSize(choice):UiSize::Largest;
 #else
     return choice>=0?UiSize(choice):on_steam_deck()?UiSize::Largest:UiSize::Standard;
@@ -164,12 +166,15 @@ void set_refresh_rate(RefreshRate rate) {
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
-bool game_speed_double(){return srw64::game_speed::on.load();}
-void set_game_speed_double(bool on) {
-    srw64::game_speed::on=on;
+unsigned game_speed_level(){return srw64::game_speed::level.load();}
+unsigned game_speed_top(){return srw64::game_speed::top_level();}
+bool game_speed_double(){return game_speed_level()>1;}
+void set_game_speed_level(unsigned level) {
+    srw64::game_speed::level=std::clamp(level,1u,game_speed_top());
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
+
 bool dialogue_hints_always(){return hints_always.load();}
 void set_dialogue_hints_always(bool always) {
     hints_always=always;
@@ -193,7 +198,7 @@ void save_now() {
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
 unsigned touch_opacity(){return touch_alpha.load();}
-void set_touch_opacity(unsigned percent){touch_alpha=std::clamp(percent,25u,100u);save_now();}
+void set_touch_opacity(unsigned percent){touch_alpha=std::clamp(percent,0u,100u);save_now();}
 unsigned dialogue_font_size(){return dialogue_size.load();}
 void set_dialogue_font_size(unsigned size,bool remember) {
     if(dialogue_size.exchange(std::clamp(size,10u,18u))!=std::clamp(size,10u,18u) && remember)
@@ -274,8 +279,13 @@ void make_folder(const std::filesystem::path& folder,const char* readme) {
     if(!error && !std::filesystem::exists(folder/"README.txt",error))std::ofstream(folder/"README.txt")<<readme;
 }
 }
+#if defined(__vita__) || defined(__SWITCH__)
+std::vector<LookFolder> bezel_roots(){return {};}
+std::vector<LookFolder> filter_roots(){return {};}
+#else
 std::vector<LookFolder> bezel_roots(){return roots("bezels","overlays");}
 std::vector<LookFolder> filter_roots(){return roots("filters","shaders/shaders_slang");}
+#endif
 unsigned cheats(){return srw64::cheats::active();}
 void set_cheats(unsigned switches) {
     srw64::cheats::set_active(switches);
@@ -331,8 +341,11 @@ void update() {
 void window_init(SDL_Window* window,const std::filesystem::path& directory) {
     output=directory;
     if(const auto* path=std::getenv("SRW64_PRESENTATION_SETTINGS"))destination=path;
-    // The player's filters/ and bezels/ (docs/native/bezels-and-filters.md).
+    // The player's filters/ and bezels/ (docs/native/bezels-and-filters.md); the PS Vita
+    // has neither.
+#if !defined(__vita__) && !defined(__SWITCH__)
     if(!destination.empty()){make_folder(user_folder()/"filters",kFiltersReadme);make_folder(user_folder()/"bezels",kBezelsReadme);}
+#endif
     if(!destination.empty()) {
         std::ifstream file(destination);
         const auto saved=nlohmann::json::parse(file,nullptr,false);
@@ -343,14 +356,15 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object() && saved.contains("settings_page") && saved["settings_page"].is_string())page=saved["settings_page"].get<std::string>();
         if(saved.is_object() && saved.contains("aspect") && saved["aspect"].is_string())frame::wide=saved["aspect"].get<std::string>()!="4:3";
         if(saved.is_object() && saved.contains("show_fps") && saved["show_fps"].is_boolean())fps_shown=saved["show_fps"].get<bool>();
-        if(saved.is_object())srw64::game_speed::on=saved.value("game_speed",1)==2;
+        if(saved.is_object() && saved.contains("game_speed") && saved["game_speed"].is_number_unsigned())
+            srw64::game_speed::level=std::clamp(saved["game_speed"].get<unsigned>(),1u,srw64::game_speed::top_level());
         if(saved.is_object())refresh_choice=refresh_rate_from(saved.value("refresh_rate","original"));
         if(saved.is_object() && saved.contains("debug_interface") && saved["debug_interface"].is_boolean())debug_on=saved["debug_interface"].get<bool>();
         if(saved.is_object())hints_always=saved.value("dialogue_hints","auto")=="always";
         if(saved.is_object() && saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())
             dialogue_size=std::clamp(saved["dialogue_font_size"].get<unsigned>(),10u,18u);
         if(saved.is_object() && saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())
-            touch_alpha=std::clamp(saved["touch_opacity"].get<unsigned>(),25u,100u);
+            touch_alpha=std::clamp(saved["touch_opacity"].get<unsigned>(),0u,100u);
         if(saved.is_object()) {
             std::lock_guard lock(look_mutex);
             if(saved.contains("bezel") && saved["bezel"].is_string())bezel_path=saved["bezel"].get<std::string>();
@@ -359,7 +373,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         }
         if(saved.is_object() && saved.contains("cheats") && saved["cheats"].is_array() && !std::getenv("SRW64_CHEATS")) {
             unsigned value=0;
-            for(const auto& id:saved["cheats"])for(const auto& entry:srw64::cheats::catalog)if(id.is_string() && id.get<std::string>()==entry.id)value|=entry.bit;
+            for(const auto& id:saved["cheats"])if(id.is_string())value|=srw64::cheats::bits_of(id.get<std::string>());
             srw64::cheats::set_active(value);
         }
         if(saved.is_object() && saved.contains("ui_size") && saved["ui_size"].is_string()) {
@@ -370,7 +384,7 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
     // For comparisons: SRW64_ASPECT=4:3 or auto for a run, saved only if changed.
     if(const auto* aspect=std::getenv("SRW64_ASPECT"))frame::wide=std::string(aspect)!="4:3";
     if(const auto* path=std::getenv("SRW64_INPUT_SETTINGS"))input_destination=path;
-    if(!input_destination.empty() && std::filesystem::exists(input_destination)) {
+    if(!input_destination.empty() && srw64::app::present(input_destination)) {
         std::ifstream file(input_destination);
         input::live_bindings().set(load_bindings(nlohmann::json::parse(file,nullptr,false)),false);
     }

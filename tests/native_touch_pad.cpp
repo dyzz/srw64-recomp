@@ -29,11 +29,14 @@ void places() {
             const auto &a = l.slots[i], &b = l.slots[j];
             const float ra = a.round ? a.r : std::max(a.w, a.h) / 2, rb = b.round ? b.r : std::max(b.w, b.h) / 2;
             const float d = std::hypot(a.x - b.x, a.y - b.y);
-            check(d >= ra + rb + 2 * mm || (!a.round && !b.round && std::abs(a.x - b.x) >= (a.w + b.w) / 2 + 1.5f * mm), "two slots crowd each other");
+            // Two bars may sit side by side or one above the other (the screenshot under settings).
+            check(d >= ra + rb + 2 * mm || (!a.round && !b.round && (std::abs(a.x - b.x) >= (a.w + b.w) / 2 + 1.5f * mm ||
+                                                                      std::abs(a.y - b.y) >= (a.h + b.h) / 2 + 1.5f * mm)), "two slots crowd each other");
         }
     check(l[Slot::Primary].x > width * .85f && l[Slot::Primary].y > height * .6f, "the primary button is not bottom right");
     check(l[Slot::Back].x < l[Slot::Primary].x && std::abs(l[Slot::Back].y - l[Slot::Primary].y) < mm, "back is not left of the primary");
     check(l[Slot::Top1].x < width / 2 && l[Slot::Top1].y < 8 * mm, "settings is not top left");
+    check(std::abs(l[Slot::Shot].x - l[Slot::Top1].x) < mm && l[Slot::Shot].y > l[Slot::Top1].y, "the screenshot is not under settings");
     check(l[Slot::Primary].r >= 6 * mm && l[Slot::Arc2].r >= 4.5f * mm, "buttons smaller than a thumb");
 }
 

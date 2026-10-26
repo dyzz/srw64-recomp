@@ -139,7 +139,8 @@ check('entered-autosave', entered and entered[0]['saved'] and len(autos('inter')
 about = json.loads(autos('inter')[0].with_suffix('.json').read_text())
 check('entered-about', about['node'] == 'entered' and about['funds'] == r.status()['intermission_page']['funds'], about)
 r.shot('entered.png')
-r.s.client.call('ui.click', text='intermission:8')
+# 次のマップへ is the menu's last row (返回标题画面 comes before it, intermission_row.hpp).
+r.s.client.call('ui.click', text=f"intermission:{len(r.status()['intermission_page']['items']) - 1}")
 r.until(lambda: [e for e in r.events('autosave-events.jsonl') if e.get('node') == 'sortie'], 30, every=.5)
 sortie = [e for e in r.events('autosave-events.jsonl') if e.get('node') == 'sortie']
 check('sortie-autosave', sortie[0]['saved'] and len(autos('inter')) == 2, sortie)

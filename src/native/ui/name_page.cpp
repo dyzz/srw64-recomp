@@ -45,7 +45,10 @@ void NamePage::sync(const names::Request& next,const std::map<std::string,std::s
     const int w=int(area_w/density+.5f),h=int(area_h/density+.5f),ix=int(area_x),iy=int(area_y);
     const bool rebuild=art_changed || !document || next.serial!=request.serial || next.person!=request.person || next.visible!=request.visible || next_locale!=locale || w!=page_w || h!=page_h || ix!=inset_x || iy!=inset_y;
     if(next.serial!=request.serial || next.revision!=request.revision)waiting=false;
-    request=next;labels=next_labels;locale=next_locale;art_changed=false;page_w=w;page_h=h;inset_x=ix;inset_y=iy;
+    // The labels only while the page is up, and only when they changed: a copy of all ~850
+    // every frame was a quarter of the UI thread on a phone (2026-10-23).
+    if(next.visible && labels!=next_labels)labels=next_labels;
+    request=next;locale=next_locale;art_changed=false;page_w=w;page_h=h;inset_x=ix;inset_y=iy;
     if(!request.visible){if(document && document->IsVisible())document->Hide();return;}
     if(rebuild)build();
     for(unsigned i=0;i<4;++i)if(auto* card=document->GetElementById("route"+std::to_string(i))){
@@ -104,7 +107,7 @@ void NamePage::build() {
             body+="<button class='card' id='route"+std::to_string(i)+"' style='width:"+dp(card_w)+"; height:"+dp(card_h)+"; margin:"+(i>=2?dp(gap):"0")+" "+(i%2?"0":dp(gap))+" 0 0;'>"+route_tag(i,"#1b3448")+"<div class='faces'>";
             for(unsigned p=0;p<2;++p){
                 body+="<div class='face'><div class='eyebrow "+std::string(p?"":"lead")+"'>"+t(p?"name_step_partner":"name_step_player")+"</div>"+
-                    portrait(choice.portraits[p],face,p?"#1e3446":"#2f5670")+"<div class='person "+std::string(p?"":"lead")+"'>"+escape(full({choice.names[p][0],choice.names[p][1],{}}))+"</div></div>";
+                    portrait(choice.portraits[p],face,p?"#1e3446":"#2f5670")+"<div class='fit person "+std::string(p?"":"lead")+"'>"+escape(full({choice.names[p][0],choice.names[p][1],{}}))+"</div></div>";
             }
             body+="</div></button>";
         }
@@ -117,7 +120,7 @@ void NamePage::build() {
         for(unsigned p=0;p<2;++p){
             body+="<div class='pilot "+std::string(p?"":"lead")+"' style='width:"+dp(card_w)+"; height:"+dp(pilot_h)+"; margin-right:"+(p?"0":dp(gap))+";'>"+route_tag(request.route,p?"#152535":"#1b3448")+
                 "<div class='row'>"+portrait(choice.portraits[p],face,p?"#2b4356":"#9be4f7")+"<div class='text'><div class='eyebrow "+std::string(p?"":"lead")+"'>"+t(p?"name_step_partner":"name_step_player")+"</div>"+
-                "<p id='name"+std::to_string(p)+"'><span class='full'>"+escape(full(request.names[p]))+"</span><span class='nick'> / "+escape(utf8(request.names[p][2]))+"</span></p></div></div></div>";
+                "<p id='name"+std::to_string(p)+"'><span class='full fit' data-fit-min='0.55'>"+escape(full(request.names[p]))+"</span><span class='nick'> / "+escape(utf8(request.names[p][2]))+"</span></p></div></div></div>";
         }
         body+="</div><div id='units'>";
         for(unsigned p=0;p<2;++p){
@@ -181,7 +184,7 @@ button:disabled { opacity: 0.45; }
 .text { display: flex; flex: 1 1 auto; flex-direction: column; justify-content: center; min-width: 0; overflow: hidden; }
 .text .eyebrow { border-bottom: 1dp #2b4356; padding-bottom: 4dp; margin-bottom: 6dp; }
 #review p { margin: 0; white-space: nowrap; overflow: hidden; }
-#review .full { font-size: 23dp; font-weight: bold; }
+#review .full { display: block; font-size: 23dp; font-weight: bold; }
 #review .nick { display: block; font-size: 17dp; color: #c9d6df; margin-top: 2dp; }
 .unit { flex-direction: row; align-items: center; padding: 8dp 16dp 8dp 8dp; }
 .pose { display: flex; flex: none; align-items: center; justify-content: center; margin-right: 12dp; }
@@ -198,6 +201,8 @@ button:disabled { opacity: 0.45; }
     document=context.LoadDocumentFromMemory("<rml><head><style>"+style+locale_font_css(locale)+"</style></head><body style='box-sizing: border-box; border-width: "+std::to_string(inset_y)+"px "+std::to_string(inset_x)+"px; border-color: #00000000;'><layer-mark/>"+body+"<layer-mark class='layer-end'/></body></rml>");
     if(!document)throw std::runtime_error("Cannot build name page");
     document->AddEventListener("click",this);document->Show();context.Update();
+    // Full names are as long as a language makes them: 布拉德·斯凯温德 ran past its card at 1080p.
+    if(actions.fit)actions.fit(document);
 }
 void NamePage::advance(){
     if(!request.active || waiting)return;

@@ -106,7 +106,8 @@
 | [剧情短跳过](native/script-skip.md) | 现代机战式 R + START：宿主在一帧内连续执行事件脚本，对白不显示、等待与演出当帧完成，停在选择肢、出击选择、切往战场或脚本结束；脚本轮询契约、各指令的完成办法、与逐句读完的状态逐字节对照 |
 | [战斗演出中途退出](native/battle-animation-skip.md) | 进战斗后按 X 中止演出回地图：演出状态机 `D_80250000` 与收尾状态 21、原版 Z+START 是标题路线不能用；伤害其实由地图状态 0x4B 链的子状态 2（`801FBBD4`）计算，开动画时整条链被跳过；两个 overlay 地址重叠与未完成部分 |
 | [L2 / R2 切换敌方机体](native/enemy-cycle.md) | 现代机战式操作：地图空闲时用手柄扳机遍历敌方与第三方机体；空闲状态 `801C8B04` 里原版 L/R 切换我方的静态分析与接管方式 |
-| [2 倍速](native/game-speed.md) | 设置项与一键切换（Tab／R4／安卓左上角 2×）：每个 VI 按场景改写帧间隔 `D_8010F0C8`，战斗演出、剧情、敌方回合加速，我方菜单与场间原速 |
+| [地图机体图标按阵营朝向](native/unit-icon-facing.md) | 我方朝左、敌方朝右、第三方看友军位（名册 `+0xB & 0x20`）；`801E2734` 的 texrect 在 `srw64_render_node` 里镜像，原版与 HD 都生效；朝向表 `content/art/unit-icon-facing.json` |
+| [游戏速度](native/game-speed.md) | 原速／2／3／4 倍速，设置项与一键依次切换（Tab／R4／安卓左上角速度键）：每个 VI 按场景改写帧间隔 `D_8010F0C8`，战斗演出、剧情、敌方回合加速，我方菜单与场间原速；3、4 倍速靠 120 Hz 调度 |
 | [改键](native/controls-remapping.md) | 设置窗口「操作」页：Steam Deck 按键图写着每个键的作用，按功能改键（键盘与手柄各一套，按下即绑定），手柄默认按功能重排，`input.json`；提示与原生页面跟随绑定 |
 | [模型替换](native/native-model-replacement.md) | 5600 原生 HD 标记（保留原版棱角的倒角金色八面体）与 Original/HD 切换 |
 | [世界地图过场模型 HD](native/native-ship-model.md) | 世界地图模型表、`3D72` 载具与场景地标、15 个舰船／地标按设定重建、平滑航迹与实机对照 |
@@ -140,6 +141,7 @@
 | [战术地图清单](data/tactical-maps.md) | 158 张战术地图逐张的尺寸、图集、初始场景与动态效果（水面等调色板循环、殖民地、3D34 换图） |
 | [HD 资产盘点](data/hd-asset-inventory.md) | 全 ROM 逐资源分类与各类现状、战术地图水面等动态效果、每类的阿里云模型选择与费用粗估 |
 | [模型查看器](data/native-model-viewer.md) | 本地模型资源浏览与 5600 验证 |
+| [F3DEX2 指令与组合器](data/gbi-usage.md) | 本作显示列表用到的 F3DEX2/RDP 指令、组合器、RDP 模式与贴图格式，GL 解释器（Vita、Switch）要支持的范围 |
 
 ## 规划与历史实验（design/）
 
@@ -156,6 +158,7 @@
 | [三平台移植计划](design/three-platform-port.md) | Windows／Linux（含 Steam Deck）／macOS 的后端与编译器选择、移植阻塞项审计、X0–X4 阶段与验收、构建步骤分工 |
 | [安卓移植方案](design/android-port.md) | 调研：社区 N64Recomp 安卓移植先例、固定版本 RT64／plume／运行库的安卓缺口与 GPU 门槛、ROM 派生代码与侧载分发、宿主改动清单（构建、入口、生命周期与存档、触屏与手机界面）、A0–A4 阶段与待定事项 |
 | [PS Vita 移植方案](design/psv-port.md) | 调研：Vita 只有 GLES2 级 GPU、RT64/plume 不可用，整条渲染路径要换成 vitaGL 上的 GL2 实现（Fast3D 解释器、宿主自绘层、对白合成器、RmlUi GL2）；运行库 32 位阻塞项与补丁、依赖与内存预算、社区 libultraship 系移植的实机经验、Mac 上的 Vita3K 与 VitaSDK 开发环境、V0–V4 阶段、风险与待定 |
+| [Nintendo Switch 移植方案](design/switch-port.md) | 调研：自制系统没有 Vulkan（devkitPro 只有 Mesa 20.1 GL 4.3/GLES 3.2 与 deko3d），RT64/plume 不可用，`vita` 分支的 GL 路径与 `srw64-gl-host` 几乎原样复用；libnx 上的运行库缺口、应用/小程序模式内存与 HD 包的 GL 4.3 做法、N64Recomp 与 libultraship 系的 Switch 先例、模拟器冒烟与 Erista＋RCM＋离线 emuMMC 的实机环境、NRO 侧载、S0–S5 阶段、风险与待定 |
 | [手机触屏操作](design/touch-controls.md) | 按场景显示功能名按钮：MOBA 式左侧任意位置方向区、右下固定的确定／返回、各场景的按钮与识别依据、三语词条、实施顺序 |
 | [触屏界面复盘（2026-10-10）](design/touch-ui-review-20261010.md) | 安卓对白回看入口消失的原因、各版按键布局的离线对照与复用返回键的方案 |
 | [周目继承](design/new-game-plus.md) | 上周目完成的隐藏要素在原入队关之后补登记（33 项、不改变量）与历代记录；规则 `inherit-hidden`；为何不继承击坠数（已实现，Windows 实机过） |
@@ -168,7 +171,9 @@
 | [战斗鉴赏](design/battle-viewer.md) | 标题上的 Battle Viewer：原版演示战斗（模式 0x1C、8009C2DC）直接播一场演出，选攻守双方机体与驾驶员、武器、反击、防御反应、伤害、击坠、背景与 BGM |
 | [多存档栏与自动存档](design/save-slots-autosave.md) | 原版 SRAM 布局与校验、卡带文件与模拟器互通、扩展栏和自动存档改道原版 SRAM 传输、导入导出与格式识别、阶段与待核实项 |
 | [60 帧研究](design/60fps.md) | 远期待办，只有静态研究。原版逻辑固定 30 帧的依据、RT64 显示插帧的机制与前提、各场景能否插值（矩阵类能、矩形类不能）、战术地图的两条做法、试验计划与未核实项 |
+| [120 Hz 调度与 4 倍速](design/120hz-scheduler.md) | 默认开启（`SRW64_VI_RATE=60` 退回 60 Hz）。60 Hz 下 2 倍速是结构上限的依据、音频隔拍、宿主钩子审计、2x 换画面节拍与呈现降频、Mac／Windows／Seeker 实测 |
 | [Steam Deck 键位与按键图标](design/steam-deck-controls.md) | 默认手柄模板下的全部键位、标题与场间的设置入口、设置界面分页改版、待定键位、自绘图标字体方案与验证计划 |
+| [振动设计方案](design/rumble.md) | 原版没有振动（振动包驱动没链接）；宿主直接用 SDL 振动，只在画面已有的冲击处短而轻地震，菜单与对白不震；触发点与各平台方案，仅方案、代码未动 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |

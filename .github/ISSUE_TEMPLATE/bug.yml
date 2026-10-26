@@ -34,6 +34,7 @@ body:
     - Linux
     - Steam Deck
     - Android
+    - Nintendo Switch
   validations:
     required: true
 - type: textarea

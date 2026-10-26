@@ -1,8 +1,10 @@
 #include "audio.hpp"
+#include "run_files.hpp"
 #include "audio_timing.hpp"
 #include "debug_protocol.hpp"
 #include <SDL.h>
 #include <algorithm>
+#include <chrono>
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
@@ -25,6 +27,8 @@ bool silent{};
 uint32_t rate;
 uint64_t queued_samples{}, max_queued_frames{}, captured_samples{};
 uint64_t queue_calls{}, latency_recoveries{}, max_feedback_frames{};
+Srw64AudioStats stats;
+std::chrono::steady_clock::time_point last_queue{};
 std::ofstream capture;
 // Optional VI window for the bounded capture; see Srw64AudioCaptureWindow.
 Srw64AudioCaptureWindow capture_window;
@@ -52,7 +56,13 @@ void srw64_audio_frequency(uint32_t frequency) {
     wanted.freq = frequency;
     wanted.format = AUDIO_S16SYS;
     wanted.channels = 2;
+#ifdef __SWITCH__
+    // The Switch's backend takes a buffer about every 10 ms: 512 frames at 44.1 kHz left the
+    // queue growing past its limit (SRW64_AUDIO_LATENCY_RECOVERY every few seconds).
+    wanted.samples = 1024;
+#else
     wanted.samples = 512;
+#endif
     device = SDL_OpenAudioDevice(nullptr, 0, &wanted, &obtained, 0);
     if (!device) {
         fprintf(stderr, "SRW64_AUDIO_SILENT no output device: %s\n", SDL_GetError());
@@ -78,6 +88,16 @@ void srw64_queue_audio(int16_t* samples, size_t count) {
         std::abort();
     }
     const size_t old_frames = SDL_GetQueuedAudioSize(device) / 4;
+    {
+        ++stats.queues;
+        stats.queued_before_frames += old_frames;
+        const auto now = std::chrono::steady_clock::now();
+        if (last_queue != std::chrono::steady_clock::time_point{}) {
+            const double ms = std::chrono::duration<double, std::milli>(now - last_queue).count();
+            ++stats.gaps[ms < 12 ? 0 : ms < 15.5 ? 1 : ms < 18 ? 2 : ms < 21.5 ? 3 : 4];
+        }
+        last_queue = now;
+    }
     if (old_frames > srw64_audio_queue_limit(rate)) {
         // Recover after a suspended/stalled device instead of retaining seconds
         // of stale audio. Record every recovery; ordinary playback should use none.
@@ -110,7 +130,7 @@ void srw64_queue_audio(int16_t* samples, size_t count) {
     queued_samples += count;
     const uint64_t device_frames = SDL_GetQueuedAudioSize(device) / 4;
     max_queued_frames = std::max(max_queued_frames, device_frames);
-    if (++queue_calls == 1 || queue_calls % 60 == 0) {
+    if (srw64_run_files() && (++queue_calls == 1 || queue_calls % 60 == 0)) {
         const auto temporary = output / "audio-live.tmp";
         {
             std::ofstream live(temporary);
@@ -124,6 +144,7 @@ void srw64_queue_audio(int16_t* samples, size_t count) {
     }
     // Keep a bounded copy of the actual post-channel-swap device input. With a VI
     // window the copy covers exactly that span; otherwise the first 30 seconds.
+    if (!srw64_run_files()) return;
     const auto action = capture_window.act(srw64_current_vi(), capture.is_open());
     if (action == Srw64AudioCaptureWindow::Action::Close) { capture.close(); return; }
     if (action == Srw64AudioCaptureWindow::Action::Skip) return;
@@ -148,9 +169,21 @@ size_t srw64_audio_remaining() {
     if (!enabled) return 0;
     std::lock_guard lock(audio_mutex);
     if (!device) return 0;
-    const size_t remaining = srw64_audio_feedback_frames(SDL_GetQueuedAudioSize(device) / 4, rate);
+    const size_t queued = SDL_GetQueuedAudioSize(device) / 4;
+    const size_t remaining = srw64_audio_feedback_frames(queued, rate);
     max_feedback_frames = std::max(max_feedback_frames, uint64_t(remaining));
+    ++stats.asks;
+    stats.asked_queue_frames += queued;
+    stats.told_frames += remaining;
+    if (remaining == rate / 60) ++stats.told_capped;
     return remaining;
+}
+
+Srw64AudioStats srw64_audio_stats() {
+    std::lock_guard lock(audio_mutex);
+    auto now = stats;
+    now.rate = rate;
+    return now;
 }
 
 void srw64_close_audio() {

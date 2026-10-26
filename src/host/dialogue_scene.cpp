@@ -6,14 +6,31 @@
 #include <cmath>
 #include <cstdio>
 #include <functional>
+#include <map>
+#include <mutex>
 #include <stdexcept>
 
 namespace srw64::dialogue {
 namespace {
 using json=nlohmann::json;
+std::string exact(double value) {char text[40];return {text,size_t(std::snprintf(text,sizeof text," %a",value))};}
+// The names, status and hints a frame labels come again frame after frame: shaping them
+// anew each time (ICU and HarfBuzz) cost a slow CPU (the Vita's) a frame's time and more.
 Layout layout_text(const std::u16string& value,double size,double width,double height) {
-    return reader_layout(text::game_fonts(localization::catalog().locale)->layout(
-        value,size,width,localization::catalog().locale),height);
+    const auto& catalog=localization::catalog();
+    std::string key=catalog.locale+'\n'+catalog.font+'\n'+catalog.revision+exact(size)+exact(width)+exact(height)+'\n';
+    key.append(reinterpret_cast<const char*>(value.data()),value.size()*sizeof(char16_t));
+    static std::mutex mutex;
+    static std::map<std::string,Layout> cache;
+    {
+        std::lock_guard lock(mutex);
+        if(const auto found=cache.find(key);found!=cache.end())return found->second;
+    }
+    auto layout=reader_layout(text::game_fonts(catalog.locale)->layout(value,size,width,catalog.locale),height);
+    std::lock_guard lock(mutex);
+    if(cache.size()>=256)cache.clear();
+    cache.emplace(std::move(key),layout);
+    return layout;
 }
 // The name row: a 10-point name at the top left inside the box, the text area
 // right under it (docs/design/dialogue-typesetting.md §4). The box interior
@@ -30,7 +47,6 @@ void blend(presentation::Bgra8Surface& image,int x,int y,double r,double g,doubl
     for(unsigned c=0;c<4;++c)p[c]=uint8_t(std::min(255U,
         unsigned(std::lround(color[c]*a))+(p[c]*inv+127)/255));
 }
-std::string exact(double value) {char text[40];return {text,size_t(std::snprintf(text,sizeof text," %a",value))};}
 // One drawing step: what it paints (the key), where (bounds, which hold all its pixels),
 // and how, into a surface that covers REGION of the window.
 struct Op {
@@ -43,6 +59,7 @@ struct Painter {
     double scale,ox,oy;
     std::vector<Op> ops;
     json blocks=json::array();
+    bool reporting=true;  // the blocks: a report's, not the incremental raster's (they cost a slow CPU)
     double fade=1;  // the opacity of what is painted now (the bottom bar fading out)
     void add(std::string key,PixelRect bounds,std::function<void(presentation::Bgra8Surface&,const PixelRect&)> paint) {
         bounds=bounds&PixelRect{0,0,int(width),int(height)};
@@ -76,7 +93,7 @@ struct Painter {
         if(!value.shaped)throw std::runtime_error("Dialogue frame has no pinned portable layout");
         const auto& shaped=*value.shaped;
         const double px=ox+x*scale,top=oy+y*scale;
-        json drawn=json::array();
+        json drawn=reporting?json::array():json();
         size_t row=0;
         for(const auto& line:lines) {
             const auto found=std::find_if(shaped.lines().begin(),shaped.lines().end(),
@@ -105,12 +122,12 @@ struct Painter {
                 shifted.clip->x-=region.left;shifted.clip->y-=region.top;
                 layout.draw(image,shifted);
             });
-            drawn.push_back({{"start",line.start},{"end",line.end},
+            if(reporting)drawn.push_back({{"start",line.start},{"end",line.end},
                 {"text",utf8(value.text.substr(line.start,line.end-line.start))},
                 {"top",draw.y}});
             ++row;
         }
-        blocks.push_back({{"role",role},{"font_pixels",shaped.font_size()*scale},{"revealed_utf16",revealed},
+        if(reporting)blocks.push_back({{"role",role},{"font_pixels",shaped.font_size()*scale},{"revealed_utf16",revealed},
             {"bounds",{px,top,width*scale,h*scale}},{"lines",drawn}});
     }
     void label(const std::u16string& value,double x,double y,double size,double width,double r,double g,double b,const char* role) {
@@ -137,7 +154,7 @@ struct Painter {
             fill(x+w-5,y-.5,1,3.5,.82,.88,.93);
             fill(x+w-2.5,y-.5,1,3.5,.82,.88,.93);
         }
-        blocks.push_back({{"role","advance_progress"},{"slot",box.slot},{"event",box.event},
+        if(reporting)blocks.push_back({{"role","advance_progress"},{"slot",box.slot},{"event",box.event},
             {"permille",value.permille},{"waiting",value.waiting},{"paused",value.paused},
             {"bounds",{ox+x*scale,oy+y*scale,w*scale,h*scale}}});
     }
@@ -147,7 +164,8 @@ struct Scene {
     std::vector<Op> ops;
     json report;
 };
-Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_width) {
+
+Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_width,bool reporting) {
     localization::Scope locale(frame.catalog);
     presentation::Bgra8Surface::required_bytes(width,height);
     if(!frame.font_size || frame.font_size>256)throw std::runtime_error("Invalid native UI font size");
@@ -155,6 +173,7 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
     const double scale=std::min(width/picture_width,height/240.0);
     const double ox=(width-320*scale)/2,oy=(height-240*scale)/2;
     Painter paint{width,height,scale,ox,oy};
+    paint.reporting=reporting;
     const auto* focus=frame.focused_box();
     for(const auto& box:frame.boxes) {
         if(!box.visible || box.layout.pages.empty())continue;
@@ -184,7 +203,7 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
     // Hidden a few seconds after dialogue appears and back for a while on a direction key
     // (settings dialogue_hints, native_dialogue.cpp); fades out rather than vanishing.
     if(!frame.display_only && std::any_of(frame.boxes.begin(),frame.boxes.end(),visible))
-        paint.blocks.push_back({{"role","controls_bar"},{"fade",frame.bar_fade}});
+        if(paint.reporting)paint.blocks.push_back({{"role","controls_bar"},{"fade",frame.bar_fade}});
     if(!frame.display_only && frame.bar_fade>0 && std::any_of(frame.boxes.begin(),frame.boxes.end(),visible)) {
         paint.fade=frame.bar_fade;
         const auto& catalog=localization::catalog();
@@ -204,7 +223,7 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
             const bool lit=frame.auto_read && i<frame.speed;
             paint.fill(x(38+i*speed_pitch),y(232),(speed_pitch-1)*f,4.5*f,lit?1:.17,lit?.64:.26,lit?.23:.32);
         }
-        paint.blocks.push_back({{"role","auto_speed"},{"level",frame.auto_read?frame.speed:0},{"maximum",Reader::max_speed}});
+        if(paint.reporting)paint.blocks.push_back({{"role","auto_speed"},{"level",frame.auto_read?frame.speed:0},{"maximum",Reader::max_speed}});
         paint.label(utf16(catalog.ui("font_size")+" "+std::to_string(frame.font_size)),x(68),y(230),6*f,24*f,.75,.87,1,"font_size");
         if(!frame.controls_text.empty())paint.label_fit(utf16(frame.controls_text),x(92),y(231),5.1*f,314-x(92),.75,.8,.86,"controls");
         paint.fade=1;
@@ -251,6 +270,9 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
         if(right && x>=original_width-1)return left_edge+wide*scale;
         return left_edge+x*factor*scale;
     };
+    // One step for all the lines (the idle edges alone alternate row by row: a step each
+    // was some 240 of them a frame), its key their bounds' hash.
+    std::vector<PixelRect> runs;
     for(size_t y=0;y<frame.cover.size() && y<240;) {
         const auto [left,right]=frame.cover[y];
         size_t next=y+1;
@@ -259,16 +281,29 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
         if(x1>x0) {
             const PixelRect bounds{int(std::lround(place(x0,false))),int(std::lround(oy+y*scale)),
                 int(std::lround(place(x1,true))),int(std::lround(oy+next*scale))};
-            paint.add("cover",bounds,[bounds](presentation::Bgra8Surface& image,const PixelRect& region) {
-                const auto area=bounds&region;
-                for(int py=area.top;py<area.bottom;++py)
-                    std::fill_n(image.pixels.begin()+(size_t(py-region.top)*image.width+(area.left-region.left))*4,
-                        size_t(area.width())*4,uint8_t(0));
-            });
-            paint.blocks.push_back({{"role","transition_cover"},{"lines",{y,next}},{"bounds",{bounds.left,bounds.top,bounds.right,bounds.bottom}}});
+            runs.push_back(bounds);
+            if(paint.reporting)paint.blocks.push_back({{"role","transition_cover"},{"lines",{y,next}},{"bounds",{bounds.left,bounds.top,bounds.right,bounds.bottom}}});
         }
         y=next;
     }
+    if(!runs.empty()) {
+        uint64_t hash=1469598103934665603ull;
+        PixelRect all_runs;
+        for(const auto& run:runs) {
+            for(int v:{run.left,run.top,run.right,run.bottom})hash=(hash^uint32_t(v))*1099511628211ull;
+            all_runs=all_runs|run;
+        }
+        paint.add("cover "+std::to_string(hash),all_runs,[runs=std::move(runs)](presentation::Bgra8Surface& image,const PixelRect& region) {
+            for(const auto& run:runs) {
+                const auto area=run&region;
+                if(area.empty())continue;
+                for(int py=area.top;py<area.bottom;++py)
+                    std::fill_n(image.pixels.begin()+(size_t(py-region.top)*image.width+(area.left-region.left))*4,
+                        size_t(area.width())*4,uint8_t(0));
+            }
+        });
+    }
+    if(!reporting)return {std::move(paint.ops),json()};
     json report={{"schema","srw64.native-dialogue-raster.v1"},{"font",text::game_font_path().filename().string()},{"locale",localization::catalog().locale},
         {"renderer","FreeType + HarfBuzz + ICU"},{"native_vi",frame.vi},
         {"drawable",{width,height}},{"logical_font_size",frame.font_size},{"blocks",paint.blocks}};
@@ -285,7 +320,7 @@ PixelRect PixelRect::operator|(const PixelRect& other) const {
     return {std::min(left,other.left),std::min(top,other.top),std::max(right,other.right),std::max(bottom,other.bottom)};
 }
 RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t height,double picture_width) {
-    auto scene=build(frame,width,height,picture_width);
+    auto scene=build(frame,width,height,picture_width,true);
     RasterizedFrame result{presentation::Bgra8Surface(width,height),std::move(scene.report)};
     const PixelRect all{0,0,int(width),int(height)};
     for(const auto& op:scene.ops)op.paint(result.image,all);
@@ -294,7 +329,7 @@ RasterizedFrame rasterize_frame(const Frame& frame,uint32_t width,uint32_t heigh
 }
 IncrementalRaster::Update IncrementalRaster::update(const Frame& frame,uint32_t width,uint32_t height,double picture_width,
                                                     const std::string& context) {
-    auto scene=build(frame,width,height,picture_width);
+    auto scene=build(frame,width,height,picture_width,false);
     Update result;
     std::vector<std::pair<std::string,PixelRect>> drawn;
     drawn.reserve(scene.ops.size());

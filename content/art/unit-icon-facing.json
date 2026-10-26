@@ -1,0 +1,1286 @@
+{
+ "schema": "srw64.unit-icon-facing.v1",
+ "note": "Which way each map unit icon (resource 688-1009) looks as drawn: left, right or front. The host mirrors an icon so that the player's side faces left and hostiles face right (docs/native/unit-icon-facing.md); front never flips. Judged on the HD-2D masters, reviewed by the user 2026-10-26. Regenerate the host table with tools/content/unit_icon_facing.py.",
+ "icons": {
+  "688": {
+   "facing": "left",
+   "name": "ガンダムシュピーゲル"
+  },
+  "689": {
+   "facing": "front",
+   "name": "ゴッドガンダム"
+  },
+  "690": {
+   "facing": "front",
+   "name": "シャイニングガンダム"
+  },
+  "691": {
+   "facing": "front",
+   "name": "シャイニングガンダムS"
+  },
+  "692": {
+   "facing": "left",
+   "name": "ドモン・カッシュ"
+  },
+  "693": {
+   "facing": "left",
+   "name": "ノーベルガンダム"
+  },
+  "694": {
+   "facing": "left",
+   "name": "ノーベルガンダムB"
+  },
+  "695": {
+   "facing": "front",
+   "name": "ライジングガンダム"
+  },
+  "696": {
+   "facing": "left",
+   "name": "ガンダムマックスター"
+  },
+  "697": {
+   "facing": "left",
+   "name": "ガンダムローズ"
+  },
+  "698": {
+   "facing": "left",
+   "name": "ドラゴンガンダム"
+  },
+  "699": {
+   "facing": "left",
+   "name": "ボルトガンダム"
+  },
+  "700": {
+   "facing": "left",
+   "name": "マンダラガンダム"
+  },
+  "701": {
+   "facing": "front",
+   "name": "グランドマスターガンダム"
+  },
+  "702": {
+   "facing": "left",
+   "name": "コブラガンダム"
+  },
+  "703": {
+   "facing": "left",
+   "name": "ゼウスガンダム"
+  },
+  "704": {
+   "facing": "front",
+   "name": "デスアーミー"
+  },
+  "705": {
+   "facing": "left",
+   "name": "デスバーディ"
+  },
+  "706": {
+   "facing": "left",
+   "name": "デスネービー"
+  },
+  "707": {
+   "facing": "front",
+   "name": "デビルガンダム"
+  },
+  "708": {
+   "facing": "left",
+   "name": "デビルガンダム"
+  },
+  "709": {
+   "facing": "front",
+   "name": "デビルガンダム"
+  },
+  "710": {
+   "facing": "left",
+   "name": "マスターガンダム"
+  },
+  "711": {
+   "facing": "left",
+   "name": "マスターアジア"
+  },
+  "712": {
+   "facing": "left",
+   "name": "ソルデファー"
+  },
+  "713": {
+   "facing": "left",
+   "name": "アシュクリーフ"
+  },
+  "714": {
+   "facing": "left",
+   "name": "スヴァンヒルド"
+  },
+  "715": {
+   "facing": "left",
+   "name": "ラーズグリーズ"
+  },
+  "716": {
+   "facing": "left",
+   "name": "アースゲイン"
+  },
+  "717": {
+   "facing": "right",
+   "name": "ヴァイローズ"
+  },
+  "718": {
+   "facing": "left",
+   "name": "スイームルグ"
+  },
+  "719": {
+   "facing": "left",
+   "name": "エルブルス"
+  },
+  "720": {
+   "facing": "left",
+   "name": "デビルアクシズ"
+  },
+  "721": {
+   "facing": "front",
+   "name": "ヴァルディスキューズ"
+  },
+  "722": {
+   "facing": "front",
+   "name": "アヴィエスレルム"
+  },
+  "723": {
+   "facing": "front",
+   "name": "ジェイクラップス"
+  },
+  "724": {
+   "facing": "left",
+   "name": "F91"
+  },
+  "725": {
+   "facing": "left",
+   "name": "GP03Sステイメン"
+  },
+  "726": {
+   "facing": "left",
+   "name": "GP03デンドロビウム"
+  },
+  "727": {
+   "facing": "left",
+   "name": "Gディフェンサー"
+  },
+  "728": {
+   "facing": "left",
+   "name": "Gフォートレス"
+  },
+  "729": {
+   "facing": "left",
+   "name": "ZZガンダム"
+  },
+  "730": {
+   "facing": "left",
+   "name": "Zガンダム"
+  },
+  "731": {
+   "facing": "left",
+   "name": "ウェイブライダー"
+  },
+  "732": {
+   "facing": "left",
+   "name": "νガンダム"
+  },
+  "733": {
+   "facing": "front",
+   "name": "アーガマ"
+  },
+  "734": {
+   "facing": "left",
+   "name": "アウドムラ"
+  },
+  "735": {
+   "facing": "front",
+   "name": "アルビオン"
+  },
+  "736": {
+   "facing": "left",
+   "name": "ガンキャノン"
+  },
+  "737": {
+   "facing": "front",
+   "name": "ガンダム"
+  },
+  "738": {
+   "facing": "front",
+   "name": "ガンダムmkⅡ"
+  },
+  "739": {
+   "facing": "left",
+   "name": "ガンダムmkⅢ"
+  },
+  "740": {
+   "facing": "left",
+   "name": "ガンタンク"
+  },
+  "741": {
+   "facing": "left",
+   "name": "ジェガン"
+  },
+  "742": {
+   "facing": "left",
+   "name": "シュツルム・ディアス"
+  },
+  "743": {
+   "facing": "front",
+   "name": "スーパーガンダム"
+  },
+  "744": {
+   "facing": "front",
+   "name": "ディジェSE-R"
+  },
+  "745": {
+   "facing": "front",
+   "name": "ネェル・アーガマ"
+  },
+  "746": {
+   "facing": "front",
+   "name": "ミデア"
+  },
+  "747": {
+   "facing": "left",
+   "name": "メタス"
+  },
+  "748": {
+   "facing": "left",
+   "name": "メタス(MA)"
+  },
+  "749": {
+   "facing": "left",
+   "name": "メタス改"
+  },
+  "750": {
+   "facing": "left",
+   "name": "メタス改(MA)"
+  },
+  "751": {
+   "facing": "front",
+   "name": "ラー・カイラム"
+  },
+  "752": {
+   "facing": "left",
+   "name": "ラビアンローズ"
+  },
+  "753": {
+   "facing": "left",
+   "name": "リ・ガズィ"
+  },
+  "754": {
+   "facing": "left",
+   "name": "リ・ガズィ(BWS)"
+  },
+  "755": {
+   "facing": "left",
+   "name": "百式"
+  },
+  "756": {
+   "facing": "front",
+   "name": "ガンダムEz8"
+  },
+  "757": {
+   "facing": "left",
+   "name": "GP02Aサイサリス"
+  },
+  "758": {
+   "facing": "left",
+   "name": "R・ジャジャ"
+  },
+  "759": {
+   "facing": "left",
+   "name": "キュベレイmkⅡ"
+  },
+  "760": {
+   "facing": "left",
+   "name": "ザクⅢ改"
+  },
+  "761": {
+   "facing": "left",
+   "name": "ノイエ・ジール"
+  },
+  "762": {
+   "facing": "left",
+   "name": "ヤクト・ドーガ"
+  },
+  "763": {
+   "facing": "left",
+   "name": "ジ・O"
+  },
+  "764": {
+   "facing": "left",
+   "name": "α・アジール"
+  },
+  "765": {
+   "facing": "left",
+   "name": "アッシマー"
+  },
+  "766": {
+   "facing": "left",
+   "name": "アプサラス"
+  },
+  "767": {
+   "facing": "front",
+   "name": "アレキサンドリア"
+  },
+  "768": {
+   "facing": "front",
+   "name": "エンドラ"
+  },
+  "769": {
+   "facing": "front",
+   "name": "ガブスレイ"
+  },
+  "770": {
+   "facing": "front",
+   "name": "ガンダムmkⅡ"
+  },
+  "771": {
+   "facing": "left",
+   "name": "ギャプラン"
+  },
+  "772": {
+   "facing": "left",
+   "name": "キュベレイ"
+  },
+  "773": {
+   "facing": "left",
+   "name": "ギラ・ドーガ"
+  },
+  "774": {
+   "facing": "left",
+   "name": "クインマンサ"
+  },
+  "775": {
+   "facing": "front",
+   "name": "グワダン"
+  },
+  "776": {
+   "facing": "left",
+   "name": "ゲーマルク"
+  },
+  "777": {
+   "facing": "left",
+   "name": "サイコガンダム"
+  },
+  "778": {
+   "facing": "left",
+   "name": "サイコガンダムmkⅡ"
+  },
+  "779": {
+   "facing": "front",
+   "name": "ザクⅡ"
+  },
+  "780": {
+   "facing": "left",
+   "name": "サザビー"
+  },
+  "781": {
+   "facing": "left",
+   "name": "ジオング"
+  },
+  "782": {
+   "facing": "left",
+   "name": "ドーベンウルフ"
+  },
+  "783": {
+   "facing": "front",
+   "name": "ドゴス・ギア"
+  },
+  "784": {
+   "facing": "left",
+   "name": "ドライセン"
+  },
+  "785": {
+   "facing": "left",
+   "name": "バイアラン"
+  },
+  "786": {
+   "facing": "left",
+   "name": "バウ"
+  },
+  "787": {
+   "facing": "left",
+   "name": "バウンド・ドック"
+  },
+  "788": {
+   "facing": "front",
+   "name": "ハンブラビ"
+  },
+  "789": {
+   "facing": "left",
+   "name": "ハンマ・ハンマ"
+  },
+  "790": {
+   "facing": "front",
+   "name": "ビグザム"
+  },
+  "791": {
+   "facing": "left",
+   "name": "マラサイ"
+  },
+  "792": {
+   "facing": "left",
+   "name": "メッサーラ"
+  },
+  "793": {
+   "facing": "left",
+   "name": "ヤクト・ドーガ"
+  },
+  "794": {
+   "facing": "left",
+   "name": "リゲルグ"
+  },
+  "795": {
+   "facing": "front",
+   "name": "レウルーラ"
+  },
+  "796": {
+   "facing": "left",
+   "name": "量産型キュベレイ"
+  },
+  "797": {
+   "facing": "left",
+   "name": "アルトロンガンダム"
+  },
+  "798": {
+   "facing": "left",
+   "name": "アルトロンカスタム"
+  },
+  "799": {
+   "facing": "left",
+   "name": "ウイングガンダム"
+  },
+  "800": {
+   "facing": "left",
+   "name": "ウイングガンダム(バード)"
+  },
+  "801": {
+   "facing": "left",
+   "name": "ウイングゼロ"
+  },
+  "802": {
+   "facing": "left",
+   "name": "ウイングゼロ(バード)"
+  },
+  "803": {
+   "facing": "left",
+   "name": "ウイングゼロカスタム"
+  },
+  "804": {
+   "facing": "left",
+   "name": "エアリーズ"
+  },
+  "805": {
+   "facing": "left",
+   "name": "ガンダムエピオン"
+  },
+  "806": {
+   "facing": "left",
+   "name": "ガンダムサンドロック"
+  },
+  "807": {
+   "facing": "left",
+   "name": "サンドロックカスタム"
+  },
+  "808": {
+   "facing": "left",
+   "name": "ガンダムサンドロック改"
+  },
+  "809": {
+   "facing": "left",
+   "name": "ガンダムデスサイズ"
+  },
+  "810": {
+   "facing": "left",
+   "name": "ガンダムデスサイズH"
+  },
+  "811": {
+   "facing": "left",
+   "name": "デスサイズHカスタム"
+  },
+  "812": {
+   "facing": "left",
+   "name": "ガンダムヘビーアームズ"
+  },
+  "813": {
+   "facing": "left",
+   "name": "ヘビーアームズカスタム"
+  },
+  "814": {
+   "facing": "left",
+   "name": "ガンダムヘビーアームズ改"
+  },
+  "815": {
+   "facing": "left",
+   "name": "シェンロンガンダム"
+  },
+  "816": {
+   "facing": "front",
+   "name": "トーラス"
+  },
+  "817": {
+   "facing": "left",
+   "name": "トールギス"
+  },
+  "818": {
+   "facing": "left",
+   "name": "トールギスⅢ"
+  },
+  "819": {
+   "facing": "front",
+   "name": "ピースミリオン"
+  },
+  "820": {
+   "facing": "left",
+   "name": "マグアナック"
+  },
+  "821": {
+   "facing": "left",
+   "name": "マグアナック"
+  },
+  "822": {
+   "facing": "left",
+   "name": "ヴァイエイト"
+  },
+  "823": {
+   "facing": "left",
+   "name": "キャンサー"
+  },
+  "824": {
+   "facing": "left",
+   "name": "トーラス"
+  },
+  "825": {
+   "facing": "left",
+   "name": "トールギスⅡ"
+  },
+  "826": {
+   "facing": "left",
+   "name": "トラゴス"
+  },
+  "827": {
+   "facing": "left",
+   "name": "パイシーズ"
+  },
+  "828": {
+   "facing": "left",
+   "name": "ビルゴ"
+  },
+  "829": {
+   "facing": "left",
+   "name": "ビルゴⅡ"
+  },
+  "830": {
+   "facing": "left",
+   "name": "メリクリウス"
+  },
+  "831": {
+   "facing": "front",
+   "name": "リーブラ"
+  },
+  "832": {
+   "facing": "front",
+   "name": "グレートマジンガー"
+  },
+  "833": {
+   "facing": "front",
+   "name": "ビューナスA"
+  },
+  "834": {
+   "facing": "right",
+   "name": "戦闘獣オベリウス"
+  },
+  "835": {
+   "facing": "left",
+   "name": "戦闘獣ズガール"
+  },
+  "836": {
+   "facing": "left",
+   "name": "ミケロス"
+  },
+  "837": {
+   "facing": "left",
+   "name": "ヤヌス侯爵"
+  },
+  "838": {
+   "facing": "front",
+   "name": "暗黒大将軍"
+  },
+  "839": {
+   "facing": "left",
+   "name": "量産型グレート"
+  },
+  "840": {
+   "facing": "left",
+   "name": "グレンダイザー"
+  },
+  "841": {
+   "facing": "left",
+   "name": "グレンダイザー(WS)"
+  },
+  "842": {
+   "facing": "left",
+   "name": "グレンダイザー(DS)"
+  },
+  "843": {
+   "facing": "left",
+   "name": "グレンダイザー(MS)"
+  },
+  "844": {
+   "facing": "front",
+   "name": "スペイザー"
+  },
+  "845": {
+   "facing": "left",
+   "name": "ダブルスペイザー"
+  },
+  "846": {
+   "facing": "left",
+   "name": "ドリルスペイザー"
+  },
+  "847": {
+   "facing": "left",
+   "name": "マリンスペイザー"
+  },
+  "848": {
+   "facing": "left",
+   "name": "円盤獣ギルギル"
+  },
+  "849": {
+   "facing": "left",
+   "name": "ベガ獣キングゴリ"
+  },
+  "850": {
+   "facing": "left",
+   "name": "円盤獣ゴスゴス"
+  },
+  "851": {
+   "facing": "front",
+   "name": "マザーバーン"
+  },
+  "852": {
+   "facing": "front",
+   "name": "ミニフォー"
+  },
+  "853": {
+   "facing": "front",
+   "name": "ゲッター1"
+  },
+  "854": {
+   "facing": "front",
+   "name": "ゲッター2"
+  },
+  "855": {
+   "facing": "front",
+   "name": "ゲッター3"
+  },
+  "856": {
+   "facing": "left",
+   "name": "ゲッタードラゴン"
+  },
+  "857": {
+   "facing": "front",
+   "name": "ゲッターポセイドン"
+  },
+  "858": {
+   "facing": "front",
+   "name": "ゲッターライガー"
+  },
+  "859": {
+   "facing": "front",
+   "name": "真・ゲッター1"
+  },
+  "860": {
+   "facing": "front",
+   "name": "真・ゲッター2"
+  },
+  "861": {
+   "facing": "left",
+   "name": "真・ゲッター3"
+  },
+  "862": {
+   "facing": "front",
+   "name": "メカ暴竜鬼"
+  },
+  "863": {
+   "facing": "left",
+   "name": "メカ牛剣鬼"
+  },
+  "864": {
+   "facing": "left",
+   "name": "メカ鉄甲鬼"
+  },
+  "865": {
+   "facing": "left",
+   "name": "合体百鬼ロボット"
+  },
+  "866": {
+   "facing": "left",
+   "name": "ゴーショーグン"
+  },
+  "867": {
+   "facing": "left",
+   "name": "ガイヤー"
+  },
+  "868": {
+   "facing": "left",
+   "name": "コスモクラッシャー"
+  },
+  "869": {
+   "facing": "left",
+   "name": "ゴッドマーズ"
+  },
+  "870": {
+   "facing": "left",
+   "name": "ゼーロン"
+  },
+  "871": {
+   "facing": "left",
+   "name": "キュルタクス"
+  },
+  "872": {
+   "facing": "left",
+   "name": "グルダー"
+  },
+  "873": {
+   "facing": "front",
+   "name": "ズール皇帝"
+  },
+  "874": {
+   "facing": "left",
+   "name": "バキューム"
+  },
+  "875": {
+   "facing": "left",
+   "name": "バルバラ"
+  },
+  "876": {
+   "facing": "front",
+   "name": "マーグ司令船"
+  },
+  "877": {
+   "facing": "front",
+   "name": "ワール大型宇宙船"
+  },
+  "878": {
+   "facing": "front",
+   "name": "コン・バトラーV"
+  },
+  "879": {
+   "facing": "left",
+   "name": "バトルクラッシャー"
+  },
+  "880": {
+   "facing": "front",
+   "name": "バトルクラフト"
+  },
+  "881": {
+   "facing": "front",
+   "name": "バトルジェット"
+  },
+  "882": {
+   "facing": "front",
+   "name": "バトルタンク"
+  },
+  "883": {
+   "facing": "front",
+   "name": "バトルマリン"
+  },
+  "884": {
+   "facing": "front",
+   "name": "ザンバード"
+  },
+  "885": {
+   "facing": "front",
+   "name": "ザンブル"
+  },
+  "886": {
+   "facing": "front",
+   "name": "ザンベース"
+  },
+  "887": {
+   "facing": "left",
+   "name": "ザンボエース"
+  },
+  "888": {
+   "facing": "left",
+   "name": "ザンボット3"
+  },
+  "889": {
+   "facing": "left",
+   "name": "ジャイアント・ロボ"
+  },
+  "890": {
+   "facing": "front",
+   "name": "銀鈴ロボTYPE1"
+  },
+  "891": {
+   "facing": "left",
+   "name": "銀鈴ロボTYPE2"
+  },
+  "892": {
+   "facing": "left",
+   "name": "GRー2"
+  },
+  "893": {
+   "facing": "left",
+   "name": "アルベルト"
+  },
+  "894": {
+   "facing": "front",
+   "name": "ウラエヌス"
+  },
+  "895": {
+   "facing": "left",
+   "name": "ギャロップ"
+  },
+  "896": {
+   "facing": "front",
+   "name": "ビックゴールド"
+  },
+  "897": {
+   "facing": "left",
+   "name": "維新竜・暁"
+  },
+  "898": {
+   "facing": "front",
+   "name": "ダイターン3"
+  },
+  "899": {
+   "facing": "left",
+   "name": "ダイタンク"
+  },
+  "900": {
+   "facing": "left",
+   "name": "ダイファイター"
+  },
+  "901": {
+   "facing": "left",
+   "name": "イーグルファイター"
+  },
+  "902": {
+   "facing": "left",
+   "name": "イーグルファイターA"
+  },
+  "903": {
+   "facing": "left",
+   "name": "イーグルファイターH"
+  },
+  "904": {
+   "facing": "left",
+   "name": "ガンドール"
+  },
+  "905": {
+   "facing": "left",
+   "name": "ダンクーガ"
+  },
+  "906": {
+   "facing": "left",
+   "name": "ダンクーガ"
+  },
+  "907": {
+   "facing": "left",
+   "name": "ビッグモス"
+  },
+  "908": {
+   "facing": "left",
+   "name": "ビッグモスA"
+  },
+  "909": {
+   "facing": "left",
+   "name": "ビッグモスH"
+  },
+  "910": {
+   "facing": "left",
+   "name": "ブラックウイング"
+  },
+  "911": {
+   "facing": "left",
+   "name": "ブラックウイングH"
+  },
+  "912": {
+   "facing": "left",
+   "name": "ランドクーガー"
+  },
+  "913": {
+   "facing": "left",
+   "name": "ランドクーガーA"
+  },
+  "914": {
+   "facing": "left",
+   "name": "ランドクーガーH"
+  },
+  "915": {
+   "facing": "left",
+   "name": "ランドライガー"
+  },
+  "916": {
+   "facing": "left",
+   "name": "ランドライガーA"
+  },
+  "917": {
+   "facing": "left",
+   "name": "ランドライガーH"
+  },
+  "918": {
+   "facing": "left",
+   "name": "ギルバウアー"
+  },
+  "919": {
+   "facing": "left",
+   "name": "ザン・ガイオー"
+  },
+  "920": {
+   "facing": "front",
+   "name": "ゼイ・ファー"
+  },
+  "921": {
+   "facing": "left",
+   "name": "ムゲ小型空戦メカ"
+  },
+  "922": {
+   "facing": "front",
+   "name": "ムゲ戦艦"
+  },
+  "923": {
+   "facing": "front",
+   "name": "シャピロ戦闘メカ"
+  },
+  "924": {
+   "facing": "left",
+   "name": "ウイングキャリバー"
+  },
+  "925": {
+   "facing": "left",
+   "name": "グラン・ガラン"
+  },
+  "926": {
+   "facing": "front",
+   "name": "ゴラオン"
+  },
+  "927": {
+   "facing": "left",
+   "name": "サーバイン"
+  },
+  "928": {
+   "facing": "left",
+   "name": "ズワウス"
+  },
+  "929": {
+   "facing": "left",
+   "name": "ダンバイン"
+  },
+  "930": {
+   "facing": "left",
+   "name": "ビルバイン"
+  },
+  "931": {
+   "facing": "left",
+   "name": "ボチューン"
+  },
+  "932": {
+   "facing": "left",
+   "name": "バストール"
+  },
+  "933": {
+   "facing": "front",
+   "name": "ウィル・ウィプス"
+  },
+  "934": {
+   "facing": "left",
+   "name": "ガラバ"
+  },
+  "935": {
+   "facing": "left",
+   "name": "スプリガン"
+  },
+  "936": {
+   "facing": "left",
+   "name": "ズワァース"
+  },
+  "937": {
+   "facing": "front",
+   "name": "ドラムロ"
+  },
+  "938": {
+   "facing": "left",
+   "name": "ビアレス"
+  },
+  "939": {
+   "facing": "left",
+   "name": "ライネック"
+  },
+  "940": {
+   "facing": "left",
+   "name": "レプラカーン"
+  },
+  "941": {
+   "facing": "front",
+   "name": "アフロダイA"
+  },
+  "942": {
+   "facing": "front",
+   "name": "ダイアナンA"
+  },
+  "943": {
+   "facing": "front",
+   "name": "ボスボロット"
+  },
+  "944": {
+   "facing": "front",
+   "name": "マジンガーZ"
+  },
+  "945": {
+   "facing": "front",
+   "name": "マジンガーZ(JS)"
+  },
+  "946": {
+   "facing": "front",
+   "name": "ミネルバX"
+  },
+  "947": {
+   "facing": "left",
+   "name": "戦闘獣グラトニオス"
+  },
+  "948": {
+   "facing": "left",
+   "name": "戦闘獣ダンテ"
+  },
+  "949": {
+   "facing": "front",
+   "name": "ドラゴノザウルス"
+  },
+  "950": {
+   "facing": "front",
+   "name": "光波獣ピグドロン"
+  },
+  "951": {
+   "facing": "left",
+   "name": "ドール"
+  },
+  "952": {
+   "facing": "left",
+   "name": "ニューレイズナー"
+  },
+  "953": {
+   "facing": "left",
+   "name": "バルディ"
+  },
+  "954": {
+   "facing": "left",
+   "name": "ベイブル"
+  },
+  "955": {
+   "facing": "left",
+   "name": "レイズナー"
+  },
+  "956": {
+   "facing": "left",
+   "name": "グライムカイザル"
+  },
+  "957": {
+   "facing": "left",
+   "name": "ブラッディカイザル"
+  },
+  "958": {
+   "facing": "left",
+   "name": "エルダール"
+  },
+  "959": {
+   "facing": "left",
+   "name": "ガッシュラン"
+  },
+  "960": {
+   "facing": "left",
+   "name": "ザカール"
+  },
+  "961": {
+   "facing": "left",
+   "name": "スカルガンナー"
+  },
+  "962": {
+   "facing": "left",
+   "name": "ソロムコ"
+  },
+  "963": {
+   "facing": "left",
+   "name": "ターミネーターポリス"
+  },
+  "964": {
+   "facing": "left",
+   "name": "ダンコフ"
+  },
+  "965": {
+   "facing": "left",
+   "name": "ディマージュ"
+  },
+  "966": {
+   "facing": "left",
+   "name": "ドトール"
+  },
+  "967": {
+   "facing": "left",
+   "name": "ブルグレン"
+  },
+  "968": {
+   "facing": "left",
+   "name": "ブレイバー"
+  },
+  "969": {
+   "facing": "left",
+   "name": "ガ・ゾウム"
+  },
+  "970": {
+   "facing": "left",
+   "name": "ジャムル・フィン"
+  },
+  "971": {
+   "facing": "left",
+   "name": "ビギナ・ギナ"
+  },
+  "972": {
+   "facing": "left",
+   "name": "ガンダムマックスターS"
+  },
+  "973": {
+   "facing": "front",
+   "name": "トーラス(MA)"
+  },
+  "974": {
+   "facing": "left",
+   "name": "ガンダムエピオン(MA)"
+  },
+  "975": {
+   "facing": "left",
+   "name": "ダルジャン"
+  },
+  "976": {
+   "facing": "left",
+   "name": "量産型νガンダムF"
+  },
+  "977": {
+   "facing": "left",
+   "name": "フルアーマー百式改"
+  },
+  "979": {
+   "facing": "left",
+   "name": "超獣シシリス・ガロ"
+  },
+  "980": {
+   "facing": "front",
+   "name": "ビッグシリウス"
+  },
+  "981": {
+   "facing": "right",
+   "name": "マグマ獣ダークロン"
+  },
+  "982": {
+   "facing": "front",
+   "name": "セント・マグマ"
+  },
+  "983": {
+   "facing": "left",
+   "name": "超獣シシリス・キバ"
+  },
+  "984": {
+   "facing": "left",
+   "name": "ドール(飛行)"
+  },
+  "985": {
+   "facing": "front",
+   "name": "デビルガンダム"
+  },
+  "986": {
+   "facing": "front",
+   "name": "デモニカ"
+  },
+  "987": {
+   "facing": "left",
+   "name": "ムゲ・ゾルバドス城"
+  },
+  "988": {
+   "facing": "left",
+   "name": "スーパーアースゲイン"
+  },
+  "989": {
+   "facing": "left",
+   "name": "スイームルグS"
+  },
+  "990": {
+   "facing": "left",
+   "name": "アシュクリーフAF"
+  },
+  "992": {
+   "facing": "front",
+   "name": "ズメズメ"
+  },
+  "993": {
+   "facing": "left",
+   "name": "フイフイ"
+  },
+  "994": {
+   "facing": "left",
+   "name": "ギンギン"
+  },
+  "995": {
+   "facing": "left",
+   "name": "ドズドズ"
+  },
+  "996": {
+   "facing": "right",
+   "name": "フビフビ"
+  },
+  "997": {
+   "facing": "left",
+   "name": "コールガッチ"
+  },
+  "998": {
+   "facing": "left",
+   "name": "ランドーラ"
+  },
+  "999": {
+   "facing": "front",
+   "name": "ガニメデス"
+  },
+  "1000": {
+   "facing": "left",
+   "name": "ギャンドーラ"
+  },
+  "1001": {
+   "facing": "front",
+   "name": "イーグル号"
+  },
+  "1002": {
+   "facing": "front",
+   "name": "ジャガー号"
+  },
+  "1003": {
+   "facing": "front",
+   "name": "ベアー号"
+  },
+  "1004": {
+   "facing": "front",
+   "name": "ドラゴン号"
+  },
+  "1005": {
+   "facing": "front",
+   "name": "ライガー号"
+  },
+  "1006": {
+   "facing": "front",
+   "name": "ポセイドン号"
+  },
+  "1007": {
+   "facing": "left",
+   "name": "シャトル号"
+  },
+  "1008": {
+   "facing": "left",
+   "name": "ブラックジョーカー"
+  },
+  "1009": {
+   "facing": "left",
+   "name": "シュバルツ"
+  }
+ }
+}

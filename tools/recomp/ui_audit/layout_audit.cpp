@@ -99,13 +99,13 @@ void set_wide_picture(bool v){wide=v;} bool wide_picture(){return wide;}
 bool map_icons_hd=true; bool hd_map_unit_icons(){return map_icons_hd;} void set_hd_map_unit_icons(bool v){map_icons_hd=v;}
 bool msaa_on=true; bool msaa(){return msaa_on;} bool msaa_at_start(){return true;} void set_msaa(bool v){msaa_on=v;}
 bool fps_shown=false; bool show_fps(){return fps_shown;} void set_show_fps(bool v){fps_shown=v;}
-bool speed_double=false; bool game_speed_double(){return speed_double;} void set_game_speed_double(bool v){speed_double=v;}
+unsigned speed_level=1; unsigned game_speed_level(){return speed_level;} unsigned game_speed_top(){return 4;} void set_game_speed_level(unsigned v){speed_level=v;} bool game_speed_double(){return speed_level>1;}
 RefreshRate rate_choice=RefreshRate::Original; RefreshRate refresh_rate(){return rate_choice;} void set_refresh_rate(RefreshRate v){rate_choice=v;}
 const char* refresh_rate_name(RefreshRate r){return r==RefreshRate::Original?"original":r==RefreshRate::Sixty?"60":"display";}
 RefreshRate refresh_rate_from(const std::string& n){return n=="original"?RefreshRate::Original:n=="60"?RefreshRate::Sixty:RefreshRate::Display;}
 bool hints_always=false; bool dialogue_hints_always(){return hints_always;} void set_dialogue_hints_always(bool v){hints_always=v;}
 unsigned touch_alpha=100; unsigned touch_opacity(){return touch_alpha;}
-void set_touch_opacity(unsigned v){touch_alpha=std::clamp(v,25u,100u);}
+void set_touch_opacity(unsigned v){touch_alpha=std::clamp(v,0u,100u);}
 unsigned dialogue_size=13; unsigned dialogue_font_size(){return dialogue_size;}
 void set_dialogue_font_size(unsigned v,bool){dialogue_size=std::clamp(v,10u,18u);}
 // On, so the About page is audited with its longest row: the address and the run directory.
@@ -167,12 +167,15 @@ bool take_returned(){return false;} bool busy(){return false;}
 }
 namespace srw64::sprites { std::string viewer_scene_image(const std::string&){return {};} }
 namespace srw64::campaign_switch { bool available(){return false;} void enter(const campaign_library::Entry&){} void leave(){} }
-namespace srw64::battle_page { bool original_screen(){return false;} nlohmann::json map_art(){return nlohmann::json::array();} }
+namespace srw64::battle_page { bool original_screen(){return false;} nlohmann::json map_art(){return nlohmann::json::array();} uint64_t map_art_revision(){return 0;} std::string state_key(){return fixture::get("battle_page").dump();} }
 namespace srw64::quick_load { bool usable(){return false;} Saved saved(){return {};} void request(){} bool usable_title(){return false;} void request_title(){} }
 namespace srw64::stage_info { json snapshot(){return json::object();} uint64_t want(bool){return 0;} json meta(int){return json::object();} }
 uint32_t srw64_pad_state(){return 0;}
 uint32_t srw64_keyboard_state(){return 0;}
 void srw64_request_screenshot(){}
+bool srw64_take_screenshot_request(){return false;}
+void srw64_arm_screenshot(){}
+bool srw64_screenshot_armed(){return false;}
 std::string srw64_pad_name(){return "Steam Deck Controller";}
 json srw64_window_status(){return json::object();}
 json srw64_graphics_info(){return json::object();}

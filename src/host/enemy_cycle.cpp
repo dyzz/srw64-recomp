@@ -1,4 +1,5 @@
 #include "enemy_cycle.hpp"
+#include "run_files.hpp"
 #include "game_hooks.hpp"
 #include "graphics.hpp"
 #include "guest_memory.hpp"
@@ -111,7 +112,7 @@ bool idle(uint8_t* ram, recomp_context* ctx) {
 }
 
 void configure(const std::filesystem::path& output) {
-    if (!output.empty()) log.open(output / "enemy-cycle-events.jsonl");
+    if (!output.empty()) srw64::open_run_log(log,output / "enemy-cycle-events.jsonl");
     srw64_game_hooks.map_idle = idle;
 }
 json state() {

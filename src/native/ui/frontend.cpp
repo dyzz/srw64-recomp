@@ -7,7 +7,12 @@
 #include "slant_decorator.hpp"
 #include "name_page.hpp"
 #include "text_input.hpp"
+#ifndef SRW64_GL_ONLY
 #include "ui_renderer.h"
+#endif
+#ifdef SRW64_GL_RENDERER
+#include "ui_renderer_gl.hpp"
+#endif
 #include "RmlUi_Platform_SDL.h"
 #include "native_dialogue.hpp"
 #include "link_page.hpp"
@@ -23,7 +28,7 @@
 #include "library.hpp"
 #include "stage_info.hpp"
 #include "quick_load.hpp"
-#include "map_menu.hpp"
+#include "title_row.hpp"
 #include "text_wrap.hpp"
 #include "battle_viewer.hpp"
 #include "native_sprite.hpp"
@@ -56,8 +61,11 @@
 #include "stb/stb_image.h"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include <algorithm>
+#include <atomic>
 #include <array>
+#include <chrono>
 #include <cmath>
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <condition_variable>
@@ -69,6 +77,9 @@
 #include <tuple>
 #include <unordered_map>
 
+#ifdef __SWITCH__
+extern "C" void srw64_switch_background_thread();   // host/switch/switch_platform.cpp
+#endif
 namespace srw64::ui {
 namespace {
 using json=nlohmann::json;
@@ -77,7 +88,44 @@ std::condition_variable completed;
 bool in_flight{}, ready{}, initialized{};
 SDL_Window* window{};
 std::filesystem::path output;
+#ifndef SRW64_GL_ONLY
 std::unique_ptr<recompui::RmlRenderInterface_RT64> renderer;
+#endif
+#ifdef SRW64_GL_RENDERER
+// The PS Vita's GL path (SRW64_RENDERER=gl, graphics.cpp): in place of the Plume adapter.
+std::unique_ptr<recompui::RmlRenderInterface_GL> gl_renderer;
+#endif
+// A named image for RmlUi, to whichever renderer draws.
+void queue_file(const std::string& name,const std::vector<char>& bytes) {
+#ifdef SRW64_GL_RENDERER
+    if(gl_renderer){gl_renderer->queue_image_from_bytes_file(name,bytes);return;}
+#endif
+#ifndef SRW64_GL_ONLY
+    renderer->queue_image_from_bytes_file(name,bytes);
+#else
+    (void)name;(void)bytes;
+#endif
+}
+void queue_rgba(const std::string& name,const std::vector<char>& bytes,uint32_t width,uint32_t height) {
+#ifdef SRW64_GL_RENDERER
+    if(gl_renderer){gl_renderer->queue_image_from_bytes_rgba32(name,bytes,width,height);return;}
+#endif
+#ifndef SRW64_GL_ONLY
+    renderer->queue_image_from_bytes_rgba32(name,bytes,width,height);
+#else
+    (void)name;(void)bytes;(void)width;(void)height;
+#endif
+}
+Rml::RenderInterface* rml_renderer() {
+#ifdef SRW64_GL_RENDERER
+    if(gl_renderer)return gl_renderer->get_rml_interface();
+#endif
+#ifndef SRW64_GL_ONLY
+    return renderer->get_rml_interface();
+#else
+    return nullptr;
+#endif
+}
 // All access, including Render(), holds mutex. SDL callbacks are deferred to the
 // window thread, including text deactivation during render-device teardown.
 // An RmlUi assert that still fires (inline in its headers, built here without NDEBUG) is a
@@ -170,7 +218,6 @@ bool quick_load_ask_open{};
 bool title_return_ask_open{};
 // The intermission menu's own last row, 返回标题画面 (not one of the original's items):
 // selected below the original's cursor, confirmed as the title question.
-bool intermission_title_row{};
 unsigned library_tab{};
 std::array<unsigned,2> library_index{};
 bool library_tab_focus{};
@@ -282,11 +329,18 @@ float ui_density=1;  // screen pixels per dp, as set on the RmlUi context
 std::unique_lock<std::mutex> lock_ui() {
     std::unique_lock lock(mutex);completed.wait(lock,[]{return !in_flight;});return lock;
 }
+// Where the UI's time goes, for perf_line(): the window thread's update and the render
+// thread's draw, each its wait for the UI lock and its work under it, with the longest.
+struct UiTimes{double update_wait=0,update_work=0,update_max=0,draw_wait=0,draw_work=0,draw_max=0;unsigned updates=0,draws=0;};
+std::mutex ui_times_mutex;UiTimes ui_times;
+using UiClock=std::chrono::steady_clock;
+double ui_ms(UiClock::time_point a,UiClock::time_point b){return std::chrono::duration<double,std::milli>(b-a).count();}
 std::string escape(const std::string& text){return Rml::StringUtilities::EncodeRml(text);}
 // Button tokens ("{A}", "{Esc}") become what the player bound to them, as icons of the
 // controller in use or keys (text/button_prompts.hpp, the SRW64Prompts font).
 text::PadFamily pad_family(){return text::PadFamily(input::pad_family.load());}
 input::Bindings hint_bindings=input::live_bindings().get();  // refreshed with the hints (sync)
+uint64_t hint_generation=0;  // counts those refreshes
 text::PromptContext prompt_context(bool pad){return {pad,pad_family(),&hint_bindings,settings::key_display_name};}
 // The native pages follow the player's bindings (input_bindings.hpp): a key bound to an N64
 // button reads as that button's default key, which the page code knows (Z for A, Q for L,
@@ -398,6 +452,7 @@ button.lk-go {background-color: #ffd75e; color: #0b1421; border-color: #ffd75e;}
 .set-path {margin:2dp 0 0; font-size:13dp; color:#7f8fa3;}
 .set-message {margin:10dp 12dp; color:#9fe0ff;}
 .set-note {font-size:13dp; color:#7f8fa3;}
+.set-body p.set-warn {color:#ffd75e;}
 .set-line {display:flex; align-items:center; gap:18dp;} .set-line .set-name {flex:1 1 0; min-width:0;}
 .set-seg {display:flex; flex-shrink:0; border:2dp #3fd0ff; background-color:#0c122ceb;}
 .set-seg button {margin:0; padding:7dp 16dp; border:0; border-radius:0; font-size:14dp; font-weight:bold; white-space:nowrap; color:#e8eefc; background-color:transparent;}
@@ -772,12 +827,10 @@ body.pointer button.vw-listen:focus {background-color:#3fd0ff;} body.pointer but
 .bp-stats {display:flex; gap:4dp; margin-top:3dp;}
 .bp-stat {flex:1 1 auto; display:flex; justify-content:space-between; gap:6dp; padding:3dp 7dp; font-size:13dp; white-space:nowrap; background-color:#ff6fa81f;} .right .bp-stat {background-color:#3fd0ff1f;}
 .bp-stat span {color:#a4b0d2;} .bp-stat b.spent {color:#ffd75e;}
-.battle-spirits {display:flex; flex-wrap:wrap; margin-top:5dp; height:46dp; overflow-y:auto; font-size:12dp; gap:3dp;}
+.battle-spirits {display:flex; flex-wrap:wrap; align-content:flex-start; margin-top:5dp; height:46dp; overflow-y:auto; font-size:12dp; gap:3dp;}
 .right .battle-spirits {justify-content:flex-end;}
-.battle-spirits span {display:inline-block; padding:1dp 5dp; height:16dp; color:#7e88a8; border:1dp #4a5578; background-color:#ffffff0a;}
-.battle-spirits span.active {color:#ffd75e; border-color:#ffd75e; background-color:#ffd75e2e; font-weight:bold;}
-.battle-spirits span.defensive {color:#57e389; border-color:#57e389; background-color:#57e3892e; font-weight:bold;}
-.battle-spirits .muted {border:0; color:#7e88a8;}
+.battle-spirits span {display:inline-block; padding:1dp 5dp; height:16dp; color:#ffd75e; border:1dp #ffd75e; background-color:#ffd75e2e; font-weight:bold;}
+.battle-spirits span.debuff {color:#ff5c6c; border-color:#ff5c6c; background-color:#ff5c6c2e;}
 .battle-defenses {border-top:1dp #ff6fa859; margin-top:6dp; padding-top:4dp; height:18dp; font-size:13dp; color:#57e389;} .right .battle-defenses {border-color:#3fd0ff59;}
 .battle-defense-note {font-size:11dp; white-space:normal; color:#a4b0d2; margin-top:2dp;}
 .battle-defense-conditions {height:14dp; overflow:hidden; white-space:nowrap;}
@@ -869,12 +922,13 @@ void document_close(Rml::ElementDocument*& doc) {
 }
 bool held();
 void choose(const std::string& id);
-// 2x speed on / off (game_speed.hpp): the Speed button, the phone's 2x button. A small
-// tag in the top left says which for a moment (speed_sync; user: the banner was too big).
+// The next game speed (game_speed.hpp): the Speed button, the phone's speed button step
+// 1x, 2x (3x, 4x with the 120 Hz scheduler) and back to 1x. A small tag in the top left
+// says which for a moment (speed_sync; user: the banner was too big).
 bool speed_toast_pending=false;
 void toggle_speed() {
-    const bool on=!settings::game_speed_double();
-    settings::set_game_speed_double(on);
+    const unsigned next=settings::game_speed_level()+1;
+    settings::set_game_speed_level(next>settings::game_speed_top()?1:next);
     speed_toast_pending=true;
 }
 void battle_buttons(uint32_t pressed,bool tab=false);
@@ -882,10 +936,12 @@ struct Actions : Rml::EventListener {
     void ProcessEvent(Rml::Event& event) override {
         if(event.GetType()=="change") {
             if(event.GetTargetElement()->GetId()=="touch-opacity") {
-                const auto value=unsigned(std::clamp(int(std::lround(event.GetParameter<float>("value",100))),25,100));
+                const auto value=unsigned(std::clamp(int(std::lround(event.GetParameter<float>("value",100))),0,100));
                 settings::set_touch_opacity(value);
-                if(auto* doc=event.GetTargetElement()->GetOwnerDocument())
+                if(auto* doc=event.GetTargetElement()->GetOwnerDocument()) {
                     if(auto* label=doc->GetElementById("touch-opacity-value"))label->SetInnerRML(std::to_string(value)+"%");
+                    if(auto* warn=doc->GetElementById("touch-opacity-hidden"))warn->SetProperty("display",value==0?"block":"none");
+                }
             }
             return;
         }
@@ -1111,15 +1167,13 @@ std::string image(const std::string& path) {
         // A released HD portrait: JPEG colour with its alpha beside it.
         auto rgba=presentation::load_rgba(path);
         const auto name="portrait-"+std::to_string(images.size());
-        renderer->queue_image_from_bytes_rgba32(name,std::vector<char>(rgba.pixels.begin(),rgba.pixels.end()),uint32_t(rgba.width),uint32_t(rgba.height));
+        queue_rgba(name,std::vector<char>(rgba.pixels.begin(),rgba.pixels.end()),uint32_t(rgba.width),uint32_t(rgba.height));
         return images[path]=name;
     }
-    std::ifstream file(path,std::ios::binary);
-    if(!file)throw std::runtime_error("Cannot load shared UI portrait: "+path);
     // RmlUi normalizes leading slashes in URLs. Stable relative resource keys
     // avoid platform-specific filesystem paths leaking into its URL resolver.
     const auto name="portrait-"+std::to_string(images.size());
-    renderer->queue_image_from_bytes_file(name,{std::istreambuf_iterator<char>(file),{}});images[path]=name;return name;
+    queue_file(name,presentation::read_image_bytes(path));images[path]=name;return name;
 }
 // Page portraits: the whole HD image while the applied image mode is HD and the asset
 // carries one (docs/native/native-portraits-hd.md), otherwise the ROM original.
@@ -1171,7 +1225,7 @@ std::string image(const std::string& path,int width) {
     if(width>=file.width)return images[key]=image(path);
     int oh=0;const auto bytes=resample(file,width,oh);
     const auto name="portrait-"+std::to_string(images.size());
-    renderer->queue_image_from_bytes_rgba32(name,bytes,uint32_t(width),uint32_t(oh));
+    queue_rgba(name,bytes,uint32_t(width),uint32_t(oh));
     return images[key]=name;
 }
 // Opaque bounds of unit art and its file width: faint alpha (upscaler residue) does not count.
@@ -1202,6 +1256,9 @@ std::set<std::string> asked;  // UI thread
 uint64_t serial=0;            // pictures that arrived, for the page stamps
 const bool at_once=[]{const char* v=std::getenv("SRW64_SYNC_PAGE_IMAGES");return v && *v=='1';}();
 void run() {
+#ifdef __SWITCH__
+    srw64_switch_background_thread();
+#endif
     for(;;) {
         Job job;
         {std::unique_lock lock(mutex);wake.wait(lock,[]{return stopping || !jobs.empty();});if(stopping)return;job=std::move(jobs.front());jobs.pop_front();}
@@ -1242,6 +1299,11 @@ std::string image_async(const std::string& path,int width=0,bool ahead=false) {
     pictures::ask(key,path,width);
     return {};
 }
+// An <img> of a picture image_async() gave, or while it is still being read an empty box
+// of the same style: an <img> without a source draws white.
+std::string picture_or_gap(const std::string& src,const std::string& style) {
+    return src.empty()?"<div style='"+style+"'></div>":"<img src='"+escape(src)+"' style='"+style+"'/>";
+}
 // A unit picture's opaque bounds, or nullptr while its file is still being read.
 const std::array<int,5>* art_bounds_async(const std::string& path,bool ahead=false) {
     if(auto found=art_bounds.find(path);found!=art_bounds.end())return &found->second;
@@ -1260,7 +1322,7 @@ void image_drain() {
         const auto key=d.key[0]=='#'?d.path:d.key;
         if(!images.count(key)) {
             const auto name="portrait-"+std::to_string(images.size());
-            renderer->queue_image_from_bytes_rgba32(name,d.rgba,d.width,d.height);
+            queue_rgba(name,d.rgba,d.width,d.height);
             images[key]=name;
         }
         ++pictures::serial;
@@ -1298,7 +1360,7 @@ constexpr ControlRow control_rows[]={
     {"a",Action::A},{"b",Action::B},{"start",Action::Start},{"l",Action::L},{"r",Action::R},
     {"aux_left",Action::AuxLeft},{"aux_right",Action::AuxRight},{"c_left",Action::CLeft},{"c_up",Action::CUp},{"c_down",Action::CDown},
     {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},{"speed",Action::Speed},
-    {"quick_load",Action::QuickLoad},{"title_return",Action::TitleReturn},{"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
+    {"quick_load",Action::QuickLoad},{"title_return",Action::TitleReturn},{"screenshot",Action::Screenshot},{"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
 void start_capture(const std::string& id) {
     for(const auto& row:control_rows)if(id==row.id) {
         capture=Capture{};
@@ -1324,7 +1386,7 @@ bool capture_event(const SDL_Event& event) {
         if(key==SDL_SCANCODE_UNKNOWN)return true;
         if(key==SDL_SCANCODE_ESCAPE){capture.queue.clear();return true;}
         if(key==SDL_SCANCODE_F5 || key==SDL_SCANCODE_F6 || key==SDL_SCANCODE_F7 || key==SDL_SCANCODE_F8 ||
-           key==SDL_SCANCODE_F11 || key==SDL_SCANCODE_F12 || key==SDL_SCANCODE_PRINTSCREEN){capture.refused=true;return true;}
+           key==SDL_SCANCODE_F11){capture.refused=true;return true;}
         bind([&](input::Bindings& b,input::Action a){input::assign_key(b,a,int(key));});
         return true;
     }
@@ -1363,8 +1425,11 @@ std::string controls_page() {
     std::string body;
     if(touch_supported()) {
         body+=settings_row("settings_touch_opacity",
-            "<input id='touch-opacity' type='range' min='25' max='100' step='1' value='"+std::to_string(settings::touch_opacity())+"'/>"
-            "<span id='touch-opacity-value'>"+std::to_string(settings::touch_opacity())+"%</span>",{},"settings_touch_opacity_note");
+            "<input id='touch-opacity' type='range' min='0' max='100' step='1' value='"+std::to_string(settings::touch_opacity())+"'/>"
+            "<span id='touch-opacity-value'>"+std::to_string(settings::touch_opacity())+"%</span>",
+            // At 0% the controls still work but nothing shows where they are.
+            "<p id='touch-opacity-hidden' class='set-warn' style='display:"+std::string(settings::touch_opacity()==0?"block":"none")+";'>"+
+                label("settings_touch_opacity_hidden")+"</p>","settings_touch_opacity_note");
     }
     const auto pad_name=srw64_pad_name();
     auto found=pad_name.empty()?label("controls_no_pad"):label("controls_detected");
@@ -1470,8 +1535,11 @@ std::string cheats_page() {
     // Enemies' and recruits' base level: three choices (docs/gameplay/cheats.md §6).
     const unsigned on=settings::cheats();
     body+=settings_choice("cheat_level_base","cheat-level-base",{"original","party","curve"},on&cheats::level_curve?"curve":on&cheats::level_party?"party":"original");
-    // A battle's EXP and kill money, and the player's morale cap (§8, §9).
-    body+=settings_choice("cheat_reward","cheat-reward",{"x1","x2","x5","x10"},"x"+std::to_string(cheats::reward_multiplier(on)));
+    // A battle's EXP and kill money, each its own multiplier (issue #14), and the player's
+    // morale cap (§8, §9). Choices are halves: 3 is ×1.5.
+    const auto times=[](unsigned halves){return halves==3?std::string("x1.5"):"x"+std::to_string(halves/2);};
+    body+=settings_choice("cheat_exp","cheat-exp",{"x1","x1.5","x2","x3","x5","x10"},times(cheats::exp_halves(on)));
+    body+=settings_choice("cheat_money","cheat-money",{"x1","x1.5","x2","x3","x5","x10"},times(cheats::money_halves(on)));
     body+=settings_choice("cheat_morale_cap","cheat-morale-cap",{"150","200","300","999"},std::to_string(cheats::morale_cap(on)));
     body+=settings_row("cheat_levels",button("cheat-levels",label(cheat_levels_open?"cheat_levels_close":"cheat_levels_open"),cheat_levels_open));
     if(!cheat_levels_open)return body;
@@ -2134,7 +2202,15 @@ std::string library_art(const json& entry,float box) {
     if(!entry.contains("art") || !entry.at("art").contains("path"))return {};
     const auto& art=entry.at("art");
     const float w=art.value("width",96.f),h=art.value("height",96.f),scale=std::min(box/w,box/h);
-    return "<img src='"+escape(image(portrait_path(art),int(w*scale*ui_density+.5f)))+"' style='width:"+std::to_string(w*scale)+"dp; height:"+std::to_string(h*scale)+"dp;'/>";
+    // Read on the picture thread, not here under the UI lock: a unit's art decoded and resampled
+    // as the cursor moved held the screen and the sound up on the Switch. The page shows it
+    // when it arrives (library_pictures; the viewer's stamp).
+    const std::string path=portrait_path(art);const int px=int(w*scale*ui_density+.5f);
+    const std::string size="width:"+std::to_string(w*scale)+"dp; height:"+std::to_string(h*scale)+"dp;";
+    const auto src=image_async(path,px,true);
+    // Still being read: a place of its size that library_pictures fills when it comes.
+    if(src.empty())return "<div class='lib-pending' data-key='"+escape(path+"@"+std::to_string(px))+"' style='"+size+"'></div>";
+    return "<img src='"+escape(src)+"' style='"+size+"'/>";
 }
 // 格／射 before a weapon's name and P／B／MAP after it, as the weapon pages draw them.
 std::string library_marker(const std::string& token,const json& icons) {
@@ -2345,11 +2421,28 @@ std::string library_panel() {
                                     :"<span class='n fit'>"+escape(e.value("name",std::string()))+"</span>"+(e.contains("model")?"<span class='m'>"+escape(e.at("model").get<std::string>())+"</span>":std::string());
         body+=button("lib-item:"+std::to_string(i),text,i==library_index[library_tab],false,"lib-item");
     }
-    body+="</div><div id='lib-detail' class='lib-detail'>"+library_detail()+"</div></div>"
+    body+="</div><div id='lib-detail' class='lib-detail'></div></div>"
         "<div class='set-foot'><div class='set-hint'>"+label("library_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
     return body;
 }
 // Chooses entry `index` of the tab: the list marks and shows it, the details are redrawn.
+uint64_t library_pictures=0;   // pictures::serial when the Library's details were last made
+// The details float over #lib-detail in a document of their own: RmlUi lays a document out
+// whole when anything in it changes, and with the list of every unit and pilot beside them a
+// step took two layouts of 130-160 ms each on the Switch (SRW64_LIBRARY_STEP). Their own
+// document lays out the details alone.
+Rml::ElementDocument* library_detail_doc{};
+Rml::Element* library_detail_element(){return library_detail_doc?library_detail_doc->GetElementById("lib-detail-float"):nullptr;}
+void library_detail_open() {
+    document_close(library_detail_doc);
+    auto* place=settings_doc?settings_doc->GetElementById("lib-detail"):nullptr;
+    if(!place)return;
+    const auto at=place->GetAbsoluteOffset();const auto size=place->GetBox().GetSize();
+    const auto px=[](float v){return std::to_string(int(v+.5f))+"px";};
+    library_detail_doc=document("<div id='lib-detail-float' class='lib-detail' style='position:absolute; flex:none; left:"+px(at.x)+"; top:"+px(at.y)+
+        "; width:"+px(size.x)+"; height:"+px(size.y)+";'>"+library_detail()+"</div>",false,true);
+    library_detail_doc->PullToFront();
+}
 void library_select(unsigned index,bool focus=true) {
     if(!settings_doc)return;
     const auto& entries=library_entries();
@@ -2368,12 +2461,23 @@ void library_select(unsigned index,bool focus=true) {
         }
     }
     if(!changed)return;
-    if(auto* detail=settings_doc->GetElementById("lib-detail")){detail->SetInnerRML(library_detail());detail->SetScrollTop(0);}
-    settings_doc->UpdateDocument();fit_lines(settings_doc);
+    // Where the time goes on a slow device (SRW64_UI_SLOW reported 140-160 ms a step on the Switch).
+    using Clock=std::chrono::steady_clock;
+    const auto t0=Clock::now();
+    const auto rml=library_detail();
+    const auto t1=Clock::now();
+    if(auto* detail=library_detail_element()){detail->SetInnerRML(rml);detail->SetScrollTop(0);}
+    const auto t2=Clock::now();
+    if(library_detail_doc)library_detail_doc->UpdateDocument();
+    const auto t3=Clock::now();
+    if(library_detail_doc)fit_lines(library_detail_doc);
+    const auto t4=Clock::now();
+    const auto ms=[](Clock::time_point a,Clock::time_point b){return std::chrono::duration<double,std::milli>(b-a).count();};
+    if(ms(t0,t4)>20)std::fprintf(stderr,"SRW64_LIBRARY_STEP %.1fms build=%.1f parse=%.1f layout=%.1f fit=%.1f\n",ms(t0,t4),ms(t0,t1),ms(t1,t2),ms(t2,t3),ms(t3,t4));
 }
 // Scrolls the details by `dp` (C-up / C-down, held: a little every frame).
 void library_scroll(float dp) {
-    if(auto* detail=settings_doc?settings_doc->GetElementById("lib-detail"):nullptr)detail->SetScrollTop(detail->GetScrollTop()+dp*context->GetDensityIndependentPixelRatio());
+    if(auto* detail=library_detail_element())detail->SetScrollTop(detail->GetScrollTop()+dp*context->GetDensityIndependentPixelRatio());
 }
 // Left and right jump between works: to the next work's first entry, or back to this
 // work's first entry and from there to the previous work's.
@@ -2558,6 +2662,8 @@ void stage_turn(int){stage_column^=1;stage_mark_column();}
 // barrier its kind of weapon). Damage leaves 10 HP unless set. 戦闘開始 plays it through
 // the title demo's own path; the page opens again when the battle is over.
 std::atomic_bool viewer_open{};
+// unit and weapon index the Library's lists; pilot is the actor itself, since the Library
+// lists a repeated pilot record once and the battle plays that actor's own quotes.
 struct ViewerSide{unsigned unit=0,pilot=0,weapon=0;};
 std::array<ViewerSide,2> viewer_side{};   // 0 attacks (攻), 1 defends (反)
 // What happens to each side when it is hit: side 1 by the attack, side 0 by the counter.
@@ -2597,7 +2703,35 @@ bool viewer_flies_any(unsigned actor) {
 const json& viewer_units(){return library::contents().at("units");}
 const json& viewer_pilots(){return library::contents().at("pilots");}
 const json& viewer_unit(unsigned s){return viewer_units()[std::min<size_t>(viewer_side[s].unit,viewer_units().size()-1)];}
-const json& viewer_pilot(unsigned s){return viewer_pilots()[std::min<size_t>(viewer_side[s].pilot,viewer_pilots().size()-1)];}
+// The Library entry an actor shows as: its own, or the one its record repeats ("twins").
+const json* viewer_twin(const json& entry,unsigned actor) {
+    const auto twins=entry.find("twins");
+    if(twins==entry.end())return nullptr;
+    for(const auto& t:*twins)if(t.value("actor",~0u)==actor)return &t;
+    return nullptr;
+}
+int viewer_pilot_index(unsigned actor) {
+    const auto& list=viewer_pilots();
+    for(size_t i=0;i<list.size();++i)if(list[i].value("actor",~0u)==actor || viewer_twin(list[i],actor))return int(i);
+    return -1;
+}
+// A repeated record shows as a copy of its entry with its own portrait (kept per language,
+// as the Library rebuilds its contents).
+const json& viewer_pilot_entry(unsigned actor) {
+    static std::map<unsigned,json> copies;
+    static std::string locale;
+    const auto& entry=viewer_pilots()[size_t(std::max(viewer_pilot_index(actor),0))];
+    const auto* twin=viewer_twin(entry,actor);
+    if(!twin)return entry;
+    if(locale!=localization::catalog().locale){copies.clear();locale=localization::catalog().locale;}
+    auto [copy,added]=copies.try_emplace(actor);
+    if(added) {
+        copy->second=entry;copy->second["actor"]=actor;copy->second.erase("twins");copy->second.erase("art");
+        if(twin->contains("art"))copy->second["art"]=twin->at("art");
+    }
+    return copy->second;
+}
+const json& viewer_pilot(unsigned s){return viewer_pilot_entry(viewer_side[s].pilot);}
 // A unit's weapons without the map weapons (a map attack has no battle animation).
 std::vector<const json*> viewer_weapons(unsigned s) {
     std::vector<const json*> list;
@@ -2619,17 +2753,11 @@ void viewer_default_weapon(unsigned s) {
     if(s==0){viewer_side[s].weapon=unsigned(list.size()-1);return;}
     for(size_t i=0;i<list.size();++i)if(list[i]->value("power",0u)>list[viewer_side[s].weapon]->value("power",0u))viewer_side[s].weapon=unsigned(i);
 }
-// An entry's index by its id ("id" of a unit, "actor" of a pilot), or -1.
-int viewer_index(const json& list,const char* field,unsigned id) {
-    for(size_t i=0;i<list.size();++i)if(list[i].value(field,~0u)==id)return int(i);
-    return -1;
-}
 // A new unit keeps its pilot if they may fly it, else takes its default one.
 void viewer_fit_pilot(unsigned s) {
     const unsigned unit=viewer_unit(s).value("id",0u);
     const auto* crew=viewer_crew(unit);
-    if(!crew || viewer_flies(viewer_pilot(s).value("actor",~0u),unit))return;
-    if(const int i=viewer_index(viewer_pilots(),"actor",crew->pilot);i>=0)viewer_side[s].pilot=unsigned(i);
+    if(crew && !viewer_flies(viewer_side[s].pilot,unit))viewer_side[s].pilot=crew->pilot;
 }
 // The first time: ゴッドガンダム and ドモン against マスターガンダム and 東方不敗.
 void viewer_defaults() {
@@ -2639,8 +2767,8 @@ void viewer_defaults() {
         for(size_t i=0;i<list.size();++i)if(list[i].value(field,~0u)==id)return unsigned(i);
         return 0u;
     };
-    viewer_side[0]={find(viewer_units(),"id",1),find(viewer_pilots(),"actor",4),0};
-    viewer_side[1]={find(viewer_units(),"id",28),find(viewer_pilots(),"actor",18),0};
+    viewer_side[0]={find(viewer_units(),"id",1),4,0};
+    viewer_side[1]={find(viewer_units(),"id",28),18,0};
     viewer_default_weapon(0);viewer_default_weapon(1);
 }
 // Side t hit by the other side's weapon: the locale key of why a reaction cannot be shown,
@@ -2694,7 +2822,7 @@ int viewer_code(unsigned t) {
 json viewer_choice() {
     json c;
     for(unsigned s=0;s<2;++s) {
-        json side={{"unit",viewer_unit(s).at("id")},{"pilot",viewer_pilot(s).at("actor")}};
+        json side={{"unit",viewer_unit(s).at("id")},{"pilot",viewer_side[s].pilot}};
         if(const auto* w=viewer_weapon(s))side["weapon"]=w->at("number");
         c[s?"defender":"attacker"]=side;
     }
@@ -2735,14 +2863,14 @@ std::string viewer_skills(const json& p) {
 }
 // The song the attacker brings (no song chosen), its row's text.
 std::string viewer_attacker_song() {
-    const int number=battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_pilot(0).value("actor",0u));
+    const int number=battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_side[0].pilot);
     for(const auto& row:battle_viewer::songs())if(row.value("song",-2)==number)return escape(row.value("text",std::string()));
     return label("viewer_song_keep");
 }
 int viewer_song_number(int row) {
     const auto songs=battle_viewer::songs();
     if(row>=0 && row<int(songs.size()))return songs[size_t(row)].value("song",-1);
-    return battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_pilot(0).value("actor",0u));
+    return battle_viewer::default_song(viewer_unit(0).value("id",0u),viewer_side[0].pilot);
 }
 std::string viewer_scene_key(unsigned i) {
     const auto scenes=battle_viewer::scenes();
@@ -2794,9 +2922,13 @@ int viewer_work_of(unsigned unit) {
 }
 // The BGM list by work: a song belongs to the work whose pilots and units play it (the
 // pilots' table for those who fly, the units' table and the super modes' songs,
-// battle_viewer.cpp); the songs nobody plays (the map and story music) go last under
-// 其他. In the list's order.
+// battle_viewer.cpp). The songs no one brings to a battle are placed by hand: 愛の金字塔
+// is ゴッドマーズ's, and the map and story music (30-49) is the game's own, so オリジナル;
+// ゲッターロボ's theme goes to ゲッターロボ, though G's pilots carry it. Anything else goes
+// last under 其他. In the list's order.
 struct ViewerSongGroup{int work;std::string name;std::vector<size_t> rows;};
+constexpr std::pair<int,int> viewer_song_works[]={{14,13},{24,23},{30,15},{31,15},{32,15},{33,15},{35,15},{36,15},{37,15},{38,15},
+    {39,15},{40,15},{41,15},{42,15},{43,15},{44,15},{45,15},{46,15},{47,15},{48,15},{49,15}};
 std::vector<ViewerSongGroup> viewer_song_groups() {
     static std::vector<ViewerSongGroup> cache;
     static std::string cached;
@@ -2813,6 +2945,11 @@ std::vector<ViewerSongGroup> viewer_song_groups() {
     for(const auto& u:viewer_units()) {
         const int work=u.value("work",-1),song=battle_viewer::default_song(u.value("id",~0u),~0u);
         if(work>=0 && song>0){votes[song][work]+=1;names[work]=u.value("work_name",std::string());}
+    }
+    for(const auto& [song,work]:viewer_song_works) {
+        votes[song]={{work,1}};
+        if(!names.contains(work))
+            for(const auto& p:viewer_pilots())if(p.value("work",-1)==work){names[work]=p.value("work_name",std::string());break;}
     }
     std::vector<ViewerSongGroup> groups;
     ViewerSongGroup other{-1,localization::catalog().ui("library_work_other"),{}};
@@ -2939,14 +3076,22 @@ std::string viewer_popup() {
     } else if(kind=="pilot") {
         const auto* crew=viewer_crew(viewer_unit(s).value("id",0u));
         const size_t count=crew?crew->actors.size():0;
-        title=viewer_fill(label("viewer_choose_pilot_crew"),viewer_name(viewer_unit(s)),std::to_string(count));
+        size_t rows=0;
+        // A row per actor, with its own face. A repeated record whose main one flies the unit
+        // too has the same name and figures, so it has a row only as the unit's default or the
+        // pilot being shown.
         for(size_t n=0;n<count;++n) {
-            const int i=viewer_index(viewer_pilots(),"actor",crew->actors[n]);
+            const unsigned actor=crew->actors[n];
+            const int i=viewer_pilot_index(actor);
             if(i<0)continue;
-            const auto& e=viewer_pilots()[size_t(i)];
-            const bool now=unsigned(i)==viewer_saved.side[s].pilot;
-            list+=viewer_li(i,"",viewer_icon(e,30),viewer_name(e),escape(viewer_skills(e)),now?label("viewer_badge_now"):crew->actors[n]==crew->pilot?label("viewer_badge_default"):std::string(),unsigned(i)==viewer_side[s].pilot);
+            const auto& e=viewer_pilot_entry(actor);
+            const unsigned main=viewer_pilots()[size_t(i)].value("actor",~0u);
+            if(main!=actor && viewer_flies(main,crew->unit) && actor!=crew->pilot && actor!=viewer_side[s].pilot && actor!=viewer_saved.side[s].pilot)continue;
+            const bool now=actor==viewer_saved.side[s].pilot;
+            list+=viewer_li(int(actor),"",viewer_icon(e,30),viewer_name(e),escape(viewer_skills(e)),now?label("viewer_badge_now"):actor==crew->pilot?label("viewer_badge_default"):std::string(),actor==viewer_side[s].pilot);
+            ++rows;
         }
+        title=viewer_fill(label("viewer_choose_pilot_crew"),viewer_name(viewer_unit(s)),std::to_string(rows));
     } else if(kind=="weapon") {
         title=label(s?"viewer_choose_counter_weapon":"viewer_choose_weapon");
         const auto weapons=viewer_weapons(s);
@@ -3191,7 +3336,7 @@ void viewer_move(int dy,int dx) {
 }
 void viewer_sync() {
     viewer_defaults();
-    const auto stamp="viewer"+viewer_stamp()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
+    const auto stamp="viewer"+viewer_stamp()+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density)+"#"+std::to_string(pictures::serial);
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     auto* focused=context->GetFocusElement();
     const std::string focus_id=!viewer_focus.empty()?viewer_focus:settings_doc && focused && focused->GetOwnerDocument()==settings_doc?focused->GetId():std::string();
@@ -3215,6 +3360,7 @@ void viewer_sync() {
 }
 void settings_sync() {
     const auto stage_opening=stage_info::want(settings_open && stage_open);
+    if(!settings_open || !library_open)document_close(library_detail_doc);
     if(!settings_open){update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
     if(viewer_open){viewer_sync();return;}
     if(title_return_ask_open) {
@@ -3246,10 +3392,29 @@ void settings_sync() {
     }
     if(library_open) {
         const auto stamp="library"+std::to_string(library_tab)+localization::catalog().locale+std::to_string(hd_portraits())+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
-        if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
-        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
+        if(settings_doc && stamp==settings_stamp) {
+            // Pictures that arrived since the details were made (library_art): the details again,
+            // where they were scrolled to.
+            // Pictures that arrived since (library_art): only their places are filled.
+            if(library_pictures!=pictures::serial) {
+                library_pictures=pictures::serial;
+                Rml::ElementList pending;if(library_detail_doc)library_detail_doc->QuerySelectorAll(pending,".lib-pending");
+                for(auto* place:pending) {
+                    const auto key=place->GetAttribute<Rml::String>("data-key","");
+                    const auto found=images.find(key);
+                    if(found==images.end())continue;
+                    place->SetClass("lib-pending",false);
+                    place->SetInnerRML("<img src='"+escape(found->second)+"' style='width:100%; height:100%;'/>");
+                }
+            }
+            settings_doc->PullToFront();
+            if(library_detail_doc)library_detail_doc->PullToFront();
+            return;
+        }
+        document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();library_pictures=pictures::serial;
         settings_doc=document(library_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
         settings_doc->UpdateDocument();
+        library_detail_open();
         auto* tab=settings_doc->GetElementById("lib-tab:"+std::to_string(library_tab));
         if(library_tab_focus && tab)tab->Focus();
         else library_select(library_index[library_tab],!pointer_mode);
@@ -3299,7 +3464,7 @@ void settings_sync() {
     report_export_poll();
 #endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
-        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_double())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
+        std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
         std::to_string(input::live_bindings().revision())+capture_prompt()+srw64_pad_name()+std::to_string(int(pad_family()))+
@@ -3337,8 +3502,13 @@ void settings_sync() {
         body+=settings_row("library_row",button("library-open",label("library_open")));
         body+=settings_row("stage_info_row",button("stage-info-open",label("stage_info_open")));
         body+=settings_row("viewer_row",button("viewer-open",label("viewer_open")));
-        body+=settings_row("settings_speed",button("speed:1x",label("settings_speed_1x"),!settings::game_speed_double())+
-            button("speed:2x",label("settings_speed_2x"),settings::game_speed_double()),{},"settings_speed_note");
+        {
+            std::string speeds;
+            for(unsigned speed=1;speed<=settings::game_speed_top();++speed)
+                speeds+=button("speed:"+std::to_string(speed)+"x",label("settings_speed_"+std::to_string(speed)+"x"),settings::game_speed_level()==speed);
+            body+=settings_row("settings_speed",speeds,{},"settings_speed_note");
+        }
+
         body+=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
         body+=settings_choice("settings_map_unit_icons","map-unit-icons",{"original","hd"},settings::hd_map_unit_icons()?"hd":"original",!presentation::image_mode.enabled() || !presentation::image_mode.requested());
         body+=settings_choice("settings_aspect","aspect",{"wide","original"},settings::wide_picture()?"wide":"original");
@@ -3712,13 +3882,29 @@ PilotDefenses battle_defenses(const json& c) {
     return out;
 }
 float text_units(const std::string& text);
-// Rows the spirit tags take in a pilot panel's info column (12 dp text with 12 dp of
+// The buff bar: every spirit flag in effect on this unit's lead pilot (docs/gameplay/battle-formulas.md §6),
+// buffs first, then the debuffs the other side cast on it. Each entry gains "debuff".
+// Buffs: 加速 move +3, 手加減 leaves 10 HP, 集中 hit ±30, ひらめき hit 0, 必中 hit 100, 鉄壁
+// armor ×2, みがわり (on the ally being covered) the caster fights in its place, 熱血 damage ×2,
+// 幸運 funds ×2, 努力 experience ×2, 魂 damage ×3, 隠れ身 cannot be targeted.
+// Debuffs: 挑発 targets only the caster, かく乱 own hit ÷2. Instant ones (気合, 根性, …) leave no flag.
+json battle_buffs(const json& c) {
+    json out=json::array();
+    for(const bool debuff:{false,true})
+        for(const unsigned id:debuff?std::initializer_list<unsigned>{21,23}:std::initializer_list<unsigned>{2,3,4,5,7,9,10,11,14,16,17,18})
+            for(const auto& spirit:c.value("active_spirits",json::array()))
+                if(spirit.at("id")==id){auto tag=spirit;tag["debuff"]=debuff;out.push_back(tag);}
+    return out;
+}
+// Rows the buff tags take in a pilot panel's info column (12 dp text with 12 dp of
 // padding and border each, 3 dp apart), a little pessimistic so a second row is never
 // hidden: the column is the panel (31% of the page) less its padding, the face and a gap.
+// The box gets 3 dp more than the rows: borders round to whole pixels (1.5 px → 2 at
+// 1080p), so a tag can come out a pixel taller and two exact rows would scroll.
 int battle_spirit_rows(const json& c,bool narrow) {
     const float page=std::min(page_area().w/ui_density,1500.f)-36,width=(page*.31f-22-(narrow?68:100)-8)*.95f;
     int rows=1;float x=0;
-    for(const auto& spirit:c.value("spirit_grid",json::array())) {
+    for(const auto& spirit:battle_buffs(c)) {
         const float w=text_units(spirit.at("name").get<std::string>())*12+12;
         if(x>0 && x+3+w>width){++rows;x=w;}else x+=(x>0?3:0)+w;
     }
@@ -3730,7 +3916,7 @@ int battle_effect_lines(const json& c) {
     return lines;
 }
 PilotRoom battle_pilot_room(const json& a,const json& b,bool narrow) {
-    return {std::max({1,battle_spirit_rows(a,narrow),battle_spirit_rows(b,narrow)}),
+    return {std::max(battle_spirit_rows(a,narrow),battle_spirit_rows(b,narrow)),
             !battle_defenses(a).line.empty() || !battle_defenses(b).line.empty(),
             std::max(battle_effect_lines(a),battle_effect_lines(b))};
 }
@@ -3742,13 +3928,11 @@ std::string battle_pilot(const json& c,bool left,const PilotRoom& room) {
     body+="<div class='bp-pilot-info'><div class='bp-pilot-name'><span>"+escape(c.at("pilot_name").get<std::string>())+"</span><span class='level'>Lv "+battle_number(c.at("level"))+"</span></div>";
     body+="<div class='bp-stats'><div class='bp-stat'><span>"+label("battle_morale")+"</span><b>"+battle_number(c.at("morale"))+"</b></div>";
     body+="<div class='bp-stat'><span>SP</span><b class='"+std::string(c.at("sp").get<int>()<c.at("max_sp").get<int>()?"spent":"")+"'>"+battle_number(c.at("sp"))+" / "+battle_number(c.at("max_sp"))+"</b></div></div>"
-        "<div class='battle-spirits' style='height:"+std::to_string(room.spirit_rows*23-2)+"dp;'>";
-    const auto spirits=c.value("spirit_grid",json::array());
-    if(spirits.empty())body+="<span class='muted'>"+label("battle_spirits_none")+"</span>";
-    for(const auto& spirit:spirits) {
-        const bool active=spirit.at("active");const unsigned id=spirit.at("id");
-        body+="<span class='"+std::string(!active?"":id==5 || id==9 || id==18?"defensive":"active")+"'>"+escape(spirit.at("name").get<std::string>())+"</span>";
-    }
+        "<div class='battle-spirits' style='height:"+std::to_string(room.spirit_rows*23+1)+"dp;'>";
+    // What can still be cast is in the spirit menu; buffs gold, debuffs red. The bar keeps its
+    // row when empty.
+    for(const auto& spirit:battle_buffs(c))
+        body+="<span"+std::string(spirit.at("debuff").get<bool>()?" class='debuff'":"")+">"+escape(spirit.at("name").get<std::string>())+"</span>";
     const auto defenses=battle_defenses(c);
     // Without a defenses line on either side only its rule stays, as the divider.
     body+="</div></div></div><div class='battle-defenses'"+std::string(room.defenses?"":" style='height:0;padding-top:0;'")+">"+defenses.line+"</div>"
@@ -3809,7 +3993,7 @@ float text_units(const std::string& text) {
 }
 void intermission_sync() {
     const auto next=intermission_page::state();intermission_request=next;
-    if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();intermission_title_row=false;return;}
+    if(!next.value("visible",false)){document_close(intermission_doc);intermission_stamp.clear();return;}
     const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+funds_editing;
     if(intermission_doc && intermission_stamp==stamp)return;
     intermission_stamp=stamp;
@@ -3824,16 +4008,14 @@ void intermission_sync() {
     const auto& items=next.at("items");const bool restricted=next.value("restricted",false),submenu=next.value("submenu",false);
     const unsigned cursor=next.value("cursor",0u);
     float item_font=10.5f;for(const auto& item:items)item_font=std::min(item_font,fit(item.get<std::string>(),67));
-    // Our title row makes ten in the nine-item panel's own height (the footer sits right
-    // under it); the two-item menu grows by a row instead.
-    const float row=restricted?31.f/items.size():143.f/(items.size()+1);
+    // The original's panels with the row it gets (intermission_row.hpp): the menu a row
+    // taller, (33,41)-(103,199) or (33,41)-(103,87), and the nine-item menu's chapter panel
+    // 16 lower; the items include 返回标题画面 before 次のマップへ.
+    const float menu_bottom=restricted?87.f:199.f,chapter_y=restricted?193.f:209.f;
+    const float row=(menu_bottom-41)/items.size();
     std::string menu;
-    for(unsigned n=0;n<items.size();++n) {
-        // Our own row before the original's last: back to the title screen (quick_load.hpp), asked first.
-        if(n+1==items.size())
-            menu+="<button id='intermission:title' class='"+std::string(intermission_title_row?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+label("title_return_open")+"</button>";
-        menu+="<button id='intermission:"+std::to_string(n)+"' class='"+(n==cursor && !intermission_title_row?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+escape(items[n].get<std::string>())+"</button>";
-    }
+    for(unsigned n=0;n<items.size();++n)
+        menu+="<button id='intermission:"+std::to_string(n)+"' class='"+(n==cursor?"on":"")+"'"+(submenu?" disabled":"")+" style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(1)+";'>"+escape(items[n].get<std::string>())+"</button>";
     const auto title=next.value("title",std::string());
     const auto turns_label=next.value("turns_label",std::string()),funds_label=next.value("funds_label",std::string());
     const float info_font=std::min(fit(turns_label,78),fit(funds_label,78));
@@ -3844,9 +4026,9 @@ void intermission_sync() {
     const auto footer=episode+" "+next.value("scene_title",std::string())+" "+next.value("clear_label",std::string());
     std::string body="<div class='im-root' id='intermission' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>"+
         panel(120,25,199,39,"<div style='text-align:center;'>"+escape(title)+"</div>",fit(title,76),"intermission-title")+
-        panel(33,41,103,restricted?int(71+row):183,menu,item_font,"intermission-menu")+
+        panel(33,41,103,menu_bottom,menu,item_font,"intermission-menu")+
         panel(145,49,287,79,info,info_font,"intermission-info")+
-        panel(34,193,287,207,"<div id='intermission-scene' style='padding:0 "+px(1)+";'>"+escape(footer)+"</div>",fit(footer,250),"intermission-footer");
+        panel(34,chapter_y,287,chapter_y+14,"<div id='intermission-scene' style='padding:0 "+px(1)+";'>"+escape(footer)+"</div>",fit(footer,250),"intermission-footer");
     if(submenu) {
         const auto& swap=next.at("swap_items");const unsigned chosen=next.value("swap_cursor",0u);
         float swap_font=10.5f;std::string options;
@@ -3856,7 +4038,7 @@ void intermission_sync() {
         body+=panel(109,121,155,160,options,swap_font,"intermission-swap");
     }
     const auto hint=label(next.value("swap_refused",false)?"intermission_swap_refused":submenu?"intermission_swap_hint":funds_editing=="intermission"?"funds_edit_hint":"intermission_hint");
-    body+="<div class='im-hint"+std::string(next.value("swap_refused",false)?" im-refused":"")+"' style='left:0; top:"+px(222)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+hint+"</div></div>";
+    body+="<div class='im-hint"+std::string(next.value("swap_refused",false)?" im-refused":"")+"' style='left:0; top:"+px(restricted?222:228)+"; width:"+px(320)+"; font-size:"+px(6.5f)+";'>"+hint+"</div></div>";
     refresh(intermission_doc,body,true);intermission_doc->SetClass("modal",false);focus_funds(intermission_doc,"intermission");
 }
 // ユニット改造 / 武器改造: the machine list (layout 0x6B) and the five-stat screen
@@ -4176,7 +4358,7 @@ void upgrade_sync() {
         std::string art;
         if(unit.contains("art") && unit.at("art").contains("path")) {
             const float w=unit.at("art").value("width",96.f),h=unit.at("art").value("height",96.f),scale=std::min(1.f,std::min(118.f/w,118.f/h));
-            art="<img src='"+escape(image_async(portrait_path(unit.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+            art=picture_or_gap(image_async(portrait_path(unit.at("art")),int(w*scale*u+.5f)),"width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;");
         }
         body+=box(176,8,302,132,art,10.f,"upgrade-art",std::string("display:flex; align-items:center; justify-content:center; background-color:")+kLinesPanel+";")+
             box(21,133,302,219,lines,10.5f,"upgrade-rows");
@@ -4344,7 +4526,7 @@ void swap_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return picture_or_gap(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)),"width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;");
     };
     const auto yes_no=[&](const std::string& prefix,unsigned cursor,float x0,float y0,float x1,float y1,float row){
         return box(x0,y0,x1,y1,"<button id='"+prefix+"-yes' class='"+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='"+prefix+"-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,prefix+"-choice");
@@ -4428,7 +4610,8 @@ void swap_sync() {
 void save_sync() {
     const auto next=save_page::state();save_request=next;
     if(!next.value("visible",false)){document_close(save_doc);save_stamp.clear();return;}
-    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits());
+    // The pictures' arrival too (image_async): a slot's portrait comes after the page is made.
+    const auto stamp=next.dump()+localization::catalog().locale+frame_stamp()+std::to_string(hd_portraits())+"#"+std::to_string(pictures::serial);
     if(save_doc && save_stamp==stamp)return;
     save_stamp=stamp;
     const float u=frame::scale(pixels_w,pixels_h),ox=(pixels_w-320*u)/2,oy=(pixels_h-240*u)/2;
@@ -4451,7 +4634,7 @@ void save_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return picture_or_gap(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)),"width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;");
     };
     const auto yes_no=[&](unsigned cursor,float x0,float y0,float x1,float y1,float row){
         return box(x0,y0,x1,y1,std::string("<button id='save-yes' class='")+(cursor==0?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("yes"))+"</button><button id='save-no' class='"+(cursor==1?"on":"")+"' style='height:"+px(row)+"; line-height:"+px(row)+"; padding:0 "+px(2)+";'>"+escape(label_of("no"))+"</button>",8.f,"save-choice");
@@ -4641,7 +4824,7 @@ void ability_sync() {
     const auto art_img=[&](const json& owner,float size){
         if(!owner.contains("art") || !owner.at("art").contains("path"))return std::string();
         const float w=owner.at("art").value("width",96.f),h=owner.at("art").value("height",96.f),scale=std::min(size/w,size/h);
-        return "<img src='"+escape(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)))+"' style='width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;'/>";
+        return picture_or_gap(image_async(portrait_path(owner.at("art")),int(w*scale*u+.5f)),"width:"+px(w*scale)+"; height:"+px(h*scale)+"; margin:auto;");
     };
     const std::string screen=next.value("screen",std::string());
     std::string body="<div class='im-root' id='ability' style='left:"+px((ox-page_area().x)/u)+"; top:"+px((oy-page_area().y)/u)+"; width:"+px(320)+"; height:"+px(240)+";'>";
@@ -4766,6 +4949,9 @@ void ability_sync() {
     refresh(ability_doc,body,true);ability_doc->SetClass("modal",false);
 }
 void mini_sync() {
+    // Off the title menu and with no stage being entered there is nothing to show: no snapshot
+    // (a JSON object, with a campaign's every stage) on those frames.
+    if(intro::title_major()!=3 && !mini_stage::armed()){document_close(mini_doc);mini_stamp.clear();return;}
     const auto state=mini_stage::snapshot();
     const bool entering=state.value("entering",false);
     const bool available=state.value("available",false) && !state.value("applied",0u) && intro::title_major()==3;
@@ -4925,14 +5111,19 @@ touch_pad::Layout touch_layout();
 // each pilot's face at the page's size and each unit's whole pose with its bounds.
 void prefetch_map_art() {
     static unsigned frames=0;
-    if(pictures::at_once || ++frames%30 || battle_page::state().value("visible",false))return;
+    static uint64_t seen=0;
+    if(pictures::at_once || ++frames%30 || battle_page::map_art_revision()==seen || battle_page::state().value("visible",false))return;
+    seen=battle_page::map_art_revision();
     for(const auto& row:battle_page::map_art()) {
         if(const auto face=row.value("portrait",json::object());face.contains("path"))image_async(portrait_path(face),dp_pixels(96),true);
         if(const auto unit=row.value("unit_art",json::object());unit.contains("path"))art_bounds_async(portrait_path(unit),true);
     }
 }
 void battle_sync() {
-    const auto next=battle_page::state();battle_request=next;
+    // The state is copied only when it changed (battle_page::state_key): a copy, a second copy
+    // and a dump of it every frame were most of the UI thread on a phone while the page was up.
+    static std::string state_seen;static json next;
+    if(auto key=battle_page::state_key();key!=state_seen || !next.is_object()){state_seen=std::move(key);next=battle_page::state();battle_request=next;}
     if(!next.value("visible",false)) {
         document_close(battle_doc);battle_stamp.clear();
         // Original HUD: only the animation state and its toggle key, top centre.
@@ -4964,7 +5155,7 @@ void battle_sync() {
     const bool touch=touch_battle_layout();
     const bool hd_original=next.value("style",std::string())=="hd" && !touch;
     // The window and the interface size set the unit pictures' room (ui_density).
-    const auto stamp=next.dump()+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"")+(touch?"+touch":"")+"#"+std::to_string(pictures::serial);
+    const auto stamp=state_seen+localization::catalog().locale+std::to_string(hd_portraits())+frame_stamp()+"@"+std::to_string(ui_density)+(hd_original && pad_mode?"+pad":"")+(touch?"+touch":"")+"#"+std::to_string(pictures::serial);
     if(battle_doc && battle_stamp==stamp)return;
     if(hd_original) {
         // The menu cursor stays where it was when the same encounter redraws.
@@ -5052,6 +5243,7 @@ void battle_sync() {
 void choose(const std::string& id) {
     if(id=="mini-enter"){mini_stage::hotkey();return;}
     if(id=="speed-toggle"){toggle_speed();return;}
+    if(id=="screenshot"){srw64_request_screenshot();return;}
     if(id=="intermission-funds" || id=="upgrade-funds"){funds_editing=id.substr(0,id.size()-6);return;}
     if(id.ends_with("-funds-input"))return;
     funds_editing.clear();
@@ -5234,7 +5426,6 @@ void choose(const std::string& id) {
     if(id.starts_with("intermission") && intermission_request.value("visible",false) && !settings_open) {
         // Item ids are "intermission:N" and "intermission-swap:N"; a click confirms.
         const auto serial=intermission_request.at("serial").get<uint64_t>();
-        if(id=="intermission:title"){choose("title-return-ask");return;}
         if(id.starts_with("intermission:"))intermission_page::answer(serial,"choose:"+id.substr(13));
         else if(id.starts_with("intermission-swap:"))intermission_page::answer(serial,"swap:"+id.substr(18));
         return;
@@ -5278,9 +5469,12 @@ void choose(const std::string& id) {
             const auto mode=id.substr(17);
             settings::set_cheats((settings::cheats()&~cheats::level_modes)|(mode=="curve"?cheats::level_curve:mode=="party"?cheats::level_party:0u));
         }
-        if(id.starts_with("cheat-reward:")) {
-            const auto mode=id.substr(13);
-            settings::set_cheats((settings::cheats()&~cheats::reward_modes)|(mode=="x10"?cheats::reward_x10:mode=="x5"?cheats::reward_x5:mode=="x2"?cheats::reward_x2:0u));
+        if(id.starts_with("cheat-exp:") || id.starts_with("cheat-money:")) {
+            const bool exp=id.starts_with("cheat-exp:");
+            const auto mode=id.substr(id.find(':')+1);
+            // "x1.5" is the id "exp1.5" / "money1.5"; x1 none.
+            const unsigned bit=mode=="x1"?0u:cheats::bits_of((exp?"exp":"money")+mode.substr(1));
+            settings::set_cheats((settings::cheats()&~(exp?cheats::exp_modes:cheats::money_modes))|bit);
         }
         if(id.starts_with("cheat-morale-cap:")) {
             const auto mode=id.substr(17);
@@ -5304,7 +5498,7 @@ void choose(const std::string& id) {
         if(id.starts_with("title-ui:"))settings::set_native_title_ui(id=="title-ui:native");
         if(id.starts_with("fps:"))settings::set_show_fps(id=="fps:on");
         if(id.starts_with("refresh:"))settings::set_refresh_rate(settings::refresh_rate_from(id.substr(8)));
-        if(id.starts_with("speed:"))settings::set_game_speed_double(id=="speed:2x");
+        if(id.starts_with("speed:"))settings::set_game_speed_level(unsigned(id[6]-'0'));
         if(id.starts_with("dialogue-font:"))settings::set_dialogue_font_size(unsigned(std::stoul(id.substr(14))));
         if(id.starts_with("dialogue-hints:"))settings::set_dialogue_hints_always(id=="dialogue-hints:always");
         if(id.starts_with("debug:"))settings::set_debug_interface(id=="debug:on");
@@ -5475,11 +5669,28 @@ void battle_buttons(uint32_t pressed,bool tab) {
 }
 // The frame-rate readout (settings show_fps): the game's frames per second and the longest
 // frame over the last half second (frame_rate.hpp), in the top right corner.
+// A player's screenshot (graphics.hpp): the touch controls and the frame-rate readout leave
+// the screen first. Once a draw has gone by without them the shot is armed, and they come
+// back when the present has taken it.
+enum class Shot : uint8_t {None, Clearing, Armed} shot_stage=Shot::None;
+uint64_t shot_draws_at=0;
+std::atomic<uint64_t> ui_draws{0};
+bool shot_clearing(){return shot_stage!=Shot::None;}
+void shot_sync() {
+    if(shot_stage==Shot::None && srw64_take_screenshot_request()){shot_stage=Shot::Clearing;shot_draws_at=ui_draws.load();}
+    // Two draws: one may have begun before the controls were closed.
+    else if(shot_stage==Shot::Clearing && ui_draws.load()>=shot_draws_at+2){srw64_arm_screenshot();shot_stage=Shot::Armed;}
+    else if(shot_stage==Shot::Armed && !srw64_screenshot_armed())shot_stage=Shot::None;
+}
 Rml::ElementDocument* fps_doc{};
+// Each time the readout's document is made or closed: the screen keeper (graphics.cpp) draws
+// once more then, the readout not counting as a page that is up (shown()).
+std::atomic<uint64_t> fps_changes{0};
 std::string fps_stamp;
 struct {double at=-1;uint64_t lists=0,presents=0;std::string text;} fps_window;
 void fps_sync() {
-    if(!settings::show_fps()){document_close(fps_doc);fps_stamp.clear();fps_window.at=-1;return;}
+    if(!settings::show_fps()){if(fps_doc)++fps_changes;document_close(fps_doc);fps_stamp.clear();fps_window.at=-1;return;}
+    if(shot_clearing()){if(fps_doc)++fps_changes;document_close(fps_doc);fps_stamp.clear();return;}
     const double now=system.GetElapsedTime();
     const uint64_t lists=frame_rate::lists.load(),presents=frame_rate::presents.load();
     if(fps_window.at<0){fps_window={now,lists,presents,""};frame_rate::longest_us.exchange(0);}
@@ -5493,7 +5704,7 @@ void fps_sync() {
         fps_window={now,lists,presents,text};
     }
     const std::string stamp=fps_window.text+frame_stamp();
-    if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false,true);}
+    if(stamp!=fps_stamp){document_close(fps_doc);fps_stamp=stamp;if(!fps_window.text.empty())fps_doc=document("<div id='fps'>"+escape(fps_window.text)+"</div>",false,true);++fps_changes;}
     if(fps_doc)fps_doc->PullToFront();
 }
 // The 2x switch's tag, 1.5 s after each toggle. The phone's own 2x button shows the state.
@@ -5505,7 +5716,7 @@ void speed_sync() {
     const double now=system.GetElapsedTime();
     if(speed_toast_pending){speed_toast_pending=false;speed_toast_until=now+1.5;}
     const bool shown=now<speed_toast_until && !touch_active();
-    const std::string text=shown?localization::catalog().ui(settings::game_speed_double()?"speed_notice_on":"speed_notice_off"):std::string();
+    const std::string text=shown?localization::catalog().ui("speed_notice_"+std::to_string(settings::game_speed_level())+"x"):std::string();
     const std::string stamp=text+frame_stamp();
     if(stamp!=speed_stamp){document_close(speed_doc);speed_stamp=stamp;if(!text.empty())speed_doc=document("<div id='speed-toast'>"+escape(text)+"</div>",false,true);}
     if(speed_doc)speed_doc->PullToFront();
@@ -5655,6 +5866,8 @@ float touch_label_size(const std::string& text,float room,float largest) {
 }
 void touch_sync() {
     touch_scene_id=touch_scene_now();
+    // Off the screen for a screenshot; the fingers keep their state.
+    if(touch_active() && shot_clearing()){document_close(touch_doc);touch_stamp.clear();return;}
     if(!touch_active()) {
         if(!touch_fingers.empty()){touch_fingers.clear();touch_publish();}
         document_close(touch_doc);touch_stamp.clear();return;
@@ -5690,7 +5903,7 @@ void touch_sync() {
     const auto px=[](float v){return std::to_string(int(std::lround(v)))+"px";};
     std::string stamp=frame_stamp()+"/"+std::to_string(mm)+"/"+std::to_string(int(touch_scene_id))+"/"+localization::catalog().locale+"/"+
         std::to_string(touch_fingers.buttons())+"/"+std::to_string(settings::touch_opacity())+"/"+std::to_string(touch_controls_revision)+"/"+
-        std::to_string(settings::game_speed_double());
+        std::to_string(settings::game_speed_level());
     for(size_t i=0;i<touch_pad::slot_count;++i)stamp+=touch_fingers.pressed(touch_pad::Slot(i))?'1':'0';
     if(stick)stamp+="/"+std::to_string(int(stick->cx))+","+std::to_string(int(stick->cy))+","+std::to_string(int(stick->x/mm))+","+std::to_string(int(stick->y/mm));
     if(stamp==touch_stamp){if(touch_doc)touch_doc->PullToFront();return;}
@@ -5719,7 +5932,8 @@ void touch_sync() {
         if(!action.filled())continue;
         const auto& place=layout.slots[i];
         const float w=place.round?2*place.r:place.w,h=place.round?2*place.r:place.h;
-        std::string text=label(std::string(action.label));
+        // The speed button names the speed now (1×, 2×, ...).
+        std::string text=action.command=="speed-toggle"?std::to_string(settings::game_speed_level())+"×":label(std::string(action.label));
         if(action.command=="battle-animation")text+=" "+label(battle_request.value("animation",true)?"battle_on":"battle_off");
         const float size=touch_label_size(text,w*(place.round?.76f:.86f),place.round?(i==size_t(touch_pad::Slot::Primary)?3.8f:2.8f)*mm:std::min(2.4f*mm,h*.5f));
         const auto lines=1+std::count(text.begin(),text.end(),'\n');
@@ -5730,7 +5944,7 @@ void touch_sync() {
         }
         body+="<div style='position:absolute;left:"+px(place.x-w/2)+";top:"+px(place.y-h/2)+";width:"+px(w)+";height:"+px(h)+";border-radius:"+px(h/2)+";"+
               face(touch_fingers.pressed(touch_pad::Slot(i)),1)+(action.command=="battle-confirm"?"background-color:#1fb85ac0;":"")+
-              // The 2x switch is amber while it is on.
+              // The speed button is amber while above 1x.
               (action.command=="speed-toggle" && settings::game_speed_double()?"background-color:#d89a1ec0;":"")+"font-size:"+px(size)+";line-height:"+px(h)+";white-space:nowrap;'>"+caption+"</div>";
     }
     body+="</div>";
@@ -5751,7 +5965,7 @@ void initialize() {
     // The update check's state and, if the player chose it, the day's check (update_check.hpp).
     static const bool update_started=[]{update::init(SRW64_VERSION);game_version();update::check_on_start();return true;}();
     (void)update_started;
-    layered=std::make_unique<LayeredRender>(renderer->get_rml_interface());
+    layered=std::make_unique<LayeredRender>(rml_renderer());
     Rml::SetSystemInterface(&system);Rml::SetRenderInterface(layered.get());
     if(!Rml::Initialise())throw std::runtime_error("Cannot initialize shared UI");
     initialized=true;
@@ -5800,7 +6014,7 @@ void initialize() {
     context=Rml::CreateContext("game-ui",{pixels_w,pixels_h},nullptr,&input);
     if(!context)throw std::runtime_error("Cannot create shared UI context");input.bind(*context);
     name_page=std::make_unique<NamePage>(*context,NameActions{names::select,names::choose,names::review,
-        [](const std::string& path,int dp){return image(path,dp_pixels(dp));}});
+        [](const std::string& path,int dp){return image(path,dp_pixels(dp));},fit_lines});
     std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()},{"english_font",english_font_family()}}).dump(2)<<'\n';
 }
 bool held() {
@@ -5846,6 +6060,35 @@ void send_key(SDL_Keycode key,bool repeat,Uint16 mod=KMOD_NONE) {
 // input::classic_keys), which follow_bindings turns the player's keys into.
 // A controller drives them with the same keys, so a Steam Deck needs no keyboard.
 // Funds entry and the name page take A as Enter and B as Esc.
+// The title's corner (Library, the battle viewer, MOD) for a controller, which the ring
+// menu's directions never reach: Down from the ring takes the cursor there, Left and Right
+// move along it, A or START opens, B or Up gives the ring back. The game sees none of it
+// meanwhile (settings_window::filter_input).
+int home_focus=-1;
+bool home_pad(uint32_t pressed) {
+    const uint32_t up=0x0800|(1u<<16),down=0x0400|(1u<<17),left=0x0200|(1u<<18),right=0x0100|(1u<<19);
+    std::vector<Rml::Element*> buttons;
+    if(home_doc && home_doc->IsVisible() && intro::title_major()==3)
+        for(const char* id:{"library-open","viewer-open","mod-open"})if(auto* e=home_doc->GetElementById(id))buttons.push_back(e);
+    if(buttons.empty()){home_focus=-1;return false;}
+    if(home_focus<0) {
+        if(!(pressed&down))return false;
+        home_focus=0;
+    } else if(pressed&(up|0x4000)) {
+        home_focus=-1;
+        if(auto* f=context->GetFocusElement())f->Blur();
+        settings_release.hold();
+        return true;
+    } else if(pressed&(0x8000|0x1000)) {
+        const std::string id=buttons[std::min<size_t>(size_t(home_focus),buttons.size()-1)]->GetId();
+        home_focus=-1;
+        choose(id);
+        return true;
+    } else if(pressed&left)home_focus=std::max(0,home_focus-1);
+    else if(pressed&right)home_focus=std::min(int(buttons.size())-1,home_focus+1);
+    buttons[std::min<size_t>(size_t(home_focus),buttons.size()-1)]->Focus();
+    return true;
+}
 void pad_keys(uint32_t now,uint32_t pressed) {
     const bool text=names::request().visible || !funds_editing.empty();
     const std::pair<uint32_t,SDL_Keycode> keys[]={{0x8000,text?SDLK_RETURN:SDLK_z},{0x4000,text?SDLK_ESCAPE:SDLK_x},
@@ -5898,7 +6141,7 @@ std::vector<app_menu::Menu> menu_bar(const auto& language){
     const bool battle=battle_request.value("visible",false) || battle_page::original_screen();
     const bool stage=stage_open || (!battle && !names::request().visible && !link_request.visible);
     std::vector<Item> tools{
-        {"screenshot",language->ui("menu_screenshot"),"F12","F12"},
+        {"screenshot",language->ui("menu_screenshot"),bound_key(bindings,input::Action::Screenshot)},
         {"speed",language->ui("menu_speed"),bound_key(bindings,input::Action::Speed),"",0,settings::game_speed_double()},
         {},
         {"stage-info",language->ui("stage_info_title"),bound_key(bindings,input::Action::Animation),"",0,bool(stage_open),stage},
@@ -5930,6 +6173,13 @@ std::vector<app_menu::Menu> menu_bar(const auto& language){
     return {{language->ui("menu_view"),view},{language->ui("menu_tools"),tools},{language->ui("settings_language"),languages,"globe"},help_menu};
 }
 void sync() {
+    // An update over 20 ms says where its time went (SRW64_UI_SLOW): it holds the UI lock the
+    // render thread's draw waits for.
+    struct Parts {
+        UiClock::time_point start=UiClock::now(),last=start;std::string text;
+        void mark(const char* name){const auto now=UiClock::now();char part[48];std::snprintf(part,sizeof part," %s=%.1f",name,ui_ms(last,now));text+=part;last=now;}
+        ~Parts(){const double total=ui_ms(start,UiClock::now());if(total>20)std::fprintf(stderr,"SRW64_UI_SLOW %.1fms%s\n",total,text.c_str());}
+    } parts;
     physical_held=held();
     // The pages follow the window, measured in points (the screen after the system's scaling):
     // each Interface size gives them a height in dp, Standard 720, Large 620, Largest 540, and
@@ -5961,11 +6211,20 @@ void sync() {
     for(auto& person:request.names){shown(names::Field::Name,person[0]);shown(names::Field::Surname,person[1]);shown(names::Field::Nick,person[2]);}
     name_page->set_hd(presentation::image_mode.current()==1);
     {const auto a=page_area();name_page->set_area(a.x,a.y,a.w,a.h);}
-    // Catalog owns all labels. No duplicate translation table in the frontend.
-    auto labels=language->ui_labels();
-    if(pad_mode)for(auto& [key,text]:labels)if(auto pad=labels.find(key+"_pad");pad!=labels.end())text=pad->second;
-    for(auto& [key,value]:labels)value=text::expand_prompts(value,prompt_context(pad_mode));
+    // Catalog owns all labels. No duplicate translation table in the frontend. The name page's
+    // copy, with the controller wording and the button prompts filled in, is made again only
+    // when one of those changes: copying and expanding all ~850 every frame was most of the
+    // UI thread on a phone (with the name page's own copy, about half a Seeker core at the
+    // title and on the map, 2026-10-23).
+    static std::map<std::string,std::string> labels;
+    static std::tuple<const void*,bool,int,uint64_t> labels_for{};
+    if(const auto key=std::make_tuple(static_cast<const void*>(language.get()),pad_mode,int(pad_family()),hint_generation);key!=labels_for || labels.empty()) {
+        labels_for=key;labels=language->ui_labels();
+        if(pad_mode)for(auto& [key,text]:labels)if(auto pad=labels.find(key+"_pad");pad!=labels.end())text=pad->second;
+        for(auto& [key,value]:labels)value=text::expand_prompts(value,prompt_context(pad_mode));
+    }
     name_page->sync(request,labels,language->locale);
+    parts.mark("name");
     {
         // Controller edges; a button already down when a page opens is not a press.
         static uint32_t pad_before=0;
@@ -5975,7 +6234,7 @@ void sync() {
         // sync always takes them: input.json was loaded after hint_bindings got the defaults.
         static uint64_t bindings_seen=~uint64_t{};
         if(const auto revision=input::live_bindings().revision();revision!=bindings_seen) {
-            bindings_seen=revision;hint_bindings=input::live_bindings().get();
+            bindings_seen=revision;hint_bindings=input::live_bindings().get();++hint_generation;
             for(auto* stamp:all_stamps())stamp->clear();
         }
         // The host's buttons, from the controller or keys bound to them (the keyboard state
@@ -6008,7 +6267,8 @@ void sync() {
         if(!capturing && !settings_open && (host_pressed&input::pad_quick_load))choose("quick-load-ask");
         if(!capturing && !settings_open && (host_pressed&input::pad_title_return))choose("title-return-ask");
         if(capturing && settings_open){}
-        else if(view_pressed)choose(settings_open?"settings-close":"settings-open");
+        else if(view_pressed){home_focus=-1;choose(settings_open?"settings-close":"settings-open");}
+        else if(!settings_open && home_pad(pad_pressed)){}
         else if(info_pressed && (!settings_open || stage_open))choose(stage_open?"settings-close":"stage-info-open");
         else if(settings_open)settings_pad(pad_now,pad_pressed);
         else if(shown(battle_request)){if(pad_pressed)battle_buttons(pad_pressed);}
@@ -6016,11 +6276,18 @@ void sync() {
             pad_keys(pad_now,pad_pressed);
     }
     if((funds_editing=="intermission" && !intermission_page::state().value("visible",false)) || (funds_editing=="upgrade" && !upgrade_page::state().value("visible",false)))funds_editing.clear();
-    if(map_menu::take_chosen() && !settings_open)choose("title-return-ask");
-    image_drain();prefetch_map_art();
-    link_sync();battle_sync();intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();title_sync();mini_sync();home_sync();bezel_sync();
+    if(title_row::take_chosen() && !settings_open)choose("title-return-ask");
+    parts.mark("input");
+    image_drain();parts.mark("drain");prefetch_map_art();
+    parts.mark("art");
+    link_sync();battle_sync();parts.mark("battle");intermission_sync();upgrade_sync();parts_sync();ability_sync();swap_sync();save_sync();parts.mark("pages");
+    title_sync();mini_sync();home_sync();bezel_sync();parts.mark("title");
+#if defined(__APPLE__) || defined(_WIN32)
+    // The menu bar, rebuilt in full every frame; Linux and Android have none, where building it
+    // anyway was a fifth of the UI thread on a phone (2026-10-23).
     app_menu::update({language->ui("settings_open"),language->ui("dialogue_reload"),language->ui("menu_about"),language->ui("menu_check_updates"),
                       language->ui("menu_game"),language->ui("menu_exit"),language->ui("menu_title_return"),quick_load::usable_title() && !settings_open},menu_bar(language),window && (SDL_GetWindowFlags(window)&SDL_WINDOW_FULLSCREEN));
+#endif
     for(auto id=app_menu::take_request();!id.empty();id=app_menu::take_request()){
         if(id=="fullscreen")toggle_fullscreen();
         else if(id.starts_with("scale:"))scale_window(std::stoi(id.substr(6)));
@@ -6062,7 +6329,9 @@ void sync() {
     // Any page in the settings window's frame (the Library, MOD, the settings themselves)
     // holds the title still under it: no attract demo, no opening story.
     battle_viewer::hold_title(settings_open);
-    settings_sync();notices_sync();fps_sync();speed_sync();touch_sync();context->Update();input.update_rectangle();
+    parts.mark("menus");
+    settings_sync();parts.mark("settings");notices_sync();shot_sync();fps_sync();speed_sync();touch_sync();parts.mark("hud");
+    context->Update();parts.mark("layout");input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
     battle_page::window_claim_input(battle_request.value("visible",false) || (battle_page::owns_input() && held()));
@@ -6373,15 +6642,11 @@ bool dispatch(SDL_Event& event) {
             const unsigned at=intermission_request.value(submenu?"swap_cursor":"cursor",0u);
             const std::string prefix=submenu?"swap-":"";
             const bool reverse=k==SDLK_UP || (k==SDLK_TAB && (event.key.keysym.mod&KMOD_SHIFT));
-            // Our title row sits between the original's last two items.
             if(k==SDLK_UP || k==SDLK_DOWN || k==SDLK_TAB){
-                if(!submenu && intermission_title_row){intermission_title_row=false;intermission_page::answer(serial,"move:"+std::to_string(count-(reverse?2:1)));intermission_stamp.clear();return true;}
-                if(!submenu && count>=2 && at==count-(reverse?1:2)){intermission_title_row=true;intermission_stamp.clear();return true;}
                 intermission_page::answer(serial,prefix+"move:"+std::to_string((at+(reverse?count-1:1))%count));return true;
             }
             if(event.key.repeat)return true;
             if(k==SDLK_RETURN || k==SDLK_z || k==SDLK_SPACE){
-                if(!submenu && intermission_title_row){choose("title-return-ask");return true;}
                 intermission_page::answer(serial,(submenu?"swap:":"choose:")+std::to_string(at));return true;
             }
             if((k==SDLK_ESCAPE || k==SDLK_x) && submenu){intermission_page::answer(serial,"swap-close");return true;}
@@ -6443,28 +6708,72 @@ Rml::Element* find(Rml::Element* root,const std::string& text,bool exact) {
 void require(){if(!context)throw debug::RpcError(debug::ServerError,"shared UI is not ready");}
 }
 void window_init(SDL_Window* value,const std::filesystem::path& path){window=value;output=path;system.SetWindow(window);input.defer_sdl(true);app_menu::attach(window);}
+#ifndef SRW64_GL_ONLY
 void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto lock=lock_ui();renderer=std::make_unique<recompui::RmlRenderInterface_RT64>();renderer->init(rhi,device);ready=true;}
+#endif
 // A minimised window keeps the last layout. On Windows SDL 2.26 reads the pixel size from the
 // client area, 0 x 0 while minimised, but keeps the size in points: the ratio was 0, the dp
 // NaN, and a page laid out then (the settings window, the battle page) kept RmlUi in its layout
 // for good on this thread, the window's: Windows called it not responding (a player, 0.4.9;
 // reproduced on a Windows desktop with the settings window open, and gone with this).
-void update(){auto lock=lock_ui();if(!ready)return;
+void update(){const auto asked=UiClock::now();auto lock=lock_ui();if(!ready)return;
+    const auto locked=UiClock::now();
     int pw=0,ph=0,w=0,h=0;SDL_GetWindowSizeInPixels(window,&pw,&ph);SDL_GetWindowSize(window,&w,&h);
     if(pw<=0 || ph<=0 || w<=0 || h<=0 || (SDL_GetWindowFlags(window)&SDL_WINDOW_MINIMIZED)){input.flush_sdl();return;}
     pixels_w=pw;pixels_h=ph;pixel_ratio=float(pw)/w;
-    if(!initialized)initialize();sync();input.flush_sdl();}
+    if(!initialized)initialize();sync();input.flush_sdl();
+    const auto done=UiClock::now();
+    std::lock_guard times(ui_times_mutex);
+    ui_times.update_wait+=ui_ms(asked,locked);ui_times.update_work+=ui_ms(locked,done);
+    ui_times.update_max=std::max(ui_times.update_max,ui_ms(asked,done));++ui_times.updates;}
+std::string perf_line(){
+    std::lock_guard times(ui_times_mutex);
+    char text[200];std::snprintf(text,sizeof text,"ui(update %u wait %.0fms work %.0fms max %.1f; draw %u wait %.0fms work %.0fms max %.1f)",
+        ui_times.updates,ui_times.update_wait,ui_times.update_work,ui_times.update_max,ui_times.draws,ui_times.draw_wait,ui_times.draw_work,ui_times.draw_max);
+    ui_times=UiTimes{};return text;}
+bool capturing_input(){return !capture.queue.empty();}
 uint32_t touch_buttons() {
     // Only the UI thread writes the pulse. A polling reader clearing an expired
     // pulse could erase a new tap between its mask and deadline publications.
     const uint32_t linger=SDL_GetTicks64()<touch_linger_until.load()?touch_linger.load():0u;
     return touch_held.load(std::memory_order_relaxed)|linger;
 }
-bool event(SDL_Event& e){auto lock=lock_ui();bool consumed=dispatch(e);if(e.type==SDL_TEXTEDITING_EXT)SDL_free(e.editExt.text);if(context){context->Update();input.flush_sdl();}return consumed;}
+#ifdef __SWITCH__
+// The Switch's SDL makes no mouse of the touch screen (handheld): the first finger points
+// and clicks on the pages, as SDL's own touch mouse does elsewhere (SDL_TOUCH_MOUSEID).
+bool finger_pointer(const SDL_Event& e) {
+    static SDL_FingerID primary=0;static bool down=false;
+    if(e.type!=SDL_FINGERDOWN && e.type!=SDL_FINGERMOTION && e.type!=SDL_FINGERUP)return false;
+    if(e.type==SDL_FINGERDOWN && !down){primary=e.tfinger.fingerId;down=true;}
+    else if(!down || e.tfinger.fingerId!=primary)return true;
+    int w=0,h=0;SDL_GetWindowSize(window,&w,&h);
+    const int x=int(e.tfinger.x*float(w)),y=int(e.tfinger.y*float(h));
+    SDL_Event m{};
+    m.type=SDL_MOUSEMOTION;m.motion.which=SDL_TOUCH_MOUSEID;m.motion.windowID=SDL_GetWindowID(window);
+    m.motion.x=x;m.motion.y=y;m.motion.xrel=int(e.tfinger.dx*float(w));m.motion.yrel=int(e.tfinger.dy*float(h));
+    m.motion.state=e.type==SDL_FINGERDOWN?0u:SDL_BUTTON_LMASK;
+    dispatch(m);
+    if(e.type!=SDL_FINGERMOTION) {
+        SDL_Event b{};
+        b.type=e.type==SDL_FINGERDOWN?SDL_MOUSEBUTTONDOWN:SDL_MOUSEBUTTONUP;b.button.which=SDL_TOUCH_MOUSEID;b.button.windowID=SDL_GetWindowID(window);
+        b.button.button=SDL_BUTTON_LEFT;b.button.state=e.type==SDL_FINGERDOWN?SDL_PRESSED:SDL_RELEASED;b.button.clicks=1;b.button.x=x;b.button.y=y;
+        dispatch(b);
+        if(e.type==SDL_FINGERUP)down=false;
+    }
+    return true;
+}
+#endif
+bool event(SDL_Event& e){auto lock=lock_ui();
+#ifdef __SWITCH__
+    if(!touch_supported() && finger_pointer(e)){if(context){context->Update();input.flush_sdl();}return true;}
+#endif
+    bool consumed=dispatch(e);if(e.type==SDL_TEXTEDITING_EXT)SDL_free(e.editExt.text);if(context){context->Update();input.flush_sdl();}return consumed;}
+#ifndef SRW64_GL_ONLY
 // Set while this present's first pass is in flight: its second pass is part of the same
 // frame and must not wait for it (lock_ui waits for the previous frame's pages).
 bool first_pass_drawn=false;
 bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,bool name_cover,int layer){
+    if(layer!=0)++ui_draws;
     const bool second=layer==1 && first_pass_drawn;
     auto lock=second?std::unique_lock<std::mutex>(mutex):lock_ui();
     first_pass_drawn=false;if(!context || int(framebuffer->getWidth())!=pixels_w || int(framebuffer->getHeight())!=pixels_h)return false;
@@ -6486,8 +6795,46 @@ bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,b
     first_pass_drawn=layer==0;
     in_flight=true;return true;
 }
+#endif
 void presented(){std::lock_guard lock(mutex);in_flight=false;completed.notify_all();}
+#ifdef SRW64_GL_RENDERER
+void render_init_gl(){auto lock=lock_ui();gl_renderer=std::make_unique<recompui::RmlRenderInterface_GL>();ready=true;}
+bool shown(){
+    auto lock=lock_ui();
+    if(!context)return false;
+    for(int i=0;i<context->GetNumDocuments();++i)
+        if(const auto* document=context->GetDocument(i);document!=fps_doc && document->IsVisible())return true;
+    return false;
+}
+uint64_t readout_changes(){return fps_changes.load();}
+bool draw_gl(int width,int height,bool name_cover){
+    ++ui_draws;
+    const auto asked=UiClock::now();
+    auto lock=lock_ui();
+    const auto locked=UiClock::now();
+    if(!context || !gl_renderer || width!=pixels_w || height!=pixels_h)return false;
+    if(names::request().visible && !name_cover)return false;
+    bool shown=false;
+    for(int i=0;i<context->GetNumDocuments() && !shown;++i)shown=context->GetDocument(i)->IsVisible();
+    if(!shown)return false;
+    layer_pass=-1;layer_now=0;
+    gl_renderer->start(width,height);context->Render();gl_renderer->end();
+    const auto done=UiClock::now();
+    std::lock_guard times(ui_times_mutex);
+    ui_times.draw_wait+=ui_ms(asked,locked);ui_times.draw_work+=ui_ms(locked,done);
+    ui_times.draw_max=std::max(ui_times.draw_max,ui_ms(asked,done));++ui_times.draws;
+    return true;
+}
+void render_shutdown_gl(){
+    auto lock=lock_ui();ready=false;pictures::stop();
+    if(initialized){name_page.reset();sheet.reset();sheet_text.clear();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}
+    if(gl_renderer)gl_renderer->release_gl();
+    gl_renderer.reset();
+}
+#endif
+#ifndef SRW64_GL_ONLY
 void render_shutdown(){auto lock=lock_ui();ready=false;pictures::stop();if(initialized){name_page.reset();sheet.reset();sheet_text.clear();Rml::Shutdown();slant_instancer.reset();initialized=false;context=nullptr;settings_doc=link_doc=notice_doc=battle_doc=intermission_doc=upgrade_doc=parts_doc=ability_doc=swap_doc=title_doc=mini_doc=nullptr;}renderer.reset();}
+#endif
 void shutdown(){app_menu::shutdown();input.flush_sdl();SDL_StopTextInput();window=nullptr;names::window_claim_input(false);link_page::window_claim_input(false);intermission_page::window_claim_input(false);upgrade_page::window_claim_input(false);parts_page::window_claim_input(false);ability_page::window_claim_input(false);swap_page::window_claim_input(false);title_page::window_claim_input(false);battle_page::window_claim_input(false);}
 json tree(){auto lock=lock_ui();require();json docs=json::array();for(int i=0;i<context->GetNumDocuments();++i)if(context->GetDocument(i)->IsVisible())docs.push_back(describe(context->GetDocument(i)));return {{"backend","SDL2/RmlUi"},{"windows",json::array({{{"number",SDL_GetWindowID(window)},{"title",SDL_GetWindowTitle(window)},{"game",true},{"scale",pixel_ratio},{"views",{{"class","RmlContext"},{"children",docs}}}}})}};}
 json click(const json& p){auto lock=lock_ui();require();float x=0,y=0;
@@ -6554,8 +6901,8 @@ namespace srw64::settings_window {
 void open(){ui::settings_open=true;ui::settings_release.hold();}
 void close(){ui::physical_held=ui::held();ui::settings_open=false;}
 bool visible(){return ui::settings_open;}
-bool owns_input(){return ui::settings_open || ui::settings_release.pending();}
-uint16_t filter_input(uint16_t buttons,bool held){return uint16_t(ui::settings_release.filter(buttons,ui::settings_open,held || ui::physical_held.load()));}
+bool owns_input(){return ui::settings_open || ui::home_focus>=0 || ui::settings_release.pending();}
+uint16_t filter_input(uint16_t buttons,bool held){return uint16_t(ui::settings_release.filter(buttons,ui::settings_open || ui::home_focus>=0,held || ui::physical_held.load()));}
 void update(){}
 void shutdown(){close();}
 void control(const std::filesystem::path& directory){

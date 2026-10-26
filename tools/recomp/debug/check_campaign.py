@@ -75,7 +75,8 @@ def play_to_title(timeout=900):
 
 
 def next_stage():
-    s.client.call('ui.click', text='intermission:8')
+    # 次のマップへ is the menu's last row (返回标题画面 comes before it, intermission_row.hpp).
+    s.client.call('ui.click', text=f"intermission:{len(s.client.call('status')['intermission_page']['items']) - 1}")
     time.sleep(2)
 
 

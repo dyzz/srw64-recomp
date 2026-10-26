@@ -77,10 +77,13 @@ RefreshRate refresh_rate();
 void set_refresh_rate(RefreshRate rate);
 const char* refresh_rate_name(RefreshRate rate);
 RefreshRate refresh_rate_from(const std::string& name);
-// 2x speed on the tactical map, in battle and in the story (game_speed.hpp). Off by
-// default; saved as game_speed, 1 or 2. The Speed button (Tab, R4) toggles it too.
-bool game_speed_double();
-void set_game_speed_double(bool on);
+// The speed on the tactical map, in battle and in the story (game_speed.hpp): 1 (off, the
+// default) to 4; 2 at most with SRW64_VI_RATE=60. Saved as game_speed. The Speed button
+// (Tab, R4) steps through them and back to 1.
+unsigned game_speed_level();
+unsigned game_speed_top();   // 4 at 120 Hz (the default), 2 at 60 Hz
+void set_game_speed_level(unsigned level);
+bool game_speed_double();    // any speed above 1
 // The reading controls under the dialogue (dialogue_scene.cpp): hidden 5 s after the
 // dialogue appears and shown again 3 s by a direction key (the default), or always shown.
 // Saved as dialogue_hints, "auto" or "always".

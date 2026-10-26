@@ -14,7 +14,6 @@ import android.provider.DocumentsContract;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.system.ErrnoException;
-import android.system.Os;
 
 import org.libsdl.app.SDLActivity;
 
@@ -115,6 +114,30 @@ public class SRW64Activity extends SDLActivity {
             startExport(reportExport);
             return true;
         } catch (IOException | RuntimeException error) { return false; }
+    }
+
+    // The screenshot key's PNG (graphics.cpp, on its own thread, which may wait): out to
+    // screenshots/ in the player's folder, or to Documents/Marchwind64/screenshots without
+    // one. The private copy goes once it is out. Returns where it went, as the player sees
+    // it, or empty (the private copy stays).
+    public String publishScreenshot(String path) {
+        try {
+            File shot = new File(path).getCanonicalFile();
+            if (!shot.isFile() || !shot.getName().endsWith(".png") ||
+                !shot.getParentFile().equals(new File(SetupActivity.userDir(this), "screenshots").getCanonicalFile()))
+                return "";
+            PlayerFolder folder = PlayerFolder.open(this);
+            String where;
+            if (folder != null) where = folderSync.submit(() -> folder.send("screenshots", shot)).get(20, TimeUnit.SECONDS);
+            else if (Build.VERSION.SDK_INT >= 29)
+                where = PublicExports.write(this, "screenshots", shot.getName(), "image/png", stream -> Files.copy(shot.toPath(), stream));
+            else return "";
+            shot.delete();
+            return where;
+        } catch (Exception error) {
+            Log.w("SRW64", "screenshot: " + error);
+            return "";
+        }
     }
 
     private interface Send { String run() throws IOException; }
@@ -265,24 +288,24 @@ public class SRW64Activity extends SDLActivity {
         running = true;
         try {
             // bundled_resource() reads this (src/native/app/runtime.cpp).
-            Os.setenv("SRW64_RESOURCE_DIR", SetupActivity.resourceDir(this).getPath(), true);
+            HostEnvironment.set("SRW64_RESOURCE_DIR", SetupActivity.resourceDir(this).getPath());
             // HOME is /data, which an app cannot write; RT64 keeps its settings under it.
             File home = new File(getFilesDir(), "home");
             home.mkdirs();
-            Os.setenv("HOME", home.getPath(), true);
-            Os.setenv("TMPDIR", getCacheDir().getPath(), true);
+            HostEnvironment.set("HOME", home.getPath());
+            HostEnvironment.set("TMPDIR", getCacheDir().getPath());
             GraphicsGuard.prepare(this);
             // Development: `am start ... --ez debug true` opens the debug interface
             // (src/host/debug_server.cpp, tools/release/android/attach.py).
             if (getIntent().getBooleanExtra("debug", false)) {
-                Os.setenv("SRW64_DEBUG", "1", true);
+                HostEnvironment.set("SRW64_DEBUG", "1");
                 // With it, `--esa env KEY=VALUE,...` sets development variables (SRW64_* only).
                 String[] variables = getIntent().getStringArrayExtra("env");
                 if (variables != null) {
                     for (String variable : variables) {
                         int equals = variable.indexOf('=');
                         if (equals > 0 && variable.startsWith("SRW64_"))
-                            Os.setenv(variable.substring(0, equals), variable.substring(equals + 1), true);
+                            HostEnvironment.set(variable.substring(0, equals), variable.substring(equals + 1));
                     }
                 }
             }
@@ -337,6 +360,12 @@ public class SRW64Activity extends SDLActivity {
     @Override
     public void setOrientationBis(int w, int h, boolean resizable, String hint) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+    }
+
+    // The variables set above, "KEY=VALUE", for the game to set in its own C library
+    // (src/host/host.cpp, over JNI): under ARM translation it does not share Java's.
+    public String[] hostEnvironment() {
+        return HostEnvironment.pairs();
     }
 
     // The settings' "open this folder" (src/native/ui/frontend.cpp, over JNI): the system

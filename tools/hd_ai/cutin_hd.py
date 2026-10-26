@@ -58,6 +58,23 @@ VIEWER_SCENES = (('plains', 0, 0), ('wasteland', 0, 7), ('rocks', 0, 21), ('vill
                  ('space', 17, 100), ('fortress', 20, 15), ('other', 20, 83), ('otherworld', 22, 61))
 SCENE_GROUPS = 0x800C5940 - 0x80075610
 CATALOG = ROOT / 'assets/hd-ai/battle-backgrounds/catalog'
+# Palette slots a battle fills at run time and the ROM holds as white (0xFFFF) between
+# magenta (0xF83F) fences: palette -> {first slot: RGBA16 colours}. Read from the loaded
+# palette in the battle viewer once the weapon's fade from white has settled (issue #15):
+# ゴーショーグン's ゴーサーベル (scene 2616, slots 65-77) and スペースバズーカ (2618, 81-91).
+RUNTIME_PALETTES = {
+    2079: {65: (0xDEF7, 0xCE73, 0xC631, 0xB5AD, 0xA529, 0x94A5, 0x8421, 0x739D, 0x6319, 0x5295, 0x4A53, 0x39CF, 0x1085),
+           81: (0xCE73, 0xBDEF, 0xA529, 0x94A5, 0x8421, 0x739D, 0x6319, 0x5295, 0x4A53, 0x39CF, 0x1085)},
+}
+
+
+def runtime_palette(number: int, data: bytes) -> bytes:
+    """The palette resource with the colours a battle writes over its placeholder slots."""
+    data = bytearray(data)
+    for first, colours in RUNTIME_PALETTES.get(number, {}).items():
+        for n, colour in enumerate(colours):
+            data[8 + 2 * (first + n):10 + 2 * (first + n)] = colour.to_bytes(2, 'big')
+    return bytes(data)
 
 
 def digest(image: Image.Image) -> str:
@@ -87,7 +104,7 @@ def export() -> None:
             continue
         seen.add((s, a, p))
         scene = parse_scene(table.extract(s)[0])
-        atlas, _ = decode_atlas(table.extract(a)[0], table.extract(p)[0])
+        atlas, _ = decode_atlas(table.extract(a)[0], runtime_palette(p, table.extract(p)[0]))
         images, _ = render_scene(scene, atlas)
         x0, y0 = scene.bounds()[:2]
         for frame in sorted({f for f, _ in scene.steps if f != 0xFF}):

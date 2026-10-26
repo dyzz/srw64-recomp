@@ -1,4 +1,5 @@
 #include "library.hpp"
+#include "dialogue_data.hpp"
 #include "native_dialogue.hpp"
 #include "upgrade_page.hpp"
 #include "combo_attacks.hpp"
@@ -104,16 +105,7 @@ std::string terrain(uint32_t at) {
 bool placeholder(const std::string& name) {
     return name.empty() || std::all_of(name.begin(),name.end(),[](char c){return c=='?' || c==' ' || (c>='0' && c<='9');});
 }
-const json& battle_assets() {
-    static const json art=[] {
-        const char* path=std::getenv("SRW64_DIALOGUE_DATA");
-        if(!path)return json::object();
-        std::ifstream source(path);
-        auto data=json::parse(source,nullptr,false);
-        return !data.is_discarded() && data.contains("battle_assets")?data.at("battle_assets"):json::object();
-    }();
-    return art;
-}
+const json& battle_assets() { return dialogue_data::battle_assets(); }
 void add_art(json& entry,const char* group,unsigned key) {
     const auto& art=battle_assets();
     if(art.contains(group) && art.at(group).contains(std::to_string(key)))entry["art"]=art.at(group).at(std::to_string(key));
@@ -310,7 +302,10 @@ json build() {
         for(const unsigned n:numbers)key+=std::to_string(n)+",";
         if(kept.emplace(key,true).second)units.push_back(unit(id,numbers));
     }
-    kept.clear();
+    // A pilot record that repeats one already listed is left out, but its actor (and its own
+    // portrait, which mostly differs) goes in that entry's "twins": the battle viewer plays it
+    // with its own quotes (by its ability record) and shows its own face.
+    std::map<std::string,size_t> kept_pilots;
     for(unsigned actor=0;actor<actor_count;++actor) {
         const int stats=actor<mapped_actors?s16(stats_map+actor*2):-1,spirits=actor<mapped_actors?s16(spirits_map+actor*2):-1;
         auto p=pilot(actor,stats,spirits);
@@ -318,7 +313,12 @@ json build() {
         std::string key=p.at("name").get<std::string>()+'\0'+p.at("full_name").get<std::string>();
         if(stats>=0)key+=bytes(pilot_stats_at+uint32_t(stats)*pilot_stats_size,pilot_stats_size)+bytes(thresholds_at+uint32_t(stats)*thresholds_size,thresholds_size);
         if(spirits>=0)key+=bytes(spirits_at+uint32_t(spirits)*spirits_size,spirits_size);
-        if(kept.emplace(key,true).second)pilots.push_back(std::move(p));
+        if(const auto [found,added]=kept_pilots.emplace(key,pilots.size());added)pilots.push_back(std::move(p));
+        else {
+            json twin={{"actor",actor}};
+            if(p.contains("art"))twin["art"]=p.at("art");
+            pilots[found->second]["twins"].push_back(std::move(twin));
+        }
     }
     // 恋爱補正 partners (801F4C64 compares both partner fields). A holder or partner may be a
     // duplicate record standing for its main one (the alias table). Mutual when the partner

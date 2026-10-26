@@ -78,6 +78,9 @@ struct PlacedText {
     float x = 0, y = 0;
 };
 bool place_texts(uint8_t* rdram, uint32_t marker, const float bounds[4], const std::vector<PlacedText>& items);
+// Has the text made ahead of its first draw (the battle's digits), which otherwise shows
+// nothing until it is.
+void warm(const TextJob& job);
 // Text jobs placed and drawn, for the caller's summary.
 struct TextCounts { uint64_t placed = 0, waiting = 0; };
 TextCounts text_counts();

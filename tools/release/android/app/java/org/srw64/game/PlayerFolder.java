@@ -35,11 +35,12 @@ import java.util.Set;
 //   import/   emulator saves to take in        export/   the four emulator files
 //   reports/  problem reports                   filters/, bezels/   the player's own
 //   logs/     the last runs' logs, for a game that cannot reach its settings to export a report
+//   screenshots/  the screenshot key's pictures
 //
 // The host keeps reading and writing the private user directory (it needs real paths);
 // this mirrors the two. Saves go out, and come back only into an empty library (after a
-// reinstall or cleared data); import/, filters/ and bezels/ come in; export/, reports/ and
-// logs/ go out. One lock serialises every transfer.
+// reinstall or cleared data); import/, filters/ and bezels/ come in; export/, reports/,
+// screenshots/ and logs/ go out. One lock serialises every transfer.
 final class PlayerFolder {
     static final String SUGGESTED = Environment.DIRECTORY_DOCUMENTS + "/Marchwind64";
     private static final String STORAGE = "com.android.externalstorage.documents";
@@ -278,7 +279,7 @@ final class PlayerFolder {
         }
     }
 
-    // A file out to export/ or reports/; returns where it went, as the player sees it.
+    // A file out to export/, reports/ or screenshots/; returns where it went, as the player sees it.
     String send(String kind, File... files) throws IOException {
         synchronized (LOCK) {
             String folder = directory(root, kind, true);

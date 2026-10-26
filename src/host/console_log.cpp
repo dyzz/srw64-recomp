@@ -24,6 +24,24 @@
 #include <android/log.h>
 #endif
 
+#ifdef __SWITCH__
+// The Switch (docs/design/switch-port.md): no pipes to pump. stdout and stderr go to one
+// device (switch/switch_platform.cpp) that keeps their tail in memory, writes the run's
+// console.log once it is known and sends to nxlink when there is one.
+void srw64_switch_log_to(const char* path);
+namespace srw64::console_log {
+void start() {
+    std::setvbuf(stdout, nullptr, _IOLBF, 0);
+    std::setvbuf(stderr, nullptr, _IONBF, 0);
+}
+void attach(const std::filesystem::path& run) {
+    srw64_switch_log_to((run / "console.log").string().c_str());
+}
+void flush_now() { std::fflush(stdout); std::fflush(stderr); }
+int crash_fd() { return -1; }
+int original_stderr() { return 2; }
+}  // namespace srw64::console_log
+#else
 namespace srw64::console_log {
 namespace {
 #ifdef _WIN32
@@ -224,3 +242,4 @@ void attach(const std::filesystem::path& run) {
 
 int crash_fd() { return file.load(); }
 }
+#endif  // __SWITCH__

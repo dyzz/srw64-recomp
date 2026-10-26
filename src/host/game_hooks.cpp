@@ -23,12 +23,16 @@
 #include "script_skip.hpp"
 #include "wide_map.hpp"
 #include "menu_widen.hpp"
+#include "unit_icon_facing.hpp"
 #include "map_miss.hpp"
 #include "ui_text.hpp"
 #include "game_speed.hpp"
+#include "sched_rate.hpp"
 #include "enemy_pilot_page.hpp"
 #include "map_combo.hpp"
 #include "map_menu.hpp"
+#include "intermission_row.hpp"
+#include "pilot_kills.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 bool srw64_sound_effects_muted{};
@@ -114,9 +118,14 @@ void srw64_render_node(uint8_t* rdram,recomp_context* ctx,int32_t function,int32
     const int32_t slot=sprite?int32_t(ctx->r5):-1,sub=sprite?int32_t(ctx->r6):-1;
     const uint32_t begin=MEM_W(0,cursor);
     LOOKUP_FUNC(function)(rdram,ctx);
+    srw64::unit_icon_facing::after_draw(rdram,uint32_t(function),slot,sub,begin,MEM_W(0,cursor));   // icons face their side
     srw64::menu_widen::callback_drawn(rdram,uint32_t(function),begin,MEM_W(0,cursor));   // the widened menus' fills
     if(wide)srw64_game_hooks.map_space_end(rdram,cursor);
     else srw64::battle_hud::after_draw(rdram,cursor,uint32_t(function),slot,sub,begin);
+}
+
+void resident_func_80080A14(uint8_t* ram,recomp_context* ctx) {
+    srw64::sched_rate::retrace(ram,uint32_t(ctx->r4),[&]{srw64_original_retrace(ram,ctx);});
 }
 
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
@@ -204,8 +213,33 @@ void load_000AB160_func_801E7430(uint8_t* ram,recomp_context* ctx) {
     srw64::map_combo::reset();
     srw64_original_status_pages(ram,ctx);
 }
+// The 返回标题画面 row (title_row.hpp) at (x, y), made as a menu's own rows are: a handle,
+// 8008D0E8 with a record of the menu's (`borrow`), the place and flag 0; then given its
+// record number and glyphs.
+static void make_title_row(uint8_t* ram,recomp_context* ctx,uint16_t borrow,int x,int y) {
+    namespace t=srw64::title_row;
+    uint32_t handle=0;srw64::pilot_kills::call(ram,ctx,resident_func_80083F70,0,0,0,0,0,&handle);
+    if(int8_t(handle)<0)return;
+    srw64::pilot_kills::call(ram,ctx,resident_func_8008D0E8,uint32_t(int32_t(int8_t(handle))),borrow,uint32_t(x),uint32_t(y),0);
+    const uint32_t slot=t::labels+uint32_t(int8_t(handle))*t::label_size;
+    srw64::guest::write16(ram,slot,t::record);
+    uint32_t p=slot+0xC;
+    for(const uint16_t g:t::glyphs){srw64::guest::write16(ram,p,g);p+=2;}
+    srw64::guest::write16(ram,p,0xFFFF);
+}
+void resident_func_8009D684(uint8_t* ram,recomp_context* ctx) {
+    // A window table entry's labels (a0 the entry, a1/a2 the window's place): the map's
+    // blank-tile menu (entry 0) gets the row of ours before 中断 (map_menu.hpp).
+    const int16_t entry=int16_t(ctx->r4);const int x=int16_t(ctx->r5),y=int16_t(ctx->r6);
+    srw64_original_window_labels(ram,ctx);
+    if(entry!=0)return;
+    namespace m=srw64::map_menu;
+    const int lx=x+m::label_x,ly=y+m::label_y+int(m::row_pitch*m::our_row);
+    srw64::title_row::move_labels(ram,m::record_suspend,lx,ly,int(m::row_pitch));
+    make_title_row(ram,ctx,m::record_suspend,lx,ly);
+}
 void load_000AB160_func_801D13C0(uint8_t* ram,recomp_context* ctx) {
-    // The map's blank-tile menu opens: a row of ours after the original's (map_menu.hpp).
+    // The map's blank-tile menu opens: one row more for the cursor (map_menu.hpp).
     srw64_original_map_menu_open(ram,ctx);
     srw64::map_menu::opened(ram);
 }
@@ -465,6 +499,48 @@ void resident_func_8009C2DC(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_demo_battle_fill(rdram, ctx);
     if (srw64_game_hooks.demo_battle_filled) srw64_game_hooks.demo_battle_filled(rdram);
 }
+// The battle viewer's demo battle (battle_viewer.hpp): the quote pick's rewritten checks.
+int srw64_quote_demo(uint8_t* rdram) {
+    return srw64_game_hooks.quote_demo && srw64_game_hooks.quote_demo(rdram);
+}
+void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, uint32_t(ctx->r4));
+    srw64_original_battle_quote_pick(rdram, ctx);
+    if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, 0);
+}
+// 80221ACC(table, code, base): code when a combination attack's pair says it, else -1
+// (docs/data/battle-quotes.md). The original gathers the pair from the map's participant
+// slot (8018B6E8 + D_8025020A x 0x5C, +0x48: unit instances, +0x38 the pilot, +2 the
+// character, 0 ends); in the viewer's demo battle the characters come from its choice and
+// the rest goes as the original: each one's index (80221A3C; one without ends the list),
+// 7 and 9 left out for bases 8300, 8400 and 8500, the table's entry
+// [first x stride + second] (stride 10, 8 for 8700, whose sub pilot is not staged) added to
+// base, and 0x10 none.
+void load_00121560_func_80221ACC(uint8_t* rdram, recomp_context* ctx) {
+    unsigned actors[5];
+    const int count = srw64_game_hooks.quote_participants ? srw64_game_hooks.quote_participants(rdram, actors, 5) : -1;
+    if (count < 0) { srw64_original_combo_quote_pair(rdram, ctx); return; }
+    const uint32_t table = uint32_t(ctx->r4);
+    const int16_t code = int16_t(ctx->r5), base = int16_t(ctx->r6);
+    const bool keep_7_9 = base != 0x206C && base != 0x20D0 && base != 0x2134;
+    const int stride = base == 0x21FC ? 8 : 10;
+    int list[6], listed = 0;
+    for (int n = 0; n < count && listed < 6; ++n) {
+        recomp_context c = *ctx;
+        c.r4 = int32_t(actors[n]);
+        load_00121560_func_80221A3C(rdram, &c);
+        const int index = int16_t(c.r2);
+        if (index == -1) break;
+        if ((index == 7 || index == 9) && !keep_7_9) continue;
+        list[listed++] = index;
+    }
+    int32_t result = -1;
+    if (listed >= 2 && listed < 6) {
+        const int16_t offset = int16_t(srw64::guest::read(rdram, table + 2 * uint32_t(int16_t(list[0] * stride + list[1])), 2));
+        if (offset != 0x10 && code == base + offset) result = code;
+    }
+    ctx->r2 = result;
+}
 void resident_func_8008F5C8(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_dialogue_reset(rdram, ctx);
     if (srw64_game_hooks.reset) srw64_game_hooks.reset(rdram);
@@ -673,12 +749,12 @@ void load_000AB160_func_801F5B78(uint8_t* rdram, recomp_context* ctx) {
 void load_000AB160_func_801F60D4(uint8_t* rdram, recomp_context* ctx) {
     // One crew member's EXP from a battle (cheats.hpp reward modes).
     srw64_original_battle_exp(rdram, ctx);
-    ctx->r2 = int32_t(cheats::multiplied(cheats::active(), uint32_t(ctx->r2)));
+    ctx->r2 = int32_t(cheats::multiplied(cheats::exp_halves(cheats::active()), uint32_t(ctx->r2)));
 }
 void load_000AB160_func_801F6588(uint8_t* rdram, recomp_context* ctx) {
     // A kill's money.
     srw64_original_battle_funds(rdram, ctx);
-    ctx->r2 = int32_t(cheats::multiplied(cheats::active(), uint32_t(ctx->r2)));
+    ctx->r2 = int32_t(cheats::multiplied(cheats::money_halves(cheats::active()), uint32_t(ctx->r2)));
 }
 void load_000AB160_func_80203418(uint8_t* rdram, recomp_context* ctx) {
     // Damage estimate for AI target and weapon choice: a1 weapon, a2 attacker pilot.
@@ -1075,13 +1151,21 @@ void load_0008F4B0_func_801CDFB0(uint8_t* rdram, recomp_context* ctx) {
     // インターミッション menu build: panels, numbers, cursor. The native page shows them.
     if (native_built(srw64_game_hooks.intermission_build && srw64_game_hooks.intermission_build(rdram, ctx))) return;
     srw64_original_intermission_menu_build(rdram, ctx);
+    // The row of ours before 次のマップへ (intermission_row.hpp).
+    namespace im = srw64::intermission_row;
+    make_title_row(rdram, ctx, im::text_next, im::label_x, im::make_room(rdram));
 }
 void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
     quiet_latch(rdram);
     if (srw64_game_hooks.cheats_intermission) srw64_game_hooks.cheats_intermission(rdram, ctx);
     if (srw64_game_hooks.legacy_intermission) srw64_game_hooks.legacy_intermission(rdram, ctx);
+    // A on the row of ours asks for the title instead (intermission_row.hpp).
+    const uint16_t buttons = uint16_t(srw64::guest::read(rdram, srw64::intermission_row::pressed, 2));
+    const bool title = srw64::intermission_row::take_a(rdram);
+    if (title) srw64::pilot_kills::call(rdram, ctx, resident_func_8007E8A8, 0xB7);   // the menu's confirm sound
     if (!srw64_game_hooks.intermission_step || !srw64_game_hooks.intermission_step(rdram, ctx))
         srw64_original_intermission_menu_step(rdram, ctx);
+    if (title) srw64::guest::write16(rdram, srw64::intermission_row::pressed, buttons);
     if (srw64_game_hooks.intermission_after_step) srw64_game_hooks.intermission_after_step(rdram, ctx);
 }
 // Entering the intermission: 0 after a map or a story scene, 1-2 loading slot 1-2.

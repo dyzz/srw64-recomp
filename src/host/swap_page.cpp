@@ -1,4 +1,6 @@
 #include "swap_page.hpp"
+#include "dialogue_data.hpp"
+#include "run_files.hpp"
 #include "presentation_settings.hpp"
 #include "intermission_menu.hpp"
 #include "intermission_page.hpp"
@@ -432,11 +434,9 @@ void frame(uint8_t* ram) {
 
 void configure(const std::filesystem::path& directory) {
     if(const char* v=std::getenv("SRW64_NATIVE_SWAP");v && std::string_view(v)=="0")return;
-    if(!std::getenv("SRW64_DIALOGUE_DATA"))return; // Legacy unprofiled runs keep the original screens.
-    std::ifstream source(std::getenv("SRW64_DIALOGUE_DATA"));
-    const auto data=json::parse(source,nullptr,false);
-    if(!data.is_discarded() && data.contains("battle_assets"))art=data.at("battle_assets");
-    log.open(directory/"swap-page-events.jsonl");
+    if(!dialogue_data::document())return; // Legacy unprofiled runs keep the original screens.
+    if(!dialogue_data::battle_assets().empty())art=dialogue_data::battle_assets();
+    srw64::open_run_log(log,directory/"swap-page-events.jsonl");
     auto& h=srw64_game_hooks;
     h.swap_build=build;h.swap_step=step;h.swap_frame=frame;
 }

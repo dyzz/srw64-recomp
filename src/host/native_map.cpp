@@ -1,11 +1,16 @@
 #define HLSL_CPU
 #include "native_map.hpp"
+#include "app/runtime.hpp"
 #include "native_map_geometry.hpp"
 #include "native_marker.hpp"
+#include "native_quads.hpp"
 #include "presentation/image_mode.hpp"
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_state.h"
 #include "rhi/rt64_render_hooks.h"
+#endif
 #include "native_gpu.hpp"
+#include "hd_texture.hpp"
 #include "menu_widen.hpp"
 #include "rom_art.hpp"
 #include "json/json.hpp"
@@ -27,6 +32,10 @@
 #include <vector>
 
 uint64_t srw64_current_vi();
+#ifdef __SWITCH__
+extern "C" void srw64_switch_background_thread();   // host/switch/switch_platform.cpp
+std::string srw64_switch_hd_art();
+#endif
 
 namespace srw64::hdmap {
 namespace {
@@ -62,6 +71,10 @@ struct Asset {
     std::unique_ptr<gpu::Texture> base_texture, index_texture;
     std::unique_ptr<plume::RenderDescriptorSet> textures;
     std::vector<std::array<int, 2>> colonies;
+    // The GL renderer's (gl_quads): the base as it uploads it (BC7 from the Switch's romfs,
+    // hd_texture.hpp, or RGBA8) and the palette indices.
+    std::shared_ptr<const std::vector<uint8_t>> gl_base, gl_index;
+    uint32_t gl_format = 0, gl_levels = 1;
 };
 
 struct Draw {
@@ -83,9 +96,11 @@ int last_colony_frame = -1, last_colony_layout = -1, last_colony_mode = -1;
 std::array<Draw, kRing> ring;
 std::mutex ring_mutex;
 uint32_t next_id = 1;
+#ifndef SRW64_GL_ONLY
 RT64::NativeMeshClassify *previous_classify{};
 RT64::NativeMeshRender *previous_render{};
-std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdMap{VS,PS}.hlsl
+std::unique_ptr<gpu::Program> program;
+#endif      // src/host/shaders/HdMap{VS,PS}.hlsl
 std::mutex asset_mutex;                      // Asset::state and the decode queue
 std::condition_variable decode_wake, decoded_wake;
 std::atomic<uint64_t> draw_clock{};          // counts HD map draws, for evicting maps not drawn lately
@@ -122,10 +137,10 @@ uint32_t rgba5551(uint16_t v) {
     return c((v >> 11) & 31) | c((v >> 6) & 31) << 8 | c((v >> 1) & 31) << 16 | (v & 1 ? 0xFFu : 0u) << 24;
 }
 
-Asset load_meta(const std::filesystem::path& folder) {
-    std::ifstream stream(folder / "meta.json");
-    if (!stream) throw std::runtime_error("HD map without meta.json: " + folder.string());
-    const json meta = json::parse(stream);
+// A map's runtime description: its folder's meta.json, or that text as the combined index
+// gives it (`given`).
+Asset load_meta(const std::filesystem::path& folder, const json* given = nullptr) {
+    const json meta = given ? *given : json::parse(app::read_text(folder / "meta.json", 16u << 20));
     if (meta.at("schema") != "srw64.hd-map-runtime.v0") throw std::runtime_error("Unknown HD map schema in " + folder.string());
     Asset asset;
     asset.layout = meta.at("layout").get<uint16_t>();
@@ -199,6 +214,16 @@ void decode(Asset& asset) {
     if (asset.from_rom) { generate(asset); return; }
     const auto& folder = asset.folder;
     const int w = asset.width * asset.scale, h = asset.height * asset.scale;
+#ifdef SRW64_GL_ONLY
+    // The prepared copies (the Switch): the base BC7-compressed with its mips, the indices raw.
+    hd_texture::Compressed base, index;
+    if (hd_texture::load(folder / asset.base_file, base) && hd_texture::load(folder / "index.png", index) &&
+        base.width == uint32_t(w) && base.height == uint32_t(h) && index.format == 0x8229 && index.width == uint32_t(w) && index.height == uint32_t(h)) {
+        asset.gl_base = base.data; asset.gl_format = base.format; asset.gl_levels = base.levels;
+        asset.gl_index = index.data;
+        return;
+    }
+#endif
     auto read = [&](const char* name, int channels, std::vector<uint8_t>& out) {
         int x = 0, y = 0, n = 0;
         uint8_t* pixels = stbi_load((folder / name).string().c_str(), &x, &y, &n, channels);
@@ -223,6 +248,18 @@ void decode(Asset& asset) {
 }
 
 void make_textures(Asset& asset) {
+#ifdef SRW64_GL_ONLY
+    // Nothing for the GPU here: native_gl uploads what gl_quads hands it.
+    if (!asset.gl_base) {
+        if (asset.base_levels.empty()) asset.base_levels.push_back(std::move(asset.base));   // ROM frames
+        asset.gl_base = std::make_shared<const std::vector<uint8_t>>(std::move(asset.base_levels.front()));
+        asset.gl_format = 0; asset.gl_levels = 1;
+        asset.gl_index = std::make_shared<const std::vector<uint8_t>>(std::move(asset.index));
+    }
+    asset.base_levels.clear(); asset.base.clear(); asset.index.clear();
+    asset.state = Asset::State::ready;
+    return;
+#endif
     const auto level = [](std::vector<uint8_t>& pixels) {
         std::vector<std::vector<uint8_t>> levels;
         levels.push_back(std::move(pixels));
@@ -237,6 +274,9 @@ void make_textures(Asset& asset) {
 }
 
 void decode_loop() {
+#ifdef __SWITCH__
+    srw64_switch_background_thread();   // core 2, only while the Gfx thread waits
+#endif
     for (;;) {
         size_t index;
         {
@@ -255,7 +295,9 @@ void decode_loop() {
         }
         std::lock_guard lock(asset_mutex);
         // An asset that does not decode stays original: waiting again would retry forever.
-        assets[index].state = assets[index].index.empty() ? Asset::State::queued : Asset::State::decoded;
+        // (The prepared copies leave their indices in gl_index.)
+        const bool made = !assets[index].index.empty() || assets[index].gl_index;
+        assets[index].state = made ? Asset::State::decoded : Asset::State::queued;
         decoded_wake.notify_all();
     }
 }
@@ -271,6 +313,7 @@ bool hd_enabled() {
 
 std::atomic<bool (*)(uint16_t)> original_frames{};
 
+#ifndef SRW64_GL_ONLY  // RT64's hooks
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -340,6 +383,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     if (!render_quad(list, framebuffer, call, asset, draw)) return true;
     ++rendered;
     if (asset.lazy && rendered % 64 == 0) evict_stale(size_t(draw.asset));
+
     for (const auto& xy : asset.colonies) {
         Draw overlay = draw;
         if (!project_overlay(draw.rect, draw.uv, asset.width, asset.height,
@@ -351,18 +395,81 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     }
     return true;
 }
+#endif
 }
+
+namespace {
+// The GL renderer's view of a tag (native_quads.hpp): the base and its indices, and the live
+// palette's shift from the reference per index, which native_gl applies per pixel (HdMapPS).
+// Maps not drawn for evict_after draws give their pictures back, as evict_stale does.
+uint64_t gl_draws = 0;
+void gl_evict(size_t keep) {
+    const uint64_t now = draw_clock.load();
+    for (size_t i = 0; i < assets.size(); ++i) {
+        Asset& old = assets[i];
+        if (i == keep || !old.lazy || old.state != Asset::State::ready) continue;
+        if (now - load_atomic(old.last_draw) < evict_after) continue;
+        old.gl_base.reset(); old.gl_index.reset();
+        old.state = Asset::State::waiting;
+        old.waited = false;
+        ++evicted;
+    }
+}
+bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
+    if ((id & 0xFFFF0000u) != kIdBase) return false;
+    Draw draw;
+    {
+        std::lock_guard lock(ring_mutex);
+        draw = ring[id % kRing];
+    }
+    if (draw.id != (id & 0xFFFF) || draw.asset < 0) return true;
+    std::lock_guard lock(asset_mutex);
+    Asset& asset = assets[size_t(draw.asset)];
+    if (asset.state != Asset::State::ready || !asset.gl_base || !asset.gl_index) return true;
+    auto shift = std::make_shared<std::vector<uint8_t>>(1024);
+    for (size_t i = 0; i < 256; ++i) {
+        const uint32_t live = draw.live[i], reference = asset.reference[i];
+        for (int k = 0; k < 3; ++k) {
+            const int d = int((live >> (8 * k)) & 0xFF) - int((reference >> (8 * k)) & 0xFF);
+            (*shift)[i * 4 + k] = uint8_t(std::clamp(128 + (d >= 0 ? (d + 1) / 2 : -((1 - d) / 2)), 0, 255));
+        }
+        (*shift)[i * 4 + 3] = 255;
+    }
+    native_quads::Quad q;
+    q.pixels = asset.gl_base;
+    q.format = asset.gl_format; q.levels = asset.gl_levels;
+    q.index = asset.gl_index;
+    q.shift = std::move(shift);
+    q.width = uint32_t(asset.width * asset.scale);
+    q.height = uint32_t(asset.height * asset.scale);
+    std::copy(draw.rect, draw.rect + 4, q.rect);
+    std::copy(draw.uv, draw.uv + 4, q.uv);
+    q.left = draw.view_left;   // the widened view's x = 0, as render() sets HdMapPS's frame edge
+    q.label = "map";
+    out.push_back(std::move(q));
+    if (asset.lazy && ++gl_draws % 64 == 0) gl_evict(size_t(draw.asset));
+    return true;
+}
+}  // namespace
 
 // Where the maps are: SRW64_HD_MAPS (development), else the HD art pack's tactical map
 // index (compile_art writes srw64-tactical-maps.json; its root is relative to the pack).
 std::filesystem::path maps_root() {
     if (const char* root = std::getenv("SRW64_HD_MAPS"); root && *root) return root;
+#ifdef __SWITCH__
+    // The HD pack prepared for the GPU (tools/release/switch/prepare-hd): the NRO's or beside it.
+    std::string art_string = srw64_switch_hd_art();
+    std::error_code missing;
+    if (art_string.empty() || !std::filesystem::exists(art_string + "/srw64-tactical-maps.json", missing)) art_string.clear();
+    const char* art = art_string.empty() ? nullptr : art_string.c_str();
+#else
     const char* art = std::getenv("SRW64_ART_PACK");
+#endif
     if (!art || !*art) return {};
     const auto index = std::filesystem::path(art) / "srw64-tactical-maps.json";
-    std::ifstream stream(index);
-    if (!stream) return {};
-    const json runtime = json::parse(stream);
+    std::error_code absent;
+    if (!std::filesystem::is_regular_file(index, absent)) return {};
+    const json runtime = json::parse(app::read_text(index, 16u << 20));
     if (runtime.value("schema", "") != "srw64.tactical-maps-runtime.v1") throw std::runtime_error("Unknown tactical map index in " + index.string());
     std::filesystem::path root = runtime.at("root").get<std::string>();
     if (root.is_relative()) root = std::filesystem::path(art) / root;
@@ -377,23 +484,43 @@ void configure(const std::filesystem::path& directory) {
     if (const auto found = maps_root(); !found.empty()) {
         const std::string root_string = found.string();
         const char* root = root_string.c_str();
-        for (const auto& entry : std::filesystem::directory_iterator(root))
-            if (entry.is_directory() && std::filesystem::exists(entry.path() / "meta.json")) {
-                assets.push_back(load_meta(entry.path()));
-                assets.back().lazy = true;
-            }
+        // Every meta.json at once when the pack has the combined index (the Switch's,
+        // tools/release/switch/prepare-hd): one read instead of a lookup per folder.
+        json index;
+        std::error_code absent;
+        if (std::filesystem::is_regular_file(found / "metas.json", absent)) {
+            index = json::parse(app::read_text(found / "metas.json", 64u << 20));
+            if (index.value("schema", "") != "srw64.hd-map-metas.v1") index = json();
+        }
+        if (index.is_object()) {
+            for (const auto& [folder, meta] : index.at("maps").items())
+                if (folder.find('/') == std::string::npos) {
+                    assets.push_back(load_meta(found / folder, &meta));
+                    assets.back().lazy = true;
+                }
+        } else {
+            for (const auto& entry : std::filesystem::directory_iterator(root))
+                if (entry.is_directory() && std::filesystem::exists(entry.path() / "meta.json")) {
+                    assets.push_back(load_meta(entry.path()));
+                    assets.back().lazy = true;
+                }
+        }
         colonies_loaded = std::any_of(assets.begin(), assets.end(), [](const Asset& a) { return !a.colonies.empty(); });
         if (colonies_loaded) {
             for (size_t i = 0; i < colony_frames.size(); ++i) {
-                colony_frames[i] = load_meta(std::filesystem::path(root) / "colony" / ("frame-0" + std::to_string(i)));
+                const std::string name = "colony/frame-0" + std::to_string(i);
+                colony_frames[i] = index.is_object() && index.at("maps").contains(name)
+                    ? load_meta(found / name, &index.at("maps").at(name)) : load_meta(found / name);
                 auto& frame = colony_frames[i];
                 if (frame.width != 64 || frame.height != 48 || !frame.alpha || !frame.colonies.empty())
                     throw std::runtime_error("Invalid colony frame metadata");
                 for (const auto& map : assets)
                     if (!map.colonies.empty() && frame.reference != map.reference)
                         throw std::runtime_error("Colony and map reference palettes differ");
+#ifndef SRW64_GL_ONLY   // the GL renderer draws no colony overlay yet: nothing to decode at start
                 decode(frame);
                 frame.state = Asset::State::decoded;
+#endif
             }
             colony_events.open(output / "hd-colony-events.jsonl");
         }
@@ -404,12 +531,16 @@ void configure(const std::filesystem::path& directory) {
     assets.reserve(assets.size() + 512);     // frames join later: no reallocation under the renderer
     // The widened menus' frames come from the ROM with or without the pack, so this runs always.
     decoder = std::thread(decode_loop);
+#ifndef SRW64_GL_ONLY
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
+#endif
+    native_quads::add(gl_quads);
     fprintf(stderr, "SRW64_HD_MAPS loaded %zu map(s)%s\n", assets.size(), rom_frames ? ", window frames from the ROM" : "");
 }
 
+#ifndef SRW64_GL_ONLY
 void gpu_init() {
     // The textures upload on first draw, on RT64's workload command list.
     {
@@ -421,6 +552,7 @@ void gpu_init() {
     // One linear clamp sampler after the base and index textures.
     program = std::make_unique<gpu::Program>("HdMap", 2, std::vector<gpu::Sampler>{{true, true}});
 }
+#endif
 
 void set_original_frames(bool (*keep)(uint16_t)) { original_frames = keep; }
 
@@ -642,6 +774,8 @@ void shutdown() {
         frame.textures.reset(); frame.base_texture.reset(); frame.index_texture.reset();
     }
     colony_events.close();
+#ifndef SRW64_GL_ONLY
     program.reset();
+#endif
 }
 }

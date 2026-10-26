@@ -31,4 +31,6 @@ inline constexpr uint32_t pad_speed = 1u << 26;
 inline constexpr uint32_t pad_quick_load = 1u << 28;
 // Back to the title screen, asked first (quick_load.hpp; F10): the original's Z + START.
 inline constexpr uint32_t pad_title_return = 1u << 29;
+// A screenshot to screenshots/ in the user folder (graphics.cpp; F12 and Print Screen).
+inline constexpr uint32_t pad_screenshot = 1u << 30;
 }

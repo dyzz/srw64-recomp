@@ -19,12 +19,13 @@ Only Super Robot Wars 64, Japan Rev 0, is supported. Any byte order works (`.z64
 - **Windows**: rename your ROM to `rom.z64` and put it in the unzipped `Marchwind64-windows-x64` folder, then double-click `Marchwind64.cmd` (not `Marchwind64.exe`). `%LOCALAPPDATA%\SRW64Recomp\rom.z64` works too. Windows hides file extensions by default, so the file can end up as `rom.z64.z64`: turn on “File name extensions” under View in File Explorer first.
 - **Linux and Steam Deck**: rename it to `rom.z64` next to `marchwind64.sh`, or put it at `~/.local/share/srw64-recomp/rom.z64`.
 - **macOS and Android**: no renaming; choose the ROM in the window that opens on first launch.
+- **Nintendo Switch**: rename it `rom.z64` and put it in `/switch/Marchwind64/` on the SD card. The first launch imports it on the console in about half a minute.
 
 Unzip the ROM first if it is in an archive. A `.n64` or `.v64` dump can be named `rom.n64` or `rom.v64`. See [Install](/en/install/) for the full steps.
 
 ## Is this an emulator?
 
-It is a native port built using static recompilation. The N64's MIPS program is translated into C, then compiled into a native Windows, macOS, Linux or Android application, with graphics rendered by [RT64](https://github.com/rt64/rt64). No BIOS, plugins or emulator configuration are needed. This approach also allows changes to the interface and additional features.
+It is a native port built using static recompilation. The N64's MIPS program is translated into C, then compiled into a native Windows, macOS, Linux, Android or Switch application, with graphics rendered by [RT64](https://github.com/rt64/rt64) (by an OpenGL renderer of its own on the Switch). No BIOS, plugins or emulator configuration are needed. This approach also allows changes to the interface and additional features.
 
 ## Which platforms and controllers are supported?
 
@@ -35,6 +36,7 @@ It is a native port built using static recompilation. The N64's MIPS program is 
 | Linux | x86-64, glibc 2.35 or later, a Vulkan driver |
 | Steam Deck (experimental) | The Linux package; the Deck is recognised automatically |
 | Android (experimental) | arm64, Android 9 or later, Vulkan 1.1; phones tested: [Android compatibility](/en/android/) |
+| Nintendo Switch (experimental) | Atmosphère custom firmware and hbmenu, application mode; an NRO only, no NSP |
 
 The CPU, graphics card and driver needed on each platform are listed under [System requirements](/en/install/#requirements) on the install page.
 
@@ -50,6 +52,7 @@ Saves are in the `saves` folder of the user directory:
 - **macOS**: `~/Library/Application Support/SRW64Recomp/saves`; press ⇧⌘G in Finder and paste it.
 - **Linux and Steam Deck**: `~/.local/share/srw64-recomp/saves`.
 - **Android**: open “Marchwind64” in the system Files app, then `saves`.
+- **Nintendo Switch**: `/switch/Marchwind64/saves` on the SD card; copy it off with a card reader or ftpd.
 
 `cartridge.sram` is the cartridge save (slots 1 and 2), `slots/` holds slot 3 onwards and `auto/` the autosaves. To back up, copy the whole `saves` folder; to restore, quit the game and put it back. The same moves your saves to another computer or platform.
 
@@ -65,7 +68,7 @@ No. The game does not run in an emulator, so there are no emulator-style save st
 
 ## What is the HD pack?
 
-The HD pack is an optional, separate download that replaces the game's graphics. Without it, the game uses the original graphics. Once installed, you can switch between original and HD graphics at any time in game. On Android, import it in the app: long-press the app icon and choose “Import HD pack”, or open the downloaded zip with SRW64.
+The HD pack is an optional, separate download that replaces the game's graphics. Without it, the game uses the original graphics. Once installed, you can switch between original and HD graphics at any time in game. On Android, import it in the app: long-press the app icon and choose “Import HD pack”, or open the downloaded zip with SRW64. The Switch takes a Switch HD pack of its own, extracted to the SD card's root; the computers' pack does not work there.
 
 The images are mainly made in two ways, with their sources listed in the pack and release notes:
 

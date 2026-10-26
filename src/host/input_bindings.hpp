@@ -31,6 +31,7 @@ enum class Action : uint8_t {
     Speed,      // 2x speed on / off (R4 behind the Deck; Tab)
     QuickLoad,  // back to the suspend save, asked first (F9; no controller button yet)
     TitleReturn, // back to the title screen, asked first (F10; no controller button yet)
+    Screenshot, // the window as shown, to screenshots/ (F12, Print Screen; no controller button yet)
     Count
 };
 inline constexpr size_t action_count = size_t(Action::Count);
@@ -46,12 +47,13 @@ inline constexpr std::array<ActionInfo, action_count> actions{{
     {"stick_up", 1u << 16}, {"stick_down", 1u << 17}, {"stick_left", 1u << 18}, {"stick_right", 1u << 19},
     {"settings", pad_view}, {"aux_left", pad_l2}, {"aux_right", pad_r2},
     {"animation", pad_animation}, {"language", pad_language}, {"images", pad_images}, {"speed", pad_speed}, {"quick_load", pad_quick_load}, {"title_return", pad_title_return},
+    {"screenshot", pad_screenshot},
 }};
 inline constexpr const ActionInfo& info(Action action) { return actions[size_t(action)]; }
 
 namespace scancode {
 inline constexpr int A = 4, D = 7, E = 8, F = 9, G = 10, H = 11, I = 12, J = 13, K = 14, L = 15, Q = 20, S = 22, T = 23,
-    W = 26, X = 27, Z = 29, N1 = 30, N2 = 31, N3 = 32, N4 = 33, F9 = 66, F10 = 67,
+    W = 26, X = 27, Z = 29, N1 = 30, N2 = 31, N3 = 32, N4 = 33, F9 = 66, F10 = 67, F12 = 69, PrintScreen = 70,
     Return = 40, Escape = 41, Backspace = 42, Tab = 43, Space = 44, Right = 79, Left = 80, Down = 81, Up = 82;
 }
 namespace pad_button {
@@ -129,8 +131,9 @@ inline Bindings default_bindings() {
     keys(Action::Animation, {I});
     keys(Action::Language, {N2}); keys(Action::Images, {N4});
     keys(Action::Speed, {Tab});
-    keys(Action::QuickLoad, {F9});   // F5-F8, F11 and F12 are the host's fixed keys
+    keys(Action::QuickLoad, {F9});   // F5-F8 and F11 are the host's fixed keys
     keys(Action::TitleReturn, {F10});
+    keys(Action::Screenshot, {F12, PrintScreen});
     return b;
 }
 

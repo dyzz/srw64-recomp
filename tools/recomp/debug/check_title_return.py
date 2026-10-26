@@ -16,13 +16,21 @@ the BANPRESTO logo and the title, never at a load of the suspend save:
 5. On the title the function is refused ("not here").
 
 With --intermission (the stage-one-clear save loaded through the title ring, check_intermission.py):
-5. On the インターミッション menu the stage info page's button asks; はい: the title.
+5. On the インターミッション menu its row before 次のマップへ asks; はい: the title. The stage
+   info page's button too.
 6. Loaded again, on the 改造 sub-screen: the title again.
+7. With the original intermission screens: the menu's labels (ours where 次のマップへ was, it
+   and the chapter line 16 lower), our row asks and いいえ stays, and 次のマップへ below it
+   still goes on to the next map.
+
+With --two-item: the menu as a （前） scene leaves it (データセーブ, ours, 次のマップへ), built again
+on the way back from ユニット改造, on the native page and the original screens.
 
 Local: launches its own session with a fresh save library. --run RUN attaches to a game
 started elsewhere, and --stage (a path on that machine) loads the stage from the title
 menu. Writes title-return-checks.json and screenshots to the run."""
 import argparse
+import base64
 import json
 from pathlib import Path
 import shutil
@@ -41,10 +49,12 @@ INTERMISSION = (4, 0x12, 0x13, 0x14, 0x15)   # after a clear; after a load from 
 
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument('--language', default='zh-Hans')
+parser.add_argument('--images', default='original', help='original or hd: the window frames drawn from the ROM or redrawn in HD')
 parser.add_argument('--reuse-build', action='store_true')
 parser.add_argument('--run', help='attach to this run instead of launching')
 parser.add_argument('--stage', help="with --run: the stage definition on the game's machine")
 parser.add_argument('--intermission', action='store_true', help='the stage-one-clear save through the title ring: the intermission menu and a sub-screen instead of the mini stage')
+parser.add_argument('--two-item', action='store_true', help='the two-item intermission menu (after a （前） scene), on the native page and the original screens')
 args = parser.parse_args()
 
 if args.run:
@@ -54,10 +64,10 @@ else:
     work = ROOT / 'build/recomp/title-return-check' / time.strftime('%Y%m%dT%H%M%S')
     (work / 'saves').mkdir(parents=True)
     shutil.copyfile(SOURCE, work / 'saves' / 'cartridge.sram')
-    if args.intermission:
-        s = Session.launch(language=args.language, images='original', save=str(SOURCE), reuse_build=args.reuse_build)
+    if args.intermission or args.two_item:
+        s = Session.launch(language=args.language, images=args.images, save=str(SOURCE), reuse_build=args.reuse_build)
     else:
-        s = Session.launch(language=args.language, images='original', mini_stage=str(STAGE), reuse_build=args.reuse_build,
+        s = Session.launch(language=args.language, images=args.images, mini_stage=str(STAGE), reuse_build=args.reuse_build,
                            env={'SRW64_SAVE_LIBRARY': str(work / 'saves')})
 out = Path(s.run)
 print('RUN', s.run, flush=True)
@@ -88,7 +98,18 @@ def where():
 
 def shot(name):
     try:
-        s.client.call('screenshot', path=str(out / f'title-return-{name}.png'))
+        if not args.run:
+            s.client.call('screenshot', path=str(out / f'title-return-{name}.png'))
+            return
+        # A game on another machine writes in its own run directory; the picture is read back.
+        taken = s.client.call('screenshot')
+        data, offset = b'', 0
+        while True:
+            part = s.client.call('file.read', path=taken['path'], offset=offset)
+            data += base64.b64decode(part['data']); offset = len(data)
+            if part['eof']:
+                break
+        (out / f'title-return-{name}.png').write_bytes(data)
     except Exception as error:
         print('screenshot failed', name, error, flush=True)
 
@@ -160,6 +181,28 @@ def enter():
     time.sleep(1)
 
 
+def pool():
+    """The text engine's live labels: record -> y (the first one of each)."""
+    raw = bytes.fromhex(s.client.call('memory.read', address=0x8015CB00, size=60 * 0x34)['hex'])
+    found = {}
+    for n in range(60):
+        e = raw[n * 0x34:(n + 1) * 0x34]
+        if 1 <= e[2] <= 3:
+            found.setdefault(struct.unpack('>H', e[0:2])[0], struct.unpack('>i', e[8:12])[0])
+    return found
+
+
+def menu_row():
+    """Our label's y (record 0xF001, map_menu.hpp), or None."""
+    return pool().get(0xF001)
+
+
+def menu_rows():
+    """The y of our label, システム (record 525) and 中断 (526)."""
+    found = pool()
+    return {'ours': found.get(0xF001), 'system': found.get(525), 'suspend': found.get(526)}
+
+
 def cursor():
     raw = bytes.fromhex(s.client.call('memory.read', address=0x80102308, size=8)['hex'])
     x, y = struct.unpack('>ff', raw)
@@ -205,8 +248,9 @@ def attack():
     keys('z', pause=1)
 
 
-def load_intermission():
-    """Title ring: ロード is three to the right of スタート; ROM cartridge, slot 1, yes (check_intermission.py)."""
+def load_intermission(original=False):
+    """Title ring: ロード is three to the right of スタート; ROM cartridge, slot 1, yes (check_intermission.py).
+    With the original screens the menu is the game's: wait for its build (801DEC50)."""
     until(lambda: status()['intro'].get('title_major') == 3 or keys('return', pause=.5), 180, 'the title menu')
     time.sleep(2.5)
     keys('right', 'right', 'right', pause=1.5)
@@ -216,9 +260,80 @@ def load_intermission():
         if st['intermission_page'].get('visible') or st['intro'].get('title_major') != 7:
             break
         keys('z', pause=1.5)
-    until(lambda: status()['intermission_page'].get('visible'), 60, 'the intermission menu')
+    if original:
+        until(lambda: mem(MODE) in INTERMISSION and mem(0x801DEC50, 4) == 1 and mem(0x8015E9C5) == 0xFF, 60, 'the original intermission menu')
+    else:
+        until(lambda: status()['intermission_page'].get('visible'), 60, 'the intermission menu')
     time.sleep(1)
 
+
+def two_item(original):
+    """The menu built again for a （前） scene: into ユニット改造 and back with the cleared scene
+    (8010F5F1) set to the first of D_801DC6D4's list, which the build reads."""
+    if original:
+        s.client.call('settings', intermission_ui='original')
+    load_intermission(original=original)
+    first = mem(0x801DC6D4)
+    if original:
+        until(lambda: mem(0x801DD548, 2) == 1 or keys('down', pause=.6), 10, 'ユニット改造 on the original menu')
+        keys('z', pause=1)
+    else:
+        s.client.call('ui.click', text='intermission:1')
+    until(lambda: mem(0x801DECCC, 4) != 0, 20, 'the ユニット改造 screen')
+    time.sleep(2)
+    s.client.call('memory.write', address=0x8010F5F1, hex=f'{first:02X}')
+    keys('x', pause=1)
+    if original:
+        until(lambda: mem(0x801DECCC, 4) == 0 and mem(0x801DEC50, 4) == 1 and mem(0x8015E9C5) == 0xFF, 30, 'the original menu again')
+    else:
+        until(lambda: status()['intermission_page'].get('visible'), 30, 'the native menu again')
+    time.sleep(1)
+    tag = 'original' if original else 'native'
+    shot(f'08-two-{tag}')
+    if original:
+        found = pool()
+        check('two-original-labels', mem(0x801DECD8, 4) == 10 and (found.get(0xFCD), found.get(0xF001), found.get(0xFD5), found.get(0xFD7)) == (41, 57, 73, 193),
+              dict(found, mode=mem(0x801DECD8, 4)))
+    else:
+        page = status()['intermission_page']
+        check('two-native-items', page.get('restricted') and len(page['items']) == 3, page)
+    for _ in range(4):
+        if mem(0x801DD548, 2) == 1:
+            break
+        keys('up', pause=.6)
+    shot(f'08-two-{tag}-row')
+    check(f'two-{tag}-row-reached', mem(0x801DD548, 2) == 1, {'cursor': mem(0x801DD548, 2)})
+    keys('z', pause=1)
+    until(lambda: status()['settings_window'], 10, f'the title question from the two-item {tag} menu')
+    s.client.call('ui.click', id='title-return:no')
+    time.sleep(1)
+    check(f'two-{tag}-no-stays', mem(MODE) in INTERMISSION and mem(0x801DD540) == 0 and mem(0x801DD548, 2) == 1, where())
+    if original:
+        # 次のマップへ under our row still goes on.
+        keys('down', pause=.8)
+        keys('z', pause=.5)
+        state = until(lambda: (mem(0x801DD540) == 2 or mem(MODE) == 12) and where(), 20, 'the next map from the two-item menu')
+        check('two-original-next-map', True, state)
+    else:
+        # Back to the title from it, for the original screens' turn.
+        keys('z', pause=1)
+        until(lambda: status()['settings_window'], 10, 'the title question again')
+        confirm()
+        state = returned()
+        check('two-native-to-title', state['mode'] == 7 and state['quick_load']['stage'] == 'idle', state)
+
+
+if args.two_item:
+    try:
+        s.wait(vi=600, timeout=300)
+        two_item(original=False)
+        two_item(original=True)
+        print('ALL PASS', len(checks), flush=True)
+    finally:
+        shot('end')
+        if not args.run:
+            s.quit()
+    sys.exit(0)
 
 if args.intermission:
     try:
@@ -251,6 +366,28 @@ if args.intermission:
         state = returned()
         shot('06-title')
         check('sub-screen-to-title', state['mode'] == 7 and state['quick_load']['stage'] == 'idle', state)
+        # 7. The original menu, drawn by the game.
+        s.client.call('settings', intermission_ui='original')
+        load_intermission(original=True)
+        found = pool()
+        shot('07-original')
+        bodies = bytes.fromhex(s.client.call('memory.read', address=0x800FBAB0, size=2 * 0x218)['hex'])
+        title_y = next((struct.unpack_from('>i', bodies, n * 0x218 + 8)[0] for n in range(2)
+                        if 1 <= bodies[n * 0x218 + 2] <= 3 and struct.unpack_from('>i', bodies, n * 0x218 + 4)[0] == 82), None)
+        check('original-labels', (found.get(0xF001), found.get(0xFD5), found.get(0xFD7), found.get(0xFE0), title_y) == (169, 185, 209, 209, 209), dict(found, title=title_y))
+        keys('up', 'up', pause=.8)
+        check('original-row-reached', mem(0x801DD548, 2) == 8, {'cursor': mem(0x801DD548, 2)})
+        shot('07-original-row')
+        keys('z', pause=1)
+        until(lambda: status()['settings_window'], 10, 'the title question from the original menu')
+        s.client.call('ui.click', id='title-return:no')
+        time.sleep(1)
+        check('original-no-stays', mem(MODE) in INTERMISSION and mem(0x801DD540) == 0 and mem(0x801DD548, 2) == 8, where())
+        keys('down', pause=.8)
+        keys('z', pause=.5)
+        # Exit code 2, cleared again once the next map's mode (12) has begun.
+        state = until(lambda: (mem(0x801DD540) == 2 or mem(MODE) == 12) and where(), 20, 'the next map from the original menu')
+        check('original-next-map', True, state)
         print('ALL PASS', len(checks), flush=True)
     finally:
         shot('end')
@@ -273,11 +410,40 @@ try:
     check('map-to-title', state['mode'] == 7 and state['quick_load']['stage'] == 'idle', state)
 
     # 2. The blank-tile menu's own row: up from フェイズ終了 wraps onto 中断 (the eighth),
-    # up again onto ours (the seventh), A asks.
+    # up again onto ours (the seventh), A asks. First its sub-screens: under 部隊表 and
+    # 作戦目的 the row is not drawn, and back on the menu (which can come back lower) it
+    # sits between システム and 中断.
     enter()
     keys('up', pause=.8)
     keys('z', pause=1)
     until(lambda: mem(MAP_STATE) == 0x16 and mem(0x80172ED4) == 8, 10, 'the blank-tile menu with eight rows')
+    for index, name in ((1, 'units'), (3, 'goal')):
+        for _ in range((index - mem(0x80172ED6)) % 8):
+            keys('down', pause=.4)
+        keys('z', pause=1.5)
+        until(lambda: mem(0x80172EB2) != 0, 10, f'the {name} sub-screen')
+        time.sleep(.5)
+        shot(f'02-{name}')
+        check(f'no-row-under-{name}', menu_row() is None, {'row': menu_row(), 'sub': mem(0x80172EB2)})
+        keys('x', pause=1.5)
+        until(lambda: mem(0x80172EB2) == 0, 10, 'the menu again')
+        time.sleep(.5)
+        shot(f'02-{name}-back')
+        rows = menu_rows()
+        check(f'rows-after-{name}', rows['ours'] is not None and rows['system'] is not None and rows['suspend'] is not None
+              and rows['ours'] - rows['system'] == 16 and rows['suspend'] - rows['ours'] == 16, rows)
+    # Closed with B the row goes with the original's labels; opened again it is back.
+    keys('x', pause=1)
+    until(lambda: mem(MAP_STATE) == 5, 10, 'the map after closing the menu')
+    check('row-freed-on-close', menu_row() is None and 526 not in pool(), menu_rows())
+    keys('z', pause=1)
+    until(lambda: mem(MAP_STATE) == 0x16 and mem(0x80172ED4) == 8, 10, 'the menu again')
+    time.sleep(.5)
+    rows = menu_rows()
+    check('rows-reopened', rows['ours'] is not None and rows['suspend'] - rows['ours'] == 16 and rows['ours'] - rows['system'] == 16, rows)
+    # Back to フェイズ終了, then up past 中断 onto ours.
+    for _ in range(mem(0x80172ED6)):
+        keys('up', pause=.4)
     keys('up', 'up', pause=.8)
     check('menu-row-reached', mem(0x80172ED6) == 6, {'cursor': mem(0x80172ED6), 'rows': mem(0x80172ED4)})
     shot('02-menu')

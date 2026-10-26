@@ -10,6 +10,9 @@
 #include <cstring>
 #include <atomic>
 #include <chrono>
+#include <cctype>
+#include <vector>
+#include <memory>
 #include <fstream>
 #include <mutex>
 #include <random>
@@ -33,7 +36,9 @@
 #include <netinet/in.h>
 #include <poll.h>
 #include <sys/socket.h>
+#ifdef __ANDROID__
 #include <sys/un.h>
+#endif
 #include <unistd.h>
 #endif
 
@@ -176,10 +181,29 @@ Socket listen_loopback(int& port) {
 #endif
     sockaddr_in address{};
     address.sin_family=AF_INET;
+#ifdef __SWITCH__
+    // A Switch's own loopback is out of the computer's reach: every address, and the token
+    // keeps others out (docs/design/switch-port.md, the debug interface on the LAN). A fixed
+    // port, so the Mac finds the game however it was started (from hbmenu too, with no
+    // nxlink to bring the endpoint back): tools/release/switch/attach.py.
+    address.sin_addr.s_addr=htonl(INADDR_ANY);
+    int reuse=1;
+    ::setsockopt(listener,SOL_SOCKET,SO_REUSEADDR,&reuse,sizeof reuse);
+    address.sin_port=htons(46464);
+    if(::bind(listener,reinterpret_cast<sockaddr*>(&address),sizeof address)!=0) {
+        address.sin_port=0;  // taken: any free one, named in debug.json as elsewhere
+#else
     address.sin_addr.s_addr=htonl(INADDR_LOOPBACK);
     address.sin_port=0;  // the system picks a free port
+    {
+#endif
+        if(::bind(listener,reinterpret_cast<sockaddr*>(&address),sizeof address)!=0) {
+            const auto error=last_error();close_socket(listener);
+            throw std::runtime_error("debug socket: "+error);
+        }
+    }
     socklen_t length=sizeof address;
-    if(::bind(listener,reinterpret_cast<sockaddr*>(&address),sizeof address)!=0 || ::listen(listener,4)!=0 ||
+    if(::listen(listener,4)!=0 ||
        ::getsockname(listener,reinterpret_cast<sockaddr*>(&address),&length)!=0) {
         const auto error=last_error();close_socket(listener);
         throw std::runtime_error("debug socket: "+error);
@@ -223,7 +247,20 @@ void accept_loop(Socket listener) {
         const Socket client=::accept(listener,nullptr,nullptr);
         if(client==invalid)continue;
         {std::lock_guard lock(clients_mutex);clients.insert(client);}
+#ifdef __SWITCH__
+        // libnx never frees a detached thread (its stack, its handle): each connection left
+        // one behind, and after enough of them the next std::thread failed and ended the game
+        // (creport, 2026-10-24). Joined here once they have served.
+        static std::vector<std::pair<std::thread,std::shared_ptr<std::atomic<bool>>>> served;
+        std::erase_if(served,[](auto& entry){
+            if(!entry.second->load())return false;
+            entry.first.join();return true;
+        });
+        auto done=std::make_shared<std::atomic<bool>>(false);
+        served.emplace_back(std::thread([client,expected=token,done]{serve(client,expected);*done=true;}),done);
+#else
         std::thread(serve,client,token).detach();
+#endif
     }
     close_socket(listener);
     looping=false;
@@ -259,6 +296,17 @@ Endpoint listen(const fs::path& run,Handler handle) {
     int port=0;
     const Socket listener=listen_loopback(port);
     token=make_token();
+#ifdef __SWITCH__
+    // The token the Mac wrote into the file that turns the interface on (package.py --debug),
+    // when there is one: it then attaches without reading the game's debug.json.
+    if(std::ifstream given("/switch/Marchwind64/debug");given) {
+        std::string line;
+        if(std::getline(given,line)) {
+            while(!line.empty() && std::isspace(static_cast<unsigned char>(line.back())))line.pop_back();
+            if(line.size()>=32)token=line;
+        }
+    }
+#endif
     endpoint["transport"]="tcp";
     endpoint["host"]="127.0.0.1";
     endpoint["port"]=port;
@@ -276,6 +324,11 @@ Endpoint listen(const fs::path& run,Handler handle) {
     (void)once;
     try{write_endpoint(run,endpoint);}
     catch(...){close_socket(listener);throw;}
+#ifdef __SWITCH__
+    // The Mac reads it from the log nxlink brings back (tools/release/switch/attach.py):
+    // the SD card is out of reach while the game runs.
+    std::fprintf(stderr,"SRW64_DEBUG_ENDPOINT %s\n",endpoint.dump().c_str());
+#endif
     endpoint_file=run/"debug.json";
     stopping=false;accepting=true;looping=true;
     std::thread(accept_loop,listener).detach();

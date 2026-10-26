@@ -1,4 +1,6 @@
 #include "save_page.hpp"
+#include "dialogue_data.hpp"
+#include "run_files.hpp"
 #include "presentation_settings.hpp"
 #include "intermission_page.hpp"
 #include "native_dialogue.hpp"
@@ -626,11 +628,10 @@ void frame(uint8_t* ram) {
 
 void configure(const std::filesystem::path& directory) {
     if(const char* v=std::getenv("SRW64_NATIVE_SAVE");v && std::string_view(v)=="0")return;
-    if(!std::getenv("SRW64_DIALOGUE_DATA"))return; // Legacy unprofiled runs keep the original screens.
-    std::ifstream source(std::getenv("SRW64_DIALOGUE_DATA"));
-    const auto data=json::parse(source,nullptr,false);
-    if(!data.is_discarded() && data.contains("name_entry_assets"))art=data.at("name_entry_assets");
-    log.open(directory/"save-page-events.jsonl");
+    const auto* data=dialogue_data::document();
+    if(!data)return; // Legacy unprofiled runs keep the original screens.
+    if(data->contains("name_entry_assets"))art=data->at("name_entry_assets");
+    srw64::open_run_log(log,directory/"save-page-events.jsonl");
     auto& h=srw64_game_hooks;
     h.save_build=build;h.save_step=step;h.save_frame=frame;
 }

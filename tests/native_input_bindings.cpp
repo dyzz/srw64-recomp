@@ -22,11 +22,24 @@ int main() {
     assert(keys({scancode::Up, scancode::Down, scancode::Left, scancode::Right}) == 0x0F00);
     assert(keys({scancode::W, scancode::S, scancode::A, scancode::D}) == 0xF0000u);
     assert(keys({scancode::Z}) == 0 && keys({scancode::X}) == 0 && keys({scancode::Space}) == 0 && keys({scancode::Escape}) == 0);
-    // The keyboard binds what the controller binds, Z on neither; the quick load has F9 and
-    // no controller button yet.
+    // The keyboard binds what the controller binds, Z on neither; the quick load (F9), the
+    // return to the title (F10) and the screenshot (F12, Print Screen) have no controller
+    // button yet.
     for (size_t i = 0; i < action_count; ++i)
-        if (Action(i) != Action::QuickLoad) assert(defaults.keys[i].empty() == defaults.pads[i].empty());
+        if (Action(i) != Action::QuickLoad && Action(i) != Action::TitleReturn && Action(i) != Action::Screenshot)
+            assert(defaults.keys[i].empty() == defaults.pads[i].empty());
     assert(keys({scancode::F9}) == pad_quick_load && defaults.pads[size_t(Action::QuickLoad)].empty());
+    assert(keys({scancode::F12}) == pad_screenshot && keys({scancode::PrintScreen}) == pad_screenshot);
+    assert(defaults.pads[size_t(Action::Screenshot)].empty());
+    // A controller button can take the screenshot, and a key taken from it leaves it the other.
+    {
+        auto b = defaults;
+        assign_pad(b, Action::Screenshot, button(pad_button::Paddle2));
+        assert(pad_mask(b, [](uint8_t x) { return x == pad_button::Paddle2; }, [](uint8_t) { return 0; }) == pad_screenshot);
+        assign_key(b, Action::Language, scancode::F12);
+        assert(b.keys[size_t(Action::Screenshot)] == std::vector<int>{scancode::PrintScreen});
+        assert(*action_of_key(b, scancode::F12) == Action::Language);
+    }
     // The classic layout, which the debug interface's keys keep.
     const auto classic = classic_keys();
     const auto old = [&](std::set<int> down) { return key_mask(classic, [&](int k) { return down.count(k) > 0; }); };

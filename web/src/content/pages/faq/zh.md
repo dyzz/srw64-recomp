@@ -19,12 +19,13 @@ lead: 关于安装、操作和存档的常见问题。没有找到答案，可�
 - **Windows**：把 ROM 改名为 `rom.z64`，放进解压出的 `Marchwind64-windows-x64` 文件夹，然后双击 `Marchwind64.cmd` 启动（不是 `Marchwind64.exe`）。也可以放在 `%LOCALAPPDATA%\SRW64Recomp\rom.z64`。Windows 默认隐藏扩展名，改名时容易变成 `rom.z64.z64`，先在资源管理器的「查看」里勾选「文件扩展名」。
 - **Linux／Steam Deck**：改名为 `rom.z64`，放在 `marchwind64.sh` 旁边，或 `~/.local/share/srw64-recomp/rom.z64`。
 - **macOS、Android**：不用改名，首次启动时在弹出的窗口里选择 ROM。
+- **Nintendo Switch**：改名为 `rom.z64`，放进 SD 卡上的 `/switch/Marchwind64/`。首次启动会在主机上导入，约半分钟。
 
 ROM 是压缩包的话先解压。`.n64`、`.v64` 格式改名为 `rom.n64`、`rom.v64` 即可。详见[安装](/zh/install/)。
 
 ## 这是模拟器吗？
 
-本项目是通过静态重编译制作的原生移植：先将 N64 的 MIPS 程序翻译成 C，再编译成 Windows、macOS、Linux、Android 的本机程序，图形由 [RT64](https://github.com/rt64/rt64) 渲染。运行时无需配置 BIOS、插件或模拟器，也可以在原版的基础上调整界面、增加功能。
+本项目是通过静态重编译制作的原生移植：先将 N64 的 MIPS 程序翻译成 C，再编译成 Windows、macOS、Linux、Android、Switch 的本机程序，图形由 [RT64](https://github.com/rt64/rt64) 渲染（Switch 上用自己的 OpenGL 渲染器）。运行时无需配置 BIOS、插件或模拟器，也可以在原版的基础上调整界面、增加功能。
 
 ## 支持哪些平台和手柄？
 
@@ -35,6 +36,7 @@ ROM 是压缩包的话先解压。`.n64`、`.v64` 格式改名为 `rom.n64`、`r
 | Linux | x86-64，glibc 2.35 起，需要 Vulkan 驱动 |
 | Steam Deck（实验性） | 与 Linux 同一个包，自动识别 Deck |
 | Android（实验性） | arm64，Android 9 起，需要 Vulkan 1.1；实测机型见[安卓兼容列表](/zh/android/) |
+| Nintendo Switch（实验性） | Atmosphère 自制系统与 hbmenu，应用模式；只提供 NRO，不提供 NSP |
 
 各平台对 CPU、显卡和驱动的具体要求见安装页的[系统要求](/zh/install/#requirements)。
 
@@ -50,6 +52,7 @@ ROM 是压缩包的话先解压。`.n64`、`.v64` 格式改名为 `rom.n64`、`r
 - **macOS**：`~/Library/Application Support/SRW64Recomp/saves`，在访达里按 ⇧⌘G 输入路径。
 - **Linux／Steam Deck**：`~/.local/share/srw64-recomp/saves`。
 - **Android**：在系统「文件」应用里找到「Marchwind64」，打开里面的 `saves`。
+- **Nintendo Switch**：SD 卡上的 `/switch/Marchwind64/saves`，可以用读卡器或 ftpd 拷出来。
 
 里面的 `cartridge.sram` 是卡带存档（存档栏 1、2），`slots/` 是存档栏 3 起，`auto/` 是自动存档。备份时复制整个 `saves` 文件夹；恢复时先退出游戏，再放回原处。换电脑或换平台时也是这样搬存档。
 
@@ -65,7 +68,7 @@ ROM 是压缩包的话先解压。`.n64`、`.v64` 格式改名为 `rom.n64`、`r
 
 ## HD 包是什么？
 
-HD 包是单独下载、可选安装的图片包，只替换游戏画面。未安装时使用原版画面；安装后，可以在游戏中随时切换原版与 HD。Android 上在应用里导入：长按应用图标选「导入 HD 包」，或用 SRW64 打开下载的 zip。
+HD 包是单独下载、可选安装的图片包，只替换游戏画面。未安装时使用原版画面；安装后，可以在游戏中随时切换原版与 HD。Android 上在应用里导入：长按应用图标选「导入 HD 包」，或用 SRW64 打开下载的 zip。Switch 用单独的 Switch 版 HD 包，解压到 SD 卡根目录即可，电脑版的包在 Switch 上不能用。
 
 包内图片主要通过以下两种方式制作，来源列在包内说明和发布说明中：
 

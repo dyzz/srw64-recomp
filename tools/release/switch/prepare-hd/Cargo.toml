@@ -1,0 +1,17 @@
+[package]
+name = "prepare-hd"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "The HD pack prepared for the Switch's GPU, for the NRO's romfs"
+license = "GPL-3.0-or-later"
+
+[dependencies]
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "tga"] }
+rayon = "1"
+serde_json = "1"
+zstd = "0.13"
+intel_tex_2 = "0.5"
+
+[profile.release]
+opt-level = 3

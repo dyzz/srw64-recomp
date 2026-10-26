@@ -12,7 +12,8 @@ Note: check_battle_ui.py toggles the animation flag OFF as one of its
 assertions and never restores it, which stops overlay load_00121560 from
 loading at all. This driver keeps the flag ON.
 
-Run with SRW64_BATTLE_ANIMATION_PROBE=1 so the host writes the state trace.
+The host writes the state trace with SRW64_BATTLE_ANIMATION_PROBE=1: a launch here sets it; a run
+attached with RUN must have been started with it.
 """
 import sys,time,json
 from pathlib import Path
@@ -45,7 +46,7 @@ if args.run:
     s=Session(args.run.resolve())
 else:
     s=Session.launch(language='zh-Hans',mini_stage='config/recomp/mini-stages/battle-ui.json',
-                     audio=args.audio,binary=args.binary)
+                     audio=args.audio,binary=args.binary,env={'SRW64_BATTLE_ANIMATION_PROBE':'1'})
     print('RUN',s.run,flush=True)
     s.enter_mini_stage()
     # At ready the cursor sits on a player unit with an enemy to its right. The

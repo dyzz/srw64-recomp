@@ -27,7 +27,7 @@ enum Mods : unsigned { Command = 1, Control = 2 };
 struct Item {
     std::string id;        // empty: a separator
     std::string title;
-    std::string shortcut;  // the key shown beside the title ("F12", the bound "Tab")
+    std::string shortcut;  // the key shown beside the title ("F11", the bound "Tab")
     // macOS: a key equivalent in place of the shown key ("F6", "f", "1"), only for a key
     // the menu may take before the game sees it: fixed keys, never bound ones.
     std::string mac_key;

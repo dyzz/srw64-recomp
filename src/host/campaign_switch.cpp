@@ -1,6 +1,7 @@
 #include "campaign_switch.hpp"
 #include "mini_stage.hpp"
 #include "save_store.hpp"
+#include "app/runtime.hpp"
 #include "app/save_library.hpp"
 #include "app/sram.hpp"
 #include "librecomp/game.hpp"
@@ -54,7 +55,7 @@ void enter(const campaign_library::Entry& entry) {
     const auto file=folder/"campaigns"/entry.id/(fs::path(game).string()+".bin");
     fs::create_directories(file.parent_path());
     std::error_code error;
-    fs::copy_file(library/"cartridge.sram",file,fs::copy_options::overwrite_existing,error);
+    app::copy_file(library/"cartridge.sram",file,true,error);
     if(error)throw std::runtime_error("cannot prepare the campaign's save: "+error.message());
     // The current SRAM is written out first (librecomp waits for its saving thread).
     ultramodern::change_save_file(u8"campaigns/"+std::u8string(entry.id.begin(),entry.id.end()),game);

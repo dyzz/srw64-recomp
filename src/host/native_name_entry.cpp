@@ -1,4 +1,6 @@
 #include "native_name_entry.hpp"
+#include "dialogue_data.hpp"
+#include "run_files.hpp"
 #include "native_dialogue.hpp"
 #include "game_adapter/name_codec.hpp"
 #include "game_hooks.hpp"
@@ -9,6 +11,8 @@
 #include "json/json.hpp"
 #include <atomic>
 #include <fstream>
+#include <functional>
+#include <vector>
 #include <mutex>
 #include <map>
 
@@ -24,6 +28,21 @@ uint32_t overlay{};
 uint64_t serial{};
 std::mutex mutex;
 Request current;
+// The page's choices wait here for the game thread's next step, which applies them under
+// `mutex`; the UI thread never waits for the step, which holds `mutex` while it runs the
+// original page code (30 ms waits on the Switch as the cursor moved, SRW64_UI_SLOW). The
+// request the UI reads is the last one a step left when the step holds the lock.
+std::mutex inbox_mutex;
+std::vector<std::function<void()>> inbox;
+Request published;
+void post(std::function<void()> action) {std::lock_guard lock(inbox_mutex);inbox.push_back(std::move(action));}
+void apply_inbox() {
+    std::vector<std::function<void()>> actions;
+    {std::lock_guard lock(inbox_mutex);actions.swap(inbox);}
+    for(auto& action:actions)action();
+}
+// The covers have a lock of their own: the render thread asks for them every frame.
+std::mutex cover_mutex;
 std::array<std::array<std::array<std::string,2>,4>,2> portrait_paths;
 nlohmann::json unit_art=nlohmann::json::object();   // battle_assets.units by unit number
 std::string art_locale;
@@ -166,6 +185,7 @@ void original_selection(uint8_t* ram,recomp_context* ctx) {
 bool step(uint8_t* ram,recomp_context* ctx,unsigned person) {
     if(!enabled || !ready || overlay!=0x1090A0)return false;
     std::lock_guard lock(mutex);
+    apply_inbox();
     if(closed)return true;
     auto call=*ctx;resident_func_80099B30(ram,&call);
     if(int8_t(call.r2)!=-1)return true; // Let the original fade finish first.
@@ -217,9 +237,9 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned person) {
 }
 DefaultNames& default_names() {static DefaultNames table;return table;}
 void configure(const std::filesystem::path& directory) {
-    const char* path=std::getenv("SRW64_DIALOGUE_DATA");
-    if(!path || (std::getenv("SRW64_NATIVE_NAME_ENTRY") && std::string(std::getenv("SRW64_NATIVE_NAME_ENTRY"))=="0"))return;
-    std::ifstream source(path);nlohmann::json data;source>>data;
+    const auto* document=dialogue_data::document();
+    if(!document || (std::getenv("SRW64_NATIVE_NAME_ENTRY") && std::string(std::getenv("SRW64_NATIVE_NAME_ENTRY"))=="0"))return;
+    const auto& data=*document;
     for(const auto& [key,value]:data.at("glyphs").items())codec.add(std::stoul(key),dialogue::utf16(value.get<std::string>()));
     if(data.contains("battle_assets") && data.at("battle_assets").contains("units"))unit_art=data.at("battle_assets").at("units");
     if(data.contains("name_entry_assets")) {
@@ -229,7 +249,7 @@ void configure(const std::filesystem::path& directory) {
             portrait_paths[p][route]={row.at("original").get<std::string>(),row.value("hd",row.at("original").get<std::string>())};
         }
     }
-    enabled=true;log.open(directory/"name-entry-events.jsonl");
+    enabled=true;srw64::open_run_log(log,directory/"name-entry-events.jsonl");
     srw64_game_hooks.name_begin=begin;srw64_game_hooks.name_step=step;
 }
 void initialize_rom(const uint8_t* rom,size_t size) {
@@ -247,33 +267,46 @@ void overlay_loaded(uint32_t rom,uint32_t ram,uint32_t size) {
 bool owns_input() {return owning || window_owning;}
 void window_claim_input(bool value) {window_owning=value;}
 uint16_t input(uint16_t buttons) {held &= buttons;if(owns_input())held|=buttons;return buttons & ~held;}
-Request request() {std::lock_guard lock(mutex);auto result=current;if(mini_stage::quick_start())result.visible=false;return result;}
+Request request() {
+    Request result;
+    if(std::unique_lock lock(mutex,std::try_to_lock);lock.owns_lock()) {
+        result=current;
+        std::lock_guard keep(inbox_mutex);published=current;
+    } else {
+        std::lock_guard keep(inbox_mutex);result=published;
+    }
+    if(mini_stage::quick_start())result.visible=false;
+    return result;
+}
 std::u16string decode_glyphs(const std::vector<uint16_t>& codes) {return codec.decode(codes);}
 void review(uint64_t id,bool confirm) {
-    std::lock_guard lock(mutex);
-    if(!current.active || current.person!=Review || current.serial!=id || current.pending)return;
-    current.pending=true;review_confirm=confirm;
+    post([=]{
+        if(!current.active || current.person!=Review || current.serial!=id || current.pending)return;
+        current.pending=true;review_confirm=confirm;
+    });
 }
 void select(uint64_t id,unsigned route) {
-    std::lock_guard lock(mutex);
-    if(!current.active || current.person!=Selection || current.serial!=id || current.pending || route>3)return;
-    if(current.route!=route){current.route=route;++cursor_moves;}
+    post([=]{
+        if(!current.active || current.person!=Selection || current.serial!=id || current.pending || route>3)return;
+        if(current.route!=route){current.route=route;++cursor_moves;}
+    });
 }
 void choose(uint64_t id,unsigned route) {
-    std::lock_guard lock(mutex);
-    if(!current.active || current.person!=Selection || current.serial!=id || current.pending || route>3)return;
-    current.route=route;current.pending=true;
+    post([=]{
+        if(!current.active || current.person!=Selection || current.serial!=id || current.pending || route>3)return;
+        current.route=route;current.pending=true;
+    });
 }
 void queue_cover(uint64_t workload,bool visible) {
-    std::lock_guard lock(mutex);covers[workload]=visible;
+    std::lock_guard lock(cover_mutex);covers[workload]=visible;
     while(covers.size()>128)covers.erase(covers.begin());
 }
 bool frame_cover(uint64_t workload) {
-    std::lock_guard lock(mutex);auto found=covers.find(workload);return found!=covers.end() && found->second;
+    std::lock_guard lock(cover_mutex);auto found=covers.find(workload);return found!=covers.end() && found->second;
 }
 void cover_presented(uint64_t workload,bool visible) {
-    std::lock_guard lock(mutex);
+    std::lock_guard lock(cover_mutex);
     if(workload>=presented_workload){presented_workload=workload;presented_cover=visible;}
 }
-bool cover_in_flight() {std::lock_guard lock(mutex);return presented_cover;}
+bool cover_in_flight() {std::lock_guard lock(cover_mutex);return presented_cover;}
 }

@@ -199,7 +199,8 @@ class UpgradePageSourceTests(unittest.TestCase):
         self.assertIn('"intermission_ui": {"type": "string", "enum": ["native", "original"]}', (ROOT / "tools/recomp/debug/mcp_server.py").read_text())
         for page in ("parts_page", "ability_page", "swap_page", "save_page"):
             self.assertIn("if(original_screens())return false;", (ROOT / f"src/host/{page}.cpp").read_text())
-        self.assertIn("if(!settings::native_intermission_ui())return false;", (ROOT / "src/host/link_page.cpp").read_text())
+        # The series picker stands in for the cartridge, so it shows on the original menu too.
+        self.assertNotIn("native_intermission_ui", (ROOT / "src/host/link_page.cpp").read_text())
 
     def test_name_entry_follows_its_ui_setting(self):
         self.assertIn("if(!settings::native_name_entry_ui())return;", (ROOT / "src/host/native_name_entry.cpp").read_text())

@@ -1,0 +1,679 @@
+#include "gl_renderer.hpp"
+#include "program_cache.hpp"
+
+#include <algorithm>
+#include <cstring>
+#include <cmath>
+#include <cstddef>
+#include <cstdio>
+#include <vector>
+
+namespace srw64::n64gl {
+namespace {
+#ifdef SRW64_GLES
+// Texture coordinates address 1024-texel atlas pages: half floats are not enough.
+constexpr const char* kPreamble = "#version 100\nprecision highp float;\n";
+#else
+constexpr const char* kPreamble = "#version 120\n";
+#endif
+
+enum Attribute : GLuint { attribute_position = 0, attribute_uv = 1, attribute_shade = 2, attribute_prim = 3, attribute_bounds = 4 };
+constexpr int kPageSize = 1024, kPages = 6, kAtlasLargest = 128;
+#ifdef __SWITCH__
+// The Switch's Mesa waits for the GPU to finish with a page before each glTexSubImage2D into
+// it: a frame's few hundred small textures took 3 ms each, 1.7 s of every 5 s while the
+// first stage's map scrolled (SRW64_PERF). They gather in a copy of the page instead, and
+// the rows they touched go up once a frame (flush_pages). Even so it waited whenever the GPU
+// still read the page (a frame or two behind): ~1 s scene changes of a thousand textures. A
+// page is three GL textures taken in turn, so an upload goes into one no frame has drawn with
+// for two frames, the way GLideN64's Switch ports never write a texture already drawn with.
+constexpr bool kBatchPageUploads = true;
+constexpr size_t kPageCopies = 3;
+#else
+constexpr bool kBatchPageUploads = false;
+constexpr size_t kPageCopies = 1;
+#endif
+
+// The combiner's inputs (one cycle; COMBINED and the LOD inputs are zero there, the game
+// uses none of them, nor NOISE, K4, K5 or TEXEL1, which reads TEXEL0's tile here).
+const char* color_a(uint8_t i) {
+    static const char* const t[] = {"vec3(0.0)", "texel.rgb", "texel.rgb", "v_prim.rgb", "v_shade.rgb", "u_env.rgb", "vec3(1.0)", "vec3(0.5)"};
+    return i < 8 ? t[i] : "vec3(0.0)";
+}
+const char* color_b(uint8_t i) {
+    static const char* const t[] = {"vec3(0.0)", "texel.rgb", "texel.rgb", "v_prim.rgb", "v_shade.rgb", "u_env.rgb", "vec3(0.0)", "vec3(0.0)"};
+    return i < 8 ? t[i] : "vec3(0.0)";
+}
+const char* color_c(uint8_t i) {
+    static const char* const t[] = {"vec3(0.0)", "texel.rgb", "texel.rgb", "v_prim.rgb", "v_shade.rgb", "u_env.rgb", "vec3(0.0)",
+                                    "vec3(texel.a)", "vec3(texel.a)", "vec3(v_prim.a)", "vec3(v_shade.a)", "vec3(u_env.a)"};
+    return i < 12 ? t[i] : "vec3(0.0)";
+}
+const char* color_d(uint8_t i) {
+    static const char* const t[] = {"vec3(0.0)", "texel.rgb", "texel.rgb", "v_prim.rgb", "v_shade.rgb", "u_env.rgb", "vec3(1.0)", "vec3(0.0)"};
+    return t[i & 7];
+}
+const char* alpha_abd(uint8_t i) {
+    static const char* const t[] = {"0.0", "texel.a", "texel.a", "v_prim.a", "v_shade.a", "u_env.a", "1.0", "0.0"};
+    return t[i & 7];
+}
+const char* alpha_c(uint8_t i) {
+    static const char* const t[] = {"0.0", "texel.a", "texel.a", "v_prim.a", "v_shade.a", "u_env.a", "0.0", "0.0"};
+    return t[i & 7];
+}
+
+}  // namespace
+
+std::string vertex_source() {
+    return std::string(kPreamble) +
+        "attribute vec4 a_position;\nattribute vec2 a_uv;\nattribute vec4 a_shade;\nattribute vec4 a_prim;\nattribute vec4 a_bounds;\n"
+        "varying vec2 v_uv;\nvarying vec4 v_shade;\nvarying vec4 v_prim;\nvarying vec4 v_bounds;\n"
+        "void main() {\n  gl_Position = a_position;\n  v_uv = a_uv;\n  v_shade = a_shade;\n  v_prim = a_prim;\n  v_bounds = a_bounds;\n}\n";
+}
+
+std::string fragment_source(uint32_t key) {
+    const Combiner c = combiner_of(key);
+    std::string s = kPreamble;
+    s += "uniform sampler2D u_texture;\nuniform vec4 u_env;\nuniform float u_alpha_ref;\n"
+         "varying vec2 v_uv;\nvarying vec4 v_shade;\nvarying vec4 v_prim;\nvarying vec4 v_bounds;\n"
+         "void main() {\n";
+    s += (key & shader_textured) ? "  vec4 texel = texture2D(u_texture, clamp(v_uv, v_bounds.xy, v_bounds.zw));\n" : "  vec4 texel = vec4(0.0);\n";
+    s += std::string("  vec3 color = clamp((") + color_a(c.a) + " - " + color_b(c.b) + ") * " + color_c(c.c) + " + " + color_d(c.d) + ", 0.0, 1.0);\n";
+    s += std::string("  float alpha = clamp((") + alpha_abd(c.aa) + " - " + alpha_abd(c.ab) + ") * " + alpha_c(c.ac) + " + " + alpha_abd(c.ad) + ", 0.0, 1.0);\n";
+    if (key & shader_threshold) s += "  if (alpha < u_alpha_ref) discard;\n";
+    if (key & shader_cutout) s += "  if (alpha < 0.5) discard;\n";
+    s += "  gl_FragColor = vec4(color, alpha);\n}\n";
+    return s;
+}
+
+Renderer::Renderer(int width, int height) : target_width(width), target_height(height) {
+    glGenBuffers(1, &buffer);
+    glGenRenderbuffers(1, &depth);
+    glBindRenderbuffer(GL_RENDERBUFFER, depth);
+#ifdef SRW64_GLES
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, width, height);
+#else
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, width, height);
+#endif
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+    auto make = [](GLuint& texture, int w, int h, const void* pixels) {
+        glGenTextures(1, &texture);
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    };
+    const uint32_t opaque_black = 0xFF000000u;
+    make(black, 1, 1, &opaque_black);
+    make(copy, width, height, nullptr);
+}
+
+void Renderer::resize(float picture) {
+    const int width = std::max(1, int(std::lround(picture * target_height / float(kPictureHeight))));
+    picture_width = picture;
+    if (width == target_width) return;
+    // Every target, the copy and the depth buffer at the new width: the pictures drawn so far
+    // go (a frame or two black as the screen's shape or the setting changes).
+    for (auto& [key, t] : targets) { glDeleteFramebuffers(1, &t.framebuffer); glDeleteTextures(1, &t.texture); }
+    targets.clear();
+    target_width = width;
+    glBindRenderbuffer(GL_RENDERBUFFER, depth);
+#ifdef SRW64_GLES
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, target_width, target_height);
+#else
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, target_width, target_height);
+#endif
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+    glBindTexture(GL_TEXTURE_2D, copy);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, target_width, target_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+}
+
+Renderer::~Renderer() {
+    for (auto& [key, p] : programs) glDeleteProgram(p.id);
+    for (auto& [key, t] : textures) {
+        if (t.page < 0) glDeleteTextures(1, &t.id);
+        if (t.own) glDeleteTextures(1, &t.own);
+    }
+    for (auto& page : pages)
+        for (auto& c : page.copies) glDeleteTextures(1, &c.id);
+    for (auto& [key, t] : targets) { glDeleteFramebuffers(1, &t.framebuffer); glDeleteTextures(1, &t.texture); }
+    glDeleteTextures(1, &copy);
+    glDeleteTextures(1, &black);
+    glDeleteRenderbuffers(1, &depth);
+    glDeleteBuffers(1, &buffer);
+    if (blit) glDeleteProgram(blit);
+}
+
+Renderer::Target& Renderer::target(uint32_t image) {
+    Target& t = targets[image];
+    if (!t.framebuffer) {
+        glGenTextures(1, &t.texture);
+        glBindTexture(GL_TEXTURE_2D, t.texture);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, target_width, target_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glGenFramebuffers(1, &t.framebuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, t.framebuffer);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, t.texture, 0);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depth);
+        glDisable(GL_SCISSOR_TEST);
+        glClearColor(0, 0, 0, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
+    t.used = frame_number;
+    return t;
+}
+
+uint32_t Renderer::image_at(uint32_t origin) const {
+    // The VI scans from somewhat past the colour image's start (a line or so in).
+    uint32_t best = 0;
+    for (const auto& [image, t] : targets)
+        if (image <= origin && origin - image < uint32_t(kPictureWidth * kPictureHeight * 2) && image > best) best = image;
+    return best;
+}
+
+bool Renderer::present(uint32_t origin, int x, int y, int width, int height) {
+    const auto found = targets.find(image_at(origin));
+    if (found == targets.end()) return false;
+    const Target* shown = &found->second;
+    if (!blit) {
+        std::string error;
+        blit = link_program(std::string(kPreamble) +
+            "attribute vec2 a_position;\nvarying vec2 v_uv;\n"
+            "void main() {\n  gl_Position = vec4(a_position * 2.0 - 1.0, 0.0, 1.0);\n  v_uv = a_position;\n}\n", std::string(kPreamble) +
+            "uniform sampler2D u_texture;\nvarying vec2 v_uv;\n"
+            "void main() {\n  gl_FragColor = vec4(texture2D(u_texture, v_uv).rgb, 1.0);\n}\n",
+            {{attribute_position, "a_position"}}, error);
+        if (!blit) { last_error = error; return false; }
+        blit_texture = glGetUniformLocation(blit, "u_texture");
+    }
+    static const float corners[8] = {0, 0, 1, 0, 0, 1, 1, 1};
+    glViewport(x, y, width, height);
+    glDisable(GL_SCISSOR_TEST);
+    glDisable(GL_BLEND);
+    glDisable(GL_DEPTH_TEST);
+    glUseProgram(blit);
+    glUniform1i(blit_texture, 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, shown->texture);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glEnableVertexAttribArray(attribute_position);
+    glVertexAttribPointer(attribute_position, 2, GL_FLOAT, GL_FALSE, 0, corners);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glDisableVertexAttribArray(attribute_position);
+    glUseProgram(0);
+    return true;
+}
+
+void Renderer::clear_targets() {
+    glDisable(GL_SCISSOR_TEST);
+    glClearColor(0, 0, 0, 1);
+    for (auto& [image, t] : targets) {
+        glBindFramebuffer(GL_FRAMEBUFFER, t.framebuffer);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+GLuint Renderer::framebuffer(uint32_t image) const {
+    const auto found = targets.find(image);
+    return found == targets.end() ? 0 : found->second.framebuffer;
+}
+
+GLuint Renderer::picture(uint32_t image) const {
+    const auto found = targets.find(image);
+    return found == targets.end() ? 0 : found->second.texture;
+}
+
+const Renderer::Program* Renderer::program(uint32_t key) {
+    if (auto found = programs.find(key); found != programs.end()) return found->second.id ? &found->second : nullptr;
+    Program p;
+    p.id = link_program(vertex_source(), fragment_source(key),
+                        {{attribute_position, "a_position"}, {attribute_uv, "a_uv"}, {attribute_shade, "a_shade"},
+                         {attribute_prim, "a_prim"}, {attribute_bounds, "a_bounds"}}, last_error);
+    if (p.id) {
+        p.texture = glGetUniformLocation(p.id, "u_texture");
+        p.env = glGetUniformLocation(p.id, "u_env");
+        p.alpha_ref = glGetUniformLocation(p.id, "u_alpha_ref");
+        glUseProgram(p.id);
+        if (p.texture >= 0) glUniform1i(p.texture, 0);
+    }
+    auto& stored = programs[key] = p;
+    return stored.id ? &stored : nullptr;
+}
+
+std::vector<uint32_t> Renderer::program_keys() const {
+    std::vector<uint32_t> keys;
+    for (const auto& [key, p] : programs)
+        if (p.id) keys.push_back(key);
+    std::sort(keys.begin(), keys.end());
+    return keys;
+}
+
+void Renderer::prewarm(const std::vector<uint32_t>& keys) {
+    for (const uint32_t key : keys) program(key);
+}
+
+void Renderer::flush_pages() {
+    if (!kBatchPageUploads) return;
+    for (Page& page : pages) {
+        if (page.dirty_bottom <= page.dirty_top) continue;
+        const auto start = std::chrono::steady_clock::now();
+        for (auto& c : page.copies) {
+            if (c.pending_bottom <= c.pending_top) { c.pending_top = page.dirty_top; c.pending_bottom = page.dirty_bottom; }
+            else { c.pending_top = std::min(c.pending_top, page.dirty_top); c.pending_bottom = std::max(c.pending_bottom, page.dirty_bottom); }
+        }
+        page.dirty_top = page.dirty_bottom = 0;
+        // The copy drawn with longest ago becomes the page.
+        size_t next = page.current;
+        for (size_t i = 0; i < page.copies.size(); ++i)
+            if (i != page.current && (next == page.current || page.copies[i].current_at < page.copies[next].current_at)) next = i;
+        auto& c = page.copies[next];
+        glBindTexture(GL_TEXTURE_2D, c.id);
+        if (c.filter != page.filter) {
+            const GLint filter = page.filter == 1 ? GL_LINEAR : GL_NEAREST;
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
+            c.filter = page.filter;
+        }
+        glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+        // Whole rows: one contiguous run of the copy, with no row length to set.
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, c.pending_top, kPageSize, c.pending_bottom - c.pending_top, GL_RGBA, GL_UNSIGNED_BYTE,
+                        page.shadow.data() + size_t(c.pending_top) * kPageSize * 4);
+        c.pending_top = c.pending_bottom = 0;
+        c.current_at = frame_number;
+        page.current = next;
+        page.id = c.id;
+        gl_stats().upload_ms += gl_ms_since(start);
+        ++gl_stats().page_flushes;
+    }
+}
+
+bool Renderer::place(Texture& texture, uint16_t width, uint16_t height, bool linear) {
+    auto fit = [&](Page& page) {
+        if (page.cursor + width > kPageSize) {
+            page.shelf_y = uint16_t(page.shelf_y + page.shelf_height);
+            page.shelf_height = 0;
+            page.cursor = 0;
+        }
+        if (page.shelf_y + height > kPageSize) return false;
+        texture.x = page.cursor;
+        texture.y = page.shelf_y;
+        page.cursor = uint16_t(page.cursor + width);
+        page.shelf_height = std::max(page.shelf_height, height);
+        return true;
+    };
+    int chosen = -1;
+    for (size_t i = 0; i < pages.size() && chosen < 0; ++i)
+        if (pages[i].linear == linear && fit(pages[i])) chosen = int(i);
+    if (chosen < 0 && pages.size() < kPages) {
+        Page page;
+        page.linear = linear;
+        page.copies.resize(kPageCopies);
+        for (auto& c : page.copies) {
+            glGenTextures(1, &c.id);
+            glBindTexture(GL_TEXTURE_2D, c.id);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, kPageSize, kPageSize, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        }
+        page.id = page.copies[0].id;
+        if (kBatchPageUploads) page.shadow.assign(size_t(kPageSize) * kPageSize * 4, 0);
+        pages.push_back(std::move(page));
+        if (fit(pages.back())) chosen = int(pages.size() - 1);
+    }
+    if (chosen < 0) {
+        // All pages full: start again on the one used longest ago, if this frame does not use it.
+        int oldest = -1;
+        for (size_t i = 0; i < pages.size(); ++i)
+            if (pages[i].used != frame_number && (oldest < 0 || pages[i].used < pages[oldest].used)) oldest = int(i);
+        if (oldest < 0) return false;
+        Page& page = pages[oldest];
+        for (uint64_t key : page.keys) {
+            if (auto found = textures.find(key); found != textures.end()) {
+                if (found->second.own) glDeleteTextures(1, &found->second.own);
+                textures.erase(found);
+            }
+        }
+        page.keys.clear();
+        page.shelf_y = page.shelf_height = page.cursor = 0;
+        page.linear = linear;
+        if (fit(page)) chosen = oldest;
+    }
+    if (chosen < 0) return false;
+    Page& page = pages[chosen];
+    // The filter only when the page's changes (a new page, or one started over for the other
+    // kind): on the Switch's Mesa setting it on a page the GPU still reads waited for the GPU,
+    // as an upload did, and it was set for every texture placed (4 s of 5 at the title).
+    // Batched, each copy takes it as it is brought up to date (flush_pages).
+    if (kBatchPageUploads) page.filter = linear ? 1 : 0;
+    else if (page.filter != (linear ? 1 : 0)) {
+        const GLint filter = linear ? GL_LINEAR : GL_NEAREST;
+        glBindTexture(GL_TEXTURE_2D, page.id);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
+        page.filter = linear ? 1 : 0;
+    }
+    page.used = frame_number;
+    texture.page = int16_t(chosen);
+    texture.id = page.id;
+    return true;
+}
+
+void Renderer::upload(const Frame::Texture& t) {
+    const auto start = std::chrono::steady_clock::now();
+    struct Count {
+        std::chrono::steady_clock::time_point start; size_t bytes;
+        ~Count() { auto& s = gl_stats(); ++s.uploads; s.upload_bytes += bytes; s.upload_ms += gl_ms_since(start); }
+    } count{start, t.rgba.size() * sizeof(t.rgba[0])};
+    Texture texture;
+    texture.width = t.width;
+    texture.height = t.height;
+    texture.used = frame_number;
+    texture.wraps = t.wrap_s || t.wrap_t;
+    texture.wrap_s = t.wrap_s;
+    texture.wrap_t = t.wrap_t;
+    texture.linear = t.linear;
+    texture.replacement = t.replacement;
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+    const bool placed = t.width <= kAtlasLargest && t.height <= kAtlasLargest && place(texture, t.width, t.height, t.linear);
+    if (placed && kBatchPageUploads) {
+        Page& page = pages[texture.page];
+        const size_t row = size_t(t.width) * 4;
+        for (uint16_t y = 0; y < t.height; ++y)
+            std::memcpy(page.shadow.data() + (size_t(texture.y + y) * kPageSize + texture.x) * 4,
+                        reinterpret_cast<const uint8_t*>(t.rgba.data()) + y * row, row);
+        if (page.dirty_bottom <= page.dirty_top) { page.dirty_top = texture.y; page.dirty_bottom = texture.y + t.height; }
+        else { page.dirty_top = std::min<int>(page.dirty_top, texture.y); page.dirty_bottom = std::max<int>(page.dirty_bottom, texture.y + t.height); }
+    } else if (placed) {
+        glBindTexture(GL_TEXTURE_2D, texture.id);
+        glTexSubImage2D(GL_TEXTURE_2D, 0, texture.x, texture.y, t.width, t.height, GL_RGBA, GL_UNSIGNED_BYTE, t.rgba.data());
+    }
+    if (placed) {
+        pages[texture.page].keys.push_back(t.key);
+        if (!texture.wraps || kBatchPageUploads) { textures[t.key] = texture; return; }
+    }
+    GLuint& own = placed ? texture.own : texture.id;
+    glGenTextures(1, &own);
+    glBindTexture(GL_TEXTURE_2D, own);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, t.width, t.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, t.rgba.data());
+    const GLint filter = t.linear ? GL_LINEAR : GL_NEAREST;
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
+    auto wrap = [](uint8_t mode) { return GLint(mode == 1 ? GL_REPEAT : mode == 2 ? GL_MIRRORED_REPEAT : GL_CLAMP_TO_EDGE); };
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap(t.wrap_s));
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap(t.wrap_t));
+    textures[t.key] = texture;
+}
+
+GLuint Renderer::own_texture(Texture& t) {
+    if (t.own || t.page < 0 || !kBatchPageUploads) return t.own;
+    const auto start = std::chrono::steady_clock::now();
+    const Page& page = pages[t.page];
+    std::vector<uint8_t> pixels(size_t(t.width) * t.height * 4);
+    const size_t row = size_t(t.width) * 4;
+    for (uint16_t y = 0; y < t.height; ++y)
+        std::memcpy(pixels.data() + y * row, page.shadow.data() + (size_t(t.y + y) * kPageSize + t.x) * 4, row);
+    glGenTextures(1, &t.own);
+    glBindTexture(GL_TEXTURE_2D, t.own);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, t.width, t.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
+    const GLint filter = page.filter == 1 ? GL_LINEAR : GL_NEAREST;
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
+    auto wrap = [](uint8_t mode) { return GLint(mode == 1 ? GL_REPEAT : mode == 2 ? GL_MIRRORED_REPEAT : GL_CLAMP_TO_EDGE); };
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap(t.wrap_s));
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap(t.wrap_t));
+    auto& s = gl_stats();
+    ++s.uploads; s.upload_bytes += pixels.size(); s.upload_ms += gl_ms_since(start);
+    return t.own;
+}
+
+void Renderer::draw(const Frame& frame) {
+    if (frame.picture_width != picture_width) resize(frame.picture_width);
+    ++frame_number;
+    const int width = target_width, height = target_height;
+    calls = 0;
+    // What this frame draws with stays: its pages are not started over by its own uploads.
+    for (const auto& command : frame.commands) {
+        if (command.kind != Command::draw || !command.state.texture || is_picture(command.state.texture)) continue;
+        if (auto found = textures.find(command.state.texture); found != textures.end()) {
+            found->second.used = frame_number;
+            if (found->second.page >= 0) pages[found->second.page].used = frame_number;
+        }
+    }
+    for (const auto& t : frame.textures) upload(t);
+    flush_pages();
+    if (frame.commands.empty()) return;
+
+    // The vertices in the bound texture's coordinates, and the batches: draws one after the
+    // other that differ only in where their texture lies in the same page draw as one.
+    struct Batch { const Command* command; GLuint texture; uint32_t first, count; };
+    std::vector<Batch> batches;
+    batches.reserve(frame.commands.size());
+    staging.resize(frame.vertices.size());
+    for (const auto& command : frame.commands) {
+        if (command.kind != Command::draw) { batches.push_back({&command, 0, 0, 0}); continue; }
+        const DrawState& s = command.state;
+        GLuint bound = 0;
+        float scale_u = 1, scale_v = 1, offset_u = 0, offset_v = 0;
+        float bounds[4] = {-1e6f, -1e6f, 1e6f, 1e6f};
+        float remap[2][2] = {{1, 0}, {1, 0}};   // per axis: scale and offset into one period
+        if (s.shader & shader_textured) {
+            if (is_picture(s.texture)) {
+                const uint32_t image = picture_address(s.texture);
+                const auto found = targets.find(image);
+                bound = image == frame.color_image ? copy : found != targets.end() ? found->second.texture : black;
+            } else if (auto found = textures.find(s.texture); found != textures.end()) {
+                Texture& t = found->second;
+                bound = t.page >= 0 ? pages[t.page].id : t.id;
+                // The HD picture over the same coordinates, a texture of its own (RT64's
+                // replacement: the tile's texels scaled to the picture's).
+                uint16_t hd_width = 0, hd_height = 0;
+                if (const GLuint hd = t.replacement && replacement ? replacement(t.replacement, t.wrap_s, t.wrap_t, t.linear, hd_width, hd_height) : 0) {
+                    bound = hd;
+                    if (!t.wraps) {
+                        bounds[0] = 0.5f / hd_width; bounds[1] = 0.5f / hd_height;
+                        bounds[2] = 1 - 0.5f / hd_width; bounds[3] = 1 - 0.5f / hd_height;
+                    }
+                    goto placed;
+                }
+                // A wrapping texture in a page: a draw within one period of it (a tile drawn
+                // from its second, mirrored copy, say) takes the period back to [0, 1]; one
+                // that crosses a period's edge repeats, from the texture of its own.
+                bool leaves = false;
+                if (t.wraps && t.page >= 0) {
+                    float low[2] = {1e9f, 1e9f}, high[2] = {-1e9f, -1e9f};
+                    for (uint32_t i = command.first; i < command.first + command.count; ++i) {
+                        low[0] = std::min(low[0], frame.vertices[i].u); high[0] = std::max(high[0], frame.vertices[i].u);
+                        low[1] = std::min(low[1], frame.vertices[i].v); high[1] = std::max(high[1], frame.vertices[i].v);
+                    }
+                    const uint8_t modes[2] = {t.wrap_s, t.wrap_t};
+                    for (int axis = 0; axis < 2; ++axis) {
+                        const float period = std::floor(low[axis] + 1e-3f);
+                        if (high[axis] > period + 1.001f) { leaves = true; break; }
+                        if (period == 0) continue;
+                        if (!modes[axis]) { leaves = true; break; }   // clamped and outside: the edge texels stretch
+                        const bool flip = modes[axis] == 2 && (int64_t(period) & 1);
+                        remap[axis][0] = flip ? -1.f : 1.f;
+                        remap[axis][1] = flip ? period + 1 : -period;
+                    }
+                }
+                if (leaves) bound = own_texture(t);
+                else if (t.page >= 0) {
+                    scale_u = float(t.width) / kPageSize; scale_v = float(t.height) / kPageSize;
+                    offset_u = float(t.x) / kPageSize; offset_v = float(t.y) / kPageSize;
+                    bounds[0] = (t.x + 0.5f) / kPageSize; bounds[1] = (t.y + 0.5f) / kPageSize;
+                    bounds[2] = (t.x + t.width - 0.5f) / kPageSize; bounds[3] = (t.y + t.height - 0.5f) / kPageSize;
+                } else if (!t.wraps) {
+                    bounds[0] = 0.5f / t.width; bounds[1] = 0.5f / t.height;
+                    bounds[2] = 1 - 0.5f / t.width; bounds[3] = 1 - 0.5f / t.height;
+                }
+            } else bound = black;
+        }
+    placed:
+        for (uint32_t i = command.first; i < command.first + command.count; ++i) {
+            const Vertex& in = frame.vertices[i];
+            GpuVertex& out = staging[i];
+            out.x = in.x; out.y = in.y; out.z = in.z; out.w = in.w;
+            out.u = offset_u + (in.u * remap[0][0] + remap[0][1]) * scale_u;
+            out.v = offset_v + (in.v * remap[1][0] + remap[1][1]) * scale_v;
+            std::copy(bounds, bounds + 4, out.bounds);
+            std::copy(in.shade, in.shade + 4, out.shade);
+            std::copy(in.prim, in.prim + 4, out.prim);
+        }
+        if (!batches.empty() && batches.back().command->kind == Command::draw && batches.back().texture == bound &&
+            batches.back().first + batches.back().count == command.first) {
+            const DrawState& last = batches.back().command->state;
+            if (last.shader == s.shader && last.blend == s.blend && last.depth == s.depth && last.env == s.env &&
+                last.alpha_ref == s.alpha_ref && std::equal(last.scissor, last.scissor + 4, s.scissor)) {
+                batches.back().count += command.count;
+                continue;
+            }
+        }
+        batches.push_back({&command, bound, command.first, command.count});
+    }
+
+    const Target& into = target(frame.color_image);
+    glBindFramebuffer(GL_FRAMEBUFFER, into.framebuffer);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depth);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, GLsizeiptr(staging.size() * sizeof(GpuVertex)), staging.data(), GL_STREAM_DRAW);
+    // The vertex layout and fixed state, again after a host draw changed them.
+    auto bind = [&] {
+        glBindFramebuffer(GL_FRAMEBUFFER, into.framebuffer);
+        glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        for (GLuint a : {attribute_position, attribute_uv, attribute_shade, attribute_prim, attribute_bounds}) glEnableVertexAttribArray(a);
+        glVertexAttribPointer(attribute_position, 4, GL_FLOAT, GL_FALSE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, x)));
+        glVertexAttribPointer(attribute_uv, 2, GL_FLOAT, GL_FALSE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, u)));
+        glVertexAttribPointer(attribute_bounds, 4, GL_FLOAT, GL_FALSE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, bounds)));
+        glVertexAttribPointer(attribute_shade, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, shade)));
+        glVertexAttribPointer(attribute_prim, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(GpuVertex), reinterpret_cast<const void*>(offsetof(GpuVertex, prim)));
+        glViewport(0, 0, width, height);
+        glEnable(GL_SCISSOR_TEST);
+        glDisable(GL_CULL_FACE);
+        glDepthFunc(GL_LEQUAL);
+        glActiveTexture(GL_TEXTURE0);
+    };
+    bind();
+
+    const Program* current = nullptr;
+    uint32_t current_key = ~0u;
+    GLuint bound_texture = ~0u;
+    int blend = -1, depth_mode = -1;
+    int16_t scissor[4] = {-1, -1, -1, -1};
+    auto set_scissor = [&](const int16_t* s) {
+        if (std::equal(s, s + 4, scissor)) return;
+        std::copy(s, s + 4, scissor);
+        const int edge = int(std::ceil(picture_width - 1e-3f));
+        const int left = std::clamp<int>(s[0], 0, edge), right = std::clamp<int>(s[2], 0, edge);
+        const int top = std::clamp<int>(s[1], 0, kPictureHeight), bottom = std::clamp<int>(s[3], 0, kPictureHeight);
+        const int x0 = int(std::lround(left * width / picture_width)), x1 = int(std::lround(right * width / picture_width));
+        const int y0 = (kPictureHeight - bottom) * height / kPictureHeight, y1 = (kPictureHeight - top) * height / kPictureHeight;
+        glScissor(x0, y0, std::max(0, x1 - x0), std::max(0, y1 - y0));
+    };
+    for (const auto& batch : batches) {
+        const Command& command = *batch.command;
+        if (command.kind == Command::clear_depth) {
+            const int16_t whole[4] = {0, 0, int16_t(std::ceil(picture_width - 1e-3f)), kPictureHeight};
+            set_scissor(whole);
+            glDepthMask(GL_TRUE);
+            depth_mode = -1;
+            glClear(GL_DEPTH_BUFFER_BIT);
+            continue;
+        }
+        if (command.kind == Command::native) {
+            if (!native) continue;
+            for (GLuint a : {attribute_position, attribute_uv, attribute_shade, attribute_prim, attribute_bounds}) glDisableVertexAttribArray(a);
+            native(command, width, height);
+            bind();
+            current = nullptr; current_key = ~0u; bound_texture = ~0u; blend = -1; depth_mode = -1;
+            std::fill(scissor, scissor + 4, int16_t(-1));
+            glDisable(GL_BLEND);
+            glUseProgram(0);
+            continue;
+        }
+        if (command.kind == Command::capture) {   // the picture so far, for draws that read it
+            const auto copied = std::chrono::steady_clock::now();
+            glBindTexture(GL_TEXTURE_2D, copy);
+            glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0, width, height);
+            ++gl_stats().copies;
+            gl_stats().copy_ms += gl_ms_since(copied);
+            bound_texture = copy;
+            continue;
+        }
+        const DrawState& s = command.state;
+        if (s.shader != current_key) {
+            current_key = s.shader;
+            current = program(s.shader);
+            if (current) glUseProgram(current->id);
+        }
+        if (!current) continue;
+        if (current->env >= 0)
+            glUniform4f(current->env, (s.env >> 24) / 255.f, ((s.env >> 16) & 0xFF) / 255.f, ((s.env >> 8) & 0xFF) / 255.f, (s.env & 0xFF) / 255.f);
+        if (current->alpha_ref >= 0) glUniform1f(current->alpha_ref, s.alpha_ref / 255.f);
+        if ((s.shader & shader_textured) && batch.texture != bound_texture) {
+            bound_texture = batch.texture;
+            glBindTexture(GL_TEXTURE_2D, batch.texture);
+        }
+        if (s.blend != blend) {
+            blend = s.blend;
+            if (blend == blend_alpha) { glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); }
+            else glDisable(GL_BLEND);
+        }
+        if (s.depth != depth_mode) {
+            depth_mode = s.depth;
+            if (depth_mode & 1) { glEnable(GL_DEPTH_TEST); glDepthFunc(GL_LEQUAL); }
+            else if (depth_mode & 2) { glEnable(GL_DEPTH_TEST); glDepthFunc(GL_ALWAYS); }
+            else glDisable(GL_DEPTH_TEST);
+            glDepthMask((depth_mode & 2) ? GL_TRUE : GL_FALSE);
+        }
+        set_scissor(s.scissor);
+        glDrawArrays(GL_TRIANGLES, GLint(batch.first), GLsizei(batch.count));
+        ++calls;
+    }
+    glDisable(GL_BLEND);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_SCISSOR_TEST);
+    glDepthMask(GL_TRUE);
+    for (GLuint a : {attribute_position, attribute_uv, attribute_shade, attribute_prim, attribute_bounds}) glDisableVertexAttribArray(a);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glUseProgram(0);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+std::string Renderer::describe(uint64_t key) const {
+    const auto found = textures.find(key);
+    if (found == textures.end()) return "-";
+    const Texture& t = found->second;
+    char text[96];
+    if (t.page >= 0) std::snprintf(text, sizeof text, "page %d %u,%u %ux%u%s", t.page, t.x, t.y, t.width, t.height, t.wraps ? " wraps" : "");
+    else std::snprintf(text, sizeof text, "own %ux%u%s", t.width, t.height, t.wraps ? " wraps" : "");
+    return text;
+}
+
+void Renderer::collect(uint32_t frames) {
+    // Every 32nd frame: a pass over every texture held took 2.3 ms a frame on the Switch, and
+    // what goes is what has not been used for `frames` frames anyway.
+    if (frame_number % 32) return;
+    for (auto it = targets.begin(); it != targets.end();) {
+        if (frame_number - it->second.used > frames) {
+            glDeleteFramebuffers(1, &it->second.framebuffer);
+            glDeleteTextures(1, &it->second.texture);
+            it = targets.erase(it);
+        } else ++it;
+    }
+    // Atlas pages are started over when full (place()); only textures of their own go here.
+    for (auto it = textures.begin(); it != textures.end();) {
+        if (it->second.page < 0 && frame_number - it->second.used > frames) {
+            glDeleteTextures(1, &it->second.id);
+            it = textures.erase(it);
+        } else ++it;
+    }
+}
+
+}  // namespace srw64::n64gl

@@ -1,11 +1,17 @@
 #define HLSL_CPU
 #include "native_sprite.hpp"
+#include "app/runtime.hpp"
+#include "run_files.hpp"
+#include "native_quads.hpp"
+#include "hd_texture.hpp"
 #include "battle_hud.hpp"
 #include "presentation/image_mode.hpp"
 #include "presentation/rgba_file.hpp"
+#ifndef SRW64_GL_ONLY
 #include "hle/rt64_state.h"
 #include "hle/rt64_workload.h"
 #include "rhi/rt64_render_hooks.h"
+#endif
 #include "native_gpu.hpp"
 #include "game_frame.hpp"
 #include "json/json.hpp"
@@ -59,6 +65,8 @@ struct Asset {
     std::vector<std::vector<uint8_t>> levels;  // premultiplied RGBA8 mips, dropped after upload
     std::unique_ptr<gpu::Texture> texture;
     std::unique_ptr<plume::RenderDescriptorSet> set;
+    std::shared_ptr<const std::vector<uint8_t>> gl_pixels;   // the GL renderer's (gl_quads)
+    uint32_t gl_format = 0, gl_levels = 1;                     // a prepared copy's (hd_texture.hpp)
     Clock::time_point used{};
 };
 struct Image {
@@ -97,9 +105,11 @@ bool stopping = false;
 std::array<Draw, kRing> ring;
 std::mutex ring_mutex;
 uint32_t next_id = 1;
+#ifndef SRW64_GL_ONLY
 RT64::NativeMeshClassify* previous_classify{};
 RT64::NativeMeshRender* previous_render{};
-std::unique_ptr<gpu::Program> program;      // src/host/shaders/HdSprite{VS,PS}.hlsl
+std::unique_ptr<gpu::Program> program;
+#endif      // src/host/shaders/HdSprite{VS,PS}.hlsl
 std::atomic<uint64_t> rewritten{}, rendered{}, pending{}, skipped{}, unexpected{}, decoded{}, released{}, failures{};
 std::atomic<uint64_t> text_placed{}, text_waiting{};
 std::mutex log_mutex;
@@ -243,8 +253,14 @@ void work() {
         uint32_t w = 0, h = 0;
         float units[2]{}, origin[2]{};
         bool ok = false;
+        hd_texture::Compressed prepared;
         try {
-            if (render) {
+            if (!render && !recolor && hd_texture::load(file, prepared)) {
+                // The Switch's copy, already premultiplied with its mips (hd_texture.hpp); a
+                // recoloured frame still starts from the picture.
+                w = prepared.width; h = prepared.height;
+                ok = true;
+            } else if (render) {
                 auto image = render();
                 w = image.width; h = image.height; units[0] = image.units[0]; units[1] = image.units[1];
                 origin[0] = image.origin[0]; origin[1] = image.origin[1];
@@ -266,11 +282,32 @@ void work() {
         // The mips before the lock: the game thread takes it for every sprite and text item,
         // RT64's workload thread for every native draw, and a full HD frame's mips take milliseconds.
         std::vector<std::vector<uint8_t>> levels;
-        if (ok) { levels.push_back(std::move(pixels)); add_mips(levels, w, h); }
+        if (ok && !prepared.data) { levels.push_back(std::move(pixels)); add_mips(levels, w, h); }
         std::lock_guard lock(asset_mutex);
         Asset& asset = *assets[size_t(index)];
         if (!ok) { asset.state = Asset::failed; ++failures; continue; }
         asset.width = w; asset.height = h;
+        asset.gl_pixels = prepared.data; asset.gl_format = prepared.format; asset.gl_levels = prepared.data ? prepared.levels : 1;
+#ifdef SRW64_GL_ONLY
+        // The GL renderer has no upload step to release at: pictures idle long enough beyond
+        // kResident go here, and are made again when next drawn.
+        const auto now = Clock::now();
+        // Text made here (a glyph, a label) is small and slow to make again on the Switch:
+        // it stays, or a battle's digits went blank for a few frames each time they returned.
+        constexpr size_t kSmallText = 256 << 10;
+        const auto evictable = [](const Asset& a) {
+            if (!a.gl_pixels && a.levels.empty()) return false;
+            return !a.render || (a.gl_pixels ? a.gl_pixels->size() : a.levels.front().size()) > kSmallText;
+        };
+        size_t resident = 0;
+        for (const auto& other : assets) resident += evictable(*other);
+        if (resident >= kResident)
+            for (auto& other : assets)
+                if (other->state == Asset::ready && evictable(*other) && now - other->used > kIdle) {
+                    other->gl_pixels.reset(); other->levels.clear(); other->state = Asset::idle; ++released;
+                }
+        asset.used = now;
+#endif
         asset.units[0] = units[0]; asset.units[1] = units[1];
         asset.origin[0] = origin[0]; asset.origin[1] = origin[1];
         asset.levels = std::move(levels);
@@ -302,6 +339,7 @@ int text_asset(const TextJob& job) {
     return by_key[job.key] = int(assets.size() - 1);
 }
 
+#ifndef SRW64_GL_ONLY  // RT64's hooks
 uint32_t classify(RT64::State* state, const RT64::DisplayList* dl) {
     const RT64::DisplayList& tag = dl[-1];
     if (tag.w0 == kTagW0 && (tag.w1 & 0xFFFF0000u) == kTagW1) return kIdBase | (tag.w1 & 0xFFFF);
@@ -447,6 +485,71 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     return true;
 }
 
+#endif
+
+// The GL renderer's view of a tag (native_quads.hpp): the same pictures and places as render(),
+// from the CPU pixels, which that renderer never hands to Plume.
+std::shared_ptr<const std::vector<uint8_t>> pixels_of(Asset& asset) {
+    if (asset.state != Asset::ready) return nullptr;
+    if (!asset.gl_pixels && !asset.levels.empty()) {
+        asset.gl_pixels = std::make_shared<const std::vector<uint8_t>>(std::move(asset.levels[0]));
+        asset.gl_format = 0; asset.gl_levels = 1;
+        asset.levels.clear();
+    }
+    asset.used = Clock::now();
+    return asset.gl_pixels;
+}
+bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
+    if ((id & 0xFFFF0000u) != kIdBase) return false;
+    Draw draw;
+    {
+        std::lock_guard lock(ring_mutex);
+        draw = ring[id % kRing];
+    }
+    if (draw.id != (id & 0xFFFF) || draw.asset < 0) return true;
+    std::lock_guard lock(asset_mutex);
+    if (!draw.items.empty()) {
+        for (const auto& item : draw.items) {
+            if (item.asset < 0) continue;
+            Asset& asset = *assets[size_t(item.asset)];
+            native_quads::Quad q;
+            if (!(q.pixels = pixels_of(asset))) continue;
+            q.width = asset.width; q.height = asset.height; q.format = asset.gl_format; q.levels = asset.gl_levels;
+            q.rect[0] = item.at[0] - asset.origin[0]; q.rect[1] = item.at[1] - asset.origin[1];
+            q.rect[2] = q.rect[0] + asset.units[0]; q.rect[3] = q.rect[1] + asset.units[1];
+            q.color[0] = item.tint[0]; q.color[1] = item.tint[1]; q.color[2] = item.tint[2];
+            q.label = asset.key;
+            out.push_back(std::move(q));
+        }
+        return true;
+    }
+    Asset& asset = *assets[size_t(draw.asset)];
+    native_quads::Quad q;
+    if (!(q.pixels = pixels_of(asset))) return true;
+    q.width = asset.width; q.height = asset.height; q.format = asset.gl_format; q.levels = asset.gl_levels;
+    float rect[4] = {draw.rect[0], draw.rect[1], draw.rect[2], draw.rect[3]};
+    if (draw.text && draw.anchor == TextJob::Anchor::origin) {
+        rect[0] = draw.at[0] - asset.origin[0]; rect[1] = draw.at[1] - asset.origin[1];
+        rect[2] = rect[0] + asset.units[0]; rect[3] = rect[1] + asset.units[1];
+    } else if (draw.text) {
+        const float cx = (rect[0] + rect[2]) / 2, w = asset.units[0], h = asset.units[1];
+        rect[0] = cx - w / 2; rect[2] = cx + w / 2;
+        const float sign = draw.quad ? -1.f : 1.f;
+        const float top = draw.anchor == TextJob::Anchor::top ? rect[1] : (rect[1] + rect[3]) / 2 - sign * h / 2;
+        rect[1] = top; rect[3] = top + sign * h;
+    }
+    std::copy(rect, rect + 4, q.rect);
+    std::copy(draw.uv, draw.uv + 4, q.uv);
+    std::copy(draw.color, draw.color + 4, q.color);
+    q.model = draw.quad;
+    q.z = draw.z;
+    q.wrap = draw.wrap;
+    q.whole = draw.wide;
+    q.label = asset.key;
+    out.push_back(std::move(q));
+    return true;
+}
+
 bool identify(const uint8_t* rdram, const SceneDraw& draw, SceneId& id) {
     if (draw.slot >= 300 || draw.sub >= 4) return false;
     const uint32_t sub = kSlots + draw.slot * kSlotSize + kSubBase + draw.sub * kSubSize;
@@ -466,11 +569,12 @@ bool identify(const uint8_t* rdram, const SceneDraw& draw, SceneId& id) {
 }
 }
 
+void warm(const TextJob& job) { ready(text_asset(job)); }
+
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& directory) {
     output = directory;
     if (!art_directory.empty() && std::filesystem::exists(art_directory / "srw64-scene-images.json")) {
-        std::ifstream stream(art_directory / "srw64-scene-images.json");
-        const json spec = json::parse(stream);
+        const json spec = json::parse(app::read_text(art_directory / "srw64-scene-images.json", 64u << 20));
         if (spec.at("schema") != "srw64.scene-images.v1") throw std::runtime_error("Unsupported scene image specification");
         for (const auto& row : spec.at("images")) {
             Image image;
@@ -480,7 +584,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             image.wrap = row.at("wrap");
             auto asset = std::make_unique<Asset>();
             asset->file = art_directory / row.at("file").get<std::string>();
-            if (!std::filesystem::exists(asset->file)) throw std::runtime_error("Missing scene image " + asset->file.string());
+            if (!hd_texture::exists(asset->file)) throw std::runtime_error("Missing scene image " + asset->file.string());
             asset->key = "image:" + row.at("file").get<std::string>();
             {
                 std::lock_guard lock(asset_mutex);
@@ -499,8 +603,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     // (docs/design/battle-animation-rendering.md §12-13).
     const auto load_units = [&](const char* name, const char* schema, bool frames) {
         if (art_directory.empty() || !std::filesystem::exists(art_directory / name)) return;
-        std::ifstream stream(art_directory / name);
-        const json spec = json::parse(stream);
+        const json spec = json::parse(app::read_text(art_directory / name, 64u << 20));
         if (spec.at("schema") != schema) throw std::runtime_error(std::string("Unsupported ") + name);
         size_t count = 0;
         for (const auto& row : spec.at("images")) {
@@ -509,7 +612,7 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             image.frames.insert(frames ? row.at("frame").get<uint8_t>() : uint8_t(0));
             auto asset = std::make_unique<Asset>();
             asset->file = art_directory / row.at("file").get<std::string>();
-            if (!std::filesystem::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
+            if (!hd_texture::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
             asset->key = "unit:" + row.at("file").get<std::string>();
             {
                 std::lock_guard lock(asset_mutex);
@@ -527,20 +630,22 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     // Other battle sprites, ordinary actors drawn the same way: the cut-ins (tools/hd_ai/cutin_hd.py).
     load_units("srw64-battle-sprites-hd.json", "srw64.unit-extra-images.v1", true);
     if (!art_directory.empty() && std::filesystem::exists(art_directory / "srw64-battle-sprites-hd.json")) {
-        std::ifstream stream(art_directory / "srw64-battle-sprites-hd.json");
-        const json spec = json::parse(stream);
+        const json spec = json::parse(app::read_text(art_directory / "srw64-battle-sprites-hd.json", 64u << 20));
         std::lock_guard lock(scene_thumb_mutex);
         for (const auto& row : spec.value("scenes", json::array()))
             scene_thumbs[row.at("key").get<std::string>()] = (art_directory / row.at("file").get<std::string>()).string();
     }
     if (installed) return;
     installed = true;
-    if (!output.empty()) log.open(output / "scene-sprites.jsonl");
+    if (!output.empty()) srw64::open_run_log(log,output / "scene-sprites.jsonl");
     worker = std::thread(work);
     // Chain after marker/hdmap/portraits, which install their hooks first.
+#ifndef SRW64_GL_ONLY
     previous_classify = RT64::GetNativeMeshClassify();
     previous_render = RT64::GetNativeMeshRender();
     RT64::SetNativeMeshHooks(classify, render);
+#endif
+    native_quads::add(gl_quads);
 }
 
 void add_generated_image(uint16_t scene, uint16_t atlas, uint16_t palette, std::vector<uint8_t> frames,
@@ -565,12 +670,14 @@ void add_generated_image(uint16_t scene, uint16_t atlas, uint16_t palette, std::
 
 void set_text(Describe value) { describe = value; }
 
+#ifndef SRW64_GL_ONLY
 void gpu_init() {
     // The picture, a clamped sampler, and one that repeats across (clamped vertically).
     program = std::make_unique<gpu::Program>("HdSprite", std::vector<gpu::Slot>{{gpu::Slot::texture},
         {gpu::Slot::sampler, {.linear = true, .mipmaps = true}},
         {gpu::Slot::sampler, {.linear = true, .mipmaps = true, .repeat_u = true}}});
 }
+#endif
 
 bool repeats_across(const uint8_t* rdram, const SceneDraw& draw) {
     SceneId id;
@@ -889,7 +996,9 @@ void shutdown() {
             {"released", released.load()}, {"resident_at_exit", resident}}).dump(2) << '\n';
     }
     for (auto& asset : assets) { asset->set.reset(); asset->texture.reset(); }
+#ifndef SRW64_GL_ONLY
     program.reset();
+#endif
 }
 std::string viewer_scene_image(const std::string& key) {
     std::lock_guard lock(scene_thumb_mutex);

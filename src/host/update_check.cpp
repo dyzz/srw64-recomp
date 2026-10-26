@@ -132,7 +132,7 @@ std::optional<Release> parse(const std::string& body, std::string_view language)
 }
 
 bool supported() {
-#ifdef __ANDROID__
+#if defined(__ANDROID__) || defined(__vita__) || defined(__SWITCH__)
     return false;
 #else
     return true;

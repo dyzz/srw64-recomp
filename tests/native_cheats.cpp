@@ -114,15 +114,21 @@ int main() {
     assert(morale_room(0,p,100)==150 && morale_room(morale_999,p,100)==227 && morale_room(morale_999,p,950)==999);
     assert(morale_room(morale_999,0x80190000,100)==150);
 
-    // Exclusive rows: one bit of each group stays, the lowest.
-    assert(one_per_group(reward_x2|reward_x10|max_funds)==(reward_x2|max_funds));
+    // Exclusive rows: one bit of each group stays, the lowest; EXP and money are apart.
+    assert(one_per_group(exp_x2|exp_x10|max_funds)==(exp_x2|max_funds));
+    assert(one_per_group(exp_x3|money_x1_5|money_x5)==(exp_x3|money_x1_5));
     assert(one_per_group(morale_300|morale_999|level_party|level_curve)==(morale_300|level_curve));
-    assert(!toggle(reward_x5) && !toggle(morale_200) && toggle(real_damage) && toggle(keep_morale));
+    assert(!toggle(exp_x5) && !toggle(money_x1_5) && !toggle(morale_200) && toggle(real_damage) && toggle(keep_morale));
 
-    // EXP and money: multiplied, kept within the u16 the settlement stores.
-    assert(reward_multiplier(0)==1 && reward_multiplier(reward_x2)==2 && reward_multiplier(reward_x5)==5 && reward_multiplier(reward_x10)==10);
-    assert(multiplied(0,1234)==1234 && multiplied(reward_x5,1234)==6170 && multiplied(reward_x10,9000)==0xFFFF);
-    assert(multiplied(reward_x2,0xFFFF0010)==0x20);   // only the u16 counts
+    // EXP and money: each its own multiplier in halves, kept within the u16 the settlement stores.
+    assert(exp_halves(0)==2 && exp_halves(exp_x1_5)==3 && exp_halves(exp_x3)==6 && exp_halves(exp_x10)==20 && exp_halves(money_x10)==2);
+    assert(money_halves(0)==2 && money_halves(money_x2)==4 && money_halves(money_x5)==10 && money_halves(exp_x5)==2);
+    assert(multiplied(2,1234)==1234 && multiplied(3,1235)==1852 && multiplied(10,1234)==6170 && multiplied(20,9000)==0xFFFF);
+    assert(multiplied(4,0xFFFF0010)==0x20);   // only the u16 counts
+
+    // Saved ids: the current ones, and the earlier shared multiplier as both rows.
+    assert(bits_of("exp1.5")==exp_x1_5 && bits_of("money10")==money_x10 && bits_of("funds")==max_funds && bits_of("nope")==0);
+    assert(bits_of("x2")==(exp_x2|money_x2) && bits_of("x5")==(exp_x5|money_x5) && bits_of("x10")==(exp_x10|money_x10));
 
     // Damage past 65535: kept per slot with the switch on, taken through the defenses.
     {

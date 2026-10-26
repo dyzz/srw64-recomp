@@ -1,4 +1,5 @@
 #include "cheats.hpp"
+#include "run_files.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
 #include "native_dialogue.hpp"
@@ -127,15 +128,14 @@ extern "C" uint32_t srw64_morale_room(uint64_t pilot,uint64_t morale) {
 }
 
 void configure(const std::filesystem::path& directory) {
-    log.open(directory/"cheat-events.jsonl");
+    srw64::open_run_log(log,directory/"cheat-events.jsonl");
     srw64_game_hooks.cheats_frame=frame;
     srw64_game_hooks.cheats_intermission=intermission;
     srw64_game_hooks.cheats_restored=restored;
     if(const char* names=std::getenv("SRW64_CHEATS")) {
         unsigned value=0;
         std::stringstream list(names);
-        for(std::string id;std::getline(list,id,',');)
-            for(const auto& entry:catalog)if(id==entry.id)value|=entry.bit;
+        for(std::string id;std::getline(list,id,',');)value|=bits_of(id);
         set_active(value);
     }
 }

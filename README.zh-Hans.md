@@ -17,8 +17,8 @@
   <a href="https://srw64.dreamquest.club/zh/guide/">攻略</a>
 </p>
 
-Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原生重编译项目。支持电脑、Steam Deck
-和安卓手机，提供中英文全文翻译和宽屏显示，另有可选的 HD 美术包。
+Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原生重编译项目。支持电脑、Steam Deck、
+安卓手机和 Nintendo Switch，提供中英文全文翻译和宽屏显示，另有可选的 HD 美术包。
 
 > **需要自备日版 ROM**（スーパーロボット大戦64，Rev 0）。本仓库和下载包都不含任何游戏数据，
 > 见 [ROM 说明](https://srw64.dreamquest.club/zh/faq/#rom)。
@@ -157,11 +157,11 @@ Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原
 - **宽屏不拉伸。** 支持 4:3 到 16:9 的屏幕比例。原版画面居中，两侧扩展场景，以保持比例的方式铺满屏幕。
 - **掌机、手机与手柄。** 自动识别 Steam Deck，并默认使用对应键位和大号界面。Android 提供触屏操作，仅显示当前画面需要的按键，
   并标注「确定」「快进」「下个单位」等功能。
-- **可选 HD 美术包。** HD 美术包单独下载，所有平台通用；未安装时使用原版像素画面，安装后可在游戏中随时切换。
+- **可选 HD 美术包。** HD 美术包单独下载，电脑与 Android 通用，Switch 另有一份；未安装时使用原版像素画面，安装后可在游戏中随时切换。
 
 ## 系统要求
 
-Windows、Steam Deck 和 Android 版为实验性。显卡门槛与其他使用
+Windows、Steam Deck、Android 和 Switch 版为实验性。电脑的显卡门槛与其他使用
 [RT64](https://github.com/rt64/rt64) 渲染的重编译项目相同；更旧的硬件没有测试过。
 
 ### Windows（实验性）
@@ -206,6 +206,17 @@ LCD 版与 OLED 版，SteamOS 保持最新即可。使用 Linux 安装包，运�
 | 图形接口 | Vulkan 1.1 |
 | 推荐 | 骁龙 865、天玑 1080、Exynos 1380、Tensor G2 及以上，约 30 FPS |
 | 入门芯片 | 天玑 6100+、天玑 700 等（Mali-G57）可以运行，约 10–14 FPS |
+
+### Nintendo Switch（实验性）
+
+| 项目 | 要求 |
+| --- | --- |
+| 主机 | 能运行 Atmosphère 自制系统的 Switch（初代机型上测试） |
+| 系统 | Atmosphère 与 hbmenu，应用模式（按住 R 启动任意游戏进 hbmenu） |
+| 空间 | SD 卡约 150 MB，Switch 版 HD 包另需约 1.3 GB |
+
+解压到 SD 卡根目录，把 ROM 命名为 `rom.z64` 放进 `/switch/Marchwind64/`。首次启动在主机上从 ROM 导入，约半分钟。
+只提供 NRO 自制程序，不提供 NSP；电脑版的 HD 包在 Switch 上不能用。
 
 游戏本体约 150 MB，可选的 HD 美术包另需约 550 MB。启动闪退或卡住时，请先更新显卡驱动。各平台的安装步骤见官网的[安装页](https://srw64.dreamquest.club/zh/install/)。
 

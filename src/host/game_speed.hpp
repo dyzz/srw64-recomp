@@ -11,6 +11,8 @@
 // screens keep the original speed, as their key repeats count frames too.
 #include "guest_memory.hpp"
 #include "script_skip.hpp"
+#include "sched_rate.hpp"
+#include <algorithm>
 #include <atomic>
 #include <cstdint>
 
@@ -19,7 +21,10 @@ uint64_t srw64_current_vi();
 namespace srw64::game_speed {
 using guest::read;
 
-inline std::atomic_bool on{false};        // the setting (presentation_settings.cpp)
+// The speed when hurried (presentation_settings.cpp): 1 is off, 2, or 3 and 4 with the
+// 120 Hz scheduler (sched_rate.hpp). The speed button steps through them (frontend.cpp).
+inline std::atomic<unsigned> level{1};
+inline unsigned top_level(){return sched_rate::factor()==2 ? 4 : 2;}
 inline std::atomic_bool running{false};   // this frame hurried (the debug status)
 inline std::atomic<uint64_t> menu_vi{0};  // the pre-battle screens' last step
 
@@ -30,6 +35,9 @@ constexpr uint32_t interval=0x8010F0C8, mode=0x8015DA02, map_state=0x80172EB0, p
 // frame they are up (801D5064 / 801D5294, game_hooks.cpp). They are menus wherever they
 // come, the enemy phase too.
 inline void menu_step(){menu_vi=srw64_current_vi();}
+
+// Experiment: SRW64_FORCE_FAST=1 hurries every frame while the setting is on.
+inline bool force_fast(){static const bool f=sched_rate::env_number("SRW64_FORCE_FAST",0)==1;return f;}
 
 // The tactical UI's states that wait for the player (docs/gameplay/original-controls.md §3):
 // the idle cursor and its motion, the unit menus, the move grid, the weapon and spirit
@@ -66,14 +74,32 @@ inline bool hurried(const uint8_t* ram,bool menu) {
     }
 }
 
+// The interval for a hurried step. At 60 Hz 2x is every retrace. At 120 Hz the original
+// speed is every 4th, 2x every 2nd, 4x every one, and 3x averages 4/3: steps 1, 1 and 2
+// retraces apart in turn. A step has run when the logic gate's count (D_80172D0C, raised
+// after this hook) reads 0 here; `turn` counts them for 3x.
+inline uint32_t fast_interval(const uint8_t* ram,unsigned speed) {
+    if(sched_rate::factor()==1)return 1;
+    if(speed!=3)return speed==4 ? 1 : 2;
+    static unsigned turn=0;
+    if(read(ram,sched_rate::logic_count,4)==0)++turn;
+    return turn%3==2 ? 2 : 1;
+}
+
+// Logic steps a second now: 30, or 30 times the speed while hurried.
+inline unsigned step_rate(){return running.load() ? 30*std::min(level.load(),top_level()) : 30;}
+
 // Game thread, every VI (the frame boundary). Writes the interval once the game has set
 // it, so the boot runs as it always did.
 inline void frame(uint8_t* ram) {
     const uint32_t now=read(ram,interval,4);
-    if(now!=1 && now!=2){running=false;return;}
+    if(now!=1 && now!=2 && now!=4){running=false;return;}
     const uint64_t vi=srw64_current_vi();
-    const bool fast=on.load() && hurried(ram,vi-menu_vi.load()<4);
+    const unsigned speed=std::min(level.load(),top_level());
+    const bool fast=speed>1 && (force_fast() || hurried(ram,vi-menu_vi.load()<4));
     running=fast;
-    if(now!=(fast?1u:2u))guest::write32(ram,interval,fast?1:2);
+    sched_rate::uneven=fast && speed==3;
+    const uint32_t want=fast ? fast_interval(ram,speed) : 2*sched_rate::factor();
+    if(now!=want)guest::write32(ram,interval,want);
 }
 }  // namespace srw64::game_speed

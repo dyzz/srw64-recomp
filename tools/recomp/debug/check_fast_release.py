@@ -101,9 +101,23 @@ def held_vis(log):
     return release['vi'] - press['vi'] if press and release else None
 
 
+def until_pages(left=2, tries=6):
+    """Reading, with at least `left` pages of the record still to go (this one and another,
+    whose confirm turns the second): on a record's last page the game may run a stretch of
+    script before the next record comes, and a 0.8 s hold there turns one page whatever the
+    controls do (R2 landed on one, 2026-10-25)."""
+    for _ in range(tries):
+        d = until_reading()
+        if d.get('pages', 1) - d.get('page', 0) >= left:
+            return d
+        keys(press='z', hold_ms=80)
+        time.sleep(.6)
+    return until_reading()
+
+
 def hold_and_let_go(name, down, up, confirm):
     """Held 0.8 s: pages turn; let go: nothing moves; one confirm: one page."""
-    until_reading()
+    until_pages()
     start = cursor()
     down()
     time.sleep(.8)
@@ -191,6 +205,9 @@ check('pad-r2-ends-automatic', was_auto and release and not release['automatic']
       {'automatic_before': was_auto, 'release': release, 'late_turns': late, 'automatic_after': d.get('automatic')})
 
 # R2 + Menu: the segment skip, which letting go of R2 does not stop. Last: it skips the scene.
+# The native skip runs a segment in a frame or two (docs/native/script-skip.md), so it often
+# reaches the boundary before R2 is let go (2 VI, 2026-10-25): that passes too. A let-go
+# while it still runs must leave it on (the release row says skip).
 until_reading()
 start = cursor()
 pad(down='r2')
@@ -204,8 +221,10 @@ log = rows(start)
 began = next((i for i, r in enumerate(log) if r['kind'] == 'skip_start'), None)
 released = next((r for r in log[(began or 0):] if r['kind'] == 'fast' and not r['fast']), None)
 ended = next((r for r in log[(began or 0):] if r['kind'] == 'boundary'), None)
-check('pad-r2-menu-skip-outlasts-r2', began is not None and released and released['skip'] and ended,
-      {'skip_start': log[began] if began is not None else None, 'release': released, 'boundary': ended})
+before_end = released is not None and ended is not None and released['vi'] < ended['vi']
+check('pad-r2-menu-skip-outlasts-r2', began is not None and ended is not None and (not before_end or released['skip']),
+      {'skip_start': log[began] if began is not None else None, 'release': released, 'boundary': ended,
+       'let_go_while_skipping': before_end})
 
 failed = [c['check'] for c in checks if not c['passed']]
 print('CHECKS', len(checks), 'FAILED', failed, flush=True)

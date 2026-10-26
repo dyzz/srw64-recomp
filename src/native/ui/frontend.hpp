@@ -12,6 +12,8 @@ void update();
 bool event(SDL_Event&);
 // The on-screen controller's buttons (touch_pad.hpp), in srw64_pad_state()'s bits.
 uint32_t touch_buttons();
+// The Controls page waits for the next key or button to bind: the host's own keys stand aside.
+bool capturing_input();
 void shutdown();
 void render_init(plume::RenderInterface*, plume::RenderDevice*);
 // layer: -1 every page; 0 those that belong to the game picture, drawn before a RetroArch
@@ -20,6 +22,18 @@ void render_init(plume::RenderInterface*, plume::RenderDevice*);
 bool draw(plume::RenderCommandList*, plume::RenderFramebuffer*, bool name_cover, int layer = -1);
 void presented();
 void render_shutdown();
+// The same on the GL renderer (SRW64_RENDERER=gl): the graphics thread with the GL context
+// current, into the bound window framebuffer of width x height pixels.
+void render_init_gl();
+bool draw_gl(int width, int height, bool name_cover);
+// The window thread's updates and the render thread's draws since the last call: their waits
+// for the UI lock and their work (SRW64_PERF), and the counters start again.
+std::string perf_line();
+// Whether any page of the shared UI is up (it may change each frame: the screen is redrawn).
+// The frame-rate readout does not count: it changes twice a second, as readout_changes() counts.
+bool shown();
+uint64_t readout_changes();
+void render_shutdown_gl();
 nlohmann::json tree();
 nlohmann::json click(const nlohmann::json&);
 nlohmann::json key(const nlohmann::json&);

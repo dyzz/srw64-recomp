@@ -29,7 +29,7 @@ function(srw64_add_portable_text)
     target_compile_features(srw64_portable_text PUBLIC cxx_std_20)
     target_include_directories(srw64_portable_text PUBLIC "${root}/src/native")
     target_link_libraries(srw64_portable_text PRIVATE Freetype::Freetype ${harfbuzz_target} ICU::uc ICU::i18n)
-    if(ANDROID)
+    if(ANDROID OR NINTENDO_SWITCH)
         # ICU's data cut to what the game uses (tools/release/icu_data.py), in place of ICU's.
         set(SRW64_ICU_DATA_SOURCE "" CACHE FILEPATH "C source of ICU's data subset (tools/release/icu_data.py c-source)")
         if(SRW64_ICU_DATA_SOURCE)
