@@ -34,7 +34,7 @@ args = parser.parse_args()
 package = Path(args.package).resolve()
 
 if args.part == 'title':
-    # campaigns: the MOD entry is shown (SRW64_MOD_ENTRY), and with it the MOD music settings.
+    # campaigns: a main-game save library beside the MOD packages, as players have.
     s = Session.launch(language='zh-Hans', images='original', audio=True, campaigns=True)
 else:
     s = Session.launch(language='zh-Hans', images='original', audio=True, mini_stage=str(ROOT / 'config/recomp/mini-stages/mod-music.json'))

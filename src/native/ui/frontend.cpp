@@ -191,11 +191,10 @@ std::atomic_bool settings_open{}, physical_held{};
 // The settings window opened from the title's MOD entry is the MOD manager: its own pages
 // (campaigns, art, dialogue, music) instead of the settings'; closing it ends that.
 std::atomic_bool mod_open{};
-// Its entries stay hidden until the packages ship (docs/design/mod-packages.md §13); the
-// manager itself stays and opens by id. Development runs with SRW64_MOD_ENTRY=1
-// (check_mod.py) show them again. The first page lists the installed packages; a package
-// file dropped on the window installs whether or not the entries show.
-bool mod_entry_shown(){static const bool on=std::getenv("SRW64_MOD_ENTRY") && std::string(std::getenv("SRW64_MOD_ENTRY"))=="1";return on;}
+// Its entries (the title's corner button, the settings row, and the MOD music settings
+// beside it) show; SRW64_MOD_ENTRY=0 hides them. The first page lists the installed
+// packages; a package file dropped on the window installs whether or not the entries show.
+bool mod_entry_shown(){static const bool on=!(std::getenv("SRW64_MOD_ENTRY") && std::string(std::getenv("SRW64_MOD_ENTRY"))=="0");return on;}
 constexpr const char* mod_pages[]={"installed","campaigns","art","dialogue","audio"};
 unsigned mod_page{};
 // The installed packages (mod_library.hpp), read again whenever the revision moves: an

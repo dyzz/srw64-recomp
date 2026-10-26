@@ -183,7 +183,7 @@
 
   「返回本篇」反过来：`change_save_file("")` 读回本篇的 SRAM 文件（切走后没动过），存档库换回启动时的那个，卸下战役。本篇的运行库文件在战役期间不被写，所以退出时启动器照旧把它提交到本篇的存档库；战役的存档在游戏里每次写卡带时已经发布到战役自己的库。以 `--campaign` 启动的没有本篇可回，不提供切换。
 - **战役里的标题画面**：中间「开始战役」和战役名；从 MOD 管理「返回本篇」。
-- **安装位置**：`用户目录/campaigns/<id>/campaign.json`（编译后的战役），存档在同一目录的 `saves/`；也读程序自带的 `campaigns/`（Mac 包的 `Resources/campaigns`），同 id 以用户目录为准。启动器给宿主 `SRW64_CAMPAIGN_DIRS`、`SRW64_CAMPAIGN_SAVES`。标题与设置里的 MOD 入口 2026-10-03 起对玩家隐藏（`frontend.cpp` 的 `mod_entry_shown()`）；开发运行带 `SRW64_MOD_ENTRY=1` 时照旧显示，`Session.launch(campaigns=True)`（`check_mod.py`）会设上。
+- **安装位置**：`用户目录/campaigns/<id>/campaign.json`（编译后的战役），存档在同一目录的 `saves/`；也读程序自带的 `campaigns/`（Mac 包的 `Resources/campaigns`），同 id 以用户目录为准。启动器给宿主 `SRW64_CAMPAIGN_DIRS`、`SRW64_CAMPAIGN_SAVES`。标题与设置里的 MOD 入口 2026-10-03 起对玩家隐藏，2026-10-26 随 MOD 音乐恢复显示（`frontend.cpp` 的 `mod_entry_shown()`，`SRW64_MOD_ENTRY=0` 可隐藏）；触屏仍没有 MOD 按钮。
 - **已知小问题**：开机时游戏从 SRAM 头读进内存的选项（立体声／单声道、通关标记）和已见过的记录，切换后不会重读，战役第一次存档时会照内存写进战役的卡带。
 - **顺带修了**：迷你关卡／战役的开始按钮所在文档以前是「模态后去掉类名」，`body` 仍然 `pointer-events:auto`，整屏吃掉点击；现在只有按钮那一块接收点击，标题画面的其他入口可以点。
 

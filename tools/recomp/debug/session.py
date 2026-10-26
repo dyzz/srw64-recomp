@@ -293,7 +293,7 @@ class Session:
                 build_package(source.parent, installed, archive=False)
             environment["SRW64_MODS_DIR"] = str(installed)
             environment["SRW64_CAMPAIGN_SAVES"] = str(run.parent / (run.name + ".campaign-saves"))
-            # The title's MOD entry, hidden from players for now (frontend.cpp mod_entry_shown).
+            # The title's MOD entry (frontend.cpp mod_entry_shown; shown unless SRW64_MOD_ENTRY=0).
             environment["SRW64_MOD_ENTRY"] = "1"
             if not campaign:
                 environment["SRW64_SAVE_LIBRARY"] = str(run.parent / (run.name + ".saves"))
