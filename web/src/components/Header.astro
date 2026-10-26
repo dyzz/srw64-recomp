@@ -10,10 +10,20 @@ const items = [
   { href: `/${lang}/story/`, label: UI.nav.story[lang], match: (p: string) => p.startsWith(`/${lang}/story`) },
   { href: `/${lang}/library/`, label: UI.nav.library[lang], match: (p: string) => p.startsWith(`/${lang}/library`) },
   ...(canReview(lang) ? [{ href: `/${lang}/reviews/`, label: UI.nav.reviews[lang], match: (p: string) => p.startsWith(`/${lang}/reviews`) }] : []),
+];
+const after = [
   { href: `/${lang}/faq/`, label: UI.nav.faq[lang], match: (p: string) => p.startsWith(`/${lang}/faq`) },
   { href: `/${lang}/blog/`, label: UI.nav.blog[lang], match: (p: string) => p.startsWith(`/${lang}/blog`) },
-  { href: `/${lang}/docs/`, label: UI.nav.docs[lang], match: (p: string) => p.startsWith(`/${lang}/docs`) },
+  { href: `/${lang}/docs/`, label: UI.nav.docs[lang], match: (p: string) => p.startsWith(`/${lang}/docs`) && !isMod(p) },
 ];
+// The MOD menu: the two MOD guides (in the docs) and the web BGM maker.
+const mods = [
+  { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[lang] },
+  { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[lang] },
+  { href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[lang] },
+];
+function isMod(p: string) { return mods.some((m) => p.startsWith(m.href.replace(/\/$/, ''))); }
+const here = (p: string) => (it: { href: string }) => p.startsWith(it.href.replace(/\/$/, ''));
 ---
 <header class="site-header">
   <div class="wrap bar">
@@ -23,11 +33,18 @@ const items = [
     </a>
     <nav class="nav" aria-label="Main">
       {items.map((it) => <a href={it.href} aria-current={it.match(path) ? 'page' : undefined}>{it.label}</a>)}
+      <details class="menu" data-menu>
+        <summary aria-current={isMod(path) ? 'page' : undefined}>{UI.nav.mods[lang]}<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path fill="currentColor" d="M2 4l4 4 4-4z"/></svg></summary>
+        <ul>
+          {mods.map((m) => <li><a href={m.href} aria-current={here(path)(m) ? 'page' : undefined}>{m.label}</a></li>)}
+        </ul>
+      </details>
+      {after.map((it) => <a href={it.href} aria-current={it.match(path) ? 'page' : undefined}>{it.label}</a>)}
       <a class="sister" href="https://srwz.dreamquest.club/" target="_blank" rel="noopener" title={UI.nav.srwz.title[lang]}>{UI.nav.srwz.label[lang]}</a>
     </nav>
     <div class="tools">
       {review && canReview(lang) && <div class="hdr-id" data-identity-chip data-lang={lang}></div>}
-      <details class="lang">
+      <details class="lang" data-menu>
         <summary aria-label={UI.lang[lang]}>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.93 6h-2.95a15.6 15.6 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8ZM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96ZM4.26 14a8.2 8.2 0 0 1 0-4h3.38a16.5 16.5 0 0 0 0 4H4.26Zm.81 2h2.95c.32 1.25.78 2.45 1.38 3.56A8 8 0 0 1 5.07 16Zm2.95-8H5.07a8 8 0 0 1 4.33-3.56A15.6 15.6 0 0 0 8.02 8ZM12 19.96A14.1 14.1 0 0 1 10.09 16h3.82A14.1 14.1 0 0 1 12 19.96ZM14.34 14H9.66a14.7 14.7 0 0 1 0-4h4.68a14.7 14.7 0 0 1 0 4Zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56ZM16.36 14a16.5 16.5 0 0 0 0-4h3.38a8.2 8.2 0 0 1 0 4h-3.38Z"/></svg>
           <span>{langInfo(lang).short}</span>
@@ -48,6 +65,24 @@ const items = [
   import { mountIdentityChip } from '../scripts/identity';
   const chip = document.querySelector<HTMLElement>('[data-identity-chip]');
   if (chip) mountIdentityChip(chip, chip.dataset.lang as 'zh');
+  // The header's menus (MOD, language): one open at a time, closed by a click elsewhere or Esc.
+  const menus = [...document.querySelectorAll<HTMLDetailsElement>('.site-header [data-menu]')];
+  for (const m of menus) m.addEventListener('toggle', () => {
+    if (!m.open) return;
+    menus.forEach((o) => { if (o !== m) o.open = false; });
+    // The MOD panel hangs off the header; put it under its summary (the nav may be scrolled
+    // sideways on a phone), kept inside the screen.
+    const panel = m.matches('.menu') ? m.querySelector<HTMLElement>('ul') : null;
+    if (!panel) return;
+    const header = m.closest('.site-header')!.getBoundingClientRect();
+    const at = m.querySelector('summary')!.getBoundingClientRect().left - header.left;
+    panel.style.left = `${Math.max(8, Math.min(at, header.width - panel.offsetWidth - 8))}px`;
+  });
+  document.addEventListener('click', (e) => { for (const m of menus) if (m.open && !m.contains(e.target as Node)) m.open = false; });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    for (const m of menus) if (m.open) { m.open = false; m.querySelector('summary')?.focus(); }
+  });
 </script>
 
 <style>
@@ -68,6 +103,20 @@ const items = [
   .nav a:hover { color: var(--text); }
   .nav a[aria-current='page'] { color: var(--text); }
   .nav a[aria-current='page']::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; background: var(--gold); }
+  /* The MOD menu. The panel is positioned against the sticky header, not the item: the nav
+     scrolls sideways on narrow screens and would clip it. With left unset it keeps the place
+     it would have in the row, under its summary. */
+  .menu summary { list-style: none; position: relative; display: flex; align-items: center; gap: 5px; padding: 8px 12px; color: var(--muted); font-size: 15px; white-space: nowrap; cursor: pointer; }
+  .menu summary::-webkit-details-marker { display: none; }
+  .menu summary svg { transition: transform 0.15s; }
+  .menu[open] summary svg { transform: rotate(180deg); }
+  .menu summary:hover, .menu[open] summary, .menu summary[aria-current='page'] { color: var(--text); }
+  .menu summary[aria-current='page']::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; background: var(--gold); }
+  .menu ul { position: absolute; top: 100%; margin: 0; padding: 6px; list-style: none; min-width: 200px; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 30; }
+  .menu ul a { display: block; padding: 8px 12px; color: var(--text); font-size: 14px; white-space: nowrap; }
+  .nav .menu ul a::after { display: none; }
+  .menu ul a:hover { background: var(--cyan-soft); }
+  .menu ul a[aria-current='page'] { color: var(--gold); }
   .nav a.sister { color: var(--gold); }
   .nav a.sister::after { content: ' ↗'; font-size: 12px; }
   .nav a.sister:hover { color: var(--text); }
@@ -88,13 +137,16 @@ const items = [
     .lang summary { padding: 0 8px; }
     .lang summary span { display: none; }
   }
-  /* Narrower desktops: the header stays one 64px row (sticky bars below assume that
-     height), so the nav tightens and, if still too wide, scrolls sideways. */
+  /* The header stays one 64px row (sticky bars below assume that height). With the MOD menu
+     the English and Japanese rows fill the page's full width, so the nav is tight at every
+     width, tighter on narrower desktops, and if still too wide it scrolls sideways. */
+  .bar { gap: 16px; }
+  .nav { gap: 0; }
+  .nav a, .menu summary { padding: 8px; font-size: 14px; }
+  .nav a[aria-current='page']::after, .menu summary[aria-current='page']::after { left: 8px; right: 8px; }
   @media (max-width: 1180px) {
-    .bar { gap: 16px; }
-    .nav { gap: 0; }
-    .nav a { padding: 8px; font-size: 14px; }
-    .nav a[aria-current='page']::after { left: 8px; right: 8px; }
+    .nav a, .menu summary { padding: 8px 6px; }
+    .nav a[aria-current='page']::after, .menu summary[aria-current='page']::after { left: 6px; right: 6px; }
   }
   @media (max-width: 720px) {
     .bar { flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 4px; gap: 0 12px; }
