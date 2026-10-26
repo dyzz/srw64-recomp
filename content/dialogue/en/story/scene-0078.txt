@@ -1686,7 +1686,7 @@ no one’s going to object.”
 ---
 >  ドモン、デビルガンダムが再び
 >  目覚めようとしている
-Domon, the Dark Gundam is about to awaken once more.
+Domon, the Devil Gundam is about to awaken once more.
 ---
 >  止めなければならん」
 We must stop it.”
@@ -1700,14 +1700,14 @@ We must stop it.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そんな! デビルガンダムはドモンたちが
 >  倒したはずじゃなかったのか!?」
-“No way! Didn’t Domon and the others destroy the Dark Gundam?!”
+“No way! Didn’t Domon and the others destroy the Devil Gundam?!”
 
 @39999 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうだ。確かに俺たちはあの時、
 >  デビルガンダムを倒したはずだ」
-“That’s right. We did destroy the Dark Gundam back then, no question.”
+“That’s right. We did destroy the Devil Gundam back then, no question.”
 
 @40000 Selain · セレイン（按段落 3DD2）
 > 「ああ。確かにあの時、あの化け物は
@@ -1725,7 +1725,7 @@ We must stop it.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうよ。確かにあの時、あたしたちは
 >  デビルガンダムを倒したはずだわ」
-“That’s right. We did destroy the Dark Gundam back then, no question.”
+“That’s right. We did destroy the Devil Gundam back then, no question.”
 
 @40003 Schwarz · シュバルツ
 > 「相当のダメージは与えた
@@ -1745,7 +1745,7 @@ shut it down. It appears it regenerated itself.”
 ---
 >  そうでしたが、デビルガンダムが出る時
 >  には、いつもあなたがいる
-Whenever the Dark Gundam appears, you’re always there.
+Whenever the Devil Gundam appears, you’re always there.
 ---
 >  偶然では通りませんよ」
 That’s too much to be a coincidence.”
@@ -2236,7 +2236,7 @@ behind.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「いや、シュバルツがいうには
 >  あのデビルガンダムが、また
-“Well, according to Schwarz, that Dark Gundam has
+“Well, according to Schwarz, that Devil Gundam has
 ---
 >  復活しているらしい。ドモンたちは
 >  それを倒しに行くといっている
@@ -2341,7 +2341,7 @@ to rest while you can.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「悪いが今回はパスだ。デビルガンダム
 >  今回こそきっちりカタつけてきてくれよ」
-“Sorry, but I’ll pass this time. Make sure you finish off the Dark Gundam for good this time.”
+“Sorry, but I’ll pass this time. Make sure you finish off the Devil Gundam for good this time.”
 
 @40083 Chibodee · チボデー
 > 「ああ、まかせな」
@@ -2368,7 +2368,7 @@ it’s best to rest while we can.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモンたちと一緒に行くことにするよ
 >  デビルガンダムはやはり放置できないし
-“I’ll go with Domon and the others. We can’t just leave the Dark Gundam alone,
+“I’ll go with Domon and the others. We can’t just leave the Devil Gundam alone,
 ---
 >  ここまで関わった以上はさ」
 not after getting involved this far.”
@@ -2394,7 +2394,7 @@ not after getting involved this far.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam、ドモン→Domon
 > 「デビルガンダムか……ドモンたちだけだと
 >  暴走する心配もあった
-“The Dark Gundam, huh... I was worried Domon’s group might run wild on their own,
+“The Devil Gundam, huh... I was worried Domon’s group might run wild on their own,
 ---
 >  君が行ってくれるなら大丈夫だな」
 but with you going, they should be fine.”
@@ -2498,14 +2498,14 @@ are really up to.”
 are plotting, but I’ll at least get in their way.
 ---
 >  デビルガンダムも気にはなるがな」
-I’m worried about the Dark Gundam too, though.”
+I’m worried about the Devil Gundam too, though.”
 
 @40107 Chibodee · チボデー
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「なるほどな。わかった。デビルガンダムは
 >  俺たちが倒す。安心しな」
-“Gotcha. All right. We’ll take down the Dark Gundam. Don’t sweat it.”
+“Gotcha. All right. We’ll take down the Devil Gundam. Don’t sweat it.”
 
 @40108 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号

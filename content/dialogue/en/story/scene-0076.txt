@@ -675,7 +675,7 @@ And he turned me into a man who fights at Zuul’s command...”
 >  絶対に離さない!」
 “Marg, it’s all right now. I’ll never let you go!”
 
-@29508 Rose · ロゼ
+@29508 Roze · ロゼ
 # 审校：精读：隊長 统一
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
@@ -683,7 +683,7 @@ And he turned me into a man who fights at Zuul’s command...”
 
 @29509 Marg · マーグ
 > 「ロゼ、やめろッ!」
-“Rose, stop!”
+“Roze, stop!”
 
 @29510 Takeru · タケル
 # 审校：原文「やめろぉぉぉぉぉっ」是拖长音的怒吼，译文应体现拖长音。
@@ -695,7 +695,7 @@ And he turned me into a man who fights at Zuul’s command...”
 > 「うわあぁぁぁぁぁーっ!?」
 “Waaaaaaaah?!”
 
-@29512 Rose · ロゼ
+@29512 Roze · ロゼ
 > 「くっ……ばかな……」
 “Ngh... Impossible...”
 
@@ -713,7 +713,7 @@ And he turned me into a man who fights at Zuul’s command...”
 >  兄さんは俺のものだ」
 Marg, I’m never letting anyone take you again. My brother belongs to me.”
 
-@29515 Rose · ロゼ
+@29515 Roze · ロゼ
 > 「マーズッ!!」
 “Mars!!”
 
@@ -784,7 +784,7 @@ And he turned me into a man who fights at Zuul’s command...”
 >  絶対に離さない!」
 “Marg, it’s all right now. I’ll never let you go!”
 
-@29528 Rose · ロゼ
+@29528 Roze · ロゼ
 # 审校：精读：隊長 统一
 > 「マーグ隊長、どきなさい!
 >  マーズ、覚悟!」
@@ -792,7 +792,7 @@ And he turned me into a man who fights at Zuul’s command...”
 
 @29529 Marg · マーグ
 > 「ロゼ、やめろッ!」
-“Rose, stop!”
+“Roze, stop!”
 
 @29530 Takeru · タケル
 > 「マーグ!? やめろぉぉぉぉぉっ!!」
@@ -803,7 +803,7 @@ And he turned me into a man who fights at Zuul’s command...”
 > 「うわあぁぁぁぁぁーっ!?」
 “Waaaaaaaah?!”
 
-@29532 Rose · ロゼ
+@29532 Roze · ロゼ
 > 「くっ……ばかな……」
 “Ngh... Impossible...”
 
@@ -832,7 +832,7 @@ is like Zuul. I believe that... I be...lieve...”
 > 「兄さん……兄さぁぁぁん!!」
 “Brother... Brotheeeer!!”
 
-@29538 Rose · ロゼ
+@29538 Roze · ロゼ
 # 审校：称呼统一为 Commander
 > 「マーグ……隊長……!?
 >  おのれ、マーズ!!」
@@ -1005,7 +1005,7 @@ And he turned me into a man who fights at Zuul’s command...”
 > 「うわああぁぁぁぁっ!!」
 “Waaaaaaaah!!”
 
-@29570 Rose · ロゼ
+@29570 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「くっ、マーグ隊長!?
 >  おのれ、許さん!」
@@ -1027,7 +1027,7 @@ Are you so afraid of Emperor Zuul
 >  人間の心を捨てたのか!?」
 that you threw away your human heart?!”
 
-@29573 Rose · ロゼ
+@29573 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「私たちはすべてズール皇帝の
 >  子供だ。血がかよおうと
@@ -1045,7 +1045,7 @@ Emperor Zuul is everything to us.”
 > 「違う! そんなことは間違っている!」
 “No! That’s wrong!”
 
-@29575 Rose · ロゼ
+@29575 Roze · ロゼ
 > 「黙れ、黙れ黙れッ!」
 “Shut up, shut up, shut uuup!”
 
@@ -1178,7 +1178,7 @@ This time, you’re finished!”
 > 「くっ……兄さん!!」
 “Ngh... Brother!!”
 
-@29598 Rose · ロゼ
+@29598 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「マーズ、今度こそ終わりにしてやる!」
 “Mars, this time I’ll finish you for good!”
@@ -1641,7 +1641,7 @@ to a proper facility soon. Keeping him with us like this is risky.”
 @29658 Marg · マーグ
 # 审校：语序；重复生硬
 > 「ロゼを、彼女を助けてやってくれ」
-“Rose... please, help her.”
+“Roze... please, help her.”
 
 @29659 Takeru · タケル
 > 「なんだって!? でもあの女は……」
@@ -1651,7 +1651,7 @@ to a proper facility soon. Keeping him with us like this is risky.”
 # 审校：全局：弯撇号／弯引号
 > 「彼女もまた苦しんでいるんだ。
 >  ロゼはギシン星人じゃない
-“She’s suffering too. Rose isn’t a Gishin.
+“She’s suffering too. Roze isn’t a Gishin.
 ---
 >  帝国に征服された星の出なんだ」
 She comes from a world conquered by the Empire.”
@@ -1820,7 +1820,7 @@ you’ve got to work even harder.”
 
 @29687 Mika · ミカ
 > 「あのロゼって女の人」
-“That woman, Rose.”
+“That woman, Roze.”
 
 @29688 Takeru · タケル
 > 「……どうだっていいさ。あいつはマーグを

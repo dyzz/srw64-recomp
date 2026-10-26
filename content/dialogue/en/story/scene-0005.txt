@@ -145,7 +145,7 @@ Then maybe I’ll put out something sweet to go with it.”
 >  キズがついて……」
 you will scratch it...”
 
-@17809 Dark General · 暗黒大将軍
+@17809 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「奴らの潜伏場所がわかった。
 >  今度は俺が行かせてもらう
@@ -536,18 +536,18 @@ All right, bring it on, from wherever you like!”
 >  みんなで戦うのよ」
 “Koji, don’t go doing anything reckless on your own. We fight together.”
 
-@17857 Dark General · 暗黒大将軍
+@17857 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「でてきおったな、レジスタンスどもめが
 >  まとめて片付けてやるわ!」
 “So you show yourselves at last, you Resistance rabble. I will finish you all at once!”
 
-@17858 Dark General · 暗黒大将軍
+@17858 Great General of Darkness · 暗黒大将軍
 # 审校：“出直しだ”不是“start over”，而是撤退、改日再来的意思；改为更符合 Dark General 语气的“I must withdraw!”
 > 「うぬぅ、これはいかん! 出直しだ!」
 “Ngh, this will not do! I must regroup!”
 
-@17859 Dark General · 暗黒大将軍
+@17859 Great General of Darkness · 暗黒大将軍
 > 「おのれ、ぬかったわ。次を見ておれよ!」
 “Curses, I was careless. Next time, you will see!”
 
@@ -555,7 +555,7 @@ All right, bring it on, from wherever you like!”
 # 审校：全局：弯撇号／弯引号
 > 「暗黒大将軍め、
 >  意外にふがいない……
-“That Dark General is surprisingly useless...
+“That Great General of Darkness is surprisingly useless...
 ---
 >  ゲッター線のロボットは、
 >  ないようだな
@@ -565,7 +565,7 @@ There doesn’t seem to be a Getter Ray robot here.
 >  あそこを調べるとするか」
 I’ll defeat these insolent humans and then search that place.”
 
-@17861 Dark General · 暗黒大将軍
+@17861 Great General of Darkness · 暗黒大将軍
 > 「ぬう、百鬼一族が何の用で
 >  来おった?」
 “Ngh, what business does the Hyakki Clan have here?”
@@ -583,7 +583,7 @@ Eliminating the Resistance is the mission the Empire has charged us with,
 >  使命であろう」
 is it not?”
 
-@17863 Dark General · 暗黒大将軍
+@17863 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「何をたくらんでおるのか知らんが、
 >  まぁよい

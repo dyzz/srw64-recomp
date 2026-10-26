@@ -747,7 +747,7 @@ Tetsuya, Jun, you lead the way!”
 >  攻撃開始だ!」
 “All right, all hands to battle stations! Begin the attack!”
 
-@29396 Dark General · 暗黒大将軍
+@29396 Great General of Darkness · 暗黒大将軍
 # 审校：Back to be beaten again 拗口
 > 「何度きても同じだ!
 >  またやられにきたか!?」
@@ -758,17 +758,17 @@ Tetsuya, Jun, you lead the way!”
 > 「覚悟しろ! 今度こそ最期だ」
 “Prepare yourself! This time you’re finished!”
 
-@29398 Dark General · 暗黒大将軍
+@29398 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「おのれ! やりおったな!」
 “Curse you! You’ll pay for that!”
 
-@29399 Dark General · 暗黒大将軍
+@29399 Great General of Darkness · 暗黒大将軍
 > 「こ、これまでか!
 >  グ、グオォォォォーッ!!」
 “S-so this is the end?! G-gwaaaaaaah!!”
 
-@29400 Dark General · 暗黒大将軍
+@29400 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「ぐっ、いい気になりおって。……フフ、
 >  面白い物を見せてやろう……」
@@ -799,7 +799,7 @@ Tetsuya, Jun, you lead the way!”
 >  いっぱいいるだわさ!?」
 “Whoa, there’s a whole bunch of Great Mazingers!”
 
-@29406 Dark General · 暗黒大将軍
+@29406 Great General of Darkness · 暗黒大将軍
 # 审校：拟声词统一（Kuh→Ngh、Uwah→Waah、切→啧）
 > 「お前らの仲間だった
 >  科学者が裏切ったのよ
@@ -816,7 +816,7 @@ of Great Mazinger for me. Waahahahahaha!”
 > 「闇の世界へ帰れ!」
 “Go back to the world of darkness!”
 
-@29408 Dark General · 暗黒大将軍
+@29408 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「うぬっ、そうはさせるか!」
 “Hmph, not so fast!”
@@ -825,7 +825,7 @@ of Great Mazinger for me. Waahahahahaha!”
 > 「これで終わりよ!」
 “This is the end!”
 
-@29410 Dark General · 暗黒大将軍
+@29410 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「まだまだよ! まだやられんわ!」
 “Not yet! I am not finished yet!”
@@ -834,7 +834,7 @@ of Great Mazinger for me. Waahahahahaha!”
 > 「このボス様が倒しちゃうわよん」
 “The great Boss here is gonna take you down!”
 
-@29412 Dark General · 暗黒大将軍
+@29412 Great General of Darkness · 暗黒大将軍
 > 「貴様などにやられては
 >  末代までの恥!」
 “Falling to the likes of you would shame my line for all generations!”
@@ -842,7 +842,7 @@ of Great Mazinger for me. Waahahahahaha!”
 @29413 Koji · 甲児
 > 「やった! 暗黒大将軍の野郎
 >  とうとう最後だ。ざまあみやがれ!」
-“We did it! That Dark General bastard is finally finished. Serves him right!”
+“We did it! That Great General of Darkness bastard is finally finished. Serves him right!”
 
 @29414 Bright · ブライト
 # 审校：全局：弯撇号／弯引号

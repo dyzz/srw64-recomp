@@ -389,7 +389,7 @@ But if you refuse to listen...”
 >  これも任務なのでな」
 but this is my duty.”
 
-@17562 Aboly · アポリー
+@17562 Apolly · アポリー
 > 「大尉、こいつは……」
 “Captain, this one is...”
 
@@ -403,7 +403,7 @@ but this is my duty.”
 >  例の試作機か?」
 “Wait... is that the prototype?”
 
-@17565 Aboly · アポリー
+@17565 Apolly · アポリー
 > 「そのようです」
 “It appears so.”
 
@@ -416,16 +416,16 @@ but this is my duty.”
 >  意味がない……」
 Otherwise there was no point in coming this far at such risk...”
 
-@17567 Aboly · アポリー
+@17567 Apolly · アポリー
 > 「どうします、大尉?」
 “What are your orders, Captain?”
 
 @17568 Quattro · クワトロ
 > 「アポリー中尉、
 >  その機体でやれそうか?」
-“Lieutenant Aboly, can you handle that machine?”
+“Lieutenant Apolly, can you handle that machine?”
 
-@17569 Aboly · アポリー
+@17569 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「コックピットが違っても、三日も
 >  あれば自分の手足にすることが
@@ -558,9 +558,9 @@ If you can move, fight. We’ll cover you.”
 # 检查提示：未用必用译名：アポリー→Aboly
 > 「しかたあるまい。アポリー、ロベルト、あの
 >  機体は確保したい。援護するぞ」
-“Nothing for it. Aboly, Roberto, I want that machine secured. We’ll cover it.”
+“Nothing for it. Apolly, Roberto, I want that machine secured. We’ll cover it.”
 
-@17590 Aboly · アポリー
+@17590 Apolly · アポリー
 > 「了解です」
 “Understood.”
 
@@ -699,9 +699,9 @@ I want to at least give them a burial.”
 @17609 Quattro · クワトロ
 > 「ロベルトはここで待機。
 >  アポリーは私と一緒にきてくれ」
-“Roberto, stay here. Aboly, come with me.”
+“Roberto, stay here. Apolly, come with me.”
 
-@17610 Aboly · アポリー
+@17610 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「……ひどいもんですね。
 >  どこもかしこもめちゃめちゃだ」

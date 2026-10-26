@@ -285,13 +285,13 @@
        "Flash",
        "72",
        "1",
-       "Banjo 1, Master Asia 1, Kenji 1, Hikaru 1, Ehrlich 1, Selain 1, Heero 1, Rose 1, etc."
+       "Banjo 1, Master Asia 1, Kenji 1, Hikaru 1, Ehrlich 1, Selain 1, Heero 1, Roze 1, etc."
       ],
       [
        "Vigor",
        "20",
        "1",
-       "Garalia 1, Maria 1, Gale 1, Shingo* 1, Alan 1, Aboly* 1, Ryoma 1, Jun 2, etc."
+       "Garalia 1, Maria 1, Gale 1, Shingo* 1, Alan 1, Apolly* 1, Ryoma 1, Jun 2, etc."
       ],
       [
        "Gain",
@@ -387,7 +387,7 @@
        "Rouse",
        "22",
        "18",
-       "Rain 18, Rose 18, Hikaru 23, Iino 24, Kenji 25, Elle 30, Aina 31, Marvel 31, etc."
+       "Rain 18, Roze 18, Hikaru 23, Iino 24, Kenji 25, Elle 30, Aina 31, Marvel 31, etc."
       ],
       [
        "Disrupt",
@@ -983,7 +983,7 @@
        "Miracle 61"
       ],
       [
-       "Rose",
+       "Roze",
        "Flash 1",
        "Bullseye 7",
        "Rouse 18",
@@ -1316,7 +1316,7 @@
        "Love 32"
       ],
       [
-       "Aboly*",
+       "Apolly*",
        "Vigor 1",
        "Focus 4",
        "Accel 8",
@@ -1501,7 +1501,7 @@
       [
        "Super Mode / Meikyo Shisui / Berserk",
        "At Will 130 or higher, activates automatically when the specified pilot is in the specified Gundam",
-       "Domon, Argo, Sai Saici, George, Chibodee (only while on your side) and Master Asia, each in his own Gundam, switch to S/H mode at Will ≥130: max HP / EN +200/+50 (current values rise proportionally), mobility +10, limit +10, unit and weapon land, sea and space ratings become A (air unchanged), all pilot stats +10 and all pilot terrain ratings A, and their signature finishers gain attack power by pilot level (see the table below); the Burning Gundam H also gains God Shadow. An enemy Allenby in the Noble Gundam goes into Berserker mode, with only the unit bonuses. Once triggered it isn't cancelled by Will dropping — only when the unit is shot down {≠}{+}{+}{+}",
+       "Domon, Argo, Sai Saici, George, Chibodee (only while on your side) and Master Asia, each in his own Gundam, switch to S/H mode at Will ≥130: max HP / EN +200/+50 (current values rise proportionally), mobility +10, limit +10, unit and weapon land, sea and space ratings become A (air unchanged), all pilot stats +10 and all pilot terrain ratings A, and their signature finishers gain attack power by pilot level (see the table below); the God Gundam H also gains God Shadow. An enemy Allenby in the Noble Gundam goes into Berserker mode, with only the unit bonuses. Once triggered it isn't cancelled by Will dropping — only when the unit is shot down {≠}{+}{+}{+}",
        "Same as the original"
       ],
       [
@@ -2060,7 +2060,7 @@
        "52"
       ],
       [
-       "Rose",
+       "Roze",
        "ESP 1·1·15·26·34·46·57",
        "—",
        "—",
@@ -2319,7 +2319,7 @@
        "50"
       ],
       [
-       "Aboly*",
+       "Apolly*",
        "—",
        "1·10·20·30·42·49·55",
        "1·7·11·17·26·32·40·49",
@@ -2471,8 +2471,8 @@
       [
        "God Shadow",
        "Same as Afterimage",
-       "Same as Afterimage; also gained when the Burning Gundam enters Meikyo Shisui (Burning Gundam H) {+}",
-       "Burning Gundam H, Burning Gundam"
+       "Same as Afterimage; also gained when the God Gundam enters Meikyo Shisui (God Gundam H) {+}",
+       "God Gundam H, God Gundam"
       ],
       [
        "Getter Vision",
@@ -2496,7 +2496,7 @@
        "HP Regen",
        "Recovers 10% or 20% of max HP at the start of each turn",
        "The rate depends on the unit; resolved for every unit on the map, friend and foe, at the start of each turn, not just the player phase; fractions dropped, capped at the maximum {≠}",
-       "10%: Shin Getter-1, Shin Getter-2, Shin Getter-3, Sirbine, Zwauth; enemy: Dark Gundam, Dark Axis, Dragonosaurus; 20%: enemy only: Dark Gundam, Valdiscuse, Avieslelm, JClaps"
+       "10%: Shin Getter-1, Shin Getter-2, Shin Getter-3, Sirbine, Zwauth; enemy: Devil Gundam, Dark Axis, Dragonosaurus; 20%: enemy only: Devil Gundam, Valdiscuse, Avieslelm, JClaps"
       ],
       [
        "V-MAX",
@@ -2840,7 +2840,7 @@
       ],
       [
        "Six God Combination God Mars",
-       "Takeru ↔ Rose",
+       "Takeru ↔ Roze",
        ""
       ],
       [
@@ -3370,7 +3370,7 @@
       ],
       [
        "9",
-       "Burning Gundam, Shining Gundam, Gundam Maxter, Gundam Rose, Dragon Gundam, Bolt Gundam, ZZ Gundam, Gundam Mk-III, Hyaku-Shiki, FA Hyaku-Shiki Kai, Qubeley Mk-II, Jagd Doga, Tallgeese III, Dancouga, Grendizer, Spazer, Layzner, New Layzner, Sirbine, Billbine, Zwauth, Ashcleef, Razgreez"
+       "God Gundam, Shining Gundam, Gundam Maxter, Gundam Rose, Dragon Gundam, Bolt Gundam, ZZ Gundam, Gundam Mk-III, Hyaku-Shiki, FA Hyaku-Shiki Kai, Qubeley Mk-II, Jagd Doga, Tallgeese III, Dancouga, Grendizer, Spazer, Layzner, New Layzner, Sirbine, Billbine, Zwauth, Ashcleef, Razgreez"
       ],
       [
        "10",
@@ -3481,7 +3481,7 @@
       ],
       [
        "Shining Gundam",
-       "Burning Gundam",
+       "God Gundam",
        "OZ and Independence Army routes: when all enemies are wiped out in stage 30; Complete Pacifism route: mid-stage in stage 32",
        "The five stats carry over; Vulcan, Beam Sword → Burning Slash and Shining Strike → Burning Strike carry over; upgrades to Shining Shot, Shining Finger and Shining Finger Sword don't carry over; Machine Cannon and Burning Slash Typhoon start from level 0"
       ],
@@ -3800,7 +3800,7 @@
        "OZ route: end of stage 37 / Independence Army route: end of stage 40",
        "Zeron",
        "3",
-       "Rose joins"
+       "Roze joins"
       ],
       [
        "Start of stage 42 on the Independence Army route",
@@ -4219,7 +4219,7 @@
        "At the end of stage 38 “All-Out Attack on the Cyber Beast Force Base” on the Independence Army route and stage 38 “An Unseen Tomorrow” on the OZ route"
       ],
       [
-       "Burning Gundam",
+       "God Gundam",
        "Sekiha Tenkyoken",
        "Independence Army route: if you chose to go with Domon in stage 38, at the end of stage 38A “Death Match! Showdown on Lantau Island (Part 1)”; with the other two options, at the start of stage 39 “Desperate Breakthrough (Part 1)”. OZ route: at the end of stage 41 “Fist of Despair and Sorrow (Part 1)”"
       ]
@@ -4258,7 +4258,7 @@
        "Attacks of the Earthgain, Virose and Super Earthgain, plus Shorai Tenryu Mametsujin (see the table above)"
       ],
       [
-       "Super Mode (entered automatically by Domon, Argo, Sai Saici, George and Chibodee at Will 130 or higher; the unit becomes Burning Gundam H / Shining Gundam S / the respective S forms)",
+       "Super Mode (entered automatically by Domon, Argo, Sai Saici, George and Chibodee at Will 130 or higher; the unit becomes God Gundam H / Shining Gundam S / the respective S forms)",
        "Burning Field Dash, Chokyu Hao Den'eidan, Erupting Burning Slash, Erupting Burning Finger, Sekiha Tenkyoken, Shining Finger Sword, and the finishers of the four Shuffle Alliance units"
       ]
      ],
@@ -4394,7 +4394,7 @@
      ],
      "rows": [
       [
-       "Burning Gundam H + Noble Gundam",
+       "God Gundam H + Noble Gundam",
        "Double Burning Finger",
        "Erupting Burning Finger + Beam Ribbon",
        "Average ×1.6 (4400)",
@@ -4403,7 +4403,7 @@
        "60{≠}"
       ],
       [
-       "Burning Gundam H + Rising Gundam",
+       "God Gundam H + Rising Gundam",
        "Sekiha Love Love Tenkyoken",
        "Sekiha Tenkyoken + Rising Arrow",
        "Average ×1.6 (4800)",
@@ -4412,7 +4412,7 @@
        "80"
       ],
       [
-       "Burning Gundam H + Gundam Maxter S + Gundam Rose S + Dragon Gundam S + Bolt Gundam S",
+       "God Gundam H + Gundam Maxter S + Gundam Rose S + Dragon Gundam S + Bolt Gundam S",
        "Shuffle Alliance Fist",
        "Sekiha Tenkyoken + Burning Machine Gun Punch + Rose Hurricane + Shin Ryusei Kochoken + Gaia Crusher",
        "Average ×1.9 (6080)",
@@ -4422,9 +4422,9 @@
       ]
      ],
      "notes": [
-      "Burning Gundam H and the S forms: your Domon, Argo, Sai Saici, George and Chibodee transform automatically on reaching 130 Will (checked after battle); your Allenby doesn't transform, and the Noble Gundam is exactly the form Double Burning Finger requires {+}",
+      "God Gundam H and the S forms: your Domon, Argo, Sai Saici, George and Chibodee transform automatically on reaching 130 Will (checked after battle); your Allenby doesn't transform, and the Noble Gundam is exactly the form Double Burning Finger requires {+}",
       "Double Burning Finger and Shuffle Alliance Fist need no story unlock: they appear once the participants are present and the conditions are met, the same on every route {+}",
-      "Sekiha Love Love Tenkyoken also requires Burning Gundam's Sekiha Tenkyoken to have been unlocked by the story: on the Independence Army route, if you go with Domon in stage 38, at the end of stage 38A “Death Match! Showdown on Lantau Island (Part 1)”; with the other two options, at the start of stage 39 “Desperate Breakthrough (Part 1)”; on the OZ route, at the end of stage 41 “Fist of Despair and Sorrow (Part 1)” {≠}",
+      "Sekiha Love Love Tenkyoken also requires God Gundam's Sekiha Tenkyoken to have been unlocked by the story: on the Independence Army route, if you go with Domon in stage 38, at the end of stage 38A “Death Match! Showdown on Lantau Island (Part 1)”; with the other two options, at the start of stage 39 “Desperate Breakthrough (Part 1)”; on the OZ route, at the end of stage 41 “Fist of Despair and Sorrow (Part 1)” {≠}",
       "Double Burning Finger's EN is 60 in the game data; Akurasu says 80 {≠}"
      ]
     },

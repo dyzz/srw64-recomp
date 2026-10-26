@@ -109,8 +109,8 @@ pilot,name_ja,name_zh,name_en,battle_song,voice_part,battle_lines
 107,ジュン,纯,Jun,16,85,151
 108,鉄也,铁也,Tetsuya,16,86,171
 109,ヤヌス侯爵,雅努斯侯爵,Marquis Janus,16,87,68
-110,暗黒大将軍,暗黑大将军,Dark General,16,88,65
-111,地獄大元帥,地狱大元帅,Hell Marshal,16,89,62
+110,暗黒大将軍,暗黑大将军,Great General of Darkness,16,88,65
+111,地獄大元帥,地狱大元帅,Great Marshal of Hell,16,89,62
 112,デューク,杜克,Duke,17,90,201
 113,マリア,玛丽亚,Maria,17,91,125
 114,ひかる,光,Hikaru,17,92,94
@@ -139,7 +139,7 @@ pilot,name_ja,name_zh,name_en,battle_song,voice_part,battle_lines
 137,ケンジ,健治,Kenji,23,113,19
 138,タケル,武,Takeru,23,114,44
 139,アキラ,辉,Akira,23,115,20
-140,ロゼ,罗塞,Rose,23,116,26
+140,ロゼ,罗塞,Roze,23,116,26
 141,ズール皇帝,祖鲁皇帝,Emperor Zuul,23,117,44
 142,バレン,巴伦,Baren,23,118,31
 143,マーグ,玛古,Marg,23,119,22
@@ -235,7 +235,7 @@ pilot,name_ja,name_zh,name_en,battle_song,voice_part,battle_lines
 233,イーノ,伊诺,Iino,3,193,36
 234,エル,艾露,Elle,3,194,46
 235,モンド,蒙多,Mondo,3,195,40
-236,アポリー,阿波利,Aboly,2,196,28
+236,アポリー,阿波利,Apolly,2,196,28
 237,ロベルト,罗伯托,Roberto,2,197,29
 238,ケーラ,凯拉,Kayra,7,198,30
 239,アストナージ,阿斯托纳吉,Astonaige,2,,0

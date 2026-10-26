@@ -1175,7 +1175,7 @@ accomplished.”
 >  わらわが……」
 “Th-this... a mere human... beat me...”
 
-@38954 Hell Marshal · 地獄大元帥
+@38954 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「よくやったぞヤヌス! 後は我が
 >  軍団をもって叩きつぶしてくれるわ!」
@@ -1191,7 +1191,7 @@ accomplished.”
 >  だ! ウワハハハハハハッ!!!」
 declare ourselves rulers of Earth! Waahahahahahaha!!!”
 
-@38956 Hell Marshal · 地獄大元帥
+@38956 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「ヤヌスめ、やられてしまいおったか!
 >  だがよいわ。後は我が軍団をもって
@@ -1213,9 +1213,9 @@ declare ourselves rulers of Earth! Waahahahahahaha!!!”
 @38958 Tetsuya · 鉄也
 > 「地獄大元帥! 貴様の
 >  野望もここまでだ!!」
-“Hell Marshal! Your ambitions end here!!”
+“Great Marshal of Hell! Your ambitions end here!!”
 
-@38959 Hell Marshal · 地獄大元帥
+@38959 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「おのれ剣鉄也め! け散らして
 >  くれるわ!」
@@ -1225,18 +1225,18 @@ declare ourselves rulers of Earth! Waahahahahahaha!!!”
 # 审校：全局：弯撇号／弯引号
 > 「地獄大元帥! 今度は
 >  逃がさねぇぞ!!」
-“Hell Marshal! You won’t get away this time!!”
+“Great Marshal of Hell! You won’t get away this time!!”
 
-@38961 Hell Marshal · 地獄大元帥
+@38961 Great Marshal of Hell · 地獄大元帥
 > 「兜甲児め! わがミケーネのために
 >  死ねぇっ!!」
 “Koji Kabuto! Die for Mycenae!!”
 
 @38962 Jun · ジュン
 > 「観念なさい、地獄大元帥!」
-“Give it up, Hell Marshal!”
+“Give it up, Great Marshal of Hell!”
 
-@38963 Hell Marshal · 地獄大元帥
+@38963 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「ふざけおって! 返り討ちだ!」
 “Don’t mock me! I’ll strike you down instead!”
@@ -1245,7 +1245,7 @@ declare ourselves rulers of Earth! Waahahahahahaha!!!”
 > 「この! 覚悟しなさい!!」
 “Why you! Prepare yourself!!”
 
-@38965 Hell Marshal · 地獄大元帥
+@38965 Great Marshal of Hell · 地獄大元帥
 > 「こざかしい小娘が!」
 “Insolent little girl!”
 
@@ -1253,14 +1253,14 @@ declare ourselves rulers of Earth! Waahahahahahaha!!!”
 # 审校：全局：弯撇号／弯引号
 > 「地獄大元帥め! このボスさまを
 >  忘れちゃこまるだわさ!!」
-“Hell Marshal! You’d better not forget about the great Boss here!!”
+“Great Marshal of Hell! You’d better not forget about the great Boss here!!”
 
-@38967 Hell Marshal · 地獄大元帥
+@38967 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「貴様など敵ではないわ!! 死ね!」
 “You’re no match for me!! Die!”
 
-@38968 Hell Marshal · 地獄大元帥
+@38968 Great Marshal of Hell · 地獄大元帥
 > 「おのれ……よくも、
 >  よくもこのワシをぉぉぉーっ!!」
 “Curse you... how dare you, how dare you do this to meee!!”

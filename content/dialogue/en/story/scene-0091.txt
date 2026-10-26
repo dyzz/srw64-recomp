@@ -1310,18 +1310,18 @@ with Gorman, lead your troops and join the assault force.”
 @43894 Emperor Zuul · ズール皇帝
 > 「ロゼよ、マーズを殺せず、むざむざと
 >  マーグまで逃したそうだな」
-“Rose, I hear you failed to kill Mars, and even let Marg slip away.”
+“Roze, I hear you failed to kill Mars, and even let Marg slip away.”
 
 @43895 Emperor Zuul · ズール皇帝
 # 审校：全局：弯撇号／弯引号
 > 「ロゼよ、マーズを殺すことができず、
 >  マーズの弱点となりえたマーグまで
-“Rose, I hear you failed to kill Mars, and even lost Marg,
+“Roze, I hear you failed to kill Mars, and even lost Marg,
 ---
 >  失ったそうだな」
 who could have been Mars’s weakness.”
 
-@43896 Rose · ロゼ
+@43896 Roze · ロゼ
 > 「……はい。私の……命で責任をとる
 >  ことを、お許しください」
 “...Yes. Please, allow me to atone... with my life.”
@@ -1330,7 +1330,7 @@ who could have been Mars’s weakness.”
 > 「命だと? ならぬ!」
 “Your life? I think not!”
 
-@43898 Rose · ロゼ
+@43898 Roze · ロゼ
 > 「え……?」
 “Huh...?”
 
@@ -1346,14 +1346,14 @@ Tools do not act on their own whims. Did you think you had
 >  思ったか!」
 the freedom to do such a thing?!”
 
-@43900 Rose · ロゼ
+@43900 Roze · ロゼ
 > 「…………」
 “...”
 
 @43901 Emperor Zuul · ズール皇帝
 > 「戦え、ロゼ。戦って死ね。ワシのため
 >  に。それ以外には許さぬ。その
-“Fight, Rose. Fight and die. For me. Nothing else is permitted. Fight on
+“Fight, Roze. Fight and die. For me. Nothing else is permitted. Fight on
 ---
 >  ちっぽけな命が果てるまで戦いぬけ!
 >  ワーハハハハハハッ!!」
@@ -3127,7 +3127,7 @@ someday, without fail, Emperor Zuul...”
 >  今度こそ倒してくれるわ!」
 and win His Majesty’s favor! This time I shall destroy them!”
 
-@44180 Rose · ロゼ
+@44180 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「……私は自分が助かろうとは
 >  思わない。だけど、あいつらだけは……」
@@ -3136,9 +3136,9 @@ and win His Majesty’s favor! This time I shall destroy them!”
 @44181 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
 > 「あれは……ロゼか」
-“That’s... Rose?”
+“That’s... Roze?”
 
-@44182 Rose · ロゼ
+@44182 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「マーズ……お前は私が殺す。
 >  マーグ隊長の仇をうたせてもらう!」
@@ -3150,7 +3150,7 @@ and win His Majesty’s favor! This time I shall destroy them!”
 >  俺のセリフだ!」
 “What?! Don’t be ridiculous, that’s my line!”
 
-@44184 Rose · ロゼ
+@44184 Roze · ロゼ
 > 「問答無用!!」
 “Enough talk!!”
 
@@ -3158,7 +3158,7 @@ and win His Majesty’s favor! This time I shall destroy them!”
 # 审校：全局：弯撇号／弯引号
 > 「お前がそうなら、俺こそマーグの仇を
 >  うたせてもらう。ロゼッ!」
-“If that’s how you want it, then I’ll make you pay for Marg’s death. Rose!”
+“If that’s how you want it, then I’ll make you pay for Marg’s death. Roze!”
 
 @44186 Anna · アンナ
 # 审校：全局：弯撇号／弯引号
@@ -3194,9 +3194,9 @@ someone has to break the chain.”
 @44192 Takeru · タケル
 # 审校：全局：弯撇号／弯引号
 > 「あれは……ロゼか!?」
-“That’s... Rose?!”
+“That’s... Roze?!”
 
-@44193 Rose · ロゼ
+@44193 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「マーズ……ここで失敗すれば
 >  私は死に方すら選べない
@@ -3210,12 +3210,12 @@ In the name of Emperor Zuul, I’ll kill you.”
 # 审校：全局：弯撇号／弯引号
 > 「やめろ、ロゼ! マーグに聞いた。
 >  君は本当は戦うことを
-“Stop, Rose! Marg told me. You don’t really
+“Stop, Roze! Marg told me. You don’t really
 ---
 >  望んではいないはずだ」
 want to fight.”
 
-@44195 Rose · ロゼ
+@44195 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「マーグ……隊長が……。だめだっ!
 >  私はズール皇帝の兵士
@@ -3230,13 +3230,13 @@ and destroy you!”
 
 @44196 Takeru · タケル
 > 「ロゼ!」
-“Rose!”
+“Roze!”
 
 @44197 Takeru · タケル
 > 「やめろ、やめるんだロゼ!」
-“Stop, stop it, Rose!”
+“Stop, stop it, Roze!”
 
-@44198 Rose · ロゼ
+@44198 Roze · ロゼ
 > 「黙れ!」
 “Silence!”
 
@@ -3253,7 +3253,7 @@ You’re human. Marg said he wanted to save you. And I...
 >  俺も君を殺したくない」
 I don’t want to kill you either.”
 
-@44200 Rose · ロゼ
+@44200 Roze · ロゼ
 # 审校：“味方”是罗塞自己人
 > 「マーズ……なぜ……なぜ敵である私を
 >  助けようとする? 任務のためなら
@@ -3277,16 +3277,16 @@ blame, and not everyone in the Galactic Empire is like Zuul.
 >  ズールなんだ」
 I believe that too. Zuul is the one who’s wrong.”
 
-@44202 Rose · ロゼ
+@44202 Roze · ロゼ
 > 「マーズ……私……私は……。くっ」
 “Mars... I... I... Ngh.”
 
 @44203 Takeru · タケル
 > 「ロゼ……!? わかって……
 >  くれたのか……?」
-“Rose...?! Have you... come around...?”
+“Roze...?! Have you... come around...?”
 
-@44204 Rose · ロゼ
+@44204 Roze · ロゼ
 # 审校：“how dare you say that so brazenly”过于冗长，改为更自然且符合冷静女战士口吻的短句。
 > 「マーズ、よくもぬけぬけと」
 “Mars, you have some nerve saying that.”
@@ -3295,13 +3295,13 @@ I believe that too. Zuul is the one who’s wrong.”
 # 审校：全局：弯撇号／弯引号
 > 「待て、ロゼ。戦うことはいつでもできる
 >  その前に聞きたいことがある
-“Wait, Rose. We can fight anytime. But first, I want to ask you something.
+“Wait, Roze. We can fight anytime. But first, I want to ask you something.
 ---
 >  マーグは俺たちが復讐しあうのを
 >  喜ぶと思うか?」
 Do you think Marg would want us taking revenge on each other?”
 
-@44206 Rose · ロゼ
+@44206 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「…………ズール皇帝の命令は、
 >  すべてに優先する」
@@ -3311,9 +3311,9 @@ Do you think Marg would want us taking revenge on each other?”
 # 审校：全局：弯撇号／弯引号
 > 「やめるんだ、ロゼ!
 >  君を殺したくはない。もうやめてくれ!」
-“Stop it, Rose! I don’t want to kill you. Please, stop!”
+“Stop it, Roze! I don’t want to kill you. Please, stop!”
 
-@44208 Rose · ロゼ
+@44208 Roze · ロゼ
 # 审校：“味方”是罗塞自己人
 > 「!? なぜ敵である私を助けようと
 >  する。任務のためなら、味方ですら
@@ -3327,13 +3327,13 @@ if the mission called for it. I’m Marg’s enemy, aren’t I?! Why?!”
 # 审校：全局：弯撇号／弯引号
 > 「君を倒してもマーグは喜ばない……
 >  ロゼ、君はバトルマシンではない
-“Defeating you won’t make Marg happy... Rose, you’re not a battle machine.
+“Defeating you won’t make Marg happy... Roze, you’re not a battle machine.
 ---
 >  人間なんだ。ズールの道具なんか
 >  では、ないはずだ」
 You’re human. You’re no tool of Zuul’s.”
 
-@44210 Rose · ロゼ
+@44210 Roze · ロゼ
 > 「マーズ……? 私……私は……」
 “Mars...? I... I...”
 
@@ -3341,20 +3341,20 @@ You’re human. You’re no tool of Zuul’s.”
 # 审校：全局：弯撇号／弯引号
 > 「もうやめるんだ、ロゼ。君だって本当
 >  はこんな戦いを望んじゃいないはずだ
-“That’s enough, Rose. You don’t really want this fight either.
+“That’s enough, Roze. You don’t really want this fight either.
 ---
 >  そうだろう?」
 Do you?”
 
-@44212 Rose · ロゼ
+@44212 Roze · ロゼ
 > 「くっ……」
 “Ngh...”
 
 @44213 Takeru · タケル
 > 「ロゼッ!? わかってくれたのか……?」
-“Rose?! Have you come around...?”
+“Roze?! Have you come around...?”
 
-@44214 Rose · ロゼ
+@44214 Roze · ロゼ
 > 「きゃあぁぁぁぁぁぁーっ!!」
 “Kyaaaaaaaaah!!”
 
@@ -3673,7 +3673,7 @@ we couldn’t do squat.”
 
 @44256 Takeru · タケル
 > 「あれは……ロゼか!?」
-“Is that... Rose?!”
+“Is that... Roze?!”
 
 @44257 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
@@ -3692,18 +3692,18 @@ we couldn’t do squat.”
 
 @44260 Takeru · タケル
 > 「ロゼ、いったいどうして……」
-“Rose, why in the world...”
+“Roze, why in the world...”
 
-@44261 Rose · ロゼ
+@44261 Roze · ロゼ
 > 「マーズ……私はもう、あなたと戦う
 >  気はないわ」
 “Mars... I have no wish to fight you anymore.”
 
 @44262 Takeru · タケル
 > 「ロゼ?」
-“Rose?”
+“Roze?”
 
-@44263 Rose · ロゼ
+@44263 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「マーズ、教えて。あなたの強さはなに?
 >  地球人でもないのに、どうして命を
@@ -3723,15 +3723,15 @@ can you risk your life fighting for Earth? Why?”
 >  育てられたんだ」
 I was raised on Earth, by Earthling parents.”
 
-@44265 Rose · ロゼ
+@44265 Roze · ロゼ
 > 「地球人の心……」
 “The heart of an Earthling...”
 
 @44266 Takeru · タケル
 > 「ロゼ、君は……」
-“Rose, you...”
+“Roze, you...”
 
-@44267 Rose · ロゼ
+@44267 Roze · ロゼ
 # 检查提示：未用必用译名：マーグ隊→Marg Squad
 > 「……マーグ隊長はどうされているの?」
 “...How is Captain Marg doing?”
@@ -3742,7 +3742,7 @@ I was raised on Earth, by Earthling parents.”
 >  療養中なんだ」
 “He’s on the Moon. His wounds from back then were severe, so he’s still recovering.”
 
-@44269 Rose · ロゼ
+@44269 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「……そう……ごめんなさい、私……」
 “...I see... I’m sorry, I...”
@@ -3766,21 +3766,21 @@ I was raised on Earth, by Earthling parents.”
 >  来たのか、それを確認したいが?」
 what brings you to us.”
 
-@44273 Rose · ロゼ
+@44273 Roze · ロゼ
 > 「状況は理解しているつもりです。
 >  私も、一緒に連れていってください」
 “I believe I understand the situation. Please, let me come with you too.”
 
 @44274 Takeru · タケル
 > 「ロゼ、君が!?」
-“Rose, you?!”
+“Roze, you?!”
 
 @44275 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「君を疑うわけではないが……」
 “It’s not that I doubt you, but...”
 
-@44276 Rose · ロゼ
+@44276 Roze · ロゼ
 > 「お願いします。もっとよく知りたい
 >  んです。地球人のものの考え方を」
 “Please. I want to understand better. The way Earthlings think.”
@@ -3793,7 +3793,7 @@ what brings you to us.”
 ---
 >  それにロゼがいれば、敵の情報も
 >  手に入ります」
-Besides, with Rose here, we can get information on the enemy too.”
+Besides, with Roze here, we can get information on the enemy too.”
 
 @44278 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -3804,24 +3804,24 @@ Besides, with Rose here, we can get information on the enemy too.”
 >  急いで用意してくれ」
 so get ready, quick.”
 
-@44279 Rose · ロゼ
+@44279 Roze · ロゼ
 > 「あ……」
 “Ah...”
 
 @44280 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「僕は破嵐万丈だ。よろしく、ロゼ」
-“I’m Banjo Haran. Nice to meet you, Rose.”
+“I’m Banjo Haran. Nice to meet you, Roze.”
 
 @44281 Takeru · タケル
 > 「ありがとうございます!」
 “Thank you!”
 
-@44282 Rose · ロゼ
+@44282 Roze · ロゼ
 > 「マーズ……」
 “Mars...”
 
-@44283 Rose · ロゼ
+@44283 Roze · ロゼ
 # 检查提示：未用必用译名：マーグ隊→Marg Squad
 > 「マーズ……マーグ隊長のことは……」
 “Mars... about Captain Marg...”
@@ -3835,7 +3835,7 @@ so get ready, quick.”
 >  いや、この話はやめよう」
 no, let’s drop this.”
 
-@44285 Rose · ロゼ
+@44285 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「マーズ……。私は、たぶんあなたにあえて
 >  よかったのだと思う。それを
@@ -3847,9 +3847,9 @@ I wanted to tell you. My planet, too, was invaded by the Galactic Empire.”
 
 @44286 Takeru · タケル
 > 「……ロゼ、これからどうするつもりなんだ?」
-“...Rose, what do you plan to do now?”
+“...Roze, what do you plan to do now?”
 
-@44287 Rose · ロゼ
+@44287 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「私はまた失敗してしまった。
 >  もどっても、名誉な死すらも
@@ -3867,12 +3867,12 @@ battle machine that does nothing but fight. But... I have to go back all the sam
 # 审校：全局：弯撇号／弯引号
 > 「ダメだ! 君は帝国軍にもどっちゃ
 >  いけない! ロゼ、自分の命を
-“No! You can’t go back to the Imperial army! Rose, don’t throw your
+“No! You can’t go back to the Imperial army! Roze, don’t throw your
 ---
 >  無駄にするな!」
 life away!”
 
-@44289 Rose · ロゼ
+@44289 Roze · ロゼ
 > 「マーズ……!? でも、私は……」
 “Mars...?! But I...”
 
@@ -3915,7 +3915,7 @@ what’s the point?”
 # 审校：全局：弯撇号／弯引号
 > 「時間がないんだよ、諸君。さて、
 >  ロゼといったかな。君さえよければ
-“We’re short on time, folks. Now then, Rose, was it? If it’s all right with you,
+“We’re short on time, folks. Now then, Roze, was it? If it’s all right with you,
 ---
 >  僕たちとくるというのはどうだい?
 >  むこうの情報も知りたい。僕たちが
@@ -3925,7 +3925,7 @@ why not come with us? We could use some intel on the other side, too. You know
 >  知ってるだろう?」
 the spot we’re in, don’t you?”
 
-@44295 Rose · ロゼ
+@44295 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「敵の私を、そこまで信用するという
 >  の?」
@@ -3941,7 +3941,7 @@ the spot we’re in, don’t you?”
 >  いうのが大きいんだが……」
 Well, honestly, the biggest reason is that we’re short on options...”
 
-@44297 Rose · ロゼ
+@44297 Roze · ロゼ
 > 「……私……マーズ、あなたは私が
 >  一緒にいくことを、許してくれるの?」
 “...I... Mars, would you let me come with you?”
@@ -3951,7 +3951,7 @@ Well, honestly, the biggest reason is that we’re short on options...”
 > 「君がそうしたいのなら」
 “If that’s what you want.”
 
-@44299 Rose · ロゼ
+@44299 Roze · ロゼ
 > 「私、もっと知りたい。
 >  地球人のものの考え方を
 “I want to learn more. About how Earth people think.
@@ -3968,11 +3968,11 @@ Please take me with you.”
 >  だから、急いで用意してくれ」
 so hurry and get ready.”
 
-@44301 Rose · ロゼ
+@44301 Roze · ロゼ
 > 「はい」
 “Yes.”
 
 @44302 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
 > 「僕は破嵐万丈だ。よろしく、ロゼ」
-“I’m Banjo Haran. Nice to meet you, Rose.”
+“I’m Banjo Haran. Nice to meet you, Roze.”

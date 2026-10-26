@@ -1097,19 +1097,19 @@ you will be the hope of everyone in the Earth Sphere...”
 > 「……う……ここは……?」
 “...Ngh... Where... is this...?”
 
-@30832 Rose · ロゼ
+@30832 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「お目覚めですか、マーグ隊長。私
 >  は副官として配属された、ロゼです」
-“You’re awake, Commander Marg. I’m Rose, assigned here as your adjutant.”
+“You’re awake, Commander Marg. I’m Roze, assigned here as your adjutant.”
 
 @30833 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
 > 「ロゼ? 隊長? ……どうしたんだ!?
 >  何も思いだせない!」
-“Rose? Commander? ...What’s going on?! I can’t remember a thing!”
+“Roze? Commander? ...What’s going on?! I can’t remember a thing!”
 
-@30834 Rose · ロゼ
+@30834 Roze · ロゼ
 > 「隊長はすべての過去を
 >  消し去ったのです」
 “You erased your entire past, Commander.”
@@ -1118,7 +1118,7 @@ you will be the hope of everyone in the Earth Sphere...”
 > 「なぜ?」
 “Why?”
 
-@30836 Rose · ロゼ
+@30836 Roze · ロゼ
 > 「未来に生きるために」
 “So that you may live for the future.”
 
@@ -1126,7 +1126,7 @@ you will be the hope of everyone in the Earth Sphere...”
 > 「未来に?」
 “For the future?”
 
-@30838 Rose · ロゼ
+@30838 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「任務をご説明します。こちらへ」
 “I’ll brief you on your mission. This way.”
@@ -1136,7 +1136,7 @@ you will be the hope of everyone in the Earth Sphere...”
 > 「……これは?」
 “...What’s this?”
 
-@30840 Rose · ロゼ
+@30840 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「地球の軍勢です。いくつかの
 >  勢力にわかれておりますが
@@ -1158,7 +1158,7 @@ as much damage as possible.”
 > 「地球……」
 “The Earth...”
 
-@30842 Rose · ロゼ
+@30842 Roze · ロゼ
 > 「そして、ズール皇帝陛下じきじきに
 >  隊長に与えられたもっとも重要な
 “And the most important mission that His Majesty Emperor Zuul himself
@@ -1176,7 +1176,7 @@ bestowed upon you, Commander, is the elimination of the traitor Mars.”
 >  まぎれこんでいるのだな?」
 among the Earth’s forces?”
 
-@30844 Rose · ロゼ
+@30844 Roze · ロゼ
 > 「はい」
 “Yes.”
 

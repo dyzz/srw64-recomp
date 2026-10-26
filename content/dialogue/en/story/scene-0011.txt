@@ -180,7 +180,7 @@ Why don’t you two follow my example?”
 > 「え、ええ!」
 “R-right!”
 
-@18570 Aboly · アポリー
+@18570 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「どうした?」
 “What’s wrong?”
@@ -203,7 +203,7 @@ rides pretty rough.”
 >  だからな」
 This thing’s just a beat-up old transport.”
 
-@18573 Aboly · アポリー
+@18573 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「無理やり改装してあるだけ
 >  なんだ
@@ -218,7 +218,7 @@ Beats walking, so you’ll have to put up with it.”
 > 「……どうなるんです、これから?」
 “...So what happens from here?”
 
-@18575 Aboly · アポリー
+@18575 Apolly · アポリー
 > 「なんだ、いきなり」
 “What, all of a sudden?”
 
@@ -232,7 +232,7 @@ Beats walking, so you’ll have to put up with it.”
 >  してたら、そのうち……」
 and if all we ever do is fight like this, sooner or later...”
 
-@18577 Aboly · アポリー
+@18577 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「まぁ、大規模で組織的な
 >  抵抗運動は、始まったばかり
@@ -254,7 +254,7 @@ Once that happens, our forces will grow too, and things’ll get better.”
 > 「…………」
 “...”
 
-@18579 Aboly · アポリー
+@18579 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「あまり考えすぎるなよ。今お前が
 >  するべきなのは、自分の機体を
@@ -798,7 +798,7 @@ Anna... it’s been a while. Good to see you’re well.”
 > 「エイジ……」
 “Eiji...”
 
-@18659 Aboly · アポリー
+@18659 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「おしゃべりはその辺でやめにしろ!
 “That’s enough chatting!
@@ -1020,7 +1020,7 @@ Anna, come over here. It’s the real Eiji!”
 > 「…………」
 “...”
 
-@18696 Aboly · アポリー
+@18696 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「ん? どうしたんだ、あいつ」
 “Hm? What’s with him?”
@@ -1029,7 +1029,7 @@ Anna, come over here. It’s the real Eiji!”
 > 「さあ?」
 “Beats me.”
 
-@18698 Aboly · アポリー
+@18698 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「お前たち、
 >  感動のご対面中に悪いが
@@ -1071,7 +1071,7 @@ Save the rest for later.”
 > 「気づいてくれよ……」
 “Come on, notice me...”
 
-@18705 Aboly · アポリー
+@18705 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「ん? ……大尉、解放戦線の
 >  発光信号です」
@@ -1083,7 +1083,7 @@ Save the rest for later.”
 >  場所は?」
 “Here, of all places? You’re sure? Where?”
 
-@18707 Aboly · アポリー
+@18707 Apolly · アポリー
 > 「あそこの森の中ほどですね」
 “Somewhere in the middle of that forest.”
 
@@ -1095,7 +1095,7 @@ Save the rest for later.”
 @18709 Bright · ブライト
 > 「ああ、そうしてくれ。アポリー、ロベルト、
 >  周囲の警戒を怠るな」
-“Yes, go ahead. Aboly, Roberto, keep a sharp watch on the perimeter.”
+“Yes, go ahead. Apolly, Roberto, keep a sharp watch on the perimeter.”
 
 @18710 Roberto · ロベルト
 > 「了解」
@@ -1255,7 +1255,7 @@ That’s why we’ve kept resisting these three years, so what Eiji stood for
 >  3年間抵抗を続けてきたんだ」
 back then won’t go to waste.”
 
-@18732 Aboly · アポリー
+@18732 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「エイジはあのSPTに乗ってたんだろ?
 >  よく信じる気になったな」

@@ -8,7 +8,7 @@
 ---
 >  異星人どもさえこなければ、この
 >  デビルガンダムで地球圏の覇権は
-aliens had never come, this Dark Gundam would have made the Earth Sphere
+aliens had never come, this Devil Gundam would have made the Earth Sphere
 ---
 >  私のものとなったでしょうに……」
 mine to rule...”
@@ -22,7 +22,7 @@ mine to rule...”
 ---
 >  果たさなくなりつつある。デビルガンダム
 >  には強じんな肉体と精神を持つ
-serve as the core. The Dark Gundam requires a new core
+serve as the core. The Devil Gundam requires a new core
 ---
 >  新しいコアが必要だ」
 of strong body and spirit.”
@@ -51,7 +51,7 @@ understand what real strength is?”
 ---
 >  デビルガンダムを完全なものとしなけれ
 >  ばなりません。その点で私とあなたの
-we must perfect the Dark Gundam. On that point, you and I
+we must perfect the Devil Gundam. On that point, you and I
 ---
 >  意見は共通している」
 are of one mind.”
@@ -87,20 +87,20 @@ No, I need no reward. But not like this, not like this...”
 # 审校：同上，“東方先生”改为 Master Asia。
 > 「……東方先生、夢を見るのは
 >  勝手ですが、デビルガンダムは
-“...Master Asia, dream all you like, but the Dark Gundam is
+“...Master Asia, dream all you like, but the Devil Gundam is
 ---
 >  あくまでも私のもの。
 >  ククク、デビルガンダムさえあれば
-mine and mine alone. Heh heh heh. With the Dark Gundam,
+mine and mine alone. Heh heh heh. With the Devil Gundam,
 ---
 >  デビルガンダムさえあれば、全宇宙が
 >  私のものに……」
-with the Dark Gundam, the entire universe will be mine...”
+with the Devil Gundam, the entire universe will be mine...”
 
 @40121 Banjo · 万丈
 > 「デビルガンダムの所在はわかっている
 >  のか?」
-“Do you know where the Dark Gundam is?”
+“Do you know where the Devil Gundam is?”
 
 @40122 Schwarz · シュバルツ
 > 「確実とはいえんが、おおよその見当
@@ -211,7 +211,7 @@ MS with their bare hands. Oh well, what can you do.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「……ドモン、みんな、デビルガンダムを
 >  倒し、必ずもどってこいよ。俺たちは
-“...Domon, everyone, take down the Dark Gundam and make sure you come back. We’re
+“...Domon, everyone, take down the Devil Gundam and make sure you come back. We’re
 ---
 >  全員、運命をともにする仲間だ
 >  みんなのもどる場所は、ここしかない」
@@ -332,7 +332,7 @@ What’s gonna happen to us now, huh?”
 @40159 Schwarz · シュバルツ
 > 「そうだ……間違いない。この付近の
 >  どこかに、必ずデビルガンダムが
-“Yes... no doubt about it. The Dark Gundam has to be
+“Yes... no doubt about it. The Devil Gundam has to be
 ---
 >  いるはずだ」
 somewhere near here.”
@@ -460,7 +460,7 @@ And what is this body...?”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「……聞かせてあげよう、レイン。
 >  あれは、デビルガンダムが完成して
-“...Let me tell you, Rain. It was shortly after the Dark Gundam was completed.
+“...Let me tell you, Rain. It was shortly after the Devil Gundam was completed.
 ---
 >  まもなくのことだった。もっとも
 >  最初は、あれをデビルガンダムとは
@@ -468,7 +468,7 @@ Though at first, no one called it
 ---
 >  呼んでいなかったがな。すべては、
 >  カーンズが地球へ落とす6体目の
-the Dark Gundam. It all began when Quinze chose it as the sixth
+the Devil Gundam. It all began when Quinze chose it as the sixth
 ---
 >  ガンダムに、あれを選んだ時に
 >  始まったのだ……」
@@ -477,7 +477,7 @@ Gundam to drop to Earth...”
 @40181 Domon · ドモン
 > 「……どこだ、デビルガンダム。
 >  早く出てこい」
-“...Where are you, Dark Gundam? Come out already.”
+“...Where are you, Devil Gundam? Come out already.”
 
 @40182 ???
 # 审校：拟声笑声改为更自然的英文，避免保留日文罗马字。
@@ -783,7 +783,7 @@ Burn this sight of humanity’s twilight into your heart.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ランタオ島で待っておるぞ、ドモン。
 >  デビルガンダムもな。決着をつけたくば
-“I shall be waiting on Lantau Island, Domon. As will the Dark Gundam. If you wish to settle this,
+“I shall be waiting on Lantau Island, Domon. As will the Devil Gundam. If you wish to settle this,
 ---
 >  くるがよい」
 then come.”
@@ -807,7 +807,7 @@ then come.”
 # 检查提示：未用必用译名：ゴッドガンダム→Burning Gundam、デビルガンダム→Dark Gundam
 > 「ゴッドガンダム……ドモンか。
 >  ドモン、無事か? デビルガンダムが
-“The Burning Gundam... that’s Domon. Domon, are you all right? Was the Dark Gundam
+“The God Gundam... that’s Domon. Domon, are you all right? Was the Devil Gundam
 ---
 >  いたのか!?」
 here?!”
@@ -815,7 +815,7 @@ here?!”
 @40237 Selain · セレイン（按段落 3DD2）
 > 「ドモンか……戦闘があったようだな。
 >  デビルガンダムか?」
-“Domon, huh... Looks like there was a fight. Was it the Dark Gundam?”
+“Domon, huh... Looks like there was a fight. Was it the Devil Gundam?”
 
 @40238 Brad · ブラッド（按段落 3DD3）
 > 「ドモンッ! 何があった!? 奴を
@@ -827,7 +827,7 @@ here?!”
 # 检查提示：未用必用译名：ゴッドガンダム→Burning Gundam
 > 「ゴッドガンダム……ドモンね? どうしたの
 >  戦闘があったみたいだけど?」
-“The Burning Gundam... that’s Domon, right? What happened? It looks as though there was a battle.”
+“The God Gundam... that’s Domon, right? What happened? It looks as though there was a battle.”
 
 @40240 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -847,4 +847,4 @@ Get in touch with everyone.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ。そこに……そこにデビルガンダムが
 >  いる」
-“Yeah. That’s where... that’s where the Dark Gundam is.”
+“Yeah. That’s where... that’s where the Devil Gundam is.”

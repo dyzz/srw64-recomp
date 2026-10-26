@@ -53,7 +53,7 @@ They’re said to be radicals from several colonies, but something doesn’t sit
 > 「M作戦……どういうのです?」
 “Operation M... what is it?”
 
-@18756 Aboly · アポリー
+@18756 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「俺たちも実態はつかんでいない。
 >  わかっているのは
@@ -340,7 +340,7 @@ but there’s a combat pilot aboard, flying it.”
 >  特士、脱出する。拾ってくれ」
 “That should stop it. Special Officer, I’m ejecting. Pick me up.”
 
-@18798 Aboly · アポリー
+@18798 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「間に合いませんよ、こりゃ」
 “We’re not going to make it in time, not like this.”
@@ -838,7 +838,7 @@ my unit just went into forced cooling, that’s all.”
 >  あれでは助からんな」
 “The Operation M pilot... There’s no way he survived that.”
 
-@18867 Aboly · アポリー
+@18867 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「そう思います。
 >  ひきあげましょう

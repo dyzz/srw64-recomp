@@ -423,7 +423,7 @@ and is disposing of anyone like that, is that it?”
 >  送り込んだ、あのズールの」
 and sent me to Earth as the key to a bomb.”
 
-@45261 Rose · ロゼ
+@45261 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「……説得が
 >  不可能だからではないわ」
@@ -433,7 +433,7 @@ and sent me to Earth as the key to a bomb.”
 > 「どういうことだ?」
 “What do you mean?”
 
-@45263 Rose · ロゼ
+@45263 Roze · ロゼ
 # 审校：英文倒装生硬
 > 「ズール皇帝は、最初から
 >  そんなつもりもないんです。ズールにとって
@@ -449,9 +449,9 @@ He will never tolerate anything else.”
 
 @45264 Anna · アンナ
 > 「ロゼ……」
-“Rose...”
+“Roze...”
 
-@45265 Rose · ロゼ
+@45265 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「私も……ズール皇帝に直接そう
 >  いわれたわ。私はあなた方と戦い
@@ -832,7 +832,7 @@ think you can beat me?! Die, and curse your own foolishness!!”
 >  ないはずだ! 戦いをやめろ!」
 You have no choice but to live here in the Earth Sphere! Stop fighting!”
 
-@45318 Rose · ロゼ
+@45318 Roze · ロゼ
 > 「マーズ!? …………ズール皇帝、
 >  兵士たちもそう望んでいるはずです!
 “Mars?! ...Emperor Zuul, surely the soldiers want that too!
@@ -954,7 +954,7 @@ intention of continuing the fight.”
 >  逆らったことを後悔するがいい!」
 “Traitor Mars. You will regret defying me!”
 
-@45337 Rose · ロゼ
+@45337 Roze · ロゼ
 > 「ズール皇帝! 覚悟!!」
 “Emperor Zuul! Prepare yourself!!”
 
@@ -962,7 +962,7 @@ intention of continuing the fight.”
 # 审校：祖尔皇帝口吻更冷峻正式，really 改为 truly。
 > 「ロゼか。お前ごときが相手に
 >  なるとでも思うのか!? 死ねい!」
-“Rose, is it? You think the likes of you can stand against me?! Die!”
+“Roze, is it? You think the likes of you can stand against me?! Die!”
 
 @45339 Bright · ブライト
 # 审校：全局：弯撇号／弯引号

@@ -494,22 +494,22 @@ of the activation of the ‘Grados Crest’ and its effects. It may sap their wi
 # 审校：全局：弯撇号／弯引号
 > 「そういうことなら、ロゼにやってもらおう。
 >  それがもっとも効果的だろう」
-“In that case, let’s have Rose do it. Coming from her, it’ll hit hardest.”
+“In that case, let’s have Roze do it. Coming from her, it’ll hit hardest.”
 
 @43477 Takeru · タケル
 > 「しかし……」
 “But...”
 
-@43478 Rose · ロゼ
+@43478 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「いいわ、マーズ。私がやります」
 “It’s all right, Mars. I’ll do it.”
 
 @43479 Takeru · タケル
 > 「ロゼ……」
-“Rose...”
+“Roze...”
 
-@43480 Rose · ロゼ
+@43480 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「悪いのはズールだ、そういったのはマーズ
 >  あなたよ。私が呼びかけることで
@@ -521,9 +521,9 @@ to stop fighting, then that’s enough for me.”
 
 @43481 Bright · ブライト
 > 「ふむ……頼めるか、ロゼ」
-“Hmm... Can I count on you, Rose?”
+“Hmm... Can I count on you, Roze?”
 
-@43482 Rose · ロゼ
+@43482 Roze · ロゼ
 > 「はい」
 “Yes.”
 

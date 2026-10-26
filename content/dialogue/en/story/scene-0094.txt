@@ -652,22 +652,22 @@ of what the activation of the ‘Crest’ means?”
 # 审校：全局：弯撇号／弯引号
 > 「そういうことなら、ロゼにやってもらおう。
 >  それがもっとも効果的だろう」
-“In that case, let’s have Rose do it. It’ll hit them hardest coming from her.”
+“In that case, let’s have Roze do it. It’ll hit them hardest coming from her.”
 
 @48714 Takeru · タケル
 > 「しかし……」
 “But...”
 
-@48715 Rose · ロゼ
+@48715 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「いいわ、マーズ。私がやります」
 “It’s all right, Mars. I’ll do it.”
 
 @48716 Takeru · タケル
 > 「ロゼ……」
-“Rose...”
+“Roze...”
 
-@48717 Rose · ロゼ
+@48717 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「悪いのはズールだ、そういったのはマーズ
 >  あなたよ。私が呼びかけることで
@@ -679,9 +679,9 @@ who will stop fighting because I call out to them, then that’s enough for me.�
 
 @48718 Bright · ブライト
 > 「ふむ……頼めるか、ロゼ」
-“Hmm... Can I leave it to you, Rose?”
+“Hmm... Can I leave it to you, Roze?”
 
-@48719 Rose · ロゼ
+@48719 Roze · ロゼ
 > 「はい」
 “Yes.”
 
@@ -1164,7 +1164,7 @@ and it might just be a rumor...”
 “...A giant shadow was sighted in Neo Hong Kong. From its shape,
 ---
 >  デビルガンダムの可能性がある」
-it may be the Dark Gundam.”
+it may be the Devil Gundam.”
 
 @48795 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1176,7 +1176,7 @@ it may be the Dark Gundam.”
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうよ、だってデビルガンダムは……」
-“That’s right, because the Dark Gundam was...”
+“That’s right, because the Devil Gundam was...”
 
 @48797 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -1197,7 +1197,7 @@ that thing would show up now.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ、デビルガンダムは俺たちが
 >  倒したんだ。間違いなくな」
-“Yeah, we took down the Dark Gundam ourselves. No doubt about it.”
+“Yeah, we took down the Devil Gundam ourselves. No doubt about it.”
 
 @48800 Argo · アルゴ
 # 审校：阿尔戈寡言，うむ 译成 Indeed 过于正式，改为更简短的 Mm。
@@ -1231,7 +1231,7 @@ that thing would show up now.”
 @48806 Schwarz · シュバルツ
 > 「デビルガンダムを甘く見てはいかん。
 >  お前たち、DG細胞のことを考えて
-“You must not underestimate the Dark Gundam. Think about the DG cells,
+“You must not underestimate the Devil Gundam. Think about the DG cells,
 ---
 >  みろ。何がおこったとしても不思議
 >  ではあるまい。お前たちごときの
@@ -1250,7 +1250,7 @@ be passing judgment with shallow wits like yours?”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「まるで、デビルガンダムの復活を
 >  予想していたかのように
-“You speak as if you had predicted the Dark Gundam’s
+“You speak as if you had predicted the Devil Gundam’s
 ---
 >  おっしゃるのですね」
 revival all along.”
@@ -1270,7 +1270,7 @@ revival all along.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「とめるな、レイン! デビルガンダムならば
 >  俺のこの手で決着をつけねばならん」
-“Don’t stop me, Rain! If it’s the Dark Gundam, I have to settle it with my own hands.”
+“Don’t stop me, Rain! If it’s the Devil Gundam, I have to settle it with my own hands.”
 
 @48812 Sai Saici · サイ・サイシー
 # 审校：全局：弯撇号／弯引号
@@ -1286,7 +1286,7 @@ revival all along.”
 
 @48814 Argo · アルゴ
 > 「デビルガンダムならばな」
-“If it is the Dark Gundam.”
+“If it is the Devil Gundam.”
 
 @48815 George · ジョルジュ
 # 审校：全局：弯撇号／弯引号
@@ -1497,7 +1497,7 @@ Damn it, now we can’t continue the experiments...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「先日のデビルガンダムの件だが、
 >  存在が確認された」
-“About the Dark Gundam the other day. Its existence has been confirmed.”
+“About the Devil Gundam the other day. Its existence has been confirmed.”
 
 @48852 Amuro · アムロ
 > 「やはり、本物か……」
@@ -1546,7 +1546,7 @@ move out right now...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「デビルガンダムを放置するわけにはいか
 >  ない。が、帝国軍が一時的に
-“We cannot leave the Dark Gundam alone. But just because the Imperial forces have
+“We cannot leave the Devil Gundam alone. But just because the Imperial forces have
 ---
 >  退いているからといって、地上は
 >  余裕のある状態ではない
@@ -1605,7 +1605,7 @@ and self-replication. It was being developed in the colonies.”
 @48865 Ryo · 亮
 > 「まさか……その自動機械が、
 >  デビルガンダムだと?」
-“Don’t tell me... that autonomous machine is the Dark Gundam?”
+“Don’t tell me... that autonomous machine is the Devil Gundam?”
 
 @48866 Treize · トレーズ
 # 审校：英文 supposed to have been 生硬
@@ -1620,14 +1620,14 @@ it was called the Ultimate Gundam.”
 @48867 Ark · アーク（按段落 3DD1）
 > 「それが、なんだってデビルガンダムに
 >  なるんです?」
-“So why did it become the Dark Gundam?”
+“So why did it become the Devil Gundam?”
 
 @48868 Selain · セレイン（按段落 3DD2）
 # 审校：英文时态
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「だが……なぜそれが、デビルガンダムに
 >  なる?」
-“But... why would that become the Dark Gundam?”
+“But... why would that become the Devil Gundam?”
 
 @48869 Brad · ブラッド（按段落 3DD3）
 # 审校：英文重复 devil
@@ -1637,12 +1637,12 @@ it was called the Ultimate Gundam.”
 “Hey, how does something that good turn into a demonic
 ---
 >  奴になっちまうんだよ!?」
-monster like the Dark Gundam?!”
+monster like the Devil Gundam?!”
 
 @48870 Manami · マナミ（按段落 3DD4）
 > 「でも……デビルガンダムになった。
 >  どうしてなの?」
-“But... it became the Dark Gundam. Why?”
+“But... it became the Devil Gundam. Why?”
 
 @48871 Treize · トレーズ
 # 审校：英文中文生硬
@@ -1671,7 +1671,7 @@ restored that way, humanity could never reclaim its noble soul.
 ---
 >  かなわなくなる。そうは思わないか。
 >  私はデビルガンダムも
-Would you not agree? I reject both the Dark Gundam and the
+Would you not agree? I reject both the Devil Gundam and the
 ---
 >  そのもととなったと思われる
 >  アルティメットガンダムも、否定する」

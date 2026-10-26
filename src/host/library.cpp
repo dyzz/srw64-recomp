@@ -3,6 +3,7 @@
 #include "native_dialogue.hpp"
 #include "upgrade_page.hpp"
 #include "combo_attacks.hpp"
+#include "library_names_table.hpp"
 #include "localization/catalog.hpp"
 #include "librecomp/game.hpp"
 #include <algorithm>
@@ -290,6 +291,13 @@ void number_repeats(json& list) {
     for(auto& e:list)
         if(total[key(e)]>1)if(const unsigned n=++seen[key(e)];n>1)e["name"]=e.at("name").get<std::string>()+" ("+std::to_string(n)+")";
 }
+// A record named in content/locales/library-names.json for this language takes that name
+// instead (site suggestions: the pilot who flies it, the name the series uses).
+void rename_records(json& list,bool pilots) {
+    const std::string& locale=localization::catalog().locale;
+    for(auto& e:list)for(const auto& n:library_names::kNames)
+        if(n.pilot==pilots && locale==n.locale && e.at(pilots?"actor":"id").get<unsigned>()==n.id)e["name"]=n.name;
+}
 json build() {
     rom=recomp::get_rom();
     json units=json::array(),pilots=json::array();
@@ -353,6 +361,7 @@ json build() {
     assign_works(units,"id",robot_list,robot_rows,true,unit_aliases,unit_alias_count,unit_works);
     assign_works(pilots,"actor",character_list,character_rows,false,actor_aliases,actor_alias_count,actor_works);
     number_repeats(units);number_repeats(pilots);
+    rename_records(units,false);rename_records(pilots,true);
     json labels;
     const std::pair<const char*,uint16_t> keys[]={{"hp",0xFE7},{"en",0xFE8},{"mobility",0xFE9},{"armor",0xFEA},{"limit",0xFEB},{"size",0x1003},
         {"repair",0x1004},{"abilities",0x1005},{"type",0x1006},{"move",0x1007},{"terrain",0xFF6},{"air",0xFF7},{"land",0xFF8},{"sea",0xFF9},{"space",0xFFA},

@@ -1,7 +1,7 @@
 unit,name_ja,name_zh,name_en,battle_song
 0,ガンダムシュピーゲル,明镜高达,Shadow Gundam,4
-1,ゴッドガンダム,神高达,Burning Gundam,4
-2,ゴッドガンダムH,神高达H,Burning Gundam H,10
+1,ゴッドガンダム,神高达,God Gundam,4
+2,ゴッドガンダムH,神高达H,God Gundam H,10
 3,シャイニングガンダム,闪光高达,Shining Gundam,4
 4,シャイニングガンダムS,闪光高达S,Shining Gundam S,11
 5,ドモン・カッシュ,多蒙·卡修,Domon Kasshu,4
@@ -23,9 +23,9 @@ unit,name_ja,name_zh,name_en,battle_song
 21,デスアーミー,死亡军团,Death Army,4
 22,デスバーディ,死亡飞鸟,Death Birdy,4
 23,デスネービー,死亡海军,Death Navy,4
-24,デビルガンダム,恶魔高达,Dark Gundam,4
-25,デビルガンダム,恶魔高达,Dark Gundam,4
-26,デビルガンダム,恶魔高达,Dark Gundam,4
+24,デビルガンダム,恶魔高达,Devil Gundam,4
+25,デビルガンダム,恶魔高达,Devil Gundam,4
+26,デビルガンダム,恶魔高达,Devil Gundam,4
 27,マスターガンダム,尊者高达,Master Gundam,4
 28,マスターガンダムS,尊者高达S,Master Gundam S,4
 29,マスターアジア,东方不败,Master Asia,4
@@ -33,10 +33,10 @@ unit,name_ja,name_zh,name_en,battle_song
 31,アシュクリーフ,阿修克里夫,Ashcleef,28
 32,スヴァンヒルド,斯凡希尔德,Svanheld,29
 33,ラーズグリーズ,拉兹格里兹,Razgreez,29
-34,アースゲイン,阿斯盖因,Earthgain,26
+34,アースゲイン,夺地者,Earthgain,26
 35,ヴァイローズ,瓦伊罗斯,Virose,26
-36,スイームルグ,斯维姆鲁格,Sweemurg,27
-37,エルブルス,厄尔布鲁士,Elbulls,27
+36,スイームルグ,菲因梅露姆,Sweemurg,27
+37,エルブルス,凤翼天翔,Elbulls,27
 38,デビルアクシズ,恶魔阿克西斯,Dark Axis,34
 39,ヴァルディスキューズ,瓦尔迪斯丘兹,Valdiscuse,34
 40,アヴィエスレルム,阿维耶斯雷姆,Avieslelm,34
@@ -122,7 +122,7 @@ unit,name_ja,name_zh,name_en,battle_song
 120,ウイングゼロ(バード),飞翼零式（鸟形态）,Wing Zero (Bird),8
 121,ウイングゼロカスタム,飞翼零式特装型,Wing Zero Custom,8
 122,エアリーズ,艾亚里斯,Aries,8
-123,ガンダムエピオン,次代高达,Gundam Epyon,8
+123,ガンダムエピオン,艾比安高达,Gundam Epyon,8
 124,ガンダムサンドロック,沙漠高达,Gundam Sandrock,8
 125,サンドロックカスタム,沙漠特装型,Sandrock Custom,8
 126,ガンダムサンドロック改,沙漠高达改,Gundam Sandrock Kai,8
@@ -151,11 +151,11 @@ unit,name_ja,name_zh,name_en,battle_song
 149,リーブラ,天秤座,Libra,8
 150,グレートマジンガー,大魔神,Great Mazinger,16
 151,ビューナスA,维纳斯A,Venus A,16
-152,戦闘獣オベリウス,战斗兽欧贝琉斯,Warbeast Obelius,16
-153,戦闘獣ズガール,战斗兽斯伽尔,Warbeast Zugal,16
+152,戦闘獣オベリウス,战斗兽欧贝琉斯,Battle Beast Obelius,16
+153,戦闘獣ズガール,战斗兽斯伽尔,Battle Beast Zugal,16
 154,ミケロス,迈锡罗斯,Mikeros,16
 155,ヤヌス侯爵,雅努斯侯爵,Marquis Janus,16
-156,暗黒大将軍,暗黑大将军,Dark General,16
+156,暗黒大将軍,暗黑大将军,Great General of Darkness,16
 157,量産型グレート,量产型大魔神,MP Great Mazinger,16
 158,グレンダイザー,古连泰沙,Grendizer,17
 159,グレンダイザー(WS),古连泰沙（WS）,Grendizer (WS),17
@@ -264,8 +264,8 @@ unit,name_ja,name_zh,name_en,battle_song
 262,マジンガーZ,魔神Z,Mazinger Z,15
 263,マジンガーZ(JS),魔神Z（JS）,Mazinger Z (JS),15
 264,ミネルバX,米涅瓦X,Minerva X,15
-265,戦闘獣グラトニオス,战斗兽格拉托尼奥斯,Warbeast Gratonios,15
-266,戦闘獣ダンテ,战斗兽但丁,Warbeast Dante,15
+265,戦闘獣グラトニオス,战斗兽格拉托尼奥斯,Battle Beast Gratonios,15
+266,戦闘獣ダンテ,战斗兽但丁,Battle Beast Dante,15
 267,ドラゴノザウルス,德拉戈诺龙,Dragonosaurus,15
 268,光波獣ピグドロン,光波兽皮格德隆,Lightwave Beast Pigdron,15
 269,ドール,多尔,Doll,12
@@ -291,7 +291,7 @@ unit,name_ja,name_zh,name_en,battle_song
 289,ビギナ・ギナ,比基纳·基纳,Vigna-Ghina,9
 290,ガンダムマックスターB,极限之星高达B,Gundam Maxter B,4
 291,トーラス(MA),陶拉斯（MA）,Taurus (MA),8
-292,ガンダムエピオン(MA),次代高达（MA）,Gundam Epyon (MA),8
+292,ガンダムエピオン(MA),艾比安高达（MA）,Gundam Epyon (MA),8
 293,ダルジャン,达尔姜,Daljan,12
 294,量産型νガンダムF,量产型ν高达F,MP Nu Gundam F,7
 295,フルアーマー百式改,全装甲百式改,FA Hyaku-Shiki Kai,7
@@ -302,13 +302,13 @@ unit,name_ja,name_zh,name_en,battle_song
 300,セント・マグマ,圣·马格玛,Saint Magma,20
 301,超獣シシリス・キバ,超兽西西里斯·基巴,Super Beast Shishiris Kiba,20
 302,ドール(飛行),多尔（飞行）,Doll (Flight),12
-303,デビルガンダム,恶魔高达,Dark Gundam,4
+303,デビルガンダム,恶魔高达,Devil Gundam,4
 304,デモニカ,德摩尼卡,Demonica,16
 305,ムゲ・ゾルバドス城,穆格·佐尔巴多斯城,Muge Zorbados Castle,22
-306,スーパーアースゲイン,超级阿斯盖因,Super Earthgain,26
-307,スイームルグS,斯维姆鲁格S,Sweemurg S,27
+306,スーパーアースゲイン,超级夺地者,Super Earthgain,26
+307,スイームルグS,菲因梅露姆S,Sweemurg S,27
 308,アシュクリーフAF,阿修克里夫AF,Ashcleef AF,28
-309,ゴッドガンダム,神高达,Burning Gundam,10
+309,ゴッドガンダム,神高达,God Gundam,10
 310,シャイニングガンダム,闪光高达,Shining Gundam,11
 311,シャイニングガンダム,闪光高达,Shining Gundam,11
 312,シャイニングガンダム,闪光高达,Shining Gundam,11

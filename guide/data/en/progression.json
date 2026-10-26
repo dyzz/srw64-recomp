@@ -55,7 +55,7 @@
    "joins": [
     "Soldifar (Ark)",
     "Schuzrum-Dias (Quattro) — mid-battle reinforcement",
-    "Schuzrum-Dias (Aboly) — mid-battle reinforcement",
+    "Schuzrum-Dias (Apolly) — mid-battle reinforcement",
     "Schuzrum-Dias (Roberto) — mid-battle reinforcement"
    ],
    "temporary": [
@@ -71,8 +71,8 @@
    "secrets": [
     {
      "ref": "secret-apolly-roberto",
-     "text": "Choosing a Real protagonist automatically gives Aboly, Roberto and two Schuzrum-Dias; they arrive as reinforcements mid-stage; nothing to do",
-     "short": "Nothing to do: Aboly and Roberto arrive as mid-stage reinforcements"
+     "text": "Choosing a Real protagonist automatically gives Apolly, Roberto and two Schuzrum-Dias; they arrive as reinforcements mid-stage; nothing to do",
+     "short": "Nothing to do: Apolly and Roberto arrive as mid-stage reinforcements"
     },
     {
      "ref": "secret-dialogue-branches",
@@ -95,7 +95,7 @@
    "joins": [
     "Svanheld (Selain)",
     "Schuzrum-Dias (Quattro) — appears when the enemy is down to 10 or fewer",
-    "Schuzrum-Dias (Aboly) — same as above",
+    "Schuzrum-Dias (Apolly) — same as above",
     "Schuzrum-Dias (Roberto) — same as above"
    ],
    "temporary": [
@@ -111,8 +111,8 @@
    "secrets": [
     {
      "ref": "secret-apolly-roberto",
-     "text": "Choosing a Real protagonist automatically gives Aboly, Roberto and two Schuzrum-Dias; they arrive as reinforcements when 10 or fewer enemies remain; nothing to do",
-     "short": "Nothing to do: Aboly and Roberto arrive at 10 or fewer enemies"
+     "text": "Choosing a Real protagonist automatically gives Apolly, Roberto and two Schuzrum-Dias; they arrive as reinforcements when 10 or fewer enemies remain; nothing to do",
+     "short": "Nothing to do: Apolly and Roberto arrive at 10 or fewer enemies"
     }
    ]
   },
@@ -138,7 +138,7 @@
    "parts": [
     {
      "part": "Booster",
-     "from": "Dark General {≠}",
+     "from": "Great General of Darkness {≠}",
      "note": "Retreats at 50% HP or below"
     }
    ]
@@ -212,7 +212,7 @@
    "parts": [
     {
      "part": "Hybrid Armor",
-     "from": "Hell Marshal",
+     "from": "Great Marshal of Hell",
      "note": "Retreats at 30% HP or below"
     }
    ]
@@ -279,7 +279,7 @@
    "parts": [
     {
      "part": "Booster",
-     "from": "Dark General",
+     "from": "Great General of Darkness",
      "note": "Retreats at 40% HP or below"
     },
     {
@@ -620,7 +620,7 @@
    "secrets": [
     {
      "ref": "secret-emma",
-     "text": "Super only: Emma appears on the player phase of turn 3 or when 12 or fewer enemies remain; persuade her with Quattro (no prerequisite). You must persuade her before Kyoji (Dark Gundam) drops to 50% HP or below or is destroyed — the stage ends at that moment {+}",
+     "text": "Super only: Emma appears on the player phase of turn 3 or when 12 or fewer enemies remain; persuade her with Quattro (no prerequisite). You must persuade her before Kyoji (Devil Gundam) drops to 50% HP or below or is destroyed — the stage ends at that moment {+}",
      "short": "Persuade Emma with Quattro before Kyoji drops to 50% HP"
     },
     {
@@ -658,7 +658,7 @@
    "parts": [
     {
      "part": "Propellant Tank",
-     "from": "Dark General"
+     "from": "Great General of Darkness"
     },
     {
      "part": "Repair Kit",
@@ -855,7 +855,7 @@
    "parts": [
     {
      "part": "Chobham Armor",
-     "from": "Hell Marshal"
+     "from": "Great Marshal of Hell"
     },
     {
      "part": "Repair Kit",
@@ -1161,7 +1161,7 @@
     },
     {
      "part": "Hybrid Armor",
-     "from": "Dark General"
+     "from": "Great General of Darkness"
     }
    ],
    "secrets": [
@@ -1282,7 +1282,7 @@
     },
     {
      "part": "Super Alloy Z",
-     "from": "Dark General"
+     "from": "Great General of Darkness"
     }
    ],
    "secrets": [
@@ -1344,7 +1344,7 @@
     },
     {
      "part": "Apogee Motor",
-     "from": "Dark General"
+     "from": "Great General of Darkness"
     },
     {
      "part": "Repair Kit",
@@ -1550,7 +1550,7 @@
     },
     {
      "part": "Magnetic Coating",
-     "from": "Hell Marshal"
+     "from": "Great Marshal of Hell"
     },
     {
      "part": "Repair Kit",
@@ -1771,7 +1771,7 @@
     },
     {
      "part": "Repair Kit",
-     "from": "Dark General"
+     "from": "Great General of Darkness"
     }
    ],
    "retreats": [
@@ -1823,7 +1823,7 @@
     },
     {
      "part": "Repair Kit",
-     "from": "Hell Marshal"
+     "from": "Great Marshal of Hell"
     }
    ],
    "secrets": [
@@ -2872,7 +2872,7 @@
    "parts": [
     {
      "part": "Mega Booster",
-     "from": "Dark General"
+     "from": "Great General of Darkness"
     }
    ],
    "notes": [
@@ -2953,7 +2953,7 @@
    ],
    "upgrades": [
     "Unlocked at the start: Gundam Maxter “Burning Machine Gun Punch”, Dragon Gundam “Shin Ryusei Kochoken”, Gundam Rose “Rose Hurricane”, Bolt Gundam “Gaia Crusher”",
-    "Shining Gundam → Burning Gundam (Domon, after all enemies are defeated)",
+    "Shining Gundam → God Gundam (Domon, after all enemies are defeated)",
     "Layzner → New Layzner (Eiji, end of stage)",
     "Daitarn 3 (Banjo) becomes deployable again at the end of the stage (Super; Real on the OZ route has no Banjo) {≠}"
    ],
@@ -3014,7 +3014,7 @@
     },
     {
      "part": "Bio-Sensor",
-     "from": "Hell Marshal"
+     "from": "Great Marshal of Hell"
     }
    ],
    "secrets": [
@@ -3052,7 +3052,7 @@
    ],
    "upgrades": [
     "Unlocked at the start: Gundam Maxter “Burning Machine Gun Punch”, Dragon Gundam “Shin Ryusei Kochoken”, Gundam Rose “Rose Hurricane”, Bolt Gundam “Gaia Crusher”",
-    "Shining Gundam → Burning Gundam (Domon, after the first enemy wave is wiped out)",
+    "Shining Gundam → God Gundam (Domon, after the first enemy wave is wiped out)",
     "Layzner → New Layzner (Eiji, end of stage)"
    ],
    "parts": [
@@ -3159,7 +3159,7 @@
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the Burning Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
+     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the God Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
      "short": "No action needed: Double Burning Finger works once Allenby joins"
     }
    ],
@@ -3307,7 +3307,7 @@
     "Sigroon (Rish) — Selain's scenario, if the first two steps are done {≠}"
    ],
    "upgrades": [
-    "Dancouga and the Shining Gundam can deploy again (mid-battle); Shining Gundam → Burning Gundam (Domon)",
+    "Dancouga and the Shining Gundam can deploy again (mid-battle); Shining Gundam → God Gundam (Domon)",
     "The four Shuffle Alliance units can deploy again, and the Gundam Maxter's “Burning Machine Gun Punch”, the Dragon Gundam's “Shin Ryusei Kochoken”, the Gundam Rose's “Rose Hurricane” and the Bolt Gundam's “Gaia Crusher” unlock (when all enemies are defeated or in the turn 15 player phase, whichever comes first) {+}",
     "Gundam Sandrock → Gundam Sandrock Kai (Quatre, end of stage)"
    ],
@@ -3422,7 +3422,7 @@
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the Burning Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
+     "text": "Double Burning Finger needs no story unlock: combination attacks are checked fresh every time, so once Allenby is recruited it's usable whenever the God Gundam and Noble Gundam are adjacent with enough Will and EN {≠}{?}",
      "short": "No action needed: Double Burning Finger works once Allenby joins"
     }
    ],
@@ -3666,7 +3666,7 @@
     },
     {
      "part": "Repair Kit",
-     "from": "Rose {+}",
+     "from": "Roze {+}",
      "note": "Appears after Blacky is shot down"
     }
    ],
@@ -3783,7 +3783,7 @@
     },
     {
      "ref": "secret-rose",
-     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}",
+     "text": "Persuade Marg with Takeru (Roze's first stage). This step only affects later dialogue and can be skipped {≠}",
      "short": "Persuade Marg with Takeru (affects dialogue only, optional)"
     },
     {
@@ -3952,7 +3952,7 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}",
+     "text": "Persuade Marg with Takeru (Roze's first stage). This step only affects later dialogue and can be skipped {≠}",
      "short": "Persuade Marg with Takeru (affects dialogue only, optional)"
     },
     {
@@ -4127,7 +4127,7 @@
     },
     {
      "part": "Repair Kit",
-     "from": "Rose"
+     "from": "Roze"
     },
     {
      "part": "Booster",
@@ -4146,8 +4146,8 @@
     },
     {
      "ref": "secret-rose",
-     "text": "Rose's 2nd stage: with Rose on the map, shoot down Marg with Takeru, then persuade Rose with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}",
-     "short": "With Rose on the map, down Marg with Takeru, then persuade Rose"
+     "text": "Roze's 2nd stage: with Roze on the map, shoot down Marg with Takeru, then persuade Roze with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}",
+     "short": "With Roze on the map, down Marg with Takeru, then persuade Roze"
     },
     {
      "ref": "secret-naida",
@@ -4234,8 +4234,8 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Rose's 2nd stage: with Rose on the map, shoot down Marg with Takeru, then persuade Rose with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}",
-     "short": "With Rose on the map, down Marg with Takeru, then persuade Rose"
+     "text": "Roze's 2nd stage: with Roze on the map, shoot down Marg with Takeru, then persuade Roze with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}",
+     "short": "With Roze on the map, down Marg with Takeru, then persuade Roze"
     },
     {
      "ref": "secret-naida",
@@ -4289,7 +4289,7 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}",
+     "text": "Persuade Marg with Takeru (Roze's first stage). This step only affects later dialogue and can be skipped {≠}",
      "short": "Optional: persuade Marg with Takeru (affects later dialogue only)"
     },
     {
@@ -4335,7 +4335,7 @@
     },
     {
      "part": "Propellant Tank",
-     "from": "Rose {+}"
+     "from": "Roze {+}"
     },
     {
      "part": "Booster",
@@ -4349,7 +4349,7 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Persuade Marg with Takeru (Rose's first stage). This step only affects later dialogue and can be skipped {≠}",
+     "text": "Persuade Marg with Takeru (Roze's first stage). This step only affects later dialogue and can be skipped {≠}",
      "short": "Optional: persuade Marg with Takeru (affects later dialogue only)"
     },
     {
@@ -4378,7 +4378,7 @@
     "Double Spazer (Naida) — Super, if Naida was persuaded and you picked the 1st option at the start"
    ],
    "joins_after": [
-    "Zeron (Rose) — when persuaded, with 3 upgrade levels {+}"
+    "Zeron (Roze) — when persuaded, with 3 upgrade levels {+}"
    ],
    "upgrades": [
     "Amuro switches to the Nu Gundam (start of stage) {≠}",
@@ -4396,15 +4396,15 @@
     },
     {
      "part": "Propellant Tank",
-     "from": "Rose",
+     "from": "Roze",
      "note": "Can be persuaded by Takeru (no drop if persuaded)"
     }
    ],
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Rose's 3rd stage: persuade Rose with Takeru (requires that in the previous stage you shot down Marg while Rose was on the map and persuaded Rose) → Rose + Zeron (3 upgrade levels) join at the end of the stage {≠}",
-     "short": "Persuade Rose with Takeru (needs the earlier Marg kill + persuasion)"
+     "text": "Roze's 3rd stage: persuade Roze with Takeru (requires that in the previous stage you shot down Marg while Roze was on the map and persuaded Roze) → Roze + Zeron (3 upgrade levels) join at the end of the stage {≠}",
+     "short": "Persuade Roze with Takeru (needs the earlier Marg kill + persuasion)"
     },
     {
      "ref": "secret-naida",
@@ -4451,7 +4451,7 @@
     },
     {
      "part": "Propellant Tank",
-     "from": "Rose {+}"
+     "from": "Roze {+}"
     },
     {
      "part": "Booster",
@@ -4466,8 +4466,8 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Rose's 2nd stage: with Rose on the map, shoot down Marg with Takeru, then persuade Rose with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}",
-     "short": "With Rose on the map, down Marg with Takeru, then persuade Rose"
+     "text": "Roze's 2nd stage: with Roze on the map, shoot down Marg with Takeru, then persuade Roze with Takeru (persuading Marg first is optional and only affects the dialogue) {≠}",
+     "short": "With Roze on the map, down Marg with Takeru, then persuade Roze"
     },
     {
      "ref": "secret-naida",
@@ -4637,10 +4637,10 @@
    "defeat": "Domon defeated; Master defeated",
    "temporary": [
     "Master Asia (on foot at first, switches to the Master Gundam after all enemies are defeated; temporary ally)",
-    "Domon first appears as the Domon Kasshu unit and switches to the Burning Gundam after all enemies are defeated"
+    "Domon first appears as the Domon Kasshu unit and switches to the God Gundam after all enemies are defeated"
    ],
    "upgrades": [
-    "Burning Gundam learns “Sekiha Tenkyoken” (end of stage)"
+    "God Gundam learns “Sekiha Tenkyoken” (end of stage)"
    ],
    "secrets": [
     {
@@ -4765,7 +4765,7 @@
     "Shadow Gundam (Schwarz) (temporary ally)"
    ],
    "leaves": [
-    "Noble Gundam (Allenby) — if not saved, she appears in the Dark Gundam after Master Asia is shot down, and is lost for good once destroyed {+}"
+    "Noble Gundam (Allenby) — if not saved, she appears in the Devil Gundam after Master Asia is shot down, and is lost for good once destroyed {+}"
    ],
    "parts": [
     {
@@ -4790,13 +4790,13 @@
     {
      "part": "Super Alloy Z",
      "from": "Allenby",
-     "note": "Appears after Master Asia is shot down; if Allenby wasn't saved, she pilots the Dark Gundam",
+     "note": "Appears after Master Asia is shot down; if Allenby wasn't saved, she pilots the Devil Gundam",
      "short_note": "Appears after Master Asia falls if Allenby wasn't saved"
     },
     {
      "part": "Super Alloy Z",
      "from": "Wong",
-     "note": "Appears after Master Asia is shot down; if Allenby was saved, Wong pilots the Dark Gundam",
+     "note": "Appears after Master Asia is shot down; if Allenby was saved, Wong pilots the Devil Gundam",
      "short_note": "Appears after Master Asia falls, if Allenby was saved"
     },
     {
@@ -4812,7 +4812,7 @@
     },
     {
      "ref": "secret-story-attacks",
-     "text": "The combination attack “Sekiha Love Love Tenkyoken” isn't story-unlocked: once the Burning Gundam has learned Sekiha Tenkyoken (at the end of “Lantau (Part 1)” on this line), it can be used with the Rising Gundam whenever the combination conditions are met {≠}{?}",
+     "text": "The combination attack “Sekiha Love Love Tenkyoken” isn't story-unlocked: once the God Gundam has learned Sekiha Tenkyoken (at the end of “Lantau (Part 1)” on this line), it can be used with the Rising Gundam whenever the combination conditions are met {≠}{?}",
      "short": "No action: Sekiha Love Love Tenkyoken needs only combo conditions"
     },
     {
@@ -4842,7 +4842,7 @@
    ],
    "upgrades": [
     "Combattler V's Twin Lancer, V Laser, Big Blast Divider and Grand Dasher unlock (at the start, on all three branches) {≠}",
-    "Burning Gundam learns “Sekiha Tenkyoken” (at the start; if you didn't pick “Go with Domon and the others” in Cyber Beast Force Base) {≠}"
+    "God Gundam learns “Sekiha Tenkyoken” (at the start; if you didn't pick “Go with Domon and the others” in Cyber Beast Force Base) {≠}"
    ],
    "parts": [
     {
@@ -4867,7 +4867,7 @@
     },
     {
      "ref": "secret-story-attacks",
-     "text": "Combattler V's Twin Lancer, V Laser, Big Blast Divider and Grand Dasher unlock at the start of this stage on all three branches; if you didn't take the Lantau branch, Burning Gundam also learns Sekiha Tenkyoken at the start of this stage {≠}",
+     "text": "Combattler V's Twin Lancer, V Laser, Big Blast Divider and Grand Dasher unlock at the start of this stage on all three branches; if you didn't take the Lantau branch, God Gundam also learns Sekiha Tenkyoken at the start of this stage {≠}",
      "short": "No action: Combattler V attacks unlock; Sekiha Tenkyoken if no Lantau"
     }
    ],
@@ -4932,7 +4932,7 @@
    "victory": "Get every one of your units into the Green Area (the stage clears only when all have left the map) {≠}",
    "defeat": "Ally battleship destroyed",
    "joins_after": [
-    "Zeron (Rose) — when persuaded, with 3 upgrade levels {+}"
+    "Zeron (Roze) — when persuaded, with 3 upgrade levels {+}"
    ],
    "parts": [
     {
@@ -4941,7 +4941,7 @@
     },
     {
      "part": "Bio-Sensor",
-     "from": "Rose",
+     "from": "Roze",
      "note": "Can be persuaded by Takeru (no drop if persuaded)"
     },
     {
@@ -4956,8 +4956,8 @@
    "secrets": [
     {
      "ref": "secret-rose",
-     "text": "Rose's 3rd stage: persuade Rose with Takeru (requires that in the previous step you shot down Marg while Rose was on the map and persuaded Rose) → Rose withdraws, and Rose + Zeron (3 upgrade levels) join at the end of the stage {≠}",
-     "short": "Persuade Rose with Takeru (needs the earlier Marg kill + persuasion)"
+     "text": "Roze's 3rd stage: persuade Roze with Takeru (requires that in the previous step you shot down Marg while Roze was on the map and persuaded Roze) → Roze withdraws, and Roze + Zeron (3 upgrade levels) join at the end of the stage {≠}",
+     "short": "Persuade Roze with Takeru (needs the earlier Marg kill + persuasion)"
     },
     {
      "ref": "secret-route-breakthrough",
@@ -4982,17 +4982,17 @@
    "defeat": "Domon defeated; Master defeated",
    "temporary": [
     "Master Asia (on foot at first, switches to the Master Gundam after all enemies are defeated; temporary ally)",
-    "Domon first appears as the Domon Kasshu unit and switches to the Burning Gundam after all enemies are defeated"
+    "Domon first appears as the Domon Kasshu unit and switches to the God Gundam after all enemies are defeated"
    ],
    "upgrades": [
     "Getter Dragon replaced by the Shin Getter-1 (Ryoma, Hayato, Benkei, at the start) {≠}",
-    "Burning Gundam learns “Sekiha Tenkyoken” (end of stage)"
+    "God Gundam learns “Sekiha Tenkyoken” (end of stage)"
    ],
    "secrets": [
     {
      "ref": "secret-story-attacks",
-     "text": "On the OZ route, Burning Gundam learns Sekiha Tenkyoken at the end of this stage",
-     "short": "No action: Burning Gundam learns Sekiha Tenkyoken at stage end"
+     "text": "On the OZ route, God Gundam learns Sekiha Tenkyoken at the end of this stage",
+     "short": "No action: God Gundam learns Sekiha Tenkyoken at stage end"
     }
    ],
    "notes": [
@@ -5122,13 +5122,13 @@
     {
      "part": "Super Alloy Z",
      "from": "Allenby {+}",
-     "note": "Appears after Master Asia is shot down; if Allenby wasn't saved, she pilots the Dark Gundam",
+     "note": "Appears after Master Asia is shot down; if Allenby wasn't saved, she pilots the Devil Gundam",
      "short_note": "Appears after Master Asia falls if Allenby wasn't saved"
     },
     {
      "part": "Super Alloy Z",
      "from": "Wong",
-     "note": "Appears after Master Asia is shot down; if Allenby was saved, Wong pilots the Dark Gundam",
+     "note": "Appears after Master Asia is shot down; if Allenby was saved, Wong pilots the Devil Gundam",
      "short_note": "Appears after Master Asia falls, if Allenby was saved"
     },
     {
@@ -5139,7 +5139,7 @@
    "secrets": [
     {
      "ref": "secret-allenby",
-     "text": "If the recruited Allenby deploys in this stage, she leaves at the start and later appears as an enemy; if she doesn't deploy, she stays in the team. If she hasn't joined but step 1 was done, she also appears as an enemy when 12 or fewer enemies remain. Persuade her first with Domon, then with Rain to save her, not necessarily in the same turn; the first time 10 or fewer enemies remain, 12 reinforcements appear, and when it drops to 10 or fewer again she withdraws. Saved, she joins at the end of the stage; if not, she appears in the Dark Gundam after Master Asia is shot down, and destroying it loses her permanently {≠}",
+     "text": "If the recruited Allenby deploys in this stage, she leaves at the start and later appears as an enemy; if she doesn't deploy, she stays in the team. If she hasn't joined but step 1 was done, she also appears as an enemy when 12 or fewer enemies remain. Persuade her first with Domon, then with Rain to save her, not necessarily in the same turn; the first time 10 or fewer enemies remain, 12 reinforcements appear, and when it drops to 10 or fewer again she withdraws. Saved, she joins at the end of the stage; if not, she appears in the Devil Gundam after Master Asia is shot down, and destroying it loses her permanently {≠}",
      "short": "Don't deploy recruited Allenby, or persuade her with Domon, then Rain"
     },
     {
@@ -5154,7 +5154,7 @@
     },
     {
      "ref": "secret-story-attacks",
-     "text": "The combination attack “Sekiha Love Love Tenkyoken” isn't story-unlocked: once the Burning Gundam has learned Sekiha Tenkyoken in the previous stage, it can be used with the Rising Gundam whenever the combination conditions are met {≠}{?}",
+     "text": "The combination attack “Sekiha Love Love Tenkyoken” isn't story-unlocked: once the God Gundam has learned Sekiha Tenkyoken in the previous stage, it can be used with the Rising Gundam whenever the combination conditions are met {≠}{?}",
      "short": "No action: Sekiha Love Love Tenkyoken needs only combo conditions"
     },
     {
@@ -6079,7 +6079,7 @@
    ],
    "notes": [
     "Stage 49 on Real, stage 50 on Super; 1 more after Ark plays “Together from Here On” or Brad plays “Time to Settle It” {≠}",
-    "Available when going to the Muge universe: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Rose, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone. The Earth Sphere group (Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Aboly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs) temporarily can't deploy but stays in the team, returning at the start of “Terror! Dark Axis Activates! (Part 1)”. Those on neither list (the protagonist, Lawrence, etc., plus the three series that join via the Link Battler link) can deploy on both sides; Gale is on both lists and can't deploy on either side while the team is split {?}{≠}",
+    "Available when going to the Muge universe: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone. The Earth Sphere group (Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Apolly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs) temporarily can't deploy but stays in the team, returning at the start of “Terror! Dark Axis Activates! (Part 1)”. Those on neither list (the protagonist, Lawrence, etc., plus the three series that join via the Link Battler link) can deploy on both sides; Gale is on both lists and can't deploy on either side while the team is split {?}{≠}",
     "Real on the OZ route never gets Banjo at all, and this stage is no exception {≠}{?}",
     "Then continues to “Terror! Dark Axis Activates! (Part 1)”"
    ]
@@ -6159,7 +6159,7 @@
     "Actually stage 49–54: stage 50 for Super, Independence Army or OZ route, option 1 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough completed within 10 turns, no exclusive side branch; 1 fewer for Real; 1 more each for Complete Pacifism → fighting alone, Ark having played “Together from Here On” or Brad having played “Time to Settle It”, option 3 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough not completed within 10 turns; 2 more for option 2 in “All-Out Attack on the Cyber Beast Force Base” {+}",
     "Quatre and Ginrei can't deploy in this stage; on the OZ route side Noin can't deploy either; Gandor (Dr. Hazuki) can't deploy {≠}",
     "On the Independence Army route Noin can persuade Milliardo; dialogue only",
-    "Deployable if you stay on Earth: Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Aboly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs. The Muge space group (Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Rose, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone) temporarily cannot deploy but stays on the team, returning at the start of “Terror! Dark Axis Activates! (Part 1)”. Anyone on neither list (the protagonist, Lawrence, etc., plus the three series added via Link Battler) can deploy on either side; Gale is on both lists, so he cannot deploy on either side while the team is split {?}{≠}",
+    "Deployable if you stay on Earth: Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Apolly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs. The Muge space group (Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone) temporarily cannot deploy but stays on the team, returning at the start of “Terror! Dark Axis Activates! (Part 1)”. Anyone on neither list (the protagonist, Lawrence, etc., plus the three series added via Link Battler) can deploy on either side; Gale is on both lists, so he cannot deploy on either side while the team is split {?}{≠}",
     "Then continues to “Terror! Dark Axis Activates! (Part 1)”"
    ]
   },
@@ -6197,7 +6197,7 @@
    ],
    "notes": [
     "Actually stage 49–54: stage 50 for Super, Independence Army route, option 1 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough completed within 10 turns, no exclusive side branch; 1 fewer for Real; 1 more each for Complete Pacifism → fighting alone, Ark having played “Together from Here On” or Brad having played “Time to Settle It”, option 3 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough not completed within 10 turns; 2 more for option 2 in “All-Out Attack on the Cyber Beast Force Base” {≠}",
-    "Available when going to the Muge universe: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Rose, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone. The Earth Sphere group (Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Aboly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs) temporarily can't deploy but stays in the team, returning at the start of “Terror! Dark Axis Activates! (Part 1)”. Those on neither list (the protagonist, Lawrence, etc., plus the three series that join via the Link Battler link) can deploy on both sides; Gale is on both lists and can't deploy on either side while the team is split {?}{≠}",
+    "Available when going to the Muge universe: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone. The Earth Sphere group (Schwarz, Domon, Rain, Argo, Allenby, Sai Saici, George, Chibodee, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Quatre, Milliardo, Noin, Jun, Tetsuya, Naoto, Mika, Kenji, Akira, Hyoma, Daisaku, Chizuru, Kosuke, Juzo, Ginrei, Elle, Ciela, Show, Silky, Chum, Marvel, Garalia, Tod, Julia, Beecha, Iino, Elle, Mondo, Apolly, Roberto, Kayra, Chara, Howard, Hilde, Roanne, Zechs) temporarily can't deploy but stays in the team, returning at the start of “Terror! Dark Axis Activates! (Part 1)”. Those on neither list (the protagonist, Lawrence, etc., plus the three series that join via the Link Battler link) can deploy on both sides; Gale is on both lists and can't deploy on either side while the team is split {?}{≠}",
     "Then continues to “Terror! Dark Axis Activates! (Part 1)”"
    ]
   },
@@ -6267,7 +6267,7 @@
    ],
    "notes": [
     "Actually stage 50–55: stage 51 for Super, Independence Army or OZ route, option 1 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough completed within 10 turns, no exclusive side branch; 1 fewer for Real; 1 more each for Complete Pacifism → fighting alone, Ark having played “Together from Here On” or Brad having played “Time to Settle It”, option 3 in “All-Out Attack on the Cyber Beast Force Base”, Desperate Breakthrough not completed within 10 turns; 2 more for option 2 in “All-Out Attack on the Cyber Beast Force Base” {+}",
-    "Burning Gundam (Domon) can't deploy in this stage",
+    "God Gundam (Domon) can't deploy in this stage",
     "The Muge space and Earth groups reunite here; all members who couldn't deploy during the split, and the Gandor, can deploy again {≠}"
    ]
   },
@@ -6280,7 +6280,7 @@
    "route": "common",
    "title": "Terror! Dark Axis Activates! (Part 2)",
    "title_ja": "恐怖!デビルアクシズ始動! （後）",
-   "victory": "Dark Gundam destroyed",
+   "victory": "Devil Gundam destroyed",
    "defeat": "All allies defeated",
    "parts": [
     {
@@ -6295,7 +6295,7 @@
    "secrets": [
     {
      "ref": "secret-story-attacks",
-     "text": "Neither “Sekiha Love Love Tenkyoken” nor “Shuffle Alliance Fist” is unlocked by the story: combination attacks are evaluated fresh each time by their conditions; Sekiha Love Love Tenkyoken only requires the Burning Gundam to have learned Sekiha Tenkyoken, and Shuffle Alliance Fist has no story prerequisite {≠}{?}",
+     "text": "Neither “Sekiha Love Love Tenkyoken” nor “Shuffle Alliance Fist” is unlocked by the story: combination attacks are evaluated fresh each time by their conditions; Sekiha Love Love Tenkyoken only requires the God Gundam to have learned Sekiha Tenkyoken, and Shuffle Alliance Fist has no story prerequisite {≠}{?}",
      "short": "No action: neither combo attack is unlocked by the story"
     }
    ],

@@ -242,7 +242,7 @@ Well, I suppose even Romefeller has done at least one good thing.”
 >  どこへ行くんです?」
 “Oh, where are Amuro and the others going?”
 
-@20079 Aboly · アポリー
+@20079 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「ああ、ルオ商会に行くんだろ。
 >  補給の手配をしにさ」
@@ -254,7 +254,7 @@ Well, I suppose even Romefeller has done at least one good thing.”
 >  だから市街に行ってみたかったのに」
 “Can’t we go too? While we’re here, I wanted to check out the city.”
 
-@20081 Aboly · アポリー
+@20081 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「1時間だけなら、
 >  艦長の許可をもらってるぜ」
@@ -1313,7 +1313,7 @@ I hate men who cower, but I don’t like the aggressive type either...”
 > 「予定数は積み込んだんだな?」
 “Did we load everything on the list?”
 
-@20265 Aboly · アポリー
+@20265 Apolly · アポリー
 > 「そのはずです」
 “It should be.”
 
@@ -1323,7 +1323,7 @@ I hate men who cower, but I don’t like the aggressive type either...”
 >  ちゃんと確認しろ」
 “‘Should be’ isn’t good enough. Go and check.”
 
-@20267 Aboly · アポリー
+@20267 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「積み終わってます。大丈夫です」
 “It’s all loaded. We’re fine.”
@@ -1461,7 +1461,7 @@ If you’re fighting the Muge bastards and the Specials, staying with you
 >  それが悪いっていうのかよ?」
 seems like the best bet, so I stayed. You saying that’s a problem?”
 
-@20287 Aboly · アポリー
+@20287 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「なにやってんだ、お前たち。
 >  いいじゃないか、人手はたりないんだ
@@ -1482,7 +1482,7 @@ She’ll be more use than someone who knows nothing.”
 >  私は構いませんが」
 “If no one else objects, I don’t mind.”
 
-@20290 Aboly · アポリー
+@20290 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「ならいいじゃないか。そういうことだ、
 >  そのかわり、ちゃんと働けよ」
@@ -1493,7 +1493,7 @@ She’ll be more use than someone who knows nothing.”
 > 「わかってるよ。礼はいわないからね」
 “I know. Don’t expect a thank-you.”
 
-@20292 Aboly · アポリー
+@20292 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「どうしたんだ、あいつ?」
 “What’s with her?”

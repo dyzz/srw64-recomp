@@ -1841,7 +1841,7 @@ But... we can’t spare any forces.”
 @26619 Rain · レイン
 > 「あら? ゴッドガンダム……
 >  ノーベルガンダムも……」
-“Oh? The Burning Gundam... and the Noble Gundam too...”
+“Oh? The God Gundam... and the Noble Gundam too...”
 
 @26620 Allenby · アレンビー
 > 「……で、ここの支線入力スイッチを
@@ -1863,7 +1863,7 @@ But... we can’t spare any forces.”
 @26624 Rain · レイン
 > 「ドモン!? あなたたち、
 >  ゴッドの中で何やってるのよ!」
-“Domon?! What are you two doing inside the Burning Gundam?!”
+“Domon?! What are you two doing inside the God Gundam?!”
 
 @26625 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1889,7 +1889,7 @@ to a minimum, so she’s teaching it to me.”
 # 审校：全局：弯撇号／弯引号
 > 「何いってるのよ! だいたいあなた、
 >  ゴッドのシステムをよく知らないくせに
-“That’s not the point! You don’t even know the Burning Gundam’s systems,
+“That’s not the point! You don’t even know the God Gundam’s systems,
 ---
 >  勝手にコックピットに
 >  入られちゃ困るのよ!」

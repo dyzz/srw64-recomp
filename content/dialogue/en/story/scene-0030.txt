@@ -633,7 +633,7 @@ from place to place. They are proving hard to find.”
 > 「来たかミケーネの」
 “So you have come, Mycenae.”
 
-@22922 Hell Marshal · 地獄大元帥
+@22922 Great Marshal of Hell · 地獄大元帥
 > 「ブライ大帝、協力の申し入れを
 >  うけよう。この機会を逃すのはワシら
 “Emperor Burai, we accept your offer of cooperation. We have no wish to let this chance slip by
@@ -651,7 +651,7 @@ either. But once Earth is conquered...”
 >  異星人どもに好きにされる」
 At this rate the aliens will do as they please with it.”
 
-@22924 Dark General · 暗黒大将軍
+@22924 Great General of Darkness · 暗黒大将軍
 > 「いいだろう。我らが闇の帝王のため
 >  にも、わが帝国のためにも
 “Very well. For the sake of our Emperor of Darkness, and for the sake of our empire,
@@ -2510,7 +2510,7 @@ Musy, I’m counting on you.”
 > 「ショットなんかやっつけちゃえ!!」
 “Just beat Shot to a pulp!!”
 
-@23204 Dark General · 暗黒大将軍
+@23204 Great General of Darkness · 暗黒大将軍
 > 「どうやら間に合ったようだな、
 >  百鬼の」
 “It seems we made it in time, Hyakki.”
@@ -2927,7 +2927,7 @@ I’ve finally found him!!”
 > 「申し訳ありません、ショット様!」
 “My apologies, Lord Shot!”
 
-@23250 Dark General · 暗黒大将軍
+@23250 Great General of Darkness · 暗黒大将軍
 > 「グワッ! く、くそっ……」
 “Gwah! D...damn it...”
 

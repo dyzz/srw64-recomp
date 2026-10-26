@@ -95,11 +95,11 @@ Listen, be very careful.”
 >  ええい、どこまでもこざかしい……」
 “What, you let them get inside?! Bah, insolent to the very end...”
 
-@31526 Hell Marshal · 地獄大元帥
+@31526 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「むうう、暗黒大将軍を
 >  もってしても……! おのれ人間ども
-“Grrr, even the Dark General...! Damn you humans!
+“Grrr, even the Great General of Darkness...! Damn you humans!
 ---
 >  この上は生かして帰さぬ!
 >  我が同胞の無念
@@ -144,7 +144,7 @@ Kill them before they realize it!”
 > 「承知いたしてございます!」
 “As you command, my lord!”
 
-@31533 Hell Marshal · 地獄大元帥
+@31533 Great Marshal of Hell · 地獄大元帥
 # 审校：补译：原稿占位符错页
 > 「ゆくぞ者ども!
 >  今度こそ{HeroMech}に
@@ -190,7 +190,7 @@ to its grave!”
 > 「このヤヌス侯爵は負けぬわ……」
 “I, Marquis Janus, will not lose...”
 
-@31542 Hell Marshal · 地獄大元帥
+@31542 Great Marshal of Hell · 地獄大元帥
 > 「おのれ……よくも、
 >  よくもこのワシをぉぉぉーっ!!」
 “You... How dare you, how dare you do this to meeee!!”

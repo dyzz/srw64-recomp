@@ -9359,6 +9359,197 @@
    "sections": [
     "units"
    ]
+  },
+  {
+   "ja": [
+    "戦闘獣グラトニオス"
+   ],
+   "en": {
+    "old": "Warbeast Gratonios",
+    "new": "Battle Beast Gratonios"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "戦闘獣ダンテ"
+   ],
+   "en": {
+    "old": "Warbeast Dante",
+    "new": "Battle Beast Dante"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "戦闘獣オベリウス"
+   ],
+   "en": {
+    "old": "Warbeast Obelius",
+    "new": "Battle Beast Obelius"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "戦闘獣ズガール"
+   ],
+   "en": {
+    "old": "Warbeast Zugal",
+    "new": "Battle Beast Zugal"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "暗黒大将軍"
+   ],
+   "en": {
+    "old": "Dark General",
+    "new": "Great General of Darkness"
+   },
+   "gate": false,
+   "sections": [
+    "units",
+    "pilots",
+    "pilot_full_names",
+    "character_list"
+   ]
+  },
+  {
+   "ja": [
+    "地獄大元帥"
+   ],
+   "en": {
+    "old": "Hell Marshal",
+    "new": "Great Marshal of Hell"
+   },
+   "gate": false,
+   "sections": [
+    "pilots",
+    "pilot_full_names",
+    "character_list"
+   ]
+  },
+  {
+   "ja": [
+    "アポリー"
+   ],
+   "en": {
+    "old": "Aboly",
+    "new": "Apolly"
+   },
+   "gate": false,
+   "sections": [
+    "pilots",
+    "pilot_full_names",
+    "character_list"
+   ]
+  },
+  {
+   "ja": [
+    "ロゼ"
+   ],
+   "en": {
+    "old": "Rose",
+    "new": "Roze"
+   },
+   "gate": false,
+   "sections": [
+    "pilots",
+    "pilot_full_names",
+    "character_list"
+   ]
+  },
+  {
+   "ja": [
+    "デビルガンダム"
+   ],
+   "en": {
+    "old": "Dark Gundam",
+    "new": "Devil Gundam"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ゴッドガンダム"
+   ],
+   "en": {
+    "old": "Burning Gundam",
+    "new": "God Gundam"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "エルブルス"
+   ],
+   "zh-Hans": {
+    "old": "厄尔布鲁士",
+    "new": "凤翼天翔"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アースゲイン"
+   ],
+   "zh-Hans": {
+    "old": "阿斯盖因",
+    "new": "夺地者"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "スイームルグ"
+   ],
+   "zh-Hans": {
+    "old": "斯维姆鲁格",
+    "new": "菲因梅露姆"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "エピオン"
+   ],
+   "zh-Hans": {
+    "old": "次代高达",
+    "new": "艾比安高达"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
   }
  ]
 }

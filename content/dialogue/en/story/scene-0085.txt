@@ -510,19 +510,19 @@ they fell for the decoy...”
 > 「……ズールだ! 奴がいる!」
 “...It’s Zuul! He’s there!”
 
-@41584 Rose · ロゼ
+@41584 Roze · ロゼ
 > 「ズール皇帝が!? マーズ……」
 “Emperor Zuul?! Mars...”
 
 @41585 Takeru · タケル
 > 「ロゼ、ここで決着をつけるんだ。
 >  ズールを倒せば
-“Rose, we settle this here. If we defeat Zuul,
+“Roze, we settle this here. If we defeat Zuul,
 ---
 >  戦いは終わらせることができる」
 we can end this war.”
 
-@41586 Rose · ロゼ
+@41586 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「マーズ……そうね、わかったわ!」
 “Mars... You’re right. All right!”
@@ -959,7 +959,7 @@ You don’t belong with Axis.”
 > 「気安く名前を呼ばないでよ!!」
 “Don’t say my name so casually!!”
 
-@41658 Rose · ロゼ
+@41658 Roze · ロゼ
 > 「ズール!!」
 “Zuul!!”
 
@@ -967,7 +967,7 @@ You don’t belong with Axis.”
 # 审校：全局：弯撇号／弯引号
 > 「ロゼか、この裏切り者め!
 >  ここでワシがじきじきに殺してやる!!」
-“Rose, is it? You traitor! I shall kill you with my own hands, here and now!!”
+“Roze, is it? You traitor! I shall kill you with my own hands, here and now!!”
 
 @41660 Bunny · バニー
 # 审校：全局：弯撇号／弯引号

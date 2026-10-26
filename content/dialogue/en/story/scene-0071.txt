@@ -881,7 +881,7 @@ Our father was named Idea, and our mother, Aida.”
 > 「わ、わかった。そうさせてもらう」
 “U-understood. I’ll do that.”
 
-@30524 Rose · ロゼ
+@30524 Roze · ロゼ
 # 审校：标点
 > 「ブラッキー隊長がやられて
 >  しまったのか!? おのれ地球人め。」
@@ -903,7 +903,7 @@ Our father was named Idea, and our mother, Aida.”
 > 「何だ!」
 “What?!”
 
-@30529 Rose · ロゼ
+@30529 Roze · ロゼ
 > 「おのれ、地球人め!」
 “Curse you, Earthling!”
 

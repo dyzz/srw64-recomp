@@ -358,7 +358,7 @@ with Professor Yumi somehow?”
 >  晴らさずに死ねるかぁっ!!」
 I can’t die here without avenging Grandpa!!”
 
-@17716 Hell Marshal · 地獄大元帥
+@17716 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「フハハハハッ、観念せい!
 “Hahahaha, give it up!
@@ -379,7 +379,7 @@ it is no match for my army!”
 > 「なにを!」
 “Why, you!”
 
-@17718 Hell Marshal · 地獄大元帥
+@17718 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「隠してもワシにはわかるぞ
 “You can’t hide it from me.
@@ -410,7 +410,7 @@ Go!”
 >  それ以上は、やらせないわ!!」
 “That’s enough! I won’t let you go any further!!”
 
-@17722 Hell Marshal · 地獄大元帥
+@17722 Great Marshal of Hell · 地獄大元帥
 # 审校：地狱大元帅用“is it?”显得现代，改为“are they?”更符合其古旧反派口吻。
 > 「なに!? むぅ、
 >  反帝国ゲリラどもか」
@@ -524,7 +524,7 @@ He cannot have been in that thing for more than a day or two.”
 >  させるわけにはいきません」
 “Yes. We can’t let the Imperial Army do as they please.”
 
-@17736 Hell Marshal · 地獄大元帥
+@17736 Great Marshal of Hell · 地獄大元帥
 > 「うぬぅ、ゲリラどもめ
 >  好き勝手なことをほざきおって
 “Grr, you blasted guerrillas, how you prattle on!
@@ -537,18 +537,18 @@ Go, my battle beasts! Slaughter them all!”
 > 「この野郎、覚悟しやがれ!」
 “You bastard, you’re going down!”
 
-@17738 Hell Marshal · 地獄大元帥
+@17738 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「こざかしい!
 >  返り討ちにしてくれるわ!」
 “Insolent whelp! I will cut you down where you stand!”
 
-@17739 Hell Marshal · 地獄大元帥
+@17739 Great Marshal of Hell · 地獄大元帥
 > 「おのれマジンガーZ、
 >  おのれゲリラどもめぇぇっ!!」
 “Curse you, Mazinger Z! Curse you, guerrillas!!”
 
-@17740 Hell Marshal · 地獄大元帥
+@17740 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「おのれマジンガーZ、
 >  おのれゲリラどもめ!!

@@ -198,7 +198,7 @@ If the imperial high command and the Specials’ top brass really are gathering
 >  チャンスとみるべきだろうが……」
 to deal with the resistance, we should treat it as an opportunity, but...”
 
-@19294 Aboly · アポリー
+@19294 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「カラバの方に問い合わせてみたら
 >  どうです?」
@@ -400,7 +400,7 @@ in the middle of nowhere?”
 >  決行するんですか?」
 “Are we really going through with the attack on New Edwards?”
 
-@19327 Aboly · アポリー
+@19327 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「そういうことだ。アウドムラも手配でき
 >  たそうだからな」
@@ -410,7 +410,7 @@ in the middle of nowhere?”
 > 「アウドムラ?」
 “The Audhumla?”
 
-@19329 Aboly · アポリー
+@19329 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「ガルダだ。超巨大輸送機。
 >  カミーユ、整備は終わったのか!?」
@@ -430,7 +430,7 @@ in the middle of nowhere?”
 > 「でも、かなり厳しいって聞きましたけど」
 “But I heard it’s going to be pretty tough.”
 
-@19333 Aboly · アポリー
+@19333 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「そういうもんさ。楽な戦争なんかある
 >  わけないだろ
@@ -446,9 +446,9 @@ Besides, I hear Karaba’s backing us up.”
 
 @19335 Quattro · クワトロ
 > 「アポリー中尉、来てくれ」
-“Lieutenant Aboly, come here.”
+“Lieutenant Apolly, come here.”
 
-@19336 Aboly · アポリー
+@19336 Apolly · アポリー
 > 「なんです、大尉」
 “What is it, Captain?”
 
@@ -460,7 +460,7 @@ Besides, I hear Karaba’s backing us up.”
 >  2人とも迷いがあるようだ」
 both of them seem to be wavering.”
 
-@19338 Aboly · アポリー
+@19338 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「わかりました。でもいつまでもそれじゃ、
 >  こっちが危ういですよ」
@@ -477,7 +477,7 @@ both of them seem to be wavering.”
 >  男2人でこそこそと」
 “What are you doing? Two guys whispering in a corner like this.”
 
-@19341 Aboly · アポリー
+@19341 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「なんでもないの。作戦が決まったんだ
 >  お前も準備しておけよ」
@@ -493,7 +493,7 @@ both of them seem to be wavering.”
 >  聞きましたが」
 “I hear the raid on New Edwards is a go.”
 
-@19344 Aboly · アポリー
+@19344 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「そういうことだ。アウドムラも手配でき
 >  たそうだからな」
@@ -504,7 +504,7 @@ both of them seem to be wavering.”
 > 「ガルダが? よく手に入ったものですね」
 “The Garuda? I’m surprised they got their hands on one.”
 
-@19346 Aboly · アポリー
+@19346 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「本部だって遊んでるわけじゃないさ。
 >  カミーユ、整備は終わったのか!?」
@@ -524,7 +524,7 @@ both of them seem to be wavering.”
 >  かなり厳しいか……」
 “But given the gap between our strength and theirs, it’s going to be rough...”
 
-@19350 Aboly · アポリー
+@19350 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「やるしかないんだよ、どのみち。カラバの
 >  支援もあるっていうぜ?」
@@ -532,9 +532,9 @@ both of them seem to be wavering.”
 
 @19351 Quattro · クワトロ
 > 「アポリー中尉、いいか?」
-“Lieutenant Aboly, do you have a moment?”
+“Lieutenant Apolly, do you have a moment?”
 
-@19352 Aboly · アポリー
+@19352 Apolly · アポリー
 > 「なんです、大尉」
 “What is it, Captain?”
 
@@ -543,7 +543,7 @@ both of them seem to be wavering.”
 >  で加わったせいか、迷いがあるようだ」
 “Keep an eye on Kamille. Perhaps because he was swept into this, he seems to be wavering.”
 
-@19354 Aboly · アポリー
+@19354 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「わかりました。でもいつまでもそれじゃ、
 >  こっちが危ういですよ」
@@ -987,7 +987,7 @@ Shikitai unit, or whatever they call it?!”
 >  おいおい、ほかにも似たようなのがいるぜ」
 Hey hey, there are more like me over here.”
 
-@19420 Aboly · アポリー
+@19420 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「大尉! あのときのガンダムタイプが
 >  います」
@@ -1087,7 +1087,7 @@ wrap this up.”
 >  おいおい、ほかにも似たようなのがいるぜ」
 Hey hey, there are more like me over here.”
 
-@19435 Aboly · アポリー
+@19435 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「大尉! あのときのガンダムタイプが
 >  います」

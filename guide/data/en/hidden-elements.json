@@ -50,7 +50,7 @@
   "title": "Persuasion and checking rules",
   "items": [
    "Conditions for the “Persuade” command: the selected unit's main pilot is the persuader and hasn't finished acting this turn (having moved is fine); the target is in an orthogonally adjacent square (diagonals don't count); and the prerequisites for this persuasion are met — a multi-step persuasion requires the previous step first {+}",
-   "The game decides the persuade target: if one persuader is adjacent to two persuadable targets at once, only the one registered first in the stage is persuaded. For example, if Takeru is adjacent to both Marg and Rose, only Marg is persuaded; if Judau is adjacent to both Mashymre and Chara, only Mashymre is persuaded {+}",
+   "The game decides the persuade target: if one persuader is adjacent to two persuadable targets at once, only the one registered first in the stage is persuaded. For example, if Takeru is adjacent to both Marg and Roze, only Marg is persuaded; if Judau is adjacent to both Mashymre and Chara, only Mashymre is persuaded {+}",
    "Each persuade uses up the persuader's action for the turn, and each persuade can be done only once per stage. If the event's condition isn't met at the time (e.g. persuading Rosamia while Gates is still on the map), that persuade still counts as used and can't be retried this stage {+}",
    "Persuading by itself doesn't make the target leave or join; the effect varies by character: some leave on the spot, some switch to your side on the spot, some are only registered at the end of the stage; after a suspend save and resume, persuades already done still count as done {+}",
    "“Turn N” always means the turn number shown on screen; “within turn N” includes turn N. “N or fewer enemies remain” includes exactly N",
@@ -397,13 +397,13 @@
      "text": "Joined and deployed → she defects at the start; joined but not deployed → she doesn't appear in this stage and isn't lost. Berserk Allenby appears when 12 or fewer enemies remain. Persuade once with Domon, then once with Rain, not necessarily in the same turn; the first time 10 or fewer enemies remain, 12 reinforcements arrive, and when it drops to 10 or fewer again she withdraws {≠}{?}"
     }
    ],
-   "result": "Joins at the end of the step-2 stage; if rescued after defecting, rejoins at the end of the stage; if not rescued she becomes the core of the Dark Gundam and is lost for good once shot down",
+   "result": "Joins at the end of the step-2 stage; if rescued after defecting, rejoins at the end of the stage; if not rescued she becomes the core of the Devil Gundam and is lost for good once shot down",
    "notes": [
     "Those who did only step 1 and not step 2 (e.g. on the Complete Pacifism route) can likewise save her at Lantau or in Fist of Despair, and she joins {≠}",
-    "If you never persuaded her, the Persuade command won't appear later, and only the Dark Gundam path remains",
-    "When rescued, Dark Gundam's core is replaced by Wong {+}",
+    "If you never persuaded her, the Persuade command won't appear later, and only the Devil Gundam path remains",
+    "When rescued, Devil Gundam's core is replaced by Wong {+}",
     "The Lantau stage is only reached by picking “Go with Domon and the others” in “All-Out Attack on the Cyber Beast Force Base”",
-    "For the Burning Gundam and Noble Gundam combination attack “Double Burning Finger”, see “Story-unlocked finishers and combination attacks”"
+    "For the God Gundam and Noble Gundam combination attack “Double Burning Finger”, see “Story-unlocked finishers and combination attacks”"
    ],
    "akurasu_notes": [
     "Akurasu says she must be persuaded within the same turn in the two later stages; the script has no per-turn reset check, so Domon first and then Rain is enough",
@@ -525,13 +525,13 @@
    "title": "Emma + Gundam Mk-II",
    "kicker": "Character + unit | Super",
    "applies": "Super (on Real joins automatically in the next stage)",
-   "summary": "In “The Gundam That Leads to Ruin”, persuade Emma with Quattro before Kyoji's Dark Gundam drops to half HP {+}",
+   "summary": "In “The Gundam That Leads to Ruin”, persuade Emma with Quattro before Kyoji's Devil Gundam drops to half HP {+}",
    "steps": [
     {
      "stage": "8",
      "stage_title": "The Gundam That Leads to Ruin",
      "route": "Super",
-     "text": "Emma appears in the turn 3 player phase or when the enemy is down to 12 or fewer. Persuade her with Quattro and she leaves on the spot. If Kyoji's Dark Gundam drops to 50% HP or below or is destroyed, the stage ends immediately and there's no further chance {+}"
+     "text": "Emma appears in the turn 3 player phase or when the enemy is down to 12 or fewer. Persuade her with Quattro and she leaves on the spot. If Kyoji's Devil Gundam drops to 50% HP or below or is destroyed, the stage ends immediately and there's no further chance {+}"
     }
    ],
    "result": "Emma and the Gundam Mk-II join at stage clear",
@@ -644,7 +644,7 @@
   {
    "id": "secret-apolly-roberto",
    "category": "real",
-   "title": "Aboly, Roberto + Schuzrum-Dias",
+   "title": "Apolly, Roberto + Schuzrum-Dias",
    "kicker": "Character + unit | Real",
    "applies": "Real (Ark or Selain)",
    "summary": "Joins automatically if you choose a Real protagonist",
@@ -656,7 +656,7 @@
      "text": "Nothing to do: both arrive mid-stage as your reinforcements together with Quattro and stay with the team"
     }
    ],
-   "result": "Aboly and Roberto each pilot a Schuzrum-Dias and join together with Quattro",
+   "result": "Apolly and Roberto each pilot a Schuzrum-Dias and join together with Quattro",
    "notes": [],
    "akurasu_notes": []
   },
@@ -1130,10 +1130,10 @@
   {
    "id": "secret-rose",
    "category": "late",
-   "title": "Rose + Zeron",
+   "title": "Roze + Zeron",
    "kicker": "Character + unit",
    "applies": "On every route, in different stages",
-   "summary": "Two key steps: in the second stage, have Takeru shoot down Marg while Rose is on the map and persuade Rose; in the third stage, persuade Rose again. Persuading Marg only changes dialogue and can be skipped {≠}",
+   "summary": "Two key steps: in the second stage, have Takeru shoot down Marg while Roze is on the map and persuade Roze; in the third stage, persuade Roze again. Persuading Marg only changes dialogue and can be skipped {≠}",
    "steps": [
     {
      "stage": "34／35／36",
@@ -1151,13 +1151,13 @@
      "stage": "35／36／37",
      "stage_title": "Galactic Empire Vanguard Fleet",
      "route": "Independence Army route (incl. fighting alone)",
-     "text": "With Rose on the map, have Takeru shoot down Marg (whether or not you persuaded Marg earlier), then persuade Rose with Takeru. If Takeru is adjacent to both Marg and Rose he'll only persuade Marg, so keep Takeru next to Rose alone"
+     "text": "With Roze on the map, have Takeru shoot down Marg (whether or not you persuaded Marg earlier), then persuade Roze with Takeru. If Takeru is adjacent to both Marg and Roze he'll only persuade Marg, so keep Takeru next to Roze alone"
     },
     {
      "stage": "38–42",
      "stage_title": "Desperate Breakthrough (Part 2)",
      "route": "Independence Army route (incl. fighting alone)",
-     "text": "Then persuade Rose with Takeru and she leaves"
+     "text": "Then persuade Roze with Takeru and she leaves"
     },
     {
      "stage": "32／33／34",
@@ -1175,28 +1175,28 @@
      "stage": "34／35／36",
      "stage_title": "United Front",
      "route": "OZ route",
-     "text": "With Rose on the map, have Takeru shoot down Marg (whether or not you persuaded Marg earlier), then persuade Rose with Takeru. If Takeru is adjacent to both Marg and Rose he'll only persuade Marg, so keep Takeru next to Rose alone"
+     "text": "With Roze on the map, have Takeru shoot down Marg (whether or not you persuaded Marg earlier), then persuade Roze with Takeru. If Takeru is adjacent to both Marg and Roze he'll only persuade Marg, so keep Takeru next to Roze alone"
     },
     {
      "stage": "34／35",
      "stage_title": "Brothers",
      "route": "Complete Pacifism route (follow Treize)",
-     "text": "With Rose on the map, have Takeru shoot down Marg (whether or not you persuaded Marg earlier), then persuade Rose with Takeru. If Takeru is adjacent to both Marg and Rose he'll only persuade Marg, so keep Takeru next to Rose alone"
+     "text": "With Roze on the map, have Takeru shoot down Marg (whether or not you persuaded Marg earlier), then persuade Roze with Takeru. If Takeru is adjacent to both Marg and Roze he'll only persuade Marg, so keep Takeru next to Roze alone"
     },
     {
      "stage": "35／36／37",
      "stage_title": "Prelude to Ruin",
      "route": "OZ route (incl. the Treize branch)",
-     "text": "Then persuade Rose with Takeru and she leaves"
+     "text": "Then persuade Roze with Takeru and she leaves"
     }
    ],
-   "result": "At the end of the last-step stage, Rose and the Zeron (3 upgrade levels) join {+}",
+   "result": "At the end of the last-step stage, Roze and the Zeron (3 upgrade levels) join {+}",
    "notes": [
-    "In the second stage, if Marg is shot down by someone else, or while Rose is not on the map, the persuade command never appears in the third stage",
-    "If you persuaded Marg, Rose's lines when leaving in the third stage are different"
+    "In the second stage, if Marg is shot down by someone else, or while Roze is not on the map, the persuade command never appears in the third stage",
+    "If you persuaded Marg, Roze's lines when leaving in the third stage are different"
    ],
    "akurasu_notes": [
-    "Akurasu lists persuading Marg as a required step; the script only uses it to pick dialogue — the real prerequisite is Takeru shooting down Marg while Rose is on the map"
+    "Akurasu lists persuading Marg as a required step; the script only uses it to pick dialogue — the real prerequisite is Takeru shooting down Marg while Roze is on the map"
    ]
   },
   {
@@ -1618,13 +1618,13 @@
      "stage": "37／38／39",
      "stage_title": "Death Match! Showdown on Lantau Island (Part 1)",
      "route": "Independence Army route (“Go with Domon and the others” in “All-Out Attack on the Cyber Beast Force Base”)",
-     "text": "End of stage: the Burning Gundam learns Sekiha Tenkyoken"
+     "text": "End of stage: the God Gundam learns Sekiha Tenkyoken"
     },
     {
      "stage": "37–41",
      "stage_title": "Desperate Breakthrough (Part 1)",
      "route": "Independence Army route (incl. fighting alone)",
-     "text": "Start of stage: Combattler V learns Twin Lancer, V Laser, Big Blast Divider and Grand Dasher, the same on all three routes; if you did not take the Lantau path, Burning Gundam also learns Sekiha Tenkyoken here {≠}{≠}"
+     "text": "Start of stage: Combattler V learns Twin Lancer, V Laser, Big Blast Divider and Grand Dasher, the same on all three routes; if you did not take the Lantau path, God Gundam also learns Sekiha Tenkyoken here {≠}{≠}"
     },
     {
      "stage": "37／38／39",
@@ -1636,13 +1636,13 @@
      "stage": "39／40／41",
      "stage_title": "Fist of Despair and Sorrow (Part 1)",
      "route": "OZ route (incl. the Treize branch)",
-     "text": "End of stage: the Burning Gundam learns Sekiha Tenkyoken {≠}"
+     "text": "End of stage: the God Gundam learns Sekiha Tenkyoken {≠}"
     }
    ],
    "result": "The weapon is added automatically; nothing to do",
    "notes": [
     "Combination attacks are re-checked every time the weapon list opens: they appear when the participants are connected (diagonal adjacency counts) and each meets its EN and Will requirements; each use costs every participant EN once, with no ammo used {+}",
-    "Double Burning Finger: the Burning Gundam H (Domon enters Super Mode automatically at 130+ Will) and your Allenby's Noble Gundam, each needing 130 Will and 60 EN. No story unlock needed; also usable on the OZ route once Allenby is recruited {≠}{?}",
+    "Double Burning Finger: the God Gundam H (Domon enters Super Mode automatically at 130+ Will) and your Allenby's Noble Gundam, each needing 130 Will and 60 EN. No story unlock needed; also usable on the OZ route once Allenby is recruited {≠}{?}",
     "Shuffle Alliance Fist: 130 Will, 100 EN; likewise needs no story unlock, and doesn't require the four members' finishers above to be unlocked {≠}{?}",
     "Sekiha Love Love Tenkyoken: besides the combination conditions it requires Sekiha Tenkyoken to be unlocked, so it becomes usable when Sekiha Tenkyoken does {≠}",
     "“Empress Janera's Human Hunt” itself unlocks no weapons {≠}"
@@ -1730,7 +1730,7 @@
     "Treize branch: Zechs + Gundam Epyon join at the start of “Brothers”; Hilde joins at the end of “The Man Back from Jupiter” (pilot only)",
     "The Treize branch can't get the mass-production Nu Gundam (it only goes to players who picked OZ in Operation Daybreak)",
     "Fight alone: Hilde is unobtainable, and there is no chance to persuade Naida {+}",
-    "The stages for persuading Rose vary by branch (see Rose)"
+    "The stages for persuading Roze vary by branch (see Roze)"
    ],
    "akurasu_notes": []
   },
@@ -1870,7 +1870,7 @@
    "result": "All three lines merge at “Desperate Breakthrough (Part 1)”",
    "notes": [
     "The Lantau branch has two extra stages and the Janera branch one, so later stage numbers shift up accordingly",
-    "Lantau branch: Allenby, if in the party, turns on you and has to be won back (see Allenby); Burning Gundam learns Sekiha Tenkyoken one stage earlier",
+    "Lantau branch: Allenby, if in the party, turns on you and has to be won back (see Allenby); God Gundam learns Sekiha Tenkyoken one stage earlier",
     "Weapons are largely unaffected by this choice: Combattler V's four attacks come at the start of “Desperate Breakthrough (Part 1)” on all three paths, and Sekiha Tenkyoken also comes there on the other two paths (see story-unlocked finishers and combination attacks) {≠}",
     "For enemy lineups on the Janera branch, see “Janera branch: Super Beasts and reinforcements”",
     "The opening story of “Desperate Breakthrough (Part 1)” differs with this choice"
@@ -1903,7 +1903,7 @@
    "result": "Both parts achieved → “Warped Space”; otherwise → “Even So, Never Give Up (Part 1)” / “(Part 2)”, one extra stage. Both continue to “A Battle Without Victors” afterwards",
    "notes": [
     "Running out of time doesn't cause defeat; it only affects the branch",
-    "Tod (Sirbine) joins as reinforcements on the player phase of turn 3 in Part 1; Rose is persuaded in Part 2"
+    "Tod (Sirbine) joins as reinforcements on the player phase of turn 3 in Part 1; Roze is persuaded in Part 2"
    ],
    "akurasu_notes": [
     "Akurasu's flowchart says any unit reaching the marked point is enough; the on-screen victory condition is all your units entering the Green Area"
@@ -1933,7 +1933,7 @@
    "result": "Both sides merge at “Terror! Dark Axis Activates! (Part 1)”, where everyone can deploy again",
    "notes": [
     "Obtainable only if you stay on Earth: Mashymre or Chara (Independence Army), Neue Ziel (Independence Army), Qubeley Mk-II recolor",
-    "Available when going to the Muge universe, unable to deploy when remaining in the Earth Sphere: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Rose, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone {+}",
+    "Available when going to the Muge universe, unable to deploy when remaining in the Earth Sphere: Bright, Banjo, Alan, Sara, Ryo, Masato, Shinobu, Heero, Duo, Wufei, Trowa, Takeru, Roze, Koji, Boss, Sayaka, Duke, Maria, Ryoma, Hayato, Benkei, Hikaru, Kirika, Naida, Erika, Eiji, David, Simone {+}",
     "Usable if you stay on Earth, cannot deploy if you go to Muge space: the G Gundam pilots and Allenby, Amuro, Kamille, Quattro, Kou, Judau, Shiro, Fa, Roux, Aina, Emma, Ple, Four, Ple-Two, Rosamia, Beecha etc., Quatre, Milliardo, Noin, Hilde, Zechs, Tetsuya, Jun, the Cosmo Crusher team, Hyoma and the rest of the Combattler V group, Daisaku and Ginrei, Ciela, Elle, Show and the rest of the Dunbine group, Julia, Chara, Howard, etc. {+}",
     "The protagonist and anyone on neither list can be used on both sides; Gale is on both lists and can't deploy on either side {?}",
     "Gandor (Dr. Hazuki) can't deploy in “The Last Roar”, “A Distant Gamble” or “Char's Rebellion” {+}"
@@ -1970,7 +1970,7 @@
     "Similar: other enemy lineups changed by “whether someone is on the map” {+}",
     "“Blade of Anguish”: if Heero isn't on the map, the Wing Gundam (Heero) appears as a third party",
     "“The Sanc Kingdom Falls”: Heero on the map at the start of the player phase on turn 3 → Milliardo appears as an enemy in the Wing Zero; not on the map → he joins as a guest {≠}",
-    "“Charge! Destroy the Mobile Fortress! (Part 1)”: when 8 or fewer enemies remain, Dark General on the map → MP Great Mazinger×8; Boss not on the map → Warbeast×9",
+    "“Charge! Destroy the Mobile Fortress! (Part 1)”: when 8 or fewer enemies remain, Great General of Darkness on the map → MP Great Mazinger×8; Boss not on the map → Battle Beast×9",
     "“The Man Back from Jupiter”: Bask on the map when the area is reached → Virgo×9",
     "“In a World of Endless Strife (Part 2)”: Gandal on the map → Minifo×9",
     "“A Battle Without Victors”: Treize on the map → Wufei appears in the Altron; Haman on the map → Ple appears in the Qubeley",

@@ -861,22 +861,22 @@ and what that means. It may sap their will to fight.”
 # 审校：全局：弯撇号／弯引号
 > 「そういうことなら、ロゼにやってもらおう。
 >  それがもっとも効果的だろう」
-“In that case, let’s have Rose do it. That should have the most impact.”
+“In that case, let’s have Roze do it. That should have the most impact.”
 
 @40876 Takeru · タケル
 > 「しかし……」
 “But...”
 
-@40877 Rose · ロゼ
+@40877 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「いいわ、マーズ。私がやります」
 “It’s all right, Mars. I’ll do it.”
 
 @40878 Takeru · タケル
 > 「ロゼ……」
-“Rose...”
+“Roze...”
 
-@40879 Rose · ロゼ
+@40879 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「悪いのはズールだ、そういったのはマーズ
 >  あなたよ。私が呼びかけることで
@@ -888,9 +888,9 @@ makes even a few stop fighting, that’s enough for me.”
 
 @40880 Bright · ブライト
 > 「ふむ……頼めるか、ロゼ」
-“Hmm... Can I count on you, Rose?”
+“Hmm... Can I count on you, Roze?”
 
-@40881 Rose · ロゼ
+@40881 Roze · ロゼ
 > 「はい」
 “Yes.”
 

@@ -12,9 +12,9 @@
 “Mm. This time we’ll see that Mars dead, whatever it takes.
 ---
 >  ロゼよ、わかっておろうな」
-Rose, I trust you understand.”
+Roze, I trust you understand.”
 
-@31633 Rose · ロゼ
+@31633 Roze · ロゼ
 > 「はっ! おまかせを!」
 “Yes, sir! Leave it to me!”
 
@@ -76,7 +76,7 @@ Honestly, don’t go scaring me like that!”
 > 「来たか! よし、反撃開始だ!」
 “You’re here! Good, begin the counterattack!”
 
-@31644 Rose · ロゼ
+@31644 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「マーグ隊長、あれがマーズです」
 “Commander Marg, that’s Mars.”
@@ -113,9 +113,9 @@ My brother was never that kind of man!”
 
 @31650 Marg · マーグ
 > 「ロゼ、マーズはどこだ」
-“Rose, where is Mars?”
+“Roze, where is Mars?”
 
-@31651 Rose · ロゼ
+@31651 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「どうやらマーズは
 >  出撃していないようです」
@@ -219,9 +219,9 @@ to His Majesty Emperor Zuul!”
 @31670 Marg · マーグ
 > 「ロゼ、あのマーズというのは何者
 >  なんだ? なぜ俺を兄という」
-“Rose, who is this Mars? Why does he call me his brother?”
+“Roze, who is this Mars? Why does he call me his brother?”
 
-@31671 Rose · ロゼ
+@31671 Roze · ロゼ
 > 「隊長をまどわせようとしているのです。
 >  なぜそのようなことを気になさるのですか」
 “He is trying to confuse you, Commander. Why do you let it bother you?”
@@ -236,12 +236,12 @@ to His Majesty Emperor Zuul!”
 >  兄と呼ぶ……」
 A face just like mine. And he calls me brother...”
 
-@31673 Rose · ロゼ
+@31673 Roze · ロゼ
 > (いけない……洗脳が弱まって
 >  いる……?)
 (No... is the brainwashing wearing off...?)
 
-@31674 Rose · ロゼ
+@31674 Roze · ロゼ
 # 审校：隊長统一
 > 「マーグ隊長、私の目をみてください」
 “Commander Marg, look into my eyes.”
@@ -254,7 +254,7 @@ A face just like mine. And he calls me brother...”
 > 「う……」
 “Ugh...”
 
-@31677 Rose · ロゼ
+@31677 Roze · ロゼ
 > 「マーズはあなたの敵、銀河帝国の
 >  敵。マーズを倒すのがあなたの使命
 “Mars is your enemy, the enemy of the Galactic Empire. It is your mission to defeat Mars.

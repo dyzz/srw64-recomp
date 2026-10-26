@@ -596,14 +596,14 @@ Hey, Captain, we’ve got your back!”
 @30184 Domon · ドモン
 > 「あいつはよく戦ってくれた……
 >  このゴッドガンダムは俺の新しい力だ」
-“It fought well for me... This Burning Gundam is my new strength.”
+“It fought well for me... This God Gundam is my new strength.”
 
 @30185 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ゴッドガンダム→Burning Gundam
 > 「ゴッドガンダムはシャイニングガンダムの
 >  後継機なんです」
-“The Burning Gundam is the Shining Gundam’s successor.”
+“The God Gundam is the Shining Gundam’s successor.”
 
 @30186 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -1014,7 +1014,7 @@ Well, I’ll let bygones be bygones.”
 @30244 George · ジョルジュ
 > 「……何はともあれデビルガンダムを
 >  倒すことができました」
-“...In any case, we managed to defeat the Dark Gundam.”
+“...In any case, we managed to defeat the Devil Gundam.”
 
 @30245 Argo · アルゴ
 # 审校：全局：弯撇号／弯引号
@@ -1045,7 +1045,7 @@ Well, I’ll let bygones be bygones.”
 # 检查提示：未用必用译名：ゴッドガンダム→Burning Gundam
 > 「ゴッドガンダムやライジングガンダムも
 >  積みこんだしね」
-“We’ve loaded the Burning Gundam and the Rising Gundam too.”
+“We’ve loaded the God Gundam and the Rising Gundam too.”
 
 @30251 Hayato · ハヤト
 > 「あの新しいガンダムのことか?」

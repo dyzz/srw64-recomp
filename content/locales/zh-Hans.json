@@ -1746,7 +1746,7 @@
     {
       "key": "base:t00_00282",
       "source_sha256": "7a4ec845e8d3419f16b055fd52019a53ccc0c6dc6aa31f897eb43677d35c01bc",
-      "target": "出击！斯维姆鲁格<END>",
+      "target": "出击！菲因梅露姆<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1781,7 +1781,7 @@
     {
       "key": "base:t00_00287",
       "source_sha256": "abc824ddfc857a11ae2a01be4eaf072a2ed279160ef19230316ec24410a1dbcd",
-      "target": "激烈！厄尔布鲁士的猛攻<END>",
+      "target": "激烈！凤翼天翔的猛攻<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3692,7 +3692,7 @@
     {
       "key": "base:t00_00561",
       "source_sha256": "62a6263d7db829914c8785283c76885b1f5b0e6e3cb07e8f359b16247be55f78",
-      "target": "阿斯盖因<END>",
+      "target": "夺地者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3706,14 +3706,14 @@
     {
       "key": "base:t00_00563",
       "source_sha256": "6540e7e52671d83e7bc1698619e6e227db25996034b3a03187f71e0a61ff1cf6",
-      "target": "斯维姆鲁格<END>",
+      "target": "菲因梅露姆<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00564",
       "source_sha256": "6a111ec7a406f9f069fc6e01bafb21972460c99bdb29442e14b2cb9bdd5fa984",
-      "target": "厄尔布鲁士<END>",
+      "target": "凤翼天翔<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4308,7 +4308,7 @@
     {
       "key": "base:t00_00650",
       "source_sha256": "c5358e2f37ea41573b9f9a153a5f3eefb0568999801bdf48d953a762363a5d85",
-      "target": "次代高达<END>",
+      "target": "艾比安高达<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5491,7 +5491,7 @@
     {
       "key": "base:t00_00819",
       "source_sha256": "40de6f6b478d5789b9185600037a9c183643ef26e2a8924440707bb51355020b",
-      "target": "次代高达（MA）<END>",
+      "target": "艾比安高达（MA）<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5589,14 +5589,14 @@
     {
       "key": "base:t00_00833",
       "source_sha256": "f62a386b763ddc78802e99b69fe5c9bd0ea67ae0abf8671ff67741049ce4ebd8",
-      "target": "超级阿斯盖因<END>",
+      "target": "超级夺地者<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00834",
       "source_sha256": "f0f8e57c1ceba6bc5fe332c8b5e4d17b4c94cdbfcb144a501ed0e265c5ecddab",
-      "target": "斯维姆鲁格S<END>",
+      "target": "菲因梅露姆S<END>",
       "review_status": "draft",
       "origin": "terms"
     },

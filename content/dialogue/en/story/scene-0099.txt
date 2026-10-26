@@ -408,7 +408,7 @@ the ones who will build the new era.”
 # 审校：兄弟是武的，不是直人的
 > 「タケル? タケルなら、ロゼと2人で、
 >  お兄さんのところへ行ってるわよ」
-“Takeru? He went with Rose to see his brother.”
+“Takeru? He went with Roze to see his brother.”
 
 @47027 Mika · ミカ
 # 审校：同上

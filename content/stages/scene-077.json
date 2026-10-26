@@ -23,12 +23,12 @@
      "title": {
       "zh-Hans": "罗塞＋泽隆",
       "ja": "ロゼ＋ゼーロン",
-      "en": "Rose + Zeron"
+      "en": "Roze + Zeron"
      },
      "text": {
       "zh-Hans": "罗塞在场时用武击坠玛古，再用武说服罗塞",
       "ja": "ロゼがいる間にタケルでマーグを撃墜し、ロゼを説得",
-      "en": "With Rose on the map, down Marg with Takeru, then persuade Rose"
+      "en": "With Roze on the map, down Marg with Takeru, then persuade Roze"
      }
     },
     {
@@ -98,7 +98,7 @@
      "from": {
       "zh-Hans": "罗塞",
       "ja": "ロゼ",
-      "en": "Rose"
+      "en": "Roze"
      },
      "retreat": false
     },

@@ -190,7 +190,7 @@ get any rest as it is.”
 > 「こっちはつまってんだよ、仕事が!!」
 “I’m buried in work here!!”
 
-@23431 Aboly · アポリー
+@23431 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「アストナージ、レラも少し休ませて
 >  やったらどうだ?」
@@ -210,7 +210,7 @@ possibly can.”
 # 检查提示：未用必用译名：アポリー→Aboly
 > 「いいよアポリー、気にしてくれなくても。
 >  今はこれが、
-“It’s fine, Aboly, you don’t have to worry about me. Right now this is
+“It’s fine, Apolly, you don’t have to worry about me. Right now this is
 ---
 >  アタシの戦いのうちなんだから」
 part of my fight.”
@@ -254,7 +254,7 @@ take a little break.”
 > 「……わかった。あ、ありがと、{HeroNick}」
 “...All right. Th-thanks, {HeroNick}.”
 
-@23441 Aboly · アポリー
+@23441 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「あいつ、ずいぶん変わったんじゃないか?」
 “She’s changed a lot, hasn’t she?”
@@ -273,7 +273,7 @@ she’s gotten a lot better.”
 > 「いいことじゃないですか」
 “Isn’t that a good thing?”
 
-@23444 Aboly · アポリー
+@23444 Apolly · アポリー
 > 「そうだな」
 “Yeah, it is.”
 
@@ -315,7 +315,7 @@ Otherwise, you’ll burn out.”
 > 「……わかったよ、{HeroNick}」
 “...All right, {HeroNick}.”
 
-@23452 Aboly · アポリー
+@23452 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「あいつ、ずいぶん変わったんじゃないか?」
 “She’s changed a lot, hasn’t she?”

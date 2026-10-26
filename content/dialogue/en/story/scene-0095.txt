@@ -45,7 +45,7 @@ be destroying the Earth.”
 # 审校：同上，“東方先生”应译为 Master Asia，不是 Master Wong。
 > 「しかし、いつ見てもすばらしいですな、
 >  東方先生。このデビルガンダムさえ
-“Still, it never fails to impress, Master Asia. So long as we have this Dark Gundam,
+“Still, it never fails to impress, Master Asia. So long as we have this Devil Gundam,
 ---
 >  あれば、OZも、アクシズも
 >  異星人どもも、恐れるにたりません」
@@ -60,7 +60,7 @@ we need fear neither OZ, nor Axis, nor the aliens.”
 ---
 >  もはやコアとしての役割を、ほとんど
 >  果たしておらん。デビルガンダムを
-He barely functions as the core anymore. To make the Dark Gundam
+He barely functions as the core anymore. To make the Devil Gundam
 ---
 >  完全なものとするためには、強じんな
 >  肉体と精神をもつ、新しいコアが
@@ -98,7 +98,7 @@ even understand what true strength is?”
 ---
 >  デビルガンダムを完全なものに
 >  しなければならない。その点で
-the Dark Gundam must be completed. On that point,
+the Devil Gundam must be completed. On that point,
 ---
 >  私とあなたの意見は共通している」
 you and I are of one mind.”
@@ -134,15 +134,15 @@ No, I need no reward. But I cannot leave things as they are, I cannot...”
 # 审校：同上，“東方先生”应译为 Master Asia。
 > 「……東方先生、夢を見るのは
 >  勝手ですが、デビルガンダムは
-“...Master Asia, dream all you like, but the Dark Gundam is
+“...Master Asia, dream all you like, but the Devil Gundam is
 ---
 >  あくまでも私のもの。
 >  ククク、デビルガンダムさえあれば
-mine and mine alone. Heh heh. With the Dark Gundam,
+mine and mine alone. Heh heh. With the Devil Gundam,
 ---
 >  デビルガンダムさえあれば、全宇宙が
 >  私のものに……」
-with the Dark Gundam, the entire universe will be mine...”
+with the Devil Gundam, the entire universe will be mine...”
 
 @45043 Beltorchika · ベルトーチカ
 > 「周囲に敵影なし。進路クリア」
@@ -225,7 +225,7 @@ you’d be mad too. I just know it.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「奴らのことだ。デビルガンダムを見つけ
 >  次第、すぐにしかける気だろう
-“Knowing them, they’ll attack the moment they find the Dark Gundam.
+“Knowing them, they’ll attack the moment they find the Devil Gundam.
 ---
 >  ……急がないと、面倒なことになる
 >  かもしれん」
@@ -236,7 +236,7 @@ you’d be mad too. I just know it.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「デビルガンダムだけを相手にするのなら
 >  あの連中だけでも、そうそう遅れを
-“If the Dark Gundam were all they had to face, I don’t think they’d lose
+“If the Devil Gundam were all they had to face, I don’t think they’d lose
 ---
 >  とることはないと思うが……他に何が
 >  でるか、わからないからな」
@@ -252,7 +252,7 @@ easily even on their own... but there’s no telling what else might show up.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「デビルガンダムがまた現れたそうです。
 >  我々はいま、ネオ・ホンコンへ
-“The Dark Gundam has reportedly appeared again. We’re heading
+“The Devil Gundam has reportedly appeared again. We’re heading
 ---
 >  向かっていますよ」
 for Neo Hong Kong now.”
@@ -628,7 +628,7 @@ Man, what’s going to happen to us now?”
 @45118 Schwarz · シュバルツ
 > 「手分けをして探すのだ。もしも
 >  本当にデビルガンダムがいるならば
-“We split up and search. If the Dark Gundam is truly here,
+“We split up and search. If the Devil Gundam is truly here,
 ---
 >  我々を察知して、向こうから
 >  出てくることも考えられる」
@@ -741,11 +741,11 @@ And what is this body...?”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「……聞かせてあげよう、レイン。
 >  あれは、デビルガンダムが完成して
-“...Let me tell you, Rain. It was shortly after the Dark Gundam was completed.
+“...Let me tell you, Rain. It was shortly after the Devil Gundam was completed.
 ---
 >  まもなくのことだった。もっとも
 >  最初は、あれをデビルガンダムとは
-Though at first, we didn’t call it the Dark Gundam.
+Though at first, we didn’t call it the Devil Gundam.
 ---
 >  呼んでいなかったがな。すべては、
 >  カーンズが地球へ落とす6体目の
@@ -758,7 +758,7 @@ to drop onto Earth...”
 @45137 Domon · ドモン
 > 「……どこだ、デビルガンダム。
 >  早く出てこい」
-“...Where are you, Dark Gundam? Come out already.”
+“...Where are you, Devil Gundam? Come out already.”
 
 @45138 ???
 > 「ククククククッ、やはり来たか」
@@ -1075,7 +1075,7 @@ Burn this sight of mankind’s twilight into your heart.”
 @45190 Master · マスター
 > 「ランタオ島で待っておるぞ、ドモン。
 >  デビルガンダムもな。決着をつけたくば
-“I will be waiting on Lantau Island, Domon. The Dark Gundam too. If you wish to settle this,
+“I will be waiting on Lantau Island, Domon. The Devil Gundam too. If you wish to settle this,
 ---
 >  くるがよい」
 then come.”
@@ -1096,12 +1096,12 @@ then come.”
 # 审校：原文是问句
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「やはり、デビルガンダムがいたのか、ドモン」
-“So the Dark Gundam was there after all, Domon?”
+“So the Devil Gundam was there after all, Domon?”
 
 @45195 Domon · ドモン
 > 「いや……だが、デビルガンダムのいる
 >  場所はわかった」
-“No... but I know where the Dark Gundam is now.”
+“No... but I know where the Devil Gundam is now.”
 
 @45196 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -1111,7 +1111,7 @@ then come.”
 @45197 Domon · ドモン
 > 「ああ。デビルガンダムは、ランタオ島に
 >  いる」
-“Yeah. The Dark Gundam is on Lantau Island.”
+“Yeah. The Devil Gundam is on Lantau Island.”
 
 @45198 Rain · レイン
 # 审校：全局：弯撇号／弯引号

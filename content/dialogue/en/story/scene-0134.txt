@@ -66,7 +66,7 @@ Let’s go, all of you!”
 ---
 >  この最終形デビルガンダムは
 >  とめられはせんぞ……」
-to stop this final form of the Dark Gundam...”
+to stop this final form of the Devil Gundam...”
 
 @50557 Murasame · 村雨
 > 「やはり動力炉をとめても無駄か…
@@ -86,7 +86,7 @@ the main body itself.”
 “Falmel, break through here and head further in.
 ---
 >  そこに、デビルガンダムの本体がいる」
-The main body of the Dark Gundam is in there.”
+The main body of the Devil Gundam is in there.”
 
 @50560 Ginrei · 銀鈴
 > 「でも、健二さん、そのバリアーは……」
@@ -110,7 +110,7 @@ The main body of the Dark Gundam is in there.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「……俺のことはいいんだ。デビルガンダムの
 >  残骸を回収した奴がいると
-“...Never mind me. Ever since I learned someone had salvaged the Dark Gundam’s wreckage,
+“...Never mind me. Ever since I learned someone had salvaged the Devil Gundam’s wreckage,
 ---
 >  知った時から、こうなることはわかって
 >  いたさ。でも……
@@ -155,7 +155,7 @@ if the day ever comes when I can die...”
 ---
 >  みんな、行きましょう
 >  デビルガンダムを倒すのよ」
-Everyone, let’s go. We’re going to destroy the Dark Gundam.”
+Everyone, let’s go. We’re going to destroy the Devil Gundam.”
 
 @50569 Murasame · 村雨
 # 审校：全局：弯撇号／弯引号
@@ -166,7 +166,7 @@ Everyone, let’s go. We’re going to destroy the Dark Gundam.”
 ---
 >  そこにデビルガンダムの本体が
 >  いるはずだ
-The main body of the Dark Gundam should be there.
+The main body of the Devil Gundam should be there.
 ---
 >  そいつを叩けば、
 >  デビルアクシズもまた亡びる」
@@ -177,7 +177,7 @@ Take it out, and Dark Axis goes down with it.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「デビルガンダム……これが最終形態
 >  ……どうやら俺たちの想像以上の
-“Dark Gundam... So this is its final form... Looks like it’s grown even stronger
+“Devil Gundam... So this is its final form... Looks like it’s grown even stronger
 ---
 >  力をつけたようだな。だがっ!!」
 than we imagined. But!!”
@@ -201,7 +201,7 @@ than we imagined. But!!”
 ---
 >  邪魔させはせん!
 >  この最終形態のデビルガンダムが
-This final form of the Dark Gundam
+This final form of the Devil Gundam
 ---
 >  貴様らを始末してくれるわ。
 >  ゆけ、デビルウォン!」
@@ -216,7 +216,7 @@ will dispose of you all. Go, Devil Wong!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「……さぁこい、デビルガンダム!
 >  貴様の最後の姿、この俺が
-“...Come on, Dark Gundam! I’ll see your end
+“...Come on, Devil Gundam! I’ll see your end
 ---
 >  見届けてやる!」
 with my own eyes!”
@@ -229,7 +229,7 @@ with my own eyes!”
 @50577 Domon · ドモン
 > 「……やったよ兄さん……
 >  今度こそ、デビルガンダムを……」
-“...I did it, brother... This time, the Dark Gundam is finally...”
+“...I did it, brother... This time, the Devil Gundam is finally...”
 
 @50578 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -246,7 +246,7 @@ with my own eyes!”
 @50580 Heero · ヒイロ
 > 「デビルガンダムの破壊を確認……
 >  任務完了」
-“Destruction of the Dark Gundam confirmed... Mission complete.”
+“Destruction of the Devil Gundam confirmed... Mission complete.”
 
 @50581 Amuro · アムロ
 # 审校：全局：弯撇号／弯引号
@@ -273,7 +273,7 @@ with my own eyes!”
 @50585 Henken · ヘンケン
 > 「アクシズを取り込んでいた
 >  デビルガンダムはなくなったようですな
-“Looks like the Dark Gundam that had swallowed up Axis is gone.
+“Looks like the Devil Gundam that had swallowed up Axis is gone.
 ---
 >  が、我々が思っていたほどアクシズ
 >  本体に影響はなかったとみえます」
@@ -317,7 +317,7 @@ In other words, Axis is still falling toward Earth.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「シャアの奴……デビルガンダムを滅ぼし
 >  ても影響はないと知ってたんだ」
-“That Char... he knew destroying the Dark Gundam wouldn’t stop it.”
+“That Char... he knew destroying the Devil Gundam wouldn’t stop it.”
 
 @50593 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号

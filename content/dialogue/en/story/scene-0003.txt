@@ -133,7 +133,7 @@ Either way, we’ll have to abandon this place.”
 # 审校：全局：弯撇号／弯引号
 > 「わかったよ。でも、こいつのシステムの
 >  再起動くらいは、やっておいてくれ
-“All right. But at least get this thing’s systems rebooted.
+“Alright. But at least get this thing’s systems rebooted.
 ---
 >  まったく、お前のいうことが
 >  間違いであってほしいと
@@ -267,9 +267,9 @@ Tell me your name.”
 But we should be glad the unit at least survived...
 ---
 >  アポリー中尉、どうか?」
-Lieutenant Aboly, what do you think?”
+Lieutenant Apolly, what do you think?”
 
-@17652 Aboly · アポリー
+@17652 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「コックピットが違っても
 >  三日もあれば
@@ -320,7 +320,7 @@ Liberation Front of the Earth. We’ll cover you from here... can you still figh
 # 检查提示：未用必用译名：アポリー→Aboly
 > 「よし。いくぞ、
 >  アポリー中尉、ロベルト中尉」
-“Good. Let’s go, Lieutenant Aboly, Lieutenant Roberto.”
+“Good. Let’s go, Lieutenant Apolly, Lieutenant Roberto.”
 
 @17659 Rish · リッシュ（本话主角的对手）
 # 审校：全局：弯撇号／弯引号
@@ -340,7 +340,7 @@ The odds aren’t great, but... eh, whatever happens, happens.”
 >  あの1機が退けたか」
 Did that one unit fight them off?”
 
-@17661 Aboly · アポリー
+@17661 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「大尉、あれは例の機体です」
 “Captain, that’s the unit we’re after.”
@@ -374,7 +374,7 @@ your escape... can you move?”
 # 检查提示：未用必用译名：アポリー→Aboly
 > 「よし。いくぞ、
 >  アポリー中尉、ロベルト中尉」
-“Good. Let’s go, Lieutenant Aboly, Lieutenant Roberto.”
+“Good. Let’s go, Lieutenant Apolly, Lieutenant Roberto.”
 
 @17665 Rish · リッシュ（本话主角的对手）
 # 审校：“you’ve got me”“Can’t help it”
@@ -463,7 +463,7 @@ since you’d obtained the prototype. If we’d come a little sooner, we might h
 >  それでは早死にをするな」
 “Good resolve, but that’s how you die young.”
 
-@17678 Aboly · アポリー
+@17678 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「大尉、急がないと危ないですよ」
 “Captain, we need to hurry or it’ll get dangerous.”

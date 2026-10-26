@@ -1382,7 +1382,7 @@ I’ll take them down myself!”
 >  んだッッ!! クソォォォォーッ!」
 “Why?! Why can’t I beat them?! Daaamn you!!”
 
-@22253 Dark General · 暗黒大将軍
+@22253 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「うわーははははぁッ!
 >  そろそろ限界が近づいてきたようだな
@@ -1392,7 +1392,7 @@ I’ll take them down myself!”
 >  トドメをさしてくれるわ!!」
 My Mycenae dark army will finish you off!!”
 
-@22254 Dark General · 暗黒大将軍
+@22254 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「おのれぇ……覚えておれ!!」
 “Curse you... I won’t forget this!!”

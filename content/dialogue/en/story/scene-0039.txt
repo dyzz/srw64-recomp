@@ -470,7 +470,7 @@ you still haven’t mastered that blade.”
 @25787 Schwarz · シュバルツ
 > 「そんなことでは、デビルガンダムにも
 >  マスターアジアにも
-“At this rate, can you really beat either the Dark Gundam
+“At this rate, can you really beat either the Devil Gundam
 ---
 >  勝てぬのではないかな?」
 or Master Asia?”
@@ -713,11 +713,11 @@ It’s the only way to beat Master Asia. Don’t forget it.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「俺たちはデビルガンダムの恐怖を
 >  はらいのけたぜ。このファイター魂でな
-“We’ve shaken off our fear of the Dark Gundam. With our fighter’s souls.
+“We’ve shaken off our fear of the Devil Gundam. With our fighter’s souls.
 ---
 >  デビルガンダムは負けられない相手だ
 >  この紋章もそういってるぜ」
-The Dark Gundam is one opponent we can’t lose to. This crest says so too.”
+The Devil Gundam is one opponent we can’t lose to. This crest says so too.”
 
 @25828 Domon · ドモン
 > 「お前たち……」
@@ -892,7 +892,7 @@ So I came to see what was going on.”
 @25859 George · ジョルジュ
 > 「ええ、デビルガンダムも
 >  近くにいるということです」
-“Yes, it means the Dark Gundam is nearby as well.”
+“Yes, it means the Devil Gundam is nearby as well.”
 
 @25860 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -953,7 +953,7 @@ Is that how you speak to your Master?!”
 
 @25870 Domon · ドモン
 > 「デビルガンダム……キョウジィィ!!」
-“Dark Gundam... Kyojiiii!!”
+“Devil Gundam... Kyojiiii!!”
 
 @25871 Schwarz · シュバルツ
 > 「待てドモン! 心を落ち着けろ!」
@@ -1224,7 +1224,7 @@ Kyoji... Brother... I’ll end it now...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ……、ワシの、
 >  ワシのデビルガンダムが……
-“Ahh... My, my Dark Gundam...
+“Ahh... My, my Devil Gundam...
 ---
 >  おのれ! 貴様ら全員
 >  生かしては帰さぬぞ!!」
@@ -1304,7 +1304,7 @@ We’ll be waiting, Domon. You’re not the kind of man who’d break over somet
 “Master... Brother... Schwarz... Father...
 ---
 >  ついにデビルガンダムを倒したよ」
-I’ve finally defeated the Dark Gundam.”
+I’ve finally defeated the Devil Gundam.”
 
 @25929 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1400,7 +1400,7 @@ how much better it would have been!”
 @25943 Rain · レイン
 > 「ドモン! はやく、
 >  ゴッドガンダムに急いで!」
-“Domon! Hurry, get to the Burning Gundam!”
+“Domon! Hurry, get to the God Gundam!”
 
 @25944 Domon · ドモン
 > 「わかった、レイン!」
@@ -1409,7 +1409,7 @@ how much better it would have been!”
 @25945 Domon · ドモン
 > 「これがゴッドガンダム……
 >  俺の新しい機体か」
-“So this is the Burning Gundam... my new machine.”
+“So this is the God Gundam... my new machine.”
 
 @25946 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -1474,7 +1474,7 @@ I’ll never forget them. Thank you...”
 @25955 Bright · ブライト
 > 「そうか……デビルガンダムと
 >  マスターアジアを倒したか」
-“I see... So you defeated the Dark Gundam and Master Asia.”
+“I see... So you defeated the Devil Gundam and Master Asia.”
 
 @25956 Rain · レイン
 > 「はい。でも、シュバルツが……」
@@ -1532,7 +1532,7 @@ if you tried. He’ll pop up again any day now going ‘Too soft, Domon!’”
 ---
 >  デビルガンダムだったからな。
 >  こっちはシャッフルの連中と
-the Dark Gundam, out of nowhere. It was just me and
+the Devil Gundam, out of nowhere. It was just me and
 ---
 >  俺だけだったからさ」
 the Shuffle Alliance bunch, after all.”
@@ -1757,7 +1757,7 @@ sheer hell.”
 # 检查提示：未用必用译名：ゴッドガンダム→Burning Gundam
 > 「レインに頼まれてゴッドガンダムの
 >  手配をするついでに、新しい
-“While arranging the Burning Gundam for Rain, I also checked on the new
+“While arranging the God Gundam for Rain, I also checked on the new
 ---
 >  レイズナーについても確認したのだ。
 >  ほぼ完成していたそうなので

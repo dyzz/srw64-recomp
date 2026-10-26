@@ -146,7 +146,7 @@
 @17294 Wong · ウォン
 # 触发：攻击，乘坐〈デビルガンダム〉
 > 「デビルガンダムは私のものだぁ!」
-“The Dark Gundam is mine!”
+“The Devil Gundam is mine!”
 
 @17295 Wong · ウォン
 # 触发：攻击，乘坐〈デビルガンダム〉
@@ -158,7 +158,7 @@
 @17296 Wong · ウォン
 # 触发：攻击，乘坐〈デビルガンダム〉
 > 「デビルガンダムは私のものだぁ!」
-“The Dark Gundam is mine!”
+“The Devil Gundam is mine!”
 
 @17297 Wong · ウォン
 # 触发：攻击，乘坐〈デビルガンダム〉
@@ -170,4 +170,4 @@
 @17298 Wong · ウォン
 # 触发：攻击，乘坐〈デビルガンダム〉
 > 「デビルガンダムは私のものだぁ!」
-“The Dark Gundam is mine!”
+“The Devil Gundam is mine!”

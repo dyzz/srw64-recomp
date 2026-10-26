@@ -421,7 +421,7 @@ there was nothing like that on Axis!! And that thing is...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ……間違いないッ!
 >  デビルガンダムだ!!」
-“Yeah... no doubt about it! It’s the Dark Gundam!!”
+“Yeah... no doubt about it! It’s the Devil Gundam!!”
 
 @49389 Juzo · 十三
 # 审校：全局：弯撇号／弯引号
@@ -434,7 +434,7 @@ there was nothing like that on Axis!! And that thing is...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「いえ、僕が独自に分析した
 >  デビルガンダムの能力が正しければ
-“No, if my own analysis of the Dark Gundam’s abilities is correct,
+“No, if my own analysis of the Devil Gundam’s abilities is correct,
 ---
 >  その程度のことはできますよ」
 it’s entirely capable of that.”
@@ -458,7 +458,7 @@ it’s entirely capable of that.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「デビルガンダムがアクシズを取りこんだ、
 >  ということです。デビルガンダムの
-“It means the Dark Gundam has absorbed Axis. It’s an application of the Dark Gundam’s
+“It means the Devil Gundam has absorbed Axis. It’s an application of the Devil Gundam’s
 ---
 >  基礎理論、自己進化と
 >  自己増殖の応用なんですよ」
@@ -469,7 +469,7 @@ basic theory: self-evolution and self-replication.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「どうやら、デビルガンダムの残骸を
 >  回収していた人がいるようですね」
-“It seems someone was collecting the Dark Gundam’s remains.”
+“It seems someone was collecting the Devil Gundam’s remains.”
 
 @49396 Amuro · アムロ
 > 「シャアめ……本気で地上の
@@ -485,14 +485,14 @@ basic theory: self-evolution and self-replication.”
 ---
 >  デビルガンダムなら、核をぶつけたって
 >  効くかどうか、わかりゃしないぜ」
-the Dark Gundam, there’s no telling whether a nuke would even work.”
+the Devil Gundam, there’s no telling whether a nuke would even work.”
 
 @49398 Rain · レイン
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「デビルガンダムならばコアが必要な
 >  はずだわ。それを破壊できれば……」
-“If it’s the Dark Gundam, it should need a core. If we can destroy that...”
+“If it’s the Devil Gundam, it should need a core. If we can destroy that...”
 
 @49399 Kamille · カミーユ
 # 审校：全局：弯撇号／弯引号
@@ -522,7 +522,7 @@ not with the forces we have now.”
 # 检查提示：未用必用译名：デビルアクシズ→Dark Axis、デビルガンダム→Dark Gundam
 > 「シャアだろうがデビルアクシズだろうが、
 >  かまわん! デビルガンダムに
-“Char or Dark Axis, I don’t care! As long as the Dark Gundam is
+“Char or Dark Axis, I don’t care! As long as the Devil Gundam is
 ---
 >  関わりのある限り、この俺が
 >  まとめて叩きつぶしてやるッ!!」
@@ -1479,7 +1479,7 @@ Could it be the {HeroMech}’s fleet?”
 
 @49552 Heero · ヒイロ
 > 「……デビルガンダム」
-“...Dark Gundam.”
+“...Devil Gundam.”
 
 @49553 Trowa · トロワ
 > 「どうやらそのようだな」
@@ -1494,7 +1494,7 @@ Could it be the {HeroMech}’s fleet?”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうだぜ。デビルガンダムは倒した
 >  はずだろ? それに、あれはでかすぎるぜ?」
-“He’s right. We destroyed the Dark Gundam, didn’t we? And that thing’s way too big!”
+“He’s right. We destroyed the Devil Gundam, didn’t we? And that thing’s way too big!”
 
 @49556 Alan · アラン
 > 「博士?」
@@ -1551,7 +1551,7 @@ We should be able to rendezvous soon.”
 ---
 >  あれはいったいなんだ!?
 >  デビルガンダムに似ているようだが
-what in the world is that?! It looks like the Dark Gundam,
+what in the world is that?! It looks like the Devil Gundam,
 ---
 >  あれはアクシズなのか!?
 >  いったい何がどうなっている!?」
@@ -1608,7 +1608,7 @@ Char Aznable, the man we fought long ago, and our enemy still.”
 @49574 Bright · ブライト
 > 「デビルアクシズ……
 >  やはりデビルガンダムなのか?」
-“Dark Axis... so it really is the Dark Gundam?”
+“Dark Axis... so it really is the Devil Gundam?”
 
 @49575 Henken · ヘンケン
 > 「説明はあとだ。とにかく今はあの
@@ -1649,7 +1649,7 @@ the second unit will stand by, and once the first unit opens a breach,
 ---
 >  アクシズ内部へと突入、
 >  デビルガンダムのコアを叩く」
-they’ll charge inside Axis and strike the Dark Gundam’s core.”
+they’ll charge inside Axis and strike the Devil Gundam’s core.”
 
 @49580 Domon · ドモン
 > 「いいだろう」
@@ -1747,7 +1747,7 @@ doesn’t that make whoever takes that on an unhappy person?”
 ---
 >  だが、その前にデビルガンダムを
 >  始末しなくては」
-But before that, we have to finish off the Dark Gundam.”
+But before that, we have to finish off the Devil Gundam.”
 
 @49597 Show · ショウ
 # 审校：全局：弯撇号／弯引号
@@ -1980,14 +1980,14 @@ All right, forget about securing the breach. All units, focus on sweeping the en
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「くっ、さすがにやる! だがデビルガンダム
 >  はそう簡単にはとめられんぞ」
-“Ngh, they’re good! But the Dark Gundam won’t be stopped so easily.”
+“Ngh, they’re good! But the Devil Gundam won’t be stopped so easily.”
 
 @49632 Char · シャア
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「くっ、さすがにやる! だがデビルガンダム
 >  はそう簡単にはとめられんよ!」
-“Ngh, they’re good! But the Dark Gundam won’t be stopped so easily!”
+“Ngh, they’re good! But the Devil Gundam won’t be stopped so easily!”
 
 @49633 Bright · ブライト
 # 审校：全局：弯撇号／弯引号
@@ -2017,7 +2017,7 @@ Prepare the assault team! Still no word from Murasame?!”
 “He pulled it off! Assault team, launch!
 ---
 >  デビルガンダムのコアを叩きつぶせ!」
-Smash the Dark Gundam’s core!”
+Smash the Devil Gundam’s core!”
 
 @49637 Reika · レイカ
 > 「艦長! 敵、第二陣来ます!」
@@ -2147,7 +2147,7 @@ and don’t let the enemy get close! Domon, do you hear me?!”
 “I hear you. You don’t have to tell me. I’ll
 ---
 >  この俺が叩きつぶしてみせる!」
-smash the Dark Gundam myself!”
+smash the Devil Gundam myself!”
 
 @49656 Kyral · キラル
 # 审校：英文冗余
@@ -2225,4 +2225,4 @@ if you stand in my way, I’ll shoot you down, even you!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あとはデビルガンダムか……
 >  うまくやってくれよ……」
-“All that’s left is the Dark Gundam, huh... Don’t let us down...”
+“All that’s left is the Devil Gundam, huh... Don’t let us down...”

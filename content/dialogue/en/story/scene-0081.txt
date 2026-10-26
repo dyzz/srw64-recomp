@@ -5,7 +5,7 @@
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうか……ついにデビルガンダムとの
 >  決着がついたか」
-“I see... so the matter with the Dark Gundam is finally settled.”
+“I see... so the matter with the Devil Gundam is finally settled.”
 
 @40413 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -22,7 +22,7 @@
 ---
 >  東方不敗とがデビルガンダムを
 >  隠し、復活させていました
-Master Asia used Romefeller as a shield, hiding the Dark Gundam and bringing it back.
+Master Asia used Romefeller as a shield, hiding the Devil Gundam and bringing it back.
 ---
 >  もう、その2人もいません」
 Now those two are gone as well.”
@@ -41,7 +41,7 @@ Now those two are gone as well.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ええ、あの人の心の問題です。あの
 >  人はこれまでデビルガンダムを倒すと
-“Yes, the problem is in his heart. Until now, defeating the Dark Gundam
+“Yes, the problem is in his heart. Until now, defeating the Devil Gundam
 ---
 >  いうことを最大の目的としてきまし
 >  た。それがなくなったのですから」
@@ -312,7 +312,7 @@ experts of the International Police Organization use. Ginrei said she can find i
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ、デビルガンダムの件は
 >  すべて決着がついたそうだ
-“Yeah, seems the whole Dark Gundam business is settled.
+“Yeah, seems the whole Devil Gundam business is settled.
 ---
 >  詳しい事情が聞きたければ、
 >  本人たちに聞くといい。ドモンは
@@ -659,7 +659,7 @@ International Police Organization use. Ginrei said she can find it.”
 @40514 Bright · ブライト
 > 「そうか……ついにデビルガンダムとの
 >  決着がついたか」
-“I see... so the matter with the Dark Gundam is finally settled.”
+“I see... so the matter with the Devil Gundam is finally settled.”
 
 @40515 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -674,7 +674,7 @@ International Police Organization use. Ginrei said she can find it.”
 ---
 >  東方不敗とがデビルガンダムを
 >  秘匿し、復活させていました
-hide and revive the Dark Gundam.
+hide and revive the Devil Gundam.
 ---
 >  もう、その2人もいません」
 Now those two are gone as well.”
@@ -693,7 +693,7 @@ Now those two are gone as well.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ええ、あの人の心の問題です。あの
 >  人はこれまでデビルガンダムを倒すと
-“Yes, the problem is in his heart. Until now, defeating the Dark Gundam has been
+“Yes, the problem is in his heart. Until now, defeating the Devil Gundam has been
 ---
 >  いうことを最大の目的としてきまし
 >  た。それがなくなったのですから」

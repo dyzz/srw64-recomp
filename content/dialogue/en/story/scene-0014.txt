@@ -923,7 +923,7 @@ I like it! Hahahahahaha!!”
 >  いかない!」
 “Gosterro! I won’t lose to you!”
 
-@19223 Aboly · アポリー
+@19223 Apolly · アポリー
 > 「結局ムダ足を踏みましたね」
 “In the end, we came all this way for nothing.”
 
@@ -951,7 +951,7 @@ I like it! Hahahahahaha!!”
 > 「これは?」
 “What’s this?”
 
-@19229 Aboly · アポリー
+@19229 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「例のゲリラたちですよ。しばらく
 >  活動を休止して地下に潜る

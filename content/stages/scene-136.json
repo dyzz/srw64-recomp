@@ -23,7 +23,7 @@
      "title": {
       "zh-Hans": "罗塞＋泽隆",
       "ja": "ロゼ＋ゼーロン",
-      "en": "Rose + Zeron"
+      "en": "Roze + Zeron"
      },
      "text": {
       "zh-Hans": "可选：用武说服玛古（只影响之后的对白）",
@@ -81,7 +81,7 @@
      "from": {
       "zh-Hans": "罗塞",
       "ja": "ロゼ",
-      "en": "Rose"
+      "en": "Roze"
      },
      "retreat": false
     },

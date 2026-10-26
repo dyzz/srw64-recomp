@@ -795,7 +795,7 @@ you may come out now.”
 >  申し入れがございまして……」
 made us a proposal...”
 
-@23808 Hell Marshal · 地獄大元帥
+@23808 Great Marshal of Hell · 地獄大元帥
 > 「ブライ大帝、あの情報を聞いたか」
 “Emperor Burai, have you heard that report?”
 
@@ -805,7 +805,7 @@ made us a proposal...”
 >  奴らが集結しておる様子がみえる」
 “Yes. I looked into it, and they do indeed appear to be gathering.”
 
-@23810 Hell Marshal · 地獄大元帥
+@23810 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「我らに情報をよこしたのが
 >  何者かもわからんが、どうするのだ」
@@ -825,7 +825,7 @@ Unless we secure an energy source at once, by any means, we are finished.
 >  ミケーネの」
 And the same goes for you of Mycenae.”
 
-@23812 Hell Marshal · 地獄大元帥
+@23812 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「うむ……この機会を逃しては、
 >  ミケーネの地上支配もまた
@@ -872,7 +872,7 @@ And then the Earth shall be ours.”
 ---
 >  デビルガンダムの手先になったんだ。
 >  こんなことではだめだ
-he became a pawn of the Dark Gundam. This won’t do.
+he became a pawn of the Devil Gundam. This won’t do.
 ---
 >  まだまだ修業が足りないのか……
 >  ムッ、誰だ!?」
@@ -1083,7 +1083,7 @@ So the Ten Elite are on the move. This is bad... don’t let the enemy in here!�
 > 「な、なんという……」
 “Wh-what the...”
 
-@23851 Hell Marshal · 地獄大元帥
+@23851 Great Marshal of Hell · 地獄大元帥
 # 审校：全局：弯撇号／弯引号
 > 「情報通りじゃな、ブライ大帝。
 >  しかも都合のよいことに
@@ -1111,7 +1111,7 @@ none shall remain who can oppose us.”
 # 审校：全局：弯撇号／弯引号
 > 「バカヤロウ! あれは
 >  ミケーネの地獄大元帥と
-“You idiot! That’s Hell Marshal of Mycenae and
+“You idiot! That’s Great Marshal of Hell of Mycenae and
 ---
 >  百鬼一族のブライ大帝だぞ!
 >  ここでケリをつけてやるんだ!」
@@ -1136,7 +1136,7 @@ Damn it, everyone, I’m counting on you!”
 >  貴様らに勝ってみせる!」
 Humans! This time, I will beat you!”
 
-@23857 Hell Marshal · 地獄大元帥
+@23857 Great Marshal of Hell · 地獄大元帥
 > 「おのれ……よくも、よくも
 >  このワシをぉぉぉーっ!!」
 “Curse you... How dare you, how dare you do this to me!!”

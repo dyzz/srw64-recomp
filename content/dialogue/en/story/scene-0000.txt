@@ -57,7 +57,7 @@ I’d heard the guerrillas had set up in a town nearby, but...”
 >  {HeroName}」
 “Let us see what is happening, {HeroName}.”
 
-@17354 Dark General · 暗黒大将軍
+@17354 Great General of Darkness · 暗黒大将軍
 # 审校：英文第三页原是凑数的填充句
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「ウワハハハハッ。
@@ -136,7 +136,7 @@ Fine. This may make for a decent warm-up.”
 > 「貴様ら、待て!」
 “Hold it right there!”
 
-@17362 Dark General · 暗黒大将軍
+@17362 Great General of Darkness · 暗黒大将軍
 > 「なんだ、お前らは?
 >  邪魔をするな!」
 “Who are you? Do not interfere!”
@@ -157,10 +157,10 @@ You’re the lowest of the low.
 >  叩きつぶしてやる!」
 Your fight is with us! Come on! We’ll crush you!”
 
-@17364 Dark General · 暗黒大将軍
+@17364 Great General of Darkness · 暗黒大将軍
 > 「ぬうぅ、この暗黒大将軍に
 >  よくもほざいたな!
-“Grr, how dare you speak so to me, the Dark General!
+“Grr, how dare you speak so to me, the Great General of Darkness!
 ---
 >  それほど死にたいなら、貴様らも
 >  一緒に地獄へ送ってやろう
@@ -255,7 +255,7 @@ Daitarn 3 crushes the ambitions of the Muge Zorbados Empire.
 >  恐れぬのならばかかってこい!」
 If you do not fear the radiance of this sun, then come at me!”
 
-@17379 Dark General · 暗黒大将軍
+@17379 Great General of Darkness · 暗黒大将軍
 > 「ぐうぅぅぅ、おのれ人間どもめ。
 >  覚えておれ!」
 “Gwaaah, you wretched humans. Remember this!”
@@ -266,7 +266,7 @@ If you do not fear the radiance of this sun, then come at me!”
 >  残りも一気にいくぜ!」
 “He ran... Let’s finish off the rest in one go!”
 
-@17381 Dark General · 暗黒大将軍
+@17381 Great General of Darkness · 暗黒大将軍
 > 「ぐうぅぅぅ、おのれ人間どもめ。
 >  覚えておれ!」
 “Gwaaah, you wretched humans. Remember this!”
@@ -277,7 +277,7 @@ If you do not fear the radiance of this sun, then come at me!”
 >  どうやら片づいたようだな」
 “Hmph, he was all talk. Looks like that’s taken care of.”
 
-@17383 Dark General · 暗黒大将軍
+@17383 Great General of Darkness · 暗黒大将軍
 > 「おのれぇっ! 覚えておれ!!」
 “Curse you! Remember this!!”
 

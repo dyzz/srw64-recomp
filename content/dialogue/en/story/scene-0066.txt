@@ -864,7 +864,7 @@ launch immediately!”
 @28961 Marquis Janus · ヤヌス侯爵
 > 「見よ! これぞ地獄大元帥より
 >  あずかった、ミネルバXだ!」
-“Behold! This is Minerva X, entrusted to me by Hell Marshal!”
+“Behold! This is Minerva X, entrusted to me by Great Marshal of Hell!”
 
 @28962 Prof. Yumi · 弓教授
 # 审校：全局：弯撇号／弯引号

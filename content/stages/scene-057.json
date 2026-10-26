@@ -34,12 +34,12 @@
     {
      "ref": "secret-zechs-epyon",
      "title": {
-      "zh-Hans": "杰克斯＋次代高达",
+      "zh-Hans": "杰克斯＋艾比安高达",
       "ja": "ゼクス＋ガンダムエピオン",
       "en": "Zechs + Gundam Epyon"
      },
      "text": {
-      "zh-Hans": "无需操作：杰克斯关末成为次代高达驾驶员，希罗离队",
+      "zh-Hans": "无需操作：杰克斯关末成为艾比安高达驾驶员，希罗离队",
       "ja": "操作不要：ゼクスがガンダムエピオンのパイロットに、ヒイロは離脱",
       "en": "No action needed: Zechs pilots the Gundam Epyon; Heero leaves"
      }
@@ -77,12 +77,12 @@
     {
      "ref": "secret-aisha",
      "title": {
-      "zh-Hans": "艾夏＋厄尔布鲁士",
+      "zh-Hans": "艾夏＋凤翼天翔",
       "ja": "アイシャ＋エルブルス",
       "en": "Aisha + Elbulls"
      },
      "text": {
-      "zh-Hans": "无需操作：前两步完成则关末艾夏＋厄尔布鲁士加入",
+      "zh-Hans": "无需操作：前两步完成则关末艾夏＋凤翼天翔加入",
       "ja": "操作不要：前2段階済みならクリア時にアイシャ＋エルブルスが加入",
       "en": "No action needed: Aisha + Elbulls join at the end if steps 1–2 done"
      },

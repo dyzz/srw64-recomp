@@ -162,7 +162,7 @@ there’s also information that concerns Domon and the rest of you.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「なんだって!? デビルガンダムが
 >  ジャブローにいるというのか」
-“What?! You’re saying the Dark Gundam is at Jaburo?”
+“What?! You’re saying the Devil Gundam is at Jaburo?”
 
 @25503 Schwarz · シュバルツ
 # 审校：全局：弯撇号／弯引号
@@ -193,7 +193,7 @@ just keep in mind that it’s a possibility.”
 ---
 >  急いでくれ! マスターアジア、
 >  それに、デビルガンダム!
-to Earth, fast! Master Asia, and the Dark Gundam!
+to Earth, fast! Master Asia, and the Devil Gundam!
 ---
 >  今度こそこの俺が倒してやる!」
 This time I’ll take them down myself!”
@@ -209,7 +209,7 @@ This time I’ll take them down myself!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうです。我々とてデビルガンダムには
 >  因縁がありますからね」
-“Indeed. We have our own score to settle with the Dark Gundam.”
+“Indeed. We have our own score to settle with the Devil Gundam.”
 
 @25508 Sai Saici · サイ・サイシー
 # 审校：全局：弯撇号／弯引号
@@ -277,7 +277,7 @@ skill only slightly above other men’s, beating Master Asia
 ---
 >  夢のまた夢。それに…デビルガンダムの
 >  幻影に脅えているようではな」
-remains a pipe dream. All the more so while he cowers before the Dark Gundam’s phantom.”
+remains a pipe dream. All the more so while he cowers before the Devil Gundam’s phantom.”
 
 @25517 Rain · レイン
 # 审校：补全整条台词的外层引号

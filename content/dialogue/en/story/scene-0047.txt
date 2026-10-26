@@ -329,9 +329,9 @@ I am counting on you.”
 # 检查提示：未用必用译名：アポリー→Aboly
 > 「アポリーさん、システムのチェック、
 >  ひと通り終わりましたよ」
-“Aboly, I’ve finished the full system check.”
+“Apolly, I’ve finished the full system check.”
 
-@32232 Aboly · アポリー
+@32232 Apolly · アポリー
 > 「おう、ご苦労さん。少し休んで
 >  いいぞ」
 “Yeah, good work. You can take a little break.”
@@ -1495,7 +1495,7 @@ Just who the hell is this guy?”
 ---
 >  デビルガンダムとの1件は私も聞いて
 >  いたしな」
-I’d heard about that business with the Dark Gundam myself.”
+I’d heard about that business with the Devil Gundam myself.”
 
 @32413 Shinobu · 忍
 # 审校：knows the identity of 生硬
@@ -1620,7 +1620,7 @@ is Shapiro Keats.”
 >  苦しい戦いになりそうだな」
 Even with the Will-Wips, this will be a hard fight.”
 
-@32432 Hell Marshal · 地獄大元帥
+@32432 Great Marshal of Hell · 地獄大元帥
 > 「ええい、いまいましい人間どもめ。
 >  まさか我らより先に帝国に
 “Bah, those accursed humans! I never imagined they would strike at the Empire
@@ -1631,9 +1631,9 @@ before we could.”
 @32433 Emperor Burai · ブライ大帝
 > 「地獄大元帥、もはや一刻の
 >  猶予もならんぞ」
-“Hell Marshal, there is not a moment to spare.”
+“Great Marshal of Hell, there is not a moment to spare.”
 
-@32434 Hell Marshal · 地獄大元帥
+@32434 Great Marshal of Hell · 地獄大元帥
 > 「わかっておるわ。人間どもが力を
 >  取りもどしてしまう前に、我らの
 “I know that. Before the humans regain their strength, we must strengthen
@@ -1654,7 +1654,7 @@ would be our match.”
 >  いえましょうな」
 “Hohohohoho. Saying it is easy enough.”
 
-@32437 Dark General · 暗黒大将軍
+@32437 Great General of Darkness · 暗黒大将軍
 > 「ヤヌス、それはどういう意味だ」
 “Janus, what do you mean by that?”
 
@@ -1665,9 +1665,9 @@ would be our match.”
 ---
 >  地獄大元帥、わらわに策が
 >  ございます。実行の許可を」
-Hell Marshal, I have a plan. I ask permission to carry it out.”
+Great Marshal of Hell, I have a plan. I ask permission to carry it out.”
 
-@32439 Hell Marshal · 地獄大元帥
+@32439 Great Marshal of Hell · 地獄大元帥
 > 「ふむ……よかろう。ヤヌス、ぬかるでないぞ」
 “Hmm... very well. Janus, do not fail me.”
 

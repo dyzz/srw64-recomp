@@ -704,7 +704,7 @@ and if Ryo gets hurt now, we’re back to no Dancouga.”
 “I mean that no matter how hard you train like that, you will never
 ---
 >  勝てんということだ」
-defeat the Dark Gundam.”
+defeat the Devil Gundam.”
 
 @35380 Domon · ドモン
 > 「なんだと!?」
@@ -713,7 +713,7 @@ defeat the Dark Gundam.”
 @35381 Schwarz · シュバルツ
 > 「デビルガンダムはいまこの時も、
 >  地上で着々と力をつけつつある
-“Even now, the Dark Gundam grows steadily stronger on the surface.
+“Even now, the Devil Gundam grows steadily stronger on the surface.
 ---
 >  いざ姿を表わし、対決となった
 >  ところで、そのザマでは勝ちようがない」
@@ -749,7 +749,7 @@ drunk on skill that barely sets you above others. At this rate,
 ---
 >  デビルガンダムはおろか、お前の師匠
 >  マスターアジアに勝つことすら
-never mind the Dark Gundam, even defeating your own Master, Master Asia,
+never mind the Devil Gundam, even defeating your own Master, Master Asia,
 ---
 >  夢のまた夢。見ていろ」
 is a pipe dream. Watch.”
@@ -1992,7 +1992,7 @@ destroyed several colonies.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「妙だな……例の
 >  デビルガンダムとも思えんし……
-“Strange... It doesn’t seem to be that Dark Gundam...
+“Strange... It doesn’t seem to be that Devil Gundam...
 ---
 >  コロニーを破壊しているというのも
 >  気になる」

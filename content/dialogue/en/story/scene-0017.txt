@@ -389,7 +389,7 @@ error zero point +2. Transform system... normal. All right.”
 >  修正しましたよ」
 “The data display error? I fixed it.”
 
-@19889 Aboly · アポリー
+@19889 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「よう、がんばってるじゃないか」
 “Hey, working hard, I see.”
@@ -404,7 +404,7 @@ error zero point +2. Transform system... normal. All right.”
 >  関係にも問題多いですからね」
 is a prototype, so its software has plenty of problems too.”
 
-@19891 Aboly · アポリー
+@19891 Apolly · アポリー
 > 「結構、結構」
 “Glad to hear it.”
 
@@ -507,7 +507,7 @@ Instead of killing me? Answer me, Heero!”
 >  改造して我らの兵士にしてくれる」
 “Take plenty of them alive. We shall rebuild them into our soldiers.”
 
-@19912 Dark General · 暗黒大将軍
+@19912 Great General of Darkness · 暗黒大将軍
 > 「百鬼一族め。
 >  ……む、レジスタンスか!?」
 “Those Hyakki Clan vermin. ...Hm, the Resistance?!”

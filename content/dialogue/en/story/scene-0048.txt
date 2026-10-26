@@ -424,7 +424,7 @@ lonely. Lady, I hope you can return soon.”
 >  精いっぱい努力いたします」
 “Thank you. I will do my utmost for your sake, Your Excellency.”
 
-@32702 Hell Marshal · 地獄大元帥
+@32702 Great Marshal of Hell · 地獄大元帥
 > 「おお、ヤヌスか。連絡を待っておった
 >  ぞ。首尾はどうだ」
 “Oh, Janus. I have been waiting for your report. How goes it?”
@@ -434,7 +434,7 @@ lonely. Lady, I hope you can return soon.”
 >  このまま、ここで総攻撃を待ちます」
 “Yes, sir, the operation is going well. We will remain here and await the all-out attack.”
 
-@32704 Dark General · 暗黒大将軍
+@32704 Great General of Darkness · 暗黒大将軍
 > 「それでヤヌス侯爵、場所はどこだ?
 >  奴らのいる場所は!?」
 “Then tell us, Marquis Janus, where? Where are they?!”
@@ -444,7 +444,7 @@ lonely. Lady, I hope you can return soon.”
 >  トリントン基地」
 “The Australian continent... Torrington Base.”
 
-@32706 Hell Marshal · 地獄大元帥
+@32706 Great Marshal of Hell · 地獄大元帥
 > 「聞いた通りだ、百鬼の」
 “You heard him, men of Hyakki.”
 
@@ -453,7 +453,7 @@ lonely. Lady, I hope you can return soon.”
 >  ロボットがそこにおるというわけじゃな?」
 “So those Getter Ray and Photon Power robots are there, eh?”
 
-@32708 Hell Marshal · 地獄大元帥
+@32708 Great Marshal of Hell · 地獄大元帥
 > 「そうだ。それさえ抑えれば帝国も
 >  人間どもも我らの地球制覇を
 “Indeed. Once we crush them, neither the Empire nor the humans can stop
@@ -473,17 +473,17 @@ we can muster.”
 > 「はっ」
 “Yes, sir.”
 
-@32711 Hell Marshal · 地獄大元帥
+@32711 Great Marshal of Hell · 地獄大元帥
 > 「暗黒大将軍、
 >  こちらも出撃準備だ」
-“Dark General, we too must prepare to sortie.”
+“Great General of Darkness, we too must prepare to sortie.”
 
-@32712 Dark General · 暗黒大将軍
+@32712 Great General of Darkness · 暗黒大将軍
 > 「地獄大元帥、
 >  バイストンウェル軍はどうするのだ」
-“Hell Marshal, what of the Byston Well Forces?”
+“Great Marshal of Hell, what of the Byston Well Forces?”
 
-@32713 Hell Marshal · 地獄大元帥
+@32713 Great Marshal of Hell · 地獄大元帥
 > 「ドレイクとてこのままで終わるつもりは
 >  あるまい。とりあえずの目的が同じ
 “Drake will hardly be content to let things end like this. If our immediate goals are the same,
@@ -1653,7 +1653,7 @@ No, I cannot.”
 > 「ショウか……」
 “Show, huh...”
 
-@32889 Dark General · 暗黒大将軍
+@32889 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「ふはははっ! この程度ではすまんぞ!」
 “Fuhahaha! You haven’t seen anything yet!”
@@ -2354,7 +2354,7 @@ Let us leave no hatred behind on the surface...”
 >  まずは敵を片づけることを考えろ!」
 “Questions can wait. Focus on taking out the enemy first!”
 
-@33022 Dark General · 暗黒大将軍
+@33022 Great General of Darkness · 暗黒大将軍
 > 「なんと……バイストンウェルの軍勢が
 >  消滅しただと!?」
 “What... the forces of Byston Well have vanished?!”
@@ -2363,12 +2363,12 @@ Let us leave no hatred behind on the surface...”
 # 审校：全局：弯撇号／弯引号
 > 「よいではないか、暗黒大将軍。
 >  敵のオーラマシンも消えたのだ
-“All the better, Dark General. The enemy’s Aura Machines are gone as well.
+“All the better, Great General of Darkness. The enemy’s Aura Machines are gone as well.
 ---
 >  我らにとっては有利であろう」
 This works in our favor.”
 
-@33024 Dark General · 暗黒大将軍
+@33024 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「なるほどグラー博士、確かに
 >  その通りだ。よし、一気に奴らを
@@ -2408,10 +2408,10 @@ in one stroke!!”
 > 「おおぉぉっ、おのれぇぇぇーっ!!」
 “Ooooh, curse youuuu!!”
 
-@33031 Dark General · 暗黒大将軍
+@33031 Great General of Darkness · 暗黒大将軍
 > 「死ねぇ、剣鉄也!!
 >  この暗黒大将軍がじきじきに
-“Die, Tetsuya Tsurugi!! I, the Dark General, shall personally
+“Die, Tetsuya Tsurugi!! I, the Great General of Darkness, shall personally
 ---
 >  貴様を葬ってくれるわ!」
 send you to your grave!”
@@ -2425,14 +2425,14 @@ send you to your grave!”
 # 审校：全局：弯撇号／弯引号
 > 「暗黒大将軍! 勝ちめはない
 >  わよ!」
-“Dark General! You don’t stand a chance!”
+“Great General of Darkness! You don’t stand a chance!”
 
-@33034 Dark General · 暗黒大将軍
+@33034 Great General of Darkness · 暗黒大将軍
 > 「このわしが、貴様ごときにやられるもの
 >  か!」
 “You think the likes of you could defeat me?!”
 
-@33035 Dark General · 暗黒大将軍
+@33035 Great General of Darkness · 暗黒大将軍
 > 「こ、これしきのことで……わしは闇の
 >  軍団を率いる大将軍……だ……」
 “N-Not to something like this... I am the great general who leads the armies of darkness...”

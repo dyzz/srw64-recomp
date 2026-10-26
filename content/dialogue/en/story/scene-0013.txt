@@ -9,7 +9,7 @@
 > 「どうって……なにが?」
 “What do you mean? What others?”
 
-@18900 Aboly · アポリー
+@18900 Apolly · アポリー
 > 「M作戦についてだろう
 “About Operation M.
 ---
@@ -71,7 +71,7 @@ What I can’t figure out is why each of them acted alone.”
 > 「いったい、どんな人たちなのかしら」
 “I wonder what kind of people they are.”
 
-@18908 Aboly · アポリー
+@18908 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「やられないかぎりは、
 >  いずれ会うこともあるさ
@@ -86,7 +86,7 @@ Anyway, Anna, how’s Eiji holding up?”
 >  いるみたいです。でも……」
 “...For now, he seems calm. But still...”
 
-@18910 Aboly · アポリー
+@18910 Apolly · アポリー
 # 审校：对安娜说，是英二的姐姐，不是“你姐姐”
 > 「姉の婚約者だったって
 >  話だからな
@@ -509,7 +509,7 @@ Anyway, get moving. Here they come.”
 >  ……ガンダムだと!?」
 “That’s it... a black MS... a Gundam?!”
 
-@18970 Aboly · アポリー
+@18970 Apolly · アポリー
 > 「どうしますか、大尉」
 “What should we do, Captain?”
 
@@ -529,7 +529,7 @@ Anyway, get moving. Here they come.”
 > 「誰もいないのか……?」
 “Nobody’s here...?”
 
-@18974 Aboly · アポリー
+@18974 Apolly · アポリー
 > 「大尉、あそこの格納庫に
 >  もう1機いるようです」
 “Captain, there seems to be another unit in that hangar.”
@@ -595,7 +595,7 @@ Why is a non-pilot in the Mk-II?!
 >  やめさせろ!」
 Stop him!”
 
-@18985 Aboly · アポリー
+@18985 Apolly · アポリー
 > 「大尉、あれを!」
 “Captain, look at that!”
 

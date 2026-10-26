@@ -62,7 +62,7 @@ hiding in them, they can’t afford to comb through every one.
 >  であれば、いい隠れ家になる」
 It won’t work long-term, but for a short stay, it makes a good hideout.”
 
-@18342 Aboly · アポリー
+@18342 Apolly · アポリー
 > 「大尉、モビルスーツは
 >  奥に入れてくれとのことです」
 “Captain, they want the Mobile Suits brought inside.”
@@ -86,7 +86,7 @@ Once your machine’s inside, you can get some rest.”
 > 「機体はどこへ?」
 “Where should I put my machine?”
 
-@18346 Aboly · アポリー
+@18346 Apolly · アポリー
 > 「お前のは、一番奥へ入れてくれ」
 “Yours goes in the very back.”
 
@@ -249,7 +249,7 @@ I’d rather you didn’t sell us so short.”
 >  みなに紹介しよう」
 I’ll introduce you to everyone.”
 
-@18368 Aboly · アポリー
+@18368 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「あれですよ大尉。
 >  パイロットが降りてきますね」
@@ -292,7 +292,7 @@ off this Earth. Take my advice...
 >  すぐここから退去したほうがいい」
 you should get out of here right away.”
 
-@18373 Aboly · アポリー
+@18373 Apolly · アポリー
 > 「いきなりいわれて、はいそうですかと
 >  信じられるかよ」
 “You can’t just show up and expect us to take your word for it.”
@@ -320,7 +320,7 @@ I found this place by scanning and
 >  分析した結果、発見した」
 analyzing the terrain of the surrounding area.”
 
-@18376 Aboly · アポリー
+@18376 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「大尉、こんなやつのいうことを
 >  真に受ける必要はありませんよ」
@@ -356,7 +356,7 @@ What do you think, Captain?”
 > 「彼のいうことはおそらく本当でしょう」
 “What he says is most likely true.”
 
-@18381 Aboly · アポリー
+@18381 Apolly · アポリー
 > 「なぜです?」
 “Why do you say that?”
 
@@ -371,7 +371,7 @@ What do you think, Captain?”
 >  よし、移動の準備だ」
 “Yes... I agree. All right, prepare to move out.”
 
-@18384 Aboly · アポリー
+@18384 Apolly · アポリー
 > 「了解」
 “Understood.”
 
@@ -574,9 +574,9 @@ What he says is probably true.”
 @18415 Bright · ブライト
 > 「そうだな……そう思う。よし、
 >  移動の準備だ。アポリー中尉」
-“Yes... I agree. All right, prepare to move out. Lieutenant Aboly.”
+“Yes... I agree. All right, prepare to move out. Lieutenant Apolly.”
 
-@18416 Aboly · アポリー
+@18416 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「了解。整備班には
 >  作業を中止させますよ」
@@ -798,9 +798,9 @@ The enemy has spotted us.”
 @18446 Quattro · クワトロ
 > 「帝国の無人機か。
 >  アポリー、ロベルト、いいな」
-“Imperial drones, huh. Aboly, Roberto, ready?”
+“Imperial drones, huh. Apolly, Roberto, ready?”
 
-@18447 Aboly · アポリー
+@18447 Apolly · アポリー
 > 「いつでもいけます」
 “Ready whenever you are.”
 
@@ -843,9 +843,9 @@ The enemy has spotted us.”
 @18456 Quattro · クワトロ
 > 「帝国の無人機か。
 >  アポリー、ロベルト、いいな」
-“Imperial drones, huh. Aboly, Roberto, ready?”
+“Imperial drones, huh. Apolly, Roberto, ready?”
 
-@18457 Aboly · アポリー
+@18457 Apolly · アポリー
 > 「問題ありません」
 “No problem.”
 
@@ -875,9 +875,9 @@ The enemy has spotted us.”
 @18463 Quattro · クワトロ
 > 「帝国の無人機か。アポリー、
 >  ロベルト、{HeroName}、どうか?」
-“Imperial drones, huh. Aboly, Roberto, {HeroName}, how about you?”
+“Imperial drones, huh. Apolly, Roberto, {HeroName}, how about you?”
 
-@18464 Aboly · アポリー
+@18464 Apolly · アポリー
 > 「問題ありません」
 “No problem.”
 
@@ -1312,7 +1312,7 @@ I want you to head there and join up with them.
 >  聞いてくれたまえ」
 Ask Henken for the details.”
 
-@18526 Aboly · アポリー
+@18526 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「なぁ、お前、あのゲイル先輩
 >  ってのとどういう関係なんだ?
@@ -1327,7 +1327,7 @@ He called you his little brother, didn’t he?”
 >  姉さんの婚約者なんです」
 “...Gale is... my sister’s fiance.”
 
-@18528 Aboly · アポリー
+@18528 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「……本当かよ。
 >  悪いこと聞いちまったみたいだな」
@@ -1339,7 +1339,7 @@ He called you his little brother, didn’t he?”
 >  帝国を捨てた身です」
 “No... I turned my back on the Empire three years ago.”
 
-@18530 Aboly · アポリー
+@18530 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「そうか……
 “I see...
@@ -1362,13 +1362,13 @@ Resting when you can is part of a pilot’s job.”
 >  そうさせてもらいます」
 “Y-yes, I’ll do that.”
 
-@18532 Aboly · アポリー
+@18532 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「おう、素直なのはいいことだ。
 >  これからも頼むぞ」
 “Good, I like that attitude. We’re counting on you from here on.”
 
-@18533 Aboly · アポリー
+@18533 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「そうか……
 “I see...
@@ -1424,7 +1424,7 @@ You can get help, but it’s your responsibility. Understood?”
 >  僕だって遊んでるつもりはないんだ」
 I’m not here to goof off either.”
 
-@18540 Aboly · アポリー
+@18540 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「そうか……
 “I see...
@@ -1450,7 +1450,7 @@ Resting when you can is part of a pilot’s job.”
 >  やっておきたい」
 But I’d at least like to check the drive system.”
 
-@18542 Aboly · アポリー
+@18542 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「なんだよお前。
 >  かわいくないねぇ、まったく」
@@ -1462,6 +1462,6 @@ But I’d at least like to check the drive system.”
 >  別に女であることに興味はない」
 “Fine by me. I don’t much care about being a woman.”
 
-@18544 Aboly · アポリー
+@18544 Apolly · アポリー
 > 「はいはい、わかったよ」
 “Yeah, yeah, I got it.”

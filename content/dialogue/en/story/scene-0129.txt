@@ -20,7 +20,7 @@
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「何にもないぜ。本当に、ここに
 >  デビルガンダムがいるのかよ」
-“There’s nothing out here. Is the Dark Gundam seriously here?”
+“There’s nothing out here. Is the Devil Gundam seriously here?”
 
 @43027 Domon · ドモン
 > 「ああ……そのはずだ」
@@ -371,11 +371,11 @@ no one wants to save people like you more than I do! That’s why...!”
 ---
 >  パイロットが、コアがいなくてはデビル
 >  ガンダムの完全復活はないのだぞ!」
-Without a pilot, without the core, the Dark Gundam can never fully revive!”
+Without a pilot, without the core, the Devil Gundam can never fully revive!”
 
 @43086 Domon · ドモン
 > 「デビルガンダム……キョウジ!」
-“The Dark Gundam... Kyoji!”
+“The Devil Gundam... Kyoji!”
 
 @43087 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -388,7 +388,7 @@ Without a pilot, without the core, the Dark Gundam can never fully revive!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ヘッ、でやがったな。覚悟しな、
 >  デビルガンダム!!」
-“Heh, so it’s finally shown up. Brace yourself, Dark Gundam!!”
+“Heh, so it’s finally shown up. Brace yourself, Devil Gundam!!”
 
 @43089 Sai Saici · サイ・サイシー
 # 审校：全局：弯撇号／弯引号
@@ -431,7 +431,7 @@ Without a pilot, without the core, the Dark Gundam can never fully revive!”
 @43096 Selain · セレイン（按段落 3DD2）
 > 「デビルガンダムか……化け物め。
 >  ドモン、いいな」
-“The Dark Gundam... A monster. Domon, ready?”
+“The Devil Gundam... A monster. Domon, ready?”
 
 @43097 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
@@ -495,11 +495,11 @@ Curse you, I will not let you interfere this time!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「見ろドモン! デビルガンダムのコアたる
 >  キョウジは、もはや死にかけよ。お前が
-“Look, Domon! Kyoji, the core of the Dark Gundam, is already near death. This is the price of
+“Look, Domon! Kyoji, the core of the Devil Gundam, is already near death. This is the price of
 ---
 >  倒した代償がこれだ! さしもの
 >  デビルガンダムも、パイロットがこれでは
-your victory! With its pilot in this state, even the Dark Gundam is
+your victory! With its pilot in this state, even the Devil Gundam is
 ---
 >  鉄くず同然!
 >  ドモンよ、貴様が新たなコアとなって
@@ -507,7 +507,7 @@ no better than scrap iron! Domon, you shall become the new core and
 ---
 >  デビルガンダムを完全復活させる
 >  のだ!」
-revive the Dark Gundam in full!”
+revive the Devil Gundam in full!”
 
 @43108 Schwarz · シュバルツ
 > 「黙れ! 貴様などに我が弟を
@@ -532,7 +532,7 @@ revive the Dark Gundam in full!”
 “Brother?! So it really is you, Kyoji?! But why? Then
 ---
 >  デビルガンダムにいるのは、いったい……」
-who on earth is the one inside the Dark Gundam...?”
+who on earth is the one inside the Devil Gundam...?”
 
 @43112 Schwarz · シュバルツ
 # 审校：破折号
@@ -564,7 +564,7 @@ Why are there two of you, brother?!”
 ---
 >  コピーにすぎないのだ。すべては
 >  デビルガンダムを抹殺するためだった」
-created with the power of the DG Cells. All in order to destroy the Dark Gundam.”
+created with the power of the DG Cells. All in order to destroy the Devil Gundam.”
 
 @43115 Domon · ドモン
 > 「そんな! あれを使って地球圏の
@@ -576,7 +576,7 @@ created with the power of the DG Cells. All in order to destroy the Dark Gundam.
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それは違う! そもそもデビルガンダム、
 >  いや、アルティメットガンダムは
-“You’re wrong! The Dark Gundam, no, the Ultimate Gundam, was originally
+“You’re wrong! The Devil Gundam, no, the Ultimate Gundam, was originally
 ---
 >  地球再生を目的として
 >  作られたものだ」
@@ -607,12 +607,12 @@ fled to Earth. However, the attack I took during my escape caused the program to
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-go mad, and it became that terrifying Dark Gundam.”
+go mad, and it became that terrifying Devil Gundam.”
 
 @43119 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
 >  デビルガンダムを奪ったってのは……」
-“What?! Then the story that you stole the Dark Gundam was...”
+“What?! Then the story that you stole the Devil Gundam was...”
 
 @43120 Schwarz · シュバルツ
 > 「でっちあげだ。だまされたのだ、カーンズに
@@ -648,7 +648,7 @@ forces were there too. It was plain you would do something reckless. So Kyoji,
 ---
 >  取り込まれたキョウジは、うすれていく
 >  意識の中で私をつくりあげ、
-taken into the Dark Gundam, created me as his consciousness faded,
+taken into the Devil Gundam, created me as his consciousness faded,
 ---
 >  お前を守らせようとしたのだ」
 so that I might protect you.”
@@ -692,7 +692,7 @@ hold out a little longer, body!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「知れたこと! デビルガンダムを
 >  止めるのよ!」
-“Isn’t it obvious?! I’m going to stop the Dark Gundam!”
+“Isn’t it obvious?! I’m going to stop the Devil Gundam!”
 
 @43129 Domon · ドモン
 > 「兄さん!?」
@@ -727,7 +727,7 @@ hold out a little longer, body!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン、早くうて、
 >  私ごとデビルガンダムを!」
-“Domon, fire now! Take out the Dark Gundam, and me with it!”
+“Domon, fire now! Take out the Devil Gundam, and me with it!”
 
 @43137 Domon · ドモン
 > 「し、しかし兄さん……」
@@ -738,7 +738,7 @@ hold out a little longer, body!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「早く! 私の体ごとコックピットを
 >  吹き飛ばすんだ! デビルガンダムを
-“Hurry! Blow the cockpit away, my body and all! To stop the Dark Gundam,
+“Hurry! Blow the cockpit away, my body and all! To stop the Devil Gundam,
 ---
 >  とめるには、キョウジをうつしかない!」
 you have to shoot Kyoji!”
@@ -771,11 +771,11 @@ This... this tragedy ends here!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「さぁ、やるんだ! デビルガンダムの呪い
 >  から、私たちを解き放ってくれ!
-“Now, do it! Free us from the Dark Gundam’s curse!
+“Now, do it! Free us from the Devil Gundam’s curse!
 ---
 >  頼むドモン、デビルガンダムに
 >  最後の一撃を!!」
-Please, Domon, deal the Dark Gundam its final blow!!”
+Please, Domon, deal the Devil Gundam its final blow!!”
 
 @43143 Domon · ドモン
 > 「くっ……わかったよ、兄さん……」
@@ -815,7 +815,7 @@ Please, Domon, deal the Dark Gundam its final blow!!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ……ワシの……ワシのデビルガンダム
 >  が……許さん、許さんぞ、ドモン!
-“Ahh... My... my Dark Gundam... You’ll pay for this, Domon, you’ll pay!
+“Ahh... My... my Devil Gundam... You’ll pay for this, Domon, you’ll pay!
 ---
 >  貴様は自分が何をしたか、
 >  わかっておるのかぁ!!」
@@ -824,7 +824,7 @@ Do you even understand what you’ve done?!”
 @43151 Domon · ドモン
 > 「黙れ!! マスターアジア、
 >  デビルガンダムを使って、世界を
-“Shut up!! Master Asia, you scoundrel, scheming to use the Dark Gundam to take the world
+“Shut up!! Master Asia, you scoundrel, scheming to use the Devil Gundam to take the world
 ---
 >  我が者にしようとたくらむ
 >  悪党がぁっ!!」
@@ -843,11 +843,11 @@ for yourself!!”
 @43154 Master · マスター
 > 「ワシは奴を利用しただけよ。すべては
 >  デビルガンダムのため」
-“I merely used him. Everything was for the Dark Gundam.”
+“I merely used him. Everything was for the Devil Gundam.”
 
 @43155 Domon · ドモン
 > 「ならばなぜデビルガンダムが必要だ!?」
-“Then why do you need the Dark Gundam?!”
+“Then why do you need the Devil Gundam?!”
 
 @43156 Master · マスター
 # 审校：勝負の二文字
@@ -910,7 +910,7 @@ split in two. In other words... the shadow of Kyoji reflected in a mirror.”
 ---
 >  すべてはデビルガンダムを抹殺する
 >  ためだった」
-All in order to destroy the Dark Gundam.”
+All in order to destroy the Devil Gundam.”
 
 @43167 Domon · ドモン
 # 审校：原文“企んだ”是“图谋、策划”，初稿 tried 语气较弱，改为 plotted。
@@ -923,7 +923,7 @@ All in order to destroy the Dark Gundam.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「それは違う! そもそもデビルガンダム、
 >  いや、アルティメットガンダムは
-“You’re wrong! The Dark Gundam, no, the Ultimate Gundam, was originally
+“You’re wrong! The Devil Gundam, no, the Ultimate Gundam, was originally
 ---
 >  地球再生を目的として
 >  作られたものだ」
@@ -954,12 +954,12 @@ fled to Earth. However, the attack I took during my escape caused the program to
 ---
 >  狂い、あの恐ろしいデビルガンダムと
 >  なってしまったのだ」
-go mad, and it became that terrifying Dark Gundam.”
+go mad, and it became that terrifying Devil Gundam.”
 
 @43171 Duo · デュオ
 > 「なんだって!? じゃあ、あんたが
 >  デビルガンダムを奪ったってのは……」
-“What?! Then that stuff about you stealing the Dark Gundam was...”
+“What?! Then that stuff about you stealing the Devil Gundam was...”
 
 @43172 Schwarz · シュバルツ
 > 「でっちあげだ。だまされたのだ、カーンズに
@@ -992,7 +992,7 @@ Kyoji. Or so I believed. But the enemy was powerful, and the Imperial forces wer
 ---
 >  無茶をするのは目に見えていた。
 >  そこでデビルガンダムに取り込まれた
-plain you would do something reckless. So Kyoji, swallowed by the Dark Gundam,
+plain you would do something reckless. So Kyoji, swallowed by the Devil Gundam,
 ---
 >  キョウジは、うすれていく意識の中で
 >  私をつくりあげ、お前を
@@ -1083,7 +1083,7 @@ You still have a long road ahead... Don’t lose, Domon...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ……ワシの……ワシのデビルガンダム
 >  が……許さん、許さんぞ、ドモン!
-“Ahh... my... my Dark Gundam... You’ll pay for this, Domon, you’ll pay!
+“Ahh... my... my Devil Gundam... You’ll pay for this, Domon, you’ll pay!
 ---
 >  貴様は自分たちが何をしたか、
 >  わかっておるのかぁ!!」
@@ -1094,7 +1094,7 @@ Do you even understand what you’ve done?!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「黙れ!! マスターアジア、
 >  デビルガンダムを使って、世界を
-“Shut up!! Master Asia, you scoundrel, scheming to use the Dark Gundam to take the world
+“Shut up!! Master Asia, you scoundrel, scheming to use the Devil Gundam to take the world
 ---
 >  我が者にしようとたくらむ
 >  悪党がぁっ!!」
@@ -1113,11 +1113,11 @@ for yourself!!”
 @43192 Master · マスター
 > 「ワシは奴を利用しただけよ。すべては
 >  デビルガンダムのため」
-“I merely used him. Everything was for the Dark Gundam.”
+“I merely used him. Everything was for the Devil Gundam.”
 
 @43193 Domon · ドモン
 > 「ならばなぜデビルガンダムが必要だ!?」
-“Then why do you need the Dark Gundam?!”
+“Then why do you need the Devil Gundam?!”
 
 @43194 Master · マスター
 # 审校：勝負の二文字
@@ -1200,7 +1200,7 @@ perish! It is atonement. Humanity must atone for its sins.
 ---
 >  デビルガンダムと出会った時
 >  ワシはそれに気づいたのだ!」
-I realized it the moment I encountered the Dark Gundam!”
+I realized it the moment I encountered the Devil Gundam!”
 
 @43202 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1277,7 +1277,7 @@ King of Hearts...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「こんなはずでは、こんなはずではなかったの
 >  に……デビルガンダムさえあればこの私は
-“This wasn’t supposed to happen, it wasn’t supposed to happen... With the Dark Gundam, I
+“This wasn’t supposed to happen, it wasn’t supposed to happen... With the Devil Gundam, I
 ---
 >  宇宙を支配する神になれるはず
 >  だったのに……」
@@ -1327,7 +1327,7 @@ granted the power of the DG cells!!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ばかな……自ら、デビルガンダムに
 >  取り込まれたというのか……!?」
-“Impossible... you let the Dark Gundam absorb you on purpose...?!”
+“Impossible... you let the Devil Gundam absorb you on purpose...?!”
 
 @43223 Wong · ウォン
 # 审校：全局：弯撇号／弯引号
@@ -1358,7 +1358,7 @@ do just as well! Behold this power. My research was right all along!!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「紹介しよう。新たなデビルガンダムの
 >  コア、その名もアレンビー・ビアズリー」
-“Allow me to introduce the Dark Gundam’s new core: Allenby Beardsley.”
+“Allow me to introduce the Devil Gundam’s new core: Allenby Beardsley.”
 
 @43228 Allenby · アレンビー
 > 「…………」
@@ -1460,7 +1460,7 @@ Answer me, Allenby!!”
 @43246 Wong · ウォン
 > 「東方先生、私のアレンビーが
 >  ドモンたちを倒して、デビルガンダムの
-“Master Asia, my Allenby will defeat Domon and the others and become the Dark Gundam’s
+“Master Asia, my Allenby will defeat Domon and the others and become the Devil Gundam’s
 ---
 >  コアになる。そういうことですよ」
 core. That is all there is to it.”
@@ -1625,7 +1625,7 @@ wanted to make this Earth a lush green planet once more...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そんな……師匠、ならばなぜ
 >  デビルガンダムなどを……」
-“That can’t be... Master, then why the Dark Gundam...?”
+“That can’t be... Master, then why the Devil Gundam...?”
 
 @43274 Master · マスター
 # 审校：全局：弯撇号／弯引号

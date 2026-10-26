@@ -395,7 +395,7 @@ I’d rather pin down Le Cain first and think about this after...”
 “Shut up! I’m asking if you’ve found out
 ---
 >  つかんだのかと聞いているんだ!」
-where the Dark Gundam is!”
+where the Devil Gundam is!”
 
 @22349 Amuro · アムロ
 > 「落ち着けドモン。これから
@@ -410,7 +410,7 @@ where the Dark Gundam is!”
 @22351 Bright · ブライト
 > 「そうだ。デビルガンダムは
 >  おそらく旧日本地区にいる」
-“Yes. The Dark Gundam is most likely in the old Japan region.”
+“Yes. The Devil Gundam is most likely in the old Japan region.”
 
 @22352 Domon · ドモン
 > 「そうか……世話になったな」
@@ -444,7 +444,7 @@ That was the deal from the start.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ。俺たちのもうひとつの目的は、
 >  デビルガンダムを破壊することだ
-“Yeah. Our other objective is to destroy the Dark Gundam.
+“Yeah. Our other objective is to destroy the Devil Gundam.
 ---
 >  あんたをひとりで行かせるわけには
 >  いかないな」
@@ -588,7 +588,7 @@ We’re splitting up to scout, right? Get a move on.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「なぁ、本当にこんなところに
 >  デビルガンダムがいるのかよ
-“Hey, is the Dark Gundam seriously around here?
+“Hey, is the Devil Gundam seriously around here?
 ---
 >  もういいかげん疲れちまったぜ」
 I’m beat already.”
@@ -1080,7 +1080,7 @@ by some unseen thread of fate after all.”
 @22474 Master · マスター
 > 「ワシがここにいる理由も、
 >  そのデビルガンダムに関係があるからだ」
-“The reason I am here is also connected to that Dark Gundam.”
+“The reason I am here is also connected to that Devil Gundam.”
 
 @22475 Domon · ドモン
 > 「師匠が!?」
@@ -1107,14 +1107,14 @@ by some unseen thread of fate after all.”
 “It seems they heard the commotion earlier. Domon, those are
 ---
 >  デビルガンダムの手先、デスアーミーよ」
-the Dark Gundam’s minions, the Death Army.”
+the Devil Gundam’s minions, the Death Army.”
 
 @22480 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「デビルガンダムの手先……
 >  デスアーミー……」
-“The Dark Gundam’s minions... the Death Army...”
+“The Devil Gundam’s minions... the Death Army...”
 
 @22481 Master · マスター
 # 审校：去掉 can’t be helped，东方不败不用缩写
@@ -1293,14 +1293,14 @@ my Master, Master Asia, the Undefeated of the East!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ではあれをデビルガンダムが
 >  操っていると?」
-“So you’re saying the Dark Gundam is controlling that thing?”
+“So you’re saying the Devil Gundam is controlling that thing?”
 
 @22513 Master · マスター
 # 审校：东方不败说话带古风且庄重，将“it's”改为“it is”以符合其不用缩写的口吻。
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「うむ。デビルガンダムは確かにこの地の
 >  どこかに潜伏しておる。そして
-“Indeed. The Dark Gundam is surely lurking somewhere in this land, and
+“Indeed. The Devil Gundam is surely lurking somewhere in this land, and
 ---
 >  デスアーミーどもを使ってなにやら
 >  たくらんでおるのだ。おかげでこの地に
@@ -1652,7 +1652,7 @@ But so be it.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あれは……まさかDG細胞!?
 >  そうか……お前たちがデビルガンダムの
-“That’s... it can’t be, DG Cells?! I see... if you’ve become pawns of the Dark Gundam...
+“That’s... it can’t be, DG Cells?! I see... if you’ve become pawns of the Devil Gundam...
 ---
 >  いや、キョウジの手先に
 >  なってしまったのなら

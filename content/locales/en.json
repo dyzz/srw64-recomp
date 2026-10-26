@@ -3461,14 +3461,14 @@
     {
       "key": "base:t00_00528",
       "source_sha256": "9af5177f87c286a0f36547b305381be08fb0b95ed5283d30abf6a4ff18c88f00",
-      "target": "Burning Gundam<END>",
+      "target": "God Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00529",
       "source_sha256": "e42ffdc8d8463dfce20cd136183ff261850861fe286d2b7a13ec4dfa00f715cd",
-      "target": "Burning Gundam H<END>",
+      "target": "God Gundam H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3622,21 +3622,21 @@
     {
       "key": "base:t00_00551",
       "source_sha256": "c15bede81b6bde1df15855f75c15bcf60fdbefc2ad22e4905e130423698177e5",
-      "target": "Dark Gundam<END>",
+      "target": "Devil Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00552",
       "source_sha256": "c15bede81b6bde1df15855f75c15bcf60fdbefc2ad22e4905e130423698177e5",
-      "target": "Dark Gundam<END>",
+      "target": "Devil Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00553",
       "source_sha256": "c15bede81b6bde1df15855f75c15bcf60fdbefc2ad22e4905e130423698177e5",
-      "target": "Dark Gundam<END>",
+      "target": "Devil Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4511,14 +4511,14 @@
     {
       "key": "base:t00_00679",
       "source_sha256": "7380beeb9dc6ab9e7dd4335d42a3fd0d38a59cdca182a0e22af8b141c2bd9602",
-      "target": "Warbeast Obelius<END>",
+      "target": "Battle Beast Obelius<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00680",
       "source_sha256": "e525ff7a7e9fa572ad7e965e2c0e28df9e7eceffb216bd42dc4f82c350f2cc0d",
-      "target": "Warbeast Zugal<END>",
+      "target": "Battle Beast Zugal<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -4539,7 +4539,7 @@
     {
       "key": "base:t00_00683",
       "source_sha256": "873dd7c2d05fc57a84fb961e043d4c6853ebbbfb2b0b0335e3e0738da1c8f8b0",
-      "target": "Dark General<END>",
+      "target": "Great General of Darkness<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5302,14 +5302,14 @@
     {
       "key": "base:t00_00792",
       "source_sha256": "3af70743f9fd453babdc841c829acf05c3d2ac75d49c59972970ae4bd52a8f4e",
-      "target": "Warbeast Gratonios<END>",
+      "target": "Battle Beast Gratonios<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00793",
       "source_sha256": "30f61edce381651b59256113b774aef9b7a948f860771d3a7a35ccde615c540e",
-      "target": "Warbeast Dante<END>",
+      "target": "Battle Beast Dante<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5568,7 +5568,7 @@
     {
       "key": "base:t00_00830",
       "source_sha256": "c15bede81b6bde1df15855f75c15bcf60fdbefc2ad22e4905e130423698177e5",
-      "target": "Dark Gundam<END>",
+      "target": "Devil Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5610,7 +5610,7 @@
     {
       "key": "base:t00_00836",
       "source_sha256": "9af5177f87c286a0f36547b305381be08fb0b95ed5283d30abf6a4ff18c88f00",
-      "target": "Burning Gundam<END>",
+      "target": "God Gundam<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -27996,14 +27996,14 @@
     {
       "key": "base:t00_04492",
       "source_sha256": "873dd7c2d05fc57a84fb961e043d4c6853ebbbfb2b0b0335e3e0738da1c8f8b0",
-      "target": "Dark General<END>",
+      "target": "Great General of Darkness<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_04493",
       "source_sha256": "4abc8f7e952d6dd229af790432d8f3a6f343886b73b9d025c10fd1fc87cda0f8",
-      "target": "Hell Marshal<END>",
+      "target": "Great Marshal of Hell<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28206,7 +28206,7 @@
     {
       "key": "base:t00_04522",
       "source_sha256": "ab63435580e172653a24bd00759a455760fb266b8c10ba8dad670ff679721546",
-      "target": "Rose<END>",
+      "target": "Roze<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -28878,7 +28878,7 @@
     {
       "key": "base:t00_04618",
       "source_sha256": "9db442150096bfc4b92bca326de311ac7227149a00f967a861ccdc981b721400",
-      "target": "Aboly<END>",
+      "target": "Apolly<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -30460,7 +30460,7 @@
     {
       "key": "base:t00_04883",
       "source_sha256": "ab63435580e172653a24bd00759a455760fb266b8c10ba8dad670ff679721546",
-      "target": "Rose<END>",
+      "target": "Roze<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -31132,7 +31132,7 @@
     {
       "key": "base:t00_04979",
       "source_sha256": "9db442150096bfc4b92bca326de311ac7227149a00f967a861ccdc981b721400",
-      "target": "Aboly<END>",
+      "target": "Apolly<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -33176,7 +33176,7 @@
     {
       "key": "base:t00_05577",
       "source_sha256": "2af323f78c86cd0f5bd10dacb0cd0bb5aa582da8993e9cc57a6c1b3a1cf3f005",
-      "target": "Dark Gundam destroyed<END>",
+      "target": "Devil Gundam destroyed<END>",
       "review_status": "draft",
       "origin": "terms"
     },

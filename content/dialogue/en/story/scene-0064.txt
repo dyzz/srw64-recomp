@@ -466,12 +466,12 @@ and are in the Sanc Kingdom too, are they not?
 >  出てくるかもしれんぞ……」
 Something interesting may well turn up...”
 
-@28545 Dark General · 暗黒大将軍
+@28545 Great General of Darkness · 暗黒大将軍
 > 「地上に続き、月までも失うとはな
 >  ムゲゾルバドスめ、何というふがいなさだ」
 “To lose the Moon after the surface... Muge Zorbados, how utterly pathetic.”
 
-@28546 Hell Marshal · 地獄大元帥
+@28546 Great Marshal of Hell · 地獄大元帥
 > 「ドレイクめも敗れおった。
 >  くそ、いまいましい人間どもめが……」
 “Even Drake has fallen. Curse those loathsome humans...”
@@ -492,7 +492,7 @@ Curse it, Muge Zorbados! Falling for the sweet talk of those creatures
 >  一生の不覚であったわ!」
 was the greatest blunder of my life!”
 
-@28548 Dark General · 暗黒大将軍
+@28548 Great General of Darkness · 暗黒大将軍
 > 「光子力エネルギーと
 >  ゲッターエネルギーが手に入れば
 “If only we could obtain the Photon Power Energy and Getter Energy,
@@ -526,11 +526,11 @@ the whereabouts of Getter and Mazinger...”
 >  わかりましてございます」
 I have found where Saotome and Yumi are hiding.”
 
-@28553 Dark General · 暗黒大将軍
+@28553 Great General of Darkness · 暗黒大将軍
 > 「何と!!」
 “What?!”
 
-@28554 Hell Marshal · 地獄大元帥
+@28554 Great Marshal of Hell · 地獄大元帥
 > 「それはまことか!?」
 “Is this true?!”
 
@@ -556,7 +556,7 @@ the Sanc Kingdom!”
 >  さっそく総攻撃の準備じゃ!」
 “How very convenient. Prepare an all-out attack at once!”
 
-@28558 Dark General · 暗黒大将軍
+@28558 Great General of Darkness · 暗黒大将軍
 # 审校：补全整条台词的外层引号
 > 「……待て」
 “...Wait.”
@@ -567,7 +567,7 @@ the Sanc Kingdom!”
 >  何を待つ必要があろうぞ」
 “What is it, General of Mycenae? What could there possibly be to wait for now?”
 
-@28560 Dark General · 暗黒大将軍
+@28560 Great General of Darkness · 暗黒大将軍
 > 「グラー博士よ、その情報、
 >  どこから入ってきた」
 “Dr. Gura, where did this information come from?”
@@ -576,7 +576,7 @@ the Sanc Kingdom!”
 > 「は……? い、いえ、詳しくは……」
 “Er...? W-well, I couldn’t say exactly...”
 
-@28562 Dark General · 暗黒大将軍
+@28562 Great General of Darkness · 暗黒大将軍
 > 「あまりにも話がうますぎる。
 >  我らをおびき寄せる罠ではないか?」
 “This is far too convenient. Might it not be a trap to lure us in?”
@@ -590,7 +590,7 @@ the Sanc Kingdom!”
 >  永遠にかなわぬのだぞ!」
 our ambition to rule the surface will never be realized!”
 
-@28564 Hell Marshal · 地獄大元帥
+@28564 Great Marshal of Hell · 地獄大元帥
 > 「ううむ……。考えてみれば
 >  確かに罠の可能性もある
 “Hmm... Come to think of it, it could indeed be a trap.
@@ -616,7 +616,7 @@ Is there no way to make certain...?”
 >  あわよくば……」
 Then, if the information proves true, all the better. And if fortune favors us...”
 
-@28568 Dark General · 暗黒大将軍
+@28568 Great General of Darkness · 暗黒大将軍
 > 「おお、それがよい。
 >  そのあと我々が総攻撃をかけ
 “Ah, an excellent plan. Then we launch an all-out attack
@@ -624,7 +624,7 @@ Then, if the information proves true, all the better. And if fortune favors us..
 >  両エネルギーを手に入れればよいのだ」
 and seize both energies.”
 
-@28569 Hell Marshal · 地獄大元帥
+@28569 Great Marshal of Hell · 地獄大元帥
 > 「うむ、頼んだぞ。
 >  我々が地球を制覇するか
 “Very well, we are counting on you. Whether we conquer the Earth

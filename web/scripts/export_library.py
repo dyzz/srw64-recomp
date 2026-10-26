@@ -214,7 +214,7 @@ def prices(rom: Rom, wtype: int) -> list[int]:
     return [rom.u32(WEAPON_PRICES[wtype - 1] + n * 4) for n in range(UPGRADE_LEVELS)]
 
 
-def build_language(rom: Rom, text: Texts):
+def build_language(rom: Rom, text: Texts, locale: str):
     """library.cpp build() for one reading language: ids, names and works in page order."""
     units, kept = [], set()
     for uid in range(UNIT_COUNT):
@@ -249,6 +249,8 @@ def build_language(rom: Rom, text: Texts):
     assign_works(rom, pilots, CHARACTER_LIST, CHARACTER_ROWS, False, ACTOR_ALIASES, ACTOR_ALIAS_COUNT, ACTOR_WORKS)
     number_repeats(units)
     number_repeats(pilots)
+    rename_records(units, "units", locale)
+    rename_records(pilots, "pilots", locale)
     return units, pilots
 
 
@@ -301,6 +303,16 @@ def number_repeats(entries):
             seen[k] = seen.get(k, 0) + 1
             if seen[k] > 1:
                 e["name"] = f"{e['name']} ({seen[k]})"
+
+
+
+def rename_records(entries, kind, locale):
+    """library.cpp rename_records(): content/locales/library-names.json, after numbering."""
+    names = json.loads((ROOT / "content/locales/library-names.json").read_text(encoding="utf-8"))[kind]
+    for e in entries:
+        name = names.get(str(e["id"]), {}).get(locale)
+        if name:
+            e["name"] = name
 
 
 # --- Art ---------------------------------------------------------------------
@@ -404,7 +416,7 @@ def export(rom_path: Path, docs: dict[str, dict] | None = None) -> dict:
     def loc(tid):
         return {lang: texts[lang][0](tid) for lang in LANGS}
 
-    built = {lang: build_language(rom, texts[lang][0]) for lang in LANGS}
+    built = {lang: build_language(rom, texts[lang][0], LANGS[lang]) for lang in LANGS}
     notes = []
     ja_units, ja_people = built["ja"]
     for lang in ("zh", "en"):

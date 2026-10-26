@@ -819,7 +819,7 @@ I have sources of my own.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「当然だ。デビルガンダムの
 >  完全復活のためには
-“Of course. To fully revive the Dark Gundam,
+“Of course. To fully revive the Devil Gundam,
 ---
 >  どうしてもあやつが必要なのだ」
 I must have him.”
@@ -914,7 +914,7 @@ Either way, I lose nothing. Heh heh heh heh heh!”
 ---
 >  デビルガンダムのことをいわれたらしいのよ
 >  その話を聞いてから、少し様子が
-about the Dark Gundam. Ever since he heard that, I did think he’d been
+about the Devil Gundam. Ever since he heard that, I did think he’d been
 ---
 >  おかしいとは思っていたんだけど……」
 acting a little strange...”
@@ -924,7 +924,7 @@ acting a little strange...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「もしかして……
 >  デビルガンダムが怖いのかしら……」
-“Could it be... that he’s afraid of the Dark Gundam...?”
+“Could it be... that he’s afraid of the Devil Gundam...?”
 
 @36366 Schwarz · シュバルツ
 > 「その通り!」
@@ -953,7 +953,7 @@ acting a little strange...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「……とにかく、彼らはデビルガンダムの
 >  幻影に脅えていたのだ
-“...In any case, they were haunted by the specter of the Dark Gundam.
+“...In any case, they were haunted by the specter of the Devil Gundam.
 ---
 >  これまで宇宙に出ていたために
 >  何も問題はないように見えた
@@ -961,7 +961,7 @@ While they were out in space, there seemed to be no problem.
 ---
 >  だがその実、デビルガンダムに対する
 >  恐怖は消え去ってはいなかったのだ」
-But in truth, their fear of the Dark Gundam had never gone away.”
+But in truth, their fear of the Devil Gundam had never gone away.”
 
 @36372 Shirley · シャリー
 > 「……それが、地上にもどってきたことが
@@ -1032,7 +1032,7 @@ you haven’t mastered that blade yet.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そんなことでは、デビルガンダムにも
 >  マスターアジアにも
-“At this rate, I doubt you can beat either the Dark Gundam or Master Asia.
+“At this rate, I doubt you can beat either the Devil Gundam or Master Asia.
 ---
 >  勝てぬのではないかな?」
 Don’t you think?”
@@ -1495,7 +1495,7 @@ Is that how you speak to your Master?!”
 
 @36460 Domon · ドモン
 > 「デビルガンダム……キョウジィィィッ!!」
-“Dark Gundam... Kyojiiiii!!”
+“Devil Gundam... Kyojiiiii!!”
 
 @36461 Schwarz · シュバルツ
 # 审校：Calm your heart 直译
@@ -1758,7 +1758,7 @@ Kyoji... brother... I’m ending this now...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あれは……デビルガンダム!?
 >  マスター・アジアもいるよ」
-“That’s... the Dark Gundam?! Master Asia’s there too.”
+“That’s... the Devil Gundam?! Master Asia’s there too.”
 
 @36503 Shinobu · 忍
 # 审校：英文太长太书面
@@ -1793,7 +1793,7 @@ Kyoji... brother... I’m ending this now...”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ああ……、ワシの、
 >  ワシのデビルガンダムが……
-“Ahh... my, my Dark Gundam...
+“Ahh... my, my Devil Gundam...
 ---
 >  おのれ! 貴様ら全員
 >  生かしては帰さぬぞ!!」
@@ -1840,7 +1840,7 @@ Curse you! I shall not let a single one of you leave here alive!!”
 “Master... brother... Schwarz... Dad...
 ---
 >  ついにデビルガンダムを倒したよ」
-I’ve finally defeated the Dark Gundam.”
+I’ve finally defeated the Devil Gundam.”
 
 @36517 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1936,7 +1936,7 @@ how much better things would have been!”
 @36531 Garrison · ギャリソン
 > 「かしこまりました。
 >  ゴッドガンダム、投下いたします」
-“Certainly. Dropping the Burning Gundam now.”
+“Certainly. Dropping the God Gundam now.”
 
 @36532 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -1989,7 +1989,7 @@ how much better things would have been!”
 @36542 Domon · ドモン
 > 「これがゴッドガンダム……
 >  俺の新しい機体か」
-“So this is the Burning Gundam... my new machine.”
+“So this is the God Gundam... my new machine.”
 
 @36543 Rain · レイン
 # 审校：全局：弯撇号／弯引号
@@ -2034,7 +2034,7 @@ I’ll finish this!!”
 # 审校：全局：弯撇号／弯引号
 > 「シャイニングガンダムの後継機、
 >  ゴッドカンダムよ」
-“It’s the Shining Gundam’s successor: the Burning Gundam.”
+“It’s the Shining Gundam’s successor: the God Gundam.”
 
 @36551 Banjo · 万丈
 # 审校：Just as expected 套话
@@ -2049,7 +2049,7 @@ I’ll finish this!!”
 @36553 Rain · レイン
 > 「ドモン、ゴッドガンダムは、
 >  カラバで開発してもらったのよ」
-“Domon, the Burning Gundam was developed for you by Karaba.”
+“Domon, the God Gundam was developed for you by Karaba.”
 
 @36554 Domon · ドモン
 > 「カラバで?」
@@ -2155,7 +2155,7 @@ a machine you’ve never flown before. It was worth bringing it all this way.”
 # 检查提示：未用必用译名：ゴッドガンダム→Burning Gundam
 > 「そうか。礼をいう、万丈。
 >  ゴッドガンダムがなければ
-“Is that so. I owe you, Banjo. Without the Burning Gundam,
+“Is that so. I owe you, Banjo. Without the God Gundam,
 ---
 >  危ないところだった」
 I’d have been in real trouble.”
@@ -2418,7 +2418,7 @@ except for the Romefeller crowd.”
 # 检查提示：未用必用译名：ゴッドガンダム→Burning Gundam
 > 「とりあえず、すぐに持ってこれるだけはね
 >  ゴッドガンダムとライジングガンダム
-“For now, just what I could bring right away. I gave priority to the Burning Gundam and the Rising Gundam,
+“For now, just what I could bring right away. I gave priority to the God Gundam and the Rising Gundam,
 ---
 >  それと、新しいレイズナーを
 >  優先させてもらった
@@ -2515,7 +2515,7 @@ moved over from your current Layzner?”
 @36617 Bright · ブライト
 > 「そうか……デビルガンダムと
 >  マスターアジアを倒したか」
-“I see... So you defeated the Dark Gundam and Master Asia.”
+“I see... So you defeated the Devil Gundam and Master Asia.”
 
 @36618 Domon · ドモン
 > 「ああ……だが、シュバルツは……」
@@ -2574,7 +2574,7 @@ Before long he’ll pop up again going ‘You’re too soft, Domon!’”
 “So, Domon. What will you do now? You’ve achieved your goal of
 ---
 >  達成したのだろう」
-defeating the Dark Gundam, haven’t you?”
+defeating the Devil Gundam, haven’t you?”
 
 @36628 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -2651,7 +2651,7 @@ Honestly, you people are hopeless.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「おい、まさかデビルガンダムを
 >  倒したからって
-“Hey, don’t tell me that just because you beat the Dark Gundam,
+“Hey, don’t tell me that just because you beat the Devil Gundam,
 ---
 >  もうおしまいってわけじゃないだろうな」
 it’s all over now.”

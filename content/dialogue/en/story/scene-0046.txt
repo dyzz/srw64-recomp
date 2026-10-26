@@ -1235,7 +1235,7 @@ will follow.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「階級だと!? 冗談じゃない!
 >  俺は、デビルガンダムを倒すために
-“Ranks?! You’ve got to be kidding! I’m fighting to defeat the Dark Gundam.
+“Ranks?! You’ve got to be kidding! I’m fighting to defeat the Devil Gundam.
 ---
 >  戦っている。軍隊などに入るため
 >  ではない!!」
@@ -1256,7 +1256,7 @@ Not to join some army!!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン・カッシュだったね。デビルガンダム
 >  のことは私も報告を受けている
-“Domon Kasshu, was it? I’ve received reports about the Dark Gundam as well.
+“Domon Kasshu, was it? I’ve received reports about the Devil Gundam as well.
 ---
 >  あれが危険な代物であることは、
 >  私も理解しているつもりだ」
@@ -1267,7 +1267,7 @@ I do understand how dangerous it is.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「デビルガンダムは俺がこの手で倒す!
 >  他の誰にもやらせるつもりはない!」
-“I’ll defeat the Dark Gundam with my own hands! I won’t let anyone else do it!”
+“I’ll defeat the Devil Gundam with my own hands! I won’t let anyone else do it!”
 
 @31956 Sai Saici · サイ・サイシー
 # 审校：全局：弯撇号／弯引号
@@ -1300,7 +1300,7 @@ possible.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「ドモン、トレーズさんは、必要なら
 >  デビルガンダムを追ってもいいって
-“Domon, Treize says it’s all right to go after the Dark Gundam if we need to.
+“Domon, Treize says it’s all right to go after the Devil Gundam if we need to.
 ---
 >  おっしゃってるのよ」
 That’s what he’s telling us.”
@@ -1898,7 +1898,7 @@ Do that, and the path opens up.”
 > 「はい、ショット様」
 “Yes, Lord Shot.”
 
-@32060 Dark General · 暗黒大将軍
+@32060 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ヘルマット将軍→General Helmut
 > 「苦戦しておるようではないか、
@@ -1928,7 +1928,7 @@ our little agreement.”
 >  貴様らにくれてやるわ!」
 it is all yours!”
 
-@32064 Dark General · 暗黒大将軍
+@32064 Great General of Darkness · 暗黒大将軍
 # 审校：补译：原稿页数错误
 > 「それを聞いて安心したわ。
 >  人間どもめ、ジャブローでの借りを
@@ -1937,7 +1937,7 @@ it is all yours!”
 >  返してくれる!」
 our debt from Jaburo!”
 
-@32065 Dark General · 暗黒大将軍
+@32065 Great General of Darkness · 暗黒大将軍
 # 审校：补译：原稿页数错误
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「ふん、ムゲゾルバドス帝国も
@@ -1956,7 +1956,7 @@ it is finished.”
 >  倒さねばならん」
 we must destroy those wretches.”
 
-@32067 Dark General · 暗黒大将軍
+@32067 Great General of Darkness · 暗黒大将軍
 # 审校：补译：原稿页数错误
 > 「わかっておるわ。ここでジャブローの
 >  借りを返し、我らの勝利を
@@ -2031,7 +2031,7 @@ The rest of you can do as you please.”
 > 「おのれ、なんという奴だ」
 “Why, you... the nerve of that man!”
 
-@32078 Dark General · 暗黒大将軍
+@32078 Great General of Darkness · 暗黒大将軍
 # 审校：全局：弯撇号／弯引号
 > 「たかが人間1匹ごとき、かまいはせぬ
 >  わ。ゆくぞ、百鬼の」

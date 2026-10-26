@@ -65,7 +65,7 @@ a world between the sea and the land... is there really such a place?”
 >  何よ、みんなしてジロジロ見ないでよぉ」
 “What do you mean, what? I’ve got work to do too, you know! And quit staring at me, all of you!”
 
-@20818 Aboly · アポリー
+@20818 Apolly · アポリー
 > 「しかし本当にこんなところへ
 >  来るんですかね」
 “But are they really coming all the way out here?”
@@ -416,7 +416,7 @@ the enemy is closing in.”
 >  急げ!」
 “Fine, let him go! Everyone else, hurry up and launch!”
 
-@20875 Hell Marshal · 地獄大元帥
+@20875 Great Marshal of Hell · 地獄大元帥
 # 审校：地狱大元帅的 voice 要求 archaic 腔调，将 isn't it 改为 is it not 以贴合老派反派口吻。
 > 「くくくく、見つけたぞ。
 >  どうだ、ワシのいったとおりであろうが
@@ -441,9 +441,9 @@ Now go, all of you. Destroy them here!”
 ---
 >  地獄大元帥ぃ、
 >  エイジは俺にやらせろぉ!」
-Hell Marshal, let me be the one to get Eijiii!”
+Great Marshal of Hell, let me be the one to get Eijiii!”
 
-@20878 Hell Marshal · 地獄大元帥
+@20878 Great Marshal of Hell · 地獄大元帥
 > 「イカれた奴め。好きにするがいい」
 “You madman. Do as you like.”
 
@@ -711,9 +711,9 @@ in a heartbeat, you know?!”
 # 审校：全局：弯撇号／弯引号
 > 「地獄大元帥! お前たちの
 >  好きにはさせないぞ!」
-“Hell Marshal! We won’t let you have your way!”
+“Great Marshal of Hell! We won’t let you have your way!”
 
-@20923 Hell Marshal · 地獄大元帥
+@20923 Great Marshal of Hell · 地獄大元帥
 > 「おのれ兜甲児め!!」
 “Curse you, Koji Kabuto!!”
 
@@ -776,7 +776,7 @@ But... it’s going to be a hard fight.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「冗談じゃない! こうしている間にも
 >  デビルガンダムは……」
-“You’ve gotta be kidding! Even while we’re standing here, the Dark Gundam is...”
+“You’ve gotta be kidding! Even while we’re standing here, the Devil Gundam is...”
 
 @20933 Amuro · アムロ
 > 「落ち着くんだ、ドモンくん」

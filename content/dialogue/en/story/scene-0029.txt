@@ -56,11 +56,11 @@ something about DG cells. Those guys weren’t acting normal.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「レインに聞いたのですが、
 >  デビルガンダム細胞のことだそうです
-“Rain told me about them. It stands for Dark Gundam cells.
+“Rain told me about them. It stands for Devil Gundam cells.
 ---
 >  デビルガンダムの機能
 >  “自己増殖”に関わるもので
-They’re tied to the Dark Gundam’s ‘self-replication’ function,
+They’re tied to the Devil Gundam’s ‘self-replication’ function,
 ---
 >  人間に“感染”することが
 >  あると」
@@ -76,7 +76,7 @@ and they can ‘infect’ humans.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「最終的にはデビルガンダムの生きた
 >  デバイスとなってしまうらしいんですが
-“Apparently, in the end you become a living component of the Dark Gundam.
+“Apparently, in the end you become a living component of the Devil Gundam.
 ---
 >  私もよくは聞いていませんので……」
 But I didn’t hear much more than that, so...”
@@ -194,7 +194,7 @@ see each other again like that... But my master...)
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そう……でしょうか。俺には、まだ
 >  よくわかりません。今はデビルガンダムを
-“Do you... think so? I still don’t really know. Right now, chasing the Dark Gundam
+“Do you... think so? I still don’t really know. Right now, chasing the Devil Gundam
 ---
 >  追うことだけで精いっぱいですから」
 is all I can manage.”
@@ -239,7 +239,7 @@ is all I can manage.”
 @22609 Domon · ドモン
 > 「おのれデビルガンダム!
 >  おのれキョウジィィィッ!!」
-“Curse you, Dark Gundam! Curse you, Kyoji!!”
+“Curse you, Devil Gundam! Curse you, Kyoji!!”
 
 @22610 Ginrei · 銀鈴
 > 「シャイニングガンダムが出撃しました!」
@@ -316,7 +316,7 @@ is all I can manage.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「クッ……お前たち……本当に
 >  デビルガンダムの手先に
-“Ngh... You guys... did you really become the Dark Gundam’s pawns
+“Ngh... You guys... did you really become the Devil Gundam’s pawns
 ---
 >  なってしまったのか!?」
 after all?!”
@@ -500,7 +500,7 @@ was your Master’s doing!”
 “Master...? ...N-no, it can’t be. Master, a pawn of the
 ---
 >  手先だなんて!」
-Dark Gundam?!”
+Devil Gundam?!”
 
 @22658 Master · マスター
 # 审校：Master 的 voice 要求无缩写、古雅腔调，原文多处「〜なかろう」「〜か、ドモン?」的庄重语气在译文中用了缩写，改为无缩写形式。
@@ -527,7 +527,7 @@ So believe in me. Do that, and you will be saved. Come, come over here.
 ---
 >  ワシはいつもお前と一緒だ。
 >  ほぅら、あのデビルガンダムも……
-I am always with you. See, that Dark Gundam as well...
+I am always with you. See, that Devil Gundam as well...
 ---
 >  いや、お前の兄上もお待ちだぞ」
 No, your brother awaits you too.”
@@ -631,7 +631,7 @@ of the martial arts, and yet you sow destruction like this. It cannot be forgive
 ---
 >  デビルガンダムにその身をゆだねた
 >  反逆者。そのために我が同盟も
-and gave himself over to the Dark Gundam... a traitor. Because of that, I am
+and gave himself over to the Devil Gundam... a traitor. Because of that, I am
 ---
 >  私が最後の1人となってしまった
 >  のです。マスターアジアは抹殺せねば
@@ -833,7 +833,7 @@ brats like these. What a waste.”
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あれは……デビルガンダム!」
-“That’s... the Dark Gundam!”
+“That’s... the Devil Gundam!”
 
 @22704 Trowa · トロワ
 > 「まさか、地下にあったとはな」
@@ -894,7 +894,7 @@ Is that the kind of man you are?!”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「フフフフ、そういうことだ。だが今は
 >  私の正体よりも、デビルガンダムを
-“Heh heh heh, just so. But right now, defeating the Dark Gundam matters more than
+“Heh heh heh, just so. But right now, defeating the Devil Gundam matters more than
 ---
 >  倒すことが先決だろう。それとも
 >  お前は、もう戦えないとでもいうのか?」
@@ -905,7 +905,7 @@ who I am. Or are you telling me you cannot fight anymore?”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「クッ……貴様にいわれるまでもない!!
 >  俺はこの手でデビルガンダムを倒し
-“Ngh... I don’t need you to tell me that!! With these hands I’ll defeat the Dark Gundam
+“Ngh... I don’t need you to tell me that!! With these hands I’ll defeat the Devil Gundam
 ---
 >  師匠を取りもどしてみせる!!」
 and get Master back!!”
@@ -1232,7 +1232,7 @@ over what’s already done and over with.”
 a knight like me can make. Besides... I cannot simply let
 ---
 >  なめさせられたままでは……」
-the Dark Gundam’s cruelty go unanswered...”
+the Devil Gundam’s cruelty go unanswered...”
 
 @22773 Argo · アルゴ
 # 审校：全局：弯撇号／弯引号

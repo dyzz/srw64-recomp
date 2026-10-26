@@ -1,352 +1,352 @@
 # 自动生成：tools/translation/write_dialogue.py。重新生成时会整体覆盖；要修改请把条目复制到用户目录（见 docs/guide/dialogue-text.md）。
 
-@9782 Hell Marshal · 地獄大元帥
+@9782 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击（通用，1/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「手並みをみせてもらうぞ!」
 “Show me what you’ve got!”
 
-@9783 Hell Marshal · 地獄大元帥
+@9783 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击（通用，2/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「今こそチャンスだ!」
 “Now’s our chance!”
 
-@9784 Hell Marshal · 地獄大元帥
+@9784 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击（通用，3/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「勝つ見こみがなければやらぬわ!」
 “I never fight a battle I can’t win!”
 
-@9785 Hell Marshal · 地獄大元帥
+@9785 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击（通用，4/8）
 > 「戦いは勝てば、よいのだ」
 “In battle, winning is all that matters.”
 
-@9786 Hell Marshal · 地獄大元帥
+@9786 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击（通用，5/8）
 > 「今度という今度は必ず勝つ!」
 “This time, and I mean this time, I will win!”
 
-@9787 Hell Marshal · 地獄大元帥
+@9787 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击（通用，6/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「呪いをこめて、これから地獄に
 >  送ってやる! てえい!」
 “I’ll send you to hell with a curse! Take this!”
 
-@9788 Hell Marshal · 地獄大元帥
+@9788 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击（通用，7/8）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「最期を見とどけてやる!」
 “I’ll watch you breathe your last!”
 
-@9789 Hell Marshal · 地獄大元帥
+@9789 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击（通用，8/8）
 > 「どけーい!」
 “Out of my way!”
 
-@9790 Hell Marshal · 地獄大元帥
+@9790 Great Marshal of Hell · 地獄大元帥
 # 触发：被击坠（通用，1/2）
 > 「おのれ、今に見ておれ!!」
 “Curse you, just you wait!!”
 
-@9791 Hell Marshal · 地獄大元帥
+@9791 Great Marshal of Hell · 地獄大元帥
 # 触发：被击坠（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ぐうぅぅ、信じられん、ワシの作戦が
 >  やぶれるとは」
 “Guhhh, I can’t believe it... my plan, foiled.”
 
-@9792 Hell Marshal · 地獄大元帥
+@9792 Great Marshal of Hell · 地獄大元帥
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ワシは負けん、絶対に負けんぞ!」
 “I will not lose! I will never lose!”
 
-@9793 Hell Marshal · 地獄大元帥
+@9793 Great Marshal of Hell · 地獄大元帥
 # 触发：重伤（剩余 HP 不足 30%）（通用，2/3）
 > 「おのれ、これしきのことで
 >  やられてなるものか!!」
 “Curse you, you think this is enough to beat me?!”
 
-@9794 Hell Marshal · 地獄大元帥
+@9794 Great Marshal of Hell · 地獄大元帥
 # 触发：重伤（剩余 HP 不足 30%）（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「おのれ、こしゃくな、ええい、こうなったら
 >  一気にカタをつけてやるぞ!」
 “Curse you, insolent pest... very well, I’ll end this in one stroke!”
 
-@9795 Hell Marshal · 地獄大元帥
+@9795 Great Marshal of Hell · 地獄大元帥
 # 触发：中伤（剩余 HP 30–90%）（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「どうしたのだ!?」
 “What’s the matter?!”
 
-@9796 Hell Marshal · 地獄大元帥
+@9796 Great Marshal of Hell · 地獄大元帥
 # 触发：轻伤（剩余 HP 90% 以上）（通用，1/5）
 # 审校：更像人话
 > 「負け犬の遠吠えなど聞く耳を
 >  持たぬわ」
 “I’ve no ear for a beaten dog’s howling.”
 
-@9797 Hell Marshal · 地獄大元帥
+@9797 Great Marshal of Hell · 地獄大元帥
 # 触发：轻伤（剩余 HP 90% 以上）（通用，2/5）
 > 「せいぜい吠えるがいいわ!」
 “Bark all you like!”
 
-@9798 Hell Marshal · 地獄大元帥
+@9798 Great Marshal of Hell · 地獄大元帥
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/5）
 > 「泣きっツラが目に見えるようだわ、
 >  ヌハハハハハハ」
 “I can just picture you crying! Nuhahahahahaha!”
 
-@9799 Hell Marshal · 地獄大元帥
+@9799 Great Marshal of Hell · 地獄大元帥
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/5）
 > 「ムダな抵抗はやめろ!」
 “Stop this pointless resistance!”
 
-@9800 Hell Marshal · 地獄大元帥
+@9800 Great Marshal of Hell · 地獄大元帥
 # 触发：轻伤（剩余 HP 90% 以上）（通用，5/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度の攻撃では、
 >  びくともせんわ!」
 “An attack like that won’t even scratch me!”
 
-@9801 Hell Marshal · 地獄大元帥
+@9801 Great Marshal of Hell · 地獄大元帥
 # 触发：回避（通用，1/3）
 # 审校：称号前加冠词
 > 「この地獄大元帥の実力を
 >  知ったか!」
-“Now you know the power of the Hell Marshal!”
+“Now you know the power of the Great Marshal of Hell!”
 
-@9802 Hell Marshal · 地獄大元帥
+@9802 Great Marshal of Hell · 地獄大元帥
 # 触发：回避（通用，2/3）
 > 「フハハハハハハハ、見える、見えるぞ!」
 “Fuhahahahahaha, I see it, I see it!”
 
-@9803 Hell Marshal · 地獄大元帥
+@9803 Great Marshal of Hell · 地獄大元帥
 # 触发：回避（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ワシは負けん、絶対に負けんぞ!」
 “I will not lose! I will never lose!”
 
-@9804 Hell Marshal · 地獄大元帥
+@9804 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击无效（护罩／装甲）（通用，1/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ワシは負けん、絶対に負けんぞ!」
 “I will not lose! I will never lose!”
 
-@9805 Hell Marshal · 地獄大元帥
+@9805 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击无效（护罩／装甲）（通用，2/2）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「その程度の攻撃では、びくとも
 >  せんわーっ!」
 “An attack like that won’t even scratch me!”
 
-@9806 Hell Marshal · 地獄大元帥
+@9806 Great Marshal of Hell · 地獄大元帥
 # 触发：弹药／EN 不足，无法反击（通用，1/1）
 > 「くそう! なんとかするのだ!」
 “Damn it! Do something!”
 
-@9807 Hell Marshal · 地獄大元帥
+@9807 Great Marshal of Hell · 地獄大元帥
 # 触发：射程外，无法反击（通用，1/1）
 > 「ぬうう、今に見てろ」
 “Nghhh, just you wait.”
 
-@15082 Hell Marshal · 地獄大元帥
+@15082 Great Marshal of Hell · 地獄大元帥
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
 # 审校：missile 不用大写
 > 「ミサイルを撃てい!」
 “Fire the missiles!”
 
-@15083 Hell Marshal · 地獄大元帥
+@15083 Great Marshal of Hell · 地獄大元帥
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
 # 审校：missile 不用大写
 > 「ミサイルだ! ミサイルで撃ちおとせい!」
 “Missiles! Shoot them down with missiles!”
 
-@15084 Hell Marshal · 地獄大元帥
+@15084 Great Marshal of Hell · 地獄大元帥
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
 # 审校：更像口令
 > 「撃ちおとしてやる! ミサイル発射!」
 “I’ll shoot you down! Fire missiles!”
 
-@15085 Hell Marshal · 地獄大元帥
+@15085 Great Marshal of Hell · 地獄大元帥
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
 > 「今日こそ勝利を手中にしてみせ
 >  るぞ! 撃って撃って撃ちまくれい!」
 “Today victory will be ours! Fire, fire, fire away!”
 
-@15086 Hell Marshal · 地獄大元帥
+@15086 Great Marshal of Hell · 地獄大元帥
 # 触发：使用〈ミサイル／グレネードランチャー／ミサイルポッド／ホーミングミサイル／連装ミサイルランチャー／小型ミサイル／大型ミサイル〉（低优先，可能被通用台词顶掉）
 > 「撃滅するのだ!」
 “Annihilate them!”
 
-@15087 Hell Marshal · 地獄大元帥
+@15087 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈ミケロス〉
 # 审校：“集中攻撃”指集中火力攻击，复数“attacks”更自然；词表 Focus 为参考，此处用动词短语更顺。
 > 「集中攻撃しろ!」
 “Focus your attacks!”
 
-@15088 Hell Marshal · 地獄大元帥
+@15088 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈ミケロス〉
 > 「作戦開始!」
 “Begin the operation!”
 
-@15089 Hell Marshal · 地獄大元帥
+@15089 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈ミケロス〉
 > 「ようし、叩き落としてやれい!」
 “All right, knock them out of the sky!”
 
-@15090 Hell Marshal · 地獄大元帥
+@15090 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈ミケロス〉
 > 「奴らを叩き落とせーっ!」
 “Shoot those bastards down!”
 
-@15091 Hell Marshal · 地獄大元帥
+@15091 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈ミケロス〉
 > 「ええい、奴を片づけろ!」
 “Gah, finish that one off!”
 
-@15092 Hell Marshal · 地獄大元帥
+@15092 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈デモニカ〉
 # 审校：同上，统一“集中攻撃しろ”的译法。
 > 「集中攻撃しろ!」
 “Focus your attacks!”
 
-@15093 Hell Marshal · 地獄大元帥
+@15093 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈デモニカ〉
 > 「作戦開始!」
 “Begin the operation!”
 
-@15094 Hell Marshal · 地獄大元帥
+@15094 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈デモニカ〉
 > 「ようし、叩き落としてやれい!」
 “All right, knock them out of the sky!”
 
-@15095 Hell Marshal · 地獄大元帥
+@15095 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈デモニカ〉
 > 「奴らを叩き落とせーっ!」
 “Shoot those bastards down!”
 
-@15096 Hell Marshal · 地獄大元帥
+@15096 Great Marshal of Hell · 地獄大元帥
 # 触发：攻击，乘坐〈デモニカ〉
 > 「ええい、奴を片づけろ!」
 “Gah, finish that one off!”
 
-@15097 Hell Marshal · 地獄大元帥
+@15097 Great Marshal of Hell · 地獄大元帥
 # 触发：使用〈体当たり〉（低优先，可能被通用台词顶掉）
 > 「ゆけぇ! 接近して、とどめを
 >  さしてやれい!」
 “Go! Close in and finish them off!”
 
-@15098 Hell Marshal · 地獄大元帥
+@15098 Great Marshal of Hell · 地獄大元帥
 # 触发：被击坠，乘坐〈ミケロス〉
 > 「引きあげろ!」
 “Retreat!”
 
-@15099 Hell Marshal · 地獄大元帥
+@15099 Great Marshal of Hell · 地獄大元帥
 # 触发：被击坠，乘坐〈デモニカ〉
 > 「引きあげろ!」
 “Retreat!”
 
-@15100 Hell Marshal · 地獄大元帥
+@15100 Great Marshal of Hell · 地獄大元帥
 # 触发：被击坠，乘坐〈ミケロス〉
 > 「涙をのんでここは引きあげろ!」
 “Grit your teeth and fall back for now!”
 
-@15101 Hell Marshal · 地獄大元帥
+@15101 Great Marshal of Hell · 地獄大元帥
 # 触发：被击坠，乘坐〈デモニカ〉
 > 「涙をのんでここは引きあげろ!」
 “Grit your teeth and fall back for now!”
 
-@15102 Hell Marshal · 地獄大元帥
+@15102 Great Marshal of Hell · 地獄大元帥
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ミケロス〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここが正念場だぞぅ、弱音を
 >  吐くな!」
 “This is the moment of truth, so no whining!”
 
-@15103 Hell Marshal · 地獄大元帥
+@15103 Great Marshal of Hell · 地獄大元帥
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ミケロス〉
 > 「修理はまだか!」
 “Are the repairs done yet?!”
 
-@15104 Hell Marshal · 地獄大元帥
+@15104 Great Marshal of Hell · 地獄大元帥
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈ミケロス〉
 > 「ばかもの!」
 “You fool!”
 
-@15105 Hell Marshal · 地獄大元帥
+@15105 Great Marshal of Hell · 地獄大元帥
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈デモニカ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「ここが正念場だぞぅ、弱音を
 >  吐くな!」
 “This is the moment of truth, so no whining!”
 
-@15106 Hell Marshal · 地獄大元帥
+@15106 Great Marshal of Hell · 地獄大元帥
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈デモニカ〉
 > 「修理はまだか!」
 “Are the repairs done yet?!”
 
-@15107 Hell Marshal · 地獄大元帥
+@15107 Great Marshal of Hell · 地獄大元帥
 # 触发：重伤（剩余 HP 不足 30%），乘坐〈デモニカ〉
 > 「ばかもの!」
 “You fool!”
 
-@15108 Hell Marshal · 地獄大元帥
+@15108 Great Marshal of Hell · 地獄大元帥
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ミケロス〉
 # 审校：“しっかりやってくれよ”是要求对方认真做，初稿“Get it together”偏“振作起来”，改为“Do this properly”更准确。
 > 「しっかりやってくれよ」
 “Get it together, you hear me?”
 
-@15109 Hell Marshal · 地獄大元帥
+@15109 Great Marshal of Hell · 地獄大元帥
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ミケロス〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このくらいでひるむな、馬鹿者!」
 “Don’t flinch at a scratch like this, you idiot!”
 
-@15110 Hell Marshal · 地獄大元帥
+@15110 Great Marshal of Hell · 地獄大元帥
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ミケロス〉
 > 「早く修理しろ!」
 “Hurry up and repair it!”
 
-@15111 Hell Marshal · 地獄大元帥
+@15111 Great Marshal of Hell · 地獄大元帥
 # 触发：中伤（剩余 HP 30–90%），乘坐〈ミケロス〉
 > 「ええい、何をもたもたしているのだ」
 “Gah, what are you dawdling for?”
 
-@15112 Hell Marshal · 地獄大元帥
+@15112 Great Marshal of Hell · 地獄大元帥
 # 触发：中伤（剩余 HP 30–90%），乘坐〈デモニカ〉
 # 审校：同上，统一 L38 的译法。
 > 「しっかりやってくれよ」
 “Get it together, you hear me?”
 
-@15113 Hell Marshal · 地獄大元帥
+@15113 Great Marshal of Hell · 地獄大元帥
 # 触发：中伤（剩余 HP 30–90%），乘坐〈デモニカ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「このくらいでひるむな、馬鹿者!」
 “Don’t flinch at a scratch like this, you idiot!”
 
-@15114 Hell Marshal · 地獄大元帥
+@15114 Great Marshal of Hell · 地獄大元帥
 # 触发：中伤（剩余 HP 30–90%），乘坐〈デモニカ〉
 > 「早く修理しろ!」
 “Hurry up and repair it!”
 
-@15115 Hell Marshal · 地獄大元帥
+@15115 Great Marshal of Hell · 地獄大元帥
 # 触发：中伤（剩余 HP 30–90%），乘坐〈デモニカ〉
 > 「ええい、何をもたもたしているのだ」
 “Gah, what are you dawdling for?”
 
-@15116 Hell Marshal · 地獄大元帥
+@15116 Great Marshal of Hell · 地獄大元帥
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈ミケロス〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いかにあがこうと無理な事だ、
 >  ええい皆殺しにしてやれい!」
 “Struggle all you like, it’s hopeless. Gah, kill them all!”
 
-@15117 Hell Marshal · 地獄大元帥
+@15117 Great Marshal of Hell · 地獄大元帥
 # 触发：轻伤（剩余 HP 90% 以上），乘坐〈デモニカ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
 > 「いかにあがこうと無理な事だ、

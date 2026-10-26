@@ -4,19 +4,19 @@
 > 「……う……ここは……?」
 “...Ngh... Where am I...?”
 
-@31295 Rose · ロゼ
+@31295 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「お目覚めですか、マーグ隊長。私
 >  は副官として配属された、ロゼです」
-“You’re awake, Commander Marg. I’m Rose, assigned as your adjutant.”
+“You’re awake, Commander Marg. I’m Roze, assigned as your adjutant.”
 
 @31296 Marg · マーグ
 # 审校：全局：弯撇号／弯引号
 > 「ロゼ? 隊長? ……どうしたんだ!?
 >  何も思いだせない!」
-“Rose? Commander? ...What’s going on?! I can’t remember anything!”
+“Roze? Commander? ...What’s going on?! I can’t remember anything!”
 
-@31297 Rose · ロゼ
+@31297 Roze · ロゼ
 > 「隊長はすべての過去を
 >  消し去ったのです」
 “You erased your entire past, Commander.”
@@ -25,7 +25,7 @@
 > 「なぜ?」
 “Why?”
 
-@31299 Rose · ロゼ
+@31299 Roze · ロゼ
 > 「未来に生きるために」
 “To live for the future.”
 
@@ -33,7 +33,7 @@
 > 「未来に?」
 “For the future?”
 
-@31301 Rose · ロゼ
+@31301 Roze · ロゼ
 > 「任務をご説明します。こちらへ」
 “Allow me to brief you on your mission. This way.”
 
@@ -41,7 +41,7 @@
 > 「……これは?」
 “...What is this?”
 
-@31303 Rose · ロゼ
+@31303 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「地球の軍勢です。いくつかの
 >  勢力にわかれておりますが
@@ -63,7 +63,7 @@ on them as possible.”
 > 「地球……」
 “Earth...”
 
-@31305 Rose · ロゼ
+@31305 Roze · ロゼ
 > 「そして、ズール皇帝陛下じきじきに
 >  隊長に与えられたもっとも重要な
 “And your most important mission, Commander, given to you by Emperor Zuul himself,
@@ -81,7 +81,7 @@ is to eliminate the traitor Mars.”
 >  まぎれこんでいるのだな?」
 among Earth’s forces?”
 
-@31307 Rose · ロゼ
+@31307 Roze · ロゼ
 > 「はい
 “Yes.”
 
@@ -767,7 +767,7 @@ I’ll have nothing to show Scirocco!”
 > 「増援、来ました!」
 “Reinforcements have arrived!”
 
-@31408 Rose · ロゼ
+@31408 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「マーグ隊長、あれがマーズです」
 “Commander Marg, that’s Mars.”
@@ -804,9 +804,9 @@ My brother was never that kind of man.”
 
 @31414 Marg · マーグ
 > 「ロゼ、マーズはどこだ」
-“Rose, where is Mars?”
+“Roze, where is Mars?”
 
-@31415 Rose · ロゼ
+@31415 Roze · ロゼ
 # 审校：全局：弯撇号／弯引号
 > 「どうやらマーズは
 >  出撃していないようです」
@@ -1478,9 +1478,9 @@ she ended up tagging along with me.”
 @31504 Marg · マーグ
 > 「ロゼ、あのマーズというのは何者
 >  なんだ? なぜ俺を兄という」
-“Rose, who is this Mars? Why does he call me his brother?”
+“Roze, who is this Mars? Why does he call me his brother?”
 
-@31505 Rose · ロゼ
+@31505 Roze · ロゼ
 # 审校：Rose 对队长用敬语，原文「気になさる」是敬语，译文 concern yourself 偏平实，改为更贴合敬语口吻的 let such a thing trouble you。
 > 「隊長をまどわせようとしているのです。
 >  なぜそのようなことを気になさるのですか」
@@ -1496,12 +1496,12 @@ she ended up tagging along with me.”
 >  兄と呼ぶ……」
 He looks just like me. And he even calls me brother...”
 
-@31507 Rose · ロゼ
+@31507 Roze · ロゼ
 > (いけない……洗脳が弱まって
 >  いる……?)
 (No... Is the brainwashing wearing off...?)
 
-@31508 Rose · ロゼ
+@31508 Roze · ロゼ
 # 检查提示：未用必用译名：マーグ隊→Marg Squad
 > 「マーグ隊長、私の目をみてください」
 “Commander Marg, look into my eyes.”
@@ -1515,7 +1515,7 @@ He looks just like me. And he even calls me brother...”
 > 「う……」
 “Ngh...”
 
-@31511 Rose · ロゼ
+@31511 Roze · ロゼ
 > 「マーズはあなたの敵、銀河帝国の
 >  敵。マーズを倒すのがあなたの使命
 “Mars is your enemy, the enemy of the Galactic Empire. Defeating Mars is your mission.

@@ -25,7 +25,7 @@
 > 「そう思います」
 “I think so too.”
 
-@19573 Aboly · アポリー
+@19573 Apolly · アポリー
 > 「艦長! 敵高速輸送艇
 >  急速接近!」
 “Captain! An enemy high-speed transport is closing in fast!”
@@ -629,7 +629,7 @@ Taking this thing down comes first.”
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「間違いねぇ。あれはデビルガンダムだぜ」
-“No doubt about it. That’s the Dark Gundam.”
+“No doubt about it. That’s the Devil Gundam.”
 
 @19670 Bright · ブライト
 > 「知っているのか」
@@ -1098,7 +1098,7 @@ Ramming a lumbering transport into an MS... you live up to your reputation.”
 > 「誰なんです、あの人?」
 “Who is that man?”
 
-@19755 Aboly · アポリー
+@19755 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：ムゲゾルバドス帝国→Muge Zorbados Empire
 > 「お前らが知らないのも
@@ -1118,7 +1118,7 @@ and then in the Muge Zorbados Empire’s invasion.”
 >  いう……」
 “The one who supposedly piloted the original Gundam...”
 
-@19757 Aboly · アポリー
+@19757 Apolly · アポリー
 # 审校：全局：弯撇号／弯引号
 > 「そうだ」
 “That’s right.”
@@ -1279,7 +1279,7 @@ but I never imagined anything like this. So that Gundam type is Karaba’s too?�
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「あ、私たちは、違うんです。その、
 >  デビルガンダムを追っていただけで……」
-“Oh, we’re... not with them. We were just, um, chasing the Dark Gundam...”
+“Oh, we’re... not with them. We were just, um, chasing the Devil Gundam...”
 
 @19782 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1305,7 +1305,7 @@ but I never imagined anything like this. So that Gundam type is Karaba’s too?�
 ---
 >  またデビルガンダムを探してまわるって
 >  いうの? 帝国軍から逃げながら?」
-Keep wandering around searching for the Dark Gundam? While running from the Imperial Army?”
+Keep wandering around searching for the Devil Gundam? While running from the Imperial Army?”
 
 @19786 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1331,7 +1331,7 @@ that’s all. Truth is, we don’t really know their story.”
 @19789 Duo · デュオ
 > 「上から降りてきたのさ、デビルガンダム
 >  を追ってね。そうだろ、お二人さん?」
-“We came down from above, chasing the Dark Gundam. Right, you two?”
+“We came down from above, chasing the Devil Gundam. Right, you two?”
 
 @19790 Quattro · クワトロ
 > 「コロニーからだと?」
@@ -1355,7 +1355,7 @@ a little ahead of you, that’s all.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そういえば君たちは、そのデビルガンダム
 >  とやらを知っていると言ったな?」
-“Come to think of it, you said you know about this Dark Gundam, didn’t you?”
+“Come to think of it, you said you know about this Devil Gundam, didn’t you?”
 
 @19794 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -1398,11 +1398,11 @@ dropped down to Earth too.”
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「そうです。それがデビルガンダム……。
 >  そして僕たちはもうひとつ……
-“That’s right. That was the Dark Gundam... And we received another order...
+“That’s right. That was the Devil Gundam... And we received another order...
 ---
 >  そのデビルガンダムを捕獲、あるいは
 >  破壊せよという指示を受けました」
-to capture or destroy that Dark Gundam.”
+to capture or destroy that Devil Gundam.”
 
 @19799 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -1417,7 +1417,7 @@ so I don’t know the details. But I did hear the name of the one who
 ---
 >  聞いている。そいつの名は、
 >  キョウジ・カッシュっていうのさ」
-fled to Earth with the Dark Gundam. His name is Kyoji Kasshu.”
+fled to Earth with the Devil Gundam. His name is Kyoji Kasshu.”
 
 @19800 Ryoma · リョウ
 > 「カッシュ!? じゃあ……」
@@ -1432,7 +1432,7 @@ fled to Earth with the Dark Gundam. His name is Kyoji Kasshu.”
 ---
 >  するなんて信じられない……それに
 >  デビルガンダムはもともと……」
-something like that... Besides, the Dark Gundam was originally...”
+something like that... Besides, the Devil Gundam was originally...”
 
 @19802 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1443,7 +1443,7 @@ something like that... Besides, the Dark Gundam was originally...”
 ---
 >  デビルガンダムは俺がこの手で倒す!
 >  誰にも邪魔はさせん!」
-and the Dark Gundam... I’ll destroy them with my own hands! I won’t let anyone get in my way!”
+and the Devil Gundam... I’ll destroy them with my own hands! I won’t let anyone get in my way!”
 
 @19803 Rain · レイン
 > 「ドモン……」
@@ -1454,7 +1454,7 @@ and the Dark Gundam... I’ll destroy them with my own hands! I won’t let anyo
 # 检查提示：未用必用译名：デビルガンダム→Dark Gundam
 > 「なるほどな……事情は大体わかった
 >  そのデビルガンダムというのは、
-“I see... I’ve got the general picture now. This Dark Gundam,
+“I see... I’ve got the general picture now. This Devil Gundam,
 ---
 >  そんなに危険なのか?」
 is it really that dangerous?”
@@ -1484,7 +1484,7 @@ The only saving grace is that it’s not exactly a picnic for the Empire either.
 ---
 >  デビルガンダムに関する情報も
 >  つかみやすくなる。どうかな」
-you’ll have an easier time finding out about the Dark Gundam. How about it?”
+you’ll have an easier time finding out about the Devil Gundam. How about it?”
 
 @19808 Domon · ドモン
 # 审校：全局：弯撇号／弯引号
@@ -1523,7 +1523,7 @@ to ignore that thing either.”
 @19812 Banjo · 万丈
 > 「話はわかった。そのデビルガンダムと
 >  いうのはかなり危険というわけだ」
-“I get the picture. So this Dark Gundam is pretty dangerous.”
+“I get the picture. So this Devil Gundam is pretty dangerous.”
 
 @19813 Duo · デュオ
 # 审校：全局：弯撇号／弯引号
@@ -1544,7 +1544,7 @@ The only saving grace is that it’s not exactly a picnic for the Empire either.
 ---
 >  僕たちの情報網でデビルガンダムの
 >  ことも探しやすくなるが?」
-our information network will make it easier to track down the Dark Gundam too. What do you say?”
+our information network will make it easier to track down the Devil Gundam too. What do you say?”
 
 @19815 Domon · ドモン
 > 「……いいだろう。ただし、俺にとっては
