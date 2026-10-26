@@ -57,8 +57,8 @@ export function initReviews() {
   const t = T[lang];
   const list = root.querySelector<HTMLElement>('[data-items]')!;
   const more = root.querySelector<HTMLButtonElement>('[data-more]')!;
-  // Others' suggestions show once handled; pending and questioned ones are in Mine.
-  let tab = location.hash === '#mine' ? 'mine' : 'processed';
+  // Every suggestion is public: the open ones first, then handled and declined; Mine has your own.
+  let tab = location.hash === '#mine' ? 'mine' : 'pending';
   let offset = 0;
 
 

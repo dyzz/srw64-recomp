@@ -15,7 +15,7 @@
 //
 // A suggestion targets a dialogue line (`base:t00_NNNNN`) or a Library name
 // (`unit:N`, `person:N`, `weapon:N`) in one translation locale (zh-Hans, en). Its
-// state is derived (others see only processed and dismissed ones): dismissed or questioned by the maintainer; processed when the
+// state is derived (everyone sees every state; a hidden one keeps its words from others): dismissed or questioned by the maintainer; processed when the
 // maintainer says so or when the live translation no longer equals the text the
 // suggestion was made against (adopted when it now equals the proposal); else pending.
 // The site never becomes the translation's master copy: accepted changes go into
@@ -223,8 +223,6 @@ function view(row, me, lang, full = false) {
       ip_banned: !!row.ip_hash && !!db.prepare('SELECT 1 FROM bans WHERE ip_hash = ? AND until > ?').get(row.ip_hash, now()) } : {}),
   };
 }
-// What others may see: suggestions the maintainers have handled.
-const PUBLIC = new Set(['processed', 'dismissed']);
 const clean = (s, max) => String(s ?? '').replace(/\r\n?/g, '\n').trim().slice(0, max);
 // A link a suggestion keeps back to its page: only a path on this site (/zh/…, /en/…,
 // /ja/…). Anything else, javascript: and other sites included, is dropped.
@@ -354,9 +352,9 @@ const routes = {
       if (LOCALES.has(p.get('locale'))) { where.push('locale = ?'); args.push(p.get('locale')); }
       rows = recent(where.join(' AND '), args).reverse();
     }
-    // Others see a suggestion only once the maintainers have handled it (done or declined)
-    // and never a hidden one; its author always sees their own.
-    let items = rows.map((r) => view(r, me, lang)).filter((it) => it.mine || (!it.hidden && PUBLIC.has(it.status)));
+    // Everyone sees every suggestion as soon as it is sent (user, 2026-10-26), pending ones
+    // too, but never a hidden one; its author always sees their own.
+    let items = rows.map((r) => view(r, me, lang)).filter((it) => it.mine || !it.hidden);
     const counts = { pending: 0, questioned: 0, processed: 0, dismissed: 0 };
     for (const it of items) counts[it.status]++;
     if (p.get('status')) items = items.filter((it) => it.status === p.get('status'));
