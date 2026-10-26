@@ -1,0 +1,140 @@
+---
+// Unit and pilot numbers for MOD authors: the keys of data/units.json and data/pilots.json
+// (number mods) and of music.json's battle songs, with the original terrain ranks. The data
+// is tools/content/export_data_tables.py's, the same as docs/guide/data-mods/*.csv.
+import Base from '../../../layouts/Base.astro';
+import { langPaths, type Lang } from '../../../i18n';
+import { library } from '../../../lib/data';
+import data from '../../../data/data-mods.json';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const lib = library();
+const inUnits = new Set(lib.units.map((u) => u.id));
+const inPeople = new Set(lib.people.map((p) => p.id));
+const t = {
+  title: { zh: '机体与人物 ID 表', en: 'Unit and pilot IDs', ja: 'ユニット・キャラクター ID 表' },
+  lead: {
+    zh: '数值 MOD 的 data/units.json 按机体号、data/pilots.json 按人物号写；音乐 MOD 指定战斗曲用的也是这两种编号。表里的地形等级是原版的。',
+    en: 'A number mod’s data/units.json is keyed by unit number and data/pilots.json by pilot number; a music mod’s battle songs use the same numbers. The terrain ranks shown are the original’s.',
+    ja: '数値 MOD の data/units.json はユニット番号、data/pilots.json はキャラクター番号で書きます。音楽 MOD の戦闘曲指定も同じ番号です。地形適応は原作の値です。',
+  },
+  guide: { zh: '写法见「数值 MOD」', en: 'How to write them: Number mods', ja: '書き方は「数値 MOD」へ' },
+  units: { zh: '机体', en: 'Units', ja: 'ユニット' },
+  pilots: { zh: '人物', en: 'Pilots', ja: 'キャラクター' },
+  search: { zh: '按名字或编号筛选', en: 'Filter by name or number', ja: '名前か番号で絞り込み' },
+  name: { zh: '名字', en: 'Name', ja: '名前' },
+  shared: { zh: '共用能力记录', en: 'Shares its record with', ja: '能力記録を共有' },
+  sharedNote: {
+    zh: '同一行「共用能力记录」里的人物用的是同一条能力记录，改其中一个，其他人一起变。同名的条目是不同的编号（形态、敌我版本、剧情专用），改之前对一下等级。',
+    en: 'Pilots listed under “Shares its record with” use the same ability record: changing one changes the others too. Entries with the same name are different numbers (forms, enemy copies, story-only); check the ranks before you change one.',
+    ja: '「能力記録を共有」に並ぶキャラクターは同じ能力記録を使うため、一人を変えると他も変わります。同名の項目は別の番号（形態・敵版・シナリオ専用）なので、変える前に適応を確かめてください。',
+  },
+  library: { zh: '图鉴', en: 'Library', ja: '図鑑' },
+  csv: { zh: '同样的表也有 CSV 版：', en: 'The same tables as CSV: ', ja: '同じ表の CSV 版：' },
+  none: { zh: '没有符合的条目', en: 'Nothing matches', ja: '該当なし' },
+};
+const channels = { zh: ['空', '陆', '海', '宇'], en: ['Air', 'Land', 'Sea', 'Space'], ja: ['空', '陸', '海', '宇'] }[lang];
+const key = (n: { ja: string; zh: string; en: string }, id: number) => `${id} ${n.ja} ${n.zh} ${n.en}`.toLowerCase();
+const repo = 'https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/data-mods';
+const sep = lang === 'en' ? ', ' : '、';
+const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[lang] ?? String(id);
+---
+<Base lang={lang} title={t.title[lang]} description={t.lead[lang]}>
+  <div class="wrap ids" data-ids>
+    <header class="page-head">
+      <span class="tag">MOD</span>
+      <h1>{t.title[lang]}</h1>
+      <p>{t.lead[lang]}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-data/`}>{t.guide[lang]}</a> · {t.csv[lang]}<a href={`${repo}/units.csv`}>units.csv</a>{sep}<a href={`${repo}/pilots.csv`}>pilots.csv</a></p>
+    </header>
+    <div class="bar">
+      <nav class="tabs"><a href="#units">{t.units[lang]} <span class="dim latin">{data.units.length}</span></a><a href="#pilots">{t.pilots[lang]} <span class="dim latin">{data.pilots.length}</span></a></nav>
+      <input type="search" data-filter placeholder={t.search[lang]} autocomplete="off" spellcheck="false" />
+    </div>
+
+    <section id="units" class="block">
+      <h2>{t.units[lang]}</h2>
+      <div class="scroll"><table>
+        <thead><tr><th class="num">ID</th><th>{t.name[lang]}</th>{channels.map((c) => <th class="rank">{c}</th>)}<th></th></tr></thead>
+        <tbody>{data.units.map((u) => (
+          <tr data-key={key(u.name, u.id)}>
+            <td class="num latin">{u.id}</td>
+            <td>{u.name[lang]}{lang !== 'ja' && u.name.ja !== u.name[lang] && <span class="ja">{u.name.ja}</span>}</td>
+            {[...u.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
+            <td class="link">{inUnits.has(u.id) && <a href={`/${lang}/library/unit/${u.id}/`}>{t.library[lang]}</a>}</td>
+          </tr>))}
+        </tbody>
+      </table></div>
+      <p class="none" hidden>{t.none[lang]}</p>
+    </section>
+
+    <section id="pilots" class="block">
+      <h2>{t.pilots[lang]}</h2>
+      <p class="note">{t.sharedNote[lang]}</p>
+      <div class="scroll"><table>
+        <thead><tr><th class="num">ID</th><th>{t.name[lang]}</th>{channels.map((c) => <th class="rank">{c}</th>)}<th>{t.shared[lang]}</th><th></th></tr></thead>
+        <tbody>{data.pilots.map((p) => (
+          <tr data-key={key(p.name, p.id)}>
+            <td class="num latin">{p.id}</td>
+            <td>{p.name[lang]}{lang !== 'ja' && p.name.ja !== p.name[lang] && <span class="ja">{p.name.ja}</span>}</td>
+            {[...p.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
+            <td class="shared">{p.shared.map((s) => `${s} ${pilotName(s)}`).join(sep)}</td>
+            <td class="link">{inPeople.has(p.id) && <a href={`/${lang}/library/people/${p.id}/`}>{t.library[lang]}</a>}</td>
+          </tr>))}
+        </tbody>
+      </table></div>
+      <p class="none" hidden>{t.none[lang]}</p>
+    </section>
+  </div>
+</Base>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-ids]');
+  const input = root?.querySelector<HTMLInputElement>('[data-filter]');
+  input?.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    for (const section of root!.querySelectorAll('section')) {
+      let shown = 0;
+      for (const row of section.querySelectorAll<HTMLElement>('tbody tr')) {
+        const hit = !q || (/^\d+$/.test(q) ? row.dataset.key!.split(' ')[0] === q : row.dataset.key!.includes(q));
+        row.hidden = !hit;
+        if (hit) shown++;
+      }
+      section.querySelector<HTMLElement>('.none')!.hidden = shown > 0;
+    }
+  });
+</script>
+
+<style>
+  .ids { padding-bottom: 80px; }
+  .note { color: var(--muted); font-size: 14px; }
+  .bar { position: sticky; top: var(--header-h, 64px); z-index: 2; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; padding: 10px 0; background: var(--bg); border-bottom: 1px solid var(--line); margin-top: 24px; }
+  .tabs { display: flex; gap: 16px; }
+  .tabs a { color: var(--text); text-decoration: none; font-weight: 600; }
+  .bar input { font: inherit; font-size: 14px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 7px 10px; width: min(320px, 100%); }
+  .block { margin-top: 32px; scroll-margin-top: 140px; }
+  .block h2 { font-size: 20px; margin-bottom: 10px; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 6px 10px; border-bottom: 1px solid var(--line-soft, var(--line)); text-align: left; white-space: nowrap; }
+  th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  .num { text-align: right; color: var(--gold); width: 4em; }
+  .ja { color: var(--dim); font-size: 12.5px; margin-left: 8px; }
+  .rank { text-align: center; width: 2.8em; font-family: var(--display); }
+  .r-A { color: var(--green); }
+  .r-B { color: var(--text); }
+  .r-C { color: var(--gold); }
+  .r-D, .r-x { color: var(--pink); }
+  .shared { color: var(--muted); font-size: 13px; white-space: normal; }
+  .link a { font-size: 13px; }
+  .none { color: var(--dim); margin-top: 8px; }
+  @media (max-width: 640px) {
+    .bar { position: static; }
+    th, td { padding: 6px 5px; }
+    td:nth-child(2) { white-space: normal; }
+    .ja { display: block; margin-left: 0; }
+    .rank { width: 2em; }
+    .link { display: none; }
+  }
+</style>

@@ -37,6 +37,8 @@ export const UI = {
     // The header's MOD menu: the two MOD guides in the docs and the web BGM maker.
     modPackages: { zh: 'MOD 包：安装与制作', en: 'Mod packages', ja: 'MOD パッケージ' },
     modMusic: { zh: '音乐 MOD', en: 'Music mods', ja: '音楽 MOD' },
+    modData: { zh: '数值 MOD', en: 'Number mods', ja: '数値 MOD' },
+    modIds: { zh: '机体与人物 ID 表', en: 'Unit and pilot IDs', ja: 'ユニット・キャラクター ID 表' },
     modBgm: { zh: 'BGM MOD 制作工具', en: 'BGM mod maker', ja: 'BGM MOD メーカー' },
     // The sister project, the Chinese translation of Super Robot Wars Z (PS2).
     srwz: {

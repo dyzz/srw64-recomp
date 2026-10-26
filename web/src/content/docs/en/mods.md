@@ -1,6 +1,6 @@
 ---
 title: "Mod packages: installing and making them"
-summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music replacement is what takes effect for now.
+summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music replacement and terrain ranks are what take effect for now.
 section: mods
 order: 1
 updated: 2026-10-26
@@ -8,7 +8,7 @@ updated: 2026-10-26
 
 A mod package is a folder, or that folder zipped into one `.srw64mod` file. It holds data only, never code. When a package is enabled, the game uses its contents in place of the matching parts of the original; wherever no package says otherwise, everything is the original.
 
-**For now only music takes effect**: replacing songs and choosing which song a pilot or unit fights to, as described in [Music mods](../mod-music/). Additional campaigns, art, dialogue and voices will follow; the package format already has a place for them.
+**For now music and terrain ranks take effect**: replacing songs and choosing which song a pilot or unit fights to, as described in [Music mods](../mod-music/), and changing the terrain ranks of units and pilots, as described in [Number mods](../mod-data/). Additional campaigns, art, dialogue, voices and other numbers will follow; the package format already has a place for them.
 
 Mods need a version newer than 0.5.0.
 

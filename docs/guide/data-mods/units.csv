@@ -1,0 +1,364 @@
+unit,name_ja,name_zh,name_en,air,land,sea,space
+0,ガンダムシュピーゲル,明镜高达,Shadow Gundam,-,A,C,A
+1,ゴッドガンダム,神高达,God Gundam,-,A,C,A
+2,ゴッドガンダムH,神高达H,God Gundam H,-,A,A,A
+3,シャイニングガンダム,闪光高达,Shining Gundam,-,A,C,A
+4,シャイニングガンダムS,闪光高达S,Shining Gundam S,-,A,A,A
+5,ドモン・カッシュ,多蒙·卡修,Domon Kasshu,-,A,A,-
+6,ノーベルガンダム,诺贝尔高达,Noble Gundam,-,A,C,A
+7,ノーベルガンダムB,诺贝尔高达B,Noble Gundam B,-,A,A,A
+8,ライジングガンダム,旭日高达,Rising Gundam,-,A,C,A
+9,ガンダムマックスター,极限之星高达,Gundam Maxter,-,A,C,A
+10,ガンダムマックスターS,极限之星高达S,Gundam Maxter S,-,A,A,A
+11,ガンダムローズ,玫瑰高达,Gundam Rose,-,A,C,A
+12,ガンダムローズS,玫瑰高达S,Gundam Rose S,-,A,A,A
+13,ドラゴンガンダム,飞龙高达,Dragon Gundam,-,A,C,A
+14,ドラゴンガンダムS,飞龙高达S,Dragon Gundam S,-,A,A,A
+15,ボルトガンダム,雷霆高达,Bolt Gundam,-,A,C,A
+16,ボルトガンダムS,雷霆高达S,Bolt Gundam S,-,A,A,A
+17,マンダラガンダム,曼陀罗高达,Mandala Gundam,-,A,C,A
+18,グランドマスターガンダム,大尊者高达,Grand Master Gundam,-,A,A,A
+19,コブラガンダム,眼镜蛇高达,Cobra Gundam,-,A,C,A
+20,ゼウスガンダム,宙斯高达,Zeus Gundam,-,A,C,A
+21,デスアーミー,死亡军团,Death Army,-,A,C,-
+22,デスバーディ,死亡飞鸟,Death Birdy,A,-,-,-
+23,デスネービー,死亡海军,Death Navy,-,-,A,-
+24,デビルガンダム,恶魔高达,Devil Gundam,-,A,A,A
+25,デビルガンダム,恶魔高达,Devil Gundam,-,A,A,A
+26,デビルガンダム,恶魔高达,Devil Gundam,-,A,A,A
+27,マスターガンダム,尊者高达,Master Gundam,-,A,A,A
+28,マスターガンダムS,尊者高达S,Master Gundam S,-,A,A,A
+29,マスターアジア,东方不败,Master Asia,-,A,A,-
+30,ソルデファー,索尔迪法,Soldifar,-,A,B,A
+31,アシュクリーフ,阿修克里夫,Ashcleef,-,A,A,A
+32,スヴァンヒルド,斯凡希尔德,Svanheld,-,A,B,A
+33,ラーズグリーズ,拉兹格里兹,Razgreez,A,A,B,A
+34,アースゲイン,夺地者,Earthgain,A,A,B,A
+35,ヴァイローズ,瓦伊罗斯,Virose,A,A,B,A
+36,スイームルグ,菲因梅露姆,Sweemurg,-,A,B,A
+37,エルブルス,凤翼天翔,Elbulls,A,-,-,A
+38,デビルアクシズ,恶魔阿克西斯,Dark Axis,-,-,-,A
+39,ヴァルディスキューズ,瓦尔迪斯丘兹,Valdiscuse,A,A,A,A
+40,アヴィエスレルム,阿维耶斯雷姆,Avieslelm,A,A,A,A
+41,ジェイクラップス,杰伊克拉普斯,JClaps,A,A,A,A
+42,F91,,,-,A,B,A
+43,GP03Sステイメン,GP03S雄蕊,GP03S Stamen,-,A,C,A
+44,GP03デンドロビウム,GP03石斛兰,GP03 Dendrobium,-,-,-,A
+45,Gディフェンサー,G防御者,G-Defenser,A,-,-,A
+46,Gフォートレス,G要塞,G-Fortress,A,-,-,A
+47,ZZガンダム,ZZ高达,ZZ Gundam,-,A,C,A
+48,Zガンダム,Z高达,Zeta Gundam,-,A,C,A
+49,ウェイブライダー,冲浪者,Waverider,A,-,-,A
+50,νガンダム,ν高达,Nu Gundam,-,A,C,A
+51,アーガマ,阿伽玛,Argama,A,-,-,A
+52,アウドムラ,奥多姆拉,Audhumla,A,-,-,-
+53,アルビオン,阿尔比恩,Albion,A,-,-,A
+54,ガンキャノン,钢加农,Guncannon,-,A,B,B
+55,ガンダム,高达,Gundam,-,A,C,A
+56,ガンダムmkⅡ,高达Mk-Ⅱ,Gundam Mk-II,-,A,C,A
+57,ガンダムmkⅢ,高达Mk-Ⅲ,Gundam Mk-III,-,A,B,A
+58,ガンタンク,钢坦克,Guntank,-,A,B,B
+59,ジェガン,杰刚,Jegan,-,A,C,A
+60,シュツルム・ディアス,疾风迪亚斯,Schuzrum-Dias,-,A,C,A
+61,スーパーガンダム,超级高达,Super Gundam,A,A,C,A
+62,ディジェSE-R,迪杰SE-R,Dijeh SE-R,-,A,B,A
+63,ネェル・アーガマ,新阿伽玛号,Nahel Argama,A,-,-,A
+64,ミデア,米迪亚,Medea,A,-,-,-
+65,メタス,梅塔斯,Methuss,-,A,C,A
+66,メタス(MA),梅塔斯（MA）,Methuss (MA),A,-,-,A
+67,メタス改,梅塔斯改,Methuss Kai,-,A,B,A
+68,メタス改(MA),梅塔斯改（MA）,Methuss Kai (MA),A,-,-,A
+69,ラー・カイラム,拉·凯拉姆,Ra Cailum,A,-,-,A
+70,ラビアンローズ,玫瑰人生号,La Vie en Rose,-,-,-,A
+71,リ・ガズィ,灵格斯,Re-GZ,-,A,C,A
+72,リ・ガズィ(BWS),灵格斯（BWS）,Re-GZ (BWS),A,-,-,A
+73,百式,百式,Hyaku-Shiki,-,A,C,A
+74,ガンダムEz8,高达Ez8,Gundam Ez8,-,A,C,-
+75,GP02Aサイサリス,GP02A酸浆果,GP02A Physalis,-,A,C,A
+76,R・ジャジャ,R·贾贾,R-Jarja,-,A,B,A
+77,キュベレイmkⅡ,卡碧尼Mk-Ⅱ,Qubeley Mk-II,-,A,C,A
+78,ザクⅢ改,扎古Ⅲ改,Zaku III Custom,-,A,C,A
+79,ノイエ・ジール,诺耶·吉尔,Neue Ziel,-,-,-,A
+80,ヤクト・ドーガ,亚克托·德卡,Jagd Doga,-,A,B,A
+81,ジ・O,铁奥,The-O,-,A,A,A
+82,α・アジール,α·阿基尔,Alpha Azieru,-,-,-,A
+83,アッシマー,亚希玛,Asshimar,-,A,C,A
+84,アプサラス,阿普萨拉斯,Apsaras,A,-,-,A
+85,アレキサンドリア,亚历山大,Alexandria,A,-,-,A
+86,エンドラ,恩多拉,Endra,A,-,-,A
+87,ガブスレイ,加布斯雷,Gabthley,-,A,C,A
+88,ガンダムmkⅡ,高达Mk-Ⅱ,Gundam Mk-II,-,A,C,A
+89,ギャプラン,加布兰,Gaplant,-,A,C,A
+90,キュベレイ,卡碧尼,Qubeley,-,A,C,A
+91,ギラ・ドーガ,吉拉·德卡,Geara Doga,-,A,B,A
+92,クインマンサ,昆曼沙,Quin Mantha,-,A,C,A
+93,グワダン,格瓦丹,Gwadan,A,-,-,A
+94,ゲーマルク,盖马克,Geymalk,-,A,C,A
+95,サイコガンダム,精神感应高达,Psycho Gundam,-,A,C,A
+96,サイコガンダムmkⅡ,精神感应高达Mk-Ⅱ,Psycho Gundam Mk-II,-,A,C,A
+97,ザクⅡ,扎古Ⅱ,Zaku II,-,A,C,A
+98,サザビー,沙扎比,Sazabi,-,A,B,A
+99,ジオング,吉翁号,Zeong,-,-,-,A
+100,ドーベンウルフ,杜宾狼,Doven Wolf,-,A,C,A
+101,ドゴス・ギア,多戈斯·基亚,Dogosse Giar,A,-,-,A
+102,ドライセン,德莱森,Dreissen,-,A,B,A
+103,バイアラン,拜亚兰,Byarlant,A,A,C,A
+104,バウ,巴乌,Bawoo,-,A,C,A
+105,バウンド・ドック,猎犬,Baund Doc,-,A,C,A
+106,ハンブラビ,汉布拉比,Hambrabi,-,A,C,A
+107,ハンマ・ハンマ,悍马·悍马,Hamma-Hamma,-,A,C,A
+108,ビグザム,比格·扎姆,Big Zam,-,A,B,A
+109,マラサイ,马拉赛,Marasai,-,A,C,A
+110,メッサーラ,梅萨拉,Messala,-,A,C,A
+111,ヤクト・ドーガ,亚克托·德卡,Jagd Doga,-,A,B,A
+112,リゲルグ,改修型勇士,ReGelgu,-,A,C,A
+113,レウルーラ,雷乌鲁拉,Rewloola,A,-,-,A
+114,量産型キュベレイ,量产型卡碧尼,MP Qubeley,-,A,C,A
+115,アルトロンガンダム,双头龙高达,Altron Gundam,-,A,B,A
+116,アルトロンカスタム,双头龙特装型,Altron Custom,-,A,B,A
+117,ウイングガンダム,飞翼高达,Wing Gundam,-,A,B,A
+118,ウイングガンダム(バード),飞翼高达（鸟形态）,Wing Gundam (Bird),A,-,-,A
+119,ウイングゼロ,飞翼零式,Wing Zero,A,A,B,A
+120,ウイングゼロ(バード),飞翼零式（鸟形态）,Wing Zero (Bird),A,-,-,A
+121,ウイングゼロカスタム,飞翼零式特装型,Wing Zero Custom,A,A,B,A
+122,エアリーズ,艾亚里斯,Aries,A,A,C,A
+123,ガンダムエピオン,艾比安高达,Gundam Epyon,A,A,B,A
+124,ガンダムサンドロック,沙漠高达,Gundam Sandrock,-,A,B,A
+125,サンドロックカスタム,沙漠特装型,Sandrock Custom,-,A,B,A
+126,ガンダムサンドロック改,沙漠高达改,Gundam Sandrock Kai,-,A,B,A
+127,ガンダムデスサイズ,死神高达,Gundam Deathscythe,-,A,A,A
+128,ガンダムデスサイズH,地狱死神高达,Gundam Deathscythe Hell,-,A,A,A
+129,デスサイズHカスタム,地狱死神特装型,Deathscythe Hell Custom,-,A,A,A
+130,ガンダムヘビーアームズ,重装高达,Gundam Heavyarms,-,A,B,A
+131,ヘビーアームズカスタム,重装特装型,Heavyarms Custom,-,A,B,A
+132,ガンダムヘビーアームズ改,重装高达改,Gundam Heavyarms Kai,-,A,B,A
+133,シェンロンガンダム,神龙高达,Shenlong Gundam,-,A,B,A
+134,トーラス,陶拉斯,Taurus,-,A,C,A
+135,トールギス,多鲁基斯,Tallgeese,A,A,B,A
+136,トールギスⅢ,多鲁基斯Ⅲ,Tallgeese III,A,A,B,A
+137,ピースミリオン,万年和平号,Peacemillion,-,-,-,A
+138,マグアナック,马格纳克,Maganac,-,A,C,A
+139,マグアナック,马格纳克,Maganac,-,A,C,A
+140,ヴァイエイト,维耶特,Vayeate,-,A,C,A
+141,キャンサー,坎沙,Cancer,-,-,A,-
+142,トーラス,陶拉斯,Taurus,-,A,C,A
+143,トールギスⅡ,多鲁基斯Ⅱ,Tallgeese II,A,A,B,A
+144,トラゴス,特拉哥斯,Tragos,A,A,C,A
+145,パイシーズ,派西斯,Pisces,-,-,A,-
+146,ビルゴ,比尔哥,Virgo,-,A,C,A
+147,ビルゴⅡ,比尔哥Ⅱ,Virgo II,-,A,C,A
+148,メリクリウス,墨丘利,Mercurius,-,A,C,A
+149,リーブラ,天秤座,Libra,-,-,-,A
+150,グレートマジンガー,大魔神,Great Mazinger,A,A,B,A
+151,ビューナスA,维纳斯A,Venus A,A,A,B,B
+152,戦闘獣オベリウス,战斗兽欧贝琉斯,Battle Beast Obelius,A,A,B,-
+153,戦闘獣ズガール,战斗兽斯伽尔,Battle Beast Zugal,A,A,B,-
+154,ミケロス,迈锡罗斯,Mikeros,A,-,A,-
+155,ヤヌス侯爵,雅努斯侯爵,Marquis Janus,-,A,B,-
+156,暗黒大将軍,暗黑大将军,Great General of Darkness,A,A,B,-
+157,量産型グレート,量产型大魔神,MP Great Mazinger,-,A,B,A
+158,グレンダイザー,古连泰沙,Grendizer,A,A,B,A
+159,グレンダイザー(WS),古连泰沙（WS）,Grendizer (WS),A,A,C,A
+160,グレンダイザー(DS),古连泰沙（DS）,Grendizer (DS),A,A,C,A
+161,グレンダイザー(MS),古连泰沙（MS）,Grendizer (MS),A,C,A,A
+162,スペイザー,飞天神机,Spazer,A,-,-,A
+163,ダブルスペイザー,双重飞天神机,Double Spazer,A,-,-,A
+164,ドリルスペイザー,钻头飞天神机,Drill Spazer,A,-,-,A
+165,マリンスペイザー,海洋飞天神机,Marine Spazer,B,-,A,B
+166,円盤獣ギルギル,飞碟兽吉尔吉尔,Saucer Beast Gilgil,A,B,C,A
+167,ベガ獣キングゴリ,贝加兽大金刚,Vega Beast Kinggori,-,A,C,B
+168,円盤獣ゴスゴス,飞碟兽戈斯戈斯,Saucer Beast Gosgos,A,B,C,A
+169,マザーバーン,飞碟母船,Mother Barn,A,-,-,A
+170,ミニフォー,迷你碟,Minifo,A,-,-,A
+171,ゲッター1,盖塔1,Getter-1,A,B,C,A
+172,ゲッター2,盖塔2,Getter-2,-,A,D,A
+173,ゲッター3,盖塔3,Getter-3,-,A,A,B
+174,ゲッタードラゴン,盖塔龙,Getter Dragon,A,B,D,A
+175,ゲッターポセイドン,盖塔波塞冬,Getter Poseidon,-,A,A,A
+176,ゲッターライガー,盖塔狮虎,Getter Liger,-,A,D,A
+177,真・ゲッター1,真盖塔1,Shin Getter-1,A,B,D,A
+178,真・ゲッター2,真盖塔2,Shin Getter-2,-,A,D,A
+179,真・ゲッター3,真盖塔3,Shin Getter-3,-,A,A,A
+180,メカ暴竜鬼,机械暴龙鬼,Mecha Boryuki,-,A,A,-
+181,メカ牛剣鬼,机械牛剑鬼,Mecha Gyukenki,-,A,A,-
+182,メカ鉄甲鬼,机械铁甲鬼,Mecha Tekkoki,A,B,C,A
+183,合体百鬼ロボット,合体百鬼机器人,Combined Hyakki Robot,-,A,A,-
+184,ゴーショーグン,豪将军,GoShogun,A,A,B,A
+185,ガイヤー,盖亚,Gaia,A,A,B,A
+186,コスモクラッシャー,宇宙粉碎者,Cosmo Crusher,A,-,-,A
+187,ゴッドマーズ,雷霆王,Godmars,A,A,B,A
+188,ゼーロン,泽隆,Zeron,A,-,-,A
+189,キュルタクス,丘尔塔克斯,Curtax,A,-,-,A
+190,グルダー,古尔达,Gulder,A,A,B,A
+191,ズール皇帝,祖鲁皇帝,Emperor Zuul,A,A,A,A
+192,バキューム,巴丘姆,Vacuum,A,A,B,A
+193,バルバラ,芭芭拉,Barbara,A,A,B,A
+194,マーグ司令船,玛古司令船,Marg's Command Ship,A,-,-,A
+195,ワール大型宇宙船,瓦尔大型宇宙船,Wahl's Large Ship,A,-,-,A
+196,コン・バトラーV,孔巴特拉V,Combattler V,A,A,A,A
+197,バトルクラッシャー,战斗粉碎者,Battle Crasher,A,B,-,A
+198,バトルクラフト,战斗装甲车,Battle Craft,A,A,A,A
+199,バトルジェット,战斗喷射机,Battle Jet,A,-,-,A
+200,バトルタンク,战斗坦克,Battle Tank,-,A,A,B
+201,バトルマリン,战斗潜艇,Battle Marine,A,B,A,A
+202,ザンバード,赞伯德,Zambird,A,-,-,A
+203,ザンブル,赞布尔,Zambull,-,A,A,B
+204,ザンベース,赞贝斯,Zambase,A,-,A,A
+205,ザンボエース,赞波王牌,Zambo-Ace,-,A,C,A
+206,ザンボット3,赞波3,Zambot 3,A,A,C,A
+207,ジャイアント・ロボ,大铁人,Giant Robo,A,A,B,B
+208,銀鈴ロボTYPE1,银铃机器人TYPE1,Ginrei Robo TYPE1,-,A,B,B
+209,銀鈴ロボTYPE2,银铃机器人TYPE2,Ginrei Robo TYPE2,-,A,A,A
+210,GRー2,GR2,GR2,-,B,A,-
+211,アルベルト,阿尔伯特,Alberto,-,A,A,-
+212,ウラエヌス,乌拉诺斯,Uranus,A,-,-,-
+213,ギャロップ,加洛普,Gallop,A,-,-,-
+214,ビックゴールド,大金,Big Gold,-,A,B,-
+215,維新竜・暁,维新龙·晓,Ishinryu Akatsuki,-,A,B,-
+216,ダイターン3,泰坦3,Daitarn 3,A,A,B,A
+217,ダイタンク,泰坦坦克,Daitank,-,A,A,A
+218,ダイファイター,泰坦战机,Daifighter,A,-,B,A
+219,イーグルファイター,鹰战机,Eagle Fighter,A,-,-,A
+220,イーグルファイターA,鹰战机A,Eagle Fighter A,A,-,-,A
+221,イーグルファイターH,鹰战机H,Eagle Fighter H,-,A,B,A
+222,ガンドール,冈多尔,Gandor,A,-,-,A
+223,ダンクーガ,断空我,Dancouga,-,A,C,A
+224,ダンクーガ,断空我,Dancouga,A,A,C,A
+225,ビッグモス,象战机,Big Moth,-,A,A,A
+226,ビッグモスA,象战机A,Big Moth A,-,A,A,A
+227,ビッグモスH,象战机H,Big Moth H,-,A,A,A
+228,ブラックウイング,黑翼,Black Wing,A,-,-,A
+229,ブラックウイングH,黑翼H,Black Wing H,-,A,B,A
+230,ランドクーガー,豹战机,Land Cougar,-,A,B,A
+231,ランドクーガーA,豹战机A,Land Cougar A,-,A,B,A
+232,ランドクーガーH,豹战机H,Land Cougar H,-,A,B,A
+233,ランドライガー,狮战机,Land Liger,-,A,B,A
+234,ランドライガーA,狮战机A,Land Liger A,-,A,B,A
+235,ランドライガーH,狮战机H,Land Liger H,-,A,B,A
+236,ギルバウアー,基尔鲍尔,Gilbauer,A,A,B,A
+237,ザン・ガイオー,赞·盖奥,Zan Gaioh,A,A,B,A
+238,ゼイ・ファー,泽伊·法,Zei-Fer,A,A,B,A
+239,ムゲ小型空戦メカ,穆格小型空战机,Muge Small Fighter,A,-,-,A
+240,ムゲ戦艦,穆格战舰,Muge Battleship,A,-,-,A
+241,シャピロ戦闘メカ,夏比罗战斗机械,Shapiro Battle Mecha,A,A,B,A
+242,ウイングキャリバー,翼卡利巴,Wing Caliber,A,-,B,B
+243,グラン・ガラン,古兰·加兰,Gran-Garan,A,-,-,B
+244,ゴラオン,戈拉翁,Goraon,A,-,-,B
+245,サーバイン,萨拜因,Sirbine,A,A,B,B
+246,ズワウス,兹瓦乌斯,Zwauth,A,A,B,B
+247,ダンバイン,丹拜因,Dunbine,A,A,B,B
+248,ビルバイン,比尔拜因,Billbine,A,A,B,B
+249,ボチューン,波丘恩,Botune,A,A,B,B
+250,バストール,巴斯托尔,Bastole,A,A,B,B
+251,ウィル・ウィプス,威尔·维普斯,Will-Wips,A,-,-,B
+252,ガラバ,卡拉巴,Gallaba,A,-,-,B
+253,スプリガン,斯普利冈,Spriggan,A,-,-,B
+254,ズワァース,兹瓦斯,Zwarth,A,A,B,B
+255,ドラムロ,德拉姆洛,Drumlo,A,A,B,B
+256,ビアレス,毕亚雷斯,Vierres,A,A,B,B
+257,ライネック,莱内克,Wryneck,A,A,B,B
+258,レプラカーン,莱普拉康,Leprechaun,A,A,B,B
+259,アフロダイA,爱神A,Aphrodite A,-,A,B,B
+260,ダイアナンA,戴安娜A,Diana A,-,A,B,B
+261,ボスボロット,波士机器人,Boss Borot,-,A,C,C
+262,マジンガーZ,魔神Z,Mazinger Z,-,A,B,B
+263,マジンガーZ(JS),魔神Z（JS）,Mazinger Z (JS),A,A,B,B
+264,ミネルバX,米涅瓦X,Minerva X,-,A,B,B
+265,戦闘獣グラトニオス,战斗兽格拉托尼奥斯,Battle Beast Gratonios,A,A,A,-
+266,戦闘獣ダンテ,战斗兽但丁,Battle Beast Dante,A,A,B,-
+267,ドラゴノザウルス,德拉戈诺龙,Dragonosaurus,-,A,A,-
+268,光波獣ピグドロン,光波兽皮格德隆,Lightwave Beast Pigdron,A,A,D,A
+269,ドール,多尔,Doll,-,A,D,-
+270,ニューレイズナー,新雷兹纳,New Layzner,A,A,C,A
+271,バルディ,巴尔迪,Buldy,A,A,C,A
+272,ベイブル,贝布尔,Baybull,A,A,C,A
+273,レイズナー,雷兹纳,Layzner,A,A,C,A
+274,グライムカイザル,格莱姆凯撒,Greimkaiser,A,A,C,A
+275,ブラッディカイザル,血腥凯撒,Bloodykaiser,A,A,B,A
+276,エルダール,艾尔达尔,Eldarl,A,A,C,A
+277,ガッシュラン,加修兰,Gasshalan,A,A,C,A
+278,ザカール,扎卡尔,Zakarl,A,A,C,A
+279,スカルガンナー,骷髅枪手,Skullgunner,A,A,C,A
+280,ソロムコ,索洛姆科,Slomco,A,A,C,A
+281,ターミネーターポリス,终结者警察,Terminator Police,A,A,C,A
+282,ダンコフ,丹科夫,Dankof,A,A,C,A
+283,ディマージュ,迪马吉,Dimarge,A,B,C,A
+284,ドトール,多托尔,Dotole,-,A,C,A
+285,ブルグレン,布尔格伦,Bullgrenn,A,A,C,A
+286,ブレイバー,布雷巴,Braver,A,A,C,A
+287,ガ・ゾウム,加佐姆,Ga-Zowmn,A,A,C,A
+288,ジャムル・フィン,杰姆鲁·芬,Jamru Fin,A,A,C,A
+289,ビギナ・ギナ,比基纳·基纳,Vigna-Ghina,-,A,A,A
+290,ガンダムマックスターB,极限之星高达B,Gundam Maxter B,-,A,C,A
+291,トーラス(MA),陶拉斯（MA）,Taurus (MA),A,-,-,A
+292,ガンダムエピオン(MA),艾比安高达（MA）,Gundam Epyon (MA),A,-,-,A
+293,ダルジャン,达尔姜,Daljan,A,A,C,A
+294,量産型νガンダムF,量产型ν高达F,MP Nu Gundam F,-,A,C,A
+295,フルアーマー百式改,全装甲百式改,FA Hyaku-Shiki Kai,-,A,A,A
+296,量産型νガンダムI,量产型ν高达I,MP Nu Gundam I,-,A,C,A
+297,超獣シシリス・ガロ,超兽西西里斯·加罗,Super Beast Shishiris Garo,A,A,B,A
+298,ビッグシリウス,大天狼星,Big Sirius,A,A,B,A
+299,マグマ獣ダークロン,岩浆兽达克隆,Magma Beast Darkron,A,A,B,A
+300,セント・マグマ,圣·马格玛,Saint Magma,A,-,-,A
+301,超獣シシリス・キバ,超兽西西里斯·基巴,Super Beast Shishiris Kiba,A,A,B,A
+302,ドール(飛行),多尔（飞行）,Doll (Flight),A,-,-,A
+303,デビルガンダム,恶魔高达,Devil Gundam,-,A,A,A
+304,デモニカ,德摩尼卡,Demonica,A,-,A,-
+305,ムゲ・ゾルバドス城,穆格·佐尔巴多斯城,Muge Zorbados Castle,A,-,-,A
+306,スーパーアースゲイン,超级夺地者,Super Earthgain,A,A,B,A
+307,スイームルグS,菲因梅露姆S,Sweemurg S,A,A,B,A
+308,アシュクリーフAF,阿修克里夫AF,Ashcleef AF,A,-,-,A
+309,ゴッドガンダム,神高达,God Gundam,-,A,A,A
+310,シャイニングガンダム,闪光高达,Shining Gundam,-,A,A,A
+311,シャイニングガンダム,闪光高达,Shining Gundam,-,A,A,A
+312,シャイニングガンダム,闪光高达,Shining Gundam,-,A,A,A
+313,ノーベルガンダム,诺贝尔高达,Noble Gundam,-,A,C,A
+314,νガンダム,ν高达,Nu Gundam,-,A,C,A
+315,ギラ・ドーガ,吉拉·德卡,Geara Doga,-,A,B,A
+316,バウ,巴乌,Bawoo,-,A,C,A
+317,バウンド・ドック,猎犬,Baund Doc,-,A,C,A
+318,バウンド・ドック,猎犬,Baund Doc,-,A,C,A
+319,エアリーズ,艾亚里斯,Aries,A,A,C,A
+320,ズワァース,兹瓦斯,Zwarth,A,A,B,B
+321,マスターガンダム,尊者高达,Master Gundam,-,A,A,A
+322,マスターガンダム,尊者高达,Master Gundam,-,A,A,A
+323,キュベレイmkⅡ,卡碧尼Mk-Ⅱ,Qubeley Mk-II,-,A,C,A
+324,シェンロンガンダム,神龙高达,Shenlong Gundam,-,A,B,A
+325,νガンダム,ν高达,Nu Gundam,-,A,C,A
+326,ガンダムローズ,玫瑰高达,Gundam Rose,-,A,C,A
+327,ノウルーズ,诺鲁孜,Norouz,-,A,B,A
+328,シグルーン,西格露恩,Sigroon,-,A,B,A
+329,スードリ,苏德里,Sudori,A,-,-,-
+330,ズメズメ,兹美兹美,Zumezume,A,B,C,A
+331,フイフイ,飞飞,Fuifui,A,B,C,A
+332,ギンギン,金金,Gingin,A,B,C,A
+333,ドズドズ,多兹多兹,Dozudozu,A,B,C,A
+334,フビフビ,胡比胡比,Fubifubi,A,B,C,A
+335,コールガッチ,科尔加奇,Callgatti,A,-,-,A
+336,ランドーラ,兰多拉,Landora,A,-,-,A
+337,ガニメデス,加尼梅德斯,Ganymedes,A,-,-,A
+338,ギャンドーラ,甘多拉,Gandora,A,-,-,A
+339,ドール,多尔,Doll,-,A,D,-
+340,ドール(飛行),多尔（飞行）,Doll (Flight),A,-,-,A
+341,リ・ガズィ(BWS),灵格斯（BWS）,Re-GZ (BWS),A,-,-,A
+342,リ・ガズィ,灵格斯,Re-GZ,-,A,C,A
+343,ガンダムmkⅡ,高达Mk-Ⅱ,Gundam Mk-II,-,A,C,A
+344,バストール,巴斯托尔,Bastole,A,A,B,B
+345,シュツルム・ディアス,疾风迪亚斯,Schuzrum-Dias,-,A,C,A
+346,シュツルム・ディアス,疾风迪亚斯,Schuzrum-Dias,-,A,C,A
+347,ハイパーガラバ,超级卡拉巴,Hyper Gallaba,A,-,-,B
+348,ハイパーズワァース,超级兹瓦斯,Hyper Zwarth,A,A,B,B
+349,ハイパーライネック,超级莱内克,Hyper Wryneck,A,A,B,B
+350,ハイパーレプラカーン,超级莱普拉康,Hyper Leprechaun,A,A,B,B
+351,ジェガン,杰刚,Jegan,-,A,C,A
+352,トーラス,陶拉斯,Taurus,-,A,C,A
+353,トーラス(MA),陶拉斯（MA）,Taurus (MA),A,-,-,A
+354,イーグル号,飞鹰号,Eagle,A,-,-,-
+355,ジャガー号,美洲豹号,Jaguar,A,-,-,-
+356,ベアー号,巨熊号,Bear,A,-,-,-
+357,ドラゴン号,龙号,Dragon,A,-,-,-
+358,ライガー号,狮虎号,Liger,A,-,-,-
+359,ポセイドン号,波塞冬号,Poseidon,A,-,-,-
+360,シャトル号,穿梭号,Shuttle,A,-,-,-
+361,ブラックジョーカー,黑色小丑,Black Joker,-,A,A,-
+362,シュバルツ,修巴鲁兹,Schwarz,-,A,A,-

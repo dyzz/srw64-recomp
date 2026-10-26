@@ -1,0 +1,265 @@
+pilot,name_ja,name_zh,name_en,record,shares_record_with,air,land,sea,space
+3,シュバルツ,修巴鲁兹,Schwarz,0,,A,A,A,A
+4,ドモン,多蒙,Domon,1,273 274,A,A,B,A
+7,レイン,玲,Rain,2,,A,A,B,A
+8,アルゴ,阿尔戈,Argo,3,275,A,A,B,A
+9,アレンビー,阿莲比,Allenby,4,,A,A,B,A
+10,キラル,基拉尔,Kyral,5,,A,A,B,A
+11,サイ・サイシー,蔡赛西,Sai Saici,6,276,A,A,B,A
+12,ジョルジュ,乔治,George,7,277,A,A,B,A
+13,チボデー,奇波迪,Chibodee,8,278,A,A,B,A
+14,ウォン,黄润发,Wong,9,,A,A,B,A
+15,キョウジ,京二,Kyoji,10,,A,A,B,A
+16,シジーマ,施哲马,Sijima,11,,A,A,B,A
+17,マーキロット,马基特,Markiroot,12,,A,A,B,A
+18,マスター,东方不败,Master,13,,A,A,A,A
+24,ローレンス,劳伦斯,Lawrence,14,,-,-,-,-
+25,アーク,阿克,Ark,15,,A,A,A,A
+26,セレイン,塞蕾茵,Selain,16,,A,A,A,A
+27,ブラッド,布拉德,Brad,17,,A,A,A,A
+28,マナミ,玛娜米,Manami,18,,A,A,A,A
+29,エルリッヒ,埃尔利希,Ehrlich,19,,A,A,A,A
+30,リッシュ,利修,Rish,20,,A,A,A,A
+31,カーツ,卡茨,Kurtz,21,,A,A,A,A
+32,アイシャ,艾夏,Aisha,22,,A,A,A,A
+33,ヴァル＝ア,瓦尔＝阿,Val-A,23,,A,A,A,A
+34,アヴィ＝ルー,阿维＝露,Avie-Lu,24,,A,A,A,A
+35,ジェイ＝レン,杰伊＝伦,J-Ren,25,,A,A,A,A
+36,アムロ,阿姆罗,Amuro,26,,A,A,B,A
+37,エマリー,艾玛丽,Emary,27,,A,B,B,A
+38,カミーユ,卡缪,Kamille,28,,A,A,B,A
+39,クワトロ,克瓦特罗,Quattro,29,,A,A,A,A
+40,コウ,宏,Kou,30,,A,A,B,A
+41,シーブック,西布克,Seabook,31,,A,A,B,A
+42,ジュドー,捷度,Judau,32,,A,A,B,A
+43,シロー,士郎,Shiro,33,,A,A,B,A
+45,ファ,花,Fa,34,,A,A,B,A
+46,ブライト,布莱特,Bright,35,,A,A,C,A
+49,ヘンケン,汉肯,Henken,36,,A,B,B,A
+50,ルー,露,Roux,37,,A,A,B,A
+51,アイナ,爱娜,Aina,38,,A,A,B,A
+52,ガトー,卡多,Gato,39,,A,A,A,A
+53,エマ,艾玛,Emma,40,,B,A,B,A
+54,プル,普露,Ple,41,,A,A,A,A
+55,クェス,葵丝,Quess,42,,A,A,C,A
+56,フォウ,凤,Four,43,,A,A,B,A
+57,プルツー,普露兹,Ple-Two,44,,A,A,A,A
+58,マシュマー,马修玛,Mashymre,45,,A,A,B,A
+59,ロザミア,罗莎米娅,Rosamia,46,,A,A,B,A
+60,アリアス,阿里亚斯,Arius,47,,A,A,B,A
+61,イリア,伊莉亚,Illia,48,,A,A,B,A
+62,オルテガ,奥尔特加,Ortega,49,,B,A,B,A
+63,ガイア,盖亚,Gaia,50,,B,A,B,A
+64,カクリコン,卡克利康,Kacricon,51,,A,A,A,A
+65,キャラ,姬拉,Chara,52,,A,A,B,A
+66,ギュネイ,邱尼,Gyunei,53,,A,A,C,A
+67,グレミー,格雷米,Glemy,54,,A,A,A,A
+68,ゲーツ,盖茨,Gates,55,,A,A,B,A
+69,ジェリド,杰利德,Jerid,56,,A,A,A,A
+70,シャア,夏亚,Char,57,,A,A,A,A
+72,バスク,巴斯克,Bask,58,,A,B,B,A
+73,シロッコ,西罗克,Scirocco,59,,A,A,A,A
+74,ハマーン,哈曼,Haman,60,,A,A,A,A
+75,ブラン,布兰,Buran,61,,A,A,A,B
+77,マウアー,玛雅,Mouar,62,,A,A,B,A
+78,マッシュ,马修,Mash,63,,B,A,B,A
+79,ヤザン,亚赞,Yazan,64,,A,A,A,A
+80,ライラ,莱拉,Lila,65,,A,A,A,A
+81,ラカン,拉坎,Rakan,66,,A,A,A,A
+82,レズン,蕾森,Rezin,67,,A,A,A,A
+86,ヒルデ,希尔妲,Hilde,68,,A,A,A,A
+87,ラシード,拉席德,Rasid,69,,A,A,A,A
+89,カトル,卡特尔,Quatre,70,,A,A,A,A
+91,五飛,五飞,Wufei,71,,A,A,A,A
+92,デュオ,迪奥,Duo,72,,A,A,A,A
+93,トロワ,特洛瓦,Trowa,73,,A,A,A,A
+95,ヒイロ,希罗,Heero,74,,A,A,A,A
+96,ミリアルド,米利亚尔特,Milliardo,75,,A,A,A,A
+97,ノイン,诺茵,Noin,76,,A,A,A,A
+98,レディ,蕾蒂,Lady,77,,A,A,A,A
+99,アレックス,亚历克斯,Alex,78,,A,A,A,A
+100,カーンズ,坎斯,Quinze,79,,A,B,B,A
+101,ゼクス,杰克斯,Zechs,80,,A,A,A,A
+103,トレーズ,特列斯,Treize,81,,A,A,A,A
+104,ドロシー,多萝西,Dorothy,82,,A,A,B,A
+105,ミューラー,穆勒,Mueller,83,,A,A,A,A
+106,ワーカー,沃克,Walker,84,,A,A,A,A
+107,ジュン,纯,Jun,85,,A,A,B,B
+108,鉄也,铁也,Tetsuya,86,,A,A,A,B
+109,ヤヌス侯爵,雅努斯侯爵,Marquis Janus,87,,A,A,A,B
+110,暗黒大将軍,暗黑大将军,Great General of Darkness,88,,A,A,B,B
+111,地獄大元帥,地狱大元帅,Great Marshal of Hell,89,,A,A,B,B
+112,デューク,杜克,Duke,90,,A,A,A,A
+113,マリア,玛丽亚,Maria,91,,A,A,C,A
+114,ひかる,光,Hikaru,92,,A,C,A,A
+115,キリカ,基里卡,Kirika,93,,A,A,A,A
+116,ナイーダ,娜伊达,Naida,94,,A,A,A,A
+117,ガンダル,甘达尔,Gandal,95,,A,A,A,A
+118,ゴーマン,戈曼,Gorman,96,,A,A,A,A
+119,ブラッキー,布拉奇,Blacky,97,,A,A,A,A
+120,ベンケイ,弁庆,Benkei,98,,D,A,A,B
+121,ハヤト,隼人,Hayato,99,,D,A,D,A
+123,ムサシ,武藏,Musashi,100,,D,A,A,B
+124,リョウ,龙马,Ryoma,101,,A,B,D,A
+125,グラー博士,格拉博士,Dr. Gura,102,,A,A,C,B
+126,ブライ大帝,布莱大帝,Emperor Burai,103,,A,A,A,B
+127,牛餓鬼,牛饿鬼,Gyugaki,104,,A,A,B,B
+128,牛剣鬼,牛剑鬼,Gyukenki,105,,A,A,B,B
+129,鉄甲鬼,铁甲鬼,Tekkoki,106,,A,A,A,A
+130,暴竜鬼,暴龙鬼,Boryuki,107,,A,A,B,B
+131,キリー,基利,Killy,108,,-,-,-,-
+132,レミー,蕾米,Remy,109,,-,-,-,-
+133,真吾,真吾,Shingo,110,,A,A,B,B
+134,ナオト,直人,Naoto,111,,-,-,-,-
+136,ミカ,美佳,Mika,112,,-,-,-,-
+137,ケンジ,健治,Kenji,113,,A,A,B,A
+138,タケル,武,Takeru,114,,A,A,A,A
+139,アキラ,辉,Akira,115,,-,-,-,-
+140,ロゼ,罗塞,Roze,116,,A,A,A,A
+141,ズール皇帝,祖鲁皇帝,Emperor Zuul,117,,A,A,A,A
+142,バレン,巴伦,Baren,118,,A,A,A,A
+143,マーグ,玛古,Marg,119,,A,A,A,A
+144,ワール,瓦尔,Wahl,120,,A,A,A,A
+145,豹馬,豹马,Hyoma,121,,A,A,B,B
+146,大作,大作,Daisaku,122,,A,A,C,B
+147,ちずる,千鹤,Chizuru,123,,A,A,A,B
+148,小介,小介,Kosuke,124,,A,A,A,B
+149,十三,十三,Juzo,125,,A,A,B,B
+150,ジャネラ,加涅拉,Janera,126,,A,A,A,B
+151,宇宙太,宇宙太,Uchuta,127,,C,A,B,A
+152,勝平,胜平,Kappei,128,,A,A,C,A
+153,恵子,惠子,Keiko,129,,A,C,A,A
+154,銀鈴,银铃,Ginrei,130,,B,A,B,B
+156,大作,大作,Daisaku,131,,A,A,B,B
+157,Qボス,Q老大,Q Boss,132,,A,A,C,C
+158,イワン,伊万,Ivan,133,,A,A,A,A
+159,レッド,赤假面,Red,134,,A,A,A,A
+161,アルベルト,阿尔伯特,Alberto,135,,A,A,A,A
+165,万丈,万丈,Banjo,136,,A,A,A,A
+166,アラン,阿兰,Alan,137,,A,A,B,A
+168,沙羅,沙罗,Sara,138,,A,A,B,A
+169,亮,亮,Ryo,139,,A,A,B,A
+170,雅人,雅人,Masato,140,,A,A,B,A
+171,忍,忍,Shinobu,141,,A,A,B,A
+173,ギルドローム,吉尔德罗姆,Gildrome,142,,A,A,B,A
+174,シャピロ,夏比罗,Shapiro,143,,A,A,B,A
+175,デスガイヤー,迪斯盖亚,Death Gaia,144,,A,A,B,A
+176,ヘルマット,赫尔马特,Helmut,145,,A,A,B,A
+177,ムゲ帝王,穆格帝王,Emperor Muge,146,,A,A,B,A
+178,ルーナ,露娜,Luna,147,,A,A,B,A
+179,エレ,艾蕾,Elle,148,,A,A,B,B
+180,シーラ,席拉,Ciela,149,,A,A,B,B
+181,ショウ,翔,Show,150,,A,A,B,B
+182,シルキー,希露奇,Silky,151,,-,-,-,-
+183,チャム,恰姆,Chum,152,,-,-,-,-
+184,マーベル,玛蓓儿,Marvel,153,,A,A,B,B
+185,ガラリア,卡拉利亚,Garalia,154,,A,A,B,B
+186,トッド,陶德,Tod,155,,A,A,B,B
+187,アレン,艾伦,Allen,156,,A,A,B,B
+188,ジェリル,洁丽露,Jeril,157,,A,A,B,B
+189,ショット,秀特,Shot,158,,A,A,B,B
+190,ドレイク,德雷克,Drake,159,,A,A,B,B
+191,バーン,巴恩,Bern,160,,A,A,B,B
+192,フェイ,菲,Fei,161,,A,A,B,B
+193,ミュージィ,缪吉,Musy,162,,A,A,B,B
+194,黒騎士,黑骑士,Black Knight,163,,A,A,B,B
+195,ボス,波士,Boss,164,,C,A,C,C
+196,甲児,甲儿,Koji,165,,A,A,B,B
+197,さやか,沙也加,Sayaka,166,,B,A,B,B
+199,エリカ,艾莉卡,Erika,167,,C,A,C,C
+201,エイジ,英二,Eiji,168,,A,A,B,A
+204,シモーヌ,西蒙娜,Simone,169,,A,A,B,A
+205,デビッド,大卫,David,170,,A,A,B,A
+206,ゲイル,盖尔,Gale,171,,A,A,B,A
+207,ジュリア,朱莉娅,Julia,172,,A,A,B,A
+208,ロアン,罗安,Roanne,173,,A,A,B,A
+209,カルラ,卡尔拉,Karla,174,,A,A,B,A
+210,ギウラ,基乌拉,Giura,175,,A,A,B,A
+213,ゲティ,盖蒂,Getty,176,,A,A,B,A
+214,ゴステロ,戈斯特罗,Gosterro,177,,A,A,B,A
+215,ボーン,伯恩,Borne,178,,A,A,B,A
+216,マンジェロ,曼杰罗,Mangelo,179,,A,A,B,A
+217,ル・カイン,鲁·凯恩,Le Cain,180,,A,A,B,A
+218,ゴステロ,戈斯特罗,Gosterro,181,,A,A,B,A
+220,ウッダー,伍德,Wooder,182,,A,B,B,A
+221,パンパ,潘帕,Pampa,183,,A,A,B,A
+222,ワイム,怀姆,Wyme,184,,A,A,B,A
+223,ビアン,比安,Beanne,185,,A,A,B,A
+224,デル,德尔,Dale,186,,A,A,B,A
+225,ダニー,丹尼,Danny,187,,A,A,B,A
+226,デューン,杜恩,Deune,188,,A,A,B,A
+227,ラムサス,拉姆萨斯,Ramsus,189,,A,A,B,A
+228,ダンケル,邓克尔,Dunkel,190,,A,A,B,A
+230,セシリー,塞西莉,Cecily,191,,A,A,B,A
+232,ビーチャ,比查,Beecha,192,,A,A,B,A
+233,イーノ,伊诺,Iino,193,,A,A,B,A
+234,エル,艾露,Elle,194,,A,A,B,A
+235,モンド,蒙多,Mondo,195,,A,A,B,A
+236,アポリー,阿波利,Apolly,196,,A,A,B,A
+237,ロベルト,罗伯托,Roberto,197,,A,A,B,A
+238,ケーラ,凯拉,Kayra,198,,A,B,A,A
+242,ダンゲル,丹格尔,Dungele,199,,A,A,A,B
+243,ワルキメデス,瓦基米德,Warchimedes,200,,A,A,A,B
+245,レディ,蕾蒂,Lady,201,,A,A,A,A
+246,キャラ,姬拉,Chara,202,,A,A,B,A
+248,アレンビー,阿莲比,Allenby,203,,A,A,B,A
+249,カトル,卡特尔,Quatre,204,,A,A,A,A
+250,ハワード,霍华德,Howard,205,,A,B,B,A
+251,フォウ,凤,Four,206,,A,A,B,A
+252,ロザミア,罗莎米娅,Rosamia,207,,A,A,B,A
+253,葉月博士,叶月博士,Dr. Hazuki,208,,A,B,B,A
+258,アルゴ,阿尔戈,Argo,209,,A,A,B,A
+259,サイ・サイシー,蔡赛西,Sai Saici,210,,A,A,B,A
+260,ジョルジュ,乔治,George,211,,A,A,B,A
+261,チボデー,奇波迪,Chibodee,212,,A,A,B,A
+262,アムロ,阿姆罗,Amuro,213,,A,A,B,A
+263,カミーユ,卡缪,Kamille,214,,A,A,B,A
+264,ファ,花,Fa,215,,A,A,B,A
+265,エマ,艾玛,Emma,216,,B,A,B,A
+266,ヒルデ,希尔妲,Hilde,217,,A,A,A,A
+268,トロワ,特洛瓦,Trowa,218,,A,A,A,A
+269,ノイン,诺茵,Noin,219,,A,A,A,A
+270,ドロシー,多萝西,Dorothy,220,,A,A,B,A
+271,甲児,甲儿,Koji,221,,A,A,B,B
+272,ロアン,罗安,Roanne,222,,A,A,B,A
+273,ドモン,多蒙,Domon,1,4 274,A,A,B,A
+274,ドモン,多蒙,Domon,1,4 273,A,A,B,A
+275,アルゴ,阿尔戈,Argo,3,8,A,A,B,A
+276,サイ・サイシー,蔡赛西,Sai Saici,6,11,A,A,B,A
+277,ジョルジュ,乔治,George,7,12,A,A,B,A
+278,チボデー,奇波迪,Chibodee,8,13,A,A,B,A
+279,ドロシー,多萝西,Dorothy,223,,A,A,B,A
+284,クェス,葵丝,Quess,256,,A,A,C,A
+285,ル・カイン,鲁·凯恩,Le Cain,224,,A,A,B,A
+286,ゼクス,杰克斯,Zechs,255,,A,A,A,A
+287,AI,,,225,,A,A,C,A
+288,スペシャルズ,特殊部队,Specials,226,,A,A,C,A
+289,スペシャルズ,特殊部队,Specials,227,,A,A,C,A
+290,マグアナック兵,马格纳克兵,Maganac Soldier,228,,A,A,C,A
+291,バイストンウェル兵,拜斯顿·威尔兵,Byston Well Soldier,229,,A,A,B,B
+292,アクシズ兵,阿克西斯兵,Axis Soldier,230,,A,A,C,A
+293,ネオジオン兵,新吉翁兵,Neo Zeon Soldier,231,,A,A,C,A
+294,ギシン星兵,异震星兵,Gishin Soldier,232,,A,A,B,A
+295,ベガ星兵,贝加星兵,Vega Soldier,233,,A,A,B,A
+296,グラドス兵,格拉多斯兵,Grados Soldier,234,,A,A,C,A
+297,グラドス兵,格拉多斯兵,Grados Soldier,235,,A,A,B,A
+298,ムゲ兵,穆格兵,Muge Soldier,236,,A,A,C,A
+299,ゾンビ兵,僵尸兵,Zombie Soldier,237,,A,A,C,A
+300,ゲリラ,游击队员,Guerrilla,238,,A,A,C,A
+301,ゲリラ,游击队员,Guerrilla,239,,A,A,C,A
+302,ゲリラ,游击队员,Guerrilla,240,,A,A,C,A
+303,ゲリラ,游击队员,Guerrilla,241,,A,A,C,A
+304,ゲリラ,游击队员,Guerrilla,242,,A,A,C,A
+305,スペシャルズ,特殊部队,Specials,243,,A,A,B,A
+306,スペシャルズ,特殊部队,Specials,244,,A,A,B,A
+307,スペシャルズ,特殊部队,Specials,245,,A,A,B,A
+308,スペシャルズ,特殊部队,Specials,246,,A,A,B,A
+309,アクシズ兵,阿克西斯兵,Axis Soldier,247,,A,A,B,A
+310,アクシズ兵,阿克西斯兵,Axis Soldier,248,,A,A,B,A
+311,ネオジオン兵,新吉翁兵,Neo Zeon Soldier,249,,A,A,B,A
+312,ネオジオン兵,新吉翁兵,Neo Zeon Soldier,250,,A,A,B,A
+313,AI,,,251,359,A,A,B,A
+314,プルクローン,普露克隆,Ple Clone,252,,A,A,B,A
+315,ゲリラ,游击队员,Guerrilla,253,,A,A,C,A
+316,ハミルトン,汉密尔顿,Hamilton,254,,A,A,C,A
+359,AI,,,251,313,A,A,B,A
