@@ -70,7 +70,7 @@ yourname.space/
 
 ## サンプル
 
-[`space-a`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a) は、味方の主力で宇宙適応が A 未満のパイロット 20 人とユニット 21 機の宇宙を A にします。マジンガー系、コン・バトラーV、ゲッター3、ゴーショーグン、ジャイアント・ロボ、ダンバイン系、ガンキャノン、ガンタンクなど。
+サンプルパッケージ「主力 宇宙適応A」は [MOD ダウンロード](/ja/mods/#srw64.space-a)ページからダウンロードできます。ソースは [`config/recomp/mods/space-a`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a) です。これは、味方の主力で宇宙適応が A 未満のパイロット 20 人とユニット 21 機の宇宙を A にします。マジンガー系、コン・バトラーV、ゲッター3、ゴーショーグン、ジャイアント・ロボ、ダンバイン系、ガンキャノン、ガンタンクなど。
 
 ### AI に任せる
 

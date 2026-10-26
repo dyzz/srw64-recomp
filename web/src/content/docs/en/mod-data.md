@@ -70,7 +70,7 @@ Entries with the same name are different numbers: another form, an enemy copy or
 
 ## Sample
 
-[`space-a`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a) raises space to A for the 20 pilots and 21 units of the main cast below A there: the Mazinger team, Combattler V, Getter-3, GoShogun, Giant Robo, the Dunbine cast, Guncannon, Guntank and more.
+The sample package Main Cast: Space A is on the [Mod downloads](/en/mods/#srw64.space-a) page, with its source in [`config/recomp/mods/space-a`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a). It raises space to A for the 20 pilots and 21 units of the main cast below A there: the Mazinger team, Combattler V, Getter-3, GoShogun, Giant Robo, the Dunbine cast, Guncannon, Guntank and more.
 
 ### Let an AI do it
 

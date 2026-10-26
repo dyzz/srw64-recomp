@@ -18,6 +18,7 @@ const after = [
 ];
 // The MOD menu: the two MOD guides (in the docs) and the web BGM maker.
 const mods = [
+  { href: `/${lang}/mods/`, label: UI.nav.modDownloads[lang], exact: true },
   { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[lang] },
   { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[lang] },
   { href: `/${lang}/docs/mod-data/`, label: UI.nav.modData[lang] },
@@ -25,7 +26,9 @@ const mods = [
   { href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[lang] },
 ];
 function isMod(p: string) { return mods.some((m) => p.startsWith(m.href.replace(/\/$/, ''))); }
-const here = (p: string) => (it: { href: string }) => p.startsWith(it.href.replace(/\/$/, ''));
+// The downloads page is /<lang>/mods/, the prefix of the BGM maker and the ID table too: exact.
+const here = (p: string) => (it: { href: string; exact?: boolean }) =>
+  it.exact ? p.replace(/\/$/, '') === it.href.replace(/\/$/, '') : p.startsWith(it.href.replace(/\/$/, ''));
 ---
 <header class="site-header">
   <div class="wrap bar">

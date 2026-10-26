@@ -70,7 +70,7 @@ yourname.space/
 
 ## 示例
 
-[`space-a`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a) 把我方主力里宇宙不到 A 的 20 名驾驶员和 21 台机体的宇宙改成 A：魔神系、孔巴特拉V、盖塔3、豪将军、大铁人、丹拜因系、钢加农、钢坦克等。
+示例包「主力宇宙适应 A」可以在 [MOD 下载](/zh/mods/#srw64.space-a)页下载，源文件在 [`config/recomp/mods/space-a`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a)。它把我方主力里宇宙不到 A 的 20 名驾驶员和 21 台机体的宇宙改成 A：魔神系、孔巴特拉V、盖塔3、豪将军、大铁人、丹拜因系、钢加农、钢坦克等。
 
 ### 交给 AI 做
 

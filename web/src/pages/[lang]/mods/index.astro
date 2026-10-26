@@ -1,0 +1,111 @@
+---
+// MOD downloads: the packages this site hosts itself (web/scripts/export_mods.py packs them
+// into public/mods and writes src/data/mods/<id>.json). Other people's packages will be
+// listed from their GitHub Releases (docs/design/mod-packages.md §13) once submissions open.
+import Base from '../../../layouts/Base.astro';
+import { langPaths, type Lang } from '../../../i18n';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+type Text = { ja?: string; 'zh-Hans'?: string; en?: string };
+type Mod = {
+  id: string; version: string; name: Text; description?: Text; authors: string[]; license: string; game: string;
+  contents: string[]; file: string; bytes: number; sha256: string; url: string; source: string; published: string | null;
+};
+const mods = Object.values(import.meta.glob<Mod>('../../../data/mods/*.json', { eager: true, import: 'default' }))
+  .sort((a, b) => a.id.localeCompare(b.id));
+const loc = { zh: 'zh-Hans', en: 'en', ja: 'ja' }[lang] as keyof Text;
+const pick = (t: Text | undefined) => (t ? t[loc] ?? t.en ?? t.ja ?? '' : '');
+const t = {
+  title: { zh: 'MOD 下载', en: 'Mod downloads', ja: 'MOD ダウンロード' },
+  lead: {
+    zh: '我们自己做的 MOD 包，可以直接从这里下载。把下载的 .srw64mod 文件拖进游戏窗口就会安装，在 MOD 管理里可以停用或删除。安卓版暂时不能安装 MOD。',
+    en: 'Mod packages we made ourselves, to download here. Drop the .srw64mod file on the game window to install it; the MOD manager disables or removes it. Android cannot install mods yet.',
+    ja: '私たちが作った MOD パッケージを、ここからダウンロードできます。.srw64mod ファイルをゲームのウィンドウにドラッグするとインストールされ、MOD 管理で無効化や削除ができます。Android 版はまだ MOD をインストールできません。',
+  },
+  make: {
+    zh: '自己做包：', en: 'Making your own: ', ja: '自分で作るには：',
+  },
+  guides: [
+    { href: 'docs/mods/', zh: 'MOD 包', en: 'Mod packages', ja: 'MOD パッケージ' },
+    { href: 'docs/mod-data/', zh: '数值 MOD', en: 'Number mods', ja: '数値 MOD' },
+    { href: 'docs/mod-music/', zh: '音乐 MOD', en: 'Music mods', ja: '音楽 MOD' },
+  ],
+  download: { zh: '下载', en: 'Download', ja: 'ダウンロード' },
+  version: { zh: '版本', en: 'Version', ja: 'バージョン' },
+  game: { zh: '需要游戏', en: 'Needs the game', ja: '対応ゲーム' },
+  authors: { zh: '作者', en: 'Authors', ja: '作者' },
+  license: { zh: '许可', en: 'License', ja: 'ライセンス' },
+  updated: { zh: '更新', en: 'Updated', ja: '更新' },
+  contents: { zh: '内容', en: 'Contents', ja: '内容' },
+  source: { zh: '源文件（GitHub）', en: 'Source (GitHub)', ja: 'ソース（GitHub）' },
+  checksum: { zh: '校验', en: 'Checksum', ja: 'チェックサム' },
+  none: { zh: '还没有可以下载的包。', en: 'No packages yet.', ja: 'まだパッケージはありません。' },
+};
+const kinds: Record<string, { zh: string; en: string; ja: string }> = {
+  data: { zh: '数值', en: 'Numbers', ja: '数値' },
+  audio: { zh: '音乐', en: 'Music', ja: '音楽' },
+  campaign: { zh: '战役', en: 'Campaign', ja: 'キャンペーン' },
+  art: { zh: '图片', en: 'Art', ja: '画像' },
+};
+// ">=0.5.1" as words; anything else as written.
+const needs = (req: string) => {
+  const m = /^>=\s*([\d.]+)$/.exec(req.trim());
+  if (!m) return req === '*' ? { zh: '任意版本', en: 'Any version', ja: '全バージョン' }[lang] : req;
+  return { zh: `${m[1]} 或更新`, en: `${m[1]} or later`, ja: `${m[1]} 以降` }[lang];
+};
+const size = (n: number) => (n < 1024 ? `${n} B` : `${(n / 1024).toFixed(1)} KB`);
+---
+<Base lang={lang} title={t.title[lang]} description={t.lead[lang]}>
+  <div class="wrap mods">
+    <header class="page-head">
+      <span class="tag">MOD</span>
+      <h1>{t.title[lang]}</h1>
+      <p>{t.lead[lang]}</p>
+      <p class="note">{t.make[lang]}{t.guides.map((g, i) => <>{i > 0 && (lang === 'en' ? ', ' : '、')}<a href={`/${lang}/${g.href}`}>{g[lang]}</a></>)}</p>
+    </header>
+    {mods.length === 0 && <p class="note">{t.none[lang]}</p>}
+    <ul class="list">
+      {mods.map((m) => (
+        <li class="card" id={m.id}>
+          <div class="head">
+            <div>
+              <h2>{pick(m.name)}</h2>
+              <code class="id">{m.id}</code>
+            </div>
+            <a class="btn" href={m.url} download={m.file}>{t.download[lang]}<small>{m.file} · {size(m.bytes)}</small></a>
+          </div>
+          {m.description && <p class="desc">{pick(m.description)}</p>}
+          <dl>
+            <div><dt>{t.version[lang]}</dt><dd class="latin">{m.version}</dd></div>
+            <div><dt>{t.game[lang]}</dt><dd>{needs(m.game)}</dd></div>
+            <div><dt>{t.contents[lang]}</dt><dd>{m.contents.map((c) => kinds[c]?.[lang] ?? c).join(lang === 'en' ? ', ' : '、')}</dd></div>
+            <div><dt>{t.authors[lang]}</dt><dd>{m.authors.join(', ')}</dd></div>
+            <div><dt>{t.license[lang]}</dt><dd class="latin">{m.license}</dd></div>
+            {m.published && <div><dt>{t.updated[lang]}</dt><dd class="latin">{m.published}</dd></div>}
+          </dl>
+          <p class="foot"><span class="k">{t.checksum[lang]}</span> <code class="sha">SHA-256 {m.sha256}</code> · <a href={m.source}>{t.source[lang]}</a></p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .mods { padding-bottom: 64px; }
+  .note { color: var(--muted); font-size: 14px; }
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .card { padding: 20px 22px; background: var(--panel); border: 1px solid var(--line-soft); display: grid; gap: 14px; scroll-margin-top: 80px; }
+  .card:target { border-color: var(--gold); }
+  .head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .head h2 { margin: 0 0 4px; font-size: 22px; }
+  .id { color: var(--muted); font-size: 13px; }
+  .head .btn { text-align: center; }
+  .desc { margin: 0; line-height: 1.7; }
+  dl { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px 20px; }
+  dt { color: var(--muted); font-size: 13px; }
+  dd { margin: 2px 0 0; }
+  .foot { margin: 0; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+  .foot .k { margin-right: 4px; }
+  .sha { font-size: 12px; }
+</style>
