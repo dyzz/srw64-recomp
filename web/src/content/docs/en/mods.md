@@ -10,7 +10,7 @@ A mod package is a folder, or that folder zipped into one `.srw64mod` file. It h
 
 **For now music and terrain ranks take effect**: replacing songs and choosing which song a pilot or unit fights to, as described in [Music mods](../mod-music/), and changing the terrain ranks of units and pilots, as described in [Number mods](../mod-data/). Additional campaigns, art, dialogue, voices and other numbers will follow; the package format already has a place for them.
 
-Mods need a version newer than 0.5.0.
+Mods need version 0.5.1 or later.
 
 ## Installing
 

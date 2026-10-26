@@ -10,50 +10,26 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 | [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}) for macOS, Windows, Linux and Android. |
 {switch_hd_row_en}
 
-## What's new in 0.5.0
-
-### Nintendo Switch (experimental)
-
-- **A Switch version**, for a Switch with custom firmware (Atmosphère and hbmenu). It runs in application mode only: hold R while starting any game to reach hbmenu.
-- Unzip it to the SD card's root and put your ROM in `/switch/Marchwind64/` as `rom.z64`. The first launch imports it on the console in about half a minute.
-- Fills a 16:9 screen, docked or handheld. The Switch has an HD pack of its own (in the HD 1.2 release); the desktop pack does not work on it.
-
-### HD pack 1.2
-
-- Every map unit icon redrawn in an HD-2D style: 320 of them, each side but yours with a ring in its colours.
-- The story world map's two repeated tiles are now seamless HD.
-- Touch-ups to some unit poses and portraits.
-- GoShogun's Go Saber and Space Bazooka showed as white silhouettes in battle; they now have the original's colours.
-
-### Battle viewer and Library
-
-- **Combination attacks say their own lines**, with the partners the attack needs brought in for it.
-- **Pilots are listed by character**: a pilot the game keeps more than one record for (Shishiris-Kiba's AI and others) has an entry of its own with its own portrait, and speaks its own lines in battle; before, it could fall back to whoever was shown last (Domon).
-- **Every song sits under its work**: Ai no Kinjitou under Godmars, the game's own map and story music under Original, the Getter Robo theme under Getter Robo rather than G.
-- **A controller reaches the Library and the battle viewer from the title**: down from the title menu, left and right along the corner buttons, A to open.
+## What's new in 0.5.1
 
 ### Fixes
 
-- **After a GAME OVER, retrying brought back reinforcements already on the map**: the same enemy twice, sharing its HP, and the game crashed once one was shot down. This had been there since 0.3.3.
-- **With the original intermission screens, the Link screen was empty and nothing could be linked.**
-- **Story choices sat on the window frame, left of the green cursor bar**, and a long option shrank the whole block. Each option is now indented as in the original, one per row.
-- **A full-upgrade bonus weapon sometimes stayed locked**: after a machine swap with levels past the original cap (Mazinger Z upgraded to 13–15 becoming the JS type), or levels carried over by unified upgrades. Entering the intermission unlocks it, older saves included.
-- **Pilot pages: a skill not learned yet showed as another skill at L9** (Fa Yuiri joined with Shield Defense L9).
-- **Pilot list: the Getter team's units were off by one form** (Hayato on Getter-3, Musashi on Getter Poseidon).
-- At 1080p a scrollbar showed beside the spirit tags on the pre-battle page.
-- A few long notes in the settings window ran past its edge in Japanese and Chinese.
-- Android: on x86 devices or emulators (ARM translation) the game stopped at "No CJK font found".
-- Windows: some AMD integrated GPUs crashed after a driver reset under D3D12. Setting the environment variable SRW64_GRAPHICS_API=vulkan switches to Vulkan.
+- **The game froze on a save or an upgrade.** Saving a second time in one visit to the save screen (overwriting slot 1), or upgrading a unit, could stop the game while the screen went on running. Reported on 0.5.0 from an iQOO 12 and a Windows desktop; 0.5.0's 120 Hz timing made a flaw of the save screens far easier to hit.
+- **Counter Plan on the New and HD pre-battle pages** (#16): with any Counter Plan order other than Manual, these pages gave no way to change the response and the weapon button did nothing. They now open the response screen with the order's choice selected (counter with its weapon, evade or defend), and you can keep it or change it, another weapon included. The Original screen still follows the order without stopping.
+- **Names**: Psycho Gundam and ReGelgu by their official spellings; Battle Beast, Great General of Darkness, Great Marshal of Hell, Apolly, Roze, Devil Gundam and God Gundam from the website's suggestions. The Library names some English records by pilot or series instead of numbering them.
 
-### New features
+### MOD packages
 
-- **3× and 4× speed**: the speed key (Tab, R4, the phone's speed button) steps through original, 2×, 3× and 4× without a restart. 3× and 4× need the device to draw 90 and 120 frames a second and run slower where it cannot. Interpolation on high-refresh screens is smoother too.
-- **The pilot panels in battle show a buff bar**: only the spirit effects in effect, your buffs in gold and the debuffs the other side cast in red; with none the row takes no room.
-- **Combination attacks are always listed** in the intermission weapon list and the map's unit data; one that cannot be used now is grey, with a red line naming the partners it needs and how close they must stand. The Library names the partners too.
-- **Return to Title is the second-to-last row of the map and intermission menus**, on the original intermission screens as well as the new ones.
-- **EXP and money multipliers are separate cheats**, each ×1, ×1.5, ×2, ×3, ×5 or ×10. A multiplier set in an earlier version applies to both.
-- **Touch control opacity goes down to 0%**: the controls are invisible but still work.
-- **A lighter UI**: pages no longer redo their work every frame and update only what changed, so the UI thread on a phone uses about a third of what it did, and the pages and the pre-battle page answer keys faster.
+- **Install a MOD package by dropping it on the game window**, or put it in the MOD folder. The MOD manager (the title screen's corner button, or Settings → General → MOD) lists the installed packages and enables, disables, orders and removes them. A package is a folder, or a `.srw64mod` zip of it, holding data only. Not on Android yet.
+- **Music MODs**: a package's Ogg Vorbis files replace any of the 49 songs, with loop points, volume and titles, and a battle song per pilot or unit. Settings → General turns MOD music off or sets its volume; the sound test marks the replaced songs.
+- **A BGM MOD maker on the website** builds a music package in your browser from mp3, wav, flac, m4a or ogg files, nothing uploaded: [BGM mod maker](https://srw64.dreamquest.club/en/mods/bgm/). Guides: [Mod packages](https://srw64.dreamquest.club/en/docs/mods/), [Music mods](https://srw64.dreamquest.club/en/docs/mod-music/).
+- **Number MODs change the terrain ranks** of units and pilots (`data/units.json`, `data/pilots.json`), with a sample package that raises the main cast's space rank to A: [Number mods](https://srw64.dreamquest.club/en/docs/mod-data/) and the [unit and pilot ID table](https://srw64.dreamquest.club/en/mods/ids/).
+
+### Other changes
+
+- **Map unit icons face their side**: your units and friendly third parties look left, enemies and hostile third parties right, in the original images and in HD.
+- **The screenshot key can be rebound** on the Controls page (F12 and Print Screen by default). On Android the picture goes to `screenshots/` in the Marchwind64 folder under Documents, and a touch key under Settings takes one; the touch controls and the frame-rate readout stay out of the shot.
+- **3× and 4× on phones that cannot keep up** (#10): a phone that cannot draw 90 or 120 frames a second now runs the game every frame and draws one frame in three, so 3× and 4× are faster than 2× there (on a Dimensity 7300 an enemy phase went from 22 to 15 seconds). While hurried, the game's threads run on the big cores.
 
 ## Android chips tested
 
@@ -94,50 +70,26 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 | [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），macOS、Windows、Linux、安卓通用。 |
 {switch_hd_row}
 
-### 本版更新（0.5.0）
-
-#### Nintendo Switch 版（试验）
-
-- **新增 Switch 版**，需要破解主机（Atmosphère＋hbmenu）。只支持应用模式：按住 R 启动任意游戏进入 hbmenu。
-- 解压到 SD 卡根目录，把 ROM 命名为 `rom.z64` 放进 `/switch/Marchwind64/`。首次启动会在主机上导入，约半分钟。
-- 底座和掌机都是 16:9 全屏。Switch 有自己的一份 HD 包（在 HD 1.2 发布页），电脑版的 HD 包在 Switch 上不能用。
-
-#### HD 包 1.2
-
-- 地图上的机体图标全部重画成 HD-2D 风格，共 320 个，除我方外都带阵营色描边。
-- 剧情世界地图上两块重复的图块改为无缝 HD。
-- 部分机体立绘和头像做了局部修补。
-- 豪将军的豪军刀和太空火箭筒在战斗中显示成白色剪影，现在是原版的颜色。
-
-#### 战斗查看器与图鉴
-
-- **合体技会说合体技专用台词**，搭档按合体技的要求自动配上。
-- **驾驶员按角色列出**：同一角色在游戏里有多条记录的（如シシリス・キバ 的 AI），各自单列、用自己的头像，战斗中说自己的台词；以前会变成上一个显示的驾驶员（如ドモン）。
-- **BGM 都归到对应作品下**：愛の金字塔归ゴッドマーズ，游戏原创的地图和剧情音乐归「オリジナル」，ゲッターロボ 主题曲归ゲッターロボ 而不是 G。
-- **手柄可以从标题画面进入图鉴和战斗查看器**：在标题菜单按下，左右选择角落的按钮，A 打开。
+### 本版更新（0.5.1）
 
 #### 修复
 
-- **GAME OVER 后选择重试，已经登场的增援又出现一次**，同一个敌人在地图上有两个、共用 HP，击坠其中一个后游戏闪退。0.3.3 起就有这个问题。
-- **场间画面设为原版时，联动画面是空的，无法联动。**
-- **剧情中的选项压在窗口边框上、在绿色光标条左边**；选项较长时整块文字被缩小。现在每个选项和原版一样缩进、各占一行。
-- **改造满段的隐藏武器有时不解锁**：段数超过原版上限后换机（如マジンガーZ 改到 13–15 段再换成 JS 型），或统一改造同步过去的段数。进入场间画面时会自动补上，旧存档也适用。
-- **驾驶员页：还没学会的技能显示成别的技能 L9**（ファ・ユイリィ 一入队就有 S防御L9）。
-- **驾驶员列表：盖塔组的机体名错了一档**（隼人显示ゲッター3、武藏显示ゲッターポセイドン）。
-- 1080p 下战前确认页的精神标签旁出现滚动条。
-- 设置窗口里几段较长的说明在日文和中文下超出窗口。
-- 安卓：在 x86 设备或模拟器上（ARM 转译）启动停在「找不到中文字体」。
-- Windows：部分 AMD 核显在 D3D12 下驱动重置后闪退。可以设置环境变量 SRW64_GRAPHICS_API=vulkan 改用 Vulkan。
+- **存档或改造时游戏卡住。** 在存档画面里连存两次（覆盖 1 号存档），或者改造机体，游戏可能停住不动而画面还在走。0.5.0 发布后 iQOO 12 和一台 Windows 台式机都报告了这个问题；存档画面早有这个隐患，0.5.0 的 120 Hz 节拍让它变得很容易碰上。
+- **新画面和 HD 画面的战前确认不认反击计划**（#16）：驾驶员设了「手动」以外的反击计划时，这两种画面没有改应对方式的地方，武器按钮也没反应。现在会和原版的「手动」一样打开应对画面，并预选计划里的选择（用它的武器反击、回避或防御），可以照用，也可以改，包括换武器。原版画面仍按计划直接开打。
+- **译名**：按官网收到的意见改为 凤翼天翔、夺地者、菲因梅露姆、艾比安高达；英文的 Psycho Gundam、ReGelgu 改为官方拼写，另有 Battle Beast、Great General of Darkness 等几处。图鉴里一部分英文条目改用驾驶员或作品名而不是编号。
 
-#### 新功能
+#### MOD 包
 
-- **3 倍速和 4 倍速**：倍速键（Tab、R4、手机上的倍速按钮）在原速、2、3、4 倍速之间依次切换，不用重启。3 倍速和 4 倍速要求设备每秒画出 90、120 帧，达不到时实际速度会低一些。高刷新率屏幕上画面插帧也更顺。
-- **战斗中驾驶员面板改为增益栏**：只显示正在生效的精神效果，我方增益为金色、对方施加的减益为红色；没有时不占地方。
-- **合体技一直列出**：场间的武器一览和地图上的机体资料都会列出合体技；暂时用不了的显示为灰色，并用红字写明需要哪些搭档、要站在几格以内。图鉴里也会写明搭档。
-- **「返回标题」移到地图菜单和场间菜单的倒数第二项**，场间菜单在原版和新画面里都有这一项。
-- **经验倍率和资金倍率分成两项金手指**，各自可选 ×1、×1.5、×2、×3、×5、×10。旧版设过的倍率会同时用在两项上。
-- **触屏按钮不透明度可以调到 0%**：按钮完全看不见，但照样能按。
-- **界面更省资源**：各个页面不再每帧重复计算、翻页时只更新变化的部分，手机上界面线程的占用降到原来的约三分之一，翻页和战前确认页的按键响应更快。
+- **把 MOD 包拖进游戏窗口就能安装**，也可以放进 MOD 文件夹。MOD 管理（标题画面右下角的「MOD」，或设置 → 通用 → MOD）列出已装的包，可以启用、停用、排序和删除。包是一个只放数据的文件夹，或把它压缩成的 `.srw64mod`。安卓版暂时不能安装。
+- **音乐 MOD**：包里的 Ogg Vorbis 文件替换 49 首曲子中的任意几首，可设循环点、音量和曲名，还能指定某个人物或机体打仗时放哪首。设置 → 通用 可以关掉 MOD 音乐或调音量；音乐鉴赏里被替换的曲目有标记。
+- **官网的 BGM MOD 制作工具**在浏览器里把 mp3、wav、flac、m4a、ogg 做成音乐包，音频不会上传：[BGM MOD 制作](https://srw64.dreamquest.club/zh/mods/bgm/)。说明见 [MOD 包](https://srw64.dreamquest.club/zh/docs/mods/)和[音乐 MOD](https://srw64.dreamquest.club/zh/docs/mod-music/)。
+- **数值 MOD 可以改机体和驾驶员的地形适应**（`data/units.json`、`data/pilots.json`），附一个把主要角色的宇宙适应提到 A 的示例包：[数值 MOD](https://srw64.dreamquest.club/zh/docs/mod-data/)、[机体与人物 ID 表](https://srw64.dreamquest.club/zh/mods/ids/)。
+
+#### 其他
+
+- **地图上的机体图标按阵营朝向**：我方和友好的第三方朝左，敌方和敌对的第三方朝右，原版图和 HD 都是。
+- **截图键可以改**：操作页里有「截图」一行（默认 F12 和 Print Screen）。安卓上图片存到「文件」里 Marchwind64 文件夹的 `screenshots/`，设置里还有一个触屏截图键；截图里不带触屏按钮和帧率显示。
+- **跟不上 3、4 倍速的手机**（#10）：画不出每秒 90、120 帧的手机，现在游戏逻辑每帧都跑、每三帧画一帧，3 倍速和 4 倍速真的比 2 倍速快（天玑 7300 上一个敌方回合从 22 秒缩到 15 秒）。加速时游戏的线程会放到大核上。
 
 ### 安卓已测试的芯片
 

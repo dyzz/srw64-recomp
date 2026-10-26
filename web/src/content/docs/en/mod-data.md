@@ -10,7 +10,7 @@ A number mod changes values of the units and pilots themselves. Everything that 
 
 **For now only terrain ranks can be changed.** HP, armor, weapons and the other values are not open yet; a package that carries them is ignored for those.
 
-Installing and managing packages: [Mod packages](../mods/). A version after 0.5.0 is needed.
+Installing and managing packages: [Mod packages](../mods/). Version 0.5.1 or later is needed.
 
 ## What goes in the package
 
