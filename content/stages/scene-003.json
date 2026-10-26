@@ -3,6 +3,7 @@
  "scene": 3,
  "title": {
   "zh-Hans": "硝烟之中",
+  "zh-Hant": "硝煙之中",
   "ja": "硝煙の中で",
   "en": "Amid the Gunsmoke"
  },
@@ -14,6 +15,7 @@
    "episode": "1",
    "lane": {
     "zh-Hans": "塞蕾茵（真实系）",
+    "zh-Hant": "塞蕾茵（真實系）",
     "ja": "セレイン（リアル系）",
     "en": "Selain (Real)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-apolly-roberto",
      "title": {
       "zh-Hans": "阿波利、罗伯托＋疾风迪亚斯",
+      "zh-Hant": "阿波里、羅伯特＋疾風迪亞斯",
       "ja": "アポリー、ロベルト＋シュツルム・ディアス",
       "en": "Apolly, Roberto + Schuzrum-Dias"
      },
      "text": {
       "zh-Hans": "无需操作：阿波利、罗伯托在敌方剩 10 台以下时增援",
+      "zh-Hant": "無需操作：阿波里、羅伯特在敵方剩 10 臺以下時增援",
       "ja": "操作不要：アポリー・ロベルトが敵残り10機以下で増援",
       "en": "Nothing to do: Apolly and Roberto arrive at 10 or fewer enemies"
      }
@@ -36,16 +40,19 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "利修",
+      "zh-Hant": "利修",
       "ja": "リッシュ",
       "en": "Rish"
      },
      "note": {
       "zh-Hans": "HP 50% 以下时撤退",
+      "zh-Hant": "HP 50% 以下時撤退",
       "ja": "HP50%以下で撤退",
       "en": "Retreats at 50% HP or below"
      },

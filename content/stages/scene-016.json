@@ -3,6 +3,7 @@
  "scene": 16,
  "title": {
   "zh-Hans": "引向毁灭的高达",
+  "zh-Hant": "引向毀滅的鋼彈",
   "ja": "破滅を導くガンダム",
   "en": "The Gundam That Leads to Ruin"
  },
@@ -14,6 +15,7 @@
    "episode": "8",
    "lane": {
     "zh-Hans": "共通",
+    "zh-Hant": "共通",
     "ja": "共通",
     "en": "Common"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-emma",
      "title": {
       "zh-Hans": "爱玛＋高达Mk-Ⅱ",
+      "zh-Hant": "艾瑪＋鋼彈Mk-Ⅱ",
       "ja": "エマ＋ガンダムmkⅡ",
       "en": "Emma + Gundam Mk-II"
      },
      "text": {
       "zh-Hans": "用克瓦特罗说服爱玛（恭至 HP 50% 以下前）",
+      "zh-Hant": "用克瓦特羅說服艾瑪（恭至 HP 50% 以下前）",
       "ja": "クワトロでエマを説得（キョウジHP50%以下になる前に）",
       "en": "Persuade Emma with Quattro before Kyoji drops to 50% HP"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-katz",
      "title": {
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
+      "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
       "en": "Kurtz + Virose (including Super Earthgain)"
      },
      "text": {
       "zh-Hans": "用布拉德击坠卡茨（第 3 回合我方阶段登场）",
+      "zh-Hant": "用布拉德擊墜卡茨（第 3 回合我方階段登場）",
       "ja": "ブラッドでカーツを撃墜（第3ターン味方フェイズ登場）",
       "en": "Shoot down Kurtz with Brad (appears turn 3 player phase)"
      },
@@ -51,11 +57,13 @@
      "ref": "secret-dialogue-branches",
      "title": {
       "zh-Hans": "只影响对白的分支",
+      "zh-Hant": "隻影響對白的分支",
       "ja": "台詞のみの分岐",
       "en": "Dialogue-only branches"
      },
      "text": {
       "zh-Hans": "对艾夏的二选只改变台词",
+      "zh-Hant": "對艾夏的二選只改變臺詞",
       "ja": "アイシャへの二択はセリフが変わるだけ",
       "en": "The two-way choice about Aisha only changes dialogue"
      }
@@ -65,11 +73,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "莱拉",
+      "zh-Hant": "萊拉",
       "ja": "ライラ",
       "en": "Lila"
      },
@@ -78,16 +88,19 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "爱玛",
+      "zh-Hant": "艾瑪",
       "ja": "エマ",
       "en": "Emma"
      },
      "note": {
       "zh-Hans": "可被克瓦特罗说服（说服后不掉落）",
+      "zh-Hant": "可被克瓦特羅說服（說服後不掉落）",
       "ja": "クワトロで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Quattro (no drop if persuaded)"
      },
@@ -100,11 +113,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "卡茨",
+      "zh-Hant": "卡茨",
       "ja": "カーツ",
       "en": "Kurtz"
      },
@@ -116,11 +131,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "艾夏",
+      "zh-Hant": "艾夏",
       "ja": "アイシャ",
       "en": "Aisha"
      },
@@ -132,16 +149,19 @@
     {
      "part": {
       "zh-Hans": "米诺夫斯基飞行器",
+      "zh-Hant": "米諾夫斯基飛行器",
       "ja": "ミノフスキークラフト",
       "en": "Minovsky Craft"
      },
      "from": {
       "zh-Hans": "京二",
+      "zh-Hant": "恭志",
       "ja": "キョウジ",
       "en": "Kyoji"
      },
      "note": {
       "zh-Hans": "HP 50% 以下时撤退，关卡随即结束",
+      "zh-Hant": "HP 50% 以下時撤退，關卡隨即結束",
       "ja": "HP50%以下で撤退、そのままステージ終了",
       "en": "Retreats at 50% HP or below, and the stage then ends"
      },

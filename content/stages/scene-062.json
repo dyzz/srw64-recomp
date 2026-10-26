@@ -3,6 +3,7 @@
  "scene": 62,
  "title": {
   "zh-Hans": "蔓延的恶意",
+  "zh-Hant": "蔓延的惡意",
   "ja": "広がっていく悪意",
   "en": "Spreading Malice"
  },
@@ -14,6 +15,7 @@
    "episode": "23",
    "lane": {
     "zh-Hans": "完全和平路线",
+    "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
     "en": "Complete Pacifism route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-route-cp",
      "title": {
       "zh-Hans": "梁山泊之战：完全和平路线",
+      "zh-Hant": "梁山泊之戰：完全和平路線",
       "ja": "梁山泊の戦い：完全平和ルート",
       "en": "The Battle of Ryozanpaku: Complete Pacifism route"
      },
      "text": {
       "zh-Hans": "无需操作：由「梁山泊之战」的选项进入完全和平路线",
+      "zh-Hant": "無需操作：由「梁山泊之戰」的選項進入完全和平路線",
       "ja": "操作不要：「梁山泊の戦い」の選択で完全平和ルートへ",
       "en": "No action needed: entered via the choices in “The Battle of Ryozanpaku”"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-todd-silky",
      "title": {
       "zh-Hans": "陶德（＋希露奇）",
+      "zh-Hant": "陶德（＋希露奇）",
       "ja": "トッド（＋シルキー）",
       "en": "Tod (+ Silky)"
      },
      "text": {
       "zh-Hans": "用翔说服陶德（需「夏比罗，转生！」已说服）",
+      "zh-Hant": "用翔說服陶德（需「夏比羅，轉生！」已說服）",
       "ja": "ショウでトッドを説得（「シャピロ、転生!」で説得済み）",
       "en": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)"
      }
@@ -48,11 +54,13 @@
      "ref": "secret-dialogue-branches",
      "title": {
       "zh-Hans": "只影响对白的分支",
+      "zh-Hant": "隻影響對白的分支",
       "ja": "台詞のみの分岐",
       "en": "Dialogue-only branches"
      },
      "text": {
       "zh-Hans": "无需操作：战舰命名二选只改变台词",
+      "zh-Hant": "無需操作：戰艦命名二選只改變臺詞",
       "ja": "操作不要：艦名の二択はセリフが変わるだけ",
       "en": "No action needed: the ship-naming choice only changes dialogue"
      }
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "迪斯盖亚",
+      "zh-Hant": "迪斯海亞",
       "ja": "デスガイヤー",
       "en": "Death Gaia"
      },
@@ -75,16 +85,19 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "德雷克",
+      "zh-Hant": "德雷克",
       "ja": "ドレイク",
       "en": "Drake"
      },
      "note": {
       "zh-Hans": "HP 30% 以下时撤退",
+      "zh-Hant": "HP 30% 以下時撤退",
       "ja": "HP30%以下で撤退",
       "en": "Retreats at 30% HP or below"
      },
@@ -93,16 +106,19 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "陶德",
+      "zh-Hant": "陶德",
       "ja": "トッド",
       "en": "Tod"
      },
      "note": {
       "zh-Hans": "德雷克 HP 30% 以下时一起撤退",
+      "zh-Hant": "德雷克 HP 30% 以下時一起撤退",
       "ja": "ドレイクがHP30%以下になると一緒に撤退",
       "en": "Retreats together with Drake when he is at 30% HP or below"
      },
@@ -112,11 +128,13 @@
      "part": null,
      "from": {
       "zh-Hans": "艾伦、菲",
+      "zh-Hant": "亞連、菲",
       "ja": "アレン、フェイ",
       "en": "Allen, Fei"
      },
      "note": {
       "zh-Hans": "德雷克 HP 30% 以下时一起撤退",
+      "zh-Hant": "德雷克 HP 30% 以下時一起撤退",
       "ja": "ドレイクがHP30%以下になると一緒に撤退",
       "en": "Retreat together with Drake when he is at 30% HP or below"
      },

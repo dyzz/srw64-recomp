@@ -3,6 +3,7 @@
  "scene": 25,
  "title": {
   "zh-Hans": "夏比罗，转生！",
+  "zh-Hant": "夏比羅，轉生！",
   "ja": "シャピロ、転生!",
   "en": "Shapiro, Reborn!"
  },
@@ -14,6 +15,7 @@
    "episode": "15",
    "lane": {
     "zh-Hans": "共通",
+    "zh-Hant": "共通",
     "ja": "共通",
     "en": "Common"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-todd-silky",
      "title": {
       "zh-Hans": "陶德（＋希露奇）",
+      "zh-Hant": "陶德（＋希露奇）",
       "ja": "トッド（＋シルキー）",
       "en": "Tod (+ Silky)"
      },
      "text": {
       "zh-Hans": "用翔说服陶德（德雷克 HP 33% 以下前）",
+      "zh-Hant": "用翔說服陶德（德雷克 HP 33% 以下前）",
       "ja": "ショウでトッドを説得（ドレイクHP33%以下になる前に）",
       "en": "Persuade Tod with Show before Drake drops to 33% HP"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-katz",
      "title": {
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
+      "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
       "en": "Kurtz + Virose (including Super Earthgain)"
      },
      "text": {
       "zh-Hans": "用布拉德击坠卡茨（第 4 回合敌方阶段登场）",
+      "zh-Hant": "用布拉德擊墜卡茨（第 4 回合敵方階段登場）",
       "ja": "ブラッドでカーツを撃墜（第4ターン敵フェイズ登場）",
       "en": "Shoot down Kurtz with Brad (appears turn 4 enemy phase)"
      },
@@ -51,11 +57,13 @@
      "ref": "secret-gyuken",
      "title": {
       "zh-Hans": "牛剑鬼复仇（乔巴姆装甲）",
+      "zh-Hant": "牛劍鬼復仇（複合裝甲）",
       "ja": "牛剣鬼の復讐（チョバムアーマー）",
       "en": "Gyukenki's revenge (Chobham Armor)"
      },
      "text": {
       "zh-Hans": "击破牛饿鬼，下一关牛剑鬼会来复仇",
+      "zh-Hant": "擊破牛餓鬼，下一關牛劍鬼會來復仇",
       "ja": "牛餓鬼を撃破すると次ステージで牛剣鬼が復讐に来る",
       "en": "Destroy Gyugaki so Gyukenki seeks revenge next stage"
      }
@@ -65,16 +73,19 @@
     {
      "part": {
       "zh-Hans": "米诺夫斯基飞行器",
+      "zh-Hant": "米諾夫斯基飛行器",
       "ja": "ミノフスキークラフト",
       "en": "Minovsky Craft"
      },
      "from": {
       "zh-Hans": "古拉博士",
+      "zh-Hant": "古拉博士",
       "ja": "グラー博士",
       "en": "Dr. Gura"
      },
      "note": {
       "zh-Hans": "第 4 回合我方阶段开始时撤退",
+      "zh-Hant": "第 4 回合我方階段開始時撤退",
       "ja": "第4ターン味方フェイズ開始時に撤退",
       "en": "Retreats at the start of the turn 4 player phase"
      },
@@ -83,16 +94,19 @@
     {
      "part": {
       "zh-Hans": "高性能雷达",
+      "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
       "en": "High-Fidelity Radar"
      },
      "from": {
       "zh-Hans": "德雷克",
+      "zh-Hant": "德雷克",
       "ja": "ドレイク",
       "en": "Drake"
      },
      "note": {
       "zh-Hans": "HP 33% 以下时撤退，关卡随即结束",
+      "zh-Hant": "HP 33% 以下時撤退，關卡隨即結束",
       "ja": "HP33%以下で撤退し、そのままステージ終了",
       "en": "Retreats at 33% HP or below, and the stage ends right away"
      },
@@ -101,16 +115,19 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "陶德",
+      "zh-Hant": "陶德",
       "ja": "トッド",
       "en": "Tod"
      },
      "note": {
       "zh-Hans": "德雷克 HP 33% 以下时一起离场（关卡结束）",
+      "zh-Hant": "德雷克 HP 33% 以下時一起離場（關卡結束）",
       "ja": "ドレイクがHP33%以下になると一緒に離脱（ステージ終了）",
       "en": "Leaves together with Drake when he is at 33% HP or below (the stage ends)"
      },
@@ -119,16 +136,19 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "卡茨",
+      "zh-Hant": "卡茨",
       "ja": "カーツ",
       "en": "Kurtz"
      },
      "note": {
       "zh-Hans": "第 4 回合敌方阶段登场；布拉德不在场时立即离开",
+      "zh-Hant": "第 4 回合敵方階段登場；布拉德不在場時立即離開",
       "ja": "第4ターン敵フェイズに登場。ブラッドがマップ上にいないとすぐ離脱",
       "en": "Appears on the enemy phase of turn 4; leaves immediately if Brad isn't on the map"
      },
@@ -140,16 +160,19 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "牛饿鬼",
+      "zh-Hant": "牛餓鬼",
       "ja": "牛餓鬼",
       "en": "Gyugaki"
      },
      "note": {
       "zh-Hans": "随德雷克撤退（关卡结束）",
+      "zh-Hant": "隨德雷克撤退（關卡結束）",
       "ja": "ドレイクと共に撤退（ステージ終了）",
       "en": "Leaves with Drake (stage ends)"
      },

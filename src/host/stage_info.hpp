@@ -152,12 +152,12 @@ uint64_t want(bool on);
 // content/stages/scene-NNN.json, or in a custom campaign the one its stage carries.
 // Null when the stage has none. Window thread.
 json meta(int scene);
-// A metadata text, {locale: text} or a plain string, in LOCALE: else Japanese, English,
-// then whichever it has.
+// A metadata text, {locale: text} or a plain string, in LOCALE (zh-Hant falls back to
+// zh-Hans): else Japanese, English, then whichever it has.
 inline std::string text(const json& value,const std::string& locale) {
     if(value.is_string())return value.get<std::string>();
     if(!value.is_object())return {};
-    for(const auto& key:{locale,std::string("ja"),std::string("en")})
+    for(const auto& key:{locale,std::string(locale=="zh-Hant"?"zh-Hans":"ja"),std::string("ja"),std::string("en")})
         if(value.contains(key) && value.at(key).is_string())return value.at(key).get<std::string>();
     for(const auto& [key,v]:value.items())if(v.is_string())return v.get<std::string>();
     return {};

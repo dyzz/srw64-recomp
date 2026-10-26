@@ -3,6 +3,7 @@
  "scene": 45,
  "title": {
   "zh-Hans": "出击，迎向乱局",
+  "zh-Hant": "出擊，迎向亂局",
   "ja": "混迷への出撃",
   "en": "Sortie into Turmoil"
  },
@@ -14,6 +15,7 @@
    "episode": "35",
    "lane": {
     "zh-Hans": "独立军路线",
+    "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
     "en": "Independence Army route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-rose",
      "title": {
       "zh-Hans": "罗塞＋泽隆",
+      "zh-Hant": "蘿潔＋澤隆",
       "ja": "ロゼ＋ゼーロン",
       "en": "Roze + Zeron"
      },
      "text": {
       "zh-Hans": "可选：用武说服玛古（只影响之后的对白）",
+      "zh-Hant": "可選：用武說服馬可（隻影響之後的對白）",
       "ja": "任意：タケルでマーグを説得（後の会話のみに影響）",
       "en": "Optional: persuade Marg with Takeru (affects later dialogue only)"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-naida",
      "title": {
       "zh-Hans": "娜伊达＋双重斯派扎",
+      "zh-Hant": "娜伊達＋飛天翼號",
       "ja": "ナイーダ＋ダブルスペイザー",
       "en": "Naida + Double Spazer"
      },
      "text": {
       "zh-Hans": "用杜克说服娜伊达（第二波登场），下一关开场选第 1 项",
+      "zh-Hant": "用狄克說服娜伊達（第二波登場），下一關開場選第 1 項",
       "ja": "第2陣のナイーダをデュークで説得、次ステージ開始時に1番目",
       "en": "Persuade Naida (2nd wave) with Duke; pick option 1 next stage"
      },
@@ -52,11 +58,13 @@
      "ref": "secret-hilde",
      "title": {
       "zh-Hans": "希尔妲＋陶拉斯",
+      "zh-Hant": "希爾妲＋陶拉斯",
       "ja": "ヒルデ＋トーラス",
       "en": "Hilde + Taurus"
      },
      "text": {
       "zh-Hans": "无需操作：此前招到希尔妲则诺茵带陶拉斯加入",
+      "zh-Hant": "無需操作：此前招到希爾妲則諾茵帶陶拉斯加入",
       "ja": "操作不要：ヒルデ加入済みならノインがトーラス付きで加入",
       "en": "No action: Noin brings the Taurus if Hilde was recruited"
      }
@@ -66,11 +74,13 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "布拉奇",
+      "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
       "en": "Blacky"
      },
@@ -79,11 +89,13 @@
     {
      "part": {
       "zh-Hans": "混合式装甲",
+      "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
       "en": "Hybrid Armor"
      },
      "from": {
       "zh-Hans": "玛古",
+      "zh-Hant": "馬可",
       "ja": "マーグ",
       "en": "Marg"
      },
@@ -92,11 +104,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "丹格尔",
+      "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
       "en": "Dungele"
      },
@@ -105,11 +119,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "巴伦",
+      "zh-Hant": "巴倫",
       "ja": "バレン",
       "en": "Baren"
      },
@@ -118,16 +134,19 @@
     {
      "part": {
       "zh-Hans": "强化推进器",
+      "zh-Hant": "強化推進器",
       "ja": "メガブースター",
       "en": "Mega Booster"
      },
      "from": {
       "zh-Hans": "娜伊达",
+      "zh-Hant": "娜伊達",
       "ja": "ナイーダ",
       "en": "Naida"
      },
      "note": {
       "zh-Hans": "可被杜克说服（说服后不掉落）",
+      "zh-Hant": "可被狄克說服（說服後不掉落）",
       "ja": "デュークで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Duke (no drop if persuaded)"
      },

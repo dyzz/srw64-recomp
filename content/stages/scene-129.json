@@ -3,6 +3,7 @@
  "scene": 129,
  "title": {
   "zh-Hans": "死斗！大屿山大决战（下）",
+  "zh-Hant": "死鬥！大嶼山大決戰（下）",
   "ja": "死闘!ランタオ島大決戦 （後）",
   "en": "Death Match! Showdown on Lantau Island (Part 2)"
  },
@@ -14,6 +15,7 @@
    "episode": "39",
    "lane": {
     "zh-Hans": "独立军路线／独自作战（选第 2 项）",
+    "zh-Hant": "獨立軍路線／獨自作戰（選第 2 項）",
     "ja": "独立軍ルート／単独行動（2番目を選択）",
     "en": "Independence Army route / fight alone (option 2)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-allenby",
      "title": {
       "zh-Hans": "阿莲比＋诺贝尔高达",
+      "zh-Hant": "阿蓮比＋諾貝爾鋼彈",
       "ja": "アレンビー＋ノーベルガンダム",
       "en": "Allenby + Noble Gundam"
      },
      "text": {
       "zh-Hans": "第 5 回合敌方阶段前先用多蒙、再用玲说服阿莲比",
+      "zh-Hant": "第 5 回合敵方階段前先用多門、再用玲說服阿蓮比",
       "ja": "第5ターン敵フェイズまでにドモン→レインでアレンビーを説得",
       "en": "Persuade Allenby with Domon, then Rain, before turn 5 enemy phase"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-story-attacks",
      "title": {
       "zh-Hans": "剧情解锁的必杀技与合体技",
+      "zh-Hant": "劇情解鎖的必殺技與合體技",
       "ja": "ストーリーで解禁される必殺技と合体技",
       "en": "Story-unlocked finishers and combination attacks"
      },
      "text": {
       "zh-Hans": "无需操作：石破Love Love天惊拳满足合体条件即可用",
+      "zh-Hant": "無需操作：石破Love Love天驚拳滿足合體條件即可用",
       "ja": "操作不要：石破ラブラブ天驚拳は合体条件を満たせば使える",
       "en": "No action: Sekiha Love Love Tenkyoken needs only combo conditions"
      }
@@ -48,11 +54,13 @@
      "ref": "secret-dialogue-branches",
      "title": {
       "zh-Hans": "只影响对白的分支",
+      "zh-Hant": "隻影響對白的分支",
       "ja": "台詞のみの分岐",
       "en": "Dialogue-only branches"
      },
      "text": {
       "zh-Hans": "无需操作：多蒙击败东方不败的台词随是否交战过而变",
+      "zh-Hant": "無需操作：多蒙擊敗東方不敗的臺詞隨是否交戰過而變",
       "ja": "操作不要：マスターアジア撃破時の台詞は過去の交戦で変わる",
       "en": "No action: Domon's win lines vs Master Asia depend on past fights"
      }
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "马基特",
+      "zh-Hant": "馬基特",
       "ja": "マーキロット",
       "en": "Markiroot"
      },
@@ -75,11 +85,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "施哲马",
+      "zh-Hant": "西吉馬",
       "ja": "シジーマ",
       "en": "Sijima"
      },
@@ -88,16 +100,19 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "阿莲比",
+      "zh-Hant": "阿蓮比",
       "ja": "アレンビー",
       "en": "Allenby"
      },
      "note": {
       "zh-Hans": "狂战士状态；第 5 回合敌方阶段开始时撤退",
+      "zh-Hant": "狂戰士狀態；第 5 回合敵方階段開始時撤退",
       "ja": "バーサーカー状態。第5ターン敵フェイズ開始時に撤退",
       "en": "Berserk state; retreats at the start of the turn 5 enemy phase"
      },
@@ -106,16 +121,19 @@
     {
      "part": {
       "zh-Hans": "超合金Z",
+      "zh-Hant": "超合金Z",
       "ja": "超合金Z",
       "en": "Super Alloy Z"
      },
      "from": {
       "zh-Hans": "京二",
+      "zh-Hant": "恭志",
       "ja": "キョウジ",
       "en": "Kyoji"
      },
      "note": {
       "zh-Hans": "多蒙与他交战前由别人击坠",
+      "zh-Hant": "多門與他交戰前由別人擊墜",
       "ja": "ドモンと交戦する前に他のユニットで撃墜",
       "en": "Have someone else down him before Domon fights him"
      },
@@ -124,16 +142,19 @@
     {
      "part": {
       "zh-Hans": "超合金Z",
+      "zh-Hant": "超合金Z",
       "ja": "超合金Z",
       "en": "Super Alloy Z"
      },
      "from": {
       "zh-Hans": "阿莲比",
+      "zh-Hant": "阿蓮比",
       "ja": "アレンビー",
       "en": "Allenby"
      },
      "note": {
       "zh-Hans": "东方不败被击坠后登场（未救下阿莲比时）",
+      "zh-Hant": "東方不敗被擊墜後登場（未救下阿蓮比時）",
       "ja": "マスターアジア撃墜後に登場（アレンビー未救出時）",
       "en": "Appears after Master Asia falls if Allenby wasn't saved"
      },
@@ -142,16 +163,19 @@
     {
      "part": {
       "zh-Hans": "超合金Z",
+      "zh-Hant": "超合金Z",
       "ja": "超合金Z",
       "en": "Super Alloy Z"
      },
      "from": {
       "zh-Hans": "黄润发",
+      "zh-Hant": "黃潤發",
       "ja": "ウォン",
       "en": "Wong"
      },
      "note": {
       "zh-Hans": "东方不败被击坠后登场（已救下阿莲比时）",
+      "zh-Hant": "東方不敗被擊墜後登場（已救下阿蓮比時）",
       "ja": "マスターアジア撃墜後に登場（アレンビー救出時）",
       "en": "Appears after Master Asia falls, if Allenby was saved"
      },
@@ -160,11 +184,13 @@
     {
      "part": {
       "zh-Hans": "洗牌同盟纹章",
+      "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
       "en": "Shuffle Crest"
      },
      "from": {
       "zh-Hans": "东方不败",
+      "zh-Hant": "東方不敗",
       "ja": "マスターアジア",
       "en": "Master Asia"
      },

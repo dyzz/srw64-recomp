@@ -122,6 +122,8 @@ std::string question(const std::string& locale,const fs::path& destination) {
     const auto raw=destination.u8string();const std::string path(reinterpret_cast<const char*>(raw.data()),raw.size());
     if(locale=="zh-Hans")return "游戏目录与系统用户目录的存档不同。是否用游戏目录的存档覆盖系统用户目录？\n"
         "覆盖前会备份系统用户目录中被替换的数据。取消则保留两份数据，不进行同步。\nSystem user data: "+path;
+    if(locale=="zh-Hant")return "遊戲資料夾與系統使用者資料夾的存檔不同。是否用遊戲資料夾的存檔覆蓋系統使用者資料夾？\n"
+        "覆蓋前會備份系統使用者資料夾中被取代的資料。取消則保留兩份資料，不進行同步。\nSystem user data: "+path;
     if(locale=="ja")return "ゲームフォルダーとシステムのユーザーフォルダーのセーブデータが異なります。\n"
         "ゲームフォルダーのデータでシステム側を置き換えますか？置き換える前にバックアップします。\n"
         "キャンセルすると両方のデータを保持し、同期しません。\nSystem user data: "+path;

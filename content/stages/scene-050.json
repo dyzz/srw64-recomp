@@ -3,6 +3,7 @@
  "scene": 50,
  "title": {
   "zh-Hans": "进攻月球",
+  "zh-Hant": "進攻月球",
   "ja": "ムーンアタック",
   "en": "Moon Attack"
  },
@@ -14,6 +15,7 @@
    "episode": "26",
    "lane": {
     "zh-Hans": "OZ路线（进攻月球侧）",
+    "zh-Hant": "OZ路線（進攻月球側）",
     "ja": "OZルート（ムーンアタック側）",
     "en": "OZ route (Moon Attack side)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-aisha",
      "title": {
       "zh-Hans": "艾夏＋凤翼天翔",
+      "zh-Hant": "艾夏＋鳳翼天翔",
       "ja": "アイシャ＋エルブルス",
       "en": "Aisha + Elbulls"
      },
      "text": {
       "zh-Hans": "关末二选选「叫住艾夏」",
+      "zh-Hant": "關末二選選「叫住艾夏」",
       "ja": "クリア時の2択で「アイシャを呼びとめる」",
       "en": "At the end of the stage, pick “Call out to Aisha”"
      },
@@ -38,11 +42,13 @@
      "ref": "secret-reese",
      "title": {
       "zh-Hans": "利修＋西格露恩",
+      "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
       "en": "Rish + Sigroon"
      },
      "text": {
       "zh-Hans": "关末二选选「再喊他一声」",
+      "zh-Hant": "關末二選選「再喊他一聲」",
       "ja": "クリア時の2択で「もう一度声をかける」",
       "en": "At the end of the stage, pick “Call out to him again”"
      },
@@ -54,11 +60,13 @@
      "ref": "secret-elrich",
      "title": {
       "zh-Hans": "埃尔利希＋诺鲁孜",
+      "zh-Hant": "埃爾利希＋諾魯孜",
       "ja": "エルリッヒ＋ノウルーズ",
       "en": "Ehrlich + Norouz"
      },
      "text": {
       "zh-Hans": "「特列斯抹杀指令」敌方剩 13 台以下时让阿克在场",
+      "zh-Hant": "「特列斯抹殺指令」敵方剩 13 臺以下時讓阿克在場",
       "ja": "「トレーズ抹殺指令」で敵残り13機以下の時アークを出撃させる",
       "en": "Have Ark on map at ≤13 enemies in “Order to Eliminate Treize”"
      },
@@ -71,11 +79,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "巴斯克",
+      "zh-Hant": "巴斯克",
       "ja": "バスク",
       "en": "Bask"
      },
@@ -85,11 +95,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "赫尔马特",
+      "zh-Hant": "赫爾馬特",
       "ja": "ヘルマット",
       "en": "Helmut"
      },
@@ -98,16 +110,19 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "艾夏",
+      "zh-Hant": "艾夏",
       "ja": "アイシャ",
       "en": "Aisha"
      },
      "note": {
       "zh-Hans": "亚赞被击坠后登场",
+      "zh-Hant": "亞贊被擊墜後登場",
       "ja": "ヤザンの撃墜後に登場",
       "en": "Appears after Yazan is shot down"
      },
@@ -120,16 +135,19 @@
     {
      "part": {
       "zh-Hans": "洗牌同盟纹章",
+      "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
       "en": "Shuffle Crest"
      },
      "from": {
       "zh-Hans": "西罗克",
+      "zh-Hant": "西羅克",
       "ja": "シロッコ",
       "en": "Scirocco"
      },
      "note": {
       "zh-Hans": "赫尔马特被击坠后登场",
+      "zh-Hant": "赫爾馬特被擊墜後登場",
       "ja": "ヘルマット撃墜後に登場",
       "en": "Appears after Helmut is shot down"
      },
@@ -139,16 +157,19 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "夏比罗",
+      "zh-Hant": "夏比羅",
       "ja": "シャピロ",
       "en": "Shapiro"
      },
      "note": {
       "zh-Hans": "HP 30% 以下时撤退",
+      "zh-Hant": "HP 30% 以下時撤退",
       "ja": "HP30%以下で撤退",
       "en": "Retreats at 30% HP or below"
      },

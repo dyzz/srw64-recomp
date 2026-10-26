@@ -3,6 +3,7 @@
  "scene": 21,
  "title": {
   "zh-Hans": "迷失的命运",
+  "zh-Hant": "迷失的命運",
   "ja": "迷走する運命",
   "en": "Destiny Astray"
  },
@@ -14,6 +15,7 @@
    "episode": "12",
    "lane": {
     "zh-Hans": "真实系",
+    "zh-Hant": "真實系",
     "ja": "リアル系",
     "en": "Real"
    },
@@ -22,11 +24,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "地狱大元帅",
+      "zh-Hant": "地獄大元帥",
       "ja": "地獄大元帥",
       "en": "Great Marshal of Hell"
      },
@@ -35,11 +39,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "盖亚",
+      "zh-Hant": "海亞",
       "ja": "ガイヤー",
       "en": "Gaia"
      },
@@ -48,11 +54,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "戈斯特罗",
+      "zh-Hant": "戈斯特羅",
       "ja": "ゴステロ",
       "en": "Gosterro"
      },
@@ -61,11 +69,13 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "埃尔利希",
+      "zh-Hant": "埃爾利希",
       "ja": "エルリッヒ",
       "en": "Ehrlich"
      },
@@ -77,11 +87,13 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "利修",
+      "zh-Hant": "利修",
       "ja": "リッシュ",
       "en": "Rish"
      },
@@ -93,11 +105,13 @@
     {
      "part": {
       "zh-Hans": "洗牌同盟纹章",
+      "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
       "en": "Shuffle Crest"
      },
      "from": {
       "zh-Hans": "亚赞",
+      "zh-Hant": "亞贊",
       "ja": "ヤザン",
       "en": "Yazan"
      },

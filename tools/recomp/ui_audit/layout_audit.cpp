@@ -306,7 +306,7 @@ int main(int argc,char** argv){try{
     // The catalogs as the host registers them; the pages only read their UI labels.
     json data={{"schema","srw64.native-dialogue-data.v2"},{"config",{{"locale","zh-Hans"},{"font","-"}}},{"entries",json::object()},
         {"source_entries",json::object()},{"ui",json::object()},{"locale_catalogs",json::object()},{"locale_options",json::array()}};
-    for(const auto* locale:{"ja","zh-Hans","en"}) {
+    for(const auto* locale:{"ja","zh-Hans","zh-Hant","en"}) {
         const auto doc=load(locales/(std::string(locale)+".json"));
         data["locale_catalogs"][locale]={{"config",{{"locale",locale},{"font","-"}}},{"ui",doc.at("ui")}};
         data["locale_options"].push_back({{"locale",locale},{"label",doc.value("display_name",locale)}});

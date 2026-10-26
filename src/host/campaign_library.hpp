@@ -48,11 +48,12 @@ inline std::vector<fs::path> directories() {
     return dirs;
 }
 
-// The text of a name or description in a locale: the locale, then ja, then any.
+// The text of a name or description in a locale: the locale (zh-Hant falls back to
+// zh-Hans), then ja, then any.
 inline std::string text(const nlohmann::json& field,const std::string& locale) {
     if(field.is_string())return field.get<std::string>();
     if(!field.is_object())return {};
-    for(const auto& key:{locale,std::string("ja")})
+    for(const auto& key:{locale,std::string(locale=="zh-Hant"?"zh-Hans":"ja"),std::string("ja")})
         if(field.contains(key) && field.at(key).is_string())return field.at(key).get<std::string>();
     for(const auto& [key,value]:field.items())if(value.is_string())return value.get<std::string>();
     return {};

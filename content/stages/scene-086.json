@@ -3,6 +3,7 @@
  "scene": 86,
  "title": {
   "zh-Hans": "决战宙域（上）",
+  "zh-Hant": "決戰宙域（上）",
   "ja": "決戦宙域 （前）",
   "en": "Decisive Battle Zone (Part 1)"
  },
@@ -14,6 +15,7 @@
    "episode": "45",
    "lane": {
     "zh-Hans": "独立军路线／独自作战",
+    "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
     "en": "Independence Army route / fight alone"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-mashymre-chara",
      "title": {
       "zh-Hans": "马修玛＋扎古Ⅲ改／姬拉＋盖马克",
+      "zh-Hant": "馬修曼＋薩克Ⅲ改／凱拉＋蓋馬克",
       "ja": "マシュマー＋ザクⅢ改／キャラ＋ゲーマルク",
       "en": "Mashymre + Zaku III Custom / Chara + Geymalk"
      },
      "text": {
       "zh-Hans": "别击坠马修玛和姬拉，两人都撑到关末",
+      "zh-Hant": "別擊墜馬修曼和凱拉，兩人都撐到關末",
       "ja": "マシュマーとキャラを2人ともクリア時まで残す",
       "en": "Keep Mashymre and Chara on the map until stage end"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "瓦尔",
+      "zh-Hant": "瓦爾",
       "ja": "ワール",
       "en": "Wahl"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "加涅拉",
+      "zh-Hant": "傑涅拉",
       "ja": "ジャネラ",
       "en": "Janera"
      },
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "戈曼",
+      "zh-Hant": "戈曼",
       "ja": "ゴーマン",
       "en": "Gorman"
      },
@@ -75,16 +85,19 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "卡达尔",
+      "zh-Hant": "卡達爾",
       "ja": "ガンダル",
       "en": "Gandal"
      },
      "note": {
       "zh-Hans": "敌方剩 10 台以下时登场",
+      "zh-Hant": "敵方剩 10 臺以下時登場",
       "ja": "敵残り10機以下で登場",
       "en": "Appears when 10 or fewer enemies remain"
      },
@@ -93,16 +106,19 @@
     {
      "part": {
       "zh-Hans": "超合金Z",
+      "zh-Hant": "超合金Z",
       "ja": "超合金Z",
       "en": "Super Alloy Z"
      },
      "from": {
       "zh-Hans": "祖鲁皇帝",
+      "zh-Hant": "祖魯皇帝",
       "ja": "ズール皇帝",
       "en": "Emperor Zuul"
      },
      "note": {
       "zh-Hans": "第一形态击坠后登场；非武击坠则再登场多得一个",
+      "zh-Hant": "第一形態擊墜後登場；非武擊墜則再登場多得一個",
       "ja": "第2形態をタケル以外が撃墜すると再登場しもう1つ",
       "en": "If not shot down by Takeru, reappears for one more"
      },

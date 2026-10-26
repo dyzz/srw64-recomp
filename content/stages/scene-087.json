@@ -3,6 +3,7 @@
  "scene": 87,
  "title": {
   "zh-Hans": "野心",
+  "zh-Hant": "野心",
   "ja": "野心",
   "en": "Ambition"
  },
@@ -14,6 +15,7 @@
    "episode": "47",
    "lane": {
     "zh-Hans": "独立军路线／独自作战",
+    "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
     "en": "Independence Army route / fight alone"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-puru-two",
      "title": {
       "zh-Hans": "普露兹",
+      "zh-Hant": "普露茲",
       "ja": "プルツー",
       "en": "Ple-Two"
      },
      "text": {
       "zh-Hans": "用捷度说服普露兹（需第 1 步），之后她撤退",
+      "zh-Hant": "用傑特說服普露茲（需第 1 步），之後她撤退",
       "ja": "ジュドーでプルツーを説得（第1段階済み）、その後撤退",
       "en": "Persuade Ple-Two with Judau (needs step 1); she then retreats"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "混合式装甲",
+      "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
       "en": "Hybrid Armor"
      },
      "from": {
       "zh-Hans": "卡多",
+      "zh-Hant": "卡多",
       "ja": "ガトー",
       "en": "Gato"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "马修玛",
+      "zh-Hant": "馬修曼",
       "ja": "マシュマー",
       "en": "Mashymre"
      },
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "姬拉",
+      "zh-Hant": "凱拉",
       "ja": "キャラ",
       "en": "Chara"
      },
@@ -75,16 +85,19 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "普露兹",
+      "zh-Hant": "普露茲",
       "ja": "プルツー",
       "en": "Ple-Two"
      },
      "note": {
       "zh-Hans": "可被捷度说服（说服后不掉落）",
+      "zh-Hant": "可被傑特說服（說服後不掉落）",
       "ja": "ジュドーで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Judau (no drop if persuaded)"
      },

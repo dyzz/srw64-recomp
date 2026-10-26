@@ -3,6 +3,7 @@
  "scene": 99,
  "title": {
   "zh-Hans": "哈曼的阴影",
+  "zh-Hant": "哈曼的陰影",
   "ja": "ハマーンの影",
   "en": "Haman's Shadow"
  },
@@ -14,6 +15,7 @@
    "episode": "46",
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
+    "zh-Hant": "OZ路線／隨特列斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-puru-two",
      "title": {
       "zh-Hans": "普露兹",
+      "zh-Hant": "普露茲",
       "ja": "プルツー",
       "en": "Ple-Two"
      },
      "text": {
       "zh-Hans": "用捷度说服普露兹（需普露已入队）",
+      "zh-Hant": "用傑特說服普露茲（需普露已入隊）",
       "ja": "ジュドーでプルツーを説得（プルの加入が条件）",
       "en": "Persuade Ple-Two with Judau (needs Ple in the party)"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-tallgeese3",
      "title": {
       "zh-Hans": "多鲁基斯Ⅲ",
+      "zh-Hant": "托爾吉斯Ⅲ",
       "ja": "トールギスⅢ",
       "en": "Tallgeese III"
      },
      "text": {
       "zh-Hans": "关末选「改成多鲁基斯Ⅲ」→换乘多鲁基斯Ⅲ",
+      "zh-Hant": "關末選「改成托爾吉斯Ⅲ」→換乘托爾吉斯Ⅲ",
       "ja": "クリア時「トールギスⅢにする」を選ぶとトールギスⅢに乗り換え",
       "en": "At stage end pick “Change to the Tallgeese III” to swap"
      }
@@ -48,11 +54,13 @@
      "ref": "secret-chizuru",
      "title": {
       "zh-Hans": "千鹤手术支线（孔巴特拉V 能否出击）",
+      "zh-Hant": "千鶴手術支線（孔巴德拉V 能否出擊）",
       "ja": "ちずる手術分岐（コン・バトラーV の出撃可否）",
       "en": "Chizuru surgery branch (whether Combattler V can deploy)"
      },
      "text": {
       "zh-Hans": "无需操作：触发千鹤手术剧情时本关豹马不能出击",
+      "zh-Hant": "無需操作：觸發千鶴手術劇情時本關豹馬不能出擊",
       "ja": "操作不要：ちずるの手術イベントに入っていれば豹馬は出撃不可",
       "en": "No action: Hyoma can't deploy if the Chizuru surgery story triggered"
      }
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "马修玛",
+      "zh-Hant": "馬修曼",
       "ja": "マシュマー",
       "en": "Mashymre"
      },
@@ -75,11 +85,13 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "卡多",
+      "zh-Hant": "卡多",
       "ja": "ガトー",
       "en": "Gato"
      },
@@ -88,11 +100,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "姬拉",
+      "zh-Hant": "凱拉",
       "ja": "キャラ",
       "en": "Chara"
      },
@@ -101,11 +115,13 @@
     {
      "part": {
       "zh-Hans": "高性能雷达",
+      "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
       "en": "High-Fidelity Radar"
      },
      "from": {
       "zh-Hans": "格雷米",
+      "zh-Hant": "克雷米",
       "ja": "グレミー",
       "en": "Glemy"
      },
@@ -114,11 +130,13 @@
     {
      "part": {
       "zh-Hans": "混合式装甲",
+      "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
       "en": "Hybrid Armor"
      },
      "from": {
       "zh-Hans": "普露兹",
+      "zh-Hant": "普露茲",
       "ja": "プルツー",
       "en": "Ple-Two"
      },

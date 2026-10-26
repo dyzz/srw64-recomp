@@ -3,6 +3,7 @@
  "scene": 107,
  "title": {
   "zh-Hans": "多鲁基斯被毁",
+  "zh-Hant": "托爾吉斯被毀",
   "ja": "トールギス破壊",
   "en": "Tallgeese Destroyed"
  },
@@ -14,6 +15,7 @@
    "episode": "25",
    "lane": {
     "zh-Hans": "OZ路线",
+    "zh-Hant": "OZ路線",
     "ja": "OZルート",
     "en": "OZ route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-route-tallgeese",
      "title": {
       "zh-Hans": "多鲁基斯被毁：罗姆斐拉侧或进攻月球侧",
+      "zh-Hant": "托爾吉斯被毀：羅姆斐拉側或進攻月球側",
       "ja": "トールギス破壊：ロームフェラ側かムーンアタック側",
       "en": "Tallgeese Destroyed: Romefeller side or Moon Attack side"
      },
      "text": {
       "zh-Hans": "关末选「不能服从罗姆斐拉」→「月球是地狱！」，否则→「进攻月球」",
+      "zh-Hant": "關末選「不能服從羅姆斐拉」→「月球是地獄！」，否則→「進攻月球」",
       "ja": "クリア時「ロームフェラには従えない」→「月は地獄だ!」、他方→「ムーンアタック」",
       "en": "End: “I can't obey Romefeller” → “The Moon Is Hell!”; else “Moon Attack”"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-gato",
      "title": {
       "zh-Hans": "卡多＋GP02A酸浆果",
+      "zh-Hant": "卡多＋GP02A賽薩里斯",
       "ja": "ガトー＋GP02Aサイサリス",
       "en": "Gato + GP02A Physalis"
      },
      "text": {
       "zh-Hans": "关末选「不能服从罗姆斐拉」，下一关守住基地",
+      "zh-Hant": "關末選「不能服從羅姆斐拉」，下一關守住基地",
       "ja": "「ロームフェラには従えない」を選び、次のステージで基地を守る",
       "en": "Pick “I can't obey Romefeller,” then defend the base next stage"
      }
@@ -48,11 +54,13 @@
      "ref": "secret-ginrei",
      "title": {
       "zh-Hans": "银铃＋银铃机器人TYPE1",
+      "zh-Hant": "銀鈴＋銀鈴機器人TYPE1",
       "ja": "銀鈴＋銀鈴ロボTYPE1",
       "en": "Ginrei + Ginrei Robo TYPE1"
      },
      "text": {
       "zh-Hans": "进入本关前大作击坠数 ≥ 30",
+      "zh-Hant": "進入本關前大作擊墜數 ≥ 30",
       "ja": "このステージに入る前に大作の撃墜数30以上",
       "en": "Have Daisaku at 30+ kills before entering this stage"
      }
@@ -61,11 +69,13 @@
      "ref": "secret-elrich",
      "title": {
       "zh-Hans": "埃尔利希＋诺鲁孜",
+      "zh-Hant": "埃爾利希＋諾魯孜",
       "ja": "エルリッヒ＋ノウルーズ",
       "en": "Ehrlich + Norouz"
      },
      "text": {
       "zh-Hans": "本关无操作；罗姆斐拉侧要在下一关先说服他",
+      "zh-Hant": "本關無操作；羅姆斐拉側要在下一關先說服他",
       "ja": "このステージは操作不要。ロームフェラ側は次で先に説得",
       "en": "Nothing here; the Romefeller side must persuade him next stage first"
      },
@@ -78,11 +88,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "戈斯特罗",
+      "zh-Hant": "戈斯特羅",
       "ja": "ゴステロ",
       "en": "Gosterro"
      },

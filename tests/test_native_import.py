@@ -249,7 +249,7 @@ class ImportMetadataTests(unittest.TestCase):
         self.assertEqual(a, b)
         self.assertNotIn("source_entries", a); self.assertNotIn("name_entry_assets", a)
         self.assertEqual(a["text_layout"]["table_count"], 20)
-        self.assertEqual([v["locale"] for v in a["locales"]], ["ja", "zh-Hans", "en"])
+        self.assertEqual([v["locale"] for v in a["locales"]], ["ja", "zh-Hans", "zh-Hant", "en"])
         for locale in a["locales"]:
             for entry in locale["entries"]:
                 self.assertLessEqual(set(entry), {"key", "target", "source_sha256", "review_status"})

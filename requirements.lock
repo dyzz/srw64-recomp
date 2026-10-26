@@ -1,3 +1,5 @@
 # Exact third-party dependency for W1 font/resources and Libretro screenshots.
 # W0 ROM gating and lossless text IR still use only the Python standard library.
 Pillow==12.3.0
+# Traditional Chinese generation (tools/translation/make_zh_hant.py, src/srw64_native/zh_hant.py).
+opencc==1.4.2

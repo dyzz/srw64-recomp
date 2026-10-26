@@ -12,12 +12,13 @@ std::filesystem::path utf8_path(const char* value) {
     return std::filesystem::path(std::u8string(reinterpret_cast<const char8_t*>(value)));
 }
 // The packaged fonts (tools/content/prepare_fonts.py): the variable HarmonyOS
-// Sans faces and the symbol font. Launchers always point SRW64_FONT_DIR at them;
+// Sans faces (TC first for Traditional Chinese, SC behind it for kana) and the symbol font. Launchers always point SRW64_FONT_DIR at them;
 // a missing file is an error, never a silent switch to a system font.
 std::vector<FontSource> packaged(const std::filesystem::path& dir,const std::string& locale,int weight) {
     std::vector<std::string> names;
     // SRW64Prompts holds the hints' button icons in the Private Use Area (text/button_prompts.hpp).
     if(locale=="en")names={"HarmonyOS_Sans_Condensed.ttf","HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"};
+    else if(locale=="zh-Hant")names={"HarmonyOS_Sans_TC.ttf","HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"};
     else names={"HarmonyOS_Sans_SC.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"};
     std::vector<FontSource> sources;
     // Each file is looked for once: every text layout asks for the fonts, and on the Switch a
@@ -62,21 +63,23 @@ std::filesystem::path game_font_path() {
     throw std::runtime_error("No CJK font found. Run tools/content/prepare_fonts.py and set SRW64_FONT_DIR, or set SRW64_TEXT_FONT to a TTF/OTF/TTC file.");
 }
 std::vector<FontSource> game_font_sources(const std::string& locale,int weight) {
-    if(locale!="zh-Hans" && locale!="ja" && locale!="en")
-        throw std::runtime_error("Game text supports zh-Hans, ja and en only");
+    if(locale!="zh-Hans" && locale!="zh-Hant" && locale!="ja" && locale!="en")
+        throw std::runtime_error("Game text supports zh-Hans, zh-Hant, ja and en only");
     const char* dir=std::getenv("SRW64_FONT_DIR");
     if(!std::getenv("SRW64_TEXT_FONT") && dir && *dir)return packaged(utf8_path(dir),locale,weight);
     // Unit tests and older probes without packaged fonts: one CJK face, one weight.
     const auto path=game_font_path();
     // Noto's standard CJK collection orders JP, KR, SC, TC, HK faces.
-    const long face=path.filename()=="NotoSansCJK-Regular.ttc" && locale=="zh-Hans"?2:0;
+    const long face=path.filename()!="NotoSansCJK-Regular.ttc"?0:locale=="zh-Hans"?2:locale=="zh-Hant"?3:0;
     return {{path,face}};
 }
 std::vector<FontSource> title_font_sources(const std::string& locale,int weight) {
     auto sources=game_font_sources(locale,weight);
     const char* dir=std::getenv("SRW64_FONT_DIR");
     if(std::getenv("SRW64_TEXT_FONT") || !dir || !*dir)return sources;
-    const auto path=utf8_path(dir)/(locale=="ja"?"SRW64ChapterTitle.ttf":"MaShanZheng-Regular.ttf");
+    // Ma Shan Zheng has Simplified characters only: Traditional cards take Bakudai's brush
+    // (SRW64BrushTC, tools/content/build_title_fonts.py).
+    const auto path=utf8_path(dir)/(locale=="ja"?"SRW64ChapterTitle.ttf":locale=="zh-Hant"?"SRW64BrushTC.ttf":"MaShanZheng-Regular.ttf");
     if(std::filesystem::is_regular_file(path))sources.insert(sources.begin(),{path,0,0});
     return sources;
 }

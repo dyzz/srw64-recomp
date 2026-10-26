@@ -45,8 +45,9 @@ inline nlohmann::json stage_meta(uint32_t scene) {
 }
 inline nlohmann::json status(){auto& s=state();std::lock_guard lock(s.mutex);return s.info?s.info->status:nlohmann::json();}
 
-// The chapter title a stage gives its scene, in the given locale; falls back to ja,
-// then to any language the title has. Nothing when no campaign borrows the scene.
+// The chapter title a stage gives its scene, in the given locale (zh-Hant falls back to
+// zh-Hans); falls back to ja, then to any language the title has. Nothing when no
+// campaign borrows the scene.
 inline std::optional<std::string> title(uint32_t scene,const std::string& locale) {
     auto& s=state();std::lock_guard lock(s.mutex);
     if(!s.info)return std::nullopt;
@@ -54,7 +55,7 @@ inline std::optional<std::string> title(uint32_t scene,const std::string& locale
     if(found==s.info->titles.end())return std::nullopt;
     const auto& title=found->second;
     if(title.is_string())return title.get<std::string>();
-    for(const auto& key:{locale,std::string("ja")})
+    for(const auto& key:{locale,std::string(locale=="zh-Hant"?"zh-Hans":"ja"),std::string("ja")})
         if(title.contains(key) && title.at(key).is_string())return title.at(key).get<std::string>();
     for(const auto& [key,value]:title.items())if(value.is_string())return value.get<std::string>();
     return std::nullopt;

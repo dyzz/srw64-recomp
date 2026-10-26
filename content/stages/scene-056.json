@@ -3,6 +3,7 @@
  "scene": 56,
  "title": {
   "zh-Hans": "特列斯抹杀指令",
+  "zh-Hant": "特列斯抹殺指令",
   "ja": "トレーズ抹殺指令",
   "en": "Order to Eliminate Treize"
  },
@@ -14,6 +15,7 @@
    "episode": "31",
    "lane": {
     "zh-Hans": "OZ路线",
+    "zh-Hant": "OZ路線",
     "ja": "OZルート",
     "en": "OZ route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-route-ark-brad",
      "title": {
       "zh-Hans": "阿克／布拉德专属支线",
+      "zh-Hant": "阿克／布拉德專屬支線",
       "ja": "アーク／ブラッド専用の分岐",
       "en": "Ark / Brad exclusive side branch"
      },
      "text": {
       "zh-Hans": "阿克：满足埃尔利希条件选第 2 项→「从此并肩」；布拉德：满足卡茨条件→「了断之时」",
+      "zh-Hant": "阿克：滿足埃爾利希條件選第 2 項→「從此並肩」；布拉德：滿足卡茨條件→「了斷之時」",
       "ja": "アーク：エルリッヒの条件＋第2項→「ここより共に」；ブラッド：カーツの条件→「決着の時」",
       "en": "Ark: Ehrlich + option 2 → “Together from Here On”; Brad: Kurtz → “Time to Settle It”"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-katz",
      "title": {
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
+      "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
       "en": "Kurtz + Virose (including Super Earthgain)"
      },
      "text": {
       "zh-Hans": "用布拉德亲手击坠卡茨（敌军全灭后的第二波登场）",
+      "zh-Hant": "用布拉德親手擊墜卡茨（敵軍全滅後的第二波登場）",
       "ja": "ブラッド自身でカーツを撃墜（敵全滅後の第2陣で登場）",
       "en": "Shoot down Kurtz with Brad (appears in the second wave)"
      },
@@ -51,11 +57,13 @@
      "ref": "secret-elrich",
      "title": {
       "zh-Hans": "埃尔利希＋诺鲁孜",
+      "zh-Hant": "埃爾利希＋諾魯孜",
       "ja": "エルリッヒ＋ノウルーズ",
       "en": "Ehrlich + Norouz"
      },
      "text": {
       "zh-Hans": "敌剩 13 台以下时阿克须在场，说服埃尔利希后关末选第 2 项",
+      "zh-Hant": "敵剩 13 臺以下時阿克須在場，說服埃爾利希後關末選第 2 項",
       "ja": "敵残り13機以下でアークが必要、エルリッヒを説得しクリア時に第2項",
       "en": "Have Ark out at 13 or fewer enemies, persuade Ehrlich, pick option 2"
      },
@@ -67,11 +75,13 @@
      "ref": "secret-aisha",
      "title": {
       "zh-Hans": "艾夏＋凤翼天翔",
+      "zh-Hant": "艾夏＋鳳翼天翔",
       "ja": "アイシャ＋エルブルス",
       "en": "Aisha + Elbulls"
      },
      "text": {
       "zh-Hans": "用玛娜米说服艾夏（敌剩 13 台以下时登场）",
+      "zh-Hant": "用瑪娜米說服艾夏（敵剩 13 臺以下時登場）",
       "ja": "マナミでアイシャを説得（敵残り13機以下で登場）",
       "en": "Persuade Aisha with Manami (appears at 13 or fewer enemies)"
      },
@@ -83,11 +93,13 @@
      "ref": "secret-kyral",
      "title": {
       "zh-Hans": "基拉尔＋曼陀罗高达",
+      "zh-Hant": "基拉爾＋曼陀羅鋼彈",
       "ja": "キラル＋マンダラガンダム",
       "en": "Kyral + Mandala Gundam"
      },
      "text": {
       "zh-Hans": "用多蒙击坠基拉尔（第一波敌军全灭后登场）",
+      "zh-Hant": "用多門擊墜基拉爾（第一波敵軍全滅後登場）",
       "ja": "ドモンでキラルを撃墜（第1陣全滅後に登場）",
       "en": "Shoot down Kyral with Domon (appears after the first wave)"
      }
@@ -96,11 +108,13 @@
      "ref": "secret-story-attacks",
      "title": {
       "zh-Hans": "剧情解锁的必杀技与合体技",
+      "zh-Hant": "劇情解鎖的必殺技與合體技",
       "ja": "ストーリーで解禁される必殺技と合体技",
       "en": "Story-unlocked finishers and combination attacks"
      },
      "text": {
       "zh-Hans": "无需操作：招到阿莲比后即可使用双重神之指",
+      "zh-Hant": "無需操作：招到阿蓮比後即可使用雙重神威掌",
       "ja": "操作不要：アレンビー加入後にダブルゴッドフィンガーが使える",
       "en": "No action needed: Double Burning Finger works once Allenby joins"
      }
@@ -110,11 +124,13 @@
     {
      "part": {
       "zh-Hans": "远地点发动机",
+      "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
       "en": "Apogee Motor"
      },
      "from": {
       "zh-Hans": "巴斯克",
+      "zh-Hant": "巴斯克",
       "ja": "バスク",
       "en": "Bask"
      },
@@ -123,16 +139,19 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "埃尔利希",
+      "zh-Hant": "埃爾利希",
       "ja": "エルリッヒ",
       "en": "Ehrlich"
      },
      "note": {
       "zh-Hans": "可被阿克说服（说服后不掉落）",
+      "zh-Hant": "可被阿克說服（說服後不掉落）",
       "ja": "アークで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Ark (no drop if persuaded)"
      },
@@ -144,11 +163,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "艾夏",
+      "zh-Hant": "艾夏",
       "ja": "アイシャ",
       "en": "Aisha"
      },
@@ -160,16 +181,19 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "盖亚",
+      "zh-Hant": "海亞",
       "ja": "ガイヤー",
       "en": "Gaia"
      },
      "note": {
       "zh-Hans": "敌剩 15 台以下时巴斯克在场才登场",
+      "zh-Hant": "敵剩 15 臺以下時巴斯克在場才登場",
       "ja": "敵残り15機以下でバスクがいる時のみ登場",
       "en": "Appears only if Bask is on the map at 15 or fewer enemies"
      },
@@ -178,16 +202,19 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "卡茨",
+      "zh-Hant": "卡茨",
       "ja": "カーツ",
       "en": "Kurtz"
      },
      "note": {
       "zh-Hans": "敌军全灭后的第二波登场",
+      "zh-Hant": "敵軍全滅後的第二波登場",
       "ja": "敵全滅後の第2波で登場",
       "en": "Appears in the second wave after all enemies are destroyed"
      },

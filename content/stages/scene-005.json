@@ -3,6 +3,7 @@
  "scene": 5,
  "title": {
   "zh-Hans": "迈锡尼与百鬼",
+  "zh-Hant": "邁錫尼與百鬼",
   "ja": "ミケーネと百鬼",
   "en": "Mycenae and Hyakki"
  },
@@ -14,6 +15,7 @@
    "episode": "3",
    "lane": {
     "zh-Hans": "超级系",
+    "zh-Hant": "超級系",
     "ja": "スーパー系",
     "en": "Super"
    },
@@ -22,16 +24,19 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "暗黑大将军",
+      "zh-Hant": "暗黑大將軍",
       "ja": "暗黒大将軍",
       "en": "Great General of Darkness"
      },
      "note": {
       "zh-Hans": "HP 40% 以下时撤退",
+      "zh-Hant": "HP 40% 以下時撤退",
       "ja": "HP40%以下で撤退",
       "en": "Retreats at 40% HP or below"
      },
@@ -40,16 +45,19 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "古拉博士",
+      "zh-Hant": "古拉博士",
       "ja": "グラー博士",
       "en": "Dr. Gura"
      },
      "note": {
       "zh-Hans": "HP 40% 以下时撤退",
+      "zh-Hant": "HP 40% 以下時撤退",
       "ja": "HP40%以下で撤退",
       "en": "Retreats at 40% HP or below"
      },

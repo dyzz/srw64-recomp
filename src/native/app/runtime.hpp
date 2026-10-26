@@ -48,13 +48,14 @@ fs::path default_user_dir();
 // An existing user-data directory beside the executable opts into local storage.
 fs::path desktop_user_dir(const fs::path& game_dir, Platform platform, const EnvironmentLookup& lookup);
 // The first launch's language, before the player picks one: the first of the system's
-// preferred languages (BCP 47 or POSIX names, most preferred first) that is Chinese (any
-// script or region: zh-Hans), Japanese or English; English when none is.
+// preferred languages (BCP 47 or POSIX names, most preferred first) that is Chinese
+// (zh-Hant for the Traditional script or Taiwan, Hong Kong and Macau, else zh-Hans),
+// Japanese or English; English when none is.
 // SRW64_SYSTEM_LANGUAGE, when set, stands for the system's list (tests).
 std::string first_language(const std::vector<std::string>& preferred);
 std::vector<std::string> preferred_languages();
 // Steam's own interface language from its registry.vdf text, as a language code for
-// first_language ("schinese" and "tchinese" zh, "japanese" ja, "english" en, any other
+// first_language ("schinese" zh-Hans, "tchinese" zh-Hant, "japanese" ja, "english" en, any other
 // Steam name as it is); empty when the text names none. On Linux a game Steam started
 // (SteamGameId or SteamAppId set) puts it before the locale: SteamOS runs games in
 // en_US whatever language Steam shows.

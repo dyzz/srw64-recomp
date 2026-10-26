@@ -3,6 +3,7 @@
  "scene": 0,
  "title": {
   "zh-Hans": "战斗吧！热血的斗士们",
+  "zh-Hant": "戰鬥吧！熱血的鬥士們",
   "ja": "戦え!熱き血のファイターたち",
   "en": "Fight! Hot-Blooded Fighters"
  },
@@ -14,6 +15,7 @@
    "episode": "1",
    "lane": {
     "zh-Hans": "布拉德（超级系）",
+    "zh-Hant": "布拉德（超級系）",
     "ja": "ブラッド（スーパー系）",
     "en": "Brad (Super)"
    },
@@ -22,16 +24,19 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "暗黑大将军",
+      "zh-Hant": "暗黑大將軍",
       "ja": "暗黒大将軍",
       "en": "Great General of Darkness"
      },
      "note": {
       "zh-Hans": "HP 50% 以下时撤退",
+      "zh-Hant": "HP 50% 以下時撤退",
       "ja": "HP50%以下で撤退",
       "en": "Retreats at 50% HP or below"
      },

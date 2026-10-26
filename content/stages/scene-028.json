@@ -3,6 +3,7 @@
  "scene": 28,
  "title": {
   "zh-Hans": "重逢，我的师父",
+  "zh-Hant": "重逢，我的師父",
   "ja": "再会、我が師よ",
   "en": "Reunion with My Master"
  },
@@ -14,6 +15,7 @@
    "episode": "18",
    "lane": {
     "zh-Hans": "共通",
+    "zh-Hant": "共通",
     "ja": "共通",
     "en": "Common"
    },
@@ -22,11 +24,13 @@
     {
      "part": {
       "zh-Hans": "米诺夫斯基飞行器",
+      "zh-Hant": "米諾夫斯基飛行器",
       "ja": "ミノフスキークラフト",
       "en": "Minovsky Craft"
      },
      "from": {
       "zh-Hans": "鲁·凯恩",
+      "zh-Hant": "魯·凱恩",
       "ja": "ル・カイン",
       "en": "Le Cain"
      },
@@ -35,11 +39,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "戈斯特罗",
+      "zh-Hant": "戈斯特羅",
       "ja": "ゴステロ",
       "en": "Gosterro"
      },

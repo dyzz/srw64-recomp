@@ -3,6 +3,7 @@
  "scene": 97,
  "title": {
   "zh-Hans": "生与死的未来",
+  "zh-Hant": "生與死的未來",
   "ja": "生と死の未来",
   "en": "A Future of Life and Death"
  },
@@ -14,6 +15,7 @@
    "episode": "44",
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
+    "zh-Hant": "OZ路線／隨特列斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-gato",
      "title": {
       "zh-Hans": "卡多＋GP02A酸浆果",
+      "zh-Hant": "卡多＋GP02A賽薩里斯",
       "ja": "ガトー＋GP02Aサイサリス",
       "en": "Gato + GP02A Physalis"
      },
      "text": {
       "zh-Hans": "上一关选「应该与哈曼合作」时卡多关末离队",
+      "zh-Hant": "上一關選「應該與哈曼合作」時卡多關末離隊",
       "ja": "「ハマーンと協力するべきだ」を選んだ場合、クリア時にガトー離脱",
       "en": "Gato leaves at the end if you chose “We should cooperate with Haman”"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-chizuru",
      "title": {
       "zh-Hans": "千鹤手术支线（孔巴特拉V 能否出击）",
+      "zh-Hant": "千鶴手術支線（孔巴德拉V 能否出擊）",
       "ja": "ちずる手術分岐（コン・バトラーV の出撃可否）",
       "en": "Chizuru surgery branch (whether Combattler V can deploy)"
      },
      "text": {
       "zh-Hans": "豹马不出击可避开千鹤手术（上一关击坠数不足 15）",
+      "zh-Hant": "豹馬不出擊可避開千鶴手術（上一關擊墜數不足 15）",
       "ja": "豹馬を出撃させずちずるの手術を回避（前ステージ撃墜15未満）",
       "en": "Don't deploy Hyoma to avoid the Chizuru surgery (<15 kills last stage)"
      }
@@ -49,16 +55,19 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "亚赞",
+      "zh-Hant": "亞贊",
       "ja": "ヤザン",
       "en": "Yazan"
      },
      "note": {
       "zh-Hans": "敌剩 10 台以下后第 2 回合我方阶段随西罗克撤退",
+      "zh-Hant": "敵剩 10 臺以下後第 2 回合我方階段隨西羅克撤退",
       "ja": "敵残り10機以下の2ターン後、シロッコと撤退",
       "en": "Retreats with Scirocco 2 turns after ≤10 enemies remain"
      },
@@ -67,11 +76,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "玛雅",
+      "zh-Hant": "瑪雅",
       "ja": "マウアー",
       "en": "Mouar"
      },
@@ -80,16 +91,19 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "杰利德",
+      "zh-Hant": "傑利特",
       "ja": "ジェリド",
       "en": "Jerid"
      },
      "note": {
       "zh-Hans": "玛雅先离场时，被击坠后换乘猎犬再登场",
+      "zh-Hant": "瑪雅先離場時，被擊墜後換乘獵犬再登場",
       "ja": "マウアー不在時のみ撃墜後バウンド・ドックで再登場",
       "en": "Reappears in the Baund Doc if Mouar is already gone"
      },
@@ -98,16 +112,19 @@
     {
      "part": {
       "zh-Hans": "洗牌同盟纹章",
+      "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
       "en": "Shuffle Crest"
      },
      "from": {
       "zh-Hans": "西罗克",
+      "zh-Hant": "西羅克",
       "ja": "シロッコ",
       "en": "Scirocco"
      },
      "note": {
       "zh-Hans": "敌剩 10 台以下后第 2 回合我方阶段撤退",
+      "zh-Hant": "敵剩 10 臺以下後第 2 回合我方階段撤退",
       "ja": "敵残り10機以下の2ターン後の味方フェイズに撤退",
       "en": "Retreats player phase 2 turns after ≤10 enemies remain"
      },
@@ -117,11 +134,13 @@
      "part": null,
      "from": {
       "zh-Hans": "拉姆萨斯、邓克尔",
+      "zh-Hant": "拉姆薩斯、鄧肯",
       "ja": "ラムサス、ダンケル",
       "en": "Ramsus, Dunkel"
      },
      "note": {
       "zh-Hans": "随西罗克撤退",
+      "zh-Hant": "隨西羅克撤退",
       "ja": "シロッコと一緒に撤退",
       "en": "Retreat with Scirocco"
      },

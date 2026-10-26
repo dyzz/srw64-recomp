@@ -3,6 +3,7 @@
  "scene": 51,
  "title": {
   "zh-Hans": "野心的尽头",
+  "zh-Hant": "野心的盡頭",
   "ja": "野望の行き着く果て",
   "en": "Where Ambition Leads"
  },
@@ -14,6 +15,7 @@
    "episode": "27",
    "lane": {
     "zh-Hans": "OZ路线（守住基地）",
+    "zh-Hant": "OZ路線（守住基地）",
     "ja": "OZルート（基地を守った場合）",
     "en": "OZ route (base held)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-route-gato-base",
      "title": {
       "zh-Hans": "月球是地狱！：守住基地",
+      "zh-Hant": "月球是地獄！：守住基地",
       "ja": "月は地獄だ!：基地を守る",
       "en": "The Moon Is Hell!: holding the base"
      },
      "text": {
       "zh-Hans": "无需操作：在「月球是地狱！」守住基地后到此",
+      "zh-Hant": "無需操作：在「月球是地獄！」守住基地後到此",
       "ja": "操作不要：「月は地獄だ!」で基地を守るとここへ",
       "en": "No action needed: reached by defending the base in “The Moon Is Hell!”"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-reese",
      "title": {
       "zh-Hans": "利修＋西格露恩",
+      "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
       "en": "Rish + Sigroon"
      },
      "text": {
       "zh-Hans": "无需操作：上一关选了「回应他」则开场加入",
+      "zh-Hant": "無需操作：上一關選了「回應他」則開場加入",
       "ja": "操作不要：前ステージで「返答する」なら開始時に加入",
       "en": "No action needed: joins at the start if you picked “Answer him”"
      },
@@ -52,16 +58,19 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "夏比罗",
+      "zh-Hant": "夏比羅",
       "ja": "シャピロ",
       "en": "Shapiro"
      },
      "note": {
       "zh-Hans": "击坠夏比罗时忍在场才会携带",
+      "zh-Hant": "擊墜夏比羅時忍在場才會攜帶",
       "ja": "シャピロ撃墜時に忍がいる場合のみ所持",
       "en": "Only if Shinobu is on the map when Shapiro is shot down"
      },
@@ -71,11 +80,13 @@
      "part": null,
      "from": {
       "zh-Hans": "吉尔德罗姆",
+      "zh-Hant": "吉爾德羅姆",
       "ja": "ギルドローム",
       "en": "Gildrome"
      },
      "note": {
       "zh-Hans": "敌方剩 8 台以下时撤退",
+      "zh-Hant": "敵方剩 8 臺以下時撤退",
       "ja": "敵残り8機以下で撤退",
       "en": "Retreats when 8 or fewer enemies remain"
      },

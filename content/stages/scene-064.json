@@ -3,6 +3,7 @@
  "scene": 64,
  "title": {
   "zh-Hans": "遥远的和平",
+  "zh-Hant": "遙遠的和平",
   "ja": "遠き平和",
   "en": "Distant Peace"
  },
@@ -14,6 +15,7 @@
    "episode": "25",
    "lane": {
     "zh-Hans": "完全和平路线",
+    "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
     "en": "Complete Pacifism route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-katz",
      "title": {
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
+      "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
       "en": "Kurtz + Virose (including Super Earthgain)"
      },
      "text": {
       "zh-Hans": "用布拉德击坠卡茨（敌方剩 6 台以下登场）",
+      "zh-Hant": "用布拉德擊墜卡茨（敵方剩 6 臺以下登場）",
       "ja": "ブラッドでカーツを撃墜（敵残り6機以下で登場）",
       "en": "Shoot down Kurtz with Brad (appears at 6 or fewer enemies)"
      },
@@ -39,11 +43,13 @@
     {
      "part": {
       "zh-Hans": "奖励+10000",
+      "zh-Hant": "獎勵+10000",
       "ja": "ボーナス+10000",
       "en": "Bonus +10000"
      },
      "from": {
       "zh-Hans": "雅努斯侯爵",
+      "zh-Hant": "雅努斯侯爵",
       "ja": "ヤヌス侯爵",
       "en": "Marquis Janus"
      },
@@ -52,16 +58,19 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "卡茨",
+      "zh-Hant": "卡茨",
       "ja": "カーツ",
       "en": "Kurtz"
      },
      "note": {
       "zh-Hans": "敌方剩 6 台以下登场，布拉德不在场即离开",
+      "zh-Hant": "敵方剩 6 臺以下登場，布拉德不在場即離開",
       "ja": "敵残り6機以下で登場、ブラッド不在ならすぐ離脱",
       "en": "Appears at ≤6 enemies; leaves at once without Brad"
      },

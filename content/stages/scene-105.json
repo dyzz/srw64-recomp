@@ -3,6 +3,7 @@
  "scene": 105,
  "title": {
   "zh-Hans": "嘶吼的宇宙",
+  "zh-Hant": "嘶吼的宇宙",
   "ja": "絶叫の宇宙",
   "en": "Screaming Space"
  },
@@ -14,6 +15,7 @@
    "episode": "54",
    "lane": {
     "zh-Hans": "共通",
+    "zh-Hant": "共通",
     "ja": "共通",
     "en": "Common"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-quess",
      "title": {
       "zh-Hans": "葵丝＋亚克托·德卡",
+      "zh-Hant": "葵絲＋亞克托·德卡",
       "ja": "クェス＋ヤクト・ドーガ",
       "en": "Quess + Jagd Doga"
      },
      "text": {
       "zh-Hans": "保住葵丝，用阿姆罗击坠夏亚（拉·凯拉姆入区后第 2 个我方阶段前）",
+      "zh-Hant": "保住葵絲，用阿姆羅擊墜夏亞（拉·凱拉姆入區後第 2 個我方階段前）",
       "ja": "クェスを残しアムロでシャア撃墜（アクシズ進入後2回目の味方フェイズ前）",
       "en": "Spare Quess; Amuro downs Char before Ra Cailum's 2nd phase at Axis"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "哈啰",
+      "zh-Hant": "哈囉",
       "ja": "ハロ",
       "en": "Haro"
      },
      "from": {
       "zh-Hans": "夏亚",
+      "zh-Hant": "夏亞",
       "ja": "シャア",
       "en": "Char"
      },
@@ -49,16 +55,19 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "葵丝",
+      "zh-Hant": "葵絲",
       "ja": "クェス",
       "en": "Quess"
      },
      "note": {
       "zh-Hans": "要在夏亚之前击坠（会失去葵丝）",
+      "zh-Hant": "要在夏亞之前擊墜（會失去葵絲）",
       "ja": "シャアより先に撃墜（クェスは入手不可に）",
       "en": "Shoot her down before Char (you lose Quess)"
      },
@@ -67,11 +76,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "邱尼",
+      "zh-Hant": "裘尼",
       "ja": "ギュネイ",
       "en": "Gyunei"
      },
@@ -80,11 +91,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "蕾森",
+      "zh-Hant": "蕾森",
       "ja": "レズン",
       "en": "Rezin"
      },
@@ -93,11 +106,13 @@
     {
      "part": {
       "zh-Hans": "洗牌同盟纹章",
+      "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
       "en": "Shuffle Crest"
      },
      "from": {
       "zh-Hans": "米利亚尔特",
+      "zh-Hant": "米利亞爾特",
       "ja": "ミリアルド",
       "en": "Milliardo"
      },
@@ -109,11 +124,13 @@
     {
      "part": {
       "zh-Hans": "洗牌同盟纹章",
+      "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
       "en": "Shuffle Crest"
      },
      "from": {
       "zh-Hans": "卡多",
+      "zh-Hant": "卡多",
       "ja": "ガトー",
       "en": "Gato"
      },

@@ -3,6 +3,7 @@
  "scene": 84,
  "title": {
   "zh-Hans": "没有胜利者的战斗",
+  "zh-Hant": "沒有勝利者的戰鬥",
   "ja": "勝利者のいない戦い",
   "en": "A Battle Without Victors"
  },
@@ -14,6 +15,7 @@
    "episode": "43",
    "lane": {
     "zh-Hans": "独立军路线／独自作战",
+    "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
     "en": "Independence Army route / fight alone"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-puru",
      "title": {
       "zh-Hans": "普露＋卡碧尼Mk-Ⅱ",
+      "zh-Hant": "普露＋丘貝雷Mk-Ⅱ",
       "ja": "プル＋キュベレイmkⅡ",
       "en": "Ple + Qubeley Mk-II"
      },
      "text": {
       "zh-Hans": "用捷度说服普露（第 1 步，无门槛）",
+      "zh-Hant": "用傑特說服普露（第 1 步，無門檻）",
       "ja": "ジュドーでプルを説得（第1段階、条件なし）",
       "en": "Step 1: persuade Ple with Judau (no prerequisite)"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "墨丘利",
+      "zh-Hant": "麥丘留士",
       "ja": "メリクリウス",
       "en": "Mercurius"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "维耶特",
+      "zh-Hant": "拜葉特",
       "ja": "ヴァイエイト",
       "en": "Vayeate"
      },
@@ -62,16 +70,19 @@
     {
      "part": {
       "zh-Hans": "抗光束涂层",
+      "zh-Hant": "抗光束塗層",
       "ja": "対ビームコーティング",
       "en": "Anti-Beam Coating"
      },
      "from": {
       "zh-Hans": "杰利德",
+      "zh-Hant": "傑利特",
       "ja": "ジェリド",
       "en": "Jerid"
      },
      "note": {
       "zh-Hans": "敌方全灭时离场",
+      "zh-Hant": "敵方全滅時離場",
       "ja": "敵全滅時に離脱",
       "en": "Leaves when the enemy is wiped out"
      },
@@ -81,11 +92,13 @@
     {
      "part": {
       "zh-Hans": "精神感应框架",
+      "zh-Hant": "精神感應框體",
       "ja": "サイコフレーム",
       "en": "Psycoframe"
      },
      "from": {
       "zh-Hans": "米利亚尔特",
+      "zh-Hant": "米利亞爾特",
       "ja": "ミリアルド",
       "en": "Milliardo"
      },
@@ -94,16 +107,19 @@
     {
      "part": {
       "zh-Hans": "洗牌同盟纹章",
+      "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
       "en": "Shuffle Crest"
      },
      "from": {
       "zh-Hans": "多萝西",
+      "zh-Hant": "桃樂斯",
       "ja": "ドロシー",
       "en": "Dorothy"
      },
      "note": {
       "zh-Hans": "仅走过完全和平路线时登场",
+      "zh-Hant": "僅走過完全和平路線時登場",
       "ja": "完全平和ルートを通った場合のみ登場",
       "en": "Appears only if you went through the Complete Pacifism route"
      },
@@ -113,11 +129,13 @@
      "part": null,
      "from": {
       "zh-Hans": "哈曼",
+      "zh-Hant": "哈曼",
       "ja": "ハマーン",
       "en": "Haman"
      },
      "note": {
       "zh-Hans": "HP 50% 以下或敌方剩 6 台以下撤退（关卡结束）",
+      "zh-Hant": "HP 50% 以下或敵方剩 6 臺以下撤退（關卡結束）",
       "ja": "HP50%以下か敵残り6機以下で撤退（ステージ終了）",
       "en": "Retreats at 50% HP or 6 enemies left (stage ends)"
      },
@@ -127,11 +145,13 @@
      "part": null,
      "from": {
       "zh-Hans": "特列斯、蕾蒂",
+      "zh-Hant": "特列斯、蕾蒂",
       "ja": "トレーズ、レディ",
       "en": "Treize, Lady"
      },
      "note": {
       "zh-Hans": "敌方全灭时离场",
+      "zh-Hant": "敵方全滅時離場",
       "ja": "敵全滅時に離脱",
       "en": "Leave when the enemy is wiped out"
      },

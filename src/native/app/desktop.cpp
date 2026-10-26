@@ -133,15 +133,23 @@ std::string play_lock_message(const std::string& locale) {
     constexpr const char* monitor_ja="アクティビティモニタ";
     constexpr const char* monitor_en="Activity Monitor";
     constexpr const char* monitor_zh="活动监视器";
+    constexpr const char* monitor_tw="活動監視器";
 #elif defined(_WIN32)
     constexpr const char* monitor_ja="タスクマネージャー";
     constexpr const char* monitor_en="Task Manager";
     constexpr const char* monitor_zh="任务管理器";
+    constexpr const char* monitor_tw="工作管理員";
 #else
     constexpr const char* monitor_ja="システムモニター";
     constexpr const char* monitor_en="System Monitor";
     constexpr const char* monitor_zh="系统监视器";
+    constexpr const char* monitor_tw="系統監視器";
 #endif
+    if (locale == "zh-Hant")
+        return std::string("無法啟動 Marchwind64。\n"
+                           "Marchwind64 已經在執行，或者剛關閉的遊戲還沒有完全結束。\n"
+                           "請切換到已開啟的遊戲視窗；如果找不到視窗，請在") +
+               monitor_tw + "中結束 Marchwind64 後重新啟動。\n存檔沒有被更動。";
     if (locale == "ja")
         return std::string("Marchwind64 を起動できません。\n"
                            "Marchwind64 はすでに起動しているか、終了したゲームがまだ完全に閉じていません。\n"
@@ -170,6 +178,11 @@ PlayLockQuestion play_lock_question(const std::string& locale) {
                 "Another Marchwind64 is using the same saves and settings (it may be in the background or not responding).\n"
                 "End it and start? Its unsaved progress will be lost; saved games are kept.",
                 "End and Start", "Cancel"};
+    if (locale == "zh-Hant")
+        return {"無法啟動 Marchwind64。\n"
+                "另一個 Marchwind64 正在使用同一份存檔和設定（可能在背景執行，或者已經沒有回應）。\n"
+                "要結束它並啟動嗎？它尚未儲存的進度會遺失，已儲存的存檔不受影響。",
+                "結束並啟動", "取消"};
     return {"无法启动 Marchwind64。\n"
             "另一个 Marchwind64 正在使用同一份存档和设置（可能在后台，或者已经没有响应）。\n"
             "要结束它并启动吗？它没有保存的进度会丢失，已保存的存档不受影响。",

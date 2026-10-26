@@ -8,6 +8,7 @@
 #include <chrono>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <cwchar>
 #include <fstream>
 #include <optional>
@@ -238,7 +239,21 @@ std::string first_language(const std::vector<std::string>& preferred) {
             if(!std::isalpha(static_cast<unsigned char>(c)))break;
             language+=char(std::tolower(static_cast<unsigned char>(c)));
         }
-        if(language=="zh")return "zh-Hans";
+        if(language=="zh") {
+            // Traditional by script (zh-Hant-US) or by region (zh-TW, zh_HK.UTF-8, zh-MO).
+            std::string rest;
+            for(const char c:name.substr(2)) {
+                if(c=='.' || c=='@')break;
+                rest+=char(std::tolower(static_cast<unsigned char>(c)));
+            }
+            for(const auto* tag:{"hant","tw","hk","mo"})
+                for(size_t at=rest.find(tag);at!=std::string::npos;at=rest.find(tag,at+1)) {
+                    const size_t end=at+std::strlen(tag);
+                    if((at==0 || rest[at-1]=='-' || rest[at-1]=='_') && (end==rest.size() || rest[end]=='-' || rest[end]=='_'))
+                        return "zh-Hant";
+                }
+            return "zh-Hans";
+        }
         if(language=="ja" || language=="en")return language;
     }
     return "en";
@@ -254,7 +269,8 @@ std::string steam_language(std::string_view registry) {
         std::string name(registry.substr(open+1,close-open-1));
         for(auto& c:name)c=char(std::tolower(static_cast<unsigned char>(c)));
         if(name.empty())continue;
-        if(name=="schinese" || name=="tchinese")return "zh";
+        if(name=="schinese")return "zh-Hans";
+        if(name=="tchinese")return "zh-Hant";
         if(name=="japanese")return "ja";
         if(name=="english")return "en";
         return name;

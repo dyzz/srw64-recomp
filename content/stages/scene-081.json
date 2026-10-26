@@ -3,6 +3,7 @@
  "scene": 81,
  "title": {
   "zh-Hans": "决死突破作战（上）",
+  "zh-Hant": "決死突破作戰（上）",
   "ja": "決死の突破作戦 （前）",
   "en": "Desperate Breakthrough (Part 1)"
  },
@@ -14,6 +15,7 @@
    "episode": "39",
    "lane": {
     "zh-Hans": "独立军路线／独自作战",
+    "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
     "en": "Independence Army route / fight alone"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-todd-silky",
      "title": {
       "zh-Hans": "陶德（＋希露奇）",
+      "zh-Hant": "陶德（＋希露奇）",
       "ja": "トッド（＋シルキー）",
       "en": "Tod (+ Silky)"
      },
      "text": {
       "zh-Hans": "保住第 3 回合加入的陶德（玛蓓儿击坠 ≥ 30 时希露奇同乘）",
+      "zh-Hant": "保住第 3 回合加入的陶德（瑪蓓兒擊墜 ≥ 30 時希露奇同乘）",
       "ja": "第3ターン加入のトッドを守る（マーベル30機撃墜でシルキーも）",
       "en": "Keep Tod alive (joins turn 3); Silky too if Marvel has ≥ 30 kills"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-route-breakthrough",
      "title": {
       "zh-Hans": "决死突破作战：10 回合限时",
+      "zh-Hant": "決死突破作戰：10 回合限時",
       "ja": "決死の突破作戦：10ターン制限",
       "en": "Desperate Breakthrough: 10-turn limit"
      },
      "text": {
       "zh-Hans": "上下两篇都在第 10 回合内过关 →「扭曲的宇宙」",
+      "zh-Hant": "上下兩篇都在第 10 回合內過關 →「扭曲的宇宙」",
       "ja": "前後編とも第10ターン以内にクリア →「ゆがむ宇宙」",
       "en": "Clear both parts by turn 10 → “Warped Space”"
      }
@@ -48,11 +54,13 @@
      "ref": "secret-story-attacks",
      "title": {
       "zh-Hans": "剧情解锁的必杀技与合体技",
+      "zh-Hant": "劇情解鎖的必殺技與合體技",
       "ja": "ストーリーで解禁される必殺技と合体技",
       "en": "Story-unlocked finishers and combination attacks"
      },
      "text": {
       "zh-Hans": "无需操作：开场解锁孔巴特拉V武器；没走大屿山线还得石破天惊拳",
+      "zh-Hant": "無需操作：開場解鎖孔巴德拉V武器；沒走大嶼山線還得石破天驚拳",
       "ja": "操作不要：コン・バトラーVの技解禁（ランタオ未経由で石破天驚拳も）",
       "en": "No action: Combattler V attacks unlock; Sekiha Tenkyoken if no Lantau"
      }
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "戈曼",
+      "zh-Hant": "戈曼",
       "ja": "ゴーマン",
       "en": "Gorman"
      },
@@ -75,11 +85,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "布拉奇",
+      "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
       "en": "Blacky"
      },

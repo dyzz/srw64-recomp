@@ -3,6 +3,7 @@
  "scene": 124,
  "title": {
   "zh-Hans": "了断之时",
+  "zh-Hant": "了斷之時",
   "ja": "決着の時",
   "en": "Time to Settle It"
  },
@@ -14,6 +15,7 @@
    "episode": "32",
    "lane": {
     "zh-Hans": "OZ路线（布拉德支线）",
+    "zh-Hant": "OZ路線（布拉德支線）",
     "ja": "OZルート（ブラッド分岐）",
     "en": "OZ route (Brad branch)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-route-ark-brad",
      "title": {
       "zh-Hans": "阿克／布拉德专属支线",
+      "zh-Hant": "阿克／布拉德專屬支線",
       "ja": "アーク／ブラッド専用の分岐",
       "en": "Ark / Brad exclusive side branch"
      },
      "text": {
       "zh-Hans": "从「特列斯抹杀指令」满足卡茨条件自动进入",
+      "zh-Hant": "從「特列斯抹殺指令」滿足卡茨條件自動進入",
       "ja": "「トレーズ抹殺指令」でカーツの条件を満たすと自動で進入",
       "en": "Auto-entered from “Order to Eliminate Treize” if Kurtz conditions met"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-katz",
      "title": {
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
+      "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
       "en": "Kurtz + Virose (including Super Earthgain)"
      },
      "text": {
       "zh-Hans": "击破卡茨时布拉德击坠数 ≥ 100 则卡茨加入",
+      "zh-Hant": "擊破卡茨時布拉德擊墜數 ≥ 100 則卡茨加入",
       "ja": "カーツ撃破時にブラッドの撃墜数100以上ならカーツが加入",
       "en": "Have Brad at 100+ kills when Kurtz falls so Kurtz joins"
      },
@@ -56,6 +62,7 @@
    "episode": "33",
    "lane": {
     "zh-Hans": "独立军路线（布拉德支线）",
+    "zh-Hant": "獨立軍路線（布拉德支線）",
     "ja": "独立軍ルート（ブラッドの分岐）",
     "en": "Independence Army route (Brad branch)"
    },
@@ -64,11 +71,13 @@
      "ref": "secret-route-ark-brad",
      "title": {
       "zh-Hans": "阿克／布拉德专属支线",
+      "zh-Hant": "阿克／布拉德專屬支線",
       "ja": "アーク／ブラッド専用の分岐",
       "en": "Ark / Brad exclusive side branch"
      },
      "text": {
       "zh-Hans": "从「混沌的地球圈」满足卡茨条件自动进入",
+      "zh-Hant": "從「混沌的地球圈」滿足卡茨條件自動進入",
       "ja": "「混沌の地球圏」でカーツの条件を満たすと自動で進入",
       "en": "Auto-entered from “Earth Sphere in Chaos” if Kurtz conditions met"
      }
@@ -77,11 +86,13 @@
      "ref": "secret-katz",
      "title": {
       "zh-Hans": "卡茨＋瓦伊罗斯（含超级夺地者）",
+      "zh-Hant": "卡茨＋瓦伊羅斯（含超級奪地者）",
       "ja": "カーツ＋ヴァイローズ（スーパーアースゲインを含む）",
       "en": "Kurtz + Virose (including Super Earthgain)"
      },
      "text": {
       "zh-Hans": "击破卡茨时布拉德击坠数 ≥ 100 则卡茨加入",
+      "zh-Hant": "擊破卡茨時布拉德擊墜數 ≥ 100 則卡茨加入",
       "ja": "カーツ撃破時にブラッドの撃墜数100以上ならカーツが加入",
       "en": "Have Brad at 100+ kills when Kurtz falls so Kurtz joins"
      },

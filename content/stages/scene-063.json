@@ -3,6 +3,7 @@
  "scene": 63,
  "title": {
   "zh-Hans": "净化",
+  "zh-Hant": "淨化",
   "ja": "浄化",
   "en": "Purification"
  },
@@ -14,6 +15,7 @@
    "episode": "24",
    "lane": {
     "zh-Hans": "完全和平路线",
+    "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
     "en": "Complete Pacifism route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-garalia",
      "title": {
       "zh-Hans": "卡拉利亚＋巴斯托尔",
+      "zh-Hant": "卡拉利亞＋巴斯托爾",
       "ja": "ガラリア＋バストール",
       "en": "Garalia + Bastole"
      },
      "text": {
       "zh-Hans": "无需操作：卡拉利亚随拜斯顿·威尔组出击",
+      "zh-Hant": "無需操作：卡拉利亞隨拜斯頓·威爾組出擊",
       "ja": "操作不要：ガラリアはバイストンウェル組と出撃",
       "en": "No action needed: Garalia deploys with the Byston Well group"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-route-lera",
      "title": {
       "zh-Hans": "蕾拉支线：那双眼中映不出未来",
+      "zh-Hant": "蕾拉支線：那雙眼中映不出未來",
       "ja": "レラ分岐：その瞳に未来は映ることなく",
       "en": "Lera branch: Those Eyes Reflect No Future"
      },
      "text": {
       "zh-Hans": "无需操作：蕾拉支线成立时蕾拉在开场离队",
+      "zh-Hant": "無需操作：蕾拉支線成立時蕾拉在開場離隊",
       "ja": "操作不要：レラルート成立時はレラが開始時に離脱",
       "en": "No action needed: with the Lera branch active, Lera leaves at the start"
      },
@@ -53,11 +59,13 @@
     {
      "part": {
       "zh-Hans": "抗光束涂层",
+      "zh-Hant": "抗光束塗層",
       "ja": "対ビームコーティング",
       "en": "Anti-Beam Coating"
      },
      "from": {
       "zh-Hans": "德雷克",
+      "zh-Hant": "德雷克",
       "ja": "ドレイク",
       "en": "Drake"
      },
@@ -66,11 +74,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "秀特",
+      "zh-Hant": "秀特",
       "ja": "ショット",
       "en": "Shot"
      },
@@ -79,16 +89,19 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "缪吉",
+      "zh-Hant": "繆吉",
       "ja": "ミュージィ",
       "en": "Musy"
      },
      "note": {
       "zh-Hans": "敌方剩 6 台以下时登场",
+      "zh-Hant": "敵方剩 6 臺以下時登場",
       "ja": "敵残り6機以下で登場",
       "en": "Appears when 6 or fewer enemies remain"
      },
@@ -97,11 +110,13 @@
     {
      "part": {
       "zh-Hans": "高性能雷达",
+      "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
       "en": "High-Fidelity Radar"
      },
      "from": {
       "zh-Hans": "陶德",
+      "zh-Hant": "陶德",
       "ja": "トッド",
       "en": "Tod"
      },
@@ -110,16 +125,19 @@
     {
      "part": {
       "zh-Hans": "强化推进器",
+      "zh-Hant": "強化推進器",
       "ja": "メガブースター",
       "en": "Mega Booster"
      },
      "from": {
       "zh-Hans": "巴恩",
+      "zh-Hant": "巴恩",
       "ja": "バーン",
       "en": "Bern"
      },
      "note": {
       "zh-Hans": "与黑骑士二选一：一般由巴恩的超级卡拉巴携带",
+      "zh-Hant": "與黑騎士二選一：一般由巴恩的超級卡拉巴攜帶",
       "ja": "黒騎士とどちらか一方：通常はバーンのハイパーガラバが所持",
       "en": "Either/or with Black Knight: normally carried by Bern's Hyper Gallaba"
      },
@@ -128,16 +146,19 @@
     {
      "part": {
       "zh-Hans": "强化推进器",
+      "zh-Hant": "強化推進器",
       "ja": "メガブースター",
       "en": "Mega Booster"
      },
      "from": {
       "zh-Hans": "黑骑士",
+      "zh-Hant": "黑騎士",
       "ja": "黒騎士",
       "en": "Black Knight"
      },
      "note": {
       "zh-Hans": "艾蕾在场时由翔击坠才携带（与巴恩二选一）",
+      "zh-Hant": "艾蕾在場時由翔擊墜才攜帶（與巴恩二選一）",
       "ja": "エレがいる時にショウで撃墜した場合のみ（バーンと択一）",
       "en": "Only if Show downs him with Elle on the map (else Bern)"
      },

@@ -67,13 +67,13 @@ struct Fixture {
 int main(int argc,char** argv){try{
     std::map<std::string,std::string> options;
     for(int i=1;i<argc;++i){std::string key=argv[i];if(key=="--help"){
-        std::cout<<"srw64-ui-probe --catalog-dir content/locales --font local.ttf --output NEW_DIR [--script actions.json] [--dialogue local/dialogue.json] [--language ja|zh-Hans|en] [--density 1.48] [--pad deck|xbox|playstation|nintendo]\n";return 0;}
+        std::cout<<"srw64-ui-probe --catalog-dir content/locales --font local.ttf --output NEW_DIR [--script actions.json] [--dialogue local/dialogue.json] [--language ja|zh-Hans|zh-Hant|en] [--density 1.48] [--pad deck|xbox|playstation|nintendo]\n";return 0;}
         if(i+1==argc || !key.starts_with("--") || options.contains(key))throw std::runtime_error("Invalid probe arguments");options[key]=argv[++i];}
     for(const auto& [key,value]:options)if(key!="--catalog-dir" && key!="--font" && key!="--output" && key!="--script" && key!="--dialogue" && key!="--language" && key!="--density" && key!="--pad")throw std::runtime_error("Unknown option: "+key);
     for(auto key:{"--catalog-dir","--font","--output"})if(!options.contains(key))throw std::runtime_error(std::string("Required: ")+key);
     fs::path output=fs::absolute(options.at("--output"));if(!fs::create_directory(output))throw std::runtime_error("Output must be a new directory");
     std::map<std::string,std::map<std::string,std::string>> catalogs;
-    for(auto language:{"ja","zh-Hans","en"})catalogs[language]=load(fs::path(options.at("--catalog-dir"))/(std::string(language)+".json")).at("ui");
+    for(auto language:{"ja","zh-Hans","zh-Hant","en"})catalogs[language]=load(fs::path(options.at("--catalog-dir"))/(std::string(language)+".json")).at("ui");
     std::string locale=options.contains("--language")?options.at("--language"):"en";
     if(!catalogs.contains(locale))throw std::runtime_error("Unknown locale");
     // Button tokens become PromptFont icons as in the host (frontend.cpp sync): keyboard
@@ -93,7 +93,7 @@ int main(int argc,char** argv){try{
     json script=json::array();if(options.contains("--script")){
         const auto data=load(options.at("--script"));if(data.at("schema")!="srw64.ui-probe-script.v1")throw std::runtime_error("Invalid script schema");script=data.at("actions");}
     Fixture fixture;
-    for(auto language:{"zh-Hans","en"}){
+    for(auto language:{"zh-Hans","zh-Hant","en"}){
         const auto path=fs::path(options.at("--catalog-dir"))/"terms"/(std::string(language)+".json");
         if(fs::exists(path))fixture.terms[language]=load(path).at("sections");
     }
@@ -166,7 +166,7 @@ int main(int argc,char** argv){try{
     auto event=[&](SDL_Event& e){
         if(e.type==SDL_QUIT){running=false;return;}
         if(e.type==SDL_KEYDOWN && e.key.keysym.sym==SDLK_F7 && !e.key.repeat){
-            locale=locale=="ja"?"zh-Hans":locale=="zh-Hans"?"en":"ja";sync();return;}
+            locale=locale=="ja"?"zh-Hans":locale=="zh-Hans"?"zh-Hant":locale=="zh-Hant"?"en":"ja";sync();return;}
         // This modal page consumes all input. The real game adapter remains
         // responsible for its existing release-after-close gate.
         if(!page.event(e))RmlSDL::InputEventHandler(context,e);

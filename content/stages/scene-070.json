@@ -3,6 +3,7 @@
  "scene": 70,
  "title": {
   "zh-Hans": "重返战场",
+  "zh-Hant": "重返戰場",
   "ja": "戦場に帰る",
   "en": "Return to the Battlefield"
  },
@@ -14,6 +15,7 @@
    "episode": "32",
    "lane": {
     "zh-Hans": "完全和平路线",
+    "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
     "en": "Complete Pacifism route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-route-treize",
      "title": {
       "zh-Hans": "重返战场：随特列斯或独自作战",
+      "zh-Hant": "重返戰場：隨特列斯或獨自作戰",
       "ja": "戦場に帰る：トレーズにつくか、自分たちだけで戦うか",
       "en": "Return to the Battlefield: with Treize or going it alone"
      },
      "text": {
       "zh-Hans": "关末选「投靠特列斯」→「激战的宇宙」；「我们独自战斗」→「银河帝国的威胁」",
+      "zh-Hant": "關末選「投靠特列斯」→「激戰的宇宙」；「我們獨自戰鬥」→「銀河帝國的威脅」",
       "ja": "クリア時「トレーズにつく」→「激戦の宇宙」、「自分たちだけで戦う」→「銀河帝国の脅威」",
       "en": "End choice: “Side with Treize” → “Fierce Fighting in Space”; “Fight on our own” → “The Galactic Empire's Threat”"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-zechs-epyon",
      "title": {
       "zh-Hans": "杰克斯＋艾比安高达",
+      "zh-Hant": "傑克斯＋次代鋼彈",
       "ja": "ゼクス＋ガンダムエピオン",
       "en": "Zechs + Gundam Epyon"
      },
      "text": {
       "zh-Hans": "关末选「投靠特列斯」→杰克斯＋艾比安高达加入",
+      "zh-Hant": "關末選「投靠特列斯」→傑克斯＋次代鋼彈加入",
       "ja": "「トレーズにつく」を選ぶ→ゼクス＋ガンダムエピオンが加入",
       "en": "Pick “Side with Treize” → Zechs + Gundam Epyon join"
      }
@@ -48,11 +54,13 @@
      "ref": "secret-reese",
      "title": {
       "zh-Hans": "利修＋西格露恩",
+      "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
       "en": "Rish + Sigroon"
      },
      "text": {
       "zh-Hans": "无需操作：前两步完成则关末利修＋西格露恩加入",
+      "zh-Hant": "無需操作：前兩步完成則關末利修＋西格露恩加入",
       "ja": "操作不要：前2段階済みならクリア時にリッシュ＋シグルーンが加入",
       "en": "No action needed: Rish + Sigroon join at the end if steps 1–2 done"
      },
@@ -64,11 +72,13 @@
      "ref": "secret-story-attacks",
      "title": {
       "zh-Hans": "剧情解锁的必杀技与合体技",
+      "zh-Hant": "劇情解鎖的必殺技與合體技",
       "ja": "ストーリーで解禁される必殺技と合体技",
       "en": "Story-unlocked finishers and combination attacks"
      },
      "text": {
       "zh-Hans": "无需操作：洗牌同盟四人的必杀技本关解锁",
+      "zh-Hant": "無需操作：洗牌同盟四人的必殺技本關解鎖",
       "ja": "操作不要：シャッフル4人の必殺技がこのステージで解禁",
       "en": "No action needed: Shuffle Alliance finishers unlock here"
      }
@@ -78,11 +88,13 @@
     {
      "part": {
       "zh-Hans": "混合式装甲",
+      "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
       "en": "Hybrid Armor"
      },
      "from": {
       "zh-Hans": "丹格尔",
+      "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
       "en": "Dungele"
      },
@@ -91,11 +103,13 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "巴伦",
+      "zh-Hant": "巴倫",
       "ja": "バレン",
       "en": "Baren"
      },

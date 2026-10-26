@@ -3,6 +3,7 @@
  "scene": 17,
  "title": {
   "zh-Hans": "哀·战士们",
+  "zh-Hant": "哀·戰士們",
   "ja": "哀・戦士たち",
   "en": "Soldiers of Sorrow"
  },
@@ -14,6 +15,7 @@
    "episode": "9",
    "lane": {
     "zh-Hans": "共通",
+    "zh-Hant": "共通",
     "ja": "共通",
     "en": "Common"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-emma",
      "title": {
       "zh-Hans": "爱玛＋高达Mk-Ⅱ",
+      "zh-Hant": "艾瑪＋鋼彈Mk-Ⅱ",
       "ja": "エマ＋ガンダムmkⅡ",
       "en": "Emma + Gundam Mk-II"
      },
      "text": {
       "zh-Hans": "无需操作：爱玛开场驾驶杰刚加入",
+      "zh-Hant": "無需操作：艾瑪開場駕駛傑鋼加入",
       "ja": "操作不要：エマが開始時にジェガンで加入",
       "en": "Nothing to do: Emma joins at the start in the Jegan"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "暗黑大将军",
+      "zh-Hant": "暗黑大將軍",
       "ja": "暗黒大将軍",
       "en": "Great General of Darkness"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "古拉博士",
+      "zh-Hant": "古拉博士",
       "ja": "グラー博士",
       "en": "Dr. Gura"
      },
@@ -63,11 +71,13 @@
      "part": null,
      "from": {
       "zh-Hans": "铁甲鬼",
+      "zh-Hant": "鐵甲鬼",
       "ja": "鉄甲鬼",
       "en": "Tekkoki"
      },
      "note": {
       "zh-Hans": "敌方剩 8 台以下时，若古拉博士已不在场则撤退",
+      "zh-Hant": "敵方剩 8 臺以下時，若古拉博士已不在場則撤退",
       "ja": "敵残り8機以下になったとき、グラー博士がもういなければ撤退",
       "en": "Retreats when 8 or fewer enemies remain, if Dr. Gura is no longer on the map"
      },

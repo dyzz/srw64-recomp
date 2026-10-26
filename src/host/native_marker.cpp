@@ -129,13 +129,15 @@ struct Model {
 std::vector<std::unique_ptr<Model>> models;
 
 // Plates follow the reading language (F7); the locale is fixed per workload when the
-// display list is classified, so both render targets of a frame agree.
+// display list is classified, so both render targets of a frame agree. The model pack has
+// no Traditional Chinese plates: zh-Hant shows the Simplified ones.
 constexpr uint32_t kPlateIdBase = 0x504C0000;  // 'PL'; bits 4+ model, 1-3 locale, 0 suppressed
 constexpr std::array<const char *, 3> kPlateLocales{"ja", "zh-Hans", "en"};
 
 uint32_t plate_locale() {
 #ifdef SRW64_NATIVE_DIALOGUE
-    const std::string locale = srw64::localization::snapshot()->locale;
+    std::string locale = srw64::localization::snapshot()->locale;
+    if (locale == "zh-Hant") locale = "zh-Hans";
     for (size_t i = 0; i < kPlateLocales.size(); ++i)
         if (locale == kPlateLocales[i]) return uint32_t(i);
 #endif

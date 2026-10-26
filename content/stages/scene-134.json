@@ -3,6 +3,7 @@
  "scene": 134,
  "title": {
   "zh-Hans": "恐怖！恶魔阿克西斯启动！（下）",
+  "zh-Hant": "恐怖！惡魔阿克西斯啟動！（下）",
   "ja": "恐怖!デビルアクシズ始動! （後）",
   "en": "Terror! Dark Axis Activates! (Part 2)"
  },
@@ -14,6 +15,7 @@
    "episode": "53",
    "lane": {
     "zh-Hans": "共通",
+    "zh-Hant": "共通",
     "ja": "共通",
     "en": "Common"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-story-attacks",
      "title": {
       "zh-Hans": "剧情解锁的必杀技与合体技",
+      "zh-Hant": "劇情解鎖的必殺技與合體技",
       "ja": "ストーリーで解禁される必殺技と合体技",
       "en": "Story-unlocked finishers and combination attacks"
      },
      "text": {
       "zh-Hans": "无需操作：石破Love Love天惊拳与洗牌同盟拳满足条件即可用",
+      "zh-Hant": "無需操作：石破Love Love天驚拳與洗牌同盟拳滿足條件即可用",
       "ja": "操作不要：石破ラブラブ天驚拳・シャッフル同盟拳は条件だけで使える",
       "en": "No action: neither combo attack is unlocked by the story"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "超合金Z",
+      "zh-Hant": "超合金Z",
       "ja": "超合金Z",
       "en": "Super Alloy Z"
      },
      "from": {
       "zh-Hans": "大尊者高达",
+      "zh-Hant": "巨型宗師鋼彈",
       "ja": "グランドマスターガンダム",
       "en": "Grand Master Gundam"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "新超合金Z",
+      "zh-Hant": "超合金NZ",
       "ja": "超合金ニューZ",
       "en": "Super Alloy New Z"
      },
      "from": {
       "zh-Hans": "黄润发",
+      "zh-Hant": "黃潤發",
       "ja": "ウォン",
       "en": "Wong"
      },

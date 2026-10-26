@@ -3,6 +3,7 @@
  "scene": 131,
  "title": {
   "zh-Hans": "即便如此，也绝不放弃（下）",
+  "zh-Hant": "即便如此，也絕不放棄（下）",
   "ja": "それでもあきらめずに （後）",
   "en": "Even So, Never Give Up (Part 2)"
  },
@@ -14,6 +15,7 @@
    "episode": "42",
    "lane": {
     "zh-Hans": "独立军路线／独自作战（未在 10 回合内突破）",
+    "zh-Hant": "獨立軍路線／獨自作戰（未在 10 回合內突破）",
     "ja": "独立軍ルート／単独行動（10ターン以内に突破できなかった）",
     "en": "Independence Army route / fight alone (did not break through within 10 turns)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-gale-escort",
      "title": {
       "zh-Hans": "盖尔护送朱莉娅",
+      "zh-Hant": "蓋爾護送朱莉婭",
       "ja": "ゲイルがジュリアを護衛",
       "en": "Gale escorts Julia"
      },
      "text": {
       "zh-Hans": "无需操作：已招到盖尔时由盖尔护送茱莉亚，否则英二",
+      "zh-Hant": "無需操作：已招到蓋爾時由蓋爾護送茱莉亞，否則英二",
       "ja": "操作不要：ジュリア護送はゲイル（加入済み時）かエイジ",
       "en": "No action: Gale escorts Julia if recruited, otherwise Eiji"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "瓦尔",
+      "zh-Hant": "瓦爾",
       "ja": "ワール",
       "en": "Wahl"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "加涅拉",
+      "zh-Hant": "傑涅拉",
       "ja": "ジャネラ",
       "en": "Janera"
      },

@@ -35,7 +35,7 @@ WINDOW = {"description": "\"game\" (default), \"key\", a window number, or a tit
 TOOLS = [
     {"name": "srw64_launch", "description": "Build if needed and start a debug session of the game (interactive window, isolated run directory). Replaces the current session handle; an earlier game keeps running until quit or until this server exits.",
      "inputSchema": {"type": "object", "properties": {
-         "language": {"type": "string", "enum": ["ja", "zh-Hans", "en"]},
+         "language": {"type": "string", "enum": ["ja", "zh-Hans", "zh-Hant", "en"]},
          "images": {"type": "string", "enum": ["original", "hd"]},
          "audio": {"type": "boolean", "description": "play the game's sound (off by default); recordings then carry it"},
          "rules": {"description": "\"fixed\" (default: corrections on), \"original\", \"all\", or a list of rule ids", "type": ["string", "array"]},
@@ -84,7 +84,7 @@ TOOLS = [
     {"name": "srw64_settings", "description": "Change rules (preset or id list), language, image mode, the interface size, the UI modes, the refresh rate (original 30, 60 or the display's: RT64 interpolation), the frame-rate readout or the 2x game speed directly.",
      "inputSchema": {"type": "object", "properties": {"rules": {"type": ["string", "array"]},
          "refresh_rate": {"type": "string", "enum": ["original", "60", "display"]}, "show_fps": {"type": "boolean"}, "game_speed": {"type": "integer", "enum": [1, 2]},
-         "locale": {"type": "string", "enum": ["ja", "zh-Hans", "en"]}, "images": {"type": "string", "enum": ["original", "hd"]},
+         "locale": {"type": "string", "enum": ["ja", "zh-Hans", "zh-Hant", "en"]}, "images": {"type": "string", "enum": ["original", "hd"]},
          "battle_ui": {"type": "string", "enum": ["native", "hd", "original"]},
          "ui_size": {"type": "string", "enum": ["standard", "large", "largest"]},
          "aspect": {"type": "string", "enum": ["auto", "4:3"]},

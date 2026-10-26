@@ -3,6 +3,7 @@
  "scene": 136,
  "title": {
   "zh-Hans": "在纷争不止的世界里（下）",
+  "zh-Hant": "在紛爭不止的世界裡（下）",
   "ja": "争い絶えない世界で （後）",
   "en": "In a World of Endless Strife (Part 2)"
  },
@@ -14,6 +15,7 @@
    "episode": "36",
    "lane": {
     "zh-Hans": "完全和平路线（独自作战）",
+    "zh-Hant": "完全和平路線（獨自作戰）",
     "ja": "完全平和ルート（単独で戦う）",
     "en": "Complete Pacifism route (fighting alone)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-rose",
      "title": {
       "zh-Hans": "罗塞＋泽隆",
+      "zh-Hant": "蘿潔＋澤隆",
       "ja": "ロゼ＋ゼーロン",
       "en": "Roze + Zeron"
      },
      "text": {
       "zh-Hans": "可选：用武说服玛古（只影响之后的对白）",
+      "zh-Hant": "可選：用武說服馬可（隻影響之後的對白）",
       "ja": "任意：タケルでマーグを説得（後の会話のみに影響）",
       "en": "Optional: persuade Marg with Takeru (affects later dialogue only)"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-route-treize",
      "title": {
       "zh-Hans": "重返战场：随特列斯或独自作战",
+      "zh-Hant": "重返戰場：隨特列斯或獨自作戰",
       "ja": "戦場に帰る：トレーズにつくか、自分たちだけで戦うか",
       "en": "Return to the Battlefield: with Treize or going it alone"
      },
      "text": {
       "zh-Hans": "无需操作：独自作战一线结束，下一关并入独立军",
+      "zh-Hant": "無需操作：獨自作戰一線結束，下一關併入獨立軍",
       "ja": "操作不要：単独行動ラインは終了、次で独立軍に合流",
       "en": "No action: fight-alone branch ends; next stage joins Independence Army"
      }
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "混合式装甲",
+      "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
       "en": "Hybrid Armor"
      },
      "from": {
       "zh-Hans": "丹格尔",
+      "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
       "en": "Dungele"
      },
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "高性能雷达",
+      "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
       "en": "High-Fidelity Radar"
      },
      "from": {
       "zh-Hans": "玛古",
+      "zh-Hant": "馬可",
       "ja": "マーグ",
       "en": "Marg"
      },
@@ -75,11 +85,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "罗塞",
+      "zh-Hant": "蘿潔",
       "ja": "ロゼ",
       "en": "Roze"
      },
@@ -88,11 +100,13 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "卡达尔",
+      "zh-Hant": "卡達爾",
       "ja": "ガンダル",
       "en": "Gandal"
      },
@@ -101,11 +115,13 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "布拉奇",
+      "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
       "en": "Blacky"
      },

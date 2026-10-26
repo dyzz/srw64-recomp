@@ -66,11 +66,20 @@ inline RomProblem rom_problem(const std::filesystem::path& path) {
     if (!file.read(head.data(), 4) || rom_big_endian(head).empty()) return RomProblem::not_n64;
     return !error && size == supported_rom_size ? RomProblem::wrong_game : RomProblem::wrong_size;
 }
-// The player's message for a refused ROM, in their language (zh-Hans, ja or en; anything
-// else gets Simplified Chinese). Android's launcher says the same (RomCheck.java).
+// The player's message for a refused ROM, in their language (zh-Hans, zh-Hant, ja or en;
+// anything else gets Simplified Chinese). Android's launcher says the same (RomCheck.java).
 inline std::string rom_refused_message(RomProblem problem, const std::filesystem::path& path, const std::string& locale) {
     const auto u8 = path.u8string();
     const std::string file(reinterpret_cast<const char*>(u8.data()), u8.size());
+    if (locale == "zh-Hant") {
+        const char* why = problem == RomProblem::missing
+            ? "找不到 ROM 檔案，或者無法讀取它。請確認檔案沒有被移動或刪除。"
+            : problem == RomProblem::not_n64
+            ? "這不是 N64 ROM 檔案。如果是 .zip、.7z 等壓縮檔，請先解壓縮，再用裡面的 .z64／.v64／.n64 檔案。"
+            : problem == RomProblem::wrong_size ? "ROM 大小不對（應為 32 MB），檔案可能不完整或被改過。"
+            : "這不是支援的 ROM：需要未經修改的超級機器人大戰 64 日版 Rev 0（不能是中文化版、修改版或其他遊戲）。";
+        return std::string("無法啟動 Marchwind64。\n") + why + "\n\n檔案：" + file;
+    }
     if (locale == "ja") {
         const char* why = problem == RomProblem::missing
             ? "ROM ファイルが見つからないか、読み込めません。場所を移動・削除していないか確認してください。"
@@ -109,6 +118,9 @@ inline std::string rom_needed_message(const std::string& locale, const std::file
     if (locale == "en")
         return "Unable to start Marchwind64.\nNo ROM was found and no file picker can open. Copy your Super Robot "
                "Taisen 64 ROM (Japan, Rev 0) here, under this name, then start the game again:\n" + file;
+    if (locale == "zh-Hant")
+        return "無法啟動 Marchwind64。\n找不到 ROM，也無法開啟選擇檔案的視窗。請把超級機器人大戰 64（日版 Rev 0）的 ROM "
+               "以下面的檔名複製到這裡，然後重新啟動：\n" + file;
     return "无法启动 Marchwind64。\n找不到 ROM，也无法打开选择文件的窗口。请把超级机器人大战 64（日版 Rev 0）的 ROM "
            "按下面的文件名复制到这里，然后重新启动：\n" + file;
 }
@@ -119,6 +131,7 @@ inline std::string rom_choose_again(const std::string& locale, bool remembered =
     if (locale == "ja")
         return remembered ? "ROM をもう一度選んでください。セーブデータは変更されていません。" : "別のファイルを選ぶか、キャンセルしてください。";
     if (locale == "en") return remembered ? "Select the ROM again; saves are unchanged." : "Select another file or Cancel.";
+    if (locale == "zh-Hant") return remembered ? "請重新選擇 ROM，存檔不受影響。" : "請選擇其他檔案，或者取消。";
     return remembered ? "请重新选择 ROM，存档不受影响。" : "请选择其他文件，或者取消。";
 }
 

@@ -3,6 +3,7 @@
  "scene": 12,
  "title": {
   "zh-Hans": "少女所见的流星",
+  "zh-Hant": "少女所見的流星",
   "ja": "少女が見た流星",
   "en": "The Shooting Star the Girl Saw"
  },
@@ -14,6 +15,7 @@
    "episode": "4",
    "lane": {
     "zh-Hans": "真实系",
+    "zh-Hant": "真實系",
     "ja": "リアル系",
     "en": "Real"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-gale",
      "title": {
       "zh-Hans": "盖尔＋格莱姆凯撒",
+      "zh-Hant": "蓋爾＋格萊姆凱撒",
       "ja": "ゲイル＋グライムカイザル",
       "en": "Gale + Greimkaiser"
      },
      "text": {
       "zh-Hans": "用英二说服盖尔（无门槛，日后入队）",
+      "zh-Hant": "用英二說服蓋爾（無門檻，日後入隊）",
       "ja": "エイジでゲイルを説得（条件なし、後に加入）",
       "en": "Persuade Gale with Eiji (no prerequisite; joins later)"
      }
@@ -36,16 +40,19 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "杰克斯",
+      "zh-Hant": "傑克斯",
       "ja": "ゼクス",
       "en": "Zechs"
      },
      "note": {
       "zh-Hans": "第 3 回合我方阶段开始或其他敌人全灭时撤退",
+      "zh-Hant": "第 3 回合我方階段開始或其他敵人全滅時撤退",
       "ja": "第3ターン味方フェイズ開始か他の敵全滅で撤退",
       "en": "Retreats at turn 3 player phase or when others fall"
      },
@@ -54,16 +61,19 @@
     {
      "part": {
       "zh-Hans": "高性能雷达",
+      "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
       "en": "High-Fidelity Radar"
      },
      "from": {
       "zh-Hans": "盖尔",
+      "zh-Hant": "蓋爾",
       "ja": "ゲイル",
       "en": "Gale"
      },
      "note": {
       "zh-Hans": "可被英二说服（说服后不掉落）",
+      "zh-Hant": "可被英二說服（說服後不掉落）",
       "ja": "エイジで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Eiji (no drop if persuaded)"
      },
@@ -72,11 +82,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "埃尔利希",
+      "zh-Hant": "埃爾利希",
       "ja": "エルリッヒ",
       "en": "Ehrlich"
      },
@@ -88,11 +100,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "利修",
+      "zh-Hant": "利修",
       "ja": "リッシュ",
       "en": "Rish"
      },

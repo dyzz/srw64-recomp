@@ -3,6 +3,7 @@
  "scene": 10,
  "title": {
   "zh-Hans": "蜂拥而至的杀人机器",
+  "zh-Hant": "蜂擁而至的殺人機器",
   "ja": "群がる殺人機",
   "en": "Swarm of Killing Machines"
  },
@@ -14,6 +15,7 @@
    "episode": "2",
    "lane": {
     "zh-Hans": "真实系",
+    "zh-Hant": "真實系",
     "ja": "リアル系",
     "en": "Real"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-sortie-limits",
      "title": {
       "zh-Hans": "隐藏的出击限制",
+      "zh-Hant": "隱藏的出擊限制",
       "ja": "隠れた出撃制限",
       "en": "Hidden deployment restrictions"
      },
      "text": {
       "zh-Hans": "开场选第 2 项则阿克开局不能出击、稍后赶到",
+      "zh-Hant": "開場選第 2 項則阿克開局不能出擊、稍後趕到",
       "ja": "開始時に第2項を選ぶとアークは出撃不可、後から駆けつける",
       "en": "Pick option 2 at the start and Ark only arrives later"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "盖尔",
+      "zh-Hant": "蓋爾",
       "ja": "ゲイル",
       "en": "Gale"
      },
@@ -50,11 +56,13 @@
      "part": null,
      "from": {
       "zh-Hans": "卡尔拉",
+      "zh-Hant": "卡爾拉",
       "ja": "カルラ",
       "en": "Karla"
      },
      "note": {
       "zh-Hans": "盖尔被击坠时撤退",
+      "zh-Hant": "蓋爾被擊墜時撤退",
       "ja": "ゲイルが撃墜されると撤退",
       "en": "Retreats when Gale is shot down"
      },

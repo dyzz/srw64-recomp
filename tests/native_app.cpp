@@ -100,15 +100,17 @@ void parser_and_paths() {
     env.clear();rejects([&]{default_user_dir(Platform::MacOS,get);},"missing HOME accepted");
     rejects([&]{default_user_dir(Platform::Windows,get);},"missing LOCALAPPDATA accepted");
     using Names=std::vector<std::string>;
-    check(first_language(Names{"zh-Hans-US"})=="zh-Hans" && first_language(Names{"zh-TW"})=="zh-Hans" &&
-          first_language(Names{"zh_CN.UTF-8"})=="zh-Hans","Chinese first language");
+    check(first_language(Names{"zh-Hans-US"})=="zh-Hans" && first_language(Names{"zh-Hans-TW"})=="zh-Hans" &&
+          first_language(Names{"zh_CN.UTF-8"})=="zh-Hans" && first_language(Names{"zh"})=="zh-Hans","Chinese first language");
+    check(first_language(Names{"zh-Hant-US"})=="zh-Hant" && first_language(Names{"zh-TW"})=="zh-Hant" &&
+          first_language(Names{"zh_HK.UTF-8"})=="zh-Hant" && first_language(Names{"zh-MO"})=="zh-Hant","Traditional Chinese first language");
     check(first_language(Names{"ja-JP"})=="ja" && first_language(Names{"en-US","zh-Hans-US"})=="en","first language order");
     check(first_language(Names{"fr-FR","ja"})=="ja" && first_language(Names{"de_DE.UTF-8"})=="en" &&
           first_language(Names{"C"})=="en" && first_language({})=="en","other first languages");
     check(first_language(Names{"jav-ID"})=="en","a longer code taken for Japanese");
     const auto registry=std::string("\"Registry\"\n{\n\t\"HKCU\"\n\t{\n\t\t\"Software\"\n\t\t{\n\t\t\t\"Valve\"\n\t\t\t{\n")+
         "\t\t\t\t\"Steam\"\n\t\t\t\t{\n\t\t\t\t\t\"AutoLoginUser\"\t\t\"deck\"\n\t\t\t\t\t\"language\"\t\t\"";
-    check(steam_language(registry+"schinese\"\n")=="zh" && steam_language(registry+"tchinese\"")=="zh" &&
+    check(steam_language(registry+"schinese\"\n")=="zh-Hans" && steam_language(registry+"tchinese\"")=="zh-Hant" &&
           steam_language(registry+"japanese\"")=="ja" && steam_language(registry+"english\"")=="en","Steam language");
     check(first_language(Names{steam_language(registry+"schinese\""),"en_US.UTF-8"})=="zh-Hans","Steam language not before the locale");
     check(first_language(Names{steam_language(registry+"french\""),"ja_JP.UTF-8"})=="ja","another Steam language taken");

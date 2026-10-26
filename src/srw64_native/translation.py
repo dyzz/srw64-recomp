@@ -113,7 +113,7 @@ def encoded_source_signature(encoded: Encoded) -> str:
 CJK = re.compile(r"[\u3400-\u9fff\uf900-\ufaff]")
 FULLWIDTH_PUNCT = re.compile(r"[、。！？「」『』（）：；]")
 # Visible-length ratio target / source outside which a page is probably cut or padded.
-RATIO = {"zh-Hans": (0.35, 2.5), "en": (0.6, 10.0)}
+RATIO = {"zh-Hans": (0.35, 2.5), "zh-Hant": (0.35, 2.5), "en": (0.6, 10.0)}
 KANA_SILENT = set("ーッっァィゥェォャュョヮヵヶぁぃぅぇぉゃゅょゎ")
 ROMANIZED_HONORIFIC = re.compile(r"(?:\b[A-Za-z]+|[}\]】])-(?:sama|san|kun|chan|dono|senpai|sensei)\b", re.IGNORECASE)
 
@@ -218,7 +218,8 @@ def missing_terms(source_pages: list[str], target_pages: list[str], terms: list[
 
 
 # ---------------------------------------------------------------------- punctuation normalization
-PAIRS = {"zh-Hans": {"「": ("“", "”"), "（": ("（", "）")}, "en": {"「": ("“", "”"), "（": ("(", ")")}}
+PAIRS = {"zh-Hans": {"「": ("“", "”"), "（": ("（", "）")}, "zh-Hant": {"「": ("「", "」"), "（": ("（", "）")},
+         "en": {"「": ("“", "”"), "（": ("(", ")")}}
 CLOSING = {"「": "」", "（": "）"}
 
 

@@ -3,6 +3,7 @@
  "scene": 67,
  "title": {
   "zh-Hans": "桑古王国，覆灭",
+  "zh-Hant": "桑古王國，覆滅",
   "ja": "サンクキングダム、崩壊",
   "en": "The Sanc Kingdom Falls"
  },
@@ -14,6 +15,7 @@
    "episode": "28",
    "lane": {
     "zh-Hans": "完全和平路线",
+    "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
     "en": "Complete Pacifism route"
    },

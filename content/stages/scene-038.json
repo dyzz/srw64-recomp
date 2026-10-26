@@ -3,6 +3,7 @@
  "scene": 38,
  "title": {
   "zh-Hans": "OZ分裂（上）",
+  "zh-Hant": "OZ分裂（上）",
   "ja": "OZ分裂 （前）",
   "en": "OZ Divided (Part 1)"
  },
@@ -14,6 +15,7 @@
    "episode": "28",
    "lane": {
     "zh-Hans": "独立军路线",
+    "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
     "en": "Independence Army route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-hilde",
      "title": {
       "zh-Hans": "希尔妲＋陶拉斯",
+      "zh-Hant": "希爾妲＋陶拉斯",
       "ja": "ヒルデ＋トーラス",
       "en": "Hilde + Taurus"
      },
      "text": {
       "zh-Hans": "用迪奥说服希尔妲（无门槛），关末前别让她被击坠",
+      "zh-Hant": "用迪歐說服希爾妲（無門檻），關末前別讓她被擊墜",
       "ja": "デュオでヒルデを説得、クリアまで撃墜させない",
       "en": "Persuade Hilde with Duo; keep her alive until the stage ends"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-aisha",
      "title": {
       "zh-Hans": "艾夏＋凤翼天翔",
+      "zh-Hant": "艾夏＋鳳翼天翔",
       "ja": "アイシャ＋エルブルス",
       "en": "Aisha + Elbulls"
      },
      "text": {
       "zh-Hans": "用玛娜米说服艾夏（需「虚假的和平」已说服）",
+      "zh-Hant": "用瑪娜米說服艾夏（需「虛假的和平」已說服）",
       "ja": "マナミでアイシャを説得（「偽りの平和」で説得済み）",
       "en": "Persuade Aisha with Manami (needs the persuade in “False Peace”)"
      },
@@ -51,11 +57,13 @@
      "ref": "secret-reese",
      "title": {
       "zh-Hans": "利修＋西格露恩",
+      "zh-Hant": "利修＋西格露恩",
       "ja": "リッシュ＋シグルーン",
       "en": "Rish + Sigroon"
      },
      "text": {
       "zh-Hans": "用塞蕾茵说服利修（需「激斗！玫瑰人生号」选第 2/3 项）",
+      "zh-Hant": "用塞蕾茵說服利修（需「激鬥！玫瑰人生號」選第 2/3 項）",
       "ja": "セレインでリッシュを説得（「激闘!ラビアンローズ」で2番目か3番目）",
       "en": "Persuade Rish with Selain (needs option 2/3 in “Fierce Battle! La Vie en Rose”)"
      },
@@ -68,11 +76,13 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "亚赞",
+      "zh-Hant": "亞贊",
       "ja": "ヤザン",
       "en": "Yazan"
      },
@@ -81,16 +91,19 @@
     {
      "part": {
       "zh-Hans": "远地点发动机",
+      "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
       "en": "Apogee Motor"
      },
      "from": {
       "zh-Hans": "希尔妲",
+      "zh-Hant": "希爾妲",
       "ja": "ヒルデ",
       "en": "Hilde"
      },
      "note": {
       "zh-Hans": "可被迪奥说服（说服后不掉落）",
+      "zh-Hant": "可被迪歐說服（說服後不掉落）",
       "ja": "デュオで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Duo (no drop if persuaded)"
      },
@@ -99,11 +112,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "利修",
+      "zh-Hant": "利修",
       "ja": "リッシュ",
       "en": "Rish"
      },
@@ -115,11 +130,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "艾夏",
+      "zh-Hant": "艾夏",
       "ja": "アイシャ",
       "en": "Aisha"
      },

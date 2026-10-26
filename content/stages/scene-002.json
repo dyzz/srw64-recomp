@@ -3,6 +3,7 @@
  "scene": 2,
  "title": {
   "zh-Hans": "流转",
+  "zh-Hant": "流轉",
   "ja": "流転",
   "en": "Flux"
  },
@@ -14,6 +15,7 @@
    "episode": "1",
    "lane": {
     "zh-Hans": "阿克（真实系）",
+    "zh-Hant": "阿克（真實系）",
     "ja": "アーク（リアル系）",
     "en": "Ark (Real)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-apolly-roberto",
      "title": {
       "zh-Hans": "阿波利、罗伯托＋疾风迪亚斯",
+      "zh-Hant": "阿波里、羅伯特＋疾風迪亞斯",
       "ja": "アポリー、ロベルト＋シュツルム・ディアス",
       "en": "Apolly, Roberto + Schuzrum-Dias"
      },
      "text": {
       "zh-Hans": "无需操作：阿波利、罗伯托中途作为增援加入",
+      "zh-Hant": "無需操作：阿波里、羅伯特中途作為增援加入",
       "ja": "操作不要：アポリー・ロベルトが途中で増援として加入",
       "en": "Nothing to do: Apolly and Roberto arrive as mid-stage reinforcements"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-dialogue-branches",
      "title": {
       "zh-Hans": "只影响对白的分支",
+      "zh-Hant": "隻影響對白的分支",
       "ja": "台詞のみの分岐",
       "en": "Dialogue-only branches"
      },
      "text": {
       "zh-Hans": "中途的三选只改变台词",
+      "zh-Hant": "中途的三選只改變臺詞",
       "ja": "途中の三択は台詞が変わるだけ",
       "en": "The mid-stage three-way choice only changes dialogue"
      }
@@ -49,16 +55,19 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "埃尔利希",
+      "zh-Hant": "埃爾利希",
       "ja": "エルリッヒ",
       "en": "Ehrlich"
      },
      "note": {
       "zh-Hans": "HP 50% 以下时撤退",
+      "zh-Hant": "HP 50% 以下時撤退",
       "ja": "HP50%以下で撤退",
       "en": "Retreats at 50% HP or below"
      },

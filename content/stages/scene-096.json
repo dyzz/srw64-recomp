@@ -3,6 +3,7 @@
  "scene": 96,
  "title": {
   "zh-Hans": "决战！对决祖鲁皇帝！（上）",
+  "zh-Hant": "決戰！對決祖魯皇帝！（上）",
   "ja": "決戦!皇帝ズールとの対決! （前）",
   "en": "Showdown! Face-Off with Emperor Zuul! (Part 1)"
  },
@@ -14,6 +15,7 @@
    "episode": "42",
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
+    "zh-Hant": "OZ路線／隨特列斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize"
    },
@@ -22,11 +24,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "布拉奇",
+      "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
       "en": "Blacky"
      },
@@ -35,11 +39,13 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "卡达尔",
+      "zh-Hant": "卡達爾",
       "ja": "ガンダル",
       "en": "Gandal"
      },
@@ -48,11 +54,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "丹格尔",
+      "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
       "en": "Dungele"
      },
@@ -61,11 +69,13 @@
     {
      "part": {
       "zh-Hans": "强化推进器",
+      "zh-Hant": "強化推進器",
       "ja": "メガブースター",
       "en": "Mega Booster"
      },
      "from": {
       "zh-Hans": "祖鲁皇帝",
+      "zh-Hant": "祖魯皇帝",
       "ja": "ズール皇帝",
       "en": "Emperor Zuul"
      },

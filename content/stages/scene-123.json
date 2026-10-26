@@ -3,6 +3,7 @@
  "scene": 123,
  "title": {
   "zh-Hans": "从此并肩",
+  "zh-Hant": "從此並肩",
   "ja": "ここより共に",
   "en": "Together from Here On"
  },
@@ -14,6 +15,7 @@
    "episode": "31",
    "lane": {
     "zh-Hans": "OZ路线（阿克支线）",
+    "zh-Hant": "OZ路線（阿克支線）",
     "ja": "OZルート（アーク分岐）",
     "en": "OZ route (Ark branch)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-route-ark-brad",
      "title": {
       "zh-Hans": "阿克／布拉德专属支线",
+      "zh-Hant": "阿克／布拉德專屬支線",
       "ja": "アーク／ブラッド専用の分岐",
       "en": "Ark / Brad exclusive side branch"
      },
      "text": {
       "zh-Hans": "从「特列斯抹杀指令」进入，打完回到「乞力马扎罗的风暴」",
+      "zh-Hant": "從「特列斯抹殺指令」進入，打完回到「乞力馬紮羅的風暴」",
       "ja": "「トレーズ抹殺指令」から進入、クリア後「キリマンジャロの嵐」へ",
       "en": "Entered from “Order to Eliminate Treize”; returns to “Storm of Kilimanjaro”"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-elrich",
      "title": {
       "zh-Hans": "埃尔利希＋诺鲁孜",
+      "zh-Hant": "埃爾利希＋諾魯孜",
       "ja": "エルリッヒ＋ノウルーズ",
       "en": "Ehrlich + Norouz"
      },
      "text": {
       "zh-Hans": "无需操作：通关即得埃尔利希＋诺鲁孜（改造 4 段）",
+      "zh-Hant": "無需操作：通關即得埃爾利希＋諾魯孜（改造 4 段）",
       "ja": "操作不要：クリアでエルリッヒ＋ノウルーズが加入（4段階改造済み）",
       "en": "No action needed: clear to recruit Ehrlich + Norouz (4 upgrades)"
      },
@@ -56,6 +62,7 @@
    "episode": "32",
    "lane": {
     "zh-Hans": "独立军路线（阿克支线）",
+    "zh-Hant": "獨立軍路線（阿克支線）",
     "ja": "独立軍ルート（アークの分岐）",
     "en": "Independence Army route (Ark branch)"
    },
@@ -64,11 +71,13 @@
      "ref": "secret-route-ark-brad",
      "title": {
       "zh-Hans": "阿克／布拉德专属支线",
+      "zh-Hant": "阿克／布拉德專屬支線",
       "ja": "アーク／ブラッド専用の分岐",
       "en": "Ark / Brad exclusive side branch"
      },
      "text": {
       "zh-Hans": "从「混沌的地球圈」进入，打完回到「玛尔斯与玛古」",
+      "zh-Hant": "從「混沌的地球圈」進入，打完回到「瑪爾斯與馬可」",
       "ja": "「混沌の地球圏」から進入、クリア後「マーズとマーグ」へ",
       "en": "Entered from “Earth Sphere in Chaos”; returns to “Mars and Marg”"
      }
@@ -77,11 +86,13 @@
      "ref": "secret-elrich",
      "title": {
       "zh-Hans": "埃尔利希＋诺鲁孜",
+      "zh-Hant": "埃爾利希＋諾魯孜",
       "ja": "エルリッヒ＋ノウルーズ",
       "en": "Ehrlich + Norouz"
      },
      "text": {
       "zh-Hans": "无需操作：通关即得埃尔利希＋诺鲁孜（改造 4 段）",
+      "zh-Hant": "無需操作：通關即得埃爾利希＋諾魯孜（改造 4 段）",
       "ja": "操作不要：クリアでエルリッヒ＋ノウルーズが加入（4段階改造済み）",
       "en": "No action needed: clear to recruit Ehrlich + Norouz (4 upgrades)"
      },

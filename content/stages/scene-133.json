@@ -3,6 +3,7 @@
  "scene": 133,
  "title": {
   "zh-Hans": "阿克西斯攻防战（下）",
+  "zh-Hant": "阿克西斯攻防戰（下）",
   "ja": "アクシズの攻防 （後）",
   "en": "The Battle for Axis (Part 3)"
  },
@@ -14,6 +15,7 @@
    "episode": "50",
    "lane": {
     "zh-Hans": "独立军路线／独自作战",
+    "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
     "en": "Independence Army route / fight alone"
    },
@@ -22,11 +24,13 @@
     {
      "part": {
       "zh-Hans": "哈啰",
+      "zh-Hant": "哈囉",
       "ja": "ハロ",
       "en": "Haro"
      },
      "from": {
       "zh-Hans": "哈曼",
+      "zh-Hant": "哈曼",
       "ja": "ハマーン",
       "en": "Haman"
      },
@@ -35,16 +39,19 @@
     {
      "part": {
       "zh-Hans": "超合金Z",
+      "zh-Hant": "超合金Z",
       "ja": "超合金Z",
       "en": "Super Alloy Z"
      },
      "from": {
       "zh-Hans": "卡多",
+      "zh-Hant": "卡多",
       "ja": "ガトー",
       "en": "Gato"
      },
      "note": {
       "zh-Hans": "哈曼被击坠时离场（关卡结束）",
+      "zh-Hant": "哈曼被擊墜時離場（關卡結束）",
       "ja": "ハマーンが撃墜されると離脱（ステージ終了）",
       "en": "Leaves when Haman is shot down (the stage ends)"
      },

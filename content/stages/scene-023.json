@@ -3,6 +3,7 @@
  "scene": 23,
  "title": {
   "zh-Hans": "背叛之镇",
+  "zh-Hant": "背叛之鎮",
   "ja": "裏切りの町",
   "en": "Town of Betrayal"
  },
@@ -14,6 +15,7 @@
    "episode": "13",
    "lane": {
     "zh-Hans": "超级系",
+    "zh-Hant": "超級系",
     "ja": "スーパー系",
     "en": "Super"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-erika",
      "title": {
       "zh-Hans": "艾莉卡",
+      "zh-Hant": "艾莉卡",
       "ja": "エリカ",
       "en": "Erika"
      },
      "text": {
       "zh-Hans": "关末选第 1 项「我觉得没问题」→艾莉卡加入",
+      "zh-Hant": "關末選第 1 項「我覺得沒問題」→艾莉卡加入",
       "ja": "クリア時に「俺は構わないと思うぜ」→エリカ加入",
       "en": "Choose “Fine by me” at stage end and Erika joins"
      }
@@ -36,16 +40,19 @@
     {
      "part": {
       "zh-Hans": "奖励+10000",
+      "zh-Hant": "獎勵+10000",
       "ja": "ボーナス+10000",
       "en": "Bonus +10000"
      },
      "from": {
       "zh-Hans": "雅努斯侯爵",
+      "zh-Hant": "雅努斯侯爵",
       "ja": "ヤヌス侯爵",
       "en": "Marquis Janus"
      },
      "note": {
       "zh-Hans": "敌方剩 15 台以下时撤退",
+      "zh-Hant": "敵方剩 15 臺以下時撤退",
       "ja": "敵残り15機以下で撤退",
       "en": "Retreats when 15 or fewer enemies remain"
      },

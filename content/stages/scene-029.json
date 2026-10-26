@@ -3,6 +3,7 @@
  "scene": 29,
  "title": {
   "zh-Hans": "以洗牌同盟之名",
+  "zh-Hant": "以洗牌同盟之名",
   "ja": "シャッフルの名のもとに",
   "en": "In the Name of the Shuffle"
  },
@@ -14,6 +15,7 @@
    "episode": "19",
    "lane": {
     "zh-Hans": "共通",
+    "zh-Hant": "共通",
     "ja": "共通",
     "en": "Common"
    },
@@ -22,16 +24,19 @@
     {
      "part": {
       "zh-Hans": "精神感应框架",
+      "zh-Hant": "精神感應框體",
       "ja": "サイコフレーム",
       "en": "Psycoframe"
      },
      "from": {
       "zh-Hans": "东方不败",
+      "zh-Hant": "東方不敗",
       "ja": "マスターアジア",
       "en": "Master Asia"
      },
      "note": {
       "zh-Hans": "HP 30% 以下撤退（关卡结束）",
+      "zh-Hant": "HP 30% 以下撤退（關卡結束）",
       "ja": "HP30%以下で撤退（ステージ終了）",
       "en": "Retreats at 30% HP or below (stage ends)"
      },
@@ -40,16 +45,19 @@
     {
      "part": {
       "zh-Hans": "高性能雷达",
+      "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
       "en": "High-Fidelity Radar"
      },
      "from": {
       "zh-Hans": "京二",
+      "zh-Hant": "恭志",
       "ja": "キョウジ",
       "en": "Kyoji"
      },
      "note": {
       "zh-Hans": "HP 50% 以下撤退（关卡结束）",
+      "zh-Hant": "HP 50% 以下撤退（關卡結束）",
       "ja": "HP50%以下で撤退（ステージ終了）",
       "en": "Retreats at 50% HP or below (stage ends)"
      },

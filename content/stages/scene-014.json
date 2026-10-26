@@ -3,6 +3,7 @@
  "scene": 14,
  "title": {
   "zh-Hans": "华丽的鲁·凯恩",
+  "zh-Hant": "華麗的魯·凱恩",
   "ja": "華麗なるル・カイン",
   "en": "The Magnificent Le Cain"
  },
@@ -14,6 +15,7 @@
    "episode": "6",
    "lane": {
     "zh-Hans": "真实系",
+    "zh-Hant": "真實系",
     "ja": "リアル系",
     "en": "Real"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-rx-trio",
      "title": {
       "zh-Hans": "高达、钢加农、钢坦克",
+      "zh-Hant": "鋼彈、鋼加農、鋼坦克",
       "ja": "ガンダム、ガンキャノン、ガンタンク",
       "en": "Gundam, Guncannon, Guntank"
      },
      "text": {
       "zh-Hans": "别让高达、钢加农、钢坦克被击坠（逃进绿色区域也算）",
+      "zh-Hant": "別讓鋼彈、鋼加農、鋼坦克被擊墜（逃進綠色區域也算）",
       "ja": "ガンダム・ガンキャノン・ガンタンクを守る（グリーンエリア退避も可）",
       "en": "Keep the Gundam, Guncannon and Guntank alive (Green Area counts)"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-escort-bonus",
      "title": {
       "zh-Hans": "华丽的鲁·凯恩 护送奖金",
+      "zh-Hant": "華麗的魯·凱恩 護送獎金",
       "ja": "華麗なるル・カイン 護衛ボーナス",
       "en": "The Magnificent Le Cain escort bonus"
      },
      "text": {
       "zh-Hans": "三台都保住得奖金 +35000，损失越多越少",
+      "zh-Hant": "三臺都保住得獎金 +35000，損失越多越少",
       "ja": "3機とも守ればボーナス+35000、損失ごとに減額",
       "en": "Lose none of the three for +35000; less for each loss"
      }
@@ -49,16 +55,19 @@
     {
      "part": {
       "zh-Hans": "精神感应框架",
+      "zh-Hant": "精神感應框體",
       "ja": "サイコフレーム",
       "en": "Psycoframe"
      },
      "from": {
       "zh-Hans": "鲁·凯恩",
+      "zh-Hant": "魯·凱恩",
       "ja": "ル・カイン",
       "en": "Le Cain"
      },
      "note": {
       "zh-Hans": "HP 50% 以下即胜利，须从 50% 以上一击击坠",
+      "zh-Hant": "HP 50% 以下即勝利，須從 50% 以上一擊擊墜",
       "ja": "HP50%以下で勝利、50%超から一撃で撃墜",
       "en": "Stage ends at 50% HP; one-shot it from above 50%"
      },
@@ -67,11 +76,13 @@
     {
      "part": {
       "zh-Hans": "抗光束涂层",
+      "zh-Hant": "抗光束塗層",
       "ja": "対ビームコーティング",
       "en": "Anti-Beam Coating"
      },
      "from": {
       "zh-Hans": "埃尔利希",
+      "zh-Hant": "埃爾利希",
       "ja": "エルリッヒ",
       "en": "Ehrlich"
      },
@@ -83,11 +94,13 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "盖亚",
+      "zh-Hant": "海亞",
       "ja": "ガイヤー",
       "en": "Gaia"
      },
@@ -100,11 +113,13 @@
     {
      "part": {
       "zh-Hans": "抗光束涂层",
+      "zh-Hant": "抗光束塗層",
       "ja": "対ビームコーティング",
       "en": "Anti-Beam Coating"
      },
      "from": {
       "zh-Hans": "利修",
+      "zh-Hant": "利修",
       "ja": "リッシュ",
       "en": "Rish"
      },

@@ -3,6 +3,7 @@
  "scene": 7,
  "title": {
   "zh-Hans": "流星坠落之日",
+  "zh-Hant": "流星墜落之日",
   "ja": "流星が落ちた日",
   "en": "The Day the Shooting Star Fell"
  },
@@ -14,6 +15,7 @@
    "episode": "5",
    "lane": {
     "zh-Hans": "超级系",
+    "zh-Hant": "超級系",
     "ja": "スーパー系",
     "en": "Super"
    },
@@ -22,11 +24,13 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "盖亚",
+      "zh-Hant": "海亞",
       "ja": "ガイヤー",
       "en": "Gaia"
      },

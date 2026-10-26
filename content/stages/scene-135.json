@@ -3,6 +3,7 @@
  "scene": 135,
  "title": {
   "zh-Hans": "突入！摧毁移动要塞！（下）",
+  "zh-Hant": "突入！摧毀移動要塞！（下）",
   "ja": "突入!移動要塞を破壊せよ! （後）",
   "en": "Charge! Destroy the Mobile Fortress! (Part 2)"
  },
@@ -14,6 +15,7 @@
    "episode": "30",
    "lane": {
     "zh-Hans": "完全和平路线",
+    "zh-Hant": "完全和平路線",
     "ja": "完全平和ルート",
     "en": "Complete Pacifism route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-mp-great",
      "title": {
       "zh-Hans": "量产型大魔神",
+      "zh-Hant": "量產型大魔神",
       "ja": "量産型グレート",
       "en": "MP Great Mazinger"
      },
      "text": {
       "zh-Hans": "无需操作：通关得到量产型大魔神（无驾驶员）",
+      "zh-Hant": "無需操作：通關得到量產型大魔神（無駕駛員）",
       "ja": "操作不要：クリアで量産型グレートを入手（パイロットなし）",
       "en": "No action needed: clear to get the MP Great Mazinger (no pilot)"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "布莱大帝",
+      "zh-Hant": "布萊大帝",
       "ja": "ブライ大帝",
       "en": "Emperor Burai"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "古拉博士",
+      "zh-Hant": "古拉博士",
       "ja": "グラー博士",
       "en": "Dr. Gura"
      },
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "地狱大元帅",
+      "zh-Hant": "地獄大元帥",
       "ja": "地獄大元帥",
       "en": "Great Marshal of Hell"
      },

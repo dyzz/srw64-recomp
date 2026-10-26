@@ -3,6 +3,7 @@
  "scene": 85,
  "title": {
   "zh-Hans": "压制地球圈",
+  "zh-Hant": "壓制地球圈",
   "ja": "地球圏制圧",
   "en": "Conquest of the Earth Sphere"
  },
@@ -14,6 +15,7 @@
    "episode": "44",
    "lane": {
     "zh-Hans": "独立军路线／独自作战",
+    "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
     "en": "Independence Army route / fight alone"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-puru",
      "title": {
       "zh-Hans": "普露＋卡碧尼Mk-Ⅱ",
+      "zh-Hant": "普露＋丘貝雷Mk-Ⅱ",
       "ja": "プル＋キュベレイmkⅡ",
       "en": "Ple + Qubeley Mk-II"
      },
      "text": {
       "zh-Hans": "先让格雷米离开地图，再用捷度说服普露",
+      "zh-Hant": "先讓克雷米離開地圖，再用傑特說服普露",
       "ja": "グレミーを退場させてからジュドーでプルを説得",
       "en": "Get Glemy off the map, then persuade Ple with Judau"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "强化推进器",
+      "zh-Hant": "強化推進器",
       "ja": "メガブースター",
       "en": "Mega Booster"
      },
      "from": {
       "zh-Hans": "祖鲁皇帝",
+      "zh-Hant": "祖魯皇帝",
       "ja": "ズール皇帝",
       "en": "Emperor Zuul"
      },
@@ -49,16 +55,19 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "马修玛",
+      "zh-Hant": "馬修曼",
       "ja": "マシュマー",
       "en": "Mashymre"
      },
      "note": {
       "zh-Hans": "祖鲁皇帝被击坠后与普露同组登场",
+      "zh-Hant": "祖魯皇帝被擊墜後與普露同組登場",
       "ja": "ズール皇帝撃墜後にプルと同じ組で登場",
       "en": "Appears in the same group as Ple after Emperor Zuul is shot down"
      },
@@ -67,16 +76,19 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "伊莉亚",
+      "zh-Hant": "伊莉雅",
       "ja": "イリア",
       "en": "Illia"
      },
      "note": {
       "zh-Hans": "祖鲁皇帝被击坠后与普露同组登场",
+      "zh-Hant": "祖魯皇帝被擊墜後與普露同組登場",
       "ja": "ズール皇帝撃墜後にプルと同じ組で登場",
       "en": "Appears in the same group as Ple after Emperor Zuul is shot down"
      },
@@ -85,16 +97,19 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "格雷米",
+      "zh-Hant": "克雷米",
       "ja": "グレミー",
       "en": "Glemy"
      },
      "note": {
       "zh-Hans": "祖鲁皇帝被击坠后与普露同组登场",
+      "zh-Hant": "祖魯皇帝被擊墜後與普露同組登場",
       "ja": "ズール皇帝撃墜後にプルと同じ組で登場",
       "en": "Appears in the same group as Ple after Emperor Zuul is shot down"
      },
@@ -103,16 +118,19 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "普露",
+      "zh-Hant": "普露",
       "ja": "プル",
       "en": "Ple"
      },
      "note": {
       "zh-Hans": "可被捷度说服（说服后不掉落）",
+      "zh-Hant": "可被傑特說服（說服後不掉落）",
       "ja": "ジュドーで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Judau (no drop if persuaded)"
      },
@@ -122,11 +140,13 @@
      "part": null,
      "from": {
       "zh-Hans": "布拉奇、丹格尔",
+      "zh-Hant": "布拉奇、丹格爾",
       "ja": "ブラッキー、ダンゲル",
       "en": "Blacky, Dungele"
      },
      "note": {
       "zh-Hans": "祖鲁皇帝被击坠时撤退",
+      "zh-Hant": "祖魯皇帝被擊墜時撤退",
       "ja": "ズール皇帝が撃墜されると撤退",
       "en": "Retreat when Emperor Zuul is shot down"
      },

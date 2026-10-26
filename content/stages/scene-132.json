@@ -3,6 +3,7 @@
  "scene": 132,
  "title": {
   "zh-Hans": "阿克西斯攻防战（中）",
+  "zh-Hant": "阿克西斯攻防戰（中）",
   "ja": "アクシズの攻防 （中）",
   "en": "The Battle for Axis (Part 2)"
  },
@@ -14,6 +15,7 @@
    "episode": "49",
    "lane": {
     "zh-Hans": "独立军路线／独自作战",
+    "zh-Hant": "獨立軍路線／獨自作戰",
     "ja": "独立軍ルート／単独行動",
     "en": "Independence Army route / fight alone"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-puru-two",
      "title": {
       "zh-Hans": "普露兹",
+      "zh-Hant": "普露茲",
       "ja": "プルツー",
       "en": "Ple-Two"
      },
      "text": {
       "zh-Hans": "格雷米还在场时用捷度说服普露兹，当场入队",
+      "zh-Hant": "克雷米還在場時用傑特說服普露茲，當場入隊",
       "ja": "グレミーがマップにいるうちにジュドーでプルツーを説得",
       "en": "Persuade Ple-Two with Judau while Glemy is still on the map"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "高性能雷达",
+      "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
       "en": "High-Fidelity Radar"
      },
      "from": {
       "zh-Hans": "格雷米",
+      "zh-Hant": "克雷米",
       "ja": "グレミー",
       "en": "Glemy"
      },
@@ -49,16 +55,19 @@
     {
      "part": {
       "zh-Hans": "精神感应框架",
+      "zh-Hant": "精神感應框體",
       "ja": "サイコフレーム",
       "en": "Psycoframe"
      },
      "from": {
       "zh-Hans": "普露兹",
+      "zh-Hant": "普露茲",
       "ja": "プルツー",
       "en": "Ple-Two"
      },
      "note": {
       "zh-Hans": "可被捷度说服（说服后不掉落）",
+      "zh-Hant": "可被傑特說服（說服後不掉落）",
       "ja": "ジュドーで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Judau (no drop if persuaded)"
      },

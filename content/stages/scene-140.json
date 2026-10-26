@@ -3,6 +3,7 @@
  "scene": 140,
  "title": {
   "zh-Hans": "人类的胜利，而后……（下）",
+  "zh-Hant": "人類的勝利，而後……（下）",
   "ja": "人類の勝利、そして……（後）",
   "en": "Humanity's Victory, and Then... (Part 2)"
  },
@@ -14,6 +15,7 @@
    "episode": "24",
    "lane": {
     "zh-Hans": "OZ路线",
+    "zh-Hant": "OZ路線",
     "ja": "OZルート",
     "en": "OZ route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-garalia",
      "title": {
       "zh-Hans": "卡拉利亚＋巴斯托尔",
+      "zh-Hant": "卡拉利亞＋巴斯托爾",
       "ja": "ガラリア＋バストール",
       "en": "Garalia + Bastole"
      },
      "text": {
       "zh-Hans": "无需操作：巴斯托尔在本关关末恢复出击",
+      "zh-Hant": "無需操作：巴斯托爾在本關關末恢復出擊",
       "ja": "操作不要：バストールはクリア時に出撃可能に戻る",
       "en": "No action needed: the Bastole can deploy again after this stage"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-route-lera",
      "title": {
       "zh-Hans": "蕾拉支线：那双眼中映不出未来",
+      "zh-Hant": "蕾拉支線：那雙眼中映不出未來",
       "ja": "レラ分岐：その瞳に未来は映ることなく",
       "en": "Lera branch: Those Eyes Reflect No Future"
      },
      "text": {
       "zh-Hans": "无需操作：蕾拉支线成立时蕾拉在关末牺牲",
+      "zh-Hant": "無需操作：蕾拉支線成立時蕾拉在關末犧牲",
       "ja": "操作不要：レラルート成立時はレラがクリア時に死亡",
       "en": "No action needed: with the Lera branch active, Lera dies at stage end"
      },
@@ -53,11 +59,13 @@
     {
      "part": {
       "zh-Hans": "混合式装甲",
+      "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
       "en": "Hybrid Armor"
      },
      "from": {
       "zh-Hans": "雅努斯侯爵",
+      "zh-Hant": "雅努斯侯爵",
       "ja": "ヤヌス侯爵",
       "en": "Marquis Janus"
      },
@@ -66,11 +74,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "布莱大帝",
+      "zh-Hant": "布萊大帝",
       "ja": "ブライ大帝",
       "en": "Emperor Burai"
      },
@@ -79,11 +89,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "地狱大元帅",
+      "zh-Hant": "地獄大元帥",
       "ja": "地獄大元帥",
       "en": "Great Marshal of Hell"
      },

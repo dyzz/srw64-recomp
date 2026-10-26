@@ -25,7 +25,7 @@ from srw64_native.catalog import source_catalog  # noqa: E402
 HERE = Path(__file__).resolve().parent
 GFX = ROOT / 'build/recomp/gfx-build'
 OUT = ROOT / 'build/recomp/ui-audit'
-LOCALES = ('zh-Hans', 'en', 'ja')
+LOCALES = ('zh-Hans', 'zh-Hant', 'en', 'ja')
 # name: window points and interface size (Steam Deck: 1280 x 800 at Largest).
 SIZES = {'deck': (1280, 800, 'largest'), 'deck-standard': (1280, 800, 'standard'),
          'wide': (1920, 1080, 'standard'), 'smallest': (960, 720, 'standard'),
@@ -76,7 +76,7 @@ class Text:
         clean = lambda s: re.sub(r'<END>$', '', s).replace('<BR>', '\n')
         self.ja = {k: clean(v) for k, v in sources.items() if k.startswith('base:t00_')}
         self.by = {'ja': self.ja}
-        for locale in ('zh-Hans', 'en'):
+        for locale in ('zh-Hans', 'zh-Hant', 'en'):
             entries = json.loads((ROOT / f'content/locales/{locale}.json').read_text())['entries']
             self.by[locale] = {**self.ja, **{e['key']: clean(e['target']) for e in entries}}
         # A string back to its record: Japanese through the ROM, Chinese through the catalog.
@@ -87,7 +87,8 @@ class Text:
         from PIL import ImageFont
         fonts = ROOT / 'build/fonts'
         sc = ImageFont.truetype(str(fonts / 'HarmonyOS_Sans_SC.ttf'), 100)
-        self.fonts = {'zh-Hans': sc, 'ja': sc, 'en': ImageFont.truetype(str(fonts / 'HarmonyOS_Sans_Condensed.ttf'), 100)}
+        self.fonts = {'zh-Hans': sc, 'ja': sc, 'zh-Hant': ImageFont.truetype(str(fonts / 'HarmonyOS_Sans_TC.ttf'), 100),
+                      'en': ImageFont.truetype(str(fonts / 'HarmonyOS_Sans_Condensed.ttf'), 100)}
 
     def record(self, locale, number):
         return self.by[locale][f'base:t00_{number:05d}']

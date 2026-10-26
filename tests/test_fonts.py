@@ -18,7 +18,7 @@ class FontPackageTests(unittest.TestCase):
         self.assertTrue(manifest["url"].startswith("https://developer.huawei.com/"))
         # Variable fonts: Regular for text, the Bold instance for the title menu and chapter cards.
         self.assertEqual(manifest["version"], "2.040")
-        self.assertEqual(set(manifest["files"]), {"HarmonyOS_Sans_SC.ttf", "HarmonyOS_Sans_Condensed.ttf",
+        self.assertEqual(set(manifest["files"]), {"HarmonyOS_Sans_SC.ttf", "HarmonyOS_Sans_TC.ttf", "HarmonyOS_Sans_Condensed.ttf",
                                                   "LICENSE-HarmonyOS-Sans.txt"})
         for row in manifest["files"].values():
             self.assertRegex(row["sha256"], r"^[0-9a-f]{64}$")

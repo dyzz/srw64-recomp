@@ -3,6 +3,7 @@
  "scene": 1,
  "title": {
   "zh-Hans": "出击！菲因梅露姆",
+  "zh-Hant": "出擊！菲因梅露姆",
   "ja": "出撃!スイームルグ",
   "en": "Launch! Sweemurg"
  },
@@ -14,6 +15,7 @@
    "episode": "1",
    "lane": {
     "zh-Hans": "玛娜米（超级系）",
+    "zh-Hant": "瑪娜米（超級系）",
     "ja": "マナミ（スーパー系）",
     "en": "Manami (Super)"
    },

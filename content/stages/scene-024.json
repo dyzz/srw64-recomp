@@ -3,6 +3,7 @@
  "scene": 24,
  "title": {
   "zh-Hans": "震撼的维多利亚",
+  "zh-Hant": "震撼的維多利亞",
   "ja": "衝撃のビクトリア",
   "en": "Shock at Victoria"
  },
@@ -14,6 +15,7 @@
    "episode": "14",
    "lane": {
     "zh-Hans": "共通",
+    "zh-Hant": "共通",
     "ja": "共通",
     "en": "Common"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-aina",
      "title": {
       "zh-Hans": "爱娜＋阿普萨拉斯",
+      "zh-Hant": "艾娜＋阿普薩拉斯",
       "ja": "アイナ＋アプサラス",
       "en": "Aina + Apsaras"
      },
      "text": {
       "zh-Hans": "用士郎说服爱娜（敌方剩 10 台以下时登场）",
+      "zh-Hant": "用士郎說服艾娜（敵方剩 10 臺以下時登場）",
       "ja": "シローでアイナを説得（敵残り10機以下で登場）",
       "en": "Persuade Aina with Shiro (appears at 10 or fewer enemies)"
      }
@@ -36,16 +40,19 @@
     {
      "part": {
       "zh-Hans": "洗牌同盟纹章",
+      "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
       "en": "Shuffle Crest"
      },
      "from": {
       "zh-Hans": "巴斯克",
+      "zh-Hant": "巴斯克",
       "ja": "バスク",
       "en": "Bask"
      },
      "note": {
       "zh-Hans": "第 5 回合我方阶段开始或敌方剩 8 台以下时撤退",
+      "zh-Hant": "第 5 回合我方階段開始或敵方剩 8 臺以下時撤退",
       "ja": "第5ターン味方フェイズ開始か敵残り8機以下で撤退",
       "en": "Retreats on turn 5 player phase or at 8 or fewer foes"
      },
@@ -54,11 +61,13 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "杰克斯",
+      "zh-Hant": "傑克斯",
       "ja": "ゼクス",
       "en": "Zechs"
      },
@@ -67,16 +76,19 @@
     {
      "part": {
       "zh-Hans": "高性能雷达",
+      "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
       "en": "High-Fidelity Radar"
      },
      "from": {
       "zh-Hans": "爱娜",
+      "zh-Hant": "艾娜",
       "ja": "アイナ",
       "en": "Aina"
      },
      "note": {
       "zh-Hans": "可被士郎说服（说服后不掉落）",
+      "zh-Hant": "可被士郎說服（說服後不掉落）",
       "ja": "シローで説得可能（説得時はドロップなし）",
       "en": "Can be persuaded by Shiro (no drop if persuaded)"
      },
@@ -85,11 +97,13 @@
     {
      "part": {
       "zh-Hans": "混合式装甲",
+      "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
       "en": "Hybrid Armor"
      },
      "from": {
       "zh-Hans": "铁甲鬼",
+      "zh-Hant": "鐵甲鬼",
       "ja": "鉄甲鬼",
       "en": "Tekkoki"
      },

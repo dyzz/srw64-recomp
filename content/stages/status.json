@@ -2076,6 +2076,7 @@
      },
      "label": {
       "zh-Hans": "席拉＋古兰·加兰",
+      "zh-Hant": "席拉＋古蘭·加蘭",
       "en": "Ciela + Gran-Garan",
       "ja": "シーラ＋グラン・ガラン"
      }
@@ -2087,6 +2088,7 @@
      },
      "label": {
       "zh-Hans": "艾蕾＋戈拉翁",
+      "zh-Hant": "艾蕾＋戈拉翁",
       "en": "Elle + Goraon",
       "ja": "エレ＋ゴラオン"
      }
@@ -3163,6 +3165,7 @@
      },
      "label": {
       "zh-Hans": "进入手术线",
+      "zh-Hant": "進入手術線",
       "en": "Surgery branch",
       "ja": "手術ルート"
      }
@@ -3170,6 +3173,7 @@
    ],
    "otherwise": {
     "zh-Hans": "未进入手术线",
+    "zh-Hant": "未進入手術線",
     "en": "No surgery branch",
     "ja": "手術ルートなし"
    }
@@ -3196,6 +3200,7 @@
      },
      "label": {
       "zh-Hans": "OZ路线",
+      "zh-Hant": "OZ路線",
       "en": "OZ route",
       "ja": "OZルート"
      }
@@ -3207,6 +3212,7 @@
      },
      "label": {
       "zh-Hans": "独立军路线",
+      "zh-Hant": "獨立軍路線",
       "en": "Independence Army route",
       "ja": "独立軍ルート"
      }
@@ -3233,6 +3239,7 @@
      },
      "label": {
       "zh-Hans": "完全和平路线",
+      "zh-Hant": "完全和平路線",
       "en": "Complete Pacifism route",
       "ja": "完全平和ルート"
      }
@@ -3244,6 +3251,7 @@
      },
      "label": {
       "zh-Hans": "留在独立军路线",
+      "zh-Hant": "留在獨立軍路線",
       "en": "Stayed on the Independence Army route",
       "ja": "独立軍ルートのまま"
      }
@@ -3294,6 +3302,7 @@
      },
      "label": {
       "zh-Hans": "随特列斯",
+      "zh-Hant": "隨特列斯",
       "en": "With Treize",
       "ja": "トレーズにつく"
      }
@@ -3329,6 +3338,7 @@
      },
      "label": {
       "zh-Hans": "独自作战",
+      "zh-Hant": "獨自作戰",
       "en": "On your own",
       "ja": "独自に戦う"
      }
@@ -3355,6 +3365,7 @@
      },
      "label": {
       "zh-Hans": "罗姆斐拉侧",
+      "zh-Hant": "羅姆斐拉側",
       "en": "Romefeller side",
       "ja": "ロームフェラ側"
      }
@@ -3366,6 +3377,7 @@
      },
      "label": {
       "zh-Hans": "进攻月球侧",
+      "zh-Hant": "進攻月球側",
       "en": "Moon Attack side",
       "ja": "ムーンアタック側"
      }
@@ -3392,6 +3404,7 @@
      },
      "label": {
       "zh-Hans": "守住基地",
+      "zh-Hant": "守住基地",
       "en": "Base held",
       "ja": "基地を守った"
      }
@@ -3399,6 +3412,7 @@
    ],
    "otherwise": {
     "zh-Hans": "未守住基地",
+    "zh-Hant": "未守住基地",
     "en": "Base lost",
     "ja": "基地を守れなかった"
    }
@@ -3451,6 +3465,7 @@
      },
      "label": {
       "zh-Hans": "进入「从此并肩」",
+      "zh-Hant": "進入「從此並肩」",
       "en": "Went to “Together From Here”",
       "ja": "「ここより共に」へ"
      }
@@ -3475,6 +3490,7 @@
      },
      "label": {
       "zh-Hans": "进入「了断之时」",
+      "zh-Hant": "進入「了斷之時」",
       "en": "Went to “Time to Settle It”",
       "ja": "「決着の時」へ"
      }
@@ -3482,6 +3498,7 @@
    ],
    "otherwise": {
     "zh-Hans": "未进入支线",
+    "zh-Hant": "未進入支線",
     "en": "No side branch",
     "ja": "専用ルートなし"
    }
@@ -3506,6 +3523,7 @@
      },
      "label": {
       "zh-Hans": "支线成立",
+      "zh-Hant": "支線成立",
       "en": "Branch open",
       "ja": "ルート成立"
      }
@@ -3517,6 +3535,7 @@
      },
      "label": {
       "zh-Hans": "支线不成立",
+      "zh-Hant": "支線不成立",
       "en": "Branch closed",
       "ja": "ルート不成立"
      }
@@ -3543,6 +3562,7 @@
      },
      "label": {
       "zh-Hans": "跟多蒙他们走",
+      "zh-Hant": "跟多門他們走",
       "en": "Went with Domon",
       "ja": "ドモンたちと行く"
      }
@@ -3554,6 +3574,7 @@
      },
      "label": {
       "zh-Hans": "跟豹马他们走",
+      "zh-Hant": "跟豹馬他們走",
       "en": "Went with Hyoma",
       "ja": "豹馬たちと行く"
      }
@@ -3561,6 +3582,7 @@
    ],
    "otherwise": {
     "zh-Hans": "跟本队走",
+    "zh-Hant": "跟本隊走",
     "en": "Stayed with the main force",
     "ja": "本隊と行く"
    }
@@ -3587,6 +3609,7 @@
      },
      "label": {
       "zh-Hans": "两篇都在 10 回合内",
+      "zh-Hant": "兩篇都在 10 回合內",
       "en": "Both parts within 10 turns",
       "ja": "前後編とも10ターン以内"
      }
@@ -3620,6 +3643,7 @@
      },
      "label": {
       "zh-Hans": "超过 10 回合",
+      "zh-Hant": "超過 10 回合",
       "en": "Over 10 turns",
       "ja": "10ターン超過"
      }
@@ -3641,6 +3665,7 @@
      },
      "label": {
       "zh-Hans": "前往穆格的宇宙",
+      "zh-Hant": "前往穆格的宇宙",
       "en": "To the Muge universe",
       "ja": "ムゲの宇宙へ"
      }
@@ -3652,6 +3677,7 @@
      },
      "label": {
       "zh-Hans": "留在地球圈",
+      "zh-Hant": "留在地球圈",
       "en": "Stayed in the Earth Sphere",
       "ja": "地球圏に残留"
      }

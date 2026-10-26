@@ -3,6 +3,7 @@
  "scene": 94,
  "title": {
   "zh-Hans": "库斯科绝对防卫线（下）",
+  "zh-Hant": "庫斯科絕對防衛線（下）",
   "ja": "クスコ絶対防衛線 （後）",
   "en": "Cusco Absolute Defense Line (Part 2)"
  },
@@ -14,6 +15,7 @@
    "episode": "39",
    "lane": {
     "zh-Hans": "OZ路线／随特列斯",
+    "zh-Hant": "OZ路線／隨特列斯",
     "ja": "OZルート／トレーズにつく",
     "en": "OZ route / with Treize"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-gale-escort",
      "title": {
       "zh-Hans": "盖尔护送朱莉娅",
+      "zh-Hant": "蓋爾護送朱莉婭",
       "ja": "ゲイルがジュリアを護衛",
       "en": "Gale escorts Julia"
      },
      "text": {
       "zh-Hans": "无需操作：已招到盖尔时格莱姆凯撒也强制出击",
+      "zh-Hant": "無需操作：已招到蓋爾時格萊姆凱撒也強制出擊",
       "ja": "操作不要：ゲイル加入済みならグライムカイザルも強制出撃",
       "en": "No action: the Greimkaiser is also forced out if Gale was recruited"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "伊万",
+      "zh-Hant": "伊旺",
       "ja": "イワン",
       "en": "Ivan"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "Q老大",
+      "zh-Hant": "Q老大",
       "ja": "Qボス",
       "en": "Q Boss"
      },
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "瓦基米德",
+      "zh-Hant": "華爾奇梅狄斯",
       "ja": "ワルキメデス",
       "en": "Warchimedes"
      },
@@ -75,11 +85,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "丹格尔",
+      "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
       "en": "Dungele"
      },

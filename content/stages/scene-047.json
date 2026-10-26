@@ -3,6 +3,7 @@
  "scene": 47,
  "title": {
   "zh-Hans": "为了统一地球圈",
+  "zh-Hant": "為了統一地球圈",
   "ja": "地球圏統一のために",
   "en": "For a United Earth Sphere"
  },
@@ -14,6 +15,7 @@
    "episode": "22",
    "lane": {
     "zh-Hans": "OZ路线",
+    "zh-Hant": "OZ路線",
     "ja": "OZルート",
     "en": "OZ route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-todd-silky",
      "title": {
       "zh-Hans": "陶德（＋希露奇）",
+      "zh-Hant": "陶德（＋希露奇）",
       "ja": "トッド（＋シルキー）",
       "en": "Tod (+ Silky)"
      },
      "text": {
       "zh-Hans": "用翔说服陶德（需「夏比罗，转生！」已说服）",
+      "zh-Hant": "用翔說服陶德（需「夏比羅，轉生！」已說服）",
       "ja": "ショウでトッドを説得（「シャピロ、転生!」で説得済み）",
       "en": "Persuade Tod with Show (needs the persuade in “Shapiro, Reborn!”)"
      }
@@ -36,16 +40,19 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "赫尔马特",
+      "zh-Hant": "赫爾馬特",
       "ja": "ヘルマット",
       "en": "Helmut"
      },
      "note": {
       "zh-Hans": "敌方剩 15 台以下时撤退",
+      "zh-Hant": "敵方剩 15 臺以下時撤退",
       "ja": "敵残り15機以下で撤退",
       "en": "Retreats when 15 or fewer enemies remain"
      },
@@ -54,16 +61,19 @@
     {
      "part": {
       "zh-Hans": "远地点发动机",
+      "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
       "en": "Apogee Motor"
      },
      "from": {
       "zh-Hans": "吉尔德罗姆",
+      "zh-Hant": "吉爾德羅姆",
       "ja": "ギルドローム",
       "en": "Gildrome"
      },
      "note": {
       "zh-Hans": "敌方剩 15 台以下时撤退",
+      "zh-Hant": "敵方剩 15 臺以下時撤退",
       "ja": "敵残り15機以下で撤退",
       "en": "Retreats when 15 or fewer enemies remain"
      },
@@ -72,16 +82,19 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "秀特",
+      "zh-Hant": "秀特",
       "ja": "ショット",
       "en": "Shot"
      },
      "note": {
       "zh-Hans": "敌方剩 15 台以下时撤退",
+      "zh-Hant": "敵方剩 15 臺以下時撤退",
       "ja": "敵残り15機以下で撤退",
       "en": "Retreats when 15 or fewer enemies remain"
      },
@@ -90,16 +103,19 @@
     {
      "part": {
       "zh-Hans": "生物传感器",
+      "zh-Hant": "生化感應器",
       "ja": "バイオセンサー",
       "en": "Bio-Sensor"
      },
      "from": {
       "zh-Hans": "德雷克",
+      "zh-Hant": "德雷克",
       "ja": "ドレイク",
       "en": "Drake"
      },
      "note": {
       "zh-Hans": "HP 30% 以下时撤退",
+      "zh-Hant": "HP 30% 以下時撤退",
       "ja": "HP30%以下で撤退",
       "en": "Retreats at 30% HP or below"
      },
@@ -108,11 +124,13 @@
     {
      "part": {
       "zh-Hans": "高性能雷达",
+      "zh-Hant": "高性能雷達",
       "ja": "高性能レーダー",
       "en": "High-Fidelity Radar"
      },
      "from": {
       "zh-Hans": "洁丽露",
+      "zh-Hant": "潔麗露",
       "ja": "ジェリル",
       "en": "Jeril"
      },
@@ -122,11 +140,13 @@
      "part": null,
      "from": {
       "zh-Hans": "缪吉",
+      "zh-Hant": "繆吉",
       "ja": "ミュージィ",
       "en": "Musy"
      },
      "note": {
       "zh-Hans": "敌方剩 15 台以下时撤退",
+      "zh-Hant": "敵方剩 15 臺以下時撤退",
       "ja": "敵残り15機以下で撤退",
       "en": "Retreats when 15 or fewer enemies remain"
      },

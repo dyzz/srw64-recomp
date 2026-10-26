@@ -185,7 +185,7 @@ public:
 };
 std::unique_ptr<LayeredRender> layered;
 std::map<std::string,std::array<int,5>> art_bounds;  // opaque bounds and file width of unit art, by path
-std::vector<Rml::byte> font, chinese_font, english_font, symbol_font, prompt_font;
+std::vector<Rml::byte> font, chinese_font, traditional_font, english_font, symbol_font, prompt_font;
 std::map<std::string,std::string> images;
 std::atomic_bool settings_open{}, physical_held{};
 // The settings window opened from the title's MOD entry is the MOD manager: its own pages
@@ -6063,12 +6063,12 @@ void initialize() {
     if(const char* explicit_font=std::getenv("SRW64_UI_FONT"))path=explicit_font;
     else if(font_dir && *font_dir) {
         // The packaged fonts (tools/content/prepare_fonts.py): SC for every
-        // language, Condensed for English documents, the symbol font last.
-        // Both HarmonyOS files are variable; RmlUi opens the named instance
-        // of the requested weight (Normal: Regular).
+        // language, TC for Traditional Chinese and Condensed for English documents,
+        // the symbol font last. The HarmonyOS files are variable; RmlUi opens the
+        // named instance of the requested weight (Normal: Regular).
         const std::filesystem::path dir(font_dir);
         path=dir/"HarmonyOS_Sans_SC.ttf";
-        for(const auto* name:{"HarmonyOS_Sans_SC.ttf","HarmonyOS_Sans_Condensed.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"})
+        for(const auto* name:{"HarmonyOS_Sans_SC.ttf","HarmonyOS_Sans_TC.ttf","HarmonyOS_Sans_Condensed.ttf","SRW64Symbols.ttf","SRW64Prompts.ttf"})
             if(!std::filesystem::is_regular_file(dir/name))throw std::runtime_error("Missing font "+(dir/name).string()+": run tools/content/prepare_fonts.py");
     }
     else for(const auto* candidate:{"/System/Library/Fonts/Supplemental/Arial Unicode.ttf","C:/Windows/Fonts/msyh.ttc","/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"})
@@ -6081,6 +6081,9 @@ void initialize() {
         english_font=bytes(dir/"HarmonyOS_Sans_Condensed.ttf");symbol_font=bytes(dir/"SRW64Symbols.ttf");
         if(Rml::LoadFontFace(english_font,"srw64-ui-en",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,false))
             english_font_family()="srw64-ui-en";
+        traditional_font=bytes(dir/"HarmonyOS_Sans_TC.ttf");
+        if(Rml::LoadFontFace(traditional_font,"srw64-ui-tc",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,false))
+            traditional_font_family()="srw64-ui-tc";
         if(!Rml::LoadFontFace(symbol_font,"srw64-ui-symbols",Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true))
             throw std::runtime_error("Cannot load the symbol font");
         // Button icons (tools/content/build_prompt_font.py), reached only through the tokens' PUA characters.
@@ -6100,7 +6103,7 @@ void initialize() {
     if(!context)throw std::runtime_error("Cannot create shared UI context");input.bind(*context);
     name_page=std::make_unique<NamePage>(*context,NameActions{names::select,names::choose,names::review,
         [](const std::string& path,int dp){return image(path,dp_pixels(dp));},fit_lines});
-    std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()},{"english_font",english_font_family()}}).dump(2)<<'\n';
+    std::ofstream(output/"shared-ui.json")<<json({{"schema","srw64.shared-ui.v1"},{"backend","SDL2/RmlUi/RT64"},{"font",path.string()},{"chinese_font",chinese_font_family()},{"traditional_font",traditional_font_family()},{"english_font",english_font_family()}}).dump(2)<<'\n';
 }
 bool held() {
     int count=0;const auto* keys=SDL_GetKeyboardState(&count);

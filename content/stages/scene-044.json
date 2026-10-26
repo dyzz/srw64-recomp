@@ -3,6 +3,7 @@
  "scene": 44,
  "title": {
   "zh-Hans": "登场！超电磁机器人",
+  "zh-Hant": "登場！超電磁機器人",
   "ja": "登場!超電磁ロボ",
   "en": "Enter! Super Electromagnetic Robo"
  },
@@ -14,6 +15,7 @@
    "episode": "34",
    "lane": {
     "zh-Hans": "独立军路线（其他情况）",
+    "zh-Hant": "獨立軍路線（其他情況）",
     "ja": "独立軍ルート（その他の場合）",
     "en": "Independence Army route (other cases)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-route-lera",
      "title": {
       "zh-Hans": "蕾拉支线：那双眼中映不出未来",
+      "zh-Hant": "蕾拉支線：那雙眼中映不出未來",
       "ja": "レラ分岐：その瞳に未来は映ることなく",
       "en": "Lera branch: Those Eyes Reflect No Future"
      },
      "text": {
       "zh-Hans": "无需操作：超级系或蕾拉支线未成立时进入本关",
+      "zh-Hant": "無需操作：超級系或蕾拉支線未成立時進入本關",
       "ja": "操作不要：スーパー系かレラルート不成立時にこのステージへ",
       "en": "No action needed: played on Super or without the Lera branch"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "奖励+10000",
+      "zh-Hant": "獎勵+10000",
       "ja": "ボーナス+10000",
       "en": "Bonus +10000"
      },
      "from": {
       "zh-Hans": "雅努斯侯爵",
+      "zh-Hant": "雅努斯侯爵",
       "ja": "ヤヌス侯爵",
       "en": "Marquis Janus"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "杰利德",
+      "zh-Hant": "傑利特",
       "ja": "ジェリド",
       "en": "Jerid"
      },

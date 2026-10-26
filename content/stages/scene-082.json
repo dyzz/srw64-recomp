@@ -3,6 +3,7 @@
  "scene": 82,
  "title": {
   "zh-Hans": "扭曲的宇宙",
+  "zh-Hant": "扭曲的宇宙",
   "ja": "ゆがむ宇宙",
   "en": "Warped Space"
  },
@@ -14,6 +15,7 @@
    "episode": "41",
    "lane": {
     "zh-Hans": "独立军路线／独自作战（10 回合内突破）",
+    "zh-Hant": "獨立軍路線／獨自作戰（10 回合內突破）",
     "ja": "独立軍ルート／単独行動（10ターン以内に突破）",
     "en": "Independence Army route / fight alone (broke through within 10 turns)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-route-breakthrough",
      "title": {
       "zh-Hans": "决死突破作战：10 回合限时",
+      "zh-Hant": "決死突破作戰：10 回合限時",
       "ja": "決死の突破作戦：10ターン制限",
       "en": "Desperate Breakthrough: 10-turn limit"
      },
      "text": {
       "zh-Hans": "「决死突破作战」两篇都在第 10 回合内过关才会进入",
+      "zh-Hant": "「決死突破作戰」兩篇都在第 10 回合內過關才會進入",
       "ja": "「決死の突破作戦」前後編とも第10ターン以内クリアで進入",
       "en": "Reached only if both “Desperate Breakthrough” parts end by turn 10"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "卡达尔",
+      "zh-Hant": "卡達爾",
       "ja": "ガンダル",
       "en": "Gandal"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "加涅拉",
+      "zh-Hant": "傑涅拉",
       "ja": "ジャネラ",
       "en": "Janera"
      },
@@ -62,11 +70,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "瓦尔",
+      "zh-Hant": "瓦爾",
       "ja": "ワール",
       "en": "Wahl"
      },
@@ -75,11 +85,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "戈曼",
+      "zh-Hant": "戈曼",
       "ja": "ゴーマン",
       "en": "Gorman"
      },

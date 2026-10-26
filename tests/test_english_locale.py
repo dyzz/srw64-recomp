@@ -40,7 +40,7 @@ class EnglishLocaleTests(unittest.TestCase):
         import tempfile
         profile = load_profile(ROOT / 'config/recomp/profiles/play-profile.json', locale='en', images='original')
         self.assertEqual(profile['presentation']['locale'], 'en')
-        self.assertEqual(list(profile['locales']), ['ja', 'zh-Hans', 'en'])
+        self.assertEqual(list(profile['locales']), ['ja', 'zh-Hans', 'zh-Hant', 'en'])
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / 'presentation.json'
             path.write_text(json.dumps({'schema': 'srw64.presentation-settings.v1', 'locale': 'en'}))

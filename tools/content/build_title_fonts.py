@@ -15,11 +15,17 @@ the host draws them natively, so each language gets a brush face:
 - MaShanZheng-Regular.ttf (Chinese and English): Ma Shan Zheng (SIL OFL 1.1, no Reserved
   Font Name), subset to the GB2312 level-1 hanzi, every Chinese chapter title, ASCII and
   the CJK punctuation. A title outside the subset falls back to HarmonyOS Sans.
+- SRW64BrushTC.ttf (Traditional Chinese): Bakudai 1.49 (莫大毛筆, SIL OFL 1.1, Chun yu Yao,
+  from Aoyagi Kouzan's brush face; github.com/max32002/bakudaifont, tw/Bakudai-Regular.ttf),
+  subset the same way to the Big5 level-1 hanzi and every zh-Hant chapter title. Bakudai is
+  a Reserved Font Name, so the subset, a Modified Version, is renamed; the copyright and
+  licence records stay.
 
 Needs numpy, scipy, potracer and fontTools (pip install numpy scipy potracer fonttools);
 the built fonts are tracked, so this runs only when the cards or the titles change.
 
-    python tools/content/build_title_fonts.py --mashanzheng /path/to/MaShanZheng-Regular.ttf
+    python tools/content/build_title_fonts.py --mashanzheng /path/to/MaShanZheng-Regular.ttf \\
+        --bakudai /path/to/Bakudai-Regular.ttf
 """
 from __future__ import annotations
 
@@ -255,13 +261,13 @@ def build_japanese(rom: bytes, output: Path) -> int:
     return len(glyphs)
 
 
-def build_chinese(source: Path, output: Path) -> int:
-    locale = json.loads((ROOT / "content/locales/zh-Hans.json").read_text())
-    titles = "".join(row["target"].replace("<END>", "") for row in locale["entries"]
-                     if re.fullmatch(r"base:t00_00(2[89]\d|3\d\d|4[01]\d|42[0-3])", row["key"]))
-    level1 = "".join(c for c in map(chr, range(0x4E00, 0x9FA6))
-                     if len(c.encode("gb2312", "ignore")) == 2 and 0xB0A1 <= int.from_bytes(c.encode("gb2312"), "big") <= 0xD7F9)
-    text = level1 + titles + "".join(map(chr, range(0x20, 0x7F))) + "第话終终！？，、。…（）「」『』·—：；“”‘’《》"
+def chapter_titles(locale: str) -> str:
+    document = json.loads((ROOT / f"content/locales/{locale}.json").read_text())
+    return "".join(row["target"].replace("<END>", "") for row in document["entries"]
+                   if re.fullmatch(r"base:t00_00(2[89]\d|3\d\d|4[01]\d|42[0-3])", row["key"]))
+
+
+def subset_font(source: Path, output: Path, text: str, rename: str | None = None) -> int:
     options = subset.Options()
     options.name_IDs = ["*"]
     options.layout_features = ["*"]
@@ -269,19 +275,52 @@ def build_chinese(source: Path, output: Path) -> int:
     subsetter = subset.Subsetter(options)
     subsetter.populate(text=text)
     subsetter.subset(font)
+    if rename:
+        # Every name a menu or a CSS family could show (family, full, PostScript, typographic
+        # family and subfamily); the copyright, licence and designer records stay as they are.
+        name = font["name"]
+        for record in list(name.names):
+            if record.nameID in (3, 4, 6, 16, 17, 18, 21, 22):
+                name.removeNames(nameID=record.nameID)
+        name.removeNames(nameID=1)
+        name.setName(rename, 1, 3, 1, 0x409)
+        name.setName(rename + " Regular", 4, 3, 1, 0x409)
+        name.setName(rename.replace(" ", "") + "-Regular", 6, 3, 1, 0x409)
+        name.setName(rename.replace(" ", "") + "-Regular; subset of Bakudai 1.49", 3, 3, 1, 0x409)
+        name.setName("Regular", 2, 3, 1, 0x409)
     subset.save_font(font, str(output), options)
     return len(set(text))
+
+
+def build_chinese(source: Path, output: Path) -> int:
+    level1 = "".join(c for c in map(chr, range(0x4E00, 0x9FA6))
+                     if len(c.encode("gb2312", "ignore")) == 2 and 0xB0A1 <= int.from_bytes(c.encode("gb2312"), "big") <= 0xD7F9)
+    text = level1 + chapter_titles("zh-Hans") + "".join(map(chr, range(0x20, 0x7F))) + "第话終终！？，、。…（）「」『』·—：；“”‘’《》"
+    return subset_font(source, output, text)
+
+
+def build_traditional(source: Path, output: Path) -> int:
+    # Big5 level 1, the frequently used hanzi: A440-C67E.
+    level1 = "".join(c for c in map(chr, range(0x4E00, 0x9FA6))
+                     if len(c.encode("big5", "ignore")) == 2 and 0xA440 <= int.from_bytes(c.encode("big5"), "big") <= 0xC67E)
+    text = level1 + chapter_titles("zh-Hant") + "".join(map(chr, range(0x20, 0x7F))) + "第話終！？，、。…（）「」『』·—：；"
+    return subset_font(source, output, text, rename="SRW64 Brush TC")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--rom", type=Path, default=ROOT / "rom.z64")
     parser.add_argument("--mashanzheng", type=Path, help="MaShanZheng-Regular.ttf from github.com/googlefonts/mashanzheng")
+    parser.add_argument("--bakudai", type=Path, help="Bakudai-Regular.ttf, tag 1.49 of github.com/max32002/bakudaifont (tw/)")
+    parser.add_argument("--skip-japanese", action="store_true", help="leave SRW64ChapterTitle.ttf as it is")
     args = parser.parse_args()
-    count = build_japanese(args.rom.read_bytes(), FONTS / "SRW64ChapterTitle.ttf")
-    print(f"SRW64ChapterTitle.ttf: {count} characters")
+    if not args.skip_japanese:
+        count = build_japanese(args.rom.read_bytes(), FONTS / "SRW64ChapterTitle.ttf")
+        print(f"SRW64ChapterTitle.ttf: {count} characters")
     if args.mashanzheng:
         print(f"MaShanZheng-Regular.ttf: {build_chinese(args.mashanzheng, FONTS / 'MaShanZheng-Regular.ttf')} characters")
+    if args.bakudai:
+        print(f"SRW64BrushTC.ttf: {build_traditional(args.bakudai, FONTS / 'SRW64BrushTC.ttf')} characters")
     return 0
 
 

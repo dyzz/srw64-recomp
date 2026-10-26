@@ -3,6 +3,7 @@
  "scene": 39,
  "title": {
   "zh-Hans": "明镜止水",
+  "zh-Hant": "明鏡止水",
   "ja": "明鏡止水",
   "en": "Meikyo Shisui"
  },
@@ -14,6 +15,7 @@
    "episode": "30",
    "lane": {
     "zh-Hans": "独立军路线",
+    "zh-Hant": "獨立軍路線",
     "ja": "独立軍ルート",
     "en": "Independence Army route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-story-attacks",
      "title": {
       "zh-Hans": "剧情解锁的必杀技与合体技",
+      "zh-Hant": "劇情解鎖的必殺技與合體技",
       "ja": "ストーリーで解禁される必殺技と合体技",
       "en": "Story-unlocked finishers and combination attacks"
      },
      "text": {
       "zh-Hans": "无需操作：洗牌同盟四人的必杀技开场解锁",
+      "zh-Hant": "無需操作：洗牌同盟四人的必殺技開場解鎖",
       "ja": "操作不要：シャッフル4人の必殺技が開始時に解禁",
       "en": "No action needed: Shuffle Alliance finishers unlock at start"
      }
@@ -36,11 +40,13 @@
     {
      "part": {
       "zh-Hans": "超合金Z",
+      "zh-Hant": "超合金Z",
       "ja": "超合金Z",
       "en": "Super Alloy Z"
      },
      "from": {
       "zh-Hans": "京二",
+      "zh-Hant": "恭志",
       "ja": "キョウジ",
       "en": "Kyoji"
      },
@@ -49,11 +55,13 @@
     {
      "part": {
       "zh-Hans": "洗牌同盟纹章",
+      "zh-Hant": "洗牌同盟紋章",
       "ja": "シャッフルの紋章",
       "en": "Shuffle Crest"
      },
      "from": {
       "zh-Hans": "东方不败",
+      "zh-Hant": "東方不敗",
       "ja": "マスターアジア",
       "en": "Master Asia"
      },

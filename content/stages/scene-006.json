@@ -3,6 +3,7 @@
  "scene": 6,
  "title": {
   "zh-Hans": "激烈！凤翼天翔的猛攻",
+  "zh-Hant": "激烈！鳳翼天翔的猛攻",
   "ja": "苛烈!猛攻のエルブルス",
   "en": "Fierce! Onslaught of the Elbulls"
  },
@@ -14,6 +15,7 @@
    "episode": "4",
    "lane": {
     "zh-Hans": "玛娜米",
+    "zh-Hant": "瑪娜米",
     "ja": "マナミ",
     "en": "Manami"
    },
@@ -22,16 +24,19 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "艾夏",
+      "zh-Hant": "艾夏",
       "ja": "アイシャ",
       "en": "Aisha"
      },
      "note": {
       "zh-Hans": "HP 40% 以下时撤退（关卡随即结束）",
+      "zh-Hant": "HP 40% 以下時撤退（關卡隨即結束）",
       "ja": "HP40%以下で撤退（そのままステージ終了）",
       "en": "Retreats at 40% HP or below (the stage ends right away)"
      },

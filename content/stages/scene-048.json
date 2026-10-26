@@ -3,6 +3,7 @@
  "scene": 48,
  "title": {
   "zh-Hans": "人类的胜利，而后……（上）",
+  "zh-Hant": "人類的勝利，而後……（上）",
   "ja": "人類の勝利、そして……（前）",
   "en": "Humanity's Victory, and Then... (Part 1)"
  },
@@ -14,6 +15,7 @@
    "episode": "23",
    "lane": {
     "zh-Hans": "OZ路线",
+    "zh-Hant": "OZ路線",
     "ja": "OZルート",
     "en": "OZ route"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-garalia",
      "title": {
       "zh-Hans": "卡拉利亚＋巴斯托尔",
+      "zh-Hant": "卡拉利亞＋巴斯托爾",
       "ja": "ガラリア＋バストール",
       "en": "Garalia + Bastole"
      },
      "text": {
       "zh-Hans": "无需操作：卡拉利亚随奥拉战士暂离，下一关关末回归",
+      "zh-Hant": "無需操作：卡拉利亞隨奧拉戰士暫離，下一關關末迴歸",
       "ja": "操作不要：ガラリアは一時出撃不可、次ステージクリア時に復帰",
       "en": "No action needed: Garalia is benched until the end of the next stage"
      }
@@ -35,11 +39,13 @@
      "ref": "secret-route-lera",
      "title": {
       "zh-Hans": "蕾拉支线：那双眼中映不出未来",
+      "zh-Hant": "蕾拉支線：那雙眼中映不出未來",
       "ja": "レラ分岐：その瞳に未来は映ることなく",
       "en": "Lera branch: Those Eyes Reflect No Future"
      },
      "text": {
       "zh-Hans": "无需操作：蕾拉支线只改变本关对话",
+      "zh-Hant": "無需操作：蕾拉支線只改變本關對話",
       "ja": "操作不要：レラルートで変わるのは会話だけ",
       "en": "No action needed: the Lera branch only changes this stage's dialogue"
      },
@@ -53,11 +59,13 @@
     {
      "part": {
       "zh-Hans": "乔巴姆装甲",
+      "zh-Hant": "複合裝甲",
       "ja": "チョバムアーマー",
       "en": "Chobham Armor"
      },
      "from": {
       "zh-Hans": "德雷克",
+      "zh-Hant": "德雷克",
       "ja": "ドレイク",
       "en": "Drake"
      },
@@ -66,16 +74,19 @@
     {
      "part": {
       "zh-Hans": "远地点发动机",
+      "zh-Hant": "遠地點發動機",
       "ja": "アポジモーター",
       "en": "Apogee Motor"
      },
      "from": {
       "zh-Hans": "陶德",
+      "zh-Hant": "陶德",
       "ja": "トッド",
       "en": "Tod"
      },
      "note": {
       "zh-Hans": "德雷克被击坠时撤退",
+      "zh-Hant": "德雷克被擊墜時撤退",
       "ja": "ドレイクが撃墜されると撤退",
       "en": "Retreats when Drake is shot down"
      },
@@ -84,16 +95,19 @@
     {
      "part": {
       "zh-Hans": "磁力覆膜",
+      "zh-Hant": "磁性覆膜",
       "ja": "マグネットコーティング",
       "en": "Magnetic Coating"
      },
      "from": {
       "zh-Hans": "巴恩",
+      "zh-Hant": "巴恩",
       "ja": "バーン",
       "en": "Bern"
      },
      "note": {
       "zh-Hans": "德雷克被击坠时撤退",
+      "zh-Hant": "德雷克被擊墜時撤退",
       "ja": "ドレイクが撃墜されると撤退",
       "en": "Retreats when Drake is shot down"
      },
@@ -102,11 +116,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "古拉博士",
+      "zh-Hant": "古拉博士",
       "ja": "グラー博士",
       "en": "Dr. Gura"
      },
@@ -115,11 +131,13 @@
     {
      "part": {
       "zh-Hans": "补修套件",
+      "zh-Hant": "補修套件",
       "ja": "リペアキット",
       "en": "Repair Kit"
      },
      "from": {
       "zh-Hans": "暗黑大将军",
+      "zh-Hant": "暗黑大將軍",
       "ja": "暗黒大将軍",
       "en": "Great General of Darkness"
      },
@@ -129,11 +147,13 @@
      "part": null,
      "from": {
       "zh-Hans": "黑骑士",
+      "zh-Hant": "黑騎士",
       "ja": "黒騎士",
       "en": "Black Knight"
      },
      "note": {
       "zh-Hans": "德雷克被击坠时撤退",
+      "zh-Hant": "德雷克被擊墜時撤退",
       "ja": "ドレイクが撃墜されると撤退",
       "en": "Retreats when Drake is shot down"
      },

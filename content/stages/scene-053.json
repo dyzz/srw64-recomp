@@ -3,6 +3,7 @@
  "scene": 53,
  "title": {
   "zh-Hans": "混沌不会终结",
+  "zh-Hant": "混沌不會終結",
   "ja": "混沌は終わらない",
   "en": "The Chaos Never Ends"
  },
@@ -14,6 +15,7 @@
    "episode": "28",
    "lane": {
     "zh-Hans": "OZ路线（未守住基地）",
+    "zh-Hant": "OZ路線（未守住基地）",
     "ja": "OZルート（基地を守れなかった場合）",
     "en": "OZ route (base lost)"
    },
@@ -22,11 +24,13 @@
      "ref": "secret-gale",
      "title": {
       "zh-Hans": "盖尔＋格莱姆凯撒",
+      "zh-Hant": "蓋爾＋格萊姆凱撒",
       "ja": "ゲイル＋グライムカイザル",
       "en": "Gale + Greimkaiser"
      },
      "text": {
       "zh-Hans": "已在「少女所见的流星」用英二说服盖尔，关末加入",
+      "zh-Hant": "已在「少女所見的流星」用英二說服蓋爾，關末加入",
       "ja": "「少女が見た流星」でエイジが説得済みならクリア時に加入",
       "en": "Joins at end if Eiji persuaded Gale in “The Shooting Star the Girl Saw”"
      },
@@ -40,16 +44,19 @@
     {
      "part": {
       "zh-Hans": "推进器",
+      "zh-Hant": "推進器",
       "ja": "ブースター",
       "en": "Booster"
      },
      "from": {
       "zh-Hans": "卡多",
+      "zh-Hant": "卡多",
       "ja": "ガトー",
       "en": "Gato"
      },
      "note": {
       "zh-Hans": "巴伦被击破后登场，4 回合后我方阶段撤退",
+      "zh-Hant": "巴倫被擊破後登場，4 回合後我方階段撤退",
       "ja": "バレン撃破後に登場、4ターン後の味方フェイズに撤退",
       "en": "Appears once Baren falls; retreats 4 turns later"
      },
@@ -59,11 +66,13 @@
     {
      "part": {
       "zh-Hans": "混合式装甲",
+      "zh-Hant": "混合式裝甲",
       "ja": "ハイブリッドアーマー",
       "en": "Hybrid Armor"
      },
      "from": {
       "zh-Hans": "布拉奇",
+      "zh-Hant": "布拉奇",
       "ja": "ブラッキー",
       "en": "Blacky"
      },
@@ -72,11 +81,13 @@
     {
      "part": {
       "zh-Hans": "增装燃料槽",
+      "zh-Hant": "增裝燃料槽",
       "ja": "プロペラントタンク",
       "en": "Propellant Tank"
      },
      "from": {
       "zh-Hans": "丹格尔",
+      "zh-Hant": "丹格爾",
       "ja": "ダンゲル",
       "en": "Dungele"
      },
@@ -86,11 +97,13 @@
      "part": null,
      "from": {
       "zh-Hans": "亚赞、拉姆萨斯、邓克尔、盖茨、罗莎米娅",
+      "zh-Hant": "亞贊、拉姆薩斯、鄧肯、蓋茲、羅莎米亞",
       "ja": "ヤザン、ラムサス、ダンケル、ゲーツ、ロザミア",
       "en": "Yazan, Ramsus, Dunkel, Gates, Rosamia"
      },
      "note": {
       "zh-Hans": "巴伦被击破后第 4 个回合的我方阶段撤退",
+      "zh-Hant": "巴倫被擊破後第 4 個回合的我方階段撤退",
       "ja": "バレン撃破から4ターン後の味方フェイズに撤退",
       "en": "Retreat on the player phase 4 turns after Baren is destroyed"
      },
