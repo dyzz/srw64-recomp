@@ -22,6 +22,7 @@ ELSEWHERE = {
     "src/config.cpp",   # N64Recomp's config parser (docs/design/recomp-plan.md)
     "src/host/text",    # proposed module layout (docs/design/native-enhancements-plan.md)
     "tools/release/build_windows.py",  # planned Windows recipe (docs/design/three-platform-port.md, X3)
+    "src/host/rumble.hpp/.cpp",  # planned rumble module (docs/design/rumble.md)
 }
 
 
