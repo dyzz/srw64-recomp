@@ -365,10 +365,12 @@ uint64_t map_art_revision(){return map_art_changes.load();}
 void frame(const uint8_t* ram) {
     static unsigned before{},tick{};
     if(++tick%30==0)read_map_art(ram);
+    // On the scheduler thread, as the pages' frame hooks (game_hooks.cpp, 80085F30): a step
+    // holding the lock means the page is live, so the frame is skipped, mode and all.
+    std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
     const unsigned now=read(ram,game_mode,1);
     const bool left=now!=before && (now==1 || now==7 || now==0x11);
     before=now;
-    std::lock_guard lock(mutex);
     if(left){end_page("mode");return;}
     const unsigned missed=++frames_without_step;
     // Frame boundaries: at 120 Hz (sched_rate.hpp) two to each 60 Hz one.

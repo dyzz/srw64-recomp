@@ -325,16 +325,22 @@ std::string window_stamp(){
     return "w"+std::to_string(state.fullscreen)+std::to_string(state.scale)+std::to_string(state.largest);
 }
 float ui_density=1;  // screen pixels per dp, as set on the RmlUi context
-// The previous frame's pages are in flight until its present reports back (presented). A
-// present that never does — Android took the surface away and the driver held the present
-// thread (a Seeker, 0.5.0, on the save page) — kept every later lock waiting, and with it the
-// window thread: the game ran on behind a frozen screen. After a second the pages go on.
+// The previous frame's pages are in flight until its present reports back (presented):
+// the renderer's buffers are reused by the next draw, so the render thread waits for them.
 std::unique_lock<std::mutex> lock_ui() {
+    std::unique_lock lock(mutex);completed.wait(lock,[]{return !in_flight;});return lock;
+}
+// The window thread's lock (update, event). A present that never reports back — Android took
+// the surface away and the driver held the present thread (a Seeker, 0.5.0, on the save page)
+// — kept the window thread waiting too: the game ran on behind a frozen screen. After a
+// second the window goes on without it and does not wait again until a present reports;
+// in_flight stays, so the render thread still waits for the real present.
+std::unique_lock<std::mutex> lock_ui_window() {
     std::unique_lock lock(mutex);
+    if(present_lost)return lock;
     if(!completed.wait_for(lock,std::chrono::seconds(1),[]{return !in_flight;})) {
-        // Once per spell: a present stays away for as long as Android keeps the surface.
-        if(!present_lost)std::fprintf(stderr,"SRW64_UI_PRESENT_LOST the last pages' present did not report back in 1 s\n");
-        present_lost=true;in_flight=false;
+        std::fprintf(stderr,"SRW64_UI_PRESENT_LOST the last pages' present did not report back in 1 s\n");
+        present_lost=true;
     }
     return lock;
 }
@@ -6734,7 +6740,7 @@ void render_init(plume::RenderInterface* rhi,plume::RenderDevice* device){auto l
 // NaN, and a page laid out then (the settings window, the battle page) kept RmlUi in its layout
 // for good on this thread, the window's: Windows called it not responding (a player, 0.4.9;
 // reproduced on a Windows desktop with the settings window open, and gone with this).
-void update(){const auto asked=UiClock::now();auto lock=lock_ui();if(!ready)return;
+void update(){const auto asked=UiClock::now();auto lock=lock_ui_window();if(!ready)return;
     const auto locked=UiClock::now();
     int pw=0,ph=0,w=0,h=0;SDL_GetWindowSizeInPixels(window,&pw,&ph);SDL_GetWindowSize(window,&w,&h);
     if(pw<=0 || ph<=0 || w<=0 || h<=0 || (SDL_GetWindowFlags(window)&SDL_WINDOW_MINIMIZED)){input.flush_sdl();return;}
@@ -6781,7 +6787,7 @@ bool finger_pointer(const SDL_Event& e) {
     return true;
 }
 #endif
-bool event(SDL_Event& e){auto lock=lock_ui();
+bool event(SDL_Event& e){auto lock=lock_ui_window();
 #ifdef __SWITCH__
     if(!touch_supported() && finger_pointer(e)){if(context){context->Update();input.flush_sdl();}return true;}
 #endif
