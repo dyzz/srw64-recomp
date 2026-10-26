@@ -184,6 +184,20 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
         original_animation=(read(ram,0x8015DDA8,1)&4)==0;original_mode=mode;original_vi=srw64_current_vi();
         return false;
     }
+    // An enemy attacking a unit with a Counter Plan order (pilot +9 not 0, Manual) stays on
+    // the main confirmation (801D4CCC opens the response screen, 801D51A8, only without one),
+    // whose page has no counter/evade/defend row and no weapon list (issue #16). These pages
+    // let the player change the response every time: open the response screen as the
+    // original does for Manual, with the order's response as the current one. The next
+    // step is the response screen's (801D5294).
+    if(mode==1 && a.side!=0 && d.side==0 && !current.value("visible",false)) {
+        const uint32_t entry=0x8015E100+(d.handle-0x42)*0x14,unit=read(ram,entry+0x0C,4);
+        const uint32_t pilot=valid(unit,0x54)?read(ram,unit+0x38,4):0;
+        if(d.handle>=0x42 && d.handle<0x60 && !(read(ram,entry+1,1)&0x80) && valid(pilot,0x4C) && read(ram,pilot+9,1)!=0) {
+            invoke(ram,ctx,0x801D51A8);record("plan-response");
+            return true;
+        }
+    }
     // The page's snapshot of the exchange, settled as the original has it now.
     const auto build=[&](const rule_probe::Combatant& a,const rule_probe::Combatant& d) {
         scratch.assign(ram,ram+0x800000);auto call=*ctx;
