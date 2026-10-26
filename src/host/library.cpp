@@ -4,6 +4,7 @@
 #include "upgrade_page.hpp"
 #include "combo_attacks.hpp"
 #include "library_names_table.hpp"
+#include "mod_data.hpp"
 #include "localization/catalog.hpp"
 #include "librecomp/game.hpp"
 #include <algorithm>
@@ -89,7 +90,12 @@ struct Skill {uint8_t bit;uint16_t base;unsigned group;};
 constexpr Skill skills[]={{0x04,0x433,0},{0x08,0x40F,0},{0x10,0x418,0},{0x20,0x421,0},{0x40,0x42A,0},{0x01,0x43C,1},{0x02,0x406,2}};
 
 std::span<const uint8_t> rom;
-unsigned u8(uint32_t at){return at<rom.size()?rom[at]:0;}
+mod_data::Bytes modded;   // the enabled number MODs' bytes over the ROM (mod_data.hpp)
+unsigned u8(uint32_t at) {
+    if(at>=rom.size())return 0;
+    if(const auto found=modded.find(at);found!=modded.end())return found->second;
+    return rom[at];
+}
 int s8(uint32_t at){return int8_t(u8(at));}
 unsigned u16(uint32_t at){return u8(at)<<8|u8(at+1);}
 int s16(uint32_t at){return int16_t(u16(at));}
@@ -300,6 +306,7 @@ void rename_records(json& list,bool pilots) {
 }
 json build() {
     rom=recomp::get_rom();
+    modded=mod_data::collect(mods::installed(mods::game_version()),rom).bytes;
     json units=json::array(),pilots=json::array();
     std::map<std::string,bool> kept;
     for(unsigned id=0;id<unit_count;++id) {
@@ -382,7 +389,10 @@ json build() {
 const json& contents() {
     static json cached;
     static std::string locale;
-    if(locale!=localization::catalog().locale || cached.is_null()){cached=build();locale=localization::catalog().locale;}
+    static unsigned revision;
+    if(locale!=localization::catalog().locale || revision!=mods::revision() || cached.is_null()) {
+        revision=mods::revision();cached=build();locale=localization::catalog().locale;
+    }
     return cached;
 }
 }

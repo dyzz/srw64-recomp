@@ -173,6 +173,16 @@ recomp-mod-library-test:
 		tests/native_mod_library.cpp src/host/mod_library.cpp build/recomp/mod-library-test/miniz*.o -o build/recomp/mod-library-test/test
 	build/recomp/mod-library-test/test build/recomp/mod-library-test/run tests/mods/manifests.json
 
+.PHONY: recomp-mod-data-test
+recomp-mod-data-test:
+	mkdir -p build/recomp/mod-data-test
+	for c in miniz miniz_tdef miniz_tinfl miniz_zip; do cc -c -g -fsanitize=address,undefined -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		$(MINIZ_DIR)/$$c.c -o build/recomp/mod-data-test/$$c.o || exit 1; done
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Isrc/host -I$(RECOMP_BUILD)/upstream/RT64/src/contrib -I$(RECOMP_BUILD)/upstream/N64Recomp/include \
+		-I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		tests/native_mod_data.cpp src/host/mod_library.cpp build/recomp/mod-data-test/miniz*.o -o build/recomp/mod-data-test/test
+	build/recomp/mod-data-test/test build/recomp/mod-data-test/run $(ROM)
+
 .PHONY: recomp-music-test
 recomp-music-test:
 	mkdir -p build/recomp/music-test

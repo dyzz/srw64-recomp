@@ -31,6 +31,7 @@
 #include "mini_stage.hpp"
 #include "rule_fixes.hpp"
 #include "upgrade_refund.hpp"
+#include "mod_data.hpp"
 #include "parts_carry.hpp"
 #include "graphics.hpp"
 #include "run_files.hpp"
@@ -160,6 +161,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
     const auto rom=recomp::get_rom();
     srw64::upgrades::initialize(rom.data(),rom.size());
     srw64::upgrades::configure(output_dir);
+    srw64::mod_data::configure({rom.data(),rom.size()},output_dir);
     srw64::refund::configure(output_dir);
     srw64::parts_carry::configure(output_dir);
     srw64::names::initialize_rom(rom.data(),rom.size());
@@ -411,6 +413,7 @@ static void report_overlay_mismatch(uint8_t* rdram, uint32_t rom, uint32_t ram, 
 extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t rom = ctx->r4, ram = ctx->r5, size = ctx->r6;
     if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
+    srw64::mod_data::refresh();   // number MODs join the copy patches (mod_data.hpp)
     overlay_loading = true;
     srw64_original_rom_read(rdram, ctx);
     overlay_loading = false;

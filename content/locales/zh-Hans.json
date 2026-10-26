@@ -623,7 +623,7 @@
     "mod_turn_off": "停用",
     "mod_remove": "删除",
     "mod_remove_confirm": "确认删除",
-    "mod_not_applied": "目前只有音乐替换会生效，其他内容（剧本、美术、台词、语音）还不会生效。",
+    "mod_not_applied": "目前只有音乐替换和机体、驾驶员的地形适应会生效，其他内容（剧本、美术、台词、语音和其余数值）还不会生效。",
     "mod_install_busy": "正在安装另一个 MOD，请稍候",
     "mod_install_failed": "安装失败：{reason}",
     "mod_installed": "已安装 MOD：{id} {version}",
