@@ -173,6 +173,9 @@ namespace srw64::stage_info { json snapshot(){return json::object();} uint64_t w
 uint32_t srw64_pad_state(){return 0;}
 uint32_t srw64_keyboard_state(){return 0;}
 void srw64_request_screenshot(){}
+bool srw64_take_screenshot_request(){return false;}
+void srw64_arm_screenshot(){}
+bool srw64_screenshot_armed(){return false;}
 std::string srw64_pad_name(){return "Steam Deck Controller";}
 json srw64_window_status(){return json::object();}
 json srw64_graphics_info(){return json::object();}

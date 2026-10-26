@@ -71,6 +71,7 @@
 #endif
 #ifdef __ANDROID__
 #include <android/native_window.h>
+#include <jni.h>
 // Plume's Vulkan swap chain asks for the activity's current window (rt64_android_patches.py).
 namespace plume { extern ANativeWindow *(*AndroidCurrentWindow)(); }
 // Set when RT64's setup stops on an Adreno driver too old to build its shaders.
@@ -186,8 +187,11 @@ namespace {
 }
 uint64_t presented_frames{};
 std::string capture_clock = "native_vi_at_draw";
-// F12 or Print Screen: the next present goes to screenshots/ in the user folder.
+// The screenshot key (F12 or Print Screen unless rebound) asks; the shared UI first takes the
+// touch controls and the frame-rate readout off the screen, then arms the shot, and the next
+// present goes to screenshots/ in the user folder (srw64_take_screenshot_request).
 std::atomic<bool> player_shot_requested{};
+std::atomic<bool> player_shot_armed{};
 // Work the GL render thread hands off, in order on one thread of its own: a debug screenshot's
 // PNG took a second on the Switch, a second the game stood still.
 void run_in_background(std::function<void()> job) {
@@ -216,6 +220,31 @@ void run_in_background(std::function<void()> job) {
 // The Enter of an Alt + Enter (full screen, frontend.cpp) is not START until it is let go,
 // whichever key comes up first.
 SDL_Scancode alt_enter_key = SDL_SCANCODE_UNKNOWN;
+#ifdef __ANDROID__
+// SRW64Activity.publishScreenshot over JNI: where the PNG went as the player sees it, or empty.
+std::string publish_android_screenshot(const std::filesystem::path& path) {
+    auto* env = static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    auto activity = static_cast<jobject>(SDL_AndroidGetActivity());
+    if (!env || !activity) return {};
+    std::string shown;
+    const jclass type = env->GetObjectClass(activity);
+    if (const jmethodID method = env->GetMethodID(type, "publishScreenshot", "(Ljava/lang/String;)Ljava/lang/String;")) {
+        const jstring argument = env->NewStringUTF(path.string().c_str());
+        if (auto value = static_cast<jstring>(env->CallObjectMethod(activity, method, argument))) {
+            if (const char* chars = env->GetStringUTFChars(value, nullptr)) {
+                shown = chars;
+                env->ReleaseStringUTFChars(value, chars);
+            }
+            env->DeleteLocalRef(value);
+        }
+        env->DeleteLocalRef(argument);
+    }
+    if (env->ExceptionCheck()) { env->ExceptionClear(); shown.clear(); }
+    env->DeleteLocalRef(type);
+    env->DeleteLocalRef(activity);
+    return shown;
+}
+#endif
 // GPU completion thread: writes the picture as a dated PNG and says where it went.
 void save_player_screenshot(const uint8_t* rgba, uint32_t width, uint32_t height) {
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -242,6 +271,16 @@ void save_player_screenshot(const uint8_t* rgba, uint32_t width, uint32_t height
     for (size_t i = 3; i < opaque.size(); i += 4) opaque[i] = 255;
     const bool written = stbi_write_png(path.string().c_str(), width, height, 4, opaque.data(), width * 4);
     fprintf(stderr, "SRW64_SCREENSHOT %s %s\n", written ? "saved" : "failed", path.string().c_str());
+#ifdef __ANDROID__
+    // The private folder is out of a player's reach: out to Documents/Marchwind64/screenshots
+    // (SRW64Activity.publishScreenshot), and the notice names that.
+    if (written) {
+        if (const auto shown = publish_android_screenshot(path); !shown.empty()) {
+            path = shown;
+            fprintf(stderr, "SRW64_SCREENSHOT published %s\n", shown.c_str());
+        }
+    }
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
     auto text = srw64::localization::catalog().ui(written ? "screenshot_saved" : "screenshot_failed");
     if (const auto at = text.find("{path}"); at != std::string::npos) text.replace(at, 6, path.string());
@@ -368,8 +407,8 @@ void capture_frame(plume::RenderCommandList* list, plume::RenderFramebuffer* fra
     // A debug-interface screenshot request takes this present; a recording takes every one.
     const auto debug_shot = srw64::debug::screenshots().take();
     const bool recording = srw64::debug::recording().active();
-    // The player's screenshot key (F12, Print Screen) takes this one too, the window as shown.
-    const bool player_shot = player_shot_requested.exchange(false);
+    // The player's screenshot key (F12, Print Screen unless rebound) takes this one too, the window as shown.
+    const bool player_shot = player_shot_armed.exchange(false);
     // The Vita renderer's reference picture of a dumped list (gbi_stats.hpp).
     std::string dump_shot;
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -1377,7 +1416,7 @@ public:
             const ScreenKey key{image, renderer->drawn_at(image), found != image_workloads.end() ? found->second : 0,
                                 srw64::ui::readout_changes()};
             if (key == last_screen && !srw64::ui::shown() && !srw64::debug::screenshots().wanted() &&
-                !srw64::debug::recording().active() && !player_shot_requested.load()) {
+                !srw64::debug::recording().active() && !player_shot_armed.load()) {
                 ++perf.kept;
                 perf.report(renderer->programs_held());
                 return;
@@ -1454,7 +1493,7 @@ public:
         // and the player's F12, as capture_frame does on RT64.
         const auto shot = srw64::debug::screenshots().take();
         const bool recording = srw64::debug::recording().active();
-        const bool player_shot = player_shot_requested.exchange(false);
+        const bool player_shot = player_shot_armed.exchange(false);
         if (shot || recording || player_shot) {
             std::vector<uint8_t> pixels(size_t(width) * height * 4);
             glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
@@ -1717,6 +1756,9 @@ void srw64_update_window(void*) {
     }
 #endif
     srw64::qa::update_window(window, capture_directory, srw64_current_vi());
+#ifndef SRW64_NATIVE_DIALOGUE
+    if (player_shot_requested.exchange(false)) player_shot_armed = true;
+#endif
 #ifdef SRW64_NATIVE_DIALOGUE
     srw64::settings::update();
     srw64::settings::control(window,capture_directory);
@@ -1741,6 +1783,14 @@ void srw64_update_window(void*) {
     if(failed!=title_error || error_label!=title_label) {
         title_error=failed;title_label=error_label;
         SDL_SetWindowTitle(window,(std::string("Marchwind64")+(failed?" | "+error_label:"")).c_str());
+    }
+    // The bindings, copied again only when the Controls page changes them (the screenshot
+    // key below, the held inputs after the events).
+    static srw64::input::Bindings bindings = srw64::input::live_bindings().get();
+    static uint64_t bindings_revision = srw64::input::live_bindings().revision();
+    if (const auto revision = srw64::input::live_bindings().revision(); revision != bindings_revision) {
+        bindings = srw64::input::live_bindings().get();
+        bindings_revision = revision;
     }
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -1768,11 +1818,22 @@ void srw64_update_window(void*) {
         if(event.type==SDL_KEYDOWN && (event.key.keysym.mod & KMOD_ALT) &&
            (event.key.keysym.scancode==SDL_SCANCODE_RETURN || event.key.keysym.scancode==SDL_SCANCODE_KP_ENTER))
             alt_enter_key=event.key.keysym.scancode;
-        // Screenshots on every screen, the settings window and our pages included.
-        if(event.type==SDL_KEYDOWN && !event.key.repeat && (event.key.keysym.sym==SDLK_F12 || event.key.keysym.sym==SDLK_PRINTSCREEN) &&
-           !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))) {
-            player_shot_requested=true;
-            continue;
+        // Screenshots on every screen, the settings window and our pages included, by the
+        // keys bound to them (F12 and Print Screen unless rebound). A key event, not the held
+        // state below: Windows hands Print Screen over as a press and release at once. Not
+        // while the Controls page waits for a key, nor a key that types while text is entered.
+        if(event.type==SDL_KEYDOWN && !event.key.repeat && !(event.key.keysym.mod & (KMOD_GUI|KMOD_ALT|KMOD_CTRL|KMOD_SHIFT))
+#ifdef SRW64_NATIVE_DIALOGUE
+           && !srw64::ui::capturing_input()
+#endif
+           ) {
+            const auto key=event.key.keysym.scancode;
+            const auto* action=srw64::input::action_of_key(bindings,int(key));
+            const bool function_key=(key>=SDL_SCANCODE_F1 && key<=SDL_SCANCODE_F12) || (key>=SDL_SCANCODE_F13 && key<=SDL_SCANCODE_F24) || key==SDL_SCANCODE_PRINTSCREEN;
+            if(action && *action==srw64::input::Action::Screenshot && (function_key || !SDL_IsTextInputActive())) {
+                player_shot_requested=true;
+                continue;
+            }
         }
 #ifdef SRW64_NATIVE_DIALOGUE
         if(event.type!=SDL_QUIT && srw64::ui::event(event))continue;
@@ -1830,13 +1891,6 @@ void srw64_update_window(void*) {
     if(virtual_keys)keys_released=false;
     srw64::settings::release_input_when(keys_released);
 #endif
-    // The bindings, copied again only when the Controls page changes them.
-    static srw64::input::Bindings bindings = srw64::input::live_bindings().get();
-    static uint64_t bindings_revision = srw64::input::live_bindings().revision();
-    if (const auto revision = srw64::input::live_bindings().revision(); revision != bindings_revision) {
-        bindings = srw64::input::live_bindings().get();
-        bindings_revision = revision;
-    }
     if (!editing_name) {
         const Uint8* keys = SDL_GetKeyboardState(nullptr);
         if (alt_enter_key != SDL_SCANCODE_UNKNOWN && !keys[alt_enter_key]) alt_enter_key = SDL_SCANCODE_UNKNOWN;
@@ -1873,6 +1927,15 @@ void srw64_update_window(void*) {
     // The on-screen controller on a phone (touch_pad.hpp), as a controller.
     buttons |= srw64::ui::touch_buttons();
 #endif
+    // A controller button bound to the screenshot, on its press (the keys go by their events above).
+    static bool shot_held = false;
+    const bool shot_now = (buttons & srw64::input::pad_screenshot) != 0;
+#ifdef SRW64_NATIVE_DIALOGUE
+    if (shot_now && !shot_held && !srw64::ui::capturing_input()) player_shot_requested = true;
+#else
+    if (shot_now && !shot_held) player_shot_requested = true;
+#endif
+    shot_held = shot_now;
     // Controller play hides the pointer; the mouse or touch screen brings it back.
     static int cursor=-1;
     const int wanted=srw64::input::pad_hints ? SDL_DISABLE : SDL_ENABLE;
@@ -1890,6 +1953,9 @@ std::string srw64_pad_name() {
 }
 uint32_t srw64_keyboard_state() { return keyboard_state.load(std::memory_order_relaxed); }
 void srw64_request_screenshot() { player_shot_requested = true; }
+bool srw64_take_screenshot_request() { return player_shot_requested.exchange(false); }
+void srw64_arm_screenshot() { player_shot_armed = true; }
+bool srw64_screenshot_armed() { return player_shot_armed.load(); }
 
 nlohmann::json srw64_window_status() {
     if (!window) return nullptr;

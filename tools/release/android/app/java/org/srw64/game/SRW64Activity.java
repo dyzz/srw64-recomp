@@ -116,6 +116,30 @@ public class SRW64Activity extends SDLActivity {
         } catch (IOException | RuntimeException error) { return false; }
     }
 
+    // The screenshot key's PNG (graphics.cpp, on its own thread, which may wait): out to
+    // screenshots/ in the player's folder, or to Documents/Marchwind64/screenshots without
+    // one. The private copy goes once it is out. Returns where it went, as the player sees
+    // it, or empty (the private copy stays).
+    public String publishScreenshot(String path) {
+        try {
+            File shot = new File(path).getCanonicalFile();
+            if (!shot.isFile() || !shot.getName().endsWith(".png") ||
+                !shot.getParentFile().equals(new File(SetupActivity.userDir(this), "screenshots").getCanonicalFile()))
+                return "";
+            PlayerFolder folder = PlayerFolder.open(this);
+            String where;
+            if (folder != null) where = folderSync.submit(() -> folder.send("screenshots", shot)).get(20, TimeUnit.SECONDS);
+            else if (Build.VERSION.SDK_INT >= 29)
+                where = PublicExports.write(this, "screenshots", shot.getName(), "image/png", stream -> Files.copy(shot.toPath(), stream));
+            else return "";
+            shot.delete();
+            return where;
+        } catch (Exception error) {
+            Log.w("SRW64", "screenshot: " + error);
+            return "";
+        }
+    }
+
     private interface Send { String run() throws IOException; }
     private void toFolder(Export job, Send send) {
         folderSync.execute(() -> {

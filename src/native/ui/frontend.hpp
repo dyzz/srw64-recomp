@@ -12,6 +12,8 @@ void update();
 bool event(SDL_Event&);
 // The on-screen controller's buttons (touch_pad.hpp), in srw64_pad_state()'s bits.
 uint32_t touch_buttons();
+// The Controls page waits for the next key or button to bind: the host's own keys stand aside.
+bool capturing_input();
 void shutdown();
 void render_init(plume::RenderInterface*, plume::RenderDevice*);
 // layer: -1 every page; 0 those that belong to the game picture, drawn before a RetroArch

@@ -1351,7 +1351,7 @@ constexpr ControlRow control_rows[]={
     {"a",Action::A},{"b",Action::B},{"start",Action::Start},{"l",Action::L},{"r",Action::R},
     {"aux_left",Action::AuxLeft},{"aux_right",Action::AuxRight},{"c_left",Action::CLeft},{"c_up",Action::CUp},{"c_down",Action::CDown},
     {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},{"speed",Action::Speed},
-    {"quick_load",Action::QuickLoad},{"title_return",Action::TitleReturn},{"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
+    {"quick_load",Action::QuickLoad},{"title_return",Action::TitleReturn},{"screenshot",Action::Screenshot},{"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
 void start_capture(const std::string& id) {
     for(const auto& row:control_rows)if(id==row.id) {
         capture=Capture{};
@@ -1377,7 +1377,7 @@ bool capture_event(const SDL_Event& event) {
         if(key==SDL_SCANCODE_UNKNOWN)return true;
         if(key==SDL_SCANCODE_ESCAPE){capture.queue.clear();return true;}
         if(key==SDL_SCANCODE_F5 || key==SDL_SCANCODE_F6 || key==SDL_SCANCODE_F7 || key==SDL_SCANCODE_F8 ||
-           key==SDL_SCANCODE_F11 || key==SDL_SCANCODE_F12 || key==SDL_SCANCODE_PRINTSCREEN){capture.refused=true;return true;}
+           key==SDL_SCANCODE_F11){capture.refused=true;return true;}
         bind([&](input::Bindings& b,input::Action a){input::assign_key(b,a,int(key));});
         return true;
     }
@@ -5097,6 +5097,7 @@ void battle_sync() {
 void choose(const std::string& id) {
     if(id=="mini-enter"){mini_stage::hotkey();return;}
     if(id=="speed-toggle"){toggle_speed();return;}
+    if(id=="screenshot"){srw64_request_screenshot();return;}
     if(id=="intermission-funds" || id=="upgrade-funds"){funds_editing=id.substr(0,id.size()-6);return;}
     if(id.ends_with("-funds-input"))return;
     funds_editing.clear();
@@ -5508,6 +5509,19 @@ void battle_buttons(uint32_t pressed,bool tab) {
 }
 // The frame-rate readout (settings show_fps): the game's frames per second and the longest
 // frame over the last half second (frame_rate.hpp), in the top right corner.
+// A player's screenshot (graphics.hpp): the touch controls and the frame-rate readout leave
+// the screen first. Once a draw has gone by without them the shot is armed, and they come
+// back when the present has taken it.
+enum class Shot : uint8_t {None, Clearing, Armed} shot_stage=Shot::None;
+uint64_t shot_draws_at=0;
+std::atomic<uint64_t> ui_draws{0};
+bool shot_clearing(){return shot_stage!=Shot::None;}
+void shot_sync() {
+    if(shot_stage==Shot::None && srw64_take_screenshot_request()){shot_stage=Shot::Clearing;shot_draws_at=ui_draws.load();}
+    // Two draws: one may have begun before the controls were closed.
+    else if(shot_stage==Shot::Clearing && ui_draws.load()>=shot_draws_at+2){srw64_arm_screenshot();shot_stage=Shot::Armed;}
+    else if(shot_stage==Shot::Armed && !srw64_screenshot_armed())shot_stage=Shot::None;
+}
 Rml::ElementDocument* fps_doc{};
 // Each time the readout's document is made or closed: the screen keeper (graphics.cpp) draws
 // once more then, the readout not counting as a page that is up (shown()).
@@ -5516,6 +5530,7 @@ std::string fps_stamp;
 struct {double at=-1;uint64_t lists=0,presents=0;std::string text;} fps_window;
 void fps_sync() {
     if(!settings::show_fps()){if(fps_doc)++fps_changes;document_close(fps_doc);fps_stamp.clear();fps_window.at=-1;return;}
+    if(shot_clearing()){if(fps_doc)++fps_changes;document_close(fps_doc);fps_stamp.clear();return;}
     const double now=system.GetElapsedTime();
     const uint64_t lists=frame_rate::lists.load(),presents=frame_rate::presents.load();
     if(fps_window.at<0){fps_window={now,lists,presents,""};frame_rate::longest_us.exchange(0);}
@@ -5691,6 +5706,8 @@ float touch_label_size(const std::string& text,float room,float largest) {
 }
 void touch_sync() {
     touch_scene_id=touch_scene_now();
+    // Off the screen for a screenshot; the fingers keep their state.
+    if(touch_active() && shot_clearing()){document_close(touch_doc);touch_stamp.clear();return;}
     if(!touch_active()) {
         if(!touch_fingers.empty()){touch_fingers.clear();touch_publish();}
         document_close(touch_doc);touch_stamp.clear();return;
@@ -5964,7 +5981,7 @@ std::vector<app_menu::Menu> menu_bar(const auto& language){
     const bool battle=battle_request.value("visible",false) || battle_page::original_screen();
     const bool stage=stage_open || (!battle && !names::request().visible && !link_request.visible);
     std::vector<Item> tools{
-        {"screenshot",language->ui("menu_screenshot"),"F12","F12"},
+        {"screenshot",language->ui("menu_screenshot"),bound_key(bindings,input::Action::Screenshot)},
         {"speed",language->ui("menu_speed"),bound_key(bindings,input::Action::Speed),"",0,settings::game_speed_double()},
         {},
         {"stage-info",language->ui("stage_info_title"),bound_key(bindings,input::Action::Animation),"",0,bool(stage_open),stage},
@@ -6153,7 +6170,7 @@ void sync() {
     // holds the title still under it: no attract demo, no opening story.
     battle_viewer::hold_title(settings_open);
     parts.mark("menus");
-    settings_sync();parts.mark("settings");notices_sync();fps_sync();speed_sync();touch_sync();parts.mark("hud");
+    settings_sync();parts.mark("settings");notices_sync();shot_sync();fps_sync();speed_sync();touch_sync();parts.mark("hud");
     context->Update();parts.mark("layout");input.update_rectangle();
     names::window_claim_input(request.visible || (names::owns_input() && held()));
     link_page::window_claim_input(link_request.visible || (link_page::owns_input() && held()));
@@ -6543,6 +6560,7 @@ std::string perf_line(){
     char text[200];std::snprintf(text,sizeof text,"ui(update %u wait %.0fms work %.0fms max %.1f; draw %u wait %.0fms work %.0fms max %.1f)",
         ui_times.updates,ui_times.update_wait,ui_times.update_work,ui_times.update_max,ui_times.draws,ui_times.draw_wait,ui_times.draw_work,ui_times.draw_max);
     ui_times=UiTimes{};return text;}
+bool capturing_input(){return !capture.queue.empty();}
 uint32_t touch_buttons() {
     // Only the UI thread writes the pulse. A polling reader clearing an expired
     // pulse could erase a new tap between its mask and deadline publications.
@@ -6584,6 +6602,7 @@ bool event(SDL_Event& e){auto lock=lock_ui();
 // frame and must not wait for it (lock_ui waits for the previous frame's pages).
 bool first_pass_drawn=false;
 bool draw(plume::RenderCommandList* list,plume::RenderFramebuffer* framebuffer,bool name_cover,int layer){
+    if(layer!=0)++ui_draws;
     const bool second=layer==1 && first_pass_drawn;
     auto lock=second?std::unique_lock<std::mutex>(mutex):lock_ui();
     first_pass_drawn=false;if(!context || int(framebuffer->getWidth())!=pixels_w || int(framebuffer->getHeight())!=pixels_h)return false;
@@ -6618,6 +6637,7 @@ bool shown(){
 }
 uint64_t readout_changes(){return fps_changes.load();}
 bool draw_gl(int width,int height,bool name_cover){
+    ++ui_draws;
     const auto asked=UiClock::now();
     auto lock=lock_ui();
     const auto locked=UiClock::now();

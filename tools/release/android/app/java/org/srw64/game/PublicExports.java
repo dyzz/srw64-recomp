@@ -20,10 +20,14 @@ final class PublicExports {
     }
 
     static String write(Context context, String kind, String name, Writer writer) throws IOException {
+        return write(context, kind, name, "application/zip", writer);
+    }
+
+    static String write(Context context, String kind, String name, String type, Writer writer) throws IOException {
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
         values.put(MediaStore.MediaColumns.DISPLAY_NAME, name);
-        values.put(MediaStore.MediaColumns.MIME_TYPE, "application/zip");
+        values.put(MediaStore.MediaColumns.MIME_TYPE, type);
         values.put(MediaStore.MediaColumns.RELATIVE_PATH, directory(kind) + "/");
         values.put(MediaStore.MediaColumns.IS_PENDING, 1);
         Uri uri = resolver.insert(MediaStore.Files.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY), values);
