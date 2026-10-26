@@ -193,7 +193,7 @@ audio/
 - 位置：`web/src/pages/[lang]/mods/bgm/`，三语，纯静态；**音频只在浏览器里处理，不上传**。
 - 流程：填包信息（id、三语名称、作者、许可证选允许的几种）→ 49 首列表（歌号、日文曲名、用途，数据来自 `tools/content/export_audio_tables.py`）→ 拖入音频替换某首 → 每首设循环点（波形、吸附过零点、「试听接缝」）、音量（测响度给建议）、三语曲名、只放一次（jingle 38 默认）→ 可选按人物／机体改战斗曲（`battle` 表，宿主要先包装 `801E085C`）→ 导出 `.srw64mod`；也能导入已有包继续改。
 - 解码：`decodeAudioData`（mp3、wav、flac、m4a、ogg）。AudioContext 固定采样率（如 44.1 kHz），否则界面上的循环点采样数与写出的文件对不上。解码失败直接提示换格式。MP3 按 LAME 头裁掉首尾补白。
-- 编码：浏览器自带的 MediaRecorder／WebCodecs 没有 Vorbis，用 Emscripten 编 libvorbis（BSD，与 GPL 兼容）成 WASM，在 Web Worker 里一首一首编；已经是 Vorbis 的 `.ogg` 原样放进包、不重编。码率默认 `-q 6` 左右。
+- 编码：浏览器自带的 MediaRecorder／WebCodecs 没有 Vorbis，用 npm 包 `wasm-media-encoders`（MIT，内含 libvorbis，只用它的 `wasm/ogg.wasm`，不带 MP3 那份）在 Web Worker 里一首一首编；已经是 Vorbis 的 `.ogg` 原样放进包、不重编。品质默认 `vbrQuality: 6`（约 190 kbps）。实测见 §9.4。
 - 校验：与宿主、`tools/mods/validate.py` 同一套规则，跑 `tests/mods/manifests.json` 的用例。
 - 版权：页面写明只能用有权使用的音乐；工具只在本地生成文件，官网不托管歌曲。用原作歌曲的包可以自用、私下分享，不进官方索引（MOD 包 §13）。
 
@@ -203,3 +203,19 @@ audio/
 2. 宿主侧（与 2 可并行）：mods 并入 main、`battle` 改战斗曲、设置里「使用 MOD 音乐」与音量、淡出／倍速／Windows 补测、安卓从 `mods/` 文件夹安装；合并后下一版显示 MOD 入口。
 3. 网页工具本体；用合并后的宿主装它生成的包实机走一遍。
 4. 分发按 MOD 包 §13。
+
+### 9.4 编码器实测（2026-10-26，§9.3 第 1 步）
+
+- 包：`wasm-media-encoders` 0.7.0（MIT）。`ogg.wasm` 440 KiB（gzip 约 158 KiB），JS 约 3 KiB；ES 模块无依赖，用 `createEncoder('audio/ogg', wasm 地址)` 载入单独的 wasm 文件。品质参数即 libvorbis 的 -1～10。
+- 测试曲：合成的 3 分钟 44.1 kHz 立体声（和弦、贝斯、鼓、底噪），WAV 31 MB，另用 LAME `-q 2` 转一份 MP3（4.1 MB）。流程：`AudioContext({sampleRate: 44100})` 的 `decodeAudioData` → 复制出各声道 → Web Worker 里每次 4096 帧编码。
+- 浏览器：只测了应用内置浏览器（Chromium 152，Mac）。Safari、Firefox 未测。
+
+| 输入 | 品质 | 解码 | 编码 | 实时倍数 | 输出 |
+| --- | --- | --- | --- | --- | --- |
+| WAV | 6 | 49–58 ms | 1.09 s | 约 165× | 4.2 MB（192 kbps） |
+| MP3 | 6 | 约 0.3 s | 1.08 s | 约 166× | 4.1 MB（186 kbps） |
+| WAV | 3 | 约 0.2 s | 1.6 s | 约 113× | 2.4 MB（109 kbps） |
+
+- **结果可用**：三个输出都用宿主同一份 stb_vorbis 解码（`check_ogg.c`）：长度 7 938 000 帧，与原曲**一帧不差**，最佳对齐偏移 0，信噪比 24–32 dB（有损编码的正常范围）。MP3 那一路也是 0 偏移、长度一致：Chromium 解码 MP3 时已按 LAME 头裁掉首尾补白，循环点可以照原曲采样数设。
+- **内存**：内置浏览器没有 `measureUserAgentSpecificMemory`，改从系统采样渲染进程：三首连续处理时峰值比空闲多约 250 MB。一首的大头是解码后的浮点 PCM（3 分钟立体声约 64 MB）及其副本：读入的文件、AudioBuffer、复制出的声道、发给 Worker 时再复制一份。实做时声道用转移（transfer）而不是复制发给 Worker、读完文件就释放，峰值可降到一首约 130 MB 以内；49 首照样一首一首处理。
+- 结论：编码速度不是问题（49 首全换约一分钟以内，主要花在解码与读文件上）。剩下要验证的是 Safari 与 Firefox：`decodeAudioData` 支持哪些格式、MP3 首尾补白是否同样被裁掉、Worker 里的 ES 模块载入。
