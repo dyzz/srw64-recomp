@@ -1,0 +1,227 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "mod-music",
+  "note": "MOD music check (tools/recomp/debug/check_mod_music.py, docs/design/audio-mods.md). The opening runs the two scripted duels of duel.json: レイン vs アレンビー (both player units: レイン's pilot song, 4) and ドモン vs ゾンビ兵 (ドモン's, 4, which a package can change with music.json battle.pilot.4). Both go through 801E085C and so 801E07C4. The opening then plays the enemy reinforcement jingle (3D3A 38); 801E076C puts the stage song of map 20 (44) back once it has ended. (A turn-1 event does not run here: the opening hands straight to the player phase.) The 300-VI wait before the duels lets a check start watching.",
+  "map": 20,
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            49
+          ]
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            300
+          ]
+        },
+        {
+          "op": "3D49",
+          "args": [
+            15,
+            16
+          ],
+          "note": "original pair: entry 15 レイン 32760 HP / 100 morale against entry 16 アレンビー 10 HP / 0 morale"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D49",
+          "args": [
+            29,
+            3
+          ],
+          "note": "original pair: entry 29 ドモン against entry 3 ゾンビ兵"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            38
+          ],
+          "note": "the reinforcement jingle"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            60
+          ]
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "turn-1",
+      "type": 0,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D4A"
+        }
+      ],
+      "note": "Probes moved into the opening after duel-1: a turn-1 event needs the player to finish a turn, which a bounded input script never does."
+    },
+    {
+      "name": "defeat",
+      "type": 2,
+      "header": [
+        0,
+        28,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D4E"
+        },
+        {
+          "op": "3D4C"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ],
+  "deployments": [
+    {
+      "template": "base:stage_deployments:001fc618",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "レイン — table entry 15"
+    },
+    {
+      "template": "base:stage_deployments:001e898c",
+      "group": 0,
+      "x": 10,
+      "y": 8,
+      "faction": 0,
+      "note": "アレンビー — table entry 16"
+    },
+    {
+      "template": "base:stage_deployments:001e8070",
+      "group": 0,
+      "x": 8,
+      "y": 10,
+      "faction": 0,
+      "note": "ドモン — table entry 29"
+    },
+    {
+      "template": "base:stage_deployments:001e9190",
+      "group": 0,
+      "x": 10,
+      "y": 10,
+      "faction": 0,
+      "note": "ゾンビ兵 — table entry 3"
+    },
+    {
+      "template": "base:stage_deployments:001e4268",
+      "group": 1,
+      "x": 22,
+      "y": 5,
+      "note": "マナミ — protagonist, subject of the defeat condition"
+    }
+  ]
+}
