@@ -12,6 +12,7 @@
 #include "steam_deck.hpp"
 #include "game_frame.hpp"
 #include "frame_rate.hpp"
+#include "big_cores.hpp"
 #include "game_speed.hpp"
 #include "wide_map.hpp"
 #include "native_marker.hpp"
@@ -798,6 +799,9 @@ public:
 #endif
     void send_dl(const OSTask* task) override {
         srw64::frame_rate::list_sent();
+#ifdef __ANDROID__
+        srw64::big_cores::update(srw64::game_speed::running.load());
+#endif
         const uint32_t original_rate = app->sharedQueueResources->viOriginalRate;
         srw64::frame_rate::original_rate.store(original_rate, std::memory_order_relaxed);
         if (!original_rate) srw64::frame_rate::lists_without_rate.fetch_add(1, std::memory_order_relaxed);

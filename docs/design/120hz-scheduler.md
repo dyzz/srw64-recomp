@@ -58,6 +58,7 @@
 - `prepare_rt64.py`：`rt64_vi.cpp` 的基准帧率；`rt64_present_queue.cpp` 的呈现降频（§3.4）。
 - `launch.cpp`：`--play` 启动器放行这些变量（对照、排查用）。
 - 按拍数计时的钩子乘倍率（§4.4）。
+- `src/host/big_cores.hpp`：安卓上加速时关键线程绑大核（§3.6）。
 - `src/host/draw_skip.hpp`：慢设备上 3x/4x 隔帧不画（§3.5）；`graphics.cpp` `send_dl` 调它，`events.cpp` 的 `osViSwapBuffer` 问 `srw64_vi_swap_now()`。
 
 ### 3.3 2x 的换画面节拍
@@ -88,6 +89,14 @@ Seeker 每个显示列表在 RT64 里要处理约 9 ms，比一拍（8.3 ms）�
 - **读画面的帧照画**：进战斗的转场每帧把上一帧画面当贴图读、再一条条涂黑。图形线程跳帧前遍历显示列表（`reads_picture`：`G_SETTIMG` 落在见过的、宽 256 以上的 16 位 `G_SETCIMG` 里），读画面的这个列表和之后 60 个列表全画（调试状态 `draw_skip.holds` 计次）。录像对照：不加时转场隔帧闪，加了以后和不跳帧一样逐渐变黑。
 - **只在慢设备上**：3x/4x 加速时按一秒一窗数逻辑步，连续两秒不到应有的四分之三（4x 120、3x 90）就判为慢设备，本次运行一直有效。Mac、Windows、Deck 的 4x 都在 93% 以上，不会触发（Mac 实测 `slow` 保持 false）。交给 RT64 的帧率提示相应除掉（`game_speed::picture_rate()`：3x 30、4x 40），插帧照常。
 - `SRW64_DRAW_EVERY=N` 不管设备都画 N 帧中的 1 帧，`=1` 永远不跳；`SRW64_SWAP_NOW=0` 没画的帧也等拍换屏（对照）。调试状态 `draw_skip`（`slow`、`every`、`skipped`、`holds`）。
+
+### 3.6 安卓：加速时关键线程放大核
+
+慢的另一半原因在手机的大小核（§5.3 采样）：这些线程每帧只忙几毫秒，安卓按负载把它们放在小核。`big_cores.hpp`：加速时（`game_speed::running`）图形线程在每个显示列表开头按线程名把关键线程绑到算力最高的那组核（`sched_setaffinity`，读 `/sys/devices/system/cpu/cpu*/cpu_capacity`），不加速了就放回所有核；绑着时每 600 个列表重扫一次，新建的线程也绑上。
+
+- 绑的线程：`Game Thread*`（游戏、它的调度和音频线程）、`Gfx Thread`、`SP Task Thread`（音频合成）、`VI Thread`、`RT64 Workload`、`RT64 Present`。界面、SDL、RT64 的纹理/着色器工作线程、驱动的线程不动：另加 `mali-event-hand`、`SDLThread` 只再快 0.1–0.4 秒，在波动范围内。
+- 只在加速时：原速游玩不多用大核。拔线实测整机功耗看不出差别（§5.3），一直绑（`=1`）也一样；为保守起见默认仍只在加速时绑。大小核一样的设备（Deck、桌面）什么也不做。
+- `SRW64_BIG_CORES=1` 一直绑，`=0` 不绑（对照）。调试状态 `big_cores`（`mode`、`on`、`bound`、`released`）。`run-as taskset` 被 SELinux 拒绝，只能进程自己绑。
 
 ## 4. 宿主钩子审计（`80085F30` 每拍、`get_input` 每次读手柄）
 
@@ -167,6 +176,61 @@ Seeker 每个显示列表在 RT64 里要处理约 9 ms，比一拍（8.3 ms）�
 
 3x 画 1/3、没画的帧也等拍换屏：16.55 秒。到每秒 80 步左右又上不去，线程仍然都没跑满（4x 时 RT64 Present 27%、Gfx 26%、游戏线程 22%）。Mac 上同一个包（原版画面）1x 38.93、2x 19.46、4x 9.81 秒，和改之前的 38.89–38.95／19.50–19.57／9.77–9.83 一样，没有判成慢设备。
 
+大小核：Seeker 是 MT6878（天玑 7300），CPU 0–3 是 A55（2.0 GHz，`cpu_capacity` 228），4–7 是 A78（2.5 GHz，1024），游戏所在的 top-app 组 8 核都能用。4x 敌方阶段每隔几毫秒读各线程的 `/proc/<pid>/task/*/stat`，只数处于运行态的样本：Gfx Thread（`send_dl`、RT64 解释显示列表）94% 在小核，游戏线程 90%，SP Task 99%，RT64 Present 75%。这些线程每帧只忙一小段，系统按负载把它们放在小核。先做的实验是把进程所有线程都绑到大核：
+
+| 档位 | 不绑／全部线程绑大核（秒） | 游戏帧/秒 |
+| --- | --- | --- |
+| 2x | 22.27／21.09 | 52.5／55.5 |
+| 3x（画 1/3） | 15.30–15.43／14.19 | 76／82 |
+| 4x（画 1/3） | 14.98／13.53、13.14 | 78／86 |
+| 4x 不跳 | 21.07／17.83 | 55.5／65.3 |
+
+结束地图都相同。绑大核后每个显示列表的 RT64 处理时间：标题 1x 下 8.9 → 6.5 ms，4x 敌方阶段约 13 → 11 ms，远没有到算力比的 4.5 倍，剩下的时间不在这个线程自己的计算上（RT64 等 workload 槽位、等 GPU）。所以小核只是一部分原因。
+
+正式做法只绑关键线程、只在加速时绑（§3.6），同一个包对照：
+
+| 档位 | `SRW64_BIG_CORES=0`（秒） | 默认（秒） |
+| --- | --- | --- |
+| 2x | — | 21.76 |
+| 3x | — | 14.46 |
+| 4x | 14.91 / 14.86 / 14.94 / 15.07 | 14.15 / 13.89 / 13.98 / 14.01 / 13.92 |
+
+4x 快约 6%（全部线程绑是约 10%）；结束地图都相同。
+
+耗电：插着线、电量 100% 时电池电流读数是 0，`dumpsys powerstats` 也没有数据，只能拔线经无线 adb 测（Mac 上的 adb 服务要在沙箱外启动，否则连手机报 No route to host）。拔线后在敌方阶段那一段每 0.2 秒读 `battery/current_now`（µA，放电为负）和 `voltage_now`，按手机时钟截出确认回合结束到回到我方空闲的区间，交替跑（屏幕常亮、HD 1.2、插帧跟屏幕、电量 100%、电池 29→31 °C）：
+
+| 情况 | 秒 | 平均功率 | 能耗 |
+| --- | --- | --- | --- |
+| 4x 不绑 | 15.00 / 14.89 | 2.64 / 2.76 W | 39.7 / 41.0 J |
+| 4x 默认 | 13.51 / 13.73 | 2.49 / 2.85 W | 33.6 / 39.2 J |
+| 1x 不绑 | 39.11 | 2.80 W | 109.4 J |
+| 1x 一直绑（`=1`） | 39.17 | 2.81 W | 110.0 J |
+
+整机 2.5–2.9 W 里看不出绑大核多出的功耗：两组 4x 的差别（±0.15 W）比同组两次之间还小，每次敌方阶段因为更快结束，能耗持平或略少；1x 一直绑也一样。另外比较了游戏所有线程 `/proc/<pid>/task/*/time_in_state` 的增量（每秒平均有几个核在忙，平均频率）：
+
+| 情况 | 小核：忙核数，平均频率 | 大核：忙核数，平均频率 | 敌方阶段（秒） |
+| --- | --- | --- | --- |
+| 4x 不绑（两次） | 1.37–1.39，1.18–1.20 GHz | 0.69–0.70，0.89 GHz | 14.92–15.10 |
+| 4x 默认（两次） | 0.67–0.72，0.91 GHz | 1.30–1.31，0.75–0.77 GHz | 13.92–14.02 |
+| 1x 不绑 | 1.03，1.23 GHz | 0.73，0.62 GHz | 39.24 |
+| 1x 一直绑（`=1`） | 0.42，0.82 GHz | 1.25，0.57 GHz | 39.09 |
+
+CPU 总时间基本不变（每秒约 2 个核），约 0.6–0.8 个核的工作从小核挪到大核；大核上平均频率只有 0.75 GHz 左右，小核的频率反而降了，所以整机功耗看不出变化。
+
+**还差多少到真 4x（2026-10-26）。** 画得更少不行：4x 画 1/3、1/5、1/7（关键线程绑大核）各两次：14.17／14.13、13.83／13.74、15.56／15.42 秒。1/5 只快 2–3%，1/7 反而慢：插帧要补的画面更多（呈现 95–99 次/秒），而游戏本身每秒约 85 步的上限并不在画帧上。
+
+simpleperf（`--trace-offcpu -g`，4x 敌方阶段 9 秒，`perf_harden` 已是 0）：
+
+| 线程 | 睡眠 | 主要开销 |
+| --- | --- | --- |
+| Gfx Thread（`send_dl`） | 80% | 60% 在等下一个任务；`send_dl` 36%（每画一帧约 13 ms），其中 RT64 `State::fullSync` 31.5%：等 GPU 栅栏 12%、`renderAndSynchronize` 23%、等贴图上传 5%；真在算的（贴图哈希、拷贝）不到 10% |
+| 游戏线程（`8007F9A0`） | 86% | 在 `osRecvMesg` 等消息；建显示列表 11.5% |
+| RT64 Workload | 83% | 等 GPU 栅栏 25%、等新 workload 56% |
+| RT64 Present | 74% | 等 GPU 栅栏 40% |
+| SP Task（音频 HLE） | 85% | 合成 14% |
+
+所以画的那一帧的大头不是解释显示列表，而是 RT64 默认开着的 `framebuffer.renderToRAM`（`rt64_emulator_configuration.cpp`，宿主没改）：每个显示列表都在图形线程上按原生分辨率再画一遍、等 GPU 画完、写回 RDRAM（`copyNativeToRAM`），正好卡在游戏等的路上。按列表关掉它（`State::setRenderToRAM(0)`，每个 workload 后清掉）一进迷你关就崩：RT64 改在 Workload 线程上做帧缓冲当贴图的复制（`FramebufferManager::createTileCopySetup`），每次新建 Vulkan 帧缓冲，内存耗尽（`Scudo ERROR: internal map failure (Out of memory)`）。要走这条路得先修 RT64 的这处，并确认游戏有没有用 CPU 读帧缓冲；实验开关已删。
+
 插帧（跟 120 Hz 屏）：RT64 按 VI 历史猜游戏帧率，只看最近 3 个画面间隔、必须全相等，否则给 0、不插帧（`rt64_vi.h`）。120 Hz 下 Seeker 的 GPU 完成时刻落在 8 ms 拍边界两侧，1x 的间隔常是 3、5 拍，于是 70% 的帧没有帧率（60 Hz 下也有 53%）。现在宿主在每个显示列表前把逻辑步频（`game_speed::step_rate()`：30，加速时 30×档位）用 `State::setRefreshRate` 交给 RT64（`graphics.cpp` `send_dl`；RT64 每个 workload 后清掉）：
 
 | Seeker，插帧跟屏幕 | 无帧率的帧 | 呈现/秒 | 游戏帧/秒 |
@@ -218,8 +282,9 @@ Deck、Seeker 上曾看到 120 Hz 时音频队列长 20–40 ms。那是 `audio-
 | `SRW64_RT64_RATE_HINT=0` | 不把逻辑步频交给 RT64，让它按 VI 历史猜（对照） |
 | `SRW64_DRAW_EVERY=N` | 3x/4x 时不管设备都画 N 帧中的 1 帧；`=1` 永远不跳（§3.5） |
 | `SRW64_SWAP_NOW=0` | 没画的帧也等拍换屏（对照） |
+| `SRW64_BIG_CORES=1` / `=0` | 安卓：关键线程一直绑大核／从不绑；默认只在加速时（§3.6） |
 
-调试状态：`sched`（`factor`、`retraces`、`audio_skipped`、`interval`、`rendered`、`sync_mode`、`logic_ticks`、`picture_ticks`、`latch_slow_spells`）、`rt64_original_rate`、`lists_without_rate`（RT64 没有帧率时送出的显示列表数）、`audio_stats`（§5.5）、`present_gaps`（呈现间隔分布）、`present_steps`（相邻呈现隔几个 workload）、`draw_skip`（§3.5）。安卓用 `attach.py --env`，桌面 `--play` 启动器已放行这些变量。
+调试状态：`sched`（`factor`、`retraces`、`audio_skipped`、`interval`、`rendered`、`sync_mode`、`logic_ticks`、`picture_ticks`、`latch_slow_spells`）、`rt64_original_rate`、`lists_without_rate`（RT64 没有帧率时送出的显示列表数）、`audio_stats`（§5.5）、`present_gaps`（呈现间隔分布）、`present_steps`（相邻呈现隔几个 workload）、`draw_skip`（§3.5）、`big_cores`（安卓，§3.6）。安卓用 `attach.py --env`，桌面 `--play` 启动器已放行这些变量。
 
 ## 7. 没做
 
