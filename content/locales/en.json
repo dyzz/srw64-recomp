@@ -608,7 +608,7 @@
     "mod_dialogue_reload_note": "Put edited dialogue files in the folder below, then press F5 or Reload Dialogue Text",
     "mod_dialogue_locale": "{l}: {n} entries from {f} files, {k} errors",
     "mod_dialogue_note": "Languages are switched on the General settings page. Language packs will be managed here too.",
-    "mod_audio_note": "Music replacement and character voices are in development.",
+    "mod_audio_note": "Songs in enabled mods replace the original’s; turn them off or set their volume on the General page of the settings. The website’s BGM MOD maker turns your own music into a mod package. Character voices are in development.",
     "mod_page_installed": "Installed",
     "mod_install_note": "Drop a .srw64mod file or a MOD folder on the game window to install it, or put it in the MOD folder below. A MOD higher in the list wins over the ones below.",
     "mod_folder_row": "MOD folder",

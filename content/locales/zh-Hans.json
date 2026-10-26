@@ -608,7 +608,7 @@
     "mod_dialogue_reload_note": "改好的台词文件放进下面的文件夹，按 F5 或点「重新载入台词」生效",
     "mod_dialogue_locale": "{l}：{n} 条，来自 {f} 个文件，{k} 处错误",
     "mod_dialogue_note": "语言在设置的「通用」页切换。以后语言包也在这里管理。",
-    "mod_audio_note": "BGM 替换和人物语音还在开发中。",
+    "mod_audio_note": "已启用的 MOD 里的歌曲会替换原版曲目，开关和音量在设置的「通用」页。用官网的「BGM MOD 制作」工具可以把自己的音乐做成 MOD 包。人物语音还在开发中。",
     "mod_page_installed": "已安装",
     "mod_install_note": "把 .srw64mod 文件或 MOD 文件夹拖进游戏窗口即可安装，也可以放进下面的 MOD 文件夹。列表上面的 MOD 覆盖下面的。",
     "mod_folder_row": "MOD 文件夹",
