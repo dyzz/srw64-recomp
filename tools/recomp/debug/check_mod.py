@@ -133,11 +133,11 @@ check('title-shows-mod', 'mod-open' in ids(), list(ids()))
 s.client.call('ui.click', id='mod-open')
 time.sleep(1.5)
 s.client.call('screenshot', path=str(s.run / 'mod-campaigns-zh.png'))
-installed = sorted(p.name for p in (s.run.parent / (s.run.name + '.campaigns')).iterdir())
+installed = sorted(p.name for p in (s.run.parent / (s.run.name + '.mods')).iterdir() if p.is_dir() and not p.name.startswith('.'))
 sample = installed.index('srw64.sample')
 found = ids()
 check('campaign-page', all(found.get(f'dlc-enter:{i}') for i in range(len(installed))) and
-      all(f'mod-page:{p}' in found for p in ('campaigns', 'art', 'dialogue', 'audio')) and '示例战役' in text() and '共 4 关' in text(),
+      all(f'mod-page:{p}' in found for p in ('installed', 'campaigns', 'art', 'dialogue', 'audio')) and '示例战役' in text() and '共 4 关' in text(),
       {'ids': [k for k in found if k.startswith(('dlc', 'mod'))]})
 art = page('art', 'mod-art-zh.png')
 check('art-page', 'images:hd' in ids() and ('HD 包已安装' in art or '没有找到 HD 包' in art), {})

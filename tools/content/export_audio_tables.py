@@ -5,6 +5,9 @@
   units.csv          each unit's battle song (ROM 0x7DF30), used when no player unit fights
   battle-voices.csv  every battle line by record number: who says it, when, and its text
 
+and web/src/data/bgm.json, the same songs, pilots and units for the website's BGM MOD
+maker (web/src/pages/[lang]/mods/bgm.astro).
+
 Names and Japanese text come from the text export (assets/text-export), the Chinese and
 English text from the shipped dialogue files (content/dialogue/<locale>/battle). The
 rules behind the columns are in docs/design/audio-mods.md §2 and docs/data/battle-quotes.md.
@@ -21,6 +24,7 @@ import struct
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'docs/guide/audio-mods'
+WEB = ROOT / 'web/src/data/bgm.json'
 SOUND_SELECT, SONG_ROWS = 0x1147E0, 49
 KARAOKE, KARAOKE_ROWS = 0x1148A4, 19
 PILOT_SONGS, ACTORS = 0x7D6A0, 361
@@ -38,6 +42,8 @@ FIXED = {
     0x26: '敌增援登场 jingle（默认只放一次）',
     0x27: '出击准备（推断）',
 }
+# The same, as keys the web page words in each language.
+FIXED_KEYS = {0x0A: 'h_form', 0x0B: 's_form', 0x0D: 'vmax', 0x22: 'valua', 0x26: 'reinforcements', 0x27: 'sortie'}
 
 
 def plain(text: str) -> str:
@@ -145,6 +151,24 @@ def main() -> None:
         songs.append([song, row + 1, plain(records[text]['display']),
                       'yes' if song in karaoke else '', '；'.join(uses)])
     write('songs.csv', ['song', 'sound_select_row', 'title_ja', 'karaoke', 'uses'], songs)
+
+    def names3(record: int) -> dict[str, str]:
+        ja, zh, en = name(record)
+        return {'ja': ja, 'zh': zh or ja, 'en': en or ja}
+    web = {
+        'schema': 'srw64.web-bgm-data.v1',
+        'songs': [{
+            'song': song, 'row': row + 1, 'title': plain(records[u16(SOUND_SELECT + 4 * row)]['display']),
+            'karaoke': song in karaoke, 'fixed': FIXED_KEYS.get(song), 'stageMaps': stage_maps.get(song, 0),
+            'pilots': [a for a, s in pilot_song.items() if s == song], 'units': [u for u, s in unit_song.items() if s == song],
+        } for row in range(SONG_ROWS) for song in [u16(SOUND_SELECT + 4 * row + 2)]],
+        'pilots': [{'id': a, 'name': names3(ACTOR_NAMES + a), 'song': pilot_song[a]}
+                   for a in range(ACTORS) if plain(records[ACTOR_NAMES + a]['display'])],
+        'units': [{'id': u, 'name': names3(UNIT_NAMES + u), 'song': unit_song[u]}
+                  for u in range(UNITS) if plain(records[UNIT_NAMES + u]['display'])],
+    }
+    WEB.write_text(json.dumps(web, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+    print(f'{WEB.relative_to(ROOT)}: {len(web["songs"])} songs, {len(web["pilots"])} pilots, {len(web["units"])} units')
 
 
 if __name__ == '__main__':

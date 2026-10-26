@@ -1,0 +1,10 @@
+{
+  "schema": "srw64.mod.v1",
+  "id": "srw64.retry",
+  "version": "1.0.0",
+  "name": {"ja": "再挑戦チェック", "zh-Hans": "再次挑战检查", "en": "Retry check"},
+  "description": {"en": "One stage borrowing scene 5, for check_campaign_retry.py: a game over must bring this stage back, not the original scene."},
+  "authors": ["SRW64"],
+  "license": "CC-BY-NC-4.0",
+  "game": ">=0.4"
+}

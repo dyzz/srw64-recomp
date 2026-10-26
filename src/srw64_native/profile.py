@@ -45,6 +45,8 @@ UI_KEYS |= {"library_open", "library_title", "library_tab_units", "library_tab_p
 UI_KEYS |= {"title_return_open", "title_return_title", "title_return_text", "title_return_note", "title_return_yes", "title_return_no", "title_return_unavailable", "title_return_failed", "menu_title_return"}
 UI_KEYS |= {"touch_quick_load", "touch_screenshot", "quick_load_open", "quick_load_title", "quick_load_text", "quick_load_note", "quick_load_yes", "quick_load_no", "quick_load_none", "quick_load_other_stage", "quick_load_unavailable", "quick_load_done", "quick_load_failed"}
 UI_KEYS |= {"touch_stage_info", "stage_info_ark", "stage_info_brad", "stage_info_done", "stage_info_enemies", "stage_info_episode", "stage_info_hint", "stage_info_hint_pad", "stage_info_kills", "stage_info_manami", "stage_info_missed", "stage_info_missing", "stage_info_na", "stage_info_next", "stage_info_no_enemies", "stage_info_no_secrets", "stage_info_not_started", "stage_info_open", "stage_info_others", "stage_info_pending", "stage_info_retreat", "stage_info_row", "stage_info_row_note", "stage_info_secrets", "stage_info_serein", "stage_info_step", "stage_info_third", "stage_info_title", "stage_info_unavailable"}
+# MOD packages (frontend.cpp mod_installed_page, mod_library.hpp).
+UI_KEYS |= {"mod_error_already", "mod_error_archive", "mod_error_conflict", "mod_error_cycle", "mod_error_dependency_off", "mod_error_dependency_version", "mod_error_duplicate", "mod_error_folder", "mod_error_game", "mod_error_manifest", "mod_error_missing", "mod_error_no_folder", "mod_error_no_manifest", "mod_error_not_package", "mod_error_other", "mod_error_write", "mod_folder_open", "mod_folder_row", "mod_folder_row_note", "mod_has_art", "mod_has_campaign", "mod_has_challenge", "mod_has_data", "mod_has_dialogue", "mod_has_music", "mod_has_nothing", "mod_has_rules", "mod_has_story", "mod_has_voices", "mod_install_busy", "mod_install_failed", "mod_install_note", "mod_installed", "mod_installing", "mod_none", "mod_not_applied", "mod_page_installed", "mod_remove", "mod_remove_confirm", "mod_remove_failed", "mod_removed", "mod_status_off", "mod_status_on", "mod_status_problem", "mod_turn_off", "mod_turn_on", "mod_updated"}
 # The pilot ability page's kill count (frontend.cpp ability pages).
 UI_KEYS |= {"ability_kills"}
 # Carrying finished hidden elements into a later playthrough (legacy.cpp, frontend.cpp stage_panel).
@@ -63,6 +65,7 @@ UI_KEYS |= {"settings_refresh", "settings_refresh_display", "settings_refresh_or
 # 2x speed (frontend.cpp toggle_speed, game_speed.hpp).
 UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_3x", "settings_speed_4x", "settings_speed_note", "speed_notice_1x", "speed_notice_2x", "speed_notice_3x", "speed_notice_4x", "touch_speed"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
+UI_KEYS |= {"settings_mod_music", "settings_mod_music_on", "settings_mod_music_off", "settings_mod_music_volume", "settings_mod_music_note"}
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}
 # The debug interface switch on the About page (settings debug_interface).

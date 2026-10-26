@@ -1,0 +1,12 @@
+{
+  "schema": "srw64.mod.v1",
+  "id": "srw64.sample",
+  "version": "1.0.0",
+  "name": {"ja": "サンプルキャンペーン", "zh-Hans": "示例战役", "en": "Sample Campaign"},
+  "description": {"ja": "原作のマップと台詞だけで組んだ四話の試作。二話目の選択で結末が分かれる。",
+                  "zh-Hans": "只用原版地图和台词拼成的四关试作，第二关的选择决定结局。",
+                  "en": "A four-stage test built from the original maps and lines; a choice in stage two decides the ending."},
+  "authors": ["SRW64"],
+  "license": "CC-BY-NC-4.0",
+  "game": ">=0.4"
+}

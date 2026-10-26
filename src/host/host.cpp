@@ -83,6 +83,7 @@
 #include "enemy_pilot_page.hpp"
 #include "map_combo.hpp"
 #include "legacy.hpp"
+#include "music.hpp"
 #include "title_page.hpp"
 #include "battle_viewer.hpp"
 #include "move_jump.hpp"
@@ -671,6 +672,7 @@ static int run_host(int argc, char** argv) {
     srw64::autosave::configure(output_dir);
     srw64::quick_load::configure(output_dir);
     srw64::legacy::configure(output_dir);
+    srw64::music::configure();
     srw64::save_page::configure(output_dir);
     srw64::title_page::configure(output_dir);
     srw64::battle_viewer::install(output_dir);

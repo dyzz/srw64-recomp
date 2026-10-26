@@ -279,6 +279,8 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     if(const auto bundled=bundled_resource("campaigns");!bundled.empty())campaign_dirs+=campaign_dir_separator+bundled.string();
     set_environment("SRW64_CAMPAIGN_DIRS",campaign_dirs);
     set_environment("SRW64_CAMPAIGN_SAVES",(session.user_dir()/"campaigns").string());
+    // MOD packages (mod_library.hpp): installed into the user folder's mods/.
+    set_environment("SRW64_MODS_DIR",(session.user_dir()/"mods").string());
     if(hd_art) {
         set_environment("SRW64_ART_PACK",(hd/"art").string());
         // The golden beacon replaces the dashed ring only with both model packs loaded.

@@ -133,6 +133,12 @@ NATIVE_HOOKS = {
     "resident_func_800A5054": "srw64_original_wing_kill_restore",
     "resident_func_800AA8F4": "srw64_original_weapon_inherit",
     "resident_func_800AAD28": "srw64_original_unit_register",
+    # MOD music (music.cpp): the one way a song starts, its fade, and whether it still plays.
+    "resident_func_8007E810": "srw64_original_play_song",
+    "resident_func_8007E87C": "srw64_original_fade_song",
+    "resident_func_80077AD0": "srw64_original_song_playing",
+    # A fight's song from the pilot or unit table (music.json "battle").
+    "load_000AB160_func_801E07C4": "srw64_original_battle_song",
     "resident_func_800AA464": "srw64_original_unit_remove",
     "resident_func_800AB808": "srw64_original_unit_merge",
     "resident_func_800AA3C4": "srw64_original_unit_delete",

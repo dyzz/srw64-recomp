@@ -1,4 +1,5 @@
 #include "game_hooks.hpp"
+#include "music.hpp"
 #include "battle_hud.hpp"
 #include "guest_memory.hpp"
 #include "funcs.h"
@@ -1069,6 +1070,21 @@ void resident_func_80090778(uint8_t* rdram, recomp_context* ctx) {
 }
 // Upgrade refund (upgrade_refund.hpp): the story routines that delete a player's
 // machine open a scope, and the deletion inside it pays the upgrades back.
+// MOD music (music.hpp, docs/design/audio-mods.md): a replaced song stops the original
+// and plays from the package; fades and the "still playing" question follow it.
+void resident_func_8007E810(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64::music::play(rdram, ctx)) srw64_original_play_song(rdram, ctx);
+}
+void resident_func_8007E87C(uint8_t* rdram, recomp_context* ctx) {
+    srw64::music::fade(rdram, ctx);
+    srw64_original_fade_song(rdram, ctx);
+}
+void resident_func_80077AD0(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64::music::playing(rdram, ctx)) srw64_original_song_playing(rdram, ctx);
+}
+void load_000AB160_func_801E07C4(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64::music::battle(rdram, ctx)) srw64_original_battle_song(rdram, ctx);
+}
 void resident_func_800AAD28(uint8_t* rdram, recomp_context* ctx) {
     // Registration (a1 the new machine): its predecessor's levels move to it, so
     // deleting that instance here is not a loss.

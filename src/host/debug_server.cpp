@@ -24,6 +24,7 @@
 #include "input_mode.hpp"
 #include "mini_stage.hpp"
 #include "forced_game_over.hpp"
+#include "music.hpp"
 #include "script_inject.hpp"
 #include "presentation_settings.hpp"
 #include "post_filter.hpp"
@@ -194,6 +195,7 @@ json status(const json& params) {
                     {"filter",[]{const auto f=post_filter::status();return json{{"available",f.available},{"loading",f.loading},{"preset",f.preset},{"error",f.error}};}()}};
     });
     state.update(window);
+    state["music"]=music::status();   // MOD music (music.hpp)
     return state;
 }
 
@@ -471,6 +473,7 @@ json dispatch(const std::string& method,const json& params) {
     if(method=="ui.key")return on_window([=]{return debug_ui::key(params);});
     if(method=="ui.type")return on_window([=]{return debug_ui::type(params);});
     if(method=="menu")return on_window([=]{return debug_ui::menu(params);});
+    if(method=="ui.drop")return on_window([=]{return debug_ui::drop(params);});
     if(method=="settings")return settings(params);
     if(method=="window")return on_window([=] {
         try{return srw64_window_control(params);}
@@ -514,7 +517,7 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","settings","window","wait_vi","game_over","victory","mini_stage.load","memory.read","memory.write","viewer.start","file.read","file.remove",
+                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","memory.read","memory.write","viewer.start","file.read","file.remove",
                                  "quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }

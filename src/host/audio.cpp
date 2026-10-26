@@ -13,6 +13,10 @@
 
 uint64_t srw64_current_vi();
 
+// MOD music (music.cpp) mixed into every buffer of the game's audio before it is queued;
+// null in hosts without MOD support.
+void (*srw64_audio_mixer)(int16_t* stereo, size_t frames, uint32_t rate) = nullptr;
+
 namespace {
 bool enabled;
 std::filesystem::path output;
@@ -110,6 +114,7 @@ void srw64_queue_audio(int16_t* samples, size_t count) {
         swapped[i] = samples[i + 1];
         swapped[i + 1] = samples[i];
     }
+    if (srw64_audio_mixer) srw64_audio_mixer(swapped.data(), count / 2, rate);
     if (old_frames > srw64_audio_queue_limit(rate)) {
         const size_t fade_frames = std::min<size_t>(64, count / 2);
         for (size_t i = 0; i < fade_frames; ++i) {

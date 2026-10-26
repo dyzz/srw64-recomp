@@ -163,6 +163,22 @@ recomp-upgrade-refund-test:
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Isrc/host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_upgrade_refund.cpp -o build/recomp/upgrade-refund-test/test
 	rm -rf build/recomp/upgrade-refund-test/test-run && build/recomp/upgrade-refund-test/test build/recomp/upgrade-refund-test/test-run
 
+.PHONY: recomp-mod-library-test
+MINIZ_DIR := $(RECOMP_RUNTIME)/thirdparty/miniz
+recomp-mod-library-test:
+	mkdir -p build/recomp/mod-library-test
+	for c in miniz miniz_tdef miniz_tinfl miniz_zip; do cc -c -g -fsanitize=address,undefined -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		$(MINIZ_DIR)/$$c.c -o build/recomp/mod-library-test/$$c.o || exit 1; done
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -I$(RECOMP_BUILD)/upstream/RT64/src/contrib -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		tests/native_mod_library.cpp src/host/mod_library.cpp build/recomp/mod-library-test/miniz*.o -o build/recomp/mod-library-test/test
+	build/recomp/mod-library-test/test build/recomp/mod-library-test/run tests/mods/manifests.json
+
+.PHONY: recomp-music-test
+recomp-music-test:
+	mkdir -p build/recomp/music-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Isrc/host -Ibuild/recomp/upstream/RT64/src/contrib -Ibuild/recomp/upstream/N64Recomp/include tests/native_music.cpp -o build/recomp/music-test/test
+	build/recomp/music-test/test build/recomp/music-test/run
+
 .PHONY: recomp-stage-info-test
 recomp-stage-info-test:
 	mkdir -p build/recomp/stage-info-test

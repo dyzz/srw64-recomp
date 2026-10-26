@@ -1,0 +1,187 @@
+---
+// The BGM MOD maker (docs/design/audio-mods.md §9): players build a music package in the
+// browser. Nothing is uploaded: files are decoded, encoded to Ogg Vorbis in a worker and
+// zipped into a .srw64mod on the player's own machine (scripts/bgm-maker.ts).
+import Base from '../../../layouts/Base.astro';
+import { langPaths, type Lang } from '../../../i18n';
+import data from '../../../data/bgm.json';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const L = <T,>(v: Record<Lang, T>) => v[lang];
+const title = { zh: 'BGM MOD 制作', en: 'BGM MOD maker', ja: 'BGM MOD メーカー' };
+const t = {
+  lead: {
+    zh: '把你自己的音乐做成 MOD 包，替换游戏里的 49 首曲子。每首可以设循环点、音量和显示的曲名，也可以指定某个人物或机体打仗时放哪首。导出的 .srw64mod 拖进游戏窗口即可安装（需要支持 MOD 音乐的版本）。',
+    en: 'Turn your own music into a MOD package that replaces any of the game’s 49 songs. Set each song’s loop, volume and title, and pick which song a pilot or unit fights to. Drag the exported .srw64mod into the game window to install it (a version with MOD music is needed).',
+    ja: '自分の音楽を MOD パッケージにして、ゲームの 49 曲を差し替えます。曲ごとにループ位置・音量・表示する曲名を設定でき、キャラクターやユニットごとの戦闘曲も選べます。書き出した .srw64mod をゲームのウィンドウにドラッグするとインストールされます（MOD 音楽に対応したバージョンが必要です）。',
+  },
+  privacy: {
+    zh: '所有处理都在你的浏览器里完成，音频不会上传到任何地方。只能使用你有权使用、并且允许再分发的音乐；原作动画歌曲做成的包只适合自己使用，不能投稿到官方 MOD 列表。',
+    en: 'Everything happens in your browser; no audio is uploaded anywhere. Use only music you have the right to use and to pass on. A package made from the original anime songs is for your own use and cannot be submitted to the official MOD list.',
+    ja: '処理はすべてブラウザー内で行われ、音声はどこにもアップロードされません。使用と再配布の権利がある音楽だけを使ってください。原作アニメの楽曲で作ったパッケージは個人利用に限られ、公式 MOD 一覧には投稿できません。',
+  },
+  package: { zh: '包信息', en: 'Package', ja: 'パッケージ情報' },
+  songs: { zh: '曲目', en: 'Songs', ja: '曲目' },
+  battle: { zh: '战斗曲（可选）', en: 'Battle songs (optional)', ja: '戦闘曲（任意）' },
+  export: { zh: '导出', en: 'Export', ja: '書き出し' },
+};
+// The texts the script words its own UI with, in this page's language.
+const text = {
+  id: L({ zh: 'ID（作者.名字，发布后不要再改）', en: 'ID (author.name; keep it once released)', ja: 'ID（作者.名前。公開後は変更しない）' }),
+  version: L({ zh: '版本', en: 'Version', ja: 'バージョン' }),
+  name: L({ zh: '名称', en: 'Name', ja: '名前' }),
+  authors: L({ zh: '作者（多人用逗号分隔）', en: 'Authors (comma-separated)', ja: '作者（複数はカンマ区切り）' }),
+  license: L({ zh: '许可证', en: 'License', ja: 'ライセンス' }),
+  description: L({ zh: '说明（可选）', en: 'Description (optional)', ja: '説明（任意）' }),
+  import: L({ zh: '打开已有的 .srw64mod 继续编辑', en: 'Open an existing .srw64mod', ja: '既存の .srw64mod を開く' }),
+  choose: L({ zh: '选择文件', en: 'Choose file', ja: 'ファイルを選択' }),
+  drop: L({ zh: '或把音频文件拖到这一行', en: 'or drop an audio file on this row', ja: 'または音声ファイルをこの行にドロップ' }),
+  remove: L({ zh: '移除', en: 'Remove', ja: '削除' }),
+  edit: L({ zh: '编辑', en: 'Edit', ja: '編集' }),
+  close: L({ zh: '收起', en: 'Close', ja: '閉じる' }),
+  decoding: L({ zh: '解码中…', en: 'Decoding…', ja: 'デコード中…' }),
+  encoding: L({ zh: '转成 Ogg Vorbis…', en: 'Encoding to Ogg Vorbis…', ja: 'Ogg Vorbis に変換中…' }),
+  ready: L({ zh: '已替换', en: 'Replaced', ja: '差し替え済み' }),
+  kept: L({ zh: '原样使用（已是 Ogg Vorbis）', en: 'Used as is (already Ogg Vorbis)', ja: 'そのまま使用（Ogg Vorbis）' }),
+  failed: L({ zh: '无法解码这个文件，请换成 mp3、wav、flac、m4a 或 ogg', en: 'This file could not be decoded; try mp3, wav, flac, m4a or ogg', ja: 'このファイルはデコードできません。mp3・wav・flac・m4a・ogg を試してください' }),
+  karaoke: L({ zh: '卡拉OK 里仍放原曲', en: 'Karaoke keeps the original', ja: 'カラオケは原曲のまま' }),
+  loop: L({ zh: '循环', en: 'Loop', ja: 'ループ' }),
+  loopWhole: L({ zh: '整首循环', en: 'Loop the whole song', ja: '曲全体をループ' }),
+  loopRange: L({ zh: '循环区间', en: 'Loop a section', ja: '区間をループ' }),
+  loopOnce: L({ zh: '只放一次', en: 'Play once', ja: '一回だけ再生' }),
+  loopStart: L({ zh: '起点（秒）', en: 'Start (s)', ja: '開始（秒）' }),
+  loopEnd: L({ zh: '终点（秒）', en: 'End (s)', ja: '終了（秒）' }),
+  loopHint: L({ zh: '在波形上拖动蓝色（起点）和金色（终点）竖线，会自动对齐到最近的过零点。', en: 'Drag the blue (start) and gold (end) lines on the waveform; they snap to the nearest zero crossing.', ja: '波形上の青（開始）と金（終了）の線をドラッグします。近くのゼロクロスに合わせます。' }),
+  play: L({ zh: '从头播放', en: 'Play', ja: '再生' }),
+  seam: L({ zh: '试听接缝', en: 'Hear the seam', ja: 'つなぎ目を試聴' }),
+  stop: L({ zh: '停止', en: 'Stop', ja: '停止' }),
+  gain: L({ zh: '音量修正（dB）', en: 'Volume (dB)', ja: '音量補正（dB）' }),
+  loudness: L({ zh: '平均电平', en: 'Average level', ja: '平均レベル' }),
+  loudnessOthers: L({ zh: '其他已替换曲目平均', en: 'other replaced songs', ja: '他の差し替え曲の平均' }),
+  titles: L({ zh: '音乐鉴赏里显示的曲名（可选）', en: 'Title in the music room (optional)', ja: 'サウンドセレクトでの曲名（任意）' }),
+  usesFixed: {
+    h_form: L({ zh: 'ゴッドガンダム 明鏡止水形态', en: 'God Gundam in Hyper Mode', ja: 'ゴッドガンダム 明鏡止水' }),
+    s_form: L({ zh: 'シャッフル同盟 的 S 形态', en: 'the Shuffle Alliance’s S forms', ja: 'シャッフル同盟の S 形態' }),
+    vmax: L({ zh: 'V-MAX 发动中', en: 'V-MAX', ja: 'V-MAX 発動中' }),
+    valua: L({ zh: 'ヴァル＝ア 三人在场的战斗', en: 'fights with the Val-ar trio', ja: 'ヴァル＝ア三人が参加する戦闘' }),
+    reinforcements: L({ zh: '敌增援登场（默认只放一次）', en: 'enemy reinforcements (plays once by default)', ja: '敵増援の登場（既定で一回だけ）' }),
+    sortie: L({ zh: '出击准备', en: 'sortie preparation', ja: '出撃準備' }),
+  },
+  usesStage: L({ zh: '{n} 张地图的关卡曲', en: 'stage music on {n} maps', ja: '{n} マップのステージ曲' }),
+  usesPilots: L({ zh: '我方战斗曲：{names}', en: 'battle theme of {names}', ja: '戦闘曲：{names}' }),
+  usesUnits: L({ zh: '敌方机体 {n} 台', en: '{n} enemy units', ja: '敵ユニット {n} 機' }),
+  usesMore: L({ zh: ' 等 {n} 人', en: ' and {n} more', ja: ' ほか {n} 人' }),
+  usesNone: L({ zh: '剧情、标题或结局中使用', en: 'played in story scenes, the title or the ending', ja: 'シナリオ・タイトル・エンディングで使用' }),
+  battleNote: L({ zh: '有我方单位参战时按我方主驾驶员选曲，否则按攻方机体选曲。超级模式、V-MAX 和 ヴァル＝ア 三人的固定曲目仍按原版。', en: 'A fight with a player unit plays its main pilot’s song; otherwise the attacking unit’s. Super modes, V-MAX and the Val-ar trio keep the original’s fixed songs.', ja: '味方ユニットが参加する戦闘はメインパイロットの曲、それ以外は攻撃側ユニットの曲です。スーパーモード・V-MAX・ヴァル＝ア三人の固定曲は元のままです。' }),
+  pilot: L({ zh: '人物', en: 'Pilot', ja: 'キャラクター' }),
+  unit: L({ zh: '机体', en: 'Unit', ja: 'ユニット' }),
+  song: L({ zh: '曲目', en: 'Song', ja: '曲' }),
+  original: L({ zh: '原版', en: 'original', ja: '元' }),
+  add: L({ zh: '添加', en: 'Add', ja: '追加' }),
+  exportButton: L({ zh: '导出 .srw64mod', en: 'Export .srw64mod', ja: '.srw64mod を書き出す' }),
+  exporting: L({ zh: '打包中…', en: 'Packing…', ja: 'パッケージ化中…' }),
+  exported: L({ zh: '已导出 {file}（{size}）。把它拖进游戏窗口即可安装。', en: 'Exported {file} ({size}). Drag it into the game window to install.', ja: '{file}（{size}）を書き出しました。ゲームのウィンドウにドラッグするとインストールされます。' }),
+  errId: L({ zh: 'ID 只能用字母、数字和 . _ -，最多 64 个字符', en: 'The ID may use letters, digits and . _ - (up to 64)', ja: 'ID に使えるのは英数字と . _ -（64 文字まで）です' }),
+  errVersion: L({ zh: '版本写成 1.0.0 这样的格式', en: 'Write the version like 1.0.0', ja: 'バージョンは 1.0.0 の形式で書いてください' }),
+  errName: L({ zh: '至少填一种语言的名称', en: 'Give a name in at least one language', ja: '名前を少なくとも一つの言語で入力してください' }),
+  errLicense: L({ zh: '请选择许可证', en: 'Choose a license', ja: 'ライセンスを選んでください' }),
+  errEmpty: L({ zh: '还没有替换任何曲目', en: 'No song is replaced yet', ja: 'まだ曲を差し替えていません' }),
+  errBusy: L({ zh: '还有曲目在处理中，请稍候', en: 'Some songs are still being processed', ja: '処理中の曲があります' }),
+  errImport: L({ zh: '无法打开这个包：{detail}', en: 'This package could not be opened: {detail}', ja: 'このパッケージを開けません：{detail}' }),
+  imported: L({ zh: '已打开 {id}：{n} 首曲目', en: 'Opened {id}: {n} songs', ja: '{id} を開きました：{n} 曲' }),
+};
+const licenses = ['CC-BY-4.0', 'CC-BY-SA-4.0', 'CC-BY-NC-4.0', 'CC-BY-NC-SA-4.0', 'CC0-1.0', 'MIT', 'GPL-3.0-or-later'];
+---
+<Base lang={lang} title={title[lang]} description={t.lead[lang]}>
+  <div class="wrap bgm" data-bgm data-lang={lang}>
+    <header class="page-head">
+      <span class="tag">MOD</span>
+      <h1>{title[lang]}</h1>
+      <p>{t.lead[lang]}</p>
+      <p class="note">{t.privacy[lang]}</p>
+    </header>
+
+    <section class="block">
+      <h2>{t.package[lang]}</h2>
+      <div class="form">
+        <label>{text.id}<input data-f="id" placeholder="yourname.bgm" autocomplete="off" spellcheck="false" /></label>
+        <label>{text.version}<input data-f="version" value="1.0.0" autocomplete="off" /></label>
+        <label>{text.name}（中文）<input data-f="name-zh-Hans" /></label>
+        <label>{text.name}（English）<input data-f="name-en" /></label>
+        <label>{text.name}（日本語）<input data-f="name-ja" /></label>
+        <label>{text.authors}<input data-f="authors" /></label>
+        <label>{text.license}<select data-f="license"><option value="">—</option>{licenses.map((l) => <option value={l}>{l}</option>)}</select></label>
+        <label class="wide">{text.description}<textarea data-f="description" rows="2"></textarea></label>
+      </div>
+      <label class="btn ghost import">{text.import}<input type="file" accept=".srw64mod,.zip" data-import hidden /></label>
+      <p class="status" data-import-status></p>
+    </section>
+
+    <section class="block">
+      <h2>{t.songs[lang]}</h2>
+      <ol class="songs" data-songs></ol>
+    </section>
+
+    <section class="block">
+      <h2>{t.battle[lang]}</h2>
+      <p class="note">{text.battleNote}</p>
+      <div class="battle" data-battle></div>
+    </section>
+
+    <section class="block">
+      <h2>{t.export[lang]}</h2>
+      <button type="button" class="btn big" data-export>{text.exportButton}</button>
+      <p class="status" data-export-status></p>
+    </section>
+  </div>
+  <script type="application/json" id="bgm-data" is:inline set:html={JSON.stringify({ data, text, lang })}></script>
+  <script>
+    import { initBgmMaker } from '../../../scripts/bgm-maker';
+    initBgmMaker();
+  </script>
+</Base>
+
+<style>
+  .bgm { padding-bottom: 80px; }
+  .note { color: var(--muted); font-size: 14px; }
+  .block { margin-top: 36px; }
+  .block h2 { font-size: 20px; margin-bottom: 12px; }
+  .form { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px 16px; }
+  .form label, :global(.bgm .field) { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+  .form .wide { grid-column: 1 / -1; }
+  :global(.bgm input:not([type])), :global(.bgm input[type=number]), :global(.bgm select), :global(.bgm textarea) {
+    font: inherit; font-size: 14px; color: var(--text); background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 7px 9px; min-width: 0;
+  }
+  .import { margin-top: 14px; cursor: pointer; }
+  .status { min-height: 1.5em; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  :global(.bgm .status.err) { color: var(--pink); }
+  .songs { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  :global(.bgm .song) { border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); }
+  :global(.bgm .song.over) { border-color: var(--cyan); background: var(--panel-2); }
+  :global(.bgm .song.done) { border-color: rgba(87, 227, 137, 0.5); }
+  :global(.bgm .song-head) { display: grid; grid-template-columns: 44px 1fr auto; gap: 4px 12px; align-items: center; padding: 10px 12px; }
+  :global(.bgm .song-no) { font-family: var(--display); font-size: 18px; color: var(--gold); text-align: right; }
+  :global(.bgm .song-title) { font-weight: 600; }
+  :global(.bgm .song-uses) { grid-column: 2; color: var(--dim); font-size: 12.5px; }
+  :global(.bgm .song-state) { grid-column: 2; font-size: 13px; color: var(--muted); }
+  :global(.bgm .song-state.ok) { color: var(--green); }
+  :global(.bgm .song-state.err) { color: var(--pink); }
+  :global(.bgm .song-actions) { grid-column: 3; grid-row: 1 / span 3; display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  :global(.bgm .mini) { font: inherit; font-size: 13px; color: var(--text); background: var(--cyan-soft); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
+  :global(.bgm .mini:hover) { background: rgba(63, 208, 255, 0.24); }
+  :global(.bgm .mini:disabled) { opacity: 0.45; cursor: default; }
+  :global(.bgm .editor) { border-top: 1px solid var(--line); padding: 12px; display: grid; gap: 12px; }
+  :global(.bgm canvas.wave) { width: 100%; height: 120px; display: block; background: var(--bg-2); border-radius: var(--radius); cursor: ew-resize; touch-action: none; }
+  :global(.bgm .row) { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: end; }
+  :global(.bgm .row .field) { min-width: 120px; }
+  :global(.bgm .radio) { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; color: var(--text); }
+  :global(.bgm .hint) { color: var(--dim); font-size: 12.5px; }
+  :global(.bgm .battle-list) { display: grid; gap: 6px; margin: 8px 0 14px; }
+  :global(.bgm .battle-item) { display: flex; gap: 10px; align-items: center; font-size: 14px; }
+  @media (max-width: 640px) {
+    :global(.bgm .song-head) { grid-template-columns: 34px 1fr; }
+    :global(.bgm .song-actions) { grid-column: 1 / -1; grid-row: auto; justify-content: flex-start; }
+  }
+</style>

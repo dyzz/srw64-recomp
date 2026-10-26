@@ -68,7 +68,8 @@ constexpr bool fps_default=true;
 constexpr bool fps_default=false;
 #endif
 std::atomic_bool unified_weapons{true};
-std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true},fps_shown{fps_default},debug_on{false},hints_always{false};
+std::atomic_bool native_intermission{true},native_name_entry{true},native_title{true},fps_shown{fps_default},debug_on{false},hints_always{false},mod_music_on{true};
+std::atomic<unsigned> mod_music_percent{100};
 std::atomic<RefreshRate> refresh_choice{RefreshRate::Original};
 std::mutex endpoint_mutex;
 DebugEndpoint endpoint_now;
@@ -85,6 +86,7 @@ void persist(const std::filesystem::path& path,const std::string& locale) {
         {"map_unit_icons",map_icons_hd?"hd":"original"},{"msaa",msaa_on.load()},{"title_ui",native_title?"native":"original"},{"settings_page",page},{"aspect",frame::wide?"auto":"4:3"},{"show_fps",fps_shown.load()},
         {"game_speed",srw64::game_speed::level.load()},{"refresh_rate",refresh_rate_name(refresh_choice.load())},
         {"debug_interface",debug_on.load()},{"dialogue_hints",hints_always?"always":"auto"},
+        {"mod_music",mod_music_on.load()},{"mod_music_volume",mod_music_percent.load()},
         {"touch_opacity",touch_alpha.load()},{"dialogue_font_size",dialogue_size.load()}});
     if(size_choice>=0)saved["ui_size"]=ui_size_name(UiSize(size_choice.load()));
     auto cheat_ids=nlohmann::json::array();
@@ -178,6 +180,18 @@ void set_game_speed_level(unsigned level) {
 bool dialogue_hints_always(){return hints_always.load();}
 void set_dialogue_hints_always(bool always) {
     hints_always=always;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
+bool mod_music(){return mod_music_on.load();}
+void set_mod_music(bool on) {
+    mod_music_on=on;
+    if(destination.empty())return;
+    try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
+}
+unsigned mod_music_volume(){return mod_music_percent.load();}
+void set_mod_music_volume(unsigned percent) {
+    mod_music_percent=std::min(percent,100u);
     if(destination.empty())return;
     try {persist(destination,localization::catalog().locale);}catch(const std::exception& error){last_error=error.what();}
 }
@@ -361,6 +375,9 @@ void window_init(SDL_Window* window,const std::filesystem::path& directory) {
         if(saved.is_object())refresh_choice=refresh_rate_from(saved.value("refresh_rate","original"));
         if(saved.is_object() && saved.contains("debug_interface") && saved["debug_interface"].is_boolean())debug_on=saved["debug_interface"].get<bool>();
         if(saved.is_object())hints_always=saved.value("dialogue_hints","auto")=="always";
+        if(saved.is_object() && saved.contains("mod_music") && saved["mod_music"].is_boolean())mod_music_on=saved["mod_music"].get<bool>();
+        if(saved.is_object() && saved.contains("mod_music_volume") && saved["mod_music_volume"].is_number_unsigned())
+            mod_music_percent=std::min(saved["mod_music_volume"].get<unsigned>(),100u);
         if(saved.is_object() && saved.contains("dialogue_font_size") && saved["dialogue_font_size"].is_number_unsigned())
             dialogue_size=std::clamp(saved["dialogue_font_size"].get<unsigned>(),10u,18u);
         if(saved.is_object() && saved.contains("touch_opacity") && saved["touch_opacity"].is_number_unsigned())

@@ -89,6 +89,12 @@ bool game_speed_double();    // any speed above 1
 // Saved as dialogue_hints, "auto" or "always".
 bool dialogue_hints_always();
 void set_dialogue_hints_always(bool always);
+// MOD music (music.hpp): whether packages' songs replace the original's, and their volume
+// in percent. Both apply from the next song that starts.
+bool mod_music();
+void set_mod_music(bool on);
+unsigned mod_music_volume();
+void set_mod_music_volume(unsigned percent);
 // Dialogue text size, independent of the interface scale. Saved as dialogue_font_size.
 // Safe on the game thread too: the window thread writes pending changes in update().
 unsigned dialogue_font_size();

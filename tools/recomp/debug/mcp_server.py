@@ -95,6 +95,8 @@ TOOLS = [
      "inputSchema": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}},
     {"name": "srw64_viewer_start", "description": "Start one battle animation in the Battle Viewer from the title (docs/design/battle-viewer.md): choice {attacker: {unit, pilot, ...}, defender: {unit, pilot, ...}, scene: [left, right], song} as the viewer page sends it, or raw writes [{side, offset, hex}] into the demo's participant records; optional song. State is in srw64_status (battle_viewer).",
      "inputSchema": {"type": "object", "properties": {"choice": {"type": "object"}, "writes": {"type": "array", "items": {"type": "object"}}, "song": {"type": "integer"}}}},
+    {"name": "srw64_drop", "description": "Drop a file or folder on the game window (SDL_DROPFILE), as dragging it from the desktop does: a .srw64mod file or a MOD folder installs and opens the MOD manager (docs/design/mod-packages.md). The path is on the machine the game runs on.",
+     "inputSchema": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}},
     {"name": "srw64_game_over", "description": "End the stage in GAME OVER, as the script command 3D4C does, at the next idle frame of the player's phase on the tactical map (no event running); waits for it (timeout_ms, default 10000) and says why not otherwise. For tests of the retry and the turn autosave.",
      "inputSchema": {"type": "object", "properties": {"timeout_ms": {"type": "integer"}}}},
     {"name": "srw64_victory", "description": "Win the stage, as the script command 3D4A does (the result screens, then the stage's end event): an event of that one command run by the original script engine at the next idle frame of the player's phase on the tactical map (no event running); waits until the engine has taken it (timeout_ms, default 10000) and says why not otherwise.",
@@ -186,6 +188,8 @@ class Server:
             return text(client.call("mini_stage.load", path=args["path"]))
         if name == "srw64_viewer_start":
             return text(client.call("viewer.start", **args))
+        if name == "srw64_drop":
+            return text(client.call("ui.drop", path=args["path"]))
         if name == "srw64_game_over":
             return text(client.call("game_over", **args))
         if name == "srw64_victory":
