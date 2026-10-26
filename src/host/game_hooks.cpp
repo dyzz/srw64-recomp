@@ -1082,6 +1082,9 @@ void resident_func_8007E87C(uint8_t* rdram, recomp_context* ctx) {
 void resident_func_80077AD0(uint8_t* rdram, recomp_context* ctx) {
     if (!srw64::music::playing(rdram, ctx)) srw64_original_song_playing(rdram, ctx);
 }
+void load_000AB160_func_801E07C4(uint8_t* rdram, recomp_context* ctx) {
+    if (!srw64::music::battle(rdram, ctx)) srw64_original_battle_song(rdram, ctx);
+}
 void resident_func_800AAD28(uint8_t* rdram, recomp_context* ctx) {
     // Registration (a1 the new machine): its predecessor's levels move to it, so
     // deleting that instance here is not a loss.

@@ -89,6 +89,57 @@ inline std::map<int,Track> collect(const std::vector<mods::Package>& packages,
     return out;
 }
 
+// Who fights to which song (music.json "battle"): the original takes a player's song from
+// its main pilot (ROM table 0x7D6A0) and a fight with no player unit from the attacker's
+// unit (0x7DF30); a package can put another song in either.
+inline constexpr uint32_t pilot_songs=0x7D6A0,unit_songs=0x7DF30;
+inline constexpr unsigned pilot_count=361,unit_count=363;
+struct BattleSongs {std::map<int,int> pilot,unit;};
+
+inline BattleSongs battle_settings(const json& data) {
+    BattleSongs out;
+    if(!data.is_object() || data.value("schema","")!="srw64.music.v1" || !data.contains("battle") || !data["battle"].is_object())return out;
+    const auto read=[&](const char* key,unsigned count,std::map<int,int>& into) {
+        if(!data["battle"].contains(key) || !data["battle"][key].is_object())return;
+        for(const auto& [k,v]:data["battle"][key].items()) {
+            int index=-1;
+            try{index=std::stoi(k);}catch(...){continue;}
+            if(index<0 || unsigned(index)>=count || !v.is_number_integer())continue;
+            const int song=v.get<int>();
+            if(song>=1 && song<=255)into[index]=song;
+        }
+    };
+    read("pilot",pilot_count,out.pilot);
+    read("unit",unit_count,out.unit);
+    return out;
+}
+
+// The active packages' battle tables, bottom first, so the package higher in the list wins.
+inline BattleSongs collect_battle(const std::vector<mods::Package>& packages,
+                                  const std::function<json(const fs::path&)>& read_json) {
+    BattleSongs out;
+    for(const auto& p:packages) {
+        if(!p.active)continue;
+        const auto extra=battle_settings(read_json(p.folder/"audio"/"music.json"));
+        for(const auto& [k,v]:extra.pilot)out.pilot[k]=v;
+        for(const auto& [k,v]:extra.unit)out.unit[k]=v;
+    }
+    return out;
+}
+
+// 801E07C4 reads a song from one of the two tables at a ROM address: the package's song
+// for that pilot or unit, if it has one.
+inline std::optional<int> battle_song(const BattleSongs& songs,uint32_t rom) {
+    if(rom>=pilot_songs && rom<pilot_songs+2*pilot_count && !((rom-pilot_songs)&1)) {
+        const auto found=songs.pilot.find(int((rom-pilot_songs)/2));
+        if(found!=songs.pilot.end())return found->second;
+    } else if(rom>=unit_songs && rom<unit_songs+2*unit_count && !((rom-unit_songs)&1)) {
+        const auto found=songs.unit.find(int((rom-unit_songs)/2));
+        if(found!=songs.unit.end())return found->second;
+    }
+    return std::nullopt;
+}
+
 // A decoded track: interleaved stereo at its own rate.
 struct Pcm {
     std::vector<int16_t> samples;
@@ -154,6 +205,9 @@ bool play(uint8_t* ram,recomp_context* ctx);
 void fade(uint8_t* ram,recomp_context* ctx);
 // 80077AD0: true when the host answered whether its track is still playing (v0).
 bool playing(uint8_t* ram,recomp_context* ctx);
+// 801E07C4 (a0 the table entry's ROM address, a1 the super mode): true when a package
+// chose this fight's song and the host has played it in place of the original's.
+bool battle(uint8_t* ram,recomp_context* ctx);
 // The sound test's view of a song: replaced, and the package's title in the locale.
 struct Shown {bool replaced{};std::string title;};
 Shown shown(int song,const std::string& locale);

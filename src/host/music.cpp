@@ -1,5 +1,6 @@
 #include "music.hpp"
 #include "guest_memory.hpp"
+#include "presentation_settings.hpp"
 #include "funcs.h"
 #include <atomic>
 #include <condition_variable>
@@ -40,12 +41,18 @@ json read_json(const fs::path& path) {
 std::mutex table_mutex;
 unsigned table_revision{};
 std::map<int,Track> table;
-std::optional<Track> lookup(int song) {
-    std::lock_guard lock(table_mutex);
+BattleSongs battle_table;
+void refresh_locked() {
     if(const unsigned now=mods::revision();now!=table_revision) {
-        table=collect(mods::installed(mods::game_version()),read_json);
+        const auto packages=mods::installed(mods::game_version());
+        table=collect(packages,read_json);
+        battle_table=collect_battle(packages,read_json);
         table_revision=now;
     }
+}
+std::optional<Track> lookup(int song) {
+    std::lock_guard lock(table_mutex);
+    refresh_locked();
     const auto found=table.find(song);
     if(found==table.end())return std::nullopt;
     return found->second;
@@ -120,7 +127,7 @@ void start(int song,const Track& track) {
         std::lock_guard lock(engine_mutex);
         Voice v;
         v.once=track.once.value_or(song==jingle_song);
-        v.gain=gain_of(track.gain_db);
+        v.gain=gain_of(track.gain_db)*settings::mod_music_volume()/100.0;
         voice=v;voice_song=song;mine=++generation;
     }
     std::thread([track,mine]{
@@ -154,7 +161,7 @@ bool play(uint8_t* ram,recomp_context* ctx) {
     // The original does nothing for the song already playing; neither does the host.
     if(song>=0 && song==int(int16_t(read(ram,current_song,2))))return false;
     std::optional<Track> track;
-    if(song>0 && read(ram,game_mode,1)!=karaoke_mode)track=lookup(song);
+    if(song>0 && settings::mod_music() && read(ram,game_mode,1)!=karaoke_mode)track=lookup(song);
     if(!track) {
         std::lock_guard lock(engine_mutex);
         stop_locked();
@@ -189,7 +196,23 @@ bool playing(uint8_t* ram,recomp_context* ctx) {
     return true;
 }
 
+bool battle(uint8_t* ram,recomp_context* ctx) {
+    if(ctx->r5&0xFF || !settings::mod_music())return false;   // a super mode's fixed song stays the original's
+    std::optional<int> song;
+    {
+        std::lock_guard lock(table_mutex);
+        refresh_locked();
+        song=battle_song(battle_table,uint32_t(ctx->r4));
+    }
+    if(!song)return false;
+    // Through the play hook, so a replacement for the chosen song plays too.
+    auto c=*ctx;c.r4=*song;
+    resident_func_8007E810(ram,&c);
+    return true;
+}
+
 Shown shown(int song,const std::string& locale) {
+    if(!settings::mod_music())return {};
     const auto track=lookup(song);
     if(!track)return {};
     return {true,campaign_library::text(track->title,locale)};

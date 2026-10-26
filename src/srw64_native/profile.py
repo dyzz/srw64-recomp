@@ -65,6 +65,7 @@ UI_KEYS |= {"settings_refresh", "settings_refresh_display", "settings_refresh_or
 # 2x speed (frontend.cpp toggle_speed, game_speed.hpp).
 UI_KEYS |= {"settings_speed", "settings_speed_1x", "settings_speed_2x", "settings_speed_3x", "settings_speed_4x", "settings_speed_note", "speed_notice_1x", "speed_notice_2x", "speed_notice_3x", "speed_notice_4x", "touch_speed"}
 # The dialogue controls bar: auto-hidden or always shown (settings dialogue_hints).
+UI_KEYS |= {"settings_mod_music", "settings_mod_music_on", "settings_mod_music_off", "settings_mod_music_volume", "settings_mod_music_note"}
 UI_KEYS |= {"settings_dialogue_hints", "settings_dialogue_hints_auto", "settings_dialogue_hints_always", "settings_dialogue_hints_note"}
 UI_KEYS |= {"settings_dialogue_font_size", "settings_dialogue_font_size_note"}
 # The debug interface switch on the About page (settings debug_interface).

@@ -57,6 +57,27 @@ int main(int argc,char** argv) {
         check(table.at(12).package=="low","a song only one package has");
         fs::remove_all(root);
     }
+    // Who fights to which song: music.json "battle", the higher package winning per entry,
+    // looked up by the ROM address 801E07C4 reads.
+    {
+        const auto b=music::battle_settings(json::parse(R"({"schema":"srw64.music.v1","battle":{
+            "pilot":{"36":7,"999":3,"4":0,"x":2,"70":"7"},"unit":{"50":12,"362":4}}})"));
+        check(b.pilot.size()==1 && b.pilot.at(36)==7,"pilots: out of range, song 0, bad keys and strings are left out");
+        check(b.unit.size()==2 && b.unit.at(50)==12 && b.unit.at(362)==4,"units, the last one included");
+        namespace fs=std::filesystem;
+        const fs::path root=(argc>1?fs::path(argv[1]):fs::temp_directory_path()/"srw64-music-test")/"battle";
+        fs::remove_all(root);
+        touch(root/"low"/"audio"/"music.json",R"({"schema":"srw64.music.v1","battle":{"pilot":{"36":7,"4":5}}})");
+        touch(root/"high"/"audio"/"music.json",R"({"schema":"srw64.music.v1","battle":{"pilot":{"36":9},"unit":{"97":20}}})");
+        touch(root/"off"/"audio"/"music.json",R"({"schema":"srw64.music.v1","battle":{"pilot":{"4":1}}})");
+        const auto songs=music::collect_battle({package(root/"low"),package(root/"high"),package(root/"off",false)},read_json);
+        check(songs.pilot.at(36)==9 && songs.pilot.at(4)==5 && songs.unit.at(97)==20,"the higher package wins per pilot; a turned-off package counts for nothing");
+        check(music::battle_song(songs,music::pilot_songs+2*36)==9,"Amuro's entry in the pilot table");
+        check(music::battle_song(songs,music::unit_songs+2*97)==20,"the Zaku II's entry in the unit table");
+        check(!music::battle_song(songs,music::pilot_songs+2*37) && !music::battle_song(songs,music::pilot_songs+2*36+1)
+              && !music::battle_song(songs,music::unit_songs+2*music::unit_count),"no entry, an odd address or past the table: the original's song");
+        fs::remove_all(root);
+    }
     // Mixing at the track's own rate: the samples arrive as they are, added to the game's.
     {
         music::Voice v;v.pcm=ramp(1000);
