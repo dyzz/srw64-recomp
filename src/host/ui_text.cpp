@@ -1,5 +1,6 @@
 #include "ui_text.hpp"
 #include "native_name_entry.hpp"
+#include "mod_names.hpp"
 #include "run_files.hpp"
 #include "map_miss.hpp"
 #include "menu_widen.hpp"
@@ -245,14 +246,14 @@ bool active() {
     return hd || localization::catalog().locale != "ja";
 }
 
-// Japanese in original image mode with a MOD naming the protagonists or the unit in
-// Japanese (mod_names.hpp): the ROM font cannot draw those names, so only the labels
-// showing a name field are drawn, in ours; everything else stays the original's.
+// Japanese in original image mode with a MOD naming the protagonists, the unit or any
+// pilot, unit or weapon in Japanese (mod_names.hpp): the ROM font cannot draw those names,
+// so only the labels showing them are drawn, in ours; everything else stays the original's.
 bool names_only() {
     if (active() || disabled || !dialogue::reader_configured()) return false;
     const auto modded = names::default_names().mod_names();
     for (const auto& [key, text] : *modded) if (std::get<2>(key) == "ja") return true;
-    return false;
+    return mod_names::any_record("ja");
 }
 
 void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {

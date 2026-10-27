@@ -1,265 +1,265 @@
-pilot,name_ja,name_zh,name_en,record,shares_record_with,air,land,sea,space
-3,シュバルツ,修巴鲁兹,Schwarz,0,,A,A,A,A
-4,ドモン,多蒙,Domon,1,273 274,A,A,B,A
-7,レイン,玲,Rain,2,,A,A,B,A
-8,アルゴ,阿尔戈,Argo,3,275,A,A,B,A
-9,アレンビー,阿莲比,Allenby,4,,A,A,B,A
-10,キラル,基拉尔,Kyral,5,,A,A,B,A
-11,サイ・サイシー,蔡赛西,Sai Saici,6,276,A,A,B,A
-12,ジョルジュ,乔治,George,7,277,A,A,B,A
-13,チボデー,奇波迪,Chibodee,8,278,A,A,B,A
-14,ウォン,黄润发,Wong,9,,A,A,B,A
-15,キョウジ,京二,Kyoji,10,,A,A,B,A
-16,シジーマ,施哲马,Sijima,11,,A,A,B,A
-17,マーキロット,马基特,Markiroot,12,,A,A,B,A
-18,マスター,东方不败,Master,13,,A,A,A,A
-24,ローレンス,劳伦斯,Lawrence,14,,-,-,-,-
-25,アーク,阿克,Ark,15,,A,A,A,A
-26,セレイン,塞蕾茵,Selain,16,,A,A,A,A
-27,ブラッド,布拉德,Brad,17,,A,A,A,A
-28,マナミ,玛娜米,Manami,18,,A,A,A,A
-29,エルリッヒ,埃尔利希,Ehrlich,19,,A,A,A,A
-30,リッシュ,利修,Rish,20,,A,A,A,A
-31,カーツ,卡茨,Kurtz,21,,A,A,A,A
-32,アイシャ,艾夏,Aisha,22,,A,A,A,A
-33,ヴァル＝ア,瓦尔＝阿,Val-A,23,,A,A,A,A
-34,アヴィ＝ルー,阿维＝露,Avie-Lu,24,,A,A,A,A
-35,ジェイ＝レン,杰伊＝伦,J-Ren,25,,A,A,A,A
-36,アムロ,阿姆罗,Amuro,26,,A,A,B,A
-37,エマリー,艾玛丽,Emary,27,,A,B,B,A
-38,カミーユ,卡缪,Kamille,28,,A,A,B,A
-39,クワトロ,克瓦特罗,Quattro,29,,A,A,A,A
-40,コウ,宏,Kou,30,,A,A,B,A
-41,シーブック,西布克,Seabook,31,,A,A,B,A
-42,ジュドー,捷度,Judau,32,,A,A,B,A
-43,シロー,士郎,Shiro,33,,A,A,B,A
-45,ファ,花,Fa,34,,A,A,B,A
-46,ブライト,布莱特,Bright,35,,A,A,C,A
-49,ヘンケン,汉肯,Henken,36,,A,B,B,A
-50,ルー,露,Roux,37,,A,A,B,A
-51,アイナ,爱娜,Aina,38,,A,A,B,A
-52,ガトー,卡多,Gato,39,,A,A,A,A
-53,エマ,艾玛,Emma,40,,B,A,B,A
-54,プル,普露,Ple,41,,A,A,A,A
-55,クェス,葵丝,Quess,42,,A,A,C,A
-56,フォウ,凤,Four,43,,A,A,B,A
-57,プルツー,普露兹,Ple-Two,44,,A,A,A,A
-58,マシュマー,马修玛,Mashymre,45,,A,A,B,A
-59,ロザミア,罗莎米娅,Rosamia,46,,A,A,B,A
-60,アリアス,阿里亚斯,Arius,47,,A,A,B,A
-61,イリア,伊莉亚,Illia,48,,A,A,B,A
-62,オルテガ,奥尔特加,Ortega,49,,B,A,B,A
-63,ガイア,盖亚,Gaia,50,,B,A,B,A
-64,カクリコン,卡克利康,Kacricon,51,,A,A,A,A
-65,キャラ,姬拉,Chara,52,,A,A,B,A
-66,ギュネイ,邱尼,Gyunei,53,,A,A,C,A
-67,グレミー,格雷米,Glemy,54,,A,A,A,A
-68,ゲーツ,盖茨,Gates,55,,A,A,B,A
-69,ジェリド,杰利德,Jerid,56,,A,A,A,A
-70,シャア,夏亚,Char,57,,A,A,A,A
-72,バスク,巴斯克,Bask,58,,A,B,B,A
-73,シロッコ,西罗克,Scirocco,59,,A,A,A,A
-74,ハマーン,哈曼,Haman,60,,A,A,A,A
-75,ブラン,布兰,Buran,61,,A,A,A,B
-77,マウアー,玛雅,Mouar,62,,A,A,B,A
-78,マッシュ,马修,Mash,63,,B,A,B,A
-79,ヤザン,亚赞,Yazan,64,,A,A,A,A
-80,ライラ,莱拉,Lila,65,,A,A,A,A
-81,ラカン,拉坎,Rakan,66,,A,A,A,A
-82,レズン,蕾森,Rezin,67,,A,A,A,A
-86,ヒルデ,希尔妲,Hilde,68,,A,A,A,A
-87,ラシード,拉席德,Rasid,69,,A,A,A,A
-89,カトル,卡特尔,Quatre,70,,A,A,A,A
-91,五飛,五飞,Wufei,71,,A,A,A,A
-92,デュオ,迪奥,Duo,72,,A,A,A,A
-93,トロワ,特洛瓦,Trowa,73,,A,A,A,A
-95,ヒイロ,希罗,Heero,74,,A,A,A,A
-96,ミリアルド,米利亚尔特,Milliardo,75,,A,A,A,A
-97,ノイン,诺茵,Noin,76,,A,A,A,A
-98,レディ,蕾蒂,Lady,77,,A,A,A,A
-99,アレックス,亚历克斯,Alex,78,,A,A,A,A
-100,カーンズ,坎斯,Quinze,79,,A,B,B,A
-101,ゼクス,杰克斯,Zechs,80,,A,A,A,A
-103,トレーズ,特列斯,Treize,81,,A,A,A,A
-104,ドロシー,多萝西,Dorothy,82,,A,A,B,A
-105,ミューラー,穆勒,Mueller,83,,A,A,A,A
-106,ワーカー,沃克,Walker,84,,A,A,A,A
-107,ジュン,纯,Jun,85,,A,A,B,B
-108,鉄也,铁也,Tetsuya,86,,A,A,A,B
-109,ヤヌス侯爵,雅努斯侯爵,Marquis Janus,87,,A,A,A,B
-110,暗黒大将軍,暗黑大将军,Great General of Darkness,88,,A,A,B,B
-111,地獄大元帥,地狱大元帅,Great Marshal of Hell,89,,A,A,B,B
-112,デューク,杜克,Duke,90,,A,A,A,A
-113,マリア,玛丽亚,Maria,91,,A,A,C,A
-114,ひかる,光,Hikaru,92,,A,C,A,A
-115,キリカ,基里卡,Kirika,93,,A,A,A,A
-116,ナイーダ,娜伊达,Naida,94,,A,A,A,A
-117,ガンダル,甘达尔,Gandal,95,,A,A,A,A
-118,ゴーマン,戈曼,Gorman,96,,A,A,A,A
-119,ブラッキー,布拉奇,Blacky,97,,A,A,A,A
-120,ベンケイ,弁庆,Benkei,98,,D,A,A,B
-121,ハヤト,隼人,Hayato,99,,D,A,D,A
-123,ムサシ,武藏,Musashi,100,,D,A,A,B
-124,リョウ,龙马,Ryoma,101,,A,B,D,A
-125,グラー博士,格拉博士,Dr. Gura,102,,A,A,C,B
-126,ブライ大帝,布莱大帝,Emperor Burai,103,,A,A,A,B
-127,牛餓鬼,牛饿鬼,Gyugaki,104,,A,A,B,B
-128,牛剣鬼,牛剑鬼,Gyukenki,105,,A,A,B,B
-129,鉄甲鬼,铁甲鬼,Tekkoki,106,,A,A,A,A
-130,暴竜鬼,暴龙鬼,Boryuki,107,,A,A,B,B
-131,キリー,基利,Killy,108,,-,-,-,-
-132,レミー,蕾米,Remy,109,,-,-,-,-
-133,真吾,真吾,Shingo,110,,A,A,B,B
-134,ナオト,直人,Naoto,111,,-,-,-,-
-136,ミカ,美佳,Mika,112,,-,-,-,-
-137,ケンジ,健治,Kenji,113,,A,A,B,A
-138,タケル,武,Takeru,114,,A,A,A,A
-139,アキラ,辉,Akira,115,,-,-,-,-
-140,ロゼ,罗塞,Roze,116,,A,A,A,A
-141,ズール皇帝,祖鲁皇帝,Emperor Zuul,117,,A,A,A,A
-142,バレン,巴伦,Baren,118,,A,A,A,A
-143,マーグ,玛古,Marg,119,,A,A,A,A
-144,ワール,瓦尔,Wahl,120,,A,A,A,A
-145,豹馬,豹马,Hyoma,121,,A,A,B,B
-146,大作,大作,Daisaku,122,,A,A,C,B
-147,ちずる,千鹤,Chizuru,123,,A,A,A,B
-148,小介,小介,Kosuke,124,,A,A,A,B
-149,十三,十三,Juzo,125,,A,A,B,B
-150,ジャネラ,加涅拉,Janera,126,,A,A,A,B
-151,宇宙太,宇宙太,Uchuta,127,,C,A,B,A
-152,勝平,胜平,Kappei,128,,A,A,C,A
-153,恵子,惠子,Keiko,129,,A,C,A,A
-154,銀鈴,银铃,Ginrei,130,,B,A,B,B
-156,大作,大作,Daisaku,131,,A,A,B,B
-157,Qボス,Q老大,Q Boss,132,,A,A,C,C
-158,イワン,伊万,Ivan,133,,A,A,A,A
-159,レッド,赤假面,Red,134,,A,A,A,A
-161,アルベルト,阿尔伯特,Alberto,135,,A,A,A,A
-165,万丈,万丈,Banjo,136,,A,A,A,A
-166,アラン,阿兰,Alan,137,,A,A,B,A
-168,沙羅,沙罗,Sara,138,,A,A,B,A
-169,亮,亮,Ryo,139,,A,A,B,A
-170,雅人,雅人,Masato,140,,A,A,B,A
-171,忍,忍,Shinobu,141,,A,A,B,A
-173,ギルドローム,吉尔德罗姆,Gildrome,142,,A,A,B,A
-174,シャピロ,夏比罗,Shapiro,143,,A,A,B,A
-175,デスガイヤー,迪斯盖亚,Death Gaia,144,,A,A,B,A
-176,ヘルマット,赫尔马特,Helmut,145,,A,A,B,A
-177,ムゲ帝王,穆格帝王,Emperor Muge,146,,A,A,B,A
-178,ルーナ,露娜,Luna,147,,A,A,B,A
-179,エレ,艾蕾,Elle,148,,A,A,B,B
-180,シーラ,席拉,Ciela,149,,A,A,B,B
-181,ショウ,翔,Show,150,,A,A,B,B
-182,シルキー,希露奇,Silky,151,,-,-,-,-
-183,チャム,恰姆,Chum,152,,-,-,-,-
-184,マーベル,玛蓓儿,Marvel,153,,A,A,B,B
-185,ガラリア,卡拉利亚,Garalia,154,,A,A,B,B
-186,トッド,陶德,Tod,155,,A,A,B,B
-187,アレン,艾伦,Allen,156,,A,A,B,B
-188,ジェリル,洁丽露,Jeril,157,,A,A,B,B
-189,ショット,秀特,Shot,158,,A,A,B,B
-190,ドレイク,德雷克,Drake,159,,A,A,B,B
-191,バーン,巴恩,Bern,160,,A,A,B,B
-192,フェイ,菲,Fei,161,,A,A,B,B
-193,ミュージィ,缪吉,Musy,162,,A,A,B,B
-194,黒騎士,黑骑士,Black Knight,163,,A,A,B,B
-195,ボス,波士,Boss,164,,C,A,C,C
-196,甲児,甲儿,Koji,165,,A,A,B,B
-197,さやか,沙也加,Sayaka,166,,B,A,B,B
-199,エリカ,艾莉卡,Erika,167,,C,A,C,C
-201,エイジ,英二,Eiji,168,,A,A,B,A
-204,シモーヌ,西蒙娜,Simone,169,,A,A,B,A
-205,デビッド,大卫,David,170,,A,A,B,A
-206,ゲイル,盖尔,Gale,171,,A,A,B,A
-207,ジュリア,朱莉娅,Julia,172,,A,A,B,A
-208,ロアン,罗安,Roanne,173,,A,A,B,A
-209,カルラ,卡尔拉,Karla,174,,A,A,B,A
-210,ギウラ,基乌拉,Giura,175,,A,A,B,A
-213,ゲティ,盖蒂,Getty,176,,A,A,B,A
-214,ゴステロ,戈斯特罗,Gosterro,177,,A,A,B,A
-215,ボーン,伯恩,Borne,178,,A,A,B,A
-216,マンジェロ,曼杰罗,Mangelo,179,,A,A,B,A
-217,ル・カイン,鲁·凯恩,Le Cain,180,,A,A,B,A
-218,ゴステロ,戈斯特罗,Gosterro,181,,A,A,B,A
-220,ウッダー,伍德,Wooder,182,,A,B,B,A
-221,パンパ,潘帕,Pampa,183,,A,A,B,A
-222,ワイム,怀姆,Wyme,184,,A,A,B,A
-223,ビアン,比安,Beanne,185,,A,A,B,A
-224,デル,德尔,Dale,186,,A,A,B,A
-225,ダニー,丹尼,Danny,187,,A,A,B,A
-226,デューン,杜恩,Deune,188,,A,A,B,A
-227,ラムサス,拉姆萨斯,Ramsus,189,,A,A,B,A
-228,ダンケル,邓克尔,Dunkel,190,,A,A,B,A
-230,セシリー,塞西莉,Cecily,191,,A,A,B,A
-232,ビーチャ,比查,Beecha,192,,A,A,B,A
-233,イーノ,伊诺,Iino,193,,A,A,B,A
-234,エル,艾露,Elle,194,,A,A,B,A
-235,モンド,蒙多,Mondo,195,,A,A,B,A
-236,アポリー,阿波利,Apolly,196,,A,A,B,A
-237,ロベルト,罗伯托,Roberto,197,,A,A,B,A
-238,ケーラ,凯拉,Kayra,198,,A,B,A,A
-242,ダンゲル,丹格尔,Dungele,199,,A,A,A,B
-243,ワルキメデス,瓦基米德,Warchimedes,200,,A,A,A,B
-245,レディ,蕾蒂,Lady,201,,A,A,A,A
-246,キャラ,姬拉,Chara,202,,A,A,B,A
-248,アレンビー,阿莲比,Allenby,203,,A,A,B,A
-249,カトル,卡特尔,Quatre,204,,A,A,A,A
-250,ハワード,霍华德,Howard,205,,A,B,B,A
-251,フォウ,凤,Four,206,,A,A,B,A
-252,ロザミア,罗莎米娅,Rosamia,207,,A,A,B,A
-253,葉月博士,叶月博士,Dr. Hazuki,208,,A,B,B,A
-258,アルゴ,阿尔戈,Argo,209,,A,A,B,A
-259,サイ・サイシー,蔡赛西,Sai Saici,210,,A,A,B,A
-260,ジョルジュ,乔治,George,211,,A,A,B,A
-261,チボデー,奇波迪,Chibodee,212,,A,A,B,A
-262,アムロ,阿姆罗,Amuro,213,,A,A,B,A
-263,カミーユ,卡缪,Kamille,214,,A,A,B,A
-264,ファ,花,Fa,215,,A,A,B,A
-265,エマ,艾玛,Emma,216,,B,A,B,A
-266,ヒルデ,希尔妲,Hilde,217,,A,A,A,A
-268,トロワ,特洛瓦,Trowa,218,,A,A,A,A
-269,ノイン,诺茵,Noin,219,,A,A,A,A
-270,ドロシー,多萝西,Dorothy,220,,A,A,B,A
-271,甲児,甲儿,Koji,221,,A,A,B,B
-272,ロアン,罗安,Roanne,222,,A,A,B,A
-273,ドモン,多蒙,Domon,1,4 274,A,A,B,A
-274,ドモン,多蒙,Domon,1,4 273,A,A,B,A
-275,アルゴ,阿尔戈,Argo,3,8,A,A,B,A
-276,サイ・サイシー,蔡赛西,Sai Saici,6,11,A,A,B,A
-277,ジョルジュ,乔治,George,7,12,A,A,B,A
-278,チボデー,奇波迪,Chibodee,8,13,A,A,B,A
-279,ドロシー,多萝西,Dorothy,223,,A,A,B,A
-284,クェス,葵丝,Quess,256,,A,A,C,A
-285,ル・カイン,鲁·凯恩,Le Cain,224,,A,A,B,A
-286,ゼクス,杰克斯,Zechs,255,,A,A,A,A
-287,AI,,,225,,A,A,C,A
-288,スペシャルズ,特殊部队,Specials,226,,A,A,C,A
-289,スペシャルズ,特殊部队,Specials,227,,A,A,C,A
-290,マグアナック兵,马格纳克兵,Maganac Soldier,228,,A,A,C,A
-291,バイストンウェル兵,拜斯顿·威尔兵,Byston Well Soldier,229,,A,A,B,B
-292,アクシズ兵,阿克西斯兵,Axis Soldier,230,,A,A,C,A
-293,ネオジオン兵,新吉翁兵,Neo Zeon Soldier,231,,A,A,C,A
-294,ギシン星兵,异震星兵,Gishin Soldier,232,,A,A,B,A
-295,ベガ星兵,贝加星兵,Vega Soldier,233,,A,A,B,A
-296,グラドス兵,格拉多斯兵,Grados Soldier,234,,A,A,C,A
-297,グラドス兵,格拉多斯兵,Grados Soldier,235,,A,A,B,A
-298,ムゲ兵,穆格兵,Muge Soldier,236,,A,A,C,A
-299,ゾンビ兵,僵尸兵,Zombie Soldier,237,,A,A,C,A
-300,ゲリラ,游击队员,Guerrilla,238,,A,A,C,A
-301,ゲリラ,游击队员,Guerrilla,239,,A,A,C,A
-302,ゲリラ,游击队员,Guerrilla,240,,A,A,C,A
-303,ゲリラ,游击队员,Guerrilla,241,,A,A,C,A
-304,ゲリラ,游击队员,Guerrilla,242,,A,A,C,A
-305,スペシャルズ,特殊部队,Specials,243,,A,A,B,A
-306,スペシャルズ,特殊部队,Specials,244,,A,A,B,A
-307,スペシャルズ,特殊部队,Specials,245,,A,A,B,A
-308,スペシャルズ,特殊部队,Specials,246,,A,A,B,A
-309,アクシズ兵,阿克西斯兵,Axis Soldier,247,,A,A,B,A
-310,アクシズ兵,阿克西斯兵,Axis Soldier,248,,A,A,B,A
-311,ネオジオン兵,新吉翁兵,Neo Zeon Soldier,249,,A,A,B,A
-312,ネオジオン兵,新吉翁兵,Neo Zeon Soldier,250,,A,A,B,A
-313,AI,,,251,359,A,A,B,A
-314,プルクローン,普露克隆,Ple Clone,252,,A,A,B,A
-315,ゲリラ,游击队员,Guerrilla,253,,A,A,C,A
-316,ハミルトン,汉密尔顿,Hamilton,254,,A,A,C,A
-359,AI,,,251,313,A,A,B,A
+pilot,name_ja,name_zh,name_en,record,shares_record_with,air,land,sea,space,melee,ranged,evade,hit,reaction,skill,sp,double_move,skills,spirits
+3,シュバルツ,修巴鲁兹,Schwarz,0,,A,A,A,A,142,114,118,108,98,138,50,46,parry:1/1/1/24/39/42/43/46/50,valor:1 alert:4 stealth:7 disrupt:9 spirit:12 encourage:32
+4,ドモン,多蒙,Domon,1,273 274,A,A,B,A,144,116,116,106,94,136,65,45,parry:1/9/24/32/40/53/57,valor:1 alert:2 spirit:10 accel:21 focus:26 love:48
+7,レイン,玲,Rain,2,,A,A,B,A,100,110,102,104,90,120,60,46,shield_defense:1/30/48/52,strike:1 love:9 encourage:18 valor:22 refuel:41 prayer:45
+8,アルゴ,阿尔戈,Argo,3,275,A,A,B,A,134,100,106,98,84,130,60,46,,wall:1 focus:4 valor:10 spirit:18 trust:25 friendship:43
+9,アレンビー,阿莲比,Allenby,4,,A,A,B,A,138,106,114,104,90,130,60,46,potential:1/18/36/54/60 parry:1/5/16/25/42/48,great_guts:1 valor:2 alert:12 strike:32 spirit:34 provoke:40
+10,キラル,基拉尔,Kyral,5,,A,A,B,A,130,108,108,100,82,138,60,48,parry:1/1/13/25/40/43/48,stealth:1 focus:3 alert:8 accel:14 valor:27 encourage:42
+11,サイ・サイシー,蔡赛西,Sai Saici,6,276,A,A,B,A,136,106,114,104,90,134,60,46,parry:1/9/24/33/41/46,focus:1 valor:5 guts:9 alert:13 spirit:24 friendship:44
+12,ジョルジュ,乔治,George,7,277,A,A,B,A,132,110,112,104,90,130,60,46,parry:1/8/22/30/40/48/55/56 shield_defense:1/10/22/30,focus:1 alert:8 valor:12 spirit:25 cover:35 friendship:45
+13,チボデー,奇波迪,Chibodee,8,278,A,A,B,A,136,108,110,102,86,132,60,46,shield_defense:1/12/24/32,valor:1 focus:3 effort:8 spirit:17 great_guts:23 provoke:40
+14,ウォン,黄润发,Wong,9,,A,A,B,A,110,102,108,98,84,110,0,59,parry:1/10/22/30/48/49,
+15,キョウジ,京二,Kyoji,10,,A,A,B,A,140,114,116,100,82,155,0,47,,
+16,シジーマ,施哲马,Sijima,11,,A,A,B,A,124,96,110,100,82,126,0,58,parry:1/9/21/29/37/48,
+17,マーキロット,马基特,Markiroot,12,,A,A,B,A,128,98,106,98,84,130,0,58,,
+18,マスター,东方不败,Master,13,,A,A,A,A,150,118,120,110,100,140,0,43,parry:1/1/1/1/1/19/32/40/48,valor:1 strike:1 alert:1 spirit:1 accel:1 great_guts:1
+24,ローレンス,劳伦斯,Lawrence,14,,-,-,-,-,0,0,0,0,0,0,50,0,,trust:1 accel:4 stealth:8 cover:12 encourage:33 refuel:45
+25,アーク,阿克,Ark,15,,A,A,A,A,128,146,128,116,98,100,80,39,newtype:5/12/21/29/34/45/52 parry:2/10/19/30/36/48,effort:1 focus:3 alert:7 accel:11 valor:13 soul:40
+26,セレイン,塞蕾茵,Selain,16,,A,A,A,A,128,146,128,116,98,100,80,39,newtype:5/12/21/29/34/45/52 parry:2/10/19/30/36/48,alert:1 accel:3 valor:7 focus:11 disrupt:30 soul:40
+27,ブラッド,布拉德,Brad,17,,A,A,A,A,147,128,98,97,97,100,100,49,potential:5/12/21/29/34/45/52,effort:1 alert:3 strike:7 valor:11 spirit:16 soul:40
+28,マナミ,玛娜米,Manami,18,,A,A,A,A,147,128,98,97,97,100,100,49,potential:5/12/21/29/34/45/52 parry:6/12/19/26/34/39/52/60,luck:1 alert:3 strike:7 valor:11 spirit:16 soul:40
+29,エルリッヒ,埃尔利希,Ehrlich,19,,A,A,A,A,128,146,128,116,98,100,80,39,newtype:9/15/26/34/42/49/59 parry:2/17/24/35/47/57,alert:1 focus:4 accel:8 valor:12 love:33 soul:41
+30,リッシュ,利修,Rish,20,,A,A,A,A,128,146,128,116,98,100,80,39,newtype:9/15/26/34/42/49/59 parry:2/17/24/35/47/57,cover:1 great_guts:4 valor:8 alert:12 drain:33 soul:41
+31,カーツ,卡茨,Kurtz,21,,A,A,A,A,147,128,98,97,97,100,100,49,potential:9/15/26/34/42/49/59,valor:1 strike:4 alert:8 great_guts:12 spirit:17 soul:41
+32,アイシャ,艾夏,Aisha,22,,A,A,A,A,147,128,98,97,97,100,80,49,potential:9/15/26/34/42/49/59,provoke:1 accel:4 wall:8 effort:12 disrupt:33 friendship:41
+33,ヴァル＝ア,瓦尔＝阿,Val-A,23,,A,A,A,A,153,155,136,138,118,136,0,43,parry:1/8/13/20/28/36/44/50/60,
+34,アヴィ＝ルー,阿维＝露,Avie-Lu,24,,A,A,A,A,150,158,140,142,122,123,0,43,parry:1/9/14/21/29/37/45/51/61,
+35,ジェイ＝レン,杰伊＝伦,J-Ren,25,,A,A,A,A,158,150,132,134,114,128,0,43,parry:1/9/14/22/29/36/45/50/61,
+36,アムロ,阿姆罗,Amuro,26,,A,A,B,A,123,147,130,117,97,118,60,30,newtype:1/1/1/1/13/22/36/48/59 parry:1/1/1/12/23/29/42/47 shield_defense:1/1/20/30/40/48/56,alert:1 valor:4 mercy:6 focus:9 accel:16 soul:28
+37,エマリー,艾玛丽,Emary,27,,A,B,B,A,90,112,96,92,80,93,50,70,,effort:1 drain:2 wall:8 refuel:25 love:28 cover:33
+38,カミーユ,卡缪,Kamille,28,,A,A,B,A,126,145,129,115,97,116,60,31,newtype:1/1/1/1/17/24/39/51/65 parry:1/1/1/13/29/35/47/58 shield_defense:1/1/22/33/44/52/60,valor:1 guts:4 alert:5 focus:6 awaken:22 soul:29
+39,クワトロ,克瓦特罗,Quattro,29,,A,A,A,A,118,150,129,119,94,127,60,31,newtype:1/1/1/1/18/26/41/53/60 parry:1/1/1/1/20/31/48/50 shield_defense:1/1/1/18/32/49/58,accel:1 valor:3 alert:5 focus:7 awaken:22 soul:30
+40,コウ,宏,Kou,30,,A,A,B,A,127,139,123,104,89,104,60,49,parry:10/18/27/39/46/53/59/66 shield_defense:4/6/16/25/32/44/50/52/53,accel:1 focus:7 valor:10 effort:12 alert:14 soul:42
+41,シーブック,西布克,Seabook,31,,A,A,B,A,117,144,126,110,96,108,60,31,newtype:1/1/1/14/23/35/44/51/62 parry:1/1/1/16/36/45 shield_defense:1/1/19/28/39/48/56/58/60,alert:2 valor:4 mercy:17 trust:21 awaken:25 soul:33
+42,ジュドー,捷度,Judau,32,,A,A,B,A,128,145,122,108,97,107,60,31,newtype:1/1/1/12/20/33/42/58/62 parry:1/1/1/15/24/31/47 shield_defense:1/1/19/28/36/44,great_guts:1 valor:4 alert:6 luck:9 awaken:23 soul:30
+43,シロー,士郎,Shiro,33,,A,A,B,A,129,138,120,102,90,106,60,50,parry:5/10/22/28/39/47/58 shield_defense:8/16/23/31/33/37/40/46/55,effort:2 strike:4 valor:13 alert:19 trust:25 love:33
+45,ファ,花,Fa,34,,A,A,B,A,90,127,105,96,84,82,60,45,newtype:20/32/40/53 shield_defense:13/24/38/49,focus:7 trust:9 alert:11 luck:16 encourage:33 love:37
+46,ブライト,布莱特,Bright,35,,A,A,C,A,100,135,118,110,86,100,50,67,,strike:1 luck:10 guts:18 accel:22 trust:25 love:36
+49,ヘンケン,汉肯,Henken,36,,A,B,B,A,98,120,100,97,82,98,50,68,,scout:1 focus:6 accel:9 valor:13 cover:27 refuel:32
+50,ルー,露,Roux,37,,A,A,B,A,118,135,120,100,87,89,55,43,newtype:4/19/26/37/42/46/52 parry:2/19/34/45 shield_defense:12/24/35/48,scout:1 alert:6 valor:10 luck:12 disrupt:22 soul:38
+51,アイナ,爱娜,Aina,38,,A,A,B,A,95,128,102,104,88,85,55,50,,focus:1 alert:8 valor:13 encourage:31 love:35 revive:45
+52,ガトー,卡多,Gato,39,,A,A,A,A,130,147,127,114,82,120,60,48,parry:1/1/16/27/36/45/54/57 shield_defense:1/1/1/19/32/41/52/54/60,valor:1 provoke:2 alert:4 focus:9 luck:20 soul:45
+53,エマ,艾玛,Emma,40,,B,A,B,A,100,128,110,105,88,96,55,50,parry:17/28/39/42 shield_defense:1/4/12/19/30/37/46/59,effort:1 focus:9 alert:15 valor:17 love:38 encourage:42
+54,プル,普露,Ple,41,,A,A,A,A,100,132,123,115,95,100,55,33,newtype:1/1/1/12/23/33/41/52/65 parry:1/30/42 shield_defense:1,cover:1 focus:3 alert:9 valor:10 luck:19 soul:38
+55,クェス,葵丝,Quess,42,,A,A,C,A,122,138,126,113,95,100,55,31,newtype:1/5/12/20/29/38/40 parry:11/24/38/45/49 shield_defense:19/31,alert:3 valor:9 accel:16 wall:22 awaken:25 cover:30
+56,フォウ,凤,Four,43,,A,A,B,A,118,132,122,114,95,112,55,32,enhanced:1/3/7/16/24/30/42/52 parry:1/10/21/38/46 shield_defense:1/1/1/32/41/49/57,cover:1 alert:2 focus:4 love:21 soul:39 miracle:50
+57,プルツー,普露兹,Ple-Two,44,,A,A,A,A,100,132,123,115,95,100,55,32,enhanced:1/1/1/12/23/33/41/52/65 parry:1/30/42 shield_defense:1,disrupt:1 focus:3 alert:9 valor:10 provoke:19 soul:38
+58,マシュマー,马修玛,Mashymre,45,,A,A,B,A,120,133,124,112,92,112,55,35,enhanced:35/39/42/46/49/52/56/61 parry:1/11/28/37/45/59 shield_defense:1/12/27/32/45/48/52,great_guts:1 valor:2 love:3 alert:10 drain:19 soul:41
+59,ロザミア,罗莎米娅,Rosamia,46,,A,A,B,A,108,132,120,108,92,102,55,33,enhanced:1/3/7/16/25/31/43/55 parry:1/4/11/17/34 shield_defense:1/1/1/33/43/51/60,focus:1 alert:4 wall:26 disrupt:31 soul:39 encourage:48
+60,アリアス,阿里亚斯,Arius,47,,A,A,B,A,119,132,122,108,87,112,0,55,parry:2/21/31/48/56 shield_defense:1/12/26/32/40/48,
+61,イリア,伊莉亚,Illia,48,,A,A,B,A,110,134,123,104,90,103,0,41,newtype:1/12/32/36/42/52/56 parry:12/24/36/44/49/54/62 shield_defense:1/19/34,
+62,オルテガ,奥尔特加,Ortega,49,,B,A,B,A,126,138,119,114,88,124,0,47,parry:14/22/40/60 shield_defense:7/18/31/50/60,
+63,ガイア,盖亚,Gaia,50,,B,A,B,A,128,140,121,116,88,126,0,47,parry:14/22/40/58 shield_defense:7/18/31/50/60,
+64,カクリコン,卡克利康,Kacricon,51,,A,A,A,A,116,134,122,102,87,112,0,59,parry:1/8/16/35/55 shield_defense:1/13/24/37/45/54/64,
+65,キャラ,姬拉,Chara,52,,A,A,B,A,118,132,124,111,92,110,55,35,enhanced:36/40/43/47/50/53/57/62 parry:1/5/12/18/35 shield_defense:1/1/1/34/44/52/61,focus:1 guts:3 alert:11 luck:24 provoke:32 soul:41
+66,ギュネイ,邱尼,Gyunei,53,,A,A,C,A,110,136,122,103,94,100,0,34,enhanced:1/4/11/19/28/37/49 parry:1/10/23/37/44/54 shield_defense:1/10/18/30/39,
+67,グレミー,格雷米,Glemy,54,,A,A,A,A,120,142,124,106,91,100,0,33,newtype:1/1/1/12/16/27/38/40 parry:1/1/1/36/44/57 shield_defense:1/1/10/18/39,
+68,ゲーツ,盖茨,Gates,55,,A,A,B,A,109,134,120,101,92,99,0,35,enhanced:1/1/1/1/26/30/42/57 parry:1/1/1/40/60 shield_defense:1/1/1/31/40,
+69,ジェリド,杰利德,Jerid,56,,A,A,A,A,118,136,126,106,94,110,0,39,parry:9/14/20/34/43/56/64 shield_defense:1/3/10/18/26/33/41,
+70,シャア,夏亚,Char,57,,A,A,A,A,118,150,129,119,94,127,0,31,newtype:1/1/1/1/18/26/41/53/60 parry:1/1/1/1/20/31/48/50 shield_defense:1/1/1/18/32/49/58,
+72,バスク,巴斯克,Bask,58,,A,B,B,A,120,120,100,95,95,100,0,61,potential:26/34/42,
+73,シロッコ,西罗克,Scirocco,59,,A,A,A,A,128,145,126,110,95,114,0,31,newtype:1/1/1/1/1/25/37/49/60 parry:1/1/1/1/23/30/41/55/65 shield_defense:1/1/1/1/15,
+74,ハマーン,哈曼,Haman,60,,A,A,A,A,120,148,129,112,97,113,55,31,newtype:1/1/1/1/15/22/39/49/52 parry:1/1/1/1/22/34/52/67/70 shield_defense:1/1/1/19/37/55/60,alert:4 focus:7 valor:7 wall:19 awaken:20 soul:32
+75,ブラン,布兰,Buran,61,,A,A,A,B,119,129,126,113,88,113,0,55,parry:1/1/1/31/50,
+77,マウアー,玛雅,Mouar,62,,A,A,B,A,112,128,122,128,89,100,0,41,parry:1/1/20/41/50/60 shield_defense:1/1/8/17/33/39/49,
+78,マッシュ,马修,Mash,63,,B,A,B,A,124,136,117,112,88,122,0,47,parry:14/22/40/50,
+79,ヤザン,亚赞,Yazan,64,,A,A,A,A,120,143,128,112,87,115,0,41,parry:1/6/16/24/39/47/52/57/60 shield_defense:5/12/19,
+80,ライラ,莱拉,Lila,65,,A,A,A,A,119,135,128,112,88,112,0,47,parry:1/1/17/39/47/53 shield_defense:1/1/5/15/30/37/46,
+81,ラカン,拉坎,Rakan,66,,A,A,A,A,123,143,128,112,87,117,0,51,parry:1/1/1/30/40/45/52/58 shield_defense:1/1/20/36/42/52,
+82,レズン,蕾森,Rezin,67,,A,A,A,A,118,130,126,110,86,100,0,47,parry:1/1/20/40/49/54 shield_defense:1/1/7/16/32/38/48,
+86,ヒルデ,希尔妲,Hilde,68,,A,A,A,A,110,118,98,94,92,99,50,45,parry:3/14/26/31/44,scout:1 focus:8 effort:14 valor:23 trust:33 encourage:42
+87,ラシード,拉席德,Rasid,69,,A,A,A,A,120,122,108,108,87,103,50,48,parry:5/9/16/22/33/46 shield_defense:5/8/19/21/27/33,focus:1 trust:9 guts:13 wall:25 cover:29 disrupt:36
+89,カトル,卡特尔,Quatre,70,,A,A,A,A,136,115,120,110,95,105,55,40,parry:1/1/1/16/30/42 shield_defense:1/1/15/23/29/31/37/45,luck:1 self_destruct:1 valor:1 alert:4 trust:27 soul:40
+91,五飛,五飞,Wufei,71,,A,A,A,A,140,115,118,112,95,107,55,40,parry:1/1/1/19/36/45/48/54/59 shield_defense:1/1/15/23/39,valor:1 provoke:2 spirit:3 alert:4 wall:18 soul:41
+92,デュオ,迪奥,Duo,72,,A,A,A,A,138,112,115,110,95,105,55,40,parry:1/1/1/17/31/36/45/51/59 shield_defense:1/1/16/25/38,self_destruct:1 valor:1 stealth:2 alert:4 friendship:27 soul:39
+93,トロワ,特洛瓦,Trowa,73,,A,A,A,A,115,139,110,113,95,105,55,40,parry:1/1/1/15/31/41/47/60 shield_defense:1/1/16/24/38/42/44,self_destruct:1 valor:1 alert:4 cover:18 disrupt:24 soul:40
+95,ヒイロ,希罗,Heero,74,,A,A,A,A,129,138,120,113,95,108,60,39,parry:1/1/1/15/29/37 shield_defense:1/1/18/20/26/30/32/39,alert:1 self_destruct:1 valor:4 focus:12 accel:23 soul:35
+96,ミリアルド,米利亚尔特,Milliardo,75,,A,A,A,A,129,145,128,118,94,126,55,39,parry:1/10/18/24/35/44/55 shield_defense:1/15/24/29/34/42/54,accel:1 strike:2 alert:6 valor:9 luck:11 friendship:17
+97,ノイン,诺茵,Noin,76,,A,A,A,A,120,130,110,100,95,105,50,42,parry:1/12/29/42,mercy:1 cover:7 trust:12 alert:15 valor:18 love:20
+98,レディ,蕾蒂,Lady,77,,A,A,A,A,112,118,100,98,94,102,50,44,parry:1/15/31/45,trust:1 spirit:6 provoke:7 drain:8 soul:16 self_destruct:20
+99,アレックス,亚历克斯,Alex,78,,A,A,A,A,125,120,116,105,87,98,0,43,parry:1/6/11/28/41,
+100,カーンズ,坎斯,Quinze,79,,A,B,B,A,90,110,102,110,82,90,50,70,,
+101,ゼクス,杰克斯,Zechs,80,,A,A,A,A,129,145,128,118,94,126,55,39,parry:1/10/18/24/35/44/55 shield_defense:1/15/24/29/34/42/54,accel:1 strike:2 alert:6 valor:9 luck:11 friendship:17
+103,トレーズ,特列斯,Treize,81,,A,A,A,A,140,139,122,116,95,122,55,43,parry:1/10/18/24/35/44/55 shield_defense:1/15/24/29/34/42/54,trust:1 strike:3 guts:5 alert:10 valor:12 awaken:16
+104,ドロシー,多萝西,Dorothy,82,,A,A,B,A,98,122,112,110,90,98,50,50,parry:1/14/32/44,guts:1 provoke:1 accel:14 focus:25 spirit:28 reactivate:33
+105,ミューラー,穆勒,Mueller,83,,A,A,A,A,126,119,115,106,87,97,0,43,,
+106,ワーカー,沃克,Walker,84,,A,A,A,A,126,121,117,106,87,102,0,43,parry:1/7/12/29/42,
+107,ジュン,纯,Jun,85,,A,A,B,B,127,114,94,93,85,88,60,57,,effort:1 guts:2 valor:9 strike:14 alert:19 encourage:37
+108,鉄也,铁也,Tetsuya,86,,A,A,A,B,139,113,93,96,85,100,60,56,potential:1/1/1/18/37/55/64 parry:23/41/53,great_guts:1 wall:2 effort:3 valor:5 strike:12 accel:26
+109,ヤヌス侯爵,雅努斯侯爵,Marquis Janus,87,,A,A,A,B,138,130,90,93,83,88,0,62,,
+110,暗黒大将軍,暗黑大将军,Great General of Darkness,88,,A,A,B,B,140,132,98,98,85,94,0,63,parry:1/37/48,
+111,地獄大元帥,地狱大元帅,Great Marshal of Hell,89,,A,A,B,B,139,131,96,96,84,92,0,60,,
+112,デューク,杜克,Duke,90,,A,A,A,A,140,116,97,97,87,98,60,55,potential:1/1/1/14/28/42/56/62 parry:22/40/52,wall:1 focus:3 strike:11 friendship:18 valor:21 love:38
+113,マリア,玛丽亚,Maria,91,,A,A,C,A,128,114,95,94,85,89,55,53,esp:1/1/15/26/34/46/57,guts:1 alert:7 luck:13 valor:19 strike:24 refuel:40
+114,ひかる,光,Hikaru,92,,A,C,A,A,123,115,92,92,85,82,55,56,,alert:1 strike:8 effort:14 encourage:23 reactivate:38 revive:44
+115,キリカ,基里卡,Kirika,93,,A,A,A,A,120,116,94,95,84,82,50,55,,scout:1 alert:14 cover:19 stealth:25 friendship:34 prayer:41
+116,ナイーダ,娜伊达,Naida,94,,A,A,A,A,119,112,93,90,84,81,50,56,,self_destruct:1 accel:4 alert:12 trust:28 encourage:38 love:40
+117,ガンダル,甘达尔,Gandal,95,,A,A,A,A,141,130,95,94,84,92,0,60,,
+118,ゴーマン,戈曼,Gorman,96,,A,A,A,A,145,134,99,99,86,95,0,63,,
+119,ブラッキー,布拉奇,Blacky,97,,A,A,A,A,139,127,88,92,82,89,0,64,,
+120,ベンケイ,弁庆,Benkei,98,,D,A,A,B,138,113,82,90,80,90,45,60,potential:1/1/14/28/42/58/60/64,great_guts:1 spirit:2 effort:6 wall:18 friendship:22 disrupt:29
+121,ハヤト,隼人,Hayato,99,,D,A,D,A,133,118,98,98,87,101,40,48,,alert:1 accel:3 luck:9 stealth:11 provoke:28 love:45
+123,ムサシ,武藏,Musashi,100,,D,A,A,B,139,114,83,92,83,95,45,60,potential:1/1/1/14/28/42/54/69,wall:1 great_guts:1 valor:5 spirit:7 strike:10 accel:13
+124,リョウ,龙马,Ryoma,101,,A,B,D,A,140,115,90,96,85,99,50,55,potential:1/1/1/12/26/40/58/62,guts:1 effort:4 valor:7 strike:10 friendship:31 awaken:39
+125,グラー博士,格拉博士,Dr. Gura,102,,A,A,C,B,121,113,92,90,84,93,0,70,,
+126,ブライ大帝,布莱大帝,Emperor Burai,103,,A,A,A,B,133,125,96,97,87,100,0,62,,
+127,牛餓鬼,牛饿鬼,Gyugaki,104,,A,A,B,B,130,120,97,96,86,95,0,67,,
+128,牛剣鬼,牛剑鬼,Gyukenki,105,,A,A,B,B,138,124,96,95,85,99,0,66,parry:3/39/40,
+129,鉄甲鬼,铁甲鬼,Tekkoki,106,,A,A,A,A,140,118,98,98,87,101,0,64,potential:1/1/19/37/45/53,
+130,暴竜鬼,暴龙鬼,Boryuki,107,,A,A,B,B,139,115,94,93,84,97,0,66,,
+131,キリー,基利,Killy,108,,-,-,-,-,0,0,0,0,0,0,35,0,,accel:4 spirit:10 provoke:12 trust:19 stealth:26 disrupt:31
+132,レミー,蕾米,Remy,109,,-,-,-,-,0,0,0,0,0,0,35,0,,wall:1 luck:14 focus:15 alert:16 love:19 drain:21
+133,真吾,真吾,Shingo,110,,A,A,B,B,142,130,98,96,87,99,50,55,parry:16/28/39,guts:1 strike:7 valor:9 effort:15 friendship:19 focus:20
+134,ナオト,直人,Naoto,111,,-,-,-,-,0,0,0,0,0,0,30,0,,valor:1 great_guts:8 provoke:15 focus:19 strike:24 disrupt:30
+136,ミカ,美佳,Mika,112,,-,-,-,-,0,0,0,0,0,0,35,0,,scout:1 trust:7 cover:14 reactivate:28 love:34 refuel:41
+137,ケンジ,健治,Kenji,113,,A,A,B,A,112,126,92,96,83,92,40,48,,alert:1 strike:5 effort:11 wall:19 encourage:25 soul:39
+138,タケル,武,Takeru,114,,A,A,A,A,148,126,99,98,90,110,55,52,esp:1/6/10/14/25/33/45/56/61 parry:12/22/32/42/52,strike:1 alert:4 valor:7 spirit:16 love:34 miracle:61
+139,アキラ,辉,Akira,115,,-,-,-,-,0,0,0,0,0,0,30,0,,stealth:1 spirit:9 luck:18 guts:22 friendship:29 drain:33
+140,ロゼ,罗塞,Roze,116,,A,A,A,A,126,110,94,92,87,90,50,53,esp:1/1/15/26/34/46/57,alert:1 strike:7 encourage:18 trust:27 awaken:34 love:39
+141,ズール皇帝,祖鲁皇帝,Emperor Zuul,117,,A,A,A,A,152,142,101,102,98,118,0,60,esp:1/1/1/1/29/37/49/50,
+142,バレン,巴伦,Baren,118,,A,A,A,A,130,114,94,90,86,89,0,68,esp:1/1/18/29/38/49,
+143,マーグ,玛古,Marg,119,,A,A,A,A,140,138,98,99,90,110,0,55,esp:1/1/1/25/33/45/56/59,
+144,ワール,瓦尔,Wahl,120,,A,A,A,A,120,112,88,90,86,87,0,68,esp:1/1/21/32/41,
+145,豹馬,豹马,Hyoma,121,,A,A,B,B,142,119,95,97,86,98,45,55,potential:1/1/1/17/35/43/54 parry:28/34/46,great_guts:1 provoke:9 valor:12 strike:14 friendship:27 awaken:30
+146,大作,大作,Daisaku,122,,A,A,C,B,136,99,86,84,86,95,35,58,potential:1/1/27/33/43,great_guts:1 effort:6 spirit:9 wall:15 valor:17 strike:19
+147,ちずる,千鹤,Chizuru,123,,A,A,A,B,94,116,90,92,86,88,40,53,,alert:9 trust:18 luck:19 mercy:23 love:37 refuel:49
+148,小介,小介,Kosuke,124,,A,A,A,B,88,114,92,90,86,89,35,53,,scout:1 focus:4 effort:8 guts:12 trust:21 disrupt:31
+149,十三,十三,Juzo,125,,A,A,B,B,102,122,94,104,86,93,35,55,,strike:1 alert:7 focus:15 accel:16 provoke:19 mercy:24
+150,ジャネラ,加涅拉,Janera,126,,A,A,A,B,143,136,96,99,84,92,0,63,,
+151,宇宙太,宇宙太,Uchuta,127,,C,A,B,A,128,115,93,96,87,96,40,55,,strike:1 alert:6 accel:13 mercy:19 disrupt:23 friendship:34
+152,勝平,胜平,Kappei,128,,A,A,C,A,145,123,99,99,87,103,55,53,potential:1/1/1/11/23/35/47/58/60,great_guts:1 valor:5 spirit:11 wall:16 provoke:25 awaken:36
+153,恵子,惠子,Keiko,129,,A,C,A,A,118,115,96,92,87,92,40,55,,scout:1 trust:8 cover:18 reactivate:31 love:38 revive:41
+154,銀鈴,银铃,Ginrei,130,,B,A,B,B,130,122,99,97,88,96,55,50,esp:1/1/12/21/32/41/54,alert:1 strike:7 spirit:14 disrupt:27 soul:36 prayer:42
+156,大作,大作,Daisaku,131,,A,A,B,B,138,118,96,96,87,95,35,58,potential:10/21/32/43/48/54/56,effort:1 wall:8 strike:13 alert:21 spirit:27 valor:34
+157,Qボス,Q老大,Q Boss,132,,A,A,C,C,138,114,90,94,84,98,0,69,,
+158,イワン,伊万,Ivan,133,,A,A,A,A,142,116,92,92,86,104,0,54,,
+159,レッド,赤假面,Red,134,,A,A,A,A,100,100,100,100,100,100,0,49,,
+161,アルベルト,阿尔伯特,Alberto,135,,A,A,A,A,150,118,120,110,100,140,0,43,,
+165,万丈,万丈,Banjo,136,,A,A,A,A,146,122,100,100,88,120,75,54,potential:1/1/1/1/17/35/42/51 parry:1/1/1/1/32/47/59/60 shield_defense:1/1/1/1/29/35/49/55/67,strike:1 great_guts:1 spirit:1 alert:1 valor:1 soul:45
+166,アラン,阿兰,Alan,137,,A,A,B,A,134,135,102,94,84,100,50,48,potential:1/1/19/39/48/58,guts:1 accel:6 focus:11 great_guts:17 strike:22 spirit:31
+168,沙羅,沙罗,Sara,138,,A,A,B,A,129,129,98,90,85,86,40,54,,spirit:1 valor:1 strike:19 wall:21 love:32 encourage:37
+169,亮,亮,Ryo,139,,A,A,B,A,139,127,96,89,85,97,40,53,,spirit:1 valor:1 mercy:7 effort:10 trust:15 awaken:26
+170,雅人,雅人,Masato,140,,A,A,B,A,124,128,97,88,85,84,40,54,,love:1 spirit:1 valor:1 scout:12 luck:27 stealth:35
+171,忍,忍,Shinobu,141,,A,A,B,A,135,134,104,92,85,90,40,54,potential:1/1/15/29/36/40/55 parry:9/16/28,great_guts:1 spirit:1 valor:1 alert:13 accel:20 provoke:22
+173,ギルドローム,吉尔德罗姆,Gildrome,142,,A,A,B,A,128,132,90,95,87,91,0,57,,
+174,シャピロ,夏比罗,Shapiro,143,,A,A,B,A,134,143,98,97,93,108,0,53,parry:1/8/19/29/42/47/56/61/66 shield_defense:1/12/27/39/45/54/59/60,
+175,デスガイヤー,迪斯盖亚,Death Gaia,144,,A,A,B,A,146,130,91,93,87,96,0,55,,
+176,ヘルマット,赫尔马特,Helmut,145,,A,A,B,A,119,137,96,94,87,90,0,59,,
+177,ムゲ帝王,穆格帝王,Emperor Muge,146,,A,A,B,A,145,148,100,98,95,100,0,54,,
+178,ルーナ,露娜,Luna,147,,A,A,B,A,110,134,97,95,89,88,0,56,,
+179,エレ,艾蕾,Elle,148,,A,A,B,B,102,123,112,98,85,96,50,54,,trust:12 strike:26 love:28 encourage:31 cover:32 reactivate:40
+180,シーラ,席拉,Ciela,149,,A,A,B,B,99,125,114,101,85,95,50,52,,alert:2 focus:4 trust:21 awaken:25 refuel:33 prayer:38
+181,ショウ,翔,Show,150,,A,A,B,B,130,125,128,100,105,120,60,47,holy_warrior:1/1/1/14/25/33/41/54/59 parry:1/16/27/38/46/54/59/64,accel:1 alert:5 valor:7 focus:9 spirit:30 soul:39
+182,シルキー,希露奇,Silky,151,,-,-,-,-,0,0,0,0,0,0,30,0,,disrupt:1 stealth:12 luck:18 trust:22 spirit:32 awaken:42
+183,チャム,恰姆,Chum,152,,-,-,-,-,0,0,0,0,0,0,30,0,,luck:1 trust:4 encourage:18 stealth:32 spirit:34 miracle:56
+184,マーベル,玛蓓儿,Marvel,153,,A,A,B,B,127,122,122,101,86,100,55,48,holy_warrior:1/12/24/36/43/54/65 parry:1/22/33/40/43/57/63,alert:2 effort:8 valor:12 love:24 encourage:31 spirit:36
+185,ガラリア,卡拉利亚,Garalia,154,,A,A,B,B,128,124,126,90,90,105,50,49,holy_warrior:7/17/29/38/43/54/61 parry:1/13/23/27/36/41/49/54,guts:1 accel:3 alert:7 valor:12 soul:33 spirit:36
+186,トッド,陶德,Tod,155,,A,A,B,B,129,123,125,89,89,107,50,48,holy_warrior:1/11/23/35/41/52/60 parry:1/11/20/24/34/39/47/58,alert:1 effort:2 valor:4 guts:9 spirit:34 soul:35
+187,アレン,艾伦,Allen,156,,A,A,B,B,136,118,132,109,88,108,0,53,holy_warrior:1/1/1/16/25/38/44 parry:1/18/31/42/54/62/69,
+188,ジェリル,洁丽露,Jeril,157,,A,A,B,B,137,114,122,98,89,102,0,53,holy_warrior:1/1/1/17/26/39/47 parry:1/19/32/43/55/60,
+189,ショット,秀特,Shot,158,,A,A,B,B,131,128,111,100,85,105,0,59,,
+190,ドレイク,德雷克,Drake,159,,A,A,B,B,128,125,110,99,84,100,0,59,,
+191,バーン,巴恩,Bern,160,,A,A,B,B,137,127,130,108,89,110,0,51,holy_warrior:6/16/28/37/42/53/60 parry:1/13/22/29/34/39/46/50/55,
+192,フェイ,菲,Fei,161,,A,A,B,B,134,112,119,104,87,99,0,53,holy_warrior:1/1/1/18/27/32/48 parry:1/18/21/32/44/52/60,
+193,ミュージィ,缪吉,Musy,162,,A,A,B,B,135,127,114,105,89,100,0,51,holy_warrior:1/1/1/16/29/45/50 parry:1/16/23/35/46/56/60,
+194,黒騎士,黑骑士,Black Knight,163,,A,A,B,B,137,127,130,108,89,110,0,51,holy_warrior:6/16/28/37/42/53/60 parry:1/13/22/29/34/39/46/50/55,
+195,ボス,波士,Boss,164,,C,A,C,C,135,90,82,71,78,70,55,71,potential:15/29/45/58/69,great_guts:1 self_destruct:1 drain:5 friendship:14 valor:17 provoke:20
+196,甲児,甲儿,Koji,165,,A,A,B,B,138,115,95,95,86,97,70,56,potential:1/1/1/10/21/30/41/52/61 parry:30/38,great_guts:1 wall:2 valor:6 strike:13 accel:27 awaken:52
+197,さやか,沙也加,Sayaka,166,,B,A,B,B,125,113,90,90,85,82,60,54,,luck:1 trust:6 alert:12 strike:15 valor:23 encourage:34
+199,エリカ,艾莉卡,Erika,167,,C,A,C,C,110,98,89,88,83,79,50,57,,cover:1 guts:8 strike:9 spirit:17 disrupt:28 reactivate:30
+201,エイジ,英二,Eiji,168,,A,A,B,A,127,147,126,115,94,114,60,46,,accel:1 alert:3 strike:5 valor:7 awaken:28 soul:33
+204,シモーヌ,西蒙娜,Simone,169,,A,A,B,A,110,112,118,109,88,94,50,49,,scout:1 guts:3 focus:6 accel:9 trust:26 encourage:32
+205,デビッド,大卫,David,170,,A,A,B,A,128,128,116,105,90,106,50,48,,valor:1 focus:7 guts:12 accel:18 spirit:24 friendship:35
+206,ゲイル,盖尔,Gale,171,,A,A,B,A,129,148,125,116,92,116,55,45,,guts:1 trust:1 strike:9 alert:18 awaken:29 soul:34
+207,ジュリア,朱莉娅,Julia,172,,A,A,B,A,108,139,124,113,89,96,50,48,,trust:1 luck:1 prayer:1 encourage:27 revive:42 miracle:69
+208,ロアン,罗安,Roanne,173,,A,A,B,A,114,145,117,106,90,98,50,48,,scout:1 focus:6 stealth:13 alert:21 disrupt:35 refuel:41
+209,カルラ,卡尔拉,Karla,174,,A,A,B,A,120,137,120,110,90,102,0,48,,
+210,ギウラ,基乌拉,Giura,175,,A,A,B,A,118,136,116,107,89,99,0,49,,
+213,ゲティ,盖蒂,Getty,176,,A,A,B,A,121,140,123,108,93,106,0,47,,
+214,ゴステロ,戈斯特罗,Gosterro,177,,A,A,B,A,120,139,118,112,96,112,0,46,,
+215,ボーン,伯恩,Borne,178,,A,A,B,A,122,141,120,110,94,108,0,47,,
+216,マンジェロ,曼杰罗,Mangelo,179,,A,A,B,A,124,141,126,114,95,110,0,47,,
+217,ル・カイン,鲁·凯恩,Le Cain,180,,A,A,B,A,129,148,130,119,99,119,0,44,,
+218,ゴステロ,戈斯特罗,Gosterro,181,,A,A,B,A,128,147,128,117,98,116,0,46,,
+220,ウッダー,伍德,Wooder,182,,A,B,B,A,110,118,98,98,90,110,0,61,parry:12/42/58 shield_defense:1/7/26/38/46,
+221,パンパ,潘帕,Pampa,183,,A,A,B,A,111,125,116,107,86,106,0,51,parry:1/18/43/48/57,
+222,ワイム,怀姆,Wyme,184,,A,A,B,A,110,126,115,107,86,107,0,51,parry:1/20/42/49/55 shield_defense:1/7/17/32/40/49,
+223,ビアン,比安,Beanne,185,,A,A,B,A,112,124,114,106,86,105,0,51,parry:1/19/41/50/56 shield_defense:1/8/18/33/39/48,
+224,デル,德尔,Dale,186,,A,A,B,A,115,129,120,109,86,110,0,50,parry:1/1/18/43/48/57 shield_defense:1/1/6/19/31/41/47,
+225,ダニー,丹尼,Danny,187,,A,A,B,A,113,127,118,109,86,108,0,50,parry:1/1/20/42/49/55 shield_defense:1/1/7/17/32/40/49,
+226,デューン,杜恩,Deune,188,,A,A,B,A,112,126,117,108,86,107,0,50,parry:1/1/19/41/50/56 shield_defense:1/1/8/18/33/39/48,
+227,ラムサス,拉姆萨斯,Ramsus,189,,A,A,B,A,114,127,119,110,86,109,0,41,parry:1/1/19/42/49/56 shield_defense:1/1/7/18/32/40/48,
+228,ダンケル,邓克尔,Dunkel,190,,A,A,B,A,114,128,119,110,86,109,0,41,parry:1/1/20/41/50/55 shield_defense:1/1/8/17/33/39/49,
+230,セシリー,塞西莉,Cecily,191,,A,A,B,A,107,132,108,111,92,96,55,32,newtype:1/1/1/10/27/39/49/54 parry:1/4/18/35/48/59 shield_defense:6/12/26/38/46,alert:2 mercy:7 trust:20 soul:33 encourage:42 prayer:50
+232,ビーチャ,比查,Beecha,192,,A,A,B,A,110,118,117,98,86,86,50,48,newtype:1/20/31/35/41/43 parry:13/27/48 shield_defense:1/19/37/43/49/52,alert:9 valor:10 provoke:17 friendship:27 love:33 miracle:38
+233,イーノ,伊诺,Iino,193,,A,A,B,A,91,108,108,92,84,80,50,50,newtype:12/29/34/45 parry:25 shield_defense:7/32/35/38/46/59,trust:9 focus:14 friendship:16 encourage:24 stealth:30 refuel:42
+234,エル,艾露,Elle,194,,A,A,B,A,96,112,116,96,84,82,50,48,newtype:1/17/32/37/41/45/56 parry:6/27/44 shield_defense:10/21/31/35/39,scout:1 alert:9 trust:12 valor:18 luck:29 encourage:30
+235,モンド,蒙多,Mondo,195,,A,A,B,A,94,110,112,94,84,85,50,50,newtype:4/23/33/42/45 parry:1/8/19/22/37/40/52/61,scout:1 accel:4 alert:7 valor:10 disrupt:25 love:32
+236,アポリー,阿波利,Apolly,196,,A,A,B,A,112,126,108,117,86,100,50,53,parry:1/10/20/30/42/49/55 shield_defense:1/7/11/17/26/32/40/49,guts:1 focus:4 accel:8 strike:13 alert:18 trust:22
+237,ロベルト,罗伯托,Roberto,197,,A,A,B,A,110,125,106,113,85,98,50,53,parry:1/19/24/32/41/50/56 shield_defense:1/8/12/18/25/33/39/48,effort:1 guts:5 valor:9 focus:15 accel:17 spirit:20
+238,ケーラ,凯拉,Kayra,198,,A,B,A,A,99,127,110,106,88,92,50,50,parry:1/6/9/18/22/38/48/50 shield_defense:5/8/16/24/28/33/41/52,valor:8 alert:10 trust:11 spirit:15 accel:20 effort:21
+242,ダンゲル,丹格尔,Dungele,199,,A,A,A,B,147,127,88,89,82,91,0,65,,
+243,ワルキメデス,瓦基米德,Warchimedes,200,,A,A,A,B,121,139,92,91,82,90,0,65,,
+245,レディ,蕾蒂,Lady,201,,A,A,A,A,112,118,100,98,94,102,0,55,parry:1/15/31/45,love:1 trust:1 guts:1 awaken:25 focus:27 revive:31
+246,キャラ,姬拉,Chara,202,,A,A,B,A,118,132,124,111,92,110,55,35,enhanced:36/40/43/47/50/53/57/62 parry:1/5/12/18/35 shield_defense:1/1/1/34/44/52/61,focus:1 guts:3 alert:11 luck:24 provoke:32 soul:41
+248,アレンビー,阿莲比,Allenby,203,,A,A,B,A,138,106,114,104,90,130,60,46,potential:1/18/36/54/60 parry:1/5/16/25/42/48,great_guts:1 valor:2 alert:12 strike:32 spirit:34 provoke:40
+249,カトル,卡特尔,Quatre,204,,A,A,A,A,136,115,120,110,95,105,55,40,parry:1/1/1/16/30/42 shield_defense:1/1/15/23/29/31/37/45,luck:1 self_destruct:1 valor:1 alert:4 trust:27 soul:40
+250,ハワード,霍华德,Howard,205,,A,B,B,A,92,100,96,99,82,98,50,72,,guts:4 accel:7 wall:16 trust:21 drain:32 refuel:44
+251,フォウ,凤,Four,206,,A,A,B,A,118,132,122,114,95,112,55,32,enhanced:1/3/7/16/24/30/42/52 parry:1/10/21/38/46 shield_defense:1/1/1/32/41/49/57,cover:1 alert:2 focus:4 love:21 soul:39 miracle:71
+252,ロザミア,罗莎米娅,Rosamia,207,,A,A,B,A,108,132,120,108,92,102,55,33,enhanced:1/3/7/16/25/31/43/55 parry:1/4/11/17/34 shield_defense:1/1/1/33/43/51/60,focus:1 alert:4 wall:26 disrupt:31 soul:39 encourage:48
+253,葉月博士,叶月博士,Dr. Hazuki,208,,A,B,B,A,90,105,98,102,82,96,50,70,,scout:1 accel:14 luck:18 trust:22 encourage:36 refuel:42
+258,アルゴ,阿尔戈,Argo,209,,A,A,B,A,134,100,106,98,84,130,60,46,,wall:1 focus:4 valor:10 spirit:18 trust:25 friendship:43
+259,サイ・サイシー,蔡赛西,Sai Saici,210,,A,A,B,A,136,106,114,104,90,134,60,46,parry:1/9/24/33/41/46,focus:1 valor:5 guts:9 alert:13 spirit:24 friendship:44
+260,ジョルジュ,乔治,George,211,,A,A,B,A,132,110,112,104,90,130,60,46,parry:1/8/22/30/40/48/55/56,focus:1 alert:8 valor:12 spirit:25 cover:35 friendship:45
+261,チボデー,奇波迪,Chibodee,212,,A,A,B,A,136,108,110,102,86,132,60,46,shield_defense:1/12/24/32,valor:1 focus:3 effort:8 spirit:17 great_guts:23 provoke:40
+262,アムロ,阿姆罗,Amuro,213,,A,A,B,A,123,147,130,117,97,118,60,30,newtype:1/1/1/1/13/22/36/48/59 parry:1/1/1/12/23/29/42/47 shield_defense:1/1/20/30/40/48/56,alert:1 valor:4 mercy:6 focus:9 accel:16 soul:28
+263,カミーユ,卡缪,Kamille,214,,A,A,B,A,126,145,129,115,97,116,60,31,newtype:1/1/1/1/17/24/39/51/65 parry:1/1/1/13/29/35/47/58 shield_defense:1/1/22/33/44/52/60,valor:1 guts:4 alert:5 focus:6 awaken:22 soul:29
+264,ファ,花,Fa,215,,A,A,B,A,90,127,105,96,84,82,60,45,newtype:20/32/40/53 shield_defense:13/24/38/49,focus:7 trust:9 alert:11 luck:16 encourage:33 love:37
+265,エマ,艾玛,Emma,216,,B,A,B,A,100,128,110,105,88,96,55,52,parry:17/28/39/42 shield_defense:1/4/12/19/30/37/46/59,effort:1 focus:9 alert:15 valor:17 love:38 encourage:42
+266,ヒルデ,希尔妲,Hilde,217,,A,A,A,A,110,118,98,94,92,99,50,45,parry:3/14/31/44,scout:1 focus:8 effort:14 valor:23 trust:33 encourage:42
+268,トロワ,特洛瓦,Trowa,218,,A,A,A,A,115,139,110,113,95,105,55,40,parry:1/1/1/15/31/41/47/60 shield_defense:1/1/16/24/38/42/44,self_destruct:1 valor:1 alert:4 cover:18 disrupt:24 soul:40
+269,ノイン,诺茵,Noin,219,,A,A,A,A,120,120,100,95,95,100,50,42,parry:1/12/29/42,mercy:1 cover:7 trust:12 alert:15 valor:18 love:20
+270,ドロシー,多萝西,Dorothy,220,,A,A,B,A,98,122,112,110,90,98,50,50,parry:1/14/32/44,guts:1 provoke:1 accel:14 focus:25 spirit:28 reactivate:33
+271,甲児,甲儿,Koji,221,,A,A,B,B,138,115,95,95,86,97,70,56,potential:1/1/1/10/21/30/41/52/61 parry:30/38,great_guts:1 wall:2 valor:6 strike:13 accel:27 awaken:52
+272,ロアン,罗安,Roanne,222,,A,A,B,A,114,145,117,106,90,98,50,48,,scout:1 focus:6 stealth:13 alert:21 disrupt:35 refuel:41
+273,ドモン,多蒙,Domon,1,4 274,A,A,B,A,144,116,116,106,94,136,65,45,parry:1/9/24/32/40/53/57,valor:1 alert:2 spirit:10 accel:21 focus:26 love:48
+274,ドモン,多蒙,Domon,1,4 273,A,A,B,A,144,116,116,106,94,136,65,45,parry:1/9/24/32/40/53/57,valor:1 alert:2 spirit:10 accel:21 focus:26 love:48
+275,アルゴ,阿尔戈,Argo,3,8,A,A,B,A,134,100,106,98,84,130,60,46,,wall:1 focus:4 valor:10 spirit:18 trust:25 friendship:43
+276,サイ・サイシー,蔡赛西,Sai Saici,6,11,A,A,B,A,136,106,114,104,90,134,60,46,parry:1/9/24/33/41/46,focus:1 valor:5 guts:9 alert:13 spirit:24 friendship:44
+277,ジョルジュ,乔治,George,7,12,A,A,B,A,132,110,112,104,90,130,60,46,parry:1/8/22/30/40/48/55/56 shield_defense:1/10/22/30,focus:1 alert:8 valor:12 spirit:25 cover:35 friendship:45
+278,チボデー,奇波迪,Chibodee,8,13,A,A,B,A,136,108,110,102,86,132,60,46,shield_defense:1/12/24/32,valor:1 focus:3 effort:8 spirit:17 great_guts:23 provoke:40
+279,ドロシー,多萝西,Dorothy,223,,A,A,B,A,98,122,112,110,90,98,50,50,parry:1/14/32/44,guts:1 provoke:1 accel:14 focus:25 spirit:28 reactivate:33
+284,クェス,葵丝,Quess,256,,A,A,C,A,122,138,126,113,95,100,55,31,newtype:1/4/5/7/9/11/12/18/23 parry:1/2/5/10/11/12/21/22/32 shield_defense:1/4/7/9/18/25/25/26/48,alert:3 valor:9 accel:16 wall:22 awaken:25 cover:30
+285,ル・カイン,鲁·凯恩,Le Cain,224,,A,A,B,A,120,120,100,95,95,100,0,65,,
+286,ゼクス,杰克斯,Zechs,255,,A,A,A,A,129,145,128,118,94,126,55,39,parry:1/10/18/24/35/44/55 shield_defense:1/15/24/29/34/42/54,accel:1 strike:2 alert:6 valor:9 luck:11 friendship:17
+287,AI,,,225,,A,A,C,A,115,110,100,105,60,105,0,72,,
+288,スペシャルズ,特殊部队,Specials,226,,A,A,C,A,120,120,100,95,95,105,0,69,,
+289,スペシャルズ,特殊部队,Specials,227,,A,A,C,A,120,120,100,95,95,105,0,69,,
+290,マグアナック兵,马格纳克兵,Maganac Soldier,228,,A,A,C,A,118,122,107,102,85,98,50,69,parry:5/10/15/18/26 shield_defense:5/15/20/22/28,effort:1 guts:5 valor:9 strike:13 alert:18 trust:22
+291,バイストンウェル兵,拜斯顿·威尔兵,Byston Well Soldier,229,,A,A,B,B,124,116,104,99,80,110,0,69,,
+292,アクシズ兵,阿克西斯兵,Axis Soldier,230,,A,A,C,A,120,120,100,95,95,105,0,69,,
+293,ネオジオン兵,新吉翁兵,Neo Zeon Soldier,231,,A,A,C,A,120,120,100,95,95,105,0,69,,
+294,ギシン星兵,异震星兵,Gishin Soldier,232,,A,A,B,A,120,120,100,95,95,105,0,72,,
+295,ベガ星兵,贝加星兵,Vega Soldier,233,,A,A,B,A,120,120,100,95,95,105,0,72,,
+296,グラドス兵,格拉多斯兵,Grados Soldier,234,,A,A,C,A,120,120,100,90,95,105,0,69,,
+297,グラドス兵,格拉多斯兵,Grados Soldier,235,,A,A,B,A,125,125,105,95,100,110,0,65,,
+298,ムゲ兵,穆格兵,Muge Soldier,236,,A,A,C,A,120,120,100,95,95,105,0,72,,
+299,ゾンビ兵,僵尸兵,Zombie Soldier,237,,A,A,C,A,115,110,100,105,60,95,0,72,,
+300,ゲリラ,游击队员,Guerrilla,238,,A,A,C,A,120,120,100,95,95,105,50,70,,effort:1 guts:5 valor:9 strike:13 alert:18 trust:22
+301,ゲリラ,游击队员,Guerrilla,239,,A,A,C,A,120,120,100,95,95,105,50,70,,effort:1 guts:5 valor:9 strike:13 alert:18 trust:22
+302,ゲリラ,游击队员,Guerrilla,240,,A,A,C,A,120,120,100,95,95,105,50,70,,effort:1 guts:5 valor:9 strike:13 alert:18 trust:22
+303,ゲリラ,游击队员,Guerrilla,241,,A,A,C,A,120,120,100,95,95,105,50,70,,effort:1 guts:5 valor:9 strike:13 alert:18 trust:22
+304,ゲリラ,游击队员,Guerrilla,242,,A,A,C,A,120,120,100,95,95,105,50,70,,effort:1 guts:5 valor:9 strike:13 alert:18 trust:22
+305,スペシャルズ,特殊部队,Specials,243,,A,A,B,A,125,125,105,100,100,110,0,63,parry:1 shield_defense:1,
+306,スペシャルズ,特殊部队,Specials,244,,A,A,B,A,130,130,110,105,105,115,0,45,enhanced:1/20/30/40 parry:1 shield_defense:1,
+307,スペシャルズ,特殊部队,Specials,245,,A,A,B,A,125,125,105,100,100,110,0,63,parry:1 shield_defense:1,
+308,スペシャルズ,特殊部队,Specials,246,,A,A,B,A,130,130,110,105,105,115,0,45,enhanced:1/20/30/40 parry:1 shield_defense:1,
+309,アクシズ兵,阿克西斯兵,Axis Soldier,247,,A,A,B,A,125,125,105,100,100,110,0,63,parry:1 shield_defense:1,
+310,アクシズ兵,阿克西斯兵,Axis Soldier,248,,A,A,B,A,130,130,110,105,105,115,0,45,enhanced:1/20/30/40 parry:1 shield_defense:1,
+311,ネオジオン兵,新吉翁兵,Neo Zeon Soldier,249,,A,A,B,A,125,125,105,100,100,110,0,63,parry:1 shield_defense:1,
+312,ネオジオン兵,新吉翁兵,Neo Zeon Soldier,250,,A,A,B,A,130,120,110,105,105,115,0,45,enhanced:1/20/30/40 parry:1 shield_defense:1,
+313,AI,,,251,359,A,A,B,A,135,120,108,112,70,115,0,69,,
+314,プルクローン,普露克隆,Ple Clone,252,,A,A,B,A,130,130,110,105,105,115,0,45,enhanced:1/1/1/12/23/33/41/52/75 parry:1/30/42 shield_defense:1,
+315,ゲリラ,游击队员,Guerrilla,253,,A,A,C,A,120,120,100,95,95,105,50,70,,effort:1 guts:5 valor:9 strike:13 alert:18 trust:22
+316,ハミルトン,汉密尔顿,Hamilton,254,,A,A,C,A,120,120,100,95,95,105,50,70,,effort:1 guts:5 valor:9 strike:13 alert:18 trust:22
+359,AI,,,251,313,A,A,B,A,135,120,108,112,70,115,0,69,,

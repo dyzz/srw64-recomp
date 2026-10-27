@@ -672,6 +672,14 @@ static int run_host(int argc, char** argv) {
         for(const auto& [locale,catalog]:srw64::localization::registered())if(catalog)locales.push_back(locale);
         srw64::mod_names::configure(std::move(locales),output_dir);
         srw64::names::set_default_names_refresh(&srw64::mod_names::refresh);
+        // MOD portraits go by pilot number: each pilot's original (image, palette).
+        std::map<unsigned, srw64::portraits::PilotImage> images;
+        if (const auto* data = srw64::dialogue_data::document(); data && data->contains("battle_assets") && data->at("battle_assets").contains("portraits"))
+            for (const auto& [pilot, row] : data->at("battle_assets").at("portraits").items()) {
+                const auto& r = row.at("resources");
+                if (r.size() == 2) images[unsigned(std::stoul(pilot))] = {r[0].get<uint16_t>(), r[1].get<uint16_t>(), row.value("path", std::string())};
+            }
+        srw64::portraits::set_pilot_images(std::move(images));
     }
     srw64::link_page::configure(output_dir);
     srw64::battle_page::configure(output_dir);

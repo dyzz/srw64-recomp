@@ -543,6 +543,7 @@ public:
     SRW64Renderer(uint8_t* rdram, ultramodern::renderer::WindowHandle handle) {
         srw64::marker::configure(capture_directory);
         srw64::hdmap::configure(capture_directory);
+        srw64::portraits::install();   // MOD portraits draw without the HD pack too
         srw64::backgrounds::initialize(capture_directory);
         RT64::SetRenderHooks([](plume::RenderInterface* rhi, plume::RenderDevice* device) {
             capture_device = device;
@@ -1326,6 +1327,7 @@ public:
         // battle sprites) from the same art.
         const auto sprites_start = std::chrono::steady_clock::now();
         srw64::hdmap::configure(capture_directory);
+        srw64::portraits::install();   // MOD portraits draw without the HD pack too
         const auto maps_done = std::chrono::steady_clock::now();
         const char* art = std::getenv("SRW64_ART_PACK");
         srw64::sprites::configure(!hd_art.empty() ? hd_art : art ? std::filesystem::path(art) : std::filesystem::path(), capture_directory);

@@ -12,7 +12,14 @@
 //
 //   { "schema": "srw64.mod-names.v1",
 //     "heroes": { "super-male": { "hero": { "zh-Hans": { "name": "龙", "surname": "天野", "nickname": "龙" } } } },
-//     "unit": { "zh-Hans": "疾风", "en": "Gale" } }
+//     "unit": { "zh-Hans": "疾风", "en": "Gale" },
+//     "pilots":  { "1":   { "zh-Hans": { "name": "…", "full": "…" } } },
+//     "units":   { "184": { "zh-Hans": "…" } },
+//     "weapons": { "731": { "zh-Hans": "…" } } }
+//
+// The last three name any other pilot, unit or weapon by its number: they show over the
+// catalog's text records (pilot 4382 + n and full 4743 + n, unit 527 + n, weapon 1370 + n,
+// its menu name 2699 + n derived from it), wherever those records show.
 namespace srw64::mod_names {
 namespace fs=std::filesystem;
 using json=nlohmann::json;
@@ -25,6 +32,11 @@ inline constexpr std::array<std::string_view,4> routes={"real-male","real-female
 inline constexpr size_t longest=16, longest_unit=24;
 // The original's buffers, in cells (wide glyphs): longer names get a warning only.
 inline constexpr unsigned cells_name=7, cells_nick=5, cells_unit=10;
+inline constexpr size_t longest_record=24;
+inline constexpr uint16_t text_pilot=4382, text_pilot_full=4743, text_unit=527, text_weapon=1370, text_weapon_menu=2699;
+inline constexpr unsigned pilot_count=361, unit_count=363, weapon_count=1329, first_hero=25, heroes=8;
+// Record id -> locale -> text.
+using RecordTexts=std::map<uint16_t,std::map<std::string,std::string>>;
 
 inline std::optional<std::u32string> code_points(const std::string& text) {
     std::u32string out;
@@ -51,6 +63,7 @@ inline unsigned width(const std::string& text) {
 
 struct Parsed {
     names::ModNames names;
+    RecordTexts records;
     std::vector<std::string> warnings;
 };
 // The widest default of a field over every person and locale (`widest` by field), in
@@ -134,15 +147,59 @@ inline std::string parse(const json& document,const std::vector<std::string>& lo
                 if(auto why=name(text,"unit."+locale,longest_unit,names::Field::Unit,cells_unit,shown);!why.empty())return why;
                 parsed.names[{names::Field::Unit,0,locale}]=shown;
             }
-        } else return "未知字段 "+key+"（schema、heroes、unit）";
+        } else if(key=="pilots" || key=="units" || key=="weapons") {
+            if(!value.is_object())return key+"：要是对象";
+            const unsigned count=key=="pilots"?pilot_count:key=="units"?unit_count:weapon_count;
+            for(const auto& [number,by_locale]:value.items()) {
+                const auto where=key+"."+number;
+                if(number.empty() || number.size()>4 || !std::all_of(number.begin(),number.end(),[](char c){return c>='0' && c<='9';}) || (number.size()>1 && number[0]=='0'))
+                    return where+"：编号要是十进制整数";
+                const unsigned n=unsigned(std::stoul(number));
+                if(n>=count)return where+"：编号超出范围（0–"+std::to_string(count-1)+"）";
+                if(key=="pilots" && n>=first_hero && n<first_hero+heroes)return where+"：原创主角和搭档的名字写在 heroes 里";
+                if(!by_locale.is_object())return where+"：要是对象";
+                for(const auto& [locale,entry]:by_locale.items()) {
+                    const auto at=where+"."+locale;
+                    if(!known(locale))return at+"：未知语言（"+locale_list+"）";
+                    const auto text=[&](const json& v,const std::string& w,std::string& out)->std::string {
+                        if(!v.is_string())return w+"：要是字符串";
+                        out=v.get<std::string>();
+                        const auto points=code_points(out);
+                        if(!points)return w+"：不是有效的 UTF-8";
+                        if(points->empty() || out.front()==' ' || out.back()==' ')return w+"：不能为空，首尾不能有空格";
+                        for(const auto cp:*points)if(cp<0x20 || cp==0x7F || cp=='<' || cp=='>' || cp=='{' || cp=='}')return w+"：不能有控制字符或 < > { }";
+                        if(points->size()>longest_record)return w+"：太长（最多 "+std::to_string(longest_record)+" 个字符）";
+                        return {};
+                    };
+                    std::string shown,full;
+                    if(key=="pilots") {
+                        if(!entry.is_object() || !entry.contains("name"))return at+"：要是 {\"name\": …, \"full\": …}";
+                        for(const auto& [field,v]:entry.items()) {
+                            std::string why;
+                            if(field=="name")why=text(v,at+".name",shown);
+                            else if(field=="full")why=text(v,at+".full",full);
+                            else return at+"：未知字段 "+field+"（name、full）";
+                            if(!why.empty())return why;
+                        }
+                        parsed.records[uint16_t(text_pilot+n)][locale]=shown;
+                        parsed.records[uint16_t(text_pilot_full+n)][locale]=full.empty()?shown:full;
+                    } else {
+                        if(auto why=text(entry,at,shown);!why.empty())return why;
+                        parsed.records[uint16_t((key=="units"?text_unit:text_weapon)+n)][locale]=shown;
+                    }
+                }
+            }
+        } else return "未知字段 "+key+"（schema、heroes、unit、pilots、units、weapons）";
     }
     for(auto& [k,v]:parsed.names)out.names[k]=std::move(v);
+    for(auto& [id,texts]:parsed.records)for(auto& [l,t]:texts)out.records[id][l]=std::move(t);
     for(auto& w:parsed.warnings)out.warnings.push_back(std::move(w));
     return {};
 }
 
 struct Collected {
     names::ModNames names;
+    RecordTexts records;
     std::vector<std::string> warnings,problems;   // "<id> dialogue/names.json：…"; a problem leaves the file out
 };
 // The active packages, bottom first as mods::installed() returns them: the upper wins.
@@ -159,6 +216,7 @@ inline Collected collect(const std::vector<mods::Package>& packages,const std::v
         Parsed parsed;
         if(auto why=parse(document,locales,widest,parsed);!why.empty()){c.problems.push_back(where+why);continue;}
         for(auto& [k,v]:parsed.names)c.names[k]=std::move(v);
+        for(auto& [id,texts]:parsed.records)for(auto& [l,t]:texts)c.records[id][l]=std::move(t);
         for(auto& w:parsed.warnings)c.warnings.push_back(where+w);
     }
     return c;
@@ -170,6 +228,8 @@ struct State {
     fs::path output;
     std::optional<unsigned> revision;
     mods::Version game{-1,-1,-1};
+    std::mutex records_mutex;
+    std::shared_ptr<const RecordTexts> records=std::make_shared<RecordTexts>();
 };
 inline State& state(){static State value;return value;}
 
@@ -191,16 +251,45 @@ inline void refresh(names::DefaultNames& table) {
     s.revision=now;s.game=game;
     const auto found=collect(mods::installed(game),s.locales,widest_defaults(table));
     table.set_mod_names(found.names);
+    {
+        auto texts=std::make_shared<const RecordTexts>(found.records);
+        std::lock_guard records_lock(s.records_mutex);
+        s.records=std::move(texts);
+    }
     for(const auto& w:found.warnings)std::fprintf(stderr,"SRW64_MOD_NAMES_WARNING %s\n",w.c_str());
     for(const auto& p:found.problems)std::fprintf(stderr,"SRW64_MOD_NAMES_PROBLEM %s\n",p.c_str());
-    std::fprintf(stderr,"SRW64_MOD_NAMES names=%zu warnings=%zu problems=%zu\n",found.names.size(),found.warnings.size(),found.problems.size());
+    std::fprintf(stderr,"SRW64_MOD_NAMES names=%zu records=%zu warnings=%zu problems=%zu\n",found.names.size(),found.records.size(),found.warnings.size(),found.problems.size());
     if(!s.output.empty()) {
         static constexpr const char* fields[]={"name","surname","nickname","unit"};
         json rows=json::array();
         for(const auto& [key,text]:found.names)
             rows.push_back({{"field",fields[unsigned(std::get<0>(key))]},{"person",std::get<1>(key)},{"locale",std::get<2>(key)},{"text",text}});
-        std::ofstream(s.output/"mod-names.json")<<json({{"schema","srw64.mod-names-applied.v1"},{"names",rows},
+        json records=json::object();
+        for(const auto& [id,texts]:found.records)records[std::to_string(id)]=texts;
+        std::ofstream(s.output/"mod-names.json")<<json({{"schema","srw64.mod-names-applied.v1"},{"names",rows},{"records",records},
             {"warnings",found.warnings},{"problems",found.problems}}).dump(2)<<'\n';
     }
+}
+// A package's text for a record in this locale (Traditional Chinese falling back to the
+// Simplified), after names::default_names() has refreshed the packages.
+inline std::optional<std::string> record(const std::string& locale,uint16_t id) {
+    auto& s=state();
+    std::shared_ptr<const RecordTexts> texts;
+    {std::lock_guard lock(s.records_mutex);texts=s.records;}
+    const auto found=texts->find(id);
+    if(found==texts->end())return std::nullopt;
+    for(const auto& l:{locale,locale=="zh-Hant"?std::string("zh-Hans"):std::string()}) {
+        if(l.empty())continue;
+        if(const auto t=found->second.find(l);t!=found->second.end())return t->second;
+    }
+    return std::nullopt;
+}
+// Whether any package names a record in this locale (the Japanese original screens redraw
+// only then, ui_text.cpp).
+inline bool any_record(const std::string& locale) {
+    auto& s=state();
+    std::lock_guard lock(s.records_mutex);
+    for(const auto& [id,texts]:*s.records)if(texts.contains(locale))return true;
+    return false;
 }
 }

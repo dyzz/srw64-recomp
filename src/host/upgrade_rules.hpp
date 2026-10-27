@@ -1,4 +1,7 @@
 #pragma once
+#include <span>
+#include <mutex>
+#include <memory>
 #include "rule_fixes.hpp"
 #include <array>
 #include <map>
@@ -233,6 +236,25 @@ inline std::vector<std::pair<uint32_t,uint8_t>> build_patches(const Tables& acti
     return patches;
 }
 inline std::vector<std::pair<uint32_t,uint8_t>>& patches(){static std::vector<std::pair<uint32_t,uint8_t>> value;return value;}
+// The same bytes for readers on any thread (pages, the battle viewer, the cheats): set
+// with them whenever they change (mod_data.hpp refresh).
+struct Patched {
+    std::mutex mutex;
+    std::shared_ptr<const std::map<uint32_t,uint8_t>> bytes=std::make_shared<const std::map<uint32_t,uint8_t>>();
+};
+inline Patched& patched(){static Patched value;return value;}
+inline void publish_patches() {
+    auto bytes=std::make_shared<const std::map<uint32_t,uint8_t>>(patches().begin(),patches().end());
+    std::lock_guard lock(patched().mutex);
+    patched().bytes=std::move(bytes);
+}
+// A ROM byte as the game reads it: a number MOD's or the rules file's, else the ROM's.
+inline uint8_t game_byte(std::span<const uint8_t> rom,uint32_t at) {
+    std::shared_ptr<const std::map<uint32_t,uint8_t>> bytes;
+    {std::lock_guard lock(patched().mutex);bytes=patched().bytes;}
+    if(const auto found=bytes->find(at);found!=bytes->end())return found->second;
+    return at<rom.size()?rom[at]:0;
+}
 // After a copy of ROM [rom, rom+size) to RDRAM destination.
 inline void patch_copy(uint8_t* ram,uint32_t rom,uint32_t destination,uint32_t size) {
     const auto& list=patches();
@@ -262,6 +284,7 @@ inline void configure(const std::filesystem::path& output) {
         report["patched_bytes"]=0;
     }
     patches()=s.configured?build_patches(s.active):std::vector<std::pair<uint32_t,uint8_t>>{};
+    publish_patches();
     if(s.configured)report["patched_bytes"]=patches().size();
     if(!output.empty())std::ofstream(output/"upgrade-rules.json")<<report.dump(2)<<'\n';
     std::fprintf(stderr,"SRW64_UPGRADE_RULES %s\n",s.configured?report["changed"].dump().c_str():"none");
@@ -270,8 +293,13 @@ inline void configure(const std::filesystem::path& output) {
 // --- Caps ----------------------------------------------------------------------
 
 // The cap the game itself would use: the ROM record, or the rules file's override.
+// A number MOD's cap (mod_data.hpp) sits over both.
 inline uint8_t original_cap(uint16_t unit) {
     const auto& s=state();
+    if(unit<unit_record_count && s.rom) {
+        const uint32_t at=unit_records+unit*unit_record_size+record_cap;
+        if(const uint8_t value=game_byte({s.rom,s.rom_size},at);value!=s.rom[at])return value;
+    }
     if(const auto found=s.active.caps.find(unit);found!=s.active.caps.end())return found->second;
     return unit<unit_record_count?uint8_t(rom_read(unit_records+unit*unit_record_size+record_cap,1)):0;
 }

@@ -1,7 +1,8 @@
 ---
-// Unit and pilot numbers for MOD authors: the keys of data/units.json and data/pilots.json
-// (number mods) and of music.json's battle songs, with the original terrain ranks. The data
-// is tools/content/export_data_tables.py's, the same as docs/guide/data-mods/*.csv.
+// Unit, pilot and weapon numbers for MOD authors: the keys of data/units.json, data/pilots.json
+// and data/weapons.json (number mods), of dialogue/names.json's pilots/units/weapons and of
+// music.json's battle songs, with the original values and the keys a file writes them with.
+// The data is tools/content/export_data_tables.py's, the same as docs/guide/data-mods/*.csv.
 import Base from '../../../layouts/Base.astro';
 import { langPaths, tl, type Lang } from '../../../i18n';
 import { library } from '../../../lib/data';
@@ -13,15 +14,25 @@ const lib = library();
 const inUnits = new Set(lib.units.map((u) => u.id));
 const inPeople = new Set(lib.people.map((p) => p.id));
 const t = {
-  title: { zh: '机体与人物 ID 表', en: 'Unit and pilot IDs', ja: 'ユニット・キャラクター ID 表' },
+  title: { zh: '机体、人物与武器 ID 表', en: 'Unit, pilot and weapon IDs', ja: 'ユニット・キャラクター・武器 ID 表' },
   lead: {
-    zh: '数值 MOD 的 data/units.json 按机体号、data/pilots.json 按人物号写；音乐 MOD 指定战斗曲用的也是这两种编号。表里的地形等级是原版的。',
-    en: 'A number mod’s data/units.json is keyed by unit number and data/pilots.json by pilot number; a music mod’s battle songs use the same numbers. The terrain ranks shown are the original’s.',
-    ja: '数値 MOD の data/units.json はユニット番号、data/pilots.json はキャラクター番号で書きます。音楽 MOD の戦闘曲指定も同じ番号です。地形適応は原作の値です。',
+    zh: '数值 MOD 的 data/units.json 按机体号、data/pilots.json 按人物号、data/weapons.json 按武器号写；改名 MOD 和音乐 MOD 用的也是这些编号。表里的数值是原版的，特殊能力、技能、精神显示的是文件里写的键。',
+    en: 'A number mod’s data/units.json is keyed by unit number, data/pilots.json by pilot number and data/weapons.json by weapon number; name and music mods use the same numbers. The values shown are the original’s; abilities, skills and spirits show the keys a file writes.',
+    ja: '数値 MOD の data/units.json はユニット番号、data/pilots.json はキャラクター番号、data/weapons.json は武器番号で書きます。名前 MOD・音楽 MOD も同じ番号です。数値は原作の値で、特殊能力・技能・精神はファイルに書くキーで表示しています。',
   },
   guide: { zh: '写法见「数值 MOD」', en: 'How to write them: Number mods', ja: '書き方は「数値 MOD」へ' },
   units: { zh: '机体', en: 'Units', ja: 'ユニット' },
   pilots: { zh: '人物', en: 'Pilots', ja: 'キャラクター' },
+  weapons: { zh: '武器', en: 'Weapons', ja: '武器' },
+  abilities: { zh: '特殊能力', en: 'Abilities', ja: '特殊能力' },
+  skills: { zh: '技能', en: 'Skills', ja: '技能' },
+  spirits: { zh: '精神', en: 'Spirits', ja: '精神' },
+  carriers: { zh: '带它的机体', en: 'Carried by', ja: '装備ユニット' },
+  weaponNote: {
+    zh: '同一件武器挂在好几台机体上时，改它会让这些机体一起变。威力按 100 为单位；弹数 -1 表示不用弹数。',
+    en: 'A weapon carried by several units changes on all of them. Power goes in hundreds; ammo -1 means it uses none.',
+    ja: '複数のユニットが持つ武器は、変えると全員分変わります。威力は 100 単位、弾数 -1 は弾数なしです。',
+  },
   search: { zh: '按名字或编号筛选', en: 'Filter by name or number', ja: '名前か番号で絞り込み' },
   name: { zh: '名字', en: 'Name', ja: '名前' },
   shared: { zh: '共用能力记录', en: 'Shares its record with', ja: '能力記録を共有' },
@@ -35,6 +46,10 @@ const t = {
   none: { zh: '没有符合的条目', en: 'Nothing matches', ja: '該当なし' },
 };
 const channels = { zh: ['空', '陆', '海', '宇'], en: ['Air', 'Land', 'Sea', 'Space'], ja: ['空', '陸', '海', '宇'] }[tl(lang)];
+const unitCols = { zh: ['HP', 'EN', '移动', '运动性', '装甲', '限界', '尺寸'], en: ['HP', 'EN', 'Move', 'Mobility', 'Armor', 'Limit', 'Size'], ja: ['HP', 'EN', '移動', '運動性', '装甲', '限界', 'サイズ'] }[tl(lang)];
+const pilotCols = { zh: ['格斗', '射击', '回避', '命中', '反应', '技量', 'SP'], en: ['Melee', 'Ranged', 'Evade', 'Hit', 'React', 'Skill', 'SP'], ja: ['格闘', '射撃', '回避', '命中', '反応', '技量', 'SP'] }[tl(lang)];
+const weaponCols = { zh: ['威力', '射程', '命中', '弹数', 'EN', '气力', '暴击'], en: ['Power', 'Range', 'Hit', 'Ammo', 'EN', 'Morale', 'Crit'], ja: ['攻撃力', '射程', '命中', '弾数', 'EN', '気力', 'CT'] }[tl(lang)];
+const unitName = (id: number) => data.units.find((u) => u.id === id)?.name[tl(lang)] ?? String(id);
 const key = (n: { ja: string; zh: string; en: string }, id: number) => `${id} ${n.ja} ${n.zh} ${n.en}`.toLowerCase();
 const repo = 'https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/data-mods';
 const sep = lang === 'en' ? ', ' : '、';
@@ -46,22 +61,24 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
       <span class="tag">MOD</span>
       <h1>{t.title[tl(lang)]}</h1>
       <p>{t.lead[tl(lang)]}</p>
-      <p class="note"><a href={`/${lang}/docs/mod-data/`}>{t.guide[tl(lang)]}</a> · {t.csv[tl(lang)]}<a href={`${repo}/units.csv`}>units.csv</a>{sep}<a href={`${repo}/pilots.csv`}>pilots.csv</a></p>
+      <p class="note"><a href={`/${lang}/docs/mod-data/`}>{t.guide[tl(lang)]}</a> · {t.csv[tl(lang)]}<a href={`${repo}/units.csv`}>units.csv</a>{sep}<a href={`${repo}/pilots.csv`}>pilots.csv</a>{sep}<a href={`${repo}/weapons.csv`}>weapons.csv</a></p>
     </header>
     <div class="bar">
-      <nav class="tabs"><a href="#units">{t.units[tl(lang)]} <span class="dim latin">{data.units.length}</span></a><a href="#pilots">{t.pilots[tl(lang)]} <span class="dim latin">{data.pilots.length}</span></a></nav>
+      <nav class="tabs"><a href="#units">{t.units[tl(lang)]} <span class="dim latin">{data.units.length}</span></a><a href="#pilots">{t.pilots[tl(lang)]} <span class="dim latin">{data.pilots.length}</span></a><a href="#weapons">{t.weapons[tl(lang)]} <span class="dim latin">{data.weapons.length}</span></a></nav>
       <input type="search" data-filter placeholder={t.search[tl(lang)]} autocomplete="off" spellcheck="false" />
     </div>
 
     <section id="units" class="block">
       <h2>{t.units[tl(lang)]}</h2>
       <div class="scroll"><table>
-        <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}<th></th></tr></thead>
+        <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}{unitCols.map((c) => <th class="stat">{c}</th>)}<th>{t.abilities[tl(lang)]}</th><th></th></tr></thead>
         <tbody>{data.units.map((u) => (
           <tr data-key={key(u.name, u.id)}>
             <td class="num latin">{u.id}</td>
             <td>{u.name[tl(lang)]}{lang !== 'ja' && u.name.ja !== u.name[tl(lang)] && <span class="ja">{u.name.ja}</span>}</td>
             {[...u.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
+            {[u.hp, u.en, u.move, u.mobility, u.armor, u.limit, u.size].map((v) => <td class="stat latin">{v}</td>)}
+            <td class="keys">{u.abilities.join(' ')}</td>
             <td class="link">{inUnits.has(u.id) && <a href={`/${lang}/library/unit/${u.id}/`}>{t.library[tl(lang)]}</a>}</td>
           </tr>))}
         </tbody>
@@ -73,14 +90,35 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
       <h2>{t.pilots[tl(lang)]}</h2>
       <p class="note">{t.sharedNote[tl(lang)]}</p>
       <div class="scroll"><table>
-        <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}<th>{t.shared[tl(lang)]}</th><th></th></tr></thead>
+        <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}{pilotCols.map((c) => <th class="stat">{c}</th>)}<th>{t.skills[tl(lang)]}</th><th>{t.spirits[tl(lang)]}</th><th>{t.shared[tl(lang)]}</th><th></th></tr></thead>
         <tbody>{data.pilots.map((p) => (
           <tr data-key={key(p.name, p.id)}>
             <td class="num latin">{p.id}</td>
             <td>{p.name[tl(lang)]}{lang !== 'ja' && p.name.ja !== p.name[tl(lang)] && <span class="ja">{p.name.ja}</span>}</td>
             {[...p.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
+            {[p.melee, p.ranged, p.evade, p.hit, p.reaction, p.skill, p.sp].map((v) => <td class="stat latin">{v}</td>)}
+            <td class="keys">{Object.keys(p.skills).join(' ')}</td>
+            <td class="keys">{p.spirits.map(([k, l]) => `${k} ${l}`).join(sep)}</td>
             <td class="shared">{p.shared.map((s) => `${s} ${pilotName(s)}`).join(sep)}</td>
             <td class="link">{inPeople.has(p.id) && <a href={`/${lang}/library/people/${p.id}/`}>{t.library[tl(lang)]}</a>}</td>
+          </tr>))}
+        </tbody>
+      </table></div>
+      <p class="none" hidden>{t.none[tl(lang)]}</p>
+    </section>
+
+    <section id="weapons" class="block">
+      <h2>{t.weapons[tl(lang)]}</h2>
+      <p class="note">{t.weaponNote[tl(lang)]}</p>
+      <div class="scroll"><table>
+        <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{weaponCols.map((c) => <th class="stat">{c}</th>)}{channels.map((c) => <th class="rank">{c}</th>)}<th>{t.carriers[tl(lang)]}</th></tr></thead>
+        <tbody>{data.weapons.map((w) => (
+          <tr data-key={key(w.name, w.id)}>
+            <td class="num latin">{w.id}</td>
+            <td>{w.name[tl(lang)]}{lang !== 'ja' && w.name.ja !== w.name[tl(lang)] && <span class="ja">{w.name.ja}</span>}</td>
+            {[w.power, `${w.range_min}–${w.range_max}`, w.hit, w.ammo, w.en, w.morale, w.critical].map((v) => <td class="stat latin">{v}</td>)}
+            {[...w.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
+            <td class="shared">{w.units.map((u) => `${u} ${unitName(u)}`).join(sep)}</td>
           </tr>))}
         </tbody>
       </table></div>
@@ -126,7 +164,9 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
   .r-B { color: var(--text); }
   .r-C { color: var(--gold); }
   .r-D, .r-x { color: var(--pink); }
-  .shared { color: var(--muted); font-size: 13px; white-space: normal; }
+  .shared { color: var(--muted); font-size: 13px; white-space: normal; min-width: 12em; }
+  .stat { text-align: right; }
+  .keys { color: var(--muted); font-family: var(--mono, monospace); font-size: 12px; white-space: normal; min-width: 10em; }
   .link a { font-size: 13px; }
   .none { color: var(--dim); margin-top: 8px; }
   @media (max-width: 640px) {

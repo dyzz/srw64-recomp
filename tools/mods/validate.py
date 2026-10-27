@@ -356,8 +356,141 @@ def names_problem(document) -> str:
                     return f"unit.{locale}：未知语言（{'、'.join(NAME_LOCALES)}）"
                 if why := _name_problem(text, f"unit.{locale}", 24):
                     return why
+        elif key in ("pilots", "units", "weapons"):
+            if not isinstance(value, dict):
+                return f"{key}：要是对象"
+            count = {"pilots": 361, "units": 363, "weapons": 1329}[key]
+            for number, by_locale in value.items():
+                where = f"{key}.{number}"
+                if not _plain_number(number) or int(number) >= count:
+                    return f"{where}：编号要是 0–{count - 1} 的十进制整数"
+                if key == "pilots" and 25 <= int(number) < 33:
+                    return f"{where}：原创主角和搭档的名字写在 heroes 里"
+                if not isinstance(by_locale, dict):
+                    return f"{where}：要是对象"
+                for locale, entry in by_locale.items():
+                    if locale not in NAME_LOCALES:
+                        return f"{where}.{locale}：未知语言（{'、'.join(NAME_LOCALES)}）"
+                    if key == "pilots":
+                        if not isinstance(entry, dict) or "name" not in entry:
+                            return f'{where}.{locale}：要是 {{"name": …, "full": …}}'
+                        for field, text in entry.items():
+                            if field not in ("name", "full"):
+                                return f"{where}.{locale}：未知字段 {field}（name、full）"
+                            if why := _name_problem(text, f"{where}.{locale}.{field}", 24):
+                                return why
+                    elif why := _name_problem(entry, f"{where}.{locale}", 24):
+                        return why
         else:
-            return f"未知字段 {key}（schema、heroes、unit）"
+            return f"未知字段 {key}（schema、heroes、unit、pilots、units、weapons）"
+    return ""
+
+
+def _plain_number(text: str) -> bool:
+    return text.isdigit() and text.isascii() and len(text) <= 4 and (text == "0" or not text.startswith("0"))
+
+
+# src/host/mod_data.hpp: each file's fields as (low, high, scale), the special ones by name.
+DATA_FIELDS = {
+    "units.json": (363, {"hp": (1, 65535, 1), "en": (0, 65535, 1), "move": (1, 30, 1), "mobility": (0, 65535, 1),
+                         "armor": (0, 65535, 1), "limit": (0, 65535, 1), "repair_cost": (0, 65535, 1), "upgrade_cap": (0, 15, 1)}),
+    "pilots.json": (360, {"melee": (0, 255, 1), "ranged": (0, 255, 1), "evade": (0, 255, 1), "hit": (0, 255, 1),
+                          "reaction": (0, 255, 1), "skill": (0, 255, 1), "sp": (0, 255, 1), "double_move": (0, 99, 1)}),
+    "weapons.json": (1329, {"power": (0, 25500, 100), "range_min": (0, 30, 1), "range_max": (1, 30, 1), "hit": (-128, 127, 1),
+                            "ammo": (-1, 99, 1), "en": (0, 255, 1), "morale": (0, 255, 1), "critical": (-128, 127, 1)}),
+}
+TERRAIN = ("air", "land", "sea", "space")
+ABILITIES = ("beam_coat", "i_field", "planet_defensor", "aura_barrier", "afterimage", "mach_special", "true_mach_special",
+             "god_shadow", "getter_vision", "shungensoku", "hyper_jammer", "hp_regen_10", "hp_regen_20")
+SKILLS = ("potential", "newtype", "enhanced", "holy_warrior", "esp", "parry", "shield_defense")
+SPIRITS = ("self_destruct", "scout", "accel", "mercy", "focus", "alert", "guts", "strike", "trust", "wall", "cover", "valor",
+           "spirit", "great_guts", "luck", "drain", "effort", "soul", "stealth", "awaken", "refuel", "provoke", "encourage",
+           "disrupt", "friendship", "love", "reactivate", "miracle", "prayer", "revive")
+
+
+def _levels(value, where: str, ascending_pairs: bool = False) -> str:
+    if not isinstance(value, list) or not value or len(value) > 9:
+        return f"{where}：要是 1–9 个等级的数组，或 null 去掉"
+    if any(not isinstance(v, int) or isinstance(v, bool) or not 1 <= v <= 99 for v in value):
+        return f"{where}：等级要是 1–99 的整数"
+    if value != sorted(value):
+        return f"{where}：等级要从小到大"
+    return ""
+
+
+def data_problem(name: str, document) -> str:
+    """data/<name> by the host's rules (src/host/mod_data.hpp parse), "" when it is good. Whether a
+    pilot has an ability or spirit record, and the ROM's own min/max range, only the game knows."""
+    count, fields = DATA_FIELDS[name]
+    if not isinstance(document, dict):
+        return "顶层要是对象"
+    for key, entry in document.items():
+        if not _plain_number(key) or int(key) >= count:
+            return f"{key}：编号要是 0–{count - 1} 的十进制整数"
+        if not isinstance(entry, dict):
+            return f"{key}：要是对象"
+        if name == "weapons.json" and "range_min" in entry and "range_max" in entry and \
+                isinstance(entry["range_min"], int) and isinstance(entry["range_max"], int) and entry["range_min"] > entry["range_max"]:
+            return f"{key}：range_min 不能大于 range_max"
+        first_row = False
+        for field, value in entry.items():
+            where = f"{key}.{field}"
+            if field == "terrain":
+                if not isinstance(value, dict):
+                    return f"{where}：要是对象"
+                for channel, letter in value.items():
+                    if channel not in TERRAIN:
+                        return f"{where}：未知地形 {channel}（air、land、sea、space）"
+                    if letter not in ("A", "B", "C", "D", "-"):
+                        return f"{where}.{channel}：要是 A、B、C、D 或 -"
+            elif field in fields:
+                low, high, scale = fields[field]
+                if not isinstance(value, int) or isinstance(value, bool):
+                    return f"{where}：要是整数"
+                if not low <= value <= high:
+                    return f"{where}：超出范围（{low}–{high}）"
+                if value % scale:
+                    return f"{where}：要是 {scale} 的倍数"
+            elif name == "units.json" and field == "abilities":
+                if not isinstance(value, list) or any(v not in ABILITIES for v in value):
+                    return f"{where}：要是数组，每项是 {'、'.join(ABILITIES)} 之一"
+            elif name == "units.json" and field in ("shield", "sword"):
+                if not isinstance(value, bool):
+                    return f"{where}：要是 true 或 false"
+            elif name == "units.json" and field == "size":
+                if value not in ("SS", "S", "M", "L", "LL"):
+                    return f"{where}：要是 SS、S、M、L 或 LL"
+            elif name == "units.json" and field == "parts_slots":
+                if not isinstance(value, int) or isinstance(value, bool) or not 0 <= value <= 4:
+                    return f"{where}：要是 0–4 的整数"
+            elif name == "pilots.json" and field == "skills":
+                if not isinstance(value, dict):
+                    return f"{where}：要是对象"
+                for skill, levels in value.items():
+                    if skill not in SKILLS:
+                        return f"{where}：未知技能 {skill}（{'、'.join(SKILLS)}）"
+                    if levels is None:
+                        continue
+                    if SKILLS.index(skill) < 5:
+                        if first_row:
+                            return f"{where}：底力、NT、强化人、圣战士、超能力只能有一个"
+                        first_row = True
+                    if why := _levels(levels, f"{where}.{skill}"):
+                        return why
+            elif name == "pilots.json" and field == "spirits":
+                if not isinstance(value, list) or len(value) > 6:
+                    return f"{where}：要是最多 6 项的数组，每项 [精神, 等级]"
+                last = 0
+                for item in value:
+                    if not isinstance(item, list) or len(item) != 2 or not isinstance(item[0], str) or not isinstance(item[1], int):
+                        return f"{where}：每项要是 [精神, 等级]"
+                    if item[0] not in SPIRITS:
+                        return f"{where}：未知精神 {item[0]}（{'、'.join(SPIRITS)}）"
+                    if not 1 <= item[1] <= 99 or item[1] < last:
+                        return f"{where}：习得等级要是 1–99，从小到大"
+                    last = item[1]
+            else:
+                return f"{key}：未知字段 {field}"
     return ""
 
 
@@ -427,6 +560,21 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             problems.append(Problem("campaign", "not " + CAMPAIGN_IMAGE_SCHEMA))
         elif image.get("id") != m["id"]:
             problems.append(Problem("campaign", f"id {image.get('id')!r}, the package is {m['id']!r}"))
+    for e in package.entries:
+        top, _, rest = e.name.partition("/")
+        if top == "data" and rest in DATA_FIELDS:
+            try:
+                why = data_problem(rest, json.loads(e.read().decode("utf-8")))
+            except (ValueError, UnicodeDecodeError) as error:
+                why = f"JSON 无效：{error}"
+            if why:
+                problems.append(Problem("data", f"{e.name}: {why}"))
+        elif top == "data" and rest.endswith(".json"):
+            problems.append(Problem("data", f"{e.name}: 暂不支持这个文件"))
+        elif e.name.startswith("art/portraits/") and e.name.count("/") == 2:
+            stem, _, ext = e.name.rsplit("/", 1)[1].rpartition(".")
+            if ext.lower() != "png" or not _plain_number(stem) or int(stem) > 360:
+                problems.append(Problem("portrait", f"{e.name}: 文件名要是人物号.png"))
     for e in package.entries:
         if e.name == "dialogue/names.json":
             try:

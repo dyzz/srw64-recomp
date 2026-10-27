@@ -1,4 +1,5 @@
 #include "battle_viewer.hpp"
+#include "upgrade_rules.hpp"
 #include "combo_attacks.hpp"
 #include "run_files.hpp"
 #include "game_hooks.hpp"
@@ -75,8 +76,9 @@ std::ofstream log;
 void note(const json& event){if(log.is_open()){log<<event.dump()<<'\n';log.flush();}}
 
 std::span<const uint8_t> rom(){return recomp::get_rom();}
-unsigned rom16(uint32_t at){const auto r=rom();return at+1<r.size()?unsigned(r[at])<<8|r[at+1]:0;}
-unsigned rom8(uint32_t at){const auto r=rom();return at<r.size()?r[at]:0;}
+// As the game reads the ROM: a number MOD's or the rules file's bytes over it (mod_data.hpp).
+unsigned rom8(uint32_t at){const auto r=rom();return upgrades::game_byte({r.data(),r.size()},at);}
+unsigned rom16(uint32_t at){return rom8(at)<<8|rom8(at+1);}
 
 // Who may fly each unit and its default pilot (src/native/ui/frontend.cpp lists the same).
 struct Crew{unsigned unit,pilot;std::vector<unsigned> actors;};

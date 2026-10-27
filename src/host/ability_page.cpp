@@ -399,7 +399,7 @@ json combo_json(uint8_t* ram,recomp_context* ctx,uint32_t unit,uint32_t w) {
         if(!component){known=false;break;}
         unsigned power=0;
         if(instance){const uint32_t cw=combo_attacks::unit_weapon(ram,instance,*component);if(!cw){known=false;break;}power=read(ram,cw+6,2);}
-        else power=combo_attacks::rom_u8(rom,rom_weapons+*component*rom_weapon_size+1)*100;
+        else power=upgrades::game_byte({rom.data(),rom.size()},rom_weapons+*component*rom_weapon_size+1)*100;
         sum+=float(power);++n;
     }
     if(known && n)c["power"]=unsigned(sum/float(n)*attack->multiplier);

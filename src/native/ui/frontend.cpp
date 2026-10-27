@@ -15,6 +15,7 @@
 #endif
 #include "RmlUi_Platform_SDL.h"
 #include "native_dialogue.hpp"
+#include "native_portrait.hpp"
 #include "link_page.hpp"
 #include "graphics.hpp"
 #include "battle_page.hpp"
@@ -1190,10 +1191,12 @@ std::string image(const std::string& path) {
     const auto name="portrait-"+std::to_string(images.size());
     queue_file(name,presentation::read_image_bytes(path));images[path]=name;return name;
 }
-// Page portraits: the whole HD image while the applied image mode is HD and the asset
-// carries one (docs/native/native-portraits-hd.md), otherwise the ROM original.
+// Page portraits: a MOD's picture, else the whole HD image while the applied image mode is
+// HD and the asset carries one (docs/native/native-portraits-hd.md), else the ROM original.
 bool hd_portraits() {return presentation::image_mode.current()==1;}
 std::string portrait_path(const json& art) {
+    // A MOD's picture for this pilot (native_portrait.hpp) in either image mode.
+    if(auto modded=srw64::portraits::mod_picture(art.at("path").get<std::string>());!modded.empty())return modded;
     return hd_portraits() && art.contains("hd") ? art.at("hd").get<std::string>() : art.at("path").get<std::string>();
 }
 // The HD portraits are 768 px and the pages show them at 56-160 dp. RmlUi samples

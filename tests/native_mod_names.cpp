@@ -50,7 +50,18 @@ int main(int argc,char** argv) {
     check(why(R"({"heroes":{"super-male":{"hero":{"en":{"name":"ABCDEFGHIJKLMNOPQ"}}}}})").find("最多 16")!=std::string::npos,"a name past 16");
     check(why(R"({"unit":"Gale"})").find("unit：要是对象")!=std::string::npos,"unit by locale");
     check(why(R"({"schema":"srw64.mod-names.v2"})").find("schema")!=std::string::npos,"another schema");
-    check(why(R"({"weapons":{}})").find("未知字段 weapons")!=std::string::npos,"not yet the second MOD's sections");
+    check(why(R"({"parts":{}})").find("未知字段 parts")!=std::string::npos,"unknown sections");
+
+    // Any other pilot, unit or weapon by number: their text records.
+    parsed={};
+    check(why(R"({"pilots":{"133":{"zh-Hans":{"name":"真吾","full":"北条真吾"},"en":{"name":"Shingo"}}},"units":{"184":{"zh-Hans":"豪将军改"}},"weapons":{"731":{"ja":"ビッグバズーカ"}}})",&parsed).empty(),"records");
+    check(parsed.records.at(4382+133).at("zh-Hans")=="真吾" && parsed.records.at(4743+133).at("zh-Hans")=="北条真吾","a pilot's short and full name");
+    check(parsed.records.at(4743+133).at("en")=="Shingo","a missing full name is the name");
+    check(parsed.records.at(527+184).at("zh-Hans")=="豪将军改" && parsed.records.at(1370+731).at("ja")=="ビッグバズーカ","a unit's and a weapon's");
+    check(why(R"({"pilots":{"27":{"en":{"name":"Brad"}}}})").find("heroes")!=std::string::npos,"the eight go in heroes");
+    check(why(R"({"weapons":{"1329":{"en":"X"}}})").find("超出范围")!=std::string::npos,"weapon numbers in range");
+    check(why(R"({"units":{"184":{"en":"ABCDEFGHIJKLMNOPQRSTUVWXY"}}})").find("最多 24")!=std::string::npos,"names past 24");
+    check(why(R"({"pilots":{"133":{"en":"Shingo"}}})").find("name")!=std::string::npos,"a pilot's entry is an object");
 
     // Warnings only: past the original's cells, or wider than our widest default.
     parsed={};
@@ -89,6 +100,14 @@ int main(int argc,char** argv) {
     mods::set_enabled("test.lower",false);
     mod_names::refresh(table);
     check(table.display(names::Field::Name,"ブラッド","zh-Hans")=="布拉德" && table.display(names::Field::Unit,"マーチウィンド","en")=="March Wind","again when the packages change");
+
+    // Record texts after a refresh, Traditional Chinese falling back to the Simplified.
+    package("test.records",R"({"units":{"184":{"zh-Hans":"豪将军改"}}})");
+    write(mods_dir/"mods.json",json({{"schema",mods::state_schema},{"order",{"test.lower","test.upper","test.off","test.broken","test.records"}},{"disabled",{"test.off","test.lower"}}}).dump());
+    mods::set_enabled("test.records",true);
+    mod_names::refresh(table);
+    check(mod_names::record("zh-Hant",527+184)==std::optional<std::string>("豪将军改") && !mod_names::record("en",527+184),"a record by locale");
+    check(mod_names::any_record("zh-Hans") && !mod_names::any_record("ja"),"which locales are named");
 
     if(failures)std::fprintf(stderr,"%d failures\n",failures);
     else std::puts("mod names: ok");

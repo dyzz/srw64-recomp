@@ -74,7 +74,7 @@ class PackageTests(unittest.TestCase):
         return path
 
     def good_files(self, **extra):
-        return {"mod.json": json.dumps(manifest(**extra)), "audio/music/7.ogg": b"OggS", "art/portraits/x.png": b"\x89PNG"}
+        return {"mod.json": json.dumps(manifest(**extra)), "audio/music/7.ogg": b"OggS", "art/portraits/1.png": b"\x89PNG"}
 
     def codes(self, path, **kw):
         problems, summary = validate.check(path, **kw)
@@ -100,6 +100,23 @@ class PackageTests(unittest.TestCase):
             self.assertIn(why, validate.names_problem(bad))
         files["dialogue/names.json"] = b"{"
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["names"])
+
+    def test_data_files_follow_the_host(self):
+        files = self.good_files()
+        files["data/units.json"] = json.dumps({"184": {"hp": 5200, "abilities": ["i_field"], "size": "L", "terrain": {"sea": "A"}}}).encode()
+        files["data/pilots.json"] = json.dumps({"133": {"melee": 160, "skills": {"newtype": [1, 5], "parry": None}, "spirits": [["focus", 1], ["soul", 30]]}}).encode()
+        files["data/weapons.json"] = json.dumps({"731": {"power": 3600, "ammo": -1}}).encode()
+        files["art/portraits/133.png"] = b"png"
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        for name, bad, why in [("units.json", {"184": {"hp": 0}}, "超出范围"), ("units.json", {"184": {"abilities": ["transform"]}}, "abilities"),
+                               ("weapons.json", {"731": {"power": 3650}}, "100 的倍数"), ("weapons.json", {"731": {"range_min": 5, "range_max": 3}}, "range_min"),
+                               ("pilots.json", {"133": {"skills": {"newtype": [1], "esp": [2]}}}, "只能有一个"),
+                               ("pilots.json", {"133": {"spirits": [["focus", 5], ["soul", 1]]}}, "从小到大"), ("units.json", {"363": {}}, "编号")]:
+            self.assertIn(why, validate.data_problem(name, bad))
+        self.assertIn("weapons", validate.names_problem({"weapons": {"1329": {"en": "X"}}}))
+        files["art/portraits/Amuro.png"] = b"png"
+        files["data/parts.json"] = b"{}"
+        self.assertEqual(sorted(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0]), ["data", "portrait"])
 
     def test_everything_inside_one_top_folder_and_junk(self):
         files = {"a.b/" + name: data for name, data in self.good_files().items()}

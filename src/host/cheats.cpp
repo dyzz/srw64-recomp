@@ -1,4 +1,5 @@
 #include "cheats.hpp"
+#include "upgrade_rules.hpp"
 #include "run_files.hpp"
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
@@ -61,13 +62,15 @@ void release(uint8_t* ram,recomp_context* ctx) {
         const unsigned number=read(ram,unit+unit_number,2);
         const size_t slots_at=size_t(machine_records)+size_t(number)*machine_record_size+machine_record_slots;
         if(!read(ram,unit,1) || number>=machine_count || slots_at>=rom.size())continue;
+        // The count the game read: a number MOD's (mod_data.hpp) over the ROM's.
+        const unsigned own=upgrades::game_byte(rom,uint32_t(slots_at));
         const unsigned before=read(ram,unit+unit_fitted,1);
-        if(!release_slots(ram,unit,rom[slots_at]))continue;
+        if(!release_slots(ram,unit,own))continue;
         // The parts screen's propagation (801D4C94 after はずす): the other forms take
         // these slots, and every form's stats are recomputed.
         auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);c.r4=int32_t(unit);c.r5=1;
         resident_func_800A5924(ram,&c);
-        record("slots-released",{{"unit",i},{"number",number},{"slots",rom[slots_at]},
+        record("slots-released",{{"unit",i},{"number",number},{"slots",own},
             {"returned",before-read(ram,unit+unit_fitted,1)}});
     }
 }

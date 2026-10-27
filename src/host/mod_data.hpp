@@ -84,6 +84,37 @@ inline std::vector<unsigned> sharing(std::span<const uint8_t> rom,unsigned pilot
     return out;
 }
 
+// Special abilities a unit's +1C may carry, by the ability table's masks (overlay 801DC8FC,
+// the status page's names). 変形, 合体 and 分離 stay as the ROM has them: they need forms.
+struct Named { std::string_view key; uint32_t mask; };
+inline constexpr Named abilities[]={
+    {"beam_coat",0x200},{"i_field",0x20},{"planet_defensor",0x800},{"aura_barrier",0x4000},
+    {"afterimage",0x10},{"mach_special",0x1000},{"true_mach_special",0x2000},{"god_shadow",0x1},
+    {"getter_vision",0x20000},{"shungensoku",0x40000},{"hyper_jammer",0x100000},
+    {"hp_regen_10",0x4},{"hp_regen_20",0x8}};
+// Size, +4's low five bits (SS..LL); the two high bits are each unit's own state.
+inline constexpr std::array<std::string_view,5> sizes={"SS","S","M","L","LL"};
+// A pilot's +F skill bits and the row of the threshold table (0x7B1B0, 30 bytes a record,
+// three rows of ten, nine read; level L at the L-th smallest nonzero threshold). The first
+// five share row 0, and the status page names one of them (800A80F0).
+struct Skill { std::string_view key; uint8_t bit; unsigned row; };
+inline constexpr Skill skills[]={
+    {"potential",0x04,0},{"newtype",0x08,0},{"enhanced",0x10,0},{"holy_warrior",0x20,0},{"esp",0x40,0},
+    {"parry",0x01,1},{"shield_defense",0x02,2}};
+inline constexpr uint32_t threshold_records=0x7B1B0, threshold_record_size=30;
+// Spirits: their own map (D_800CA6F4, s16 per pilot, negative none) to six (level, command)
+// pairs at 0x7CFB0; the command is the spirit's bit number (text 969 + it).
+inline constexpr uint32_t spirit_map=0x800CA6F4-0x80075610, spirit_records=0x7CFB0, spirit_record_size=12;
+inline constexpr std::array<std::string_view,30> spirits={
+    "self_destruct","scout","accel","mercy","focus","alert","guts","strike","trust","wall",
+    "cover","valor","spirit","great_guts","luck","drain","effort","soul","stealth","awaken",
+    "refuel","provoke","encourage","disrupt","friendship","love","reactivate","miracle","prayer","revive"};
+inline int spirit_record(std::span<const uint8_t> rom,unsigned pilot) {
+    const uint32_t at=spirit_map+pilot*2;
+    return at+1<rom.size()?int(int16_t(rom[at]<<8|rom[at+1])):-1;
+}
+template<class T,size_t N> std::string keys_of(const T (&list)[N]) {std::string out;for(const auto& x:list)out+=(out.empty()?"":"、")+std::string(x.key);return out;}
+
 // One file into bytes, all or nothing; an error names the entry and the field.
 inline std::string parse(const json& document,Kind kind,std::span<const uint8_t> rom,Bytes& out) {
     if(!document.is_object())return "顶层要是对象";
@@ -115,11 +146,95 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 }
                 continue;
             }
+            const auto here=[&](uint32_t at){const auto f=bytes.find(at);return f!=bytes.end()?f->second:at<rom.size()?rom[at]:uint8_t(0);};
+            const std::string where=key+"."+name;
+            if(kind==Kind::units && name=="abilities") {
+                if(!value.is_array())return where+"：要是数组";
+                uint32_t set=0;
+                for(const auto& item:value) {
+                    const auto found=std::find_if(std::begin(abilities),std::end(abilities),[&](const Named& n){return item.is_string() && n.key==item.get<std::string>();});
+                    if(found==std::end(abilities))return where+"：未知特殊能力 "+item.dump()+"（"+keys_of(abilities)+"）";
+                    set|=found->mask;
+                }
+                uint32_t editable=0;for(const auto& n:abilities)editable|=n.mask;
+                const uint32_t at=record+0x1C;
+                const uint32_t old=uint32_t(here(at))<<24|uint32_t(here(at+1))<<16|uint32_t(here(at+2))<<8|here(at+3);
+                const uint32_t bits=(old&~editable)|set;
+                for(unsigned k=0;k<4;++k)bytes[at+k]=uint8_t(bits>>(24-8*k));
+                continue;
+            }
+            if(kind==Kind::units && (name=="shield" || name=="sword")) {
+                if(!value.is_boolean())return where+"：要是 true 或 false";
+                const uint8_t bit=name=="sword"?1:2;
+                bytes[record+0x18]=uint8_t(value.get<bool>()?here(record+0x18)|bit:here(record+0x18)&~bit);
+                continue;
+            }
+            if(kind==Kind::units && name=="size") {
+                const auto found=value.is_string()?std::find(sizes.begin(),sizes.end(),value.get<std::string>()):sizes.end();
+                if(found==sizes.end())return where+"：要是 SS、S、M、L 或 LL";
+                bytes[record+0x04]=uint8_t((here(record+0x04)&0xC0)|(1u<<(found-sizes.begin())));
+                continue;
+            }
+            if(kind==Kind::units && name=="parts_slots") {
+                if(!value.is_number_integer() || value.get<int64_t>()<0 || value.get<int64_t>()>4)return where+"：要是 0–4 的整数";
+                bytes[record+0x19]=uint8_t(value.get<int>());
+                continue;
+            }
+            if(kind==Kind::pilots && name=="skills") {
+                if(!value.is_object())return where+"：要是对象";
+                const int r=pilot_record(rom,id);
+                const uint32_t rows=threshold_records+uint32_t(r)*threshold_record_size;
+                uint8_t bits=here(record+0x0F);
+                bool first_row=false;
+                for(const auto& [skill,levels]:value.items()) {
+                    const auto found=std::find_if(std::begin(skills),std::end(skills),[&](const Skill& k){return k.key==skill;});
+                    if(found==std::end(skills))return where+"：未知技能 "+skill+"（"+keys_of(skills)+"）";
+                    if(found->row==0) {
+                        if(first_row && !levels.is_null())return where+"：底力、NT、强化人、圣战士、超能力只能有一个";
+                        if(!levels.is_null())first_row=true;
+                    }
+                    if(levels.is_null()){bits&=uint8_t(~found->bit);continue;}
+                    if(!levels.is_array() || levels.empty() || levels.size()>9)return where+"."+skill+"：要是 1–9 个等级的数组，或 null 去掉";
+                    int last=0;
+                    for(const auto& l:levels) {
+                        if(!l.is_number_integer() || l.get<int64_t>()<1 || l.get<int64_t>()>99)return where+"."+skill+"：等级要是 1–99 的整数";
+                        if(l.get<int>()<last)return where+"."+skill+"：等级要从小到大";
+                        last=l.get<int>();
+                    }
+                    if(found->row==0)for(const auto& k:skills)if(k.row==0)bits&=uint8_t(~k.bit);
+                    bits|=found->bit;
+                    for(unsigned n=0;n<10;++n)bytes[rows+found->row*10+n]=uint8_t(n<levels.size()?levels[n].get<int>():0);
+                }
+                bytes[record+0x0F]=bits;
+                continue;
+            }
+            if(kind==Kind::pilots && name=="spirits") {
+                const int r=spirit_record(rom,id);
+                if(r<0)return where+"：这个人物没有精神记录";
+                if(!value.is_array() || value.size()>6)return where+"：要是最多 6 项的数组，每项 [精神, 等级]";
+                const uint32_t at=spirit_records+uint32_t(r)*spirit_record_size;
+                for(unsigned n=0;n<6;++n) {
+                    // An unused pair: a level no pilot reaches (800A63E0 counts every pair at or
+                    // below the pilot's level, a 0 included); the Library skips past 99 too.
+                    if(n>=value.size()){bytes[at+n*2]=0xFF;bytes[at+n*2+1]=0;continue;}
+                    const auto& item=value[n];
+                    if(!item.is_array() || item.size()!=2 || !item[0].is_string() || !item[1].is_number_integer())return where+"：每项要是 [精神, 等级]";
+                    const auto found=std::find(spirits.begin(),spirits.end(),item[0].get<std::string>());
+                    if(found==spirits.end()){std::string all;for(const auto k:spirits)all+=(all.empty()?"":"、")+std::string(k);return where+"：未知精神 "+item[0].get<std::string>()+"（"+all+"）";}
+                    const auto level=item[1].get<int64_t>();
+                    if(level<1 || level>99)return where+"：习得等级要是 1–99";
+                    if(n && level<value[n-1][1].get<int64_t>())return where+"：习得等级要从小到大";
+                    bytes[at+n*2]=uint8_t(level);bytes[at+n*2+1]=uint8_t(found-spirits.begin());
+                }
+                continue;
+            }
             const auto list=fields(kind);
             const auto field=std::find_if(list.begin(),list.end(),[&](const Field& f){return f.name==name;});
             if(field==list.end()) {
                 std::string known="terrain";
                 for(const auto& f:list)known+="、"+std::string(f.name);
+                if(kind==Kind::units)known+="、abilities、shield、sword、size、parts_slots";
+                if(kind==Kind::pilots)known+="、skills、spirits";
                 return key+"：未知字段 "+name+"（"+known+"）";
             }
             if(!value.is_number_integer())return key+"."+name+"：要是整数";
@@ -202,6 +317,7 @@ inline void refresh() {
     std::vector<std::pair<uint32_t,uint8_t>> list;
     for(const auto& [at,value]:merged)if(at<s.rom.size() && s.rom[at]!=value)list.emplace_back(at,value);
     upgrades::patches()=std::move(list);
+    upgrades::publish_patches();
     for(const auto& problem:found.problems)std::fprintf(stderr,"SRW64_MOD_DATA_PROBLEM %s\n",problem.c_str());
     std::fprintf(stderr,"SRW64_MOD_DATA bytes=%zu problems=%zu\n",found.bytes.size(),found.problems.size());
     if(!s.output.empty()) {

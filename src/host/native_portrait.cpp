@@ -11,6 +11,8 @@
 #include "native_gpu.hpp"
 #include "native_quads.hpp"
 #include "hd_texture.hpp"
+#include "mod_library.hpp"
+#include "portrait_identities_table.hpp"
 #include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
@@ -21,6 +23,7 @@
 #include <fstream>
 #include <map>
 #include <mutex>
+#include <optional>
 #include <stdexcept>
 #include <tuple>
 #include <vector>
@@ -42,7 +45,9 @@ constexpr auto kIdle = std::chrono::seconds(20);
 
 struct Asset {
     uint16_t image = 0;
+    int size = 0;                            // square; the manifest's, or a MOD picture's own
     std::filesystem::path file;
+    std::filesystem::file_time_type stamp{}; // a MOD picture's, to know a replaced file
     std::vector<std::vector<uint8_t>> levels;  // premultiplied RGBA8 mip chain, dropped after upload
     std::unique_ptr<gpu::Texture> texture;
     std::unique_ptr<plume::RenderDescriptorSet> set;
@@ -61,11 +66,24 @@ struct Draw {
 
 int size = 0;
 float silhouette_rgb[3]{};
-std::vector<Asset> assets;
+// Reserved once and never reallocated: draws on other threads index it while MOD pictures
+// join at the end (kCapacity bounds them).
+constexpr size_t kCapacity = 2048;
+std::vector<Asset> assets = [] { std::vector<Asset> v; v.reserve(kCapacity); return v; }();
 // The sprite record holds resource handles, so a portrait is recognised by FNV-1a 64
 // digests of the index and palette data its SETTIMGs point at: (pixels, palette) ->
 // (asset, silhouette). One pair of images shares its pixels and differs by palette.
 std::map<std::pair<uint64_t, uint64_t>, std::pair<int, bool>> by_content;
+// MOD portraits (art/portraits/<pilot>.png of the enabled packages, docs/design/mod-names-
+// art-data.md §2.2), the same identities, looked up before the HD pack's and drawn whether
+// or not the HD pictures are on: rebuilt when the packages change.
+std::map<std::pair<uint64_t, uint64_t>, std::pair<int, bool>> mod_by_content;
+std::map<unsigned, PilotImage> pilot_images;
+std::map<std::string, std::filesystem::path> mod_pages;          // original page picture -> MOD file
+std::mutex mod_mutex;
+std::optional<unsigned> mod_revision;
+mods::Version mod_game{-1, -1, -1};
+bool hooks_installed = false;
 std::mutex asset_mutex;                      // decoded levels and textures cross threads
 std::array<Draw, kRing> ring;
 std::mutex ring_mutex;
@@ -108,13 +126,13 @@ bool hd_enabled() {
 // scale never pulls colour from transparent texels.
 void decode(Asset& asset) {
     auto image = presentation::load_rgba(asset.file);
-    if (image.width != size || image.height != size) throw std::runtime_error("HD portrait size differs from the manifest: " + asset.file.string());
+    if (image.width != asset.size || image.height != asset.size) throw std::runtime_error("HD portrait size differs from the manifest: " + asset.file.string());
     std::vector<uint8_t> level = std::move(image.pixels);
     for (size_t i = 0; i < level.size(); i += 4)
         for (int c = 0; c < 3; ++c) level[i + c] = uint8_t((level[i + c] * level[i + 3] + 127) / 255);
     asset.levels.clear();
     asset.levels.push_back(std::move(level));
-    for (int s = size; s > 1; s /= 2) {
+    for (int s = asset.size; s > 1; s /= 2) {
         const auto& src = asset.levels.back();
         const int d = s / 2;
         std::vector<uint8_t> next(size_t(d) * d * 4);
@@ -141,7 +159,7 @@ void gl_prepare(Asset& asset) {
             if (other.gl_pixels && now - other.used > kIdle) { other.gl_pixels.reset(); ++released; }
     asset.used = now;
     hd_texture::Compressed c;
-    if (hd_texture::load(asset.file, c) && c.width == uint32_t(size) && c.height == uint32_t(size)) {
+    if (hd_texture::load(asset.file, c) && c.width == uint32_t(asset.size) && c.height == uint32_t(asset.size)) {
         asset.gl_pixels = c.data; asset.gl_format = c.format; asset.gl_levels = c.levels;
         ++decoded;
         return;
@@ -166,7 +184,7 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     asset.used = Clock::now();
     native_quads::Quad q;
     q.pixels = asset.gl_pixels;
-    q.width = q.height = uint32_t(size);
+    q.width = q.height = uint32_t(asset.size);
     q.format = asset.gl_format; q.levels = asset.gl_levels;
     std::copy(draw.rect, draw.rect + 4, q.rect);
     q.uv[0] = draw.flip ? 1.f : 0.f; q.uv[1] = 0; q.uv[2] = draw.flip ? 0.f : 1.f; q.uv[3] = 1;
@@ -196,7 +214,7 @@ plume::RenderDescriptorSet* texture_for(Asset& asset, plume::RenderCommandList* 
         if (resident >= kResident)
             for (auto& other : assets)
                 if (other.set && now - other.used > kIdle) { other.set.reset(); other.texture.reset(); ++released; }
-        asset.texture = std::make_unique<gpu::Texture>(uint32_t(size), uint32_t(size), plume::RenderFormat::R8G8B8A8_UNORM,
+        asset.texture = std::make_unique<gpu::Texture>(uint32_t(asset.size), uint32_t(asset.size), plume::RenderFormat::R8G8B8A8_UNORM,
                                                        std::move(asset.levels));
         asset.levels.clear();
         asset.levels.shrink_to_fit();
@@ -235,6 +253,20 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
 #endif
 }
 
+void install() {
+    if (hooks_installed) return;
+    hooks_installed = true;
+#ifdef SRW64_GL_ONLY
+    native_quads::add(gl_quads);
+#else
+    // Chain after marker/hdmap, which install their hooks first.
+    previous_classify = RT64::GetNativeMeshClassify();
+    previous_render = RT64::GetNativeMeshRender();
+    RT64::SetNativeMeshHooks(classify, render);
+#endif
+    for (int c = 0; c < 3; ++c) silhouette_rgb[c] = kSilhouetteRgb[c] / 255.f;
+}
+
 void configure(const std::filesystem::path& art_directory, const std::filesystem::path& directory) {
     const auto spec_path = art_directory / "srw64-portraits-hd.json";
     if (!std::filesystem::exists(spec_path)) return;
@@ -245,28 +277,98 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
     size = spec.at("size").get<int>();
     if (size < 96 || size > 2048 || size % 96 != 0) throw std::runtime_error("Unsupported HD portrait size");
     const uint64_t silhouette = hex64(spec.at("silhouette").at("palette_fnv1a64"));
+    install();
     for (int c = 0; c < 3; ++c) silhouette_rgb[c] = spec.at("silhouette").at("rgb")[c].get<float>() / 255.f;
+    std::lock_guard lock(asset_mutex);
     for (const auto& row : spec.at("images")) {
         Asset asset;
         asset.image = row.at("image").get<uint16_t>();
+        asset.size = size;
         asset.file = art_directory / row.at("file").get<std::string>();
         if (!hd_texture::exists(asset.file)) throw std::runtime_error("Missing HD portrait " + asset.file.string());
+        if (assets.size() >= kCapacity) throw std::runtime_error("Too many portraits");
         const uint64_t pixels = hex64(row.at("pixels_fnv1a64"));
         if (!by_content.emplace(std::make_pair(pixels, hex64(row.at("palette_fnv1a64"))), std::make_pair(int(assets.size()), false)).second)
             throw std::runtime_error("Duplicate HD portrait identity");
         by_content.emplace(std::make_pair(pixels, silhouette), std::make_pair(int(assets.size()), true));
         assets.push_back(std::move(asset));
     }
-    if (assets.empty()) return;
-#ifdef SRW64_GL_ONLY
-    native_quads::add(gl_quads);
-#else
-    // Chain after marker/hdmap, which install their hooks first.
-    previous_classify = RT64::GetNativeMeshClassify();
-    previous_render = RT64::GetNativeMeshRender();
-    RT64::SetNativeMeshHooks(classify, render);
-#endif
     fprintf(stderr, "SRW64_HD_PORTRAITS loaded %zu portrait(s) at %dpx\n", assets.size(), size);
+}
+
+void set_pilot_images(std::map<unsigned, PilotImage> images) {
+    std::lock_guard lock(mod_mutex);
+    pilot_images = std::move(images);
+    mod_revision.reset();
+}
+
+namespace {
+// Game thread, from rewrite: the enabled packages' art/portraits/<pilot>.png again when they
+// change. A picture is square, 96 to 2048 pixels and a multiple of 96; the upper package wins.
+void refresh_mods() {
+    const unsigned now = mods::revision();
+    const auto game = mods::game_version();
+    std::lock_guard lock(mod_mutex);
+    if (mod_revision == now && game == mod_game) return;
+    mod_revision = now; mod_game = game;
+    std::map<unsigned, std::filesystem::path> files;
+    std::vector<std::string> problems;
+    std::error_code error;
+    for (const auto& p : mods::installed(game)) {
+        const auto dir = p.folder / "art" / "portraits";
+        if (!p.active || !std::filesystem::is_directory(dir, error)) continue;
+        for (const auto& item : std::filesystem::directory_iterator(dir, error)) {
+            const auto stem = item.path().stem().string();
+            auto ext = item.path().extension().string();
+            std::transform(ext.begin(), ext.end(), ext.begin(), [](unsigned char c) { return char(std::tolower(c)); });
+            if (ext != ".png") continue;
+            const bool number = !stem.empty() && stem.size() <= 3 && std::all_of(stem.begin(), stem.end(), [](char c) { return c >= '0' && c <= '9'; }) &&
+                                !(stem.size() > 1 && stem[0] == '0');
+            const unsigned pilot = number ? unsigned(std::stoul(stem)) : 0;
+            if (!number || !pilot_images.contains(pilot)) { problems.push_back(p.id() + " art/portraits/" + item.path().filename().string() + "：文件名要是有头像的人物号"); continue; }
+            int w = 0, h = 0, n = 0;
+            if (!stbi_info(item.path().string().c_str(), &w, &h, &n) || w != h || w < 96 || w > 2048 || w % 96) {
+                problems.push_back(p.id() + " art/portraits/" + item.path().filename().string() + "：要是 96–2048 像素、96 的倍数的正方形 PNG");
+                continue;
+            }
+            files[pilot] = item.path();
+        }
+    }
+    std::map<std::pair<uint64_t, uint64_t>, std::pair<int, bool>> table;
+    std::map<std::string, std::filesystem::path> pages;
+    for (const auto& [pilot, file] : files) pages[pilot_images.at(pilot).path] = file;
+    {
+        std::lock_guard assets_lock(asset_mutex);
+        for (const auto& [pilot, file] : files) {
+            const uint16_t image = pilot_images.at(pilot).image, palette = pilot_images.at(pilot).palette;
+            const auto identity = std::find_if(std::begin(kIdentities), std::end(kIdentities),
+                                               [&](const Identity& i) { return i.image == image && i.palette == palette; });
+            if (identity == std::end(kIdentities)) { problems.push_back("art/portraits/" + std::to_string(pilot) + ".png：这个人物的头像认不出来"); continue; }
+            int w = 0, h = 0, n = 0;
+            stbi_info(file.string().c_str(), &w, &h, &n);
+            const auto stamp = std::filesystem::last_write_time(file, error);
+            // A picture already loaded (same file, size and time) is used again.
+            int index = -1;
+            for (size_t i = 0; i < assets.size(); ++i)
+                if (assets[i].file == file && assets[i].size == w && assets[i].stamp == stamp) index = int(i);
+            if (index < 0) {
+                if (assets.size() >= kCapacity) { problems.push_back("too many MOD portraits"); break; }
+                Asset asset;
+                asset.stamp = stamp;
+                asset.size = w;
+                asset.file = file;
+                index = int(assets.size());
+                assets.push_back(std::move(asset));
+            }
+            table[{identity->pixels, identity->palette_digest}] = {index, false};
+            table[{identity->pixels, kSilhouettePalette}] = {index, true};
+        }
+    }
+    mod_by_content = std::move(table);
+    mod_pages = std::move(pages);
+    for (const auto& problem : problems) fprintf(stderr, "SRW64_MOD_PORTRAITS_PROBLEM %s\n", problem.c_str());
+    fprintf(stderr, "SRW64_MOD_PORTRAITS portraits=%zu problems=%zu\n", files.size(), problems.size());
+}
 }
 
 void gpu_init() {
@@ -276,8 +378,19 @@ void gpu_init() {
 #endif
 }
 
+std::string mod_picture(const std::string& original_path) {
+    refresh_mods();
+    std::lock_guard lock(mod_mutex);
+    const auto found = mod_pages.find(original_path);
+    return found == mod_pages.end() ? std::string() : found->second.string();
+}
+
 void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
-    if (assets.empty() || !hd_enabled()) return;
+    if (!hooks_installed) return;
+    refresh_mods();
+    bool any_mod;
+    { std::lock_guard lock(mod_mutex); any_mod = !mod_by_content.empty(); }
+    if (!any_mod && (by_content.empty() || !hd_enabled())) return;
     // The drawer loads the palette (SETTIMG RGBA16 FD10 + LoadTLUT of 64 entries), then
     // writes nine 24-byte texture rectangles (E4 + E1 + F1), each after its CI8 SETTIMG
     // (FD48, width 96 or 97), tile load and SETTILESIZE. A flipped portrait starts every
@@ -310,9 +423,17 @@ void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
             ++unexpected_shapes[std::to_string(rects.size()) + "/" + std::to_string((x1 - x0) / 4) + "/" + std::to_string((y1 - y0) / 4) + "/" + std::to_string(width)];
         return;
     }
-    const auto found = by_content.find({digest(rdram, image, width * width), digest(rdram, palette, 128)});
-    if (found == by_content.end()) { ++unknown; return; }
-    Asset& asset = assets[size_t(found->second.first)];
+    const std::pair<uint64_t, uint64_t> key{digest(rdram, image, width * width), digest(rdram, palette, 128)};
+    std::pair<int, bool> hit{-1, false};
+    {
+        std::lock_guard lock(mod_mutex);
+        if (const auto m = mod_by_content.find(key); m != mod_by_content.end()) hit = m->second;
+    }
+    if (hit.first < 0 && hd_enabled())
+        if (const auto f = by_content.find(key); f != by_content.end()) hit = f->second;
+    if (hit.first < 0) { ++unknown; return; }
+    const auto found = std::make_pair(key, hit);
+    Asset& asset = assets[size_t(found.second.first)];
     {
         std::lock_guard lock(asset_mutex);
 #ifdef SRW64_GL_ONLY
@@ -322,9 +443,9 @@ void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
 #endif
     }
     Draw record;
-    record.asset = found->second.first;
+    record.asset = found.second.first;
     record.flip = flip;
-    record.silhouette = found->second.second;
+    record.silhouette = found.second.second;
     record.rect[0] = x0 / 4.0f; record.rect[1] = y0 / 4.0f;
     record.rect[2] = x1 / 4.0f; record.rect[3] = y1 / 4.0f;
     // In the battle the portrait moves to its corner with the tiles it replaces (battle_hud.hpp).

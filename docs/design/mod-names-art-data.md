@@ -1,6 +1,6 @@
 # 两个 MOD 的规划：原创人物名字、人物与机体数据
 
-2026-10-27。规划两类 MOD 包，接在[MOD 包](mod-packages.md)的格式与[数值 MOD](mod-packages.md)（§5 末尾，`src/host/mod_data.hpp`）之后。MOD 一已实现（`src/host/mod_names.hpp`，见 §1「实现」）；MOD 二的数值第一批已实现（§2.3），名字与头像还是设计。
+2026-10-27。规划两类 MOD 包，接在[MOD 包](mod-packages.md)的格式与[数值 MOD](mod-packages.md)（§5 末尾，`src/host/mod_data.hpp`）之后。MOD 一、MOD 二都已实现（2026-10-27）：名字 `src/host/mod_names.hpp`，数值 `src/host/mod_data.hpp`，头像 `src/host/native_portrait.cpp`。玩家文档在官网「数值 MOD」「名字与头像 MOD」。
 
 - **MOD 一：原创人物与部队的名字**。改 64 原创的八个人（四条路线的主角和搭档）和部队名。
 - **MOD 二：人物、机体、武器**。改任何人物的姓名和头像，机体名、武器名，人物能力、机体能力、武器威力。
@@ -96,6 +96,8 @@ yourname.heroes/
 
 ### 2.1 名字
 
+**已实现**：`names.json` 的 `pilots`／`units`／`weapons` 分区进 `mod_names::record`，`native_dialogue.cpp` 的 `record_text` 先查它（比对画面原文的 `GuestText` 下不查）；武器菜单名把语言目录里的菜单名中纯名那一段换掉，前后的 格／射、P／B／MAP 原样保留。日文＋F6 原版图下，覆盖层的 `name_label` 也认这些记录。人物号 25–32（原创八人）在这里报错，要写进 `heroes`。实机：中文状态页、武器页显示了 MOD 的机体名、武器名（2026-10-27）。
+
 ```json
 // dialogue/names.json（与 MOD 一同一个文件，另几个分区）
 {
@@ -118,6 +120,8 @@ yourname.heroes/
 3. **长度**。同 MOD 一：超过原版格数或现有最长译名宽度只警告；硬上限人物名、机体名、武器名各 24 个字符，超过整份不用。太长的武器名在战斗演出的武器名条上会挤。
 
 ### 2.2 头像
+
+**已实现**：`native_portrait.cpp` 的 `install()` 不论有没有 HD 包都装上绘制钩子；`refresh_mods()` 在包变化时读 `art/portraits/<人物号>.png`，人物号经 `battle_assets.portraits` 找到原版 (图像, 调色板)，再按 `content/art/portrait-identities.json`（从 HD 包清单抽出的摘要，`tools/content/portrait_identities.py` 生成 `portrait_identities_table.hpp`）认出画面上的头像。MOD 头像先于 HD 包查，F6 原版图也显示（用户定）。原生页面经 `frontend.cpp` 的 `portrait_path` → `portraits::mod_picture` 取同一张。正方形 96–2048、96 的倍数；不合格的报 `SRW64_MOD_PORTRAITS_PROBLEM`。实机：状态页、驾驶员页在原版图模式下显示了 MOD 头像。
 
 ```text
 art/portraits/<人物号>.png     768×768（或 96 的整数倍），RGBA，直通 alpha
@@ -180,7 +184,13 @@ art/portraits/<人物号>.png     768×768（或 96 的整数倍），RGBA，直
 
 一句话：机体和武器威力、最大射程装上 MOD 后进地图或场间就生效；武器其余字段和人物能力要读一次档（或新开），人物升级时也会更新。
 
-**还没做**（字段含义或写法未定）：机体特殊能力（+1C 位，其实每次重算都读，可以做）、尺寸（+4 低位，高两位是每台的状态）、盾／剑（+18）、部件槽（+19）、武器标记（+0 格斗／MAP、+F 合体）、武器改造类型（+E）、人物技能（+F 位与阈值表 `0x7B1B0`）、精神（`0x7CFB0`，映射是另一张 `D_800CA6F4`）。
+**第二批（同日）**：机体 `abilities`（+1C，只动 13 个可命名的位，变形／合体／分离保持原版）、`size`（+4 低五位，高两位是每台的状态）、`shield`／`sword`（+18 位 2／1）、`parts_slots`（+19，0–4）；人物 `skills`（+F 位与阈值表 `0x7B1B0` 的行：NT、强化人、圣战士、超能力、底力共用第 0 行只能有一个，切落第 1 行、盾防第 2 行）、`spirits`（映射 `D_800CA6F4` → `0x7CFB0` 六对，没写的对写等级 255，`800A63E0` 数到的就不会多）。
+
+宿主自己直接读这些表的地方（`cheats.cpp` 的部件槽、`spirit_learning.hpp`、战斗查看器、能力页的合体技威力、改造页的上限）改走 `upgrades::game_byte`：拷贝补丁表的同一份字节，任何线程可读（`publish_patches`）。
+
+**存读档实测**（Mac，2026-10-27）：装着包在关内中断存档 → 读档，数值全是 MOD 的；停用包回标题读同一个中断存档，机体 HP 10000、移动 5、装甲 1400、无特殊能力，武器威力 1700、射程 1–5，人物格斗 148、技能位 0x5、精神原版，全部回到原版；再启用包读档又全是 MOD 的。查出并修好两处：部件槽被作弊的槽位回收按原始 ROM 写回 0（改走 `game_byte`）；精神没写的对原来写 0，被当成 1 级已学会（改写 255）。
+
+**仍没做**：武器标记（+0 格斗／MAP、+F 合体）、武器改造类型（+E，改造规则文件里有）、加新武器或改武器列表。
 
 **共用**要在工具和文档里写明：
 

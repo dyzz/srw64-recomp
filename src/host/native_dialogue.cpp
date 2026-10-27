@@ -1,4 +1,5 @@
 #include "native_dialogue.hpp"
+#include "mod_names.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
 #include "battle_hud.hpp"
@@ -161,7 +162,21 @@ std::string record_text(const uint8_t* ram,const localization::Catalog& catalog,
     if(const auto* slot=entered_name(id))
         if(auto name=decode(ram,slot->address,16);!name.empty())return shown_name(name,*slot,catalog.locale);
     const auto* value=catalog.resolve(localization::TextKey::base(0,id));
-    return value?expand(ram,*value,catalog.locale):std::string();
+    auto text=value?expand(ram,*value,catalog.locale):std::string();
+    // A MOD's name for a pilot, unit or weapon (mod_names.hpp); never where the guest's own
+    // Japanese is compared. A weapon's menu name keeps its markers around the new name.
+    if(catalog.locale!="ja" || !names::guest_text_depth()) {
+        names::default_names();   // refreshes the packages' names
+        if(auto modded=mod_names::record(catalog.locale,id))return *modded;
+        if(id>=mod_names::text_weapon_menu && id<mod_names::text_weapon_menu+mod_names::weapon_count)
+            if(auto modded=mod_names::record(catalog.locale,uint16_t(id-mod_names::text_weapon_menu+mod_names::text_weapon))) {
+                const auto* pure=catalog.resolve(localization::TextKey::base(0,uint16_t(id-mod_names::text_weapon_menu+mod_names::text_weapon)));
+                const auto plain=pure?expand(ram,*pure,catalog.locale):std::string();
+                const auto at=plain.empty()?std::string::npos:text.find(plain);
+                return at==std::string::npos?*modded:text.substr(0,at)+*modded+text.substr(at+plain.size());
+            }
+    }
+    return text;
 }
 // A record's Japanese as the guest draws it: names as stored, whatever a package names
 // them, to compare against what a label or body holds.
@@ -824,7 +839,14 @@ std::string label_text(const uint8_t* ram,uint32_t label) {
     return record_text(ram,localization::catalog(),id);
 }
 bool name_label(const uint8_t* ram,uint32_t label) {
-    return enabled && entered_name(half(ram,label&0x1FFFFFFF))!=nullptr;
+    if(!enabled)return false;
+    const uint16_t id=half(ram,label&0x1FFFFFFF);
+    if(entered_name(id))return true;
+    // A record a MOD names in the reading language (a weapon's menu name by its plain one).
+    const auto& locale=localization::catalog().locale;
+    const uint16_t plain=id>=mod_names::text_weapon_menu && id<mod_names::text_weapon_menu+mod_names::weapon_count?
+        uint16_t(id-mod_names::text_weapon_menu+mod_names::text_weapon):id;
+    return mod_names::record(locale,id) || mod_names::record(locale,plain);
 }
 std::string glyph_text(const uint8_t* ram,uint32_t address,size_t limit) {
     return enabled?decode(ram,address&0x1FFFFFFF,limit):std::string();

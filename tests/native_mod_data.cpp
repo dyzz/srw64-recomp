@@ -62,6 +62,30 @@ int main(int argc,char** argv) {
     check(weapon(R"({"731":{"hit":"5"}})").find("整数")!=std::string::npos && weapon(R"({"731":{"hit":1.5}})").find("整数")!=std::string::npos,"integers only");
     check(weapon(R"({"1329":{"power":100}})").find("超出范围")!=std::string::npos,"weapon numbers in range");
 
+    // Abilities keep the bits a file cannot name (forms); size keeps +4's high bits; skills
+    // write their threshold row; spirits their six pairs.
+    {
+        mod_data::Bytes b;
+        check(mod_data::parse(json::parse(R"({"184":{"abilities":["i_field","hp_regen_20"],"shield":true,"sword":false,"size":"LL","parts_slots":4}})"),mod_data::Kind::units,rom,b).empty(),"unit equipment");
+        const uint32_t rom_bits=uint32_t(rom[unit_at+0x1C])<<24|rom[unit_at+0x1D]<<16|rom[unit_at+0x1E]<<8|rom[unit_at+0x1F];
+        const uint32_t bits=uint32_t(b[unit_at+0x1C])<<24|b[unit_at+0x1D]<<16|b[unit_at+0x1E]<<8|b[unit_at+0x1F];
+        check(bits==((rom_bits&0x1C2)|0x20|0x8),"abilities replace the nameable bits only");
+        check(b[unit_at+0x18]==((rom[unit_at+0x18]|2)&~1) && b[unit_at+4]==((rom[unit_at+4]&0xC0)|0x10) && b[unit_at+0x19]==4,"shield, size, slots");
+        b.clear();
+        check(mod_data::parse(json::parse(R"({"133":{"skills":{"newtype":[1,4,8,12,18,24,30,38,45],"parry":null},"spirits":[["focus",1],["valor",10],["soul",40]]}})"),mod_data::Kind::pilots,rom,b).empty(),"skills and spirits");
+        const uint32_t rows=mod_data::threshold_records+110*mod_data::threshold_record_size;
+        check(b[pilot_at+0xF]==((rom[pilot_at+0xF]&~0x7D)|0x08) && b[rows]==1 && b[rows+8]==45 && b[rows+9]==0,"newtype on row 0, parry off");
+        const int sr=mod_data::spirit_record(rom,133);
+        const uint32_t sp=mod_data::spirit_records+uint32_t(sr)*mod_data::spirit_record_size;
+        check(sr>=0 && b[sp]==1 && b[sp+1]==4 && b[sp+3]==11 && b[sp+5]==17 && b[sp+6]==0xFF && b[sp+7]==0 && b[sp+10]==0xFF,"spirits as (level, command) pairs, unused ones out of reach");
+        const auto pilot=[&](const char* text){mod_data::Bytes x;return mod_data::parse(json::parse(text),mod_data::Kind::pilots,rom,x);};
+        check(!pilot(R"({"133":{"skills":{"newtype":[1],"esp":[2]}}})").empty(),"one first-row skill");
+        check(!pilot(R"({"133":{"skills":{"newtype":[5,1]}}})").empty() && !pilot(R"({"133":{"skills":{"newtype":[]}}})").empty(),"levels ascending, not empty");
+        check(!pilot(R"({"133":{"spirits":[["focus",5],["valor",1]]}})").empty() && !pilot(R"({"133":{"spirits":[["fly",1]]}})").empty(),"spirits ascending, known");
+        mod_data::Bytes x;
+        check(!mod_data::parse(json::parse(R"({"184":{"abilities":["transform"]}})"),mod_data::Kind::units,rom,x).empty(),"forms are not a file's to give");
+    }
+
     // The file rules; a bad file adds nothing.
     check(!why(json::array(),false,rom).empty(),"the top is an object");
     check(!why(json::parse(R"({"0184":{}})"),false,rom).empty() && !why(json::parse(R"({"x":{}})"),false,rom).empty(),"numbers are plain decimals");
@@ -98,6 +122,7 @@ int main(int argc,char** argv) {
     mod_data::refresh();
     check(upgrades::patches()==std::vector<std::pair<uint32_t,uint8_t>>{{0x100,7},{unit+1,3},{unit+2,4}},"patches merged");
     check(fs::is_regular_file(dir/"mod-data.json"),"a report");
+    check(upgrades::game_byte(rom,unit+1)==3 && upgrades::game_byte(rom,0x100)==7 && upgrades::game_byte(rom,unit+3)==rom[unit+3],"the bytes as other threads read them");
     mods::set_enabled("test.lower",false);
     mod_data::refresh();
     check(upgrades::patches()==std::vector<std::pair<uint32_t,uint8_t>>{{0x100,7},{unit+2,4}},"again when the packages change");
