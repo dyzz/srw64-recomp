@@ -190,6 +190,21 @@ public class SRW64Activity extends SDLActivity {
     }
     public int modPickStatus() { return modPick; }
 
+    // The About page's "Import HD pack" (frontend.cpp): the host quits next as the window
+    // would, and main() below hands over to the launcher's HD picker.
+    private volatile boolean importHd;
+    public boolean importHdAfterQuit() { importHd = true; return true; }
+
+    @Override
+    protected void main() {
+        super.main();
+        if (!importHd) return;
+        // The host has returned and reads no more of hd/. The saves go out to the player's
+        // folder first, since this process ends without onPause.
+        await(folder -> folder.saves(SetupActivity.userDir(this)));
+        Relaunch.start(this, new Intent(this, SetupActivity.class).setAction(SetupActivity.IMPORT_HD));
+    }
+
     // The picked file into the private mods/ under its own name (a name without a package
     // extension gets .srw64mod, so the host looks at it and says what is wrong with it).
     private void takeMod(Uri uri) {

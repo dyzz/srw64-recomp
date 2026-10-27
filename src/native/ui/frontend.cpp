@@ -1481,6 +1481,7 @@ bool save_export_pending=false;
 void save_export_poll() {
     if(!save_export_pending)return;
     const int status=android_export_status("saveExportStatus");
+bool hd_import_confirm=false;   // the About page's Import HD Pack, pressed once
     if(status==1)return;
     save_export_pending=false;
     save_message=localization::catalog().ui(status==2?"settings_save_export_saved":status==3?"settings_save_export_cancelled":"settings_save_export_failed");
@@ -2163,6 +2164,17 @@ std::string about_rows() {
     if(!update::supported())return rows+debug_row();
     const auto s=update::status(update::site_language(localization::catalog().locale));
     using update::State;
+#ifdef __ANDROID__
+    // The HD pack, which the launcher installs (SetupActivity.importHd) while the game is
+    // closed: asked twice, then the game quits and the launcher's picker opens.
+    {
+        const auto s=update::status("en");
+        std::string hd=update_hd_words(!s.hd.installed?"update_hd_missing":s.hd.version.empty()?"update_hd_unknown":"update_hd_installed",s)+
+            " "+label(hd_import_confirm?"update_hd_import_warning":"update_hd_import_note");
+        rows+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("settings_update_hd")+"</div><div class='set-seg'>"+
+            button("update-hd-import",label(hd_import_confirm?"update_hd_import_confirm":"update_hd_import"))+"</div></div><p>"+hd+"</p></div>";
+    }
+#endif
     const char* key=s.state==State::Checking?"update_status_checking":s.state==State::Current?"update_status_current":
         s.state==State::Available?"update_status_available":s.state==State::Failed?"update_status_failed":"update_status_unchecked";
     std::string actions=button("update-check",label("update_check"),false,s.state==State::Checking);
@@ -3423,6 +3435,9 @@ void settings_sync() {
     if(!settings_open){update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
 #ifdef __ANDROID__
     mod_pick_poll();   // before the MOD page's early return below, which keeps an unchanged page as it is
+#ifdef __ANDROID__
+    if(!settings_open)hd_import_confirm=false;
+#endif
 #endif
     if(viewer_open){viewer_sync();return;}
     if(title_return_ask_open) {
@@ -3541,6 +3556,7 @@ void settings_sync() {
 #endif
         // The General page's bezel and filter rows and their picker.
         (settings_pages[settings_page]==std::string("general")?look_stamp():std::string())+
+        std::to_string(hd_import_confirm)+
         // The Cheats page: its switches, the levels row and the pilots the menu lists.
         (settings_pages[settings_page]==std::string("cheats")?cheats_stamp():std::string())+
         // The About page: the update check as it goes.
@@ -5356,6 +5372,16 @@ void choose(const std::string& id) {
     if(id=="update-hd-download"){open_page(update::status(update::site_language(localization::catalog().locale)).hd.download);settings_focus=id;return;}
     if(id.starts_with("about-link:")) {
         const auto which=id.substr(11);
+#ifdef __ANDROID__
+    // The second press quits as the window would; the activity then opens the launcher's
+    // HD picker in a new process (SRW64Activity.importHdAfterQuit).
+    if(id=="update-hd-import") {
+        if(!hd_import_confirm){hd_import_confirm=true;settings_focus=id;return;}
+        hd_import_confirm=false;
+        if(android_call("importHdAfterQuit")){SDL_Event quit{};quit.type=SDL_QUIT;SDL_PushEvent(&quit);}
+        return;
+    }
+#endif
         open_page(which=="site"?std::string(update::kSite)+"/"+update::site_language(localization::catalog().locale)+"/":
                   which=="issues"?std::string(update::kIssues):std::string(update::kSource));
         settings_focus=id;return;

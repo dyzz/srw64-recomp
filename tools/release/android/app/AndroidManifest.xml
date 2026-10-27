@@ -44,6 +44,13 @@
             android:configChanges="layoutDirection|locale|fontScale|orientation|uiMode|screenLayout|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:preferMinimalPostProcessing="true"
             android:exported="false" />
+        <!-- The game closed for an HD import: the launcher again, in a new process (Relaunch). -->
+        <activity android:name=".Relaunch"
+            android:process=":relaunch"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:exported="false" />
         <!-- The player's data folder in the Files app (UserFilesProvider). -->
         <provider android:name=".UserFilesProvider"
             android:authorities="org.srw64.game.user"

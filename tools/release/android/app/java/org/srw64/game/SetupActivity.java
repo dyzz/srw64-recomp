@@ -31,9 +31,10 @@ import java.util.zip.ZipInputStream;
 //
 // It also installs the HD pack, the same Marchwind64-HD-<hd version>.zip as on computers: its hd/
 // folder is unpacked into the user directory (files/user/hd), where the host looks for it
-// (src/native/app/launch.cpp). Three ways in: offered once after the ROM is chosen, the
-// launcher icon's "Import HD pack" shortcut (res/xml/shortcuts.xml), and opening the zip
-// with this app from a file manager or browser.
+// (src/native/app/launch.cpp). Four ways in: offered once after the ROM is chosen, the
+// launcher icon's "Import HD pack" shortcut (res/xml/shortcuts.xml), opening the zip
+// with this app from a file manager or browser, and the game's About page, which quits the
+// game and comes here through Relaunch.
 public class SetupActivity extends Activity {
     static final String IMPORT_HD = "org.srw64.game.IMPORT_HD";
     private static final int PICK_ROM = 1, PICK_HD = 2, PICK_FOLDER = 3;
