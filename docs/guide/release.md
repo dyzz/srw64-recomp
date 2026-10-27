@@ -56,7 +56,7 @@ gh run download <运行号> --repo dyzz/srw64-recomp -n Marchwind64-linux-x64-en
 openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -pass file:$HOME/.config/srw64/ci-artifact-key -in Marchwind64-linux-x64.tar.gz.enc -out Marchwind64-linux-x64.tar.gz
 ```
 
-Windows 包同样下载 `Marchwind64-windows-x64-encrypted`，解开后是 `Marchwind64-windows-x64` 文件夹，压成 zip 再附上。
+Windows 包同样下载 `Marchwind64-windows-x64-encrypted`，解开后是 `Marchwind64-windows-x64` 文件夹，压成 zip 再附上。**压的是这个文件夹本身**（在它的上一级 `zip -r … Marchwind64-windows-x64`），zip 顶层必须是 `Marchwind64-windows-x64/` 一层，附上前 `unzip -l … | head` 核对：安装页写的就是这个文件夹，历代包都如此；0.5.1 曾压成文件直接在根上，玩家按老办法解压覆盖时新文件落在旧 exe 的上一层，游戏仍是旧版、标题一直提示新版本（已发布的资产不再动，从下一版起注意）。
 安卓包下载 `SRW64-android-arm64-encrypted`，解开后就是 APK（CI 用仓库里的发布密钥签名，能覆盖安装旧版并保留存档）；
 `android:versionName` 与 `versionCode` 在 `tools/release/android/app/AndroidManifest.xml`，发版时与根目录 `CMakeLists.txt` 一起改
 （versionCode＝主版本×10000＋次版本×100＋修订号，0.4.0 为 400，只能变大；`tests/test_release_version.py` 核对三处一致）。Steam 封面图在仓库的 `tools/release/linux/steam-art/`
