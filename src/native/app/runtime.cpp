@@ -8,7 +8,6 @@
 #include <chrono>
 #include <cstdio>
 #include <cstdlib>
-#include <cstring>
 #include <cwchar>
 #include <fstream>
 #include <optional>
@@ -240,18 +239,17 @@ std::string first_language(const std::vector<std::string>& preferred) {
             language+=char(std::tolower(static_cast<unsigned char>(c)));
         }
         if(language=="zh") {
-            // Traditional by script (zh-Hant-US) or by region (zh-TW, zh_HK.UTF-8, zh-MO).
-            std::string rest;
+            // The script when it is named (zh-Hans-TW, zh-Hant-US), else Traditional for
+            // Taiwan, Hong Kong and Macau (zh-TW, zh_HK.UTF-8, zh-MO).
+            std::vector<std::string> subtags(1);
             for(const char c:name.substr(2)) {
                 if(c=='.' || c=='@')break;
-                rest+=char(std::tolower(static_cast<unsigned char>(c)));
+                if(c=='-' || c=='_'){if(!subtags.back().empty())subtags.emplace_back();continue;}
+                subtags.back()+=char(std::tolower(static_cast<unsigned char>(c)));
             }
-            for(const auto* tag:{"hant","tw","hk","mo"})
-                for(size_t at=rest.find(tag);at!=std::string::npos;at=rest.find(tag,at+1)) {
-                    const size_t end=at+std::strlen(tag);
-                    if((at==0 || rest[at-1]=='-' || rest[at-1]=='_') && (end==rest.size() || rest[end]=='-' || rest[end]=='_'))
-                        return "zh-Hant";
-                }
+            const auto has=[&](const char* tag){return std::find(subtags.begin(),subtags.end(),tag)!=subtags.end();};
+            if(has("hans"))return "zh-Hans";
+            if(has("hant") || has("tw") || has("hk") || has("mo"))return "zh-Hant";
             return "zh-Hans";
         }
         if(language=="ja" || language=="en")return language;
