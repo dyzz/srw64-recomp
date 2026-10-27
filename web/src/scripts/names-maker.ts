@@ -9,7 +9,9 @@ type Hero = { route: string; role: 'hero' | 'partner'; ja: string[]; zh: string[
 type Person = { id: number; name: Names3; full: Names3; portrait: string | null; image: number | null };
 type Named = { id: number; name: Names3 };
 type Kind = 'pilots' | 'units' | 'weapons';
-type Picture = { png: Uint8Array; size: number; url: string };
+// A portrait: the picture given, the square of it the player framed (centre and zoom, 1 being
+// the largest square that fits), and the PNG made from that square.
+type Picture = { source: ImageBitmap; cx: number; cy: number; zoom: number; png: Uint8Array; size: number; url: string };
 
 // The package's languages and the page language's column of the data.
 const LOCALES = [['zh-Hans', 'zh', '中文'], ['en', 'en', 'English'], ['ja', 'ja', '日本語']] as const;
@@ -168,19 +170,71 @@ export function initNamesMaker() {
 
   // Previews as data: URLs (the site's policy allows no blob: images).
   const dataUrl = (png: Uint8Array) => { let s = ''; for (let i = 0; i < png.length; i += 0x8000) s += String.fromCharCode(...png.subarray(i, i + 0x8000)); return `data:image/png;base64,${btoa(s)}`; };
-  // Centre square, scaled to a multiple of 96 up to 768 (at least 96).
-  async function square(file: Blob): Promise<Picture> {
-    const bitmap = await createImageBitmap(file);
-    const side = Math.min(bitmap.width, bitmap.height);
+  const MAX_ZOOM = 5, VIEW = 192;   // CSS pixels of the framing window
+  // The square of the source the frame shows: its side and top-left corner, kept inside the picture.
+  function frame(pic: Picture) {
+    const side = Math.min(pic.source.width, pic.source.height) / pic.zoom;
+    pic.cx = Math.min(Math.max(pic.cx, side / 2), pic.source.width - side / 2);
+    pic.cy = Math.min(Math.max(pic.cy, side / 2), pic.source.height - side / 2);
+    return { side, x: pic.cx - side / 2, y: pic.cy - side / 2 };
+  }
+  // The framed square as a PNG, a multiple of 96 up to 768 (at least 96).
+  async function encode(pic: Picture) {
+    const { side, x, y } = frame(pic);
     const size = Math.min(768, Math.max(96, Math.floor(side / 96) * 96));
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = size;
     const g = canvas.getContext('2d')!;
     g.imageSmoothingQuality = 'high';
-    g.drawImage(bitmap, (bitmap.width - side) / 2, (bitmap.height - side) / 2, side, side, 0, 0, size, size);
+    g.drawImage(pic.source, x, y, side, side, 0, 0, size, size);
     const blob: Blob = await new Promise((resolve, reject) => canvas.toBlob((b) => b ? resolve(b) : reject(new Error('png')), 'image/png'));
-    const png = new Uint8Array(await blob.arrayBuffer());
-    return { png, size, url: dataUrl(png) };
+    pic.png = new Uint8Array(await blob.arrayBuffer());
+    pic.size = size;
+    pic.url = dataUrl(pic.png);
+  }
+  async function load(blob: Blob): Promise<Picture> {
+    const source = await createImageBitmap(blob);
+    const pic: Picture = { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: new Uint8Array(), size: 0, url: '' };
+    await encode(pic);
+    return pic;
+  }
+  // The framing window: drag to move, the slider or the wheel to zoom. The PNG follows a moment
+  // after the last change.
+  function framer(pic: Picture, done: () => void) {
+    const canvas = el('canvas', { class: 'framer', width: VIEW * devicePixelRatio, height: VIEW * devicePixelRatio }) as HTMLCanvasElement;
+    const zoom = el('input', { type: 'range', min: 1, max: MAX_ZOOM, step: 0.01, value: pic.zoom }) as HTMLInputElement;
+    const g = canvas.getContext('2d')!;
+    const draw = () => {
+      const { side, x, y } = frame(pic);
+      g.clearRect(0, 0, canvas.width, canvas.height);
+      g.imageSmoothingQuality = 'high';
+      g.drawImage(pic.source, x, y, side, side, 0, 0, canvas.width, canvas.height);
+    };
+    let timer = 0;
+    const changed = () => { draw(); clearTimeout(timer); timer = window.setTimeout(async () => { await encode(pic); done(); }, 250); };
+    let drag: { x: number; y: number; cx: number; cy: number } | null = null;
+    canvas.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY, cx: pic.cx, cy: pic.cy }; canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener('pointermove', (e) => {
+      if (!drag) return;
+      const perPixel = frame(pic).side / canvas.clientWidth;
+      pic.cx = drag.cx - (e.clientX - drag.x) * perPixel;
+      pic.cy = drag.cy - (e.clientY - drag.y) * perPixel;
+      changed();
+    });
+    canvas.addEventListener('pointerup', () => { drag = null; });
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      pic.zoom = Math.min(MAX_ZOOM, Math.max(1, pic.zoom * Math.exp(-e.deltaY / 500)));
+      zoom.value = String(pic.zoom); changed();
+    }, { passive: false });
+    zoom.addEventListener('input', () => { pic.zoom = Number(zoom.value); changed(); });
+    draw();
+    return el('div', { class: 'framing' }, canvas,
+      el('label', { class: 'zoom' }, text.zoom, zoom),
+      el('button', { type: 'button', class: 'mini', onclick: () => {
+        pic.zoom = 1; pic.cx = pic.source.width / 2; pic.cy = pic.source.height / 2; zoom.value = '1'; changed();
+      } }, text.resetFrame),
+      el('span', { class: 'hint' }, text.frameHint));
   }
   function renderPortraits() {
     for (const id of pictures.keys()) shown.add(id);
@@ -190,16 +244,19 @@ export function initNamesMaker() {
       file.addEventListener('change', async () => {
         const f = file.files?.[0];
         if (!f) return;
-        pictures.set(id, await square(f));
+        pictures.set(id, await load(f));
         renderPortraits(); facePicker.refresh();
       });
+      const result = pic ? el('img', { src: pic.url, alt: '' }) as HTMLImageElement : null;
+      const size = pic ? el('span', { class: 'hint' }, `${pic.size} × ${pic.size} PNG`) : null;
       return el('div', { class: 'card' },
-        el('h3', {}, el('span', { class: 'num' }, String(id)), nameOf(p.name)),
+        el('h3', {}, p.portrait ? el('img', { class: 'icon', src: p.portrait, alt: '', loading: 'lazy' }) : null, el('span', { class: 'num' }, String(id)), nameOf(p.name)),
+        pic ? framer(pic, () => { result!.src = pic.url; size!.textContent = `${pic.size} × ${pic.size} PNG`; }) : null,
         el('div', { class: 'faces' },
           p.portrait ? el('img', { src: p.portrait, alt: '', loading: 'lazy' }) : el('span', { class: 'hint' }, '—'),
           el('span', { class: 'arrow' }, '→'),
-          pic ? el('img', { src: pic.url, alt: '' }) : el('span', { class: 'hint' }, '?')),
-        pic ? el('span', { class: 'hint' }, `${pic.size} × ${pic.size} PNG`) : null,
+          result ?? el('span', { class: 'hint' }, '?')),
+        size,
         el('div', {}, el('label', { class: 'mini' }, text.choosePicture, file), ' ',
           el('button', { type: 'button', class: 'mini', onclick: () => {
             pictures.delete(id); shown.delete(id); renderPortraits(); facePicker.refresh();
@@ -282,9 +339,9 @@ export function initNamesMaker() {
               records[k].set(Number(id), row);
             }
         } else if (face && people.some((p) => p.id === Number(face[1]))) {
-          const blob = new Blob([bytes as BlobPart], { type: 'image/png' });
-          const bitmap = await createImageBitmap(blob);
-          pictures.set(Number(face[1]), { png: bytes, size: bitmap.width, url: dataUrl(bytes) });
+          // Framed already: the whole square, kept as it is until the frame is moved.
+          const source = await createImageBitmap(new Blob([bytes as BlobPart], { type: 'image/png' }));
+          pictures.set(Number(face[1]), { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: bytes, size: source.width, url: dataUrl(bytes) });
         } else kept[path] = bytes;
       }
       renderHeroes(); renderUnit(); renderRecords(); renderPortraits(); refresh(); facePicker.refresh();

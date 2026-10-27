@@ -52,7 +52,7 @@
 .maker .langs .lang { color: var(--muted); font-size: 13px; }
 .maker .langs .warn { color: var(--gold); font-size: 12.5px; grid-column: 2 / -1; }
 .maker .err { color: var(--pink); }
-.maker .portraits { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
+.maker .portraits { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 12px; margin-top: 12px; }
 .maker .faces { display: flex; gap: 10px; align-items: center; }
 .maker .faces img { width: 96px; height: 96px; border-radius: var(--radius); background: var(--bg-2); object-fit: contain; }
 .maker .arrow { color: var(--dim); }
@@ -80,3 +80,10 @@
 
 .maker .results button.on { border-color: var(--gold); background: var(--panel-2, var(--panel)); }
 .maker .card h3 .dim { color: var(--dim); font-size: 13px; font-weight: 400; }
+.maker .framing { display: grid; grid-template-columns: 192px 1fr; gap: 8px 12px; align-items: center; }
+.maker .framer { grid-row: span 3; width: 192px; height: 192px; border-radius: var(--radius); cursor: grab; touch-action: none;
+  background: repeating-conic-gradient(var(--bg-2) 0 25%, var(--panel) 0 50%) 0 0 / 16px 16px; outline: 2px solid var(--gold); outline-offset: -2px; }
+.maker .framer:active { cursor: grabbing; }
+.maker .zoom { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.maker .framing .mini { justify-self: start; }
+@media (max-width: 640px) { .maker .framing { grid-template-columns: 1fr; } .maker .framer { grid-row: auto; } }
