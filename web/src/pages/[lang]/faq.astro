@@ -1,11 +1,11 @@
 ---
 import { getEntry, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { langPaths, type Lang } from '../../i18n';
+import { langPaths, tl, type Lang } from '../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const entry = (await getEntry('pages', `faq/${lang}`))!;
+const entry = (await getEntry('pages', `faq/${tl(lang)}`))!;
 const { Content, headings } = await render(entry);
 ---
 <Base lang={lang} title={entry.data.title}>

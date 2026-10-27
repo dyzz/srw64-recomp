@@ -43,7 +43,9 @@ export function initBgmMaker() {
   const root = document.querySelector<HTMLElement>('[data-bgm]');
   const payload = document.getElementById('bgm-data');
   if (!root || !payload) return;
-  const { data, text, lang } = JSON.parse(payload.textContent!) as { data: Data; text: Text; lang: Lang };
+  // lang: the page's text language (zh on the Traditional page too); locale: the MOD text the
+  // description is written in (zh-Hant there).
+  const { data, text, lang, locale } = JSON.parse(payload.textContent!) as { data: Data; text: Text; lang: Lang; locale: string };
   const fill = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(v[k] ?? ''));
   const nameOf = (n: Names) => n[lang] || n.ja;
   const songInfo = new Map(data.songs.map((s) => [s.song, s]));
@@ -427,7 +429,6 @@ export function initBgmMaker() {
     const authors = field('authors').value.split(/[,，、]/).map((a) => a.trim()).filter(Boolean);
     if (authors.length) out.authors = authors; else delete out.authors;
     const description = field('description').value.trim();
-    const locale = lang === 'zh' ? 'zh-Hans' : lang;
     if (description) out.description = { ...(typeof keptManifest.description === 'object' ? keptManifest.description as object : {}), [locale]: description };
     else delete out.description;
     return { manifest: out, version };
@@ -500,8 +501,7 @@ export function initBgmMaker() {
       for (const l of ['zh-Hans', 'en', 'ja']) field(`name-${l}`).value = typeof mod.name === 'string' ? (l === 'en' ? mod.name : '') : mod.name?.[l] ?? '';
       field('authors').value = (mod.authors ?? []).join(', ');
       field('license').value = LICENSES.includes(mod.license) ? mod.license : '';
-      const locale = lang === 'zh' ? 'zh-Hans' : lang;
-      field('description').value = typeof mod.description === 'string' ? mod.description : mod.description?.[locale] ?? '';
+        field('description').value = typeof mod.description === 'string' ? mod.description : mod.description?.[locale] ?? '';
       for (const kind of ['pilot', 'unit'] as const)
         for (const [k, v] of Object.entries(music.battle?.[kind] ?? {})) if (Number.isInteger(v)) battle[kind].set(Number(k), v as number);
       renderBattle();

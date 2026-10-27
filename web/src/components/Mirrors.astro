@@ -3,7 +3,7 @@
 // download from GitHub: on the home page under the download button, atop the install page and
 // (compact: no note) under each platform's download there.
 import { mirrors } from '../data/release';
-import type { Lang } from '../i18n';
+import { tl, type Lang } from '../i18n';
 interface Props { lang: Lang; compact?: boolean; }
 const { lang, compact = false } = Astro.props;
 const t = {
@@ -16,11 +16,11 @@ const t = {
 ---
 {mirrors.length > 0 && (
   <p class:list={['mirrors', { compact }]}>
-    <span class="lead">{t.lead[lang]}</span>
+    <span class="lead">{t.lead[tl(lang)]}</span>
     {mirrors.map((m, i) => (
-      <>{i > 0 && <span class="sep"> · </span>}<a href={m.url} data-umami-event="download-mirror" data-umami-event-mirror={m.id} data-umami-event-language={lang}>{t[m.id][lang]}{m.passcode && t.passcode[lang].replace('{p}', m.passcode)}</a></>
+      <>{i > 0 && <span class="sep"> · </span>}<a href={m.url} data-umami-event="download-mirror" data-umami-event-mirror={m.id} data-umami-event-language={lang}>{t[m.id][tl(lang)]}{m.passcode && t.passcode[tl(lang)].replace('{p}', m.passcode)}</a></>
     ))}
-    {!compact && <span class="note">{lang === 'en' ? ' — ' : ' '}{t.note[lang]}</span>}
+    {!compact && <span class="note">{lang === 'en' ? ' — ' : ' '}{t.note[tl(lang)]}</span>}
   </p>
 )}
 

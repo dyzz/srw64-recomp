@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { canReview, langPaths, UI, type Lang } from '../../i18n';
+import { canReview, langPaths, UI, tl, type Lang } from '../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -19,27 +19,29 @@ const t = {
   },
 };
 ---
-<Base lang={lang} title={UI.nav.reviews[lang]} review={canReview(lang)}>
+<Base lang={lang} title={UI.nav.reviews[tl(lang)]} review={canReview(lang)}>
   {!canReview(lang) ? (
     <div class="wrap">
       <header class="page-head">
         <span class="tag">REVIEW</span>
-        <h1>{UI.nav.reviews[lang]}</h1>
-        <p>翻訳への意見は、中国語版と英語版のページで受け付けています。日本語版のページはゲームの原文をそのまま載せているため、意見の受付はありません。</p>
-        <p class="alt"><a href="/en/reviews/">English</a><a href="/zh/reviews/">简体中文</a></p>
+        <h1>{UI.nav.reviews[tl(lang)]}</h1>
+        {lang === 'ja'
+          ? <p>翻訳への意見は、中国語版と英語版のページで受け付けています。日本語版のページはゲームの原文をそのまま載せているため、意見の受付はありません。</p>
+          : <p>翻译意见在简体中文和英文页面提交。繁体中文由简体中文自动转换而来，修改简体中文后会一并更新，所以繁体页面不单独收意见。</p>}
+        <p class="alt"><a href="/en/reviews/" hreflang="en">English</a><a href="/zh/reviews/" hreflang="zh-Hans">简体中文</a></p>
       </header>
     </div>
   ) : (
   <div class="wrap" data-reviews data-lang={lang}>
     <header class="page-head">
       <span class="tag">REVIEW</span>
-      <h1>{UI.nav.reviews[lang]}</h1>
-      <p>{t.lead[lang]}</p>
+      <h1>{UI.nav.reviews[tl(lang)]}</h1>
+      <p>{t.lead[tl(lang)]}</p>
     </header>
 
     <div class="tabs" role="tablist" id="mine">
       {(['pending', 'questioned', 'processed', 'dismissed', 'mine'] as const).map((k, i) => (
-        <button type="button" role="tab" data-tab={k} aria-selected={i === 0 ? 'true' : 'false'}>{t.tabs[k][lang]}<span class="n" data-count={k}></span></button>
+        <button type="button" role="tab" data-tab={k} aria-selected={i === 0 ? 'true' : 'false'}>{t.tabs[k][tl(lang)]}<span class="n" data-count={k}></span></button>
       ))}
     </div>
     <div class="results" data-results hidden></div>

@@ -1,12 +1,13 @@
 // /<lang>/docs/<slug>.md: a technical page as plain Markdown, for AI agents and tools (listed in /llms.txt).
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { shownIn } from '../../../i18n';
 
 export async function getStaticPaths() {
   const docs = await getCollection('docs');
-  return docs.map((doc) => {
-    const [lang, slug] = doc.id.split('/');
-    return { params: { lang, slug }, props: { doc } };
+  return docs.flatMap((doc) => {
+    const [text, slug] = doc.id.split('/');
+    return shownIn(text).map((lang) => ({ params: { lang, slug }, props: { doc } }));
   });
 }
 

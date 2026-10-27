@@ -1,20 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import { UI, langPaths, type Lang } from '../../../i18n';
+import { UI, langPaths, tl, type Lang } from '../../../i18n';
 import { newestFirst } from '../../../lib/blog';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft)).sort(newestFirst);
+const posts = (await getCollection('blog', (p) => p.id.startsWith(`${tl(lang)}/`) && !p.data.draft)).sort(newestFirst);
 const lead = { zh: '版本说明与制作记录。', en: 'Release notes and development notes.', ja: 'リリースノートと制作記録。' };
 ---
-<Base lang={lang} title={UI.nav.blog[lang]}>
+<Base lang={lang} title={UI.nav.blog[tl(lang)]}>
   <div class="wrap">
     <header class="page-head">
       <span class="tag">BLOG</span>
-      <h1>{UI.nav.blog[lang]}</h1>
-      <p>{lead[lang]}</p>
+      <h1>{UI.nav.blog[tl(lang)]}</h1>
+      <p>{lead[tl(lang)]}</p>
     </header>
     <ul class="list">
       {posts.map((p) => (

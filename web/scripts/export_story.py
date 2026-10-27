@@ -10,8 +10,10 @@ the guide's progression cards for episode numbers and routes. Writes, under web/
 (git-ignored; regenerate on a machine with the ROM-derived assets):
 
   story/index.json            scenes in reading order, titles and episodes in ja/zh/en
+                              (titles in tw too, the Traditional Chinese the game shows)
   story/scenes/NNNN.json      one scene: events and lines, Japanese and both translations
-  story/search.json           one row per line, for the API's full-text search
+  story/search.json           one row per line, for the API's full-text search, with the
+                              game's zh-Hant text for the Traditional Chinese pages' search
 and web/public/gen/portraits/<image>.webp, the HD portraits (assets/hd-ai/portrait-batch/whole-v1)
 at 160 px.
 
@@ -46,6 +48,9 @@ HD_PORTRAITS = ROOT / "assets/hd-ai/portrait-batch/whole-v1"
 OUT = ROOT / "web/.data"
 GEN = ROOT / "web/public/gen"   # generated images the site serves (git-ignored)
 LOCALES = {"zh": "zh-Hans", "en": "en"}
+# The Traditional Chinese pages show zh converted (web/scripts/zh_hant_pages.py); their search
+# reads the game's zh-Hant files, made from zh the same way.
+HANT = {"tw": "zh-Hant"}
 TITLE_TEXT = 281          # scene title = text 281 + scene index
 PILOT_TEXT = 4382         # pilot short name = text 4382 + actor id
 PORTRAIT_SIZE = 160
@@ -79,9 +84,9 @@ def strip_codes(text: str) -> str:
     return re.sub(r"<END>$", "", text or "").strip()
 
 
-def load_terms() -> dict[str, dict[str, str]]:
+def load_terms(locales: dict[str, str] = LOCALES) -> dict[str, dict[str, str]]:
     terms = {}
-    for code, locale in LOCALES.items():
+    for code, locale in locales.items():
         data = json.loads((ROOT / f"content/locales/{locale}.json").read_text())
         terms[code] = {e["key"]: strip_codes(e.get("target") or "") for e in data["entries"]}
     return terms
@@ -91,11 +96,11 @@ def text_key(n: int) -> str:
     return f"base:t00_{n:05d}"
 
 
-def load_dialogue(base: Path = ROOT, strict: bool = True) -> dict[str, dict[str, object]]:
+def load_dialogue(base: Path = ROOT, strict: bool = True, locales: dict[str, str] = LOCALES) -> dict[str, dict[str, object]]:
     """key -> {lang: Entry}; Japanese comes from the source lines of either file. Not
     strict for an older release's files: a file the parser no longer reads is left out."""
     out: dict[str, dict[str, object]] = defaultdict(dict)
-    for code, locale in LOCALES.items():
+    for code, locale in locales.items():
         for path in sorted((base / f"content/dialogue/{locale}").rglob("*.txt")):
             entries, problems = parse(path.read_text(), str(path))
             if problems:
@@ -223,6 +228,10 @@ def main() -> int:
     tag = args.baseline or json.loads((ROOT / "web/src/data/release.json").read_text())["tag"]
     terms = load_terms()
     dialogue = load_dialogue()
+    hant_terms = load_terms(HANT)["tw"]
+    hant = load_dialogue(locales=HANT)
+    from srw64_native.zh_hant import Converter  # opencc, in requirements.lock
+    hant_converter = Converter(ROOT)
     before = baseline_dialogue(tag)
     source = source_version(tag)
     index = json.loads((CATALOG / "index.json").read_text())
@@ -266,6 +275,7 @@ def main() -> int:
         title = {"ja": strip_codes(data["title"]),
                  "zh": terms["zh"].get(text_key(TITLE_TEXT + n)) or data["title"],
                  "en": terms["en"].get(text_key(TITLE_TEXT + n)) or data["title"]}
+        title["tw"] = hant_terms.get(text_key(TITLE_TEXT + n)) or hant_converter.convert(title["zh"], title["ja"])
         events = []
         for event in data["events"]:
             lines = []
@@ -312,9 +322,12 @@ def main() -> int:
                                     portraits_used.add(pid)
                                 item["cands"].append({"route": HERO_ROUTE.get(aid) or HERO_ROUTE.get(aid - 4), "who": actor_names(aid), "face": pid})
                     lines.append(item)
-                    search_rows.append([line["text_id"], n, item["who"]["zh"] if "who" in item else "", item["who"]["en"] if "who" in item else "",
-                                        item["who"]["ja"] if "who" in item else "",
-                                        "\n".join(item["ja"]), "\n".join(item["zh"]), "\n".join(item["en"])])
+                    who = item.get("who", {"ja": "", "zh": "", "en": ""})
+                    who_tw = (hant_terms.get(text_key(PILOT_TEXT + actor_id(sp["key"])), "") if kind == "dialogue" and sp.get("key") else "") \
+                        or hant_converter.convert(who["zh"], who["ja"])
+                    tw = pages(hant[key]["tw"], "target") if "tw" in hant.get(key, {}) else []
+                    search_rows.append([line["text_id"], n, who["zh"], who["en"], who["ja"],
+                                        "\n".join(item["ja"]), "\n".join(item["zh"]), "\n".join(item["en"]), who_tw, "\n".join(tw)])
             if not any(l["t"] in ("say", "choice") for l in lines):
                 continue
             ev = {"phase": event["phase"], "label": PHASES.get(event["phase"], PHASES["map"]), "lines": lines}
@@ -344,7 +357,7 @@ def main() -> int:
     (OUT / "story/index.json").write_text(json.dumps({"schema": "srw64.web-story-index.v2", "source": source, "scenes": out_scenes},
                                                        ensure_ascii=False, indent=1))
     (OUT / "story/search.json").write_text(json.dumps({"schema": "srw64.web-story-search.v1",
-                                                         "columns": ["id", "scene", "who_zh", "who_en", "who_ja", "ja", "zh", "en"],
+                                                         "columns": ["id", "scene", "who_zh", "who_en", "who_ja", "ja", "zh", "en", "who_tw", "tw"],
                                                          "rows": search_rows}, ensure_ascii=False, separators=(",", ":")))
 
     # HD portraits, small.

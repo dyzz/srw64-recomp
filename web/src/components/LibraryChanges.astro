@@ -2,12 +2,12 @@
 // A Library entry's texts that changed since the latest game release (export_library.py):
 // one row per text, old struck through, new beside it. Nothing on the Japanese pages,
 // which show the original, or when this language has no change.
-import type { Lang } from '../i18n';
+import { tl, type Lang } from '../i18n';
 import type { TextChange } from '../lib/data';
 
 interface Props { changes?: TextChange[]; lang: Lang; tag?: string; }
 const { changes = [], lang, tag = '' } = Astro.props;
-const l = lang === 'ja' ? null : lang;
+const l = lang === 'ja' ? null : tl(lang);
 const rows = l ? changes.filter((c) => l in c.was) : [];
 const t = {
   title: { zh: (v: string) => `${v} 后的译名改动`, en: (v: string) => `Changed since ${v}`, ja: (v: string) => v },

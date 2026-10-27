@@ -2,12 +2,12 @@
 import GuideShell from '../../../components/GuideShell.astro';
 import { GUIDE_UI, MAP_BOXES, MAP_EDGES } from '../../../copy/guide';
 import { hiddenElements, inline, progression } from '../../../lib/guide';
-import { langPaths, type Lang } from '../../../i18n';
+import { langPaths, tl, type Lang } from '../../../i18n';
 import { storyIndex } from '../../../lib/data';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const ui = GUIDE_UI[lang];
+const ui = GUIDE_UI[tl(lang)];
 const prog = progression(lang);
 const secrets = Object.fromEntries(hiddenElements(lang).entries.map((e: any) => [e.id, e]));
 const I = (x: unknown) => inline(x, ui.tags);
@@ -25,7 +25,7 @@ const colors = ['var(--cyan)', '#b48cff', 'var(--orange)', 'var(--green)', '#2dd
 const [before, after] = ui.stage;
 // Each card links to its scene on the story pages (matched by the Japanese title).
 const sceneOf = new Map(storyIndex().map((s) => [s.title.ja, s.scene]));
-const readStory = { zh: '读这一话的剧情', en: 'Read this stage’s script', ja: 'この話のシナリオを読む' }[lang];
+const readStory = { zh: '读这一话的剧情', en: 'Read this stage’s script', ja: 'この話のシナリオを読む' }[tl(lang)];
 ---
 <GuideShell lang={lang} tab="flow" title={ui.flow} lead={ui.flow_lead}>
   <ul class="legend">{ui.legend.map((t, i) => <li><span class="bd" style={`background:${colors[i]}`}></span>{t}</li>)}</ul>

@@ -1,7 +1,7 @@
 ---
 // Full-text search over every story line (Japanese and both translations), served by
 // the site API (/api/story/search). Results link to the line on its scene page.
-import type { Lang } from '../i18n';
+import { tl, type Lang } from '../i18n';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const t = {
@@ -11,10 +11,10 @@ const t = {
   offline: { zh: '搜索暂时不可用，请稍后再试', en: 'Search is temporarily unavailable. Please try again later', ja: '現在、検索を利用できません。時間をおいてお試しください' },
 };
 ---
-<div class="search" data-search data-lang={lang} data-none={t.none[lang]} data-more={t.more[lang]} data-offline={t.offline[lang]}>
+<div class="search" data-search data-lang={lang} data-none={t.none[tl(lang)]} data-more={t.more[tl(lang)]} data-offline={t.offline[tl(lang)]}>
   <label class="box">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <input type="search" placeholder={t.placeholder[lang]} aria-label={t.placeholder[lang]} autocomplete="off" />
+    <input type="search" placeholder={t.placeholder[tl(lang)]} aria-label={t.placeholder[tl(lang)]} autocomplete="off" />
   </label>
   <p class="status" aria-live="polite"></p>
   <ol class="results"></ol>

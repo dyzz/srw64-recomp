@@ -1,13 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { INSTALL } from '../../copy/install';
-import { langPaths, type Lang } from '../../i18n';
+import { langPaths, tl, type Lang } from '../../i18n';
 import { allFiles, fileFor, hd, mb, published, release, mirrors, type Platform } from '../../data/release';
 import Mirrors from '../../components/Mirrors.astro';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const c = INSTALL[lang];
+const c = INSTALL[tl(lang)];
 const fill = (s: string) =>
   s.replace(/\{(windows|macos|linux|switch|hd|switch-hd)\}/g, (_, p: Platform) => fileFor(p)?.name ?? `Marchwind64-…-${p}.zip`);
 const fileOf: Record<string, Platform> = { windows: 'windows', macos: 'macos', linux: 'linux', 'steam-deck': 'linux', android: 'android', switch: 'switch', hd: 'hd' };

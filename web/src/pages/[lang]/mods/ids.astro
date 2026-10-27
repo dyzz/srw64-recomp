@@ -3,7 +3,7 @@
 // (number mods) and of music.json's battle songs, with the original terrain ranks. The data
 // is tools/content/export_data_tables.py's, the same as docs/guide/data-mods/*.csv.
 import Base from '../../../layouts/Base.astro';
-import { langPaths, type Lang } from '../../../i18n';
+import { langPaths, tl, type Lang } from '../../../i18n';
 import { library } from '../../../lib/data';
 import data from '../../../data/data-mods.json';
 
@@ -34,57 +34,57 @@ const t = {
   csv: { zh: '同样的表也有 CSV 版：', en: 'The same tables as CSV: ', ja: '同じ表の CSV 版：' },
   none: { zh: '没有符合的条目', en: 'Nothing matches', ja: '該当なし' },
 };
-const channels = { zh: ['空', '陆', '海', '宇'], en: ['Air', 'Land', 'Sea', 'Space'], ja: ['空', '陸', '海', '宇'] }[lang];
+const channels = { zh: ['空', '陆', '海', '宇'], en: ['Air', 'Land', 'Sea', 'Space'], ja: ['空', '陸', '海', '宇'] }[tl(lang)];
 const key = (n: { ja: string; zh: string; en: string }, id: number) => `${id} ${n.ja} ${n.zh} ${n.en}`.toLowerCase();
 const repo = 'https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/data-mods';
 const sep = lang === 'en' ? ', ' : '、';
-const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[lang] ?? String(id);
+const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(lang)] ?? String(id);
 ---
-<Base lang={lang} title={t.title[lang]} description={t.lead[lang]}>
+<Base lang={lang} title={t.title[tl(lang)]} description={t.lead[tl(lang)]}>
   <div class="wrap ids" data-ids>
     <header class="page-head">
       <span class="tag">MOD</span>
-      <h1>{t.title[lang]}</h1>
-      <p>{t.lead[lang]}</p>
-      <p class="note"><a href={`/${lang}/docs/mod-data/`}>{t.guide[lang]}</a> · {t.csv[lang]}<a href={`${repo}/units.csv`}>units.csv</a>{sep}<a href={`${repo}/pilots.csv`}>pilots.csv</a></p>
+      <h1>{t.title[tl(lang)]}</h1>
+      <p>{t.lead[tl(lang)]}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-data/`}>{t.guide[tl(lang)]}</a> · {t.csv[tl(lang)]}<a href={`${repo}/units.csv`}>units.csv</a>{sep}<a href={`${repo}/pilots.csv`}>pilots.csv</a></p>
     </header>
     <div class="bar">
-      <nav class="tabs"><a href="#units">{t.units[lang]} <span class="dim latin">{data.units.length}</span></a><a href="#pilots">{t.pilots[lang]} <span class="dim latin">{data.pilots.length}</span></a></nav>
-      <input type="search" data-filter placeholder={t.search[lang]} autocomplete="off" spellcheck="false" />
+      <nav class="tabs"><a href="#units">{t.units[tl(lang)]} <span class="dim latin">{data.units.length}</span></a><a href="#pilots">{t.pilots[tl(lang)]} <span class="dim latin">{data.pilots.length}</span></a></nav>
+      <input type="search" data-filter placeholder={t.search[tl(lang)]} autocomplete="off" spellcheck="false" />
     </div>
 
     <section id="units" class="block">
-      <h2>{t.units[lang]}</h2>
+      <h2>{t.units[tl(lang)]}</h2>
       <div class="scroll"><table>
-        <thead><tr><th class="num">ID</th><th>{t.name[lang]}</th>{channels.map((c) => <th class="rank">{c}</th>)}<th></th></tr></thead>
+        <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}<th></th></tr></thead>
         <tbody>{data.units.map((u) => (
           <tr data-key={key(u.name, u.id)}>
             <td class="num latin">{u.id}</td>
-            <td>{u.name[lang]}{lang !== 'ja' && u.name.ja !== u.name[lang] && <span class="ja">{u.name.ja}</span>}</td>
+            <td>{u.name[tl(lang)]}{lang !== 'ja' && u.name.ja !== u.name[tl(lang)] && <span class="ja">{u.name.ja}</span>}</td>
             {[...u.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
-            <td class="link">{inUnits.has(u.id) && <a href={`/${lang}/library/unit/${u.id}/`}>{t.library[lang]}</a>}</td>
+            <td class="link">{inUnits.has(u.id) && <a href={`/${lang}/library/unit/${u.id}/`}>{t.library[tl(lang)]}</a>}</td>
           </tr>))}
         </tbody>
       </table></div>
-      <p class="none" hidden>{t.none[lang]}</p>
+      <p class="none" hidden>{t.none[tl(lang)]}</p>
     </section>
 
     <section id="pilots" class="block">
-      <h2>{t.pilots[lang]}</h2>
-      <p class="note">{t.sharedNote[lang]}</p>
+      <h2>{t.pilots[tl(lang)]}</h2>
+      <p class="note">{t.sharedNote[tl(lang)]}</p>
       <div class="scroll"><table>
-        <thead><tr><th class="num">ID</th><th>{t.name[lang]}</th>{channels.map((c) => <th class="rank">{c}</th>)}<th>{t.shared[lang]}</th><th></th></tr></thead>
+        <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}<th>{t.shared[tl(lang)]}</th><th></th></tr></thead>
         <tbody>{data.pilots.map((p) => (
           <tr data-key={key(p.name, p.id)}>
             <td class="num latin">{p.id}</td>
-            <td>{p.name[lang]}{lang !== 'ja' && p.name.ja !== p.name[lang] && <span class="ja">{p.name.ja}</span>}</td>
+            <td>{p.name[tl(lang)]}{lang !== 'ja' && p.name.ja !== p.name[tl(lang)] && <span class="ja">{p.name.ja}</span>}</td>
             {[...p.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
             <td class="shared">{p.shared.map((s) => `${s} ${pilotName(s)}`).join(sep)}</td>
-            <td class="link">{inPeople.has(p.id) && <a href={`/${lang}/library/people/${p.id}/`}>{t.library[lang]}</a>}</td>
+            <td class="link">{inPeople.has(p.id) && <a href={`/${lang}/library/people/${p.id}/`}>{t.library[tl(lang)]}</a>}</td>
           </tr>))}
         </tbody>
       </table></div>
-      <p class="none" hidden>{t.none[lang]}</p>
+      <p class="none" hidden>{t.none[tl(lang)]}</p>
     </section>
   </div>
 </Base>

@@ -1,4 +1,4 @@
-import type { Lang } from '../i18n';
+import type { TextLang } from '../i18n';
 
 // credit: a line under the pictures (where an image comes from, what was left out).
 // wide: the text first, then the picture across the whole column (a very wide shot).
@@ -42,7 +42,7 @@ type Home = {
   newsTitle: string;
 };
 
-export const HOME: Record<Lang, Home> = {
+export const HOME: Record<TextLang, Home> = {
   zh: {
     kicker: '非官方 · 原生重编译',
     titleParts: ['超级机器人', '大战64'],

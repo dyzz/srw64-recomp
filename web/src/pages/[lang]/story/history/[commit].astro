@@ -2,7 +2,7 @@
 // One commit of the translation history (web/scripts/export_history.py): the lines and
 // terms it changed, grouped by stage, battle speaker and file, old and new compared.
 import Base from '../../../../layouts/Base.astro';
-import { LANGS, type Lang } from '../../../../i18n';
+import { LANGS, tagOf, tl, type Lang } from '../../../../i18n';
 import { historyCommit, historyIndex } from '../../../../lib/data';
 
 export async function getStaticPaths() {
@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 const lang = Astro.params.lang as Lang;
 const c = historyCommit(Astro.params.commit!);
-const shown = (lang === 'ja' ? ['zh', 'en'] : [lang]) as ('zh' | 'en')[];
+const shown = (lang === 'ja' ? ['zh', 'en'] : [tl(lang)]) as ('zh' | 'en')[];
 const groups = c.groups
   .map((g) => ({ ...g, lines: g.lines.filter((x) => shown.some((l) => x.now[l] !== undefined)) }))
   .filter((g) => g.lines.length);
@@ -25,14 +25,14 @@ const t = {
   source: { zh: '源代码中的这次提交', en: 'This commit in the source code', ja: 'ソースコードのこのコミット' },
 };
 const title = (g: (typeof groups)[number]) =>
-  g.kind === 'story' ? (g.title?.[lang] ?? `#${g.group}`)
-  : g.kind === 'battle' ? `${t.battle[lang]} · ${(g.lines[0].who ?? g.group).split(' · ')[0]}`
-  : g.kind === 'terms' ? t.terms[lang] : `${t.other[lang]} · ${g.group}`;
+  g.kind === 'story' ? (g.title?.[tl(lang)] ?? `#${g.group}`)
+  : g.kind === 'battle' ? `${t.battle[tl(lang)]} · ${(g.lines[0].who ?? g.group).split(' · ')[0]}`
+  : g.kind === 'terms' ? t.terms[tl(lang)] : `${t.other[tl(lang)]} · ${g.group}`;
 ---
-<Base lang={lang} title={`${c.subject} · ${t.back[lang]}`}>
+<Base lang={lang} title={`${c.subject} · ${t.back[tl(lang)]}`}>
   <div class="wrap" data-history>
     <header class="page-head">
-      <a class="back" href={`/${lang}/story/history/`}>← {t.back[lang]}</a>
+      <a class="back" href={`/${lang}/story/history/`}>← {t.back[tl(lang)]}</a>
       <span class="dim latin">{c.date.slice(0, 16).replace('T', ' ')} · <a href={`https://github.com/dyzz/srw64-recomp/commit/${c.commit}`}>{c.commit}</a></span>
       <h1 class="latin">{c.subject}</h1>
     </header>
@@ -40,7 +40,7 @@ const title = (g: (typeof groups)[number]) =>
       <section class="group">
         <h2>
           {g.kind === 'story' ? <a href={`/${lang}/story/${g.group}/`}>{title(g)}</a> : title(g)}
-          <span class="dim small">{t.lines[lang](g.lines.length)}</span>
+          <span class="dim small">{t.lines[tl(lang)](g.lines.length)}</span>
         </h2>
         <ul>
           {g.lines.map((x) => (
@@ -53,8 +53,8 @@ const title = (g: (typeof groups)[number]) =>
               </p>
               {x.ja && <p class="ja" lang="ja">{x.ja}</p>}
               {shown.filter((l) => x.now[l] !== undefined).map((l) => (
-                <div class="diff" lang={l === 'zh' ? 'zh-Hans' : 'en'} data-words={l === 'en' ? '1' : undefined} data-was={x.was[l] ?? ''} data-now={x.now[l]}>
-                  {shown.length > 1 && <span class="tl">{t.langName[lang][l]}</span>}
+                <div class="diff" lang={tagOf(lang, l)} data-words={l === 'en' ? '1' : undefined} data-was={x.was[l] ?? ''} data-now={x.now[l]}>
+                  {shown.length > 1 && <span class="tl">{t.langName[tl(lang)][l]}</span>}
                   <span class="out">{x.now[l]}</span>
                 </div>
               ))}

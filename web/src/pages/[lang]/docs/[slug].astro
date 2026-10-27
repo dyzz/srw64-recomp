@@ -1,13 +1,13 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import { UI, type Lang } from '../../../i18n';
+import { UI, shownIn, tl, type Lang } from '../../../i18n';
 
 export async function getStaticPaths() {
   const docs = await getCollection('docs');
-  return docs.map((doc) => {
-    const [lang, slug] = doc.id.split('/');
-    return { params: { lang, slug }, props: { doc } };
+  return docs.flatMap((doc) => {
+    const [text, slug] = doc.id.split('/');
+    return shownIn(text).map((lang) => ({ params: { lang, slug }, props: { doc } }));
   });
 }
 const { doc } = Astro.props;
@@ -20,10 +20,10 @@ const copy = { zh: ['复制', '已复制'], en: ['Copy', 'Copied'], ja: ['コピ
 <Base lang={lang} title={doc.data.title} description={doc.data.summary}>
   <div class="wrap">
     <header class="page-head">
-      <a class="back" href={`/${lang}/docs/`}>← {UI.nav.docs[lang]}</a>
+      <a class="back" href={`/${lang}/docs/`}>← {UI.nav.docs[tl(lang)]}</a>
       <h1>{doc.data.title}</h1>
       <p>{doc.data.summary}</p>
-      {doc.data.updated && <span class="dim small">{updated[lang]} <span class="latin">{doc.data.updated.toISOString().slice(0, 10)}</span></span>}
+      {doc.data.updated && <span class="dim small">{updated[tl(lang)]} <span class="latin">{doc.data.updated.toISOString().slice(0, 10)}</span></span>}
     </header>
     <div class="doc">
       {toc.length > 2 && (
@@ -31,7 +31,7 @@ const copy = { zh: ['复制', '已复制'], en: ['Copy', 'Copied'], ja: ['コピ
           <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
         </nav>
       )}
-      <article class="prose" data-copy={copy[lang][0]} data-copied={copy[lang][1]}><Content /></article>
+      <article class="prose" data-copy={copy[tl(lang)][0]} data-copied={copy[tl(lang)][1]}><Content /></article>
     </div>
   </div>
 </Base>

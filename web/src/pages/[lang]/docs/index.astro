@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import { UI, langPaths, type Lang } from '../../../i18n';
+import { UI, langPaths, tl, type Lang } from '../../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const docs = (await getCollection('docs', (d) => d.id.startsWith(`${lang}/`))).sort((a, b) => a.data.order - b.data.order);
+const docs = (await getCollection('docs', (d) => d.id.startsWith(`${tl(lang)}/`))).sort((a, b) => a.data.order - b.data.order);
 
 const lead = {
   zh: '面向想深入使用、调试或扩展游戏的玩家与开发者。',
@@ -28,18 +28,18 @@ const sections = [
   },
 ] as const;
 ---
-<Base lang={lang} title={UI.nav.docs[lang]} description={lead[lang]}>
+<Base lang={lang} title={UI.nav.docs[tl(lang)]} description={lead[tl(lang)]}>
   <div class="wrap">
     <header class="page-head">
       <span class="tag">DOCS</span>
-      <h1>{UI.nav.docs[lang]}</h1>
-      <p>{lead[lang]}</p>
+      <h1>{UI.nav.docs[tl(lang)]}</h1>
+      <p>{lead[tl(lang)]}</p>
     </header>
     {sections.map((s) => {
       const items = docs.filter((d) => d.data.section === s.key);
       return (
         <section class="sec">
-          <h2>{s.title[lang]}</h2>
+          <h2>{s.title[tl(lang)]}</h2>
           {items.length ? (
             <ul class="list">
               {items.map((d) => (
@@ -52,7 +52,7 @@ const sections = [
               ))}
             </ul>
           ) : (
-            'empty' in s && <p class="panel soon muted">{s.empty[lang]}</p>
+            'empty' in s && <p class="panel soon muted">{s.empty[tl(lang)]}</p>
           )}
         </section>
       );

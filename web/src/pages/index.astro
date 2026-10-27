@@ -1,6 +1,6 @@
 ---
 // The root picks a language: ?lang=, then the reader's last choice, then the
-// browser's languages. Without JavaScript the three links remain.
+// browser's languages. Without JavaScript the links remain.
 import '../styles/global.css';
 import { LANGS } from '../i18n';
 ---
@@ -15,8 +15,14 @@ import { LANGS } from '../i18n';
     <!-- Processed, not is:inline, so Astro hashes it for the Content-Security-Policy. -->
     <script>
       (function () {
-        var ok = ['zh', 'en', 'ja'];
-        var norm = function (v) { v = String(v || '').toLowerCase(); return v.indexOf('zh') === 0 ? 'zh' : v.indexOf('ja') === 0 ? 'ja' : v.indexOf('en') === 0 ? 'en' : null; };
+        var ok = ['zh', 'tw', 'en', 'ja'];
+        // Traditional Chinese for a Traditional script or Taiwan, Hong Kong and Macau, as the
+        // game's first launch picks it.
+        var norm = function (v) {
+          v = String(v || '').toLowerCase();
+          if (v === 'tw' || /^zh-(hant|tw|hk|mo)/.test(v)) return 'tw';
+          return v.indexOf('zh') === 0 ? 'zh' : v.indexOf('ja') === 0 ? 'ja' : v.indexOf('en') === 0 ? 'en' : null;
+        };
         var pick = norm(new URLSearchParams(location.search).get('lang'));
         if (!pick) { try { pick = norm(localStorage.getItem('srw64-lang')); } catch (e) {} }
         if (!pick) { var ls = navigator.languages || [navigator.language]; for (var i = 0; i < ls.length && !pick; i++) pick = norm(ls[i]); }

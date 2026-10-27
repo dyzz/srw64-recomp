@@ -5,10 +5,10 @@
 import Base from '../layouts/Base.astro';
 import { GUIDE_UI } from '../copy/guide';
 import { guideTabs } from '../lib/guide';
-import { UI, type Lang } from '../i18n';
+import { UI, tl, type Lang } from '../i18n';
 interface Props { lang: Lang; tab: string; title: string; lead?: string; }
 const { lang, tab, title, lead } = Astro.props;
-const ui = GUIDE_UI[lang];
+const ui = GUIDE_UI[tl(lang)];
 const tabs = guideTabs(lang, ui);
 const AKURASU = 'https://akurasu.net/wiki/Super_Robot_Wars/64';
 const thanks = {
@@ -20,7 +20,7 @@ const t = {
   offline: { zh: '下载离线版（单个网页文件，三语）', en: 'Download offline version (one HTML file, three languages)', ja: 'オフライン版をダウンロード（HTML 1 ファイル・3 言語）' },
 };
 ---
-<Base lang={lang} title={`${title} · ${UI.nav.guide[lang]}`} description={ui.title}>
+<Base lang={lang} title={`${title} · ${UI.nav.guide[tl(lang)]}`} description={ui.title}>
   <div class="guide">
     <nav class="gtabs" aria-label={ui.nav}>
       <div class="wrap gtabs-in">
@@ -34,9 +34,9 @@ const t = {
           <h1>{title}</h1>
           {lead && <p class="lead" set:html={lead} />}
           <ul class="gtag-legend">{Object.entries(ui.tags).map(([k, v]) => <li><span class={`gtag ${k}`}>{v}</span></li>)}</ul>
-          <p class="thanks" set:html={thanks[lang]} />
+          <p class="thanks" set:html={thanks[tl(lang)]} />
         </div>
-        <a class="offline" href="/downloads/marchwind64-guide.html" download data-guide-download={lang}>{t.offline[lang]} ↓</a>
+        <a class="offline" href="/downloads/marchwind64-guide.html" download data-guide-download={lang}>{t.offline[tl(lang)]} ↓</a>
       </header>
       <slot />
       <footer class="gfoot"><slot name="foot" /></footer>

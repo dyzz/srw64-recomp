@@ -15,10 +15,11 @@ export const GET = () =>
         date: release.date,
         notes: {
           zh: `https://srw64.dreamquest.club/zh/blog/v${release.version.replaceAll('.', '-')}/`,
+          tw: `https://srw64.dreamquest.club/tw/blog/v${release.version.replaceAll('.', '-')}/`,
           en: `https://srw64.dreamquest.club/en/blog/v${release.version.replaceAll('.', '-')}/`,
           ja: `https://srw64.dreamquest.club/ja/blog/v${release.version.replaceAll('.', '-')}/`,
         },
-        download: { zh: install('zh'), en: install('en'), ja: install('ja') },
+        download: { zh: install('zh'), tw: install('tw'), en: install('en'), ja: install('ja') },
         github: release.github,
         quark: release.quark,
         baidu: release.baidu,
@@ -28,7 +29,7 @@ export const GET = () =>
         ...(published && hd.version && {
           hd: {
             version: hd.version,
-            download: { zh: `${install('zh')}#hd`, en: `${install('en')}#hd`, ja: `${install('ja')}#hd` },
+            download: { zh: `${install('zh')}#hd`, tw: `${install('tw')}#hd`, en: `${install('en')}#hd`, ja: `${install('ja')}#hd` },
             github: hd.github,
             name: hd.name,
             bytes: hd.bytes,

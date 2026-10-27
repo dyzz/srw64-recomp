@@ -49,8 +49,10 @@ const library = json('library.json');
 const sceneTitle = new Map(storyIndex.map((s) => [s.scene, s.title]));
 const lines = new Map(); // id -> row
 for (const r of searchData.rows) {
-  const [id, scene, whoZh, whoEn, whoJa, ja, zh, en] = r;
-  lines.set(id, { id, scene, who: { zh: whoZh, en: whoEn, ja: whoJa }, ja, zh, en, low: { ja: ja.toLowerCase(), zh: zh.toLowerCase(), en: en.toLowerCase() } });
+  // tw: the game's Traditional Chinese, for the Traditional Chinese pages (an older export has none).
+  const [id, scene, whoZh, whoEn, whoJa, ja, zh, en, whoTw = whoZh, tw = zh] = r;
+  lines.set(id, { id, scene, who: { zh: whoZh, en: whoEn, ja: whoJa, tw: whoTw }, ja, zh, en, tw,
+    low: { ja: ja.toLowerCase(), zh: zh.toLowerCase(), en: en.toLowerCase(), tw: tw.toLowerCase() } });
 }
 const terms = new Map(); // `unit:55` -> {ja, zh, en}
 for (const u of library.units) {
@@ -270,10 +272,10 @@ function admin(req) {
 function search(q, lang) {
   const needle = q.toLowerCase();
   const results = [];
-  const order = lang === 'ja' ? ['ja', 'en', 'zh'] : [lang, 'ja', lang === 'zh' ? 'en' : 'zh'];
+  const order = lang === 'ja' ? ['ja', 'en', 'zh'] : lang === 'tw' ? ['tw', 'ja', 'en'] : [lang, 'ja', lang === 'zh' ? 'en' : 'zh'];
   for (const row of lines.values()) {
     if (!order.some((l) => row.low[l].includes(needle))) continue;
-    results.push({ id: row.id, scene: row.scene, scene_title: sceneTitle.get(row.scene)?.[lang] ?? '', who: row.who[lang], text: row[lang === 'ja' ? 'ja' : lang].replace(/\n/g, lang === 'en' ? ' ' : ''), ja: lang === 'ja' ? undefined : row.ja.replace(/\n/g, '') });
+    results.push({ id: row.id, scene: row.scene, scene_title: sceneTitle.get(row.scene)?.[lang] ?? sceneTitle.get(row.scene)?.zh ?? '', who: row.who[lang], text: row[lang === 'ja' ? 'ja' : lang].replace(/\n/g, lang === 'en' ? ' ' : ''), ja: lang === 'ja' ? undefined : row.ja.replace(/\n/g, '') });
     if (results.length > 100) break;
   }
   return { results: results.slice(0, 100), truncated: results.length > 100 };
@@ -284,7 +286,7 @@ const routes = {
 
   'GET /api/story/search': (req, url) => {
     const q = clean(url.searchParams.get('q'), 80);
-    const lang = ['zh', 'en', 'ja'].includes(url.searchParams.get('lang')) ? url.searchParams.get('lang') : 'zh';
+    const lang = ['zh', 'tw', 'en', 'ja'].includes(url.searchParams.get('lang')) ? url.searchParams.get('lang') : 'zh';
     return q ? [200, search(q, lang)] : [200, { results: [], truncated: false }];
   },
 

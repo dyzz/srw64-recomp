@@ -1,12 +1,12 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { langPaths, UI, type Lang } from '../../../i18n';
+import { langPaths, UI, tl, type Lang } from '../../../i18n';
 import { library, portraitUrl } from '../../../lib/data';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const lib = library();
-const seriesName = (id: number | null) => lib.series.find((s) => s.id === id)?.name[lang] ?? '';
+const seriesName = (id: number | null) => lib.series.find((s) => s.id === id)?.name[tl(lang)] ?? '';
 function grouped<T extends { series: number | null }>(xs: T[]) {
   const out: { series: number | null; items: T[] }[] = [];
   for (const x of xs) {
@@ -18,7 +18,7 @@ function grouped<T extends { series: number | null }>(xs: T[]) {
 }
 const units = grouped(lib.units);
 // Entries whose texts changed since the latest game release, in this page's translation.
-const cl = lang === 'ja' ? null : lang;
+const cl = lang === 'ja' ? null : tl(lang);
 const changedEntries = cl ? [...lib.units, ...lib.people].filter((e) => (e.changed?.[cl] ?? 0) > 0).length : 0;
 const people = grouped(lib.people);
 const t = {
@@ -37,21 +37,21 @@ const t = {
   people: { zh: '人物', en: 'Characters', ja: 'キャラクター' },
 };
 ---
-<Base lang={lang} title={UI.nav.library[lang]}>
+<Base lang={lang} title={UI.nav.library[tl(lang)]}>
   <div class="wrap" data-lib-index>
     <header class="page-head">
       <span class="tag">LIBRARY</span>
-      <h1>{UI.nav.library[lang]}</h1>
-      <p>{t.lead[lang]}</p>
-      {cl && changedEntries > 0 && lib.baseline && <p class="changed-total">{t.changed[lang](changedEntries, lib.baseline)}</p>}
+      <h1>{UI.nav.library[tl(lang)]}</h1>
+      <p>{t.lead[tl(lang)]}</p>
+      {cl && changedEntries > 0 && lib.baseline && <p class="changed-total">{t.changed[tl(lang)](changedEntries, lib.baseline)}</p>}
       <div class="seg" role="tablist">
-        <a href="#units" role="tab">{t.units[lang]} {lib.units.length}</a>
-        <a href="#people" role="tab">{t.people[lang]} {lib.people.length}</a>
+        <a href="#units" role="tab">{t.units[tl(lang)]} {lib.units.length}</a>
+        <a href="#people" role="tab">{t.people[tl(lang)]} {lib.people.length}</a>
       </div>
     </header>
 
     <section id="units">
-      <h2 class="kind">{t.units[lang]}</h2>
+      <h2 class="kind">{t.units[tl(lang)]}</h2>
       {units.map((g) => (
         <div class="group">
           <h3>{seriesName(g.series)}</h3>
@@ -59,8 +59,8 @@ const t = {
             {g.items.map((u) => (
               <li><a href={`/${lang}/library/unit/${u.id}/`}>
                 <img src={`/gen/units/${u.id}.webp`} alt="" width="96" height="96" loading="lazy" />
-                <span class="nm">{u.name[lang]}</span>
-                {cl && (u.changed?.[cl] ?? 0) > 0 && <span class="chg">{t.mark[lang]}</span>}
+                <span class="nm">{u.name[tl(lang)]}</span>
+                {cl && (u.changed?.[cl] ?? 0) > 0 && <span class="chg">{t.mark[tl(lang)]}</span>}
                 {u.model && <span class="sub latin">{u.model}</span>}
               </a></li>
             ))}
@@ -70,7 +70,7 @@ const t = {
     </section>
 
     <section id="people">
-      <h2 class="kind">{t.people[lang]}</h2>
+      <h2 class="kind">{t.people[tl(lang)]}</h2>
       {people.map((g) => (
         <div class="group">
           <h3>{seriesName(g.series)}</h3>
@@ -80,8 +80,8 @@ const t = {
               return (
                 <li><a href={`/${lang}/library/people/${p.id}/`} class={p.enemy ? 'enemy' : ''}>
                   {src ? <img class="face" src={src} alt="" width="96" height="96" loading="lazy" /> : <span class="face none" aria-hidden="true"></span>}
-                  <span class="nm">{p.name[lang]}</span>
-                  {cl && (p.changed?.[cl] ?? 0) > 0 && <span class="chg">{t.mark[lang]}</span>}
+                  <span class="nm">{p.name[tl(lang)]}</span>
+                  {cl && (p.changed?.[cl] ?? 0) > 0 && <span class="chg">{t.mark[tl(lang)]}</span>}
                 </a></li>
               );
             })}

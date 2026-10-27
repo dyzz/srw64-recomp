@@ -1,7 +1,7 @@
 ---
 // The Android compatibility list; the rows live in src/data/android.ts.
 import Base from '../../layouts/Base.astro';
-import { UI, langPaths, type Lang } from '../../i18n';
+import { UI, langPaths, tl, type Lang, type TextLang } from '../../i18n';
 import { CHIPS, KNOWN_ISSUES, UNCONFIRMED, UNTESTED, asOf, updated, type Chip, type Depth, type Status } from '../../data/android';
 
 export const getStaticPaths = langPaths;
@@ -33,43 +33,43 @@ const t = {
   },
 };
 const VENDOR: Record<Chip['vendor'], string> = { qualcomm: 'Qualcomm', mediatek: 'MediaTek', samsung: 'Samsung', google: 'Google' };
-const STATUS: Record<Status, Record<Lang, string>> = {
+const STATUS: Record<Status, Record<TextLang, string>> = {
   ok: { zh: '确认可用', en: 'Confirmed working', ja: '動作確認済み' },
   slow: { zh: '可用但慢', en: 'Works, but slow', ja: '動作（低速）' },
   issue: { zh: '可用，有已知问题', en: 'Works, with a known issue', ja: '動作（既知の問題あり）' },
 };
-const DEPTH: Record<Depth, Record<Lang, string>> = {
+const DEPTH: Record<Depth, Record<TextLang, string>> = {
   title: { zh: '测到标题和演示战斗', en: 'Title and demo battle', ja: 'タイトルとデモ戦闘まで' },
   stage: { zh: '打进第一关', en: 'Into stage 1', ja: '第 1 話まで' },
   play: { zh: '实际游玩', en: 'Played', ja: '実際にプレイ' },
 };
 const groups = (Object.keys(VENDOR) as Chip['vendor'][]).map((v) => ({ vendor: v, chips: CHIPS.filter((c) => c.vendor === v) }));
 ---
-<Base lang={lang} title={UI.nav.android[lang]} description={t.lead[lang]}>
+<Base lang={lang} title={UI.nav.android[tl(lang)]} description={t.lead[tl(lang)]}>
   <div class="wrap">
     <header class="page-head">
       <span class="tag">ANDROID</span>
-      <h1>{UI.nav.android[lang]}</h1>
-      <p>{t.lead[lang]}</p>
-      <p class="dim">{t.asOf[lang]}<br />{t.needs[lang]} {t.find[lang]}</p>
+      <h1>{UI.nav.android[tl(lang)]}</h1>
+      <p>{t.lead[tl(lang)]}</p>
+      <p class="dim">{t.asOf[tl(lang)]}<br />{t.needs[tl(lang)]} {t.find[tl(lang)]}</p>
     </header>
 
     <table class="chips">
       <thead>
-        <tr><th>{t.chip[lang]}</th><th>{t.tested[lang]}</th><th>{t.state[lang]}</th><th>{t.phones[lang]}</th></tr>
+        <tr><th>{t.chip[tl(lang)]}</th><th>{t.tested[tl(lang)]}</th><th>{t.state[tl(lang)]}</th><th>{t.phones[tl(lang)]}</th></tr>
       </thead>
       {groups.map((g) => (
         <tbody>
           <tr class="vendor"><th colspan="4">{VENDOR[g.vendor]}</th></tr>
           {g.chips.map((c) => (
             <tr>
-              <td class="chip"><strong>{c.chip[lang]}</strong><span class="dim">{c.gpu}</span></td>
-              <td>{c.tested[lang]}<span class="dim">{DEPTH[c.depth][lang]}</span></td>
+              <td class="chip"><strong>{c.chip[tl(lang)]}</strong><span class="dim">{c.gpu}</span></td>
+              <td>{c.tested[tl(lang)]}<span class="dim">{DEPTH[c.depth][tl(lang)]}</span></td>
               <td>
-                <span class={`st ${c.status}`}>{STATUS[c.status][lang]}</span>{c.fps && <span class="fps latin">{c.fps} FPS</span>}
-                {c.note && <p class="note">{c.note[lang]}</p>}
+                <span class={`st ${c.status}`}>{STATUS[c.status][tl(lang)]}</span>{c.fps && <span class="fps latin">{c.fps} FPS</span>}
+                {c.note && <p class="note">{c.note[tl(lang)]}</p>}
               </td>
-              <td class="phones">{c.phones[lang] && <><span class="lbl">{t.phones[lang]} · </span>{c.phones[lang]}</>}</td>
+              <td class="phones">{c.phones[tl(lang)] && <><span class="lbl">{t.phones[tl(lang)]} · </span>{c.phones[tl(lang)]}</>}</td>
             </tr>
           ))}
         </tbody>
@@ -77,13 +77,13 @@ const groups = (Object.keys(VENDOR) as Chip['vendor'][]).map((v) => ({ vendor: v
     </table>
 
     <section class="prose">
-      <h2>{t.unconfirmed[lang]}</h2>
-      <ul>{UNCONFIRMED.map((x) => <li>{x[lang]}</li>)}</ul>
-      <h2>{t.issues[lang]}</h2>
-      <ul>{KNOWN_ISSUES.map((x) => <li>{x[lang]}</li>)}</ul>
-      <h2>{t.untested[lang]}</h2>
-      <ul>{UNTESTED.map((x) => <li><strong>{x.label[lang]}</strong>{lang === 'en' ? ': ' : '：'}{x.items[lang]}</li>)}</ul>
-      <p set:html={t.report[lang]} />
+      <h2>{t.unconfirmed[tl(lang)]}</h2>
+      <ul>{UNCONFIRMED.map((x) => <li>{x[tl(lang)]}</li>)}</ul>
+      <h2>{t.issues[tl(lang)]}</h2>
+      <ul>{KNOWN_ISSUES.map((x) => <li>{x[tl(lang)]}</li>)}</ul>
+      <h2>{t.untested[tl(lang)]}</h2>
+      <ul>{UNTESTED.map((x) => <li><strong>{x.label[tl(lang)]}</strong>{lang === 'en' ? ': ' : '：'}{x.items[tl(lang)]}</li>)}</ul>
+      <p set:html={t.report[tl(lang)]} />
     </section>
   </div>
 </Base>

@@ -2,7 +2,7 @@
 import Base from '../../../../layouts/Base.astro';
 import Term from '../../../../components/Term.astro';
 import LibraryChanges from '../../../../components/LibraryChanges.astro';
-import { LANGS, UI, canReview, type Lang } from '../../../../i18n';
+import { LANGS, UI, canReview, tl, type Lang } from '../../../../i18n';
 import { library, type Unit } from '../../../../lib/data';
 
 export async function getStaticPaths() {
@@ -11,8 +11,8 @@ export async function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const lib = library();
 const u = lib.units.find((x) => x.id === Number(Astro.params.id)) as Unit;
-const L = (k: string) => lib.labels[k]?.[lang] ?? k;
-const series = lib.series.find((s) => s.id === u.series)?.name[lang] ?? '';
+const L = (k: string) => lib.labels[k]?.[tl(lang)] ?? k;
+const series = lib.series.find((s) => s.id === u.series)?.name[tl(lang)] ?? '';
 const siblings = lib.units.filter((x) => x.series === u.series);
 const i = siblings.indexOf(u);
 const roman = ['', 'Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'];
@@ -38,35 +38,35 @@ const t = {
 };
 const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-term': id });
 ---
-<Base lang={lang} title={`${u.name[lang]} · ${UI.nav.library[lang]}`} review={canReview(lang)}>
+<Base lang={lang} title={`${u.name[tl(lang)]} · ${UI.nav.library[tl(lang)]}`} review={canReview(lang)}>
   <div class="wrap layout" data-library data-lang={lang} data-target-type="term" data-target-prefix="">
     <aside class="side">
-      <a href={`/${lang}/library/#units`}>← {UI.nav.library[lang]}</a>
+      <a href={`/${lang}/library/#units`}>← {UI.nav.library[tl(lang)]}</a>
       <p class="series">{series}</p>
       <ul>
-        {siblings.map((x) => <li><a href={`/${lang}/library/unit/${x.id}/`} aria-current={x === u ? 'page' : undefined}>{x.name[lang]}{x.model && <span class="latin">{x.model}</span>}</a></li>)}
+        {siblings.map((x) => <li><a href={`/${lang}/library/unit/${x.id}/`} aria-current={x === u ? 'page' : undefined}>{x.name[tl(lang)]}{x.model && <span class="latin">{x.model}</span>}</a></li>)}
       </ul>
     </aside>
 
     <main class="main">
       <div class="top">
-        <div class="art"><img src={`/gen/units/${u.id}.webp`} alt={u.name[lang]} width="320" height="320" /></div>
+        <div class="art"><img src={`/gen/units/${u.id}.webp`} alt={u.name[tl(lang)]} width="320" height="320" /></div>
         <div class="info">
           <p class="crumb">{u.series != null ? <Term id={`series:${u.series}`} name={lib.series.find((x) => x.id === u.series)!.name} lang={lang} /> : series}{u.model && <> · <span class="latin">{u.model}</span></>}</p>
           <div class="namerow" {...termAttrs(`unit:${u.id}`, u.name)}>
-            <h1>{u.name[lang]}</h1>
+            <h1>{u.name[tl(lang)]}</h1>
             {lang !== 'ja' && <span class="jn" lang="ja">{u.name.ja}</span>}
             {lang !== 'en' && <span class="en">{u.name.en}</span>}
             <span class="tr-zh" hidden>{u.name.zh}</span><span class="tr-en" hidden>{u.name.en}</span>
-            {canReview(lang) && <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`unit:${u.id}`}>{t.suggest[lang]}</button>}
+            {canReview(lang) && <button type="button" class="act" data-suggest data-target-type="term" data-target-id={`unit:${u.id}`}>{t.suggest[tl(lang)]}</button>}
             <div data-term-body class="tb"></div>
           </div>
           <LibraryChanges changes={u.changes} lang={lang} tag={lib.baseline} />
           <p class="badges">
             <span class="cap">{L('library_cap')} {L('library_cap_value').replace('{n}', String(u.upgrade_cap))}</span>
-            {u.movement_types.map((m) => <span class="pill">{m[lang]}</span>)}
+            {u.movement_types.map((m) => <span class="pill">{m[tl(lang)]}</span>)}
             <span class="pill">{L('size')} {u.size}</span>
-            {u.shield && <span class="pill">{t.shield[lang]}</span>}
+            {u.shield && <span class="pill">{t.shield[tl(lang)]}</span>}
             <span class="pill">{L('library_slots')} {u.part_slots}</span>
             <span class="pill">{L('repair')} {u.repair_cost}</span>
           </p>
@@ -76,11 +76,11 @@ const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-ter
           <p class="terrain"><span class="k">{L('terrain')}</span>
             {(['air', 'land', 'sea', 'space'] as const).map((k) => <span class={`pill t-${u.terrain[k]}`}>{L(k)} {u.terrain[k]}</span>)}
           </p>
-          {u.abilities.length > 0 && <p class="abil"><span class="k">{t.abilities[lang]}</span>{u.abilities.map((a) => <span class="pill"><Term id={`ability:${a.ja}`} name={a} lang={lang} /></span>)}</p>}
+          {u.abilities.length > 0 && <p class="abil"><span class="k">{t.abilities[tl(lang)]}</span>{u.abilities.map((a) => <span class="pill"><Term id={`ability:${a.ja}`} name={a} lang={lang} /></span>)}</p>}
         </div>
       </div>
 
-      <h2>{t.weapons[lang]} {canReview(lang) && <span class="hint">{t.editHint[lang]}</span>}</h2>
+      <h2>{t.weapons[tl(lang)]} {canReview(lang) && <span class="hint">{t.editHint[tl(lang)]}</span>}</h2>
       {u.weapons.length === 0 ? <p class="dim">{L('library_no_weapons')}</p> : (
         <div class="tbl">
           <table>
@@ -113,8 +113,8 @@ const termAttrs = (id: string, name: { zh: string; en: string }) => ({ 'data-ter
       )}
 
       <nav class="pn">
-        {i > 0 && <a href={`/${lang}/library/unit/${siblings[i - 1].id}/`}>← {siblings[i - 1].name[lang]}</a>}
-        {i < siblings.length - 1 && <a class="r" href={`/${lang}/library/unit/${siblings[i + 1].id}/`}>{siblings[i + 1].name[lang]} →</a>}
+        {i > 0 && <a href={`/${lang}/library/unit/${siblings[i - 1].id}/`}>← {siblings[i - 1].name[tl(lang)]}</a>}
+        {i < siblings.length - 1 && <a class="r" href={`/${lang}/library/unit/${siblings[i + 1].id}/`}>{siblings[i + 1].name[tl(lang)]} →</a>}
       </nav>
     </main>
   </div>

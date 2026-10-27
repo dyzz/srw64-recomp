@@ -3,7 +3,7 @@
 // into public/mods and writes src/data/mods/<id>.json). Other people's packages will be
 // listed from their GitHub Releases (docs/design/mod-packages.md §13) once submissions open.
 import Base from '../../../layouts/Base.astro';
-import { langPaths, type Lang } from '../../../i18n';
+import { langPaths, tl, type Lang } from '../../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -14,7 +14,7 @@ type Mod = {
 };
 const mods = Object.values(import.meta.glob<Mod>('../../../data/mods/*.json', { eager: true, import: 'default' }))
   .sort((a, b) => a.id.localeCompare(b.id));
-const loc = { zh: 'zh-Hans', en: 'en', ja: 'ja' }[lang] as keyof Text;
+const loc = { zh: 'zh-Hans', en: 'en', ja: 'ja' }[tl(lang)] as keyof Text;
 const pick = (t: Text | undefined) => (t ? t[loc] ?? t.en ?? t.ja ?? '' : '');
 const t = {
   title: { zh: 'MOD 下载', en: 'Mod downloads', ja: 'MOD ダウンロード' },
@@ -51,20 +51,20 @@ const kinds: Record<string, { zh: string; en: string; ja: string }> = {
 // ">=0.5.1" as words; anything else as written.
 const needs = (req: string) => {
   const m = /^>=\s*([\d.]+)$/.exec(req.trim());
-  if (!m) return req === '*' ? { zh: '任意版本', en: 'Any version', ja: '全バージョン' }[lang] : req;
-  return { zh: `${m[1]} 或更新`, en: `${m[1]} or later`, ja: `${m[1]} 以降` }[lang];
+  if (!m) return req === '*' ? { zh: '任意版本', en: 'Any version', ja: '全バージョン' }[tl(lang)] : req;
+  return { zh: `${m[1]} 或更新`, en: `${m[1]} or later`, ja: `${m[1]} 以降` }[tl(lang)];
 };
 const size = (n: number) => (n < 1024 ? `${n} B` : `${(n / 1024).toFixed(1)} KB`);
 ---
-<Base lang={lang} title={t.title[lang]} description={t.lead[lang]}>
+<Base lang={lang} title={t.title[tl(lang)]} description={t.lead[tl(lang)]}>
   <div class="wrap mods">
     <header class="page-head">
       <span class="tag">MOD</span>
-      <h1>{t.title[lang]}</h1>
-      <p>{t.lead[lang]}</p>
-      <p class="note">{t.make[lang]}{t.guides.map((g, i) => <>{i > 0 && (lang === 'en' ? ', ' : '、')}<a href={`/${lang}/${g.href}`}>{g[lang]}</a></>)}</p>
+      <h1>{t.title[tl(lang)]}</h1>
+      <p>{t.lead[tl(lang)]}</p>
+      <p class="note">{t.make[tl(lang)]}{t.guides.map((g, i) => <>{i > 0 && (lang === 'en' ? ', ' : '、')}<a href={`/${lang}/${g.href}`}>{g[tl(lang)]}</a></>)}</p>
     </header>
-    {mods.length === 0 && <p class="note">{t.none[lang]}</p>}
+    {mods.length === 0 && <p class="note">{t.none[tl(lang)]}</p>}
     <ul class="list">
       {mods.map((m) => (
         <li class="card" id={m.id}>
@@ -73,18 +73,18 @@ const size = (n: number) => (n < 1024 ? `${n} B` : `${(n / 1024).toFixed(1)} KB`
               <h2>{pick(m.name)}</h2>
               <code class="id">{m.id}</code>
             </div>
-            <a class="btn" href={m.url} download={m.file}>{t.download[lang]}<small>{m.file} · {size(m.bytes)}</small></a>
+            <a class="btn" href={m.url} download={m.file}>{t.download[tl(lang)]}<small>{m.file} · {size(m.bytes)}</small></a>
           </div>
           {m.description && <p class="desc">{pick(m.description)}</p>}
           <dl>
-            <div><dt>{t.version[lang]}</dt><dd class="latin">{m.version}</dd></div>
-            <div><dt>{t.game[lang]}</dt><dd>{needs(m.game)}</dd></div>
-            <div><dt>{t.contents[lang]}</dt><dd>{m.contents.map((c) => kinds[c]?.[lang] ?? c).join(lang === 'en' ? ', ' : '、')}</dd></div>
-            <div><dt>{t.authors[lang]}</dt><dd>{m.authors.join(', ')}</dd></div>
-            <div><dt>{t.license[lang]}</dt><dd class="latin">{m.license}</dd></div>
-            {m.published && <div><dt>{t.updated[lang]}</dt><dd class="latin">{m.published}</dd></div>}
+            <div><dt>{t.version[tl(lang)]}</dt><dd class="latin">{m.version}</dd></div>
+            <div><dt>{t.game[tl(lang)]}</dt><dd>{needs(m.game)}</dd></div>
+            <div><dt>{t.contents[tl(lang)]}</dt><dd>{m.contents.map((c) => kinds[c]?.[tl(lang)] ?? c).join(lang === 'en' ? ', ' : '、')}</dd></div>
+            <div><dt>{t.authors[tl(lang)]}</dt><dd>{m.authors.join(', ')}</dd></div>
+            <div><dt>{t.license[tl(lang)]}</dt><dd class="latin">{m.license}</dd></div>
+            {m.published && <div><dt>{t.updated[tl(lang)]}</dt><dd class="latin">{m.published}</dd></div>}
           </dl>
-          <p class="foot"><span class="k">{t.checksum[lang]}</span> <code class="sha">SHA-256 {m.sha256}</code> · <a href={m.source}>{t.source[lang]}</a></p>
+          <p class="foot"><span class="k">{t.checksum[tl(lang)]}</span> <code class="sha">SHA-256 {m.sha256}</code> · <a href={m.source}>{t.source[tl(lang)]}</a></p>
         </li>
       ))}
     </ul>

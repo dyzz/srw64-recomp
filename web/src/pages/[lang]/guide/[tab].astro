@@ -2,13 +2,13 @@
 import GuideShell from '../../../components/GuideShell.astro';
 import { GUIDE_UI } from '../../../copy/guide';
 import { inline, isNumber, progression, reference } from '../../../lib/guide';
-import { LANGS, type Lang } from '../../../i18n';
+import { LANGS, tl, type Lang } from '../../../i18n';
 
 export async function getStaticPaths() {
   return LANGS.flatMap((l) => reference(l.code).tabs.map((t: any) => ({ params: { lang: l.code, tab: t.id } })));
 }
 const lang = Astro.params.lang as Lang;
-const ui = GUIDE_UI[lang];
+const ui = GUIDE_UI[tl(lang)];
 const tab = reference(lang).tabs.find((t: any) => t.id === Astro.params.tab);
 const I = (x: unknown) => inline(x, ui.tags);
 const sources = progression(lang).sources ?? [];

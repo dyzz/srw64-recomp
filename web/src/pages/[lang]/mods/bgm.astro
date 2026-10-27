@@ -3,12 +3,12 @@
 // browser. Nothing is uploaded: files are decoded, encoded to Ogg Vorbis in a worker and
 // zipped into a .srw64mod on the player's own machine (scripts/bgm-maker.ts).
 import Base from '../../../layouts/Base.astro';
-import { langPaths, type Lang } from '../../../i18n';
+import { langInfo, langPaths, tl, type Lang, type TextLang } from '../../../i18n';
 import data from '../../../data/bgm.json';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const L = <T,>(v: Record<Lang, T>) => v[lang];
+const L = <T,>(v: Record<TextLang, T>) => v[tl(lang)];
 const title = { zh: 'BGM MOD 制作', en: 'BGM MOD maker', ja: 'BGM MOD メーカー' };
 const t = {
   lead: {
@@ -93,17 +93,17 @@ const text = {
 };
 const licenses = ['CC-BY-4.0', 'CC-BY-SA-4.0', 'CC-BY-NC-4.0', 'CC-BY-NC-SA-4.0', 'CC0-1.0', 'MIT', 'GPL-3.0-or-later'];
 ---
-<Base lang={lang} title={title[lang]} description={t.lead[lang]}>
+<Base lang={lang} title={title[tl(lang)]} description={t.lead[tl(lang)]}>
   <div class="wrap bgm" data-bgm data-lang={lang}>
     <header class="page-head">
       <span class="tag">MOD</span>
-      <h1>{title[lang]}</h1>
-      <p>{t.lead[lang]}</p>
-      <p class="note">{t.privacy[lang]}</p>
+      <h1>{title[tl(lang)]}</h1>
+      <p>{t.lead[tl(lang)]}</p>
+      <p class="note">{t.privacy[tl(lang)]}</p>
     </header>
 
     <section class="block">
-      <h2>{t.package[lang]}</h2>
+      <h2>{t.package[tl(lang)]}</h2>
       <div class="form">
         <label>{text.id}<input data-f="id" placeholder="yourname.bgm" autocomplete="off" spellcheck="false" /></label>
         <label>{text.version}<input data-f="version" value="1.0.0" autocomplete="off" /></label>
@@ -119,23 +119,23 @@ const licenses = ['CC-BY-4.0', 'CC-BY-SA-4.0', 'CC-BY-NC-4.0', 'CC-BY-NC-SA-4.0'
     </section>
 
     <section class="block">
-      <h2>{t.songs[lang]}</h2>
+      <h2>{t.songs[tl(lang)]}</h2>
       <ol class="songs" data-songs></ol>
     </section>
 
     <section class="block">
-      <h2>{t.battle[lang]}</h2>
+      <h2>{t.battle[tl(lang)]}</h2>
       <p class="note">{text.battleNote}</p>
       <div class="battle" data-battle></div>
     </section>
 
     <section class="block">
-      <h2>{t.export[lang]}</h2>
+      <h2>{t.export[tl(lang)]}</h2>
       <button type="button" class="btn big" data-export>{text.exportButton}</button>
       <p class="status" data-export-status></p>
     </section>
   </div>
-  <script type="application/json" id="bgm-data" is:inline set:html={JSON.stringify({ data, text, lang })}></script>
+  <script type="application/json" id="bgm-data" data-zh-hant="text,zh" is:inline set:html={JSON.stringify({ data, text, lang: tl(lang), locale: langInfo(lang).tag })}></script>
   <script>
     import { initBgmMaker } from '../../../scripts/bgm-maker';
     initBgmMaker();

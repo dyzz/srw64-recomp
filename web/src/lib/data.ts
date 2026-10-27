@@ -2,7 +2,7 @@
 // export_library.py). Read with fs because the files are large and not in git.
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import type { Lang } from '../i18n';
+import { tl, type Lang } from '../i18n';
 
 const DATA = join(process.cwd(), '.data');
 const cache = new Map<string, unknown>();
@@ -54,7 +54,7 @@ export function storyGroups(lang: Lang) {
   const groups: { key: string; title: string; scenes: SceneMeta[] }[] = [];
   const outside = { zh: '正篇之外：废案、预留与特殊场景', en: 'Outside the campaign: cut, reserved and special scenes', ja: '本編以外：没シナリオ・予備・特殊な場面' };
   for (const s of storyIndex()) {
-    const title = s.episode ? s.episode.section[lang] : outside[lang];
+    const title = s.episode ? s.episode.section[tl(lang)] : outside[tl(lang)];
     const key = s.episode ? s.episode.section.zh : 'outside';
     let g = groups.find((x) => x.key === key);
     if (!g) groups.push((g = { key, title, scenes: [] }));

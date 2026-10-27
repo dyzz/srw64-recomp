@@ -1,4 +1,4 @@
-import type { Lang } from '../i18n';
+import type { TextLang } from '../i18n';
 
 // Steps may contain inline HTML (<code>, <kbd>, <strong>); file names come in through {file}.
 export type Section = { id: string; name: string; summary: string; requires: string; experimental?: boolean; steps: string[]; notes?: string[] };
@@ -30,7 +30,7 @@ type Install = {
 
 const ROM_SHA = 'ee5f4a21d8e5f7827d21199e27800edf250df9a8e4d10befb1a6992df597b13e';
 
-export const INSTALL: Record<Lang, Install> = {
+export const INSTALL: Record<TextLang, Install> = {
   zh: {
     title: '安装',
     lead: '电脑和 Steam Deck 安装分为下载、解压和添加 ROM 三步；Android 则安装 APK 后在应用中选择 ROM；Switch 解压到 SD 卡后从 hbmenu 打开。HD 美术包为独立的可选下载，电脑与 Android 通用，Switch 另有一份。',

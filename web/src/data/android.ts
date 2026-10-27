@@ -2,9 +2,9 @@
 // (mine, AWS Device Farm or a player's), its state in the current release, and what is not
 // known yet. Update it with each release that changes anything for Android; `asOf` is the
 // release the list describes and `updated` the day it was last checked.
-import type { Lang } from '../i18n';
+import type { TextLang } from '../i18n';
 
-type L = Record<Lang, string>;
+type L = Record<TextLang, string>;
 export type Status = 'ok' | 'slow' | 'issue';
 // How far a phone got: the title screen and the demo battle, into stage 1, or real play
 // (all scenes on our own phone, or a player playing through).

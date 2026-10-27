@@ -1,14 +1,14 @@
 // The player guide's data (guide/data/<language>/, in git) for the guide pages.
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { Lang } from '../i18n';
+import { tl, type Lang, type TextLang } from '../i18n';
 
 const DIR = join(process.cwd(), '..', 'guide', 'data');
-const FOLDER: Record<Lang, string> = { zh: 'zh-Hans', en: 'en', ja: 'ja' };
+const FOLDER: Record<TextLang, string> = { zh: 'zh-Hans', en: 'en', ja: 'ja' };
 const cache = new Map<string, any>();
 function load(lang: Lang, name: string) {
   const key = `${lang}/${name}`;
-  if (!cache.has(key)) cache.set(key, JSON.parse(readFileSync(join(DIR, FOLDER[lang], `${name}.json`), 'utf8')));
+  if (!cache.has(key)) cache.set(key, JSON.parse(readFileSync(join(DIR, FOLDER[tl(lang)], `${name}.json`), 'utf8')));
   return cache.get(key);
 }
 export const progression = (lang: Lang) => load(lang, 'progression');

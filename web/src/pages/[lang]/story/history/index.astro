@@ -2,14 +2,14 @@
 // The translation history: every commit since the latest game release that changed
 // translations, newest first (web/scripts/export_history.py). Each opens to its lines.
 import Base from '../../../../layouts/Base.astro';
-import { langPaths, UI, type Lang } from '../../../../i18n';
+import { langPaths, UI, tl, type Lang } from '../../../../i18n';
 import { historyIndex } from '../../../../lib/data';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const h = historyIndex();
 // The Japanese pages show both translations' changes.
-const shown = (lang === 'ja' ? ['zh', 'en'] : [lang]) as ('zh' | 'en')[];
+const shown = (lang === 'ja' ? ['zh', 'en'] : [tl(lang)]) as ('zh' | 'en')[];
 const commits = (h?.commits ?? []).filter((c) => shown.some((l) => c.counts[l] > 0));
 const t = {
   title: { zh: '更新历史', en: 'Translation history', ja: '翻訳の更新履歴' },
@@ -27,13 +27,13 @@ const t = {
 };
 const when = (iso: string) => iso.slice(0, 16).replace('T', ' ');
 ---
-<Base lang={lang} title={t.title[lang]}>
+<Base lang={lang} title={t.title[tl(lang)]}>
   <div class="wrap">
     <header class="page-head">
-      <a class="back" href={`/${lang}/story/`}>← {t.back[lang]}</a>
+      <a class="back" href={`/${lang}/story/`}>← {t.back[tl(lang)]}</a>
       <span class="tag">HISTORY</span>
-      <h1>{t.title[lang]}</h1>
-      <p>{h ? t.lead[lang](commits.length, h.baseline) : t.none[lang]}</p>
+      <h1>{t.title[tl(lang)]}</h1>
+      <p>{h ? t.lead[tl(lang)](commits.length, h.baseline) : t.none[tl(lang)]}</p>
     </header>
     <ol class="commits">
       {commits.map((c) => (
@@ -42,9 +42,9 @@ const when = (iso: string) => iso.slice(0, 16).replace('T', ' ');
             <span class="when latin">{when(c.date)}</span>
             <span class="subject latin">{c.subject}</span>
             <span class="nums">
-              {shown.filter((l) => c.counts[l] > 0).map((l) => <span class="n">{shown.length > 1 ? `${t.langName[lang][l]} ` : ''}{c.counts[l]} {t.lines[lang]}</span>)}
-              {(() => { const n = new Set(shown.flatMap((l) => c.scenes[l])).size; return n > 0 && <span class="n dim">{t.scenes[lang](n)}</span>; })()}
-              {c.terms > 0 && <span class="n dim">{t.terms[lang](c.terms)}</span>}
+              {shown.filter((l) => c.counts[l] > 0).map((l) => <span class="n">{shown.length > 1 ? `${t.langName[tl(lang)][l]} ` : ''}{c.counts[l]} {t.lines[tl(lang)]}</span>)}
+              {(() => { const n = new Set(shown.flatMap((l) => c.scenes[l])).size; return n > 0 && <span class="n dim">{t.scenes[tl(lang)](n)}</span>; })()}
+              {c.terms > 0 && <span class="n dim">{t.terms[tl(lang)](c.terms)}</span>}
             </span>
           </a>
         </li>

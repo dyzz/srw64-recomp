@@ -1,7 +1,8 @@
-// The three site languages. `code` is the URL prefix, `tag` the BCP 47 tag
-// (and the name of the repository's content/<tag>/ folders).
+// The site languages. `code` is the URL prefix, `tag` the BCP 47 tag (and the name of the
+// repository's content/<tag>/ folders).
 export const LANGS = [
-  { code: 'zh', tag: 'zh-Hans', label: '简体中文', short: '中' },
+  { code: 'zh', tag: 'zh-Hans', label: '简体中文', short: '简' },
+  { code: 'tw', tag: 'zh-Hant', label: '繁體中文', short: '繁' },
   { code: 'en', tag: 'en', label: 'English', short: 'EN' },
   { code: 'ja', tag: 'ja', label: '日本語', short: '日' },
 ] as const;
@@ -9,15 +10,25 @@ export const LANGS = [
 export type Lang = (typeof LANGS)[number]['code'];
 export const DEFAULT_LANG: Lang = 'zh';
 
+/** The languages the site is written in. Traditional Chinese (tw, Taiwan) is not written: as
+ * in the game, it is made from the Simplified Chinese. Its pages are built from the zh text
+ * and converted at the end of the build (scripts/zh_hant_pages.py, the game's converter). */
+export type TextLang = 'zh' | 'en' | 'ja';
+export const tl = (lang: Lang): TextLang => (lang === 'tw' ? 'zh' : lang);
+/** The page languages a text language is shown in: zh text also makes the tw pages. */
+export const shownIn = (text: string): Lang[] => (text === 'zh' ? ['zh', 'tw'] : [text as Lang]);
+
 export const langPaths = () => LANGS.map((l) => ({ params: { lang: l.code } }));
 export const langInfo = (lang: Lang) => LANGS.find((l) => l.code === lang)!;
+/** The lang attribute of TEXT shown on a PAGE: zh text on a tw page is (made) zh-Hant. */
+export const tagOf = (page: Lang, text: TextLang) => langInfo(text === 'zh' && page === 'tw' ? 'tw' : text).tag;
 
 /** Pick the string for `lang` out of a { zh, en, ja } record. */
-export const pick = <T>(lang: Lang, v: Record<Lang, T>): T => v[lang];
+export const pick = <T>(lang: Lang, v: Record<TextLang, T>): T => v[tl(lang)];
 
 /** Same page in another language: swaps the first path segment. */
 export const switchLang = (path: string, to: Lang) =>
-  path.replace(/^\/(zh|en|ja)(?=\/|$)/, `/${to}`) || `/${to}/`;
+  path.replace(/^\/(zh|tw|en|ja)(?=\/|$)/, `/${to}`) || `/${to}/`;
 
 export const UI = {
   nav: {
@@ -82,13 +93,15 @@ export const UI = {
 } as const;
 
 /** Readers suggest changes to the Chinese and English translations; the Japanese pages
- * show the original text, so they have no suggestion features. */
-export const canReview = (lang: Lang) => lang !== 'ja';
+ * show the original text, and the Traditional Chinese is made from the Simplified, so
+ * neither has suggestion features. */
+export const canReview = (lang: Lang) => lang === 'zh' || lang === 'en';
 
 /** The title logo drawn for each language (public/brand/title-<lang>.webp, 1400 wide; a
  * -small copy is 480 wide) and the name it shows. One M64 mark serves every language. */
 export const TITLE_LOGO: Record<Lang, { alt: string; h: number }> = {
   zh: { alt: '三月风64', h: 432 },
+  tw: { alt: '三月風64', h: 424 },
   en: { alt: 'MARCHWIND 64', h: 403 },
   ja: { alt: 'マーチウィンド64', h: 355 },
 };

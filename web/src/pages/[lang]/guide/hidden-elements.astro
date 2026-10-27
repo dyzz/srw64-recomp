@@ -3,11 +3,11 @@ import GuideShell from '../../../components/GuideShell.astro';
 import { GUIDE_UI } from '../../../copy/guide';
 import { hiddenElements, inline, progression, SECRET_ART } from '../../../lib/guide';
 import { library, portraitUrl } from '../../../lib/data';
-import { langPaths, type Lang } from '../../../i18n';
+import { langPaths, tl, type Lang } from '../../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
-const ui = GUIDE_UI[lang];
+const ui = GUIDE_UI[tl(lang)];
 const data = hiddenElements(lang);
 const labels = Object.fromEntries(data.categories.map((c: any) => [c.id, c.label]));
 const I = (x: unknown) => inline(x, ui.tags);
@@ -19,9 +19,9 @@ const units = new Map(lib.units.map((u) => [u.id, u]));
 // Faces first, then machines; each links to its Library page.
 const art = (id: string) => [
   ...(SECRET_ART[id]?.p ?? []).map((n) => people.get(n)!).filter((p) => portraitUrl(p.portrait))
-    .map((p) => ({ kind: 'face', href: `/${lang}/library/people/${p.id}/`, src: portraitUrl(p.portrait)!, name: p.name[lang] })),
+    .map((p) => ({ kind: 'face', href: `/${lang}/library/people/${p.id}/`, src: portraitUrl(p.portrait)!, name: p.name[tl(lang)] })),
   ...(SECRET_ART[id]?.u ?? []).map((n) => units.get(n)!)
-    .map((u) => ({ kind: 'unit', href: `/${lang}/library/unit/${u.id}/`, src: `/gen/units/${u.id}.webp`, name: u.name[lang] })),
+    .map((u) => ({ kind: 'unit', href: `/${lang}/library/unit/${u.id}/`, src: `/gen/units/${u.id}.webp`, name: u.name[tl(lang)] })),
 ];
 ---
 <GuideShell lang={lang} tab="hidden-elements" title={ui.hidden} lead={ui.hidden_lead}>

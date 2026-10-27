@@ -1,31 +1,31 @@
 ---
-import { LANGS, UI, canReview, langInfo, switchLang, type Lang } from '../i18n';
+import { LANGS, UI, canReview, langInfo, switchLang, tl, type Lang } from '../i18n';
 import Wordmark from './Wordmark.astro';
 interface Props { lang: Lang; path: string; review?: boolean; }
 const { lang, path, review = false } = Astro.props;
 // No Home item: the logo links home, and the row is full in English and Japanese.
 const items = [
-  { href: `/${lang}/install/`, label: UI.nav.install[lang], match: (p: string) => p.startsWith(`/${lang}/install`) },
-  { href: `/${lang}/guide/`, label: UI.nav.guide[lang], match: (p: string) => p.startsWith(`/${lang}/guide`) },
-  { href: `/${lang}/story/`, label: UI.nav.story[lang], match: (p: string) => p.startsWith(`/${lang}/story`) },
-  { href: `/${lang}/library/`, label: UI.nav.library[lang], match: (p: string) => p.startsWith(`/${lang}/library`) },
-  ...(canReview(lang) ? [{ href: `/${lang}/reviews/`, label: UI.nav.reviews[lang], match: (p: string) => p.startsWith(`/${lang}/reviews`) }] : []),
+  { href: `/${lang}/install/`, label: UI.nav.install[tl(lang)], match: (p: string) => p.startsWith(`/${lang}/install`) },
+  { href: `/${lang}/guide/`, label: UI.nav.guide[tl(lang)], match: (p: string) => p.startsWith(`/${lang}/guide`) },
+  { href: `/${lang}/story/`, label: UI.nav.story[tl(lang)], match: (p: string) => p.startsWith(`/${lang}/story`) },
+  { href: `/${lang}/library/`, label: UI.nav.library[tl(lang)], match: (p: string) => p.startsWith(`/${lang}/library`) },
+  ...(canReview(lang) ? [{ href: `/${lang}/reviews/`, label: UI.nav.reviews[tl(lang)], match: (p: string) => p.startsWith(`/${lang}/reviews`) }] : []),
 ];
 const after = [
-  { href: `/${lang}/faq/`, label: UI.nav.faq[lang], match: (p: string) => p.startsWith(`/${lang}/faq`) },
-  { href: `/${lang}/blog/`, label: UI.nav.blog[lang], match: (p: string) => p.startsWith(`/${lang}/blog`) },
-  { href: `/${lang}/docs/`, label: UI.nav.docs[lang], match: (p: string) => p.startsWith(`/${lang}/docs`) && !isMod(p) },
+  { href: `/${lang}/faq/`, label: UI.nav.faq[tl(lang)], match: (p: string) => p.startsWith(`/${lang}/faq`) },
+  { href: `/${lang}/blog/`, label: UI.nav.blog[tl(lang)], match: (p: string) => p.startsWith(`/${lang}/blog`) },
+  { href: `/${lang}/docs/`, label: UI.nav.docs[tl(lang)], match: (p: string) => p.startsWith(`/${lang}/docs`) && !isMod(p) },
 ];
 // The MOD menu in three groups: downloads, the tools (the web BGM maker) and the guides (in
 // the docs, with the ID table).
 const modGroups = [
-  { label: UI.nav.modGroupDownloads[lang], items: [{ href: `/${lang}/mods/`, label: UI.nav.modAll[lang], exact: true }] },
-  { label: UI.nav.modGroupTools[lang], items: [{ href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[lang] }] },
-  { label: UI.nav.modGroupDocs[lang], items: [
-    { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[lang] },
-    { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[lang] },
-    { href: `/${lang}/docs/mod-data/`, label: UI.nav.modData[lang] },
-    { href: `/${lang}/mods/ids/`, label: UI.nav.modIds[lang] },
+  { label: UI.nav.modGroupDownloads[tl(lang)], items: [{ href: `/${lang}/mods/`, label: UI.nav.modAll[tl(lang)], exact: true }] },
+  { label: UI.nav.modGroupTools[tl(lang)], items: [{ href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[tl(lang)] }] },
+  { label: UI.nav.modGroupDocs[tl(lang)], items: [
+    { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[tl(lang)] },
+    { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[tl(lang)] },
+    { href: `/${lang}/docs/mod-data/`, label: UI.nav.modData[tl(lang)] },
+    { href: `/${lang}/mods/ids/`, label: UI.nav.modIds[tl(lang)] },
   ] },
 ];
 const mods = modGroups.flatMap((g) => g.items);
@@ -43,7 +43,7 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
     <nav class="nav" aria-label="Main">
       {items.map((it) => <a href={it.href} aria-current={it.match(path) ? 'page' : undefined}>{it.label}</a>)}
       <details class="menu" data-menu>
-        <summary aria-current={isMod(path) ? 'page' : undefined}>{UI.nav.mods[lang]}<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path fill="currentColor" d="M2 4l4 4 4-4z"/></svg></summary>
+        <summary aria-current={isMod(path) ? 'page' : undefined}>{UI.nav.mods[tl(lang)]}<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path fill="currentColor" d="M2 4l4 4 4-4z"/></svg></summary>
         <div class="panel">
           {modGroups.map((g) => (
             <section>
@@ -54,12 +54,12 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
         </div>
       </details>
       {after.map((it) => <a href={it.href} aria-current={it.match(path) ? 'page' : undefined}>{it.label}</a>)}
-      <a class="sister" href="https://srwz.dreamquest.club/" target="_blank" rel="noopener" title={UI.nav.srwz.title[lang]}>{UI.nav.srwz.label[lang]}</a>
+      <a class="sister" href="https://srwz.dreamquest.club/" target="_blank" rel="noopener" title={UI.nav.srwz.title[tl(lang)]}>{UI.nav.srwz.label[tl(lang)]}</a>
     </nav>
     <div class="tools">
       {review && canReview(lang) && <div class="hdr-id" data-identity-chip data-lang={lang}></div>}
       <details class="lang" data-menu>
-        <summary aria-label={UI.lang[lang]}>
+        <summary aria-label={UI.lang[tl(lang)]}>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.93 6h-2.95a15.6 15.6 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8ZM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96ZM4.26 14a8.2 8.2 0 0 1 0-4h3.38a16.5 16.5 0 0 0 0 4H4.26Zm.81 2h2.95c.32 1.25.78 2.45 1.38 3.56A8 8 0 0 1 5.07 16Zm2.95-8H5.07a8 8 0 0 1 4.33-3.56A15.6 15.6 0 0 0 8.02 8ZM12 19.96A14.1 14.1 0 0 1 10.09 16h3.82A14.1 14.1 0 0 1 12 19.96ZM14.34 14H9.66a14.7 14.7 0 0 1 0-4h4.68a14.7 14.7 0 0 1 0 4Zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56ZM16.36 14a16.5 16.5 0 0 0 0-4h3.38a8.2 8.2 0 0 1 0 4h-3.38Z"/></svg>
           <span>{langInfo(lang).short}</span>
         </summary>

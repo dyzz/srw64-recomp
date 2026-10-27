@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import StorySearch from '../../../components/StorySearch.astro';
-import { langPaths, UI, type Lang } from '../../../i18n';
+import { langPaths, UI, tl, type Lang } from '../../../i18n';
 import { storyGroups, storyIndex, storySource } from '../../../lib/data';
 
 export const getStaticPaths = langPaths;
@@ -10,7 +10,7 @@ const groups = storyGroups(lang);
 const total = storyIndex().reduce((n, s) => n + s.count, 0);
 // Lines changed since the latest game release, in this page's translation (none on ja).
 const source = storySource();
-const changedLang = lang === 'ja' ? null : lang;
+const changedLang = lang === 'ja' ? null : tl(lang);
 const changedTotal = changedLang ? storyIndex().reduce((n, s) => n + (s.changed?.[changedLang] ?? 0), 0) : 0;
 const t = {
   lead: {
@@ -42,19 +42,19 @@ function rows(scenes: Meta[]) {
   return out;
 }
 ---
-<Base lang={lang} title={UI.nav.story[lang]}>
+<Base lang={lang} title={UI.nav.story[tl(lang)]}>
   <div class="wrap">
     <header class="page-head">
       <span class="tag">STORY</span>
-      <h1>{UI.nav.story[lang]}</h1>
-      <p>{t.lead[lang]}</p>
-      {changedLang && source && changedTotal > 0 && <p class="changed-total">{t.changedTotal[lang](changedTotal, source.baseline)} <a href={`/${lang}/story/history/`}>{t.history[lang]}</a></p>}
+      <h1>{UI.nav.story[tl(lang)]}</h1>
+      <p>{t.lead[tl(lang)]}</p>
+      {changedLang && source && changedTotal > 0 && <p class="changed-total">{t.changedTotal[tl(lang)](changedTotal, source.baseline)} <a href={`/${lang}/story/history/`}>{t.history[tl(lang)]}</a></p>}
       <StorySearch lang={lang} />
     </header>
 
     {groups.map((g) => (
       <section class="group">
-        <div class="ghead"><h2>{g.title}</h2><span class="gcount">{t.stages[lang](rows(g.scenes).length)}</span></div>
+        <div class="ghead"><h2>{g.title}</h2><span class="gcount">{t.stages[tl(lang)](rows(g.scenes).length)}</span></div>
         <div class="rows">
           {rows(g.scenes).map((r) => (
             <div class="row">
@@ -62,10 +62,10 @@ function rows(scenes: Meta[]) {
               <div class="cards">
                 {r.scenes.map((s) => (
                   <a class="card" href={`/${lang}/story/${s.scene}/`}>
-                    <span class="lanes">{s.episode?.lanes.length ? s.episode.lanes.map((l) => <span class="lane">{l[lang]}</span>) : <span class="lane dim">#{s.scene}</span>}</span>
-                    <strong>{s.title[lang]}</strong>
+                    <span class="lanes">{s.episode?.lanes.length ? s.episode.lanes.map((l) => <span class="lane">{l[tl(lang)]}</span>) : <span class="lane dim">#{s.scene}</span>}</span>
+                    <strong>{s.title[tl(lang)]}</strong>
                     {lang !== 'ja' && <span class="ja-title" lang="ja">{s.title.ja}</span>}
-                    <span class="foot"><span class="count">{s.count} {t.lines[lang]}</span>{changedLang && (s.changed?.[changedLang] ?? 0) > 0 && <span class="chg" data-href={`/${lang}/story/${s.scene}/?changed=1`}>{t.changed[lang](s.changed![changedLang])}</span>}<span class="go">{t.enter[lang]} →</span></span>
+                    <span class="foot"><span class="count">{s.count} {t.lines[tl(lang)]}</span>{changedLang && (s.changed?.[changedLang] ?? 0) > 0 && <span class="chg" data-href={`/${lang}/story/${s.scene}/?changed=1`}>{t.changed[tl(lang)](s.changed![changedLang])}</span>}<span class="go">{t.enter[tl(lang)]} →</span></span>
                   </a>
                 ))}
               </div>
