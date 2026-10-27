@@ -63,7 +63,22 @@ export function initBgmMaker() {
   let ctx: AudioContext | null = null;
   const audio = () => (ctx ??= new AudioContext({ sampleRate: RATE }));
   let playing: AudioBufferSourceNode | null = null;
-  const stop = () => { try { playing?.stop(); } catch {} playing = null; };
+  // What plays, to draw its playhead and mark its row: the song, where in it the source
+  // started (seconds) and when (context time), and the loop it runs.
+  let now: { song: number; offset: number; at: number; start: number; end: number; loop: boolean; duration: number } | null = null;
+  const stop = () => {
+    try { playing?.stop(); } catch {}
+    playing = null;
+    const was = now?.song; now = null;
+    if (was !== undefined) markPlaying(was);
+  };
+  // The position now, in seconds, following the loop once the source has passed its end.
+  function position() {
+    if (!now || !ctx) return null;
+    let p = now.offset + (ctx.currentTime - now.at);
+    if (now.loop && p >= now.end) p = now.start + ((p - now.start) % Math.max(0.001, now.end - now.start));
+    return Math.min(p, now.duration);
+  }
 
   async function decode(blob: Blob): Promise<AudioBuffer> {
     return audio().decodeAudioData(await blob.arrayBuffer());
@@ -181,7 +196,8 @@ export function initBgmMaker() {
     return preview.buffer;
   }
 
-  async function play(track: Track, seam: boolean) {
+  // From `from` seconds, or 3 seconds before the loop's end to hear the seam.
+  async function play(track: Track, from: number | 'seam' = 0) {
     stop();
     const buffer = await previewBuffer(track);
     const c = audio();
@@ -193,10 +209,23 @@ export function initBgmMaker() {
     source.connect(gain).connect(c.destination);
     const start = track.loop === 'range' ? track.start / track.rate : 0;
     const end = track.loop === 'range' ? track.end / track.rate : buffer.duration;
-    if (track.loop !== 'once') { source.loop = true; source.loopStart = start; source.loopEnd = end; }
-    source.start(0, seam ? Math.max(start, end - 3) : 0);
+    const loop = track.loop !== 'once';
+    if (loop) { source.loop = true; source.loopStart = start; source.loopEnd = end; }
+    const offset = from === 'seam' ? Math.max(start, end - 3) : Math.max(0, Math.min(from, buffer.duration - 0.01));
+    source.start(0, offset);
+    source.onended = () => { if (playing === source) stop(); };
     playing = source;
+    now = { song: track.song, offset, at: c.currentTime, start, end, loop, duration: buffer.duration };
+    markPlaying(track.song);
+    tick();
   }
+  // Each row's play button and the open editor's playhead follow what plays.
+  function markPlaying(song: number) {
+    const b = document.querySelector<HTMLButtonElement>(`#song-${song} [data-play]`);
+    if (b) { const on = now?.song === song; b.textContent = on ? '■' : '▶'; b.title = on ? text.stop : text.play; b.classList.toggle('on', on); }
+  }
+  let redraw: (() => void) | null = null;
+  function tick() { if (!now) { redraw?.(); return; } redraw?.(); requestAnimationFrame(tick); }
 
   // --- Song list ----------------------------------------------------------------------
   const list = root.querySelector<HTMLOListElement>('[data-songs]')!;
@@ -256,9 +285,12 @@ export function initBgmMaker() {
       const f = (e.target as HTMLInputElement).files?.[0];
       if (f) { open = song; addFile(song, f, f.name); }
     } });
+    const playButton = t?.state === 'ready' ? el('button', { type: 'button', class: 'mini play', 'data-play': '', title: text.play,
+      onclick: () => { if (now?.song === song) stop(); else if (t) play(t); } }, '▶') : null;
     const actions = el('div', { class: 'song-actions' },
+      playButton,
       el('label', { class: 'mini' }, text.choose, file),
-      t?.state === 'ready' ? el('button', { type: 'button', class: 'mini', onclick: () => { stop(); open = open === song ? null : song; rerenderOpen(song); } }, open === song ? text.close : text.edit) : null,
+      t?.state === 'ready' ? el('button', { type: 'button', class: 'mini', onclick: () => { open = open === song ? null : song; rerenderOpen(song); } }, open === song ? text.close : text.edit) : null,
       t ? el('button', { type: 'button', class: 'mini', onclick: () => { stop(); tracks.delete(song); if (open === song) open = null; if (preview?.song === song) preview = null; renderSong(song); } }, text.remove) : null);
     li.replaceChildren(el('div', { class: 'song-head' },
       el('span', { class: 'song-no' }, String(s.row)),
@@ -267,6 +299,7 @@ export function initBgmMaker() {
       el('span', { class: 'song-uses' }, uses(s) + (s.karaoke ? ` · ${text.karaoke}` : '')),
       el('span', { class: 'song-state' })));
     renderState(song);
+    markPlaying(song);
     if (t?.state === 'ready' && open === song) li.append(editor(t));
   }
   function rerenderOpen(song: number) {
@@ -295,16 +328,28 @@ export function initBgmMaker() {
         g.fillStyle = color('--cyan'); g.fillRect(x(t.start) - devicePixelRatio, 0, 2 * devicePixelRatio, h);
         g.fillStyle = color('--gold'); g.fillRect(x(t.end) - devicePixelRatio, 0, 2 * devicePixelRatio, h);
       }
+      const head = now?.song === t.song ? position() : null;
+      if (head !== null) { g.fillStyle = color('--text'); g.fillRect(x(head * t.rate) - devicePixelRatio / 2, 0, devicePixelRatio, h); }
     };
+    redraw = draw;
     // Dragging a loop line; on release it snaps to the nearest zero crossing.
     let dragging: 'start' | 'end' | null = null;
     const at = (e: PointerEvent) => Math.round(((e.clientX - canvas.getBoundingClientRect().left) / canvas.clientWidth) * t.frames);
+    // Near a loop line (within 8 pixels) a press moves it; anywhere else it plays from there.
     canvas.addEventListener('pointerdown', (e) => {
-      if (t.loop !== 'range') return;
-      const s = at(e);
-      dragging = Math.abs(s - t.start) <= Math.abs(s - t.end) ? 'start' : 'end';
-      canvas.setPointerCapture(e.pointerId);
-      move(e);
+      const s = at(e), near = (samples: number) => Math.abs(s - samples) / t.frames * canvas.clientWidth <= 8;
+      if (t.loop === 'range' && (near(t.start) || near(t.end))) {
+        dragging = Math.abs(s - t.start) <= Math.abs(s - t.end) ? 'start' : 'end';
+        canvas.setPointerCapture(e.pointerId);
+        move(e);
+        return;
+      }
+      play(t, Math.max(0, s) / t.rate);
+    });
+    canvas.addEventListener('pointermove', (e) => {
+      if (dragging || t.loop !== 'range') { canvas.style.cursor = dragging ? 'ew-resize' : 'pointer'; return; }
+      const s = at(e), near = (samples: number) => Math.abs(s - samples) / t.frames * canvas.clientWidth <= 8;
+      canvas.style.cursor = near(t.start) || near(t.end) ? 'ew-resize' : 'pointer';
     });
     const move = (e: PointerEvent) => {
       if (!dragging) return;
@@ -341,7 +386,7 @@ export function initBgmMaker() {
       el('label', { class: 'field' }, text.loopEnd, endInput),
       el('span', { class: 'hint' }, text.loopHint));
     range.hidden = t.loop !== 'range';
-    const seamButton = el('button', { type: 'button', class: 'mini', disabled: t.loop === 'once', onclick: () => play(t, true) }, text.seam) as HTMLButtonElement;
+    const seamButton = el('button', { type: 'button', class: 'mini', disabled: t.loop === 'once', onclick: () => play(t, 'seam') }, text.seam) as HTMLButtonElement;
     const modes = el('div', { class: 'row' }, el('strong', {}, text.loop),
       ...(['whole', 'range', 'once'] as LoopMode[]).map((m) => el('label', { class: 'radio' },
         el('input', { type: 'radio', name: `loop-${t.song}`, checked: t.loop === m, onchange: () => {
@@ -363,9 +408,10 @@ export function initBgmMaker() {
     const box = el('div', { class: 'editor' },
       canvas, modes, range,
       el('div', { class: 'row' },
-        el('button', { type: 'button', class: 'mini', onclick: () => play(t, false) }, text.play), seamButton,
+        el('button', { type: 'button', class: 'mini', onclick: () => play(t) }, text.play), seamButton,
         el('button', { type: 'button', class: 'mini', onclick: stop }, text.stop),
         el('label', { class: 'field' }, text.gain, gain), level),
+      el('p', { class: 'hint' }, text.seekHint),
       el('div', { class: 'row' }, el('strong', {}, text.titles)),
       el('div', { class: 'row' }, titleInput('zh-Hans', '中文'), titleInput('en', 'English'), titleInput('ja', '日本語')));
     requestAnimationFrame(draw);

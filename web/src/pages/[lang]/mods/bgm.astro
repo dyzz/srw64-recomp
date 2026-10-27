@@ -54,6 +54,7 @@ const text = {
   loopEnd: L({ zh: '终点（秒）', en: 'End (s)', ja: '終了（秒）' }),
   loopHint: L({ zh: '在波形上拖动蓝色（起点）和金色（终点）竖线，会自动对齐到最近的过零点。', en: 'Drag the blue (start) and gold (end) lines on the waveform; they snap to the nearest zero crossing.', ja: '波形上の青（開始）と金（終了）の線をドラッグします。近くのゼロクロスに合わせます。' }),
   play: L({ zh: '从头播放', en: 'Play', ja: '再生' }),
+  seekHint: L({ zh: '点波形上任意位置从那里开始播放；靠近蓝色、金色竖线时拖动是调循环点。', en: 'Click anywhere on the waveform to play from there; near the blue or gold line, dragging moves the loop point.', ja: '波形のどこかをクリックするとそこから再生します。青・金の線の近くでドラッグするとループ位置を動かします。' }),
   seam: L({ zh: '试听接缝', en: 'Hear the seam', ja: 'つなぎ目を試聴' }),
   stop: L({ zh: '停止', en: 'Stop', ja: '停止' }),
   gain: L({ zh: '音量修正（dB）', en: 'Volume (dB)', ja: '音量補正（dB）' }),
@@ -172,8 +173,10 @@ const licenses = ['CC-BY-4.0', 'CC-BY-SA-4.0', 'CC-BY-NC-4.0', 'CC-BY-NC-SA-4.0'
   :global(.bgm .mini) { font: inherit; font-size: 13px; color: var(--text); background: var(--cyan-soft); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
   :global(.bgm .mini:hover) { background: rgba(63, 208, 255, 0.24); }
   :global(.bgm .mini:disabled) { opacity: 0.45; cursor: default; }
+  :global(.bgm .mini.play) { min-width: 2.4em; }
+  :global(.bgm .mini.play.on) { background: var(--gold); color: var(--bg); border-color: var(--gold); }
   :global(.bgm .editor) { border-top: 1px solid var(--line); padding: 12px; display: grid; gap: 12px; }
-  :global(.bgm canvas.wave) { width: 100%; height: 120px; display: block; background: var(--bg-2); border-radius: var(--radius); cursor: ew-resize; touch-action: none; }
+  :global(.bgm canvas.wave) { width: 100%; height: 120px; display: block; background: var(--bg-2); border-radius: var(--radius); cursor: pointer; touch-action: none; }
   :global(.bgm .row) { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: end; }
   :global(.bgm .row .field) { min-width: 120px; }
   :global(.bgm .radio) { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; color: var(--text); }
