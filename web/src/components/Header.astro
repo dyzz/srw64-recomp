@@ -16,15 +16,19 @@ const after = [
   { href: `/${lang}/blog/`, label: UI.nav.blog[lang], match: (p: string) => p.startsWith(`/${lang}/blog`) },
   { href: `/${lang}/docs/`, label: UI.nav.docs[lang], match: (p: string) => p.startsWith(`/${lang}/docs`) && !isMod(p) },
 ];
-// The MOD menu: the two MOD guides (in the docs) and the web BGM maker.
-const mods = [
-  { href: `/${lang}/mods/`, label: UI.nav.modDownloads[lang], exact: true },
-  { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[lang] },
-  { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[lang] },
-  { href: `/${lang}/docs/mod-data/`, label: UI.nav.modData[lang] },
-  { href: `/${lang}/mods/ids/`, label: UI.nav.modIds[lang] },
-  { href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[lang] },
+// The MOD menu in three groups: downloads, the guides (in the docs, with the ID table), and
+// the tools (the web BGM maker).
+const modGroups = [
+  { label: UI.nav.modGroupDownloads[lang], items: [{ href: `/${lang}/mods/`, label: UI.nav.modAll[lang], exact: true }] },
+  { label: UI.nav.modGroupDocs[lang], items: [
+    { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[lang] },
+    { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[lang] },
+    { href: `/${lang}/docs/mod-data/`, label: UI.nav.modData[lang] },
+    { href: `/${lang}/mods/ids/`, label: UI.nav.modIds[lang] },
+  ] },
+  { label: UI.nav.modGroupTools[lang], items: [{ href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[lang] }] },
 ];
+const mods = modGroups.flatMap((g) => g.items);
 function isMod(p: string) { return mods.some((m) => p.startsWith(m.href.replace(/\/$/, ''))); }
 // The downloads page is /<lang>/mods/, the prefix of the BGM maker and the ID table too: exact.
 const here = (p: string) => (it: { href: string; exact?: boolean }) =>
@@ -40,9 +44,14 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
       {items.map((it) => <a href={it.href} aria-current={it.match(path) ? 'page' : undefined}>{it.label}</a>)}
       <details class="menu" data-menu>
         <summary aria-current={isMod(path) ? 'page' : undefined}>{UI.nav.mods[lang]}<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path fill="currentColor" d="M2 4l4 4 4-4z"/></svg></summary>
-        <ul>
-          {mods.map((m) => <li><a href={m.href} aria-current={here(path)(m) ? 'page' : undefined}>{m.label}</a></li>)}
-        </ul>
+        <div class="panel">
+          {modGroups.map((g) => (
+            <section>
+              <p class="group">{g.label}</p>
+              <ul>{g.items.map((m) => <li><a href={m.href} aria-current={here(path)(m) ? 'page' : undefined}>{m.label}</a></li>)}</ul>
+            </section>
+          ))}
+        </div>
       </details>
       {after.map((it) => <a href={it.href} aria-current={it.match(path) ? 'page' : undefined}>{it.label}</a>)}
       <a class="sister" href="https://srwz.dreamquest.club/" target="_blank" rel="noopener" title={UI.nav.srwz.title[lang]}>{UI.nav.srwz.label[lang]}</a>
@@ -77,7 +86,7 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
     menus.forEach((o) => { if (o !== m) o.open = false; });
     // The MOD panel hangs off the header; put it under its summary (the nav may be scrolled
     // sideways on a phone), kept inside the screen.
-    const panel = m.matches('.menu') ? m.querySelector<HTMLElement>('ul') : null;
+    const panel = m.matches('.menu') ? m.querySelector<HTMLElement>('.panel') : null;
     if (!panel) return;
     const header = m.closest('.site-header')!.getBoundingClientRect();
     const at = m.querySelector('summary')!.getBoundingClientRect().left - header.left;
@@ -117,8 +126,11 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
   .menu[open] summary svg { transform: rotate(180deg); }
   .menu summary:hover, .menu[open] summary, .menu summary[aria-current='page'] { color: var(--text); }
   .menu summary[aria-current='page']::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; background: var(--gold); }
-  .menu ul { position: absolute; top: 100%; margin: 0; padding: 6px; list-style: none; min-width: 200px; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 30; }
-  .menu ul a { display: block; padding: 8px 12px; color: var(--text); font-size: 14px; white-space: nowrap; }
+  .menu .panel { position: absolute; top: 100%; padding: 6px; min-width: 220px; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 30; }
+  .menu section + section { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--line-soft); }
+  .menu .group { margin: 0; padding: 8px 12px 2px; color: var(--muted); font-size: 12px; letter-spacing: 0.06em; white-space: nowrap; }
+  .menu ul { margin: 0; padding: 0; list-style: none; }
+  .menu ul a { display: block; padding: 7px 12px 7px 20px; color: var(--text); font-size: 14px; white-space: nowrap; }
   .nav .menu ul a::after { display: none; }
   .menu ul a:hover { background: var(--cyan-soft); }
   .menu ul a[aria-current='page'] { color: var(--gold); }

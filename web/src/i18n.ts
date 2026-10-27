@@ -36,6 +36,11 @@ export const UI = {
     mods: { zh: 'MOD', en: 'Mods', ja: 'MOD' },
     // The header's MOD menu: the two MOD guides in the docs and the web BGM maker.
     modDownloads: { zh: 'MOD 下载', en: 'Mod downloads', ja: 'MOD ダウンロード' },
+    // The MOD menu's groups, and the one item under downloads.
+    modGroupDownloads: { zh: 'MOD 下载', en: 'Download', ja: 'ダウンロード' },
+    modGroupDocs: { zh: 'MOD 文档', en: 'Guides', ja: 'ドキュメント' },
+    modGroupTools: { zh: 'MOD 制作工具', en: 'Tools', ja: '制作ツール' },
+    modAll: { zh: '全部 MOD', en: 'All mods', ja: 'すべての MOD' },
     modPackages: { zh: 'MOD 包：安装与制作', en: 'Mod packages', ja: 'MOD パッケージ' },
     modMusic: { zh: '音乐 MOD', en: 'Music mods', ja: '音楽 MOD' },
     modData: { zh: '数值 MOD', en: 'Number mods', ja: '数値 MOD' },
