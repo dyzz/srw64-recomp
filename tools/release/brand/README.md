@@ -11,3 +11,5 @@ packaging scripts draw from:
   Steam draws over the hero.
 
 The website's copies in `web/public/brand` are smaller exports of the same marks.
+`.gitignore` ignores `*.webp` everywhere, so a new or replaced master here is added with
+`git add -f`.
