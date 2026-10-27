@@ -1,20 +1,27 @@
 ---
-// Unit, pilot and weapon numbers for MOD authors: the keys of data/units.json, data/pilots.json
+// Unit, pilot and weapon numbers for MOD authors, one table a page (units / pilots / weapons): the keys of data/units.json, data/pilots.json
 // and data/weapons.json (number mods), of dialogue/names.json's pilots/units/weapons and of
 // music.json's battle songs, with the original values and the keys a file writes them with.
 // The data is tools/content/export_data_tables.py's, the same as docs/guide/data-mods/*.csv.
-import Base from '../../../layouts/Base.astro';
-import { langPaths, tl, type Lang } from '../../../i18n';
-import { library } from '../../../lib/data';
-import data from '../../../data/data-mods.json';
+import Base from '../../../../layouts/Base.astro';
+import { LANGS, tl, type Lang } from '../../../../i18n';
+import { library } from '../../../../lib/data';
+import data from '../../../../data/data-mods.json';
 
-export const getStaticPaths = langPaths;
+export const KINDS = ['units', 'pilots', 'weapons'] as const;
+export const getStaticPaths = () => LANGS.flatMap((l) => KINDS.map((kind) => ({ params: { lang: l.code, kind } })));
 const lang = Astro.params.lang as Lang;
+const kind = Astro.params.kind as (typeof KINDS)[number];
 const lib = library();
 const inUnits = new Set(lib.units.map((u) => u.id));
 const inPeople = new Set(lib.people.map((p) => p.id));
 const t = {
-  title: { zh: '机体、人物与武器 ID 表', en: 'Unit, pilot and weapon IDs', ja: 'ユニット・キャラクター・武器 ID 表' },
+  title: {
+    units: { zh: '机体 ID 表', en: 'Unit IDs', ja: 'ユニット ID 表' },
+    pilots: { zh: '人物 ID 表', en: 'Pilot IDs', ja: 'キャラクター ID 表' },
+    weapons: { zh: '武器 ID 表', en: 'Weapon IDs', ja: '武器 ID 表' },
+  },
+  maker: { zh: '用「数值 MOD 制作」直接改', en: 'Change them with the Number mod maker', ja: '「数値 MOD メーカー」で変更' },
   lead: {
     zh: '数值 MOD 的 data/units.json 按机体号、data/pilots.json 按人物号、data/weapons.json 按武器号写；改名 MOD 和音乐 MOD 用的也是这些编号。表里的数值是原版的，特殊能力、技能、精神显示的是文件里写的键。',
     en: 'A number mod’s data/units.json is keyed by unit number, data/pilots.json by pilot number and data/weapons.json by weapon number; name and music mods use the same numbers. The values shown are the original’s; abilities, skills and spirits show the keys a file writes.',
@@ -55,21 +62,20 @@ const repo = 'https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/data-mod
 const sep = lang === 'en' ? ', ' : '、';
 const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(lang)] ?? String(id);
 ---
-<Base lang={lang} title={t.title[tl(lang)]} description={t.lead[tl(lang)]}>
+<Base lang={lang} title={t.title[kind][tl(lang)]} description={t.lead[tl(lang)]}>
   <div class="wrap ids" data-ids>
     <header class="page-head">
       <span class="tag">MOD</span>
-      <h1>{t.title[tl(lang)]}</h1>
+      <h1>{t.title[kind][tl(lang)]}</h1>
       <p>{t.lead[tl(lang)]}</p>
-      <p class="note"><a href={`/${lang}/docs/mod-data/`}>{t.guide[tl(lang)]}</a> · {t.csv[tl(lang)]}<a href={`${repo}/units.csv`}>units.csv</a>{sep}<a href={`${repo}/pilots.csv`}>pilots.csv</a>{sep}<a href={`${repo}/weapons.csv`}>weapons.csv</a></p>
+      <p class="note"><a href={`/${lang}/mods/data/`}>{t.maker[tl(lang)]}</a> · <a href={`/${lang}/docs/mod-data/`}>{t.guide[tl(lang)]}</a> · {t.csv[tl(lang)]}<a href={`${repo}/${kind}.csv`}>{kind}.csv</a></p>
     </header>
     <div class="bar">
-      <nav class="tabs"><a href="#units">{t.units[tl(lang)]} <span class="dim latin">{data.units.length}</span></a><a href="#pilots">{t.pilots[tl(lang)]} <span class="dim latin">{data.pilots.length}</span></a><a href="#weapons">{t.weapons[tl(lang)]} <span class="dim latin">{data.weapons.length}</span></a></nav>
+      <nav class="tabs">{KINDS.map((k) => <a href={`/${lang}/mods/ids/${k}/`} class={k === kind ? 'on' : ''} aria-current={k === kind ? 'page' : undefined}>{t[k][tl(lang)]} <span class="dim latin">{data[k].length}</span></a>)}</nav>
       <input type="search" data-filter placeholder={t.search[tl(lang)]} autocomplete="off" spellcheck="false" />
     </div>
 
-    <section id="units" class="block">
-      <h2>{t.units[tl(lang)]}</h2>
+    {kind === 'units' && <section id="units" class="block">
       <div class="scroll"><table>
         <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}{unitCols.map((c) => <th class="stat">{c}</th>)}<th>{t.abilities[tl(lang)]}</th><th></th></tr></thead>
         <tbody>{data.units.map((u) => (
@@ -84,10 +90,9 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
         </tbody>
       </table></div>
       <p class="none" hidden>{t.none[tl(lang)]}</p>
-    </section>
+    </section>}
 
-    <section id="pilots" class="block">
-      <h2>{t.pilots[tl(lang)]}</h2>
+    {kind === 'pilots' && <section id="pilots" class="block">
       <p class="note">{t.sharedNote[tl(lang)]}</p>
       <div class="scroll"><table>
         <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}{pilotCols.map((c) => <th class="stat">{c}</th>)}<th>{t.skills[tl(lang)]}</th><th>{t.spirits[tl(lang)]}</th><th>{t.shared[tl(lang)]}</th><th></th></tr></thead>
@@ -105,10 +110,9 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
         </tbody>
       </table></div>
       <p class="none" hidden>{t.none[tl(lang)]}</p>
-    </section>
+    </section>}
 
-    <section id="weapons" class="block">
-      <h2>{t.weapons[tl(lang)]}</h2>
+    {kind === 'weapons' && <section id="weapons" class="block">
       <p class="note">{t.weaponNote[tl(lang)]}</p>
       <div class="scroll"><table>
         <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{weaponCols.map((c) => <th class="stat">{c}</th>)}{channels.map((c) => <th class="rank">{c}</th>)}<th>{t.carriers[tl(lang)]}</th></tr></thead>
@@ -123,7 +127,7 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
         </tbody>
       </table></div>
       <p class="none" hidden>{t.none[tl(lang)]}</p>
-    </section>
+    </section>}
   </div>
 </Base>
 
@@ -149,9 +153,10 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
   .note { color: var(--muted); font-size: 14px; }
   .bar { position: sticky; top: var(--header-h, 64px); z-index: 2; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; padding: 10px 0; background: var(--bg); border-bottom: 1px solid var(--line); margin-top: 24px; }
   .tabs { display: flex; gap: 16px; }
-  .tabs a { color: var(--text); text-decoration: none; font-weight: 600; }
+  .tabs a { color: var(--muted); text-decoration: none; font-weight: 600; }
+  .tabs a.on { color: var(--text); border-bottom: 2px solid var(--gold); }
   .bar input { font: inherit; font-size: 14px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 7px 10px; width: min(320px, 100%); }
-  .block { margin-top: 32px; scroll-margin-top: 140px; }
+  .block { margin-top: 20px; }
   .block h2 { font-size: 20px; margin-bottom: 10px; }
   .scroll { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }

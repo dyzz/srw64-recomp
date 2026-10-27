@@ -8,6 +8,8 @@ updated: 2026-10-27
 
 A number mod changes values of the units, pilots and weapons themselves. Everything that reads them follows: battle results, the status screens, the library.
 
+To skip writing JSON by hand, use the [Number mod maker](/en/mods/data/): pick units, pilots and weapons on the page, change their values and export a .srw64mod. Numbers are in the [unit](/en/mods/ids/units/), [pilot](/en/mods/ids/pilots/) and [weapon](/en/mods/ids/weapons/) ID tables.
+
 Installing and managing packages: [MOD packages](../mods/). Terrain ranks work from 0.5.1; the other fields need 0.5.2 or later.
 
 ## What goes in the package

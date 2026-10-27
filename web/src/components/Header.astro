@@ -20,7 +20,11 @@ const after = [
 // the docs, with the ID table).
 const modGroups = [
   { label: UI.nav.modGroupDownloads[tl(lang)], items: [{ href: `/${lang}/mods/`, label: UI.nav.modAll[tl(lang)], exact: true }] },
-  { label: UI.nav.modGroupTools[tl(lang)], items: [{ href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[tl(lang)] }] },
+  { label: UI.nav.modGroupTools[tl(lang)], items: [
+    { href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[tl(lang)] },
+    { href: `/${lang}/mods/data/`, label: UI.nav.modDataMaker[tl(lang)] },
+    { href: `/${lang}/mods/names/`, label: UI.nav.modNamesMaker[tl(lang)] },
+  ] },
   { label: UI.nav.modGroupDocs[tl(lang)], items: [
     { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[tl(lang)] },
     { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[tl(lang)] },

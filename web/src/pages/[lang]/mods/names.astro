@@ -1,0 +1,171 @@
+---
+// The name and portrait MOD maker (docs/design/mod-names-art-data.md §1, §2.1, §2.2): the
+// original protagonists' and the unit's names, any pilot's, unit's or weapon's name, and
+// pilot portraits, written as dialogue/names.json and art/portraits/<pilot>.png in a package,
+// all in the browser (scripts/names-maker.ts).
+import Base from '../../../layouts/Base.astro';
+import ModPackageForm from '../../../components/ModPackageForm.astro';
+import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
+import { library, portraitUrl } from '../../../lib/data';
+import { packageText } from '../../../lib/mod-maker-text';
+import data from '../../../data/data-mods.json';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const L = <T,>(v: { zh: T; en: T; ja: T }) => v[tl(lang)];
+const title = { zh: '名字与头像 MOD 制作', en: 'Name and portrait mod maker', ja: '名前・顔グラフィック MOD メーカー' };
+const lead = {
+  zh: '给原创主角、搭档和部队另起名字，改任何人物、机体、武器的名字，换人物头像，导出 .srw64mod 拖进游戏窗口即可安装。只改显示，不写进存档，停用包就回到原来的样子。',
+  en: 'Rename the original protagonists, partners and unit, rename any pilot, unit or weapon, and replace pilot portraits; drag the exported .srw64mod into the game window to install it. Only what is shown changes; saves keep the original names, and disabling the package brings them back.',
+  ja: 'オリジナル主人公・パートナー・部隊の名前、ほかのキャラクター・ユニット・武器の名前、キャラクターの顔グラフィックを変え、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。表示だけが変わり、セーブには書かれません。パッケージを無効にすれば元に戻ります。',
+};
+const text = {
+  ...packageText(lang),
+  heroes: L({ zh: '原创主角、搭档与部队名', en: 'Original protagonists, partners and the unit', ja: 'オリジナル主人公・パートナー・部隊名' }),
+  heroesNote: L({ zh: '空着的保持原来的名字。昵称没写就用名字。中文、英文、日文分开写；繁体中文没写时用简体那份。', en: 'Leave a field empty to keep the usual name. Without a nickname the name is used. Each language is written apart; Traditional Chinese uses the Simplified one when missing.', ja: '空欄はいつもの名前のままです。愛称が無ければ名前を使います。言語ごとに書きます。繁体字中国語が無ければ簡体字のものを使います。' }),
+  unitName: L({ zh: '部队名', en: 'Unit name', ja: '部隊名' }),
+  unitNote: L({ zh: '改了部队名，起名那一场剧情会改走「我不喜欢」那条分支，由主角提出这个名字。', en: 'With a unit name, the naming scene takes the “I don’t like it” branch and the protagonist proposes it.', ja: '部隊名を変えると、命名の場面は「気に入らない」の分岐に進み、主人公がこの名前を提案します。' }),
+  hero: L({ zh: '主角', en: 'Protagonist', ja: '主人公' }),
+  partner: L({ zh: '搭档', en: 'Partner', ja: 'パートナー' }),
+  given: L({ zh: '名字', en: 'Name', ja: '名前' }),
+  surname: L({ zh: '姓氏', en: 'Surname', ja: '姓' }),
+  nickname: L({ zh: '昵称', en: 'Nickname', ja: '愛称' }),
+  others: L({ zh: '其他人物、机体、武器的名字', en: 'Other pilots, units and weapons', ja: 'ほかのキャラクター・ユニット・武器の名前' }),
+  othersNote: L({ zh: '改的是名字本身，说话人、状态页、地图都会变；台词正文里提到这个名字的地方不会变。武器菜单里的「格」「射」和 P、B、MAP 标记会自动加上。', en: 'The name itself changes, so speakers, status screens and the map follow; dialogue text that mentions it does not. The weapon menu’s marks are added for you.', ja: '名前そのものが変わるので、話者名・ステータス画面・マップは追従しますが、会話本文の名前は変わりません。武器メニューの印は自動で付きます。' }),
+  shortName: L({ zh: '简称', en: 'Short name', ja: '略称' }),
+  fullName: L({ zh: '全名（可选）', en: 'Full name (optional)', ja: 'フルネーム（任意）' }),
+  portraits: L({ zh: '头像', en: 'Portraits', ja: '顔グラフィック' }),
+  portraitsNote: L({ zh: '选一个人物，再选一张图。图会居中裁成正方形，缩放到 96 的倍数（最大 768），透明的地方会保留。原版图和 HD 图模式下都显示这张。几个人物共用同一张原版头像时会一起换。', en: 'Pick a pilot, then a picture. It is cropped to a centred square and scaled to a multiple of 96 (768 at most); transparency is kept. It shows with the images set to original or HD. Pilots sharing one original portrait change together.', ja: 'キャラクターを選び、画像を選びます。中央で正方形に切り抜き、96 の倍数（最大 768）に縮小します。透明部分は残ります。画像が原作でも HD でも表示されます。同じ原作の顔グラフィックを使うキャラクターは一緒に変わります。' }),
+  choosePicture: L({ zh: '选择图片', en: 'Choose picture', ja: '画像を選択' }),
+  noPortrait: L({ zh: '这个人物没有头像', en: 'This pilot has no portrait', ja: 'このキャラクターには顔グラフィックがありません' }),
+  errEmpty: L({ zh: '还没有改任何名字或头像', en: 'No name or portrait is changed yet', ja: 'まだ名前も顔グラフィックも変えていません' }),
+  errLong: L({ zh: '{what} 太长（最多 {n} 个字符）', en: '{what} is too long (at most {n} characters)', ja: '{what} が長すぎます（最大 {n} 文字）' }),
+  errChars: L({ zh: '{what} 不能有换行、全角空格或 < > { }，首尾不能有空格', en: '{what} may not have line breaks, ideographic spaces or < > { }, nor spaces at either end', ja: '{what} に改行・全角スペース・< > { }、前後の空白は使えません' }),
+  errNeedName: L({ zh: '{what} 写了姓氏或昵称就要写名字', en: '{what}: a surname or nickname needs a name', ja: '{what}：姓や愛称を書くときは名前も必要です' }),
+  warnWide: L({ zh: '可能放不下：比原版格数或现有最长的名字还宽', en: 'May not fit: wider than the original’s cells or the widest usual name', ja: '収まらないかもしれません：原作のマス数か今の最長の名前より広いです' }),
+  fixFirst: L({ zh: '先改正这些：', en: 'Fix these first: ', ja: '先に直してください：' }),
+  game: '0.5.2',
+};
+// The eight in the defaults' person order (default_names.hpp), with their usual names.
+const heroes = [
+  { route: 'real-male', role: 'hero', ja: ['アークライト', 'ブルー', 'アーク'], zh: ['阿克莱特', '布鲁', '阿克'], en: ['Arklight', 'Blue', 'Ark'] },
+  { route: 'real-female', role: 'hero', ja: ['セレイン', 'メネス', 'セレイン'], zh: ['塞蕾茵', '梅涅斯', '塞蕾茵'], en: ['Selain', 'Meneth', 'Selain'] },
+  { route: 'super-male', role: 'hero', ja: ['ブラッド', 'スカイウィンド', 'ブラッド'], zh: ['布拉德', '斯凯温德', '布拉德'], en: ['Brad', 'Skywind', 'Brad'] },
+  { route: 'super-female', role: 'hero', ja: ['マナミ', 'ハミル', 'マナミ'], zh: ['玛娜米', '哈米尔', '玛娜米'], en: ['Manami', 'Hamill', 'Manami'] },
+  { route: 'real-male', role: 'partner', ja: ['エルリッヒ', 'シュターゼン', 'エルリッヒ'], zh: ['埃尔利希', '施塔森', '埃尔利希'], en: ['Ehrlich', 'Stasen', 'Ehrlich'] },
+  { route: 'real-female', role: 'partner', ja: ['リッシュ', 'グリスウェル', 'リッシュ'], zh: ['利修', '格里斯韦尔', '利修'], en: ['Rish', 'Griswell', 'Rish'] },
+  { route: 'super-male', role: 'partner', ja: ['カーツ', 'フォルネウス', 'カーツ'], zh: ['卡茨', '弗尔纽斯', '卡茨'], en: ['Kurtz', 'Forneus', 'Kurtz'] },
+  { route: 'super-female', role: 'partner', ja: ['アイシャ', 'リッジモンド', 'アイシャ'], zh: ['艾夏', '里奇蒙德', '艾夏'], en: ['Aisha', 'Ridgemond', 'Aisha'] },
+];
+const routeNames: Record<string, { zh: string; en: string; ja: string }> = {
+  'super-male': { zh: '超级系男', en: 'Super Robot, male', ja: 'スーパー系男性' }, 'super-female': { zh: '超级系女', en: 'Super Robot, female', ja: 'スーパー系女性' },
+  'real-male': { zh: '真实系男', en: 'Real Robot, male', ja: 'リアル系男性' }, 'real-female': { zh: '真实系女', en: 'Real Robot, female', ja: 'リアル系女性' },
+};
+const routes = Object.fromEntries(Object.entries(routeNames).map(([k, v]) => [k, L(v)]));
+const unitDefault = { ja: 'マーチウィンド', zh: '三月风', en: 'March Wind' };
+// Pilots by number with their portrait: library people (export_library.py) are the pilots the
+// game names; the original eight are left to the first section.
+const people = library().people.filter((p) => p.id < 25 || p.id >= 33)
+  .map((p) => ({ id: p.id, name: p.name, full: p.full_name, portrait: portraitUrl(p.portrait), image: p.portrait?.image ?? null }));
+const units = data.units.map((u) => ({ id: u.id, name: u.name }));
+const weapons = data.weapons.map((w) => ({ id: w.id, name: w.name }));
+---
+<Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
+  <div class="wrap maker" data-names>
+    <header class="page-head">
+      <span class="tag">MOD</span>
+      <h1>{title[tl(lang)]}</h1>
+      <p>{lead[tl(lang)]}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-names/`}>{L({ zh: '名字与头像 MOD 说明', en: 'Name and portrait mods guide', ja: '名前・顔グラフィック MOD の説明' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。' })}</p>
+    </header>
+
+    <ModPackageForm lang={lang} placeholder="yourname.names" />
+
+    <section class="block">
+      <h2>{text.heroes}</h2>
+      <p class="note">{text.heroesNote}</p>
+      <div data-heroes></div>
+      <h3 class="sub-head">{text.unitName}</h3>
+      <p class="note">{text.unitNote}</p>
+      <div data-unit></div>
+    </section>
+
+    <section class="block">
+      <h2>{text.others}</h2>
+      <p class="note">{text.othersNote}</p>
+      <div class="kinds">
+        <button type="button" class="kind on" data-kind="pilots">{text.pilot}</button>
+        <button type="button" class="kind" data-kind="units">{text.unit}</button>
+        <button type="button" class="kind" data-kind="weapons">{text.weapon}</button>
+      </div>
+      <input type="search" class="find" data-find placeholder={text.search} autocomplete="off" spellcheck="false" />
+      <ul class="results" data-results></ul>
+      <div data-records></div>
+    </section>
+
+    <section class="block">
+      <h2>{text.portraits}</h2>
+      <p class="note">{text.portraitsNote}</p>
+      <input type="search" class="find" data-portrait-find placeholder={text.search} autocomplete="off" spellcheck="false" />
+      <ul class="results" data-portrait-results></ul>
+      <div class="portraits" data-portraits></div>
+    </section>
+
+    <section class="block">
+      <h2>{text.export}</h2>
+      <button type="button" class="btn big" data-export>{text.exportButton}</button>
+      <p class="status" data-export-status></p>
+    </section>
+  </div>
+  <script type="application/json" id="names-data" is:inline set:html={JSON.stringify({ text, heroes, routes, unitDefault, people, units, weapons, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
+  <script>
+    import { initNamesMaker } from '../../../scripts/names-maker';
+    initNamesMaker();
+  </script>
+</Base>
+
+<style>
+  .maker { padding-bottom: 80px; }
+  .note { color: var(--muted); font-size: 14px; }
+  .sub-head { font-size: 16px; margin: 22px 0 6px; }
+  :global(.maker .block) { margin-top: 36px; }
+  :global(.maker .block h2) { font-size: 20px; margin-bottom: 12px; }
+  :global(.maker .form) { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px 16px; }
+  :global(.maker .form label), :global(.maker .field) { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+  :global(.maker .form .wide) { grid-column: 1 / -1; }
+  :global(.maker input:not([type])), :global(.maker input[type=search]), :global(.maker select), :global(.maker textarea) {
+    font: inherit; font-size: 14px; color: var(--text); background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 7px 9px; min-width: 0;
+  }
+  :global(.maker .import) { margin-top: 14px; cursor: pointer; }
+  :global(.maker .status) { min-height: 1.5em; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  :global(.maker .status.err) { color: var(--pink); }
+  .kinds { display: flex; gap: 8px; margin: 12px 0 10px; }
+  .kind { font: inherit; font-weight: 600; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 14px; cursor: pointer; }
+  .kind.on { color: var(--text); border-color: var(--gold); }
+  .find { width: min(420px, 100%); }
+  :global(.maker .results) { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  :global(.maker .results button) { font: inherit; font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
+  :global(.maker .num) { color: var(--gold); margin-right: 6px; font-family: var(--display); }
+  :global(.maker .card) { margin-top: 12px; border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); padding: 12px 14px; display: grid; gap: 10px; }
+  :global(.maker .card h3) { font-size: 16px; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; }
+  :global(.maker .card h3 .dim) { color: var(--dim); font-size: 13px; font-weight: 400; }
+  :global(.maker .langs) { display: grid; grid-template-columns: 7em repeat(3, minmax(0, 1fr)); gap: 6px 10px; align-items: center; }
+  :global(.maker .langs.two) { grid-template-columns: 7em repeat(2, minmax(0, 1fr)); }
+  :global(.maker .langs.one) { grid-template-columns: 7em minmax(0, 1fr); }
+  :global(.maker .langs .head) { color: var(--dim); font-size: 12.5px; }
+  :global(.maker .langs .lang) { color: var(--muted); font-size: 13px; }
+  :global(.maker .warn) { color: var(--gold); font-size: 12.5px; grid-column: 2 / -1; }
+  :global(.maker .err) { color: var(--pink); }
+  :global(.maker .mini) { font: inherit; font-size: 13px; color: var(--text); background: var(--cyan-soft); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
+  :global(.maker .portraits) { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
+  :global(.maker .faces) { display: flex; gap: 10px; align-items: center; }
+  :global(.maker .faces img), :global(.maker .faces canvas) { width: 96px; height: 96px; border-radius: var(--radius); background: var(--bg-2); object-fit: contain; }
+  :global(.maker .arrow) { color: var(--dim); }
+  :global(.maker .hint) { color: var(--dim); font-size: 12.5px; }
+  @media (max-width: 640px) {
+    :global(.maker .langs), :global(.maker .langs.two), :global(.maker .langs.one) { grid-template-columns: 1fr; }
+    :global(.maker .langs .head) { display: none; }
+    :global(.maker .warn) { grid-column: 1; }
+  }
+</style>

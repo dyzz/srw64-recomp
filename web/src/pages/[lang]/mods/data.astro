@@ -1,0 +1,195 @@
+---
+// The number MOD maker (docs/design/mod-names-art-data.md §2.3): change units, pilots and
+// weapons field by field against the original values and export data/*.json in a package,
+// all in the browser (scripts/data-maker.ts). The values are export_data_tables.py's.
+import Base from '../../../layouts/Base.astro';
+import ModPackageForm from '../../../components/ModPackageForm.astro';
+import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
+import { packageText } from '../../../lib/mod-maker-text';
+import data from '../../../data/data-mods.json';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const L = <T,>(v: { zh: T; en: T; ja: T }) => v[tl(lang)];
+const title = { zh: '数值 MOD 制作', en: 'Number mod maker', ja: '数値 MOD メーカー' };
+const lead = {
+  zh: '挑机体、人物或武器，改 HP、装甲、能力值、地形适应、特殊能力、技能、精神、武器威力和射程，导出 .srw64mod 拖进游戏窗口即可安装。每一项旁边都有原版的值，只有改过的会写进包里。',
+  en: 'Pick units, pilots or weapons and change HP, armor, stats, terrain ranks, abilities, skills, spirits, weapon power and range; drag the exported .srw64mod into the game window to install it. Each field shows the original value, and only what you change goes into the package.',
+  ja: 'ユニット・キャラクター・武器を選んで、HP・装甲・能力値・地形適応・特殊能力・技能・精神・武器の攻撃力や射程を変え、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。各項目に原作の値が出ており、変えた項目だけがパッケージに入ります。',
+};
+const terrain = L({ zh: ['空', '陆', '海', '宇'], en: ['Air', 'Land', 'Sea', 'Space'], ja: ['空', '陸', '海', '宇'] });
+const text = {
+  ...packageText(lang),
+  units: L({ zh: '机体', en: 'Units', ja: 'ユニット' }),
+  pilots: L({ zh: '人物', en: 'Pilots', ja: 'キャラクター' }),
+  weapons: L({ zh: '武器', en: 'Weapons', ja: '武器' }),
+  edited: L({ zh: '已改动', en: 'Changed', ja: '変更済み' }),
+  editedNone: L({ zh: '还没有改动。在上面查找并选中一项开始改。', en: 'Nothing changed yet. Search above and pick an entry.', ja: 'まだ変更はありません。上で検索して項目を選んでください。' }),
+  errEmpty: L({ zh: '还没有改动任何数值', en: 'Nothing is changed yet', ja: 'まだ何も変えていません' }),
+  shared: L({ zh: '共用这条能力记录，会一起变：', en: 'Share this record and change with it: ', ja: 'この記録を共有し、一緒に変わります：' }),
+  carriers: L({ zh: '带这件武器的机体，会一起变：', en: 'Units carrying it, which all change: ', ja: 'この武器を持つユニット（全員分変わります）：' }),
+  noRecord: L({ zh: '这个人物没有能力记录，不能改数值', en: 'This pilot has no ability record to change', ja: 'このキャラクターには能力記録がありません' }),
+  terrain: L({ zh: '地形适应', en: 'Terrain', ja: '地形適応' }),
+  abilities: L({ zh: '特殊能力', en: 'Abilities', ja: '特殊能力' }),
+  skills: L({ zh: '技能（习得等级，用逗号分隔；空着就是没有）', en: 'Skills (levels learned, comma-separated; empty for none)', ja: '技能（習得レベルをカンマ区切り。空なら無し）' }),
+  skillRow: L({ zh: 'NT、强化人、圣战士、超能力、底力只能有一个', en: 'One of Newtype, Enhanced, Holy Warrior, ESP and Potential at most', ja: 'NT・強化・聖戦士・超能力・底力はどれか一つまで' }),
+  spirits: L({ zh: '精神（最多 6 个，习得等级从小到大）', en: 'Spirits (up to 6, levels ascending)', ja: '精神（最大 6 個、習得レベルは小さい順）' }),
+  equipment: L({ zh: '装备', en: 'Equipment', ja: '装備' }),
+  shield: L({ zh: '盾', en: 'Shield', ja: '盾' }),
+  sword: L({ zh: '剑', en: 'Sword', ja: '剣' }),
+  stats1: L({ zh: '能力值是 1 级的值，之后每级照原版成长。', en: 'Stats are level-1 values; each level adds the original growth.', ja: '能力値はレベル 1 の値で、以後は原作どおり成長します。' }),
+  power100: L({ zh: '威力要是 100 的倍数', en: 'Power must be a multiple of 100', ja: '攻撃力は 100 の倍数です' }),
+  rangeOrder: L({ zh: '最小射程不能大于最大射程', en: 'Minimum range cannot exceed maximum range', ja: '最小射程は最大射程以下です' }),
+  outOfRange: L({ zh: '{field} 要在 {low}–{high} 之间', en: '{field} must be {low}–{high}', ja: '{field} は {low}〜{high} です' }),
+  skillBad: L({ zh: '{skill}：等级要是 1–99、从小到大、最多 9 个', en: '{skill}: levels 1–99, ascending, at most 9', ja: '{skill}：レベルは 1〜99、小さい順、最大 9 個' }),
+  skillOne: L({ zh: 'NT、强化人、圣战士、超能力、底力只能留一个', en: 'Keep only one of Newtype, Enhanced, Holy Warrior, ESP and Potential', ja: 'NT・強化・聖戦士・超能力・底力は一つだけにしてください' }),
+  spiritBad: L({ zh: '精神的习得等级要是 1–99、从小到大', en: 'Spirit levels must be 1–99, ascending', ja: '精神の習得レベルは 1〜99、小さい順です' }),
+  fixFirst: L({ zh: '先改正这些：', en: 'Fix these first: ', ja: '先に直してください：' }),
+  level: L({ zh: '等级', en: 'Level', ja: 'レベル' }),
+  terrainNames: terrain,
+  game: '0.5.2',
+};
+const fields = {
+  units: [
+    { key: 'hp', label: 'HP', low: 1, high: 65535 }, { key: 'en', label: 'EN', low: 0, high: 65535 },
+    { key: 'move', label: L({ zh: '移动力', en: 'Move', ja: '移動力' }), low: 1, high: 30 },
+    { key: 'mobility', label: L({ zh: '运动性', en: 'Mobility', ja: '運動性' }), low: 0, high: 65535 },
+    { key: 'armor', label: L({ zh: '装甲', en: 'Armor', ja: '装甲' }), low: 0, high: 65535 },
+    { key: 'limit', label: L({ zh: '限界', en: 'Limit', ja: '限界' }), low: 0, high: 65535 },
+    { key: 'repair_cost', label: L({ zh: '修理费', en: 'Repair cost', ja: '修理費' }), low: 0, high: 65535 },
+    { key: 'upgrade_cap', label: L({ zh: '改造上限', en: 'Upgrade limit', ja: '改造上限' }), low: 0, high: 15 },
+    { key: 'parts_slots', label: L({ zh: '部件槽', en: 'Part slots', ja: 'パーツスロット' }), low: 0, high: 4 },
+  ],
+  pilots: [
+    { key: 'melee', label: L({ zh: '格斗', en: 'Melee', ja: '格闘' }), low: 0, high: 255 },
+    { key: 'ranged', label: L({ zh: '射击', en: 'Ranged', ja: '射撃' }), low: 0, high: 255 },
+    { key: 'evade', label: L({ zh: '回避', en: 'Evade', ja: '回避' }), low: 0, high: 255 },
+    { key: 'hit', label: L({ zh: '命中', en: 'Hit', ja: '命中' }), low: 0, high: 255 },
+    { key: 'reaction', label: L({ zh: '反应', en: 'Reaction', ja: '反応' }), low: 0, high: 255 },
+    { key: 'skill', label: L({ zh: '技量', en: 'Skill', ja: '技量' }), low: 0, high: 255 },
+    { key: 'sp', label: 'SP', low: 0, high: 255 },
+    { key: 'double_move', label: L({ zh: '再动等级', en: 'Double move level', ja: '再動レベル' }), low: 0, high: 99 },
+  ],
+  weapons: [
+    { key: 'power', label: L({ zh: '威力', en: 'Power', ja: '攻撃力' }), low: 0, high: 25500, step: 100 },
+    { key: 'range_min', label: L({ zh: '最小射程', en: 'Min range', ja: '最小射程' }), low: 0, high: 30 },
+    { key: 'range_max', label: L({ zh: '最大射程', en: 'Max range', ja: '最大射程' }), low: 1, high: 30 },
+    { key: 'hit', label: L({ zh: '命中修正', en: 'Hit', ja: '命中補正' }), low: -128, high: 127 },
+    { key: 'critical', label: L({ zh: '暴击修正', en: 'Critical', ja: 'クリティカル補正' }), low: -128, high: 127 },
+    { key: 'ammo', label: L({ zh: '弹数（-1 不用弹数）', en: 'Ammo (-1 none)', ja: '弾数（-1 で無し）' }), low: -1, high: 99 },
+    { key: 'en', label: L({ zh: '消耗 EN', en: 'EN cost', ja: '消費 EN' }), low: 0, high: 255 },
+    { key: 'morale', label: L({ zh: '需要气力', en: 'Morale', ja: '必要気力' }), low: 0, high: 255 },
+  ],
+};
+const abilities = [
+  ['beam_coat', { zh: '光束涂层', en: 'Beam Coat', ja: 'ビームコート' }], ['i_field', { zh: 'I 力场', en: 'I-Field', ja: 'Iフィールド' }],
+  ['planet_defensor', { zh: '行星防御器', en: 'Planet Defensor', ja: 'プラネイトディフェンサー' }], ['aura_barrier', { zh: '奥拉屏障', en: 'Aura Barrier', ja: 'オーラバリア' }],
+  ['afterimage', { zh: '分身', en: 'Afterimage', ja: '分身' }], ['mach_special', { zh: '马赫特技', en: 'Mach Special', ja: 'マッハスペシャル' }],
+  ['true_mach_special', { zh: '真·马赫特技', en: 'Shin Mach Special', ja: '真マッハスペシャル' }], ['god_shadow', { zh: '神之影', en: 'God Shadow', ja: 'ゴッドシャドー' }],
+  ['getter_vision', { zh: '盖塔幻影', en: 'Getter Vision', ja: 'ゲッタービジョン' }], ['shungensoku', { zh: '瞬幻足', en: 'Phantom Step', ja: '瞬幻足' }],
+  ['hyper_jammer', { zh: '超级干扰器', en: 'Hyper Jammer', ja: 'ハイパージャマー' }], ['hp_regen_10', { zh: 'HP 回复 10%', en: 'HP Regen 10%', ja: 'HP回復 10%' }],
+  ['hp_regen_20', { zh: 'HP 回复 20%', en: 'HP Regen 20%', ja: 'HP回復 20%' }],
+].map(([key, name]) => ({ key, label: L(name as any) }));
+const skills = [
+  ['newtype', { zh: 'NT', en: 'Newtype', ja: 'NT' }], ['enhanced', { zh: '强化人', en: 'Enhanced', ja: '強化' }],
+  ['holy_warrior', { zh: '圣战士', en: 'Holy Warrior', ja: '聖戦士' }], ['esp', { zh: '超能力', en: 'ESP', ja: '超能力' }],
+  ['potential', { zh: '底力', en: 'Potential', ja: '底力' }], ['parry', { zh: '切落', en: 'Parry', ja: '切り払い' }],
+  ['shield_defense', { zh: '盾防', en: 'Shield Defense', ja: 'S防御' }],
+].map(([key, name]) => ({ key, label: L(name as any), row: ['parry', 'shield_defense'].includes(key as string) ? 1 : 0 }));
+const spiritNames: Record<string, { zh: string; en: string; ja: string }> = {
+  self_destruct: { zh: '自爆', en: 'Self-Destruct', ja: '自爆' }, scout: { zh: '侦察', en: 'Scan', ja: '偵察' }, accel: { zh: '加速', en: 'Accel', ja: '加速' },
+  mercy: { zh: '手下留情', en: 'Mercy', ja: 'てかげん' }, focus: { zh: '集中', en: 'Focus', ja: '集中' }, alert: { zh: '必闪', en: 'Flash', ja: 'ひらめき' },
+  guts: { zh: '毅力', en: 'Vigor', ja: '根性' }, strike: { zh: '必中', en: 'Bullseye', ja: '必中' }, trust: { zh: '信赖', en: 'Trust', ja: '信頼' },
+  wall: { zh: '铁壁', en: 'Wall', ja: '鉄壁' }, cover: { zh: '替身', en: 'Cover', ja: 'みがわり' }, valor: { zh: '热血', en: 'Valor', ja: '熱血' },
+  spirit: { zh: '气合', en: 'Spirit', ja: '気合' }, great_guts: { zh: '大毅力', en: 'Guts', ja: 'ド根性' }, luck: { zh: '幸运', en: 'Fortune', ja: '幸運' },
+  drain: { zh: '脱力', en: 'Daunt', ja: '脱力' }, effort: { zh: '努力', en: 'Gain', ja: '努力' }, soul: { zh: '魂', en: 'Soul', ja: '魂' },
+  stealth: { zh: '隐身', en: 'Stealth', ja: '隠れ身' }, awaken: { zh: '觉醒', en: 'Zeal', ja: '覚醒' }, refuel: { zh: '补给', en: 'Resupply', ja: '補給' },
+  provoke: { zh: '挑衅', en: 'Taunt', ja: '挑発' }, encourage: { zh: '激励', en: 'Rouse', ja: '激励' }, disrupt: { zh: '扰乱', en: 'Disrupt', ja: 'かく乱' },
+  friendship: { zh: '友情', en: 'Faith', ja: '友情' }, love: { zh: '爱', en: 'Love', ja: '愛' }, reactivate: { zh: '再动', en: 'Enable', ja: '再動' },
+  miracle: { zh: '奇迹', en: 'Miracle', ja: '奇跡' }, prayer: { zh: '祈祷', en: 'Prayer', ja: '祈り' }, revive: { zh: '复活', en: 'Revive', ja: '復活' },
+};
+const spirits = Object.entries(spiritNames).map(([key, name]) => ({ key, label: L(name) }));
+const labels = { fields, abilities, skills, spirits, sizes: ['SS', 'S', 'M', 'L', 'LL'] };
+---
+<Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
+  <div class="wrap maker" data-maker>
+    <header class="page-head">
+      <span class="tag">MOD</span>
+      <h1>{title[tl(lang)]}</h1>
+      <p>{lead[tl(lang)]}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-data/`}>{L({ zh: '数值 MOD 说明', en: 'Number mods guide', ja: '数値 MOD の説明' })}</a> · <a href={`/${lang}/mods/ids/units/`}>{L({ zh: 'ID 表', en: 'ID tables', ja: 'ID 表' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成。', en: 'Needs 0.5.2 or later. Everything happens in your browser.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われます。' })}</p>
+    </header>
+
+    <ModPackageForm lang={lang} placeholder="yourname.balance" />
+
+    <section class="block">
+      <div class="kinds" role="tablist">
+        <button type="button" class="kind on" data-kind="units">{text.units}</button>
+        <button type="button" class="kind" data-kind="pilots">{text.pilots}</button>
+        <button type="button" class="kind" data-kind="weapons">{text.weapons}</button>
+      </div>
+      <input type="search" class="find" data-find placeholder={text.search} autocomplete="off" spellcheck="false" />
+      <ul class="results" data-results></ul>
+      <div data-editor></div>
+    </section>
+
+    <section class="block">
+      <h2>{text.edited}</h2>
+      <div data-edited></div>
+    </section>
+
+    <section class="block">
+      <h2>{text.export}</h2>
+      <button type="button" class="btn big" data-export>{text.exportButton}</button>
+      <p class="status" data-export-status></p>
+    </section>
+  </div>
+  <script type="application/json" id="maker-data" is:inline set:html={JSON.stringify({ text, labels, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
+  <script>
+    import { initDataMaker } from '../../../scripts/data-maker';
+    initDataMaker();
+  </script>
+</Base>
+
+<style>
+  .maker { padding-bottom: 80px; }
+  .note { color: var(--muted); font-size: 14px; }
+  :global(.maker .block) { margin-top: 36px; }
+  :global(.maker .block h2) { font-size: 20px; margin-bottom: 12px; }
+  :global(.maker .form) { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px 16px; }
+  :global(.maker .form label), :global(.maker .field) { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+  :global(.maker .form .wide) { grid-column: 1 / -1; }
+  :global(.maker input:not([type])), :global(.maker input[type=number]), :global(.maker input[type=search]), :global(.maker select), :global(.maker textarea) {
+    font: inherit; font-size: 14px; color: var(--text); background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 7px 9px; min-width: 0;
+  }
+  :global(.maker .import) { margin-top: 14px; cursor: pointer; }
+  :global(.maker .status) { min-height: 1.5em; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  :global(.maker .status.err) { color: var(--pink); }
+  .kinds { display: flex; gap: 8px; margin-bottom: 10px; }
+  .kind { font: inherit; font-weight: 600; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 14px; cursor: pointer; }
+  .kind.on { color: var(--text); border-color: var(--gold); }
+  .find { width: min(420px, 100%); }
+  :global(.maker .results) { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  :global(.maker .results button) { font: inherit; font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
+  :global(.maker .results button .num), :global(.maker .num) { color: var(--gold); margin-right: 6px; font-family: var(--display); }
+  :global(.maker .card) { margin-top: 16px; border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); padding: 14px; display: grid; gap: 14px; }
+  :global(.maker .card h3) { font-size: 17px; display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; }
+  :global(.maker .card h3 .ja) { color: var(--dim); font-size: 13px; font-weight: 400; }
+  :global(.maker .grid) { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px 14px; }
+  :global(.maker .grid.wide) { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+  :global(.maker .spirit-row select) { flex: 1 1 auto; }
+  :global(.maker .spirit-row input) { width: 5.5em; }
+  :global(.maker .field .was) { color: var(--dim); font-size: 12px; }
+  :global(.maker .field.changed input), :global(.maker .field.changed select) { border-color: var(--gold); }
+  :global(.maker .checks) { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  :global(.maker .check) { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; color: var(--text); }
+  :global(.maker .check.changed) { color: var(--gold); }
+  :global(.maker .hint) { color: var(--dim); font-size: 12.5px; }
+  :global(.maker .warn) { color: var(--pink); font-size: 13px; }
+  :global(.maker .sub) { font-size: 14px; color: var(--muted); font-weight: 600; }
+  :global(.maker .spirit-row) { display: flex; gap: 8px; align-items: center; }
+  :global(.maker .mini) { font: inherit; font-size: 13px; color: var(--text); background: var(--cyan-soft); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
+  :global(.maker .edited-row) { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line-soft, var(--line)); font-size: 14px; }
+  :global(.maker .edited-row .what) { color: var(--muted); font-size: 13px; flex: 1 1 260px; }
+</style>

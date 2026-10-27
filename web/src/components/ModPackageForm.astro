@@ -1,0 +1,25 @@
+---
+// The package form the MOD makers share: mod.json's fields and opening an existing package.
+// scripts/mod-package.ts reads and fills it (data-f fields, data-import, data-import-status).
+import { type Lang } from '../i18n';
+import { LICENSES, packageText } from '../lib/mod-maker-text';
+
+interface Props { lang: Lang; placeholder: string }
+const { lang, placeholder } = Astro.props;
+const text = packageText(lang);
+---
+<section class="block">
+  <h2>{text.package}</h2>
+  <div class="form">
+    <label>{text.id}<input data-f="id" placeholder={placeholder} autocomplete="off" spellcheck="false" /></label>
+    <label>{text.version}<input data-f="version" value="1.0.0" autocomplete="off" /></label>
+    <label>{text.name}（中文）<input data-f="name-zh-Hans" /></label>
+    <label>{text.name}（English）<input data-f="name-en" /></label>
+    <label>{text.name}（日本語）<input data-f="name-ja" /></label>
+    <label>{text.authors}<input data-f="authors" /></label>
+    <label>{text.license}<select data-f="license"><option value="">—</option>{LICENSES.map((l) => <option value={l}>{l}</option>)}</select></label>
+    <label class="wide">{text.description}<textarea data-f="description" rows="2"></textarea></label>
+  </div>
+  <label class="btn ghost import">{text.import}<input type="file" accept=".srw64mod,.zip" data-import hidden /></label>
+  <p class="status" data-import-status></p>
+</section>
