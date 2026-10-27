@@ -142,18 +142,30 @@ bool is_package_file(const fs::path& path) {
     return ext==package_extension || ext==".zip";
 }
 // Packages placed in the folder as files are unpacked; the file is then kept in .trash.
+// A file that does not install stays, and the next listing tries it again; what each
+// listing found is kept for the MOD page (loose_results).
+std::vector<LooseResult> loose;
 void unpack_loose() {
     std::error_code error;
-    std::vector<fs::path> loose;
-    for(const auto& item:fs::directory_iterator(directory(),error))if(item.is_regular_file(error) && is_package_file(item.path()))loose.push_back(item.path());
-    for(const auto& file:loose) {
-        if(install(file).ok) {
+    std::vector<fs::path> files;
+    for(const auto& item:fs::directory_iterator(directory(),error))if(item.is_regular_file(error) && is_package_file(item.path()))files.push_back(item.path());
+    std::sort(files.begin(),files.end());
+    loose.clear();
+    for(const auto& file:files) {
+        LooseResult r{file,install(file)};
+        if(r.result.ok) {
             const auto trash=directory()/".trash";
             fs::create_directories(trash,error);
             fs::rename(file,trash/(file.filename().string()+"-"+stamp()),error);
         }
+        loose.push_back(std::move(r));
     }
 }
+}
+
+std::vector<LooseResult> loose_results() {
+    std::lock_guard lock(mutex);
+    return loose;
 }
 
 fs::path directory() {

@@ -36,7 +36,7 @@ public class SRW64Activity extends SDLActivity {
     // The host is not re-entrant and runs once per process; the launcher will not swap
     // the HD folder under it (SetupActivity.importHd).
     static volatile boolean running;
-    private static final int EXPORT_DOCUMENT = 6401, PICK_FOLDER = 6402;
+    private static final int EXPORT_DOCUMENT = 6401, PICK_FOLDER = 6402, PICK_MOD = 6403;
     // The player's folder (PlayerFolder): one thread for every transfer; the saves go out
     // every few seconds when they changed and when the game leaves the screen.
     private final ExecutorService folderSync = Executors.newSingleThreadExecutor();
@@ -64,6 +64,9 @@ public class SRW64Activity extends SDLActivity {
     }
     private volatile Export saveExport, reportExport;
     private Export pendingDocument;
+    // The MOD page's "Install from file" (frontend.cpp): pending, copied, cancelled, failed,
+    // as the export jobs; 0 while none was asked for.
+    private volatile int modPick;
 
     public int saveExportStatus() { Export job = saveExport; return job == null ? 4 : job.status; }
     public String saveExportLocation() { Export job = saveExport; return job == null ? "" : job.location; }
@@ -165,9 +168,53 @@ public class SRW64Activity extends SDLActivity {
         return true;
     }
 
-    // Before the import list is read, and before the bezel or filter picker opens.
+    // Before the import list is read, before the bezel or filter picker opens, and before
+    // the MOD page lists the packages (the folder's mods/ into the private one).
     public boolean syncImport() { return await(folder -> folder.incoming(SetupActivity.userDir(this))); }
     public boolean syncLooks() { return await(folder -> folder.looks(SetupActivity.userDir(this))); }
+    public boolean syncMods() { return await(folder -> folder.mods(SetupActivity.userDir(this))); }
+
+    // The MOD page's "Install from file": the system picker; the file goes into the private
+    // mods/ (onActivityResult), and the host installs it when modPickStatus says copied.
+    public boolean pickMod() {
+        if (modPick == 1) return false;
+        modPick = 1;
+        runOnUiThread(() -> {
+            Intent pick = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            pick.addCategory(Intent.CATEGORY_OPENABLE);
+            pick.setType("*/*");
+            try { startActivityForResult(pick, PICK_MOD); }
+            catch (ActivityNotFoundException | SecurityException error) { Log.w("SRW64", "mod picker: " + error); modPick = 4; }
+        });
+        return true;
+    }
+    public int modPickStatus() { return modPick; }
+
+    // The picked file into the private mods/ under its own name (a name without a package
+    // extension gets .srw64mod, so the host looks at it and says what is wrong with it).
+    private void takeMod(Uri uri) {
+        String name = null;
+        try (android.database.Cursor cursor = getContentResolver().query(uri, new String[] { android.provider.OpenableColumns.DISPLAY_NAME }, null, null, null)) {
+            if (cursor != null && cursor.moveToFirst() && !cursor.isNull(0)) name = cursor.getString(0);
+        } catch (RuntimeException ignored) { }
+        if (name == null || name.isEmpty()) name = uri.getLastPathSegment();
+        if (name == null || name.isEmpty()) name = "package";
+        name = name.replace('/', '_').replace('\\', '_');
+        if (name.startsWith(".")) name = "_" + name;
+        if (!PlayerFolder.packageName(name)) name += ".srw64mod";
+        File mods = new File(SetupActivity.userDir(this), "mods");
+        if (!mods.isDirectory() && !mods.mkdirs()) throw new RuntimeException("cannot make " + mods);
+        File target = new File(mods, name), partial = new File(mods, name + ".srw64-part");
+        try (java.io.InputStream in = getContentResolver().openInputStream(uri); OutputStream out = new java.io.FileOutputStream(partial)) {
+            if (in == null) throw new IOException("cannot read " + name);
+            byte[] buffer = new byte[1 << 16];
+            for (int n; (n = in.read(buffer)) > 0;) out.write(buffer, 0, n);
+        } catch (IOException | RuntimeException error) {
+            partial.delete();
+            throw new RuntimeException(error);
+        }
+        if (!partial.renameTo(target)) { partial.delete(); throw new RuntimeException("cannot replace " + target); }
+    }
 
     private interface Task { void run(PlayerFolder folder) throws IOException; }
     private boolean await(Task task) {
@@ -208,11 +255,12 @@ public class SRW64Activity extends SDLActivity {
         super.onResume();
         handler.removeCallbacks(savesTick);
         handler.post(savesTick);
-        // Back from a file manager: what the player put in import/, filters/ or bezels/.
+        // Back from a file manager: what the player put in import/, filters/, bezels/ or mods/.
         folderSync.execute(() -> {
             PlayerFolder folder = PlayerFolder.open(this);
             if (folder == null) return;
-            try { folder.incoming(SetupActivity.userDir(this)); folder.looks(SetupActivity.userDir(this)); }
+            File user = SetupActivity.userDir(this);
+            try { folder.incoming(user); folder.looks(user); folder.mods(user); }
             catch (IOException | RuntimeException error) { Log.w("SRW64", "player folder: " + error); }
         });
     }
@@ -258,6 +306,15 @@ public class SRW64Activity extends SDLActivity {
             folderSync.execute(() -> {
                 try { PlayerFolder.remember(this, tree).everything(SetupActivity.userDir(this)); savesSent = ""; }
                 catch (IOException | RuntimeException error) { Log.w("SRW64", "player folder: " + error); }
+            });
+            return;
+        }
+        if (request == PICK_MOD) {
+            final Uri uri = result == RESULT_OK && data != null ? data.getData() : null;
+            if (uri == null) { modPick = 3; return; }
+            folderSync.execute(() -> {
+                try { takeMod(uri); modPick = 2; }
+                catch (RuntimeException error) { Log.w("SRW64", "mod picker: " + error); modPick = 4; }
             });
             return;
         }

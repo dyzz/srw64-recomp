@@ -350,6 +350,7 @@ Documents/Marchwind64/
   import/    玩家放模拟器存档      export/   四种模拟器文件（不打包）
   reports/   问题报告              filters/、bezels/   玩家自己的滤镜、边框
   logs/      最近 3 次运行的 console.log（Marchwind64-<开始时间>.log），本次运行另有本进程 logcat（…-system.log）
+  mods/      MOD 收件箱：放进来的 .srw64mod 会被取走安装（mod-packages.md §10）
 ```
 
 `logs/`（2026-10-12 加）：K60 黑屏时玩家进不了设置，问题报告导不出来，0.4.6 的文件夹里没有任何日志。现在宿主的输出（含卡死看门狗 5 秒后写的各线程栈）自动出现在这里，黑屏后等 10 秒把文件发来即可，不用重开。只删自己写的 `Marchwind64-*.log`。
@@ -366,6 +367,7 @@ HD 包、设置、运行日志、ROM 仍只在私有目录。
 | `filters/`、`bezels/` | 文件夹 → 私有，文件夹为准（保留宿主写的 README.txt） | 进游戏前、回到前台、打开边框／滤镜选择 |
 | `export/`、`reports/` | 私有 → 文件夹 | 导出、导出报告之后 |
 | `logs/` | 私有 `sessions/*/run/console.log` → 文件夹，最近 3 次运行 | 进游戏前；游戏中每 10 秒（日志变了才传）；离开前台时 |
+| `mods/` | 文件夹 → 私有 `mods/`，**只取包文件**（.srw64mod、.zip），拷完即从文件夹删除 | 进游戏前、回到前台、打开 MOD 页或按「刷新」（2026-10-27） |
 
 - 比较：大小不同或源比目标新就复制；拉入的文件把修改时间设成文件夹里的，下次不重复。跳过宿主原子写的 `*.tmp-*` 和自己的 `*.srw64-part`。
 - 删除：`saves/` 的子文件夹（slots、auto、trash、imports）跟私有一致，轮换掉的自动存档、进回收站的栏在文件夹里也删；`saves/` 顶层玩家放的其他文件不动。`import/`、`filters/`、`bezels/` 私有一侧跟文件夹一致。
@@ -377,5 +379,5 @@ HD 包、设置、运行日志、ROM 仍只在私有目录。
 
 **设置（`frontend.cpp` 的 `saves_page`，安卓）**：最上面「存档文件夹」行显示路径和「打开文件夹」「换一个文件夹」，没有时显示提示和「选择文件夹」；导出给模拟器的路径是 `…/export`；导入显示 `…/import`，「重新读取」先同步再扫描；边框、滤镜选择里「我的」显示文件夹里的路径。「打开文件夹」把私有路径或显示路径映射到文件夹里对应的子文件夹，用系统「文件」打开。没有存档文件夹时导出、报告仍走 §10 的 MediaStore 方式，位置改为 Documents/Marchwind64/export、reports（`MediaStore.Files`，同样无需权限）。
 
-JNI（`SRW64Activity`）：`playerFolder()`、`choosePlayerFolder()`、`syncImport()`、`syncLooks()`（后两个阻塞等同步完成，最多 20 秒），`exportSaves`／`exportReport` 有文件夹时直接写进文件夹。
+JNI（`SRW64Activity`）：`playerFolder()`、`choosePlayerFolder()`、`syncImport()`、`syncLooks()`、`syncMods()`（后三个阻塞等同步完成，最多 20 秒），`exportSaves`／`exportReport` 有文件夹时直接写进文件夹；`pickMod()`／`modPickStatus()` 是 MOD 页的文件选择器（mod-packages.md §10）。
 

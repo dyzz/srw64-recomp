@@ -125,6 +125,9 @@ UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_pr
 UI_KEYS |= {"controls_cancel", "controls_capture", "controls_capture_note", "controls_controller", "controls_detected", "controls_fixed", "controls_fixed_list", "controls_keyboard", "controls_keyboard_note", "controls_list_note", "controls_no_pad", "controls_reserved", "controls_reset"}
 UI_KEYS |= {"settings_touch_opacity", "settings_touch_opacity_note", "settings_touch_opacity_hidden", "settings_save_export_note_android", "settings_save_export_choose",
             "settings_save_export_saved", "settings_save_export_cancelled", "settings_save_export_failed"}
+# The MOD page on Android (frontend.cpp mod_installed_page): the inbox folder and the file picker.
+UI_KEYS |= {"mod_install_note_android", "mod_install_note_android_none", "mod_pick_row", "mod_pick_row_note", "mod_pick_row_note_none",
+            "mod_pick", "mod_refresh", "mod_pick_failed"}
 # The Saves page's player folder on Android (frontend.cpp saves_page, PlayerFolder.java).
 UI_KEYS |= {"settings_save_folder", "settings_save_folder_note", "settings_save_folder_choose", "settings_save_folder_change",
             "settings_save_folder_none", "settings_save_import_no_folder"}

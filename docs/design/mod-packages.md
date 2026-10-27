@@ -191,7 +191,13 @@ audio/      音乐与语音
 - **校验工具**（2026-10-22）：`tools/mods/validate.py` 按宿主的清单与归档规则（同一套问题码，`--locale` 用游戏自己的文案）加上投稿规则（文件名 `<id>-<版本>.srw64mod`、100 MB 上限、`license` 必填、只许 §2 的目录与文件类型、不含原版数据 `--original-hashes`、对照索引的版本递增与依赖 `--index`、作者前缀所有权 `--owners --owner`）检查一个包，`--json` 给 CI，`--summary` 输出索引条目要抄的字段。`tests/mods/manifests.json` 是两边共用的清单用例，`tests/native_mod_library.cpp` 与 `tests/test_mod_validate.py` 都跑它。
 - **战役走包格式**（2026-10-22）：包里 `campaign/campaign.json` 是编译好的战役镜像；`tools/mods/pack.py <源目录> -o build/mods` 从带 `mod.json` 的战役源编译并打成包文件（可复现：固定日期、排序条目），打完用 `validate.py` 检查。`frontend.cpp` 的 `installed_campaigns()` 先列启用的包里的战役（id、版本取包的），再补旧 `campaigns/` 目录里的；`campaign_library::read` 读单个镜像。`config/recomp/campaigns/sample`、`retry` 各加了 `mod.json`（`srw64.sample`、`srw64.retry`，CC-BY-NC-4.0）；调试会话 `campaigns=True` 改为把它们建成包放进运行的 `mods/`（`check_mod.py` 随之改，未重跑）。`tests/test_mod_pack.py`。
 - **数值类第一项**（2026-10-26）：地形适应，见 §5 末尾。
-- **还没做**：音乐、战役、地形适应以外的内容生效；手动调整顺序；安卓（没有拖放，以后放进玩家文件夹）；原版数据哈希清单的生成脚本；包的预览图与发布页；程序自带的「内置」包目录。
+- **安卓**（2026-10-27）：没有拖放，私有目录的 `mods/` 玩家也打不开，之前整个装不了。两条入口：
+  - **收件箱**：存档文件夹（save-slots-autosave.md §11）里的 `mods/`。`PlayerFolder.mods()` 把其中的包文件（只认 .srw64mod、.zip；文件夹和别的文件不动）拷进私有 `mods/`，拷完就从文件夹删除——否则宿主装完把文件移进 `.trash` 后，下次同步会再拷一遍、再装一遍。时机：进游戏前（`everything`）、回到前台（`onResume`）、宿主打开 MOD 页和按「刷新」时（`syncMods`，阻塞最多 20 秒）。安装仍由包库的 `unpack_loose` 在下一次列表时完成，所以放好文件重开游戏也生效（音乐等在启动时就读包）。
+  - **「从文件安装」**：`pickMod()` 开系统 `ACTION_OPEN_DOCUMENT`，选中的文件按显示名拷进私有 `mods/`（没有包扩展名的补 `.srw64mod`，让包库去报它哪里不对），宿主每帧轮询 `modPickStatus()`（1 等待／2 已拷入／3 取消／4 失败），拷入后同打开页面一样刷新列表。没选存档文件夹时只有这一条路，页面说明也这样写。
+  - MOD 页安卓分支（`mod_installed_page`）：说明按有无存档文件夹两种；一行「安装 MOD」放「从文件安装」「刷新」「打开文件夹」（系统「文件」打开 `…/mods`），路径显示 `Documents/Marchwind64/mods`。桌面的「MOD 文件夹」行不变。
+  - 包库新增 `loose_results()`：上一次列表时放在 `mods/` 里的包文件各自的结果。装成的宿主在打开页面／刷新／选文件后各发一条「已安装」通知；没装成的（文件留在原处，下次再试）在页面上按文件名列出原因——桌面也一样，以前失败是无声的。
+  - 测试：`tests/native_mod_library.cpp` 没动；`PlayerFolder` 无单元测试（SAF 只能真机），待 Seeker 实机：收件箱放 space-a 包、切回游戏打开 MOD 页；选择器装音乐包后 `check_mod_music.py` 的替换生效。
+- **还没做**：音乐、战役、地形适应以外的内容生效；手动调整顺序；原版数据哈希清单的生成脚本；包的预览图与发布页；程序自带的「内置」包目录。
 
 ## 11. 待核实
 

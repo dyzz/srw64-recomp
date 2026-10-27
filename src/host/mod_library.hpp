@@ -337,6 +337,13 @@ fs::path directory();
 // Every installed package, resolved against the game version (bottom first). Packages
 // dropped into the folder as .srw64mod files are unpacked first.
 std::vector<Package> installed(const Version& game);
+// What the last listing found placed in the folder as files: the ones installed (moved
+// to .trash) and the ones that did not (still there, tried again next time).
+struct LooseResult {
+    fs::path file;
+    InstallResult result;
+};
+std::vector<LooseResult> loose_results();
 // A .srw64mod (or .zip) file or a package folder, unpacked or copied into the folder and
 // turned on. An installed package with the same id is replaced (the old one is kept in
 // <mods>/.trash).

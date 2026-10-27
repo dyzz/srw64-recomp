@@ -1915,14 +1915,32 @@ std::string mod_contents_text(const srw64::mods::Contents& c) {
     return out.empty()?localization::catalog().ui("mod_has_nothing"):out;
 }
 // The installed packages, the one that wins on top (docs/design/mod-packages.md §3).
+#ifdef __ANDROID__
+// The MOD page's "Install from file" (SRW64Activity.pickMod): the picker is open, or the
+// file is still being copied into the private mods/.
+bool mod_pick_pending=false;
+void mod_inbox_sync();
+#endif
 std::string mod_installed_page() {
     const auto locale=localization::catalog().locale;
+#ifdef __ANDROID__
+    // No drag and drop: the package comes through the system picker, or through the
+    // player's folder's mods/ (PlayerFolder.java mods), read again on opening this page
+    // and on the refresh button.
+    const auto shown=android_player_folder();
+    std::string body="<p>"+escape(shown.empty()?localization::catalog().ui("mod_install_note_android_none"):filled("mod_install_note_android",{{"{folder}",shown+"/mods"}}))+"</p>";
+    body+=settings_row("mod_pick_row",button("mod-pick",label("mod_pick"),false,mod_pick_pending)+(shown.empty()?std::string():button("mod-refresh",label("mod_refresh"))+button("mod-inbox-open",label("mod_folder_open"))),
+        shown.empty()?std::string():"<p class='set-path'>"+escape(shown+"/mods")+"</p>",shown.empty()?"mod_pick_row_note_none":"mod_pick_row_note");
+#else
     std::string body="<p>"+label("mod_install_note")+"</p>";
-#ifndef __ANDROID__
     if(!srw64::mods::directory().empty())body+=settings_row("mod_folder_row",button("mod-folder",label("mod_folder_open")),"<p class='set-path'>"+escape(srw64::mods::directory().string())+"</p>");
 #endif
     if(mod_installing)body+="<p class='dlc-meta'>"+label("mod_installing")+"</p>";
     const auto& list=installed_mods();
+    // Package files placed in the folder that did not install (still there, tried again).
+    for(const auto& r:srw64::mods::loose_results())if(!r.result.ok)
+        body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(r.file.filename().string())+"</div></div><p class='dlc-meta'>"+
+            escape(filled("mod_install_failed",{{"{reason}",mod_problem_text(r.result.problem)}}))+"</p></div>";
     if(list.empty())body+="<p>"+label("mod_none")+"</p>";
     for(auto it=list.rbegin();it!=list.rend();++it) {
         const auto& p=*it;
@@ -1971,6 +1989,32 @@ void mod_install(const std::filesystem::path& path) {
         ++mod_revision;
     }).detach();
 }
+#ifdef __ANDROID__
+// The player's folder's mods/ into the private one (SRW64Activity.syncMods), then the
+// listing installs what arrived (mod_library unpack_loose); a notice per package that
+// installed. The window thread, on opening the page and on its refresh button.
+void mod_inbox_sync() {
+    android_call("syncMods");
+    ++mod_revision;
+    installed_mods();
+    for(const auto& r:srw64::mods::loose_results())if(r.result.ok) {
+        const auto& result=r.result;
+        notices::post("mod",result.replaced?filled("mod_updated",{{"{id}",result.id},{"{old}",srw64::mods::version_text(*result.replaced)},{"{version}",srw64::mods::version_text(result.version)}}):
+            filled("mod_installed",{{"{id}",result.id},{"{version}",srw64::mods::version_text(result.version)}}));
+    }
+}
+// Every frame while a pick is pending: once the file is in the private mods/, the listing
+// installs it as a loose package.
+void mod_pick_poll() {
+    if(!mod_pick_pending)return;
+    const int status=android_export_status("modPickStatus");
+    if(status==1)return;
+    mod_pick_pending=false;
+    if(status==4)notices::post("mod",localization::catalog().ui("mod_pick_failed"));
+    if(status==2)mod_inbox_sync();
+    else ++mod_revision;   // the button comes back
+}
+#endif
 void open_page(const std::string& url);
 // The packages folder in the system's file manager, created first.
 void mod_open_folder() {
@@ -3455,6 +3499,9 @@ void settings_sync() {
     }
     if(mod_open) {
         const auto stamp="mod"+std::to_string(mod_page)+"-"+std::to_string(mod_revision.load())+std::to_string(mod_installing.load())+mod_remove_pending+
+#ifdef __ANDROID__
+            std::to_string(mod_pick_pending)+android_player_folder()+
+#endif
             localization::catalog().locale+window_stamp()+std::to_string(on_title())+
             std::to_string(presentation::image_mode.requested())+std::to_string(presentation::image_mode.enabled())+dialogue::text_summary().dump();
         if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
@@ -3477,6 +3524,7 @@ void settings_sync() {
 #ifdef __ANDROID__
     save_export_poll();
     report_export_poll();
+    mod_pick_poll();
 #endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings::mod_music())+"/"+std::to_string(settings::mod_music_volume())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
@@ -5330,7 +5378,18 @@ void choose(const std::string& id) {
     if(id=="viewer-open"){viewer_open=true;library_open=false;mod_open=false;stage_open=false;viewer_picker.clear();settings_open=true;settings_release.hold();input.clear();return;}
     if(viewer_open && id=="settings-close" && !viewer_picker.empty()){viewer_cancel_picker();return;}   // B in a box: back to the page as it was
     if(viewer_open && id.starts_with("vw-")){viewer_choose(id);return;}
-    if(id=="mod-open"){viewer_open=false;library_open=false;stage_open=false;mod_open=true;settings_open=true;settings_focus="first";settings_release.hold();input.clear();return;}
+    if(id=="mod-open"){
+        viewer_open=false;library_open=false;stage_open=false;mod_open=true;settings_open=true;settings_focus="first";settings_release.hold();input.clear();
+#ifdef __ANDROID__
+        mod_inbox_sync();
+#endif
+        return;
+    }
+#ifdef __ANDROID__
+    if(mod_open && id=="mod-refresh"){mod_inbox_sync();settings_focus=id;return;}
+    if(mod_open && id=="mod-inbox-open"){if(const auto shown=android_player_folder();!shown.empty())open_folder(shown+"/mods");settings_focus=id;return;}
+    if(mod_open && id=="mod-pick"){if(!mod_pick_pending && android_call("pickMod"))mod_pick_pending=true;settings_focus=id;return;}
+#endif
     if(mod_open && id.starts_with("mod-page:")) {
         for(unsigned i=0;i<std::size(mod_pages);++i)if(id.substr(9)==mod_pages[i]){mod_page=i;settings_focus=id;}
         return;

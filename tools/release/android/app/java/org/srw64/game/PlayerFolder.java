@@ -36,11 +36,14 @@ import java.util.Set;
 //   reports/  problem reports                   filters/, bezels/   the player's own
 //   logs/     the last runs' logs, for a game that cannot reach its settings to export a report
 //   screenshots/  the screenshot key's pictures
+//   mods/     MOD packages to install (.srw64mod files), taken in and installed
 //
 // The host keeps reading and writing the private user directory (it needs real paths);
 // this mirrors the two. Saves go out, and come back only into an empty library (after a
 // reinstall or cleared data); import/, filters/ and bezels/ come in; export/, reports/,
-// screenshots/ and logs/ go out. One lock serialises every transfer.
+// screenshots/ and logs/ go out; mods/ is an inbox: a package file moves into the private
+// mods/, where the host unpacks it (mod_library.cpp unpack_loose). One lock serialises
+// every transfer.
 final class PlayerFolder {
     static final String SUGGESTED = Environment.DIRECTORY_DOCUMENTS + "/Marchwind64";
     private static final String STORAGE = "com.android.externalstorage.documents";
@@ -141,8 +144,35 @@ final class PlayerFolder {
             saves(user);
             looks(user);
             incoming(user);
+            mods(user);
             logs(user);
         }
+    }
+
+    // The package files the player put in mods/ (.srw64mod, or .zip) into the private
+    // mods/, where the host installs them the next time it lists the packages; the folder's
+    // copy goes once the private one is complete, so an installed package (the host moves
+    // its file to .trash) is not taken in again. Folders and other files stay where they
+    // are: the host installs package files only. The folder is made so the player finds it.
+    void mods(File user) throws IOException {
+        synchronized (LOCK) {
+            String there = directory(root, "mods", true);
+            File mine = new File(user, "mods");
+            for (Entry entry : list(there).values()) {
+                if (entry.directory || skipped(entry.name) || !packageName(entry.name)) continue;
+                if (!mine.isDirectory() && !mine.mkdirs()) throw new IOException("cannot make " + mine);
+                File file = new File(mine, entry.name);
+                if (file.isDirectory()) deleteLocal(file);
+                get(entry, file);
+                delete(entry);
+            }
+        }
+    }
+
+    // mod_library.cpp is_package_file.
+    static boolean packageName(String name) {
+        String lower = name.toLowerCase(Locale.ROOT);
+        return lower.endsWith(".srw64mod") || lower.endsWith(".zip");
     }
 
     // The last runs' console.log (the host's output, with the stall watchdog's thread
@@ -303,7 +333,7 @@ final class PlayerFolder {
                     String relative = folder.substring(base.length() + 1);
                     if (relative.equals("saves/import") || relative.startsWith("saves/import/")) sub = "import" + relative.substring(12);
                     else if (relative.equals("saves/export") || relative.startsWith("saves/export/")) sub = "export" + relative.substring(12);
-                    else for (String top : new String[] { "saves", "reports", "filters", "bezels" })
+                    else for (String top : new String[] { "saves", "reports", "filters", "bezels", "mods" })
                         if (relative.equals(top) || relative.startsWith(top + "/")) sub = relative;
                 }
             } catch (IOException ignored) { }
