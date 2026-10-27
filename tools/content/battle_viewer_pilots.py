@@ -12,8 +12,12 @@ plays is one the game's battle quotes were written for:
   - のりかえ: a pilot whose category (pilot record +0xB) is not 0 and a unit of the same
     category (unit record +0x12), category 1 also flying 7 and 3 also 4 (801C5618,
     docs/native/native-swap-screens.md);
-  - and each of those with every form of the unit: the forms a weapon list entry names
-    together (transforming, combining) and the super modes (form table D_80218A34).
+  - and each of those with every form of the unit: the units a weapon list entry names
+    together (transforming, combining) and the super modes (form table D_80218A34);
+  - a 変形 unit (ability bit +0x1C 0x02) nobody flies yet takes the pilots of the 変形
+    units sharing its weapon list (the list pointer at 0x7E210): ゲッター2/3 and the other
+    Getter forms, ザンボエース, 銀鈴ロボTYPE2. Only when it has none, as ダンクーガ's twelve
+    beast forms share one list too and each beast has its own pilot.
 
     .venv/bin/python tools/content/battle_viewer_pilots.py
 """
@@ -31,6 +35,7 @@ PILOT_MAP, PILOT_STATS, PILOT_SIZE, ACTORS = 0x800CA9C4 - 0x80075610, 0x7A1A0, 0
 WEAPON_LISTS = 0x7E210
 SUPER_MODES, SUPER_ROWS = 0x101594, 9
 SWAP_ALSO = {1: {7}, 3: {4}}
+TRANSFORMS = 0x02   # the ability word's 変形 bit (its low byte, +0x1F)
 EVENTS = ROOT / 'assets/original-data/records/stage_events.jsonl'
 NOBODY, KEEP_MODES = 999, (500, 999)   # 3D5A: no pilot / no machine; modes that are not a swap
 
@@ -110,6 +115,17 @@ def main() -> None:
             for other in forms.get(unit, ()):
                 if 0 <= other < UNIT_COUNT:
                     pairs[other] |= pairs[unit]
+    # 変形 forms sharing a weapon list: an unflown one borrows the flown ones' pilots.
+    by_list: dict[int, set[int]] = defaultdict(set)
+    for unit in range(UNIT_COUNT):
+        if rom[UNITS + unit * UNIT_SIZE + 0x1F] & TRANSFORMS:
+            by_list[struct.unpack_from('>I', rom, WEAPON_LISTS + unit * 4)[0]].add(unit)
+    for family in by_list.values():
+        flown = set().union(*(pairs[u] for u in family if u in pairs))
+        for unit in family:
+            if flown and not pairs.get(unit):
+                pairs[unit] |= flown
+                forms[unit] |= family - {unit}
     # Deployment counts per unit, a form without any borrowing its other forms'.
     counts: dict[int, Counter[int]] = defaultdict(Counter)
     for (unit, pilot), n in deployed.items():
