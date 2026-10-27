@@ -76,6 +76,8 @@
 
 实机：同一关卡分别以日、中、英启动，两处地标与三艘带名牌舰船的名牌都按语言显示，方向与原版一致（航行中的名牌随航向旋转、向左飞时倒置，这是原版行为）；运行中连按 F7，阿克西斯 名牌依次变为 日→中→英；原版画面下日文保持原贴图、中英文显示译名。
 
+**TODO 繁体中文名牌（2026-10-27）**：资源包只有 ja、zh-Hans、en 三种牌子，繁中暂时显示简中牌子（`native_marker.cpp` 的 `plate_locale` 把 zh-Hant 当 zh-Hans）。要做：`tools/models/build_native_models.py` 的 `PLATE_LOCALES` 加 zh-Hant，名字取 `content/locales/terms/zh-Hant.json`，字体用 HarmonyOS_Sans_TC；宿主 `kPlateLocales` 加 zh-Hant（绘制 id 的语言位有 3 位，够用），并且资源包里没有 zh-Hant 贴图时（旧 HD 包）回落到简中，不要因清单少一种语言而拒绝整个包；之后要发新版 HD 包玩家才看得到。
+
 ラビアンローズ 的中文已按用户决定统一为“玫瑰人生号”（数据区词条表与台词专名表一致）。バルジ 的中文按用户决定为“巴鲁智要塞”（地形名与名牌用全名，台词里单独出现的改为“巴鲁智”）。英文统一为 Barge（台词「バルジ要塞」为 Barge Fortress）。
 
 ## 宿主接入

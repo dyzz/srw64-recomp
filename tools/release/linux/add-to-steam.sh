@@ -1,6 +1,6 @@
 #!/bin/sh
 # Adds SRW64 to the Steam library with its artwork; run once in Desktop Mode with
-# Steam open (see README.txt). Optional argument: zh-Hans, en or ja for the name;
+# Steam open (see README.txt). Optional argument: zh-Hans, zh-Hant, en or ja for the name;
 # otherwise the game's language, or Simplified Chinese before the first launch.
 here=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 if message=$(python3 "$here/steam/add_to_steam.py" "$@" 2>&1); then kind=info; else kind=error; fi

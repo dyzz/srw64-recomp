@@ -27,6 +27,8 @@ WIDTH, HEIGHT = 1280, 720
 STEPS = {
     'zh-Hans': ['首次启动：正在检查 ROM（约需半分钟）', '首次启动：正在从 ROM 导入文字与图片', '首次启动：正在整理剧情文本',
                 '正在启动', '正在载入剧情与文本', '正在准备画面', '正在准备界面', '正在启动游戏'],
+    'zh-Hant': ['首次啟動：正在檢查 ROM（約需半分鐘）', '首次啟動：正在從 ROM 匯入文字與圖片', '首次啟動：正在整理劇情文字',
+                '正在啟動', '正在載入劇情與文字', '正在準備畫面', '正在準備介面', '正在啟動遊戲'],
     'ja': ['初回起動：ROM を確認しています（30 秒ほどかかります）', '初回起動：ROM から文字と画像を読み込んでいます',
            '初回起動：シナリオのテキストを整理しています', '起動しています', 'シナリオとテキストを読み込んでいます', '画面を準備しています', 'インターフェースを準備しています', 'ゲームを起動しています'],
     'en': ['First launch: checking the ROM (about half a minute)', 'First launch: importing text and pictures from the ROM',
@@ -69,8 +71,8 @@ def strip(text: str, font: ImageFont.FreeTypeFont) -> Image.Image:
 
 def make(out: Path, fonts: Path) -> None:
     out.mkdir(parents=True, exist_ok=True)
-    font = ImageFont.truetype(str(fonts / 'HarmonyOS_Sans_SC.ttf'), 30)
     for locale, steps in STEPS.items():
+        font = ImageFont.truetype(str(fonts / ('HarmonyOS_Sans_TC.ttf' if locale == 'zh-Hant' else 'HarmonyOS_Sans_SC.ttf')), 30)
         base(locale).save(out / f'base-{locale}.png', optimize=True)
         for n, text in enumerate(steps):
             strip(text, font).save(out / f'step-{locale}-{n}.png', optimize=True)

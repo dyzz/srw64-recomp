@@ -3,7 +3,7 @@
 (tools/release/brand): the M64 badge and the Marchwind64 wordmark on the navy plate of
 the application icons, lit from behind in the badge's blue.
 
-Writes to --output, for each game language (en, ja, zh-Hans): capsule-<locale>.png
+Writes to --output, for each game language (en, ja, zh-Hans, zh-Hant): capsule-<locale>.png
 (600x900, badge over wordmark), wide-<locale>.png (920x430, badge beside wordmark) and
 logo-<locale>.png (the wordmark, which Steam draws over the hero); and, the same in
 every language, hero.png (3840x1240, the badge on the right, the left kept for the logo)
@@ -20,7 +20,7 @@ from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[3]
 BRAND = ROOT / 'tools/release/brand'
-LOCALES = ('en', 'ja', 'zh-Hans')
+LOCALES = ('en', 'ja', 'zh-Hans', 'zh-Hant')
 TOP, BOTTOM = (34, 46, 80), (7, 9, 18)   # the icon plate's navy (app_icons.mac_icon), deepened
 LIGHT = (30, 140, 255)                    # the badge's blue accents
 

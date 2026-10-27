@@ -232,6 +232,8 @@ std::string boot_language() {
         }
         if (locale.empty()) locale = srw64_switch_language();
     }
+    // The saved zh-Hant, or the console's zh-Hant / zh-TW (it has no Hong Kong code).
+    if (locale.rfind("zh-Hant", 0) == 0 || locale.rfind("zh-TW", 0) == 0) return "zh-Hant";
     if (locale.rfind("zh", 0) == 0) return "zh-Hans";
     if (locale.rfind("ja", 0) == 0) return "ja";
     return "en";

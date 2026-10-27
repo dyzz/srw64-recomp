@@ -23,7 +23,7 @@ import urllib.parse
 HERE = Path(__file__).resolve().parent          # <game>/steam
 LAUNCHER = HERE.parent / 'marchwind64.sh'
 OLD_LAUNCHER = HERE.parent / 'srw64.sh'           # the launcher's name before Marchwind64
-NAMES = {'zh-Hans': '超级机器人大战64', 'en': 'Super Robot Wars 64', 'ja': 'スーパーロボット大戦64'}
+NAMES = {'zh-Hans': '超级机器人大战64', 'zh-Hant': '超級機器人大戰64', 'en': 'Super Robot Wars 64', 'ja': 'スーパーロボット大戦64'}
 FIRST_LOCALE = 'zh-Hans'                        # Ordinary installation's first language; portable starts in English
 # Steam's grid names for a shortcut's app id, from the files steam_art.py writes:
 # capsule, wide and logo in each game language (capsule-<locale>.png), hero and icon shared.

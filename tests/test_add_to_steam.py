@@ -86,7 +86,7 @@ class AddToSteamTests(unittest.TestCase):
             self.assertEqual(MODULE.shortcut_ids(vdf, Path("/x")), [])
 
     def test_every_game_language_has_a_steam_name(self):
-        self.assertEqual(set(MODULE.NAMES), {"zh-Hans", "en", "ja"})
+        self.assertEqual(set(MODULE.NAMES), {"zh-Hans", "zh-Hant", "en", "ja"})
         self.assertIn(MODULE.FIRST_LOCALE, MODULE.NAMES)
 
     def test_artwork_follows_the_game_language(self):
