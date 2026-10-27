@@ -57,7 +57,7 @@
      "ref": "secret-dialogue-branches",
      "title": {
       "zh-Hans": "只影响对白的分支",
-      "zh-Hant": "隻影響對白的分支",
+      "zh-Hant": "只影響對白的分支",
       "ja": "台詞のみの分岐",
       "en": "Dialogue-only branches"
      },

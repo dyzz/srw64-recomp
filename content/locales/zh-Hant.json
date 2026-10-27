@@ -436,7 +436,7 @@
     "update_open_failed": "無法開啟瀏覽器：{url}",
     "settings_update_hd": "HD 包",
     "update_hd_installed": "已安裝 HD {installed}。",
-    "update_hd_unknown": "已安裝的 HD 包沒有版本號，是較早釋出的。",
+    "update_hd_unknown": "已安裝的 HD 包沒有版本號，是較早發布的。",
     "update_hd_missing": "未安裝。HD 包可選，單獨下載。",
     "update_hd_available": "有新版 HD {version}，需要另外下載。",
     "update_hd_download": "下載 HD 包",
