@@ -1908,7 +1908,7 @@ std::string mod_contents_text(const srw64::mods::Contents& c) {
     std::vector<std::string> parts;
     const auto add=[&](unsigned n,const char* key){if(n)parts.push_back(filled(key,{{"{n}",std::to_string(n)}}));};
     add(c.music,"mod_has_music");add(c.voices,"mod_has_voices");add(c.art,"mod_has_art");add(c.dialogue,"mod_has_dialogue");add(c.data,"mod_has_data");
-    for(const auto& [flag,key]:{std::pair{c.campaign,"mod_has_campaign"},std::pair{c.challenge,"mod_has_challenge"},std::pair{c.story,"mod_has_story"},std::pair{c.rules,"mod_has_rules"}})
+    for(const auto& [flag,key]:{std::pair{c.campaign,"mod_has_campaign"},std::pair{c.challenge,"mod_has_challenge"},std::pair{c.story,"mod_has_story"},std::pair{c.rules,"mod_has_rules"},std::pair{c.names,"mod_has_names"}})
         if(flag)parts.push_back(localization::catalog().ui(key));
     std::string out;
     for(const auto& part:parts)out+=(out.empty()?"":"  ·  ")+part;

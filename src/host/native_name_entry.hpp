@@ -34,8 +34,10 @@ struct Request {
     std::array<Choice,4> choices;                      // `route` is the highlighted (Review: chosen) one
 };
 // Default names by reading language (docs/native/default-names.md). Filled while the
-// host starts, before the game runs; read-only afterwards on every thread.
+// host starts, before the game runs; read-only afterwards on every thread, except for
+// the MOD names, which `refresh` (mod_names.hpp) swaps in on any thread that asks.
 DefaultNames& default_names();
+void set_default_names_refresh(void(*refresh)(DefaultNames&));
 void configure(const std::filesystem::path&);
 void initialize_rom(const uint8_t*,size_t);
 void overlay_loaded(uint32_t rom,uint32_t ram,uint32_t size);

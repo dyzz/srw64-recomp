@@ -21,6 +21,8 @@ std::string page_text(const std::string& locale,unsigned resource);
 // record's translation while the label still shows that record's Japanese text, else
 // the glyphs as drawn, lines split by '\n'. Empty when the reader is not configured.
 std::string label_text(const uint8_t* ram,uint32_t label);
+// The label shows one of the protagonists' or partners' name fields (8008CF14's swap).
+bool name_label(const uint8_t* ram,uint32_t label);
 // Glyph codes as text, up to 0xFFFF; empty for an unterminated buffer.
 std::string glyph_text(const uint8_t* ram,uint32_t address,size_t limit);
 // One ROM font glyph as text.

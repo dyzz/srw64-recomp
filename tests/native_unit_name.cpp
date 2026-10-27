@@ -15,6 +15,8 @@ uint64_t srw64_current_vi() {return 4321;}
 // No catalogs are loaded here; add_default is checked on its own below.
 std::map<std::string,srw64::localization::Snapshot> srw64::localization::registered() {return {};}
 std::string srw64::localization::Catalog::ui(const std::string& key) const {return key;}
+srw64::localization::Catalog::Catalog()=default;
+const srw64::localization::Catalog& srw64::localization::catalog() {static const Catalog reading;return reading;}   // zh-Hans
 srw64::names::DefaultNames& srw64::names::default_names() {static DefaultNames table;return table;}
 using namespace srw64;
 
@@ -45,6 +47,9 @@ int main() {
         assert(unit_name::answer_choice(ram,vm));
         assert(guest::read(ram,result,2)==0x3DD9 && guest::read(ram,vm+0x1C,4)==pc+6 && guest::read(ram,vm+0x24,2)==0);
     }
+    // A MOD naming the unit: the second answer, 「気に入らない」, whose branch proposes {HeroMech}.
+    setup(24417);
+    assert(unit_name::answer_choice(ram,vm,2) && guest::read(ram,result,2)==0x3DDA && guest::read(ram,vm+0x1C,4)==pc+6);
     // Any other choice, a later frame of a naming choice and bad pointers stay the original's.
     for(auto [text,options,frame]:{std::tuple{uint16_t(21815),uint16_t(2),uint16_t(0)},{uint16_t(24045),uint16_t(3),uint16_t(0)},
                                    {uint16_t(24045),uint16_t(2),uint16_t(1)}}) {
@@ -64,10 +69,18 @@ int main() {
     setup(24417);assert(srw64_game_hooks.choice_step(ram,vm));
     const auto name_before=memory;
     assert(srw64_game_hooks.unit_name_page(ram) && memory==name_before);   // 8010F698 untouched
+    // A MOD naming the unit in the reading language takes the second answer; in another language only, the first.
+    auto& table=names::default_names();
+    table.add({names::Field::Unit,0,"マーチウィンド",{{"zh-Hans","三月风"}}});
+    table.set_mod_names({{{names::Field::Unit,0,"en"},"Gale"}});
+    setup(24417);assert(srw64_game_hooks.choice_step(ram,vm) && guest::read(ram,result,2)==0x3DD9);
+    table.set_mod_names({{{names::Field::Unit,0,"zh-Hans"},"疾风"}});
+    setup(24417);assert(srw64_game_hooks.choice_step(ram,vm) && guest::read(ram,result,2)==0x3DDA);
     std::ifstream log(out/"unit-name-events.jsonl");std::vector<nlohmann::json> rows;
     for(std::string line;std::getline(log,line);)rows.push_back(nlohmann::json::parse(line));
-    assert(rows.size()==2);
+    assert(rows.size()==4);
     assert(rows[0]["kind"]=="choice-answered" && rows[0]["text"]==24417 && rows[0]["answer"]==1 && rows[0]["vi"]==4321);
     assert(rows[1]["kind"]=="page-skipped" && rows[1]["schema"]=="srw64.unit-name-event.v1");
+    assert(rows[2]["answer"]==1 && rows[3]["answer"]==2);
     std::filesystem::remove_all(out);
 }

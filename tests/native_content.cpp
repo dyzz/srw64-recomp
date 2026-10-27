@@ -178,6 +178,26 @@ int main() {
         table.add({Field::Unit,0,"マーチウィンド",{{"zh-Hans","三月风"},{"en","March Wind"}}});
         assert(table.display(Field::Unit,"マーチウィンド","en")=="March Wind" && table.display(Field::Unit,"マーチウィンド","fr")=="マーチウィンド");
         assert(table.default_text(*table.find(Field::Unit,0),"zh-Hans")=="三月风" && table.default_text(*table.find(Field::Unit,0),"ja")=="マーチウィンド");
+        // MOD names (docs/design/mod-names-art-data.md §1): over the defaults in every
+        // language, Japanese included, but never under GuestText; other names stay as stored.
+        table.set_mod_names({{{Field::Name,2,"zh-Hans"},"龙"},{{Field::Surname,2,"zh-Hans"},"天野"},{{Field::Nick,2,"zh-Hans"},"小龙"},
+            {{Field::Name,2,"ja"},"リュウ"},{{Field::Unit,0,"zh-Hans"},"疾风"},{{Field::Unit,0,"ja"},"ハヤテ"}});
+        assert(table.display(Field::Name,"ブラッド","zh-Hans")=="龙" && table.display(Field::Nick,"ブラッド","zh-Hans")=="小龙");
+        assert(table.display(Field::Name,"ブラッド","zh-Hant")=="龙");                     // falls back to Simplified
+        assert(table.display(Field::Name,"ブラッド","en")=="Brad");                        // not named in English
+        assert(table.display_full("ブラッド・スカイウィンド","zh-Hans")=="龙·天野");
+        assert(table.display_full("ブラッド・スカイウィンド","ja")=="リュウ・スカイウィンド");
+        assert(table.display(Field::Name,"ブラッド","ja")=="リュウ" && table.display(Field::Unit,"マーチウィンド","ja")=="ハヤテ");
+        assert(table.display(Field::Name,"ヒカリ","zh-Hans")=="ヒカリ");                   // not a default: as stored
+        {
+            GuestText guest;
+            assert(table.display(Field::Name,"ブラッド","ja")=="ブラッド" && table.display_full("ブラッド・スカイウィンド","ja")=="ブラッド・スカイウィンド");
+            assert(table.display(Field::Name,"ブラッド","zh-Hans")=="龙");
+        }
+        assert(table.display(Field::Unit,"マーチウィンド","zh-Hans")=="疾风" && table.default_text(*table.find(Field::Unit,0),"en")=="March Wind");
+        const DefaultNames copy=table;
+        table.set_mod_names({});
+        assert(table.display(Field::Name,"ブラッド","zh-Hans")=="布拉德" && copy.display(Field::Name,"ブラッド","zh-Hans")=="龙");
     }
     std::cout<<"native content: table identity, fallback, UI catalog, image requests, dialogue text and default names passed\n";
 }

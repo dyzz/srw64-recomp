@@ -235,7 +235,13 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned person) {
     return true;
 }
 }
-DefaultNames& default_names() {static DefaultNames table;return table;}
+namespace {std::atomic<void(*)(DefaultNames&)> refresh_names{nullptr};}
+DefaultNames& default_names() {
+    static DefaultNames table;
+    if(const auto refresh=refresh_names.load())refresh(table);
+    return table;
+}
+void set_default_names_refresh(void(*refresh)(DefaultNames&)){refresh_names=refresh;}
 void configure(const std::filesystem::path& directory) {
     const auto* document=dialogue_data::document();
     if(!document || (std::getenv("SRW64_NATIVE_NAME_ENTRY") && std::string(std::getenv("SRW64_NATIVE_NAME_ENTRY"))=="0"))return;

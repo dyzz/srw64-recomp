@@ -27,8 +27,11 @@ void configure(const std::filesystem::path& output) {
     if(add_default(names::default_names(),by_locale))record({{"kind","default"},{"names",by_locale}});
     srw64_game_hooks.choice_step=[](uint8_t* ram,uint32_t vm) {
         const auto text=guest::read(ram,guest::read(ram,vm+0x1C,4)+4,2);
-        if(!answer_choice(ram,vm))return false;
-        record({{"kind","choice-answered"},{"text",text},{"answer",1}});
+        const auto& table=names::default_names();
+        const auto* row=table.find(names::Field::Unit,0);
+        const unsigned answer=row && table.mod_text(*row,localization::catalog().locale)?2:1;
+        if(!answer_choice(ram,vm,answer))return false;
+        record({{"kind","choice-answered"},{"text",text},{"answer",answer}});
         return true;
     };
     srw64_game_hooks.unit_name_page=[](uint8_t*) {

@@ -103,8 +103,8 @@ inline bool satisfies(const Version& v,const std::string& requirement) {
 // The content a package carries, counted for the manager's list.
 struct Contents {
     unsigned music{},voices{},art{},dialogue{},data{};
-    bool campaign{},challenge{},story{},rules{};
-    bool empty() const {return !music && !voices && !art && !dialogue && !data && !campaign && !challenge && !story && !rules;}
+    bool campaign{},challenge{},story{},rules{},names{};
+    bool empty() const {return !music && !voices && !art && !dialogue && !data && !campaign && !challenge && !story && !rules && !names;}
 };
 
 // A problem found while reading or resolving a package: a code the UI words (mod_error_*)
@@ -300,6 +300,7 @@ inline Contents summarize(const fs::path& folder) {
     c.voices=count(folder/"audio"/"voice",{".ogg",".mp3",".flac",".wav"});
     c.art=count(folder/"art",{".png",".webp",".dds",".json"});
     c.dialogue=count(folder/"dialogue",{".txt"});
+    c.names=fs::is_regular_file(folder/"dialogue"/"names.json",error);
     c.data=count(folder/"data",{".json"});
     c.campaign=fs::is_regular_file(folder/"campaign"/"campaign.json",error);
     c.challenge=fs::is_directory(folder/"challenge",error);

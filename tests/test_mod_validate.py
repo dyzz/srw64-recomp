@@ -89,6 +89,18 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(summary["file"], "a.b-1.0.0.srw64mod")
         self.assertEqual(summary["sha256"], validate.sha256_of(path))
 
+    def test_names_file_follows_the_host(self):
+        files = self.good_files()
+        files["dialogue/names.json"] = json.dumps({"schema": "srw64.mod-names.v1", "unit": {"zh-Hans": "疾风"},
+            "heroes": {"super-male": {"hero": {"zh-Hans": {"name": "龙", "surname": "天野"}}}}}).encode()
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        for bad, why in [({"unit": {"fr": "Gale"}}, "未知语言"), ({"unit": {"en": "x" * 25}}, "最多 24"),
+                         ({"heroes": {"super-male": {"hero": {"en": {"surname": "A"}}}}}, "缺少 name"),
+                         ({"heroes": {"super-male": {"hero": {"en": {"name": "{HeroNick}"}}}}}, "< > { }")]:
+            self.assertIn(why, validate.names_problem(bad))
+        files["dialogue/names.json"] = b"{"
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["names"])
+
     def test_everything_inside_one_top_folder_and_junk(self):
         files = {"a.b/" + name: data for name, data in self.good_files().items()}
         files["__MACOSX/a.b/._mod.json"] = b"junk"

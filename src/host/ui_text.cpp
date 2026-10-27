@@ -1,4 +1,5 @@
 #include "ui_text.hpp"
+#include "native_name_entry.hpp"
 #include "run_files.hpp"
 #include "map_miss.hpp"
 #include "menu_widen.hpp"
@@ -244,8 +245,19 @@ bool active() {
     return hd || localization::catalog().locale != "ja";
 }
 
+// Japanese in original image mode with a MOD naming the protagonists or the unit in
+// Japanese (mod_names.hpp): the ROM font cannot draw those names, so only the labels
+// showing a name field are drawn, in ours; everything else stays the original's.
+bool names_only() {
+    if (active() || disabled || !dialogue::reader_configured()) return false;
+    const auto modded = names::default_names().mod_names();
+    for (const auto& [key, text] : *modded) if (std::get<2>(key) == "ja") return true;
+    return false;
+}
+
 void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
-    if (end <= begin || end > 0x800000 || !active()) return;
+    const bool only_names = end > begin && end <= 0x800000 && names_only();
+    if (end <= begin || end > 0x800000 || (!only_names && !active())) return;
     std::lock_guard lock(mutex);
     ++counts.passes;
     const auto list = records(ram, begin, end);
@@ -328,13 +340,14 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         l.drawn = dialogue::glyph_text(ram, l.address + 0xC, kLabelGlyphs);
         l.text = dialogue::label_text(ram, l.address);
         l.translated = !l.text.empty() && l.text != l.drawn;
+        if (only_names && !(l.translated && dialogue::name_label(ram, l.address))) continue;
         found.push_back(std::move(l));
     }
     // Bodies the reader does not show (choice and objective windows): the current page,
     // lines 16 apart, drawn whole once it is all there.
     struct Body { const Record* record; uint32_t address; int x, y; unsigned palette; };
     std::vector<Body> bodies_found;
-    for (uint32_t n = 0, k = 0; n < kBodyCount && !front; ++n) {
+    for (uint32_t n = 0, k = 0; n < kBodyCount && !front && !only_names; ++n) {
         const uint32_t address = kBodies + n * kBodySize;
         const uint8_t status = byte(ram, address + 2);
         if (status < 1 || status > 3) continue;
@@ -777,7 +790,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         note("label:" + locale + ":" + text, {{"kind", "label"}, {"record", l.id}, {"text", text},
              {"original", l.drawn}, {"translated", l.translated}, {"front", front}});
     }
-    if (with_numbers) {
+    if (with_numbers && !only_names) {
         const Record& record = list.back();
         size_t next = 0;
         bool fits = true;
@@ -817,7 +830,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         }
     }
     // The host's own labels (set_extra), with the back pass's labels.
-    if (!front)
+    if (!front && !only_names)
         for (const auto& [id, e] : extras) {
             const float white[3] = {1, 1, 1};
             if (e.segments.empty()) {

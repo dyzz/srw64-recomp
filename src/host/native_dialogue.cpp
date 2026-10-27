@@ -163,6 +163,12 @@ std::string record_text(const uint8_t* ram,const localization::Catalog& catalog,
     const auto* value=catalog.resolve(localization::TextKey::base(0,id));
     return value?expand(ram,*value,catalog.locale):std::string();
 }
+// A record's Japanese as the guest draws it: names as stored, whatever a package names
+// them, to compare against what a label or body holds.
+std::string guest_record_text(const uint8_t* ram,const localization::Catalog& japanese,uint16_t id) {
+    names::GuestText guest;
+    return record_text(ram,japanese,id);
+}
 // The speaker label holds its record id at +0 and the glyphs it shows at +12.
 // Show the record in the reading language while the label still shows that
 // record's Japanese text, and a name field as shown_name does; anything else
@@ -172,7 +178,7 @@ std::string speaker_name(const uint8_t* ram,uint32_t label,const localization::C
     const uint16_t id=half(ram,label);
     if(const auto* slot=entered_name(id))return shown_name(shown,*slot,language.locale);
     const auto japanese=localization::find("ja");
-    if(!japanese || record_text(ram,*japanese,id)!=shown)return shown;
+    if(!japanese || guest_record_text(ram,*japanese,id)!=shown)return shown;
     return record_text(ram,language,id);
 }
 // A battle quote cannot be paged: the original advances it on its own clock.
@@ -814,8 +820,11 @@ std::string label_text(const uint8_t* ram,uint32_t label) {
     // The host's own row in the map's blank-tile menu and the intermission menu (title_row.hpp).
     if(id==title_row::record)return localization::catalog().ui("title_return_open");
     const auto japanese=localization::find("ja");
-    if(!id || !japanese || record_text(ram,*japanese,id)!=shown)return shown;
+    if(!id || !japanese || guest_record_text(ram,*japanese,id)!=shown)return shown;
     return record_text(ram,localization::catalog(),id);
+}
+bool name_label(const uint8_t* ram,uint32_t label) {
+    return enabled && entered_name(half(ram,label&0x1FFFFFFF))!=nullptr;
 }
 std::string glyph_text(const uint8_t* ram,uint32_t address,size_t limit) {
     return enabled?decode(ram,address&0x1FFFFFFF,limit):std::string();
@@ -828,7 +837,7 @@ std::string body_page(const uint8_t* ram,uint32_t body) {
     const auto shown=segment(decode(ram,body+12,256),page);
     const uint16_t id=half(ram,body);
     const auto japanese=localization::find("ja");
-    if(!id || !japanese || segment(record_text(ram,*japanese,id),page)!=shown)return shown;
+    if(!id || !japanese || segment(guest_record_text(ram,*japanese,id),page)!=shown)return shown;
     const auto translated=segment(record_text(ram,localization::catalog(),id),page);
     return translated.empty()?shown:translated;
 }

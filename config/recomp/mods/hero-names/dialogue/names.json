@@ -1,0 +1,43 @@
+{
+  "schema": "srw64.mod-names.v1",
+  "heroes": {
+    "super-male": {
+      "hero": {
+        "zh-Hans": {
+          "name": "拓真",
+          "surname": "天野",
+          "nickname": "拓真"
+        },
+        "en": {
+          "name": "Takuma",
+          "surname": "Amano",
+          "nickname": "Takuma"
+        },
+        "ja": {
+          "name": "タクマ",
+          "surname": "アマノ",
+          "nickname": "タクマ"
+        }
+      },
+      "partner": {
+        "zh-Hans": {
+          "name": "湊",
+          "surname": "北条"
+        },
+        "en": {
+          "name": "Minato",
+          "surname": "Hojo"
+        },
+        "ja": {
+          "name": "ミナト",
+          "surname": "ホウジョウ"
+        }
+      }
+    }
+  },
+  "unit": {
+    "zh-Hans": "晓风",
+    "en": "Daybreak",
+    "ja": "デイブレイク"
+  }
+}

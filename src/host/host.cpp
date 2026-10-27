@@ -32,6 +32,8 @@
 #include "rule_fixes.hpp"
 #include "upgrade_refund.hpp"
 #include "mod_data.hpp"
+#include "mod_names.hpp"
+#include "localization/catalog.hpp"
 #include "parts_carry.hpp"
 #include "graphics.hpp"
 #include "run_files.hpp"
@@ -664,6 +666,13 @@ static int run_host(int argc, char** argv) {
     srw64::ui_text::configure(output_dir);
     srw64::names::configure(output_dir);
     srw64::unit_name::configure(output_dir);
+    {
+        // Names from MOD packages over the defaults just registered (mod_names.hpp).
+        std::vector<std::string> locales;
+        for(const auto& [locale,catalog]:srw64::localization::registered())if(catalog)locales.push_back(locale);
+        srw64::mod_names::configure(std::move(locales),output_dir);
+        srw64::names::set_default_names_refresh(&srw64::mod_names::refresh);
+    }
     srw64::link_page::configure(output_dir);
     srw64::battle_page::configure(output_dir);
     srw64::intermission_page::configure(output_dir);

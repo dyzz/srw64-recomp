@@ -295,6 +295,72 @@ def contents_of(entries: list[Entry]) -> list[str]:
         [f for f in TOP_FILES if f in tops and f != "mod.json"]
 
 
+NAMES_SCHEMA = "srw64.mod-names.v1"
+NAME_LOCALES = ("en", "ja", "zh-Hans", "zh-Hant")
+NAME_ROUTES = ("real-male", "real-female", "super-male", "super-female")
+
+
+def _name_problem(value, where: str, limit: int) -> str:
+    if not isinstance(value, str):
+        return f"{where}：要是字符串"
+    if not value.strip(" \t"):
+        return f"{where}：不能为空"
+    if value[0] == " " or value[-1] == " ":
+        return f"{where}：首尾不能有空格"
+    if any(ord(c) < 0x20 or ord(c) == 0x7F or c in "<>{}\u3000" for c in value):
+        return f"{where}：不能有控制字符、全角空格或 < > {{ }}"
+    if len(value) > limit:
+        return f"{where}：太长（最多 {limit} 个字符）"
+    return ""
+
+
+def names_problem(document) -> str:
+    """dialogue/names.json by the host's rules (src/host/mod_names.hpp parse), "" when it is good."""
+    if not isinstance(document, dict):
+        return "顶层要是对象"
+    for key, value in document.items():
+        if key == "schema":
+            if value != NAMES_SCHEMA:
+                return f"schema：要是 {NAMES_SCHEMA}"
+        elif key == "heroes":
+            if not isinstance(value, dict):
+                return "heroes：要是对象"
+            for route, people in value.items():
+                if route not in NAME_ROUTES:
+                    return f"heroes.{route}：未知路线（{'、'.join(NAME_ROUTES)}）"
+                if not isinstance(people, dict):
+                    return f"heroes.{route}：要是对象"
+                for role, by_locale in people.items():
+                    if role not in ("hero", "partner"):
+                        return f"heroes.{route}.{role}：要是 hero 或 partner"
+                    if not isinstance(by_locale, dict):
+                        return f"heroes.{route}.{role}：要是对象"
+                    for locale, fields in by_locale.items():
+                        where = f"heroes.{route}.{role}.{locale}"
+                        if locale not in NAME_LOCALES:
+                            return f"{where}：未知语言（{'、'.join(NAME_LOCALES)}）"
+                        if not isinstance(fields, dict):
+                            return f"{where}：要是对象"
+                        if "name" not in fields:
+                            return f"{where}：缺少 name"
+                        for field, text in fields.items():
+                            if field not in ("name", "surname", "nickname"):
+                                return f"{where}：未知字段 {field}（name、surname、nickname）"
+                            if why := _name_problem(text, f"{where}.{field}", 16):
+                                return why
+        elif key == "unit":
+            if not isinstance(value, dict):
+                return "unit：要是对象"
+            for locale, text in value.items():
+                if locale not in NAME_LOCALES:
+                    return f"unit.{locale}：未知语言（{'、'.join(NAME_LOCALES)}）"
+                if why := _name_problem(text, f"unit.{locale}", 24):
+                    return why
+        else:
+            return f"未知字段 {key}（schema、heroes、unit）"
+    return ""
+
+
 def sha256_of(path: Path) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as f:
@@ -361,6 +427,14 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             problems.append(Problem("campaign", "not " + CAMPAIGN_IMAGE_SCHEMA))
         elif image.get("id") != m["id"]:
             problems.append(Problem("campaign", f"id {image.get('id')!r}, the package is {m['id']!r}"))
+    for e in package.entries:
+        if e.name == "dialogue/names.json":
+            try:
+                why = names_problem(json.loads(e.read().decode("utf-8")))
+            except (ValueError, UnicodeDecodeError) as error:
+                why = f"JSON 无效：{error}"
+            if why:
+                problems.append(Problem("names", why))
     if original_hashes:
         for e in package.entries:
             if e.name != "mod.json" and hashlib.sha256(e.read()).hexdigest() in original_hashes:

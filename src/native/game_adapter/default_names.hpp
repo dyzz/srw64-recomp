@@ -2,7 +2,11 @@
 #include <cstdint>
 #include <functional>
 #include <map>
+#include <memory>
+#include <mutex>
+#include <optional>
 #include <string>
+#include <tuple>
 #include <vector>
 
 namespace srw64::names {
@@ -28,8 +32,29 @@ inline std::string separator(const std::string& locale) {
     if(locale=="en")return " ";
     return "・";
 }
+// Names from MOD packages (docs/design/mod-names-art-data.md §1) shown over a default,
+// by field, person and locale; Japanese included. Nothing is written to the buffers.
+using ModNames=std::map<std::tuple<Field,unsigned,std::string>,std::string>;
+// While one is alive on a thread, Japanese shows the buffers as the guest drew them, MOD
+// names or not: for callers comparing host text against the guest's own.
+inline int& guest_text_depth(){thread_local int depth=0;return depth;}
+struct GuestText {
+    GuestText(){++guest_text_depth();}
+    ~GuestText(){--guest_text_depth();}
+    GuestText(const GuestText&)=delete;
+    GuestText& operator=(const GuestText&)=delete;
+};
 class DefaultNames {
     std::vector<DefaultName> rows;
+    // Replaced whole when the packages change, read on the game and UI threads.
+    struct Shared {
+        mutable std::mutex mutex;
+        std::shared_ptr<const ModNames> names=std::make_shared<ModNames>();
+        Shared()=default;
+        Shared(const Shared& other):names(other.get()){}
+        Shared& operator=(const Shared& other){if(this!=&other){auto n=other.get();std::lock_guard lock(mutex);names=std::move(n);}return *this;}
+        std::shared_ptr<const ModNames> get() const {std::lock_guard lock(mutex);return names;}
+    } shared;
     // Blanks around a name are padding, not part of it.
     static std::string trimmed(std::string text) {
         static const std::string wide="　";
@@ -57,22 +82,40 @@ public:
         for(const auto& row:rows)if(row.field==field && row.ja==text)return &row;
         return nullptr;
     }
+    void set_mod_names(ModNames names){auto value=std::make_shared<const ModNames>(std::move(names));std::lock_guard lock(shared.mutex);shared.names=std::move(value);}
+    std::shared_ptr<const ModNames> mod_names() const {return shared.get();}
+    // A package's name for this row; Traditional Chinese falls back to the Simplified one.
+    std::optional<std::string> mod_text(const DefaultName& row,const std::string& locale) const {
+        const auto names=shared.get();
+        for(const auto& l:{locale,locale=="zh-Hant"?std::string("zh-Hans"):std::string()}) {
+            if(l.empty())continue;
+            if(const auto found=names->find({row.field,row.person,l});found!=names->end())return found->second;
+        }
+        return std::nullopt;
+    }
     std::string default_text(const DefaultName& row,const std::string& locale) const {
+        if(auto modded=mod_text(row,locale))return *modded;
         const auto found=row.text.find(locale);
         return found==row.text.end() || found->second.empty() ? row.ja : found->second;
     }
-    // Japanese keeps the buffer exactly as drawn, so callers comparing against the
-    // guest's own text still see equal strings.
+    // Japanese keeps the buffer exactly as drawn unless a package names the person, and
+    // always under GuestText, so callers comparing against the guest's own text still
+    // see equal strings.
     std::string display(Field field,const std::string& stored,const std::string& locale) const {
-        if(locale=="ja")return stored;
         const auto* row=match(field,stored);
-        return row?default_text(*row,locale):stored;
+        if(!row)return stored;
+        if(locale=="ja") {
+            if(guest_text_depth())return stored;
+            auto modded=mod_text(*row,locale);
+            return modded?*modded:stored;
+        }
+        return default_text(*row,locale);
     }
     // A full name buffer is given name, the original's middle dot (glyph 0xE7), family name.
     std::string display_full(const std::string& stored,const std::string& locale) const {
         static const std::string dot="・";
         const auto at=stored.find(dot);
-        if(locale=="ja" || at==std::string::npos || stored.find(dot,at+dot.size())!=std::string::npos)return stored;
+        if(at==std::string::npos || stored.find(dot,at+dot.size())!=std::string::npos)return stored;
         const auto given=stored.substr(0,at),family=stored.substr(at+dot.size());
         const auto g=display(Field::Name,given,locale),f=display(Field::Surname,family,locale);
         return g==given && f==family ? stored : g+separator(locale)+f;
