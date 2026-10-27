@@ -38,7 +38,7 @@ const text = {
   choose: L({ zh: '选择文件', en: 'Choose file', ja: 'ファイルを選択' }),
   drop: L({ zh: '或把音频文件拖到这一行', en: 'or drop an audio file on this row', ja: 'または音声ファイルをこの行にドロップ' }),
   remove: L({ zh: '移除', en: 'Remove', ja: '削除' }),
-  edit: L({ zh: '编辑', en: 'Edit', ja: '編集' }),
+  edit: L({ zh: '展开编辑', en: 'Open the editor', ja: '編集を開く' }),
   close: L({ zh: '收起', en: 'Close', ja: '閉じる' }),
   decoding: L({ zh: '解码中…', en: 'Decoding…', ja: 'デコード中…' }),
   encoding: L({ zh: '转成 Ogg Vorbis…', en: 'Encoding to Ogg Vorbis…', ja: 'Ogg Vorbis に変換中…' }),
@@ -163,6 +163,10 @@ const licenses = ['CC-BY-4.0', 'CC-BY-SA-4.0', 'CC-BY-NC-4.0', 'CC-BY-NC-SA-4.0'
   :global(.bgm .song.over) { border-color: var(--cyan); background: var(--panel-2); }
   :global(.bgm .song.done) { border-color: rgba(87, 227, 137, 0.5); }
   :global(.bgm .song-head) { display: grid; grid-template-columns: 44px 1fr auto; gap: 4px 12px; align-items: center; padding: 10px 12px; }
+  :global(.bgm .song-head.openable) { cursor: pointer; border-radius: var(--radius); }
+  :global(.bgm .song-head.openable:hover) { background: var(--panel-2); }
+  :global(.bgm .song-head.openable:focus-visible) { outline: 2px solid var(--cyan); outline-offset: -2px; }
+  :global(.bgm .song-fold) { align-self: center; color: var(--muted); font-size: 18px; width: 18px; text-align: center; }
   :global(.bgm .song-no) { font-family: var(--display); font-size: 18px; color: var(--gold); text-align: right; }
   :global(.bgm .song-title) { font-weight: 600; }
   :global(.bgm .song-uses) { grid-column: 2; color: var(--dim); font-size: 12.5px; }

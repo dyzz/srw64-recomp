@@ -285,22 +285,33 @@ export function initBgmMaker() {
       const f = (e.target as HTMLInputElement).files?.[0];
       if (f) { open = song; addFile(song, f, f.name); }
     } });
-    const playButton = t?.state === 'ready' ? el('button', { type: 'button', class: 'mini play', 'data-play': '', title: text.play,
+    const ready = t?.state === 'ready';
+    const playButton = ready ? el('button', { type: 'button', class: 'mini play', 'data-play': '', title: text.play,
       onclick: () => { if (now?.song === song) stop(); else if (t) play(t); } }, '▶') : null;
     const actions = el('div', { class: 'song-actions' },
       playButton,
       el('label', { class: 'mini' }, text.choose, file),
-      t?.state === 'ready' ? el('button', { type: 'button', class: 'mini', onclick: () => { open = open === song ? null : song; rerenderOpen(song); } }, open === song ? text.close : text.edit) : null,
-      t ? el('button', { type: 'button', class: 'mini', onclick: () => { stop(); tracks.delete(song); if (open === song) open = null; if (preview?.song === song) preview = null; renderSong(song); } }, text.remove) : null);
-    li.replaceChildren(el('div', { class: 'song-head' },
+      t ? el('button', { type: 'button', class: 'mini', onclick: () => { stop(); tracks.delete(song); if (open === song) open = null; if (preview?.song === song) preview = null; renderSong(song); } }, text.remove) : null,
+      ready ? el('span', { class: 'song-fold', 'aria-hidden': 'true' }, open === song ? '▴' : '▾') : null);
+    // A ready song's whole head opens and closes its editor; the buttons in it keep their own clicks.
+    const head = el('div', { class: `song-head${ready ? ' openable' : ''}` },
       el('span', { class: 'song-no' }, String(s.row)),
       el('span', { class: 'song-title' }, s.title),
       actions,
       el('span', { class: 'song-uses' }, uses(s) + (s.karaoke ? ` · ${text.karaoke}` : '')),
-      el('span', { class: 'song-state' })));
+      el('span', { class: 'song-state' }));
+    if (ready) {
+      const toggle = () => { open = open === song ? null : song; rerenderOpen(song); };
+      Object.assign(head, { tabIndex: 0, title: open === song ? text.close : text.edit });
+      head.setAttribute('role', 'button');
+      head.setAttribute('aria-expanded', String(open === song));
+      head.addEventListener('click', (e) => { if (!(e.target as Element).closest('button, label, input')) toggle(); });
+      head.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target === head) { e.preventDefault(); toggle(); } });
+    }
+    li.replaceChildren(head);
     renderState(song);
     markPlaying(song);
-    if (t?.state === 'ready' && open === song) li.append(editor(t));
+    if (ready && open === song) li.append(editor(t!));
   }
   function rerenderOpen(song: number) {
     for (const k of new Set([song, ...tracks.keys()])) renderSong(k);
