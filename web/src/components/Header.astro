@@ -16,17 +16,17 @@ const after = [
   { href: `/${lang}/blog/`, label: UI.nav.blog[lang], match: (p: string) => p.startsWith(`/${lang}/blog`) },
   { href: `/${lang}/docs/`, label: UI.nav.docs[lang], match: (p: string) => p.startsWith(`/${lang}/docs`) && !isMod(p) },
 ];
-// The MOD menu in three groups: downloads, the guides (in the docs, with the ID table), and
-// the tools (the web BGM maker).
+// The MOD menu in three groups: downloads, the tools (the web BGM maker) and the guides (in
+// the docs, with the ID table).
 const modGroups = [
   { label: UI.nav.modGroupDownloads[lang], items: [{ href: `/${lang}/mods/`, label: UI.nav.modAll[lang], exact: true }] },
+  { label: UI.nav.modGroupTools[lang], items: [{ href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[lang] }] },
   { label: UI.nav.modGroupDocs[lang], items: [
     { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[lang] },
     { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[lang] },
     { href: `/${lang}/docs/mod-data/`, label: UI.nav.modData[lang] },
     { href: `/${lang}/mods/ids/`, label: UI.nav.modIds[lang] },
   ] },
-  { label: UI.nav.modGroupTools[lang], items: [{ href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[lang] }] },
 ];
 const mods = modGroups.flatMap((g) => g.items);
 function isMod(p: string) { return mods.some((m) => p.startsWith(m.href.replace(/\/$/, ''))); }
