@@ -3,6 +3,7 @@
 // weapons.json the host reads (src/host/mod_data.hpp). Only changed fields are written.
 import data from '../data/data-mods.json';
 import { el, fill, jsonBytes, openPackage, packageForm, readJson, say, search, writePackage, type Text } from './mod-package';
+import { picker, type Pickable } from './picker';
 
 type Kind = 'units' | 'pilots' | 'weapons';
 type Field = { key: string; label: string; low: number; high: number; step?: number };
@@ -19,12 +20,17 @@ const FILES: Record<Kind, string> = { units: 'data/units.json', pilots: 'data/pi
 const CHANNELS = ['air', 'land', 'sea', 'space'];
 const RANKS = ['A', 'B', 'C', 'D', '-'];
 const FIRST_ROW = ['newtype', 'enhanced', 'holy_warrior', 'esp', 'potential'];
+// The original status screen's abilities box holds about three (native-ability-screens.md).
+const ABILITIES_SHOWN = 3;
 
 export function initDataMaker() {
   const root = document.querySelector<HTMLElement>('[data-maker]');
   const payload = document.getElementById('maker-data');
   if (!root || !payload) return;
-  const { text, labels, locale, lang } = JSON.parse(payload.textContent!) as { text: Text & { terrainNames: string[] }; labels: Labels; locale: string; lang: 'zh' | 'en' | 'ja' };
+  const { text, labels, pick, locale, lang } = JSON.parse(payload.textContent!) as {
+    text: Text & { terrainNames: string[] }; labels: Labels; locale: string; lang: 'zh' | 'en' | 'ja';
+    pick: { units: Pickable[]; pilots: Pickable[]; series: { id: number | null; name: string }[] };
+  };
   const lists = data as unknown as Record<Kind, Entry[]>;
   const byId = Object.fromEntries((['units', 'pilots', 'weapons'] as Kind[]).map((k) => [k, new Map(lists[k].map((e) => [e.id, e]))])) as Record<Kind, Map<number, Entry>>;
   const nameOf = (e: Entry) => e.name[lang] || e.name.ja;
@@ -53,25 +59,60 @@ export function initDataMaker() {
     if (same(key, value, originalOf(k, id, key))) delete e[key]; else e[key] = value;
     if (Object.keys(e).length) edits[k].set(id, e); else edits[k].delete(id);
     renderEdited();
+    refreshBadges();
   }
+  // Pickers redraw their ✓ marks after a change settles.
+  let badgeTimer = 0;
+  function refreshBadges() { clearTimeout(badgeTimer); badgeTimer = window.setTimeout(() => { for (const p of Object.values(pickers)) p.refresh(); renderWeaponList(); }, 400); }
 
-  // --- Search and the editor ------------------------------------------------------------
+  // --- Picking: units and pilots from the grid, weapons through the unit carrying them ----
+  const pickBox = root.querySelector<HTMLElement>('[data-pick]')!;
+  const weaponList = root.querySelector<HTMLElement>('[data-weapon-list]')!;
   const results = root.querySelector<HTMLElement>('[data-results]')!;
   const find = root.querySelector<HTMLInputElement>('[data-find]')!;
   const editor = root.querySelector<HTMLElement>('[data-editor]')!;
+  const imgOf = (k: Kind, id: number) => (k === 'units' ? pick.units : k === 'pilots' ? pick.pilots : []).find((x) => x.id === id)?.img ?? null;
+  const icon = (k: Kind, id: number) => { const src = imgOf(k, id); return src ? el('img', { class: 'icon', src, alt: '', loading: 'lazy' }) : null; };
+  const unitWeapons = new Map<number, number[]>();
+  for (const w of lists.weapons) for (const u of (w.units as number[])) unitWeapons.set(u, [...(unitWeapons.get(u) ?? []), w.id]);
+  const changedCount = (k: Kind) => (id: number) => edits[k].has(id) ? '✓' : null;
+  const pickerText = { allSeries: text.allSeries, search: text.search, none: text.none };
+  let weaponUnit: number | null = null;
+  const pickers = {
+    units: picker(pick.units, pick.series, lang, pickerText, (id) => { current = id; renderEditor(); }, { badge: changedCount('units') }),
+    pilots: picker(pick.pilots, pick.series, lang, pickerText, (id) => { current = id; renderEditor(); }, { badge: changedCount('pilots') }),
+    weapons: picker(pick.units, pick.series, lang, pickerText, (id) => { weaponUnit = id; current = null; renderWeaponList(); renderEditor(); },
+      { badge: (u) => (unitWeapons.get(u) ?? []).some((w) => edits.weapons.has(w)) ? '✓' : null }),
+  };
+  function openWeapon(id: number) { current = id; renderWeaponList(); renderEditor(); }
+  function renderWeaponList() {
+    if (kind !== 'weapons' || weaponUnit === null) { weaponList.replaceChildren(kind === 'weapons' ? el('p', { class: 'hint' }, text.pickUnitFirst) : ''); return; }
+    const u = byId.units.get(weaponUnit);
+    weaponList.replaceChildren(el('div', { class: 'weapon-list' },
+      el('h3', {}, icon('units', weaponUnit), ' ', fill(text.weaponsOf, { unit: u ? nameOf(u) : String(weaponUnit) })),
+      el('ul', { class: 'results' }, ...(unitWeapons.get(weaponUnit) ?? []).map((wid) => {
+        const w = byId.weapons.get(wid)!;
+        return el('li', {}, el('button', { type: 'button', class: wid === current ? 'on' : '', onclick: () => openWeapon(wid) },
+          el('span', { class: 'num' }, String(wid)), nameOf(w), el('span', { class: 'stat' }, `${w.power}`), edits.weapons.has(wid) ? ' ✓' : ''));
+      }))));
+  }
+  function showKind(k: Kind) {
+    kind = k;
+    for (const o of root!.querySelectorAll<HTMLElement>('[data-kind]')) o.classList.toggle('on', o.dataset.kind === k);
+    pickBox.replaceChildren(pickers[k].node);
+    find.hidden = k !== 'weapons'; results.replaceChildren(); find.value = '';
+    renderWeaponList();
+  }
   function renderResults() {
-    const found = search(lists[kind], find.value);
-    results.replaceChildren(...found.map((e) => el('li', {}, el('button', { type: 'button', onclick: () => { current = e.id; renderEditor(); } },
-      el('span', { class: 'num' }, String(e.id)), nameOf(e)))));
+    const found = search(lists.weapons, find.value);
+    results.replaceChildren(...found.map((e) => el('li', {}, el('button', { type: 'button', onclick: () => {
+      weaponUnit = (e.units as number[])[0] ?? null; pickers.weapons.choose(weaponUnit); openWeapon(e.id);
+    } }, el('span', { class: 'num' }, String(e.id)), nameOf(e)))));
     if (find.value.trim() && !found.length) results.replaceChildren(el('li', { class: 'hint' }, text.none));
   }
   find.addEventListener('input', renderResults);
   for (const b of root.querySelectorAll<HTMLButtonElement>('[data-kind]'))
-    b.addEventListener('click', () => {
-      kind = b.dataset.kind as Kind; current = null;
-      for (const o of root.querySelectorAll('[data-kind]')) o.classList.toggle('on', o === b);
-      renderResults(); renderEditor();
-    });
+    b.addEventListener('click', () => { current = kind === b.dataset.kind ? current : null; showKind(b.dataset.kind as Kind); renderEditor(); });
 
   function numberField(f: Field, id: number) {
     const was = originalOf(kind, id, f.key), now = valueOf(kind, id, f.key);
@@ -122,11 +163,18 @@ export function initDataMaker() {
         input.addEventListener('change', () => {
           const now = new Set<string>(valueOf(kind, id, 'abilities'));
           if (input.checked) now.add(a.key); else now.delete(a.key);
+          // One HP regen rate at a time (801FA544 reads one of the two).
+          if (input.checked && a.key.startsWith('hp_regen_')) now.delete(a.key === 'hp_regen_10' ? 'hp_regen_20' : 'hp_regen_10');
           set(kind, id, 'abilities', [...now]);
-          wrap.classList.toggle('changed', input.checked !== had);
+          renderEditor();
         });
         return wrap;
-      })));
+      })), el('p', { class: 'hint' }, text.abilityRules),
+      abil.size + (valueOf(kind, id, 'shield') ? 1 : 0) > ABILITIES_SHOWN ? el('p', { class: 'warn' }, text.abilityMany) : null);
+      const own = unitWeapons.get(id) ?? [];
+      if (own.length) parts.push(el('div', { class: 'sub' }, text.unitWeapons), el('ul', { class: 'results' }, ...own.map((wid) =>
+        el('li', {}, el('button', { type: 'button', onclick: () => { weaponUnit = id; showKind('weapons'); pickers.weapons.choose(id); openWeapon(wid); } },
+          el('span', { class: 'num' }, String(wid)), nameOf(byId.weapons.get(wid)!), edits.weapons.has(wid) ? ' ✓' : '')))));
     }
     if (kind === 'pilots') {
       parts.push(el('div', { class: 'sub' }, text.skills), el('p', { class: 'hint' }, text.skillRow),
@@ -166,7 +214,7 @@ export function initDataMaker() {
     }
     parts.push(el('div', {}, el('button', { type: 'button', class: 'mini', onclick: () => { edits[kind].delete(id); renderEdited(); renderEditor(); } }, text.reset)));
     editor.replaceChildren(el('div', { class: 'card' },
-      el('h3', {}, el('span', { class: 'num' }, String(id)), nameOf(e), lang !== 'ja' && e.name.ja !== nameOf(e) ? el('span', { class: 'ja' }, e.name.ja) : null),
+      el('h3', {}, icon(kind, id), el('span', { class: 'num' }, String(id)), nameOf(e), lang !== 'ja' && e.name.ja !== nameOf(e) ? el('span', { class: 'ja' }, e.name.ja) : null),
       ...parts));
   }
 
@@ -179,16 +227,18 @@ export function initDataMaker() {
       for (const [id, e] of edits[k]) {
         const entry = byId[k].get(id)!;
         rows.push(el('div', { class: 'edited-row' },
-          el('span', {}, `${kindLabel[k]} `, el('span', { class: 'num' }, String(id)), nameOf(entry)),
+          el('span', {}, icon(k, id), ` ${kindLabel[k]} `, el('span', { class: 'num' }, String(id)), nameOf(entry)),
           el('span', { class: 'what' }, Object.keys(e).map((key) => key.replace(/^(terrain|skill)\./, '')).join(' · ')),
-          el('button', { type: 'button', class: 'mini', onclick: () => { kind = k; current = id;
-            for (const o of root!.querySelectorAll<HTMLElement>('[data-kind]')) o.classList.toggle('on', o.dataset.kind === k);
-            renderEditor(); editor.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }, '✎'),
+          el('button', { type: 'button', class: 'mini', onclick: () => {
+            if (k === 'weapons') { weaponUnit = (entry.units as number[])[0] ?? null; pickers.weapons.choose(weaponUnit); }
+            showKind(k); pickers[k].choose(k === 'weapons' ? weaponUnit : id); current = id; renderWeaponList(); renderEditor();
+            editor.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }, '✎'),
           el('button', { type: 'button', class: 'mini', onclick: () => { edits[k].delete(id); renderEdited(); if (kind === k && current === id) renderEditor(); } }, text.remove)));
       }
     editedBox.replaceChildren(...(rows.length ? rows : [el('p', { class: 'hint' }, text.editedNone)]));
   }
   renderEdited();
+  showKind('units');
 
   // --- The files --------------------------------------------------------------------------
   const levels = (s: string) => s.split(/[,，、\s]+/).filter(Boolean).map(Number);

@@ -6,7 +6,9 @@ import Base from '../../../layouts/Base.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
 import { packageText } from '../../../lib/mod-maker-text';
+import { pickables } from '../../../lib/mod-picker';
 import data from '../../../data/data-mods.json';
+import '../../../styles/mod-maker.css';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -23,6 +25,13 @@ const text = {
   units: L({ zh: '机体', en: 'Units', ja: 'ユニット' }),
   pilots: L({ zh: '人物', en: 'Pilots', ja: 'キャラクター' }),
   weapons: L({ zh: '武器', en: 'Weapons', ja: '武器' }),
+  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品' }),
+  pickUnitFirst: L({ zh: '先选机体，再选它的武器。', en: 'Pick a unit, then one of its weapons.', ja: 'ユニットを選んでから、その武器を選んでください。' }),
+  weaponsOf: L({ zh: '{unit} 的武器', en: 'Weapons of {unit}', ja: '{unit} の武器' }),
+  findWeapon: L({ zh: '或直接按武器名、编号查找', en: 'Or find a weapon by name or number', ja: 'または武器名・番号で検索' }),
+  unitWeapons: L({ zh: '这台机体的武器', en: 'This unit’s weapons', ja: 'このユニットの武器' }),
+  abilityMany: L({ zh: '原版状态页的特殊能力一栏只放得下约 3 个，再多会挤（本移植版的页面会缩小字号）。', en: 'The original status screen fits about 3 abilities; more get cramped (this port’s pages shrink the text).', ja: '原作のステータス画面の特殊能力欄は 3 個ほどしか入りません。それ以上は窮屈になります（この移植版の画面は文字を縮めます）。' }),
+  abilityRules: L({ zh: '分身、马赫特技、真·马赫特技、神之影、盖塔幻影、瞬幻足、超级干扰器都走同一个 50% 闪避判定，带几个都不叠加；光束涂层、I 力场、行星防御器的护罩值相加（1000、2000、2000）；奥拉屏障单独判定。HP 回复 10% 和 20% 只能选一个。', en: 'Afterimage, Mach Special, Shin Mach Special, God Shadow, Getter Vision, Phantom Step and Hyper Jammer share one 50% dodge; having several does not stack. Beam Coat, I-Field and Planet Defensor add their barriers (1000, 2000, 2000); Aura Barrier is judged on its own. Choose one of HP Regen 10% and 20%.', ja: '分身・マッハスペシャル・真マッハスペシャル・ゴッドシャドー・ゲッタービジョン・瞬幻足・ハイパージャマーは同じ 50% の回避判定で、複数あっても重なりません。ビームコート・Iフィールド・プラネイトディフェンサーはバリア値が加算されます（1000・2000・2000）。オーラバリアは別に判定されます。HP回復 10% と 20% はどちらか一つです。' }),
   edited: L({ zh: '已改动', en: 'Changed', ja: '変更済み' }),
   editedNone: L({ zh: '还没有改动。在上面查找并选中一项开始改。', en: 'Nothing changed yet. Search above and pick an entry.', ja: 'まだ変更はありません。上で検索して項目を選んでください。' }),
   errEmpty: L({ zh: '还没有改动任何数值', en: 'Nothing is changed yet', ja: 'まだ何も変えていません' }),
@@ -111,6 +120,7 @@ const spiritNames: Record<string, { zh: string; en: string; ja: string }> = {
 };
 const spirits = Object.entries(spiritNames).map(([key, name]) => ({ key, label: L(name) }));
 const labels = { fields, abilities, skills, spirits, sizes: ['SS', 'S', 'M', 'L', 'LL'] };
+const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) => p.id));
 ---
 <Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
   <div class="wrap maker" data-maker>
@@ -129,7 +139,9 @@ const labels = { fields, abilities, skills, spirits, sizes: ['SS', 'S', 'M', 'L'
         <button type="button" class="kind" data-kind="pilots">{text.pilots}</button>
         <button type="button" class="kind" data-kind="weapons">{text.weapons}</button>
       </div>
-      <input type="search" class="find" data-find placeholder={text.search} autocomplete="off" spellcheck="false" />
+      <div data-pick></div>
+      <div data-weapon-list></div>
+      <input type="search" class="find" data-find placeholder={text.findWeapon} autocomplete="off" spellcheck="false" hidden />
       <ul class="results" data-results></ul>
       <div data-editor></div>
     </section>
@@ -145,52 +157,9 @@ const labels = { fields, abilities, skills, spirits, sizes: ['SS', 'S', 'M', 'L'
       <p class="status" data-export-status></p>
     </section>
   </div>
-  <script type="application/json" id="maker-data" is:inline set:html={JSON.stringify({ text, labels, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
+  <script type="application/json" id="maker-data" is:inline set:html={JSON.stringify({ text, labels, pick, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
   <script>
     import { initDataMaker } from '../../../scripts/data-maker';
     initDataMaker();
   </script>
 </Base>
-
-<style>
-  .maker { padding-bottom: 80px; }
-  .note { color: var(--muted); font-size: 14px; }
-  :global(.maker .block) { margin-top: 36px; }
-  :global(.maker .block h2) { font-size: 20px; margin-bottom: 12px; }
-  :global(.maker .form) { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px 16px; }
-  :global(.maker .form label), :global(.maker .field) { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
-  :global(.maker .form .wide) { grid-column: 1 / -1; }
-  :global(.maker input:not([type])), :global(.maker input[type=number]), :global(.maker input[type=search]), :global(.maker select), :global(.maker textarea) {
-    font: inherit; font-size: 14px; color: var(--text); background: var(--panel); border: 1px solid var(--line);
-    border-radius: var(--radius); padding: 7px 9px; min-width: 0;
-  }
-  :global(.maker .import) { margin-top: 14px; cursor: pointer; }
-  :global(.maker .status) { min-height: 1.5em; margin-top: 8px; color: var(--muted); font-size: 14px; }
-  :global(.maker .status.err) { color: var(--pink); }
-  .kinds { display: flex; gap: 8px; margin-bottom: 10px; }
-  .kind { font: inherit; font-weight: 600; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 14px; cursor: pointer; }
-  .kind.on { color: var(--text); border-color: var(--gold); }
-  .find { width: min(420px, 100%); }
-  :global(.maker .results) { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  :global(.maker .results button) { font: inherit; font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
-  :global(.maker .results button .num), :global(.maker .num) { color: var(--gold); margin-right: 6px; font-family: var(--display); }
-  :global(.maker .card) { margin-top: 16px; border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); padding: 14px; display: grid; gap: 14px; }
-  :global(.maker .card h3) { font-size: 17px; display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; }
-  :global(.maker .card h3 .ja) { color: var(--dim); font-size: 13px; font-weight: 400; }
-  :global(.maker .grid) { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px 14px; }
-  :global(.maker .grid.wide) { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
-  :global(.maker .spirit-row select) { flex: 1 1 auto; }
-  :global(.maker .spirit-row input) { width: 5.5em; }
-  :global(.maker .field .was) { color: var(--dim); font-size: 12px; }
-  :global(.maker .field.changed input), :global(.maker .field.changed select) { border-color: var(--gold); }
-  :global(.maker .checks) { display: flex; flex-wrap: wrap; gap: 6px 16px; }
-  :global(.maker .check) { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; color: var(--text); }
-  :global(.maker .check.changed) { color: var(--gold); }
-  :global(.maker .hint) { color: var(--dim); font-size: 12.5px; }
-  :global(.maker .warn) { color: var(--pink); font-size: 13px; }
-  :global(.maker .sub) { font-size: 14px; color: var(--muted); font-weight: 600; }
-  :global(.maker .spirit-row) { display: flex; gap: 8px; align-items: center; }
-  :global(.maker .mini) { font: inherit; font-size: 13px; color: var(--text); background: var(--cyan-soft); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
-  :global(.maker .edited-row) { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line-soft, var(--line)); font-size: 14px; }
-  :global(.maker .edited-row .what) { color: var(--muted); font-size: 13px; flex: 1 1 260px; }
-</style>

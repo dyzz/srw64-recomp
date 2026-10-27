@@ -8,6 +8,8 @@ import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
 import { library, portraitUrl } from '../../../lib/data';
 import { packageText } from '../../../lib/mod-maker-text';
+import { pickables } from '../../../lib/mod-picker';
+import '../../../styles/mod-maker.css';
 import data from '../../../data/data-mods.json';
 
 export const getStaticPaths = langPaths;
@@ -44,6 +46,9 @@ const text = {
   errNeedName: L({ zh: '{what} 写了姓氏或昵称就要写名字', en: '{what}: a surname or nickname needs a name', ja: '{what}：姓や愛称を書くときは名前も必要です' }),
   warnWide: L({ zh: '可能放不下：比原版格数或现有最长的名字还宽', en: 'May not fit: wider than the original’s cells or the widest usual name', ja: '収まらないかもしれません：原作のマス数か今の最長の名前より広いです' }),
   fixFirst: L({ zh: '先改正这些：', en: 'Fix these first: ', ja: '先に直してください：' }),
+  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品' }),
+  pickUnitFirst: L({ zh: '先选机体，再选它的武器。', en: 'Pick a unit, then one of its weapons.', ja: 'ユニットを選んでから、その武器を選んでください。' }),
+  weaponsOf: L({ zh: '{unit} 的武器', en: 'Weapons of {unit}', ja: '{unit} の武器' }),
   game: '0.5.2',
 };
 // The eight in the defaults' person order (default_names.hpp), with their usual names.
@@ -57,6 +62,9 @@ const heroes = [
   { route: 'super-male', role: 'partner', ja: ['カーツ', 'フォルネウス', 'カーツ'], zh: ['卡茨', '弗尔纽斯', '卡茨'], en: ['Kurtz', 'Forneus', 'Kurtz'] },
   { route: 'super-female', role: 'partner', ja: ['アイシャ', 'リッジモンド', 'アイシャ'], zh: ['艾夏', '里奇蒙德', '艾夏'], en: ['Aisha', 'Ridgemond', 'Aisha'] },
 ];
+// Their portraits: the eight are pilots 25-32 in the same order.
+const faces = new Map(library().people.map((p) => [p.id, portraitUrl(p.portrait)]));
+const heroCards = heroes.map((h, n) => ({ ...h, face: faces.get(25 + n) ?? null }));
 const routeNames: Record<string, { zh: string; en: string; ja: string }> = {
   'super-male': { zh: '超级系男', en: 'Super Robot, male', ja: 'スーパー系男性' }, 'super-female': { zh: '超级系女', en: 'Super Robot, female', ja: 'スーパー系女性' },
   'real-male': { zh: '真实系男', en: 'Real Robot, male', ja: 'リアル系男性' }, 'real-female': { zh: '真实系女', en: 'Real Robot, female', ja: 'リアル系女性' },
@@ -68,7 +76,7 @@ const unitDefault = { ja: 'マーチウィンド', zh: '三月风', en: 'March W
 const people = library().people.filter((p) => p.id < 25 || p.id >= 33)
   .map((p) => ({ id: p.id, name: p.name, full: p.full_name, portrait: portraitUrl(p.portrait), image: p.portrait?.image ?? null }));
 const units = data.units.map((u) => ({ id: u.id, name: u.name }));
-const weapons = data.weapons.map((w) => ({ id: w.id, name: w.name }));
+const pick = pickables(lang, data.units.map((u) => u.id), people.map((p) => p.id));
 ---
 <Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
   <div class="wrap maker" data-names>
@@ -98,16 +106,15 @@ const weapons = data.weapons.map((w) => ({ id: w.id, name: w.name }));
         <button type="button" class="kind" data-kind="units">{text.unit}</button>
         <button type="button" class="kind" data-kind="weapons">{text.weapon}</button>
       </div>
-      <input type="search" class="find" data-find placeholder={text.search} autocomplete="off" spellcheck="false" />
-      <ul class="results" data-results></ul>
+      <div data-pick></div>
+      <div data-weapon-list></div>
       <div data-records></div>
     </section>
 
     <section class="block">
       <h2>{text.portraits}</h2>
       <p class="note">{text.portraitsNote}</p>
-      <input type="search" class="find" data-portrait-find placeholder={text.search} autocomplete="off" spellcheck="false" />
-      <ul class="results" data-portrait-results></ul>
+      <div data-portrait-pick></div>
       <div class="portraits" data-portraits></div>
     </section>
 
@@ -117,55 +124,9 @@ const weapons = data.weapons.map((w) => ({ id: w.id, name: w.name }));
       <p class="status" data-export-status></p>
     </section>
   </div>
-  <script type="application/json" id="names-data" is:inline set:html={JSON.stringify({ text, heroes, routes, unitDefault, people, units, weapons, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
+  <script type="application/json" id="names-data" is:inline set:html={JSON.stringify({ text, heroes: heroCards, routes, unitDefault, people, units, weapons: data.weapons.map((w) => ({ id: w.id, name: w.name, units: w.units })), pick, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
   <script>
     import { initNamesMaker } from '../../../scripts/names-maker';
     initNamesMaker();
   </script>
 </Base>
-
-<style>
-  .maker { padding-bottom: 80px; }
-  .note { color: var(--muted); font-size: 14px; }
-  .sub-head { font-size: 16px; margin: 22px 0 6px; }
-  :global(.maker .block) { margin-top: 36px; }
-  :global(.maker .block h2) { font-size: 20px; margin-bottom: 12px; }
-  :global(.maker .form) { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px 16px; }
-  :global(.maker .form label), :global(.maker .field) { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
-  :global(.maker .form .wide) { grid-column: 1 / -1; }
-  :global(.maker input:not([type])), :global(.maker input[type=search]), :global(.maker select), :global(.maker textarea) {
-    font: inherit; font-size: 14px; color: var(--text); background: var(--panel); border: 1px solid var(--line);
-    border-radius: var(--radius); padding: 7px 9px; min-width: 0;
-  }
-  :global(.maker .import) { margin-top: 14px; cursor: pointer; }
-  :global(.maker .status) { min-height: 1.5em; margin-top: 8px; color: var(--muted); font-size: 14px; }
-  :global(.maker .status.err) { color: var(--pink); }
-  .kinds { display: flex; gap: 8px; margin: 12px 0 10px; }
-  .kind { font: inherit; font-weight: 600; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 14px; cursor: pointer; }
-  .kind.on { color: var(--text); border-color: var(--gold); }
-  .find { width: min(420px, 100%); }
-  :global(.maker .results) { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  :global(.maker .results button) { font: inherit; font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
-  :global(.maker .num) { color: var(--gold); margin-right: 6px; font-family: var(--display); }
-  :global(.maker .card) { margin-top: 12px; border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); padding: 12px 14px; display: grid; gap: 10px; }
-  :global(.maker .card h3) { font-size: 16px; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; }
-  :global(.maker .card h3 .dim) { color: var(--dim); font-size: 13px; font-weight: 400; }
-  :global(.maker .langs) { display: grid; grid-template-columns: 7em repeat(3, minmax(0, 1fr)); gap: 6px 10px; align-items: center; }
-  :global(.maker .langs.two) { grid-template-columns: 7em repeat(2, minmax(0, 1fr)); }
-  :global(.maker .langs.one) { grid-template-columns: 7em minmax(0, 1fr); }
-  :global(.maker .langs .head) { color: var(--dim); font-size: 12.5px; }
-  :global(.maker .langs .lang) { color: var(--muted); font-size: 13px; }
-  :global(.maker .warn) { color: var(--gold); font-size: 12.5px; grid-column: 2 / -1; }
-  :global(.maker .err) { color: var(--pink); }
-  :global(.maker .mini) { font: inherit; font-size: 13px; color: var(--text); background: var(--cyan-soft); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 5px 10px; cursor: pointer; }
-  :global(.maker .portraits) { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
-  :global(.maker .faces) { display: flex; gap: 10px; align-items: center; }
-  :global(.maker .faces img), :global(.maker .faces canvas) { width: 96px; height: 96px; border-radius: var(--radius); background: var(--bg-2); object-fit: contain; }
-  :global(.maker .arrow) { color: var(--dim); }
-  :global(.maker .hint) { color: var(--dim); font-size: 12.5px; }
-  @media (max-width: 640px) {
-    :global(.maker .langs), :global(.maker .langs.two), :global(.maker .langs.one) { grid-template-columns: 1fr; }
-    :global(.maker .langs .head) { display: none; }
-    :global(.maker .warn) { grid-column: 1; }
-  }
-</style>

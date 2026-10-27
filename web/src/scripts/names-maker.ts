@@ -1,10 +1,11 @@
 // The name and portrait MOD maker (pages/[lang]/mods/names.astro): dialogue/names.json with
 // the host's rules (src/host/mod_names.hpp) and art/portraits/<pilot>.png squared and scaled
 // to a multiple of 96 (native_portrait.cpp), made in the browser.
-import { el, fill, jsonBytes, openPackage, packageForm, readJson, say, search, writePackage, type Text } from './mod-package';
+import { el, fill, jsonBytes, openPackage, packageForm, readJson, say, writePackage, type Text } from './mod-package';
+import { picker, type Pickable } from './picker';
 
 type Names3 = { ja: string; zh: string; en: string };
-type Hero = { route: string; role: 'hero' | 'partner'; ja: string[]; zh: string[]; en: string[] };
+type Hero = { route: string; role: 'hero' | 'partner'; ja: string[]; zh: string[]; en: string[]; face: string | null };
 type Person = { id: number; name: Names3; full: Names3; portrait: string | null; image: number | null };
 type Named = { id: number; name: Names3 };
 type Kind = 'pilots' | 'units' | 'weapons';
@@ -24,8 +25,9 @@ export function initNamesMaker() {
   const root = document.querySelector<HTMLElement>('[data-names]');
   const payload = document.getElementById('names-data');
   if (!root || !payload) return;
-  const { text, heroes, routes, unitDefault, people, units, weapons, locale, lang } = JSON.parse(payload.textContent!) as {
-    text: Text; heroes: Hero[]; routes: Record<string, string>; unitDefault: Names3; people: Person[]; units: Named[]; weapons: Named[];
+  const { text, heroes, routes, unitDefault, people, units, weapons, pick, locale, lang } = JSON.parse(payload.textContent!) as {
+    text: Text; heroes: Hero[]; routes: Record<string, string>; unitDefault: Names3; people: Person[]; units: Named[];
+    weapons: (Named & { units: number[] })[]; pick: { units: Pickable[]; pilots: Pickable[]; series: { id: number | null; name: string }[] };
     locale: string; lang: 'zh' | 'en' | 'ja';
   };
   const form = packageForm(root, text, locale, text.game);
@@ -78,7 +80,7 @@ export function initNamesMaker() {
         check();
       }
       return el('div', { class: 'card' },
-        el('h3', {}, `${routes[h.route]} · ${text[h.role]}`, el('span', { class: 'dim' }, h[lang][0] + ({ zh: '·', en: ' ', ja: '・' })[lang] + h[lang][1])),
+        el('h3', {}, h.face ? el('img', { class: 'icon', src: h.face, alt: '', loading: 'lazy' }) : null, `${routes[h.route]} · ${text[h.role]}`, el('span', { class: 'dim' }, h[lang][0] + ({ zh: '·', en: ' ', ja: '・' })[lang] + h[lang][1])),
         el('div', { class: 'langs' }, ...rows));
     }));
   }
@@ -94,27 +96,44 @@ export function initNamesMaker() {
     check();
   }
 
-  // --- Other names --------------------------------------------------------------------------
+  // --- Other names: pilots and units from the grid, weapons through the unit carrying them --
   let kind: Kind = 'pilots';
-  const find = root.querySelector<HTMLInputElement>('[data-find]')!;
-  const results = root.querySelector<HTMLElement>('[data-results]')!;
+  const pickBox = root.querySelector<HTMLElement>('[data-pick]')!;
+  const weaponList = root.querySelector<HTMLElement>('[data-weapon-list]')!;
   const recordBox = root.querySelector<HTMLElement>('[data-records]')!;
   const kindLabel: Record<Kind, string> = { pilots: text.pilot, units: text.unit, weapons: text.weapon };
-  function renderResults() {
-    const found = search(lists[kind], find.value);
-    results.replaceChildren(...found.map((e) => el('li', {}, el('button', { type: 'button', onclick: () => {
-      if (!records[kind].has(e.id)) records[kind].set(e.id, {});
-      find.value = ''; renderResults(); renderRecords();
-    } }, el('span', { class: 'num' }, String(e.id)), nameOf(e.name)))));
-    if (find.value.trim() && !found.length) results.replaceChildren(el('li', { class: 'hint' }, text.none));
+  const imgOf = (k: Kind, id: number) => (k === 'units' ? pick.units : k === 'pilots' ? pick.pilots : []).find((x) => x.id === id)?.img ?? null;
+  const icon = (k: Kind, id: number) => { const src = imgOf(k, id); return src ? el('img', { class: 'icon', src, alt: '', loading: 'lazy' }) : null; };
+  const unitWeapons = new Map<number, number[]>();
+  for (const w of weapons) for (const u of w.units) unitWeapons.set(u, [...(unitWeapons.get(u) ?? []), w.id]);
+  const pickerText = { allSeries: text.allSeries, search: text.search, none: text.none };
+  const add = (k: Kind, id: number) => { if (!records[k].has(id)) records[k].set(id, {}); renderRecords(); refresh(); };
+  let weaponUnit: number | null = null;
+  const pickers = {
+    pilots: picker(pick.pilots, pick.series, lang, pickerText, (id) => add('pilots', id), { badge: (id) => records.pilots.has(id) ? '✓' : null }),
+    units: picker(pick.units, pick.series, lang, pickerText, (id) => add('units', id), { badge: (id) => records.units.has(id) ? '✓' : null }),
+    weapons: picker(pick.units, pick.series, lang, pickerText, (id) => { weaponUnit = id; renderWeaponList(); },
+      { badge: (u) => (unitWeapons.get(u) ?? []).some((w) => records.weapons.has(w)) ? '✓' : null }),
+  };
+  function refresh() { for (const p of Object.values(pickers)) p.refresh(); renderWeaponList(); }
+  function renderWeaponList() {
+    if (kind !== 'weapons') { weaponList.replaceChildren(); return; }
+    if (weaponUnit === null) { weaponList.replaceChildren(el('p', { class: 'hint' }, text.pickUnitFirst)); return; }
+    const u = byId.units.get(weaponUnit);
+    weaponList.replaceChildren(el('div', { class: 'weapon-list' },
+      el('h3', {}, icon('units', weaponUnit), ' ', fill(text.weaponsOf, { unit: u ? nameOf(u.name) : String(weaponUnit) })),
+      el('ul', { class: 'results' }, ...(unitWeapons.get(weaponUnit) ?? []).map((wid) =>
+        el('li', {}, el('button', { type: 'button', onclick: () => add('weapons', wid) },
+          el('span', { class: 'num' }, String(wid)), nameOf(byId.weapons.get(wid)!.name), records.weapons.has(wid) ? ' ✓' : ''))))));
   }
-  find.addEventListener('input', renderResults);
-  for (const b of root.querySelectorAll<HTMLButtonElement>('[data-kind]'))
-    b.addEventListener('click', () => {
-      kind = b.dataset.kind as Kind;
-      for (const o of root.querySelectorAll('[data-kind]')) o.classList.toggle('on', o === b);
-      renderResults();
-    });
+  function showKind(k: Kind) {
+    kind = k;
+    for (const o of root!.querySelectorAll<HTMLElement>('[data-kind]')) o.classList.toggle('on', o.dataset.kind === k);
+    pickBox.replaceChildren(pickers[k].node);
+    renderWeaponList();
+  }
+  for (const b of root.querySelectorAll<HTMLButtonElement>('[data-kind]')) b.addEventListener('click', () => showKind(b.dataset.kind as Kind));
+  showKind('pilots');
   function renderRecords() {
     const cards: HTMLElement[] = [];
     for (const k of ['pilots', 'units', 'weapons'] as Kind[])
@@ -132,26 +151,20 @@ export function initNamesMaker() {
           if (full) rows.push(input(now.full, full[col], (v) => update('full', v)));
         }
         cards.push(el('div', { class: 'card' },
-          el('h3', {}, `${kindLabel[k]} `, el('span', { class: 'num' }, String(id)), nameOf(e.name),
-            el('button', { type: 'button', class: 'mini', onclick: () => { records[k].delete(id); renderRecords(); } }, text.remove)),
+          el('h3', {}, icon(k, id), `${kindLabel[k]} `, el('span', { class: 'num' }, String(id)), nameOf(e.name),
+            el('button', { type: 'button', class: 'mini', onclick: () => { records[k].delete(id); renderRecords(); refresh(); } }, text.remove)),
           el('div', { class: full ? 'langs two' : 'langs one' }, ...rows)));
       }
     recordBox.replaceChildren(...cards);
   }
 
   // --- Portraits ---------------------------------------------------------------------------
-  const withFace = people.filter((p) => p.image !== null);
-  const portraitFind = root.querySelector<HTMLInputElement>('[data-portrait-find]')!;
-  const portraitResults = root.querySelector<HTMLElement>('[data-portrait-results]')!;
-  const portraitBox = root.querySelector<HTMLElement>('[data-portraits]')!;
   const shown = new Set<number>();
-  portraitFind.addEventListener('input', () => {
-    const found = search(withFace, portraitFind.value);
-    portraitResults.replaceChildren(...found.map((p) => el('li', {}, el('button', { type: 'button', onclick: () => {
-      shown.add(p.id); portraitFind.value = ''; portraitResults.replaceChildren(); renderPortraits();
-    } }, el('span', { class: 'num' }, String(p.id)), nameOf(p.name)))));
-    if (portraitFind.value.trim() && !found.length) portraitResults.replaceChildren(el('li', { class: 'hint' }, text.none));
-  });
+  const portraitBox = root.querySelector<HTMLElement>('[data-portraits]')!;
+  const faces = pick.pilots.filter((p) => people.some((x) => x.id === p.id && x.image !== null));
+  const facePicker = picker(faces, pick.series, lang, pickerText, (id) => { shown.add(id); renderPortraits(); },
+    { badge: (id) => pictures.has(id) ? '✓' : null });
+  root.querySelector<HTMLElement>('[data-portrait-pick]')!.replaceChildren(facePicker.node);
 
   // Previews as data: URLs (the site's policy allows no blob: images).
   const dataUrl = (png: Uint8Array) => { let s = ''; for (let i = 0; i < png.length; i += 0x8000) s += String.fromCharCode(...png.subarray(i, i + 0x8000)); return `data:image/png;base64,${btoa(s)}`; };
@@ -178,7 +191,7 @@ export function initNamesMaker() {
         const f = file.files?.[0];
         if (!f) return;
         pictures.set(id, await square(f));
-        renderPortraits();
+        renderPortraits(); facePicker.refresh();
       });
       return el('div', { class: 'card' },
         el('h3', {}, el('span', { class: 'num' }, String(id)), nameOf(p.name)),
@@ -189,7 +202,7 @@ export function initNamesMaker() {
         pic ? el('span', { class: 'hint' }, `${pic.size} × ${pic.size} PNG`) : null,
         el('div', {}, el('label', { class: 'mini' }, text.choosePicture, file), ' ',
           el('button', { type: 'button', class: 'mini', onclick: () => {
-            pictures.delete(id); shown.delete(id); renderPortraits();
+            pictures.delete(id); shown.delete(id); renderPortraits(); facePicker.refresh();
           } }, text.remove)));
     }));
   }
@@ -274,7 +287,7 @@ export function initNamesMaker() {
           pictures.set(Number(face[1]), { png: bytes, size: bitmap.width, url: dataUrl(bytes) });
         } else kept[path] = bytes;
       }
-      renderHeroes(); renderUnit(); renderRecords(); renderPortraits();
+      renderHeroes(); renderUnit(); renderRecords(); renderPortraits(); refresh(); facePicker.refresh();
       say(importStatus, fill(text.imported, { id: mod.id ?? file.name }));
     } catch (error) {
       say(importStatus, fill(text.errImport, { detail: String((error as Error).message ?? error) }), true);
