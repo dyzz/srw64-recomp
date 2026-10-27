@@ -31,13 +31,13 @@ struct Ram {
 
 void scenes() {
     Ram ram;
-    for (const unsigned mode : {2u, 0x1Au, 0x1Cu, 12u, 13u}) {
+    for (const unsigned mode : {2u, 12u, 13u}) {
         guest::write8(ram.data(), game_speed::mode, uint8_t(mode));
         check(game_speed::hurried(ram.data(), false), "the battle animation or the world map runs at 1x");
     }
-    for (const unsigned mode : {1u, 4u, 5u, 6u, 7u, 0x12u, 0x20u, 0x21u}) {
+    for (const unsigned mode : {1u, 4u, 5u, 6u, 7u, 0x12u, 0x1Au, 0x1Cu, 0x20u, 0x21u}) {
         guest::write8(ram.data(), game_speed::mode, uint8_t(mode));
-        check(!game_speed::hurried(ram.data(), false), "a menu screen or the intermission is hurried");
+        check(!game_speed::hurried(ram.data(), false), "a menu screen, the intermission, カラオケ or the title demo is hurried");
     }
     for (const unsigned state : {5u, 6u, 8u, 0xCu, 0xDu, 0x16u, 0x17u, 0x19u, 0x1Bu, 0x22u, 0x30u, 0x3Au, 0x3Cu}) {
         ram.tactical(state);

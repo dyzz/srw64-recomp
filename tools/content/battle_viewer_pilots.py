@@ -5,6 +5,10 @@ plays is one the game's battle quotes were written for:
   - every pilot a stage deploys in the unit (the stage deployment records: pilot +6,
     unit +0xA, as assets/original-data lists them; not the records marked 3, whose
     pilot is a stand-in);
+  - the stage scripts' 3D5A (pilot, parameter, unit, mode / old unit) registrations,
+    read from assets/original-data/records/stage_events.jsonl: a named pilot with the
+    unit it boards (スイームルグS, 真・ゲッター1, ラー・カイラム, 銀鈴ロボ), and a swap that
+    names only the old machine (mode below 2000, not 500 / 999) carries its pilots over;
   - のりかえ: a pilot whose category (pilot record +0xB) is not 0 and a unit of the same
     category (unit record +0x12), category 1 also flying 7 and 3 also 4 (801C5618,
     docs/native/native-swap-screens.md);
@@ -27,6 +31,21 @@ PILOT_MAP, PILOT_STATS, PILOT_SIZE, ACTORS = 0x800CA9C4 - 0x80075610, 0x7A1A0, 0
 WEAPON_LISTS = 0x7E210
 SUPER_MODES, SUPER_ROWS = 0x101594, 9
 SWAP_ALSO = {1: {7}, 3: {4}}
+EVENTS = ROOT / 'assets/original-data/records/stage_events.jsonl'
+NOBODY, KEEP_MODES = 999, (500, 999)   # 3D5A: no pilot / no machine; modes that are not a swap
+
+
+def registrations() -> list[tuple[int, int, int, int]]:
+    """Every 3D5A in the stage events, as (pilot, parameter, unit, mode). The events are
+    16-bit words; the opcode never occurs as an argument (every hit's pilot and unit are
+    in range), so a plain scan is enough."""
+    out = []
+    for line in EVENTS.read_text().splitlines():
+        words = json.loads(line)['raw_hex']
+        for at in range(0, len(words) - 16, 4):
+            if words[at:at + 4] == '3d5a':
+                out.append(tuple(int(words[at + 4 + 4 * k:at + 8 + 4 * k], 16) for k in range(4)))
+    return out
 
 
 def main() -> None:
@@ -46,6 +65,21 @@ def main() -> None:
         if 0 <= pilot < ACTORS and 0 <= unit < UNIT_COUNT:
             pairs[unit].add(pilot)
             deployed[unit, pilot] += 1
+    # Script registrations: a pilot boarding a unit counts like a deployment; a swap from
+    # an old machine hands that machine's pilots to the new one (after the pairs so far).
+    swaps = []
+    registered: Counter[tuple[int, int]] = Counter()   # the default only where no stage deploys the unit
+    for pilot, _, unit, mode in registrations():
+        if unit == NOBODY or unit >= UNIT_COUNT:
+            continue
+        if pilot != NOBODY and pilot < ACTORS:
+            pairs[unit].add(pilot)
+            registered[unit, pilot] += 1
+        elif mode not in KEEP_MODES and mode < 2000:
+            swaps.append((unit, mode))
+    for _ in range(3):
+        for unit, old in swaps:
+            pairs[unit] |= pairs[old]
     # のりかえ categories.
     def pilot_category(actor: int) -> int:
         record = s16(PILOT_MAP + 2 * actor)
@@ -80,6 +114,9 @@ def main() -> None:
     counts: dict[int, Counter[int]] = defaultdict(Counter)
     for (unit, pilot), n in deployed.items():
         counts[unit][pilot] += n
+    for (unit, pilot), n in registered.items():
+        if not any(counts[unit].values()) and pilot in pairs[unit]:
+            counts[unit][pilot] += n
     for unit in pairs:
         if not counts[unit]:
             for other in sorted(forms.get(unit, ())):

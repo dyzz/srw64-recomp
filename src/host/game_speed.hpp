@@ -57,7 +57,9 @@ inline bool player_input(unsigned state) {
 inline bool hurried(const uint8_t* ram,bool menu) {
     if(menu)return false;
     switch(read(ram,mode,1)) {
-    case 2: case 0x1A: case 0x1C:   // the battle animation
+    case 2:                         // the battle animation in a stage
+    // Not 0x1A カラオケモード and 0x1C the title's demo and the battle viewer: they are
+    // watched, and the lyrics count frames while the song keeps its tempo.
     case 12: case 13:               // the world map: story only
         return true;
     case 3: case 0xB: case 0x11: case 0x16: case 0x22: {   // the tactical map
