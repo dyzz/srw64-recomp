@@ -18,7 +18,7 @@ static void write(const fs::path& path,const std::string& text) {
 }
 static std::string why(const json& document,bool pilots,std::span<const uint8_t> rom) {
     mod_data::Bytes bytes;
-    return mod_data::parse(document,pilots,rom,bytes);
+    return mod_data::parse(document,pilots?mod_data::Kind::pilots:mod_data::Kind::units,rom,bytes);
 }
 
 int main(int argc,char** argv) {
@@ -38,20 +38,40 @@ int main(int argc,char** argv) {
     check(std::vector<uint8_t>(rom.begin()+pilot,rom.begin()+pilot+4)==std::vector<uint8_t>{4,4,3,3},"真吾's ranks in the ROM");
 
     mod_data::Bytes bytes;
-    check(mod_data::parse(json::parse(R"({"184":{"terrain":{"sea":"A"}}})"),false,rom,bytes).empty(),"a unit's sea rank");
-    check(mod_data::parse(json::parse(R"({"133":{"terrain":{"space":"A","air":"-"}}})"),true,rom,bytes).empty(),"a pilot's ranks");
+    check(mod_data::parse(json::parse(R"({"184":{"terrain":{"sea":"A"}}})"),mod_data::Kind::units,rom,bytes).empty(),"a unit's sea rank");
+    check(mod_data::parse(json::parse(R"({"133":{"terrain":{"space":"A","air":"-"}}})"),mod_data::Kind::pilots,rom,bytes).empty(),"a pilot's ranks");
     check(bytes==mod_data::Bytes{{unit+2,4},{pilot,0},{pilot+3,4}},"the bytes they become");
+
+    // Numbers: big-endian words, weapons' power in hundreds, signed bytes, ammo -1 as none.
+    const uint32_t unit_at=mod_data::unit_records+184*mod_data::unit_record_size, pilot_at=mod_data::pilot_records+110*mod_data::pilot_record_size;
+    const uint32_t weapon_at=mod_data::weapon_records+731*mod_data::weapon_record_size;
+    mod_data::Bytes numbers;
+    check(mod_data::parse(json::parse(R"({"184":{"hp":5200,"move":7,"armor":1300,"repair_cost":4000,"upgrade_cap":10}})"),mod_data::Kind::units,rom,numbers).empty(),"unit numbers");
+    check(numbers==mod_data::Bytes{{unit_at,0x14},{unit_at+1,0x50},{unit_at+6,7},{unit_at+0xA,0x05},{unit_at+0xB,0x14},{unit_at+0x14,0x0F},{unit_at+0x15,0xA0},{unit_at+0x20,10}},"unit bytes");
+    numbers.clear();
+    check(mod_data::parse(json::parse(R"({"133":{"melee":160,"sp":90,"double_move":40}})"),mod_data::Kind::pilots,rom,numbers).empty(),"pilot numbers");
+    check(numbers==mod_data::Bytes{{pilot_at+1,160},{pilot_at+0xC,90},{pilot_at+0xE,40}},"pilot bytes, on 真吾's record");
+    numbers.clear();
+    check(mod_data::parse(json::parse(R"({"731":{"power":3600,"hit":-5,"ammo":-1,"critical":20,"terrain":{"space":"A"}}})"),mod_data::Kind::weapons,rom,numbers).empty(),"weapon numbers");
+    check(numbers==mod_data::Bytes{{weapon_at+1,36},{weapon_at+4,0xFB},{weapon_at+5,0xFF},{weapon_at+0xD,20},{weapon_at+0xC,4}},"weapon bytes");
+    const auto weapon=[&](const char* text){mod_data::Bytes b;return mod_data::parse(json::parse(text),mod_data::Kind::weapons,rom,b);};
+    check(weapon(R"({"731":{"power":3650}})").find("100")!=std::string::npos,"power in hundreds");
+    check(weapon(R"({"731":{"power":25600}})").find("超出范围")!=std::string::npos,"power at most 25500");
+    check(weapon(R"({"731":{"range_min":5,"range_max":3}})").find("range_min")!=std::string::npos,"min range past max range");
+    check(weapon(R"({"731":{"range_min":30}})").find("range_min")!=std::string::npos,"min range past the ROM's max range");
+    check(weapon(R"({"731":{"hit":"5"}})").find("整数")!=std::string::npos && weapon(R"({"731":{"hit":1.5}})").find("整数")!=std::string::npos,"integers only");
+    check(weapon(R"({"1329":{"power":100}})").find("超出范围")!=std::string::npos,"weapon numbers in range");
 
     // The file rules; a bad file adds nothing.
     check(!why(json::array(),false,rom).empty(),"the top is an object");
     check(!why(json::parse(R"({"0184":{}})"),false,rom).empty() && !why(json::parse(R"({"x":{}})"),false,rom).empty(),"numbers are plain decimals");
     check(!why(json::parse(R"({"363":{}})"),false,rom).empty() && !why(json::parse(R"({"360":{}})"),true,rom).empty(),"numbers in range");
-    check(!why(json::parse(R"({"184":{"hp":5000}})"),false,rom).empty(),"unknown fields refused");
+    check(!why(json::parse(R"({"184":{"speed":5}})"),false,rom).empty(),"unknown fields refused");
     check(!why(json::parse(R"({"184":{"terrain":{"water":"A"}}})"),false,rom).empty(),"unknown channels refused");
     check(!why(json::parse(R"({"184":{"terrain":{"sea":"S"}}})"),false,rom).empty() && !why(json::parse(R"({"184":{"terrain":{"sea":4}}})"),false,rom).empty(),"ranks are letters");
     check(!why(json::parse(R"({"0":{"terrain":{"sea":"A"}}})"),true,rom).empty(),"a pilot without a record");
     mod_data::Bytes untouched;
-    mod_data::parse(json::parse(R"({"184":{"terrain":{"sea":"A"}},"185":{"terrain":{"sea":"S"}}})"),false,rom,untouched);
+    mod_data::parse(json::parse(R"({"184":{"terrain":{"sea":"A"}},"185":{"terrain":{"sea":"S"}}})"),mod_data::Kind::units,rom,untouched);
     check(untouched.empty(),"all or nothing");
 
     // Packages: the upper one wins, a disabled one and a bad file count for nothing.
@@ -64,7 +84,7 @@ int main(int argc,char** argv) {
     package("test.upper",R"({"184":{"terrain":{"sea":"A"}}})");
     package("test.off",R"({"184":{"terrain":{"air":"D"}}})");
     package("test.broken","{");
-    write(mods_dir/"test.upper"/"data"/"weapons.json","{}");
+    write(mods_dir/"test.upper"/"data"/"parts.json","{}");
     write(mods_dir/"mods.json",json({{"schema",mods::state_schema},{"order",{"test.lower","test.upper","test.off","test.broken"}},{"disabled",{"test.off"}}}).dump());
     setenv("SRW64_MODS_DIR",mods_dir.string().c_str(),1);
     mods::set_game_version({0,5,0});
