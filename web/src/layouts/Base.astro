@@ -6,6 +6,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import ZhHantTexts from '../components/ZhHantTexts.astro';
 import { LANGS, UI, langInfo, switchLang, tl, type Lang } from '../i18n';
 
 interface Props {
@@ -52,6 +53,7 @@ const path = Astro.url.pathname;
       <slot />
     </main>
     <Footer lang={lang} />
+    {review && lang === 'tw' && <ZhHantTexts />}
     <script>
       import { initLightbox } from '../scripts/lightbox';
       initLightbox();

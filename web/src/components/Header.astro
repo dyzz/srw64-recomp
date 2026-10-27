@@ -78,7 +78,7 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
 <script>
   import { mountIdentityChip } from '../scripts/identity';
   const chip = document.querySelector<HTMLElement>('[data-identity-chip]');
-  if (chip) mountIdentityChip(chip, chip.dataset.lang as 'zh');
+  if (chip) mountIdentityChip(chip, chip.dataset.lang!);
   // The header's menus (MOD, language): one open at a time, closed by a click elsewhere or Esc.
   const menus = [...document.querySelectorAll<HTMLDetailsElement>('.site-header [data-menu]')];
   for (const m of menus) m.addEventListener('toggle', () => {

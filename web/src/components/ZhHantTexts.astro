@@ -1,0 +1,10 @@
+---
+// The zh strings of the suggestion scripts, on a Traditional Chinese page: the build's
+// converter makes them Traditional (data-zh-hant) and scripts/text.ts reads them.
+import { SUGGEST_TEXT } from '../scripts/suggest';
+import { REVIEWS_TEXT } from '../scripts/reviews';
+import { IDENTITY_TEXT, CHIP_TEXT } from '../scripts/identity';
+
+const payload = { suggest: SUGGEST_TEXT.zh, reviews: REVIEWS_TEXT.zh, identity: IDENTITY_TEXT.zh, chip: CHIP_TEXT.zh };
+---
+<script type="application/json" id="zh-hant-texts" data-zh-hant="suggest,reviews,identity,chip" is:inline set:html={JSON.stringify(payload)}></script>

@@ -1,7 +1,7 @@
 // The suggestions page: lists by state, the reader's own suggestions with edit,
 // withdraw and answer, and the reader's display identity.
 
-const T = {
+export const REVIEWS_TEXT = {
   zh: {
     status: { pending: '待处理', questioned: '待确认', processed: '已处理', dismissed: '未采纳' }, adopted: '已原样采纳',
     kinds: { mistranslation: '错译', awkward: '不通顺', typo: '错字', naming: '译名不统一', other: '其他' },
@@ -34,6 +34,7 @@ const T = {
   },
 };
 import { markResultsSeen, onMeChange, unseenResults } from './identity';
+import { texts } from './text';
 
 const PAGE = 30;
 
@@ -53,8 +54,8 @@ function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: 
 export function initReviews() {
   const root = document.querySelector<HTMLElement>('[data-reviews]');
   if (!root) return;
-  const lang = root.dataset.lang as keyof typeof T;
-  const t = T[lang];
+  const lang = root.dataset.lang || 'zh';
+  const t = texts(REVIEWS_TEXT, 'reviews', lang);
   const list = root.querySelector<HTMLElement>('[data-items]')!;
   const more = root.querySelector<HTMLButtonElement>('[data-more]')!;
   // Every suggestion is public: the open ones first, then handled and declined; Mine has your own.
@@ -71,8 +72,9 @@ export function initReviews() {
     }
     const a = el('a', '', x.source);
     // Only a path on this site (the server keeps no other); never javascript: or another host.
-    const href = String(x.context.href ?? '');
-    a.href = /^\/(zh|en|ja)\//.test(href) && !href.startsWith('//') ? href : `/${lang}/library/`;
+    // A suggestion sent from a zh page opens as the tw page for a tw reader, and the other way round.
+    const href = String(x.context.href ?? '').replace(/^\/(zh|tw)\//, (m) => (lang === 'zh' || lang === 'tw' ? `/${lang}/` : m));
+    a.href = /^\/(zh|tw|en|ja)\//.test(href) && !href.startsWith('//') ? href : `/${lang}/library/`;
     return a;
   }
 
@@ -87,7 +89,7 @@ export function initReviews() {
     const by = el('span');
     if (x.author.avatar) { const img = el('img', 'sg-avatar'); img.src = x.author.avatar; img.alt = ''; by.append(img, ' '); }
     by.append(x.author.name);
-    top.append(by, el('span', '', new Date(x.created_at).toLocaleDateString(lang === 'zh' ? 'zh-CN' : lang)));
+    top.append(by, el('span', '', new Date(x.created_at).toLocaleDateString(lang === 'zh' ? 'zh-CN' : lang === 'tw' ? 'zh-TW' : lang)));
     li.append(top);
     if (x.mine && x.result !== 'pending') {
       const v = el('p', `verdict r-${x.result}`, (t.verdict as Record<string, string>)[x.result] ?? '');

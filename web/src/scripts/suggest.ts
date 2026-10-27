@@ -13,7 +13,7 @@ type Item = {
   admin_reason?: string; question_response?: string;
 };
 
-const T = {
+export const SUGGEST_TEXT = {
   zh: {
     kinds: { mistranslation: '错译', awkward: '不通顺', typo: '错字', naming: '译名不统一', other: '其他' },
     status: { pending: '待处理', questioned: '待确认', processed: '已处理', dismissed: '未采纳' },
@@ -47,8 +47,10 @@ const T = {
 };
 
 import { loadMe, loadMyResults, onMeChange, reloadMe, type Me } from './identity';
+import { texts } from './text';
 
-const LOCALE: Record<string, string> = { zh: 'zh-Hans', en: 'en', ja: 'ja' };
+// tw pages show the zh translation (converted) and take suggestions on it.
+const LOCALE: Record<string, string> = { zh: 'zh-Hans', tw: 'zh-Hans', en: 'en', ja: 'ja' };
 
 async function api(path: string, init?: RequestInit) {
   const r = await fetch(`/api/${path}`, { credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, ...init });
@@ -68,8 +70,8 @@ export function initSuggestions() {
   const root = document.querySelector<HTMLElement>('[data-story], [data-library]');
   // Japanese pages have no suggestion buttons (see canReview).
   if (!root || !root.querySelector('[data-suggest]')) return;
-  const lang = (root.dataset.lang || 'zh') as keyof typeof T;
-  const t = T[lang];
+  const lang = root.dataset.lang || 'zh';
+  const t = texts(SUGGEST_TEXT, 'suggest', lang);
   const scene = root.dataset.scene;
   let items: Item[] = [];
   let online = true;

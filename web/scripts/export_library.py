@@ -14,7 +14,9 @@ and exits 1 on any mismatch.
 Output (``web/.data/library.json``, schema ``srw64.web-library.v1``). Every
 localized string is ``{"ja", "zh", "en"}``; Japanese is the ROM text, zh/en come
 from ``content/locales/<zh-Hans|en>.json`` (checked against the ROM like the game
-does) and fall back to the ROM text where a record has no translation.
+does) and fall back to the ROM text where a record has no translation. People and
+series names also have ``tw``, the game's zh-Hant name (content/locales/zh-Hant.json):
+the site API shows them to readers of the Traditional Chinese pages.
 
 - ``schema``, ``generated_from`` (ROM sha256), ``counts`` {units, people}
 - ``series``: [{id, name}] -- the 25 works in the order the unit list first shows
@@ -70,6 +72,7 @@ from srw64_native.catalog import compile_locale, source_catalog  # noqa: E402
 from srw64_native.battle_graphics import read_triplets  # noqa: E402
 
 LANGS = {"ja": "ja", "zh": "zh-Hans", "en": "en"}
+HANT = "zh-Hant"     # names only, always from the working tree (see export)
 
 # --- ROM layout (library.cpp) ---------------------------------------------------
 def resident(vram): return vram - 0x80075610
@@ -425,7 +428,10 @@ def export(rom_path: Path, docs: dict[str, dict] | None = None) -> dict:
             if [(e["id"], e["work"]) for e in a] != [(e["id"], e["work"]) for e in b]:
                 notes.append(f"{lang} {what}: the game's {lang} list differs from the Japanese one "
                              f"({len(b)} vs {len(a)} entries); the Japanese order is exported")
-    display = {lang: ({e["id"]: e["name"] for e in built[lang][0]}, {e["id"]: e["name"] for e in built[lang][1]}) for lang in LANGS}
+    hant_doc = json.loads((ROOT / f"content/locales/{HANT}.json").read_text())
+    texts["tw"] = (Texts(sources, glyphs, compile_locale(hant_doc, sources, hashes)), hant_doc["ui"])
+    built["tw"] = build_language(rom, texts["tw"][0], HANT)
+    display = {lang: ({e["id"]: e["name"] for e in built[lang][0]}, {e["id"]: e["name"] for e in built[lang][1]}) for lang in built}
     def shown(lang, kind, eid, tid):
         return display[lang][kind].get(eid) or texts[lang][0](tid)
 
@@ -523,7 +529,7 @@ def export(rom_path: Path, docs: dict[str, dict] | None = None) -> dict:
         actor, stats, spirits = e["id"], e["stats"], e["spirits"]
         person = FIRST_PERSON <= actor < FIRST_PERSON + PEOPLE
         p = {"id": actor, "series": e["work"] if e["work"] >= 0 else None,
-             "name": {lang: shown(lang, 1, actor, T_PEOPLE + actor - FIRST_PERSON if person else T_PILOT + actor) for lang in LANGS},
+             "name": {lang: shown(lang, 1, actor, T_PEOPLE + actor - FIRST_PERSON if person else T_PILOT + actor) for lang in (*LANGS, "tw")},
              "full_name": loc(T_PEOPLE_FULL + actor - FIRST_PERSON if person else T_PILOT_FULL + actor),
              "enemy": e["flag"] == 1 if e["flag"] >= 0 else None, "role": None, "no_battle": stats < 0,
              "stats": None, "terrain": None, "double_move_level": None, "spirits": [], "skills": []}
@@ -572,8 +578,8 @@ def export(rom_path: Path, docs: dict[str, dict] | None = None) -> dict:
     unit_order, people_order = order(units), order(people)
     series_ids = [s for s in unit_order if s is not None] + [s for s in people_order if s is not None and s not in unit_order]
     series_ids += [s for s in range(WORK_COUNT) if s not in series_ids]
-    series = [{"id": s, "name": loc(T_WORKS + s)} for s in series_ids]
-    series.append({"id": None, "name": {lang: texts[lang][1].get("library_work_other", "その他") for lang in LANGS}})
+    series = [{"id": s, "name": {**loc(T_WORKS + s), "tw": texts["tw"][0](T_WORKS + s)}} for s in series_ids]
+    series.append({"id": None, "name": {lang: texts[lang][1].get("library_work_other", "その他") for lang in (*LANGS, "tw")}})
 
     labels = {k: loc(tid) for k, tid in LABEL_TEXTS.items()}
     labels.update({f"weapon_{k}": loc(T_WEAPON_LABELS + n) for n, k in enumerate(WEAPON_LABEL_KEYS)})

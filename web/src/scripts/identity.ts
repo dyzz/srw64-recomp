@@ -5,7 +5,7 @@
 export type Me = { name: string; avatar: string | null; mode: 'pilot' | 'custom'; pilot_id: number | null };
 type Pilot = { id: number; series: number | null; name: string; ja: string; avatar: string };
 
-const T = {
+export const IDENTITY_TEXT = {
   zh: {
     none: '尚未设置署名。首次提交意见时会随机分配一个机战人物，也可以现在选择。',
     reroll: '随机换一个', pick: '选择人物', nick: '用昵称', save: '保存', cancel: '收起', change: '更改',
@@ -25,7 +25,7 @@ const T = {
     other: 'その他', you: 'あなたの表示名',
   },
 };
-type Lang = keyof typeof T;
+import { texts } from './text';
 
 async function api(path: string, init?: RequestInit) {
   const r = await fetch(`/api/${path}`, { credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, ...init });
@@ -63,8 +63,8 @@ export async function reloadMe(lang: string) {
 export const onMeChange = (f: (me: Me | null) => void) => { listeners.add(f); return () => listeners.delete(f); };
 
 /** Fills `box` with the identity and its controls. `compact` hides the controls behind a Change button. */
-export function mountIdentity(box: HTMLElement, lang: Lang, opts: { compact?: boolean } = {}) {
-  const t = T[lang];
+export function mountIdentity(box: HTMLElement, lang: string, opts: { compact?: boolean } = {}) {
+  const t = texts(IDENTITY_TEXT, 'identity', lang);
   box.classList.add('id-box');
   box.replaceChildren();
   const head = el('div', 'id-head');
@@ -189,15 +189,15 @@ export function markResultsSeen(items: Result[]) {
 }
 export const unseenResults = (items: Result[]) => { const s = seen(); return new Set(items.filter((x) => x.result !== 'pending' && s[x.id] !== x.result).map((x) => x.id)); };
 
-const CHIP = {
-  zh: { setup: '署名设置', news: (n: number) => `${n} 条意见有了处理结果`, mine: '我的意见', title: '提交意见时显示的名字和头像' },
-  en: { setup: 'Display name', news: (n: number) => `Suggestion results: ${n}`, mine: 'My suggestions', title: 'Name and avatar shown with your suggestions' },
-  ja: { setup: '表示名', news: (n: number) => `${n} 件の意見に対応結果があります`, mine: '自分の意見', title: '意見に表示される名前とアイコン' },
+export const CHIP_TEXT = {
+  zh: { setup: '署名设置', news: '{} 条意见有了处理结果', mine: '我的意见', title: '提交意见时显示的名字和头像' },
+  en: { setup: 'Display name', news: 'Suggestion results: {}', mine: 'My suggestions', title: 'Name and avatar shown with your suggestions' },
+  ja: { setup: '表示名', news: '{} 件の意見に対応結果があります', mine: '自分の意見', title: '意見に表示される名前とアイコン' },
 };
 
 /** The header's identity button: face and name, a dot for unseen results, and a popover with the controls. */
-export function mountIdentityChip(host: HTMLElement, lang: Lang) {
-  const c = CHIP[lang];
+export function mountIdentityChip(host: HTMLElement, lang: string) {
+  const c = texts(CHIP_TEXT, 'chip', lang);
   const btn = el('button', 'idc-btn');
   btn.type = 'button';
   btn.title = c.title;
@@ -226,7 +226,7 @@ export function mountIdentityChip(host: HTMLElement, lang: Lang) {
   unseenListeners.add((n) => {
     dot.hidden = n === 0;
     news.hidden = n === 0;
-    news.textContent = c.news(n);
+    news.textContent = c.news.replace('{}', String(n));
   });
   loadMyResults(lang);
 

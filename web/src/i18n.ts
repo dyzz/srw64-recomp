@@ -93,9 +93,9 @@ export const UI = {
 } as const;
 
 /** Readers suggest changes to the Chinese and English translations; the Japanese pages
- * show the original text, and the Traditional Chinese is made from the Simplified, so
- * neither has suggestion features. */
-export const canReview = (lang: Lang) => lang === 'zh' || lang === 'en';
+ * show the original text and have no suggestion features. The Traditional Chinese pages
+ * share the Simplified ones' suggestions: their text is made from it. */
+export const canReview = (lang: Lang) => lang !== 'ja';
 
 /** The title logo drawn for each language (public/brand/title-<lang>.webp, 1400 wide; a
  * -small copy is 480 wide) and the name it shows. One M64 mark serves every language. */
