@@ -109,7 +109,7 @@ export function initDataMaker() {
       parts.push(el('p', { class: 'hint' }, text.carriers + e.units.map((u: number) => `${u} ${byId.units.get(u) ? nameOf(byId.units.get(u)!) : ''}`).join(lang === 'en' ? ', ' : '、')));
     if (kind === 'pilots') parts.push(el('p', { class: 'hint' }, text.stats1));
     parts.push(el('div', { class: 'grid' }, ...labels.fields[kind].map((f) => numberField(f, id)),
-      kind === 'units' ? selectField('Size', 'size', labels.sizes, id) : null));
+      kind === 'units' ? selectField(text.size, 'size', labels.sizes, id) : null));
     parts.push(el('div', { class: 'sub' }, text.terrain),
       el('div', { class: 'grid' }, ...CHANNELS.map((c, n) => selectField(text.terrainNames[n], `terrain.${c}`, RANKS, id))));
     if (kind === 'units') {

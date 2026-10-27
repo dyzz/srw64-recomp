@@ -65,12 +65,16 @@ export function initNamesMaker() {
         const now = heroNames[p][loc] ?? {};
         const warn = el('span', { class: 'warn' });
         const check = () => { warn.textContent = HERO_FIELDS.map((f) => warning(heroNames[p][loc]?.[f] ?? '', f)).find(Boolean) ?? ''; };
-        rows.push(el('span', { class: 'lang' }, label), ...HERO_FIELDS.map((f, n) => input(now[f] ?? '', h[col][n], (v) => {
+        // Without a nickname of its own the package's name is the nickname: the box says so.
+        const boxes = HERO_FIELDS.map((f, n) => input(now[f] ?? '', h[col][n], (v) => {
           const e = { ...(heroNames[p][loc] ?? {}) };
           if (v) e[f] = v; else delete e[f];
           if (Object.keys(e).length) heroNames[p][loc] = e; else delete heroNames[p][loc];
+          boxes[2].placeholder = heroNames[p][loc]?.name || h[col][2];
           check();
-        })), warn);
+        }));
+        boxes[2].placeholder = now.name || h[col][2];
+        rows.push(el('span', { class: 'lang' }, label), ...boxes, warn);
         check();
       }
       return el('div', { class: 'card' },
