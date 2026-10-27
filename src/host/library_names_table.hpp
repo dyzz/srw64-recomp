@@ -5,6 +5,7 @@ namespace srw64::library_names {
 struct Name{bool pilot;unsigned id;const char* locale;const char* name;};
 constexpr Name kNames[] = {
     {false,80,"en","Jagd Doga (Quess)"},
+    {false,88,"en","Gundam Mk-II (Titans)"},
     {false,111,"en","Jagd Doga (Gyunei)"},
     {false,224,"en","Final Dancouga"},
     {false,315,"en","Geara Doga (Rezin)"},

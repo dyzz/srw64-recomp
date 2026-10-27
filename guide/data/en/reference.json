@@ -3362,7 +3362,7 @@
       ],
       [
        "7",
-       "Nu Gundam, MP Nu Gundam F, Wing Gundam, Wing Zero, Wing Zero Custom, Gundam Deathscythe, Gundam Deathscythe Hell, Deathscythe Hell Custom, Gundam Heavyarms, Gundam Heavyarms Kai, Heavyarms Custom, Shenlong Gundam, Altron Gundam, Altron Custom, Gundam Sandrock Kai, Sandrock Custom, Gundam Epyon, Getter-1, Getter Dragon, Shin Getter-1, Daitarn 3, Godmars"
+       "Nu Gundam, MP Nu Gundam F, Wing Gundam, Wing Zero, Wing Zero Custom, Gundam Deathscythe, Gundam Deathscythe Hell, Deathscythe Hell Custom, Gundam Heavyarms, Gundam Heavyarms Kai, Heavyarms Custom, Shenlong Gundam, Altron Gundam, Gundam Nataku, Gundam Sandrock Kai, Sandrock Custom, Gundam Epyon, Getter-1, Getter Dragon, Shin Getter-1, Daitarn 3, Godmars"
       ],
       [
        "8",
@@ -3559,7 +3559,7 @@
       ],
       [
        "Altron Gundam",
-       "Altron Custom",
+       "Gundam Nataku",
        "Beam Cannon",
        "None (in the original Dragon Fire does not inherit upgrades; see below)"
       ],
@@ -3585,7 +3585,7 @@
      "notes": [
       "Refit condition: after you confirm an upgrade of the five stats on the upgrade screen, the refit happens at once if all five are at the original cap (7 for all five of these units); weapon levels don't matter, and it happens even without a pilot",
       "The five stats are still fully upgraded after the change; each weapon keeps its previous level",
-      "The Altron Custom's Dragon Fire didn't carry over upgrades in the original (missing from the table); this port fixes it by default"
+      "The Gundam Nataku's Dragon Fire didn't carry over upgrades in the original (missing from the table); this port fixes it by default"
      ]
     },
     {

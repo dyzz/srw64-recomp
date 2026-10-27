@@ -1,8 +1,9 @@
 {
  "schema": "srw64.library-names.v1",
- "about": "Library (図鑑) names for single records in one language, in place of the name the game's numbering gives (\"(2)\"). Units by unit record, pilots by actor. Written into src/host/library_names_table.hpp by tools/content/library_names.py; web/scripts/export_library.py reads this file. Site suggestions #5 #6 #7 #10 #18 #21 #22 #23 (2026-10-26).",
+ "about": "Library (図鑑) names for single records in one language, in place of the name the game's numbering gives (\"(2)\"). Units by unit record, pilots by actor. Written into src/host/library_names_table.hpp by tools/content/library_names.py; web/scripts/export_library.py reads this file. Site suggestions #5 #6 #7 #10 #18 #21 #22 #23 (2026-10-26), #42 (2026-10-27).",
  "units": {
   "80": {"en": "Jagd Doga (Quess)"},
+  "88": {"en": "Gundam Mk-II (Titans)"},
   "111": {"en": "Jagd Doga (Gyunei)"},
   "224": {"en": "Final Dancouga"},
   "315": {"en": "Geara Doga (Rezin)"},

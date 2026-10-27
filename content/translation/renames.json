@@ -9550,6 +9550,19 @@
    "sections": [
     "units"
    ]
+  },
+  {
+   "ja": [
+    "アルトロンカスタム"
+   ],
+   "en": {
+    "old": "Altron Custom",
+    "new": "Gundam Nataku"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
   }
  ]
 }
