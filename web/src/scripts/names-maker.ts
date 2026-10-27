@@ -11,7 +11,8 @@ type Named = { id: number; name: Names3 };
 type Kind = 'pilots' | 'units' | 'weapons';
 // A portrait: the picture given, the square of it the player framed (centre and zoom, 1 being
 // the largest square that fits), and the PNG made from that square.
-type Picture = { source: ImageBitmap; cx: number; cy: number; zoom: number; png: Uint8Array; size: number; url: string };
+// While `framing`, the window is open and nothing is made until the player confirms.
+type Picture = { source: ImageBitmap; cx: number; cy: number; zoom: number; png: Uint8Array; size: number; url: string; framing: boolean };
 
 // The package's languages and the page language's column of the data.
 const LOCALES = [['zh-Hans', 'zh', '中文'], ['en', 'en', 'English'], ['ja', 'ja', '日本語']] as const;
@@ -194,12 +195,9 @@ export function initNamesMaker() {
   }
   async function load(blob: Blob): Promise<Picture> {
     const source = await createImageBitmap(blob);
-    const pic: Picture = { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: new Uint8Array(), size: 0, url: '' };
-    await encode(pic);
-    return pic;
+    return { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: new Uint8Array(), size: 0, url: '', framing: true };
   }
-  // The framing window: drag to move, the slider or the wheel to zoom. The PNG follows a moment
-  // after the last change.
+  // The framing window: drag to move, the slider or the wheel to zoom, OK to make the PNG.
   function framer(pic: Picture, done: () => void) {
     const canvas = el('canvas', { class: 'framer', width: VIEW * devicePixelRatio, height: VIEW * devicePixelRatio }) as HTMLCanvasElement;
     const zoom = el('input', { type: 'range', min: 1, max: MAX_ZOOM, step: 0.01, value: pic.zoom }) as HTMLInputElement;
@@ -210,8 +208,7 @@ export function initNamesMaker() {
       g.imageSmoothingQuality = 'high';
       g.drawImage(pic.source, x, y, side, side, 0, 0, canvas.width, canvas.height);
     };
-    let timer = 0;
-    const changed = () => { draw(); clearTimeout(timer); timer = window.setTimeout(async () => { await encode(pic); done(); }, 250); };
+    const changed = draw;
     let drag: { x: number; y: number; cx: number; cy: number } | null = null;
     canvas.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY, cx: pic.cx, cy: pic.cy }; canvas.setPointerCapture(e.pointerId); });
     canvas.addEventListener('pointermove', (e) => {
@@ -231,10 +228,12 @@ export function initNamesMaker() {
     draw();
     return el('div', { class: 'framing' }, canvas,
       el('label', { class: 'zoom' }, text.zoom, zoom),
-      el('button', { type: 'button', class: 'mini', onclick: () => {
-        pic.zoom = 1; pic.cx = pic.source.width / 2; pic.cy = pic.source.height / 2; zoom.value = '1'; changed();
-      } }, text.resetFrame),
-      el('span', { class: 'hint' }, text.frameHint));
+      el('span', { class: 'hint' }, text.frameHint),
+      el('div', { class: 'frame-actions' },
+        el('button', { type: 'button', class: 'btn small', onclick: async () => { await encode(pic); pic.framing = false; done(); } }, text.confirmFrame),
+        el('button', { type: 'button', class: 'mini', onclick: () => {
+          pic.zoom = 1; pic.cx = pic.source.width / 2; pic.cy = pic.source.height / 2; zoom.value = '1'; changed();
+        } }, text.resetFrame)));
   }
   function renderPortraits() {
     for (const id of pictures.keys()) shown.add(id);
@@ -247,20 +246,19 @@ export function initNamesMaker() {
         pictures.set(id, await load(f));
         renderPortraits(); facePicker.refresh();
       });
-      const result = pic ? el('img', { src: pic.url, alt: '' }) as HTMLImageElement : null;
-      const size = pic ? el('span', { class: 'hint' }, `${pic.size} × ${pic.size} PNG`) : null;
-      return el('div', { class: 'card' },
-        el('h3', {}, p.portrait ? el('img', { class: 'icon', src: p.portrait, alt: '', loading: 'lazy' }) : null, el('span', { class: 'num' }, String(id)), nameOf(p.name)),
-        pic ? framer(pic, () => { result!.src = pic.url; size!.textContent = `${pic.size} × ${pic.size} PNG`; }) : null,
+      const done = () => { renderPortraits(); facePicker.refresh(); };
+      const head = el('h3', {}, p.portrait ? el('img', { class: 'icon', src: p.portrait, alt: '', loading: 'lazy' }) : null, el('span', { class: 'num' }, String(id)), nameOf(p.name));
+      const remove = el('button', { type: 'button', class: 'mini', onclick: () => { pictures.delete(id); shown.delete(id); done(); } }, text.remove);
+      const choose = el('label', { class: 'mini' }, pic ? text.otherPicture : text.choosePicture, file);
+      if (pic?.framing) return el('div', { class: 'card' }, head, framer(pic, done), el('div', {}, choose, ' ', remove));
+      return el('div', { class: 'card' }, head,
         el('div', { class: 'faces' },
           p.portrait ? el('img', { src: p.portrait, alt: '', loading: 'lazy' }) : el('span', { class: 'hint' }, '—'),
           el('span', { class: 'arrow' }, '→'),
-          result ?? el('span', { class: 'hint' }, '?')),
-        size,
-        el('div', {}, el('label', { class: 'mini' }, text.choosePicture, file), ' ',
-          el('button', { type: 'button', class: 'mini', onclick: () => {
-            pictures.delete(id); shown.delete(id); renderPortraits(); facePicker.refresh();
-          } }, text.remove)));
+          pic ? el('img', { src: pic.url, alt: '' }) : el('span', { class: 'hint' }, '?')),
+        pic ? el('span', { class: 'hint' }, `${pic.size} × ${pic.size} PNG`) : null,
+        el('div', {}, pic ? el('button', { type: 'button', class: 'mini', onclick: () => { pic.framing = true; renderPortraits(); } }, text.reframe) : null,
+          pic ? ' ' : null, choose, ' ', remove));
     }));
   }
 
@@ -301,6 +299,7 @@ export function initNamesMaker() {
     const m = form.manifest();
     if (typeof m === 'string') return say(exportStatus, m, true);
     const { doc, problems } = namesJson();
+    for (const [id, pic] of pictures) if (pic.framing) problems.push(fill(text.errFraming, { who: `${id} ${nameOf(people.find((x) => x.id === id)!.name)}` }));
     if (problems.length) return say(exportStatus, text.fixFirst + problems.join('；'), true);
     if (!doc && !pictures.size && !Object.keys(kept).length) return say(exportStatus, text.errEmpty, true);
     const out: Record<string, Uint8Array> = { ...kept };
@@ -341,7 +340,7 @@ export function initNamesMaker() {
         } else if (face && people.some((p) => p.id === Number(face[1]))) {
           // Framed already: the whole square, kept as it is until the frame is moved.
           const source = await createImageBitmap(new Blob([bytes as BlobPart], { type: 'image/png' }));
-          pictures.set(Number(face[1]), { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: bytes, size: source.width, url: dataUrl(bytes) });
+          pictures.set(Number(face[1]), { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: bytes, size: source.width, url: dataUrl(bytes), framing: false });
         } else kept[path] = bytes;
       }
       renderHeroes(); renderUnit(); renderRecords(); renderPortraits(); refresh(); facePicker.refresh();

@@ -87,3 +87,5 @@
 .maker .zoom { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
 .maker .framing .mini { justify-self: start; }
 @media (max-width: 640px) { .maker .framing { grid-template-columns: 1fr; } .maker .framer { grid-row: auto; } }
+.maker .frame-actions { display: flex; gap: 8px; align-items: center; }
+.maker .btn.small { padding: 6px 18px; font-size: 14px; }
