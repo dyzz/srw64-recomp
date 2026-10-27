@@ -3421,6 +3421,9 @@ void settings_sync() {
     const auto stage_opening=stage_info::want(settings_open && stage_open);
     if(!settings_open || !library_open)document_close(library_detail_doc);
     if(!settings_open){update_ask_open=false;quick_load_ask_open=false;title_return_ask_open=false;mod_open=false;library_open=false;stage_open=false;viewer_open=false;viewer_picker.clear();battle_viewer::listen_song(-1);document_close(settings_doc);settings_stamp.clear();settings_built=-1;return;}
+#ifdef __ANDROID__
+    mod_pick_poll();   // before the MOD page's early return below, which keeps an unchanged page as it is
+#endif
     if(viewer_open){viewer_sync();return;}
     if(title_return_ask_open) {
         const auto stamp="title-return"+localization::catalog().locale+std::to_string(pad_mode)+frame_stamp()+std::to_string(ui_density);
@@ -3524,7 +3527,6 @@ void settings_sync() {
 #ifdef __ANDROID__
     save_export_poll();
     report_export_poll();
-    mod_pick_poll();
 #endif
     const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings::mod_music())+"/"+std::to_string(settings::mod_music_volume())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
