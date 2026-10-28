@@ -4,6 +4,7 @@
 #include <chrono>
 #include <cstring>
 #include <cstdlib>
+#include <cstdio>
 #include <ctime>
 #include <fstream>
 #include <iterator>
@@ -24,6 +25,10 @@
 #elif defined(_WIN32)
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#endif
+
+#ifndef SRW64_VERSION
+#define SRW64_VERSION "?"
 #endif
 
 namespace srw64::bug_report {
@@ -210,26 +215,38 @@ nlohmann::json system() {
     return s;
 }
 
-std::string summary(const nlohmann::json& facts) {
-    const auto sys = system();
-    const auto text = [](const nlohmann::json& j, const char* key) {
-        const auto it = j.find(key);
-        if (it == j.end() || it->is_null()) return std::string();
-        return it->is_string() ? it->get<std::string>() : it->dump();
-    };
-    const auto join = [](std::initializer_list<std::string> parts) {
-        std::string line;
-        for (const auto& part : parts)
-            if (!part.empty() && part != "\"\"") line += (line.empty() ? "" : " · ") + part;
-        return line;
-    };
-    const auto hd = facts.value("hd_pack", nlohmann::json::object());
+namespace {
+std::string text(const nlohmann::json& j, const char* key) {
+    const auto it = j.find(key);
+    if (it == j.end() || it->is_null()) return std::string();
+    return it->is_string() ? it->get<std::string>() : it->dump();
+}
+std::string join(std::initializer_list<std::string> parts) {
+    std::string line;
+    for (const auto& part : parts)
+        if (!part.empty() && part != "\"\"") line += (line.empty() ? "" : " · ") + part;
+    return line;
+}
+// system() in one line: the OS and its version, model, processor, architecture, memory, kernel.
+std::string system_line(const nlohmann::json& sys) {
     std::string os = text(sys, "platform");
     if (const auto v = text(sys, "version"); !v.empty()) os += " " + v;
     if (const auto b = text(sys, "build"); !b.empty()) os += " (" + b + ")";
     if (sys.value("steam_deck", false)) os += " · Steam Deck";
     if (sys.value("wine", false)) os += " · Wine";
     const auto memory = sys.value("memory_mb", 0);
+    return join({os, text(sys, "model"), text(sys, "cpu"), text(sys, "architecture"),
+                 memory ? std::to_string((memory + 512) / 1024) + " GB" : std::string(), text(sys, "kernel")});
+}
+}
+
+void log_start() {
+    std::fprintf(stderr, "SRW64_VERSION Marchwind64 %s\n", SRW64_VERSION);
+    std::fprintf(stderr, "SRW64_SYSTEM %s\n", redact(system_line(system())).c_str());
+}
+
+std::string summary(const nlohmann::json& facts) {
+    const auto hd = facts.value("hd_pack", nlohmann::json::object());
     const auto graphics = facts.value("graphics", nlohmann::json::object());
     const auto window = facts.value("window", nlohmann::json::object());
     std::string size;
@@ -240,8 +257,7 @@ std::string summary(const nlohmann::json& facts) {
     std::string lines;
     lines += "Marchwind64 " + text(facts, "version") + " · images " + text(facts, "images") + " · HD pack " +
              (!hd.value("installed", false) ? std::string("none") : hd.value("version", std::string()).empty() ? std::string("unversioned") : hd.value("version", std::string())) + "\n";
-    lines += "System: " + join({os, text(sys, "model"), text(sys, "cpu"), text(sys, "architecture"),
-                                memory ? std::to_string((memory + 512) / 1024) + " GB" : std::string(), text(sys, "kernel")}) + "\n";
+    lines += "System: " + system_line(system()) + "\n";
     lines += "Graphics: " + join({text(graphics, "api"), text(graphics, "device"), text(graphics, "vendor")}) + "\n";
     lines += "Window: " + join({size, "UI " + text(facts, "ui_size"), text(facts, "locale"), facts.value("wide", false) ? "wide" : "4:3",
                                 text(facts, "filter").empty() ? std::string() : "filter " + text(facts, "filter"),

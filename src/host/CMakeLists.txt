@@ -216,7 +216,7 @@ if(SRW64_ENABLE_RT64)
     # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md),
     # and RecompLauncher's setup step, which installs the HD pack it names (hd_prepare.hpp).
     target_sources(srw64-gfx-host PRIVATE update_check.cpp update_http.cpp hd_prepare.cpp)
-    set_property(SOURCE hd_prepare.cpp APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
+    set_property(SOURCE hd_prepare.cpp bug_report.cpp APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
     # What the program prints, into the run's console.log, and the bug report zip of the
     # Feedback page (docs/native/bug-report.md).
     target_sources(srw64-gfx-host PRIVATE console_log.cpp bug_report.cpp stall_watchdog.cpp)
@@ -364,7 +364,7 @@ if(SRW64_GL_ONLY)
     set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${SRW64_ROOT}/CMakeLists.txt")
     file(STRINGS "${SRW64_ROOT}/CMakeLists.txt" SRW64_PROJECT_LINE REGEX "^project\\(.* VERSION ")
     string(REGEX REPLACE ".* VERSION ([0-9.]+).*" "\\1" SRW64_VERSION "${SRW64_PROJECT_LINE}")
-    set_property(SOURCE "${SRW64_ROOT}/src/native/ui/frontend.cpp" APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
+    set_property(SOURCE "${SRW64_ROOT}/src/native/ui/frontend.cpp" bug_report.cpp APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
     if(APPLE)
         target_sources(srw64-gl-host PRIVATE macos/app_menu.mm macos/update_http_macos.mm)
         set_source_files_properties(macos/app_menu.mm macos/update_http_macos.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")

@@ -23,6 +23,9 @@ Result write(const std::filesystem::path& user, const std::filesystem::path& run
 std::string summary(const nlohmann::json& facts);
 // The system this runs on: name, version, model, processor, memory, Steam Deck.
 nlohmann::json system();
+// SRW64_VERSION and SRW64_SYSTEM lines on stderr, at the start of every run, so that a
+// console.log sent alone says which release ran on what.
+void log_start();
 // Home folder → ~ (also in its JSON-escaped spelling on Windows).
 std::string redact(std::string text);
 }

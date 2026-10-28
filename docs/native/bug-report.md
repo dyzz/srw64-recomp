@@ -30,6 +30,8 @@ Mac 和 Windows 的菜单栏「工具 → 导出日志」（2026-10-20）导出�
 
 所以崩溃或卡死后，玩家重新打开游戏再导出，上一次运行的 `console.log` 也在报告里（用户目录保留最近 3 次）。
 
+2026-10-28 起每个 `console.log` 开头两行是 `SRW64_VERSION Marchwind64 <版本>` 和 `SRW64_SYSTEM <系统 版本 (build)> · <型号> · <处理器> · <架构> · <内存> · <内核>`（`bug_report::log_start()`，与报告摘要的 System 行同一段代码，家目录同样写成 `~`），在 `console_log::start()` 之后立刻打印，先存内存、接上运行目录后写进文件。起因：玩家没导出报告、只发来整个 sessions 文件夹时，日志里没有版本，只能按缺哪几行反推（那次只能缩到 0.4.2–0.4.7）。显卡在 Windows 上是 `SRW64_GPU` 各行，其他平台是 RT64 的 `Device Name` 行。
+
 ## Windows 崩溃转储
 
 2026-10-10。Windows 崩溃原来什么栈都不留（`console_log` 只接 SIGABRT），现在 `main` 在 `console_log::start()` 之后调 `crash_dump::install()`（`src/host/windows/crash_dump_windows.cpp`，只在 Windows 编、链 dbghelp），运行目录确定时 `crash_dump::attach`。崩溃时写 `<运行目录>/crash-<日期>-<时间>.dmp`，再把管道里剩下的输出和一行 `SRW64_CRASH <种类> 0x<代码> [reading/writing 0x<地址>] at 0x<地址> (<模块>+0x<偏移>) thread <号>, crash-….dmp (<字节> bytes)` 写进 stderr 和 `console.log`。

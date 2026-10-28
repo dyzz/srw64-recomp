@@ -4,6 +4,7 @@
 #include "hd_prepare.hpp"
 #include "dialogue_data.hpp"
 #include "crash_dump.hpp"
+#include "bug_report.hpp"
 // Native integration host, optionally rendered through RT64/Metal.
 #include <atomic>
 #include <cstdio>
@@ -834,6 +835,8 @@ int main(int argc, char** argv) {
     // A crash's minidump into the run directory, for the same report (crash_dump.hpp).
     srw64::crash_dump::install();
 #endif
+    // Which release, on what: the first lines of every console.log (bug_report.hpp).
+    srw64::bug_report::log_start();
 #if defined(__linux__) && !defined(__ANDROID__)
     // Android: bionic has backtrace() only from API 33, and debuggerd's tombstone needs
     // its own handlers, so crashes go to logcat as tombstones.
