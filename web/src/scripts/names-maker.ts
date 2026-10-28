@@ -9,6 +9,7 @@ import { picker, type Pickable } from './picker';
 type Names3 = { ja: string; zh: string; en: string };
 type Hero = { route: string; role: 'hero' | 'partner'; ja: string[]; zh: string[]; en: string[]; face: string | null };
 type Person = { id: number; name: Names3; full: Names3; portrait: string | null; image: number | null };
+type Face = { id: number; name: Names3; portrait: string | null };
 type Named = { id: number; name: Names3 };
 type Kind = 'pilots' | 'units' | 'weapons';
 
@@ -26,8 +27,8 @@ export function initNamesMaker() {
   const root = document.querySelector<HTMLElement>('[data-names]');
   const payload = document.getElementById('names-data');
   if (!root || !payload) return;
-  const { text, heroes, routes, unitDefault, people, units, weapons, pick, locale, lang } = JSON.parse(payload.textContent!) as {
-    text: Text; heroes: Hero[]; routes: Record<string, string>; unitDefault: Names3; people: Person[]; units: Named[];
+  const { text, heroes, routes, unitDefault, people, portraitPeople, pickFaces, units, weapons, pick, locale, lang } = JSON.parse(payload.textContent!) as {
+    text: Text; heroes: Hero[]; routes: Record<string, string>; unitDefault: Names3; people: Person[]; portraitPeople: Face[]; pickFaces: Pickable[]; units: Named[];
     weapons: (Named & { units: number[] })[]; pick: { units: Pickable[]; pilots: Pickable[]; series: { id: number | null; name: string }[] };
     locale: string; lang: 'zh' | 'en' | 'ja';
   };
@@ -162,8 +163,7 @@ export function initNamesMaker() {
   // --- Portraits ---------------------------------------------------------------------------
   const shown = new Set<number>();
   const portraitBox = root.querySelector<HTMLElement>('[data-portraits]')!;
-  const faces = pick.pilots.filter((p) => people.some((x) => x.id === p.id && x.image !== null));
-  const facePicker = picker(faces, pick.series, lang, pickerText, (id) => { shown.add(id); renderPortraits(); },
+  const facePicker = picker(pickFaces, pick.series, lang, pickerText, (id) => { shown.add(id); renderPortraits(); },
     { badge: (id) => pictures.has(id) ? '✓' : null });
   root.querySelector<HTMLElement>('[data-portrait-pick]')!.replaceChildren(facePicker.node);
 
@@ -188,7 +188,7 @@ export function initNamesMaker() {
   function renderPortraits() {
     for (const id of pictures.keys()) shown.add(id);
     portraitBox.replaceChildren(...[...shown].map((id) => {
-      const p = people.find((x) => x.id === id)!, pic = pictures.get(id);
+      const p = portraitPeople.find((x) => x.id === id)!, pic = pictures.get(id);
       const file = el('input', { type: 'file', accept: 'image/*', hidden: true }) as HTMLInputElement;
       file.addEventListener('change', async () => {
         const f = file.files?.[0];
@@ -249,7 +249,7 @@ export function initNamesMaker() {
     const m = form.manifest();
     if (typeof m === 'string') return say(exportStatus, m, true);
     const { doc, problems } = namesJson();
-    for (const [id, pic] of pictures) if (pic.framing) problems.push(fill(text.errFraming, { who: `${id} ${nameOf(people.find((x) => x.id === id)!.name)}` }));
+    for (const [id, pic] of pictures) if (pic.framing) problems.push(fill(text.errFraming, { who: `${id} ${nameOf(portraitPeople.find((x) => x.id === id)!.name)}` }));
     if (problems.length) return say(exportStatus, text.fixFirst + problems.join('；'), true);
     if (!doc && !pictures.size && !Object.keys(kept).length) return say(exportStatus, text.errEmpty, true);
     const out: Record<string, Uint8Array> = { ...kept };
@@ -287,7 +287,7 @@ export function initNamesMaker() {
                 row[loc] = typeof v === 'string' ? { name: v, full: '' } : { name: (v as any).name ?? '', full: (v as any).full ?? '' };
               records[k].set(Number(id), row);
             }
-        } else if (face && people.some((p) => p.id === Number(face[1]))) {
+        } else if (face && portraitPeople.some((p) => p.id === Number(face[1]))) {
           // Framed already: the whole square, kept as it is until the frame is moved.
           const source = await createImageBitmap(new Blob([bytes as BlobPart], { type: 'image/png' }));
           pictures.set(Number(face[1]), { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: bytes, size: source.width, url: dataUrl(bytes), framing: false });

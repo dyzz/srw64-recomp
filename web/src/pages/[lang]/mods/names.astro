@@ -82,8 +82,12 @@ const unitDefault = { ja: 'マーチウィンド', zh: '三月风', en: 'March W
 // game names; the original eight are left to the first section.
 const people = library().people.filter((p) => p.id < 25 || p.id >= 33)
   .map((p) => ({ id: p.id, name: p.name, full: p.full_name, portrait: portraitUrl(p.portrait), image: p.portrait?.image ?? null }));
+// Portraits: every pilot with one, the original eight included.
+const portraitPeople = library().people.filter((p) => p.portrait?.image != null)
+  .map((p) => ({ id: p.id, name: p.name, portrait: portraitUrl(p.portrait) }));
 const units = data.units.map((u) => ({ id: u.id, name: u.name }));
 const pick = pickables(lang, data.units.map((u) => u.id), people.map((p) => p.id));
+const pickFaces = pickables(lang, [], portraitPeople.map((p) => p.id)).pilots;
 const notice = versionNotice(lang, text.game);
 ---
 <Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
@@ -133,7 +137,7 @@ const notice = versionNotice(lang, text.game);
       <p class="status" data-export-status></p>
     </section>
   </div>
-  <script type="application/json" id="names-data" is:inline set:html={JSON.stringify({ text, heroes: heroCards, routes, unitDefault, people, units, weapons: data.weapons.map((w) => ({ id: w.id, name: w.name, units: w.units })), pick, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
+  <script type="application/json" id="names-data" is:inline set:html={JSON.stringify({ text, heroes: heroCards, routes, unitDefault, people, portraitPeople, pickFaces, units, weapons: data.weapons.map((w) => ({ id: w.id, name: w.name, units: w.units })), pick, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
   <script>
     import { initNamesMaker } from '../../../scripts/names-maker';
     initNamesMaker();
