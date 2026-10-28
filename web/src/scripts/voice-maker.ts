@@ -1,9 +1,9 @@
 // The battle voice MOD maker (pages/[lang]/mods/voices.astro, docs/design/audio-mods.md §8).
-// A package is mod.json, audio/voice/battle/<record>.ogg and audio/voice.json
-// (docs/guide/audio-mods/README.md). Files are decoded by the browser, encoded to Ogg Vorbis
+// A package is mod.json and audio/voice/battle/<record>.ogg (docs/guide/audio-mods/README.md);
+// an opened package's audio/voice.json, if it has one, is kept as it is. Files are decoded by the browser, encoded to Ogg Vorbis
 // in a worker unless they already are Vorbis, and zipped here; nothing leaves the machine.
 import { vorbisEncoder, vorbisInfo } from './audio-tools';
-import { el, fill, jsonBytes, openPackage, packageForm, readJson, say, writePackage, type Text } from './mod-package';
+import { el, fill, openPackage, packageForm, say, writePackage, type Text } from './mod-package';
 import { picker, type Pickable } from './picker';
 
 type Lang = 'zh' | 'en' | 'ja';
@@ -64,9 +64,7 @@ export function initVoiceMaker() {
     await c.resume();
     const source = c.createBufferSource();
     source.buffer = await c.decodeAudioData(v.ogg.slice().buffer);
-    const gain = c.createGain();
-    gain.gain.value = 10 ** (Number(gainInput.value || 0) / 20);
-    source.connect(gain).connect(c.destination);
+    source.connect(c.destination);
     source.onended = () => { if (playing?.source === source) stop(); };
     source.start();
     playing = { record, source };
@@ -107,10 +105,6 @@ export function initVoiceMaker() {
     voices.delete(record);
     renderRow(record); later();
   }
-
-  // --- Settings -----------------------------------------------------------------------
-  const gainInput = root.querySelector<HTMLInputElement>('[data-gain]')!;
-  const delayInput = root.querySelector<HTMLInputElement>('[data-delay]')!;
 
   // --- Many files at once -------------------------------------------------------------
   const bulk = root.querySelector<HTMLElement>('[data-bulk]')!;
@@ -225,11 +219,8 @@ export function initVoiceMaker() {
       const { mod, files } = await openPackage(f);
       stop(); voices.clear(); keptFiles = {};
       form.fill(mod);
-      const settings = readJson(files['audio/voice.json']) ?? {};
-      gainInput.value = String(typeof settings.gain === 'number' ? settings.gain : 0);
-      delayInput.value = String(Number.isInteger(settings.delay) ? settings.delay : 0);
       for (const [path, bytes] of Object.entries(files)) {
-        if (path === 'mod.json' || path === 'audio/voice.json') continue;
+        if (path === 'mod.json') continue;
         const m = /^audio\/voice\/battle\/(\d+)\.ogg$/.exec(path);
         const vorbis = m ? vorbisInfo(bytes.subarray(0, 65536)) : null;
         if (m && vorbis && byRecord.has(Number(m[1]))) voices.set(Number(m[1]), { fileName: `${m[1]}.ogg`, ogg: bytes, seconds: oggSeconds(bytes, vorbis.rate), state: 'ready' });
@@ -250,12 +241,8 @@ export function initVoiceMaker() {
     if (busy) return say(exportStatus, fill(text.errBusy, { n: busy }), true);
     const ready = [...voices].filter(([, v]) => v.state === 'ready' && v.ogg);
     if (!ready.length) return say(exportStatus, text.errEmpty, true);
-    const gain = Number(gainInput.value || 0), delay = Number(delayInput.value || 0);
-    if (!Number.isFinite(gain) || gain < -30 || gain > 12) return say(exportStatus, text.errGain, true);
-    if (!Number.isInteger(delay) || delay < 0 || delay > 2000) return say(exportStatus, text.errDelay, true);
     const files: Record<string, Uint8Array> = { ...keptFiles };
     for (const [r, v] of ready) files[`audio/voice/battle/${r}.ogg`] = v.ogg!;
-    if (gain || delay) files['audio/voice.json'] = jsonBytes({ schema: 'srw64.voice.v1', ...(gain ? { gain } : {}), ...(delay ? { delay } : {}) });
     writePackage(m.manifest, m.version, files, exportStatus, text);
   });
 

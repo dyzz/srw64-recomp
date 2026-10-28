@@ -1,6 +1,6 @@
 ---
 // The battle voice MOD maker (docs/design/audio-mods.md §8): a voice for any battle line, as
-// audio/voice/battle/<record>.ogg and audio/voice.json in a package, made in the browser
+// audio/voice/battle/<record>.ogg in a package, made in the browser
 // (scripts/voice-maker.ts). Files are decoded, encoded to Ogg Vorbis in a worker unless they
 // already are Vorbis, and zipped on the player's own machine.
 import Base from '../../../layouts/Base.astro';
@@ -22,10 +22,6 @@ const lead = {
 };
 const text = {
   ...packageText(lang),
-  settings: L({ zh: '声音设置', en: 'Sound', ja: '音の設定' }),
-  gain: L({ zh: '音量修正（dB，-30 到 12）', en: 'Volume (dB, -30 to 12)', ja: '音量補正（dB、-30〜12）' }),
-  delay: L({ zh: '台词框打开后延迟（毫秒，0 到 2000）', en: 'Delay after the box opens (ms, 0 to 2000)', ja: '枠が開いてからの遅延（ミリ秒、0〜2000）' }),
-  settingsNote: L({ zh: '整个包共用。玩家还能在设置「通用」页调「MOD 战斗语音」的音量。', en: 'For the whole package. Players also set the “MOD battle voices” volume on the settings’ General page.', ja: 'パッケージ全体に効きます。プレイヤーは設定の「全般」ページで「MOD 戦闘ボイス」の音量も調整できます。' }),
   bulk: L({ zh: '批量加入', en: 'Add many at once', ja: 'まとめて追加' }),
   bulkNote: L({ zh: '文件名以台词编号开头的音频可以一次加入很多，例如 7018.ogg、7018_攻击.wav。编号见下面每句台词左边，或台词对照表。', en: 'Audio files whose names start with the line number go in many at once, such as 7018.ogg or 7018_attack.wav. Each line’s number is at its left below, and in the battle line table.', ja: 'ファイル名が台詞番号で始まる音声は、まとめて追加できます（例：7018.ogg、7018_attack.wav）。番号は下の各台詞の左と、台詞対照表にあります。' }),
   bulkChoose: L({ zh: '选择多个文件', en: 'Choose files', ja: 'ファイルを選択' }),
@@ -51,8 +47,6 @@ const text = {
   voicedSum: L({ zh: '共 {n} 句、{who} 个人物，{size}', en: '{n} lines from {who} characters, {size}', ja: '{n} 件・{who} 人、{size}' }),
   errEmpty: L({ zh: '还没有给任何台词配音', en: 'No line has a voice yet', ja: 'まだボイス付きの台詞がありません' }),
   errBusy: L({ zh: '还有 {n} 个文件在转换，等它们完成再导出', en: '{n} files are still being converted; export once they are done', ja: 'まだ {n} 件を変換中です。終わってから書き出してください' }),
-  errGain: L({ zh: '音量修正要在 -30 到 12 之间', en: 'The volume must be between -30 and 12', ja: '音量補正は -30〜12 にしてください' }),
-  errDelay: L({ zh: '延迟要是 0 到 2000 的整数', en: 'The delay must be a whole number from 0 to 2000', ja: '遅延は 0〜2000 の整数にしてください' }),
   allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品' }),
   game: '0.5.2',
 };
@@ -75,15 +69,6 @@ const notice = versionNotice(lang, text.game);
     </header>
 
     <ModPackageForm lang={lang} placeholder="yourname.voices" />
-
-    <section class="block">
-      <h2>{text.settings}</h2>
-      <p class="note">{text.settingsNote}</p>
-      <div class="form">
-        <label>{text.gain}<input type="number" min="-30" max="12" step="0.5" value="0" data-gain /></label>
-        <label>{text.delay}<input type="number" min="0" max="2000" step="10" value="0" data-delay /></label>
-      </div>
-    </section>
 
     <section class="block">
       <h2>{text.bulk}</h2>
