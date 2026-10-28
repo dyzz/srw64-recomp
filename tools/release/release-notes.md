@@ -29,13 +29,14 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 
 - **Karaoke, the title demo and the battle viewer keep the original speed** at 2× and above: the lyrics counted frames while the song kept its tempo. Only a stage's battle animation runs at the chosen speed.
 - **The battle viewer offers the forms and units no stage deploys**: Getter-2 and 3, Getter Liger, Shin Getter-2 and 3, Zambo-Ace and the other transformed forms, and the units only the story puts pilots in.
-- **English names**: Gundam Nataku, and the Titans' Gundam Mk-II in the Library.
+- **Names**: in English, Gundam Nataku, Apsaras II and the Titans' Gundam Mk-II in the Library; in Chinese, 灵鸟, 灵鸟-炫华 and 凤翼 for the Original units スイームルグ, スイームルグS and エルブルス, 哪吒高达 for アルトロンカスタム and 阿普萨拉斯II for アプサラス, and the Library tells repeated units apart by pilot (亚克托·德卡（葵丝）, 猎犬（盖茨）…) with ダンクーガ (2) as 终极断空我. Traditional Chinese the same. Most came from the website's suggestions, thank you.
 
 ### Other changes
 
 - **Android: import a new HD pack from the About page.** It shows the installed HD version; Import HD pack asks twice, since unsaved progress is lost, then closes the game and opens the pack picker in a fresh start.
 - **Ready for [RecompLauncher](https://recomplauncher.com)**: the desktop packages carry its `recomplauncher.json`, and a game installed from the launcher gets the HD pack during setup. The launcher itself is not out yet.
 - **The Linux package's folder is `Marchwind64-linux-x64`** whatever the version, like the Windows one, and the Windows zip again holds the `Marchwind64-windows-x64` folder, as every release before 0.5.1 did. If you extracted 0.5.1 over an old folder and the title still says a new version is out, the 0.5.1 files landed one level up: delete them and extract 0.5.2 over the folder.
+- **Every console.log starts with the version and the system** (OS and version, model, processor, memory): a sessions folder sent without a problem report still says which release ran.
 
 ## Android chips tested
 
@@ -95,13 +96,14 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 - **卡拉OK、标题演示和战斗查看器不再跟着加速**：开着 2 倍速时歌词按帧走、歌却是原速。现在只有关卡里的战斗演出按所选速度跑。
 - **战斗查看器能选没有关卡出击过的形态和机体**：盖塔2、盖塔3、盖塔狮虎、真盖塔2、真盖塔3、赞波ACE 等变形形态，以及只在剧情里配了驾驶员的机体。
-- **英文译名**：Gundam Nataku，以及图鉴里泰坦斯的 Gundam Mk-II。
+- **译名**：中文把原创机体 スイームルグ、スイームルグS、エルブルス 改为灵鸟、灵鸟-炫华、凤翼，アルトロンカスタム 改为哪吒高达，アプサラス 改为阿普萨拉斯II；图鉴里重复的机体按驾驶员区分（亚克托·德卡（葵丝）、猎犬（盖茨）等），ダンクーガ (2) 叫终极断空我。繁体同步。英文是 Gundam Nataku、Apsaras II 和图鉴里泰坦斯的 Gundam Mk-II。大多来自官网上的意见，谢谢。
 
 #### 其他
 
 - **安卓版可以在「关于」页导入新 HD 包**：显示已装的 HD 版本，「导入 HD 包」会确认两次（未存档的进度会丢），然后退出游戏、重新启动并打开选包窗口。
 - **为 [RecompLauncher](https://recomplauncher.com) 做好了准备**：三个桌面包里都带它的 `recomplauncher.json`，从启动器安装的游戏会在安装过程中自动下载 HD 包。启动器本身还没发布。
 - **Linux 包解压出的文件夹固定叫 `Marchwind64-linux-x64`**，不再带版本号，和 Windows 包一样；Windows 的 zip 恢复为里面是 `Marchwind64-windows-x64` 文件夹，和 0.5.1 之前的历代一样。如果你把 0.5.1 解压覆盖到旧文件夹后标题仍提示有新版本，那是 0.5.1 的文件落在了旧文件夹的上一层：删掉它们，把 0.5.2 解压覆盖到文件夹上即可。
+- **每次运行的 console.log 开头都写上版本和系统**（系统版本、机型、处理器、内存）：只发来 sessions 文件夹、没导出问题报告时，也能看出跑的是哪个版本。
 
 ### 安卓已测试的芯片
 
