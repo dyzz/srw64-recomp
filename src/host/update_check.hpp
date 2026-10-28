@@ -1,5 +1,7 @@
 #pragma once
 #include <cstdint>
+#include <filesystem>
+#include <functional>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -66,4 +68,12 @@ bool open_url(const std::string& url);
 // One HTTP GET on the calling thread (update_http.cpp, macos/update_http_macos.mm):
 // the body of a 200, else throws with the reason. Gives up after `timeout_seconds`.
 std::string http_get(const std::string& url, const std::string& user_agent, int timeout_seconds);
+// The same, streamed into `file` (the HD pack, hd_prepare.hpp): no size limit, `received`
+// called with the bytes so far as they arrive. `timeout_seconds` is the longest wait for
+// more data, not the whole transfer. Throws with the reason, leaving whatever was written.
+void http_download(const std::string& url, const std::string& user_agent, const std::filesystem::path& file,
+                   const std::function<void(uint64_t)>& received, int timeout_seconds);
+// "Marchwind64/0.4.8 (windows; x86_64)": the release and the kind of machine, so the
+// website's logs can count requests by version and platform. Nothing about the player.
+std::string user_agent(const std::string& version);
 }

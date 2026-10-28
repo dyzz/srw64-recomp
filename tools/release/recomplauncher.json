@@ -71,6 +71,18 @@
       "defaults": { "map_unit_icons": "hd" }
     }
   ],
+  "prepare": {
+    "program": [
+      "Marchwind64.exe",
+      "Marchwind64-windows-x64/Marchwind64.exe",
+      "marchwind64.sh",
+      "Marchwind64-linux-x64/marchwind64.sh",
+      "Marchwind64.app/Contents/MacOS/srw64-gfx-host"
+    ],
+    "args": ["--prepare"],
+    "label": "The HD art pack (about 520 MB)",
+    "timeout": 7200
+  },
   "looks": { "graphics": "d3d12", "lines": 240 },
   "folders": {
     "data": [
@@ -94,12 +106,13 @@
   },
   "actions": [
     { "id": "open-data", "label": "Open the data folder",
-      "help": "The HD pack goes here as hd/: unzip it into this folder, or open the downloaded zip with Marchwind64. Filters, bezels and mods live here too.",
+      "help": "The HD art pack the setup installed is here as hd/ (remove it to play with the original graphics). Filters, bezels and mods live here too.",
       "open": "data" },
     { "id": "open-saves", "label": "Open the saves folder", "help": "Where your save slots are kept.", "open": "saves" }
   ],
   "exit_codes": {
     "1": "No file dialog is available to pick your ROM. Put it as rom.z64 next to the game and press Play again.",
-    "2": "Marchwind64 could not start and has shown why. If it asked for your ROM, pick it again on the next Play."
+    "2": "Marchwind64 could not start and has shown why. If it asked for your ROM, pick it again on the next Play.",
+    "3": "The HD art pack could not be installed (no connection, or the download was cut short). Run the setup again; the game plays with the original graphics until then."
   }
 }

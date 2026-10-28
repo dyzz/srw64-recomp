@@ -1,10 +1,65 @@
-// http_get for the update check (update_check.hpp) through the system's own HTTP, so the
-// program carries no TLS library or root certificates: WinHTTP on Windows, libcurl on
-// Linux and the Steam Deck (opened at run time, so a system without it only fails the
-// check). macOS has its own in macos/update_http_macos.mm.
+// http_get and http_download for the update check and the HD pack's setup step
+// (update_check.hpp, hd_prepare.hpp) through the system's own HTTP, so the program carries
+// no TLS library or root certificates: WinHTTP on Windows, libcurl on Linux and the Steam
+// Deck (opened at run time, so a system without it only fails the request). macOS has its
+// own in macos/update_http_macos.mm.
 #include "update_check.hpp"
+#include <fstream>
 #include <stdexcept>
 #include <string>
+
+#if !defined(__APPLE__)
+namespace srw64::update {
+namespace {
+// Where a response's bytes go: a string with the update check's limit, or a file.
+struct Sink {
+    virtual ~Sink() = default;
+    // False refuses the rest of the response (the body is too large).
+    virtual bool take(const char* data, size_t size) = 0;
+};
+struct BodySink : Sink {
+    std::string body;
+    bool take(const char* data, size_t size) override {
+        if (body.size() + size > (1u << 20)) return false;
+        body.append(data, size);
+        return true;
+    }
+};
+struct FileSink : Sink {
+    std::ofstream out;
+    uint64_t received = 0;
+    const std::function<void(uint64_t)>& report;
+    FileSink(const std::filesystem::path& file, const std::function<void(uint64_t)>& report) : out(file, std::ios::binary | std::ios::trunc), report(report) {
+        if (!out) throw std::runtime_error("cannot write " + file.string());
+    }
+    bool take(const char* data, size_t size) override {
+        out.write(data, std::streamsize(size));
+        if (!out) throw std::runtime_error("write failed");
+        received += size;
+        if (report) report(received);
+        return true;
+    }
+    void finish() {
+        out.close();
+        if (!out) throw std::runtime_error("write failed");
+    }
+};
+void request(const std::string& url, const std::string& user_agent, int timeout_seconds, Sink& sink);
+}
+
+std::string http_get(const std::string& url, const std::string& user_agent, int timeout_seconds) {
+    BodySink sink;
+    request(url, user_agent, timeout_seconds, sink);
+    return std::move(sink.body);
+}
+void http_download(const std::string& url, const std::string& user_agent, const std::filesystem::path& file,
+                   const std::function<void(uint64_t)>& received, int timeout_seconds) {
+    FileSink sink(file, received);
+    request(url, user_agent, timeout_seconds, sink);
+    sink.finish();
+}
+}
+#endif
 
 #if defined(_WIN32)
 #include <windows.h>
@@ -27,8 +82,7 @@ struct Handle {
 [[noreturn]] void fail(const char* step) {
     throw std::runtime_error(std::string(step) + " failed (" + std::to_string(GetLastError()) + ")");
 }
-}
-std::string http_get(const std::string& url, const std::string& user_agent, int timeout_seconds) {
+void request(const std::string& url, const std::string& user_agent, int timeout_seconds, Sink& sink) {
     const auto address = wide(url);
     URL_COMPONENTS parts{};
     parts.dwStructSize = sizeof(parts);
@@ -40,6 +94,7 @@ std::string http_get(const std::string& url, const std::string& user_agent, int 
     if (!WinHttpCrackUrl(address.c_str(), 0, 0, &parts)) fail("WinHttpCrackUrl");
     Handle session{WinHttpOpen(wide(user_agent).c_str(), WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0)};
     if (!session.h) fail("WinHttpOpen");
+    // The receive timeout is per wait for data, so a long download is fine while it moves.
     const int ms = timeout_seconds * 1000;
     WinHttpSetTimeouts(session.h, ms, ms, ms, ms);
     Handle connection{WinHttpConnect(session.h, host, parts.nPort, 0)};
@@ -53,19 +108,17 @@ std::string http_get(const std::string& url, const std::string& user_agent, int 
     WinHttpQueryHeaders(request.h, WINHTTP_QUERY_STATUS_CODE | WINHTTP_QUERY_FLAG_NUMBER, WINHTTP_HEADER_NAME_BY_INDEX, &code, &size,
                         WINHTTP_NO_HEADER_INDEX);
     if (code != 200) throw std::runtime_error("HTTP " + std::to_string(code));
-    std::string body;
+    std::vector<char> chunk;
     for (;;) {
         DWORD available = 0;
         if (!WinHttpQueryDataAvailable(request.h, &available)) fail("WinHttpQueryDataAvailable");
         if (!available) break;
-        if (body.size() + available > (1u << 20)) throw std::runtime_error("response too large");
-        const size_t at = body.size();
-        body.resize(at + available);
+        chunk.resize(available);
         DWORD read = 0;
-        if (!WinHttpReadData(request.h, body.data() + at, available, &read)) fail("WinHttpReadData");
-        body.resize(at + read);
+        if (!WinHttpReadData(request.h, chunk.data(), available, &read)) fail("WinHttpReadData");
+        if (!sink.take(chunk.data(), read)) throw std::runtime_error("response too large");
     }
-    return body;
+}
 }
 }
 
@@ -74,13 +127,17 @@ std::string http_get(const std::string& url, const std::string& user_agent, int 
 
 #elif defined(__ANDROID__)
 namespace srw64::update {
-std::string http_get(const std::string&, const std::string&, int) { throw std::runtime_error("not on Android"); }
+namespace {
+void request(const std::string&, const std::string&, int, Sink&) { throw std::runtime_error("not on Android"); }
+}
 }
 
 #elif defined(__SWITCH__)
 // No update check on the Switch (docs/design/switch-port.md).
 namespace srw64::update {
-std::string http_get(const std::string&, const std::string&, int) { throw std::runtime_error("not on the Switch"); }
+namespace {
+void request(const std::string&, const std::string&, int, Sink&) { throw std::runtime_error("not on the Switch"); }
+}
 }
 
 #else
@@ -91,7 +148,8 @@ namespace {
 // The few libcurl entry points used, by their documented C signatures and option numbers
 // (curl.h), so no curl headers are needed to build.
 using CURL = void;
-constexpr int CURLOPT_URL = 10002, CURLOPT_WRITEFUNCTION = 20011, CURLOPT_WRITEDATA = 10001, CURLOPT_TIMEOUT = 13,
+constexpr int CURLOPT_URL = 10002, CURLOPT_WRITEFUNCTION = 20011, CURLOPT_WRITEDATA = 10001,
+              CURLOPT_LOW_SPEED_LIMIT = 19, CURLOPT_LOW_SPEED_TIME = 20,
               CURLOPT_FOLLOWLOCATION = 52, CURLOPT_NOSIGNAL = 99, CURLOPT_USERAGENT = 10018;
 constexpr int CURLINFO_RESPONSE_CODE = 0x200002;
 struct Curl {
@@ -119,24 +177,33 @@ const Curl& curl() {
     }();
     return loaded;
 }
+struct Writing {
+    Sink* sink;
+    std::string error;  // a sink's exception, carried out of the C callback
+};
 size_t append(char* data, size_t size, size_t count, void* out) {
-    auto& body = *static_cast<std::string*>(out);
-    if (body.size() + size * count > (1u << 20)) return 0;
-    body.append(data, size * count);
+    auto& writing = *static_cast<Writing*>(out);
+    try {
+        if (!writing.sink->take(data, size * count)) return 0;
+    } catch (const std::exception& failure) {
+        writing.error = failure.what();
+        return 0;
+    }
     return size * count;
 }
-}
-std::string http_get(const std::string& url, const std::string& user_agent, int timeout_seconds) {
+void request(const std::string& url, const std::string& user_agent, int timeout_seconds, Sink& sink) {
     const auto& c = curl();
     if (!c.easy_init || !c.easy_setopt || !c.easy_perform || !c.easy_getinfo || !c.easy_strerror || !c.easy_cleanup)
         throw std::runtime_error("libcurl is not installed");
     CURL* handle = c.easy_init();
     if (!handle) throw std::runtime_error("curl_easy_init failed");
-    std::string body;
+    Writing writing{&sink, {}};
     c.easy_setopt(handle, CURLOPT_URL, url.c_str());
     c.easy_setopt(handle, CURLOPT_WRITEFUNCTION, &append);
-    c.easy_setopt(handle, CURLOPT_WRITEDATA, &body);
-    c.easy_setopt(handle, CURLOPT_TIMEOUT, long(timeout_seconds));
+    c.easy_setopt(handle, CURLOPT_WRITEDATA, &writing);
+    // Gives up when nothing arrives for `timeout_seconds`, however long the whole takes.
+    c.easy_setopt(handle, CURLOPT_LOW_SPEED_LIMIT, 1L);
+    c.easy_setopt(handle, CURLOPT_LOW_SPEED_TIME, long(timeout_seconds));
     c.easy_setopt(handle, CURLOPT_FOLLOWLOCATION, 1L);
     c.easy_setopt(handle, CURLOPT_NOSIGNAL, 1L);
     c.easy_setopt(handle, CURLOPT_USERAGENT, user_agent.c_str());
@@ -144,10 +211,12 @@ std::string http_get(const std::string& url, const std::string& user_agent, int 
     long code = 0;
     c.easy_getinfo(handle, CURLINFO_RESPONSE_CODE, &code);
     c.easy_cleanup(handle);
+    if (!writing.error.empty()) throw std::runtime_error(writing.error);
+    if (result == 23 /* CURLE_WRITE_ERROR: the sink refused */) throw std::runtime_error("response too large");
     if (result != 0) throw std::runtime_error(c.easy_strerror(result));
     // A file:// URL (a test) reports no status.
     if (code != 200 && !(code == 0 && url.starts_with("file:"))) throw std::runtime_error("HTTP " + std::to_string(code));
-    return body;
+}
 }
 }
 #endif

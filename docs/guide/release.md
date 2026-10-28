@@ -88,8 +88,14 @@ Mac 包由 `build_release.py` 放在 `Marchwind64.app` 旁边（所以 Mac zip �
 - 设置文件按平台列出 `presentation.json` 的几个位置（程序旁 `user-data/` 的便携模式优先），存档目录同样。启动器可能在第一次启动前就写入一两个键，
   这种只有部分键、没有 schema 的文件 `launch.cpp` 当作部分设置接受，语言仍按系统（`tests/native_launch.cpp` 的 `launcher_partial_settings`）。
 - 它每个系统只装 Release 里的一个文件（按文件名里的 `windows-x64`、`linux-x64` 挑），HD 包这种第二个下载它不装，也不会误认（`Marchwind64-HD-<版本>.zip` 不带系统名）。
-  HD 包照旧由玩家自己下载：解压成用户目录里的 `hd/`，或者用游戏打开 zip 导入；文件里给了「打开数据文件夹」的按钮（`folders.data`＋`actions`），
-  说明文字写明 HD 包放这里。要它帮装可选包，得等启动器加这种功能。
+  从启动器装的玩家要默认有 HD（2026-10-28 用户定，只限这条渠道；官网、网盘照旧自己下载），所以文件里写了 `prepare`：安装画面的「Getting the extras」一步
+  无窗口跑 `Marchwind64 --prepare`（Linux 经 `marchwind64.sh` 变成 `srw64 --play --prepare`，入口两种写法都认），程序读官网 `/latest.json` 的 `hd`，
+  把包下载到用户目录 `downloads/`、核对 SHA-256、解压到暂存文件夹再改名成 `hd/`，所以失败不会留下半个包；用户目录（或游戏旁、应用内）已有同版本就直接结束。
+  进度按启动器的格式打印 `progress <0..1> <文字>`；失败退出码 3（`exit_codes` 里有说明），玩家重跑安装即可，游戏照常以原版画面运行。
+  实现在 `src/host/hd_prepare.{hpp,cpp}`，下载走 `update_http.cpp`（Windows WinHTTP、Linux 运行时 libcurl）和 `macos/update_http_macos.mm`（NSURLSession）的
+  `http_download`，空闲 60 秒无数据才算超时。`make recomp-hd-prepare-test` 测解压与替换（含符号链接的 `hd/`、不完整的包、越界路径）；联网部分手动验证：
+  `SRW64_UPDATE_URL=file:///…/latest.json srw64-gfx-host --prepare --user-dir DIR`，`latest.json` 的 `hd.url` 可指向本地 `file://` 的 zip。
+  「打开数据文件夹」的按钮（`folders.data`＋`actions`）说明 HD 包装在这里、删掉就回原版。
 - 它的 MOD 页只接 Thunderstore 和 GameBanana，我们的 `.srw64mod` 照旧走官网，文件里不写 `mods`。
 - 提交游戏在开发者中心的 Submit a game 填 GitHub 仓库；页面图（图标、背景、logo、截图）在本地 `local/store-pictures/`。
 

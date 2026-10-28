@@ -165,6 +165,9 @@ recomp-upgrade-refund-test:
 
 .PHONY: recomp-mod-library-test
 MINIZ_DIR := $(RECOMP_RUNTIME)/thirdparty/miniz
+ifeq ($(shell uname),Darwin)
+HD_PREPARE_TEST_LIBS := -framework CoreFoundation
+endif
 recomp-mod-library-test:
 	mkdir -p build/recomp/mod-library-test
 	for c in miniz miniz_tdef miniz_tinfl miniz_zip; do cc -c -g -fsanitize=address,undefined -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
@@ -172,6 +175,17 @@ recomp-mod-library-test:
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -I$(RECOMP_BUILD)/upstream/RT64/src/contrib -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
 		tests/native_mod_library.cpp src/host/mod_library.cpp build/recomp/mod-library-test/miniz*.o -o build/recomp/mod-library-test/test
 	build/recomp/mod-library-test/test build/recomp/mod-library-test/run tests/mods/manifests.json
+
+# The HD pack's setup step (src/host/hd_prepare.hpp): unpacking and replacing, without the network.
+.PHONY: recomp-hd-prepare-test
+recomp-hd-prepare-test:
+	mkdir -p build/recomp/hd-prepare-test
+	for c in miniz miniz_tdef miniz_tinfl miniz_zip; do cc -c -g -fsanitize=address,undefined -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		$(MINIZ_DIR)/$$c.c -o build/recomp/hd-prepare-test/$$c.o || exit 1; done
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -Isrc/native -I$(RECOMP_BUILD)/upstream/RT64/src/contrib -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		tests/native_hd_prepare.cpp src/host/hd_prepare.cpp src/native/app/runtime.cpp src/native/app/save_library.cpp src/native/app/sram.cpp \
+		build/recomp/hd-prepare-test/miniz*.o $(HD_PREPARE_TEST_LIBS) -o build/recomp/hd-prepare-test/test
+	build/recomp/hd-prepare-test/test build/recomp/hd-prepare-test/run
 
 .PHONY: recomp-mod-data-test
 recomp-mod-data-test:

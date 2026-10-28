@@ -17,6 +17,12 @@
 - 发布后 `web/scripts/sync-release.mjs` 把 `hd` 写进官网的 `release.json`；`/latest.json` 的 `hd` 给出版本、各语言下载页（安装页 `#hd`）、文件与校验值。没有版本号的旧包（0.3.5 随应用发布的那个）不出现在 `latest.json`。
 - 游戏读已装的包：`SRW64_ART_PACK`（`hd/art`）旁边的 `hd/hd.json`。开发运行的美术目录没有 `hd.json`，算没装。`hd_newer()`（`update_version.hpp`）：装了包、官网的版本比它新，或装的包没有版本号，才提示；没装 HD 的玩家不提示。
 
+## RecompLauncher 的安装步骤
+
+2026-10-28 起 `/latest.json` 的 `hd` 还有第二个读者：`srw64-gfx-host --prepare`（`src/host/hd_prepare.cpp`），RecompLauncher 安装游戏时无窗口运行，
+按 `hd` 的 `url`／`sha256`／`bytes` 下载 HD 包装进用户目录。它用同一个 `SRW64_UPDATE_URL` 覆盖和同一个 User-Agent；`http_download` 是流式写文件的版本，
+无大小上限、按「多久没有数据」超时。细节见 `docs/guide/release.md` 的 RecompLauncher 一节。
+
 ## 入口
 
 | 入口 | 行为 |

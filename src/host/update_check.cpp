@@ -50,8 +50,7 @@ void save(Shared& s) {
         std::fprintf(stderr, "SRW64_UPDATE_SAVE_FAILED %s\n", error.what());
     }
 }
-// "Marchwind64/0.4.8 (windows; x86_64)": the release and the kind of machine, so the
-// website's logs can count checks by version and platform. Nothing about the player.
+}
 std::string user_agent(const std::string& version) {
 #if defined(_WIN32)
     const char* platform = "windows";
@@ -69,6 +68,7 @@ std::string user_agent(const std::string& version) {
 #endif
     return "Marchwind64/" + version + " (" + platform + "; " + arch + ")";
 }
+namespace {
 void run(bool manual) {
     auto& s = shared();
     std::string version;

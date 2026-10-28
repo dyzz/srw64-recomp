@@ -213,8 +213,10 @@ if(SRW64_ENABLE_RT64)
         # Each adapter's D3D12 support and the Vulkan loader's, into console.log (gpu_report.hpp).
         target_sources(srw64-gfx-host PRIVATE windows/gpu_report_windows.cpp)
     endif()
-    # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md).
-    target_sources(srw64-gfx-host PRIVATE update_check.cpp update_http.cpp)
+    # The update check: the website's /latest.json through the system's HTTP (docs/native/update-check.md),
+    # and RecompLauncher's setup step, which installs the HD pack it names (hd_prepare.hpp).
+    target_sources(srw64-gfx-host PRIVATE update_check.cpp update_http.cpp hd_prepare.cpp)
+    set_property(SOURCE hd_prepare.cpp APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
     # What the program prints, into the run's console.log, and the bug report zip of the
     # Feedback page (docs/native/bug-report.md).
     target_sources(srw64-gfx-host PRIVATE console_log.cpp bug_report.cpp stall_watchdog.cpp)
@@ -349,7 +351,7 @@ if(SRW64_GL_ONLY)
         native_dialogue.cpp native_intro.cpp dialogue_data.cpp "${SRW64_ROOT}/src/native/localization/catalog.cpp"
         sprite_text.cpp ui_text.cpp title_page.cpp battle_viewer.cpp move_jump.cpp enemy_cycle.cpp unit_name.cpp
         native_name_entry.cpp "${SRW64_ROOT}/src/native/ui/frontend.cpp" "${SRW64_ROOT}/src/native/ui/presentation_settings.cpp"
-        update_check.cpp update_http.cpp console_log.cpp bug_report.cpp stall_watchdog.cpp
+        update_check.cpp update_http.cpp hd_prepare.cpp console_log.cpp bug_report.cpp stall_watchdog.cpp
         debug_server.cpp debug_transport.cpp gbi_stats.cpp
         link_page.cpp battle_page.cpp intermission_page.cpp upgrade_page.cpp parts_page.cpp ability_page.cpp swap_page.cpp
         cheats.cpp save_page.cpp save_store.cpp autosave.cpp campaign_switch.cpp library.cpp stage_info.cpp

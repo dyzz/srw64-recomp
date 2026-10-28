@@ -117,6 +117,7 @@ std::string usage() {
            "       [--new-game | --import-save SAVE] [--mute] [--campaign CAMPAIGN.json] [--debug]\n"
            "       srw64-gfx-host --play --export-save FILE [--export-format FORMAT] [--user-dir DIR]\n"
            "       srw64-gfx-host --play --import-save SAVE [--user-dir DIR]\n"
+           "       srw64-gfx-host --prepare [--user-dir DIR]\n"
            "--import-save takes a 32 KiB SRAM (ares .ram, Project64/mupen64plus .sra) or a\n"
            "RetroArch .srm; the old card's slots are kept as extended slots. Without --rom it\n"
            "only imports and starts nothing.\n"
@@ -130,6 +131,8 @@ std::string usage() {
            "saves in DIR/campaigns/<id>/saves.\n"
            "--debug opens the debug interface for tools/recomp/debug (MCP) or tools/release/linux/attach.py:\n"
            "loopback TCP, with the port and token in debug.json in the session's run directory.\n"
+           "--prepare (RecompLauncher's setup step) installs the newest HD pack into the user\n"
+           "directory without a window, printing `progress <0..1> <text>` lines; exit 3 says why not.\n"
            "This entry never runs Python, Git, CMake, Ninja or the recompilers.\n";
 }
 Options parse_options(std::span<const std::string_view> args, bool allow_rom_picker) {

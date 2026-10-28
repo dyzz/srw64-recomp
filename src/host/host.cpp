@@ -1,6 +1,7 @@
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
 #include "console_log.hpp"
+#include "hd_prepare.hpp"
 #include "dialogue_data.hpp"
 #include "crash_dump.hpp"
 // Native integration host, optionally rendered through RT64/Metal.
@@ -16,6 +17,7 @@
 #include <optional>
 #include <string>
 #include <thread>
+#include <iostream>
 #include <vector>
 #ifdef __ANDROID__
 #include <SDL_system.h>  // not SDL.h: its SDL_main.h renames main, which SDL looks up
@@ -980,6 +982,36 @@ int main(int argc, char** argv) {
         std::fputs(srw64::app::usage().c_str(), stdout);
         return 0;
     }
+#if !defined(__ANDROID__) && !defined(__SWITCH__) && !defined(__vita__)
+    // RecompLauncher's setup step (hd_prepare.hpp): `--prepare [--user-dir DIR]`, also after
+    // --play, which marchwind64.sh puts before everything. No window: the HD pack into the
+    // user directory a start would use, progress lines on stdout.
+    {
+        std::vector<std::string_view> args(argv + 1, argv + argc);
+        if (!args.empty() && args[0] == "--play") args.erase(args.begin());
+        if (!args.empty() && args[0] == "--prepare") {
+            std::filesystem::path user_dir;
+            if (args.size() == 3 && args[1] == "--user-dir") user_dir = std::filesystem::absolute(std::filesystem::path(args[2]));
+            else if (args.size() != 1) {
+                std::fprintf(stderr, "SRW64_PREPARE_FAILURE --prepare takes only --user-dir DIR\n");
+                return 3;
+            }
+            try {
+                if (user_dir.empty()) {
+#if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
+                    user_dir = prepare_launcher({}, srw64::app::executable_path().parent_path(), {}, {}).user_dir;
+#else
+                    user_dir = srw64::app::default_user_dir();
+#endif
+                }
+            } catch (const std::exception& error) {
+                std::fprintf(stderr, "SRW64_PREPARE_FAILURE %s\n", error.what());
+                return 3;
+            }
+            return srw64::hd::prepare(user_dir, std::cout);
+        }
+    }
+#endif
     if (argc > 1 && std::string_view(argv[1]) == "--play") {
         srw64::app::Options options;
         try {

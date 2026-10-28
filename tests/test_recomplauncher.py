@@ -63,8 +63,7 @@ class RecompLauncherFileTest(unittest.TestCase):
         self.assertEqual([p.rsplit("/", 1)[0] for p in saves], folders)
         self.assertTrue(all(path.endswith("/saves") for path in saves))
         # The HD pack, filters, bezels and mods go into the user folder itself (launch.cpp looks
-        # for hd/ there first); the launcher only installs one file per system, so the HD pack
-        # stays a download the player unzips there or opens with the game.
+        # for hd/ there first); the setup step installs the pack there (test_prepare).
         self.assertEqual([entry["path"] for entry in self.data["folders"]["data"]], folders)
         self.assertEqual([a["open"] for a in self.data["actions"]], ["data", "saves"])
         self.assertIn("hd/", self.data["actions"][0]["help"])
@@ -89,11 +88,28 @@ class RecompLauncherFileTest(unittest.TestCase):
             for choice in setting["choices"]:
                 self.assertEqual(set(choice["set"]), {setting["id"] if setting["id"] != "language" else "locale"})
 
-    def test_exit_codes_are_the_desktop_starts(self):
+    def test_exit_codes_are_the_programs(self):
         desktop = source("src/native/app/desktop.cpp")
+        prepare = source("src/host/hd_prepare.cpp") + source("src/host/host.cpp")
         for code in self.data["exit_codes"]:
-            self.assertRegex(desktop, rf"return {int(code)};")
+            self.assertRegex(desktop if int(code) < 3 else prepare, rf"return {int(code)};")
         self.assertEqual(self.data["looks"], {"graphics": "d3d12", "lines": 240})
+
+    def test_prepare_installs_the_hd_pack(self):
+        """The setup step (src/host/hd_prepare.hpp): the same programs as the start, --prepare, which the
+        Linux script passes through after --play; the HD pack is about 520 MB, so the timeout is hours."""
+        prepare = self.data["prepare"]
+        self.assertEqual(prepare["program"], self.data["start"]["program"])
+        self.assertEqual(prepare["args"], ["--prepare"])
+        self.assertGreaterEqual(prepare["timeout"], 3600)
+        self.assertIn("HD", prepare["label"])
+        host = source("src/host/host.cpp")
+        self.assertIn('args[0] == "--prepare"', host)
+        self.assertIn('if (!args.empty() && args[0] == "--play") args.erase(args.begin());', host)
+        self.assertIn('exec "$here/srw64" --play "$@"', source("tools/release/linux/marchwind64.sh"))
+        self.assertIn("--prepare", source("src/native/app/runtime.cpp"), "usage names it")
+        self.assertIn("3", self.data["exit_codes"])
+        self.assertIn("recomp-hd-prepare-test", source("Makefile"))
 
 
 if __name__ == "__main__":
