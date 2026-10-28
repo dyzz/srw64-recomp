@@ -93,3 +93,6 @@ CMakeCache.txt
 *~
 # Steam library artwork for the Linux package (tools/release/linux/steam_art.py makes it).
 !/tools/release/linux/steam-art/*.png
+# Local tool output (tools/hd_ai/art_review.py and run evidence) and the website's cache when astro is run from the root.
+/output/
+/.astro/
