@@ -7,7 +7,7 @@ import Base from '../../../layouts/Base.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
 import { library, portraitUrl } from '../../../lib/data';
-import { packageText } from '../../../lib/mod-maker-text';
+import { packageText, versionNotice } from '../../../lib/mod-maker-text';
 import { pickables } from '../../../lib/mod-picker';
 import '../../../styles/mod-maker.css';
 import data from '../../../data/data-mods.json';
@@ -84,12 +84,14 @@ const people = library().people.filter((p) => p.id < 25 || p.id >= 33)
   .map((p) => ({ id: p.id, name: p.name, full: p.full_name, portrait: portraitUrl(p.portrait), image: p.portrait?.image ?? null }));
 const units = data.units.map((u) => ({ id: u.id, name: u.name }));
 const pick = pickables(lang, data.units.map((u) => u.id), people.map((p) => p.id));
+const notice = versionNotice(lang, text.game);
 ---
 <Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
   <div class="wrap maker" data-names>
     <header class="page-head">
       <span class="tag">MOD</span>
       <h1>{title[tl(lang)]}</h1>
+      {notice && <p class="version-notice">{notice}</p>}
       <p>{lead[tl(lang)]}</p>
       <p class="note"><a href={`/${lang}/docs/mod-names/`}>{L({ zh: '名字与头像 MOD 说明', en: 'Name and portrait mods guide', ja: '名前・顔グラフィック MOD の説明' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。' })}</p>
     </header>

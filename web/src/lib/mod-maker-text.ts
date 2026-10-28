@@ -1,6 +1,7 @@
 // Texts the MOD makers share (pages/[lang]/mods/data.astro, names.astro and the package
 // form, components/ModPackageForm.astro), in one page language.
 import { tl, type Lang } from '../i18n';
+import { release } from '../data/release';
 
 const L = <T>(lang: Lang, v: { zh: T; en: T; ja: T }) => v[tl(lang)];
 
@@ -34,3 +35,17 @@ export const packageText = (lang: Lang) => ({
   weapon: L(lang, { zh: '武器', en: 'Weapon', ja: '武器' }),
   game: L(lang, { zh: '需要游戏版本', en: 'Game version needed', ja: '必要なゲームバージョン' }),
 });
+
+// Above a maker while the latest public release is older than the version its packages
+// need (the form writes game ">=need"); sync-release bringing that release in removes it.
+const older = (a: string, b: string) => {
+  const x = a.split('.').map(Number), y = b.split('.').map(Number);
+  for (let i = 0; i < 3; i++) if ((x[i] ?? 0) !== (y[i] ?? 0)) return (x[i] ?? 0) < (y[i] ?? 0);
+  return false;
+};
+export const versionNotice = (lang: Lang, need: string) =>
+  !older(release.version, need) ? null : L(lang, {
+    zh: `这个工具做出的包需要游戏 ${need} 或更新的版本才能用。${need} 还没有发布（目前最新是 ${release.version}），可以先把包做好，等 ${need} 发布后再安装。`,
+    en: `Packages made here need the game's version ${need} or later. ${need} is not out yet (the latest is ${release.version}); you can make your package now and install it once ${need} is released.`,
+    ja: `このツールで作ったパッケージには、ゲームのバージョン ${need} 以降が必要です。${need} はまだ公開されていません（現在の最新は ${release.version}）。パッケージは今作っておき、${need} の公開後にインストールしてください。`,
+  });

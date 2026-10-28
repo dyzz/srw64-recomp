@@ -5,7 +5,7 @@
 import Base from '../../../layouts/Base.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
-import { packageText } from '../../../lib/mod-maker-text';
+import { packageText, versionNotice } from '../../../lib/mod-maker-text';
 import { pickables } from '../../../lib/mod-picker';
 import data from '../../../data/data-mods.json';
 import '../../../styles/mod-maker.css';
@@ -121,12 +121,14 @@ const spiritNames: Record<string, { zh: string; en: string; ja: string }> = {
 const spirits = Object.entries(spiritNames).map(([key, name]) => ({ key, label: L(name) }));
 const labels = { fields, abilities, skills, spirits, sizes: ['SS', 'S', 'M', 'L', 'LL'] };
 const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) => p.id));
+const notice = versionNotice(lang, text.game);
 ---
 <Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
   <div class="wrap maker" data-maker>
     <header class="page-head">
       <span class="tag">MOD</span>
       <h1>{title[tl(lang)]}</h1>
+      {notice && <p class="version-notice">{notice}</p>}
       <p>{lead[tl(lang)]}</p>
       <p class="note"><a href={`/${lang}/docs/mod-data/`}>{L({ zh: '数值 MOD 说明', en: 'Number mods guide', ja: '数値 MOD の説明' })}</a> · <a href={`/${lang}/mods/ids/units/`}>{L({ zh: 'ID 表', en: 'ID tables', ja: 'ID 表' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成。', en: 'Needs 0.5.2 or later. Everything happens in your browser.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われます。' })}</p>
     </header>
