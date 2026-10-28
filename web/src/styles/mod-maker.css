@@ -127,6 +127,8 @@
 /* The map icon maker (pages/[lang]/mods/icons.astro). */
 .maker .pick-icons { display: flex; gap: 4px; justify-content: center; }
 .maker .pick-icons img { width: 28px; height: 28px; object-fit: contain; }
+.maker .pick-icons.only img { width: 48px; height: 48px; }
+.maker .card h3 img.pose { width: 72px; height: 72px; object-fit: contain; }
 .maker .icon-rows { display: grid; gap: 10px; }
 .maker .icon-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
 .maker .icon-row > .row-label { width: 64px; font-size: 13px; color: var(--muted); align-self: center; }

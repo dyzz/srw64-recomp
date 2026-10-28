@@ -8,7 +8,7 @@ import { picker, type Pickable } from './picker';
 
 type Names3 = { ja: string; zh: string; en: string };
 type Way = 'left' | 'right' | 'front';
-type Unit = { id: number; name: Names3; icon: number; facing: Way };
+type Unit = { id: number; name: Names3; icon: number; facing: Way; pose: string | null };
 // One replaced icon: the unit it was picked for, its picture and the way that picture looks.
 type Entry = { unit: number; pic: Picture | null; way: Way };
 
@@ -123,7 +123,7 @@ export function initIconMaker() {
       });
       const done = () => { render(); iconPicker.refresh(); };
       const original = { left: text.facingLeft, right: text.facingRight, front: text.facingFront }[u.facing];
-      const head = el('h3', {}, el('img', { class: 'icon pixel-art', src: `/gen/icons/${icon}.png`, alt: '' }), el('span', { class: 'num' }, String(u.id)), nameOf(u.name));
+      const head = el('h3', {}, u.pose ? el('img', { class: 'pose', src: u.pose, alt: '' }) : null, el('span', { class: 'num' }, String(u.id)), nameOf(u.name));
       const notes = [el('p', { class: 'hint' }, fill(text.iconFacing, { facing: original })),
         others.length ? el('p', { class: 'hint' }, fill(text.iconShared, { units: others.map((o) => `${o.id} ${nameOf(o.name)}`).join(lang === 'en' ? ', ' : '、') })) : null];
       const remove = el('button', { type: 'button', class: 'mini', onclick: () => { entries.delete(icon); done(); } }, text.remove);

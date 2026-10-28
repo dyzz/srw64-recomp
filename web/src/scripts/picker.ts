@@ -2,8 +2,8 @@
 // by series and by name or number, in the game's own order. Picking calls back with the number.
 import { el } from './mod-package';
 
-// `icons`: small pictures under the main one (the icon maker's original and HD map icons); a
-// missing one is left out.
+// `icons`: pictures under the main one, or in its place without one (the icon maker's original
+// and HD map icons); a missing one is left out.
 export type Pickable = { id: number; name: { ja: string; zh: string; en: string }; series: number | null; img: string | null;
   icons?: { src: string; pixel?: boolean }[] };
 export type PickerText = { allSeries: string; search: string; none: string };
@@ -19,9 +19,9 @@ export function picker(items: Pickable[], series: { id: number | null; name: str
   const card = (x: Pickable) => {
     const badge = options.badge?.(x.id);
     const b = el('button', { type: 'button', class: `pick${x.id === chosen ? ' on' : ''}`, 'data-id': x.id, title: `${x.id} ${x.name.ja}` },
-      x.img ? el('img', { src: x.img, alt: '', loading: 'lazy', width: 56, height: 56 }) : el('span', { class: 'pick-blank' }),
-      x.icons ? el('span', { class: 'pick-icons' }, ...x.icons.map((i) => {
-        const img = el('img', { src: i.src, alt: '', loading: 'lazy', width: 28, height: 28, class: i.pixel ? 'pixel-art' : null }) as HTMLImageElement;
+      x.img ? el('img', { src: x.img, alt: '', loading: 'lazy', width: 56, height: 56 }) : x.icons ? null : el('span', { class: 'pick-blank' }),
+      x.icons ? el('span', { class: x.img ? 'pick-icons' : 'pick-icons only' }, ...x.icons.map((i) => {
+        const img = el('img', { src: i.src, alt: '', loading: 'lazy', width: 48, height: 48, class: i.pixel ? 'pixel-art' : null }) as HTMLImageElement;
         img.addEventListener('error', () => img.remove(), { once: true });
         return img;
       })) : null,
