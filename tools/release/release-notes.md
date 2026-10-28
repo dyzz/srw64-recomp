@@ -10,28 +10,32 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 | [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}) for macOS, Windows, Linux and Android. |
 {switch_hd_row_en}
 
-## What's new in 0.5.1
+## What's new in 0.5.2
 
-### Fixes
+### Traditional Chinese
 
-- **The game froze on a save or an upgrade.** Saving a second time in one visit to the save screen (overwriting slot 1), or upgrading a unit, could stop the game while the screen went on running. Reported on 0.5.0 from an iQOO 12 and a Windows desktop; 0.5.0's 120 Hz timing made a flaw of the save screens far easier to hit.
-- **Counter Plan on the New and HD pre-battle pages** (#16): with any Counter Plan order other than Manual, these pages gave no way to change the response and the weapon button did nothing. They now open the response screen with the order's choice selected (counter with its weapon, evade or defend), and you can keep it or change it, another weapon included. The Original screen still follows the order without stopping.
-
-### Translation
-
-- **Names**: Psycho Gundam and ReGelgu by their official spellings; Battle Beast, Great General of Darkness, Great Marshal of Hell, Apolly, Roze, Devil Gundam and God Gundam from the website's suggestions. The Library names some English records by pilot or series instead of numbering them.
+- **Traditional Chinese (Taiwan) is the fourth language**, after Japanese, English and Simplified Chinese: the whole game, from the menus and the story to the stage info and the chapter title cards, with the Taiwan names of the units, people, weapons and series. It is converted from the Simplified Chinese text with a list of Taiwan names researched work by work, so the two stay in step. The first launch picks it on a Traditional-script system, in Taiwan, Hong Kong or Macau, and for Steam's Traditional Chinese; it is in the language menu too. The world map's name plates are still Simplified. The website has Traditional pages as well, at [/tw/](https://srw64.dreamquest.club/tw/).
 
 ### MOD packages
 
-- **Install a MOD package by dropping it on the game window**, or put it in the MOD folder. The MOD manager (the title screen's corner button, or Settings → General → MOD) lists the installed packages and enables, disables, orders and removes them. A package is a folder, or a `.srw64mod` zip of it, holding data only. Not on Android yet.
-- **Music mods are supported**: a package's Ogg Vorbis files can replace any of the 49 songs, with loop points, volume and titles, and a battle song per pilot or unit. We ship no music package, only the tool to make one: the website's [BGM mod maker](https://srw64.dreamquest.club/en/mods/bgm/) builds the package in your browser from mp3, wav, flac, m4a or ogg files, nothing uploaded. Settings → General turns MOD music off or sets its volume; the sound test marks the replaced songs. Guides: [Mod packages](https://srw64.dreamquest.club/en/docs/mods/), [Music mods](https://srw64.dreamquest.club/en/docs/mod-music/).
-- **Number mods change the terrain ranks** of units and pilots (`data/units.json`, `data/pilots.json`). A demo package, Main Cast: Space A, raises space to A for the 20 pilots and 21 units of the main cast below it (the Mazinger team, GoShogun and others); download it from [the website's MOD page](https://srw64.dreamquest.club/en/mods/#srw64.space-a). See [Number mods](https://srw64.dreamquest.club/en/docs/mod-data/) and the [unit and pilot ID table](https://srw64.dreamquest.club/en/mods/ids/).
+- **Android installs MOD packages now.** Put the `.srw64mod` (or `.zip`) in `mods/` inside the Marchwind64 folder under Documents, in the Files app, and it installs when the game starts or the MOD page opens; or press Install from file on the MOD page and pick it. A file that does not install is listed with the reason, on the desktop too.
+- **Number mods set the stats**: a unit's HP, EN, movement, mobility, armor, limit, repair cost, upgrade cap, abilities, size, shield and sword and part slots; a pilot's six stats, SP, double move, skills and spirits; a weapon's power, range, hit, ammo, EN, morale, critical rate and terrain ranks. Saves keep the original values, so a package can be turned off again.
+- **Name and portrait mods**: rename the four routes' heroes and partners and the unit (for display only; saves keep the game's names, so the package can be turned off), rename any pilot, unit or weapon, and replace any portrait with `art/portraits/<pilot>.png`, with or without the HD pack.
+- **Map icon mods**: `art/icons/<unit>.png` replaces a unit's map icon with one picture of 16 to 128 pixels; the enemy and third-party rings, the acted grey and the facing are added as for the HD icons.
+- **Battle voice mods**: `audio/voice/battle/<record>.ogg` plays as that battle line's box opens, over the game's own sound. Settings → General has a switch and a volume for MOD voices. We ship no voices, only the maker.
+- **Makers on the website** for all of these, in your browser with nothing uploaded: the [number](https://srw64.dreamquest.club/en/mods/data/), [name and portrait](https://srw64.dreamquest.club/en/mods/names/) (with a framing window for the portrait), [map icon](https://srw64.dreamquest.club/en/mods/icons/) and [battle voice](https://srw64.dreamquest.club/en/mods/voices/) makers join the BGM maker, which now plays a song from its row and seeks on a click in the waveform. The [ID tables](https://srw64.dreamquest.club/en/mods/ids/units/) are three pages (units, pilots, weapons) with the original stats, abilities, skills and spirits. Guides: [Number mods](https://srw64.dreamquest.club/en/docs/mod-data/), [Name, portrait and map icon mods](https://srw64.dreamquest.club/en/docs/mod-names/), [Music mods](https://srw64.dreamquest.club/en/docs/mod-music/) (battle voices included).
+
+### Fixes
+
+- **Karaoke, the title demo and the battle viewer keep the original speed** at 2× and above: the lyrics counted frames while the song kept its tempo. Only a stage's battle animation runs at the chosen speed.
+- **The battle viewer offers the forms and units no stage deploys**: Getter-2 and 3, Getter Liger, Shin Getter-2 and 3, Zambo-Ace and the other transformed forms, and the units only the story puts pilots in.
+- **English names**: Gundam Nataku, and the Titans' Gundam Mk-II in the Library.
 
 ### Other changes
 
-- **Map unit icons face their side**: your units and friendly third parties look left, enemies and hostile third parties right, in the original images and in HD.
-- **The screenshot key can be rebound** on the Controls page (F12 and Print Screen by default). On Android the picture goes to `screenshots/` in the Marchwind64 folder under Documents, and a touch key under Settings takes one; the touch controls and the frame-rate readout stay out of the shot.
-- **3× and 4× on phones that cannot keep up** (#10): a phone that cannot draw 90 or 120 frames a second now runs the game every frame and draws one frame in three, so 3× and 4× are faster than 2× there (on a Dimensity 7300 an enemy phase went from 22 to 15 seconds). While hurried, the game's threads run on the big cores.
+- **Android: import a new HD pack from the About page.** It shows the installed HD version; Import HD pack asks twice, since unsaved progress is lost, then closes the game and opens the pack picker in a fresh start.
+- **Ready for [RecompLauncher](https://recomplauncher.com)**: the desktop packages carry its `recomplauncher.json`, and a game installed from the launcher gets the HD pack during setup. The launcher itself is not out yet.
+- **The Linux package's folder is `Marchwind64-linux-x64`** whatever the version, like the Windows one, and the Windows zip again holds the `Marchwind64-windows-x64` folder, as every release before 0.5.1 did. If you extracted 0.5.1 over an old folder and the title still says a new version is out, the 0.5.1 files landed one level up: delete them and extract 0.5.2 over the folder.
 
 ## Android chips tested
 
@@ -72,28 +76,32 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 | [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），macOS、Windows、Linux、安卓通用。 |
 {switch_hd_row}
 
-### 本版更新（0.5.1）
+### 本版更新（0.5.2）
 
-#### 修复
+#### 繁体中文
 
-- **存档或改造时游戏卡住。** 在存档画面里连存两次（覆盖 1 号存档），或者改造机体，游戏可能停住不动而画面还在走。0.5.0 发布后 iQOO 12 和一台 Windows 台式机都报告了这个问题；存档画面早有这个隐患，0.5.0 的 120 Hz 节拍让它变得很容易碰上。
-- **新画面和 HD 画面的战前确认不认反击计划**（#16）：驾驶员设了「手动」以外的反击计划时，这两种画面没有改应对方式的地方，武器按钮也没反应。现在会和原版的「手动」一样打开应对画面，并预选计划里的选择（用它的武器反击、回避或防御），可以照用，也可以改，包括换武器。原版画面仍按计划直接开打。
-
-#### 翻译
-
-- **译名**：按官网收到的意见改为 凤翼天翔、夺地者、菲因梅露姆、艾比安高达；英文的 Psycho Gundam、ReGelgu 改为官方拼写，另有 Battle Beast、Great General of Darkness 等几处。图鉴里一部分英文条目改用驾驶员或作品名而不是编号。
+- **新增繁体中文（台湾）**，和日文、英文、简体中文并列：菜单、剧情、本关情报到章节标题卡全都有，机体、人物、武器和作品用台湾译名。它由简体中文文本转换而来，加一份逐部作品查过的台湾译名表，两边始终同步。系统是繁体中文、身在台湾、香港、澳门，或 Steam 设为繁体中文时，首次启动会选它；语言菜单里也能切。世界地图的地名牌暂时还是简体。官网也有繁体页面：[/tw/](https://srw64.dreamquest.club/tw/)。
 
 #### MOD 包
 
-- **把 MOD 包拖进游戏窗口就能安装**，也可以放进 MOD 文件夹。MOD 管理（标题画面右下角的「MOD」，或设置 → 通用 → MOD）列出已装的包，可以启用、停用、排序和删除。包是一个只放数据的文件夹，或把它压缩成的 `.srw64mod`。安卓版暂时不能安装。
-- **支持音乐 MOD**：包里的 Ogg Vorbis 文件可以替换 49 首曲子中的任意几首，设循环点、音量和曲名，还能指定某个人物或机体打仗时放哪首。我们不提供现成的音乐包，只提供制作工具：官网的 [BGM MOD 制作](https://srw64.dreamquest.club/zh/mods/bgm/)在浏览器里把 mp3、wav、flac、m4a、ogg 做成音乐包，音频不会上传。设置 → 通用 可以关掉 MOD 音乐或调音量；音乐鉴赏里被替换的曲目有标记。说明见 [MOD 包](https://srw64.dreamquest.club/zh/docs/mods/)和[音乐 MOD](https://srw64.dreamquest.club/zh/docs/mod-music/)。
-- **数值 MOD 可以改机体和驾驶员的地形适应**（`data/units.json`、`data/pilots.json`）。做了一个示例包「主力宇宙适应 A」，把魔神系、豪将军等我方主力里宇宙不到 A 的 20 名驾驶员和 21 台机体改成 A，可以在[官网的 MOD 下载页](https://srw64.dreamquest.club/zh/mods/#srw64.space-a)下载。说明见[数值 MOD](https://srw64.dreamquest.club/zh/docs/mod-data/)，编号查[机体与人物 ID 表](https://srw64.dreamquest.club/zh/mods/ids/)。
+- **安卓版可以安装 MOD 包了。** 把 `.srw64mod`（或 `.zip`）放进「文件」里 Marchwind64 文件夹的 `mods/`，游戏启动或打开 MOD 页时自动安装；也可以在 MOD 页点「从文件安装」直接选文件。装不上的文件会列在页面上并说明原因，桌面版也是。
+- **数值 MOD 可以改数值了**：机体的 HP、EN、移动力、运动性、装甲、限界、修理费、改造上限、特殊能力、尺寸、盾与剑、部件槽；驾驶员的六项能力、SP、二回行动、技能和精神；武器的攻击力、射程、命中、弹数、EN、气力、暴击和地形适应。存档里保存的仍是原版数值，所以包随时可以停用。
+- **名字与头像 MOD**：改四条路线主角、搭档和部队的名字（只改显示，存档里仍是游戏自己的名字，停用就恢复），改任意人物、机体、武器的名字，用 `art/portraits/<人物号>.png` 换任意头像，有没有 HD 包都行。
+- **地图图标 MOD**：`art/icons/<机体号>.png` 换掉机体的地图图标，一张 16 到 128 像素的图就够，敌方和第三方的描边、已行动的灰化和朝向都按 HD 图标的做法自动加。
+- **战斗语音 MOD**：`audio/voice/battle/<台词号>.ogg` 在战斗演出里这句台词框打开时播放，叠在游戏自己的声音上。设置 → 通用 有 MOD 语音的开关和音量。我们不提供语音，只提供制作工具。
+- **官网的制作工具**覆盖以上全部，都在浏览器里完成、不上传任何东西：[数值](https://srw64.dreamquest.club/zh/mods/data/)、[名字与头像](https://srw64.dreamquest.club/zh/mods/names/)（头像可以拖动缩放裁切）、[地图图标](https://srw64.dreamquest.club/zh/mods/icons/)、[战斗语音](https://srw64.dreamquest.club/zh/mods/voices/)四个制作页，加上 BGM 制作页，现在可以在列表里直接试听、点波形跳转。[ID 表](https://srw64.dreamquest.club/zh/mods/ids/units/)分成机体、人物、武器三页，带原版数值、能力、技能和精神。说明见[数值 MOD](https://srw64.dreamquest.club/zh/docs/mod-data/)、[名字、头像与地图图标 MOD](https://srw64.dreamquest.club/zh/docs/mod-names/)、[音乐 MOD](https://srw64.dreamquest.club/zh/docs/mod-music/)（含战斗语音）。
+
+#### 修复
+
+- **卡拉OK、标题演示和战斗查看器不再跟着加速**：开着 2 倍速时歌词按帧走、歌却是原速。现在只有关卡里的战斗演出按所选速度跑。
+- **战斗查看器能选没有关卡出击过的形态和机体**：盖塔2、盖塔3、盖塔狮虎、真盖塔2、真盖塔3、赞波ACE 等变形形态，以及只在剧情里配了驾驶员的机体。
+- **英文译名**：Gundam Nataku，以及图鉴里泰坦斯的 Gundam Mk-II。
 
 #### 其他
 
-- **地图上的机体图标按阵营朝向**：我方和友好的第三方朝左，敌方和敌对的第三方朝右，原版图和 HD 都是。
-- **截图键可以改**：操作页里有「截图」一行（默认 F12 和 Print Screen）。安卓上图片存到「文件」里 Marchwind64 文件夹的 `screenshots/`，设置里还有一个触屏截图键；截图里不带触屏按钮和帧率显示。
-- **跟不上 3、4 倍速的手机**（#10）：画不出每秒 90、120 帧的手机，现在游戏逻辑每帧都跑、每三帧画一帧，3 倍速和 4 倍速真的比 2 倍速快（天玑 7300 上一个敌方回合从 22 秒缩到 15 秒）。加速时游戏的线程会放到大核上。
+- **安卓版可以在「关于」页导入新 HD 包**：显示已装的 HD 版本，「导入 HD 包」会确认两次（未存档的进度会丢），然后退出游戏、重新启动并打开选包窗口。
+- **为 [RecompLauncher](https://recomplauncher.com) 做好了准备**：三个桌面包里都带它的 `recomplauncher.json`，从启动器安装的游戏会在安装过程中自动下载 HD 包。启动器本身还没发布。
+- **Linux 包解压出的文件夹固定叫 `Marchwind64-linux-x64`**，不再带版本号，和 Windows 包一样；Windows 的 zip 恢复为里面是 `Marchwind64-windows-x64` 文件夹，和 0.5.1 之前的历代一样。如果你把 0.5.1 解压覆盖到旧文件夹后标题仍提示有新版本，那是 0.5.1 的文件落在了旧文件夹的上一层：删掉它们，把 0.5.2 解压覆盖到文件夹上即可。
 
 ### 安卓已测试的芯片
 

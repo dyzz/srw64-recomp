@@ -19,9 +19,9 @@ const pick = (t: Text | undefined) => (t ? t[loc] ?? t.en ?? t.ja ?? '' : '');
 const t = {
   title: { zh: 'MOD 下载', en: 'Mod downloads', ja: 'MOD ダウンロード' },
   lead: {
-    zh: '我们自己做的 MOD 包，可以直接从这里下载。把下载的 .srw64mod 文件拖进游戏窗口就会安装，在 MOD 管理里可以停用或删除。安卓版暂时不能安装 MOD。',
-    en: 'Mod packages we made ourselves, to download here. Drop the .srw64mod file on the game window to install it; the MOD manager disables or removes it. Android cannot install mods yet.',
-    ja: '私たちが作った MOD パッケージを、ここからダウンロードできます。.srw64mod ファイルをゲームのウィンドウにドラッグするとインストールされ、MOD 管理で無効化や削除ができます。Android 版はまだ MOD をインストールできません。',
+    zh: '我们自己做的 MOD 包，可以直接从这里下载。把下载的 .srw64mod 文件拖进游戏窗口就会安装，在 MOD 管理里可以停用或删除。安卓版放进「文件」里 Marchwind64 文件夹的 mods/，或在 MOD 页点「从文件安装」。',
+    en: 'Mod packages we made ourselves, to download here. Drop the .srw64mod file on the game window to install it; the MOD manager disables or removes it. On Android, put it in mods/ inside the Marchwind64 folder under Documents, or press Install from file on the MOD page.',
+    ja: '私たちが作った MOD パッケージを、ここからダウンロードできます。.srw64mod ファイルをゲームのウィンドウにドラッグするとインストールされ、MOD 管理で無効化や削除ができます。Android 版では「ファイル」アプリの Marchwind64 フォルダー内 mods/ に置くか、MOD ページの「ファイルからインストール」を使います。',
   },
   make: {
     zh: '自己做包：', en: 'Making your own: ', ja: '自分で作るには：',

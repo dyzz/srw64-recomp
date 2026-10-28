@@ -1,16 +1,16 @@
 ---
 title: "Mod packages: installing and making them"
-summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music replacement and terrain ranks are what take effect for now.
+summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music and battle voices, numbers, names, portraits and map icons take effect.
 section: mods
 order: 1
-updated: 2026-10-26
+updated: 2026-10-28
 ---
 
 A mod package is a folder, or that folder zipped into one `.srw64mod` file. It holds data only, never code. When a package is enabled, the game uses its contents in place of the matching parts of the original; wherever no package says otherwise, everything is the original.
 
-**For now music and terrain ranks take effect**: replacing songs and choosing which song a pilot or unit fights to, as described in [Music mods](../mod-music/), and changing the terrain ranks of units and pilots, as described in [Number mods](../mod-data/). Additional campaigns, art, dialogue, voices and other numbers will follow; the package format already has a place for them.
+**Music and battle voices, numbers, names, portraits and map icons take effect**: replacing songs, choosing which song a pilot or unit fights to and voicing the battle lines, as described in [Music mods](../mod-music/); changing the numbers of units, pilots and weapons, as described in [Number mods](../mod-data/); and renaming, new portraits and map icons, as described in [Name, portrait and map icon mods](../mod-names/). Additional campaigns and other art will follow; the package format already has a place for them.
 
-Mods need version 0.5.1 or later.
+Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2.
 
 ## Installing
 
@@ -20,7 +20,7 @@ Mods need version 0.5.1 or later.
 
 Installing a new version of a package replaces the old one. The old version, and any package you remove, goes into `.trash` inside the MOD folder rather than being deleted.
 
-Mods cannot be installed on Android yet.
+On Android, put the package file in `mods/` inside the Marchwind64 folder under Documents (the Files app): it installs when the game starts or the MOD page opens. Or press Install from file on the MOD page and pick it.
 
 ## Managing
 
