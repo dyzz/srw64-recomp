@@ -46,7 +46,7 @@ docker run -d --name srw64-run --network host --pid host --user $(id -u):$(id -g
 | 输入检查 | 生成代码与 `cpu-bound/report.json` 的摘要一致、RT64 已有呈现完成钩子、RSPRecomp 音频源和字体存在 |
 | 依赖 `deps/prefix` | 用 macOS 那份锁（`config/recomp/macos-dependencies.json`）里的同一批源码包，编译 SDL3、sdl2-compat、FreeType、HarfBuzz、ICU 的共享库。源码包缓存与 macOS 配方共用 `build/macos-deps/sources` |
 | 宿主 `gfx-build` | `src/host` 以 `SRW64_ENABLE_RT64=ON` 构建 `srw64-gfx-host`，编译器 clang，链接器 lld；RT64 的文件对话框走 xdg-desktop-portal（`NFD_PORTAL=ON`），不链接 GTK |
-| 打包 `Marchwind64-SteamDeck-<版本>-<提交日期>-<提交>.tar.gz`（2026-09-29 起按版本、日期、提交命名，改名 Marchwind64 之前前缀是 `SRW64-SteamDeck-`，如 `SRW64-SteamDeck-0.3.1-20260929-eb1cd4a`；有未提交改动时提交号后加 `-dirty`） | `VERSION.txt`（同一名字，装到 `~/Games/SRW64` 后也看得出版本）、程序 `srw64`、`lib/`（上面五个库，RUNPATH 设为 `$ORIGIN`）、`fonts/`、`dialogue/`、`licenses/`、启动脚本 `marchwind64.sh`、`add-to-steam.sh` 与 `steam/`（见下）、`README.txt` |
+| 打包 `Marchwind64-SteamDeck-<版本>-<提交日期>-<提交>.tar.gz`（2026-09-29 起按版本、日期、提交命名，改名 Marchwind64 之前前缀是 `SRW64-SteamDeck-`，如 `SRW64-SteamDeck-0.3.1-20260929-eb1cd4a`；有未提交改动时提交号后加 `-dirty`） | 顶层一个固定名字的文件夹 `Marchwind64-linux-x64/`（2026-10-28 起，与 Windows 包一样，这样 `recomplauncher.json` 能写死程序路径；之前文件夹与压缩包同名），里面是 `VERSION.txt`（压缩包的名字，装到 `~/Games/SRW64` 后也看得出版本）、程序 `srw64`、`lib/`（上面五个库，RUNPATH 设为 `$ORIGIN`）、`fonts/`、`dialogue/`、`licenses/`、启动脚本 `marchwind64.sh`、`add-to-steam.sh` 与 `steam/`（见下）、`README.txt`、RecompLauncher 的 `recomplauncher.json`（见发布指南） |
 
 打包时有两项检查，失败即停：
 

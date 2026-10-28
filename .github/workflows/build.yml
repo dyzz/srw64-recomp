@@ -275,6 +275,8 @@ jobs:
           Copy-Item -Recurse content/dialogue "$out/dialogue"
           Copy-Item -Recurse content/stages "$out/stages"
           Copy-Item tools/release/windows/Marchwind64.cmd $out
+          # RecompLauncher's description of the program and its settings (docs/guide/release.md).
+          Copy-Item tools/release/recomplauncher.json $out
           # librashader (D3D12 and Vulkan, compiled unless cached) and the built-in RetroArch filters
           # (docs/native/bezels-and-filters.md).
           .venv/Scripts/python.exe tools/recomp/toolchain/fetch_librashader.py

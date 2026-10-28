@@ -67,7 +67,7 @@ Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检�
 
 ```sh
 .venv/bin/python tools/release/build_release.py --commit HEAD --version 0.5.0 \
-  --attach linux=build/deck/<提交>/src/build/linux-x64/Marchwind64-SteamDeck-0.5.0-<日期>-<提交>.tar.gz \
+  --attach linux=build/deck/<提交>/src/build/linux-x64/Marchwind64-SteamDeck-0.5.1-<日期>-<提交>.tar.gz \
   --attach windows=build/windows/<提交>/Marchwind64-0.5.0-windows-x64.zip \
   --attach android=build/android/<提交>/SRW64-android-arm64-<提交>.apk
 ```
@@ -75,6 +75,23 @@ Linux 包也仍可在本机构建（`tools/release/linux/build.sh` 或干净检�
 附件改名为 `Marchwind64-<版本>-linux-x64.tar.gz`、`Marchwind64-<版本>-windows-x64.zip`、`Marchwind64-<版本>-android-arm64.apk`，下载表、HD 包的三个平台安装位置、校验值和
 `release.json` 的发布命令都按附上的包生成。三个平台共用同一个 HD 包；它只能在本机构建（素材不进仓库），所以总是由这一步打出。
 附上的包要来自同一个提交：HD 包只配同一版本的应用。
+
+### RecompLauncher 的 `recomplauncher.json`
+
+[RecompLauncher](https://recomplauncher.com)（与 RecompStore 同一个开发者中心）按 GitHub Release 安装、更新重编译游戏；发布包顶层、程序旁边的
+`recomplauncher.json` 告诉它程序在包里的路径、设置文件在哪、哪些设置放到它的页面上，以及退出码的含义。文件是 `tools/release/recomplauncher.json`，
+三个桌面包都带：Windows 包由 CI 的打包步骤复制进 `Marchwind64-windows-x64/`，Linux 包由 `build_linux.py` 放进 `Marchwind64-linux-x64/`，
+Mac 包由 `build_release.py` 放在 `Marchwind64.app` 旁边（所以 Mac zip 的顶层是应用加这个文件，不是只有应用）。`tests/test_recomplauncher.py`
+核对它写的程序路径、设置键值和存档目录与打包脚本、`presentation.json` 的实际写法一致。
+
+- 它没有 N64 ROM 这种单文件的 `game.kind`（只有 iso/folder），所以文件里不写 `game`：ROM 仍由程序自己的选择框要，点 Play 第一次会弹。
+- 设置文件按平台列出 `presentation.json` 的几个位置（程序旁 `user-data/` 的便携模式优先），存档目录同样。启动器可能在第一次启动前就写入一两个键，
+  这种只有部分键、没有 schema 的文件 `launch.cpp` 当作部分设置接受，语言仍按系统（`tests/native_launch.cpp` 的 `launcher_partial_settings`）。
+- 它每个系统只装 Release 里的一个文件（按文件名里的 `windows-x64`、`linux-x64` 挑），HD 包这种第二个下载它不装，也不会误认（`Marchwind64-HD-<版本>.zip` 不带系统名）。
+  HD 包照旧由玩家自己下载：解压成用户目录里的 `hd/`，或者用游戏打开 zip 导入；文件里给了「打开数据文件夹」的按钮（`folders.data`＋`actions`），
+  说明文字写明 HD 包放这里。要它帮装可选包，得等启动器加这种功能。
+- 它的 MOD 页只接 Thunderstore 和 GameBanana，我们的 `.srw64mod` 照旧走官网，文件里不写 `mods`。
+- 提交游戏在开发者中心的 Submit a game 填 GitHub 仓库；页面图（图标、背景、logo、截图）在本地 `local/store-pictures/`。
 
 ## 发布
 

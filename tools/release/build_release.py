@@ -126,9 +126,11 @@ class Steps:
         print(f"     {time.monotonic() - started:.0f} s", flush=True)
 
 
-def zip_folder(steps: Steps, name: str, parent: Path, folder: str, archive: Path) -> None:
+def zip_folder(steps: Steps, name: str, parent: Path, folder: str, archive: Path, contents: bool = False) -> None:
     # Signature and symlinks survive; extended attributes (quarantine, provenance) stay out.
-    steps.run(name, ["/usr/bin/ditto", "-c", "-k", "--norsrc", "--noextattr", "--keepParent", folder, str(archive)], parent)
+    # With contents, the folder's entries are the archive's top level, not the folder.
+    steps.run(name, ["/usr/bin/ditto", "-c", "-k", "--norsrc", "--noextattr", *([] if contents else ["--keepParent"]),
+                     folder, str(archive)], parent)
 
 
 def next_hd_version(listed: str) -> str:
@@ -238,8 +240,11 @@ def main() -> int:
         "--output", str(app_dir / "Marchwind64.app"), "--version", args.version, "--minimum-macos", "14.0",
         "--search-dir", str(DEPS / "lib"), "--runtime-library", str(DEPS / "lib/libSDL3.dylib"),
         "--fonts", str(source / "build/fonts"), "--dialogue", str(source / "content/dialogue")], source, env)
+    # Beside the app, RecompLauncher's description of the program and its settings
+    # (docs/guide/release.md): the zip's top level is the app and that file.
+    shutil.copyfile(source / "tools/release/recomplauncher.json", app_dir / "recomplauncher.json")
     app_zip = output / f"Marchwind64-{args.version}-macos14-arm64.zip"
-    zip_folder(steps, "zip-app", app_dir, "Marchwind64.app", app_zip)
+    zip_folder(steps, "zip-app", output, "app", app_zip, contents=True)
 
     # The HD pack, from this commit's tools and manifests and the local assets.
     steps.run("marker-pack", [python, "tools/recomp/model5600/prepare_native_marker.py",

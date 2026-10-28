@@ -181,13 +181,18 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     json kept=json::object();  // valid saved settings: an explicit --language keeps what it does not set
     if(fs::exists(language_file)) {
         // Unreadable settings count as invalid: an explicit --language replaces them.
-        json saved=json::object();
-        try{saved=read_json(language_file,65536);}catch(const std::exception&){}
-        if(saved.value("schema","")!="srw64.presentation-settings.v1") {
+        json saved=json::object();bool readable=false;
+        try{saved=read_json(language_file,65536);readable=true;}catch(const std::exception&){}
+        // A launcher (RecompLauncher's recomplauncher.json) may write a setting or two before
+        // the first start: an object with neither schema nor locale is kept as such a part,
+        // and the language stays the system's until the player picks one.
+        const bool ours=readable && saved.value("schema","")=="srw64.presentation-settings.v1";
+        const bool partial=readable && !ours && saved.is_object() && !saved.contains("schema") && !saved.contains("locale");
+        if(!ours && !partial) {
             if(locale.empty())throw std::runtime_error("Invalid language settings; pass --language to replace them explicitly");
         } else {
             kept=saved;
-            if(locale.empty())locale=saved.at("locale").get<std::string>();
+            if(locale.empty() && ours)locale=saved.at("locale").get<std::string>();
             battle_ui=saved.value("battle_ui","native");
             intermission_ui=saved.value("intermission_ui","native");
             name_entry_ui=saved.value("name_entry_ui","native");

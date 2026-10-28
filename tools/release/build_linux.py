@@ -35,6 +35,7 @@ WORK = ROOT / 'build/linux-x64'
 LOCK = ROOT / 'config/recomp/macos-dependencies.json'
 ARCHIVES = ROOT / 'build/macos-deps/sources'  # archive cache shared with the macOS recipe
 BASELINE_GLIBC = (2, 35)
+FOLDER = 'Marchwind64-linux-x64'   # the archive's one top-level folder; VERSION.txt inside names the build
 # Libraries every desktop Linux (and SteamOS) provides; everything else ships in lib/.
 SYSTEM = {'linux-vdso.so.1', 'ld-linux-x86-64.so.2', 'libc.so.6', 'libm.so.6', 'libdl.so.2',
           'libpthread.so.0', 'librt.so.1', 'libstdc++.so.6', 'libgcc_s.so.1', 'libz.so.1',
@@ -154,11 +155,13 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
         revision += '-dirty'
     version = tomllib.loads((ROOT / 'pyproject.toml').read_text(encoding='utf-8'))['project']['version']
     date = output([*git, 'show', '-s', '--format=%cd', '--date=format:%Y%m%d', 'HEAD']).strip()
-    # The Steam Deck edition; the same program runs on other x86-64 Linux desktops. Named by
-    # version, commit date and commit (user, 2026-09-29), so a copy or a kept install says
-    # what it is; VERSION.txt says it inside the folder the Steam shortcut points at.
+    # The Steam Deck edition; the same program runs on other x86-64 Linux desktops. The
+    # archive is named by version, commit date and commit (user, 2026-09-29), so a copy says
+    # what it is, and VERSION.txt says it inside the folder the Steam shortcut points at. The
+    # folder itself has one fixed name (user, 2026-10-28), like the Windows package's: a
+    # launcher's recomplauncher.json names the program by its path inside the archive.
     name = f'Marchwind64-SteamDeck-{version}-{date}-{revision}'
-    stage = WORK / 'package' / name
+    stage = WORK / 'package' / FOLDER
     if stage.exists():
         shutil.rmtree(stage)
     (stage / 'lib').mkdir(parents=True)
@@ -245,6 +248,8 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
         shutil.copyfile(recipe / script, stage / script)
         (stage / script).chmod(0o755)
     shutil.copyfile(recipe / 'README.txt', stage / 'README.txt')
+    # RecompLauncher's description of the program and its settings (docs/guide/release.md).
+    shutil.copyfile(recipe.parent / 'recomplauncher.json', stage / 'recomplauncher.json')
     # add-to-steam.sh: the Steam library entry, named in the game's language, with the
     # artwork in tools/release/linux/steam-art (made by steam_art.py from the HD title
     # images, kept in the repository so a build without the HD sources has it too).
@@ -254,7 +259,7 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
         shutil.copyfile(art, stage / 'steam' / art.name)
     archive = WORK / f'{name}.tar.gz'
     with tarfile.open(archive, 'w:gz') as tar:
-        tar.add(stage, arcname=name)
+        tar.add(stage, arcname=FOLDER)
     report = {'schema': 'srw64.linux-package.v1', 'archive': archive.name, 'version': version, 'date': date, 'revision': revision,
               'glibc_required': '.'.join(map(str, newest)), 'bundled': sorted(bundled),
               'program_sha256': hashlib.sha256(program.read_bytes()).hexdigest(),

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://recomplauncher.com/schema/recomplauncher.json",
+  "format": 1,
+  "start": {
+    "program": [
+      "Marchwind64.exe",
+      "Marchwind64-windows-x64/Marchwind64.exe",
+      "marchwind64.sh",
+      "Marchwind64-linux-x64/marchwind64.sh",
+      "Marchwind64.app/Contents/MacOS/srw64-gfx-host"
+    ],
+    "args": []
+  },
+  "config": [
+    {
+      "id": "main",
+      "format": "json",
+      "file": [
+        { "path": "{install}/user-data/presentation.json", "if": "{install}/user-data" },
+        { "path": "{install}/Marchwind64-windows-x64/user-data/presentation.json", "if": "{install}/Marchwind64-windows-x64/user-data" },
+        { "path": "{install}/Marchwind64-linux-x64/user-data/presentation.json", "if": "{install}/Marchwind64-linux-x64/user-data" },
+        { "path": "{local}/SRW64Recomp/presentation.json", "if": "{local}/SRW64Recomp" },
+        { "path": "{local}/srw64-recomp/presentation.json", "if": "{local}/srw64-recomp" },
+        { "path": "{home}/Library/Application Support/SRW64Recomp/presentation.json", "if": "{home}/Library/Application Support/SRW64Recomp" },
+        { "path": "{local}/SRW64Recomp/presentation.json" }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "language",
+      "label": "Language",
+      "help": "The game's text and menus. Unset, it follows your system.",
+      "choices": [
+        { "label": "简体中文", "set": { "locale": "zh-Hans" } },
+        { "label": "繁體中文", "set": { "locale": "zh-Hant" } },
+        { "label": "English", "set": { "locale": "en" } },
+        { "label": "日本語", "set": { "locale": "ja" } }
+      ]
+    },
+    {
+      "id": "ui_size",
+      "label": "Interface size",
+      "help": "Largest is made for handheld screens.",
+      "choices": [
+        { "label": "Standard", "set": { "ui_size": "standard" } },
+        { "label": "Large", "set": { "ui_size": "large" } },
+        { "label": "Largest", "set": { "ui_size": "largest" } }
+      ],
+      "defaults": { "ui_size": "standard" }
+    },
+    {
+      "id": "refresh_rate",
+      "label": "Frame rate",
+      "help": "Display follows your monitor with interpolated frames; Original is the N64's own.",
+      "choices": [
+        { "label": "Display", "set": { "refresh_rate": "display" } },
+        { "label": "60", "set": { "refresh_rate": "60" } },
+        { "label": "Original", "set": { "refresh_rate": "original" } }
+      ],
+      "defaults": { "refresh_rate": "display" }
+    },
+    {
+      "id": "map_unit_icons",
+      "label": "Map unit icons",
+      "help": "HD icons need the HD pack installed.",
+      "choices": [
+        { "label": "HD", "set": { "map_unit_icons": "hd" } },
+        { "label": "Original", "set": { "map_unit_icons": "original" } }
+      ],
+      "defaults": { "map_unit_icons": "hd" }
+    }
+  ],
+  "looks": { "graphics": "d3d12", "lines": 240 },
+  "folders": {
+    "data": [
+      { "path": "{install}/user-data", "if": "{install}/user-data" },
+      { "path": "{install}/Marchwind64-windows-x64/user-data", "if": "{install}/Marchwind64-windows-x64/user-data" },
+      { "path": "{install}/Marchwind64-linux-x64/user-data", "if": "{install}/Marchwind64-linux-x64/user-data" },
+      { "path": "{local}/SRW64Recomp", "if": "{local}/SRW64Recomp" },
+      { "path": "{local}/srw64-recomp", "if": "{local}/srw64-recomp" },
+      { "path": "{home}/Library/Application Support/SRW64Recomp", "if": "{home}/Library/Application Support/SRW64Recomp" },
+      { "path": "{local}/SRW64Recomp" }
+    ],
+    "saves": [
+      { "path": "{install}/user-data/saves", "if": "{install}/user-data" },
+      { "path": "{install}/Marchwind64-windows-x64/user-data/saves", "if": "{install}/Marchwind64-windows-x64/user-data" },
+      { "path": "{install}/Marchwind64-linux-x64/user-data/saves", "if": "{install}/Marchwind64-linux-x64/user-data" },
+      { "path": "{local}/SRW64Recomp/saves", "if": "{local}/SRW64Recomp" },
+      { "path": "{local}/srw64-recomp/saves", "if": "{local}/srw64-recomp" },
+      { "path": "{home}/Library/Application Support/SRW64Recomp/saves", "if": "{home}/Library/Application Support/SRW64Recomp" },
+      { "path": "{local}/SRW64Recomp/saves" }
+    ]
+  },
+  "actions": [
+    { "id": "open-data", "label": "Open the data folder",
+      "help": "The HD pack goes here as hd/: unzip it into this folder, or open the downloaded zip with Marchwind64. Filters, bezels and mods live here too.",
+      "open": "data" },
+    { "id": "open-saves", "label": "Open the saves folder", "help": "Where your save slots are kept.", "open": "saves" }
+  ],
+  "exit_codes": {
+    "1": "No file dialog is available to pick your ROM. Put it as rom.z64 next to the game and press Play again.",
+    "2": "Marchwind64 could not start and has shown why. If it asked for your ROM, pick it again on the next Play."
+  }
+}

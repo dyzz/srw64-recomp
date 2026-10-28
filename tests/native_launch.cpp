@@ -231,6 +231,27 @@ void first_launch_language() {
     })==0,"first launch failed");
     check(!fs::exists(f.options.user_dir/"presentation.json"),"the first launch's language saved as a choice");
 }
+// A launcher (tools/release/recomplauncher.json) may write a setting before the first
+// start, as a file with neither schema nor locale: the start keeps it, in the system's
+// language, and writes nothing for the language; a file that is not JSON is still refused.
+void launcher_partial_settings() {
+    Fixture f;
+    fs::create_directories(f.options.user_dir);
+    const auto file=f.options.user_dir/"presentation.json";
+    atomic_write(file,"{\n  \"ui_size\": \"large\"\n}\n");
+    const auto expected=f.data["locale_catalogs"].contains(system_language())?system_language():std::string("ja");
+    check(run_standalone(f.options,f.game,[&](int,char**) {
+        check(load(env("SRW64_DIALOGUE_DATA")).at("config").at("locale")==expected,"launcher-written settings changed the language");
+        return 0;
+    })==0,"launcher-written settings refused");
+    check(load(file).value("ui_size","")=="large" && !load(file).contains("locale"),"launcher-written settings rewritten");
+    f.options.language="en";
+    check(run_standalone(f.options,f.game,[](int,char**){return 0;})==0,"language choice over launcher-written settings failed");
+    check(load(file).value("ui_size","")=="large" && load(file).value("locale","")=="en","language choice lost the launcher's setting");
+    f.options.language.clear();
+    atomic_write(file,"broken json");
+    rejects([&]{run_standalone(f.options,f.game,[](int,char**){return 0;});},"unreadable settings accepted without --language");
+}
 // A full-HD bundle (tools/release/prepare_hd_bundle.py): the launcher looks for hd
 // beside the executable when it is not inside a .app.
 void make_pack(const fs::path& hd) {
@@ -313,6 +334,6 @@ void campaigns() {
 }
 }
 int main(int,char** argv){try{relocated_boot_and_resume();portable_bootstrap_and_move(Platform::Windows);portable_bootstrap_and_move(Platform::Linux);
-    installed_and_imported_languages(Platform::Windows);installed_and_imported_languages(Platform::Linux);fail_closed();touch_preferences();first_launch_language();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
+    installed_and_imported_languages(Platform::Windows);installed_and_imported_languages(Platform::Linux);fail_closed();touch_preferences();first_launch_language();launcher_partial_settings();bundled_hd(fs::absolute(argv[0]).parent_path());installed_hd();campaigns();
     std::cout<<checks<<" bootstrap checks passed\n";return 0;}
 catch(const std::exception& error){std::cerr<<"FAILED: "<<error.what()<<'\n';return 1;}}
