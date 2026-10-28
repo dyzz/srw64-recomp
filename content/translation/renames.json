@@ -9615,6 +9615,32 @@
    "sections": [
     "units"
    ]
+  },
+  {
+   "ja": [
+    "アルトロンカスタム"
+   ],
+   "zh-Hans": {
+    "old": "双头龙特装型",
+    "new": "哪吒高达"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アプサラス"
+   ],
+   "zh-Hans": {
+    "old": "阿普萨拉斯",
+    "new": "阿普萨拉斯II"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
   }
  ]
 }

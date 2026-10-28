@@ -17,7 +17,7 @@ class LibraryNamesTest(unittest.TestCase):
             for rid, names in data[kind].items():
                 self.assertTrue(rid.isdigit(), rid)
                 for locale, name in names.items():
-                    self.assertIn(locale, ("ja", "zh-Hans", "en"))
+                    self.assertIn(locale, ("ja", "zh-Hans", "zh-Hant", "en"))
                     self.assertTrue(name and '"' not in name and "\\" not in name, name)
 
     def test_header_is_up_to_date(self):
