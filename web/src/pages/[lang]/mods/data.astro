@@ -3,6 +3,7 @@
 // weapons field by field against the original values and export data/*.json in a package,
 // all in the browser (scripts/data-maker.ts). The values are export_data_tables.py's.
 import Base from '../../../layouts/Base.astro';
+import AiGuide from '../../../components/AiGuide.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
 import { packageText, versionNotice } from '../../../lib/mod-maker-text';
@@ -132,6 +133,7 @@ const notice = versionNotice(lang, text.game);
       <p>{lead[tl(lang)]}</p>
       <p class="note"><a href={`/${lang}/docs/mod-data/`}>{L({ zh: '数值 MOD 说明', en: 'Number mods guide', ja: '数値 MOD の説明' })}</a> · <a href={`/${lang}/mods/ids/units/`}>{L({ zh: 'ID 表', en: 'ID tables', ja: 'ID 表' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成。', en: 'Needs 0.5.2 or later. Everything happens in your browser.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われます。' })}</p>
     </header>
+    <AiGuide lang={lang} kind="data" />
 
     <ModPackageForm lang={lang} placeholder="yourname.balance" />
 

@@ -4,6 +4,7 @@
 // portraits, written as dialogue/names.json and art/portraits/<pilot>.png in a package, all in
 // the browser (scripts/names-maker.ts). Map icons have their own maker (icons.astro).
 import Base from '../../../layouts/Base.astro';
+import AiGuide from '../../../components/AiGuide.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
 import { library, portraitUrl } from '../../../lib/data';
@@ -99,6 +100,7 @@ const notice = versionNotice(lang, text.game);
       <p>{lead[tl(lang)]}</p>
       <p class="note"><a href={`/${lang}/docs/mod-names/`}>{L({ zh: '名字、头像与地图图标 MOD 说明', en: 'Name, portrait and map icon mods guide', ja: '名前・顔グラフィック・マップアイコン MOD の説明' })}</a> · <a href={`/${lang}/mods/icons/`}>{L({ zh: '地图图标 MOD 制作', en: 'Map icon mod maker', ja: 'マップアイコン MOD メーカー' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。' })}</p>
     </header>
+    <AiGuide lang={lang} kind="names" />
 
     <ModPackageForm lang={lang} placeholder="yourname.names" />
 

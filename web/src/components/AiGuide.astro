@@ -1,0 +1,95 @@
+---
+// "Let an AI make it" on each MOD maker: a request to copy to an AI assistant that reads the
+// web and writes files, naming the plain-Markdown guides (pages/[lang]/docs/[slug].md.ts) and
+// the tables, so it makes the whole .srw64mod itself.
+import { tl, type Lang } from '../i18n';
+
+interface Props { lang: Lang; kind: 'bgm' | 'voices' | 'data' | 'names' | 'icons' }
+const { lang, kind } = Astro.props;
+const t = tl(lang);
+const L = <T,>(v: { zh: T; en: T; ja: T }) => v[t];
+const site = (Astro.site?.origin ?? 'https://srw64.dreamquest.club');
+const repo = 'https://github.com/dyzz/srw64-recomp/tree/main';
+const doc = (slug: string) => `${site}/${lang}/docs/${slug}.md`;
+
+const kinds = {
+  bgm: {
+    what: L({ zh: '音乐', en: 'music', ja: '音楽' }),
+    reads: [doc('mod-music'), `${repo}/docs/guide/audio-mods`],
+    files: L({ zh: '音乐文件我会发给你。', en: 'I will send you the music files.', ja: '音楽ファイルはこちらから送ります。' }),
+    wish: L({ zh: '例如：用我发的两首曲子替换主角的战斗曲和第一话的地图曲，循环整首', en: 'for example: replace the hero’s battle song and the first stage’s map song with my two tracks, looping the whole of each', ja: '例：送った 2 曲で主人公の戦闘曲と第 1 話のマップ曲を差し替え、全体をループ' }),
+  },
+  voices: {
+    what: L({ zh: '战斗语音', en: 'battle voice', ja: '戦闘ボイス' }),
+    reads: [`${doc('mod-music')}`, `${repo}/docs/guide/audio-mods/battle-voices.csv`],
+    files: L({ zh: '录音我会发给你，文件名写着是哪个人物的哪句台词。', en: 'I will send you the recordings, each named after the character and line it voices.', ja: '録音はこちらから送ります。ファイル名にどのキャラのどの台詞かを書いてあります。' }),
+    wish: L({ zh: '例如：给甲儿的攻击台词配上我发的录音', en: 'for example: give Koji’s attack lines the recordings I send', ja: '例：甲児の攻撃台詞に送った録音を付ける' }),
+  },
+  data: {
+    what: L({ zh: '数值', en: 'numbers', ja: '数値' }),
+    reads: [doc('mod-data'), `${repo}/docs/guide/data-mods`],
+    files: '',
+    wish: L({ zh: '例如：我方主力的宇宙适应都改成 A，魔神Z的光子力射线攻击力加 300', en: 'for example: give the player’s main units A in space and add 300 to Mazinger Z’s Photon Beam', ja: '例：味方主力の宇宙適応をすべて A に、マジンガーZ の光子力ビームの攻撃力を 300 上げる' }),
+  },
+  names: {
+    what: L({ zh: '名字与头像', en: 'names and portraits', ja: '名前と顔グラ' }),
+    reads: [doc('mod-names'), `${site}/${lang}/mods/ids/`],
+    files: L({ zh: '要换的头像图片我会发给你。', en: 'I will send you the portrait pictures to use.', ja: '差し替える顔グラの画像はこちらから送ります。' }),
+    wish: L({ zh: '例如：原创主角改名叫「林风」，部队名改成「晨星队」', en: 'for example: name the original hero “Lin Feng” and the unit “Morning Star”', ja: '例：オリジナル主人公の名前を「リン・フェン」、部隊名を「モーニングスター隊」に' }),
+  },
+  icons: {
+    what: L({ zh: '地图图标', en: 'map icon', ja: 'マップアイコン' }),
+    reads: [doc('mod-names'), `${site}/${lang}/mods/ids/units/`],
+    files: L({ zh: '图标图片我会发给你。', en: 'I will send you the icon pictures.', ja: 'アイコンの画像はこちらから送ります。' }),
+    wish: L({ zh: '例如：用我发的像素画换掉魔神Z和盖塔1的图标', en: 'for example: replace Mazinger Z’s and Getter 1’s icons with my pixel art', ja: '例：送ったドット絵でマジンガーZ とゲッター1 のアイコンを差し替える' }),
+  },
+}[kind];
+const reads = [doc('mods'), ...kinds.reads];
+
+const prompt = L({
+  zh: `请帮我给 Marchwind 64（《超级机器人大战64》的 PC 重编译版）做一个${kinds.what} MOD，最后打包成可以直接安装的 .srw64mod 文件。\n先读这些说明，严格按里面的格式和编号做：\n${reads.map((r) => `- ${r}`).join('\n')}\n${kinds.files ? kinds.files + '\n' : ''}我想要：（${kinds.wish}）`,
+  en: `Please make a ${kinds.what} mod for Marchwind 64 (the PC recompilation of Super Robot Wars 64), packed as a .srw64mod file ready to install.\nFirst read these guides and follow their format and numbers exactly:\n${reads.map((r) => `- ${r}`).join('\n')}\n${kinds.files ? kinds.files + '\n' : ''}What I want: (${kinds.wish})`,
+  ja: `Marchwind 64（『スーパーロボット大戦64』の PC 向けリコンパイル版）の${kinds.what} MOD を作り、そのままインストールできる .srw64mod ファイルにまとめてください。\nまず次の説明を読み、書式と番号をそのとおりに守ってください：\n${reads.map((r) => `- ${r}`).join('\n')}\n${kinds.files ? kinds.files + '\n' : ''}作りたいもの：（${kinds.wish}）`,
+});
+const text = {
+  title: L({ zh: '交给 AI 做', en: 'Let an AI make it', ja: 'AI に任せる' }),
+  lead: L({
+    zh: '能上网、能读写文件的 AI 助手可以照着说明直接做出整个包。复制下面这段话发给它，把括号里换成你想要的改动。做好的 .srw64mod 拖进游戏窗口就能安装，也可以在下面「打开已有的 .srw64mod」检查、接着改。',
+    en: 'An AI assistant that can browse the web and write files can follow the guides and make the whole package. Copy the request below, send it, and replace the part in brackets with what you want. Drag the .srw64mod it makes into the game window to install it, or open it below with “Open an existing .srw64mod” to check and keep editing.',
+    ja: 'Web を読めてファイルを書ける AI アシスタントなら、説明どおりにパッケージを丸ごと作れます。下の文をコピーして送り、かっこ内を作りたい内容に書き換えてください。できた .srw64mod はゲームのウィンドウにドラッグするとインストールでき、下の「既存の .srw64mod を開く」で確認・続きの編集もできます。',
+  }),
+  copy: L({ zh: '复制', en: 'Copy', ja: 'コピー' }),
+  copied: L({ zh: '已复制', en: 'Copied', ja: 'コピーしました' }),
+};
+---
+<details class="ai-guide" data-ai-guide>
+  <summary>{text.title}</summary>
+  <p>{text.lead}</p>
+  <textarea readonly rows={prompt.split('\n').length + 1} data-ai-prompt>{prompt}</textarea>
+  <button type="button" class="btn ghost" data-ai-copy data-copied={text.copied}>{text.copy}</button>
+</details>
+
+<script>
+  for (const box of document.querySelectorAll<HTMLElement>('[data-ai-guide]')) {
+    const area = box.querySelector<HTMLTextAreaElement>('[data-ai-prompt]')!;
+    const button = box.querySelector<HTMLButtonElement>('[data-ai-copy]')!;
+    const label = button.textContent;
+    // Long lines wrap: show the whole request once the box opens (and on a narrow window).
+    const fit = () => { if (box.hasAttribute('open')) { area.style.height = 'auto'; area.style.height = `${area.scrollHeight + 2}px`; } };
+    box.addEventListener('toggle', fit);
+    addEventListener('resize', fit);
+    button.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(area.value); } catch { area.select(); document.execCommand('copy'); }
+      button.textContent = button.dataset.copied ?? label;
+      setTimeout(() => { button.textContent = label; }, 1500);
+    });
+  }
+</script>
+
+<style>
+  .ai-guide { margin: 18px 0 0; padding: 0 14px; border: 1px solid var(--line); border-left: 4px solid var(--cyan); border-radius: var(--radius); background: var(--panel); }
+  .ai-guide summary { padding: 10px 0; font-weight: 600; cursor: pointer; }
+  .ai-guide p { margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+  .ai-guide textarea { width: 100%; resize: none; overflow: hidden; padding: 10px; font: 13px/1.6 var(--mono, ui-monospace, monospace); color: var(--text); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); }
+  .ai-guide button { margin: 8px 0 14px; }
+</style>

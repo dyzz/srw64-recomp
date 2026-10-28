@@ -4,6 +4,7 @@
 // (scripts/voice-maker.ts). Files are decoded, encoded to Ogg Vorbis in a worker unless they
 // already are Vorbis, and zipped on the player's own machine.
 import Base from '../../../layouts/Base.astro';
+import AiGuide from '../../../components/AiGuide.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
 import { packageText, versionNotice } from '../../../lib/mod-maker-text';
@@ -67,6 +68,7 @@ const notice = versionNotice(lang, text.game);
       <p>{lead[tl(lang)]}</p>
       <p class="note"><a href={`/${lang}/docs/mod-music/#${L({ zh: '战斗语音', en: 'battle-voices', ja: '戦闘ボイス' })}`}>{L({ zh: '战斗语音说明', en: 'Battle voices guide', ja: '戦闘ボイスの説明' })}</a> · <a href="https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/audio-mods/battle-voices.csv">{L({ zh: '台词对照表', en: 'Battle line table', ja: '台詞対照表' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，音频不会上传。只使用你有权使用、并且允许再分发的录音。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no audio is uploaded. Use only recordings you have the right to use and to pass on.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、音声はアップロードされません。使用と再配布の権利がある録音だけを使ってください。' })}</p>
     </header>
+    <AiGuide lang={lang} kind="voices" />
 
     <ModPackageForm lang={lang} placeholder="yourname.voices" />
 
