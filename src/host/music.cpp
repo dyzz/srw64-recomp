@@ -1,6 +1,7 @@
 #include "music.hpp"
 #include "guest_memory.hpp"
 #include "presentation_settings.hpp"
+#include "wide_map.hpp"
 #include "funcs.h"
 #include <atomic>
 #include <condition_variable>
@@ -42,11 +43,13 @@ std::mutex table_mutex;
 unsigned table_revision{};
 std::map<int,Track> table;
 BattleSongs battle_table;
+std::map<int,Line> voice_table;
 void refresh_locked() {
     if(const unsigned now=mods::revision();now!=table_revision) {
         const auto packages=mods::installed(mods::game_version());
         table=collect(packages,read_json);
         battle_table=collect_battle(packages,read_json);
+        voice_table=collect_voices(packages,read_json);
         table_revision=now;
     }
 }
@@ -59,13 +62,16 @@ std::optional<Track> lookup(int song) {
 }
 
 // Decoding: a whole track at a time on its own thread, the last two kept, so switching
-// between a stage's music and a battle theme does not decode again.
+// between a stage's music and a battle theme does not decode again. Voice lines keep their
+// own last few, as a pilot says the same lines again and again.
 struct Decoded {fs::path file;std::shared_ptr<const Pcm> pcm;std::optional<std::pair<uint64_t,uint64_t>> tag_loop;};
+struct Cache {std::list<Decoded> list;size_t keep;};
 std::mutex decode_mutex;
-std::list<Decoded> decoded;
-std::optional<Decoded> decode(const fs::path& file) {
+Cache songs_decoded{{},2},lines_decoded{{},16};
+std::optional<Decoded> decode(const fs::path& file,Cache& cache=songs_decoded) {
     {
         std::lock_guard lock(decode_mutex);
+        auto& decoded=cache.list;
         for(auto it=decoded.begin();it!=decoded.end();++it)if(it->file==file){decoded.splice(decoded.begin(),decoded,it);return decoded.front();}
     }
     std::ifstream in(file,std::ios::binary);
@@ -104,8 +110,8 @@ std::optional<Decoded> decode(const fs::path& file) {
     stb_vorbis_close(v);
     Decoded d{file,std::move(pcm),tag_loop};
     std::lock_guard lock(decode_mutex);
-    decoded.push_front(d);
-    while(decoded.size()>2)decoded.pop_back();
+    cache.list.push_front(d);
+    while(cache.list.size()>cache.keep)cache.list.pop_back();
     return d;
 }
 
@@ -120,6 +126,11 @@ unsigned last_rate{44100};    // the output rate the mixer last saw
 std::atomic_bool in_original{};  // our own calls into the original routines
 
 void stop_locked(){voice.reset();voice_song=-1;++generation;}
+// The battle voice: one line at a time, beside the music.
+std::optional<Voice> speech;
+int speech_line=-1;
+uint64_t speech_generation{};
+void stop_speech_locked(){speech.reset();speech_line=-1;++speech_generation;}
 
 void start(int song,const Track& track) {
     uint64_t mine;
@@ -145,6 +156,9 @@ void start(int song,const Track& track) {
 void mixer(int16_t* stereo,size_t frames,uint32_t rate) {
     std::lock_guard lock(engine_mutex);
     if(rate)last_rate=rate;
+    // A line ends with its battle: the animation steps every frame (wide_map::mark_battle),
+    // so 200 ms without one is its end or the player's abort.
+    if(speech && (!wide_map::battle_shown() || !mix(*speech,stereo,frames,rate,mono)))stop_speech_locked();
     if(!voice)return;
     if(!mix(*voice,stereo,frames,rate,mono) && voice->fading())stop_locked();
 }
@@ -211,6 +225,35 @@ bool battle(uint8_t* ram,recomp_context* ctx) {
     return true;
 }
 
+void battle_quote(unsigned record) {
+    if(!settings::mod_voice())return;
+    std::optional<Line> line;
+    {
+        std::lock_guard lock(table_mutex);
+        refresh_locked();
+        if(const auto found=voice_table.find(int(record));found!=voice_table.end())line=found->second;
+    }
+    uint64_t mine;
+    {
+        std::lock_guard lock(engine_mutex);
+        stop_speech_locked();
+        if(!line)return;
+        Voice v;
+        v.once=true;
+        v.gain=gain_of(line->gain_db)*settings::mod_voice_volume()/100.0;
+        v.delay=uint64_t(line->delay_ms)*last_rate/1000;
+        speech=v;speech_line=int(record);mine=speech_generation;
+    }
+    std::thread([file=line->file,mine]{
+        const auto d=decode(file,lines_decoded);
+        std::lock_guard lock(engine_mutex);
+        if(speech_generation!=mine || !speech)return;   // the next line came meanwhile
+        if(!d){speech->finished=true;return;}
+        speech->pcm=d->pcm;
+    }).detach();
+    std::fprintf(stderr,"SRW64_VOICE line=%u file=%s package=%s\n",record,line->file.string().c_str(),line->package.c_str());
+}
+
 Shown shown(int song,const std::string& locale) {
     if(!settings::mod_music())return {};
     const auto track=lookup(song);
@@ -220,8 +263,11 @@ Shown shown(int song,const std::string& locale) {
 
 json status() {
     std::lock_guard lock(engine_mutex);
-    if(!voice)return {{"replaced",false}};
-    return {{"replaced",true},{"song",voice_song},{"decoded",bool(voice->pcm)},{"finished",voice->finished},
-            {"position",voice->position},{"loop",{voice->loop_start,voice->loop_end}},{"once",voice->once}};
+    json out=json::object();
+    if(!voice)out={{"replaced",false}};
+    else out={{"replaced",true},{"song",voice_song},{"decoded",bool(voice->pcm)},{"finished",voice->finished},
+              {"position",voice->position},{"loop",{voice->loop_start,voice->loop_end}},{"once",voice->once}};
+    if(speech)out["voice"]={{"line",speech_line},{"decoded",bool(speech->pcm)},{"position",speech->position},{"waiting",speech->delay}};
+    return out;
 }
 }

@@ -176,12 +176,20 @@ audio/
   - 地图 20 的关卡曲（44）、タケル 的战斗曲（23）都换成了替换曲；我方攻击、阶段开始、敌方攻击、第 2 回合开始时来回切换，宿主每次都接管，原版的当前曲号与替换曲一致。
   - 敌增援 jingle：第 1 回合事件里用 `3D3A 38` 直接放 0x26（3 秒的测试文件），放完后 `801E076C` 自己换回关卡曲。录音里 1000 Hz 之后直接接 500 Hz，中间没有空档。
 - **还没验证**：淡出（场景切换）、2 倍速、Windows。
-- **还没做**：战斗语音、语音音量；`tools/mods/validate.py` 还不检查 `audio/music.json` 的字段。
+- **还没做**：~~战斗语音、语音音量~~（2026-10-28 已做，见下）；`tools/mods/validate.py` 还不检查 `audio/music.json` 的字段。
 - **2026-10-26 补上**（`mods` 分支，未实机）：
   - `battle` 改战斗曲：包装的是 `801E07C4(ROM 地址, 模式)` 而不是 `801E085C`。原版无论我方人物表还是机体表最后都经它读表放歌，地址本身说明是哪个人物或机体；模式 1/2/3（超级模式、V-MAX）与 ヴァル＝ア 三人的 `0x22` 不经过这里，照原版。选中的歌号再走 `8007E810` 的包装，所以它的替换曲也生效。
   - 设置「通用」页、MOD 管理入口下：「MOD 音乐 使用／不用」与音量 25／50／75／100%，下一首歌开始生效（`settings.json` 的 `mod_music`、`mod_music_volume`）。
   - `music.json` 写了循环区间就表示循环，敌增援 jingle（38）也不再只放一次。
   - 单元测试（`make recomp-music-test`）加了 battle 表的解析、多包覆盖与按 ROM 地址查表。
+
+- **2026-10-28 战斗语音**（main，用户：「战斗语音可以先技术准备完备」）：
+  - 包里 `audio/voice/battle/<记录号>.ogg`，记录号 5799–17346（`battle-voices.csv` 从旗舰被击坠的 5799 起，不是 §2.3 写的 5813）；只认 Ogg Vorbis（§7 待定的 Opus 先不做，解码沿用 `stb_vorbis`）。`audio/voice.json`：`{"schema":"srw64.voice.v1","gain":dB,"delay":毫秒}`，对包里全部语音生效；不合规的字段宿主忽略、`validate.py` 报 `voice`。上面的包赢。
+  - 触发：`native_dialogue.cpp` 识别战斗台词时，`loads[slot]` 变了（新的一句，不是同一句翻页）就调宿主设的 `dialogue::battle_quote_opened(记录号)` → `music::battle_quote`。用指针是因为对白代码也编进不带 MOD 的目标。
+  - 一条语音通道，和音乐并列混进 `srw64_audio_mixer`：新的一句先停上一句；战斗动画步进 `801C9710` 每帧 `wide_map::mark_battle()`，混音器发现 200 ms 没有步进（战斗结束或手柄 X 中止）就停。解码单独一个缓存（最近 16 句），不挤掉音乐的两首。`delay` 从台词框打开就开始计，解码中也算。
+  - 设置「通用」页 MOD 音乐下面加「MOD 战斗语音 使用／不用」和音量 25–100%（`settings.json` 的 `mod_voice`、`mod_voice_volume`），下一句生效。调试状态 `music.voice`：记录号、是否解完、位置、剩余延迟；日志 `SRW64_VOICE line=… file=… package=…`。
+  - 测试：`make recomp-music-test` 加了 `voice.json`、包覆盖与过滤（范围、补零、扩展名、停用的包）、延迟与只放一次；`tests/test_mod_validate.py` 加 `test_battle_voices`。
+  - 实机（2026-10-28，Mac，battle-ui 迷你关，测试包给 タケル 等 6 人的 381 句各配一个 1.5 秒正弦音）：タケル 打 ムゲ兵，录像音轨在攻击台词 7018 出现时、反击时中伤台词 7028 出现时各有 1.5 秒 440 Hz，与日志的 `SRW64_VOICE` 对得上。没验证：中止演出时立刻停、2 倍速、旗舰被击坠的 5799–5812 会不会经过同一条路。
 
 ## 9. 网页 BGM 制作工具（规划，2026-10-26）
 

@@ -36,6 +36,9 @@ std::string body_page(const uint8_t* ram,uint32_t body);
 // speaker names and everything inside a dialogue box it shows.
 bool reader_owns(unsigned label_slot,double x,double y);
 bool reader_configured();
+// Set by the host: a battle quote's box opened on its first page, with its text record
+// (MOD battle voices, music.hpp battle_quote). Game thread.
+extern void (*battle_quote_opened)(unsigned record);
 std::u16string utf16(const std::string&);
 std::string utf8(const std::u16string&);
 // Plain lines 1.22 x size apart: names, history and the typesetting check.

@@ -95,6 +95,12 @@ bool mod_music();
 void set_mod_music(bool on);
 unsigned mod_music_volume();
 void set_mod_music_volume(unsigned percent);
+// MOD battle voices (music.hpp battle_quote): whether packages' lines are spoken, and their
+// volume in percent, from the next line.
+bool mod_voice();
+void set_mod_voice(bool on);
+unsigned mod_voice_volume();
+void set_mod_voice_volume(unsigned percent);
 // Dialogue text size, independent of the interface scale. Saved as dialogue_font_size.
 // Safe on the game thread too: the window thread writes pending changes in update().
 unsigned dialogue_font_size();

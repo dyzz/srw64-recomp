@@ -118,6 +118,23 @@ class PackageTests(unittest.TestCase):
         files["data/parts.json"] = b"{}"
         self.assertEqual(sorted(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0]), ["data", "portrait"])
 
+    def test_battle_voices(self):
+        files = self.good_files()
+        files["audio/voice/battle/5813.ogg"] = b"OggS"
+        files["audio/voice/battle/17346.ogg"] = b"OggS"
+        files["audio/voice.json"] = json.dumps({"schema": "srw64.voice.v1", "gain": -3.5, "delay": 150}).encode()
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        self.assertIn("记录号", validate.voice_problem("battle/5798.ogg"))
+        self.assertIn("记录号", validate.voice_problem("battle/05813.ogg"))
+        self.assertIsNone(validate.voice_problem("battle/5799.ogg"))
+        self.assertIn("Ogg", validate.voice_problem("battle/5813.mp3"))
+        self.assertIn("audio/voice/battle", validate.voice_problem("story/100.ogg"))
+        self.assertIn("gain", validate.voice_settings_problem({"schema": "srw64.voice.v1", "gain": 20}))
+        self.assertIn("delay", validate.voice_settings_problem({"schema": "srw64.voice.v1", "delay": 1.5}))
+        self.assertIn("mute", validate.voice_settings_problem({"schema": "srw64.voice.v1", "mute": True}))
+        files["audio/voice/battle/99999.ogg"] = b"OggS"
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["voice"])
+
     def test_map_icons(self):
         def png(width, height):
             return b"\x89PNG\r\n\x1a\n" + b"\0\0\0\rIHDR" + width.to_bytes(4, "big") + height.to_bytes(4, "big") + b"\x08\x06\0\0\0"

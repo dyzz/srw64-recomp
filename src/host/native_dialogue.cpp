@@ -267,6 +267,8 @@ void refresh(uint8_t* ram,bool create_events) {
         if(body.empty()) {current[slot]={};continue;}
         const std::pair<uint64_t,unsigned> identity{loads[slot],display_only?box.segment:0};
         if(identity!=identities[slot]) {
+            // A battle quote's next page keeps its load; a new load is the next quote.
+            if(display_only && identity.first!=identities[slot].first && battle_quote_opened)battle_quote_opened(box.text_id);
             identities[slot]=identity;events[slot]=++event_serial;
         }
         box.event=events[slot];
@@ -874,6 +876,7 @@ bool reader_owns(unsigned label_slot,double x,double y) {
     return false;
 }
 bool reader_configured(){return enabled;}
+void (*battle_quote_opened)(unsigned record){};
 std::filesystem::path text_overrides_dir(){return text_overrides;}
 nlohmann::json text_summary(){std::lock_guard lock(page_mutex);return last_text_summary;}
 std::string page_text(const std::string& locale,unsigned resource) {

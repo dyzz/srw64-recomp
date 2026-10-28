@@ -1,5 +1,6 @@
-// MOD music (src/host/music.hpp, docs/design/audio-mods.md): music.json, which package's
-// file wins for a song, and how a decoded track is mixed into the game's audio.
+// MOD music and battle voices (src/host/music.hpp, docs/design/audio-mods.md): music.json and
+// voice.json, which package's file wins for a song or a quote, and how a decoded track is
+// mixed into the game's audio.
 #include "music.hpp"
 #include <cstdio>
 #include <fstream>
@@ -139,6 +140,42 @@ int main(int argc,char** argv) {
         music::Voice v;
         std::vector<int16_t> out(2,7);
         check(music::mix(v,out.data(),1,44100,false) && out[0]==7 && v.position==0,"silence while decoding");
+    }
+    // Battle voices: voice.json, which package's line wins for a quote record.
+    {
+        const auto v=music::voice_settings(json::parse(R"({"schema":"srw64.voice.v1","gain":-4.5,"delay":250})"));
+        check(v.gain_db==-4.5 && v.delay_ms==250,"voice.json");
+        const auto bad=music::voice_settings(json::parse(R"({"schema":"srw64.voice.v1","gain":40,"delay":-5})"));
+        check(bad.gain_db==0 && bad.delay_ms==0,"out of range is ignored");
+        check(music::voice_settings(json::parse(R"({"gain":-3})")).gain_db==0,"no schema reads nothing");
+        namespace fs=std::filesystem;
+        const fs::path root=(argc>1?fs::path(argv[1]):fs::temp_directory_path()/"srw64-music-test")/"voice";
+        fs::remove_all(root);
+        const auto battle=[&](const char* p,const char* f){touch(root/p/"audio"/"voice"/"battle"/f);};
+        battle("low","5799.ogg");battle("low","17346.ogg");battle("low","5798.ogg");battle("low","17347.ogg");
+        battle("low","05813.ogg");battle("low","6000.mp3");battle("low","9000.ogg");
+        battle("high","9000.OGG");
+        touch(root/"high"/"audio"/"voice.json",R"({"schema":"srw64.voice.v1","gain":-6,"delay":100})");
+        touch(root/"high"/"audio"/"voice"/"story"/"100.ogg");
+        battle("off","5799.ogg");
+        const auto lines=music::collect_voices({package(root/"low"),package(root/"high"),package(root/"off",false)},read_json);
+        check(lines.size()==3 && lines.contains(5799) && lines.contains(17346) && lines.contains(9000),"quote records 5799-17346 only, Ogg, no leading zero");
+        check(lines.at(9000).package=="high" && lines.at(9000).gain_db==-6 && lines.at(9000).delay_ms==100,"the higher package wins, with its voice.json");
+        check(lines.at(5799).package=="low" && lines.at(5799).delay_ms==0,"the turned-off package is left out");
+        fs::remove_all(root);
+    }
+    // A line's delay: silence first, counted while it decodes too, then the line from its start.
+    {
+        music::Voice v;v.once=true;v.delay=3;
+        std::vector<int16_t> out(4,0);
+        check(music::mix(v,out.data(),2,44100,false) && v.delay==1 && out[0]==0,"the delay passes while decoding");
+        v.pcm=ramp(10);
+        std::vector<int16_t> o2(8,0);
+        music::mix(v,o2.data(),4,44100,false);
+        check(v.delay==0 && o2[0]==0 && o2[1]==0 && o2[2]==0 && o2[4]==1 && o2[6]==2,"then the line from its first frame");
+        music::Voice w;w.once=true;w.pcm=ramp(2);
+        std::vector<int16_t> o3(8,0);
+        check(!music::mix(w,o3.data(),4,44100,false) && w.finished,"a line ends once");
     }
     if(failures)std::fprintf(stderr,"%d failed\n",failures);
     else std::puts("music: ok");

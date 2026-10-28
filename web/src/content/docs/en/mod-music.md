@@ -1,9 +1,9 @@
 ---
 title: Music mods
-summary: Replace any of the game's 49 songs with your own music, set loops, volume and titles, and choose a pilot's or unit's battle theme. Made with the web tool or by hand.
+summary: Replace any of the game's 49 songs with your own music, set loops, volume and titles, choose a pilot's or unit's battle theme, and voice the battle lines. Made with the web tool or by hand.
 section: mods
 order: 2
-updated: 2026-10-26
+updated: 2026-10-28
 ---
 
 A music mod replaces one of the original’s songs with an audio file. Everywhere the game plays that song follows: battle themes, stage music, story scenes, the title and the Sound Test. You can also choose which song a pilot or unit fights to.
@@ -16,7 +16,7 @@ The [BGM MOD maker](/en/mods/bgm/) does everything in your browser; **no audio i
 
 1. Fill in the package details: ID, version, name, authors and license.
 2. In the list of 49 songs, drop an audio file on the row you want to replace. mp3, wav, flac, m4a and ogg all work; the tool converts them to the game’s format, and a file that is already Ogg Vorbis is used as it is.
-3. Click “Edit” to set up the song:
+3. Click the row to set the song up (its ▶ plays it right away):
    - **Loop**: loop the whole song, loop a section of it, or play it once. Drag the blue (start) and gold (end) lines on the waveform to set the section; they snap to the nearest zero crossing when you let go. “Hear the seam” plays the moment the loop wraps around.
    - **Volume (dB)**: the average level of this song and of the other replaced songs is shown beside it, so you can match them.
    - **Title**: the name shown in the Sound Test, in each language if you like.
@@ -89,9 +89,25 @@ Pilot and unit numbers are in the [pilot table](https://github.com/dyzz/srw64-re
 
 The repository’s [`docs/guide/audio-mods/`](https://github.com/dyzz/srw64-recomp/tree/main/docs/guide/audio-mods) folder holds the full format description and every table (its description is in Chinese). Hand the whole folder to an AI assistant and it can rename and convert your files and write `mod.json` and `music.json` for you.
 
-## Coming later
+## Battle voices
 
-The format for battle voices (one audio file per battle line) is settled, and the tables list the record numbers of all 11,548 battle lines, but the game does not support them yet: voice files in a package have no effect for now.
+From 0.5.2 a package can also voice the battle lines: as a line's box opens in a battle, its voice plays.
+
+```text
+yourname.voices/
+  mod.json
+  audio/
+    voice/battle/<record>.ogg
+    voice.json        optional
+```
+
+- The file is named by the line's **record number** (5799-17346); the [battle line table](https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/audio-mods/battle-voices.csv) lists all 11,548 with their speaker, when they appear and the text in three languages. Ogg Vorbis only, as for music.
+- A line of several pages plays on its first. The voice playing stops when the next line starts, when the battle ends or when it is cut short.
+- The boxes keep the original's pace and do not wait for a voice; keep each line to two or three seconds.
+- With battle animations off there are no lines and so no voices. Voices are the same whatever the reading language.
+- Random lines need all of them voiced to always have sound: "Attack (general, 3/14)" is one of 14 picked at random.
+- `voice.json` is optional: `{"schema": "srw64.voice.v1", "gain": -3.0, "delay": 150}`; `gain` adjusts the volume (dB, -30 to 12) and `delay` waits that many milliseconds after the box opens (0 to 2000).
+- The settings' General page has a MOD battle voices switch and volume.
 
 ## Copyright
 

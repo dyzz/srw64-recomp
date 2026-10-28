@@ -386,6 +386,36 @@ def names_problem(document) -> str:
     return ""
 
 
+def voice_problem(rest: str) -> str | None:
+    """A battle voice (audio/voice/battle/<record>.ogg) by the host's rules (src/host/music.hpp
+    collect_voices): an Ogg file named by a battle quote's text record, 5799-17346."""
+    folder, _, name = rest.rpartition("/")
+    if folder != "battle":
+        return "暂不支持：战斗语音放在 audio/voice/battle/"
+    stem, _, ext = name.rpartition(".")
+    if ext.lower() != "ogg":
+        return "要是 Ogg Vorbis（.ogg）"
+    if not (stem.isdigit() and stem.isascii() and not stem.startswith("0")) or not 5799 <= int(stem) <= 17346:
+        return "文件名要是战斗台词的记录号（5799–17346）"
+    return None
+
+
+def voice_settings_problem(data) -> str | None:
+    """audio/voice.json: {"schema": "srw64.voice.v1", "gain": dB -30-12, "delay": ms 0-2000}."""
+    if not isinstance(data, dict) or data.get("schema") != "srw64.voice.v1":
+        return "schema 要是 srw64.voice.v1"
+    for key in data:
+        if key not in ("schema", "gain", "delay"):
+            return f"不认识的字段 {key}"
+    gain = data.get("gain", 0)
+    if isinstance(gain, bool) or not isinstance(gain, (int, float)) or not -30 <= gain <= 12:
+        return "gain 要是 -30 到 12 的数（dB）"
+    delay = data.get("delay", 0)
+    if isinstance(delay, bool) or not isinstance(delay, int) or not 0 <= delay <= 2000:
+        return "delay 要是 0 到 2000 的整数（毫秒）"
+    return None
+
+
 def icon_problem(name: str, data: bytes) -> str | None:
     """A map icon (art/icons/<unit>.png) by the host's rules (src/host/native_icon.cpp,
     unit_icon_art.hpp): named by unit number, a square PNG of 16, 32, 64 or 128 pixels."""
@@ -589,6 +619,17 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             stem, _, ext = e.name.rsplit("/", 1)[1].rpartition(".")
             if ext.lower() != "png" or not _plain_number(stem) or int(stem) > 360:
                 problems.append(Problem("portrait", f"{e.name}: 文件名要是人物号.png"))
+        elif e.name.startswith("audio/voice/"):
+            why = voice_problem(e.name[len("audio/voice/"):])
+            if why:
+                problems.append(Problem("voice", f"{e.name}: {why}"))
+        elif e.name == "audio/voice.json":
+            try:
+                why = voice_settings_problem(json.loads(e.read().decode("utf-8")))
+            except (ValueError, UnicodeDecodeError) as error:
+                why = f"JSON 无效：{error}"
+            if why:
+                problems.append(Problem("voice", f"{e.name}: {why}"))
         elif e.name.startswith("art/icons/") and e.name.count("/") == 2:
             why = icon_problem(e.name.rsplit("/", 1)[1], e.read())
             if why:

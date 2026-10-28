@@ -624,6 +624,7 @@ static int run_host(int argc, char** argv) {
     srw64_game_hooks.terrain_panel_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end) {
         srw64::hdmap::rewrite_panel(ram, {begin, end});
     };
+    srw64::dialogue::battle_quote_opened = srw64::music::battle_quote;   // MOD battle voices
     srw64_game_hooks.unit_icon_drawn = [](uint8_t* ram, uint32_t slot, uint32_t begin, uint32_t end) {
         srw64::unit_icons::rewrite(ram, slot, begin, end);
     };
