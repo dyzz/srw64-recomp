@@ -55,11 +55,11 @@ export const UI = {
     modPackages: { zh: 'MOD 包：安装与制作', en: 'Mod packages', ja: 'MOD パッケージ' },
     modMusic: { zh: '音乐 MOD', en: 'Music mods', ja: '音楽 MOD' },
     modData: { zh: '数值 MOD', en: 'Number mods', ja: '数値 MOD' },
-    modNames: { zh: '名字与头像 MOD', en: 'Name and portrait mods', ja: '名前・顔グラフィック MOD' },
+    modNames: { zh: '名字、头像与图标 MOD', en: 'Name, portrait and icon mods', ja: '名前・顔グラ・アイコン MOD' },
     modIds: { zh: 'ID 表', en: 'ID tables', ja: 'ID 表' },
     modBgm: { zh: 'BGM MOD 制作工具', en: 'BGM mod maker', ja: 'BGM MOD メーカー' },
     modDataMaker: { zh: '数值 MOD 制作工具', en: 'Number mod maker', ja: '数値 MOD メーカー' },
-    modNamesMaker: { zh: '名字与头像 MOD 制作工具', en: 'Name and portrait mod maker', ja: '名前・顔グラフィック MOD メーカー' },
+    modNamesMaker: { zh: '名字、头像与图标 MOD 制作工具', en: 'Name, portrait and icon mod maker', ja: '名前・顔グラ・アイコン MOD メーカー' },
     // The sister project, the Chinese translation of Super Robot Wars Z (PS2).
     srwz: {
       label: { zh: '机战Z', en: 'SRW Z', ja: 'スパロボZ' },

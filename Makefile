@@ -197,6 +197,12 @@ recomp-mod-data-test:
 		tests/native_mod_data.cpp src/host/mod_library.cpp build/recomp/mod-data-test/miniz*.o -o build/recomp/mod-data-test/test
 	build/recomp/mod-data-test/test build/recomp/mod-data-test/run $(ROM)
 
+.PHONY: recomp-mod-icons-test
+recomp-mod-icons-test:
+	mkdir -p build/recomp/mod-icons-test
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host tests/native_mod_icons.cpp -o build/recomp/mod-icons-test/test
+	build/recomp/mod-icons-test/test
+
 .PHONY: recomp-mod-names-test
 recomp-mod-names-test:
 	mkdir -p build/recomp/mod-names-test

@@ -118,6 +118,20 @@ class PackageTests(unittest.TestCase):
         files["data/parts.json"] = b"{}"
         self.assertEqual(sorted(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0]), ["data", "portrait"])
 
+    def test_map_icons(self):
+        def png(width, height):
+            return b"\x89PNG\r\n\x1a\n" + b"\0\0\0\rIHDR" + width.to_bytes(4, "big") + height.to_bytes(4, "big") + b"\x08\x06\0\0\0"
+        files = self.good_files()
+        files["art/icons/184.png"] = png(128, 128)
+        files["art/icons/0.png"] = png(16, 16)
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        self.assertIn("机体号", validate.icon_problem("363.png", png(16, 16)))
+        self.assertIn("机体号", validate.icon_problem("055.png", png(16, 16)))
+        self.assertIn("96×96", validate.icon_problem("55.png", png(96, 96)))
+        self.assertIn("不是 PNG", validate.icon_problem("55.png", b"GIF89a"))
+        files["art/icons/55.png"] = png(64, 32)
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["icon"])
+
     def test_everything_inside_one_top_folder_and_junk(self):
         files = {"a.b/" + name: data for name, data in self.good_files().items()}
         files["__MACOSX/a.b/._mod.json"] = b"junk"

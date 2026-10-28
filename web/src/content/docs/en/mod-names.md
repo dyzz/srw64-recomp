@@ -1,9 +1,9 @@
 ---
-title: Name and portrait mods
-summary: Rename the original protagonists, partners and unit, rename any pilot, unit or weapon, and replace pilot portraits. Only what is shown changes; nothing is written to saves.
+title: Name, portrait and map icon mods
+summary: Rename the original protagonists, partners and unit, rename any pilot, unit or weapon, replace pilot portraits and the units' map icons. Only what is shown changes; nothing is written to saves.
 section: mods
 order: 4
-updated: 2026-10-27
+updated: 2026-10-28
 ---
 
 These mods change only the names and portraits the game **shows**: dialogue, speakers, status screens, the battle confirmation, the library and map labels follow. Saves keep the original names, so disabling the package brings everything back, and a save still loads anywhere, including in the original game.
@@ -19,9 +19,10 @@ yourname.heroes/
   mod.json
   dialogue/names.json          names
   art/portraits/133.png        portraits, named by pilot number
+  art/icons/184.png            map icons, named by unit number
 ```
 
-Either one alone is fine.
+Any of them alone is fine.
 
 ## Names (dialogue/names.json)
 
@@ -73,6 +74,15 @@ In Japanese with the original images, the original screens draw with the game's 
 - Dialogue, battles, status screens, the battle confirmation and the library all use it, with the images set to original or HD.
 - Pilots that use the same original portrait (other numbers of one character, say) all change together.
 - A file not named by a pilot number with a portrait, or of the wrong size, is skipped with `SRW64_MOD_PORTRAITS_PROBLEM` in the log.
+
+## Map icons (art/icons)
+
+- The file is named by **unit number** plus `.png`, e.g. `art/icons/184.png`.
+- Square, 16, 32, 64 or 128 pixels, drawn as pixel art: the game scales it up to 128 pixel by pixel, without blurring. It may have transparency.
+- Draw it once, in the unit's own colours. The enemy and third parties get a ring of their side's colour (red, yellow) and units that have acted turn grey by themselves.
+- **Face the way the original icon does**: left if it looks left, front if it faces front. The game turns it for each side (the player's left, enemies right); the original icons are in the [ID table](/en/mods/ids/units/).
+- Units that share an original icon (other numbers of one unit, say) all change together; give them only one picture in a package.
+- It shows with the images set to original or HD. A file not named by a unit number, or of the wrong size, is skipped with `SRW64_MOD_ICONS_PROBLEM` in the log.
 
 ## Example
 

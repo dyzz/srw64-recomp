@@ -386,6 +386,20 @@ def names_problem(document) -> str:
     return ""
 
 
+def icon_problem(name: str, data: bytes) -> str | None:
+    """A map icon (art/icons/<unit>.png) by the host's rules (src/host/native_icon.cpp,
+    unit_icon_art.hpp): named by unit number, a square PNG of 16, 32, 64 or 128 pixels."""
+    stem, _, ext = name.rpartition(".")
+    if ext.lower() != "png" or not _plain_number(stem) or int(stem) >= 363:
+        return "文件名要是机体号.png（0–362）"
+    if len(data) < 24 or data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
+        return "不是 PNG"
+    width, height = int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
+    if width != height or width not in (16, 32, 64, 128):
+        return f"{width}×{height}，要是 16、32、64 或 128 像素的正方形"
+    return None
+
+
 def _plain_number(text: str) -> bool:
     return text.isdigit() and text.isascii() and len(text) <= 4 and (text == "0" or not text.startswith("0"))
 
@@ -575,6 +589,10 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             stem, _, ext = e.name.rsplit("/", 1)[1].rpartition(".")
             if ext.lower() != "png" or not _plain_number(stem) or int(stem) > 360:
                 problems.append(Problem("portrait", f"{e.name}: 文件名要是人物号.png"))
+        elif e.name.startswith("art/icons/") and e.name.count("/") == 2:
+            why = icon_problem(e.name.rsplit("/", 1)[1], e.read())
+            if why:
+                problems.append(Problem("icon", f"{e.name}: {why}"))
     for e in package.entries:
         if e.name == "dialogue/names.json":
             try:

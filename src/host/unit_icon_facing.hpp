@@ -37,6 +37,15 @@ inline bool looks_left(const uint8_t* ram, uint32_t slot, uint32_t palette) {
     return palette == kPlayerPalette;
 }
 
+// Whether the unit in this sprite slot (unit slots 0x42-0x9B) has acted this turn: roster
+// +0xB & 0x80, which 801E2734 reads each frame to draw it with the grey palette (1013).
+inline bool acted(const uint8_t* ram, uint32_t slot) {
+    for(uint32_t side = 0; side < 3; ++side)
+        if(slot >= kFirstSlot[side] && slot < kFirstSlot[side] + kSlots)
+            return guest::read(ram, kRoster + side * kSideStride + (slot - kFirstSlot[side]) * kSlotStride + 0xB, 1) & 0x80;
+    return false;
+}
+
 // After the icon drawer wrote [begin, end): mirror its texture rectangle when the icon
 // looks the other way from its side.
 inline void after_draw(uint8_t* ram, uint32_t function, int32_t slot, int32_t sub, uint32_t begin, uint32_t end) {

@@ -29,6 +29,7 @@ OUT = ROOT / 'docs/guide/data-mods'
 WEB = ROOT / 'web/src/data/data-mods.json'
 # mod_data.hpp
 UNIT_RECORDS, UNIT_SIZE, UNITS, UNIT_TERRAIN = 0x71B80, 0x24, 363, 0x0E
+UNIT_ICONS = 0x100D78                                        # u16 map icon resource per unit (layout images.units)
 PILOT_MAP, PILOTS = 0x800CA9C4 - 0x80075610, 360
 PILOT_RECORDS, PILOT_SIZE, PILOT_RECORD_COUNT, PILOT_TERRAIN = 0x7A1A0, 0x10, 257, 0x07
 WEAPON_RECORDS, WEAPON_SIZE, WEAPONS, WEAPON_NAMES = 0x74E90, 0x10, 1329, 1370
@@ -88,6 +89,11 @@ def main() -> None:
                 'shield': bool(u8(at + 0x18) & 2), 'sword': bool(u8(at + 0x18) & 1), 'parts_slots': u8(at + 0x19),
                 'abilities': [k for k, m in ABILITIES if bits & m]}
     units = [(u, name(UNIT_NAMES + u), ranks(UNIT_RECORDS + u * UNIT_SIZE + UNIT_TERRAIN), unit_row(u)) for u in range(UNITS)]
+    # The map icon each unit draws (layout images.units) and the way it looks, for icon MODs
+    # (src/host/native_icon.cpp; content/art/unit-icon-facing.json).
+    facing = json.loads((ROOT / 'content/art/unit-icon-facing.json').read_text(encoding='utf-8'))['icons']
+    icons = {u: {'icon': u16(UNIT_ICONS + 2 * u), 'icon_facing': facing.get(str(u16(UNIT_ICONS + 2 * u)), {}).get('facing', 'front')}
+             for u in range(UNITS)}
     record_of = {a: s16(PILOT_MAP + 2 * a) for a in range(PILOTS)}
     on_record = defaultdict(list)
     for a, r in record_of.items():
@@ -151,7 +157,7 @@ def main() -> None:
         return {'ja': ja, 'zh': zh or ja, 'en': en or ja}
     web = {
         'schema': 'srw64.web-data-mods.v2',
-        'units': [{'id': u, 'name': names3(n), 'terrain': ''.join(t), **d} for u, n, t, d in units if n[0]],
+        'units': [{'id': u, 'name': names3(n), 'terrain': ''.join(t), **d, **icons[u]} for u, n, t, d in units if n[0]],
         'pilots': [{'id': a, 'name': names3(n), 'terrain': ''.join(t), 'shared': shared, **d}
                    for a, n, r, shared, t, d in pilots if n[0]],
         'weapons': [{'id': w, 'name': names3(n), 'terrain': ''.join(t), 'units': c, **d}

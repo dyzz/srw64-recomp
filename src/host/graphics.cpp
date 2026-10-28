@@ -23,6 +23,7 @@
 #include "native_gpu.hpp"
 #endif
 #include "native_portrait.hpp"
+#include "native_icon.hpp"
 #include "native_background.hpp"
 #include "native_sprite.hpp"
 #include "presentation/image_mode.hpp"
@@ -544,6 +545,7 @@ public:
         srw64::marker::configure(capture_directory);
         srw64::hdmap::configure(capture_directory);
         srw64::portraits::install();   // MOD portraits draw without the HD pack too
+        srw64::unit_icons::install();  // and MOD map icons
         srw64::backgrounds::initialize(capture_directory);
         RT64::SetRenderHooks([](plume::RenderInterface* rhi, plume::RenderDevice* device) {
             capture_device = device;
@@ -561,6 +563,7 @@ public:
             srw64::marker::gpu_init();
             srw64::hdmap::gpu_init();
             srw64::portraits::gpu_init();
+            srw64::unit_icons::gpu_init();
             srw64::backgrounds::gpu_init();
             srw64::sprites::gpu_init();
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -574,6 +577,7 @@ public:
             srw64::marker::shutdown();
             srw64::hdmap::shutdown();
             srw64::portraits::shutdown();
+            srw64::unit_icons::shutdown();
             srw64::backgrounds::shutdown();
             srw64::sprites::shutdown();
 #ifdef SRW64_NATIVE_DIALOGUE
@@ -1328,6 +1332,7 @@ public:
         const auto sprites_start = std::chrono::steady_clock::now();
         srw64::hdmap::configure(capture_directory);
         srw64::portraits::install();   // MOD portraits draw without the HD pack too
+        srw64::unit_icons::install();  // and MOD map icons
         const auto maps_done = std::chrono::steady_clock::now();
         const char* art = std::getenv("SRW64_ART_PACK");
         srw64::sprites::configure(!hd_art.empty() ? hd_art : art ? std::filesystem::path(art) : std::filesystem::path(), capture_directory);

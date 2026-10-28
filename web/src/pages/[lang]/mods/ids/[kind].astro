@@ -42,6 +42,7 @@ const t = {
   },
   search: { zh: '按名字或编号筛选', en: 'Filter by name or number', ja: '名前か番号で絞り込み' },
   name: { zh: '名字', en: 'Name', ja: '名前' },
+  icon: { zh: '图标', en: 'Icon', ja: 'アイコン' },
   shared: { zh: '共用能力记录', en: 'Shares its record with', ja: '能力記録を共有' },
   sharedNote: {
     zh: '同一行「共用能力记录」里的人物用的是同一条能力记录，改其中一个，其他人一起变。同名的条目是不同的编号（形态、敌我版本、剧情专用），改之前对一下等级。',
@@ -77,10 +78,11 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
 
     {kind === 'units' && <section id="units" class="block">
       <div class="scroll"><table>
-        <thead><tr><th class="num">ID</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}{unitCols.map((c) => <th class="stat">{c}</th>)}<th>{t.abilities[tl(lang)]}</th><th></th></tr></thead>
+        <thead><tr><th class="num">ID</th><th class="icon">{t.icon[tl(lang)]}</th><th>{t.name[tl(lang)]}</th>{channels.map((c) => <th class="rank">{c}</th>)}{unitCols.map((c) => <th class="stat">{c}</th>)}<th>{t.abilities[tl(lang)]}</th><th></th></tr></thead>
         <tbody>{data.units.map((u) => (
           <tr data-key={key(u.name, u.id)}>
             <td class="num latin">{u.id}</td>
+            <td class="icon"><img src={`/gen/icons/${u.icon}.png`} alt="" width="24" height="24" loading="lazy" /></td>
             <td>{u.name[tl(lang)]}{lang !== 'ja' && u.name.ja !== u.name[tl(lang)] && <span class="ja">{u.name.ja}</span>}</td>
             {[...u.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
             {[u.hp, u.en, u.move, u.mobility, u.armor, u.limit, u.size].map((v) => <td class="stat latin">{v}</td>)}
@@ -164,6 +166,8 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
   th { color: var(--muted); font-weight: 600; font-size: 13px; }
   .num { text-align: right; color: var(--gold); width: 4em; }
   .ja { color: var(--dim); font-size: 12.5px; margin-left: 8px; }
+  .icon { width: 32px; padding-right: 0; }
+  .icon img { display: block; image-rendering: pixelated; }
   .rank { text-align: center; width: 2.8em; font-family: var(--display); }
   .r-A { color: var(--green); }
   .r-B { color: var(--text); }
@@ -177,7 +181,7 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
   @media (max-width: 640px) {
     .bar { position: static; }
     th, td { padding: 6px 5px; }
-    td:nth-child(2) { white-space: normal; }
+    td:nth-child(2), #units td:nth-child(3) { white-space: normal; }
     .ja { display: block; margin-left: 0; }
     .rank { width: 2em; }
     .link { display: none; }

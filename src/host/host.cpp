@@ -57,6 +57,7 @@
 #include <mutex>
 #include <iterator>
 #include "native_portrait.hpp"
+#include "native_icon.hpp"
 #include "native_background.hpp"
 #include "native_sprite.hpp"
 #include "sprite_text.hpp"
@@ -622,6 +623,9 @@ static int run_host(int argc, char** argv) {
     };
     srw64_game_hooks.terrain_panel_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end) {
         srw64::hdmap::rewrite_panel(ram, {begin, end});
+    };
+    srw64_game_hooks.unit_icon_drawn = [](uint8_t* ram, uint32_t slot, uint32_t begin, uint32_t end) {
+        srw64::unit_icons::rewrite(ram, slot, begin, end);
     };
     srw64_game_hooks.portrait_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t, uint32_t) {
         // The sprite record only holds resource handles; the portrait is recognised from

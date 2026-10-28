@@ -6,13 +6,13 @@ export type Pickable = { id: number; name: { ja: string; zh: string; en: string 
 export type PickerText = { allSeries: string; search: string; none: string };
 
 export function picker(items: Pickable[], series: { id: number | null; name: string }[], lang: 'zh' | 'en' | 'ja', text: PickerText,
-  onPick: (id: number) => void, options: { badge?: (id: number) => string | null } = {}) {
+  onPick: (id: number) => void, options: { badge?: (id: number) => string | null; pixel?: boolean } = {}) {
   let chosen: number | null = null;
   const nameOf = (x: Pickable) => x.name[lang] || x.name.ja;
   const select = el('select', {}, el('option', { value: '' }, text.allSeries),
     ...series.filter((s) => items.some((x) => x.series === s.id)).map((s) => el('option', { value: String(s.id) }, s.name))) as HTMLSelectElement;
   const find = el('input', { type: 'search', placeholder: text.search, autocomplete: 'off', spellcheck: 'false' }) as HTMLInputElement;
-  const grid = el('div', { class: 'pick-grid' });
+  const grid = el('div', { class: options.pixel ? 'pick-grid pixel' : 'pick-grid' });   // pixel: pixel art, not smoothed
   const card = (x: Pickable) => {
     const badge = options.badge?.(x.id);
     const b = el('button', { type: 'button', class: `pick${x.id === chosen ? ' on' : ''}`, 'data-id': x.id, title: `${x.id} ${x.name.ja}` },

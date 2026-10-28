@@ -635,7 +635,7 @@
     "mod_turn_off": "停用",
     "mod_remove": "刪除",
     "mod_remove_confirm": "確認刪除",
-    "mod_not_applied": "目前生效的有：音樂替換、名字與頭像、機體／駕駛員／武器的數值；劇本、其餘美術、臺詞和語音還不會生效。",
+    "mod_not_applied": "目前生效的有：音樂替換、名字、頭像與地圖圖示、機體／駕駛員／武器的數值；劇本、其餘美術、臺詞和語音還不會生效。",
     "mod_install_busy": "正在安裝另一個 MOD，請稍候",
     "mod_install_failed": "安裝失敗：{reason}",
     "mod_installed": "已安裝 MOD：{id} {version}",

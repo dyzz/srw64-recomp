@@ -635,7 +635,7 @@
     "mod_turn_off": "Turn off",
     "mod_remove": "Remove",
     "mod_remove_confirm": "Confirm removal",
-    "mod_not_applied": "Music replacements, names and portraits, and unit, pilot and weapon numbers take effect; stories, other art, dialogue and voices do not yet.",
+    "mod_not_applied": "Music replacements, names, portraits and map icons, and unit, pilot and weapon numbers take effect; stories, other art, dialogue and voices do not yet.",
     "mod_install_busy": "Another MOD is being installed; please wait",
     "mod_install_failed": "Could not install: {reason}",
     "mod_installed": "MOD installed: {id} {version}",
