@@ -21,11 +21,11 @@ const after = [
 const modGroups = [
   { label: UI.nav.modGroupDownloads[tl(lang)], items: [{ href: `/${lang}/mods/`, label: UI.nav.modAll[tl(lang)], exact: true }] },
   { label: UI.nav.modGroupTools[tl(lang)], items: [
-    { href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[tl(lang)], icon: '🛠️' },
-    { href: `/${lang}/mods/voices/`, label: UI.nav.modVoicesMaker[tl(lang)], icon: '🛠️' },
-    { href: `/${lang}/mods/data/`, label: UI.nav.modDataMaker[tl(lang)], icon: '🛠️' },
-    { href: `/${lang}/mods/names/`, label: UI.nav.modNamesMaker[tl(lang)], icon: '🛠️' },
-    { href: `/${lang}/mods/icons/`, label: UI.nav.modIconsMaker[tl(lang)], icon: '🛠️' },
+    { href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[tl(lang)], icon: '🧰' },
+    { href: `/${lang}/mods/voices/`, label: UI.nav.modVoicesMaker[tl(lang)], icon: '🧰' },
+    { href: `/${lang}/mods/data/`, label: UI.nav.modDataMaker[tl(lang)], icon: '🧰' },
+    { href: `/${lang}/mods/names/`, label: UI.nav.modNamesMaker[tl(lang)], icon: '🧰' },
+    { href: `/${lang}/mods/icons/`, label: UI.nav.modIconsMaker[tl(lang)], icon: '🧰' },
   ] },
   { label: UI.nav.modGroupDocs[tl(lang)], items: [
     { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[tl(lang)] },
@@ -139,7 +139,7 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
   .menu ul { margin: 0; padding: 0; list-style: none; }
   .menu ul a { display: block; padding: 7px 12px 7px 20px; color: var(--text); font-size: 14px; white-space: nowrap; }
   .nav .menu ul a::after { display: none; }
-  .menu ul a .ico { display: inline-block; width: 1.6em; }
+  .menu ul a .ico { display: inline-block; width: 26px; font-size: 17px; line-height: 1; vertical-align: -2px; }
   .menu ul a:hover { background: var(--cyan-soft); }
   .menu ul a[aria-current='page'] { color: var(--gold); }
   .nav a.sister { color: var(--gold); }
