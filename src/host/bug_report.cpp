@@ -137,7 +137,11 @@ std::string machine_value(const wchar_t* key, const wchar_t* name) {
     if (RegGetValueW(HKEY_LOCAL_MACHINE, key, name, RRF_RT_REG_SZ, nullptr, value, &size) != ERROR_SUCCESS) return {};
     char text[512] = {};
     WideCharToMultiByte(CP_UTF8, 0, value, -1, text, sizeof(text) - 1, nullptr, nullptr);
-    return trim(text);
+    auto trimmed = trim(text);
+    // What a board maker leaves in a self-built PC's BIOS says nothing.
+    for (const char* blank : {"To Be Filled By O.E.M.", "System manufacturer", "System Product Name", "Default string"})
+        if (_stricmp(trimmed.c_str(), blank) == 0) return {};
+    return trimmed;
 }
 #endif
 
