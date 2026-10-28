@@ -8,7 +8,7 @@ updated: 2026-10-28
 
 These mods change only the names and portraits the game **shows**: dialogue, speakers, status screens, the battle confirmation, the library and map labels follow. Saves keep the original names, so disabling the package brings everything back, and a save still loads anywhere, including in the original game.
 
-To skip writing it by hand, use the [Name and portrait mod maker](/en/mods/names/): fill in names and choose pictures on the page and export a .srw64mod; pictures are cropped and scaled for you.
+To skip writing it by hand, use the [Name, portrait and icon mod maker](/en/mods/names/): fill in names and choose portraits and icons on the page and export a .srw64mod. Pictures are cropped and scaled for you, and an icon is previewed as the player’s, an enemy’s, a third party’s and acted.
 
 Installing and managing packages: [MOD packages](../mods/). Needs 0.5.2 or later.
 

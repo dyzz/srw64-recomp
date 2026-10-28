@@ -1,0 +1,122 @@
+---
+// The battle voice MOD maker (docs/design/audio-mods.md §8): a voice for any battle line, as
+// audio/voice/battle/<record>.ogg and audio/voice.json in a package, made in the browser
+// (scripts/voice-maker.ts). Files are decoded, encoded to Ogg Vorbis in a worker unless they
+// already are Vorbis, and zipped on the player's own machine.
+import Base from '../../../layouts/Base.astro';
+import ModPackageForm from '../../../components/ModPackageForm.astro';
+import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
+import { packageText, versionNotice } from '../../../lib/mod-maker-text';
+import { pickables } from '../../../lib/mod-picker';
+import { voiceLines } from '../../../lib/voice-lines';
+import '../../../styles/mod-maker.css';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const L = <T,>(v: { zh: T; en: T; ja: T }) => v[tl(lang)];
+const title = { zh: '战斗语音 MOD 制作', en: 'Battle voice mod maker', ja: '戦闘ボイス MOD メーカー' };
+const lead = {
+  zh: '给战斗台词配上语音：选一个人物，把录好的音频拖到他的台词上，导出 .srw64mod 拖进游戏窗口即可安装。战斗动画里台词框一打开，就放这句的语音。',
+  en: 'Give the battle lines a voice: pick a character, drop your recordings on their lines, and drag the exported .srw64mod into the game window to install it. As a line’s box opens in a battle animation, its voice plays.',
+  ja: '戦闘台詞にボイスを付けます。キャラクターを選んで録音をその台詞にドロップし、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。戦闘アニメで台詞の枠が開くと、その台詞のボイスが流れます。',
+};
+const text = {
+  ...packageText(lang),
+  settings: L({ zh: '声音设置', en: 'Sound', ja: '音の設定' }),
+  gain: L({ zh: '音量修正（dB，-30 到 12）', en: 'Volume (dB, -30 to 12)', ja: '音量補正（dB、-30〜12）' }),
+  delay: L({ zh: '台词框打开后延迟（毫秒，0 到 2000）', en: 'Delay after the box opens (ms, 0 to 2000)', ja: '枠が開いてからの遅延（ミリ秒、0〜2000）' }),
+  settingsNote: L({ zh: '整个包共用。玩家还能在设置「通用」页调「MOD 战斗语音」的音量。', en: 'For the whole package. Players also set the “MOD battle voices” volume on the settings’ General page.', ja: 'パッケージ全体に効きます。プレイヤーは設定の「全般」ページで「MOD 戦闘ボイス」の音量も調整できます。' }),
+  bulk: L({ zh: '批量加入', en: 'Add many at once', ja: 'まとめて追加' }),
+  bulkNote: L({ zh: '文件名以台词编号开头的音频可以一次加入很多，例如 7018.ogg、7018_攻击.wav。编号见下面每句台词左边，或台词对照表。', en: 'Audio files whose names start with the line number go in many at once, such as 7018.ogg or 7018_attack.wav. Each line’s number is at its left below, and in the battle line table.', ja: 'ファイル名が台詞番号で始まる音声は、まとめて追加できます（例：7018.ogg、7018_attack.wav）。番号は下の各台詞の左と、台詞対照表にあります。' }),
+  bulkChoose: L({ zh: '选择多个文件', en: 'Choose files', ja: 'ファイルを選択' }),
+  bulkDrop: L({ zh: '或把文件拖到这里', en: 'or drop them here', ja: 'またはここにドロップ' }),
+  bulkDone: L({ zh: '加入 {n} 个。', en: 'Added {n}.', ja: '{n} 件を追加しました。' }),
+  bulkSkipped: L({ zh: '{n} 个文件名开头不是 5799–17346 的台词编号：{names}', en: '{n} not named by a line number (5799–17346): {names}', ja: '{n} 件はファイル名が台詞番号（5799〜17346）で始まっていません：{names}' }),
+  lines: L({ zh: '台词', en: 'Lines', ja: '台詞' }),
+  linesNote: L({ zh: '选一个人物，列出他说的全部战斗台词。把音频拖到一行上，或点「选择文件」。徽标是已配音句数／总句数。', en: 'Pick a character to list all their battle lines. Drop an audio file on a line or press “Choose file”. The badge counts voiced lines out of all.', ja: 'キャラクターを選ぶと、その戦闘台詞がすべて並びます。音声を行にドロップするか「ファイルを選択」を押します。バッジはボイス付きの数／全体の数です。' }),
+  showNever: L({ zh: '也列出原版不会出现的台词', en: 'Also list lines the original never shows', ja: '原作では出ない台詞も表示' }),
+  pickFirst: L({ zh: '先在上面选一个人物。', en: 'Pick a character above first.', ja: '先に上でキャラクターを選んでください。' }),
+  linesOf: L({ zh: '{who} 的台词：{n} 句', en: '{who}: {n} lines', ja: '{who} の台詞：{n} 件' }),
+  hidden: L({ zh: '另有 {n} 句原版不会出现，已隐藏', en: '{n} more the original never shows are hidden', ja: 'ほかに原作では出ない {n} 件を隠しています' }),
+  choose: L({ zh: '选择文件', en: 'Choose file', ja: 'ファイルを選択' }),
+  play: L({ zh: '试听', en: 'Play', ja: '試聴' }),
+  stop: L({ zh: '停止', en: 'Stop', ja: '停止' }),
+  decoding: L({ zh: '解码中…', en: 'Decoding…', ja: 'デコード中…' }),
+  encoding: L({ zh: '转成 Ogg Vorbis…', en: 'Encoding to Ogg Vorbis…', ja: 'Ogg Vorbis に変換中…' }),
+  waiting: L({ zh: '排队中…', en: 'Waiting…', ja: '待機中…' }),
+  failed: L({ zh: '无法解码这个文件，请换成 mp3、wav、flac、m4a 或 ogg', en: 'This file could not be decoded; try mp3, wav, flac, m4a or ogg', ja: 'このファイルはデコードできません。mp3・wav・flac・m4a・ogg を試してください' }),
+  long: L({ zh: '超过 4 秒，下一句出来时会被打断', en: 'over 4 s: the next line will cut it off', ja: '4 秒超：次の台詞で途切れます' }),
+  voiced: L({ zh: '已配音', en: 'Voiced', ja: 'ボイス付き' }),
+  voicedNone: L({ zh: '还没有给任何台词配音。', en: 'No line has a voice yet.', ja: 'まだボイス付きの台詞はありません。' }),
+  voicedSum: L({ zh: '共 {n} 句、{who} 个人物，{size}', en: '{n} lines from {who} characters, {size}', ja: '{n} 件・{who} 人、{size}' }),
+  errEmpty: L({ zh: '还没有给任何台词配音', en: 'No line has a voice yet', ja: 'まだボイス付きの台詞がありません' }),
+  errBusy: L({ zh: '还有 {n} 个文件在转换，等它们完成再导出', en: '{n} files are still being converted; export once they are done', ja: 'まだ {n} 件を変換中です。終わってから書き出してください' }),
+  errGain: L({ zh: '音量修正要在 -30 到 12 之间', en: 'The volume must be between -30 and 12', ja: '音量補正は -30〜12 にしてください' }),
+  errDelay: L({ zh: '延迟要是 0 到 2000 的整数', en: 'The delay must be a whole number from 0 to 2000', ja: '遅延は 0〜2000 の整数にしてください' }),
+  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品' }),
+  game: '0.5.2',
+};
+const data = voiceLines(lang);
+const known = pickables(lang, [], data.speakers.map((s) => s.id)).pilots;
+const series = pickables(lang, [], []).series;
+// Speakers the Library has no card for keep their name from the table, without a picture.
+const pick = [...known, ...data.speakers.filter((s) => !known.some((p) => p.id === s.id)).map((s) => ({ id: s.id, name: s.name, series: null, img: null }))];
+const counts = Object.fromEntries(data.speakers.map((s) => [s.id, s.lines]));
+const notice = versionNotice(lang, text.game);
+---
+<Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
+  <div class="wrap maker" data-voices>
+    <header class="page-head">
+      <span class="tag">MOD</span>
+      <h1>{title[tl(lang)]}</h1>
+      {notice && <p class="version-notice">{notice}</p>}
+      <p>{lead[tl(lang)]}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-music/#${L({ zh: '战斗语音', en: 'battle-voices', ja: '戦闘ボイス' })}`}>{L({ zh: '战斗语音说明', en: 'Battle voices guide', ja: '戦闘ボイスの説明' })}</a> · <a href="https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/audio-mods/battle-voices.csv">{L({ zh: '台词对照表', en: 'Battle line table', ja: '台詞対照表' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，音频不会上传。只使用你有权使用、并且允许再分发的录音。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no audio is uploaded. Use only recordings you have the right to use and to pass on.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、音声はアップロードされません。使用と再配布の権利がある録音だけを使ってください。' })}</p>
+    </header>
+
+    <ModPackageForm lang={lang} placeholder="yourname.voices" />
+
+    <section class="block">
+      <h2>{text.settings}</h2>
+      <p class="note">{text.settingsNote}</p>
+      <div class="form">
+        <label>{text.gain}<input type="number" min="-30" max="12" step="0.5" value="0" data-gain /></label>
+        <label>{text.delay}<input type="number" min="0" max="2000" step="10" value="0" data-delay /></label>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>{text.bulk}</h2>
+      <p class="note">{text.bulkNote}</p>
+      <div class="voice-bulk" data-bulk>
+        <label class="btn ghost">{text.bulkChoose}<input type="file" multiple accept="audio/*,.ogg,.flac,.m4a" data-bulk-input hidden /></label>
+        <span class="hint">{text.bulkDrop}</span>
+      </div>
+      <p class="status" data-bulk-status></p>
+    </section>
+
+    <section class="block">
+      <h2>{text.lines}</h2>
+      <p class="note">{text.linesNote}</p>
+      <div data-speaker-pick></div>
+      <label class="voice-never"><input type="checkbox" data-never /> {text.showNever}</label>
+      <div data-lines></div>
+    </section>
+
+    <section class="block">
+      <h2>{text.voiced}</h2>
+      <div data-voiced></div>
+    </section>
+
+    <section class="block">
+      <h2>{text.export}</h2>
+      <button type="button" class="btn big" data-export>{text.exportButton}</button>
+      <p class="status" data-export-status></p>
+    </section>
+  </div>
+  <script type="application/json" id="voices-data" data-zh-hant="text,labels,lines" is:inline set:html={JSON.stringify({ text, labels: data.labels, lines: data.lines, ja: data.ja, counts, pick, series, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
+  <script>
+    import { initVoiceMaker } from '../../../scripts/voice-maker';
+    initVoiceMaker();
+  </script>
+</Base>

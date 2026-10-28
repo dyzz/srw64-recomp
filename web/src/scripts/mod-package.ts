@@ -1,4 +1,4 @@
-// What the MOD makers share (scripts/data-maker.ts, names-maker.ts): the package form
+// What the MOD makers share (scripts/data-maker.ts, names-maker.ts, voice-maker.ts): the package form
 // (components/ModPackageForm.astro) as mod.json, opening a package, writing one. Everything
 // stays in the browser.
 import { strFromU8, strToU8, unzipSync, zipSync, type Zippable } from 'fflate';
@@ -92,7 +92,7 @@ export const jsonBytes = (value: unknown) => strToU8(JSON.stringify(value, null,
 // Zip `files` with mod.json and offer the package; says what it wrote.
 export function writePackage(manifest: Record<string, unknown>, version: string, files: Record<string, Uint8Array>, status: HTMLElement, text: Text) {
   const zippable: Zippable = { 'mod.json': jsonBytes(manifest) };
-  for (const [path, bytes] of Object.entries(files)) zippable[path] = path.endsWith('.png') ? [bytes, { level: 0 }] : bytes;
+  for (const [path, bytes] of Object.entries(files)) zippable[path] = /\.(png|ogg)$/.test(path) ? [bytes, { level: 0 }] : bytes;
   const zip = zipSync(zippable, { level: 6 });
   const name = `${manifest.id}-${version}.srw64mod`;
   const url = URL.createObjectURL(new Blob([zip as BlobPart], { type: 'application/zip' }));

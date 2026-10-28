@@ -93,6 +93,15 @@ The repository’s [`docs/guide/audio-mods/`](https://github.com/dyzz/srw64-reco
 
 From 0.5.2 a package can also voice the battle lines: as a line's box opens in a battle, its voice plays.
 
+The easiest way is the [Battle voice mod maker](/en/mods/voices/), which also works entirely in your browser:
+
+1. Fill in the package details, and the volume and delay if you need them.
+2. Pick a character to list all their battle lines, each with when it shows and its original text. Drop a recording on its line, or press “Choose file”. Recordings are converted to Ogg Vorbis; ▶ plays one.
+3. With many recordings, name the files starting with the record number (such as `7018.wav` or `7018_attack.wav`) and drop them all on “Add many at once”.
+4. Click “Export .srw64mod”. Load it back later with “Open an existing .srw64mod” to add more.
+
+By hand, the files go like this:
+
 ```text
 yourname.voices/
   mod.json

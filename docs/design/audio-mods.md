@@ -193,7 +193,7 @@ audio/
 
 ## 9. 网页 BGM 制作工具（规划，2026-10-26）
 
-用户定：官网提供网页工具，玩家自己做 BGM MOD；**音乐包里只放 Ogg Vorbis，转码在浏览器里做**。语音等宿主支持后另做一页。
+用户定：官网提供网页工具，玩家自己做 BGM MOD；**音乐包里只放 Ogg Vorbis，转码在浏览器里做**。语音等宿主支持后另做一页（已做，见 §10）。
 
 ### 9.1 为什么只用 Vorbis
 
@@ -246,3 +246,14 @@ audio/
   - `--part stage`（迷你关 `config/recomp/mini-stages/mod-music.json`）：歌号时间线 30 → 49 → 39（出击准备）→ **44 替换曲**（关卡开始）→ **4 原曲**（レイン 的脚本战斗，没有设置）→ **23 替换曲**（ドモン，`battle.pilot.4`）→ **38 替换曲** → 4.05 秒后 **44 替换曲**（jingle 只放一次，`801E076C` 换回关卡曲），之后音轨主频 299.9 Hz。
   - 第 1 回合事件在这个迷你关里不执行（开场直接交给我方阶段），所以 jingle 放在开场事件里。
 - 还没做：官网导航入口（等宿主带 MOD 音乐的版本发布）。2026-10-26 用户定：下一版显示 MOD 入口，`mod_entry_shown` 改回默认显示（`SRW64_MOD_ENTRY=0` 隐藏），两项 MOD 音乐设置随之可见；触屏仍没有 MOD 按钮。
+
+## 10. 网页战斗语音制作工具（2026-10-28）
+
+用户要求两个新 MOD（地图图标、战斗语音）都有制作工具。地图图标并在名字工具里（`/mods/names/` 的「地图图标」一栏，见 mod-names-art-data.md §2.2.1）；战斗语音单独一页 `/<lang>/mods/voices/`（`web/src/pages/[lang]/mods/voices.astro`、`web/src/scripts/voice-maker.ts`），导航「MOD → 制作工具」里排在 BGM 后面。
+
+- **数据**：台词正文取已发布的 `docs/guide/audio-mods/battle-voices.csv`（构建时 `?raw` 读入，`web/src/lib/voice-lines.ts` 解析）；什么时候出现另由 `export_audio_tables.py` 写 `web/src/data/voices.json`（每句的触发条件拆成字段：情境、通用 k/n、武器、乘坐机体、对手机体、对手声部、副驾驶、剧情标志、条件码、女性对手、合体技、旗舰、对话第几句、超出读取上限），构建时按页面语言拼成说明，人物、机体、武器名用各语言的名字。CSV 里的 `trigger` 列是中文开发描述，网页不用它。繁中页由 `zh_hant_pages.py` 按 `data-zh-hant="text,labels,lines"` 转换。页面内嵌数据约 1.2 MB（gzip 约 250 KB）。
+- **界面**：包信息（共用 `ModPackageForm`）→ 声音设置（`gain`、`delay`，都是 0 就不写 `voice.json`）→ 批量加入（文件名开头的 4–5 位数字当记录号，范围外的列出来）→ 选人物（共用 picker，徽标「已配音/总句数」）后列出全部台词：编号、什么时候出现、页面语言的译文、日文原文（日文页不重复）；原版不会出现的台词默认隐藏，可勾选显示 → 已配音一览 → 导出。
+- **音频**：和 BGM 工具共用 `web/src/scripts/audio-tools.ts`（Vorbis 头识别、worker 转码队列，从 `bgm-maker.ts` 抽出）。已是 Ogg Vorbis 的原样放入，时长读最后一页的 granule；其他格式按 44.1 kHz 解码、libvorbis 质量 4 转码。文件逐个处理，避免一次拖几百个时同时解码。超过 4 秒的标黄提示会被下一句打断。`.ogg` 在 zip 里不再压缩（`writePackage` 对 `.png`、`.ogg` 都用 level 0）。
+- **打开已有包**：读回 `voice.json` 和 `audio/voice/battle/*.ogg`；包里其他文件（例如同包的音乐）原样保留，再导出不丢。
+- **验证**（Chrome 内置浏览器，本地构建）：给武 7018 拖 1.5 秒 wav、批量加入 `7028_hurt.wav`（5 秒，标黄）和一个没有编号的文件（被列出）；导出的包含 `mod.json`（`game >=0.5.2`）、两个 `.ogg`、`voice.json`（`gain -3`、`delay 150`），符合 `validate.py` 的规则。另一轮批量加入 `7018.wav`、`5799 bright.wav`，延迟 200 导出后清空表单、用「打开已有的 .srw64mod」读回，ID、延迟和两句语音都恢复；5799 的试听按钮放完自动复位。BGM 页抽出共用代码后转码照常。还没用这个工具导出的包在游戏里实机走一遍。
+

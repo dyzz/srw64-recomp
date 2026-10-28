@@ -1,6 +1,7 @@
-// Encodes one song's PCM to Ogg Vorbis for the BGM MOD maker (bgm-maker.ts). The encoder is
-// libvorbis compiled to WebAssembly (wasm-media-encoders, MIT); it runs here so the page
-// stays responsive, and the page's own script policy never needs to allow WebAssembly.
+// Encodes one song's or line's PCM to Ogg Vorbis for the audio MOD makers (audio-tools.ts).
+// The encoder is libvorbis compiled to WebAssembly (wasm-media-encoders, MIT); it runs here
+// so the page stays responsive, and the page's own script policy never needs to allow
+// WebAssembly.
 import { createEncoder } from 'wasm-media-encoders';
 import oggWasm from 'wasm-media-encoders/wasm/ogg?url';
 

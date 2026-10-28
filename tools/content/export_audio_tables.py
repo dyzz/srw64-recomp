@@ -6,7 +6,9 @@
   battle-voices.csv  every battle line by record number: who says it, when, and its text
 
 and web/src/data/bgm.json, the same songs, pilots and units for the website's BGM MOD
-maker (web/src/pages/[lang]/mods/bgm.astro).
+maker (web/src/pages/[lang]/mods/bgm.astro), and web/src/data/voices.json, when each battle
+line shows as fields the battle voice maker words in each language (mods/voices.astro; its
+text comes from battle-voices.csv).
 
 Names and Japanese text come from the text export (assets/text-export), the Chinese and
 English text from the shipped dialogue files (content/dialogue/<locale>/battle). The
@@ -20,11 +22,13 @@ from collections import defaultdict
 import csv
 import json
 from pathlib import Path
+import re
 import struct
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'docs/guide/audio-mods'
 WEB = ROOT / 'web/src/data/bgm.json'
+WEB_VOICES = ROOT / 'web/src/data/voices.json'
 SOUND_SELECT, SONG_ROWS = 0x1147E0, 49
 KARAOKE, KARAOKE_ROWS = 0x1148A4, 19
 PILOT_SONGS, ACTORS = 0x7D6A0, 361
@@ -73,6 +77,34 @@ def dialogue(locale: str) -> dict[int, str]:
     return lines
 
 
+def scene(t: dict) -> dict:
+    """One trigger (battle_quotes.Trigger.as_dict) as the short fields the voice maker reads."""
+    out: dict = {'k': t['kind']}
+    if t.get('situation') is not None:
+        out['s'] = t['situation']
+    code = t.get('code')
+    if t['kind'] == 'situation' and code is not None and (code - 10000) // 2500 == 7:
+        out['ai'] = 1                       # 27500: evaded by an afterimage
+    if t['kind'] == 'generic':
+        m = re.search(r'通用，(\d+)/(\d+)', t['desc'])
+        out['g'] = [int(m[1]), int(m[2])]
+    if t['kind'] == 'weapon' and code is not None and code < 2600:
+        out['lo'] = 1                       # may yield to a general line
+    for key, short in (('weapon', 'w'), ('weapon_raw', 'wr'), ('own_unit', 'u'), ('opponent_unit', 'ou'),
+                       ('opponent_voice', 'ov'), ('copilot', 'cp'), ('k', 'c'), ('captain', 'cap')):
+        if t.get(key) is not None:
+            out[short] = t[key]
+    if 'flag' in t:
+        out['f'] = [t['flag'], t['flag_value']] if 'flag_value' in t else [t['flag']]
+    if t.get('female_opponent'):
+        out['fe'] = 1
+    if 'sequence' in t:
+        out['q'] = [t['position'] + 1, len(t['sequence'])]
+    if t.get('unreachable'):
+        out['x'] = 1
+    return out
+
+
 def write(name: str, header: list[str], rows: list[list]) -> None:
     with (OUT / name).open('w', encoding='utf-8', newline='') as f:
         out = csv.writer(f, lineterminator='\n')
@@ -107,7 +139,7 @@ def main() -> None:
 
     # Battle lines.
     texts = {l: dialogue(l) for l in LOCALES}
-    voices, lines_of = [], defaultdict(int)
+    voices, lines_of, scenes = [], defaultdict(int), []
     for record in sorted(records):
         r = records[record]
         if not r['category'].startswith('battle.'):
@@ -118,6 +150,7 @@ def main() -> None:
         part = context.get('voice', '')
         if triggers:
             lines_of[speaker] += 1
+        scenes.append([record, [scene(t) for t in triggers]])
         voices.append([
             record, speaker, *name(ACTOR_NAMES + speaker), part,
             '；'.join(t['desc'] for t in triggers) or '原版不会显示',
@@ -169,6 +202,18 @@ def main() -> None:
     }
     WEB.write_text(json.dumps(web, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
     print(f'{WEB.relative_to(ROOT)}: {len(web["songs"])} songs, {len(web["pilots"])} pilots, {len(web["units"])} units')
+
+    # Who an opponent's voice part is (the "vs <pilot>" lines), and each line's triggers.
+    actors_of_voice: dict[int, list[int]] = defaultdict(list)
+    for a, v in voice_part.items():
+        if v >= 0 and plain(records[ACTOR_NAMES + a]['display']):
+            actors_of_voice[v].append(a)
+    WEB_VOICES.write_text(json.dumps({
+        'schema': 'srw64.web-voices.v1',
+        'actorsOfVoice': {str(v): a for v, a in sorted(actors_of_voice.items())},
+        'scenes': scenes,
+    }, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+    print(f'{WEB_VOICES.relative_to(ROOT)}: {len(scenes)} lines')
 
 
 if __name__ == '__main__':
