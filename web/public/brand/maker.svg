@@ -1,13 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <defs><mask id="jaw"><rect width="24" height="24" fill="#fff"/><rect x="10.7" y="0" width="2.6" height="5.2" rx="0.6" fill="#000"/></mask></defs>
-  <g transform="rotate(45 12 12)">
-    <g mask="url(#jaw)"><circle cx="12" cy="4.6" r="3.9" fill="#d5dde8"/></g>
-    <rect x="10.8" y="7" width="2.4" height="13" rx="1.2" fill="#d5dde8"/>
-    <circle cx="12" cy="20" r="2.3" fill="#d5dde8"/>
-  </g>
-  <g transform="rotate(-45 12 12)">
-    <rect x="10.75" y="6.5" width="2.5" height="16" rx="1.25" fill="#f0a640"/>
-    <rect x="6.2" y="2.2" width="11.6" height="5" rx="1.2" fill="#eef3f8"/>
-    <rect x="6.2" y="5.6" width="11.6" height="1.6" rx="0.6" fill="#a9b6c8"/>
-  </g>
+  <defs>
+    <linearGradient id="piece" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#f6f8fd"/><stop offset="1" stop-color="#9fb1d8"/></linearGradient>
+    <linearGradient id="coin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe45a"/><stop offset="1" stop-color="#f3a800"/></linearGradient>
+  </defs>
+  <path fill="url(#piece)" stroke="#6f84b8" stroke-width="0.6" stroke-linejoin="round"
+    d="M7.6 7.8 L11.06 7.8 A2.3 2.3 0 1 1 13.34 7.8 L17.1 7.8 Q18.3 7.8 18.3 9 L18.3 10.9 A1.7 1.7 0 1 0 18.3 14.1 L18.3 17.3 Q18.3 18.5 17.1 18.5 L7.6 18.5 Q6.4 18.5 6.4 17.3 L6.4 13.55 A2 2 0 1 1 6.4 11.45 L6.4 9 Q6.4 7.8 7.6 7.8 Z"/>
+  <circle cx="17.8" cy="17.2" r="3.9" fill="url(#coin)" stroke="#cf8a00" stroke-width="0.5"/>
+  <rect x="15.6" y="16.45" width="4.4" height="1.5" rx="0.5" fill="#fff7de"/>
+  <rect x="17.05" y="15" width="1.5" height="4.4" rx="0.5" fill="#fff7de"/>
 </svg>
