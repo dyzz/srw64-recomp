@@ -72,7 +72,7 @@ In Japanese with the original images, the original screens draw with the game's 
 
 - The file is named by **pilot number** plus `.png`, e.g. `art/portraits/133.png`.
 - Square, 96 to 2048 pixels, a multiple of 96 (96, 192, 384, 768…). It may have transparency; the picture behind shows through.
-- Dialogue, battles, status screens, the battle confirmation and the library all use it, with the images set to original or HD.
+- Dialogue, battles, status screens, the battle confirmation, the library and the save slots all use it, with the images set to original or HD.
 - Pilots that use the same original portrait (other numbers of one character, say) all change together.
 - A file not named by a pilot number with a portrait, or of the wrong size, is skipped with `SRW64_MOD_PORTRAITS_PROBLEM` in the log.
 

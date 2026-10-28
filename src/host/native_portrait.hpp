@@ -23,6 +23,9 @@ struct PilotImage { uint16_t image = 0, palette = 0; std::string path; };
 void set_pilot_images(std::map<unsigned, PilotImage> images);
 // The enabled packages' picture for a page portrait given by its original path, or "".
 std::string mod_picture(const std::string& original_path);
+// The same by pilot number, for pages whose picture is not the pilot's page portrait (the
+// save slots' 64x64 faces), or "".
+std::string mod_picture_of(unsigned pilot);
 // Render-hook init, after gpu::init (native_gpu.hpp).
 void gpu_init();
 void shutdown();

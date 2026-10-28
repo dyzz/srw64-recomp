@@ -5,6 +5,7 @@
 #include "intermission_page.hpp"
 #include "native_dialogue.hpp"
 #include "native_name_entry.hpp"
+#include "native_portrait.hpp"
 #include "localization/catalog.hpp"
 #include "game_hooks.hpp"
 #include "save_store.hpp"
@@ -288,7 +289,10 @@ json slot_json(const uint8_t* ram,unsigned n,uint32_t headers) {
     s["level"]=read(ram,rec+0xF,1);s["episode"]=read(ram,rec+0x10,1);s["title"]=text(ram,uint16_t(text_titles+read(ram,rec+0x11,1)));
     s["turns"]=read(ram,rec+0x12,2);s["funds"]=read(ram,rec+0x14,4);
     const auto face=std::to_string(portrait_face+protagonist);
-    if(art.contains("portraits") && art.at("portraits").contains(face) && art.at("portraits").at(face).contains("original")) {
+    // A MOD's portrait of the protagonist, in either image mode, like the other pages.
+    if(auto modded=srw64::portraits::mod_picture_of(portrait_face+protagonist);!modded.empty())
+        s["art"]={{"path",modded},{"width",64},{"height",64}};
+    else if(art.contains("portraits") && art.at("portraits").contains(face) && art.at("portraits").at(face).contains("original")) {
         const auto& row=art.at("portraits").at(face);
         s["art"]={{"path",row.at("original")},{"width",64},{"height",64}};
         if(row.contains("hd"))s["art"]["hd"]=row.at("hd");  // whole HD portrait, shown in HD image mode

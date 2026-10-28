@@ -385,6 +385,15 @@ std::string mod_picture(const std::string& original_path) {
     return found == mod_pages.end() ? std::string() : found->second.string();
 }
 
+std::string mod_picture_of(unsigned pilot) {
+    refresh_mods();
+    std::lock_guard lock(mod_mutex);
+    const auto image = pilot_images.find(pilot);
+    if (image == pilot_images.end()) return {};
+    const auto found = mod_pages.find(image->second.path);
+    return found == mod_pages.end() ? std::string() : found->second.string();
+}
+
 void rewrite(uint8_t* rdram, const PortraitDraw& draw) {
     if (!hooks_installed) return;
     refresh_mods();
