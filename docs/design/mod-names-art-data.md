@@ -141,15 +141,17 @@ art/portraits/<人物号>.png     768×768（或 96 的整数倍），RGBA，直
 
 ```text
 art/icons/<机体号>.png     16、32、64 或 128 像素的正方形，RGBA，直通 alpha
+art/icons.json             可选：{"schema": "srw64.icons.v1", "facing": {"<机体号>": "left" | "right" | "front"}}
 ```
 
 - **键是机体号**：ROM `0x100D78`（1052024，layout `images.units`）每台机体一个 u16 图标资源号（688–1009）。363 台机体共 320 个图标，33 组机体共用一个（例如 1/2/309），共用的一起换；同一个包里给共用一个图标的两台机体各交一张算错（`SRW64_MOD_ICONS_PROBLEM`），包之间上面的赢。
 - **作者只画一张**：放大到 128 母版（逐像素复制，不混色），按 HD-2D 包的规则（`unit_icon_imagegen.py faction_mark`）生成四份：我方原样；敌方、第三方外圈 1 像素亮色＋再外 1 像素暗色（1011：222,123,123 / 156,25,25；1012：222,206,25 / 140,132,8）；已行动灰度×0.85。只存母版，变体画到时才做、上传后丢掉（Switch/安卓内存）。
-- **朝向**：画成和原版图标同一个朝向（原版朝左就朝左，正面就正面）。`unit_icon_facing::after_draw` 先按阵营翻好纹理矩形，宿主按矩形的 S/DsDx 取 uv，所以镜像自动跟着。
+- **朝向**：默认当作和原版图标同一个朝向。2026-10-28 用户要作者能标自己的图朝哪边：`art/icons.json` 的 `facing` 按机体号写 `left`／`right`／`front`，只对本包有图的机体生效，坏文件整份不用（`SRW64_MOD_ICONS_PROBLEM`）。宿主绘制时取「这张图的朝向」（标记，否则原版表 `kFacing`）和该单位应朝的方向（`unit_icon_facing::looks_left`：我方与友好第三方朝左，敌方与敌对第三方朝右），`unit_icon_art::face` 把 uv 摆正后按需镜像，朝正面的不翻；不再依赖 `after_draw` 已经翻好的矩形。所以原版朝正面的 91 个图标，作者画成侧面并标上，也会按阵营翻转。
 - **绘制**：`game_hooks.cpp` 在 `unit_icon_facing` 之后调 `unit_icon_drawn`；宿主找到图标绘制器 `801E2C5C` 写的 E4 纹理矩形，矩形留作标记、去掉纹理步长，前一条（贴图尺寸）改成 `G_NOOP` 标签 `SIC`，RT64 原生网格钩子用人像的 `HdPortrait` 着色器画（GL 宿主走 `native_quads`）。宽地图视图按 `wide_map::view_offset()` 定 x 原点。与 HD 包无关，F6 原版图也画。
 - **已行动不在调色板记录里**：`801E2734` 每帧看名册 `+0xB & 0x80`，在同一次绘制里换 TLUT（1013），记录 `+0x16` 仍是阵营调色板；宿主读名册位（`unit_icon_facing::acted`）。
 - 光标所在的单位原版就是闪烁（约亮 8 帧、灭 10 帧），截图碰上灭的那几帧不是丢图。
-- 测试：`make recomp-mod-icons-test`（尺寸、母版、四种变体、矩形→uv 含镜像与缩小）、`tests/test_mod_validate.py`（`icon_problem`）。实机（2026-10-28，Mac，move-jump 迷你关）：我方两台朝左、敌方翻成朝右并带红圈；F6 原版图照画；移动待机后变灰。
+- **制作工具**：官网 `/<lang>/mods/icons/`（`web/src/pages/[lang]/mods/icons.astro`、`web/src/scripts/icon-maker.ts`），10-28 从名字工具拆出（名字工具打开带图标的包时原样保留）。选择卡片是机体立绘小图，下面并排原版和 HD 包图标；每张卡片列「原版／HD／你的图」三行，各按我方、敌方、已行动预览并按游戏规则翻好（第三方不显示）；作者选「你的图」朝向，和原版不同时写进 `art/icons.json`。原版三种配色由 `web/scripts/export_images.py` 从 ROM 导出（`gen/icons/<资源>.png`、`-1011`、`-1013`），HD 取 `assets/hd-ai/unit-icon-imagegen/full-1/results`（`gen/icons-hd/`，同像素的 6 对用资源号小的那张），只在本地部署时生成。
+- 测试：`make recomp-mod-icons-test`（尺寸、母版、四种变体、矩形→uv 含镜像与缩小、按朝向翻转）、`tests/test_mod_validate.py`（`icon_problem`、`icon_facing_problem`）。实机（2026-10-28，Mac，move-jump 迷你关）：我方两台朝左、敌方翻成朝右并带红圈；F6 原版图照画；移动待机后变灰。
 
 ### 2.3 数值（第一批已实现）
 

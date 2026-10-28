@@ -123,3 +123,14 @@
   .maker .voice-line { grid-template-columns: 44px 1fr; }
   .maker .voice-actions { grid-column: 1 / -1; justify-content: flex-start; }
 }
+
+/* The map icon maker (pages/[lang]/mods/icons.astro). */
+.maker .pick-icons { display: flex; gap: 4px; justify-content: center; }
+.maker .pick-icons img { width: 28px; height: 28px; object-fit: contain; }
+.maker .icon-rows { display: grid; gap: 10px; }
+.maker .icon-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
+.maker .icon-row > .row-label { width: 64px; font-size: 13px; color: var(--muted); align-self: center; }
+.maker .icon-facing { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); margin: 6px 0; }
+.maker .icon-facing select { font: inherit; font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 8px; }
+.maker .icon-row figure { margin: 0; display: grid; gap: 4px; justify-items: center; font-size: 12px; color: var(--muted); }
+.maker .icon-row canvas { width: 64px; height: 64px; image-rendering: pixelated; border-radius: var(--radius); background: var(--bg-2); }

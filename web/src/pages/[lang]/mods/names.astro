@@ -1,8 +1,8 @@
 ---
-// The name and portrait MOD maker (docs/design/mod-names-art-data.md §1, §2.1, §2.2, §2.2.1):
-// the original protagonists' and the unit's names, any pilot's, unit's or weapon's name, pilot
-// portraits and map icons, written as dialogue/names.json, art/portraits/<pilot>.png and
-// art/icons/<unit>.png in a package, all in the browser (scripts/names-maker.ts).
+// The name and portrait MOD maker (docs/design/mod-names-art-data.md §1, §2.1, §2.2): the
+// original protagonists' and the unit's names, any pilot's, unit's or weapon's name and pilot
+// portraits, written as dialogue/names.json and art/portraits/<pilot>.png in a package, all in
+// the browser (scripts/names-maker.ts). Map icons have their own maker (icons.astro).
 import Base from '../../../layouts/Base.astro';
 import ModPackageForm from '../../../components/ModPackageForm.astro';
 import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
@@ -15,11 +15,11 @@ import data from '../../../data/data-mods.json';
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const L = <T,>(v: { zh: T; en: T; ja: T }) => v[tl(lang)];
-const title = { zh: '名字、头像与地图图标 MOD 制作', en: 'Name, portrait and icon mod maker', ja: '名前・顔グラフィック・アイコン MOD メーカー' };
+const title = { zh: '名字与头像 MOD 制作', en: 'Name and portrait mod maker', ja: '名前・顔グラフィック MOD メーカー' };
 const lead = {
-  zh: '给原创主角、搭档和部队另起名字，改任何人物、机体、武器的名字，换人物头像和地图上的机体图标，导出 .srw64mod 拖进游戏窗口即可安装。只改显示，不写进存档，停用包就回到原来的样子。',
-  en: 'Rename the original protagonists, partners and unit, rename any pilot, unit or weapon, replace pilot portraits and the units’ map icons; drag the exported .srw64mod into the game window to install it. Only what is shown changes; saves keep the original names, and disabling the package brings them back.',
-  ja: 'オリジナル主人公・パートナー・部隊の名前、ほかのキャラクター・ユニット・武器の名前、キャラクターの顔グラフィック、マップのユニットアイコンを変え、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。表示だけが変わり、セーブには書かれません。パッケージを無効にすれば元に戻ります。',
+  zh: '给原创主角、搭档和部队另起名字，改任何人物、机体、武器的名字，换人物头像，导出 .srw64mod 拖进游戏窗口即可安装。只改显示，不写进存档，停用包就回到原来的样子。',
+  en: 'Rename the original protagonists, partners and unit, rename any pilot, unit or weapon and replace pilot portraits; drag the exported .srw64mod into the game window to install it. Only what is shown changes; saves keep the original names, and disabling the package brings them back.',
+  ja: 'オリジナル主人公・パートナー・部隊の名前、ほかのキャラクター・ユニット・武器の名前、キャラクターの顔グラフィックを変え、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。表示だけが変わり、セーブには書かれません。パッケージを無効にすれば元に戻ります。',
 };
 const text = {
   ...packageText(lang),
@@ -37,18 +37,6 @@ const text = {
   shortName: L({ zh: '简称', en: 'Short name', ja: '略称' }),
   fullName: L({ zh: '全名（可选）', en: 'Full name (optional)', ja: 'フルネーム（任意）' }),
   portraits: L({ zh: '头像', en: 'Portraits', ja: '顔グラフィック' }),
-  icons: L({ zh: '地图图标', en: 'Map icons', ja: 'マップアイコン' }),
-  iconsNote: L({ zh: '选一台机体，再选一张像素画。16、32、64 或 128 像素的正方形 PNG 原样放进包里；别的尺寸先框选，再缩放到 128。只画一张、用机体自己的颜色：敌方和第三方的描边、行动后的变灰游戏会自动加，下面能预览。原版图和 HD 图模式下都显示这张。', en: 'Pick a unit, then a pixel-art picture. A square PNG of 16, 32, 64 or 128 pixels goes in as it is; other sizes are framed and scaled to 128. Draw it once in the unit’s own colours: the game adds the enemy’s and third party’s ring and the grey once acted, previewed below. It shows with the images set to original or HD.', ja: 'ユニットとドット絵を選びます。16・32・64・128 ピクセルの正方形 PNG はそのまま入ります。ほかの大きさは枠を決めて 128 に拡大縮小します。ユニット本来の色で 1 枚だけ描けば、敵・第三勢力のふちと行動済みのグレーはゲームが付けます（下でプレビューできます）。画像が原作でも HD でも表示されます。' }),
-  iconFacing: L({ zh: '原版图标{facing}，请画成同一个朝向；游戏会按阵营自动翻转（我方朝左、敌方朝右）。', en: 'The original icon {facing}; draw it the same way. The game turns it for each side (the player’s left, enemies right).', ja: '原作のアイコンは{facing}です。同じ向きに描いてください。陣営に合わせて自動で反転します（味方は左、敵は右）。' }),
-  facingLeft: L({ zh: '朝左', en: 'looks left', ja: '左向き' }),
-  facingRight: L({ zh: '朝右', en: 'looks right', ja: '右向き' }),
-  facingFront: L({ zh: '朝正面', en: 'faces front', ja: '正面向き' }),
-  iconShared: L({ zh: '这个图标也用于：{units}，会一起换。', en: 'This icon is also used by {units}; they change together.', ja: 'このアイコンは {units} も使っており、一緒に変わります。' }),
-  iconFrameHint: L({ zh: '拖动图片调整位置，滚轮或滑块缩放，方框里的部分就是图标，会缩放到 128 像素。调好后点「确定」。', en: 'Drag the picture to move it and use the wheel or the slider to zoom; what the square shows becomes the icon, scaled to 128 pixels. Press OK when it looks right.', ja: '画像をドラッグして位置を、ホイールかスライダーで大きさを調整します。枠内がアイコンになり、128 ピクセルに拡大縮小します。決まったら「決定」を押してください。' }),
-  iconOriginal: L({ zh: '原版', en: 'Original', ja: '原作' }),
-  sides: L({ zh: '我方|敌方|第三方|已行动', en: 'Player|Enemy|Third party|Acted', ja: '味方|敵|第三勢力|行動済み' }),
-  iconAsIs: L({ zh: '{size}×{size} PNG，原样放进包里', en: '{size}×{size} PNG, packed as it is', ja: '{size}×{size} PNG、そのまま入ります' }),
-  errIconFraming: L({ zh: '{who} 的图标还没点「确定」', en: 'The icon of {who} is not confirmed (OK) yet', ja: '{who} のアイコンがまだ「決定」されていません' }),
   portraitsNote: L({ zh: '选一个人物，再选一张图，拖动、缩放选好要用的方块。导出时缩放到 96 的倍数（最大 768），透明的地方会保留。原版图和 HD 图模式下都显示这张。几个人物共用同一张原版头像时会一起换。', en: 'Pick a pilot, then a picture, and drag and zoom to frame the square you want. It is scaled to a multiple of 96 (768 at most); transparency is kept. It shows with the images set to original or HD. Pilots sharing one original portrait change together.', ja: 'キャラクターと画像を選び、ドラッグとズームで使う正方形を決めます。96 の倍数（最大 768）に縮小します。透明部分は残ります。画像が原作でも HD でも表示されます。同じ原作の顔グラフィックを使うキャラクターは一緒に変わります。' }),
   choosePicture: L({ zh: '选择图片', en: 'Choose picture', ja: '画像を選択' }),
   zoom: L({ zh: '缩放', en: 'Zoom', ja: 'ズーム' }),
@@ -59,7 +47,7 @@ const text = {
   errFraming: L({ zh: '{who} 的头像还没点「确定」', en: 'The portrait of {who} is not confirmed (OK) yet', ja: '{who} の顔グラフィックがまだ「決定」されていません' }),
   frameHint: L({ zh: '拖动图片调整位置，滚轮或滑块缩放，方框里的部分就是头像。调好后点「确定」。', en: 'Drag the picture to move it and use the wheel or the slider to zoom; what the square shows is the portrait. Press OK when it looks right.', ja: '画像をドラッグして位置を、ホイールかスライダーで大きさを調整します。枠内が顔グラフィックになります。決まったら「決定」を押してください。' }),
   noPortrait: L({ zh: '这个人物没有头像', en: 'This pilot has no portrait', ja: 'このキャラクターには顔グラフィックがありません' }),
-  errEmpty: L({ zh: '还没有改任何名字、头像或图标', en: 'No name, portrait or icon is changed yet', ja: 'まだ名前・顔グラフィック・アイコンを変えていません' }),
+  errEmpty: L({ zh: '还没有改任何名字或头像', en: 'No name or portrait is changed yet', ja: 'まだ名前・顔グラフィックを変えていません' }),
   errLong: L({ zh: '{what} 太长（最多 {n} 个字符）', en: '{what} is too long (at most {n} characters)', ja: '{what} が長すぎます（最大 {n} 文字）' }),
   errChars: L({ zh: '{what} 不能有换行、全角空格或 < > { }，首尾不能有空格', en: '{what} may not have line breaks, ideographic spaces or < > { }, nor spaces at either end', ja: '{what} に改行・全角スペース・< > { }、前後の空白は使えません' }),
   errNeedName: L({ zh: '{what} 写了姓氏或昵称就要写名字', en: '{what}: a surname or nickname needs a name', ja: '{what}：姓や愛称を書くときは名前も必要です' }),
@@ -94,7 +82,7 @@ const unitDefault = { ja: 'マーチウィンド', zh: '三月风', en: 'March W
 // game names; the original eight are left to the first section.
 const people = library().people.filter((p) => p.id < 25 || p.id >= 33)
   .map((p) => ({ id: p.id, name: p.name, full: p.full_name, portrait: portraitUrl(p.portrait), image: p.portrait?.image ?? null }));
-const units = data.units.map((u) => ({ id: u.id, name: u.name, icon: u.icon, facing: u.icon_facing }));
+const units = data.units.map((u) => ({ id: u.id, name: u.name }));
 const pick = pickables(lang, data.units.map((u) => u.id), people.map((p) => p.id));
 const notice = versionNotice(lang, text.game);
 ---
@@ -105,7 +93,7 @@ const notice = versionNotice(lang, text.game);
       <h1>{title[tl(lang)]}</h1>
       {notice && <p class="version-notice">{notice}</p>}
       <p>{lead[tl(lang)]}</p>
-      <p class="note"><a href={`/${lang}/docs/mod-names/`}>{L({ zh: '名字、头像与地图图标 MOD 说明', en: 'Name, portrait and map icon mods guide', ja: '名前・顔グラフィック・マップアイコン MOD の説明' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。' })}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-names/`}>{L({ zh: '名字、头像与地图图标 MOD 说明', en: 'Name, portrait and map icon mods guide', ja: '名前・顔グラフィック・マップアイコン MOD の説明' })}</a> · <a href={`/${lang}/mods/icons/`}>{L({ zh: '地图图标 MOD 制作', en: 'Map icon mod maker', ja: 'マップアイコン MOD メーカー' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。' })}</p>
     </header>
 
     <ModPackageForm lang={lang} placeholder="yourname.names" />
@@ -137,13 +125,6 @@ const notice = versionNotice(lang, text.game);
       <p class="note">{text.portraitsNote}</p>
       <div data-portrait-pick></div>
       <div class="portraits" data-portraits></div>
-    </section>
-
-    <section class="block">
-      <h2>{text.icons}</h2>
-      <p class="note">{text.iconsNote}</p>
-      <div data-icon-pick></div>
-      <div class="portraits" data-icons></div>
     </section>
 
     <section class="block">

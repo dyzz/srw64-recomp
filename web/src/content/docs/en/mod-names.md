@@ -8,7 +8,7 @@ updated: 2026-10-28
 
 These mods change only the names and portraits the game **shows**: dialogue, speakers, status screens, the battle confirmation, the library and map labels follow. Saves keep the original names, so disabling the package brings everything back, and a save still loads anywhere, including in the original game.
 
-To skip writing it by hand, use the [Name, portrait and icon mod maker](/en/mods/names/): fill in names and choose portraits and icons on the page and export a .srw64mod. Pictures are cropped and scaled for you, and an icon is previewed as the player’s, an enemy’s, a third party’s and acted.
+To skip writing it by hand, the web tools export a .srw64mod: the [Name and portrait mod maker](/en/mods/names/) takes names and portraits, cropping and scaling the pictures for you; the [Map icon mod maker](/en/mods/icons/) shows the original and HD icons beside yours, previewed as the player’s, an enemy’s and acted.
 
 Installing and managing packages: [MOD packages](../mods/). Needs 0.5.2 or later.
 
@@ -20,6 +20,7 @@ yourname.heroes/
   dialogue/names.json          names
   art/portraits/133.png        portraits, named by pilot number
   art/icons/184.png            map icons, named by unit number
+  art/icons.json               optional: the way pictures look, when not the original’s
 ```
 
 Any of them alone is fine.
@@ -80,7 +81,13 @@ In Japanese with the original images, the original screens draw with the game's 
 - The file is named by **unit number** plus `.png`, e.g. `art/icons/184.png`.
 - Square, 16, 32, 64 or 128 pixels, drawn as pixel art: the game scales it up to 128 pixel by pixel, without blurring. It may have transparency.
 - Draw it once, in the unit's own colours. The enemy and third parties get a ring of their side's colour (red, yellow) and units that have acted turn grey by themselves.
-- **Face the way the original icon does**: left if it looks left, front if it faces front. The game turns it for each side (the player's left, enemies right); the original icons are in the [ID table](/en/mods/ids/units/).
+- **Facing**: the game turns icons for each side, the player's looking left and enemies right; one facing front is never turned. Your picture is taken to face the way the original icon does (the originals are in the [ID table](/en/mods/ids/units/)). When it does not, say so in `art/icons.json`, for example:
+
+  ```json
+  { "schema": "srw64.icons.v1", "facing": { "55": "left", "184": "front" } }
+  ```
+
+  The values are `left`, `right` and `front`. An original that faces front, drawn from the side and marked, is turned for each side too.
 - Units that share an original icon (other numbers of one unit, say) all change together; give them only one picture in a package.
 - It shows with the images set to original or HD. A file not named by a unit number, or of the wrong size, is skipped with `SRW64_MOD_ICONS_PROBLEM` in the log.
 

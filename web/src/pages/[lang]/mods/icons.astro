@@ -1,0 +1,90 @@
+---
+// The map icon MOD maker (docs/design/mod-names-art-data.md §2.2.1): art/icons/<unit>.png pixel
+// art of 16-128 and, for pictures that do not look the way the original icon does,
+// art/icons.json (src/host/native_icon.cpp), made in the browser (scripts/icon-maker.ts).
+import Base from '../../../layouts/Base.astro';
+import ModPackageForm from '../../../components/ModPackageForm.astro';
+import { langInfo, langPaths, tl, type Lang } from '../../../i18n';
+import { packageText, versionNotice } from '../../../lib/mod-maker-text';
+import { pickables } from '../../../lib/mod-picker';
+import '../../../styles/mod-maker.css';
+import data from '../../../data/data-mods.json';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const L = <T,>(v: { zh: T; en: T; ja: T }) => v[tl(lang)];
+const title = { zh: '地图图标 MOD 制作', en: 'Map icon mod maker', ja: 'マップアイコン MOD メーカー' };
+const lead = {
+  zh: '换掉战术地图上的机体图标：选一台机体，选一张像素画，导出 .srw64mod 拖进游戏窗口即可安装。敌方的红色描边、行动后变灰由游戏自动加上，不论图片设为原版还是 HD 都显示。',
+  en: 'Replace the units’ icons on the battle map: pick a unit, choose a pixel-art picture and drag the exported .srw64mod into the game window to install it. The game adds the enemy’s red ring and the grey once acted, and shows it with the images set to original or HD.',
+  ja: '戦闘マップのユニットアイコンを差し替えます。ユニットとドット絵を選び、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。敵の赤いふちと行動済みのグレーはゲームが付け、画像が原作でも HD でも表示されます。',
+};
+const text = {
+  ...packageText(lang),
+  icons: L({ zh: '图标', en: 'Icons', ja: 'アイコン' }),
+  iconsNote: L({ zh: '每台机体卡片下面是原版图标和 HD 包图标。选一台机体，再选一张像素画：16、32、64 或 128 像素的正方形 PNG 原样放进包里，别的尺寸先框选，再缩放到 128。只画一张、用机体自己的颜色。', en: 'Under each unit are its original icon and the HD pack’s. Pick a unit, then a pixel-art picture: a square PNG of 16, 32, 64 or 128 pixels goes in as it is; other sizes are framed and scaled to 128. Draw it once, in the unit’s own colours.', ja: '各ユニットの下は原作のアイコンと HD パックのアイコンです。ユニットとドット絵を選びます。16・32・64・128 ピクセルの正方形 PNG はそのまま入り、ほかの大きさは枠を決めて 128 に拡大縮小します。ユニット本来の色で 1 枚だけ描いてください。' }),
+  iconFacing: L({ zh: '原版图标{facing}。', en: 'The original icon {facing}.', ja: '原作のアイコンは{facing}です。' }),
+  facingLeft: L({ zh: '朝左', en: 'looks left', ja: '左向き' }),
+  facingRight: L({ zh: '朝右', en: 'looks right', ja: '右向き' }),
+  facingFront: L({ zh: '朝正面', en: 'faces front', ja: '正面向き' }),
+  myFacing: L({ zh: '你的图', en: 'Your picture', ja: 'あなたの画像' }),
+  wayLeft: L({ zh: '朝左', en: 'looks left', ja: '左向き' }),
+  wayRight: L({ zh: '朝右', en: 'looks right', ja: '右向き' }),
+  wayFront: L({ zh: '朝正面', en: 'faces front', ja: '正面向き' }),
+  facingNote: L({ zh: '游戏按这个朝向翻转：我方朝左、敌方朝右，朝正面的不翻转。下面的预览已经翻好。', en: 'The game turns it by this: the player’s units look left, enemies right, and a front-facing picture is never turned. The previews below are turned already.', ja: 'ゲームはこの向きをもとに反転します。味方は左、敵は右を向き、正面向きは反転しません。下のプレビューは反転済みです。' }),
+  iconShared: L({ zh: '这个图标也用于：{units}，会一起换。', en: 'This icon is also used by {units}; they change together.', ja: 'このアイコンは {units} も使っており、一緒に変わります。' }),
+  iconFrameHint: L({ zh: '拖动图片调整位置，滚轮或滑块缩放，方框里的部分就是图标，会缩放到 128 像素。调好后点「确定」。', en: 'Drag the picture to move it and use the wheel or the slider to zoom; what the square shows becomes the icon, scaled to 128 pixels. Press OK when it looks right.', ja: '画像をドラッグして位置を、ホイールかスライダーで大きさを調整します。枠内がアイコンになり、128 ピクセルに拡大縮小します。決まったら「決定」を押してください。' }),
+  rowOriginal: L({ zh: '原版', en: 'Original', ja: '原作' }),
+  rowHd: L({ zh: 'HD', en: 'HD', ja: 'HD' }),
+  rowYours: L({ zh: '你的图', en: 'Yours', ja: 'あなたの画像' }),
+  sides: L({ zh: '我方|敌方|已行动', en: 'Player|Enemy|Acted', ja: '味方|敵|行動済み' }),
+  iconAsIs: L({ zh: '{size}×{size} PNG，原样放进包里', en: '{size}×{size} PNG, packed as it is', ja: '{size}×{size} PNG、そのまま入ります' }),
+  errIconFraming: L({ zh: '{who} 的图标还没点「确定」', en: 'The icon of {who} is not confirmed (OK) yet', ja: '{who} のアイコンがまだ「決定」されていません' }),
+  errEmpty: L({ zh: '还没有换任何图标', en: 'No icon is replaced yet', ja: 'まだアイコンを差し替えていません' }),
+  choosePicture: L({ zh: '选择图片', en: 'Choose picture', ja: '画像を選択' }),
+  otherPicture: L({ zh: '换一张图', en: 'Another picture', ja: '別の画像' }),
+  reframe: L({ zh: '调整', en: 'Reframe', ja: '調整' }),
+  zoom: L({ zh: '缩放', en: 'Zoom', ja: 'ズーム' }),
+  resetFrame: L({ zh: '复位', en: 'Reset', ja: 'リセット' }),
+  confirmFrame: L({ zh: '确定', en: 'OK', ja: '決定' }),
+  allSeries: L({ zh: '全部作品', en: 'All series', ja: 'すべての作品' }),
+  game: '0.5.2',
+};
+const units = data.units.map((u) => ({ id: u.id, name: u.name, icon: u.icon, facing: u.icon_facing }));
+const iconOf = new Map(units.map((u) => [u.id, u.icon]));
+// Each card: the unit's pose, then its original and HD icons (an HD one missing is left out).
+const pick = pickables(lang, units.map((u) => u.id), []);
+const cards = pick.units.map((p) => ({ ...p, icons: [{ src: `/gen/icons/${iconOf.get(p.id)}.png`, pixel: true }, { src: `/gen/icons-hd/${iconOf.get(p.id)}.png` }] }));
+const notice = versionNotice(lang, text.game);
+---
+<Base lang={lang} title={title[tl(lang)]} description={lead[tl(lang)]}>
+  <div class="wrap maker" data-icon-maker>
+    <header class="page-head">
+      <span class="tag">MOD</span>
+      <h1>{title[tl(lang)]}</h1>
+      {notice && <p class="version-notice">{notice}</p>}
+      <p>{lead[tl(lang)]}</p>
+      <p class="note"><a href={`/${lang}/docs/mod-names/#${L({ zh: '地图图标articons', en: 'map-icons-articons', ja: 'マップアイコンarticons' })}`}>{L({ zh: '地图图标说明', en: 'Map icons guide', ja: 'マップアイコンの説明' })}</a> · {L({ zh: '需要 0.5.2 或更新的版本。所有处理都在浏览器里完成，图片不会上传。', en: 'Needs 0.5.2 or later. Everything happens in your browser; no picture is uploaded.', ja: '0.5.2 以降が必要です。処理はすべてブラウザー内で行われ、画像はアップロードされません。' })}</p>
+    </header>
+
+    <ModPackageForm lang={lang} placeholder="yourname.icons" />
+
+    <section class="block">
+      <h2>{text.icons}</h2>
+      <p class="note">{text.iconsNote}</p>
+      <div data-icon-pick></div>
+      <div class="portraits" data-icons></div>
+    </section>
+
+    <section class="block">
+      <h2>{text.export}</h2>
+      <button type="button" class="btn big" data-export>{text.exportButton}</button>
+      <p class="status" data-export-status></p>
+    </section>
+  </div>
+  <script type="application/json" id="icons-data" is:inline set:html={JSON.stringify({ text, units, pick: { units: cards, series: pick.series }, locale: langInfo(lang).tag, lang: tl(lang) })}></script>
+  <script>
+    import { initIconMaker } from '../../../scripts/icon-maker';
+    initIconMaker();
+  </script>
+</Base>

@@ -1,7 +1,8 @@
 // The name and portrait MOD maker (pages/[lang]/mods/names.astro): dialogue/names.json with
-// the host's rules (src/host/mod_names.hpp), art/portraits/<pilot>.png squared and scaled
-// to a multiple of 96 (native_portrait.cpp) and art/icons/<unit>.png pixel art of 16-128
-// (native_icon.cpp), made in the browser.
+// the host's rules (src/host/mod_names.hpp) and art/portraits/<pilot>.png squared and scaled
+// to a multiple of 96 (native_portrait.cpp), made in the browser. Map icons have their own
+// maker (icon-maker.ts); a package's icons are kept as they are.
+import { dataUrl, frame, framer, type Picture } from './framer';
 import { el, fill, jsonBytes, openPackage, packageForm, readJson, say, writePackage, type Text } from './mod-package';
 import { picker, type Pickable } from './picker';
 
@@ -9,12 +10,7 @@ type Names3 = { ja: string; zh: string; en: string };
 type Hero = { route: string; role: 'hero' | 'partner'; ja: string[]; zh: string[]; en: string[]; face: string | null };
 type Person = { id: number; name: Names3; full: Names3; portrait: string | null; image: number | null };
 type Named = { id: number; name: Names3 };
-type Unit = Named & { icon: number; facing: 'left' | 'right' | 'front' };
 type Kind = 'pilots' | 'units' | 'weapons';
-// A portrait: the picture given, the square of it the player framed (centre and zoom, 1 being
-// the largest square that fits), and the PNG made from that square.
-// While `framing`, the window is open and nothing is made until the player confirms.
-type Picture = { source: ImageBitmap; cx: number; cy: number; zoom: number; png: Uint8Array; size: number; url: string; framing: boolean };
 
 // The package's languages and the page language's column of the data.
 const LOCALES = [['zh-Hans', 'zh', '中文'], ['en', 'en', 'English'], ['ja', 'ja', '日本語']] as const;
@@ -31,7 +27,7 @@ export function initNamesMaker() {
   const payload = document.getElementById('names-data');
   if (!root || !payload) return;
   const { text, heroes, routes, unitDefault, people, units, weapons, pick, locale, lang } = JSON.parse(payload.textContent!) as {
-    text: Text; heroes: Hero[]; routes: Record<string, string>; unitDefault: Names3; people: Person[]; units: Unit[];
+    text: Text; heroes: Hero[]; routes: Record<string, string>; unitDefault: Names3; people: Person[]; units: Named[];
     weapons: (Named & { units: number[] })[]; pick: { units: Pickable[]; pilots: Pickable[]; series: { id: number | null; name: string }[] };
     locale: string; lang: 'zh' | 'en' | 'ja';
   };
@@ -171,16 +167,6 @@ export function initNamesMaker() {
     { badge: (id) => pictures.has(id) ? '✓' : null });
   root.querySelector<HTMLElement>('[data-portrait-pick]')!.replaceChildren(facePicker.node);
 
-  // Previews as data: URLs (the site's policy allows no blob: images).
-  const dataUrl = (png: Uint8Array) => { let s = ''; for (let i = 0; i < png.length; i += 0x8000) s += String.fromCharCode(...png.subarray(i, i + 0x8000)); return `data:image/png;base64,${btoa(s)}`; };
-  const MAX_ZOOM = 5, VIEW = 192;   // CSS pixels of the framing window
-  // The square of the source the frame shows: its side and top-left corner, kept inside the picture.
-  function frame(pic: Picture) {
-    const side = Math.min(pic.source.width, pic.source.height) / pic.zoom;
-    pic.cx = Math.min(Math.max(pic.cx, side / 2), pic.source.width - side / 2);
-    pic.cy = Math.min(Math.max(pic.cy, side / 2), pic.source.height - side / 2);
-    return { side, x: pic.cx - side / 2, y: pic.cy - side / 2 };
-  }
   // The framed square as a PNG, a multiple of 96 up to 768 (at least 96).
   async function encode(pic: Picture) {
     const { side, x, y } = frame(pic);
@@ -199,45 +185,6 @@ export function initNamesMaker() {
     const source = await createImageBitmap(blob);
     return { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: new Uint8Array(), size: 0, url: '', framing: true };
   }
-  // The framing window: drag to move, the slider or the wheel to zoom, OK to make the PNG.
-  function framer(pic: Picture, done: () => void, make: (pic: Picture) => Promise<void> = encode, smooth = true, hint = text.frameHint) {
-    const canvas = el('canvas', { class: 'framer', width: VIEW * devicePixelRatio, height: VIEW * devicePixelRatio }) as HTMLCanvasElement;
-    const zoom = el('input', { type: 'range', min: 1, max: MAX_ZOOM, step: 0.01, value: pic.zoom }) as HTMLInputElement;
-    const g = canvas.getContext('2d')!;
-    const draw = () => {
-      const { side, x, y } = frame(pic);
-      g.clearRect(0, 0, canvas.width, canvas.height);
-      g.imageSmoothingEnabled = smooth;
-      g.imageSmoothingQuality = 'high';
-      g.drawImage(pic.source, x, y, side, side, 0, 0, canvas.width, canvas.height);
-    };
-    const changed = draw;
-    let drag: { x: number; y: number; cx: number; cy: number } | null = null;
-    canvas.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY, cx: pic.cx, cy: pic.cy }; canvas.setPointerCapture(e.pointerId); });
-    canvas.addEventListener('pointermove', (e) => {
-      if (!drag) return;
-      const perPixel = frame(pic).side / canvas.clientWidth;
-      pic.cx = drag.cx - (e.clientX - drag.x) * perPixel;
-      pic.cy = drag.cy - (e.clientY - drag.y) * perPixel;
-      changed();
-    });
-    canvas.addEventListener('pointerup', () => { drag = null; });
-    canvas.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      pic.zoom = Math.min(MAX_ZOOM, Math.max(1, pic.zoom * Math.exp(-e.deltaY / 500)));
-      zoom.value = String(pic.zoom); changed();
-    }, { passive: false });
-    zoom.addEventListener('input', () => { pic.zoom = Number(zoom.value); changed(); });
-    draw();
-    return el('div', { class: 'framing' }, canvas,
-      el('label', { class: 'zoom' }, text.zoom, zoom),
-      el('span', { class: 'hint' }, hint),
-      el('div', { class: 'frame-actions' },
-        el('button', { type: 'button', class: 'btn small', onclick: async () => { await make(pic); pic.framing = false; done(); } }, text.confirmFrame),
-        el('button', { type: 'button', class: 'mini', onclick: () => {
-          pic.zoom = 1; pic.cx = pic.source.width / 2; pic.cy = pic.source.height / 2; zoom.value = '1'; changed();
-        } }, text.resetFrame)));
-  }
   function renderPortraits() {
     for (const id of pictures.keys()) shown.add(id);
     portraitBox.replaceChildren(...[...shown].map((id) => {
@@ -253,7 +200,7 @@ export function initNamesMaker() {
       const head = el('h3', {}, p.portrait ? el('img', { class: 'icon', src: p.portrait, alt: '', loading: 'lazy' }) : null, el('span', { class: 'num' }, String(id)), nameOf(p.name));
       const remove = el('button', { type: 'button', class: 'mini', onclick: () => { pictures.delete(id); shown.delete(id); done(); } }, text.remove);
       const choose = el('label', { class: 'mini' }, pic ? text.otherPicture : text.choosePicture, file);
-      if (pic?.framing) return el('div', { class: 'card' }, head, framer(pic, done), el('div', {}, choose, ' ', remove));
+      if (pic?.framing) return el('div', { class: 'card' }, head, framer(pic, done, text, encode), el('div', {}, choose, ' ', remove));
       return el('div', { class: 'card' }, head,
         el('div', { class: 'faces' },
           p.portrait ? el('img', { src: p.portrait, alt: '', loading: 'lazy' }) : el('span', { class: 'hint' }, '—'),
@@ -261,104 +208,6 @@ export function initNamesMaker() {
           pic ? el('img', { src: pic.url, alt: '' }) : el('span', { class: 'hint' }, '?')),
         pic ? el('span', { class: 'hint' }, `${pic.size} × ${pic.size} PNG`) : null,
         el('div', {}, pic ? el('button', { type: 'button', class: 'mini', onclick: () => { pic.framing = true; renderPortraits(); } }, text.reframe) : null,
-          pic ? ' ' : null, choose, ' ', remove));
-    }));
-  }
-
-  // --- Map icons ---------------------------------------------------------------------------
-  // Keyed by icon resource: units that share an icon share the picture (native_icon.cpp), filed
-  // under the unit it was picked for.
-  const unitById = new Map(units.map((u) => [u.id, u]));
-  const byIcon = new Map<number, Unit[]>();
-  for (const u of units) byIcon.set(u.icon, [...(byIcon.get(u.icon) ?? []), u]);
-  const iconPics = new Map<number, { unit: number; pic: Picture | null }>();
-  const iconBox = root.querySelector<HTMLElement>('[data-icons]')!;
-  const iconUrl = (u: Unit) => `/gen/icons/${u.icon}.png`;
-  const iconPicker = picker(pick.units.map((p) => ({ ...p, img: unitById.has(p.id) ? iconUrl(unitById.get(p.id)!) : null })), pick.series, lang, pickerText,
-    (id) => { const u = unitById.get(id)!; if (!iconPics.has(u.icon)) iconPics.set(u.icon, { unit: id, pic: null }); renderIcons(); },
-    { badge: (id) => iconPics.get(unitById.get(id)?.icon ?? -1)?.pic ? '✓' : null, pixel: true });
-  root.querySelector<HTMLElement>('[data-icon-pick]')!.replaceChildren(iconPicker.node);
-  const ICON = 128, ICON_SIZES = [16, 32, 64, 128];
-  // A picture of the sizes the game takes goes in as it is; anything else is framed first.
-  async function loadIcon(blob: Blob, bytes?: Uint8Array): Promise<Picture> {
-    const source = await createImageBitmap(blob);
-    const pic: Picture = { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: new Uint8Array(), size: 0, url: '', framing: true };
-    if (blob.type === 'image/png' && source.width === source.height && ICON_SIZES.includes(source.width)) {
-      pic.png = bytes ?? new Uint8Array(await blob.arrayBuffer());
-      pic.size = source.width; pic.url = dataUrl(pic.png); pic.framing = false;
-    }
-    return pic;
-  }
-  // The framed square at 128: pixels repeated when enlarging, averaged when shrinking.
-  async function encodeIcon(pic: Picture) {
-    const { side, x, y } = frame(pic);
-    const canvas = document.createElement('canvas');
-    canvas.width = canvas.height = ICON;
-    const g = canvas.getContext('2d')!;
-    g.imageSmoothingEnabled = side > ICON;
-    g.imageSmoothingQuality = 'high';
-    g.drawImage(pic.source, x, y, side, side, 0, 0, ICON, ICON);
-    const blob: Blob = await new Promise((resolve, reject) => canvas.toBlob((b) => b ? resolve(b) : reject(new Error('png')), 'image/png'));
-    pic.png = new Uint8Array(await blob.arrayBuffer());
-    pic.size = ICON;
-    pic.url = dataUrl(pic.png);
-  }
-  // The four ways the game draws it (unit_icon_art.hpp marked): as drawn, a bright and a dark
-  // ring of the enemy's or third party's tones, grey at 85% once acted.
-  const TONES = [[[222, 123, 123], [156, 25, 25]], [[222, 206, 25], [140, 132, 8]]];
-  function sides(url: string) {
-    const canvases = [0, 1, 2, 3].map(() => el('canvas', { width: ICON, height: ICON }) as HTMLCanvasElement);
-    const image = new Image();
-    image.onload = () => {
-      const master = document.createElement('canvas');
-      master.width = master.height = ICON;
-      const m = master.getContext('2d')!;
-      m.imageSmoothingEnabled = false;
-      m.drawImage(image, 0, 0, ICON, ICON);
-      canvases.forEach((canvas, side) => {
-        const data = m.getImageData(0, 0, ICON, ICON), p = data.data;
-        if (side === 3)
-          for (let i = 0; i < p.length; i += 4) p[i] = p[i + 1] = p[i + 2] = Math.min(255, Math.floor((p[i] * 0.299 + p[i + 1] * 0.587 + p[i + 2] * 0.114) * 0.85));
-        else if (side > 0)
-          for (const tone of TONES[side - 1]) {
-            const solid = (x: number, y: number) => x >= 0 && y >= 0 && x < ICON && y < ICON && p[(y * ICON + x) * 4 + 3] > 0;
-            const ring: number[] = [];
-            for (let y = 0; y < ICON; y++)
-              for (let x = 0; x < ICON; x++)
-                if (!solid(x, y) && (solid(x - 1, y) || solid(x + 1, y) || solid(x, y - 1) || solid(x, y + 1))) ring.push((y * ICON + x) * 4);
-            for (const i of ring) { p[i] = tone[0]; p[i + 1] = tone[1]; p[i + 2] = tone[2]; p[i + 3] = 255; }
-          }
-        canvas.getContext('2d')!.putImageData(data, 0, 0);
-      });
-    };
-    image.src = url;
-    return canvases;
-  }
-  function renderIcons() {
-    iconBox.replaceChildren(...[...iconPics].map(([icon, entry]) => {
-      const u = unitById.get(entry.unit)!, pic = entry.pic;
-      const others = byIcon.get(icon)!.filter((o) => o.id !== u.id);
-      const file = el('input', { type: 'file', accept: 'image/*', hidden: true }) as HTMLInputElement;
-      file.addEventListener('change', async () => {
-        const f = file.files?.[0];
-        if (!f) return;
-        entry.pic = await loadIcon(f);
-        renderIcons(); iconPicker.refresh();
-      });
-      const done = () => { renderIcons(); iconPicker.refresh(); };
-      const facing = { left: text.facingLeft, right: text.facingRight, front: text.facingFront }[u.facing];
-      const head = el('h3', {}, el('img', { class: 'icon pixel-art', src: iconUrl(u), alt: '' }), el('span', { class: 'num' }, String(u.id)), nameOf(u.name));
-      const notes = [el('p', { class: 'hint' }, fill(text.iconFacing, { facing })),
-        others.length ? el('p', { class: 'hint' }, fill(text.iconShared, { units: others.map((o) => `${o.id} ${nameOf(o.name)}`).join(lang === 'en' ? ', ' : '、') })) : null];
-      const remove = el('button', { type: 'button', class: 'mini', onclick: () => { iconPics.delete(icon); done(); } }, text.remove);
-      const choose = el('label', { class: 'mini' }, pic ? text.otherPicture : text.choosePicture, file);
-      if (pic?.framing) return el('div', { class: 'card' }, head, ...notes, framer(pic, done, encodeIcon, false, text.iconFrameHint), el('div', {}, choose, ' ', remove));
-      return el('div', { class: 'card' }, head, ...notes,
-        el('div', { class: 'icon-sides' },
-          el('figure', {}, el('img', { src: iconUrl(u), alt: '' }), el('figcaption', {}, text.iconOriginal)),
-          ...(pic ? sides(pic.url).map((canvas, n) => el('figure', {}, canvas, el('figcaption', {}, text.sides.split('|')[n]))) : [el('span', { class: 'hint' }, '?')])),
-        pic ? el('span', { class: 'hint' }, pic.size === pic.source.width ? fill(text.iconAsIs, { size: pic.size }) : `${pic.size} × ${pic.size} PNG`) : null,
-        el('div', {}, pic ? el('button', { type: 'button', class: 'mini', onclick: () => { pic.framing = true; renderIcons(); } }, text.reframe) : null,
           pic ? ' ' : null, choose, ' ', remove));
     }));
   }
@@ -401,14 +250,11 @@ export function initNamesMaker() {
     if (typeof m === 'string') return say(exportStatus, m, true);
     const { doc, problems } = namesJson();
     for (const [id, pic] of pictures) if (pic.framing) problems.push(fill(text.errFraming, { who: `${id} ${nameOf(people.find((x) => x.id === id)!.name)}` }));
-    const icons = [...iconPics.values()].filter((e) => e.pic);
-    for (const e of icons) if (e.pic!.framing) problems.push(fill(text.errIconFraming, { who: `${e.unit} ${nameOf(unitById.get(e.unit)!.name)}` }));
     if (problems.length) return say(exportStatus, text.fixFirst + problems.join('；'), true);
-    if (!doc && !pictures.size && !icons.length && !Object.keys(kept).length) return say(exportStatus, text.errEmpty, true);
+    if (!doc && !pictures.size && !Object.keys(kept).length) return say(exportStatus, text.errEmpty, true);
     const out: Record<string, Uint8Array> = { ...kept };
     if (doc) out['dialogue/names.json'] = jsonBytes(doc);
     for (const [id, pic] of pictures) out[`art/portraits/${id}.png`] = pic.png;
-    for (const e of icons) out[`art/icons/${e.unit}.png`] = e.pic!.png;
     writePackage(m.manifest, m.version, out, exportStatus, text);
   });
 
@@ -424,10 +270,9 @@ export function initNamesMaker() {
       heroNames.forEach((h) => { for (const k of Object.keys(h)) delete h[k]; });
       for (const k of Object.keys(unitName)) delete unitName[k];
       for (const k of Object.keys(records) as Kind[]) records[k].clear();
-      pictures.clear(); shown.clear(); iconPics.clear(); kept = {}; keptNames = {};
+      pictures.clear(); shown.clear(); kept = {}; keptNames = {};
       for (const [path, bytes] of Object.entries(files)) {
         const face = /^art\/portraits\/(\d{1,3})\.png$/i.exec(path);
-        const iconFile = /^art\/icons\/(\d{1,3})\.png$/i.exec(path);
         if (path === 'mod.json') continue;
         if (path === 'dialogue/names.json') {
           const doc = readJson(bytes) ?? {};
@@ -446,18 +291,15 @@ export function initNamesMaker() {
           // Framed already: the whole square, kept as it is until the frame is moved.
           const source = await createImageBitmap(new Blob([bytes as BlobPart], { type: 'image/png' }));
           pictures.set(Number(face[1]), { source, cx: source.width / 2, cy: source.height / 2, zoom: 1, png: bytes, size: source.width, url: dataUrl(bytes), framing: false });
-        } else if (iconFile && unitById.has(Number(iconFile[1]))) {
-          const u = unitById.get(Number(iconFile[1]))!;
-          iconPics.set(u.icon, { unit: u.id, pic: await loadIcon(new Blob([bytes as BlobPart], { type: 'image/png' }), bytes) });
         } else kept[path] = bytes;
       }
-      renderHeroes(); renderUnit(); renderRecords(); renderPortraits(); renderIcons(); refresh(); facePicker.refresh(); iconPicker.refresh();
+      renderHeroes(); renderUnit(); renderRecords(); renderPortraits(); refresh(); facePicker.refresh();
       say(importStatus, fill(text.imported, { id: mod.id ?? file.name }));
     } catch (error) {
       say(importStatus, fill(text.errImport, { detail: String((error as Error).message ?? error) }), true);
     }
   });
 
-  renderHeroes(); renderUnit(); renderRecords(); renderPortraits(); renderIcons();
-  addEventListener('beforeunload', (e) => { if (pictures.size || iconPics.size || Object.keys(unitName).length || heroNames.some((h) => Object.keys(h).length)) e.preventDefault(); });
+  renderHeroes(); renderUnit(); renderRecords(); renderPortraits();
+  addEventListener('beforeunload', (e) => { if (pictures.size || Object.keys(unitName).length || heroNames.some((h) => Object.keys(h).length)) e.preventDefault(); });
 }
