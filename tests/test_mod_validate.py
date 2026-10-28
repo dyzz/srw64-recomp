@@ -146,6 +146,11 @@ class PackageTests(unittest.TestCase):
         self.assertIn("机体号", validate.icon_problem("055.png", png(16, 16)))
         self.assertIn("96×96", validate.icon_problem("55.png", png(96, 96)))
         self.assertIn("不是 PNG", validate.icon_problem("55.png", b"GIF89a"))
+        files["art/icons.json"] = json.dumps({"schema": "srw64.icons.v1", "facing": {"184": "left", "0": "front"}}).encode()
+        self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], [])
+        self.assertIn("left、right", validate.icon_facing_problem({"schema": "srw64.icons.v1", "facing": {"55": "up"}}))
+        self.assertIn("机体号", validate.icon_facing_problem({"schema": "srw64.icons.v1", "facing": {"400": "left"}}))
+        self.assertIn("schema", validate.icon_facing_problem({"facing": {}}))
         files["art/icons/55.png"] = png(64, 32)
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["icon"])
 

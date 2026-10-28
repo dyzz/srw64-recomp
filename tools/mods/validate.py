@@ -430,6 +430,23 @@ def icon_problem(name: str, data: bytes) -> str | None:
     return None
 
 
+def icon_facing_problem(data) -> str | None:
+    """art/icons.json (src/host/native_icon.cpp facings): {"schema": "srw64.icons.v1",
+    "facing": {"<unit>": "left" | "right" | "front"}}, the way a picture looks when it is not
+    the original icon's."""
+    if not isinstance(data, dict) or data.get("schema") != "srw64.icons.v1" or not isinstance(data.get("facing"), dict):
+        return "要是 {\"schema\": \"srw64.icons.v1\", \"facing\": {…}}"
+    for key in data:
+        if key not in ("schema", "facing"):
+            return f"不认识的字段 {key}"
+    for key, value in data["facing"].items():
+        if not _plain_number(key) or int(key) >= 363:
+            return f"{key} 要是机体号（0–362）"
+        if value not in ("left", "right", "front"):
+            return f"{key} 的朝向要是 left、right 或 front"
+    return None
+
+
 def _plain_number(text: str) -> bool:
     return text.isdigit() and text.isascii() and len(text) <= 4 and (text == "0" or not text.startswith("0"))
 
@@ -630,6 +647,13 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
                 why = f"JSON 无效：{error}"
             if why:
                 problems.append(Problem("voice", f"{e.name}: {why}"))
+        elif e.name == "art/icons.json":
+            try:
+                why = icon_facing_problem(json.loads(e.read().decode("utf-8")))
+            except (ValueError, UnicodeDecodeError) as error:
+                why = f"JSON 无效：{error}"
+            if why:
+                problems.append(Problem("icon", f"{e.name}: {why}"))
         elif e.name.startswith("art/icons/") and e.name.count("/") == 2:
             why = icon_problem(e.name.rsplit("/", 1)[1], e.read())
             if why:

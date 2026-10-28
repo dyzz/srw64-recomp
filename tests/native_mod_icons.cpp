@@ -1,6 +1,7 @@
 // MOD map icons (src/host/unit_icon_art.hpp, docs/design/mod-names-art-data.md §2.3): the
 // sizes taken, the master each picture scales to, the sides' variants, and the quad read
-// back from the drawer's texture rectangle, as drawn and as turned by unit_icon_facing.
+// back from the drawer's texture rectangle, as drawn and as turned by unit_icon_facing, and
+// turned again by the way the picture looks.
 #include "unit_icon_art.hpp"
 #include <cmath>
 #include <cstdio>
@@ -54,6 +55,19 @@ int main() {
     const uint32_t half=0xE4000000|(108*4)<<12|(68*4);
     check(unit_icon_art::quad(half,w1,0,0x08000800,q) && near(q.uv[2],1) && near(q.rect[2],108),"scaled down");
     check(!unit_icon_art::quad(w1|0xE4000000,w0&0xFFFFFF,0,steps,q),"an empty rectangle is refused");
+
+    // Turned by the way the picture looks (art/icons.json, else the original's) and the side.
+    const auto faced=[&](uint32_t s_t,uint32_t st_steps,char drawn,bool left){unit_icon_art::Quad f{};unit_icon_art::quad(w0,w1,s_t,st_steps,f);unit_icon_art::face(f,drawn,left);return f;};
+    auto f=faced(0,steps,'L',true);
+    check(near(f.uv[0],0) && near(f.uv[2],1),"looking left, for a side that looks left: as drawn");
+    f=faced(0,steps,'L',false);
+    check(near(f.uv[0],1) && near(f.uv[2],0),"looking left, for an enemy: turned");
+    f=faced(0,steps,'R',true);
+    check(near(f.uv[0],1) && near(f.uv[2],0),"looking right, for the player: turned");
+    f=faced(st,turned,'R',false);
+    check(near(f.uv[0],0) && near(f.uv[2],1),"looking right where the original was turned for an enemy: back as drawn");
+    f=faced(st,turned,'F',false);
+    check(near(f.uv[0],0) && near(f.uv[2],1) && near(f.uv[3],1),"front: never turned");
 
     if(failures)return 1;
     std::printf("mod icons: ok\n");

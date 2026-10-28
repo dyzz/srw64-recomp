@@ -12,6 +12,7 @@
 #include "unit_icon_facing.hpp"
 #include "upgrade_rules.hpp"
 #include "wide_map.hpp"
+#include "json/json.hpp"
 #include "stb/stb_image.h"
 #include <algorithm>
 #include <array>
@@ -19,6 +20,7 @@
 #include <chrono>
 #include <cstdio>
 #include <filesystem>
+#include <fstream>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -56,6 +58,7 @@ struct Icon {
     std::filesystem::path file;
     std::filesystem::file_time_type stamp{};
     std::array<int, 4> assets{-1, -1, -1, -1};
+    char facing = 0;                            // 'L', 'R', 'F' from art/icons.json; 0: the original's
 };
 struct Draw {
     uint32_t id = 0;
@@ -84,6 +87,33 @@ RT64::NativeMeshRender* previous_render{};
 std::unique_ptr<gpu::Program> program;          // the portraits' HdPortrait{VS,PS}: rect, uv, resolution, fill
 #endif
 
+// A package's art/icons.json: {"schema": "srw64.icons.v1", "facing": {"<unit>": "left" |
+// "right" | "front"}}, the way each of its pictures looks when not the original icon's.
+std::map<unsigned, char> facings(const std::filesystem::path& folder, const std::string& id, std::vector<std::string>& problems) {
+    std::map<unsigned, char> out;
+    std::error_code error;
+    const auto path = folder / "art" / "icons.json";
+    if (!std::filesystem::is_regular_file(path, error)) return out;
+    std::ifstream in(path, std::ios::binary);
+    const auto doc = nlohmann::json::parse(in, nullptr, false);
+    const std::string name = id + " art/icons.json";
+    if (doc.is_discarded() || !doc.is_object() || doc.value("schema", "") != "srw64.icons.v1" || !doc.contains("facing") || !doc["facing"].is_object()) {
+        problems.push_back(name + "：要是 {\"schema\": \"srw64.icons.v1\", \"facing\": {…}}");
+        return out;
+    }
+    for (const auto& [key, value] : doc["facing"].items()) {
+        const bool number = !key.empty() && key.size() <= 3 && std::all_of(key.begin(), key.end(), [](char c) { return c >= '0' && c <= '9'; }) &&
+                            !(key.size() > 1 && key[0] == '0');
+        const std::string way = value.is_string() ? value.get<std::string>() : "";
+        if (!number || std::stoul(key) >= unit_icon_art::kUnits || (way != "left" && way != "right" && way != "front")) {
+            problems.push_back(name + "：" + key + " 要是机体号，值是 left、right 或 front");
+            continue;
+        }
+        out[unsigned(std::stoul(key))] = way == "left" ? 'L' : way == "right" ? 'R' : 'F';
+    }
+    return out;
+}
+
 // The packages' art/icons/<unit>.png again when they change. Each unit's icon resource is in
 // the ROM's table; units that share an icon share the picture, and the upper package wins.
 void refresh() {
@@ -92,12 +122,14 @@ void refresh() {
     if (mod_revision == now && game == mod_game) return;
     mod_revision = now; mod_game = game;
     std::map<unsigned, std::filesystem::path> files;
+    std::map<unsigned, char> facing;            // icon -> the way its picture looks, when said
     std::vector<std::string> problems;
     std::error_code error;
     for (const auto& p : mods::installed(game)) {
         const auto dir = p.folder / "art" / "icons";
         if (!p.active || !std::filesystem::is_directory(dir, error)) continue;
         std::map<unsigned, unsigned> mine;      // icon -> the unit this package gave it for
+        const auto ways = facings(p.folder, p.id(), problems);
         for (const auto& item : std::filesystem::directory_iterator(dir, error)) {
             const auto stem = item.path().stem().string(), name = p.id() + " art/icons/" + item.path().filename().string();
             auto ext = item.path().extension().string();
@@ -119,6 +151,8 @@ void refresh() {
             }
             mine[icon] = unit;
             files[icon] = item.path();
+            if (const auto way = ways.find(unit); way != ways.end()) facing[icon] = way->second;
+            else facing.erase(icon);
         }
     }
     std::map<unsigned, Icon> table;
@@ -126,9 +160,11 @@ void refresh() {
         std::lock_guard lock(asset_mutex);
         for (const auto& [icon, file] : files) {
             Icon entry{file, std::filesystem::last_write_time(file, error)};
+            entry.facing = facing.count(icon) ? facing[icon] : 0;
             // A picture already made (same file and time) is used again.
             if (const auto old = icons.find(icon); old != icons.end() && old->second.file == file && old->second.stamp == entry.stamp) {
                 table[icon] = old->second;
+                table[icon].facing = entry.facing;
                 continue;
             }
             if (assets.size() + 4 > kCapacity) { problems.push_back("too many MOD icons"); break; }
@@ -284,12 +320,15 @@ void shutdown() {
 void rewrite(uint8_t* rdram, uint32_t slot, uint32_t begin, uint32_t end) {
     if (!hooks_installed || end <= begin || end - begin > 0x400) return;
     int asset = -1;
+    char drawn = 'F';
+    bool look_left = true;
     {
         std::lock_guard lock(mod_mutex);
         refresh();
         if (icons.empty()) return;
         const uint32_t record = unit_icon_facing::kSubRecords + slot * unit_icon_facing::kSlotSize;
-        const auto found = icons.find(unit_icon_facing::resource(rdram, record + 0x14));
+        const uint32_t icon = unit_icon_facing::resource(rdram, record + 0x14);
+        const auto found = icons.find(icon);
         if (found == icons.end()) return;
         // 1010-1012 for the player, enemy and third party; any other scheme as drawn. An acted
         // unit keeps its side's palette in the record and is drawn with the grey one (1013).
@@ -297,6 +336,9 @@ void rewrite(uint8_t* rdram, uint32_t slot, uint32_t begin, uint32_t end) {
         const unsigned variant = unit_icon_facing::acted(rdram, slot) ? unit_icon_art::kActed - unit_icon_art::kFirstPalette :
                                  palette >= unit_icon_art::kFirstPalette && palette <= unit_icon_art::kActed ? palette - unit_icon_art::kFirstPalette : 0;
         asset = found->second.assets[variant];
+        // Turned by the way the picture looks, which may not be the original icon's.
+        drawn = found->second.facing ? found->second.facing : unit_icon_facing::kFacing[icon - unit_icon_facing::kFirstIcon];
+        look_left = unit_icon_facing::looks_left(rdram, slot, palette);
     }
     {
         std::lock_guard lock(asset_mutex);
@@ -309,6 +351,7 @@ void rewrite(uint8_t* rdram, uint32_t slot, uint32_t begin, uint32_t end) {
         Draw record;
         unit_icon_art::Quad q;
         if (!unit_icon_art::quad(w0, w1, guest::read(rdram, p + 12, 4), guest::read(rdram, p + 20, 4), q)) return;
+        unit_icon_art::face(q, drawn, look_left);
         record.asset = asset;
         std::copy(q.rect, q.rect + 4, record.rect);
         std::copy(q.uv, q.uv + 4, record.uv);

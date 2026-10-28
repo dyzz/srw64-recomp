@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <array>
 #include <cstdint>
 #include <vector>
@@ -7,7 +8,8 @@
 // picture becomes. The author draws the unit once, in its own colours; like the HD-2D pack
 // (tools/hd_ai/unit_icon_imagegen.py faction_mark) the enemy and the third party get a ring
 // of their side's tones and an acted unit turns grey, so each icon is four pictures, one per
-// palette the original draws it with (1010-1013).
+// palette the original draws it with (1010-1013). The picture looks the way the original icon
+// does unless the package's art/icons.json says otherwise, and is turned for its side.
 namespace srw64::unit_icon_art {
 constexpr int kSize = 128;                                    // the master, as the HD-2D icons
 constexpr uint32_t kIconTable = 1052024, kUnits = 363;        // u16 icon resource per unit (layout images.units)
@@ -97,5 +99,15 @@ inline bool quad(uint32_t w0, uint32_t w1, uint32_t st, uint32_t steps, Quad& ou
     out.uv[0] = s0 / 16.f; out.uv[1] = t / 16.f;
     out.uv[2] = (s0 + w * dsdx) / 16.f; out.uv[3] = (t + h * dtdy) / 16.f;
     return true;
+}
+
+// The quad turned for its side: `drawn` is the way the picture looks ('L', 'R' or 'F'; the
+// package's art/icons.json, else the original icon's), `look_left` the way its unit should
+// (unit_icon_facing::looks_left). A picture drawn facing front is never turned.
+inline void face(Quad& q, char drawn, bool look_left) {
+    const bool turn = drawn != 'F' && (drawn == 'L') != look_left;
+    const float lo = std::min(q.uv[0], q.uv[2]), hi = std::max(q.uv[0], q.uv[2]);
+    q.uv[0] = turn ? hi : lo;
+    q.uv[2] = turn ? lo : hi;
 }
 }
