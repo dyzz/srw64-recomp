@@ -7,7 +7,7 @@
 - **原版不进 MOD 列表**。原版剧情和数据就是游戏本身；MOD 只是改动，没有任何包覆盖时一切走 ROM。
 - **我们的内置内容按包的格式交付**，排在用户包下面：HD 包 `srw64.hd`、我们的译文。它们在 MOD 管理里标「内置」，不能删除；HD 包跟图像模式开关，译文跟语言设置。
 - **包里只有数据，不带代码**。规则类改动只能打开宿主自带的规则并填参数（§6）。代码 MOD（上游 `.nrm`）以后真有需要再单独做一档。
-- **不做在线仓库与自动下载**。缺依赖时说明缺什么，由玩家自己装。
+- **不做自动下载，但做只读的在线索引**（2026-10-22 改，原来是「不做在线仓库与自动下载」）。官网发布一份索引，游戏只拿它比版本、提示新版，下载由玩家自己点；文件正本在作者的 GitHub Release，国内只有我们手动放网盘的镜像。缺依赖时说明缺什么，由玩家自己装。分发与投稿见 §13。
 
 ## 2. 包格式 v1
 
@@ -217,3 +217,121 @@ audio/      音乐与语音
 | 星露谷 SMAPI | `manifest.json`：`UniqueID`、`MinimumVersion`、`IsRequired` | 缺依赖时明确说缺哪个、要几版 |
 | Bethesda（上古卷轴、辐射） | 插件顺序由玩家手排，靠 LOOT 之类的第三方工具补救 | 反面例子：顺序要由依赖自动算 |
 | RimWorld、Bethesda 读档 | 存档记录 MOD 列表，读档时比对提醒 | §9 的存档记录 |
+| Zelda64Recomp 的分发 | 游戏里没有联网代码；Thunderstore 社区页手动下载，拖进游戏安装，同名覆盖要确认；内置 `.nrm` 可被用户目录同 id 覆盖 | §13.7 的安装细节；国内访问 Thunderstore 只有约 60 KB/s，不能当主渠道 |
+| Hollow Knight modlinks | GitHub 仓库里一份 XML 就是整个仓库：名字、版本、下载链接、SHA256、依赖，作者提 PR | §13.3 的投稿仓库 |
+| Factorio 门户 | 公开 JSON API，游戏内列表、更新检查、启停；不自动装依赖 | §13.7 的第二阶段 |
+| Minecraft BMCLAPI／MCIM | 客户端只认一个可替换的基地址，先官方后镜像回退，缓存带时间戳；志愿者节点网络只在百 TB 量级才需要 | 索引带 `generated` 时间戳；镜像只做网盘，不做直链 |
+
+## 13. 分发与投稿
+
+2026-10-22 定。接替 §1 原来的「不做在线仓库与自动下载」：官网发布一份只读索引，游戏只拿它比版本、提示新版，下载由玩家自己点。**不为国内做直链**：国内靠我们手动放网盘的镜像，和安装包一样；流程只为海外社区方便。
+
+依据是当天从官网源站（阿里云深圳）的实测：Thunderstore 的网站、API、文件 CDN 都能通，但一个 583 KB 的包只有约 60 KB/s；github.com 卡住超时、raw.githubusercontent.com 直接断；jsDelivr 能通但慢。国内没有合适的第三方 MOD 托管站（3DM、游侠面向热门大作且要它们的账号与下载器，Gitee 附件要登录）。真正免费又快的国内渠道只有网盘，自建直链每月几元到几十元但要多维护一套 OSS、下载域名与凭据，用户决定不做，以后投稿量大了再议。
+
+### 13.1 放哪里
+
+- **文件只有一份正本：GitHub Release**。作者自己仓库的 Release 资产，索引记下直链与 SHA-256（Hollow Knight modlinks 的做法）。不重新托管：作者删了就下架，`sha256` 保证链接指向的内容没变。
+- **索引像 latest.json 一样处理**：仓库里每个包一个文件 `web/src/data/mods/<id>.json`，官网构建时生成 `/mods/index.json`（`web/src/pages/mods/index.json.ts`），`deploy.sh` 随站点发布并刷新 CDN。官网域名是全球加速，海外读索引不慢；索引只有几十 KB，国内读也没问题。
+- **国内镜像是网盘**：我们挑着镜像，不承诺全部。镜像过的包在它的 `<id>.json` 里加 `netdisk`（`quark`、`baidu` 链接，和 `release.json` 同样的字段），由用户手动上传后填链接。HD 包继续走 GitHub 加网盘。
+- **费用**：零。GitHub Release 带宽不计费、单个资产上限 2 GB；官网 CDN 只多一个 JSON。
+- **不做的**：OSS、下载域名、RAM 用户、Thunderstore 社区（海外玩家从 GitHub 和官网 MOD 页就能拿到；真有需求再申请，成本只是多传一份）。
+
+### 13.2 索引格式 v1
+
+```json
+{
+  "schema": "srw64.mods-index.v1",
+  "generated": "2026-10-22T09:00:00Z",
+  "packages": [
+    {
+      "id": "example.gaiden",
+      "version": "1.2.0",
+      "name": { "ja": "外伝", "zh-Hans": "外传", "en": "Gaiden" },
+      "description": { "zh-Hans": "…" },
+      "authors": ["example"],
+      "license": "CC-BY-NC-4.0",
+      "game": ">=0.4",
+      "requires": { "example.newpilots": ">=1.0" },
+      "optional": {},
+      "conflicts": {},
+      "contents": ["campaign", "art"],
+      "file": "example.gaiden-1.2.0.srw64mod",
+      "bytes": 1234567,
+      "sha256": "…",
+      "url": "https://github.com/<作者>/<仓库>/releases/download/v1.2.0/example.gaiden-1.2.0.srw64mod",
+      "netdisk": { "quark": "https://pan.quark.cn/s/…", "baidu": "https://pan.baidu.com/s/…?pwd=…" },
+      "page": "https://srw64.dreamquest.club/zh/mods/example.gaiden/",
+      "source": "https://github.com/<作者>/<仓库>",
+      "published": "2026-10-22",
+      "yanked": null
+    }
+  ]
+}
+```
+
+- `name`、`description`、`authors`、`license`、`game`、`requires`、`optional`、`conflicts` 从包内 `mod.json` 抄出来（CI 校验时抄，写回 `<id>.json`），索引不另写一份；`contents` 是包里实际有的目录。
+- `url` 是正本直链；`netdisk` 可缺省。
+- 每个 `id` 只列最新版；历史版本在 git 历史与作者的 Release 里。
+- `generated` 让客户端知道索引多旧；和 `mod.json` 一样，v1 定下后只加字段、不改已有字段的含义。
+- `mod.json` 新增必填字段 `license`（§13.4）。
+
+### 13.3 投稿：提 PR
+
+作者在本仓库提 PR，新增或修改 `web/src/data/mods/<id>.json`，手写的部分只有：
+
+```json
+{ "url": "https://github.com/<作者>/<仓库>/releases/download/v1.2.0/example.gaiden-1.2.0.srw64mod",
+  "sha256": "…", "source": "https://github.com/<作者>/<仓库>" }
+```
+
+1. 作者把 `.srw64mod` 发在自己仓库的 Release 里。
+2. PR 加或改 `<id>.json`；第一次投稿同时在 `web/src/data/mods/owners.json` 登记作者前缀（`id` 里点号前的部分）对应自己的 GitHub 用户名。
+3. CI 下载文件、跑 §13.4 的校验，把 `mod.json` 里的字段抄进 `<id>.json`，结果以评论贴回 PR，和宿主报错同一文案。
+4. 维护者按 §13.5 人工审，合并。下次 `deploy.sh` 发布时索引更新，想镜像的再手动传网盘、补 `netdisk`。
+
+没有 GitHub 的作者：把文件和来源发给维护者，维护者代为发 Release（放在主仓库或一个专门的 `srw64-mods-mirror` 仓库）并提交条目，`owners.json` 记 `maintainer-verified:<作者名>`。预计很少，不单独做工具。
+
+**为什么不做网页上传**：要承担审核与版权责任、防滥用；而且源站连不上 GitHub。投稿量大了再考虑。
+
+### 13.4 自动校验
+
+CI 和宿主启动前校验（§3）共用 `tools/mods/validate.py`，错误文案三语共用。任何一条不过就不合并：
+
+- 下载 `url` 成功，SHA-256 与条目一致；`url` 是 GitHub Release 资产直链（其他托管以后再放开）。
+- zip 可解；根目录有 `mod.json`；`schema` 是 `srw64.mod.v1`；未知字段报错（§2）。
+- 文件名 `<id>-<版本>.srw64mod`，`id` 与 `<id>.json` 一致，版本严格大于已发布的版本。
+- `id` 的作者前缀在 `owners.json` 里属于 PR 作者的 GitHub 用户名，或维护者代登记的记录。
+- `game` 可解析；`requires`、`optional` 里的 `id` 在索引里存在（或在同一 PR 里）；`conflicts` 不含自己。
+- 只允许 §2 列出的目录；文件扩展名白名单（`json`、`txt`、`png`、`webp`、`ogg` 等按内容类型定）；不允许可执行文件、脚本、动态库。
+- 大小上限 100 MB；更大的先联系维护者。
+- **不含原版数据**：原版资产只能用 `copy_from: base:` 引用（§7）。仓库里放一份我们导出工具产出的原版图像与数据的 SHA-256 清单（`tools/mods/original-hashes.txt`，由导出脚本生成），包内任何文件命中即拒绝。这是机器能查的部分，人工审再看改得不像的。
+- `mod.json` 的 `license` 必填，限允许再分发的许可证：`CC-BY-4.0`、`CC-BY-SA-4.0`、`CC-BY-NC-4.0`、`CC-BY-NC-SA-4.0`、`MIT`、`GPL-3.0-or-later`、`CC0-1.0`。PR 模板里作者勾选「我对包内全部内容有以此许可证再分发的权利」。
+
+### 13.5 人工审核
+
+- 看：描述与包内内容一致；美术、音乐没有明显来自第三方作品；没有违法内容。
+- 名称与描述三语不强求，至少一种语言。
+- 一周内回复。拒绝时写明原因。
+
+### 13.6 更新、下架与所有权
+
+- **已发布的 `id` 加版本永不改**。修就发新版本。
+- **链接失效**：CI 每周重验一遍索引里的 `url` 与 `sha256`（Hollow Knight 也这么做），失效的条目自动标 `yanked: "link"`，有网盘镜像的保留镜像。
+- **下架**：条目加 `"yanked": "<原因>"`。索引保留条目并带原因，已装的玩家在 MOD 管理里看到提示；侵权的连网盘镜像一起删。
+- **所有权转移**：原所有者提 PR 改 `owners.json`；联系不上的由维护者裁定。
+- **改 `id`** 当新包处理：旧条目下架，`superseded_by` 指向新 `id`，游戏提示「作者已改用 X」。
+
+### 13.7 游戏内
+
+- **第一阶段**：MOD 管理读 `https://srw64.dreamquest.club/mods/index.json`（复用更新检查的 HTTP 层：无标识、首次联网前先问、15 秒超时、响应 1 MB 上限；索引超过 1 MB 前先分页），和已装包的 `mod.json` 比版本，列出「有新版 X」与「可安装」；按钮用系统浏览器打开条目的 `page`（官网 MOD 页，按语言给 GitHub 与网盘链接）；缺依赖只列出缺哪个、要几版。
+- **第二阶段（海外）**：游戏内直接从 `url` 下载，核对 `sha256` 后走现有安装流程进 `mods/`。国内玩家 GitHub 下不动，界面提示去网盘，不做回退。安卓暂不做（HTTP 层是存根）。
+- 安装细节借 Zelda64Recomp 的三条：同名覆盖要确认；接受打包了多个 `.srw64mod` 的普通 zip；内置包可被用户目录同 `id` 的包覆盖。
+
+### 13.8 顺序
+
+1. `tools/mods/validate.py` 与 `original-hashes.txt` 的生成；`web/src/data/mods/`、`owners.json`、`index.json.ts`、PR 模板与校验工作流。先把我们自己的包（示例战役等）当第一条跑通。
+2. 官网 MOD 页（列表与每包一页，三语，GitHub 与网盘链接）。
+3. 游戏内检查更新（第一阶段）。
+4. 投稿说明（英文为主，中文一份）放 `web/src/data/mods/README.md` 与官网 MOD 页。
+5. 每周重验链接的工作流。
+6. 游戏内下载（第二阶段），看投稿量再定。

@@ -178,7 +178,8 @@
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
 | [自定义战役](design/custom-campaign.md) | 多关串联（借场景号、开局结局、存档附加文件）、新台词的虚拟记录、整张绘制的新地图（地形表、资源替换、原版降级版原型）与分阶段 |
-| [MOD 包](design/mod-packages.md) | 包格式与依赖、外观／数值／规则／剧情分类、按键叠加、挑战奖励带回主线、存档记录 |
+| [MOD 包](design/mod-packages.md) | 包格式与依赖、外观／数值／规则／剧情分类、按键叠加、挑战奖励带回主线、存档记录、分发与投稿（§13：只读索引、GitHub Release 正本、网盘镜像、PR 投稿与校验） |
+| [两个 MOD 的规划：原创人物名字、人物与机体数据](design/mod-names-art-data.md) | MOD 一改 64 原创八人与部队名（只显示时替换）、MOD 二改任何人物姓名头像与机体武器数值；两者已实现 |
 | [音乐替换与战斗语音 MOD](design/audio-mods.md) | 替换任一首 BGM、按人物／机体改战斗曲、按战斗台词记录号放语音：原版放歌与选曲事实、包格式、有替换就停原版改放 OGG、风险与待定（未实现） |
 | [HD 化规划](design/hd-pipeline-plan.md) | HD 各类的现状、四条接入路径（宿主整张绘制／RT64 哈希替换／原生模型／原生文字）、战术地图整张接管的实现与待做、制作工具 |
 | [战术地图 HD 生成包](design/tactical-map-hd-kit.md) | 131 张战术地图的清单与动态元素、image_gen 生成包与变体包、殖民地 8 帧、地形面板伪 tile 与总览缩放、接入美术清单与自用包 |

@@ -23,6 +23,7 @@ ELSEWHERE = {
     "src/host/text",    # proposed module layout (docs/design/native-enhancements-plan.md)
     "tools/release/build_windows.py",  # planned Windows recipe (docs/design/three-platform-port.md, X3)
     "src/host/rumble.hpp/.cpp",  # planned rumble module (docs/design/rumble.md)
+    "tools/mods/original-hashes.txt",  # planned original-data hash list for MOD submissions (docs/design/mod-packages.md §13.4)
 }
 
 
