@@ -187,7 +187,7 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 uint8_t bits=here(record+0x0F);
                 bool first_row=false;
                 for(const auto& [skill,levels]:value.items()) {
-                    const auto found=std::find_if(std::begin(skills),std::end(skills),[&](const Skill& k){return k.key==skill;});
+                    const auto found=std::find_if(std::begin(skills),std::end(skills),[&f=skill](const Skill& k){return k.key==f;});
                     if(found==std::end(skills))return where+"：未知技能 "+skill+"（"+keys_of(skills)+"）";
                     if(found->row==0) {
                         if(first_row && !levels.is_null())return where+"：底力、NT、强化人、圣战士、超能力只能有一个";
@@ -229,7 +229,7 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 continue;
             }
             const auto list=fields(kind);
-            const auto field=std::find_if(list.begin(),list.end(),[&](const Field& f){return f.name==name;});
+            const auto field=std::find_if(list.begin(),list.end(),[&n=name](const Field& f){return f.name==n;});
             if(field==list.end()) {
                 std::string known="terrain";
                 for(const auto& f:list)known+="、"+std::string(f.name);
