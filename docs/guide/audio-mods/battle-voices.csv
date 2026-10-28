@@ -5850,7 +5850,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11647,28,マナミ,玛娜米,Manami,18,重伤（剩余 HP 不足 30%）（通用，3/10）,「ま、まだ、やられないわ!」,“还、还没完，我才不会倒下！”,“N-not yet! I’m not going down!”
 11648,28,マナミ,玛娜米,Manami,18,重伤（剩余 HP 不足 30%）（通用，4/10）,「はじめから無理は承知なんだから!」,“我一开始就知道这不容易！”,“I knew it’d be tough from the start!”
 11649,28,マナミ,玛娜米,Manami,18,重伤（剩余 HP 不足 30%）（通用，5/10）,「だ、だめっ!」,“不、不行！”,“N-no!”
-11650,28,マナミ,玛娜米,Manami,18,重伤（剩余 HP 不足 30%）（通用，6/10）,「ああぁっ! そ、そんな…… スイームルグが……!?」,“啊啊啊！怎、怎么会……菲因梅露姆竟然……！？”,“Aah! N-no... not the Sweemurg...?!”
+11650,28,マナミ,玛娜米,Manami,18,重伤（剩余 HP 不足 30%）（通用，6/10）,「ああぁっ! そ、そんな…… スイームルグが……!?」,“啊啊啊！怎、怎么会……灵鸟竟然……！？”,“Aah! N-no... not the Sweemurg...?!”
 11651,28,マナミ,玛娜米,Manami,18,重伤（剩余 HP 不足 30%）（通用，7/10）,「あうっ……許さない! 絶対に許さないわ!」,“啊呜……不可原谅！我绝对不会原谅你！”,“Agh... You’ll pay for this! I swear you’ll pay!”
 11652,28,マナミ,玛娜米,Manami,18,重伤（剩余 HP 不足 30%）（通用，8/10）,「く、機体はもう限界……でもね!」,“机、机体已经到极限了……但是！”,"“Ngh, the unit’s at its limit... but still!”"
 11653,28,マナミ,玛娜米,Manami,18,重伤（剩余 HP 不足 30%）（通用，9/10）,「きゃぁぁぁぁーっ! こ、これじゃやられてしまう!?」,“呀啊啊啊啊——！这、这样下去要被打倒了！？”,"“Kyaaaaah! A-at this rate, they’ll get me?!”"
@@ -5863,15 +5863,15 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11660,28,マナミ,玛娜米,Manami,18,中伤（剩余 HP 30–90%）（通用，6/7）,「くっ……すこしはできるようね!」,“唔……看来你有点本事嘛！”,“Ngh... so you do have some skill!”
 11661,28,マナミ,玛娜米,Manami,18,中伤（剩余 HP 30–90%）（通用，7/7）,「くぅっ! このくらいでやられるわけには!」,“唔！我怎能被这点伤打倒！”,“Ngh! I can’t go down to something like this!”
 11662,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，1/9）,「つっ! このくらい、なんでもないわ!」,“啧！这点伤，根本不算什么！”,“Ow! This is nothing!”
-11663,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，2/9）,「そんな攻撃ではスイームルグに 傷をつけることもできないわよ」,“那种攻击连菲因梅露姆的一道划痕都留不下。”,“An attack like that can’t even scratch the Sweemurg.”
+11663,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，2/9）,「そんな攻撃ではスイームルグに 傷をつけることもできないわよ」,“那种攻击连灵鸟的一道划痕都留不下。”,“An attack like that can’t even scratch the Sweemurg.”
 11664,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，3/9）,「ムダな抵抗はおやめなさい!」,“别做无谓的抵抗了！”,“Stop this pointless resistance!”
 11665,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，4/9）,「ふふっ、そんな攻撃は効かないのよ」,“呵呵，那种攻击根本不管用。”,"“Hehe, attacks like that don’t work on me.”"
 11666,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，5/9）,「そんな攻撃はムダです」,“那种攻击只是白费力气。”,“That attack is useless.”
-11667,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，6/9）,「このスイームルグをあなどってもらっては 困るわ!」,“可别小看了这架菲因梅露姆！”,“You’d better not underestimate the Sweemurg!”
+11667,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，6/9）,「このスイームルグをあなどってもらっては 困るわ!」,“可别小看了这架灵鸟！”,“You’d better not underestimate the Sweemurg!”
 11668,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，7/9）,「やめたほうがよいのではなくって?」,“你还是收手为好吧？”,“Wouldn’t it be wiser to stop?”
 11669,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，8/9）,「ぜ～んぜん、効かないわよ」,“完～全不管用哦。”,“That won’t work on me at a~ll!”
-11670,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，9/9）,「ふふっ このスイームルグを甘くみたわね!」,“呵呵，你太小看这架菲因梅露姆了！”,"“Hehe, you took the Sweemurg too lightly!”"
-11671,28,マナミ,玛娜米,Manami,18,回避（通用，1/9）,「スイームルグは伊達ではないのよ!」,“菲因梅露姆可不是浪得虚名的！”,“The Sweemurg isn’t just for show!”
+11670,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上）（通用，9/9）,「ふふっ このスイームルグを甘くみたわね!」,“呵呵，你太小看这架灵鸟了！”,"“Hehe, you took the Sweemurg too lightly!”"
+11671,28,マナミ,玛娜米,Manami,18,回避（通用，1/9）,「スイームルグは伊達ではないのよ!」,“灵鸟可不是浪得虚名的！”,“The Sweemurg isn’t just for show!”
 11672,28,マナミ,玛娜米,Manami,18,回避（通用，2/9）,「このくらいなら!」,“这点小意思！”,“This much I can handle!”
 11673,28,マナミ,玛娜米,Manami,18,回避（通用，3/9）,「ふふっ、だめよ、それでは」,“呵呵，这样可不行哦。”,"“Hehe, that won’t do at all.”"
 11674,28,マナミ,玛娜米,Manami,18,回避（通用，4/9）,「それで狙っているつもりなの?」,“你以为这样就能瞄准我吗？”,“You call that aiming?”
@@ -5879,13 +5879,13 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11676,28,マナミ,玛娜米,Manami,18,回避（通用，6/9）,「下手ねぇ。それとも、 あたしがすごいのかしら?」,“真差劲。还是说，是我太厉害了？”,“How clumsy. Or am I just that good?”
 11677,28,マナミ,玛娜米,Manami,18,回避（通用，7/9）,「あたらないわよ」,“打不中的哦。”,“You won’t hit me!”
 11678,28,マナミ,玛娜米,Manami,18,回避（通用，8/9）,「読めるわ、あたしにも!」,“我也看得穿！”,“Even I can read that one!”
-11679,28,マナミ,玛娜米,Manami,18,回避（通用，9/9）,「どう、スイームルグのスピードは?」,“怎么样，菲因梅露姆的速度？”,“How do you like the Sweemurg’s speed?”
+11679,28,マナミ,玛娜米,Manami,18,回避（通用，9/9）,「どう、スイームルグのスピードは?」,“怎么样，灵鸟的速度？”,“How do you like the Sweemurg’s speed?”
 11680,28,マナミ,玛娜米,Manami,18,攻击无效（护罩／装甲）（通用，1/6）,「そんな攻撃は効かないわ!」,“那种攻击根本不管用！”,“Attacks like that won’t work on me!”
 11681,28,マナミ,玛娜米,Manami,18,攻击无效（护罩／装甲）（通用，2/6）,「ビームなんてムダなのよ!」,“光束根本没用！”,“Beams are useless!”
 11682,28,マナミ,玛娜米,Manami,18,攻击无效（护罩／装甲）（通用，3/6）,「ビームは無効化するのよ」,“光束伤不了它的。”,“Beams get nullified.”
 11683,28,マナミ,玛娜米,Manami,18,攻击无效（护罩／装甲）（通用，4/6）,「だめよ、そんな攻撃では」,“那种攻击可不行哦。”,"“No, no, an attack like that won’t do.”"
-11684,28,マナミ,玛娜米,Manami,18,攻击无效（护罩／装甲）（通用，5/6）,「スイームルグを甘くみないで!」,“别小看了菲因梅露姆！”,“Don’t take the Sweemurg lightly!”
-11685,28,マナミ,玛娜米,Manami,18,攻击无效（护罩／装甲）（通用，6/6）,「フフフッ、効かないのよ、 このスイームルグには!」,“呵呵呵，这对菲因梅露姆可不管用！”,"“Hehehe, it won’t work on the Sweemurg!”"
+11684,28,マナミ,玛娜米,Manami,18,攻击无效（护罩／装甲）（通用，5/6）,「スイームルグを甘くみないで!」,“别小看了灵鸟！”,“Don’t take the Sweemurg lightly!”
+11685,28,マナミ,玛娜米,Manami,18,攻击无效（护罩／装甲）（通用，6/6）,「フフフッ、効かないのよ、 このスイームルグには!」,“呵呵呵，这对灵鸟可不管用！”,"“Hehehe, it won’t work on the Sweemurg!”"
 11686,28,マナミ,玛娜米,Manami,18,弹药／EN 不足，无法反击（通用，1/1）,「えっ!? エネルギーがないの!?」,“诶！？能量用光了！？”,“What?! I’m out of energy?!”
 11687,28,マナミ,玛娜米,Manami,18,射程外，无法反击（通用，1/2）,「くっ、届かないなんてっ!」,“唔，竟然够不到！”,"“Ngh, out of range?!”"
 11688,28,マナミ,玛娜米,Manami,18,射程外，无法反击（通用，2/2）,「そんなところからなんて、汚いわ!」,“从那种地方打，真卑鄙！”,“From way over there? How unfair!”

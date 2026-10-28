@@ -955,7 +955,7 @@
    "victory": "Defeat all enemies",
    "defeat": "Albion destroyed",
    "joins_after": [
-    "Apsaras (Aina) (when the conditions are met)"
+    "Apsaras II (Aina) (when the conditions are met)"
    ],
    "temporary": [
     "Shenlong Gundam (Wufei) (third-party NPC) {+}"
@@ -987,7 +987,7 @@
    "secrets": [
     {
      "ref": "secret-aina",
-     "text": "Aina appears after the second enemy wave (which arrives in the turn 5 player phase or when the enemy is down to 8 or fewer), once the enemy is down to 10 or fewer; persuade her with Shiro and she joins at the end of the stage with the Apsaras. On Real, step 1 must be done in “Time Has Passed”; on Super, this one persuasion is all it takes {+}",
+     "text": "Aina appears after the second enemy wave (which arrives in the turn 5 player phase or when the enemy is down to 8 or fewer), once the enemy is down to 10 or fewer; persuade her with Shiro and she joins at the end of the stage with the Apsaras II. On Real, step 1 must be done in “Time Has Passed”; on Super, this one persuasion is all it takes {+}",
      "short": "Persuade Aina with Shiro (appears at 10 or fewer enemies)"
     }
    ],

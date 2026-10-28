@@ -811,7 +811,7 @@ What should we do?”
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：アプサラス→Apsaras
 > 「あ、あれは……アイナのアプサラス!?」
-“Th-that’s... Aina’s Apsaras?!”
+“Th-that’s... Aina’s Apsaras II?!”
 
 @21476 Shiro · シロー
 > 「アイナ!!」
@@ -1298,7 +1298,7 @@ That’s enough. Dismissed.”
 # 检查提示：未用必用译名：アプサラス→Apsaras
 > 「間違いない、アプサラスだ。艦長、
 >  艦を降ろしてください! 艦長!
-“It’s the Apsaras, no doubt about it. Captain, bring the ship down! Captain!
+“It’s the Apsaras II, no doubt about it. Captain, bring the ship down! Captain!
 ---
 >  くそっ、アイナ……無事でいてくれ……」
 Damn it, Aina... Please be okay...”

@@ -87,14 +87,14 @@
     {
      "ref": "secret-aisha",
      "title": {
-      "zh-Hans": "艾夏＋凤翼天翔",
-      "zh-Hant": "艾夏＋鳳翼天翔",
+      "zh-Hans": "艾夏＋凤翼",
+      "zh-Hant": "艾夏＋鳳翼",
       "ja": "アイシャ＋エルブルス",
       "en": "Aisha + Elbulls"
      },
      "text": {
-      "zh-Hans": "无需操作：前两步完成则关末艾夏＋凤翼天翔加入",
-      "zh-Hant": "無需操作：前兩步完成則關末艾夏＋鳳翼天翔加入",
+      "zh-Hans": "无需操作：前两步完成则关末艾夏＋凤翼加入",
+      "zh-Hant": "無需操作：前兩步完成則關末艾夏＋鳳翼加入",
       "ja": "操作不要：前2段階済みならクリア時にアイシャ＋エルブルスが加入",
       "en": "No action needed: Aisha + Elbulls join at the end if steps 1–2 done"
      },

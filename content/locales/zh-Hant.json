@@ -1764,7 +1764,7 @@
     {
       "key": "base:t00_00282",
       "source_sha256": "7a4ec845e8d3419f16b055fd52019a53ccc0c6dc6aa31f897eb43677d35c01bc",
-      "target": "出擊！菲因梅露姆<END>",
+      "target": "出擊！靈鳥<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -1799,7 +1799,7 @@
     {
       "key": "base:t00_00287",
       "source_sha256": "abc824ddfc857a11ae2a01be4eaf072a2ed279160ef19230316ec24410a1dbcd",
-      "target": "激烈！鳳翼天翔的猛攻<END>",
+      "target": "激烈！鳳翼的猛攻<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3724,14 +3724,14 @@
     {
       "key": "base:t00_00563",
       "source_sha256": "6540e7e52671d83e7bc1698619e6e227db25996034b3a03187f71e0a61ff1cf6",
-      "target": "菲因梅露姆<END>",
+      "target": "靈鳥<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00564",
       "source_sha256": "6a111ec7a406f9f069fc6e01bafb21972460c99bdb29442e14b2cb9bdd5fa984",
-      "target": "鳳翼天翔<END>",
+      "target": "鳳翼<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5614,7 +5614,7 @@
     {
       "key": "base:t00_00834",
       "source_sha256": "f0f8e57c1ceba6bc5fe332c8b5e4d17b4c94cdbfcb144a501ed0e265c5ecddab",
-      "target": "菲因梅露姆S<END>",
+      "target": "靈鳥-炫華<END>",
       "review_status": "draft",
       "origin": "terms"
     },

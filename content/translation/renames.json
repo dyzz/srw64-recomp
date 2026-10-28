@@ -9563,6 +9563,58 @@
    "sections": [
     "units"
    ]
+  },
+  {
+   "ja": [
+    "スイームルグ"
+   ],
+   "zh-Hans": {
+    "old": "菲因梅露姆S",
+    "new": "灵鸟-炫华"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "スイームルグ"
+   ],
+   "zh-Hans": {
+    "old": "菲因梅露姆",
+    "new": "灵鸟"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "エルブルス"
+   ],
+   "zh-Hans": {
+    "old": "凤翼天翔",
+    "new": "凤翼"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "アプサラス"
+   ],
+   "en": {
+    "old": "Apsaras",
+    "new": "Apsaras II"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
   }
  ]
 }

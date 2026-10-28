@@ -331,7 +331,7 @@
   {
    "id": "secret-aina",
    "category": "common",
-   "title": "Aina + Apsaras",
+   "title": "Aina + Apsaras II",
    "kicker": "Character + unit",
    "applies": "Real takes two steps; Super needs only step 2",
    "summary": "Shiro fights Aina once before persuading her; persuade her once more in “Shock at Victoria” {+}",
@@ -346,10 +346,10 @@
      "stage": "13／14",
      "stage_title": "Shock at Victoria",
      "route": "Common",
-     "text": "The second wave appears on the turn 5 player phase or when 8 or fewer enemies remain, and then Aina appears in the Apsaras when 10 or fewer enemies remain. Persuade with Shiro; she leaves at once {+}"
+     "text": "The second wave appears on the turn 5 player phase or when 8 or fewer enemies remain, and then Aina appears in the Apsaras II when 10 or fewer enemies remain. Persuade with Shiro; she leaves at once {+}"
     }
    ],
-   "result": "At the end of the stage Aina and the Apsaras join",
+   "result": "At the end of the stage Aina and the Apsaras II join",
    "notes": [
     "On Super, step 1 counts as done at the start of “Shock at Victoria”",
     "On Real, Eiji cannot deploy in “Shock at Victoria”"
