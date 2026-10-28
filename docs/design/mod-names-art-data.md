@@ -151,7 +151,7 @@ art/icons.json             可选：{"schema": "srw64.icons.v1", "facing": {"<�
 - **已行动不在调色板记录里**：`801E2734` 每帧看名册 `+0xB & 0x80`，在同一次绘制里换 TLUT（1013），记录 `+0x16` 仍是阵营调色板；宿主读名册位（`unit_icon_facing::acted`）。
 - 光标所在的单位原版就是闪烁（约亮 8 帧、灭 10 帧），截图碰上灭的那几帧不是丢图。
 - **制作工具**：官网 `/<lang>/mods/icons/`（`web/src/pages/[lang]/mods/icons.astro`、`web/src/scripts/icon-maker.ts`），10-28 从名字工具拆出（名字工具打开带图标的包时原样保留）。选择卡片是机体立绘小图，下面并排原版和 HD 包图标；每张卡片列「原版／HD／你的图」三行，各按我方、敌方、已行动预览并按游戏规则翻好（第三方不显示）；作者选「你的图」朝向，和原版不同时写进 `art/icons.json`。原版三种配色由 `web/scripts/export_images.py` 从 ROM 导出（`gen/icons/<资源>.png`、`-1011`、`-1013`），HD 取 `assets/hd-ai/unit-icon-imagegen/full-1/results`（`gen/icons-hd/`，同像素的 6 对用资源号小的那张），只在本地部署时生成。
-- 测试：`make recomp-mod-icons-test`（尺寸、母版、四种变体、矩形→uv 含镜像与缩小、按朝向翻转）、`tests/test_mod_validate.py`（`icon_problem`、`icon_facing_problem`）。实机（2026-10-28，Mac，move-jump 迷你关）：我方两台朝左、敌方翻成朝右并带红圈；F6 原版图照画；移动待机后变灰。
+- 测试：`make recomp-mod-icons-test`（尺寸、母版、四种变体、矩形→uv 含镜像与缩小、按朝向翻转）、`tests/test_mod_validate.py`（`icon_problem`、`icon_facing_problem`）。实机（2026-10-28，Mac，move-jump 迷你关）：我方两台朝左、敌方翻成朝右并带红圈；F6 原版图照画；移动待机后变灰。朝向标记实机（同日，同一迷你关，三台原版都朝左）：ガイヤー 画朝右并标 `right` → 我方显示朝左；ダンバイン 画朝右不标 → 照旧当朝左、不翻、显示朝右；敌方 ゼーロン 画朝左标 `front` → 不翻、显示朝左且带红圈；原版图与 HD 模式一致，日志 `SRW64_MOD_ICONS icons=3 problems=0`。
 
 ### 2.3 数值（第一批已实现）
 
