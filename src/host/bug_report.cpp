@@ -90,7 +90,7 @@ std::string home() {
 
 std::string trim(std::string text) {
     while (!text.empty() && (text.back() == '\n' || text.back() == '\r' || text.back() == ' ' || text.back() == '"')) text.pop_back();
-    while (!text.empty() && text.front() == '"') text.erase(0, 1);
+    while (!text.empty() && (text.front() == '"' || text.front() == ' ' || text.front() == '\t')) text.erase(0, 1);
     return text;
 }
 
@@ -120,6 +120,24 @@ std::string first_line(const char* path) {
     std::string line;
     std::getline(in, line);
     return trim(line);
+}
+// The processor's name, from its first "model name" (x86; arm64 kernels leave it out).
+std::string cpu_name() {
+    std::ifstream in("/proc/cpuinfo");
+    for (std::string line; std::getline(in, line);)
+        if (line.starts_with("model name"))
+            if (const auto colon = line.find(':'); colon != std::string::npos) return trim(line.substr(colon + 1));
+    return {};
+}
+#elif defined(_WIN32)
+// A string value under HKEY_LOCAL_MACHINE, empty when it is missing.
+std::string machine_value(const wchar_t* key, const wchar_t* name) {
+    wchar_t value[256] = {};
+    DWORD size = sizeof(value) - sizeof(wchar_t);
+    if (RegGetValueW(HKEY_LOCAL_MACHINE, key, name, RRF_RT_REG_SZ, nullptr, value, &size) != ERROR_SUCCESS) return {};
+    char text[512] = {};
+    WideCharToMultiByte(CP_UTF8, 0, value, -1, text, sizeof(text) - 1, nullptr, nullptr);
+    return trim(text);
 }
 #endif
 
@@ -197,6 +215,7 @@ nlohmann::json system() {
 #elif defined(__linux__)
     s["version"] = os_release("PRETTY_NAME");
     s["model"] = first_line("/sys/devices/virtual/dmi/id/sys_vendor") + " " + first_line("/sys/devices/virtual/dmi/id/product_name");
+    s["cpu"] = cpu_name();
     utsname u{};
     if (uname(&u) == 0) s["kernel"] = u.release;
     if (const char* desktop = std::getenv("XDG_CURRENT_DESKTOP")) s["desktop"] = desktop;
@@ -210,6 +229,9 @@ nlohmann::json system() {
         if (get(&info) == 0)
             s["version"] = std::to_string(info.dwMajorVersion) + "." + std::to_string(info.dwMinorVersion) + "." + std::to_string(info.dwBuildNumber);
     }
+    const auto bios = L"HARDWARE\\DESCRIPTION\\System\\BIOS";
+    s["model"] = trim(machine_value(bios, L"SystemManufacturer") + " " + machine_value(bios, L"SystemProductName"));
+    s["cpu"] = machine_value(L"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0", L"ProcessorNameString");
     if (std::getenv("WINEPREFIX") || GetProcAddress(GetModuleHandleW(L"ntdll.dll"), "wine_get_version")) s["wine"] = true;
 #endif
     return s;
