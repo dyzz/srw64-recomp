@@ -19,20 +19,20 @@ const after = [
 // The MOD menu in three groups: downloads, the tools (the web BGM maker) and the guides (in
 // the docs, with the ID table).
 const modGroups = [
-  { label: UI.nav.modGroupDownloads[tl(lang)], items: [{ href: `/${lang}/mods/`, label: UI.nav.modAll[tl(lang)], icon: '📥', exact: true }] },
+  { label: UI.nav.modGroupDownloads[tl(lang)], items: [{ href: `/${lang}/mods/`, label: UI.nav.modAll[tl(lang)], exact: true }] },
   { label: UI.nav.modGroupTools[tl(lang)], items: [
-    { href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[tl(lang)], icon: '🎧' },
-    { href: `/${lang}/mods/voices/`, label: UI.nav.modVoicesMaker[tl(lang)], icon: '🎙️' },
-    { href: `/${lang}/mods/data/`, label: UI.nav.modDataMaker[tl(lang)], icon: '🔢' },
-    { href: `/${lang}/mods/names/`, label: UI.nav.modNamesMaker[tl(lang)], icon: '👤' },
-    { href: `/${lang}/mods/icons/`, label: UI.nav.modIconsMaker[tl(lang)], icon: '🗺️' },
+    { href: `/${lang}/mods/bgm/`, label: UI.nav.modBgm[tl(lang)], icon: '🛠️' },
+    { href: `/${lang}/mods/voices/`, label: UI.nav.modVoicesMaker[tl(lang)], icon: '🛠️' },
+    { href: `/${lang}/mods/data/`, label: UI.nav.modDataMaker[tl(lang)], icon: '🛠️' },
+    { href: `/${lang}/mods/names/`, label: UI.nav.modNamesMaker[tl(lang)], icon: '🛠️' },
+    { href: `/${lang}/mods/icons/`, label: UI.nav.modIconsMaker[tl(lang)], icon: '🛠️' },
   ] },
   { label: UI.nav.modGroupDocs[tl(lang)], items: [
-    { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[tl(lang)], icon: '📦' },
-    { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[tl(lang)], icon: '🎧' },
-    { href: `/${lang}/docs/mod-data/`, label: UI.nav.modData[tl(lang)], icon: '🔢' },
-    { href: `/${lang}/docs/mod-names/`, label: UI.nav.modNames[tl(lang)], icon: '👤' },
-    { href: `/${lang}/mods/ids/`, label: UI.nav.modIds[tl(lang)], icon: '📋' },
+    { href: `/${lang}/docs/mods/`, label: UI.nav.modPackages[tl(lang)] },
+    { href: `/${lang}/docs/mod-music/`, label: UI.nav.modMusic[tl(lang)] },
+    { href: `/${lang}/docs/mod-data/`, label: UI.nav.modData[tl(lang)] },
+    { href: `/${lang}/docs/mod-names/`, label: UI.nav.modNames[tl(lang)] },
+    { href: `/${lang}/mods/ids/`, label: UI.nav.modIds[tl(lang)] },
   ] },
 ];
 const mods = modGroups.flatMap((g) => g.items);
@@ -55,7 +55,7 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
           {modGroups.map((g) => (
             <section>
               <p class="group">{g.label}</p>
-              <ul>{g.items.map((m) => <li><a href={m.href} aria-current={here(path)(m) ? 'page' : undefined}><span class="ico" aria-hidden="true">{m.icon}</span>{m.label}</a></li>)}</ul>
+              <ul>{g.items.map((m) => <li><a href={m.href} aria-current={here(path)(m) ? 'page' : undefined}>{m.icon && <span class="ico" aria-hidden="true">{m.icon}</span>}{m.label}</a></li>)}</ul>
             </section>
           ))}
         </div>
@@ -137,7 +137,7 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
   .menu section + section { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--line-soft); }
   .menu .group { margin: 0; padding: 8px 12px 2px; color: var(--muted); font-size: 12px; letter-spacing: 0.06em; white-space: nowrap; }
   .menu ul { margin: 0; padding: 0; list-style: none; }
-  .menu ul a { display: block; padding: 7px 12px 7px 14px; color: var(--text); font-size: 14px; white-space: nowrap; }
+  .menu ul a { display: block; padding: 7px 12px 7px 20px; color: var(--text); font-size: 14px; white-space: nowrap; }
   .nav .menu ul a::after { display: none; }
   .menu ul a .ico { display: inline-block; width: 1.6em; }
   .menu ul a:hover { background: var(--cyan-soft); }
