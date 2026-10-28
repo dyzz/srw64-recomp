@@ -140,7 +140,9 @@ const here = (p: string) => (it: { href: string; exact?: boolean }) =>
   .menu ul a { display: block; padding: 7px 12px 7px 20px; color: var(--text); font-size: 14px; white-space: nowrap; }
   .nav .menu ul a::after { display: none; }
   /* The makers' mark: a puzzle piece with a plus, "make a mod". */
-  .menu ul a .ico { display: inline-block; margin: -2px 7px -2px -2px; vertical-align: -5px; }
+  /* It hangs in the item's left padding, centred on the line, so every item's name starts at one edge. */
+  .menu ul a:has(.ico) { position: relative; }
+  .menu ul a .ico { position: absolute; left: -1px; top: 50%; width: 16px; height: 16px; transform: translateY(-50%); }
   .menu ul a:hover { background: var(--cyan-soft); }
   .menu ul a[aria-current='page'] { color: var(--gold); }
   .nav a.sister { color: var(--gold); }
