@@ -38,7 +38,7 @@ const path = Astro.url.pathname;
     {LANGS.map((l) => <link rel="alternate" hreflang={l.tag} href={new URL(switchLang(path, l.code), Astro.site)} />)}
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={desc} />
-    <meta property="og:image" content={new URL(`/media/hero-${tl(lang)}.webp`, Astro.site)} />
+    <meta property="og:image" content={new URL(`/media/hero-${lang}.webp`, Astro.site)} />
     <meta property="og:type" content="website" />
     <Analytics />
     <script>

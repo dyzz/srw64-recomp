@@ -1,14 +1,16 @@
 {
   "id": "srw64.space-a",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "ja": "主力 宇宙適応A",
     "zh-Hans": "主力宇宙适应 A",
+    "zh-Hant": "主力宇宙適應 A",
     "en": "Main Cast: Space A"
   },
   "description": {
     "ja": "味方の主力で宇宙適応がA未満のパイロット20人と機体21機を、宇宙だけAにする（マジンガー系、コン・バトラーV、ゲッター3、ゴーショーグン、ジャイアント・ロボ、ダンバイン系、ガンキャノン、ガンタンクなど）。空・陸・海は変えない。",
     "zh-Hans": "把我方主力里宇宙适应不到 A 的 20 名驾驶员和 21 台机体的宇宙改成 A（魔神系、孔巴特拉V、盖塔3、豪将军、大铁人、丹拜因系、钢加农、钢坦克等），空、陆、海不变。",
+    "zh-Hant": "把我方主力裡宇宙適應不到 A 的 20 名駕駛員和 21 臺機體的宇宙改成 A（魔神系、孔巴德拉V、蓋特3、豪將軍、機械巨神、丹拜因系、鋼加農、鋼坦克等），空、陸、海不變。",
     "en": "Raises space to A for the 20 pilots and 21 units of the main cast below A there (the Mazinger team, Combattler V, Getter-3, GoShogun, Giant Robo, the Dunbine cast, Guncannon, Guntank and more). Air, land and sea stay as they are."
   },
   "authors": [
@@ -22,10 +24,10 @@
   "contents": [
     "data"
   ],
-  "file": "srw64.space-a-1.0.0.srw64mod",
-  "bytes": 1307,
-  "sha256": "68c43964e84a89bd0cfb199add56cb34ce68a6e83a1de10b79fda29d5e6bb82e",
-  "url": "/mods/srw64.space-a-1.0.0.srw64mod",
+  "file": "srw64.space-a-1.0.1.srw64mod",
+  "bytes": 1398,
+  "sha256": "f0242902225d3cfbaebd2493f9bd09cc77d6ee742a484caafd852da7f614bf35",
+  "url": "/mods/srw64.space-a-1.0.1.srw64mod",
   "page": "/mods/#srw64.space-a",
   "source": "https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a",
   "published": "2026-10-26",

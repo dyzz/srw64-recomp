@@ -5,11 +5,13 @@
   "name": {
     "ja": "改名サンプル",
     "zh-Hans": "改名示例",
+    "zh-Hant": "改名示例",
     "en": "Renaming Example"
   },
   "description": {
     "ja": "スーパー系男性主人公とパートナー、部隊名を別の名前にする見本。表示が変わるだけでセーブには書かれず、無効にすると元の名前に戻る。",
     "zh-Hans": "把超级系男主角、搭档和部队名换成别的名字的示例。只改显示，不写进存档，停用后恢复原来的名字。",
+    "zh-Hant": "把超級系男主角、搭檔和部隊名換成別的名字的示例。只改顯示，不寫進存檔，停用後恢復原來的名字。",
     "en": "An example that renames the Super Robot route's male protagonist, his partner and the unit. Only what is shown changes, nothing is written to saves; turn it off and the usual names are back."
   },
   "authors": [

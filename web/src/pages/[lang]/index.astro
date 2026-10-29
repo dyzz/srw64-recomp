@@ -12,6 +12,7 @@ import { asset } from '../../lib/asset';
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = HOME[tl(lang)];
+// Screenshots are per page language: tw has its own, taken in the game's Traditional Chinese.
 // Dialogue first, the modern screens and controls second, bug fixes third (user, 2026-10-05);
 // mods and game speed after the rules, filters last (user, 2026-10-29).
 const ORDER = ['history', 'prebattle', 'mods', 'speed', 'link', 'settings', 'library', 'viewer', 'filters'];
@@ -22,7 +23,7 @@ const posts = (await getCollection('blog', (p) => p.id.startsWith(`${tl(lang)}/`
 const fmt = (d: Date) => d.toISOString().slice(0, 10);
 ---
 <Base lang={lang}>
-  <section class="hero" style={`--hero: url('/media/hero-${tl(lang)}.webp')`}>
+  <section class="hero" style={`--hero: url('/media/hero-${lang}.webp')`}>
     <div class="wrap hero-in">
       <div class="hero-art" aria-hidden="true"></div>
       <span class="tag">{c.kicker}{published && ` · v${release.version}`}</span>
@@ -48,7 +49,7 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
         <h2>{c.compareTitle}</h2>
         <p>{c.compareBody}</p>
       </div>
-      <Pair left={`/media/compare-original-${tl(lang)}.webp`} right={`/media/compare-hd-${tl(lang)}.webp`} leftLabel={c.original} rightLabel={c.ours} alt={c.compareTitle} />
+      <Pair left={`/media/compare-original-${lang}.webp`} right={`/media/compare-hd-${lang}.webp`} leftLabel={c.original} rightLabel={c.ours} alt={c.compareTitle} />
     </div>
   </section>
 
@@ -80,8 +81,8 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
         ) : (
           <article class={`show ${i % 2 ? 'flip' : ''}`}>
             <figure class={`shot ${item.sh!.img2 ? 'pair' : ''} ${item.sh!.wide ? 'wide' : ''}`}>
-              <img src={asset(item.sh!.img.replace('{lang}', tl(lang)))} alt={item.sh!.title} width="1280" height="720" loading="lazy" />
-              {item.sh!.img2 && <img src={asset(item.sh!.img2.replace('{lang}', tl(lang)))} alt="" width="1280" height="720" loading="lazy" />}
+              <img src={asset(item.sh!.img.replace('{lang}', lang))} alt={item.sh!.title} width="1280" height="720" loading="lazy" />
+              {item.sh!.img2 && <img src={asset(item.sh!.img2.replace('{lang}', lang))} alt="" width="1280" height="720" loading="lazy" />}
               {item.sh!.credit && <figcaption>{item.sh!.credit}</figcaption>}
             </figure>
             <div class="show-text">
@@ -104,10 +105,10 @@ const fmt = (d: Date) => d.toISOString().slice(0, 10);
         <p>{c.galleryBody}</p>
       </div>
       <div class="gallery">
-        <img src={asset(`/media/cutin-${tl(lang)}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
-        <img src={asset(`/media/spin-${tl(lang)}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
-        <img src={asset(`/media/beam-${tl(lang)}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
-        <img src={asset(`/media/sekiha-${tl(lang)}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={asset(`/media/cutin-${lang}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={asset(`/media/spin-${lang}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={asset(`/media/beam-${lang}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
+        <img src={asset(`/media/sekiha-${lang}.webp`)} alt={c.galleryTitle} width="1280" height="720" loading="lazy" />
       </div>
     </div>
   </section>
