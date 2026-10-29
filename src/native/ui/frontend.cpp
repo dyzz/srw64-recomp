@@ -222,10 +222,12 @@ unsigned library_tab{};
 std::array<unsigned,2> library_index{};
 bool library_tab_focus{};
 // The stage info page (stage_info.hpp), in the same frame: which column the controller
-// scrolls, and the paragraphs it breaks into lines after layout.
+// scrolls.
 std::atomic_bool stage_open{};
 unsigned stage_column{};
-std::vector<std::string> stage_wrap_texts;
+// The paragraphs of the open page (stage info, MOD manager) that wrap_paragraphs() breaks
+// into lines after layout: RmlUi breaks only at spaces (text_wrap.hpp).
+std::vector<std::string> wrap_texts;
 // The last input was a controller: hints use the "_pad" labels (Steam Deck).
 bool pad_mode{};
 // The mouse is in use: hover highlights show only then, not under a pointer left resting
@@ -352,6 +354,11 @@ std::mutex ui_times_mutex;UiTimes ui_times;
 using UiClock=std::chrono::steady_clock;
 double ui_ms(UiClock::time_point a,UiClock::time_point b){return std::chrono::duration<double,std::milli>(b-a).count();}
 std::string escape(const std::string& text){return Rml::StringUtilities::EncodeRml(text);}
+// A paragraph wrap_paragraphs() breaks into lines once the page is laid out.
+std::string wrap_paragraph(const std::string& text,const std::string& cls={}) {
+    wrap_texts.push_back(text);
+    return "<p id='wrap:"+std::to_string(wrap_texts.size()-1)+"'"+(cls.empty()?std::string():" class='"+cls+"'")+">"+escape(text)+"</p>";
+}
 // Button tokens ("{A}", "{Esc}") become what the player bound to them, as icons of the
 // controller in use or keys (text/button_prompts.hpp, the SRW64Prompts font).
 text::PadFamily pad_family(){return text::PadFamily(input::pad_family.load());}
@@ -394,12 +401,14 @@ std::optional<input::Action> follow_bindings(SDL_Event& event) {
     event.key.keysym.scancode=page==SDLK_UNKNOWN?SDL_SCANCODE_UNKNOWN:SDL_GetScancodeFromKey(page);
     return std::nullopt;
 }
-std::string label(const std::string& key){
+std::string label_text(const std::string& key){
     const auto& catalog=localization::catalog();
-    if(pad_mode){const auto pad=key+"_pad";if(auto value=catalog.ui(pad);value!=pad)return escape(text::expand_prompts(value,prompt_context(true)));}
+    if(pad_mode){const auto pad=key+"_pad";if(auto value=catalog.ui(pad);value!=pad)return text::expand_prompts(value,prompt_context(true));}
     // A string with no controller variant still names the controller's buttons while it is in use.
-    return escape(text::expand_prompts(catalog.ui(key),prompt_context(pad_mode)));
+    return text::expand_prompts(catalog.ui(key),prompt_context(pad_mode));
 }
+std::string label(const std::string& key){return escape(label_text(key));}
+std::string wrap_label(const std::string& key,const std::string& cls={}){return wrap_paragraph(label_text(key),cls);}
 // The upgrade pages: which gauge cells are the original cap and which the 上限突破 rule
 // added; empty when the rule is off or the machine's own cap already is the cap.
 std::string cap_legend(unsigned original,unsigned cap) {
@@ -1851,13 +1860,13 @@ bool viewer_title(){const auto major=intro::title_major();return major==2 || maj
 std::string mod_campaigns_page() {
     const auto locale=localization::catalog().locale;
     const bool switchable=campaign_switch::available() && on_title();
-    std::string body="<p>"+label("dlc_note")+"</p>";
+    std::string body=wrap_label("dlc_note");
     const auto current=campaign::info();
     if(current)
         body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("mod_playing")+" "+escape(campaign_library::text(current->name,locale))+
             "</div><div class='set-seg'>"+button("dlc-leave",label("dlc_leave"),false,!switchable)+"</div></div></div>";
     const auto& entries=installed_campaigns();
-    if(entries.empty())body+="<p>"+label("dlc_empty")+"</p>";
+    if(entries.empty())body+=wrap_label("dlc_empty");
     for(size_t i=0;i<entries.size();++i) {
         const auto& entry=entries[i];
         const bool playing=current && current->id==entry.id;
@@ -1867,18 +1876,18 @@ std::string mod_campaigns_page() {
         meta+="  ·  "+label(entry.saves?"dlc_saves":"dlc_new");
         body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(campaign_library::text(entry.name,locale))+"</div><div class='set-seg'>"+
             button("dlc-enter:"+std::to_string(i),label(playing?"mod_current":"dlc_enter"),false,playing || !switchable)+"</div></div>";
-        if(const auto description=campaign_library::text(entry.description,locale);!description.empty())body+="<p>"+escape(description)+"</p>";
+        if(const auto description=campaign_library::text(entry.description,locale);!description.empty())body+=wrap_paragraph(description);
         body+="<p class='dlc-meta'>"+meta+"</p></div>";
     }
-    if(!switchable && campaign_switch::available())body+="<p class='dlc-meta'>"+label("mod_title_only")+"</p>";
+    if(!switchable && campaign_switch::available())body+=wrap_label("mod_title_only","dlc-meta");
     return body;
 }
 std::string mod_art_page() {
     std::string body=settings_choice("settings_images","images",{"original","hd"},presentation::image_mode.requested()?"hd":"original",!presentation::image_mode.enabled());
     const char* art=std::getenv("SRW64_ART_PACK");
-    if(art && *art)body+="<p>"+label("mod_art_installed")+"</p><p class='set-path'>"+escape(std::filesystem::path(art).parent_path().string())+"</p>";
-    else body+="<p>"+label("mod_art_missing")+"</p>";
-    return body+"<p class='dlc-meta'>"+label("mod_art_note")+"</p>";
+    if(art && *art)body+=wrap_label("mod_art_installed")+"<p class='set-path'>"+escape(std::filesystem::path(art).parent_path().string())+"</p>";
+    else body+=wrap_label("mod_art_missing");
+    return body+wrap_label("mod_art_note","dlc-meta");
 }
 // The game's own version, for the packages' "game" requirement.
 srw64::mods::Version game_version() {
@@ -1936,7 +1945,7 @@ std::string mod_installed_page() {
     body+=settings_row("mod_pick_row",button("mod-pick",label("mod_pick"),false,mod_pick_pending)+(shown.empty()?std::string():button("mod-refresh",label("mod_refresh"))+button("mod-inbox-open",label("mod_folder_open"))),
         shown.empty()?std::string():"<p class='set-path'>"+escape(shown+"/mods")+"</p>",shown.empty()?"mod_pick_row_note_none":"mod_pick_row_note");
 #else
-    std::string body="<p>"+label("mod_install_note")+"</p>";
+    std::string body=wrap_label("mod_install_note");
     if(!srw64::mods::directory().empty())body+=settings_row("mod_folder_row",button("mod-folder",label("mod_folder_open")),"<p class='set-path'>"+escape(srw64::mods::directory().string())+"</p>");
 #endif
     if(mod_installing)body+="<p class='dlc-meta'>"+label("mod_installing")+"</p>";
@@ -1962,13 +1971,13 @@ std::string mod_installed_page() {
         body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(name)+"</div><div class='set-seg'>"+
             button("mod-toggle:"+id,label(p.enabled?"mod_turn_off":"mod_turn_on"),false,!usable)+
             button("mod-remove:"+id,label(mod_remove_pending==id?"mod_remove_confirm":"mod_remove"))+"</div></div>";
-        if(p.manifest)if(const auto description=campaign_library::text(p.manifest->description,locale);!description.empty())body+="<p>"+escape(description)+"</p>";
+        if(p.manifest)if(const auto description=campaign_library::text(p.manifest->description,locale);!description.empty())body+=wrap_paragraph(description);
         body+="<p class='dlc-meta'>"+escape(meta.empty()?id:meta+"  ·  "+id)+"</p>";
         body+="<p class='dlc-meta'>"+escape(mod_contents_text(p.contents))+"</p>";
         body+="<p class='dlc-meta'>"+escape(status)+"</p></div>";
     }
     // Nothing in a package takes effect yet; this version installs and keeps them.
-    if(!list.empty())body+="<p class='dlc-meta'>"+label("mod_not_applied")+"</p>";
+    if(!list.empty())body+=wrap_label("mod_not_applied","dlc-meta");
     return body;
 }
 // A package dropped on the window or chosen: installed on its own thread, then announced.
@@ -2048,7 +2057,7 @@ std::string mod_dialogue_page() {
             if(const auto at=line.find(token);at!=std::string::npos)line.replace(at,std::string_view(token).size(),value);
         body+="<p class='dlc-meta'>"+escape(line)+"</p>";
     }
-    return body+"<p class='dlc-meta'>"+label("mod_dialogue_note")+"</p>";
+    return body+wrap_label("mod_dialogue_note","dlc-meta");
 }
 // The update check's words (update_check.hpp) with {version}, {date} and {error} filled in.
 std::string update_words(const std::string& key,const update::Status& s) {
@@ -2229,6 +2238,7 @@ void open_page(const std::string& url) {
     notices::post("update",text);
 }
 std::string mod_panel() {
+    wrap_texts.clear();
     std::string body="<div class='set-shade'><div class='set-panel'><h1>"+label("mod_title")+"</h1><div class='set-tabs nav'>";
     for(unsigned i=0;i<std::size(mod_pages);++i)body+=button("mod-page:"+std::string(mod_pages[i]),label("mod_page_"+std::string(mod_pages[i])),i==mod_page,false,"set-tab");
     body+="</div><div id='set-body' class='set-body'>";
@@ -2237,7 +2247,7 @@ std::string mod_panel() {
     else if(page=="campaigns")body+=mod_campaigns_page();
     else if(page=="art")body+=mod_art_page();
     else if(page=="dialogue")body+=mod_dialogue_page();
-    else body+="<p>"+label("mod_audio_note")+"</p>";
+    else body+=wrap_label("mod_audio_note");
     body+="</div><div class='set-foot'><div class='set-hint'>"+label("mod_hint")+"</div>"+button("settings-close",label("settings_close"))+"</div></div></div>";
     return body;
 }
@@ -2599,10 +2609,7 @@ std::string stage_text(const char* key,std::initializer_list<std::pair<const cha
         for(auto at=text.find(std::string("{")+name+"}");at!=std::string::npos;at=text.find(std::string("{")+name+"}"))text.replace(at,std::strlen(name)+2,value);
     return escape(text);
 }
-std::string stage_paragraph(const std::string& text,const std::string& cls) {
-    stage_wrap_texts.push_back(text);
-    return "<p id='siw:"+std::to_string(stage_wrap_texts.size()-1)+"' class='si-wrap "+cls+"'>"+escape(text)+"</p>";
-}
+std::string stage_paragraph(const std::string& text,const std::string& cls){return wrap_paragraph(text,"si-wrap "+cls);}
 std::string stage_status_chip(const json& s,const std::string& locale) {
     const auto state=s.value("state",std::string());
     std::string text;
@@ -2617,7 +2624,7 @@ std::string stage_status_chip(const json& s,const std::string& locale) {
     return text.empty()?std::string():"<span class='si-chip "+state+"'>"+text+"</span>";
 }
 std::string stage_panel(const json& snap) {
-    stage_wrap_texts.clear();
+    wrap_texts.clear();
     const auto& locale=localization::catalog().locale;
     std::string body="<div class='set-shade solid'><div class='set-panel lib-panel si-panel'>";
     // On the map or in a battle, the way back to the suspend save (asked first, quick_load.hpp).
@@ -2693,19 +2700,19 @@ std::string stage_panel(const json& snap) {
     return body+foot;
 }
 // After layout: each paragraph broken into lines that fit its column, in its own font.
-void stage_wrap() {
+void wrap_paragraphs() {
     if(!settings_doc)return;
     auto* engine=Rml::GetFontEngineInterface();
     const Rml::String language;
     const Rml::TextShapingContext shaping{language};
-    for(size_t i=0;i<stage_wrap_texts.size();++i) {
-        auto* e=settings_doc->GetElementById("siw:"+std::to_string(i));
+    for(size_t i=0;i<wrap_texts.size();++i) {
+        auto* e=settings_doc->GetElementById("wrap:"+std::to_string(i));
         if(!e)continue;
         const auto handle=e->GetFontFaceHandle();
         const float width=e->GetClientWidth();
         if(!engine || !handle || width<=0)continue;
         std::string rml;
-        for(const auto& line:text_wrap::lines(stage_wrap_texts[i],width,[&](const std::string& s){return float(engine->GetStringWidth(handle,Rml::StringView(s),shaping));}))
+        for(const auto& line:text_wrap::lines(wrap_texts[i],width,[&](const std::string& s){return float(engine->GetStringWidth(handle,Rml::StringView(s),shaping));}))
             rml+=(rml.empty()?"":"<br/>")+escape(line);
         e->SetInnerRML(rml);
     }
@@ -3513,7 +3520,7 @@ void settings_sync() {
         document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
         settings_doc=document(stage_panel(snap),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
         settings_doc->UpdateDocument();
-        stage_wrap();
+        wrap_paragraphs();
         for(unsigned i=0;i<2;++i)if(auto* c=settings_doc->GetElementById("si-col:"+std::to_string(i)))c->SetScrollTop(scroll[i]);
         stage_mark_column();
         return;
@@ -3531,6 +3538,7 @@ void settings_sync() {
         document_close(settings_doc);settings_stamp=stamp;settings_built=-1;settings_focus.clear();
         settings_doc=document(mod_panel(),true,true);settings_doc->SetClass("modal",false);settings_doc->PullToFront();settings_doc->Focus();
         settings_doc->UpdateDocument();
+        wrap_paragraphs();
         auto* focus=focus_id.empty() || focus_id=="first"?nullptr:settings_doc->GetElementById(focus_id);
         if(focus){focus->Focus();focus->ScrollIntoView(Rml::ScrollIntoViewOptions(Rml::ScrollAlignment::Nearest));}
         else if(focus_id=="first" || !pointer_mode)settings_focus_first();
