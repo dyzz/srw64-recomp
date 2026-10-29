@@ -12,8 +12,9 @@ import { asset } from '../../lib/asset';
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const c = HOME[tl(lang)];
-// Dialogue first, the modern screens and controls second, bug fixes third (user, 2026-10-05).
-const ORDER = ['history', 'prebattle', 'link', 'settings', 'filters', 'library', 'viewer'];
+// Dialogue first, the modern screens and controls second, bug fixes third (user, 2026-10-05);
+// mods and game speed after the rules, filters last (user, 2026-10-29).
+const ORDER = ['history', 'prebattle', 'mods', 'speed', 'link', 'settings', 'library', 'viewer', 'filters'];
 const shows = ORDER.map((k) => c.shows.find((x) => x.key === k)!).filter(Boolean);
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${tl(lang)}/`) && !p.data.draft))
   .sort(newestFirst)
