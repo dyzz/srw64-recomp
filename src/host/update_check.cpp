@@ -12,6 +12,10 @@
 #include <vector>
 #include <algorithm>
 
+#ifdef __SWITCH__
+std::string srw64_switch_hd_art();   // switch/switch_platform.cpp
+#endif
+
 namespace srw64::update {
 namespace {
 using json = nlohmann::json;
@@ -56,6 +60,10 @@ std::string user_agent(const std::string& version) {
     const char* platform = "windows";
 #elif defined(__APPLE__)
     const char* platform = "macos";
+#elif defined(__ANDROID__)
+    const char* platform = "android";
+#elif defined(__SWITCH__)
+    const char* platform = "switch";
 #else
     const char* platform = on_steam_deck() ? "steamdeck" : "linux";
 #endif
@@ -132,7 +140,7 @@ std::optional<Release> parse(const std::string& body, std::string_view language)
 }
 
 bool supported() {
-#if defined(__ANDROID__) || defined(__vita__) || defined(__SWITCH__)
+#if defined(__vita__)
     return false;
 #else
     return true;
@@ -145,8 +153,14 @@ void init(std::string_view version) {
     s.version = version;
     if (const char* file = std::getenv("SRW64_UPDATE_STATE"); file && *file) s.file = file;
     // The HD pack in use: its art folder is SRW64_ART_PACK, hd.json is beside it. A
-    // development run's art folder has no hd.json and counts as no pack.
-    if (const char* art = std::getenv("SRW64_ART_PACK"); art && *art) {
+    // development run's art folder has no hd.json and counts as no pack. The Switch finds
+    // its pack itself (the NRO's romfs, else hd/ beside the NRO).
+    std::string art;
+    if (const char* given = std::getenv("SRW64_ART_PACK"); given && *given) art = given;
+#ifdef __SWITCH__
+    if (art.empty()) art = srw64_switch_hd_art();
+#endif
+    if (!art.empty()) {
         const auto about = std::filesystem::path(art).parent_path() / "hd.json";
         std::error_code missing;
         if (std::filesystem::is_regular_file(about, missing)) {

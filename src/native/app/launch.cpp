@@ -364,6 +364,8 @@ int run_prepared(const Options& options,const GameIdentity& game,const HostMain&
         {"SRW64_LOCALE",locale},
         {"SRW64_PRESENTATION_SETTINGS",language_file.string()},
         {"SRW64_INPUT_SETTINGS",(root/"input.json").string()},
+        // The update check's switch and its last result (update_check.hpp).
+        {"SRW64_UPDATE_STATE",(root/"update.json").string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
         {"SRW64_SAVE_LIBRARY",saves.string()},
         {"SRW64_HD_AVAILABLE","0"},{"SRW64_IMAGE_MODE","original"},

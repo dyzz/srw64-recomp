@@ -2177,10 +2177,13 @@ std::string about_rows() {
     // The HD pack, which the launcher installs (SetupActivity.importHd) while the game is
     // closed: asked twice, then the game quits and the launcher's picker opens.
     {
-        const auto s=update::status("en");
-        std::string hd=update_hd_words(!s.hd.installed?"update_hd_missing":s.hd.version.empty()?"update_hd_unknown":"update_hd_installed",s)+
-            " "+label(hd_import_confirm?"update_hd_import_warning":"update_hd_import_note");
+        // A newer pack found by the update check: its download page beside the import.
+        const auto s=update::status(update::site_language(localization::catalog().locale));
+        std::string hd=update_hd_words(!s.hd.installed?"update_hd_missing":s.hd.version.empty()?"update_hd_unknown":"update_hd_installed",s);
+        if(s.hd.available)hd+=" "+update_hd_words("update_hd_available",s);
+        hd+=" "+label(hd_import_confirm?"update_hd_import_warning":"update_hd_import_note");
         rows+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("settings_update_hd")+"</div><div class='set-seg'>"+
+            (s.hd.available?button("update-hd-download",label("update_hd_download"),true):std::string())+
             button("update-hd-import",label(hd_import_confirm?"update_hd_import_confirm":"update_hd_import"))+"</div></div><p>"+hd+"</p></div>";
     }
 #endif
@@ -2196,11 +2199,13 @@ std::string about_rows() {
     }
     rows+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("settings_update")+"</div><div class='set-seg'>"+actions+
         "</div></div><p>"+update_words(key,s)+"</p></div>";
+#ifndef __ANDROID__   // Android's row is above, with the import
     // The HD pack, with versions of its own: the one installed, and the website's when newer.
     std::string hd=update_hd_words(!s.hd.installed?"update_hd_missing":s.hd.version.empty()?"update_hd_unknown":"update_hd_installed",s);
     if(s.hd.available)hd+=" "+update_hd_words("update_hd_available",s);
     rows+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("settings_update_hd")+"</div><div class='set-seg'>"+
         button("update-hd-download",label("update_hd_download"),s.hd.available)+"</div></div><p>"+hd+"</p></div>";
+#endif
     const auto automatic=update::automatic();
     rows+=settings_choice("settings_update_auto","update-auto",{"on","off"},automatic?(*automatic?"on":"off"):"");
     return rows+debug_row();
@@ -5087,6 +5092,19 @@ void home_sync() {
         (update::status("en").hd.available?"h"+update::status("en").hd.latest:std::string());
     if((home_doc || home_chrome_doc) && stamp==home_stamp)return;
     document_close(home_doc);document_close(home_chrome_doc);home_stamp=stamp;
+    // With touch controls the corner below is the stick's: a newer release (or HD pack) is
+    // told once a run as a notice instead, pointing at the About page.
+    if(touch) {
+        static std::string told;
+        const auto s=update::status(update::site_language(localization::catalog().locale));
+        const auto news=s.state==update::State::Available?"u"+s.latest.version:s.hd.available?"h"+s.hd.latest:std::string();
+        if(!news.empty() && news!=told) {
+            told=news;
+            auto text=localization::catalog().ui(news[0]=='u'?"update_notice":"update_notice_hd");
+            if(const auto at=text.find("{version}");at!=std::string::npos)text.replace(at,9,news.substr(1));
+            notices::post("update",text);
+        }
+    }
     // Library and MOD bottom right, lettered like the ring (menu_style: 14 game pixels, a
     // 1-pixel outline, a 0.8-pixel shadow); the settings entry top left.
     const float u=frame::scale(pixels_w,pixels_h);

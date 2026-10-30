@@ -450,6 +450,8 @@
     "update_hd_import_note": "导入时会先退出游戏，选好 zip 后自动换掉旧包。",
     "update_hd_import_warning": "未存档的进度会丢失。再按一次退出游戏并选择 HD 包。",
     "update_title_hint_hd": "HD 包新版本 {version}",
+    "update_notice": "有新版本 {version}，见「设置 › 关于」",
+    "update_notice_hd": "HD 包有新版本 {version}，见「设置 › 关于」",
     "menu_about": "关于 Marchwind64",
     "menu_check_updates": "检查更新…",
     "controls_keyboard": "键盘",

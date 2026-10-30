@@ -450,6 +450,8 @@
     "update_hd_import_note": "Importing quits the game first; the zip you choose replaces the old pack.",
     "update_hd_import_warning": "Unsaved progress will be lost. Press again to quit and choose the HD pack.",
     "update_title_hint_hd": "New HD pack {version}",
+    "update_notice": "Version {version} is out: see Settings › About",
+    "update_notice_hd": "HD pack {version} is out: see Settings › About",
     "menu_about": "About Marchwind64",
     "menu_check_updates": "Check for Updates…",
     "controls_keyboard": "Keyboard",

@@ -12,7 +12,7 @@
 // platform in its User-Agent and nothing else, nothing is downloaded or installed, and the player opens the download page
 // in their browser. A check on start-up is the player's choice, asked once on the
 // title and kept in update.json (SRW64_UPDATE_STATE), at most one a day; the About page
-// and the macOS application menu check on demand. Not on Android.
+// and the macOS application menu check on demand. Desktop, Android and the Switch; not the Vita.
 // The HD pack has versions of its own (1.0, 1.1 …, in its hd.json); /latest.json names the
 // newest, and a player with an older pack installed is told so too.
 namespace srw64::update {

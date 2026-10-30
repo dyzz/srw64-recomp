@@ -1,11 +1,11 @@
 # 更新检查
 
-2026-10-06。桌面三平台（macOS、Windows、Linux／Steam Deck）的游戏内更新检查：游戏只读官网的 `/latest.json`，只报版本和平台、不带标识、不下载；首次联网前先问玩家，之后可在设置里关掉。安卓不做（`update::supported()` 为假，「关于」页只有链接行）。
+2026-10-06。游戏内更新检查：游戏只读官网的 `/latest.json`，只报版本和平台、不带标识、不下载；首次联网前先问玩家，之后可在设置里关掉。起初只有桌面三平台（macOS、Windows、Linux／Steam Deck）；2026-10-30 起安卓和 Switch 也有（见「安卓与 Switch」），只有 Vita 不做（`update::supported()` 为假，「关于」页只有链接行）。
 
 ## 做什么、不做什么
 
 - 读官网的 `https://srw64.dreamquest.club/latest.json`（网站 `web/src/pages/latest.json.ts` 生成，`schema` 为 `srw64.latest.v1`），把其中的 `version` 与本程序的 `SRW64_VERSION` 比较。
-- 请求不带任何标识（没有 token、没有设备信息），只有一次 GET。2026-10-13 起 User-Agent 是 `Marchwind64/<版本> (<平台>; <架构>)`，平台为 `windows`／`macos`／`linux`／`steamdeck`（`on_steam_deck()`），架构为 `x86_64`／`arm64`，例如 `Marchwind64/0.4.8 (steamdeck; x86_64)`，好让官网的 CDN 日志按版本和平台统计检查次数；之前只有 `Marchwind64`。询问框与设置里的说明（`update_ask_note`、`settings_update_auto_note`）同步写明「只附带版本和平台」。
+- 请求不带任何标识（没有 token、没有设备信息），只有一次 GET。2026-10-13 起 User-Agent 是 `Marchwind64/<版本> (<平台>; <架构>)`，平台为 `windows`／`macos`／`linux`／`steamdeck`（`on_steam_deck()`），10-30 起加 `android`／`switch`，架构为 `x86_64`／`arm64`，例如 `Marchwind64/0.4.8 (steamdeck; x86_64)`，好让官网的 CDN 日志按版本和平台统计检查次数；之前只有 `Marchwind64`。询问框与设置里的说明（`update_ask_note`、`settings_update_auto_note`）同步写明「只附带版本和平台」。
 - 不下载、不安装：有新版时只给出版本和日期，按钮在系统浏览器里打开对应语言的下载页（`download.<zh|en|ja>`）和更新说明（`notes.<语言>`）。macOS 签名、Deck、Windows 的安装方式各不相同，先只提示。
 
 ## HD 包的版本
@@ -16,6 +16,19 @@
 - `build_release.py` 每次都建 HD 包，把摘要和所建提交里的 `web/src/data/release.json` 的 `hd.content_sha256` 比较：相同就沿用那一版，不打包；不同就取新版本号（默认末位加一，`--hd-version` 可指定），打成 `Marchwind64-HD-<版本>.zip`，`release.json` 里多一条 `publish_hd`（标签 `hd-<版本>`，`--latest=false`，先于应用发布），另写 `hd-release-notes.md`。应用的发布说明只链接当前 HD 包的发布页。
 - 发布后 `web/scripts/sync-release.mjs` 把 `hd` 写进官网的 `release.json`；`/latest.json` 的 `hd` 给出版本、各语言下载页（安装页 `#hd`）、文件与校验值。没有版本号的旧包（0.3.5 随应用发布的那个）不出现在 `latest.json`。
 - 游戏读已装的包：`SRW64_ART_PACK`（`hd/art`）旁边的 `hd/hd.json`。开发运行的美术目录没有 `hd.json`，算没装。`hd_newer()`（`update_version.hpp`）：装了包、官网的版本比它新，或装的包没有版本号，才提示；没装 HD 的玩家不提示。
+
+## 安卓与 Switch
+
+2026-10-30 加入，界面与桌面相同（标题问一次、「关于」页检查按钮与开关、新版本提示），差别只在下面几处：
+
+- **HTTP。** 安卓经 JNI 调 `SRW64Activity.httpGet`（`UpdateHttp.java`，`HttpURLConnection`，系统的 TLS 与证书），整个响应一次交回宿主再进 `Sink`，Java 侧上限 64 MB；`http_download` 的进度因此只在结束时报一次。Switch 静态链接 devkitPro 的 `switch-curl`，它的 TLS 走系统 SSL 服务（libnx `ssl`），用主机自带的证书，`curl_global_init` 自己初始化 nifm／ssl／csrng；代码与 Linux 共用，只是不 `dlopen`。
+- **权限。** 安卓清单加了 `android.permission.INTERNET`（普通权限，安装时授予、不弹框）：这是安卓包第一次能联网，发布说明要写明只读官网的 `latest.json`。
+- **HD 包行。** 安卓「关于」页原本就有「导入 HD 包」一行；有新版 HD 时这一行多「有新版 HD X」和「下载 HD 包」按钮，不另起一行。
+- **标题提示。** 触屏时标题左下角归虚拟摇杆，金色「新版本 X」不画；改为每次运行发一次通知（`update_notice`／`update_notice_hd`：「有新版本 X，见「设置 › 关于」」）。手柄、键盘时照旧。
+- **Switch 的 HD 包。** Switch 不设 `SRW64_ART_PACK`，HD 包由 `srw64_switch_hd_art()` 自己找（NRO 的 romfs，或 NRO 旁的 `hd/`）；`update::init` 在 Switch 上没有该变量时用它，读旁边的 `hd.json`（Switch 版 HD 包也带）。否则「关于」页永远显示「未安装」。
+- **实机验证（2026-10-30）。** 安卓 Seeker：标题询问、真官网 HTTPS、假 `latest.json`（file://，0.9.9／HD 9.9）的触屏通知与「关于」页、「下载页」开 Chrome、HTTP 404 与连接被拒的错误显示，都过。Switch（`/switch/Marchwind64-update` 单独文件夹，带 HD 1.2）：「关于」页检查读到官网 0.5.2、HD 行显示「已安装 HD 1.2」。Switch 未测标题询问（调试模式不问，代码与安卓共用）。
+- **Switch 的状态文件。** Switch 走 `run_prepared` 启动，10-30 起它也设 `SRW64_UPDATE_STATE`（用户目录的 `update.json`），否则不会询问、也不留结果。
+- **打开网页。** 安卓的 `SDL_OpenURL` 用系统浏览器；Switch 的 SDL 打不开网页，「下载页」等按钮失败时照常发通知给出网址（`update_open_failed`）。
 
 ## RecompLauncher 的安装步骤
 
@@ -51,7 +64,7 @@
 | --- | --- |
 | `src/host/update_check.{hpp,cpp}` | 状态、后台线程（分离线程，状态对象不释放）、`update.json` 读写、`latest.json` 解析、`SDL_OpenURL` |
 | `src/host/update_version.hpp` | 版本比较 `newer`（按数字段，`0.3.10 > 0.3.9`，后缀忽略）与网站语言；`tests/native_update.cpp` 测它 |
-| `src/host/update_http.cpp` | Windows：WinHTTP（链接 `winhttp`）；Linux／Deck：运行时 `dlopen` 系统的 `libcurl.so.4`（不进打包闭包，缺了只是检查失败）；安卓：存根 |
+| `src/host/update_http.cpp` | Windows：WinHTTP（链接 `winhttp`）；Linux／Deck：运行时 `dlopen` 系统的 `libcurl.so.4`（不进打包闭包，缺了只是检查失败）；安卓：JNI 调 `UpdateHttp.java`；Switch：静态链接 `switch-curl`（`curl z`） |
 | `src/host/macos/update_http_macos.mm` | macOS：`NSURLSession`（无界面） |
 | `src/native/ui/frontend.cpp` | `about_rows`、`update_ask_panel`、`open_about`、标题提示 `home-update`、`update-*`／`about-link:*` 按钮 |
 | `src/host/macos/app_menu.mm` | 「关于」改道与「检查更新…」 |

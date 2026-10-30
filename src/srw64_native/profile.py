@@ -56,7 +56,7 @@ UI_KEYS |= {"viewer_attacker", "viewer_back", "viewer_badge_default", "viewer_ba
 # The About page's links and the update check (frontend.cpp, src/host/update_check.hpp).
 UI_KEYS |= {"about_link_issues", "about_link_site", "about_link_source", "menu_about", "menu_check_updates", "settings_about_links", "settings_about_links_note", "settings_about_tagline", "settings_update", "settings_update_auto", "settings_update_auto_note", "settings_update_auto_off", "settings_update_auto_on", "update_ask_note", "update_ask_off", "update_ask_on", "update_ask_text", "update_check", "update_download", "update_notes", "update_open_failed", "update_status_available", "update_status_checking", "update_status_current", "update_status_failed", "update_status_unchecked", "update_title_hint",
             "settings_update_hd", "update_hd_installed", "update_hd_unknown", "update_hd_missing", "update_hd_available",
-            "update_hd_download", "update_title_hint_hd",
+            "update_hd_download", "update_title_hint_hd", "update_notice", "update_notice_hd",
             "update_hd_import", "update_hd_import_confirm", "update_hd_import_note", "update_hd_import_warning"}
 # The View menu and the Windows menu bar (src/native/ui/app_menu.hpp).
 UI_KEYS |= {"menu_view", "menu_fullscreen", "menu_window_scale", "menu_game", "menu_exit", "menu_tools", "menu_screenshot", "menu_images_hd", "menu_speed", "menu_quick_load", "menu_export_logs", "menu_help", "menu_info_copied"}

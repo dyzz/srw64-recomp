@@ -450,6 +450,8 @@
     "update_hd_import_note": "読み込む前にゲームを終了します。選んだ zip が古いパックと入れ替わります。",
     "update_hd_import_warning": "セーブしていない進行は失われます。もう一度押すとゲームを終了して HD パックを選びます。",
     "update_title_hint_hd": "HD パック新バージョン {version}",
+    "update_notice": "新バージョン {version} があります（設定 › 情報）",
+    "update_notice_hd": "HD パック新バージョン {version} があります（設定 › 情報）",
     "menu_about": "Marchwind64 について",
     "menu_check_updates": "アップデートを確認…",
     "controls_keyboard": "キーボード",

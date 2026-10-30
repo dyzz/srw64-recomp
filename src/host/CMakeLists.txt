@@ -375,6 +375,8 @@ if(SRW64_GL_ONLY)
         set_property(SOURCE "${SRW64_ROOT}/src/native/app/console_data.cpp" APPEND PROPERTY COMPILE_DEFINITIONS "SRW64_VERSION=\"${SRW64_VERSION}\"")
         target_link_options(srw64-gl-host PRIVATE -Wl,--wrap=abort,--wrap=rename,--wrap=__syscall_thread_create,--wrap=fchmod,--wrap=chmod)
         target_link_libraries(srw64-gl-host PRIVATE zstd)   # the NRO's HD pictures (hd_texture.cpp)
+        # The update check (update_http.cpp): devkitPro's libcurl, over libnx's SSL service.
+        target_link_libraries(srw64-gl-host PRIVATE curl z)
     elseif(NOT WIN32)
         target_link_libraries(srw64-gl-host PRIVATE ${CMAKE_DL_LIBS})
     endif()

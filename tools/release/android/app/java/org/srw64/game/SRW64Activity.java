@@ -440,6 +440,11 @@ public class SRW64Activity extends SDLActivity {
         return HostEnvironment.pairs();
     }
 
+    // The update check's requests (src/host/update_http.cpp, over JNI): {error, body}.
+    public Object[] httpGet(String url, String userAgent, int timeoutSeconds) {
+        return UpdateHttp.get(url, userAgent, timeoutSeconds);
+    }
+
     // The settings' "open this folder" (src/native/ui/frontend.cpp, over JNI): the system
     // Files app at the player's folder (its saves, import, export, reports, filters or
     // bezels), else at an export under Documents/Marchwind64, else at a folder of the data

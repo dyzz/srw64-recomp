@@ -1,8 +1,9 @@
 // http_get and http_download for the update check and the HD pack's setup step
 // (update_check.hpp, hd_prepare.hpp) through the system's own HTTP, so the program carries
 // no TLS library or root certificates: WinHTTP on Windows, libcurl on Linux and the Steam
-// Deck (opened at run time, so a system without it only fails the request). macOS has its
-// own in macos/update_http_macos.mm.
+// Deck (opened at run time, so a system without it only fails the request), Java's
+// HttpURLConnection on Android, and devkitPro's libcurl over the system's SSL on the Switch.
+// macOS has its own in macos/update_http_macos.mm.
 #include "update_check.hpp"
 #include <fstream>
 #include <stdexcept>
@@ -126,27 +127,66 @@ void request(const std::string& url, const std::string& user_agent, int timeout_
 // macos/update_http_macos.mm
 
 #elif defined(__ANDROID__)
-namespace srw64::update {
-namespace {
-void request(const std::string&, const std::string&, int, Sink&) { throw std::runtime_error("not on Android"); }
-}
-}
+#include <SDL_system.h>
+#include <jni.h>
 
-#elif defined(__SWITCH__)
-// No update check on the Switch (docs/design/switch-port.md).
 namespace srw64::update {
 namespace {
-void request(const std::string&, const std::string&, int, Sink&) { throw std::runtime_error("not on the Switch"); }
+// SRW64Activity.httpGet (UpdateHttp.java): {error, body}. SDL attaches this thread to the VM
+// and detaches it when the thread ends. The body comes whole and goes to the sink at once.
+void request(const std::string& url, const std::string& user_agent, int timeout_seconds, Sink& sink) {
+    auto* env = static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    auto activity = static_cast<jobject>(SDL_AndroidGetActivity());
+    if (!env || !activity) throw std::runtime_error("no Java activity");
+    std::string error;
+    std::string body;
+    const jclass type = env->GetObjectClass(activity);
+    const jmethodID method = env->GetMethodID(type, "httpGet", "(Ljava/lang/String;Ljava/lang/String;I)[Ljava/lang/Object;");
+    jobjectArray result = nullptr;
+    if (method) {
+        const jstring address = env->NewStringUTF(url.c_str()), agent = env->NewStringUTF(user_agent.c_str());
+        result = static_cast<jobjectArray>(env->CallObjectMethod(activity, method, address, agent, jint(timeout_seconds)));
+        env->DeleteLocalRef(address);
+        env->DeleteLocalRef(agent);
+    }
+    if (env->ExceptionCheck()) {
+        env->ExceptionClear();
+        result = nullptr;
+    }
+    if (!result) {
+        error = "Java request failed";
+    } else if (auto reason = static_cast<jstring>(env->GetObjectArrayElement(result, 0))) {
+        if (const char* text = env->GetStringUTFChars(reason, nullptr)) {
+            error = text;
+            env->ReleaseStringUTFChars(reason, text);
+        }
+        if (error.empty()) error = "request failed";
+        env->DeleteLocalRef(reason);
+    } else if (auto bytes = static_cast<jbyteArray>(env->GetObjectArrayElement(result, 1))) {
+        body.resize(size_t(env->GetArrayLength(bytes)));
+        env->GetByteArrayRegion(bytes, 0, jsize(body.size()), reinterpret_cast<jbyte*>(body.data()));
+        env->DeleteLocalRef(bytes);
+    }
+    if (result) env->DeleteLocalRef(result);
+    env->DeleteLocalRef(type);
+    env->DeleteLocalRef(activity);
+    if (!error.empty()) throw std::runtime_error(error);
+    if (!sink.take(body.data(), body.size())) throw std::runtime_error("response too large");
+}
 }
 }
 
 #else
+#if !defined(__SWITCH__)
 #include <dlfcn.h>
+#endif
 
 namespace srw64::update {
 namespace {
 // The few libcurl entry points used, by their documented C signatures and option numbers
-// (curl.h), so no curl headers are needed to build.
+// (curl.h), so no curl headers are needed to build. The Switch links devkitPro's libcurl,
+// whose TLS is the system's (libnx ssl, with the console's certificates); it starts the
+// network, SSL and random services itself.
 using CURL = void;
 constexpr int CURLOPT_URL = 10002, CURLOPT_WRITEFUNCTION = 20011, CURLOPT_WRITEDATA = 10001,
               CURLOPT_LOW_SPEED_LIMIT = 19, CURLOPT_LOW_SPEED_TIME = 20,
@@ -161,9 +201,27 @@ struct Curl {
     const char* (*easy_strerror)(int){};
     void (*easy_cleanup)(CURL*){};
 };
+#if defined(__SWITCH__)
+extern "C" {
+CURL* curl_easy_init();
+int curl_easy_setopt(CURL*, int, ...);
+int curl_easy_perform(CURL*);
+int curl_easy_getinfo(CURL*, int, ...);
+const char* curl_easy_strerror(int);
+void curl_easy_cleanup(CURL*);
+}
+#endif
 const Curl& curl() {
     static const Curl loaded = [] {
         Curl c;
+#if defined(__SWITCH__)
+        c.easy_init = &curl_easy_init;
+        c.easy_setopt = &curl_easy_setopt;
+        c.easy_perform = &curl_easy_perform;
+        c.easy_getinfo = &curl_easy_getinfo;
+        c.easy_strerror = &curl_easy_strerror;
+        c.easy_cleanup = &curl_easy_cleanup;
+#else
         for (const char* name : {"libcurl.so.4", "libcurl-gnutls.so.4", "libcurl.so"})
             if ((c.library = dlopen(name, RTLD_NOW | RTLD_LOCAL))) break;
         if (!c.library) return c;
@@ -173,6 +231,7 @@ const Curl& curl() {
         c.easy_getinfo = reinterpret_cast<decltype(c.easy_getinfo)>(dlsym(c.library, "curl_easy_getinfo"));
         c.easy_strerror = reinterpret_cast<decltype(c.easy_strerror)>(dlsym(c.library, "curl_easy_strerror"));
         c.easy_cleanup = reinterpret_cast<decltype(c.easy_cleanup)>(dlsym(c.library, "curl_easy_cleanup"));
+#endif
         return c;
     }();
     return loaded;
