@@ -4454,7 +4454,7 @@
     {
       "key": "base:t00_00668",
       "source_sha256": "89b92f8cd557dacda365d0647495ad797ec6cd1aad8f6907c05025862f4ce41e",
-      "target": "坎沙<END>",
+      "target": "根萨<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5042,21 +5042,21 @@
     {
       "key": "base:t00_00752",
       "source_sha256": "97763585011ed9973a8d2b086399426d78ce7a80781a20864661ff04747c4bc6",
-      "target": "象战机<END>",
+      "target": "象战车<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00753",
       "source_sha256": "763501980f54dc7a5ee4d7c3546bdfeb8ec86098e753e5fab3d58af8d8bbc4fc",
-      "target": "象战机A<END>",
+      "target": "象战车A<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00754",
       "source_sha256": "de9ff5c166dde81db0799e038b8073dfd3e8e305df065852f015d07b552a1052",
-      "target": "象战机H<END>",
+      "target": "象战车H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5077,42 +5077,42 @@
     {
       "key": "base:t00_00757",
       "source_sha256": "bb15d3cffa7dcc0a08d58c7cc6749464dfef0ec79b2558231f1fa1789b16254a",
-      "target": "豹战机<END>",
+      "target": "豹战车<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00758",
       "source_sha256": "d55a5a5b42a53d02def1cbe74a88b33c7da66a399aff150d373478bc4080265e",
-      "target": "豹战机A<END>",
+      "target": "豹战车A<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00759",
       "source_sha256": "fb3a290004dcb38050294346ee1335a92137b8191e3eef586e2290bb25a54e36",
-      "target": "豹战机H<END>",
+      "target": "豹战车H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00760",
       "source_sha256": "27eac5730f1625ea5d1f34bc853e75c8637bf8d7393c1dd3027110aeb9f96e9c",
-      "target": "狮战机<END>",
+      "target": "狮战车<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00761",
       "source_sha256": "c3d1f8fb25f2154a68011d77c24540a6f76c6ce7e52431563a87eb52982c659f",
-      "target": "狮战机A<END>",
+      "target": "狮战车A<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00762",
       "source_sha256": "40f0dbef7825bde1ffaa5b069fdd51161aea4bc8993e798b002f9f1ea3166bac",
-      "target": "狮战机H<END>",
+      "target": "狮战车H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8472,7 +8472,7 @@
     {
       "key": "base:t00_01452",
       "source_sha256": "5a29a7ac7e17bb0049f5481548bc80a7f51da0ed75f286128b389f0e78bfc02d",
-      "target": "格兰德之角<END>",
+      "target": "大尊者之角<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8486,7 +8486,7 @@
     {
       "key": "base:t00_01454",
       "source_sha256": "a5dc6172db0a33455f91e0291342bfde0f4dd94cbd1773c6e30960434152550b",
-      "target": "格兰德雷霆<END>",
+      "target": "大尊者雷霆<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16690,7 +16690,7 @@
     {
       "key": "base:t00_02632",
       "source_sha256": "062535e848ca995f1bcef66f761a8bc0c8d9fd38cd1bb010d3064763b9d539a4",
-      "target": "贝加能源冷冻光线<END>",
+      "target": "贝加特隆冷冻光线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16711,7 +16711,7 @@
     {
       "key": "base:t00_02635",
       "source_sha256": "416c89834029921b42edc86dad350c88ad29e8eb5561dfac79824efbef14150b",
-      "target": "贝加能源激光<END>",
+      "target": "贝加特隆激光<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17733,7 +17733,7 @@
     {
       "key": "base:t00_02781",
       "source_sha256": "8b8cc7e911c9c283516bd3f467b864a686ee61b7fb9c2cb9961a5be2f129dc9a",
-      "target": "格格兰德之角P<END>",
+      "target": "格大尊者之角P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17747,7 +17747,7 @@
     {
       "key": "base:t00_02783",
       "source_sha256": "c57208497d734ae353d173fcc9f5bbce5f5a600ce9cc8704c8092ba90627fe29",
-      "target": "格格兰德雷霆P<END>",
+      "target": "格大尊者雷霆P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25951,7 +25951,7 @@
     {
       "key": "base:t00_03961",
       "source_sha256": "9c3d9b9e25e482e79c8b2c46bce121f0b09915a26c419957bf82837f17e09a40",
-      "target": "射贝加能源冷冻光线<END>",
+      "target": "射贝加特隆冷冻光线<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25972,7 +25972,7 @@
     {
       "key": "base:t00_03964",
       "source_sha256": "c7604009a242649193e840008b167c1f07ae1cea97c063a38db070cd896474ae",
-      "target": "射贝加能源激光<END>",
+      "target": "射贝加特隆激光<END>",
       "review_status": "draft",
       "origin": "terms"
     },

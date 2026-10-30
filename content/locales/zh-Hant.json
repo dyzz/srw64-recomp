@@ -8472,7 +8472,7 @@
     {
       "key": "base:t00_01452",
       "source_sha256": "5a29a7ac7e17bb0049f5481548bc80a7f51da0ed75f286128b389f0e78bfc02d",
-      "target": "格蘭德之角<END>",
+      "target": "宗師之角<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -8486,7 +8486,7 @@
     {
       "key": "base:t00_01454",
       "source_sha256": "a5dc6172db0a33455f91e0291342bfde0f4dd94cbd1773c6e30960434152550b",
-      "target": "格蘭德雷霆<END>",
+      "target": "宗師雷霆<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17733,7 +17733,7 @@
     {
       "key": "base:t00_02781",
       "source_sha256": "8b8cc7e911c9c283516bd3f467b864a686ee61b7fb9c2cb9961a5be2f129dc9a",
-      "target": "格格蘭德之角P<END>",
+      "target": "格宗師之角P<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -17747,7 +17747,7 @@
     {
       "key": "base:t00_02783",
       "source_sha256": "c57208497d734ae353d173fcc9f5bbce5f5a600ce9cc8704c8092ba90627fe29",
-      "target": "格格蘭德雷霆P<END>",
+      "target": "格宗師雷霆P<END>",
       "review_status": "draft",
       "origin": "terms"
     },

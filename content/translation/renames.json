@@ -9654,6 +9654,188 @@
    "sections": [
     "weapons"
    ]
+  },
+  {
+   "ja": [
+    "キャンサー"
+   ],
+   "zh-Hans": {
+    "old": "坎沙",
+    "new": "根萨"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビッグモス"
+   ],
+   "zh-Hans": {
+    "old": "象战机",
+    "new": "象战车"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビッグモスA"
+   ],
+   "zh-Hans": {
+    "old": "象战机A",
+    "new": "象战车A"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ビッグモスH"
+   ],
+   "zh-Hans": {
+    "old": "象战机H",
+    "new": "象战车H"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドクーガー"
+   ],
+   "zh-Hans": {
+    "old": "豹战机",
+    "new": "豹战车"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドクーガーA"
+   ],
+   "zh-Hans": {
+    "old": "豹战机A",
+    "new": "豹战车A"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドクーガーH"
+   ],
+   "zh-Hans": {
+    "old": "豹战机H",
+    "new": "豹战车H"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドライガー"
+   ],
+   "zh-Hans": {
+    "old": "狮战机",
+    "new": "狮战车"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドライガーA"
+   ],
+   "zh-Hans": {
+    "old": "狮战机A",
+    "new": "狮战车A"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "ランドライガーH"
+   ],
+   "zh-Hans": {
+    "old": "狮战机H",
+    "new": "狮战车H"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ]
+  },
+  {
+   "ja": [
+    "グランドサンダー"
+   ],
+   "zh-Hans": {
+    "old": "格兰德雷霆",
+    "new": "大尊者雷霆"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "グランドホーン"
+   ],
+   "zh-Hans": {
+    "old": "格兰德之角",
+    "new": "大尊者之角"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ベガトロンレーザー"
+   ],
+   "zh-Hans": {
+    "old": "贝加能源激光",
+    "new": "贝加特隆激光"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
+  },
+  {
+   "ja": [
+    "ベガトロン冷凍光線"
+   ],
+   "zh-Hans": {
+    "old": "贝加能源冷冻光线",
+    "new": "贝加特隆冷冻光线"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
   }
  ]
 }

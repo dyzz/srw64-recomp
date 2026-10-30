@@ -3996,15 +3996,17 @@
   },
   {
    "ja": "グランドサンダー",
-   "zh_hant": null,
-   "basis": "none",
-   "group": "C_g_w"
+   "zh_hant": "宗師雷霆",
+   "basis": "decided",
+   "group": "C_g_w",
+   "note": "照機體名 巨型宗師鋼彈 推出；簡中 2026-10-30 定為 大尊者雷霆／大尊者之角（機體 大尊者高达）"
   },
   {
    "ja": "グランドホーン",
-   "zh_hant": null,
-   "basis": "none",
-   "group": "C_g_w"
+   "zh_hant": "宗師之角",
+   "basis": "decided",
+   "group": "C_g_w",
+   "note": "照機體名 巨型宗師鋼彈 推出；簡中 2026-10-30 定為 大尊者雷霆／大尊者之角（機體 大尊者高达）"
   },
   {
    "ja": "ゴッドストライク",
