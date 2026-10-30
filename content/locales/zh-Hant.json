@@ -14049,7 +14049,7 @@
     {
       "key": "base:t00_02249",
       "source_sha256": "4393522a571c6e818e5c8032b8bf3984bd5e6f410ddf281fe8e8265bfdf7a468",
-      "target": "大槍<END>",
+      "target": "斷空步槍<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -16331,7 +16331,7 @@
     {
       "key": "base:t00_02579",
       "source_sha256": "4393522a571c6e818e5c8032b8bf3984bd5e6f410ddf281fe8e8265bfdf7a468",
-      "target": "大槍<END>",
+      "target": "斷空步槍<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -23310,7 +23310,7 @@
     {
       "key": "base:t00_03578",
       "source_sha256": "8ee695edb2cc03acc8e94b0f745eb71d124496c071c6fcaf1f259c37e85f257f",
-      "target": "射大槍<END>",
+      "target": "射斷空步槍<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -25592,7 +25592,7 @@
     {
       "key": "base:t00_03908",
       "source_sha256": "8ee695edb2cc03acc8e94b0f745eb71d124496c071c6fcaf1f259c37e85f257f",
-      "target": "射大槍<END>",
+      "target": "射斷空步槍<END>",
       "review_status": "draft",
       "origin": "terms"
     },

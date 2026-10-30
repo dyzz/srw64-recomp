@@ -9641,6 +9641,19 @@
    "sections": [
     "units"
    ]
+  },
+  {
+   "ja": [
+    "ダイガン"
+   ],
+   "zh-Hans": {
+    "old": "大枪",
+    "new": "断空步枪"
+   },
+   "gate": false,
+   "sections": [
+    "weapons"
+   ]
   }
  ]
 }

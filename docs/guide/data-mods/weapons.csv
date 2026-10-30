@@ -878,7 +878,7 @@ weapon,name_ja,name_zh,name_en,air,land,sea,space,power,range_min,range_max,hit,
 876,パルスレーザー,脉冲激光,Pulse Laser,A,A,-,A,1400,1,1,20,6,0,0,0,
 877,ビームランチャー,光束发射器,Beam Launcher,A,A,-,A,1200,1,4,-10,6,0,0,0,
 878,連装キャノン砲,连装加农炮,Twin Cannon,A,A,A,A,1400,1,5,-10,6,0,0,0,
-879,ダイガン,大枪,Dai Gun,A,A,B,A,2000,1,6,0,6,0,0,0,223 224
+879,ダイガン,断空步枪,Dai Gun,A,A,B,A,2000,1,6,0,6,0,0,0,223 224
 880,断空剣,断空剑,Dancouken,A,A,A,A,2800,1,1,20,-1,10,110,20,224
 881,断空光牙剣,断空光牙剑,Dancou Kougaken,A,A,A,A,4000,1,1,20,-1,55,130,20,
 882,断空砲,断空炮,Dancouho,A,A,A,A,3200,1,6,-10,-1,60,120,10,
@@ -1208,7 +1208,7 @@ weapon,name_ja,name_zh,name_en,air,land,sea,space,power,range_min,range_max,hit,
 1206,対空砲,对空炮,AA Gun,A,A,B,A,1000,1,1,30,20,0,0,-20,194
 1207,対空砲,对空炮,AA Gun,A,A,B,A,1000,1,1,30,20,0,0,-20,195
 1208,ガンドール砲MAP,冈多尔炮MAP,Gandor Cannon MAP,A,A,A,A,3500,1,8,-10,-1,100,120,0,222
-1209,ダイガン,大枪,Dai Gun,A,A,B,A,2000,1,6,0,6,0,0,0,
+1209,ダイガン,断空步枪,Dai Gun,A,A,B,A,2000,1,6,0,6,0,0,0,
 1210,ブレストファイヤーMAP,胸部火焰MAP,Breast Fire MAP,A,A,B,A,2900,1,4,-10,-1,80,110,0,264
 1211,V-MAX,,,A,A,A,A,3000,1,1,35,-1,40,130,20,277
 1212,対空砲,对空炮,AA Gun,A,A,B,A,1400,1,1,30,20,0,0,-20,305
