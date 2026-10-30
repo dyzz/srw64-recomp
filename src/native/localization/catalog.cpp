@@ -63,6 +63,17 @@ std::shared_ptr<Catalog> Catalog::with_translations(Table entries,const std::str
     copy->revision=revision+"+"+layer;
     return copy;
 }
+std::shared_ptr<Catalog> Catalog::with_labels(const Table& replaced,const std::string& layer) const {
+    auto copy=std::make_shared<Catalog>(*this);
+    auto next=std::make_shared<Table>(*labels);
+    bool changed=false;
+    for(const auto& [key,value]:replaced)
+        if(const auto found=next->find(key);found!=next->end() && !value.empty()){found->second=value;changed=true;}
+    if(!changed)return copy;
+    copy->labels=std::move(next);
+    copy->revision=revision+"+"+layer;
+    return copy;
+}
 std::string Catalog::ui(const std::string& key) const {
     const auto* text=lookup(*labels,key);return text?*text:key;
 }

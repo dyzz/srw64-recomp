@@ -91,7 +91,7 @@
 | [跨平台文字组件](native/portable-text.md) | ICU／HarfBuzz／FreeType 排版与 CPU 栅格化、字体快照、Reader 适配和独立验证 |
 | [开场文字](native/native-intro.md) | 开场缩放文字跳过与资源提取 |
 | [设置窗口](native/settings-window.md) | 菜单栏「选项」与设置窗口的结构、元数据与验收；游戏内叠加的五页面板（通用／界面／规则／操作／关于）与键位 |
-| [更新检查](native/update-check.md) | 读官网 `/latest.json` 比版本：「关于」页与 macOS 应用菜单手动检查、首次在标题询问后每天最多一次自动检查、标题角落新版提示；各平台系统 HTTP；不下载不安装 |
+| [更新检查](native/update-check.md) | 读官网 `/latest.json` 比版本：「关于」页与 macOS 应用菜单手动检查、首次在标题询问后每天最多一次自动检查、标题角落新版提示；各平台系统 HTTP；程序与 HD 包不下载不安装，只顺带下载这一版的文本更新 |
 | [问题报告](native/bug-report.md) | 设置「反馈」页：复制平台信息、一键导出 zip：系统与显卡、游戏设置、最近 3 次运行的日志；新的 `console.log` 记下 stdout／stderr；不带 ROM、存档和令牌，家目录写成 `~` |
 | [Original 回退](native/native-original-fallback.md) | HD 资源缺失时的启动行为 |
 | [世界地图 HD](native/native-worldmap-hd.md) | 对话世界地图高清资源 |
@@ -173,6 +173,7 @@
 | [60 帧研究](design/60fps.md) | 远期待办，只有静态研究。原版逻辑固定 30 帧的依据、RT64 显示插帧的机制与前提、各场景能否插值（矩阵类能、矩形类不能）、战术地图的两条做法、试验计划与未核实项 |
 | [120 Hz 调度与 4 倍速](design/120hz-scheduler.md) | 默认开启（`SRW64_VI_RATE=60` 退回 60 Hz）。60 Hz 下 2 倍速是结构上限的依据、音频隔拍、宿主钩子审计、2x 换画面节拍与呈现降频、Mac／Windows／Seeker 实测 |
 | [Steam Deck 键位与按键图标](design/steam-deck-controls.md) | 默认手柄模板下的全部键位、标题与场间的设置入口、设置界面分页改版、待定键位、自绘图标字体方案与验证计划 |
+| [文本单独更新](design/text-updates.md) | 台词、数据文本与界面文字脱离程序更新：按发布版本出增量文本包、官网 `latest.json` 的 `text` 段、游戏下载校验后叠在随包文本与玩家覆盖之间、「关于」页与随包文本开关、各平台 |
 | [振动设计方案](design/rumble.md) | 原版没有振动（振动包驱动没链接）；宿主直接用 SDL 振动，只在画面已有的冲击处短而轻地震，菜单与对白不震；触发点与各平台方案，仅方案、代码未动 |
 | [分阶段计划](design/recomp-plan.md)、[实施记录](design/recomp-progress.md) | recomp 基础方案、早期进度与可重跑探针 |
 | [同类项目比较](design/recomp-peer-comparison.md)、[原生增强规划](design/native-enhancements-plan.md) | 架构研究与增强方案 |

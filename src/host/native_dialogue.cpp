@@ -10,6 +10,7 @@
 #include "state_probe.hpp"
 #include "presentation_settings.hpp"
 #include "notices.hpp"
+#include "text_update.hpp"
 #include "upgrade_refund.hpp"
 #include "campaign.hpp"
 #include "input_mode.hpp"
@@ -77,8 +78,10 @@ std::filesystem::path text_bundled, text_overrides;
 // @intro:<resource> text pages by locale, in catalog form; Japanese from their '>' lines.
 std::mutex page_mutex;
 std::map<std::string,std::map<std::string,std::string>> page_texts;
+// Prepared data's intro pages (dialogue_data::tables()), under any text update's.
+std::map<std::string,std::map<std::string,std::string>> prepared_pages;
 json last_text_summary=json::object();   // the last load_text: entries and files per locale, problems
-std::atomic_bool reload_requested{};
+std::atomic_bool reload_requested{},reload_announce{};
 
 uint8_t byte(const uint8_t* ram,uint32_t p) { return ram[p^3]; }
 uint16_t half(const uint8_t* ram,uint32_t p) { uint16_t v;std::memcpy(&v,ram+(p^2),2);return v; }
@@ -370,9 +373,13 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
     std::map<std::string,localization::Snapshot> next;
     std::vector<localization::dialogue_text::Problem> problems;
     json summary=json::object();std::map<std::string,size_t> entries;
-    std::map<std::string,std::map<std::string,std::string>> pages;
-    for(const auto& [locale,base]:base_catalogs) {
+    std::map<std::string,std::map<std::string,std::string>> pages=prepared_pages;
+    // A text update (text_update.hpp) lies between the shipped text and the player's.
+    const auto update=text_update::layer();
+    for(const auto& [locale,shipped]:base_catalogs) {
+        const auto base=update?update->apply(shipped):shipped;
         const std::vector<std::filesystem::path> roots{text_bundled.empty()?text_bundled:text_bundled/locale,
+                                                       update?update->dialogue(locale):std::filesystem::path(),
                                                        text_overrides.empty()?text_overrides:text_overrides/locale};
         auto result=localization::dialogue_text::load(roots,*base);
         for(auto problem:result.problems){problem.path=locale+"/"+problem.path;problems.push_back(std::move(problem));}
@@ -386,6 +393,7 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
     {std::lock_guard lock(page_mutex);page_texts=std::move(pages);}
     json listed=json::array();
     std::string report="SRW64 dialogue text report\n";
+    if(update)report+="text update: r"+std::to_string(update->revision)+"\n";
     for(const auto& [locale,row]:summary.items())
         report+=locale+": "+std::to_string(row.at("entries").get<size_t>())+" entries from "+std::to_string(row.at("files").get<unsigned>())+" files, "+
             std::to_string(row.at("problems").get<size_t>())+" problems\n";
@@ -397,7 +405,8 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
         std::error_code error;std::filesystem::create_directories(text_overrides,error);
         if(!error)std::ofstream(text_overrides/"dialogue-report.txt")<<report;
     }
-    record("dialogue_text",{{"bundled",text_bundled.string()},{"overrides",text_overrides.string()},{"locales",summary},
+    record("dialogue_text",{{"bundled",text_bundled.string()},{"overrides",text_overrides.string()},
+        {"text_update",update?json(update->revision):json()},{"locales",summary},
         {"problems",listed.size()>20?json(std::vector<json>(listed.begin(),listed.begin()+20)):listed}});
     {std::lock_guard lock(page_mutex);last_text_summary={{"locales",summary},{"problems",problems.size()}};}
     return {entries,problems.size()};
@@ -411,7 +420,7 @@ void announce_text(const std::map<std::string,size_t>& entries,size_t problems) 
 }
 // F5: read the files again, rebuild every record the history holds, and resume
 // the current record at the original's page, as a language switch does.
-void reload_text(uint8_t* ram) {
+void reload_text(uint8_t* ram,bool announce) {
     try {
         const auto [entries,problems]=load_text();
         for(auto& entry:reader.history)if(!entry.notice)
@@ -421,7 +430,7 @@ void reload_text(uint8_t* ram) {
                     entry.localized[locale]=std::move(localized.text);entry.localized_stops[locale]=std::move(localized.stops);
                 }
         language_status.locale=localization::snapshot()->locale;language_status.error.clear();++language_status.request;
-        announce_text(entries,problems);
+        if(announce)announce_text(entries,problems);
     } catch(const std::exception& error) {
         record("dialogue_text_error",{{"error",error.what()}});
         notices::post("dialogue-text",error.what());
@@ -432,7 +441,7 @@ void service_locale(uint8_t* ram) {
     // thread's step holds this lock across the original's calls, so only when free; a
     // reload or a locale switch then waits for the next frame.
     std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
-    if(reload_requested.exchange(false))reload_text(ram);
+    if(reload_requested.exchange(false))reload_text(ram,reload_announce.exchange(false));
     if(language_status.request==language_status.completed)return;
     refresh(ram,true);
     if(language_status.request!=language_status.completed) {
@@ -696,7 +705,9 @@ void configure(const std::filesystem::path& directory) {
         constexpr std::string_view intro="intro/";
         for(const auto& [name,table]:*tables)
             if(name.starts_with(intro))page_texts[name.substr(intro.size())]=*table;
-    } else {
+        prepared_pages=page_texts;
+    }
+    if(!dialogue_data::tables() || text_update::layer()) {
         const auto [entries,problems]=load_text();
         localization::activate(localization::find(localization::snapshot()->locale));
         if(problems)announce_text(entries,problems);
@@ -748,7 +759,7 @@ uint64_t request_locale(const std::string& locale) {
     language_status.locale=locale;language_status.error.clear();return ++language_status.request;
 }
 LocaleStatus locale_status(){std::lock_guard lock(mutex);return language_status;}
-void request_reload(){if(enabled)reload_requested=true;}
+void request_reload(bool announce){if(!enabled)return;if(announce)reload_announce=true;reload_requested=true;}
 uint16_t input(uint16_t buttons) {
     // The controller's triggers are the reader's alone (docs/design/steam-deck-controls.md):
     // R2 held reads as R + A, fast-forward, the same chord as E + Z (Reader::update: a press

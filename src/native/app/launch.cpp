@@ -262,6 +262,8 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         {"SRW64_INPUT_SETTINGS",(session.user_dir()/"input.json").string()},
         // The update check's switch and its last result (update_check.hpp).
         {"SRW64_UPDATE_STATE",(session.user_dir()/"update.json").string()},
+        // This release's text update from the website, when one is installed (text_update.hpp).
+        {"SRW64_TEXT_UPDATES",(session.user_dir()/"text").string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
         // The save library: extended slots, and the card published as the game saves.
         {"SRW64_SAVE_LIBRARY",session.saves_dir().string()},
@@ -366,6 +368,7 @@ int run_prepared(const Options& options,const GameIdentity& game,const HostMain&
         {"SRW64_INPUT_SETTINGS",(root/"input.json").string()},
         // The update check's switch and its last result (update_check.hpp).
         {"SRW64_UPDATE_STATE",(root/"update.json").string()},
+        {"SRW64_TEXT_UPDATES",(root/"text").string()},
         {"SRW64_RULE_SETTINGS",rules_file.string()},{"SRW64_RULE_FIXES",rule_names},
         {"SRW64_SAVE_LIBRARY",saves.string()},
         {"SRW64_HD_AVAILABLE","0"},{"SRW64_IMAGE_MODE","original"},

@@ -49,6 +49,7 @@
 #include "post_filter.hpp"
 #include "notices.hpp"
 #include "update_check.hpp"
+#include "text_update.hpp"
 #include "bug_report.hpp"
 #include "debug_ui.hpp"
 #include "debug_protocol.hpp"
@@ -2074,6 +2075,16 @@ std::string update_hd_words(const std::string& key,const update::Status& s) {
         if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),value);
     return escape(text);
 }
+// A text update's words (text_update.hpp), with {revision}, {date}, {note} and {error}.
+std::string text_update_words(const std::string& key,const text_update::Status& t) {
+    auto text=localization::catalog().ui(key);
+    const auto language=localization::catalog().locale=="zh-Hant"?std::string("tw"):update::site_language(localization::catalog().locale);
+    for(const auto& [mark,value]:{std::pair<std::string,std::string>{"{revision}",t.pack?std::to_string(t.pack->revision):""},
+            {"{date}",t.pack?t.pack->date:""},{"{note}",t.pack?text_update::note(*t.pack,language):""},{"{error}",t.error}})
+        if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),value);
+    for(const char* empty:{"（）"," ()"})if(const auto at=text.find(empty);at!=std::string::npos)text.erase(at,std::string(empty).size());
+    return escape(text);
+}
 // A path to show in a row: the home folder as ~, and a long one by its end (the button
 // beside it copies the whole), so a folder with no spaces cannot run off the page.
 std::string short_path(std::string path) {
@@ -2144,6 +2155,8 @@ nlohmann::json report_facts() {
     const auto hd=update::status(update::site_language(localization::catalog().locale)).hd;
     const auto name=[](const std::string& path){return path.empty()?std::string():std::filesystem::path(path).filename().string();};
     return {{"version",SRW64_VERSION},{"locale",localization::catalog().locale},{"ui_size",settings::ui_size_name(settings::ui_size())},
+        {"text_update",text_update::status().pack?nlohmann::json(text_update::status().pack->revision):nlohmann::json()},
+        {"text_update_bypassed",text_update::status().bypassed},
         {"images",presentation::image_mode.current()==1?"hd":"original"},{"map_unit_icons",settings::hd_map_unit_icons()?"hd":"original"},{"msaa",settings::msaa_at_start()},{"hd_pack",{{"installed",hd.installed},{"version",hd.version}}},
         {"wide",settings::wide_picture()},{"filter",name(settings::filter())},{"bezel",name(settings::bezel())},
         {"rules",rules},{"cheats",cheats_on},{"controller",srw64_pad_name()},{"touch",touch_active()},{"handheld",handheld()},
@@ -2206,6 +2219,19 @@ std::string about_rows() {
     rows+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("settings_update_hd")+"</div><div class='set-seg'>"+
         button("update-hd-download",label("update_hd_download"),s.hd.available)+"</div></div><p>"+hd+"</p></div>";
 #endif
+    {
+        // Text updates (text_update.hpp): this release's text fixes from the website, which
+        // the check downloads; the switch goes back to the text the program shipped with.
+        const auto t=text_update::status();
+        using text_update::State;
+        std::string words=t.pack?text_update_words(t.bypassed?"update_text_bypassed":"update_text_installed",t):std::string();
+        const char* more=t.state==State::Downloading?"update_text_downloading":t.state==State::Failed?"update_text_failed":t.pack?nullptr:"update_text_none";
+        if(more)words+=(words.empty()?"":" ")+text_update_words(more,t);
+        const auto choices=t.pack?button("text-update:on",label("update_text_use_update"),!t.bypassed)+
+            button("text-update:off",label("update_text_use_bundled"),t.bypassed):std::string();
+        rows+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+label("settings_update_text")+"</div>"+
+            (choices.empty()?std::string():"<div class='set-seg'>"+choices+"</div>")+"</div><p>"+words+"</p></div>";
+    }
     const auto automatic=update::automatic();
     rows+=settings_choice("settings_update_auto","update-auto",{"on","off"},automatic?(*automatic?"on":"off"):"");
     return rows+debug_row();
@@ -3559,7 +3585,7 @@ void settings_sync() {
     save_export_poll();
     report_export_poll();
 #endif
-    const auto stamp=localization::catalog().locale+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
+    const auto stamp=localization::catalog().locale+localization::catalog().revision+std::to_string(rules::active_fixes())+std::to_string(presentation::image_mode.requested())+settings::battle_ui_name(settings::battle_ui())+settings::ui_size_name(settings::ui_size())+std::to_string(settings::wide_picture())+std::to_string(settings::native_intermission_ui())+std::to_string(settings::unified_weapon_upgrades())+
         std::to_string(settings::native_name_entry_ui())+std::to_string(settings::native_title_ui())+std::to_string(settings::hd_map_unit_icons())+std::to_string(settings::msaa())+std::to_string(settings::show_fps())+settings::refresh_rate_name(settings::refresh_rate())+std::to_string(settings::game_speed_level())+std::to_string(settings::dialogue_hints_always())+std::to_string(settings::mod_music())+"/"+std::to_string(settings::mod_music_volume())+"/"+std::to_string(settings::mod_voice())+"/"+std::to_string(settings::mod_voice_volume())+"/"+std::to_string(settings::dialogue_font_size())+"/"+std::to_string(settings_page)+
         std::to_string(presentation::image_mode.enabled())+std::to_string(settings::owns_input())+std::to_string(settings::failed())+window_stamp()+
         // The Controls page: bindings, a capture waiting, the controller and its icons.
@@ -3576,7 +3602,7 @@ void settings_sync() {
         // The Cheats page: its switches, the levels row and the pilots the menu lists.
         (settings_pages[settings_page]==std::string("cheats")?cheats_stamp():std::string())+
         // The About page: the update check as it goes.
-        (settings_pages[settings_page]==std::string("about")?std::to_string(update::status("en").serial)+std::to_string(settings::debug_interface())+
+        (settings_pages[settings_page]==std::string("about")?std::to_string(update::status("en").serial)+"t"+std::to_string(text_update::status().serial)+std::to_string(settings::debug_interface())+
             settings::debug_endpoint().address:std::string());
     if(settings_doc && stamp==settings_stamp){settings_doc->PullToFront();return;}
     // A rebuilt window keeps its focused control and scroll position, so a controller
@@ -5087,7 +5113,8 @@ void home_sync() {
     if(!intro::title_waiting() || settings_open){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
     // With touch controls the Library, MOD and settings are touch buttons along the top.
     const bool touch=touch_active();
-    const auto stamp=localization::catalog().locale+(pad_mode?"+pad":"")+(settings_entry?"s":"")+(touch?"t":"")+frame_stamp()+
+    // The catalog's revision too: a text update or F5 changes labels within a language.
+    const auto stamp=localization::catalog().locale+localization::catalog().revision+(pad_mode?"+pad":"")+(settings_entry?"s":"")+(touch?"t":"")+frame_stamp()+
         (update::status("en").state==update::State::Available?"u"+update::status("en").latest.version:std::string())+
         (update::status("en").hd.available?"h"+update::status("en").hd.latest:std::string());
     if((home_doc || home_chrome_doc) && stamp==home_stamp)return;
@@ -5398,6 +5425,7 @@ void choose(const std::string& id) {
     }
     if(id=="update-check"){update::check(true);settings_focus=id;return;}
     if(id.starts_with("update-auto:")){update::set_automatic(id.ends_with(":on"));settings_focus=id;return;}
+    if(id.starts_with("text-update:")){text_update::set_bypassed(id.ends_with(":off"));settings_focus=id;return;}
     if(id=="update-download" || id=="update-notes") {
         const auto s=update::status(update::site_language(localization::catalog().locale));
         open_page(id=="update-download"?s.latest.download:s.latest.notes);settings_focus=id;return;

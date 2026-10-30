@@ -1,6 +1,7 @@
 #include "update_check.hpp"
 #include "app/runtime.hpp"
 #include "steam_deck.hpp"
+#include "text_update.hpp"
 #include "json/json.hpp"
 #include <SDL.h>
 #include <chrono>
@@ -97,6 +98,8 @@ void run(bool manual) {
     } catch (const std::exception& failure) {
         error = failure.what();
     }
+    // This release's text pack, when the website has a newer one (text_update.hpp).
+    if (error.empty()) text_update::take(latest, user_agent(version));
     std::lock_guard lock(s.mutex);
     s.running = false;
     s.checked_at = now();

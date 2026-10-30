@@ -35,6 +35,8 @@ public:
     const std::string* source_text(const TextKey& key) const;
     // This catalog with `entries` replacing or adding translations (dialogue text files).
     std::shared_ptr<Catalog> with_translations(Table entries,const std::string& layer) const;
+    // This catalog with `labels` replacing UI labels it has (text updates); others are ignored.
+    std::shared_ptr<Catalog> with_labels(const Table& replaced,const std::string& layer) const;
     std::string ui(const std::string& key) const;
     const Table& ui_labels() const { return *labels; }
 };

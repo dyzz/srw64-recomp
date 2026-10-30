@@ -2,6 +2,7 @@
 #include "rom_import_codec.hpp"
 #include "portrait_png.hpp"
 #include "battle_art.hpp"
+#include "localization/signature.hpp"
 #include "sha256.hpp"
 #include "json/json.hpp"
 #include <charconv>
@@ -37,26 +38,7 @@ uint64_t integer(const json& value,uint64_t maximum,const char* label) {
     const auto n=value.get<uint64_t>();if(n>maximum)throw std::runtime_error(std::string("Integer outside range: ")+label);return n;
 }
 json load(const fs::path& p,size_t limit=32*1024*1024){return json::parse(read_text(p,limit));}
-// Same barrier/parameter signature as srw64_native.catalog.signature. Unicode
-// text and BR are free; each STOP/END-separated segment owns its G parameters.
-std::vector<std::vector<unsigned>> signature(const std::string& text) {
-    if(!text.ends_with("<END>") || text.find_first_of(std::string("\0\r\n\f",4))!=std::string::npos)
-        throw std::runtime_error("Invalid message control/terminator");
-    static const std::regex token("<(BR|STOP|END|G:[0-9A-Fa-f]{1,4})>");
-    std::vector<std::vector<unsigned>> result(1);size_t cursor=0;
-    for(auto i=std::sregex_iterator(text.begin(),text.end(),token);i!=std::sregex_iterator();++i) {
-        const auto start=size_t(i->position());
-        if(text.substr(cursor,start-cursor).find('<')!=std::string::npos)throw std::runtime_error("Unsupported message token");
-        const auto value=(*i)[1].str();
-        if(value=="STOP" || value=="END"){result.back().push_back(value=="STOP"?0xfffd:0xffff);result.emplace_back();}
-        else if(value.starts_with("G:"))result.back().push_back(unsigned(std::stoul(value.substr(2),nullptr,16)));
-        cursor=start+size_t(i->length());
-    }
-    if(text.substr(cursor).find('<')!=std::string::npos)throw std::runtime_error("Unsupported message token");
-    for(size_t i=0;i+2<result.size();++i)
-        if(std::find(result[i].begin(),result[i].end(),0xffff)!=result[i].end())throw std::runtime_error("Early END in message");
-    return result;
-}
+using localization::signature;  // localization/signature.hpp
 void verify_cached(const fs::path& path,const std::string& key,const std::string& rom_hash) {
     if(fs::is_symlink(path) || !fs::is_directory(path))throw std::runtime_error("Invalid import cache directory");
     const auto manifest=load(content_path(path,"manifest.json"),1024*1024);

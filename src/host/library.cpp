@@ -4,6 +4,7 @@
 #include "upgrade_page.hpp"
 #include "combo_attacks.hpp"
 #include "library_names_table.hpp"
+#include "text_update.hpp"
 #include "mod_data.hpp"
 #include "localization/catalog.hpp"
 #include "librecomp/game.hpp"
@@ -298,9 +299,18 @@ void number_repeats(json& list) {
         if(total[key(e)]>1)if(const unsigned n=++seen[key(e)];n>1)e["name"]=e.at("name").get<std::string>()+" ("+std::to_string(n)+")";
 }
 // A record named in content/locales/library-names.json for this language takes that name
-// instead (site suggestions: the pilot who flies it, the name the series uses).
+// instead (site suggestions: the pilot who flies it, the name the series uses). A text
+// update's copy of that file (text_update.hpp) replaces the one built in.
 void rename_records(json& list,bool pilots) {
     const std::string& locale=localization::catalog().locale;
+    if(const auto update=text_update::layer();update && update->library_names) {
+        const auto& names=update->library_names->value(pilots?"pilots":"units",json::object());
+        for(auto& e:list) {
+            const auto found=names.find(std::to_string(e.at(pilots?"actor":"id").get<unsigned>()));
+            if(found!=names.end() && found->is_object() && found->contains(locale) && (*found)[locale].is_string())e["name"]=(*found)[locale];
+        }
+        return;
+    }
     for(auto& e:list)for(const auto& n:library_names::kNames)
         if(n.pilot==pilots && locale==n.locale && e.at(pilots?"actor":"id").get<unsigned>()==n.id)e["name"]=n.name;
 }

@@ -110,8 +110,9 @@ void configure(const std::filesystem::path&);
 uint64_t request_locale(const std::string& locale);
 struct LocaleStatus {uint64_t request{},completed{};std::string locale,error;};
 LocaleStatus locale_status();
-// Read the dialogue text files again at the next game step (F5, app menu).
-void request_reload();
+// Read the dialogue text files again at the next game step (F5, app menu). `announce`: the
+// banner with what was read; a text update (text_update.hpp) posts its own.
+void request_reload(bool announce=true);
 // The player's dialogue text folder (beside the shipped files, which it overrides) and the
 // last reading of them: {"locales": {locale: {entries, files, problems}}, "problems": n}.
 std::filesystem::path text_overrides_dir();
