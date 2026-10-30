@@ -12,6 +12,7 @@
 #endif
 #ifdef SRW64_GL_RENDERER
 #include "ui_renderer_gl.hpp"
+#include "double_move_w.hpp"
 #endif
 #include "RmlUi_Platform_SDL.h"
 #include "native_dialogue.hpp"
@@ -4178,18 +4179,25 @@ void intermission_sync() {
 // ユニット改造 / 武器改造: the machine list (layout 0x6B) and the five-stat screen
 // (0x75), in the original's 320x240 coordinates like the intermission menu.
 // The weapon table the original draws on the 武器改造 list (layout 0x77) and the
-// The 二回行動 crown (the map's unit window draws ROM glyph 1460 beside the level): the
-// symbol font's U+E5B4 in gold for HD images, the icon cut from the ROM font (the
-// manifest's weapon_markers.double_move) for original images, a gold W badge without either.
+// The 二回行動 crown (the map's unit window draws ROM glyph 1460 beside the level), in a
+// 14 x 12 cell: for HD images the user's W drawn after it (double_move_w.hpp, embedded;
+// user, 2026-10-30); for original images the icon cut from the ROM font (the manifest's
+// weapon_markers.double_move); without the latter the symbol font's U+E5B4 in gold, and
+// a gold W badge without any of them.
 std::string double_move_crown(const json& icons,float u) {
     const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
     const auto found=icons.find("double_move");
     const bool rom=found!=icons.end() && found->contains("path");
-    if(!symbol_font.empty() && (hd_portraits() || !rom))
+    if(hd_portraits()) {
+        static const std::string name=[]{queue_file("double-move-w",std::vector<char>(double_move_w::png,double_move_w::png+double_move_w::size));return std::string("double-move-w");}();
+        // Placed itself, without the sheet's 8 dp image margin (.card's rule, on every img).
+        return "<img src='"+name+"' style='position:absolute; left:0; top:"+px(2)+"; width:"+px(14)+"; height:"+px(12)+"; margin:0;'/>";
+    }
+    if(!symbol_font.empty() && !rom)
         return "<span class='im-mark crown' style='font-size:"+px(13)+"; line-height:"+px(16)+";'>\uE5B4</span>";
     if(rom) {
         const float w=found->value("width",14.f),h=found->value("height",12.f);
-        return "<img src='"+escape(image(found->at("path").get<std::string>(),int(w*u+.5f)))+"' style='display:inline-block; width:"+px(w)+"; height:"+px(h)+"; vertical-align:middle;'/>";
+        return "<img src='"+escape(image(found->at("path").get<std::string>(),int(w*u+.5f)))+"' style='position:absolute; left:0; top:"+px(2)+"; width:"+px(w)+"; height:"+px(h)+"; margin:0;'/>";
     }
     return "<span class='im-badge map' style='width:"+px(12)+"; height:"+px(11)+"; line-height:"+px(11)+"; font-size:"+px(7)+";'>W</span>";
 }

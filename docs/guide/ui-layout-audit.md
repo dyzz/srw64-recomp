@@ -5,6 +5,7 @@
 ```bash
 .venv/bin/python tools/recomp/ui_audit/run_audit.py                 # 四种尺寸 × 三种语言，约 3 分钟
 .venv/bin/python tools/recomp/ui_audit/run_audit.py --sizes deck --only 'zh-Hans$'
+.venv/bin/python tools/recomp/ui_audit/run_audit.py --hd --only 'ability-pilot'   # 按高清图模式排版（程序内嵌的图，如驾驶员页的二回行动 W）
 ```
 
 前提：已经有一次图形宿主构建（`build/recomp/gfx-build`，要用它的编译参数和 RmlUi、RT64、plume 静态库）和 `build/fonts` 里的字体，本地有 `rom.z64`（只读文字表）。运行时会开一个小窗口画页面，不碰存档，不会启动宿主，所以和别的会话的宿主不冲突。

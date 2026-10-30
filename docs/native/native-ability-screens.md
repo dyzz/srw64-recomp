@@ -122,7 +122,7 @@
 
 用户要求我们的页面也有这个标志。驾驶员记录 `+0x34` 是每回合行动数（`800A6238` 按能力记录 `+0xE` 的等级写成 2 或 1），能力页按它显示「这个驾驶员会二回行动」，不随本回合用没用过变化：
 
-- 场间原生驾驶员页：等级数字右边紧跟皇冠（x 117，14 宽），NEXT 标签右移 4 到 133、数值到 156，等级数值栏缩到 16 宽。高清图模式画符号字体 `SRW64Symbols.ttf` 的 U+E5B4（`build_symbol_font.py` 照 14×14 像素描的三峰皇冠，宝石挖空，金色 `#ffbd31`）；原版图模式画 `battle_assets.py` 从字库切下的皇冠（`weapon_markers.double_move`，调色板 8），两者都没有时画金色「W」徽章。快照 `pilot.double_move`、`icons`。离线排版审计（`states.json` 的驾驶员页夹具 `double_move: true`）中日英三语 0 溢出。
+- 场间原生驾驶员页：等级数字右边紧跟皇冠（x 117，14 宽），NEXT 标签右移 4 到 133、数值到 156，等级数值栏缩到 16 宽。高清图模式画用户照原版画的 W（`content/art/double-move-w.png`，裁边后按透明通道预乘缩放进 14×12 的格子，224×192；`tools/content/double_move_w.py` 生成 `src/host/double_move_w.hpp` 内嵌进程序，各平台都不用新增打包目录；`tests/test_double_move_w.py` 查头文件是否过期）；原版图模式画 `battle_assets.py` 从字库切下的皇冠（`weapon_markers.double_move`，调色板 8；运行时的 C++ ROM 导入不产这份，只有开发用的 Python 准备数据有）；没有切图时画符号字体 `SRW64Symbols.ttf` 的 U+E5B4（`build_symbol_font.py` 照 14×14 像素描的三峰皇冠，宝石挖空，金色 `#ffbd31`），都没有时画金色「W」徽章。快照 `pilot.double_move`、`icons`。离线排版审计（`states.json` 的驾驶员页夹具 `double_move: true`）中日英三语 0 溢出。
 - 地图驾驶员页（`801E6C5C` 之后，`enemy_pilot_page::reveal`，我方和敌方都画）：等级 `"%3d"` 在 (0x98, 0x46)，皇冠在 (0xB2, 0x46)，和原版一样走 `8008D0E8(…, 0x44B, …, 3)`，HD 文字层把没有名字的图标字形保留原图，所以三种语言都是原版那顶像素皇冠。句柄用页面数组里没人写的 `802271F3`。
 - 场间原版模式页（`801D2480` 末尾）：等级行没有空位（レベル 192、数值 216、NEXT 240），放在姓名行右端 (280, 40)。句柄追加到 `D_801DD568`。
 

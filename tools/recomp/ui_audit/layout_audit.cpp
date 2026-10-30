@@ -7,6 +7,7 @@
 #include "probe_surface.hpp"
 #include "localization/catalog.hpp"
 #include "presentation_settings.hpp"
+#include "presentation/image_mode.hpp"
 #include "update_check.hpp"
 #include "bug_report.hpp"
 #include "cheats.hpp"
@@ -327,6 +328,9 @@ int main(int argc,char** argv){try{
     const fs::path locales=argv[1],output=fs::absolute(argv[3]);const auto fixtures=load(argv[2]);
     const int width=std::stoi(argv[4]),height=std::stoi(argv[5]);
     fs::create_directories(output);
+    // SRW64_AUDIT_HD lays the pages out as the HD images mode draws them (pictures embedded
+    // in the host, such as the pilot page's two-actions W).
+    if(std::getenv("SRW64_AUDIT_HD"))srw64::presentation::image_mode.acknowledge(true);
     // The catalogs as the host registers them; the pages only read their UI labels.
     json data={{"schema","srw64.native-dialogue-data.v2"},{"config",{{"locale","zh-Hans"},{"font","-"}}},{"entries",json::object()},
         {"source_entries",json::object()},{"ui",json::object()},{"locale_catalogs",json::object()},{"locale_options",json::array()}};

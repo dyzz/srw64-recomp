@@ -1,7 +1,7 @@
 {
   "schema": "srw64.original-glyph-map.v1",
   "path": "reference/original-glyph-map.csv",
-  "sha256": "1a8a9e0a0b92af0660138f353f868e6df3b4bcd2ff800fb85c062ed9c5a193f5",
+  "sha256": "ef04b0d036acea845ee738fefe00ae41f9fbca0be06f30862dcaab3182fd3056",
   "source": {
     "repository": "https://github.com/snowyegret23/Localize",
     "commit": "91e0c15b76b44c302f29ddebc1c45e61f1828cd0",

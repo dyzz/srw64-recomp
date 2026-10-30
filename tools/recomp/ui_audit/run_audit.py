@@ -324,6 +324,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--sizes', default=','.join(SIZES), help='comma-separated: ' + ', '.join(SIZES))
     parser.add_argument('--only', help='regular expression on fixture names (e.g. "zh-Hans$" or "^battle")')
+    parser.add_argument('--hd', action='store_true', help='lay the pages out as the HD images mode draws them (embedded pictures)')
     parser.add_argument('--shrunk', type=float, default=0.85, metavar='SCALE',
                         help='also list text the fit class set smaller than this share of its face (default 0.85; 1 lists every shrink, 0 none)')
     args = parser.parse_args()
@@ -340,7 +341,7 @@ def main():
         path.write_text(json.dumps([{**f, 'ui_size': ui_size, 'aspect': (aspect or ['auto'])[0]} for f in all_fixtures], ensure_ascii=False))
         # Page pictures read at once (frontend.cpp image_async): the pages are captured on their first frames.
         run = subprocess.run([str(binary), str(ROOT / 'content/locales'), str(path), str(directory), str(width), str(height)],
-                             cwd=ROOT, env={'SRW64_FONT_DIR': str(ROOT / 'build/fonts'), 'PATH': '/usr/bin:/bin', 'SRW64_SYNC_PAGE_IMAGES': '1'},
+                             cwd=ROOT, env={'SRW64_FONT_DIR': str(ROOT / 'build/fonts'), 'PATH': '/usr/bin:/bin', 'SRW64_SYNC_PAGE_IMAGES': '1', **({'SRW64_AUDIT_HD': '1'} if args.hd else {})},
                              capture_output=True, text=True)
         if run.returncode:
             print(run.stderr[-2000:])
