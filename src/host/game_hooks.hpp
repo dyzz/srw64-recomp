@@ -33,6 +33,7 @@ struct SRW64GameHooks {
     // 801E2C5C (a map unit icon, sub 0) wrote [begin, end) for slot, after it was turned to
     // its side (unit_icon_facing.hpp).
     void (*unit_icon_drawn)(uint8_t*, uint32_t slot, uint32_t begin, uint32_t end){};
+    void (*unit_shadow_drawn)(uint8_t*, uint32_t begin, uint32_t end){};
     // 800964E4 (sprite mode 7: every character portrait) wrote [begin, end) for slot/sub.
     void (*portrait_drawn)(uint8_t*, uint32_t begin, uint32_t end, uint32_t slot, uint32_t sub){};
     // 80095974 is about to draw slot/sub: true when it should also be drawn one 320-pixel

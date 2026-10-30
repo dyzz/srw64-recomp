@@ -629,6 +629,9 @@ static int run_host(int argc, char** argv) {
     srw64_game_hooks.unit_icon_drawn = [](uint8_t* ram, uint32_t slot, uint32_t begin, uint32_t end) {
         srw64::unit_icons::rewrite(ram, slot, begin, end);
     };
+    srw64_game_hooks.unit_shadow_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end) {
+        srw64::unit_icons::rewrite_shadow(ram, begin, end);
+    };
     srw64_game_hooks.portrait_drawn = [](uint8_t* ram, uint32_t begin, uint32_t end, uint32_t, uint32_t) {
         // The sprite record only holds resource handles; the portrait is recognised from
         // the texture data the drawn display list points at.

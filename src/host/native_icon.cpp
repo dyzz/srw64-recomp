@@ -8,6 +8,7 @@
 #include "mod_library.hpp"
 #include "native_gpu.hpp"
 #include "native_quads.hpp"
+#include "presentation/image_mode.hpp"
 #include "unit_icon_art.hpp"
 #include "unit_icon_facing.hpp"
 #include "upgrade_rules.hpp"
@@ -16,6 +17,7 @@
 #include "stb/stb_image.h"
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <atomic>
 #include <chrono>
 #include <cstdio>
@@ -81,6 +83,23 @@ std::array<Draw, kRing> ring;
 std::mutex ring_mutex;
 uint32_t next_id = 1;
 std::atomic<uint64_t> rewritten{}, rendered{}, skipped{};
+int shadow_asset = -1;                          // the HD shadow (shadow_master), asset_mutex
+
+// The soft shadow the HD images draw under every map unit (unit_shadow.hpp): the original's
+// ellipse (columns 1-14, rows 10-15 of its 16x16) at 8x, black at the original's 0xB4 alpha
+// with an edge faded over the outer third. Made here: the HD pack carries no shadow.
+std::shared_ptr<const std::vector<uint8_t>> shadow_master() {
+    const int n = unit_icon_art::kSize;
+    std::vector<uint8_t> rgba(size_t(n) * n * 4, 0);
+    const float cx = 64.f, cy = 102.f, rx = 60.f, ry = 26.f, alpha = 0xB4;
+    for (int y = 0; y < n; ++y)
+        for (int x = 0; x < n; ++x) {
+            const float dx = (x + .5f - cx) / rx, dy = (y + .5f - cy) / ry;
+            const float t = std::clamp((1.f - std::sqrt(dx * dx + dy * dy)) / 0.35f, 0.f, 1.f);
+            rgba[(size_t(y) * n + x) * 4 + 3] = uint8_t(alpha * t * t * (3.f - 2.f * t) + .5f);
+        }
+    return std::make_shared<const std::vector<uint8_t>>(std::move(rgba));
+}
 #ifndef SRW64_GL_ONLY
 RT64::NativeMeshClassify* previous_classify{};
 RT64::NativeMeshRender* previous_render{};
@@ -317,6 +336,37 @@ void shutdown() {
 #endif
 }
 
+// The texture rectangle in [begin, end) as a marker for a native draw of `asset`, turned
+// from the way the picture looks (`drawn`) to the side's.
+static void mark(uint8_t* rdram, uint32_t begin, uint32_t end, int asset, char drawn, bool look_left) {
+    for (uint32_t p = begin + 8; p + 24 <= end; p += 8) {
+        const uint32_t w0 = guest::read(rdram, p, 4);
+        if (w0 >> 24 != 0xE4 || guest::read(rdram, p + 8, 1) != 0xE1 || guest::read(rdram, p + 16, 1) != 0xF1) continue;
+        const uint32_t w1 = guest::read(rdram, p + 4, 4);
+        Draw record;
+        unit_icon_art::Quad q;
+        if (!unit_icon_art::quad(w0, w1, guest::read(rdram, p + 12, 4), guest::read(rdram, p + 20, 4), q)) return;
+        unit_icon_art::face(q, drawn, look_left);
+        record.asset = asset;
+        std::copy(q.rect, q.rect + 4, record.rect);
+        std::copy(q.uv, q.uv + 4, record.uv);
+        record.view_left = wide_map::view_offset();
+        {
+            std::lock_guard lock(ring_mutex);
+            record.id = next_id;
+            next_id = next_id % 0xFFFF + 1;
+            ring[record.id % kRing] = record;
+        }
+        // The rectangle stays where it is as the marker, without its texture steps; the
+        // command before it (the tile's size) carries the tag.
+        guest::write32(rdram, p + 8, 0xE1000000); guest::write32(rdram, p + 12, 0);
+        guest::write32(rdram, p + 16, 0xF1000000); guest::write32(rdram, p + 20, 0x04000400);
+        guest::write32(rdram, p - 8, kTagW0); guest::write32(rdram, p - 4, kTagW1 | record.id);
+        ++rewritten;
+        return;
+    }
+}
+
 void rewrite(uint8_t* rdram, uint32_t slot, uint32_t begin, uint32_t end) {
     if (!hooks_installed || end <= begin || end - begin > 0x400) return;
     int asset = -1;
@@ -344,31 +394,25 @@ void rewrite(uint8_t* rdram, uint32_t slot, uint32_t begin, uint32_t end) {
         std::lock_guard lock(asset_mutex);
         prepare(assets[size_t(asset)]);
     }
-    for (uint32_t p = begin + 8; p + 24 <= end; p += 8) {
-        const uint32_t w0 = guest::read(rdram, p, 4);
-        if (w0 >> 24 != 0xE4 || guest::read(rdram, p + 8, 1) != 0xE1 || guest::read(rdram, p + 16, 1) != 0xF1) continue;
-        const uint32_t w1 = guest::read(rdram, p + 4, 4);
-        Draw record;
-        unit_icon_art::Quad q;
-        if (!unit_icon_art::quad(w0, w1, guest::read(rdram, p + 12, 4), guest::read(rdram, p + 20, 4), q)) return;
-        unit_icon_art::face(q, drawn, look_left);
-        record.asset = asset;
-        std::copy(q.rect, q.rect + 4, record.rect);
-        std::copy(q.uv, q.uv + 4, record.uv);
-        record.view_left = wide_map::view_offset();
-        {
-            std::lock_guard lock(ring_mutex);
-            record.id = next_id;
-            next_id = next_id % 0xFFFF + 1;
-            ring[record.id % kRing] = record;
+    mark(rdram, begin, end, asset, drawn, look_left);
+}
+
+void rewrite_shadow(uint8_t* rdram, uint32_t begin, uint32_t end) {
+    if (!hooks_installed || end <= begin || end - begin > 0x400) return;
+    if (presentation::image_mode.enabled() && presentation::image_mode.current() != 1) return;   // original images: the ROM's ellipse
+    int asset = -1;
+    {
+        std::lock_guard lock(asset_mutex);
+        if (shadow_asset < 0) {
+            if (assets.size() >= kCapacity) return;
+            Asset shadow;
+            shadow.master = shadow_master();
+            shadow_asset = int(assets.size());
+            assets.push_back(std::move(shadow));
         }
-        // The rectangle stays where it is as the marker, without its texture steps; the
-        // command before it (the tile's size) carries the tag.
-        guest::write32(rdram, p + 8, 0xE1000000); guest::write32(rdram, p + 12, 0);
-        guest::write32(rdram, p + 16, 0xF1000000); guest::write32(rdram, p + 20, 0x04000400);
-        guest::write32(rdram, p - 8, kTagW0); guest::write32(rdram, p - 4, kTagW1 | record.id);
-        ++rewritten;
-        return;
+        asset = shadow_asset;
+        prepare(assets[size_t(asset)]);
     }
+    mark(rdram, begin, end, asset, 'F', true);
 }
 }

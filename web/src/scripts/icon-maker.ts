@@ -14,10 +14,8 @@ type Entry = { unit: number; pic: Picture | null; way: Way };
 
 const ICON = 128, ICON_SIZES = [16, 32, 64, 128];
 // The three ways the game draws an icon (unit_icon_art.hpp marked; the third party is left
-// out): the player's, looking left; the enemy's, looking right with a bright and a dark ring;
-// acted, the player's grey at 85%.
+// out): the player's, looking left; the enemy's, looking right; acted, the player's grey at 85%.
 const SIDES = [{ left: true, palette: '' }, { left: false, palette: '-1011' }, { left: true, palette: '-1013' }];
-const RING = [[222, 123, 123], [156, 25, 25]];
 
 export function initIconMaker() {
   const root = document.querySelector<HTMLElement>('[data-icon-maker]');
@@ -81,19 +79,10 @@ export function initIconMaker() {
       const m = work.getContext('2d')!;
       m.imageSmoothingEnabled = false;
       m.drawImage(image, 0, 0, ICON, ICON);
-      if (mark && side > 0) {
+      if (mark && side === 2) {
         const data = m.getImageData(0, 0, ICON, ICON), p = data.data;
         if (side === 2)
           for (let i = 0; i < p.length; i += 4) p[i] = p[i + 1] = p[i + 2] = Math.min(255, Math.floor((p[i] * 0.299 + p[i + 1] * 0.587 + p[i + 2] * 0.114) * 0.85));
-        else
-          for (const tone of RING) {
-            const solid = (x: number, y: number) => x >= 0 && y >= 0 && x < ICON && y < ICON && p[(y * ICON + x) * 4 + 3] > 0;
-            const ring: number[] = [];
-            for (let y = 0; y < ICON; y++)
-              for (let x = 0; x < ICON; x++)
-                if (!solid(x, y) && (solid(x - 1, y) || solid(x + 1, y) || solid(x, y - 1) || solid(x, y + 1))) ring.push((y * ICON + x) * 4);
-            for (const i of ring) { p[i] = tone[0]; p[i + 1] = tone[1]; p[i + 2] = tone[2]; p[i + 3] = 255; }
-          }
         m.putImageData(data, 0, 0);
       }
       const g = canvas.getContext('2d')!;

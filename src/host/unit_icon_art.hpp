@@ -6,16 +6,14 @@
 
 // MOD map icons (art/icons/<unit>.png, docs/design/mod-names-art-data.md §2.3): what one
 // picture becomes. The author draws the unit once, in its own colours; like the HD-2D pack
-// (tools/hd_ai/unit_icon_imagegen.py faction_mark) the enemy and the third party get a ring
-// of their side's tones and an acted unit turns grey, so each icon is four pictures, one per
-// palette the original draws it with (1010-1013). The picture looks the way the original icon
-// does unless the package's art/icons.json says otherwise, and is turned for its side.
+// (tools/hd_ai/unit_icon_imagegen.py faction_mark) an acted unit turns grey, so each icon is
+// four pictures, one per palette the original draws it with (1010-1013). The sides carry no
+// mark: each faces its own way (unit_icon_facing.hpp). The picture looks the way the original
+// icon does unless the package's art/icons.json says otherwise, and is turned for its side.
 namespace srw64::unit_icon_art {
 constexpr int kSize = 128;                                    // the master, as the HD-2D icons
 constexpr uint32_t kIconTable = 1052024, kUnits = 363;        // u16 icon resource per unit (layout images.units)
 constexpr uint32_t kFirstPalette = 1010, kActed = 1013;       // player, enemy, third party, acted
-constexpr uint8_t kTones[2][2][3] = {{{222, 123, 123}, {156, 25, 25}},    // 1011, bright then dark
-                                     {{222, 206, 25}, {140, 132, 8}}};    // 1012
 constexpr float kActedBrightness = 0.85f;
 
 // Square pixel art at 16, 32, 64 or 128: whole multiples of the original's 16 that scale to
@@ -34,9 +32,8 @@ inline std::vector<uint8_t> master(const uint8_t* rgba, int size) {
     return out;
 }
 
-// The master as palette `index` (0-3 from 1010) draws it: as it is for the player, inside a
-// one-pixel bright ring and a dark one outside that for the enemy and the third party, grey
-// at 85% brightness once acted.
+// The master as palette `index` (0-3 from 1010) draws it: as it is for every side, grey at
+// 85% brightness once acted.
 inline std::vector<uint8_t> marked(std::vector<uint8_t> rgba, unsigned index) {
     const size_t n = size_t(kSize) * kSize;
     if (index == kActed - kFirstPalette) {
@@ -45,18 +42,6 @@ inline std::vector<uint8_t> marked(std::vector<uint8_t> rgba, unsigned index) {
             const uint8_t g = uint8_t(grey > 255.f ? 255.f : grey);
             rgba[i * 4] = rgba[i * 4 + 1] = rgba[i * 4 + 2] = g;
         }
-        return rgba;
-    }
-    if (index != 1 && index != 2) return rgba;
-    for (const auto& tone : kTones[index - 1]) {
-        // Transparent pixels beside a solid one (4-neighbourhood), all found before any is painted.
-        std::vector<uint8_t> ring(n);
-        const auto solid = [&](int x, int y) { return x >= 0 && y >= 0 && x < kSize && y < kSize && rgba[(size_t(y) * kSize + x) * 4 + 3] > 0; };
-        for (int y = 0; y < kSize; ++y)
-            for (int x = 0; x < kSize; ++x)
-                ring[size_t(y) * kSize + x] = !solid(x, y) && (solid(x - 1, y) || solid(x + 1, y) || solid(x, y - 1) || solid(x, y + 1));
-        for (size_t i = 0; i < n; ++i)
-            if (ring[i]) { rgba[i * 4] = tone[0]; rgba[i * 4 + 1] = tone[1]; rgba[i * 4 + 2] = tone[2]; rgba[i * 4 + 3] = 255; }
     }
     return rgba;
 }

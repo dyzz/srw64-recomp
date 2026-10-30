@@ -14,4 +14,8 @@ void shutdown();
 // Game thread: the icon drawer wrote [begin, end) for sprite slot `slot`, sub 0, after
 // unit_icon_facing::after_draw turned it.
 void rewrite(uint8_t* rdram, uint32_t slot, uint32_t begin, uint32_t end);
+// Game thread: the drawer wrote a unit's shadow (sub 1) into [begin, end), after
+// unit_shadow::after_draw moved a ground unit's. With the HD images it is drawn as a soft
+// ellipse made here (no HD pack texture); the original images keep the ROM's.
+void rewrite_shadow(uint8_t* rdram, uint32_t begin, uint32_t end);
 }

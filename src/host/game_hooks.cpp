@@ -24,6 +24,7 @@
 #include "wide_map.hpp"
 #include "menu_widen.hpp"
 #include "unit_icon_facing.hpp"
+#include "unit_shadow.hpp"
 #include "map_miss.hpp"
 #include "ui_text.hpp"
 #include "game_speed.hpp"
@@ -119,8 +120,12 @@ void srw64_render_node(uint8_t* rdram,recomp_context* ctx,int32_t function,int32
     const uint32_t begin=MEM_W(0,cursor);
     LOOKUP_FUNC(function)(rdram,ctx);
     srw64::unit_icon_facing::after_draw(rdram,uint32_t(function),slot,sub,begin,MEM_W(0,cursor));   // icons face their side
+    srw64::unit_shadow::after_draw(rdram,uint32_t(function),slot,sub,begin,MEM_W(0,cursor));   // ground units' shadows show
     if(uint32_t(function)==srw64::unit_icon_facing::kIconDrawer && sub==0 && slot>=0 && srw64_game_hooks.unit_icon_drawn)
         srw64_game_hooks.unit_icon_drawn(rdram,uint32_t(slot),begin,MEM_W(0,cursor));   // MOD icons (native_icon.hpp)
+    if(uint32_t(function)==srw64::unit_shadow::kIconDrawer && sub==int32_t(srw64::unit_shadow::kShadowSub) &&
+       slot>=int32_t(srw64::unit_shadow::kFirstUnitSlot) && slot<=int32_t(srw64::unit_shadow::kLastUnitSlot) && srw64_game_hooks.unit_shadow_drawn)
+        srw64_game_hooks.unit_shadow_drawn(rdram,begin,MEM_W(0,cursor));   // the HD images' soft shadow (native_icon.hpp)
     srw64::menu_widen::callback_drawn(rdram,uint32_t(function),begin,MEM_W(0,cursor));   // the widened menus' fills
     if(wide)srw64_game_hooks.map_space_end(rdram,cursor);
     else srw64::battle_hud::after_draw(rdram,cursor,uint32_t(function),slot,sub,begin);
@@ -138,6 +143,7 @@ void resident_func_80080A14(uint8_t* ram,recomp_context* ctx) {
 // hang showed the same locks. So the page frame hooks below take theirs only when free.
 void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     srw64_original_frame_boundary(ram,ctx);
+    srw64::unit_shadow::frame(ram);   // ground units' shadows show (unit_shadow.hpp)
     if(srw64_game_hooks.frame_start)srw64_game_hooks.frame_start(ram);
     if(srw64_game_hooks.presentation_step)srw64_game_hooks.presentation_step(ram);
     if(srw64_game_hooks.intermission_frame)srw64_game_hooks.intermission_frame(ram);

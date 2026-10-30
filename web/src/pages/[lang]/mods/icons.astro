@@ -16,9 +16,9 @@ const lang = Astro.params.lang as Lang;
 const L = <T,>(v: { zh: T; en: T; ja: T }) => v[tl(lang)];
 const title = { zh: '地图图标 MOD 制作', en: 'Map icon mod maker', ja: 'マップアイコン MOD メーカー' };
 const lead = {
-  zh: '换掉战术地图上的机体图标：选一台机体，选一张像素画，导出 .srw64mod 拖进游戏窗口即可安装。敌方的红色描边、行动后变灰由游戏自动加上，不论图片设为原版还是 HD 都显示。',
-  en: 'Replace the units’ icons on the battle map: pick a unit, choose a pixel-art picture and drag the exported .srw64mod into the game window to install it. The game adds the enemy’s red ring and the grey once acted, and shows it with the images set to original or HD.',
-  ja: '戦闘マップのユニットアイコンを差し替えます。ユニットとドット絵を選び、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。敵の赤いふちと行動済みのグレーはゲームが付け、画像が原作でも HD でも表示されます。',
+  zh: '换掉战术地图上的机体图标：选一台机体，选一张像素画，导出 .srw64mod 拖进游戏窗口即可安装。我方朝左、敌方朝右、行动后变灰都由游戏自动处理，不论图片设为原版还是 HD 都显示。',
+  en: 'Replace the units’ icons on the battle map: pick a unit, choose a pixel-art picture and drag the exported .srw64mod into the game window to install it. The game turns it to face left for your side and right for the enemy and greys it once acted, and shows it with the images set to original or HD.',
+  ja: '戦闘マップのユニットアイコンを差し替えます。ユニットとドット絵を選び、書き出した .srw64mod をゲームのウィンドウにドラッグしてインストールします。味方は左向き・敵は右向きにする向きの反転と行動済みのグレーはゲームが行い、画像が原作でも HD でも表示されます。',
 };
 const text = {
   ...packageText(lang),

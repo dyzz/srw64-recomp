@@ -24,15 +24,10 @@ int main() {
     check(master.size()==size_t(128*128*4),"the master is 128x128");
     check(at(master,40,56)[0]==200 && at(master,47,63)[3]==255 && at(master,48,56)[3]==0 && at(master,39,63)[3]==0,"each pixel fills its 8x8 block");
 
-    // The player's variant is the master; the enemy's has a bright ring and a dark one outside it.
+    // Every side's variant is the master: the sides are told apart by the way they face.
     check(unit_icon_art::marked(master,0)==master,"the player's icon is as drawn");
     const auto enemy=unit_icon_art::marked(master,1);
-    check(at(enemy,40,56)[0]==200,"the sprite keeps its colours");
-    check(at(enemy,39,58)[0]==222 && at(enemy,39,58)[1]==123 && at(enemy,39,58)[3]==255,"one bright pixel beside it");
-    check(at(enemy,38,58)[0]==156 && at(enemy,38,58)[1]==25,"one dark pixel beyond");
-    check(at(enemy,37,58)[3]==0 && at(enemy,39,55)[0]==156 && at(enemy,39,54)[3]==0,"nothing further; the corner is dark only");
-    const auto third=unit_icon_art::marked(master,2);
-    check(at(third,48,60)[0]==222 && at(third,48,60)[1]==206 && at(third,49,60)[0]==140,"the third party's tones");
+    check(enemy==master && unit_icon_art::marked(master,2)==master,"the enemy and the third party carry no ring");
     // Acted: grey at 85%, transparency kept.
     const auto acted=unit_icon_art::marked(master,3);
     const int grey=int((200*0.299f+100*0.587f+50*0.114f)*0.85f);
