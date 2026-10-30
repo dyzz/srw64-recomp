@@ -10,9 +10,9 @@
 // icon is made, 801C61D8 and 801E04DC), and its head would cover it anyway.
 //
 // - A unit on the ground gets its own silhouette as a shadow, as in the later games: before
-//   the icon's texture rectangle the same rectangle is drawn once more in black at 45% of the
-//   icon's alpha, squashed to half its height against its bottom edge and a little lower, so
-//   it hugs the picture's outline. It samples the same texture, so original and HD images
+//   the icon's texture rectangle the same rectangle is drawn once more in black at 60% of the
+//   icon's alpha, squashed to half its height against its bottom edge, so it hugs the
+//   picture's outline. It samples the same texture, so original and HD images
 //   (RT64 replaces the texture by hash) and the facing (unit_icon_facing.hpp, applied first)
 //   all carry over; native_icon.cpp draws a MOD icon's from its own picture.
 // - A flying unit keeps the original's ellipse at the original's 70%, moved up two pixels
@@ -21,7 +21,7 @@ namespace srw64::unit_shadow {
 constexpr uint32_t kIconDrawer = 0x801E2C5C, kIconSub = 0, kShadowSub = 1;
 constexpr uint32_t kSlotHeads = 0x800FFA70, kSlotSize = 0xC4;   // +0xC the height above the ground, f32
 constexpr uint32_t kFirstUnitSlot = 0x42, kLastUnitSlot = 0x9B;
-constexpr uint32_t kGroundAlpha = 0x73;   // of 255: 45%
+constexpr uint32_t kGroundAlpha = 0x99;   // of 255: 60%
 constexpr int32_t kAirRaise = 2;          // pixels of a 16-pixel tile the flying unit's shadow moves up
 // 801E2734's combiner: colour and alpha TEXEL0 x PRIM (1 cycle). The silhouette takes 0 as
 // its colour inputs a (both cycles): black, the alpha unchanged.
@@ -77,12 +77,14 @@ inline void after_draw(uint8_t* ram, uint32_t function, int32_t slot, int32_t su
     }
     if(!prim0 || !combine)return;   // not the drawer's usual list: as drawn
     // The silhouette: the lower half of the tile (squashed to half its height, DtDy doubled),
-    // ending 1.25 pixels below the icon.
-    const int32_t down = tall * 5 / 64;
-    const int32_t top = uly + tall / 2 + down, bottom = lry + down;
-    if(bottom > 0xFFF)return;
+    // ending with the icon. T stops a texel short of the tile's end: the last rows would
+    // otherwise filter into the wrapped first row (the top of the picture) and draw a line
+    // under the shadow.
+    const int32_t top = uly + tall / 2, bottom = lry;
     const uint32_t st = guest::read(ram, p + 12, 4), steps = guest::read(ram, p + 20, 4);
-    const int32_t dtdy = int16_t(steps & 0xFFFF) * 2;
+    const int32_t texels = tall * int16_t(steps & 0xFFFF) / (4 * 1024);
+    if(texels < 2)return;
+    const int32_t dtdy = int16_t(steps & 0xFFFF) * 2 * (texels - 1) / texels;
     if(dtdy <= 0 || dtdy > 0x7FFF)return;
     const uint32_t alpha = (prim1 & 0xFF) * kGroundAlpha / 0xFF;
     const uint32_t words[kInserted / 4] = {
