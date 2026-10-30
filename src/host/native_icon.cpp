@@ -11,6 +11,7 @@
 #include "presentation/image_mode.hpp"
 #include "unit_icon_art.hpp"
 #include "unit_icon_facing.hpp"
+#include "unit_shadow.hpp"
 #include "upgrade_rules.hpp"
 #include "wide_map.hpp"
 #include "json/json.hpp"
@@ -67,6 +68,7 @@ struct Draw {
     int asset = -1;
     float rect[4]{}, uv[4]{};
     float view_left = -1;                       // the widened map view's x = 0 (wide_map.hpp)
+    float shadow = 0;                           // > 0: drawn black at this alpha, a silhouette (unit_shadow.hpp)
 };
 
 // Reserved once and never reallocated: draws on other threads index it while pictures join
@@ -241,7 +243,8 @@ bool gl_quads(uint32_t id, std::vector<native_quads::Quad>& out) {
     std::copy(draw.rect, draw.rect + 4, q.rect);
     std::copy(draw.uv, draw.uv + 4, q.uv);
     q.left = draw.view_left;
-    q.label = "unit icon";
+    if (draw.shadow > 0) { q.fill[3] = 1; q.color[3] = draw.shadow; }   // a black silhouette
+    q.label = draw.shadow > 0 ? "unit shadow" : "unit icon";
     out.push_back(std::move(q));
     ++rendered;
     return true;
@@ -290,6 +293,7 @@ bool render(plume::RenderCommandList* list, plume::RenderFramebuffer* framebuffe
     struct { float rect[4], uv[4], resolution[4], fill[4]; } u{};
     std::copy(draw.rect, draw.rect + 4, u.rect);
     std::copy(draw.uv, draw.uv + 4, u.uv);
+    if (draw.shadow > 0) u.fill[3] = draw.shadow;   // black, at this alpha (HdPortraitPS)
     gpu::frame_resolution(call, u.resolution);
     // In the widened view (wide_map.hpp) the map's x = 0 sits at the view's left edge.
     if (draw.view_left >= 0) u.resolution[3] = draw.view_left;
@@ -338,33 +342,40 @@ void shutdown() {
 
 // The texture rectangle in [begin, end) as a marker for a native draw of `asset`, turned
 // from the way the picture looks (`drawn`) to the side's.
-static void mark(uint8_t* rdram, uint32_t begin, uint32_t end, int asset, char drawn, bool look_left) {
-    for (uint32_t p = begin + 8; p + 24 <= end; p += 8) {
-        const uint32_t w0 = guest::read(rdram, p, 4);
-        if (w0 >> 24 != 0xE4 || guest::read(rdram, p + 8, 1) != 0xE1 || guest::read(rdram, p + 16, 1) != 0xF1) continue;
-        const uint32_t w1 = guest::read(rdram, p + 4, 4);
-        Draw record;
-        unit_icon_art::Quad q;
-        if (!unit_icon_art::quad(w0, w1, guest::read(rdram, p + 12, 4), guest::read(rdram, p + 20, 4), q)) return;
-        unit_icon_art::face(q, drawn, look_left);
-        record.asset = asset;
-        std::copy(q.rect, q.rect + 4, record.rect);
-        std::copy(q.uv, q.uv + 4, record.uv);
-        record.view_left = wide_map::view_offset();
-        {
-            std::lock_guard lock(ring_mutex);
-            record.id = next_id;
-            next_id = next_id % 0xFFFF + 1;
-            ring[record.id % kRing] = record;
-        }
-        // The rectangle stays where it is as the marker, without its texture steps; the
-        // command before it (the tile's size) carries the tag.
-        guest::write32(rdram, p + 8, 0xE1000000); guest::write32(rdram, p + 12, 0);
-        guest::write32(rdram, p + 16, 0xF1000000); guest::write32(rdram, p + 20, 0x04000400);
-        guest::write32(rdram, p - 8, kTagW0); guest::write32(rdram, p - 4, kTagW1 | record.id);
-        ++rewritten;
-        return;
+// The texture rectangle at p (E4, E1, F1) as a marker for a native draw of `asset`, turned from
+// the way the picture looks (`drawn`) to the side's; `shadow` > 0 draws it as a black silhouette.
+static void mark(uint8_t* rdram, uint32_t p, int asset, char drawn, bool look_left, float shadow) {
+    const uint32_t w0 = guest::read(rdram, p, 4), w1 = guest::read(rdram, p + 4, 4);
+    Draw record;
+    unit_icon_art::Quad q;
+    if (!unit_icon_art::quad(w0, w1, guest::read(rdram, p + 12, 4), guest::read(rdram, p + 20, 4), q)) return;
+    unit_icon_art::face(q, drawn, look_left);
+    record.asset = asset;
+    record.shadow = shadow;
+    std::copy(q.rect, q.rect + 4, record.rect);
+    std::copy(q.uv, q.uv + 4, record.uv);
+    record.view_left = wide_map::view_offset();
+    {
+        std::lock_guard lock(ring_mutex);
+        record.id = next_id;
+        next_id = next_id % 0xFFFF + 1;
+        ring[record.id % kRing] = record;
     }
+    // The rectangle stays where it is as the marker, without its texture steps; the command
+    // before it (the tile's size, or the inserted shadow's combiner) carries the tag.
+    guest::write32(rdram, p + 8, 0xE1000000); guest::write32(rdram, p + 12, 0);
+    guest::write32(rdram, p + 16, 0xF1000000); guest::write32(rdram, p + 20, 0x04000400);
+    guest::write32(rdram, p - 8, kTagW0); guest::write32(rdram, p - 4, kTagW1 | record.id);
+    ++rewritten;
+}
+
+// The texture rectangles in [begin, end): the icon's is the last, a ground unit's silhouette
+// shadow (unit_shadow.hpp) the one before it.
+static std::vector<uint32_t> rectangles(const uint8_t* rdram, uint32_t begin, uint32_t end) {
+    std::vector<uint32_t> found;
+    for (uint32_t p = begin + 8; p + 24 <= end; p += 8)
+        if (guest::read(rdram, p, 1) == 0xE4 && guest::read(rdram, p + 8, 1) == 0xE1 && guest::read(rdram, p + 16, 1) == 0xF1) found.push_back(p);
+    return found;
 }
 
 void rewrite(uint8_t* rdram, uint32_t slot, uint32_t begin, uint32_t end) {
@@ -394,7 +405,10 @@ void rewrite(uint8_t* rdram, uint32_t slot, uint32_t begin, uint32_t end) {
         std::lock_guard lock(asset_mutex);
         prepare(assets[size_t(asset)]);
     }
-    mark(rdram, begin, end, asset, drawn, look_left);
+    const auto found = rectangles(rdram, begin, end);
+    if (found.empty()) return;
+    if (found.size() > 1) mark(rdram, found[found.size() - 2], asset, drawn, look_left, float(unit_shadow::kGroundAlpha) / 255.f);
+    mark(rdram, found.back(), asset, drawn, look_left, 0);
 }
 
 void rewrite_shadow(uint8_t* rdram, uint32_t begin, uint32_t end) {
@@ -413,6 +427,7 @@ void rewrite_shadow(uint8_t* rdram, uint32_t begin, uint32_t end) {
         asset = shadow_asset;
         prepare(assets[size_t(asset)]);
     }
-    mark(rdram, begin, end, asset, 'F', true);
+    const auto found = rectangles(rdram, begin, end);
+    if (!found.empty()) mark(rdram, found.back(), asset, 'F', true, 0);
 }
 }
