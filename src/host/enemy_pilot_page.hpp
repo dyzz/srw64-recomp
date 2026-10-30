@@ -38,13 +38,13 @@ inline constexpr uint32_t handle_levels=0x802271FD;
 // A:サブパイロット (0xE6, 0x14) leaves room.
 inline constexpr uint32_t handle_kills=0x80227203;
 // The 二回行動 crown (text 0x44B, ROM glyph 1460) right after the level, which the page
-// prints "%3d" at (0x98, 0x46): the map's unit window (801CB4D0) draws it there with the
+// prints "%3d" at (0x98, 0x56), under 気力 at 0x46: the map's unit window (801CB4D0) draws it there with the
 // engine's palette 3 (resource 8: gold) while the pilot has two actions left this phase;
 // this page shows the pilot who has two a phase (+0x34, user, 2026-10-30). The slot is one
 // of 802271F3..FC, which no page of the overlay writes (801E6C5C frees the whole array).
 inline constexpr uint32_t handle_crown=0x802271F3;
 inline constexpr uint16_t text_crown=0x44B;
-inline constexpr unsigned crown_x=0xB2,crown_y=0x46,palette_crown=3;
+inline constexpr unsigned crown_x=0xB2,crown_y=0x56,palette_crown=3;
 // Palettes of the text engine (ui_text.cpp kPaletteHandles): 0 white, 1 the grey of a
 // spirit short of SP, 2 the dark grey of resource 4, 5 a yellow ramp like 0's white (e0b818
 // down), which the levels take when the ROM's font draws them. 3 is no text colour: its

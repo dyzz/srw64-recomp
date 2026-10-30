@@ -48,6 +48,9 @@ constexpr uint32_t kScriptHandler = 0x8015F950 + 0x948 + 0x30, kChoiceHandler = 
 constexpr int kChoiceBarEnd = 177;
 constexpr uint16_t kLongDash = 0xD3;   // ー: the minus sign of printed numbers
 constexpr uint16_t kWaveDash = 0xDA;   // ～: between a weapon's least and greatest range
+// The 二回行動 crown (text 0x44B): the glyph map names it Ｗ, but it is the picture the map's
+// unit window and the pilot pages draw beside the level, and stays the original's.
+constexpr uint16_t kCrown = 0x5B4;
 // The minus as the font has it: as wide as its plus, where the hyphen is narrower and sits
 // off its digits ("- 10" under "+20" in a weapon list's 命中 column).
 constexpr const char* kMinus = "\u2212";
@@ -327,7 +330,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             const int width = code == 0 || code < kWideFirst ? kNarrow : kWide;
             // A glyph neither the map nor the symbol font names (map icons) stays original.
             const std::string name = dialogue::glyph_string(code);
-            if (code) l.cells.push_back({cx, cy, width, code, icon(code).empty() && (name.empty() || name.rfind("〔", 0) == 0)});
+            if (code) l.cells.push_back({cx, cy, width, code, icon(code).empty() && (name.empty() || name.rfind("〔", 0) == 0 || code == kCrown)});
             cx += width;
         }
         if (l.cells.size() != l.record->rects.size() || !at(ram, l.record->rects.front(), l.cells.front().x, l.cells.front().y)) {
