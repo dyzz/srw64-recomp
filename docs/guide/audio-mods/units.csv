@@ -70,8 +70,8 @@ unit,name_ja,name_zh,name_en,battle_song
 68,メタス改(MA),梅塔斯改（MA）,Methuss Kai (MA),3
 69,ラー・カイラム,拉·凯拉姆,Ra Cailum,7
 70,ラビアンローズ,玫瑰人生号,La Vie en Rose,3
-71,リ・ガズィ,灵格斯,Re-GZ,7
-72,リ・ガズィ(BWS),灵格斯（BWS）,Re-GZ (BWS),7
+71,リ・ガズィ,灵·格斯,Re-GZ,7
+72,リ・ガズィ(BWS),灵·格斯（BWS）,Re-GZ (BWS),7
 73,百式,百式,Hyaku-Shiki,2
 74,ガンダムEz8,高达Ez8,Gundam Ez8,1
 75,GP02Aサイサリス,GP02A酸浆果,GP02A Physalis,5
@@ -161,10 +161,10 @@ unit,name_ja,name_zh,name_en,battle_song
 159,グレンダイザー(WS),古连泰沙（WS）,Grendizer (WS),17
 160,グレンダイザー(DS),古连泰沙（DS）,Grendizer (DS),17
 161,グレンダイザー(MS),古连泰沙（MS）,Grendizer (MS),17
-162,スペイザー,飞天神机,Spazer,17
-163,ダブルスペイザー,双重飞天神机,Double Spazer,17
-164,ドリルスペイザー,钻头飞天神机,Drill Spazer,17
-165,マリンスペイザー,海洋飞天神机,Marine Spazer,17
+162,スペイザー,斯派扎,Spazer,17
+163,ダブルスペイザー,双重斯派扎,Double Spazer,17
+164,ドリルスペイザー,钻头斯派扎,Drill Spazer,17
+165,マリンスペイザー,海洋斯派扎,Marine Spazer,17
 166,円盤獣ギルギル,飞碟兽吉尔吉尔,Saucer Beast Gilgil,17
 167,ベガ獣キングゴリ,贝加兽大金刚,Vega Beast Kinggori,17
 168,円盤獣ゴスゴス,飞碟兽戈斯戈斯,Saucer Beast Gosgos,17
@@ -201,11 +201,11 @@ unit,name_ja,name_zh,name_en,battle_song
 199,バトルジェット,战斗喷射机,Battle Jet,20
 200,バトルタンク,战斗坦克,Battle Tank,20
 201,バトルマリン,战斗潜艇,Battle Marine,20
-202,ザンバード,赞伯德,Zambird,19
-203,ザンブル,赞布尔,Zambull,19
+202,ザンバード,赞波鸟,Zambird,19
+203,ザンブル,赞波牛,Zambull,19
 204,ザンベース,赞贝斯,Zambase,19
-205,ザンボエース,赞波王牌,Zambo-Ace,19
-206,ザンボット3,赞波3,Zambot 3,19
+205,ザンボエース,赞波ACE,Zambo-Ace,19
+206,ザンボット3,赞波特3,Zambot 3,19
 207,ジャイアント・ロボ,大铁人,Giant Robo,25
 208,銀鈴ロボTYPE1,银铃机器人TYPE1,Ginrei Robo TYPE1,25
 209,銀鈴ロボTYPE2,银铃机器人TYPE2,Ginrei Robo TYPE2,25
@@ -216,7 +216,7 @@ unit,name_ja,name_zh,name_en,battle_song
 214,ビックゴールド,大金,Big Gold,25
 215,維新竜・暁,维新龙·晓,Ishinryu Akatsuki,25
 216,ダイターン3,泰坦3,Daitarn 3,18
-217,ダイタンク,泰坦坦克,Daitank,18
+217,ダイタンク,泰坦战车,Daitank,18
 218,ダイファイター,泰坦战机,Daifighter,18
 219,イーグルファイター,鹰战机,Eagle Fighter,22
 220,イーグルファイターA,鹰战机A,Eagle Fighter A,22
@@ -251,7 +251,7 @@ unit,name_ja,name_zh,name_en,battle_song
 249,ボチューン,波丘恩,Botune,6
 250,バストール,巴斯托尔,Bastole,6
 251,ウィル・ウィプス,威尔·维普斯,Will-Wips,6
-252,ガラバ,卡拉巴,Gallaba,6
+252,ガラバ,加拉巴,Gallaba,6
 253,スプリガン,斯普利冈,Spriggan,6
 254,ズワァース,兹瓦斯,Zwarth,6
 255,ドラムロ,德拉姆洛,Drumlo,6
@@ -340,13 +340,13 @@ unit,name_ja,name_zh,name_en,battle_song
 338,ギャンドーラ,甘多拉,Gandora,23
 339,ドール,多尔,Doll,12
 340,ドール(飛行),多尔（飞行）,Doll (Flight),12
-341,リ・ガズィ(BWS),灵格斯（BWS）,Re-GZ (BWS),7
-342,リ・ガズィ,灵格斯,Re-GZ,7
+341,リ・ガズィ(BWS),灵·格斯（BWS）,Re-GZ (BWS),7
+342,リ・ガズィ,灵·格斯,Re-GZ,7
 343,ガンダムmkⅡ,高达Mk-Ⅱ,Gundam Mk-II,2
 344,バストール,巴斯托尔,Bastole,6
 345,シュツルム・ディアス,疾风迪亚斯,Schuzrum-Dias,3
 346,シュツルム・ディアス,疾风迪亚斯,Schuzrum-Dias,3
-347,ハイパーガラバ,超级卡拉巴,Hyper Gallaba,6
+347,ハイパーガラバ,超级加拉巴,Hyper Gallaba,6
 348,ハイパーズワァース,超级兹瓦斯,Hyper Zwarth,6
 349,ハイパーライネック,超级莱内克,Hyper Wryneck,6
 350,ハイパーレプラカーン,超级莱普拉康,Hyper Leprechaun,6

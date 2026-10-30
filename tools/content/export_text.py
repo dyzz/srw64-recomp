@@ -39,6 +39,8 @@ def load_locales() -> dict[str, dict]:
     result = {}
     for path in sorted((ROOT / "content/locales").glob("*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
+        if "locale" not in doc:  # library-names.json and other non-locale tables
+            continue
         result[doc["locale"]] = {"entries": {e["key"]: e["target"] for e in doc.get("entries", [])},
                                  "ui": doc.get("ui", {})}
     return result

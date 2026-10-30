@@ -45,14 +45,14 @@ pilot,name_ja,name_zh,name_en,battle_song,voice_part,battle_lines
 43,シロー,士郎,Shiro,1,33,56
 44,セイラ,塞拉,Sayla,1,,0
 45,ファ,花,Fa,2,34,38
-46,ブライト,布莱特,Bright,7,35,67
+46,ブライト,布莱德,Bright,7,35,67
 47,ブレックス,布雷克斯,Blex,2,,0
 48,ベルトーチカ,贝托蒂嘉,Beltorchika,2,,0
-49,ヘンケン,汉肯,Henken,2,36,32
+49,ヘンケン,亨肯,Henken,2,36,32
 50,ルー,露,Roux,3,37,52
 51,アイナ,爱娜,Aina,1,38,29
 52,ガトー,卡多,Gato,5,39,62
-53,エマ,艾玛,Emma,2,40,37
+53,エマ,爱玛,Emma,2,40,37
 54,プル,普露,Ple,3,41,32
 55,クェス,葵丝,Quess,7,42,61
 56,フォウ,凤,Four,2,43,39
@@ -116,7 +116,7 @@ pilot,name_ja,name_zh,name_en,battle_song,voice_part,battle_lines
 114,ひかる,光,Hikaru,17,92,94
 115,キリカ,基里卡,Kirika,17,93,73
 116,ナイーダ,娜伊达,Naida,17,94,84
-117,ガンダル,甘达尔,Gandal,17,95,58
+117,ガンダル,卡达尔,Gandal,17,95,58
 118,ゴーマン,戈曼,Gorman,17,96,33
 119,ブラッキー,布拉奇,Blacky,17,97,46
 120,ベンケイ,弁庆,Benkei,14,98,49
@@ -124,7 +124,7 @@ pilot,name_ja,name_zh,name_en,battle_song,voice_part,battle_lines
 122,早乙女博士,早乙女博士,Dr. Saotome,14,,0
 123,ムサシ,武藏,Musashi,14,100,33
 124,リョウ,龙马,Ryoma,14,101,124
-125,グラー博士,格拉博士,Dr. Gura,14,102,27
+125,グラー博士,古拉博士,Dr. Gura,14,102,27
 126,ブライ大帝,布莱大帝,Emperor Burai,14,103,37
 127,牛餓鬼,牛饿鬼,Gyugaki,14,104,21
 128,牛剣鬼,牛剑鬼,Gyukenki,14,105,26
@@ -162,7 +162,7 @@ pilot,name_ja,name_zh,name_en,battle_song,voice_part,battle_lines
 160,孔明,孔明,Komei,25,,0
 161,アルベルト,阿尔伯特,Alberto,25,135,32
 162,ギャリソン,加里森,Garrison,18,,0
-163,ビューティ,比优蒂,Beauty,18,,0
+163,ビューティ,碧尤蒂,Beauty,18,,0
 164,レイカ,丽香,Reika,18,,0
 165,万丈,万丈,Banjo,18,136,63
 166,アラン,阿兰,Alan,22,137,31
@@ -199,7 +199,7 @@ pilot,name_ja,name_zh,name_en,battle_song,voice_part,battle_lines
 197,さやか,沙也加,Sayaka,15,166,123
 198,弓教授,弓教授,Prof. Yumi,15,,0
 199,エリカ,艾莉卡,Erika,15,167,71
-200,アーサー,亚瑟,Arthur,12,,0
+200,アーサー,阿瑟,Arthur,12,,0
 201,エイジ,英二,Eiji,12,168,60
 202,アンナ,安娜,Anna,12,,0
 203,エリザベス,伊丽莎白,Elizabeth,12,,0
@@ -264,7 +264,7 @@ pilot,name_ja,name_zh,name_en,battle_song,voice_part,battle_lines
 262,アムロ,阿姆罗,Amuro,7,213,64
 263,カミーユ,卡缪,Kamille,2,214,43
 264,ファ,花,Fa,2,215,9
-265,エマ,艾玛,Emma,2,216,37
+265,エマ,爱玛,Emma,2,216,37
 266,ヒルデ,希尔妲,Hilde,8,217,32
 267,リリーナ,莉莉娜,Relena,8,,0
 268,トロワ,特洛瓦,Trowa,8,218,38
