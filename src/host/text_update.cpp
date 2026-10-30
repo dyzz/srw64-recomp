@@ -20,10 +20,13 @@ namespace srw64::text_update {
 namespace {
 namespace fs = std::filesystem;
 using json = nlohmann::json;
-constexpr const char* kSchema = "srw64.text-pack.v1";
-// A pack is the text that changed, tens of KB; every dialogue file in three languages,
-// zipped, is about 5 MB. Unpacked, about 30 MB.
-constexpr uint64_t kPackLimit = 16u << 20, kUnpackedLimit = 64u << 20;
+constexpr const char* kSchema = "srw64.text-update.v1";
+// The list names every text file: about 1200, 30 MB, 10 MB compressed.
+constexpr size_t kListLimit = 4u << 20, kFileLimit = 16u << 20;
+constexpr uint64_t kUnpackedLimit = 64u << 20;
+constexpr size_t kHashDigits = 12;  // build_text_update.py HASH_DIGITS
+// Where a download is put together, kept when it stops half way.
+constexpr const char* kStaging = ".staging";
 struct Shared {
     std::mutex mutex;
     std::string version;
@@ -31,6 +34,7 @@ struct Shared {
     std::optional<Pack> pack;
     std::shared_ptr<const Layer> layer;
     bool bypassed = false, running = false;
+    int seen = 0;  // the newest list read that had nothing for this release
     State state = State::None;
     std::string error;
     uint64_t serial = 1;
@@ -42,25 +46,68 @@ Shared& shared() {
 json read_json(const fs::path& path, size_t limit) {
     return json::parse(app::read_text(path, limit), nullptr, false);
 }
-// The pack in `dir` as its text.json says, every file's digest checked. Throws.
+std::string hash_of(std::string_view data) {
+    app::Sha256 digest;
+    digest.update({reinterpret_cast<const uint8_t*>(data.data()), data.size()});
+    return digest.finish().substr(0, kHashDigits);
+}
+std::vector<int> version_parts(const std::string& version) {
+    std::vector<int> parts;
+    for (size_t at = 0; at <= version.size();) {
+        const auto dot = std::min(version.find('.', at), version.size());
+        const auto part = version.substr(at, dot - at);
+        if (part.empty() || part.size() > 6 || !std::all_of(part.begin(), part.end(), [](char c) { return c >= '0' && c <= '9'; })) return {};
+        parts.push_back(std::stoi(part));
+        at = dot + 1;
+    }
+    return parts;
+}
+// Only the paths a list has (build_text_update.py), no others.
+bool allowed(const std::string& name) {
+    static const std::regex paths(R"((library-names\.json|locales/[A-Za-z-]{2,16}\.json|dialogue/[A-Za-z-]{2,16}/[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)*\.txt))");
+    return std::regex_match(name, paths);
+}
+struct Wanted { std::string hash; uint64_t bytes; };
+// The list's files, or none when this program is newer than the list's `release` (it ships
+// newer text than the list has). Throws when the list is not one.
+std::map<std::string, Wanted> wanted(const json& list, const std::string& version) {
+    if (!list.is_object() || list.value("schema", "") != kSchema || list.value("revision", 0) <= 0) throw std::runtime_error("not a text update list");
+    const auto mine = version_parts(version), release = version_parts(list.value("release", ""));
+    const auto& files = list.value("files", json::object());
+    if (mine.empty() || release.empty() || !files.is_object()) throw std::runtime_error("not a text update list");
+    std::map<std::string, Wanted> found;
+    if (mine > release) return found;
+    uint64_t total = 0;
+    for (const auto& [name, row] : files.items()) {
+        if (!row.is_object() || !allowed(name)) throw std::runtime_error("the text update lists " + name);
+        const auto hash = row.value("hash", "");
+        const auto bytes = row.value("bytes", uint64_t(0));
+        if (hash.size() != kHashDigits || bytes > kFileLimit) throw std::runtime_error("the text update lists " + name + " wrongly");
+        if ((total += bytes) > kUnpackedLimit) throw std::runtime_error("the text update is too large");
+        found[name] = {hash, bytes};
+    }
+    return found;
+}
+// The update in `dir` as its text.json says: every file it lists is there with its hash, and
+// nothing else (a file the list does not name is removed). Throws.
 Pack describe(const fs::path& dir, const std::string& version, int revision) {
-    const auto about = read_json(dir / "text.json", 1u << 20);
-    if (!about.is_object() || about.value("schema", "") != kSchema) throw std::runtime_error("not a text pack");
-    if (about.value("base", "") != version) throw std::runtime_error("a text pack for " + about.value("base", "another release"));
-    const auto found = about.value("revision", 0);
-    if (found <= 0 || (revision && found != revision)) throw std::runtime_error("the text pack's revision does not match");
-    const auto& files = about.value("files", json::object());
-    if (!files.is_object() || files.empty()) throw std::runtime_error("the text pack lists no files");
-    for (const auto& [name, digest] : files.items())
-        if (!digest.is_string() || app::sha256_file(app::content_path(dir, name)) != digest.get<std::string>())
-            throw std::runtime_error("the text pack's " + name + " is damaged");
-    // Nothing beside what it lists and text.json.
-    size_t present = 0;
+    const auto list = read_json(dir / "text.json", kListLimit);
+    const auto files = wanted(list, version);
+    if (list.value("revision", 0) != revision) throw std::runtime_error("the text update's revision does not match");
+    if (files.empty()) throw std::runtime_error("this program is newer than the text update");
+    for (const auto& [name, file] : files)
+        if (app::sha256_file(app::content_path(dir, name)).substr(0, kHashDigits) != file.hash)
+            throw std::runtime_error("the text update's " + name + " is damaged");
     std::error_code error;
-    for (auto it = fs::recursive_directory_iterator(dir, error); !error && it != fs::recursive_directory_iterator(); it.increment(error))
-        if (it->is_regular_file(error)) ++present;
-    if (error || present != files.size() + 1) throw std::runtime_error("the text pack holds files it does not list");
-    return {found, about.value("date", ""), about.value("notes", json::object()), dir};
+    std::vector<fs::path> extra;
+    for (auto it = fs::recursive_directory_iterator(dir, error); !error && it != fs::recursive_directory_iterator(); it.increment(error)) {
+        if (!it->is_regular_file(error)) continue;
+        const auto name = fs::relative(it->path(), dir, error).generic_string();
+        if (name != "text.json" && !files.contains(name)) extra.push_back(it->path());
+    }
+    if (error) throw std::runtime_error("the text update cannot be read");
+    for (const auto& path : extra) fs::remove(path, error);
+    return {revision, list.value("date", ""), list.value("notes", json::object()), dir};
 }
 std::shared_ptr<Layer> read_layer(const Pack& pack) {
     auto layer = std::make_shared<Layer>();
@@ -70,7 +117,7 @@ std::shared_ptr<Layer> read_layer(const Pack& pack) {
     for (const auto& file : fs::directory_iterator(pack.dir / "locales", error)) {
         if (file.path().extension() != ".json") continue;
         const auto catalog = read_json(file.path(), 32u << 20);
-        if (!catalog.is_object()) throw std::runtime_error("the text pack's " + file.path().filename().string() + " is not JSON");
+        if (!catalog.is_object()) throw std::runtime_error("the text update's " + file.path().filename().string() + " is not JSON");
         const auto locale = file.path().stem().string();
         for (const auto& [part, table] : {std::pair{"entries", &layer->entries}, std::pair{"ui", &layer->ui}}) {
             const auto& rows = catalog.value(part, json::object());
@@ -81,15 +128,16 @@ std::shared_ptr<Layer> read_layer(const Pack& pack) {
     if (fs::is_regular_file(pack.dir / "library-names.json", error)) layer->library_names = read_json(pack.dir / "library-names.json", 4u << 20);
     return layer;
 }
-// The pack against the catalogs the game reads, as the bundled text was checked: every
-// dialogue file loads with no problem, every entry keeps its record's script signature and
-// every label is one this release has. The first problem, or empty.
+// The update against the catalogs the game reads, as the bundled text was checked: every
+// dialogue file loads with no problem and every entry keeps its record's script signature.
+// A language this release lacks is not read, and labels are taken only where they fit
+// (Layer::apply). The first problem, or empty.
 std::string verify(const Layer& layer) {
     std::error_code error;
     for (const auto& folder : fs::directory_iterator(layer.dir / "dialogue", error)) {
         const auto locale = folder.path().filename().string();
         const auto catalog = localization::find(locale);
-        if (!catalog) return "no " + locale + " text in this release";
+        if (!catalog) continue;
         const auto result = localization::dialogue_text::load({folder.path()}, *catalog);
         if (!result.problems.empty()) {
             const auto& p = result.problems.front();
@@ -98,7 +146,7 @@ std::string verify(const Layer& layer) {
     }
     for (const auto& [locale, entries] : layer.entries) {
         const auto catalog = localization::find(locale);
-        if (!catalog) return "no " + locale + " text in this release";
+        if (!catalog) continue;
         for (const auto& [key, target] : entries) {
             const auto* source = catalog->source_text({key});
             try {
@@ -108,54 +156,27 @@ std::string verify(const Layer& layer) {
             }
         }
     }
-    for (const auto& [locale, labels] : layer.ui) {
-        const auto catalog = localization::find(locale);
-        if (!catalog) return "no " + locale + " text in this release";
-        for (const auto& [key, text] : labels)
-            if (!catalog->ui_labels().contains(key) || text.empty()) return locale + " label " + key + " is not one this release has";
-    }
     if (layer.library_names && (!layer.library_names->is_object() || layer.library_names->value("schema", "") != "srw64.library-names.v1"))
         return "the Library names are not readable";
     return {};
 }
-// Only the files a pack has (build_text_pack.py), no other paths.
-void unpack(const fs::path& zip_path, const fs::path& into) {
-    std::ifstream in(zip_path, std::ios::binary);
-    std::vector<char> bytes((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
-    mz_zip_archive zip{};
-    if (!mz_zip_reader_init_mem(&zip, bytes.data(), bytes.size(), 0)) throw std::runtime_error("the text pack is not a zip file");
-    struct End { mz_zip_archive* z; ~End() { mz_zip_reader_end(z); } } end{&zip};
-    static const std::regex allowed(R"((text\.json|library-names\.json|locales/[A-Za-z-]{2,16}\.json|dialogue/[A-Za-z-]{2,16}/[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)*\.txt))");
-    uint64_t total = 0;
-    for (unsigned i = 0, count = mz_zip_reader_get_num_files(&zip); i < count; ++i) {
-        mz_zip_archive_file_stat stat;
-        if (!mz_zip_reader_file_stat(&zip, i, &stat)) throw std::runtime_error("the text pack cannot be read");
-        if (stat.m_is_directory) continue;
-        const std::string name = stat.m_filename;
-        if (!std::regex_match(name, allowed)) throw std::runtime_error("the text pack holds " + name);
-        if ((total += stat.m_uncomp_size) > kUnpackedLimit) throw std::runtime_error("the text pack is too large");
-        size_t size = 0;
-        void* data = mz_zip_reader_extract_to_heap(&zip, i, &size, 0);
-        if (!data) throw std::runtime_error("cannot unpack " + name);
-        const auto target = into / fs::path(name);
-        fs::create_directories(target.parent_path());
-        std::ofstream out(target, std::ios::binary);
-        out.write(static_cast<const char*>(data), std::streamsize(size));
-        mz_free(data);
-        if (!out) throw std::runtime_error("cannot write " + name);
-    }
+// A label's {marks} (update_text_notice's {revision}, button prompts' {A}), in order.
+std::vector<std::string> marks(const std::string& text) {
+    std::vector<std::string> found;
+    for (size_t at = text.find('{'); at != std::string::npos; at = text.find('{', at + 1))
+        if (const auto end = text.find('}', at); end != std::string::npos) found.push_back(text.substr(at, end - at + 1));
+    std::sort(found.begin(), found.end());
+    return found;
 }
-std::string folder_name(const std::string& version, int revision) { return version + "-r" + std::to_string(revision); }
-// "<version>-r<N>": N for this version, else 0.
-int revision_of(const std::string& name, const std::string& version) {
-    const auto prefix = version + "-r";
-    if (!name.starts_with(prefix) || name.size() == prefix.size()) return 0;
-    const auto digits = name.substr(prefix.size());
-    if (!std::all_of(digits.begin(), digits.end(), [](char c) { return c >= '0' && c <= '9'; }) || digits.size() > 6) return 0;
-    return std::stoi(digits);
+std::string folder_name(int revision) { return "r" + std::to_string(revision); }
+// "r<N>": N, else 0.
+int revision_of(const std::string& name) {
+    if (name.size() < 2 || name.size() > 7 || name[0] != 'r') return 0;
+    if (!std::all_of(name.begin() + 1, name.end(), [](char c) { return c >= '0' && c <= '9'; })) return 0;
+    return std::stoi(name.substr(1));
 }
-// Once, before anything reads the state: the newest pack for this release that is whole.
-// Another release's packs, leftover downloads and unfinished installs are removed.
+// Once, before anything reads the state: the newest update that is whole and not older than
+// this program. Anything else goes, but an unfinished download (kStaging) stays for the next.
 Shared& ready() {
     auto& s = shared();
     static std::once_flag once;
@@ -167,16 +188,16 @@ Shared& ready() {
         s.root = root;
         std::error_code error;
         s.bypassed = fs::exists(s.root / "use-bundled", error);
-        std::vector<std::pair<int, fs::path>> mine;
+        std::vector<std::pair<int, fs::path>> found;
         for (const auto& entry : fs::directory_iterator(s.root, error)) {
             const auto name = entry.path().filename().string();
             std::error_code ignored;
-            if (name == "use-bundled") continue;
-            if (const int revision = entry.is_directory(ignored) ? revision_of(name, s.version) : 0) mine.emplace_back(revision, entry.path());
+            if (name == "use-bundled" || name == kStaging) continue;
+            if (const int revision = entry.is_directory(ignored) ? revision_of(name) : 0) found.emplace_back(revision, entry.path());
             else fs::remove_all(entry.path(), ignored);
         }
-        std::sort(mine.rbegin(), mine.rend());
-        for (const auto& [revision, dir] : mine) {
+        std::sort(found.rbegin(), found.rend());
+        for (const auto& [revision, dir] : found) {
             try {
                 auto pack = describe(dir, s.version, revision);
                 s.layer = read_layer(pack);
@@ -185,13 +206,51 @@ Shared& ready() {
                 std::fprintf(stderr, "SRW64_TEXT_UPDATE r%d%s\n", revision, s.bypassed ? " (bundled text chosen)" : "");
                 break;
             } catch (const std::exception& problem) {
-                std::fprintf(stderr, "SRW64_TEXT_UPDATE_DAMAGED %s %s\n", dir.filename().string().c_str(), problem.what());
+                std::fprintf(stderr, "SRW64_TEXT_UPDATE_REMOVED %s %s\n", dir.filename().string().c_str(), problem.what());
                 std::error_code ignored;
                 fs::remove_all(dir, ignored);
             }
         }
     });
     return s;
+}
+// The list's folder on the website: where its files are, as files/<hash>.z.
+std::string folder_url(const std::string& url) { return url.substr(0, url.rfind('/') + 1); }
+// A downloaded file, inflated and checked.
+std::string unpacked(const std::string& packed, const std::string& name, const Wanted& file) {
+    if (packed.size() > kFileLimit) throw std::runtime_error("the text update's " + name + " is too large");
+    std::string data(file.bytes, '\0');
+    if (data.empty()) return hash_of(data) == file.hash ? data : throw std::runtime_error("the download is damaged");
+    mz_ulong size = mz_ulong(data.size());
+    if (mz_uncompress(reinterpret_cast<unsigned char*>(data.data()), &size, reinterpret_cast<const unsigned char*>(packed.data()), mz_ulong(packed.size())) != MZ_OK ||
+        size != data.size() || hash_of(data) != file.hash)
+        throw std::runtime_error("the download is damaged");
+    return data;
+}
+// One file of the list: kept when `staging` has it already (a download that stopped half
+// way), copied when the installed update has the same, else downloaded. True when downloaded.
+bool fetch(const std::string& base, const std::string& name, const Wanted& file, const std::optional<Pack>& installed,
+           const fs::path& staging, const std::string& user_agent) {
+    const auto same = [&](const fs::path& path) {
+        std::error_code error;
+        return fs::is_regular_file(path, error) && fs::file_size(path, error) == file.bytes &&
+               app::sha256_file(path).substr(0, kHashDigits) == file.hash;
+    };
+    // `name` is one allowed() passed: no "..", no root.
+    const auto target = staging / fs::path(name);
+    if (same(target)) return false;
+    std::string data;
+    const bool copied = installed && same(installed->dir / fs::path(name));
+    if (copied) {
+        data = app::read_text(installed->dir / fs::path(name), kFileLimit);
+    } else {
+        data = unpacked(update::http_get(base + "files/" + file.hash + ".z", user_agent, 30), name, file);
+    }
+    fs::create_directories(target.parent_path());
+    std::ofstream out(target, std::ios::binary);
+    out.write(data.data(), std::streamsize(data.size()));
+    if (!out) throw std::runtime_error("cannot write " + name);
+    return !copied;
 }
 std::string filled(std::string text, const std::string& mark, const std::string& value) {
     if (const auto at = text.find(mark); at != std::string::npos) text.replace(at, mark.size(), value);
@@ -204,8 +263,14 @@ localization::Snapshot Layer::apply(const localization::Snapshot& base) const {
     const auto tag = "text-r" + std::to_string(revision);
     if (const auto found = entries.find(base->locale); found != entries.end() && !found->second.empty())
         result = result->with_translations(found->second, tag);
-    if (const auto found = ui.find(base->locale); found != ui.end() && !found->second.empty())
-        result = result->with_labels(found->second, tag);
+    // The newest labels, for every release: only those this release has, with the same marks.
+    if (const auto found = ui.find(base->locale); found != ui.end()) {
+        localization::Catalog::Table labels;
+        for (const auto& [key, text] : found->second)
+            if (const auto mine = base->ui_labels().find(key); mine != base->ui_labels().end() && marks(mine->second) == marks(text))
+                labels[key] = text;
+        if (!labels.empty()) result = result->with_labels(labels, tag);
+    }
     return result;
 }
 
@@ -243,51 +308,74 @@ void take(const json& latest, const std::string& user_agent) {
     auto& s = ready();
     std::string version;
     fs::path root;
-    int installed = 0;
+    std::optional<Pack> installed;
+    int seen = 0;
     {
         std::lock_guard lock(s.mutex);
         if (s.root.empty() || s.running) return;
         version = s.version;
         root = s.root;
-        installed = s.pack ? s.pack->revision : 0;
+        installed = s.pack;
+        seen = s.seen;
     }
-    const auto text = latest.is_object() ? latest.value("text", json::object()) : json::object();
-    const auto found = text.is_object() ? text.find(version) : text.end();
-    if (found == text.end() || !found->is_object()) return;
-    const auto& offer = *found;
+    const auto offer = latest.is_object() ? latest.value("text", json::object()) : json::object();
+    if (!offer.is_object()) return;
     const int revision = offer.value("revision", 0);
     const std::string url = offer.value("url", ""), digest = offer.value("sha256", "");
     const uint64_t bytes = offer.value("bytes", uint64_t(0));
-    if (revision <= installed || url.empty() || !bytes || bytes > kPackLimit || digest.size() != 64) return;
+    if (revision <= std::max(installed ? installed->revision : 0, seen) || url.empty() || !bytes || bytes > kListLimit || digest.size() != 64) return;
     {
         std::lock_guard lock(s.mutex);
         s.running = true;
         s.state = State::Downloading;
         ++s.serial;
     }
-    const auto part = root / ("download-" + folder_name(version, revision) + ".part");
-    const auto staging = root / (".staging-" + folder_name(version, revision));
-    std::optional<Pack> previous;
+    const auto staging = root / kStaging;
     std::error_code ignored;
     try {
-        fs::create_directories(root);
-        update::http_download(url, user_agent, part, [](uint64_t) {}, 30);
-        if (fs::file_size(part) != bytes || app::sha256_file(part) != digest) throw std::runtime_error("the download is damaged");
-        fs::remove_all(staging, ignored);
+        const auto text = update::http_get(url, user_agent, 30);
+        app::Sha256 whole;
+        whole.update({reinterpret_cast<const uint8_t*>(text.data()), text.size()});
+        if (text.size() != bytes || whole.finish() != digest) throw std::runtime_error("the download is damaged");
+        const auto list = json::parse(text, nullptr, false);
+        const auto files = wanted(list, version);
+        if (list.value("revision", 0) != revision) throw std::runtime_error("the text update's revision does not match");
+        if (files.empty()) {
+            // This program ships newer text than the list: the installed update goes too.
+            bool had;
+            {
+                std::lock_guard lock(s.mutex);
+                had = s.pack.has_value();
+                s.pack.reset();
+                s.layer.reset();
+                s.seen = revision;
+                s.state = State::None;
+                s.error.clear();
+                s.running = false;
+                ++s.serial;
+            }
+            for (const auto& entry : fs::directory_iterator(root, ignored))
+                if (revision_of(entry.path().filename().string()) || entry.path() == staging) fs::remove_all(entry.path(), ignored);
+            std::fprintf(stderr, "SRW64_TEXT_UPDATE_NONE r%d\n", revision);
+            if (had) dialogue::request_reload(false);
+            return;
+        }
         fs::create_directories(staging);
-        unpack(part, staging);
-        fs::remove(part, ignored);
+        std::ofstream(staging / "text.json", std::ios::binary) << text;
+        const auto base = folder_url(url);
+        size_t downloaded = 0;
+        for (const auto& [name, file] : files)
+            if (fetch(base, name, file, installed, staging, user_agent)) ++downloaded;
         auto pack = describe(staging, version, revision);
         auto next = read_layer(pack);
         if (const auto problem = verify(*next); !problem.empty()) throw std::runtime_error(problem);
-        const auto dir = root / folder_name(version, revision);
+        const auto dir = root / folder_name(revision);
         fs::remove_all(dir, ignored);
         fs::rename(staging, dir);
         pack.dir = next->dir = dir;
         bool bypassed;
         {
             std::lock_guard lock(s.mutex);
-            previous = s.pack;
             s.pack = pack;
             s.layer = next;
             s.state = State::Installed;
@@ -298,17 +386,16 @@ void take(const json& latest, const std::string& user_agent) {
         }
         // The one before stays, should this one turn out wrong on the disk; older ones go.
         for (const auto& entry : fs::directory_iterator(root, ignored)) {
-            const int other = revision_of(entry.path().filename().string(), version);
-            if (other && other != revision && (!previous || other != previous->revision)) fs::remove_all(entry.path(), ignored);
+            const int other = revision_of(entry.path().filename().string());
+            if (other && other != revision && (!installed || other != installed->revision)) fs::remove_all(entry.path(), ignored);
         }
-        std::fprintf(stderr, "SRW64_TEXT_UPDATE_INSTALLED r%d\n", revision);
+        std::fprintf(stderr, "SRW64_TEXT_UPDATE_INSTALLED r%d (%zu files, %zu downloaded)\n", revision, files.size(), downloaded);
         if (!bypassed) {
             dialogue::request_reload(false);
             notices::post("text-update", filled(localization::catalog().ui("update_text_notice"), "{revision}", std::to_string(revision)));
         }
     } catch (const std::exception& problem) {
-        fs::remove(part, ignored);
-        fs::remove_all(staging, ignored);
+        // What came whole stays in kStaging for the next check.
         std::lock_guard lock(s.mutex);
         s.running = false;
         s.state = State::Failed;

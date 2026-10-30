@@ -1,9 +1,9 @@
 // /latest.json: what the game's update check reads (docs/design/website.md §5.3,
 // docs/native/update-check.md). `hd` is the newest HD pack, which has versions of its own.
-// `text`: per release, the text that changed since it (docs/design/text-updates.md), written
-// by tools/release/build_text_pack.py.
+// `text`: the newest text update list, the whole text by short hash, for every release's game
+// (docs/design/text-updates.md); written by tools/release/build_text_update.py.
 import { allFiles, hd, published, release } from '../data/release';
-import textPacks from '../data/text-packs.json';
+import textUpdate from '../data/text-update.json';
 
 const install = (lang: string) => `https://srw64.dreamquest.club/${lang}/install/`;
 
@@ -40,7 +40,7 @@ export const GET = () =>
             url: hd.url,
           },
         }),
-        ...(published && Object.keys(textPacks).length > 0 && { text: textPacks }),
+        ...(published && 'revision' in textUpdate && { text: textUpdate }),
       },
       null,
       2,

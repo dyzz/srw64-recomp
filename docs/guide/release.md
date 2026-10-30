@@ -112,11 +112,11 @@ Mac 包由 `build_release.py` 放在 `Marchwind64.app` 旁边（所以 Mac zip �
 
 1. 照平常改文本并提交：`renames.json`、`make_zh_hant.py`、`apply_terms` 跑过，`check_dialogue.py` 与 `run_audit.py` 无问题。
 2. 写一句更新说明 `notes.json`：`{"zh": "…", "tw": "…", "en": "…", "ja": "…"}`。
-3. `.venv/bin/python tools/release/build_text_pack.py --base v<版本> --notes notes.json`：和该版标签比较，只收改过的；先跑同游戏一样的检查，有问题不出包。`--dry-run` 只列内容。
-   写出 `web/public/text/<版本>/Marchwind64-Text-<版本>-r<N>.zip` 和 `web/src/data/text-packs.json`（只留最近两个版本）。
-4. 提交这两处，`bash web/deploy/deploy.sh` 上线；核对 `https://srw64.dreamquest.club/latest.json` 的 `text` 段。
+3. `.venv/bin/python tools/release/build_text_update.py --notes notes.json`：把全部文本按文件列进清单；先跑同游戏一样的检查，有问题不出清单。`--dry-run` 只检查并报文件数。
+   写出 `web/public/text/text-r<N>.json`、`web/public/text/files/<hash>.z` 和 `web/src/data/text-update.json`（官网只留最近两份清单）。
+4. 提交这三处，`bash web/deploy/deploy.sh` 上线；核对 `https://srw64.dreamquest.club/latest.json` 的 `text` 段。
 
-开着「启动时检查更新」的玩家下次启动（一天一次）、或手动检查时自动下载。新版程序发布后，它自己的文本包从空开始。
+一份全量清单给所有版本：开着「启动时检查更新」的玩家下次启动（一天一次）、或手动检查时，只下载和自己已装的不一样的文件。**每次发新版程序后也要跑一次**：清单的 `release` 是提交里最新的发布标签，比它新的程序不用这份清单。
 
 ## HD 包的内容与约束
 

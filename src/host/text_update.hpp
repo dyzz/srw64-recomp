@@ -9,14 +9,15 @@
 #include <string>
 #include <string_view>
 
-// Text updates (docs/design/text-updates.md): the text that changed since this release,
-// from the website, over the text the program shipped with. The update check's
-// /latest.json names one pack per release in `text`; take() downloads this release's when
-// it is newer than the one installed, checks it against the catalogs as the game reads
-// them, and installs it in SRW64_TEXT_UPDATES as <version>-r<revision>/. The dialogue
-// layer (native_dialogue.cpp) then reads it between the bundled text and the player's own:
+// Text updates (docs/design/text-updates.md): the newest text from the website, over the text
+// the program shipped with. The update check's /latest.json names one list in `text`, the
+// whole text file by file with a short hash, for every release up to the list's `release`.
+// take() reads it when it is newer than the one installed, keeps the files the installed
+// update has the same, downloads the others, checks them against the catalogs as the game
+// reads them, and installs them in SRW64_TEXT_UPDATES as r<revision>/. The dialogue layer
+// (native_dialogue.cpp) then reads them between the bundled text and the player's own:
 // dialogue files, data-text entries and UI labels, and the Library's names (library.cpp).
-// A pack is for one release only; a pack for another is removed at start-up.
+// A program newer than the list's `release` ships newer text and drops the update.
 namespace srw64::text_update {
 enum class State { None, Downloading, Installed, Failed };
 struct Pack {
@@ -50,7 +51,7 @@ Status status();
 std::shared_ptr<const Layer> layer();
 // The About page's switch: reloads the text either way.
 void set_bypassed(bool bypassed);
-// The update check's thread, after it read /latest.json: installs this release's pack when
+// The update check's thread, after it read /latest.json: installs the list's files when
 // the website's revision is newer, then reloads the text and says so. Throws nothing.
 void take(const nlohmann::json& latest, const std::string& user_agent);
 // The pack's note in a website language (update::site_language, or "tw"), English otherwise.

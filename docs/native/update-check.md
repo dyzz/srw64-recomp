@@ -7,7 +7,7 @@
 - 读官网的 `https://srw64.dreamquest.club/latest.json`（网站 `web/src/pages/latest.json.ts` 生成，`schema` 为 `srw64.latest.v1`），把其中的 `version` 与本程序的 `SRW64_VERSION` 比较。
 - 请求不带任何标识（没有 token、没有设备信息），只有一次 GET。2026-10-13 起 User-Agent 是 `Marchwind64/<版本> (<平台>; <架构>)`，平台为 `windows`／`macos`／`linux`／`steamdeck`（`on_steam_deck()`），10-30 起加 `android`／`switch`，架构为 `x86_64`／`arm64`，例如 `Marchwind64/0.4.8 (steamdeck; x86_64)`，好让官网的 CDN 日志按版本和平台统计检查次数；之前只有 `Marchwind64`。询问框与设置里的说明（`update_ask_note`、`settings_update_auto_note`）同步写明「只附带版本和平台」。
 - 程序不下载、不安装：有新版时只给出版本和日期，按钮在系统浏览器里打开对应语言的下载页（`download.<zh|en|ja>`）和更新说明（`notes.<语言>`）。macOS 签名、Deck、Windows 的安装方式各不相同，先只提示。
-- 例外是本版的文本更新（2026-10-30，`text_update.hpp`，[文本单独更新](../design/text-updates.md)）：`latest.json` 的 `text` 段有本版本、修订号比已装的新时，同一次检查后接着下载这个小包、校验并套用；「关于」页的「文本更新」一行显示在用哪一版，可以切回随包文本。
+- 例外是本版的文本更新（2026-10-30，`text_update.hpp`，[文本单独更新](../design/text-updates.md)）：`latest.json` 的 `text` 段（所有版本共用的全量文本清单）修订号比已装的新时，同一次检查后接着读清单、只下载和已装的不一样的文件、校验并套用；「关于」页的「文本更新」一行显示在用哪一版，可以切回随包文本。
 
 ## HD 包的版本
 
