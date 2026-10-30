@@ -62,7 +62,7 @@
 | `801D2144` 武器一览初始化 | 不调原函数。保留背景、`801C7254`；页写 1 |
 | `801D21F8` 武器一览每帧 | 移动／翻页适配器自己写；返回注入 B |
 
-**快照**：`status.ability_page`：`screen`（`units`／`pilots`／`unit`／`weapons`／`pilot`）、`serial`、`labels`、`weapon_labels`；列表有 `page`、`pages`、`cursor`、`rows[]`（机体：`slot`、`number`、`name`、`pilot`、`hp`、`art`；驾驶员：`index`、`number`、`name`、`unit`、`level`）、`sub{name,level}`；机体页有 `unit`、`size`、`repair`、`parts[]`、`hp`／`hp_max`、`en`／`en_max`、`types[]`、`shield`、`abilities[]`、`move`、`mobility`、`armor`、`limit`、`terrain`、`index`、`count`；武器一览有 `unit{…,en,morale}`、`page`、`pages`、`cursor`、`rows[]`（同武器改造）；驾驶员页有 `pilot{index,number,name,full_name,level,hidden,art}`、`unit`、`morale`、`next`、`kills`、`sp`／`sp_max`、`stats{melee,ranged,hit,evade,skill,reaction}`、`over{hit,evade}`、`mobility`、`spirits[]`、`skills[]`、`terrain`、`index`、`count`。事件日志 `ability-page-events.jsonl`。
+**快照**：`status.ability_page`：`screen`（`units`／`pilots`／`unit`／`weapons`／`pilot`）、`serial`、`labels`、`weapon_labels`；列表有 `page`、`pages`、`cursor`、`rows[]`（机体：`slot`、`number`、`name`、`pilot`、`hp`、`art`；驾驶员：`index`、`number`、`name`、`unit`、`level`）、`sub{name,level}`；机体页有 `unit`、`size`、`repair`、`parts[]`、`hp`／`hp_max`、`en`／`en_max`、`types[]`、`shield`、`abilities[]`、`move`、`mobility`、`armor`、`limit`、`terrain`、`index`、`count`；武器一览有 `unit{…,en,morale}`、`page`、`pages`、`cursor`、`rows[]`（同武器改造）；驾驶员页有 `pilot{index,number,name,full_name,level,hidden,double_move,art}`、`unit`、`morale`、`next`、`kills`、`icons`（战斗素材清单的 `weapon_markers`，其中 `double_move` 是切下来的皇冠）、`sp`／`sp_max`、`stats{melee,ranged,hit,evade,skill,reaction}`、`over{hit,evade}`、`mobility`、`spirits[]`、`skills[]`、`terrain`、`index`、`count`。事件日志 `ability-page-events.jsonl`。
 
 **调试**：稳定 ID `ability:N`（列表行；点光标行即进入，武器一览点光标行返回）；键盘 ↑↓、←→（翻页）、Enter／Z、Esc／X，能力页 Q／E（或 ←→）前后切换；等待条件 `ability_page`。
 
@@ -115,3 +115,17 @@
 后两页共用 `src/host/pilot_kills.hpp`：数字由文字引擎打印；HD 文字层开着时用 `ui_text::mark_label(句柄, x, y, "12", "ability_kills", 宽)` 认出这一格，改画成「击坠数 12」（标签字体，绘制时按当前语言取词条）；日文原版画面（ROM 字体，没有这个标签）画数字＋文字 0x464，即部队表的「12機」。
 
 实机（Mac，2026-10-19）：场间原生页 万丈 6（记录 `+0x14` = 6）；地图迷你关写入击坠数后 マリア「击坠数 7」「Kills 7」「撃墜数 0」、日文原图「7機」，敌方 ロゼ 不显示；场间原版页「击坠数 5」、日文原图「0機」。
+
+## 二回行动标志（2026-10-30）
+
+原版只有地图上的「机体情报」窗（`801CB4D0`，等级／気力／HP／EN／特技／精神／经验值那一页）画它：画完 `801E5C30` 之后读主驾驶员 `+0x35`（本回合剩余行动数），≥2 时 `8008D0E8(句柄, 0x44B, 0xBA, 0x56, 调色板 3)`——文本 `t00_01099` 就是单个字形 1460，一顶带阴影的皇冠（字形表原先记作「Ｗ」、用途不明）。字形在字库资源 1（id 从 0x597 起，14×14、每行 36 个）；文字引擎的调色板 3 对应资源 8：金色、近黑描边、红宝石。所以原版的含义是「现在还能再动一次」，行动过一次就不画了。
+
+用户要求我们的页面也有这个标志。驾驶员记录 `+0x34` 是每回合行动数（`800A6238` 按能力记录 `+0xE` 的等级写成 2 或 1），能力页按它显示「这个驾驶员会二回行动」，不随本回合用没用过变化：
+
+- 场间原生驾驶员页：等级数字右边紧跟皇冠（x 117，14 宽），NEXT 标签右移 4 到 133、数值到 156，等级数值栏缩到 16 宽。高清图模式画符号字体 `SRW64Symbols.ttf` 的 U+E5B4（`build_symbol_font.py` 照 14×14 像素描的三峰皇冠，宝石挖空，金色 `#ffbd31`）；原版图模式画 `battle_assets.py` 从字库切下的皇冠（`weapon_markers.double_move`，调色板 8），两者都没有时画金色「W」徽章。快照 `pilot.double_move`、`icons`。离线排版审计（`states.json` 的驾驶员页夹具 `double_move: true`）中日英三语 0 溢出。
+- 地图驾驶员页（`801E6C5C` 之后，`enemy_pilot_page::reveal`，我方和敌方都画）：等级 `"%3d"` 在 (0x98, 0x46)，皇冠在 (0xB2, 0x46)，和原版一样走 `8008D0E8(…, 0x44B, …, 3)`，HD 文字层把没有名字的图标字形保留原图，所以三种语言都是原版那顶像素皇冠。句柄用页面数组里没人写的 `802271F3`。
+- 场间原版模式页（`801D2480` 末尾）：等级行没有空位（レベル 192、数值 216、NEXT 240），放在姓名行右端 (280, 40)。句柄追加到 `D_801DD568`。
+
+图鉴的人物页本来就有「二回行动 LvN」金色标签，不改。未实机：地图驾驶员页皇冠右边 x 0xC0 起是否紧挨精神点数的标签，要在迷你关里看一眼。
+
+顺带修了离线排版审计（`layout_audit.cpp`）：补上 10-26 以后前端新引用的文本更新、MOD 安装／音乐设置、头像 MOD 图和 GL 渲染器的替身，否则链接不过。

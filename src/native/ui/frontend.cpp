@@ -934,7 +934,7 @@ body.pointer .im-funds:hover,.im-funds:focus {background-color:#00c80055; border
 .im-up {color:#7dff8a;} .im-down {color:#ff8d8d;}
 .im-panel button.im-step {display:inline-block; width:auto; text-align:center; color:#9eafc3;}
 .im-badge {display:inline-block; text-align:center; vertical-align:middle; border-radius:6dp; border-width:1dp; border-color:#e8f0ff; color:#ffffff; font-weight:bold; margin-right:1dp; overflow:hidden;}
-.im-mark {color:#ffffff; vertical-align:middle;} .im-mark.map {color:#de416a;}
+.im-mark {color:#ffffff; vertical-align:middle;} .im-mark.map {color:#de416a;} .im-mark.crown {color:#ffbd31;}
 .im-badge.melee {background-color:#c8501e;} .im-badge.ranged {background-color:#2d6fd8;} .im-badge.post {background-color:#2a9a4a;} .im-badge.beam {background-color:#a04fd0;} .im-badge.map {background-color:#c09a1a; border-radius:3dp;} .im-bar {position:absolute; height:2dp; background-color:#00c800;} .im-bar-back {position:absolute; height:2dp; background-color:#123a2a;} .im-panel button.dim {background-color:#00c80055;}
 .im-shade {position:absolute; left:0; top:0; width:100%; height:100%; background-color:#04071266;}
 .im-panel img {display:block;}
@@ -4178,6 +4178,21 @@ void intermission_sync() {
 // ユニット改造 / 武器改造: the machine list (layout 0x6B) and the five-stat screen
 // (0x75), in the original's 320x240 coordinates like the intermission menu.
 // The weapon table the original draws on the 武器改造 list (layout 0x77) and the
+// The 二回行動 crown (the map's unit window draws ROM glyph 1460 beside the level): the
+// symbol font's U+E5B4 in gold for HD images, the icon cut from the ROM font (the
+// manifest's weapon_markers.double_move) for original images, a gold W badge without either.
+std::string double_move_crown(const json& icons,float u) {
+    const auto px=[&](float v){return std::to_string(int(v*u+0.5f))+"px";};
+    const auto found=icons.find("double_move");
+    const bool rom=found!=icons.end() && found->contains("path");
+    if(!symbol_font.empty() && (hd_portraits() || !rom))
+        return "<span class='im-mark crown' style='font-size:"+px(13)+"; line-height:"+px(16)+";'>\uE5B4</span>";
+    if(rom) {
+        const float w=found->value("width",14.f),h=found->value("height",12.f);
+        return "<img src='"+escape(image(found->at("path").get<std::string>(),int(w*u+.5f)))+"' style='display:inline-block; width:"+px(w)+"; height:"+px(h)+"; vertical-align:middle;'/>";
+    }
+    return "<span class='im-badge map' style='width:"+px(12)+"; height:"+px(11)+"; line-height:"+px(11)+"; font-size:"+px(7)+";'>W</span>";
+}
 // 武器一覧 (0x7A): a boxed header row (page / 武器名 / 攻撃力 / 射程 / 命中), rows of
 // 16 with the original 格／射 icon before the name and the P／B／MAP icons after it,
 // then the selected weapon's 弾数, terrain letters, 必要気力, 消費EN, 必要技能 and
@@ -5061,8 +5076,11 @@ void ability_sync() {
         body+=box(18,10,110,101,art_img(p,88),10.f,"ability-art","display:flex; align-items:center; justify-content:center;")+
             box(111,10,299,35,"<div style='padding:0 "+px(6)+"; line-height:"+px(24)+"; text-align:right; font-size:"+px(fit(label_of("pilot"),176))+";' class='im-dim'>"+escape(label_of("pilot"))+"</div>",10.f,"ability-title")+
             box(111,36,299,101,at(9,4,escape(p.value("full_name",std::string())),"",fit(p.value("full_name",std::string()),170))+
-                at(17,28,dim("morale"),"fit",10,27)+at(46,28,number(next.value("morale",json())),"im-right",10.5f,28)+at(81,28,dim("level"),"fit",10,18)+at(100,28,number(p.value("level",json())),"im-right",10.5f,20)+
-                at(129,28,dim("next"),"fit",10,24)+at(154,28,next.contains("next")?number(next.at("next")):std::string("---"),"im-right",10.5f,30)+
+                at(17,28,dim("morale"),"fit",10,27)+at(46,28,number(next.value("morale",json())),"im-right",10.5f,28)+at(81,28,dim("level"),"fit",10,18)+at(100,28,number(p.value("level",json())),"im-right",10.5f,16)+
+                // The 二回行動 crown right after the level, as the map's unit window puts it
+                // (user, 2026-10-30); NEXT moves 4 right to leave it the 14 it needs.
+                (p.value("double_move",false)?at(117,28,double_move_crown(next.value("icons",json::object()),u),"",0,14):std::string())+
+                at(133,28,dim("next"),"fit",10,22)+at(156,28,next.contains("next")?number(next.at("next")):std::string("---"),"im-right",10.5f,30)+
                 // SP's value moves left to leave the row's right end to the kills, which
                 // the original page does not show (user, 2026-10-19).
                 at(17,46,dim("sp"),"",10)+at(80,46,number(next.value("sp",json()))+"/ "+number(next.value("sp_max",json())),"im-right",10.5f,44)+

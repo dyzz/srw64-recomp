@@ -10,8 +10,8 @@ FONT = ROOT / "content/fonts/SRW64Symbols.ttf"
 # Advances in 1/1000 em: the triangles keep Arial Unicode MS's width, the wrench is full width.
 SYMBOLS = {"▶": 600, "▷": 600, "◀": 600, "🔧": 1000}
 # The weapon markers at U+E000 + their ROM glyph id: narrow 8:10 icons, the square traced
-# fist and the MAP badge.
-MARKERS = {241: 680, 242: 680, 243: 680, 244: 760, 575: 1060}
+# fist, the MAP badge and the 二回行動 crown (glyph 1460, 14 columns over 12 rows).
+MARKERS = {241: 680, 242: 680, 243: 680, 244: 760, 575: 1060, 1460: 980}
 
 
 class SymbolFontTests(unittest.TestCase):
@@ -34,7 +34,7 @@ class SymbolFontTests(unittest.TestCase):
                 self.assertEqual(self.font.getlength(char), advance)
                 left, top, right, bottom = self.font.getbbox(char)
                 self.assertLessEqual(bottom - top, 800)          # one band, never taller than text
-                self.assertIn(mapping[glyph_id], {"P", "B", "射", "格", "MAP"})
+                self.assertIn(mapping[glyph_id], {"P", "B", "射", "格", "MAP", "Ｗ"})
 
     def test_never_raises_a_line(self):
         # HarmonyOS Sans SC hhea ascent/descent; the engine takes the tallest face's ascent.

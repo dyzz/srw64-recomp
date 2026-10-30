@@ -31,6 +31,10 @@
 #include "library.hpp"
 #include "quick_load.hpp"
 #include "stage_info.hpp"
+#include "text_update.hpp"
+#include "mod_library.hpp"
+#include "native_portrait.hpp"
+#include "ui_renderer_gl.hpp"
 #include "native_dialogue.hpp"
 #include "native_intro.hpp"
 #include "native_sprite.hpp"
@@ -79,6 +83,8 @@ Request request(){return {};} bool owns_input(){return false;} void window_claim
 void select(uint64_t,unsigned){} void choose(uint64_t,unsigned){} void review(uint64_t,bool){}
 }
 namespace srw64::settings {
+bool mod_music(){return false;} void set_mod_music(bool){} unsigned mod_music_volume(){return 100;} void set_mod_music_volume(unsigned){}
+bool mod_voice(){return false;} void set_mod_voice(bool){} unsigned mod_voice_volume(){return 100;} void set_mod_voice_volume(unsigned){}
 BattleUi battle_value=BattleUi::Native;UiSize size_value=UiSize::Largest;std::string page="general";
 bool intermission=true,name_entry=true,title=true,wide=true;
 BattleUi battle_ui(){return battle_value;}
@@ -132,7 +138,25 @@ void init(std::string_view){} bool supported(){return true;} std::optional<bool>
 void set_automatic(bool){} bool should_ask(){return false;} void check(bool){} void check_on_start(){}
 Status status(std::string_view){return {};} bool open_url(const std::string&){return true;}
 }
+// Text updates (text_update.hpp): none checked, none installed; MOD switches do nothing.
+namespace srw64::text_update { Status status(){return {};} void set_bypassed(bool){} std::string note(const Pack&,std::string_view){return {};} }
+// MOD packages (mod_library.hpp): none installed, nothing in the folder, every action a no-op.
+namespace srw64::mods {
+std::vector<Package> installed(const Version&){return {};} std::vector<LooseResult> loose_results(){return {};}
+InstallResult install(const fs::path&){return {};} bool set_enabled(const std::string&,bool){return true;} bool remove(const std::string&){return true;}
+void set_game_version(const Version&){} fs::path directory(){return {};}
+}
+namespace srw64::portraits { std::string mod_picture(const std::string& original){return original;} }
+// The OpenGL renderer (the Vita path) is never made here: the Metal probe surface draws.
+namespace recompui {
+struct RmlRenderInterface_GL::Impl {};
+RmlRenderInterface_GL::RmlRenderInterface_GL(){} RmlRenderInterface_GL::~RmlRenderInterface_GL(){}
+Rml::RenderInterface* RmlRenderInterface_GL::get_rml_interface(){return nullptr;} void RmlRenderInterface_GL::start(int,int){} void RmlRenderInterface_GL::end(){}
+void RmlRenderInterface_GL::release_gl(){} void RmlRenderInterface_GL::queue_image_from_bytes_file(const std::string&,const std::vector<char>&){}
+void RmlRenderInterface_GL::queue_image_from_bytes_rgba32(const std::string&,const std::vector<char>&,uint32_t,uint32_t){}
+}
 namespace srw64::dialogue {
+void request_reload(bool){}
 void request_reload(){}
 ReadingControls reading_controls(){return {};}
 fs::path text_overrides_dir(){return "/Users/player/Library/Application Support/SRW64Recomp/dialogue";}

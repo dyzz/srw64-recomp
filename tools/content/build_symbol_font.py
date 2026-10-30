@@ -60,7 +60,7 @@ TRIANGLES = {0x25B6: "uni25B6", 0x25B7: "uni25B7", 0x25C0: "uni25C0"}
 WRENCH = (0x1F527, "u1F527")
 # Weapon markers: ROM glyph id -> glyph name, at U+E000 + id. One band 0.76 em tall,
 # centred on the triangles' line; narrow ones are 8:10 like the ROM icons, MAP 13:10.
-MARKERS = {241: "uniE0F1", 242: "uniE0F2", 243: "uniE0F3", 244: "uniE0F4", 575: "uniE23F"}
+MARKERS = {241: "uniE0F1", 242: "uniE0F2", 243: "uniE0F3", 244: "uniE0F4", 575: "uniE23F", 1460: "uniE5B4"}
 ICON_BOTTOM, ICON_HEIGHT = -20, 760
 NARROW, WIDE, BEARING, STROKE = 600, 980, 40, 80
 TRACED_BOX = 680   # the traced fist, square
@@ -260,7 +260,32 @@ def markers(bold: TTFont) -> dict:
     o.rounded(BEARING, ICON_BOTTOM, BEARING + WIDE, top, (220, 230))
     o.letters(bold, "MAP", (BEARING + WIDE / 2, mid), 430, width=WIDE - 220, tracking=-30, cut=True)
     built[575] = (o.glyph(), WIDE + 2 * BEARING)
+    built[1460] = crown()
     return built
+
+
+# The 二回行動 crown, ROM glyph 1460 (font resource 1, 14 x 14; the tile's rows 1-12 and
+# all 14 columns are drawn): the outline below is the tile's filled cells, in pixels, y
+# down. Three peaks (the middle one a row lower), a band and two feet; the ROM's red
+# jewels are holes here, one on each side peak, two on the middle, two on the band.
+CROWN_OUTLINE = [(0, 1), (4, 1), (4, 3), (5, 3), (5, 2), (9, 2), (9, 3), (10, 3), (10, 1), (14, 1),
+                 (14, 6), (13, 6), (13, 10), (12, 10), (12, 13), (8, 13), (8, 11), (6, 11), (6, 13),
+                 (2, 13), (2, 10), (1, 10), (1, 6), (0, 6)]
+CROWN_JEWELS = [(1.5, 5.5), (12.5, 5.5), (5.5, 4.5), (8.5, 4.5), (2.5, 8.5), (11.5, 8.5)]
+CROWN_WIDTH = 900   # 12 rows fill the band's height; 14 columns at that scale
+
+
+def crown() -> tuple:
+    scale = ICON_HEIGHT / 12
+    dx = BEARING + (CROWN_WIDTH - 14 * scale) / 2
+    place = lambda x, y: (dx + x * scale, ICON_BOTTOM + (13 - y) * scale)  # noqa: E731
+    o = Outline()
+    path = [("m", place(*CROWN_OUTLINE[0]))] + [("l", place(x, y)) for x, y in CROWN_OUTLINE[1:]]
+    o.path(path)
+    for cx, cy in CROWN_JEWELS:
+        x, y = place(cx, cy)
+        o.ellipse(x, y, 0.55 * scale, 0.55 * scale, clockwise=False)
+    return o.glyph(), CROWN_WIDTH + 2 * BEARING
 
 
 def main() -> int:

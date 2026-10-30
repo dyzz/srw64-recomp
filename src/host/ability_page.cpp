@@ -44,7 +44,7 @@ constexpr uint32_t display_hp=0x801DEB08,display_move=0x801DD14C,display_mobilit
 // Pilot records: 100 of 0x4C bytes at 0x80172F40.
 constexpr uint32_t pilots=0x80172F40,pilot_size=0x4C,pilot_number=0x02,pilot_flags=0x04,pilot_level=0x05,pilot_skill_level=0x06,pilot_skill2=0x07,pilot_skill3=0x08,
     pilot_spirit_count=0x0A,pilot_spirits=0x0B,pilot_exp=0x12,pilot_kills=0x14,pilot_sp=0x16,pilot_sp_max=0x18,pilot_morale=0x20,pilot_melee=0x22,pilot_ranged=0x24,pilot_evade=0x26,pilot_hit=0x28,
-    pilot_reaction=0x2A,pilot_skill=0x2C,pilot_terrain=0x2E,pilot_skill_flags=0x36,pilot_has_unit=0x37,pilot_unit_field=0x38;
+    pilot_reaction=0x2A,pilot_skill=0x2C,pilot_terrain=0x2E,pilot_actions=0x34,pilot_skill_flags=0x36,pilot_has_unit=0x37,pilot_unit_field=0x38;
 constexpr unsigned pilot_count=100;
 // Tables in the overlay: movement icons, the special-ability list {mask u32, text u16, width u8}.
 constexpr uint32_t move_icons=0x801DC8F0,ability_table=0x801DC8FC,unknown_spirit=0x801DCE2C;
@@ -472,6 +472,10 @@ json pilot_json(uint8_t* ram,recomp_context* ctx) {
     const bool hidden=(read(ram,pilot+pilot_flags,1)&0xC0)!=0;   // stats printed as ---
     json p={{"index",index},{"number",number},{"name",text(ram,uint16_t(text_pilot_names+number))},{"full_name",text(ram,uint16_t(text_pilot_full_names+number))},{"level",level},{"hidden",hidden}};
     if(art.contains("portraits") && art["portraits"].contains(std::to_string(number)))p["art"]=art["portraits"][std::to_string(number)];
+    // 二回行動: +0x34 is the pilot's actions a phase, 2 from the level its record names
+    // (800A6238). The original marks it only on the map's unit window (801CB4D0, the crown
+    // glyph 1460 while two actions are left); this page marks the pilot who has two (user, 2026-10-30).
+    p["double_move"]=read(ram,pilot+pilot_actions,1)>=2;
     const uint32_t unit=pilot_unit(ram,ctx,pilot);
     json u=json::object();
     if(unit){u=unit_brief(ram,unit);refresh_display(ram,ctx,unit);}
@@ -516,6 +520,9 @@ json pilot_json(uint8_t* ram,recomp_context* ctx) {
     // 801EC3A0); this page adds them (user, 2026-10-19). Every pilot here is ours, so the
     // field is not an enemy's dummy count (battle-formulas.md §7).
     page["kills"]=read(ram,pilot+pilot_kills,2);
+    // The crown cut from the ROM font (battle_assets.py: weapon_markers.double_move), for
+    // the original-images mode; the HD mode draws the symbol font's U+E5B4.
+    page["icons"]=art.value("weapon_markers",json::object());
     return page;
 }
 bool pilot_build(uint8_t* ram,recomp_context* ctx) {

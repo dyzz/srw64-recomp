@@ -989,6 +989,12 @@ void load_0008F4B0_func_801D2480(uint8_t* rdram, recomp_context* ctx) {
     srw64::ui_text::clear_small();
     const uint32_t pilot = 0x80172F40 + srw64::guest::read(rdram, 0x801DEC5C, 4) * 0x4C;
     srw64::pilot_kills::draw(rdram, ctx, pilot, 0x78, 0x10, 70, [&] { return srw64::pilot_kills::intermission_handle(rdram, ctx); });
+    // The 二回行動 crown (text 0x44B, as the map's unit window draws it in palette 3) for a
+    // pilot with two actions a phase (+0x34): the level row has no room (レベル 192, its value
+    // 216, NEXT 240), so it stands at the right end of the name row, x 280 of the 299 box.
+    if (srw64::guest::valid(pilot, 0x4C) && srw64::guest::read(rdram, pilot + 0x34, 1) >= 2)
+        if (const int8_t handle = srw64::pilot_kills::intermission_handle(rdram, ctx); handle >= 0)
+            srw64::pilot_kills::call(rdram, ctx, resident_func_8008D0E8, uint32_t(int32_t(handle)), srw64::enemy_pilot_page::text_crown, 280, 40, srw64::enemy_pilot_page::palette_crown);
 }
 void load_0008F4B0_func_801D24C8(uint8_t* rdram, recomp_context* ctx) {
     quiet_latch(rdram);

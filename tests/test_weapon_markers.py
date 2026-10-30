@@ -32,6 +32,24 @@ class WeaponMarkerTests(unittest.TestCase):
             colours = {pixel[:3] for pixel in images["MAP"].getdata() if pixel[3]}
             self.assertIn(palette[11][:3], colours)
 
+    def test_the_crown_comes_from_the_wide_font_through_its_gold_palette(self):
+        from srw64_rom.resources import ResourceTable
+        from srw64_native.battle_assets import (CROWN_GLYPH, CROWN_PALETTE, MARKER_SCALE, WIDE_FONT_RESOURCE,
+                                                double_move_marker, text_palette)
+        table = ResourceTable((ROOT / "rom.z64").read_bytes())
+        palette = text_palette(table.extract(CROWN_PALETTE)[0])
+        self.assertEqual(palette[0][3], 0)
+        with tempfile.TemporaryDirectory() as directory:
+            crown = double_move_marker(table.extract(WIDE_FONT_RESOURCE)[0], table.extract(CROWN_PALETTE)[0], Path(directory))
+            self.assertEqual((crown["glyph"], crown["width"], crown["height"]), (CROWN_GLYPH, 14, 12))
+            image = Image.open(crown["path"]).convert("RGBA")
+            self.assertEqual(image.size, (14 * MARKER_SCALE, 12 * MARKER_SCALE))
+            colours = {pixel[:3] for pixel in image.getdata() if pixel[3]}
+            # Gold with a near-black outline and red jewels, as the unit window shows it.
+            self.assertIn(palette[1][:3], colours)
+            self.assertIn(palette[3][:3], colours)
+            self.assertIn(palette[12][:3], colours)
+
 
 if __name__ == "__main__":
     unittest.main()

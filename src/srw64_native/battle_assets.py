@@ -62,7 +62,8 @@ def prepare_battle_assets(root: Path, rom: bytes, output: Path, hd_portrait=None
         hd = hd_portrait(image_id, palette_id) if hd_portrait else None
         portraits[str(actor)] = {**entry, 'hd': hd} if hd else entry
     result = {'schema': 'srw64.battle-assets.v1', 'units': units, 'portraits': portraits,
-              'weapon_markers': weapon_markers(resource(FONT_RESOURCE), resource(TEXT_PALETTE), output)}
+              'weapon_markers': {**weapon_markers(resource(FONT_RESOURCE), resource(TEXT_PALETTE), output),
+                                 'double_move': double_move_marker(resource(WIDE_FONT_RESOURCE), resource(CROWN_PALETTE), output)}}
     (output / 'manifest.json').write_text(json.dumps(result, indent=2) + '\n')
     return result
 
@@ -74,11 +75,20 @@ FONT_RESOURCE = 0
 TEXT_PALETTE = 2   # the white-text palette (4 is the dimmed one): 1 white, 2-10 greys, 11 the MAP red
 MARKER_GLYPHS = {'格': 244, '射': 243, 'P': 241, 'B': 242, 'MAP': 575}
 MARKER_SCALE = 8   # nearest-neighbour, so the pixels stay square when the page scales them
+# The 二回行動 crown: text 0x44B is the single glyph 1460, in font resource 1 (ids from
+# 0x597 on: 14x14, 36 a row). The map's unit window (801CB4D0) draws it beside the level
+# with palette 3 of the text engine's eight, resource 8: gold, a near-black outline, red
+# jewels. The pilot pages draw it for a pilot who has two actions (docs/native/native-ability-screens.md).
+WIDE_FONT_RESOURCE, WIDE_FIRST, CROWN_GLYPH, CROWN_PALETTE = 1, 0x597, 1460, 8
 
 
 def font_tile(font: Image.Image, glyph: int) -> Image.Image:
-    """Font resource 0: 8x14 narrow glyphs, 63 a row, then 14x14 wide ones from y 70."""
-    if glyph < 0x13B:
+    """Font resource 0: 8x14 narrow glyphs, 63 a row, then 14x14 wide ones from y 70;
+    resource 1 carries the ids from 0x597 on, 14x14, 36 a row."""
+    if glyph >= WIDE_FIRST:
+        wide = glyph - WIDE_FIRST
+        x, y, w = wide % 36 * 14, wide // 36 * 14, 14
+    elif glyph < 0x13B:
         x, y, w = glyph % 63 * 8, glyph // 63 * 14, 8
     else:
         wide = glyph - 0x13B
@@ -117,3 +127,23 @@ def weapon_markers(font_resource: bytes, palette_resource: bytes, output: Path) 
         markers[token] = {'path': str(path), 'sha256': sha(path.read_bytes()), 'glyph': MARKER_GLYPHS[token],
                           'width': indices.width, 'height': indices.height}
     return markers
+
+
+def double_move_marker(font_resource: bytes, palette_resource: bytes, output: Path) -> dict:
+    """The crown as the unit window draws it, cut to its pixels; the same record shape as
+    the weapon markers (path, sha256, glyph, width and height in original pixels)."""
+    font, _ = decode_i4_texture(font_resource)
+    palette = text_palette(palette_resource)
+    tile = font_tile(font, CROWN_GLYPH)
+    indices = Image.frombytes('L', tile.size, tile.tobytes())
+    box = indices.getbbox()
+    if not box:
+        raise ValueError('The double-move crown glyph is empty in the ROM font')
+    indices = indices.crop(box)
+    icon = Image.new('RGBA', indices.size)
+    icon.putdata([palette[v] for v in indices.tobytes()])
+    icon = icon.resize((indices.width * MARKER_SCALE, indices.height * MARKER_SCALE), Image.NEAREST)
+    path = output / f'marker-{CROWN_GLYPH}.png'
+    path.write_bytes(png_bytes(icon))
+    return {'path': str(path), 'sha256': sha(path.read_bytes()), 'glyph': CROWN_GLYPH,
+            'width': indices.width, 'height': indices.height}
