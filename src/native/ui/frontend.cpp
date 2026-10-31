@@ -12,8 +12,8 @@
 #endif
 #ifdef SRW64_GL_RENDERER
 #include "ui_renderer_gl.hpp"
-#include "double_move_w.hpp"
 #endif
+#include "double_move_w.hpp"
 #include "RmlUi_Platform_SDL.h"
 #include "native_dialogue.hpp"
 #include "native_portrait.hpp"
