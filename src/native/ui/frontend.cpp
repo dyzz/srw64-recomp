@@ -563,40 +563,43 @@ body.pointer button.lib-item:focus {color:#ffffff; border-color:#3fd0ff;} body.p
 .lib-name {font-size:26dp; font-weight:bold; color:#ffffff; white-space:nowrap; line-height:1.15;}
 .lib-sub {font-size:13dp; color:#a4b0d2; white-space:nowrap;}
 .lib-detail p.lib-note {font-size:12dp; color:#a4b0d2; margin:6dp 0 0;}
-/* The stage info page (stage_panel): a header row, then hidden elements and enemies side by side. */
+/* The stage info page (stage_panel): a header row, then hidden elements and enemies side by side.
+   Its text is in em of the panel's 13dp, which stage_panel raises on a phone (stage_text_scale). */
 .si-top {gap:12dp;}
-.si-top h1 {font-size:20dp; overflow:hidden;}
-.si-ep {flex-shrink:0; font-size:13dp; font-weight:bold; color:#0b1230; background-color:#3fd0ff; padding:1dp 8dp; white-space:nowrap;}
-.si-ja {flex-shrink:0; font-size:12dp; color:#7f8fa3; white-space:nowrap;}
-.si-lane {margin-left:auto; flex-shrink:0; font-size:12dp; color:#a4b0d2; border:1dp #3fd0ff80; padding:1dp 8dp; white-space:nowrap;}
+.si-panel .set-hint {font-size:0.92em;}
+.si-panel .set-foot button {font-size:1.08em;}
+.si-top h1 {font-size:1.54em; overflow:hidden;}
+.si-ep {flex-shrink:0; font-size:1em; font-weight:bold; color:#0b1230; background-color:#3fd0ff; padding:1dp 8dp; white-space:nowrap;}
+.si-ja {flex-shrink:0; font-size:0.92em; color:#7f8fa3; white-space:nowrap;}
+.si-lane {margin-left:auto; flex-shrink:0; font-size:0.92em; color:#a4b0d2; border:1dp #3fd0ff80; padding:1dp 8dp; white-space:nowrap;}
 .si-cols {flex:1 1 0; min-height:0; display:flex; gap:14dp;}
 .si-col {flex:1 1 0; min-width:0; overflow-y:auto; padding:0 8dp 0 4dp; border:1dp #00000000;}
 .si-col.focus {border-color:#ffd75e55;}
 body.pointer .si-col.focus {border-color:#00000000;}
-.si-head {margin:2dp 0 2dp; padding:2dp 0 4dp; font-size:14dp; font-weight:bold; color:#3fd0ff; border-bottom:1dp #3fd0ff59; white-space:nowrap;}
-.si-head span {margin-left:8dp; font-size:11dp; font-weight:normal; color:#7f8fa3;}
+.si-head {margin:2dp 0 2dp; padding:2dp 0 4dp; font-size:1.08em; font-weight:bold; color:#3fd0ff; border-bottom:1dp #3fd0ff59; white-space:nowrap;}
+.si-head span {margin-left:8dp; font-size:0.79em; font-weight:normal; color:#7f8fa3;}
 .si-secret, .si-enemy {padding:6dp 4dp 7dp; border-bottom:1dp #3fd0ff1f;}
 .si-line {display:flex; align-items:center; gap:6dp; white-space:nowrap;}
-.si-name {font-size:15dp; font-weight:bold; color:#e8eefc; overflow:hidden;}
-.si-chip {margin-left:auto; flex-shrink:0; font-size:11dp; font-weight:bold; padding:0 6dp; color:#a4b0d2; border:1dp #a4b0d260;}
+.si-name {font-size:1.15em; font-weight:bold; color:#e8eefc; overflow:hidden;}
+.si-chip {margin-left:auto; flex-shrink:0; font-size:0.85em; font-weight:bold; padding:0 6dp; color:#a4b0d2; border:1dp #a4b0d260;}
 .si-chip.done {color:#6be3a0; border-color:#6be3a080;}
 .si-chip.step, .si-chip.pending, .si-chip.count {color:#ffd75e; border-color:#ffd75e80;}
 .si-chip.missed {color:#ff8a8a; border-color:#ff8a8a80;}
 .si-chip.na {color:#7f8fa3; border-color:#7f8fa360;}
 .si-chip.chosen {color:#9fe0ff; border-color:#3fd0ff80;}
-p.si-wrap {margin:3dp 0 0; font-size:12dp; line-height:1.45; color:#a4b0d2;}
+p.si-wrap {margin:3dp 0 0; font-size:0.92em; line-height:1.45; color:#a4b0d2;}
 p.si-note {color:#8f9bbd;}
-.si-meter {display:flex; align-items:center; gap:6dp; margin-top:4dp; font-size:11dp; color:#ffd75e; white-space:nowrap;}
+.si-meter {display:flex; align-items:center; gap:6dp; margin-top:4dp; font-size:0.85em; color:#ffd75e; white-space:nowrap;}
 .si-bar {width:90dp; height:4dp; background-color:#ffffff22;}
 .si-bar div {height:4dp; background-color:#ffd75e;}
-.si-part {font-size:13dp; font-weight:bold; color:#e8eefc;}
-.si-from {font-size:13dp; color:#a4b0d2; overflow:hidden;}
-.si-tag {flex-shrink:0; font-size:10dp; padding:0 4dp;}
+.si-part {font-size:1em; font-weight:bold; color:#e8eefc;}
+.si-from {font-size:1em; color:#a4b0d2; overflow:hidden;}
+.si-tag {flex-shrink:0; font-size:0.77em; padding:0 4dp;}
 .si-tag.third {color:#d8b4ff; border:1dp #d8b4ff80;}
 .si-tag.ever {margin-left:4dp; color:#6be3a0; border:1dp #6be3a050;}
 .si-tag.retreat {color:#ffc56b; border:1dp #ffc56b80;}
-.si-none {padding:8dp 2dp; font-size:13dp; color:#7f8fa3;}
-.si-empty {flex:1 1 0; padding:24dp 4dp; font-size:15dp; color:#a4b0d2;}
+.si-none {padding:8dp 2dp; font-size:1em; color:#7f8fa3;}
+.si-empty {flex:1 1 0; padding:24dp 4dp; font-size:1.15em; color:#a4b0d2;}
 .none {color:#5d6890;}
 /* The battle viewer (docs/design/battle-viewer.md §9.4; the canvas design 2026-10-04, after the Z special disc): one page, 反 left, 攻 right; a choice opens a box over the other half */
 .set-panel.vw-panel {position:relative; width:96%; height:94%; max-width:1180dp; max-height:760dp; padding:8dp 14dp 8dp; background-color:#070b1df5;}
@@ -2655,10 +2658,20 @@ std::string stage_status_chip(const json& s,const std::string& locale) {
     else if(state=="chosen" && s.contains("label"))text=escape(s["label"].value(locale,s["label"].value("en",std::string())));
     return text.empty()?std::string():"<span class='si-chip "+state+"'>"+text+"</span>";
 }
+// A phone shows a dp at little more than half its size on the Steam Deck at Largest (the
+// reference, about 0.17 mm; Seeker 0.11): the stage info page's text, short lines with room
+// to spare, grows toward that, at most 1.6 times. Where the system's DPI is off (desktops
+// report 96 or 72 a point) the dp comes out large and nothing changes.
+float stage_text_scale() {
+    float ddpi=0;
+    if(SDL_GetDisplayDPI(0,&ddpi,nullptr,nullptr)!=0 || ddpi<=0)return 1;
+    const float mm_per_dp=ui_density/(ddpi/25.4f);
+    return std::clamp(.17f/mm_per_dp,1.f,1.6f);
+}
 std::string stage_panel(const json& snap) {
     wrap_texts.clear();
     const auto& locale=localization::catalog().locale;
-    std::string body="<div class='set-shade solid'><div class='set-panel lib-panel si-panel'>";
+    std::string body="<div class='set-shade solid'><div class='set-panel lib-panel si-panel' style='font-size:"+std::to_string(13*stage_text_scale())+"dp;'>";
     // On the map or in a battle, the way back to the suspend save (asked first, quick_load.hpp).
     const auto load=(quick_load::usable()?button("quick-load-ask",label("quick_load_open")):std::string())+
         (quick_load::usable_title()?button("title-return-ask",label("title_return_open")):std::string());
