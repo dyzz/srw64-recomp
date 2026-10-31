@@ -183,6 +183,13 @@ bool continues(const std::string& drawn) {
         if (drawn.rfind(lead, 0) == 0) return true;
     return false;
 }
+// A translation that opens with punctuation finishes the piece before it, whatever the
+// original piece was (選択しま|す becomes 选择…防御|。): it must not stand where the kana stood.
+bool finishes(const std::string& text) {
+    for (const char* lead : {"。", "、", "，", "！", "？", "：", ".", ",", ";", ":", "!", "?"})
+        if (text.rfind(lead, 0) == 0) return true;
+    return false;
+}
 std::string catalog_form(const std::string& text) {
     std::string out;
     for (const char c : text) {
@@ -522,6 +529,20 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         out.erase(out.find_last_not_of(' ') + 1);
         composed[i] = out;
     }
+    // A label the original prints twice, the second time inside a longer one at the same
+    // place (the GB link page's / under its page number 1/ 1): pixel-identical there, but set
+    // in the font the two copies land a pixel or two apart, so the copy is covered, not drawn.
+    for (auto& a : found) {
+        if (a.consumed || a.translated || a.cells.empty()) continue;
+        for (const auto& b : found) {
+            if (&b == &a || b.translated || b.cells.size() <= a.cells.size()) continue;
+            const bool inside = std::all_of(a.cells.begin(), a.cells.end(), [&](const Cell& c) {
+                return std::any_of(b.cells.begin(), b.cells.end(),
+                                   [&](const Cell& d) { return d.x == c.x && d.y == c.y && d.code == c.code; });
+            });
+            if (inside) { a.consumed = true; break; }
+        }
+    }
     // What starts where on each line: label parts, printed numbers, number pool entries.
     // A piece of text may run until the next of these on its line.
     struct Start { int x, y; int owner; };   // owner: label index, -1 for the number pool
@@ -558,7 +579,8 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
     // A label the original continues on the same line where it ends (ROMカートリッジ|のデータを
     // ロードします): the translation reads as one sentence from the first piece's start, in
     // the run's own width. The follower is alone in its column, so table cells stay apart, and
-    // starts with a particle or punctuation: a word of its own (レベルアップ|レベル 12) stays apart.
+    // starts with a particle or punctuation, or its translation does (選択しま|す → 。): a word
+    // of its own (レベルアップ|レベル 12) stays apart.
     std::vector<int> run(found.size(), 0);   // label -> the original run's width it now holds
     for (size_t i = 0; i < found.size(); ++i) {
         Label& a = found[i];
@@ -571,7 +593,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             for (size_t j = 0; j < found.size(); ++j) {
                 Label& b = found[j];
                 if (j == i || b.id == 0 || b.consumed || b.palette != a.palette || (!a.translated && !b.translated)) continue;
-                if (!continues(b.drawn)) continue;
+                if (!continues(b.drawn) && !(b.translated && finishes(b.text))) continue;
                 const auto pb = parts_of(b);
                 if (pb.size() != 1 || std::abs(pb.front().y - pa.front().y) > 2) continue;
                 if (pb.front().x < end - 2 || pb.front().x > end + int(kNarrow) || column(pb.front().x, pb.front().y)) continue;
