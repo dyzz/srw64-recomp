@@ -4,10 +4,10 @@
 docs/design/text-updates.md. The game's update check reads /latest.json; its `text` section
 (web/src/data/text-update.json) names the newest list, web/public/text/text-r<N>.json:
 
-  {"schema": "srw64.text-update.v1", "revision": N, "release": "0.5.3", "date", "commit",
-   "notes": {zh, tw, en, ja}, "files": {path: {"hash": 12 hex digits, "bytes": size}}}
+  {"schema": "srw64.text-update.v1", "revision": N, "oldest": "0.5.3", "release": "0.5.4", "date",
+   "commit", "notes": {zh, tw, en, ja}, "files": {path: {"hash": 12 hex digits, "bytes": size}}}
 
-and each file is web/public/text/files/<hash>.z, zlib-compressed. The paths:
+and the files the website keeps are web/public/text/files/<hash>.z, zlib-compressed. The paths:
 
   dialogue/<locale>/<file>.txt   a dialogue file, whole
   locales/<locale>.json          {"entries": {key: target}, "ui": {key: text}}: the locale's
@@ -15,9 +15,15 @@ and each file is web/public/text/files/<hash>.z, zlib-compressed. The paths:
                                  only the labels it has)
   library-names.json             the Library's names
 
-Every file is listed, whatever any release shipped: a game downloads those whose hash differs
-from the copy it installed before, so after the first time only what changed. `release` is the
-newest release the commit holds: a game newer than that ships newer text and leaves the list.
+Every file is listed: the list is the whole text. A game reads the dialogue files its bundled
+text has the same from there, copies those its installed update has, and downloads the rest;
+so the website keeps only what differs from some release's bundled text, every locale catalog
+and the Library names (the game has those in another form), not all of it.
+
+The list serves the releases from `oldest` to `release`. `release` is the newest release the
+commit holds: a game newer than that ships newer text and leaves the list. `oldest` is the first
+release with the text update (0.5.3) unless --oldest says later: an older game leaves the list,
+and the website no longer keeps what only it would need.
 
 Everything is read from a commit (HEAD by default), so the list is the text as committed.
 Before writing, the commit's dialogue files load with no problems and its locale catalogs
@@ -54,6 +60,8 @@ NOTE_LANGUAGES = ("zh", "tw", "en", "ja")
 # A file's name and check: the first hex digits of its SHA-256. About 1200 files, so 48
 # bits leave no collision to fear; the list itself is checked whole (its sha256 in latest.json).
 HASH_DIGITS = 12
+# The first release that reads text updates: the oldest a list can serve.
+FIRST_RELEASE = "0.5.3"
 # Lists kept on the website: the newest, and the one before for a game that read it just
 # before the deploy. Their files stay; the rest go.
 KEPT = 2
@@ -91,6 +99,13 @@ def release(commit: str) -> str:
     """The newest release tag the commit holds, as a version."""
     tag = git("describe", "--tags", "--abbrev=0", "--match", "v[0-9]*.[0-9]*.[0-9]*", commit).strip()
     return tag[1:]
+
+
+def releases(oldest: str, newest: str) -> list[str]:
+    """The release tags from `oldest` to `newest`, oldest first."""
+    tags = [tag for tag in git("tag", "--list", "v[0-9]*.[0-9]*.[0-9]*").split() if tag[1:].replace(".", "").isdigit()]
+    found = [tag for tag in tags if version_key(oldest) <= version_key(tag[1:]) <= version_key(newest)]
+    return sorted(found, key=lambda tag: version_key(tag[1:]))
 
 
 def text_files(revision: str) -> dict[str, bytes]:
@@ -140,14 +155,23 @@ def check(commit: str, rom: Path) -> None:
         raise SystemExit("The text has problems; no update:\n  " + "\n  ".join(map(str, problems[:40])))
 
 
-def build(commit: str, revision: int, date: str, notes: dict) -> tuple[bytes, dict[str, bytes]]:
-    """The list's bytes and {hash: compressed file}."""
-    rows, stored = {}, {}
+def build(commit: str, revision: int, date: str, notes: dict, oldest: str) -> tuple[bytes, dict[str, bytes]]:
+    """The list's bytes and {hash: compressed file} for the files the website keeps."""
+    newest = release(commit)
+    served = releases(oldest, newest)
+    if not served:
+        raise SystemExit(f"No release from {oldest} to {newest}: a list serves releases that read text updates")
+    # What each served release ships, as the game finds it: its dialogue files.
+    shipped = [{path: data for path, data in text_files(tag).items() if path.startswith("dialogue/")} for tag in served]
+    rows, stored, seen = {}, {}, {}
     for path, data in sorted(text_files(commit).items()):
         digest = short_hash(data)
+        if seen.setdefault(digest, data) != data:
+            raise SystemExit(f"Two files share the hash {digest}; use more digits")
         rows[path] = {"hash": digest, "bytes": len(data)}
-        stored[digest] = zlib.compress(data, 9)
-    about = {"schema": SCHEMA, "revision": revision, "release": release(commit), "date": date,
+        if not path.startswith("dialogue/") or any(files.get(path) != data for files in shipped):
+            stored[digest] = zlib.compress(data, 9)
+    about = {"schema": SCHEMA, "revision": revision, "oldest": served[0][1:], "release": newest, "date": date,
              "commit": git("rev-parse", commit).strip(), "notes": notes, "files": rows}
     return (json.dumps(about, ensure_ascii=False, indent=1) + "\n").encode(), stored
 
@@ -158,6 +182,7 @@ def main() -> int:
     parser.add_argument("--notes", type=Path, help='JSON {"zh","tw","en","ja"}: the one-line note the About page shows')
     parser.add_argument("--revision", type=int, help="default: one more than the listed one, else 1")
     parser.add_argument("--date", default=datetime.date.today().isoformat())
+    parser.add_argument("--oldest", default=FIRST_RELEASE, help=f"the oldest release the list serves (default {FIRST_RELEASE})")
     parser.add_argument("--rom", type=Path, default=ROOT / "rom.z64", help="the JP ROM, for the checks")
     parser.add_argument("--dry-run", action="store_true", help="list what would go in, write nothing")
     args = parser.parse_args()
@@ -165,8 +190,10 @@ def main() -> int:
         raise SystemExit(f"No ROM at {args.rom}: the checks need it")
     check(args.commit, args.rom)
     if args.dry_run:
-        files = text_files(args.commit)
-        print(f"{len(files)} files, {sum(map(len, files.values()))} bytes, for releases up to {release(args.commit)}")
+        data, stored = build(args.commit, 0, args.date, {}, args.oldest)
+        about = json.loads(data)
+        print(f"{len(about['files'])} files, {len(stored)} kept on the website ({sum(map(len, stored.values()))} bytes compressed), "
+              f"for releases {about['oldest']} to {about['release']}")
         return 0
     if not args.notes:
         raise SystemExit("--notes is required")
@@ -175,7 +202,7 @@ def main() -> int:
         raise SystemExit(f"--notes needs a line for each of {', '.join(NOTE_LANGUAGES)}")
     listed = json.loads(DATA.read_text()) if DATA.exists() else {}
     revision = args.revision or listed.get("revision", 0) + 1
-    data, stored = build(args.commit, revision, args.date, notes)
+    data, stored = build(args.commit, revision, args.date, notes, args.oldest)
     (PUBLIC / "files").mkdir(parents=True, exist_ok=True)
     name = f"text-r{revision}.json"
     (PUBLIC / name).write_bytes(data)
@@ -195,7 +222,8 @@ def main() -> int:
                                 "sha256": hashlib.sha256(data).hexdigest()}, indent=2) + "\n")
     packed = sum(len(value) for value in stored.values())
     about = json.loads(data)
-    print(f"{PUBLIC / name}: r{revision}, {len(about['files'])} files ({packed} bytes compressed), for releases up to {about['release']}")
+    print(f"{PUBLIC / name}: r{revision}, {len(about['files'])} files, {len(stored)} kept on the website ({packed} bytes compressed), "
+          f"for releases {about['oldest']} to {about['release']}")
     return 0
 
 

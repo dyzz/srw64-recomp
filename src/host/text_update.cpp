@@ -11,8 +11,10 @@
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
+#include <functional>
 #include <mutex>
 #include <regex>
+#include <set>
 #include <stdexcept>
 #include <vector>
 
@@ -21,12 +23,16 @@ namespace {
 namespace fs = std::filesystem;
 using json = nlohmann::json;
 constexpr const char* kSchema = "srw64.text-update.v1";
-// The list names every text file: about 1200, 30 MB, 10 MB compressed.
-constexpr size_t kListLimit = 4u << 20, kFileLimit = 16u << 20;
-constexpr uint64_t kUnpackedLimit = 64u << 20;
+// The list names every text file: about 1200, 30 MB, 10 MB compressed, for three translations.
+// Room for many more languages; a file the program cannot use is not counted.
+constexpr size_t kListLimit = 16u << 20, kFileLimit = 16u << 20;
+constexpr uint64_t kUnpackedLimit = 256u << 20;
 constexpr size_t kHashDigits = 12;  // build_text_update.py HASH_DIGITS
 // Where a download is put together, kept when it stops half way.
 constexpr const char* kStaging = ".staging";
+// Beside text.json in an update: {"version", "files": [names]}, the files it keeps: those
+// that differ from the text this program shipped with (the rest are read from the bundle).
+constexpr const char* kKept = "kept.json";
 struct Shared {
     std::mutex mutex;
     std::string version;
@@ -62,48 +68,70 @@ std::vector<int> version_parts(const std::string& version) {
     }
     return parts;
 }
-// Only the paths a list has (build_text_update.py), no others.
+// The paths this program reads from a list (build_text_update.py); a list may name others,
+// for later programs, and those are left alone.
 bool allowed(const std::string& name) {
     static const std::regex paths(R"((library-names\.json|locales/[A-Za-z-]{2,16}\.json|dialogue/[A-Za-z-]{2,16}/[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)*\.txt))");
     return std::regex_match(name, paths);
 }
 struct Wanted { std::string hash; uint64_t bytes; };
-// The list's files, or none when this program is newer than the list's `release` (it ships
-// newer text than the list has). Throws when the list is not one.
-std::map<std::string, Wanted> wanted(const json& list, const std::string& version) {
+// "dialogue/<locale>/…" and "locales/<locale>.json": the locale, else empty.
+std::string locale_of(const std::string& name) {
+    for (const std::string_view folder : {"dialogue/", "locales/"})
+        if (name.starts_with(folder)) {
+            const auto rest = name.substr(folder.size());
+            return rest.substr(0, std::min(rest.find('/'), rest.find(".json")));
+        }
+    return {};
+}
+// The list's files this program reads (allowed(), and a language it has when `usable`), or
+// none when this program is outside the list's releases: newer than `release` (it ships newer
+// text than the list has) or older than `oldest` (the website has not kept what it needs).
+// Throws when the list is not one.
+std::map<std::string, Wanted> wanted(const json& list, const std::string& version,
+                                     const std::function<bool(const std::string&)>& usable = {}) {
     if (!list.is_object() || list.value("schema", "") != kSchema || list.value("revision", 0) <= 0) throw std::runtime_error("not a text update list");
-    const auto mine = version_parts(version), release = version_parts(list.value("release", ""));
+    const auto mine = version_parts(version), release = version_parts(list.value("release", "")), oldest = version_parts(list.value("oldest", ""));
     const auto& files = list.value("files", json::object());
-    if (mine.empty() || release.empty() || !files.is_object()) throw std::runtime_error("not a text update list");
+    if (mine.empty() || release.empty() || oldest.empty() || !files.is_object()) throw std::runtime_error("not a text update list");
     std::map<std::string, Wanted> found;
-    if (mine > release) return found;
-    uint64_t total = 0;
+    if (mine > release || mine < oldest) return found;
     for (const auto& [name, row] : files.items()) {
-        if (!row.is_object() || !allowed(name)) throw std::runtime_error("the text update lists " + name);
+        if (!allowed(name)) continue;
+        if (const auto locale = locale_of(name); usable && !locale.empty() && !usable(locale)) continue;
+        if (!row.is_object()) throw std::runtime_error("the text update lists " + name + " wrongly");
         const auto hash = row.value("hash", "");
         const auto bytes = row.value("bytes", uint64_t(0));
         if (hash.size() != kHashDigits || bytes > kFileLimit) throw std::runtime_error("the text update lists " + name + " wrongly");
-        if ((total += bytes) > kUnpackedLimit) throw std::runtime_error("the text update is too large");
         found[name] = {hash, bytes};
     }
     return found;
 }
-// The update in `dir` as its text.json says: every file it lists is there with its hash, and
-// nothing else (a file the list does not name is removed). Throws.
+// The update in `dir` as its text.json and kept.json say: made for this program, every file
+// it keeps there with the list's hash, and nothing else (another file is removed). Throws.
 Pack describe(const fs::path& dir, const std::string& version, int revision) {
     const auto list = read_json(dir / "text.json", kListLimit);
     const auto files = wanted(list, version);
     if (list.value("revision", 0) != revision) throw std::runtime_error("the text update's revision does not match");
-    if (files.empty()) throw std::runtime_error("this program is newer than the text update");
-    for (const auto& [name, file] : files)
-        if (app::sha256_file(app::content_path(dir, name)).substr(0, kHashDigits) != file.hash)
-            throw std::runtime_error("the text update's " + name + " is damaged");
+    if (files.empty()) throw std::runtime_error("this program is outside the text update's releases");
+    const auto kept = read_json(dir / kKept, kListLimit);
+    // Kept against another program's bundled text: what this one needs may be missing.
+    if (!kept.is_object() || kept.value("version", "") != version || !kept.value("files", json()).is_array())
+        throw std::runtime_error("the text update was made for another version");
+    std::set<std::string> names;
+    for (const auto& name : kept["files"]) {
+        if (!name.is_string() || !files.contains(name.get<std::string>())) throw std::runtime_error("the text update keeps a file its list lacks");
+        const auto& file = files.at(name.get<std::string>());
+        if (app::sha256_file(dir / fs::path(name.get<std::string>())).substr(0, kHashDigits) != file.hash)
+            throw std::runtime_error("the text update's " + name.get<std::string>() + " is damaged");
+        names.insert(name.get<std::string>());
+    }
     std::error_code error;
     std::vector<fs::path> extra;
     for (auto it = fs::recursive_directory_iterator(dir, error); !error && it != fs::recursive_directory_iterator(); it.increment(error)) {
         if (!it->is_regular_file(error)) continue;
         const auto name = fs::relative(it->path(), dir, error).generic_string();
-        if (name != "text.json" && !files.contains(name)) extra.push_back(it->path());
+        if (name != "text.json" && name != kKept && !names.contains(name)) extra.push_back(it->path());
     }
     if (error) throw std::runtime_error("the text update cannot be read");
     for (const auto& path : extra) fs::remove(path, error);
@@ -206,13 +234,31 @@ Shared& ready() {
                 std::fprintf(stderr, "SRW64_TEXT_UPDATE r%d%s\n", revision, s.bypassed ? " (bundled text chosen)" : "");
                 break;
             } catch (const std::exception& problem) {
+                // Its files wait in kStaging: the next check takes what still fits.
                 std::fprintf(stderr, "SRW64_TEXT_UPDATE_REMOVED %s %s\n", dir.filename().string().c_str(), problem.what());
                 std::error_code ignored;
+                if (!fs::exists(s.root / kStaging, ignored)) fs::rename(dir, s.root / kStaging, ignored);
                 fs::remove_all(dir, ignored);
             }
         }
     });
     return s;
+}
+// The file a list path names in the text this program shipped with, if it has one: the
+// dialogue files, in the bundle's dialogue/ (the consoles keep it too, for preparing their
+// data). The locale catalogs and Library names are built in another form, so the update
+// always keeps the list's.
+fs::path bundled(const std::string& name) {
+    constexpr std::string_view folder = "dialogue/";
+    if (!name.starts_with(folder)) return {};
+    static const auto root = app::bundled_resource("dialogue");
+    return root.empty() ? fs::path() : root / fs::path(name.substr(folder.size()));
+}
+// `path` holds the list's file: its size, then its hash.
+bool same(const fs::path& path, const Wanted& file) {
+    std::error_code error;
+    return !path.empty() && fs::is_regular_file(path, error) && fs::file_size(path, error) == file.bytes &&
+           app::sha256_file(path).substr(0, kHashDigits) == file.hash;
 }
 // The list's folder on the website: where its files are, as files/<hash>.z.
 std::string folder_url(const std::string& url) { return url.substr(0, url.rfind('/') + 1); }
@@ -231,16 +277,11 @@ std::string unpacked(const std::string& packed, const std::string& name, const W
 // way), copied when the installed update has the same, else downloaded. True when downloaded.
 bool fetch(const std::string& base, const std::string& name, const Wanted& file, const std::optional<Pack>& installed,
            const fs::path& staging, const std::string& user_agent) {
-    const auto same = [&](const fs::path& path) {
-        std::error_code error;
-        return fs::is_regular_file(path, error) && fs::file_size(path, error) == file.bytes &&
-               app::sha256_file(path).substr(0, kHashDigits) == file.hash;
-    };
     // `name` is one allowed() passed: no "..", no root.
     const auto target = staging / fs::path(name);
-    if (same(target)) return false;
+    if (same(target, file)) return false;
     std::string data;
-    const bool copied = installed && same(installed->dir / fs::path(name));
+    const bool copied = installed && same(installed->dir / fs::path(name), file);
     if (copied) {
         data = app::read_text(installed->dir / fs::path(name), kFileLimit);
     } else {
@@ -338,10 +379,13 @@ void take(const json& latest, const std::string& user_agent) {
         whole.update({reinterpret_cast<const uint8_t*>(text.data()), text.size()});
         if (text.size() != bytes || whole.finish() != digest) throw std::runtime_error("the download is damaged");
         const auto list = json::parse(text, nullptr, false);
-        const auto files = wanted(list, version);
+        const auto files = wanted(list, version, [](const std::string& locale) { return localization::find(locale) != nullptr; });
         if (list.value("revision", 0) != revision) throw std::runtime_error("the text update's revision does not match");
+        uint64_t total = 0;
+        for (const auto& [name, file] : files)
+            if ((total += file.bytes) > kUnpackedLimit) throw std::runtime_error("the text update is too large");
         if (files.empty()) {
-            // This program ships newer text than the list: the installed update goes too.
+            // This program is outside the list's releases: the installed update goes too.
             bool had;
             {
                 std::lock_guard lock(s.mutex);
@@ -363,9 +407,16 @@ void take(const json& latest, const std::string& user_agent) {
         fs::create_directories(staging);
         std::ofstream(staging / "text.json", std::ios::binary) << text;
         const auto base = folder_url(url);
+        // The files the bundled text has the same are read from there; the website keeps
+        // only the others (build_text_update.py).
         size_t downloaded = 0;
-        for (const auto& [name, file] : files)
+        json kept = json::array();
+        for (const auto& [name, file] : files) {
+            if (same(bundled(name), file)) continue;
             if (fetch(base, name, file, installed, staging, user_agent)) ++downloaded;
+            kept.push_back(name);
+        }
+        std::ofstream(staging / kKept, std::ios::binary) << json{{"version", version}, {"files", kept}}.dump(1) << '\n';
         auto pack = describe(staging, version, revision);
         auto next = read_layer(pack);
         if (const auto problem = verify(*next); !problem.empty()) throw std::runtime_error(problem);
@@ -389,7 +440,7 @@ void take(const json& latest, const std::string& user_agent) {
             const int other = revision_of(entry.path().filename().string());
             if (other && other != revision && (!installed || other != installed->revision)) fs::remove_all(entry.path(), ignored);
         }
-        std::fprintf(stderr, "SRW64_TEXT_UPDATE_INSTALLED r%d (%zu files, %zu downloaded)\n", revision, files.size(), downloaded);
+        std::fprintf(stderr, "SRW64_TEXT_UPDATE_INSTALLED r%d (%zu files, %zu kept, %zu downloaded)\n", revision, files.size(), kept.size(), downloaded);
         if (!bypassed) {
             dialogue::request_reload(false);
             notices::post("text-update", filled(localization::catalog().ui("update_text_notice"), "{revision}", std::to_string(revision)));

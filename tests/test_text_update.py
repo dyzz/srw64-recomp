@@ -1,6 +1,7 @@
 """The text update list (tools/release/build_text_update.py): the whole text, by short hash."""
 import importlib.util
 import json
+import subprocess
 from pathlib import Path
 import unittest
 from unittest import mock
@@ -12,13 +13,24 @@ update = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(update)
 
 PROFILE = {"locales": {"ja": "content/locales/ja.json", "zh-Hans": "content/locales/zh-Hans.json"}}
+PROFILE_PATH = update.PROFILE
 
 
 def locale(entries, ui):
     return {"entries": [{"key": k, "target": v} for k, v in entries.items()], "ui": ui}
 
 
+SHIPPED = {
+    PROFILE_PATH: PROFILE,
+    "content/locales/ja.json": locale({}, {"title": "タイトル"}),
+    "content/locales/zh-Hans.json": locale({}, {"title": "标题"}),
+    "content/dialogue/zh-Hans/story/scene-0001.txt": "old",
+    "content/dialogue/zh-Hans/story/scene-0002.txt": "same",
+}
 TREES = {
+    "v0.5.3": SHIPPED,
+    "v0.5.4": {**SHIPPED, "content/dialogue/zh-Hans/story/scene-0001.txt": "new",
+               "content/dialogue/zh-Hans/story/scene-0002.txt": "changed in 0.5.4"},
     "HEAD": {
         update.PROFILE: {"locales": {**PROFILE["locales"], "ko": "content/locales/ko.json"}},
         "content/locales/ja.json": locale({}, {"title": "タイトル", "back": "戻る"}),
@@ -26,6 +38,7 @@ TREES = {
         "content/locales/ko.json": locale({}, {}),
         "content/dialogue/zh-Hans/story/scene-0001.txt": "new",
         "content/dialogue/zh-Hans/story/scene-0002.txt": "same",
+        "content/dialogue/zh-Hans/story/scene-0003.txt": "added",
         "content/dialogue/zh-Hans/notes.md": "not a dialogue file",
         "content/dialogue/fr/story/scene-0001.txt": "a locale the profile lacks",
         update.LIBRARY: {"units": {}},
@@ -34,6 +47,8 @@ TREES = {
 
 
 def fake_show(revision, path):
+    if path not in TREES[revision]:
+        raise subprocess.CalledProcessError(128, "git show")
     value = TREES[revision][path]
     return value.encode() if isinstance(value, str) else json.dumps(value).encode()
 
@@ -43,7 +58,11 @@ def fake_blobs(revision, prefix):
 
 
 def fake_git(*args, **kwargs):
-    return "v0.5.3\n" if args[0] == "describe" else "abc\n"
+    if args[0] == "describe":
+        return "v0.5.4\n"
+    if args[0] == "tag":
+        return "v0.5.2\nv0.5.3\nv0.5.4\nv0.6.0\n"
+    return "abc\n"
 
 
 class ListTests(unittest.TestCase):
@@ -53,17 +72,39 @@ class ListTests(unittest.TestCase):
         for patch in patches:
             patch.start()
             self.addCleanup(patch.stop)
-        data, self.stored = update.build("HEAD", 3, "2026-10-30", {})
+        data, self.stored = update.build("HEAD", 3, "2026-10-30", {}, update.FIRST_RELEASE)
         self.about = json.loads(data)
 
     def test_every_text_file_whatever_changed(self):
         self.assertEqual(sorted(self.about["files"]), [
             "dialogue/zh-Hans/story/scene-0001.txt", "dialogue/zh-Hans/story/scene-0002.txt",
+            "dialogue/zh-Hans/story/scene-0003.txt",
             "library-names.json", "locales/ja.json", "locales/ko.json", "locales/zh-Hans.json"])
 
-    def test_the_newest_release_the_commit_holds(self):
-        self.assertEqual(self.about["release"], "0.5.3")
+    def test_the_releases_it_serves(self):
+        self.assertEqual(self.about["release"], "0.5.4")
+        self.assertEqual(self.about["oldest"], "0.5.3")
         self.assertEqual(self.about["schema"], update.SCHEMA)
+
+    def test_the_website_keeps_what_some_release_lacks(self):
+        def kept(path):
+            return self.about["files"][path]["hash"] in self.stored
+        # Changed since 0.5.3, changed back after 0.5.4, and new.
+        self.assertTrue(kept("dialogue/zh-Hans/story/scene-0001.txt"))
+        self.assertTrue(kept("dialogue/zh-Hans/story/scene-0002.txt"))
+        self.assertTrue(kept("dialogue/zh-Hans/story/scene-0003.txt"))
+        # The catalogs and Library names are always there.
+        self.assertTrue(all(kept(path) for path in self.about["files"] if not path.startswith("dialogue/")))
+
+    def test_a_later_oldest_keeps_less(self):
+        # 0.5.4 ships scene-0001 as the list has it: only 0.5.3 needed it.
+        _, stored = update.build("HEAD", 3, "2026-10-30", {}, "0.5.4")
+        self.assertNotIn(self.about["files"]["dialogue/zh-Hans/story/scene-0001.txt"]["hash"], stored)
+        self.assertIn(self.about["files"]["dialogue/zh-Hans/story/scene-0002.txt"]["hash"], stored)
+
+    def test_no_release_to_serve(self):
+        with self.assertRaises(SystemExit):
+            update.build("HEAD", 3, "2026-10-30", {}, "0.5.5")
 
     def test_labels_as_the_game_sees_them(self):
         row = self.about["files"]["locales/zh-Hans.json"]

@@ -11,13 +11,15 @@
 
 // Text updates (docs/design/text-updates.md): the newest text from the website, over the text
 // the program shipped with. The update check's /latest.json names one list in `text`, the
-// whole text file by file with a short hash, for every release up to the list's `release`.
-// take() reads it when it is newer than the one installed, keeps the files the installed
-// update has the same, downloads the others, checks them against the catalogs as the game
-// reads them, and installs them in SRW64_TEXT_UPDATES as r<revision>/. The dialogue layer
-// (native_dialogue.cpp) then reads them between the bundled text and the player's own:
-// dialogue files, data-text entries and UI labels, and the Library's names (library.cpp).
-// A program newer than the list's `release` ships newer text and drops the update.
+// whole text file by file with a short hash, for the releases from its `oldest` to `release`.
+// take() reads it when it is newer than the one installed and keeps, as r<revision>/ in
+// SRW64_TEXT_UPDATES, the files this program uses and did not ship the same: copied from the
+// installed update when it has them, else downloaded (the website keeps only those). It
+// checks them against the catalogs as the game reads them. The dialogue layer
+// (native_dialogue.cpp) then reads them between the bundled text and the player's own, entry
+// by entry: dialogue files, data-text entries and UI labels, and the Library's names
+// (library.cpp). A program outside the list's releases drops the update; one kept for
+// another program version waits in the staging folder for the next check.
 namespace srw64::text_update {
 enum class State { None, Downloading, Installed, Failed };
 struct Pack {
