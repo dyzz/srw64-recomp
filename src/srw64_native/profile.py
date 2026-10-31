@@ -118,7 +118,7 @@ UI_KEYS |= {f"cheat_{row}{part}" for row in ("exp", "money") for part in ("", "_
     | {f"cheat_{row}_{mode}" for row in ("exp", "money") for mode in ("x1", "x1.5", "x2", "x3", "x5", "x10")}
 UI_KEYS |= {"cheat_morale_cap", "cheat_morale_cap_note"} | {f"cheat_morale_cap_{cap}" for cap in ("150", "200", "300", "999")}
 # The Controls page's functions (frontend.cpp control_rows): controls_row_<id>.
-CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "animation", "settings",
+CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", "c_up", "c_down", "c_right", "animation", "settings",
                 "language", "images", "speed", "quick_load", "title_return", "screenshot", "d_up", "d_down", "d_left", "d_right", "z")
 UI_KEYS |= {f"controls_row_{row}" for row in CONTROL_ROWS}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",

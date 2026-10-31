@@ -66,7 +66,7 @@ inline char32_t pad_glyph(const input::PadInput& p, PadFamily family) {
     switch (p.index) {
     case a::LeftX: case a::LeftY: return 0xE838;
     case a::RightY: return p.kind == input::PadInput::AxisMinus ? 0xE83A : 0xE83B;
-    case a::RightX: return 0xE839;
+    case a::RightX: return p.kind == input::PadInput::AxisMinus ? 0xE837 : 0xE83F;
     case a::TriggerLeft: return FamilyGlyph{0xE812, 0xE816, 0xE816, 0xE81A}(family);
     case a::TriggerRight: return FamilyGlyph{0xE813, 0xE817, 0xE817, 0xE81B}(family);
     default: return 0;

@@ -479,6 +479,7 @@
     "controls_row_c_left": "Faster map cursor (hold)",
     "controls_row_c_up": "Larger text / 10 songs back",
     "controls_row_c_down": "Smaller text / 10 songs on",
+    "controls_row_c_right": "Whole-map view",
     "controls_row_animation": "Battle animation on or off (pre-battle) / stage info",
     "controls_row_settings": "Settings window",
     "controls_row_language": "Next language",

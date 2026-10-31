@@ -479,6 +479,7 @@
     "controls_row_c_left": "マップカーソル加速（押し続け）",
     "controls_row_c_up": "文字を大きく／曲 −10",
     "controls_row_c_down": "文字を小さく／曲 +10",
+    "controls_row_c_right": "マップ全体表示",
     "controls_row_animation": "戦闘アニメ切替（戦闘前確認）／ステージ情報",
     "controls_row_settings": "設定画面",
     "controls_row_language": "言語切替",

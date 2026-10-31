@@ -1387,7 +1387,7 @@ using input::Action;
 struct ControlRow {const char* id;Action action;};
 constexpr ControlRow control_rows[]={
     {"a",Action::A},{"b",Action::B},{"start",Action::Start},{"l",Action::L},{"r",Action::R},
-    {"aux_left",Action::AuxLeft},{"aux_right",Action::AuxRight},{"c_left",Action::CLeft},{"c_up",Action::CUp},{"c_down",Action::CDown},
+    {"aux_left",Action::AuxLeft},{"aux_right",Action::AuxRight},{"c_left",Action::CLeft},{"c_up",Action::CUp},{"c_down",Action::CDown},{"c_right",Action::CRight},
     {"animation",Action::Animation},{"settings",Action::Settings},{"language",Action::Language},{"images",Action::Images},{"speed",Action::Speed},
     {"quick_load",Action::QuickLoad},{"title_return",Action::TitleReturn},{"screenshot",Action::Screenshot},{"d_up",Action::DUp},{"d_down",Action::DDown},{"d_left",Action::DLeft},{"d_right",Action::DRight},{"z",Action::Z}};
 void start_capture(const std::string& id) {

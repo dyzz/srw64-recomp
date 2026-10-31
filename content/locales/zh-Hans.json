@@ -479,6 +479,7 @@
     "controls_row_c_left": "地图光标加速（按住）",
     "controls_row_c_up": "字号放大／曲目 −10",
     "controls_row_c_down": "字号缩小／曲目 +10",
+    "controls_row_c_right": "地图总览",
     "controls_row_animation": "战斗动画开关（战前确认）／本关情报",
     "controls_row_settings": "设置窗口",
     "controls_row_language": "切换语言",

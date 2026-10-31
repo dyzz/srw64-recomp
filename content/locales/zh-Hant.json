@@ -479,6 +479,7 @@
     "controls_row_c_left": "地圖游標加速（按住）",
     "controls_row_c_up": "字號放大／曲目 −10",
     "controls_row_c_down": "字號縮小／曲目 +10",
+    "controls_row_c_right": "地圖總覽",
     "controls_row_animation": "戰鬥動畫開關（戰前確認）／本關情報",
     "controls_row_settings": "設定視窗",
     "controls_row_language": "切換語言",
