@@ -98,7 +98,7 @@
 
 - 自动套用是否跟「启动时检查更新」同一个开关（本文假定是），还是单独一个「自动更新文本」。
 
-## 10-31 改动：官网只放增量（安卓 Seeker 实测通过）
+## 10-31 改动：官网只放增量（安卓、Mac、Windows 实测通过）
 
 官网只放增量、游戏跳过和随包相同的台词、`oldest` 版本下限、跳过不认识的路径和语言、上限放宽到 256 MB／16 MB、hash 撞车检查。
 
@@ -111,7 +111,9 @@
 - 模拟程序升级（`kept.json` 版本改成 0.5.1）：启动时 r3 挪进 `.staging`、r2 删掉，先用随包文本；检查后从临时目录装回 r3，0 下载。
 - r4 `oldest` 0.5.3（比程序新）：`SRW64_TEXT_UPDATE_NONE`，已装的更新删掉，「关于」页回到「还没有文本更新」。
 
-Mac、Windows、Switch 还没测这一版。游戏靠 `bundled_resource("dialogue")` 找随包台词：桌面在程序旁，安卓是启动器从 APK 解出的资源目录（`SRW64_RESOURCE_DIR`，台词本来就从这里读），Switch 是 NRO 旁的 `dialogue/`（准备数据用的那份）。
+Mac 开发会话（本机 HTTP 服务器）与 Windows 台式机（`D:\srw64-textupd`，发布式目录、本机 HTTP 服务器）同日照同样六项再测，结果与安卓一致：首装 5 个文件（Mac 956 KB、Windows 961 KB）、r2 下 2 个、r3 跳过未知项 0 下载、模拟升级从临时目录装回 0 下载、r4 回随包。
+
+Mac 上先发现：开发会话的随包台词是 `SRW64_DIALOGUE_TEXT` 指向的 `content/dialogue`，程序旁没有 `dialogue/`，比对找不到随包文件、去下官网上没有的文件（HTTP 404）。已改为先用 `SRW64_DIALOGUE_TEXT`（台词层读随包文本的同一个位置），没有时才用 `bundled_resource("dialogue")`：桌面、安卓的正式包两者相同（`launch.cpp` 就是这样设的），Switch 的准备数据路径不设这个变量，用 NRO 旁的 `dialogue/`。Switch 还没测这一版。
 
 ## 实测：全量清单（2026-10-30，Mac 开发会话）
 

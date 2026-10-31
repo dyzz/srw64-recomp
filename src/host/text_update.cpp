@@ -245,13 +245,16 @@ Shared& ready() {
     return s;
 }
 // The file a list path names in the text this program shipped with, if it has one: the
-// dialogue files, in the bundle's dialogue/ (the consoles keep it too, for preparing their
-// data). The locale catalogs and Library names are built in another form, so the update
-// always keeps the list's.
+// dialogue files, where the dialogue layer reads them (SRW64_DIALOGUE_TEXT), else the
+// bundle's dialogue/ (the consoles keep it, for preparing their data). The locale catalogs
+// and Library names are built in another form, so the update always keeps the list's.
 fs::path bundled(const std::string& name) {
     constexpr std::string_view folder = "dialogue/";
     if (!name.starts_with(folder)) return {};
-    static const auto root = app::bundled_resource("dialogue");
+    static const auto root = [] {
+        const char* text = std::getenv("SRW64_DIALOGUE_TEXT");
+        return text && *text ? fs::path(text) : app::bundled_resource("dialogue");
+    }();
     return root.empty() ? fs::path() : root / fs::path(name.substr(folder.size()));
 }
 // `path` holds the list's file: its size, then its hash.
