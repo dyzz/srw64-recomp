@@ -108,5 +108,5 @@ export const TITLE_LOGO: Record<Lang, { alt: string; h: number }> = {
   zh: { alt: '三月风64', h: 432 },
   tw: { alt: '三月風64', h: 424 },
   en: { alt: 'MARCHWIND 64', h: 403 },
-  ja: { alt: 'マーチウィンド64', h: 355 },
+  ja: { alt: 'マーチウィンド64', h: 363 },
 };
