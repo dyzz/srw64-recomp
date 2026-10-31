@@ -98,7 +98,7 @@
 
 - 自动套用是否跟「启动时检查更新」同一个开关（本文假定是），还是单独一个「自动更新文本」。
 
-## 10-31 改动：官网只放增量（安卓、Mac、Windows 实测通过）
+## 10-31 改动：官网只放增量（安卓、Mac、Windows、Switch 实测通过）
 
 官网只放增量、游戏跳过和随包相同的台词、`oldest` 版本下限、跳过不认识的路径和语言、上限放宽到 256 MB／16 MB、hash 撞车检查。
 
@@ -113,7 +113,9 @@
 
 Mac 开发会话（本机 HTTP 服务器）与 Windows 台式机（`D:\srw64-textupd`，发布式目录、本机 HTTP 服务器）同日照同样六项再测，结果与安卓一致：首装 5 个文件（Mac 956 KB、Windows 961 KB）、r2 下 2 个、r3 跳过未知项 0 下载、模拟升级从临时目录装回 0 下载、r4 回随包。
 
-Mac 上先发现：开发会话的随包台词是 `SRW64_DIALOGUE_TEXT` 指向的 `content/dialogue`，程序旁没有 `dialogue/`，比对找不到随包文件、去下官网上没有的文件（HTTP 404）。已改为先用 `SRW64_DIALOGUE_TEXT`（台词层读随包文本的同一个位置），没有时才用 `bundled_resource("dialogue")`：桌面、安卓的正式包两者相同（`launch.cpp` 就是这样设的），Switch 的准备数据路径不设这个变量，用 NRO 旁的 `dialogue/`。Switch 还没测这一版。
+Mac 上先发现：开发会话的随包台词是 `SRW64_DIALOGUE_TEXT` 指向的 `content/dialogue`，程序旁没有 `dialogue/`，比对找不到随包文件、去下官网上没有的文件（HTTP 404）。已改为先用 `SRW64_DIALOGUE_TEXT`（台词层读随包文本的同一个位置），没有时才用 `bundled_resource("dialogue")`：桌面、安卓的正式包两者相同（`launch.cpp` 就是这样设的），Switch 的准备数据路径不设这个变量，用 NRO 旁的 `dialogue/`。
+
+Switch（同日，`/switch/Marchwind64-update` 新建的测试文件夹，当前提交的台词与 ROM，测试 NRO 临时把更新地址写死成局域网里 Mac 上的服务器，源码已还原）：首次启动自动检查装上 r1，只下 5 个文件；r2 只下 2 个（从开始到装好约 9 秒，多数时间是从 SD 卡读随包台词比 hash），标题变、通知；r3 跳过未知项 0 下载，目录版本 `+text-r3+text-r3+dialogue-text`（三层都在准备数据之上）；重启照用；r4 回随包。模拟升级没在 Switch 上做（代码各平台相同）。测试文件夹要自己放一份 `debug` 文件才开调试接口（`host.cpp` 看的是 NRO 所在文件夹，令牌则固定读 `/switch/Marchwind64/debug`）。
 
 ## 实测：全量清单（2026-10-30，Mac 开发会话）
 
