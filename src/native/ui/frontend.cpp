@@ -1847,7 +1847,6 @@ const std::vector<campaign_library::Entry>& installed_campaigns() {
             entry->id=p.id();
             entry->version=srw64::mods::version_text(p.manifest->version);
             if(entry->author.empty())for(const auto& author:p.manifest->authors)entry->author+=(entry->author.empty()?"":", ")+author;
-            entry->saves=campaign_library::has_saves(entry->id);
             if(seen.insert(entry->id).second)entries.push_back(std::move(*entry));
         }
         for(auto& entry:campaign_library::list())if(seen.insert(entry.id).second)entries.push_back(std::move(entry));
@@ -1878,7 +1877,9 @@ std::string mod_campaigns_page() {
         std::string meta=with_number("dlc_stages",unsigned(entry.stages));
         if(!entry.version.empty())meta+="  ·  v"+escape(entry.version);
         if(!entry.author.empty())meta+="  ·  "+escape(entry.author);
-        meta+="  ·  "+label(entry.saves?"dlc_saves":"dlc_new");
+        // Asked each time the page is drawn: the list is read when the packages change, and
+        // a campaign gets its first save while it is played.
+        meta+="  ·  "+label(campaign_library::has_saves(entry.id)?"dlc_saves":"dlc_new");
         body+="<div class='set-row nav'><div class='set-line'><div class='set-name'>"+escape(campaign_library::text(entry.name,locale))+"</div><div class='set-seg'>"+
             button("dlc-enter:"+std::to_string(i),label(playing?"mod_current":"dlc_enter"),false,playing || !switchable)+"</div></div>";
         if(const auto description=campaign_library::text(entry.description,locale);!description.empty())body+=wrap_paragraph(description);
@@ -5129,12 +5130,17 @@ void mini_sync() {
     const bool entering=state.value("entering",false);
     const bool available=state.value("available",false) && !state.value("applied",0u) && intro::title_major()==3;
     if(!entering && !available){document_close(mini_doc);mini_stamp.clear();return;}
-    const auto stamp=state.dump()+localization::catalog().locale;
+    const bool touch=touch_active();
+    const auto stamp=state.dump()+localization::catalog().locale+(touch?"t":"");
     if(mini_doc && stamp==mini_stamp)return;
     document_close(mini_doc);mini_stamp=stamp;
     // Only this box takes the pointer while the entry waits: the page beneath stays open to
     // clicks, such as the title's DLC and settings entries. Entering covers the screen.
-    std::string body="<div style='position:absolute; bottom:32dp; left:25%; width:50%; text-align:center; pointer-events:auto;'>";
+    // Bottom left, across from the Library and MOD entries (home_sync), clear of the ring's
+    // START below the logo; with touch controls that corner is the stick's and the entries
+    // are along the top, so the box keeps to the middle.
+    std::string body=touch?"<div style='position:absolute; bottom:32dp; left:25%; width:50%; text-align:center; pointer-events:auto;'>":
+        "<div style='position:absolute; bottom:32dp; left:24dp; text-align:left; pointer-events:auto;'>";
     // A campaign (DLC) starts from here: its name, not a mini stage's file name.
     const auto info=campaign::info();
     body+=entering?"<h2>"+label("mini_entering")+"</h2>":button("mini-enter",label(info?"dlc_start":"mini_enter"));
