@@ -17,7 +17,7 @@ namespace srw64::touch_pad {
 
 // N64 bits (input_bindings.hpp) and the host's own above them (input_mode.hpp).
 namespace bits {
-inline constexpr uint32_t A = 0x8000, B = 0x4000, Start = 0x1000, L = 0x0020, R = 0x0010,
+inline constexpr uint32_t A = 0x8000, B = 0x4000, Start = 0x1000, L = 0x0020, R = 0x0010, CRight = 0x0001,
     Up = 0x0800, Down = 0x0400, Left = 0x0200, Right = 0x0100;
 inline constexpr uint32_t L2 = input::pad_l2, R2 = input::pad_r2, Option = input::pad_view;
 }
@@ -35,9 +35,14 @@ struct Action {
     uint32_t bits = 0;          // the keys it holds down
     std::string_view label;     // a UI label key (content/locales/*.json "ui")
     std::string_view command;   // or a page of ours it opens when let go (frontend.cpp choose())
+    uint32_t long_bits = 0;     // held long_press_ms: these keys instead (its own keys wait for a short press)
     bool filled() const { return bits || !command.empty(); }
     bool operator==(const Action&) const = default;
 };
+
+// A press this long on a button with long_bits holds those keys; let go sooner, the button
+// presses its own keys then, briefly (frontend.cpp touch_keep).
+inline constexpr uint64_t long_press_ms = 500;
 
 enum class Stick : uint8_t {
     None,     // no stick
@@ -127,6 +132,9 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active) {
             // Back to the suspend save; frontend.cpp leaves it out where the game would not take it.
             open(Slot::Load, "quick-load-ask", "touch_quick_load");
         }
+        // Back held: the map overview (C-right on the idle map, the phone's only way to it;
+        // user, 2026-10-31). Only on the game's own screens, where C-right is at most "any key".
+        if (id == SceneId::Other) s.slots[size_t(Slot::Back)].long_bits = bits::CRight;
         if (id == SceneId::FixedDialogue) {
             // Keep START, L2 and R2 in place (user, 2026-10-09). The two round
             // shoulder buttons use the reader's auto toggle and hold-fast inputs.
@@ -173,6 +181,7 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active) {
     case SceneId::MapIdle:
         s.stick = Stick::Wide;
         set(Slot::Primary, bits::A, "touch_select"); set(Slot::Back, bits::B, "touch_info");
+        s.slots[size_t(Slot::Back)].long_bits = bits::CRight;
         set(Slot::Arc2, bits::L, "touch_prev_unit"); set(Slot::Arc3, bits::R, "touch_next_unit");
         settings(); set(Slot::Top3, bits::L2, "touch_prev_enemy"); set(Slot::Top4, bits::R2, "touch_next_enemy");
         break;
@@ -333,6 +342,8 @@ public:
         Slot slot{};
         float cx{}, cy{}, x{}, y{};   // stick: centre and thumb
         uint32_t bits{};
+        bool long_press{};             // its long_bits are held: letting go opens nothing
+        uint32_t on_release{};         // a button with long_bits, let go before long_press_ms: its keys
     };
 private:
     std::map<int64_t, Finger> held;
@@ -340,7 +351,8 @@ public:
     // True when the finger is the controls' (a button, the stick or the tap area).
     bool down(const Layout& layout, const Scene& scene, int64_t id, float x, float y) {
         if (const auto slot = hit(layout, scene, x, y)) {
-            held[id] = {Kind::Button, *slot, 0, 0, x, y, scene[*slot].bits};
+            held[id] = {Kind::Button, *slot, 0, 0, x, y, scene[*slot].long_bits ? 0 : scene[*slot].bits};
+            held[id].on_release = scene[*slot].long_bits ? scene[*slot].bits : 0;
             return true;
         }
         if (in_stick_area(layout, scene, x, y)) {
@@ -358,14 +370,28 @@ public:
         const auto found = held.find(id);
         if (found == held.end()) return false;
         auto& f = found->second;
-        if (f.kind == Kind::Blocked) return true;
+        if (f.kind == Kind::Blocked || f.long_press) return true;
         f.x = x; f.y = y;
         if (f.kind == Kind::Stick) f.bits = direction(layout, f.cx, f.cy, x, y, f.bits);
         else if (f.kind == Kind::Button)
-            if (const auto over = hit(layout, scene, x, y)) { f.slot = *over; f.bits = scene[*over].bits; }
+            if (const auto over = hit(layout, scene, x, y)) {
+                f.slot = *over;
+                f.bits = scene[*over].long_bits ? 0 : scene[*over].bits;
+                f.on_release = scene[*over].long_bits ? scene[*over].bits : 0;
+            }
         return true;
     }
     bool up(int64_t id) { return held.erase(id) != 0; }
+    // A button with long_bits held long enough: it holds them from now on, and letting go
+    // presses nothing.
+    bool lengthen(const Scene& scene, int64_t id) {
+        const auto found = held.find(id);
+        if (found == held.end()) return false;
+        auto& f = found->second;
+        if (f.kind != Kind::Button || f.long_press || !scene[f.slot].long_bits) return false;
+        f.long_press = true; f.bits = scene[f.slot].long_bits; f.on_release = 0;
+        return true;
+    }
     // A held finger must not become a different action when the reader changes mode.
     // Keep ownership until release, so its synthetic mouse-up cannot reach a page.
     void reconcile(const Scene& before, const Scene& after) {
@@ -373,7 +399,7 @@ public:
             const bool changed = f.kind == Kind::Button ? !(before[f.slot] == after[f.slot]) :
                 f.kind == Kind::Tap ? !(before[Slot::Primary] == after[Slot::Primary]) || !after.tap_primary :
                 f.kind == Kind::Stick && after.stick == Stick::None;
-            if (changed) { f.kind = Kind::Blocked; f.bits = 0; }
+            if (changed) { f.kind = Kind::Blocked; f.bits = 0; f.on_release = 0; }
         }
     }
     void clear() { held.clear(); }

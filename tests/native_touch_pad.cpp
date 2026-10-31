@@ -73,9 +73,9 @@ void buttons() {
     check(f.down(l, map, 2, l[Slot::Primary].x, l[Slot::Primary].y), "primary");
     check(f.buttons() == (bits::Right | bits::A), "stick and primary together");
     check(f.pressed(Slot::Primary), "primary drawn pressed");
-    // A thumb slides from the primary to the back button.
+    // A thumb slides from the primary to the back button, whose B waits for letting go (its long press).
     f.move(l, map, 2, l[Slot::Back].x, l[Slot::Back].y);
-    check(f.buttons() == (bits::Right | bits::B), "slide to back");
+    check(f.buttons() == bits::Right && f.find(2)->on_release == bits::B, "slide to back");
     f.up(2);
     check(f.down(l, map, 3, l[Slot::Top4].x, l[Slot::Top4].y) && (f.buttons() & bits::R2), "next enemy");
     check(f.down(l, map, 4, l[Slot::Top1].x, l[Slot::Top1].y) && (f.buttons() & bits::Option), "settings");
@@ -178,7 +178,10 @@ void fixed_buttons() {
     const auto page = scene(SceneId::FixedPage), title = scene(SceneId::FixedTitle), reading = scene(SceneId::FixedDialogue);
     check(page.stick == Stick::Corner && full.stick == Stick::Wide && title.stick == Stick::Wide, "sticks");
     for (size_t i = 0; i < slot_count; ++i) {
-        check(page.slots[i] == full.slots[i], "the page has the whole set");
+        // The game's screens add Back's long press (long_press()); the page has the rest as they are.
+        auto plain = full.slots[i];
+        plain.long_bits = 0;
+        check(page.slots[i] == plain, "the page has the whole set");
         if (i == size_t(Slot::Skip)) {
             check(!full.slots[i].filled() && !title.slots[i].filled() && reading.slots[i].filled(), "skip only while reading");
         } else if (i == size_t(Slot::Info)) {
@@ -254,7 +257,36 @@ void reading_history() {
     check(!reader.history_open && fingers.owns(4), "stop-skip finger became history");
     fingers.up(4);
 }
+// Back held opens the map overview (C-right): its B waits for a short press, on the game's own screens.
+void long_press() {
+    const auto full = scene(SceneId::Other);
+    const auto l = layout(width, height, mm);
+    check(full[Slot::Back].long_bits == bits::CRight && full[Slot::Back].bits == bits::B, "Back holds C-right");
+    for (size_t i = 0; i < slot_count; ++i)
+        if (Slot(i) != Slot::Back) check(!full.slots[i].long_bits, "only Back has a long press");
+    for (const auto id : {SceneId::FixedPage, SceneId::FixedTitle, SceneId::FixedDialogue})
+        check(!scene(id)[Slot::Back].long_bits, "our pages, the title and reading keep a plain Back");
+    Fingers fingers;
+    const auto& back = l[Slot::Back];
+    check(fingers.down(l, full, 1, back.x, back.y) && fingers.buttons() == 0 && fingers.find(1)->on_release == bits::B,
+          "a press on Back holds nothing until it is let go");
+    check(fingers.lengthen(full, 1) && fingers.buttons() == bits::CRight && fingers.find(1)->on_release == 0, "long press holds C-right");
+    check(!fingers.lengthen(full, 1), "a long press fires once");
+    fingers.move(l, full, 1, l[Slot::Primary].x, l[Slot::Primary].y);
+    check(fingers.buttons() == bits::CRight, "dragging off a long press changes it");
+    fingers.up(1);
+    check(fingers.down(l, full, 2, back.x, back.y), "Back again");
+    fingers.move(l, full, 2, l[Slot::Primary].x, l[Slot::Primary].y);
+    check(fingers.buttons() == bits::A && fingers.find(2)->on_release == 0, "a short press dragged onto A is A");
+    fingers.up(2);
+    const auto& a = l[Slot::Primary];
+    check(fingers.down(l, full, 3, a.x, a.y) && !fingers.lengthen(full, 3) && fingers.buttons() == bits::A, "A has no long press");
+    fingers.up(3);
+    check(fingers.down(l, full, 4, back.x, back.y), "Back once more");
+    fingers.reconcile(full, scene(SceneId::FixedPage));
+    check(fingers.buttons() == 0 && fingers.find(4)->on_release == 0, "a scene change drops the waiting B");
+}
 int main() {
-    try { places(); scenes(); buttons(); dpad(); recognition(); fixed_buttons(); reading_history(); std::cout << checks << " checks passed\n"; return 0; }
+    try { places(); scenes(); buttons(); dpad(); recognition(); fixed_buttons(); reading_history(); long_press(); std::cout << checks << " checks passed\n"; return 0; }
     catch (const std::exception& error) { std::cerr << "FAIL: " << error.what() << "\n"; return 1; }
 }

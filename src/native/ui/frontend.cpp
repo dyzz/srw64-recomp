@@ -6022,8 +6022,12 @@ bool touch_event(const SDL_Event& event) {
             if(!action.command.empty() && touch_pad::hit(touch_layout(),touch_controls,event.tfinger.x*pixels_w,event.tfinger.y*pixels_h)==finger->slot)
                 choose(std::string(action.command));
         }
+        // A button with a long press, let go before it: its own keys now, briefly.
+        const auto* lifted=touch_fingers.find(event.tfinger.fingerId);
+        const uint32_t short_press=lifted?lifted->on_release:0;
         if(!touch_fingers.up(event.tfinger.fingerId))return false;
         touch_keep(before&~touch_fingers.buttons(),touch_down_at[event.tfinger.fingerId]);
+        if(short_press)touch_keep(short_press,SDL_GetTicks64());
         touch_down_at.erase(event.tfinger.fingerId);
         touch_publish();return true;
     }
@@ -6096,6 +6100,9 @@ void touch_sync() {
         touch_fingers.reconcile(touch_controls,next_controls);touch_controls=next_controls;
         touch_linger=0;touch_linger_until=0;++touch_controls_revision;touch_publish();
     }
+    // A button held long_press_ms holds its long keys instead (touch_pad::Action).
+    for(const auto& [id,down_at]:touch_down_at)
+        if(SDL_GetTicks64()>=down_at+touch_pad::long_press_ms && touch_fingers.lengthen(touch_controls,id))touch_publish();
     const auto layout=touch_layout();
     const auto& scene=touch_controls;
     const auto* stick=touch_fingers.stick();
