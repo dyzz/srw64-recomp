@@ -652,7 +652,7 @@
     "mod_turn_off": "停用",
     "mod_remove": "删除",
     "mod_remove_confirm": "确认删除",
-    "mod_not_applied": "目前生效的有：音乐替换、战斗语音、名字、头像与地图图标、机体／驾驶员／武器的数值；剧本、其余美术和台词还不会生效。",
+    "mod_not_applied": "目前生效的有：音乐替换、战斗语音、名字、头像与地图图标、机体／驾驶员／武器的数值、追加剧本；单关挑战、改主线关卡、其余美术和台词还不会生效。",
     "mod_install_busy": "正在安装另一个 MOD，请稍候",
     "mod_install_failed": "安装失败：{reason}",
     "mod_installed": "已安装 MOD：{id} {version}",
