@@ -117,7 +117,7 @@ status.json              optional: the stage info page's status rules (copy the 
   "description": {"zh-Hans": "…", "en": "…", "ja": "…"},
   "start": "first",
   "stages": {
-    "first":  {"scene": 1, "file": "stages/first.json",  "title": {"zh-Hans": "第1话　…", "en": "…", "ja": "第1話　…"}},
+    "first":  {"scene": 1, "file": "stages/first.json",  "title": {"zh-Hans": "…", "en": "…", "ja": "…"}},
     "second": {"scene": 2, "file": "stages/second.json", "title": "…"}
   }
 }
@@ -125,7 +125,8 @@ status.json              optional: the stage info page's status rules (copy the 
 
 - `id` must equal `mod.json`'s `id` (letters, digits, `.`, `_`, `-`; at most 64). It names the campaign's save folder;
   never change it after release. `name`, `description` and `title` are a string or one per language (`ja`,
-  `zh-Hans`, `en`); `title` is shown on the stage's title card, the intermission and the save list.
+  `zh-Hans`, `en`); `title` is shown on the stage's title card, the intermission and the save list. Leave the
+  stage number out of `title`: the intermission and the save list put "Stage N" (stages cleared) in front by themselves.
 - `mod.json` for a campaign: `"game": ">=0.5.1"`, a redistributable `license`, the same `version` as you release.
 
 Rules `mini_stage.py campaign` and `pack.py` enforce:

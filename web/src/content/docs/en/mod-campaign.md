@@ -89,9 +89,9 @@ How to write `mod.json` is in [Mod packages](../mods/#modjson); set `game` to `"
   "start": "first",
   "stages": {
     "first":  {"scene": 1, "file": "stages/first.json",
-               "title": {"zh-Hans": "第1话　启程", "en": "Stage 1: Setting Out", "ja": "第1話　旅立ち"}},
+               "title": {"zh-Hans": "启程", "en": "Setting Out", "ja": "旅立ち"}},
     "second": {"scene": 2, "file": "stages/second.json",
-               "title": {"zh-Hans": "第2话　岔路", "en": "Stage 2: Crossroads", "ja": "第2話　分かれ道"}}
+               "title": {"zh-Hans": "岔路", "en": "Crossroads", "ja": "分かれ道"}}
   }
 }
 ```
@@ -101,7 +101,7 @@ How to write `mod.json` is in [Mod packages](../mods/#modjson); set `game` to `"
 | `id` | Must be the same as `mod.json`'s `id`. It also names the campaign's save folder: **do not change it after release** |
 | `name`, `description` | The name and description on the Extra Scenarios page: one string, or one per language (`zh-Hans`, `en`, `ja`) |
 | `start` | Which entry of `stages` comes first |
-| `stages` | Each stage: `scene`, the scene number it borrows (below); `file`, the stage file; `title`, shown on the title card, in the intermission and in the save list |
+| `stages` | Each stage: `scene`, the scene number it borrows (below); `file`, the stage file; `title`, shown on the title card, in the intermission and in the save list. Leave the stage number out of the title: the intermission and the save list put “Stage N” in front by themselves, counting the stages cleared |
 
 ## Borrowing scene numbers
 

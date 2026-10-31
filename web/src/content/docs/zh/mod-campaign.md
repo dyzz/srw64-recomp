@@ -89,9 +89,9 @@ my-campaign/
   "start": "first",
   "stages": {
     "first":  {"scene": 1, "file": "stages/first.json",
-               "title": {"zh-Hans": "第1话　启程", "en": "Stage 1: Setting Out", "ja": "第1話　旅立ち"}},
+               "title": {"zh-Hans": "启程", "en": "Setting Out", "ja": "旅立ち"}},
     "second": {"scene": 2, "file": "stages/second.json",
-               "title": {"zh-Hans": "第2话　岔路", "en": "Stage 2: Crossroads", "ja": "第2話　分かれ道"}}
+               "title": {"zh-Hans": "岔路", "en": "Crossroads", "ja": "分かれ道"}}
   }
 }
 ```
@@ -101,7 +101,7 @@ my-campaign/
 | `id` | 必须和 `mod.json` 的 `id` 一样。它也是战役存档文件夹的名字，**发布后不要再改** |
 | `name`、`description` | 追加剧本页上显示的名字和简介，可以是一个字符串，也可以按语言分别写（`zh-Hans`、`en`、`ja`） |
 | `start` | 第一关是 `stages` 里的哪一个 |
-| `stages` | 每一关：`scene` 借用的场景号（见下），`file` 关卡文件，`title` 标题，显示在标题卡、场间和存档列表上 |
+| `stages` | 每一关：`scene` 借用的场景号（见下），`file` 关卡文件，`title` 标题，显示在标题卡、场间和存档列表上。标题里不要写「第几话」：场间和存档列表会按已通关的关数自己在前面加上「第N话」 |
 
 ## 借场景号
 

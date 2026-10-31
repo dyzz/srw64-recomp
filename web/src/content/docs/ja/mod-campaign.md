@@ -89,9 +89,9 @@ my-campaign/
   "start": "first",
   "stages": {
     "first":  {"scene": 1, "file": "stages/first.json",
-               "title": {"zh-Hans": "第1话　启程", "en": "Stage 1: Setting Out", "ja": "第1話　旅立ち"}},
+               "title": {"zh-Hans": "启程", "en": "Setting Out", "ja": "旅立ち"}},
     "second": {"scene": 2, "file": "stages/second.json",
-               "title": {"zh-Hans": "第2话　岔路", "en": "Stage 2: Crossroads", "ja": "第2話　分かれ道"}}
+               "title": {"zh-Hans": "岔路", "en": "Crossroads", "ja": "分かれ道"}}
   }
 }
 ```
@@ -101,7 +101,7 @@ my-campaign/
 | `id` | `mod.json` の `id` と同じにします。キャンペーンのセーブフォルダー名にもなるので、**公開後は変えないでください** |
 | `name`・`description` | 追加シナリオページに出る名前と説明。文字列 1 つか、言語ごと（`zh-Hans`・`en`・`ja`） |
 | `start` | `stages` のどれが最初のステージか |
-| `stages` | 各ステージ：`scene` は借りるシナリオ番号（後述）、`file` はステージファイル、`title` はタイトルカード・インターミッション・セーブ一覧に出るタイトル |
+| `stages` | 各ステージ：`scene` は借りるシナリオ番号（後述）、`file` はステージファイル、`title` はタイトルカード・インターミッション・セーブ一覧に出るタイトル。「第何話」はタイトルに入れないでください（インターミッションとセーブ一覧が、クリアした話数から「第N話」を自動で前に付けます） |
 
 ## シナリオ番号を借りる
 
