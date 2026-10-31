@@ -3,7 +3,7 @@ title: Mini stages
 summary: Describe a map, the units on it and the event scripts in one JSON file, then jump straight into it in place of a scenario to reproduce a battle, a screen or a script command. Loaded through MCP only.
 section: tools
 order: 2
-updated: 2026-10-06
+updated: 2026-10-31
 ---
 
 A mini stage is a small scenario you write yourself: pick one of the original maps, place the allied and enemy units you need, and add a few event scripts (opening dialogue, turn start, reinforcements, victory conditions and so on). Once loaded, the game borrows a scenario’s slot and goes straight into your stage, skipping New Game, the prologue and hero selection, so you are on the map within seconds.
@@ -11,6 +11,8 @@ A mini stage is a small scenario you write yourself: pick one of the original ma
 We use them during development to reproduce particular battles and screens: two specific units side by side to check the hit rates on the pre-battle screen, an enemy placed off screen to test L2/R2 cycling, or a single story command run on its own to see exactly what it does. The repository has more than sixty ready-made stages to learn from.
 
 Mini stages are a debugging tool and **the game has no menu for them**: they can only be loaded through MCP, with the debug interface turned on. See [Controlling the game with an AI agent (MCP)](../mcp/) for how to connect.
+
+To chain stages into a campaign players can install and play, see [Campaign mods](../mod-campaign/).
 
 ## For AI agents: llms.txt
 

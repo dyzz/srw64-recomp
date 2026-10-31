@@ -1,8 +1,8 @@
 # Marchwind 64 mini stages
 
 > Everything an AI agent needs to write, compile and load a mini stage in Marchwind 64, the native recompilation of
-> Super Robot Wars 64 (N64): how to use them, the rules the compiler enforces, and every script command, condition,
-> context marker, event type, variable and deployment record field. Generated from the game's script table; the
+> Super Robot Wars 64 (N64), and to chain stages into a campaign mod package: how to use them, the rules the compiler
+> enforces, and every script command, condition, context marker, event type, variable and deployment record field. Generated from the game's script table; the
 > implementation notes ("basis") and in-game findings are in Chinese, as recorded.
 
 A mini stage is a small scenario in one JSON file (schema `srw64.mini-stage.v1`): an original map, the units placed on
@@ -86,6 +86,104 @@ with `key`, `label`, `summary` and `search_terms`): `actors` (character numbers,
 Events run when their type's trigger holds (see "Event types"); a stage needs at least an opening event (type 12)
 that switches to the battlefield (`3D4D`), deploys groups (`3D45`) and hands over to the player (`3D48` closes the
 dialogue window), and usually an ending event (type 14) with `3D4B 4`.
+
+## Campaigns: stages chained into a mod package
+
+A campaign (an "extra scenario") is several mini stages played in a row, with the intermission between them,
+under saves of its own. It ships as a mod package (`.srw64mod`) and the player starts it from the title: MOD →
+Extra Scenarios → Play → Start Campaign (game 0.5.1 or later). Human-readable page:
+https://srw64.dreamquest.club/en/docs/mod-campaign/. Working example to copy: `config/recomp/campaigns/sample/` (four stages, a choice in
+stage two, two endings).
+
+What exists today: original maps, characters, units, music and text only. Dialogue and choices reference existing
+entries of text table 0; new lines, new maps, new characters and new portraits are not supported yet.
+
+Source folder (packed by `tools/mods/pack.py`, which compiles `campaign.json` into the package's
+`campaign/campaign.json`):
+
+```text
+mod.json                 the package manifest (schema srw64.mod.v1; see https://srw64.dreamquest.club/en/docs/mods/)
+campaign.json            the campaign: stages, start, titles
+stages/<key>.json        one mini stage per stage (the format above)
+stages/<key>.meta.json   optional: the stage info page's data (copy the sample's)
+status.json              optional: the stage info page's status rules (copy the sample's)
+```
+
+```json
+{
+  "schema": "srw64.campaign.v1",
+  "id": "yourname.my-campaign",
+  "name": {"zh-Hans": "我的战役", "en": "My Campaign", "ja": "マイキャンペーン"},
+  "description": {"zh-Hans": "…", "en": "…", "ja": "…"},
+  "start": "first",
+  "stages": {
+    "first":  {"scene": 1, "file": "stages/first.json",  "title": {"zh-Hans": "第1话　…", "en": "…", "ja": "第1話　…"}},
+    "second": {"scene": 2, "file": "stages/second.json", "title": "…"}
+  }
+}
+```
+
+- `id` must equal `mod.json`'s `id` (letters, digits, `.`, `_`, `-`; at most 64). It names the campaign's save folder;
+  never change it after release. `name`, `description` and `title` are a string or one per language (`ja`,
+  `zh-Hans`, `en`); `title` is shown on the stage's title card, the intermission and the save list.
+- `mod.json` for a campaign: `"game": ">=0.5.1"`, a redistributable `license`, the same `version` as you release.
+
+Rules `mini_stage.py campaign` and `pack.py` enforce:
+
+- Every stage borrows a scene number (`scene`) the game loads it in place of: 0–142, a different one per stage, not
+  109–122 (Link stages) and not 38, 48, 68, 73, 79, 81, 83, 86, 88, 93, 95, 96, 104, 132 (their intermission menu is
+  shortened). A stage file's own `slot` is ignored.
+- `start` names one of the stages.
+- Every `3D4B` in a stage targets the scene of a stage in this campaign (or 500). Stages connect only this way: the
+  ending event (type 14) of each stage runs `3D4B <next stage's scene>`; branches put different `3D4B` in condition
+  blocks.
+
+Rules nothing checks, learned in the game:
+
+- The campaign starts with an empty roster, no hero or partner name and no route. Add pilots with
+  `3D5A <character>, 0, <unit>, 500` (unit 999 registers the pilot alone) or with player-side deployment records
+  shown by `3D45` (they join for good); add funds with `3D5B <n>` (n × 1000). The roster, funds, upgrades and
+  variables carry over from stage to stage.
+- Start every event with `3DD0`. The route markers 3DD1–3DD8 depend on the protagonist a campaign does not have; avoid
+  text entries containing `{HeroName}` or `{PartnerName}` and the protagonist's own lines.
+- Variables hold 0–3 and are saved. Each stage start sets 100–114 and 128–139 to 3 and 54 to 1, and the original
+  scripts read 0–54: keep the campaign's flags in 55–99 and 140–199 (`3E13 var, value` to set, `3E03` to test).
+- A stage: opening event (type 12) that ends on the battlefield (`3D4D`, `3D65` for the shown conditions, `3D45`,
+  `3D48`); a win event such as type 7 (enemies remaining ≤ 0) running `3D4A`; `3D4C` for a defeat (game over offers a
+  retry of the stage; not during the opening, before the retry snapshot exists); the ending event (type 14) with
+  `3D4B`. The last stage's ending event runs `3D71` (the ending sequence, then the title); never run `3D71` on the
+  battlefield.
+- Choices: `3D44 0, <count>, <text>` where the text is a choice entry with exactly `count` options, then
+  `3E10` / `3E11` / `3E12` … `3E1D` per option (see the sample's crossroads stage).
+- Known crashes: `3D49` when a character is not on the map; `3D5A …, 4000` on a unit still on the map (`3D46` it
+  first). The Link menu is blocked inside a campaign.
+
+Finding lines, maps and units:
+
+- The dialogue files `content/dialogue/<lang>/story/scene-NNNN.txt` (`lang` = `zh-Hans`, `zh-Hant`, `en`; NNNN is the
+  scene) list every story text entry as `@<text number> <speaker>`, the Japanese original on `>` lines, then the
+  translation; choice entries have `*` lines, one per option. The text number is what `3D3E`–`3D43` and `3D44` take;
+  the game shows the entry's own speaker and portrait, in whatever language the player plays.
+- `assets/original-data/records/`: `scenarios` (scene titles), `stage_maps` (scene → map), `stage_auxiliary` (a
+  scene's whole deployment block, for `deployments_from`), `stage_deployments`, `actors`, `units`, `map_assets`.
+
+Build, test, pack, play:
+
+1. Check the whole campaign: `python3 tools/recomp/script_lab/mini_stage.py campaign campaign.json --out
+   /tmp/check.json` prints each stage's scene and the scenes its `3D4B` lead to.
+2. Try a stage alone: compile it with `"slot"` set to its scene and load it with `srw64_mini_stage_load` (on the
+   main game's title; its `3D4B` then leads into the original story, so stop at the ending). Use a separate user
+   directory, the stage may save.
+3. Pack: `python3 tools/mods/pack.py <source folder> -o build/mods` writes `<id>-<version>.srw64mod` and checks it with
+   `tools/mods/validate.py`.
+4. Install by dragging the file into the game window (or the MOD folder); then on the title: MOD → Extra
+   Scenarios → Play, and Start Campaign in the title's middle. "Back to Main Game" on the same page returns. The
+   campaign's saves live in `<user dir>/campaigns/<id>/saves`, apart from the main game.
+
+Sharing: `template`, `deployments_from` and `copy_from` copy data from the player's ROM into the package; such a
+package is for the author's own use. To share one, write every deployment record field by field (`group`, `x`, `y`,
+`actor`, `unit`, `faction`, `level_offset`, `upgrade`, …) and every event's commands yourself; text, map, character
+and unit numbers are only numbers.
 
 ## Event types
 
