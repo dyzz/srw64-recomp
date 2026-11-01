@@ -14,6 +14,7 @@ import base64
 import json
 import math
 import shlex
+import shutil
 import os
 import signal
 from pathlib import Path, PurePath, PurePosixPath, PureWindowsPath
@@ -390,12 +391,12 @@ class Session:
         except HostError:
             return False
 
-    def record(self, seconds: float, path: str | Path | None = None, width: int = 960, fps: int = 30) -> dict:
+    def record(self, seconds: float, path: str | Path | None = None, width: int = 960, fps: int = 30, ffmpeg: str | None = None) -> dict:
         """An MP4 of the next `seconds` of play, as presented (the host reads every present
         back, scaled to `width`). Frames go on a steady `fps` timeline: each tick shows the
         latest present by then, so a stalled stretch plays as a held frame. The game's sound
         is the audio track. Needs ffmpeg."""
-        self.record_start(width)
+        self.record_start(width, fps, ffmpeg=ffmpeg)
         try:
             time.sleep(seconds)
         except BaseException:
@@ -403,15 +404,51 @@ class Session:
             raise
         return self.record_stop(path, fps)
 
-    def record_start(self, width: int = 960) -> dict:
-        """Start a recording that `record_stop` ends and encodes, for input sent in between."""
-        self._recording = self.client.call("record.start", width=width)
+    def record_start(self, width: int = 960, fps: int = 30, encode: bool | None = None, ffmpeg: str | None = None,
+                     lockstep: bool | None = None) -> dict:
+        """Start a recording that `record_stop` ends, for input sent in between. The host puts the
+        presents on a steady `fps` timeline by their VI and, with an ffmpeg of its own (`ffmpeg`,
+        its SRW64_FFMPEG, or one on its PATH), encodes the MP4 itself (`encode`, the default); in
+        lockstep (the default while encoding) the game waits for a slow encoder instead of dropping
+        frames. Without an encoder the raw frames come back and `record_stop` encodes them here."""
+        params: dict = {"width": width, "fps": fps}
+        if encode is not None:
+            params["encode"] = encode
+        if ffmpeg:
+            params["ffmpeg"] = ffmpeg
+        if lockstep is not None:
+            params["lockstep"] = lockstep
+        self._recording = self.client.call("record.start", **params)
         return self._recording
 
     def record_stop(self, path: str | Path | None = None, fps: int = 30) -> dict:
         started, self._recording = getattr(self, "_recording", None), None
         result = self.client.call("record.stop")
         local = self.local()
+        if result.get("mp4"):   # encoded on the host: only the MP4 comes over
+            directory = Path(result["mp4"]).parent if local else host_path(result["mp4"]).parent
+            if path:
+                target = Path(path)
+            elif local:
+                target = Path(result["mp4"]).parent.with_suffix(".mp4")
+            else:
+                target = self.run / "remote-files" / Path(*self.remote_relative(str(directory)).parts).with_suffix(".mp4")
+            target.parent.mkdir(parents=True, exist_ok=True)
+            source = self.local_file(result["mp4"])
+            if source.resolve() != target.resolve():
+                shutil.move(str(source), str(target))
+            if local:
+                shutil.rmtree(directory, ignore_errors=True)
+            else:
+                self.client.call("file.remove", path=str(directory))
+                try:
+                    source.parent.rmdir()
+                except OSError:
+                    pass
+            return {"path": str(target), "seconds": round(result["frames"] / max(1, result["fps"]), 2), "presents": result["presents"],
+                    "frames": result["frames"], "held": result.get("held"), "dropped": result.get("dropped"),
+                    "size": [result["width"], result["height"]], "fps": result["fps"],
+                    "audio_seconds": round(result["audio_frames"] / result["audio_rate"], 2) if result.get("audio_rate") else None}
         if local:
             directory = Path(started["directory"]) if started else Path(result["frames_path"]).parent
             target = Path(path) if path else directory.with_suffix(".mp4")
@@ -422,7 +459,12 @@ class Session:
         target.parent.mkdir(parents=True, exist_ok=True)
         w, h, count = result["width"], result["height"], result["frames"]
         frames_path, times_path = self.local_file(result["frames_path"]), self.local_file(result["times_path"])
-        times = [float(line) for line in times_path.read_text().split()][:count]
+        # "seconds" a line, or "seconds vi" (the VI the present happened at: a steady timeline).
+        rows = [line.split() for line in times_path.read_text().splitlines() if line.strip()][:count]
+        if rows and len(rows[0]) > 1 and result.get("first_vi") is not None:
+            times = [(int(row[1]) - int(rows[0][1])) / 60 + float(rows[0][0]) for row in rows]
+        else:
+            times = [float(row[0]) for row in rows]
         if not times:
             raise HostError("no frames were presented while recording")
         size = w * h * 3
@@ -533,7 +575,7 @@ class Session:
 
 
 def satisfied(status: dict, until: dict, session: Session | None = None) -> bool:
-    """Conditions: vi (at least), dialogue_active, intro_active, name_page (visible),
+    """Conditions: vi (at least), dialogue_active, choice_active (a 3D44 choice box), intro_active, name_page (visible),
     link_page (visible), intermission_page (visible), battle_page (visible), parts_page (visible), ability_page (visible), swap_page (visible), save_page (visible), title_major, text (substring of the
     active dialogue), event ({log, kind})."""
     dialogue = status.get("dialogue") or {}
@@ -541,6 +583,7 @@ def satisfied(status: dict, until: dict, session: Session | None = None) -> bool
     checks = {
         "vi": lambda value: status.get("vi", 0) >= value,
         "dialogue_active": lambda value: bool(dialogue.get("active")) == value,
+        "choice_active": lambda value: bool((status.get("choice") or {}).get("active")) == value,
         "intro_active": lambda value: bool(intro.get("active")) == value,
         "name_page": lambda value: bool((status.get("name_page") or {}).get("visible")) == value,
         "link_page": lambda value: bool((status.get("link_page") or {}).get("visible")) == value,

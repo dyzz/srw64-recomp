@@ -97,6 +97,7 @@
 #include "enemy_cycle.hpp"
 #include "settings_window.hpp"
 #include "debug_server.hpp"
+#include "debug_protocol.hpp"
 extern uint8_t* srw64_rdram;  // defined below, for debug_server.cpp
 
 RspExitReason srw64_audio_probe(uint8_t*, uint32_t);
@@ -217,6 +218,8 @@ void on_vi() {
     static uint64_t ticks = 0;
     if (++ticks % srw64::sched_rate::factor()) return;
     const uint64_t vi = ++vi_count;
+    // A recording in lockstep (debug_protocol.hpp): the game's clock waits for its encoder.
+    while (srw64::debug::recording().behind()) std::this_thread::sleep_for(std::chrono::milliseconds(1));
 #if defined(__vita__) || defined(__SWITCH__)
     // The PS Vita and the Switch are driven through the debug interface only: no control.txt
     // to read (its absence, ten times a second, would be ten lookups of a missing file on a
@@ -359,6 +362,7 @@ extern "C" void srw64_game_threads_report() {
 #endif
 // Guest RDRAM, for the debug interface's read-only memory view (debug_server.cpp).
 uint8_t* srw64_rdram = nullptr;
+bool srw64_overlay_loading() { return overlay_loading.load(); }
 // The runtime's VI thread asks before each picture latches (sched_rate.hpp latch()).
 extern "C" bool srw64_vi_latch(uint64_t tick) { return srw64::sched_rate::latch(srw64_rdram, tick); }
 // The swap after a display list left undrawn latches at once (draw_skip.hpp, runtime events.cpp).

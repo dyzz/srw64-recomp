@@ -174,7 +174,10 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     if(srw64_game_hooks.swap_frame)srw64_game_hooks.swap_frame(ram);
     if(srw64_game_hooks.save_frame)srw64_game_hooks.save_frame(ram);
     if(srw64_game_hooks.cheats_frame)srw64_game_hooks.cheats_frame(ram);
-    if(srw64::mini_stage::take_direct_entry()) {
+    // The map's own return to the title (801DFDBC: 800836CC(0) and the dispatcher) runs the
+    // same hand-over, so a stage loaded off the title (mini_stage::take_restart) enters the
+    // way the armed title does; not while an overlay is still being copied in.
+    if(srw64::mini_stage::take_direct_entry() || (!srw64_overlay_loading() && srw64::mini_stage::take_restart(ram))) {
         // The title overlay's own exit (801CAA34..801CAA80) with the mode the
         // intermission's next-stage exit selects (801D8D94).
         const auto call=[&](void(*function)(uint8_t*,recomp_context*),uint32_t a0=0,uint32_t a1=0,uint32_t a2=0) {

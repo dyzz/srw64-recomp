@@ -169,9 +169,24 @@ def compile_stage(document: dict, spec: dict | None = None) -> dict:
         if key in seen:
             raise ValueError("initial_resources contains a duplicate slot")
         seen.add(key)
+    # Story set-up the direct entry writes in place of the stages before this one: the
+    # protagonist route (0 Brad, 1 Manami, 2 Ark, 3 Selain: the route variable and both
+    # default names, which set the protagonist group's portraits), story variables
+    # {"9": 0} (two bits each, 200 of them) and the last choice (1 = the first option).
+    route = document.get("route")
+    if route is not None and (type(route) is not int or not 0 <= route <= 3):
+        raise ValueError("route must be 0 (Brad), 1 (Manami), 2 (Ark) or 3 (Selain)")
+    story_vars = document.get("story_vars", {})
+    if not isinstance(story_vars, dict) or any(not str(k).isdigit() or not 0 <= int(k) < 200 or type(v) is not int or not 0 <= v <= 3
+                                               for k, v in story_vars.items()):
+        raise ValueError("story_vars maps variable indices 0..199 to values 0..3")
+    last_choice = document.get("last_choice")
+    if last_choice is not None and (type(last_choice) is not int or not 1 <= last_choice <= 8):
+        raise ValueError("last_choice is the option taken, 1 to 8")
     return {"schema": IMAGE_SCHEMA, "name": document.get("name", "mini-stage"),
             "map": None if map_id is None else int(map_id), "slot": None if slot is None else int(slot),
             "event_block": EVENT_BLOCK, "aux_block": AUX_BLOCK,
+            "route": route, "story_vars": {str(int(k)): v for k, v in story_vars.items()}, "last_choice": last_choice,
             "initial_resources": initial_resources, "events": events, "events_hex": blob.hex().upper(), "aux_hex": aux.hex().upper(),
             "deployments": [decode_record(r) for r in records], "source": document,
             "scope": "Per-scene event and deployment buffers at registration, plus optional one-time unit resources at initial map idle; ROM and other scenes are untouched."}

@@ -17,6 +17,8 @@
 #include <string_view>
 #include <vector>
 
+extern uint8_t* srw64_rdram;   // host.cpp: the guest RAM, for a load's mode test
+
 // Opt-in debug facility: substitute a compiled mini stage for one scene. When the
 // game registers a scene's scripts (8009DD58 -> 8009DE7C) the host overwrites the
 // per-scene event buffer (8019B400) and deployment block (80199400) with the image
@@ -39,6 +41,15 @@ struct Image {
     std::vector<uint32_t> pointers;
     std::optional<uint32_t> map, slot;
     nlohmann::json initial_resources=nlohmann::json::array();
+    // Story set-up the direct entry supplies in place of the stages before this one
+    // (docs/script/mini-stage.md, 直接进入): the protagonist route (0 Brad, 1 Manami, 2 Ark,
+    // 3 Selain: the route variable 801602EE and both people's default names, which the
+    // skipped name page would set; without it the protagonist group's portraits are
+    // garbage), story variables (index, value 0-3) and the last choice (3DD9 + option - 1),
+    // written when the scene registers, before any event reads them.
+    std::optional<unsigned> route;
+    std::vector<std::pair<unsigned,unsigned>> story_vars;
+    std::optional<unsigned> last_choice;
 };
 struct State {
     std::mutex mutex;
@@ -57,6 +68,9 @@ struct State {
     // the armed title menu hands over to the scenario mode the way the
     // intermission's next-stage exit does, without prologues or name entry.
     bool direct{true}, direct_done{};
+    // A load from the map (load_file off the title): the next frame boundary leaves the
+    // running stage the way the title's exit does and enters this one (take_restart).
+    bool restart{};
     uint64_t arm_vi{}, hotkey_vi{};
     unsigned skips{}, start_samples{};
     // Per-command state captures (SRW64_MINI_STAGE_CAPTURE=1): the script PC at
@@ -73,6 +87,10 @@ struct State {
     bool exit_seen{};
 };
 inline State& state(){static State s;return s;}
+// native_name_entry.cpp: writes the route's default names into the name fields (the
+// portraits of the protagonist group follow the route variable, the names the dialogue's
+// name tokens). Null in a host without the name entry, and in the unit tests.
+inline bool (*route_names)(uint8_t* ram,unsigned route){};
 inline bool active(){auto& s=state();std::lock_guard lock(s.mutex);return s.active;}
 
 inline bool quick_start() {
@@ -81,8 +99,9 @@ inline bool quick_start() {
 inline bool armed(){auto& s=state();std::lock_guard lock(s.mutex);return s.armed;}
 inline nlohmann::json snapshot() {
     auto& s=state();std::lock_guard lock(s.mutex);
-    nlohmann::json result={{"available",bool(s.image)},{"name",s.image?s.image->name:""},{"entering",s.armed},
-        {"active",s.active},{"ready",s.ready},{"waiting_reason",s.waiting_reason},{"applied",s.applied}};
+    nlohmann::json result={{"available",bool(s.image)},{"name",s.image?s.image->name:""},{"entering",s.armed || s.restart},
+        {"restarting",s.restart},{"active",s.active},{"ready",s.ready},{"waiting_reason",s.waiting_reason},{"applied",s.applied},
+        {"route",s.image && s.image->route?nlohmann::json(*s.image->route):nlohmann::json()}};
     if(const auto info=campaign::info()) {
         nlohmann::json scenes=nlohmann::json::array();
         for(const auto& [scene,key]:info->keys)scenes.push_back({{"scene",scene},{"stage",key}});
@@ -134,6 +153,35 @@ inline Image parse(const nlohmann::json& document) {
         const unsigned key=side*30+slot;
         if(std::find(seen.begin(),seen.end(),key)!=seen.end())throw std::runtime_error("mini stage resources: duplicate slot");
         seen.push_back(key);
+    }
+    // JSON numbers come signed from most writers: a small non-negative integer.
+    const auto small=[](const nlohmann::json& value,unsigned most)->std::optional<unsigned> {
+        if(!value.is_number_integer() || value.get<int64_t>()<0 || value.get<int64_t>()>int64_t(most))return std::nullopt;
+        return unsigned(value.get<int64_t>());
+    };
+    if(document.contains("route") && !document.at("route").is_null()) {
+        image.route=small(document.at("route"),3);
+        if(!image.route)throw std::runtime_error("mini stage route: 0 to 3");
+    }
+    if(document.contains("story_vars") && !document.at("story_vars").is_null()) {
+        // {"9": 0, "17": 2} or [[9, 0], [17, 2]]: 200 two-bit variables at 8015E818.
+        const auto& vars=document.at("story_vars");
+        const auto add=[&](std::optional<unsigned> index,const nlohmann::json& value) {
+            const auto v=small(value,3);
+            if(!index || *index>=200 || !v)throw std::runtime_error("mini stage story_vars: index 0-199, value 0-3");
+            image.story_vars.emplace_back(*index,*v);
+        };
+        if(vars.is_object())for(const auto& [key,value]:vars.items()){
+            if(key.empty() || key.find_first_not_of("0123456789")!=std::string::npos)throw std::runtime_error("mini stage story_vars: index 0-199, value 0-3");
+            add(unsigned(std::stoul(key)),value);
+        }
+        else if(vars.is_array())for(const auto& row:vars){if(!row.is_array() || row.size()!=2)throw std::runtime_error("mini stage story_vars: [index, value] pairs");add(small(row[0],199),row[1]);}
+        else throw std::runtime_error("mini stage story_vars: an object or an array");
+        if(image.story_vars.size()>200)throw std::runtime_error("mini stage story_vars: too many");
+    }
+    if(document.contains("last_choice") && !document.at("last_choice").is_null()) {
+        image.last_choice=small(document.at("last_choice"),8);
+        if(!image.last_choice || *image.last_choice<1)throw std::runtime_error("mini stage last_choice: option 1 to 8");
     }
     return image;
 }
@@ -232,6 +280,14 @@ inline void register_hook(uint8_t* ram,recomp_context* ctx) {
     // given; it has done so by now. A campaign starts from 0 as New Game does, so its
     // first clear (3D4A adds one) reads 第1話 in the intermission and the saves.
     if(!s.stages.empty() && s.direct_done && !s.applied && read(ram,0x8010F5EF,1)==1)write8(ram,0x8010F5EF,0);
+    // Story set-up before the opening runs: variables (two bits each, 8 to a halfword from
+    // 8015E818) and the last choice (engine+0x994, the 3E10-3E12 tests read it).
+    for(const auto& [index,value]:image.story_vars) {
+        const uint32_t at=0x8015E818+(index/8)*2;const unsigned shift=2*(index%8);
+        guest::write16(ram,at,uint16_t((read(ram,at,2)&~(3u<<shift))|(value<<shift)));
+    }
+    if(image.last_choice)guest::write16(ram,0x801602E4,uint16_t(0x3DD9+*image.last_choice-1));
+    if(!image.story_vars.empty() || image.last_choice)log({{"action","story-setup"},{"vars",image.story_vars.size()},{"last_choice",image.last_choice?nlohmann::json(*image.last_choice):nlohmann::json()}});
     s.active=true;s.ready=false;++s.applied;
     log({{"action","applied"},{"scene",scene},{"stage",s.image->name},{"mode",mode},{"pointer_table",table},{"original_aux",original_aux},
          {"events",image.pointers.size()},{"event_bytes",image.events.size()},{"aux_bytes",image.aux.size()},{"applied",s.applied}});
@@ -332,7 +388,34 @@ inline void direct_scene(uint8_t* ram) {
         constexpr uint16_t unit[]={0x93,0xD3,0x85,0x77,0xA4,0xA2,0xBA,0xFFFF};
         for(uint32_t i=0;i<12;++i)guest::write16(ram,0x8010F698+2*i,i<std::size(unit)?unit[i]:0);
     }
-    log({{"action","direct-entry"},{"scene",scene}});
+    // The route the name page would have set (801C69D0: 3DD3 Brad, 3DD4 Manami, 3DD1 Ark,
+    // 3DD2 Selain; 801C2B9C derives the first scene from it as (value - 3DCF) mod 4, and the
+    // portrait drawer 8008F970 maps the protagonist 25 and the partner 29 through it), and
+    // both people's default names. Without a route the variable stays as the reset left it.
+    bool names_written=false;
+    if(s.image && s.image->route) {
+        const unsigned route=*s.image->route;
+        guest::write16(ram,0x801602EE,uint16_t(0x3DD1+((route+2)&3)));
+        names_written=route_names && route_names(ram,route);
+    }
+    log({{"action","direct-entry"},{"scene",scene},{"route",s.image && s.image->route?nlohmann::json(*s.image->route):nlohmann::json()},{"names",names_written}});
+}
+
+// A stage may replace the running one from the tactical map, the world map or the title:
+// the game's mode (8015DA02; quick_load.cpp lists the tactical ones).
+inline bool restartable_mode(unsigned mode) {
+    return mode==3 || mode==0xB || mode==0x11 || mode==0x16 || mode==0x22 || mode==0xC || mode==0xD;
+}
+// Game thread, frame boundary: true once, when a stage loaded off the title should take
+// over from the running one (the same hand-over as take_direct_entry, from the map).
+inline bool take_restart(const uint8_t* ram) {
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    if(!s.image || !s.restart || s.applied)return false;
+    if(!restartable_mode(read(ram,0x8015DA02,1)))return false;
+    s.restart=false;s.direct_done=true;
+    log({{"action","restart"},{"mode",read(ram,0x8015DA02,1)}});
+    return true;
 }
 
 // Any thread: replace the stage with a local file while the title menu shows and
@@ -343,7 +426,14 @@ inline void direct_scene(uint8_t* ram) {
 // With enter=false the stage is only made ready: the title then offers it (a campaign
 // from the MOD manager waits for 開始 or a save to be loaded).
 inline std::string load_file(const std::filesystem::path& file,bool enter=true) {
-    if(srw64::intro::title_major()!=3)throw std::runtime_error("mini stage: open stage files from the title menu");
+    const bool on_title=srw64::intro::title_major()==3;
+    // Off the title the stage replaces the running one at the next frame boundary (a
+    // direct entry from the map: no title, no restart of the game between two stages).
+    bool restart=false;
+    if(!on_title) {
+        if(!enter || !srw64_rdram || !restartable_mode(read(srw64_rdram,0x8015DA02,1)))throw std::runtime_error("mini stage: open stage files from the title menu, the tactical map or the world map");
+        restart=true;
+    }
     const auto read_json=[](const std::filesystem::path& path) {
         std::ifstream input(path);
         if(!input)throw std::runtime_error("mini stage: cannot read "+path.string());
@@ -378,8 +468,10 @@ inline std::string load_file(const std::filesystem::path& file,bool enter=true) 
     }
     s.bound.reset();s.active=s.ready=false;s.waiting_reason.clear();s.applied=0;
     s.armed=s.in_sequence=s.direct_done=false;s.skips=s.start_samples=0;
-    s.hotkey_vi=enter?srw64_current_vi():0;
-    log({{"action","loaded"},{"source","runtime"},{"path",file.string()},{"name",s.image->name},{"events",s.image->pointers.size()}});
+    s.restart=restart;
+    if(restart && !s.direct)throw std::runtime_error("mini stage: a restart from the map needs the direct entry (SRW64_MINI_STAGE_DIRECT)");
+    s.hotkey_vi=enter && !restart?srw64_current_vi():0;
+    log({{"action","loaded"},{"source","runtime"},{"path",file.string()},{"name",s.image->name},{"events",s.image->pointers.size()},{"restart",restart}});
     return s.image->name;
 }
 
@@ -389,7 +481,7 @@ inline void clear_campaign() {
     std::lock_guard lock(s.mutex);
     s.stages.clear();s.image.reset();campaign::set(std::nullopt);
     s.bound.reset();s.active=s.ready=false;s.waiting_reason.clear();s.applied=0;
-    s.armed=s.in_sequence=s.direct_done=false;s.skips=s.start_samples=0;s.hotkey_vi=0;
+    s.armed=s.in_sequence=s.direct_done=s.restart=false;s.skips=s.start_samples=0;s.hotkey_vi=0;
     log({{"action","campaign-cleared"}});
 }
 

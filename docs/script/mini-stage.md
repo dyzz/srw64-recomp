@@ -454,3 +454,13 @@ every 4 frames: place one selected unit next to the ship, remove it from the abo
 普通游玩没有进入迷你关卡的入口（2026-10-06 用户定）：调试接口关着时拖放不加载；F8 与标题上的「进入迷你关卡」只在已经加载了关卡时出现，而关卡只能经调试接口或开发工具（`play_native.py --mini-stage`、`srw64ctl launch --mini-stage`）加载。
 
 编译后的镜像（`srw64.mini-stage-image.v1`）直接加载；关卡源文件（`srw64.mini-stage.v1`）先经 `SRW64_MINI_STAGE_COMPILER`（启动器设置为 shell 转义后的 `python tools/recomp/script_lab/mini_stage.py`）编译到运行目录的 `runtime-mini-stage-N.json`，编译输出在 `runtime-mini-stage-compile.log`。加载会替换当前镜像、重置绑定并立即武装进入；不需要启动时带 `SRW64_MINI_STAGE`。非标题菜单、文件不可读、编译失败均拒绝并给出原因。验证：不带关卡启动，标题菜单前加载被拒、缺失文件被拒、加载 `battle-ui.json` 源文件后 26.1 秒就绪，退出码 0（`build/recomp/debug/20260921T083917.598168Z/`）。拖放路径与调试命令共用 `mini_stage::load_file`，拖放事件本身未做自动化验证。
+
+## 从地图上换关、路线与剧情前提（2026-11-01，video-capture 分支）
+
+为拍剧情视频而加的三样东西，都只经调试接口，普通游玩碰不到：
+
+- **镜像带故事前提。** 关卡源文件（和编译后的镜像）多三个可选键：`route`（0 ブラッド、1 マナミ、2 アーク、3 セレイン）、`story_vars`（`{"9": 0, "17": 3}`，`8015E818` 起 200 个两位变量）、`last_choice`（1 起，写 `801602E4 = 3DD9 + 选项 − 1`，`3E10`–`3E12` 读它）。`route` 在直接进入时写路线变量 `801602EE`（`801C69D0` 的编码：3DD3 ブラッド、3DD4 マナミ、3DD1 アーク、3DD2 セレイン）并照姓名页的确认（`801C474C`）从 ROM 的默认名表（`0x10D6A0`／`0x10D710`）写两人的名字、姓氏、昵称、全名（`8010F5F8` 起四组）。没有路线变量时主角组（人物 25–32）的头像是花屏——头像绘制 `8008F970` 用它把人物 25／29 换成各路线的人；以前只能走新游戏的旧入口。`story_vars` 与 `last_choice` 在场景登记（`8009DE7C` 包装）时写入，早于开场事件的任何条件判断，不必像以前那样等 `applied` 再用 `memory.write` 抢时间。
+- **地图上直接换关。** `mini_stage.load` 在战术地图或世界地图上（模式 3／B／11／16／22／C／D）也接受：下一个帧边界按原版回标题的收尾（`801DFDBC`：`800836CC(0)`，再加标题出口用的 `800A5138` 状态重置）直接走直接进入那一套（写场景号、`80080188(0xC)`、交回分发器），不经标题画面、不重启游戏；`status.mini_stage.restarting` 为真表示在等那一帧。只在 overlay 没在装载时执行（`srw64_overlay_loading`）。原版 Z+START 在剧情中不生效，这条路不看地图 UI 状态，所以对白正在播也能换。
+- **选项框可见、可答。** `status.choice`：`3D44` 处理器（`8009FA94`）在脚本虚拟机上时给出选项数、第一项文本号、光标、阶段（0 窗口未开、1 等按键）和上次答案；`choice.pick {index}` 写光标再按 A。以前脚本只能定时盲按确认。
+
+拍摄脚本见 `local/hero-story-videos/win/shoot_v2.py`（不进仓库）。整体方案在 [docs/design/video-capture.md](../design/video-capture.md)。

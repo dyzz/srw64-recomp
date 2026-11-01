@@ -110,6 +110,37 @@ json dialogue_state(bool full_history) {
     if(history.size()>3)history=json(std::vector<json>(history.end()-3,history.end()));
     return state;
 }
+// A choice (3D44, handler 8009FA94 on the script VM at engine+0x948): its operands past the
+// opcode (window slot, option count, text id of the first option), the cursor (+0x2C, the
+// answer 3DD9 + cursor goes to engine+0x994 on A) and the phase (+0x26: 0 before its window
+// opens, 1 while it waits). The reader's state does not show it (unit_name.hpp answers the
+// naming one before any window); a shooting script reads this and uses choice.pick.
+json choice_state() {
+    constexpr uint32_t owner=0x8015F950+0x948;
+    json state={{"active",false}};
+    if(!srw64_rdram)return state;
+    const uint32_t handler=guest::read(srw64_rdram,owner+0x30,4);
+    if(handler!=0x8009FA94)return state;
+    const uint32_t pc=guest::read(srw64_rdram,owner+0x1C,4);
+    if(!guest::valid(pc,6))return state;
+    state["active"]=true;state["options"]=guest::read(srw64_rdram,pc+2,2);state["text_id"]=guest::read(srw64_rdram,pc+4,2);
+    state["cursor"]=guest::read(srw64_rdram,owner+0x2C,2);state["phase"]=guest::read(srw64_rdram,owner+0x26,2);
+    state["last_answer"]=guest::read(srw64_rdram,0x801602E4,2);
+    return state;
+}
+// Moves the choice's cursor to `index` and presses A for a few polls.
+json choice_pick(const json& params) {
+    constexpr uint32_t owner=0x8015F950+0x948;
+    const auto state=choice_state();
+    if(!state["active"].get<bool>())throw RpcError(ServerError,"no choice is open");
+    if(!params.contains("index") || !params["index"].is_number_unsigned())throw RpcError(InvalidParams,"index must be the option number from 0");
+    const unsigned index=params["index"].get<unsigned>(),options=state["options"].get<unsigned>();
+    if(index>=options)throw RpcError(InvalidParams,"index must be below "+std::to_string(options));
+    if(state["phase"].get<unsigned>()!=1)throw RpcError(ServerError,"the choice's window is not up yet");
+    guest::write16(srw64_rdram,owner+0x2C,uint16_t(index));
+    srw64_debug_buttons(0x8000,params.value("vis",4u));
+    return {{"vi",srw64_current_vi()},{"index",index},{"options",options},{"text_id",state["text_id"]}};
+}
 json rules_state() {
     const unsigned fixes=rules::active_fixes();
     json ids=json::array();
@@ -192,7 +223,7 @@ json status(const json& params) {
         {"sched",{{"latch_slow_spells",sched_rate::latch_slow_spells.load()},{"logic_ticks",std::vector<uint64_t>(std::begin(sched_rate::logic_ticks),std::end(sched_rate::logic_ticks))},{"picture_ticks",std::vector<uint64_t>(std::begin(sched_rate::picture_ticks),std::end(sched_rate::picture_ticks))},{"factor",sched_rate::factor()},{"retraces",sched_rate::retraces.load()},{"audio_skipped",sched_rate::audio_skipped.load()},{"interval",srw64_rdram?guest::read(srw64_rdram,0x8010F0C8,4):0},{"rendered",srw64_rdram?guest::read(srw64_rdram,0x8010E09C,4):0},{"sync_mode",srw64_rdram?guest::read(srw64_rdram,0x8010F5DC,1):0}}},
         {"wide_map",{{"extra",wide_map::extra()},{"shown",wide_map::map_shown()},{"placed",wide_map::placed_draws()},{"map_width",wide_map::map_width_seen()},{"scroll_x",wide_map::scroll_seen()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
-        {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
+        {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"choice",choice_state()},{"name_page",name_page()},
         {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"battle_viewer",battle_viewer::state()},{"move_jump",move_jump::state()},{"enemy_cycle",enemy_cycle::state()},{"quick_load",quick_load::state()},{"pad_held",pad().load()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
@@ -326,6 +357,15 @@ json settings(const json& params) {
         if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"title_ui must be native or original");
         on_window([=]{settings::set_native_title_ui(ui=="native");return json(nullptr);});
         done["title_ui"]=ui;
+    }
+    if(params.contains("dialogue_hints")) {
+        // "off" keeps the reading controls bar off the picture (a recording); "auto" and
+        // "always" are the player's setting.
+        const auto hints=params["dialogue_hints"].get<std::string>();
+        if(hints!="off" && hints!="auto" && hints!="always")throw RpcError(InvalidParams,"dialogue_hints must be off, auto or always");
+        dialogue::set_hints_hidden(hints=="off");
+        if(hints!="off")on_window([=]{settings::set_dialogue_hints_always(hints=="always");return json(nullptr);});
+        done["dialogue_hints"]=hints;
     }
     if(params.contains("locale")) {
         const auto locale=params["locale"].get<std::string>();
@@ -465,8 +505,12 @@ json dispatch(const std::string& method,const json& params) {
     if(method=="screenshot")return screenshot(params);
     if(method=="record.start") {
         const auto directory=output/("record-"+std::to_string(srw64_current_vi()));
-        if(!recording().start(directory,params.value("width",960u)))throw RpcError(ServerError,"already recording, or cannot write "+directory.string());
-        return {{"directory",directory.string()},{"vi",srw64_current_vi()}};
+        Recording::Options options;
+        options.width=params.value("width",960u);options.fps=params.value("fps",30u);
+        options.encode=params.value("encode",true);options.lockstep=params.value("lockstep",options.encode);
+        options.ffmpeg=params.value("ffmpeg","");options.queue=params.value("queue",12u);
+        if(!recording().start(directory,options))throw RpcError(ServerError,"already recording, or cannot write "+directory.string());
+        return {{"directory",directory.string()},{"vi",srw64_current_vi()},{"fps",options.fps},{"encode",options.encode},{"lockstep",options.lockstep}};
     }
     if(method=="record.stop") {
         auto result=recording().stop();
@@ -487,7 +531,11 @@ json dispatch(const std::string& method,const json& params) {
     if(method=="wait_vi")return wait_vi(params);
     if(method=="game_over")return game_over(params);
     if(method=="victory")return victory(params);
-    if(method=="mini_stage.load")return {{"name",mini_stage::load_file(params.at("path").get<std::string>())}};
+    if(method=="mini_stage.load") {
+        const auto name=mini_stage::load_file(params.at("path").get<std::string>());
+        return {{"name",name},{"restart",mini_stage::snapshot().value("restarting",false)}};
+    }
+    if(method=="choice.pick")return choice_pick(params);
     if(method=="memory.read") {
         // Guest RAM as hex, read without stopping the game (a debugging view, not a snapshot).
         const uint32_t address=params.at("address").get<uint32_t>(),size=params.value("size",4u);
@@ -522,7 +570,7 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","memory.read","memory.write","viewer.start","file.read","file.remove",
+                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","memory.read","memory.write","viewer.start","file.read","file.remove",
                                  "quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }

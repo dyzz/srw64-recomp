@@ -1,5 +1,7 @@
 #pragma once
 #include "recomp.h"
+// host.cpp: an overlay's bytes are being copied in (a frame hook must not switch modes then).
+bool srw64_overlay_loading();
 
 // Installed before starting guest threads. Empty callbacks preserve the original
 // routines in the CPU-only and fixed-frame diagnostic hosts.

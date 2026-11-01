@@ -47,6 +47,11 @@ uint16_t input(uint16_t buttons);
 Request request();
 // Font glyph codes (a 0xFFFF- or blank-terminated name buffer) as text; empty when unknown.
 std::u16string decode_glyphs(const std::vector<uint16_t>& codes);
+// The route's default names (both people: given, family, nickname, full name at 8010F5F8..)
+// written as the name page's confirmation writes them, from the ROM's own tables, without
+// the name overlay: the mini stage's direct entry (mini_stage.hpp), which skips that page.
+// False when the ROM is not the pinned one or a name has a glyph the grid cannot show.
+bool write_route_defaults(uint8_t* ram,unsigned route,const uint8_t* rom,size_t rom_bytes);
 // Review: confirm starts the story; false returns to the selection.
 void review(uint64_t serial,bool confirm);
 // Selection: highlight a route (the game plays its cursor sound) or confirm it, which

@@ -90,8 +90,11 @@ TOOLS = [
          "aspect": {"type": "string", "enum": ["auto", "4:3"]},
          "intermission_ui": {"type": "string", "enum": ["native", "original"]},
          "name_entry_ui": {"type": "string", "enum": ["native", "original"]},
-         "title_ui": {"type": "string", "enum": ["native", "original"]}}}},
-    {"name": "srw64_mini_stage_load", "description": "Load a mini stage file (compiled image or source definition) at run time and enter it from the title menu, like dropping the file on the window.",
+         "title_ui": {"type": "string", "enum": ["native", "original"]},
+         "dialogue_hints": {"type": "string", "enum": ["off", "auto", "always"]}}}},
+    {"name": "srw64_choice_pick", "description": "Answer the open choice box (3D44; srw64_status choice: options, text_id, cursor, phase): moves its cursor to the option index (from 0) and presses A. Fails while no choice is open or its window is not up yet.",
+     "inputSchema": {"type": "object", "required": ["index"], "properties": {"index": {"type": "integer"}}}},
+    {"name": "srw64_mini_stage_load", "description": "Load a mini stage file (compiled image or source definition) at run time and enter it: from the title menu like dropping the file on the window, or from the tactical or world map, where it replaces the running stage at the next frame (no title, no restart). The image's route, story_vars and last_choice set the protagonist, story variables and the last choice before the opening runs.",
      "inputSchema": {"type": "object", "required": ["path"], "properties": {"path": {"type": "string"}}}},
     {"name": "srw64_viewer_start", "description": "Start one battle animation in the Battle Viewer from the title (docs/design/battle-viewer.md): choice {attacker: {unit, pilot, ...}, defender: {unit, pilot, ...}, scene: [left, right], song} as the viewer page sends it, or raw writes [{side, offset, hex}] into the demo's participant records; optional song. State is in srw64_status (battle_viewer).",
      "inputSchema": {"type": "object", "properties": {"choice": {"type": "object"}, "writes": {"type": "array", "items": {"type": "object"}}, "song": {"type": "integer"}}}},
@@ -105,11 +108,11 @@ TOOLS = [
      "inputSchema": {"type": "object", "required": ["address"], "properties": {"address": {"type": "integer"}, "size": {"type": "integer"}}}},
     {"name": "srw64_memory_write", "description": "Write bytes (hex) into guest RAM at an address, between the game's own writes, for probes such as forcing a battle background. Debug sessions only; at most 4096 bytes.",
      "inputSchema": {"type": "object", "required": ["address", "hex"], "properties": {"address": {"type": "integer"}, "hex": {"type": "string"}}}},
-    {"name": "srw64_record_start", "description": "Start recording the game window and its sound (width in pixels, default 960) while other calls drive the game. Stop with srw64_record_stop.",
-     "inputSchema": {"type": "object", "properties": {"width": {"type": "integer"}}}},
+    {"name": "srw64_record_start", "description": "Start recording the game window and its sound (width in pixels, default 960; fps, default 30) while other calls drive the game; the frames go on a steady timeline by the VI they were presented at. With an ffmpeg on the host (ffmpeg path, its SRW64_FFMPEG, or one on its PATH) the host encodes the MP4 itself and only that file comes back (encode, default true; lockstep, default true, makes the game wait for a slow encoder instead of dropping frames). Stop with srw64_record_stop.",
+     "inputSchema": {"type": "object", "properties": {"width": {"type": "integer"}, "fps": {"type": "integer"}, "encode": {"type": "boolean"}, "ffmpeg": {"type": "string"}, "lockstep": {"type": "boolean"}}}},
     {"name": "srw64_record_stop", "description": "Stop the recording started by srw64_record_start, encode it as an MP4 with the game's sound (optional path) and return where it was written.",
      "inputSchema": {"type": "object", "properties": {"path": {"type": "string"}}}},
-    {"name": "srw64_wait", "description": "Wait until conditions hold: vi (at least), dialogue_active, intro_active, name_page, link_page, intermission_page, battle_page, parts_page, ability_page, swap_page, save_page, title_major (3 = main menu), text (in the active dialogue), event {log, kind, count}.",
+    {"name": "srw64_wait", "description": "Wait until conditions hold: vi (at least), dialogue_active, choice_active, intro_active, name_page, link_page, intermission_page, battle_page, parts_page, ability_page, swap_page, save_page, title_major (3 = main menu), text (in the active dialogue), event {log, kind, count}.",
      "inputSchema": {"type": "object", "properties": {"until": {"type": "object"}, "timeout_s": {"type": "number"}}}},
     {"name": "srw64_events", "description": "Rows of an event log from a cursor. Logs: " + ", ".join(EVENT_LOGS) + ".",
      "inputSchema": {"type": "object", "required": ["log"], "properties": {"log": {"type": "string", "enum": list(EVENT_LOGS)},
@@ -148,7 +151,7 @@ class Server:
             seconds = float(args["seconds"])
             if not 1 <= seconds <= 120:
                 raise HostError("seconds must be 1 to 120")
-            return text(self.need().record(seconds, width=int(args.get("width", 960))))
+            return text(self.need().record(seconds, width=int(args.get("width", 960)), fps=int(args.get("fps", 30)), ffmpeg=args.get("ffmpeg")))
         if name == "srw64_attach":
             self.session = Session.attach(args.get("run"))
             return text({"run": str(self.session.run), "status": self.session.client.call("status")})
@@ -186,6 +189,8 @@ class Server:
             return text(client.call("settings", **args))
         if name == "srw64_mini_stage_load":
             return text(client.call("mini_stage.load", path=args["path"]))
+        if name == "srw64_choice_pick":
+            return text(client.call("choice.pick", index=int(args["index"])))
         if name == "srw64_viewer_start":
             return text(client.call("viewer.start", **args))
         if name == "srw64_drop":
@@ -199,7 +204,7 @@ class Server:
         if name == "srw64_memory_write":
             return text(client.call("memory.write", address=int(args["address"]), hex=str(args["hex"])))
         if name == "srw64_record_start":
-            return text(session.record_start(int(args.get("width", 960))))
+            return text(session.record_start(int(args.get("width", 960)), int(args.get("fps", 30)), args.get("encode"), args.get("ffmpeg"), args.get("lockstep")))
         if name == "srw64_record_stop":
             return text(session.record_stop(args.get("path")))
         if name == "srw64_wait":
