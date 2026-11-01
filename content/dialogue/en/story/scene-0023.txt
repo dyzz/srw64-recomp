@@ -997,13 +997,14 @@ and what I really can’t forgive is the bunch who made her do it.”
 
 @21304 Lawrence · ローレンス
 # 审校：Lawrence is addressing Banjo, not Manami, so “my lady” is a wrong addressee and must be removed.
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「それに人手不足でもあることですし
 >  わたくしもここはひとつ甲児さまがたの
 “Besides, we are short-handed, so I believe it would be best
 ---
 >  いうようになさるのが、よろしいかと
 >  存じます」
-for you to do as Koji and the others say.”
+for you to do as Master Koji and the others say.”
 
 @21305 Banjo · 万丈
 # 审校：精读：大尉 统一 Captain

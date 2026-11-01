@@ -367,8 +367,9 @@ I’ll make you want to fight me.”
 
 @19632 Lawrence · ローレンス
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「お、お嬢様、あれは……」
-“M-my lady, that’s...”
+“M-my lady, that is...”
 
 @19633 Manami · マナミ（按段落 3DD4）
 > 「{PartnerName}……」
@@ -551,8 +552,9 @@ An army that serves private interests.”
 
 @19656 Lawrence · ローレンス
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「データにはないようです、お嬢様」
-“It doesn’t appear in our data, my lady.”
+“It does not appear in our data, my lady.”
 
 @19657 Quatre · カトル
 # 审校：“That is,”读成“也就是说”

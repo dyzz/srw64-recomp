@@ -1587,9 +1587,10 @@ I am not allowed to choose one!”
 
 @25688 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「あぁ……お父様……お母様……
 >  申し訳ありません……」
-“Ah... Father... Mother... I’m so sorry...”
+“Ah... Father... Mother... I am so sorry...”
 
 @25689 Manami · マナミ（按段落 3DD4）
 # 审校：原文首尾为「」，应使用弯引号“”包裹整段。
@@ -1617,9 +1618,10 @@ no one is going to thank you for it... You fool.
 
 @25692 Lawrence · ローレンス
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「大丈夫です、お嬢様。
 >  {PartnerName}様は
-“It’s all right, my lady. It seems {PartnerName}
+“It is all right, my lady. It seems Lady {PartnerName}
 ---
 >  無事脱出されたようです」
 escaped safely.”

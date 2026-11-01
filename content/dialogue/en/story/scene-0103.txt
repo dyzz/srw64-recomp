@@ -1765,13 +1765,14 @@ and you’ll be the ones who die.”
 
 @49112 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「あら、わたくしは油断などしたことは
 >  ございませんわよ。もっとも
 “Oh my, I have never once let my guard down. Though in
 ---
 >  {HeroName}さんなら、確かに
 >  十分ありうることですけれど」
-{HeroName}’s case, I suppose it’s quite possible.”
+{HeroName}’s case, I suppose it is quite possible.”
 
 @49113 Manami · マナミ（按段落 3DD4）
 > 「でも、相手は
@@ -1786,17 +1787,18 @@ and you’ll be the ones who die.”
 
 @49115 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「クワトロでもシャアでも
 >  どちらでもかまいません
 “Quattro or Char, it makes no difference to me.
 ---
 >  わたくしたちが何のために
 >  戦っているのかを理解していれば
-As long as we understand what we’re fighting for,
+As long as we understand what we are fighting for,
 ---
 >  相手が誰であろうと
 >  関係ありませんわ」
-it doesn’t matter who the enemy is.”
+it does not matter who the enemy is.”
 
 @49116 Manami · マナミ（按段落 3DD4）
 > 「そうだけど……」

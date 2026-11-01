@@ -1707,9 +1707,10 @@ And this whole unit, when ya look close, is nothin’ but heavy hitters.”
 
 @30358 Rish · リッシュ（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「こわいねぇ。ま、いいさ。
 >  何しろこれからずーっと一緒だからな」
-“Scary. Well, whatever. We’ve got all the time in the world together from here on.”
+“Ooh, scary. Eh, whatever. We’re gonna be together for a long, long time, after all.”
 
 @30359 Selain · セレイン（按段落 3DD2）
 > 「…………」

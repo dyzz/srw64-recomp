@@ -783,8 +783,9 @@ You’re just trying to make me owe you!”
 “This is no time for that! Look, you’re bleeding.”
 
 @19954 Lera · レラ
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「放せっ、バカやろう! あぅぅっ!」
-“Let go of me, you idiot! Ahh!”
+“Let go of me, you bastard! Ahh!”
 
 @19955 Ark · アーク（按段落 3DD1）
 # 审校：全局：弯撇号／弯引号

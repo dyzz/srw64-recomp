@@ -288,6 +288,7 @@ what goes on in the heads of men like that.”
 
 @21025 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「でもね……{PartnerNick}は昔から
 >  人のいうこと聞かなかったから
 “But you know... {PartnerNick} never listened to anyone, even back then.
@@ -298,7 +299,7 @@ This is no time to be going on about money or family lineage.
 ---
 >  自分で気づいてくれればいいんだけど
 >  ……でも、ありがとう、アンナ」
-If only they’d realize that themselves... But thank you, Anna.”
+If only she’d realize that herself... But thank you, Anna.”
 
 @21026 Brad · ブラッド（按段落 3DD3）
 > 「いくぞ、ドモン!」

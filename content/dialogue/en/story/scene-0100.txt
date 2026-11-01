@@ -685,13 +685,14 @@ concerned with us. This might be our chance.”
 
 @47346 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「そうですわね。
 >  わたくしも、そう思いますわ
 “Indeed. I think so as well.
 ---
 >  いまが我々が待ち望んでいた、
 >  好機でしょう」
-Now is the opportunity we’ve been waiting for.”
+Now is the opportunity we have been waiting for.”
 
 @47347 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号

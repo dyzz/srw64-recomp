@@ -1441,9 +1441,10 @@
 「{PartnerName}！？」
 
 @25692 勞倫斯 · ローレンス
+# 審校：按人設修正語氣／稱呼（2026-11-01，docs/script/original-characters.md）
 > 「大丈夫です、お嬢様。
 >  {PartnerName}様は
-「沒事的，大小姐。{PartnerName}大人
+「沒事的，大小姐。{PartnerName}大小姐
 ---
 >  無事脱出されたようです」
 看來已經平安脫離了。」

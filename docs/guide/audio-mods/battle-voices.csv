@@ -5537,7 +5537,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11334,29,エルリッヒ,埃尔利希,Ehrlich,19,攻击（通用，13/14）,「私の前に出てきたことを 後悔させてやろう!」,“让你后悔出现在我面前！”,“I’ll make you regret crossing my path!”
 11335,29,エルリッヒ,埃尔利希,Ehrlich,19,攻击（通用，14/14）,「ターゲット捕捉……落ちろ!」,“锁定目标……坠落吧！”,“Target locked... fall!”
 11336,29,エルリッヒ,埃尔利希,Ehrlich,19,被击坠（通用，1/4）,「う、うおぉぉぉぉぉ!?」,“呜、呜哦哦哦哦哦！？”,“U-uwaaaaaah?!”
-11337,29,エルリッヒ,埃尔利希,Ehrlich,19,被击坠（通用，2/4）,「くっ、や、やられた……のか」,“唔，被、被干掉了吗……”,"“Tch, s-so I’ve... been shot down...”"
+11337,29,エルリッヒ,埃尔利希,Ehrlich,19,被击坠（通用，2/4）,「くっ、や、やられた……のか」,“唔，被、被击落了吗……”,"“Tch, s-so I’ve... been shot down...”"
 11338,29,エルリッヒ,埃尔利希,Ehrlich,19,被击坠（通用，3/4）,「い、いかん!?」,“不、不好！？”,“Th-this is bad?!”
 11339,29,エルリッヒ,埃尔利希,Ehrlich,19,被击坠（通用，4/4）,「なにっ! げ、限界か!?」,“什么！到、到极限了吗！？”,“What?! Has it reached its limit?!”
 11340,29,エルリッヒ,埃尔利希,Ehrlich,19,重伤（剩余 HP 不足 30%）（通用，1/7）,「ぐうぅぅっ…… この私が、直撃をくらう!?」,“唔呜……我竟会被直接命中！？”,"“Guh... a direct hit, on me?!”"
@@ -5546,7 +5546,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11343,29,エルリッヒ,埃尔利希,Ehrlich,19,重伤（剩余 HP 不足 30%）（通用，4/7）,「そう簡単に退くわけには!」,“岂能这么轻易撤退！”,“I can’t fall back that easily!”
 11344,29,エルリッヒ,埃尔利希,Ehrlich,19,重伤（剩余 HP 不足 30%）（通用，5/7）,「つ、強い……だがっ!」,“好、好强……但是！”,“S-so strong... but even so!”
 11345,29,エルリッヒ,埃尔利希,Ehrlich,19,重伤（剩余 HP 不足 30%）（通用，6/7）,「くぅっ、出力があがらんとは!」,“唔，功率竟然上不去！”,"“Guh, the output won’t rise?!”"
-11346,29,エルリッヒ,埃尔利希,Ehrlich,19,重伤（剩余 HP 不足 30%）（通用，7/7）,「や、やられるのか……私が!?」,“我、我要被干掉了吗……我！？”,“A-am I... going down?!”
+11346,29,エルリッヒ,埃尔利希,Ehrlich,19,重伤（剩余 HP 不足 30%）（通用，7/7）,「や、やられるのか……私が!?」,“我、我要被击落了吗……我！？”,“A-am I... going down?!”
 11347,29,エルリッヒ,埃尔利希,Ehrlich,19,中伤（剩余 HP 30–90%）（通用，1/9）,「できる敵だ……手強い!」,“这敌人有两下子……真棘手！”,“A skilled foe... a tough one!”
 11348,29,エルリッヒ,埃尔利希,Ehrlich,19,中伤（剩余 HP 30–90%）（通用，2/9）,「さ、さすがにやるな!」,“果、果然有两下子！”,“Y-you really are good!”
 11349,29,エルリッヒ,埃尔利希,Ehrlich,19,中伤（剩余 HP 30–90%）（通用，3/9）,「で、できる!? こいつ!」,“这、这家伙好厉害！？”,“Th-this one’s... good?!”
@@ -5811,7 +5811,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11608,31,カーツ,卡茨,Kurtz,21,回避（通用，1/8）,「当たらん!」,“打不中！”,“You can’t hit me!”
 11609,31,カーツ,卡茨,Kurtz,21,回避（通用，2/8）,「遅い!」,“太慢了！”,“Too slow!”
 11610,31,カーツ,卡茨,Kurtz,21,回避（通用，3/8）,「ハハハッ、どこを狙っている!?」,“哈哈哈，你往哪儿打呢！？”,"“Hahaha, what are you aiming at?!”"
-11611,31,カーツ,卡茨,Kurtz,21,回避（通用，4/8）,「甘すぎる!」,“太嫩了！”,“Too slow!”
+11611,31,カーツ,卡茨,Kurtz,21,回避（通用，4/8）,「甘すぎる!」,“太嫩了！”,“Too soft!”
 11612,31,カーツ,卡茨,Kurtz,21,回避（通用，5/8）,「貴様の技など通じん!」,“你的招式对我没用！”,“Your tricks won’t work on me!”
 11613,31,カーツ,卡茨,Kurtz,21,回避（通用，6/8）,「笑止っ!」,“可笑！”,“Ridiculous!”
 11614,31,カーツ,卡茨,Kurtz,21,回避（通用，7/8）,「クズが。貴様ごときは俺に触れる ことすらできん!」,“废物。就凭你这种东西，连碰都碰不到我！”,“Trash. The likes of you can’t even touch me!”
@@ -5905,25 +5905,25 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11702,32,アイシャ,艾夏,Aisha,22,攻击（通用，14/14）,「どうやらわたくしの勝ちのようですわね」,“看来是我赢了呢。”,“It seems victory is mine.”
 11703,32,アイシャ,艾夏,Aisha,22,被击坠（通用，1/3）,「あぁ!? こ、このわたくしが……?」,“啊！？我、我竟然……？”,"“What?! M-me, of all people...?”"
 11704,32,アイシャ,艾夏,Aisha,22,被击坠（通用，2/3）,「こ、こんなのは何かの間違いですわ!」,“这、这一定是哪里搞错了！”,“Th-this must be some kind of mistake!”
-11705,32,アイシャ,艾夏,Aisha,22,被击坠（通用，3/3）,「そ、そんなことって……!?」,“怎、怎么会有这种事……！？”,“Th-this can’t be...?!”
+11705,32,アイシャ,艾夏,Aisha,22,被击坠（通用，3/3）,「そ、そんなことって……!?」,“怎、怎么会有这种事……！？”,“Th-this cannot be...?!”
 11706,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%）（通用，1/5）,「あぁっ! イヤァァーッ!」,“啊啊！不要啊——！”,“Aah! Nooo!”
 11707,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%）（通用，2/5）,「わ、わたくしはこんなところで 倒れるわけにはまいりません!」,“我、我可不能在这种地方倒下！”,“I-I cannot possibly fall here!”
 11708,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%）（通用，3/5）,「あぁ! い、いや、やめてぇ!」,“啊啊！不、不要，住手！”,"“Aah! N-no, stop!”"
-11709,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%）（通用，4/5）,「きゃぁぁーっ! もう……だめ」,“呀啊啊——！已经……不行了。”,“Kyaaa! I... I can’t...”
+11709,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%）（通用，4/5）,「きゃぁぁーっ! もう……だめ」,“呀啊啊——！已经……不行了。”,“Kyaaa! I... I cannot...”
 11710,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%）（通用，5/5）,「あぅぅ!? こんなにパワーが違うなんて!」,“啊呜呜！？力量竟然差这么多！”,“Ahh?! I never imagined such a gap in power!”
 11711,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%）（通用，1/5）,「こ、このわたくしが……!?」,“我、我竟然……！？”,"“M-me, of all people...?!”"
-11712,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%）（通用，2/5）,「うぅぅっ! もうだめですわ!」,“呜呜！已经不行了！”,“Ugh! I can’t go on!”
+11712,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%）（通用，2/5）,「うぅぅっ! もうだめですわ!」,“呜呜！已经不行了！”,“Ugh! I cannot go on!”
 11713,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%）（通用，3/5）,「つっ、そうこなくてはウソですわね」,“唔，这样才像话。”,"“Tch, now that is more like it.”"
 11714,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%）（通用，4/5）,「これでこそ、倒す価値もありますわ!」,“这样才值得我打倒！”,“Now you are worth defeating!”
 11715,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%）（通用，5/5）,「うぅぅっ、ま、まだ、まだよ!」,“呜……还、还没完，还没完！”,"“Ugh, n-not yet! Not yet!”"
 11716,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上）（通用，1/6）,「フフフ、効きませんわね」,“呵呵呵，不管用的。”,"“Hehehe, that had no effect.”"
 11717,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上）（通用，2/6）,「ウフ、何かなさったのかしら?」,“呵呵，你刚才做了什么吗？”,"“Hehe, did you do something just now?”"
-11718,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上）（通用，3/6）,「あらあら、それで精一杯ですの?」,“哎呀哎呀，你就这点本事吗？”,"“Oh my, is that all you’ve got?”"
+11718,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上）（通用，3/6）,「あらあら、それで精一杯ですの?」,“哎呀哎呀，你就这点本事吗？”,"“Oh my, is that the best you can do?”"
 11719,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上）（通用，4/6）,「あっ! ……油断してしまいましたわ」,“啊！……我大意了。”,“Ah! ...I let my guard down.”
 11720,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上）（通用，5/6）,「威力が弱すぎたようですわね?」,“威力好像太弱了吧？”,"“It seems that was a little too weak, hmm?”"
 11721,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上）（通用，6/6）,「もう、やめたほうがよいのではなくて?」,“真是的，还是收手为好吧？”,"“Honestly, would it not be wiser to give up?”"
 11722,32,アイシャ,艾夏,Aisha,22,回避（通用，1/5）,「フフフ、どこを狙ってらっしゃるの?」,“呵呵呵，你这是往哪儿打呢？”,"“Hehehe, whatever are you aiming at?”"
-11723,32,アイシャ,艾夏,Aisha,22,回避（通用，2/5）,「そのような攻撃では、だめですわ」,“那种攻击可不管用。”,“An attack like that simply won’t do.”
+11723,32,アイシャ,艾夏,Aisha,22,回避（通用，2/5）,「そのような攻撃では、だめですわ」,“那种攻击可不管用。”,“An attack like that simply will not do.”
 11724,32,アイシャ,艾夏,Aisha,22,回避（通用，3/5）,「残念でしたわね、ウフフ」,“真可惜呢，呵呵。”,“Too bad for you. Hehe.”
 11725,32,アイシャ,艾夏,Aisha,22,回避（通用，4/5）,「そこですわね?」,“就是那里吧？”,"“Coming from there, I take it?”"
 11726,32,アイシャ,艾夏,Aisha,22,回避（通用，5/5）,「わたくしにもこの程度は!」,“这种程度，我也做得到！”,“I can manage this much as well!”
@@ -5935,7 +5935,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11732,32,アイシャ,艾夏,Aisha,22,弹药／EN 不足，无法反击（通用，2/2）,「確認を怠ったのが失敗でしたわ」,“是我疏于确认了。”,“I failed to check. That was my mistake.”
 11733,32,アイシャ,艾夏,Aisha,22,射程外，无法反击（通用，1/2）,「と、届かないというのですか!?」,“够、够不到吗！？”,“I-it will not reach?!”
 11734,32,アイシャ,艾夏,Aisha,22,射程外，无法反击（通用，2/2）,「くっ、なんて破廉恥な!」,“唔，真是无耻！”,"“Ngh, how utterly shameless!”"
-11735,33,ヴァル＝ア,瓦尔＝阿,Val-A,23,攻击（通用，1/9）,「さぁ、来るがよい」,“来吧，放马过来。”,"“Come, then. Come at me.”"
+11735,33,ヴァル＝ア,瓦尔＝阿,Val-A,23,攻击（通用，1/9）,「さぁ、来るがよい」,“来吧，到我面前来。”,"“Come, then. Come before me.”"
 11736,33,ヴァル＝ア,瓦尔＝阿,Val-A,23,攻击（通用，2/9）,「良いのか、それで」,“这样就行了吗？”,“Are you certain about that?”
 11737,33,ヴァル＝ア,瓦尔＝阿,Val-A,23,攻击（通用，3/9）,「…………」,“…………”,“...”
 11738,33,ヴァル＝ア,瓦尔＝阿,Val-A,23,攻击（通用，4/9）,「我が力の一端をみせよう」,“就让你见识我力量的冰山一角。”,“I shall show you but a fragment of my power.”
@@ -5996,12 +5996,12 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11793,34,アヴィ＝ルー,阿维＝露,Avie-Lu,24,弹药／EN 不足，无法反击（通用，2/2）,「いけない……これ以上、長引けば…」,“不行……再拖下去的话……”,“This is bad... if this drags on any longer...”
 11794,34,アヴィ＝ルー,阿维＝露,Avie-Lu,24,射程外，无法反击（通用，1/2）,「へぇ……少しは考えているんダ」,“哦……多少也动过点脑子嘛。”,“Oh? So you do use your head a little.”
 11795,34,アヴィ＝ルー,阿维＝露,Avie-Lu,24,射程外，无法反击（通用，2/2）,「ククッ、やるじゃなイ」,“呵呵，有两下子嘛。”,"“Heh, not bad.”"
-11796,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击（通用，1/7）,「消えてなくなれ」,“消失吧。”,“Just disappear.”
+11796,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击（通用，1/7）,「消えてなくなれ」,“消失吧。”,“Vanish.”
 11797,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击（通用，2/7）,「くらうがいい」,“吃我这招。”,“Take this.”
 11798,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击（通用，3/7）,「その力……我に示してみよ」,“那份力量……让我见识一下。”,“Show me... that power of yours.”
 11799,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击（通用，4/7）,「見るがいい……存在の死の闇を」,“好好看着吧……这存在之死的黑暗。”,“Behold... the darkness where existence dies.”
 11800,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击（通用，5/7）,「死にたくなければ、我と戦え」,“不想死，就和我战斗。”,"“If you don’t want to die, fight me.”"
-11801,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击（通用，6/7）,「……消滅させる」,“……消灭你。”,“...I’ll annihilate you.”
+11801,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击（通用，6/7）,「……消滅させる」,“……消灭你。”,“...I will annihilate you.”
 11802,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击（通用，7/7）,「終わりだ」,“结束了。”,“This is the end.”
 11803,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,被击坠（通用，1/2）,「な……なに!?」,“什……什么！？”,“Wha... what?!”
 11804,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,被击坠（通用，2/2）,「くっ……まさか、これほどとは……」,“唔……没想到，竟然强到这种地步……”,“Ngh... I never imagined such strength...”
@@ -6020,7 +6020,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 11817,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,攻击无效（护罩／装甲）（通用，1/1）,「ばかめ」,“蠢货。”,“Fool.”
 11818,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,弹药／EN 不足，无法反击（通用，1/2）,「いかん……消耗が激しすぎるか」,“不好……消耗太大了吗。”,“No... My energy is draining too fast.”
 11819,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,弹药／EN 不足，无法反击（通用，2/2）,「くっ……これ以上エネルギーを失っては… …」,“唔……能量再这样流失下去……”,“Ngh... If I lose any more energy...”
-11820,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,射程外，无法反击（通用，1/1）,「ほう……なかなかやるな」,“哦……有两下子。”,“Oh... You’re quite good.”
+11820,35,ジェイ＝レン,杰伊＝伦,J-Ren,25,射程外，无法反击（通用，1/1）,「ほう……なかなかやるな」,“哦……有两下子。”,“Hm... You are quite capable.”
 11821,24,ローレンス,劳伦斯,Lawrence,14,攻击（通用，1/1）,「ばかめ!」,“蠢货！”,“Fool!”
 11822,24,ローレンス,劳伦斯,Lawrence,14,被击坠（通用，1/1）,「ばかめ!」,“蠢货！”,“Fool!”
 11823,24,ローレンス,劳伦斯,Lawrence,14,重伤（剩余 HP 不足 30%）（通用，1/1）,「ばかめ!」,“蠢货！”,“Fool!”
@@ -10636,7 +10636,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 16433,26,セレイン,塞蕾茵,Selain,16,对手驾驶员〈リッシュ〉,「私の前に出るならば、落とす」,“敢挡我的路，我就把你打下来。”,"“Get in my way, and I’ll shoot you down.”"
 16434,26,セレイン,塞蕾茵,Selain,16,使用〈集束荷電粒子砲MAP〉（低优先，可能被通用台词顶掉）,「集束荷電粒子砲で なぎ払ってやる!」,“用集束荷电粒子炮把你一扫而光！”,“I’ll sweep you away with the Convergent Charged Particle Cannon!”
 16435,26,セレイン,塞蕾茵,Selain,16,使用〈集束荷電粒子砲MAP〉（低优先，可能被通用台词顶掉）,「集束荷電粒子砲、スタンバイ」<STOP>「シュート!!」,“集束荷电粒子炮，准备” / “发射！！”,"“Convergent Charged Particle Cannon, stand by.” / “Shoot!!”"
-16436,30,リッシュ,利修,Rish,20,对手驾驶员〈セレイン〉,「わるいな、【主角昵称】ちゃん」,“抱歉啦，{HeroNick}。”,"“Sorry about this, {HeroNick}.”"
+16436,30,リッシュ,利修,Rish,20,对手驾驶员〈セレイン〉,「わるいな、【主角昵称】ちゃん」,“抱歉啦，{HeroNick}小姐。”,"“Sorry about this, {HeroNick}.”"
 16437,30,リッシュ,利修,Rish,20,对手驾驶员〈セレイン〉,「本当はあんまりやりたかないんだがよ」,“其实我不太想这么干的。”,"“I really don’t wanna do this, y’know.”"
 16438,30,リッシュ,利修,Rish,20,对手驾驶员〈セレイン〉,「しかたねぇな」,“真没办法啊。”,“Guess I’ve got no choice.”
 16439,30,リッシュ,利修,Rish,20,对手驾驶员〈セレイン〉,「直撃しちまったら勘弁しろよ」,“要是直接打中了，可别怪我啊。”,“No hard feelings if this one hits dead-on.”
@@ -10663,7 +10663,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 16460,27,ブラッド,布拉德,Brad,17,使用〈餓狼爪撃〉（低优先，可能被通用台词顶掉）,「受けてみやがれ!」<STOP>「餓狼爪撃ッ!」,“尝尝这个！” / “饿狼爪击！”,“Try and take it!” / “Garo Sogeki!”
 16461,27,ブラッド,布拉德,Brad,17,使用〈餓狼爪撃〉（低优先，可能被通用台词顶掉）,「我が手より出でて敵を裂け!」<STOP>「餓狼爪撃ィィィッ!」,“自我掌中而出，撕裂敌人！” / “饿狼爪击啊啊啊——！”,“Come forth from my hand and tear the enemy apart!” / “Garo Sogekiiiii!”
 16462,27,ブラッド,布拉德,Brad,17,使用〈獅子吼烈破〉（低优先，可能被通用台词顶掉）,「獅子よ吼えろっ!」,“狮子啊，咆哮吧！”,"“Roar, lion!”"
-16463,27,ブラッド,布拉德,Brad,17,使用〈獅子吼烈破〉（低优先，可能被通用台词顶掉）,「獅子吼裂破!」,“狮子吼裂破！”,“Shishiko Reppa!”
+16463,27,ブラッド,布拉德,Brad,17,使用〈獅子吼烈破〉（低优先，可能被通用台词顶掉）,「獅子吼裂破!」,“狮子吼裂破！”,“Shishiku Reppa!”
 16464,27,ブラッド,布拉德,Brad,17,使用〈獅子吼烈破〉（低优先，可能被通用台词顶掉）,「受けてみろ!」<STOP>「獅子吼裂破ぁぁーっ!」,“接招吧！” / “狮子吼裂破啊啊——！”,“Take this!” / “Shishiku Reppaaaaah!”
 16465,27,ブラッド,布拉德,Brad,17,使用〈獅子吼烈破〉（低优先，可能被通用台词顶掉）,「うおぉぉぉーっ!!」<STOP>「獅子吼裂破だぁぁーっ!!」,“呜哦哦哦——！！” / “狮子吼裂破啊啊——！！”,“Uwooooooh!!” / “Shishiku Reppaaaaah!!”
 16466,27,ブラッド,布拉德,Brad,17,使用〈竜王双撃〉（低优先，可能被通用台词顶掉）,「こいつで決める!」<STOP>「くらえっ、竜王双撃!」,“这招定胜负！” / “接招，龙王双击！”,"“I’ll finish it with this!” / “Take this, Ryuo Sogeki!”"
@@ -10844,7 +10844,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 16641,32,アイシャ,艾夏,Aisha,18,轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉（对话第 1/2 句）,「フフフ この程度なら大丈夫ですわね」,“呵呵呵，这点伤不碍事。”,"“Hehehe, this much is nothing to worry about.”"
 16642,28,マナミ,玛娜米,Manami,18,轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉（对话第 2/2 句）,「もちろんだわ、【搭档昵称】」,“当然了，{PartnerNick}。”,"“Of course, {PartnerNick}.”"
 16643,32,アイシャ,艾夏,Aisha,18,轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉,「ウフ、何かなさったのかしら?」,“呵呵，你刚才做了什么吗？”,"“Hehe, did you do something just now?”"
-16644,32,アイシャ,艾夏,Aisha,18,轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉,「あらあら、それで精一杯ですの?」,“哎呀哎呀，你就这点本事吗？”,"“Oh my, is that all you’ve got?”"
+16644,32,アイシャ,艾夏,Aisha,18,轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉,「あらあら、それで精一杯ですの?」,“哎呀哎呀，你就这点本事吗？”,"“Oh my, is that the best you can do?”"
 16645,32,アイシャ,艾夏,Aisha,18,轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉,「もう、やめたほうがよいのではなくて?」,“真是的，还是收手为好吧？”,"“Honestly, would it not be wiser to give up?”"
 16646,28,マナミ,玛娜米,Manami,18,回避，副驾驶〈ローレンス〉（对话第 1/2 句）,「余裕すぎるわね」,“太轻松了。”,“Too easy.”
 16647,24,ローレンス,劳伦斯,Lawrence,18,回避，副驾驶〈ローレンス〉（对话第 2/2 句）,「油断は禁物ですぞ!」,“切不可掉以轻心！”,“Never let your guard down!”
@@ -10852,7 +10852,7 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 16649,28,マナミ,玛娜米,Manami,18,回避，副驾驶〈ローレンス〉（对话第 2/2 句）,「当然だわ」,“当然了。”,“But of course.”
 16650,24,ローレンス,劳伦斯,Lawrence,18,回避，副驾驶〈ローレンス〉,「無事回避できたようでございますな」,“看来平安躲过去了。”,“It seems we have evaded safely.”
 16651,32,アイシャ,艾夏,Aisha,18,回避，副驾驶〈アイシャ〉,「フフフ、どこを狙ってらっしゃるの?」,“呵呵呵，你这是往哪儿打呢？”,"“Hehehe, whatever are you aiming at?”"
-16652,32,アイシャ,艾夏,Aisha,18,回避，副驾驶〈アイシャ〉,「そのような攻撃では、だめですわ」,“那种攻击可不管用。”,“An attack like that simply won’t do.”
+16652,32,アイシャ,艾夏,Aisha,18,回避，副驾驶〈アイシャ〉,「そのような攻撃では、だめですわ」,“那种攻击可不管用。”,“An attack like that simply will not do.”
 16653,24,ローレンス,劳伦斯,Lawrence,18,攻击无效（护罩／装甲），副驾驶〈ローレンス〉,「この機体にはムダな攻撃ですな」,“这种攻击对这台机体毫无用处。”,“Attacks like that are wasted on this unit.”
 16654,32,アイシャ,艾夏,Aisha,18,攻击无效（护罩／装甲），副驾驶〈アイシャ〉,「フフ、わたくしたちには効きませんわよ!」,“呵呵，对我们可没有用！”,"“Hehe, that will not work on us!”"
 16655,32,アイシャ,艾夏,Aisha,18,攻击无效（护罩／装甲），副驾驶〈アイシャ〉,「あら、ビームは効きませんのよ?」,“哎呀，光束可是没用的哦？”,"“Oh my, beams will not work, I am afraid.”"

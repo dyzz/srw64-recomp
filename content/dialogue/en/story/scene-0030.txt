@@ -201,9 +201,10 @@ this would be no better than suicide.”
 “We do have some chance of winning.”
 
 @22863 Lawrence · ローレンス
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「これはこれは。みなさん頼もしいかぎり
 >  ですな」
-“Well, well. How reassuring you all are.”
+“My, my. How very reassuring you all are.”
 
 @22864 Manami · マナミ（按段落 3DD4）
 # 审校：大小姐口吻应更正式，将“have to”改为“must”。

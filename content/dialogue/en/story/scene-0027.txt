@@ -1210,8 +1210,9 @@ but all we can do is keep fighting as long as we can. And if that’s not enough
 
 @22225 Lawrence · ローレンス
 # 审校：Defeatism is forbidden 不像管家说话
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「弱気は禁物ですぞ、アムロ様」
-“You mustn’t lose heart, Master Amuro.”
+“You must not lose heart, Master Amuro.”
 
 @22226 Amuro · アムロ
 > 「すまない、ローレンス」

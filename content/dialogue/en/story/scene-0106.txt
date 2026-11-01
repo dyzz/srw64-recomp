@@ -301,8 +301,9 @@ Why start a war?”
 
 @50276 Val-A · ヴァル＝ア
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「話を聞く気になったか?」
-“So you’re willing to listen?”
+“So you are willing to listen now?”
 
 @50277 Banjo · 万丈
 # 审校：全局：弯撇号／弯引号
@@ -1289,12 +1290,13 @@ We’ll do the same this time. Don’t think this will be so easy.”
 
 @50387 J-Ren · ジェイ＝レン
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「我らの力なくしては地球に
 >  もどることすらかなわぬと
-“You know that without our power, you can’t even return to Earth,
+“You do realize that without our power,
 ---
 >  知ってのことだろうな?」
-don’t you?”
+you cannot even return to Earth?”
 
 @50388 Roux · ルー
 # 审校：全局：弯撇号／弯引号
@@ -1392,12 +1394,13 @@ I guarantee you we won’t go down easy!”
 
 @50401 J-Ren · ジェイ＝レン
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「我らの力なくしては地球に
 >  もどることすらかなわぬと
-“You know that without our power, you can’t even return to Earth,
+“You do realize that without our power,
 ---
 >  知ってのことだろうな?」
-don’t you?”
+you cannot even return to Earth?”
 
 @50402 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -1513,12 +1516,13 @@ That feeling will make us strong!”
 
 @50416 J-Ren · ジェイ＝レン
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「我らの力なくしては地球に
 >  もどることすらかなわぬと
-“You know that without our power, you can’t even return to Earth,
+“You do realize that without our power,
 ---
 >  知ってのことだろうな?」
-don’t you?”
+you cannot even return to Earth?”
 
 @50417 Sara · 沙羅
 # 审校：全局：弯撇号／弯引号
@@ -1566,8 +1570,9 @@ forever, you’ve got another thing coming!”
 
 @50423 Val-A · ヴァル＝ア
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「用意はできたようだな。くるがよい」
-“It seems you’re ready. Come on, then.”
+“It seems you are ready. Come, then.”
 
 @50424 Shinobu · 忍
 # 审校：全局：弯撇号／弯引号
@@ -1639,9 +1644,10 @@ born in the galaxy so far, the one closest to us... As I thought...)
 
 @50437 J-Ren · ジェイ＝レン
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「この数百年の間にエネルギーを
 >  消耗しすぎた。エントロピーが極限
-“We’ve spent too much energy over these past few centuries. Entropy has grown to its
+“We have spent too much energy over these past few centuries. Entropy has grown to its
 ---
 >  まで増大している。いつ我らに
 limit. We can no longer predict when destruction will come to us, Val-A.
@@ -1774,9 +1780,10 @@ of the ‘Crest’...”
 
 @50462 Val-A · ヴァル＝ア
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「……そうだ。もはや、この形態を保つ
 >  ことすらかなわぬ……」
-“...That’s right. I can no longer even hold this form...”
+“...So it is. I can no longer even hold this form...”
 
 @50463 Koji · 甲児
 # 审校：全局：弯撇号／弯引号
@@ -1842,22 +1849,26 @@ let you have your way.”
 To meet you Earth-born...”
 
 @50474 Ark · アーク（按段落 3DD1）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > (なんだ……あいつ、いま……
 >  笑ったのか……?)
-(What the... did he just... smile...?)
+(What the... was that... a smile...?)
 
 @50475 Selain · セレイン（按段落 3DD2）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > (笑った……のか? なぜだ?)
-(He smiled...? Why?)
+(A smile...? Why?)
 
 @50476 Brad · ブラッド（按段落 3DD3）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > (あいつ……笑いやがった!?
 >  間違いねぇ。だが……なぜだ?)
-(That bastard... he smiled?! No doubt about it. But... why?)
+(That bastard... actually smiled?! No doubt about it. But... why?)
 
 @50477 Manami · マナミ（按段落 3DD4）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > (笑った……? なぜ? なぜなの……?)
-(He smiled...? Why? Why...?)
+(A smile...? Why? Why...?)
 
 @50478 Val-A · ヴァル＝ア
 # 审校：精读：星＝星球

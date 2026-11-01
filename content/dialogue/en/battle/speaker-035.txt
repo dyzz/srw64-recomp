@@ -2,8 +2,9 @@
 
 @11796 J-Ren · ジェイ＝レン
 # 触发：攻击（通用，1/7）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「消えてなくなれ」
-“Just disappear.”
+“Vanish.”
 
 @11797 J-Ren · ジェイ＝レン
 # 触发：攻击（通用，2/7）
@@ -30,8 +31,9 @@
 @11801 J-Ren · ジェイ＝レン
 # 触发：攻击（通用，6/7）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「……消滅させる」
-“...I’ll annihilate you.”
+“...I will annihilate you.”
 
 @11802 J-Ren · ジェイ＝レン
 # 触发：攻击（通用，7/7）
@@ -136,5 +138,6 @@
 @11820 J-Ren · ジェイ＝レン
 # 触发：射程外，无法反击（通用，1/1）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「ほう……なかなかやるな」
-“Oh... You’re quite good.”
+“Hm... You are quite capable.”

@@ -768,9 +768,10 @@
 “这个嘛……叫{HeroMech}怎么样？”
 
 @24428 塞蕾茵 · セレイン（按段落 3DD2）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「そうだな……{HeroMech}と
 >  いうのはどうです?」
-“这个嘛……叫{HeroMech}如何？”
+“我想想……叫{HeroMech}如何？”
 
 @24429 布拉德 · ブラッド（按段落 3DD3）
 > 「うーんそうだなぁ……{HeroMech}

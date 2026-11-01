@@ -1623,17 +1623,18 @@ actually be able to make it the last, right?”
 
 @48416 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「ブライト艦長、いまさらそれは
 >  聞けませんわ。これまでも何度も
-“Captain Bright, it’s too late to bring that up now. We’ve faced such crises
+“Captain Bright, that argument will not sway us now. There have been many
 ---
 >  そのような危機はありました。
 >  でも今回はこれまでと違い
-many times before. But this time is different.
+such crises before. But this time, unlike before,
 ---
 >  負けないため、ではなく、
 >  勝つために向かうのです」
-We go not merely to keep from losing, but to win.”
+we head out not to avoid losing, but to win.”
 
 @48417 Lawrence · ローレンス
 # 审校：原译“it's not yet decided”偏口语，与老管家极其恭敬的措辞不符，改为“it is not yet decided”。

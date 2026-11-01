@@ -819,8 +819,9 @@
 @16644 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉
 # 审校：同源同人同译：统一到精读过／多数的版本
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「あらあら、それで精一杯ですの?」
-“Oh my, is that all you’ve got?”
+“Oh my, is that the best you can do?”
 
 @16645 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上），副驾驶〈アイシャ〉
@@ -863,8 +864,9 @@
 @16652 Aisha · アイシャ
 # 触发：回避，副驾驶〈アイシャ〉
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「そのような攻撃では、だめですわ」
-“An attack like that simply won’t do.”
+“An attack like that simply will not do.”
 
 @16653 Lawrence · ローレンス
 # 触发：攻击无效（护罩／装甲），副驾驶〈ローレンス〉

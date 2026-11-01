@@ -477,8 +477,9 @@
 
 @16463 Brad · ブラッド
 # 触发：使用〈獅子吼烈破〉（低优先，可能被通用台词顶掉）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「獅子吼裂破!」
-“Shishiko Reppa!”
+“Shishiku Reppa!”
 
 @16464 Brad · ブラッド
 # 触发：使用〈獅子吼烈破〉（低优先，可能被通用台词顶掉）

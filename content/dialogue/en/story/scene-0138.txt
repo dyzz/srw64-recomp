@@ -1319,9 +1319,10 @@ What the hell are you after?!”
 
 @46406 J-Ren · ジェイ＝レン
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「……そろそろ確かめさせて
 >  もらうとしようか」
-“...I suppose it’s about time I tested you.”
+“...I suppose it is time I tested you.”
 
 @46407 Bright · ブライト
 > 「くっ……やはりやるしかないのか!?

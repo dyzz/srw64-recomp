@@ -92,8 +92,9 @@
 @11705 Aisha · アイシャ
 # 触发：被击坠（通用，3/3）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「そ、そんなことって……!?」
-“Th-this can’t be...?!”
+“Th-this cannot be...?!”
 
 @11706 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%）（通用，1/5）
@@ -115,8 +116,9 @@
 @11709 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%）（通用，4/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「きゃぁぁーっ! もう……だめ」
-“Kyaaa! I... I can’t...”
+“Kyaaa! I... I cannot...”
 
 @11710 Aisha · アイシャ
 # 触发：重伤（剩余 HP 不足 30%）（通用，5/5）
@@ -133,8 +135,9 @@
 @11712 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%）（通用，2/5）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「うぅぅっ! もうだめですわ!」
-“Ugh! I can’t go on!”
+“Ugh! I cannot go on!”
 
 @11713 Aisha · アイシャ
 # 触发：中伤（剩余 HP 30–90%）（通用，3/5）
@@ -166,8 +169,9 @@
 @11718 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，3/6）
 # 审校：全局机械统一（引号／撇号／?!／啧／诱饵／奥拉力）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「あらあら、それで精一杯ですの?」
-“Oh my, is that all you’ve got?”
+“Oh my, is that the best you can do?”
 
 @11719 Aisha · アイシャ
 # 触发：轻伤（剩余 HP 90% 以上）（通用，4/6）
@@ -193,8 +197,9 @@
 @11723 Aisha · アイシャ
 # 触发：回避（通用，2/5）
 # 审校：同源同人同译：统一到精读过／多数的版本
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「そのような攻撃では、だめですわ」
-“An attack like that simply won’t do.”
+“An attack like that simply will not do.”
 
 @11724 Aisha · アイシャ
 # 触发：回避（通用，3/5）

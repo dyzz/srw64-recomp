@@ -1544,9 +1544,10 @@ Haman to rule the Earth Sphere. Absolutely not!”
 
 @41738 Aisha · アイシャ（按段落 3DD4）
 # 审校：since long ago 直译
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「はいはい、わかりましたわよ。
 >  本当に貴女は昔から
-“Yes, yes, I understand. You really haven’t changed
+“Yes, yes, I understand. You really have not changed
 ---
 >  ちっとも変わりませんのね」
 one bit over the years, have you?”
@@ -1558,8 +1559,9 @@ one bit over the years, have you?”
 
 @41740 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「それはもう大変でしたわ」
-“It was quite a handful, I’ll have you know.”
+“It was quite a handful, I assure you.”
 
 @41741 Manami · マナミ（按段落 3DD4）
 > 「それはお互い様でしょ、
@@ -1576,9 +1578,10 @@ You really are cousins.”
 
 @41743 Aisha · アイシャ（按段落 3DD4）
 # 审校：补译：原稿占位符错页
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「失礼な。わたくしと
 >  {HeroName}さんを
-“How rude. Miss {HeroName} and I
+“How rude. {HeroName} and I
 ---
 >  一緒にしないでいただきたいわ」
 are not to be lumped together, thank you.”

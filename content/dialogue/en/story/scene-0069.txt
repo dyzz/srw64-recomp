@@ -1078,9 +1078,10 @@ I was a guy who was crazy about you.”
 
 @29899 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「誤解しないでいただきたいわ。
 >  わたくしとて、何も私怨のみで
-“Please don’t misunderstand. It’s not as though I’ve been fighting out of
+“Please do not misunderstand. It is not as though I have been fighting out of
 ---
 >  戦ってきたわけではありません。
 >  OZがロームフェラ派とトレーズ派に
@@ -2033,9 +2034,10 @@ a docking mechanism in the design, but it was dropped when they were redesigned.
 
 @30027 Lawrence · ローレンス
 # 审校：精读：万丈様
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「確かに万丈様は
 >  そうおっしゃっておられましたな
-“Indeed, Master Banjo did say as much.
+“Indeed, Mr. Banjo did say as much.
 ---
 >  つまり、合体分離は
 >  できないということですかな」
@@ -2095,9 +2097,10 @@ attached to the Sweemurg’s back?”
 
 @30035 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「そ、そんなバカなことは認められません。
 >  だいたいそれでわたくしに
-“Th-That’s absurd! I will never accept such a thing. And just what am I
+“Th-That is absurd! I will never accept such a thing. And just what am I
 ---
 >  何をしろとおっしゃるの?」
 supposed to do then?”
@@ -2231,8 +2234,9 @@ on the matter.”
 
 @30052 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「腰痛というのは嘘ね?」
-“The back pain is a lie, isn’t it?”
+“The back pain is a lie, is it not?”
 
 @30053 Lawrence · ローレンス
 > 「は、いえ、そのようなことは……」
@@ -2260,9 +2264,10 @@ what are you up to? If this is meant to spare my pride, I will not hear of it.�
 
 @30057 Lawrence · ローレンス
 # 审校：I am at this age now 生硬
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「昔ならしたとは申せども、わたくしも
 >  この歳です。このところのお嬢様の
-“I may have been capable once, but I am not young anymore. Of late, my lady’s
+“I may have made a name for myself once, but I am not young anymore. Of late, my lady’s
 ---
 >  ご成長は目をみはるほどで、
 >  お恥ずかしい話ですが、お嬢様の

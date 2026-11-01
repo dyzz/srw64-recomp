@@ -1316,12 +1316,13 @@ are you from?!”
 
 @23606 Brad · ブラッド（按段落 3DD3）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「なんだと!? グゥゥッ……なんて
 >  威圧感だ。ただ者ではない
 “What?! Guhh... What overwhelming pressure. You’re no ordinary
 ---
 >  貴様ぁ、いったい何者だ!?」
-man... just who are you?!”
+foe... just who are you?!”
 
 @23607 Manami · マナミ（按段落 3DD4）
 > 「な……なんなの、あれは!?」

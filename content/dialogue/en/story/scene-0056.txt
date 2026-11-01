@@ -433,8 +433,9 @@ inquiry board for what you did on the moon.”
 you had a lover, didn’t you? What was her name again?”
 
 @36754 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「は……?」
-“Huh...?”
+“Sir...?”
 
 @36755 Bask · バスク
 # 审校：全局：弯撇号／弯引号
@@ -537,8 +538,9 @@ inquiry board for what you did on the moon.”
 you had a lover, didn’t you? What was her name?”
 
 @36771 Ehrlich · エルリッヒ（按段落 3DD1）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「は……?」
-“Huh...?”
+“Sir...?”
 
 @36772 Bask · バスク
 # 审校：全局：弯撇号／弯引号
@@ -616,8 +618,9 @@ And for that, Treize being alive is an inconvenience.”
 
 @36785 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「そんな……」
-“That can’t be...”
+“That cannot be...”
 
 @36786 Bask · バスク
 # 审校：补译：原稿占位符丢失
@@ -1450,9 +1453,10 @@ that this is wrong, can’t you?!”
 
 @36910 对手
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「そもそも、貴女が
 >  いけないのでしょう!?」
-“To begin with, it’s all your fault, isn’t it?!”
+“To begin with, it is all your fault, is it not?!”
 
 @36911 主角
 > 「{PartnerNick}」
@@ -1482,12 +1486,13 @@ If you had not done that, even I...”
 
 @36914 对手
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「{HeroName}さん、わたくしは……
 >  貴女のしたことを認められない
 “{HeroName}, I... I cannot accept what you did.
 ---
 >  認めたくないの!」
-I don’t want to accept it!”
+I do not want to accept it!”
 
 @36915 主角
 # 审校：全局：弯撇号／弯引号
@@ -1551,8 +1556,9 @@ You came to OZ to defeat that woman, didn’t you?!”
 
 @36923 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「これで……すべて……」
-“With this... it’s all...”
+“With this... it is all...”
 
 @36924 Manami · マナミ（按段落 3DD4）
 > 「{PartnerNick}ーーッ!!」
@@ -1560,9 +1566,10 @@ You came to OZ to defeat that woman, didn’t you?!”
 
 @36925 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「あぁ……お父様……お母様……
 >  申し訳ありません……」
-“Ah... Father... Mother... I’m sorry...”
+“Ah... Father... Mother... I am sorry...”
 
 @36926 Manami · マナミ（按段落 3DD4）
 > 「{PartnerName}……あなた……ばかよ。

@@ -818,9 +818,10 @@ It is a bad habit of yours.”
 
 @33973 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「……{HeroName}さんはいないようです
 >  わね」
-“...It seems {HeroName} isn’t here.”
+“...It seems {HeroName} is not here.”
 
 @33974 Helmut · ヘルマット
 # 审校：全局：弯撇号／弯引号

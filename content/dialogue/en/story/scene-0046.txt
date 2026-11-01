@@ -851,13 +851,14 @@ talking way more than usual. I’ve never heard you talk like this.”
 
 @31895 Selain · セレイン（按段落 3DD2）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「さぁ、なぜだろうな。……そう、お前を
 >  見ていると、昔よく知っていたはずの
 “Who knows why. ...Yes, maybe it’s because watching you reminds me of
 ---
 >  人間のことを、思いだすからかも
 >  しれんな」
-people I used to know well, long ago.”
+someone I used to know well, long ago.”
 
 @31896 Lera · レラ
 # 审校：全局：弯撇号／弯引号
@@ -2180,9 +2181,10 @@ Anyway, looks like we’re on the same side from now on, so let’s get along,
 
 @32100 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「{HeroName}さん……ご自分が何を
 >  しているのか、わかっているのでしょうね」
-“{HeroName}... you do know what you’re doing, don’t you?”
+“{HeroName}... you do know what you are doing, do you not?”
 
 @32101 Manami · マナミ（按段落 3DD4）
 > 「{PartnerName}、あたしは……」

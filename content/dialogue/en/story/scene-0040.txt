@@ -1875,8 +1875,9 @@ How disappointing.”
 “Oh, don’t give up just yet.”
 
 @26280 Lawrence · ローレンス
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「どういうことですかな、シャリーどの?」
-“What do you mean by that, Lady Shirley?”
+“What do you mean by that, Miss Shirley?”
 
 @26281 Shirley · シャリー
 > 「つまり、合体分離は難しいけど、
@@ -1970,9 +1971,10 @@ the surplus output from the Elbulls’s generator
 could go to the Sweemurg, too.”
 
 @26292 Lawrence · ローレンス
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「{PartnerName}お嬢様、
 >  こちらにおいででしたか」
-“My lady {PartnerName}, so this is where you were.”
+“Lady {PartnerName}, so this is where you were.”
 
 @26293 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
@@ -2059,9 +2061,10 @@ on the matter.”
 what is this about? If it is meant to spare my pride, I shall not hear of it.”
 
 @26304 Lawrence · ローレンス
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「これはまいりましたな。実は……
 >  {HeroName}お嬢様のためなのです」
-“I am caught out, it seems. The truth is... it is for my lady {HeroName}’s sake.”
+“I am caught out, it seems. The truth is... it is for Lady {HeroName}’s sake.”
 
 @26305 Aisha · アイシャ（按段落 3DD4）
 > 「どういうことです?」
@@ -2069,9 +2072,10 @@ what is this about? If it is meant to spare my pride, I shall not hear of it.”
 
 @26306 Lawrence · ローレンス
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「昔ならしたとは申せども、わたくしも
 >  この歳です。このところのお嬢様の
-“I may have been skilled once, but I am no longer young. Of late, my lady’s
+“I may have made a name for myself once, but I am no longer young. Of late, my lady’s
 ---
 >  ご成長は目をみはるほどで、
 >  お恥ずかしい話ですが、お嬢様の
@@ -2100,8 +2104,9 @@ I shall play along with your lie. Have them begin the work at once.
 From now on, I shall pilot it.”
 
 @26308 Lawrence · ローレンス
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「はい、{PartnerName}お嬢様」
-“Yes, my lady {PartnerName}.”
+“Yes, Lady {PartnerName}.”
 
 @26309 Manami · マナミ（按段落 3DD4）
 > 「あ、あれは……」
@@ -2126,9 +2131,10 @@ The Elbulls, was it called?”
 “Y-Yes... but, um, the pilot...?”
 
 @26313 Lawrence · ローレンス
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「{PartnerName}お嬢様は
 >  ご無事でした。ご安心ください」
-“My lady {PartnerName} is safe. Please rest assured.”
+“Lady {PartnerName} is safe. Please rest assured.”
 
 @26314 Manami · マナミ（按段落 3DD4）
 > 「ローレンス! 本当に

@@ -461,9 +461,10 @@ That is quite unnecessary. I, too, have my pride.”
 @37313 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
 # 检查提示：未用必用译名：スイームルグ→Sweemurg
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「スイームルグの強化が
 >  したいのでしょう?」
-“You want to upgrade the Sweemurg, don’t you?”
+“You want to upgrade the Sweemurg, do you not?”
 
 @37314 Manami · マナミ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
@@ -2717,13 +2718,14 @@ have become one.”
 
 @37696 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「まぁ、なんて顔をしているの? 貴女
 >  が気にする必要はないわ。わたくしは
-“My, what a face you’re making. You needn’t worry about it. I have no
+“My, what a face you are making. You need not worry about it. I have no
 ---
 >  自分のしたことについて、後悔はし
 >  ていません。ただ……わたくしのするべき
-regrets about what I’ve done. It is simply... that what I had to do
+regrets about what I have done. It is simply... that what I had to do
 ---
 >  ことは、もう終わったというだけの
 >  ことです」
@@ -2769,8 +2771,9 @@ given my Elbulls to you.”
 “Forgive my interruption. Might I have a moment?”
 
 @37703 Aisha · アイシャ（按段落 3DD4）
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「よくってよ。なにかしら?」
-“Certainly. What is it?”
+“Very well. What is it?”
 
 @37704 Lawrence · ローレンス
 # 审校：原文为“お嬢様がた”，复数敬称，应译为“my ladies”而非“young ladies”。
@@ -2877,9 +2880,10 @@ pilot it for you.”
 
 @37720 Aisha · アイシャ（按段落 3DD4）
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「ローレンス……先ほどのあれは、ウソなの
 >  でしょう?」
-“Lawrence... that story just now was a lie, wasn’t it?”
+“Lawrence... that story just now was a lie, was it not?”
 
 @37721 Lawrence · ローレンス
 > 「……やはり、おわかりでしたか」

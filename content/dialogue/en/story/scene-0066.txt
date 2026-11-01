@@ -1347,9 +1347,10 @@ won’t make anyone happy... You fool...
 “{PartnerName}?!”
 
 @29031 Lawrence · ローレンス
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「大丈夫です、お嬢様。
 >  {PartnerName}様は
-“It is all right, my lady. It seems {PartnerName}
+“It is all right, my lady. It seems Lady {PartnerName}
 ---
 >  無事脱出されたようです」
 has escaped safely.”

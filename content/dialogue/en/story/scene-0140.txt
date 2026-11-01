@@ -1450,8 +1450,9 @@ Return to the ship.”
 “Wh-what did you say?!”
 
 @39001 Avie-Lu · アヴィ＝ルー
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「…………クククッ」
-“...Kukuku.”
+“...Heh heh heh.”
 
 @39002 Chibodee · チボデー
 > 「オゥッ……ジーザスッ!!」
@@ -1464,9 +1465,10 @@ Return to the ship.”
 
 @39004 Avie-Lu · アヴィ＝ルー
 # 审校：nothin' like this 意思反了
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「ククク……まだまだだヨ。アンタたちの
 >  力はまだこんなものじゃナイ
-“Kukuku... not yet, not by a long shot. Your power’s way more than this.
+“Heh heh heh... not yet, not by a long shot. Your power’s way more than this.
 ---
 >  サァ見せておくれヨ。もっと、もっと。
 >  でなきゃみんな死んでしまうヨ!?」
@@ -1541,8 +1543,9 @@ Getter and all!”
 
 @39017 Avie-Lu · アヴィ＝ルー
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「ククククッ、何をするつもりだイ?」
-“Kukukuku, what’re you planning to do?”
+“Heh heh heh heh, what’re you planning to do?”
 
 @39018 Ryoma · リョウ
 > 「いまだ、脱出するぞ!」
@@ -1707,9 +1710,10 @@ I’ll show you a peaceful Earth Sphere, I swear!”
 
 @39048 Lera · レラ
 # 审校：全局：弯撇号／弯引号
+# 审校：按人设修正语气／称呼（2026-11-01，docs/script/original-characters.md）
 > 「うん……きっとだよ。アタシ、ずっと……
 >  ずっと…………」
-“Yeah... You’d better. I’ll always... always...”
+“Yeah... You promised. I’ll always... always...”
 
 @39049 Ark · アーク（按段落 3DD1）
 > 「レラ……?」
