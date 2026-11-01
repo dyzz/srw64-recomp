@@ -131,6 +131,7 @@ NATIVE_HOOKS = {
     "load_000AB160_func_801F5628": "srw64_original_battle_damage",
     "load_000AB160_func_80203418": "srw64_original_damage_estimate",
     "resident_func_800A5054": "srw64_original_wing_kill_restore",
+    "resident_func_800A158C": "srw64_original_party_pair_flag",  # BUG06: S55's missing real-type join
     "resident_func_800AA8F4": "srw64_original_weapon_inherit",
     "resident_func_800AAD28": "srw64_original_unit_register",
     # MOD music (music.cpp): the one way a song starts, its fade, and whether it still plays.

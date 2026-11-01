@@ -73,6 +73,7 @@ struct State {
     bool exit_seen{};
 };
 inline State& state(){static State s;return s;}
+inline bool active(){auto& s=state();std::lock_guard lock(s.mutex);return s.active;}
 
 inline bool quick_start() {
     auto& s=state();std::lock_guard lock(s.mutex);return s.image && s.armed && !s.applied;
