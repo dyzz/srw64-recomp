@@ -1,7 +1,7 @@
 {
  "schema": "srw64.voices.v1",
  "note": "人物口吻设定，供风格审校（docs/design/dialogue-polish-plan.md）。ja 是从日文台词统计出的口吻依据（tools/translation/speaker_features.py），zh/en 是译法要求，address 是对特定人物的称呼。status: draft（Claude 起草）/check（需用户确认）/approved。译名不在这里定，以词条表为准。一人称中文一律“我”，只有注明“老夫”的例外。 中文口吻靠措辞和称呼体现，不要靠在句尾堆语气词。",
- "updated": "2026-09-26",
+ "updated": "2026-11-01",
  "groups": {
   "スペシャルズ": {
    "role": "罗姆斐拉财团的地球人部队士兵",
@@ -93,103 +93,106 @@
   "アーク": {
    "work": "SRW64 原创",
    "gender": "男",
-   "role": "真实系男主角，殖民卫星出身的少年，寄居地上姑母家，卷入战火",
-   "persona": "平实、有点冲动但本性温和，对长辈有礼，对同龄人随便",
-   "ja": "俺／僕混用（对长辈用 僕），あんた・お前；だ／です 各半",
-   "zh": "普通少年口语；对万丈、布莱德等长辈说话客气但不卑，用“您”；对同龄人直呼其名。",
-   "en": "Plain, earnest teenager. Contractions; polite but not stiff with elders; no slang beyond “yeah/gonna”.",
+   "role": "真实系男主角，17 岁（百科）；殖民卫星出生，父母死于吉翁独立战争，寄住地上姨妈姨父家；帝国清剿游击队烧了小镇，误打误撞坐进试作机索尔迪法参战",
+   "persona": "怕死、会动摇但不逃；嘴硬心软、讲理、能放下仇恨（原谅埃尔利希）；重承诺；起初被动，后来找到「让没道理的不幸消失」的理由",
+   "ja": "俺（同辈、独白）／僕（对长辈、上级）；お前・あんた，对特列斯、夏亚以及和解后的埃尔利希用 あなた；对上级 です・ます；语尾 さ／だろ／かよ／じゃないか；激动时结巴、拖长音喊名字",
+   "zh": "普通少年口语，不装酷；对万丈、布莱德、阿姆罗等长辈客气但不卑，用“您”，称克瓦特罗“大尉”；对同龄人直呼其名；害怕、动摇时可以结巴（“怎、怎么回事……”）。",
+   "en": "Plain, earnest teenager who admits fear. Contractions; polite but not stiff with elders (“Captain” for Quattro); stammers when shaken; no slang beyond “yeah/gonna”.",
    "status": "check"
   },
   "セレイン": {
    "work": "SRW64 原创",
    "gender": "女",
-   "role": "真实系女主角，联邦军人之女，游击队核心战士",
-   "persona": "意志坚强、冷静、说话直接，军人作风，不撒娇",
-   "ja": "私；お前・貴様（对敌）；だ／だな 为主，对长官用 です",
-   "zh": "干练的女军人口吻，不用“呢／呀”等软语气词；对敌人称“你”，不用“你这家伙”以外的脏话。",
-   "en": "Clipped, soldierly, confident; minimal exclamation words; addresses enemies coldly.",
+   "role": "真实系女主角，17 岁（百科）；联邦军人之女，父亲死后投身反帝国运动，三年游击战里成了当地游击队的核心战士；第 1 话游击队覆灭，只有她活下来",
+   "persona": "冷硬寡言、把“战斗到死”当作活着的全部意义；对蕾拉嘴硬却在她身上看到过去的自己；最怕和平后失去意义；终章说出“我要活下去”",
+   "ja": "私（复数 我々）；同伴 お前，敌人与利修 貴様；男性化军人语尾 だ／だろう／ものか／ならん，几乎不用 わ／の；对克瓦特罗等上级 です・ます；了解／了解した；大量沉默「…………」；激动时短句连发、拉长音",
+   "zh": "干练的女军人口吻，短句，不用“呢／呀”等软语气词；回答上级用“明白”“了解”；对敌人和利修称“你”，冷淡；激动时短促重复（“放开！放开我！”）。",
+   "en": "Clipped, soldierly, terse; long silences; cold to enemies and to Rish; breaks into short repeated shouts only when pushed past her limit.",
    "status": "check"
   },
   "ブラッド": {
    "work": "SRW64 原创",
    "gender": "男",
-   "role": "超级系男主角，武机霸拳流传人，孤儿",
-   "persona": "热血直率的武者，重义气，说话粗放",
-   "ja": "俺；お前・貴様・てめぇ；ぜ／だぜ 很多，ねぇ／だろ 粗口",
-   "zh": "热血少年口吻，“来吧”“少废话”，可用“混蛋”；提到师父时恭敬。",
-   "en": "Hot-blooded martial artist: short punchy sentences, “Come on!”, “bastard” allowed; reverent about his master.",
+   "role": "超级系男主角，15 岁（百科）；孤儿，与卡茨一起被武机霸拳流开山祖师收养，师父病逝时留下「为弱者而战」的遗言和夺地者；被万丈招进卡拉巴",
+   "persona": "热血直率、嘴粗不懂世故，本性正直重伙伴；死守师父遗言；见到美女会结巴；对同门卡茨又痛又放不下",
+   "ja": "俺；同伴 お前，敌人 貴様・てめぇ，初识与年长者 あんた；ぜ／だぜ／じゃねぇか／やがる 很多；只对亡师用敬语（教えてください師匠）；爱给人起外号；必杀技口上是文言体",
+   "zh": "热血少年口吻，短句，“来吧”“少废话”，可用“混蛋”；只对师父恭敬；必杀技口上可以译得文雅、有吟诵感。",
+   "en": "Hot-blooded street-tough martial artist: short punchy sentences, “Come on!”, “bastard” allowed; reverent only toward his late master; finishing-move chants are formal and archaic.",
    "status": "check"
   },
   "マナミ": {
    "work": "SRW64 原创",
    "gender": "女",
-   "role": "超级系女主角，罗姆斐拉名门当主，暗中支援游击队的大小姐",
-   "persona": "性子急、正义感强、自尊高，贵族小姐腔但会激动失态",
-   "ja": "あたし；あなた；のよ／だわ／わよ／わね／かしら／でしょう，对万丈用 です・ます",
-   "zh": "大小姐腔：用“真是的”“岂有此理”“不可饶恕”；对劳伦斯直呼“劳伦斯”并使唤；对万丈客气用“您”。不粗俗，不用“老娘”“靠”之类。",
+   "role": "超级系女主角，16 岁（百科）；罗姆斐拉财团名门哈米尔家的现任当家，父母已故，暗中把财团和帝国的情报送给反帝国游击队；驾驶祖父留下的灵鸟出战",
+   "persona": "正义感强、性子急、自尊高，动不动就「許せない」；放不下站在敌方的表亲艾夏；从被管家护着的千金长成领头人",
+   "ja": "あたし（偶尔 私）；あなた／貴女；わ／わよ／わね／のよ／かしら，对长辈 ですわ・ますわ；命令 〜なさい；口头禅 許せない・なんですって!?；激动时短句连发反问",
+   "zh": "大小姐腔：用“真是的”“岂有此理”“不可饶恕”；命令用“给我……”“快……”；对劳伦斯直呼“劳伦斯”并使唤；对万丈客气用“您”。不粗俗，不用“老娘”“靠”之类。",
    "en": "Refined young lady: full sentences, no gonna/wanna, “How dare they”, “Honestly!”; orders Lawrence by name; polite to Banjo. Can lose composure and shout.",
    "address": {
     "ローレンス": "劳伦斯 / Lawrence",
-    "万丈": "万丈先生 / Mr. Banjo"
+    "万丈": "万丈先生 / Mr. Banjo",
+    "アイシャ": "艾夏 / Aisha"
    },
-   "status": "draft"
+   "status": "check"
   },
   "エルリッヒ": {
    "work": "SRW64 原创",
    "gender": "男",
-   "role": "阿克路线的对手，特殊部队军官",
-   "persona": "冷静有礼的职业军人，有原则，反感无差别攻击",
-   "ja": "私；君；だな／のだ，对上级 ます",
-   "zh": "沉稳的军官语气，对部下用“你”，对敌手用“你”不带辱骂。",
-   "en": "Composed officer; measured, formal, never crude.",
+   "role": "阿克篇的对手，22 岁（百科）；特殊部队（后为 OZ）特尉，驾驶诺鲁孜；烧镇那天想阻止无差别轰炸却晚了一步；被巴斯克以恋人阿琳迪涅要挟，获救后可加入",
+   "persona": "有原则的老派职业军人，信奉牺牲少数成全多数却反感滥杀；服从与良知拉扯，自责到寻死；深情专一；生硬、略带诗意",
+   "ja": "私；阿克 少年・君（劝降时 貴君），和解后偶尔 {HeroName}くん；书面军人语尾 〜ん／〜せん／〜のだ／〜たまえ；对上级严格敬语；口头禅 運命とは、皮肉なものだな・やむを得ん；激动时句子断开而不嘶吼",
+   "zh": "沉稳的军官语气，书面一点；称阿克“少年”；劝告用“请你……”“你还是……吧”；不辱骂；激动也只是语句断开。",
+   "en": "Composed, weary officer; measured and formal (“I must ask you to surrender.”), calls Ark “boy”; never crude, never screams.",
    "status": "check"
   },
   "リッシュ": {
    "work": "SRW64 原创",
    "gender": "男",
-   "role": "塞莱因路线的对手",
-   "persona": "轻佻、痞气、自信的年轻军人",
-   "ja": "俺；お前；ぜ／だぜ，ねぇ／じゃねぇ 极多",
-   "zh": "痞气口吻，“哟”“得了吧”，可用“老子”一两次以内，不粗俗到脏话。",
-   "en": "Cocky, sneering, slangy (“Heh”, “Give it up”), contractions everywhere.",
+   "role": "塞蕾茵篇的对手，25 岁（百科）；特殊部队（后为 OZ）王牌，外号“不死人”，驾驶西格露恩；初次交手就迷上塞蕾茵，后来为她倒戈加入",
+   "persona": "油嘴滑舌、松弛、自夸运气好；不信主义、不服上司但讲义气，不为脏活辩解；对塞蕾茵认真，正经起来语速放慢",
+   "ja": "俺（俺ぁ），对上级 自分；塞蕾茵 お前・{HeroName}ちゃん，少年们 ガキども・坊や；江湖口语 ぜ／じゃねぇか／わな，缩约 ちまう／こたぁ；对上级敷衍的 です・ます；やーれやれ・おいおい・ひゅーっ，笑声 ハッハッハッ",
+   "zh": "痞气口吻，“哟”“得了吧”“啧”，可用“老子”一两次以内，不粗俗到脏话；对塞蕾茵调笑；认真时句子变短、慢下来。",
+   "en": "Cocky, easygoing ace: “Heh”, “Give it up”, contractions everywhere, flirts with Selain; drops the grin and slows down when he means it.",
    "status": "check"
   },
   "カーツ": {
    "work": "SRW64 原创",
    "gender": "男",
-   "role": "布拉德的同门师兄弟、对手",
-   "persona": "傲慢、执着于强弱与流派正统",
-   "ja": "俺；貴様；だ／ぞ",
-   "zh": "冷傲武者，“贵样”译“你”，语气居高临下。",
-   "en": "Haughty martial rival: formal-cold, “You dare?”, no slang.",
+   "role": "布拉德篇的对手，18 岁（百科）；与布拉德同为武机霸拳流祖师收养的弟子，驾驶瓦伊罗斯；发现两机原是师父座机一分为二，执意分出“唯一传人”而离队",
+   "persona": "冷峻孤高、自尊心极强，不择手段却从不说谎；败北中生出执念，自称“心生狂气”；归队后语气松动",
+   "ja": "俺；布拉德 貴様，外人 お前；书面武人腔 〜ん（認めん・選ばん）／〜のだ／よかろう／〜に相違ない，不用敬语；句首 フン・フッ，冷笑 ククク；崩溃时叠词尖吼；战斗台词另有 野郎・テメェ・ざけんじゃねぇ 等粗口；必杀技口上是文言体",
+   "zh": "冷傲武者，剧情里书面、居高临下（“贵样”译“你”）；战斗台词可以粗（“混蛋”“少开玩笑”）；必杀技口上译得文雅。",
+   "en": "Haughty martial rival: formal and cold in story scenes (“I will not accept this!”); battle barks can be crude (“Bastard!”); finishing-move chants archaic.",
    "status": "check"
   },
   "アイシャ": {
    "work": "SRW64 原创",
    "gender": "女",
-   "role": "玛奈美的表姐妹、对手，里奇蒙德子爵家小姐，特殊部队",
-   "persona": "高傲、以家族名誉为重、对玛奈美又恨又在意",
-   "ja": "わたくし；あなた・貴方；ですわ／わね／わよ／ます，贵族敬体",
-   "zh": "高傲贵族小姐：“我”＋“您”少用，称玛奈美直呼名字；“真是的”“不可饶恕”；语气端正不粗俗。",
-   "en": "Proud noblewoman: formal, precise, “I shall”, “How dare you”; never contractions in anger.",
+   "role": "玛娜米篇的对手，17 岁（百科）；玛娜米的表亲，里奇蒙德子爵家千金，驾驶凤翼随特殊部队（后为 OZ）追打“背叛财团”的玛娜米；被说服后加入，任灵鸟-炫华副驾驶",
+   "persona": "骄傲、嘴硬、讲规矩，以家名为重；其实心软又敏锐；崩溃时也不丢敬体",
+   "ja": "わたくし；玛娜米 {HeroName}さん，第二人称 アナタ→貴女；对劳伦斯直呼 ローレンス；比玛娜米更正式的 ですわ／ますわ／ですの／〜てよ；命令 〜なさい・お黙りなさい；口头禅 まったく・破廉恥；笑声 ウフフ；激动时结巴",
+   "zh": "高傲贵族小姐：措辞端正，“真是的”“不知廉耻”；称玛娜米“{HeroName}小姐”（2026-11-01 定）；对劳伦斯直呼名字；不粗俗。",
+   "en": "Proud noblewoman: formal, precise, “I shall”, “How dare you”; never contractions in anger; calls Manami by name.",
    "address": {
-    "マナミ": "玛奈美 / Manami"
+    "マナミ": "玛娜米小姐 / Manami",
+    "ローレンス": "劳伦斯 / Lawrence"
    },
-   "status": "draft"
+   "status": "check"
   },
   "ローレンス": {
    "work": "SRW64 原创",
    "gender": "男",
-   "role": "哈米尔家老管家，玛奈美的监护人",
-   "persona": "恭敬周到的老管家，爱红茶，遇事沉着",
-   "ja": "わたくし；ですな／ますな／でございます／ますぞ",
+   "role": "哈米尔家老管家（约六十岁，看头像），灵鸟副驾驶；泡茶、打探罗姆斐拉的情报；艾夏加入后谎称腰痛把副驾驶座让给她",
+   "persona": "恭敬周到、沉着，一生的心思都在大小姐身上；会在大家泄气时讲往事打气；为大小姐撒的谎很拙",
+   "ja": "わたくし（复数 私ども）；玛娜米 お嬢様，艾夏 {PartnerName}お嬢様，客人 様・どの；老派敬体 〜ですな／〜ますぞ／さようでございます；口头禅 ふむ・これはこれは・めっそうもございません；急了才结巴（お、お嬢様ぁぁーっ!）",
    "zh": "老管家腔：称“大小姐”，自称“我”，用“请”“恕我直言”“遵命”这类敬语措辞；对客人用“您”。不靠语气词，不加“呢”“吧”。",
    "en": "Old butler: “my lady”, “Certainly.”, “I shall…”, no contractions, gentle understatement.",
    "address": {
     "マナミ": "大小姐 / my lady",
+    "アイシャ": "艾夏大小姐 / Lady Aisha",
     "万丈": "万丈先生 / Mr. Banjo"
    },
-   "status": "draft"
+   "status": "check"
   },
   "万丈": {
    "work": "無敵鋼人ダイターン3",
@@ -1735,7 +1738,7 @@
    "status": "draft"
   },
   "ゲーツ": {
-   "work": "SRW64 原创",
+   "work": "機動戦士Ζガンダム",
    "gender": "男",
    "role": "盖茨（剧本角色）",
    "persona": "军人",
@@ -1795,37 +1798,37 @@
    "status": "check"
   },
   "ジェイ＝レン": {
-   "work": "SRW64 原创／穆格系",
-   "gender": "男",
-   "role": "杰=伦",
-   "persona": "反派军官",
-   "ja": "我；お前；のだ",
-   "zh": "反派军官。",
-   "en": "Enemy officer.",
+   "work": "SRW64 原创",
+   "gender": "待定（百科「女？」；台词中性偏男性武人腔）",
+   "role": "杰伊＝伦，阿尔＝伊＝奎斯三人之一，最好战，祖鲁死后亲自出手试探；驾驶重力、陨石系的杰伊克拉普斯",
+   "persona": "好战、务实，言辞简短冷硬；把地球人当作需要“确认”的对象",
+   "ja": "我・我ら；お前たち・地球種・知性体；文语断定 〜のだ／〜ぬ／〜ぞ／〜がいい；不用敬语；口头禅 愚かな・無駄・消滅させる；激动时提高音量连续反问",
+   "zh": "冷硬短句：“愚蠢”“白费力气”“消失吧”；自称“我”（全局规则），不用语气词。",
+   "en": "Curt, martial: “Foolish.”, “Futile.”, “Vanish.”; short declaratives, no contractions.",
    "status": "check"
   },
   "ヴァル＝ア": {
-   "work": "SRW64 原创／穆格系",
-   "gender": "男",
-   "role": "瓦尔=阿",
-   "persona": "反派",
-   "ja": "我；お前；だ",
-   "zh": "反派军官。",
-   "en": "Enemy officer.",
+   "work": "SRW64 原创",
+   "gender": "女（外表；百科「外見上は女」）",
+   "role": "瓦尔＝阿，阿尔＝伊＝奎斯（“大银河意志”，灭亡种族的最后残存者）三人之首，最终话的最终头目；驾驶冰系的瓦尔迪斯丘兹",
+   "persona": "冷静威严、以神的视角俯瞰人类，主张和平与战争须交替；最后承认地球人最接近她们，含笑消散",
+   "ja": "我・我ら；お前・お前たち・地球種；文语宣告体 受け入れよ／〜がよい／〜ぬ／〜であるが故に；不用敬语（中期剪影场景例外：〜ですね・果たしなさい）；几乎不激动，只有断续的省略号",
+   "zh": "庄严的宣告体：自称“我”“我们”（全局规则），称对方“你们”“地球种”；句式简洁古雅（“接受吧”“看吧”）；不发火，不用感叹堆砌。",
+   "en": "Detached, oracular: “Accept it.”, “Behold.”; archaic-formal, no contractions, never raises her voice.",
    "status": "check"
   },
   "アヴィ＝ルー": {
-   "work": "SRW64 原创／穆格系",
+   "work": "SRW64 原创",
    "gender": "女",
-   "role": "阿维=露",
-   "persona": "泼辣的女反派",
-   "ja": "アタシ；アンタ；だ",
-   "zh": "泼辣女反派。",
-   "en": "Brash female officer.",
+   "role": "阿维＝露，阿尔＝伊＝奎斯三人之一，最早露面（武藏为打倒她而牺牲）；驾驶火系的阿维耶斯雷姆",
+   "persona": "爱看热闹、轻佻、好奇，把地球人当有趣的玩具；受伤也笑",
+   "ja": "アタシ；アンタ・アンタたち；不用敬语；句末写成片假名的 〜ヨ／〜ネ／〜サ／〜ダ（刻意的异星口音）；笑声 ククク；口头禅 おもしろい・すごいネ",
+   "zh": "轻佻妖冶的口吻：“有意思”“真厉害呀”；可以用“呵呵呵”式笑声；怪腔调靠用词和节奏体现，不硬加错别字。",
+   "en": "Playful, mocking alien: giggling “Heh heh heh”, “How fun!”; a slightly off, sing-song cadence rather than misspellings.",
    "status": "check"
   },
   "カーンズ": {
-   "work": "SRW64 原创",
+   "work": "新機動戦記ガンダムW",
    "gender": "男",
    "role": "卡恩兹",
    "persona": "军官",
@@ -1835,7 +1838,7 @@
    "status": "check"
   },
   "グレスコ": {
-   "work": "SRW64 原创",
+   "work": "蒼き流星SPTレイズナー",
    "gender": "男",
    "role": "格雷斯科，占领军司令",
    "persona": "傲慢司令",
@@ -1845,7 +1848,7 @@
    "status": "check"
   },
   "バレン": {
-   "work": "SRW64 原创",
+   "work": "六神合体ゴッドマーズ",
    "gender": "男",
    "role": "巴伦",
    "persona": "反派军官",
@@ -1855,7 +1858,7 @@
    "status": "check"
   },
   "キリカ": {
-   "work": "SRW64 原创",
+   "work": "UFOロボ グレンダイザー",
    "gender": "女",
    "role": "基里卡",
    "persona": "女军官",
@@ -1865,7 +1868,7 @@
    "status": "check"
   },
   "エリカ": {
-   "work": "SRW64 原创",
+   "work": "マジンガーZ",
    "gender": "女",
    "role": "艾莉卡",
    "persona": "温柔",
@@ -1875,7 +1878,7 @@
    "status": "check"
   },
   "ナイーダ": {
-   "work": "SRW64 原创",
+   "work": "UFOロボ グレンダイザー",
    "gender": "女",
    "role": "奈伊达",
    "persona": "女性",
@@ -1885,7 +1888,7 @@
    "status": "check"
   },
   "ケーラ": {
-   "work": "SRW64 原创",
+   "work": "機動戦士ガンダム 逆襲のシャア",
    "gender": "女",
    "role": "凯拉",
    "persona": "女性",
@@ -1895,7 +1898,7 @@
    "status": "check"
   },
   "エマリー": {
-   "work": "SRW64 原创",
+   "work": "機動戦士ガンダムZZ",
    "gender": "女",
    "role": "爱玛莉",
    "persona": "女性",
@@ -1905,7 +1908,7 @@
    "status": "check"
   },
   "バニー": {
-   "work": "SRW64 原创",
+   "work": "機動武闘伝Gガンダム",
    "gender": "女",
    "role": "巴妮",
    "persona": "女性，敬体",
@@ -1915,7 +1918,7 @@
    "status": "check"
   },
   "ルーナ": {
-   "work": "SRW64 原创",
+   "work": "超獣機神ダンクーガ",
    "gender": "女",
    "role": "露娜",
    "persona": "女性",
@@ -1925,7 +1928,7 @@
    "status": "check"
   },
   "シャリー": {
-   "work": "SRW64 原创",
+   "work": "機動武闘伝Gガンダム",
    "gender": "女",
    "role": "夏莉",
    "persona": "女性",
@@ -1935,7 +1938,7 @@
    "status": "check"
   },
   "ワール": {
-   "work": "SRW64 原创",
+   "work": "六神合体ゴッドマーズ",
    "gender": "男",
    "role": "瓦尔",
    "persona": "军官",
@@ -1955,7 +1958,7 @@
    "status": "draft"
   },
   "ハサン": {
-   "work": "SRW64 原创",
+   "work": "機動戦士Ζガンダム",
    "gender": "男",
    "role": "哈桑",
    "persona": "沉稳长者",
@@ -1965,7 +1968,7 @@
    "status": "check"
   },
   "ミューラー": {
-   "work": "SRW64 原创",
+   "work": "新機動戦記ガンダムW",
    "gender": "男",
    "role": "缪拉",
    "persona": "军人",
@@ -1975,7 +1978,7 @@
    "status": "check"
   },
   "アーサー": {
-   "work": "SRW64 原创",
+   "work": "蒼き流星SPTレイズナー",
    "gender": "男",
    "role": "阿瑟",
    "persona": "青年",
@@ -2015,7 +2018,7 @@
    "status": "draft"
   },
   "ワイム": {
-   "work": "SRW64 原创",
+   "work": "機動戦士ガンダムZZ",
    "gender": "男",
    "role": "怀姆",
    "persona": "反派",
@@ -2155,7 +2158,7 @@
    "status": "draft"
   },
   "ダニー": {
-   "work": "SRW64 原创",
+   "work": "機動戦士ガンダムZZ",
    "gender": "男",
    "role": "丹尼",
    "persona": "青年",
@@ -2165,7 +2168,7 @@
    "status": "check"
   },
   "デューン": {
-   "work": "SRW64 原创",
+   "work": "機動戦士ガンダムZZ",
    "gender": "男",
    "role": "杜恩",
    "persona": "青年",
@@ -2175,7 +2178,7 @@
    "status": "check"
   },
   "デル": {
-   "work": "SRW64 原创",
+   "work": "機動戦士ガンダムZZ",
    "gender": "男",
    "role": "德尔",
    "persona": "反派",
@@ -2185,7 +2188,7 @@
    "status": "check"
   },
   "レッド": {
-   "work": "SRW64 原创",
+   "work": "ジャイアント・ロボ",
    "gender": "男",
    "role": "雷德",
    "persona": "青年",
@@ -2195,7 +2198,7 @@
    "status": "check"
   },
   "ビアン": {
-   "work": "SRW64 原创",
+   "work": "機動戦士ガンダムZZ",
    "gender": "男",
    "role": "比安",
    "persona": "反派",
@@ -2205,7 +2208,7 @@
    "status": "check"
   },
   "ワーカー": {
-   "work": "SRW64 原创",
+   "work": "新機動戦記ガンダムW",
    "gender": "男",
    "role": "沃克",
    "persona": "军人",
@@ -2215,7 +2218,7 @@
    "status": "check"
   },
   "シジーマ": {
-   "work": "SRW64 原创",
+   "work": "機動武闘伝Gガンダム",
    "gender": "女",
    "role": "希吉玛",
    "persona": "女反派",
@@ -2225,7 +2228,7 @@
    "status": "check"
   },
   "アレン": {
-   "work": "SRW64 原创",
+   "work": "聖戦士ダンバイン",
    "gender": "男",
    "role": "阿伦",
    "persona": "青年",
@@ -2235,7 +2238,7 @@
    "status": "check"
   },
   "アレックス": {
-   "work": "SRW64 原创",
+   "work": "新機動戦記ガンダムW",
    "gender": "男",
    "role": "亚历克斯",
    "persona": "青年",
@@ -2247,15 +2250,15 @@
   "ハミルトン": {
    "work": "SRW64 原创",
    "gender": "男",
-   "role": "汉密尔顿",
-   "persona": "青年",
+   "role": "汉密尔顿，塞蕾茵所在游击队的同伴，塞蕾茵篇第 1 话战死",
+   "persona": "游击队青年",
    "ja": "俺；お前；ぜ",
-   "zh": "青年。",
-   "en": "Young man.",
+   "zh": "游击队青年，普通口语。",
+   "en": "Young guerrilla, plain speech.",
    "status": "check"
   },
   "フェイ": {
-   "work": "SRW64 原创",
+   "work": "聖戦士ダンバイン",
    "gender": "男",
    "role": "菲",
    "persona": "青年",
@@ -2265,7 +2268,7 @@
    "status": "check"
   },
   "レイ": {
-   "work": "SRW64 原创",
+   "work": "蒼き流星SPTレイズナー",
    "gender": "男",
    "role": "雷",
    "persona": "青年",
@@ -2275,7 +2278,7 @@
    "status": "check"
   },
   "マーキロット": {
-   "work": "SRW64 原创",
+   "work": "機動武闘伝Gガンダム",
    "gender": "男",
    "role": "马奇洛特",
    "persona": "反派",
@@ -2305,7 +2308,7 @@
    "status": "draft"
   },
   "ダンケル": {
-   "work": "SRW64 原创",
+   "work": "機動戦士Ζガンダム",
    "gender": "男",
    "role": "丹克尔",
    "persona": "反派",
@@ -2315,7 +2318,7 @@
    "status": "check"
   },
   "ウッダー": {
-   "work": "SRW64 原创",
+   "work": "機動戦士Ζガンダム",
    "gender": "男",
    "role": "伍达",
    "persona": "反派",
@@ -2325,7 +2328,7 @@
    "status": "check"
   },
   "キャス": {
-   "work": "SRW64 原创",
+   "work": "機動武闘伝Gガンダム",
    "gender": "女",
    "role": "凯丝",
    "persona": "女性",
@@ -2335,7 +2338,7 @@
    "status": "check"
   },
   "Qボス": {
-   "work": "SRW64 原创",
+   "work": "ジャイアント・ロボ",
    "gender": "男",
    "role": "Q老板",
    "persona": "反派头目",
@@ -2395,7 +2398,7 @@
    "status": "draft"
   },
   "パンパ": {
-   "work": "SRW64 原创",
+   "work": "機動戦士ガンダムZZ",
    "gender": "男",
    "role": "潘帕",
    "persona": "反派",
@@ -2415,7 +2418,7 @@
    "status": "draft"
   },
   "イワン": {
-   "work": "SRW64 原创",
+   "work": "ジャイアント・ロボ",
    "gender": "男",
    "role": "伊万",
    "persona": "军官",
@@ -2437,9 +2440,9 @@
   "レラ": {
    "work": "SRW64 原创",
    "gender": "女",
-   "role": "蕾拉，香港城出身的少女，独自与帝国和特殊部队周旋多年后加入队伍",
-   "persona": "倔强、口硬心软、男孩子气，被戳到痛处会炸",
-   "ja": "アタシ；アンタ／あんた；だ／だね／かな，だろ／かよ 粗口",
+   "role": "蕾拉，堪萨斯一带的游击队少女（非机师），真实系第 9 话负伤被主角救上船后留下；多数路线中战死（独立军线基地自爆、OZ 线中枪），完全和平线离队",
+   "persona": "戒备、嘴硬心软，以“战斗到死才有尊严”为信条；自卑于不是机师；怕宇宙等陌生的东西；后来开始想“以后”",
+   "ja": "アタシ；アンタ／あんた，熟了叫昵称；不用敬语；语尾 さ／だろ／じゃないか／〜なよ；粗口 バカやろう・ちきしょう；口头禅 別に・ふんっ；害羞时结巴",
    "zh": "假小子口吻：“我”“你们”，句尾“啦”“嘛”不用，用“怎样”“又怎么了”这种硬话；对万丈等不用敬语。",
    "en": "Tomboyish, defensive: “So what?”, “What's it to you?”, contractions and mild slang, no politeness.",
    "status": "check"

@@ -126,6 +126,7 @@
 | [脚本注入调试](script/script-debug-injection.md) | 在运行中的游戏里执行自定义脚本验证指令效果 |
 | [迷你关卡](script/mini-stage.md) | 用自制关卡替换一话来验证指令与关卡流程 |
 | [剧情审阅站](script/story-reader.md) | 连续阅读剧情、全文搜索、逐句定位、主角路线 |
+| [原创人物档案](script/original-characters.md) | 13 个原创人物的故事线、性格、关系、说话方式与声音设计建议；阿尔＝伊＝奎斯的名字与机体；读剧情文件时的段落标记与通用说话人 |
 
 ## 原始数据（data/）
 
