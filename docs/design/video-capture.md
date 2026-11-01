@@ -13,10 +13,13 @@
 | 5 | 选项框读不到状态，只能定时盲按 | 选项框不在对白阅读器状态里 | `status.choice`（选项数、文本号、光标、阶段）＋ `choice.pick {index}` |
 | 6 | 只能截图，不能录像：原始帧几百 MB 要逐帧拉回 Mac | 录像把原始 RGB 写盘，由客户端编码 | 宿主有 ffmpeg 时自己编码（`record.start` 的 `ffmpeg`／`SRW64_FFMPEG`／PATH），只回传一个 MP4；帧按呈现时的 VI 排时间线，`lockstep` 让编码慢只拖慢游戏不丢帧，顺带修掉“录像掉帧致抖动混叠”那个待办 |
 | 7 | 每句对白要等提示条淡出约 5 秒 | 对白出现时操作提示条显示 300 VI | `settings {dialogue_hints: "off"}`，提示条始终不画（不存设置） |
-| 8 | `victory` 要等地图空闲帧，每话多等 30–60 秒 | 开场演出没放完时注入被拒 | 在精简关末尾事件追加 `3D4A`（脚本层面，`shoot_v2.py --victory-inline`）；宿主不改 |
+| 8 | `victory` 要等地图空闲帧，每话多等 30–60 秒 | 开场演出没放完时注入被拒 | 在精简关末尾事件追加 `3D4A`（脚本层面，`shoot_v2.py` 的 `victory`）；宿主不改 |
+| 9 | 要录“选择的那一刻”，选项框得能随时调出来 | 选项框只在剧本走到 `3D44` 时出现 | `choice.show {text_id, options, lines}`：用脚本注入在下一个空闲帧跑几句对白＋一条 `3D44`，再 `choice.pick` 作答（2026-11-01 用户要求）；精简关里也可以直接保留原版的 `3D44`，计划的 `choices` 给答案 |
+| 10 | 每集几十张画面要人工拼计划 | — | `make_plan.py` 从四集文案的截图清单生成每话一个迷你关的计划（目标台词、路线、是否需要过关、要答的选项框、演出清单），`shoot_v2.py` 据此编精简关 |
 
 ## 用法
 
+0. 计划：`make_plan.py` 读 `N-*.md` 的截图清单，每话一个 run（`plan-<集>.gen.json`）；人工只改 `choices`（每个 `3D44` 选第几项）和偶尔的 `vars`。
 1. 关卡：`original_stage.py` 取原场景，`shoot_v2.py` 精简（只留要拍的台词、条件块改无条件），写入 `route`、`story_vars`、`last_choice`，`mini_stage.py compile` 得镜像。
 2. 进关：第一关在标题主菜单 `mini_stage.load`；之后每一关在地图上直接 `mini_stage.load`，等 `mini_stage.applied` 增加即进了新关。整局游戏只启动一次。
 3. 拍：`settings {dialogue_hints:"off", game_speed:1}`；按 `status.dialogue` 的 `text_id` 对目标台词截图；`status.choice.active` 时 `choice.pick`。

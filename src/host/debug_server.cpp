@@ -141,6 +141,42 @@ json choice_pick(const json& params) {
     srw64_debug_buttons(0x8000,params.value("vis",4u));
     return {{"vi",srw64_current_vi()},{"index",index},{"options",options},{"text_id",state["text_id"]}};
 }
+// A choice box on demand (a recording of the moment of choosing): an event of optional
+// dialogue lines (3D3E, one text id each; `line_op` picks another of 3D3E-3D43) and one 3D44
+// [window slot, option count, option text] run by the script injection at the next idle frame
+// of the player's phase, like victory. The option text is one text whose <BR> lines are the
+// options (docs/script/stage-script-exploration.md); the answer lands in 801602E4.
+json choice_show(const json& params) {
+    if(!params.contains("text_id") || !params["text_id"].is_number_unsigned())throw RpcError(InvalidParams,"text_id must be the option text's id");
+    const unsigned text=params["text_id"].get<unsigned>(),options=params.value("options",2u),slot=params.value("slot",0u);
+    if(text>0xFFFF || options<1 || options>8 || slot>1)throw RpcError(InvalidParams,"options 1-8, slot 0 or 1, text_id below 65536");
+    unsigned line_op=0x3D3E;
+    if(params.contains("line_op")) {
+        line_op=unsigned(std::stoul(params["line_op"].get<std::string>(),nullptr,16));
+        if(line_op<0x3D3E || line_op>0x3D43)throw RpcError(InvalidParams,"line_op is one of 3D3E to 3D43");
+    }
+    std::vector<uint16_t> words={0,0,0,0,0};
+    if(params.contains("lines"))for(const auto& line:params["lines"]) {
+        if(!line.is_number_unsigned() || line.get<unsigned>()>0xFFFF)throw RpcError(InvalidParams,"lines are text ids");
+        words.push_back(uint16_t(line_op));words.push_back(uint16_t(line.get<unsigned>()));
+    }
+    words.insert(words.end(),{0x3D44,uint16_t(slot),uint16_t(options),uint16_t(text),0xFFFF});
+    const auto deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(params.value("timeout_ms",10000));
+    const auto sequence=script_inject::queue(words);
+    if(!sequence)throw RpcError(ServerError,"another injected script is waiting or running");
+    for(std::string waiting;;) {
+        const auto where=script_inject::progress(sequence,&waiting);
+        if(where=="running" || where=="done")return {{"vi",srw64_current_vi()},{"script",where},{"text_id",text},{"options",options}};
+        if(where=="dropped")throw RpcError(ServerError,"the script injection dropped it");
+        if(std::chrono::steady_clock::now()>=deadline) {
+            script_inject::withdraw(sequence);
+            const auto now=script_inject::progress(sequence);
+            if(now=="running" || now=="done")return {{"vi",srw64_current_vi()},{"script",now},{"text_id",text},{"options",options}};
+            throw RpcError(ServerError,"no idle frame on the player's phase: "+(waiting.empty()?std::string("not yet checked"):waiting));
+        }
+        std::this_thread::sleep_for(5ms);
+    }
+}
 json rules_state() {
     const unsigned fixes=rules::active_fixes();
     json ids=json::array();
@@ -536,6 +572,7 @@ json dispatch(const std::string& method,const json& params) {
         return {{"name",name},{"restart",mini_stage::snapshot().value("restarting",false)}};
     }
     if(method=="choice.pick")return choice_pick(params);
+    if(method=="choice.show")return choice_show(params);
     if(method=="memory.read") {
         // Guest RAM as hex, read without stopping the game (a debugging view, not a snapshot).
         const uint32_t address=params.at("address").get<uint32_t>(),size=params.value("size",4u);
@@ -570,7 +607,7 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","memory.read","memory.write","viewer.start","file.read","file.remove",
+                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","choice.show","memory.read","memory.write","viewer.start","file.read","file.remove",
                                  "quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }

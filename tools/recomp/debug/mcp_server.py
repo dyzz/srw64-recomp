@@ -92,6 +92,8 @@ TOOLS = [
          "name_entry_ui": {"type": "string", "enum": ["native", "original"]},
          "title_ui": {"type": "string", "enum": ["native", "original"]},
          "dialogue_hints": {"type": "string", "enum": ["off", "auto", "always"]}}}},
+    {"name": "srw64_choice_show", "description": "Open a choice box on demand (for a recording of the moment of choosing): an injected event of optional dialogue lines (text ids; line_op 3D3E-3D43, default 3D3E) and one 3D44 [slot 0/1, options 1-8, text_id of the option text whose <BR> lines are the options], run at the next idle frame of the player's phase on the tactical map; then srw64_choice_pick answers it. Waits timeout_ms (default 10000).",
+     "inputSchema": {"type": "object", "required": ["text_id"], "properties": {"text_id": {"type": "integer"}, "options": {"type": "integer"}, "slot": {"type": "integer"}, "lines": {"type": "array", "items": {"type": "integer"}}, "line_op": {"type": "string"}, "timeout_ms": {"type": "integer"}}}},
     {"name": "srw64_choice_pick", "description": "Answer the open choice box (3D44; srw64_status choice: options, text_id, cursor, phase): moves its cursor to the option index (from 0) and presses A. Fails while no choice is open or its window is not up yet.",
      "inputSchema": {"type": "object", "required": ["index"], "properties": {"index": {"type": "integer"}}}},
     {"name": "srw64_mini_stage_load", "description": "Load a mini stage file (compiled image or source definition) at run time and enter it: from the title menu like dropping the file on the window, or from the tactical or world map, where it replaces the running stage at the next frame (no title, no restart). The image's route, story_vars and last_choice set the protagonist, story variables and the last choice before the opening runs.",
@@ -191,6 +193,8 @@ class Server:
             return text(client.call("mini_stage.load", path=args["path"]))
         if name == "srw64_choice_pick":
             return text(client.call("choice.pick", index=int(args["index"])))
+        if name == "srw64_choice_show":
+            return text(client.call("choice.show", **args))
         if name == "srw64_viewer_start":
             return text(client.call("viewer.start", **args))
         if name == "srw64_drop":
