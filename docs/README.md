@@ -186,7 +186,7 @@
 | [HD 化规划](design/hd-pipeline-plan.md) | HD 各类的现状、四条接入路径（宿主整张绘制／RT64 哈希替换／原生模型／原生文字）、战术地图整张接管的实现与待做、制作工具 |
 | [战术地图 HD 生成包](design/tactical-map-hd-kit.md) | 131 张战术地图的清单与动态元素、image_gen 生成包与变体包、殖民地 8 帧、地形面板伪 tile 与总览缩放、接入美术清单与自用包 |
 | [台词润色规划](design/dialogue-polish-plan.md) | 按人物口吻做风格审校：人物设定卡、风格审校与跨页整条重读、试点与全量结果、精读与抽检进度 |
-| [机体立绘 HD](design/unit-pose-hd.md) | 原生页面机体大图的规模、千问试做与本地 ESRGAN 定案、接入与按尺寸等级缩放 |
+| [机体立绘 HD](design/unit-pose-hd.md) | 原生页面机体大图的规模、千问试做与本地 ESRGAN 定案、接入与按尺寸等级缩放；大铁人的立绘场景与展示规则（#20） |
 | [机体标识 HD](design/unit-icon-hd.md) | 地图单位图标保留像素感的重画：MMPX→PixelPerfectV4→硬量化→MMPX 的 64² 色号图、RT64 哈希接入 |
 | [AI 探索](design/hd-ai-exploration.md)、[基准比较](design/hd-ai-benchmark.md) | 美术高清化实验 |
 
