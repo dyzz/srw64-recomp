@@ -39,6 +39,11 @@ struct Image {
     std::vector<uint32_t> pointers;
     std::optional<uint32_t> map, slot;
     nlohmann::json initial_resources=nlohmann::json::array();
+    // The protagonist route the direct entry supplies in place of the skipped name page
+    // (docs/script/mini-stage.md, 直接进入): 0 Brad, 1 Manami, 2 Ark, 3 Selain. It sets the
+    // route variable 801602EE and both people's default names; without it the protagonist
+    // group's portraits and names do not match the route.
+    std::optional<unsigned> route;
 };
 struct State {
     std::mutex mutex;
@@ -73,6 +78,10 @@ struct State {
     bool exit_seen{};
 };
 inline State& state(){static State s;return s;}
+// native_name_entry.cpp: writes the route's default names into the name fields (the
+// portraits of the protagonist group follow the route variable, the names the dialogue's
+// name tokens). Null in a host without the name entry, and in the unit tests.
+inline bool (*route_names)(uint8_t* ram,unsigned route){};
 inline bool active(){auto& s=state();std::lock_guard lock(s.mutex);return s.active;}
 
 inline bool quick_start() {
@@ -82,7 +91,8 @@ inline bool armed(){auto& s=state();std::lock_guard lock(s.mutex);return s.armed
 inline nlohmann::json snapshot() {
     auto& s=state();std::lock_guard lock(s.mutex);
     nlohmann::json result={{"available",bool(s.image)},{"name",s.image?s.image->name:""},{"entering",s.armed},
-        {"active",s.active},{"ready",s.ready},{"waiting_reason",s.waiting_reason},{"applied",s.applied}};
+        {"active",s.active},{"ready",s.ready},{"waiting_reason",s.waiting_reason},{"applied",s.applied},
+        {"route",s.image && s.image->route?nlohmann::json(*s.image->route):nlohmann::json()}};
     if(const auto info=campaign::info()) {
         nlohmann::json scenes=nlohmann::json::array();
         for(const auto& [scene,key]:info->keys)scenes.push_back({{"scene",scene},{"stage",key}});
@@ -134,6 +144,11 @@ inline Image parse(const nlohmann::json& document) {
         const unsigned key=side*30+slot;
         if(std::find(seen.begin(),seen.end(),key)!=seen.end())throw std::runtime_error("mini stage resources: duplicate slot");
         seen.push_back(key);
+    }
+    if(document.contains("route") && !document.at("route").is_null()) {
+        const auto& route=document.at("route");
+        if(!route.is_number_integer() || route.get<int64_t>()<0 || route.get<int64_t>()>3)throw std::runtime_error("mini stage route: 0 to 3");
+        image.route=unsigned(route.get<int64_t>());
     }
     return image;
 }
@@ -332,7 +347,17 @@ inline void direct_scene(uint8_t* ram) {
         constexpr uint16_t unit[]={0x93,0xD3,0x85,0x77,0xA4,0xA2,0xBA,0xFFFF};
         for(uint32_t i=0;i<12;++i)guest::write16(ram,0x8010F698+2*i,i<std::size(unit)?unit[i]:0);
     }
-    log({{"action","direct-entry"},{"scene",scene}});
+    // The route the name page would have set (801C69D0: 3DD3 Brad, 3DD4 Manami, 3DD1 Ark,
+    // 3DD2 Selain; the portrait drawer 8008F970 maps the protagonist 25 and the partner 29
+    // through it), and both people's default names. Without a route the variable stays as
+    // the reset left it.
+    bool names_written=false;
+    if(s.image && s.image->route) {
+        const unsigned route=*s.image->route;
+        guest::write16(ram,0x801602EE,uint16_t(0x3DD1+((route+2)&3)));
+        names_written=route_names && route_names(ram,route);
+    }
+    log({{"action","direct-entry"},{"scene",scene},{"route",s.image && s.image->route?nlohmann::json(*s.image->route):nlohmann::json()},{"names",names_written}});
 }
 
 // Any thread: replace the stage with a local file while the title menu shows and

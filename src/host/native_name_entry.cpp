@@ -77,13 +77,17 @@ void record(const char* kind) {
 // font glyph.
 constexpr uint16_t grid_base=0x147F, grid_blank=0xCA;
 constexpr uint32_t text_table=0x01A34980;
-uint16_t grid_glyph(uint16_t code) {
-    auto word=[](uint32_t p){return (uint32_t(rom_image[p])<<24)|(rom_image[p+1]<<16)|(rom_image[p+2]<<8)|rom_image[p+3];};
+uint16_t grid_glyph(const uint8_t* rom,size_t bytes,uint16_t code) {
+    auto word=[&](uint32_t p){return (uint32_t(rom[p])<<24)|(rom[p+1]<<16)|(rom[p+2]<<8)|rom[p+3];};
     const uint32_t entry=text_table+4+uint32_t(grid_base+code)*8;
-    if(!rom_image || entry+4>rom_bytes)return 0xFFFF;
+    if(!rom || entry+4>bytes)return 0xFFFF;
     const uint32_t at=text_table+word(entry);
-    return at+10>rom_bytes?0xFFFF:uint16_t((rom_image[at+8]<<8)|rom_image[at+9]);
+    return at+10>bytes?0xFFFF:uint16_t((rom[at+8]<<8)|rom[at+9]);
 }
+uint16_t grid_glyph(uint16_t code){return grid_glyph(rom_image,rom_bytes,code);}
+// The same tables in the ROM: the name overlay (ROM 0x1090A0 at 801C2600) holds them at
+// 801C6C00 and 801C6C70.
+constexpr uint32_t rom_given=0x10D6A0,rom_family=0x10D710;
 uint32_t name_table(unsigned route,bool partner,bool family) {
     return (family?0x1C6C70:0x1C6C00)+(partner?0x38:0)+route*14;
 }
@@ -259,10 +263,16 @@ void configure(const std::filesystem::path& directory) {
     srw64_game_hooks.name_begin=begin;srw64_game_hooks.name_step=step;
 }
 void initialize_rom(const uint8_t* rom,size_t size) {
+    // The mini stage's direct entry writes a route's default names from the ROM's tables
+    // (mini_stage.hpp route_names), with or without the native name page.
+    if(size==0x2000000) {
+        rom_image=rom;rom_bytes=size;
+        mini_stage::route_names=[](uint8_t* ram,unsigned route){return write_route_defaults(ram,route,rom_image,rom_bytes);};
+    }
     if(!enabled)return;
     // The grid and text tables are the pinned JP ROM's.
     if(size!=0x2000000)throw std::runtime_error("Native name entry requires the pinned JP ROM");
-    rom_image=rom;rom_bytes=size;ready=true;
+    ready=true;
 }
 void overlay_loaded(uint32_t rom,uint32_t ram,uint32_t size) {
     // The following intro loads at 801C4500, overlapping this overlay rather
@@ -315,4 +325,34 @@ void cover_presented(uint64_t workload,bool visible) {
     if(workload>=presented_workload){presented_workload=workload;presented_cover=visible;}
 }
 bool cover_in_flight() {std::lock_guard lock(cover_mutex);return presented_cover;}
+// The four fields 801C474C writes (docs/native/native-name-entry.md): given 8010F5F8/8010F608
+// (8 halfwords), family 8010F618/8010F628 (8), nickname 8010F638/8010F644 (6), full name
+// 8010F650/8010F674 (18: given, the middle dot 0xE7, family). Each ends in 0xFFFF; the rest
+// of a field is zero. The nickname is the given name cut as 801C3744 cuts it.
+bool write_route_defaults(uint8_t* ram,unsigned route,const uint8_t* rom,size_t bytes) {
+    if(route>3 || !rom || bytes!=0x2000000)return false;
+    const auto codes=[&](uint32_t table) {
+        std::vector<uint16_t> out;
+        for(unsigned i=0;i<7;++i) {
+            const uint32_t at=table+2*i;
+            const uint16_t code=uint16_t((rom[at]<<8)|rom[at+1]);
+            if(code==grid_blank)break;
+            out.push_back(grid_glyph(rom,bytes,code));
+            if(out.back()==0xFFFF)return std::vector<uint16_t>{};
+        }
+        return out;
+    };
+    const auto field=[&](uint32_t at,unsigned halfwords,const std::vector<uint16_t>& glyphs) {
+        for(unsigned i=0;i<halfwords;++i)half(ram,at+2*i,i<glyphs.size()?glyphs[i]:i==glyphs.size()?0xFFFF:0);
+    };
+    constexpr uint32_t given_at[2]={0x10F5F8,0x10F608},family_at[2]={0x10F618,0x10F628},nick_at[2]={0x10F638,0x10F644},full_at[2]={0x10F650,0x10F674};
+    for(unsigned p=0;p<2;++p) {
+        const auto given=codes(rom_given+p*0x38+route*14),family=codes(rom_family+p*0x38+route*14);
+        if(given.empty() || family.empty() || given.size()>7 || family.size()>7)return false;
+        std::vector<uint16_t> nick(given.begin(),given.begin()+std::min<size_t>(given.size(),!p && route==2?3:5));
+        std::vector<uint16_t> full=given;full.push_back(0xE7);full.insert(full.end(),family.begin(),family.end());
+        field(given_at[p],8,given);field(family_at[p],8,family);field(nick_at[p],6,nick);field(full_at[p],18,full);
+    }
+    return true;
+}
 }

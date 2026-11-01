@@ -35,6 +35,14 @@ class MiniStageCompilerTests(unittest.TestCase):
             with self.subTest(bad=bad), self.assertRaises(ValueError):
                 compile_stage({**base, "initial_resources": bad})
 
+    def test_route_passes_through_checked(self):
+        base = {"schema": SCHEMA, "events": [{"type": 12, "commands": []}]}
+        self.assertEqual(compile_stage({**base, "route": 2})["route"], 2)
+        self.assertIsNone(compile_stage(base)["route"])
+        for bad in (4, -1, "2", 1.0, True):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                compile_stage({**base, "route": bad})
+
     def test_limits_and_unknown_fields_are_rejected(self):
         with self.assertRaises(ValueError):
             compile_stage({"schema": SCHEMA, "events": [{"type": 12, "commands": []}] * 64})

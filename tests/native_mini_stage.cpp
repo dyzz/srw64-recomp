@@ -32,6 +32,19 @@ int main(int argc,char** argv) {
         {"events",nlohmann::json::array({{{"offset",0},{"size",18}},{{"offset",20},{"size",14}}})}};
     auto parsed=parse(image);
     assert(parsed.pointers.size()==2 && parsed.pointers[1]==event_block+20 && parsed.map && *parsed.map==20 && !parsed.slot);
+    assert(!parsed.route);
+    {
+        // The protagonist route of a direct entry: 0 to 3, null for none.
+        auto with=image;with["route"]=2;
+        assert(parse(with).route && *parse(with).route==2);
+        with["route"]=nullptr;
+        assert(!parse(with).route);
+        for(const nlohmann::json& value:{nlohmann::json(4),nlohmann::json(-1),nlohmann::json("2")}) {
+            auto bad=image;bad["route"]=value;bool threw=false;
+            try{parse(bad);}catch(const std::runtime_error&){threw=true;}
+            assert(threw);
+        }
+    }
     for(auto [key,value]:std::vector<std::pair<std::string,nlohmann::json>>{{"schema","x"},{"events_hex","ZZ"},{"aux_hex","00"},
             {"events",nlohmann::json::array({{{"offset",2},{"size",4}}})},{"events",nlohmann::json::array()}}) {
         auto bad=image;bad[key]=value;bool threw=false;

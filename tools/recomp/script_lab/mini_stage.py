@@ -169,9 +169,15 @@ def compile_stage(document: dict, spec: dict | None = None) -> dict:
         if key in seen:
             raise ValueError("initial_resources contains a duplicate slot")
         seen.add(key)
+    # The protagonist route the direct entry writes in place of the skipped name page
+    # (0 Brad, 1 Manami, 2 Ark, 3 Selain: the route variable and both default names,
+    # which set the protagonist group's portraits and names).
+    route = document.get("route")
+    if route is not None and (type(route) is not int or not 0 <= route <= 3):
+        raise ValueError("route must be 0 (Brad), 1 (Manami), 2 (Ark) or 3 (Selain)")
     return {"schema": IMAGE_SCHEMA, "name": document.get("name", "mini-stage"),
             "map": None if map_id is None else int(map_id), "slot": None if slot is None else int(slot),
-            "event_block": EVENT_BLOCK, "aux_block": AUX_BLOCK,
+            "event_block": EVENT_BLOCK, "aux_block": AUX_BLOCK, "route": route,
             "initial_resources": initial_resources, "events": events, "events_hex": blob.hex().upper(), "aux_hex": aux.hex().upper(),
             "deployments": [decode_record(r) for r in records], "source": document,
             "scope": "Per-scene event and deployment buffers at registration, plus optional one-time unit resources at initial map idle; ROM and other scenes are untouched."}
