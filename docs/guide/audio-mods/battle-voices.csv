@@ -10867,23 +10867,23 @@ record,speaker,speaker_ja,speaker_zh,speaker_en,voice_part,trigger,text_ja,text_
 16664,28,マナミ,玛娜米,Manami,18,射程外，无法反击，副驾驶〈アイシャ〉（对话第 1/2 句）,「【搭档昵称】、敵はどこ?」,“{PartnerNick}，敌人在哪？”,"“{PartnerNick}, where’s the enemy?”"
 16665,32,アイシャ,艾夏,Aisha,18,射程外，无法反击，副驾驶〈アイシャ〉（对话第 2/2 句）,「射程外、攻撃はできませんわね」,“在射程之外，无法攻击。”,“They are out of range. We cannot attack.”
 16666,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「これを受けてごらんなさい!」,“接我这一招试试！”,“Let us see you withstand this!”
-16667,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「【主角名字】さん…… さぁ、いきますわよ!」,“{HeroName}……来吧，我要上了！”,"“{HeroName}... now, here I come!”"
+16667,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「【主角名字】さん…… さぁ、いきますわよ!」,“{HeroName}小姐……来吧，我要上了！”,"“{HeroName}... now, here I come!”"
 16668,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「本気でやらせていただくわ!」,“我可要动真格的了！”,“Allow me to fight in earnest!”
 16669,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「この攻撃でどうかしら!?」,“这一击如何！？”,“How do you like this attack?!”
 16670,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「なかなかよい動きのようですけれど、 まだまだですわ!」,“动作倒是不错，不过还差得远呢！”,"“You move rather well, but you are still no match for me!”"
 16671,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「そこですわね!」,“就是那里！”,“Right there!”
-16672,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「逃げられませんわよ、 【主角名字】さん!」,“你逃不掉的，{HeroName}！”,"“You cannot escape, {HeroName}!”"
+16672,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「逃げられませんわよ、 【主角名字】さん!」,“你逃不掉的，{HeroName}小姐！”,"“You cannot escape, {HeroName}!”"
 16673,32,アイシャ,艾夏,Aisha,22,对手驾驶员〈マナミ〉,「どうやらわたくしの勝ちのようですわね」,“看来是我赢了呢。”,“It seems victory is mine.”
 16674,32,アイシャ,艾夏,Aisha,22,使用〈ノーブルフェニックス〉,「ノーブルフェニックス!」,“凤凰突击！”,“Noble Phoenix!”
 16675,32,アイシャ,艾夏,Aisha,22,使用〈ノーブルフェニックス〉,「これで最後ですわ!」<STOP>「ノーブルフェニックス!」,“到此为止了！” / “凤凰突击！”,“This is the end!” / “Noble Phoenix!”
 16676,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%），对手驾驶员〈マナミ〉,「わ、わたくしはこんなところで 倒れるわけにはまいりません!」,“我、我可不能在这种地方倒下！”,“I-I cannot possibly fall here!”
 16677,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%），对手驾驶员〈マナミ〉,「あぅぅ!? こんなにパワーが違うなんて!」,“啊呜呜！？力量竟然差这么多！”,“Ahh?! I never imagined such a gap in power!”
-16678,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%），对手驾驶员〈マナミ〉,「うぅっ……【主角名字】さん…… 本気でこのわたくしを……」,“呜呜……{HeroName}……竟然对我动真格的……”,“Ugh... {HeroName}... you would truly go this far against me...”
+16678,32,アイシャ,艾夏,Aisha,22,重伤（剩余 HP 不足 30%），对手驾驶员〈マナミ〉,「うぅっ……【主角名字】さん…… 本気でこのわたくしを……」,“呜呜……{HeroName}小姐……竟然对我动真格的……”,“Ugh... {HeroName}... you would truly go this far against me...”
 16679,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%），对手驾驶员〈マナミ〉,「こ、このわたくしが……!?」,“我、我竟然……！？”,"“M-me, of all people...?!”"
 16680,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%），对手驾驶员〈マナミ〉,「つっ、そうこなくてはウソですわね」,“唔，这样才像话。”,"“Tch, now that is more like it.”"
 16681,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%），对手驾驶员〈マナミ〉,「これでこそ、倒す価値もありますわ!」,“这样才值得我打倒！”,“Now you are worth defeating!”
 16682,32,アイシャ,艾夏,Aisha,22,中伤（剩余 HP 30–90%），对手驾驶员〈マナミ〉,「くっ……よろしいですわ。 もう手加減はいたしません!」,“唔……好吧。我可不会再手下留情了！”,“Ngh... very well. I shall hold back no longer!”
-16683,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上），对手驾驶员〈マナミ〉,「【主角名字】さん……それで精一杯ですの?」,“{HeroName}……你就这点本事吗？”,“{HeroName}... is that all you have?”
+16683,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上），对手驾驶员〈マナミ〉,「【主角名字】さん……それで精一杯ですの?」,“{HeroName}小姐……你就这点本事吗？”,“{HeroName}... is that all you have?”
 16684,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上），对手驾驶员〈マナミ〉,「あっ! ……油断してしまいましたわ」,“啊！……我大意了。”,“Ah! ...I let my guard down.”
 16685,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上），对手驾驶员〈マナミ〉,「威力が弱すぎたようですわね?」,“威力好像太弱了吧？”,"“It seems that was a little too weak, hmm?”"
 16686,32,アイシャ,艾夏,Aisha,22,轻伤（剩余 HP 90% 以上），对手驾驶员〈マナミ〉,「もう、やめたほうがよいのではなくて?」,“真是的，还是收手为好吧？”,"“Honestly, would it not be wiser to give up?”"
