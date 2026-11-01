@@ -11,6 +11,7 @@ type Text = { ja?: string; 'zh-Hans'?: string; en?: string };
 type Mod = {
   id: string; version: string; name: Text; description?: Text; authors: string[]; license: string; game: string;
   contents: string[]; file: string; bytes: number; sha256: string; url: string; source: string; published: string | null;
+  netdisk?: { quark?: string; baidu?: string };
 };
 const mods = Object.values(import.meta.glob<Mod>('../../../data/mods/*.json', { eager: true, import: 'default' }))
   .sort((a, b) => a.id.localeCompare(b.id));
@@ -39,12 +40,16 @@ const t = {
   updated: { zh: '更新', en: 'Updated', ja: '更新' },
   contents: { zh: '内容', en: 'Contents', ja: '内容' },
   source: { zh: '源文件（GitHub）', en: 'Source (GitHub)', ja: 'ソース（GitHub）' },
+  release: { zh: '发布页（GitHub）', en: 'Release page (GitHub)', ja: 'リリースページ（GitHub）' },
+  mirrors: { zh: '网盘：', en: 'Net disks: ', ja: 'ネットディスク：' },
+  quark: { zh: '夸克', en: 'Quark', ja: 'Quark' },
+  baidu: { zh: '百度', en: 'Baidu', ja: 'Baidu' },
   checksum: { zh: '校验', en: 'Checksum', ja: 'チェックサム' },
   none: { zh: '还没有可以下载的包。', en: 'No packages yet.', ja: 'まだパッケージはありません。' },
 };
 const kinds: Record<string, { zh: string; en: string; ja: string }> = {
   data: { zh: '数值', en: 'Numbers', ja: '数値' },
-  audio: { zh: '音乐', en: 'Music', ja: '音楽' },
+  audio: { zh: '声音', en: 'Sound', ja: 'サウンド' },
   campaign: { zh: '战役', en: 'Campaign', ja: 'キャンペーン' },
   art: { zh: '图片', en: 'Art', ja: '画像' },
 };
@@ -54,7 +59,8 @@ const needs = (req: string) => {
   if (!m) return req === '*' ? { zh: '任意版本', en: 'Any version', ja: '全バージョン' }[tl(lang)] : req;
   return { zh: `${m[1]} 或更新`, en: `${m[1]} or later`, ja: `${m[1]} 以降` }[tl(lang)];
 };
-const size = (n: number) => (n < 1024 ? `${n} B` : `${(n / 1024).toFixed(1)} KB`);
+const size = (n: number) =>
+  n < 1024 ? `${n} B` : n < 1024 * 1024 ? `${(n / 1024).toFixed(1)} KB` : `${(n / 1024 / 1024).toFixed(1)} MB`;
 ---
 <Base lang={lang} title={t.title[tl(lang)]} description={t.lead[tl(lang)]}>
   <div class="wrap mods">
@@ -84,7 +90,10 @@ const size = (n: number) => (n < 1024 ? `${n} B` : `${(n / 1024).toFixed(1)} KB`
             <div><dt>{t.license[tl(lang)]}</dt><dd class="latin">{m.license}</dd></div>
             {m.published && <div><dt>{t.updated[tl(lang)]}</dt><dd class="latin">{m.published}</dd></div>}
           </dl>
-          <p class="foot"><span class="k">{t.checksum[tl(lang)]}</span> <code class="sha">SHA-256 {m.sha256}</code> · <a href={m.source}>{t.source[tl(lang)]}</a></p>
+          {m.netdisk && (m.netdisk.quark || m.netdisk.baidu) && (
+            <p class="foot">{t.mirrors[tl(lang)]}{(['quark', 'baidu'] as const).filter((k) => m.netdisk?.[k]).map((k, i) => <>{i > 0 && ' · '}<a href={m.netdisk?.[k]}>{t[k][tl(lang)]}</a></>)}</p>
+          )}
+          <p class="foot"><span class="k">{t.checksum[tl(lang)]}</span> <code class="sha">SHA-256 {m.sha256}</code> · <a href={m.source}>{m.source.includes('/releases/') ? t.release[tl(lang)] : t.source[tl(lang)]}</a></p>
         </li>
       ))}
     </ul>

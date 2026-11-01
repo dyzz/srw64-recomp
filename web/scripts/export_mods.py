@@ -11,6 +11,10 @@ tools/mods/validate.py, then
 - web/src/data/mods/<id>.json is its entry (§13.2's fields; url and page on this site),
   which the MOD download page (src/pages/[lang]/mods/index.astro) lists.
 
+A package too large to host here goes on a GitHub Release of this repository instead, and its
+entry (url on the Release, netdisk mirrors when there are any) is written by hand; this script
+leaves such entries alone.
+
     .venv/bin/python web/scripts/export_mods.py           write both
     .venv/bin/python web/scripts/export_mods.py --check   exit 1 if either is out of date
 
@@ -77,8 +81,10 @@ def main() -> int:
             archive.write_bytes(data)
             path.write_text(text, encoding="utf-8")
             print(archive.relative_to(ROOT), len(data), "bytes;", path.relative_to(ROOT))
-    # Hosted files no longer produced (a package removed or versioned up).
+    # Hosted files no longer produced (a package removed or versioned up). Entries whose file is
+    # on a GitHub Release rather than this site are written by hand and kept.
     keep = {a.name for a, *_ in files} | {p.name for *_, p, _ in files}
+    keep |= {p.name for p in DATA.glob("*.json") if json.loads(p.read_text(encoding="utf-8"))["url"].startswith("https://")}
     for old in [*PUBLIC.glob("*.srw64mod"), *DATA.glob("*.json")]:
         if old.name not in keep:
             stale.append(str(old.relative_to(ROOT)) + " (no longer hosted)")

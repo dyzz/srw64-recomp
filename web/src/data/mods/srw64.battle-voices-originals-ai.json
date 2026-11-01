@@ -1,0 +1,35 @@
+{
+  "id": "srw64.battle-voices-originals-ai",
+  "version": "1.0.0",
+  "name": {
+    "ja": "オリジナルキャラ戦闘ボイス（AI）",
+    "zh-Hans": "原创人物战斗语音（AI）",
+    "zh-Hant": "原創人物戰鬥語音（AI）",
+    "en": "Original Characters' Battle Voices (AI)"
+  },
+  "description": {
+    "ja": "アーク、セレイン、ブラッド、マナミ、エルリッヒ、カーツ、アイシャたちオリジナルキャラ 12 人の戦闘台詞 843 本を、音声合成 Irodori-TTS で作ったボイス。実在の声優の声ではありません。",
+    "zh-Hans": "阿克、塞蕾茵、布拉德、玛娜米、埃尔利希、卡茨、艾夏等 12 位原创人物的 843 句战斗台词，用语音合成 Irodori-TTS 生成，不是真人声优的声音。",
+    "zh-Hant": "阿克、塞蕾茵、布拉德、瑪娜米、埃爾利希、卡茨、艾夏等 12 位原創人物的 843 句戰鬥台詞，用語音合成 Irodori-TTS 生成，不是真人聲優的聲音。",
+    "en": "843 battle lines of the 12 original characters (Ark, Selain, Brad, Manami, Ehrlich, Kurtz, Aisha and more), synthesized with Irodori-TTS. Not a real voice actor's voice."
+  },
+  "authors": [
+    "SRW64"
+  ],
+  "license": "CC-BY-NC-4.0",
+  "game": ">=0.5.2",
+  "requires": {},
+  "optional": {},
+  "conflicts": {},
+  "contents": [
+    "audio"
+  ],
+  "file": "srw64.battle-voices-originals-ai-1.0.0.srw64mod",
+  "bytes": 22237992,
+  "sha256": "0d32346d70319a4898c0410634abc8dc649256eaa0bcc9f105212cf94cae8dc1",
+  "url": "https://github.com/dyzz/srw64-recomp/releases/download/mod-battle-voices-originals-ai-1.0.0/srw64.battle-voices-originals-ai-1.0.0.srw64mod",
+  "page": "/mods/#srw64.battle-voices-originals-ai",
+  "source": "https://github.com/dyzz/srw64-recomp/releases/tag/mod-battle-voices-originals-ai-1.0.0",
+  "published": "2026-11-01",
+  "yanked": null
+}
