@@ -155,19 +155,19 @@ inline Image parse(const nlohmann::json& document) {
         seen.push_back(key);
     }
     // JSON numbers come signed from most writers: a small non-negative integer.
-    const auto small=[](const nlohmann::json& value,unsigned most)->std::optional<unsigned> {
+    const auto small_int=[](const nlohmann::json& value,unsigned most)->std::optional<unsigned> {
         if(!value.is_number_integer() || value.get<int64_t>()<0 || value.get<int64_t>()>int64_t(most))return std::nullopt;
         return unsigned(value.get<int64_t>());
     };
     if(document.contains("route") && !document.at("route").is_null()) {
-        image.route=small(document.at("route"),3);
+        image.route=small_int(document.at("route"),3);
         if(!image.route)throw std::runtime_error("mini stage route: 0 to 3");
     }
     if(document.contains("story_vars") && !document.at("story_vars").is_null()) {
         // {"9": 0, "17": 2} or [[9, 0], [17, 2]]: 200 two-bit variables at 8015E818.
         const auto& vars=document.at("story_vars");
         const auto add=[&](std::optional<unsigned> index,const nlohmann::json& value) {
-            const auto v=small(value,3);
+            const auto v=small_int(value,3);
             if(!index || *index>=200 || !v)throw std::runtime_error("mini stage story_vars: index 0-199, value 0-3");
             image.story_vars.emplace_back(*index,*v);
         };
@@ -175,12 +175,12 @@ inline Image parse(const nlohmann::json& document) {
             if(key.empty() || key.find_first_not_of("0123456789")!=std::string::npos)throw std::runtime_error("mini stage story_vars: index 0-199, value 0-3");
             add(unsigned(std::stoul(key)),value);
         }
-        else if(vars.is_array())for(const auto& row:vars){if(!row.is_array() || row.size()!=2)throw std::runtime_error("mini stage story_vars: [index, value] pairs");add(small(row[0],199),row[1]);}
+        else if(vars.is_array())for(const auto& row:vars){if(!row.is_array() || row.size()!=2)throw std::runtime_error("mini stage story_vars: [index, value] pairs");add(small_int(row[0],199),row[1]);}
         else throw std::runtime_error("mini stage story_vars: an object or an array");
         if(image.story_vars.size()>200)throw std::runtime_error("mini stage story_vars: too many");
     }
     if(document.contains("last_choice") && !document.at("last_choice").is_null()) {
-        image.last_choice=small(document.at("last_choice"),8);
+        image.last_choice=small_int(document.at("last_choice"),8);
         if(!image.last_choice || *image.last_choice<1)throw std::runtime_error("mini stage last_choice: option 1 to 8");
     }
     return image;
