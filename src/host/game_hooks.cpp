@@ -42,7 +42,29 @@ namespace upgrades=srw64::upgrades;
 namespace refund=srw64::refund;
 namespace parts_carry=srw64::parts_carry;
 namespace cheats=srw64::cheats;
+
+// Always-on BUG06 repair. All record allocation and initialization goes through
+// the same original registration as the correct CP-route script, with normal
+// upgrade/parts wrappers. No records are manufactured by the host.
+static void repair_daitarn(uint8_t* ram,recomp_context* ctx,srw64::base_fixes::DaitarnRepair repair) {
+    if(!repair.eligible || srw64::campaign::active() || srw64::mini_stage::active())return;
+    const bool repaired=srw64::base_fixes::repair_daitarn(ram,repair,[&] {
+        auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);
+        c.r4=165;c.r5=216;c.r6=0;c.r7=500;
+        resident_func_800AAD28(ram,&c);
+    },[&] {
+        auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);
+        c.r4=165;c.r5=216;c.r6=1;
+        resident_func_800AC6C4(ram,&c);
+    });
+    if(repaired)std::fprintf(stderr,"SRW64_BASE_FIX BUG06 scene=%u hidden=%u\n",
+        srw64::guest::read(ram,0x8010F5F0,1),unsigned(repair.hidden));
+}
 extern "C" {
+void resident_func_800A158C(uint8_t* ram,recomp_context* ctx) {
+    repair_daitarn(ram,ctx,{srw64::base_fixes::daitarn_join_event(ram,uint32_t(ctx->r4)),false});
+    srw64_original_party_pair_flag(ram,ctx);
+}
 void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
     // X ends the presentation early; the settled result lives in the map
     // overlay's participant table and is applied when the map is back.
@@ -1179,6 +1201,7 @@ void load_0008F4B0_func_801CDFB0(uint8_t* rdram, recomp_context* ctx) {
 }
 void load_0008F4B0_func_801CE19C(uint8_t* rdram, recomp_context* ctx) {
     quiet_latch(rdram);
+    repair_daitarn(rdram,ctx,srw64::base_fixes::daitarn_old_save(rdram));
     if (srw64_game_hooks.cheats_intermission) srw64_game_hooks.cheats_intermission(rdram, ctx);
     if (srw64_game_hooks.legacy_intermission) srw64_game_hooks.legacy_intermission(rdram, ctx);
     // A on the row of ours asks for the title instead (intermission_row.hpp).
