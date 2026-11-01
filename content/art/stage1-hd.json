@@ -3,7 +3,7 @@
   "id": "srw64.stage1-art",
   "locale": "neutral",
   "source": {
-    "path": "assets/hd-ai/worldmap-surfaces/pack-v13",
+    "path": "assets/hd-ai/worldmap-surfaces/pack-v14",
     "manifest_sha256": "c22c93f4882b53adfbb2fa0352685c77e7085287c6def973fbf73b114754b666"
   },
   "textures": [
@@ -3205,7 +3205,7 @@
     {
       "hash": "7aafb9fa1cef8519",
       "kind": "icon",
-      "sha256": "a476452b726c8ba87cc88dc10e5b59ca9d01de8f8af0764ae9616da54986cc07"
+      "sha256": "0c99a500a2edfa1cae0d06778bd4a10ae560fdfef2cd7e17392a819fb85fe7b7"
     },
     {
       "hash": "7b48ee9aa32b54d4",
@@ -3305,7 +3305,7 @@
     {
       "hash": "804c04f0c655b664",
       "kind": "icon",
-      "sha256": "b5bf511c358a81493de4349c206c2f08e13cf1b20cf8330455c4fa0f6f7d2abe"
+      "sha256": "bbe8c9efc9673bb7b3c13427ffc6f87297a178134cf968b9df7c7ca7a9f7fc17"
     },
     {
       "hash": "8108fe9e9bb660da",
@@ -3435,7 +3435,7 @@
     {
       "hash": "86751ab7a6ae897e",
       "kind": "icon",
-      "sha256": "b5bf511c358a81493de4349c206c2f08e13cf1b20cf8330455c4fa0f6f7d2abe"
+      "sha256": "bbe8c9efc9673bb7b3c13427ffc6f87297a178134cf968b9df7c7ca7a9f7fc17"
     },
     {
       "hash": "8692e8ca2f917f3e",
@@ -4900,7 +4900,7 @@
     {
       "hash": "bde235f45d285e9c",
       "kind": "icon",
-      "sha256": "b5bf511c358a81493de4349c206c2f08e13cf1b20cf8330455c4fa0f6f7d2abe"
+      "sha256": "bbe8c9efc9673bb7b3c13427ffc6f87297a178134cf968b9df7c7ca7a9f7fc17"
     },
     {
       "hash": "be2a8029565adde0",
@@ -14985,12 +14985,12 @@
     "manifest_sha256": "a8e7bc742f758c6d65a4a761eef35717ef34066cc6282e8d60fc90088d7f670a"
   },
   "units": {
-    "path": "assets/hd-ai/unit-poses/whole-v1",
-    "manifest_sha256": "18c2b9bd505a689a0b037bdb338f03908189099eea95424428a3c9a6adc79c41"
+    "path": "assets/hd-ai/unit-poses/whole-v2",
+    "manifest_sha256": "d8c2fb756cb5da4957c451a91fa32adf1154ec0b58fafdf7bd330284ecda68ed"
   },
   "unit_extras": {
     "path": "assets/hd-ai/unit-extras-derived/pack",
-    "manifest_sha256": "ac36693a1e8f192e113d007caaff2fd80f36ffbd6d5c7403be871c1d74f950b4"
+    "manifest_sha256": "a311b200cd5f35618d9f9eca2093453410edfd1b2192b792dae72f6de2b4f98e"
   },
   "tactical_maps": {
     "path": "assets/hd-ai/tactical-maps/pack-v1",
