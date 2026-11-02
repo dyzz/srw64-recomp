@@ -5,8 +5,8 @@ Each original frame becomes an intensity map: a pixel's value is its colour's br
 among the colours the scene draws with that palette. The map is smoothed (dithered blends
 inside the shape averaged out), enlarged to the pack's scale and run through a ramp built from
 the same colours: transparent, the palette's most saturated bright colour, white at the core.
-Inside, flow lines run along the beam: a texture of thin horizontal streaks, each bright at its
-head and fading along its tail (drawn here after the look of Z's, not taken from it), laid
+Inside, flow lines run along the beam: puffs of thin horizontal streaks, each bright at its
+head and fading along its tail (tools/hd_ai/beam_elements.py, drawn after Z's, none of Z's art), laid
 across the beam from its centre line to its edges so the lines bend with its bulges, and moved
 on from frame to frame. A soft halo of the rim colour stays inside the frame's box (the host
 draws the picture over the box of the frame's parts). The shape, size and timing are the
@@ -36,6 +36,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / 'src'), str(ROOT)]
 from srw64_rom.resources import ResourceTable  # noqa: E402
 from srw64_native.battle_graphics import decode_atlas, parse_scene, read_triplets, render_scene  # noqa: E402
+from tools.hd_ai import beam_elements  # noqa: E402
 from tools.hd_ai.cutin_hd import MANIFEST, runtime_palette  # noqa: E402
 from tools.hd_ai.unit_extra_derive import PACK_SCALE  # noqa: E402
 
@@ -50,28 +51,23 @@ S = PACK_SCALE
 WHITE_FROM = .45          # where the ramp starts turning white: lower is a wider core
 
 
-def flow_lines(rows: int = 48, width: int = 512, seed: int = 64) -> np.ndarray:
-    """Streaks along x, one or two per row, tiling across x: each a thin line bright at its
-    head and fading along a long tail, brighter toward the middle rows. 0..1, rows x width."""
+def flow_lines(rows: int = 96, width: int = 640, seed: int = 64) -> np.ndarray:
+    """Puffs of flow lines (beam_elements.flow, drawn after Z's) strung along x so the texture
+    tiles: each puff a bunch of hairline streaks bright near its head and fading behind it, the
+    puffs overlapping at random heights and spacings. A soft glow along the middle rows, as
+    Z's lines bunch toward the core. 0..1, rows x width."""
     rng = np.random.default_rng(seed)
-    out = np.zeros((rows, width), np.float32)
-    x = np.arange(width)
-    for r in range(rows):
-        centre = 1 - abs(r / (rows - 1) * 2 - 1)
-        for _ in range(rng.integers(1, 3)):
-            if rng.random() < .15:
-                continue
-            length = rng.uniform(.12, .45) * width
-            start = rng.uniform(0, width)
-            d = ((x - start) % width) / length                       # 0..1 along the streak, wrapping
-            # bright at the head (the beam flies to -x), a long tail fading behind it
-            bump = np.where(d < 1, np.clip(d / .08, 0, 1) * (1 - np.clip(d, 0, 1)) ** 1.3, 0)
-            peak = rng.uniform(.3, 1) * (.45 + .55 * centre)
-            out[r] = np.maximum(out[r], peak * bump)
-    out = ndimage.gaussian_filter(out, (.7, 1.5), mode='wrap')
-    # the middle rows glow between the lines too: a wider white core, as Z's lines bunch there
+    out = np.zeros((rows, width * 2), np.float32)
+    x = 0
+    while x < width:
+        h = int(rows * rng.uniform(.7, 1)); w = int(width * rng.uniform(.2, .35))
+        puff = beam_elements.flow(h, w, seed=int(rng.integers(1 << 30)), streaks=int(rng.integers(40, 90)))
+        y = int(rng.integers(0, rows - h + 1))
+        out[y:y + h, x:x + w] = np.maximum(out[y:y + h, x:x + w], puff * rng.uniform(.7, 1))
+        x += int(w * rng.uniform(.35, .6))
+    out = np.maximum(out[:, :width], out[:, width:])                  # wrap the overhang round
     across = 1 - np.abs(np.linspace(-1, 1, rows))
-    out = out + .35 * (across ** 1.5)[:, None]
+    out = out + .3 * (across ** 1.5)[:, None]
     return out / max(out.max(), 1e-6)
 
 
@@ -132,6 +128,10 @@ def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float) -> Ima
     if (body > .05).any():
         body = body / max(np.percentile(body[body > .05], 99), .5)
     body = np.clip(body * (.72 + .45 * lines_along(solid, shift)), 0, 1)
+    # sparks in the glow just outside the body, as Z scatters them round its beams
+    glow = np.clip(enlarge(smooth, 2.2) * 1.6, 0, 1) * (1 - np.clip(body * 3, 0, 1))
+    seed = int(shift * 1000) % (1 << 30)
+    body = np.maximum(body, beam_elements.sparks(h * S, w * S, seed=seed, count=max(2, int(solid.sum() / 60)), unit=S * .7) * glow * .8)
     k = np.clip((body * 255).astype(int), 0, 255)
     a_body, rgb_body = alpha_ramp[k], rgb_ramp[k]
     # the halo fades out before the box's edge, where the picture ends
