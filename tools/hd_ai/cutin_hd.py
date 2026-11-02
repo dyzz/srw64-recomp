@@ -21,16 +21,18 @@ parry's slash, a shoot-down), two of them drawn in the attacker's colours (`any_
 the reaction actors are what the reaction bank itself puts on (the light a barrier
 gathers, the afterimage, the decoy).
 The brush characters are the special moves' calligraphy (atlas 4519); the map movies are
-the combining and changing sequences played on the map (802176A8).
+the combining and changing sequences played on the map (802176A8); the explosions are what
+a unit shot down goes up in (battle_scenes 1042-1045, docs/design/battle-animation-rendering.md §6.4).
 
     .venv/bin/python tools/hd_ai/cutin_hd.py export
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py run [--models build/esrgan-models]
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py pack [--bind]
-    .venv/bin/python tools/hd_ai/cutin_hd.py extend --into assets/hd-ai/cutins/pack-vN [--bind]
+    .venv/bin/python tools/hd_ai/cutin_hd.py extend --into assets/hd-ai/cutins/pack-vN [--only SET ...] [--replace] [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py scenes [--bind]
 
 `extend` adds frames.json rows the bound pack has no picture for to a copy of it, leaving
-its pictures and scene thumbnails as they are.
+its pictures and scene thumbnails as they are; with --replace it packs the rows of the
+--only sets afresh even where the bound pack has a picture.
 
 Output under assets/hd-ai/cutins: inputs/<digest>.png (the original frames),
 frames.json, hd/<digest>.png (8x masters), review-*.jpg, and pack/ (battle-sprites.json,
@@ -147,6 +149,9 @@ def reaction_registries(rom: bytes) -> list[int]:
 # The brush-written special-move characters (鳳 凰 光 覇 ...): battle_scenes entries drawn from
 # atlas 4519, kept in Japanese and only sharpened (docs/data/hd-asset-inventory.md).
 BRUSH_REGISTRY = (865, 881)
+# The kill explosions: the fireballs, the big flash, the warships' white ball and the sparks.
+EXPLOSION_REGISTRY = (1042, 1045)
+SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion')
 
 
 def movie_triplets(rom: bytes) -> list[tuple[int, tuple[int, int, int]]]:
@@ -189,7 +194,8 @@ def export() -> None:
             + [('defence', code, triplet) for code, triplet, _ in defence_triplets(rom)]
             + [('reaction', r, scenes[r]) for r in reaction_registries(rom)]
             + [('brush', r, scenes[r]) for r in range(BRUSH_REGISTRY[0], BRUSH_REGISTRY[1] + 1)]
-            + [('movie', movie, triplet) for movie, triplet in movie_triplets(rom)])
+            + [('movie', movie, triplet) for movie, triplet in movie_triplets(rom)]
+            + [('explosion', r, scenes[r]) for r in range(EXPLOSION_REGISTRY[0], EXPLOSION_REGISTRY[1] + 1)])
     any_palette = {triplet for _, triplet, recoloured in defence_triplets(rom) if recoloured}
     for kind, number, (s, a, p) in sets:
         if not s or (s, a, p) in seen:
@@ -214,7 +220,7 @@ def export() -> None:
                          'frame': frame, 'box': list(box), 'input': key}
                         | ({'any_palette': True, 'palette_indices': used[frame]} if used else {}))
     (OUT / 'frames.json').write_text(json.dumps({'schema': 'srw64.cutin-frames.v1', 'frames': rows}, indent=1) + '\n')
-    for kind in ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie'):
+    for kind in SETS:
         own = [r for r in rows if r['set'] == kind]
         print(kind, len(own), 'frames,', len({r['input'] for r in own}), 'distinct')
 
@@ -253,7 +259,8 @@ def pack_row(r: dict, folder: Path) -> dict:
     kind = r.get('set', 'cutin')
     label = {'cutin': f"cut-in {r.get('registry')}", 'prop': f"prop {r.get('registry')}", 'shield': f"shield {r.get('unit')}",
              'defence': f"defence {r.get('code')}", 'reaction': f"reaction {r.get('registry')}",
-             'brush': f"brush {r.get('registry')}", 'movie': f"map movie {r.get('movie')}"}[kind]
+             'brush': f"brush {r.get('registry')}", 'movie': f"map movie {r.get('movie')}",
+             'explosion': f"explosion {r.get('registry')}"}[kind]
     return {'scene': r['scene'], 'atlas': r['atlas'], 'palette': r['palette'], 'frame': r['frame'], 'file': name,
             'sha256': hashlib.sha256((folder / name).read_bytes()).hexdigest(),
             'width': image.width, 'height': image.height, 'method': 'image_gen' if source == redrawn else 'esrgan', 'unit': label} \
@@ -275,9 +282,10 @@ def pack(bind: bool) -> None:
     scenes(bind)
 
 
-def extend(into: Path, bind: bool, only: list[str] | None = None) -> None:
+def extend(into: Path, bind: bool, only: list[str] | None = None, replace: bool = False) -> None:
     """A new pack folder: the bound pack hard-linked as it is (its frames, scene thumbnails
-    and index), plus the frames.json rows it has no picture for, packed the usual way."""
+    and index), plus the frames.json rows it has no picture for, packed the usual way, or
+    with `replace` every row of the `only` sets."""
     into = into.absolute()                       # not resolved: assets/ may be a link into another checkout
     current = ROOT / json.loads(MANIFEST.read_text())['battle_sprites']['path']
     into.mkdir(parents=True, exist_ok=False)
@@ -286,9 +294,14 @@ def extend(into: Path, bind: bool, only: list[str] | None = None) -> None:
             os.link(path, into / path.name)
     index = json.loads((current / 'battle-sprites.json').read_text())
     have = {r['file'] for r in index['images']}
-    added = [pack_row(r, into) for r in json.loads((OUT / 'frames.json').read_text())['frames']
-             if f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png" not in have and (not only or r.get('set') in only)]
-    index['images'] += added
+    rows = [r for r in json.loads((OUT / 'frames.json').read_text())['frames'] if not only or r.get('set') in only]
+    if not replace:
+        rows = [r for r in rows if f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png" not in have]
+    for r in rows:                                # a hard link: drop it rather than write through to the bound pack
+        (into / f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png").unlink(missing_ok=True)
+    added = [pack_row(r, into) for r in rows]
+    files = {r['file'] for r in added}
+    index['images'] = [r for r in index['images'] if r['file'] not in files] + added
     (into / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
     print(len(added), 'frames added to', current.name, '->', into.name)
     if bind:
@@ -343,7 +356,7 @@ def review() -> None:
     """Original beside HD for the middle frame of every cut-in and prop, eight to a sheet
     (review-<set>-N.jpg)."""
     frames = json.loads((OUT / 'frames.json').read_text())['frames']
-    for kind in ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie'):
+    for kind in SETS:
         by_registry = {}
         for r in frames:
             if r.get('set', 'cutin') == kind:
@@ -376,6 +389,7 @@ def main() -> None:
     parser.add_argument('step', choices=('export', 'run', 'pack', 'extend', 'scenes', 'review'))
     parser.add_argument('--models', type=Path, default=ROOT / 'build/esrgan-models')
     parser.add_argument('--only', nargs='+', help='run, extend: just these sets (brush, movie, ...)')
+    parser.add_argument('--replace', action='store_true', help='extend: repack the --only sets even where the bound pack has them')
     parser.add_argument('--bind', action='store_true', help='point the art manifest at the pack')
     parser.add_argument('--shots', type=Path, help='scenes: HD captures (tools/hd_ai/viewer_scenes.py) instead of the catalogue renders')
     parser.add_argument('--into', type=Path, help='scenes, extend: a new pack folder, hard-linked from the current one')
@@ -389,7 +403,9 @@ def main() -> None:
     elif args.step == 'extend':
         if args.into is None:
             parser.error('extend needs --into')
-        extend(args.into, args.bind, args.only)
+        if args.replace and not args.only:
+            parser.error('--replace needs --only')
+        extend(args.into, args.bind, args.only, args.replace)
     elif args.step == 'scenes':
         scenes(args.bind, args.shots, args.into)
     else:
