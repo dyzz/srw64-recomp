@@ -14991,11 +14991,11 @@
   },
   "units": {
     "path": "assets/hd-ai/unit-poses/whole-v2",
-    "manifest_sha256": "33cd02ee988d2870021eec7c390c89421a2f4e72275a15b8cd7b235126adf719"
+    "manifest_sha256": "30e397719d8096bbc7bd28e3544900793c9307ee94f31aee4bc51a2b8fb256f7"
   },
   "unit_extras": {
     "path": "assets/hd-ai/unit-extras-derived/pack",
-    "manifest_sha256": "a311b200cd5f35618d9f9eca2093453410edfd1b2192b792dae72f6de2b4f98e"
+    "manifest_sha256": "92257c6999c39777d239edbb4dbd2c7943b82b4a666c9ee435318eb5fec75560"
   },
   "tactical_maps": {
     "path": "assets/hd-ai/tactical-maps/pack-v1",
