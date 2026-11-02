@@ -27,7 +27,9 @@ the hits are what the hit bank puts on the target when an attack lands (sparks, 
 the small blasts), shared by every weapon whose header names that hit script; the weapon effects
 are everything else the weapon bank's actors draw (muzzle flashes, shells and missiles, sabre arcs,
 energy balls, the special moves' own pictures), less the generic beams, which are drawn by
-program (BEAM_SCENES).
+program (BEAM_SCENES); the unscripted are the battle_scenes entries left over, which no animation
+script names (palette variants of pictures already done, a few pictures of their own): done too,
+in case code puts them on.
 
     .venv/bin/python tools/hd_ai/cutin_hd.py export
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py run [--models build/esrgan-models] [--only SET ...] [--fast [1|2]]
@@ -179,7 +181,17 @@ def weapon_registries(rom: bytes) -> list[int]:
 BRUSH_REGISTRY = (865, 881)
 # The kill explosions: the fireballs, the big flash, the warships' white ball and the sparks.
 EXPLOSION_REGISTRY = (1042, 1045)
-SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion', 'hit', 'weapon')
+SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion', 'hit', 'weapon', 'unscripted')
+
+
+def unscripted_registries(rom: bytes) -> list[int]:
+    """Every battle_scenes entry but the generic beams, the poses and the extra images; export
+    keeps those whose triplet no earlier set has (no animation bank names them)."""
+    scenes = read_triplets(rom, 'battle_scenes')
+    poses = {k for k in read_triplets(rom, 'unit_poses') if k[0]}
+    extras = {(r['scene'], r['palette']) for r in json.loads(ANALYSIS.read_text())}
+    return [r for r, (s, a, p) in enumerate(scenes)
+            if s and s not in BEAM_SCENES and (s, a, p) not in poses and (s, p) not in extras]
 
 
 def movie_triplets(rom: bytes) -> list[tuple[int, tuple[int, int, int]]]:
@@ -225,7 +237,8 @@ def export() -> None:
             + [('movie', movie, triplet) for movie, triplet in movie_triplets(rom)]
             + [('explosion', r, scenes[r]) for r in range(EXPLOSION_REGISTRY[0], EXPLOSION_REGISTRY[1] + 1)]
             + [('hit', r, scenes[r]) for r in hit_registries(rom)]
-            + [('weapon', r, scenes[r]) for r in weapon_registries(rom)])
+            + [('weapon', r, scenes[r]) for r in weapon_registries(rom)]
+            + [('unscripted', r, scenes[r]) for r in unscripted_registries(rom)])
     any_palette = {triplet for _, triplet, recoloured in defence_triplets(rom) if recoloured}
     for kind, number, (s, a, p) in sets:
         if not s or (s, a, p) in seen:
@@ -319,7 +332,7 @@ def pack_row(r: dict, folder: Path) -> dict:
              'defence': f"defence {r.get('code')}", 'reaction': f"reaction {r.get('registry')}",
              'brush': f"brush {r.get('registry')}", 'movie': f"map movie {r.get('movie')}",
              'explosion': f"explosion {r.get('registry')}", 'hit': f"hit {r.get('registry')}",
-             'weapon': f"weapon effect {r.get('registry')}"}[kind]
+             'weapon': f"weapon effect {r.get('registry')}", 'unscripted': f"unscripted {r.get('registry')}"}[kind]
     return {'scene': r['scene'], 'atlas': r['atlas'], 'palette': r['palette'], 'frame': r['frame'], 'file': name,
             'sha256': hashlib.sha256((folder / name).read_bytes()).hexdigest(),
             'width': image.width, 'height': image.height, 'method': 'image_gen' if source == redrawn else 'esrgan', 'unit': label} \
