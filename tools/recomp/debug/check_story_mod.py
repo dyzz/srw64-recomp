@@ -35,12 +35,13 @@ parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.R
 parser.add_argument("--language", default="zh-Hans")
 parser.add_argument("--keep", action="store_true", help="leave the game running at the end")
 parser.add_argument("--launch-only", action="store_true", help="only start it on the stage, for driving by hand")
+parser.add_argument("--before-victory", action="store_true", help="stop on the map after the persuasion, the game left running")
 args = parser.parse_args()
 
 mods = ROOT / "build/recomp/debug" / time.strftime("story-mods-%Y%m%dT%H%M%S")
 build_package(PACKAGE, mods, archive=False)
 s = Session.launch(language=args.language, images="original", mini_stage=str(STAGE),
-                   env={"SRW64_MODS_DIR": str(mods)}, detach=args.keep or args.launch_only)
+                   env={"SRW64_MODS_DIR": str(mods)}, detach=args.keep or args.launch_only or args.before_victory)
 print("run", s.run, flush=True)
 results: list[tuple[str, bool, str]] = []
 
@@ -235,6 +236,9 @@ try:
           str((variable(131), variable(128), variable(101))))
     until(idle, 60, "the map after the persuasion")
     shot("after-persuasion")
+    if args.before_victory:
+        print("left on the map after the persuasion")
+        sys.exit(0)
 
     # Win: the end event, then the package's join.
     for _ in range(3):
@@ -255,7 +259,7 @@ try:
 finally:
     failed = [r for r in results if not r[1]]
     print(f"{len(results) - len(failed)}/{len(results)} passed", flush=True)
-    if not (args.keep or args.launch_only):
+    if not (args.keep or args.launch_only or args.before_victory):
         try:
             s.quit()
         except HostError:

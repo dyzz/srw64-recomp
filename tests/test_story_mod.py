@@ -44,6 +44,9 @@ class StoryTests(unittest.TestCase):
                          ("persuade", [4, 18], {"131": 0}, {"4": 50}))
         self.assertEqual((joins["trigger"], joins["fired"]), ("after_end", ["persuade"]))
         self.assertEqual(joins["words"][-6:], [0x3D5A, 18, 0, 27, 500, 0xFFFF])
+        self.assertEqual(joins["levels"], [[len(joins["words"]) - 4, 4]])   # its level operand, as Domon's
+        offset = story.compile_story(source(event(do=[{"join": {"pilot": 18, "unit": 27, "level": {"offset": -2}}}])))["events"][0]
+        self.assertEqual((offset["words"][:5], offset["levels"]), ([0x3D5A, 18, 0xFFFE, 27, 500], []))
         self.assertEqual(len(image["texts"]), 11)
         # Each line's place holds the placeholder; its index is in "texts".
         for at, index in persuade["texts"] + refused["texts"] + joins["texts"]:
@@ -79,6 +82,8 @@ class StoryTests(unittest.TestCase):
             source(event(do=[{"jump": 3}])),
             source(event(do=[{"set": {"131": 4}}])),
             source(event(**{"if": {"kills": {"4": 0}}})),
+            source(event(do=[{"join": {"pilot": 18, "unit": 27, "level": {"like": 4, "offset": 1}}}])),
+            source(event(do=[{"join": {"pilot": 18, "unit": 27, "level": {"offset": 99}}}])),
             source(event(**{"if": {"kills": {"361": 5}}})),
             source(event(do=[{"op": "3D45", "args": [1, 2]}])),
             source(event(), event()),

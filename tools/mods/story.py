@@ -92,6 +92,7 @@ class Builder:
         self.commands: list[dict] = []
         self.texts = texts
         self.refs: list[int] = []         # command indexes whose argument is a line
+        self.like: list[tuple[int, int]] = []   # (command index, pilot): a join's level, set by the host
 
     def op(self, opcode: int, *args: int) -> None:
         self.commands.append({"op": opcode, "args": list(args)})
@@ -159,7 +160,17 @@ class Builder:
             for var, x in value.items():
                 self.op(0x3E13, _int(int(var), "set 变量", 0, 199), _int(x, "set 值", 0, 3))
         elif kind == "join":
-            self.op(0x3D5A, _int(value.get("pilot"), "pilot", 0, 360), 0, _int(value.get("unit"), "unit", 0, 362), 500)
+            # The level is the stage's base level (8010F5F3) plus the second operand (800AAD28):
+            # {"offset": n} sets n, {"like": pilot} has the host make it that pilot's level.
+            level = value.get("level", {"offset": 0})
+            if not isinstance(level, dict) or len(level) != 1 or not set(level) <= {"offset", "like"}:
+                raise StoryError("join.level 写 {\"offset\": n} 或 {\"like\": 人物号}")
+            offset = 0
+            if "offset" in level:
+                offset = _int(level["offset"], "level.offset", -98, 98)
+            else:
+                self.like.append((len(self.commands), _int(level["like"], "level.like", 0, 360)))
+            self.op(0x3D5A, _int(value.get("pilot"), "pilot", 0, 360), offset & 0xFFFF, _int(value.get("unit"), "unit", 0, 362), 500)
         elif kind == "remove":
             self.op(0x3D5A, _int(value.get("pilot"), "pilot", 0, 360), 0, _int(value.get("unit"), "unit", 0, 362), 4000)
         elif kind == "leave":
@@ -223,6 +234,7 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
                                   "commands": builder.commands}, spec)
             words = assembled["words"][5:]
             offsets = [entry["offset"] // 2 - 5 for entry in assembled["listing"]]
+            levels = [[offsets[command] + 2, pilot] for command, pilot in builder.like]
             refs = []
             for command in builder.refs:
                 at = offsets[command] + 1
@@ -231,7 +243,7 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
             events.append({"id": row["id"], "scene": _int(row.get("scene"), "scene", 0, 255), "trigger": name,
                            "params": params, "vars": variables, "kills": kills, "kills_below": kills_below, "fired": list(cond.get("fired", [])),
                            "not_fired": list(cond.get("not_fired", [])), "repeat": repeat,
-                           "words": words, "texts": refs,
+                           "words": words, "texts": refs, "levels": levels,
                            "listing": [f"{e['opcode']} {','.join(map(str, e['operands']))}".rstrip() for e in assembled["listing"]]})
         except (StoryError, ValueError, KeyError, TypeError) as error:
             raise StoryError(f"事件 {where}：{error}") from None

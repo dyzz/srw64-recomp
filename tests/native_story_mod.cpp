@@ -144,6 +144,15 @@ int main(int argc,char** argv) {
     write32(ram.data(),e+0x10,0);
     check(story::special(ram.data(),v) && read(ram.data(),e+0x10,4)==story::region,"ours into the end event's pointer");
     check(s.fired.count("srw64.master-asia/joins")==1,"joins fired");
+    // Its 3D5A joins at Domon's level: base level 1 here and Domon 1, so +0.
+    const uint32_t level_operand=story::region+uint32_t((story::header_words+6)*2);
+    check(read(ram.data(),level_operand-4,2)==0x3D5A && read(ram.data(),level_operand,2)==0,"join at Domon's level: +0 at base 1");
+    write8(ram.data(),story::base_level,30);write8(ram.data(),record_domon+story::pilot_level,38);
+    story::place(ram.data(),s.library.events[2]);
+    check(read(ram.data(),level_operand,2)==8,"base 30, Domon 38: +8");
+    write8(ram.data(),record_domon+story::pilot_level,28);
+    story::place(ram.data(),s.library.events[2]);
+    check(read(ram.data(),level_operand,2)==0xFFFE,"Domon 28: -2");
     write32(ram.data(),e+0x10,0);
     check(!story::special(ram.data(),v),"then the original goes on");
     // Without the persuasion it does not join.

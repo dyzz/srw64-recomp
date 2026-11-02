@@ -96,6 +96,7 @@ struct Event {
     std::vector<std::string> fired,not_fired;      // other events of the package (ids)
     bool repeat{};
     std::vector<uint16_t> words;                   // instructions and FFFF, text ids final
+    std::vector<std::pair<size_t,unsigned>> levels;   // a join's level operand -> as this pilot's
     std::string key() const {return package+"/"+id;}
 };
 struct Text {
@@ -170,6 +171,11 @@ inline void add_image(Library& library,const std::string& package,const json& im
             if(at>=event.words.size() || index>=new_texts.size())throw std::runtime_error(event.id+"：台词引用越界");
             event.words[at]=uint16_t(text_first+base+index);
         }
+        for(const auto& ref:e.value("levels",json::array())) {
+            const size_t at=ref.at(0).get<size_t>();const unsigned pilot=ref.at(1).get<unsigned>();
+            if(at<2 || at>=event.words.size() || event.words[at-2]!=0x3D5A || pilot>360)throw std::runtime_error(event.id+"：等级引用不是 3D5A 的第二个操作数");
+            event.levels.emplace_back(at,pilot);
+        }
         new_events.push_back(std::move(event));
     }
     for(const auto& e:new_events)for(const auto& names:{e.fired,e.not_fired})
@@ -237,12 +243,24 @@ inline unsigned variable(const uint8_t* ram,unsigned n) {
 // Our side's pilot records (100 x 0x4C at 80172F40, the first of the three sides'): +0 in
 // use, +2 the pilot, +0x14 kills (pilot_kills.hpp; an enemy's +0x14 counts dummies instead).
 inline constexpr uint32_t pilot_records=0x80172F40, pilot_record_size=0x4C, pilot_record_count=100, pilot_kills=0x14;
-inline std::optional<unsigned> kills(const uint8_t* ram,unsigned pilot) {
+inline std::optional<uint32_t> pilot_record(const uint8_t* ram,unsigned pilot) {
     for(uint32_t i=0;i<pilot_record_count;++i) {
         const uint32_t r=pilot_records+i*pilot_record_size;
-        if(read(ram,r,1) && read(ram,r+2,2)==pilot)return read(ram,r+pilot_kills,2);
+        if(read(ram,r,1) && read(ram,r+2,2)==pilot)return r;
     }
     return std::nullopt;
+}
+inline std::optional<unsigned> kills(const uint8_t* ram,unsigned pilot) {
+    const auto r=pilot_record(ram,pilot);
+    return r?std::optional<unsigned>(read(ram,*r+pilot_kills,2)):std::nullopt;
+}
+// A join "like" a pilot: 3D5A registers at the stage's base level (8010F5F3) plus its
+// second operand (800AAD28), so the operand is that pilot's level (record +5) less the base.
+inline constexpr uint32_t base_level=0x8010F5F3, pilot_level=0x05;
+inline uint16_t level_offset(const uint8_t* ram,unsigned pilot) {
+    const auto r=pilot_record(ram,pilot);
+    if(!r)return 0;
+    return uint16_t(int(read(ram,*r+pilot_level,1))-int(read(ram,base_level,1)));
 }
 // The game state a trigger looks at, read by the hooks (and filled by hand in tests).
 struct View {
@@ -391,6 +409,7 @@ inline void place(uint8_t* ram,const Event& e) {
     for(uint32_t i=0;i<region_size;i+=2)write16(ram,region+i,0);
     write16(ram,region,uint16_t(event_type(e.trigger)));
     for(size_t i=0;i<e.words.size();++i)write16(ram,region+uint32_t((header_words+i)*2),e.words[i]);
+    for(const auto& [at,pilot]:e.levels)write16(ram,region+uint32_t((header_words+at)*2),level_offset(ram,pilot));
 }
 // The event engine counts finished events off +0x98E (8009F020); one of ours was never
 // registered, so it is counted in before it runs.
