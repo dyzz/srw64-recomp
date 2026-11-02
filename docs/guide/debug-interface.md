@@ -67,7 +67,7 @@
 | `choice.pick` | `index`（从 0 起）、`vis` | 回答当前打开的选项框（`3D44`）：把光标写到该项再按 A 几帧。`status.choice` 给出 `active`、`options`、`text_id`（第一项的文本号）、`cursor`、`phase`（0 窗口未开、1 等输入）、`last_answer`；没有选项框或窗口还没开时拒绝 |
 | `title.return` | — | 回标题，与 F10 相同（原版 Z+START 复位，战术地图、场间、世界地图上接受，其他地方拒绝并给提示条）；`status.mode` 是游戏模式字节 |
 | `title.reset` | — | 下一帧直接回标题（模式 1），不等事件、不淡出，与地图上换关同一套交接；战斗演出中不接。录制脚本拍完一段立刻回标题再加载下一关用 |
-| `quote.force` | `text_id` | 下一次通用战斗台词的抽取改说这条记录（一次性）：说话人与情境（出手／挨打／回避…）由记录所属的 ROM 段决定，别人的台词或别的情境不受影响；槽里已有的条件台词也让位。回应里的 `served`／`seen`／`last_voice`／`last_context`／`last_drawn` 便于核对。录某句随机台词用，不必反复重打 |
+| `quote.force` | `text_id` 或 `text_ids` | 之后的通用战斗台词抽取改说这些记录（每条一次性，最多挂 8 条，一次能定下整回合出手／挨打／反击三句）：说话人与情境（出手／挨打／回避…）由记录所属的 ROM 段决定，别人的台词或别的情境不受影响；槽里已有的条件台词也让位。`text_id: 4294967295` 清空。回应里的 `pending`／`served_ids`／`served`／`seen`／`last_voice`／`last_context`／`last_drawn` 便于核对。录某句随机台词用，不必反复重打 |
 | `viewer.start` | `choice`／`writes`、`song`、`route`（0 布拉德、1 马纳美、2 阿克、3 塞蕾因）、`record`（`width`、`fps`、`ffmpeg`、`trim_black` 默认开） | 从标题起一场战斗鉴赏（docs/design/battle-viewer.md）。`route` 先写路线变量，主角／搭档（人物 25／29）的头像才画得出来（刚开机时变量为 0，没有头像）；`record` 让宿主只录演出本身：演示模式第二帧起开闸、离开演示模式关闸、首尾黑帧去掉，`status.battle_viewer.running` 转否后调 `record.stop` 收文件 |
 | `choice.show` | `text_id`、`options`（默认 2）、`slot`（0／1）、`lines`、`line_op`、`timeout_ms` | 随时调出一个选项框（录“选择的那一刻”用）：用脚本注入在下一个我方阶段空闲帧跑一条事件——可选的几句对白（`lines` 文本号，各一条 `3D3E`，`line_op` 可换 `3D3E`–`3D43`）再一条 `3D44 [槽位, 选项数, 选项文本]`；选项文本是一条按 `<BR>` 分行的文本（场景 10 的是 18402，场景 27 的 22134／22178）。之后 `choice.pick` 作答，答案进 `801602E4` |
 | `dialogue.show` | `lines`（文本号列表）、`line_op`（默认 `3D3E`）、`timeout_ms` | 在战术地图上随时把几句对白说一遍：注入一条只含 `3D3E` 的事件，在下一个我方阶段空闲帧跑。给录像/截图补原事件到不了的句子（结局里有条件的台词等），画面是地图底 |

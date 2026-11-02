@@ -1,7 +1,9 @@
 #pragma once
-// Debug: the next battle quote of a context forced to one record (quote.force): a recording
-// that must show a particular line of the generic pool (16 attack lines drawn at random)
-// instead of taking the battle again and again. The generic draw 80222B14(record, slot,
+// Debug: the next battle quotes forced to given records (quote.force): a recording that
+// must show particular lines of the generic pool (16 attack lines drawn at random) instead
+// of taking the battle again and again. Up to `slots` records wait at once (a whole
+// exchange: the attack, being hit, the counter); each generic draw takes the first waiting
+// record that lies in the drawing speaker's segment of the context. The generic draw 80222B14(record, slot,
 // context) picks from the speaker's segment of the context (ROM 0x1161C0, 36 bytes a voice
 // part: nine (start, count) pairs, record 5813 + start + n; docs/data/battle-quotes.md); the
 // wrapper writes the forced record into the slot instead, once, when it lies in that
@@ -11,8 +13,21 @@
 #include <cstddef>
 #include <cstdint>
 namespace srw64::quote_force {
-inline std::atomic<int> text{-1};     // the record to say, -1 none
+constexpr size_t slots = 8;
+inline std::atomic<int> pending[slots]{-1, -1, -1, -1, -1, -1, -1, -1};   // the records to say, -1 free
 inline std::atomic<unsigned> served{0}, seen{0};   // seen: generic draws since start
+inline std::atomic<int> served_ids[slots]{-1, -1, -1, -1, -1, -1, -1, -1};   // the last records forced, oldest first
+inline void clear() {
+    for (auto& p : pending) p = -1;
+    for (auto& s : served_ids) s = -1;
+}
+inline bool add(int record) {   // false when every slot is taken
+    for (auto& p : pending) { int none = -1; if (p.compare_exchange_strong(none, record)) return true; }
+    return false;
+}
+inline void note_served(int record) {
+    for (auto& s : served_ids) { int none = -1; if (s.compare_exchange_strong(none, record)) return; }
+}
 inline std::atomic<int> last_voice{-1}, last_context{-1}, last_drawn{-1};   // the last generic draw
 inline const uint8_t* rom{};          // the ROM image, for the segment table
 inline size_t rom_bytes{};

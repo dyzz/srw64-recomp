@@ -564,8 +564,8 @@ void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
 // random from the speaker's segment (ROM 0x1161C0; docs/data/battle-quotes.md) into the slot
 // (record + 0x2C the attack, + 0x848 being hit): slot[0] the record, slot[2] -1. A slot that
 // already holds a conditional quote keeps it two times in three. quote.force
-// (quote_force.hpp) writes the forced record there instead, once, when it is one of this
-// speaker's lines for this context; the speaker is the record's voice part (record + 2; the
+// (quote_force.hpp) writes the first waiting forced record there instead, once, when it is
+// one of this speaker's lines for this context; the speaker is the record's voice part (record + 2; the
 // sub pilot's for contexts 7 and 8 of a two-seater is not handled).
 void load_00121560_func_80222B14(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t record = uint32_t(ctx->r4), slot = uint32_t(ctx->r5);
@@ -576,12 +576,17 @@ void load_00121560_func_80222B14(uint8_t* rdram, recomp_context* ctx) {
     ++seen;
     last_voice = voice; last_context = context;
     last_drawn = int16_t(srw64::guest::read(rdram, slot, 2));
-    const int forced = text.load();
-    if (forced < 0 || !in_segment(voice, context, forced) || !srw64::guest::valid(slot, 4)) return;
-    srw64::guest::write16(rdram, slot, uint16_t(forced));
-    srw64::guest::write16(rdram, slot + 2, 0xFFFF);
-    text = -1;
-    ++served;
+    if (!srw64::guest::valid(slot, 4)) return;
+    for (auto& p : pending) {
+        const int forced = p.load();
+        if (forced < 0 || !in_segment(voice, context, forced)) continue;
+        srw64::guest::write16(rdram, slot, uint16_t(forced));
+        srw64::guest::write16(rdram, slot + 2, 0xFFFF);
+        p = -1;
+        ++served;
+        note_served(forced);
+        return;
+    }
 }
 // The roster entry a unit handle names (801E510C: 0x42 + slot the player's side, 0x60 the
 // enemy's, 0x7E the third's; 30 slots a side, 0x14 bytes an entry at 8015E100), and whether

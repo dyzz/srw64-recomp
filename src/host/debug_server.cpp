@@ -600,16 +600,29 @@ json dispatch(const std::string& method,const json& params) {
     if(method=="choice.pick")return choice_pick(params);
     if(method=="choice.show")return choice_show(params);
     if(method=="dialogue.show")return dialogue_show(params);
-    // The next generic battle quote forced to one record (quote_force.hpp): the speaker and
-    // the context follow from the record itself; `slot` is accepted for old callers.
+    // The next generic battle quotes forced to given records (quote_force.hpp): the speaker and
+    // the context follow from each record itself; `slot` is accepted for old callers. `text_id`
+    // one record, `text_ids` several (a whole exchange); either -1/4294967295 clears them all.
     if(method=="quote.force") {
-        if(!params.contains("text_id") || !params["text_id"].is_number_unsigned())throw RpcError(InvalidParams,"text_id must be a battle quote record");
-        const int record=int(params["text_id"].get<unsigned>());
-        if(record>=0 && !quote_force::rom)throw RpcError(InvalidParams,"the ROM's quote segments are not loaded");
-        quote_force::text=record;
-        return {{"vi",srw64_current_vi()},{"text_id",quote_force::text.load()},{"served",quote_force::served.load()},
-                {"seen",quote_force::seen.load()},{"last_voice",quote_force::last_voice.load()},{"last_context",quote_force::last_context.load()},
-                {"last_drawn",quote_force::last_drawn.load()}};
+        std::vector<int> records;
+        if(params.contains("text_ids")) {
+            if(!params["text_ids"].is_array())throw RpcError(InvalidParams,"text_ids must be a list of battle quote records");
+            for(const auto& v:params["text_ids"]) { if(!v.is_number_unsigned())throw RpcError(InvalidParams,"text_ids must be battle quote records"); records.push_back(int(v.get<unsigned>())); }
+        } else {
+            if(!params.contains("text_id") || !params["text_id"].is_number_unsigned())throw RpcError(InvalidParams,"text_id must be a battle quote record");
+            records.push_back(int(params["text_id"].get<unsigned>()));
+        }
+        const bool clear=records.size()==1 && records[0]<0;
+        if(!clear && !quote_force::rom)throw RpcError(InvalidParams,"the ROM's quote segments are not loaded");
+        json served_ids=json::array();
+        for(const auto& s:quote_force::served_ids) if(s.load()>=0)served_ids.push_back(s.load());
+        if(clear)quote_force::clear();
+        else for(int r:records) if(r>=0 && !quote_force::add(r))throw RpcError(InvalidParams,"quote.force holds 8 records at most");
+        json pending=json::array();
+        for(const auto& p:quote_force::pending) if(p.load()>=0)pending.push_back(p.load());
+        return {{"vi",srw64_current_vi()},{"text_id",pending.empty()?-1:pending[0].get<int>()},{"pending",pending},{"served_ids",served_ids},
+                {"served",quote_force::served.load()},{"seen",quote_force::seen.load()},{"last_voice",quote_force::last_voice.load()},
+                {"last_context",quote_force::last_context.load()},{"last_drawn",quote_force::last_drawn.load()}};
     }
     // Back to the title the way F10 asks (quick_load.hpp): the original's Z+START reset on the
     // map, the intermission or the world map, refused with a notice elsewhere.
