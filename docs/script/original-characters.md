@@ -1,6 +1,6 @@
 # 原创人物档案
 
-《スーパーロボット大戦64》13 个原创人物的故事线、性格、关系、说话方式和声音设计建议（2026-11-01 整理）。用途：台词翻译与润色时的口吻依据（口吻卡在 `content/translation/voices.json`，按本档案修正过）、原创人物战斗语音的声音设计（[光盘战斗语音](https://github.com/dyzz/srw64-disc-voices/blob/main/docs/design.md) 里原创 846 句没有光盘来源）。
+《スーパーロボット大戦64》13 个原创人物的故事线、性格、关系、说话方式和声音设计建议（2026-11-01 整理）。用途：台词翻译与润色时的口吻依据（口吻卡在 `content/translation/voices.json`，按本档案修正过）、原创人物战斗语音的声音设计（[光盘战斗语音](https://github.com/dyzz/srw64-recomp-disc-voices/blob/main/docs/design.md) 里原创 846 句没有光盘来源）。
 
 **依据**与引用写法：
 
