@@ -5,7 +5,7 @@ picture (300 ms) instead of cutting it 200 ms later.
     .venv/bin/python tools/recomp/debug/check_voice_speed.py
 
 Needs the disc voice package built at build/mods/srw64.battle-voices-disc (make_voice_pack.py of
-https://github.com/dyzz/srw64-recomp-disc-voices, -o build/mods) and the host built in build/recomp/gfx-build; the battle-ui mini-stage's
+https://github.com/dyzz/srw64-recomp-disc-voice-mod, -o build/mods) and the host built in build/recomp/gfx-build; the battle-ui mini-stage's
 ショウ and マリア have lines in it. Run 2026-11-01: 12334 0.76 s → 0.43 s, 12313 1.08 s → 0.59 s
 at speed=1.75; X at state 9 removed the line within 2 ms and the tail faded over 300 ms.
 """
