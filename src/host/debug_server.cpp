@@ -577,8 +577,11 @@ json dispatch(const std::string& method,const json& params) {
     // The next battle quote of a context (0 attack ... 8) forced to one record (quote_force.hpp).
     if(method=="quote.force") {
         if(!params.contains("text_id") || !params["text_id"].is_number_unsigned())throw RpcError(InvalidParams,"text_id must be a battle quote record");
-        quote_force::context=params.value("context",0);quote_force::text=int(params["text_id"].get<unsigned>());
-        return {{"vi",srw64_current_vi()},{"text_id",quote_force::text.load()},{"context",quote_force::context.load()},{"served",quote_force::served.load()}};
+        const auto slot=params.value("slot","attack");
+        if(slot!="attack" && slot!="hit")throw RpcError(InvalidParams,"slot is attack or hit");
+        quote_force::slot=slot=="hit"?0x848:0x2C;quote_force::text=int(params["text_id"].get<unsigned>());
+        return {{"vi",srw64_current_vi()},{"text_id",quote_force::text.load()},{"slot",slot},{"served",quote_force::served.load()},
+                {"seen",quote_force::seen.load()},{"last_base",quote_force::last_base.load()},{"last_answer",quote_force::last_answer.load()}};
     }
     // Back to the title the way F10 asks (quick_load.hpp): the original's Z+START reset on the
     // map, the intermission or the world map, refused with a notice elsewhere.

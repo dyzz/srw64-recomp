@@ -7,6 +7,7 @@
 #include <atomic>
 namespace srw64::quote_force {
 inline std::atomic<int> text{-1};     // the record to say, -1 none
-inline std::atomic<int> context{0};   // the situation it applies to: 0 attack, 1 shot down, ... 8
-inline std::atomic<unsigned> served{0};
+inline std::atomic<int> slot{0x2C};   // the quote slot it applies to: +0x2C the attack, +0x848 being hit
+inline std::atomic<unsigned> served{0}, seen{0};
+inline std::atomic<int> last_base{0}, last_answer{0};
 }
