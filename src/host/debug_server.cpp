@@ -246,7 +246,7 @@ json pad_buttons(const json& params) {
 }
 
 json status(const json& params) {
-    json state={{"vi",srw64_current_vi()},{"pid",transport::process_id()},{"run",output.string()},{"host",host_info},
+    json state={{"vi",srw64_current_vi()},{"mode",srw64_rdram?guest::read(srw64_rdram,0x8015DA02,1):0},{"pid",transport::process_id()},{"run",output.string()},{"host",host_info},
         {"image_mode",{{"current",presentation::image_mode.current()},{"requested",presentation::image_mode.requested()},
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"aspect",settings::wide_picture()?"auto":"4:3"},{"picture_width",frame::picture_width.load()},
@@ -573,6 +573,9 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="choice.pick")return choice_pick(params);
     if(method=="choice.show")return choice_show(params);
+    // Back to the title the way F10 asks (quick_load.hpp): the original's Z+START reset on the
+    // map, the intermission or the world map, refused with a notice elsewhere.
+    if(method=="title.return"){quick_load::request_title();return {{"vi",srw64_current_vi()},{"usable",quick_load::usable_title()}};}
     if(method=="memory.read") {
         // Guest RAM as hex, read without stopping the game (a debugging view, not a snapshot).
         const uint32_t address=params.at("address").get<uint32_t>(),size=params.value("size",4u);
@@ -607,7 +610,7 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","choice.show","memory.read","memory.write","viewer.start","file.read","file.remove",
+                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","choice.show","title.return","memory.read","memory.write","viewer.start","file.read","file.remove",
                                  "quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }

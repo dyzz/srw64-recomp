@@ -401,10 +401,13 @@ inline void direct_scene(uint8_t* ram) {
     log({{"action","direct-entry"},{"scene",scene},{"route",s.image && s.image->route?nlohmann::json(*s.image->route):nlohmann::json()},{"names",names_written}});
 }
 
-// A stage may replace the running one from the tactical map, the world map or the title:
-// the game's mode (8015DA02; quick_load.cpp lists the tactical ones).
+// A stage may replace the running one where the game is settled: the tactical map (modes
+// 3/B/11/16/22, quick_load.cpp), the intermission (4, 12-15 after a load) and the world map
+// (D). Not in C, the scenario loader: a restart there (2026-11-02, right after a stage's
+// clear while the next scene was being set up) registered the new scene but its opening
+// never ran; the client waits for a settled mode or goes through the title (title.return).
 inline bool restartable_mode(unsigned mode) {
-    return mode==3 || mode==0xB || mode==0x11 || mode==0x16 || mode==0x22 || mode==0xC || mode==0xD;
+    return mode==3 || mode==0xB || mode==0x11 || mode==0x16 || mode==0x22 || mode==4 || (mode>=0x12 && mode<=0x15) || mode==0xD;
 }
 // Game thread, frame boundary: true once, when a stage loaded off the title should take
 // over from the running one (the same hand-over as take_direct_entry, from the map).
@@ -431,7 +434,7 @@ inline std::string load_file(const std::filesystem::path& file,bool enter=true) 
     // direct entry from the map: no title, no restart of the game between two stages).
     bool restart=false;
     if(!on_title) {
-        if(!enter || !srw64_rdram || !restartable_mode(read(srw64_rdram,0x8015DA02,1)))throw std::runtime_error("mini stage: open stage files from the title menu, the tactical map or the world map");
+        if(!enter || !srw64_rdram || !restartable_mode(read(srw64_rdram,0x8015DA02,1)))throw std::runtime_error("mini stage: open stage files from the title menu, the tactical map, the intermission or the world map (not while a scene loads: mode "+std::to_string(srw64_rdram?read(srw64_rdram,0x8015DA02,1):0)+")");
         restart=true;
     }
     const auto read_json=[](const std::filesystem::path& path) {
