@@ -1,5 +1,5 @@
 ---
-// A thin strip under the header with the three newest blog posts, date and title.
+// A thin strip under the header with the three newest blog posts, date (month/day) and title.
 import { getCollection } from 'astro:content';
 import { tl, type Lang } from '../i18n';
 import { newestFirst } from '../lib/blog';
@@ -17,7 +17,7 @@ const here = path.replace(/\/?$/, '/');
   <nav class="news-bar" aria-label="News">
     <ul class="wrap">
       {posts.map((p) => (
-        <li><a href={p.href} aria-current={p.href === here ? 'page' : undefined}><time class="latin" datetime={p.date}>{p.date}</time><span>{p.title}</span></a></li>
+        <li><a href={p.href} aria-current={p.href === here ? 'page' : undefined}><time class="latin" datetime={p.date}>{p.date.slice(5).split('-').map(Number).join('/')}</time><span>{p.title}</span></a></li>
       ))}
     </ul>
   </nav>
