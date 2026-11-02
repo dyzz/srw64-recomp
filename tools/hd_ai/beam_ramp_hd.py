@@ -163,10 +163,22 @@ def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float) -> Ima
     body = np.clip(enlarge(filled, .45), 0, 1)
     if body_mask.any():
         body = body / max(np.percentile(body[cover > .5], 99), .5)
-    body = np.clip(body * (.84 + .3 * lines_along(body_mask, shift)), 0, 1)
-    # Z's thin coloured edge: the outermost pixel of the picture in the rim colour
-    depth = ndimage.distance_transform_edt(cover > .5) / S
-    body = np.minimum(body, .22 + .78 * np.clip(depth / 1.2, 0, 1))
+    # Z's cross-section (measured on its mega particle cannon): a flat white core over most of
+    # the width, then a narrow band to the edge, pale, then the saturated colour, then darker at
+    # the very edge. Depth from the edge over the half-thickness of each vertical run of the
+    # shape gives where a pixel lies across; the flow lines ripple the band along the beam.
+    inside = cover > .5
+    depth = ndimage.distance_transform_edt(inside)
+    runs, count = ndimage.label(inside, np.array([[0, 1, 0], [0, 1, 0], [0, 1, 0]], bool))
+    half = np.r_[1.0, ndimage.maximum(depth, runs, np.arange(1, count + 1))] if count else np.ones(1)
+    # smoothed across neighbouring runs, so no seam shows where the beam meets its ring
+    weight = ndimage.gaussian_filter(inside.astype(np.float32), 2 * S)
+    half = ndimage.gaussian_filter(half[runs] * inside, 2 * S) / np.maximum(weight, 1e-3)
+    across = depth / np.maximum(half, 1)
+    across = across * (.82 + .36 * lines_along(body_mask, shift))
+    profile = np.interp(across, (0, .1, .22, .34, .45), (.18, .32, .55, .85, 1))
+    # where the original darkens (a fading tail) it stays darker
+    body = np.minimum(profile, np.clip(body * 1.4, 0, 1))
     dot_cover, dot_value = dots(single, intensity)
     a = np.maximum(cover, dot_cover)
     v = np.where(dot_cover > cover, dot_value, body)
