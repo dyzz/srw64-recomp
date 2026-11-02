@@ -14997,7 +14997,7 @@
     "manifest_sha256": "6d94e8e4ddb693ce9d79c6eafa2b8b2b308b135116cfc08d2448604827607c55"
   },
   "battle_sprites": {
-    "path": "assets/hd-ai/cutins/pack-v3",
-    "manifest_sha256": "24a21648584a20de1f6cdaad146c7f3ded7cbeba1a1a5a54cfc32a023c494bfe"
+    "path": "assets/hd-ai/cutins/pack-v6",
+    "manifest_sha256": "84aea14e452bcb2a39b01ba870576ecd0f4566367b34df94f6b69507c64dd015"
   }
 }

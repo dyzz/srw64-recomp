@@ -75,6 +75,12 @@ struct Image {
     int asset = -1;
     float uv[4]{0, 0, 1, 1};
     bool wrap = false;
+    // Drawn with whatever palette resource the game gives it (the defence effects
+    // 801C4574 colours like the attacker's first actor): matched on scene, atlas and
+    // frame, recoloured from `palette`, by the entries the frame uses only (a palette can
+    // hold a colour again at an entry the picture never shows).
+    bool any_palette = false;
+    std::vector<uint16_t> indices;
 };
 struct Draw {
     uint32_t id = 0;
@@ -610,6 +616,8 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             Image image;
             image.scene = row.at("scene"); image.atlas = row.at("atlas"); image.palette = row.at("palette");
             image.frames.insert(frames ? row.at("frame").get<uint8_t>() : uint8_t(0));
+            image.any_palette = row.value("any_palette", false);
+            for (const auto& index : row.value("palette_indices", json::array())) image.indices.push_back(index.get<uint16_t>());
             auto asset = std::make_unique<Asset>();
             asset->file = art_directory / row.at("file").get<std::string>();
             if (!hd_texture::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
@@ -724,9 +732,14 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     } else {
         if (!hd_enabled()) return;
         std::lock_guard lock(image_mutex);
-        const auto found = std::find_if(images.begin(), images.end(), [&](const Image& image) {
-            return image.scene == id.scene && image.atlas == id.atlas && image.palette == id.palette && image.frames.count(id.frame);
-        });
+        const auto match = [&](bool any) {
+            return std::find_if(images.begin(), images.end(), [&](const Image& image) {
+                return image.scene == id.scene && image.atlas == id.atlas && image.frames.count(id.frame) &&
+                       (any ? image.any_palette : image.palette == id.palette);
+            });
+        };
+        auto found = match(false);
+        if (found == images.end()) found = match(true);
         if (found == images.end()) {
             // which sprites have no HD image (once per identity)
             if (log.is_open()) note("miss:" + std::to_string(id.scene) + "/" + std::to_string(id.atlas) + "/" + std::to_string(id.palette) + "/" + std::to_string(id.frame),
@@ -734,12 +747,16 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
             return;
         }
         record.asset = found->asset;
-        // The game changed the palette in place (a flash, a gold mode): the same frame in
-        // the colours it draws with now, made once per colour set; the original sprite
-        // stands in until it is ready.
-        const auto* colors = original_colors(id.palette);
+        // The game changed the palette in place (a flash, a gold mode), or drew an
+        // any-palette picture with another palette: the same frame in the colours it draws
+        // with now, made once per colour set; the original sprite stands in until it is ready.
+        const auto* colors = original_colors(found->palette);
         std::vector<uint16_t> live;
-        if (colors) for (size_t i = 0; i < colors->size(); ++i) live.push_back(half(rdram, id.palette_data + 8 + 2u * uint32_t(i)));
+        // An any-palette picture can be drawn with a shorter palette than its own (header:
+        // u16 type, u16 bytes, as original_colors reads it from the ROM).
+        const size_t loaded = half(rdram, id.palette_data + 2) / 2u;
+        const size_t count = colors ? (loaded ? std::min(colors->size(), loaded) : colors->size()) : 0;
+        for (size_t i = 0; i < count; ++i) live.push_back(half(rdram, id.palette_data + 8 + 2u * uint32_t(i)));
         if (colors && live != *colors) {
             std::lock_guard lock(asset_mutex);
             const Asset& base = *assets[size_t(found->asset)];
@@ -747,17 +764,23 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
                 uint64_t hash = 1469598103934665603ull;
                 for (const uint16_t c : live) hash = (hash ^ c) * 1099511628211ull;
                 const std::string key = base.key + "|recolor:" + std::to_string(hash);
-                // A palette animation could make a new set every frame: past 256 sets the
-                // original sprite is drawn instead.
-                static unsigned variants = 0;
+                // A palette animation could make a new set every frame: past 64 sets of one
+                // picture the original sprite is drawn instead. Counted per picture, so the
+                // any-palette ones (a set per attacker) cannot use up every other's.
+                static std::map<int, unsigned> variants;
                 if (const auto at = by_key.find(key); at != by_key.end()) record.asset = at->second;
-                else if (variants >= 256) return;
+                else if (variants[found->asset] >= 64) return;
                 else {
-                    ++variants;
+                    ++variants[found->asset];
                     auto variant = std::make_unique<Asset>();
                     variant->key = key; variant->file = base.file; variant->recolor = true;
-                    variant->recolor_from = *colors;
-                    variant->recolor_to = live;
+                    if (found->indices.empty()) {
+                        variant->recolor_from = *colors;
+                        variant->recolor_to = live;
+                    } else {
+                        for (const uint16_t i : found->indices)
+                            if (i < live.size()) { variant->recolor_from.push_back((*colors)[i]); variant->recolor_to.push_back(live[i]); }
+                    }
                     assets.push_back(std::move(variant));
                     record.asset = by_key[key] = int(assets.size() - 1);
                 }
