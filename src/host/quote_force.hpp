@@ -33,6 +33,25 @@ inline const uint8_t* rom{};          // the ROM image, for the segment table
 inline size_t rom_bytes{};
 constexpr uint32_t segment_table = 0x1161C0;
 constexpr int first_record = 5813;
+// Whether record `forced` is one of voice part `voice`'s special (conditional) lines: the
+// list at ROM 0x121150 (a u32 offset a voice) → 0x20F250 + offset, pairs of (condition code,
+// text offset) until code 0xFFFF, record 14227 + offset; the original reads 0x1E0 bytes of
+// it at most (120 pairs; docs/data/battle-quotes.md).
+constexpr uint32_t special_index = 0x121150, special_data = 0x20F250;
+constexpr int first_special = 14227;
+inline bool in_special(int voice, int forced) {
+    if (!rom || voice < 0 || forced < first_special) return false;
+    const size_t index = special_index + size_t(voice) * 4;
+    if (index + 4 > rom_bytes) return false;
+    const uint32_t offset = (uint32_t(rom[index]) << 24) | (uint32_t(rom[index + 1]) << 16) | (uint32_t(rom[index + 2]) << 8) | rom[index + 3];
+    const size_t data = special_data + offset;
+    for (size_t at = data; at + 4 <= rom_bytes && at + 4 <= data + 0x1E0; at += 4) {
+        const int code = (rom[at] << 8) | rom[at + 1], text = (rom[at + 2] << 8) | rom[at + 3];
+        if (code == 0xFFFF) return false;
+        if (first_special + text == forced) return true;
+    }
+    return false;
+}
 // Whether record `forced` is in voice part `voice`'s generic segment of `context`.
 inline bool in_segment(int voice, int context, int forced) {
     if (!rom || voice < 0 || context < 0 || context > 8) return false;

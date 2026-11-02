@@ -555,10 +555,33 @@ void resident_func_8009C2DC(uint8_t* rdram, recomp_context* ctx) {
 int srw64_quote_demo(uint8_t* rdram) {
     return srw64_game_hooks.quote_demo && srw64_game_hooks.quote_demo(rdram);
 }
+// 8022245C(record, slot, base): the special (conditional) quote of this slot, written into
+// the slot (several halfwords for a multi-line exchange), the priority group 0..2 answered,
+// -1 when none matched; the caller 80222050 draws a generic line over a group-2 line or
+// none. quote.force (quote_force.hpp): when the original did pick a special line, a waiting
+// forced record that is one of this speaker's special lines replaces it, as a group-1 line
+// so the generic draw stays away (the forced line is taken to fit the situation like the
+// one it replaces: the video's lines were drawn by the original in an earlier take).
 void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, uint32_t(ctx->r4));
+    const uint32_t record = uint32_t(ctx->r4), slot = uint32_t(ctx->r5);
+    if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, record);
     srw64_original_battle_quote_pick(rdram, ctx);
     if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, 0);
+    using namespace srw64::quote_force;
+    const int group = int16_t(ctx->r2);
+    if (group < 0 || group > 2 || !srw64::guest::valid(slot, 4)) return;
+    const int voice = int(srw64::guest::read(rdram, record + 2, 2));
+    for (auto& p : pending) {
+        const int forced = p.load();
+        if (forced < 0 || !in_special(voice, forced)) continue;
+        srw64::guest::write16(rdram, slot, uint16_t(forced));
+        srw64::guest::write16(rdram, slot + 2, 0xFFFF);
+        ctx->r2 = 1;
+        p = -1;
+        ++served;
+        note_served(forced);
+        return;
+    }
 }
 // 80222B14(record, slot, context): the generic quote of a context (0 attack ... 8) drawn at
 // random from the speaker's segment (ROM 0x1161C0; docs/data/battle-quotes.md) into the slot
