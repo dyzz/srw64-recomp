@@ -14986,7 +14986,7 @@
   },
   "units": {
     "path": "assets/hd-ai/unit-poses/whole-v2",
-    "manifest_sha256": "d8c2fb756cb5da4957c451a91fa32adf1154ec0b58fafdf7bd330284ecda68ed"
+    "manifest_sha256": "33cd02ee988d2870021eec7c390c89421a2f4e72275a15b8cd7b235126adf719"
   },
   "unit_extras": {
     "path": "assets/hd-ai/unit-extras-derived/pack",
