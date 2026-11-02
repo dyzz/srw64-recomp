@@ -415,7 +415,13 @@ inline bool take_restart(const uint8_t* ram) {
     auto& s=state();
     std::lock_guard lock(s.mutex);
     if(!s.image || !s.restart || s.applied)return false;
-    if(!restartable_mode(read(ram,0x8015DA02,1)))return false;
+    const unsigned mode=read(ram,0x8015DA02,1);
+    if(!restartable_mode(mode))return false;
+    // On the tactical map only between events: a restart while an event still ran (the end
+    // event after a clear, 2026-11-02) left the new scene registered but never opened. The
+    // request stays pending; after a clear the intermission (mode 4) takes it.
+    if(mode!=4 && !(mode>=0x12 && mode<=0x15) &&
+       (read(ram,script_inject::engine+4,2)!=0xC0 || read(ram,script_inject::engine+0x97C,2)!=0x80))return false;
     s.restart=false;s.direct_done=true;
     log({{"action","restart"},{"mode",read(ram,0x8015DA02,1)}});
     return true;
