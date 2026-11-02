@@ -16,7 +16,7 @@ original's; another palette gives another colour.
     .venv/bin/python tools/hd_ai/beam_ramp_hd.py --lines OUT.png      # the flow-line texture alone
 
 Adds a picture per (scene, atlas, palette, frame) of the BEAMS scenes, in every palette the
-battle_scenes table pairs them with, to a copy of the bound battle sprites pack (hard links
+battle_scenes table pairs them with, and of their FOLLOW_ONS in the same palettes, to a copy of the bound battle sprites pack (hard links
 for the rest, as cutin_hd.py extend does), replacing rows of the same name.
 """
 from __future__ import annotations
@@ -42,6 +42,10 @@ from tools.hd_ai.unit_extra_derive import PACK_SCALE  # noqa: E402
 # (scene, atlas): the beam rifle family (a thin beam whose tail breaks into dots) and the mega
 # particle cannon family (a thick wavy beam with a muzzle ring).
 BEAMS = ((3558, 3023), (3560, 3023), (3624, 3048), (3626, 3048))
+# The scenes the beam's actor steps on to where it hits (the beam routine moves it to the next
+# registration's scene at run time): not paired with a palette in battle_scenes, drawn in the
+# palette of the scene it came from (seen in scene-sprites.jsonl in the battle viewer).
+FOLLOW_ONS = {(3559, 3023): (3558, 3023), (3625, 3048): (3624, 3048)}
 S = PACK_SCALE
 WHITE_FROM = .45          # where the ramp starts turning white: lower is a wider core
 
@@ -178,7 +182,8 @@ def main() -> None:
         ap.error('--into is required')
     rom = (ROOT / 'rom.z64').read_bytes()
     table = ResourceTable(rom)
-    triplets = sorted({t for t in read_triplets(rom, 'battle_scenes') if t[:2] in BEAMS})
+    triplets = {t for t in read_triplets(rom, 'battle_scenes') if t[:2] in BEAMS}
+    triplets = sorted(triplets | {(s, a, p) for (s, a), base in FOLLOW_ONS.items() for t in triplets if t[:2] == base for p in [t[2]]})
     into = args.into.absolute()
     current = ROOT / json.loads(MANIFEST.read_text())['battle_sprites']['path']
     into.mkdir(parents=True, exist_ok=False)
