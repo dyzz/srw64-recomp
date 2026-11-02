@@ -14,7 +14,7 @@ namespace srw64::unit_icon_art {
 constexpr int kSize = 128;                                    // the master, as the HD-2D icons
 constexpr uint32_t kIconTable = 1052024, kUnits = 363;        // u16 icon resource per unit (layout images.units)
 constexpr uint32_t kFirstPalette = 1010, kActed = 1013;       // player, enemy, third party, acted
-constexpr float kActedBrightness = 0.85f;
+constexpr float kActedBrightness = 0.6f;
 
 // Square pixel art at 16, 32, 64 or 128: whole multiples of the original's 16 that scale to
 // the master without blending.
@@ -33,7 +33,7 @@ inline std::vector<uint8_t> master(const uint8_t* rgba, int size) {
 }
 
 // The master as palette `index` (0-3 from 1010) draws it: as it is for every side, grey at
-// 85% brightness once acted.
+// 60% brightness once acted.
 inline std::vector<uint8_t> marked(std::vector<uint8_t> rgba, unsigned index) {
     const size_t n = size_t(kSize) * kSize;
     if (index == kActed - kFirstPalette) {

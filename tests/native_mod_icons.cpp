@@ -28,9 +28,9 @@ int main() {
     check(unit_icon_art::marked(master,0)==master,"the player's icon is as drawn");
     const auto enemy=unit_icon_art::marked(master,1);
     check(enemy==master && unit_icon_art::marked(master,2)==master,"the enemy and the third party carry no ring");
-    // Acted: grey at 85%, transparency kept.
+    // Acted: grey at 60%, transparency kept.
     const auto acted=unit_icon_art::marked(master,3);
-    const int grey=int((200*0.299f+100*0.587f+50*0.114f)*0.85f);
+    const int grey=int((200*0.299f+100*0.587f+50*0.114f)*0.6f);
     check(at(acted,40,56)[0]==grey && at(acted,40,56)[1]==grey && at(acted,40,56)[2]==grey && at(acted,40,56)[3]==255,"acted turns grey");
     check(at(acted,0,0)[3]==0,"acted keeps the transparency");
 
