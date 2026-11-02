@@ -25,10 +25,14 @@ const here = path.replace(/\/?$/, '/');
 
 <style>
   .news-bar { background: var(--bg-2); border-bottom: 1px solid var(--line-soft); }
-  .news-bar ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 28px; margin: 0 auto; padding-top: 7px; padding-bottom: 7px; list-style: none; }
+  /* One after another, each as wide as its title. The newest keeps its whole title (up to
+     half the row); the older ones shrink with an ellipsis when the row is full. */
+  .news-bar ul { display: flex; gap: 4px 24px; margin: 0 auto; padding-top: 7px; padding-bottom: 7px; list-style: none; }
+  .news-bar li { flex: 0 1 auto; min-width: 0; }
+  .news-bar li:first-child { flex-shrink: 0; max-width: 50%; }
   .news-bar a { display: flex; gap: 10px; min-width: 0; font-size: 13.5px; line-height: 1.6; color: var(--text); text-decoration: none; }
   .news-bar a:hover span, .news-bar a[aria-current] span { color: var(--gold); }
   .news-bar time { flex-shrink: 0; color: var(--dim); }
   .news-bar span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-  @media (max-width: 800px) { .news-bar ul { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 800px) { .news-bar ul { flex-direction: column; } .news-bar li:first-child { max-width: none; } }
 </style>
