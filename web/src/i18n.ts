@@ -80,9 +80,9 @@ export const UI = {
     ja: '『スーパーロボット大戦64』非公式ネイティブ再コンパイル版',
   },
   description: {
-    zh: 'Marchwind 64 是《超级机器人大战64》的非官方原生重编译版，可在 Windows、macOS、Linux、Steam Deck 和 Android 上直接运行，提供中英文全文翻译。另有可选的 HD 美术包。使用时需自备日版 ROM。',
-    en: 'Marchwind 64 is an unofficial native recompilation of Super Robot Wars 64 for Windows, macOS, Linux, Steam Deck and Android, with full English and Chinese translations. An optional HD art pack is available on every platform. You’ll need your own Japanese ROM.',
-    ja: 'マーチウィンド64 は『スーパーロボット大戦64』の非公式ネイティブ再コンパイル版です。Windows・macOS・Linux・Steam Deck・Android で動作し、英語・中国語の全文翻訳を用意しています。別配布の HD アートパックも、すべてのプラットフォームで利用できます。日本版 ROM は各自でご用意ください。',
+    zh: 'Marchwind 64 是《超级机器人大战64》的非官方原生重编译版，可在 Windows、macOS、Linux、Steam Deck、Android 和 Nintendo Switch 上直接运行，提供中英文全文翻译。另有可选的 HD 美术包。使用时需自备日版 ROM。',
+    en: 'Marchwind 64 is an unofficial native recompilation of Super Robot Wars 64 for Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English and Chinese translations. An optional HD art pack is available on every platform. You’ll need your own Japanese ROM.',
+    ja: 'マーチウィンド64 は『スーパーロボット大戦64』の非公式ネイティブ再コンパイル版です。Windows・macOS・Linux・Steam Deck・Android・Nintendo Switch で動作し、英語・中国語の全文翻訳を用意しています。別配布の HD アートパックも、すべてのプラットフォームで利用できます。日本版 ROM は各自でご用意ください。',
   },
   footer: {
     unofficial: {

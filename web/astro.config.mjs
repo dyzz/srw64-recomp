@@ -1,5 +1,6 @@
 // @ts-check
 import { execFileSync } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 
@@ -15,6 +16,32 @@ const zhHant = {
   },
 };
 
+// sitemap.xml from the pages the build wrote: every HTML page (not the 404, not the JSON and
+// text endpoints), each with its other-language versions as hreflang alternates, the
+// language picker at the root as x-default. robots.txt (public/) points search engines at it.
+const SITE = 'https://srw64.dreamquest.club';
+const LANG_TAGS = { zh: 'zh-Hans', tw: 'zh-Hant', en: 'en', ja: 'ja' };
+const sitemap = {
+  name: 'srw64-sitemap',
+  hooks: {
+    'astro:build:done': ({ pages, dir }) => {
+      const paths = new Set(pages.map((p) => `/${p.pathname}`).filter((p) => p.endsWith('/') && p !== '/404/'));
+      const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      const urls = [...paths].sort().map((path) => {
+        const m = path.match(/^\/(zh|tw|en|ja)(\/.*)$/);
+        const alts = m
+          ? Object.entries(LANG_TAGS).filter(([l]) => paths.has(`/${l}${m[2]}`))
+              .map(([l, tag]) => `<xhtml:link rel="alternate" hreflang="${tag}" href="${esc(SITE + `/${l}${m[2]}`)}"/>`)
+              .concat(`<xhtml:link rel="alternate" hreflang="x-default" href="${SITE}/"/>`)
+          : [];
+        return `<url><loc>${esc(SITE + path)}</loc>${alts.join('')}</url>`;
+      });
+      writeFileSync(new URL('sitemap.xml', dir),
+        `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`);
+    },
+  },
+};
+
 export default defineConfig({
   site: 'https://srw64.dreamquest.club',
   // 'always' for the built site; the dev server must let /api/* through to its proxy.
@@ -23,7 +50,7 @@ export default defineConfig({
   // Nginx serves dist/ as-is; nothing is rendered on demand.
   output: 'static',
   devToolbar: { enabled: false },
-  integrations: [zhHant],
+  integrations: [zhHant, sitemap],
   // A Content-Security-Policy <meta> on every page: scripts only from this site or inline
   // ones Astro has hashed, so an injected script or a javascript: link cannot run; styles
   // from this site, hashed <style> blocks and style="" attributes; nothing from elsewhere.

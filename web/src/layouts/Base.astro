@@ -23,6 +23,7 @@ const siteTitle = `${UI.brand} · ${UI.title[tl(lang)]}`;
 const fullTitle = title ? `${title} · ${UI.brand}` : siteTitle;
 const desc = description ?? UI.description[tl(lang)];
 const path = Astro.url.pathname;
+const OG_LOCALE: Record<Lang, string> = { zh: 'zh_CN', tw: 'zh_TW', en: 'en_US', ja: 'ja_JP' };
 ---
 <!doctype html>
 <html lang={info.tag}>
@@ -37,10 +38,15 @@ const path = Astro.url.pathname;
     <link rel="apple-touch-icon" href="/brand/icon-180.png" />
     <link rel="canonical" href={new URL(path, Astro.site)} />
     {LANGS.map((l) => <link rel="alternate" hreflang={l.tag} href={new URL(switchLang(path, l.code), Astro.site)} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={desc} />
     <meta property="og:image" content={new URL(`/media/hero-${lang}.webp`, Astro.site)} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(path, Astro.site)} />
+    <meta property="og:site_name" content={UI.brand} />
+    <meta property="og:locale" content={OG_LOCALE[lang]} />
+    <meta name="twitter:card" content="summary_large_image" />
     <Analytics />
     <script>
       // Remember the language the reader chose, for the root page's redirect. Processed, not

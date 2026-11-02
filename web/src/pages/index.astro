@@ -9,9 +9,12 @@ import { LANGS } from '../i18n';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MARCHWIND 64</title>
+    <title>MARCHWIND 64 · Super Robot Wars 64 native recompilation</title>
+    <meta name="description" content="Marchwind 64: an unofficial native recompilation of Super Robot Wars 64 (N64) for Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, in English, Chinese and Japanese. 《超级机器人大战64》非官方原生重编译版。『スーパーロボット大戦64』非公式ネイティブ再コンパイル版。" />
+    <link rel="canonical" href={new URL('/', Astro.site)} />
     <link rel="icon" href="/brand/icon-32.png" sizes="32x32" type="image/png" />
-    {LANGS.map((l) => <link rel="alternate" hreflang={l.tag} href={`/${l.code}/`} />)}
+    {LANGS.map((l) => <link rel="alternate" hreflang={l.tag} href={new URL(`/${l.code}/`, Astro.site)} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
     <!-- Processed, not is:inline, so Astro hashes it for the Content-Security-Policy. -->
     <script>
       (function () {

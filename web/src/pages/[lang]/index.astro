@@ -21,8 +21,33 @@ const posts = (await getCollection('blog', (p) => p.id.startsWith(`${tl(lang)}/`
   .sort(newestFirst)
   .slice(0, 3);
 const fmt = (d: Date) => d.toISOString().slice(0, 10);
+// Structured data for search engines and AI search: what the program is, where it runs and
+// what it is based on. Language-neutral apart from the page's own address (the tw page's
+// text would stay Simplified: the zh-Hant step leaves scripts alone).
+const site = 'https://srw64.dreamquest.club';
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': ['VideoGame', 'SoftwareApplication'],
+  name: 'MARCHWIND 64',
+  alternateName: ['Marchwind64', TITLE_LOGO.zh.alt, TITLE_LOGO.tw.alt, TITLE_LOGO.ja.alt],
+  url: `${site}/${lang}/`,
+  image: `${site}/media/hero-${lang}.webp`,
+  applicationCategory: 'GameApplication',
+  operatingSystem: 'Windows, macOS, Linux, SteamOS, Android, Nintendo Switch (Atmosphère)',
+  gamePlatform: ['PC', 'Mac', 'Linux', 'Steam Deck', 'Android', 'Nintendo Switch'],
+  inLanguage: ['ja', 'en', 'zh-Hans', 'zh-Hant'],
+  genre: 'Strategy RPG',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD' },
+  license: 'https://www.gnu.org/licenses/gpl-3.0.html',
+  codeRepository: 'https://github.com/dyzz/srw64-recomp',
+  sameAs: ['https://github.com/dyzz/srw64-recomp'],
+  ...(published && { softwareVersion: release.version, dateModified: release.date, downloadUrl: `${site}/${lang}/install/` }),
+  isBasedOn: { '@type': 'VideoGame', name: 'Super Robot Wars 64', alternateName: 'スーパーロボット大戦64', gamePlatform: 'Nintendo 64', datePublished: '1999-10-29', publisher: 'BANPRESTO' },
+};
 ---
 <Base lang={lang}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />
   <section class="hero" style={`--hero: url('/media/hero-${lang}.webp')`}>
     <div class="wrap hero-in">
       <div class="hero-art" aria-hidden="true"></div>

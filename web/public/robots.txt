@@ -1,0 +1,26 @@
+# Every page is open to search engines and AI agents, including AI crawlers by name.
+# /llms.txt is the site in brief for language models.
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /analytics/
+Disallow: /share/
+
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bytespider
+User-agent: Baiduspider
+Allow: /
+Disallow: /api/
+Disallow: /analytics/
+Disallow: /share/
+
+Sitemap: https://srw64.dreamquest.club/sitemap.xml
