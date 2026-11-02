@@ -144,3 +144,4 @@ build/esrgan-venv/bin/python tools/hd_ai/esrgan_pose.py --samples assets/hd-ai/u
 - 额外图是在站姿 HD 上改的，没改的地方带着同样的乱纹：大铁人 2742–2744 右拳、ゴーショーグン 2620 脚上的记号。站姿派生的残影/浮游炮帧（ゴッドガンダムH 5 张、量産型νガンダムF 17 张）在站姿修好后按单项重新派生即可。大铁人新补的 2887–2893 是干净的。
 - 分数排到后面基本只剩轻微的，前 192 个以外没有再看。顺带看到 2907 的 f6–f8 有左右两半清晰度不同的拼接缝，另行处理。
 - 过目页与工具：`assets/hd-ai/unit-poses/scribble-review-20261102`（`build.py` 出卡片、`serve.py` 存 `decisions.json`，`scan.py`/`batch.py` 是扫描）。
+- 给 Codex 的修补包：`assets/hd-ai/unit-poses/scribble-fix-20261102`（明显的 26 张站姿＋4 张额外图，局部重画；红区由扫描的强笔画长成，脸部手工排除；`compose.py` 只取红区、按周围一圈校色后羽化合回）。
