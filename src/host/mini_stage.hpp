@@ -71,6 +71,10 @@ struct State {
     // A load from the map (load_file off the title): the next frame boundary leaves the
     // running stage the way the title's exit does and enters this one (take_restart).
     bool restart{};
+    // title.reset (debug): the next frame boundary hands the game to the title (mode 1) the
+    // way the map's Z+START does after its fade, from wherever the game is (a recording
+    // script between two stages; not while an overlay is being copied in).
+    bool title_reset{};
     uint64_t arm_vi{}, hotkey_vi{};
     unsigned skips{}, start_samples{};
     // Per-command state captures (SRW64_MINI_STAGE_CAPTURE=1): the script PC at
@@ -375,6 +379,7 @@ inline bool take_direct_entry() {
 // After the title exit's game-state reset (800A5138 -> 800814F0 clears these).
 // 8010F5EF != 0 makes 801C2B9C take the scene in 8010F5F0 as given instead of
 // deriving it from the route variable that only the skipped name entry sets.
+inline void park_script_engine(uint8_t* ram);   // below
 inline void direct_scene(uint8_t* ram) {
     auto& s=state();
     std::lock_guard lock(s.mutex);
@@ -403,13 +408,7 @@ inline void direct_scene(uint8_t* ram) {
     // restart taken while the previous stage's end event still ran left its PC in place: the
     // registration went through, the engine kept waiting on the old event and the opening
     // never began (2026-11-02, a black screen in the scenario mode).
-    {
-        using namespace script_inject;
-        guest::write16(ram,engine+0x97C,0x80);guest::write16(ram,engine+0x990,0);
-        write32(ram,owner+0x1C,0);
-        for(uint32_t off=0x22;off<=0x2E;off+=2)guest::write16(ram,owner+off,0);
-        guest::write16(ram,owner+0x24,0x80);write32(ram,owner+0x30,0);
-    }
+    park_script_engine(ram);
     log({{"action","direct-entry"},{"scene",scene},{"route",s.image && s.image->route?nlohmann::json(*s.image->route):nlohmann::json()},{"names",names_written}});
 }
 
@@ -439,6 +438,30 @@ inline bool take_restart(const uint8_t* ram) {
     s.restart=false;s.direct_done=true;
     log({{"action","restart"},{"mode",read(ram,0x8015DA02,1)}});
     return true;
+}
+
+// Any thread (debug server): back to the title at the next frame boundary.
+inline void request_title_reset(){auto& s=state();std::lock_guard lock(s.mutex);s.title_reset=true;}
+// Game thread, frame boundary: true once when the title reset is due. Not on the title
+// itself, and not during the battle animation (mode 2), which has its own exit.
+inline bool take_title_reset(const uint8_t* ram) {
+    auto& s=state();
+    std::lock_guard lock(s.mutex);
+    if(!s.title_reset)return false;
+    const unsigned mode=read(ram,0x8015DA02,1);
+    if(mode==1 || mode==7 || mode==2 || srw64::intro::title_major()==3)return false;
+    s.title_reset=false;
+    log({{"action","title-reset"},{"mode",mode}});
+    return true;
+}
+// The script engine parked as at the end of an event (script_inject.hpp observe: PC 0,
+// state 0x80, no event running). Used by the direct entry and the title reset.
+inline void park_script_engine(uint8_t* ram) {
+    using namespace script_inject;
+    guest::write16(ram,engine+0x97C,0x80);guest::write16(ram,engine+0x990,0);
+    write32(ram,owner+0x1C,0);
+    for(uint32_t off=0x22;off<=0x2E;off+=2)guest::write16(ram,owner+off,0);
+    guest::write16(ram,owner+0x24,0x80);write32(ram,owner+0x30,0);
 }
 
 // Any thread: replace the stage with a local file while the title menu shows and

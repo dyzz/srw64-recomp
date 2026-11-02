@@ -96,6 +96,8 @@ TOOLS = [
      "inputSchema": {"type": "object", "required": ["text_id"], "properties": {"text_id": {"type": "integer"}, "options": {"type": "integer"}, "slot": {"type": "integer"}, "lines": {"type": "array", "items": {"type": "integer"}}, "line_op": {"type": "string"}, "timeout_ms": {"type": "integer"}}}},
     {"name": "srw64_title_return", "description": "Back to the title screen as F10 asks: the original's Z+START reset, taken on the tactical map, in the intermission or on the world map; elsewhere refused with a notice (quick_load in srw64_status says usable_title). srw64_status mode is the game's mode byte (3/B/11/16/22 tactical map, 4 intermission, C scene loading, D world map, 2 battle animation).",
      "inputSchema": {"type": "object", "properties": {}}},
+    {"name": "srw64_title_reset", "description": "Straight to the title at the next frame from wherever the game is (the map, a story playing, the intermission; not the battle animation): the map's own reset without its fade, for a recording script that loads the next stage right away. Then press START through the logo (srw64_wait title_major 3) and srw64_mini_stage_load.",
+     "inputSchema": {"type": "object", "properties": {}}},
     {"name": "srw64_choice_pick", "description": "Answer the open choice box (3D44; srw64_status choice: options, text_id, cursor, phase): moves its cursor to the option index (from 0) and presses A. Fails while no choice is open or its window is not up yet.",
      "inputSchema": {"type": "object", "required": ["index"], "properties": {"index": {"type": "integer"}}}},
     {"name": "srw64_mini_stage_load", "description": "Load a mini stage file (compiled image or source definition) at run time and enter it: from the title menu like dropping the file on the window, or from the tactical or world map, where it replaces the running stage at the next frame (no title, no restart). The image's route, story_vars and last_choice set the protagonist, story variables and the last choice before the opening runs.",
@@ -199,6 +201,8 @@ class Server:
             return text(client.call("choice.show", **args))
         if name == "srw64_title_return":
             return text(client.call("title.return"))
+        if name == "srw64_title_reset":
+            return text(client.call("title.reset"))
         if name == "srw64_viewer_start":
             return text(client.call("viewer.start", **args))
         if name == "srw64_drop":

@@ -187,6 +187,16 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
         srw64::mini_stage::direct_scene(ram);
         call(resident_func_80080188,0xC);call(resident_func_8007F510,0x800801A4,0,1);
     }
+    // title.reset: the map's own return to the title (801DFDBC) without its fade, from any
+    // overlay but the battle's; the title's exit then resets the game state as usual.
+    if(!srw64_overlay_loading() && srw64::mini_stage::take_title_reset(ram)) {
+        const auto call=[&](void(*function)(uint8_t*,recomp_context*),uint32_t a0=0,uint32_t a1=0,uint32_t a2=0) {
+            auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);c.r4=int32_t(a0);c.r5=int32_t(a1);c.r6=int32_t(a2);function(ram,&c);
+        };
+        srw64::mini_stage::park_script_engine(ram);
+        call(resident_func_800836CC,0);
+        call(resident_func_80080188,1);call(resident_func_8007F510,0x800801A4,0,1);
+    }
     if(srw64_game_hooks.viewer_start) {
         // The battle viewer: a song to listen to (or the title's back), or a battle with
         // its song through the title overlay's own demo start (801CA230..801CA250): mode
