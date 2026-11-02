@@ -1,0 +1,26 @@
+---
+// A thin line above the header with the newest blog post's title, on every page but that
+// post's own.
+import { getCollection } from 'astro:content';
+import { tl, type Lang } from '../i18n';
+import { newestFirst } from '../lib/blog';
+interface Props { lang: Lang; path: string; }
+const { lang, path } = Astro.props;
+// Newest by date: a pinned post stays on top of the blog list but is not news.
+const unpinned = <T extends { data: { pinned?: boolean } }>(p: T) => ({ ...p, data: { ...p.data, pinned: false } });
+const [post] = (await getCollection('blog', (p) => p.id.startsWith(`${tl(lang)}/`) && !p.data.draft))
+  .sort((a, b) => newestFirst(unpinned(a), unpinned(b)));
+const href = post && `/${lang}/blog/${post.id.split('/')[1]}/`;
+---
+{post && path.replace(/\/?$/, '/') !== href && (
+  <div class="news-bar">
+    <a class="wrap" href={href}><span>{post.data.title}</span> →</a>
+  </div>
+)}
+
+<style>
+  .news-bar { background: var(--bg-2); border-bottom: 1px solid var(--line-soft); }
+  .news-bar a { display: flex; justify-content: center; gap: 6px; padding-top: 6px; padding-bottom: 6px; font-size: 13.5px; line-height: 1.5; color: var(--gold); text-decoration: none; }
+  .news-bar a:hover span { text-decoration: underline; }
+  .news-bar span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+</style>
