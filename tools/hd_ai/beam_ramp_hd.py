@@ -48,7 +48,7 @@ BEAMS = ((3558, 3023), (3560, 3023), (3624, 3048), (3626, 3048))
 # palette of the scene it came from (seen in scene-sprites.jsonl in the battle viewer).
 FOLLOW_ONS = {(3559, 3023): (3558, 3023), (3625, 3048): (3624, 3048)}
 S = PACK_SCALE
-WHITE_FROM = .45          # where the ramp starts turning white: lower is a wider core
+WHITE_FROM = .38          # where the ramp starts turning white: lower is a wider core
 
 
 def flow_lines(rows: int = 96, width: int = 640, seed: int = 64) -> np.ndarray:
@@ -115,32 +115,63 @@ def lines_along(solid: np.ndarray, shift: float) -> np.ndarray:
     return ndimage.map_coordinates(LINES, [vy, np.broadcast_to(u, vy.shape)], order=1, mode='grid-wrap')
 
 
+def silhouette(mask: np.ndarray) -> np.ndarray:
+    """The original shape at the pack's scale, its stair steps smoothed into curves through
+    the same edges: 0..1 coverage, anti-aliased over about a pixel of the picture."""
+    soft = enlarge(mask.astype(np.float32), .5)
+    # a line one pixel thin blurs below half: measured against its own peak it stays
+    soft = soft / np.maximum(ndimage.maximum_filter(soft, 2 * S + 1), .5)
+    # and in a dithered spray nothing reaches more than a third of a pixel past the original's
+    # pixels, so its gaps stay open (the solid body's edge stays a smooth curve)
+    dense = ndimage.binary_dilation(mask & (ndimage.uniform_filter(mask.astype(np.float32), 3) >= .66))
+    near = ndimage.binary_dilation(np.kron(mask, np.ones((S, S), bool)), iterations=max(S // 3, 1)) | np.kron(dense, np.ones((S, S), bool))
+    soft = np.where(near, soft, 0)
+    return np.clip((soft - .5) * 2.5 + .5, 0, 1)
+
+
+def dots(single: np.ndarray, value: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Specks of original pixels (the beam rifle's tail breaking up) as round sparks in their own
+    cells, after Z's: coverage and intensity, a white centre fading to the dot's colour."""
+    h, w = single.shape
+    yy, xx = np.mgrid[0:h * S, 0:w * S].astype(np.float32)
+    r = np.hypot((yy % S) - (S - 1) / 2, (xx % S) - (S - 1) / 2) / (S / 2)
+    cell = np.kron(single, np.ones((S, S), bool))
+    cover = np.where(cell, np.clip((1.05 - r) * 3, 0, 1), 0)
+    inten = np.where(cell, np.clip(np.kron(value, np.ones((S, S))) + .6 * np.clip(1 - r * 1.6, 0, 1), 0, 1), 0)
+    return cover.astype(np.float32), inten.astype(np.float32)
+
+
 def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float) -> Image.Image:
-    """One original frame (RGBA float 0-1, cut to its box) as the HD picture (straight alpha)."""
-    rgb_ramp, alpha_ramp, rim = table
+    """One original frame (RGBA float 0-1, cut to its box) as the HD picture (straight alpha),
+    covering exactly the original's pixels: no glow outside them."""
+    rgb_ramp, _, rim = table
     h, w = frame.shape[:2]
     intensity = np.zeros((h, w), np.float32)
     solid = frame[..., 3] > 0
     intensity[solid] = [rank[tuple(c)] for c in np.round(frame[solid][:, :3] * 255).astype(int)]
-    inside = ndimage.minimum_filter(solid, 3)
+    # specks of up to three pixels become dots; the rest is the beam's body
+    labels, count = ndimage.label(solid, np.ones((3, 3), bool))
+    sizes = np.bincount(labels.ravel(), minlength=count + 1)
+    single = solid & (sizes[labels] <= 3)
+    body_mask = solid & ~single
+    cover = silhouette(body_mask)
+    inside = ndimage.minimum_filter(body_mask, 3)
     smooth = np.where(inside, ndimage.uniform_filter(intensity, 3), intensity).astype(np.float32)
-    body = np.clip(enlarge(smooth, .55), 0, 1)
-    if (body > .05).any():
-        body = body / max(np.percentile(body[body > .05], 99), .5)
-    body = np.clip(body * (.72 + .45 * lines_along(solid, shift)), 0, 1)
-    # sparks in the glow just outside the body, as Z scatters them round its beams
-    glow = np.clip(enlarge(smooth, 2.2) * 1.6, 0, 1) * (1 - np.clip(body * 3, 0, 1))
-    seed = int(shift * 1000) % (1 << 30)
-    body = np.maximum(body, beam_elements.sparks(h * S, w * S, seed=seed, count=max(2, int(solid.sum() / 60)), unit=S * .7) * glow * .8)
-    k = np.clip((body * 255).astype(int), 0, 255)
-    a_body, rgb_body = alpha_ramp[k], rgb_ramp[k]
-    # the halo fades out before the box's edge, where the picture ends
-    yy, xx = np.mgrid[0:h * S, 0:w * S]
-    edge = np.minimum.reduce([xx, yy, w * S - 1 - xx, h * S - 1 - yy]).astype(np.float32) / (3 * S)
-    a_halo = np.clip(enlarge(smooth, 3.2) * 1.4, 0, 1) * .55 * np.clip(edge, 0, 1)
-    a = a_body + a_halo * (1 - a_body)
-    rgb = (rgb_body * a_body[..., None] + rim * (a_halo * (1 - a_body))[..., None]) / np.maximum(a, 1e-6)[..., None]
-    rgb = np.where((a > 0)[..., None], rgb, rim)      # transparent pixels keep the rim colour: no dark fringe when filtered
+    # the value inside the body, filled out to its edge so the edge keeps the body's colour
+    near = ndimage.distance_transform_edt(~body_mask, return_distances=False, return_indices=True)
+    filled = smooth[near[0], near[1]] if body_mask.any() else smooth
+    body = np.clip(enlarge(filled, .45), 0, 1)
+    if body_mask.any():
+        body = body / max(np.percentile(body[cover > .5], 99), .5)
+    body = np.clip(body * (.84 + .3 * lines_along(body_mask, shift)), 0, 1)
+    # Z's thin coloured edge: the outermost pixel of the picture in the rim colour
+    depth = ndimage.distance_transform_edt(cover > .5) / S
+    body = np.minimum(body, .22 + .78 * np.clip(depth / 1.2, 0, 1))
+    dot_cover, dot_value = dots(single, intensity)
+    a = np.maximum(cover, dot_cover)
+    v = np.where(dot_cover > cover, dot_value, body)
+    k = np.clip((v * 255).astype(int), 0, 255)
+    rgb = np.where((a > 0)[..., None], rgb_ramp[k], rim)   # transparent pixels keep the rim colour: no dark fringe when filtered
     return Image.fromarray((np.dstack([rgb, a]) * 255 + .5).clip(0, 255).astype(np.uint8), 'RGBA')
 
 
