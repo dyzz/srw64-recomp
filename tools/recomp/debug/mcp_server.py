@@ -94,6 +94,8 @@ TOOLS = [
          "dialogue_hints": {"type": "string", "enum": ["off", "auto", "always"]}}}},
     {"name": "srw64_choice_show", "description": "Open a choice box on demand (for a recording of the moment of choosing): an injected event of optional dialogue lines (text ids; line_op 3D3E-3D43, default 3D3E) and one 3D44 [slot 0/1, options 1-8, text_id of the option text whose <BR> lines are the options], run at the next idle frame of the player's phase on the tactical map; then srw64_choice_pick answers it. Waits timeout_ms (default 10000).",
      "inputSchema": {"type": "object", "required": ["text_id"], "properties": {"text_id": {"type": "integer"}, "options": {"type": "integer"}, "slot": {"type": "integer"}, "lines": {"type": "array", "items": {"type": "integer"}}, "line_op": {"type": "string"}, "timeout_ms": {"type": "integer"}}}},
+    {"name": "srw64_dialogue_show", "description": "Say dialogue lines on the tactical map on demand: an injected event of the given text ids (one 3D3E each; line_op 3D3E-3D43), run at the next idle frame of the player's phase. For a screenshot or recording of a line the stage's own events do not reach. Waits timeout_ms (default 10000).",
+     "inputSchema": {"type": "object", "required": ["lines"], "properties": {"lines": {"type": "array", "items": {"type": "integer"}}, "line_op": {"type": "string"}, "timeout_ms": {"type": "integer"}}}},
     {"name": "srw64_title_return", "description": "Back to the title screen as F10 asks: the original's Z+START reset, taken on the tactical map, in the intermission or on the world map; elsewhere refused with a notice (quick_load in srw64_status says usable_title). srw64_status mode is the game's mode byte (3/B/11/16/22 tactical map, 4 intermission, C scene loading, D world map, 2 battle animation).",
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "srw64_title_reset", "description": "Straight to the title at the next frame from wherever the game is (the map, a story playing, the intermission; not the battle animation): the map's own reset without its fade, for a recording script that loads the next stage right away. Then press START through the logo (srw64_wait title_major 3) and srw64_mini_stage_load.",
@@ -201,6 +203,8 @@ class Server:
             return text(client.call("choice.pick", index=int(args["index"])))
         if name == "srw64_choice_show":
             return text(client.call("choice.show", **args))
+        if name == "srw64_dialogue_show":
+            return text(client.call("dialogue.show", **args))
         if name == "srw64_title_return":
             return text(client.call("title.return"))
         if name == "srw64_title_reset":

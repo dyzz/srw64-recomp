@@ -147,6 +147,26 @@ json choice_pick(const json& params) {
 // [window slot, option count, option text] run by the script injection at the next idle frame
 // of the player's phase, like victory. The option text is one text whose <BR> lines are the
 // options (docs/script/stage-script-exploration.md); the answer lands in 801602E4.
+// An injected event (script_inject.hpp) queued and waited for: "running"/"done" with `extra`
+// in the reply, or an error naming why the map never had an idle frame in time.
+json inject_event(const std::vector<uint16_t>& words,int timeout_ms,json extra) {
+    const auto deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(timeout_ms);
+    const auto sequence=script_inject::queue(words);
+    if(!sequence)throw RpcError(ServerError,"another injected script is waiting or running");
+    auto reply=[&](const std::string& where){json r=extra;r["vi"]=srw64_current_vi();r["script"]=where;return r;};
+    for(std::string waiting;;) {
+        const auto where=script_inject::progress(sequence,&waiting);
+        if(where=="running" || where=="done")return reply(where);
+        if(where=="dropped")throw RpcError(ServerError,"the script injection dropped it");
+        if(std::chrono::steady_clock::now()>=deadline) {
+            script_inject::withdraw(sequence);
+            const auto now=script_inject::progress(sequence);
+            if(now=="running" || now=="done")return reply(now);
+            throw RpcError(ServerError,"no idle frame on the player's phase: "+(waiting.empty()?std::string("not yet checked"):waiting));
+        }
+        std::this_thread::sleep_for(5ms);
+    }
+}
 json choice_show(const json& params) {
     if(!params.contains("text_id") || !params["text_id"].is_number_unsigned())throw RpcError(InvalidParams,"text_id must be the option text's id");
     const unsigned text=params["text_id"].get<unsigned>(),options=params.value("options",2u),slot=params.value("slot",0u);
@@ -162,21 +182,26 @@ json choice_show(const json& params) {
         words.push_back(uint16_t(line_op));words.push_back(uint16_t(line.get<unsigned>()));
     }
     words.insert(words.end(),{0x3D44,uint16_t(slot),uint16_t(options),uint16_t(text),0xFFFF});
-    const auto deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(params.value("timeout_ms",10000));
-    const auto sequence=script_inject::queue(words);
-    if(!sequence)throw RpcError(ServerError,"another injected script is waiting or running");
-    for(std::string waiting;;) {
-        const auto where=script_inject::progress(sequence,&waiting);
-        if(where=="running" || where=="done")return {{"vi",srw64_current_vi()},{"script",where},{"text_id",text},{"options",options}};
-        if(where=="dropped")throw RpcError(ServerError,"the script injection dropped it");
-        if(std::chrono::steady_clock::now()>=deadline) {
-            script_inject::withdraw(sequence);
-            const auto now=script_inject::progress(sequence);
-            if(now=="running" || now=="done")return {{"vi",srw64_current_vi()},{"script",now},{"text_id",text},{"options",options}};
-            throw RpcError(ServerError,"no idle frame on the player's phase: "+(waiting.empty()?std::string("not yet checked"):waiting));
-        }
-        std::this_thread::sleep_for(5ms);
+    return inject_event(words,params.value("timeout_ms",10000),{{"text_id",text},{"options",options}});
+}
+// dialogue.show {lines: [text ids], line_op?, timeout_ms?}: the lines said on the tactical map
+// as an injected event (one 3D3E each; 3D3E-3D43 by line_op), at the next idle frame of the
+// player's phase. For a line a recording could not reach through its own event (a clear's
+// ending that needs conditions the condensed stage lacks): the same picture, the map behind.
+json dialogue_show(const json& params) {
+    if(!params.contains("lines") || !params["lines"].is_array() || params["lines"].empty())throw RpcError(InvalidParams,"lines must be a list of text ids");
+    unsigned line_op=0x3D3E;
+    if(params.contains("line_op")) {
+        line_op=unsigned(std::stoul(params["line_op"].get<std::string>(),nullptr,16));
+        if(line_op<0x3D3E || line_op>0x3D43)throw RpcError(InvalidParams,"line_op is one of 3D3E to 3D43");
     }
+    std::vector<uint16_t> words={0,0,0,0,0};
+    for(const auto& line:params["lines"]) {
+        if(!line.is_number_unsigned() || line.get<unsigned>()>0xFFFF)throw RpcError(InvalidParams,"lines are text ids");
+        words.push_back(uint16_t(line_op));words.push_back(uint16_t(line.get<unsigned>()));
+    }
+    words.push_back(0xFFFF);
+    return inject_event(words,params.value("timeout_ms",10000),{{"lines",params["lines"]}});
 }
 json rules_state() {
     const unsigned fixes=rules::active_fixes();
@@ -574,6 +599,7 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="choice.pick")return choice_pick(params);
     if(method=="choice.show")return choice_show(params);
+    if(method=="dialogue.show")return dialogue_show(params);
     // The next generic battle quote forced to one record (quote_force.hpp): the speaker and
     // the context follow from the record itself; `slot` is accepted for old callers.
     if(method=="quote.force") {
@@ -624,7 +650,7 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","choice.show","title.return","title.reset","quote.force","memory.read","memory.write","viewer.start","file.read","file.remove",
+                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","choice.show","dialogue.show","title.return","title.reset","quote.force","memory.read","memory.write","viewer.start","file.read","file.remove",
                                  "quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }
