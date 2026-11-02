@@ -34,6 +34,7 @@
 #include "map_menu.hpp"
 #include "intermission_row.hpp"
 #include "pilot_kills.hpp"
+#include "quote_force.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 bool srw64_sound_effects_muted{};
@@ -553,8 +554,16 @@ int srw64_quote_demo(uint8_t* rdram) {
 }
 void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, uint32_t(ctx->r4));
+    const int context = int32_t(ctx->r6);
     srw64_original_battle_quote_pick(rdram, ctx);
     if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, 0);
+    // quote.force (quote_force.hpp): the generic draw (answer 1000) of that context says the
+    // forced record instead, once.
+    if (const int forced = srw64::quote_force::text.load(); forced >= 0 && context == srw64::quote_force::context.load() && int16_t(ctx->r2) == 1000) {
+        ctx->r2 = forced;
+        srw64::quote_force::text = -1;
+        ++srw64::quote_force::served;
+    }
 }
 // 80221ACC(table, code, base): code when a combination attack's pair says it, else -1
 // (docs/data/battle-quotes.md). The original gathers the pair from the map's participant

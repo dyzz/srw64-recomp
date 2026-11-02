@@ -21,6 +21,7 @@
 #include "move_jump.hpp"
 #include "enemy_cycle.hpp"
 #include "quick_load.hpp"
+#include "quote_force.hpp"
 #include "input_mode.hpp"
 #include "mini_stage.hpp"
 #include "forced_game_over.hpp"
@@ -573,6 +574,12 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="choice.pick")return choice_pick(params);
     if(method=="choice.show")return choice_show(params);
+    // The next battle quote of a context (0 attack ... 8) forced to one record (quote_force.hpp).
+    if(method=="quote.force") {
+        if(!params.contains("text_id") || !params["text_id"].is_number_unsigned())throw RpcError(InvalidParams,"text_id must be a battle quote record");
+        quote_force::context=params.value("context",0);quote_force::text=int(params["text_id"].get<unsigned>());
+        return {{"vi",srw64_current_vi()},{"text_id",quote_force::text.load()},{"context",quote_force::context.load()},{"served",quote_force::served.load()}};
+    }
     // Back to the title the way F10 asks (quick_load.hpp): the original's Z+START reset on the
     // map, the intermission or the world map, refused with a notice elsewhere.
     if(method=="title.return"){quick_load::request_title();return {{"vi",srw64_current_vi()},{"usable",quick_load::usable_title()}};}
@@ -612,7 +619,7 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","choice.show","title.return","title.reset","memory.read","memory.write","viewer.start","file.read","file.remove",
+                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","choice.show","title.return","title.reset","quote.force","memory.read","memory.write","viewer.start","file.read","file.remove",
                                  "quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }
