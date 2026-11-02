@@ -1,6 +1,7 @@
 #include "music.hpp"
 #include "guest_memory.hpp"
 #include "presentation_settings.hpp"
+#include "game_speed.hpp"
 #include "wide_map.hpp"
 #include "funcs.h"
 #include <atomic>
@@ -126,11 +127,19 @@ unsigned last_rate{44100};    // the output rate the mixer last saw
 std::atomic_bool in_original{};  // our own calls into the original routines
 
 void stop_locked(){voice.reset();voice_song=-1;++generation;}
-// The battle voice: one line at a time, beside the music.
-std::optional<Voice> speech;
+// The battle voice: one line at a time, beside the music, and the line before it fading
+// out (`tail`) so a cut makes no click.
+std::optional<Voice> speech,tail;
 int speech_line=-1;
+double speech_speed=1;
 uint64_t speech_generation{};
-void stop_speech_locked(){speech.reset();speech_line=-1;++speech_generation;}
+void stop_speech_locked(unsigned fade_ms) {
+    if(speech && speech->pcm && !speech->finished) {
+        tail=*speech;
+        tail->fade_total=tail->fade_left=std::max<uint64_t>(1,uint64_t(fade_ms)*last_rate/1000);
+    }
+    speech.reset();speech_line=-1;++speech_generation;
+}
 
 void start(int song,const Track& track) {
     uint64_t mine;
@@ -157,8 +166,10 @@ void mixer(int16_t* stereo,size_t frames,uint32_t rate) {
     std::lock_guard lock(engine_mutex);
     if(rate)last_rate=rate;
     // A line ends with its battle: the animation steps every frame (wide_map::mark_battle),
-    // so 200 ms without one is its end or the player's abort.
-    if(speech && (!wide_map::battle_shown() || !mix(*speech,stereo,frames,rate,mono)))stop_speech_locked();
+    // so 200 ms without one is its end (an abort fades it earlier, battle_aborted).
+    if(speech && !wide_map::battle_shown())stop_speech_locked(20);
+    else if(speech && !mix(*speech,stereo,frames,rate,mono))stop_speech_locked(0);
+    if(tail && !mix(*tail,stereo,frames,rate,mono))tail.reset();
     if(!voice)return;
     if(!mix(*voice,stereo,frames,rate,mono) && voice->fading())stop_locked();
 }
@@ -225,6 +236,18 @@ bool battle(uint8_t* ram,recomp_context* ctx) {
     return true;
 }
 
+// The voice follows the game speed (game_speed.hpp): spoken 1.75x faster at 2x, where
+// nine lines in ten then end before the next quote (docs/design/audio-mods.md §11), and 2x
+// at 3x and 4x, the most speech stays clear at. Setting mod_voice_speed: "follow" (the
+// default), "original" (always as recorded), "mute" (no line while hurried).
+double voice_speed() {
+    if(!game_speed::running.load())return 1;
+    const std::string mode=settings::mod_voice_speed();
+    if(mode!="follow")return 1;
+    const unsigned level=std::min(game_speed::level.load(),game_speed::top_level());
+    return level>=3 ? 2.0 : level==2 ? 1.75 : 1.0;
+}
+
 void battle_quote(unsigned record) {
     if(!settings::mod_voice())return;
     std::optional<Line> line;
@@ -233,25 +256,34 @@ void battle_quote(unsigned record) {
         refresh_locked();
         if(const auto found=voice_table.find(int(record));found!=voice_table.end())line=found->second;
     }
+    const bool muted=game_speed::running.load() && std::string(settings::mod_voice_speed())=="mute";
+    const double speed=voice_speed();
     uint64_t mine;
     {
         std::lock_guard lock(engine_mutex);
-        stop_speech_locked();
-        if(!line)return;
+        stop_speech_locked(20);
+        if(!line || muted)return;
         Voice v;
         v.once=true;
         v.gain=gain_of(line->gain_db)*settings::mod_voice_volume()/100.0;
         v.delay=uint64_t(line->delay_ms)*last_rate/1000;
-        speech=v;speech_line=int(record);mine=speech_generation;
+        speech=v;speech_line=int(record);speech_speed=speed;mine=speech_generation;
     }
-    std::thread([file=line->file,mine]{
+    std::thread([file=line->file,mine,speed]{
         const auto d=decode(file,lines_decoded);
+        std::shared_ptr<const Pcm> pcm;
+        if(d)pcm=speed>1.01 ? std::shared_ptr<const Pcm>(stretch(*d->pcm,speed)) : d->pcm;
         std::lock_guard lock(engine_mutex);
         if(speech_generation!=mine || !speech)return;   // the next line came meanwhile
-        if(!d){speech->finished=true;return;}
-        speech->pcm=d->pcm;
+        if(!pcm){speech->finished=true;return;}
+        speech->pcm=pcm;
     }).detach();
-    std::fprintf(stderr,"SRW64_VOICE line=%u file=%s package=%s\n",record,line->file.string().c_str(),line->package.c_str());
+    std::fprintf(stderr,"SRW64_VOICE line=%u file=%s package=%s speed=%.2f\n",record,line->file.string().c_str(),line->package.c_str(),speed);
+}
+
+void battle_aborted() {
+    std::lock_guard lock(engine_mutex);
+    if(speech)stop_speech_locked(300);
 }
 
 Shown shown(int song,const std::string& locale) {
@@ -267,7 +299,8 @@ json status() {
     if(!voice)out={{"replaced",false}};
     else out={{"replaced",true},{"song",voice_song},{"decoded",bool(voice->pcm)},{"finished",voice->finished},
               {"position",voice->position},{"loop",{voice->loop_start,voice->loop_end}},{"once",voice->once}};
-    if(speech)out["voice"]={{"line",speech_line},{"decoded",bool(speech->pcm)},{"position",speech->position},{"waiting",speech->delay}};
+    if(speech)out["voice"]={{"line",speech_line},{"decoded",bool(speech->pcm)},{"position",speech->position},{"waiting",speech->delay},{"speed",speech_speed}};
+    if(tail)out["voice_fading"]=tail->fade_left;
     return out;
 }
 }

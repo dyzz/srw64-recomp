@@ -214,10 +214,10 @@ struct Voice {
 // the voice has nothing more to play (ended or faded out).
 inline bool mix(Voice& v,int16_t* out,size_t frames,unsigned rate,bool mono) {
     if(v.finished)return false;
-    // The delay runs from the start, decoded or not.
+    if(!v.pcm || v.pcm->frames()<2)return true;   // still decoding: silence, keep the place
+    // The delay counts from the decode, so a slow machine still hears it.
     const size_t waited=size_t(std::min<uint64_t>(v.delay,frames));
     v.delay-=waited;
-    if(!v.pcm || v.pcm->frames()<2)return true;   // still decoding: silence, keep the place
     const auto& s=v.pcm->samples;
     const uint64_t total=v.pcm->frames();
     const uint64_t end=v.loop_end && v.loop_end<=total?v.loop_end:total;
@@ -250,6 +250,53 @@ inline bool mix(Voice& v,int16_t* out,size_t frames,unsigned rate,bool mono) {
 
 inline double gain_of(double db){return std::pow(10.0,db/20.0);}
 
+// A line spoken `factor` times faster at the same pitch (WSOLA: overlap-add of 25 ms
+// Hann-windowed grains, each taken from the input near its nominal place where it best
+// continues the grain before, within +-8 ms). Speech stays intelligible up to about 2x;
+// the battle voices follow the game speed with it (music.cpp voice_speed). The two
+// channels share the alignment, found on their sum. Below 1.01 the input comes back as is.
+inline std::shared_ptr<Pcm> stretch(const Pcm& in,double factor) {
+    auto out=std::make_shared<Pcm>();
+    out->rate=in.rate;
+    const uint64_t n=in.frames();
+    const size_t grain=std::max<size_t>(64,size_t(in.rate/40)&~size_t(1));   // 25 ms, even
+    const size_t hop=grain/2,tol=std::max<size_t>(8,in.rate/125);             // 8 ms
+    if(factor<1.01 || n<4*grain){out->samples=in.samples;return out;}
+    const auto& s=in.samples;
+    std::vector<float> window(grain);
+    constexpr double pi=3.14159265358979323846;
+    for(size_t i=0;i<grain;++i)window[i]=float(0.5-0.5*std::cos(2*pi*(i+0.5)/grain));
+    const uint64_t frames_out=uint64_t(double(n)/factor);
+    std::vector<float> acc(2*(frames_out+grain),0.f);
+    const auto mono=[&](uint64_t i){return float(s[2*i])+float(s[2*i+1]);};
+    // The first grain sits at the start; each next one continues the previous (previous
+    // input position + hop) as closely as the search allows around its nominal place.
+    uint64_t prev=0;
+    for(uint64_t k=0;k*hop<frames_out;++k) {
+        const uint64_t o=k*hop;
+        uint64_t pos=0;
+        if(k) {
+            const double nominal=double(o)*factor;
+            const uint64_t lo=uint64_t(std::max(0.0,nominal-double(tol))),hi=uint64_t(std::min(double(n-grain),nominal+double(tol)));
+            const uint64_t natural=prev+hop;   // where the previous grain would have continued
+            double best=-1e300;pos=std::min<uint64_t>(uint64_t(nominal),n-grain);
+            for(uint64_t c=lo;c<=hi;c+=2) {
+                double dot=0;
+                for(size_t i=0;i<grain;i+=4)dot+=double(mono(natural+i<n?natural+i:n-1))*mono(c+i);
+                if(dot>best){best=dot;pos=c;}
+            }
+        }
+        prev=pos;
+        for(size_t i=0;i<grain && pos+i<n;++i) {
+            acc[2*(o+i)]+=window[i]*s[2*(pos+i)];
+            acc[2*(o+i)+1]+=window[i]*s[2*(pos+i)+1];
+        }
+    }
+    out->samples.resize(2*frames_out);
+    for(size_t i=0;i<out->samples.size();++i)out->samples[i]=int16_t(std::clamp(acc[i],-32768.f,32767.f));
+    return out;
+}
+
 // music.cpp: the game-thread hooks and the engine.
 void configure();
 // 8007E810 (a0 the song): true when the host plays a replacement and the original must
@@ -263,8 +310,13 @@ bool playing(uint8_t* ram,recomp_context* ctx);
 // chose this fight's song and the host has played it in place of the original's.
 bool battle(uint8_t* ram,recomp_context* ctx);
 // The dialogue layer saw a battle quote's box open (native_dialogue.cpp): its line starts,
-// and the one before stops. Game thread.
+// and the one before fades out in 20 ms. Game thread.
 void battle_quote(unsigned record);
+// The player ended the animation early (battle_animation_probe.hpp): the line fades with
+// the picture, 300 ms. Game thread.
+void battle_aborted();
+// How much faster a line is spoken now (1, 1.75 at 2x, 2 at 3x and 4x, from the settings).
+double voice_speed();
 // The sound test's view of a song: replaced, and the package's title in the locale.
 struct Shown {bool replaced{};std::string title;};
 Shown shown(int song,const std::string& locale);

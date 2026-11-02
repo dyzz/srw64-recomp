@@ -181,8 +181,10 @@ Scene build(const Frame& frame,uint32_t width,uint32_t height,double picture_wid
         // The name keeps its size; the text area below it takes any body size.
         // The current speaker shows only by a slightly brighter name: the same blue, the
         // other box's at four fifths (the user had the corner brackets and the
-        // triangle marker removed).
-        const bool focused=&box==focus;
+        // triangle marker removed). A battle quote has no reader to point at: its header
+        // status leaves 1 while the original's timer runs the box, which dimmed the name
+        // partway through every line (the player, 2026-11-02). It stays bright.
+        const bool focused=frame.display_only || &box==focus;
         const double name=focused?1:.8;
         const double x=box.x+box.shift_x,y=box.y+box.shift_y;
         paint.label(box.speaker,x,y+name_top,name_size,box.width,

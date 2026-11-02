@@ -164,18 +164,47 @@ int main(int argc,char** argv) {
         check(lines.at(5799).package=="low" && lines.at(5799).delay_ms==0,"the turned-off package is left out");
         fs::remove_all(root);
     }
-    // A line's delay: silence first, counted while it decodes too, then the line from its start.
+    // A line's delay: silence while it decodes, then the delay, then the line from its start.
     {
         music::Voice v;v.once=true;v.delay=3;
         std::vector<int16_t> out(4,0);
-        check(music::mix(v,out.data(),2,44100,false) && v.delay==1 && out[0]==0,"the delay passes while decoding");
+        check(music::mix(v,out.data(),2,44100,false) && v.delay==3 && out[0]==0,"the delay waits for the decode");
         v.pcm=ramp(10);
         std::vector<int16_t> o2(8,0);
         music::mix(v,o2.data(),4,44100,false);
-        check(v.delay==0 && o2[0]==0 && o2[1]==0 && o2[2]==0 && o2[4]==1 && o2[6]==2,"then the line from its first frame");
-        music::Voice w;w.once=true;w.pcm=ramp(2);
+        check(v.delay==0 && o2[0]==0 && o2[2]==0 && o2[4]==0 && o2[6]==0,"then the delay");
         std::vector<int16_t> o3(8,0);
-        check(!music::mix(w,o3.data(),4,44100,false) && w.finished,"a line ends once");
+        music::mix(v,o3.data(),4,44100,false);
+        check(o3[0]==1 && o3[2]==2 && o3[4]==3 && o3[6]==4,"then the line from its first frame (frame 0 came in the block before)");
+        music::Voice w;w.once=true;w.pcm=ramp(2);
+        std::vector<int16_t> o4(8,0);
+        check(!music::mix(w,o4.data(),4,44100,false) && w.finished,"a line ends once");
+    }
+    // Faster speech at the same pitch (stretch): the length follows the factor, a tone keeps
+    // its frequency and loudness, and below 1.01 the input comes back unchanged.
+    {
+        const auto tone=[](unsigned rate,double seconds,double hz){
+            auto p=std::make_shared<music::Pcm>();p->rate=rate;
+            const size_t n=size_t(rate*seconds);p->samples.resize(2*n);
+            for(size_t i=0;i<n;++i){const auto v=int16_t(12000*std::sin(2*M_PI*hz*i/rate));p->samples[2*i]=p->samples[2*i+1]=v;}
+            return p;
+        };
+        const auto crossings=[](const music::Pcm& p){size_t c=0;for(size_t i=1;i<p.frames();++i)if((p.samples[2*i]>=0)!=(p.samples[2*(i-1)]>=0))++c;return c;};
+        const auto rms=[](const music::Pcm& p){double a=0;for(size_t i=0;i<p.frames();++i)a+=double(p.samples[2*i])*p.samples[2*i];return std::sqrt(a/p.frames());};
+        const auto in=tone(22050,2.0,220);
+        for(double f:{1.75,2.0}) {
+            const auto out=music::stretch(*in,f);
+            const double length=double(out->frames())/in->frames();
+            check(std::abs(length*f-1)<0.02,"stretched length follows the factor");
+            // The tone's zero crossings a second (2 x 220) stay, so the pitch does.
+            const double hz_in=double(crossings(*in))/2/2.0,hz_out=double(crossings(*out))/2/(2.0/f);
+            check(std::abs(hz_out-hz_in)<hz_in*0.03,"stretched speech keeps its pitch");
+            check(std::abs(rms(*out)/rms(*in)-1)<0.15,"stretched speech keeps its loudness");
+            check(out->rate==in->rate,"stretched rate");
+        }
+        check(music::stretch(*in,1.0)->samples==in->samples,"1x comes back as is");
+        const auto tiny=tone(22050,0.05,220);
+        check(music::stretch(*tiny,2.0)->samples==tiny->samples,"too short to stretch comes back as is");
     }
     if(failures)std::fprintf(stderr,"%d failed\n",failures);
     else std::puts("music: ok");

@@ -101,6 +101,11 @@ bool mod_voice();
 void set_mod_voice(bool on);
 unsigned mod_voice_volume();
 void set_mod_voice_volume(unsigned percent);
+// How the lines keep up with the game speed (music.cpp voice_speed): "follow" (faster at
+// the same pitch), "original" (as recorded), "mute" (none while hurried). Saved as
+// mod_voice_speed.
+const char* mod_voice_speed();
+void set_mod_voice_speed(const std::string& mode);
 // Dialogue text size, independent of the interface scale. Saved as dialogue_font_size.
 // Safe on the game thread too: the window thread writes pending changes in update().
 unsigned dialogue_font_size();

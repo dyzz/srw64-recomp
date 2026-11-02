@@ -194,6 +194,18 @@ void run() {
     const auto hidden_text=rasterize_frame(frame,320,240);
     check(hidden_text.image.pixels!=full.image.pixels,"typewriter reveal did not affect pixels");
     box.revealed=box.layout.text.size();
+    {
+        // A battle quote's name stays bright whatever its header status says (2026-11-02):
+        // there is no other speaker to point away from. A story box still dims unfocused.
+        Frame quote=frame;quote.display_only=true;quote.reading_event=0;
+        quote.boxes[0].active=true;const auto bright=rasterize_frame(quote,320,240);
+        quote.boxes[0].active=false;const auto waiting=rasterize_frame(quote,320,240);
+        check(bright.image.pixels==waiting.image.pixels,"battle quote's name dimmed with its header status");
+        Frame story=frame;story.reading_event=0;story.bar_fade=0;
+        story.boxes[0].active=true;const auto focused=rasterize_frame(story,320,240);
+        story.boxes[0].active=false;const auto unfocused=rasterize_frame(story,320,240);
+        check(focused.image.pixels!=unfocused.image.pixels,"an unfocused story speaker was not dimmed");
+    }
     verify_raster(frame,640,480);
     const auto scaled=rasterize_frame(frame,640,480);
     check(scaled.image.row_bytes()==2560 && scaled.report.at("drawable")==nlohmann::json({640,480}),"scaled raster extent");

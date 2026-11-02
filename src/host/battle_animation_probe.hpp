@@ -199,6 +199,7 @@ inline void step(uint8_t* ram,recomp_context* ctx) {
         request_fade(ram,ctx);
         guest::write8(ram,fade_request,1);
         record(ram,21,"abort-to-winddown");
+        if(srw64_game_hooks.battle_aborted)srw64_game_hooks.battle_aborted();
         std::fprintf(stderr,"SRW64_BATTLE_ANIMATION abort %d->21 vi=%llu\n",
                      state,(unsigned long long)vi);
         previous=21;entered=vi;

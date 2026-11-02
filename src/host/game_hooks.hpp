@@ -162,6 +162,9 @@ struct SRW64GameHooks {
     // Tactical map idle (state 5, docs/native/enemy-cycle.md): 801C8B04 runs; true: the
     // host moved the cursor this frame and the original does not run.
     bool (*map_idle)(uint8_t*, recomp_context*){};
+    // The player ended a battle animation early (battle_animation_probe.hpp): the MOD battle
+    // voice fades with the picture (music.cpp battle_aborted).
+    void (*battle_aborted)(){};
 };
 // ロード: 801C6F3C / 801C709C medium choice, 801C7328 / 801C783C slots, 801C7A48 load window,
 // 801C7C90 / 801C8074 Controller Pak message. オプション: 801C697C / 801C6B14. サウンドセレクト:
