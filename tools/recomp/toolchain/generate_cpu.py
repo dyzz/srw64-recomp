@@ -129,6 +129,12 @@ NATIVE_HOOKS = {
     "resident_func_8007E8A8": "srw64_original_play_sound",
     "resident_func_8009FA94": "srw64_original_dialogue_choice",
     "resident_func_8009DE7C": "srw64_original_script_register",
+    # Story MODs (story_mod.hpp): the poll's scan of a phase's event types, the persuasion
+    # check and the opening/set-up/end event start get the host's events after the original's.
+    "resident_func_8009E3B0": "srw64_original_event_scan",
+    "resident_func_800A4634": "srw64_original_persuade_check",
+    "resident_func_8009EDB8": "srw64_original_special_event",
+    "resident_func_800A4790": "srw64_original_variables_reset",   # a new game: story MOD flags cleared
     "load_000AB160_func_80209D6C": "srw64_original_stage_map_select",
     "load_000AB160_func_801E1F08": "srw64_original_seisenshi_bonus",
     "load_000AB160_func_801E1F10": "srw64_original_esp_bonus",

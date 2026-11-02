@@ -9,6 +9,7 @@
 #include "script_inject.hpp"
 #include "forced_game_over.hpp"
 #include "mini_stage.hpp"
+#include "story_mod.hpp"
 #include "script_move_probe.hpp"
 #include "state_probe.hpp"
 #include "rule_probe.hpp"
@@ -63,6 +64,33 @@ static void repair_daitarn(uint8_t* ram,recomp_context* ctx,srw64::base_fixes::D
     if(repaired)std::fprintf(stderr,"SRW64_BASE_FIX BUG06 scene=%u hidden=%u\n",
         srw64::guest::read(ram,0x8010F5F0,1),unsigned(repair.hidden));
 }
+// Story MODs (story_mod.hpp): what their triggers read, and the original routines they call
+// (on a stack frame below the caller's, as repair_daitarn does).
+namespace story=srw64::story_mod;
+static recomp_context story_call(const recomp_context* ctx) {
+    auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);return c;
+}
+static story::View story_view(uint8_t* ram,const recomp_context* ctx) {
+    using srw64::guest::read;
+    story::View v;
+    const uint32_t e=story::engine;
+    v.phase=read(ram,e+story::f_phase,2);v.turn=read(ram,e+story::f_turn,2);
+    v.side=read(ram,e+story::f_side,2);v.enemies=read(ram,e+story::f_enemies,1);v.third=read(ram,e+story::f_third,1);
+    if(const auto a=read(ram,e+story::f_battle_a,4))v.battle_a=read(ram,a+2,2);
+    if(const auto b=read(ram,e+story::f_battle_b,4))v.battle_b=read(ram,b+2,2);
+    v.variable=[ram](unsigned n){return story::variable(ram,n);};
+    v.kills=[ram](unsigned pilot){return story::kills(ram,pilot);};
+    v.has_pilot=[ram](unsigned pilot){return story::pilot_record(ram,pilot).has_value();};
+    v.has_unit=[ram](unsigned unit){return story::has_unit(ram,unit);};
+    v.hp=[ram,ctx](unsigned who) {   // 800A293C
+        auto c=story_call(ctx);c.r4=int32_t(who);resident_func_800A293C(ram,&c);return double(c.f0.fl);
+    };
+    return v;
+}
+static void story_start(uint8_t* ram,const recomp_context* ctx,uint32_t owner) {   // 8009EE98
+    auto c=story_call(ctx);c.r4=int32_t(owner);c.r5=int32_t(story::region);resident_func_8009EE98(ram,&c);
+}
+
 extern "C" {
 void resident_func_800A158C(uint8_t* ram,recomp_context* ctx) {
     repair_daitarn(ram,ctx,{srw64::base_fixes::daitarn_join_event(ram,uint32_t(ctx->r4)),false});
@@ -236,10 +264,12 @@ void resident_func_800822D8(uint8_t* ram,recomp_context* ctx) {
 }
 void resident_func_800924D8(uint8_t* ram,recomp_context* ctx) {
     srw64_original_intermission_serialize(ram,ctx);srw64::state_probe::save_payload(ram,false,0);
+    story::serialized(ram,true,story::Record::slot);
 }
 void resident_func_80093278(uint8_t* ram,recomp_context* ctx) {
     const unsigned write_sram=uint8_t(ctx->r4);
     srw64_original_tactical_serialize(ram,ctx);srw64::state_probe::save_payload(ram,true,write_sram);
+    story::serialized(ram,write_sram!=0);
 }
 void load_000AB160_func_801E6C5C(uint8_t* ram,recomp_context* ctx) {
     // The pilot page (crew, side, roster slot): an enemy's spirits and SP instead of ?????.
@@ -316,11 +346,13 @@ void resident_func_800A4BE0(uint8_t* ram,recomp_context* ctx) {
 }
 void resident_func_800927A4(uint8_t* ram,recomp_context* ctx) {
     srw64_original_intermission_restore(ram,ctx);srw64::state_probe::capture(ram,"intermission-restored");
+    story::restored(ram,true,story::Record::slot);
     if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);
 }
 void resident_func_800936A0(uint8_t* ram,recomp_context* ctx) {
     const bool from_sram=uint8_t(ctx->r4)!=0;
     srw64_original_tactical_restore(ram,ctx);srw64::state_probe::capture(ram,"tactical-restored");
+    story::restored(ram,from_sram);
     if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);
     if(srw64_game_hooks.tactical_restored)srw64_game_hooks.tactical_restored(ram,from_sram);
 }
@@ -776,6 +808,7 @@ void resident_func_8009EFDC(uint8_t* rdram, recomp_context* ctx) {
         if(now!=completed){completed=now;srw64::state_probe::capture(rdram,"script-inject-complete",uint32_t(sequence));}
     }
     srw64::mini_stage::poll_hook(rdram,owner);
+    story::stepped(uint16_t(ctx->r2));
     srw64::rule_probe::poll(rdram,ctx,owner);
     srw64::battle_ui_probe::poll(rdram,ctx,owner);
     move_probe.after(rdram,owner);
@@ -808,7 +841,40 @@ void resident_func_8007E8A8(uint8_t* rdram, recomp_context* ctx) {
 void resident_func_8009DE7C(uint8_t* rdram, recomp_context* ctx) {
     // Scene registration: a mini stage image replaces the pointer table and buffers first.
     srw64::mini_stage::register_hook(rdram, ctx);
+    const unsigned mode = uint16_t(ctx->r4);
     srw64_original_script_register(rdram, ctx);
+    story::disabled() = srw64::campaign::active();
+    story::registered(rdram, mode);
+}
+void resident_func_800A4790(uint8_t* rdram, recomp_context* ctx) {
+    // Every story variable set to 3: a new game (the protagonist select, 801C69E4).
+    srw64_original_variables_reset(rdram, ctx);
+    story::new_game();
+}
+void resident_func_8009E3B0(uint8_t* rdram, recomp_context* ctx) {
+    // The poll scans event types [a1, a2) of its phase; story MODs' come after the original's.
+    const unsigned from = uint16_t(ctx->r5), to = uint16_t(ctx->r6);
+    const auto saved = *ctx;
+    auto start = [&](uint32_t owner) { story_start(rdram, &saved, owner); };
+    if (story::persuaded(rdram, start)) { ctx->r2 = -1; return; }
+    srw64_original_event_scan(rdram, ctx);
+    story::scan(rdram, from, to, story_view(rdram, &saved), start);
+}
+void resident_func_800A4634(uint8_t* rdram, recomp_context* ctx) {
+    // Whether the unit in +0x9A8 may persuade (its menu, then the command): a story MOD's
+    // persuasion when the original has none.
+    const auto saved = *ctx;
+    srw64_original_persuade_check(rdram, ctx);
+    if (int16_t(ctx->r2) != -1) return;
+    const int pilot = story::persuasion(rdram, story_view(rdram, &saved), [&](unsigned who) {   // 800A2BF4
+        auto c = story_call(&saved); c.r4 = int32_t(who); resident_func_800A2BF4(rdram, &c); return uint32_t(c.r2);
+    });
+    if (pilot >= 0) ctx->r2 = pilot;
+}
+void resident_func_8009EDB8(uint8_t* rdram, recomp_context* ctx) {
+    // The opening, set-up and end events: story MODs' follow the original's.
+    story::special(rdram, story_view(rdram, ctx));
+    srw64_original_special_event(rdram, ctx);
 }
 void load_000AB160_func_80209D6C(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_stage_map_select(rdram, ctx);

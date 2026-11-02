@@ -1,0 +1,46 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "story-master-oz",
+  "note": "The story MOD example on scene 137, 絶望と悲しみの拳（後） (the OZ route), as story-master.json does scene 129: slot 137, map 56, the original deployments; Domon (group 16, God Gundam) next to Master Asia (group 15, his place in the original). Copied as they are: the after-battle talk (001d820c), Master Asia's defeat (001d8250), the three delay events in their order so 3D52's slots 1 and 2 (Grand Wong, the Devil Gundam with Allenby) are the original's, Wong's defeats and the end event. The opening sets the stage's variables as the original's does.",
+  "slot": 137,
+  "map": 56,
+  "route": 2,
+  "deployments_from": "base:stage_auxiliary:00206b38",
+  "deployments": [
+    {"template": "base:stage_deployments:00206b54", "group": 16, "x": 11, "y": 32, "faction": 0, "note": "ドモン in the God Gundam, next to Master Asia"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [49]},
+        {"op": "3E13", "args": [128, 3]},
+        {"op": "3E13", "args": [129, 3]},
+        {"op": "3E13", "args": [130, 3]},
+        {"op": "3E13", "args": [131, 3]},
+        {"op": "3E13", "args": [132, 3]},
+        {"op": "3E13", "args": [133, 3]},
+        {"op": "3E13", "args": [134, 3]},
+        {"op": "3E13", "args": [103, 0]},
+        {"op": "3D32", "args": [59]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 15]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [16]},
+        {"op": "3D45", "args": [15]}
+      ]
+    },
+    {"name": "talk", "copy_from": "base:stage_events:001d820c"},
+    {"name": "master-defeated", "copy_from": "base:stage_events:001d8250"},
+    {"name": "delay-0", "copy_from": "base:stage_events:001d7ee0"},
+    {"name": "delay-1-grand-wong", "copy_from": "base:stage_events:001d8328"},
+    {"name": "delay-2-devil-allenby", "copy_from": "base:stage_events:001d8358"},
+    {"name": "wong-defeated-a", "copy_from": "base:stage_events:001d83a8"},
+    {"name": "wong-defeated-b", "copy_from": "base:stage_events:001d8424"},
+    {"name": "wong-defeated-c", "copy_from": "base:stage_events:001d8484"},
+    {"name": "end", "copy_from": "base:stage_events:001d849c"}
+  ]
+}

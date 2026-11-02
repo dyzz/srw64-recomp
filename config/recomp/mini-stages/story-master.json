@@ -1,0 +1,42 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "story-master",
+  "note": "The story MOD example (config/recomp/mods/master-asia) on scene 129, 死闘!ランタオ島大決戦（後）, without playing up to it: the slot is 129, so the package's events (scene 129) apply. Domon (group 16, God Gundam) stands next to Master Asia (group 13, Master Gundam, his place in the original). The original's after-battle talk (001d387c), Master Asia's and Wong's defeat events and the end event are copied as they are; the opening only sets the stage's variables as the original's does and deploys the two. Victory comes from the debug interface's 3D4A.",
+  "slot": 129,
+  "map": 56,
+  "route": 2,
+  "deployments_from": "base:stage_auxiliary:00200004",
+  "deployments": [
+    {"template": "base:stage_deployments:00200090", "group": 16, "x": 7, "y": 38, "faction": 0, "note": "ドモン in the God Gundam, next to Master Asia"}
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [0, 0, 0, 0],
+      "commands": [
+        {"op": "3DD0"},
+        {"op": "3D3A", "args": [32]},
+        {"op": "3E13", "args": [128, 3]},
+        {"op": "3E13", "args": [129, 3]},
+        {"op": "3E13", "args": [130, 3]},
+        {"op": "3E13", "args": [131, 3]},
+        {"op": "3E13", "args": [132, 3]},
+        {"op": "3E13", "args": [133, 3]},
+        {"op": "3E13", "args": [102, 0]},
+        {"op": "3E13", "args": [103, 0]},
+        {"op": "3D32", "args": [14]},
+        {"op": "3D4D"},
+        {"op": "3D65", "args": [17, 13]},
+        {"op": "3D3B", "args": [1]},
+        {"op": "3D45", "args": [16]},
+        {"op": "3D45", "args": [13]}
+      ]
+    },
+    {"name": "talk", "copy_from": "base:stage_events:001d387c"},
+    {"name": "master-defeated", "copy_from": "base:stage_events:001d38c8"},
+    {"name": "wong-dg-defeated", "copy_from": "base:stage_events:001d39e0"},
+    {"name": "wong-defeated", "copy_from": "base:stage_events:001d3a30"},
+    {"name": "end", "copy_from": "base:stage_events:001d3acc"}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "srw64.mod.v1",
+  "id": "srw64.master-asia",
+  "version": "0.2.0",
+  "name": {
+    "ja": "東方不敗 生存",
+    "zh-Hans": "东方不败存活",
+    "zh-Hant": "東方不敗存活",
+    "en": "Master Asia Lives"
+  },
+  "description": {
+    "ja": "独立軍ルート「死闘!ランタオ島大決戦（後）」とOZルート「絶望と悲しみの拳（後）」で、戦闘中に東方不敗と言葉を交わしたドモンは東方不敗を説得できる。撃墜数50機以上なら東方不敗は退き、ステージクリア後にドモンと同じレベルで仲間になる（マスターガンダム）。足りなければ聞き入れられず、戦いは続く（何度でも説得し直せる）。説得しなければ原作どおり。",
+    "zh-Hans": "独立军路线「死斗！大屿山大决战（下）」和 OZ 路线「绝望与悲伤之拳（下）」中，多蒙在战斗里与东方不败交谈过之后可以说服他。击坠数 50 以上时东方不败撤退，过关后以与多蒙相同的等级加入（尊者高达）；不够则说服失败，战斗继续（可以再次说服）。不说服则与原作相同。",
+    "zh-Hant": "獨立軍路線「死鬥！大嶼山大決戰（下）」和 OZ 路線「絕望與悲傷之拳（下）」中，多門在戰鬥裡與東方不敗交談過之後可以說服他。擊墜數 50 以上時東方不敗撤退，過關後以與多門相同的等級加入（尊者鋼彈）；不夠則說服失敗，戰鬥繼續（可以再次說服）。不說服則與原作相同。",
+    "en": "On the Independence Army route's \"Death Match! Showdown on Lantau Island (Part 2)\" and the OZ route's \"Fist of Despair and Sorrow (Part 2)\", once Domon has talked with Master Asia in battle he can try to persuade him. With 50 kills or more Master Asia withdraws and joins after the stage at Domon's level, with the Master Gundam; with fewer he will not listen and the fight goes on (Domon can try again). Without the persuasion the story is as it was."
+  },
+  "authors": [
+    "SRW64"
+  ],
+  "license": "CC0-1.0",
+  "game": ">=0.5.2"
+}

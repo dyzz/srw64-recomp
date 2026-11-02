@@ -89,6 +89,11 @@ def build_folder(source: Path, out_dir: Path) -> tuple[Path, dict]:
     for name in validate.TOP_FILES:
         if name != "mod.json" and (source / name).is_file():
             shutil.copyfile(source / name, folder / name)
+    # Story sources (srw64.story.v1) go in compiled, under the same names (story.py).
+    import story
+    for path in sorted((folder / "story").glob("*.json")) if (folder / "story").is_dir() else []:
+        if story.is_source(path):
+            story.compile_file(path, path)
     return folder, manifest
 
 
