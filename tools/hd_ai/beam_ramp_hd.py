@@ -8,8 +8,12 @@ the same colours: transparent, the palette's most saturated bright colour, white
 Inside, flow lines run along the beam: puffs of thin horizontal streaks, each bright at its
 head and fading along its tail (tools/hd_ai/beam_elements.py, drawn after Z's, none of Z's art), laid
 across the beam from its centre line to its edges so the lines bend with its bulges, and moved
-on from frame to frame. A soft halo of the rim colour stays inside the frame's box (the host
-draws the picture over the box of the frame's parts). The shape, size and timing are the
+on from frame to frame. A soft halo of the rim colour goes round it, and Z's flashes
+(beam_elements: a glow ball and a star flash and a burst at the muzzle as the beam leaves, a
+pulsing glow ball, a star flash and sparks where it hits) are drawn on: these reach past the
+frame's box, so each picture is the box grown by a margin a side, given in its row as `bleed`
+(original pixels: left, top, right, bottom, as the picture faces), and the host grows the
+box it draws on by as much (native_sprite.cpp). The beam's own shape, size and timing are the
 original's; another palette gives another colour.
 
     .venv/bin/python tools/hd_ai/beam_ramp_hd.py --into assets/hd-ai/cutins/pack-vN [--bind]
@@ -47,6 +51,10 @@ BEAMS = ((3558, 3023), (3560, 3023), (3624, 3048), (3626, 3048))
 # registration's scene at run time): not paired with a palette in battle_scenes, drawn in the
 # palette of the scene it came from (seen in scene-sprites.jsonl in the battle viewer).
 FOLLOW_ONS = {(3559, 3023): (3558, 3023), (3625, 3048): (3624, 3048)}
+# Where the flashes go: the launch scenes' muzzle is the scene's origin, the beam leaving
+# toward -x; in the others the beam's head stops at the target, the frame's left end.
+LAUNCH = {3558, 3624}
+HALO = 8                  # original pixels round the shape the halo needs
 S = PACK_SCALE
 WHITE_FROM = .45          # where the ramp starts turning white: lower is a wider core
 
@@ -115,8 +123,33 @@ def lines_along(solid: np.ndarray, shift: float) -> np.ndarray:
     return ndimage.map_coordinates(LINES, [vy, np.broadcast_to(u, vy.shape)], order=1, mode='grid-wrap')
 
 
-def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float) -> Image.Image:
-    """One original frame (RGBA float 0-1, cut to its box) as the HD picture (straight alpha)."""
+def flash_field(h: int, w: int, flashes: list[dict]) -> np.ndarray:
+    """The flashes at the pack's scale: each {kind, x, y (original px in the picture), r, strength}."""
+    out = np.zeros((h, w), np.float32)
+    def put(element: np.ndarray, cx: float, cy: float, strength: float) -> None:
+        eh, ew = element.shape
+        x0, y0 = int(round(cx - ew / 2)), int(round(cy - eh / 2))
+        ys, xs = slice(max(y0, 0), min(y0 + eh, h)), slice(max(x0, 0), min(x0 + ew, w))
+        if ys.start >= ys.stop or xs.start >= xs.stop: return
+        cut = element[ys.start - y0:ys.stop - y0, xs.start - x0:xs.stop - x0] * strength
+        out[ys, xs] = np.maximum(out[ys, xs], cut)
+    for f in flashes:
+        cx, cy, r, k = f['x'] * S, f['y'] * S, f['r'] * S, f['strength']
+        if f['kind'] == 'glow':
+            put(beam_elements.glow(int(2 * r) | 1), cx, cy, k)
+        elif f['kind'] == 'star':
+            put(beam_elements.star(int(1.3 * r) | 1, seed=f.get('seed', 0)), cx, cy, k)
+        elif f['kind'] == 'burst':                  # fanning out toward -x from (x, y)
+            b = beam_elements.burst(int(1.6 * r) | 1, int(2.6 * r), seed=f.get('seed', 0))[:, ::-1]
+            put(b, cx - b.shape[1] / 2, cy, k)
+        elif f['kind'] == 'sparks':
+            put(beam_elements.sparks(int(3.2 * r), int(3.2 * r), seed=f.get('seed', 0), count=10, unit=S * .8), cx, cy, k)
+    return out
+
+
+def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float, flashes: list[dict] = ()) -> Image.Image:
+    """One original frame (RGBA float 0-1, cut to its box and grown by its margins) as the HD
+    picture (straight alpha)."""
     rgb_ramp, alpha_ramp, rim = table
     h, w = frame.shape[:2]
     intensity = np.zeros((h, w), np.float32)
@@ -132,9 +165,11 @@ def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float) -> Ima
     glow = np.clip(enlarge(smooth, 2.2) * 1.6, 0, 1) * (1 - np.clip(body * 3, 0, 1))
     seed = int(shift * 1000) % (1 << 30)
     body = np.maximum(body, beam_elements.sparks(h * S, w * S, seed=seed, count=max(2, int(solid.sum() / 60)), unit=S * .7) * glow * .8)
+    if flashes:
+        body = 1 - (1 - body) * (1 - flash_field(h * S, w * S, list(flashes)))
     k = np.clip((body * 255).astype(int), 0, 255)
     a_body, rgb_body = alpha_ramp[k], rgb_ramp[k]
-    # the halo fades out before the box's edge, where the picture ends
+    # the halo fades out before the picture's edge
     yy, xx = np.mgrid[0:h * S, 0:w * S]
     edge = np.minimum.reduce([xx, yy, w * S - 1 - xx, h * S - 1 - yy]).astype(np.float32) / (3 * S)
     a_halo = np.clip(enlarge(smooth, 3.2) * 1.4, 0, 1) * .55 * np.clip(edge, 0, 1)
@@ -142,6 +177,45 @@ def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float) -> Ima
     rgb = (rgb_body * a_body[..., None] + rim * (a_halo * (1 - a_body))[..., None]) / np.maximum(a, 1e-6)[..., None]
     rgb = np.where((a > 0)[..., None], rgb, rim)      # transparent pixels keep the rim colour: no dark fringe when filtered
     return Image.fromarray((np.dstack([rgb, a]) * 255 + .5).clip(0, 255).astype(np.uint8), 'RGBA')
+
+
+def flashes_for(scene_id: int, scene, frame: int, box: tuple, alpha: np.ndarray, origin: tuple) -> list[dict]:
+    """Z's flashes on one frame, in frame coordinates: at the muzzle while a launch scene's beam
+    leaves it, at the head where the other scenes' beam meets the target. `alpha` is the scene's
+    rendered frame (bounds-sized), `origin` the scene bounds' top left."""
+    ticks, t = {}, 0
+    for f, n in scene.steps:
+        ticks.setdefault(f, t); t += n
+    def half_height(xa: float, xb: float) -> float:
+        """Half the beam's typical height over columns xa..xb (the median column: a splash of
+        dots or a ring does not count)."""
+        cols = alpha[:, max(int(xa - origin[0]), 0):max(int(xb - origin[0]), 0)]
+        heights = [np.ptp(np.nonzero(c)[0]) + 1 for c in cols.T if c.any()]
+        return float(np.median(heights)) / 2 if heights else 2
+    out = []
+    if scene_id in LAUNCH:
+        if box[2] < -2:
+            return out                              # the beam has left the muzzle
+        flash = float(np.exp(-ticks[frame] / 4))
+        hh = half_height(-24, -8) if box[0] < -24 else half_height(box[0], box[2])
+        out.append({'kind': 'glow', 'x': 0, 'y': 0, 'r': 1.3 * hh + 4, 'strength': .6 + .4 * flash})
+        if flash > .2:
+            out.append({'kind': 'star', 'x': 0, 'y': 0, 'r': 1.4 * hh + 5, 'strength': flash, 'seed': frame})
+            out.append({'kind': 'burst', 'x': 0, 'y': 0, 'r': 1.4 * hh + 5, 'strength': flash, 'seed': frame})
+        return out
+    lefts = [min(q.x for q in scene.frames[f]) for f, _ in scene.steps if f != 0xFF and scene.frames[f]]
+    reach, span = min(lefts), max(q.x + q.w for f, _ in scene.steps if f != 0xFF for q in scene.frames[f]) - min(lefts)
+    hits = [f for f, _ in scene.steps if f != 0xFF and scene.frames[f] and min(q.x for q in scene.frames[f]) <= reach + .06 * span]
+    if frame not in hits:
+        return out
+    since = ticks[frame] - min(ticks[f] for f in hits)
+    x, y = box[0], (box[1] + box[3]) / 2
+    hh = half_height(x + 12, x + 40)
+    out.append({'kind': 'glow', 'x': x, 'y': y, 'r': 1.5 * hh + 5, 'strength': .75 + .25 * float(np.cos(since * 1.3))})
+    out.append({'kind': 'sparks', 'x': x, 'y': y, 'r': 1.5 * hh + 5, 'strength': .9, 'seed': frame})
+    if since < 5:
+        out.append({'kind': 'star', 'x': x, 'y': y, 'r': 1.6 * hh + 5, 'strength': float(np.exp(-since / 3)), 'seed': frame})
+    return out
 
 
 def scene_rows(table: ResourceTable, triplets) -> list[tuple[dict, Image.Image]]:
@@ -163,9 +237,25 @@ def scene_rows(table: ResourceTable, triplets) -> list[tuple[dict, Image.Image]]
         for f in frames:
             parts = scene.frames[f]
             box = (min(q.x for q in parts), min(q.y for q in parts), max(q.x + q.w for q in parts), max(q.y + q.h for q in parts))
-            crop = np.asarray(images[f].convert('RGBA').crop((box[0] - x0, box[1] - y0, box[2] - x0, box[3] - y0))).astype(np.float32) / 255
+            whole = np.asarray(images[f].convert('RGBA')).astype(np.float32) / 255
+            flashes = flashes_for(s, scene, f, box, whole[..., 3] > 0, (x0, y0))
+            # the margins: the halo's, or as far as a flash reaches past the box
+            grow = [HALO] * 4
+            for fl in flashes:
+                reach = fl['r'] * (2.6 if fl['kind'] == 'burst' else 1.6 if fl['kind'] == 'sparks' else 1) + 2
+                grow[0] = max(grow[0], int(np.ceil(box[0] - (fl['x'] - reach))))
+                grow[1] = max(grow[1], int(np.ceil(box[1] - (fl['y'] - reach))))
+                grow[2] = max(grow[2], int(np.ceil(fl['x'] + reach - box[2])))
+                grow[3] = max(grow[3], int(np.ceil(fl['y'] + reach - box[3])))
+            canvas = (box[0] - grow[0], box[1] - grow[1], box[2] + grow[2], box[3] + grow[3])
+            crop = np.zeros((canvas[3] - canvas[1], canvas[2] - canvas[0], 4), np.float32)
+            sy0, sx0 = max(canvas[1] - y0, 0), max(canvas[0] - x0, 0)
+            sy1, sx1 = min(canvas[3] - y0, whole.shape[0]), min(canvas[2] - x0, whole.shape[1])
+            crop[sy0 - (canvas[1] - y0):sy1 - (canvas[1] - y0), sx0 - (canvas[0] - x0):sx1 - (canvas[0] - x0)] = whole[sy0:sy1, sx0:sx1]
+            local = [fl | {'x': fl['x'] - canvas[0], 'y': fl['y'] - canvas[1]} for fl in flashes]
             # the lines run toward the beam's head (it flies to -x) a little each frame
-            out.append(({'scene': s, 'atlas': a, 'palette': p, 'frame': f}, beam_frame(crop, rank, ramps, 37.0 * f)))
+            out.append(({'scene': s, 'atlas': a, 'palette': p, 'frame': f, 'bleed': grow},
+                        beam_frame(crop, rank, ramps, 37.0 * f, local)))
     return out
 
 
