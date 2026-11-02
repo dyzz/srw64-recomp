@@ -76,6 +76,7 @@ static story::View story_view(uint8_t* ram,const recomp_context* ctx) {
     if(const auto a=read(ram,e+story::f_battle_a,4))v.battle_a=read(ram,a+2,2);
     if(const auto b=read(ram,e+story::f_battle_b,4))v.battle_b=read(ram,b+2,2);
     v.variable=[ram](unsigned n){return story::variable(ram,n);};
+    v.kills=[ram](unsigned pilot){return story::kills(ram,pilot);};
     v.hp=[ram,ctx](unsigned who) {   // 800A293C
         auto c=story_call(ctx);c.r4=int32_t(who);resident_func_800A293C(ram,&c);return double(c.f0.fl);
     };

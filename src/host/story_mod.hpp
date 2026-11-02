@@ -91,6 +91,8 @@ struct Event {
     // side (4 any); persuade: by, target.
     int a{},b{},c{};
     std::map<unsigned,unsigned> vars;              // all must hold (story variables 0..199)
+    std::map<unsigned,unsigned> kills;             // pilot -> at least this many kills (our side)
+    std::map<unsigned,unsigned> kills_below;       // pilot -> fewer kills than this (our side)
     std::vector<std::string> fired,not_fired;      // other events of the package (ids)
     bool repeat{};
     std::vector<uint16_t> words;                   // instructions and FFFF, text ids final
@@ -148,6 +150,14 @@ inline void add_image(Library& library,const std::string& package,const json& im
             if(v>=200 || x>3)throw std::runtime_error(event.id+"：变量 0–199、值 0–3");
             event.vars[v]=x;
         }
+        for(const auto& [name,into]:{std::pair{"kills",&event.kills},{"kills_below",&event.kills_below}}) {
+            const auto counts=e.value(name,json::object());
+            for(const auto& [pilot,count]:counts.items()) {
+                const unsigned p=unsigned(std::stoul(pilot)),n=count.get<unsigned>();
+                if(p>360 || !n || n>9999)throw std::runtime_error(event.id+"："+name+" 人物 0–360、击坠数 1–9999");
+                (*into)[p]=n;
+            }
+        }
         event.fired=e.value("fired",std::vector<std::string>{});
         event.not_fired=e.value("not_fired",std::vector<std::string>{});
         event.repeat=e.value("repeat",false);
@@ -173,6 +183,7 @@ inline Library collect(const std::vector<mods::Package>& packages) {
     Library library;
     for(const auto& package:packages) {
         if(!package.active)continue;
+        const size_t first=library.events.size();
         const auto folder=package.folder/"story";
         std::error_code ec;
         if(!fs::is_directory(folder,ec))continue;
@@ -187,8 +198,9 @@ inline Library collect(const std::vector<mods::Package>& packages) {
             try {add_image(library,package.id(),document);}
             catch(const std::exception& error){library.problems.push_back(where+error.what());}
         }
+        // Top package first; within a package, its own order.
+        std::rotate(library.events.begin(),library.events.begin()+first,library.events.end());
     }
-    std::reverse(library.events.begin(),library.events.end());   // top package first
     return library;
 }
 
@@ -222,12 +234,23 @@ inline bool read_text(uint32_t rom,uint8_t* ram,uint32_t destination,uint32_t si
 inline unsigned variable(const uint8_t* ram,unsigned n) {
     return (read(ram,0x8015E818+2*(n/8),2)>>(2*(n%8)))&3;
 }
+// Our side's pilot records (100 x 0x4C at 80172F40, the first of the three sides'): +0 in
+// use, +2 the pilot, +0x14 kills (pilot_kills.hpp; an enemy's +0x14 counts dummies instead).
+inline constexpr uint32_t pilot_records=0x80172F40, pilot_record_size=0x4C, pilot_record_count=100, pilot_kills=0x14;
+inline std::optional<unsigned> kills(const uint8_t* ram,unsigned pilot) {
+    for(uint32_t i=0;i<pilot_record_count;++i) {
+        const uint32_t r=pilot_records+i*pilot_record_size;
+        if(read(ram,r,1) && read(ram,r+2,2)==pilot)return read(ram,r+pilot_kills,2);
+    }
+    return std::nullopt;
+}
 // The game state a trigger looks at, read by the hooks (and filled by hand in tests).
 struct View {
     unsigned phase{},turn{},side{},enemies{},third{};
     unsigned battle_a{},battle_b{};                   // the combatants' pilots, 0 when none
     std::function<unsigned(unsigned)> variable;       // 800A496C
     std::function<double(unsigned)> hp;               // 800A293C: percent, 0 defeated, 103 gone
+    std::function<std::optional<unsigned>(unsigned)> kills;   // our pilot's kills; none when not ours
 };
 // Mirrors of the original handlers (8009E598, 8009E604, 8009E6E4, 8009EA88, 8009E9B4,
 // 8009E834, 8009E8B4) without their slot bookkeeping.
@@ -339,6 +362,14 @@ inline bool eligible(const Event& e,const std::set<std::string>& fired,const Vie
     for(const auto& id:e.fired)if(!fired.count(e.package+"/"+id))return false;
     for(const auto& id:e.not_fired)if(fired.count(e.package+"/"+id))return false;
     for(const auto& [var,value]:e.vars)if(!v.variable || v.variable(var)!=value)return false;
+    for(const auto& [pilot,count]:e.kills) {
+        const auto has=v.kills?v.kills(pilot):std::nullopt;
+        if(!has || *has<count)return false;
+    }
+    for(const auto& [pilot,count]:e.kills_below) {
+        const auto has=v.kills?v.kills(pilot):std::nullopt;
+        if(!has || *has>=count)return false;
+    }
     return true;
 }
 

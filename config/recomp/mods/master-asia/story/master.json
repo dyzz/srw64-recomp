@@ -3,10 +3,10 @@
   "events": [
     {
       "id": "persuade",
-      "note": "死闘!ランタオ島大決戦（後）: once Domon and Master Asia have talked in battle (the original's 001d387c sets 131 to 0), Domon may persuade him. He leaves instead of falling, so the second half of his defeat event (001d38c8) is done here: Wong, then the Devil Gundam or the Grand Master Gundam. 131 = 3 keeps both of the end event's death scenes away.",
+      "note": "死闘!ランタオ島大決戦（後）: once Domon and Master Asia have talked in battle (the original's 001d387c sets 131 to 0), Domon may persuade him; with 50 kills or more this is the one offered (under 50, the refusal below). He leaves instead of falling, so the second half of his defeat event (001d38c8) is done here: Wong, then the Devil Gundam or the Grand Master Gundam. 131 = 3 keeps both of the end event's death scenes away.",
       "scene": 129,
       "when": { "persuade": { "by": 4, "target": 18 } },
-      "if": { "vars": { "131": 0 } },
+      "if": { "vars": { "131": 0 }, "kills": { "4": 50 } },
       "do": [
         { "say": 4, "text": {
           "ja": "師匠！　もうやめてくれ！　あんたの拳は泣いている……俺にはわかるんだ！",
@@ -70,6 +70,36 @@
             { "set": { "101": 0 } }
           ] },
         { "set": { "131": 3 } }
+      ]
+    },
+    {
+      "id": "refused",
+      "note": "The same persuasion with Domon under 50 kills: Master Asia will not listen and the fight goes on. It can be tried again, and once Domon has his 50 kills the persuasion above is the one offered.",
+      "scene": 129,
+      "when": { "persuade": { "by": 4, "target": 18 } },
+      "if": { "vars": { "131": 0 }, "kills_below": { "4": 50 } },
+      "repeat": true,
+      "do": [
+        { "say": 4, "text": {
+          "ja": "師匠！　もうやめてくれ！　こんな戦い、あんたの本心じゃないはずだ！",
+          "zh-Hans": "师父！住手吧！这种战斗，绝不是你的本心！",
+          "zh-Hant": "師父！住手吧！這種戰鬥，絕不是你的本心！",
+          "en": "Master, stop this! This fight can't be what you truly want!" } },
+        { "say": 18, "mode": 2, "text": {
+          "ja": "たわけが！　その程度の拳で、ワシの何がわかるというのだ！",
+          "zh-Hans": "蠢货！就凭你这点本事的拳头，能懂我什么！",
+          "zh-Hant": "蠢貨！就憑你這點本事的拳頭，能懂我什麼！",
+          "en": "Fool! With fists like those, what could you understand of me?" } },
+        { "say": 18, "mode": 2, "text": {
+          "ja": "ワシを止めたくば、その拳で語ってみせい！",
+          "zh-Hans": "想阻止我，就用你的拳头来说话！",
+          "zh-Hant": "想阻止我，就用你的拳頭來說話！",
+          "en": "If you would stop me, let your fists do the talking!" } },
+        { "say": 4, "text": {
+          "ja": "くっ……師匠……！",
+          "zh-Hans": "可恶……师父……！",
+          "zh-Hant": "可惡……師父……！",
+          "en": "Damn it... Master...!" } }
       ]
     },
     {

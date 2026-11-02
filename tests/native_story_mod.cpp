@@ -44,6 +44,8 @@ int main(int argc,char** argv) {
         bad=image;bad["events"].push_back(bad["events"][0]);check(!fails(bad).empty(),"duplicate ids");
         bad=image;bad["events"][0]["trigger"]="after_end";bad["events"][0]["repeat"]=true;check(!fails(bad).empty(),"after_end repeating");
         bad=image;bad["events"][0]["vars"]={{"131",4}};check(!fails(bad).empty(),"a variable value past 3");
+        bad=image;bad["events"][0]["kills"]={{"4",0}};check(!fails(bad).empty(),"kills of 0");
+        bad=image;bad["events"][0]["kills"]={{"400",5}};check(!fails(bad).empty(),"kills of a pilot past 360");
     }
     // Two packages: their lines are numbered on from each other.
     story::Library two;
@@ -54,17 +56,20 @@ int main(int argc,char** argv) {
     std::ifstream example(argv[2]);
     story::Library master;
     story::add_image(master,"srw64.master-asia",json::parse(example));
-    check(master.events.size()==2 && master.events[0].trigger==story::Trigger::persuade && master.events[0].a==4 && master.events[0].b==18,"the example's persuasion");
+    check(master.events.size()==3 && master.events[0].trigger==story::Trigger::persuade && master.events[0].a==4 && master.events[0].b==18,"the example's persuasion");
     check(master.events[0].vars==std::map<unsigned,unsigned>{{131,0}},"after the talk");
-    check(master.events[1].trigger==story::Trigger::after_end && master.events[1].fired==std::vector<std::string>{"persuade"},"joins after the end event");
-    const auto& joins=master.events[1].words;
+    check(master.events[0].kills==std::map<unsigned,unsigned>{{4,50}},"Domon at 50 kills");
+    check(master.events[1].trigger==story::Trigger::persuade && master.events[1].kills_below==std::map<unsigned,unsigned>{{4,50}} &&
+          master.events[1].repeat,"refused under 50 kills, again and again");
+    check(master.events[2].trigger==story::Trigger::after_end && master.events[2].fired==std::vector<std::string>{"persuade"},"joins after the end event");
+    const auto& joins=master.events[2].words;
     check(std::vector<uint16_t>(joins.end()-6,joins.end())==std::vector<uint16_t>{0x3D5A,18,0,27,500,0xFFFF},"3D5A 18,0,27,500 at its end");
 
     // --- Triggers --------------------------------------------------------------------
     auto& s=story::state();
     s.library=master;
-    s.library.events.push_back(story::Event{"x","turn2",129,story::Trigger::turn,1,1,0,{},{},{},false,{0x3D4E,0xFFFF}});
-    s.library.events.push_back(story::Event{"x","gone",129,story::Trigger::defeated,248,0,0,{},{},{},false,{0x3D4E,0xFFFF}});
+    s.library.events.push_back(story::Event{.package="x",.id="turn2",.scene=129,.trigger=story::Trigger::turn,.a=1,.b=1,.words={0x3D4E,0xFFFF}});
+    s.library.events.push_back(story::Event{.package="x",.id="gone",.scene=129,.trigger=story::Trigger::defeated,.a=248,.words={0x3D4E,0xFFFF}});
     s.scene=129;s.fired.clear();
     {std::lock_guard lock(s.texts_mutex);s.texts=std::make_shared<std::vector<story::Text>>(s.library.texts);}
     std::vector<uint32_t> started;
@@ -98,7 +103,21 @@ int main(int argc,char** argv) {
     write16(ram.data(),0x8015E818+2*(131/8),uint16_t(3<<(2*(131%8))));
     check(story::persuasion(ram.data(),v,unit)==-1,"not before the talk");
     write16(ram.data(),0x8015E818+2*(131/8),0);
-    check(story::persuasion(ram.data(),v,unit)==18,"after the talk: the target's pilot");
+    // Domon needs 50 kills: his record (pilot 4) is the second of ours.
+    v.kills=[&](unsigned pilot){return story::kills(ram.data(),pilot);};
+    check(story::persuasion(ram.data(),v,unit)==-1,"not without Domon on the roster");
+    const uint32_t record_domon=story::pilot_records+story::pilot_record_size;
+    write8(ram.data(),record_domon,1);write16(ram.data(),record_domon+2,4);write16(ram.data(),record_domon+story::pilot_kills,49);
+    check(story::kills(ram.data(),4)==49u && !story::kills(ram.data(),5),"kills read from our records");
+    // Under 50 the persuasion is offered all the same: the refusal (event 1), each time.
+    check(story::persuasion(ram.data(),v,unit)==18 && read(ram.data(),e+story::f_persuade,2)==story::persuade_mark+1,"at 49 kills: the refusal");
+    write16(ram.data(),e+story::f_phase,6);
+    check(story::persuaded(ram.data(),start) && read(ram.data(),story::region+12,2)==story::text_first+5,"the refusal's first line");
+    check(s.fired.count("srw64.master-asia/refused")==1 && !s.fired.count("srw64.master-asia/persuade"),"refused, not persuaded");
+    write16(ram.data(),e+story::f_status,0x80);write16(ram.data(),e+story::f_phase,0);
+    check(story::persuasion(ram.data(),v,unit)==18 && read(ram.data(),e+story::f_persuade,2)==story::persuade_mark+1,"refused again");
+    write16(ram.data(),record_domon+story::pilot_kills,50);
+    check(story::persuasion(ram.data(),v,unit)==18,"after the talk, at 50 kills: the target's pilot");
     check(read(ram.data(),e+story::f_persuade,2)==story::persuade_mark,"+0x992 holds our mark");
     write8(ram.data(),master_unit+4,8);
     check(story::persuasion(ram.data(),v,unit)==-1,"not when apart");
@@ -116,7 +135,7 @@ int main(int argc,char** argv) {
     check(read(ram.data(),story::region,2)==9 && read(ram.data(),story::region+10,2)==0x3D3E && read(ram.data(),story::region+12,2)==story::text_first,"a type-9 header, then the first line");
     check(s.fired.count("srw64.master-asia/persuade")==1,"fired");
     write16(ram.data(),e+story::f_status,0x80);
-    check(story::persuasion(ram.data(),v,unit)==-1,"once only");
+    check(story::persuasion(ram.data(),v,unit)==-1,"once only, and no refusal at 50");
 
     // --- After the end event ---------------------------------------------------------------
     write16(ram.data(),e+story::f_mode,0xC3);

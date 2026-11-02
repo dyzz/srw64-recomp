@@ -38,14 +38,16 @@ class StoryTests(unittest.TestCase):
     def test_example(self):
         image = story.compile_story(json.loads((EXAMPLE / "story/master.json").read_text(encoding="utf-8")))
         self.assertEqual(image["schema"], story.IMAGE_SCHEMA)
-        persuade, joins = image["events"]
-        self.assertEqual((persuade["trigger"], persuade["params"], persuade["vars"]), ("persuade", [4, 18], {"131": 0}))
+        persuade, refused, joins = image["events"]
+        self.assertEqual((refused["trigger"], refused["kills_below"], refused["repeat"]), ("persuade", {"4": 50}, True))
+        self.assertEqual((persuade["trigger"], persuade["params"], persuade["vars"], persuade["kills"]),
+                         ("persuade", [4, 18], {"131": 0}, {"4": 50}))
         self.assertEqual((joins["trigger"], joins["fired"]), ("after_end", ["persuade"]))
         self.assertEqual(joins["words"][-6:], [0x3D5A, 18, 0, 27, 500, 0xFFFF])
-        self.assertEqual(len(image["texts"]), 7)
+        self.assertEqual(len(image["texts"]), 11)
         # Each line's place holds the placeholder; its index is in "texts".
-        for at, index in persuade["texts"] + joins["texts"]:
-            self.assertLess(index, 7)
+        for at, index in persuade["texts"] + refused["texts"] + joins["texts"]:
+            self.assertLess(index, 11)
         self.assertEqual([persuade["words"][at] for at, _ in persuade["texts"]], [story.TEXT] * 5)
         self.assertEqual(image["texts"][1]["speaker"], 18)
 
@@ -76,6 +78,8 @@ class StoryTests(unittest.TestCase):
             source(event(do=[{"say": 4, "text": {"ja": "あ" * 201}}])),
             source(event(do=[{"jump": 3}])),
             source(event(do=[{"set": {"131": 4}}])),
+            source(event(**{"if": {"kills": {"4": 0}}})),
+            source(event(**{"if": {"kills": {"361": 5}}})),
             source(event(do=[{"op": "3D45", "args": [1, 2]}])),
             source(event(), event()),
             source(event(**{"if": {"fired": ["nope"]}})),

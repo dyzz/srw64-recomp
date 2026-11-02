@@ -208,9 +208,12 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
             ids.add(row["id"])
             name, params = trigger(row.get("when"))
             cond = row.get("if", {})
-            if not isinstance(cond, dict) or set(cond) - {"vars", "fired", "not_fired"}:
-                raise StoryError("if 只能写 vars、fired、not_fired")
+            if not isinstance(cond, dict) or set(cond) - {"vars", "fired", "not_fired", "kills", "kills_below"}:
+                raise StoryError("if 只能写 vars、fired、not_fired、kills、kills_below")
             variables = {str(_int(int(k), "vars 变量", 0, 199)): _int(v, "vars 值", 0, 3) for k, v in cond.get("vars", {}).items()}
+            kills = {str(_int(int(k), "kills 人物", 0, 360)): _int(v, "kills 击坠数", 1, 9999) for k, v in cond.get("kills", {}).items()}
+            kills_below = {str(_int(int(k), "kills_below 人物", 0, 360)): _int(v, "kills_below 击坠数", 1, 9999)
+                           for k, v in cond.get("kills_below", {}).items()}
             repeat = row.get("repeat", False)
             if type(repeat) is not bool or (repeat and name.startswith("after_")):
                 raise StoryError("repeat 是 true/false，开场／配置／结束之后的事件不能重复")
@@ -226,7 +229,7 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
                 refs.append([at, words[at]])
                 words[at] = TEXT
             events.append({"id": row["id"], "scene": _int(row.get("scene"), "scene", 0, 255), "trigger": name,
-                           "params": params, "vars": variables, "fired": list(cond.get("fired", [])),
+                           "params": params, "vars": variables, "kills": kills, "kills_below": kills_below, "fired": list(cond.get("fired", [])),
                            "not_fired": list(cond.get("not_fired", [])), "repeat": repeat,
                            "words": words, "texts": refs,
                            "listing": [f"{e['opcode']} {','.join(map(str, e['operands']))}".rstrip() for e in assembled["listing"]]})

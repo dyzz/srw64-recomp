@@ -4,7 +4,9 @@ config/recomp/mods/master-asia on the story-master mini stage (scene 129):
 
   1. the package's events load (story-mod-events.jsonl "loaded": 2 events, 7 lines);
   2. before the talk (variable 131 = 3) Domon's command menu offers no 説得;
-  3. with 131 = 0 (as the original's after-battle talk leaves it) the menu offers 説得,
+  3. with 131 = 0 (as the original's after-battle talk leaves it) the menu offers 説得; with
+     Domon at 49 kills it is the refusal: its four lines, Master Asia stays, 131 stays 0;
+     Domon is given his action back and 50 kills, and 説得 is the persuasion,
      and choosing it runs the package's persuasion: its first line is shown, Master Asia
      leaves the map, Wong comes in (group 11), 131 ends at 3 and 101 at 0;
   4. after the stage is won (3D4A) the end event runs, then the package's "joins":
@@ -134,11 +136,32 @@ def finished(event: str) -> bool:
 
 
 MOD_LINES = 0xC800
+ROSTER, SIDE_SIZE, SLOT_SIZE = 0x8015E100, 0x258, 0x14   # map units; +0xB 0x80 = has acted
+
+
+def map_slot(pilot: int) -> int:
+    """Our side's map slot whose unit's first pilot is `pilot`."""
+    for slot in range(30):
+        unit = word(ROSTER + slot * SLOT_SIZE + 0xC, 4)   # the unit instance, as 800A4634 reads it
+        if unit and word(word(unit + 0x38, 4) + 2) == pilot:
+            return slot
+    raise HostError(f"pilot {pilot} is not on the map")
+
+
+def choose_persuade() -> None:
+    """Domon's menu (the cursor is on him), its second row: 説得."""
+    s.client.call("keys", press="down", hold_ms=80)
+    time.sleep(0.4)
+    s.client.call("keys", press="z", hold_ms=80)
+
+
+def ours(since: int) -> list[int]:
+    return [r["text_id"] for r in fragments(since) if r.get("text_id", 0) >= MOD_LINES]
 try:
     s.enter_mini_stage()
     until(idle, 180, "the stage's opening")
     loaded = story_rows("loaded")
-    check("package loaded", bool(loaded) and loaded[-1]["events"] == 2 and loaded[-1]["texts"] == 7 and not loaded[-1]["problems"], json.dumps(loaded[-1:], ensure_ascii=False))
+    check("package loaded", bool(loaded) and loaded[-1]["events"] == 3 and loaded[-1]["texts"] == 11 and not loaded[-1]["problems"], json.dumps(loaded[-1:], ensure_ascii=False))
     registered = story_rows("registered")
     check("scene 129 registered", bool(registered) and registered[-1]["scene"] == 129, json.dumps(registered[-1:]))
     if args.launch_only:
@@ -154,18 +177,45 @@ try:
     s.client.call("keys", press="x", hold_ms=80)
     time.sleep(1.0)
 
-    # After it (131 = 0, as 001d387c leaves it): 説得 is offered, second in the menu.
+    # After it (131 = 0, as 001d387c leaves it), Domon at 49 kills: 説得 is offered, and it
+    # is the refusal (the package's second event: mark 0x7001).
     set_variable(131, 0)
+    pilots = mem(PILOTS, 100 * PILOT_SIZE)
+    domon = next(PILOTS + i * PILOT_SIZE for i in range(100)
+                 if pilots[i * PILOT_SIZE] and int.from_bytes(pilots[i * PILOT_SIZE + 2:i * PILOT_SIZE + 4], "big") == 4)
+    poke(domon + 0x14, (49).to_bytes(2, "big"))
     s.client.call("keys", press="z", hold_ms=80)
     time.sleep(1.0)
-    # Our mark is 0x7000 + the event's place in the library (top package first).
-    check("説得 after the talk (+0x992 = our mark)", 0x7000 <= word(ENGINE + 0x992) < 0x7010, hex(word(ENGINE + 0x992)))
+    check("説得 at 49 kills is the refusal (+0x992 = 0x7001)", word(ENGINE + 0x992) == 0x7001, hex(word(ENGINE + 0x992)))
     shot("menu-after")
     mark = lines_seen()
-    s.client.call("keys", press="down", hold_ms=80)
-    time.sleep(0.4)
+    choose_persuade()
+    advance_until(lambda: finished("srw64.master-asia/refused"), 120, "the refusal to end")
+    check("the refusal's four lines read", ours(mark) == [MOD_LINES + n for n in range(5, 9)], str(ours(mark)))
+    check("refused: 131 still 0, Master Asia still on the map, not persuaded",
+          variable(131) == 0 and not any(r.get("event") == "srw64.master-asia/persuade" for r in story_rows("started")),
+          str(variable(131)))
+    until(idle, 60, "the map after the refusal")
+    shot("after-refusal")
+
+    # Domon gets his action back and 50 kills: now 説得 is the persuasion (mark 0x7000).
+    # Acted is two things (cheats.md §7): the pilot's actions left (+0x35, refilled from +0x34
+    # each phase) and the map slot's +0xB 0x80.
+    slot = map_slot(4)
+    flags = word(ROSTER + slot * SLOT_SIZE + 0xB, 1)
+    poke(ROSTER + slot * SLOT_SIZE + 0xB, bytes([flags & 0x7F]))
+    poke(domon + 0x35, bytes([word(domon + 0x34, 1)]))
+    poke(domon + 0x14, (50).to_bytes(2, "big"))
+    for _ in range(2):
+        s.client.call("keys", press="x", hold_ms=80)
+        time.sleep(0.4)
     s.client.call("keys", press="z", hold_ms=80)
-    until(lambda: bool(story_rows("started")), 30, "the persuasion to start")
+    time.sleep(1.0)
+    check("説得 at 50 kills is the persuasion (+0x992 = 0x7000)", word(ENGINE + 0x992) == 0x7000, hex(word(ENGINE + 0x992)))
+    mark = lines_seen()
+    started_before = len(story_rows("started"))
+    choose_persuade()
+    until(lambda: len(story_rows("started")) > started_before, 30, "the persuasion to start")
     check("persuasion started", story_rows("started")[-1]["event"] == "srw64.master-asia/persuade")
     shown = []
 
@@ -195,7 +245,7 @@ try:
     advance_until(lambda: finished("srw64.master-asia/joins"), 300, "the join after the end event")
     ids = [r.get("text_id") for r in fragments(mark)]
     check("the end event plays no death scene", not any(43248 <= i <= 43291 for i in ids if i), str(ids[:12]))
-    check("the join's two lines read", [i for i in ids if i and i >= MOD_LINES] == [MOD_LINES + 5, MOD_LINES + 6], str(ids))
+    check("the join's two lines read", [i for i in ids if i and i >= MOD_LINES] == [MOD_LINES + 9, MOD_LINES + 10], str(ids))
     units = mem(UNITS, 140 * UNIT_SIZE)
     has_unit = any(units[i * UNIT_SIZE] and int.from_bytes(units[i * UNIT_SIZE + 2:i * UNIT_SIZE + 4], "big") == 27 for i in range(140))
     pilots = mem(PILOTS, 120 * PILOT_SIZE)
