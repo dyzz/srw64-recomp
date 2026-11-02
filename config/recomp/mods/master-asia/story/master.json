@@ -5,6 +5,7 @@
       "id": "persuade",
       "note": "死闘!ランタオ島大決戦（後）: once Domon and Master Asia have talked in battle (the original's 001d387c sets 131 to 0), Domon may persuade him; with 50 kills or more this is the one offered (under 50, the refusal below). He leaves instead of falling, so the second half of his defeat event (001d38c8) is done here: Wong, then the Devil Gundam or the Grand Master Gundam. 131 = 3 keeps both of the end event's death scenes away.",
       "scene": 129,
+      "set_flags": ["persuaded"],
       "when": { "persuade": { "by": 4, "target": 18 } },
       "if": { "vars": { "131": 0 }, "kills": { "4": 50 } },
       "do": [
@@ -126,6 +127,7 @@
       "id": "persuade-oz",
       "note": "絶望と悲しみの拳（後）, the OZ route's: the same persuasion as scene 129's. Here the after-battle talk (001d820c) sets 133 to 0, and the second half of Master Asia's defeat event (001d8250) starts the delay event of Wong's next phase (3D52 slot 1 when Allenby is safe, 129 or 128 at 2, else slot 2). 133 stays 0, so neither death scene, the farewell (133 = 3) nor Quattro's afterword (133 = 1) of the end event plays.",
       "scene": 137,
+      "set_flags": ["persuaded"],
       "when": {
         "persuade": {
           "by": 4,
@@ -400,6 +402,82 @@
             "level": {
               "like": 4
             }
+          }
+        }
+      ]
+    },
+    {
+      "id": "comes-along",
+      "scene": 81,
+      "note": "The next stage on the Independence Army route, 決死の突破作戦（前）: after its opening, a word from Master Asia when he is on our roster and was persuaded (the flag the persuasion set two stages back keeps with the saves).",
+      "when": {
+        "after": "opening"
+      },
+      "if": {
+        "roster": {
+          "pilots": [
+            18
+          ]
+        },
+        "flags": [
+          "persuaded"
+        ]
+      },
+      "do": [
+        {
+          "say": 18,
+          "text": {
+            "ja": "ドモン、遅れを取るでないぞ！　流派東方不敗の拳、とくと見せてくれよう！",
+            "zh-Hans": "多蒙，别落在后面！就让他们见识见识流派东方不败的拳法！",
+            "zh-Hant": "多門，別落在後面！就讓他們見識見識流派東方不敗的拳法！",
+            "en": "Don't fall behind, Domon! Let them see the fists of the Undefeated of the East!"
+          }
+        },
+        {
+          "say": 4,
+          "text": {
+            "ja": "はい、師匠！",
+            "zh-Hans": "是，师父！",
+            "zh-Hant": "是，師父！",
+            "en": "Yes, Master!"
+          }
+        }
+      ]
+    },
+    {
+      "id": "comes-along-oz",
+      "scene": 96,
+      "note": "The same on the OZ route's next stage, 決戦!皇帝ズールとの対決!（前）.",
+      "when": {
+        "after": "opening"
+      },
+      "if": {
+        "roster": {
+          "pilots": [
+            18
+          ]
+        },
+        "flags": [
+          "persuaded"
+        ]
+      },
+      "do": [
+        {
+          "say": 18,
+          "text": {
+            "ja": "ドモン、遅れを取るでないぞ！　流派東方不敗の拳、とくと見せてくれよう！",
+            "zh-Hans": "多蒙，别落在后面！就让他们见识见识流派东方不败的拳法！",
+            "zh-Hant": "多門，別落在後面！就讓他們見識見識流派東方不敗的拳法！",
+            "en": "Don't fall behind, Domon! Let them see the fists of the Undefeated of the East!"
+          }
+        },
+        {
+          "say": 4,
+          "text": {
+            "ja": "はい、師匠！",
+            "zh-Hans": "是，师父！",
+            "zh-Hant": "是，師父！",
+            "en": "Yes, Master!"
           }
         }
       ]

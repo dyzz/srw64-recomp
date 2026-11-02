@@ -94,6 +94,10 @@ struct Event {
     std::map<unsigned,unsigned> kills;             // pilot -> at least this many kills (our side)
     std::map<unsigned,unsigned> kills_below;       // pilot -> fewer kills than this (our side)
     std::vector<std::string> fired,not_fired;      // other events of the package (ids)
+    // Across stages: our roster has (or lacks) these pilots and units; the package's
+    // long-term flags are (or are not) set. set_flags: set when the event has run to its end.
+    std::vector<unsigned> has_pilots,has_units,lacks_pilots,lacks_units;
+    std::vector<std::string> flags,not_flags,set_flags;
     bool repeat{};
     std::vector<uint16_t> words;                   // instructions and FFFF, text ids final
     std::vector<std::pair<size_t,unsigned>> levels;   // a join's level operand -> as this pilot's
@@ -159,6 +163,24 @@ inline void add_image(Library& library,const std::string& package,const json& im
                 (*into)[p]=n;
             }
         }
+        auto numbers=[&](const char* name,const char* kind,unsigned top) {
+            std::vector<unsigned> out;
+            const auto roster=e.value(name,json::object());
+            for(const auto& n:roster.value(kind,json::array())) {
+                if(n.get<unsigned>()>top)throw std::runtime_error(event.id+"："+name+"."+kind+" 超出范围");
+                out.push_back(n.get<unsigned>());
+            }
+            return out;
+        };
+        event.has_pilots=numbers("roster","pilots",360);event.has_units=numbers("roster","units",362);
+        event.lacks_pilots=numbers("not_roster","pilots",360);event.lacks_units=numbers("not_roster","units",362);
+        for(const auto& [name,into]:{std::pair{"flags",&event.flags},{"not_flags",&event.not_flags},{"set_flags",&event.set_flags}})
+            for(const auto& f:e.value(name,json::array())) {
+                const auto flag=f.get<std::string>();
+                if(flag.empty() || flag.size()>32 || flag.find_first_not_of("abcdefghijklmnopqrstuvwxyz0123456789_-")!=std::string::npos)
+                    throw std::runtime_error(event.id+"：标记名只用小写字母、数字、_、-，最多 32 个");
+                into->push_back(flag);
+            }
         event.fired=e.value("fired",std::vector<std::string>{});
         event.not_fired=e.value("not_fired",std::vector<std::string>{});
         event.repeat=e.value("repeat",false);
@@ -254,6 +276,15 @@ inline std::optional<unsigned> kills(const uint8_t* ram,unsigned pilot) {
     const auto r=pilot_record(ram,pilot);
     return r?std::optional<unsigned>(read(ram,*r+pilot_kills,2)):std::nullopt;
 }
+// Our roster's unit instances (140 x 0x54 at 8016A210): +0 in use, +2 the unit.
+inline constexpr uint32_t unit_instances=0x8016A210, unit_instance_size=0x54, unit_instance_count=140;
+inline bool has_unit(const uint8_t* ram,unsigned unit) {
+    for(uint32_t i=0;i<unit_instance_count;++i) {
+        const uint32_t u=unit_instances+i*unit_instance_size;
+        if(read(ram,u,1) && read(ram,u+2,2)==unit)return true;
+    }
+    return false;
+}
 // A join "like" a pilot: 3D5A registers at the stage's base level (8010F5F3) plus its
 // second operand (800AAD28), so the operand is that pilot's level (record +5) less the base.
 inline constexpr uint32_t base_level=0x8010F5F3, pilot_level=0x05;
@@ -269,6 +300,7 @@ struct View {
     std::function<unsigned(unsigned)> variable;       // 800A496C
     std::function<double(unsigned)> hp;               // 800A293C: percent, 0 defeated, 103 gone
     std::function<std::optional<unsigned>(unsigned)> kills;   // our pilot's kills; none when not ours
+    std::function<bool(unsigned)> has_pilot,has_unit;          // on our roster
 };
 // Mirrors of the original handlers (8009E598, 8009E604, 8009E6E4, 8009EA88, 8009E9B4,
 // 8009E834, 8009E8B4) without their slot bookkeeping.
@@ -308,8 +340,13 @@ struct State {
     int scene=-1;
     std::set<std::string> fired;
     std::optional<size_t> running;                      // event index while its words run
-    std::map<uint64_t,std::set<std::string>> snapshots; // suspend record hash -> fired
+    std::set<std::string> flags;                        // long-term: package/flag, kept with every save
+    struct Saved {std::set<std::string> fired,flags;};
+    std::map<uint64_t,Saved> snapshots;                 // save record hash -> what went with it
     bool loaded{};
+    // A copy for the debug interface's status, which reads it off the game thread.
+    std::mutex status_mutex;
+    json status=json::object();
     // The lines, also read by the dialogue reader off the game thread.
     std::mutex texts_mutex;
     std::shared_ptr<const std::vector<Text>> texts=std::make_shared<std::vector<Text>>();
@@ -317,6 +354,21 @@ struct State {
 inline State& state(){static State value;return value;}
 inline bool& disabled(){static bool value{};return value;}   // a custom campaign runs
 
+// Game thread, after a change: the copy the debug interface reads.
+inline void publish() {
+    auto& s=state();
+    json events=json::array();
+    for(const auto& e:s.library.events)if(int(e.scene)==s.scene)events.push_back(e.key());
+    json status={{"scene",s.scene},{"events",s.library.events.size()},{"texts",s.library.texts.size()},
+        {"problems",s.library.problems},{"this_scene",events},{"fired",s.fired},{"flags",s.flags},
+        {"running",s.running?json(s.library.events[*s.running].key()):json()}};
+    std::lock_guard lock(s.status_mutex);s.status=std::move(status);
+}
+// Any thread.
+inline json snapshot() {
+    auto& s=state();
+    std::lock_guard lock(s.status_mutex);return s.status;
+}
 inline void log(const json& fields) {
     auto& s=state();
     std::fprintf(stderr,"SRW64_STORY_MOD %s\n",fields.dump().c_str());
@@ -377,6 +429,13 @@ inline bool read_text(uint32_t rom,uint8_t* ram,uint32_t destination,uint32_t si
 
 inline bool eligible(const Event& e,const std::set<std::string>& fired,const View& v) {
     if(!e.repeat && fired.count(e.key()))return false;
+    const auto& flags=state().flags;
+    for(const auto& f:e.flags)if(!flags.count(e.package+"/"+f))return false;
+    for(const auto& f:e.not_flags)if(flags.count(e.package+"/"+f))return false;
+    for(const auto p:e.has_pilots)if(!v.has_pilot || !v.has_pilot(p))return false;
+    for(const auto u:e.has_units)if(!v.has_unit || !v.has_unit(u))return false;
+    for(const auto p:e.lacks_pilots)if(!v.has_pilot || v.has_pilot(p))return false;
+    for(const auto u:e.lacks_units)if(!v.has_unit || v.has_unit(u))return false;
     for(const auto& id:e.fired)if(!fired.count(e.package+"/"+id))return false;
     for(const auto& id:e.not_fired)if(fired.count(e.package+"/"+id))return false;
     for(const auto& [var,value]:e.vars)if(!v.variable || v.variable(var)!=value)return false;
@@ -400,7 +459,8 @@ inline void registered(const uint8_t* ram,unsigned mode) {
     s.scene=int(read(ram,scene_byte,1));
     s.running.reset();
     if(mode==0)s.fired.clear();
-    log({{"action","registered"},{"scene",s.scene},{"mode",mode},{"fired",s.fired}});
+    log({{"action","registered"},{"scene",s.scene},{"mode",mode},{"fired",s.fired},{"flags",s.flags}});
+    publish();
 }
 
 // Puts an event where it runs, as the ROM lays one out: a five-word header (its type, four
@@ -419,6 +479,7 @@ inline void began(uint8_t* ram,size_t index) {
     write16(ram,engine+f_count,uint16_t(read(ram,engine+f_count,2)+1));
     s.fired.insert(e.key());s.running=index;
     log({{"action","started"},{"event",e.key()},{"scene",s.scene},{"trigger",event_type(e.trigger)}});
+    publish();
 }
 // The first event of this scene that fits, in the triggers `wanted` keeps.
 template<class Wanted>
@@ -506,17 +567,27 @@ inline bool special(uint8_t* ram,const View& v) {
 inline void stepped(uint16_t status) {
     auto& s=state();
     if(!s.running || status!=0x80)return;
-    log({{"action","finished"},{"event",s.library.events[*s.running].key()}});
+    const auto& e=s.library.events[*s.running];
+    for(const auto& f:e.set_flags)s.flags.insert(e.package+"/"+f);
+    log({{"action","finished"},{"event",e.key()},{"flags",s.flags}});
     s.running.reset();
+    publish();
 }
 
-// --- Suspend records -----------------------------------------------------------------
+// --- Save records ---------------------------------------------------------------------
 
-// What has fired goes with each suspend record the game writes (80093278, to its buffer or
-// to SRAM), found again by the record's bytes when one is read back (800936A0).
-inline uint64_t record_hash(const uint8_t* ram) {
-    uint64_t h=1469598103934665603ull;
-    for(uint32_t i=0;i<suspend_size;++i){h^=read(ram,suspend_buffer+i,1);h*=1099511628211ull;}
+// What has fired in the stage and the long-term flags go with each record the game
+// serializes: a suspend record (80093278, 0x3AE0 at 800FBEF0, to its buffer or to SRAM)
+// or a slot record (800924D8, 0x1F00 at 801C2600, in the intermission), and are found
+// again by the record's bytes when one is restored (800936A0, 800927A4). A slot record's
+// first word (bit 15 and checksum) is written after it, so its hash starts past it.
+enum class Record {suspend,slot};
+inline constexpr uint32_t slot_buffer=0x801C2600, slot_size=0x1F00;
+inline uint64_t record_hash(const uint8_t* ram,Record kind=Record::suspend) {
+    const uint32_t from=kind==Record::slot?slot_buffer+2:suspend_buffer;
+    const uint32_t size=kind==Record::slot?slot_size-2:suspend_size;
+    uint64_t h=kind==Record::slot?0x9E3779B97F4A7C15ull:1469598103934665603ull;
+    for(uint32_t i=0;i<size;++i){h^=read(ram,from+i,1);h*=1099511628211ull;}
     return h;
 }
 inline fs::path sidecar(uint64_t hash) {
@@ -525,32 +596,47 @@ inline fs::path sidecar(uint64_t hash) {
     const auto folder=keep?keep():fs::path();
     return folder.empty()?fs::path():folder/"story-state"/name;
 }
-inline void serialized(const uint8_t* ram,bool to_sram) {
-    auto& s=state();
-    if(disabled() || s.scene<0)return;
-    const auto hash=record_hash(ram);
-    s.snapshots[hash]=s.fired;
-    if(s.snapshots.size()>256)s.snapshots.erase(s.snapshots.begin());
-    if(const auto file=sidecar(hash);to_sram && !file.empty() && !s.fired.empty()) {
-        std::error_code ec;
-        fs::create_directories(file.parent_path(),ec);
-        std::ofstream(file)<<json({{"schema",state_schema},{"scene",s.scene},{"fired",s.fired}}).dump()<<'\n';
-    }
-}
-inline void restored(const uint8_t* ram,bool from_sram) {
+inline void serialized(const uint8_t* ram,bool to_sram,Record kind=Record::suspend) {
     auto& s=state();
     if(disabled())return;
-    const auto hash=record_hash(ram);
+    State::Saved saved{kind==Record::slot?std::set<std::string>{}:s.fired,s.flags};
+    const auto hash=record_hash(ram,kind);
+    s.snapshots[hash]=saved;
+    if(s.snapshots.size()>256)s.snapshots.erase(s.snapshots.begin());
+    // The intermission serializes only to write a slot, so its sidecar always goes to disk.
+    const bool lasting=to_sram || kind==Record::slot;
+    if(const auto file=sidecar(hash);lasting && !file.empty() && !(saved.fired.empty() && saved.flags.empty())) {
+        std::error_code ec;
+        fs::create_directories(file.parent_path(),ec);
+        std::ofstream(file)<<json({{"schema",state_schema},{"scene",s.scene},{"fired",saved.fired},{"flags",saved.flags}}).dump()<<'\n';
+    }
+}
+inline void restored(const uint8_t* ram,bool from_sram,Record kind=Record::suspend) {
+    auto& s=state();
+    if(disabled())return;
+    const auto hash=record_hash(ram,kind);
     std::string from="none";
-    if(const auto found=s.snapshots.find(hash);found!=s.snapshots.end()){s.fired=found->second;from="memory";}
+    s.fired.clear();s.flags.clear();
+    if(const auto found=s.snapshots.find(hash);found!=s.snapshots.end()){s.fired=found->second.fired;s.flags=found->second.flags;from="memory";}
     else if(const auto file=sidecar(hash);!file.empty() && fs::exists(file)) {
         std::ifstream in(file);
         const auto document=json::parse(in,nullptr,false);
-        s.fired.clear();
-        if(!document.is_discarded() && document.value("schema","")==state_schema)
+        if(!document.is_discarded() && document.value("schema","")==state_schema) {
             for(const auto& key:document.value("fired",json::array()))s.fired.insert(key.get<std::string>());
+            for(const auto& key:document.value("flags",json::array()))s.flags.insert(key.get<std::string>());
+        }
         from="file";
-    } else s.fired.clear();
-    log({{"action","restored"},{"from_sram",from_sram},{"found",from},{"fired",s.fired}});
+    }
+    if(kind==Record::slot)s.fired.clear();
+    log({{"action","restored"},{"record",kind==Record::slot?"slot":"suspend"},{"from_sram",from_sram},{"found",from},
+         {"fired",s.fired},{"flags",s.flags}});
+    publish();
+}
+// A new game (800A4790 sets every story variable to 3): nothing has fired, no flags.
+inline void new_game() {
+    auto& s=state();
+    s.fired.clear();s.flags.clear();s.running.reset();
+    log({{"action","new_game"}});
+    publish();
 }
 }

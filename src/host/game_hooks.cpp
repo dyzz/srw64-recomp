@@ -77,6 +77,8 @@ static story::View story_view(uint8_t* ram,const recomp_context* ctx) {
     if(const auto b=read(ram,e+story::f_battle_b,4))v.battle_b=read(ram,b+2,2);
     v.variable=[ram](unsigned n){return story::variable(ram,n);};
     v.kills=[ram](unsigned pilot){return story::kills(ram,pilot);};
+    v.has_pilot=[ram](unsigned pilot){return story::pilot_record(ram,pilot).has_value();};
+    v.has_unit=[ram](unsigned unit){return story::has_unit(ram,unit);};
     v.hp=[ram,ctx](unsigned who) {   // 800A293C
         auto c=story_call(ctx);c.r4=int32_t(who);resident_func_800A293C(ram,&c);return double(c.f0.fl);
     };
@@ -245,6 +247,7 @@ void resident_func_800822D8(uint8_t* ram,recomp_context* ctx) {
 }
 void resident_func_800924D8(uint8_t* ram,recomp_context* ctx) {
     srw64_original_intermission_serialize(ram,ctx);srw64::state_probe::save_payload(ram,false,0);
+    story::serialized(ram,true,story::Record::slot);
 }
 void resident_func_80093278(uint8_t* ram,recomp_context* ctx) {
     const unsigned write_sram=uint8_t(ctx->r4);
@@ -326,6 +329,7 @@ void resident_func_800A4BE0(uint8_t* ram,recomp_context* ctx) {
 }
 void resident_func_800927A4(uint8_t* ram,recomp_context* ctx) {
     srw64_original_intermission_restore(ram,ctx);srw64::state_probe::capture(ram,"intermission-restored");
+    story::restored(ram,true,story::Record::slot);
     if(srw64_game_hooks.cheats_restored)srw64_game_hooks.cheats_restored(ram,ctx);
 }
 void resident_func_800936A0(uint8_t* ram,recomp_context* ctx) {
@@ -742,6 +746,11 @@ void resident_func_8009DE7C(uint8_t* rdram, recomp_context* ctx) {
     srw64_original_script_register(rdram, ctx);
     story::disabled() = srw64::campaign::active();
     story::registered(rdram, mode);
+}
+void resident_func_800A4790(uint8_t* rdram, recomp_context* ctx) {
+    // Every story variable set to 3: a new game (the protagonist select, 801C69E4).
+    srw64_original_variables_reset(rdram, ctx);
+    story::new_game();
 }
 void resident_func_8009E3B0(uint8_t* rdram, recomp_context* ctx) {
     // The poll scans event types [a1, a2) of its phase; story MODs' come after the original's.

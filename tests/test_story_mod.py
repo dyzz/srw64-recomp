@@ -38,7 +38,12 @@ class StoryTests(unittest.TestCase):
     def test_example(self):
         image = story.compile_story(json.loads((EXAMPLE / "story/master.json").read_text(encoding="utf-8")))
         self.assertEqual(image["schema"], story.IMAGE_SCHEMA)
-        persuade, refused, joins, persuade_oz, refused_oz, joins_oz = image["events"]
+        persuade, refused, joins, persuade_oz, refused_oz, joins_oz, comes, comes_oz = image["events"]
+        # Across stages: the persuasions set a long-term flag the next stages read with the roster.
+        self.assertEqual((persuade["set_flags"], persuade_oz["set_flags"]), (["persuaded"], ["persuaded"]))
+        self.assertEqual((comes["scene"], comes["trigger"], comes["roster"], comes["flags"]),
+                         (81, "after_opening", {"pilots": [18]}, ["persuaded"]))
+        self.assertEqual(comes_oz["scene"], 96)
         # The OZ route's scene 137: its talk variable is 133, and the refusal stops once persuaded.
         self.assertEqual([e["scene"] for e in (persuade_oz, refused_oz, joins_oz)], [137] * 3)
         self.assertEqual((persuade_oz["vars"], refused_oz["not_fired"], joins_oz["fired"]),
@@ -52,10 +57,10 @@ class StoryTests(unittest.TestCase):
         self.assertEqual(joins["levels"], [[len(joins["words"]) - 4, 4]])   # its level operand, as Domon's
         offset = story.compile_story(source(event(do=[{"join": {"pilot": 18, "unit": 27, "level": {"offset": -2}}}])))["events"][0]
         self.assertEqual((offset["words"][:5], offset["levels"]), ([0x3D5A, 18, 0xFFFE, 27, 500], []))
-        self.assertEqual(len(image["texts"]), 22)
+        self.assertEqual(len(image["texts"]), 26)
         # Each line's place holds the placeholder; its index is in "texts".
         for at, index in persuade["texts"] + refused["texts"] + joins["texts"]:
-            self.assertLess(index, 22)
+            self.assertLess(index, 26)
         self.assertEqual([persuade["words"][at] for at, _ in persuade["texts"]], [story.TEXT] * 5)
         self.assertEqual(image["texts"][1]["speaker"], 18)
 
@@ -87,6 +92,10 @@ class StoryTests(unittest.TestCase):
             source(event(do=[{"jump": 3}])),
             source(event(do=[{"set": {"131": 4}}])),
             source(event(**{"if": {"kills": {"4": 0}}})),
+            source(event(**{"if": {"roster": {"pilots": [400]}}})),
+            source(event(**{"if": {"roster": {"people": [4]}}})),
+            source(event(**{"if": {"flags": ["Bad Flag"]}})),
+            source(event(set_flags=["ok", "x" * 33])),
             source(event(do=[{"join": {"pilot": 18, "unit": 27, "level": {"like": 4, "offset": 1}}}])),
             source(event(do=[{"join": {"pilot": 18, "unit": 27, "level": {"offset": 99}}}])),
             source(event(**{"if": {"kills": {"361": 5}}})),

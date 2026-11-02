@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 import sys
 
@@ -44,6 +45,23 @@ def _side(value, name: str, default: str = "any") -> int:
     if value not in SIDES:
         raise StoryError(f"{name} 只能是 {', '.join(SIDES)}")
     return SIDES[value]
+
+
+FLAG = re.compile(r"[a-z0-9_-]{1,32}")
+
+
+def roster(value, name: str) -> dict:
+    """{"pilots": [...], "units": [...]}: who must be on (or off) our roster."""
+    if not isinstance(value, dict) or not value or set(value) - {"pilots", "units"}:
+        raise StoryError(f"{name} 写 {{\"pilots\": [人物号], \"units\": [机体号]}}")
+    return {kind: [_int(n, f"{name}.{kind}", 0, 360 if kind == "pilots" else 362) for n in value[kind]]
+            for kind in ("pilots", "units") if kind in value}
+
+
+def flags(value, name: str) -> list[str]:
+    if not isinstance(value, list) or not all(isinstance(f, str) and FLAG.fullmatch(f) for f in value):
+        raise StoryError(f"{name} 是标记名的数组：小写字母、数字、_、-，最多 32 个")
+    return list(value)
 
 
 def trigger(when: dict) -> tuple[str, list[int]]:
@@ -209,7 +227,7 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
     for row in document.get("events", []):
         where = row.get("id", "?") if isinstance(row, dict) else "?"
         try:
-            unknown = set(row) - {"id", "scene", "when", "if", "repeat", "do", "note"}
+            unknown = set(row) - {"id", "scene", "when", "if", "repeat", "set_flags", "do", "note"}
             if unknown:
                 raise StoryError(f"不认识的字段 {sorted(unknown)}")
             if not isinstance(row.get("id"), str) or not row["id"]:
@@ -219,8 +237,9 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
             ids.add(row["id"])
             name, params = trigger(row.get("when"))
             cond = row.get("if", {})
-            if not isinstance(cond, dict) or set(cond) - {"vars", "fired", "not_fired", "kills", "kills_below"}:
-                raise StoryError("if 只能写 vars、fired、not_fired、kills、kills_below")
+            known = {"vars", "fired", "not_fired", "kills", "kills_below", "roster", "not_roster", "flags", "not_flags"}
+            if not isinstance(cond, dict) or set(cond) - known:
+                raise StoryError("if 只能写 " + "、".join(sorted(known)))
             variables = {str(_int(int(k), "vars 变量", 0, 199)): _int(v, "vars 值", 0, 3) for k, v in cond.get("vars", {}).items()}
             kills = {str(_int(int(k), "kills 人物", 0, 360)): _int(v, "kills 击坠数", 1, 9999) for k, v in cond.get("kills", {}).items()}
             kills_below = {str(_int(int(k), "kills_below 人物", 0, 360)): _int(v, "kills_below 击坠数", 1, 9999)
@@ -241,7 +260,10 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
                 refs.append([at, words[at]])
                 words[at] = TEXT
             events.append({"id": row["id"], "scene": _int(row.get("scene"), "scene", 0, 255), "trigger": name,
-                           "params": params, "vars": variables, "kills": kills, "kills_below": kills_below, "fired": list(cond.get("fired", [])),
+                           "params": params, "vars": variables, "kills": kills, "kills_below": kills_below,
+                           **{k: roster(cond[k], k) for k in ("roster", "not_roster") if k in cond},
+                           **{k: flags(cond[k], k) for k in ("flags", "not_flags") if k in cond},
+                           "set_flags": flags(row.get("set_flags", []), "set_flags"), "fired": list(cond.get("fired", [])),
                            "not_fired": list(cond.get("not_fired", [])), "repeat": repeat,
                            "words": words, "texts": refs, "levels": levels,
                            "listing": [f"{e['opcode']} {','.join(map(str, e['operands']))}".rstrip() for e in assembled["listing"]]})

@@ -56,7 +56,7 @@ int main(int argc,char** argv) {
     std::ifstream example(argv[2]);
     story::Library master;
     story::add_image(master,"srw64.master-asia",json::parse(example));
-    check(master.events.size()==6 && master.events[0].trigger==story::Trigger::persuade && master.events[0].a==4 && master.events[0].b==18,"the example's persuasion");
+    check(master.events.size()==8 && master.events[0].trigger==story::Trigger::persuade && master.events[0].a==4 && master.events[0].b==18,"the example's persuasion");
     check(master.events[0].vars==std::map<unsigned,unsigned>{{131,0}},"after the talk");
     check(master.events[0].kills==std::map<unsigned,unsigned>{{4,50}},"Domon at 50 kills");
     check(master.events[1].trigger==story::Trigger::persuade && master.events[1].kills_below==std::map<unsigned,unsigned>{{4,50}} &&
@@ -134,7 +134,10 @@ int main(int argc,char** argv) {
     check(read(ram.data(),e+story::f_persuade,2)==0xFFFF && read(ram.data(),e+story::f_status,2)==0x2000,"mark cleared, status 2000");
     check(read(ram.data(),story::region,2)==9 && read(ram.data(),story::region+10,2)==0x3D3E && read(ram.data(),story::region+12,2)==story::text_first,"a type-9 header, then the first line");
     check(s.fired.count("srw64.master-asia/persuade")==1,"fired");
+    check(!s.flags.count("srw64.master-asia/persuaded"),"its flag only once it has run");
     write16(ram.data(),e+story::f_status,0x80);
+    story::stepped(0x80);
+    check(s.flags==std::set<std::string>{"srw64.master-asia/persuaded"},"run to its end: the long-term flag");
     check(story::persuasion(ram.data(),v,unit)==-1,"once only, and no refusal at 50");
 
     // --- After the end event ---------------------------------------------------------------
@@ -176,6 +179,32 @@ int main(int argc,char** argv) {
     write32(ram.data(),story::suspend_buffer+0x100,2);
     story::restored(ram.data(),true);
     check(s.fired.empty(),"a record never seen: nothing has fired");
+
+    // --- Across stages ---------------------------------------------------------------------
+    // Scene 81's word from Master Asia: on our roster and persuaded.
+    s.scene=81;s.fired.clear();s.flags.clear();
+    v.has_pilot=[&](unsigned pilot){return story::pilot_record(ram.data(),pilot).has_value();};
+    v.has_unit=[&](unsigned unit){return story::has_unit(ram.data(),unit);};
+    write16(ram.data(),e+story::f_mode,0xC1);write32(ram.data(),e+0x8,0);write16(ram.data(),e+story::f_status,0x80);
+    check(!story::special(ram.data(),v),"scene 81: not without him nor the flag");
+    const uint32_t record_master=story::pilot_records+2*story::pilot_record_size;
+    write8(ram.data(),record_master,1);write16(ram.data(),record_master+2,18);
+    check(!story::special(ram.data(),v),"scene 81: on the roster, but no flag");
+    s.flags={"srw64.master-asia/persuaded"};
+    check(story::special(ram.data(),v) && s.fired.count("srw64.master-asia/comes-along"),"scene 81: on the roster and persuaded");
+    check(!story::has_unit(ram.data(),27),"no Master Gundam yet");
+    write8(ram.data(),story::unit_instances+5*story::unit_instance_size,1);write16(ram.data(),story::unit_instances+5*story::unit_instance_size+2,27);
+    check(story::has_unit(ram.data(),27),"a unit on the roster");
+    // A slot record keeps the flags (not what fired in a stage); a new game drops them.
+    for(uint32_t i=0;i<story::slot_size;i+=4)write32(ram.data(),story::slot_buffer+i,i*40503u+7);
+    story::serialized(ram.data(),true,story::Record::slot);
+    write16(ram.data(),story::slot_buffer,0x8123);   // the checksum word, written later, is not hashed
+    s.flags.clear();s.snapshots.clear();
+    story::restored(ram.data(),true,story::Record::slot);
+    check(s.flags==std::set<std::string>{"srw64.master-asia/persuaded"} && s.fired.empty(),"a slot record: flags back from the sidecar");
+    story::new_game();
+    check(s.flags.empty() && s.fired.empty(),"a new game: no flags");
+    check(story::snapshot().value("scene",0)==81,"the status copy");
 
     // --- Lines ------------------------------------------------------------------------------
     uint32_t offset{},size{};

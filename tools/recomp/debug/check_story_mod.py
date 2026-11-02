@@ -3,7 +3,7 @@
 config/recomp/mods/master-asia, on a route's mini stage: --route ia is scene 129
 (story-master.json, the talk variable 131), --route oz scene 137 (story-master-oz.json, 133):
 
-  1. the package's events load (story-mod-events.jsonl "loaded": 6 events, 22 lines);
+  1. the package's events load (story-mod-events.jsonl "loaded": 8 events, 26 lines);
   2. before the talk (the talk variable 3) Domon's command menu offers no 説得;
   3. with it at 0 (as the original's after-battle talk leaves it) the menu offers 説得; with
      Domon at 49 kills it is the refusal: its four lines, Master Asia stays, the variable 0;
@@ -176,7 +176,7 @@ try:
     s.enter_mini_stage()
     until(idle, 180, "the stage's opening")
     loaded = story_rows("loaded")
-    check("package loaded", bool(loaded) and loaded[-1]["events"] == 6 and loaded[-1]["texts"] == 22 and not loaded[-1]["problems"], json.dumps(loaded[-1:], ensure_ascii=False))
+    check("package loaded", bool(loaded) and loaded[-1]["events"] == 8 and loaded[-1]["texts"] == 26 and not loaded[-1]["problems"], json.dumps(loaded[-1:], ensure_ascii=False))
     registered = story_rows("registered")
     scene = 129 if args.route == "ia" else 137
     check(f"scene {scene} registered", bool(registered) and registered[-1]["scene"] == scene, json.dumps(registered[-1:]))
