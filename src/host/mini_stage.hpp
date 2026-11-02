@@ -418,8 +418,11 @@ inline void direct_scene(uint8_t* ram) {
 // (D). Not in C, the scenario loader: a restart there (2026-11-02, right after a stage's
 // clear while the next scene was being set up) registered the new scene but its opening
 // never ran; the client waits for a settled mode or goes through the title (title.return).
+// Only the tactical map: a restart out of the intermission after a clear opened the next
+// scene sometimes and left a black scenario screen other times (2026-11-02); from there the
+// client goes through the title (title.return), the original's own way.
 inline bool restartable_mode(unsigned mode) {
-    return mode==3 || mode==0xB || mode==0x11 || mode==0x16 || mode==0x22 || mode==4 || (mode>=0x12 && mode<=0x15) || mode==0xD;
+    return mode==3 || mode==0xB || mode==0x11 || mode==0x16 || mode==0x22;
 }
 // Game thread, frame boundary: true once, when a stage loaded off the title should take
 // over from the running one (the same hand-over as take_direct_entry, from the map).
@@ -432,8 +435,7 @@ inline bool take_restart(const uint8_t* ram) {
     // On the tactical map only between events: a restart while an event still ran (the end
     // event after a clear, 2026-11-02) left the new scene registered but never opened. The
     // request stays pending; after a clear the intermission (mode 4) takes it.
-    if(mode!=4 && !(mode>=0x12 && mode<=0x15) &&
-       (read(ram,script_inject::engine+4,2)!=0xC0 || read(ram,script_inject::engine+0x97C,2)!=0x80))return false;
+    if(read(ram,script_inject::engine+4,2)!=0xC0 || read(ram,script_inject::engine+0x97C,2)!=0x80)return false;
     s.restart=false;s.direct_done=true;
     log({{"action","restart"},{"mode",read(ram,0x8015DA02,1)}});
     return true;
@@ -452,7 +454,7 @@ inline std::string load_file(const std::filesystem::path& file,bool enter=true) 
     // direct entry from the map: no title, no restart of the game between two stages).
     bool restart=false;
     if(!on_title) {
-        if(!enter || !srw64_rdram || !restartable_mode(read(srw64_rdram,0x8015DA02,1)))throw std::runtime_error("mini stage: open stage files from the title menu, the tactical map, the intermission or the world map (not while a scene loads: mode "+std::to_string(srw64_rdram?read(srw64_rdram,0x8015DA02,1):0)+")");
+        if(!enter || !srw64_rdram || !restartable_mode(read(srw64_rdram,0x8015DA02,1)))throw std::runtime_error("mini stage: open stage files from the title menu or the tactical map (mode "+std::to_string(srw64_rdram?read(srw64_rdram,0x8015DA02,1):0)+")");
         restart=true;
     }
     const auto read_json=[](const std::filesystem::path& path) {
