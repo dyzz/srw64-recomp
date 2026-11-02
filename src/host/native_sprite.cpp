@@ -81,9 +81,6 @@ struct Image {
     // hold a colour again at an entry the picture never shows).
     bool any_palette = false;
     std::vector<uint16_t> indices;
-    // Drawn past the frame's parts by this much (original pixels: left, top, right, bottom as
-    // the picture faces): a beam's glow and flashes (tools/hd_ai/beam_ramp_hd.py).
-    float bleed[4]{};
 };
 struct Draw {
     uint32_t id = 0;
@@ -621,8 +618,6 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             image.frames.insert(frames ? row.at("frame").get<uint8_t>() : uint8_t(0));
             image.any_palette = row.value("any_palette", false);
             for (const auto& index : row.value("palette_indices", json::array())) image.indices.push_back(index.get<uint16_t>());
-            if (const auto bleed = row.find("bleed"); bleed != row.end())
-                for (int i = 0; i < 4; ++i) image.bleed[i] = bleed->at(i).get<float>();
             auto asset = std::make_unique<Asset>();
             asset->file = art_directory / row.at("file").get<std::string>();
             if (!hd_texture::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
@@ -728,7 +723,6 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     // What goes in place of the parts: text in the reading language, else an HD frame.
     Draw record;
     TextJob job;
-    float bleed[4]{};
     const bool text = describe && describe(rdram, id, job);
     if (text) {
         record.asset = text_asset(job);
@@ -794,7 +788,6 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
         }
         record.wrap = found->wrap;
         std::copy(std::begin(found->uv), std::end(found->uv), record.uv);
-        std::copy(std::begin(found->bleed), std::end(found->bleed), bleed);
     }
     // 80096CD8: per part F2 SETTILESIZE, then TEXRECT (E4, E1, F1).
     // 8009761C: per part G_VTX of its 4 vertices, the texture load, two F2 SETTILESIZE, G_QUAD.
@@ -857,12 +850,8 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     if (draw.quads && flipped == 1 && !text) std::swap(record.uv[0], record.uv[2]);   // a unit facing the other way
     record.z = z;
     record.color[3] = alpha;
-    if (draw.quads) {   // y up; a unit facing the other way shows the picture's left on the right
-        if (flipped == 1) std::swap(bleed[0], bleed[2]);
-        record.rect[0] = x0 - bleed[0]; record.rect[1] = y1 + bleed[1]; record.rect[2] = x1 + bleed[2]; record.rect[3] = y0 - bleed[3];
-    } else {
-        record.rect[0] = x0 - bleed[0]; record.rect[1] = y0 - bleed[1]; record.rect[2] = x1 + bleed[2]; record.rect[3] = y1 + bleed[3];
-    }
+    if (draw.quads) { record.rect[0] = x0; record.rect[1] = y1; record.rect[2] = x1; record.rect[3] = y0; }
+    else { record.rect[0] = x0; record.rect[1] = y0; record.rect[2] = x1; record.rect[3] = y1; }
     if (!draw.quads) {   // a battle window's sprite moves with the window (battle_hud.hpp)
         float dx, dy;
         battle_hud::sprite_offset(int32_t(id.slot), (x0 + x1) / 2, dx, dy);
