@@ -163,6 +163,11 @@ public:
         std::string ffmpeg;       // "" : SRW64_FFMPEG, else "ffmpeg"
         bool encode=true, lockstep=true;
         unsigned queue=12;        // frames waiting for the worker before the VI thread waits
+        // Gated: nothing is taken until open_gate() (game thread, at the first frame wanted),
+        // and nothing after close_gate(); trim_black drops black frames at both ends of the
+        // picture (the loading and the fade of a battle animation), so a clip is the
+        // animation alone (docs/design/video-capture.md).
+        bool gated=false, trim_black=false;
     };
     // Debug thread. False when one is already running or the files cannot be opened.
     bool start(const std::filesystem::path& directory,Options options) {
@@ -188,6 +193,7 @@ public:
         audio_frames=0;audio_rate=0;audio_start=-1;audio_start_vi=0;
         encoder=nullptr;encode_error.clear();
         began=std::chrono::steady_clock::now();
+        gate=!opts.gated;gate_opened_vi=gate_closed_vi=0;trimmed_lead=trimmed_tail=0;
         queue.clear();stopping=false;on=true;
         worker=std::thread([this]{run();});
         return true;
@@ -206,6 +212,7 @@ public:
         if(!opts.encode){frames.close();times.close();}
         nlohmann::json result={{"presents",count},{"frames",opts.encode?written:count},{"held",held},{"same_tick",same_tick},
                 {"dropped",dropped},{"resized",resized},{"width",out_width},{"height",out_height},{"fps",opts.fps},{"first_vi",first_vi},
+                {"gated",opts.gated},{"gate_opened_vi",gate_opened_vi.load()},{"gate_closed_vi",gate_closed_vi.load()},{"trimmed_lead",trimmed_lead},{"trimmed_tail",trimmed_tail},
                 {"seconds",std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count()},
                 {"audio_path",audio_path.string()},{"audio_frames",audio_frames},{"audio_rate",audio_rate},
                 {"audio_start",audio_start},{"audio_start_vi",audio_start_vi},{"encoded",false},
@@ -225,6 +232,7 @@ public:
     // Audio thread: one block of interleaved stereo samples as queued to the device. A change
     // of rate mid-recording ends the track there (the game sets it once at start-up).
     void audio(const int16_t* samples,size_t count,uint32_t rate) {
+        if(!gate.load())return;
         std::lock_guard lock(mutex);
         if(!on || !count)return;
         if(audio_rate && audio_rate!=rate)return;
@@ -237,7 +245,12 @@ public:
         audio_frames+=count/2;
     }
     // Render thread, once per present: whether to read this one back.
-    bool active() const {return on.load();}
+    bool active() const {return on.load() && gate.load();}
+    // Game thread, for a gated recording: the frames from here on are taken / none after this.
+    void open_gate(){if(on.load() && !gate.exchange(true))gate_opened_vi=srw64_current_vi();}
+    void close_gate(){if(on.load() && gate.exchange(false))gate_closed_vi=srw64_current_vi();}
+    static bool encoder_available(const std::string& ffmpeg){return encoder_runs(ffmpeg);}
+    nlohmann::json gate_state() const {return {{"on",on.load()},{"gate",gate.load()},{"opened_vi",gate_opened_vi.load()},{"closed_vi",gate_closed_vi.load()}};}
     // VI thread, each retrace: in lockstep, a full queue holds the game's clock.
     bool behind() {
         if(!on.load() || !opts.lockstep)return false;
@@ -246,7 +259,7 @@ public:
     }
     // GPU completion handler: one present, RGBA w x h, copied and queued for the worker.
     void add(const uint8_t* rgba,uint32_t w,uint32_t h) {
-        if(!on.load() || !w || !h)return;
+        if(!on.load() || !gate.load() || !w || !h)return;
         Frame frame;
         frame.vi=srw64_current_vi();frame.seconds=std::chrono::duration<double>(std::chrono::steady_clock::now()-began).count();
         frame.w=w;frame.h=h;frame.rgba.assign(rgba,rgba+size_t(w)*h*4);
@@ -293,20 +306,20 @@ private:
     }
     // Worker: scales, places on the timeline, writes to the encoder or the raw files.
     void run() {
-        std::vector<uint8_t> scaled,last;
+        std::vector<uint8_t> scaled;
+        last.clear();black_tail.clear();
         for(;;) {
             Frame frame;
             {
                 std::unique_lock lock(mutex);
                 ready.wait(lock,[&]{return !queue.empty() || stopping;});
-                if(queue.empty())return;
+                if(queue.empty()){trimmed_tail=black_tail.size();black_tail.clear();return;}
                 frame=std::move(queue.front());queue.pop_front();
             }
             const uint32_t ow=std::min(out_width,frame.w&~1u);
             const uint32_t oh=std::max<uint32_t>(2,uint32_t(uint64_t(frame.h)*ow/frame.w)&~1u);
             // Sizes, counters and the encoder are the worker's alone until stop() has joined it.
-            if(!out_height){out_width=ow;out_height=oh;first_vi=frame.vi;}
-            if(ow!=out_width || oh!=out_height){++resized;continue;}   // the window changed size: the rest is dropped
+            if(out_height && (ow!=out_width || oh!=out_height)){++resized;continue;}   // the window changed size: the rest is dropped
             scaled.resize(size_t(ow)*oh*3);
             for(uint32_t y=0;y<oh;++y) {
                 const uint32_t sy=uint32_t(uint64_t(y)*frame.h/oh),sy2=std::min(frame.h-1,sy+1);
@@ -318,6 +331,18 @@ private:
                     for(unsigned k=0;k<3;++k)row[x*3+k]=uint8_t((unsigned(a[k])+b[k]+c[k]+d[k]+2)/4);
                 }
             }
+            if(opts.trim_black) {
+                // Black at the head is not a frame at all; black at the tail waits for a
+                // picture to follow and is dropped at stop() when none does.
+                if(is_black(scaled)) {
+                    if(!out_height){++trimmed_lead;continue;}
+                    if(opts.encode){black_tail.push_back({{},ow,oh,frame.vi,frame.seconds});black_tail.back().rgba.swap(scaled);scaled.clear();continue;}
+                } else if(!black_tail.empty()) {
+                    for(auto& b:black_tail){std::vector<uint8_t> rgb;rgb.swap(b.rgba);emit(rgb,b.vi);}
+                    black_tail.clear();
+                }
+            }
+            if(!out_height){out_width=ow;out_height=oh;first_vi=frame.vi;}
             if(!opts.encode) {
                 frames.write(reinterpret_cast<const char*>(scaled.data()),std::streamsize(scaled.size()));
                 times<<frame.seconds<<' '<<frame.vi<<'\n';
@@ -330,12 +355,20 @@ private:
                 encoder=popen_(command);
                 if(!encoder){encode_error="cannot start "+opts.ffmpeg;continue;}
             }
-            // The timeline: ticks of 1/fps from the first present's VI (60 Hz units).
-            const int64_t tick=int64_t((frame.vi-first_vi)*uint64_t(opts.fps)/60);
-            if(tick==last_tick){++same_tick;continue;}
-            for(int64_t t=last_tick+1;t<tick && !last.empty();++t){write_frame(last);++held;}
-            write_frame(scaled);last=scaled;last_tick=tick;++written;
+            emit(scaled,frame.vi);
         }
+    }
+    // The timeline: ticks of 1/fps from the first kept present's VI (60 Hz units).
+    void emit(const std::vector<uint8_t>& rgb,uint64_t vi) {
+        const int64_t tick=int64_t((vi-first_vi)*uint64_t(opts.fps)/60);
+        if(tick==last_tick){++same_tick;return;}
+        for(int64_t t=last_tick+1;t<tick && !last.empty();++t){write_frame(last);++held;}
+        write_frame(rgb);last=rgb;last_tick=tick;++written;
+    }
+    // Whether an RGB picture is (nearly) black: every 7th pixel at most 8 in every channel.
+    static bool is_black(const std::vector<uint8_t>& rgb) {
+        for(size_t i=0;i+2<rgb.size();i+=21)if(rgb[i]>8 || rgb[i+1]>8 || rgb[i+2]>8)return false;
+        return true;
     }
     void write_frame(const std::vector<uint8_t>& rgb) {
         if(!encoder)return;
@@ -363,7 +396,11 @@ private:
     std::condition_variable ready;
     std::thread worker;
     std::deque<Frame> queue;
-    std::atomic_bool on{false};
+    std::atomic_bool on{false},gate{true};
+    std::atomic<uint64_t> gate_opened_vi{0},gate_closed_vi{0};
+    uint64_t trimmed_lead=0,trimmed_tail=0;
+    std::vector<uint8_t> last;
+    std::vector<Frame> black_tail;
     bool stopping{};
     Options opts;
     std::filesystem::path dir,frames_path,times_path,audio_path,video_path,final_path;

@@ -449,6 +449,7 @@ class Session:
             return {"path": str(target), "seconds": round(emitted / max(1, result["fps"]), 2), "presents": result["presents"],
                     "frames": emitted, "unique": result["frames"], "held": result.get("held"), "same_tick": result.get("same_tick"), "dropped": result.get("dropped"),
                     "size": [result["width"], result["height"]], "fps": result["fps"],
+                    "trimmed": [result.get("trimmed_lead", 0), result.get("trimmed_tail", 0)],   # black frames dropped at the ends (trim_black)
                     "audio_seconds": round(result["audio_frames"] / result["audio_rate"], 2) if result.get("audio_rate") else None}
         if local:
             directory = Path(started["directory"]) if started else Path(result["frames_path"]).parent

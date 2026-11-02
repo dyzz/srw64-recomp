@@ -95,6 +95,13 @@ inline State& state(){static State s;return s;}
 // portraits of the protagonist group follow the route variable, the names the dialogue's
 // name tokens). Null in a host without the name entry, and in the unit tests.
 inline bool (*route_names)(uint8_t* ram,unsigned route){};
+// The route the name page would have set (801C69D0: 3DD3 Brad, 3DD4 Manami, 3DD1 Ark, 3DD2
+// Selain; the portrait drawer 8008F970 maps the protagonist 25 and the partner 29 through
+// it) and both people's default names (route_names). Returns whether the names were written.
+inline bool write_route(uint8_t* ram,unsigned route) {
+    guest::write16(ram,0x801602EE,uint16_t(0x3DD1+((route+2)&3)));
+    return route_names && route_names(ram,route);
+}
 inline bool active(){auto& s=state();std::lock_guard lock(s.mutex);return s.active;}
 
 inline bool quick_start() {
@@ -398,11 +405,7 @@ inline void direct_scene(uint8_t* ram) {
     // portrait drawer 8008F970 maps the protagonist 25 and the partner 29 through it), and
     // both people's default names. Without a route the variable stays as the reset left it.
     bool names_written=false;
-    if(s.image && s.image->route) {
-        const unsigned route=*s.image->route;
-        guest::write16(ram,0x801602EE,uint16_t(0x3DD1+((route+2)&3)));
-        names_written=route_names && route_names(ram,route);
-    }
+    if(s.image && s.image->route)names_written=write_route(ram,*s.image->route);
     // The script engine parked as at the end of an event (script_inject.hpp observe: PC 0,
     // state 0x80, no event running), so the new scene's opening starts as from the title. A
     // restart taken while the previous stage's end event still ran left its PC in place: the
