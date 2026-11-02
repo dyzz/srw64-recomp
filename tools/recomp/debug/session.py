@@ -445,8 +445,9 @@ class Session:
                     source.parent.rmdir()
                 except OSError:
                     pass
-            return {"path": str(target), "seconds": round(result["frames"] / max(1, result["fps"]), 2), "presents": result["presents"],
-                    "frames": result["frames"], "held": result.get("held"), "dropped": result.get("dropped"),
+            emitted = result["frames"] + (result.get("held") or 0)   # unique presents plus the holds between them
+            return {"path": str(target), "seconds": round(emitted / max(1, result["fps"]), 2), "presents": result["presents"],
+                    "frames": emitted, "unique": result["frames"], "held": result.get("held"), "same_tick": result.get("same_tick"), "dropped": result.get("dropped"),
                     "size": [result["width"], result["height"]], "fps": result["fps"],
                     "audio_seconds": round(result["audio_frames"] / result["audio_rate"], 2) if result.get("audio_rate") else None}
         if local:

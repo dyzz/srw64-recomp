@@ -41,6 +41,17 @@
 
 ## 状态
 
-- 2026-11-01：静态完成，Mac 上编过宿主与单元测试；**没有实机验证**。要验证的顺序：① 阿克篇第 1 话镜像带 `route: 2` 直接进入，看阿克／埃尔利希头像；② 开场里 `mini_stage.load` 另一关，看是否切过去、对白阅读器是否干净；③ 带 `story_vars` 的关卡看条件台词是否出现；④ 选项框 `choice.pick`；⑤ `record.start`（Windows 上要先放一个 ffmpeg.exe）录 20 秒演出，看 `held`／`dropped` 与成片抖动。
-- 地图上重进没有走淡出，是硬切；录像里不要留这一帧。
-- 第三类条件（谁在场）仍靠改精简关；要是以后需要“把某几个人放到名册上”再做宿主侧的名册预置。
+- 2026-11-01：静态完成，Mac 上编过宿主与单元测试。
+- 2026-11-02：Win 台式机实机（a6406234，D:\srw64-video\game，`deploy-v2.sh` 部署）全部通过：
+  - 阿克篇第 1 话带 `route: 2` 直接进入：路线变量 3DD1，两人姓名四组字段写入，阿克／埃尔利希头像正确，提示条不画（`dialogue_hints off`）。
+  - 地图上 `mini_stage.load` 换关 0.8 秒进下一话；第 43 话 `story_vars {18: 2}` 控制的台词出现；第 10 话选项框由 `choice.pick` 作答（答案 3DDA）；空闲地图上 `choice.show` 调出第 10 话的选项框并作答。
+  - 录像（宿主端 ffmpeg 9.0.2，1920×1080、30 fps）：对白片段 40 s 1200 帧，重复帧 0.8%；鉴赏战斗 17.4 s 521 帧，重复帧 2.9%（含淡入）；标题 10 s 整 300 帧、0 补帧 0 丢帧；音画同长；录像时呈现率仍是 30/s，与不录时相同。`encode:false` 回落（原始帧由客户端编码）也通过。
+  - 一局游戏连拍三话（`shoot_v2.py` 的方式）用时：第 2 话 67 s（4 张）、第 12 话 59 s、第 43 话 83 s、第 10 话 28 s。
+- 实机踩到并已改的：
+  - 换关只能在稳定模式做（战术地图 3/B/11/16/22、场间 4/12–15、世界地图 D）；在模式 C（场景装载中）换关会登记场景但开场永远不跑。宿主已排除 C，`shoot_v2.enter` 等稳定模式，等不到就 `title.return` 走标题。
+  - 鉴赏战斗跑在模式 0x1C（标题演示战斗），结束看 `status.battle_viewer.running` 转否；`returned` 只亮一帧。
+  - 从地图回标题要在原版接受 Z+START 的帧（`status.quick_load.usable_title`），事件跑着时不接受；`rec_v2.to_title` 轮询到可用再发。
+  - 台式机的源码副本没有反汇编扫描（cpu-scan），`generate_cpu` 跑不了：`deploy-v2.sh` 改为把 Mac worktree 为本分支生成的 `build/recomp/cpu-bound` 打包传过去；ROM 也要拷进 src。
+  - `small` 是 windows.h 的宏，不能做标识符。
+- 本地工具（`local/hero-story-videos/win/`，不进仓库）：`make_plan.py` 生成每集计划；`shoot_v2.py` 一局连拍；`rec_v2.py` 一条命令录鉴赏片段（`viewer` 规格）或关卡片段（`stage` 规格：对白出现／战斗开始时开录，按阅读节奏翻页、答选项，读完或战斗结束 2 秒后停录）或手动驱动时自动起止（`--arm`）；`analyze_clip.py` 看成片的帧数与重复帧；`verify_v2.py`、`fallback_test.py` 是这次的验证脚本。
+- 待办：第三类条件（谁在场）仍靠改精简关；地图上换关是硬切没有淡出，录像里不要留那一帧；`演1` 这类「首战演出」要有人操作攻击（`rec_v2.py --arm RUN out.mp4 --start battle` 已能在攻击时自动起止）。
