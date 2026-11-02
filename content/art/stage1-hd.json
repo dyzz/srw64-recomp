@@ -3,8 +3,8 @@
   "id": "srw64.stage1-art",
   "locale": "neutral",
   "source": {
-    "path": "assets/hd-ai/worldmap-surfaces/pack-v14",
-    "manifest_sha256": "c22c93f4882b53adfbb2fa0352685c77e7085287c6def973fbf73b114754b666"
+    "path": "assets/hd-ai/worldmap-surfaces/pack-v15",
+    "manifest_sha256": "4fc065f58fe5d4ee38628d4a9914a0f4c4577f262875e1a3edea8ed74c181f89"
   },
   "textures": [
     {
@@ -14741,6 +14741,11 @@
       "hash": "66a20d35dfcd3141",
       "kind": "worldmap",
       "sha256": "5c91973b93998f900261ab4d686dfa40d471f07d1a2556196e521928be5839e8"
+    },
+    {
+      "hash": "ba56a5d567d933cb",
+      "kind": "battle",
+      "sha256": "28d2cd0e677420d9b8e28278fae2a92b2a312f855fe26977a21e4f4eeac13de5"
     }
   ],
   "worldmap": {
@@ -14981,8 +14986,8 @@
     "manifest_sha256": "c3cae3c013e2d7a0ebd60849db1b9a723b95777c071be9a0afdee99100e44213"
   },
   "backgrounds": {
-    "path": "assets/hd-ai/backgrounds/whole-v4",
-    "manifest_sha256": "a8e7bc742f758c6d65a4a761eef35717ef34066cc6282e8d60fc90088d7f670a"
+    "path": "assets/hd-ai/backgrounds/whole-v7",
+    "manifest_sha256": "04bac94f2c4ca5078aee764c074db3ff16c0b7b6ff900285a169a3497895bad1"
   },
   "units": {
     "path": "assets/hd-ai/unit-poses/whole-v2",
@@ -14997,7 +15002,7 @@
     "manifest_sha256": "6d94e8e4ddb693ce9d79c6eafa2b8b2b308b135116cfc08d2448604827607c55"
   },
   "battle_sprites": {
-    "path": "assets/hd-ai/cutins/pack-v7",
-    "manifest_sha256": "9b60b0bb0f42912cb2265c174e30a60816b25b78fb6e34cb62cf05957d5ab856"
+    "path": "assets/hd-ai/cutins/pack-v8",
+    "manifest_sha256": "6b7702ba0e3d4da2f7271e25696cdedf2f0780d3660ff884acc2d0c6176ef172"
   }
 }

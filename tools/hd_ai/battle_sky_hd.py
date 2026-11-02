@@ -12,6 +12,7 @@ little enlarged so the rows the camera uncovers above them are real picture
 the exact source RGBA in the centre (docs/design/battle-vortex-wide.md).
 
     build/esrgan-venv/bin/python -m tools.hd_ai.battle_sky_hd build --output assets/hd-ai/battle-skies/v1
+    build/esrgan-venv/bin/python -m tools.hd_ai.battle_sky_hd build --scroll --output assets/hd-ai/battle-skies/scroll-v1
     .venv/bin/python -m tools.hd_ai.battle_sky_hd merge --skies assets/hd-ai/battle-skies/v1 \\
         --base assets/hd-ai/backgrounds/whole-v3 --output assets/hd-ai/backgrounds/whole-v4
     .venv/bin/python -m tools.hd_ai.battle_sky_hd sheet --skies assets/hd-ai/battle-skies/v1
@@ -55,10 +56,10 @@ def skies() -> dict[tuple[int, int], set[str]]:
     return found
 
 
-def decode(table: ResourceTable, image: int, palette: int) -> Image.Image:
+def decode(table: ResourceTable, image: int, palette: int, any_size: bool = False) -> Image.Image:
     data = table.extract(image)[0]
     kind, width, height, _ = struct.unpack_from('>4H', data)
-    if (kind, width, height) != (5, *SOURCE):
+    if kind != 5 or (not any_size and (width, height) != SOURCE):
         raise ValueError(f'resource {image} is not a 320x240 CI4 picture')
     raw = table.extract(palette)[0][8:8 + 32]
     colours = [tuple(round(((v >> s) & 31) * 255 / 31) for s in (11, 6, 1)) for (v,) in struct.iter_unpack('>H', raw)]
@@ -66,7 +67,19 @@ def decode(table: ResourceTable, image: int, palette: int) -> Image.Image:
     for byte in data[8:8 + width * height // 2]:
         for index in (byte >> 4, byte & 15):
             out += bytes(colours[index]) + bytes([0 if index == 0 else 255])
-    return Image.frombytes('RGBA', SOURCE, bytes(out))
+    return Image.frombytes('RGBA', (width, height), bytes(out))
+
+
+# The scrolling effect layer (slot 0x19, a special move's streaming aura or nebula behind
+# the units): 801C3610(kind, speed) takes its picture and palette from D_80222D98, 8 bytes a
+# kind, in overlay load_00121560. Its pictures are 320 or 352 by 256; native_background.cpp
+# replaces them like a sky drawn tile by tile, through the extent.
+SCROLL_TABLE = 0x121560 + (0x80222D98 - 0x801C2600)
+SCROLL_KINDS = 6
+
+
+def scroll_layers(rom: bytes) -> list[tuple[int, int]]:
+    return [struct.unpack_from('>2H', rom, SCROLL_TABLE + 8 * kind) for kind in range(SCROLL_KINDS)]
 
 
 def build(args: argparse.Namespace) -> None:
@@ -86,13 +99,12 @@ def build(args: argparse.Namespace) -> None:
 
     device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
     model = spandrel.ModelLoader().load_from_file(str(MODELS / '4x-PixelPerfectV4.pth')).model.eval().to(device)
-    table = ResourceTable((ROOT / 'rom.z64').read_bytes())
+    rom = (ROOT / 'rom.z64').read_bytes()
+    table = ResourceTable(rom)
     args.output.mkdir(parents=True, exist_ok=True)
-    rows = []
-    width, height = SOURCE
-    for (image, palette), terrains in sorted(skies().items()):
-        name = f'sky-{image}-{palette}.png'
-        source = decode(table, image, palette)
+
+    def enlarge(source: Image.Image, path: Path) -> None:
+        width, height = source.size
         rgb = fill_transparent(source)
         strip = Image.new('RGB', (3 * width, height))
         for i in range(3):
@@ -101,15 +113,29 @@ def build(args: argparse.Namespace) -> None:
         grain = np.asarray(rgb.resize((width * SCALE, height * SCALE), Image.NEAREST)).astype(np.float32)
         colour = np.clip(hd * (1 - GRAIN) + grain * GRAIN, 0, 255).round().astype(np.uint8)
         alpha = np.asarray(source.getchannel('A').resize((width * SCALE, height * SCALE), Image.NEAREST))
-        Image.fromarray(np.concatenate([colour, alpha[..., None]], -1), 'RGBA').save(args.output / name)
-        rows.append({'image': image, 'palette': palette, 'file': name, 'sha256': sha(args.output / name),
-                     'model': '4x-PixelPerfectV4', 'size': [width * SCALE, height * SCALE],
-                     'terrains': sorted(terrains)})
+        Image.fromarray(np.concatenate([colour, alpha[..., None]], -1), 'RGBA').save(path)
+
+    rows = []
+    if args.scroll:
+        pictures = [((image, palette), None) for image, palette in scroll_layers(rom)]
+    else:
+        pictures = sorted(skies().items())
+    for (image, palette), terrains in pictures:
+        name = f"{'scroll' if args.scroll else 'sky'}-{image}-{palette}.png"
+        source = decode(table, image, palette, any_size=args.scroll)
+        enlarge(source, args.output / name)
+        row = {'image': image, 'palette': palette, 'file': name, 'sha256': sha(args.output / name),
+               'model': '4x-PixelPerfectV4', 'size': [source.width * SCALE, source.height * SCALE]}
+        if args.scroll:
+            row['extent'] = [0, 0, source.width, source.height]
+        else:
+            row['terrains'] = sorted(terrains)
+        rows.append(row)
         print(name, flush=True)
     index = {'schema': 'srw64.battle-sky-images.v1', 'recipe': 'calm-blur 0.5 / PixelPerfectV4 4x wrapped / 25% nearest grain',
              'source_size': list(SOURCE), 'images': rows}
     (args.output / 'skies.json').write_text(json.dumps(index, ensure_ascii=False, indent=2) + '\n')
-    print(len(rows), 'skies in', args.output)
+    print(len(rows), 'pictures in', args.output)
 
 
 def merge(args: argparse.Namespace) -> None:
@@ -126,7 +152,7 @@ def merge(args: argparse.Namespace) -> None:
         if (row['image'], row['palette']) in taken:
             raise ValueError(f"sky {row['image']}/{row['palette']} already in the base set")
         os.link(args.skies / row['file'], args.output / row['file'])
-        rows.append({k: row[k] for k in ('image', 'palette', 'file', 'sha256', 'model', 'size')})
+        rows.append({k: row[k] for k in ('image', 'palette', 'file', 'sha256', 'model', 'size', 'extent') if k in row})
     index = {'schema': 'srw64.background-images.v1', 'size': base['size'], 'source_size': base['source_size'], 'images': rows}
     (args.output / 'backgrounds.json').write_text(json.dumps(index, indent=2) + '\n')
     print(len(rows), 'rows in', args.output, 'manifest_sha256', sha(args.output / 'backgrounds.json'))
@@ -160,6 +186,7 @@ def main() -> None:
     commands = parser.add_subparsers(dest='command', required=True)
     command = commands.add_parser('build')
     command.add_argument('--output', type=Path, required=True)
+    command.add_argument('--scroll', action='store_true', help='the scrolling effect layer pictures instead of the skies')
     command = commands.add_parser('merge')
     command.add_argument('--skies', type=Path, required=True)
     command.add_argument('--base', type=Path, required=True)

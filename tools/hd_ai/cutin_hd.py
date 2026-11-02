@@ -20,6 +20,8 @@ defence effects are what the same function loads for the other reactions (barrie
 parry's slash, a shoot-down), two of them drawn in the attacker's colours (`any_palette`);
 the reaction actors are what the reaction bank itself puts on (the light a barrier
 gathers, the afterimage, the decoy).
+The brush characters are the special moves' calligraphy (atlas 4519); the map movies are
+the combining and changing sequences played on the map (802176A8).
 
     .venv/bin/python tools/hd_ai/cutin_hd.py export
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py run [--models build/esrgan-models]
@@ -57,7 +59,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / 'src'), str(ROOT)]
 from srw64_rom.resources import ResourceTable  # noqa: E402
 from srw64_native.battle_graphics import (CUTIN_REGISTRY, Scene, decode_atlas, parse_scene, read_animation_bank,  # noqa: E402
-                                          read_battle_units, read_triplets, render_scene)
+                                          read_battle_units, read_map_movies, read_triplets, render_scene)
 
 OUT = ROOT / 'assets/hd-ai/cutins'
 MANIFEST = ROOT / 'content/art/stage1-hd.json'
@@ -142,6 +144,18 @@ def reaction_registries(rom: bytes) -> list[int]:
     return sorted({actor.registry for _, script in read_animation_bank(rom, 'reaction') for actor in script.actors})
 
 
+# The brush-written special-move characters (鳳 凰 光 覇 ...): battle_scenes entries drawn from
+# atlas 4519, kept in Japanese and only sharpened (docs/data/hd-asset-inventory.md).
+BRUSH_REGISTRY = (865, 881)
+
+
+def movie_triplets(rom: bytes) -> list[tuple[int, tuple[int, int, int]]]:
+    """(movie, (scene, atlas, palette)) of the map movies 802176A8 plays (コン・バトラーV and
+    ゴッドマーズ combining, the Aura Roads, the Getter changes), drawn by the same scene sprite
+    engine as the battles."""
+    return [(movie, triplet) for movie, _, _, triplets in read_map_movies(rom) for triplet in triplets]
+
+
 def palette_indices(table: ResourceTable, scene: Scene, atlas: int, palette: int) -> list[list[int]]:
     """Per frame, the opaque palette entries its pixels use: the atlas decoded with a palette
     whose entry i is a colour of its own. An any-palette picture is recoloured from these
@@ -173,7 +187,9 @@ def export() -> None:
             + [('prop', r, scenes[r]) for r in prop_registries(rom)]
             + [('shield', unit, triplet) for unit, triplet in shield_triplets(rom)]
             + [('defence', code, triplet) for code, triplet, _ in defence_triplets(rom)]
-            + [('reaction', r, scenes[r]) for r in reaction_registries(rom)])
+            + [('reaction', r, scenes[r]) for r in reaction_registries(rom)]
+            + [('brush', r, scenes[r]) for r in range(BRUSH_REGISTRY[0], BRUSH_REGISTRY[1] + 1)]
+            + [('movie', movie, triplet) for movie, triplet in movie_triplets(rom)])
     any_palette = {triplet for _, triplet, recoloured in defence_triplets(rom) if recoloured}
     for kind, number, (s, a, p) in sets:
         if not s or (s, a, p) in seen:
@@ -193,24 +209,24 @@ def export() -> None:
             key = digest(image)
             if not (OUT / 'inputs' / f'{key}.png').exists():
                 image.save(OUT / 'inputs' / f'{key}.png')
-            field = {'shield': 'unit', 'defence': 'code'}.get(kind, 'registry')
+            field = {'shield': 'unit', 'defence': 'code', 'movie': 'movie'}.get(kind, 'registry')
             rows.append({'set': kind, field: number, 'scene': s, 'atlas': a, 'palette': p,
                          'frame': frame, 'box': list(box), 'input': key}
                         | ({'any_palette': True, 'palette_indices': used[frame]} if used else {}))
     (OUT / 'frames.json').write_text(json.dumps({'schema': 'srw64.cutin-frames.v1', 'frames': rows}, indent=1) + '\n')
-    for kind in ('cutin', 'prop', 'shield', 'defence', 'reaction'):
+    for kind in ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie'):
         own = [r for r in rows if r['set'] == kind]
         print(kind, len(own), 'frames,', len({r['input'] for r in own}), 'distinct')
 
 
-def run(models_dir: Path) -> None:
+def run(models_dir: Path, only: list[str] | None = None) -> None:
     import numpy as np
     import spandrel
     import torch
     from tools.hd_ai.esrgan_pose import run_pose
     device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
     models = [spandrel.ModelLoader().load_from_file(str(next(models_dir.glob(f'{name}.*')))).to(device).eval() for name in RECIPE]
-    keys = sorted({r['input'] for r in json.loads((OUT / 'frames.json').read_text())['frames']})
+    keys = sorted({r['input'] for r in json.loads((OUT / 'frames.json').read_text())['frames'] if not only or r.get('set') in only})
     (OUT / 'hd').mkdir(exist_ok=True)
     for n, key in enumerate(keys, 1):
         target = OUT / 'hd' / f'{key}.png'
@@ -236,7 +252,8 @@ def pack_row(r: dict, folder: Path) -> dict:
     image.save(folder / name, optimize=True)
     kind = r.get('set', 'cutin')
     label = {'cutin': f"cut-in {r.get('registry')}", 'prop': f"prop {r.get('registry')}", 'shield': f"shield {r.get('unit')}",
-             'defence': f"defence {r.get('code')}", 'reaction': f"reaction {r.get('registry')}"}[kind]
+             'defence': f"defence {r.get('code')}", 'reaction': f"reaction {r.get('registry')}",
+             'brush': f"brush {r.get('registry')}", 'movie': f"map movie {r.get('movie')}"}[kind]
     return {'scene': r['scene'], 'atlas': r['atlas'], 'palette': r['palette'], 'frame': r['frame'], 'file': name,
             'sha256': hashlib.sha256((folder / name).read_bytes()).hexdigest(),
             'width': image.width, 'height': image.height, 'method': 'image_gen' if source == redrawn else 'esrgan', 'unit': label} \
@@ -258,7 +275,7 @@ def pack(bind: bool) -> None:
     scenes(bind)
 
 
-def extend(into: Path, bind: bool) -> None:
+def extend(into: Path, bind: bool, only: list[str] | None = None) -> None:
     """A new pack folder: the bound pack hard-linked as it is (its frames, scene thumbnails
     and index), plus the frames.json rows it has no picture for, packed the usual way."""
     into = into.absolute()                       # not resolved: assets/ may be a link into another checkout
@@ -270,7 +287,7 @@ def extend(into: Path, bind: bool) -> None:
     index = json.loads((current / 'battle-sprites.json').read_text())
     have = {r['file'] for r in index['images']}
     added = [pack_row(r, into) for r in json.loads((OUT / 'frames.json').read_text())['frames']
-             if f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png" not in have]
+             if f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png" not in have and (not only or r.get('set') in only)]
     index['images'] += added
     (into / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
     print(len(added), 'frames added to', current.name, '->', into.name)
@@ -326,11 +343,11 @@ def review() -> None:
     """Original beside HD for the middle frame of every cut-in and prop, eight to a sheet
     (review-<set>-N.jpg)."""
     frames = json.loads((OUT / 'frames.json').read_text())['frames']
-    for kind in ('cutin', 'prop', 'shield', 'defence', 'reaction'):
+    for kind in ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie'):
         by_registry = {}
         for r in frames:
             if r.get('set', 'cutin') == kind:
-                by_registry.setdefault(r.get('registry', r.get('unit', r.get('code'))), []).append(r)
+                by_registry.setdefault(r.get('registry', r.get('unit', r.get('code', r.get('movie')))), []).append(r)
         picks = [rs[len(rs) // 2] for rs in by_registry.values()]
         W, H = (320, 240) if kind == 'cutin' else (200, 150)
         cols, rows = (2, 4) if kind == 'cutin' else (4, 8)
@@ -341,7 +358,7 @@ def review() -> None:
             draw = ImageDraw.Draw(sheet)
             for i, r in enumerate(chunk):
                 x, y = 8 + (i % cols) * (2 * W + 16), 6 + (i // cols) * (H + 26)
-                draw.text((x, y), f"{r.get('registry', r.get('unit', r.get('code')))}  scene {r['scene']} f{r['frame']}", fill='white')
+                draw.text((x, y), f"{r.get('registry', r.get('unit', r.get('code', r.get('movie'))))}  scene {r['scene']} f{r['frame']}", fill='white')
                 hd = OUT / 'imagegen' / f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png"
                 for j, path in enumerate((OUT / 'inputs' / f"{r['input']}.png", hd if hd.exists() else OUT / 'hd' / f"{r['input']}.png")):
                     image = Image.open(path).convert('RGBA')
@@ -358,6 +375,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('step', choices=('export', 'run', 'pack', 'extend', 'scenes', 'review'))
     parser.add_argument('--models', type=Path, default=ROOT / 'build/esrgan-models')
+    parser.add_argument('--only', nargs='+', help='run, extend: just these sets (brush, movie, ...)')
     parser.add_argument('--bind', action='store_true', help='point the art manifest at the pack')
     parser.add_argument('--shots', type=Path, help='scenes: HD captures (tools/hd_ai/viewer_scenes.py) instead of the catalogue renders')
     parser.add_argument('--into', type=Path, help='scenes, extend: a new pack folder, hard-linked from the current one')
@@ -365,13 +383,13 @@ def main() -> None:
     if args.step == 'export':
         export()
     elif args.step == 'run':
-        run(args.models)
+        run(args.models, args.only)
     elif args.step == 'pack':
         pack(args.bind)
     elif args.step == 'extend':
         if args.into is None:
             parser.error('extend needs --into')
-        extend(args.into, args.bind)
+        extend(args.into, args.bind, args.only)
     elif args.step == 'scenes':
         scenes(args.bind, args.shots, args.into)
     else:
