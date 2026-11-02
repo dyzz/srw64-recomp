@@ -22,10 +22,12 @@ the reaction actors are what the reaction bank itself puts on (the light a barri
 gathers, the afterimage, the decoy).
 The brush characters are the special moves' calligraphy (atlas 4519); the map movies are
 the combining and changing sequences played on the map (802176A8); the explosions are what
-a unit shot down goes up in (battle_scenes 1042-1045, docs/design/battle-animation-rendering.md §6.4).
+a unit shot down goes up in (battle_scenes 1042-1045, docs/design/battle-animation-rendering.md §6.4);
+the hits are what the hit bank puts on the target when an attack lands (sparks, smoke, debris,
+the small blasts), shared by every weapon whose header names that hit script.
 
     .venv/bin/python tools/hd_ai/cutin_hd.py export
-    build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py run [--models build/esrgan-models]
+    build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py run [--models build/esrgan-models] [--only SET ...] [--fast]
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py pack [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py extend --into assets/hd-ai/cutins/pack-vN [--only SET ...] [--replace] [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py scenes [--bind]
@@ -146,12 +148,18 @@ def reaction_registries(rom: bytes) -> list[int]:
     return sorted({actor.registry for _, script in read_animation_bank(rom, 'reaction') for actor in script.actors})
 
 
+def hit_registries(rom: bytes) -> list[int]:
+    """The battle_scenes entries the hit bank's actors draw (the weapon header's hit_script;
+    156-158 are the kill explosions, already their own set)."""
+    return sorted({actor.registry for _, script in read_animation_bank(rom, 'hit') for actor in script.actors})
+
+
 # The brush-written special-move characters (鳳 凰 光 覇 ...): battle_scenes entries drawn from
 # atlas 4519, kept in Japanese and only sharpened (docs/data/hd-asset-inventory.md).
 BRUSH_REGISTRY = (865, 881)
 # The kill explosions: the fireballs, the big flash, the warships' white ball and the sparks.
 EXPLOSION_REGISTRY = (1042, 1045)
-SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion')
+SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion', 'hit')
 
 
 def movie_triplets(rom: bytes) -> list[tuple[int, tuple[int, int, int]]]:
@@ -195,7 +203,8 @@ def export() -> None:
             + [('reaction', r, scenes[r]) for r in reaction_registries(rom)]
             + [('brush', r, scenes[r]) for r in range(BRUSH_REGISTRY[0], BRUSH_REGISTRY[1] + 1)]
             + [('movie', movie, triplet) for movie, triplet in movie_triplets(rom)]
-            + [('explosion', r, scenes[r]) for r in range(EXPLOSION_REGISTRY[0], EXPLOSION_REGISTRY[1] + 1)])
+            + [('explosion', r, scenes[r]) for r in range(EXPLOSION_REGISTRY[0], EXPLOSION_REGISTRY[1] + 1)]
+            + [('hit', r, scenes[r]) for r in hit_registries(rom)])
     any_palette = {triplet for _, triplet, recoloured in defence_triplets(rom) if recoloured}
     for kind, number, (s, a, p) in sets:
         if not s or (s, a, p) in seen:
@@ -225,11 +234,30 @@ def export() -> None:
         print(kind, len(own), 'frames,', len({r['input'] for r in own}), 'distinct')
 
 
-def run(models_dir: Path, only: list[str] | None = None) -> None:
+def run_fast(models: list, source: Image.Image, device) -> Image.Image:
+    """The recipe made cheaper for effects, where nothing has a face to change: each model's
+    second pass starts from its first pass shrunk to 2x (a quarter of the pixels), and the
+    alpha takes one PixelPerfectV4 pass and Lanczos (docs: about 4-6x faster per frame)."""
+    from tools.hd_ai.build_unit_images import clean_alpha
+    from tools.hd_ai.esrgan_pose import WORK, fill_transparent, upscale
+    colour = fill_transparent(source)
+    twice = (source.width * 2, source.height * 2)
+    size = (source.width * WORK, source.height * WORK)
+    ends = []
+    for model in models:
+        image = upscale(model, upscale(model, colour, device).resize(twice, Image.Resampling.LANCZOS), device)
+        ends.append(image if image.size == size else image.resize(size, Image.Resampling.LANCZOS))
+    alpha = upscale(models[1], source.getchannel('A').convert('RGB'), device).resize(size, Image.Resampling.LANCZOS)
+    result = Image.blend(ends[0], ends[1], .5)
+    result.putalpha(alpha.convert('L'))
+    return clean_alpha(result, source)
+
+
+def run(models_dir: Path, only: list[str] | None = None, fast: bool = False) -> None:
     import numpy as np
     import spandrel
     import torch
-    from tools.hd_ai.esrgan_pose import run_pose
+    from tools.hd_ai.esrgan_pose import WORK, run_pose
     device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
     models = [spandrel.ModelLoader().load_from_file(str(next(models_dir.glob(f'{name}.*')))).to(device).eval() for name in RECIPE]
     keys = sorted({r['input'] for r in json.loads((OUT / 'frames.json').read_text())['frames'] if not only or r.get('set') in only})
@@ -240,8 +268,14 @@ def run(models_dir: Path, only: list[str] | None = None) -> None:
             continue
         start = time.monotonic()
         source = Image.open(OUT / 'inputs' / f'{key}.png').convert('RGBA')
-        a, b = (run_pose(model, source, device) for model in models)
-        Image.blend(a, b, .5).save(target)
+        if not source.getchannel('A').getbbox():  # all clear (a hit's empty step): nothing to fill from
+            Image.new('RGBA', (source.width * WORK, source.height * WORK)).save(target)
+            continue
+        if fast:
+            run_fast(models, source, device).save(target)
+        else:
+            a, b = (run_pose(model, source, device) for model in models)
+            Image.blend(a, b, .5).save(target)
         print(f'{n}/{len(keys)} {key} {source.size} {time.monotonic() - start:.1f}s', flush=True)
     del np
 
@@ -260,7 +294,7 @@ def pack_row(r: dict, folder: Path) -> dict:
     label = {'cutin': f"cut-in {r.get('registry')}", 'prop': f"prop {r.get('registry')}", 'shield': f"shield {r.get('unit')}",
              'defence': f"defence {r.get('code')}", 'reaction': f"reaction {r.get('registry')}",
              'brush': f"brush {r.get('registry')}", 'movie': f"map movie {r.get('movie')}",
-             'explosion': f"explosion {r.get('registry')}"}[kind]
+             'explosion': f"explosion {r.get('registry')}", 'hit': f"hit {r.get('registry')}"}[kind]
     return {'scene': r['scene'], 'atlas': r['atlas'], 'palette': r['palette'], 'frame': r['frame'], 'file': name,
             'sha256': hashlib.sha256((folder / name).read_bytes()).hexdigest(),
             'width': image.width, 'height': image.height, 'method': 'image_gen' if source == redrawn else 'esrgan', 'unit': label} \
@@ -389,6 +423,7 @@ def main() -> None:
     parser.add_argument('step', choices=('export', 'run', 'pack', 'extend', 'scenes', 'review'))
     parser.add_argument('--models', type=Path, default=ROOT / 'build/esrgan-models')
     parser.add_argument('--only', nargs='+', help='run, extend: just these sets (brush, movie, ...)')
+    parser.add_argument('--fast', action='store_true', help='run: the cheaper recipe for effects (run_fast)')
     parser.add_argument('--replace', action='store_true', help='extend: repack the --only sets even where the bound pack has them')
     parser.add_argument('--bind', action='store_true', help='point the art manifest at the pack')
     parser.add_argument('--shots', type=Path, help='scenes: HD captures (tools/hd_ai/viewer_scenes.py) instead of the catalogue renders')
@@ -397,7 +432,7 @@ def main() -> None:
     if args.step == 'export':
         export()
     elif args.step == 'run':
-        run(args.models, args.only)
+        run(args.models, args.only, args.fast)
     elif args.step == 'pack':
         pack(args.bind)
     elif args.step == 'extend':
