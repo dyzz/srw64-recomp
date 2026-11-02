@@ -1,3 +1,4 @@
+#include "quote_force.hpp"
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
 #include "console_log.hpp"
@@ -172,6 +173,7 @@ void on_init(uint8_t* rdram, recomp_context*) {
     srw64::refund::configure(output_dir);
     srw64::parts_carry::configure(output_dir);
     srw64::names::initialize_rom(rom.data(),rom.size());
+    srw64::quote_force::rom=rom.data();srw64::quote_force::rom_bytes=rom.size();   // quote.force checks its record against the ROM's segments
     srw64::rom_art::initialize({rom.data(),rom.size()});
     // With an HD art pack, BANPRESTO and GAME OVER are upscaled from the ROM here rather
     // than shipped (docs/native/native-title-and-story-images.md).

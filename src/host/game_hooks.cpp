@@ -554,21 +554,31 @@ int srw64_quote_demo(uint8_t* rdram) {
 }
 void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, uint32_t(ctx->r4));
-    // 8022245C(record, slot, base): the conditional quote for the slot (record + 0x2C the attack,
-    // + 0x848 being hit) under a base code (20000, 30000, 32500), 1000 when none applies and the
-    // caller draws from the generic pool. quote.force (quote_force.hpp) answers the forced record
-    // there instead, once, for the asked slot.
-    const uint32_t record = uint32_t(ctx->r4), slot = uint32_t(ctx->r5), base = uint32_t(ctx->r6);
     srw64_original_battle_quote_pick(rdram, ctx);
     if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, 0);
-    ++srw64::quote_force::seen;
-    srw64::quote_force::last_base = int(base);
-    srw64::quote_force::last_answer = int16_t(ctx->r2);
-    if (const int forced = srw64::quote_force::text.load(); forced >= 0 && slot == record + uint32_t(srw64::quote_force::slot.load()) && int16_t(ctx->r2) == 1000) {
-        ctx->r2 = forced;
-        srw64::quote_force::text = -1;
-        ++srw64::quote_force::served;
-    }
+}
+// 80222B14(record, slot, context): the generic quote of a context (0 attack ... 8) drawn at
+// random from the speaker's segment (ROM 0x1161C0; docs/data/battle-quotes.md) into the slot
+// (record + 0x2C the attack, + 0x848 being hit): slot[0] the record, slot[2] -1. A slot that
+// already holds a conditional quote keeps it two times in three. quote.force
+// (quote_force.hpp) writes the forced record there instead, once, when it is one of this
+// speaker's lines for this context; the speaker is the record's voice part (record + 2; the
+// sub pilot's for contexts 7 and 8 of a two-seater is not handled).
+void load_00121560_func_80222B14(uint8_t* rdram, recomp_context* ctx) {
+    const uint32_t record = uint32_t(ctx->r4), slot = uint32_t(ctx->r5);
+    const int context = int(uint32_t(ctx->r6) & 0xFFFF);
+    srw64_original_generic_quote_draw(rdram, ctx);
+    using namespace srw64::quote_force;
+    const int voice = int(srw64::guest::read(rdram, record + 2, 2));
+    ++seen;
+    last_voice = voice; last_context = context;
+    last_drawn = int16_t(srw64::guest::read(rdram, slot, 2));
+    const int forced = text.load();
+    if (forced < 0 || !in_segment(voice, context, forced) || !srw64::guest::valid(slot, 4)) return;
+    srw64::guest::write16(rdram, slot, uint16_t(forced));
+    srw64::guest::write16(rdram, slot + 2, 0xFFFF);
+    text = -1;
+    ++served;
 }
 // 80221ACC(table, code, base): code when a combination attack's pair says it, else -1
 // (docs/data/battle-quotes.md). The original gathers the pair from the map's participant

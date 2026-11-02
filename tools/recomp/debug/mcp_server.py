@@ -98,7 +98,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "srw64_title_reset", "description": "Straight to the title at the next frame from wherever the game is (the map, a story playing, the intermission; not the battle animation): the map's own reset without its fade, for a recording script that loads the next stage right away. Then press START through the logo (srw64_wait title_major 3) and srw64_mini_stage_load.",
      "inputSchema": {"type": "object", "properties": {}}},
-    {"name": "srw64_quote_force", "description": "The next battle quote of a slot (attack: what a side says attacking; hit: being hit or evading) is the given battle text record instead of the random draw from the generic pool, once; conditional quotes (a named rival) still win. For a recording that must show one particular line.",
+    {"name": "srw64_quote_force", "description": "The next generic battle quote is the given battle text record instead of the random draw, once: the speaker and the context (attacking, being hit, evading...) follow from the record's own segment, so other speakers and contexts are untouched; a conditional quote in the slot gives way. For a recording that must show one particular line.",
      "inputSchema": {"type": "object", "required": ["text_id"], "properties": {"text_id": {"type": "integer"}, "slot": {"type": "string", "enum": ["attack", "hit"]}}}},
     {"name": "srw64_choice_pick", "description": "Answer the open choice box (3D44; srw64_status choice: options, text_id, cursor, phase): moves its cursor to the option index (from 0) and presses A. Fails while no choice is open or its window is not up yet.",
      "inputSchema": {"type": "object", "required": ["index"], "properties": {"index": {"type": "integer"}}}},

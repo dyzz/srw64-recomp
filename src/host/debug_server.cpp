@@ -574,14 +574,16 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="choice.pick")return choice_pick(params);
     if(method=="choice.show")return choice_show(params);
-    // The next battle quote of a context (0 attack ... 8) forced to one record (quote_force.hpp).
+    // The next generic battle quote forced to one record (quote_force.hpp): the speaker and
+    // the context follow from the record itself; `slot` is accepted for old callers.
     if(method=="quote.force") {
         if(!params.contains("text_id") || !params["text_id"].is_number_unsigned())throw RpcError(InvalidParams,"text_id must be a battle quote record");
-        const auto slot=params.value("slot","attack");
-        if(slot!="attack" && slot!="hit")throw RpcError(InvalidParams,"slot is attack or hit");
-        quote_force::slot=slot=="hit"?0x848:0x2C;quote_force::text=int(params["text_id"].get<unsigned>());
-        return {{"vi",srw64_current_vi()},{"text_id",quote_force::text.load()},{"slot",slot},{"served",quote_force::served.load()},
-                {"seen",quote_force::seen.load()},{"last_base",quote_force::last_base.load()},{"last_answer",quote_force::last_answer.load()}};
+        const int record=int(params["text_id"].get<unsigned>());
+        if(record>=0 && !quote_force::rom)throw RpcError(InvalidParams,"the ROM's quote segments are not loaded");
+        quote_force::text=record;
+        return {{"vi",srw64_current_vi()},{"text_id",quote_force::text.load()},{"served",quote_force::served.load()},
+                {"seen",quote_force::seen.load()},{"last_voice",quote_force::last_voice.load()},{"last_context",quote_force::last_context.load()},
+                {"last_drawn",quote_force::last_drawn.load()}};
     }
     // Back to the title the way F10 asks (quick_load.hpp): the original's Z+START reset on the
     // map, the intermission or the world map, refused with a notice elsewhere.
