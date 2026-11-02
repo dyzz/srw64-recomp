@@ -1,0 +1,96 @@
+{
+  "schema": "srw64.story.v1",
+  "events": [
+    {
+      "id": "persuade",
+      "note": "死闘!ランタオ島大決戦（後）: once Domon and Master Asia have talked in battle (the original's 001d387c sets 131 to 0), Domon may persuade him. He leaves instead of falling, so the second half of his defeat event (001d38c8) is done here: Wong, then the Devil Gundam or the Grand Master Gundam. 131 = 3 keeps both of the end event's death scenes away.",
+      "scene": 129,
+      "when": { "persuade": { "by": 4, "target": 18 } },
+      "if": { "vars": { "131": 0 } },
+      "do": [
+        { "say": 4, "text": {
+          "ja": "師匠！　もうやめてくれ！　あんたの拳は泣いている……俺にはわかるんだ！",
+          "zh-Hans": "师父！住手吧！你的拳头在哭泣……我感觉得到！",
+          "zh-Hant": "師父！住手吧！你的拳頭在哭泣……我感覺得到！",
+          "en": "Master, stop this! Your fists are weeping... I can feel it!" } },
+        { "say": 18, "mode": 2, "text": {
+          "ja": "ドモン……貴様、まだワシを師と呼ぶか。",
+          "zh-Hans": "多蒙……你还肯叫我师父吗？",
+          "zh-Hant": "多門……你還肯叫我師父嗎？",
+          "en": "Domon... You still call me your master?" } },
+        { "say": 4, "text": {
+          "ja": "当たり前だ！　人類を滅ぼすなんて、あんたの本心じゃないはずだ！",
+          "zh-Hans": "那当然！毁灭人类，绝不是你的本心！",
+          "zh-Hant": "那當然！毀滅人類，絕不是你的本心！",
+          "en": "Of course I do! Wiping out humanity can't be what you truly want!" } },
+        { "say": 18, "mode": 2, "text": {
+          "ja": "……フッ、拳を交えるまでもなく伝わるとはな。ワシの負けよ、ドモン。",
+          "zh-Hans": "……哼，连拳头都不必交，就传到我这里了吗。是我输了，多蒙。",
+          "zh-Hant": "……哼，連拳頭都不必交，就傳到我這裡了嗎。是我輸了，多門。",
+          "en": "...Hmph. To reach me without even trading blows. I yield, Domon." } },
+        { "say": 18, "mode": 2, "text": {
+          "ja": "だが、ウォンめが黙ってはおるまい。ここは退く。続きはデビルガンダムを片づけてからだ！",
+          "zh-Hans": "不过，王那家伙不会善罢甘休。我先退下。剩下的话，等收拾了恶魔高达再说！",
+          "zh-Hant": "不過，王那傢伙不會善罷甘休。我先退下。剩下的話，等收拾了惡魔鋼彈再說！",
+          "en": "But Wong will not let this stand. I withdraw for now. The rest can wait until the Devil Gundam is dealt with!" } },
+        { "close": "window" },
+        { "leave": 18 },
+        { "bgm": 11 },
+        { "op": "3D35", "args": [2335, 1] },
+        { "op": "3D40", "args": [43215] },
+        { "op": "3D35", "args": [2335, 1] },
+        { "op": "3D40", "args": [43217] },
+        { "if": { "var": 128, "is": 2 },
+          "then": [
+            { "deploy": 12 },
+            { "op": "3D3E", "args": [43218] },
+            { "op": "3D40", "args": [43219] },
+            { "op": "3D3E", "args": [43220] },
+            { "op": "3D40", "args": [43221] },
+            { "op": "3D55", "args": [14, 30] },
+            { "op": "3D3E", "args": [43222] },
+            { "op": "3D40", "args": [43223] }
+          ],
+          "else": [
+            { "deploy": 11 },
+            { "set": { "128": 3 } },
+            { "op": "3D3E", "args": [43224] },
+            { "op": "3D54", "args": [248] },
+            { "op": "3D35", "args": [16384, 1] },
+            { "op": "3D40", "args": [43225] },
+            { "op": "3D3E", "args": [43226] },
+            { "op": "3D54", "args": [248] },
+            { "op": "3D35", "args": [16384, 1] },
+            { "op": "3D40", "args": [43227] },
+            { "op": "3D40", "args": [43228] },
+            { "op": "3D3E", "args": [43229] },
+            { "op": "3D54", "args": [248] },
+            { "op": "3D35", "args": [16384, 1] },
+            { "op": "3D40", "args": [43230] },
+            { "set": { "101": 0 } }
+          ] },
+        { "set": { "131": 3 } }
+      ]
+    },
+    {
+      "id": "joins",
+      "note": "After the end event (the party lands at Ryozanpaku): he comes along, with the Master Gundam.",
+      "scene": 129,
+      "when": { "after": "end" },
+      "if": { "fired": ["persuade"] },
+      "do": [
+        { "say": 18, "text": {
+          "ja": "ドモン、ワシも行こう。ワシの拳、今度は地球を守るために振るってくれるわ。",
+          "zh-Hans": "多蒙，我也同去。这一回，我的拳头就为守护地球而挥。",
+          "zh-Hant": "多門，我也同去。這一回，我的拳頭就為守護地球而揮。",
+          "en": "Domon, I will come with you. This time my fists shall fight to protect the Earth." } },
+        { "say": 4, "mode": 1, "text": {
+          "ja": "師匠……！　はい！",
+          "zh-Hans": "师父……！是！",
+          "zh-Hant": "師父……！是！",
+          "en": "Master...! Yes!" } },
+        { "join": { "pilot": 18, "unit": 27 } }
+      ]
+    }
+  ]
+}

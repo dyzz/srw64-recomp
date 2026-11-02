@@ -12,6 +12,7 @@
 #include "notices.hpp"
 #include "text_update.hpp"
 #include "upgrade_refund.hpp"
+#include "story_mod.hpp"
 #include "campaign.hpp"
 #include "input_mode.hpp"
 #include "text/button_prompts.hpp"
@@ -217,6 +218,8 @@ std::string segment(const std::string& text,unsigned number) {
 // its pages decide how many the host confirms: a translation with fewer
 // original pages confirms the rest at its end, extra ones just flow on.
 Record story_record(const uint8_t* ram,const localization::Catalog& catalog,uint16_t text_id,uint32_t p) {
+    // A story MOD's line (story_mod.hpp): one original page, the reader pages it.
+    if(const auto line=story_mod::line(text_id,catalog.locale))return joined_record(utf16(expand(ram,*line,catalog.locale)),catalog.locale);
     const auto key=game_adapter::standard_dialogue_key(text_id);
     const auto* message=catalog.resolve(key);
     auto record=joined_record(utf16(message?expand(ram,*message,catalog.locale):decode(ram,p+12,256)),catalog.locale);

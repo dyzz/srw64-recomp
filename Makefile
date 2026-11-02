@@ -197,6 +197,17 @@ recomp-mod-data-test:
 		tests/native_mod_data.cpp src/host/mod_library.cpp build/recomp/mod-data-test/miniz*.o -o build/recomp/mod-data-test/test
 	build/recomp/mod-data-test/test build/recomp/mod-data-test/run $(ROM)
 
+.PHONY: recomp-story-mod-test
+recomp-story-mod-test:
+	mkdir -p build/recomp/story-mod-test
+	$(PYTHON) tools/mods/story.py compile config/recomp/mods/master-asia/story/master.json -o build/recomp/story-mod-test/master.json
+	for c in miniz miniz_tdef miniz_tinfl miniz_zip; do cc -c -g -fsanitize=address,undefined -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		$(MINIZ_DIR)/$$c.c -o build/recomp/story-mod-test/$$c.o || exit 1; done
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Wno-deprecated-declarations -Isrc/host -I$(RECOMP_BUILD)/upstream/RT64/src/contrib -I$(RECOMP_BUILD)/upstream/N64Recomp/include \
+		-I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		tests/native_story_mod.cpp src/host/mod_library.cpp build/recomp/story-mod-test/miniz*.o -o build/recomp/story-mod-test/test
+	build/recomp/story-mod-test/test build/recomp/story-mod-test/run build/recomp/story-mod-test/master.json
+
 .PHONY: recomp-mod-icons-test
 recomp-mod-icons-test:
 	mkdir -p build/recomp/mod-icons-test

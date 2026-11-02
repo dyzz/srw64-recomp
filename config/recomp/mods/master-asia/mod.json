@@ -1,0 +1,22 @@
+{
+  "schema": "srw64.mod.v1",
+  "id": "srw64.master-asia",
+  "version": "0.1.0",
+  "name": {
+    "ja": "東方不敗 生存",
+    "zh-Hans": "东方不败存活",
+    "zh-Hant": "東方不敗存活",
+    "en": "Master Asia Lives"
+  },
+  "description": {
+    "ja": "独立軍ルート「死闘!ランタオ島大決戦（後）」で、戦闘中に東方不敗と言葉を交わしたドモンが説得すると、東方不敗は退き、ステージクリア後に仲間になる（マスターガンダム）。説得しなければ原作どおり。",
+    "zh-Hans": "独立军路线「死斗！大屿山大决战（下）」中，多蒙在战斗里与东方不败交谈过之后去说服他，东方不败就会撤退，过关后加入（尊者高达）。不说服则与原作相同。",
+    "zh-Hant": "獨立軍路線「死鬥！大嶼山大決戰（下）」中，多門在戰鬥裡與東方不敗交談過之後去說服他，東方不敗就會撤退，過關後加入（尊者鋼彈）。不說服則與原作相同。",
+    "en": "On the Independence Army route, in \"Death Match! Showdown on Lantau Island (Part 2)\", once Domon has talked with Master Asia in battle he can persuade him: Master Asia withdraws and joins after the stage, with the Master Gundam. Without the persuasion the story is as it was."
+  },
+  "authors": [
+    "SRW64"
+  ],
+  "license": "CC0-1.0",
+  "game": ">=0.5.2"
+}

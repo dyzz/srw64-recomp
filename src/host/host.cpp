@@ -36,6 +36,8 @@
 #include "upgrade_refund.hpp"
 #include "mod_data.hpp"
 #include "mod_names.hpp"
+#include "story_mod.hpp"
+#include "save_store.hpp"
 #include "localization/catalog.hpp"
 #include "parts_carry.hpp"
 #include "graphics.hpp"
@@ -168,6 +170,11 @@ void on_init(uint8_t* rdram, recomp_context*) {
     srw64::upgrades::initialize(rom.data(),rom.size());
     srw64::upgrades::configure(output_dir);
     srw64::mod_data::configure({rom.data(),rom.size()},output_dir);
+    // Story MODs keep what has fired beside the suspend records: in the save library when
+    // there is one, else in the run.
+    srw64::story_mod::configure(output_dir,[] {
+        return srw64::save_store::enabled()?srw64::save_store::library_directory():output_dir;
+    });
     srw64::refund::configure(output_dir);
     srw64::parts_carry::configure(output_dir);
     srw64::names::initialize_rom(rom.data(),rom.size());
@@ -419,6 +426,7 @@ static void report_overlay_mismatch(uint8_t* rdram, uint32_t rom, uint32_t ram, 
 extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t rom = ctx->r4, ram = ctx->r5, size = ctx->r6;
     if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
+    if(srw64::story_mod::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
     srw64::mod_data::refresh();   // number MODs join the copy patches (mod_data.hpp)
     overlay_loading = true;
     srw64_original_rom_read(rdram, ctx);
@@ -461,7 +469,8 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
 
 extern "C" void resident_func_8008C510(uint8_t* rdram, recomp_context* ctx) {
     uint32_t offset,size;
-    if(srw64::upgrades::descriptor(rdram,uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size)) {
+    if(srw64::upgrades::descriptor(rdram,uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size) ||
+       srw64::story_mod::descriptor(uint16_t(ctx->r4),uint16_t(ctx->r5),offset,size)) {
         MEM_W(0,ctx->r6)=offset;MEM_W(0,ctx->r7)=size;ctx->r2=size;return;
     }
     srw64_original_text_descriptor(rdram,ctx);
