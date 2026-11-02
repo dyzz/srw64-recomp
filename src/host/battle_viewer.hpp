@@ -41,4 +41,7 @@ int listened();
 constexpr int no_music=-2;
 bool take_returned();
 bool busy();
+// Game thread, each frame of the battle animation's main loop (801C9710): a requested
+// recording opens its gate on the first of them, the animation's first picture.
+void animation_frame();
 }

@@ -51,6 +51,7 @@ bool bar_dialogue{};                          // a box was visible in the last f
 uint16_t bar_buttons{};                       // the buttons as last read, for presses
 int bar_pad=-1;                               // pad_hints and pad_family last drawn
 void show_bar(uint64_t vis){bar_until=std::max(bar_until,srw64_current_vi()+vis);}
+std::atomic_bool bar_hidden{};               // set_hints_hidden: the bar never shows
 std::atomic_bool auto_toggle{};              // an L2 press, for the next reading step
 std::atomic_bool owns_input{};
 uint16_t consumed_hold{};
@@ -629,7 +630,7 @@ void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
         if(bar_pad>=0 && pad!=bar_pad)show_bar(bar_again_vis);  // the hints change their icons
         bar_pad=pad;
         if(reader.fast || reader.skipping)show_bar(bar_again_vis);
-        frame->bar_fade=settings::dialogue_hints_always()?1:
+        frame->bar_fade=bar_hidden.load()?0.0:settings::dialogue_hints_always()?1:
             std::clamp(double(int64_t(bar_until)-int64_t(frame->vi))/double(bar_fade_vis),0.0,1.0);
     }
     {
@@ -667,6 +668,8 @@ bool reading() {
     std::lock_guard lock(mutex);
     return enabled && reader.active;
 }
+void set_hints_hidden(bool hidden){bar_hidden=hidden;}
+bool hints_hidden(){return bar_hidden.load();}
 ReadingControls reading_controls() {
     std::lock_guard lock(mutex);
     return {enabled && !observe && reader.active, reader.history_open, reader.skipping};

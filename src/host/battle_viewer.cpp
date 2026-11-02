@@ -5,6 +5,8 @@
 #include "game_hooks.hpp"
 #include "guest_memory.hpp"
 #include "native_dialogue.hpp"
+#include "mini_stage.hpp"
+#include "debug_protocol.hpp"
 #include "librecomp/game.hpp"
 #include <algorithm>
 #include <atomic>
@@ -66,6 +68,15 @@ bool pending=false,armed=false,running=false;
 std::atomic_bool page_open{},returned{},held{};
 unsigned started=0,filled=0;
 int song=-1;
+// A request's route (-1 none): written as the name page would before the battle, so the
+// protagonist's and the partner's portraits (characters 25 / 29) are drawn; a fresh boot
+// leaves the route variable 0 and they are not. A request's `record`: a gated recording
+// of the animation alone (Recording in debug_protocol.hpp), opened at the demo's second
+// frame (the first can still be the title's late present) and closed when the demo mode
+// ends, black frames trimmed at both ends; record.stop then finishes the file.
+int route=-1;
+bool recording_armed=false,gate_open=false;unsigned demo_frames=0;
+std::filesystem::path run_dir;
 // A song the page plays to listen (-1 none), what it asked for last, and the title's own
 // song to put back when it stops (-2: nothing to put back).
 std::atomic_int listen{-1};
@@ -215,6 +226,16 @@ std::vector<Write> compute(const uint8_t* ram,const json& c) {
 
 bool start(uint8_t* ram,int* music) {
     const unsigned current=read(ram,mode,1);
+    // The recording of the animation alone: opened by animation_frame() (the battle loop's
+    // first frame; the demo mode's own first frames still show the title fading out), closed
+    // when the demo mode ends.
+    if(running && recording_armed) {
+        if(current==demo_mode)++demo_frames;
+        else if(demo_frames) {
+            debug::recording().close_gate();recording_armed=false;gate_open=false;
+            note({{"event","record_close"},{"vi",srw64_current_vi()},{"mode",current},{"demo_frames",demo_frames}});
+        }
+    }
     // Back on the title after a viewer battle: the page opens again.
     if(running && current!=demo_mode && title_mode(current)) {
         std::lock_guard lock(mutex);
@@ -251,11 +272,13 @@ bool start(uint8_t* ram,int* music) {
     std::lock_guard lock(mutex);
     if(!pending || (state!=2 && state!=3))return false;
     write8(ram,demo_repeat,0);write8(ram,demo_count,0);write8(ram,title_start,0);
-    pending=false;armed=true;running=true;++started;
+    bool names=false;
+    if(route>=0)names=mini_stage::write_route(ram,unsigned(route));
+    pending=false;armed=true;running=true;++started;demo_frames=0;gate_open=false;
     // The battle's song replaces one being listened to.
     listen=-1;listening=-1;title_song=-2;
     *music=song>=0?song:no_music;
-    note({{"event","start"},{"vi",srw64_current_vi()},{"mode",current},{"title_state",state},{"song",song}});
+    note({{"event","start"},{"vi",srw64_current_vi()},{"mode",current},{"title_state",state},{"song",song},{"route",route},{"names",names},{"record",recording_armed}});
     return true;
 }
 
@@ -282,6 +305,7 @@ void filled_records(uint8_t* ram) {
 }
 
 void install(const std::filesystem::path& output) {
+    run_dir=output;
     if(!output.empty())srw64::open_run_log(log,output/"battle-viewer-events.jsonl");
     srw64_game_hooks.viewer_start=start;
     srw64_game_hooks.demo_battle_filled=filled_records;
@@ -307,19 +331,36 @@ json request(const json& params) {
             next.push_back(std::move(item));
         }
     }
+    const int wanted_route=params.value("route",-1);
+    if(wanted_route<-1 || wanted_route>3)throw std::invalid_argument("route is 0 Brad, 1 Manami, 2 Ark, 3 Selain");
+    json recorded;
+    if(params.contains("record") && !params.at("record").is_null()) {
+        if(run_dir.empty())throw std::invalid_argument("no run directory to record into");
+        const auto& r=params.at("record");
+        debug::Recording::Options options;
+        options.width=r.value("width",960u);options.fps=r.value("fps",30u);
+        options.encode=r.value("encode",true);options.lockstep=r.value("lockstep",options.encode);
+        options.ffmpeg=r.value("ffmpeg","");options.queue=r.value("queue",12u);
+        options.gated=true;options.trim_black=r.value("trim_black",true);
+        const auto directory=run_dir/("record-"+std::to_string(srw64_current_vi()));
+        if(!debug::recording().start(directory,options))throw std::invalid_argument("already recording, or cannot write "+directory.string());
+        recorded={{"directory",directory.string()},{"fps",options.fps},{"width",options.width},{"gated",true},{"trim_black",options.trim_black}};
+    }
     std::lock_guard lock(mutex);
     raw=std::move(next);choice=std::move(picked);
     song=params.value("song",choice.is_object()?choice.value("song",-1):-1);
     if(song<0 && choice.is_object())
         song=attacker_song(choice.at("attacker").at("unit").get<unsigned>(),choice.at("attacker").at("pilot").get<unsigned>());
+    route=wanted_route;recording_armed=!recorded.is_null();demo_frames=0;gate_open=false;
     pending=true;armed=false;returned=false;listen=-1;
-    return {{"pending",true},{"writes",raw.size()},{"choice",choice.is_object()}};
+    return {{"pending",true},{"writes",raw.size()},{"choice",choice.is_object()},{"route",route},{"recording",recorded}};
 }
 
 json state() {
     std::lock_guard lock(mutex);
     return {{"pending",pending},{"armed",armed},{"running",running},{"returned",bool(returned)},{"page_open",bool(page_open)},
-            {"started",started},{"filled",filled},{"last",last}};
+            {"started",started},{"filled",filled},{"last",last},{"route",route},
+            {"recording",recording_armed},{"gate_open",gate_open},{"demo_frames",demo_frames},{"record",debug::recording().gate_state()}};
 }
 
 json songs(){std::lock_guard lock(mutex);return songs_cache;}
@@ -335,5 +376,14 @@ void hold_title(bool hold){held=hold;}
 void listen_song(int number){listen=number;}
 int listened(){return listen;}
 bool take_returned(){return returned.exchange(false);}
+void animation_frame() {
+    if(!running || !recording_armed || gate_open)return;
+    // The second frame of the loop: over the first the host's title menu is still drawn
+    // (its page hides a frame late), and the picture is black until the sprites are in.
+    static unsigned frames=0;
+    if(demo_frames && ++frames<2)return;
+    frames=0;gate_open=true;debug::recording().open_gate();
+    note({{"event","record_open"},{"vi",srw64_current_vi()},{"demo_frames",demo_frames}});
+}
 bool busy(){std::lock_guard lock(mutex);return pending || running;}
 }

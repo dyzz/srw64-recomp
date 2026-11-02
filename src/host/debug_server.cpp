@@ -21,6 +21,7 @@
 #include "move_jump.hpp"
 #include "enemy_cycle.hpp"
 #include "quick_load.hpp"
+#include "quote_force.hpp"
 #include "input_mode.hpp"
 #include "mini_stage.hpp"
 #include "forced_game_over.hpp"
@@ -110,6 +111,98 @@ json dialogue_state(bool full_history) {
     if(history.size()>3)history=json(std::vector<json>(history.end()-3,history.end()));
     return state;
 }
+// A choice (3D44, handler 8009FA94 on the script VM at engine+0x948): its operands past the
+// opcode (window slot, option count, text id of the first option), the cursor (+0x2C, the
+// answer 3DD9 + cursor goes to engine+0x994 on A) and the phase (+0x26: 0 before its window
+// opens, 1 while it waits). The reader's state does not show it (unit_name.hpp answers the
+// naming one before any window); a shooting script reads this and uses choice.pick.
+json choice_state() {
+    constexpr uint32_t owner=0x8015F950+0x948;
+    json state={{"active",false}};
+    if(!srw64_rdram)return state;
+    const uint32_t handler=guest::read(srw64_rdram,owner+0x30,4);
+    if(handler!=0x8009FA94)return state;
+    const uint32_t pc=guest::read(srw64_rdram,owner+0x1C,4);
+    if(!guest::valid(pc,6))return state;
+    state["active"]=true;state["options"]=guest::read(srw64_rdram,pc+2,2);state["text_id"]=guest::read(srw64_rdram,pc+4,2);
+    state["cursor"]=guest::read(srw64_rdram,owner+0x2C,2);state["phase"]=guest::read(srw64_rdram,owner+0x26,2);
+    state["last_answer"]=guest::read(srw64_rdram,0x801602E4,2);
+    return state;
+}
+// Moves the choice's cursor to `index` and presses A for a few polls.
+json choice_pick(const json& params) {
+    constexpr uint32_t owner=0x8015F950+0x948;
+    const auto state=choice_state();
+    if(!state["active"].get<bool>())throw RpcError(ServerError,"no choice is open");
+    if(!params.contains("index") || !params["index"].is_number_unsigned())throw RpcError(InvalidParams,"index must be the option number from 0");
+    const unsigned index=params["index"].get<unsigned>(),options=state["options"].get<unsigned>();
+    if(index>=options)throw RpcError(InvalidParams,"index must be below "+std::to_string(options));
+    if(state["phase"].get<unsigned>()!=1)throw RpcError(ServerError,"the choice's window is not up yet");
+    guest::write16(srw64_rdram,owner+0x2C,uint16_t(index));
+    srw64_debug_buttons(0x8000,params.value("vis",4u));
+    return {{"vi",srw64_current_vi()},{"index",index},{"options",options},{"text_id",state["text_id"]}};
+}
+// A choice box on demand (a recording of the moment of choosing): an event of optional
+// dialogue lines (3D3E, one text id each; `line_op` picks another of 3D3E-3D43) and one 3D44
+// [window slot, option count, option text] run by the script injection at the next idle frame
+// of the player's phase, like victory. The option text is one text whose <BR> lines are the
+// options (docs/script/stage-script-exploration.md); the answer lands in 801602E4.
+// An injected event (script_inject.hpp) queued and waited for: "running"/"done" with `extra`
+// in the reply, or an error naming why the map never had an idle frame in time.
+json inject_event(const std::vector<uint16_t>& words,int timeout_ms,json extra) {
+    const auto deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(timeout_ms);
+    const auto sequence=script_inject::queue(words);
+    if(!sequence)throw RpcError(ServerError,"another injected script is waiting or running");
+    auto reply=[&](const std::string& where){json r=extra;r["vi"]=srw64_current_vi();r["script"]=where;return r;};
+    for(std::string waiting;;) {
+        const auto where=script_inject::progress(sequence,&waiting);
+        if(where=="running" || where=="done")return reply(where);
+        if(where=="dropped")throw RpcError(ServerError,"the script injection dropped it");
+        if(std::chrono::steady_clock::now()>=deadline) {
+            script_inject::withdraw(sequence);
+            const auto now=script_inject::progress(sequence);
+            if(now=="running" || now=="done")return reply(now);
+            throw RpcError(ServerError,"no idle frame on the player's phase: "+(waiting.empty()?std::string("not yet checked"):waiting));
+        }
+        std::this_thread::sleep_for(5ms);
+    }
+}
+json choice_show(const json& params) {
+    if(!params.contains("text_id") || !params["text_id"].is_number_unsigned())throw RpcError(InvalidParams,"text_id must be the option text's id");
+    const unsigned text=params["text_id"].get<unsigned>(),options=params.value("options",2u),slot=params.value("slot",0u);
+    if(text>0xFFFF || options<1 || options>8 || slot>1)throw RpcError(InvalidParams,"options 1-8, slot 0 or 1, text_id below 65536");
+    unsigned line_op=0x3D3E;
+    if(params.contains("line_op")) {
+        line_op=unsigned(std::stoul(params["line_op"].get<std::string>(),nullptr,16));
+        if(line_op<0x3D3E || line_op>0x3D43)throw RpcError(InvalidParams,"line_op is one of 3D3E to 3D43");
+    }
+    std::vector<uint16_t> words={0,0,0,0,0};
+    if(params.contains("lines"))for(const auto& line:params["lines"]) {
+        if(!line.is_number_unsigned() || line.get<unsigned>()>0xFFFF)throw RpcError(InvalidParams,"lines are text ids");
+        words.push_back(uint16_t(line_op));words.push_back(uint16_t(line.get<unsigned>()));
+    }
+    words.insert(words.end(),{0x3D44,uint16_t(slot),uint16_t(options),uint16_t(text),0xFFFF});
+    return inject_event(words,params.value("timeout_ms",10000),{{"text_id",text},{"options",options}});
+}
+// dialogue.show {lines: [text ids], line_op?, timeout_ms?}: the lines said on the tactical map
+// as an injected event (one 3D3E each; 3D3E-3D43 by line_op), at the next idle frame of the
+// player's phase. For a line a recording could not reach through its own event (a clear's
+// ending that needs conditions the condensed stage lacks): the same picture, the map behind.
+json dialogue_show(const json& params) {
+    if(!params.contains("lines") || !params["lines"].is_array() || params["lines"].empty())throw RpcError(InvalidParams,"lines must be a list of text ids");
+    unsigned line_op=0x3D3E;
+    if(params.contains("line_op")) {
+        line_op=unsigned(std::stoul(params["line_op"].get<std::string>(),nullptr,16));
+        if(line_op<0x3D3E || line_op>0x3D43)throw RpcError(InvalidParams,"line_op is one of 3D3E to 3D43");
+    }
+    std::vector<uint16_t> words={0,0,0,0,0};
+    for(const auto& line:params["lines"]) {
+        if(!line.is_number_unsigned() || line.get<unsigned>()>0xFFFF)throw RpcError(InvalidParams,"lines are text ids");
+        words.push_back(uint16_t(line_op));words.push_back(uint16_t(line.get<unsigned>()));
+    }
+    words.push_back(0xFFFF);
+    return inject_event(words,params.value("timeout_ms",10000),{{"lines",params["lines"]}});
+}
 json rules_state() {
     const unsigned fixes=rules::active_fixes();
     json ids=json::array();
@@ -179,7 +272,7 @@ json pad_buttons(const json& params) {
 }
 
 json status(const json& params) {
-    json state={{"vi",srw64_current_vi()},{"pid",transport::process_id()},{"run",output.string()},{"host",host_info},
+    json state={{"vi",srw64_current_vi()},{"mode",srw64_rdram?guest::read(srw64_rdram,0x8015DA02,1):0},{"pid",transport::process_id()},{"run",output.string()},{"host",host_info},
         {"image_mode",{{"current",presentation::image_mode.current()},{"requested",presentation::image_mode.requested()},
                        {"hd_available",presentation::image_mode.enabled()}}},
         {"aspect",settings::wide_picture()?"auto":"4:3"},{"picture_width",frame::picture_width.load()},
@@ -192,7 +285,7 @@ json status(const json& params) {
         {"sched",{{"latch_slow_spells",sched_rate::latch_slow_spells.load()},{"logic_ticks",std::vector<uint64_t>(std::begin(sched_rate::logic_ticks),std::end(sched_rate::logic_ticks))},{"picture_ticks",std::vector<uint64_t>(std::begin(sched_rate::picture_ticks),std::end(sched_rate::picture_ticks))},{"factor",sched_rate::factor()},{"retraces",sched_rate::retraces.load()},{"audio_skipped",sched_rate::audio_skipped.load()},{"interval",srw64_rdram?guest::read(srw64_rdram,0x8010F0C8,4):0},{"rendered",srw64_rdram?guest::read(srw64_rdram,0x8010E09C,4):0},{"sync_mode",srw64_rdram?guest::read(srw64_rdram,0x8010F5DC,1):0}}},
         {"wide_map",{{"extra",wide_map::extra()},{"shown",wide_map::map_shown()},{"placed",wide_map::placed_draws()},{"map_width",wide_map::map_width_seen()},{"scroll_x",wide_map::scroll_seen()}}},
         {"rules",rules_state()},{"keys_held",key_list(keyboard().held())},
-        {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"name_page",name_page()},
+        {"intro",intro::state()},{"dialogue",dialogue_state(params.value("history",false))},{"choice",choice_state()},{"name_page",name_page()},
         {"mini_stage",mini_stage::snapshot()},{"battle_page",battle_page::state()},{"link_page",link_page::state()},{"intermission_page",intermission_page::state()},{"upgrade_page",upgrade_page::state()},{"parts_page",parts_page::state()},{"ability_page",ability_page::state()},{"swap_page",swap_page::state()},{"save_page",save_page::state()},{"title_page",title_page::state()},{"battle_viewer",battle_viewer::state()},{"move_jump",move_jump::state()},{"enemy_cycle",enemy_cycle::state()},{"quick_load",quick_load::state()},{"pad_held",pad().load()},{"ui_text",ui_text::state()},{"notices",notices::recent()}};
     const auto window=on_window([] {
         return json{{"window",srw64_window_status()},{"locale",localization::catalog().locale},
@@ -326,6 +419,15 @@ json settings(const json& params) {
         if(ui!="native" && ui!="original")throw RpcError(InvalidParams,"title_ui must be native or original");
         on_window([=]{settings::set_native_title_ui(ui=="native");return json(nullptr);});
         done["title_ui"]=ui;
+    }
+    if(params.contains("dialogue_hints")) {
+        // "off" keeps the reading controls bar off the picture (a recording); "auto" and
+        // "always" are the player's setting.
+        const auto hints=params["dialogue_hints"].get<std::string>();
+        if(hints!="off" && hints!="auto" && hints!="always")throw RpcError(InvalidParams,"dialogue_hints must be off, auto or always");
+        dialogue::set_hints_hidden(hints=="off");
+        if(hints!="off")on_window([=]{settings::set_dialogue_hints_always(hints=="always");return json(nullptr);});
+        done["dialogue_hints"]=hints;
     }
     if(params.contains("locale")) {
         const auto locale=params["locale"].get<std::string>();
@@ -465,8 +567,12 @@ json dispatch(const std::string& method,const json& params) {
     if(method=="screenshot")return screenshot(params);
     if(method=="record.start") {
         const auto directory=output/("record-"+std::to_string(srw64_current_vi()));
-        if(!recording().start(directory,params.value("width",960u)))throw RpcError(ServerError,"already recording, or cannot write "+directory.string());
-        return {{"directory",directory.string()},{"vi",srw64_current_vi()}};
+        Recording::Options options;
+        options.width=params.value("width",960u);options.fps=params.value("fps",30u);
+        options.encode=params.value("encode",true);options.lockstep=params.value("lockstep",options.encode);
+        options.ffmpeg=params.value("ffmpeg","");options.queue=params.value("queue",12u);
+        if(!recording().start(directory,options))throw RpcError(ServerError,"already recording, or cannot write "+directory.string());
+        return {{"directory",directory.string()},{"vi",srw64_current_vi()},{"fps",options.fps},{"encode",options.encode},{"lockstep",options.lockstep}};
     }
     if(method=="record.stop") {
         auto result=recording().stop();
@@ -487,7 +593,42 @@ json dispatch(const std::string& method,const json& params) {
     if(method=="wait_vi")return wait_vi(params);
     if(method=="game_over")return game_over(params);
     if(method=="victory")return victory(params);
-    if(method=="mini_stage.load")return {{"name",mini_stage::load_file(params.at("path").get<std::string>())}};
+    if(method=="mini_stage.load") {
+        const auto name=mini_stage::load_file(params.at("path").get<std::string>());
+        return {{"name",name},{"restart",mini_stage::snapshot().value("restarting",false)}};
+    }
+    if(method=="choice.pick")return choice_pick(params);
+    if(method=="choice.show")return choice_show(params);
+    if(method=="dialogue.show")return dialogue_show(params);
+    // The next generic battle quotes forced to given records (quote_force.hpp): the speaker and
+    // the context follow from each record itself; `slot` is accepted for old callers. `text_id`
+    // one record, `text_ids` several (a whole exchange); either -1/4294967295 clears them all.
+    if(method=="quote.force") {
+        std::vector<int> records;
+        if(params.contains("text_ids")) {
+            if(!params["text_ids"].is_array())throw RpcError(InvalidParams,"text_ids must be a list of battle quote records");
+            for(const auto& v:params["text_ids"]) { if(!v.is_number_unsigned())throw RpcError(InvalidParams,"text_ids must be battle quote records"); records.push_back(int(v.get<unsigned>())); }
+        } else {
+            if(!params.contains("text_id") || !params["text_id"].is_number_unsigned())throw RpcError(InvalidParams,"text_id must be a battle quote record");
+            records.push_back(int(params["text_id"].get<unsigned>()));
+        }
+        const bool clear=records.size()==1 && records[0]<0;
+        if(!clear && !quote_force::rom)throw RpcError(InvalidParams,"the ROM's quote segments are not loaded");
+        json served_ids=json::array();
+        for(const auto& s:quote_force::served_ids) if(s.load()>=0)served_ids.push_back(s.load());
+        if(clear)quote_force::clear();
+        else for(int r:records) if(r>=0 && !quote_force::add(r))throw RpcError(InvalidParams,"quote.force holds 8 records at most");
+        json pending=json::array();
+        for(const auto& p:quote_force::pending) if(p.load()>=0)pending.push_back(p.load());
+        return {{"vi",srw64_current_vi()},{"text_id",pending.empty()?-1:pending[0].get<int>()},{"pending",pending},{"served_ids",served_ids},
+                {"served",quote_force::served.load()},{"seen",quote_force::seen.load()},{"last_voice",quote_force::last_voice.load()},
+                {"last_context",quote_force::last_context.load()},{"last_drawn",quote_force::last_drawn.load()}};
+    }
+    // Back to the title the way F10 asks (quick_load.hpp): the original's Z+START reset on the
+    // map, the intermission or the world map, refused with a notice elsewhere.
+    if(method=="title.return"){quick_load::request_title();return {{"vi",srw64_current_vi()},{"usable",quick_load::usable_title()}};}
+    // Straight to the title at the next frame, from wherever the game is (a recording script).
+    if(method=="title.reset"){mini_stage::request_title_reset();return {{"vi",srw64_current_vi()}};}
     if(method=="memory.read") {
         // Guest RAM as hex, read without stopping the game (a debugging view, not a snapshot).
         const uint32_t address=params.at("address").get<uint32_t>(),size=params.value("size",4u);
@@ -522,7 +663,7 @@ json dispatch(const std::string& method,const json& params) {
     }
     if(method=="quit"){srw64_debug_quit();return {{"quitting",true}};}
     if(method=="methods")return {"status","keys","pad","buttons","screenshot","record.start","record.stop","ui.tree","ui.click","ui.key","ui.type",
-                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","memory.read","memory.write","viewer.start","file.read","file.remove",
+                                 "menu","ui.drop","settings","window","wait_vi","game_over","victory","mini_stage.load","choice.pick","choice.show","dialogue.show","title.return","title.reset","quote.force","memory.read","memory.write","viewer.start","file.read","file.remove",
                                  "quit","methods"};
     throw RpcError(MethodNotFound,"unknown method '"+method+"'");
 }

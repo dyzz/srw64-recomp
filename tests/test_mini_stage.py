@@ -43,6 +43,16 @@ class MiniStageCompilerTests(unittest.TestCase):
             with self.subTest(bad=bad), self.assertRaises(ValueError):
                 compile_stage({**base, "route": bad})
 
+    def test_story_setup_keys_pass_through_checked(self):
+        base = {"schema": SCHEMA, "events": [{"type": 12, "commands": []}]}
+        image = compile_stage({**base, "route": 2, "story_vars": {"9": 0, "17": 3}, "last_choice": 2})
+        self.assertEqual((image["route"], image["story_vars"], image["last_choice"]), (2, {"9": 0, "17": 3}, 2))
+        self.assertEqual((compile_stage(base)["route"], compile_stage(base)["story_vars"], compile_stage(base)["last_choice"]), (None, {}, None))
+        for bad in ({"route": 4}, {"route": "2"}, {"story_vars": {"200": 0}}, {"story_vars": {"9": 4}}, {"story_vars": [[9, 0]]},
+                    {"last_choice": 0}, {"last_choice": 9}):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                compile_stage({**base, **bad})
+
     def test_limits_and_unknown_fields_are_rejected(self):
         with self.assertRaises(ValueError):
             compile_stage({"schema": SCHEMA, "events": [{"type": 12, "commands": []}] * 64})

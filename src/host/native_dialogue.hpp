@@ -127,6 +127,10 @@ std::shared_ptr<const Frame> presented_frame(uint64_t workload);
 nlohmann::json state();
 // A line is up and waiting to be read (the touch controls' dialogue scene, touch_scene.hpp).
 bool reading();
+// The reading controls bar kept off the picture (debug settings dialogue_hints "off": a
+// recording of dialogue scenes need not wait for it to fade). Not saved.
+void set_hints_hidden(bool hidden);
+bool hints_hidden();
 // Small synchronized snapshot for touch buttons; avoids copying the history JSON.
 struct ReadingControls { bool active{}, history_open{}, skipping{}; };
 ReadingControls reading_controls();

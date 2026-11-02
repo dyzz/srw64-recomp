@@ -34,9 +34,12 @@ int main(int argc,char** argv) {
     service(ram.data());assert(read(ram.data(),engine+0x97C,2)==0x80); // phase byte 0 (between stages) is not the player phase
     put(0x8010F5E8,1,1);
     original=ram;
-    put(scratch+0x100,1,1);service(ram.data());assert(read(ram.data(),engine+0x97C,2)==0x80); // scratch in use: deferred
-    put(scratch+0x100,0,1);original=ram;
+    // Scratch in use (the engine's PC inside it): deferred. Left over from a script the
+    // original flow took over (PC elsewhere): reclaimed, and the request applies.
+    put(scratch+0x100,1,1);put(owner+0x1C,scratch+0x100,4);service(ram.data());assert(read(ram.data(),engine+0x97C,2)==0x80);
+    put(owner+0x1C,0,4);original=ram;
     service(ram.data());
+    assert(read(ram.data(),scratch+0x100,1)==0);
     assert(state().active && read(ram.data(),engine+0x97C,2)==0x2000 && read(ram.data(),owner+0x1C,4)==scratch+10);
     assert(read(ram.data(),scratch,2)==0x000C && read(ram.data(),scratch+10,2)==0x3D38 && read(ram.data(),scratch+14,2)==0xFFFF);
     assert(read(ram.data(),owner+8,1)==0xFF && read(ram.data(),owner+0x24,2)==0);

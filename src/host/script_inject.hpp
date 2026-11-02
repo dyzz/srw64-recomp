@@ -125,6 +125,15 @@ inline std::string idle_reason(const uint8_t* ram) {
     for(uint32_t i=0;i<scratch_size;i+=4)if(read(ram,scratch+i,4)!=0)return "scratch-in-use";
     return {};
 }
+// Game thread: the scratch still holding an earlier script (one whose PC escaped into the
+// original flow, a 3D4A clear for one: the scene ended under it) is taken back before a new
+// request is judged, unless the engine is still inside it.
+inline void reclaim_scratch(uint8_t* ram) {
+    const auto pc=read(ram,owner+0x1C,4);
+    if(pc>=scratch && pc<scratch+scratch_size)return;
+    bool stale=false;
+    for(uint32_t i=0;i<scratch_size;i+=4)if(read(ram,scratch+i,4)!=0){if(!stale)log({{"action","scratch-reclaimed"},{"pc",pc},{"at",scratch+i}});stale=true;write32(ram,scratch+i,0);}
+}
 
 inline nlohmann::json snapshot_json(const uint8_t* ram) {
     const auto s=script_trace::snapshot(ram,engine,owner);
@@ -141,6 +150,7 @@ inline void service(uint8_t* ram) {
     if(!s.pending || s.active)return;
     const auto vi=srw64_current_vi();
     if(vi<s.pending->at_vi)return;
+    reclaim_scratch(ram);
     const auto reason=idle_reason(ram);
     if(!reason.empty()) {
         if(reason!=s.last_defer){s.last_defer=reason;log({{"action","deferred"},{"sequence",s.pending->sequence},{"reason",reason}});}
@@ -186,6 +196,9 @@ inline void observe(uint8_t* ram) {
         return;
     }
     if(pc<a.entry || pc>a.end) {
+        // The original flow took over (a 3D4A clear ends the scene from inside the script):
+        // the words are not read again, so the scratch goes back to zero for the next request.
+        for(uint32_t i=0;i<uint32_t(a.end-a.entry);i+=2)write16(ram,a.entry+i,0);
         log({{"action","escaped"},{"sequence",a.sequence},{"pc",pc},{"note","PC left the injected range; original event flow took over"}});
         s.active.reset();return;
     }

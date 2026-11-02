@@ -2,10 +2,57 @@
 #include <cassert>
 #include <cstdio>
 #include <thread>
+#include <filesystem>
+#include <fstream>
+#include <string>
+#include <vector>
 
 using namespace srw64::debug;
 
+// The host's VI counter, stepped by the test.
+static uint64_t test_vi=1000;
+uint64_t srw64_current_vi(){return test_vi;}
+
+// A gated recording trims black at both ends: raw mode (no encoder) for the gate and the
+// lead, with an encoder for the tail too, when one is on the PATH.
+static void recording_gate_test() {
+    std::vector<uint8_t> black(64*32*4,0),white(64*32*4,255);
+    const auto dir=std::filesystem::temp_directory_path()/"srw64-recording-gate-test";
+    std::filesystem::remove_all(dir);
+    Recording rec;
+    Recording::Options raw;raw.encode=false;raw.lockstep=false;raw.gated=true;raw.trim_black=true;raw.width=64;
+    assert(rec.start(dir/"raw",raw));
+    assert(!rec.active());                      // gated: nothing before open_gate
+    rec.add(white.data(),64,32);test_vi+=2;
+    rec.open_gate();
+    rec.add(black.data(),64,32);test_vi+=2;     // the lead's black is not a frame
+    rec.add(black.data(),64,32);test_vi+=2;
+    rec.add(white.data(),64,32);test_vi+=2;
+    rec.add(white.data(),64,32);test_vi+=2;
+    rec.close_gate();
+    rec.add(white.data(),64,32);test_vi+=2;     // after the gate: dropped
+    auto result=rec.stop();
+    std::puts(result.dump().c_str());
+    // Raw mode counts presents as frames; the lead's black went nowhere (two lines of times).
+    assert(result["presents"]==4 && result["trimmed_lead"]==2);
+    {std::ifstream times(dir/"raw"/"frames.times");std::string line;int lines=0;while(std::getline(times,line))++lines;assert(lines==2);}
+    assert(result["gate_opened_vi"]==1002 && result["gate_closed_vi"]==1010);
+    if(!Recording::encoder_available("ffmpeg")){std::puts("recording: no ffmpeg, the tail trim is not tested");return;}
+    Recording::Options enc;enc.gated=true;enc.trim_black=true;enc.width=64;enc.fps=30;
+    assert(rec.start(dir/"enc",enc));
+    rec.open_gate();
+    for(int n=0;n<3;++n){rec.add(black.data(),64,32);test_vi+=2;}
+    for(int n=0;n<6;++n){rec.add(white.data(),64,32);test_vi+=2;}
+    for(int n=0;n<4;++n){rec.add(black.data(),64,32);test_vi+=2;}
+    rec.close_gate();
+    result=rec.stop();
+    assert(result["trimmed_lead"]==3 && result["trimmed_tail"]==4);
+    assert(result["frames"]==6 && result["encoded"]==true);
+    std::filesystem::remove_all(dir);
+}
+
 int main() {
+    recording_gate_test();
     // Key names: chords, aliases, case, and loud failure on typos.
     assert(parse_keys("e+return")==(bit(E)|bit(Return)));
     assert(parse_keys("E+Enter")==(bit(E)|bit(Return)));
