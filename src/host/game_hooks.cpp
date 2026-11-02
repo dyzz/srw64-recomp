@@ -1,5 +1,6 @@
 #include <cstdio>
 #include "game_hooks.hpp"
+#include "battle_viewer.hpp"
 #include "music.hpp"
 #include "battle_hud.hpp"
 #include "guest_memory.hpp"
@@ -72,6 +73,7 @@ void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
     // overlay's participant table and is applied when the map is back.
     srw64::battle_animation_probe::step(ram,ctx);
     srw64::wide_map::mark_battle();   // the sky is drawn to each side (background_sides)
+    srw64::battle_viewer::animation_frame();   // a viewer recording starts with the animation's first frame
     srw64_original_battle_animation_step(ram,ctx);
 }
 void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {

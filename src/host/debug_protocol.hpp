@@ -365,10 +365,14 @@ private:
         for(int64_t t=last_tick+1;t<tick && !last.empty();++t){write_frame(last);++held;}
         write_frame(rgb);last=rgb;last_tick=tick;++written;
     }
-    // Whether an RGB picture is (nearly) black: every 7th pixel at most 8 in every channel.
+    // Whether an RGB picture is black for the trim: of every 7th pixel, fewer than 2% have a
+    // channel above 16. A fade's last frames keep a few bright pixels (a corner button of the
+    // host's own UI, the HUD's last remains), and the title menu's text over the demo's first
+    // frame is about 1%: all of it is no picture.
     static bool is_black(const std::vector<uint8_t>& rgb) {
-        for(size_t i=0;i+2<rgb.size();i+=21)if(rgb[i]>8 || rgb[i+1]>8 || rgb[i+2]>8)return false;
-        return true;
+        size_t bright=0,total=0;
+        for(size_t i=0;i+2<rgb.size();i+=21){++total;if(rgb[i]>16 || rgb[i+1]>16 || rgb[i+2]>16)++bright;}
+        return total==0 || bright*50<total;
     }
     void write_frame(const std::vector<uint8_t>& rgb) {
         if(!encoder)return;

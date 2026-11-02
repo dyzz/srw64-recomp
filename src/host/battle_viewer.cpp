@@ -75,7 +75,7 @@ int song=-1;
 // frame (the first can still be the title's late present) and closed when the demo mode
 // ends, black frames trimmed at both ends; record.stop then finishes the file.
 int route=-1;
-bool recording_armed=false;unsigned demo_frames=0;
+bool recording_armed=false,gate_open=false;unsigned demo_frames=0;
 std::filesystem::path run_dir;
 // A song the page plays to listen (-1 none), what it asked for last, and the title's own
 // song to put back when it stops (-2: nothing to put back).
@@ -226,12 +226,13 @@ std::vector<Write> compute(const uint8_t* ram,const json& c) {
 
 bool start(uint8_t* ram,int* music) {
     const unsigned current=read(ram,mode,1);
-    // The recording of the animation alone: taken from the demo's second frame to its last.
+    // The recording of the animation alone: opened by animation_frame() (the battle loop's
+    // first frame; the demo mode's own first frames still show the title fading out), closed
+    // when the demo mode ends.
     if(running && recording_armed) {
-        if(current==demo_mode) {
-            if(++demo_frames==2){debug::recording().open_gate();note({{"event","record_open"},{"vi",srw64_current_vi()}});}
-        } else if(demo_frames) {
-            debug::recording().close_gate();recording_armed=false;
+        if(current==demo_mode)++demo_frames;
+        else if(demo_frames) {
+            debug::recording().close_gate();recording_armed=false;gate_open=false;
             note({{"event","record_close"},{"vi",srw64_current_vi()},{"mode",current},{"demo_frames",demo_frames}});
         }
     }
@@ -273,7 +274,7 @@ bool start(uint8_t* ram,int* music) {
     write8(ram,demo_repeat,0);write8(ram,demo_count,0);write8(ram,title_start,0);
     bool names=false;
     if(route>=0)names=mini_stage::write_route(ram,unsigned(route));
-    pending=false;armed=true;running=true;++started;demo_frames=0;
+    pending=false;armed=true;running=true;++started;demo_frames=0;gate_open=false;
     // The battle's song replaces one being listened to.
     listen=-1;listening=-1;title_song=-2;
     *music=song>=0?song:no_music;
@@ -350,7 +351,7 @@ json request(const json& params) {
     song=params.value("song",choice.is_object()?choice.value("song",-1):-1);
     if(song<0 && choice.is_object())
         song=attacker_song(choice.at("attacker").at("unit").get<unsigned>(),choice.at("attacker").at("pilot").get<unsigned>());
-    route=wanted_route;recording_armed=!recorded.is_null();demo_frames=0;
+    route=wanted_route;recording_armed=!recorded.is_null();demo_frames=0;gate_open=false;
     pending=true;armed=false;returned=false;listen=-1;
     return {{"pending",true},{"writes",raw.size()},{"choice",choice.is_object()},{"route",route},{"recording",recorded}};
 }
@@ -359,7 +360,7 @@ json state() {
     std::lock_guard lock(mutex);
     return {{"pending",pending},{"armed",armed},{"running",running},{"returned",bool(returned)},{"page_open",bool(page_open)},
             {"started",started},{"filled",filled},{"last",last},{"route",route},
-            {"recording",recording_armed},{"demo_frames",demo_frames},{"record",debug::recording().gate_state()}};
+            {"recording",recording_armed},{"gate_open",gate_open},{"demo_frames",demo_frames},{"record",debug::recording().gate_state()}};
 }
 
 json songs(){std::lock_guard lock(mutex);return songs_cache;}
@@ -375,5 +376,14 @@ void hold_title(bool hold){held=hold;}
 void listen_song(int number){listen=number;}
 int listened(){return listen;}
 bool take_returned(){return returned.exchange(false);}
+void animation_frame() {
+    if(!running || !recording_armed || gate_open)return;
+    // The second frame of the loop: over the first the host's title menu is still drawn
+    // (its page hides a frame late), and the picture is black until the sprites are in.
+    static unsigned frames=0;
+    if(demo_frames && ++frames<2)return;
+    frames=0;gate_open=true;debug::recording().open_gate();
+    note({{"event","record_open"},{"vi",srw64_current_vi()},{"demo_frames",demo_frames}});
+}
 bool busy(){std::lock_guard lock(mutex);return pending || running;}
 }
