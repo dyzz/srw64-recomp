@@ -37,6 +37,7 @@ are in no triplet (FOLLOW_ON_REACH).
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py pack [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py extend --into assets/hd-ai/cutins/pack-vN [--only SET ...] [--replace] [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py scenes [--bind]
+    .venv/bin/python tools/hd_ai/cutin_hd.py share --into assets/hd-ai/cutins/pack-vN [--bind]
 
 `extend` adds frames.json rows the bound pack has no picture for to a copy of it, leaving
 its pictures and scene thumbnails as they are; with --replace it packs the rows of the
@@ -410,7 +411,7 @@ def pack(bind: bool) -> None:
     from tools.hd_ai.unit_extra_derive import PACK_SCALE
     index = {'schema': 'srw64.unit-extra-images.v1', 'scale': PACK_SCALE,
              'recipe': f'50% {RECIPE[0]} + 50% {RECIPE[1]} (tools/hd_ai/cutin_hd.py)', 'images': rows}
-    (folder / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
+    share_files(folder, index)
     print(len(rows), 'frames packed')
     scenes(bind)
 
@@ -426,23 +427,70 @@ def extend(into: Path, bind: bool, only: list[str] | None = None, replace: bool 
         if path.is_file() and path.name != 'battle-sprites.json':
             os.link(path, into / path.name)
     index = json.loads((current / 'battle-sprites.json').read_text())
-    have = {r['file'] for r in index['images']}
+    have = {frame_key(r) for r in index['images']}
     rows = [r for r in json.loads((OUT / 'frames.json').read_text())['frames'] if not only or r.get('set') in only]
     if not replace:
-        rows = [r for r in rows if f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png" not in have]
+        rows = [r for r in rows if frame_key(r) not in have]
     for r in rows:                                # a hard link: drop it rather than write through to the bound pack
         (into / f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png").unlink(missing_ok=True)
     added = [pack_row(r, into) for r in rows]
-    files = {r['file'] for r in added}
-    index['images'] = [r for r in index['images'] if r['file'] not in files] + added
-    (into / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
+    keys = {frame_key(r) for r in added}
+    index['images'] = [r for r in index['images'] if frame_key(r) not in keys] + added
+    share_files(into, index)
     print(len(added), 'frames added to', current.name, '->', into.name)
     if bind:
-        manifest = json.loads(MANIFEST.read_text())
-        manifest['battle_sprites'] = {'path': str(into.relative_to(ROOT)),
-                                      'manifest_sha256': hashlib.sha256((into / 'battle-sprites.json').read_bytes()).hexdigest()}
-        MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-        print('bound', MANIFEST.relative_to(ROOT))
+        bind_pack(into)
+
+
+def frame_key(r: dict) -> tuple[int, int, int, int]:
+    return r['scene'], r['atlas'], r['palette'], r['frame']
+
+
+def share_files(folder: Path, index: dict) -> None:
+    """Rows whose pictures are byte for byte the same (another palette that draws the same
+    colours, a scene repeated under another id: a fifth of the pack) point at one file,
+    same-<sha256 prefix>.png, and the files no row names any more go. A row's own
+    <scene>-<atlas>-<palette>-f<frame>.png is never shared, so `extend` can rewrite it."""
+    groups: dict[str, list[dict]] = {}
+    for r in index['images']:
+        groups.setdefault(r['sha256'], []).append(r)
+    for digest_, rows in groups.items():
+        if len({r['file'] for r in rows}) < 2 and not rows[0]['file'].startswith('same-'):
+            continue
+        name = f'same-{digest_[:16]}.png'
+        if not (folder / name).exists():
+            os.link(folder / rows[0]['file'], folder / name)
+        for r in rows:
+            r['file'] = name
+    named = {r['file'] for r in index['images']} | {r['file'] for r in index.get('scenes', [])}
+    for path in folder.glob('*.png'):
+        if path.name not in named:
+            path.unlink()
+    (folder / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
+
+
+def bind_pack(folder: Path) -> None:
+    manifest = json.loads(MANIFEST.read_text())
+    manifest['battle_sprites'] = {'path': str(folder.relative_to(ROOT)),
+                                  'manifest_sha256': hashlib.sha256((folder / 'battle-sprites.json').read_bytes()).hexdigest()}
+    MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    print('bound', MANIFEST.relative_to(ROOT))
+
+
+def share(into: Path, bind: bool) -> None:
+    """A new pack folder: the bound pack hard-linked, with its identical pictures shared (share_files)."""
+    into = into.absolute()
+    current = ROOT / json.loads(MANIFEST.read_text())['battle_sprites']['path']
+    into.mkdir(parents=True, exist_ok=False)
+    for path in current.iterdir():
+        if path.is_file() and path.name != 'battle-sprites.json':
+            os.link(path, into / path.name)
+    index = json.loads((current / 'battle-sprites.json').read_text())
+    before = len({r['file'] for r in index['images']})
+    share_files(into, index)
+    print(len(index['images']), 'rows,', before, '->', len({r['file'] for r in index['images']}), 'files')
+    if bind:
+        bind_pack(into)
 
 
 def scenes(bind: bool, shots: Path | None = None, into: Path | None = None) -> None:
@@ -519,7 +567,7 @@ def review() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('step', choices=('export', 'run', 'pack', 'extend', 'scenes', 'review'))
+    parser.add_argument('step', choices=('export', 'run', 'pack', 'extend', 'scenes', 'share', 'review'))
     parser.add_argument('--models', type=Path, default=ROOT / 'build/esrgan-models')
     parser.add_argument('--only', nargs='+', help='run, extend: just these sets (brush, movie, ...)')
     parser.add_argument('--fast', type=int, nargs='?', const=2, default=0, choices=(1, 2),
@@ -527,7 +575,7 @@ def main() -> None:
     parser.add_argument('--replace', action='store_true', help='extend: repack the --only sets even where the bound pack has them')
     parser.add_argument('--bind', action='store_true', help='point the art manifest at the pack')
     parser.add_argument('--shots', type=Path, help='scenes: HD captures (tools/hd_ai/viewer_scenes.py) instead of the catalogue renders')
-    parser.add_argument('--into', type=Path, help='scenes, extend: a new pack folder, hard-linked from the current one')
+    parser.add_argument('--into', type=Path, help='scenes, extend, share: a new pack folder, hard-linked from the current one')
     args = parser.parse_args()
     if args.step == 'export':
         export()
@@ -543,6 +591,10 @@ def main() -> None:
         extend(args.into, args.bind, args.only, args.replace)
     elif args.step == 'scenes':
         scenes(args.bind, args.shots, args.into)
+    elif args.step == 'share':
+        if args.into is None:
+            parser.error('share needs --into')
+        share(args.into, args.bind)
     else:
         review()
 

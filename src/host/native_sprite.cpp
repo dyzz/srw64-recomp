@@ -621,7 +621,10 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             auto asset = std::make_unique<Asset>();
             asset->file = art_directory / row.at("file").get<std::string>();
             if (!hd_texture::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
-            asset->key = "unit:" + row.at("file").get<std::string>();
+            // Rows can share one file (identical pictures, tools/hd_ai/cutin_hd.py share); the key
+            // keeps their recoloured variants apart, each made from its own registered palette.
+            asset->key = "unit:" + row.at("file").get<std::string>() + "#" + std::to_string(image.scene) + "-" +
+                         std::to_string(image.atlas) + "-" + std::to_string(image.palette) + "-" + std::to_string(*image.frames.begin());
             {
                 std::lock_guard lock(asset_mutex);
                 image.asset = int(assets.size());
