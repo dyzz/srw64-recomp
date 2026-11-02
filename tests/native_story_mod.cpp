@@ -56,7 +56,7 @@ int main(int argc,char** argv) {
     std::ifstream example(argv[2]);
     story::Library master;
     story::add_image(master,"srw64.master-asia",json::parse(example));
-    check(master.events.size()==3 && master.events[0].trigger==story::Trigger::persuade && master.events[0].a==4 && master.events[0].b==18,"the example's persuasion");
+    check(master.events.size()==6 && master.events[0].trigger==story::Trigger::persuade && master.events[0].a==4 && master.events[0].b==18,"the example's persuasion");
     check(master.events[0].vars==std::map<unsigned,unsigned>{{131,0}},"after the talk");
     check(master.events[0].kills==std::map<unsigned,unsigned>{{4,50}},"Domon at 50 kills");
     check(master.events[1].trigger==story::Trigger::persuade && master.events[1].kills_below==std::map<unsigned,unsigned>{{4,50}} &&

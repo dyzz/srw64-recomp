@@ -121,6 +121,288 @@
           "en": "Master...! Yes!" } },
         { "join": { "pilot": 18, "unit": 27, "level": { "like": 4 } } }
       ]
+    },
+    {
+      "id": "persuade-oz",
+      "note": "絶望と悲しみの拳（後）, the OZ route's: the same persuasion as scene 129's. Here the after-battle talk (001d820c) sets 133 to 0, and the second half of Master Asia's defeat event (001d8250) starts the delay event of Wong's next phase (3D52 slot 1 when Allenby is safe, 129 or 128 at 2, else slot 2). 133 stays 0, so neither death scene, the farewell (133 = 3) nor Quattro's afterword (133 = 1) of the end event plays.",
+      "scene": 137,
+      "when": {
+        "persuade": {
+          "by": 4,
+          "target": 18
+        }
+      },
+      "if": {
+        "vars": {
+          "133": 0
+        },
+        "kills": {
+          "4": 50
+        }
+      },
+      "do": [
+        {
+          "say": 4,
+          "text": {
+            "ja": "師匠！　もうやめてくれ！　あんたの拳は泣いている……俺にはわかるんだ！",
+            "zh-Hans": "师父！住手吧！你的拳头在哭泣……我感觉得到！",
+            "zh-Hant": "師父！住手吧！你的拳頭在哭泣……我感覺得到！",
+            "en": "Master, stop this! Your fists are weeping... I can feel it!"
+          }
+        },
+        {
+          "say": 18,
+          "mode": 2,
+          "text": {
+            "ja": "ドモン……貴様、まだワシを師と呼ぶか。",
+            "zh-Hans": "多蒙……你还肯叫我师父吗？",
+            "zh-Hant": "多門……你還肯叫我師父嗎？",
+            "en": "Domon... You still call me your master?"
+          }
+        },
+        {
+          "say": 4,
+          "text": {
+            "ja": "当たり前だ！　人類を滅ぼすなんて、あんたの本心じゃないはずだ！",
+            "zh-Hans": "那当然！毁灭人类，绝不是你的本心！",
+            "zh-Hant": "那當然！毀滅人類，絕不是你的本心！",
+            "en": "Of course I do! Wiping out humanity can't be what you truly want!"
+          }
+        },
+        {
+          "say": 18,
+          "mode": 2,
+          "text": {
+            "ja": "……フッ、拳を交えるまでもなく伝わるとはな。ワシの負けよ、ドモン。",
+            "zh-Hans": "……哼，连拳头都不必交，就传到我这里了吗。是我输了，多蒙。",
+            "zh-Hant": "……哼，連拳頭都不必交，就傳到我這裡了嗎。是我輸了，多門。",
+            "en": "...Hmph. To reach me without even trading blows. I yield, Domon."
+          }
+        },
+        {
+          "say": 18,
+          "mode": 2,
+          "text": {
+            "ja": "だが、ウォンめが黙ってはおるまい。ここは退く。続きはデビルガンダムを片づけてからだ！",
+            "zh-Hans": "不过，王那家伙不会善罢甘休。我先退下。剩下的话，等收拾了恶魔高达再说！",
+            "zh-Hant": "不過，王那傢伙不會善罷甘休。我先退下。剩下的話，等收拾了惡魔鋼彈再說！",
+            "en": "But Wong will not let this stand. I withdraw for now. The rest can wait until the Devil Gundam is dealt with!"
+          }
+        },
+        {
+          "close": "window"
+        },
+        {
+          "leave": 18
+        },
+        {
+          "bgm": 11
+        },
+        {
+          "op": "3D35",
+          "args": [
+            10536,
+            1
+          ]
+        },
+        {
+          "op": "3D40",
+          "args": [
+            45581
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            10536,
+            1
+          ]
+        },
+        {
+          "op": "3D40",
+          "args": [
+            45583
+          ]
+        },
+        {
+          "op": "3E14",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3E03",
+          "args": [
+            129,
+            2,
+            1
+          ]
+        },
+        {
+          "op": "3D52",
+          "args": [
+            1,
+            0,
+            4
+          ]
+        },
+        {
+          "op": "3E1D"
+        },
+        {
+          "op": "3E02",
+          "args": [
+            129,
+            2
+          ]
+        },
+        {
+          "op": "3E03",
+          "args": [
+            128,
+            2,
+            0
+          ]
+        },
+        {
+          "op": "3D52",
+          "args": [
+            1,
+            0,
+            4
+          ]
+        },
+        {
+          "op": "3E1D"
+        },
+        {
+          "op": "3E02",
+          "args": [
+            128,
+            2
+          ]
+        },
+        {
+          "op": "3D52",
+          "args": [
+            2,
+            0,
+            4
+          ]
+        },
+        {
+          "op": "3E1D"
+        },
+        {
+          "op": "3E1D"
+        }
+      ]
+    },
+    {
+      "id": "refused-oz",
+      "note": "Scene 137's refusal, as scene 129's: under 50 kills, again and again.",
+      "scene": 137,
+      "when": {
+        "persuade": {
+          "by": 4,
+          "target": 18
+        }
+      },
+      "if": {
+        "vars": {
+          "133": 0
+        },
+        "kills_below": {
+          "4": 50
+        },
+        "not_fired": [
+          "persuade-oz"
+        ]
+      },
+      "repeat": true,
+      "do": [
+        {
+          "say": 4,
+          "text": {
+            "ja": "師匠！　もうやめてくれ！　こんな戦い、あんたの本心じゃないはずだ！",
+            "zh-Hans": "师父！住手吧！这种战斗，绝不是你的本心！",
+            "zh-Hant": "師父！住手吧！這種戰鬥，絕不是你的本心！",
+            "en": "Master, stop this! This fight can't be what you truly want!"
+          }
+        },
+        {
+          "say": 18,
+          "mode": 2,
+          "text": {
+            "ja": "たわけが！　その程度の拳で、ワシの何がわかるというのだ！",
+            "zh-Hans": "蠢货！就凭你这点本事的拳头，能懂我什么！",
+            "zh-Hant": "蠢貨！就憑你這點本事的拳頭，能懂我什麼！",
+            "en": "Fool! With fists like those, what could you understand of me?"
+          }
+        },
+        {
+          "say": 18,
+          "mode": 2,
+          "text": {
+            "ja": "ワシを止めたくば、その拳で語ってみせい！",
+            "zh-Hans": "想阻止我，就用你的拳头来说话！",
+            "zh-Hant": "想阻止我，就用你的拳頭來說話！",
+            "en": "If you would stop me, let your fists do the talking!"
+          }
+        },
+        {
+          "say": 4,
+          "text": {
+            "ja": "くっ……師匠……！",
+            "zh-Hans": "可恶……师父……！",
+            "zh-Hant": "可惡……師父……！",
+            "en": "Damn it... Master...!"
+          }
+        }
+      ]
+    },
+    {
+      "id": "joins-oz",
+      "note": "After scene 137's end event: he comes along, with the Master Gundam, at Domon's level.",
+      "scene": 137,
+      "when": {
+        "after": "end"
+      },
+      "if": {
+        "fired": [
+          "persuade-oz"
+        ]
+      },
+      "do": [
+        {
+          "say": 18,
+          "text": {
+            "ja": "ドモン、ワシも行こう。ワシの拳、今度は地球を守るために振るってくれるわ。",
+            "zh-Hans": "多蒙，我也同去。这一回，我的拳头就为守护地球而挥。",
+            "zh-Hant": "多門，我也同去。這一回，我的拳頭就為守護地球而揮。",
+            "en": "Domon, I will come with you. This time my fists shall fight to protect the Earth."
+          }
+        },
+        {
+          "say": 4,
+          "mode": 1,
+          "text": {
+            "ja": "師匠……！　はい！",
+            "zh-Hans": "师父……！是！",
+            "zh-Hant": "師父……！是！",
+            "en": "Master...! Yes!"
+          }
+        },
+        {
+          "join": {
+            "pilot": 18,
+            "unit": 27,
+            "level": {
+              "like": 4
+            }
+          }
+        }
+      ]
     }
   ]
 }

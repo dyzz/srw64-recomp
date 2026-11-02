@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Live check of story MODs (src/host/story_mod.hpp) with the example package
-config/recomp/mods/master-asia on the story-master mini stage (scene 129):
+config/recomp/mods/master-asia, on a route's mini stage: --route ia is scene 129
+(story-master.json, the talk variable 131), --route oz scene 137 (story-master-oz.json, 133):
 
-  1. the package's events load (story-mod-events.jsonl "loaded": 2 events, 7 lines);
-  2. before the talk (variable 131 = 3) Domon's command menu offers no 説得;
-  3. with 131 = 0 (as the original's after-battle talk leaves it) the menu offers 説得; with
-     Domon at 49 kills it is the refusal: its four lines, Master Asia stays, 131 stays 0;
+  1. the package's events load (story-mod-events.jsonl "loaded": 6 events, 22 lines);
+  2. before the talk (the talk variable 3) Domon's command menu offers no 説得;
+  3. with it at 0 (as the original's after-battle talk leaves it) the menu offers 説得; with
+     Domon at 49 kills it is the refusal: its four lines, Master Asia stays, the variable 0;
      Domon is given his action back and 50 kills, and 説得 is the persuasion,
-     and choosing it runs the package's persuasion: its first line is shown, Master Asia
-     leaves the map, Wong comes in (group 11), 131 ends at 3 and 101 at 0;
-  4. after the stage is won (3D4A) the end event runs, then the package's "joins":
-     its line is shown and pilot 18 is on the roster with unit 27.
+     and choosing it runs the package's persuasion: its lines are shown, Master Asia
+     leaves the map, Wong's original lines follow, the route's variables as listed below;
+  4. after the stage is won (3D4A) the end event runs without Master Asia's death, then
+     the package's join: its lines are shown and pilot 18 is on the roster with unit 27.
 
 Screens are saved beside the run. Pass --keep to leave the game open afterwards.
 """
@@ -25,18 +26,31 @@ from recomp.debug.session import ROOT, Session, HostError  # noqa: E402
 sys.path.insert(0, str(ROOT / "tools"))
 from mods.pack import build_package  # noqa: E402
 
-STAGE = ROOT / "config/recomp/mini-stages/story-master.json"
+# Per route: the stage, the talk variable, the package's events, their marks (0x7000 + place
+# in the library), their lines (0xC800 + place), Wong's original lines after the persuasion,
+# the end event's lines about Master Asia's end, and the variables after the persuasion.
+ROUTES = {
+    "ia": {"stage": "story-master.json", "talk": 131, "suffix": "", "marks": (0x7000, 0x7001),
+           "lines": (0, 5, 9), "wong": (43215, 43230), "ends": [(43248, 43291)], "after": {131: 3, 128: 3, 101: 0}},
+    "oz": {"stage": "story-master-oz.json", "talk": 133, "suffix": "-oz", "marks": (0x7003, 0x7004),
+           "lines": (11, 16, 20), "wong": (45581, 45583), "next_phase": (45584, 45590), "ends": [(45606, 45650), (45757, 45765)], "after": {133: 0}},
+}
 PACKAGE = ROOT / "config/recomp/mods/master-asia"
 ENGINE, VARS, CURSOR = 0x8015F950, 0x8015E818, 0x80102308
 UNITS, UNIT_SIZE = 0x8016A210, 0x54
 PILOTS, PILOT_SIZE = 0x80172F40, 0x4C
 
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+parser.add_argument("--route", choices=ROUTES, default="ia")
 parser.add_argument("--language", default="zh-Hans")
 parser.add_argument("--keep", action="store_true", help="leave the game running at the end")
 parser.add_argument("--launch-only", action="store_true", help="only start it on the stage, for driving by hand")
 parser.add_argument("--before-victory", action="store_true", help="stop on the map after the persuasion, the game left running")
 args = parser.parse_args()
+ROUTE = ROUTES[args.route]
+STAGE = ROOT / "config/recomp/mini-stages" / ROUTE["stage"]
+TALK = ROUTE["talk"]
+PERSUADE, REFUSED, JOINS = (f"srw64.master-asia/{name}{ROUTE['suffix']}" for name in ("persuade", "refused", "joins"))
 
 mods = ROOT / "build/recomp/debug" / time.strftime("story-mods-%Y%m%dT%H%M%S")
 build_package(PACKAGE, mods, archive=False)
@@ -162,15 +176,16 @@ try:
     s.enter_mini_stage()
     until(idle, 180, "the stage's opening")
     loaded = story_rows("loaded")
-    check("package loaded", bool(loaded) and loaded[-1]["events"] == 3 and loaded[-1]["texts"] == 11 and not loaded[-1]["problems"], json.dumps(loaded[-1:], ensure_ascii=False))
+    check("package loaded", bool(loaded) and loaded[-1]["events"] == 6 and loaded[-1]["texts"] == 22 and not loaded[-1]["problems"], json.dumps(loaded[-1:], ensure_ascii=False))
     registered = story_rows("registered")
-    check("scene 129 registered", bool(registered) and registered[-1]["scene"] == 129, json.dumps(registered[-1:]))
+    scene = 129 if args.route == "ia" else 137
+    check(f"scene {scene} registered", bool(registered) and registered[-1]["scene"] == scene, json.dumps(registered[-1:]))
     if args.launch_only:
         print("left on the map")
         sys.exit(0)
 
     # Before the talk: Domon's menu (the cursor starts on him) has no persuasion.
-    check("131 is 3 at the start", variable(131) == 3)
+    check(f"{TALK} is 3 at the start", variable(TALK) == 3)
     s.client.call("keys", press="z", hold_ms=80)
     time.sleep(1.0)
     check("no 説得 before the talk (+0x992 = -1)", word(ENGINE + 0x992) == 0xFFFF, hex(word(ENGINE + 0x992)))
@@ -180,22 +195,23 @@ try:
 
     # After it (131 = 0, as 001d387c leaves it), Domon at 49 kills: 説得 is offered, and it
     # is the refusal (the package's second event: mark 0x7001).
-    set_variable(131, 0)
+    set_variable(TALK, 0)
     pilots = mem(PILOTS, 100 * PILOT_SIZE)
     domon = next(PILOTS + i * PILOT_SIZE for i in range(100)
                  if pilots[i * PILOT_SIZE] and int.from_bytes(pilots[i * PILOT_SIZE + 2:i * PILOT_SIZE + 4], "big") == 4)
     poke(domon + 0x14, (49).to_bytes(2, "big"))
     s.client.call("keys", press="z", hold_ms=80)
     time.sleep(1.0)
-    check("説得 at 49 kills is the refusal (+0x992 = 0x7001)", word(ENGINE + 0x992) == 0x7001, hex(word(ENGINE + 0x992)))
+    check("説得 at 49 kills is the refusal (our mark)", word(ENGINE + 0x992) == ROUTE["marks"][1], hex(word(ENGINE + 0x992)))
     shot("menu-after")
     mark = lines_seen()
     choose_persuade()
-    advance_until(lambda: finished("srw64.master-asia/refused"), 120, "the refusal to end")
-    check("the refusal's four lines read", ours(mark) == [MOD_LINES + n for n in range(5, 9)], str(ours(mark)))
-    check("refused: 131 still 0, Master Asia still on the map, not persuaded",
-          variable(131) == 0 and not any(r.get("event") == "srw64.master-asia/persuade" for r in story_rows("started")),
-          str(variable(131)))
+    advance_until(lambda: finished(REFUSED), 120, "the refusal to end")
+    first = MOD_LINES + ROUTE["lines"][1]
+    check("the refusal's four lines read", ours(mark) == [first + n for n in range(4)], str(ours(mark)))
+    check(f"refused: {TALK} still 0, Master Asia still on the map, not persuaded",
+          variable(TALK) == 0 and not any(r.get("event") == PERSUADE for r in story_rows("started")),
+          str(variable(TALK)))
     until(idle, 60, "the map after the refusal")
     shot("after-refusal")
 
@@ -212,29 +228,34 @@ try:
         time.sleep(0.4)
     s.client.call("keys", press="z", hold_ms=80)
     time.sleep(1.0)
-    check("説得 at 50 kills is the persuasion (+0x992 = 0x7000)", word(ENGINE + 0x992) == 0x7000, hex(word(ENGINE + 0x992)))
+    check("説得 at 50 kills is the persuasion (our mark)", word(ENGINE + 0x992) == ROUTE["marks"][0], hex(word(ENGINE + 0x992)))
     mark = lines_seen()
     started_before = len(story_rows("started"))
     choose_persuade()
     until(lambda: len(story_rows("started")) > started_before, 30, "the persuasion to start")
-    check("persuasion started", story_rows("started")[-1]["event"] == "srw64.master-asia/persuade")
+    check("persuasion started", story_rows("started")[-1]["event"] == PERSUADE)
     shown = []
 
     def note_lines() -> bool:
         shown[:] = [r for r in fragments(mark)]
-        return finished("srw64.master-asia/persuade")
+        return finished(PERSUADE)
 
     advance_until(note_lines, 240, "the persuasion to end")
     ids = [r.get("text_id") for r in fragments(mark)]
     ours = [i for i in ids if i is not None and i >= MOD_LINES]
-    check("all five persuasion lines read", ours[:5] == [MOD_LINES + n for n in range(5)], str(ours))
+    check("all five persuasion lines read", ours[:5] == [MOD_LINES + ROUTE["lines"][0] + n for n in range(5)], str(ours))
     texts = [r["text"] for r in fragments(mark) if r.get("text_id", 0) >= MOD_LINES]
     check("in Chinese, by Domon and Master Asia", bool(texts) and texts[0].startswith("师父！") and
           [r["speaker"] for r in fragments(mark) if r.get("text_id", 0) >= MOD_LINES][:2] == ["多蒙", "东方不败"], json.dumps(texts[:2], ensure_ascii=False))
-    check("Wong's original lines follow", 43215 in ids and 43230 in ids, str(ids))
-    check("variables: 131 = 3, 128 = 3, 101 = 0", (variable(131), variable(128), variable(101)) == (3, 3, 0),
-          str((variable(131), variable(128), variable(101))))
-    until(idle, 60, "the map after the persuasion")
+    check("Wong's original lines follow", all(i in ids for i in ROUTE["wong"]), str(ids))
+    after = {n: variable(n) for n in ROUTE["after"]}
+    check(f"variables: {ROUTE['after']}", after == ROUTE["after"], str(after))
+    # On scene 137 the persuasion starts a delay event (3D52) for Wong's next phase, which
+    # runs at the next poll with lines of its own.
+    advance_until(idle, 120, "the map after the persuasion")
+    if ROUTE.get("next_phase"):
+        ids = [r.get("text_id") for r in fragments(mark)]
+        check("Wong's next phase follows (delay event)", any(i in ids for i in ROUTE["next_phase"]), str(ids[-6:]))
     shot("after-persuasion")
     if args.before_victory:
         print("left on the map after the persuasion")
@@ -246,10 +267,11 @@ try:
         time.sleep(0.4)
     s.client.call("victory", timeout_ms=20000)
     mark = lines_seen()
-    advance_until(lambda: finished("srw64.master-asia/joins"), 300, "the join after the end event")
+    advance_until(lambda: finished(JOINS), 400, "the join after the end event")
     ids = [r.get("text_id") for r in fragments(mark)]
-    check("the end event plays no death scene", not any(43248 <= i <= 43291 for i in ids if i), str(ids[:12]))
-    check("the join's two lines read", [i for i in ids if i and i >= MOD_LINES] == [MOD_LINES + 9, MOD_LINES + 10], str(ids))
+    check("the end event plays nothing of Master Asia's end", not any(a <= i <= b for i in ids if i for a, b in ROUTE["ends"]), str(ids[:12]))
+    join = MOD_LINES + ROUTE["lines"][2]
+    check("the join's two lines read", [i for i in ids if i and i >= MOD_LINES] == [join, join + 1], str(ids[-4:]))
     units = mem(UNITS, 140 * UNIT_SIZE)
     has_unit = any(units[i * UNIT_SIZE] and int.from_bytes(units[i * UNIT_SIZE + 2:i * UNIT_SIZE + 4], "big") == 27 for i in range(140))
     pilots = mem(PILOTS, 120 * PILOT_SIZE)

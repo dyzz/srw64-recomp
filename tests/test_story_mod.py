@@ -38,7 +38,12 @@ class StoryTests(unittest.TestCase):
     def test_example(self):
         image = story.compile_story(json.loads((EXAMPLE / "story/master.json").read_text(encoding="utf-8")))
         self.assertEqual(image["schema"], story.IMAGE_SCHEMA)
-        persuade, refused, joins = image["events"]
+        persuade, refused, joins, persuade_oz, refused_oz, joins_oz = image["events"]
+        # The OZ route's scene 137: its talk variable is 133, and the refusal stops once persuaded.
+        self.assertEqual([e["scene"] for e in (persuade_oz, refused_oz, joins_oz)], [137] * 3)
+        self.assertEqual((persuade_oz["vars"], refused_oz["not_fired"], joins_oz["fired"]),
+                         ({"133": 0}, ["persuade-oz"], ["persuade-oz"]))
+        self.assertIn("3D52 2,0,4", persuade_oz["listing"])
         self.assertEqual((refused["trigger"], refused["kills_below"], refused["repeat"]), ("persuade", {"4": 50}, True))
         self.assertEqual((persuade["trigger"], persuade["params"], persuade["vars"], persuade["kills"]),
                          ("persuade", [4, 18], {"131": 0}, {"4": 50}))
@@ -47,10 +52,10 @@ class StoryTests(unittest.TestCase):
         self.assertEqual(joins["levels"], [[len(joins["words"]) - 4, 4]])   # its level operand, as Domon's
         offset = story.compile_story(source(event(do=[{"join": {"pilot": 18, "unit": 27, "level": {"offset": -2}}}])))["events"][0]
         self.assertEqual((offset["words"][:5], offset["levels"]), ([0x3D5A, 18, 0xFFFE, 27, 500], []))
-        self.assertEqual(len(image["texts"]), 11)
+        self.assertEqual(len(image["texts"]), 22)
         # Each line's place holds the placeholder; its index is in "texts".
         for at, index in persuade["texts"] + refused["texts"] + joins["texts"]:
-            self.assertLess(index, 11)
+            self.assertLess(index, 22)
         self.assertEqual([persuade["words"][at] for at, _ in persuade["texts"]], [story.TEXT] * 5)
         self.assertEqual(image["texts"][1]["speaker"], 18)
 

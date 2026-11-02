@@ -2,7 +2,7 @@
 
 给 MOD 作者看，也可以把这个文件交给你的 AI 助手，让它照着写。设计与原版机制在 [MOD 包](../../design/mod-packages.md) §7，包的通用规则在同一文档 §2。
 
-**现状（2026-11-02，worktree story-mod，未合并、未发布）**：能在原版任意一关加事件——什么时候触发、要满足什么、做什么、说哪些新台词。不占原版的事件位，原版事件一个不动。示例包 [`config/recomp/mods/master-asia`](../../../config/recomp/mods/master-asia/)（独立军线大屿山（下）说服东方不败，过关后加入）已在 Mac 实机走通。
+**现状（2026-11-02，worktree story-mod，未合并、未发布）**：能在原版任意一关加事件——什么时候触发、要满足什么、做什么、说哪些新台词。不占原版的事件位，原版事件一个不动。示例包 [`config/recomp/mods/master-asia`](../../../config/recomp/mods/master-asia/)（独立军线「死斗！大屿山大决战（下）」与 OZ 线「绝望与悲伤之拳（下）」说服东方不败，过关后加入）两条线都已在 Mac 实机走通。同一剧情放到另一关时要先看那关的原版事件：交谈变量、东方不败被击破后原版接着做什么、结束事件按哪些变量播哪些段，示例的 `persuade-oz` 就是照场景 137 改的。
 
 ## 1. 包的结构
 
@@ -111,4 +111,4 @@
 
 ## 4. 自己验证
 
-开发环境里 `tools/recomp/debug/check_story_mod.py` 是示例包的实机检查：装包、直接进入场景 129 的验证关卡（`config/recomp/mini-stages/story-master.json`）、说服、过关、看名册。写自己的包时可以照它改一个。运行时宿主把触发、开始、结束记在运行目录的 `story-mod-events.jsonl`，读不了的包在日志里报 `SRW64_STORY_MOD_PROBLEM`。
+开发环境里 `tools/recomp/debug/check_story_mod.py --route ia|oz` 是示例包的实机检查：装包、直接进入场景 129／137 的验证关卡（`config/recomp/mini-stages/story-master.json`、`story-master-oz.json`）、说服、过关、看名册。写自己的包时可以照它改一个。运行时宿主把触发、开始、结束记在运行目录的 `story-mod-events.jsonl`，读不了的包在日志里报 `SRW64_STORY_MOD_PROBLEM`。
