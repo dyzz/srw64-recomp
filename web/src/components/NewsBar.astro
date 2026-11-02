@@ -1,6 +1,5 @@
 ---
-// A thin line above the header with the newest blog post's title, on every page but that
-// post's own.
+// A thin strip under the header with the three newest blog posts, date and title.
 import { getCollection } from 'astro:content';
 import { tl, type Lang } from '../i18n';
 import { newestFirst } from '../lib/blog';
@@ -8,19 +7,28 @@ interface Props { lang: Lang; path: string; }
 const { lang, path } = Astro.props;
 // Newest by date: a pinned post stays on top of the blog list but is not news.
 const unpinned = <T extends { data: { pinned?: boolean } }>(p: T) => ({ ...p, data: { ...p.data, pinned: false } });
-const [post] = (await getCollection('blog', (p) => p.id.startsWith(`${tl(lang)}/`) && !p.data.draft))
-  .sort((a, b) => newestFirst(unpinned(a), unpinned(b)));
-const href = post && `/${lang}/blog/${post.id.split('/')[1]}/`;
+const posts = (await getCollection('blog', (p) => p.id.startsWith(`${tl(lang)}/`) && !p.data.draft))
+  .sort((a, b) => newestFirst(unpinned(a), unpinned(b)))
+  .slice(0, 3)
+  .map((p) => ({ href: `/${lang}/blog/${p.id.split('/')[1]}/`, date: p.data.date.toISOString().slice(0, 10), title: p.data.title }));
+const here = path.replace(/\/?$/, '/');
 ---
-{post && path.replace(/\/?$/, '/') !== href && (
-  <div class="news-bar">
-    <a class="wrap" href={href}><span>{post.data.title}</span> →</a>
-  </div>
+{posts.length > 0 && (
+  <nav class="news-bar" aria-label="News">
+    <ul class="wrap">
+      {posts.map((p) => (
+        <li><a href={p.href} aria-current={p.href === here ? 'page' : undefined}><time class="latin" datetime={p.date}>{p.date}</time><span>{p.title}</span></a></li>
+      ))}
+    </ul>
+  </nav>
 )}
 
 <style>
   .news-bar { background: var(--bg-2); border-bottom: 1px solid var(--line-soft); }
-  .news-bar a { display: flex; justify-content: center; gap: 6px; padding-top: 6px; padding-bottom: 6px; font-size: 13.5px; line-height: 1.5; color: var(--gold); text-decoration: none; }
-  .news-bar a:hover span { text-decoration: underline; }
+  .news-bar ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 28px; margin: 0 auto; padding-top: 7px; padding-bottom: 7px; list-style: none; }
+  .news-bar a { display: flex; gap: 10px; min-width: 0; font-size: 13.5px; line-height: 1.6; color: var(--text); text-decoration: none; }
+  .news-bar a:hover span, .news-bar a[aria-current] span { color: var(--gold); }
+  .news-bar time { flex-shrink: 0; color: var(--dim); }
   .news-bar span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  @media (max-width: 800px) { .news-bar ul { grid-template-columns: minmax(0, 1fr); } }
 </style>

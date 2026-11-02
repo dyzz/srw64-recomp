@@ -49,8 +49,8 @@ const path = Astro.url.pathname;
     </script>
   </head>
   <body>
-    <NewsBar lang={lang} path={path} />
     <Header lang={lang} path={path} review={review} />
+    <NewsBar lang={lang} path={path} />
     <main>
       <slot />
     </main>
