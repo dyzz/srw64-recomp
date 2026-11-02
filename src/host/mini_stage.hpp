@@ -398,6 +398,18 @@ inline void direct_scene(uint8_t* ram) {
         guest::write16(ram,0x801602EE,uint16_t(0x3DD1+((route+2)&3)));
         names_written=route_names && route_names(ram,route);
     }
+    // The script engine parked as at the end of an event (script_inject.hpp observe: PC 0,
+    // state 0x80, no event running), so the new scene's opening starts as from the title. A
+    // restart taken while the previous stage's end event still ran left its PC in place: the
+    // registration went through, the engine kept waiting on the old event and the opening
+    // never began (2026-11-02, a black screen in the scenario mode).
+    {
+        using namespace script_inject;
+        guest::write16(ram,engine+0x97C,0x80);guest::write16(ram,engine+0x990,0);
+        write32(ram,owner+0x1C,0);
+        for(uint32_t off=0x22;off<=0x2E;off+=2)guest::write16(ram,owner+off,0);
+        guest::write16(ram,owner+0x24,0x80);write32(ram,owner+0x30,0);
+    }
     log({{"action","direct-entry"},{"scene",scene},{"route",s.image && s.image->route?nlohmann::json(*s.image->route):nlohmann::json()},{"names",names_written}});
 }
 
