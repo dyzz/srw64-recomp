@@ -23,6 +23,8 @@
 # without being printed. After the switch the origin refreshes the CDN's cache through
 # its own RAM role (cdn:RefreshObjectCaches on the domain) and this checks that the CDN
 # serves the new release; SRW64_DEPLOY_NO_CDN=1 skips that.
+# Last, the pages that changed go to IndexNow (scripts/indexnow.mjs; SRW64_DEPLOY_NO_INDEXNOW=1
+# skips it).
 set -euo pipefail
 HOST=${SRW64_DEPLOY_HOST:-$(cat ~/.config/srw64/site-deploy-host 2>/dev/null || true)}
 [ -n "$HOST" ] || { echo "set SRW64_DEPLOY_HOST or write ~/.config/srw64/site-deploy-host" >&2; exit 1; }
@@ -146,5 +148,10 @@ REMOTE
   else
     echo "warning: the CDN was not refreshed; refresh https://$DOMAIN/ in the CDN console, or wait up to 10 minutes" >&2
   fi
+fi
+# Search engines that share IndexNow hear which pages changed (web/scripts/indexnow.mjs);
+# SRW64_DEPLOY_NO_INDEXNOW=1 skips it. A failure only warns: the sitemap still has them.
+if [ "${SRW64_DEPLOY_NO_INDEXNOW:-}" != 1 ]; then
+  node "$WEB/scripts/indexnow.mjs" "$WEB/dist" || echo "warning: IndexNow was not told about this release" >&2
 fi
 echo "deployed $ID"
