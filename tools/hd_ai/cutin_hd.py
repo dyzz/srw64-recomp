@@ -29,7 +29,8 @@ are everything else the weapon bank's actors draw (muzzle flashes, shells and mi
 energy balls, the special moves' own pictures), less the generic beams, which are drawn by
 program (BEAM_SCENES); the unscripted are the battle_scenes entries left over, which no animation
 script names (palette variants of pictures already done, a few pictures of their own): done too,
-in case code puts them on.
+in case code puts them on; the follow-ons are the scenes actors step on to at run time, which
+are in no triplet (FOLLOW_ON_REACH).
 
     .venv/bin/python tools/hd_ai/cutin_hd.py export
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py run [--models build/esrgan-models] [--only SET ...] [--fast [1|2]]
@@ -181,7 +182,65 @@ def weapon_registries(rom: bytes) -> list[int]:
 BRUSH_REGISTRY = (865, 881)
 # The kill explosions: the fireballs, the big flash, the warships' white ball and the sparks.
 EXPLOSION_REGISTRY = (1042, 1045)
-SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion', 'hit', 'weapon', 'unscripted')
+SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion', 'hit', 'weapon', 'unscripted',
+        'follow_on')
+# Many actor behaviours step the sprite on to the next scenes of its atlas (the tracer 3555 ->
+# 3556, 3557; the comet run 3821 -> 3822 ... 3844), now and then the atlas and palette with it
+# (3878/3141/3404 -> 3880/3142/3405). A scene resource in no triplet is matched to the nearest
+# registered scene before it (within this many ids, over scenes only) whose atlas, as it is or
+# moved on by up to FOLLOW_ON_SHIFT with its palette, holds every part of it.
+FOLLOW_ON_REACH, FOLLOW_ON_SHIFT = 40, 3
+
+
+def follow_on_triplets(rom: bytes, table: ResourceTable) -> list[tuple[int, tuple[int, int, int]]]:
+    """(base scene, (scene, atlas, palette)) of the follow-on scenes, one row per palette the
+    base is registered with; the units' poses and the generic beams keep to their own layers.
+    A guess by fit: a scene matched to an atlas no actor shows it with is a picture never asked for."""
+    poses = [t for t in read_triplets(rom, 'unit_poses') if t[0]]
+    registered: dict[int, set] = {}
+    for s, a, p in [t for t in read_triplets(rom, 'battle_scenes') if t[0]] + poses:
+        registered.setdefault(s, set()).add((a, p))
+    pose_atlases = {a for _, a, _ in poses}
+    parsed, sizes = {}, {}
+
+    def scene_of(n):
+        if n not in parsed:
+            try:
+                parsed[n] = parse_scene(table.extract(n)[0])
+            except Exception:
+                parsed[n] = None
+        return parsed[n]
+
+    def fits(scene, a, p):
+        if (a, p) not in sizes:
+            try:
+                sizes[a, p] = decode_atlas(table.extract(a)[0], table.extract(p)[0])[0].size
+            except Exception:
+                sizes[a, p] = None
+        size = sizes[a, p]
+        return size and all(q.s + q.w <= size[0] and q.t + q.h <= size[1] for parts in scene.frames for q in parts)
+
+    rows = []
+    for n in range(min(registered), max(registered) + 1):
+        scene = scene_of(n) if n not in registered and n not in BEAM_SCENES else None
+        if not scene:
+            continue
+        found = None
+        for shift in range(FOLLOW_ON_SHIFT + 1):
+            k = n - 1
+            while not found and n - k <= FOLLOW_ON_REACH and (k in registered or scene_of(k)):
+                for a, p in sorted(registered.get(k, ())):
+                    if fits(scene, a + shift, p + shift):
+                        found = (k, a, shift)
+                        break
+                k -= 1
+            if found:
+                break
+        if not found or found[1] in pose_atlases or found[0] in BEAM_SCENES:
+            continue
+        base, a, shift = found
+        rows += [(base, (n, a + shift, p + shift)) for p in sorted({p for a2, p in registered[base] if a2 == a})]
+    return rows
 
 
 def unscripted_registries(rom: bytes) -> list[int]:
@@ -238,7 +297,8 @@ def export() -> None:
             + [('explosion', r, scenes[r]) for r in range(EXPLOSION_REGISTRY[0], EXPLOSION_REGISTRY[1] + 1)]
             + [('hit', r, scenes[r]) for r in hit_registries(rom)]
             + [('weapon', r, scenes[r]) for r in weapon_registries(rom)]
-            + [('unscripted', r, scenes[r]) for r in unscripted_registries(rom)])
+            + [('unscripted', r, scenes[r]) for r in unscripted_registries(rom)]
+            + [('follow_on', base, triplet) for base, triplet in follow_on_triplets(rom, table)])
     any_palette = {triplet for _, triplet, recoloured in defence_triplets(rom) if recoloured}
     for kind, number, (s, a, p) in sets:
         if not s or (s, a, p) in seen:
@@ -258,7 +318,7 @@ def export() -> None:
             key = digest(image)
             if not (OUT / 'inputs' / f'{key}.png').exists():
                 image.save(OUT / 'inputs' / f'{key}.png')
-            field = {'shield': 'unit', 'defence': 'code', 'movie': 'movie'}.get(kind, 'registry')
+            field = {'shield': 'unit', 'defence': 'code', 'movie': 'movie', 'follow_on': 'base'}.get(kind, 'registry')
             rows.append({'set': kind, field: number, 'scene': s, 'atlas': a, 'palette': p,
                          'frame': frame, 'box': list(box), 'input': key}
                         | ({'any_palette': True, 'palette_indices': used[frame]} if used else {}))
@@ -332,7 +392,8 @@ def pack_row(r: dict, folder: Path) -> dict:
              'defence': f"defence {r.get('code')}", 'reaction': f"reaction {r.get('registry')}",
              'brush': f"brush {r.get('registry')}", 'movie': f"map movie {r.get('movie')}",
              'explosion': f"explosion {r.get('registry')}", 'hit': f"hit {r.get('registry')}",
-             'weapon': f"weapon effect {r.get('registry')}", 'unscripted': f"unscripted {r.get('registry')}"}[kind]
+             'weapon': f"weapon effect {r.get('registry')}", 'unscripted': f"unscripted {r.get('registry')}",
+             'follow_on': f"follow-on of scene {r.get('base')}"}[kind]
     return {'scene': r['scene'], 'atlas': r['atlas'], 'palette': r['palette'], 'frame': r['frame'], 'file': name,
             'sha256': hashlib.sha256((folder / name).read_bytes()).hexdigest(),
             'width': image.width, 'height': image.height, 'method': 'image_gen' if source == redrawn else 'esrgan', 'unit': label} \
