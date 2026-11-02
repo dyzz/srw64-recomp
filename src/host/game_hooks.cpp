@@ -589,9 +589,9 @@ void load_00121560_func_80222B14(uint8_t* rdram, recomp_context* ctx) {
 // address 0x30 of nothing (a TLB miss on the console, a fault here) as soon as the cursor
 // finds the tile.
 static bool srw64_roster_unit_gone(const uint8_t* rdram, int handle) {
-    if (handle < 0x42 || handle >= 0x7E + 30) return false;
+    if (handle < 0x42 || handle >= 0x7E + 30) return true;   // no handle at all (-1 from 801C2BFC) names no unit either
     const int side = handle >= 0x7E ? 2 : handle >= 0x60 ? 1 : 0, slot = handle - (side == 2 ? 0x7E : side == 1 ? 0x60 : 0x42);
-    if (slot >= 30) return false;
+    if (slot >= 30) return true;
     return srw64::guest::read(rdram, 0x8015E100 + uint32_t(side) * 0x258 + uint32_t(slot) * 0x14 + 0xC, 4) == 0;
 }
 // 801C2BFC(): the handle of the unit under the map cursor, -1 none. One without a record is none.
@@ -605,7 +605,9 @@ void load_000AB160_func_801C2BFC(uint8_t* rdram, recomp_context* ctx) {
     }
 }
 // 801F9238(handle, mode, flag): the two-dimensional list input over that unit's record
-// (docs/gameplay/original-controls.md). Nothing to list for a unit without one.
+// (docs/gameplay/original-controls.md). Nothing to list for a unit without one, nor for
+// no handle: 801D2FB8 hands it 801C2BFC's answer unchecked, -1 included (801E510C then
+// decodes -1 as the third side's slot -127 and the record pointer is read off the roster).
 void load_000AB160_func_801F9238(uint8_t* rdram, recomp_context* ctx) {
     if (srw64_roster_unit_gone(rdram, int16_t(ctx->r4))) { ctx->r2 = 0; return; }
     srw64_original_list_2d_input(rdram, ctx);
