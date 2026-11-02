@@ -22,6 +22,8 @@ Installing a new version of a package replaces the old one. The old version, and
 
 On Android, put the package file in `mods/` inside the Marchwind64 folder under Documents (the Files app): it installs when the game starts or the MOD page opens. Or press Install from file on the MOD page and pick it.
 
+![Installing a MOD on Android: Settings › General › MOD, then Install from file, or put the file in Documents/Marchwind64/mods](/media/android-mod-install-en.webp)
+
 ## Managing
 
 The Installed page lists each package’s name, version, authors, contents and status. You can turn a package on or off, or remove it (removal asks you to confirm).
