@@ -1,3 +1,4 @@
+#include <cstdio>
 #include "game_hooks.hpp"
 #include "music.hpp"
 #include "battle_hud.hpp"
@@ -579,6 +580,35 @@ void load_00121560_func_80222B14(uint8_t* rdram, recomp_context* ctx) {
     srw64::guest::write16(rdram, slot + 2, 0xFFFF);
     text = -1;
     ++served;
+}
+// The roster entry a unit handle names (801E510C: 0x42 + slot the player's side, 0x60 the
+// enemy's, 0x7E the third's; 30 slots a side, 0x14 bytes an entry at 8015E100), and whether
+// it still has a unit record (+0xC). A unit an event withdrew during the player's phase
+// (Erlich leaves S56 when persuaded, 2026-11-02) keeps its roster flag and its map object
+// for the rest of the phase while the record pointer is already 0: the original then reads
+// address 0x30 of nothing (a TLB miss on the console, a fault here) as soon as the cursor
+// finds the tile.
+static bool srw64_roster_unit_gone(const uint8_t* rdram, int handle) {
+    if (handle < 0x42 || handle >= 0x7E + 30) return false;
+    const int side = handle >= 0x7E ? 2 : handle >= 0x60 ? 1 : 0, slot = handle - (side == 2 ? 0x7E : side == 1 ? 0x60 : 0x42);
+    if (slot >= 30) return false;
+    return srw64::guest::read(rdram, 0x8015E100 + uint32_t(side) * 0x258 + uint32_t(slot) * 0x14 + 0xC, 4) == 0;
+}
+// 801C2BFC(): the handle of the unit under the map cursor, -1 none. One without a record is none.
+void load_000AB160_func_801C2BFC(uint8_t* rdram, recomp_context* ctx) {
+    srw64_original_unit_under_cursor(rdram, ctx);
+    const int handle = int16_t(ctx->r2);
+    if (handle != -1 && srw64_roster_unit_gone(rdram, handle)) {
+        static unsigned told = 0;
+        if (told++ < 3) std::fprintf(stderr, "SRW64_MAP: the cursor is on unit handle %d whose record has gone; treated as empty\n", handle);
+        ctx->r2 = -1;
+    }
+}
+// 801F9238(handle, mode, flag): the two-dimensional list input over that unit's record
+// (docs/gameplay/original-controls.md). Nothing to list for a unit without one.
+void load_000AB160_func_801F9238(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_roster_unit_gone(rdram, int16_t(ctx->r4))) { ctx->r2 = 0; return; }
+    srw64_original_list_2d_input(rdram, ctx);
 }
 // 80221ACC(table, code, base): code when a combination attack's pair says it, else -1
 // (docs/data/battle-quotes.md). The original gathers the pair from the map's participant
