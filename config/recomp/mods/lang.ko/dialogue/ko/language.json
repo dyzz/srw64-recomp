@@ -1,0 +1,11 @@
+{
+  "schema": "srw64.language.v1",
+  "locale": "ko",
+  "name": "한국어",
+  "fallback": "en",
+  "fonts": {
+    "text": [
+      "fonts/DroidSansFallback.ttf"
+    ]
+  }
+}

@@ -738,7 +738,12 @@ void register_languages() {
             // them here and leave the language out instead.
             for(const auto& path:language.text_fonts)text::FontSet({{path,0,0}});
             if(!language.title_font.empty())text::FontSet({{language.title_font,0,0}});
-            localization::add_locale(localization::find(language.fallback)->as_locale(language.locale),language.name,language.fallback);
+            // With the packages' name records on already: the default names (protagonists,
+            // the unit) are taken from the registered catalogs before load_text() runs.
+            auto catalog=localization::find(language.fallback)->as_locale(language.locale);
+            if(const auto layers=found.layers.find(language.locale);layers!=found.layers.end())
+                for(const auto& layer:layers->second)catalog=catalog->with_translations(layer.entries,"mod:"+layer.package);
+            localization::add_locale(catalog,language.name,language.fallback);
             text::set_locale_fonts(language.locale,language.fallback,language.text_fonts,language.title_font);
             added.push_back(std::move(language));
         } catch(const std::exception& error) {

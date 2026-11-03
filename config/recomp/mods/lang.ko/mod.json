@@ -1,0 +1,20 @@
+{
+  "schema": "srw64.mod.v1",
+  "id": "lang.ko",
+  "version": "0.1.0",
+  "name": {
+    "ko": "한국어 (1화 체험판)",
+    "en": "Korean (stage 1 trial)",
+    "zh-Hans": "韩文（第一关试做）",
+    "ja": "韓国語（第1話試作）"
+  },
+  "description": {
+    "ko": "리얼계 남주인공 1화 「유전」까지 한국어로 플레이할 수 있습니다. 나머지는 영어로 표시됩니다.",
+    "en": "Korean through stage 1 of the Real-robot male route; the rest shows in English.",
+    "zh-Hans": "真实系男主第一关「流转」为韩文，其余显示英文。"
+  },
+  "authors": [
+    "Marchwind64"
+  ],
+  "license": "CC-BY-NC-4.0"
+}
