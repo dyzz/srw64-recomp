@@ -214,7 +214,7 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
             }
             if(kind==Kind::weapons && name=="requires") {
                 if(value.is_null()){bytes[record+weapon_requires]=0;continue;}
-                const auto found=std::find_if(std::begin(requirements),std::end(requirements),[&](const Requirement& r){return value.is_string() && r.key==value.get<std::string>();});
+                const auto found=std::find_if(std::begin(requirements),std::end(requirements),[&v=value](const Requirement& r){return v.is_string() && r.key==v.get<std::string>();});
                 if(found==std::end(requirements))return where+"：未知条件 "+value.dump()+"（null、"+keys_of(requirements)+"）";
                 bytes[record+weapon_requires]=found->code;
                 continue;
