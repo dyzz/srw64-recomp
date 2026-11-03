@@ -92,7 +92,7 @@ class NativeModelPackTests(unittest.TestCase):
                 entry = json.loads((Path(folder)/'pack/manifest.json').read_text())['models'][0]
                 self.assertEqual(len(entry['plate']['triangle_commands']), 8)   # frame and two lettering quads
                 self.assertFalse(set(entry['plate']['triangle_commands']) & set(entry['triangle_commands']))
-                self.assertEqual(entry['plate']['text'], {'ja': 'リーブラ', 'zh-Hans': '天秤座', 'en': 'Libra'})
+                self.assertEqual(entry['plate']['text'], {'ja': 'リーブラ', 'zh-Hans': '天秤座', 'en': 'Libra', 'ko': '리브라'})
                 self.assertEqual(sorted(entry['plate']['textures']), sorted(models.PLATE_LOCALES))
 
     def test_axis_baked_atlas_round_trip_and_drift(self):
@@ -129,7 +129,7 @@ class NativeModelPackTests(unittest.TestCase):
                                                 'Space region: Side 7', 'Space region: Side 1', 'Space region: Side 6',
                                                 'Space region: Sweetwater'])
             plates = json.loads((Path(folder)/'pack/manifest.json').read_text())['plates']
-            self.assertEqual(plates[-1]['text'], {'ja': 'スウィートウォーター', 'zh-Hans': '甘泉', 'en': 'Sweetwater'})
+            self.assertEqual(plates[-1]['text'], {'ja': 'スウィートウォーター', 'zh-Hans': '甘泉', 'en': 'Sweetwater', 'ko': '스위트워터'})
             self.assertEqual(plates[4]['text'], {'ja': 'サイド1', 'zh-Hans': 'Side 1', 'en': 'Side 1'})
             commands = [c for p in plates for c in p['triangle_commands']]
             self.assertEqual((len(commands), len(set(commands))), (56, 56))   # 8 quads per board, none shared
@@ -141,7 +141,7 @@ class NativeModelPackTests(unittest.TestCase):
 
 class NamePlateTests(unittest.TestCase):
     def test_plate_names_come_from_the_term_tables(self):
-        self.assertEqual(models.plate_names('リーブラ'), {'zh-Hans': '天秤座', 'en': 'Libra'})
+        self.assertEqual(models.plate_names('リーブラ'), {'zh-Hans': '天秤座', 'en': 'Libra', 'ko': '리브라'})
         self.assertEqual(models.plate_names('アクシズ'), {'zh-Hans': '阿克西斯', 'en': 'Axis'})
         self.assertEqual(models.plate_names('フィフス・ルナ')['en'], 'Fifth Luna')  # story terms only
         with self.assertRaisesRegex(ValueError, 'no term'):

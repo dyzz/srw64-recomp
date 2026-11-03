@@ -962,12 +962,15 @@ void load_plate(Model& m, const std::filesystem::path& pack, const json& plate) 
     }
 #ifdef SRW64_NATIVE_DIALOGUE
     // Language packages' plates, the same size as ours; a wrong one is left out. Named as our
-    // Japanese one without ".plate.ja": art/<locale>/plates/5590.png, 5599.6.png.
-    std::string key = std::filesystem::path(plate.at("textures").at("ja").get<std::string>()).filename().string();
+    // Japanese one without ".plate.ja": art/<locale>/plates/5590.png, 5599.6.png. Without
+    // one, the pack's own for that locale (it carries Korean, ready for a Korean package).
+    const auto& textures = plate.at("textures");
+    std::string key = std::filesystem::path(textures.at("ja").get<std::string>()).filename().string();
     if (const auto at = key.find(".plate."); at != std::string::npos) key.resize(at);
     for (size_t l = kPlateLocales.size(); l < kPlateSlots; ++l) {
         if (plateSlotLocales[l].empty()) continue;
-        const auto file = srw64::mod_languages::art(plateSlotLocales[l], "plates/" + key + ".png");
+        auto file = srw64::mod_languages::art(plateSlotLocales[l], "plates/" + key + ".png");
+        if (file.empty() && textures.contains(plateSlotLocales[l])) file = pack / textures.at(plateSlotLocales[l]).get<std::string>();
         if (file.empty()) continue;
         int width = 0, height = 0, channels = 0;
         uint8_t *pixels = stbi_load(file.string().c_str(), &width, &height, &channels, 4);

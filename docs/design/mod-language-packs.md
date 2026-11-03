@@ -74,7 +74,7 @@ art/ko/plates/<编号>.png       按语言替换的世界地图名牌（可选�
 - **选定的语言**：设置里存的是 `ko`。启动器不认识它时不再报错：照常用默认语言建会话，把 `SRW64_LOCALE=ko` 交给宿主；宿主登记语言包后切过去。包停用或删除后，下次启动退回到默认语言（首次启动的规则：系统语言，否则内容的默认语言）。
 - **排版**：代码里所有按 `en`／`ja`／`zh-Hans` 区分排版的地方改问 `localization::style(locale)`：内置语言是自己，语言包是退回语言。ICU 断行和 HarfBuzz 用真正的语言代码；韩文（`ko`）另外只在空格和标点处断行（§7）。
 - **字体**：`text::set_locale_fonts` 登记包的字体；`game_font_sources`／`title_font_sources` 把它们排在退回语言的字体前面。共享界面（RmlUi）在第一次用到这种语言时载入包的正文字体，族名 `srw64-ui-<locale>`。
-- **换图**：场景图（`srw64-scene-images.json` 里的 `file`，如标题 logo）在阅读这种语言时先找 `art/<locale>/scene-images/<file>`；世界地图名牌找 `art/<locale>/plates/<编号>.png`（编号是我们名牌文件名去掉 `.plate.ja.png`：舰船 `5590`，宇宙区域 `5599.6`），尺寸要和我们的一样，没有就用退回语言的名牌。场景图替换需要装着 HD 包（位置、尺寸取自 HD 包的清单）。
+- **换图**：场景图（`srw64-scene-images.json` 里的 `file`，如标题 logo）在阅读这种语言时先找 `art/<locale>/scene-images/<file>`；世界地图名牌找 `art/<locale>/plates/<编号>.png`（编号是我们名牌文件名去掉 `.plate.ja.png`：舰船 `5590`，宇宙区域 `5599.6`），尺寸要和我们的一样；包没给就用模型包里这种语言的名牌（清单 `textures` 有这个键时），再没有就用退回语言的。**模型包自带韩文名牌**（2026-11-03 用户要求提前做好）：`tools/models/build_native_models.py` 的 `PLATE_LOCALES` 加了 `ko`，译名写在脚本 `KOREAN_PLATE_NAMES`（리브라、라비앙로즈、바르지、액시즈、피프스 루나、사이드 N、스위트워터；バルジ 暂按日文读音转写），字体用 Droid Sans Fallback（Apache 2.0，AOSP android-4.4_r1，本地放 `assets/fonts/`，脚本核对 SHA-256）。重新生成后日中英名牌和模型逐字节不变，只多 12 张 `*.plate.ko.png`；旧宿主不认 `ko` 键，不受影响。要随下一个 HD 包发布。场景图替换需要装着 HD 包（位置、尺寸取自 HD 包的清单）。
 - **问题**：语言包有错时那种语言不登记（或那一条不用），日志写 `SRW64_MOD_LANGUAGE_PROBLEM <包> dialogue/<语言>/…：<原因>`，登记结果一行 `SRW64_MOD_LANGUAGES ko<en layers=… problems=…`；字体 FreeType 打不开时整种语言不登记。MOD 管理里包的内容统计显示「语言 ko」，安装、启用／停用、删除带语言的包时提示要重启（`mod_language_restart`）。
 - **启动前的提示**（ROM 选择、显卡失败、存档同步）：读包之前就要显示，语言包的语言一律用英文（`desktop.cpp saved_locale`、`graphics.cpp graphics_failure`）。
 - **主机版**（Switch、Vita 的 `run_prepared`）没有 MOD 目录，不涉及。
@@ -95,5 +95,6 @@ art/ko/plates/<编号>.png       按语言替换的世界地图名牌（可选�
 - `make recomp-mod-languages-test`（`tests/native_mod_languages.cpp`）：`language.json`／`terms.json` 的各条规则、包的上下顺序、换图查找、目录登记（F7 循环、语言菜单、`style`、`fallbacks`、`pick`、重复登记与退回语言限制、`initialize` 清空）。
 - `tests/test_mod_validate.py`：语言文件夹的检查与 `names.json` 的语言。
 - **实机（2026-11-03，Mac，调试会话 `20261103T052712.972401Z`）**：韩文测试包（`language_template.py` 的结构，AppleGothic 字体只在本机，104 条界面词条加「[한]」前缀、两条地形、@17410 一句台词、换了颜色的标题 logo 和 5590 名牌）：日志 `SRW64_MOD_LANGUAGES ko<en layers=1 problems=0`；`SRW64_LOCALE=ko` 启动即是韩文；演示战斗、序章文字页、主角选择页没译的都退回英文；真美路线第一句 @17410 显示包里的韩文、说话人名退回英文，韩文字形正常；F7 从 ko 绕回 ja 并写进设置，再按 4 次回到 ko；界面通知与标题「PRESS START」用包的字体画出韩文；标题 logo 换成了包里的图。
-- **没验证到**：世界地图名牌（没走到世界地图）、设置里的语言菜单（列表来自 `locale_options`，与 F7 同源）、正式启动器路径下重启后记住 ko（`launch.cpp`，调试会话不经过它）、Windows／安卓。
+- **名牌实机**（`20261103T063148.395401Z`，迷你关卡 worldmap-libra 拉长停留）：韩文下リーブラ显示模型包里的「리브라」。
+- **没验证到**：设置里的语言菜单（列表来自 `locale_options`，与 F7 同源）、正式启动器路径下重启后记住 ko（`launch.cpp`，调试会话不经过它）、Windows／安卓。
 - **韩文断行（2026-11-03 修）**：ICU 按 UAX #14 允许任意两个韩文音节之间断行，第一次实机「오늘|은」被拆开（占用英文位置的韩文补丁也一样）。用户要求先只管韩文：`portable_text.cpp` 在语言代码为 `ko`／`ko-*` 时去掉「两边都是字母或数字、且至少一边是韩文」的断点（`keep_korean_words`，即 CSS `word-break: keep-all`），空格与标点处照常断，放不下的长词走应急断行。共享界面（RmlUi）本来就只在空格处断，不用改。`tests/portable_text` 加了韩文用例（几种宽度下 `ko`／`ko-KR` 都不在词中断，`en` 下同一句会断，保证用例有效）。重跑实机（`20261103T054554.248046Z`）：@17410 三行都断在空格处。

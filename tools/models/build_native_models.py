@@ -109,9 +109,18 @@ BOARDS = {5599: {'name': 'Space region',
                  'plates': [(6, 'サイド3', 'サイド', ' 3'), (7, 'サイド2', 'サイド', ' 2'), (8, 'サイド5', 'サイド', ' 5'),
                             (9, 'サイド7', 'サイド', ' 7'), (10, 'サイド1', 'サイド', ' 1'), (11, 'サイド6', 'サイド', ' 6'),
                             (12, 'スウィートウォーター', 'スウィートウォーター', '')]}}
-PLATE_LOCALES = ('ja', 'zh-Hans', 'en')
+PLATE_LOCALES = ('ja', 'zh-Hans', 'en', 'ko')
 PLATE_SCALE = 8  # texture pixels per original unit; the board is 200 x 30 units
 FONT = ROOT / 'build/fonts/HarmonyOS_Sans_SC.ttf'  # tools/content/prepare_fonts.py
+# Korean plates, ready for a Korean language package (docs/design/mod-language-packs.md):
+# HarmonyOS Sans has no Hangul, so they are drawn with Droid Sans Fallback (Apache 2.0,
+# AOSP platform/frameworks/base data/fonts at android-4.4_r1), kept with the local assets.
+# The term tables have no Korean: the names are here (バルジ transliterated until a
+# usual Korean name turns up).
+KOREAN_FONT = ROOT / 'assets/fonts/DroidSansFallback.ttf'
+KOREAN_FONT_SHA256 = '05d71b179ef97b82cf1bb91cef290c600a510f77f39b4964359e3ef88378c79d'
+KOREAN_PLATE_NAMES = {'リーブラ': '리브라', 'ラビアンローズ': '라비앙로즈', 'バルジ': '바르지', 'アクシズ': '액시즈',
+                      'フィフス・ルナ': '피프스 루나', 'サイド': '사이드', 'スウィートウォーター': '스위트워터'}
 for _model in MODELS:
     _model['mesh'] = ROOT / f"assets/models/{_model['key']}/mesh.json" if _model['key'] else None
 TEXTURED_STRIDE = 36  # float3 position, float3 normal, float2 uv, uchar4 colour (alpha: 200 glass, 255 matte)
@@ -174,10 +183,19 @@ def plate_names(key: str) -> dict:
     missing = {'zh-Hans', 'en'} - set(names)
     if missing:
         raise ValueError(f'no term for plate {key}: {sorted(missing)}')
+    names['ko'] = KOREAN_PLATE_NAMES[key]
     return names
 
 
-def render_plate(text: str):
+def plate_font(locale: str) -> Path:
+    if locale != 'ko':
+        return FONT
+    if digest(KOREAN_FONT.read_bytes()) != KOREAN_FONT_SHA256:
+        raise ValueError(f'{KOREAN_FONT} is not the recorded Droid Sans Fallback')
+    return KOREAN_FONT
+
+
+def render_plate(text: str, font_path: Path = FONT):
     """The original plate's look at PLATE_SCALE: 2-unit green frame, black board, white
     oblique lettering with a dark rim, fitted to the board."""
     from PIL import Image, ImageDraw, ImageFont
@@ -187,7 +205,7 @@ def render_plate(text: str):
     ImageDraw.Draw(plate).rectangle((2 * k, 2 * k, width - 2 * k - 1, height - 2 * k - 1), fill=(0, 0, 0, 255))
     size = 20 * k
     while True:
-        font = ImageFont.truetype(str(FONT), size)
+        font = ImageFont.truetype(str(font_path), size)
         left, top, right, bottom = font.getbbox(text, stroke_width=k // 3)
         if right - left <= 176 * k and bottom - top <= 21 * k:
             break
@@ -295,7 +313,7 @@ def build(output: Path) -> dict:
             textures = {}
             for locale in PLATE_LOCALES:
                 textures[locale] = f"{model['resource_id']}.plate.{locale}.png"
-                render_plate(names[locale]).save(output / textures[locale])
+                render_plate(names[locale], plate_font(locale)).save(output / textures[locale])
             plate = {'display_list': plate_list, 'triangle_commands': triangle_commands(original, plate_list),
                      'text': names, 'textures': textures, 'size': [200 * PLATE_SCALE, 30 * PLATE_SCALE]}
             files.update({f'plate.{locale}': name for locale, name in textures.items()})
@@ -316,7 +334,7 @@ def build(output: Path) -> dict:
             names = {'ja': text, **{locale: name + suffix for locale, name in plate_names(key).items()}}
             textures = {locale: f'{resource}.{plate_list}.plate.{locale}.png' for locale in PLATE_LOCALES}
             for locale, name in textures.items():
-                render_plate(names[locale]).save(output / name)
+                render_plate(names[locale], plate_font(locale)).save(output / name)
             boards.append({'resource_id': resource, 'name': f"{board['name']}: {names['en']}",
                            'original_bytes': len(original), 'original_sha256': digest(original),
                            'display_list': plate_list, 'triangle_commands': triangle_commands(original, plate_list),
