@@ -26,13 +26,45 @@ yourname.korean/
   art/ko/plates/…                世界地图名牌（可选）
 ```
 
-`ko` 是语言代码，文件夹名和 `language.json` 里写的必须一样。
+`ko` 是语言代码，文件夹名和 `language.json` 里写的必须一样。只放用得到的东西：没翻的台词文件、没换的图都可以不放。
 
-最省事的起点是用[源代码仓库](https://github.com/dyzz/srw64-recomp)里的模板工具，它会把一种现有语言的全部文字导出成上面的结构，你直接改：
+仓库里有一个完整的范例：[韩文第一关试做包](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko)，真实系男主第一关的剧情、战斗台词、全部界面文字都是韩文，其余显示英文。
+
+## 制作步骤
+
+下面的工具都在[源代码仓库](https://github.com/dyzz/srw64-recomp)里，需要 Python 3。
+
+**1. 从一种现有语言导出起点**
 
 ```bash
-python3 tools/mods/language_template.py --locale ko --name 한국어 --fallback en -o korean-source
+python3 tools/mods/language_template.py --locale ko --name 한국어 --fallback en --id yourname.korean -o korean-source
 ```
+
+它把退回语言（这里是英文）的全部文字按上面的结构写进 `korean-source`：`terms.json` 里是全部界面文字和名称，`dialogue/ko/` 下是全部台词文件，`mod.json` 和 `language.json` 也写好了。`--id` 是包的唯一名字，写成「作者.名字」，发布后不要再改。
+
+**2. 翻译**
+
+把 `terms.json` 和台词文件里的退回语言换成你的语言，规则见下面几节。不翻的条目可以留着，也可以删掉——没写的地方游戏会显示退回语言。只翻一部分也是一个能用的包，范例包就只翻了第一关。
+
+**3. 放字体、写名字**
+
+我们的字体没有这种文字时，把字体文件放进 `dialogue/ko/fonts/`，写进 `language.json` 的 `fonts`。在 `mod.json` 里填作者和许可证（见 [MOD 包](../mods/)）。
+
+**4. 检查、打包**
+
+```bash
+python3 tools/mods/validate.py korean-source
+```
+
+```bash
+python3 tools/mods/pack.py korean-source -o build/mods
+```
+
+`validate.py` 按游戏的规则检查文件结构、语言代码、字体和各个字段；`pack.py` 打出 `yourname.korean-0.1.0.srw64mod`，打完再检查一遍。控制码和原文对不对、台词页数对不对，要游戏读到 ROM 才能核对：进游戏后看日志里有没有 `SRW64_MOD_LANGUAGE_PROBLEM`，用户目录的 `dialogue/dialogue-report.txt` 里列着每一条有问题的台词。
+
+**5. 安装、选语言**
+
+像别的 MOD 一样安装（电脑上拖进游戏窗口，安卓上放进 `Documents/Marchwind64/mods` 或在 MOD 页面「从文件安装」），**重启游戏**，然后在设置的语言菜单里选它，或者按语言切换键（F7）。选好的语言会记住，下次启动直接是它。
 
 ## language.json
 
@@ -69,7 +101,8 @@ python3 tools/mods/language_template.py --locale ko --name 한국어 --fallback 
 ```
 
 - `ui`：界面文字，键和游戏自带语言的一样（模板里全有）。`{A}` 这类按键记号、`{n}` 这类数字位要原样保留，少了或多了的那条不用。
-- `entries`：人物名、机体名、武器名、地形、能力名、系统提示等，记录号 0–5643。`<BR>`（换行）、`<STOP>`（翻页）、`<END>`（结尾）这些控制码要和原文一样；模板里每条旁边带着日文原文 `ja` 供对照，游戏不读它。
+- `entries`：人物名、机体名、武器名、地形、能力名、系统提示等，记录号 0–5643。`<BR>`（换行）、`<STOP>`（翻页）、`<END>`（结尾）这些控制码要和原文一样。条目可以写成字符串，也可以写成 `{"text": "…", "ja": "…"}`，`ja` 只是给你对照的日文原文，游戏不读它（模板在有 ROM 文本导出时会填上）。
+- 武器菜单名（`entries` 里开头带「格」「射」的那些）要保留这个开头字，它在游戏里显示成格斗／射击图标。
 - 没写的条目显示退回语言的。
 
 ## 台词
@@ -90,7 +123,7 @@ python3 tools/mods/language_template.py --locale ko --name 한국어 --fallback 
 阅读这种语言时，下面的图换成包里的：
 
 - `art/ko/scene-images/<文件名>`：场景图，例如标题画面的 logo `art/ko/scene-images/title-logo.png`。文件名和 HD 包里的一样，需要装着 HD 包。
-- `art/ko/plates/<编号>.png`：世界地图上舰船和地点的名牌，编号是我们名牌文件名去掉 `.plate.ja.png` 的部分（例如 `5590`、`5599.6`），尺寸要和我们的一样。没给的名牌显示退回语言的。
+- `art/ko/plates/<编号>.png`：世界地图上舰船和地点的名牌，编号是我们名牌文件名去掉 `.plate.ja.png` 的部分（例如 `5590`、`5599.6`），尺寸要和我们的一样。没给的名牌先用 HD 包里这种语言的（HD 包从下一版起自带韩文名牌），再没有就用退回语言的。
 
 ## 别的包里的这种语言
 

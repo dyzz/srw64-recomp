@@ -26,13 +26,45 @@ yourname.korean/
   art/ko/plates/…                world map name plates (optional)
 ```
 
-`ko` is the language code; the folder name must be the same as the one in `language.json`.
+`ko` is the language code; the folder name must be the same as the one in `language.json`. Put in only what you use: dialogue files you leave untranslated and pictures you do not replace can stay out.
 
-The easiest start is the template tool in the [source repository](https://github.com/dyzz/srw64-recomp). It exports all the text of one of our languages in the layout above, ready for you to edit:
+The repository has a complete example: the [Korean stage 1 trial package](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko), with the story and battle lines of the Real-robot male route's first stage and every UI text in Korean, the rest in English.
+
+## Making one
+
+The tools are in the [source repository](https://github.com/dyzz/srw64-recomp) and need Python 3.
+
+**1. Export a starting point from one of our languages**
 
 ```bash
-python3 tools/mods/language_template.py --locale ko --name 한국어 --fallback en -o korean-source
+python3 tools/mods/language_template.py --locale ko --name 한국어 --fallback en --id yourname.korean -o korean-source
 ```
+
+It writes all the text of the fallback (English here) into `korean-source` in the layout above: every UI text and name in `terms.json`, every dialogue file under `dialogue/ko/`, and `mod.json` and `language.json` filled in. `--id` is the package's unique name, written as "author.name"; do not change it after publishing.
+
+**2. Translate**
+
+Replace the fallback's text in `terms.json` and the dialogue files with your language, by the rules in the sections below. Entries you do not translate can stay or go: where the package has nothing, the game shows the fallback. Translating only part is still a working package; the example translates only the first stage.
+
+**3. Fonts and names**
+
+When our fonts lack the script, put the font files in `dialogue/ko/fonts/` and name them in `language.json`'s `fonts`. Fill in the authors and the licence in `mod.json` (see [MOD packages](../mods/)).
+
+**4. Check and pack**
+
+```bash
+python3 tools/mods/validate.py korean-source
+```
+
+```bash
+python3 tools/mods/pack.py korean-source -o build/mods
+```
+
+`validate.py` checks the files' structure, the language code, the fonts and every field by the game's rules; `pack.py` makes `yourname.korean-0.1.0.srw64mod` and checks it again. Whether control codes and dialogue pages match the original can only be checked with the ROM, in the game: look for `SRW64_MOD_LANGUAGE_PROBLEM` in the log, and `dialogue/dialogue-report.txt` in the user folder lists every dialogue record with a problem.
+
+**5. Install and pick the language**
+
+Install it like any MOD (drag it onto the game window on a computer; on Android put it in `Documents/Marchwind64/mods` or use Install from file on the MOD page), **restart the game**, then pick the language in the settings' language menu or with the language key (F7). The choice is remembered: the next start is in that language.
 
 ## language.json
 
@@ -69,7 +101,8 @@ python3 tools/mods/language_template.py --locale ko --name 한국어 --fallback 
 ```
 
 - `ui`: UI text, by the same keys as the game's own languages (the template has them all). Keep marks such as `{A}` (a button) and `{n}` (a number) as they are; a label that loses or adds one is not used.
-- `entries`: names of characters, units and weapons, terrain, abilities, system messages, records 0–5643. Control codes such as `<BR>` (new line), `<STOP>` (new page) and `<END>` (end) must match the original. The template puts the Japanese original beside each as `ja` for reference; the game does not read it.
+- `entries`: names of characters, units and weapons, terrain, abilities, system messages, records 0–5643. Control codes such as `<BR>` (new line), `<STOP>` (new page) and `<END>` (end) must match the original. An entry is a string or `{"text": "…", "ja": "…"}`; `ja` is the Japanese original for your reference, which the game does not read (the template fills it in when the ROM's text export is there).
+- Weapon menu names (the `entries` that start with 格 or 射) keep that first character: the game shows it as the melee or shooting icon.
 - Entries you leave out show the fallback's.
 
 ## Dialogue
@@ -90,7 +123,7 @@ Pages (`---`), the number of options and name placeholders such as `{HeroName}` 
 While reading in the language, these pictures come from the package:
 
 - `art/ko/scene-images/<file>`: scene pictures, such as the title screen's logo `art/ko/scene-images/title-logo.png`. The file names are the HD pack's; the HD pack must be installed.
-- `art/ko/plates/<number>.png`: the name plates of ships and places on the world map. The number is our plate's file name without `.plate.ja.png` (`5590`, `5599.6`), and the size must be the same as ours. Plates you leave out show the fallback's.
+- `art/ko/plates/<number>.png`: the name plates of ships and places on the world map. The number is our plate's file name without `.plate.ja.png` (`5590`, `5599.6`), and the size must be the same as ours. Plates you leave out come from the HD pack in that language when it has them (the HD pack carries Korean plates from its next version), else the fallback's.
 
 ## The language in other packages
 
