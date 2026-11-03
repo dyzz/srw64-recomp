@@ -1930,7 +1930,7 @@
     {
       "hash": "431574241e7c6552",
       "kind": "icon",
-      "sha256": "dcf239dc2d478d36ad1cc787d0a2791c3ec915155773e9ffc19e8c60f771c155"
+      "sha256": "55b4bff995148a15ce207315f81e391ec4ca11f97d2632533bc9817771fb3b77"
     },
     {
       "hash": "4335bacc6d92bfca",
@@ -2810,7 +2810,7 @@
     {
       "hash": "69c9994a18778089",
       "kind": "icon",
-      "sha256": "1a93fa5da8e9ce828f1ff27716cb37427553ae7677b8edda101a470aa925cc84"
+      "sha256": "e75fc246781078d45e950846c0591017bfed1012223c057ef541d07066caa383"
     },
     {
       "hash": "6a13d5fff4447bb5",
@@ -4565,7 +4565,7 @@
     {
       "hash": "af207f52c0fb8af9",
       "kind": "icon",
-      "sha256": "dcf239dc2d478d36ad1cc787d0a2791c3ec915155773e9ffc19e8c60f771c155"
+      "sha256": "55b4bff995148a15ce207315f81e391ec4ca11f97d2632533bc9817771fb3b77"
     },
     {
       "hash": "af57f8e82adec333",
@@ -6255,7 +6255,7 @@
     {
       "hash": "f11f75629db0f20f",
       "kind": "icon",
-      "sha256": "dcf239dc2d478d36ad1cc787d0a2791c3ec915155773e9ffc19e8c60f771c155"
+      "sha256": "55b4bff995148a15ce207315f81e391ec4ca11f97d2632533bc9817771fb3b77"
     },
     {
       "hash": "f1573aa4da7c63a3",
@@ -14991,7 +14991,7 @@
   },
   "units": {
     "path": "assets/hd-ai/unit-poses/whole-v2",
-    "manifest_sha256": "30e397719d8096bbc7bd28e3544900793c9307ee94f31aee4bc51a2b8fb256f7"
+    "manifest_sha256": "a9b3bf8d5168ec1f11c18bb92e2a86455153c7cecea1fedb61b27597496c39e4"
   },
   "unit_extras": {
     "path": "assets/hd-ai/unit-extras-derived/pack",
