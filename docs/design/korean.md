@@ -35,13 +35,19 @@
 
 ## 4. 译文到了以后
 
-jung5441 的 0.5.2 补丁是我们自己的格式（占英文的位置）：393 个台词文件、935 条界面词条、4,674 条 ROM 文字。转换脚本按记录号和日文原文行对齐，生成 `content/dialogue/ko/` 和 `content/locales/ko.json`，再列出 0.5.2 之后新增、改动的界面词条和台词给对方补。每次发版前导出韩文缺失清单。
+不从他的补丁安装器里提取任何东西（11-03 用户定）。分支上先留第一关演示的译文当格式样例，等 jung5441 按我们的格式提 PR 到 `ko` 分支，放法写在 `content/dialogue/ko/README.md`（英文）：
+
+- 台词：照 `content/dialogue/en/` 的文件名放进 `content/dialogue/ko/`，盖掉演示文件。他补丁里的台词本来就是这个格式。
+- 界面词条和名称记录：写进 `content/locales/ko.json` 的 `ui` 和 `entries`，照演示那几条的写法；每条名称记录的 `source_sha256` 从 `content/locales/en.json` 同一个键抄（同一条 ROM 原文）。他补丁里的 `game_entries` 键就是 `base:t00_*`，和我们的同一套。
+- 标题 logo：content/art/ko/scene-images/title-logo.png（和语言包的 art/<语言>/scene-images/ 同一种放法）。随游戏发布、不进 HD 包，原版与 HD 图像模式都换（待做，等 logo 到了一起接）。
+
+没译的不要抄英文进去，留空就显示英文。缺的（对现在的 main 缺 22 条界面词条、关卡情报页约 1,700 条、系统弹窗等）等他补。每次发版前导出韩文缺失清单。
 
 ## 5. 进度
 
 **11-03 第一步（未实机）**：
 
-- 文字：`content/locales/ko.json`（`"fallback": "en"`）和 `content/dialogue/ko/` 先放第一关演示包的译文（954 条界面词条、1,024 条名称记录、第一关剧情和 18 个人物的战斗台词），等译文到了整份替换。`play-profile.json` 登记 `ko`，排在英文后面。
+- 文字：`content/locales/ko.json`（`"fallback": "en"`）和 `content/dialogue/ko/` 先放第一关演示包的译文，当作给译者的格式样例（§4）。`play-profile.json` 登记 `ko`，排在英文后面。
 - 导入：`profile.py` 的 `layered_locale()`，`build_import_spec.py` 与 `rom_import.cpp` 把 `fallback` 带进内容缓存；`catalog.cpp` 登记时查退回语言必须是不站在别人上的语言。
 - 宿主：`localization::is_package()`；`load_text` 的台词层；`game_fonts.cpp` 韩文默认字体（游戏文字和共享界面都走它）；名牌槽 3 给韩文；名字 MOD 按退回链取（`mod_names.hpp`、`default_names.hpp`）；首次启动（系统 `ko*`、Steam `koreana`、Switch）。
 - 工具：语言包（宿主与 `validate.py` 都把 0.5.3 演示包的 `ko` 声明当覆盖）、`language_template.py`、`story.py`、调试接口、界面探针、排版审计、文本更新包。
@@ -54,6 +60,6 @@ jung5441 的 0.5.2 补丁是我们自己的格式（占英文的位置）：393 
 **合并前要做**：
 
 - 实机：Mac、Windows、安卓、Switch 各开一次韩文；首次启动按系统语言；设置与 F7 切换；名牌；排版审计带 `ko`。
-- 换上 jung5441 的译文（§4），定标题卡字体和韩文标题 logo（按语言的场景图现在只有语言包能给）。
+- 换上 jung5441 的译文与 logo（§4），定标题卡字体。
 - 文档：官网语言包页和 `docs/guide/language-mods/` 的例子从韩文换成别的语言；官网 MOD 下载页撤下韩文演示包；issue #17 跟进。
 - 小处：Switch 启动画面的提示（`tools/release/switch/splash.py`）、Steam 快捷方式名字（`add_to_steam.py`、`steam_art.py`）、系统弹窗的韩文。
