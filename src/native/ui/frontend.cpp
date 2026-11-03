@@ -5169,10 +5169,14 @@ void mini_sync() {
     // Only this box takes the pointer while the entry waits: the page beneath stays open to
     // clicks, such as the title's DLC and settings entries. Entering covers the screen.
     // Bottom left, across from the Library and MOD entries (home_sync), clear of the ring's
-    // START below the logo; with touch controls that corner is the stick's and the entries
-    // are along the top, so the box keeps to the middle.
-    std::string body=touch?"<div style='position:absolute; bottom:32dp; left:25%; width:50%; text-align:center; pointer-events:auto;'>":
-        "<div style='position:absolute; bottom:32dp; left:24dp; text-align:left; pointer-events:auto;'>";
+    // START below the logo; with touch controls the window's corner is the stick's, so the
+    // box keeps to the title picture's, as the entries do.
+    std::string left="24dp";
+    if(touch) {
+        const float pw=frame::width(pixels_w,pixels_h)*frame::scale(pixels_w,pixels_h);
+        left=std::to_string(int((pixels_w-pw)/2+pw*.06f))+"px";
+    }
+    std::string body="<div style='position:absolute; bottom:32dp; left:"+left+"; text-align:left; pointer-events:auto;'>";
     // A campaign (DLC) starts from here: its name, not a mini stage's file name.
     const auto info=campaign::info();
     body+=entering?"<h2>"+label("mini_entering")+"</h2>":button("mini-enter",label(info?"dlc_start":"mini_enter"));
@@ -5188,10 +5192,10 @@ void home_sync() {
     const bool settings_entry=pad_mode || !app_menu::available();
     // Not while the opening's works fly past or the logo comes in, nor in a demo.
     if(!intro::title_waiting() || settings_open){document_close(home_doc);document_close(home_chrome_doc);home_stamp.clear();return;}
-    // With touch controls the Library, MOD and settings are touch buttons along the top.
+    // With touch controls the settings are a touch button along the top; the corner stays.
     const bool touch=touch_active();
     // The catalog's revision too: a text update or F5 changes labels within a language.
-    const auto stamp=localization::catalog().locale+localization::catalog().revision+(pad_mode?"+pad":"")+(settings_entry?"s":"")+(touch?"t":"")+frame_stamp()+
+    const auto stamp=localization::catalog().locale+localization::catalog().revision+(pad_mode && !touch?"+pad":"")+(settings_entry && !touch?"s":"")+(touch?"t":"")+frame_stamp()+
         (update::status("en").state==update::State::Available?"u"+update::status("en").latest.version:std::string())+
         (update::status("en").hd.available?"h"+update::status("en").hd.latest:std::string());
     if((home_doc || home_chrome_doc) && stamp==home_stamp)return;
@@ -5222,7 +5226,7 @@ void home_sync() {
     const float pw=frame::width(pixels_w,pixels_h)*u,ph=frame::kHeight*u;
     // Inside the page's border (document()), which already keeps a 4:3 picture's bars out.
     const auto corner="right:"+std::to_string(int((pixels_w-pw)/2-page_area().x+pw*.06f))+"px; bottom:"+std::to_string(int((pixels_h-ph)/2-page_area().y+ph*.06f))+"px;";
-    if(!touch)home_doc=document("<div class='home-corner' style='"+corner+"'>"+lettered("library-open","library_open")+lettered("viewer-open","viewer_open")+(mod_entry_shown()?lettered("mod-open","mod_open"):std::string())+"</div>",false);
+    home_doc=document("<div class='home-corner' style='"+corner+"'>"+lettered("library-open","library_open")+lettered("viewer-open","viewer_open")+(mod_entry_shown()?lettered("mod-open","mod_open"):std::string())+"</div>",false);
     std::string chrome="<div class='home-version'>v"+escape(SRW64_VERSION)+"</div>";
     if(settings_entry && !touch)chrome+="<button id='settings-open' class='home-entry'>"+label("settings_open")+"</button>";
     // A newer release, found by the update check: a word in the corner that opens the About page.
@@ -6298,7 +6302,9 @@ std::array<std::string*,14> all_stamps();
 void set_pad_mode(bool on) {
     if(pad_mode==on)return;
     pad_mode=on;input::pad_hints=on;
-    for(auto* stamp:all_stamps())stamp->clear();
+    // The title's corner and campaign box show no keys to touch controls, and the first touch
+    // turns the hints on: rebuilt then, they would lose the tap that did it.
+    for(auto* stamp:all_stamps())if((stamp!=&home_stamp && stamp!=&mini_stamp) || !touch_active())stamp->clear();
 }
 void set_pointer_mode(bool on) {
     if(pointer_mode==on)return;

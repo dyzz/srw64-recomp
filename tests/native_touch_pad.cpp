@@ -60,8 +60,8 @@ void scenes() {
           scene(SceneId::Page)[Slot::Back].bits == bits::B, "our pages keep the stick, OK and back");
     check(scene(SceneId::Dialogue).tap_primary && scene(SceneId::Dialogue)[Slot::Primary].bits == bits::A, "dialogue does not page on a tap");
     check(scene(SceneId::MoveSelect)[Slot::Arc2].bits == bits::R, "farthest is not R");
-    check(scene(SceneId::TitleRing)[Slot::Top3].command == "library-open" && scene(SceneId::TitleRing)[Slot::Top4].command == "viewer-open" &&
-          !scene(SceneId::TitleRing)[Slot::Top4].bits, "the title's Library and Battle Viewer buttons");
+    check(!scene(SceneId::TitleRing)[Slot::Top3].filled() && !scene(SceneId::TitleRing)[Slot::Top4].filled(),
+          "the title's Library and Battle Viewer are its own corner");
     check(scene(SceneId::BattleScene)[Slot::Primary].bits == bits::R2, "skipping the battle is not the primary button");
 }
 
@@ -206,8 +206,8 @@ void fixed_buttons() {
         check(f.buttons() == 0, "hold-fast/skip sticks after release");
     }
     check(!f.down(l, full, 1, l[Slot::Skip].x, l[Slot::Skip].y), "skip area consumes touches outside dialogue");
-    check(title[Slot::Top3].command == "library-open" && title[Slot::Top4].command == "viewer-open" &&
-          title[Slot::Primary].bits == bits::A && title[Slot::Top2].bits == bits::Start, "the title's entries");
+    check(title[Slot::Top3].bits == bits::L2 && title[Slot::Top4].bits == bits::R2 && !title[Slot::Info].filled() &&
+          title[Slot::Primary].bits == bits::A && title[Slot::Top2].bits == bits::Start, "the title's buttons");
 }
 
 void reading_history() {

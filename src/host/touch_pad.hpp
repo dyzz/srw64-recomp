@@ -123,10 +123,9 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active) {
         set(Slot::Primary, bits::A, "touch_ok"); set(Slot::Back, bits::B, "touch_back");
         set(Slot::Arc2, bits::L, "touch_l1"); set(Slot::Arc3, bits::R, "touch_r1");
         settings(); set(Slot::Top2, bits::Start, "touch_start");
-        if (id == SceneId::FixedTitle) {
-            open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "viewer-open", "viewer_open");
-        } else {
-            set(Slot::Top3, bits::L2, "touch_l2"); set(Slot::Top4, bits::R2, "touch_r2");
+        set(Slot::Top3, bits::L2, "touch_l2"); set(Slot::Top4, bits::R2, "touch_r2");
+        // The title's Library, Battle Viewer and MOD are its own corner, as on a desktop (user, 2026-11-03).
+        if (id != SceneId::FixedTitle) {
             // The stage info page: there is a stage everywhere but the title.
             open(Slot::Info, "stage-info-open", "touch_stage_info");
             // Back to the suspend save; frontend.cpp leaves it out where the game would not take it.
@@ -147,11 +146,9 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active) {
         set(Slot::Primary, bits::A, "touch_ok"); set(Slot::Back, bits::B, "touch_back");
         settings();
         break;
-    // The title's corner buttons (the Library, the Battle Viewer) become touch buttons along the top;
-    // MOD has no touch button yet: packages install by dropping a file on a desktop window.
+    // The title's corner (the Library, the Battle Viewer, MOD) is tapped where it is, as on a desktop.
     case SceneId::Attract:
         set(Slot::Primary, bits::Start, "touch_start"); settings();
-        open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "viewer-open", "viewer_open");
         s.tap_primary = true;
         break;
     case SceneId::Opening:
@@ -161,7 +158,6 @@ inline Scene scene(SceneId id, Reading reading = Reading::Active) {
     case SceneId::TitleRing:
         s.stick = Stick::Wide;
         set(Slot::Primary, bits::Start, "touch_ok"); settings();
-        open(Slot::Top3, "library-open", "library_open"); open(Slot::Top4, "viewer-open", "viewer_open");
         break;
     case SceneId::Prologue:
         set(Slot::Primary, bits::A, "touch_next_page"); set(Slot::Arc2, bits::R | bits::Start, "touch_skip"); settings();
