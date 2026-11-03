@@ -38,7 +38,7 @@ void put(uint8_t* rdram, uint32_t address, uint32_t value) { std::memcpy(rdram +
 std::mutex mutex;
 uint64_t frame_number = 0;
 struct Seen { Window window; uint64_t frame; };
-std::vector<Seen> seen;
+std::vector<Seen> seen, drawn;   // the widened windows; every grid scene's rectangle
 
 bool recent(uint64_t frame) { return frame && frame + 1 >= frame_number; }
 
@@ -97,9 +97,28 @@ void frame_start(uint8_t* rdram) {
 }
 
 void frame_drawn(uint8_t* rdram, uint32_t dl_begin, uint32_t dl_end, uint16_t scene, int origin_x, int origin_y) {
+    if (dl_end <= dl_begin) return;
+    {
+        // The scene's rectangle as the ROM drew it (before any widening), for boxes().
+        float x0 = 1e9f, y0 = 1e9f, x1 = -1e9f, y1 = -1e9f;
+        for (uint32_t p = dl_begin; p + 24 <= dl_end; p += 8) {
+            const uint32_t w0 = word(rdram, p), op = w0 >> 24;
+            if ((op != 0xE4 && op != 0xE5) || (word(rdram, p + 8) >> 24) != 0xE1 || (word(rdram, p + 16) >> 24) != 0xF1) continue;
+            const uint32_t w1 = word(rdram, p + 4);
+            x0 = std::min(x0, ((w1 >> 12) & 0xFFF) / 4.f); y0 = std::min(y0, (w1 & 0xFFF) / 4.f);
+            x1 = std::max(x1, ((w0 >> 12) & 0xFFF) / 4.f); y1 = std::max(y1, (w0 & 0xFFF) / 4.f);
+            p += 16;
+        }
+        if (x1 > x0 && y1 > y0) {
+            std::lock_guard lock(mutex);
+            const Window box{x0, y0, x1, y1};
+            std::erase_if(drawn, [&](const Seen& s) { return !recent(s.frame) || (s.window.x0 == box.x0 && s.window.y0 == box.y0 && s.window.x1 == box.x1 && s.window.y1 == box.y1); });
+            drawn.push_back({box, frame_number});
+        }
+    }
     const auto c = columns(scene);
     const auto r = rows(scene);
-    if ((!c && !r) || dl_end <= dl_begin) return;
+    if (!c && !r) return;
     float y0 = 1e9f, y1 = -1e9f;
     for (uint32_t p = dl_begin; p + 24 <= dl_end; p += 8) {
         const uint32_t w0 = word(rdram, p), op = w0 >> 24;
@@ -188,6 +207,12 @@ std::vector<Window> windows() {
     std::lock_guard lock(mutex);
     std::vector<Window> out;
     for (const auto& s : seen) if (recent(s.frame)) out.push_back(s.window);
+    return out;
+}
+std::vector<Window> boxes() {
+    std::lock_guard lock(mutex);
+    std::vector<Window> out;
+    for (const auto& s : drawn) if (recent(s.frame)) out.push_back(s.window);
     return out;
 }
 }

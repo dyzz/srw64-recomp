@@ -3,11 +3,11 @@
   "events": [
     {
       "id": "persuade",
-      "note": "死闘!ランタオ島大決戦（後）: once Domon and Master Asia have talked in battle (the original's 001d387c sets 131 to 0), Domon may persuade him; with 50 kills or more this is the one offered (under 50, the refusal below). He leaves instead of falling, so the second half of his defeat event (001d38c8) is done here: Wong, then the Devil Gundam or the Grand Master Gundam. 131 = 3 keeps both of the end event's death scenes away.",
+      "note": "死闘!ランタオ島大決戦（後）: once Domon and Master Asia have talked in battle (the original's 001d387c sets 131 to 0), Domon may persuade him; with 50 kills or more this is the one offered (under 50, the refusal below, after which there is no persuading him). He leaves instead of falling, so the second half of his defeat event (001d38c8) is done here: Wong, then the Devil Gundam or the Grand Master Gundam. 131 = 3 keeps both of the end event's death scenes away.",
       "scene": 129,
       "set_flags": ["persuaded"],
       "when": {"persuade": {"by": 4, "target": 18}},
-      "if": {"vars": {"131": 0}, "kills": {"4": 50}},
+      "if": {"vars": {"131": 0}, "kills": {"4": 50}, "not_fired": ["refused"]},
       "do": [
         { "say": 4, "text": {
           "ja": "「師匠！　もうやめてくれ！　拳を交えてわかった……あんたの拳は泣いている！」",
@@ -85,11 +85,10 @@
     },
     {
       "id": "refused",
-      "note": "The same persuasion with Domon under 50 kills: Master Asia will not listen and the fight goes on. It can be tried again, and once Domon has his 50 kills the persuasion above is the one offered.",
+      "note": "The same persuasion with Domon under 50 kills: Master Asia will not listen and the fight goes on. Once only: after it 説得 is not offered again in this stage (the persuasion waits on not_fired refused), and the story goes as the original's.",
       "scene": 129,
       "when": {"persuade": {"by": 4, "target": 18}},
       "if": {"vars": {"131": 0}, "kills_below": {"4": 50}},
-      "repeat": true,
       "do": [
         { "say": 4, "text": {
           "ja": "「師匠！　もうやめてくれ！　こんな戦い、あんたの本心じゃないはずだ！」",
@@ -154,7 +153,7 @@
       "scene": 137,
       "set_flags": ["persuaded"],
       "when": {"persuade": {"by": 4, "target": 18}},
-      "if": {"vars": {"133": 0}, "kills": {"4": 50}},
+      "if": {"vars": {"133": 0}, "kills": {"4": 50}, "not_fired": ["refused-oz"]},
       "do": [
         { "say": 4, "text": {
           "ja": "「師匠！　もうやめてくれ！　拳を交えてわかった……あんたの拳は泣いている！」",
@@ -214,11 +213,10 @@
     },
     {
       "id": "refused-oz",
-      "note": "Scene 137's refusal, as scene 129's: under 50 kills, again and again.",
+      "note": "Scene 137's refusal, as scene 129's: under 50 kills, once only.",
       "scene": 137,
       "when": {"persuade": {"by": 4, "target": 18}},
       "if": {"vars": {"133": 0}, "kills_below": {"4": 50}, "not_fired": ["persuade-oz"]},
-      "repeat": true,
       "do": [
         { "say": 4, "text": {
           "ja": "「師匠！　もうやめてくれ！　こんな戦い、あんたの本心じゃないはずだ！」",

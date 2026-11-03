@@ -56,7 +56,9 @@ const t = {
 const channels = { zh: ['空', '陆', '海', '宇'], en: ['Air', 'Land', 'Sea', 'Space'], ja: ['空', '陸', '海', '宇'] }[tl(lang)];
 const unitCols = { zh: ['HP', 'EN', '移动', '运动性', '装甲', '限界', '尺寸'], en: ['HP', 'EN', 'Move', 'Mobility', 'Armor', 'Limit', 'Size'], ja: ['HP', 'EN', '移動', '運動性', '装甲', '限界', 'サイズ'] }[tl(lang)];
 const pilotCols = { zh: ['格斗', '射击', '回避', '命中', '反应', '技量', 'SP'], en: ['Melee', 'Ranged', 'Evade', 'Hit', 'React', 'Skill', 'SP'], ja: ['格闘', '射撃', '回避', '命中', '反応', '技量', 'SP'] }[tl(lang)];
-const weaponCols = { zh: ['威力', '射程', '命中', '弹数', 'EN', '气力', '暴击'], en: ['Power', 'Range', 'Hit', 'Ammo', 'EN', 'Morale', 'Crit'], ja: ['攻撃力', '射程', '命中', '弾数', 'EN', '気力', 'CT'] }[tl(lang)];
+const weaponCols = { zh: ['标记', '威力', '射程', '命中', '弹数', 'EN', '气力', '暴击', '必要技能', '改造'], en: ['Marks', 'Power', 'Range', 'Hit', 'Ammo', 'EN', 'Morale', 'Crit', 'Requires', 'Upgr.'], ja: ['記号', '攻撃力', '射程', '命中', '弾数', 'EN', '気力', 'CT', '必要技能', '改造'] }[tl(lang)];
+// The printed markers (格／射, P, B), then the requirement by its data/weapons.json key, and the upgrade type.
+const marks = (w: any) => [w.attack === 'melee' ? '格' : '射', w.post_move ? 'P' : '', w.beam ? 'B' : '', w.locked ? '🔒' : ''].join('');
 const unitName = (id: number) => data.units.find((u) => u.id === id)?.name[tl(lang)] ?? String(id);
 const key = (n: { ja: string; zh: string; en: string }, id: number) => `${id} ${n.ja} ${n.zh} ${n.en}`.toLowerCase();
 const repo = 'https://github.com/dyzz/srw64-recomp/blob/main/docs/guide/data-mods';
@@ -122,7 +124,7 @@ const pilotName = (id: number) => data.pilots.find((p) => p.id === id)?.name[tl(
           <tr data-key={key(w.name, w.id)}>
             <td class="num latin">{w.id}</td>
             <td>{w.name[tl(lang)]}{lang !== 'ja' && w.name.ja !== w.name[tl(lang)] && <span class="ja">{w.name.ja}</span>}</td>
-            {[w.power, `${w.range_min}–${w.range_max}`, w.hit, w.ammo, w.en, w.morale, w.critical].map((v) => <td class="stat latin">{v}</td>)}
+            {[marks(w), w.power, `${w.range_min}–${w.range_max}`, w.hit, w.ammo, w.en, w.morale, w.critical, w.requires ?? '', w.upgrade_type].map((v) => <td class="stat latin">{v}</td>)}
             {[...w.terrain].map((r) => <td class={`rank r-${r === '-' ? 'x' : r}`}>{r}</td>)}
             <td class="shared">{w.units.map((u) => `${u} ${unitName(u)}`).join(sep)}</td>
           </tr>))}

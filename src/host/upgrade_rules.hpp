@@ -284,6 +284,28 @@ inline void configure(const std::filesystem::path& output) {
         report["patched_bytes"]=0;
     }
     patches()=s.configured?build_patches(s.active):std::vector<std::pair<uint32_t,uint8_t>>{};
+    // SRW64_ROM_PATCHES: raw ROM bytes for development (records a MOD will add once it has a
+    // file for them; docs/design/final-dancouga-mod.md), over the rules file's, under number MODs.
+    // {"schema": "srw64.rom-patches.v1", "patches": [{"rom": <offset>, "hex": "<bytes>"}]}
+    if(const char* raw=std::getenv("SRW64_ROM_PATCHES"); raw && *raw) {
+        std::ifstream in(raw);
+        if(!in)fail(std::string("无法读取 ")+raw);
+        nlohmann::json document;
+        try{document=nlohmann::json::parse(in);}catch(const nlohmann::json::exception& error){fail(std::string("JSON 无效：")+error.what());}
+        if(document.value("schema","")!="srw64.rom-patches.v1")fail(std::string("不认识的补丁文件 ")+raw);
+        std::map<uint32_t,uint8_t> bytes(patches().begin(),patches().end());
+        size_t count=0;
+        for(const auto& patch:document.at("patches")) {
+            const auto at=patch.at("rom").get<uint32_t>();
+            const auto hex=patch.at("hex").get<std::string>();
+            if(hex.size()%2)fail(std::string("补丁字节数不对 ")+raw);
+            for(size_t i=0;i<hex.size();i+=2,++count)bytes[at+uint32_t(i/2)]=uint8_t(std::stoul(hex.substr(i,2),nullptr,16));
+        }
+        patches().clear();
+        for(const auto& [at,value]:bytes)if(rom_read(at,1)!=value)patches().emplace_back(at,value);
+        report["rom_patches"]={{"path",raw},{"bytes",count}};
+        std::fprintf(stderr,"SRW64_ROM_PATCHES %s bytes=%zu\n",raw,count);
+    }
     publish_patches();
     if(s.configured)report["patched_bytes"]=patches().size();
     if(!output.empty())std::ofstream(output/"upgrade-rules.json")<<report.dump(2)<<'\n';

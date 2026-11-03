@@ -539,7 +539,7 @@ json weapon_row(const uint8_t* ram,uint32_t unit,unsigned index) {
     std::string terrain;
     for(unsigned n=0;n<4;++n)terrain+=terrain_letter(read(ram,w+0x10+n,1));
     row["terrain"]=terrain;
-    if(row["skill"].get<unsigned>()>=2)row["skill_name"]=text(ram,uint16_t(row["skill"].get<unsigned>()));
+    if(row["skill"].get<unsigned>()>=2)row["skill_name"]=text(ram,uint16_t(0xFBA+row["skill"].get<unsigned>()));   // the requirement's label (801E6B4C)
     row["gauge"]=gauge_cells(original,allowed,level,0);
     if(type>=1 && type<=4 && level<allowed && level<up::levels) {
         row["price"]=read(ram,up::weapon_prices[type-1]+level*4,4);

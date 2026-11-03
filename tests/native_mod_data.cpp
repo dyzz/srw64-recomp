@@ -61,6 +61,19 @@ int main(int argc,char** argv) {
     check(weapon(R"({"731":{"range_min":30}})").find("range_min")!=std::string::npos,"min range past the ROM's max range");
     check(weapon(R"({"731":{"hit":"5"}})").find("整数")!=std::string::npos && weapon(R"({"731":{"hit":1.5}})").find("整数")!=std::string::npos,"integers only");
     check(weapon(R"({"1329":{"power":100}})").find("超出范围")!=std::string::npos,"weapon numbers in range");
+    // The kind byte's bits, the requirement code, the upgrade type and the lock (mod_data.hpp's
+    // comment): 731 スペースバズーカ is 0x40 ranged, not P, no beam, not parryable, no requirement.
+    {
+        mod_data::Bytes b;
+        check(mod_data::parse(json::parse(R"({"731":{"attack":"melee","post_move":true,"beam":true,"parryable":true,"terrain_at":"target","requires":"newtype_4","upgrade_type":4,"locked":true}})"),mod_data::Kind::weapons,rom,b).empty(),"weapon kind fields");
+        check(rom[weapon_at]==0x40 && b[weapon_at]==0x8E && b[weapon_at+8]==13 && b[weapon_at+0xE]==4 && b[weapon_at+0xF]==(rom[weapon_at+0xF]|0x04),"kind bits set, requirement 13, type 4, locked");
+        mod_data::Bytes c;
+        check(mod_data::parse(json::parse(R"({"209":{"post_move":false,"requires":null,"terrain_at":"attacker","locked":false}})"),mod_data::Kind::weapons,rom,c).empty(),"fields cleared");
+        const uint32_t fin=mod_data::weapon_records+209*mod_data::weapon_record_size;
+        check(c[fin]==(rom[fin]&~0x04)&&(c[fin]&0x40) && c[fin+8]==0 && c[fin+0xF]==(rom[fin+0xF]&~0x04),"P off, 0x40 on, no requirement, unlocked");
+        check(!weapon(R"({"731":{"post_move":1}})").empty() && !weapon(R"({"731":{"attack":"beam"}})").empty() && !weapon(R"({"731":{"terrain_at":"self"}})").empty(),"booleans and names checked");
+        check(weapon(R"({"731":{"requires":"ninja"}})").find("newtype")!=std::string::npos && !weapon(R"({"731":{"upgrade_type":5}})").empty() && !weapon(R"({"731":{"map":true}})").empty(),"unknown requirements, types and fields refused");
+    }
 
     // Abilities keep the bits a file cannot name (forms); size keeps +4's high bits; skills
     // write their threshold row; spirits their six pairs.

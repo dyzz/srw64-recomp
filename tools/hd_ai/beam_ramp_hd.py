@@ -37,16 +37,28 @@ sys.path[:0] = [str(ROOT / 'src'), str(ROOT)]
 from srw64_rom.resources import ResourceTable  # noqa: E402
 from srw64_native.battle_graphics import decode_atlas, parse_scene, read_triplets, render_scene  # noqa: E402
 from tools.hd_ai import beam_elements  # noqa: E402
-from tools.hd_ai.cutin_hd import MANIFEST, runtime_palette  # noqa: E402
+from tools.hd_ai.cutin_hd import MANIFEST, bind_pack, runtime_palette, share_files  # noqa: E402
 from tools.hd_ai.unit_extra_derive import PACK_SCALE  # noqa: E402
 
-# (scene, atlas): the beam rifle family (a thin beam whose tail breaks into dots) and the mega
-# particle cannon family (a thick wavy beam with a muzzle ring).
-BEAMS = ((3558, 3023), (3560, 3023), (3624, 3048), (3626, 3048))
+# (scene, atlas): the generic beams (docs/design/battle-animation-rendering.md, the beam
+# catalogue): the beam rifle family (a thin beam whose tail breaks into dots, 3558, and the green
+# 3649), the mega particle cannons (a thick wavy beam with a muzzle ring, 3624, 3627 the
+# thickest), the smooth beams 3650 and 3587, the funnels' thin beams 3612 and 3661, the beam
+# Gatling's bolts 4809 (two atlases), the twisted laser 4375 and the zigzag lightning 3709.
+BEAMS = ((3558, 3023), (3560, 3023), (3624, 3048), (3626, 3048), (3627, 3049), (3629, 3049),
+         (3650, 3052), (3652, 3052), (3587, 3033), (3589, 3033), (3649, 3051), (3612, 3045),
+         (3661, 3056), (4809, 3027), (4809, 4807), (4375, 4371), (3709, 3079))
 # The scenes the beam's actor steps on to where it hits (the beam routine moves it to the next
 # registration's scene at run time): not paired with a palette in battle_scenes, drawn in the
 # palette of the scene it came from (seen in scene-sprites.jsonl in the battle viewer).
-FOLLOW_ONS = {(3559, 3023): (3558, 3023), (3625, 3048): (3624, 3048)}
+FOLLOW_ONS = {(3559, 3023): (3558, 3023), (3625, 3048): (3624, 3048), (3628, 3049): (3627, 3049),
+              (3651, 3052): (3650, 3052), (3588, 3033): (3587, 3033),
+              (3613, 3045): (3612, 3045), (3614, 3045): (3612, 3045),
+              (3662, 3056): (3661, 3056), (3663, 3056): (3661, 3056),
+              (4810, 3027): (4809, 3027), (4811, 3027): (4809, 3027),
+              (4810, 4807): (4809, 4807), (4811, 4807): (4809, 4807),
+              (4376, 4371): (4375, 4371), (4377, 4371): (4375, 4371),
+              (3710, 3079): (3709, 3079), (3711, 3079): (3709, 3079), (3712, 3079): (3709, 3079)}
 S = PACK_SCALE
 WHITE_FROM = .38          # where the ramp starts turning white: lower is a wider core
 
@@ -141,10 +153,10 @@ def dots(single: np.ndarray, value: np.ndarray) -> tuple[np.ndarray, np.ndarray]
     return cover.astype(np.float32), inten.astype(np.float32)
 
 
-def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float) -> Image.Image:
-    """One original frame (RGBA float 0-1, cut to its box) as the HD picture (straight alpha),
-    covering exactly the original's pixels: no glow outside them."""
-    rgb_ramp, _, rim = table
+def body_of(frame: np.ndarray, rank: dict) -> tuple:
+    """An original frame (RGBA float 0-1, cut to its box) split into its body and specks: the
+    intensity per pixel, the speck and body masks, the body's coverage and its intensity at the
+    pack's scale."""
     h, w = frame.shape[:2]
     intensity = np.zeros((h, w), np.float32)
     solid = frame[..., 3] > 0
@@ -160,9 +172,21 @@ def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float) -> Ima
     # the value inside the body, filled out to its edge so the edge keeps the body's colour
     near = ndimage.distance_transform_edt(~body_mask, return_distances=False, return_indices=True)
     filled = smooth[near[0], near[1]] if body_mask.any() else smooth
-    body = np.clip(enlarge(filled, .45), 0, 1)
-    if body_mask.any():
-        body = body / max(np.percentile(body[cover > .5], 99), .5)
+    return intensity, single, body_mask, cover, np.clip(enlarge(filled, .45), 0, 1)
+
+
+def frame_peak(frame: np.ndarray, rank: dict) -> float:
+    _, _, body_mask, cover, body = body_of(frame, rank)
+    return float(np.percentile(body[cover > .5], 99)) if body_mask.any() and (cover > .5).any() else 0.0
+
+
+def beam_frame(frame: np.ndarray, rank: dict, table: tuple, shift: float, peak: float) -> Image.Image:
+    """One original frame (RGBA float 0-1, cut to its box) as the HD picture (straight alpha),
+    covering exactly the original's pixels: no glow outside them. `peak` is the brightest body
+    of the scene's frames (frame_peak): a frame where the original fades stays as much darker."""
+    rgb_ramp, _, rim = table
+    intensity, single, body_mask, cover, body = body_of(frame, rank)
+    body = body / max(peak, .5)
     # Z's cross-section (measured on its mega particle cannon): a flat white core over most of
     # the width, then a narrow band to the edge, pale, then the saturated colour, then darker at
     # the very edge. Depth from the edge over the half-thickness of each vertical run of the
@@ -203,12 +227,15 @@ def scene_rows(table: ResourceTable, triplets) -> list[tuple[dict, Image.Image]]
         ordered = np.array(sorted(colours, key=lambda c: c[0] * .299 + c[1] * .587 + c[2] * .114), np.float32) / 255
         rank = {tuple(int(round(x * 255)) for x in c): (i + 1) / len(ordered) for i, c in enumerate(ordered)}
         ramps = ramp(ordered)
+        crops = {}
         for f in frames:
             parts = scene.frames[f]
             box = (min(q.x for q in parts), min(q.y for q in parts), max(q.x + q.w for q in parts), max(q.y + q.h for q in parts))
-            crop = np.asarray(images[f].convert('RGBA').crop((box[0] - x0, box[1] - y0, box[2] - x0, box[3] - y0))).astype(np.float32) / 255
+            crops[f] = np.asarray(images[f].convert('RGBA').crop((box[0] - x0, box[1] - y0, box[2] - x0, box[3] - y0))).astype(np.float32) / 255
+        peak = max(frame_peak(c, rank) for c in crops.values())
+        for f, crop in crops.items():
             # the lines run toward the beam's head (it flies to -x) a little each frame
-            out.append(({'scene': s, 'atlas': a, 'palette': p, 'frame': f}, beam_frame(crop, rank, ramps, 37.0 * f)))
+            out.append(({'scene': s, 'atlas': a, 'palette': p, 'frame': f}, beam_frame(crop, rank, ramps, 37.0 * f, peak)))
     return out
 
 
@@ -243,14 +270,10 @@ def main() -> None:
                             'width': image.width, 'height': image.height, 'method': 'ramp', 'unit': f"beam {row['scene']}"})
     keys = {(r['scene'], r['atlas'], r['palette'], r['frame']) for r in added}   # by frame: rows may share a file (cutin_hd.py share)
     index['images'] = [r for r in index['images'] if (r['scene'], r['atlas'], r['palette'], r['frame']) not in keys] + added
-    (into / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
+    share_files(into, index)
     print(len(added), 'beam frames,', len(triplets), 'triplets ->', into.name)
     if args.bind:
-        manifest = json.loads(MANIFEST.read_text())
-        manifest['battle_sprites'] = {'path': str(into.relative_to(ROOT)),
-                                      'manifest_sha256': hashlib.sha256((into / 'battle-sprites.json').read_bytes()).hexdigest()}
-        MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-        print('bound', MANIFEST.relative_to(ROOT))
+        bind_pack(into)
 
 
 if __name__ == '__main__':

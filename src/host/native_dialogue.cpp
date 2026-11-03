@@ -1,5 +1,6 @@
 #include "native_dialogue.hpp"
 #include "mod_names.hpp"
+#include "mod_data.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
 #include "battle_hud.hpp"
@@ -172,17 +173,49 @@ std::string record_text(const uint8_t* ram,const localization::Catalog& catalog,
     const auto* value=catalog.resolve(localization::TextKey::base(0,id));
     auto text=value?expand(ram,*value,catalog.locale):std::string();
     // A MOD's name for a pilot, unit or weapon (mod_names.hpp); never where the guest's own
-    // Japanese is compared. A weapon's menu name keeps its markers around the new name.
+    // Japanese is compared. A weapon's menu name keeps its markers around the new name, and
+    // a number MOD that changes the weapon's kind (mod_data.hpp) gets the printed markers
+    // rewritten to match (格／射 in front, P and B behind): they are text, not the record.
     if(catalog.locale!="ja" || !names::guest_text_depth()) {
         names::default_names();   // refreshes the packages' names
         if(auto modded=mod_names::record(catalog.locale,id))return *modded;
-        if(id>=mod_names::text_weapon_menu && id<mod_names::text_weapon_menu+mod_names::weapon_count)
-            if(auto modded=mod_names::record(catalog.locale,uint16_t(id-mod_names::text_weapon_menu+mod_names::text_weapon))) {
-                const auto* pure=catalog.resolve(localization::TextKey::base(0,uint16_t(id-mod_names::text_weapon_menu+mod_names::text_weapon)));
-                const auto plain=pure?expand(ram,*pure,catalog.locale):std::string();
-                const auto at=plain.empty()?std::string::npos:text.find(plain);
-                return at==std::string::npos?*modded:text.substr(0,at)+*modded+text.substr(at+plain.size());
+        if(id>=mod_names::text_weapon_menu && id<mod_names::text_weapon_menu+mod_names::weapon_count) {
+            const uint16_t number=uint16_t(id-mod_names::text_weapon_menu);
+            const auto modded=mod_names::record(catalog.locale,uint16_t(mod_names::text_weapon+number));
+            const auto kind=mod_data::kind_change(number);
+            if(!modded && !kind)return text;
+            const auto* pure=catalog.resolve(localization::TextKey::base(0,uint16_t(mod_names::text_weapon+number)));
+            auto plain=pure?expand(ram,*pure,catalog.locale):std::string();
+            auto at=plain.empty()?std::string::npos:text.find(plain);
+            // A plain name ending in MAP: the menu puts B between the name and that MAP.
+            if(at==std::string::npos && plain.size()>3 && plain.compare(plain.size()-3,3,"MAP")==0) {
+                plain.resize(plain.size()-3);
+                at=plain.empty()?std::string::npos:text.find(plain);
             }
+            if(at==std::string::npos)return modded?*modded:text;
+            size_t end=at+plain.size();
+            if(modded){text=text.substr(0,at)+*modded+text.substr(end);end=at+modded->size();}
+            if(kind) {
+                const auto [was,now]=*kind;
+                if((was^now)&mod_data::weapon_melee) {
+                    const std::string prefix=text.substr(0,at);
+                    if(prefix=="格" || prefix=="射") {
+                        const std::string wanted=(now&mod_data::weapon_melee)?"格":"射";
+                        text=wanted+text.substr(at);end+=wanted.size()-prefix.size();
+                    }
+                }
+                // The suffix is P and B in that order, then MAP when the weapon is one.
+                std::string suffix=text.substr(end);
+                const bool map=suffix.size()>=3 && suffix.compare(suffix.size()-3,3,"MAP")==0;
+                const std::string body=map?suffix.substr(0,suffix.size()-3):suffix;
+                if(body.find_first_not_of("PB")==std::string::npos) {
+                    bool p=body.find('P')!=std::string::npos,b=body.find('B')!=std::string::npos;
+                    if((was^now)&mod_data::weapon_post_move)p=now&mod_data::weapon_post_move;
+                    if((was^now)&mod_data::weapon_beam)b=now&mod_data::weapon_beam;
+                    text=text.substr(0,end)+(p?"P":"")+(b?"B":"")+(map?"MAP":"");
+                }
+            }
+        }
     }
     return text;
 }
@@ -949,10 +982,12 @@ bool name_label(const uint8_t* ram,uint32_t label) {
     if(!enabled)return false;
     const uint16_t id=half(ram,label&0x1FFFFFFF);
     if(entered_name(id))return true;
-    // A record a MOD names in the reading language (a weapon's menu name by its plain one).
+    // A record a MOD names in the reading language (a weapon's menu name by its plain one),
+    // or a weapon's menu name whose markers a number MOD changed (mod_data.hpp).
     const auto& locale=localization::catalog().locale;
-    const uint16_t plain=id>=mod_names::text_weapon_menu && id<mod_names::text_weapon_menu+mod_names::weapon_count?
-        uint16_t(id-mod_names::text_weapon_menu+mod_names::text_weapon):id;
+    const bool menu=id>=mod_names::text_weapon_menu && id<mod_names::text_weapon_menu+mod_names::weapon_count;
+    if(menu && mod_data::kind_change(uint16_t(id-mod_names::text_weapon_menu)))return true;
+    const uint16_t plain=menu?uint16_t(id-mod_names::text_weapon_menu+mod_names::text_weapon):id;
     return mod_names::record(locale,id) || mod_names::record(locale,plain);
 }
 std::string glyph_text(const uint8_t* ram,uint32_t address,size_t limit) {
