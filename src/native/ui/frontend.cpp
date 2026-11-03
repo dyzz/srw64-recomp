@@ -61,6 +61,7 @@
 #include "touch_scene.hpp"
 #include "presentation/rgba_file.hpp"
 #include "text/button_prompts.hpp"
+#include "text/game_fonts.hpp"
 #include "stb/stb_image.h"
 #include <RmlUi/Core/Elements/ElementFormControlInput.h>
 #include <algorithm>
@@ -1017,7 +1018,25 @@ struct SheetPlugin:Rml::Plugin {
     int GetEventClasses() override {return EVT_DOCUMENT;}
     void OnDocumentLoad(Rml::ElementDocument* doc) override {if(sheet_pending)doc->SetStyleSheetContainer(sheet_pending);}
 } sheet_plugin;
+// A language package's text faces (text::locale_fonts), loaded the first time a page is
+// made in its locale: the first is the locale's family, every one a fallback face.
+void load_locale_fonts(const std::string& locale) {
+    static std::map<std::string,std::vector<std::vector<Rml::byte>>> loaded;
+    if(loaded.contains(locale))return;
+    auto& faces=loaded[locale];
+    for(const auto& path:text::locale_fonts(locale)) {
+        std::ifstream input(path,std::ios::binary);
+        faces.emplace_back(std::istreambuf_iterator<char>(input),std::istreambuf_iterator<char>());
+        const auto family="srw64-ui-"+locale+(faces.size()>1?"-"+std::to_string(faces.size()):std::string());
+        if(faces.back().empty() || !Rml::LoadFontFace(faces.back(),family,Rml::Style::FontStyle::Normal,Rml::Style::FontWeight::Normal,true)) {
+            std::fprintf(stderr,"SRW64_MOD_LANGUAGE_PROBLEM %s: the UI cannot load %s\n",locale.c_str(),path.string().c_str());
+            continue;
+        }
+        package_font_families().try_emplace(locale,family);
+    }
+}
 void update_sheet() {
+    load_locale_fonts(localization::catalog().locale);
     if(auto text=std::string(css)+locale_font_css(localization::catalog().locale);!sheet || text!=sheet_text){sheet=Rml::Factory::InstanceStyleSheetString(text);sheet_text=std::move(text);}
 }
 std::string document_source(const std::string& body,bool modal,bool chrome) {
@@ -1927,6 +1946,11 @@ std::string mod_contents_text(const srw64::mods::Contents& c) {
     std::vector<std::string> parts;
     const auto add=[&](unsigned n,const char* key){if(n)parts.push_back(filled(key,{{"{n}",std::to_string(n)}}));};
     add(c.music,"mod_has_music");add(c.voices,"mod_has_voices");add(c.art,"mod_has_art");add(c.dialogue,"mod_has_dialogue");add(c.data,"mod_has_data");
+    if(!c.languages.empty()) {
+        std::string list;
+        for(const auto& locale:c.languages)list+=(list.empty()?"":", ")+locale;
+        parts.push_back(filled("mod_has_languages",{{"{list}",list}}));
+    }
     for(const auto& [flag,key]:{std::pair{c.campaign,"mod_has_campaign"},std::pair{c.challenge,"mod_has_challenge"},std::pair{c.story,"mod_has_story"},std::pair{c.rules,"mod_has_rules"},std::pair{c.names,"mod_has_names"}})
         if(flag)parts.push_back(localization::catalog().ui(key));
     std::string out;
@@ -2003,6 +2027,9 @@ void mod_install(const std::filesystem::path& path) {
         if(!result.ok)text=filled("mod_install_failed",{{"{reason}",mod_problem_text(result.problem)}});
         else if(result.replaced)text=filled("mod_updated",{{"{id}",result.id},{"{old}",srw64::mods::version_text(*result.replaced)},{"{version}",srw64::mods::version_text(result.version)}});
         else text=filled("mod_installed",{{"{id}",result.id},{"{version}",srw64::mods::version_text(result.version)}});
+        // The reading languages are set at start-up (docs/design/mod-language-packs.md).
+        if(result.ok && !srw64::mods::summarize(srw64::mods::directory()/result.id).languages.empty())
+            text+=" "+localization::catalog().ui("mod_language_restart");
         notices::post("mod",text);
         mod_installing=false;
         ++mod_revision;
@@ -2083,7 +2110,8 @@ std::string update_hd_words(const std::string& key,const update::Status& s) {
 // A text update's words (text_update.hpp), with {revision}, {date}, {note} and {error}.
 std::string text_update_words(const std::string& key,const text_update::Status& t) {
     auto text=localization::catalog().ui(key);
-    const auto language=localization::catalog().locale=="zh-Hant"?std::string("tw"):update::site_language(localization::catalog().locale);
+    const auto style=localization::style(localization::catalog().locale);
+    const auto language=style=="zh-Hant"?std::string("tw"):update::site_language(style);
     for(const auto& [mark,value]:{std::pair<std::string,std::string>{"{revision}",t.pack?std::to_string(t.pack->revision):""},
             {"{date}",t.pack?t.pack->date:""},{"{note}",t.pack?text_update::note(*t.pack,language):""},{"{error}",t.error}})
         if(const auto at=text.find(mark);at!=std::string::npos)text.replace(at,mark.size(),value);
@@ -4375,7 +4403,7 @@ void upgrade_sync() {
     // 「X を最大まで改造したので、」「特別ボーナスとして Y が追加されます」; English parts by spaces.
     const auto bonus_box=[&]{
         const auto& b=next.at("bonus");const auto& bl=next.at("bonus_labels");
-        const std::string gap=localization::catalog().locale=="en"?" ":"";
+        const std::string gap=localization::style(localization::catalog().locale)=="en"?" ":"";
         const auto name=[&](const char* key){return "<span style='color:#ffd75e;'>"+escape(b.value(key,std::string()))+"</span>";};
         const std::string first=b.value("upgraded",std::string())+gap+bl[0].get<std::string>(),second=bl[1].get<std::string>()+gap+b.value("unlocked",std::string())+gap+bl[2].get<std::string>();
         // One size for both lines: the longer one decides it.
@@ -5537,14 +5565,21 @@ void choose(const std::string& id) {
     if(mod_open && id=="mod-folder"){mod_open_folder();settings_focus=id;return;}
     if(mod_open && id.starts_with("mod-toggle:")) {
         const auto pid=id.substr(11);
-        for(const auto& p:installed_mods())if(p.id()==pid)srw64::mods::set_enabled(pid,!p.enabled);
+        for(const auto& p:installed_mods())if(p.id()==pid) {
+            srw64::mods::set_enabled(pid,!p.enabled);
+            if(!p.contents.languages.empty())notices::post("mod",localization::catalog().ui("mod_language_restart"));
+        }
         mod_remove_pending.clear();++mod_revision;settings_focus=id;return;
     }
     if(mod_open && id.starts_with("mod-remove:")) {
         const auto pid=id.substr(11);
         if(mod_remove_pending!=pid){mod_remove_pending=pid;settings_focus=id;return;}
         mod_remove_pending.clear();
-        notices::post("mod",filled(srw64::mods::remove(pid)?"mod_removed":"mod_remove_failed",{{"{id}",pid}}));
+        bool languages=false;
+        for(const auto& p:installed_mods())if(p.id()==pid)languages=!p.contents.languages.empty();
+        auto text=filled(srw64::mods::remove(pid)?"mod_removed":"mod_remove_failed",{{"{id}",pid}});
+        if(languages)text+=" "+localization::catalog().ui("mod_language_restart");
+        notices::post("mod",text);
         ++mod_revision;settings_focus="first";return;
     }
     // Entering or leaving swaps the game's saves for the campaign's (campaign_switch.hpp)

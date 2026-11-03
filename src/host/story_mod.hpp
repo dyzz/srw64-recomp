@@ -2,6 +2,7 @@
 #include "guest_memory.hpp"
 #include "mod_library.hpp"
 #include "json/json.hpp"
+#include "localization/locale_fallbacks.hpp"
 #include <algorithm>
 #include <cstdio>
 #include <cstdlib>
@@ -399,12 +400,12 @@ inline std::optional<Text> text(uint16_t id) {
     if(id<text_first || size_t(id-text_first)>=texts->size())return std::nullopt;
     return (*texts)[id-text_first];
 }
-// The line in a language: that one (Traditional Chinese else Simplified), else Japanese.
+// The line in a language by localization::fallbacks (every line has ja).
 inline std::optional<std::string> line(uint16_t id,const std::string& locale) {
     const auto t=text(id);
     if(!t)return std::nullopt;
-    if(const auto found=t->lines.find(locale);found!=t->lines.end())return found->second;
-    if(const auto found=t->lines.find("zh-Hans");locale=="zh-Hant" && found!=t->lines.end())return found->second;
+    for(const auto& key:localization::fallbacks(locale))
+        if(const auto found=t->lines.find(key);found!=t->lines.end())return found->second;
     return t->lines.at("ja");
 }
 

@@ -5,6 +5,7 @@
 #include <memory>
 #include "json/json.hpp"
 #include "localization/string_tables.hpp"
+#include "localization/locale_fallbacks.hpp"
 
 namespace srw64::localization {
 struct TextKey {
@@ -37,6 +38,8 @@ public:
     std::shared_ptr<Catalog> with_translations(Table entries,const std::string& layer) const;
     // This catalog with `labels` replacing UI labels it has (text updates); others are ignored.
     std::shared_ptr<Catalog> with_labels(const Table& replaced,const std::string& layer) const;
+    // This catalog under another locale (a language package's, over its fallback's text).
+    std::shared_ptr<Catalog> as_locale(const std::string& next) const;
     std::string ui(const std::string& key) const;
     const Table& ui_labels() const { return *labels; }
 };
@@ -57,6 +60,10 @@ std::string language_choices();
 // With `tables` (prepared data, string_tables.hpp), the original records and the
 // translations come from them instead of the JSON.
 void initialize(const nlohmann::json& data,const string_tables::Tables* tables=nullptr);
+// A language package's locale (docs/design/mod-language-packs.md), at the end of the cycle:
+// `fallback` is a locale initialize() registered, whose text fills what the package leaves
+// out and whose typesetting the locale follows.
+void add_locale(Snapshot value,const std::string& label,const std::string& fallback);
 void activate(Snapshot value);
 class Scope {
     Snapshot previous;

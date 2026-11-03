@@ -56,6 +56,26 @@ std::vector<size_t> boundaries(std::u16string_view value,UBreakIteratorType kind
         result.push_back(static_cast<size_t>(p));
     return result;
 }
+// Korean sets lines at spaces, not between syllables (CSS word-break: keep-all): ICU's
+// line rules let any two Hangul syllables part, so a word broke mid-way ("오늘|은"). For
+// Korean, the breaks between two letters or digits where either is Hangul are taken out;
+// the line still breaks at spaces and punctuation, and an overlong word by the emergency
+// break.
+bool korean(const std::string& tag) {
+    return tag=="ko" || tag.starts_with("ko-");
+}
+bool hangul(char16_t c) {
+    return (c>=0xAC00 && c<=0xD7A3) || (c>=0x1100 && c<=0x11FF) || (c>=0x3130 && c<=0x318F) ||
+           (c>=0xA960 && c<=0xA97F) || (c>=0xD7B0 && c<=0xD7FF);
+}
+void keep_korean_words(std::u16string_view text,std::vector<size_t>& legal) {
+    const auto letter=[](char16_t c){return hangul(c) || (c<0xD800 && u_isalnum(c));};
+    std::erase_if(legal,[&](size_t at) {
+        if(at==0 || at>=text.size())return false;
+        const char16_t before=text[at-1],after=text[at];
+        return letter(before) && letter(after) && (hangul(before) || hangul(after));
+    });
+}
 std::string icu_locale(const std::string& tag) {
     require(!tag.empty() && tag.size()<128 && tag.find('\0')==std::string::npos,"Invalid BCP-47 locale");
     char name[ULOC_FULLNAME_CAPACITY];int32_t parsed=0;UErrorCode status=U_ZERO_ERROR;
@@ -261,6 +281,7 @@ struct FontSet::Builder {
     void prepare() {
         const auto line_locale=icu_locale(out.locale);
         legal=boundaries(out.text,UBRK_LINE,line_locale.c_str());
+        if(korean(out.locale))keep_korean_words(out.text,legal);
         language=hb_language_from_string(out.locale.c_str(),-1);
         for(auto& f:state.faces) {
             f->size(out.size);out.ascent=std::max(out.ascent,double(f->ft->ascender)*out.size/f->ft->units_per_EM);

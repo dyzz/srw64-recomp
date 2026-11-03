@@ -73,6 +73,23 @@ void run(const std::filesystem::path& cjk) {
     const auto punctuation=fonts.layout(u"甲乙（丙丁）甲乙。丙丁「甲乙」丙丁、甲乙。",13,60,"ja");
     for(const auto& line:punctuation.lines())if(!line.emergency_break && line.end<punctuation.text().size())
         check(std::u16string_view(u"）、。」』！？").find(punctuation.text()[line.end])==std::u16string_view::npos,"CJK closing punctuation starts a normal line");
+    // Korean breaks at spaces, never inside a word (keep-all); other locales may part
+    // Hangul syllables as ICU's rules allow.
+    const std::u16string korean=u"아가씨, 차가 준비되었습니다. 오늘은 러시안 티입니다. Z건담이 어디로 가져다 드릴까요?";
+    const auto inside=[&](const TextLayout& layout) {
+        size_t parted=0;
+        for(const auto& line:layout.lines())if(!line.emergency_break && line.end<layout.text().size()) {
+            const auto before=layout.text()[line.end-1],after=layout.text()[line.end];
+            if(before!=u' ' && after!=u' ' && (before>=0xAC00 || after>=0xAC00))++parted;
+        }
+        return parted;
+    };
+    for(const double width:{60.0,90.0,120.0,177.0}) {
+        const auto ko=fonts.layout(korean,13,width,"ko");conservation(ko,width);
+        check(ko.lines().size()>1 && inside(ko)==0,"Korean broke a line inside a word");
+        check(inside(fonts.layout(korean,13,width,"ko-KR"))==0,"ko-KR broke a line inside a word");
+    }
+    check(inside(fonts.layout(korean,13,90,"en"))>0,"The fixture no longer parts Hangul outside Korean");
     const auto narrow=fonts.layout(u"甲",18,0.1,"zh-Hans");
     check(narrow.lines().size()==1 && narrow.lines()[0].overflow,"Oversized indivisible grapheme was not reported");
     conservation(fonts.layout(std::u16string(2000,u'甲'),18,177,"zh-Hans"),177);

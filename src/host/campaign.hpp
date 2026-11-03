@@ -1,5 +1,6 @@
 #pragma once
 #include "json/json.hpp"
+#include "localization/locale_fallbacks.hpp"
 #include <cstdint>
 #include <map>
 #include <mutex>
@@ -45,20 +46,17 @@ inline nlohmann::json stage_meta(uint32_t scene) {
 }
 inline nlohmann::json status(){auto& s=state();std::lock_guard lock(s.mutex);return s.info?s.info->status:nlohmann::json();}
 
-// The chapter title a stage gives its scene, in the given locale (zh-Hant falls back to
-// zh-Hans); falls back to ja, then to any language the title has. Nothing when no
+// The chapter title a stage gives its scene, in the given locale by
+// localization::fallbacks, then in any language the title has. Nothing when no
 // campaign borrows the scene.
 inline std::optional<std::string> title(uint32_t scene,const std::string& locale) {
     auto& s=state();std::lock_guard lock(s.mutex);
     if(!s.info)return std::nullopt;
     const auto found=s.info->titles.find(scene);
     if(found==s.info->titles.end())return std::nullopt;
-    const auto& title=found->second;
-    if(title.is_string())return title.get<std::string>();
-    for(const auto& key:{locale,std::string(locale=="zh-Hant"?"zh-Hans":"ja"),std::string("ja")})
-        if(title.contains(key) && title.at(key).is_string())return title.at(key).get<std::string>();
-    for(const auto& [key,value]:title.items())if(value.is_string())return value.get<std::string>();
-    return std::nullopt;
+    auto text=localization::pick(found->second,locale);
+    if(text.empty())return std::nullopt;
+    return text;
 }
 
 // A notice in the current language (UI key; {n} is the scene). native_dialogue.cpp,

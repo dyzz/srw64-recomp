@@ -47,12 +47,16 @@ fs::path remembered_rom(const fs::path& file) {
     return path;
 }
 // The language the player chose (presentation.json, written by launch.cpp); empty when
-// there is none or it cannot be read.
+// there is none or it cannot be read. A language package's locale is English here: these
+// messages come before the packages are read.
 std::string saved_locale(const fs::path& user_dir) {
     try {
         const auto text = read_text(user_dir / "presentation.json", 65536);
         std::smatch found;
-        if (std::regex_search(text, found, std::regex(R"re("locale"\s*:\s*"([^"]+)")re"))) return found[1];
+        if (std::regex_search(text, found, std::regex(R"re("locale"\s*:\s*"([^"]+)")re"))) {
+            const std::string locale = found[1];
+            return locale == "ja" || locale == "zh-Hans" || locale == "zh-Hant" || locale == "en" ? locale : "en";
+        }
     } catch (const std::exception&) {}
     return {};
 }

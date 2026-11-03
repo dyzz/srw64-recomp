@@ -23,6 +23,7 @@
 #include "librecomp/game.hpp"
 #ifdef SRW64_NATIVE_DIALOGUE
 #include "localization/catalog.hpp"
+#include "mod_languages.hpp"
 #endif
 #include <algorithm>
 #include <array>
@@ -102,7 +103,7 @@ struct Model {
 #else
     hd_texture::Compressed atlasPrepared;   // the Switch's BC7 copy of the atlas (hd_texture.hpp)
     uint32_t glAtlas = 0, glVertices = 0, glIndices = 0;   // made on first draw (native_marker GL)
-    std::array<uint32_t, 3> glPlates{};
+    std::array<uint32_t, 8> glPlates{};
 #endif
     std::vector<uint8_t> reference, vertices, indices;  // reference: taken from the ROM, see originals_ready()
     size_t referenceBytes = 0;
@@ -117,11 +118,11 @@ struct Model {
     // Name plate (type-5 billboard, 200 x 30 units above the origin), redrawn per locale.
     std::vector<uint32_t> plateCommands;
     uint32_t plateDraw = 0;
-    std::array<std::vector<uint8_t>, 3> platePixels;  // RGBA8 per kPlateLocales entry
+    std::array<std::vector<uint8_t>, 8> platePixels;  // RGBA8 per plate slot; a package's may be empty
     int plateWidth = 0, plateHeight = 0;
 #ifndef SRW64_GL_ONLY
-    std::array<std::unique_ptr<gpu::Texture>, 3> plateTextures;
-    std::array<std::unique_ptr<plume::RenderDescriptorSet>, 3> plateSets;
+    std::array<std::unique_ptr<gpu::Texture>, 8> plateTextures;
+    std::array<std::unique_ptr<plume::RenderDescriptorSet>, 8> plateSets;
 #endif
     std::atomic<uint64_t> plateClassified{};
     uint64_t plateRendered{}, plateSuppressed{};
@@ -130,18 +131,36 @@ std::vector<std::unique_ptr<Model>> models;
 
 // Plates follow the reading language (F7); the locale is fixed per workload when the
 // display list is classified, so both render targets of a frame agree. The model pack has
-// no Traditional Chinese plates: zh-Hant shows the Simplified ones.
-constexpr uint32_t kPlateIdBase = 0x504C0000;  // 'PL'; bits 4+ model, 1-3 locale, 0 suppressed
+// no Traditional Chinese plates: zh-Hant shows the Simplified ones. Slots 3-7 are language
+// packages' (docs/design/mod-language-packs.md), each with its own plates where the package
+// gives them (art/<locale>/plates/<resource>.png) and its fallback's elsewhere.
+constexpr uint32_t kPlateIdBase = 0x504C0000;  // 'PL'; bits 4+ model, 1-3 slot, 0 suppressed
 constexpr std::array<const char *, 3> kPlateLocales{"ja", "zh-Hans", "en"};
+constexpr size_t kPlateSlots = 8;
+std::array<std::string, kPlateSlots> plateSlotLocales;   // a package's locale per slot from 3
+std::array<uint32_t, kPlateSlots> plateSlotFallback{};    // the built-in slot it falls back to
 
-uint32_t plate_locale() {
-#ifdef SRW64_NATIVE_DIALOGUE
-    std::string locale = srw64::localization::snapshot()->locale;
+uint32_t built_in_plate(std::string locale) {
     if (locale == "zh-Hant") locale = "zh-Hans";
     for (size_t i = 0; i < kPlateLocales.size(); ++i)
         if (locale == kPlateLocales[i]) return uint32_t(i);
-#endif
     return 0;
+}
+uint32_t plate_locale() {
+#ifdef SRW64_NATIVE_DIALOGUE
+    const std::string locale = srw64::localization::snapshot()->locale;
+    for (size_t i = kPlateLocales.size(); i < kPlateSlots; ++i)
+        if (!plateSlotLocales[i].empty() && plateSlotLocales[i] == locale) return uint32_t(i);
+    return built_in_plate(srw64::localization::style(locale));
+#else
+    return 0;
+#endif
+}
+// The slot a model draws for a classified one: a package's without its own plate takes its
+// fallback's.
+size_t plate_slot(const Model& m, size_t slot) {
+    slot = std::min(slot, kPlateSlots - 1);
+    return m.platePixels[slot].empty() && slot >= kPlateLocales.size() ? plateSlotFallback[slot] : slot;
 }
 
 // World-map travel trail (3D33). load_000A7EC0 801C4960 emits one step per quad:
@@ -518,7 +537,7 @@ bool render_plate(plume::RenderCommandList *list, plume::RenderFramebuffer *fram
     Model& m = *models[index];
     if (call.id & 1) { ++m.plateSuppressed; return true; }
     if (!plateProgram || !call.workload) throw std::runtime_error("Native plate missing immutable draw context");
-    const size_t locale = std::min<size_t>((call.id >> 1) & 7, kPlateLocales.size() - 1);
+    const size_t locale = plate_slot(m, (call.id >> 1) & 7);
     auto& texture = m.plateTextures[locale];
     if (!texture) return false;
     if (!m.plateSets[locale]) {
@@ -845,7 +864,7 @@ bool gl_plate_draw(const n64gl::Command& command) {
     const size_t index = (command.native_id & 0xFFFF) >> 4;
     if (index >= models.size()) return false;
     Model& m = *models[index];
-    const size_t locale = std::min<size_t>((command.native_id >> 1) & 7, kPlateLocales.size() - 1);
+    const size_t locale = plate_slot(m, (command.native_id >> 1) & 7);
     if (m.platePixels[locale].empty()) return true;
     if (!m.glPlates[locale]) m.glPlates[locale] = gl_picture(m.platePixels[locale], m.plateWidth, m.plateHeight);
     const GlProgram *p = gl_begin(gl_plate, command);
@@ -941,6 +960,27 @@ void load_plate(Model& m, const std::filesystem::path& pack, const json& plate) 
         if (l && (width != m.plateWidth || height != m.plateHeight)) throw std::runtime_error("Native plate sizes differ");
         m.plateWidth = width; m.plateHeight = height;
     }
+#ifdef SRW64_NATIVE_DIALOGUE
+    // Language packages' plates, the same size as ours; a wrong one is left out. Named as our
+    // Japanese one without ".plate.ja": art/<locale>/plates/5590.png, 5599.6.png.
+    std::string key = std::filesystem::path(plate.at("textures").at("ja").get<std::string>()).filename().string();
+    if (const auto at = key.find(".plate."); at != std::string::npos) key.resize(at);
+    for (size_t l = kPlateLocales.size(); l < kPlateSlots; ++l) {
+        if (plateSlotLocales[l].empty()) continue;
+        const auto file = srw64::mod_languages::art(plateSlotLocales[l], "plates/" + key + ".png");
+        if (file.empty()) continue;
+        int width = 0, height = 0, channels = 0;
+        uint8_t *pixels = stbi_load(file.string().c_str(), &width, &height, &channels, 4);
+        if (!pixels || width != m.plateWidth || height != m.plateHeight) {
+            std::fprintf(stderr, "SRW64_MOD_LANGUAGE_PROBLEM %s: %s must be a %dx%d PNG\n", plateSlotLocales[l].c_str(),
+                         file.string().c_str(), m.plateWidth, m.plateHeight);
+            if (pixels) stbi_image_free(pixels);
+            continue;
+        }
+        m.platePixels[l].assign(pixels, pixels + size_t(width) * height * 4);
+        stbi_image_free(pixels);
+    }
+#endif
 }
 
 void load_models(const std::filesystem::path& pack) {
@@ -1033,6 +1073,16 @@ std::thread pack_loader;
 #endif
 void configure_now(const std::filesystem::path& directory, const std::filesystem::path& marker_pack, const std::filesystem::path& models_pack) {
     output = directory;
+#ifdef SRW64_NATIVE_DIALOGUE
+    // The language packages, registered before the graphics start (native_dialogue.cpp).
+    size_t slot = kPlateLocales.size();
+    for (const auto& language : srw64::mod_languages::languages()) {
+        if (slot == kPlateSlots) break;
+        plateSlotLocales[slot] = language.locale;
+        plateSlotFallback[slot] = built_in_plate(language.fallback);
+        ++slot;
+    }
+#endif
     const char *marker_env = std::getenv("SRW64_NATIVE_MARKER");
     std::error_code missing;
     const std::filesystem::path marker = marker_env && *marker_env ? std::filesystem::path(marker_env)
@@ -1131,8 +1181,8 @@ void gpu_init() {
         if (!plateProgram)
             plateProgram = std::make_unique<gpu::Program>("HdPlate", std::vector<gpu::Slot>{{gpu::Slot::texture},
                 {gpu::Slot::sampler, {.linear = true, .mipmaps = true}}});
-        for (size_t l = 0; l < kPlateLocales.size(); ++l)
-            m->plateTextures[l] = std::make_unique<gpu::Texture>(m->plateWidth, m->plateHeight, plume::RenderFormat::R8G8B8A8_UNORM,
+        for (size_t l = 0; l < kPlateSlots; ++l)
+            if (!m->platePixels[l].empty()) m->plateTextures[l] = std::make_unique<gpu::Texture>(m->plateWidth, m->plateHeight, plume::RenderFormat::R8G8B8A8_UNORM,
                 gpu::rgba_mips(m->platePixels[l], m->plateWidth, m->plateHeight));
     }
 #endif

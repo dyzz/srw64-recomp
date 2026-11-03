@@ -21,7 +21,7 @@ story/      改主线关卡（§7）
 data/       数值（§5）
 rules.json  打开宿主规则（§6）
 art/        美术（§4）
-dialogue/   台词与语言
+dialogue/   台词与语言（语言包见 mod-language-packs.md）
 audio/      音乐与语音
 ```
 

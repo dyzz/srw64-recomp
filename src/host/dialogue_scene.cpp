@@ -373,13 +373,13 @@ Layout typeset(const std::u16string& value,double size,double width,double heigh
     return layout_text(value,size,width,height);
 }
 double body_size(unsigned setting) {
-    return localization::catalog().locale=="en"?setting*0.85:setting;
+    return localization::style(localization::catalog().locale)=="en"?setting*0.85:setting;
 }
 text::PageStyle body_style(const std::string& locale,std::vector<size_t> stops,std::vector<size_t> forced) {
     text::PageStyle style;
     style.height=body_height;
-    style.min_spacing=locale=="en"?1.15:1.08;style.max_spacing=1.22;
-    style.rank_breaks=true;style.halve_line_end=locale=="zh-Hans";
+    style.min_spacing=localization::style(locale) == "en"?1.15:1.08;style.max_spacing=1.22;
+    style.rank_breaks=true;style.halve_line_end=localization::style(locale) == "zh-Hans";
     std::sort(forced.begin(),forced.end());std::sort(stops.begin(),stops.end());
     // The original's page breaks end a sentence only in Japanese; a translation
     // marks its own sentence ends, and a bare page break there is mid-sentence.

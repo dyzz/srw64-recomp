@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <map>
 #include <optional>
+#include <regex>
 #include <set>
 #include <stdexcept>
 
@@ -210,6 +211,15 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     const auto catalogs=data.at("locale_catalogs");
     // No setting yet (the first launch): the system's language, as long as the player has
     // not chosen one in the settings window; the content's own when it has no such catalog.
+    // A language package's locale (docs/design/mod-language-packs.md) is not in the content:
+    // the session starts in the first-launch language and the host switches to the package's
+    // once it has read the packages (SRW64_LOCALE); without the package, it stays there.
+    std::string package_locale;
+    if(!locale.empty() && !catalogs.contains(locale)) {
+        static const std::regex tag("[a-z]{2,3}(-[A-Za-z0-9]{2,8})*");
+        if(!std::regex_match(locale,tag))throw std::runtime_error("Locale is not available in this content: "+locale);
+        package_locale=locale;locale.clear();
+    }
     if(locale.empty()) {
         locale=system_language();
         if(!catalogs.contains(locale))locale=data.at("config").at("locale").get<std::string>();
@@ -227,7 +237,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         // The game's own settings (filter, bezel, cheats, FPS and the rest) stay as they were.
         json settings=kept;
         settings.update(json{{"schema","srw64.presentation-settings.v1"},
-            {"locale",locale},{"battle_ui",battle_ui},{"intermission_ui",intermission_ui},{"name_entry_ui",name_entry_ui},{"title_ui",title_ui},{"settings_page",settings_page},{"aspect",aspect},
+            {"locale",package_locale.empty()?locale:package_locale},{"battle_ui",battle_ui},{"intermission_ui",intermission_ui},{"name_entry_ui",name_entry_ui},{"title_ui",title_ui},{"settings_page",settings_page},{"aspect",aspect},
             {"touch_opacity",touch_opacity},{"dialogue_font_size",dialogue_font_size},{"map_unit_icons",map_unit_icons}});
         if(!ui_size.empty())settings["ui_size"]=ui_size;  // absent until the player chooses one
         atomic_write(language_file,settings.dump(2)+"\n");
@@ -289,6 +299,7 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
     set_environment("SRW64_CAMPAIGN_SAVES",(session.user_dir()/"campaigns").string());
     // MOD packages (mod_library.hpp): installed into the user folder's mods/.
     set_environment("SRW64_MODS_DIR",(session.user_dir()/"mods").string());
+    if(!package_locale.empty())set_environment("SRW64_LOCALE",package_locale);
     if(hd_art) {
         set_environment("SRW64_ART_PACK",(hd/"art").string());
         // The golden beacon replaces the dashed ring only with both model packs loaded.

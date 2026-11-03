@@ -104,7 +104,8 @@ inline bool satisfies(const Version& v,const std::string& requirement) {
 struct Contents {
     unsigned music{},voices{},art{},dialogue{},data{};
     bool campaign{},challenge{},story{},rules{},names{};
-    bool empty() const {return !music && !voices && !art && !dialogue && !data && !campaign && !challenge && !story && !rules && !names;}
+    std::vector<std::string> languages;   // dialogue/<locale>/ with language.json (mod_languages.hpp)
+    bool empty() const {return !music && !voices && !art && !dialogue && !data && !campaign && !challenge && !story && !rules && !names && languages.empty();}
 };
 
 // A problem found while reading or resolving a package: a code the UI words (mod_error_*)
@@ -301,6 +302,10 @@ inline Contents summarize(const fs::path& folder) {
     c.art=count(folder/"art",{".png",".webp",".dds",".json"});
     c.dialogue=count(folder/"dialogue",{".txt"});
     c.names=fs::is_regular_file(folder/"dialogue"/"names.json",error);
+    if(fs::is_directory(folder/"dialogue",error))
+        for(const auto& entry:fs::directory_iterator(folder/"dialogue",error))
+            if(entry.is_directory(error) && fs::is_regular_file(entry.path()/"language.json",error))c.languages.push_back(entry.path().filename().string());
+    std::sort(c.languages.begin(),c.languages.end());
     c.data=count(folder/"data",{".json"});
     c.campaign=fs::is_regular_file(folder/"campaign"/"campaign.json",error);
     c.challenge=fs::is_directory(folder/"challenge",error);

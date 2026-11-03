@@ -13,9 +13,11 @@
 #include "text_update.hpp"
 #include "upgrade_refund.hpp"
 #include "story_mod.hpp"
+#include "mod_languages.hpp"
 #include "campaign.hpp"
 #include "input_mode.hpp"
 #include "text/button_prompts.hpp"
+#include "text/game_fonts.hpp"
 #include "game_adapter/dialogue_source.hpp"
 #include "localization/dialogue_text.hpp"
 #include "presentation/display_list_snapshots.hpp"
@@ -378,13 +380,40 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
     std::vector<localization::dialogue_text::Problem> problems;
     json summary=json::object();std::map<std::string,size_t> entries;
     std::map<std::string,std::map<std::string,std::string>> pages=prepared_pages;
-    // A text update (text_update.hpp) lies between the shipped text and the player's.
+    // A text update (text_update.hpp) lies between the shipped text and the player's;
+    // language packages' layers (mod_languages.hpp) between the update and the player's.
     const auto update=text_update::layer();
-    for(const auto& [locale,shipped]:base_catalogs) {
-        const auto base=update?update->apply(shipped):shipped;
-        const std::vector<std::filesystem::path> roots{text_bundled.empty()?text_bundled:text_bundled/locale,
-                                                       update?update->dialogue(locale):std::filesystem::path(),
-                                                       text_overrides.empty()?text_overrides:text_overrides/locale};
+    // The built-in languages first: a package's language starts from its fallback's text,
+    // dialogue files and pages included.
+    std::vector<std::string> order;
+    for(const bool package:{false,true})
+        for(const auto& [locale,shipped]:base_catalogs)if((localization::style(locale)!=locale)==package)order.push_back(locale);
+    for(const auto& locale:order) {
+        const auto& shipped=base_catalogs.at(locale);
+        const auto fallback=localization::style(locale);
+        const bool package=fallback!=locale;
+        localization::Snapshot base=package?next.at(fallback)->as_locale(locale):update?update->apply(shipped):shipped;
+        if(package)pages[locale]=pages[fallback];
+        const auto layers=mod_languages::layers(locale);
+        std::vector<std::filesystem::path> roots;
+        if(!package)roots={text_bundled.empty()?text_bundled:text_bundled/locale,update?update->dialogue(locale):std::filesystem::path()};
+        for(const auto& layer:layers) {
+            // Labels only where ours has the label and the same {marks}, as a text update's.
+            localization::Catalog::Table labels;
+            for(const auto& [key,text]:layer.ui) {
+                const auto& ours=base->ui_labels();
+                const auto found=ours.find(key);
+                if(found==ours.end())continue;
+                if(mod_languages::marks(text)!=mod_languages::marks(found->second)) {
+                    problems.push_back({locale+"/"+layer.package+"/terms.json",0,key,"its {marks} differ from the label's"});continue;
+                }
+                labels[key]=text;
+            }
+            base=base->with_labels(labels,"mod:"+layer.package);
+            base=base->with_translations(layer.entries,"mod:"+layer.package);
+            roots.push_back(layer.folder);
+        }
+        roots.push_back(text_overrides.empty()?text_overrides:text_overrides/locale);
         auto result=localization::dialogue_text::load(roots,*base);
         for(auto problem:result.problems){problem.path=locale+"/"+problem.path;problems.push_back(std::move(problem));}
         summary[locale]={{"entries",result.targets.size()},{"intro",result.intro.size()},{"files",result.files},{"problems",result.problems.size()}};
@@ -677,10 +706,38 @@ ReadingControls reading_controls() {
     std::lock_guard lock(mutex);
     return {enabled && !observe && reader.active, reader.history_open, reader.skipping};
 }
+// The enabled packages' reading languages (mod_languages.hpp), each over its fallback's
+// catalog until load_text() lays the text on; then the language the launcher could not
+// choose (SRW64_LOCALE names a package's).
+void register_languages() {
+    const auto japanese=localization::find("ja");
+    if(!japanese)return;
+    auto found=mod_languages::collect(mods::installed(mods::game_version()),*japanese);
+    std::vector<mod_languages::Language> added;
+    for(auto& language:found.languages) {
+        try {
+            // A face FreeType cannot open would fail every layout of the language: check
+            // them here and leave the language out instead.
+            for(const auto& path:language.text_fonts)text::FontSet({{path,0,0}});
+            if(!language.title_font.empty())text::FontSet({{language.title_font,0,0}});
+            localization::add_locale(localization::find(language.fallback)->as_locale(language.locale),language.name,language.fallback);
+            text::set_locale_fonts(language.locale,language.fallback,language.text_fonts,language.title_font);
+            added.push_back(std::move(language));
+        } catch(const std::exception& error) {
+            found.problems.push_back(language.package+" dialogue/"+language.locale+"/: "+error.what());
+            found.layers.erase(language.locale);
+        }
+    }
+    found.languages=std::move(added);
+    mod_languages::set(std::move(found));
+    if(const char* wanted=std::getenv("SRW64_LOCALE"))
+        if(const auto catalog=localization::find(wanted);catalog && localization::style(wanted)!=wanted)localization::activate(catalog);
+}
 void configure(const std::filesystem::path& directory) {
     const auto* document=dialogue_data::document();if(!document)return;
     const json& data=*document;
     localization::initialize(data,dialogue_data::tables());
+    register_languages();
     base_catalogs=localization::registered();
     for(const auto& [locale,catalog]:localization::registered()) {
         localization::Scope scope(catalog);typeset(u"Aa 日本語 简体中文",13);
@@ -713,7 +770,7 @@ void configure(const std::filesystem::path& directory) {
             if(name.starts_with(intro))page_texts[name.substr(intro.size())]=*table;
         prepared_pages=page_texts;
     }
-    if(!dialogue_data::tables() || text_update::layer()) {
+    if(!dialogue_data::tables() || text_update::layer() || !mod_languages::layers_empty()) {
         const auto [entries,problems]=load_text();
         localization::activate(localization::find(localization::snapshot()->locale));
         if(problems)announce_text(entries,problems);

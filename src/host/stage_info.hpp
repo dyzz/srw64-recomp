@@ -8,6 +8,7 @@
 // tested without a game (tests/native_stage_info.cpp). stage_info.cpp fills the State
 // from RDRAM on the game thread and hands the window thread a snapshot.
 #include "json/json.hpp"
+#include "localization/locale_fallbacks.hpp"
 #include <algorithm>
 #include <array>
 #include <cstdint>
@@ -152,15 +153,16 @@ uint64_t want(bool on);
 // content/stages/scene-NNN.json, or in a custom campaign the one its stage carries.
 // Null when the stage has none. Window thread.
 json meta(int scene);
-// A metadata text, {locale: text} or a plain string, in LOCALE (zh-Hant falls back to
-// zh-Hans): else Japanese, English, then whichever it has.
+// A metadata text, {locale: text} or a plain string, in LOCALE by localization::fallbacks
+// (a package's language, then its fallback; zh-Hant then zh-Hans; Japanese), else English,
+// then whichever it has.
 inline std::string text(const json& value,const std::string& locale) {
-    if(value.is_string())return value.get<std::string>();
-    if(!value.is_object())return {};
-    for(const auto& key:{locale,std::string(locale=="zh-Hant"?"zh-Hans":"ja"),std::string("ja"),std::string("en")})
-        if(value.contains(key) && value.at(key).is_string())return value.at(key).get<std::string>();
-    for(const auto& [key,v]:value.items())if(v.is_string())return v.get<std::string>();
-    return {};
+    if(value.is_object() && !value.contains("ja") && value.contains("en") && value.at("en").is_string()) {
+        for(const auto& key:localization::fallbacks(locale))
+            if(value.contains(key) && value.at(key).is_string())return value.at(key).get<std::string>();
+        return value.at("en").get<std::string>();
+    }
+    return localization::pick(value,locale);
 }
 // Game thread, each time the game reads the controller.
 void sample(const uint8_t* ram);

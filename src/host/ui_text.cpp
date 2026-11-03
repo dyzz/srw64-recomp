@@ -125,7 +125,7 @@ Style label_style(const std::string& locale, double max_width, bool single) {
     s.bold = false; s.center = false;
     // One size per language: over the room a label has it is squeezed first, and only
     // then a little smaller.
-    s.size = locale == "en" ? 12 : 12.5; s.min_size = s.size - 1.5; s.pitch = kLine / s.size;
+    s.size = localization::style(locale) == "en" ? 12 : 12.5; s.min_size = s.size - 1.5; s.pitch = kLine / s.size;
     s.max_width = max_width;
     s.condense_min = .7;
     s.origin = single ? Style::Origin::center : Style::Origin::left;
@@ -452,7 +452,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 style.pitch = kLine / style.size;
                 style.width = 0;
                 body_x = float(body.x + lead + inset);
-                shown_text += (locale == "en" ? " " : "") + (next->text.empty() ? next->drawn : next->text);
+                shown_text += (localization::style(locale) == "en" ? " " : "") + (next->text.empty() ? next->drawn : next->text);
                 style.max_width = std::max(end - trailing_blank(next->drawn), after) - body.x - lead - inset;
                 next->consumed = true;
             }
@@ -518,7 +518,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         for (size_t c = 0; c < l.text.size();) {
             if (l.text[c] == ' ' && c + 1 < l.text.size() && l.text[c + 1] == ' ') {
                 while (c < l.text.size() && l.text[c] == ' ') ++c;
-                if (used < fills.size()) out += locale == "en" ? " " + fills[used++] + " " : fills[used++];
+                if (used < fills.size()) out += localization::style(locale) == "en" ? " " + fills[used++] + " " : fills[used++];
                 else out += ' ';
                 continue;
             }
@@ -600,7 +600,7 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 const std::string first = composed[i].empty() ? a.text : composed[i];
                 const std::string second = composed[j].empty() ? (b.text.empty() ? b.drawn : b.text) : composed[j];
                 // No space before the punctuation a continuation may start with (": enter a name").
-                const bool spaced = locale == "en" && !second.empty() && std::string(":;,.!?)").find(second[0]) == std::string::npos;
+                const bool spaced = localization::style(locale) == "en" && !second.empty() && std::string(":;,.!?)").find(second[0]) == std::string::npos;
                 composed[i] = first + (spaced ? " " : "") + second;
                 run[i] = pb.front().x + pb.front().width - pa.front().x - trailing_blank(b.drawn) + 1;
                 a.translated = true; b.consumed = true; joined = true;
@@ -926,7 +926,7 @@ bool miss_drawn(uint8_t* ram, const std::vector<uint32_t>& rects) {
     const auto& catalog = localization::catalog();
     Style style = number_style(true);
     style.pitch = 1;
-    if (catalog.locale != "en") { style.size = 11; style.min_size = 11; }
+    if (localization::style(catalog.locale) != "en") { style.size = 11; style.min_size = 11; }
     const float white[3] = {1, 1, 1};
     // The word is wider than the cells: room around them for the drawing.
     bounds[0] -= 16; bounds[2] += 16; bounds[1] -= 4; bounds[3] += 4;

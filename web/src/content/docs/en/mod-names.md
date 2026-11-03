@@ -43,7 +43,7 @@ Any of them alone is fine.
 }
 ```
 
-Every entry is written per language: `zh-Hans` (Simplified Chinese), `zh-Hant` (Traditional Chinese; the Simplified one when missing), `en`, `ja`. A language you leave out shows the usual name. When several packages rename the same thing, the one higher in the MOD list wins.
+Every entry is written per language: `zh-Hans` (Simplified Chinese), `zh-Hant` (Traditional Chinese; the Simplified one when missing), `en`, `ja`, and the languages of installed [language packages](../mod-language/). A language you leave out shows the usual name. When several packages rename the same thing, the one higher in the MOD list wins.
 
 ### Original protagonists, partners and unit (heroes, unit)
 
