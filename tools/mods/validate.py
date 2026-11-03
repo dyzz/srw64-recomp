@@ -297,7 +297,9 @@ def contents_of(entries: list[Entry]) -> list[str]:
 
 
 NAMES_SCHEMA = "srw64.mod-names.v1"
-NAME_LOCALES = ("en", "ja", "zh-Hans", "zh-Hant")
+NAME_LOCALES = ("en", "ja", "zh-Hans", "zh-Hant", "ko")
+# The ones a package's language may stand on: Korean stands on English itself (docs/design/korean.md).
+FALLBACKS = ("en", "ja", "zh-Hans", "zh-Hant")
 NAME_ROUTES = ("real-male", "real-female", "super-male", "super-female")
 
 
@@ -718,7 +720,7 @@ def language_problem(data, folder: str, names: dict[str, "Entry"]) -> str:
     name = data.get("name")
     if not isinstance(name, str) or not 1 <= len(name) <= 24:
         return "name 要有 1–24 个字"
-    if "fallback" in data and data["fallback"] not in NAME_LOCALES:
+    if "fallback" in data and data["fallback"] not in FALLBACKS:
         return "fallback 要是 ja、zh-Hans、zh-Hant、en 之一"
     fonts = data.get("fonts", {})
     if not isinstance(fonts, dict):
@@ -780,7 +782,9 @@ def languages_of(entries: list["Entry"]) -> tuple[list[Problem], list[str]]:
     for folder in folders:
         where = f"dialogue/{folder}/"
         declared = names.get(where + "language.json")
-        if folder in NAME_LOCALES:
+        # Korean was a package's language in 0.5.3 (the demo package declares it); since it is
+        # ours the game leaves the declaration unread and lays the files over ours.
+        if folder in NAME_LOCALES and not (folder == "ko" and declared):
             if declared:
                 problems.append(Problem("language", where + "language.json：内置语言不用声明"))
         elif not declared:

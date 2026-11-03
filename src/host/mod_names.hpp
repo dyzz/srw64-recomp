@@ -278,8 +278,8 @@ inline std::optional<std::string> record(const std::string& locale,uint16_t id) 
     {std::lock_guard lock(s.records_mutex);texts=s.records;}
     const auto found=texts->find(id);
     if(found==texts->end())return std::nullopt;
-    for(const auto& l:{locale,locale=="zh-Hant"?std::string("zh-Hans"):std::string()}) {
-        if(l.empty())continue;
+    for(const auto& l:localization::fallbacks(locale)) {
+        if(l=="ja" && locale!="ja")break;
         if(const auto t=found->second.find(l);t!=found->second.end())return t->second;
     }
     return std::nullopt;

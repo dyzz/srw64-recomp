@@ -27,7 +27,7 @@ IMAGE_SCHEMA = "srw64.story-image.v1"
 TEXT = 0xFFFE                  # a line's place in the words until the host numbers it
 SIDES = {"player": 1, "enemy": 2, "third": 3, "any": 4}
 LONGEST = 200                  # code points a line may have
-LOCALES = {"ja", "zh-Hans", "zh-Hant", "en"}
+LOCALES = {"ja", "zh-Hans", "zh-Hant", "en", "ko"}
 
 
 class StoryError(ValueError):

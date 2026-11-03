@@ -87,11 +87,12 @@ public:
     }
     void set_mod_names(ModNames names){auto value=std::make_shared<const ModNames>(std::move(names));std::lock_guard lock(shared.mutex);shared.names=std::move(value);}
     std::shared_ptr<const ModNames> mod_names() const {return shared.get();}
-    // A package's name for this row; Traditional Chinese falls back to the Simplified one.
+    // A package's name for this row by the locale's fallbacks short of Japanese (Traditional
+    // Chinese the Simplified one, Korean the English one).
     std::optional<std::string> mod_text(const DefaultName& row,const std::string& locale) const {
         const auto names=shared.get();
-        for(const auto& l:{locale,locale=="zh-Hant"?std::string("zh-Hans"):std::string()}) {
-            if(l.empty())continue;
+        for(const auto& l:localization::fallbacks(locale)) {
+            if(l=="ja" && locale!="ja")break;
             if(const auto found=names->find({row.field,row.person,l});found!=names->end())return found->second;
         }
         return std::nullopt;

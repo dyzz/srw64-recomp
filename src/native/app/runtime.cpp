@@ -255,7 +255,7 @@ std::string first_language(const std::vector<std::string>& preferred) {
             if(has("hant") || has("tw") || has("hk") || has("mo"))return "zh-Hant";
             return "zh-Hans";
         }
-        if(language=="ja" || language=="en")return language;
+        if(language=="ja" || language=="en" || language=="ko")return language;
     }
     return "en";
 }
@@ -274,6 +274,7 @@ std::string steam_language(std::string_view registry) {
         if(name=="tchinese")return "zh-Hant";
         if(name=="japanese")return "ja";
         if(name=="english")return "en";
+        if(name=="koreana")return "ko";
         return name;
     }
     return {};

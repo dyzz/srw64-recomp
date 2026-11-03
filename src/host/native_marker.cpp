@@ -131,9 +131,9 @@ std::vector<std::unique_ptr<Model>> models;
 
 // Plates follow the reading language (F7); the locale is fixed per workload when the
 // display list is classified, so both render targets of a frame agree. The model pack has
-// no Traditional Chinese plates: zh-Hant shows the Simplified ones. Slots 3-7 are language
-// packages' (docs/design/mod-language-packs.md), each with its own plates where the package
-// gives them (art/<locale>/plates/<resource>.png) and its fallback's elsewhere.
+// no Traditional Chinese plates: zh-Hant shows the Simplified ones. Slot 3 is Korean's and
+// 4-7 language packages' (docs/design/mod-language-packs.md), each with its own plates where a
+// package gives them (art/<locale>/plates/<resource>.png) and its fallback's elsewhere.
 constexpr uint32_t kPlateIdBase = 0x504C0000;  // 'PL'; bits 4+ model, 1-3 slot, 0 suppressed
 constexpr std::array<const char *, 3> kPlateLocales{"ja", "zh-Hans", "en"};
 constexpr size_t kPlateSlots = 8;
@@ -1077,8 +1077,12 @@ std::thread pack_loader;
 void configure_now(const std::filesystem::path& directory, const std::filesystem::path& marker_pack, const std::filesystem::path& models_pack) {
     output = directory;
 #ifdef SRW64_NATIVE_DIALOGUE
-    // The language packages, registered before the graphics start (native_dialogue.cpp).
+    // Korean, ours on English (docs/design/korean.md), then the language packages, registered
+    // before the graphics start (native_dialogue.cpp).
     size_t slot = kPlateLocales.size();
+    plateSlotLocales[slot] = "ko";
+    plateSlotFallback[slot] = built_in_plate("en");
+    ++slot;
     for (const auto& language : srw64::mod_languages::languages()) {
         if (slot == kPlateSlots) break;
         plateSlotLocales[slot] = language.locale;

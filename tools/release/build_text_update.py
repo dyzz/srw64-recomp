@@ -116,12 +116,14 @@ def text_files(revision: str) -> dict[str, bytes]:
         parts = path.split("/")
         if len(parts) >= 4 and parts[2] in profile["locales"] and path.endswith(".txt"):
             files["dialogue/" + "/".join(parts[2:])] = show(revision, path)
-    ja = json.loads(show(revision, profile["locales"]["ja"]))
-    for locale, source in profile["locales"].items():
-        catalog = json.loads(show(revision, source))
-        # The labels as the game sees them: Japanese under the locale's own.
+    catalogs = {locale: json.loads(show(revision, source)) for locale, source in profile["locales"].items()}
+    ja = catalogs["ja"]
+    for locale, catalog in catalogs.items():
+        # The labels as the game sees them: Japanese under the locale's own, and for Korean
+        # English's between (docs/design/korean.md).
+        below = catalogs[catalog["fallback"]]["ui"] if "fallback" in catalog else {}
         slim = {"entries": dict(sorted((row["key"], row["target"]) for row in catalog["entries"])),
-                "ui": dict(sorted({**ja["ui"], **catalog["ui"]}.items()))}
+                "ui": dict(sorted({**ja["ui"], **below, **catalog["ui"]}.items()))}
         files[f"locales/{locale}.json"] = (json.dumps(slim, ensure_ascii=False, indent=1) + "\n").encode()
     try:
         files["library-names.json"] = show(revision, LIBRARY)

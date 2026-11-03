@@ -19,9 +19,18 @@ struct PackageFonts {std::string fallback;std::vector<std::filesystem::path> tex
 std::mutex package_mutex;
 std::map<std::string,PackageFonts> package_fonts;
 std::optional<PackageFonts> package(const std::string& locale) {
-    std::lock_guard lock(package_mutex);
-    const auto found=package_fonts.find(locale);
-    return found==package_fonts.end()?std::nullopt:std::optional<PackageFonts>(found->second);
+    {
+        std::lock_guard lock(package_mutex);
+        const auto found=package_fonts.find(locale);
+        if(found!=package_fonts.end())return found->second;
+    }
+    // Korean, ours (docs/design/korean.md), as a package's language would have it: Droid Sans
+    // Fallback (Apache-2.0, content/fonts) in front of the English faces.
+    const char* dir=std::getenv("SRW64_FONT_DIR");
+    if(locale!="ko" || std::getenv("SRW64_TEXT_FONT") || !dir || !*dir)return std::nullopt;
+    const auto path=utf8_path(dir)/"DroidSansFallback.ttf";
+    if(!std::filesystem::is_regular_file(path))throw std::runtime_error("Missing font "+path.string()+": run tools/content/prepare_fonts.py");
+    return PackageFonts{"en",{path},{}};
 }
 std::vector<FontSource> packaged(const std::filesystem::path& dir,const std::string& locale,int weight) {
     std::vector<std::string> names;
@@ -87,8 +96,9 @@ std::vector<FontSource> game_font_sources(const std::string& locale,int weight) 
         for(auto& source:game_font_sources(fonts->fallback,weight))sources.push_back(std::move(source));
         return sources;
     }
+    if(locale=="ko")return game_font_sources("en",weight);  // the system-font path: the CJK face has Hangul
     if(locale!="zh-Hans" && locale!="zh-Hant" && locale!="ja" && locale!="en")
-        throw std::runtime_error("Game text supports zh-Hans, zh-Hant, ja and en only");
+        throw std::runtime_error("Game text supports zh-Hans, zh-Hant, ja, en and ko only");
     const char* dir=std::getenv("SRW64_FONT_DIR");
     if(!std::getenv("SRW64_TEXT_FONT") && dir && *dir)return packaged(utf8_path(dir),locale,weight);
     // Unit tests and older probes without packaged fonts: one CJK face, one weight.

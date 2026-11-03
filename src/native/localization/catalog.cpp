@@ -182,7 +182,16 @@ void initialize(const nlohmann::json& data,const string_tables::Tables* tables) 
         catalogs=std::move(next);locale_order=std::move(order);locale_names=std::move(names);
         auto& packages=package_locales();
         std::lock_guard packages_lock(packages.mutex);
-        packages.fallback.clear();
+        packages.fallback.clear();packages.built_in.clear();
+        // Ours that stand on another (Korean on English): typeset as that one.
+        if(data.contains("locale_catalogs"))
+            for(const auto& [locale,row]:data.at("locale_catalogs").items())
+                if(const auto& config=row.at("config");config.contains("fallback")) {
+                    const auto fallback=config.at("fallback").get<std::string>();
+                    if(fallback==locale || !catalogs.contains(fallback) || data.at("locale_catalogs").at(fallback).at("config").contains("fallback"))
+                        throw std::runtime_error("Invalid locale fallback: "+locale);
+                    packages.fallback[locale]=fallback;packages.built_in.insert(locale);
+                }
     }
     activate(find(selected));
 }

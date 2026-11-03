@@ -173,6 +173,22 @@ PAD_HINT_KEYS = {"settings_open", "controls", "history_controls", "select_keyboa
 UI_KEYS |= {key + "_pad" for key in PAD_HINT_KEYS}
 
 
+def layered_locale(documents: dict[str, dict], locale: str) -> dict:
+    """A locale's document as the importers compile it. One with a "fallback" (Korean on
+    English, docs/design/korean.md) starts from that locale's labels and records, so what
+    it leaves out reads as the fallback, not as Japanese."""
+    document = documents[locale]
+    fallback = document.get("fallback")
+    if fallback is None:
+        return document
+    if fallback == locale or fallback not in documents or "fallback" in documents[fallback]:
+        raise ValueError(f"{locale}: fallback {fallback!r} is not a registered locale of its own")
+    base = documents[fallback]
+    own = {entry["key"] for entry in document["entries"]}
+    entries = [entry for entry in base["entries"] if entry["key"] not in own] + document["entries"]
+    return {**document, "ui": {**base["ui"], **document["ui"]}, "entries": entries}
+
+
 def load_profile(path: Path, *, locale: str | None = None, images: str | None = None) -> dict:
     profile = json.loads(path.read_text())
     if profile.get("schema") != "srw64.play-profile.v1" or profile.get("baseline") != "srw64-jp-rev0":
@@ -199,9 +215,9 @@ def prepare_profile(root: Path, profile: dict, rom: Path, output: Path) -> dict:
     sources, hashes, glyphs = source_catalog(root, rom)
     p = profile["presentation"]
     locale_path = inside(root, profile["locales"][p["locale"]])
-    ja_path = inside(root, profile["locales"]["ja"])
-    language = json.loads(locale_path.read_text())
-    japanese = json.loads(ja_path.read_text())
+    documents = {locale: json.loads(inside(root, relative).read_text()) for locale, relative in profile["locales"].items()}
+    language = layered_locale(documents, p["locale"])
+    japanese = documents["ja"]
     if language["locale"] != p["locale"] or japanese["locale"] != "ja":
         raise ValueError("Locale registry identity mismatch")
     entries = compile_locale(language, sources, hashes)
@@ -209,8 +225,8 @@ def prepare_profile(root: Path, profile: dict, rom: Path, output: Path) -> dict:
     coverage = {}
     locale_options = []
     locale_catalogs = {}
-    for locale, relative in profile["locales"].items():
-        document = json.loads(inside(root, relative).read_text())
+    for locale in profile["locales"]:
+        document = layered_locale(documents, locale)
         if document["locale"] != locale:
             raise ValueError("Locale registry identity mismatch")
         compiled = entries if locale == p["locale"] else compile_locale(document, sources, hashes)
@@ -218,8 +234,8 @@ def prepare_profile(root: Path, profile: dict, rom: Path, output: Path) -> dict:
         if set(labels) != UI_KEYS or any(not isinstance(value, str) or not value for value in labels.values()):
             raise ValueError("Missing or invalid native UI strings")
         locale_catalogs[locale] = {"config": {"font": document["font"], "locale": locale,
-            "font_size": p["font_size"], "mode": "replace"}, "entries": compiled, "ui": labels,
-            "catalog_sha256": sha(inside(root, relative).read_bytes())}
+            "font_size": p["font_size"], "mode": "replace", **({"fallback": document["fallback"]} if "fallback" in document else {})},
+            "entries": compiled, "ui": labels, "catalog_sha256": sha(inside(root, profile["locales"][locale]).read_bytes())}
         coverage[locale] = locale_coverage(document, sources, compiled, UI_KEYS)
         locale_options.append({"locale": locale, "label": document.get("display_name", locale),
                                "translated": len(compiled), "source": len(sources),

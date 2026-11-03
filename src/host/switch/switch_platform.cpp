@@ -236,6 +236,7 @@ std::string boot_language() {
     if (locale.rfind("zh-Hant", 0) == 0 || locale.rfind("zh-TW", 0) == 0) return "zh-Hant";
     if (locale.rfind("zh", 0) == 0) return "zh-Hans";
     if (locale.rfind("ja", 0) == 0) return "ja";
+    if (locale.rfind("ko", 0) == 0) return "ko";
     return "en";
 }
 // One premultiplied-alpha "over" of a straight RGBA pixel (bytes R, G, B, A) onto an opaque one.

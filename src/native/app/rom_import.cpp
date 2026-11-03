@@ -86,9 +86,18 @@ json compile_text(Bytes rom,const json& spec) {
         }
         catalogs[id]={{"config",{{"font",locale.at("font")},{"locale",id},{"font_size",font_size},{"mode","replace"}}},
                       {"entries",entries},{"ui",locale.at("ui")},{"catalog_sha256",locale.at("catalog_sha256")}};
+        // A locale standing on another (Korean on English, docs/design/korean.md): the spec
+        // has its fallback's labels and records in it already; the host typesets it so.
+        if(locale.contains("fallback"))catalogs[id]["config"]["fallback"]=locale.at("fallback").get<std::string>();
         options.push_back({{"locale",id},{"label",locale.value("display_name",id)},{"translated",entries.size()},
                            {"source",records.size()},{"reviewed",reviewed}});
     }
+    for(const auto& [id,catalog]:catalogs.items())
+        if(const auto& config=catalog.at("config");config.contains("fallback")) {
+            const auto fallback=config.at("fallback").get<std::string>();
+            if(fallback==id || !catalogs.contains(fallback) || catalogs.at(fallback).at("config").contains("fallback"))
+                throw std::runtime_error("Invalid locale fallback: "+id);
+        }
     const auto selected=spec.at("locale").get<std::string>();
     if(!catalogs.contains("ja") || !catalogs.contains(selected))throw std::runtime_error("Japanese fallback or selected locale missing");
     json data=catalogs.at(selected);

@@ -401,20 +401,28 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
     // A text update (text_update.hpp) lies between the shipped text and the player's;
     // language packages' layers (mod_languages.hpp) between the update and the player's.
     const auto update=text_update::layer();
-    // The built-in languages first: a package's language starts from its fallback's text,
-    // dialogue files and pages included.
+    // The languages that stand on no other first: a package's language starts from its
+    // fallback's text, dialogue files and pages included; ours that stand on another (Korean
+    // on English, docs/design/korean.md) from its shipped catalog, which has the fallback's
+    // labels and records, and the fallback's dialogue files under its own.
     std::vector<std::string> order;
-    for(const bool package:{false,true})
-        for(const auto& [locale,shipped]:base_catalogs)if((localization::style(locale)!=locale)==package)order.push_back(locale);
+    for(const bool stands:{false,true})
+        for(const auto& [locale,shipped]:base_catalogs)if((localization::style(locale)!=locale)==stands)order.push_back(locale);
+    const auto files=[&](const std::string& locale)->std::vector<std::filesystem::path> {
+        return {text_bundled.empty()?text_bundled:text_bundled/locale,update?update->dialogue(locale):std::filesystem::path()};
+    };
     for(const auto& locale:order) {
         const auto& shipped=base_catalogs.at(locale);
         const auto fallback=localization::style(locale);
-        const bool package=fallback!=locale;
+        const bool package=localization::is_package(locale);
         localization::Snapshot base=package?next.at(fallback)->as_locale(locale):update?update->apply(shipped):shipped;
-        if(package)pages[locale]=pages[fallback];
+        if(fallback!=locale)pages[locale]=pages[fallback];
         const auto layers=mod_languages::layers(locale);
         std::vector<std::filesystem::path> roots;
-        if(!package)roots={text_bundled.empty()?text_bundled:text_bundled/locale,update?update->dialogue(locale):std::filesystem::path()};
+        if(!package) {
+            if(fallback!=locale)roots=files(fallback);
+            for(auto& root:files(locale))roots.push_back(std::move(root));
+        }
         for(const auto& layer:layers) {
             // Labels only where ours has the label and the same {marks}, as a text update's.
             localization::Catalog::Table labels;
@@ -754,7 +762,7 @@ void register_languages() {
     found.languages=std::move(added);
     mod_languages::set(std::move(found));
     if(const char* wanted=std::getenv("SRW64_LOCALE"))
-        if(const auto catalog=localization::find(wanted);catalog && localization::style(wanted)!=wanted)localization::activate(catalog);
+        if(const auto catalog=localization::find(wanted);catalog && localization::is_package(wanted))localization::activate(catalog);
 }
 void configure(const std::filesystem::path& directory) {
     const auto* document=dialogue_data::document();if(!document)return;

@@ -20,7 +20,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-BUILT_IN = ("ja", "zh-Hans", "zh-Hant", "en")
+BUILT_IN = ("ja", "zh-Hans", "zh-Hant", "en", "ko")
+FALLBACKS = ("ja", "zh-Hans", "zh-Hant", "en")
 LOCALE_TAG = re.compile(r"[a-z]{2,3}(-[A-Za-z0-9]{2,8})*")
 
 
@@ -32,7 +33,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--locale", required=True, help="the new language's code: ko, fr, pt-BR …")
     parser.add_argument("--name", required=True, help="its name in the language menu, in that language")
-    parser.add_argument("--fallback", default="en", choices=BUILT_IN, help="shown where the package has no text (default en)")
+    parser.add_argument("--fallback", default="en", choices=FALLBACKS, help="shown where the package has no text (default en)")
     parser.add_argument("--id", help="the package id (default: lang.<locale>)")
     parser.add_argument("--records", type=Path, default=ROOT / "assets/text-export/records.jsonl",
                         help="the ROM's text export, for the Japanese beside each record (optional)")

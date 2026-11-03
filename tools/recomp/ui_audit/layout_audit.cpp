@@ -335,9 +335,16 @@ int main(int argc,char** argv){try{
     // The catalogs as the host registers them; the pages only read their UI labels.
     json data={{"schema","srw64.native-dialogue-data.v2"},{"config",{{"locale","zh-Hans"},{"font","-"}}},{"entries",json::object()},
         {"source_entries",json::object()},{"ui",json::object()},{"locale_catalogs",json::object()},{"locale_options",json::array()}};
-    for(const auto* locale:{"ja","zh-Hans","zh-Hant","en"}) {
+    for(const auto* locale:{"ja","zh-Hans","zh-Hant","en","ko"}) {
         const auto doc=load(locales/(std::string(locale)+".json"));
-        data["locale_catalogs"][locale]={{"config",{{"locale",locale},{"font","-"}}},{"ui",doc.at("ui")}};
+        json config={{"locale",locale},{"font","-"}},ui=doc.at("ui");
+        // Korean stands on English (docs/design/korean.md): its labels over English's.
+        if(doc.contains("fallback")) {
+            const auto fallback=doc.at("fallback").get<std::string>();
+            config["fallback"]=fallback;
+            ui=data["locale_catalogs"].at(fallback).at("ui");ui.update(doc.at("ui"));
+        }
+        data["locale_catalogs"][locale]={{"config",config},{"ui",ui}};
         data["locale_options"].push_back({{"locale",locale},{"label",doc.value("display_name",locale)}});
     }
     srw64::localization::initialize(data);

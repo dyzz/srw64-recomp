@@ -26,7 +26,9 @@ using json=nlohmann::json;
 
 inline constexpr const char* language_schema="srw64.language.v1";
 inline constexpr const char* terms_schema="srw64.language-terms.v1";
-inline constexpr const char* built_in[]={"ja","zh-Hans","zh-Hant","en"};
+inline constexpr const char* built_in[]={"ja","zh-Hans","zh-Hant","en","ko"};
+// The ones a package's language may stand on: Korean stands on English itself (docs/design/korean.md).
+inline constexpr const char* fallbacks[]={"ja","zh-Hans","zh-Hant","en"};
 inline constexpr size_t most_languages=16, longest_name=24;
 inline constexpr uintmax_t largest_font=uintmax_t(32)<<20, largest_terms=uintmax_t(16)<<20;
 // Records before this one are the term tables' (names, labels, messages); the rest is dialogue.
@@ -102,7 +104,8 @@ inline std::string parse_language(const json& data,const fs::path& folder,Langua
     out.name=data["name"].get<std::string>();
     if(out.name.empty() || code_points(out.name)>longest_name)return "name 要有 1–24 个字";
     if(data.contains("fallback")) {
-        if(!data["fallback"].is_string() || !is_built_in(data["fallback"].get<std::string>()))return "fallback 要是 ja、zh-Hans、zh-Hant、en 之一";
+        if(!data["fallback"].is_string() || std::find(std::begin(fallbacks),std::end(fallbacks),data["fallback"].get<std::string>())==std::end(fallbacks))
+            return "fallback 要是 ja、zh-Hans、zh-Hant、en 之一";
         out.fallback=data["fallback"].get<std::string>();
     }
     if(data.contains("fonts")) {
@@ -182,8 +185,10 @@ inline Found collect(const std::vector<mods::Package>& packages,const localizati
             const auto where=p.id()+" dialogue/"+locale+"/";
             const auto declaration=folder/"language.json";
             const bool new_language=fs::is_regular_file(declaration,error);
+            // A declaration of one of ours is left unread (the Korean demo package of 0.5.3
+            // declared ko before it was ours): its files lie over ours as any package's do.
             if(is_built_in(locale)) {
-                if(new_language){found.problems.push_back(where+"language.json：内置语言不用声明");continue;}
+                if(new_language && locale!="ko"){found.problems.push_back(where+"language.json：内置语言不用声明");continue;}
             } else if(!new_language) {
                 found.problems.push_back(where+"：不是内置语言，要有 language.json");continue;
             } else {

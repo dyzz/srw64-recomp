@@ -12,7 +12,8 @@
     "ja": "content/locales/ja.json",
     "zh-Hans": "content/locales/zh-Hans.json",
     "zh-Hant": "content/locales/zh-Hant.json",
-    "en": "content/locales/en.json"
+    "en": "content/locales/en.json",
+    "ko": "content/locales/ko.json"
   },
   "art_pack": "content/art/stage1-hd.json",
   "gameplay_mods": []

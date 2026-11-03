@@ -1,9 +1,11 @@
 #pragma once
 // Which built-in language a language package's locale stands on (docs/design/mod-language-packs.md),
-// for the readers of per-language texts that know no catalog (campaign_library.hpp and the
-// like, tested without one). catalog.cpp's add_locale() fills it in.
+// or a built-in one that stands on another (Korean on English, docs/design/korean.md), for the
+// readers of per-language texts that know no catalog (campaign_library.hpp and the like, tested
+// without one). catalog.cpp's initialize() and add_locale() fill it in.
 #include <map>
 #include <mutex>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -11,6 +13,7 @@ namespace srw64::localization {
 struct PackageLocales {
     std::mutex mutex;
     std::map<std::string,std::string> fallback;   // a package's locale -> its built-in fallback
+    std::set<std::string> built_in;               // the locales in `fallback` that are ours
 };
 inline PackageLocales& package_locales(){static PackageLocales value;return value;}
 // The built-in locale whose typesetting a locale follows: itself, or a package's fallback.
@@ -19,6 +22,12 @@ inline std::string style(const std::string& locale) {
     std::lock_guard lock(p.mutex);
     const auto found=p.fallback.find(locale);
     return found==p.fallback.end()?locale:found->second;
+}
+// A language package's locale: one that stands on a fallback and is not ours.
+inline bool is_package(const std::string& locale) {
+    auto& p=package_locales();
+    std::lock_guard lock(p.mutex);
+    return p.fallback.contains(locale) && !p.built_in.contains(locale);
 }
 // Where a text written per language is looked for, in order, ending with ja: zh-Hant then
 // zh-Hans; a package's locale then its fallback's chain.

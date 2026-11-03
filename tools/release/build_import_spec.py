@@ -16,7 +16,7 @@ def build_spec(root: Path) -> dict:
     sys.path.insert(0, str(root / "src"))
     from srw64_rom.baseline import load_baseline
     from srw64_rom.glyphs import load_glyph_map
-    from srw64_native.profile import UI_KEYS, load_profile
+    from srw64_native.profile import UI_KEYS, layered_locale, load_profile
     from srw64_native.catalog import signature
     baseline = load_baseline(root / "config/srw64-jp-rev0.json")
     profile = load_profile(root / "config/recomp/profiles/play-profile.json", images="original")
@@ -31,10 +31,12 @@ def build_spec(root: Path) -> dict:
             raise ValueError("Locale source escapes repository")
         raw = path.read_bytes()
         return json.loads(raw), hashlib.sha256(raw).hexdigest()
-    japanese, _ = source(profile["locales"]["ja"])
+    sources = {locale: source(relative) for locale, relative in profile["locales"].items()}
+    documents = {locale: document for locale, (document, _) in sources.items()}
+    japanese = documents["ja"]
     locales = []
-    for locale, relative in profile["locales"].items():
-        document, digest = source(relative)
+    for locale, (_, digest) in sources.items():
+        document = layered_locale(documents, locale)
         if document["locale"] != locale or document["schema"] != "srw64.locale.v1" or document["source_locale"] != "ja":
             raise ValueError("Invalid locale registry")
         ui = {**japanese["ui"], **document["ui"]}
@@ -52,7 +54,8 @@ def build_spec(root: Path) -> dict:
             entries.append({name: entry[name] for name in ("key", "source_sha256", "target", "review_status") if name in entry})
         locales.append({"schema": "srw64.locale.v1", "source_locale": "ja", "locale": locale,
                         "display_name": document.get("display_name", locale), "font": document["font"],
-                        "catalog_sha256": digest, "entries": entries, "ui": ui})
+                        "catalog_sha256": digest, "entries": entries, "ui": ui,
+                        **({"fallback": document["fallback"]} if "fallback" in document else {})})
     p = profile["presentation"]
     return {"schema": "srw64.native-import-spec.v1", "baseline": "srw64-jp-rev0",
             "rom_sha256": baseline.rom["sha256"], "rom_size": baseline.rom["size"],
