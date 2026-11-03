@@ -290,11 +290,11 @@ std::vector<uint8_t> recolor_pixels(const RecolorMap& map, const std::vector<uin
     }
     for (size_t p = 0; p + 3 < pixels.size(); p += 4) {
         if (!pixels[p + 3]) continue;
-        const auto& near = map.nearest[p / 4];
+        const auto& closest = map.nearest[p / 4];
         const float c[3] = {float(pixels[p]), float(pixels[p + 1]), float(pixels[p + 2])};
         float out[3]{}, total = 0;
-        for (size_t n = 0; n < kNearest && near[n] != 255; ++n) {
-            const size_t i = near[n];
+        for (size_t n = 0; n < kNearest && closest[n] != 255; ++n) {
+            const size_t i = closest[n];
             const float d0 = c[0] - src[i][0], d1 = c[1] - src[i][1], d2 = c[2] - src[i][2];
             const float w = 1.f / (d0 * d0 + d1 * d1 + d2 * d2 + 25.f);
             total += w;
