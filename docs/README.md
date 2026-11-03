@@ -43,6 +43,7 @@
 | [界面排版离线审计](guide/ui-layout-audit.md) | 用录下的页面状态在无游戏的小窗口里排版共用界面、截图、报告溢出；首次审计修掉的问题 |
 | [Windows/Linux 便携数据](guide/desktop-portable.md) | 游戏目录优先、系统用户目录导入与退出同步、覆盖确认及备份、测试边界 |
 | [发布构建](guide/release.md) | 从一个提交构建应用与单独的 HD 包、HD 包的安装与声明、手动发布 |
+| [HD 包各版更新内容](guide/hd-releases.md) | 每版 HD 包相对上一版改了什么（逐包比对的数字）、要配的程序版本、发布说明要补的图片来源 |
 | [Linux 与 Steam Deck 构建](guide/linux-build.md) | 在 Mac 上用 Docker 构建 Linux x64 包、随包依赖与链接检查、Deck 安装、与 macOS 的差别和验证记录 |
 | [台词文本文件](guide/dialogue-text.md) | 剧情、选择肢与战斗台词的纯文本格式、附带文件与用户目录覆盖、F5 重新载入与错误报告 |
 | [音乐与战斗语音 MOD](guide/audio-mods/README.md) | 给 MOD 作者（及其 AI）的格式说明，附 49 首歌、人物、机体、11548 句战斗台词的 CSV 对应表 |
