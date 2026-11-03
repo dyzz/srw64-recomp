@@ -2,7 +2,7 @@
 title: 语言包 MOD
 summary: 给游戏加一种新的阅读语言（韩文、法文……），或者换掉现有语言的界面文字、名称和台词。没译到的地方显示你指定的退回语言。
 section: mods
-order: 6
+order: 7
 updated: 2026-11-03
 ---
 
@@ -65,6 +65,10 @@ python3 tools/mods/pack.py korean-source -o build/mods
 **5. 安装、选语言**
 
 像别的 MOD 一样安装（电脑上拖进游戏窗口，安卓上放进 `Documents/Marchwind64/mods` 或在 MOD 页面「从文件安装」），**重启游戏**，然后在设置的语言菜单里选它，或者按语言切换键（F7）。选好的语言会记住，下次启动直接是它。
+
+**边改边看**：把正在改的台词文件放进用户目录的 `dialogue/ko/`，它会盖在包上面；在游戏里按 **F5** 重新读取，当前这句马上按新文本显示，改好了再抄回包里。战斗台词用标题画面的「战斗鉴赏」看最快，不用玩到那一关。
+
+仓库的 [`docs/guide/language-mods/`](https://github.com/dyzz/srw64-recomp/tree/main/docs/guide/language-mods) 文件夹里有翻译流程、规则清单和韩文演示包用的专名表，可以整个交给 AI 助手，让它照着翻。
 
 ## language.json
 

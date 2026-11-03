@@ -2,7 +2,7 @@
 title: Language package MODs
 summary: Add a new reading language to the game (Korean, French…), or replace an existing language's UI text, names and dialogue. Anything left untranslated shows a fallback language you choose.
 section: mods
-order: 6
+order: 7
 updated: 2026-11-03
 ---
 
@@ -65,6 +65,10 @@ python3 tools/mods/pack.py korean-source -o build/mods
 **5. Install and pick the language**
 
 Install it like any MOD (drag it onto the game window on a computer; on Android put it in `Documents/Marchwind64/mods` or use Install from file on the MOD page), **restart the game**, then pick the language in the settings' language menu or with the language key (F7). The choice is remembered: the next start is in that language.
+
+**Seeing changes as you go**: put the dialogue files you are working on in `dialogue/ko/` in the user folder, where they sit above the package, and press **F5** in the game to reload them; the current line shows the new text at once. Copy them back into the package when they are done. Battle lines are quickest to see in the Battle Viewer on the title screen, without playing to that stage.
+
+The repository's [`docs/guide/language-mods/`](https://github.com/dyzz/srw64-recomp/tree/main/docs/guide/language-mods) folder has the translation steps, a checklist of the rules and the glossary the Korean demo used, which you can hand to an AI assistant to translate by.
 
 ## language.json
 

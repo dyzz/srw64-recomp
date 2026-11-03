@@ -2,7 +2,7 @@
 title: Campaign mods (extra scenarios)
 summary: Chain stages you arrange yourself into a campaign, with recruits, the intermission between stages, story choices and endings, packed as a .srw64mod with saves of its own. For now it uses the original maps, characters, units and lines only.
 section: mods
-order: 5
+order: 6
 updated: 2026-10-31
 ---
 

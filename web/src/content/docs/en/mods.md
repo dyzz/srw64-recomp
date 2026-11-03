@@ -1,16 +1,16 @@
 ---
 title: "Mod packages: installing and making them"
-summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music and battle voices, numbers, names, portraits, map icons and campaigns take effect.
+summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music and battle voices, numbers, names, portraits, map icons, campaigns, story events and language packages take effect.
 section: mods
 order: 1
-updated: 2026-10-31
+updated: 2026-11-03
 ---
 
 A mod package is a folder, or that folder zipped into one `.srw64mod` file. It holds data only, never code. When a package is enabled, the game uses its contents in place of the matching parts of the original; wherever no package says otherwise, everything is the original.
 
-**Music and battle voices, numbers, names, portraits, map icons, campaigns and language packages take effect**: replacing songs, choosing which song a pilot or unit fights to and voicing the battle lines, as described in [Music mods](../mod-music/); changing the numbers of units, pilots and weapons, as described in [Number mods](../mod-data/); and renaming, new portraits and map icons, as described in [Name, portrait and map icon mods](../mod-names/); and campaigns chained from stages you arrange, as described in [Campaign mods](../mod-campaign/); and adding a reading language or replacing an existing one's text, as described in [Language package mods](../mod-language/). Other art will follow; the package format already has a place for them.
+**Music and battle voices, numbers, names, portraits, map icons, campaigns, story events and language packages take effect**: replacing songs, choosing which song a pilot or unit fights to and voicing the battle lines, as described in [Music mods](../mod-music/); changing the numbers of units, pilots and weapons, as described in [Number mods](../mod-data/); and renaming, new portraits and map icons, as described in [Name, portrait and map icon mods](../mod-names/); events added to the original stages, characters joining and story branches changing, as described in [Story mods](../mod-story/); and campaigns chained from stages you arrange, as described in [Campaign mods](../mod-campaign/); and adding a reading language or replacing an existing one's text, as described in [Language package mods](../mod-language/). Other art will follow; the package format already has a place for them.
 
-Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2.
+Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2, and story mods and language packages need 0.5.3.
 
 ## Installing
 

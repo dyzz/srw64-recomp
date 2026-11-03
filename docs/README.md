@@ -25,6 +25,8 @@
 | 翻译名称、界面标签与系统提示（词条表） | [数据文本汉化](native/localization-terms.md) |
 | 修改或翻译剧情与战斗台词（纯文本，玩家可改） | [台词文本文件](guide/dialogue-text.md) |
 | 做音乐替换或战斗语音 MOD：包格式与歌号、人物、台词记录号对应表 | [音乐与战斗语音 MOD](guide/audio-mods/README.md) |
+| 给原版关卡加剧情事件（人物加入、改分支）：写法与场景号对照表 | [剧情 MOD](guide/story-mods/README.md) |
+| 加一种阅读语言或改现有语言的文字：翻译流程、规则清单与韩文专名表 | [语言包 MOD](guide/language-mods/README.md) |
 | 全部文本的分类导出，剧情与战斗台词的中英机翻（DeepSeek）、审校、台词文件与后续阶段 | [全文本地化规划](design/translation-plan.md) |
 | 对白框怎样多显示字、少翻页：字体、字号、整条连排与翻页位置 | [对白排版](design/dialogue-typesetting.md) |
 | 接下来要做的功能 | [后续路线图](design/roadmap.md) |
@@ -44,6 +46,8 @@
 | [Linux 与 Steam Deck 构建](guide/linux-build.md) | 在 Mac 上用 Docker 构建 Linux x64 包、随包依赖与链接检查、Deck 安装、与 macOS 的差别和验证记录 |
 | [台词文本文件](guide/dialogue-text.md) | 剧情、选择肢与战斗台词的纯文本格式、附带文件与用户目录覆盖、F5 重新载入与错误报告 |
 | [音乐与战斗语音 MOD](guide/audio-mods/README.md) | 给 MOD 作者（及其 AI）的格式说明，附 49 首歌、人物、机体、11548 句战斗台词的 CSV 对应表 |
+| [剧情 MOD](guide/story-mods/README.md) | 给 MOD 作者（及其 AI）的剧情脚本写法：触发时机、条件、动作、跨关标记，附全部关卡的场景号对照表 |
+| [语言包 MOD](guide/language-mods/README.md) | 给语言包作者（及其 AI）的翻译流程、文件对照、规则清单、检查与边改边看，附韩文演示包的专名表 |
 | [原生存档恢复](guide/native-save-recovery.md) | 历史存档列表与显式恢复、完整性回退、通关档冷启动证据 |
 | [本地输入与来源记录](guide/provenance.md) | 原 ROM 身份、日文字形表、固定工具链与参考资料 |
 
@@ -182,6 +186,7 @@
 | [扩展架构方案](design/native-extensibility-architecture.md) | 内容分层与语义接口，暂缓的外部 MOD 扩展 |
 | [自定义战役](design/custom-campaign.md) | 多关串联（借场景号、开局结局、存档附加文件）、新台词的虚拟记录、整张绘制的新地图（地形表、资源替换、原版降级版原型）与分阶段 |
 | [MOD 包](design/mod-packages.md) | 包格式与依赖、外观／数值／规则／剧情分类、按键叠加、挑战奖励带回主线、存档记录、分发与投稿（§13：只读索引、GitHub Release 正本、网盘镜像、PR 投稿与校验） |
+| [语言包 MOD](design/mod-language-packs.md) | MOD 增加阅读语言或改现有语言：包格式、退回链与排版跟退回语言、宿主登记与重启生效、字体与按语言换图、韩文断行、测试记录 |
 | [两个 MOD 的规划：原创人物名字、人物与机体数据](design/mod-names-art-data.md) | MOD 一改 64 原创八人与部队名（只显示时替换）、MOD 二改任何人物姓名头像与机体武器数值；两者已实现 |
 | [音乐替换与战斗语音 MOD](design/audio-mods.md) | 替换任一首 BGM、按人物／机体改战斗曲、按战斗台词记录号放语音：原版放歌与选曲事实、包格式、有替换就停原版改放 OGG、风险与待定（未实现） |
 | [HD 化规划](design/hd-pipeline-plan.md) | HD 各类的现状、四条接入路径（宿主整张绘制／RT64 哈希替换／原生模型／原生文字）、战术地图整张接管的实现与待做、制作工具 |
