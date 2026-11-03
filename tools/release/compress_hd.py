@@ -135,7 +135,11 @@ def compress_units(art: Path, index_name: str = "srw64-units-hd.json") -> int:
         return 0
     index = json.loads(index_path.read_text())
     master = index["scale"]
+    done = {}                                     # rows sharing one file (cutin_hd.py share): compressed once
     for row in index["images"]:
+        if row["file"] in done:
+            row.update(done[row["file"]])
+            continue
         source = art / row["file"]
         with Image.open(source) as image:
             image = image.convert("RGBA")
@@ -149,8 +153,10 @@ def compress_units(art: Path, index_name: str = "srw64-units-hd.json") -> int:
         jpeg(colour, target)
         Image.merge("LA", (Image.new("L", size, 0), alpha)).save(alpha_file, optimize=True)
         source.unlink()
-        row.update(file=target.relative_to(art).as_posix(), sha256=sha(target), width=size[0], height=size[1],
-                   alpha=alpha_file.relative_to(art).as_posix(), alpha_sha256=sha(alpha_file))
+        fields = dict(file=target.relative_to(art).as_posix(), sha256=sha(target), width=size[0], height=size[1],
+                      alpha=alpha_file.relative_to(art).as_posix(), alpha_sha256=sha(alpha_file))
+        done[row["file"]] = fields
+        row.update(fields)
     index.update(scale=UNIT_SCALE, limit=UNIT_LIMIT)
     index_path.write_text(json.dumps(index, indent=2) + "\n")
     return len(index["images"])

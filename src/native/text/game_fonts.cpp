@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <map>
 #include <mutex>
+#include <optional>
 #include <set>
 #include <stdexcept>
 #include <tuple>
@@ -14,6 +15,14 @@ std::filesystem::path utf8_path(const char* value) {
 // The packaged fonts (tools/content/prepare_fonts.py): the variable HarmonyOS
 // Sans faces (TC first for Traditional Chinese, SC behind it for kana) and the symbol font. Launchers always point SRW64_FONT_DIR at them;
 // a missing file is an error, never a silent switch to a system font.
+struct PackageFonts {std::string fallback;std::vector<std::filesystem::path> text;std::filesystem::path title;};
+std::mutex package_mutex;
+std::map<std::string,PackageFonts> package_fonts;
+std::optional<PackageFonts> package(const std::string& locale) {
+    std::lock_guard lock(package_mutex);
+    const auto found=package_fonts.find(locale);
+    return found==package_fonts.end()?std::nullopt:std::optional<PackageFonts>(found->second);
+}
 std::vector<FontSource> packaged(const std::filesystem::path& dir,const std::string& locale,int weight) {
     std::vector<std::string> names;
     // SRW64Prompts holds the hints' button icons in the Private Use Area (text/button_prompts.hpp).
@@ -62,7 +71,22 @@ std::filesystem::path game_font_path() {
 #endif
     throw std::runtime_error("No CJK font found. Run tools/content/prepare_fonts.py and set SRW64_FONT_DIR, or set SRW64_TEXT_FONT to a TTF/OTF/TTC file.");
 }
+void set_locale_fonts(const std::string& locale,const std::string& fallback,std::vector<std::filesystem::path> text,std::filesystem::path title) {
+    std::lock_guard lock(package_mutex);
+    package_fonts[locale]={fallback,std::move(text),std::move(title)};
+}
+std::vector<std::filesystem::path> locale_fonts(const std::string& locale) {
+    const auto fonts=package(locale);
+    return fonts?fonts->text:std::vector<std::filesystem::path>();
+}
 std::vector<FontSource> game_font_sources(const std::string& locale,int weight) {
+    if(const auto fonts=package(locale)) {
+        // A package's faces have whatever weights they have: their default instance.
+        std::vector<FontSource> sources;
+        for(const auto& path:fonts->text)sources.push_back({path,0,0});
+        for(auto& source:game_font_sources(fonts->fallback,weight))sources.push_back(std::move(source));
+        return sources;
+    }
     if(locale!="zh-Hans" && locale!="zh-Hant" && locale!="ja" && locale!="en")
         throw std::runtime_error("Game text supports zh-Hans, zh-Hant, ja and en only");
     const char* dir=std::getenv("SRW64_FONT_DIR");
@@ -74,6 +98,13 @@ std::vector<FontSource> game_font_sources(const std::string& locale,int weight) 
     return {{path,face}};
 }
 std::vector<FontSource> title_font_sources(const std::string& locale,int weight) {
+    if(const auto fonts=package(locale)) {
+        std::vector<FontSource> sources;
+        if(!fonts->title.empty())sources.push_back({fonts->title,0,0});
+        for(const auto& path:fonts->text)sources.push_back({path,0,0});
+        for(auto& source:title_font_sources(fonts->fallback,weight))sources.push_back(std::move(source));
+        return sources;
+    }
     auto sources=game_font_sources(locale,weight);
     const char* dir=std::getenv("SRW64_FONT_DIR");
     if(std::getenv("SRW64_TEXT_FONT") || !dir || !*dir)return sources;

@@ -175,7 +175,7 @@ Style menu_style(bool press) {
 Style banner_style(bool badge, const std::string& locale) {
     Style s;
     s.bold = true;
-    s.size = badge ? (locale == "en" ? 7.5 : 12) : 11; s.min_size = 6; s.pitch = badge ? 1.1 : 1.3;
+    s.size = badge ? (localization::style(locale) == "en" ? 7.5 : 12) : 11; s.min_size = 6; s.pitch = badge ? 1.1 : 1.3;
     s.max_width = badge ? 26 : 200;
     const float green_top[3] = {.90f, 1.f, .90f}, green_bottom[3] = {.29f, .87f, .55f};
     const float yellow_top[3] = {1.f, 1.f, .09f}, yellow_bottom[3] = {.64f, .64f, .03f};
@@ -206,7 +206,7 @@ Style card_style(double size) {
 Style page_style(const std::string& locale, bool center) {
     Style s;
     s.bold = false; s.center = center;
-    s.size = locale == "en" ? 13 : 13.5; s.min_size = 8; s.pitch = locale == "en" ? 1.45 : 1.62;
+    s.size = localization::style(locale) == "en" ? 13 : 13.5; s.min_size = 8; s.pitch = localization::style(locale) == "en" ? 1.45 : 1.62;
     s.width = 256; s.max_height = 204;
     for (int c = 0; c < 3; ++c) { s.fill_top[c] = .95f; s.fill_bottom[c] = .88f; s.outline[c] = 0; }
     s.outline_px = 1.1; s.outline_alpha = .8; s.shadow_px = .8; s.shadow_alpha = .5;
@@ -215,13 +215,13 @@ Style page_style(const std::string& locale, bool center) {
 // Staff roll: centred, rows about 30 units apart like the original pages.
 Style staff_style(const std::string& locale) {
     Style s = page_style(locale, true);
-    s.width = 288; s.pitch = locale == "en" ? 2.0 : 2.15; s.max_height = 236;
+    s.width = 288; s.pitch = localization::style(locale) == "en" ? 2.0 : 2.15; s.max_height = 236;
     return s;
 }
 // Copyright page: left-aligned lines under the © column, as in the original.
 Style copyright_style(const std::string& locale) {
     Style s = page_style(locale, false);
-    s.size = locale == "en" ? 12.5 : 13; s.pitch = 1.45; s.width = 288; s.max_height = 196;
+    s.size = localization::style(locale) == "en" ? 12.5 : 13; s.pitch = 1.45; s.width = 288; s.max_height = 196;
     return s;
 }
 // Title demo names: white over a dark rim like the originals' grey ramps; one line each,
@@ -522,7 +522,7 @@ std::vector<Placed> card_lines(const story_cards::Layout& layout, const std::str
 bool describe(const uint8_t* rdram, const sprites::SceneId& id, TextJob& job) {
     const auto catalog = localization::snapshot();
     const std::string locale = catalog->locale;
-    const bool cjk = locale != "en";
+    const bool cjk = localization::style(locale) != "en";
     // Battle HUD: ability banners and the response badges.
     if (id.atlas == kHudAtlas && id.palette == kHudPalette && id.scene >= kBannerFirst && id.scene <= kDummy) {
         const bool badge = id.scene >= kBadgeFirst && id.scene < kHyperJammer;

@@ -1,4 +1,5 @@
 #pragma once
+#include "localization/locale_fallbacks.hpp"
 #include <algorithm>
 #include <cstdint>
 #include <deque>
@@ -52,7 +53,7 @@ inline Record joined_record(const std::u16string& pages,const std::string& local
         const auto end=pages.find(u'\f',start);
         const auto part=pages.substr(start,end==std::u16string::npos?std::u16string::npos:end-start);
         if(!first) {
-            if(locale=="en" && !record.text.empty() && !part.empty() && !blank(record.text.back()) && !blank(part.front()))
+            if(localization::style(locale) == "en" && !record.text.empty() && !part.empty() && !blank(record.text.back()) && !blank(part.front()))
                 record.text+=u' ';
             record.stops.push_back(record.text.size());
         }

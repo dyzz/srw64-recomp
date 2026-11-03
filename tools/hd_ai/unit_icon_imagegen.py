@@ -456,17 +456,45 @@ def collect(args: argparse.Namespace) -> None:
 
 # 1013 is not a side: every map icon sprite holds it as its second palette (80098678 slot 2 in
 # 801C60A4 and 801E04DC) and draws with it once the unit has acted. The original turns grey
-# but for the fixed colours (eyes); the HD icon turns wholly grey at 85% brightness. The sides
+# but for the fixed colours (eyes); the HD icon turns wholly grey at 60% brightness: at 85% (HD
+# 1.2) a white or grey unit such as GP03D looked the same acted or not (2026-11-02). The sides
 # carry no mark: since 2026-10-30 each faces its own way (docs/native/unit-icon-facing.md), so
 # the enemy's and the third party's rings of HD 1.2 are gone.
 ACTED = 1013
-ACTED_BRIGHTNESS = 0.85
+ACTED_BRIGHTNESS = 0.6
+# White units that still read grey on the map before they act (2026-11-02 user): the
+# unacted pictures get this gamma, which lifts the midtones and leaves white white; the
+# acted grey is made from the master as drawn.
+UNACTED_GAMMA = {726: 0.7, 772: 0.7}  # GP03 Dendrobium, Qubeley
+# Blue trim deepened after that (2026-11-02 user, GP03D): (saturation, value) factors for the
+# blue pixels (PIL hue 128-191, saturation above 64, not near-black).
+UNACTED_BLUE = {726: (1.5, 0.8)}
 
 
-def faction_mark(master: Image.Image, palette: int) -> Image.Image:
+def unacted(master: Image.Image, rid: int) -> Image.Image:
+    """The master with this icon's lift (UNACTED_GAMMA, UNACTED_BLUE), for every side's picture."""
+    if rid not in UNACTED_GAMMA and rid not in UNACTED_BLUE:
+        return master
+    rgba = np.asarray(master.convert("RGBA")).astype(np.float32)
+    rgba[:, :, :3] = 255 * (rgba[:, :, :3] / 255) ** UNACTED_GAMMA.get(rid, 1.0)
+    image = Image.fromarray(np.clip(np.rint(rgba), 0, 255).astype(np.uint8), "RGBA")
+    if rid in UNACTED_BLUE:
+        ks, kv = UNACTED_BLUE[rid]
+        hsv = np.asarray(image.convert("RGB").convert("HSV")).astype(np.float32)
+        blue = (hsv[:, :, 0] >= 128) & (hsv[:, :, 0] < 192) & (hsv[:, :, 1] > 64) & (hsv[:, :, 2] > 38)
+        hsv[:, :, 1] = np.where(blue, np.minimum(hsv[:, :, 1] * ks, 255), hsv[:, :, 1])
+        hsv[:, :, 2] = np.where(blue, hsv[:, :, 2] * kv, hsv[:, :, 2])
+        deep = np.asarray(Image.fromarray(np.rint(hsv).astype(np.uint8), "HSV").convert("RGB"))
+        rgba = np.asarray(image).copy()
+        rgba[:, :, :3] = np.where(blue[:, :, None], deep, rgba[:, :, :3])
+        image = Image.fromarray(rgba, "RGBA")
+    return image
+
+
+def faction_mark(master: Image.Image, palette: int, rid: int = 0) -> Image.Image:
     """The sprite as the palette draws it: in its own colours for every side, grey when acted."""
     if palette != ACTED:
-        return master
+        return unacted(master, rid)
     rgba = np.asarray(master.convert("RGBA")).astype(np.float32)
     grey = (rgba[:, :, :3] @ np.array([0.299, 0.587, 0.114], np.float32)) * ACTED_BRIGHTNESS
     rgba[:, :, :3] = np.clip(grey, 0, 255)[:, :, None]
@@ -513,7 +541,7 @@ def pack(args: argparse.Namespace) -> None:
                 continue
             if digest in entries:
                 raise ValueError(f"{digest} already names {entries[digest]['path']}")
-            image = faction_mark(master, p)
+            image = faction_mark(master, p, rid)
             filled = fill_transparent(image)
             filled.putalpha(image.getchannel("A"))
             name = f"icon-{digest}.png"

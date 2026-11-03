@@ -39,7 +39,7 @@ KNOWN_FIELDS = ("schema", "id", "version", "name", "description", "authors", "li
 CONTENT_DIRS = ("campaign", "challenge", "story", "data", "art", "dialogue", "audio")
 TOP_FILES = ("mod.json", "rules.json")
 # The file kinds the content folders are read for (mod_library.hpp summarize), plus notes.
-EXTENSIONS = (".json", ".txt", ".md", ".png", ".webp", ".dds", ".ogg", ".mp3", ".flac", ".wav")
+EXTENSIONS = (".json", ".txt", ".md", ".png", ".webp", ".dds", ".ogg", ".mp3", ".flac", ".wav", ".ttf", ".otf")
 # mod_library.cpp install limits.
 MAX_TOTAL = 4 << 30
 MAX_ENTRIES = 20000
@@ -63,6 +63,7 @@ SUBMISSION_TEXT = {
     "owner": "The id's prefix belongs to someone else ({detail})",
     "no_owner": "The id's prefix is not registered in owners.json ({detail})",
     "campaign": "campaign/campaign.json is not a compiled campaign of this package ({detail})",
+    "language": "A language folder is not right ({detail})",
 }
 
 
@@ -314,8 +315,10 @@ def _name_problem(value, where: str, limit: int) -> str:
     return ""
 
 
-def names_problem(document) -> str:
-    """dialogue/names.json by the host's rules (src/host/mod_names.hpp parse), "" when it is good."""
+def names_problem(document, languages: tuple[str, ...] = ()) -> str:
+    """dialogue/names.json by the host's rules (src/host/mod_names.hpp parse), "" when it is good.
+    `languages`: the package's own reading languages, which it may name too."""
+    known = NAME_LOCALES + tuple(languages)
     if not isinstance(document, dict):
         return "顶层要是对象"
     for key, value in document.items():
@@ -337,8 +340,8 @@ def names_problem(document) -> str:
                         return f"heroes.{route}.{role}：要是对象"
                     for locale, fields in by_locale.items():
                         where = f"heroes.{route}.{role}.{locale}"
-                        if locale not in NAME_LOCALES:
-                            return f"{where}：未知语言（{'、'.join(NAME_LOCALES)}）"
+                        if locale not in known:
+                            return f"{where}：未知语言（{'、'.join(known)}）"
                         if not isinstance(fields, dict):
                             return f"{where}：要是对象"
                         if "name" not in fields:
@@ -352,8 +355,8 @@ def names_problem(document) -> str:
             if not isinstance(value, dict):
                 return "unit：要是对象"
             for locale, text in value.items():
-                if locale not in NAME_LOCALES:
-                    return f"unit.{locale}：未知语言（{'、'.join(NAME_LOCALES)}）"
+                if locale not in known:
+                    return f"unit.{locale}：未知语言（{'、'.join(known)}）"
                 if why := _name_problem(text, f"unit.{locale}", 24):
                     return why
         elif key in ("pilots", "units", "weapons"):
@@ -369,8 +372,8 @@ def names_problem(document) -> str:
                 if not isinstance(by_locale, dict):
                     return f"{where}：要是对象"
                 for locale, entry in by_locale.items():
-                    if locale not in NAME_LOCALES:
-                        return f"{where}.{locale}：未知语言（{'、'.join(NAME_LOCALES)}）"
+                    if locale not in known:
+                        return f"{where}.{locale}：未知语言（{'、'.join(known)}）"
                     if key == "pilots":
                         if not isinstance(entry, dict) or "name" not in entry:
                             return f'{where}.{locale}：要是 {{"name": …, "full": …}}'
@@ -658,10 +661,12 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
             why = icon_problem(e.name.rsplit("/", 1)[1], e.read())
             if why:
                 problems.append(Problem("icon", f"{e.name}: {why}"))
+    language_problems, summary["languages"] = languages_of(package.entries)
+    problems += language_problems
     for e in package.entries:
         if e.name == "dialogue/names.json":
             try:
-                why = names_problem(json.loads(e.read().decode("utf-8")))
+                why = names_problem(json.loads(e.read().decode("utf-8")), tuple(summary["languages"]))
             except (ValueError, UnicodeDecodeError) as error:
                 why = f"JSON 无效：{error}"
             if why:
@@ -686,6 +691,123 @@ def check(path: Path, *, host_only: bool = False, require_license: bool = True, 
         elif owner is not None and owners[prefix] != owner:
             problems.append(Problem("owner", f"{prefix}: {owners[prefix]}"))
     return problems, summary
+
+
+# --- Language packages (src/host/mod_languages.hpp, docs/design/mod-language-packs.md) -----
+
+LANGUAGE_SCHEMA = "srw64.language.v1"
+TERMS_SCHEMA = "srw64.language-terms.v1"
+LOCALE_TAG = re.compile(r"[a-z]{2,3}(-[A-Za-z0-9]{2,8})*")
+MAX_FONT = 32 << 20
+MAX_LANGUAGES = 16
+FIRST_DIALOGUE_RECORD = 5644
+RECORD_KEY = re.compile(r"base:t00_([0-9]{5})")
+
+
+def language_problem(data, folder: str, names: dict[str, "Entry"]) -> str:
+    """language.json in dialogue/<folder>/ by the host's rules (parse_language), "" when it is good."""
+    if not isinstance(data, dict):
+        return "要是对象"
+    for key in data:
+        if key not in ("schema", "locale", "name", "fallback", "fonts"):
+            return f"未知字段 {key}"
+    if data.get("schema") != LANGUAGE_SCHEMA:
+        return f"schema 要是 {LANGUAGE_SCHEMA}"
+    if data.get("locale") != folder:
+        return "locale 要和文件夹名一样"
+    name = data.get("name")
+    if not isinstance(name, str) or not 1 <= len(name) <= 24:
+        return "name 要有 1–24 个字"
+    if "fallback" in data and data["fallback"] not in NAME_LOCALES:
+        return "fallback 要是 ja、zh-Hans、zh-Hant、en 之一"
+    fonts = data.get("fonts", {})
+    if not isinstance(fonts, dict):
+        return "fonts 要是对象"
+    listed = []
+    for key, value in fonts.items():
+        if key == "text":
+            if not isinstance(value, list) or len(value) > 4:
+                return "fonts.text 要是数组（最多 4 个）"
+            listed += [("fonts.text", v) for v in value]
+        elif key == "title":
+            listed.append(("fonts.title", value))
+        else:
+            return f"fonts 的未知字段 {key}"
+    for where, value in listed:
+        if not isinstance(value, str):
+            return f"{where}：要是字符串"
+        if not re.fullmatch(r"fonts/[^/]+\.(ttf|otf|TTF|OTF)", value):
+            return f"{where}：{value}：只能是 fonts/ 里的 .ttf 或 .otf"
+        entry = names.get(f"dialogue/{folder}/{value}")
+        if entry is None:
+            return f"{where}：{value}：没有这个文件"
+        if entry.size > MAX_FONT:
+            return f"{where}：{value}：超过 32 MB"
+    if not LOCALE_TAG.fullmatch(folder) or len(folder) > 35:
+        return "语言代码要像 ko、fr、pt-BR"
+    return ""
+
+
+def terms_problem(data) -> str:
+    """terms.json's shape (parse_terms); the records are checked against the ROM in the game."""
+    if not isinstance(data, dict) or data.get("schema") != TERMS_SCHEMA:
+        return f"schema 要是 {TERMS_SCHEMA}"
+    for key in data:
+        if key not in ("schema", "ui", "entries"):
+            return f"未知字段 {key}"
+    ui, entries = data.get("ui", {}), data.get("entries", {})
+    if not isinstance(ui, dict) or not isinstance(entries, dict):
+        return "ui 和 entries 要是对象"
+    for key, text in ui.items():
+        if not isinstance(text, str) or not text:
+            return f"ui.{key}：要是非空字符串"
+    for key, value in entries.items():
+        m = RECORD_KEY.fullmatch(key)
+        if not m or int(m.group(1)) >= FIRST_DIALOGUE_RECORD:
+            return f"entries.{key}：只能是 base:t00_00000–base:t00_05643，台词写进 .txt"
+        text = value.get("text") if isinstance(value, dict) else value
+        if not isinstance(text, str) or not text.endswith("<END>"):
+            return f"entries.{key}：要是以 <END> 结尾的字符串，或带 text 的对象"
+    return ""
+
+
+def languages_of(entries: list["Entry"]) -> tuple[list[Problem], list[str]]:
+    """Every dialogue/<locale>/ folder by the host's rules, and the new reading languages."""
+    names = {e.name: e for e in entries}
+    folders = sorted({e.name.split("/")[1] for e in entries if e.name.startswith("dialogue/") and e.name.count("/") >= 2})
+    problems: list[Problem] = []
+    languages: list[str] = []
+    for folder in folders:
+        where = f"dialogue/{folder}/"
+        declared = names.get(where + "language.json")
+        if folder in NAME_LOCALES:
+            if declared:
+                problems.append(Problem("language", where + "language.json：内置语言不用声明"))
+        elif not declared:
+            problems.append(Problem("language", where + "：不是内置语言，要有 language.json"))
+            continue
+        else:
+            try:
+                why = language_problem(json.loads(declared.read().decode("utf-8")), folder, names)
+            except (ValueError, UnicodeDecodeError) as error:
+                why = f"JSON 无效：{error}"
+            if why:
+                problems.append(Problem("language", where + "language.json：" + why))
+            else:
+                languages.append(folder)
+        if (terms := names.get(where + "terms.json")) is not None:
+            try:
+                why = terms_problem(json.loads(terms.read().decode("utf-8")))
+            except (ValueError, UnicodeDecodeError) as error:
+                why = f"JSON 无效：{error}"
+            if why:
+                problems.append(Problem("language", where + "terms.json：" + why))
+    if len(languages) > MAX_LANGUAGES:
+        problems.append(Problem("language", f"最多 {MAX_LANGUAGES} 种语言"))
+    for e in entries:
+        if Path(e.name).suffix.lower() in (".ttf", ".otf") and not re.fullmatch(r"dialogue/[^/]+/fonts/[^/]+", e.name):
+            problems.append(Problem("file_type", e.name))
+    return problems, languages
 
 
 # --- Wording -----------------------------------------------------------------------------

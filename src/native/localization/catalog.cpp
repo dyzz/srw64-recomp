@@ -74,6 +74,11 @@ std::shared_ptr<Catalog> Catalog::with_labels(const Table& replaced,const std::s
     copy->revision=revision+"+"+layer;
     return copy;
 }
+std::shared_ptr<Catalog> Catalog::as_locale(const std::string& next) const {
+    auto copy=std::make_shared<Catalog>(*this);
+    copy->locale=next;copy->revision=revision+"@"+next;
+    return copy;
+}
 std::string Catalog::ui(const std::string& key) const {
     const auto* text=lookup(*labels,key);return text?*text:key;
 }
@@ -101,22 +106,40 @@ void replace(std::map<std::string,Snapshot> value) {
     catalogs=std::move(value);
 }
 std::string next_locale(const std::string& current) {
+    std::lock_guard lock(registry);
     auto it=std::find(locale_order.begin(),locale_order.end(),current);
     if(it==locale_order.end())throw std::runtime_error("Current locale is unavailable");
     return ++it==locale_order.end()?locale_order.front():*it;
 }
 std::string display_name(const std::string& locale) {
+    std::lock_guard lock(registry);
     auto it=locale_names.find(locale);return it==locale_names.end()?locale:it->second;
 }
 std::vector<std::pair<std::string,std::string>> locale_options() {
     std::vector<std::pair<std::string,std::string>> result;
-    for(const auto& locale:locale_order)result.emplace_back(locale,display_name(locale));
+    std::lock_guard lock(registry);
+    for(const auto& locale:locale_order) {
+        const auto name=locale_names.find(locale);
+        result.emplace_back(locale,name==locale_names.end()?locale:name->second);
+    }
     return result;
 }
 std::string language_choices() {
     std::string result;
-    for(const auto& locale:locale_order){if(!result.empty())result+=" / ";result+=display_name(locale);}
+    for(const auto& [locale,name]:locale_options()){if(!result.empty())result+=" / ";result+=name;}
     return result;
+}
+void add_locale(Snapshot value,const std::string& label,const std::string& fallback) {
+    if(!value)throw std::runtime_error("Unknown locale");
+    std::lock_guard lock(registry);
+    if(catalogs.contains(value->locale))throw std::runtime_error("Locale already registered: "+value->locale);
+    if(!catalogs.contains(fallback) || style(fallback)!=fallback)throw std::runtime_error("Fallback is not a built-in locale: "+fallback);
+    const auto locale=value->locale;
+    catalogs.emplace(locale,std::move(value));
+    locale_order.push_back(locale);locale_names[locale]=label;
+    auto& packages=package_locales();
+    std::lock_guard packages_lock(packages.mutex);
+    packages.fallback[locale]=fallback;
 }
 void activate(Snapshot value){if(!value)throw std::runtime_error("Unknown locale");std::atomic_store(&active,std::move(value));}
 void initialize(const nlohmann::json& data,const string_tables::Tables* tables) {
@@ -154,8 +177,13 @@ void initialize(const nlohmann::json& data,const string_tables::Tables* tables) 
     } else {
         for(const auto& [locale,value]:next){order.push_back(locale);names.emplace(locale,locale);}
     }
-    {std::lock_guard lock(registry);catalogs=std::move(next);}
-    locale_order=std::move(order);locale_names=std::move(names);
+    {
+        std::lock_guard lock(registry);
+        catalogs=std::move(next);locale_order=std::move(order);locale_names=std::move(names);
+        auto& packages=package_locales();
+        std::lock_guard packages_lock(packages.mutex);
+        packages.fallback.clear();
+    }
     activate(find(selected));
 }
 Scope::Scope(Snapshot value):previous(scoped){if(value)scoped=std::move(value);}

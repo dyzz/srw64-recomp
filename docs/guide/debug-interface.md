@@ -57,14 +57,22 @@
 | `ui.key` | `key`、`modifiers` | SDL 键名：return、tab、escape、delete、方向键、a–z、0–9、f1–f12；不再使用 macOS `key_code`。 |
 | `ui.type` | `text`、`marked`、`unmark`、`window` | 向获得焦点的输入框插入文字，等同键入；`marked: true` 留作输入法组字（带下划线，未提交），`unmark: true` 提交组字；回应 `marked` 表示本次是否注入组字 |
 | `menu` | `path` | 兼容转发设置和规则的本地化标题；不再枚举 OS 菜单。 |
-| `settings` | `rules`（预设名或 ID 列表）、`locale`、`images` | 直接改规则、语言、画面 |
+| `settings` | `rules`（预设名或 ID 列表）、`locale`、`images`、`dialogue_hints` | 直接改规则、语言、画面；`dialogue_hints` 取 `off`／`auto`／`always`，`off` 让对白下的操作提示条始终不画（录对白用，不存设置），另两个就是玩家的设置 |
 | `window` | `width`/`height`、`front`、`close` | 调整游戏窗口尺寸（640–2560 × 480–1600 点）、带到前台（只在要验证真实焦点或真实鼠标事件时需要）、按下关闭按钮（`SDL_WINDOWEVENT_CLOSE`）；回应窗口状态 |
 | `wait_vi` | `vi`、`timeout_ms` | 等到指定 VI |
 | `memory.read` | `address`、`size`（≤ 0x10000） | 读客体内存，返回十六进制；不暂停游戏，是调试视图而非快照（[短跳过](../native/script-skip.md)的状态对照用它） |
 | `memory.write` | `address`、`hex`（整字节，≤ 4096 字节） | 写客体内存（探针用，比如强制战斗背景；只在调试会话里） |
 | `game_over` | `timeout_ms`（默认 10000） | 下一个我方阶段的地图空闲帧（没有事件在跑）进 GAME OVER，和剧本指令 `3D4C` 一样调 `801DF280`；等它生效，返回 VI，超时说原因。测 GAME OVER 重试和回合自动存档用 |
+| `mini_stage.load` | `path` | 加载关卡文件（编译后镜像或源文件）并进入：标题主菜单上照原来；战术地图、场间或世界地图上（模式 3/B/11/16/22/4/12–15/D，装载中的 C 不接）则在下一个帧边界按原版回标题的收尾（`800836CC(0)` → `800A5138`）直接切到这一关，不经标题、不重启游戏（`mini_stage.restarting`）。镜像的 `route`／`story_vars`／`last_choice` 在登记时写入路线变量与默认姓名、剧情变量、上次选择（见 [mini-stage.md](../script/mini-stage.md)） |
+| `choice.pick` | `index`（从 0 起）、`vis` | 回答当前打开的选项框（`3D44`）：把光标写到该项再按 A 几帧。`status.choice` 给出 `active`、`options`、`text_id`（第一项的文本号）、`cursor`、`phase`（0 窗口未开、1 等输入）、`last_answer`；没有选项框或窗口还没开时拒绝 |
+| `title.return` | — | 回标题，与 F10 相同（原版 Z+START 复位，战术地图、场间、世界地图上接受，其他地方拒绝并给提示条）；`status.mode` 是游戏模式字节 |
+| `title.reset` | — | 下一帧直接回标题（模式 1），不等事件、不淡出，与地图上换关同一套交接；战斗演出中不接。录制脚本拍完一段立刻回标题再加载下一关用 |
+| `quote.force` | `text_id` 或 `text_ids` | 之后的通用战斗台词抽取改说这些记录（每条一次性，最多挂 8 条，一次能定下整回合出手／挨打／反击三句）：说话人与情境（出手／挨打／回避…）由记录所属的 ROM 段决定，别人的台词或别的情境不受影响；槽里已有的条件台词也让位。条件台词（记录 ≥14227，如对手专用台词）也能指定：原版这一槽选中了条件台词时，换成待定里属于这位说话人的那条（当作第 1 优先组，通用抽取不再顶掉）。`text_id: 4294967295` 清空。回应里的 `pending`／`served_ids`／`served`／`seen`／`last_voice`／`last_context`／`last_drawn` 便于核对。录某句随机台词用，不必反复重打 |
+| `viewer.start` | `choice`／`writes`、`song`、`route`（0 布拉德、1 马纳美、2 阿克、3 塞蕾因）、`record`（`width`、`fps`、`ffmpeg`、`trim_black` 默认开） | 从标题起一场战斗鉴赏（docs/design/battle-viewer.md）。`route` 先写路线变量，主角／搭档（人物 25／29）的头像才画得出来（刚开机时变量为 0，没有头像）；`record` 让宿主只录演出本身：演示模式第二帧起开闸、离开演示模式关闸、首尾黑帧去掉，`status.battle_viewer.running` 转否后调 `record.stop` 收文件 |
+| `choice.show` | `text_id`、`options`（默认 2）、`slot`（0／1）、`lines`、`line_op`、`timeout_ms` | 随时调出一个选项框（录“选择的那一刻”用）：用脚本注入在下一个我方阶段空闲帧跑一条事件——可选的几句对白（`lines` 文本号，各一条 `3D3E`，`line_op` 可换 `3D3E`–`3D43`）再一条 `3D44 [槽位, 选项数, 选项文本]`；选项文本是一条按 `<BR>` 分行的文本（场景 10 的是 18402，场景 27 的 22134／22178）。之后 `choice.pick` 作答，答案进 `801602E4` |
+| `dialogue.show` | `lines`（文本号列表）、`line_op`（默认 `3D3E`）、`timeout_ms` | 在战术地图上随时把几句对白说一遍：注入一条只含 `3D3E` 的事件，在下一个我方阶段空闲帧跑。给录像/截图补原事件到不了的句子（结局里有条件的台词等），画面是地图底 |
 | `victory` | `timeout_ms`（默认 10000） | 直接过关：下一个我方阶段的地图空闲帧，用脚本注入（`script_inject.hpp`，不需要 `SRW64_SCRIPT_INJECT`）让原版剧本引擎执行只有一条 `3D4A` 的事件，之后结算、阶段 C3、本关结束事件（类型 14）都照原版走；等引擎接手后返回。别的注入还在等或在跑时拒绝 |
-| `record.start`、`record.stop` | `width`（默认 960） | 录像：开始后每次呈现都读回、缩到 `width`、追加写入运行目录下 `record-<VI>/` 的原始帧和时间，游戏声音按送进输出设备的样子写 `audio.s16`（立体声 s16le）；停止时返回帧数与尺寸，以及 `audio_frames`、`audio_rate` 和 `audio_start`（第一块声音相对开始录像的秒数）。`Session.record(秒数)`（或 `record_start` … `record_stop(path)`，中间可以操作游戏）把画面排成固定 30 帧的时间线（每一刻显示当时最新的一帧，卡住的地方就是定格），按 `audio_start` 对齐混入 AAC 音轨，用 ffmpeg 编成 MP4 并删掉原始文件；MCP 是 `srw64_record`、`srw64_record_start`／`srw64_record_stop`（可给 `path`，目录不存在会建）。调试会话默认静音，要声音得 `srw64_launch(audio=true)`；开机前约 27 秒（logo 与开场）游戏本身没有声音。实测标题画面录 8 秒得 240 帧、最长间隔 40 ms，录像本身几乎不拖慢 |
+| `record.start`、`record.stop` | `width`（默认 960）、`fps`（默认 30）、`encode`（默认 true）、`ffmpeg`、`lockstep`（默认同 `encode`）、`queue` | 录像：开始后每次呈现都从 GPU 完成回调拷下来排队，工作线程缩到 `width`，再按**呈现时的 VI** 放到每秒 `fps` 格的时间线上（两格之间没有呈现就重复上一帧，同一格第二次呈现丢掉），不再按墙钟重采样。宿主有 ffmpeg（参数 `ffmpeg`、环境变量 `SRW64_FFMPEG`，或 PATH 上的）时帧直接喂给它编 H.264，停止时把声音（相对第一帧的 VI 对齐）混成 AAC，结果是运行目录 `record-<VI>/recording.mp4`（回应 `mp4`），客户端只拉这一个文件；`lockstep` 下队伍满了 VI 线程就等，编码慢只会让游戏变慢而不丢帧。没有 ffmpeg 或 `encode:false` 时照旧写原始帧 `frames.rgb`、时间 `frames.times`（每行“秒 VI”）和 `audio.s16`，由 `Session.record_stop` 在本机编码。停止时还报 `presents`、`frames`、`held`（补的定格帧）、`same_tick`、`dropped`。MCP 是 `srw64_record`、`srw64_record_start`／`srw64_record_stop`（可给 `path`，目录不存在会建）。调试会话默认静音，要声音得 `srw64_launch(audio=true)`；开机前约 27 秒（logo 与开场）游戏本身没有声音 |
 | `quit` | — | 正常退出，报告记为控制退出 |
 | `methods` | — | 列出宿主支持的方法 |
 

@@ -670,6 +670,8 @@
     "mod_has_dialogue": "{n} dialogue files",
     "mod_has_data": "{n} data files",
     "mod_has_names": "names",
+    "mod_has_languages": "languages {list}",
+    "mod_language_restart": "Language packages take effect after restarting the game.",
     "mod_has_campaign": "Campaign",
     "mod_has_challenge": "Challenge",
     "mod_has_story": "Story changes",

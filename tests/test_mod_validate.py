@@ -101,6 +101,37 @@ class PackageTests(unittest.TestCase):
         files["dialogue/names.json"] = b"{"
         self.assertEqual(self.codes(self.zip("a.b-1.0.0.srw64mod", files))[0], ["names"])
 
+    def test_language_folders_follow_the_host(self):
+        files = self.good_files()
+        files["dialogue/ko/language.json"] = json.dumps({"schema": "srw64.language.v1", "locale": "ko", "name": "한국어",
+                                                          "fallback": "en", "fonts": {"text": ["fonts/k.ttf"]}}).encode()
+        files["dialogue/ko/fonts/k.ttf"] = b"font"
+        files["dialogue/ko/terms.json"] = json.dumps({"schema": "srw64.language-terms.v1", "ui": {"hello": "안녕"},
+                                                       "entries": {"base:t00_00000": {"text": "평지<END>", "ja": "平原<END>"}}}).encode()
+        files["dialogue/ko/story/scene-0001.txt"] = b""
+        files["dialogue/en/terms.json"] = json.dumps({"schema": "srw64.language-terms.v1", "ui": {"hello": "Hi"}}).encode()
+        files["dialogue/names.json"] = json.dumps({"schema": "srw64.mod-names.v1", "unit": {"ko": "질풍"}}).encode()
+        codes, summary = self.codes(self.zip("a.b-1.0.0.srw64mod", files))
+        self.assertEqual(codes, [])
+        self.assertEqual(summary["languages"], ["ko"])
+        for path, data, why in [
+                ("dialogue/fr/a.txt", b"", "要有 language.json"),
+                ("dialogue/ja/language.json", b"{}", "内置语言不用声明"),
+                ("dialogue/de/language.json", json.dumps({"schema": "srw64.language.v1", "locale": "de", "name": "Deutsch", "fallback": "ko"}).encode(), "fallback"),
+                ("dialogue/es/language.json", json.dumps({"schema": "srw64.language.v1", "locale": "es", "name": "Español", "fonts": {"text": ["fonts/no.ttf"]}}).encode(), "没有这个文件"),
+                ("dialogue/it/language.json", json.dumps({"schema": "srw64.language.v1", "locale": "IT", "name": "Italiano"}).encode(), "locale 要和文件夹名一样"),
+                ("dialogue/ko/terms.json", json.dumps({"schema": "srw64.language-terms.v1", "entries": {"base:t00_05644": "x<END>"}}).encode(), "台词写进 .txt"),
+                ("dialogue/ko/terms.json", json.dumps({"schema": "srw64.language-terms.v1", "entries": {"base:t00_00000": "평지"}}).encode(), "<END>"),
+                ("art/k.ttf", b"font", "")]:
+            bad = dict(files)
+            bad[path] = data
+            problems, _ = validate.check(self.zip("a.b-1.0.0.srw64mod", bad))
+            self.assertTrue(problems, path)
+            self.assertTrue(any(why in p.detail for p in problems), (path, [tuple(p) for p in problems]))
+        # A language the package does not add is still unknown to its names file.
+        self.assertIn("未知语言", validate.names_problem({"unit": {"ko": "질풍"}}))
+        self.assertEqual(validate.names_problem({"unit": {"ko": "질풍"}}, ("ko",)), "")
+
     def test_data_files_follow_the_host(self):
         files = self.good_files()
         files["data/units.json"] = json.dumps({"184": {"hp": 5200, "abilities": ["i_field"], "size": "L", "terrain": {"sea": "A"}}}).encode()

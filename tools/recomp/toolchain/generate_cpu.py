@@ -114,6 +114,13 @@ NATIVE_HOOKS = {
     # viewer's choice (battle_viewer.hpp; the checks are rewritten below).
     "load_00121560_func_8022245C": "srw64_original_battle_quote_pick",
     "load_00121560_func_80221ACC": "srw64_original_combo_quote_pair",
+    # The generic quote draw (80222B14): quote.force writes its record there (quote_force.hpp).
+    "load_00121560_func_80222B14": "srw64_original_generic_quote_draw",
+    # The unit under the map cursor (801C2BFC) and the two-dimensional list over a unit's
+    # record (801F9238): a roster entry whose unit record has gone (a unit the event just
+    # withdrew, Erlich persuaded in S56) is no unit (game_hooks.cpp).
+    "load_000AB160_func_801C2BFC": "srw64_original_unit_under_cursor",
+    "load_000AB160_func_801F9238": "srw64_original_list_2d_input",
     "resident_func_8008F5C8": "srw64_original_dialogue_reset",
     "resident_func_8009EFDC": "srw64_original_script_step",
     # The short skip (script_skip.hpp): a skipped dialogue page reads as finished, and

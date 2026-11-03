@@ -8,7 +8,7 @@ updated: 2026-10-31
 
 A mod package is a folder, or that folder zipped into one `.srw64mod` file. It holds data only, never code. When a package is enabled, the game uses its contents in place of the matching parts of the original; wherever no package says otherwise, everything is the original.
 
-**Music and battle voices, numbers, names, portraits, map icons and campaigns take effect**: replacing songs, choosing which song a pilot or unit fights to and voicing the battle lines, as described in [Music mods](../mod-music/); changing the numbers of units, pilots and weapons, as described in [Number mods](../mod-data/); and renaming, new portraits and map icons, as described in [Name, portrait and map icon mods](../mod-names/); and campaigns chained from stages you arrange, as described in [Campaign mods](../mod-campaign/). Other art will follow; the package format already has a place for them.
+**Music and battle voices, numbers, names, portraits, map icons, campaigns and language packages take effect**: replacing songs, choosing which song a pilot or unit fights to and voicing the battle lines, as described in [Music mods](../mod-music/); changing the numbers of units, pilots and weapons, as described in [Number mods](../mod-data/); and renaming, new portraits and map icons, as described in [Name, portrait and map icon mods](../mod-names/); and campaigns chained from stages you arrange, as described in [Campaign mods](../mod-campaign/); and adding a reading language or replacing an existing one's text, as described in [Language package mods](../mod-language/). Other art will follow; the package format already has a place for them.
 
 Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2.
 
@@ -21,6 +21,8 @@ Mods need version 0.5.1 or later; everything beyond music and terrain ranks need
 Installing a new version of a package replaces the old one. The old version, and any package you remove, goes into `.trash` inside the MOD folder rather than being deleted.
 
 On Android, put the package file in `mods/` inside the Marchwind64 folder under Documents (the Files app): it installs when the game starts or the MOD page opens. Or press Install from file on the MOD page and pick it.
+
+![Installing a MOD on Android: Settings › General › MOD, then Install from file, or put the file in Documents/Marchwind64/mods](/media/android-mod-install-en.webp)
 
 ## Managing
 
@@ -66,7 +68,7 @@ Include only the folders you use. To publish, zip the whole folder and change th
 | `schema` | Always `srw64.mod.v1` |
 | `id` | The package’s unique name: letters, digits and `.` `_` `-`, up to 64 characters. “author.name” is a good pattern. **Don’t change it once released** |
 | `version` | The version, written like `1.0.0` |
-| `name` | The name shown: one string, or one per language (`zh-Hans`, `en`, `ja`) |
+| `name` | The name shown: one string, or one per language (`zh-Hans`, `zh-Hant`, `en`, `ja`, and the languages of installed [language packages](../mod-language/); Traditional Chinese falls back to Simplified, others to their fallback, then Japanese) |
 | `description` | Optional; a description, written like `name` |
 | `authors` | Optional; a list of authors |
 | `license` | The license, which must allow passing the package on: `CC-BY-4.0`, `CC-BY-SA-4.0`, `CC-BY-NC-4.0`, `CC-BY-NC-SA-4.0`, `CC0-1.0`, `MIT` or `GPL-3.0-or-later` |

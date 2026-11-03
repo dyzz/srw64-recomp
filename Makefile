@@ -5,7 +5,7 @@ PYTHON := $(VENV)/bin/python
 PYTHON3 ?= python3
 ROM ?= rom.z64
 NATIVE_CXX ?= clang++
-NATIVE_TEST_FLAGS := -std=c++20 -fsanitize=address,undefined -g
+NATIVE_TEST_FLAGS := -std=c++20 -Isrc/native -fsanitize=address,undefined -g
 RECOMP_BUILD := build/recomp
 RECOMP_RUNTIME := $(RECOMP_BUILD)/upstream/N64ModernRuntime
 
@@ -222,6 +222,15 @@ recomp-mod-names-test:
 	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -Isrc/native -I$(RECOMP_BUILD)/upstream/RT64/src/contrib -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
 		tests/native_mod_names.cpp src/host/mod_library.cpp build/recomp/mod-names-test/miniz*.o -o build/recomp/mod-names-test/test
 	build/recomp/mod-names-test/test build/recomp/mod-names-test/run
+
+.PHONY: recomp-mod-languages-test
+recomp-mod-languages-test:
+	mkdir -p build/recomp/mod-languages-test
+	for c in miniz miniz_tdef miniz_tinfl miniz_zip; do cc -c -g -fsanitize=address,undefined -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		$(MINIZ_DIR)/$$c.c -o build/recomp/mod-languages-test/$$c.o || exit 1; done
+	$(NATIVE_CXX) $(NATIVE_TEST_FLAGS) -Isrc/host -I$(RECOMP_BUILD)/upstream/RT64/src/contrib -I$(MINIZ_DIR) -I$(RECOMP_BUILD)/gfx-build/runtime/librecomp/miniz \
+		tests/native_mod_languages.cpp src/host/mod_library.cpp src/native/localization/catalog.cpp build/recomp/mod-languages-test/miniz*.o -o build/recomp/mod-languages-test/test
+	build/recomp/mod-languages-test/test build/recomp/mod-languages-test/run
 
 .PHONY: recomp-music-test
 recomp-music-test:

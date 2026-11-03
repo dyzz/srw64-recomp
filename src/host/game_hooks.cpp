@@ -1,4 +1,6 @@
+#include <cstdio>
 #include "game_hooks.hpp"
+#include "battle_viewer.hpp"
 #include "music.hpp"
 #include "battle_hud.hpp"
 #include "guest_memory.hpp"
@@ -35,6 +37,7 @@
 #include "map_menu.hpp"
 #include "intermission_row.hpp"
 #include "pilot_kills.hpp"
+#include "quote_force.hpp"
 
 SRW64GameHooks srw64_game_hooks;
 bool srw64_sound_effects_muted{};
@@ -98,6 +101,7 @@ void load_00121560_func_801C9710(uint8_t* ram,recomp_context* ctx) {
     // overlay's participant table and is applied when the map is back.
     srw64::battle_animation_probe::step(ram,ctx);
     srw64::wide_map::mark_battle();   // the sky is drawn to each side (background_sides)
+    srw64::battle_viewer::animation_frame();   // a viewer recording starts with the animation's first frame
     srw64_original_battle_animation_step(ram,ctx);
 }
 void load_000AB160_func_801DFBD0(uint8_t* ram,recomp_context* ctx) {
@@ -202,7 +206,10 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
     if(srw64_game_hooks.swap_frame)srw64_game_hooks.swap_frame(ram);
     if(srw64_game_hooks.save_frame)srw64_game_hooks.save_frame(ram);
     if(srw64_game_hooks.cheats_frame)srw64_game_hooks.cheats_frame(ram);
-    if(srw64::mini_stage::take_direct_entry()) {
+    // The map's own return to the title (801DFDBC: 800836CC(0) and the dispatcher) runs the
+    // same hand-over, so a stage loaded off the title (mini_stage::take_restart) enters the
+    // way the armed title does; not while an overlay is still being copied in.
+    if(srw64::mini_stage::take_direct_entry() || (!srw64_overlay_loading() && srw64::mini_stage::take_restart(ram))) {
         // The title overlay's own exit (801CAA34..801CAA80) with the mode the
         // intermission's next-stage exit selects (801D8D94).
         const auto call=[&](void(*function)(uint8_t*,recomp_context*),uint32_t a0=0,uint32_t a1=0,uint32_t a2=0) {
@@ -211,6 +218,16 @@ void resident_func_80085F30(uint8_t* ram,recomp_context* ctx) {
         call(resident_func_800836CC,0);call(resident_func_800A5138);
         srw64::mini_stage::direct_scene(ram);
         call(resident_func_80080188,0xC);call(resident_func_8007F510,0x800801A4,0,1);
+    }
+    // title.reset: the map's own return to the title (801DFDBC) without its fade, from any
+    // overlay but the battle's; the title's exit then resets the game state as usual.
+    if(!srw64_overlay_loading() && srw64::mini_stage::take_title_reset(ram)) {
+        const auto call=[&](void(*function)(uint8_t*,recomp_context*),uint32_t a0=0,uint32_t a1=0,uint32_t a2=0) {
+            auto c=*ctx;c.r29=int32_t(uint32_t(ctx->r29)-0x200);c.r4=int32_t(a0);c.r5=int32_t(a1);c.r6=int32_t(a2);function(ram,&c);
+        };
+        srw64::mini_stage::park_script_engine(ram);
+        call(resident_func_800836CC,0);
+        call(resident_func_80080188,1);call(resident_func_8007F510,0x800801A4,0,1);
     }
     if(srw64_game_hooks.viewer_start) {
         // The battle viewer: a song to listen to (or the title's back), or a battle with
@@ -570,10 +587,92 @@ void resident_func_8009C2DC(uint8_t* rdram, recomp_context* ctx) {
 int srw64_quote_demo(uint8_t* rdram) {
     return srw64_game_hooks.quote_demo && srw64_game_hooks.quote_demo(rdram);
 }
+// 8022245C(record, slot, base): the special (conditional) quote of this slot, written into
+// the slot (several halfwords for a multi-line exchange), the priority group 0..2 answered,
+// -1 when none matched; the caller 80222050 draws a generic line over a group-2 line or
+// none. quote.force (quote_force.hpp): when the original did pick a special line, a waiting
+// forced record that is one of this speaker's special lines replaces it, as a group-1 line
+// so the generic draw stays away (the forced line is taken to fit the situation like the
+// one it replaces: the video's lines were drawn by the original in an earlier take).
 void load_00121560_func_8022245C(uint8_t* rdram, recomp_context* ctx) {
-    if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, uint32_t(ctx->r4));
+    const uint32_t record = uint32_t(ctx->r4), slot = uint32_t(ctx->r5);
+    if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, record);
     srw64_original_battle_quote_pick(rdram, ctx);
     if (srw64_game_hooks.quote_pick) srw64_game_hooks.quote_pick(rdram, 0);
+    using namespace srw64::quote_force;
+    const int group = int16_t(ctx->r2);
+    if (group < 0 || group > 2 || !srw64::guest::valid(slot, 4)) return;
+    const int voice = int(srw64::guest::read(rdram, record + 2, 2));
+    for (auto& p : pending) {
+        const int forced = p.load();
+        if (forced < 0 || !in_special(voice, forced)) continue;
+        srw64::guest::write16(rdram, slot, uint16_t(forced));
+        srw64::guest::write16(rdram, slot + 2, 0xFFFF);
+        ctx->r2 = 1;
+        p = -1;
+        ++served;
+        note_served(forced);
+        return;
+    }
+}
+// 80222B14(record, slot, context): the generic quote of a context (0 attack ... 8) drawn at
+// random from the speaker's segment (ROM 0x1161C0; docs/data/battle-quotes.md) into the slot
+// (record + 0x2C the attack, + 0x848 being hit): slot[0] the record, slot[2] -1. A slot that
+// already holds a conditional quote keeps it two times in three. quote.force
+// (quote_force.hpp) writes the first waiting forced record there instead, once, when it is
+// one of this speaker's lines for this context; the speaker is the record's voice part (record + 2; the
+// sub pilot's for contexts 7 and 8 of a two-seater is not handled).
+void load_00121560_func_80222B14(uint8_t* rdram, recomp_context* ctx) {
+    const uint32_t record = uint32_t(ctx->r4), slot = uint32_t(ctx->r5);
+    const int context = int(uint32_t(ctx->r6) & 0xFFFF);
+    srw64_original_generic_quote_draw(rdram, ctx);
+    using namespace srw64::quote_force;
+    const int voice = int(srw64::guest::read(rdram, record + 2, 2));
+    ++seen;
+    last_voice = voice; last_context = context;
+    last_drawn = int16_t(srw64::guest::read(rdram, slot, 2));
+    if (!srw64::guest::valid(slot, 4)) return;
+    for (auto& p : pending) {
+        const int forced = p.load();
+        if (forced < 0 || !in_segment(voice, context, forced)) continue;
+        srw64::guest::write16(rdram, slot, uint16_t(forced));
+        srw64::guest::write16(rdram, slot + 2, 0xFFFF);
+        p = -1;
+        ++served;
+        note_served(forced);
+        return;
+    }
+}
+// The roster entry a unit handle names (801E510C: 0x42 + slot the player's side, 0x60 the
+// enemy's, 0x7E the third's; 30 slots a side, 0x14 bytes an entry at 8015E100), and whether
+// it still has a unit record (+0xC). A unit an event withdrew during the player's phase
+// (Erlich leaves S56 when persuaded, 2026-11-02) keeps its roster flag and its map object
+// for the rest of the phase while the record pointer is already 0: the original then reads
+// address 0x30 of nothing (a TLB miss on the console, a fault here) as soon as the cursor
+// finds the tile.
+static bool srw64_roster_unit_gone(const uint8_t* rdram, int handle) {
+    if (handle < 0x42 || handle >= 0x7E + 30) return true;   // no handle at all (-1 from 801C2BFC) names no unit either
+    const int side = handle >= 0x7E ? 2 : handle >= 0x60 ? 1 : 0, slot = handle - (side == 2 ? 0x7E : side == 1 ? 0x60 : 0x42);
+    if (slot >= 30) return true;
+    return srw64::guest::read(rdram, 0x8015E100 + uint32_t(side) * 0x258 + uint32_t(slot) * 0x14 + 0xC, 4) == 0;
+}
+// 801C2BFC(): the handle of the unit under the map cursor, -1 none. One without a record is none.
+void load_000AB160_func_801C2BFC(uint8_t* rdram, recomp_context* ctx) {
+    srw64_original_unit_under_cursor(rdram, ctx);
+    const int handle = int16_t(ctx->r2);
+    if (handle != -1 && srw64_roster_unit_gone(rdram, handle)) {
+        static unsigned told = 0;
+        if (told++ < 3) std::fprintf(stderr, "SRW64_MAP: the cursor is on unit handle %d whose record has gone; treated as empty\n", handle);
+        ctx->r2 = -1;
+    }
+}
+// 801F9238(handle, mode, flag): the two-dimensional list input over that unit's record
+// (docs/gameplay/original-controls.md). Nothing to list for a unit without one, nor for
+// no handle: 801D2FB8 hands it 801C2BFC's answer unchecked, -1 included (801E510C then
+// decodes -1 as the third side's slot -127 and the record pointer is read off the roster).
+void load_000AB160_func_801F9238(uint8_t* rdram, recomp_context* ctx) {
+    if (srw64_roster_unit_gone(rdram, int16_t(ctx->r4))) { ctx->r2 = 0; return; }
+    srw64_original_list_2d_input(rdram, ctx);
 }
 // 80221ACC(table, code, base): code when a combination attack's pair says it, else -1
 // (docs/data/battle-quotes.md). The original gathers the pair from the map's participant

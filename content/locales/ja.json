@@ -670,6 +670,8 @@
     "mod_has_dialogue": "台詞 {n} ファイル",
     "mod_has_data": "データ {n} ファイル",
     "mod_has_names": "名前",
+    "mod_has_languages": "言語 {list}",
+    "mod_language_restart": "言語パッケージはゲームを再起動すると有効になります。",
     "mod_has_campaign": "追加シナリオ",
     "mod_has_challenge": "単独ステージ",
     "mod_has_story": "本編ステージの変更",

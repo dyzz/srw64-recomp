@@ -27,13 +27,18 @@ the hits are what the hit bank puts on the target when an attack lands (sparks, 
 the small blasts), shared by every weapon whose header names that hit script; the weapon effects
 are everything else the weapon bank's actors draw (muzzle flashes, shells and missiles, sabre arcs,
 energy balls, the special moves' own pictures), less the generic beams, which are drawn by
-program (BEAM_SCENES).
+program (BEAM_SCENES); the unscripted are the battle_scenes entries left over, which no animation
+script names (palette variants of pictures already done, a few pictures of their own): done too,
+in case code puts them on; the follow-ons are the scenes actors step on to at run time, which
+are in no triplet (FOLLOW_ON_REACH).
 
     .venv/bin/python tools/hd_ai/cutin_hd.py export
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py run [--models build/esrgan-models] [--only SET ...] [--fast [1|2]]
     build/esrgan-venv/bin/python tools/hd_ai/cutin_hd.py pack [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py extend --into assets/hd-ai/cutins/pack-vN [--only SET ...] [--replace] [--bind]
     .venv/bin/python tools/hd_ai/cutin_hd.py scenes [--bind]
+    .venv/bin/python tools/hd_ai/cutin_hd.py share --into assets/hd-ai/cutins/pack-vN [--bind]
+    .venv/bin/python tools/hd_ai/cutin_hd.py rescale --into assets/hd-ai/cutins/pack-vN [--bind]
 
 `extend` adds frames.json rows the bound pack has no picture for to a copy of it, leaving
 its pictures and scene thumbnails as they are; with --replace it packs the rows of the
@@ -179,7 +184,80 @@ def weapon_registries(rom: bytes) -> list[int]:
 BRUSH_REGISTRY = (865, 881)
 # The kill explosions: the fireballs, the big flash, the warships' white ball and the sparks.
 EXPLOSION_REGISTRY = (1042, 1045)
-SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion', 'hit', 'weapon')
+SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'explosion', 'hit', 'weapon', 'unscripted',
+        'follow_on')
+# Many actor behaviours step the sprite on to the next scenes of its atlas (the tracer 3555 ->
+# 3556, 3557; the comet run 3821 -> 3822 ... 3844), now and then the atlas and palette with it
+# (3878/3141/3404 -> 3880/3142/3405). A scene resource in no triplet is matched to the nearest
+# registered scene before it (within this many ids, over scenes only) whose atlas, as it is or
+# moved on by up to FOLLOW_ON_SHIFT with its palette, holds every part of it.
+FOLLOW_ON_REACH, FOLLOW_ON_SHIFT = 40, 3
+# The effects (no face, mostly soft glow) are packed at 3x instead of PACK_SCALE: side by side at
+# the largest scale a battle shows them (1080p) the two cannot be told apart, at a third of the size.
+EFFECT_SETS = frozenset({'weapon', 'hit', 'follow_on', 'unscripted', 'explosion', 'reaction', 'defence'})
+EFFECT_SCALE = 3
+EFFECT_LABELS = ('weapon effect ', 'hit ', 'follow-on ', 'unscripted ', 'explosion ', 'reaction ', 'defence ')
+
+
+def follow_on_triplets(rom: bytes, table: ResourceTable) -> list[tuple[int, tuple[int, int, int]]]:
+    """(base scene, (scene, atlas, palette)) of the follow-on scenes, one row per palette the
+    base is registered with; the units' poses and the generic beams keep to their own layers.
+    A guess by fit: a scene matched to an atlas no actor shows it with is a picture never asked for."""
+    poses = [t for t in read_triplets(rom, 'unit_poses') if t[0]]
+    registered: dict[int, set] = {}
+    for s, a, p in [t for t in read_triplets(rom, 'battle_scenes') if t[0]] + poses:
+        registered.setdefault(s, set()).add((a, p))
+    pose_atlases = {a for _, a, _ in poses}
+    parsed, sizes = {}, {}
+
+    def scene_of(n):
+        if n not in parsed:
+            try:
+                parsed[n] = parse_scene(table.extract(n)[0])
+            except Exception:
+                parsed[n] = None
+        return parsed[n]
+
+    def fits(scene, a, p):
+        if (a, p) not in sizes:
+            try:
+                sizes[a, p] = decode_atlas(table.extract(a)[0], table.extract(p)[0])[0].size
+            except Exception:
+                sizes[a, p] = None
+        size = sizes[a, p]
+        return size and all(q.s + q.w <= size[0] and q.t + q.h <= size[1] for parts in scene.frames for q in parts)
+
+    rows = []
+    for n in range(min(registered), max(registered) + 1):
+        scene = scene_of(n) if n not in registered and n not in BEAM_SCENES else None
+        if not scene:
+            continue
+        found = None
+        for shift in range(FOLLOW_ON_SHIFT + 1):
+            k = n - 1
+            while not found and n - k <= FOLLOW_ON_REACH and (k in registered or scene_of(k)):
+                for a, p in sorted(registered.get(k, ())):
+                    if fits(scene, a + shift, p + shift):
+                        found = (k, a, shift)
+                        break
+                k -= 1
+            if found:
+                break
+        if not found or found[1] in pose_atlases or found[0] in BEAM_SCENES:
+            continue
+        base, a, shift = found
+        rows += [(base, (n, a + shift, p + shift)) for p in sorted({p for a2, p in registered[base] if a2 == a})]
+    return rows
+
+
+def unscripted_registries(rom: bytes) -> list[int]:
+    """Every battle_scenes entry but the generic beams, the poses and the extra images; export
+    keeps those whose triplet no earlier set has (no animation bank names them)."""
+    scenes = read_triplets(rom, 'battle_scenes')
+    poses = {k for k in read_triplets(rom, 'unit_poses') if k[0]}
+    extras = {(r['scene'], r['palette']) for r in json.loads(ANALYSIS.read_text())}
+    return [r for r, (s, a, p) in enumerate(scenes)
+            if s and s not in BEAM_SCENES and (s, a, p) not in poses and (s, p) not in extras]
 
 
 def movie_triplets(rom: bytes) -> list[tuple[int, tuple[int, int, int]]]:
@@ -225,7 +303,9 @@ def export() -> None:
             + [('movie', movie, triplet) for movie, triplet in movie_triplets(rom)]
             + [('explosion', r, scenes[r]) for r in range(EXPLOSION_REGISTRY[0], EXPLOSION_REGISTRY[1] + 1)]
             + [('hit', r, scenes[r]) for r in hit_registries(rom)]
-            + [('weapon', r, scenes[r]) for r in weapon_registries(rom)])
+            + [('weapon', r, scenes[r]) for r in weapon_registries(rom)]
+            + [('unscripted', r, scenes[r]) for r in unscripted_registries(rom)]
+            + [('follow_on', base, triplet) for base, triplet in follow_on_triplets(rom, table)])
     any_palette = {triplet for _, triplet, recoloured in defence_triplets(rom) if recoloured}
     for kind, number, (s, a, p) in sets:
         if not s or (s, a, p) in seen:
@@ -245,7 +325,7 @@ def export() -> None:
             key = digest(image)
             if not (OUT / 'inputs' / f'{key}.png').exists():
                 image.save(OUT / 'inputs' / f'{key}.png')
-            field = {'shield': 'unit', 'defence': 'code', 'movie': 'movie'}.get(kind, 'registry')
+            field = {'shield': 'unit', 'defence': 'code', 'movie': 'movie', 'follow_on': 'base'}.get(kind, 'registry')
             rows.append({'set': kind, field: number, 'scene': s, 'atlas': a, 'palette': p,
                          'frame': frame, 'box': list(box), 'input': key}
                         | ({'any_palette': True, 'palette_indices': used[frame]} if used else {}))
@@ -311,18 +391,21 @@ def pack_row(r: dict, folder: Path) -> dict:
     source = redrawn if redrawn.exists() else OUT / 'hd' / f"{r['input']}.png"
     if not source.exists():
         raise SystemExit(f'no HD frame for {r} (run first)')
-    from tools.hd_ai.unit_extra_derive import pack_image
-    image = pack_image(Image.open(source), K)
-    image.save(folder / name, optimize=True)
+    from tools.hd_ai.unit_extra_derive import PACK_SCALE, pack_image
     kind = r.get('set', 'cutin')
+    scale = EFFECT_SCALE if kind in EFFECT_SETS else PACK_SCALE
+    image = pack_image(Image.open(source), K * PACK_SCALE / scale)   # pack_image resizes to PACK_SCALE / its scale
+    image.save(folder / name, optimize=True)
     label = {'cutin': f"cut-in {r.get('registry')}", 'prop': f"prop {r.get('registry')}", 'shield': f"shield {r.get('unit')}",
              'defence': f"defence {r.get('code')}", 'reaction': f"reaction {r.get('registry')}",
              'brush': f"brush {r.get('registry')}", 'movie': f"map movie {r.get('movie')}",
              'explosion': f"explosion {r.get('registry')}", 'hit': f"hit {r.get('registry')}",
-             'weapon': f"weapon effect {r.get('registry')}"}[kind]
+             'weapon': f"weapon effect {r.get('registry')}", 'unscripted': f"unscripted {r.get('registry')}",
+             'follow_on': f"follow-on of scene {r.get('base')}"}[kind]
     return {'scene': r['scene'], 'atlas': r['atlas'], 'palette': r['palette'], 'frame': r['frame'], 'file': name,
             'sha256': hashlib.sha256((folder / name).read_bytes()).hexdigest(),
             'width': image.width, 'height': image.height, 'method': 'image_gen' if source == redrawn else 'esrgan', 'unit': label} \
+        | ({'scale': scale} if scale != PACK_SCALE else {}) \
         | ({'any_palette': True, 'palette_indices': r['palette_indices']} if r.get('any_palette') else {})
 
 
@@ -336,7 +419,7 @@ def pack(bind: bool) -> None:
     from tools.hd_ai.unit_extra_derive import PACK_SCALE
     index = {'schema': 'srw64.unit-extra-images.v1', 'scale': PACK_SCALE,
              'recipe': f'50% {RECIPE[0]} + 50% {RECIPE[1]} (tools/hd_ai/cutin_hd.py)', 'images': rows}
-    (folder / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
+    share_files(folder, index)
     print(len(rows), 'frames packed')
     scenes(bind)
 
@@ -352,23 +435,101 @@ def extend(into: Path, bind: bool, only: list[str] | None = None, replace: bool 
         if path.is_file() and path.name != 'battle-sprites.json':
             os.link(path, into / path.name)
     index = json.loads((current / 'battle-sprites.json').read_text())
-    have = {r['file'] for r in index['images']}
+    have = {frame_key(r) for r in index['images']}
     rows = [r for r in json.loads((OUT / 'frames.json').read_text())['frames'] if not only or r.get('set') in only]
     if not replace:
-        rows = [r for r in rows if f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png" not in have]
+        rows = [r for r in rows if frame_key(r) not in have]
     for r in rows:                                # a hard link: drop it rather than write through to the bound pack
         (into / f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png").unlink(missing_ok=True)
     added = [pack_row(r, into) for r in rows]
-    files = {r['file'] for r in added}
-    index['images'] = [r for r in index['images'] if r['file'] not in files] + added
-    (into / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
+    keys = {frame_key(r) for r in added}
+    index['images'] = [r for r in index['images'] if frame_key(r) not in keys] + added
+    share_files(into, index)
     print(len(added), 'frames added to', current.name, '->', into.name)
     if bind:
-        manifest = json.loads(MANIFEST.read_text())
-        manifest['battle_sprites'] = {'path': str(into.relative_to(ROOT)),
-                                      'manifest_sha256': hashlib.sha256((into / 'battle-sprites.json').read_bytes()).hexdigest()}
-        MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-        print('bound', MANIFEST.relative_to(ROOT))
+        bind_pack(into)
+
+
+def frame_key(r: dict) -> tuple[int, int, int, int]:
+    return r['scene'], r['atlas'], r['palette'], r['frame']
+
+
+def share_files(folder: Path, index: dict) -> None:
+    """Rows whose pictures are byte for byte the same (another palette that draws the same
+    colours, a scene repeated under another id: a fifth of the pack) point at one file,
+    same-<sha256 prefix>.png, and the files no row names any more go. A row's own
+    <scene>-<atlas>-<palette>-f<frame>.png is never shared, so `extend` can rewrite it."""
+    groups: dict[str, list[dict]] = {}
+    for r in index['images']:
+        groups.setdefault(r['sha256'], []).append(r)
+    for digest_, rows in groups.items():
+        if len(rows) < 2:
+            continue
+        name = f'same-{digest_[:16]}.png'
+        if not (folder / name).exists():
+            os.link(folder / rows[0]['file'], folder / name)
+        for r in rows:
+            r['file'] = name
+    named = {r['file'] for r in index['images']} | {r['file'] for r in index.get('scenes', [])}
+    for path in folder.glob('*.png'):
+        if path.name not in named:
+            path.unlink()
+    (folder / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
+
+
+def bind_pack(folder: Path) -> None:
+    manifest = json.loads(MANIFEST.read_text())
+    manifest['battle_sprites'] = {'path': str(folder.relative_to(ROOT)),
+                                  'manifest_sha256': hashlib.sha256((folder / 'battle-sprites.json').read_bytes()).hexdigest()}
+    MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    print('bound', MANIFEST.relative_to(ROOT))
+
+
+def rescale(into: Path, bind: bool) -> None:
+    """A new pack folder: the bound pack hard-linked, its effect rows (EFFECT_LABELS) at
+    PACK_SCALE shrunk from their packed pictures to EFFECT_SCALE (colour and alpha apart,
+    pack_image), then shared (share_files)."""
+    from tools.hd_ai.unit_extra_derive import PACK_SCALE, pack_image
+    into = into.absolute()
+    current = ROOT / json.loads(MANIFEST.read_text())['battle_sprites']['path']
+    into.mkdir(parents=True, exist_ok=False)
+    for path in current.iterdir():
+        if path.is_file() and path.name != 'battle-sprites.json':
+            os.link(path, into / path.name)
+    index = json.loads((current / 'battle-sprites.json').read_text())
+    done, count = {}, 0
+    for r in index['images']:
+        if not r['unit'].startswith(EFFECT_LABELS) or r.get('scale', PACK_SCALE) == EFFECT_SCALE:
+            continue
+        if r['file'] not in done:
+            image = pack_image(Image.open(current / r['file']), PACK_SCALE * PACK_SCALE / EFFECT_SCALE)
+            name = f"{r['scene']}-{r['atlas']}-{r['palette']}-f{r['frame']}.png"
+            (into / name).unlink(missing_ok=True)       # a hard link: never write through to the bound pack
+            image.save(into / name, optimize=True)
+            done[r['file']] = {'file': name, 'sha256': hashlib.sha256((into / name).read_bytes()).hexdigest(),
+                               'width': image.width, 'height': image.height, 'scale': EFFECT_SCALE}
+        r.update(done[r['file']])
+        count += 1
+    share_files(into, index)
+    print(count, 'effect rows at', EFFECT_SCALE, 'x,', len({r['file'] for r in index['images']}), 'files ->', into.name)
+    if bind:
+        bind_pack(into)
+
+
+def share(into: Path, bind: bool) -> None:
+    """A new pack folder: the bound pack hard-linked, with its identical pictures shared (share_files)."""
+    into = into.absolute()
+    current = ROOT / json.loads(MANIFEST.read_text())['battle_sprites']['path']
+    into.mkdir(parents=True, exist_ok=False)
+    for path in current.iterdir():
+        if path.is_file() and path.name != 'battle-sprites.json':
+            os.link(path, into / path.name)
+    index = json.loads((current / 'battle-sprites.json').read_text())
+    before = len({r['file'] for r in index['images']})
+    share_files(into, index)
+    print(len(index['images']), 'rows,', before, '->', len({r['file'] for r in index['images']}), 'files')
+    if bind:
+        bind_pack(into)
 
 
 def scenes(bind: bool, shots: Path | None = None, into: Path | None = None) -> None:
@@ -445,7 +606,7 @@ def review() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('step', choices=('export', 'run', 'pack', 'extend', 'scenes', 'review'))
+    parser.add_argument('step', choices=('export', 'run', 'pack', 'extend', 'scenes', 'share', 'rescale', 'review'))
     parser.add_argument('--models', type=Path, default=ROOT / 'build/esrgan-models')
     parser.add_argument('--only', nargs='+', help='run, extend: just these sets (brush, movie, ...)')
     parser.add_argument('--fast', type=int, nargs='?', const=2, default=0, choices=(1, 2),
@@ -453,7 +614,7 @@ def main() -> None:
     parser.add_argument('--replace', action='store_true', help='extend: repack the --only sets even where the bound pack has them')
     parser.add_argument('--bind', action='store_true', help='point the art manifest at the pack')
     parser.add_argument('--shots', type=Path, help='scenes: HD captures (tools/hd_ai/viewer_scenes.py) instead of the catalogue renders')
-    parser.add_argument('--into', type=Path, help='scenes, extend: a new pack folder, hard-linked from the current one')
+    parser.add_argument('--into', type=Path, help='scenes, extend, share, rescale: a new pack folder, hard-linked from the current one')
     args = parser.parse_args()
     if args.step == 'export':
         export()
@@ -469,6 +630,10 @@ def main() -> None:
         extend(args.into, args.bind, args.only, args.replace)
     elif args.step == 'scenes':
         scenes(args.bind, args.shots, args.into)
+    elif args.step in ('share', 'rescale'):
+        if args.into is None:
+            parser.error(f'{args.step} needs --into')
+        (share if args.step == 'share' else rescale)(args.into, args.bind)
     else:
         review()
 

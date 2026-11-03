@@ -99,7 +99,7 @@ How to write `mod.json` is in [Mod packages](../mods/#modjson); set `game` to `"
 | Field | Meaning |
 | --- | --- |
 | `id` | Must be the same as `mod.json`'s `id`. It also names the campaign's save folder: **do not change it after release** |
-| `name`, `description` | The name and description on the Extra Scenarios page: one string, or one per language (`zh-Hans`, `en`, `ja`) |
+| `name`, `description` | The name and description on the Extra Scenarios page: one string, or one per language (`zh-Hans`, `zh-Hant`, `en`, `ja`, and [language packages' languages](../mod-language/)) |
 | `start` | Which entry of `stages` comes first |
 | `stages` | Each stage: `scene`, the scene number it borrows (below); `file`, the stage file; `title`, shown on the title card, in the intermission and in the save list. Leave the stage number out of the title: the intermission and the save list put “Stage N” in front by themselves, counting the stages cleared |
 

@@ -24,6 +24,12 @@ const t = {
     en: 'Mod packages we made ourselves, to download here. Drop the .srw64mod file on the game window to install it; the MOD manager disables or removes it. On Android, put it in mods/ inside the Marchwind64 folder under Documents, or press Install from file on the MOD page.',
     ja: '私たちが作った MOD パッケージを、ここからダウンロードできます。.srw64mod ファイルをゲームのウィンドウにドラッグするとインストールされ、MOD 管理で無効化や削除ができます。Android 版では「ファイル」アプリの Marchwind64 フォルダー内 mods/ に置くか、MOD ページの「ファイルからインストール」を使います。',
   },
+  android: { zh: '安卓版怎么安装（图解）', en: 'Installing on Android (illustrated)', ja: 'Android 版でのインストール（図解）' },
+  androidAlt: {
+    zh: '安卓版安装 MOD：设置 › 通用 › MOD，再点「从文件安装」选文件，或把文件放进 Documents/Marchwind64/mods',
+    en: 'Installing a MOD on Android: Settings › General › MOD, then Install from file, or put the file in Documents/Marchwind64/mods',
+    ja: 'Android 版で MOD をインストール：設定 › 一般 › MOD を開き、「ファイルからインストール」で選ぶか、Documents/Marchwind64/mods に置く',
+  },
   make: {
     zh: '自己做包：', en: 'Making your own: ', ja: '自分で作るには：',
   },
@@ -31,6 +37,7 @@ const t = {
     { href: 'docs/mods/', zh: 'MOD 包', en: 'Mod packages', ja: 'MOD パッケージ' },
     { href: 'docs/mod-data/', zh: '数值 MOD', en: 'Number mods', ja: '数値 MOD' },
     { href: 'docs/mod-music/', zh: '音乐 MOD', en: 'Music mods', ja: '音楽 MOD' },
+    { href: 'docs/mod-language/', zh: '语言包 MOD', en: 'Language packages', ja: '言語パッケージ MOD' },
   ],
   download: { zh: '下载', en: 'Download', ja: 'ダウンロード' },
   version: { zh: '版本', en: 'Version', ja: 'バージョン' },
@@ -68,6 +75,10 @@ const size = (n: number) =>
       <span class="tag">MOD</span>
       <h1>{t.title[tl(lang)]}</h1>
       <p>{t.lead[tl(lang)]}</p>
+      <details class="android">
+        <summary>{t.android[tl(lang)]}</summary>
+        <img src={`/media/android-mod-install-${tl(lang)}.webp`} alt={t.androidAlt[tl(lang)]} width="1600" height={{ zh: 1678, en: 1698, ja: 1720 }[tl(lang)]} loading="lazy" />
+      </details>
       <p class="note">{t.make[tl(lang)]}{t.guides.map((g, i) => <>{i > 0 && (lang === 'en' ? ', ' : '、')}<a href={`/${lang}/${g.href}`}>{g[tl(lang)]}</a></>)}</p>
     </header>
     {mods.length === 0 && <p class="note">{t.none[tl(lang)]}</p>}
@@ -103,6 +114,9 @@ const size = (n: number) =>
 <style>
   .mods { padding-bottom: 64px; }
   .note { color: var(--muted); font-size: 14px; }
+  .android { margin: 0 0 12px; }
+  .android summary { cursor: pointer; color: var(--gold); font-size: 14px; }
+  .android img { display: block; width: 100%; max-width: 720px; height: auto; margin-top: 12px; }
   .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
   .card { padding: 20px 22px; background: var(--panel); border: 1px solid var(--line-soft); display: grid; gap: 14px; scroll-margin-top: 80px; }
   .card:target { border-color: var(--gold); }

@@ -13,14 +13,17 @@
 #include "text_update.hpp"
 #include "upgrade_refund.hpp"
 #include "story_mod.hpp"
+#include "mod_languages.hpp"
 #include "campaign.hpp"
 #include "input_mode.hpp"
 #include "text/button_prompts.hpp"
+#include "text/game_fonts.hpp"
 #include "game_adapter/dialogue_source.hpp"
 #include "localization/dialogue_text.hpp"
 #include "presentation/display_list_snapshots.hpp"
 #include "json/json.hpp"
 #include "title_row.hpp"
+#include "battle_viewer.hpp"
 #include <algorithm>
 #include <atomic>
 #include <ctime>
@@ -52,6 +55,7 @@ bool bar_dialogue{};                          // a box was visible in the last f
 uint16_t bar_buttons{};                       // the buttons as last read, for presses
 int bar_pad=-1;                               // pad_hints and pad_family last drawn
 void show_bar(uint64_t vis){bar_until=std::max(bar_until,srw64_current_vi()+vis);}
+std::atomic_bool bar_hidden{};               // set_hints_hidden: the bar never shows
 std::atomic_bool auto_toggle{};              // an L2 press, for the next reading step
 std::atomic_bool owns_input{};
 uint16_t consumed_hold{};
@@ -192,9 +196,26 @@ std::string guest_record_text(const uint8_t* ram,const localization::Catalog& ja
 // Show the record in the reading language while the label still shows that
 // record's Japanese text, and a name field as shown_name does; anything else
 // stays as drawn.
+// In a battle viewer battle (issue #22) the eight protagonists and partners may meet
+// whatever route is set, and the name fields hold only that route's two: a speaker label
+// naming one of the eight (nickname 0x1137 + person, full name 0x12A0 + person) shows
+// that person's own default name instead.
+std::optional<std::string> viewer_person_name(uint16_t id,const std::string& locale) {
+    if(!battle_viewer::busy())return std::nullopt;
+    const bool nick=uint16_t(id-0x1137)<names::people,full=uint16_t(id-0x12A0)<names::people;
+    if(!nick && !full)return std::nullopt;
+    const auto& table=names::default_names();
+    const unsigned person=nick?id-0x1137u:id-0x12A0u;
+    const auto text=[&](names::Field field){const auto* row=table.find(field,person);return row?table.default_text(*row,locale):std::string();};
+    if(nick)return text(names::Field::Nick);
+    const auto given=text(names::Field::Name),family=text(names::Field::Surname);
+    if(given.empty() || family.empty())return std::nullopt;
+    return given+names::separator(locale)+family;
+}
 std::string speaker_name(const uint8_t* ram,uint32_t label,const localization::Catalog& language) {
     const auto shown=decode(ram,label+12,20);
     const uint16_t id=half(ram,label);
+    if(auto own=viewer_person_name(id,language.locale);own && !own->empty())return *own;
     if(const auto* slot=entered_name(id))return shown_name(shown,*slot,language.locale);
     const auto japanese=localization::find("ja");
     if(!japanese || guest_record_text(ram,*japanese,id)!=shown)return shown;
@@ -377,13 +398,40 @@ std::pair<std::map<std::string,size_t>,size_t> load_text() {
     std::vector<localization::dialogue_text::Problem> problems;
     json summary=json::object();std::map<std::string,size_t> entries;
     std::map<std::string,std::map<std::string,std::string>> pages=prepared_pages;
-    // A text update (text_update.hpp) lies between the shipped text and the player's.
+    // A text update (text_update.hpp) lies between the shipped text and the player's;
+    // language packages' layers (mod_languages.hpp) between the update and the player's.
     const auto update=text_update::layer();
-    for(const auto& [locale,shipped]:base_catalogs) {
-        const auto base=update?update->apply(shipped):shipped;
-        const std::vector<std::filesystem::path> roots{text_bundled.empty()?text_bundled:text_bundled/locale,
-                                                       update?update->dialogue(locale):std::filesystem::path(),
-                                                       text_overrides.empty()?text_overrides:text_overrides/locale};
+    // The built-in languages first: a package's language starts from its fallback's text,
+    // dialogue files and pages included.
+    std::vector<std::string> order;
+    for(const bool package:{false,true})
+        for(const auto& [locale,shipped]:base_catalogs)if((localization::style(locale)!=locale)==package)order.push_back(locale);
+    for(const auto& locale:order) {
+        const auto& shipped=base_catalogs.at(locale);
+        const auto fallback=localization::style(locale);
+        const bool package=fallback!=locale;
+        localization::Snapshot base=package?next.at(fallback)->as_locale(locale):update?update->apply(shipped):shipped;
+        if(package)pages[locale]=pages[fallback];
+        const auto layers=mod_languages::layers(locale);
+        std::vector<std::filesystem::path> roots;
+        if(!package)roots={text_bundled.empty()?text_bundled:text_bundled/locale,update?update->dialogue(locale):std::filesystem::path()};
+        for(const auto& layer:layers) {
+            // Labels only where ours has the label and the same {marks}, as a text update's.
+            localization::Catalog::Table labels;
+            for(const auto& [key,text]:layer.ui) {
+                const auto& ours=base->ui_labels();
+                const auto found=ours.find(key);
+                if(found==ours.end())continue;
+                if(mod_languages::marks(text)!=mod_languages::marks(found->second)) {
+                    problems.push_back({locale+"/"+layer.package+"/terms.json",0,key,"its {marks} differ from the label's"});continue;
+                }
+                labels[key]=text;
+            }
+            base=base->with_labels(labels,"mod:"+layer.package);
+            base=base->with_translations(layer.entries,"mod:"+layer.package);
+            roots.push_back(layer.folder);
+        }
+        roots.push_back(text_overrides.empty()?text_overrides:text_overrides/locale);
         auto result=localization::dialogue_text::load(roots,*base);
         for(auto problem:result.problems){problem.path=locale+"/"+problem.path;problems.push_back(std::move(problem));}
         summary[locale]={{"entries",result.targets.size()},{"intro",result.intro.size()},{"files",result.files},{"problems",result.problems.size()}};
@@ -632,7 +680,7 @@ void drawn(uint8_t* ram,uint32_t begin,uint32_t end) {
         if(bar_pad>=0 && pad!=bar_pad)show_bar(bar_again_vis);  // the hints change their icons
         bar_pad=pad;
         if(reader.fast || reader.skipping)show_bar(bar_again_vis);
-        frame->bar_fade=settings::dialogue_hints_always()?1:
+        frame->bar_fade=bar_hidden.load()?0.0:settings::dialogue_hints_always()?1:
             std::clamp(double(int64_t(bar_until)-int64_t(frame->vi))/double(bar_fade_vis),0.0,1.0);
     }
     {
@@ -670,14 +718,44 @@ bool reading() {
     std::lock_guard lock(mutex);
     return enabled && reader.active;
 }
+void set_hints_hidden(bool hidden){bar_hidden=hidden;}
+bool hints_hidden(){return bar_hidden.load();}
 ReadingControls reading_controls() {
     std::lock_guard lock(mutex);
     return {enabled && !observe && reader.active, reader.history_open, reader.skipping};
+}
+// The enabled packages' reading languages (mod_languages.hpp), each over its fallback's
+// catalog until load_text() lays the text on; then the language the launcher could not
+// choose (SRW64_LOCALE names a package's).
+void register_languages() {
+    const auto japanese=localization::find("ja");
+    if(!japanese)return;
+    auto found=mod_languages::collect(mods::installed(mods::game_version()),*japanese);
+    std::vector<mod_languages::Language> added;
+    for(auto& language:found.languages) {
+        try {
+            // A face FreeType cannot open would fail every layout of the language: check
+            // them here and leave the language out instead.
+            for(const auto& path:language.text_fonts)text::FontSet({{path,0,0}});
+            if(!language.title_font.empty())text::FontSet({{language.title_font,0,0}});
+            localization::add_locale(localization::find(language.fallback)->as_locale(language.locale),language.name,language.fallback);
+            text::set_locale_fonts(language.locale,language.fallback,language.text_fonts,language.title_font);
+            added.push_back(std::move(language));
+        } catch(const std::exception& error) {
+            found.problems.push_back(language.package+" dialogue/"+language.locale+"/: "+error.what());
+            found.layers.erase(language.locale);
+        }
+    }
+    found.languages=std::move(added);
+    mod_languages::set(std::move(found));
+    if(const char* wanted=std::getenv("SRW64_LOCALE"))
+        if(const auto catalog=localization::find(wanted);catalog && localization::style(wanted)!=wanted)localization::activate(catalog);
 }
 void configure(const std::filesystem::path& directory) {
     const auto* document=dialogue_data::document();if(!document)return;
     const json& data=*document;
     localization::initialize(data,dialogue_data::tables());
+    register_languages();
     base_catalogs=localization::registered();
     for(const auto& [locale,catalog]:localization::registered()) {
         localization::Scope scope(catalog);typeset(u"Aa 日本語 简体中文",13);
@@ -710,7 +788,7 @@ void configure(const std::filesystem::path& directory) {
             if(name.starts_with(intro))page_texts[name.substr(intro.size())]=*table;
         prepared_pages=page_texts;
     }
-    if(!dialogue_data::tables() || text_update::layer()) {
+    if(!dialogue_data::tables() || text_update::layer() || !mod_languages::layers_empty()) {
         const auto [entries,problems]=load_text();
         localization::activate(localization::find(localization::snapshot()->locale));
         if(problems)announce_text(entries,problems);

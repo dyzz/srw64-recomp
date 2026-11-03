@@ -18,6 +18,10 @@
 #include "stb/stb_image.h"
 #include "app/rom_import_codec.hpp"
 #include "librecomp/game.hpp"
+#ifdef SRW64_NATIVE_DIALOGUE
+#include "localization/catalog.hpp"
+#include "mod_languages.hpp"
+#endif
 #include <algorithm>
 #include <array>
 #include <atomic>
@@ -81,6 +85,8 @@ struct Image {
     // hold a colour again at an entry the picture never shows).
     bool any_palette = false;
     std::vector<uint16_t> indices;
+    // Language packages' pictures for this one (art/<locale>/<file>), drawn in their locale.
+    std::map<std::string, int> localized;
 };
 struct Draw {
     uint32_t id = 0;
@@ -597,6 +603,21 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
                 image.asset = int(assets.size());
                 assets.push_back(std::move(asset));
             }
+#ifdef SRW64_NATIVE_DIALOGUE
+            // Language packages' versions of the picture (docs/design/mod-language-packs.md),
+            // read before the graphics start; drawn where the HD one would be.
+            for (const auto& locale : mod_languages::locales()) {
+                const auto file = mod_languages::art(locale, row.at("file").get<std::string>());
+                if (file.empty()) continue;
+                if (!hd_texture::exists(file)) continue;
+                auto localized = std::make_unique<Asset>();
+                localized->file = file;
+                localized->key = "image:" + locale + ":" + row.at("file").get<std::string>();
+                std::lock_guard lock(asset_mutex);
+                image.localized[locale] = int(assets.size());
+                assets.push_back(std::move(localized));
+            }
+#endif
             std::lock_guard lock(image_mutex);
             images.push_back(image);
         }
@@ -621,7 +642,10 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
             auto asset = std::make_unique<Asset>();
             asset->file = art_directory / row.at("file").get<std::string>();
             if (!hd_texture::exists(asset->file)) throw std::runtime_error("Missing unit image " + asset->file.string());
-            asset->key = "unit:" + row.at("file").get<std::string>();
+            // Rows can share one file (identical pictures, tools/hd_ai/cutin_hd.py share); the key
+            // keeps their recoloured variants apart, each made from its own registered palette.
+            asset->key = "unit:" + row.at("file").get<std::string>() + "#" + std::to_string(image.scene) + "-" +
+                         std::to_string(image.atlas) + "-" + std::to_string(image.palette) + "-" + std::to_string(*image.frames.begin());
             {
                 std::lock_guard lock(asset_mutex);
                 image.asset = int(assets.size());
@@ -746,7 +770,12 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
                      {{"kind", "no image"}, {"scene", id.scene}, {"atlas", id.atlas}, {"palette", id.palette}, {"frame", id.frame}, {"slot", id.slot}});
             return;
         }
-        record.asset = found->asset;
+        int chosen = found->asset;
+#ifdef SRW64_NATIVE_DIALOGUE
+        if (!found->localized.empty())
+            if (const auto at = found->localized.find(localization::snapshot()->locale); at != found->localized.end()) chosen = at->second;
+#endif
+        record.asset = chosen;
         // The game changed the palette in place (a flash, a gold mode), or drew an
         // any-palette picture with another palette: the same frame in the colours it draws
         // with now, made once per colour set; the original sprite stands in until it is ready.
@@ -759,7 +788,7 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
         for (size_t i = 0; i < count; ++i) live.push_back(half(rdram, id.palette_data + 8 + 2u * uint32_t(i)));
         if (colors && live != *colors) {
             std::lock_guard lock(asset_mutex);
-            const Asset& base = *assets[size_t(found->asset)];
+            const Asset& base = *assets[size_t(chosen)];
             if (!base.render) {
                 uint64_t hash = 1469598103934665603ull;
                 for (const uint16_t c : live) hash = (hash ^ c) * 1099511628211ull;
@@ -769,9 +798,9 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
                 // any-palette ones (a set per attacker) cannot use up every other's.
                 static std::map<int, unsigned> variants;
                 if (const auto at = by_key.find(key); at != by_key.end()) record.asset = at->second;
-                else if (variants[found->asset] >= 64) return;
+                else if (variants[chosen] >= 64) return;
                 else {
-                    ++variants[found->asset];
+                    ++variants[chosen];
                     auto variant = std::make_unique<Asset>();
                     variant->key = key; variant->file = base.file; variant->recolor = true;
                     if (found->indices.empty()) {

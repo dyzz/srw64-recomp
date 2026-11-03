@@ -32,15 +32,19 @@ int main(int argc,char** argv) {
         {"events",nlohmann::json::array({{{"offset",0},{"size",18}},{{"offset",20},{"size",14}}})}};
     auto parsed=parse(image);
     assert(parsed.pointers.size()==2 && parsed.pointers[1]==event_block+20 && parsed.map && *parsed.map==20 && !parsed.slot);
-    assert(!parsed.route);
+    assert(!parsed.route && parsed.story_vars.empty() && !parsed.last_choice);
     {
-        // The protagonist route of a direct entry: 0 to 3, null for none.
-        auto with=image;with["route"]=2;
-        assert(parse(with).route && *parse(with).route==2);
-        with["route"]=nullptr;
-        assert(!parse(with).route);
-        for(const nlohmann::json& value:{nlohmann::json(4),nlohmann::json(-1),nlohmann::json("2")}) {
-            auto bad=image;bad["route"]=value;bool threw=false;
+        // The story set-up of a direct entry: the route, variables as an object or pairs, the last choice.
+        auto setup=image;setup["route"]=2;setup["story_vars"]={{"9",0},{"17",3}};setup["last_choice"]=2;
+        auto with=parse(setup);
+        std::sort(with.story_vars.begin(),with.story_vars.end());
+        assert((with.route && *with.route==2 && with.story_vars==std::vector<std::pair<unsigned,unsigned>>{{9,0},{17,3}} && with.last_choice && *with.last_choice==2));
+        setup["story_vars"]=nlohmann::json::array({{9,1}});
+        assert((parse(setup).story_vars==std::vector<std::pair<unsigned,unsigned>>{{9,1}}));
+        setup["route"]=nullptr;
+        assert(!parse(setup).route);
+        for(auto [key,value]:std::vector<std::pair<std::string,nlohmann::json>>{{"route",4},{"route",-1},{"route","2"},{"story_vars",{{"200",0}}},{"story_vars",{{"9",4}}},{"last_choice",0},{"last_choice",9}}) {
+            auto bad=image;bad[key]=value;bool threw=false;
             try{parse(bad);}catch(const std::runtime_error&){threw=true;}
             assert(threw);
         }

@@ -241,8 +241,8 @@ def main() -> None:
         image.save(into / name, optimize=True)
         added.append(row | {'file': name, 'sha256': hashlib.sha256((into / name).read_bytes()).hexdigest(),
                             'width': image.width, 'height': image.height, 'method': 'ramp', 'unit': f"beam {row['scene']}"})
-    files = {r['file'] for r in added}
-    index['images'] = [r for r in index['images'] if r['file'] not in files] + added
+    keys = {(r['scene'], r['atlas'], r['palette'], r['frame']) for r in added}   # by frame: rows may share a file (cutin_hd.py share)
+    index['images'] = [r for r in index['images'] if (r['scene'], r['atlas'], r['palette'], r['frame']) not in keys] + added
     (into / 'battle-sprites.json').write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
     print(len(added), 'beam frames,', len(triplets), 'triplets ->', into.name)
     if args.bind:

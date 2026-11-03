@@ -1,4 +1,5 @@
 #pragma once
+#include "localization/locale_fallbacks.hpp"
 #include <cstdint>
 #include <functional>
 #include <map>
@@ -27,9 +28,11 @@ struct DefaultName {
     std::map<std::string,std::string> text;   // by locale; a missing locale shows `ja`
 };
 // A full name joins given and family name with the locale's separator.
+// A language package's locale uses its fallback's.
 inline std::string separator(const std::string& locale) {
-    if(locale=="zh-Hans" || locale=="zh-Hant")return "·";
-    if(locale=="en")return " ";
+    const auto style=localization::style(locale);
+    if(style=="zh-Hans" || style=="zh-Hant")return "·";
+    if(style=="en")return " ";
     return "・";
 }
 // Names from MOD packages (docs/design/mod-names-art-data.md §1) shown over a default,

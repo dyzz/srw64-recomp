@@ -15,4 +15,10 @@ std::vector<FontSource> game_font_sources(const std::string& locale,int weight=0
 // Without it in SRW64_FONT_DIR the cards keep the plain chain.
 std::vector<FontSource> title_font_sources(const std::string& locale,int weight=0);
 std::filesystem::path game_font_path();
+// A language package's faces (docs/design/mod-language-packs.md): the chains above put its
+// text faces (then, on the cards, its title face first) in front of its fallback's chain.
+void set_locale_fonts(const std::string& locale,const std::string& fallback,
+                      std::vector<std::filesystem::path> text,std::filesystem::path title);
+// A package locale's text faces, for the shared UI; none for a built-in locale.
+std::vector<std::filesystem::path> locale_fonts(const std::string& locale);
 }

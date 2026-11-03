@@ -14,7 +14,7 @@ type Entry = { unit: number; pic: Picture | null; way: Way };
 
 const ICON = 128, ICON_SIZES = [16, 32, 64, 128];
 // The three ways the game draws an icon (unit_icon_art.hpp marked; the third party is left
-// out): the player's, looking left; the enemy's, looking right; acted, the player's grey at 85%.
+// out): the player's, looking left; the enemy's, looking right; acted, the player's grey at 60%.
 const SIDES = [{ left: true, palette: '' }, { left: false, palette: '-1011' }, { left: true, palette: '-1013' }];
 
 export function initIconMaker() {
@@ -82,7 +82,7 @@ export function initIconMaker() {
       if (mark && side === 2) {
         const data = m.getImageData(0, 0, ICON, ICON), p = data.data;
         if (side === 2)
-          for (let i = 0; i < p.length; i += 4) p[i] = p[i + 1] = p[i + 2] = Math.min(255, Math.floor((p[i] * 0.299 + p[i + 1] * 0.587 + p[i + 2] * 0.114) * 0.85));
+          for (let i = 0; i < p.length; i += 4) p[i] = p[i + 1] = p[i + 2] = Math.min(255, Math.floor((p[i] * 0.299 + p[i + 1] * 0.587 + p[i + 2] * 0.114) * 0.6));
         m.putImageData(data, 0, 0);
       }
       const g = canvas.getContext('2d')!;

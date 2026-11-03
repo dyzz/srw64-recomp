@@ -97,7 +97,8 @@ def place(source: Path, target: Path, link: bool) -> None:
 def copy_whole_images(index: dict, files: list, output: Path, folder: str, runtime_name: str, link: bool = False) -> None:
     (output / folder).mkdir()
     for path, row in files:
-        place(path, output / folder / row["file"], link)
+        if not (output / folder / row["file"]).exists():   # rows may share a file
+            place(path, output / folder / row["file"], link)
     runtime = {**index, **{key: [{**row, "file": f"{folder}/{row['file']}"} for row in index[key]] for key in ("images", "scenes") if key in index}}
     (output / runtime_name).write_text(json.dumps(runtime, indent=2) + "\n")
 

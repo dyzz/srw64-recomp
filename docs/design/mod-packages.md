@@ -21,7 +21,7 @@ story/      改主线关卡（§7）
 data/       数值（§5）
 rules.json  打开宿主规则（§6）
 art/        美术（§4）
-dialogue/   台词与语言
+dialogue/   台词与语言（语言包见 mod-language-packs.md）
 audio/      音乐与语音
 ```
 
@@ -201,7 +201,7 @@ audio/      音乐与语音
 - **接在结束事件后的 MOD 事件**：条件「说服事件已触发」（宿主判断），补对白与 `3D5A 18,0,27,500`。
 - `data/pilots.json` 给人物 18 补 SP（原版为 0）。
 
-### 7.6 实现与实机（2026-11-02，worktree story-mod，未合并）
+### 7.6 实现与实机（2026-11-02，已合并进 main）
 
 用户定：尽量放宿主，相当于抽象一层剧情脚本，方便别人写。作者写法见[剧情 MOD 指南](../guide/story-mods/README.md)。
 
