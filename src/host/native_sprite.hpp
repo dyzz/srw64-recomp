@@ -27,6 +27,8 @@ struct SceneId {
     uint8_t frame = 0;
     uint16_t colors[16]{};              // the palette's first 16 RGBA5551 entries
     uint32_t palette_data = 0;          // the palette resource in RDRAM (header, then the colours)
+    uint32_t atlas_data = 0;            // the atlas resource in RDRAM (header, then the texels)
+    uint32_t scene_data = 0;            // the scene resource in RDRAM (steps, frame table, parts)
 };
 // Text the host draws for a sprite: premultiplied RGBA, `units` wide and tall in
 // N64 pixels, placed on the original frame by `anchor`.

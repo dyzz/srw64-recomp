@@ -31,6 +31,7 @@
 #include <cstdlib>
 #include <deque>
 #include <fstream>
+#include <list>
 #include <map>
 #include <mutex>
 #include <set>
@@ -105,6 +106,10 @@ struct Draw {
 
 bool installed = false;
 Describe describe{};
+// Game thread: a picture's recoloured variants in the order they were wanted, and the asset
+// last drawn for it (stand-ins while a variant is being made).
+std::map<int, std::vector<int>> variants_of;
+std::map<int, int> last_drawn;
 std::vector<std::unique_ptr<Asset>> assets;
 std::map<std::string, int> by_key;
 std::vector<Image> images;
@@ -193,35 +198,111 @@ std::array<float, 3> rgb5551(uint16_t v) {
 // original palette colours nearest it (weighted by closeness), plus its own offset from them
 // scaled by the brightness ratio, as tools/hd_ai/unit_extra_derive.py palette_swap does
 // offline. Transparent palette entries (alpha bit clear) take no part.
-void recolor_pixels(std::vector<uint8_t>& pixels, const std::vector<uint16_t>& from, const std::vector<uint16_t>& to) {
-    // Each distinct opaque original colour once (a 256-colour palette repeats many).
-    std::vector<std::array<float, 3>> src, dst;
-    std::set<std::pair<uint16_t, uint16_t>> seen;
-    for (size_t i = 0; i < from.size() && i < to.size(); ++i)
-        if ((from[i] & 1) && seen.insert({from[i], to[i]}).second) { src.push_back(rgb5551(from[i])); dst.push_back(rgb5551(to[i])); }
-    if (src.empty()) return;
-    const size_t k = std::min<size_t>(4, src.size());
+//
+// Which four are nearest depends only on the picture and its own palette, so a picture's
+// map is found once (by the pixel's colour at 6 bits a channel) and kept for the palette
+// animations that make a new colour set every frame: the title demo's units fade up from a
+// black silhouette over some twenty frames, and each step would otherwise decode the file
+// and search the palette again, so none was ready before the fade ended and the original's
+// parts stood in. Worker thread only.
+constexpr size_t kNearest = 4;
+struct RecolorMap {
+    std::string key;
+    uint32_t width = 0, height = 0;
+    std::vector<uint8_t> rgba;                      // straight alpha, as the file holds it
+    std::vector<uint16_t> distinct;                 // each opaque original colour once, first entry first
+    std::vector<std::array<float, 3>> src;          // their RGB
+    std::vector<std::array<uint8_t, kNearest>> nearest;   // per pixel: indices into src (255: none)
+};
+
+std::shared_ptr<RecolorMap> recolor_map(const std::filesystem::path& file, const std::vector<uint16_t>& from) {
+    static std::list<std::shared_ptr<RecolorMap>> cache;   // a few pictures, most recent first
+    std::string key = file.string();
+    for (const uint16_t c : from) { key += ','; key += std::to_string(c); }
+    for (auto it = cache.begin(); it != cache.end(); ++it)
+        if ((*it)->key == key) { auto map = *it; cache.erase(it); cache.push_front(map); return map; }
+    auto map = std::make_shared<RecolorMap>();
+    map->key = key;
+    auto image = presentation::load_rgba(file);
+    map->width = uint32_t(image.width); map->height = uint32_t(image.height);
+    map->rgba = std::move(image.pixels);
+    for (const uint16_t c : from)
+        if ((c & 1) && std::find(map->distinct.begin(), map->distinct.end(), c) == map->distinct.end()) {
+            map->distinct.push_back(c); map->src.push_back(rgb5551(c));
+        }
+    const auto& src = map->src;
+    const size_t pixels = size_t(map->width) * map->height;
+    map->nearest.assign(pixels, {255, 255, 255, 255});
+    if (src.empty()) { cache.push_front(map); return map; }
+    const size_t k = std::min(kNearest, src.size());
+    // The nearest colours of each 6-bit colour cell, found when a pixel first falls in it.
+    std::vector<int32_t> cell(1u << 18, -1);
+    std::vector<std::array<uint8_t, kNearest>> cells;
+    std::vector<std::pair<float, size_t>> order(src.size());
+    for (size_t p = 0; p < pixels; ++p) {
+        const uint8_t* px = &map->rgba[p * 4];
+        if (!px[3]) continue;
+        const uint32_t q = uint32_t(px[0] >> 2) << 12 | uint32_t(px[1] >> 2) << 6 | uint32_t(px[2] >> 2);
+        if (cell[q] < 0) {
+            const float c[3] = {float(px[0] & ~3) + 1.5f, float(px[1] & ~3) + 1.5f, float(px[2] & ~3) + 1.5f};
+            for (size_t i = 0; i < src.size(); ++i) {
+                const float d0 = c[0] - src[i][0], d1 = c[1] - src[i][1], d2 = c[2] - src[i][2];
+                order[i] = {d0 * d0 + d1 * d1 + d2 * d2, i};
+            }
+            std::partial_sort(order.begin(), order.begin() + k, order.end());
+            std::array<uint8_t, kNearest> chosen{255, 255, 255, 255};
+            for (size_t n = 0; n < k; ++n) chosen[n] = uint8_t(order[n].second);
+            cell[q] = int32_t(cells.size());
+            cells.push_back(chosen);
+        }
+        map->nearest[p] = cells[size_t(cell[q])];
+    }
+    cache.push_front(map);
+    while (cache.size() > 3) cache.pop_back();
+    return map;
+}
+
+// The picture in the colours `to` gives its palette `from` (straight alpha).
+std::vector<uint8_t> recolor_pixels(const RecolorMap& map, const std::vector<uint16_t>& from, const std::vector<uint16_t>& to) {
+    std::vector<uint8_t> pixels = map.rgba;
+    const auto& src = map.src;
+    if (src.empty()) return pixels;
+    std::vector<std::array<float, 3>> dst(src.size());
+    for (size_t j = 0; j < src.size(); ++j) {
+        dst[j] = src[j];
+        for (size_t i = 0; i < from.size() && i < to.size(); ++i)
+            if (from[i] == map.distinct[j]) { dst[j] = rgb5551(to[i]); break; }
+    }
+    // A pixel's own shading follows the brightness ratio; towards black it goes too, so a
+    // palette written all black (the demo's silhouette, 801C9EA8) is a plain silhouette and
+    // not the picture's highlights in dark grey.
     std::vector<float> gain(src.size());
-    for (size_t i = 0; i < src.size(); ++i)
-        gain[i] = std::clamp(((dst[i][0] + dst[i][1] + dst[i][2]) / 3 + 8) / ((src[i][0] + src[i][1] + src[i][2]) / 3 + 8), 0.f, 2.f);
-    std::vector<std::pair<float, size_t>> nearest(src.size());
+    bool flat = true;
+    for (size_t i = 0; i < src.size(); ++i) {
+        const float d = (dst[i][0] + dst[i][1] + dst[i][2]) / 3, s = (src[i][0] + src[i][1] + src[i][2]) / 3;
+        gain[i] = std::clamp((d + 8) / (s + 8), 0.f, 2.f) * std::min(1.f, d / 8);
+        flat = flat && dst[i] == dst[0];
+    }
+    if (flat && gain[0] == 0) {   // one colour for every opaque pixel
+        for (size_t p = 0; p + 3 < pixels.size(); p += 4)
+            if (pixels[p + 3]) for (int ch = 0; ch < 3; ++ch) pixels[p + ch] = uint8_t(dst[0][ch] + 0.5f);
+        return pixels;
+    }
     for (size_t p = 0; p + 3 < pixels.size(); p += 4) {
         if (!pixels[p + 3]) continue;
+        const auto& near = map.nearest[p / 4];
         const float c[3] = {float(pixels[p]), float(pixels[p + 1]), float(pixels[p + 2])};
-        for (size_t i = 0; i < src.size(); ++i) {
-            const float d0 = c[0] - src[i][0], d1 = c[1] - src[i][1], d2 = c[2] - src[i][2];
-            nearest[i] = {d0 * d0 + d1 * d1 + d2 * d2, i};
-        }
-        std::partial_sort(nearest.begin(), nearest.begin() + k, nearest.end());
         float out[3]{}, total = 0;
-        for (size_t n = 0; n < k; ++n) {
-            const size_t i = nearest[n].second;
-            const float w = 1.f / (nearest[n].first + 25.f);
+        for (size_t n = 0; n < kNearest && near[n] != 255; ++n) {
+            const size_t i = near[n];
+            const float d0 = c[0] - src[i][0], d1 = c[1] - src[i][1], d2 = c[2] - src[i][2];
+            const float w = 1.f / (d0 * d0 + d1 * d1 + d2 * d2 + 25.f);
             total += w;
-            for (int ch = 0; ch < 3; ++ch) out[ch] += w * (dst[i][ch] + (c[ch] - src[i][ch]) * gain[i]);
+            out[0] += w * (dst[i][0] + d0 * gain[i]); out[1] += w * (dst[i][1] + d1 * gain[i]); out[2] += w * (dst[i][2] + d2 * gain[i]);
         }
-        for (int ch = 0; ch < 3; ++ch) pixels[p + ch] = uint8_t(std::clamp(out[ch] / total + 0.5f, 0.f, 255.f));
+        if (total > 0) for (int ch = 0; ch < 3; ++ch) pixels[p + ch] = uint8_t(std::clamp(out[ch] / total + 0.5f, 0.f, 255.f));
     }
+    return pixels;
 }
 // A palette resource's colours as the ROM holds them (rom_import resource table; header
 // u16 type, u16 bytes, 4 more, then RGBA5551), at most 256.
@@ -257,6 +338,7 @@ void work() {
             if (stopping) return;
             index = queue.front(); queue.pop_front();
             file = assets[size_t(index)]->file;
+            file_key = assets[size_t(index)]->key;
             render = assets[size_t(index)]->render;
             recolor = assets[size_t(index)]->recolor;
             from = assets[size_t(index)]->recolor_from; to = assets[size_t(index)]->recolor_to;
@@ -279,14 +361,24 @@ void work() {
                 pixels = std::move(image.rgba);
                 ok = w && h && pixels.size() == size_t(w) * h * 4;
             } else {
-                // PNG, or the released pack's JPEG with its alpha beside it (compress_hd.py).
-                auto image = presentation::load_rgba(file);
-                w = uint32_t(image.width); h = uint32_t(image.height);
-                pixels = std::move(image.pixels);
-                if (recolor) recolor_pixels(pixels, from, to);
+                if (recolor) {
+                    const auto started = Clock::now();
+                    const auto map = recolor_map(file, from);
+                    const auto mapped = Clock::now();
+                    w = map->width; h = map->height;
+                    pixels = recolor_pixels(*map, from, to);
+                    note("recolor:" + file_key, {{"kind", "recolor"}, {"file", file.filename().string()},
+                         {"map_ms", std::chrono::duration<double, std::milli>(mapped - started).count()},
+                         {"recolor_ms", std::chrono::duration<double, std::milli>(Clock::now() - mapped).count()}});
+                } else {
+                    // PNG, or the released pack's JPEG with its alpha beside it (compress_hd.py).
+                    auto image = presentation::load_rgba(file);
+                    w = uint32_t(image.width); h = uint32_t(image.height);
+                    pixels = std::move(image.pixels);
+                }
                 for (size_t i = 0; i < pixels.size(); i += 4)
                     for (int c = 0; c < 3; ++c) pixels[i + c] = uint8_t((pixels[i + c] * pixels[i + 3] + 127) / 255);
-                ok = w && h;
+                ok = w && h && pixels.size() == size_t(w) * h * 4;
             }
         } catch (const std::exception& error) {
             fprintf(stderr, "SRW64_SCENE_SPRITE_FAILED %s\n", error.what());
@@ -328,6 +420,11 @@ void work() {
     }
 }
 
+// Any thread: drawable now, without queueing it.
+bool is_ready(int index) {
+    std::lock_guard lock(asset_mutex);
+    return assets[size_t(index)]->state == Asset::ready;
+}
 // Game thread. Ready: drawable now. Otherwise queue it once.
 bool ready(int index) {
     std::lock_guard lock(asset_mutex);
@@ -576,8 +673,56 @@ bool identify(const uint8_t* rdram, const SceneDraw& draw, SceneId& id) {
     if (id.frame == 0xFF) return false;
     for (int i = 0; i < 16; ++i) id.colors[i] = half(rdram, palette_data + 8 + 2u * i);
     id.palette_data = palette_data;
+    id.atlas_data = atlas_data;
+    id.scene_data = scene_data;
     id.slot = draw.slot; id.sub = draw.sub;
     return true;
+}
+
+// The atlas (header: u16 kind, 5 and 14 are 4-bit, the others 8-bit; u16 width, u16 height;
+// then the texels, row by row, a 4-bit texel's high nibble first).
+struct Atlas { uint32_t width = 0, height = 0, texels = 0; bool ci4 = false; };
+bool atlas_header(const uint8_t* rdram, const SceneId& id, Atlas& atlas) {
+    const uint32_t kind = half(rdram, id.atlas_data);
+    atlas.width = half(rdram, id.atlas_data + 2); atlas.height = half(rdram, id.atlas_data + 4);
+    atlas.ci4 = kind == 5 || kind == 14;
+    const uint32_t texels = atlas.width * atlas.height, bytes = atlas.ci4 ? (texels + 1) / 2 : texels;
+    if (!texels || atlas.width > 2048 || atlas.height > 2048 || id.atlas_data + 8 + bytes > 0x800000) return false;
+    atlas.texels = texels;
+    return true;
+}
+uint8_t texel(const uint8_t* rdram, const SceneId& id, const Atlas& atlas, uint32_t i) {
+    if (!atlas.ci4) return byte(rdram, id.atlas_data + 8 + i);
+    const uint8_t v = byte(rdram, id.atlas_data + 8 + i / 2);
+    return i & 1 ? v & 15 : v >> 4;
+}
+// The palette entries the frame's parts show, found once per (scene, frame): the frame's
+// parts (16 bytes each: flags, s, t, w, h, x, y, vertex offset; 0x8000 ends them) are
+// rectangles of the atlas. A palette holds more than a picture shows: the demo's silhouette
+// writes only the first 64 of a 128-entry palette black (801C9EA8) and the grey and yellow
+// ramps behind them, used by the atlas's other frames, stay, so a recolouring from every
+// entry would take the picture's highlights to those. Game thread.
+const std::vector<uint16_t>& frame_indices(const uint8_t* rdram, const SceneId& id) {
+    static std::map<std::pair<uint16_t, uint8_t>, std::vector<uint16_t>> cache;
+    const auto key = std::make_pair(id.scene, id.frame);
+    const auto found = cache.find(key);
+    if (found != cache.end()) return found->second;
+    auto& used = cache[key];   // left empty when the data is not as expected: every entry then
+    Atlas atlas;
+    if (!atlas_header(rdram, id, atlas)) return used;
+    const uint32_t count = byte(rdram, id.scene_data), table = id.scene_data + 2 + count * 2 + 2;
+    const uint32_t first = half(rdram, table), frames = first > count * 2 + 4 ? (first - (count * 2 + 4)) / 2 : 0;
+    if (id.frame >= frames || id.scene_data + first >= 0x800000) return used;
+    uint32_t part = id.scene_data + half(rdram, table + 2u * id.frame);
+    std::array<bool, 256> seen{};
+    for (int n = 0; n < 128 && part + 16 <= 0x800000; ++n, part += 16) {
+        if (half(rdram, part) & 0x8000) break;
+        const uint32_t s = half(rdram, part + 2), t = half(rdram, part + 4), w = byte(rdram, part + 6), h = byte(rdram, part + 7);
+        for (uint32_t y = t; y < std::min(t + h, atlas.height); ++y)
+            for (uint32_t x = s; x < std::min(s + w, atlas.width); ++x) seen[texel(rdram, id, atlas, y * atlas.width + x)] = true;
+    }
+    for (size_t i = 0; i < seen.size(); ++i) if (seen[i]) used.push_back(uint16_t(i));
+    return used;
 }
 }
 
@@ -747,6 +892,7 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
     // What goes in place of the parts: text in the reading language, else an HD frame.
     Draw record;
     TextJob job;
+    int picture = -1;   // the HD picture drawn (its base asset), whatever colours it takes
     const bool text = describe && describe(rdram, id, job);
     if (text) {
         record.asset = text_asset(job);
@@ -771,6 +917,7 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
             return;
         }
         int chosen = found->asset;
+        picture = chosen;
 #ifdef SRW64_NATIVE_DIALOGUE
         if (!found->localized.empty())
             if (const auto at = found->localized.find(localization::snapshot()->locale); at != found->localized.end()) chosen = at->second;
@@ -786,32 +933,40 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
         const size_t loaded = half(rdram, id.palette_data + 2) / 2u;
         const size_t count = colors ? (loaded ? std::min(colors->size(), loaded) : colors->size()) : 0;
         for (size_t i = 0; i < count; ++i) live.push_back(half(rdram, id.palette_data + 8 + 2u * uint32_t(i)));
-        if (colors && live != *colors) {
+        // The entries the picture shows: a change at any other entry is no change to it.
+        std::vector<uint16_t> every;
+        const std::vector<uint16_t>* used = &found->indices;
+        if (used->empty()) used = &frame_indices(rdram, id);
+        if (used->empty()) { for (size_t i = 0; i < live.size(); ++i) every.push_back(uint16_t(i)); used = &every; }
+        bool changed = false;
+        for (const uint16_t i : *used) changed = changed || (i < live.size() && live[i] != (*colors)[i]);
+        if (colors && changed) {
             std::lock_guard lock(asset_mutex);
             const Asset& base = *assets[size_t(chosen)];
             if (!base.render) {
                 uint64_t hash = 1469598103934665603ull;
-                for (const uint16_t c : live) hash = (hash ^ c) * 1099511628211ull;
+                for (const uint16_t i : *used) hash = (hash ^ (i < live.size() ? live[i] : 0)) * 1099511628211ull;
                 const std::string key = base.key + "|recolor:" + std::to_string(hash);
                 // A palette animation could make a new set every frame: past 64 sets of one
                 // picture the original sprite is drawn instead. Counted per picture, so the
                 // any-palette ones (a set per attacker) cannot use up every other's.
                 static std::map<int, unsigned> variants;
-                if (const auto at = by_key.find(key); at != by_key.end()) record.asset = at->second;
+                if (const auto at = by_key.find(key); at != by_key.end()) {
+                    record.asset = at->second;
+                    auto& made = variants_of[chosen];   // wanted again: the newest, for the stand-in below
+                    if (const auto seen = std::find(made.begin(), made.end(), record.asset); seen != made.end()) made.erase(seen);
+                    made.push_back(record.asset);
+                }
                 else if (variants[chosen] >= 64) return;
                 else {
                     ++variants[chosen];
                     auto variant = std::make_unique<Asset>();
                     variant->key = key; variant->file = base.file; variant->recolor = true;
-                    if (found->indices.empty()) {
-                        variant->recolor_from = *colors;
-                        variant->recolor_to = live;
-                    } else {
-                        for (const uint16_t i : found->indices)
-                            if (i < live.size()) { variant->recolor_from.push_back((*colors)[i]); variant->recolor_to.push_back(live[i]); }
-                    }
+                    for (const uint16_t i : *used)
+                        if (i < live.size()) { variant->recolor_from.push_back((*colors)[i]); variant->recolor_to.push_back(live[i]); }
                     assets.push_back(std::move(variant));
                     record.asset = by_key[key] = int(assets.size() - 1);
+                    variants_of[chosen].push_back(record.asset);
                 }
             }
         }
@@ -870,11 +1025,24 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
              {"frame", id.frame}, {"slot", id.slot}, {"parts", parts.size()}, {"quads", draw.quads}, {"commands", commands}});
         return;
     }
-    // An HD frame not decoded yet leaves the original this time; text never shows it.
+    // An HD frame not decoded yet leaves the original this time; text never shows it. A
+    // recoloured frame still being made (a palette animation's next step, wanted for one
+    // frame only) shows the picture's newest recoloured frame that is ready instead, else the
+    // picture as it was last drawn: a step or two behind, not the original's parts.
     if (!ready(record.asset)) {
         ++pending;
-        if (!text) return;
-    }
+        if (!text) {
+            const int wanted = record.asset;
+            record.asset = -1;
+            if (const auto made = variants_of.find(picture); made != variants_of.end())
+                for (auto it = made->second.rbegin(); it != made->second.rend() && record.asset < 0; ++it)
+                    if (*it != wanted && is_ready(*it)) record.asset = *it;
+            if (record.asset < 0)
+                if (const auto last = last_drawn.find(picture); last != last_drawn.end() && last->second != wanted && is_ready(last->second))
+                    record.asset = last->second;
+            if (record.asset < 0) return;
+        }
+    } else if (picture >= 0) last_drawn[picture] = record.asset;
     record.quad = draw.quads;
     if (draw.quads && flipped == 1 && !text) std::swap(record.uv[0], record.uv[2]);   // a unit facing the other way
     record.z = z;
