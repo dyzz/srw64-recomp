@@ -192,6 +192,10 @@ SETS = ('cutin', 'prop', 'shield', 'defence', 'reaction', 'brush', 'movie', 'exp
 # registered scene before it (within this many ids, over scenes only) whose atlas, as it is or
 # moved on by up to FOLLOW_ON_SHIFT with its palette, holds every part of it.
 FOLLOW_ON_REACH, FOLLOW_ON_SHIFT = 40, 3
+# Follow-ons seen in the battle viewer that the fit guesses wrong: scene -> (the scene it comes
+# from, atlas, palette). The Rose Bits (4187, weapons 56-62) turn through 4174-4186, one
+# heading each, which the guess puts in the pink barrier's atlas (4171's 3238 holds them too).
+FOLLOW_ON_SEEN = {n: (4187, 3239, 3528) for n in range(4174, 4187)}
 # The effects (no face, mostly soft glow) are packed at 3x instead of PACK_SCALE: side by side at
 # the largest scale a battle shows them (1080p) the two cannot be told apart, at a third of the size.
 EFFECT_SETS = frozenset({'weapon', 'hit', 'follow_on', 'unscripted', 'explosion', 'reaction', 'defence'})
@@ -229,7 +233,7 @@ def follow_on_triplets(rom: bytes, table: ResourceTable) -> list[tuple[int, tupl
 
     rows = []
     for n in range(min(registered), max(registered) + 1):
-        scene = scene_of(n) if n not in registered and n not in BEAM_SCENES else None
+        scene = scene_of(n) if n not in registered and n not in BEAM_SCENES and n not in FOLLOW_ON_SEEN else None
         if not scene:
             continue
         found = None
@@ -247,7 +251,7 @@ def follow_on_triplets(rom: bytes, table: ResourceTable) -> list[tuple[int, tupl
             continue
         base, a, shift = found
         rows += [(base, (n, a + shift, p + shift)) for p in sorted({p for a2, p in registered[base] if a2 == a})]
-    return rows
+    return rows + [(base, (n, a, p)) for n, (base, a, p) in FOLLOW_ON_SEEN.items()]
 
 
 def unscripted_registries(rom: bytes) -> list[int]:
