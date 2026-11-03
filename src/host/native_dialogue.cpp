@@ -23,6 +23,7 @@
 #include "presentation/display_list_snapshots.hpp"
 #include "json/json.hpp"
 #include "title_row.hpp"
+#include "battle_viewer.hpp"
 #include <algorithm>
 #include <atomic>
 #include <ctime>
@@ -195,9 +196,26 @@ std::string guest_record_text(const uint8_t* ram,const localization::Catalog& ja
 // Show the record in the reading language while the label still shows that
 // record's Japanese text, and a name field as shown_name does; anything else
 // stays as drawn.
+// In a battle viewer battle (issue #22) the eight protagonists and partners may meet
+// whatever route is set, and the name fields hold only that route's two: a speaker label
+// naming one of the eight (nickname 0x1137 + person, full name 0x12A0 + person) shows
+// that person's own default name instead.
+std::optional<std::string> viewer_person_name(uint16_t id,const std::string& locale) {
+    if(!battle_viewer::busy())return std::nullopt;
+    const bool nick=uint16_t(id-0x1137)<names::people,full=uint16_t(id-0x12A0)<names::people;
+    if(!nick && !full)return std::nullopt;
+    const auto& table=names::default_names();
+    const unsigned person=nick?id-0x1137u:id-0x12A0u;
+    const auto text=[&](names::Field field){const auto* row=table.find(field,person);return row?table.default_text(*row,locale):std::string();};
+    if(nick)return text(names::Field::Nick);
+    const auto given=text(names::Field::Name),family=text(names::Field::Surname);
+    if(given.empty() || family.empty())return std::nullopt;
+    return given+names::separator(locale)+family;
+}
 std::string speaker_name(const uint8_t* ram,uint32_t label,const localization::Catalog& language) {
     const auto shown=decode(ram,label+12,20);
     const uint16_t id=half(ram,label);
+    if(auto own=viewer_person_name(id,language.locale);own && !own->empty())return *own;
     if(const auto* slot=entered_name(id))return shown_name(shown,*slot,language.locale);
     const auto japanese=localization::find("ja");
     if(!japanese || guest_record_text(ram,*japanese,id)!=shown)return shown;

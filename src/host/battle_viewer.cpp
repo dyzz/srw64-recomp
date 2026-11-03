@@ -314,6 +314,24 @@ void install(const std::filesystem::path& output) {
     srw64_game_hooks.quote_participants=quote_participants;
 }
 
+// The route a page choice plays under (issues #22 / #23). The portrait drawer maps only the
+// protagonist 25 and the partner 29 through the route variable (25 -> 25 + person, 29 ->
+// 29 + person); the other six of the eight are actors of their own, drawn as themselves.
+// アーク's route maps 25 and 29 to themselves, so with アーク or エルリッヒ on a side it
+// is the one route under which every pairing shows its own faces (アーク against ブラッド
+// too). Otherwise the first side's person's route, so the quotes' name tokens name them.
+int route_for(const json& c) {
+    constexpr unsigned first=25,people=8,ark_route=2;
+    int person=-1;
+    for(const char* side:{"attacker","defender"}) {
+        const unsigned actor=c.at(side).at("pilot").get<unsigned>();
+        if(actor<first || actor>=first+people)continue;
+        if(actor==first || actor==first+4)return ark_route;
+        if(person<0)person=int(actor-first);
+    }
+    return person<0?int(ark_route):(person%4+2)%4;
+}
+
 json request(const json& params) {
     std::vector<Write> next;
     json picked;
@@ -351,7 +369,8 @@ json request(const json& params) {
     song=params.value("song",choice.is_object()?choice.value("song",-1):-1);
     if(song<0 && choice.is_object())
         song=attacker_song(choice.at("attacker").at("unit").get<unsigned>(),choice.at("attacker").at("pilot").get<unsigned>());
-    route=wanted_route;recording_armed=!recorded.is_null();demo_frames=0;gate_open=false;
+    route=wanted_route>=0 || !choice.is_object()?wanted_route:route_for(choice);
+    recording_armed=!recorded.is_null();demo_frames=0;gate_open=false;
     pending=true;armed=false;returned=false;listen=-1;
     return {{"pending",true},{"writes",raw.size()},{"choice",choice.is_object()},{"route",route},{"recording",recorded}};
 }
