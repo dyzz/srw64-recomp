@@ -5,7 +5,9 @@
 #include <cstdio>
 #include <cstdlib>
 #include <thread>
-#ifndef _WIN32
+#if defined(__SWITCH__) || defined(__vita__)
+#define SRW64_NO_PIPES 1   // newlib: no popen/pclose, and no ffmpeg to run anyway
+#elif !defined(_WIN32)
 #include <sys/wait.h>
 #endif
 #include <array>
@@ -275,14 +277,18 @@ public:
 private:
     struct Frame {std::vector<uint8_t> rgba;uint32_t w{},h{};uint64_t vi{};double seconds{};};
     static FILE* popen_(const std::string& command) {
-#ifdef _WIN32
+#if SRW64_NO_PIPES
+        (void)command;return nullptr;   // the worker reports "cannot start ffmpeg"
+#elif defined(_WIN32)
         return _popen(("\""+command+"\"").c_str(),"wb");   // cmd /c keeps the inner quotes when the whole line is quoted
 #else
         return popen(command.c_str(),"w");
 #endif
     }
     static int pclose_(FILE* pipe) {
-#ifdef _WIN32
+#if SRW64_NO_PIPES
+        (void)pipe;return -1;
+#elif defined(_WIN32)
         return _pclose(pipe);
 #else
         const int status=pclose(pipe);
@@ -291,7 +297,9 @@ private:
     }
     // Whether `ffmpeg -version` runs (a path or a name on the PATH).
     static bool encoder_runs(const std::string& ffmpeg) {
-#ifdef _WIN32
+#if SRW64_NO_PIPES
+        (void)ffmpeg;return false;
+#elif defined(_WIN32)
         return std::system(("\""+quoted(ffmpeg)+" -version >NUL 2>&1\"").c_str())==0;
 #else
         return std::system((quoted(ffmpeg)+" -version >/dev/null 2>&1").c_str())==0;
@@ -389,7 +397,9 @@ private:
         const std::string lead=offset>=0?std::string(" -itsoffset ")+number:std::string(" -ss ")+number;
         const std::string command=quoted(opts.ffmpeg)+" -loglevel error -y -i "+quoted(video_path.string())+lead+" -f s16le -ar "+std::to_string(audio_rate)+
             " -ac 2 -i "+quoted(audio_path.string())+" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest "+quoted(final_path.string());
-#ifdef _WIN32
+#if SRW64_NO_PIPES
+        (void)command;const int code=-1;
+#elif defined(_WIN32)
         const int code=std::system(("\""+command+"\"").c_str());
 #else
         const int code=std::system(command.c_str());
