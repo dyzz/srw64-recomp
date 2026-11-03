@@ -38,4 +38,8 @@ void callback_drawn(uint8_t* rdram, uint32_t function, uint32_t dl_begin, uint32
 // The widened windows drawn lately (screen pixels): x0, y0, inner right edge, y1.
 struct Window { float x0, y0, x1, y1; };
 std::vector<Window> windows();
+// Every grid scene drawn lately (window frames, panels, the map): the rectangle its cells
+// cover, screen pixels, right and bottom exclusive. ui_text.cpp keeps a translated label
+// inside the frame it starts in.
+std::vector<Window> boxes();
 }

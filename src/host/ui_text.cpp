@@ -23,6 +23,7 @@
 #include <fstream>
 #include <map>
 #include <mutex>
+#include <optional>
 #include <set>
 #include <string>
 #include <vector>
@@ -610,12 +611,28 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
         }
     }
     const auto widened = menu_widen::windows();
+    const auto boxes = menu_widen::boxes();
+    // The frame a label starts in: its inner edges, 3 pixels in from the cells' rectangle
+    // (the line art), the smallest box around the point when frames nest.
+    constexpr int kFrameInset = 3;
+    const auto frame_of = [&](int x, int y) {
+        std::optional<menu_widen::Window> inner;
+        for (const auto& b : boxes) {
+            if (x < b.x0 || x >= b.x1 - kFrameInset || y < b.y0 || y >= b.y1 || b.x1 - b.x0 < 24) continue;
+            if (!inner || (b.x1 - b.x0) * (b.y1 - b.y0) < (inner->x1 - inner->x0) * (inner->y1 - inner->y0)) inner = b;
+        }
+        return inner;
+    };
     const auto room = [&](size_t self, int x, int y, int width) {
         int next = 316;   // the screen's right edge, less a margin
         for (const auto& start : starts) {
             if (start.owner >= 0 && (size_t(start.owner) == self || found[size_t(start.owner)].consumed)) continue;
             if (std::abs(start.y - y) <= 6 && start.x > x + 2) next = std::min(next, start.x - 4);
         }
+        // A translation stays inside the frame its original starts in (必要技能 聖戦3 → 圣战士L3
+        // at the status panel's right edge).
+        if (found[self].translated)
+            if (const auto f = frame_of(x, y)) next = std::min(next, int(f->x1) - kFrameInset);
         // Text as drawn keeps the original's width (its narrow kana set it); a translation
         // takes its column's width less the pixel the ROM's glyphs leave on their right, or
         // alone may run on a little where nothing follows.
@@ -817,9 +834,35 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
                 int widest = 0;
                 for (const auto& part : parts) widest = std::max(widest, part.x + part.width - parts.front().x);
                 const bool one_line = parts.back().y == parts.front().y && text.find('\n') == std::string::npos;
-                const double width = one_line ? room(i, parts.front().x, parts.front().y, widest) : widest * 1.15 + 3;
+                double width = one_line ? room(i, parts.front().x, parts.front().y, widest) : widest * 1.15 + 3;
+                float lx = float(parts.front().x + inset);
+                const float ly = float(l.cells.front().icon ? parts.front().y : l.y);
+                // A value the original pins at its frame's right edge (its cells end within 12
+                // pixels of the line), alone in its column, and a tenth or more too wide for the
+                // room left: it starts further left instead of being squeezed, up to the last
+                // text on its left or the frame's inner edge (圣战士L3 moves towards 必要技能).
+                // Everything else is condensed in place, as list columns and headers must keep
+                // their alignment.
+                if (l.translated && one_line) {
+                    const int x = parts.front().x, y = parts.front().y;
+                    const auto f = frame_of(x, y);
+                    const double natural = image_width(locale, catalog_form(text));
+                    double shift = 0;
+                    if (f && parts.back().x + parts.back().width >= f->x1 - kFrameInset - 12 && !column(x, y) && natural > width * 1.1 + 1) {
+                        int left = int(f->x0) + kFrameInset + 2;
+                        for (const auto& start : starts) {
+                            if (start.owner < 0 || size_t(start.owner) == i || found[size_t(start.owner)].consumed || std::abs(start.y - y) > 6 || start.x >= x) continue;
+                            for (const auto& part : parts_of(found[size_t(start.owner)]))
+                                if (std::abs(part.y - y) <= 6 && part.x < x) left = std::max(left, part.x + part.width + 4);
+                        }
+                        shift = std::max(0.0, std::min(double(x - left), natural - width));
+                        lx -= float(shift); width += shift;
+                    }
+                    // Every translation squeezed or moved, for finding the ones that come out badly.
+                    if (natural > width + 1 || shift > 0)
+                        note("squeeze:" + locale + ":" + text, {{"kind", "squeeze"}, {"text", text}, {"natural", natural}, {"room", width}, {"shift", shift}, {"x", x}, {"y", y}});
+                }
                 const Style style = label_style(locale, width, false);
-                const float lx = float(parts.front().x + inset), ly = float(l.cells.front().icon ? parts.front().y : l.y);
                 items.push_back(placed(style, locale, catalog_form(text), "label", lx, ly, tint));
             }
             counts.translated += l.translated;
