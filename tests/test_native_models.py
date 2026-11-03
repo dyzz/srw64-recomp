@@ -130,7 +130,7 @@ class NativeModelPackTests(unittest.TestCase):
                                                 'Space region: Sweetwater'])
             plates = json.loads((Path(folder)/'pack/manifest.json').read_text())['plates']
             self.assertEqual(plates[-1]['text'], {'ja': 'スウィートウォーター', 'zh-Hans': '甘泉', 'en': 'Sweetwater', 'ko': '스위트워터'})
-            self.assertEqual(plates[4]['text'], {'ja': 'サイド1', 'zh-Hans': 'Side 1', 'en': 'Side 1'})
+            self.assertEqual(plates[4]['text'], {'ja': 'サイド1', 'zh-Hans': 'Side 1', 'en': 'Side 1', 'ko': '사이드 1'})
             commands = [c for p in plates for c in p['triangle_commands']]
             self.assertEqual((len(commands), len(set(commands))), (56, 56))   # 8 quads per board, none shared
             texture = Path(folder)/'pack'/plates[0]['textures']['zh-Hans']
@@ -142,7 +142,7 @@ class NativeModelPackTests(unittest.TestCase):
 class NamePlateTests(unittest.TestCase):
     def test_plate_names_come_from_the_term_tables(self):
         self.assertEqual(models.plate_names('リーブラ'), {'zh-Hans': '天秤座', 'en': 'Libra', 'ko': '리브라'})
-        self.assertEqual(models.plate_names('アクシズ'), {'zh-Hans': '阿克西斯', 'en': 'Axis'})
+        self.assertEqual(models.plate_names('アクシズ'), {'zh-Hans': '阿克西斯', 'en': 'Axis', 'ko': '액시즈'})
         self.assertEqual(models.plate_names('フィフス・ルナ')['en'], 'Fifth Luna')  # story terms only
         with self.assertRaisesRegex(ValueError, 'no term'):
             models.plate_names('存在しない名前')
