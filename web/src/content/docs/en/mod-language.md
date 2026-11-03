@@ -28,7 +28,7 @@ yourname.korean/
 
 `ko` is the language code; the folder name must be the same as the one in `language.json`. Put in only what you use: dialogue files you leave untranslated and pictures you do not replace can stay out.
 
-The repository has a complete example: the [Korean stage 1 trial package](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko), with the story and battle lines of the Real-robot male route's first stage and every UI text in Korean, the rest in English.
+A complete example, Korean (stage 1 demo), is on the [Mod downloads](/en/mods/#srw64.korean-demo) page, with its source in [`config/recomp/mods/lang.ko`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko). It has the story and battle lines of the Real-robot male route's first stage and every UI text in Korean, the rest in English.
 
 ## Making one
 

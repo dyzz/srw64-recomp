@@ -34,7 +34,7 @@ import pack  # noqa: E402
 import validate  # noqa: E402
 
 # The packages the site hosts: source folders under the repository.
-HOSTED = ["config/recomp/mods/space-a"]
+HOSTED = ["config/recomp/mods/space-a", "config/recomp/mods/lang.ko"]
 PUBLIC = ROOT / "web/public/mods"
 DATA = ROOT / "web/src/data/mods"
 REPO = "https://github.com/dyzz/srw64-recomp"

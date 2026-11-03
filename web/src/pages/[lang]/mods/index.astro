@@ -10,7 +10,7 @@ const lang = Astro.params.lang as Lang;
 type Text = { ja?: string; 'zh-Hans'?: string; en?: string };
 type Mod = {
   id: string; version: string; name: Text; description?: Text; authors: string[]; license: string; game: string;
-  contents: string[]; file: string; bytes: number; sha256: string; url: string; source: string; published: string | null;
+  contents: string[]; languages?: string[]; file: string; bytes: number; sha256: string; url: string; source: string; published: string | null;
   netdisk?: { quark?: string; baidu?: string };
 };
 const mods = Object.values(import.meta.glob<Mod>('../../../data/mods/*.json', { eager: true, import: 'default' }))
@@ -46,6 +46,7 @@ const t = {
   license: { zh: '许可', en: 'License', ja: 'ライセンス' },
   updated: { zh: '更新', en: 'Updated', ja: '更新' },
   contents: { zh: '内容', en: 'Contents', ja: '内容' },
+  languages: { zh: '增加语言', en: 'Adds languages', ja: '追加する言語' },
   source: { zh: '源文件（GitHub）', en: 'Source (GitHub)', ja: 'ソース（GitHub）' },
   release: { zh: '发布页（GitHub）', en: 'Release page (GitHub)', ja: 'リリースページ（GitHub）' },
   mirrors: { zh: '网盘（在 MOD 文件夹里）：', en: 'Net disks (in the MOD folder): ', ja: 'ネットディスク（MOD フォルダー内）：' },
@@ -59,6 +60,7 @@ const kinds: Record<string, { zh: string; en: string; ja: string }> = {
   audio: { zh: '声音', en: 'Sound', ja: 'サウンド' },
   campaign: { zh: '战役', en: 'Campaign', ja: 'キャンペーン' },
   art: { zh: '图片', en: 'Art', ja: '画像' },
+  dialogue: { zh: '台词与文字', en: 'Dialogue and text', ja: 'セリフと文字' },
 };
 // ">=0.5.1" as words; anything else as written.
 const needs = (req: string) => {
@@ -97,6 +99,7 @@ const size = (n: number) =>
             <div><dt>{t.version[tl(lang)]}</dt><dd class="latin">{m.version}</dd></div>
             <div><dt>{t.game[tl(lang)]}</dt><dd>{needs(m.game)}</dd></div>
             <div><dt>{t.contents[tl(lang)]}</dt><dd>{m.contents.map((c) => kinds[c]?.[tl(lang)] ?? c).join(lang === 'en' ? ', ' : '、')}</dd></div>
+            {m.languages?.length ? <div><dt>{t.languages[tl(lang)]}</dt><dd>{m.languages.join(', ')}</dd></div> : null}
             <div><dt>{t.authors[tl(lang)]}</dt><dd>{m.authors.join(', ')}</dd></div>
             <div><dt>{t.license[tl(lang)]}</dt><dd class="latin">{m.license}</dd></div>
             {m.published && <div><dt>{t.updated[tl(lang)]}</dt><dd class="latin">{m.published}</dd></div>}

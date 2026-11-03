@@ -1,0 +1,40 @@
+{
+  "id": "srw64.korean-demo",
+  "version": "0.1.0",
+  "name": {
+    "ko": "한국어 (1화 데모)",
+    "ja": "韓国語（第1話デモ）",
+    "zh-Hans": "韩文（第一关演示）",
+    "zh-Hant": "韓文（第一關演示）",
+    "en": "Korean (stage 1 demo)"
+  },
+  "description": {
+    "ko": "언어 패키지 데모입니다. 리얼계 남주인공 1화 「유전」까지 한국어로 플레이할 수 있고, 나머지는 영어로 표시됩니다. 설치 후 게임을 다시 시작하고 언어 메뉴에서 한국어를 고르세요.",
+    "ja": "言語パッケージのデモです。リアル系男主人公の第1話「流転」までを韓国語で遊べ、それ以外は英語で表示されます。インストール後にゲームを再起動し、言語メニューで한국어を選んでください。",
+    "zh-Hans": "语言包演示。真实系男主第一关「流转」可以用韩文玩，其余显示英文。安装后重启游戏，在语言菜单里选한국어。",
+    "zh-Hant": "語言包演示。真實系男主第一關「流轉」可以用韓文玩，其餘顯示英文。安裝後重啟遊戲，在語言選單裡選한국어。",
+    "en": "A language package demo: Korean through stage 1 of the Real-robot male route, the rest in English. After installing, restart the game and pick 한국어 in the language menu."
+  },
+  "authors": [
+    "SRW64"
+  ],
+  "license": "CC-BY-NC-4.0",
+  "game": ">=0.5.3",
+  "requires": {},
+  "optional": {},
+  "conflicts": {},
+  "contents": [
+    "dialogue"
+  ],
+  "file": "srw64.korean-demo-0.1.0.srw64mod",
+  "bytes": 1912814,
+  "sha256": "5d235d0fcd5e0db1ecb5487a5203578e2b8c21d9f6e8051c3d6ac8eef669e3d2",
+  "languages": [
+    "ko"
+  ],
+  "url": "/mods/srw64.korean-demo-0.1.0.srw64mod",
+  "page": "/mods/#srw64.korean-demo",
+  "source": "https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko",
+  "published": "2026-11-03",
+  "yanked": null
+}
