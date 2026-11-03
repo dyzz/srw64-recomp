@@ -14991,7 +14991,7 @@
   },
   "units": {
     "path": "assets/hd-ai/unit-poses/whole-v2",
-    "manifest_sha256": "a9b3bf8d5168ec1f11c18bb92e2a86455153c7cecea1fedb61b27597496c39e4"
+    "manifest_sha256": "f1666f3cd0294dcf1203b6e443b83ef11d56567b3caa05fa743a3e245877f599"
   },
   "unit_extras": {
     "path": "assets/hd-ai/unit-extras-derived/pack",
@@ -15003,6 +15003,6 @@
   },
   "battle_sprites": {
     "path": "assets/hd-ai/cutins/pack-v18",
-    "manifest_sha256": "be1faadfd6dbf0fe255f7e89201f572cc0d6d10410c87c7e5bc3bc1657699986"
+    "manifest_sha256": "84b4823ad4efdc2fd476a0479ac80edc637739dbfac68914dd3e3648eecd6f74"
   }
 }
