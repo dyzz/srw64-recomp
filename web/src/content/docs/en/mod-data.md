@@ -116,6 +116,33 @@ Spirit keys: `self_destruct` Self-Destruct, `scout` Scan, `accel` Accel, `mercy`
 | `en` | EN cost | 0–255 |
 | `morale` | morale required | 0–255 |
 | `terrain` | the weapon's own terrain ranks | |
+| `attack` | melee or ranged: which pilot stat it uses, and the 格／射 before the name | `melee` or `ranged` |
+| `post_move` | whether it can be used after moving (the P after the name) | `true` or `false` |
+| `beam` | whether it is a beam (the B after the name; I-Fields, Beam Coats and Planet Defensors stop only beams) | `true` or `false` |
+| `parryable` | whether it can be parried | `true` or `false` |
+| `terrain_at` | whose square the weapon's own terrain rank is judged on | `attacker` or `target` |
+| `requires` | the requirement the status screen shows as 必要技能, see below | a key or `null` |
+| `upgrade_type` | upgrade type: 0 cannot be upgraded, 1–4 are the power growth rows (2 and 3 share a row and differ only in price) | 0–4 |
+| `locked` | hidden from the list until a story unlock (the original's Sekiha Tenkyoken, Dankuu Kougaken and so on; a story mod's `unlock`, or the original's full-upgrade table, unlocks it) | `true` or `false` |
+
+`attack`, `post_move`, `beam`, `parryable`, `terrain_at`, `requires`, `upgrade_type` and `locked` need 0.5.3 or later. A map weapon cannot be made or unmade: its shape sits in a table of only 51 weapons. Neither can a combination attack.
+
+To make a weapon usable after moving, write `post_move: true`. The Nu Gundam's (50) Fin Funnels (209), for example, can only be fired from a standstill in the original; with this they fire after a move too, and a P appears after the name in the weapon list. `false` does the reverse and takes the P away. The 格／射, P and B around the name follow these fields, so there is no name to edit:
+
+```json
+{ "209": { "post_move": true },
+  "731": { "attack": "melee", "beam": true, "requires": "newtype" } }
+```
+
+The `requires` keys, and what the original status screen prints for them:
+
+| Key | Requirement | Shown | Key | Requirement | Shown |
+| --- | --- | --- | --- | --- | --- |
+| `null` | none | | `newtype` | Newtype or Enhanced L1 or more | NT1 |
+| `ally` | our side only | | `newtype_4` | Newtype or Enhanced L4 or more | NT4 |
+| `hyper_mode` | the pilot is in Hyper Mode / Super Mode | 明鏡 | `holy_warrior` | Holy Warrior L1 or more | 聖戦1 |
+| `super_mode` | the same, printed differently | Sモード | `holy_warrior_3` | Holy Warrior L3 or more | 聖戦3 |
+| `level_10` … `level_45` | pilot level 10 / 15 / 20 / 25 / 30 / 35 / 45 or more | LV10 … LV45 | `v_max`, `v_max_red` | V-MAX / its red power is active | V-MAX |
 
 Upgrades add power as in the original. **A weapon carried by several units changes on all of them**; the ID table's "Carried by" column lists them.
 

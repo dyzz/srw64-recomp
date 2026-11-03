@@ -1,0 +1,134 @@
+{
+  "schema": "srw64.mini-stage.v1",
+  "name": "weapon-fields",
+  "note": "Number MOD weapon fields (mod_data.hpp): アムロ / νガンダム at (8,8), an enemy at (8,13), five squares away, in フィンファンネル's range (1–7) before and after a one-square move. With the test package, フィンファンネル is melee, P and beam (menu 格フィンファンネルPB), ビームライフル needs 聖戦士 L3, ミサイルランチャー is locked. No victory event; the VI budget ends the run.",
+  "map": 20,
+  "deployments": [
+    {
+      "template": "base:stage_deployments:0020c274",
+      "group": 0,
+      "x": 8,
+      "y": 8,
+      "faction": 0,
+      "note": "アムロ / νガンダム"
+    },
+    {
+      "template": "base:stage_deployments:001f2720",
+      "group": 1,
+      "x": 8,
+      "y": 13,
+      "faction": 1,
+      "note": "ロゼ / ゼーロン — enemy, five squares away"
+    }
+  ],
+  "events": [
+    {
+      "name": "opening",
+      "type": 12,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D32",
+          "args": [
+            4
+          ]
+        },
+        {
+          "op": "3D4D"
+        },
+        {
+          "op": "3D65",
+          "args": [
+            17,
+            31
+          ]
+        },
+        {
+          "op": "3D3B",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            0
+          ]
+        },
+        {
+          "op": "3D45",
+          "args": [
+            1
+          ]
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D54",
+          "args": [
+            138
+          ]
+        },
+        {
+          "op": "3D35",
+          "args": [
+            16384,
+            0
+          ],
+          "note": "camera on タケル"
+        },
+        {
+          "op": "3D38",
+          "args": [
+            30
+          ]
+        },
+        {
+          "op": "3D47"
+        },
+        {
+          "op": "3D48"
+        }
+      ]
+    },
+    {
+      "name": "ending",
+      "type": 14,
+      "header": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "commands": [
+        {
+          "op": "3DD0"
+        },
+        {
+          "op": "3D3A",
+          "args": [
+            48
+          ]
+        },
+        {
+          "op": "3D4B",
+          "args": [
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

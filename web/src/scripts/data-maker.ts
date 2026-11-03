@@ -13,6 +13,7 @@ type Labels = {
   skills: { key: string; label: string; row: number }[];
   spirits: { key: string; label: string }[];
   sizes: string[];
+  choices: Record<string, { value: string | null; label: string }[]>;   // a weapon's attack, terrain_at, requires
 };
 type Entry = Record<string, any> & { id: number; name: { ja: string; zh: string; en: string } };
 
@@ -133,6 +134,16 @@ export function initDataMaker() {
     select.addEventListener('change', () => { set(kind, id, key, select.value); wrap.classList.toggle('changed', select.value !== was); });
     return wrap;
   }
+  // A choice among named values; null (shown as the first choice) is a value of its own (requires).
+  function choiceField(label: string, key: string, choices: { value: string | null; label: string }[], id: number) {
+    const was = originalOf(kind, id, key) ?? null, now = valueOf(kind, id, key) ?? null;
+    const name = (v: string | null) => choices.find((c) => c.value === v)?.label ?? String(v ?? '—');
+    const select = el('select', {}, ...choices.map((c) => el('option', { value: c.value ?? '' }, c.label))) as HTMLSelectElement;
+    select.value = now ?? '';
+    const wrap = el('label', { class: `field${now !== was ? ' changed' : ''}` }, label, select, el('span', { class: 'was' }, `${text.original} ${name(was)}`));
+    select.addEventListener('change', () => { const v = select.value === '' ? null : select.value; set(kind, id, key, v); wrap.classList.toggle('changed', v !== was); });
+    return wrap;
+  }
   function check(label: string, key: string, id: number) {
     const was = originalOf(kind, id, key), input = el('input', { type: 'checkbox', checked: valueOf(kind, id, key) }) as HTMLInputElement;
     const wrap = el('label', { class: `check${input.checked !== was ? ' changed' : ''}` }, input, label);
@@ -153,6 +164,10 @@ export function initDataMaker() {
       kind === 'units' ? selectField(text.size, 'size', labels.sizes, id) : null));
     parts.push(el('div', { class: 'sub' }, text.terrain),
       el('div', { class: 'grid' }, ...CHANNELS.map((c, n) => selectField(text.terrainNames[n], `terrain.${c}`, RANKS, id))));
+    if (kind === 'weapons') parts.push(el('div', { class: 'sub' }, text.weaponKind),
+      el('div', { class: 'grid' }, choiceField(text.attack, 'attack', labels.choices.attack, id), choiceField(text.terrainAt, 'terrain_at', labels.choices.terrain_at, id),
+        choiceField(text.requires, 'requires', labels.choices.requires, id)),
+      el('div', { class: 'checks' }, check(text.postMove, 'post_move', id), check(text.beam, 'beam', id), check(text.parryable, 'parryable', id), check(text.locked, 'locked', id)));
     if (kind === 'units') {
       parts.push(el('div', { class: 'sub' }, text.equipment), el('div', { class: 'checks' }, check(text.shield, 'shield', id), check(text.sword, 'sword', id)));
       const abil = new Set<string>(valueOf(kind, id, 'abilities'));
@@ -282,6 +297,13 @@ export function initDataMaker() {
   root.querySelector('[data-export]')!.addEventListener('click', () => {
     const m = form.manifest();
     if (typeof m === 'string') return say(exportStatus, m, true);
+    // A weapon's kind, requirement, upgrade type and lock are read from 0.5.3 on (an older game drops the whole file).
+    const since053 = ['attack', 'beam', 'post_move', 'parryable', 'terrain_at', 'requires', 'upgrade_type', 'locked'];
+    if ([...edits.weapons.values()].some((e) => since053.some((k) => k in e))) {
+      const g = /^>=\s*(\d+)\.(\d+)(?:\.(\d+))?$/.exec(String(m.manifest.game ?? ''));
+      const v = g ? [Number(g[1]), Number(g[2]), Number(g[3] ?? 0)] : [0, 0, 0];
+      if ((v[0] - 0 || v[1] - 5 || v[2] - 3) < 0) m.manifest.game = '>=0.5.3';
+    }
     const { files: docs, problems } = files();
     if (problems.length) return say(exportStatus, text.fixFirst + problems.join('；'), true);
     if (!Object.keys(docs).length && !Object.keys(kept).length) return say(exportStatus, text.errEmpty, true);

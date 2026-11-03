@@ -2,7 +2,7 @@
 
 给 MOD 作者看，也可以把整个文件夹交给你的 AI 助手，让它照着表写配置。实现与原版机制在 [两个 MOD 的规划](../../design/mod-names-art-data.md) §2.3 和 [MOD 包](../../design/mod-packages.md) §5，包的通用规则在 MOD 包 §2。名字和头像另见 [名字与头像 MOD](../../../web/src/content/docs/zh/mod-names.md)。
 
-**现状（2026-10-27）**：机体、驾驶员、武器的数值都能改。地形适应 0.5.1 起生效，其余字段 0.5.2 起。`data/` 里别的文件会被忽略并在日志里报「暂不支持」。
+**现状（2026-11-03）**：机体、驾驶员、武器的数值都能改。地形适应 0.5.1 起生效，其余字段 0.5.2 起，武器的属性类字段（`attack`、`post_move`、`beam`、`parryable`、`terrain_at`、`requires`、`upgrade_type`、`locked`）0.5.3 起。`data/` 里别的文件会被忽略并在日志里报「暂不支持」。
 
 ## 1. 包的结构
 
@@ -33,7 +33,7 @@
 - 只写要改的字段，没写的保持原版。字段、范围和键的完整列表在官网文档「[数值 MOD](../../../web/src/content/docs/zh/mod-data.md)」，这里只列一览：
   - 机体：`hp` `en` `move` `mobility` `armor` `limit` `repair_cost` `upgrade_cap` `terrain` `size` `shield` `sword` `parts_slots` `abilities`；
   - 驾驶员：`melee` `ranged` `evade` `hit` `reaction` `skill` `sp` `double_move` `terrain` `skills` `spirits`；
-  - 武器：`power`（100 的倍数）`range_min` `range_max` `hit` `critical` `ammo`（-1 不用弹数）`en` `morale` `terrain`。
+  - 武器：`power`（100 的倍数）`range_min` `range_max` `hit` `critical` `ammo`（-1 不用弹数）`en` `morale` `terrain`；属性类：`attack`（`melee`／`ranged`，格斗或射击）`post_move`（`true`／`false`，移动后能不能用，即名字后的 P；例：`{ "209": { "post_move": true } }` 让 νガンダム 的フィンファンネル 移动后也能用）`beam`（光束，名字后的 B）`parryable`（能被切落）`terrain_at`（`attacker`／`target`，武器地形适应按哪一格判定）`requires`（必要技能：`null`、`ally`、`hyper_mode`、`super_mode`、`level_10`…`level_45`、`newtype`、`newtype_4`、`holy_warrior`、`holy_warrior_3`、`v_max`、`v_max_red`）`upgrade_type`（0–4）`locked`（剧情解禁前隐藏）。名字前后的 格／射、P、B 跟着字段走。MAP 武器和合体技不能加减。
 - `abilities`、`spirits` 是写全的：数组里没有的就去掉。`skills` 只改写到的技能，`null` 去掉。
 - `terrain` 里写要改的通道：`air`（空）、`land`（陸）、`sea`（海）、`space`（宇），值是 `A`、`B`、`C`、`D` 或 `-`。
 - 规则很严：不认识的字段、键或等级，范围外的值或编号，没有能力／精神记录的人物，都算错。**一个文件有错就整份不用**，游戏日志里有一行 `SRW64_MOD_DATA_PROBLEM` 写明哪个包、哪个文件、什么原因。`tools/mods/validate.py` 按同样的规则检查。
@@ -64,7 +64,7 @@
 | --- | --- |
 | [units.csv](units.csv) | `unit` 机体号，`name_ja`／`name_zh`／`name_en`，四个地形等级，`hp` `en` `move` `mobility` `armor` `limit` `repair_cost` `upgrade_cap` `size` `parts_slots`，`shield`／`sword`（1 有 0 无），`abilities`（空格分隔的键） |
 | [pilots.csv](pilots.csv) | `pilot` 人物号，三语名字，`record` 能力记录号，`shares_record_with`，四个地形等级，六项能力值、`sp`、`double_move`，`skills`（`键:等级/等级/…`），`spirits`（`键:等级`） |
-| [weapons.csv](weapons.csv) | `weapon` 武器号，三语名字，四个地形等级，`power` `range_min` `range_max` `hit` `ammo` `en` `morale` `critical`，`units`（带它的机体号） |
+| [weapons.csv](weapons.csv) | `weapon` 武器号，三语名字，四个地形等级，`power` `range_min` `range_max` `hit` `ammo` `en` `morale` `critical`，`attack`（melee／ranged），`beam` `post_move` `parryable` `locked`（1 是 0 否），`terrain_at`（attacker／target），`requires`（条件键，空为无），`upgrade_type`，`units`（带它的机体号） |
 
 人物表只列有能力记录的人物；副驾驶员、妖精也有记录，四项多是 `-`。同名的条目是不同的编号（形态、敌我版本、剧情专用），改之前对一下数值。
 

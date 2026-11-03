@@ -10,7 +10,8 @@
 //
 //   data/units.json    { "184": { "hp": 5200, "terrain": { "sea": "A" } } }   by unit number
 //   data/pilots.json   { "133": { "melee": 160, "terrain": { "space": "A" } } } by pilot number
-//   data/weapons.json  { "731": { "power": 3600, "range_max": 4 } }          by weapon number
+//   data/weapons.json  { "731": { "power": 3600, "range_max": 4, "post_move": true,
+//                                 "attack": "ranged", "requires": "newtype" } }         by weapon number
 //
 // The game keeps none of these tables in RAM: every use reads the record again through
 // 8007F704, after which the copy patches apply. A unit's HP, EN, move, mobility, armor,
@@ -56,7 +57,28 @@ inline constexpr Field pilot_fields[]={
 inline constexpr Field weapon_fields[]={
     {"power",0x01,1,false,0,25500,100},{"range_min",0x02,1,false,0,30},{"range_max",0x03,1,false,1,30},
     {"hit",0x04,1,true,-128,127},{"ammo",0x05,1,true,-1,99},{"en",0x06,1,false,0,255},
-    {"morale",0x07,1,false,0,255},{"critical",0x0D,1,true,-128,127}};
+    {"morale",0x07,1,false,0,255},{"critical",0x0D,1,true,-128,127},{"upgrade_type",0x0E,1,false,0,4}};
+// A weapon's +0 is its kind (runtime record +4): 0x80 melee (格: the pilot's melee stat, else
+// 射 and ranged), 0x40 its terrain rank judged on the attacker's own square (801F5628 /
+// 80203418 pass the attacker's handle to 801F3FA8, else the target's), 0x08 can be parried
+// (切り払い, 801F6D10), 0x04 usable after moving (P: 801F8BCC refuses a unit that moved any
+// other weapon), 0x02 beam (B: barriers), 0x01 map weapon (its shape sits in 801C55C0's table
+// of 51 weapon numbers, so a MOD cannot make one). The menu name's printed 格／射, P and B
+// are text, so native_dialogue.cpp rewrites them to match kind_change().
+// +8 is a requirement code 801E6214 checks (label text 0xFBA + code): 1 our side only,
+// 2／4／16 the pilot's +0x1C bit 30 (明鏡止水, Sモード, V-MAX), 17 bit 31 (V-MAX red),
+// 5–11 pilot level ≥ 10／15／20／25／30／35／45, 12／13 NT or 強化人 L1／L4, 14／15 聖戦士
+// L1／L3. +E is the upgrade type (0 none, 1–4 the increment rows). +F: 0x04 locked until a
+// 3D6F unlock (a story's, or the full-upgrade table's), 0x02 a combination attack, 0x01 a
+// sword (the parry result's animation), 0x38 the battle camera's flags: only 0x04 is a field.
+inline constexpr uint32_t weapon_kind=0x00, weapon_requires=0x08, weapon_flags=0x0F;
+inline constexpr uint8_t weapon_melee=0x80, weapon_terrain_self=0x40, weapon_parryable=0x08, weapon_post_move=0x04, weapon_beam=0x02, weapon_map=0x01;
+inline constexpr uint8_t weapon_locked=0x04, weapon_printed=weapon_melee|weapon_post_move|weapon_beam;
+struct Requirement { std::string_view key; uint8_t code; };
+inline constexpr Requirement requirements[]={
+    {"ally",1},{"hyper_mode",2},{"super_mode",4},{"level_10",5},{"level_15",6},{"level_20",7},{"level_25",8},
+    {"level_30",9},{"level_35",10},{"level_45",11},{"newtype",12},{"newtype_4",13},{"holy_warrior",14},
+    {"holy_warrior_3",15},{"v_max",16},{"v_max_red",17}};
 inline std::span<const Field> fields(Kind kind) {
     switch(kind) {
     case Kind::units: return unit_fields;
@@ -175,6 +197,28 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 bytes[record+0x04]=uint8_t((here(record+0x04)&0xC0)|(1u<<(found-sizes.begin())));
                 continue;
             }
+            if(kind==Kind::weapons && (name=="post_move" || name=="beam" || name=="parryable" || name=="locked")) {
+                if(!value.is_boolean())return where+"：要是 true 或 false";
+                const uint32_t at=record+(name=="locked"?weapon_flags:weapon_kind);
+                const uint8_t bit=name=="post_move"?weapon_post_move:name=="beam"?weapon_beam:name=="parryable"?weapon_parryable:weapon_locked;
+                bytes[at]=uint8_t(value.get<bool>()?here(at)|bit:here(at)&~bit);
+                continue;
+            }
+            if(kind==Kind::weapons && (name=="attack" || name=="terrain_at")) {
+                const bool attack=name=="attack";
+                const char* yes=attack?"melee":"attacker";const char* no=attack?"ranged":"target";
+                if(!value.is_string() || (value.get<std::string>()!=yes && value.get<std::string>()!=no))return where+"：要是 "+yes+" 或 "+no;
+                const uint8_t bit=attack?weapon_melee:weapon_terrain_self,old=here(record+weapon_kind);
+                bytes[record+weapon_kind]=uint8_t(value.get<std::string>()==yes?old|bit:old&~bit);
+                continue;
+            }
+            if(kind==Kind::weapons && name=="requires") {
+                if(value.is_null()){bytes[record+weapon_requires]=0;continue;}
+                const auto found=std::find_if(std::begin(requirements),std::end(requirements),[&](const Requirement& r){return value.is_string() && r.key==value.get<std::string>();});
+                if(found==std::end(requirements))return where+"：未知条件 "+value.dump()+"（null、"+keys_of(requirements)+"）";
+                bytes[record+weapon_requires]=found->code;
+                continue;
+            }
             if(kind==Kind::units && name=="parts_slots") {
                 if(!value.is_number_integer() || value.get<int64_t>()<0 || value.get<int64_t>()>4)return where+"：要是 0–4 的整数";
                 bytes[record+0x19]=uint8_t(value.get<int>());
@@ -235,6 +279,7 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 for(const auto& f:list)known+="、"+std::string(f.name);
                 if(kind==Kind::units)known+="、abilities、shield、sword、size、parts_slots";
                 if(kind==Kind::pilots)known+="、skills、spirits";
+                if(kind==Kind::weapons)known+="、attack、beam、post_move、parryable、terrain_at、requires、locked";
                 return key+"：未知字段 "+name+"（"+known+"）";
             }
             if(!value.is_number_integer())return key+"."+name+"：要是整数";
@@ -296,6 +341,16 @@ struct State {
 };
 inline State& state(){static State value;return value;}
 
+// A weapon's kind byte as the ROM has it and as the game reads it (a package's or the rules
+// file's), when they differ in a printed bit (格／射, P, B); nothing when they agree. Any
+// thread, once configured.
+inline std::optional<std::pair<uint8_t,uint8_t>> kind_change(unsigned weapon) {
+    const auto& s=state();
+    if(s.rom.empty() || weapon>=weapon_count)return std::nullopt;
+    const uint32_t at=weapon_records+weapon*weapon_record_size+weapon_kind;
+    const uint8_t now=upgrades::game_byte(s.rom,at),was=s.rom[at];
+    return ((now^was)&weapon_printed)?std::optional<std::pair<uint8_t,uint8_t>>({was,now}):std::nullopt;
+}
 // Host start-up, after upgrades::configure().
 inline void configure(std::span<const uint8_t> rom,const fs::path& output) {
     auto& s=state();

@@ -51,6 +51,12 @@ SPIRITS = ('self_destruct', 'scout', 'accel', 'mercy', 'focus', 'alert', 'guts',
            'encourage', 'disrupt', 'friendship', 'love', 'reactivate', 'miracle', 'prayer', 'revive')
 
 
+# Weapon +8 requirement codes by the keys data/weapons.json takes (mod_data.hpp requirements[]).
+REQUIREMENTS = {1: 'ally', 2: 'hyper_mode', 4: 'super_mode', 5: 'level_10', 6: 'level_15', 7: 'level_20', 8: 'level_25',
+                9: 'level_30', 10: 'level_35', 11: 'level_45', 12: 'newtype', 13: 'newtype_4', 14: 'holy_warrior',
+                15: 'holy_warrior_3', 16: 'v_max', 17: 'v_max_red'}
+
+
 def write(name: str, header: list[str], rows: list[list]) -> None:
     with (OUT / name).open('w', encoding='utf-8', newline='') as f:
         out = csv.writer(f, lineterminator='\n')
@@ -137,7 +143,11 @@ def main() -> None:
     def weapon_row(n: int) -> dict:
         at = WEAPON_RECORDS + n * WEAPON_SIZE
         return {'power': u8(at + 1) * 100, 'range_min': u8(at + 2), 'range_max': u8(at + 3), 'hit': s8(at + 4),
-                'ammo': s8(at + 5), 'en': u8(at + 6), 'morale': u8(at + 7), 'critical': s8(at + 0xD)}
+                'ammo': s8(at + 5), 'en': u8(at + 6), 'morale': u8(at + 7), 'critical': s8(at + 0xD),
+                # +0 is the weapon's kind, +8 a requirement code, +E the upgrade type, +F flags (mod_data.hpp).
+                'attack': 'melee' if u8(at) & 0x80 else 'ranged', 'beam': bool(u8(at) & 0x02), 'post_move': bool(u8(at) & 0x04),
+                'parryable': bool(u8(at) & 0x08), 'terrain_at': 'attacker' if u8(at) & 0x40 else 'target',
+                'requires': REQUIREMENTS.get(u8(at + 8)), 'upgrade_type': u8(at + 0xE), 'locked': bool(u8(at + 0xF) & 0x04)}
     weapons = [(n, name(WEAPON_NAMES + n), ranks(WEAPON_RECORDS + n * WEAPON_SIZE + 9), weapon_row(n), carried[n]) for n in range(WEAPONS)]
 
     unit_stats = ('hp', 'en', 'move', 'mobility', 'armor', 'limit', 'repair_cost', 'upgrade_cap', 'size', 'parts_slots')
@@ -148,9 +158,11 @@ def main() -> None:
           [[a, *n, r, ' '.join(map(str, shared)), *t, *(d[k] for k in pilot_stats),
             ' '.join(f"{k}:{'/'.join(map(str, v))}" for k, v in d['skills'].items()), ' '.join(f'{k}:{l}' for k, l in d['spirits'])]
            for a, n, r, shared, t, d in pilots])
-    weapon_stats = ('power', 'range_min', 'range_max', 'hit', 'ammo', 'en', 'morale', 'critical')
+    weapon_stats = ('power', 'range_min', 'range_max', 'hit', 'ammo', 'en', 'morale', 'critical',
+                    'attack', 'beam', 'post_move', 'parryable', 'terrain_at', 'requires', 'upgrade_type', 'locked')
+    cell = lambda v: int(v) if isinstance(v, bool) else '' if v is None else v
     write('weapons.csv', ['weapon', 'name_ja', 'name_zh', 'name_en', *CHANNELS, *weapon_stats, 'units'],
-          [[n, *nm, *t, *(d[k] for k in weapon_stats), ' '.join(map(str, c))] for n, nm, t, d, c in weapons])
+          [[n, *nm, *t, *(cell(d[k]) for k in weapon_stats), ' '.join(map(str, c))] for n, nm, t, d, c in weapons])
 
     def names3(n: list[str]) -> dict[str, str]:
         ja, zh, en = n

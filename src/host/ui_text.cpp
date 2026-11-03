@@ -1,6 +1,7 @@
 #include "ui_text.hpp"
 #include "native_name_entry.hpp"
 #include "mod_names.hpp"
+#include "mod_data.hpp"
 #include "run_files.hpp"
 #include "map_miss.hpp"
 #include "menu_widen.hpp"
@@ -771,16 +772,30 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             }
             counts.glyphs += l.cells.size();
         } else if (!text.empty()) {
-            // A weapon's list name: the original's marker glyphs, not the letters standing for them.
-            if (const auto mark = icon(l.cells.front().code); !mark.empty()) {
-                for (const char* letter : {"格", "射"}) if (text.rfind(letter, 0) == 0) { text = mark + text.substr(std::strlen(letter)); break; }
+            // A weapon's list name: marker glyphs, not the letters standing for them. The letters
+            // are converted where the original draws marker glyphs (as many at the end as it
+            // draws), or all of them when a number MOD changed the weapon's kind
+            // (mod_data::kind_change): then the text, not the original's cells, says which.
+            const bool rekind = l.id >= mod_names::text_weapon_menu && l.id < mod_names::text_weapon_menu + mod_names::weapon_count &&
+                                mod_data::kind_change(l.id - mod_names::text_weapon_menu).has_value();
+            if (rekind || !icon(l.cells.front().code).empty()) {
+                for (const auto& [letter, code] : {std::pair{"格", 0xF4}, std::pair{"射", 0xF3}})
+                    if (text.rfind(letter, 0) == 0) { text = icon(uint16_t(code)) + text.substr(std::strlen(letter)); break; }
             }
-            if (const auto mark = icon(l.cells.back().code); !mark.empty()) {
-                for (const char* letter : {"MAP", "P", "B"}) {
-                    const size_t n = std::strlen(letter);
-                    if (text.size() >= n && text.compare(text.size() - n, n, letter) == 0) { text = text.substr(0, text.size() - n) + mark; break; }
+            size_t marks = 0;
+            for (size_t k = l.cells.size(); k-- > 0 && !icon(l.cells[k].code).empty();) ++marks;
+            std::string tail;
+            for (size_t n = 0; n < (rekind ? 3 : marks); ++n) {
+                bool matched = false;
+                for (const auto& [letter, code] : {std::pair{"MAP", 0x23F}, std::pair{"B", 0xF2}, std::pair{"P", 0xF1}}) {
+                    const size_t len = std::strlen(letter);
+                    if (text.size() >= len && text.compare(text.size() - len, len, letter) == 0) {
+                        text.resize(text.size() - len); tail = icon(uint16_t(code)) + tail; matched = true; break;
+                    }
                 }
+                if (!matched) break;
             }
+            text += tail;
             // Glyphs with no name stay as the original draws them.
             for (size_t at = text.find("〔"); at != std::string::npos; at = text.find("〔")) {
                 const size_t close = text.find("〕", at);

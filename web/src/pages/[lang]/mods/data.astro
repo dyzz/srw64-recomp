@@ -48,6 +48,14 @@ const text = {
   equipment: L({ zh: '装备', en: 'Equipment', ja: '装備' }),
   shield: L({ zh: '盾', en: 'Shield', ja: '盾' }),
   sword: L({ zh: '剑', en: 'Sword', ja: '剣' }),
+  weaponKind: L({ zh: '属性（这一组需要 0.5.3 或更新的版本）', en: 'Properties (this group needs 0.5.3 or later)', ja: '属性（この項目は 0.5.3 以降が必要）' }),
+  postMove: L({ zh: '移动后可用（名字后的 P）', en: 'Usable after moving (the P after the name)', ja: '移動後に使用可（名前の後ろの P）' }),
+  beam: L({ zh: '光束（名字后的 B，吃护罩）', en: 'Beam (the B after the name; barriers apply)', ja: 'ビーム（名前の後ろの B。バリアが効く）' }),
+  parryable: L({ zh: '可被切落', en: 'Can be parried', ja: '切り払われる' }),
+  locked: L({ zh: '剧情解禁前隐藏', en: 'Hidden until a story unlock', ja: 'イベントで解禁されるまで非表示' }),
+  attack: L({ zh: '格斗 / 射击', en: 'Melee / ranged', ja: '格闘／射撃' }),
+  terrainAt: L({ zh: '武器地形适应按哪一格判定', en: 'Weapon terrain rank judged on', ja: '武器の地形適応を判定するマス' }),
+  requires: L({ zh: '必要技能', en: 'Requirement', ja: '必要技能' }),
   stats1: L({ zh: '能力值是 1 级的值，之后每级照原版成长。', en: 'Stats are level-1 values; each level adds the original growth.', ja: '能力値はレベル 1 の値で、以後は原作どおり成長します。' }),
   power100: L({ zh: '威力要是 100 的倍数', en: 'Power must be a multiple of 100', ja: '攻撃力は 100 の倍数です' }),
   rangeOrder: L({ zh: '最小射程不能大于最大射程', en: 'Minimum range cannot exceed maximum range', ja: '最小射程は最大射程以下です' }),
@@ -90,6 +98,7 @@ const fields = {
     { key: 'ammo', label: L({ zh: '弹数（-1 不用弹数）', en: 'Ammo (-1 none)', ja: '弾数（-1 で無し）' }), low: -1, high: 99 },
     { key: 'en', label: L({ zh: '消耗 EN', en: 'EN cost', ja: '消費 EN' }), low: 0, high: 255 },
     { key: 'morale', label: L({ zh: '需要气力', en: 'Morale', ja: '必要気力' }), low: 0, high: 255 },
+    { key: 'upgrade_type', label: L({ zh: '改造类型（0 不可改造，1–4 增量曲线；需要 0.5.3）', en: 'Upgrade type (0 none, 1–4 the growth rows; needs 0.5.3)', ja: '改造タイプ（0 不可、1–4 の上昇表。0.5.3 以降）' }), low: 0, high: 4 },
   ],
 };
 const abilities = [
@@ -120,7 +129,20 @@ const spiritNames: Record<string, { zh: string; en: string; ja: string }> = {
   miracle: { zh: '奇迹', en: 'Miracle', ja: '奇跡' }, prayer: { zh: '祈祷', en: 'Prayer', ja: '祈り' }, revive: { zh: '复活', en: 'Revive', ja: '復活' },
 };
 const spirits = Object.entries(spiritNames).map(([key, name]) => ({ key, label: L(name) }));
-const labels = { fields, abilities, skills, spirits, sizes: ['SS', 'S', 'M', 'L', 'LL'] };
+const weaponChoices = {
+  attack: [['melee', { zh: '格斗', en: 'Melee', ja: '格闘' }], ['ranged', { zh: '射击', en: 'Ranged', ja: '射撃' }]],
+  terrain_at: [['attacker', { zh: '自己所在格', en: 'The attacker’s square', ja: '自分のマス' }], ['target', { zh: '目标所在格', en: 'The target’s square', ja: '相手のマス' }]],
+  requires: [
+    [null, { zh: '无', en: 'None', ja: 'なし' }], ['ally', { zh: '只有我方能用', en: 'Our side only', ja: '味方のみ' }],
+    ['hyper_mode', { zh: '明镜止水', en: 'Hyper Mode', ja: '明鏡止水' }], ['super_mode', { zh: '超级模式', en: 'Super Mode', ja: 'スーパーモード' }],
+    ['level_10', 'LV10'], ['level_15', 'LV15'], ['level_20', 'LV20'], ['level_25', 'LV25'], ['level_30', 'LV30'], ['level_35', 'LV35'], ['level_45', 'LV45'],
+    ['newtype', { zh: 'NT／强化人 L1', en: 'Newtype / Enhanced L1', ja: 'NT／強化 L1' }], ['newtype_4', { zh: 'NT／强化人 L4', en: 'Newtype / Enhanced L4', ja: 'NT／強化 L4' }],
+    ['holy_warrior', { zh: '圣战士 L1', en: 'Holy Warrior L1', ja: '聖戦士 L1' }], ['holy_warrior_3', { zh: '圣战士 L3', en: 'Holy Warrior L3', ja: '聖戦士 L3' }],
+    ['v_max', 'V-MAX'], ['v_max_red', { zh: 'V-MAX 红色力量', en: 'V-MAX red power', ja: 'V-MAX レッドパワー' }],
+  ],
+} as Record<string, [string | null, string | { zh: string; en: string; ja: string }][]>;
+const choices = Object.fromEntries(Object.entries(weaponChoices).map(([k, list]) => [k, list.map(([value, name]) => ({ value, label: typeof name === 'string' ? name : L(name) }))]));
+const labels = { fields, abilities, skills, spirits, sizes: ['SS', 'S', 'M', 'L', 'LL'], choices };
 const pick = pickables(lang, data.units.map((u) => u.id), data.pilots.map((p) => p.id));
 const notice = versionNotice(lang, text.game);
 ---

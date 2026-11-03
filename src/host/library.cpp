@@ -124,7 +124,7 @@ json weapon(unsigned number,unsigned cap) {
     json w={{"number",number},{"flags",u8(at)},{"name",text(uint16_t(text_weapon_menu+number))},{"power",u8(at+1)*100},{"range_min",u8(at+2)},{"range_max",u8(at+3)},
         {"hit",s8(at+4)},{"en",u8(at+6)},{"morale",u8(at+7)},{"terrain",terrain(at+9)},{"critical",s8(at+0xD)}};
     if(s8(at+5)>=0)w["ammo"]=s8(at+5);
-    if(u8(at+8)>=2)w["skill_name"]=text(uint16_t(u8(at+8)));
+    if(u8(at+8)>=2)w["skill_name"]=text(uint16_t(0xFBA+u8(at+8)));   // the requirement's label (801E6B4C)
     if(const unsigned type=u8(at+0xE);type && type<5) {
         unsigned power=u8(at+1)*100;
         for(unsigned n=0;n<std::min(cap,upgrade_levels);++n)power+=u16(weapon_increments+(type*upgrade_levels+n)*2);

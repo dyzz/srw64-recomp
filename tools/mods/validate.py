@@ -461,8 +461,11 @@ DATA_FIELDS = {
     "pilots.json": (360, {"melee": (0, 255, 1), "ranged": (0, 255, 1), "evade": (0, 255, 1), "hit": (0, 255, 1),
                           "reaction": (0, 255, 1), "skill": (0, 255, 1), "sp": (0, 255, 1), "double_move": (0, 99, 1)}),
     "weapons.json": (1329, {"power": (0, 25500, 100), "range_min": (0, 30, 1), "range_max": (1, 30, 1), "hit": (-128, 127, 1),
-                            "ammo": (-1, 99, 1), "en": (0, 255, 1), "morale": (0, 255, 1), "critical": (-128, 127, 1)}),
+                            "ammo": (-1, 99, 1), "en": (0, 255, 1), "morale": (0, 255, 1), "critical": (-128, 127, 1),
+                            "upgrade_type": (0, 4, 1)}),
 }
+REQUIREMENTS = ("ally", "hyper_mode", "super_mode", "level_10", "level_15", "level_20", "level_25", "level_30", "level_35",
+                "level_45", "newtype", "newtype_4", "holy_warrior", "holy_warrior_3", "v_max", "v_max_red")
 TERRAIN = ("air", "land", "sea", "space")
 ABILITIES = ("beam_coat", "i_field", "planet_defensor", "aura_barrier", "afterimage", "mach_special", "true_mach_special",
              "god_shadow", "getter_vision", "shungensoku", "hyper_jammer", "hp_regen_10", "hp_regen_20")
@@ -521,6 +524,18 @@ def data_problem(name: str, document) -> str:
             elif name == "units.json" and field in ("shield", "sword"):
                 if not isinstance(value, bool):
                     return f"{where}：要是 true 或 false"
+            elif name == "weapons.json" and field in ("post_move", "beam", "parryable", "locked"):
+                if not isinstance(value, bool):
+                    return f"{where}：要是 true 或 false"
+            elif name == "weapons.json" and field == "attack":
+                if value not in ("melee", "ranged"):
+                    return f"{where}：要是 melee 或 ranged"
+            elif name == "weapons.json" and field == "terrain_at":
+                if value not in ("attacker", "target"):
+                    return f"{where}：要是 attacker 或 target"
+            elif name == "weapons.json" and field == "requires":
+                if value is not None and value not in REQUIREMENTS:
+                    return f"{where}：未知条件 {value!r}（null、{'、'.join(REQUIREMENTS)}）"
             elif name == "units.json" and field == "size":
                 if value not in ("SS", "S", "M", "L", "LL"):
                     return f"{where}：要是 SS、S、M、L 或 LL"
