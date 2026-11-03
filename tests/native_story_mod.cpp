@@ -60,7 +60,7 @@ int main(int argc,char** argv) {
     check(master.events[0].vars==std::map<unsigned,unsigned>{{131,0}},"after the talk");
     check(master.events[0].kills==std::map<unsigned,unsigned>{{4,50}},"Domon at 50 kills");
     check(master.events[1].trigger==story::Trigger::persuade && master.events[1].kills_below==std::map<unsigned,unsigned>{{4,50}} &&
-          master.events[1].repeat,"refused under 50 kills, again and again");
+          !master.events[1].repeat && master.events[0].not_fired==std::vector<std::string>{"refused"},"refused under 50 kills, once: then no persuasion");
     check(master.events[2].trigger==story::Trigger::after_end && master.events[2].fired==std::vector<std::string>{"persuade"},"joins after the end event");
     const auto& joins=master.events[2].words;
     check(std::vector<uint16_t>(joins.end()-6,joins.end())==std::vector<uint16_t>{0x3D5A,18,0,27,500,0xFFFF},"3D5A 18,0,27,500 at its end");
@@ -109,14 +109,18 @@ int main(int argc,char** argv) {
     const uint32_t record_domon=story::pilot_records+story::pilot_record_size;
     write8(ram.data(),record_domon,1);write16(ram.data(),record_domon+2,4);write16(ram.data(),record_domon+story::pilot_kills,49);
     check(story::kills(ram.data(),4)==49u && !story::kills(ram.data(),5),"kills read from our records");
-    // Under 50 the persuasion is offered all the same: the refusal (event 1), each time.
+    // Under 50 the persuasion is offered all the same: the refusal (event 1), once.
     check(story::persuasion(ram.data(),v,unit)==18 && read(ram.data(),e+story::f_persuade,2)==story::persuade_mark+1,"at 49 kills: the refusal");
     write16(ram.data(),e+story::f_phase,6);
     check(story::persuaded(ram.data(),start) && read(ram.data(),story::region+12,2)==story::text_first+7,"the refusal's first line");
     check(s.fired.count("srw64.master-asia/refused")==1 && !s.fired.count("srw64.master-asia/persuade"),"refused, not persuaded");
     write16(ram.data(),e+story::f_status,0x80);write16(ram.data(),e+story::f_phase,0);
-    check(story::persuasion(ram.data(),v,unit)==18 && read(ram.data(),e+story::f_persuade,2)==story::persuade_mark+1,"refused again");
+    write16(ram.data(),e+story::f_persuade,0xFFFF);
+    check(story::persuasion(ram.data(),v,unit)==-1,"refused once: no second try");
     write16(ram.data(),record_domon+story::pilot_kills,50);
+    check(story::persuasion(ram.data(),v,unit)==-1,"nor at 50 kills, once refused");
+    // As in a stage where he was never refused.
+    s.fired.erase("srw64.master-asia/refused");
     check(story::persuasion(ram.data(),v,unit)==18,"after the talk, at 50 kills: the target's pilot");
     check(read(ram.data(),e+story::f_persuade,2)==story::persuade_mark,"+0x992 holds our mark");
     write8(ram.data(),master_unit+4,8);

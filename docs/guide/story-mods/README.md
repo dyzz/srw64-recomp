@@ -75,12 +75,12 @@
 
 ```json
 { "id": "persuade", "when": { "persuade": { "by": 4, "target": 18 } },
-  "if": { "vars": { "131": 0 }, "kills": { "4": 50 } }, "do": [ "……成功的台词与后续……" ] },
+  "if": { "vars": { "131": 0 }, "kills": { "4": 50 }, "not_fired": ["refused"] }, "do": [ "……成功的台词与后续……" ] },
 { "id": "refused",  "when": { "persuade": { "by": 4, "target": 18 } },
-  "if": { "vars": { "131": 0 }, "kills_below": { "4": 50 } }, "repeat": true, "do": [ "……被拒的台词……" ] }
+  "if": { "vars": { "131": 0 }, "kills_below": { "4": 50 } }, "do": [ "……被拒的台词……" ] }
 ```
 
-交谈过之后「说服」一直都在；击坠数不够时选它播被拒的台词、多蒙这回合的行动用掉，东方不败留在场上，之后可以再试（`repeat`）；够了再说服就是成功的那个。
+交谈过之后出现「说服」；击坠数不够时选它播被拒的台词、多蒙这回合的行动用掉，东方不败留在场上。被拒只有一次（没写 `repeat`），成功的那个又要求 `not_fired: refused`，所以被拒之后本关两个都不成立，菜单里不再有「说服」，剧情照原版走。想让玩家可以再试，就给被拒的写 `"repeat": true`、去掉成功那个的 `not_fired`。
 - `"fired": ["persuade"]`：本包的这些事件本关已经触发过。
 - `"not_fired": [...]`：还没触发过。
 - `"roster": {"pilots": [18], "units": [27]}`：这些人物、机体在我方名册里（不管出没出击）；`"not_roster"`：都不在。
@@ -130,4 +130,4 @@
 
 ## 4. 自己验证
 
-开发环境里 `tools/recomp/debug/check_story_mod.py --route ia|oz` 是示例包的实机检查：装包、直接进入场景 129／137 的验证关卡（`config/recomp/mini-stages/story-master.json`、`story-master-oz.json`）、说服、过关、看名册。写自己的包时可以照它改一个。运行时宿主把触发、开始、结束记在运行目录的 `story-mod-events.jsonl`，读不了的包在日志里报 `SRW64_STORY_MOD_PROBLEM`。
+开发环境里 `tools/recomp/debug/check_story_mod.py --route ia|oz`（加 `--refuse` 看被拒与之后不能再说服）是示例包的实机检查：装包、直接进入场景 129／137 的验证关卡（`config/recomp/mini-stages/story-master.json`、`story-master-oz.json`）、说服、过关、看名册。写自己的包时可以照它改一个。运行时宿主把触发、开始、结束记在运行目录的 `story-mod-events.jsonl`，读不了的包在日志里报 `SRW64_STORY_MOD_PROBLEM`。

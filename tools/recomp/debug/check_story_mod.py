@@ -6,12 +6,15 @@ config/recomp/mods/master-asia, on a route's mini stage: --route ia is scene 129
   1. the package's events load (story-mod-events.jsonl "loaded": 8 events, 36 lines);
   2. before the talk (the talk variable 3) Domon's command menu offers no 説得;
   3. with it at 0 (as the original's after-battle talk leaves it) the menu offers 説得; with
-     Domon at 49 kills it is the refusal: its four lines, Master Asia stays, the variable 0;
-     Domon is given his action back and 50 kills, and 説得 is the persuasion,
-     and choosing it runs the package's persuasion: its lines are shown, Master Asia
-     leaves the map, Wong's original lines follow, the route's variables as listed below;
+     Domon at 50 kills it is the persuasion, and choosing it runs the package's persuasion:
+     its lines are shown, Master Asia leaves the map, Wong's original lines follow, the
+     route's variables as listed below;
   4. after the stage is won (3D4A) the end event runs without Master Asia's death, then
      the package's join: its lines are shown and pilot 18 is on the roster with unit 27.
+
+With --refuse, step 3 is the refusal instead, which is once only: Domon at 49 kills gets the
+refusal's four lines, Master Asia stays and the variable stays 0; given his action back and
+50 kills, Domon's menu has no 説得 any more. The run ends there.
 
 Screens are saved beside the run. Pass --keep to leave the game open afterwards.
 """
@@ -45,6 +48,7 @@ PILOTS, PILOT_SIZE = 0x80172F40, 0x4C
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument("--route", choices=ROUTES, default="ia")
 parser.add_argument("--language", default="zh-Hans")
+parser.add_argument("--refuse", action="store_true", help="check the refusal and that there is no second try")
 parser.add_argument("--keep", action="store_true", help="leave the game running at the end")
 parser.add_argument("--launch-only", action="store_true", help="only start it on the stage, for driving by hand")
 parser.add_argument("--before-victory", action="store_true", help="stop on the map after the persuasion, the game left running")
@@ -55,7 +59,12 @@ TALK = ROUTE["talk"]
 PERSUADE, REFUSED, JOINS = (f"srw64.master-asia/{name}{ROUTE['suffix']}" for name in ("persuade", "refused", "joins"))
 
 mods = ROOT / "build/recomp/debug" / time.strftime("story-mods-%Y%m%dT%H%M%S")
-build_package(PACKAGE, mods, archive=False)
+folder, _, _ = build_package(PACKAGE, mods, archive=False)
+# A development build calls itself the last release (CMakeLists' VERSION) until the next is
+# cut, while the package asks for the release it ships with: lifted here, or it stays off.
+manifest = json.loads((folder / "mod.json").read_text(encoding="utf-8"))
+manifest["game"] = "*"
+(folder / "mod.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 s = Session.launch(language=args.language, images="original", mini_stage=str(STAGE),
                    env={"SRW64_MODS_DIR": str(mods)}, detach=args.keep or args.launch_only or args.before_victory)
 print("run", s.run, flush=True)
@@ -195,39 +204,52 @@ try:
     s.client.call("keys", press="x", hold_ms=80)
     time.sleep(1.0)
 
-    # After it (131 = 0, as 001d387c leaves it), Domon at 49 kills: 説得 is offered, and it
-    # is the refusal (the package's second event: mark 0x7001).
+    # After it (131 = 0, as 001d387c leaves it), 説得 is offered.
     set_variable(TALK, 0)
     pilots = mem(PILOTS, 100 * PILOT_SIZE)
     domon = next(PILOTS + i * PILOT_SIZE for i in range(100)
                  if pilots[i * PILOT_SIZE] and int.from_bytes(pilots[i * PILOT_SIZE + 2:i * PILOT_SIZE + 4], "big") == 4)
-    poke(domon + 0x14, (49).to_bytes(2, "big"))
-    s.client.call("keys", press="z", hold_ms=80)
-    time.sleep(1.0)
-    check("説得 at 49 kills is the refusal (our mark)", word(ENGINE + 0x992) == ROUTE["marks"][1], hex(word(ENGINE + 0x992)))
-    shot("menu-after")
-    mark = lines_seen()
-    choose_persuade()
-    advance_until(lambda: finished(REFUSED), 120, "the refusal to end")
-    first = MOD_LINES + ROUTE["lines"][1]
-    check("the refusal's four lines read", ours(mark) == [first + n for n in range(COUNTS["refused"])], str(ours(mark)))
-    check(f"refused: {TALK} still 0, Master Asia still on the map, not persuaded",
-          variable(TALK) == 0 and not any(r.get("event") == PERSUADE for r in story_rows("started")),
-          str(variable(TALK)))
-    until(idle, 60, "the map after the refusal")
-    shot("after-refusal")
 
-    # Domon gets his action back and 50 kills: now 説得 is the persuasion (mark 0x7000).
-    # Acted is two things (cheats.md §7): the pilot's actions left (+0x35, refilled from +0x34
-    # each phase) and the map slot's +0xB 0x80.
-    slot = map_slot(4)
-    flags = word(ROSTER + slot * SLOT_SIZE + 0xB, 1)
-    poke(ROSTER + slot * SLOT_SIZE + 0xB, bytes([flags & 0x7F]))
-    poke(domon + 0x35, bytes([word(domon + 0x34, 1)]))
+    def domon_again(kills: int) -> None:
+        """Domon gets his action back and these kills, and his menu is opened again. Acted is
+        two things (cheats.md §7): the pilot's actions left (+0x35, refilled from +0x34 each
+        phase) and the map slot's +0xB 0x80."""
+        slot = map_slot(4)
+        flags = word(ROSTER + slot * SLOT_SIZE + 0xB, 1)
+        poke(ROSTER + slot * SLOT_SIZE + 0xB, bytes([flags & 0x7F]))
+        poke(domon + 0x35, bytes([word(domon + 0x34, 1)]))
+        poke(domon + 0x14, kills.to_bytes(2, "big"))
+        for _ in range(2):
+            s.client.call("keys", press="x", hold_ms=80)
+            time.sleep(0.4)
+        s.client.call("keys", press="z", hold_ms=80)
+        time.sleep(1.0)
+
+    if args.refuse:
+        # Domon at 49 kills: 説得 is the refusal (the package's second event: mark 0x7001).
+        poke(domon + 0x14, (49).to_bytes(2, "big"))
+        s.client.call("keys", press="z", hold_ms=80)
+        time.sleep(1.0)
+        check("説得 at 49 kills is the refusal (our mark)", word(ENGINE + 0x992) == ROUTE["marks"][1], hex(word(ENGINE + 0x992)))
+        shot("menu-after")
+        mark = lines_seen()
+        choose_persuade()
+        advance_until(lambda: finished(REFUSED), 120, "the refusal to end")
+        first = MOD_LINES + ROUTE["lines"][1]
+        check("the refusal's four lines read", ours(mark) == [first + n for n in range(COUNTS["refused"])], str(ours(mark)))
+        check(f"refused: {TALK} still 0, Master Asia still on the map, not persuaded",
+              variable(TALK) == 0 and not any(r.get("event") == PERSUADE for r in story_rows("started")),
+              str(variable(TALK)))
+        until(idle, 60, "the map after the refusal")
+        shot("after-refusal")
+        # Refused once, no second try: with his action back, even at 50 kills, no 説得.
+        domon_again(50)
+        check("refused once: no 説得 again, even at 50 kills", word(ENGINE + 0x992) == 0xFFFF, hex(word(ENGINE + 0x992)))
+        shot("menu-after-refusal")
+        sys.exit(0)
+
+    # At 50 kills 説得 is the persuasion (mark 0x7000).
     poke(domon + 0x14, (50).to_bytes(2, "big"))
-    for _ in range(2):
-        s.client.call("keys", press="x", hold_ms=80)
-        time.sleep(0.4)
     s.client.call("keys", press="z", hold_ms=80)
     time.sleep(1.0)
     check("説得 at 50 kills is the persuasion (our mark)", word(ENGINE + 0x992) == ROUTE["marks"][0], hex(word(ENGINE + 0x992)))
