@@ -112,7 +112,7 @@ int main(int argc,char** argv) {
     // Under 50 the persuasion is offered all the same: the refusal (event 1), each time.
     check(story::persuasion(ram.data(),v,unit)==18 && read(ram.data(),e+story::f_persuade,2)==story::persuade_mark+1,"at 49 kills: the refusal");
     write16(ram.data(),e+story::f_phase,6);
-    check(story::persuaded(ram.data(),start) && read(ram.data(),story::region+12,2)==story::text_first+5,"the refusal's first line");
+    check(story::persuaded(ram.data(),start) && read(ram.data(),story::region+12,2)==story::text_first+7,"the refusal's first line");
     check(s.fired.count("srw64.master-asia/refused")==1 && !s.fired.count("srw64.master-asia/persuade"),"refused, not persuaded");
     write16(ram.data(),e+story::f_status,0x80);write16(ram.data(),e+story::f_phase,0);
     check(story::persuasion(ram.data(),v,unit)==18 && read(ram.data(),e+story::f_persuade,2)==story::persuade_mark+1,"refused again");
@@ -148,7 +148,7 @@ int main(int argc,char** argv) {
     check(story::special(ram.data(),v) && read(ram.data(),e+0x10,4)==story::region,"ours into the end event's pointer");
     check(s.fired.count("srw64.master-asia/joins")==1,"joins fired");
     // Its 3D5A joins at Domon's level: base level 1 here and Domon 1, so +0.
-    const uint32_t level_operand=story::region+uint32_t((story::header_words+6)*2);
+    const uint32_t level_operand=story::region+uint32_t((story::header_words+12)*2);
     check(read(ram.data(),level_operand-4,2)==0x3D5A && read(ram.data(),level_operand,2)==0,"join at Domon's level: +0 at base 1");
     write8(ram.data(),story::base_level,30);write8(ram.data(),record_domon+story::pilot_level,38);
     story::place(ram.data(),s.library.events[2]);
@@ -208,8 +208,8 @@ int main(int argc,char** argv) {
 
     // --- Lines ------------------------------------------------------------------------------
     uint32_t offset{},size{};
-    // The first line's Japanese has 35 code points: three rows of blanks, 14 + 14 + 7.
-    check(story::descriptor(0,story::text_first,offset,size) && size==8+35*2+2*2+2,"a line's descriptor: "+std::to_string(size));
+    // The first line's Japanese has 38 code points (with its quotes): three rows, 14 + 14 + 10.
+    check(story::descriptor(0,story::text_first,offset,size) && size==8+38*2+2*2+2,"a line's descriptor: "+std::to_string(size));
     check(!story::descriptor(0,story::text_first+99,offset,size) && !story::descriptor(1,story::text_first,offset,size),"only ours, table 0");
     check(story::read_text(story::text_table+offset,ram.data(),0x80310000,size),"served");
     std::string header;for(uint32_t i=0;i<8;++i)header+=char(read(ram.data(),0x80310000+i,1));

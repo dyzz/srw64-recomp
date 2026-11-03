@@ -1,7 +1,7 @@
 {
   "schema": "srw64.mod.v1",
   "id": "srw64.master-asia",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "name": {
     "ja": "東方不敗 生存",
     "zh-Hans": "东方不败存活",
