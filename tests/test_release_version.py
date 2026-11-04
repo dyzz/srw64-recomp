@@ -18,7 +18,11 @@ class ReleaseVersionTest(unittest.TestCase):
         code = int(re.search(r'android:versionCode="(\d+)"', manifest).group(1))
         self.assertEqual(python, cmake)
         self.assertEqual(name, cmake)
-        major, minor, patch = (int(part) for part in cmake.split("."))
+        # A fourth number is a release for one platform (0.5.3.1, the Switch): Android's
+        # code stays its three numbers'.
+        parts = cmake.split(".")
+        self.assertIn(len(parts), (3, 4))
+        major, minor, patch = (int(part) for part in parts[:3])
         self.assertEqual(code, major * 10000 + minor * 100 + patch)
 
 

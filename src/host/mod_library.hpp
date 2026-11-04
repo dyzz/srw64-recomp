@@ -62,8 +62,10 @@ inline std::string version_text(const Version& v) {
 }
 // The leading x.y.z of a release name such as "0.4.9" or "0.4.9-dirty".
 inline std::optional<Version> leading_version(const std::string& text) {
+    // At most three numbers: a release for one platform has a fourth ("0.5.3.1"), which
+    // packages' requirements do not see.
     size_t end=0;
-    while(end<text.size() && ((text[end]>='0' && text[end]<='9') || text[end]=='.'))++end;
+    for(int dots=0;end<text.size() && ((text[end]>='0' && text[end]<='9') || (text[end]=='.' && ++dots<3));)++end;
     while(end>0 && text[end-1]=='.')--end;
     return parse_version(text.substr(0,end));
 }
