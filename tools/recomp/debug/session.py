@@ -209,6 +209,10 @@ class Session:
             return Path(path)
         target = self.run / "remote-files" / Path(*self.remote_relative(path).parts)
         target.parent.mkdir(parents=True, exist_ok=True)
+        # A phone's file comes whole through adb, as fast as the cable: the connection's
+        # 4 MiB base64 parts take minutes over a recording's raw frames (gigabytes).
+        if (self.run / "debug.tcp").exists() and self._adb_copy(str(path), target):
+            return target
         with open(target, "wb") as out:
             offset = 0
             while True:
@@ -219,6 +223,21 @@ class Session:
                 if part["eof"] or not data:
                     break
         return target
+
+    def _adb_copy(self, path: str, target: Path) -> bool:
+        """The phone's file (the app's own, read as the app) into target; False when adb
+        cannot, and the caller takes it over the connection."""
+        package = "org.srw64.game"   # tools/release/android/attach.py PACKAGE
+        try:
+            size = subprocess.run(["adb", "shell", "run-as", package, "stat", "-c", "%s", path],
+                                  capture_output=True, text=True, timeout=30)
+            if size.returncode or not size.stdout.strip().isdigit():
+                return False
+            with open(target, "wb") as out:
+                copied = subprocess.run(["adb", "exec-out", "run-as", package, "cat", path], stdout=out, timeout=3600)
+            return copied.returncode == 0 and target.stat().st_size == int(size.stdout.strip())
+        except (OSError, subprocess.SubprocessError):
+            return False
 
     # -- lifecycle ---------------------------------------------------------------
 
@@ -456,6 +475,13 @@ class Session:
             target = Path(path) if path else directory.with_suffix(".mp4")
         else:  # the host's own name for it (perhaps a Windows path), sent back as is to remove it
             directory = started["directory"] if started else str(host_path(result["frames_path"]).parent)
+            # Another machine without an ffmpeg and not a phone (the Switch): its raw frames,
+            # gigabytes, stay where they are rather than coming over the connection.
+            if not (self.run / "debug.tcp").exists():
+                return {"kept": directory, "frames_path": result["frames_path"], "times_path": result["times_path"],
+                        "audio_path": result.get("audio_path"), "frames": result["frames"],
+                        "size": [result["width"], result["height"]], "fps": fps,
+                        "note": "raw frames left on the host (no ffmpeg there); fetch them yourself to encode"}
             relative = self.remote_relative(directory)
             target = Path(path) if path else self.run / "remote-files" / Path(*relative.parts).with_suffix(".mp4")
         target.parent.mkdir(parents=True, exist_ok=True)
