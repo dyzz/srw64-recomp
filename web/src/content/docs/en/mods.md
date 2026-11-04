@@ -3,26 +3,28 @@ title: "Mod packages: installing and making them"
 summary: What a mod package is, how to install and manage one, and how to write mod.json when you make your own. Music and battle voices, numbers, names, portraits, map icons, campaigns, story events and language packages take effect.
 section: mods
 order: 1
-updated: 2026-11-03
+updated: 2026-11-04
 ---
 
 A mod package is a folder, or that folder zipped into one `.srw64mod` file. It holds data only, never code. When a package is enabled, the game uses its contents in place of the matching parts of the original; wherever no package says otherwise, everything is the original.
 
 **Music and battle voices, numbers, names, portraits, map icons, campaigns, story events and language packages take effect**: replacing songs, choosing which song a pilot or unit fights to and voicing the battle lines, as described in [Music mods](../mod-music/); changing the numbers of units, pilots and weapons, as described in [Number mods](../mod-data/); and renaming, new portraits and map icons, as described in [Name, portrait and map icon mods](../mod-names/); events added to the original stages, characters joining and story branches changing, as described in [Story mods](../mod-story/); and campaigns chained from stages you arrange, as described in [Campaign mods](../mod-campaign/); and adding a reading language or replacing an existing one's text, as described in [Language package mods](../mod-language/). Other art will follow; the package format already has a place for them.
 
-Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2, and story mods and language packages need 0.5.3.
+Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2, story mods and language packages need 0.5.3, and the Switch needs 0.5.4.
 
 ## Installing
 
 1. Open the mod manager: click “MOD” in the bottom-right corner of the title screen, or open the settings and click “MOD” on the General page.
 2. **Drag the `.srw64mod` file** (a `.zip` or a package folder works too) **into the game window**. The game installs it in the background, says so at the top of the screen and opens the Installed page.
-3. Or click “Open folder” and put the package file straight into the MOD folder; it is installed the next time you open the mod manager.
+3. Or click “Open folder” and put the package file straight into the MOD folder; it is installed the next time you open the mod manager. From 0.5.4, a package file’s extracted folder can go there too, under any name.
 
 Installing a new version of a package replaces the old one. The old version, and any package you remove, goes into `.trash` inside the MOD folder rather than being deleted.
 
 On Android, put the package file in `mods/` inside the Marchwind64 folder under Documents (the Files app): it installs when the game starts or the MOD page opens. Or press Install from file on the MOD page and pick it.
 
 ![Installing a MOD on Android: Settings › General › MOD, then Install from file, or put the file in Documents/Marchwind64/mods](/media/android-mod-install-en.webp)
+
+On the Switch, put the package file (or its extracted folder) in `/switch/Marchwind64/mods/` on the SD card with a card reader or FTP: it installs when the game starts or the MOD page opens. A large voice package shows its progress on the loading screen and can take a few minutes.
 
 ## Managing
 
