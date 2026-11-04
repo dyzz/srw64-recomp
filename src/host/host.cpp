@@ -5,6 +5,7 @@
 #include "hd_prepare.hpp"
 #include "dialogue_data.hpp"
 #include "crash_dump.hpp"
+#include "guest_null_page.hpp"
 #include "bug_report.hpp"
 // Native integration host, optionally rendered through RT64/Metal.
 #include <atomic>
@@ -205,6 +206,8 @@ void on_init(uint8_t* rdram, recomp_context*) {
     // The runtime has already copied the resident section; a rules file's table
     // changes go in before any guest code runs.
     srw64::upgrades::patch_resident(rdram);
+    // Reads through a null record pointer (a unit withdrawn mid-phase) read zeros, not a fault.
+    srw64::guest_null_page::open(rdram);
 
     // Guest globals initialized by this ROM's osInitialize. The host runtime
     // initializes its own services, so preserve these ROM-visible side effects.

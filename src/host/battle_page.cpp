@@ -9,8 +9,10 @@
 #include "sched_rate.hpp"
 #include "native_map.hpp"
 #include "game_hooks.hpp"
+#include "guest_null_page.hpp"
 #include "funcs.h"
 #include <atomic>
+#include <cstring>
 #include <mutex>
 
 uint32_t srw64_keyboard_state();  // graphics.cpp: keyboard and controller, host bits included
@@ -31,6 +33,14 @@ std::atomic_bool owning{},window_owning{};
 uint16_t held{};
 std::ofstream log;
 std::vector<uint8_t> scratch;
+// The isolated RAM image the original estimate routines run on (combat_preview.hpp), laid out
+// like the game's own so a read through a null record pointer reads zeros there too
+// (guest_null_page.cpp: the enemy's attack on a stage where a unit was withdrawn in the
+// player's phase faulted here, 2026-11-04); a plain copy where that layout is not available.
+uint8_t* snapshot(const uint8_t* ram) {
+    if(uint8_t* image=guest_null_page::image(0x800000)) {std::memcpy(image,ram,0x800000);return image;}
+    scratch.assign(ram,ram+0x800000);return scratch.data();
+}
 unsigned generation_rules{};
 bool spirit_running{};
 bool spirit_menu{};
@@ -201,22 +211,22 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
     }
     // The page's snapshot of the exchange, settled as the original has it now.
     const auto build=[&](const rule_probe::Combatant& a,const rule_probe::Combatant& d) {
-        scratch.assign(ram,ram+0x800000);auto call=*ctx;
+        uint8_t* copy=snapshot(ram);auto call=*ctx;
         generation_rules=rules::active_fixes();
-        auto left=combatant(scratch.data(),&call,a,d,0),right=combatant(scratch.data(),&call,d,a,1);
-        left.update(combat_preview::damage_preview(scratch.data(),&call,a,d,0));
-        right.update(combat_preview::damage_preview(scratch.data(),&call,d,a,1));
-        left["defense"]=combat_preview::defense_preview(scratch.data(),a,d,right);
-        right["defense"]=combat_preview::defense_preview(scratch.data(),d,a,left);
-        left["defensive_effects"]=combat_preview::defensive_effects(scratch.data(),a,left["defense"],right);
-        right["defensive_effects"]=combat_preview::defensive_effects(scratch.data(),d,right["defense"],left);
+        auto left=combatant(copy,&call,a,d,0),right=combatant(copy,&call,d,a,1);
+        left.update(combat_preview::damage_preview(copy,&call,a,d,0));
+        right.update(combat_preview::damage_preview(copy,&call,d,a,1));
+        left["defense"]=combat_preview::defense_preview(copy,a,d,right);
+        right["defense"]=combat_preview::defense_preview(copy,d,a,left);
+        left["defensive_effects"]=combat_preview::defensive_effects(copy,a,left["defense"],right);
+        right["defensive_effects"]=combat_preview::defensive_effects(copy,d,right["defense"],left);
         left["target_shield"]=right["defense"]["shield"];
         right["target_shield"]=left["defense"]["shield"];
         current={{"visible",true},{"locale",language->locale},{"serial",++serial},{"mode",mode},{"style",settings::battle_ui_name(style)},{"attacker",left},{"defender",right},
             {"response",int8_t(read(ram,0x8018B754,1))},{"animation",(read(ram,0x8015DDA8,1)&4)==0},
             {"can_cancel",mode==1 && read(ram,0x8010F5E8,1)==1},{"turn",read(ram,0x8010F5EA,2)},
             {"can_counter",mode==2},{"rules",generation_rules},{"spirit_menu",spirit_menu},
-            {"spirit_options",spirit_options(scratch.data(),&call,a.side==0?a:d)},{"words",screen_words(scratch.data())}};
+            {"spirit_options",spirit_options(copy,&call,a.side==0?a:d)},{"words",screen_words(copy)}};
         ++changes;
         // The native cards replace the original HUD sprites/text. This original
         // cleanup removes slots 0x27..0x34, preserving battlefield unit sprites.
@@ -239,8 +249,8 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
             card["pilot_name"]=dialogue::ui_text(ram,4382+read(ram,c.pilot+2,2));
             card["weapon_name"]=c.weapon?dialogue::ui_text(ram,1370+read(ram,c.weapon+2,2)):std::string{};
         }
-        scratch.assign(ram,ram+0x800000);auto call=*ctx;
-        current["spirit_options"]=spirit_options(scratch.data(),&call,a.side==0?a:d);
+        uint8_t* copy=snapshot(ram);auto call=*ctx;
+        current["spirit_options"]=spirit_options(copy,&call,a.side==0?a:d);
         current["words"]=screen_words(ram);
         current["locale"]=language->locale;++changes;
     }
@@ -258,8 +268,8 @@ bool step(uint8_t* ram,recomp_context* ctx,unsigned mode) {
     if(action.starts_with("cast:")) {
         if(!spirit_menu)return true;
         const auto player=a.side==0?a:d;
-        scratch.assign(ram,ram+0x800000);auto call=*ctx;
-        for(const auto& option:spirit_options(scratch.data(),&call,player)) {
+        uint8_t* copy=snapshot(ram);auto call=*ctx;
+        for(const auto& option:spirit_options(copy,&call,player)) {
             const auto key="cast:"+std::to_string(option.at("crew").get<unsigned>())+":"+std::to_string(option.at("slot").get<unsigned>());
             if(action!=key || !option.at("enabled").get<bool>())continue;
             const unsigned id=option.at("id"),crew=option.at("crew");
