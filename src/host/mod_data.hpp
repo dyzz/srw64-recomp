@@ -319,6 +319,7 @@ struct Collected {
     Bytes bytes;
     std::vector<std::string> problems;   // "<id> data/<file>: why"; such a file is left out
     std::map<unsigned,std::string> units;   // a new unit's number -> the package that adds it
+    std::map<unsigned,unsigned> copies;     // a new unit's number -> the unit it copies
     std::map<std::string,json> names;       // those packages' names (mod.json "name")
 };
 // The active packages, bottom first as mods::installed() returns them.
@@ -343,6 +344,7 @@ inline Collected collect(const std::vector<mods::Package>& packages,std::span<co
                 const auto before=taken.units;
                 if(auto why=mod_units::parse(document,rom,c.bytes,c.bytes,taken);!why.empty())c.problems.push_back(where+why);
                 for(const auto unit:taken.units)if(!before.count(unit)){c.units[unit]=p.id();c.names[p.id()]=p.manifest?p.manifest->name:json(p.id());}
+                for(const auto& [unit,source]:taken.copies)if(c.units.count(unit))c.copies[unit]=source;
             }
         }
         for(const auto file:files) {

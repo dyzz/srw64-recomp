@@ -2843,7 +2843,12 @@ struct ViewerCrew{unsigned unit,pilot;std::vector<unsigned> actors;};
 const ViewerCrew viewer_crews[]={
 #include "battle_viewer_pilots.inc"
 };
+const json& viewer_units();
+// A MOD's new unit (its Library entry's copy_of) flies with the crew of the unit it copies:
+// the table above is the ROM's, where that number may be some other unit's spare.
 const ViewerCrew* viewer_crew(unsigned unit) {
+    for(const auto& e:viewer_units())
+        if(e.value("id",~0u)==unit){unit=e.value("copy_of",unit);break;}
     for(const auto& c:viewer_crews)if(c.unit==unit)return &c;
     return nullptr;
 }

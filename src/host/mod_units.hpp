@@ -47,6 +47,7 @@ inline constexpr unsigned free_weapon_rows[]={75,28,29,30,33,34,35,36,37,38,39,4
 struct Taken {
     uint32_t list_next=list_gap, animation_next=animation_spare;
     std::set<unsigned> units,weapons,scenes,predecessor_rows,weapon_rows;
+    std::map<unsigned,unsigned> copies;   // a new unit -> the unit it copies
 };
 
 template<class T,size_t N> bool listed(const T (&list)[N],unsigned value) {
@@ -177,6 +178,7 @@ inline std::string parse(const json& document,std::span<const uint8_t> rom,const
                 return where+"：未知字段 "+name+"（copy、pose、icon、weapons、inherits_from）";
         if(!entry.contains("copy") || !integer(entry["copy"],0,battle_unit_count-1))return where+".copy：要写照抄的机体号（0–353，要有战斗记录）";
         const unsigned source=entry["copy"].get<unsigned>();
+        t.copies[n]=source;
         copy(unit_records+n*unit_record_size,unit_records+source*unit_record_size,unit_record_size);
         // 変形, 分離 and 合体 (+1C's 0x2, 0x40, 0x100) need the unit in the form and combination
         // tables, which a new number is in none of: the copy drops them, and the status pages

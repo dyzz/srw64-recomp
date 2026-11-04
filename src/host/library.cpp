@@ -26,7 +26,7 @@ constexpr uint32_t overlay(uint32_t vram){return vram-0x801C4500+0x8F4B0;}
 // Units: 363 records of 0x24 (800A6E68). +0 HP, +2 EN, +4 size bits, +5 movement bits,
 // +6 move, +8 mobility, +A armor, +C limit, +E..+11 terrain, +14 repair cost, +18
 // equipment (2 = shield), +1C special abilities.
-constexpr uint32_t units_at=0x71B80,unit_size=0x24,unit_count=363;
+constexpr uint32_t units_at=0x71B80,unit_size=0x24,unit_count=363,poses_at=0x84E40;   // poses: scene, atlas, palette a unit
 // A unit's weapon list (800A68BC): base + u32[base + unit*4] leads to 12-byte entries, the
 // weapon then the five forms it belongs to (FFFF none); FFFF ends the list.
 constexpr uint32_t weapon_lists=0x7E210,weapon_entry=12;
@@ -92,6 +92,7 @@ constexpr Skill skills[]={{0x04,0x433,0},{0x08,0x40F,0},{0x10,0x418,0},{0x20,0x4
 
 std::span<const uint8_t> rom;
 mod_data::Bytes modded;   // the enabled number MODs' bytes over the ROM (mod_data.hpp)
+std::map<unsigned,unsigned> copied;   // a MOD's new unit -> the unit it copies (mod_units.hpp)
 unsigned u8(uint32_t at) {
     if(at>=rom.size())return 0;
     if(const auto found=modded.find(at);found!=modded.end())return found->second;
@@ -197,7 +198,14 @@ json unit(unsigned id,const std::vector<unsigned>& numbers) {
     // / 0x4000 barriers.
     u["equipment_bits"]=equipment;u["ability_bits"]=flags;
     u["cap"]=u8(at+0x20);u["slots"]=u8(at+0x19);
-    add_art(u,"units",id);
+    // The picture by the pose the game reads (a MOD unit on a free number has its own, not
+    // the number's old unit's: unit_pose_art.hpp); a MOD unit names the unit it copies, whose
+    // crew the battle viewer offers.
+    const auto& art=battle_assets();
+    const auto pose=[&](unsigned k){return std::to_string(u16(poses_at+id*6+k*2));};
+    if(const auto key=pose(0)+"-"+pose(1)+"-"+pose(2);art.contains("poses") && art.at("poses").contains(key))u["art"]=art.at("poses").at(key);
+    else add_art(u,"units",id);
+    if(const auto found=copied.find(id);found!=copied.end())u["copy_of"]=found->second;
     return u;
 }
 json pilot(unsigned actor,int stats,int spirits) {
@@ -263,7 +271,10 @@ void assign_works(json& list,const char* id_key,uint32_t table,unsigned rows,boo
     for(auto& e:list) {
         const unsigned id=e.at(id_key).get<unsigned>();
         Listed work;
-        if(const auto found=listed.find(id);found!=listed.end())work=found->second;
+        // A MOD's new unit goes with the unit it copies: its number's row, if any, is the
+        // number's old unit's.
+        if(const auto source=e.value("copy_of",-1);source>=0 && listed.contains(unsigned(source)))work=listed.at(unsigned(source));
+        else if(const auto found=listed.find(id);found!=listed.end())work=found->second;
         else if(const auto main=alias.find(id);main!=alias.end() && listed.contains(main->second))work=listed.at(main->second);
         else if(const auto same=by_name.find(e.at("name").get<std::string>());same!=by_name.end())work=same->second;
         for(const auto& [fixed_id,fixed_work]:fixed)if(fixed_id==id)work.work=fixed_work;
@@ -316,7 +327,8 @@ void rename_records(json& list,bool pilots) {
 }
 json build() {
     rom=recomp::get_rom();
-    modded=mod_data::collect(mods::installed(mods::game_version()),rom).bytes;
+    auto collected=mod_data::collect(mods::installed(mods::game_version()),rom);
+    modded=std::move(collected.bytes);copied=std::move(collected.copies);
     json units=json::array(),pilots=json::array();
     std::map<std::string,bool> kept;
     for(unsigned id=0;id<unit_count;++id) {
