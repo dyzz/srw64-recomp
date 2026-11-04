@@ -263,6 +263,7 @@ bool active() {
 // so only the labels showing them are drawn, in ours; everything else stays the original's.
 bool names_only() {
     if (active() || disabled || !dialogue::reader_configured()) return false;
+    if (mod_data::kinds_changed()) return true;   // a weapon's menu name with its markers changed
     const auto modded = names::default_names().mod_names();
     for (const auto& [key, text] : *modded) if (std::get<2>(key) == "ja") return true;
     return mod_names::any_record("ja");

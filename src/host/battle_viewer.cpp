@@ -38,6 +38,10 @@ bool title_mode(unsigned m){return m==7 || m==0x1D || m==0x1E;}
 constexpr uint32_t demo_repeat=0x80161310,demo_count=0x801614EA,title_start=0x801CC3A3;
 // The pilot's ability record number per character (u16), resident.
 constexpr uint32_t abilities=0x800CA9C4;
+// The same table in the ROM (resident data loads at 0x80075610 from ROM 0): the voice part
+// a character's battle quotes come from, -1 for one who has none (docs/data/battle-quotes.md).
+constexpr uint32_t voice_parts=abilities-0x80075610;
+constexpr unsigned voice_part_count=361;
 // ROM: unit records (HP, EN, size bits at +4), the per-unit weapon animation overrides
 // {weapon, unit, animation} that 800AB470 applies (0-terminated), and the title's
 // サウンドセレクト {text, song} x 49 (title overlay D_801CB290).
@@ -337,8 +341,16 @@ json request(const json& params) {
     json picked;
     if(params.contains("choice")) {
         picked=params.at("choice");
-        for(const char* side:{"attacker","defender"})
+        for(const char* side:{"attacker","defender"}) {
             if(!picked.contains(side) || !picked.at(side).contains("unit") || !picked.at(side).contains("pilot"))throw std::invalid_argument("choice needs both sides' unit and pilot");
+            // A character without a voice part (バニー 5 next to ドモン 4) sends the quote pick
+            // outside its tables: the general segment then holds 12368 records from 38609, a
+            // story line opens as the quote, and the quote state (801C840C) waits for a close
+            // that never comes. The page never offers such a one; a hand-written request did.
+            const unsigned actor=picked.at(side).at("pilot").get<unsigned>();
+            if(actor>=voice_part_count || int16_t(rom16(voice_parts+2*actor))<0)
+                throw std::invalid_argument(std::string(side)+" pilot "+std::to_string(actor)+" has no battle quotes (D_800CA9C4 is -1), the quote would never close: use a pilot the original flies");
+        }
         if(!picked.contains("scene") || picked.at("scene").size()!=2)throw std::invalid_argument("choice needs two scenes");
     } else {
         for(const auto& w:params.at("writes")) {

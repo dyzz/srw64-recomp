@@ -2,6 +2,7 @@
 #include "mod_library.hpp"
 #include "mod_units.hpp"
 #include "upgrade_rules.hpp"
+#include <atomic>
 #include <cstdio>
 #include <map>
 #include <mutex>
@@ -366,6 +367,7 @@ struct State {
     fs::path output;
     unsigned revision{};
     mods::Version game{-1,-1,-1};
+    std::atomic<bool> kinds_changed{false};   // some weapon's printed kind bits differ from the ROM's
     std::mutex owners_mutex;
     std::map<unsigned,std::string> owners;   // Collected::units of the active packages
     std::map<std::string,json> names;
@@ -380,6 +382,9 @@ inline std::map<unsigned,Owner> unit_owners() {
     for(const auto& [unit,id]:s.owners)out[unit]={id,s.names.count(id)?s.names.at(id):json(id)};
     return out;
 }
+// Whether any weapon's 格／射, P or B differs from the ROM's: the overlay then redraws those
+// menu names in Japanese too (ui_text.cpp names_only). Any thread.
+inline bool kinds_changed(){return state().kinds_changed.load(std::memory_order_relaxed);}
 
 // A weapon's kind byte as the ROM has it and as the game reads it (a package's or the rules
 // file's), when they differ in a printed bit (格／射, P, B); nothing when they agree. Any
@@ -424,6 +429,10 @@ inline void refresh(uint8_t* ram=nullptr) {
     std::vector<std::pair<uint32_t,uint8_t>> list;
     for(const auto& [at,value]:merged)if(at<s.rom.size() && s.rom[at]!=value)list.emplace_back(at,value);
     if(ram)sync_resident(ram,upgrades::patches(),list,s.rom);
+    bool kinds=false;
+    for(const auto& [at,value]:list)
+        if(at>=weapon_records && at<weapon_records+weapon_count*weapon_record_size && (at-weapon_records)%weapon_record_size==weapon_kind && ((value^s.rom[at])&weapon_printed))kinds=true;
+    s.kinds_changed.store(kinds,std::memory_order_relaxed);
     {std::lock_guard lock(s.owners_mutex);s.owners=found.units;s.names=found.names;}
     upgrades::patches()=std::move(list);
     upgrades::publish_patches();
