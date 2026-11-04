@@ -28,7 +28,7 @@ yourname.korean/
 
 `ko` 是语言代码，文件夹名和 `language.json` 里写的必须一样。只放用得到的东西：没翻的台词文件、没换的图都可以不放。
 
-完整的范例是「韩文（第一关演示）」，可以在 [MOD 下载](/zh/mods/#srw64.korean-demo)页下载，源文件在 [`config/recomp/mods/lang.ko`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko)。真实系男主第一关的剧情、战斗台词、全部界面文字都是韩文，其余显示英文。
+完整的范例是「韩文（第一关演示）」，源文件在 [`config/recomp/mods/lang.ko`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko)（韩文已内置到游戏里，这个包不再提供下载）。真实系男主第一关的剧情、战斗台词、全部界面文字都是韩文，其余显示英文。
 
 ## 制作步骤
 

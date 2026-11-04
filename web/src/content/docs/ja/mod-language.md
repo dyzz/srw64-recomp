@@ -28,7 +28,7 @@ yourname.korean/
 
 `ko` は言語コードです。フォルダー名と `language.json` に書いたものを同じにしてください。使うものだけ入れれば十分で、訳さないセリフファイルや差し替えない画像は入れなくてかまいません。
 
-完全な例「韓国語（第1話デモ）」を [MOD ダウンロード](/ja/mods/#srw64.korean-demo)ページからダウンロードでき、ソースは [`config/recomp/mods/lang.ko`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko) にあります。リアル系男主人公の第1話のシナリオと戦闘セリフ、画面の文字すべてが韓国語で、残りは英語で表示されます。
+完全な例「韓国語（第1話デモ）」のソースは [`config/recomp/mods/lang.ko`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko) にあります（韓国語はゲームに内蔵されたため、このパッケージ自体は配布していません）。リアル系男主人公の第1話のシナリオと戦闘セリフ、画面の文字すべてが韓国語で、残りは英語で表示されます。
 
 ## 作り方
 

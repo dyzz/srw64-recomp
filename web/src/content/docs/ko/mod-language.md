@@ -28,7 +28,7 @@ yourname.korean/
 
 `ko`는 언어 코드이며, 폴더 이름은 `language.json`에 적은 것과 같아야 합니다. 사용하는 것만 넣으면 됩니다. 번역하지 않은 대사 파일과 교체하지 않는 그림은 빼도 됩니다.
 
-완전한 예시인 “한국어 (1화 데모)”는 [MOD 다운로드](/ko/mods/#srw64.korean-demo) 페이지에서 받을 수 있고, 소스는 [`config/recomp/mods/lang.ko`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko)에 있습니다. 리얼로봇 남자 주인공 루트 첫 스테이지의 스토리 대사와 전투 대사, 그리고 모든 UI 텍스트가 한국어이며, 나머지는 영어로 표시됩니다.
+완전한 예시인 “한국어 (1화 데모)”의 소스는 [`config/recomp/mods/lang.ko`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/lang.ko)에 있습니다(한국어는 이제 게임에 내장되어 있으므로 이 패키지 자체는 더 이상 내려받을 수 없습니다). 리얼로봇 남자 주인공 루트 첫 스테이지의 스토리 대사와 전투 대사, 그리고 모든 UI 텍스트가 한국어이며, 나머지는 영어로 표시됩니다.
 
 ## 만들기
 

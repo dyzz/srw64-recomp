@@ -2,7 +2,7 @@
 
 给语言包作者看，也可以把这个文件夹交给你的 AI 助手，让它照着翻。官网版的说明是[语言包 MOD](../../../web/src/content/docs/zh/mod-language.md)（三语），设计与宿主实现在[语言包设计](../../design/mod-language-packs.md)，台词文件的完整格式在[台词纯文本](../dialogue-text.md)。
 
-**现状（2026-11-03，已合并进 main，随 0.5.3 发布，`game` 写 `">=0.5.3"`）**：能加新的阅读语言，也能改现有语言的文字。完整示例是韩文第一关演示包 [`config/recomp/mods/lang.ko`](../../../config/recomp/mods/lang.ko/)，官网 MOD 下载页可以直接下载；它当时用的专名表在同一文件夹的 [`glossary-ko.md`](glossary-ko.md)。
+**现状（2026-11-03，已合并进 main，随 0.5.3 发布，`game` 写 `">=0.5.3"`）**：能加新的阅读语言，也能改现有语言的文字。完整示例是韩文第一关演示包 [`config/recomp/mods/lang.ko`](../../../config/recomp/mods/lang.ko/)（韩文内置后不再放官网下载）；它当时用的专名表在同一文件夹的 [`glossary-ko.md`](glossary-ko.md)。
 
 ## 1. 包的结构
 
