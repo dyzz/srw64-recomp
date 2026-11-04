@@ -1,17 +1,19 @@
 {
   "id": "srw64.master-asia",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "name": {
     "ja": "東方不敗 生存",
     "zh-Hans": "东方不败存活",
     "zh-Hant": "東方不敗存活",
-    "en": "Master Asia Lives"
+    "en": "Master Asia Lives",
+    "ko": "마스터 아시아 생존"
   },
   "description": {
     "ja": "独立軍ルート「死闘!ランタオ島大決戦（後）」とOZルート「絶望と悲しみの拳（後）」で、戦闘中に東方不敗と言葉を交わしたドモンは東方不敗を説得できる。撃墜数50機以上なら東方不敗は退き、ステージクリア後にドモンと同じレベルで仲間になる（マスターガンダム）。足りなければ説得は失敗する。説得しなければ原作どおり。",
     "zh-Hans": "独立军路线「死斗！大屿山大决战（下）」和 OZ 路线「绝望与悲伤之拳（下）」中，多蒙在战斗里与东方不败交谈过之后可以说服他。击坠数 50 以上时东方不败撤退，过关后以与多蒙相同的等级加入（尊者高达）；不够则说服失败。不说服则与原作相同。",
     "zh-Hant": "獨立軍路線「死鬥！大嶼山大決戰（下）」和 OZ 路線「絕望與悲傷之拳（下）」中，多門在戰鬥裡與東方不敗交談過之後可以說服他。擊墜數 50 以上時東方不敗撤退，過關後以與多門相同的等級加入（尊者鋼彈）；不夠則說服失敗。不說服則與原作相同。",
-    "en": "On the Independence Army route's \"Death Match! Showdown on Lantau Island (Part 2)\" and the OZ route's \"Fist of Despair and Sorrow (Part 2)\", once Domon has talked with Master Asia in battle he can try to persuade him. With 50 kills or more Master Asia withdraws and joins after the stage at Domon's level, with the Master Gundam; with fewer the persuasion fails. Without the persuasion the story is as it was."
+    "en": "On the Independence Army route's \"Death Match! Showdown on Lantau Island (Part 2)\" and the OZ route's \"Fist of Despair and Sorrow (Part 2)\", once Domon has talked with Master Asia in battle he can try to persuade him. With 50 kills or more Master Asia withdraws and joins after the stage at Domon's level, with the Master Gundam; with fewer the persuasion fails. Without the persuasion the story is as it was.",
+    "ko": "독립군 루트 「사투! 란타오섬 대결전 후편」과 OZ 루트 「절망과 슬픔의 주먹 후편」에서, 전투 중 마스터 아시아와 대화를 나눈 도몬은 마스터 아시아를 설득할 수 있습니다. 격추 수가 50 이상이면 마스터 아시아가 물러나고, 스테이지 클리어 후 도몬과 같은 레벨로 동료가 됩니다(마스터 건담). 부족하면 설득은 실패합니다. 설득하지 않으면 원작 그대로입니다."
   },
   "authors": [
     "SRW64"
@@ -25,11 +27,11 @@
     "story",
     "data"
   ],
-  "file": "srw64.master-asia-0.3.2.srw64mod",
-  "bytes": 5735,
-  "sha256": "4b64deec1e7d329748c6265df11277f53447a31dd2fb8c0542a8ba1891bdb253",
+  "file": "srw64.master-asia-0.3.3.srw64mod",
+  "bytes": 6063,
+  "sha256": "9ca92de776b8d7ce6bd95e0730c1cbedb5730cfb7fccdfa2c8f5ec32be594ae4",
   "languages": [],
-  "url": "/mods/srw64.master-asia-0.3.2.srw64mod",
+  "url": "/mods/srw64.master-asia-0.3.3.srw64mod",
   "page": "/mods/#srw64.master-asia",
   "source": "https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/master-asia",
   "published": "2026-11-03",

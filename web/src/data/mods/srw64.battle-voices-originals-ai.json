@@ -5,13 +5,15 @@
     "ja": "オリジナルキャラ戦闘ボイス（AI）",
     "zh-Hans": "原创人物战斗语音（AI）",
     "zh-Hant": "原創人物戰鬥語音（AI）",
-    "en": "Original Characters' Battle Voices (AI)"
+    "en": "Original Characters' Battle Voices (AI)",
+    "ko": "오리지널 캐릭터 전투 음성(AI)"
   },
   "description": {
     "ja": "アーク、セレイン、ブラッド、マナミ、エルリッヒ、カーツ、アイシャたちオリジナルキャラ 12 人の戦闘台詞 843 本を、音声合成 Irodori-TTS で作ったボイス。実在の声優の声ではありません。",
     "zh-Hans": "阿克、塞蕾茵、布拉德、玛娜米、埃尔利希、卡茨、艾夏等 12 位原创人物的 843 句战斗台词，用语音合成 Irodori-TTS 生成，不是真人声优的声音。",
     "zh-Hant": "阿克、塞蕾茵、布拉德、瑪娜米、埃爾利希、卡茨、艾夏等 12 位原創人物的 843 句戰鬥台詞，用語音合成 Irodori-TTS 生成，不是真人聲優的聲音。",
-    "en": "843 battle lines of the 12 original characters (Ark, Selain, Brad, Manami, Ehrlich, Kurtz, Aisha and more), synthesized with Irodori-TTS. Not a real voice actor's voice."
+    "en": "843 battle lines of the 12 original characters (Ark, Selain, Brad, Manami, Ehrlich, Kurtz, Aisha and more), synthesized with Irodori-TTS. Not a real voice actor's voice.",
+    "ko": "아크, 세레인, 브래드, 마나미, 엘리히, 카츠, 아이샤 등 오리지널 캐릭터 12명의 전투 대사 843개를 음성 합성 Irodori-TTS로 만든 음성입니다. 실제 성우의 목소리가 아닙니다."
   },
   "authors": [
     "SRW64"

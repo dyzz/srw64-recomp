@@ -1,17 +1,19 @@
 {
   "id": "srw64.space-a",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": {
     "ja": "主力 宇宙適応A",
     "zh-Hans": "主力宇宙适应 A",
     "zh-Hant": "主力宇宙適應 A",
-    "en": "Main Cast: Space A"
+    "en": "Main Cast: Space A",
+    "ko": "주력 우주 적응 A"
   },
   "description": {
     "ja": "味方の主力で宇宙適応がA未満のパイロット20人と機体21機を、宇宙だけAにする（マジンガー系、コン・バトラーV、ゲッター3、ゴーショーグン、ジャイアント・ロボ、ダンバイン系、ガンキャノン、ガンタンクなど）。空・陸・海は変えない。",
     "zh-Hans": "把我方主力里宇宙适应不到 A 的 20 名驾驶员和 21 台机体的宇宙改成 A（魔神系、孔巴特拉V、盖塔3、豪将军、大铁人、丹拜因系、钢加农、钢坦克等），空、陆、海不变。",
     "zh-Hant": "把我方主力裡宇宙適應不到 A 的 20 名駕駛員和 21 臺機體的宇宙改成 A（魔神系、孔巴德拉V、蓋特3、豪將軍、機械巨神、丹拜因系、鋼加農、鋼坦克等），空、陸、海不變。",
-    "en": "Raises space to A for the 20 pilots and 21 units of the main cast below A there (the Mazinger team, Combattler V, Getter-3, GoShogun, Giant Robo, the Dunbine cast, Guncannon, Guntank and more). Air, land and sea stay as they are."
+    "en": "Raises space to A for the 20 pilots and 21 units of the main cast below A there (the Mazinger team, Combattler V, Getter-3, GoShogun, Giant Robo, the Dunbine cast, Guncannon, Guntank and more). Air, land and sea stay as they are.",
+    "ko": "아군 주력 중 우주 적응이 A 미만인 파일럿 20명과 기체 21기의 우주 적응을 A로 올립니다(마징가 계열, 컴배틀러 V, 겟타 3, 고쇼군, 자이언트 로보, 단바인 계열, 건캐논, 건탱크 등). 공중, 지상, 바다 적응은 그대로입니다."
   },
   "authors": [
     "SRW64"
@@ -24,11 +26,11 @@
   "contents": [
     "data"
   ],
-  "file": "srw64.space-a-1.0.1.srw64mod",
-  "bytes": 1398,
-  "sha256": "f0242902225d3cfbaebd2493f9bd09cc77d6ee742a484caafd852da7f614bf35",
+  "file": "srw64.space-a-1.0.2.srw64mod",
+  "bytes": 1624,
+  "sha256": "32d850cb5098554e24cd8b799e6961fc0e36366895e3aeb876d4b096cb6cd4fe",
   "languages": [],
-  "url": "/mods/srw64.space-a-1.0.1.srw64mod",
+  "url": "/mods/srw64.space-a-1.0.2.srw64mod",
   "page": "/mods/#srw64.space-a",
   "source": "https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a",
   "published": "2026-10-29",
