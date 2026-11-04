@@ -395,6 +395,12 @@ int run_prepared(const Options& options,const GameIdentity& game,const HostMain&
         {"SRW64_VI_RATE","60"}})
         set_environment(key,value);
     if(options.debug)set_environment("SRW64_DEBUG","1");
+    // MOD packages and their extra scenarios in the player's folder, as run_standalone has them.
+    std::string campaign_dirs=(root/"campaigns").string();
+    if(const auto bundled=bundled_resource("campaigns");!bundled.empty())campaign_dirs+=campaign_dir_separator+bundled.string();
+    set_environment("SRW64_CAMPAIGN_DIRS",campaign_dirs);
+    set_environment("SRW64_CAMPAIGN_SAVES",(root/"campaigns").string());
+    set_environment("SRW64_MODS_DIR",(root/"mods").string());
     std::vector<std::string> arguments={"srw64-gfx-host",(data/"rom.z64").string(),run.string(),"0","-"};
     arguments.push_back(card.string());
     std::vector<char*> argv;

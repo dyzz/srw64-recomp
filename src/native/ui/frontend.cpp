@@ -1974,6 +1974,10 @@ std::string mod_installed_page() {
     std::string body="<p>"+escape(shown.empty()?localization::catalog().ui("mod_install_note_android_none"):filled("mod_install_note_android",{{"{folder}",shown+"/mods"}}))+"</p>";
     body+=settings_row("mod_pick_row",button("mod-pick",label("mod_pick"),false,mod_pick_pending)+(shown.empty()?std::string():button("mod-refresh",label("mod_refresh"))+button("mod-inbox-open",label("mod_folder_open"))),
         shown.empty()?std::string():"<p class='set-path'>"+escape(shown+"/mods")+"</p>",shown.empty()?"mod_pick_row_note_none":"mod_pick_row_note");
+#elif defined(__SWITCH__)
+    // No drag and drop and no file manager: the package goes on the SD card (a card reader
+    // or FTP), and opening this page installs it.
+    std::string body="<p>"+escape(filled("mod_install_note_switch",{{"{folder}",srw64::mods::directory().string()}}))+"</p>";
 #else
     std::string body=wrap_label("mod_install_note");
     if(!srw64::mods::directory().empty())body+=settings_row("mod_folder_row",button("mod-folder",label("mod_folder_open")),"<p class='set-path'>"+escape(srw64::mods::directory().string())+"</p>");
@@ -5559,6 +5563,8 @@ void choose(const std::string& id) {
         viewer_open=false;library_open=false;stage_open=false;mod_open=true;settings_open=true;settings_focus="first";settings_release.hold();input.clear();
 #ifdef __ANDROID__
         mod_inbox_sync();
+#elif defined(__SWITCH__)
+        ++mod_revision;   // packages put on the card since: installed as the list is read again
 #endif
         return;
     }

@@ -174,13 +174,34 @@ int main(int argc,char** argv) {
         check(!find(list,"test.music").active && find(list,"test.voice").problem.code=="dependency_off","turning off a requirement");
         mods::set_enabled("test.music",true);
         check(mods::remove("test.voice") && mods::installed(game).size()==1,"removed to .trash");
-        // A package file dropped into the folder is unpacked on the next look.
+        // Package files dropped into the folder are unpacked on the next look, the progress
+        // told from 0 to 100 by their bytes.
         zip_file(library/"loose.srw64mod",{{"mod.json",manifest("test.loose").dump()}});
+        zip_file(library/"loose2.srw64mod",{{"mod.json",manifest("test.loose2").dump()},{"audio/voice/battle/1.ogg",std::string(4096,'v')}});
+        static std::vector<unsigned> told;
+        mods::set_unpack_progress([](unsigned percent){told.push_back(percent);});
         list=mods::installed(game);
-        check(list.size()==2 && !fs::exists(library/"loose.srw64mod"),"a loose package file is unpacked");
-        // A folder named after another id is not used.
-        write(library/"wrong"/"mod.json",manifest("test.right").dump());
-        check(find(mods::installed(game),"test.right").problem.code=="folder","a folder must be named after its id");
+        mods::set_unpack_progress(nullptr);
+        check(list.size()==3 && !fs::exists(library/"loose.srw64mod") && !fs::exists(library/"loose2.srw64mod"),"loose package files are unpacked");
+        check(!told.empty() && told.front()==0 && told.back()==100 && std::is_sorted(told.begin(),told.end()),"the unpacking told from 0 to 100");
+        told.clear();
+        mods::installed(game);
+        check(told.empty(),"nothing told with nothing to unpack");
+        // A package extracted by hand takes its id's name: as the extractor names the folder,
+        // or one level deeper (with the macOS junk beside it).
+        write(library/"test.right-1.0.0"/"mod.json",manifest("test.right").dump());
+        write(library/"test.deep-1.0.0"/"test.deep-1.0.0"/"mod.json",manifest("test.deep").dump());
+        write(library/"test.deep-1.0.0"/"__MACOSX"/"._mod.json","junk");
+        list=mods::installed(game);
+        check(find(list,"test.right").active && fs::is_regular_file(library/"test.right"/"mod.json") && !fs::exists(library/"test.right-1.0.0"),
+              "an extracted folder is renamed to its id");
+        check(find(list,"test.deep").active && fs::is_regular_file(library/"test.deep"/"mod.json") && !fs::exists(library/"test.deep-1.0.0"),
+              "a folder inside the extracted one is taken out, its shell kept in .trash");
+        // An extracted newer version replaces the installed one, which goes to .trash.
+        write(library/"test.right-1.1.0"/"mod.json",manifest("test.right","1.1.0").dump());
+        list=mods::installed(game);
+        check(find(list,"test.right").active && find(list,"test.right").manifest->version==mods::Version{1,1,0} && !fs::exists(library/"test.right-1.1.0"),
+              "an extracted folder replaces the installed version");
         fs::remove_all(root);
     }
     if(failures)std::fprintf(stderr,"%d failed\n",failures);

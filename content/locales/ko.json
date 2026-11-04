@@ -645,6 +645,7 @@
     "mod_folder_open": "폴더 열기",
     "mod_install_note_android": "받은 .srw64mod 파일을 {folder}에 넣고 이 화면을 열거나 새로고침을 누르세요. 또는 파일에서 설치로 선택하세요. 목록에서 위에 있는 MOD가 우선 적용됩니다.",
     "mod_install_note_android_none": "파일에서 설치를 눌러 .srw64mod 파일을 선택하세요. 저장 폴더를 지정한 뒤에는 해당 mods 폴더의 MOD도 설치됩니다. 목록에서 위쪽 MOD가 우선합니다.",
+    "mod_install_note_switch": ".srw64mod 파일을 카드 리더나 FTP로 SD 카드의 {folder}에 넣고 이 화면을 열면 설치됩니다. 목록에서 위에 있는 MOD가 우선 적용됩니다.",
     "mod_pick_row": "MOD 설치",
     "mod_pick_row_note": "이 폴더에 넣은 .srw64mod는 화면을 열거나 새로고침하면 설치되고 폴더에서 사라집니다.",
     "mod_pick_row_note_none": "파일 선택창에서 .srw64mod 파일을 고르세요.",

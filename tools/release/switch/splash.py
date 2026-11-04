@@ -6,6 +6,7 @@ drawn under the logo while the game starts (the console picks the game's languag
 
   splash/base-<locale>.png       RGB, 1280 x 720
   splash/step-<locale>-<n>.png   RGBA, 1280 x 64, white text centred
+  splash/step-<locale>-mods.png  the same, while MOD packages unpack
 
 The console reads them before the game's window exists and blits them into its framebuffer.
 
@@ -35,6 +36,15 @@ STEPS = {
            'First launch: arranging the story text', 'Starting', 'Loading the story and text', 'Preparing the screens', 'Preparing the interface', 'Starting the game'],
     'ko': ['첫 실행: ROM 확인 중(약 30초 소요)', '첫 실행: ROM에서 텍스트와 이미지 가져오는 중', '첫 실행: 스토리 텍스트 정리 중',
            '시작하는 중', '스토리와 텍스트 불러오는 중', '화면 준비 중', '인터페이스 준비 중', '게임 시작 중'],
+}
+# While packages placed in mods/ as files unpack (step-<locale>-mods.png, the bar filled by
+# their bytes): a voice package of thousands of files takes minutes on an SD card.
+MODS = {
+    'zh-Hans': '正在安装新放入的 MOD（语音包可能需要几分钟）',
+    'zh-Hant': '正在安裝新放入的 MOD（語音包可能需要幾分鐘）',
+    'ja': '新しい MOD をインストールしています（ボイスは数分かかることがあります）',
+    'en': 'Installing new MODs (a voice pack can take a few minutes)',
+    'ko': '새 MOD 설치 중(음성 팩은 몇 분 걸릴 수 있음)',
 }
 # Each language's face for the strip (Hangul from Droid Sans Fallback, as in the game).
 FONTS = {'zh-Hant': 'HarmonyOS_Sans_TC.ttf', 'ko': 'DroidSansFallback.ttf'}
@@ -83,6 +93,7 @@ def make(out: Path, fonts: Path) -> None:
         base(locale).save(out / f'base-{locale}.png', optimize=True)
         for n, text in enumerate(steps):
             strip(text, font).save(out / f'step-{locale}-{n}.png', optimize=True)
+        strip(MODS[locale], font).save(out / f'step-{locale}-mods.png', optimize=True)
 
 
 if __name__ == '__main__':

@@ -50,6 +50,19 @@ bool to_trash(const fs::path& folder,const std::string& name) {
     fs::rename(folder,trash/(name+"-"+stamp()),error);
     return !error;
 }
+// The unpacking of the files placed in the folder (unpack_loose): bytes of the package
+// files done out of all of them (each entry's packed bytes as it is written, each file's
+// whole size once it is through), told on in whole percents.
+void (*unpack_report)(unsigned)=nullptr;
+uint64_t unpack_total=0,unpack_done=0;
+unsigned unpack_told=0;
+void unpack_reach(uint64_t done) {
+    if(!unpack_report || !unpack_total)return;
+    unpack_done=std::max(unpack_done,done);
+    const unsigned percent=unsigned(std::min<uint64_t>(100,unpack_done*100/unpack_total));
+    if(percent>unpack_told)unpack_report(unpack_told=percent);
+}
+void unpack_advance(uint64_t bytes){unpack_reach(unpack_done+bytes);}
 // A fresh folder inside <mods> to unpack into, renamed into place once complete.
 fs::path staging_folder() {
     std::random_device random;
@@ -63,12 +76,15 @@ InstallResult unpack(const fs::path& archive,const fs::path& target) {
     // miniz opens by narrow name; read the file ourselves so any path works on Windows.
     std::ifstream in(archive,std::ios::binary);
     if(!in){result.problem={"open",archive.filename().string()};return result;}
-    std::vector<char> bytes((std::istreambuf_iterator<char>(in)),std::istreambuf_iterator<char>());
+    // In one read: a character at a time took half a minute for a voice package on the Switch.
+    std::error_code size_error;
+    std::vector<char> bytes(size_t(fs::file_size(archive,size_error)));
+    if(size_error || !in.read(bytes.data(),std::streamsize(bytes.size()))){result.problem={"open",archive.filename().string()};return result;}
     if(!mz_zip_reader_init_mem(&zip,bytes.data(),bytes.size(),0)){result.problem={"archive",archive.filename().string()};return result;}
     struct Closer{mz_zip_archive* z;~Closer(){mz_zip_reader_end(z);}} closer{&zip};
     const unsigned count=mz_zip_reader_get_num_files(&zip);
     if(count>max_entries){result.problem={"archive_size",""};return result;}
-    struct Entry{unsigned index;std::string name;bool folder;uint64_t size;};
+    struct Entry{unsigned index;std::string name;bool folder;uint64_t size,packed;};
     std::vector<Entry> entries;
     uint64_t total=0;
     for(unsigned i=0;i<count;++i) {
@@ -79,7 +95,7 @@ InstallResult unpack(const fs::path& archive,const fs::path& target) {
         const auto safe=safe_entry(name);
         if(!safe){result.problem={"archive_path",name};return result;}
         total+=stat.m_uncomp_size;
-        entries.push_back({i,*safe,bool(stat.m_is_directory),stat.m_uncomp_size});
+        entries.push_back({i,*safe,bool(stat.m_is_directory),stat.m_uncomp_size,stat.m_comp_size});
     }
     if(total>max_total){result.problem={"archive_size",""};return result;}
     // mod.json at the top, or inside the one folder everything sits in.
@@ -120,6 +136,7 @@ InstallResult unpack(const fs::path& archive,const fs::path& target) {
             return n;
         };
         if(!mz_zip_reader_extract_to_callback(&zip,e.index,write,&file,0) || !file){result.problem={"write",relative};return result;}
+        unpack_advance(e.packed);
     }
     result.ok=true;
     return result;
@@ -151,14 +168,53 @@ void unpack_loose() {
     for(const auto& item:fs::directory_iterator(directory(),error))if(item.is_regular_file(error) && is_package_file(item.path()))files.push_back(item.path());
     std::sort(files.begin(),files.end());
     loose.clear();
+    unpack_total=unpack_done=0;unpack_told=0;
+    for(const auto& file:files)unpack_total+=fs::file_size(file,error);
+    if(unpack_report && unpack_total)unpack_report(0);
+    uint64_t passed=0;
     for(const auto& file:files) {
+        const uint64_t size=fs::file_size(file,error);
         LooseResult r{file,install(file)};
+        unpack_reach(passed+=size);   // the archive's own headers too, or one that failed
         if(r.result.ok) {
             const auto trash=directory()/".trash";
             fs::create_directories(trash,error);
             fs::rename(file,trash/(file.filename().string()+"-"+stamp()),error);
         }
         loose.push_back(std::move(r));
+    }
+    unpack_total=0;
+}
+// A package folder put in the folder under another name, as a package file extracted by hand
+// comes out ("srw64.space-a-1.0.2/mod.json", or one level deeper when the extractor made a
+// folder of the same name inside), takes its id's name, the package of that id already there
+// going to .trash as an install's would. Folders already named after their id are left as they
+// are; anything else is the listing's problem.
+void adopt_folders() {
+    std::error_code error;
+    std::vector<fs::path> folders;
+    for(const auto& item:fs::directory_iterator(directory(),error))
+        if(item.is_directory(error) && !item.path().filename().string().starts_with("."))folders.push_back(item.path());
+    std::sort(folders.begin(),folders.end());
+    for(const auto& folder:folders) {
+        fs::path source=folder;
+        if(!fs::is_regular_file(folder/"mod.json",error)) {
+            std::vector<fs::path> inner;
+            for(const auto& item:fs::directory_iterator(folder,error))
+                if(item.is_directory(error) && item.path().filename()!="__MACOSX")inner.push_back(item.path());
+            if(inner.size()!=1 || !fs::is_regular_file(inner.front()/"mod.json",error))continue;
+            source=inner.front();
+        }
+        const auto parsed=parse_manifest(read_json(source/"mod.json"));
+        const auto* manifest=std::get_if<Manifest>(&parsed);
+        if(!manifest || (source==folder && folder.filename()==manifest->id))continue;
+        // As an install: one with the id already there (an older version) goes to .trash.
+        const auto target=directory()/manifest->id;
+        if(fs::exists(target,error) && !to_trash(target,manifest->id))continue;
+        fs::rename(source,target,error);
+        if(error)continue;
+        if(source!=folder)to_trash(folder,folder.filename().string());   // the shell left around it, with __MACOSX
+        ++changes;
     }
 }
 }
@@ -179,6 +235,7 @@ std::vector<Package> installed(const Version& game) {
     std::error_code error;
     if(!fs::is_directory(directory(),error))return {};
     unpack_loose();
+    adopt_folders();
     std::vector<fs::path> folders;
     for(const auto& item:fs::directory_iterator(directory(),error)) {
         const auto name=item.path().filename().string();
@@ -259,6 +316,7 @@ bool remove(const std::string& id) {
     ++changes;
     return write_state(state);
 }
+void set_unpack_progress(void (*report)(unsigned percent)){std::lock_guard lock(mutex);unpack_report=report;}
 unsigned revision(){return changes.load();}
 std::mutex builtin_mutex;
 std::map<std::string,Version> builtins;   // the usable ones

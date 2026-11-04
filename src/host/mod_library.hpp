@@ -355,8 +355,13 @@ struct InstallResult {
 };
 fs::path directory();
 // Every installed package, resolved against the game version (bottom first). Packages
-// dropped into the folder as .srw64mod files are unpacked first.
+// dropped into the folder as .srw64mod files are unpacked first, and a package folder put
+// there under another name (a package extracted by hand: "srw64.space-a-1.0.2/") takes
+// its id's name, replacing an installed one of that id as an install does.
 std::vector<Package> installed(const Version& game);
+// Told 0 to 100 as the files placed in the folder unpack, by their bytes: a voice package
+// of thousands of files takes minutes on a Switch's SD card (the loading screen shows it).
+void set_unpack_progress(void (*report)(unsigned percent));
 // What the last listing found placed in the folder as files: the ones installed (moved
 // to .trash) and the ones that did not (still there, tried again next time).
 struct LooseResult {

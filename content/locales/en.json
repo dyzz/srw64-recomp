@@ -644,6 +644,7 @@
     "mod_folder_open": "Open folder",
     "mod_install_note_android": "Put a downloaded .srw64mod file in {folder}, then open this page or press Refresh to install it; or press Install from file and choose the file. A MOD higher in the list wins over the ones below.",
     "mod_install_note_android_none": "Press Install from file and choose a downloaded .srw64mod file. Once a save folder is chosen on the Saves page, files put in its mods folder install too. A MOD higher in the list wins over the ones below.",
+    "mod_install_note_switch": "Put a .srw64mod file in {folder} on the SD card with a card reader or FTP, then open this page to install it. A MOD higher in the list wins over the ones below.",
     "mod_pick_row": "Install a MOD",
     "mod_pick_row_note": ".srw64mod files put in this folder are installed when this page opens or Refresh is pressed, and leave the folder once installed.",
     "mod_pick_row_note_none": "Choose a .srw64mod file in the file picker.",

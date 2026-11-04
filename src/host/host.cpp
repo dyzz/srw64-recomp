@@ -1,6 +1,7 @@
 #include "quote_force.hpp"
 #include "state_probe.hpp"
 #include "app/runtime.hpp"
+#include "mod_library.hpp"
 #include "console_log.hpp"
 #include "hd_prepare.hpp"
 #include "dialogue_data.hpp"
@@ -562,6 +563,9 @@ static int run_host(int argc, char** argv) {
     srw64_set_capture_directory(output_dir);
     srw64::debug::start(output_dir, {{"interactive", interactive}, {"max_vis", max_vis}, {"variant", variant->key}});
     srw64::app::boot_step("dialogue load");
+    // Packages placed in mods/ as files unpack on the first listing, here (the language
+    // packages): minutes for a voice package on a Switch, which shows the percents.
+    srw64::mods::set_unpack_progress([](unsigned percent) { srw64::app::boot_step("mods: install " + std::to_string(percent) + "%"); });
     srw64::dialogue::configure(output_dir);
     srw64::app::boot_step("host setup");
     // The tactical map wider than the original (docs/design/deck-16x10.md §5). Sprites that
@@ -762,6 +766,7 @@ static int run_host(int argc, char** argv) {
     cfg.error_handling_callbacks.message_box = [](const char* message) { std::fprintf(stderr, "SRW64_RUNTIME_ERROR %s\n", message); };
     // Every module has taken what it keeps from the dialogue data.
     srw64::dialogue_data::release();
+    srw64::mods::set_unpack_progress(nullptr);   // later installs are the MOD page's
     srw64::app::boot_step("game start");
     recomp::start(cfg);
     srw64_destroy_window();

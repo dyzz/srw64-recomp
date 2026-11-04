@@ -644,6 +644,7 @@
     "mod_folder_open": "開啟資料夾",
     "mod_install_note_android": "把下載的 .srw64mod 檔案放進 {folder}，再開啟本頁或按「重新整理」就會安裝；也可以按「從檔案安裝」直接選擇檔案。列表上面的 MOD 覆蓋下面的。",
     "mod_install_note_android_none": "按「從檔案安裝」選擇下載的 .srw64mod 檔案。在「存檔」頁選擇了存檔資料夾之後，也可以把檔案放進它的 mods 資料夾。列表上面的 MOD 覆蓋下面的。",
+    "mod_install_note_switch": "用讀卡器或 FTP 把 .srw64mod 檔案放進 SD 卡上的 {folder}，再開啟本頁就會安裝。列表上面的 MOD 覆蓋下面的。",
     "mod_pick_row": "安裝 MOD",
     "mod_pick_row_note": "放進這個資料夾的 .srw64mod 檔案會在開啟本頁或按「重新整理」時安裝，安裝後從資料夾裡移走。",
     "mod_pick_row_note_none": "從檔案選擇器裡選一個 .srw64mod 檔案。",

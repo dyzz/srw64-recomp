@@ -2,7 +2,9 @@
 // host ask of the system that libnx answers differently from the desktop.
 #include <switch.h>
 
+#include <algorithm>
 #include <cstdio>
+#include <cstdlib>
 #include <malloc.h>
 #include <cstring>
 #include <chrono>
@@ -11,6 +13,7 @@
 #include <mutex>
 #include <thread>
 #include <string>
+#include <string_view>
 #include <sys/iosupport.h>
 #include <sys/socket.h>
 #include <cerrno>
@@ -252,10 +255,11 @@ inline uint32_t over(uint32_t below, uint32_t above) {
     return out;
 }
 std::vector<uint32_t> boot_last;   // the last step's screen, for the window until the game draws
-// One step's screen into `frame` (1280 x 720, `row` pixels a line).
-void compose_boot(int step, uint32_t* frame, size_t row) {
+// One step's screen into `frame` (1280 x 720, `row` pixels a line); with `percent`, the MOD
+// packages unpacking instead (step-<locale>-mods.png), the bar filled to it.
+void compose_boot(int step, uint32_t* frame, size_t row, int percent = -1) {
     const std::string folder = std::filesystem::path(srw64_switch_program_path()).parent_path().string() + "/splash/";
-    const Picture text = load_picture(folder + "step-" + boot_locale + "-" + std::to_string(step) + ".png");
+    const Picture text = load_picture(folder + "step-" + boot_locale + "-" + (percent < 0 ? std::to_string(step) : std::string("mods")) + ".png");
     for (int y = 0; y < 720; ++y) std::memcpy(frame + size_t(y) * row, boot_base.pixels.data() + size_t(y) * 1280, 1280 * 4);
     if (text.width == 1280)
         for (int y = 0; y < text.height && 560 + y < 720; ++y)
@@ -265,18 +269,18 @@ void compose_boot(int step, uint32_t* frame, size_t row) {
             }
     // The bar: a faint track, filled to this step.
     const int part = step < kImportSteps ? kImportSteps : kBootStepCount - kImportSteps;
-    const int left = 440, width = 400, filled = width * ((step < kImportSteps ? step : step - kImportSteps) + 1) / part;
+    const int left = 440, width = 400, filled = percent >= 0 ? width * percent / 100 : width * ((step < kImportSteps ? step : step - kImportSteps) + 1) / part;
     for (int y = 640; y < 644; ++y)
         for (int x = left; x < left + width; ++x) {
             uint32_t& at = frame[size_t(y) * row + x];
             at = x < left + filled ? 0xFF28C8FFu : over(at, 0x28FFFFFFu);   // amber (R 255, G 200, B 40); white at 16 %
         }
 }
-void draw_boot(int step) {
+void draw_boot(int step, int percent = -1) {
     if (boot_base.width != 1280 || boot_base.height != 720) return;
     u32 stride = 0;
     auto* frame = static_cast<uint32_t*>(framebufferBegin(&boot_frame, &stride));
-    compose_boot(step, frame, stride / 4);
+    compose_boot(step, frame, stride / 4, percent);
     framebufferEnd(&boot_frame);
     if (step == kBootStepCount - 1) {
         boot_last.resize(1280 * 720);
@@ -297,6 +301,11 @@ void srw64_switch_boot_line(const char* line) {
         boot = Boot::Shown;
     }
     const std::string text = line;
+    // "mods: install 37% 120.3 s" (mod_library.hpp set_unpack_progress, host.cpp).
+    if (constexpr std::string_view mods = "mods: install "; text.rfind(mods, 0) == 0) {
+        draw_boot(0, std::min(100, std::atoi(text.c_str() + mods.size())));
+        return;
+    }
     for (int n = 0; n < kBootStepCount; ++n)
         if (text.rfind(kBootSteps[n], 0) == 0) draw_boot(n);
 }
