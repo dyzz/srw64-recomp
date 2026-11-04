@@ -178,6 +178,11 @@ inline std::string parse(const json& document,std::span<const uint8_t> rom,const
         if(!entry.contains("copy") || !integer(entry["copy"],0,battle_unit_count-1))return where+".copy：要写照抄的机体号（0–353，要有战斗记录）";
         const unsigned source=entry["copy"].get<unsigned>();
         copy(unit_records+n*unit_record_size,unit_records+source*unit_record_size,unit_record_size);
+        // 変形, 分離 and 合体 (+1C's 0x2, 0x40, 0x100) need the unit in the form and combination
+        // tables, which a new number is in none of: the copy drops them, and the status pages
+        // stop naming them (Final Dancouga showed 分離, copied from 224).
+        put8(unit_records+n*unit_record_size+0x1E,at(unit_records+n*unit_record_size+0x1E)&~0x01);
+        put8(unit_records+n*unit_record_size+0x1F,at(unit_records+n*unit_record_size+0x1F)&~0x42);
         copy(battle_units+n*battle_row,battle_units+source*battle_row,battle_row);
         copy(poses+n*6,poses+source*6,6);
         copy(map_icons+n*2,map_icons+source*2,2);

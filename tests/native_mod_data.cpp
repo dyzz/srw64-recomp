@@ -140,6 +140,27 @@ int main(int argc,char** argv) {
     mod_data::refresh();
     check(upgrades::patches()==std::vector<std::pair<uint32_t,uint8_t>>{{0x100,7},{unit+2,4}},"again when the packages change");
 
+    // New units (mod_units.hpp): a copy drops 変形, 分離 and 合体, which need form tables the
+    // new number is in none of, and keeps the other abilities. ダンクーガ 224 is 分離 (0x40)
+    // alone; ビルバイン 248 is 0x4012 (オーラバリア, 分身, 変形).
+    const auto abilities=[&](const mod_units::Bytes& b,unsigned u) {
+        uint32_t v=0;
+        for(unsigned k=0;k<4;++k) {
+            const uint32_t a=mod_units::unit_records+u*mod_units::unit_record_size+0x1C+k;
+            const auto f=b.find(a);
+            v=v<<8|(f!=b.end()?f->second:rom[a]);
+        }
+        return v;
+    };
+    check(abilities({},224)==0x40 && abilities({},248)==0x4012,"224's and 248's abilities in the ROM");
+    for(const auto& [source,expected]:{std::pair{224u,0u},std::pair{248u,0x4010u}}) {
+        mod_units::Bytes added;
+        mod_units::Taken taken;
+        const json document={{"schema","srw64.new-units.v1"},{"units",{{"314",{{"copy",source},{"weapons",{870}}}}}}};
+        check(mod_units::parse(document,rom,{},added,taken).empty(),"a new unit copying "+std::to_string(source));
+        check(abilities(added,314)==expected,"a new unit copying "+std::to_string(source)+" has no form abilities");
+    }
+
     if(failures)std::fprintf(stderr,"%d failures\n",failures);
     else std::puts("mod data: ok");
     return failures?1:0;
