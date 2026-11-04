@@ -475,9 +475,9 @@ class Session:
             target = Path(path) if path else directory.with_suffix(".mp4")
         else:  # the host's own name for it (perhaps a Windows path), sent back as is to remove it
             directory = started["directory"] if started else str(host_path(result["frames_path"]).parent)
-            # Another machine without an ffmpeg and not a phone (the Switch): its raw frames,
-            # gigabytes, stay where they are rather than coming over the connection.
-            if not (self.run / "debug.tcp").exists():
+            # The Switch (no ffmpeg there; its paths are "/switch/Marchwind64/…"): the raw
+            # frames, gigabytes, stay where they are rather than coming over the connection.
+            if str(directory).replace("sdmc:", "", 1).startswith("/switch/"):
                 return {"kept": directory, "frames_path": result["frames_path"], "times_path": result["times_path"],
                         "audio_path": result.get("audio_path"), "frames": result["frames"],
                         "size": [result["width"], result["height"]], "fps": fps,
