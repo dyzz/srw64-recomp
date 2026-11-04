@@ -7,6 +7,8 @@
 #include <cstdlib>
 #include <malloc.h>
 #include <cstring>
+#include <atomic>
+#include <memory>
 #include <chrono>
 #include <condition_variable>
 #include <filesystem>
@@ -146,6 +148,24 @@ void srw64_switch_log_to(const char* path) {
         log_writer = true;
         std::thread(write_log_file).detach();   // lives as long as the program
     }
+}
+// What is pending into console.log now, for the stall watchdog before it breaks: written by a
+// thread of its own, waited for at most `wait_ms` (the SD card may be what stalls).
+bool srw64_switch_log_flush(int wait_ms) {
+    auto done = std::make_shared<std::atomic<bool>>(false);
+    std::thread([done] {
+        std::string chunk;
+        int file;
+        {
+            std::lock_guard lock(log_mutex);
+            chunk.swap(log_pending);
+            file = log_file;
+        }
+        if (file >= 0 && !chunk.empty()) (void)!::write(file, chunk.data(), chunk.size());
+        *done = true;
+    }).detach();
+    for (int waited = 0; !*done && waited < wait_ms; waited += 10) std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    return *done;
 }
 std::string srw64_switch_log_tail() {
     std::lock_guard lock(log_mutex);

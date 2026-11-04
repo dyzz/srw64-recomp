@@ -191,12 +191,17 @@ void present_done() { presents.fetch_add(1, std::memory_order_relaxed); }
 #include <atomic>
 #include <chrono>
 #include <cstdio>
+#include <filesystem>
+#include <string>
 #include <thread>
 #include <switch.h>
 
 uint64_t srw64_current_vi();
 extern "C" void srw64_vi_report(char* out, size_t size);   // prepare_switch_runtime.py, events.cpp
 extern "C" void srw64_game_threads_report();                // host.cpp: each N64 thread's state
+std::string srw64_hd_reads_in_flight();                     // hd_texture.cpp: HD pictures being read
+bool srw64_switch_log_flush(int wait_ms);                   // switch/switch_platform.cpp
+std::string srw64_switch_program_path();                    // switch/switch_platform.cpp
 
 namespace srw64::stall {
 namespace {
@@ -213,17 +218,31 @@ void watch() {
         if (f > 0 && seconds >= 10 && vi >= last_vi + 300) {
             char report[256];
             srw64_vi_report(report, sizeof report);
-            std::fprintf(stderr, "SRW64_STALL vi=%llu frames=%llu stalled=%.1fs %s: breaking for creport\n",
-                         (unsigned long long)vi, (unsigned long long)f, seconds, report);
+            std::fprintf(stderr, "SRW64_STALL vi=%llu frames=%llu stalled=%.1fs %s; HD reads: %s: breaking for creport\n",
+                         (unsigned long long)vi, (unsigned long long)f, seconds, report, srw64_hd_reads_in_flight().c_str());
             srw64_game_threads_report();
             std::fflush(stderr);
+            // These lines into console.log before the break, unless the SD card is what stalls.
+            srw64_switch_log_flush(3000);
             svcBreak(BreakReason_Panic, 0, 0);
         }
     }
 }
 }
-void start() { std::thread(watch).detach(); }
-void frame_done() { frames.fetch_add(1, std::memory_order_relaxed); }
+// Development: a file named stall-test beside the NRO stops the render thread at frame 120,
+// as SRW64_STALL_TEST does elsewhere (the Switch starts with the environment cleared).
+bool test_stall = false;
+void start() {
+    std::error_code missing;
+    test_stall = std::filesystem::exists(std::filesystem::path(srw64_switch_program_path()).parent_path() / "stall-test", missing);
+    std::thread(watch).detach();
+}
+void frame_done() {
+    if (frames.fetch_add(1, std::memory_order_relaxed) + 1 == 120 && test_stall) {
+        std::fprintf(stderr, "SRW64_STALL_TEST: the render thread stops here\n");
+        for (;;) std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
 void present_done() {}
 }
 #else

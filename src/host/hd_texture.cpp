@@ -6,11 +6,38 @@
 #include <cstring>
 #include <fstream>
 #ifdef __SWITCH__
+#include <array>
+#include <chrono>
+#include <mutex>
+#include <string>
 #include <zstd.h>
 #endif
 
 namespace srw64::hd_texture {
 namespace {
+#ifdef __SWITCH__
+// The reads under way, for the stall watchdog (stall_watchdog.cpp): on 2026-11-04 the render
+// thread waited more than ten seconds on the SD card to open an HD picture while the sprite
+// worker waited on another (docs/design/switch-port.md), and nothing told which or how long.
+using Clock = std::chrono::steady_clock;
+struct Reading { std::string path; Clock::time_point since; bool busy = false; };
+std::mutex reading_mutex;
+std::array<Reading, 8> reading;
+struct Watched {
+    size_t slot = reading.size();
+    explicit Watched(const std::filesystem::path& path) {
+        std::lock_guard lock(reading_mutex);
+        for (size_t i = 0; i < reading.size(); ++i)
+            if (!reading[i].busy) { reading[i] = {path.string(), Clock::now(), true}; slot = i; break; }
+    }
+    ~Watched() {
+        if (slot == reading.size()) return;
+        std::lock_guard lock(reading_mutex);
+        reading[slot].busy = false;
+    }
+};
+double ms_since(Clock::time_point start) { return std::chrono::duration<double, std::milli>(Clock::now() - start).count(); }
+#endif
 // The file: "MWTX", version 1, the GL format, width, height, level count (little-endian
 // 32-bit words), then the zstd frame of every level's blocks, level 0 first.
 constexpr uint32_t kMagic = 0x5854574D, kVersion = 1;
@@ -52,9 +79,16 @@ bool exists(const std::filesystem::path& picture) {
 
 bool load(const std::filesystem::path& picture, Compressed& out) {
 #ifdef __SWITCH__
+    const Watched watched(prepared(picture));
+    const auto started = Clock::now();
     std::error_code missing;
     if (!std::filesystem::is_regular_file(prepared(picture), missing)) return false;
+    const double looked = ms_since(started);
     const std::string file = app::read_text(prepared(picture), 512u << 20);   // whole, not a byte at a time
+    // An SD card read slow enough to hold a frame up: which file, the lookup and the read.
+    if (const double total = ms_since(started); total >= 300)
+        std::fprintf(stderr, "SRW64_SLOW_READ %.0f ms (lookup %.0f, read %.0f) %zu bytes %s\n", total, looked, total - looked,
+                     file.size(), prepared(picture).string().c_str());
     uint32_t head[6];
     if (file.size() < sizeof head) return false;
     std::memcpy(head, file.data(), sizeof head);
@@ -79,3 +113,19 @@ bool load(const std::filesystem::path& picture, Compressed& out) {
 #endif
 }
 }  // namespace srw64::hd_texture
+
+#ifdef __SWITCH__
+// For the stall watchdog: each HD picture still being read, and for how long.
+std::string srw64_hd_reads_in_flight() {
+    using namespace srw64::hd_texture;
+    std::lock_guard lock(reading_mutex);
+    std::string out;
+    for (const auto& r : reading)
+        if (r.busy) {
+            char line[32];
+            std::snprintf(line, sizeof line, "%s%.1fs ", out.empty() ? "" : "; ", ms_since(r.since) / 1000);
+            out += line + r.path;
+        }
+    return out.empty() ? "none" : out;
+}
+#endif
