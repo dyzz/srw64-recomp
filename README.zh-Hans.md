@@ -20,6 +20,8 @@
 Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原生重编译项目。支持电脑、Steam Deck、
 安卓手机和 Nintendo Switch，提供简繁中文、英文和韩文全文翻译与宽屏显示，另有可选的 HD 美术包。
 
+韩文翻译与韩文标题 logo 由 [테오（jung5441）](https://github.com/jung5441) 制作，CC BY 4.0 授权。
+
 > **需要自备日版 ROM**（スーパーロボット大戦64，Rev 0）。本仓库和下载包都不含任何游戏数据，
 > 见 [ROM 说明](https://srw64.dreamquest.club/zh/faq/#rom)。
 

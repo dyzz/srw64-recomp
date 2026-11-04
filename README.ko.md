@@ -21,6 +21,8 @@ Marchwind 64는 『슈퍼로봇대전64』의 비공식 네이티브 리컴파�
 Windows, macOS, Linux, Steam Deck, Android, Nintendo Switch에서 네이티브로 실행되며,
 한국어, 영어, 중국어 전문 번역과 와이드 화면을 지원합니다. 별도의 HD 팩도 선택해서 쓸 수 있습니다.
 
+한국어 번역과 한국어 타이틀 로고: [테오(jung5441)](https://github.com/jung5441), CC BY 4.0.
+
 > **일본판 ROM을 직접 준비해야 합니다** (スーパーロボット大戦64, Rev 0). 이 저장소와
 > 다운로드 파일에는 게임 데이터가 들어 있지 않습니다.
 > [ROM 안내](https://srw64.dreamquest.club/ko/faq/#rom)를 참고하세요.

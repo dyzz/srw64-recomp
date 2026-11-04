@@ -21,6 +21,8 @@
 Windows・macOS・Linux・Steam Deck・Android・Nintendo Switch でネイティブに動作し、英語・中国語（簡体字・繁体字）・韓国語の
 全文翻訳とワイド画面に対応し、別配布の HD アートパックも利用できます。
 
+韓国語訳と韓国語タイトルロゴ：[테오（jung5441）](https://github.com/jung5441)、CC BY 4.0。
+
 > **日本版の ROM（Rev 0）をご用意ください。** このリポジトリにもダウンロードにもゲームのデータは含まれていません。
 > 詳しくは [ROM について](https://srw64.dreamquest.club/ja/faq/#rom)。
 

@@ -22,6 +22,8 @@ It runs natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Swit
 Chinese (Simplified and Traditional) and Korean translations and widescreen support, plus an
 optional HD art pack.
 
+The Korean translation and Korean title logo are by [테오 (jung5441)](https://github.com/jung5441), CC BY 4.0.
+
 > **Requires your own Japanese ROM** (Super Robot Taisen 64, Rev 0). Neither this
 > repository nor the downloads contain any game data. See
 > [About ROMs](https://srw64.dreamquest.club/en/faq/#rom).
