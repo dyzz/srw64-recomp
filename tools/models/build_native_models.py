@@ -115,11 +115,11 @@ FONT = ROOT / 'build/fonts/HarmonyOS_Sans_SC.ttf'  # tools/content/prepare_fonts
 # Korean plates, ready for a Korean language package (docs/design/mod-language-packs.md):
 # HarmonyOS Sans has no Hangul, so they are drawn with Droid Sans Fallback (Apache 2.0,
 # AOSP platform/frameworks/base data/fonts at android-4.4_r1), kept with the local assets.
-# The term tables have no Korean: the names are here (バルジ transliterated until a
-# usual Korean name turns up).
+# The term tables have no Korean: the names are here, spelt as the Korean translation
+# (content/locales/ko.json, content/dialogue/ko) spells them.
 KOREAN_FONT = ROOT / 'assets/fonts/DroidSansFallback.ttf'
 KOREAN_FONT_SHA256 = '05d71b179ef97b82cf1bb91cef290c600a510f77f39b4964359e3ef88378c79d'
-KOREAN_PLATE_NAMES = {'リーブラ': '리브라', 'ラビアンローズ': '라비앙로즈', 'バルジ': '바르지', 'アクシズ': '액시즈',
+KOREAN_PLATE_NAMES = {'リーブラ': '리브라', 'ラビアンローズ': '라비앙 로즈', 'バルジ': '발지', 'アクシズ': '액시즈',
                       'フィフス・ルナ': '피프스 루나', 'サイド': '사이드', 'スウィートウォーター': '스위트워터'}
 for _model in MODELS:
     _model['mesh'] = ROOT / f"assets/models/{_model['key']}/mesh.json" if _model['key'] else None
