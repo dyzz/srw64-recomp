@@ -80,8 +80,8 @@
 
     {"id": "secret-sheila-elle", "kind": "choice", "at": [26],
      "options": [
-       {"when": {"var": 7, "eq": 0}, "label": {"zh-Hans": "席拉＋古兰·加兰", "en": "Ciela + Gran-Garan", "ja": "シーラ＋グラン・ガラン"}},
-       {"when": {"var": 7, "eq": 1}, "label": {"zh-Hans": "艾蕾＋戈拉翁", "en": "Elle + Goraon", "ja": "エレ＋ゴラオン"}}]},
+       {"when": {"var": 7, "eq": 0}, "label": {"zh-Hans": "席拉＋古兰·加兰", "en": "Ciela + Gran-Garan", "ja": "シーラ＋グラン・ガラン", "ko": "시라 + 그란 가란"}},
+       {"when": {"var": 7, "eq": 1}, "label": {"zh-Hans": "艾蕾＋戈拉翁", "en": "Elle + Goraon", "ja": "エレ＋ゴラオン", "ko": "엘레 + 고라온"}}]},
 
     {"id": "secret-gyuken", "kind": "acquire",
      "done": {"var": 39, "eq": 0},
@@ -267,76 +267,76 @@
     {"id": "secret-chizuru", "kind": "choice", "at": [138, 97],
      "counter": {"kills": 145, "of": 15},
      "options": [
-       {"when": {"var": 51, "in": [0, 1]}, "label": {"zh-Hans": "进入手术线", "en": "Surgery branch", "ja": "手術ルート"}}],
-     "otherwise": {"zh-Hans": "未进入手术线", "en": "No surgery branch", "ja": "手術ルートなし"}},
+       {"when": {"var": 51, "in": [0, 1]}, "label": {"zh-Hans": "进入手术线", "en": "Surgery branch", "ja": "手術ルート", "ko": "수술 루트"}}],
+     "otherwise": {"zh-Hans": "未进入手术线", "en": "No surgery branch", "ja": "手術ルートなし", "ko": "수술 루트 없음"}},
 
     {"id": "secret-unlock-attacks", "kind": "info"},
     {"id": "secret-story-attacks", "kind": "info"},
 
     {"id": "secret-route-oz", "kind": "choice", "at": [30],
      "options": [
-       {"when": {"var": 10, "eq": 1}, "label": {"zh-Hans": "OZ路线", "en": "OZ route", "ja": "OZルート"}},
-       {"when": {"var": 10, "eq": 0}, "label": {"zh-Hans": "独立军路线", "en": "Independence Army route", "ja": "独立軍ルート"}}]},
+       {"when": {"var": 10, "eq": 1}, "label": {"zh-Hans": "OZ路线", "en": "OZ route", "ja": "OZルート", "ko": "OZ 루트"}},
+       {"when": {"var": 10, "eq": 0}, "label": {"zh-Hans": "独立军路线", "en": "Independence Army route", "ja": "独立軍ルート", "ko": "독립군 루트"}}]},
 
     {"id": "secret-route-cp", "kind": "choice", "at": [32],
      "applies": {"not": {"var": 10, "eq": 1}},
      "options": [
-       {"when": {"var": 11, "eq": 1}, "label": {"zh-Hans": "完全和平路线", "en": "Complete Pacifism route", "ja": "完全平和ルート"}},
-       {"when": {"var": 11, "eq": 0}, "label": {"zh-Hans": "留在独立军路线", "en": "Stayed on the Independence Army route", "ja": "独立軍ルートのまま"}}]},
+       {"when": {"var": 11, "eq": 1}, "label": {"zh-Hans": "完全和平路线", "en": "Complete Pacifism route", "ja": "完全平和ルート", "ko": "완전평화 루트"}},
+       {"when": {"var": 11, "eq": 0}, "label": {"zh-Hans": "留在独立军路线", "en": "Stayed on the Independence Army route", "ja": "独立軍ルートのまま", "ko": "독립군 루트 유지"}}]},
 
     {"id": "secret-route-treize", "kind": "choice", "at": [70],
      "applies": {"not": {"var": 10, "eq": 1}},
      "options": [
        {"when": {"any": [{"all": [{"var": 11, "eq": 1}, {"var": 44, "eq": 1}]}, {"all": [{"reach": 76}, {"not": {"reach": 70}}]}]},
-        "label": {"zh-Hans": "随特列斯", "en": "With Treize", "ja": "トレーズにつく"}},
+        "label": {"zh-Hans": "随特列斯", "en": "With Treize", "ja": "トレーズにつく", "ko": "트레즈를 따름"}},
        {"when": {"any": [{"all": [{"var": 11, "eq": 1}, {"var": 44, "eq": 0}]}, {"all": [{"reach": 136}, {"not": {"reach": 70}}]}]},
-        "label": {"zh-Hans": "独自作战", "en": "On your own", "ja": "独自に戦う"}}]},
+        "label": {"zh-Hans": "独自作战", "en": "On your own", "ja": "独自に戦う", "ko": "독자적으로 싸움"}}]},
 
     {"id": "secret-route-tallgeese", "kind": "choice", "at": [107],
      "applies": {"not": {"var": 10, "eq": 0}},
      "options": [
-       {"when": {"var": 38, "eq": 0}, "label": {"zh-Hans": "罗姆斐拉侧", "en": "Romefeller side", "ja": "ロームフェラ側"}},
-       {"when": {"var": 38, "eq": 1}, "label": {"zh-Hans": "进攻月球侧", "en": "Moon Attack side", "ja": "ムーンアタック側"}}]},
+       {"when": {"var": 38, "eq": 0}, "label": {"zh-Hans": "罗姆斐拉侧", "en": "Romefeller side", "ja": "ロームフェラ側", "ko": "롬펠러 측"}},
+       {"when": {"var": 38, "eq": 1}, "label": {"zh-Hans": "进攻月球侧", "en": "Moon Attack side", "ja": "ムーンアタック側", "ko": "문 어택 측"}}]},
 
     {"id": "secret-route-gato-base", "kind": "choice", "at": [49],
      "applies": {"not": {"var": 10, "eq": 0}},
      "options": [
-       {"when": {"var": 37, "eq": 0}, "label": {"zh-Hans": "守住基地", "en": "Base held", "ja": "基地を守った"}}],
-     "otherwise": {"zh-Hans": "未守住基地", "en": "Base lost", "ja": "基地を守れなかった"}},
+       {"when": {"var": 37, "eq": 0}, "label": {"zh-Hans": "守住基地", "en": "Base held", "ja": "基地を守った", "ko": "기지를 지켰음"}}],
+     "otherwise": {"zh-Hans": "未守住基地", "en": "Base lost", "ja": "基地を守れなかった", "ko": "기지를 지키지 못함"}},
 
     {"id": "secret-route-ark-brad", "kind": "choice", "at": [41, 56],
      "applies": {"all": [{"protagonist": ["ark", "brad"]}, {"not": {"var": 11, "eq": 1}}]},
      "options": [
        {"when": {"all": [{"protagonist": ["ark"]}, {"any": [{"scene": [123]}, {"pilot": 29}]}]},
-        "label": {"zh-Hans": "进入「从此并肩」", "en": "Went to “Together From Here”", "ja": "「ここより共に」へ"}},
+        "label": {"zh-Hans": "进入「从此并肩」", "en": "Went to “Together From Here”", "ja": "「ここより共に」へ", "ko": "“여기서부터 함께”로"}},
        {"when": {"all": [{"protagonist": ["brad"]}, {"var": 21, "in": [0, 1, 2]}]},
-        "label": {"zh-Hans": "进入「了断之时」", "en": "Went to “Time to Settle It”", "ja": "「決着の時」へ"}}],
-     "otherwise": {"zh-Hans": "未进入支线", "en": "No side branch", "ja": "専用ルートなし"}},
+        "label": {"zh-Hans": "进入「了断之时」", "en": "Went to “Time to Settle It”", "ja": "「決着の時」へ", "ko": "“결착의 때”로"}}],
+     "otherwise": {"zh-Hans": "未进入支线", "en": "No side branch", "ja": "専用ルートなし", "ko": "전용 루트 없음"}},
 
     {"id": "secret-route-lera", "kind": "choice", "at": [30],
      "applies": {"protagonist": ["ark", "serein"]},
      "options": [
-       {"when": {"var": 9, "eq": 0}, "label": {"zh-Hans": "支线成立", "en": "Branch open", "ja": "ルート成立"}},
-       {"when": {"var": 9, "eq": 1}, "label": {"zh-Hans": "支线不成立", "en": "Branch closed", "ja": "ルート不成立"}}]},
+       {"when": {"var": 9, "eq": 0}, "label": {"zh-Hans": "支线成立", "en": "Branch open", "ja": "ルート成立", "ko": "루트 성립"}},
+       {"when": {"var": 9, "eq": 1}, "label": {"zh-Hans": "支线不成立", "en": "Branch closed", "ja": "ルート不成立", "ko": "루트 불성립"}}]},
 
     {"id": "secret-route-beast-base", "kind": "choice", "at": [78],
      "applies": {"not": {"var": 10, "eq": 1}},
      "options": [
-       {"when": {"var": 36, "eq": 0}, "label": {"zh-Hans": "跟多蒙他们走", "en": "Went with Domon", "ja": "ドモンたちと行く"}},
-       {"when": {"var": 36, "eq": 1}, "label": {"zh-Hans": "跟豹马他们走", "en": "Went with Hyoma", "ja": "豹馬たちと行く"}}],
-     "otherwise": {"zh-Hans": "跟本队走", "en": "Stayed with the main force", "ja": "本隊と行く"}},
+       {"when": {"var": 36, "eq": 0}, "label": {"zh-Hans": "跟多蒙他们走", "en": "Went with Domon", "ja": "ドモンたちと行く", "ko": "도몬 일행과 함께"}},
+       {"when": {"var": 36, "eq": 1}, "label": {"zh-Hans": "跟豹马他们走", "en": "Went with Hyoma", "ja": "豹馬たちと行く", "ko": "효마 일행과 함께"}}],
+     "otherwise": {"zh-Hans": "跟本队走", "en": "Stayed with the main force", "ja": "本隊と行く", "ko": "본대와 함께"}},
 
     {"id": "secret-route-breakthrough", "kind": "choice", "at": [81, 130],
      "applies": {"not": {"var": 10, "eq": 1}},
      "options": [
-       {"when": {"scene": [82]}, "label": {"zh-Hans": "两篇都在 10 回合内", "en": "Both parts within 10 turns", "ja": "前後編とも10ターン以内"}},
+       {"when": {"scene": [82]}, "label": {"zh-Hans": "两篇都在 10 回合内", "en": "Both parts within 10 turns", "ja": "前後編とも10ターン以内", "ko": "전후편 모두 10턴 이내"}},
        {"when": {"any": [{"scene": [83, 131]}, {"all": [{"var": 52, "eq": 3}, {"not": {"reach": 81}}, {"reach": 130}]}]},
-        "label": {"zh-Hans": "超过 10 回合", "en": "Over 10 turns", "ja": "10ターン超過"}}]},
+        "label": {"zh-Hans": "超过 10 回合", "en": "Over 10 turns", "ja": "10ターン超過", "ko": "10턴 초과"}}]},
 
     {"id": "secret-route-muge", "kind": "choice", "at": [89, 139],
      "options": [
-       {"when": {"var": 31, "eq": 0}, "label": {"zh-Hans": "前往穆格的宇宙", "en": "To the Muge universe", "ja": "ムゲの宇宙へ"}},
-       {"when": {"var": 31, "eq": 1}, "label": {"zh-Hans": "留在地球圈", "en": "Stayed in the Earth Sphere", "ja": "地球圏に残留"}}]},
+       {"when": {"var": 31, "eq": 0}, "label": {"zh-Hans": "前往穆格的宇宙", "en": "To the Muge universe", "ja": "ムゲの宇宙へ", "ko": "무게 우주로"}},
+       {"when": {"var": 31, "eq": 1}, "label": {"zh-Hans": "留在地球圈", "en": "Stayed in the Earth Sphere", "ja": "地球圏に残留", "ko": "지구권에 잔류"}}]},
 
     {"id": "secret-janera-beasts", "kind": "info"},
     {"id": "secret-sortie-limits", "kind": "info"},
