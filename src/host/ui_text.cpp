@@ -12,6 +12,8 @@
 #include "sprite_text.hpp"
 #include "presentation/image_mode.hpp"
 #include "localization/catalog.hpp"
+#include "double_move_w.hpp"
+#include "stb/stb_image.h"
 #include <algorithm>
 #include <array>
 #include <atomic>
@@ -51,7 +53,9 @@ constexpr int kChoiceBarEnd = 177;
 constexpr uint16_t kLongDash = 0xD3;   // ー: the minus sign of printed numbers
 constexpr uint16_t kWaveDash = 0xDA;   // ～: between a weapon's least and greatest range
 // The 二回行動 crown (text 0x44B): the glyph map names it Ｗ, but it is the picture the map's
-// unit window and the pilot pages draw beside the level, and stays the original's.
+// unit window and the pilot pages draw beside the level. With the original images it stays
+// the original's; with the HD images it is the user's W (crown_item), as the native
+// intermission pilot page draws it.
 constexpr uint16_t kCrown = 0x5B4;
 // The minus as the font has it: as wide as its plus, where the hyphen is narrower and sits
 // off its digits ("- 10" under "+20" in a weapon list's 命中 column).
@@ -168,6 +172,31 @@ sprites::PlacedText placed(const Style& style, const std::string& locale, const 
     item.job.render = [style, locale, text] { return sprite_text::draw(style, locale, text); };
     std::copy(tint, tint + 3, item.job.tint);
     item.x = x; item.y = y;
+    return item;
+}
+// The user's 二回行動 W (double_move_w.hpp, a 224 x 192 PNG of a 14 x 12 cell) on the
+// crown's cell, in the HD images mode (native_sprite draws premultiplied RGBA).
+bool crown_picture() { return presentation::image_mode.current() == 1; }
+sprites::PlacedText crown_item(float x, float y) {
+    sprites::PlacedText item;
+    item.job.key = "crown|double-move-w";
+    item.job.anchor = sprites::TextJob::Anchor::origin;
+    item.job.render = [] {
+        sprites::TextImage out;
+        int w = 0, h = 0, n = 0;
+        uint8_t* pixels = stbi_load_from_memory(double_move_w::png, int(double_move_w::size), &w, &h, &n, 4);
+        if (!pixels) return out;
+        out.width = uint32_t(w); out.height = uint32_t(h);
+        out.units[0] = 14; out.units[1] = 12;
+        out.rgba.assign(pixels, pixels + size_t(w) * size_t(h) * 4);
+        stbi_image_free(pixels);
+        for (size_t i = 0; i + 3 < out.rgba.size(); i += 4) {
+            const unsigned a = out.rgba[i + 3];
+            for (int c = 0; c < 3; ++c) out.rgba[i + c] = uint8_t(out.rgba[i + c] * a / 255);
+        }
+        return out;
+    };
+    item.x = x; item.y = y + 1;   // the picture's 12 rows inside the glyph's 14
     return item;
 }
 // The blank an original line ends on: full-width punctuation fills only the left of its
@@ -893,6 +922,10 @@ void drawn(uint8_t* ram, uint32_t begin, uint32_t end, bool front) {
             counts.translated += l.translated;
             for (size_t k = 0; k < l.cells.size(); ++k) if (!l.cells[k].icon) take(k);
         }
+        // The crown cell, kept original above as an unnamed icon, takes the user's W with the HD images.
+        if (!l.consumed && crown_picture())
+            for (size_t k = 0; k < l.cells.size(); ++k)
+                if (l.cells[k].icon && l.cells[k].code == kCrown) { items.push_back(crown_item(float(l.cells[k].x), float(l.cells[k].y))); take(k); }
         ++counts.labels;
         shown.push_back({{"slot", l.slot}, {"record", l.id}, {"x", l.x}, {"y", l.y}, {"palette", l.palette},
                          {"text", text}, {"translated", l.translated}, {"consumed", l.consumed}});
