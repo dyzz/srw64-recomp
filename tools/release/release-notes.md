@@ -10,37 +10,50 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 | [`{hd_name}`]({hd_download}) | {hd_size} | Optional HD images (HD {hd_version}) for macOS, Windows, Linux and Android. |
 {switch_hd_row_en}
 
-## What's new in 0.5.2
+## What's new in 0.5.3
 
-### Traditional Chinese
+### Korean
 
-- **Traditional Chinese (Taiwan) is the fourth language**, after Japanese, English and Simplified Chinese: the whole game, from the menus and the story to the stage info and the chapter title cards, with the Taiwan names of the units, people, weapons and series. It is converted from the Simplified Chinese text with a list of Taiwan names researched work by work, so the two stay in step. The first launch picks it on a Traditional-script system, in Taiwan, Hong Kong or Macau, and for Steam's Traditional Chinese; it is in the language menu too. The world map's name plates are still Simplified. The website has Traditional pages as well, at [/tw/](https://srw64.dreamquest.club/tw/).
+- **Korean is the fifth language**, translated by 테오 ([jung5441](https://github.com/jung5441)), who contributed the whole translation under CC BY 4.0: the story and the battle lines, the interface and the names, with a Korean title logo and Korean faces for the chapter title cards and the battle banners. The first launch picks it on a Korean system, and it is in the language menu; what is not translated yet shows in English.
+- **Language packages**: a MOD package can add a reading language over English or another built-in one, with its own fonts and pictures. The website has a template tool and a guide.
 
 ### MOD packages
 
-- **Android installs MOD packages now.** Put the `.srw64mod` (or `.zip`) in `mods/` inside the Marchwind64 folder under Documents, in the Files app, and it installs when the game starts or the MOD page opens; or press Install from file on the MOD page and pick it. A file that does not install is listed with the reason, on the desktop too.
-- **Number mods set the stats**: a unit's HP, EN, movement, mobility, armor, limit, repair cost, upgrade cap, abilities, size, shield and sword and part slots; a pilot's six stats, SP, double move, skills and spirits; a weapon's power, range, hit, ammo, EN, morale, critical rate and terrain ranks. Saves keep the original values, so a package can be turned off again.
-- **Name and portrait mods**: rename the four routes' heroes and partners and the unit (for display only; saves keep the game's names, so the package can be turned off), rename any pilot, unit or weapon, and replace any portrait with `art/portraits/<pilot>.png`, with or without the HD pack.
-- **Map icon mods**: `art/icons/<unit>.png` replaces a unit's map icon with one picture of 16 to 128 pixels; the enemy and third-party rings, the acted grey and the facing are added as for the HD icons.
-- **Battle voice mods**: `audio/voice/battle/<record>.ogg` plays as that battle line's box opens, over the game's own sound. Settings → General has a switch and a volume for MOD voices. We ship no voices, only the maker.
-- **Makers on the website** for all of these, in your browser with nothing uploaded: the [number](https://srw64.dreamquest.club/en/mods/data/), [name and portrait](https://srw64.dreamquest.club/en/mods/names/) (with a framing window for the portrait), [map icon](https://srw64.dreamquest.club/en/mods/icons/) and [battle voice](https://srw64.dreamquest.club/en/mods/voices/) makers join the BGM maker, which now plays a song from its row and seeks on a click in the waveform. The [ID tables](https://srw64.dreamquest.club/en/mods/ids/units/) are three pages (units, pilots, weapons) with the original stats, abilities, skills and spirits. Guides: [Number mods](https://srw64.dreamquest.club/en/docs/mod-data/), [Name, portrait and map icon mods](https://srw64.dreamquest.club/en/docs/mod-names/), [Music mods](https://srw64.dreamquest.club/en/docs/mod-music/) (battle voices included).
+- **Story MODs change what happens in the original stages.** A package adds events to a stage: a persuasion, a unit leaving or joining at a chosen level, a replaced or removed unit, new lines, long-term flags, and conditions on the roster or a pilot's kills. The game triggers and tracks them itself; their state is kept in suspend and intermission saves and cleared by a new game. The first one is on the MOD page: **Master Asia Lives**. On the Independence Army and OZ routes, once Domon has talked with Master Asia in battle he can persuade him; with 50 kills or more Master Asia withdraws instead of falling and joins after the stage at Domon's level, in the Master Gundam, with little time left; with fewer the persuasion fails once and the story goes as the original's.
+- **Data MODs can add new units**, with their weapons, battle scenes, icon and pose on a free number. The example is **Final Dancouga**: after the stage where Dancouga learns the Dancou Kougaken, Dancouga and Black Wing combine into Final Dancouga, Alan rides along as the fifth pilot and the upgrades carry over. Its pictures need HD 1.3. A save made with a package's new unit and loaded without the package goes back to the title with a banner naming the package, instead of breaking.
+- **Number MODs reach a weapon's kind**: melee or ranged, usable after moving (P), beam (B), parryable, the terrain the attacker and the target need, the skill it requires, its upgrade type and whether it is locked. The 格/射, P and B markers in the weapon lists follow in every language. Map weapons and combination attacks cannot be made.
+- **MOD battle voices follow the game speed**: at 2× and above a line is time-stretched with its pitch kept, or, by a new setting, stays at the original speed or is muted while accelerated. A line cut off by the next one, or by aborting the animation, fades out instead of clicking.
+- The save slots show a name MOD's portrait of the protagonist; the MOD manager breaks Chinese and Japanese paragraphs into lines; the MOD page no longer says extra scenarios do not take effect (they have since 0.5.1). The original characters' AI battle voices are on the website as a voice package.
+
+### Text updates between releases
+
+- **Text fixes arrive without a new program.** The update check (the title prompt and the About page) now also fetches the newest text from the website: the dialogue, names and interface labels fixed since this release, only the files that changed, each checked by hash before it is installed. The About page shows the text in use and can go back to the bundled text; a player's own dialogue files still win.
+- **The update check works on Android and the Switch** too: the title prompt, the About page's check and the new-version notice. Only the Vita has none.
+
+### Map and screens
+
+- **Ground units cast a shadow**: their own silhouette under the icon, as in the later games; a flying unit's shadow sits closer to its icon. With the HD images every shadow is soft.
+- **A pilot who acts twice a phase shows the crown on the pilot pages**, not only in the map's unit window: the map's pilot page and the intermission pages, drawn from the ROM's glyph with the original images and from a redrawn W mark with the HD images.
+- **HD map icons** (in HD 1.3): the enemy's and the third party's rings are gone, now that each side faces its own way; acted units grey at 60% instead of 85%, so a white or grey unit visibly changes; the GP03 Dendrobium and the Qubeley are brighter before they act.
+- **Translated labels stay inside their window frames**: a value the original draws against a panel's right edge, like the weapon list's required skill, now starts further left instead of running out of the frame; split sentences end at their own full stop; a label the original draws twice at one place is drawn once.
+- **The title demo's units fade in correctly with the HD images**: the palette animation recoloured the whole sprite, so highlights and eyes went dark and the picture jumped between HD and original; it now recolours only the entries the frame shows.
+- The Start Campaign box sits bottom left, clear of the ring's START and of the Library and MOD row; the Extra Scenarios page sees a campaign's first save at once; the stage info page's text is a readable size on phones; the whole-map view (C-right; H on the keyboard) is back on the Controls page and can be rebound.
+
+### Touch controls
+
+- **Hold Back for the whole-map view** on the tactical map, since phones have no C button. A short press is still B.
+- **The title's Library, Battle Viewer and MOD corner show with touch controls** and are tapped where they are, so a phone has the MOD entry on the title; the first tap of a run is no longer lost.
 
 ### Fixes
 
-- **Karaoke, the title demo and the battle viewer keep the original speed** at 2× and above: the lyrics counted frames while the song kept its tempo. Only a stage's battle animation runs at the chosen speed.
-- **The battle viewer offers the forms and units no stage deploys**: Getter-2 and 3, Getter Liger, Shin Getter-2 and 3, Zambo-Ace and the other transformed forms, and the units only the story puts pilots in.
-- **Names**: in English, Gundam Nataku, Apsaras II and the Titans' Gundam Mk-II in the Library; in Chinese, 灵鸟, 灵鸟-炫华 and 凤翼 for the Original units スイームルグ, スイームルグS and エルブルス, 哪吒高达 for アルトロンカスタム and 阿普萨拉斯II for アプサラス, and the Library tells repeated units apart by pilot (亚克托·德卡（葵丝）, 猎犬（盖茨）…) with ダンクーガ (2) as 终极断空我. Traditional Chinese the same. Most came from the website's suggestions, thank you.
+- **Banjo and Daitarn 3 join on the real-robot OZ route** as in the original: they were missing from the join event of the stage where they arrive. An old save that should have them is repaired when it is loaded.
+- **Battle viewer**: each Getter form has its own pilot (Hayato in the 2-forms, Musashi or Benkei in the 3-forms), and a viewer battle shows every protagonist's own face and name instead of an empty label.
+- **Text**: the 13 original characters' lines were reviewed against their profiles for tone and forms of address, in Chinese and English; in Chinese Aisha calls Manami {HeroName}小姐 throughout, Dancouga's ground units are 豹战车, 狮战车 and 象战车, ダイガン is 断空步枪 and ムゲ is 穆格 in every line; Traditional Chinese writes 週目 and 龍捲風 throughout.
+- The title's press and a quick load wait for every button to be released, so a held key no longer repeats; the intermission pages close when the game leaves the intermission; labels the original centres are centred in translation too.
 
-### Other changes
+### HD 1.3
 
-- **Android: import a new HD pack from the About page.** It shows the installed HD version; Import HD pack asks twice, since unsaved progress is lost, then closes the game and opens the pack picker in a fresh start.
-- **Ready for [RecompLauncher](https://recomplauncher.com)**: the desktop packages carry its `recomplauncher.json`, and a game installed from the launcher gets the HD pack during setup. The launcher itself is not out yet.
-- **The Linux package's folder is `Marchwind64-linux-x64`** whatever the version, like the Windows one, and the Windows zip again holds the `Marchwind64-windows-x64` folder, as every release before 0.5.1 did. If you extracted 0.5.1 over an old folder and the title still says a new version is out, the 0.5.1 files landed one level up: delete them and extract 0.5.2 over the folder.
-- **Every console.log starts with the version and the system** (OS and version, model, processor, memory): a sessions folder sent without a problem report still says which release ran.
-
-## Android chips tested
-
-The game starts and plays on real phones with these chips (Android 11–16): Snapdragon 730/732G, 765G, 778G (14–22 FPS), 855/860, 865/870, 888, 8 Gen 1, 8+ Gen 1, 8 Gen 2, 8 Gen 3 and 8 Elite; Dimensity 7300 and 6100+ (about 14 FPS; the others mostly 30); Exynos 1380; Tensor G2 and G3. A chip that is not listed has simply not been tested yet. If you play on a Dimensity 8200 phone, please let us know whether it runs well.
+- **The battle animations are in HD** for the first time: weapon effects, beams (the original shapes kept strictly, Super Robot Wars Z's look inside), hits, follow-on frames including Gundam Rose's bits in their turning angles, shields, barriers and the other defence effects, kill explosions, the map's combination and transformation movies, the special moves' brush characters and their scrolling backdrops. 29 unit poses are fixed or redrawn (seven whole redraws, Master Asia, Dancouga's body and icon), Giant Robo's frames are added, and the map icon changes above are in it. **HD 1.3 needs 0.5.3**: identical pictures now share one file and the program recolours them per row; on 0.5.2 several colour variants would come out alike.
 
 Earlier changes are on the [website blog](https://srw64.dreamquest.club/en/blog/).
 
@@ -77,42 +90,50 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 | [`{hd_name}`]({hd_download}) | {hd_size} | 可选的 HD 图片包（HD {hd_version}），macOS、Windows、Linux、安卓通用。 |
 {switch_hd_row}
 
-### 本版更新（0.5.2）
+### 本版更新（0.5.3）
 
-#### 繁体中文
+#### 韩文
 
-- **新增繁体中文（台湾）**，和日文、英文、简体中文并列：菜单、剧情、本关情报到章节标题卡全都有，机体、人物、武器和作品用台湾译名。它由简体中文文本转换而来，加一份逐部作品查过的台湾译名表，两边始终同步。系统是繁体中文、身在台湾、香港、澳门，或 Steam 设为繁体中文时，首次启动会选它；语言菜单里也能切。世界地图的地名牌暂时还是简体。官网也有繁体页面：[/tw/](https://srw64.dreamquest.club/tw/)。
+- **新增韩文**，由 테오（[jung5441](https://github.com/jung5441)）翻译并以 CC BY 4.0 授权收录：剧情与战斗台词、界面和各类名字，配韩文 logo，章节标题卡和战斗横幅用韩文字体。韩文系统首次启动会选它，语言菜单里也能切；还没译到的部分显示英文。
+- **语言包**：MOD 包可以在英文或其他内置语言之上加一种阅读语言，自带字体和图片；官网有模板工具和制作说明。
 
 #### MOD 包
 
-- **安卓版可以安装 MOD 包了。** 把 `.srw64mod`（或 `.zip`）放进「文件」里 Marchwind64 文件夹的 `mods/`，游戏启动或打开 MOD 页时自动安装；也可以在 MOD 页点「从文件安装」直接选文件。装不上的文件会列在页面上并说明原因，桌面版也是。
-- **数值 MOD 可以改数值了**：机体的 HP、EN、移动力、运动性、装甲、限界、修理费、改造上限、特殊能力、尺寸、盾与剑、部件槽；驾驶员的六项能力、SP、二回行动、技能和精神；武器的攻击力、射程、命中、弹数、EN、气力、暴击和地形适应。存档里保存的仍是原版数值，所以包随时可以停用。
-- **名字与头像 MOD**：改四条路线主角、搭档和部队的名字（只改显示，存档里仍是游戏自己的名字，停用就恢复），改任意人物、机体、武器的名字，用 `art/portraits/<人物号>.png` 换任意头像，有没有 HD 包都行。
-- **地图图标 MOD**：`art/icons/<机体号>.png` 换掉机体的地图图标，一张 16 到 128 像素的图就够，敌方和第三方的描边、已行动的灰化和朝向都按 HD 图标的做法自动加。
-- **战斗语音 MOD**：`audio/voice/battle/<台词号>.ogg` 在战斗演出里这句台词框打开时播放，叠在游戏自己的声音上。设置 → 通用 有 MOD 语音的开关和音量。我们不提供语音，只提供制作工具。
-- **官网的制作工具**覆盖以上全部，都在浏览器里完成、不上传任何东西：[数值](https://srw64.dreamquest.club/zh/mods/data/)、[名字与头像](https://srw64.dreamquest.club/zh/mods/names/)（头像可以拖动缩放裁切）、[地图图标](https://srw64.dreamquest.club/zh/mods/icons/)、[战斗语音](https://srw64.dreamquest.club/zh/mods/voices/)四个制作页，加上 BGM 制作页，现在可以在列表里直接试听、点波形跳转。[ID 表](https://srw64.dreamquest.club/zh/mods/ids/units/)分成机体、人物、武器三页，带原版数值、能力、技能和精神。说明见[数值 MOD](https://srw64.dreamquest.club/zh/docs/mod-data/)、[名字、头像与地图图标 MOD](https://srw64.dreamquest.club/zh/docs/mod-names/)、[音乐 MOD](https://srw64.dreamquest.club/zh/docs/mod-music/)（含战斗语音）。
+- **剧情 MOD 可以改原版关卡里发生的事。** 包给关卡加事件：说服、人物离队或以指定等级加入、替换或移除机体、新台词、跨关卡的旗标，以及按名册或驾驶员击坠数判定的条件。触发和记录都由游戏自己做，状态随中断存档和场间存档保存，开新游戏时清空。第一个剧情 MOD 已在 MOD 页：**东方不败存活**。独立军和 OZ 两条路线上，多蒙在战斗里与东方不败交谈过之后可以说服他；击坠数 50 以上时东方不败撤退而不是战死，过关后以与多蒙相同的等级驾驶尊者高达加入，但时日无多；不够则说服失败一次，之后与原作相同。
+- **数值 MOD 可以新增机体**，连武器、战斗场景、图标和立绘一起放在空闲编号上。示例是**终极断空我**：学会断空光牙剑的那一关通关后，断空我与黑翼合体为终极断空我，阿兰作为第五名驾驶员同乘，改造段数继承。它的图片需要 HD 1.3。带着包里新机体的存档，在没装这个包时读取，会回到标题并提示缺哪个包，而不是出错。
+- **数值 MOD 能改武器的种类**：格斗或射击、移动后可用（P）、光束（B）、能否被切り払い、攻守双方要求的地形、需要的技能、改造类型，以及是否锁定。武器列表里的 格/射、P、B 标记各语言都跟着变。MAP 武器和合体技不能新造。
+- **MOD 战斗语音跟随游戏速度**：2 倍速及以上时台词按比例加快而音调不变；新设置可以改成保持原速或加速时静音。被下一句打断或中止演出时，语音淡出而不是戛然而止。
+- 存档栏显示名字 MOD 给主角换的头像；MOD 管理页的中日文段落会按行折行；MOD 页不再写「追加剧本不生效」（0.5.1 起就生效了）。原创人物的 AI 战斗语音作为语音包放在官网。
+
+#### 版本之间的文本更新
+
+- **文本修正不用等新版程序。** 更新检查（标题提示和「关于」页）现在还会从官网取最新文本：这一版发布之后修过的台词、名字和界面词条，只下载有变化的文件，每个文件装前都按哈希核对。「关于」页显示正在用的文本，可以退回随包的文本；玩家自己的台词文件仍然优先。
+- **安卓和 Switch 也有更新检查了**：标题提示、「关于」页的检查和新版本提醒。只有 Vita 还没有。
+
+#### 地图与画面
+
+- **地面机体有影子了**：图标下方是自己的剪影，像后来的机战；飞行机体的影子离图标更近。HD 画面下影子都是柔边的。
+- **能二回行动的驾驶员在驾驶员页也显示皇冠**，不再只在地图的机体窗口里：地图的驾驶员页和场间的驾驶员页都有，原版画面用 ROM 里的字形，HD 画面用重画的 W 标记。
+- **HD 地图图标**（在 HD 1.3 里）：敌方和第三方的描边去掉了，因为各阵营已经朝向不同；已行动的灰化从 85% 改为 60%，白色和灰色机体行动前后看得出区别；GP03石斛兰和卡碧尼行动前更亮。
+- **翻译文字不再超出窗口框线**：原版贴着面板右边画的数值（比如武器列表的必要技能），现在往左挪而不是冲出框线；被拆开的句子在自己的句号处结束；原版在同一位置画两遍的文字只画一遍。
+- **HD 画面下标题演示的机体正常渐显**：调色板动画原来把整张精灵重新着色，高光和眼睛变暗，画面还在 HD 和原版之间跳；现在只按这一帧用到的调色板项换色。
+- 开始战役的框放到左下角，不再压着转盘的 START 和图鉴、MOD 那一行；追加剧本页能立刻看到战役的第一个存档；本关情报页的文字在手机上是能看清的大小；全图视图（C→，键盘 H）回到操作页，可以改键。
+
+#### 触屏
+
+- **长按返回键看全图**：手机没有 C 键，战术地图上按住返回 0.5 秒打开全图视图。短按仍是 B。
+- **标题画面右下角的图鉴、战斗查看器和 MOD 在触屏下也显示**，点哪个就是哪个，手机上标题画面也有 MOD 入口了；一局里的第一次点击不再被吞掉。
 
 #### 修复
 
-- **卡拉OK、标题演示和战斗查看器不再跟着加速**：开着 2 倍速时歌词按帧走、歌却是原速。现在只有关卡里的战斗演出按所选速度跑。
-- **战斗查看器能选没有关卡出击过的形态和机体**：盖塔2、盖塔3、盖塔狮虎、真盖塔2、真盖塔3、赞波ACE 等变形形态，以及只在剧情里配了驾驶员的机体。
-- **译名**：中文把原创机体 スイームルグ、スイームルグS、エルブルス 改为灵鸟、灵鸟-炫华、凤翼，アルトロンカスタム 改为哪吒高达，アプサラス 改为阿普萨拉斯II；图鉴里重复的机体按驾驶员区分（亚克托·德卡（葵丝）、猎犬（盖茨）等），ダンクーガ (2) 叫终极断空我。繁体同步。英文是 Gundam Nataku、Apsaras II 和图鉴里泰坦斯的 Gundam Mk-II。大多来自官网上的意见，谢谢。
+- **万丈和泰坦3 在真实系 OZ 路线正常加入**，和原版一样：原来登场那一关的加入事件里漏了这两人。本该有他们的旧存档读取时会补上。
+- **战斗查看器**：盖塔各形态用各自的驾驶员（2 形态是隼人，3 形态是武藏或弁庆）；从标题进的战斗显示每位主角自己的头像和名字，不再是空标签。
+- **文本**：13 位原创人物的台词按人物设定逐句核对了口吻和称呼（中英文）；中文里艾夏对玛娜米一律称「{HeroName}小姐」，断空我的地面机体是豹战车、狮战车、象战车，ダイガン 是断空步枪，ムゲ 每一句都是穆格；繁体中文的「週目」「龍捲風」全文统一。
+- 标题的按键和快速读档会等所有按键松开再接着响应，按住的键不再连按；离开场间时场间页面会一起关掉；原版居中画的文字翻译后也居中。
 
-#### 其他
+#### HD 1.3
 
-- **安卓版可以在「关于」页导入新 HD 包**：显示已装的 HD 版本，「导入 HD 包」会确认两次（未存档的进度会丢），然后退出游戏、重新启动并打开选包窗口。
-- **为 [RecompLauncher](https://recomplauncher.com) 做好了准备**：三个桌面包里都带它的 `recomplauncher.json`，从启动器安装的游戏会在安装过程中自动下载 HD 包。启动器本身还没发布。
-- **Linux 包解压出的文件夹固定叫 `Marchwind64-linux-x64`**，不再带版本号，和 Windows 包一样；Windows 的 zip 恢复为里面是 `Marchwind64-windows-x64` 文件夹，和 0.5.1 之前的历代一样。如果你把 0.5.1 解压覆盖到旧文件夹后标题仍提示有新版本，那是 0.5.1 的文件落在了旧文件夹的上一层：删掉它们，把 0.5.2 解压覆盖到文件夹上即可。
-- **每次运行的 console.log 开头都写上版本和系统**（系统版本、机型、处理器、内存）：只发来 sessions 文件夹、没导出问题报告时，也能看出跑的是哪个版本。
-
-### 安卓已测试的芯片
-
-以下芯片的真机都能正常进入游戏（安卓 11–16）。天玑 6100+ 这类入门芯片约 14 FPS，骁龙 778G 约 14–22 FPS，其余基本是 30 FPS。没列出的芯片不代表不能玩，只是还没测过；欢迎在 Issues 反馈。希望天玑 8200 的玩家反馈一下是否能正常运行。
-
-- 高通：骁龙 730/732G（Adreno 618，Pixel 4a）、骁龙 765G（Adreno 620，Pixel 5）、骁龙 778G（Adreno 642L，Galaxy A73）、骁龙 855/860（Adreno 640，Pixel 4、Poco X3 Pro）、骁龙 865/870（Adreno 650，Galaxy Tab S7、POCO F3）、骁龙 888（Adreno 660，Galaxy S21 Ultra）、骁龙 8 Gen 1（Adreno 730，Galaxy S22、小米 12）、骁龙 8+ Gen 1（Adreno 730，红米 K60）、骁龙 8 Gen 2（Adreno 740，小米 13、Galaxy S23）、骁龙 8 Gen 3（Adreno 750，Galaxy S24 Ultra）、骁龙 8 至尊版（Adreno 830，Galaxy S25）
-- 联发科：天玑 7300（Mali-G615，Solana Seeker）、天玑 6100+（Mali-G57，Galaxy A15）
-- 三星：Exynos 1380（Mali-G68，Galaxy A35）
-- 谷歌：Tensor G2（Mali-G710，Pixel 7）、Tensor G3（Mali-G715，Pixel 8）
+- **战斗演出第一次有了 HD**：武器特效、光束（严格保持原版外形，内部照第二次机战 Z 的画法）、命中、招式的后续画面（含玫瑰高达浮游炮的各个转向角度）、盾牌、护罩和其他防御特效、击坠爆炸、地图上的合体和变形动画、必杀技的毛笔字和它背后的滚动背景。机体立绘修了或重画了 29 张（7 张整张重画、东方不败、断空我的身体和头像），补上大铁人的帧，上面说的地图图标改动也在里面。**HD 1.3 要配 0.5.3**：相同的图现在只存一份、由程序按行分别换色，在 0.5.2 上几种换色会混成一种。
 
 更早版本的更新见[官网博客](https://srw64.dreamquest.club/zh/blog/)。
 
