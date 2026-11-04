@@ -19,7 +19,7 @@ const c = HOME[tl(lang)];
 // mods and game speed after the rules, filters last (user, 2026-10-29).
 const ORDER = ['history', 'prebattle', 'mods', 'speed', 'link', 'settings', 'library', 'viewer', 'filters'];
 const shows = ORDER.map((k) => c.shows.find((x) => x.key === k)!).filter(Boolean);
-// A page language without its own screenshot (Korean, so far) shows the English one.
+// A page language without its own screenshot shows the English one (every language has its own now).
 const shot = (path: string) => {
   const own = path.replace('{lang}', lang);
   return existsSync(join(process.cwd(), 'public', own)) ? own : path.replace('{lang}', 'en');
