@@ -16,7 +16,7 @@ Mods need version 0.5.1 or later; everything beyond music and terrain ranks need
 
 1. Open the mod manager: click “MOD” in the bottom-right corner of the title screen, or open the settings and click “MOD” on the General page.
 2. **Drag the `.srw64mod` file** (a `.zip` or a package folder works too) **into the game window**. The game installs it in the background, says so at the top of the screen and opens the Installed page.
-3. Or click “Open folder” and put the package file straight into the MOD folder; it is installed the next time you open the mod manager. From 0.5.4, a package file’s extracted folder can go there too, under any name.
+3. Or click “Open folder” and put the package file straight into the MOD folder; it is installed the next time you open the mod manager. From 0.5.4 (on the Switch, 0.5.3.1), a package file’s extracted folder can go there too, under any name.
 
 Installing a new version of a package replaces the old one. The old version, and any package you remove, goes into `.trash` inside the MOD folder rather than being deleted.
 
