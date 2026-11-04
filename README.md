@@ -19,13 +19,14 @@
 
 Marchwind 64 is an unofficial native recompilation project for Super Robot Wars 64.
 It runs natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English,
-Chinese and Korean translations and widescreen support, plus an optional HD art pack.
+Chinese (Simplified and Traditional) and Korean translations and widescreen support, plus an
+optional HD art pack.
 
 > **Requires your own Japanese ROM** (Super Robot Taisen 64, Rev 0). Neither this
 > repository nor the downloads contain any game data. See
 > [About ROMs](https://srw64.dreamquest.club/en/faq/#rom).
 
-| Native | EN · ZH · JA | HD and widescreen | Original bug fixes |
+| Native | EN · 简 · 繁 · KO · JA | HD and widescreen | Original bug fixes |
 | --- | --- | --- | --- |
 | Install, add your ROM and play | Full translations, switchable in game | Switch between original and HD art at any time | Enabled by default, with individual toggles |
 
@@ -82,6 +83,50 @@ grouped below. The tactical map gains the shortcuts modern entries have too.
 - Stop a battle animation at any time; the result is calculated normally
 - The original screen is also available in settings
 
+### Mods: music, numbers, names and icons
+
+![Mods](web/public/media/mods-en.webp)
+
+Drop a .srw64mod file on the game window to install it; on Android, put it in mods/ in
+the Marchwind64 folder under Files. A package holds data only, no code, and your saves
+keep the game’s own values, so you can turn a mod off or remove it at any time.
+
+- Music: replace any of the 49 tracks with Ogg files, and pick the song a character or
+  unit fights to
+- Numbers: unit, pilot and weapon stats, terrain ratings, skills and spirit commands
+- Names and portraits: the heroes’, partners’ and unit’s names, any character, unit or
+  weapon name, and character portraits
+- Map icons and battle voices: one picture replaces a unit’s map icon; a voice plays when
+  a battle line comes up
+- Five makers on the [website](https://srw64.dreamquest.club/en/mods/) do it all in the
+  browser; nothing is uploaded
+
+### Up to 4× speed
+
+| | |
+| --- | --- |
+| ![4× speed on the map](web/public/media/speed-en.webp) | ![Speed setting](web/public/media/speedset-en.webp) |
+
+The speed key steps through normal, 2×, 3× and 4×: Tab on the keyboard, R4 on the back
+of the Steam Deck, a speed button on phones, or pick one in Options → General. It speeds
+up story scenes on the map, the enemy phase, units moving, battle animations and the
+world map; your menus, the cursor and the intermission keep the original speed, and the
+music keeps its pitch.
+
+- 3× and 4× need 90 and 120 frames a second; a device that can’t keep up draws every
+  other frame while the game logic still runs every frame
+- Karaoke, the title demo and the battle viewer always run at normal speed
+
+### Link Battler without a Game Boy cartridge
+
+![Link Battler](web/public/media/link-en.webp)
+
+Choose Link in the intermission menu and tick the series: F91, GoShogun and Zambot 3 join
+through the original link stages. No Transfer Pak or Game Boy cartridge needed.
+
+- Confirmed working from start to finish
+- Any combination of the three series
+
 ### In-game settings
 
 ![Settings](web/public/media/settings-en.webp)
@@ -108,7 +153,7 @@ picture by itself. Both are in Options → General.
 - Works on the original 240 lines (closest to a CRT), 480, 960, or the window’s resolution
 - Only the game picture and dialogue are filtered; the options window, notices and the
   bezel stay sharp
-- Filters run on macOS and Linux/Steam Deck; not on Windows yet
+- Filters run on Windows, macOS, Linux/Steam Deck and Android; not on Switch yet
 
 <sub>Bezel: tv-integer from RetroArch’s own overlays (libretro/common-overlays, CC BY 4.0).
 Filter: crt-lottes at 480 lines. The game ships with no bezels.</sub>
@@ -167,6 +212,8 @@ funds and battle difficulty.
 - Departure refund: returns upgrade funds when a unit leaves as part of the story
 - Parts carry over: enhancement parts move with the pilot to the new machine
 - Boss dummies: halve their uses or disable them
+- New Game+: hidden extras you completed in an earlier playthrough join right after the
+  stage they first join in
 
 **Graphics and interface** — new or original. Choose the new or original layout for
 each screen.
@@ -175,6 +222,8 @@ each screen.
 - Intermission, hero selection and title menu: new or original
 - Art: HD or original, switchable at any time
 - Aspect ratio: fill the screen or keep 4:3
+- Weapon upgrades: unified (all of a unit’s weapons go up together, at the same total
+  cost) or one by one (original)
 - Battle animations and autosaves: individual toggles
 
 ## More features
@@ -182,9 +231,10 @@ each screen.
 - **Runs natively.** The N64 program is recompiled into native code, with graphics
   rendered by RT64. After installation, add your ROM following the setup instructions
   to start playing.
-- **Full text in four languages.** Full English, Chinese and Korean translations
-  alongside the original Japanese; the Korean translation is by 테오 (jung5441).
-  Character, unit and weapon names follow common usage in each language.
+- **Full text in five languages.** Full English, Simplified Chinese, Traditional Chinese
+  and Korean translations alongside the original Japanese. The Korean translation is by
+  테오 (jung5441), under CC BY 4.0. Character, unit and weapon names follow common usage
+  in each language; Traditional Chinese uses the names used in Taiwan.
 - **Extra save slots and autosaves.** More save slots than the original, with
   autosaves at key points. Export cartridge saves for use with ares, Project64,
   RetroArch and other emulators.
