@@ -161,7 +161,7 @@ Codex 按 `scribble-fix-20261102` 交接包画完后，用户说「你来处理�
 
 ## 断空我新本体（2026-11-03）
 
-`unit-2414-1817-2117`（223）与 `unit-2415-1818-2118`（224）换成究极断空我 MOD 生成包里 Codex 画的新本体（`assets/hd-ai/final-dancouga-kit/outputs/00-dancouga-body-v1.png`），两种形态共用同一张本体；接入脚本 `assets/hd-ai/unit-poses/dancouga-body-20261103/apply.py` 可复跑（原图存为同目录 `before-*.png`）。
+`unit-2414-1817-2117`（223）与 `unit-2415-1818-2118`（224）换成终极断空我 MOD 生成包里 Codex 画的新本体（`assets/hd-ai/final-dancouga-kit/outputs/00-dancouga-body-v1.png`），两种形态共用同一张本体；接入脚本 `assets/hd-ai/unit-poses/dancouga-body-20261103/apply.py` 可复跑（原图存为同目录 `before-*.png`）。
 
 - 本体按实心像素包围盒缩放 0.786、放在 (45,104)，与 223 原轮廓 IoU 0.90；用 `scribble-fix-20261102/tone.py` 压回原图亮度（新图原本亮 6 L*）。源图透明边有淡噪点，只保留实心形状 6 像素内的 alpha。
 - 224 的旧站姿就是 223 本体左移 48 像素（6 原像素，吻合 99%）。新 224＝同一张本体左移 48 像素，背后垫推进器。推进器取生成包 09 号 Codex 整张重画（`09-dancouga224-raw-v1.png`，补画了被旧本体挡住的根部），从灰底抠出：先抠外轮廓再填实内部（中灰金属和灰底太接近，直接按颜色抠会破洞）；本体 6 像素内只留浅色金属和红线，避免重画本体的描边和共用本体叠成双线。IoU 0.914。
