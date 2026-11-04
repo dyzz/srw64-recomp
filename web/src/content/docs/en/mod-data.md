@@ -185,6 +185,8 @@ Entries with the same name are different numbers: a transformed form, an enemy c
 
 The example package "Main Cast: Space A" can be downloaded from the [MOD page](/en/mods/#srw64.space-a); its source is [`config/recomp/mods/space-a`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a). It raises space to A for the 20 pilots and 21 units of the main cast below A there: the Mazinger team, Combattler V, Getter-3, GoShogun, Giant Robo, the Dunbine cast, Guncannon, Guntank and more.
 
+The example package "Funnels Usable After Moving" shows the weapon attributes, on the same [MOD page](/en/mods/#srw64.funnels-p) with its source in [`config/recomp/mods/funnels-p`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/funnels-p): one line of `post_move: true` for each of nine funnel and bit weapons; it needs 0.5.3 or newer.
+
 Names and portraits: [Name and portrait mods](../mod-names/).
 
 ### Let an AI write it

@@ -185,6 +185,8 @@ NT・強化・聖戦士・超能力・底力は原作で同じレベル表の行
 
 サンプルパッケージ「主力 宇宙適応A」は [MOD ダウンロード](/ja/mods/#srw64.space-a)ページから入手でき、ソースは [`config/recomp/mods/space-a`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a) です。味方の主力で宇宙適応が A 未満のパイロット 20 人とユニット 21 機の宇宙を A にします（マジンガー系、コン・バトラーV、ゲッター3、ゴーショーグン、ジャイアント・ロボ、ダンバイン系、ガンキャノン、ガンタンクなど）。
 
+武器の属性の例がサンプルパッケージ「ファンネル 移動後使用可」です。同じ [MOD ダウンロード](/ja/mods/#srw64.funnels-p)ページにあり、ソースは [`config/recomp/mods/funnels-p`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/funnels-p)：ファンネル・ビット系の武器 9 件にそれぞれ `post_move: true` を一行書いただけで、0.5.3 以降が必要です。
+
 名前と顔グラフィックは [名前・顔グラフィック MOD](../mod-names/) へ。
 
 ### AI に書かせる

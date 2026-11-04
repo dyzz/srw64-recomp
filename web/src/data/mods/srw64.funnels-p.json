@@ -1,0 +1,38 @@
+{
+  "id": "srw64.funnels-p",
+  "version": "1.0.0",
+  "name": {
+    "ja": "ファンネル 移動後使用可",
+    "zh-Hans": "浮游炮移动后可用",
+    "zh-Hant": "浮游砲移動後可用",
+    "en": "Funnels Usable After Moving",
+    "ko": "판넬 이동 후 사용 가능"
+  },
+  "description": {
+    "ja": "ファンネル系の武器を移動後にも使えるようにする（名前の後ろに P が付く）：νガンダムのフィンファンネル、ガンダムローズのローゼスビット、キュベレイ・キュベレイmkⅡ・ヤクト・ドーガ・ゲーマルク・α・アジールのファンネル、ソルデファー・アシュクリーフのビットガン。MAP 版は変えない。敵がこれらの機体に乗っているときも同じ。武器の属性だけを変え、セーブには書かれない。",
+    "zh-Hans": "把浮游炮类武器改成移动后可用（名字后面带 P）：ν高达的翼状浮游炮，玫瑰高达的玫瑰浮游炮，卡碧尼、卡碧尼Mk-Ⅱ、亚克托·德卡、盖马克、α·阿基尔的浮游炮，索尔迪法、阿修克里夫的比特枪。MAP 版不变。敌方用这些机体时也一样。只改武器属性，不写进存档。",
+    "zh-Hant": "把浮游砲類武器改成移動後可用（名字後面帶 P）：ν鋼彈的翼狀浮游砲，玫瑰鋼彈的玫瑰浮游砲，丘貝雷、丘貝雷Mk-Ⅱ、亞克特·德卡、蓋馬克、α·阿吉爾的浮游砲，索爾迪法、阿修克里夫的比特槍。MAP 版不變。敵方用這些機體時也一樣。只改武器屬性，不寫進存檔。",
+    "en": "Makes the funnel-type weapons usable after moving (a P after the name): Nu Gundam's Fin Funnels, Gundam Rose's Rose Bits, the Funnels of the Qubeley, Qubeley Mk-II, Jagd Doga, Geymalk and Alpha Azieru, and the Bit Guns of Soldifar and Ashcleef. The MAP versions stay as they are. The enemy gets the same when it flies these units. Only the weapons' attributes change; nothing is written to saves.",
+    "ko": "판넬 계열 무기를 이동 후에도 쓸 수 있게 합니다(이름 뒤에 P가 붙습니다): 뉴 건담의 핀 판넬, 건담 로즈의 로즈 비트, 큐베레이, 큐베레이 Mk-Ⅱ, 야크트 도가, 게마르크, 알파 아질의 판넬, 솔디파와 아슈크리프의 비트 건. 맵 병기 판은 그대로입니다. 적이 이 기체를 탈 때도 같습니다. 무기의 속성만 바뀌며 세이브에는 기록되지 않습니다."
+  },
+  "authors": [
+    "SRW64"
+  ],
+  "license": "CC0-1.0",
+  "game": ">=0.5.3",
+  "requires": {},
+  "optional": {},
+  "conflicts": {},
+  "contents": [
+    "data"
+  ],
+  "file": "srw64.funnels-p-1.0.0.srw64mod",
+  "bytes": 1781,
+  "sha256": "0d2313ea53b2f2943fae5a938f769a30cb0a326812f86c74569f26d35d434638",
+  "languages": [],
+  "url": "/mods/srw64.funnels-p-1.0.0.srw64mod",
+  "page": "/mods/#srw64.funnels-p",
+  "source": "https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/funnels-p",
+  "published": null,
+  "yanked": null
+}

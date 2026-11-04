@@ -185,6 +185,8 @@ yourname.balance/
 
 예시 패키지 “주력 우주 적응 A”(Main Cast: Space A)는 [MOD 페이지](/ko/mods/#srw64.space-a)에서 받을 수 있고, 소스는 [`config/recomp/mods/space-a`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/space-a)입니다. 주력 아군 중 우주 적응이 A 미만인 파일럿 20명과 기체 21기의 우주 적응을 A로 올립니다. 마징가 팀, 컴배틀러 V, 겟타 3, 고쇼군, 자이언트 로보, 단바인 진영, 건캐논, 건탱크 등이 해당합니다.
 
+무기 속성의 예시는 패키지 “판넬 이동 후 사용 가능”입니다. 같은 [MOD 페이지](/ko/mods/#srw64.funnels-p)에 있고 소스는 [`config/recomp/mods/funnels-p`](https://github.com/dyzz/srw64-recomp/tree/main/config/recomp/mods/funnels-p)입니다. 판넬과 비트 계열 무기 9개에 각각 `post_move: true` 한 줄씩이며, 0.5.3 이상이 필요합니다.
+
 이름과 초상화: [이름·초상화 MOD](../mod-names/).
 
 ### AI에게 맡기기
