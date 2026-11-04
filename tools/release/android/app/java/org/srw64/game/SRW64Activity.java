@@ -496,7 +496,7 @@ public class SRW64Activity extends SDLActivity {
 
     // The first launch's language, as on the desktop (runtime.cpp first_language): the first
     // of the phone's languages that is Chinese (zh-Hant for the Traditional script or Taiwan,
-    // Hong Kong and Macau), Japanese or English; else English.
+    // Hong Kong and Macau), Japanese, English or Korean; else English.
     static String firstLanguage() {
         LocaleList preferred = LocaleList.getDefault();
         for (int i = 0; i < preferred.size(); ++i) {
@@ -508,7 +508,7 @@ public class SRW64Activity extends SDLActivity {
                         (region.equals("TW") || region.equals("HK") || region.equals("MO")));
                 return traditional ? "zh-Hant" : "zh-Hans";
             }
-            if (language.equals("ja") || language.equals("en")) return language;
+            if (language.equals("ja") || language.equals("en") || language.equals("ko")) return language;
         }
         return "en";
     }

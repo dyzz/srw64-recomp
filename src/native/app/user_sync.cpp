@@ -124,6 +124,8 @@ std::string question(const std::string& locale,const fs::path& destination) {
         "覆盖前会备份系统用户目录中被替换的数据。取消则保留两份数据，不进行同步。\nSystem user data: "+path;
     if(locale=="zh-Hant")return "遊戲資料夾與系統使用者資料夾的存檔不同。是否用遊戲資料夾的存檔覆蓋系統使用者資料夾？\n"
         "覆蓋前會備份系統使用者資料夾中被取代的資料。取消則保留兩份資料，不進行同步。\nSystem user data: "+path;
+    if(locale=="ko")return "게임 폴더와 시스템 사용자 폴더의 세이브가 다릅니다. 게임 폴더의 데이터로 시스템 사용자 폴더의 세이브를 덮어쓰시겠습니까?\n"
+        "덮어쓰기 전에 시스템 사용자 폴더에서 교체되는 데이터를 백업합니다. 취소하면 두 데이터를 모두 유지하고 동기화하지 않습니다.\nSystem user data: "+path;
     if(locale=="ja")return "ゲームフォルダーとシステムのユーザーフォルダーのセーブデータが異なります。\n"
         "ゲームフォルダーのデータでシステム側を置き換えますか？置き換える前にバックアップします。\n"
         "キャンセルすると両方のデータを保持し、同期しません。\nSystem user data: "+path;

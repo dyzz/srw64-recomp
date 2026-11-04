@@ -1,7 +1,7 @@
 #pragma once
 // What a player sees when the game cannot draw at all: no window, or RT64 found neither a
 // D3D12 nor a Vulkan device it can use (graphics.cpp). In the saved language (zh-Hans,
-// zh-Hant, en or ja; anything else gets Simplified Chinese, as play_lock_message). `gpus` are the
+// zh-Hant, en, ja or ko; anything else gets Simplified Chinese, as play_lock_message). `gpus` are the
 // adapters gpu_report found, `log` the run's console.log.
 #include <algorithm>
 #include <string>
@@ -17,6 +17,9 @@ inline std::string old_android_driver(const std::string& locale) {
     if (locale == "en")
         return "Unable to start Marchwind64: this phone's graphics driver is too old and crashes while building the game's shaders.\n"
                "Update to Android 11 or later and start the game again. The same phones run it after the update.";
+    if (locale == "ko")
+        return "Marchwind64를 실행할 수 없습니다. 이 기기의 그래픽 드라이버가 너무 오래되어 게임 화면의 셰이더를 만드는 도중 강제 종료됩니다.\n"
+               "Android 11 이상으로 업데이트한 뒤 다시 실행해 주세요. 같은 기종도 업데이트 후에는 정상적으로 작동합니다.";
     if (locale == "zh-Hant")
         return "無法啟動 Marchwind64：這台手機的顯示卡驅動程式太舊，在產生遊戲畫面所需的著色器時會當機。\n"
                "請把系統更新到 Android 11 或更新版本，然後重新啟動。同款手機更新系統後可以正常執行。";
@@ -53,6 +56,16 @@ inline std::string message(const std::string& locale, const std::vector<std::str
         if (!names.empty()) text += "\nGPU: " + names;
         if (!detail.empty()) text += "\nError: " + detail;
         if (!log.empty()) text += "\n\nIf you report this, please attach this file:\n" + log;
+        return text;
+    }
+    if (locale == "ko") {
+        text = "Marchwind64를 실행할 수 없습니다. 이 PC의 그래픽 드라이버로는 게임 화면을 그릴 수 없습니다.\n"
+               "Marchwind64에는 DirectX 12 또는 Vulkan이 필요합니다. GPU 제조사(Intel, AMD, NVIDIA)의 공식 웹사이트에서 "
+               "최신 드라이버를 설치한 뒤 다시 실행해 주세요. Windows 업데이트나 PC 제조사가 제공하는 드라이버에는 "
+               "이 기능이 빠져 있는 경우가 있습니다.\n";
+        if (!names.empty()) text += "\nGPU: " + names;
+        if (!detail.empty()) text += "\n오류: " + detail;
+        if (!log.empty()) text += "\n\n문제를 신고할 때는 이 파일을 첨부해 주세요:\n" + log;
         return text;
     }
     if (locale == "zh-Hant") {

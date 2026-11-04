@@ -86,14 +86,15 @@ class AddToSteamTests(unittest.TestCase):
             self.assertEqual(MODULE.shortcut_ids(vdf, Path("/x")), [])
 
     def test_every_game_language_has_a_steam_name(self):
-        self.assertEqual(set(MODULE.NAMES), {"zh-Hans", "zh-Hant", "en", "ja"})
+        self.assertEqual(set(MODULE.NAMES), {"zh-Hans", "zh-Hant", "en", "ja", "ko"})
         self.assertIn(MODULE.FIRST_LOCALE, MODULE.NAMES)
 
     def test_artwork_follows_the_game_language(self):
         art = ROOT / "tools/release/linux/steam-art"
         for locale in MODULE.NAMES:
+            drawn = MODULE.ARTWORK_FALLBACK.get(locale, locale)
             for kind in ("capsule", "wide", "logo"):
-                self.assertTrue((art / f"{kind}-{locale}.png").is_file(), (kind, locale))
+                self.assertTrue((art / f"{kind}-{drawn}.png").is_file(), (kind, locale))
         for kind in ("hero", "icon"):
             self.assertTrue((art / f"{kind}.png").is_file(), kind)
         with tempfile.TemporaryDirectory() as folder:
@@ -105,6 +106,8 @@ class AddToSteamTests(unittest.TestCase):
                 self.assertEqual(MODULE.artwork_source("capsule", "ja"), here / "capsule-ja.png")
                 self.assertEqual(MODULE.artwork_source("hero", "ja"), here / "hero.png")
                 self.assertIsNone(MODULE.artwork_source("capsule", "zh-Hans"))
+                # Korean has no wordmark of its own: English's.
+                self.assertEqual(MODULE.artwork_source("capsule", "ko"), here / "capsule-en.png")
             finally:
                 MODULE.HERE = saved
 

@@ -66,11 +66,20 @@ inline RomProblem rom_problem(const std::filesystem::path& path) {
     if (!file.read(head.data(), 4) || rom_big_endian(head).empty()) return RomProblem::not_n64;
     return !error && size == supported_rom_size ? RomProblem::wrong_game : RomProblem::wrong_size;
 }
-// The player's message for a refused ROM, in their language (zh-Hans, zh-Hant, ja or en;
+// The player's message for a refused ROM, in their language (zh-Hans, zh-Hant, ja, en or ko;
 // anything else gets Simplified Chinese). Android's launcher says the same (RomCheck.java).
 inline std::string rom_refused_message(RomProblem problem, const std::filesystem::path& path, const std::string& locale) {
     const auto u8 = path.u8string();
     const std::string file(reinterpret_cast<const char*>(u8.data()), u8.size());
+    if (locale == "ko") {
+        const char* why = problem == RomProblem::missing
+            ? "ROM 파일을 찾을 수 없거나 읽을 수 없습니다. 파일을 옮기거나 삭제하지 않았는지 확인해 주세요."
+            : problem == RomProblem::not_n64
+            ? "N64 ROM 파일이 아닙니다. .zip이나 .7z 같은 압축 파일이라면 먼저 압축을 풀고, 안에 있는 .z64/.v64/.n64 파일을 사용해 주세요."
+            : problem == RomProblem::wrong_size ? "ROM 크기가 맞지 않습니다(32 MB여야 합니다). 파일이 손상되었거나 수정되었을 수 있습니다."
+            : "지원하는 ROM이 아닙니다. 수정하지 않은 슈퍼로봇대전64(일본판 Rev 0)가 필요합니다(번역 패치판, 수정판, 다른 게임은 사용할 수 없습니다).";
+        return std::string("Marchwind64를 실행할 수 없습니다.\n") + why + "\n\n파일: " + file;
+    }
     if (locale == "zh-Hant") {
         const char* why = problem == RomProblem::missing
             ? "找不到 ROM 檔案，或者無法讀取它。請確認檔案沒有被移動或刪除。"
@@ -118,6 +127,9 @@ inline std::string rom_needed_message(const std::string& locale, const std::file
     if (locale == "en")
         return "Unable to start Marchwind64.\nNo ROM was found and no file picker can open. Copy your Super Robot "
                "Taisen 64 ROM (Japan, Rev 0) here, under this name, then start the game again:\n" + file;
+    if (locale == "ko")
+        return "Marchwind64를 실행할 수 없습니다.\nROM을 찾을 수 없고, 파일 선택 창도 열 수 없습니다. 슈퍼로봇대전64(일본판 Rev 0) "
+               "ROM을 아래 이름으로 이 위치에 복사한 뒤 다시 실행해 주세요:\n" + file;
     if (locale == "zh-Hant")
         return "無法啟動 Marchwind64。\n找不到 ROM，也無法開啟選擇檔案的視窗。請把超級機器人大戰 64（日版 Rev 0）的 ROM "
                "以下面的檔名複製到這裡，然後重新啟動：\n" + file;
@@ -132,6 +144,7 @@ inline std::string rom_choose_again(const std::string& locale, bool remembered =
         return remembered ? "ROM をもう一度選んでください。セーブデータは変更されていません。" : "別のファイルを選ぶか、キャンセルしてください。";
     if (locale == "en") return remembered ? "Select the ROM again; saves are unchanged." : "Select another file or Cancel.";
     if (locale == "zh-Hant") return remembered ? "請重新選擇 ROM，存檔不受影響。" : "請選擇其他檔案，或者取消。";
+    if (locale == "ko") return remembered ? "ROM을 다시 선택해 주세요. 세이브는 변경되지 않았습니다." : "다른 파일을 선택하거나 취소해 주세요.";
     return remembered ? "请重新选择 ROM，存档不受影响。" : "请选择其他文件，或者取消。";
 }
 

@@ -23,17 +23,22 @@ import urllib.parse
 HERE = Path(__file__).resolve().parent          # <game>/steam
 LAUNCHER = HERE.parent / 'marchwind64.sh'
 OLD_LAUNCHER = HERE.parent / 'srw64.sh'           # the launcher's name before Marchwind64
-NAMES = {'zh-Hans': '超级机器人大战64', 'zh-Hant': '超級機器人大戰64', 'en': 'Super Robot Wars 64', 'ja': 'スーパーロボット大戦64'}
+NAMES = {'zh-Hans': '超级机器人大战64', 'zh-Hant': '超級機器人大戰64', 'en': 'Super Robot Wars 64', 'ja': 'スーパーロボット大戦64',
+         'ko': '슈퍼로봇대전64'}
 FIRST_LOCALE = 'zh-Hans'                        # Ordinary installation's first language; portable starts in English
 # Steam's grid names for a shortcut's app id, from the files steam_art.py writes:
 # capsule, wide and logo in each game language (capsule-<locale>.png), hero and icon shared.
 ARTWORK = {'capsule': '{}p.png', 'wide': '{}.png', 'hero': '{}_hero.png',
            'logo': '{}_logo.png', 'icon': '{}_icon.png'}
+# A language without its own wordmark shows the one it stands on (Korean on English,
+# docs/design/korean.md): steam_art.py draws en, ja, zh-Hans and zh-Hant only.
+ARTWORK_FALLBACK = {'ko': 'en'}
 
 
 def artwork_source(kind: str, locale: str) -> Path | None:
-    """The file for one kind of artwork: the game language's, else the shared one."""
-    for name in (f'{kind}-{locale}.png', f'{kind}.png'):
+    """The file for one kind of artwork: the game language's, its fallback's, else the shared one."""
+    locales = [locale] + ([ARTWORK_FALLBACK[locale]] if locale in ARTWORK_FALLBACK else [])
+    for name in [f'{kind}-{each}.png' for each in locales] + [f'{kind}.png']:
         if (HERE / name).is_file():
             return HERE / name
     return None

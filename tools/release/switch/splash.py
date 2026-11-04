@@ -33,7 +33,14 @@ STEPS = {
            '初回起動：シナリオのテキストを整理しています', '起動しています', 'シナリオとテキストを読み込んでいます', '画面を準備しています', 'インターフェースを準備しています', 'ゲームを起動しています'],
     'en': ['First launch: checking the ROM (about half a minute)', 'First launch: importing text and pictures from the ROM',
            'First launch: arranging the story text', 'Starting', 'Loading the story and text', 'Preparing the screens', 'Preparing the interface', 'Starting the game'],
+    'ko': ['첫 실행: ROM 확인 중(약 30초 소요)', '첫 실행: ROM에서 텍스트와 이미지 가져오는 중', '첫 실행: 스토리 텍스트 정리 중',
+           '시작하는 중', '스토리와 텍스트 불러오는 중', '화면 준비 중', '인터페이스 준비 중', '게임 시작 중'],
 }
+# Each language's face for the strip (Hangul from Droid Sans Fallback, as in the game).
+FONTS = {'zh-Hant': 'HarmonyOS_Sans_TC.ttf', 'ko': 'DroidSansFallback.ttf'}
+# A language without its own wordmark shows the one it stands on (Korean on English,
+# docs/design/korean.md): steam_art.py draws en, ja, zh-Hans and zh-Hant only.
+LOGO_FALLBACK = {'ko': 'en'}
 
 
 def base(locale: str) -> Image.Image:
@@ -51,7 +58,7 @@ def base(locale: str) -> Image.Image:
     for x in range(-HEIGHT, WIDTH + HEIGHT, 170):
         draw.line([(x, HEIGHT), (x + HEIGHT * 0.45, 0)], fill=(255, 255, 255, 22), width=2)
     picture = Image.alpha_composite(picture.convert('RGBA'), lines)
-    logo = Image.open(ART / f'logo-{locale}.png').convert('RGBA')
+    logo = Image.open(ART / f'logo-{LOGO_FALLBACK.get(locale, locale)}.png').convert('RGBA')
     width = 820
     logo = logo.resize((width, round(logo.height * width / logo.width)), Image.LANCZOS)
     picture.alpha_composite(logo, ((WIDTH - logo.width) // 2, 300 - logo.height // 2))
@@ -72,7 +79,7 @@ def strip(text: str, font: ImageFont.FreeTypeFont) -> Image.Image:
 def make(out: Path, fonts: Path) -> None:
     out.mkdir(parents=True, exist_ok=True)
     for locale, steps in STEPS.items():
-        font = ImageFont.truetype(str(fonts / ('HarmonyOS_Sans_TC.ttf' if locale == 'zh-Hant' else 'HarmonyOS_Sans_SC.ttf')), 30)
+        font = ImageFont.truetype(str(fonts / FONTS.get(locale, 'HarmonyOS_Sans_SC.ttf')), 30)
         base(locale).save(out / f'base-{locale}.png', optimize=True)
         for n, text in enumerate(steps):
             strip(text, font).save(out / f'step-{locale}-{n}.png', optimize=True)
