@@ -274,6 +274,8 @@ jobs:
           Copy-Item -Recurse build/fonts "$out/fonts"
           Copy-Item -Recurse content/dialogue "$out/dialogue"
           Copy-Item -Recurse content/stages "$out/stages"
+          .venv/Scripts/python.exe tools/release/language_art.py "$out/art"
+          if ($LASTEXITCODE -ne 0) { exit 1 }
           Copy-Item tools/release/windows/Marchwind64.cmd $out
           # RecompLauncher's description of the program and its settings (docs/guide/release.md).
           Copy-Item tools/release/recomplauncher.json $out

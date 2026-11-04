@@ -14,6 +14,9 @@ std::vector<FontSource> game_font_sources(const std::string& locale,int weight=0
 // for Traditional Chinese (tools/content/build_title_fonts.py).
 // Without it in SRW64_FONT_DIR the cards keep the plain chain.
 std::vector<FontSource> title_font_sources(const std::string& locale,int weight=0);
+// The battle banners' face ahead of the plain chain: Gmarket Sans Bold for Korean
+// (SRW64BannerKO, tools/content/build_korean_fonts.py); the plain chain for the others.
+std::vector<FontSource> banner_font_sources(const std::string& locale,int weight=0);
 std::filesystem::path game_font_path();
 // A language package's faces (docs/design/mod-language-packs.md): the chains above put its
 // text faces (then, on the cards, its title face first) in front of its fallback's chain.

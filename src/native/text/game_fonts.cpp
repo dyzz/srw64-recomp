@@ -25,12 +25,13 @@ std::optional<PackageFonts> package(const std::string& locale) {
         if(found!=package_fonts.end())return found->second;
     }
     // Korean, ours (docs/design/korean.md), as a package's language would have it: Droid Sans
-    // Fallback (Apache-2.0, content/fonts) in front of the English faces.
+    // Fallback (Apache-2.0, content/fonts) in front of the English faces, and the chapter
+    // title cards' brush face, a subset of Nanum Brush Script (tools/content/build_korean_fonts.py).
     const char* dir=std::getenv("SRW64_FONT_DIR");
     if(locale!="ko" || std::getenv("SRW64_TEXT_FONT") || !dir || !*dir)return std::nullopt;
-    const auto path=utf8_path(dir)/"DroidSansFallback.ttf";
+    const auto path=utf8_path(dir)/"DroidSansFallback.ttf",title=utf8_path(dir)/"SRW64BrushKO.ttf";
     if(!std::filesystem::is_regular_file(path))throw std::runtime_error("Missing font "+path.string()+": run tools/content/prepare_fonts.py");
-    return PackageFonts{"en",{path},{}};
+    return PackageFonts{"en",{path},std::filesystem::is_regular_file(title)?title:std::filesystem::path()};
 }
 std::vector<FontSource> packaged(const std::filesystem::path& dir,const std::string& locale,int weight) {
     std::vector<std::string> names;
@@ -121,6 +122,15 @@ std::vector<FontSource> title_font_sources(const std::string& locale,int weight)
     // Ma Shan Zheng has Simplified characters only: Traditional cards take Bakudai's brush
     // (SRW64BrushTC, tools/content/build_title_fonts.py).
     const auto path=utf8_path(dir)/(locale=="ja"?"SRW64ChapterTitle.ttf":locale=="zh-Hant"?"SRW64BrushTC.ttf":"MaShanZheng-Regular.ttf");
+    if(std::filesystem::is_regular_file(path))sources.insert(sources.begin(),{path,0,0});
+    return sources;
+}
+std::vector<FontSource> banner_font_sources(const std::string& locale,int weight) {
+    auto sources=game_font_sources(locale,weight);
+    // The Korean battle banners: a subset of Gmarket Sans Bold (tools/content/build_korean_fonts.py).
+    const char* dir=std::getenv("SRW64_FONT_DIR");
+    if(locale!="ko" || std::getenv("SRW64_TEXT_FONT") || !dir || !*dir)return sources;
+    const auto path=utf8_path(dir)/"SRW64BannerKO.ttf";
     if(std::filesystem::is_regular_file(path))sources.insert(sources.begin(),{path,0,0});
     return sources;
 }

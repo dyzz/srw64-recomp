@@ -13,5 +13,6 @@
   },
   "bundled": ["SRW64Symbols.ttf", "LICENSE-SRW64Symbols.txt", "SRW64Prompts.ttf", "LICENSE-SRW64Prompts.txt",
               "SRW64ChapterTitle.ttf", "LICENSE-SRW64ChapterTitle.txt", "MaShanZheng-Regular.ttf", "LICENSE-MaShanZheng.txt",
-              "SRW64BrushTC.ttf", "LICENSE-SRW64BrushTC.txt", "DroidSansFallback.ttf", "LICENSE-DroidSansFallback.txt"]
+              "SRW64BrushTC.ttf", "LICENSE-SRW64BrushTC.txt", "DroidSansFallback.ttf", "LICENSE-DroidSansFallback.txt",
+              "SRW64BrushKO.ttf", "LICENSE-SRW64BrushKO.txt", "SRW64BannerKO.ttf", "LICENSE-SRW64BannerKO.txt"]
 }

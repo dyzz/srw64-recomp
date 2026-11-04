@@ -23,6 +23,8 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_probe import ROOT, SDK, MIN_SDK, ARCHIVES, latest, cmake_bin, ndk, llvm, run, sources, java, package  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from language_art import copy_language_art  # noqa: E402
 
 LIBRASHADER = ROOT / 'build/recomp/thirdparty/librashader/android/librashader.so'
 # Built-in filters a phone GPU cannot run at full speed: crt-lottes samples so much per
@@ -101,6 +103,8 @@ def stage_assets(build: Path, deps: Path) -> Path:
         shutil.copyfile(path, target)
     # Each stage's metadata and the status rules (docs/design/stage-info.md).
     shutil.copytree(ROOT / 'content/stages', resources / 'stages')
+    # The game's own pictures for a language (the Korean title logo).
+    copy_language_art(resources / 'art')
     filters = ROOT / 'build/filters'
     shutil.copytree(filters, resources / 'filters', ignore=shutil.ignore_patterns('.commit', *PHONE_SKIPS))
     notice = resources / 'filters/NOTICE.txt'

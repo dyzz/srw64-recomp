@@ -267,7 +267,7 @@ def chapter_titles(locale: str) -> str:
                    if re.fullmatch(r"base:t00_00(2[89]\d|3\d\d|4[01]\d|42[0-3])", row["key"]))
 
 
-def subset_font(source: Path, output: Path, text: str, rename: str | None = None) -> int:
+def subset_font(source: Path, output: Path, text: str, rename: str | None = None, origin: str = "Bakudai 1.49") -> int:
     options = subset.Options()
     options.name_IDs = ["*"]
     options.layout_features = ["*"]
@@ -286,7 +286,7 @@ def subset_font(source: Path, output: Path, text: str, rename: str | None = None
         name.setName(rename, 1, 3, 1, 0x409)
         name.setName(rename + " Regular", 4, 3, 1, 0x409)
         name.setName(rename.replace(" ", "") + "-Regular", 6, 3, 1, 0x409)
-        name.setName(rename.replace(" ", "") + "-Regular; subset of Bakudai 1.49", 3, 3, 1, 0x409)
+        name.setName(rename.replace(" ", "") + "-Regular; subset of " + origin, 3, 3, 1, 0x409)
         name.setName("Regular", 2, 3, 1, 0x409)
     subset.save_font(font, str(output), options)
     return len(set(text))

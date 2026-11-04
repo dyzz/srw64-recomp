@@ -114,6 +114,12 @@ std::vector<std::unique_ptr<Asset>> assets;
 std::map<std::string, int> by_key;
 std::vector<Image> images;
 std::mutex image_mutex;                      // images: the art pack and the ROM register on different threads
+// The game's own pictures for a language (the Korean title logo, docs/design/korean.md): in
+// art/language-images.json beside the program, art/<locale>/<file> each. Drawn in either
+// image mode; `file` is the HD pack's name of the picture, which a language package's
+// art/<locale>/ uses too.
+struct OwnImage { Image image; std::string file; };
+std::vector<OwnImage> own_images;
 std::mutex asset_mutex;                      // assets, levels and states cross threads
 std::deque<int> queue;
 std::condition_variable queue_ready;
@@ -151,6 +157,25 @@ uint16_t half(const uint8_t* rdram, uint32_t address) {
 uint8_t byte(const uint8_t* rdram, uint32_t address) { return rdram[(address & 0x1FFFFFFF) ^ 3]; }
 
 bool hd_enabled() { return !presentation::image_mode.enabled() || presentation::image_mode.current() == 1; }
+// The game's own picture of this sprite in the reading language, unless a language package
+// gives one (drawn by the HD pack's picture in HD image mode): the picture and its asset.
+std::pair<const Image*, int> own_picture(const SceneId& id) {
+#ifdef SRW64_NATIVE_DIALOGUE
+    const auto locale = localization::snapshot()->locale;
+    std::lock_guard lock(image_mutex);
+    for (const auto& own : own_images) {
+        const auto& image = own.image;
+        if (image.scene != id.scene || image.atlas != id.atlas || image.palette != id.palette || !image.frames.count(id.frame)) continue;
+        const auto at = image.localized.find(locale);
+        if (at == image.localized.end()) return {};
+        if (hd_enabled() && !mod_languages::art(locale, own.file).empty()) return {};
+        return {&image, at->second};
+    }
+#else
+    (void)id;
+#endif
+    return {};
+}
 
 void note(const std::string& key, json fields) {
     std::lock_guard lock(log_mutex);
@@ -812,6 +837,43 @@ void configure(const std::filesystem::path& art_directory, const std::filesystem
         for (const auto& row : spec.value("scenes", json::array()))
             scene_thumbs[row.at("key").get<std::string>()] = (art_directory / row.at("file").get<std::string>()).string();
     }
+    // The game's own pictures for a language, whatever the image mode. The Switch reads
+    // pictures only as prepare-hd makes them, which the package does not do for these yet.
+#ifndef __SWITCH__
+    if (const char* dir = std::getenv("SRW64_LANGUAGE_ART"); dir && *dir) {
+        const std::filesystem::path root = std::filesystem::path(std::u8string(reinterpret_cast<const char8_t*>(dir)));
+        std::error_code error;
+        if (std::filesystem::is_regular_file(root / "language-images.json", error)) {
+            const json spec = json::parse(app::read_text(root / "language-images.json", 1u << 20));
+            if (spec.at("schema") != "srw64.language-images.v1") throw std::runtime_error("Unsupported language image specification");
+            size_t count = 0;
+            std::lock_guard lock(image_mutex);
+            own_images.clear();
+            for (const auto& row : spec.at("images")) {
+                OwnImage own;
+                Image& image = own.image;
+                image.scene = row.at("scene"); image.atlas = row.at("atlas"); image.palette = row.at("palette");
+                for (const auto& frame : row.at("frames")) image.frames.insert(frame.get<uint8_t>());
+                for (int i = 0; i < 4; ++i) image.uv[i] = row.at("uv")[i].get<float>();
+                image.wrap = row.at("wrap");
+                own.file = row.at("file").get<std::string>();
+                for (const auto& folder : std::filesystem::directory_iterator(root, error)) {
+                    const auto file = folder.path() / own.file;
+                    if (!folder.is_directory(error) || !std::filesystem::is_regular_file(file, error)) continue;
+                    auto asset = std::make_unique<Asset>();
+                    asset->file = file;
+                    asset->key = "image:own:" + folder.path().filename().string() + ":" + own.file;
+                    std::lock_guard assets_lock(asset_mutex);
+                    image.localized[folder.path().filename().string()] = int(assets.size());
+                    assets.push_back(std::move(asset));
+                    ++count;
+                }
+                own_images.push_back(std::move(own));
+            }
+            fprintf(stderr, "SRW64_LANGUAGE_IMAGES loaded %zu picture(s)\n", count);
+        }
+    }
+#endif
     if (installed) return;
     installed = true;
     if (!output.empty()) srw64::open_run_log(log,output / "scene-sprites.jsonl");
@@ -899,6 +961,10 @@ void rewrite(uint8_t* rdram, const SceneDraw& draw) {
         record.text = true;
         record.anchor = job.anchor;
         std::copy(std::begin(job.tint), std::end(job.tint), record.color);
+    } else if (const auto [own, asset] = own_picture(id); own) {
+        record.asset = asset;
+        record.wrap = own->wrap;
+        std::copy(std::begin(own->uv), std::end(own->uv), record.uv);
     } else {
         if (!hd_enabled()) return;
         std::lock_guard lock(image_mutex);

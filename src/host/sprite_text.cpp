@@ -99,16 +99,17 @@ std::vector<std::u16string> paragraphs(std::string text) {
 }
 
 // Fonts for the worker thread only, apart from the dialogue's own FontSets.
-std::shared_ptr<const text::FontSet> fonts(const std::string& locale, bool bold, bool title) {
+std::shared_ptr<const text::FontSet> fonts(const std::string& locale, bool bold, bool title, bool banner = false) {
     static std::mutex mutex;
-    static std::map<std::tuple<std::string, bool, bool>, std::shared_ptr<const text::FontSet>> cache;
+    static std::map<std::tuple<std::string, bool, bool, bool>, std::shared_ptr<const text::FontSet>> cache;
     std::lock_guard lock(mutex);
-    auto& set = cache[{locale, bold, title}];
+    auto& set = cache[{locale, bold, title, banner}];
     if (set) return set;
     // Bold is the variable fonts' Bold instance; the symbol font stays in the chain.
     const int weight = bold ? 700 : 0;
     return set = std::make_shared<const text::FontSet>(title ? text::title_font_sources(locale, weight)
-                                                             : text::game_font_sources(locale, weight));
+                                                       : banner ? text::banner_font_sources(locale, weight)
+                                                                : text::game_font_sources(locale, weight));
 }
 
 // The Japanese cards' own lettering alone (title_font_sources puts it first), for the
@@ -174,7 +175,7 @@ Style menu_style(bool press) {
 }
 Style banner_style(bool badge, const std::string& locale) {
     Style s;
-    s.bold = true;
+    s.bold = true; s.banner = true;
     s.size = badge ? (localization::style(locale) == "en" ? 7.5 : 12) : 11; s.min_size = 6; s.pitch = badge ? 1.1 : 1.3;
     s.max_width = badge ? 26 : 200;
     const float green_top[3] = {.90f, 1.f, .90f}, green_bottom[3] = {.29f, .87f, .55f};
@@ -284,7 +285,7 @@ std::string record(const uint8_t* rdram, uint16_t id) {
 // Hash for cache keys: the style's numbers and the text.
 std::string style_key(const Style& s) {
     char buffer[160];
-    std::snprintf(buffer, sizeof buffer, "%d%d%d%d/%.2f/%.2f/%.3f/%.1f/%.1f/%.1f/%.2f/%.2f/%.2f/%.2f/%.2f", s.bold, s.center, s.title, int(s.origin), s.size,
+    std::snprintf(buffer, sizeof buffer, "%d%d%d%d%d/%.2f/%.2f/%.3f/%.1f/%.1f/%.1f/%.2f/%.2f/%.2f/%.2f/%.2f", s.bold, s.center, s.title, s.banner, int(s.origin), s.size,
                   s.min_size, s.pitch, s.width, s.max_width, s.max_height, s.outline_px, s.shadow_px, s.outline_alpha, s.shadow_alpha,
                   s.condense_min);
     return buffer;
@@ -442,7 +443,7 @@ sprites::TextImage render(const text::FontSet& set, const Style& style, const st
 }
 
 sprites::TextImage draw(const Style& style, const std::string& locale, const std::string& body, double density) {
-    return render(*fonts(locale, style.bold, style.title), style, locale, body, density);
+    return render(*fonts(locale, style.bold, style.title, style.banner), style, locale, body, density);
 }
 
 namespace {

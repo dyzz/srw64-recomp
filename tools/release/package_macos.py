@@ -20,6 +20,9 @@ import subprocess
 import sys
 import tempfile
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from language_art import copy_language_art  # noqa: E402
+
 MACHO_MAGIC = {bytes.fromhex(value) for value in (
     "feedface", "cefaedfe", "feedfacf", "cffaedfe", "cafebabe", "bebafeca", "cafebabf", "bfbafeca")}
 EXECUTABLE = "srw64-gfx-host"
@@ -208,6 +211,8 @@ def stage_bundle(binary: Path, output: Path, *, version: str = "0.3.5", minimum:
             # Each stage's metadata and the status rules, beside it in content/ (docs/design/stage-info.md).
             if (source.parent / "stages").is_dir():
                 shutil.copytree(source.parent / "stages", resources / "stages")
+            # The game's own pictures for a language (the Korean title logo).
+            copy_language_art(resources / "art")
         if filters is not None:
             # The built-in RetroArch filters (tools/content/fetch_filters.py), listed by the settings.
             shutil.copytree(filters.resolve(strict=True), resources / "filters", symlinks=False,

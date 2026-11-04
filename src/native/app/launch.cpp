@@ -285,7 +285,9 @@ int run_standalone(const Options& requested,const GameIdentity& game,const HostM
         // HarmonyOS Sans and the symbol font shipped in the bundle.
         {"SRW64_FONT_DIR",bundled_resource("fonts").string()},
         // Each stage's metadata and the status rules, for the stage info page (docs/design/stage-info.md).
-        {"SRW64_STAGE_META",bundled_resource("stages").string()}})
+        {"SRW64_STAGE_META",bundled_resource("stages").string()},
+        // The game's own pictures for a language (the Korean title logo, native_sprite.cpp).
+        {"SRW64_LANGUAGE_ART",bundled_resource("art").string()}})
         set_environment(key,value);
     // Asked for on the command line, unlike the variables cleared above: the debug interface.
     if(options.debug)set_environment("SRW64_DEBUG","1");
@@ -387,6 +389,7 @@ int run_prepared(const Options& options,const GameIdentity& game,const HostMain&
         {"SRW64_RESOLUTION_SCALE",std::to_string(about.value("resolution_scale",2u))},
         {"SRW64_FONT_DIR",bundled_resource("fonts").string()},
         {"SRW64_STAGE_META",bundled_resource("stages").string()},
+        {"SRW64_LANGUAGE_ART",bundled_resource("art").string()},
         // The original's 60 Hz: the consoles' displays are 60 Hz, and the 120 Hz scheduler
         // (docs/design/120hz-scheduler.md) has not been tried on them. Speeds go to 2x.
         {"SRW64_VI_RATE","60"}})

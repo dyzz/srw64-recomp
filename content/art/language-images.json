@@ -1,0 +1,7 @@
+{
+  "schema": "srw64.language-images.v1",
+  "note": "The game's own pictures for a language, drawn in either image mode in place of the sprite (native_sprite.cpp): art/<locale>/<file> beside the program. `file` is the HD pack's name for the picture, which a language package's art/<locale>/ uses too.",
+  "images": [
+    {"scene": 683, "atlas": 681, "palette": 682, "frames": [0], "uv": [0, 0, 1, 1], "wrap": false, "file": "scene-images/title-logo.png"}
+  ]
+}

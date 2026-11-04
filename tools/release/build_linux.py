@@ -23,6 +23,9 @@ import re
 import shutil
 import subprocess
 import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from language_art import copy_language_art  # noqa: E402
 import tarfile
 import tomllib
 
@@ -223,6 +226,8 @@ def package(binary: Path, prefix: Path, hd: Path | None = None) -> Path:
     shutil.copytree(ROOT / 'build/filters', stage / 'filters', ignore=shutil.ignore_patterns('.commit'))
     # Each stage's metadata and the status rules (docs/design/stage-info.md).
     shutil.copytree(ROOT / 'content/stages', stage / 'stages')
+    # The game's own pictures for a language (the Korean title logo).
+    copy_language_art(stage / 'art')
     source_text = ROOT / 'content/dialogue'
     for path in sorted(source_text.rglob('*.txt')):
         target = stage / 'dialogue' / path.relative_to(source_text)

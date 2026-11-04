@@ -33,9 +33,12 @@ import json
 import secrets
 from pathlib import Path
 import shutil
+import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'tools/release'))
+from language_art import copy_language_art  # noqa: E402
 BUILD = ROOT / 'build/recomp/switch-build'
 PACKAGE = ROOT / 'build/recomp/switch-package/Marchwind64'
 REMOTE = '/switch/Marchwind64'
@@ -65,6 +68,8 @@ def stage(prepared: bool = True) -> None:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
     shutil.copytree(ROOT / 'content/stages', PACKAGE / 'stages')
+    # The game's own pictures for a language (the Korean title logo).
+    copy_language_art(PACKAGE / 'art')
     # The data from the ROM, when it was prepared on this computer: without it the console
     # makes it from rom.z64 on its first launch (about half a minute, app/console_data.hpp).
     data = ROOT / 'build/recomp/switch-data/game'

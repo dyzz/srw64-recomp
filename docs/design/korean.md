@@ -43,7 +43,11 @@
 
 没译的不要抄英文进去，留空就显示英文。还缺的：关卡情报页约 1,700 条、系统弹窗等。每次发版前导出韩文缺失清单。
 
-他要的字体：正文 Droid Sans Fallback（已带）；章节标题卡 Nanum Brush Script（SIL OFL 1.1，Google Fonts）；战斗横幅 Gmarket Sans Bold（他说是 OFL 1.1，接入时核对字体自带的许可证）。旌善阿里郎体不能再分发，他也没要。
+他要的字体：正文 Droid Sans Fallback（已带）；章节标题卡 Nanum Brush Script；战斗横幅 Gmarket Sans Bold。旌善阿里郎体不能再分发，他也没要。
+
+**字体与 logo（11-04）**：两种字体按用户要求只带子集，`tools/content/build_korean_fonts.py` 从官方文件（Google Fonts 的 NanumBrushScript-Regular.ttf，sha256 27ceaf57…；corp.gmarket.com 的 GmarketSansTTF.zip 里的 Bold）截出 KS X 1001 的 2,350 个韩文音节、全部韩文章节标题（或横幅文字）、ASCII 和标点。两者都是 SIL OFL 1.1 且有保留字体名（Nanum／NanumBrush、Gmarket Sans Font），子集算修改版，所以改名为 SRW64 Brush KO、SRW64 Banner KO，版权和许可证记录保留，许可证文本在 content/fonts/LICENSE-SRW64BrushKO.txt、LICENSE-SRW64BannerKO.txt。宿主：`game_fonts.cpp` 内置韩文的标题字体为 SRW64BrushKO（缺的字由 Droid 补），`banner_font_sources()` 让战斗横幅与反应徽章（`sprite_text.cpp` 的 `Style::banner`）先用 SRW64BannerKO。
+
+logo 随游戏发布：`content/art/language-images.json` 列出可按语言换的图（标题 logo 的场景/图集/调色板/帧和它在 HD 包里的文件名），`content/art/<语言>/<文件>` 是图本身；打包时 `tools/release/language_art.py` 把它们复制到程序旁的 `art/`（Windows CI、Linux、安卓、macOS、Switch），启动器用 `SRW64_LANGUAGE_ART` 交给宿主。`native_sprite.cpp` 在原版和 HD 两种图像模式下都画它，语言包自己给的图（HD 模式下）优先。Switch 只读 prepare-hd 做好的纹理，暂不加载这些图，Switch 上仍是日文 logo。
 
 ## 5. 进度
 
@@ -62,6 +66,6 @@
 **合并前要做**：
 
 - 实机：Mac、Windows、安卓、Switch 各开一次韩文；首次启动按系统语言；设置与 F7 切换；名牌；排版审计带 `ko`。
-- 韩文 logo 随游戏发布、原版与 HD 模式都显示（logo 已在 content/art/ko，显示代码待做）；章节标题卡字体 Nanum Brush Script、战斗横幅 Gmarket Sans Bold；游戏内制作人员名单、官网与仓库署名 테오 (jung5441) 和 CC BY 4.0。
+- 实机看韩文 logo（原版与 HD 模式）、章节标题卡、战斗横幅；Switch 上的韩文 logo；游戏内制作人员名单、官网与仓库署名 테오 (jung5441) 和 CC BY 4.0。
 - 文档：官网语言包页和 `docs/guide/language-mods/` 的例子从韩文换成别的语言；官网 MOD 下载页撤下韩文演示包；issue #17 跟进。
 - 小处：Switch 启动画面的提示（`tools/release/switch/splash.py`）、Steam 快捷方式名字（`add_to_steam.py`、`steam_art.py`）、系统弹窗的韩文。
