@@ -10,7 +10,7 @@ A mod package is a folder, or that folder zipped into one `.srw64mod` file. It h
 
 **Music and battle voices, numbers, names, portraits, map icons, campaigns, story events and language packages take effect**: replacing songs, choosing which song a pilot or unit fights to and voicing the battle lines, as described in [Music mods](../mod-music/); changing the numbers of units, pilots and weapons, as described in [Number mods](../mod-data/); and renaming, new portraits and map icons, as described in [Name, portrait and map icon mods](../mod-names/); events added to the original stages, characters joining and story branches changing, as described in [Story mods](../mod-story/); and campaigns chained from stages you arrange, as described in [Campaign mods](../mod-campaign/); and adding a reading language or replacing an existing one's text, as described in [Language package mods](../mod-language/). Other art will follow; the package format already has a place for them.
 
-Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2, story mods and language packages need 0.5.3, and the Switch needs 0.5.4.
+Mods need version 0.5.1 or later; everything beyond music and terrain ranks needs 0.5.2, story mods and language packages need 0.5.3, and the Switch needs 0.5.3.1.
 
 ## Installing
 
