@@ -18,8 +18,8 @@
 </p>
 
 Marchwind 64 is an unofficial native recompilation project for Super Robot Wars 64.
-It runs natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English
-and Chinese translations and widescreen support, plus an optional HD art pack.
+It runs natively on Windows, macOS, Linux, Steam Deck, Android and Nintendo Switch, with full English,
+Chinese and Korean translations and widescreen support, plus an optional HD art pack.
 
 > **Requires your own Japanese ROM** (Super Robot Taisen 64, Rev 0). Neither this
 > repository nor the downloads contain any game data. See
@@ -182,9 +182,9 @@ each screen.
 - **Runs natively.** The N64 program is recompiled into native code, with graphics
   rendered by RT64. After installation, add your ROM following the setup instructions
   to start playing.
-- **Full text in three languages.** Full English and Chinese translations alongside
-  the original Japanese. Character, unit and weapon names follow common usage in each
-  language.
+- **Full text in four languages.** Full English, Chinese and Korean translations
+  alongside the original Japanese; the Korean translation is by 테오 (jung5441).
+  Character, unit and weapon names follow common usage in each language.
 - **Extra save slots and autosaves.** More save slots than the original, with
   autosaves at key points. Export cartridge saves for use with ares, Project64,
   RetroArch and other emulators.
@@ -309,6 +309,10 @@ Built on [N64Recomp](https://github.com/N64Recomp/N64Recomp),
 [provenance](docs/guide/provenance.md). The interface and dialogue use the HarmonyOS Sans
 fonts, distributed unmodified under their licence (`content/fonts`), and button icons
 adapted from Yukari “Shinmera” Hafner’s PromptFont under the SIL Open Font License.
+The Korean translation and Korean title logo are by [테오 (jung5441)](https://github.com/jung5441),
+licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); the Korean text uses
+Droid Sans Fallback (Apache License 2.0) and subsets of Nanum Brush Script and Gmarket Sans
+(SIL Open Font License, renamed SRW64 Brush KO and SRW64 Banner KO).
 
 This is an unofficial fan project. Super Robot Wars and all related characters, mechanics
 and trademarks belong to their respective rights holders.

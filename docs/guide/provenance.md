@@ -131,6 +131,8 @@ EN 有关，但具体界面未经运行确认。
 
 原生字体是 HarmonyOS Sans 2.040（华为官方包里的原样文件与协议放在 `content/fonts/`，许可允许随软件原样再分发、不许单独分发或修改；`tools/content/prepare_fonts.py` 按哈希核对后放进应用包）和仓库里的符号字体 `content/fonts/SRW64Symbols.ttf`、按键图标字体 `content/fonts/SRW64Prompts.ttf`（Yukari “Shinmera” Hafner 的 PromptFont 改编，SIL OFL 1.1，许可与说明在 `content/fonts/LICENSE-SRW64Prompts.txt`，由 `tools/content/build_prompt_font.py` 从 Zelda64Recomp 带的 PromptFont 生成）。官方包来自[华为开发者设计资源页](https://developer.huawei.com/consumer/cn/design/resource/)，本地副本放 `assets/fonts/HarmonyOS-Sans-2.040.zip`，SHA-256 记在 `content/fonts/harmonyos-sans.json`。
 
+韩文（`ko` 分支，docs/design/korean.md）：台词、界面词条、名称记录和韩文标题 logo（`content/dialogue/ko/`、`content/locales/ko.json`、`content/art/ko/`）由 테오（jung5441，github.com/jung5441）提供，CC BY 4.0，2026-11-04 附在 jung5441/MARCHWIND64_Korean_patch issue #1。韩文字体：`content/fonts/DroidSansFallback.ttf`（AOSP，Apache-2.0，原样）；`SRW64BrushKO.ttf` 是 Google Fonts `ofl/nanumbrushscript/NanumBrushScript-Regular.ttf`（SHA-256 27ceaf57…1a31）的子集，`SRW64BannerKO.ttf` 是 corp.gmarket.com/fonts 的 `GmarketSansTTF.zip`（SHA-256 a2cc0ab9…ae02）里 `GmarketSansTTFBold.ttf` 的子集，都由 `tools/content/build_korean_fonts.py` 截取并改名（SIL OFL 1.1 的保留字体名），许可证在同目录的 `LICENSE-SRW64BrushKO.txt`、`LICENSE-SRW64BannerKO.txt`。
+
 ## Libretro 核心
 
 原生 SRAM 对照工具使用核心报告的提交 `98c1b0d` 对应源码审查聚合保存区布局：

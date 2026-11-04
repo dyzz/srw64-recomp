@@ -393,6 +393,8 @@
     "settings_about_font": "UI とセリフには HarmonyOS Sans フォントを使用しています。ライセンスに従い、改変せずに同梱しています。",
     "settings_about_prompts_title": "ボタンアイコン：PromptFont",
     "settings_about_prompts": "ヒントのボタンアイコンは Yukari “Shinmera” Hafner による PromptFont（shinmera.com/promptfont）を SIL Open Font License に従い SRW64 Prompts フォントとして改変したものです。",
+    "settings_about_korean_title": "韓国語翻訳：테오 (jung5441)",
+    "settings_about_korean": "韓国語のセリフ・UI テキスト・タイトルロゴは 테오（jung5441、github.com/jung5441）によるもので、CC BY 4.0（creativecommons.org/licenses/by/4.0）で提供されています。韓国語の文字には Droid Sans Fallback（Apache License 2.0）と、Nanum Brush Script・Gmarket Sans のサブセット（SIL Open Font License 1.1、SRW64 Brush KO・SRW64 Banner KO に改名）を使用しています。",
     "settings_about_librashader": "フィルターは librashader で動かしています（Mozilla Public License 2.0、ライセンスはアプリに同梱）。 プリセットは選んだ RetroArch のシェーダーで、それぞれ作者のライセンスに従います。",
     "settings_about_tagline": "スーパーロボット大戦64 の非公式ネイティブ再コンパイル版",
     "settings_about_links": "リンク",

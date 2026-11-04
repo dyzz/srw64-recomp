@@ -393,6 +393,8 @@
     "settings_about_font": "The interface and dialogue use the HarmonyOS Sans typeface, distributed unmodified with this software under its licence.",
     "settings_about_prompts_title": "Button icons: PromptFont",
     "settings_about_prompts": "The button icons in the hints come from PromptFont by Yukari “Shinmera” Hafner (shinmera.com/promptfont), adapted as the SRW64 Prompts font under the SIL Open Font License.",
+    "settings_about_korean_title": "Korean translation: 테오 (jung5441)",
+    "settings_about_korean": "The Korean dialogue, interface text and title logo are by 테오 (jung5441, github.com/jung5441), under CC BY 4.0 (creativecommons.org/licenses/by/4.0). The Korean text uses Droid Sans Fallback (Apache License 2.0) and subsets of Nanum Brush Script and Gmarket Sans (SIL Open Font License 1.1), renamed SRW64 Brush KO and SRW64 Banner KO.",
     "settings_about_librashader": "Filters run on librashader (Mozilla Public License 2.0; the licence ships with the app). The presets are the RetroArch shaders you choose, each under its authors' licence.",
     "settings_about_tagline": "An unofficial native recompilation of Super Robot Wars 64",
     "settings_about_links": "Links",

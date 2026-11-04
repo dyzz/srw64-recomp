@@ -393,6 +393,8 @@
     "settings_about_font": "界面与对白使用 HarmonyOS Sans 字体，按其许可原样随本软件分发。",
     "settings_about_prompts_title": "按键图标：PromptFont",
     "settings_about_prompts": "提示栏的按键图标取自 Yukari “Shinmera” Hafner 的 PromptFont（shinmera.com/promptfont），按 SIL 开放字体许可证改编为 SRW64 Prompts 字体。",
+    "settings_about_korean_title": "韩文翻译：테오 (jung5441)",
+    "settings_about_korean": "韩文台词、界面文字与标题 logo 由 테오（jung5441，github.com/jung5441）制作，以 CC BY 4.0（creativecommons.org/licenses/by/4.0）授权。韩文使用 Droid Sans Fallback（Apache License 2.0）以及 Nanum Brush Script、Gmarket Sans 的子集（SIL Open Font License 1.1，改名为 SRW64 Brush KO、SRW64 Banner KO）。",
     "settings_about_librashader": "滤镜由 librashader 运行（Mozilla Public License 2.0，许可证随应用附带）。 滤镜预设来自你选择的 RetroArch 着色器，各自遵循原作者的许可。",
     "settings_about_tagline": "超级机器人大战 64 的非官方原生重编译移植",
     "settings_about_links": "链接",

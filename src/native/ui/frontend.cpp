@@ -3750,6 +3750,8 @@ void settings_sync() {
             "<div class='set-about'><h2>"+label("font_credit")+"</h2><div>"+label("settings_about_font")+"</div>"
             // PromptFont asks for an attribution in the credits.
             "<h2>"+label("settings_about_prompts_title")+"</h2><div>"+label("settings_about_prompts")+"</div>"
+            // The Korean translation is CC BY 4.0, which asks for the credit and the licence.
+            "<h2>"+label("settings_about_korean_title")+"</h2><div>"+label("settings_about_korean")+"</div>"
             // librashader is MPL 2.0; its licence ships beside the app (package_macos.py).
             "<h2>librashader</h2><div>"+label("settings_about_librashader")+"</div></div>";
     }

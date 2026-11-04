@@ -393,6 +393,8 @@
     "settings_about_font": "介面與對白使用 HarmonyOS Sans 字型，按其許可原樣隨本軟體分發。",
     "settings_about_prompts_title": "按鍵圖示：PromptFont",
     "settings_about_prompts": "提示欄的按鍵圖示取自 Yukari 「Shinmera」 Hafner 的 PromptFont（shinmera.com/promptfont），按 SIL 開放字型許可證改編為 SRW64 Prompts 字型。",
+    "settings_about_korean_title": "韓文翻譯：테오 (jung5441)",
+    "settings_about_korean": "韓文臺詞、介面文字與標題 logo 由 테오（jung5441，github.com/jung5441）製作，以 CC BY 4.0（creativecommons.org/licenses/by/4.0）授權。韓文使用 Droid Sans Fallback（Apache License 2.0）以及 Nanum Brush Script、Gmarket Sans 的子集（SIL Open Font License 1.1，改名為 SRW64 Brush KO、SRW64 Banner KO）。",
     "settings_about_librashader": "濾鏡由 librashader 執行（Mozilla Public License 2.0，許可證隨應用附帶）。 濾鏡預設來自你選擇的 RetroArch 著色器，各自遵循原作者的許可。",
     "settings_about_tagline": "超級機器人大戰 64 的非官方原生重編譯移植",
     "settings_about_links": "連結",

@@ -123,7 +123,8 @@ CONTROL_ROWS = ("a", "b", "start", "l", "r", "aux_left", "aux_right", "c_left", 
                 "language", "images", "speed", "quick_load", "title_return", "screenshot", "d_up", "d_down", "d_left", "d_right", "z")
 UI_KEYS |= {f"controls_row_{row}" for row in CONTROL_ROWS}
 UI_KEYS |= {"settings_close", "settings_hint", "settings_hint_pad", "settings_presets", "settings_about_version",
-            "settings_about_font", "settings_about_prompts_title", "settings_about_prompts"}
+            "settings_about_font", "settings_about_prompts_title", "settings_about_prompts",
+            "settings_about_korean_title", "settings_about_korean"}
 # The Controls page's remapping (frontend.cpp controls_page).
 UI_KEYS |= {"controls_cancel", "controls_capture", "controls_capture_note", "controls_controller", "controls_detected", "controls_fixed", "controls_fixed_list", "controls_keyboard", "controls_keyboard_note", "controls_list_note", "controls_no_pad", "controls_reserved", "controls_reset"}
 UI_KEYS |= {"settings_touch_opacity", "settings_touch_opacity_note", "settings_touch_opacity_hidden", "settings_save_export_note_android", "settings_save_export_choose",

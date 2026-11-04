@@ -18,7 +18,7 @@
 </p>
 
 Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原生重编译项目。支持电脑、Steam Deck、
-安卓手机和 Nintendo Switch，提供中英文全文翻译和宽屏显示，另有可选的 HD 美术包。
+安卓手机和 Nintendo Switch，提供中、英、韩文全文翻译和宽屏显示，另有可选的 HD 美术包。
 
 > **需要自备日版 ROM**（スーパーロボット大戦64，Rev 0）。本仓库和下载包都不含任何游戏数据，
 > 见 [ROM 说明](https://srw64.dreamquest.club/zh/faq/#rom)。
@@ -152,7 +152,7 @@ Marchwind 64（“三月风”）是《超级机器人大战64》的非官方原
 ## 更多功能
 
 - **原生运行。** N64 程序重编译为本机代码，图形由 RT64 渲染。安装后按说明添加 ROM，即可启动游戏。
-- **中英日三语。** 游戏全文提供中文、英文翻译及日文原文。人名、机体名和武器名采用各语言的常用译名。
+- **中英韩日四语。** 游戏全文提供中文、英文、韩文翻译及日文原文，韩文翻译由 테오（jung5441）完成。人名、机体名和武器名采用各语言的常用译名。
 - **多存档栏与自动存档。** 增加存档栏，并在关键节点自动存档。卡带存档可导出，供 ares、Project64、RetroArch 等模拟器使用。
 - **宽屏不拉伸。** 支持 4:3 到 16:9 的屏幕比例。原版画面居中，两侧扩展场景，以保持比例的方式铺满屏幕。
 - **掌机、手机与手柄。** 自动识别 Steam Deck，并默认使用对应键位和大号界面。Android 提供触屏操作，仅显示当前画面需要的按键，
@@ -249,6 +249,8 @@ scripts/Play\ SRW64\ Native.command --language zh-Hans  # 开始游戏
 [N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime) 与 [RT64](https://github.com/rt64/rt64)；
 其他来源与固定版本见[来源记录](docs/guide/provenance.md)。界面与对白使用 HarmonyOS Sans 字体，按其许可原样随软件分发
 （`content/fonts`）；按键图标改编自 Yukari “Shinmera” Hafner 的 PromptFont（SIL 开放字体许可证）。
+韩文翻译与韩文标题 logo 由 [테오（jung5441）](https://github.com/jung5441) 制作，以 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 授权；
+韩文使用 Droid Sans Fallback（Apache License 2.0）以及 Nanum Brush Script、Gmarket Sans 的子集（SIL 开放字体许可证，改名为 SRW64 Brush KO、SRW64 Banner KO）。
 
 本项目为非官方粉丝作品。超级机器人大战及相关角色、机体与商标归各自权利人所有。
 

@@ -18,7 +18,7 @@
 </p>
 
 マーチウィンド64 は『スーパーロボット大戦64』の非公式ネイティブ再コンパイルプロジェクトです。
-Windows・macOS・Linux・Steam Deck・Android・Nintendo Switch でネイティブに動作し、英語と中国語の全文翻訳とワイド画面に対応し、
+Windows・macOS・Linux・Steam Deck・Android・Nintendo Switch でネイティブに動作し、英語・中国語・韓国語の全文翻訳とワイド画面に対応し、
 別配布の HD アートパックも利用できます。
 
 > **日本版の ROM（Rev 0）をご用意ください。** このリポジトリにもダウンロードにもゲームのデータは含まれていません。
@@ -161,7 +161,7 @@ RetroArch の slang シェーダープリセット（.slangp）をそのまま�
 
 - **ネイティブ動作。** N64 のプログラムをネイティブコードに再コンパイルし、RT64 で描画します。インストール後、
   案内に沿って ROM を追加するとプレイできます。
-- **全文 3 言語対応。** 日本語原文に加え、ゲーム全文の英語・中国語訳を収録しています。キャラクター名・ユニット名・
+- **全文 4 言語対応。** 日本語原文に加え、ゲーム全文の英語・中国語・韓国語訳を収録しています（韓国語訳は 테오（jung5441））。キャラクター名・ユニット名・
   武器名には、各言語で一般的な表記を採用しています。
 - **セーブ枠の追加と自動セーブ。** 原作よりセーブ枠を増やし、要所で自動セーブを行います。カートリッジのセーブデータは、
   ares・Project64・RetroArch などで使える形式で書き出せます。
@@ -265,6 +265,8 @@ scripts/Play\ SRW64\ Native.command --language ja     # プレイ
 そのほかの出典と固定したリビジョンは[出典記録](docs/guide/provenance.md)にあります。UI とセリフには HarmonyOS Sans
 フォントをライセンスに従い改変せずに同梱し（`content/fonts`）、ボタンアイコンは Yukari “Shinmera” Hafner の PromptFont を
 SIL Open Font License に従って改変したものです。
+韓国語訳と韓国語タイトルロゴは [테오（jung5441）](https://github.com/jung5441) によるもので、[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) で提供されています。
+韓国語の文字には Droid Sans Fallback（Apache License 2.0）と、Nanum Brush Script・Gmarket Sans のサブセット（SIL Open Font License、SRW64 Brush KO・SRW64 Banner KO に改名）を使用しています。
 
 本プロジェクトは非公式のファン作品です。スーパーロボット大戦および関連するキャラクター・メカ・商標は、それぞれの権利者に帰属します。
 
