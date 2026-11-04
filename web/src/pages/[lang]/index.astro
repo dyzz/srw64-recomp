@@ -149,7 +149,7 @@ const ld = {
     <div class="wrap">
       <div class="section-head"><h2>{c.moreTitle}</h2></div>
       <ul class="more">
-        {c.more.map((f) => <li class={`panel feat ${f.accent}`}><h3>{f.title}</h3><p>{f.body}</p></li>)}
+        {c.more.map((f) => <li class={`panel feat ${f.accent}`}><h3>{f.title}</h3><p set:html={f.body} /></li>)}
       </ul>
     </div>
   </section>
@@ -183,6 +183,13 @@ const ld = {
           <a class="btn ghost" href={`/${lang}/library/`}>{c.communityLibrary}</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section credits">
+    <div class="wrap">
+      <div class="section-head"><h2>{c.creditsTitle}</h2></div>
+      <p class="credits-text" set:html={c.credits} />
     </div>
   </section>
 
@@ -280,6 +287,8 @@ const ld = {
   .feat.cyan { --acc: var(--cyan); } .feat.gold { --acc: var(--gold); } .feat.pink { --acc: var(--pink); } .feat.orange { --acc: var(--orange); }
   .feat h3 { font-size: 19px; }
   .feat p { color: var(--muted); font-size: 15px; }
+  .feat p a, .credits-text a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+  .credits-text { color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 820px; }
 
   .platforms { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
   .platforms a { display: grid; gap: 4px; align-content: start; height: 100%; padding: 18px 20px; color: var(--text); text-decoration: none; background: var(--cyan-soft); border-left: 3px solid var(--cyan); }

@@ -39,6 +39,8 @@ type Home = {
   communityStory: string;
   communityLibrary: string;
   communityGuide: string;
+  creditsTitle: string;
+  credits: string;   // HTML: a short paragraph with links
   newsTitle: string;
 };
 
@@ -89,7 +91,7 @@ export const HOME: Record<TextLang, Home> = {
     moreTitle: '更多功能',
     more: [
       { title: '原生运行', body: 'N64 程序重编译为本机代码，图形由 RT64 渲染。安装后按说明添加 ROM，即可启动游戏。', accent: 'cyan' },
-      { title: '五种语言', body: '游戏全文提供简体中文、繁体中文、英文、韩文翻译及日文原文。韩文翻译由 테오（jung5441）完成，以 CC BY 4.0 授权。人名、机体名和武器名采用各语言的常用译名，繁体中文用台湾译名。', accent: 'gold' },
+      { title: '五种语言', body: '游戏全文提供简体中文、繁体中文、英文、韩文翻译及日文原文。韩文翻译由 <a href="https://github.com/jung5441">테오（jung5441）</a>完成，以 CC BY 4.0 授权。人名、机体名和武器名采用各语言的常用译名，繁体中文用台湾译名。', accent: 'gold' },
       { title: '多存档栏与自动存档', body: '增加存档栏，并在关键节点自动存档。卡带存档可导出，供 ares、Project64、RetroArch 等模拟器使用。', accent: 'pink' },
       { title: '宽屏不拉伸', body: '支持 4:3 到 16:9 的屏幕比例。原版画面居中，两侧扩展场景，以保持比例的方式铺满屏幕。', accent: 'orange' },
       { title: '掌机、手机与手柄', body: '自动识别 Steam Deck，并默认使用对应键位和大号界面。Android 提供触屏操作，仅显示当前画面需要的按键，并标注「确定」「快进」「下个单位」等功能。', accent: 'cyan' },
@@ -110,6 +112,8 @@ export const HOME: Record<TextLang, Home> = {
     communityStory: '读剧情、提建议',
     communityLibrary: '查图鉴',
     communityGuide: '看攻略',
+    creditsTitle: '致谢',
+    credits: '韩文翻译与韩文标题 logo 由 <a href="https://github.com/jung5441">테오（jung5441）</a> 制作，以 <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> 授权。本项目基于 <a href="https://github.com/N64Recomp/N64Recomp">N64Recomp</a>、<a href="https://github.com/N64Recomp/N64ModernRuntime">N64ModernRuntime</a> 与 <a href="https://github.com/rt64/rt64">RT64</a>。界面与对白使用 HarmonyOS Sans 字体，按键图标改编自 Shinmera 的 PromptFont。',
     newsTitle: '最新动态',
   },
   en: {
@@ -158,7 +162,7 @@ export const HOME: Record<TextLang, Home> = {
     moreTitle: 'More features',
     more: [
       { title: 'Runs natively', body: 'The N64 program is recompiled into native code, with graphics rendered by RT64. After installation, add your ROM following the setup instructions to start playing.', accent: 'cyan' },
-      { title: 'Full text in five languages', body: 'Full English, Simplified Chinese, Traditional Chinese and Korean translations alongside the original Japanese. The Korean translation is by 테오 (jung5441), under CC BY 4.0. Character, unit and weapon names follow common usage in each language; Traditional Chinese uses the names used in Taiwan.', accent: 'gold' },
+      { title: 'Full text in five languages', body: 'Full English, Simplified Chinese, Traditional Chinese and Korean translations alongside the original Japanese. The Korean translation is by <a href="https://github.com/jung5441">테오 (jung5441)</a>, under CC BY 4.0. Character, unit and weapon names follow common usage in each language; Traditional Chinese uses the names used in Taiwan.', accent: 'gold' },
       { title: 'Extra save slots and autosaves', body: 'More save slots than the original, with autosaves at key points. Export cartridge saves for use with ares, Project64, RetroArch and other emulators.', accent: 'pink' },
       { title: 'Widescreen without stretching', body: 'Supports screen ratios from 4:3 to 16:9. The original view stays centred while the scenery extends to the sides, filling the screen without stretching the image.', accent: 'orange' },
       { title: 'Handhelds, phones, controllers', body: 'Automatically detects Steam Deck and uses its button layout with a large interface by default. On Android, touch controls show the buttons needed for the current screen, labelled with their functions, such as “OK”, “Fast” and “Next unit”.', accent: 'cyan' },
@@ -179,6 +183,8 @@ export const HOME: Record<TextLang, Home> = {
     communityStory: 'Read the story and suggest changes',
     communityLibrary: 'Browse the Library',
     communityGuide: 'Browse the guide',
+    creditsTitle: 'Credits',
+    credits: 'The Korean translation and the Korean title logo are by <a href="https://github.com/jung5441">테오 (jung5441)</a>, under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Built on <a href="https://github.com/N64Recomp/N64Recomp">N64Recomp</a>, <a href="https://github.com/N64Recomp/N64ModernRuntime">N64ModernRuntime</a> and <a href="https://github.com/rt64/rt64">RT64</a>. The interface and dialogue use the HarmonyOS Sans fonts, and the button icons are adapted from Shinmera\'s PromptFont.',
     newsTitle: 'Latest news',
   },
   ja: {
@@ -227,7 +233,7 @@ export const HOME: Record<TextLang, Home> = {
     moreTitle: 'そのほかの機能',
     more: [
       { title: 'ネイティブ動作', body: 'N64 のプログラムをネイティブコードに再コンパイルし、RT64 で描画します。インストール後、案内に沿って ROM を追加するとプレイできます。', accent: 'cyan' },
-      { title: '全文 5 言語対応', body: '日本語原文に加え、ゲーム全文の英語・簡体字中国語・繁体字中国語・韓国語訳を収録しています。韓国語訳は 테오（jung5441）によるもので、CC BY 4.0 で提供されています。キャラクター名・ユニット名・武器名には各言語で一般的な表記を採用し、繁体字中国語は台湾での表記に合わせています。', accent: 'gold' },
+      { title: '全文 5 言語対応', body: '日本語原文に加え、ゲーム全文の英語・簡体字中国語・繁体字中国語・韓国語訳を収録しています。韓国語訳は <a href="https://github.com/jung5441">테오（jung5441）</a>によるもので、CC BY 4.0 で提供されています。キャラクター名・ユニット名・武器名には各言語で一般的な表記を採用し、繁体字中国語は台湾での表記に合わせています。', accent: 'gold' },
       { title: 'セーブ枠の追加と自動セーブ', body: '原作よりセーブ枠を増やし、要所で自動セーブを行います。カートリッジのセーブデータは、ares・Project64・RetroArch などで使える形式で書き出せます。', accent: 'pink' },
       { title: '引き伸ばさないワイド表示', body: '4:3 から 16:9 までの画面比率に対応。オリジナルの表示範囲を中央に置き、左右に背景を広げることで、比率を保ったまま黒帯のない表示にします。', accent: 'orange' },
       { title: '携帯機・スマホ・コントローラー', body: 'Steam Deck を自動認識し、対応するボタン配置と大きめの UI を初期設定にします。Android では、現在の画面で使うタッチボタンだけを「決定」「早送り」「次の味方」などの機能名付きで表示します。', accent: 'cyan' },
@@ -248,6 +254,8 @@ export const HOME: Record<TextLang, Home> = {
     communityStory: 'シナリオを読む',
     communityLibrary: '図鑑を見る',
     communityGuide: '攻略を見る',
+    creditsTitle: 'クレジット',
+    credits: '韓国語訳と韓国語タイトルロゴは <a href="https://github.com/jung5441">테오（jung5441）</a> によるもので、<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> で提供されています。本プロジェクトは <a href="https://github.com/N64Recomp/N64Recomp">N64Recomp</a>、<a href="https://github.com/N64Recomp/N64ModernRuntime">N64ModernRuntime</a>、<a href="https://github.com/rt64/rt64">RT64</a> を基にしています。UI とセリフには HarmonyOS Sans フォントを、ボタンアイコンには Shinmera の PromptFont を改変して使用しています。',
     newsTitle: '最新情報',
   },
   ko: {
@@ -296,7 +304,7 @@ export const HOME: Record<TextLang, Home> = {
     moreTitle: '그 밖의 기능',
     more: [
       { title: '네이티브 실행', body: 'N64 프로그램을 네이티브 코드로 리컴파일하고, 그래픽은 RT64로 렌더링합니다. 설치한 뒤 안내에 따라 ROM을 추가하면 바로 플레이할 수 있습니다.', accent: 'cyan' },
-      { title: '5개 언어 전문 지원', body: '일본어 원문과 함께 한국어, 영어, 간체 중국어, 번체 중국어 전문 번역을 수록했습니다. 한국어 번역은 커뮤니티 번역가 테오(jung5441)의 작업이며, CC BY 4.0으로 제공됩니다. 캐릭터, 기체, 무기 이름은 각 언어에서 널리 쓰이는 표기를 따르며, 번체 중국어는 대만 표기를 사용합니다.', accent: 'gold' },
+      { title: '5개 언어 전문 지원', body: '일본어 원문과 함께 한국어, 영어, 간체 중국어, 번체 중국어 전문 번역을 수록했습니다. 한국어 번역은 커뮤니티 번역가 <a href="https://github.com/jung5441">테오(jung5441)</a>의 작업이며, CC BY 4.0으로 제공됩니다. 캐릭터, 기체, 무기 이름은 각 언어에서 널리 쓰이는 표기를 따르며, 번체 중국어는 대만 표기를 사용합니다.', accent: 'gold' },
       { title: '세이브 슬롯 추가와 자동 저장', body: '원작보다 많은 세이브 슬롯을 제공하고, 주요 시점마다 자동 저장합니다. 카트리지 세이브는 ares, Project64, RetroArch 등 에뮬레이터에서 쓸 수 있도록 내보낼 수 있습니다.', accent: 'pink' },
       { title: '늘이지 않는 와이드 화면', body: '4:3부터 16:9까지의 화면 비율을 지원합니다. 원래 화면은 가운데에 두고 좌우로 배경을 넓혀, 이미지를 늘이지 않고 화면을 채웁니다.', accent: 'orange' },
       { title: '휴대용 기기, 스마트폰, 게임패드', body: 'Steam Deck을 자동으로 인식해 Deck에 맞는 버튼 배치와 큰 인터페이스를 기본으로 씁니다. Android에서는 현재 화면에 필요한 터치 버튼만 “확인”, “빨리 넘기기”, “다음 아군”처럼 기능 이름을 붙여 표시합니다.', accent: 'cyan' },
@@ -317,6 +325,8 @@ export const HOME: Record<TextLang, Home> = {
     communityStory: '시나리오 읽기',
     communityLibrary: '도감 보기',
     communityGuide: '공략 보기',
+    creditsTitle: '크레딧',
+    credits: '한국어 번역과 한국어 타이틀 로고는 <a href="https://github.com/jung5441">테오(jung5441)</a>의 작업이며 <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>으로 제공됩니다. 이 프로젝트는 <a href="https://github.com/N64Recomp/N64Recomp">N64Recomp</a>, <a href="https://github.com/N64Recomp/N64ModernRuntime">N64ModernRuntime</a>, <a href="https://github.com/rt64/rt64">RT64</a>를 바탕으로 합니다. 인터페이스와 대사에는 HarmonyOS Sans 글꼴을, 버튼 아이콘에는 Shinmera의 PromptFont를 고쳐 씁니다.',
     newsTitle: '최신 소식',
   },
 };

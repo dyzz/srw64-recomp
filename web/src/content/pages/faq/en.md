@@ -79,7 +79,7 @@ Frames are drawn by code. The BANPRESTO logo, GAME OVER and window borders are g
 
 ## How do I change the language?
 
-Choose Chinese, English, Japanese or Korean under Language in settings (the Korean translation is by the community translator 테오 (jung5441)). There is also an in-game shortcut; its button depends on your platform and is listed on the Controls page of the settings. Dialogue, menus and data text switch together, and your choice is saved for the next launch.
+Choose Chinese, English, Japanese or Korean under Language in settings (the Korean translation is by the community translator [테오 (jung5441)](https://github.com/jung5441)). There is also an in-game shortcut; its button depends on your platform and is listed on the Controls page of the settings. Dialogue, menus and data text switch together, and your choice is saved for the next launch.
 
 ## What is different from the original?
 
