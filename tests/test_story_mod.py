@@ -49,7 +49,7 @@ class StoryTests(unittest.TestCase):
         self.assertEqual((persuade_oz["vars"], refused_oz["not_fired"], joins_oz["fired"]),
                          ({"133": 0}, ["persuade-oz"], ["persuade-oz"]))
         self.assertIn("3D52 2,0,4", persuade_oz["listing"])
-        self.assertEqual((refused["trigger"], refused["kills_below"], refused["repeat"]), ("persuade", {"4": 50}, True))
+        self.assertEqual((refused["trigger"], refused["kills_below"], refused["repeat"]), ("persuade", {"4": 50}, False))
         self.assertEqual((persuade["trigger"], persuade["params"], persuade["vars"], persuade["kills"]),
                          ("persuade", [4, 18], {"131": 0}, {"4": 50}))
         self.assertEqual((joins["trigger"], joins["fired"]), ("after_end", ["persuade"]))
@@ -57,11 +57,11 @@ class StoryTests(unittest.TestCase):
         self.assertEqual(joins["levels"], [[len(joins["words"]) - 4, 4]])   # its level operand, as Domon's
         offset = story.compile_story(source(event(do=[{"join": {"pilot": 18, "unit": 27, "level": {"offset": -2}}}])))["events"][0]
         self.assertEqual((offset["words"][:5], offset["levels"]), ([0x3D5A, 18, 0xFFFE, 27, 500], []))
-        self.assertEqual(len(image["texts"]), 26)
+        self.assertEqual(len(image["texts"]), 36)
         # Each line's place holds the placeholder; its index is in "texts".
         for at, index in persuade["texts"] + refused["texts"] + joins["texts"]:
-            self.assertLess(index, 26)
-        self.assertEqual([persuade["words"][at] for at, _ in persuade["texts"]], [story.TEXT] * 5)
+            self.assertLess(index, 36)
+        self.assertEqual([persuade["words"][at] for at, _ in persuade["texts"]], [story.TEXT] * 7)
         self.assertEqual(image["texts"][1]["speaker"], 18)
 
     def test_machine_change_and_crew(self):
