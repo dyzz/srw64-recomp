@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@7932 Killy · キリー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7933 Killy · キリー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7934 Killy · キリー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7935 Killy · キリー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7936 Killy · キリー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7937 Killy · キリー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7938 Killy · キリー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7939 Killy · キリー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7940 Killy · キリー
+> 「ばかめ!」
+「멍청한 놈!」

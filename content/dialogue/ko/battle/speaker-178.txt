@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@9666 Luna · ルーナ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@9667 Luna · ルーナ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@9668 Luna · ルーナ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@9669 Luna · ルーナ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@9670 Luna · ルーナ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@9671 Luna · ルーナ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@9672 Luna · ルーナ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@9673 Luna · ルーナ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@9674 Luna · ルーナ
+> 「ばかめ!」
+「멍청한 놈!」

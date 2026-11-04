@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@7941 Remy · レミー
+> 「ばかめ!」
+「바보 같으니!」
+
+@7942 Remy · レミー
+> 「ばかめ!」
+「바보 같으니!」
+
+@7943 Remy · レミー
+> 「ばかめ!」
+「바보 같으니!」
+
+@7944 Remy · レミー
+> 「ばかめ!」
+「바보 같으니!」
+
+@7945 Remy · レミー
+> 「ばかめ!」
+「바보 같으니!」
+
+@7946 Remy · レミー
+> 「ばかめ!」
+「바보 같으니!」
+
+@7947 Remy · レミー
+> 「ばかめ!」
+「바보 같으니!」
+
+@7948 Remy · レミー
+> 「ばかめ!」
+「바보 같으니!」
+
+@7949 Remy · レミー
+> 「ばかめ!」
+「바보 같으니!」

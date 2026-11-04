@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@7220 Naoto · ナオト
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7221 Naoto · ナオト
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7222 Naoto · ナオト
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7223 Naoto · ナオト
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7224 Naoto · ナオト
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7225 Naoto · ナオト
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7226 Naoto · ナオト
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7227 Naoto · ナオト
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7228 Naoto · ナオト
+> 「ばかめ!」
+「멍청한 놈!」

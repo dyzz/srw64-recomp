@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@12431 Silky · シルキー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12432 Silky · シルキー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12433 Silky · シルキー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12434 Silky · シルキー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12435 Silky · シルキー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12436 Silky · シルキー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12437 Silky · シルキー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12438 Silky · シルキー
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12439 Silky · シルキー
+> 「ばかめ!」
+「멍청한 놈!」

@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@7211 Mika · ミカ
+> 「ばかめ!」
+「바보 같으니!」
+
+@7212 Mika · ミカ
+> 「ばかめ!」
+「바보 같으니!」
+
+@7213 Mika · ミカ
+> 「ばかめ!」
+「바보 같으니!」
+
+@7214 Mika · ミカ
+> 「ばかめ!」
+「바보 같으니!」
+
+@7215 Mika · ミカ
+> 「ばかめ!」
+「바보 같으니!」
+
+@7216 Mika · ミカ
+> 「ばかめ!」
+「바보 같으니!」
+
+@7217 Mika · ミカ
+> 「ばかめ!」
+「바보 같으니!」
+
+@7218 Mika · ミカ
+> 「ばかめ!」
+「바보 같으니!」
+
+@7219 Mika · ミカ
+> 「ばかめ!」
+「바보 같으니!」

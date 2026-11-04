@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@6956 Lady · レディ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@6957 Lady · レディ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@6958 Lady · レディ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@6959 Lady · レディ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@6960 Lady · レディ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@6961 Lady · レディ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@6962 Lady · レディ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@6963 Lady · レディ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@6964 Lady · レディ
+> 「ばかめ!」
+「멍청한 놈!」

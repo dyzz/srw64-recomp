@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@7229 Akira · アキラ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7230 Akira · アキラ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7231 Akira · アキラ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7232 Akira · アキラ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7233 Akira · アキラ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7234 Akira · アキラ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7235 Akira · アキラ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7236 Akira · アキラ
+> 「ばかめ!」
+「멍청한 놈!」
+
+@7237 Akira · アキラ
+> 「ばかめ!」
+「멍청한 놈!」

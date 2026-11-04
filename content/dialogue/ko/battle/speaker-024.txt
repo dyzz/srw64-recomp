@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@11821 Lawrence · ローレンス
+> 「ばかめ!」
+「멍청한 놈!」
+
+@11822 Lawrence · ローレンス
+> 「ばかめ!」
+「멍청한 놈!」
+
+@11823 Lawrence · ローレンス
+> 「ばかめ!」
+「멍청한 놈!」
+
+@11824 Lawrence · ローレンス
+> 「ばかめ!」
+「멍청한 놈!」
+
+@11825 Lawrence · ローレンス
+> 「ばかめ!」
+「멍청한 놈!」
+
+@11826 Lawrence · ローレンス
+> 「ばかめ!」
+「멍청한 놈!」
+
+@11827 Lawrence · ローレンス
+> 「ばかめ!」
+「멍청한 놈!」
+
+@11828 Lawrence · ローレンス
+> 「ばかめ!」
+「멍청한 놈!」
+
+@11829 Lawrence · ローレンス
+> 「ばかめ!」
+「멍청한 놈!」

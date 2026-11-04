@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@12440 Chum · チャム
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12441 Chum · チャム
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12442 Chum · チャム
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12443 Chum · チャム
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12444 Chum · チャム
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12445 Chum · チャム
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12446 Chum · チャム
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12447 Chum · チャム
+> 「ばかめ!」
+「멍청한 놈!」
+
+@12448 Chum · チャム
+> 「ばかめ!」
+「멍청한 놈!」

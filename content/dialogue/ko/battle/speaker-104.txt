@@ -1,0 +1,38 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@6965 Dorothy · ドロシー
+> 「ばかめ!」
+「바보 같으니!」
+
+@6966 Dorothy · ドロシー
+> 「ばかめ!」
+「바보 같으니!」
+
+@6967 Dorothy · ドロシー
+> 「ばかめ!」
+「바보 같으니!」
+
+@6968 Dorothy · ドロシー
+> 「ばかめ!」
+「바보 같으니!」
+
+@6969 Dorothy · ドロシー
+> 「ばかめ!」
+「바보 같으니!」
+
+@6970 Dorothy · ドロシー
+> 「ばかめ!」
+「바보 같으니!」
+
+@6971 Dorothy · ドロシー
+> 「ばかめ!」
+「바보 같으니!」
+
+@6972 Dorothy · ドロシー
+> 「ばかめ!」
+「바보 같으니!」
+
+@6973 Dorothy · ドロシー
+> 「ばかめ!」
+「바보 같으니!」

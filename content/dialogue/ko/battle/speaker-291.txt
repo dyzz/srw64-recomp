@@ -1,0 +1,167 @@
+# Official Korean dialogue contribution, migrated from the verified 0.5.2 community patch.
+# Japanese source lines and original page breaks are preserved.
+
+@14048 Byston Well Soldier · バイストンウェル兵
+> 「このおぉぉぉっ!!」
+「이 자시이익!!」
+
+@14049 Byston Well Soldier · バイストンウェル兵
+> 「覚悟!」
+「각오해라!」
+
+@14050 Byston Well Soldier · バイストンウェル兵
+> 「くらえっ!!」
+「먹어라!!」
+
+@14051 Byston Well Soldier · バイストンウェル兵
+> 「うけてみろっ!!」
+「받아 봐라!!」
+
+@14052 Byston Well Soldier · バイストンウェル兵
+> 「いけっ!」
+「가라!」
+
+@14053 Byston Well Soldier · バイストンウェル兵
+> 「させるかっ!」
+「그렇게 둘까 보냐!」
+
+@14054 Byston Well Soldier · バイストンウェル兵
+> 「うおおっ!」
+「우오옷!」
+
+@14055 Byston Well Soldier · バイストンウェル兵
+> 「そこだっ!」
+「거기다!」
+
+@14056 Byston Well Soldier · バイストンウェル兵
+> 「当たれっ!」
+「맞아라!」
+
+@14057 Byston Well Soldier · バイストンウェル兵
+> 「とどめっ!!」
+「끝이다!!」
+
+@14058 Byston Well Soldier · バイストンウェル兵
+> 「こいつでどうだっ!」
+「이건 어떠냐!」
+
+@14059 Byston Well Soldier · バイストンウェル兵
+> 「うわっ! や、やられたっ!」
+「우왓! 다, 당했다!」
+
+@14060 Byston Well Soldier · バイストンウェル兵
+> 「ぐうっ! しまった!」
+「크윽! 이런!」
+
+@14061 Byston Well Soldier · バイストンウェル兵
+> 「うおおっ! く、なんてパワーなんだ!?」
+「우오옷! 크, 무슨 파워야!?」
+
+@14062 Byston Well Soldier · バイストンウェル兵
+> 「ぐあっ! こ、こいつ、強いぞ!」
+「크악! 이, 이 녀석, 강하다!」
+
+@14063 Byston Well Soldier · バイストンウェル兵
+> 「な、何っ!? バカな!?」
+「뭐, 뭐라고!? 말도 안 돼!?」
+
+@14064 Byston Well Soldier · バイストンウェル兵
+> 「うぐっ! い、いかん、やられる!?」
+「으윽! 아, 안 돼, 당하겠어!?」
+
+@14065 Byston Well Soldier · バイストンウェル兵
+> 「あうっ! ま、まずい、このままでは……」
+「아윽! 위, 위험해, 이대로는……」
+
+@14066 Byston Well Soldier · バイストンウェル兵
+> 「ちっ、さすがにできるな!」
+「쳇, 역시 제법이군!」
+
+@14067 Byston Well Soldier · バイストンウェル兵
+> 「ぐっ! だが、この程度ならまだっ!」
+「큭! 하지만 이 정도라면 아직!」
+
+@14068 Byston Well Soldier · バイストンウェル兵
+> 「くっ! まだまだ勝負はこれからよ!」
+「큭! 아직 멀었어! 승부는 이제부터다!」
+
+@14069 Byston Well Soldier · バイストンウェル兵
+> 「うっ! やるな!!」
+「윽! 제법이군!!」
+
+@14070 Byston Well Soldier · バイストンウェル兵
+> 「くぅっ! やってくれたな!!」
+「크윽! 감히 했겠다!!」
+
+@14071 Byston Well Soldier · バイストンウェル兵
+> 「ふん、かすった程度のものよ!」
+「흥, 스친 정도일 뿐이다!」
+
+@14072 Byston Well Soldier · バイストンウェル兵
+> 「こそばゆいぜ!」
+「간지럽다고!」
+
+@14073 Byston Well Soldier · バイストンウェル兵
+> 「ちっ、あたっちまった!」
+「쳇, 맞아 버렸어!」
+
+@14074 Byston Well Soldier · バイストンウェル兵
+> 「この程度のダメージなど!!」
+「이 정도 대미지 따위!!」
+
+@14075 Byston Well Soldier · バイストンウェル兵
+> 「当たっただけだ!」
+「맞았을 뿐이다!」
+
+@14076 Byston Well Soldier · バイストンウェル兵
+> 「甘いっ!」
+「어림없어!」
+
+@14077 Byston Well Soldier · バイストンウェル兵
+> 「そこかっ!」
+「거기냐!」
+
+@14078 Byston Well Soldier · バイストンウェル兵
+> 「かわせたっ!」
+「피했다!」
+
+@14079 Byston Well Soldier · バイストンウェル兵
+> 「当たるか!」
+「맞을까 보냐!」
+
+@14080 Byston Well Soldier · バイストンウェル兵
+> 「なんの!」
+「이 정도쯤!」
+
+@14081 Byston Well Soldier · バイストンウェル兵
+> 「かわしてみせる!!」
+「피해 내겠어!!」
+
+@14082 Byston Well Soldier · バイストンウェル兵
+> 「残念だったな!」
+「아쉽게 됐군!」
+
+@14083 Byston Well Soldier · バイストンウェル兵
+> 「そんなビームなど!」
+「그런 빔 따위!」
+
+@14084 Byston Well Soldier · バイストンウェル兵
+> 「ふん、ムダなことをする!」
+「흥, 쓸데없는 짓을 하는군!」
+
+@14085 Byston Well Soldier · バイストンウェル兵
+> 「ちっ、しまった! 弾切れか!」
+「쳇, 이런! 탄이 떨어졌나!」
+
+@14086 Byston Well Soldier · バイストンウェル兵
+> 「くそっ! 弾切れかよ!」
+「젠장! 탄이 떨어졌잖아!」
+
+@14087 Byston Well Soldier · バイストンウェル兵
+> 「くっ! ここからでは
+>  反撃は無理か……」
+「큭! 여기서는 반격이 무리인가……」
+
+@14088 Byston Well Soldier · バイストンウェル兵
+> 「あんな遠くから攻撃してくるのか!?」
+「저렇게 먼 곳에서 공격해 오는 건가!?」
