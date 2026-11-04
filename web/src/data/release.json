@@ -38,10 +38,11 @@
     },
     {
       "platform": "switch",
-      "name": "Marchwind64-0.5.3-switch.zip",
-      "bytes": 55455587,
-      "sha256": "5deaeabd60930256780e514d954df2ba0c3c209edb8698f9cabbd33e9bfaa329",
-      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.5.3/Marchwind64-0.5.3-switch.zip"
+      "version": "0.5.3.1",
+      "name": "Marchwind64-0.5.3.1-switch.zip",
+      "bytes": 55564685,
+      "sha256": "199877cebc8d55a03e3e56e91d42da066fdcebf4bf400b0b9d635795f4204886",
+      "url": "https://github.com/dyzz/srw64-recomp/releases/download/v0.5.3.1/Marchwind64-0.5.3.1-switch.zip"
     }
   ],
   "hd": {

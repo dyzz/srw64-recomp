@@ -51,7 +51,7 @@ const items = platforms.map((p) => {
   <div class="switch">
     <a class="btn ghost" href={switchFile.url} data-umami-event="download" data-umami-event-platform="switch" data-umami-event-language={lang} data-umami-event-source="home">
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-7 16h16v2H4v-2Z"/></svg>
-      <span>{label('switch')}<small>v{release.version} · {mb(switchFile.bytes)}</small></span>
+      <span>{label('switch')}<small>v{(switchFile as { version?: string }).version ?? release.version} · {mb(switchFile.bytes)}</small></span>
     </a>
     {switchHdFile && (
       <a class="btn ghost" href={switchHdFile.url} data-umami-event="download" data-umami-event-platform="switch-hd" data-umami-event-language={lang} data-umami-event-source="home">

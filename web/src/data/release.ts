@@ -13,6 +13,8 @@ type File = { name: string; bytes: number; sha256: string; url: string };
 const switchHd = (data.hd as { switch?: File }).switch;
 export const fileFor = (p: Platform) =>
   !published ? undefined : p === 'hd' ? data.hd : p === 'switch-hd' ? switchHd : data.files.find((f) => f.platform === p);
+// A file may carry a version of its own: a release for one platform (0.5.3.1, the Switch)
+// between the releases sync-release.mjs writes.
 // Every download, the HD packs last.
 export const allFiles = published
   ? [...data.files, { platform: 'hd', ...data.hd }, ...(switchHd ? [{ platform: 'switch-hd', ...switchHd }] : [])]
