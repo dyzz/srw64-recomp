@@ -29,7 +29,7 @@ An unofficial native port of **Super Robot Wars 64** with full English and Chine
 
 - **Karaoke, the title demo and the battle viewer keep the original speed** at 2× and above: the lyrics counted frames while the song kept its tempo. Only a stage's battle animation runs at the chosen speed.
 - **The battle viewer offers the forms and units no stage deploys**: Getter-2 and 3, Getter Liger, Shin Getter-2 and 3, Zambo-Ace and the other transformed forms, and the units only the story puts pilots in.
-- **Names**: in English, Gundam Nataku, Apsaras II and the Titans' Gundam Mk-II in the Library; in Chinese, 灵鸟, 灵鸟-炫华 and 凤翼 for the Original units スイームルグ, スイームルグS and エルブルス, 哪吒高达 for アルトロンカスタム and 阿普萨拉斯II for アプサラス, and the Library tells repeated units apart by pilot (亚克托·德卡（葵丝）, 猎犬（盖茨）…) with ダンクーガ (2) as 终极断空我. Traditional Chinese the same. Most came from the website's suggestions, thank you.
+- **Names**: in English, Gundam Nataku, Apsaras II and the Titans' Gundam Mk-II in the Library; in Chinese, 灵鸟, 灵鸟-炫华 and 凤翼 for the Original units スイームルグ, スイームルグS and エルブルス, 哪吒高达 for アルトロンカスタム and 阿普萨拉斯II for アプサラス, and the Library tells repeated units apart by pilot (亚克托·德卡（葵丝）, 猎犬（盖茨）…) with ダンクーガ (2) as 究极断空我. Traditional Chinese the same. Most came from the website's suggestions, thank you.
 
 ### Other changes
 
@@ -96,7 +96,7 @@ Please report problems on [GitHub Issues](https://github.com/dyzz/srw64-recomp/i
 
 - **卡拉OK、标题演示和战斗查看器不再跟着加速**：开着 2 倍速时歌词按帧走、歌却是原速。现在只有关卡里的战斗演出按所选速度跑。
 - **战斗查看器能选没有关卡出击过的形态和机体**：盖塔2、盖塔3、盖塔狮虎、真盖塔2、真盖塔3、赞波ACE 等变形形态，以及只在剧情里配了驾驶员的机体。
-- **译名**：中文把原创机体 スイームルグ、スイームルグS、エルブルス 改为灵鸟、灵鸟-炫华、凤翼，アルトロンカスタム 改为哪吒高达，アプサラス 改为阿普萨拉斯II；图鉴里重复的机体按驾驶员区分（亚克托·德卡（葵丝）、猎犬（盖茨）等），ダンクーガ (2) 叫终极断空我。繁体同步。英文是 Gundam Nataku、Apsaras II 和图鉴里泰坦斯的 Gundam Mk-II。大多来自官网上的意见，谢谢。
+- **译名**：中文把原创机体 スイームルグ、スイームルグS、エルブルス 改为灵鸟、灵鸟-炫华、凤翼，アルトロンカスタム 改为哪吒高达，アプサラス 改为阿普萨拉斯II；图鉴里重复的机体按驾驶员区分（亚克托·德卡（葵丝）、猎犬（盖茨）等），ダンクーガ (2) 叫究极断空我。繁体同步。英文是 Gundam Nataku、Apsaras II 和图鉴里泰坦斯的 Gundam Mk-II。大多来自官网上的意见，谢谢。
 
 #### 其他
 

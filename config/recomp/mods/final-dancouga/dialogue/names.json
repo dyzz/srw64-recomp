@@ -1,10 +1,10 @@
 {
   "units": {
-    "314": { "ja": "ファイナルダンクーガ", "zh-Hans": "终极断空我", "zh-Hant": "終極斷空我", "en": "Final Dancouga" }
+    "314": { "ja": "ファイナルダンクーガ", "zh-Hans": "究极断空我", "zh-Hant": "究極斷空我", "en": "Final Dancouga" }
   },
   "weapons": {
-    "1209": { "ja": "ファイナル断空剣", "zh-Hans": "终极断空剑", "zh-Hant": "終極斷空劍", "en": "Final Dancouken" },
-    "882":  { "ja": "ファイナル断空砲", "zh-Hans": "终极断空炮", "zh-Hant": "終極斷空砲", "en": "Final Dancouho" },
-    "881":  { "ja": "ファイナル断空光牙剣", "zh-Hans": "终极断空光牙剑", "zh-Hant": "終極斷空光牙劍", "en": "Final Dancou Kougaken" }
+    "1209": { "ja": "ファイナル断空剣", "zh-Hans": "究极断空剑", "zh-Hant": "究極斷空劍", "en": "Final Dancouken" },
+    "882":  { "ja": "ファイナル断空砲", "zh-Hans": "究极断空炮", "zh-Hant": "究極斷空砲", "en": "Final Dancouho" },
+    "881":  { "ja": "ファイナル断空光牙剣", "zh-Hans": "究极断空光牙剑", "zh-Hant": "究極斷空光牙劍", "en": "Final Dancou Kougaken" }
   }
 }
