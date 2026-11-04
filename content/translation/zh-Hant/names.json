@@ -1,6 +1,6 @@
 {
  "schema": "srw64.zh-hant-names.v1",
- "about": "Taiwan names for zh-Hant (src/srw64_native/zh_hant.py). entries: one per Japanese name of the term tables; zh_hant null keeps the mainland name in Taiwan characters. words: Simplified words outside the term tables replaced everywhere before OpenCC s2twp.",
+ "about": "Taiwan names for zh-Hant (src/srw64_native/zh_hant.py). entries: one per Japanese name of the term tables; zh_hant null keeps the mainland name in Taiwan characters. words: Simplified words outside the term tables replaced everywhere before OpenCC s2twp. spellings: other Japanese spellings of the name in the ROM text (its typos), which name it too.",
  "entries": [
   {
    "ja": "GP02Aサイサリス",
@@ -1270,17 +1270,18 @@
   },
   {
    "ja": "ウェイブライダー",
-   "zh_hant": "WAVE RIDER",
-   "basis": "official_srw",
+   "zh_hant": "穿波機",
+   "basis": "decided",
    "group": "B_zeta",
-   "source": "超級機器人大戰30 繁中版（巴哈姆特玩家轉錄的全機體/駕駛員表）https://forum.gamer.com.tw/C.php?bsn=430&snA=45369（「Z鋼彈+WAVE RIDER」）",
+   "source": "官網意見 2026-11-04 採納：超級機器人大戰T 繁中版作「穿波機」（意見者所述）；COSPA 繁中周邊商品名（玩具人）https://www.toy-people.com/?p=82941",
    "alt": [
     {
-     "zh_hant": "穿波機",
-     "source": "COSPA 繁中周邊商品名（玩具人）https://www.toy-people.com/?p=82941"
+     "zh_hant": "WAVE RIDER",
+     "source": "超級機器人大戰30 繁中版（巴哈姆特玩家轉錄的全機體/駕駛員表）https://forum.gamer.com.tw/C.php?bsn=430&snA=45369（「Z鋼彈+WAVE RIDER」）"
     }
    ],
-   "note": "官方繁中機戰與 GUNDAM 官方站都保留英文 WAVE RIDER。"
+   "note": "機戰30 繁中與 GUNDAM 官方站保留英文 WAVE RIDER；2026-11-04 依官網意見改用「穿波機」。",
+   "decided": "user"
   },
   {
    "ja": "エンドラ",
@@ -2992,31 +2993,36 @@
   },
   {
    "ja": "ゴッドガンダム",
-   "zh_hant": "神鋼彈",
-   "basis": "official_tw",
+   "zh_hant": "神威鋼彈",
+   "basis": "official_srw",
    "group": "C_g_w",
-   "source": "GUNDAM 官方網站台灣版〈「RG 神鋼彈」決定於2022年6月發售〉https://tw.gundam-official.com/news/i/news/gunpla/01_6174；台灣萬代鋼普拉新聞（玩具人）RG 1/144 神鋼彈 超級模式 https://www.toy-people.com/?p=97349",
+   "source": "超級機器人大戰T 繁中版，神威鋼彈招式集，駕駛員 多門．火州（玩家影片轉錄遊戲內文字）https://www.youtube.com/watch?v=IyoYehMkuMc；超級機器人大戰Y 繁中版機體名，巴哈姆特〈機戰Y 全機體5改能力〉https://forum.gamer.com.tw/C.php?bsn=430&snA=46679；G世代火線縱橫同",
    "alt": [
     {
-     "zh_hant": "神威鋼彈",
-     "source": "超級機器人大戰T 繁中版，神威鋼彈招式集，駕駛員 多門．火州（玩家影片轉錄遊戲內文字）https://www.youtube.com/watch?v=IyoYehMkuMc；超級機器人大戰Y 繁中版機體名，巴哈姆特〈機戰Y 全機體5改能力〉https://forum.gamer.com.tw/C.php?bsn=430&snA=46679；G世代火線縱橫同"
+     "zh_hant": "神鋼彈",
+     "source": "GUNDAM 官方網站台灣版〈「RG 神鋼彈」決定於2022年6月發售〉https://tw.gundam-official.com/news/i/news/gunpla/01_6174；台灣萬代鋼普拉新聞（玩具人）RG 1/144 神鋼彈 超級模式 https://www.toy-people.com/?p=97349"
     }
    ],
-   "note": "按協調方新規則以台灣 GUNDAM 官方站為準；官方繁中機戰T/Y作「神威鋼彈」，需拍板。招式仍作「神威」（爆熱神威掌等，萬代台灣新聞同）"
+   "note": "台灣 GUNDAM 官方站作「神鋼彈」；2026-11-04 依官網意見改用官方繁中機戰T/Y的「神威鋼彈」。招式仍作「神威」（爆熱神威掌等）",
+   "decided": "user",
+   "spellings": [
+    "ゴッドカンダム"
+   ]
   },
   {
    "ja": "ゴッドガンダムH",
-   "zh_hant": "神鋼彈H",
-   "basis": "official_tw",
+   "zh_hant": "神威鋼彈H",
+   "basis": "official_srw",
    "group": "C_g_w",
-   "source": "GUNDAM 官方網站台灣版〈「RG 神鋼彈」決定於2022年6月發售〉https://tw.gundam-official.com/news/i/news/gunpla/01_6174",
+   "source": "機戰T/Y 寫法",
    "alt": [
     {
-     "zh_hant": "神威鋼彈H",
-     "source": "機戰T/Y 寫法"
+     "zh_hant": "神鋼彈H",
+     "source": "GUNDAM 官方網站台灣版〈「RG 神鋼彈」決定於2022年6月發售〉https://tw.gundam-official.com/news/i/news/gunpla/01_6174"
     }
    ],
-   "note": "同ゴッドガンダム"
+   "note": "同ゴッドガンダム",
+   "decided": "user"
   },
   {
    "ja": "サンドロックカスタム",

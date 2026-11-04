@@ -4246,7 +4246,7 @@
     {
       "key": "base:t00_00635",
       "source_sha256": "31963b353df7b21dda87ad2f7d9a4d1401bcc4dc5da724179f8d171d82c8b40d",
-      "target": "比格·扎姆<END>",
+      "target": "大扎姆<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5359,7 +5359,7 @@
     {
       "key": "base:t00_00794",
       "source_sha256": "3c111bf41bd78f18d275b149599482ad5dad40c2fbbb8e7fd58cb1246d4982b6",
-      "target": "德拉戈诺龙<END>",
+      "target": "龙蜥海兽<END>",
       "review_status": "draft",
       "origin": "terms"
     },

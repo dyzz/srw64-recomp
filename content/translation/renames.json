@@ -9849,6 +9849,34 @@
    "sections": [
     "story"
    ]
+  },
+  {
+   "ja": [
+    "ドラゴノザウルス"
+   ],
+   "zh-Hans": {
+    "old": "德拉戈诺龙",
+    "new": "龙蜥海兽"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ],
+   "note": "官网意见 2026-11-04 采纳"
+  },
+  {
+   "ja": [
+    "ビグザム"
+   ],
+   "zh-Hans": {
+    "old": "比格·扎姆",
+    "new": "大扎姆"
+   },
+   "gate": false,
+   "sections": [
+    "units"
+   ],
+   "note": "官网意见 2026-11-04 采纳"
   }
  ]
 }

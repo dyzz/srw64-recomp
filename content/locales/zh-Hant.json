@@ -3504,14 +3504,14 @@
     {
       "key": "base:t00_00528",
       "source_sha256": "9af5177f87c286a0f36547b305381be08fb0b95ed5283d30abf6a4ff18c88f00",
-      "target": "神鋼彈<END>",
+      "target": "神威鋼彈<END>",
       "review_status": "draft",
       "origin": "terms"
     },
     {
       "key": "base:t00_00529",
       "source_sha256": "e42ffdc8d8463dfce20cd136183ff261850861fe286d2b7a13ec4dfa00f715cd",
-      "target": "神鋼彈H<END>",
+      "target": "神威鋼彈H<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -3833,7 +3833,7 @@
     {
       "key": "base:t00_00576",
       "source_sha256": "8a9b8827ea31f235596c1733ab329ac82c20183ae57758226f24a3ed4696e7af",
-      "target": "WAVE RIDER<END>",
+      "target": "穿波機<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5359,7 +5359,7 @@
     {
       "key": "base:t00_00794",
       "source_sha256": "3c111bf41bd78f18d275b149599482ad5dad40c2fbbb8e7fd58cb1246d4982b6",
-      "target": "德拉戈諾龍<END>",
+      "target": "龍蜥海獸<END>",
       "review_status": "draft",
       "origin": "terms"
     },
@@ -5653,7 +5653,7 @@
     {
       "key": "base:t00_00836",
       "source_sha256": "9af5177f87c286a0f36547b305381be08fb0b95ed5283d30abf6a4ff18c88f00",
-      "target": "神鋼彈<END>",
+      "target": "神威鋼彈<END>",
       "review_status": "draft",
       "origin": "terms"
     },

@@ -77,7 +77,11 @@ class Converter:
         for proper, ja, hans in terms:
             if ja not in self.names:
                 self.names[ja] = taiwan.get(ja) or self.convert(hans, ja, characters if proper else wording)
-        self.pairs = self._sorted(holds((ja, hans, self.names[ja]) for proper, ja, hans in terms if proper or ja in taiwan))
+        pairs = holds((ja, hans, self.names[ja]) for proper, ja, hans in terms if proper or ja in taiwan)
+        # The ROM misspells some names (ゴッドカンダム): a line with such a spelling has the name too.
+        spellings = {row["ja"]: row.get("spellings", []) for row in document["entries"]}
+        pairs.update({(spelling, hans): hant for (ja, hans), hant in list(pairs.items()) for spelling in spellings.get(ja, [])})
+        self.pairs = self._sorted(pairs)
 
     @staticmethod
     def _sorted(pairs: dict) -> list[tuple[str, str, str]]:
