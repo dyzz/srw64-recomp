@@ -49,7 +49,7 @@
 
 logo 随游戏发布：`content/art/language-images.json` 列出可按语言换的图（标题 logo 的场景/图集/调色板/帧和它在 HD 包里的文件名），`content/art/<语言>/<文件>` 是图本身；打包时 `tools/release/language_art.py` 把它们复制到程序旁的 `art/`（Windows CI、Linux、安卓、macOS、Switch），启动器用 `SRW64_LANGUAGE_ART` 交给宿主。`native_sprite.cpp` 在原版和 HD 两种图像模式下都画它，语言包自己给的图（HD 模式下）优先。Switch 只读 prepare-hd 做好的纹理，暂不加载这些图，Switch 上仍是日文 logo。
 
-11-04 Windows 实机（ko 分支 70957c42 本机编译＋当天用 prepare_hd_bundle 现编的 HD 1.3 文件夹）：标题画面 HD 与原版图像模式（F6 切换）都是他的韩文 logo；战斗鉴赏里的反应徽章「방어」用的是 Gmarket 子集。第一关章节标题卡和战斗横幅（크리티컬 等）没拍到：跳过剧情时标题卡一闪而过，鉴赏页开着时录像只录到页面。当时发现 `*.png` 被 .gitignore 挡住，他的 logo 没进 56d0ca01，补交 4f0a1f55（作者仍是他）。
+11-04 Windows 实机（ko 分支 70957c42 本机编译＋当天用 prepare_hd_bundle 现编的 HD 1.3 文件夹）：标题画面 HD 与原版图像模式（F6 切换）都是他的韩文 logo；战斗鉴赏里的反应徽章「방어」用的是 Gmarket 子集。第一关章节标题卡和战斗横幅当时没拍到，随后用迷你关补拍（`slot` 2、`route` 2，环境变量 `SRW64_MINI_STAGE_DIRECT=0` 走出标题卡的老路径；タケル `level_offset` 98 对 1 级杂兵，暴击率 100%）：标题卡「제2화 유전」是 Nanum Brush Script 子集的毛笔字，暴击横幅「크리티컬 3000」是 Gmarket 子集。当时发现 `*.png` 被 .gitignore 挡住，他的 logo 没进 56d0ca01，补交 4f0a1f55（作者仍是他）。
 
 ## 5. 进度
 
