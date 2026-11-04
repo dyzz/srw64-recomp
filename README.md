@@ -5,7 +5,7 @@
 <p align="center"><b>Super Robot Wars 64 — a native recompilation of the 1999 N64 game.</b></p>
 
 <p align="center">
-  English · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.ja.md">日本語</a>
+  English · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.ko.md">한국어</a>
 </p>
 
 <p align="center">

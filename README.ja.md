@@ -5,7 +5,7 @@
 <p align="center"><b>スーパーロボット大戦64 —— 1999 年に発売された N64 用ゲームのネイティブ再コンパイル版。</b></p>
 
 <p align="center">
-  <a href="README.md">English</a> · <a href="README.zh-Hans.md">简体中文</a> · 日本語
+  <a href="README.md">English</a> · <a href="README.zh-Hans.md">简体中文</a> · 日本語 · <a href="README.ko.md">한국어</a>
 </p>
 
 <p align="center">

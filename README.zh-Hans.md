@@ -5,7 +5,7 @@
 <p align="center"><b>超级机器人大战64 —— 1999 年 N64 游戏的原生重编译版。</b></p>
 
 <p align="center">
-  <a href="README.md">English</a> · 简体中文 · <a href="README.ja.md">日本語</a>
+  <a href="README.md">English</a> · 简体中文 · <a href="README.ja.md">日本語</a> · <a href="README.ko.md">한국어</a>
 </p>
 
 <p align="center">
