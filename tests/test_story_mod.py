@@ -64,6 +64,19 @@ class StoryTests(unittest.TestCase):
         self.assertEqual([persuade["words"][at] for at, _ in persuade["texts"]], [story.TEXT] * 5)
         self.assertEqual(image["texts"][1]["speaker"], 18)
 
+    def test_machine_change_and_crew(self):
+        # The Final Dancouga package (config/recomp/mods/final-dancouga): 3D5A as the original's
+        # 224-for-223 change, a unit-only removal, an unlock; the crew is the host's.
+        got = story.compile_story(source(event(do=[{"replace": {"pilot": 171, "unit": 224, "with": 314}},
+                                                   {"remove_unit": {"pilot": 166, "unit": 228}},
+                                                   {"crew": {"unit": 314, "pilots": [171, 168, 170, 169, 166]}},
+                                                   {"unlock": 881}])))["events"][0]
+        self.assertEqual(got["listing"][:3], ["3D5A 171,0,314,224", "3D5A 166,0,228,3000", "3D6F 881"])
+        self.assertEqual(got["crew"], [{"unit": 314, "pilots": [171, 168, 170, 169, 166]}])
+        for bad in ({"crew": {"unit": 314, "pilots": []}}, {"replace": {"pilot": 171, "unit": 224}}, {"remove_unit": {"pilot": 999, "unit": 228}}):
+            with self.assertRaises(story.StoryError):
+                story.compile_story(source(event(do=[bad])))
+
     def test_if_else_as_the_original(self):
         image = story.compile_story(source(event(do=[{"if": {"var": 128, "is": 2}, "then": [{"deploy": 12}], "else": [{"deploy": 11}]}])))
         self.assertEqual(image["events"][0]["words"],

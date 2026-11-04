@@ -1,0 +1,25 @@
+{
+  "schema": "srw64.mod.v1",
+  "id": "srw64.final-dancouga",
+  "version": "0.1.0",
+  "name": {
+    "ja": "ファイナルダンクーガ",
+    "zh-Hans": "终极断空我",
+    "zh-Hant": "終極斷空我",
+    "en": "Final Dancouga"
+  },
+  "description": {
+    "ja": "断空光牙剣を覚えたステージ（独立軍ルート「獣戦機基地 総攻撃」、OZルート「見えない明日」）のクリア後、ダンクーガとブラックウイングが合体してファイナルダンクーガになる。アランは5人目のパイロットとして乗り込み、改造段数は引き継がれる。分離はできない。",
+    "zh-Hans": "在学会断空光牙剑的那一关（独立军路线「兽战机基地 总攻击」、OZ 路线「看不见的明天」）通关后，断空我与黑翼合体为终极断空我。阿兰作为第五名驾驶员同乘，改造段数继承，不能分离。",
+    "zh-Hant": "在學會斷空光牙劍的那一關（獨立軍路線「獸戰機基地 總攻擊」、OZ 路線「看不見的明天」）通關後，斷空我與黑翼合體為終極斷空我。阿蘭作為第五名駕駛員同乘，改造段數繼承，不能分離。",
+    "en": "After the stage where Dancouga learns the Dankuu Kouga Ken (the Independence Army route's \"All-Out Attack on the Beast Fighter Base\", the OZ route's \"The Unseen Tomorrow\"), Dancouga and Black Wing combine into Final Dancouga. Alan rides along as the fifth pilot and the upgrades carry over. It cannot separate."
+  },
+  "authors": [
+    "SRW64"
+  ],
+  "license": "CC0-1.0",
+  "game": ">=0.5.2",
+  "requires": {
+    "srw64.hd": ">=1.3"
+  }
+}

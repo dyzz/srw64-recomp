@@ -1,0 +1,105 @@
+{
+  "schema": "srw64.story.v1",
+  "events": [
+    {
+      "id": "combine-ia",
+      "note": "獣戦機基地 総攻撃 (Independence Army, scene 78): its end event unlocks 断空光牙剣 (3D6F 874). Dancouga 224 becomes Final Dancouga 314 (3D5A as 224 replacing 223; upgrades through the predecessor table), Black Wing leaves the roster, and the host writes the five-pilot crew (the crew table has no room). The unlock bit does not follow the change, so 881 is unlocked again. The change takes the beast machines' base forms; their A and H forms stay, pilotless, on the weapon upgrade list (deleting them through 800AA3C4 splits the family and takes 314 too).",
+      "scene": 78,
+      "when": {
+        "after": "end"
+      },
+      "if": {
+        "roster": {
+          "pilots": [
+            171,
+            166
+          ],
+          "units": [
+            224,
+            228
+          ]
+        }
+      },
+      "do": [
+        {
+          "replace": {
+            "pilot": 171,
+            "unit": 224,
+            "with": 314
+          }
+        },
+        {
+          "remove_unit": {
+            "pilot": 166,
+            "unit": 228
+          }
+        },
+        {
+          "crew": {
+            "unit": 314,
+            "pilots": [
+              171,
+              168,
+              170,
+              169,
+              166
+            ]
+          }
+        },
+        {
+          "unlock": 881
+        }
+      ]
+    },
+    {
+      "id": "combine-oz",
+      "note": "見えない明日 (OZ route, scene 92): the same.",
+      "scene": 92,
+      "when": {
+        "after": "end"
+      },
+      "if": {
+        "roster": {
+          "pilots": [
+            171,
+            166
+          ],
+          "units": [
+            224,
+            228
+          ]
+        }
+      },
+      "do": [
+        {
+          "replace": {
+            "pilot": 171,
+            "unit": 224,
+            "with": 314
+          }
+        },
+        {
+          "remove_unit": {
+            "pilot": 166,
+            "unit": 228
+          }
+        },
+        {
+          "crew": {
+            "unit": 314,
+            "pilots": [
+              171,
+              168,
+              170,
+              169,
+              166
+            ]
+          }
+        },
+        {
+          "unlock": 881
+        }
+      ]
+    }
+  ]
+}

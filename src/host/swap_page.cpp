@@ -1,4 +1,6 @@
 #include "swap_page.hpp"
+#include "intermission_mode.hpp"
+#include "unit_pose_art.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
 #include "presentation_settings.hpp"
@@ -114,7 +116,7 @@ json pilot_json(const uint8_t* ram,unsigned index) {
 json unit_json(const uint8_t* ram,uint32_t unit) {
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
     json u={{"number",number},{"name",text(ram,text_unit_names+number)}};
-    if(art.contains("units") && art["units"].contains(std::to_string(number)))u["art"]=art["units"][std::to_string(number)];
+    if(auto a=unit_pose_art::of(art,number);!a.empty())u["art"]=std::move(a);
     const uint32_t pilot=read(ram,unit+unit_pilot,4);
     u["pilot"]=read(ram,unit+unit_crew,1) && pilot && valid(pilot,pilot_size)?text(ram,uint16_t(text_pilot_names+read(ram,pilot+pilot_number,2))):std::string();
     return u;
@@ -430,6 +432,7 @@ void frame(uint8_t* ram) {
     // Held by a step across the original's own waits (game_hooks.cpp, 80085F30): next frame.
     std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
     if(active && !idle(ram) && read(ram,next_screen,4)!=read(ram,current_screen,4))hide("left");
+    else if(active && !intermission_mode::running(ram))hide("left");   // back to the title (intermission_mode.hpp)
 }
 }
 

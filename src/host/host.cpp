@@ -37,6 +37,7 @@
 #include "upgrade_refund.hpp"
 #include "mod_data.hpp"
 #include "mod_names.hpp"
+#include "mod_saves.hpp"
 #include "story_mod.hpp"
 #include "save_store.hpp"
 #include "localization/catalog.hpp"
@@ -433,7 +434,7 @@ extern "C" void resident_func_8007F704(uint8_t* rdram, recomp_context* ctx) {
     const uint32_t rom = ctx->r4, ram = ctx->r5, size = ctx->r6;
     if(srw64::upgrades::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
     if(srw64::story_mod::read_text(rom,rdram,ram,size)) {ctx->r2=0;return;}
-    srw64::mod_data::refresh();   // number MODs join the copy patches (mod_data.hpp)
+    srw64::mod_data::refresh(rdram);   // number MODs join the copy patches (mod_data.hpp)
     overlay_loading = true;
     srw64_original_rom_read(rdram, ctx);
     overlay_loading = false;
@@ -572,6 +573,7 @@ static int run_host(int argc, char** argv) {
         if (!overlay_loading) { srw64::battle_hud::frame(ram); srw64::menu_widen::frame_start(ram); }
         srw64::game_speed::frame(ram);   // 2x speed where it applies (game_speed.hpp)
         srw64::quick_load::frame(ram);   // a confirmed load of the suspend save (quick_load.hpp)
+        srw64::mod_saves::frame(ram);    // a save that needs a package not active goes back (mod_saves.hpp)
         srw64::battle_page::frame(ram);  // a battle page the game left by a load (battle_page.hpp)
         srw64::enemy_pilot_page::mark_fought(ram);   // every enemy counts as fought (enemy_pilot_page.hpp)
         srw64::map_combo::frame(ram);    // the weapon page's combination lines go with the map (map_combo.hpp)

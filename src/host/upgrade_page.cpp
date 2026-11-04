@@ -1,4 +1,6 @@
 #include "upgrade_page.hpp"
+#include "intermission_mode.hpp"
+#include "unit_pose_art.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
 #include "presentation_settings.hpp"
@@ -355,7 +357,7 @@ bool list_step(uint8_t* ram,recomp_context* ctx,void(*step)(uint8_t*,recomp_cont
 json stats_json(uint8_t* ram,recomp_context* ctx) {
     const uint32_t slot=read(ram,screen_unit,4),unit=up::unit_at(slot);
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
-    return {{"screen","stats"},{"kind","stats"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)},{"art",art["units"].value(std::to_string(number),json::object())}}},
+    return {{"screen","stats"},{"kind","stats"},{"unit",{{"slot",slot},{"number",number},{"name",text(ram,text_unit_names+number)},{"art",unit_pose_art::of(art,number)}}},
         {"cap",up::allowed_cap(number)},{"cursor",read(ram,stat_cursor,2)},{"rows",stat_rows(ram,ctx,unit)},{"window",""}};
 }
 // 801CF680 without its drawing: dimmed background, fresh stats, the state resets.
@@ -1006,6 +1008,7 @@ void frame(uint8_t* ram) {
     std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
     // Any other screen taking over (the EW swap, the menu) closes the page.
     if(active && !idle(ram) && read(ram,next_screen,4)!=read(ram,current_screen,4))hide("left");
+    else if(active && !intermission_mode::running(ram))hide("left");   // back to the title (intermission_mode.hpp)
 }
 }
 

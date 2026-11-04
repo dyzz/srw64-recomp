@@ -1,4 +1,5 @@
 #include "battle_page.hpp"
+#include "unit_pose_art.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
 #include "battle_effects.hpp"
@@ -142,7 +143,7 @@ json combatant(uint8_t* copy,recomp_context* ctx,const rule_probe::Combatant& a,
     return {{"unit_name",dialogue::ui_text(copy,527+read(copy,a.unit+2,2))},{"pilot_name",dialogue::ui_text(copy,4382+read(copy,a.pilot+2,2))},{"weapon_name",a.weapon?dialogue::ui_text(copy,1370+read(copy,a.weapon+2,2)):std::string{}},{"side",a.side},{"handle",a.handle},{"unit",read(copy,a.unit+2,2)},{"pilot",read(copy,a.pilot+2,2)},
         {"weapon",a.weapon?int(read(copy,a.weapon+2,2)):-1},{"level",read(copy,a.pilot+5,1)},
         {"sp",read(copy,a.pilot+0x16,2)},{"max_sp",read(copy,a.pilot+0x18,2)},{"hp",read(copy,a.unit+4,2)},{"max_hp",read(copy,a.unit+6,2)},{"en",read(copy,a.unit+8,2)},{"max_en",read(copy,a.unit+10,2)},
-        {"unit_art",art["units"].value(std::to_string(read(copy,a.unit+2,2)),json::object())},
+        {"unit_art",unit_pose_art::of(art,read(copy,a.unit+2,2))},
         {"size",[&]{const unsigned f=read(copy,a.unit+0x0C,1);return f&1?0:f&2?1:f&4?2:f&8?3:4;}()},  // SS..LL, as ability_page
         // What the original screen tells (801E7A28): an enemy's HP/EN and level only once known.
         {"known",[&]{const uint32_t lead=read(copy,a.unit+0x38,4);return a.side==0 || (valid(lead,0x4C) && (read(copy,lead,1)&0x40)!=0);}()},
@@ -353,7 +354,7 @@ void read_map_art(const uint8_t* ram) {
     for(unsigned side=0;side<3;++side)for(unsigned slot=0;slot<30;++slot) {
         const uint32_t entry=roster+side*side_stride+slot*slot_stride,unit=read(ram,entry+0xC,4);
         if(read(ram,entry,1)!=1 || !valid(unit,0x54))continue;
-        json row={{"unit_art",art["units"].value(std::to_string(read(ram,unit+2,2)),json::object())}};
+        json row={{"unit_art",unit_pose_art::of(art,read(ram,unit+2,2))}};
         if(const uint32_t pilot=read(ram,unit+0x38,4);valid(pilot,0x40))row["portrait"]=art["portraits"].value(std::to_string(read(ram,pilot+2,2)),json::object());
         list.push_back(std::move(row));
     }

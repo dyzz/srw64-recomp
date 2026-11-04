@@ -255,6 +255,14 @@ inline uint8_t game_byte(std::span<const uint8_t> rom,uint32_t at) {
     if(const auto found=bytes->find(at);found!=bytes->end())return found->second;
     return at<rom.size()?rom[at]:0;
 }
+// A big-endian value as the game reads it (packages' and rules' bytes over the ROM's).
+inline uint32_t game_read(uint32_t at,unsigned size) {
+    const auto& s=state();
+    if(!s.rom || at+size>s.rom_size)throw std::runtime_error("upgrade rules: ROM read outside the image");
+    uint32_t value=0;
+    for(unsigned i=0;i<size;++i)value=(value<<8)|game_byte({s.rom,s.rom_size},at+i);
+    return value;
+}
 // After a copy of ROM [rom, rom+size) to RDRAM destination.
 inline void patch_copy(uint8_t* ram,uint32_t rom,uint32_t destination,uint32_t size) {
     const auto& list=patches();

@@ -159,7 +159,8 @@ void refresh() {
             const bool number = !stem.empty() && stem.size() <= 3 && std::all_of(stem.begin(), stem.end(), [](char c) { return c >= '0' && c <= '9'; }) &&
                                 !(stem.size() > 1 && stem[0] == '0');
             const unsigned unit = number ? unsigned(std::stoul(stem)) : unit_icon_art::kUnits;
-            const unsigned icon = unit < unit_icon_art::kUnits ? upgrades::rom_read(unit_icon_art::kIconTable + unit * 2, 2) : 0;
+            // The icon the game draws for it: a package's new unit (data/new_units.json) has its own.
+            const unsigned icon = unit < unit_icon_art::kUnits ? upgrades::game_read(unit_icon_art::kIconTable + unit * 2, 2) : 0;
             if (icon < unit_icon_facing::kFirstIcon || icon > unit_icon_facing::kLastIcon) { problems.push_back(name + "：文件名要是有地图图标的机体号"); continue; }
             int w = 0, h = 0, n = 0;
             if (!stbi_info(item.path().string().c_str(), &w, &h, &n) || !unit_icon_art::size_ok(w, h)) {

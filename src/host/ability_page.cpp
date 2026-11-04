@@ -1,4 +1,6 @@
 #include "ability_page.hpp"
+#include "intermission_mode.hpp"
+#include "unit_pose_art.hpp"
 #include "spirit_learning.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
@@ -122,12 +124,12 @@ uint32_t pilot_unit(uint8_t* ram,recomp_context* ctx,uint32_t pilot) {
     return unit && valid(unit,0x54)?unit:0;
 }
 std::string unit_art(unsigned number) {
-    return art.contains("units") && art["units"].contains(std::to_string(number))?art["units"][std::to_string(number)].value("path",std::string()):std::string();
+    return unit_pose_art::of(art,number).value("path",std::string());
 }
 json unit_brief(const uint8_t* ram,uint32_t unit) {
     const uint16_t number=uint16_t(read(ram,unit+up::unit_number,2));
     json u={{"number",number},{"name",text(ram,text_unit_names+number)}};
-    if(art.contains("units") && art["units"].contains(std::to_string(number)))u["art"]=art["units"][std::to_string(number)];
+    if(auto a=unit_pose_art::of(art,number);!a.empty())u["art"]=std::move(a);
     return u;
 }
 void labels(const uint8_t* ram) {
@@ -558,6 +560,7 @@ void frame(uint8_t* ram) {
     // Held by a step across the original's own waits (game_hooks.cpp, 80085F30): next frame.
     std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
     if(active && !idle(ram) && read(ram,next_screen,4)!=read(ram,current_screen,4))hide("left");
+    else if(active && !intermission_mode::running(ram))hide("left");   // back to the title (intermission_mode.hpp)
 }
 }
 

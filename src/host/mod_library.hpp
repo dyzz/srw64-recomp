@@ -35,6 +35,14 @@ struct Version {
     int major{},minor{},patch{};
     auto operator<=>(const Version&) const=default;
 };
+// Built-in requirements a package's "requires" may name besides packages: "srw64.hd", the HD
+// images (mod-names-art-data.md §2.3.1). The host registers each once it knows (the renderer,
+// as the image mode is set up): nullopt not usable, else its version (0.0.0 a pack without
+// one, which satisfies any). A change moves revision().
+inline constexpr const char* builtin_hd="srw64.hd";
+inline bool is_builtin(const std::string& id){return id==builtin_hd;}
+void set_builtin(const std::string& id,std::optional<Version> version);
+std::optional<Version> builtin(const std::string& id);
 inline std::optional<Version> parse_version(const std::string& text) {
     Version v;int* parts[]={&v.major,&v.minor,&v.patch};
     size_t at=0;unsigned n=0;
@@ -237,6 +245,12 @@ inline std::vector<Package> resolve(std::vector<Package> packages,const State& s
             auto& p=packages[i];
             if(!usable(i))continue;
             for(const auto& [id,want]:p.manifest->needs) {
+                if(is_builtin(id)) {
+                    const auto v=builtin(id);
+                    if(!v){p.problem={"needs_hd",id};changed=true;break;}
+                    if(*v!=Version{} && !satisfies(*v,want)){p.problem={"dependency_version",id+" "+want};changed=true;break;}
+                    continue;
+                }
                 const auto f=by_id.find(id);
                 if(f==by_id.end()){p.problem={"missing",id+" "+want};changed=true;break;}
                 const auto& d=packages[f->second];

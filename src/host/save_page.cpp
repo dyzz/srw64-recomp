@@ -1,4 +1,5 @@
 #include "save_page.hpp"
+#include "intermission_mode.hpp"
 #include "dialogue_data.hpp"
 #include "run_files.hpp"
 #include "presentation_settings.hpp"
@@ -636,6 +637,7 @@ void frame(uint8_t* ram) {
     std::unique_lock lock(mutex,std::try_to_lock);if(!lock)return;
     if(title)return;
     if(active && !idle(ram) && read(ram,next_screen,4)!=read(ram,current_screen,4))hide("left");
+    else if(active && !intermission_mode::running(ram))hide("left");   // back to the title (intermission_mode.hpp)
 }
 }
 

@@ -1,7 +1,10 @@
 #pragma once
 #include "mod_library.hpp"
+#include "mod_units.hpp"
 #include "upgrade_rules.hpp"
 #include <cstdio>
+#include <map>
+#include <mutex>
 #include <span>
 
 // Number MODs (docs/design/mod-packages.md §5, docs/design/mod-names-art-data.md §2.3):
@@ -168,7 +171,13 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
                 }
                 continue;
             }
-            const auto here=[&](uint32_t at){const auto f=bytes.find(at);return f!=bytes.end()?f->second:at<rom.size()?rom[at]:uint8_t(0);};
+            // This file's bytes, then earlier files' and packages' (a new unit's copied record),
+            // then the ROM's.
+            const auto here=[&](uint32_t at){
+                if(const auto f=bytes.find(at);f!=bytes.end())return f->second;
+                if(const auto f=out.find(at);f!=out.end())return f->second;
+                return at<rom.size()?rom[at]:uint8_t(0);
+            };
             const std::string where=key+"."+name;
             if(kind==Kind::units && name=="abilities") {
                 if(!value.is_array())return where+"：要是数组";
@@ -294,7 +303,11 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
     if(kind==Kind::weapons)
         for(const auto& [key,entry]:document.items()) {
             const uint32_t record=weapon_records+unsigned(std::stoul(key))*weapon_record_size;
-            const auto at=[&](uint32_t offset){const auto f=bytes.find(record+offset);return f!=bytes.end()?f->second:record+offset<rom.size()?rom[record+offset]:uint8_t(0);};
+            const auto at=[&](uint32_t offset){
+                if(const auto f=bytes.find(record+offset);f!=bytes.end())return f->second;
+                if(const auto f=out.find(record+offset);f!=out.end())return f->second;
+                return record+offset<rom.size()?rom[record+offset]:uint8_t(0);
+            };
             if(at(0x02)>at(0x03))return key+"：range_min 不能大于 range_max";
         }
     for(const auto& [a,v]:bytes)out[a]=v;
@@ -304,17 +317,32 @@ inline std::string parse(const json& document,Kind kind,std::span<const uint8_t>
 struct Collected {
     Bytes bytes;
     std::vector<std::string> problems;   // "<id> data/<file>: why"; such a file is left out
+    std::map<unsigned,std::string> units;   // a new unit's number -> the package that adds it
+    std::map<std::string,json> names;       // those packages' names (mod.json "name")
 };
 // The active packages, bottom first as mods::installed() returns them.
 inline Collected collect(const std::vector<mods::Package>& packages,std::span<const uint8_t> rom) {
     Collected c;
+    mod_units::Taken taken;
     std::error_code error;
     for(const auto& p:packages) {
         if(!p.active || !fs::is_directory(p.folder/"data",error))continue;
         for(const auto& item:fs::directory_iterator(p.folder/"data",error)) {
             const auto name=item.path().filename().string();
-            if(item.is_regular_file(error) && item.path().extension()==".json" && std::find(files.begin(),files.end(),name)==files.end())
+            if(item.is_regular_file(error) && item.path().extension()==".json" && name!="new_units.json" && std::find(files.begin(),files.end(),name)==files.end())
                 c.problems.push_back(p.id()+" data/"+name+"：暂不支持这个文件");
+        }
+        // New units first: the number files may change the records they copy.
+        if(const auto path=p.folder/"data"/"new_units.json";fs::is_regular_file(path,error)) {
+            std::ifstream in(path,std::ios::binary);
+            const auto document=json::parse(in,nullptr,false);
+            const std::string where=p.id()+" data/new_units.json：";
+            if(document.is_discarded())c.problems.push_back(where+"JSON 无效");
+            else {
+                const auto before=taken.units;
+                if(auto why=mod_units::parse(document,rom,c.bytes,c.bytes,taken);!why.empty())c.problems.push_back(where+why);
+                for(const auto unit:taken.units)if(!before.count(unit)){c.units[unit]=p.id();c.names[p.id()]=p.manifest?p.manifest->name:json(p.id());}
+            }
         }
         for(const auto file:files) {
             const auto path=p.folder/"data"/std::string(file);
@@ -338,8 +366,20 @@ struct State {
     fs::path output;
     unsigned revision{};
     mods::Version game{-1,-1,-1};
+    std::mutex owners_mutex;
+    std::map<unsigned,std::string> owners;   // Collected::units of the active packages
+    std::map<std::string,json> names;
 };
 inline State& state(){static State value;return value;}
+// The new units the active packages add, by number: the package id and its name. Any thread.
+struct Owner { std::string package; json name; };
+inline std::map<unsigned,Owner> unit_owners() {
+    auto& s=state();
+    std::lock_guard lock(s.owners_mutex);
+    std::map<unsigned,Owner> out;
+    for(const auto& [unit,id]:s.owners)out[unit]={id,s.names.count(id)?s.names.at(id):json(id)};
+    return out;
+}
 
 // A weapon's kind byte as the ROM has it and as the game reads it (a package's or the rules
 // file's), when they differ in a printed bit (格／射, P, B); nothing when they agree. Any
@@ -359,7 +399,19 @@ inline void configure(std::span<const uint8_t> rom,const fs::path& output) {
 // Before each copy from ROM, on the game thread: again when the packages change, or
 // once the front end has told the game its version (until then a package's "game"
 // requirement fails). A unit follows at its next recompute, a pilot at the next load.
-inline void refresh() {
+// The resident section (ROM 0x1000, 1 MiB at 80076610) is copied once at start: the tables
+// the game reads from RAM there (the inheritance tables D_800CA3A0 and D_800CB5E8, a new
+// unit's pieces) take the packages' bytes in RDRAM too, and the ROM's back when a package
+// stops giving them.
+inline void sync_resident(uint8_t* ram,const std::vector<std::pair<uint32_t,uint8_t>>& before,
+                          const std::vector<std::pair<uint32_t,uint8_t>>& after,std::span<const uint8_t> rom) {
+    const auto inside=[](uint32_t at){return at>=upgrades::resident_rom && at<upgrades::resident_rom+upgrades::resident_copy;};
+    const auto write=[&](uint32_t at,uint8_t v){upgrades::write8(ram,upgrades::resident_ram+(at-upgrades::resident_rom),v);};
+    std::set<uint32_t> now;
+    for(const auto& [at,v]:after)if(inside(at)){write(at,v);now.insert(at);}
+    for(const auto& [at,v]:before)if(inside(at) && !now.count(at) && at<rom.size())write(at,rom[at]);
+}
+inline void refresh(uint8_t* ram=nullptr) {
     auto& s=state();
     if(s.rom.empty())return;
     const unsigned now=mods::revision();
@@ -371,6 +423,8 @@ inline void refresh() {
     for(const auto& [at,value]:found.bytes)merged[at]=value;
     std::vector<std::pair<uint32_t,uint8_t>> list;
     for(const auto& [at,value]:merged)if(at<s.rom.size() && s.rom[at]!=value)list.emplace_back(at,value);
+    if(ram)sync_resident(ram,upgrades::patches(),list,s.rom);
+    {std::lock_guard lock(s.owners_mutex);s.owners=found.units;s.names=found.names;}
     upgrades::patches()=std::move(list);
     upgrades::publish_patches();
     for(const auto& problem:found.problems)std::fprintf(stderr,"SRW64_MOD_DATA_PROBLEM %s\n",problem.c_str());

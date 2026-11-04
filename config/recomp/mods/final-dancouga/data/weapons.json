@@ -1,0 +1,5 @@
+{
+  "1209": { "power": 3000, "range_min": 1, "range_max": 1, "hit": 20, "en": 10, "morale": 110, "critical": 20 },
+  "882":  { "power": 3500, "range_min": 1, "range_max": 7, "hit": -10, "en": 60, "morale": 120, "critical": 10 },
+  "881":  { "power": 4300, "range_min": 1, "range_max": 1, "hit": 20, "en": 60, "morale": 130, "critical": 20 }
+}

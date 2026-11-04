@@ -111,6 +111,7 @@ class Builder:
         self.texts = texts
         self.refs: list[int] = []         # command indexes whose argument is a line
         self.like: list[tuple[int, int]] = []   # (command index, pilot): a join's level, set by the host
+        self.crew: list[dict] = []              # a unit's crew, set by the host once the event has run
 
     def op(self, opcode: int, *args: int) -> None:
         self.commands.append({"op": opcode, "args": list(args)})
@@ -191,6 +192,25 @@ class Builder:
             self.op(0x3D5A, _int(value.get("pilot"), "pilot", 0, 360), offset & 0xFFFF, _int(value.get("unit"), "unit", 0, 362), 500)
         elif kind == "remove":
             self.op(0x3D5A, _int(value.get("pilot"), "pilot", 0, 360), 0, _int(value.get("unit"), "unit", 0, 362), 4000)
+        elif kind == "replace":
+            # The original's machine change (3D5A pilot,0,new,old, as 224 replacing 223): the old
+            # unit goes, upgrades follow D_800CA3A0 / D_800CB5E8 (docs/gameplay/upgrade-inheritance.md).
+            if not isinstance(value, dict) or set(value) != {"pilot", "unit", "with"}:
+                raise StoryError("replace 写 {\"pilot\": 人物号, \"unit\": 旧机体, \"with\": 新机体}")
+            self.op(0x3D5A, _int(value["pilot"], "pilot", 0, 360), 0, _int(value["with"], "with", 0, 362), _int(value["unit"], "unit", 0, 362))
+        elif kind == "remove_unit":
+            # 3D5A pilot,0,unit,3000: the unit leaves the roster, its pilot stays (800A3540).
+            if not isinstance(value, dict) or set(value) != {"pilot", "unit"}:
+                raise StoryError("remove_unit 写 {\"pilot\": 人物号, \"unit\": 机体号}")
+            self.op(0x3D5A, _int(value["pilot"], "pilot", 0, 359), 0, _int(value["unit"], "unit", 0, 362), 3000)
+        elif kind == "unlock":
+            self.op(0x3D6F, _int(value, "unlock", 0, 1328))   # as 断空光牙剣 874 is unlocked
+        elif kind == "crew":
+            if not isinstance(value, dict) or set(value) != {"unit", "pilots"} or not isinstance(value["pilots"], list) \
+                    or not 1 <= len(value["pilots"]) <= 5:
+                raise StoryError("crew 写 {\"unit\": 机体号, \"pilots\": [1–5 个人物号，第一个是主驾驶]}")
+            self.crew.append({"unit": _int(value["unit"], "unit", 0, 362),
+                              "pilots": [_int(x, "crew 人物", 0, 360) for x in value["pilots"]]})
         elif kind == "leave":
             self.op(0x3D46, _int(value, "leave", 0, 360), 1)
         elif kind == "leave_group":
@@ -265,7 +285,7 @@ def compile_story(document: dict, spec: dict | None = None) -> dict:
                            **{k: flags(cond[k], k) for k in ("flags", "not_flags") if k in cond},
                            "set_flags": flags(row.get("set_flags", []), "set_flags"), "fired": list(cond.get("fired", [])),
                            "not_fired": list(cond.get("not_fired", [])), "repeat": repeat,
-                           "words": words, "texts": refs, "levels": levels,
+                           "words": words, "texts": refs, "levels": levels, "crew": builder.crew,
                            "listing": [f"{e['opcode']} {','.join(map(str, e['operands']))}".rstrip() for e in assembled["listing"]]})
         except (StoryError, ValueError, KeyError, TypeError) as error:
             raise StoryError(f"事件 {where}：{error}") from None

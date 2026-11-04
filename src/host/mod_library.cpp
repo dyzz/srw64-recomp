@@ -260,6 +260,21 @@ bool remove(const std::string& id) {
     return write_state(state);
 }
 unsigned revision(){return changes.load();}
+std::mutex builtin_mutex;
+std::map<std::string,Version> builtins;   // the usable ones
+void set_builtin(const std::string& id,std::optional<Version> version) {
+    std::lock_guard lock(builtin_mutex);
+    const auto f=builtins.find(id);
+    const bool same=version?(f!=builtins.end() && f->second==*version):f==builtins.end();
+    if(same)return;
+    if(version)builtins[id]=*version;else builtins.erase(id);
+    ++changes;
+}
+std::optional<Version> builtin(const std::string& id) {
+    std::lock_guard lock(builtin_mutex);
+    const auto f=builtins.find(id);
+    return f==builtins.end()?std::nullopt:std::optional<Version>(f->second);
+}
 void set_game_version(const Version& v){game_packed=(uint64_t(v.major)<<40)|(uint64_t(v.minor)<<20)|uint64_t(v.patch);}
 Version game_version() {
     const uint64_t p=game_packed.load();

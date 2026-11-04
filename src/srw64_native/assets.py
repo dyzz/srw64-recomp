@@ -60,6 +60,7 @@ def unit_lookup(art_directory: Path):
     def lookup(scene: int, atlas: int, palette: int):
         row = rows.get((scene, atlas, palette))
         return str(art_directory / row["file"]) if row else None
+    lookup.poses = sorted(rows)   # every pose the pack draws, a MOD unit's among them
     return lookup
 
 
